@@ -93,32 +93,36 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 	![Hadoop HDInsight クラスターの詳細を提供](./media/hdinsight-hadoop-provision-linux-clusters/HDI.CustomProvision.Page1.png)
 
     <table border='1'>
-	<tr><th>プロパティ</th><th>値</th></tr>
-	<tr><td>クラスター名</td>
-		<td><p>クラスターの名前を指定します。</p>
-			<ul>
-			<li>Domain Name System (DNS) 名の最初と最後の文字は英数字にする必要があります。それ以外ではダッシュ (-) を使用できます。</li>
-			<li>3 ～ 63 文字のクラスター名を入力できます。</li>
-			</ul></td></tr>
-	<tr><td>クラスターの種類</td>
-		<td><strong>[Hadoop]</strong> を選択 します。</td></tr>
-	<tr><td>オペレーティング システム</td>
-		<td>Linux で HDInsight クラスターをプロビジョニングするには、<b>[Ubuntu 12.04 LTS Preview]</b> を選択します。Windows クラスターをプロビジョニングするには、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-provision-clusters/" target="_blank">カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング</a>」をご覧ください。</td></tr>
-	<tr><td>HDInsight のバージョン</td>
-		<td>バージョンを選択します。Linux での HDInsight の場合、既定では HDInsight Version 3.2 で、これは Hadoop 2.6 を使用します。</td></tr>
-	</table>表に示されている値を入力または選択し、右矢印をクリックします。
+		<tr><th>プロパティ</th><th>値</th></tr>
+		<tr><td>クラスター名</td>
+			<td><p>クラスターの名前を指定します。</p>
+				<ul>
+				<li>Domain Name System (DNS) 名の最初と最後の文字は英数字にする必要があります。それ以外ではダッシュ (-) を使用できます。</li>
+				<li>3 ～ 63 文字のクラスター名を入力できます。</li>
+				</ul></td></tr>
+		<tr><td>クラスターの種類</td>
+			<td><strong>[Hadoop]</strong> を選択 します。</td></tr>
+		<tr><td>オペレーティング システム</td>
+			<td>Linux で HDInsight クラスターをプロビジョニングするには、<b>[Ubuntu 12.04 LTS Preview]</b> を選択します。Windows クラスターをプロビジョニングするには、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-provision-clusters/" target="_blank">カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング</a>」をご覧ください。</td></tr>
+		<tr><td>HDInsight のバージョン</td>
+			<td>バージョンを選択します。Linux での HDInsight の場合、既定では HDInsight Version 3.2 で、これは Hadoop 2.6 を使用します。</td></tr>
+		</table>
+
+	表に示されている値を入力または選択し、右矢印をクリックします。
 
 4. **[クラスターの構成]** ページで、次の値を入力または選択します。
 
 	![Hadoop HDInsight クラスターの詳細を提供](./media/hdinsight-hadoop-provision-linux-clusters/HDI.CustomProvision.Page2.png)
 
 	<table border="1">
-<tr><th>名前</th><th>値</th></tr>
-<tr><td>データ ノード</td><td>デプロイするデータ ノードの数です。テストでは、単一ノード クラスターを作成します。<br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
-<tr><td>リージョン/仮想ネットワーク</td><td><p>作成済みのストレージ アカウントと同じリージョンを選択します。HDInsight クラスターは、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</p></td></tr>
-<tr><td>ヘッド ノード サイズ</td><td><p>ヘッド ノードの仮想マシン (VM) サイズを選択します。</p></td></tr>
-<tr><td>データ ノード サイズ</td><td><p>データ ノードの VM サイズを選択します。</p></td></tr>
-</table>>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて Standard レベルの VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
+	<tr><th>名前</th><th>値</th></tr>
+	<tr><td>データ ノード</td><td>デプロイするデータ ノードの数です。テストでは、単一ノード クラスターを作成します。<br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
+	<tr><td>リージョン/仮想ネットワーク</td><td><p>作成済みのストレージ アカウントと同じリージョンを選択します。HDInsight クラスターは、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。</p></td></tr>
+	<tr><td>ヘッド ノード サイズ</td><td><p>ヘッド ノードの仮想マシン (VM) サイズを選択します。</p></td></tr>
+	<tr><td>データ ノード サイズ</td><td><p>データ ノードの VM サイズを選択します。</p></td></tr>
+	</table>
+
+	>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて Standard レベルの VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
 
 
 5. **[クラスター ユーザーの構成]** ページで、次の情報を指定します。
@@ -126,23 +130,26 @@ HDInsight クラスターは、既定のファイル システムとして Azure
     ![Hadoop HDInsight クラスターのユーザーを指定](./media/hdinsight-hadoop-provision-linux-clusters/HDI.CustomProvision.Page3.png)
 
     <table border='1'>
-	<tr><th>プロパティ</th><th>値</th></tr>
-	<tr><td>HTTP パスワード</td>
-		<td>既定の HTTP ユーザーである <strong>admin</strong> のパスワードを指定します。</td></tr>
-	<tr><td>SSH ユーザー名</td>
-		<td>SSH ユーザー名を指定します。このユーザー名を使用して、HDInsight クラスター ノードでリモート SSH セッションを開始します。</td></tr>
-	<tr><td>SSH 認証の種類</td>
-		<td>SSH ユーザーの認証に、パスワードと SSH キーのどちらを使用するかを指定します。</td></tr>
-	<tr><td>SSH パスワード</td>
-		<td>認証の種類にパスワードを選択した場合、SSH ユーザーを認証するための SSH パスワードを指定します。リモート Linux マシンで SSH セッションを開始するときに、このパスワードの入力を求められます。</td></tr>
-	<tr><td>SSH パブリック キー</td>
-		<td>認証の種類にキーを選択した場合は、既に生成済みの SSH パブリック キーを指定します。Linux クラスターのノードで SSH セッションを開始した場合は、この公開キーに関連付けられた秘密キーを使用します。<br>
-		Linux コンピューターで SSH キーを生成する手順については、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">こちら</a>をご覧ください。Windows コンピューターで SSH キーを生成する手順については、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">こちら</a>をご覧ください。
-	</td></tr>
-	<tr><td>Hive/Oozie メタストアの入力</td>
-		<td>このチェックボックスをオンにして、クラスターと同じデータ センターにある Hive/Oozie メタストアとして使用する SQL データベースを指定します。このチェック ボックスを選択した場合、ウィザードの後続のページで Azure SQL データベースの詳細を指定する必要があります。これは、クラスターが削除された後でも Hive/Oozie ジョブに関するメタデータを保持する場合に便利です。</td></tr>
-	</td></tr>
-	</table>> [AZURE.NOTE]パスワード認証より安全であるため、SSH による SSH パブリック キー認証を使用することをお勧めします。
+		<tr><th>プロパティ</th><th>値</th></tr>
+		<tr><td>HTTP パスワード</td>
+			<td>既定の HTTP ユーザーである <strong>admin</strong> のパスワードを指定します。</td></tr>
+		<tr><td>SSH ユーザー名</td>
+			<td>SSH ユーザー名を指定します。このユーザー名を使用して、HDInsight クラスター ノードでリモート SSH セッションを開始します。</td></tr>
+		<tr><td>SSH 認証の種類</td>
+			<td>SSH ユーザーの認証に、パスワードと SSH キーのどちらを使用するかを指定します。</td></tr>
+		<tr><td>SSH パスワード</td>
+			<td>認証の種類にパスワードを選択した場合、SSH ユーザーを認証するための SSH パスワードを指定します。リモート Linux マシンで SSH セッションを開始するときに、このパスワードの入力を求められます。</td></tr>
+		<tr><td>SSH パブリック キー</td>
+			<td>認証の種類にキーを選択した場合は、既に生成済みの SSH パブリック キーを指定します。Linux クラスターのノードで SSH セッションを開始した場合は、この公開キーに関連付けられた秘密キーを使用します。<br>
+			Linux コンピューターで SSH キーを生成する手順については、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">こちら</a>をご覧ください。Windows コンピューターで SSH キーを生成する手順については、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">こちら</a>をご覧ください。
+		</td></tr>
+		<tr><td>Hive/Oozie メタストアの入力</td>
+			<td>このチェックボックスをオンにして、クラスターと同じデータ センターにある Hive/Oozie メタストアとして使用する SQL データベースを指定します。このチェック ボックスを選択した場合、ウィザードの後続のページで Azure SQL データベースの詳細を指定する必要があります。これは、クラスターが削除された後でも Hive/Oozie ジョブに関するメタデータを保持する場合に便利です。</td></tr>
+		</td></tr>
+		</table>
+
+
+	> [AZURE.NOTE]パスワード認証より安全であるため、SSH による SSH パブリック キー認証を使用することをお勧めします。
 
 	右矢印をクリックします。
 
@@ -163,29 +170,31 @@ HDInsight クラスターは、既定のファイル システムとして Azure
     ![HDInsight Hadoop クラスターに対してストレージ アカウントを指定](./media/hdinsight-hadoop-provision-linux-clusters/HDI.CustomProvision.Page5.png)
 
 	<table border='1'>
-	<tr><th>プロパティ</th><th>値</th></tr>
-	<tr><td>ストレージ アカウント</td>
-		<td>HDInsight クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを指定します。次の 3 つのオプションのいずれかを選択できます。
-		<ul>
-			<li><strong>既存のストレージを使用する</strong></li>
-			<li><strong>新しいストレージを作成する</strong></li>
-			<li><strong>別のサブスクリプションのストレージを使用する</strong></li>
-		</ul>
-		</td></tr>
-	<tr><td>アカウント名</td>
-		<td><ul>
-			<li>既存のストレージを使用する場合は、<strong>[アカウント名]</strong> で既存のストレージ アカウントを選択します。ドロップダウンの一覧には、クラスターをプロビジョニングする対象として選択したデータ センターにあるストレージ アカウントのみが表示されます。</li>
-			<li><strong>[新しいストレージを作成する]</strong> または <strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、ストレージ アカウント名を指定する必要があります。</li>
-		</ul></td></tr>
-	<tr><td>アカウント キー</td>
-		<td><strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、そのストレージ アカウントのアカウント キーを指定します。</td></tr>
-	<tr><td>既定のコンテナー</td>
-		<td><p>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。<strong>[ストレージ アカウント]</strong> フィールドで <strong>[既存のストレージを使用する]</strong> を選択したにもかかわらずそのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。たとえば、mycontainer1、mycontainer2、などとなります。ただし、既存のストレージ アカウントに指定したクラスター名と異なる名前のコンテナーがある場合は、そのコンテナーを使用できます。</p>
-        <p>新しいストレージの作成または別の Azure サブスクリプションのストレージの使用を選択した場合は、既定のコンテナー名を指定する必要があります。</p>
-    </td></tr>
-	<tr><td>追加のストレージ アカウント</td>
-		<td>HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、Azure ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントのそれぞれに対する <strong>[ストレージ アカウント]</strong> ページがウィザードに追加され、そこでアカウント情報を指定できます。たとえば、上のスクリーンショットでは、追加のストレージ アカウントが 1 つ選択されたため、ページ 5 がダイアログに追加されています。</td></tr>
-</table>右矢印をクリックします。
+		<tr><th>プロパティ</th><th>値</th></tr>
+		<tr><td>ストレージ アカウント</td>
+			<td>HDInsight クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを指定します。次の 3 つのオプションのいずれかを選択できます。
+			<ul>
+				<li><strong>既存のストレージを使用する</strong></li>
+				<li><strong>新しいストレージを作成する</strong></li>
+				<li><strong>別のサブスクリプションのストレージを使用する</strong></li>
+			</ul>
+			</td></tr>
+		<tr><td>アカウント名</td>
+			<td><ul>
+				<li>既存のストレージを使用する場合は、<strong>[アカウント名]</strong> で既存のストレージ アカウントを選択します。ドロップダウンの一覧には、クラスターをプロビジョニングする対象として選択したデータ センターにあるストレージ アカウントのみが表示されます。</li>
+				<li><strong>[新しいストレージを作成する]</strong> または <strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、ストレージ アカウント名を指定する必要があります。</li>
+			</ul></td></tr>
+		<tr><td>アカウント キー</td>
+			<td><strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合は、そのストレージ アカウントのアカウント キーを指定します。</td></tr>
+		<tr><td>既定のコンテナー</td>
+			<td><p>ストレージ アカウントの既定のコンテナーを指定します。既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。<strong>[ストレージ アカウント]</strong> フィールドで <strong>[既存のストレージを使用する]</strong> を選択したにもかかわらずそのアカウントに既存のコンテナーがない場合は、既定でクラスターと同じ名前のコンテナーが作成されます。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。たとえば、mycontainer1、mycontainer2、などとなります。ただし、既存のストレージ アカウントに指定したクラスター名と異なる名前のコンテナーがある場合は、そのコンテナーを使用できます。</p>
+	        <p>新しいストレージの作成または別の Azure サブスクリプションのストレージの使用を選択した場合は、既定のコンテナー名を指定する必要があります。</p>
+	    </td></tr>
+		<tr><td>追加のストレージ アカウント</td>
+			<td>HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、Azure ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントのそれぞれに対する <strong>[ストレージ アカウント]</strong> ページがウィザードに追加され、そこでアカウント情報を指定できます。たとえば、上のスクリーンショットでは、追加のストレージ アカウントが 1 つ選択されたため、ページ 5 がダイアログに追加されています。</td></tr>
+	</table>
+
+	右矢印をクリックします。
 
 7. クラスターの追加の記憶域を構成する場合、**ストレージ アカウントページ**で、追加のストレージ アカウントのアカウント情報を入力します。
 
@@ -758,4 +767,4 @@ SDK を使用して Linux で HDInsight クラスターをプロビジョニン�
   [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

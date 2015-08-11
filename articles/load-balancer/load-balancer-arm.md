@@ -67,7 +67,7 @@ Azure ロード バランサーを使用したテンプレートは、[GitHub �
 
 - [Azure リソース管理での Azure CLI の使用](../xplat-cli-azure-resource-manager)
 
-- [Load Balancer REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)
+- [ロード バランサー REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 
 ## 関連項目
@@ -77,4 +77,4 @@ Azure ロード バランサーを使用したテンプレートは、[GitHub �
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

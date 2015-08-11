@@ -60,7 +60,7 @@ Site Recovery は、複数の[デプロイ シナリオ](site-recovery-overview.
 **オンプレミスのマシン** | VMware ハイパーバイザーで稼働しているオンプレミスの仮想マシン、または Windows や Linux を実行しているオンプレミスの物理サーバーです。 | 仮想マシンおよびサーバーに適用されるレプリケーションを設定します。マシンを個別にフェールオーバーすることもできますが、より一般的には、まとめてフェールオーバーする複数の仮想マシンを含む復旧計画の一部としてフェールオーバーします。
 **モビリティ サービス** | <p>保護する個々の仮想マシンまたは物理サーバーにインストールします。</p><p>手動でインストールすることも、サーバーの保護が有効になったときにプロセス サーバーによって自動的にプッシュしてインストールすることもできます。 | モビリティ サービスは、初期レプリケーション (再同期) の一環としてプロセス サーバーにデータを送信します。 サーバーが保護状態に達すると (再同期が完了すると)、モビリティ サービスは、ディスクへの書き込みのインメモリ キャプチャを実行し、それをプロセス サーバーに送信します。Windows Server のアプリケーションの整合性は、VSS フレームワークを使って実現されます。
 **Azure Site Recovery コンテナー** | Site Recovery サービスをサブスクライブした後で設定します。 | Site Recovery コンテナーにサーバーを登録します。コンテナーは、オンプレミスのサイトと Azure 間でのデータ レプリケーション、フェールオーバー、および復旧を調整およびオーケストレーションします。
-**レプリケーション メカニズム** | <p>\*\*インターネット経由\*\* — パブリック インターネット接続を介してセキュリティで保護された SSL/TLS 通信チャネルを使用して、保護されたオンプレミスのサーバーおよび Azure からのデータを通信およびレプリケートします。これは既定のオプションです。</p><p>\*\*VPN/ExpressRoute\*\* — オンプレミスのサーバーと Azure の通信およびデータ レプリケーションを VPN 接続を介して実行します。オンプレミスのサイトと Azure ネットワークとの間にサイト間 VPN または [ExpressRoute](../expressroute-introduction.md) 接続を設定する必要があります。</p><p>Site Recovery のデプロイの間にレプリケート方法を選択します。構成が済んだ後では、既に保護されているサーバーに対する保護に影響を与えずにメカニズムを変更することはできません。| <p>どちらのオプションでも、保護されたマシン上で受信ネットワーク ポートを開く必要があります。すべてのネットワーク通信は、オンプレミスのサイトから開始されます。</p> 
+**レプリケーション メカニズム** | <p>**インターネット経由** — パブリック インターネット接続を介してセキュリティで保護された SSL/TLS 通信チャネルを使用して、保護されたオンプレミスのサーバーおよび Azure からのデータを通信およびレプリケートします。これは既定のオプションです。</p><p>**VPN/ExpressRoute** — オンプレミスのサーバーと Azure の通信およびデータ レプリケーションを VPN 接続を介して実行します。オンプレミスのサイトと Azure ネットワークとの間にサイト間 VPN または [ExpressRoute](../expressroute-introduction.md) 接続を設定する必要があります。</p><p>Site Recovery のデプロイの間にレプリケート方法を選択します。構成が済んだ後では、既に保護されているサーバーに対する保護に影響を与えずにメカニズムを変更することはできません。| <p>どちらのオプションでも、保護されたマシン上で受信ネットワーク ポートを開く必要があります。すべてのネットワーク通信は、オンプレミスのサイトから開始されます。</p> 
 
 Site Recovery のコンポーネント、プロバイダー、エージェントの詳細については、「[Site Recovery のコンポーネント](site-recovery-components.md)」を参照してください。
 
@@ -105,9 +105,9 @@ Site Recovery のコンポーネント、プロバイダー、エージェント
 
 **データの変更率** | **CPU** | **メモリ** | **キャッシュ ディスク サイズ**| **キャッシュ ディスク スループット** | **帯域幅の受信/送信**
 --- | --- | --- | --- | --- | ---
-< 300 GB | 4 vCPU (2 ソケット \* 2 コア @ 2.5 GHz) | 4 GB | 600 GB | 7 ～ 10 MB/秒 | 30 Mbps/21 Mbps
-300 ～ 600 GB | 8 vCPU (2 ソケット \* 4 コア @ 2.5 GHz) | 6 GB | 600 GB | 11 ～ 15 MB/秒 | 60 Mbps/42 Mbps
-600 GB ～ 1 TB | 12 vCPU (2 ソケット \* 6 コア @ 2.5 GHz) | 8 GB | 600 GB | 16 ～ 20 MB/秒 | 100 Mbps/70 Mbps
+< 300 GB | 4 vCPU (2 ソケット * 2 コア @ 2.5 GHz) | 4 GB | 600 GB | 7 ～ 10 MB/秒 | 30 Mbps/21 Mbps
+300 ～ 600 GB | 8 vCPU (2 ソケット * 4 コア @ 2.5 GHz) | 6 GB | 600 GB | 11 ～ 15 MB/秒 | 60 Mbps/42 Mbps
+600 GB ～ 1 TB | 12 vCPU (2 ソケット * 6 コア @ 2.5 GHz) | 8 GB | 600 GB | 16 ～ 20 MB/秒 | 100 Mbps/70 Mbps
 > 1 TB | 別のプロセス サーバーをデプロイします | | | | 
 
 **表 2**
@@ -130,8 +130,8 @@ Site Recovery のコンポーネント、プロバイダー、エージェント
 **インスタンス** | **OS ディスク** | **保持** | **データ ディスク**
 --- | --- | --- | ---
  | | **保持** | **データ ディスク**
-Standard A4 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 15 ディスク (15 \* 1023 GB)
-Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 31 ディスク (15 \* 1023 GB)
+Standard A4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 ディスク (15 * 1023 GB)
+Standard D14 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 31 ディスク (15 * 1023 GB)
 
 **表 3**
 
@@ -147,10 +147,10 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 以下の点に注意してください。
 
 - 1 つのソースで複数のストレージ アカウントを使用することはできません。これは、保護を構成するときに選択したストレージ アカウントに対するデータ ディスクに適用されます。OS ディスクと保持ディスクは、通常、自動的にデプロイされるストレージ アカウントに割り当てられます。
-- 必要な保持ストレージ ボリュームは、1 日の変更率および保持日数に依存します。マスター ターゲット サーバーごとに必要な保持ストレージ = 1 日あたりのソースからの合計変更数 \* 保持日数。 
+- 必要な保持ストレージ ボリュームは、1 日の変更率および保持日数に依存します。マスター ターゲット サーバーごとに必要な保持ストレージ = 1 日あたりのソースからの合計変更数 * 保持日数。 
 - 各マスター ターゲット サーバーは、保持ボリュームを 1 つだけ持ちます。保持ボリュームは、マスター ターゲット サーバーに接続されたディスク間で共有されます。次に例を示します。
 	- ソース マシンに 5 台のディスクがあり、ソースで各ディスクが 120 IOPS (8K サイズ) を生成する場合、ディスクあたり 240 IOPS になります (ソースでの IO ごとにターゲット ディスクでは 2 操作)。240 IOPS は、Azure でのディスクごとの IOPS 制限である 500 の範囲内です。
-	- 保持ボリュームでは、これは 120 \* 5 = 600 IOPS になり、ボトルネックになる可能性があります。このシナリオでの適切な戦略は、保持ボリュームにディスクを追加し、RAID ストライプ構成として全体で共有することです。このようにすると、IOPS が複数のドライブに分散されるため、パフォーマンスが向上します。保持ボリュームに追加するドライブの数は次のようになります。
+	- 保持ボリュームでは、これは 120 * 5 = 600 IOPS になり、ボトルネックになる可能性があります。このシナリオでの適切な戦略は、保持ボリュームにディスクを追加し、RAID ストライプ構成として全体で共有することです。このようにすると、IOPS が複数のドライブに分散されるため、パフォーマンスが向上します。保持ボリュームに追加するドライブの数は次のようになります。
 		- ソース環境からの合計 IOPS / 500
 		- 1 日あたりのソース環境からの合計変更量 (非圧縮) / 287 GB。287 GB は、ターゲット ディスクがサポートする 1 日あたりの最大スループットです。このケースでは 8 K が想定される書き込みサイズなので、このメトリックは 8 K 単位の書き込みサイズによって異なります。たとえば、書き込みサイズが 4 K の場合、スループットは 287/2 になります。また、書き込みサイズが 16 K の場合、スループットは 287\*2 になります。
 - 必要なストレージ アカウントの数 = 合計ソース IOPS/10000。
@@ -164,12 +164,12 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 **Azure Storage** | <p>レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。</p><p>アカウントでは geo レプリケーションを有効にする必要があります。</p><p>アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。</p><p>詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」をご覧ください。</p>
 **Azure Virtual Network** | 構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。Azure 仮想ネットワークは、Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。ExpressRoute 接続または VPN 接続でデータをレプリケートする場合、Azure Virtual Network が、ExpressRoute 接続またはサイト間 VPN を介してオンプレミス ネットワークに接続されている必要があります。
 **Azure リソース** | すべてのコンポーネントをデプロイできるだけの十分な Azure リソースがあることを確認してください。詳細については、「[Azure サブスクリプションの制限](../azure-subscription-service-limits.md)」をご覧ください。
-**Azure Virtual Machines** | <p>保護する仮想マシンは、[Azure の前提条件](site-recovery-best-practices.md)に従う必要があります。</p><p>\*\*ディスクの数\*\* — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。</p><p>\*\*ディスク サイズ\*\* — 個々のディスク容量は 1023 GB 未満である必要があります。</p><p>\*\*クラスタリング\*\* — クラスター化されたサーバーはサポートされません。</p><p>\*\*ブート\*\* — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。</p><p>\*\*ボリューム\*\* — Bitlocker 暗号化ボリュームはサポートされません。</p><p> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンが保護された後で、Azure の名前を変更することができます。</p>
+**Azure Virtual Machines** | <p>保護する仮想マシンは、[Azure の前提条件](site-recovery-best-practices.md)に従う必要があります。</p><p>**ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。</p><p>**ディスク サイズ** — 個々のディスク容量は 1023 GB 未満である必要があります。</p><p>**クラスタリング** — クラスター化されたサーバーはサポートされません。</p><p>**ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。</p><p>**ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。</p><p> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンが保護された後で、Azure の名前を変更することができます。</p>
 **構成サーバー** | <p>Azure Site Recovery Windows Server 2012 R2 ギャラリー イメージに基づいた構成サーバー用の Standard A3 仮想マシンがサブスクリプションに作成されます。新しいクラウド サービスの最初のインスタンスとして作成されます。構成サーバーの接続の種類としてパブリック インターネットを選択した場合、予約されたパブリック IP アドレスでクラウド サービスが作成されます。</p><p>インストール パスには英字以外使わないでください。</p>
 **マスター ターゲット サーバー** | <p>Azure Virtual Machine、Standard A4 または D14。</p><p>インストール パスは英語文字のみで構成される必要があります。たとえば、Linux を実行するマスター ターゲット サーバーのパスは、**/usr/local/ASR** のようにする必要があります。</p></p>
 **プロセス サーバー** | <p>プロセス サーバーは、最新の更新プログラムがインストールされている Windows Server 2012 R2 を実行している物理マシンまたは仮想マシンにデプロイできます。C:/ にインストールします。</p><p>プロセス サーバーは、保護するマシンと同じネットワークおよびサブネット上に配置することをお勧めします。</p><p>VMware vSphere CLI 5.5.0 をプロセス サーバーにインストールします。vCenter サーバーによって管理される仮想マシンまたは ESXi ホストで実行する仮想マシンを検出するには、プロセス サーバー上に VMware vSphere CLI コンポーネントが必要です。</p><p>インストール パスは英語文字のみで構成される必要があります。</p>
 **VMware** | <p>VMware vSphere ハイパーバイザーを管理する VMWare vCenter サーバー。最新の更新プログラムがインストールされた vCenter バージョン 5.1 または 5.5 を実行している必要があります。</p><p>保護する VMWare 仮想マシンを含む、1 つまたは複数の vSphere ハイパーバイザー。ハイパーバイザーは、最新の更新プログラムがインストールされた ESX/ESXi バージョン 5.1 または 5.5 を実行している必要があります。</p><p>VMware 仮想マシンは、VMware ツールがインストールされて稼働している必要があります。</p>
-**Windows マシン** | <p>Windows が稼動している物理サーバーまたは VMware 仮想マシンを保護するときは、いくつかの要件があります。</p><p>サポートされる 64 ビット オペレーティング システム: **Windows Server 2012 R2**、**Windows Server 2012**、**Windows Server 2008 R2 SP1 以上**。</p><p>ホスト名、マウント ポイント、デバイス名、Windows システム パス (例: C:\\Windows) には英語のみ使用できます。</p><p>オペレーティング システムは C:\\ ドライブにインストールする必要があります。</p><p>基本ディスクのみがサポートされます。ダイナミック ディスクはサポートされていません。</p><p><Firewall rules on protected machines should allow them to reach the configuration and master target servers in Azure.p><p>Windows サーバーにモビリティ サービスをプッシュ インストールするには、管理者アカウントを提供する必要があります (Windows マシン上のローカル管理者)。提供するアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。アクセス制御についての[詳細](https://msdn.microsoft.com/library/aa826699.aspx)。</p><p>フェールオーバー後に、Azure の Windows 仮想マシンにリモート デスクトップを使用して接続する場合、オンプレミスのマシンでリモート デスクトップが有効になっていることを確認してください。VPN 経由で接続していない場合、ファイアウォール規則でインターネット経由のリモート デスクトップ接続を許可する必要があります。</p>
+**Windows マシン** | <p>Windows が稼動している物理サーバーまたは VMware 仮想マシンを保護するときは、いくつかの要件があります。</p><p>サポートされる 64 ビット オペレーティング システム: **Windows Server 2012 R2**、**Windows Server 2012**、**Windows Server 2008 R2 SP1 以上**。</p><p>ホスト名、マウント ポイント、デバイス名、Windows システム パス (例: C:\Windows) には英語のみ使用できます。</p><p>オペレーティング システムは C:\ ドライブにインストールする必要があります。</p><p>基本ディスクのみがサポートされます。ダイナミック ディスクはサポートされていません。</p><p><Firewall rules on protected machines should allow them to reach the configuration and master target servers in Azure.p><p>Windows サーバーにモビリティ サービスをプッシュ インストールするには、管理者アカウントを提供する必要があります (Windows マシン上のローカル管理者)。提供するアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。アクセス制御についての[詳細](https://msdn.microsoft.com/library/aa826699.aspx)。</p><p>フェールオーバー後に、Azure の Windows 仮想マシンにリモート デスクトップを使用して接続する場合、オンプレミスのマシンでリモート デスクトップが有効になっていることを確認してください。VPN 経由で接続していない場合、ファイアウォール規則でインターネット経由のリモート デスクトップ接続を許可する必要があります。</p>
 **Linux マシン** | <p>サポートされている 64 ビット オペレーティング システム: **Centos 6.4、6.5、6.6**、**Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5**、**SUSE Linux Enterprise Server 11 SP3**。</p><p>保護されたマシンのファイアウォール規則は、保護されたマシンから構成サーバーおよび Azure のマスター ターゲット サーバーにアクセスできるように設定する必要があります。</p><p>保護対象マシン上の /etc/hosts ファイルには、ローカル ホスト名をすべての NIC と関連付けられた IP アドレスにマップするエントリが含まれる必要があります。</p><p>フェールオーバー後に、Linux を実行する Azure 仮想マシンに Secure Shell クライアント (ssh) を使用して接続する場合、保護されたマシンのシステム ブート時に Secure Shell サービスが自動的に起動し、ファイアウォールの規則で仮想マシンへの ssh 接続が許可されるように設定していることを確認してください。</p><p>ホスト名、マウント ポイント、デバイス名、および Linux システム パスとファイル名 (例: /etc/; /usr) には英語のみ使用できます。</p><p>オンプレミスのマシンに対する保護は、以下のストレージで有効にできます。<br>ファイル システム: EXT3、ETX4、ReiserFS、XFS<br>マルチパス ソフトウェア-デバイス マッパー (multipath)<br>ボリューム マネージャー: LVM2<br>HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。</p>
 **サードパーティ** | このシナリオでは、正しく機能するためにサード パーティのソフトウェアに依存している、一部のデプロイ コンポーネントがあります。すべてを一覧表示するには、「[Third Party Software Notices and Information](#third-party)」を参照してください。
 
@@ -197,7 +197,7 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 1. [管理ポータル](https://portal.azure.com)にサインインします。
 
 
-2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
+2. **[Data Services]**、**[復旧サービス]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
 
 
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
@@ -216,7 +216,7 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 
 ### サーバー設定の構成
 
-1. **[Recovery Services]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
+1. **[復旧サービス]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
 
 	![[クイック スタート] アイコン](./media/site-recovery-vmware-to-azure/ASRVMWare_QuickStartIcon.png)
 
@@ -373,10 +373,10 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 8. Linux を実行している場合は以下のようにします。
 	1. マスター ターゲット サーバー ソフトウェアをインストールする前に、最新の Linux Integration Services (LIS) がインストールされていることを確認します。最新バージョンの LIS とインストール手順は、[ここ](https://www.microsoft.com/ja-jp/download/details.aspx?id=46842)で確認できます。LIS をインストールした後、コンピューターを再起動します。
 	2. **[ターゲット (Azure) リソースの準備]** で、**[追加ソフトウェアのダウンロードとインストール (Linux マスター ターゲット サーバーのみ)]** をクリックし、Linux マスター ターゲット サーバー パッケージをダウンロードします。ダウンロードした tar ファイルを、sftp クライアントを使用して仮想マシンにコピーします。または、デプロイ済みの Linux マスター ターゲット サーバーにログインし、*wgethttp://go.microsoft.com/fwlink/?LinkID=529757&clcid=0x409* を使用してファイルをダウンロードしてもかまいません。2. Secure Shell クライアントを使用してサーバーにログインします。VPN 経由で Azure ネットワークに接続している場合は、内部 IP アドレスを使用します。それ以外の場合は、外部 IP アドレスと SSH パブリック エンドポイントを使用します。
-	3. 次を実行して gzipped インストーラーからファイルを抽出します。**tar –xvzf Microsoft-ASR\_UA\_8.4.0.0\_RHEL6-64**\*![Linux のマスター ターゲット サーバー](./media/site-recovery-vmware-to-azure/ASRVMWare_TSLinuxTar.png)
+	3. 次を実行して gzipped インストーラーからファイルを抽出します。**tar –xvzf Microsoft-ASR_UA_8.4.0.0_RHEL6-64***![Linux のマスター ターゲット サーバー](./media/site-recovery-vmware-to-azure/ASRVMWare_TSLinuxTar.png)
 	4. tar ファイルの内容を抽出したディレクトリで操作していることを確認します。
 	5. **echo *`<passphrase>`* >passphrase.txt** コマンドを使用して、構成サーバーのパスフレーズをローカル ファイルにコピーします。
-	6. コマンド “\*\*sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt\*\*” を実行します。
+	6. コマンド “**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**” を実行します。
 
 	![ターゲット サーバーの登録](./media/site-recovery-vmware-to-azure/Linux-MT-install.png)
 
@@ -394,14 +394,14 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 
 	![プロセス サーバーのインストール](./media/site-recovery-vmware-to-azure/ASRVMWare_PSDeploy.png)
 
-2.  ダウンロードした zip ファイルを、プロセス サーバーのインストール先となるサーバーにコピーします。この zip ファイルには、次の 2 つのインストール ファイルが含まれています。
+2. ダウンロードした zip ファイルを、プロセス サーバーのインストール先となるサーバーにコピーします。この zip ファイルには、次の 2 つのインストール ファイルが含まれています。
 
-	- Microsoft-ASR\_CX\_TP\_8.4.0.0\_Windows\*
-	- Microsoft-ASR\_CX\_8.4.0.0\_Windows\*
+	- Microsoft-ASR_CX_TP_8.4.0.0_Windows*
+	- Microsoft-ASR_CX_8.4.0.0_Windows*
 
 3. アーカイブを解凍し、インストール ファイルをサーバー上の場所にコピーします。
-4. インストール ファイルの **Microsoft-ASR\_CX\_TP\_8.4.0.0\_Windows**\* を実行して、指示に従います。これでデプロイに必要なサード パーティのコンポーネントがインストールされます。
-5. 次に、**Microsoft-ASR\_CX\_8.4.0.0\_Windows**\* を実行します。
+4. インストール ファイルの **Microsoft-ASR_CX_TP_8.4.0.0_Windows*** を実行して、指示に従います。これでデプロイに必要なサード パーティのコンポーネントがインストールされます。
+5. 次に、**Microsoft-ASR_CX_8.4.0.0_Windows*** を実行します。
 6. **[サーバー モード]** ページで、**[プロセス サーバー]** を選択します。
 
 	![サーバー選択モード](./media/site-recovery-vmware-to-azure/ASRVMWare_ProcessServerSelection.png)
@@ -446,7 +446,7 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 
 プロセス サーバーを登録したときにモビリティ サービスの署名の検証を無効にしなかった場合、以下のように実行すると後でも無効にできます。
 
-1. プロセス サーバーに管理者としてログオンし、編集のために C:\\pushinstallsvc\\pushinstaller.conf ファイルを開きます。**[PushInstaller.transport]** セクションに、**SignatureVerificationChecks=”0”** という行を追加します。ファイルを保存して閉じます。
+1. プロセス サーバーに管理者としてログオンし、編集のために C:\pushinstallsvc\pushinstaller.conf ファイルを開きます。**[PushInstaller.transport]** セクションに、**SignatureVerificationChecks=”0”** という行を追加します。ファイルを保存して閉じます。
 2. InMage PushInstall サービスを再起動します。
 
 
@@ -467,7 +467,7 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 	- [CentOS 6.4、6.5、6.6 (64 ビットのみ)](http://download.microsoft.com/download/7/E/D/7ED50614-1FE1-41F8-B4D2-25D73F623E9B/Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz)
 	- [Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ)](http://download.microsoft.com/download/5/2/6/526AFE4B-7280-4DC6-B10B-BA3FD18B8091/Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz)
 	- [SUSE Linux Enterprise Server SP3 (64 ビットのみ)](http://download.microsoft.com/download/B/4/2/B4229162-C25C-4DB2-AD40-D0AE90F92305/Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz)
-- または、プロセス サーバーを更新した後は、更新済みバージョンのモビリティ サービスをプロセス サーバーの C:\\pushinstallsvc\\repository フォルダーから入手できます。
+- または、プロセス サーバーを更新した後は、更新済みバージョンのモビリティ サービスをプロセス サーバーの C:\pushinstallsvc\repository フォルダーから入手できます。
 - 以前のバージョンのモビリティ サービスがインストールされた保護対象マシンが既に存在する場合、保護対象マシン上のモビリティ サービスを管理ポータルから自動的にアップグレードすることもできます。そのためには、マシンの従属先となる保護グループを選択し、保護対象マシンを強調表示して、一番下にある [モビリティ サービスの更新] ボタンをクリックします。[モビリティ サービスの更新] ボタンが有効になるのは、より新しいバージョンのモビリティ サービスが入手可能になった場合だけです。プロセス サーバーで最新バージョンのプロセス サーバー ソフトウェアが実行されていることを確認したうえで、モビリティ サービスを更新してください。モビリティ サービスの更新が機能するためには、保護対象サーバーが[自動プッシュ インストールの前提条件](#install-the-mobility-service-automatically)をすべて満たしている必要があります。
 
 ![vCenter サーバーの選択](./media/site-recovery-vmware-to-azure/ASRVmware_UpdateMobility1.png)
@@ -542,7 +542,7 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 	![ファイアウォールの設定](./media/site-recovery-vmware-to-azure/ASRVMWare_PushInstallFirewall.png)
 
 4. プッシュ インストールを実行するために使用するアカウントは、保護するマシンの管理グループに属している必要があります。これらの資格情報はモビリティ サービスのプッシュ インストールにのみ使用され、保護グループにマシンを追加するときに指定します。
-5. 指定したアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。 
+5. 指定したアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。 
 
 **Linux サーバーにモビリティ サービスを自動的にプッシュ インストールします。**
 
@@ -552,10 +552,10 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 4. ソース Linux サーバーの /etc/hosts ファイルに、ローカル ホスト名を、すべての NIC に関連付けられた IP アドレスにマップするエントリが含まれることを確認します。
 5. 保護するマシンに最新の openssh、openssh-server、openssl の各パッケージをインストールします。
 6. SSH がポート 22 で有効であり実行中であることを確認します。 
-7. 以下の手順で、sshd\_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
+7. 以下の手順で、sshd_config ファイルで SFTP サブシステムとパスワード認証を有効にします。 
 
 	- a) root としてログインします。
-	- b) /etc/ssh/sshd\_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
+	- b) /etc/ssh/sshd_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
 	- c) この行のコメントを解除し、値 "no" を "yes" に変更します。
 
 		![Linux のモビリティ](./media/site-recovery-vmware-to-azure/ASRVMWare_LinuxPushMobility1.png)
@@ -568,7 +568,7 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
  
 ### モビリティ サービスを手動でインストールする
 
-モビリティ サービスのインストールに使用するソフトウェア パッケージは、プロセス サーバーの C:\\pushinstallsvc\\repository にあります。プロセス サーバーにログオンし、次の表に基づいて適切なインストール パッケージをソース マシンにコピーします。
+モビリティ サービスのインストールに使用するソフトウェア パッケージは、プロセス サーバーの C:\pushinstallsvc\repository にあります。プロセス サーバーにログオンし、次の表に基づいて適切なインストール パッケージをソース マシンにコピーします。
 
 | ソース オペレーティング システム | プロセス サーバー上のモビリティ サービス パッケージ |
 |---------------------------------------------------	|------------------------------------------------------------------------------------------------------	|
@@ -599,7 +599,7 @@ Standard D14 | 1 ディスク (1 \* 1023 GB) | 1 ディスク (1 \* 1023 GB) | 3
 
 **コマンド ラインから実行するには:**
 
-1. パスフレーズを CX からサーバーのファイル "C:\\connection.passphrase" にコピーして、このコマンドを実行します。この例では、CX は 104.40.75.37、HTTPS ポートは 62519です。
+1. パスフレーズを CX からサーバーのファイル "C:\connection.passphrase" にコピーして、このコマンドを実行します。この例では、CX は 104.40.75.37、HTTPS ポートは 62519です。
 
     `C:\Microsoft-ASR_UA_8.2.0.0_Windows_PREVIEW_20Mar2015_Release.exe" -ip 104.40.75.37 -port 62519 -mode UA /LOG="C:\stdout.txt" /DIR="C:\Program Files (x86)\Microsoft Azure Site Recovery" /VERYSILENT  /SUPPRESSMSGBOXES /norestart  -usesysvolumes  /CommunicationMode https /PassphrasePath "C:\connection.passphrase"`
 
@@ -762,4 +762,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=July15_HO5-->
+<!----HONumber=July15_HO5-->

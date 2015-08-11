@@ -54,7 +54,9 @@ MySQL Server の Community バージョンをインストール、構成、と�
 > [AZURE.NOTE]これらの手順は、MySQL 5.6.23.0 の Community バージョンと Windows Server 2012 R2 で実行する手順です。異なるバージョンの MySQL または Windows Server を使用しているユーザーは、同一の結果にならない場合があります。
 
 1.	リモート デスクトップを使用して仮想マシンに接続したら、スタート画面で **[Internet Explorer]** をクリックします。
-2.	右上隅の **[ツール]** (歯車のアイコン) を選択して、**[インターネット オプション]** をクリックします。**[セキュリティ]** タブ、**[信頼済みサイト]** アイコン、**[サイト]** の順にクリックします。信頼済みサイトの一覧に **http://*.mysql.com** を追加します。**[閉じる]**、**[OK]** の順にクリックします。3.	Internet Explorer のアドレス バーに「**http://dev.mysql.com/downloads/mysql/**」と入力します。4.	MySQL サイトで MySQL Installer for Windows の最新バージョンを見つけ、インストールします。MySQL Installer を選ぶ際、すべてのファイル セットが揃っているバージョンをダウンロードし (ファイル サイズが 282.4 MB の mysql-installer-community-5.6.23.0.msi など)、このインストーラー ファイルを Windows デスクトップに保存します。
+2.	右上隅の **[ツール]** (歯車のアイコン) を選択して、**[インターネット オプション]** をクリックします。**[セキュリティ]** タブ、**[信頼済みサイト]** アイコン、**[サイト]** の順にクリックします。信頼済みサイトの一覧に **http://*.mysql.com** を追加します。**[閉じる]**、**[OK]** の順にクリックします。
+3.	Internet Explorer のアドレス バーに「**http://dev.mysql.com/downloads/mysql/**」と入力します。
+4.	MySQL サイトで MySQL Installer for Windows の最新バージョンを見つけ、インストールします。MySQL Installer を選ぶ際、すべてのファイル セットが揃っているバージョンをダウンロードし (ファイル サイズが 282.4 MB の mysql-installer-community-5.6.23.0.msi など)、このインストーラー ファイルを Windows デスクトップに保存します。
 5.	デスクトップからこのインストーラー ファイルをダブルクリックしてインストールを開始します。
 6.	**[License Agreement]** ページで、ライセンス契約の内容に同意し、**[Next]** をクリックします。
 7.	**[Choosing a Setup Type]** ページで目的のセットアップの種類をクリックしてから、**[Next]** をクリックします。次の手順は、セットアップの種類として **[Server only]** を選択したことを前提にしています。
@@ -128,4 +130,4 @@ MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.
 
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

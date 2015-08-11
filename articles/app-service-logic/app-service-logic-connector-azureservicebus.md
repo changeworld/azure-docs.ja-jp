@@ -83,7 +83,7 @@ Azure Service Bus の "Message Available" アクションを使用すること�
 ![][8]
 
 ## コネクタでできること
-コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
 REST API を使用した API Apps を作成します。[コネクタと API Apps のリファレンス](http://go.microsoft.com/fwlink/p/?LinkId=529766)に関するページを参照してください。
 
@@ -100,4 +100,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [7]: ./media/app-service-logic-connector-azureservicebus/img7.PNG
 [8]: ./media/app-service-logic-connector-azureservicebus/img8.PNG
 
-<!---HONumber=July15_HO5-->
+<!----HONumber=July15_HO5-->

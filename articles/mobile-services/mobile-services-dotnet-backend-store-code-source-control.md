@@ -34,9 +34,10 @@
 
 1. ローカル コンピューターに Git をインストールします。 
 
-	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、[Installing Git (Git のインストール)] を参照してください。
+	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
 
-	> [AZURE.NOTE]オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
+	> [AZURE.NOTE]
+	> オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
 
 2. **GitBash** (Windows) や **Bash** (Unix シェル) などのコマンド ラインを開きます。OS X システムでは、**ターミナル** アプリケーションを使用してコマンド ラインにアクセスできます。
 
@@ -98,8 +99,9 @@
 [Mobile Services の使用]: mobile-services-dotnet-backend-ios-get-started.md
 [既存のアプリにモバイル サービスを追加する]: mobile-services-dotnet-backend-ios-get-started-data.md
 [Azure Management Portal]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Call a custom API from the client]: mobile-services-dotnet-backend-ios-call-custom-api.md
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

@@ -1,7 +1,7 @@
 
 このチュートリアルは、Visual Studio 2013 のユニバーサル Windows アプリ プロジェクトである [GetStartedWithMobileServices アプリケーション](http://go.microsoft.com/fwlink/p/?LinkID=510826) に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービスのクイック スタートで生成したアプリケーションと同じです。
 
-1. C# バージョンの GetStartedWithMobileServices サンプル アプリケーションをデベロッパー サンプル コード集のサイトからダウンロードします。 
+1. C# バージョンの GetStartedWithMobileServices サンプル アプリケーションを [デベロッパー サンプル コード集のサイト] からダウンロードします。 
 
 2. Visual Studio 2013 では、ダウンロードしたプロジェクトを開き、GetStartedWithData.Shared プロジェクト フォルダーで検出された MainPage.xaml.cs ファイルを調べます。
 
@@ -21,4 +21,4 @@
 
 6. 手順 3 と 4 を繰り返して、サンプルが同じように動作することを確認します。
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

@@ -128,6 +128,7 @@
 +	**Search** 関数が受け取った店舗の場所を取り出し、店舗の場所をプッシュピンとして Bing Map に追加します。
 
 4.	**Controllers** 下の HomeController.cs を開き、**Search** 関数を見てみましょう。_storeSearch.Search(lat, lon, 10000) への呼び出しがどのように行われるのかに注目してください。これにより、クエリが実行されて、指定の緯度 (lat) および経度 (lon) から 10,000 KM 内にあるすべての店舗が検索されます。このクエリの結果が処理され、Index ビューに戻されると、Bing Map 上に表示されるプッシュピンとして処理されます。
+
 これでデモは終了です。Azure Search を使用してマップ ベースの ASP.NET MVC4 アプリケーションを構築する前に理解しておく必要がある主な操作をすべて説明しました。
 
 
@@ -166,4 +167,4 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 [7]: ./media/search-create-geospatial/AzureSearch-geo1-App.PNG
 [12]: ./media/search-create-geospatial/AzureSearch_Create2_CodeplexDownload.PNG
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

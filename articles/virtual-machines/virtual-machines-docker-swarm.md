@@ -21,7 +21,9 @@
 
 このトピックでは、[Docker](https://www.docker.com/) を [Swarm](https://github.com/docker/swarm) で使用して、Azure で Swarm 管理のクラスターを作成するとても簡単な方法について説明します。ここでは Azure で 4 つの仮想マシンが作成されます。1 つは Swarm マネージャーとして動作し、その他の 3 つは Docker ホストのクラスターの一部として機能します。終了すれば、Swarm を使ってクラスターを確認し、クラスター上で Docker を使用できるようになります。また、このトピックの Azure CLI 呼び出しではサービス管理 (asm) モードを使用します。
 
-> [AZURE.NOTE]こちらの記述ではソフトウェアの以前のバージョンが使用されています。大規模で、バランスがとれ、コントロールされた Docker コンテナーのクラスターを Azure で使用できるようにするため、アップデートをご確認ください。また Docker Swarm のドキュメントもご確認いただき、すべての機能をご覧ください。<!-- --> さらにこのトピックでは、異なるツールがそれぞれ独立性を保ちながら連携するしくみを示すため、**docker-machine** を*使用せずに*、docker を swarm および Azure CLI と共に使用します。**docker-machine** には **--swarm** スイッチがあり、**docker-machine** で直接 Swarm にノードを追加できます。具体例については、[docker-machine](https://github.com/docker/machine) のドキュメントを参照してください。Azure VM に対して実行している **docker-machine** がない場合は、「[Azure で docker-machine を使用する方法](virtual-machines-docker-machine.md)」を参照してください。
+> [AZURE.NOTE] こちらの記述ではソフトウェアの以前のバージョンが使用されています。大規模で、バランスがとれ、コントロールされた Docker コンテナーのクラスターを Azure で使用できるようにするため、アップデートをご確認ください。また Docker Swarm のドキュメントもご確認いただき、すべての機能をご覧ください。
+<!-- -->
+> さらにこのトピックでは、異なるツールがそれぞれ独立性を保ちながら連携するしくみを示すため、**docker-machine** を*使用せずに*、docker を swarm および Azure CLI と共に使用します。**docker-machine** には **--swarm** スイッチがあり、**docker-machine** で直接 Swarm にノードを追加できます。具体例については、[docker-machine](https://github.com/docker/machine) のドキュメントを参照してください。Azure VM に対して実行している **docker-machine** がない場合は、「[Azure で docker-machine を使用する方法](virtual-machines-docker-machine.md)」を参照してください。
 
 ## Azure 仮想マシンでの Docker ホストの作成
 
@@ -132,4 +134,4 @@ Swarm でお試しください。詳細については、[https://github.com/doc
 [docker-machine-azure]: virtual-machines-docker-machine.md
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

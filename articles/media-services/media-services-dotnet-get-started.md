@@ -22,7 +22,8 @@
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+>[AZURE.NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 このチュートリアルでは、Azure Media Services (AMS) SDK for .NET を使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順について説明します。
 
@@ -253,7 +254,8 @@ Media Services に取り込んだアセットには、メディアのエンコ�
 
 以下のコードは、エンコーディング ジョブの送信方法を示したものです。このジョブには、**Azure メディア エンコーダー**を使用して mezzanine ファイルを一連のアダプティブ ビットレート MP4 にトランスコードするよう指定するタスクが 1 つ存在します。このコードは、ジョブを送信してその完了を待機します。
 
-ジョブが完了したら、アセットをストリーミングしたり、トランスコードによって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。MP4 ファイルをプログレッシブにダウンロードするためにオンデマンド ストリーミング ユニットを取得する必要はありません。
+ジョブが完了したら、アセットをストリーミングしたり、トランスコードによって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。
+MP4 ファイルをプログレッシブにダウンロードするためにオンデマンド ストリーミング ユニットを取得する必要はありません。
 
 
 次のメソッドを Program クラスに追加します。
@@ -462,4 +464,4 @@ MPEG DASH
   [管理ポータル]: http://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

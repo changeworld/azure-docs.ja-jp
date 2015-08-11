@@ -68,7 +68,7 @@
    3. ドロップダウン リストから、**[開始時刻]** を選択します。これはスケジュールが開始する時刻です。
    4. ドロップダウン リストから、**[終了時刻]** を選択します。これはスケジュールが停止する時刻です。
    
-         > [AZURE.NOTE] Overlapping schedules are not allowed. If the start and end times will result in an overlapping schedule, you will see an error message to that effect.
+         > [AZURE.NOTE] スケジュールの重複は許可されません。開始および終了時刻が重なると、エラー メッセージが表示されます。
 
    5. **[帯域幅レート]** を指定します。これは、クラウドに関連する操作で StorSimple デバイスが使用する帯域幅 (メガ ビット/秒 (Mbps)) です。1 ～ 1,000 の値をこのフィールドで指定します。
    
@@ -176,4 +176,4 @@ StorSimple デバイスに関する次のベスト プラクティスに従っ�
 
 [StorSimple コンポーネント](storsimple-components.md)の詳細
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

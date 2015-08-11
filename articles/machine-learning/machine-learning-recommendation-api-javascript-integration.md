@@ -43,7 +43,7 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
 
 ![図面 2][2]
 
-2. もう 1 つのオプションでは、1 番目のフェーズから小さい JavaScript ファイルを使用して、推奨項目の簡単なリストを取得します。ここで受信するデータは最初のオプションよりも少なくなります。
+2.もう 1 つのオプションでは、1 番目のフェーズから小さい JavaScript ファイルを使用して、推奨項目の簡単なリストを取得します。ここで受信するデータは最初のオプションよりも少なくなります。
 
 ![図面 3][3]
 
@@ -53,7 +53,7 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
 2. &lt;dataMarketUser&gt;:&lt;dataMarketKey&gt; を base64 でエンコードします (これは基本認証で使用され、JS コードで API を呼び出すために使用できます)。
 
 
-##3.JavaScript を使用してデータ取得イベントを送信する
+##3. JavaScript を使用してデータ取得イベントを送信する
 次の手順で送信イベントを簡単に実施できます。
 
 1.	コードに JQuery ライブラリを含めます。次の URL の nuget からダウンロードできます。
@@ -78,10 +78,10 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
 		</script>
 
 
-###3.1.	制限事項とブラウザー サポート
+###3.1.制限事項とブラウザー サポート
 これはリファレンスの実装であり、そのままで提供されます。主なブラウザーすべてをサポートしています。
 
-###3.2.	イベントの種類
+###3.2.イベントの種類
 ライブラリでサポートされるイベントには、クリック、推奨クリック、ショッピング カートに追加、シッピング カートから削除、購入の 5 種類があります。ログインというユーザー コンテキストの設定に使用されるイベントもあります。
 
 ####3.2.1.クリック イベント
@@ -89,7 +89,8 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
 
 パラメーター:
 - event (文字列、必須) –"click"
-- item (文字列、必須) – 項目の一意識別子 - itemName (文字列、省略可能) – 項目の名前
+- item (文字列、必須) – 項目の一意識別子
+- itemName (文字列、省略可能) – 項目の名前
 - itemDescription (文字列、省略可能) – 項目の説明
 - itemCategory (文字列、省略可能) – 項目のカテゴリ
 		
@@ -110,8 +111,9 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
 このイベントは、ユーザーが Azure ML Recommendations から推奨項目として取得された項目をクリックするたびに使用されます。通常、ユーザーが項目をクリックすると項目の詳細を示す新しいページが開きます。このページではこのイベントがトリガーされます。
 
 パラメーター:
-event (文字列、必須) –"recommendationclick"
-- item (文字列、必須) – 項目の一意識別子 - itemName (文字列、省略可能) – 項目の名前
+- event (文字列、必須) – "recommendationclick"
+- item (文字列、必須) – 項目の一意識別子
+- itemName (文字列、省略可能) – 項目の名前
 - itemDescription (文字列、省略可能) – 項目の説明
 - itemCategory (文字列、省略可能) – 項目のカテゴリ
 - seeds (文字列配列、省略可能) – 推奨クエリを生成するシード
@@ -131,9 +133,10 @@ event (文字列、必須) –"recommendationclick"
 
 
 ####3.2.3.ショッピング カートのイベントを追加
-このイベントはユーザーがショッピング カートに項目を追加する際に使用されます。パラメーター:
+このイベントはユーザーがショッピング カートに項目を追加する際に使用されます。
+パラメーター:
 * event (文字列、必須) –"addshopcart"
-* item (文字列、必須) – 項目の一意識別子 
+* item (文字列、必須) – 項目の一意識別子
 * itemName (文字列、省略可能) – 項目の名前
 * itemDescription (文字列、省略可能) – 項目の説明
 * itemCategory (文字列、省略可能) – 項目のカテゴリ
@@ -184,8 +187,8 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 パラメーター:
 * event (文字列) –"userlogin"
 * ユーザー (文字列) – ユーザーの一意識別子。
-		<script>
-			if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = ; }
+	<script>
+		if (typeof 	AzureMLRecommendationsEvent=="undefined	") { AzureMLRecommendationsEvent = ; }
 			AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” });
 		</script>
 
@@ -203,7 +206,8 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 * includeMetadata (ブール値、省略可能) - 'true' に設定されると、メタデータ フィールドが結果に入力されます。
 * Processing function - 返された推奨を処理する関数。次の配列として、データが返されます。
 	* Item – 項目の一意の ID
-	* name – 項目名 (カタログに存在する場合) * rating – 推奨の評価
+	* name – 項目名 (カタログに存在する場合)
+	* rating – 推奨の評価
 	* metadata - 項目のメタデータを表す文字列。
 
 例: 次のコードでは、項目 "64f6eb0d-947a-4c18-a16c-888da9e228ba" の 8 つの推奨をリクエストしています (includeMetadata は指定していません - メタデータが必要ないことが暗示的に示されているため)。その後、結果をバッファにつなげます。
@@ -224,4 +228,4 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
 
-<!-----HONumber=July15_HO4-->
+<!------HONumber=July15_HO4-->

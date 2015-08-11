@@ -106,7 +106,7 @@
 前の手順では、**StorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL Database を **ADFTutorialDataFactory** という Data Factory にリンクしました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらは StorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。
 
 ### 入力テーブルの作成 
-テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **￼￼￼￼￼￼EmpBlobTable** という名前のテーブルを作成します。
+テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **EmpBlobTable** という名前のテーブルを作成します。
 
 1. Data Factory **エディター**のツール バーで **[新しいデータセット]** ボタンをクリックし、ドロップダウン メニューから **[BLOB テーブル]** をクリックします。 
 2. 右側のウィンドウの JSON スクリプトを、次の JSON スニペットに置き換えます。 
@@ -149,8 +149,8 @@
 	- **linkedServiceName** は **StorageLinkedService** に設定されています。このリンクされたサービスは手順 2. で作成しました。
 	- **folderPath** が **adftutorial** コンテナーに設定されています。フォルダー内の BLOB の名前を指定することもできます。BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
 	- format の **type** が **TextFormat** に設定されています。
-	- テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (\*\*columnDelimiter\*\*) で区切られています。	
-	- **availability** が **hourly** に設定されています (\*\*frequency\*\* は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory サービスでは、指定した BLOB コンテナー (\*\*adftutorial\*\*) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
+	- テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。	
+	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory サービスでは、指定した BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
 	
 
 	**input** **table** に **fileName** を指定しない場合、入力フォルダー (\*\*folderPath\*\*) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルを参照してください。
@@ -279,7 +279,7 @@
 	
 	start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
-	**end** プロパティの値を指定しない場合、"\*\*start + 48 hours\*\*" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。
+	**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。
 	
 	上記の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 	
@@ -513,4 +513,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=July15_HO5-->
+<!----HONumber=July15_HO5-->

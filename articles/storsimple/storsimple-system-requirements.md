@@ -138,7 +138,7 @@ StorSimple デバイス モデル 8600 には、主エンクロージャに加�
 
 StorSimple デバイスに接続されているホストの高可用性を確保するには、以下の要件とベスト プラクティスを慎重に確認してください。
 
-- [2 つのノード ファイル サーバー クラスター構成] を持つ StorSimple を構成します (https://technet.microsoft.com/library/cc731844(v=WS.10).aspx)。単一障害点を削除し、ホスト側の冗長性を構築することにより、ソリューション全体の可用性が向上します。
+- [2 つのノード ファイル サーバー クラスター構成](https://technet.microsoft.com/library/cc731844(v=WS.10).aspx) を持つ StorSimple を構成します 。単一障害点を削除し、ホスト側の冗長性を構築することにより、ソリューション全体の可用性が向上します。
 
 - ストレージ コントローラーのフェールオーバー中の高可用性を目的として、Windows Server 2012 (SMB 3.0) で利用できる継続的可用性 (CA) 共有を使用します。ファイル サーバー クラスターと Windows Server 2012 との継続的可用性の共有を構成するための追加情報については、この[ビデオ メモ](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)を参照してください。
 
@@ -192,4 +192,4 @@ StorSimple ソリューションの最適なパフォーマンスを得るため
 - [StorSimple ソリューションの展開](storsimple-deployment-walkthrough.md)
  
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

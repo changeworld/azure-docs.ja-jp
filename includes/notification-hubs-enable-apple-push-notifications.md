@@ -7,11 +7,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 1. **[Utilities]** フォルダーまたは **[Other]** フォルダーから Keychain Access ツールを実行します。
 
-2. **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
+2. **[キーチェーン アクセス]** をクリックし、**[証明書アシスタント]** を展開して、**[証明機関に証明書を要求...]** をクリックします。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
 
-3. **[User Email Address]** と **[Common Name]** を選択し、**[Saved to disk]** が選択されていることを確認して、**[Continue]** をクリックします。必要ではないため、"**CA 電子メール アドレス**" フィールドを空白のままにします。
+3. **[User Email Address]** と **[Common Name]** を選択し、**[ディスクに保存されました]** が選択されていることを確認して、**[Continue]** をクリックします。必要ではないため、"**CA 電子メール アドレス**" フィールドを空白のままにします。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-csr-info.png)
 
@@ -60,11 +60,11 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-4. 画面の下部までスクロールし、**[Development Push SSL Certificate]** セクションの **[Create Certificate]** ボタンをクリックします。
+4. 画面の下部までスクロールし、**[開発プッシュ SSL 証明書]** セクションの **[証明書を作成...]** ボタンをクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
-   	これで、[Add iOS Certificate] アシスタントが表示されます。
+   	これで、[iOS 証明書を追加] アシスタントが表示されます。
 
     > [AZURE.NOTE]このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。通知の送信と同じ証明書の種類を使用するようにします。
 
@@ -98,7 +98,7 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 
-2. **[Development]** でプロビジョニング プロファイルの種類として **[iOS App Development]** を選択し、**[Continue]** をクリックします。
+2. **[Development]** でプロビジョニング プロファイルの種類として **[iOS アプリケーション開発]** を選択し、**[Continue]** をクリックします。
 
 
 3. 次に、**[App ID (アプリ ID)]** ドロップダウン リストから作成したばかりのアプリケーション ID を選択し、**[Continue (続行)]** をクリックします。
@@ -116,7 +116,7 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-devices.png)
 
 
-6. 最後に、**[Profile Name]** でプロファイルの名前を選択し、**[Generate]** をクリックしてから、**[Done]** をクリックします。
+6. 最後に、**[プロファイル名]** でプロファイルの名前を選択し、**[Generate]** をクリックしてから、**[Done]** をクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
@@ -125,4 +125,4 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
-<!---HONumber=July15_HO4-->
+<!----HONumber=July15_HO4-->

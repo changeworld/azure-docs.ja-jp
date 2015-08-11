@@ -57,7 +57,9 @@ Slack コネクタが作成されると、ロジック アプリにアクショ�
 	![][5]
 	![][6]
 	
-5.	これで、フローで Slack コネクタを使用できるようになりました。Post Message アクションが使用できます。<br/>。![][7]
+5.	これで、フローで Slack コネクタを使用できるようになりました。Post Message アクションが使用できます。
+<br/>。
+![][7]
 
 	![][7]
 
@@ -97,4 +99,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [8]: ./media/app-service-logic-connector-slack/img8.PNG
 [9]: ./media/app-service-logic-connector-slack/img9.PNG
 
-<!---HONumber=July15_HO5-->
+<!----HONumber=July15_HO5-->

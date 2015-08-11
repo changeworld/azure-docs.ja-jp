@@ -73,7 +73,9 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソースグループ](../resource-group-overview.md)を作成します
 
-  	<!-- ![New Button](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzurePlusNew.png) -->ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
+  	<!-- ![New Button](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzurePlusNew.png) -->
+
+	ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
 
   	<!-- ![Quick Create](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonAzureStorageCreate.png) -->
 
@@ -158,7 +160,7 @@ Azure .NET SDK を使用すると、Web アプリを Azure App Service に簡単
 
   	<!-- ![Top Menu](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteTopMenu.png) -->
 
-1.  下方向へ **[アプリケーション設定]** セクションまでスクロールし、**プロジェクトを構成する**セクションで説明したように **REPOSITORY\_NAME**、**STORAGE\_NAME**、**STORAGE\_KEY** の値を設定します。
+1.  下方向へ **[アプリケーション設定]** セクションまでスクロールし、**プロジェクトを構成する**セクションで説明したように **REPOSITORY_NAME**、**STORAGE_NAME**、**STORAGE_KEY** の値を設定します。
 
   	<!-- ![App Settings](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteConfigureSettingsTableStorage.png) -->
 
@@ -215,4 +217,4 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=July15_HO4-->
+<!-----HONumber=July15_HO4-->

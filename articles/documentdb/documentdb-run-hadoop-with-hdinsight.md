@@ -85,7 +85,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 2. 左下隅にある **[+ 新規]** をクリックし、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
 	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル。][image-storageaccount-quickcreate]
 
-3. **URL** を入力し、**[場所]** および** [レプリケーション]** に値を入力して、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。 
+3. **URL** を入力し、**[場所]** および** [レプリケーション]** に値を入力して、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。
 	
 	新しいストレージ アカウントがストレージ一覧に表示されます。
 
@@ -204,7 +204,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure Stor
 	3. Azure サブスクリプションのパスワードを入力します。 
 	4. **[サインイン]** をクリックします。
 
-4. 次の図は、Azure PowerShell Scripting Environment の重要な要素を示しています。 
+4. 次の図は、Azure PowerShell Scripting Environment の重要な要素を示しています。
 
 	![図: Azure PowerShell][azure-powershell-diagram]
 
@@ -491,4 +491,4 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [powershell-install-configure]: ../install-configure-powershell.md
  
 
-<!-------HONumber=July15_HO4-->
+<!--------HONumber=July15_HO4-->

@@ -66,7 +66,7 @@
                     });
                 {
             });
-	}
+}</code></pre>
 
 <p>この insert スクリプトでは、ユーザー ID タグを使用することで、ログインしているユーザーによって作成されたすべての Windows ストア アプリケーション登録に対してプッシュ通知が (挿入された項目のテキストと共に) 送信されます。</p></li></ol>
 
@@ -92,4 +92,4 @@
 [Azure 管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO5-->
+<!----HONumber=July15_HO5-->
