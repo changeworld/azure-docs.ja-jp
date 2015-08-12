@@ -159,7 +159,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
       		}
 		}
 
-	> [AZURE.NOTE]**StartDateTime** の値を現在の 3 日前の日付に置き換え、**EndDateTime** の値を現在の日付に置き換えます。StartDateTime と EndDateTime は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。出力テーブルは毎日生成されるようスケジュール設定されているので、3 つのスライスが生成されることになります。
+	> [AZURE.NOTE]**StartDateTime** の値を現在の 3 日前の日付に置き換え、**EndDateTime** の値を現在の日付に置き換えます。StartDateTime と EndDateTime は、いずれも [ISO 形式](http://ja.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。出力テーブルは毎日生成されるようスケジュール設定されているので、3 つのスライスが生成されることになります。
 	> 
 	> JSON で**ストレージ アカウント**を実際のストレージ アカウント名に置き換えてください。
 	
@@ -353,4 +353,4 @@ Data Factory の Pig アクティビティと Hive アクティビティでは�
 [Azure Portal]: http://portal.azure.com
  
 
-<!---HONumber=July15_HO5-->
+<!------HONumber=July15_HO5-->
