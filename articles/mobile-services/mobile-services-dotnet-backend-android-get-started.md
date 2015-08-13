@@ -26,7 +26,7 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![][0]
+![][88]
 
 このチュートリアルを完了するには、Android Studio 統合開発環境と最新の Android プラットフォームを含む [Android Developer Tools][Android Studio] が必要です。このほか、Android のバージョン 4.2 以降が必要になります。
 
@@ -72,7 +72,7 @@
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
  
-	![][2]
+	![][2]  
 
 3. まだインストールしていない場合は、[Android Developer Tools][Android SDK] をダウンロードしてローカル コンピューターまたは仮想マシンにインストールします。
 
@@ -103,7 +103,7 @@
 [Next Steps]: #next-steps
 
 <!-- Images. -->
-[0]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
+[88]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
 [1]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-vs-AS.png
 [2]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-android-AS.png
 
@@ -132,4 +132,4 @@
 [管理ポータル]: https://manage.windowsazure.com/
  
 
-<!-----HONumber=July15_HO4-->
+<!-------HONumber=July15_HO4-->
