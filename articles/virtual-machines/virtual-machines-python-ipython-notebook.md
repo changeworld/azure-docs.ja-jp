@@ -112,7 +112,7 @@ IPython とその依存モジュールを Windows VM にインストールする
 
 	* `PATH` 環境変数に `C:\OpenSSL-Win32\bin` を追加する必要があります。
 
-	> [AZURE.NOTE]OpenSSL をインストールする際は、ハートブリードのセキュリティ脆弱性の修正を含む、バージョン 1.0.1g 以降のバージョンを使用してください。
+> [AZURE.NOTE]OpenSSL をインストールする際は、ハートブリードのセキュリティ脆弱性の修正を含む、バージョン 1.0.1g 以降のバージョンを使用してください。
 
 1.  次のコマンドで IPython をインストールします。
 
@@ -273,4 +273,4 @@ IPython の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 [OpenSSL]: http://slproweb.com/products/Win32OpenSSL.html
  
 
-<!----HONumber=July15_HO5-->
+<!--------HONumber=July15_HO5-->
