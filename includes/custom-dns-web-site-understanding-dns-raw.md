@@ -44,10 +44,10 @@ IP アドレスだけでなく、Web アプリの **awverify** 名と **.azurewe
 
 	![](./media/custom-dns-web-site/dncmntask-cname-6.png)
 
-	> [AZURE.NOTE]**[ドメインの管理]** が有効ではない場合、使用しているのは **Free** の Web アプリです。**Free** の Web アプリではカスタム ドメイン名を使用できません。また、App Service のプランを **Shared**、**Basic**、または **Standard**モードにアップグレードする必要があります。サイトのモードの変更方法など、App Service のプラン モードの詳細については、[Web アプリのスケールの設定方法](../articles/web-sites-scale.md)に関するページを参照してください。
+> [AZURE.NOTE]**[ドメインの管理]** が有効ではない場合、使用しているのは **Free** の Web アプリです。**Free** の Web アプリではカスタム ドメイン名を使用できません。また、App Service のプランを **Shared**、**Basic**、または **Standard**モードにアップグレードする必要があります。サイトのモードの変更方法など、App Service のプラン モードの詳細については、[Web アプリのスケールの設定方法](../articles/web-sites-scale.md)に関するページを参照してください。
 
 6. **[カスタム ドメインの管理]** ダイアログ ボックスに、**awverify** の情報、現在割り当てられている **.azurewebsites.net** ドメイン名、および仮想 IP アドレスが表示されます。DNS レコードを作成する際に使用するため、この情報を保存します。
 
 	![](./media/custom-dns-web-site/managecustomdomains.png)
 
-<!---HONumber=July15_HO4-->
+<!---------HONumber=July15_HO4-->

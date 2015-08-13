@@ -125,7 +125,7 @@
 		federation.reply=https://localhost/phpSample/index.php 
 
 
-	> [AZURE.NOTE]**audienceuris** と **realm** の値は "spn:" で始める必要があります。
+> [AZURE.NOTE]**audienceuris** と **realm** の値は "spn:" で始める必要があります。
 
 4. Eclipse で、**phpSample** プロジェクトを右クリックし、**[New]**、**[PHP File]** の順にクリックします。
 
@@ -203,4 +203,4 @@ PHP Web サイト用に Azure Active Directory とシングル サインオン�
 [Azure Active Directory 用の PHP サンプル コード]: https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/WAAD.WebSSO.PHP
  
 
-<!---HONumber=July15_HO4-->
+<!--------HONumber=July15_HO4-->

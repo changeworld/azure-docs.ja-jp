@@ -1,6 +1,7 @@
 #Web アプリに対する HTTPS を Azure App Service で有効にする
 
-> [AZURE.NOTE]より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! カスタム ドメイン名の関連付けと、Azure Cloud Services または [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) との通信の保護 (SSL) をすばやく行えます。
+> [AZURE.NOTE]
+> より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! カスタム ドメイン名の関連付けと、Azure Cloud Services または [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) との通信の保護 (SSL) をすばやく行えます。
 
 Secure Socket Layer (SSL) 暗号化を使用する HTTPS を使用して、Web アプリとブラウザー間の通信をセキュリティで保護することができます。これは、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法であり、サイトの訪問者に対し、アプリに対するトランザクションが安全であることを保証します。この記事では、Azure App Service で Web アプリに対する HTTPS を構成する方法について説明します。この記事では、クライアント証明書の認証については扱っていません。それにについては、「[How To Configure TLS Mutual Authentication for Web Apps (Web アプリ用に TLS 相互認証を構成する方法)](../articles/app-service-web/app-service-web-configure-tls-mutual-auth.md)」(英語) を参照してください。
 
@@ -394,8 +395,10 @@ Visual Studio がインストールされている Windows システムからテ
 3.	**[Web Apps]** ブレードをクリックします。
 4.	Web アプリの名前をクリックします。
 5.	**[要点]** ページで **[設定]** をクリックします。
-6.	**[スケール]** をクリックします。![[スケール] タブ][scale]
-7.	**[スケール]** セクションで、**[選択]** をクリックして、App Service プランのモードを設定します。![The Pricing tier][sslreserved]
+6.	**[スケール]** をクリックします。
+	![[スケール] タブ][scale]
+7.	**[スケール]** セクションで、**[選択]** をクリックして、App Service プランのモードを設定します。
+	![The Pricing tier][sslreserved]
 
 	> [AZURE.NOTE]"Web アプリ '&lt;アプリ名&gt;' のスケールの構成に失敗しました" というエラーが発生する場合は、詳細ボタンを使用して詳細情報を表示できます。"この要求を満たす、利用可能な標準インスタンス サーバーが足りません。" というエラーが発生する場合があります。このエラーが発生した場合は、[Azure のサポート オプション](/support/options/)にお問い合わせください。
 
@@ -409,9 +412,11 @@ Visual Studio がインストールされている Windows システムからテ
 3.	**[Web Apps]** ブレードをクリックします。
 4.	Web アプリの名前をクリックします。
 5.	**[要点]** ページで **[設定]** をクリックします。	
-6.	**[カスタム ドメインと SSL]** をクリックします。![The config tab][sslconfig]
+6.	**[カスタム ドメインと SSL]** をクリックします。
+	![The config tab][sslconfig]
 7.	**[証明書]** セクションで、**[アップロード]** をクリックします。
-8.	**[証明書をアップロードします]** ダイアログを使用して、IIS マネージャーまたは OpenSSL によって既に作成されている .pfx 証明書ファイルを選択します。.pfx ファイルをセキュリティ保護するために使用されたパスワードがある場合、それを指定します。最後に、**[保存]** をクリックして、証明書をアップロードします。![ssl upload][ssluploadcert]
+8.	**[証明書をアップロードします]** ダイアログを使用して、IIS マネージャーまたは OpenSSL によって既に作成されている .pfx 証明書ファイルを選択します。.pfx ファイルをセキュリティ保護するために使用されたパスワードがある場合、それを指定します。最後に、**[保存]** をクリックして、証明書をアップロードします。
+	![ssl upload][ssluploadcert]
 9. **[SSL の設定]** タブの **[SSL バインド]** セクションで、ドロップダウン リストから、SSL で保護するドメイン名と使用する証明書を選択します。さらに、[[Server Name Indication]][sni] (SNI)、または IP ベースの SSL のどちらを使用するかを選択できます。
 
 	![SSL のバインディング][sslbindings]
@@ -541,4 +546,4 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
 
-<!---HONumber=July15_HO5-->
+<!-------HONumber=July15_HO5-->

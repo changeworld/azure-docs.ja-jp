@@ -127,7 +127,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 		├── mkdirp@0.3.5
 		└── commander@1.3.2 (keypress@0.1.0)
 
-	> [AZURE.NOTE]express モジュールのインストール時に "-g" パラメーターを使用すると、モジュールはグローバルにインストールされます。これは、追加のパス情報を入力することなく ___express___ コマンドにアクセスして、Web アプリのスキャフォールディングを生成できるようにするためです。
+> [AZURE.NOTE]express モジュールのインストール時に "-g" パラメーターを使用すると、モジュールはグローバルにインストールされます。これは、追加のパス情報を入力することなく ___express___ コマンドにアクセスして、Web アプリのスキャフォールディングを生成できるようにするためです。
 
 4. このアプリケーションで使用するスキャフォールディングを作成するには、**express** コマンドを使用します。
 
@@ -572,4 +572,4 @@ MongoDB をセキュリティ保護する方法については、「[MongoDB Sec
 [mongodbonazure]: http://docs.mongodb.org/ecosystem/tutorial/install-mongodb-on-linux-in-azure/
  
 
-<!-----HONumber=July15_HO4-->
+<!------------HONumber=July15_HO4-->

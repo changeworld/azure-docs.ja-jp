@@ -191,16 +191,16 @@ Data Factory パイプラインを定義するための JSON 要素の詳細に�
 ### オンプレミスのファイル システムのリンクされたサービスの作成
 次のサンプル JSON を使用すると、**OnPremisesFileSystemLinkedService** 型の **FolderDataStore** という名前のリンクされたサービスを作成できます。
 
-	{
-	    "name": "FolderDataStore",
-	    "properties": {
-	        "type": "OnPremisesFileSystemLinkedService",
-	        "host": "\\contoso",
-	        "userId": "username",
-	        "password": "password",
-	        "gatewayName": "ContosoGateway"
-	    }
-	}
+		{
+		    "name": "FolderDataStore",
+		    "properties": {
+		        "type": "OnPremisesFileSystemLinkedService",
+		        "host": "\\contoso",
+		        "userId": "username",
+		        "password": "password",
+		        "gatewayName": "ContosoGateway"
+		    }
+		}
 
 > [AZURE.NOTE]JSON ファイル内ではホストとフォルダーの名前にエスケープ文字 (\) を使用してください。たとえば、**\Contoso** の場合は、**\\Contoso** のように指定します。
 
@@ -491,4 +491,4 @@ Data Factory パイプラインを定義するための JSON 要素の詳細に�
 [adf-copyactivity]: data-factory-copy-activity.md
 [copy-activity-video]: http://azure.microsoft.com/documentation/videos/introducing-azure-data-factory-copy-activity/
 
-<!---HONumber=July15_HO4-->
+<!--------HONumber=July15_HO4-->

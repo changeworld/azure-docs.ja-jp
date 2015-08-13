@@ -23,7 +23,7 @@ BizTalk XPath Extract コネクタは、指定された XPath に基づいて XM
 ##BizTalk XPath Extractor の使用
 1. BizTalk XPath Extractor を使用するには、まず、BizTalk XPath Extractor API アプリのインスタンスを作成する必要があります。これは、ロジック アプリの作成時にインラインで作成するか、または Azure Marketplace から BizTalk XPath Extractor API アプリを選択することによって作成できます。
 
-	>[AZURE.NOTE]
+	>[AZURE.NOTE] BizTalk Xpath Extractor に関連付けられた構成設定はありません
 2. [新しいロジック アプリを作成します]。作成した Logic App で [トリガーとアクション] を選択して Logic Apps デザイナーを開き、フローを構成します。
 3. デザイナーの右側のウィンドウに、フローの作成に使用できる API Logic Apps が一覧表示されます。"BizTalk XPath Extractor" を検索します。これを選択すると、フローに Xpath Extractor が追加され、そのインスタンスがプロビジョニングされます。
 2. プロビジョニングが終わると、デザイナーに BizTalk XPath Extractor API App に関連付けられたアクションが表示されます。
@@ -63,4 +63,4 @@ BizTalk XPath Extract コネクタは、指定された XPath に基づいて XM
 <!-- Links -->
 [新しいロジック アプリを作成します]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=July15_HO4-->
+<!-------HONumber=July15_HO4-->

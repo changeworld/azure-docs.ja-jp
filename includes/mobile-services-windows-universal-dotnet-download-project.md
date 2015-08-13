@@ -21,4 +21,7 @@
 
 6. 手順 3 と 4 を繰り返して、サンプルが同じように動作することを確認します。
 
-<!----HONumber=July15_HO4-->
+<!-- URLs. -->
+[デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkID=510826
+
+<!--------HONumber=July15_HO4-->

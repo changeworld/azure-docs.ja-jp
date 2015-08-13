@@ -41,14 +41,14 @@
 
 > [AZURE.NOTE]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started)を参照してください。
 
-[AZURE.INCLUDE [Notification Hubs による Apple プッシュ通知の有効化](../../includes/notification-hubs-enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [通知ハブ による Apple プッシュ通知の有効化](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 ##通知ハブを構成する
 
 このセクションは、作成したプッシュ証明書を使用して、新しい通知ハブを作成して構成する方法について説明します。既に作成した通知ハブを使用する場合は、2 ～ 5 の手順を省略できます。
 
 
-1. Keychain Access で、**[証明書]** カテゴリで作成した新しいプッシュ証明書を右クリックします。**[エクスポート]** をクリックし、ファイルに名前を付けて、**[.p12]** 形式を選択します。次に、**[保存]** をクリックします。
+1. キーチェーン アクセス で、**[証明書]** カテゴリで作成した新しいプッシュ証明書を右クリックします。**[エクスポート]** をクリックし、ファイルに名前を付けて、**[.p12]** 形式を選択します。次に、**[保存]** をクリックします。
 
     ![][1]
 
@@ -512,4 +512,4 @@ iOS でのプッシュ通知をテストするには、デバイスにアプリ�
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
  
 
-<!---HONumber=July15_HO5-->
+<!--------HONumber=July15_HO5-->

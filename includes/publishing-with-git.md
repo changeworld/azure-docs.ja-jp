@@ -206,7 +206,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: Unable to access '[siteURL]': Failed to connect to [scmAddress]
+**症状**: '[siteURL]' にアクセスできません: [scmAddress] に接続できませんでした
 
 **原因**: このエラーは Web アプリが実行されていない場合に発生する可能性があります。
 
@@ -215,7 +215,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: Couldn't resolve host 'hostname'
+**症状**: ホスト 'hostname' を解決できませんでした
 
 **原因**: このエラーは、"azure" リモートを作成するときに入力したアドレス情報が間違っている場合に発生します。
 
@@ -223,7 +223,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: No refs in common and none specified; doing nothing.Perhaps you should specify a branch such as 'master'.
+**症状**: refs がなく、何も指定されていません。何も処理を行いません。'master' などの分岐を指定する必要があるものと思われます.
 
 **原因**: このエラーは、git push 操作を実行するときに分岐を指定せず、Git で使用される push.default 値を設定していない場合に発生します。
 
@@ -233,7 +233,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 
 ****
 
-**症状**: src refspec [branchname] does not match any.
+**症状**: src refspec [branchname] と一致するものがありません。
 
 **原因**: このエラーは、"azure" リモートの master 以外の分岐にプッシュしようとした場合に発生します。
 
@@ -300,4 +300,4 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
 [Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=July15_HO4-->
+<!-------HONumber=July15_HO4-->
