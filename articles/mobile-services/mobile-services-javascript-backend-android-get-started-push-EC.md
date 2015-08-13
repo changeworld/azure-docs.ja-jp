@@ -212,4 +212,4 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
  
 
-<!---------HONumber=July15_HO4-->
+<!----------HONumber=July15_HO4-->
