@@ -1,4 +1,13 @@
-< プロパティ pageTitle「構成強制トンネリングを Microsoft Azure VPN ゲートウェイ」の説明の = ="仮想ネットワークの間のクロスプレミス VPN ゲートウェイを使用していればリダイレクトしたり、インターネット宛てのすべてのトラフィックを内部設置型の場所に「強制」できます。"サービス"vpn gateway"documentationCenter = ="na"作成者"cherylmc"manager = ="jdial"エディター"tysonn"=/>
+<properties 
+   pageTitle="構成強制トンネリングを Microsoft Azure VPN ゲートウェイ"
+   description="仮想ネットワークの間のクロスプレミス VPN ゲートウェイを使用していればリダイレクトしたり、インターネット宛てのすべてのトラフィックを内部設置型の場所に「強制」できます。"
+   services="vpn-gateway"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="jdial"
+   editor="tysonn" />
+
+
 <tags 
    ms.service="vpn-gateway"
    ms.devlang="na"
