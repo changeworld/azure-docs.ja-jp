@@ -12,8 +12,8 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.topic="hero-article"
+	ms.date="08/05/2015"
 	ms.author="sdanie"/>
 
 # Azure API Management での最初の API の管理
@@ -107,7 +107,8 @@ API は API パブリッシャー ポータルから構成されます。この�
 
 電卓 API を構成するには、次の手順を実行します。
 
-1. **[URL から]** をクリックし、**http://calcapi.cloudapp.net/calcapi.json** を **[仕様ドキュメント URL]** テキスト ボックスに入力し、**[Swagger]** ラジオ ボタンをクリックします。2. **[Web API URL サフィックス]** テキスト ボックスに **calc** と入力します。
+1. **[URL から]** をクリックし、****http://calcapi.cloudapp.net/calcapi.json** を **[仕様ドキュメント URL]** テキスト ボックスに入力し、**[Swagger]** ラジオ ボタンをクリックします。
+2. **[Web API URL サフィックス]** テキスト ボックスに **calc** と入力します。
 3. **[製品 (オプション)]** ボックスをクリックし、**[スターター]** を選択します。
 4. **[保存]** をクリックして、API をインポートします。
 
@@ -243,4 +244,4 @@ API および操作とともにサンプルの説明とパラメーターがイ�
 [api-management-]: ./media/api-management-get-started/api-management-.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

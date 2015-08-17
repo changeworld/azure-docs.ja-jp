@@ -53,4 +53,4 @@
 
  [1]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

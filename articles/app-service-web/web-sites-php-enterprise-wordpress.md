@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="web"
-	ms.date="04/29/2015"
+	ms.date="08/03/2015"
 	ms.author="tomfitz"/>
 
 #Azure App Service のエンタープライズ クラスの WordPress
@@ -165,11 +165,11 @@ BLOB ストレージは、既定では複数のリージョンにまたがって
 
 	2. WordPress バックアップで **wp-config.php** ファイルを見つけて、エディターで開きます。以下のエントリを新しい MySQL データベースの情報に変更します。
 
-		* **DB_NAME** - データベースのユーザー名
+		* **DB\_NAME** - データベースのユーザー名
 
-		* **DB_USER** - データベースへのアクセスに使用するユーザー名
+		* **DB\_USER** - データベースへのアクセスに使用するユーザー名
 
-		* **DB_PASSWORD** - ユーザーのパスワード
+		* **DB\_PASSWORD** - ユーザーのパスワード
 
 		これらのエントリを変更したら、**wp-config.php** ファイルを保存して閉じます。
 
@@ -184,7 +184,7 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 目的 | 方法
 ------------- | -----------
 **App Service プランのモード、サイズを設定し、スケーリングを有効化する** | [Azure App Service での Web アプリのスケール][websitescale]
-**永続的なデータベース接続の有効化** <p>既定では、WordPress は永続的なデータベース接続を使用しないため、複数接続を実行すると、データベースへの接続が制限される場合があります。</p> | <ol><li><p><strong>wp-includes/wp-db.php</strong> ファイルを編集します。</p></li><li><p>。次の行を見つけます。</p><code>$this->dbh = mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags );</code></li><li><p>前の行を次の行に置き換えます。</p><code>$this->dbh = mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword, $client_flags ); <br/>if ( false !== $error_reporting ) { /br/>&nbsp;&nbsp;error_reporting( $error_reporting ); <br/>} </code></li><li><p>次の行を見つけます。</p><code>$this->dbh = @mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new_link, $client_flags ); </code></li><li><p>上記の行を次の行に置き換えます。</p><code>$this->dbh = @mysql_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword, $client_flags ); </code></li><li><p><strong>wp-includes/wp-db.php</strong> ファイルを保存し、サイトを再デプロイします。</p></li></ol><div class="wa-note"><span class="wa-icon-bulb"></span><p>これらの変更は、WordPress が更新されると上書きされる可能性があります。</p><p>。WordPress の既定値である自動更新は、<strong>wp-config.php</strong> ファイルを編集し、 <code>define ( 'WP_AUTO_UPDATE_CORE', false );</code></p><p> を追加することで無効化できます。更新プログラムをアドレス指定する別の方法として、<strong>wp db.php</strong> ファイルを監視する Web ジョブ を使用し、ファイルが更新されるたびに、上記の変更を実行する方法があります。詳細については、<a href="http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx">WebJobs についての紹介記事</a>をご覧ください。</p></div>
+**永続的なデータベース接続の有効化** <p>既定では、WordPress は永続的なデータベース接続を使用しないため、複数接続を実行すると、データベースへの接続が制限される場合があります。</p> | <ol><li><p><strong>wp-includes/wp-db.php</strong> ファイルを編集します。</p></li><li><p>。次の行を見つけます。</p><code>$this->dbh = mysql\_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new\_link, $client\_flags );</code></li><li><p>前の行を次の行に置き換えます。</p><code>$this->dbh = mysql\_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword, $client\_flags ); <br/>if ( false !== $error\_reporting ) { /br/>&nbsp;&nbsp;error\_reporting( $error\_reporting ); <br/>} </code></li><li><p>次の行を見つけます。</p><code>$this->dbh = @mysql\_connect( $this->dbhost, $this->dbuser, $this->dbpassword, $new\_link, $client\_flags ); </code></li><li><p>上記の行を次の行に置き換えます。</p><code>$this->dbh = @mysql\_pconnect( $this->dbhost, $this->dbuser, $this->dbpassword, $client\_flags ); </code></li><li><p><strong>wp-includes/wp-db.php</strong> ファイルを保存し、サイトを再デプロイします。</p></li></ol><div class="wa-note"><span class="wa-icon-bulb"></span><p>これらの変更は、WordPress が更新されると上書きされる可能性があります。</p><p>。WordPress の既定値である自動更新は、<strong>wp-config.php</strong> ファイルを編集し、 <code>define ( 'WP\_AUTO\_UPDATE\_CORE', false );</code></p><p> を追加することで無効化できます。更新プログラムをアドレス指定する別の方法として、<strong>wp db.php</strong> ファイルを監視する Web ジョブ を使用し、ファイルが更新されるたびに、上記の変更を実行する方法があります。詳細については、<a href="http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx">WebJobs についての紹介記事</a>をご覧ください。</p></div>
 **パフォーマンスの向上** | <ul><li><p><a href="http://ppe.blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx">ARR クッキーの無効化</a> - 複数の Web Apps インスタンス </p></li><li><p>キャッシュの有効化で WordPress を実行している場合に、パフォーマンスを向上させる方法です。<a href="http://msdn.microsoft.com/library/azure/dn690470.aspx">Redis Cache</a> (プレビュー) は、<a href="https://wordpress.org/plugins/redis-object-cache/">WordPress プラグインの Redis Object Cache</a> で使用できます。また、<a href="/gallery/store/">Azure ストア</a></p></li><li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">から入手できる他のキャッシュ オファリングも使用できます。WordPress を WinCache で高速化する方法</a> - WinCache は既定で Web Apps 用に有効になっています。</p></li><li><p><a href="../web-sites-scale/">Azure App Service の Web アプリの規模の設定</a>を実施し、<a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB High Availability ルーティング</a>か <a href="http://www.mysql.com/products/cluster/">MySQL Cluster CGE</a></p></li></ul> を使用します。
 **ストレージ用 BLOB の使用** | <ol><li><p><a href="../storage-create-storage-account/">Azure のストレージ アカウントの作成</a></p></li><li><p><a href="../cdn-how-to-use/">コンテンツ配信ネットワーク (CDN) を使用する</a> 方法を理解し、BLOB を用いて地理的に分散したデータ保存を実施します。</p></li><li><p><a href="https://wordpress.org/plugins/windows-azure-storage/">Azure Storage for WordPress プラグイン</a>をインストールし、構成します。</p><p>このプラグインに関する詳細な設定と構成の情報については、<a href="http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx">ユーザー ガイド</a>をご覧ください。</p> </li></ol>
 **電子メールの有効化** | <ol><li><p><a href="/gallery/store/sendgrid/sendgrid-azure/">Azure ストアで SendGrid を有効にします。</a></p></li><li><p><a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">WordPress 用の SendGrid プラグインをインストールします。</a></p></li></ol>
@@ -283,4 +283,4 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 [cdn]: ../cdn-how-to-use.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,19 +1,6 @@
-<properties 
-	pageTitle="Azure Search サービス REST API バージョン 2014-10-20-Preview" 
-	description="Azure Search サービス REST API バージョン 2014-10-20-Preview" services="search" 
-	documentationCenter="" 
-	authors="HeidiSteen" 
-	manager="mblythe" 
-	editor="" />
+<properties pageTitle="Azure Search サービス REST API バージョン 2014-10-20-Preview" description="Azure Search サービス REST API バージョン 2014-10-20-Preview" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor="" />
 
-<tags 
-	ms.service="search" 
-	ms.devlang="rest-api" 
-	ms.workload="search" 
-	ms.topic="article"  
-	ms.tgt_pltfrm="na" 
-	ms.date="07/22/2015" 
-	ms.author="heidist" />
+<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="07/22/2015" ms.author="heidist" />
 
 # Azure Search サービス REST API バージョン 2014-10-20-Preview #
 
@@ -1468,4 +1455,4 @@ Suggestions 要求はターゲット ドキュメントの検索候補を示す�
 
     GET /indexes/hotels/docs/suggest?search=lux&$top=5&suggesterName=sg&api-version=2014-10-20-Preview
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

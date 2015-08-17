@@ -128,10 +128,10 @@ Java サンプル コードの全体について説明します。後続のセ�
 もちろん、実際に以前の Java コード サンプルを実行するには、実際の値を接続文字列に入力して、プレース ホルダーを置き換える必要があります。
 
 
-- your_server
-- your_database
-- your_user
-- your_password
+- your\_server
+- your\_database
+- your\_user
+- your\_password
 
 
 ## テーブルに 2 つの行を挿入します
@@ -144,7 +144,7 @@ Java サンプル コードの全体について説明します。後続のセ�
  - 後で、**id** キーの値に自動的に生成される値を取得できるようにパラメーター `Statement.RETURN_GENERATED_KEYS` を含めます。
 2. `PreparedStatement` オブジェクトの `execute` メソッドを呼び出します。
 3. `PreparedStatement` オブジェクトを使用して、プライマリ キーに自動的に生成される数値を取得します。
- - これは Person テーブルの **id** 列の AUTO_INCREMENT 仕様に関連しています。
+ - これは Person テーブルの **id** 列の AUTO\_INCREMENT 仕様に関連しています。
 
 
 この短い Java セグメントをコメント `// INSERT two rows into the table.` が表示されているプライマリ コード サンプルにコピー アンド ペーストします。
@@ -225,4 +225,4 @@ Java サンプル コードの全体について説明します。後続のセ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

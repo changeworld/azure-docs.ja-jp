@@ -144,4 +144,4 @@ API バージョン `2015-02-28` は SLA でサポートされています。[�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

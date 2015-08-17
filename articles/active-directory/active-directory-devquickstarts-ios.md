@@ -48,12 +48,12 @@ iOS のリダイレクト URI の形式は次のとおりです。
 - 	**aap-scheme**: これは XCode プロジェクトに登録されています。他のアプリケーションから呼び出す方法を示します。これは、Info.plist、URL types、URL ID の順に探すと見つかります。まだ 1 つも構成していない場合は作成する必要があります。
 - 	**bundle-id**: XCode プロジェクトの設定の "identity" の下にある Bundle Identifier です。
 	
-この QuickStart コードの例は ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart*** のようになります。
+この QuickStart コードの例は次のようになります。******msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
 ## *2.DirectorySearcher アプリケーションを登録する*
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
--	Microsoft Azure 管理ポータルにサインインします。
+-	Microsoft Azure の管理ポータルにサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
@@ -136,7 +136,7 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 
 ```
 
-- 次に、このトークンを使用して、グラフでユーザーを検索する必要があります。`// TODO: implement SearchUsersList` コメントを検索します。このメソッドは、指定された検索用語で UPN が始まるユーザーを照会するための GET 要求を Azure AD Graph API に対して実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access_token を含める必要があります。この処理を ADAL が実行します。
+- 次に、このトークンを使用して、グラフでユーザーを検索する必要があります。`// TODO: implement SearchUsersList` コメントを検索します。このメソッドは、指定された検索用語で UPN が始まるユーザーを照会するための GET 要求を Azure AD Graph API に対して実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access\_token を含める必要があります。この処理を ADAL が実行します。
 
 ```ObjC
 +(void) searchUserList:(NSString*)searchString
@@ -225,4 +225,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -24,9 +24,9 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 <a name="ExistingModel"></a>
 ## 既存のデータベース モデルを調査する
 
-このチュートリアルでは、モバイル サービスによって作成されたデータベースを使用しますが、作成される既定のモデルは使用しません。代わりに、手元にある既存のアプリケーションを表す任意のモデルを手動で作成します。オンプレミス データベースへの接続方法の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスからオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
+このチュートリアルでは、モバイル サービスによって作成されたデータベースを使用しますが、作成される既定のモデルは使用しません。代わりに、手元にある既存のアプリケーションを表す任意のモデルを手動で作成します。内部設置型データベースへの接続方法の詳細については、「[ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)」を参照してください。
 
-1. 開始するには、**Visual Studio 2013 Update 2** で Mobile Services サーバー プロジェクトを作成するか、または [Azure 管理ポータル](http://manage.windowsazure.com)で、サービスの [Mobile Service] タブでダウンロード可能なクイック スタート プロジェクトを使用します。このチュートリアルでは、サーバー プロジェクト名が **ShoppingService** という名前であると仮定します。
+1. 開始するには、**Visual Studio 2013 Update 2** で Mobile Services サーバー プロジェクトを作成するか、または [Azure 管理ポータル](http://manage.windowsazure.com)で、サービスの [モバイル サービス] タブでダウンロード可能なクイック スタート プロジェクトを使用します。このチュートリアルでは、サーバー プロジェクト名が **ShoppingService** という名前であると仮定します。
 
 2. **Customer.cs** ファイルを **Models** フォルダーに作成して、次の実装を使用します。**System.ComponentModel.DataAnnotations** へのアセンブリ参照をプロジェクトに追加する必要があります。
 
@@ -469,7 +469,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
             }
         }
 
-    この例では、**InsertAsync** と **UpdateAsync** メソッドに注目します。これらのメソッドで、それぞれの **Order** に関連付けられた有効な **Customer** を必要とするリレーションシップを適用します。**InsertAsync** では、**Order.CustomerId** プロパティにマッピングされた **MobileOrder.CustomerId** プロパティに入力することが確認できます。この値は、一致する **MobileOrder.MobileCustomerId** で **Customer** を検索することで取得します。その理由は、既定でクライアントが認識するのは、**Customer** の Mobile Services の ID (MobileOrder.MobileCustomerId) だけであり、この ID は、外部キー (MobileOrder.CustomerId) を **Order** から **Customer** に設定するのに必要な実際のプライマリ キーとは異なるためです。これは、挿入操作を容易にするために、このサービスの内部でのみ使用されます。
+    この例では、**InsertAsync** と **UpdateAsync** メソッドに注目します。これらのメソッドで、それぞれの **Order** に関連付けられた有効な **Customer** を必要とするリレーションシップを適用します。**InsertAsync** では、**Order.CustomerId** プロパティにマッピングされた **MobileOrder.CustomerId** プロパティに入力することが確認できます。この値は、一致する **MobileOrder.MobileCustomerId** で **Customer** を検索することで取得します。その理由は、既定でクライアントが認識するのは、**Customer** の Mobile Services の ID (**MobileOrder.MobileCustomerId**) だけであり、この ID は、外部キー (**MobileOrder.CustomerId**) を **Order** から **Customer** に設定するのに必要な実際のプライマリ キーとは異なるためです。これは、挿入操作を容易にするために、このサービスの内部でのみ使用されます。
 
 これで、DTO をクライアントに公開するコントローラーを作成する準備ができました。
 
@@ -615,4 +615,4 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
 次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。詳細については、[既存のアプケーションへの Mobile Services の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md#update-the-app-to-use-the-mobile-service)を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

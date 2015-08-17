@@ -158,4 +158,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

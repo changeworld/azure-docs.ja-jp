@@ -161,9 +161,9 @@
 
 	クラスで定義されたカテゴリが返されます。
 
-1. App.xaml.cs ファイルを開き、**async** 修飾子を **Application_Launching** メソッドに追加します。
+1. App.xaml.cs ファイルを開き、**async** 修飾子を **Application\_Launching** メソッドに追加します。
 
-2. **Application_Launching** メソッドで、「[Notification Hubs の使用]」で追加した Notification Hubs 登録コード見つけて、次のコード行に置き換えます。
+2. **Application\_Launching** メソッドで、「[Notification Hubs の使用]」で追加した Notification Hubs 登録コード見つけて、次のコード行に置き換えます。
 
 		await notifications.SubscribeToCategories(notifications.RetrieveCategories());
 
@@ -259,4 +259,4 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

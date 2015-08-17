@@ -2,7 +2,7 @@
 	pageTitle="エラスティック データベース ジョブの概要" 
 	description="エラスティック データベース ジョブ サービスの説明" 
 	services="sql-database" 
-	documentationCenter="" 
+	documentationCenter=""  
 	manager="jeffreyg" 
 	authors="sidneyh"/>
 
@@ -15,9 +15,9 @@
 	ms.date="06/25/2015" 
 	ms.author="sidneyh" />
 
-# Elastic Database ジョブの概要
+# エラスティック データベース ジョブの概要
 
-**Elastic Database ジョブ** (プレビュー) を使用すると、[エラスティック データベース プール (プレビュー)](sql-database-elastic-pool.md) のすべてのデータベースに対して T-SQL スクリプト (ジョブ) を実行できます。たとえば、すべてのデータベース内のスキーマを簡単に更新して新しいテーブルを含めることができます。通常、T-SQL ステートメントを実行するか、その他の管理タスクを実行するには、各データベースに個別に接続する必要があります。**Elastic Database ジョブ**は、各データベースの実行の状態のログ記録中に、ログインとスクリプトの実行タスクを処理します。プレビューをインストール手順については、「[Elastic Database ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。
+**エラスティック データベース ジョブ** (プレビュー) を使用すると、[エラスティック データベース プール (プレビュー)](sql-database-elastic-pool.md) のすべてのデータベースに対して T-SQL スクリプト (ジョブ) を実行できます。たとえば、すべてのデータベース内のスキーマを簡単に更新して新しいテーブルを含めることができます。通常、T-SQL ステートメントを実行するか、その他の管理タスクを実行するには、各データベースに個別に接続する必要があります。**エラスティック データベース ジョブ**は、各データベースの実行の状態のログ記録中に、ログインとスクリプトの実行タスクを処理します。プレビューをインストール手順については、「[エラスティック データベース ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。
 
 ![エラスティック データベース ジョブ][1]
 
@@ -35,10 +35,10 @@
 
 ## ジョブの動作のしくみ
 
-1.	エラスティック データベース ジョブで使用されるサービスをインストールする「[Elastic Database ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。インストールが失敗した場合は、「[アンインストールする方法](sql-database-elastic-jobs-uninstall.md)」をご覧ください。
+1.	エラスティック データベース ジョブで使用されるサービスをインストールする「[エラスティック データベース ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。インストールが失敗した場合は、「[アンインストールする方法](sql-database-elastic-jobs-uninstall.md)」をご覧ください。
 2.	[各データベースにユーザーを追加して](sql-database-elastic-jobs-add-logins-to-dbs.md)ジョブ実行の エラスティック データベース プールを構成します。
 3.	プール内のすべてのデータベースに対して実行できるべき等 T-SQL スクリプトを作成します。
-4.	「[Elastic Database ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」の手順に従い、スクリプトを実行します。 
+4.	「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」の手順に従い、スクリプトを実行します。 
 
 ## コンポーネントと価格 
 
@@ -58,4 +58,4 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

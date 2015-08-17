@@ -123,4 +123,4 @@ Azure Search ではユーザーがキーを使用してドキュメントを参�
 以上です。今後のコンテンツについてアイデアやご意見をお持ちの場合、内容をハッシュタグ #AzureSearch を付けてツイートするか、[UserVoice ページ](http://feedback.azure.com/forums/263029-azure-search)で送信できます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

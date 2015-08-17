@@ -36,4 +36,4 @@ Service Fabric は、高信頼アクター API と高信頼サービス API と�
 - [高信頼アクター API についての詳細](service-fabric-reliable-actors-introduction.md)
 - [高信頼サービス API についての詳細](../Service-Fabric/service-fabric-reliable-services-introduction.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

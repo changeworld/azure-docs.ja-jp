@@ -1,4 +1,4 @@
-<properties pageTitle="Oracle 仮想マシンのイメージに関するその他の考慮事項" description="Microsoft Azure へ Oracle 仮想マシンを導入する前に、さらに多くの考慮事項について説明します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<properties title="Miscellaneous Considerations for Oracle Virtual Machine Images" pageTitle="Oracle 仮想マシンのイメージに関するその他の考慮事項" description="Microsoft Azure へ Oracle 仮想マシンを導入する前に、さらに多くの考慮事項について説明します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
 <tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 #Oracle 仮想マシンのイメージに関するその他の考慮事項
 この項では、オペレーティング システムとして Windows Server を利用し、Microsoft 提供の Oracle ソフトウェア イメージに基づく Oracle 仮想マシンを Azure で実行することに関する考慮事項について説明します。
@@ -87,4 +87,4 @@ Oracle Data Guard では、1 つの VM にプライマリ データベース、�
 ##その他のリソース
 [Azure 用の Oracle 仮想マシンのイメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

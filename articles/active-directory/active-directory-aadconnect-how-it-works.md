@@ -18,9 +18,13 @@
 
 # Azure AD Connect の動作
 
-<div class="dev-center-tutorial-selector sublanding">
-<a href="../active-directory-aadconnect/" title="概要">概要</a> <a href="../active-directory-aadconnect-how-it-works/" title="動作" class="current">動作</a> <a href="../active-directory-aadconnect-get-started/" title="使用">使用</a> <a href="../active-directory-aadconnect-whats-next/" title="次の手順">次の手順</a> <a href="../active-directory-aadconnect-learn-more/" title="詳細情報">詳細情報</a>
-</div>
+ > [AZURE.SELECTOR]
+- [What is It](../active-directory-aadconnect/)
+- [How it Works](../active-directory-aadconnect-how-it-works/)
+- [Getting Started](../active-directory-aadconnect-get-started/)
+- [What's Next](../active-directory-aadconnect-whats-next/) 
+- [Learn More](../active-directory-aadconnect-learn-more/)
+
 Azure Active Directory Connect は 3 つの主要な部分で構成されます。この 3 つの部分とは、同期サービス、オプションの Active Directory フェデレーション サービス、および [Azure AD Connect Health](https://msdn.microsoft.com/library/azure/dn906722.aspx) を使用して行う監視です。
 
 
@@ -48,4 +52,4 @@ Azure Active Directory Connect は 3 つの主要な部分で構成されます�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

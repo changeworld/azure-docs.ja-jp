@@ -110,4 +110,4 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

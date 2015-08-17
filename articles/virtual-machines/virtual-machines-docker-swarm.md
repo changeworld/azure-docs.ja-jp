@@ -134,4 +134,4 @@ Swarm でお試しください。詳細については、[https://github.com/doc
 [docker-machine-azure]: virtual-machines-docker-machine.md
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

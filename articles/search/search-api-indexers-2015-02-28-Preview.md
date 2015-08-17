@@ -775,4 +775,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

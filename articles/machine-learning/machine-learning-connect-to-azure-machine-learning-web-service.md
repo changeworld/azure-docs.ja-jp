@@ -82,7 +82,7 @@ ML Web サービスに接続するには、**Microsoft.AspNet.WebApi.Client** Nu
 **Microsoft.AspNet.WebApi.Client Nuget in Visual Studio をインストールする**
 
 1. 「UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」Web サービスを発行します。
-2. **[ツール]**、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+2. **[ツール]** > **[Nuget パッケージ マネージャー]** > **[Package Manager Console]** をクリックします。
 2. **[Install-Package Microsoft.AspNet.WebApi.Client]** を選択します。
 
 **サンプル コードを実行するには**
@@ -106,4 +106,4 @@ Azure ML Web サービスに接続するには、ScoreData を渡す **urllib2**
 	
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

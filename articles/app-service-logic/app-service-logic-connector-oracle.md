@@ -57,10 +57,10 @@ Service Bus の接続文字列 | はい | オンプレミスに接続する場�
 ストアド プロシージャ | いいえ | コネクタで呼び出すことができるデータベースのストアド プロシージャを入力します。たとえば、「*IsEmployeeEligible,CalculateOrderDiscount*」と入力します。
 関数 | いいえ | コネクタで呼び出すことができるデータベースの関数を入力します。たとえば、「*IsEmployeeEligible,CalculateOrderDiscount*」と入力します。
 パッケージ エンティティ | いいえ | コネクタで呼び出すことができるデータベースのパッケージを入力します。たとえば、「*PackageOrderProcessing.CompleteOrder,PackageOrderProcessing.GenerateBill*」と入力します。
-データを使用できるステートメント | いいえ | 任意のデータをポーリングに使用できるかどうかを判断するステートメントを入力します。たとえば、「*SELECT * from table_name*」と入力します。
+データを使用できるステートメント | いいえ | 任意のデータをポーリングに使用できるかどうかを判断するステートメントを入力します。たとえば、「*SELECT * from table\_name*」と入力します。
 ポーリングの種類 | いいえ | ポーリングの種類を入力します。入力可能な値は、"Select"、"Procedure"、"Function"、"Package" です。
-ポーリング ステートメント | いいえ | Oracle Server Database をポーリングするステートメントを入力します。たとえば、「*SELECT * from table_name*」と入力します。
-ポスト ポーリング ステートメント | いいえ | ポーリング後に実行するステートメントを入力します。たとえば、「*DELETE * from table_name*」と入力します。
+ポーリング ステートメント | いいえ | Oracle Server Database をポーリングするステートメントを入力します。たとえば、「*SELECT * from table\_name*」と入力します。
+ポスト ポーリング ステートメント | いいえ | ポーリング後に実行するステートメントを入力します。たとえば、「*DELETE * from table\_name*」と入力します。
 
 5. 完了すると、パッケージの設定は次のようになります。<br/> ![][1]
 
@@ -115,4 +115,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [11]: ./media/app-service-logic-connector-oracle/LogicApp7.png
 [12]: ./media/app-service-logic-connector-oracle/LogicApp8.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

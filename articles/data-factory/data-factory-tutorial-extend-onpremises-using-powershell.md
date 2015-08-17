@@ -72,14 +72,14 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 最初に、SQL Server データベース、テーブル、ユーザー定義型、およびストアド プロシージャを作成する必要があります。これらは **MarketingCampaignEffectiveness** の結果を Azure BLOB から SQL Server データベースに移動するために使用されます。
 
-1.	**エクスプローラー**で、**C:\ADFWalkthrough** (またはサンプルを展開した場所) にある **OnPremises** サブフォルダーに移動します。
+1.	**エクスプローラー**で、**C:\\ADFWalkthrough** (またはサンプルを展開した場所) にある **OnPremises** サブフォルダーに移動します。
 2.	お好みのエディターで **prepareOnPremDatabase&Table.ps1** を開き、強調表示部分を自分の SQL Server 情報に置き換え、ファイルを保存します (**SQL 認証**の詳細を入力してください)。このチュートリアルのために、データベースの SQL 認証を有効にします。 
 			
 		$dbServerName = "<servername>"
 		$dbUserName = "<username>"
 		$dbPassword = "<password>"
 
-3. **Azure PowerShell** で、**C:\ADFWalkthrough\OnPremises** フォルダーに移動します。
+3. **Azure PowerShell** で、**C:\\ADFWalkthrough\\OnPremises** フォルダーに移動します。
 4.	**prepareOnPremDatabase&Table.ps1** を実行します **(& を二重引用符で囲むか、以下のようにします)**。
 			
 		& '.\prepareOnPremDatabase&Table.ps1'
@@ -106,7 +106,8 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 7.	データベースには「**MarketingCampaigns**」と入力します。 
 8.	**[資格情報]** をクリックします。 
 9.	**[資格情報]** ブレードで、**[ここをクリックして安全に資格情報を設定する]** をクリックします。
-10.	これにより、ワンクリック アプリケーションが初めてインストールされ、**[資格情報の設定] ダイアログ ボックスが開きます。11.	**[資格情報の設定]** ダイアログ ボックスで、**[ユーザー名]** と **[パスワード]** を入力し、**[OK]** をクリックします。ダイアログ ボックスが閉じるまで待ちます。 
+10.	これによりワンクリック アプリケーションが初めてインストールされ、**[資格情報の設定]** ダイアログ ボックスが起動します。
+11.	**[資格情報の設定]** ダイアログ ボックスで、**[ユーザー名]** と **[パスワード]** を入力し、**[OK]** をクリックします。ダイアログ ボックスが閉じるまで待ちます。 
 12.	**[新しいデータ ストア]** ブレードで、**[OK]** をクリックします。 
 13.	**[リンクされたサービス]** ブレードで、**OnPremSqlLinkedService** が一覧に表示され、リンク サービスの **[状態]** が **[良好]** であることを確認します。
 
@@ -114,7 +115,7 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 ### 内部設置型の論理テーブルを作成する
 
-1.	**Azure PowerShell** で、**C:\ADFWalkthrough\OnPremises** フォルダーに移動します。 
+1.	**Azure PowerShell** で、**C:\\ADFWalkthrough\\OnPremises** フォルダーに移動します。 
 2.	**New-AzureDataFactoryTable** コマンドレットを使用して、次のように **MarketingCampaignEffectivenessOnPremSQLTable.json** のテーブルを作成します。
 
 			
@@ -170,4 +171,4 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -61,15 +61,15 @@
 
 - [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/ms174283.aspx)
 - DBCC SHRINKLOG
-- DBCC PDW_SHOWEXECUTIONPLAN
-- DBCC PDW_SHOWPARTITIONSTATS
-- DBCC PDW_SHOWSPACEUSED
-- [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)
+- DBCC PDW\_SHOWEXECUTIONPLAN
+- DBCC PDW\_SHOWPARTITIONSTATS
+- DBCC PDW\_SHOWSPACEUSED
+- [DBCC SHOW\_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)
 
 ## クエリ ステートメント
 
 - [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)
-- [WITH common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
+- [WITH common\_table\_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 - [EXCEPT and INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
 - EXPLAIN
 - [FROM](https://msdn.microsoft.com/library/ms177634.aspx)
@@ -127,4 +127,4 @@
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

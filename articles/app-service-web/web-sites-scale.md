@@ -199,4 +199,4 @@ Web アプリのモードに応じて、次の開発者向け機能を使用で�
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

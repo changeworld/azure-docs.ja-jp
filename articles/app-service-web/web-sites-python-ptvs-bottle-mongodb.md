@@ -98,7 +98,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  [Microsoft Azure 管理ポータル]で **[Marketplace]** をクリックし、先ほど作成した MongoLab サービスをクリックします。
 
-1.  **[接続文字列]** をクリックします。コピーボタンを使用すると、**MONGOLAB_URI** の値をクリップボードに取得できます。
+1.  **[接続文字列]** をクリックします。コピーボタンを使用すると、**MONGOLAB\_URI** の値をクリップボードに取得できます。
 
   	<!--![Connection Info Dialog](./media/web-sites-python-ptvs-bottle-mongodb/PollsCommonMongoLabConnectionInfo.png) -->
 
@@ -128,17 +128,17 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 MongoDB データベースの照会と編集には、[RoboMongo] などのアプリケーションを使用できます。このセクションでは、RoboMongo を使用して投票アプリケーションのデータベースの内容を表示します。
 
-1.  新しい接続を作成します。前のセクションで取得した **MONGOLAB_URI** が必要となります。
+1.  新しい接続を作成します。前のセクションで取得した **MONGOLAB\_URI** が必要となります。
 
     URI の形式は、`mongodb://<name>:<password>@<address>:<port>/<name>` です。
 
     名前は、Azure でサービスを作成したときに入力した名前と一致します。この名前が、データベース名とユーザー名の両方に使用されます。
 
-1.  接続ページで、**[Name]** に接続の任意の名前を指定します。また、**[Address]** フィールドと **[Port]** フィールドに、**MONGOLAB_URI** の *address* と *port* を設定します。
+1.  接続ページで、**[Name]** に接続の任意の名前を指定します。また、**[Address]** フィールドと **[Port]** フィールドに、**MONGOLAB\_URI** の *address* と *port* を設定します。
 
   	![Connection Settings ダイアログ](./media/web-sites-python-ptvs-bottle-mongodb/PollsCommonRobomongoCreateConnection1.png)
 
-1.  認証ページで、**[Database]** と **[User name]** に、**MONGOLAB_URI** の *name* を設定します。また、**[Password]** に **MONGOLAB_URI** の *password* を設定します。
+1.  認証ページで、**[Database]** と **[User name]** に、**MONGOLAB\_URI** の *name* を設定します。また、**[Password]** に **MONGOLAB\_URI** の *password* を設定します。
 
   	![Connection Settings ダイアログ](./media/web-sites-python-ptvs-bottle-mongodb/PollsCommonRobomongoCreateConnection2.png)
 
@@ -183,7 +183,7 @@ Azure .NET SDK を使用すると、Web アプリケーションを Azure に簡
 
   	<!-- ![Top Menu](./media/web-sites-python-ptvs-bottle-mongodb/PollsCommonWebSiteTopMenu.png) -->
 
-1.  **[アプリ設定]** セクションまで下にスクロールし、前のセクションの説明に従って、**REPOSITORY_NAME**、**MONGODB_HOST**、**MONGODB_DATABASE** の各値を設定します。
+1.  **[アプリ設定]** セクションまで下にスクロールし、前のセクションの説明に従って、**REPOSITORY\_NAME**、**MONGODB\_HOST**、**MONGODB\_DATABASE** の各値を設定します。
 
   	<!-- ![App Settings](./media/web-sites-python-ptvs-bottle-mongodb/PollsCommonWebSiteConfigureSettingsMongoDB.png) -->
 
@@ -239,4 +239,4 @@ Python Tools for Visual Studio、Bottle および MongoDB の詳細について�
 [クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

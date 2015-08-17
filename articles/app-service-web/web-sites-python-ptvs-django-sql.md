@@ -139,7 +139,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  ソリューション エクスプローラーで、**[Python 環境]** の下にある仮想環境を右クリックし、**[Python パッケージのインストール]** を選択します。
 
-1.  **easy_install** を使用してパッケージ `pyodbc` をインストールします。
+1.  **easy\_install** を使用してパッケージ `pyodbc` をインストールします。
 
   	![Install Python Package ダイアログ](./media/web-sites-python-ptvs-django-sql/PollsDjangoSqlInstallPackagePyodbc.png)
 
@@ -221,4 +221,4 @@ Python Tools for Visual Studio、Django および SQL Database の詳細につ�
 [SQL Database]: /documentation/services/sql-database/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

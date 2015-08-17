@@ -11,7 +11,7 @@
 
 		start HybridConnectionManager.msi
  
-7. インストーラーの実行後、**[後で]** をクリックし、%ProgramFiles%\Microsoft\HybridConnectionManager フォルダーに移動して、HCMConfigWizard.exe を実行し、**[ユーザー アカウント制御]** ダイアログ ボックスで **[はい]** をクリックします。
+7. インストーラーの実行後、**[後で]** をクリックし、%ProgramFiles%\\Microsoft\\HybridConnectionManager フォルダーに移動して、HCMConfigWizard.exe を実行し、**[ユーザー アカウント制御]** ダイアログ ボックスで **[はい]** をクリックします。
 		
 7. 先ほどコピーしたハイブリッド接続文字列を貼り付け、**[OK]** をクリックします。
 	
@@ -25,4 +25,4 @@
 	
 	![Connected Status](./media/app-service-hybrid-connections-manager-install/D10HCStatusConnected.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

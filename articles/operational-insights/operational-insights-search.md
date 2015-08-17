@@ -467,7 +467,7 @@ Microsoft System Center の Operations Manager に慣れている場合、Where 
 
 filterExpression | command1 | command2 …
 
-フィルター式 (\*\*filterExpression\*\*) は、クエリの "where" 条件を定義します。コマンドは、クエリによって返された結果に適用されます。複数のコマンドは、パイプ文字 (|) で区切る必要があります。
+フィルター式 (**filterExpression**) は、クエリの "where" 条件を定義します。コマンドは、クエリによって返された結果に適用されます。複数のコマンドは、パイプ文字 (|) で区切る必要があります。
 
 #### 一般的な構文の例
 
@@ -523,7 +523,7 @@ filterExpression | command1 | command2 …
 
 システム内のすべてのデータは **TimeGenerated** プロパティを持っています。これはレコードの元の日付と時刻を表します。データの種類によっては、さらに多くの日付/時刻フィールドを持つことができます (たとえば **LastModified**)。
 
-Operational Insights のタイムライン グラフ/タイムセレクターは、**TimeGenerated** フィールドに基づいて、(実行されている現在のクエリに従って) 時間の経過による結果の分布を示します。日付/時刻フィールドには、クエリを特定の期間に制限するためにクエリ内で使用できる文字列の形式があります。相対的な期間 (たとえば "3 日前と 2 時間前の間") を参照する構文を使用することもできます。
+Operational Insights のタイムライン グラフ/タイムセレクターは、**TimeGenerated** フィールドに基づいて、(実行されている現在のクエリに従って) 時間の経過による結果の分布を示します。 日付/時刻フィールドには、クエリを特定の期間に制限するためにクエリ内で使用できる文字列の形式があります。相対的な期間 (たとえば "3 日前と 2 時間前の間") を参照する構文を使用することもできます。
 
 構文:
 
@@ -631,9 +631,9 @@ MILLISECOND、MILLISECONDS、MILLI、MILLIS|現在のミリ秒に丸めるか、
 
 **構文**
 
-*field:value*
+field:value
 
-*field=value*
+field=value
 
 **説明**
 
@@ -652,15 +652,15 @@ MILLISECOND、MILLISECONDS、MILLI、MILLIS|現在のミリ秒に丸めるか、
 
 **構文**
 
-*field>value*
+field>value
 
-*field<value*
+field<value
 
-*field>=value*
+field>=value
 
-*field<=value*
+field<=value
 
-*field!=value*
+field!=value
 
 **説明**
 
@@ -673,7 +673,7 @@ MILLISECOND、MILLISECONDS、MILLI、MILLIS|現在のミリ秒に丸めるか、
 
 **構文**
 
-*field:[from..to]*
+field:[from..to]
 
 **説明**
 
@@ -765,7 +765,7 @@ system "Windows Server" OR Severity:1|system AND ("Windows Server" OR Severity:1
 
 #### Measure
 
-**Measure** コマンドは、生の検索結果に統計関数を適用するために使用されます。これは、データの *グループ別*の表示を取得するときに非常に役立ちます。**Measure** コマンドを使用すると、Operational Insights では、集計結果が表で示されます。
+**Measure** コマンドは、生の検索結果に統計関数を適用するために使用されます。これは、データの "グループ別" の表示を取得するときに非常に役立ちます。**Measure** コマンドを使用すると、Operational Insights では、集計結果が表で示されます。
 
 構文:
 
@@ -777,7 +777,7 @@ system "Windows Server" OR Severity:1|system AND ("Windows Server" OR Severity:1
 結果を **groupField** 別に集計し、集計されたメジャー値を **aggregatedField** を使用して計算します。
 
 
-<table border="1" cellspacing="4" cellpadding="4"><table> <tr> <th>Measure 統計関数</th> <th>説明</th> </tr> <tr> <td> <p><em>aggregateFunction</em> </p> <p></p> </td> <td> <p>集計関数の名前 (大文字と小文字の区別あり)。次の集計関数がサポートされます。</p> <ul> <li class="unordered">COUNT<br><br></li> <li class="unordered">MAX<br><br></li> <li class="unordered">MIN<br><br></li> <li class="unordered">SUM<br><br></li> <li class="unordered">AVG<br><br></li> <li class="unordered">STDDEV<br><br></li> </ul> </td> </tr> <tr> <td> <p><em>aggregatedField</em> </p> </td> <td> <p>集計されるフィールド。このフィールドは COUNT 集計関数では省略可能ですが、SUM、MAX、MIN、AVG、または STDDEV では既存の数値フィールドである必要があります。</p> </td> </tr> <tr> <td> <p><em>fieldAlias</em> </p> </td> <td> <p>計算される集計値の別名 (省略可能)。指定がない場合、フィールド名は <em>AggregatedValue になります。</em></p> </td> </tr> <tr> <td> <p><em>groupField</em> </p> </td> <td> <p>結果セットをグループ化するために使用されるフィールドの名前。</p> </td> </tr> <tr> <td> <p><em>Interval</em> </p> </td> <td> <p>次の書式の期間。</p> <p><em>nnnNAME</em> </p> <p></p> <p>ここで: </p> <p>nnn は正の整数</p> <p><em>NAME</em> は期間名</p> <p>サポートされる期間名 (大文字と小文字の区別あり): </p> <ul> <li class="unordered">MILLISECOND[S]<br><br></li> <li class="unordered">SECOND[S]<br><br></li> <li class="unordered">MINUTE[S]<br><br></li> <li class="unordered">HOUR[S]<br><br></li> <li class="unordered">DAY[S]<br><br></li> <li class="unordered">MONTH[S]<br><br></li> <li class="unordered">YEAR[S]<br></li> </ul> </td> </tr> </table>
+<table border="1" cellspacing="4" cellpadding="4"><table> <tr> <th>Measure 統計関数</th> <th>説明</th> </tr> <tr> <td> <p><em>aggregateFunction</em> </p> <p></p> </td> <td> <p>集計関数の名前 (大文字と小文字の区別あり)。次の集計関数がサポートされます。</p> <ul> <li class="unordered">COUNT<br><br></li> <li class="unordered">MAX<br><br></li> <li class="unordered">MIN<br><br></li> <li class="unordered">SUM<br><br></li> <li class="unordered">AVG<br><br></li> <li class="unordered">STDDEV<br><br></li> </ul> </td> </tr> <tr> <td> <p><em>aggregatedField</em> </p> </td> <td> <p>集計されるフィールド。このフィールドは COUNT 集計関数では省略可能ですが、SUM、MAX、MIN、AVG、または STDDEV では既存の数値フィールドである必要があります。</p> </td> </tr> <tr> <td> <p><em>fieldAlias</em> </p> </td> <td> <p>計算される集計の別名 (省略可能)。指定がない場合、フィールド名は <em>AggregatedValue になります。</em></p> </td> </tr> <tr> <td> <p><em>groupField</em> </p> </td> <td> <p>結果セットをグループ化するために使用されるフィールドの名前。</p> </td> </tr> <tr> <td> <p><em>Interval</em> </p> </td> <td> <p>次の書式の期間。</p> <p><em>nnnNAME</em> </p> <p></p> <p>ここで: </p> <p>nnn は正の整数</p> <p><em>NAME</em> は間隔名</p> <p>サポートされる間隔名 (大文字と小文字の区別あり): </p> <ul> <li class="unordered">MILLISECOND[S]<br><br></li> <li class="unordered">SECOND[S]<br><br></li> <li class="unordered">MINUTE[S]<br><br></li> <li class="unordered">HOUR[S]<br><br></li> <li class="unordered">DAY[S]<br><br></li> <li class="unordered">MONTH[S]<br><br></li> <li class="unordered">YEAR[S]<br></li> </ul> </td> </tr> </table>
 
 
 
@@ -809,7 +809,7 @@ BY 句は省略されたが (2 番目の構文として) 期間が指定され�
 
 *説明*
 
-前の例と同じですが、 集計フィールドの別名 (\*\*AlertsPerHour\*\*) が使用されています。
+前の例と同じですが、 集計フィールドの別名 (**AlertsPerHour**) が使用されています。
 
 **例 4**
 
@@ -849,7 +849,7 @@ PerfHourly を ObjectId によってグループ化し、平均 (avg) を計算�
 
 *説明*
 
-前の例と同じですが、**Sum** が使用されています。
+前の例と同じですが、**sum** が使用されています。
 
 **例 9**
 
@@ -857,7 +857,7 @@ PerfHourly を ObjectId によってグループ化し、平均 (avg) を計算�
 
 *説明*
 
-前の例と同じですが、**STDDEV** が使用されています。
+前の例と同じですが、**stddev** が使用されています。
 
 **例 10**
 
@@ -2041,12 +2041,12 @@ PerfHourly を ObjectId によってグループ化し、平均 (avg) を計算�
 </table>
 
 ## ブログ記事 - 検索機能の使用例
-- [Microsoft Azure オペレーション インサイトでの W3C IIS ログ検索](http://blogs.msdn.com/b/dmuscett/archive/2014/09/20/w3c-iis-logs-search-in-system-center-advisor-limited-preview.aspx)
-- [Azure オペレーション インサイトの検索とダッシュボードで SQL バックアップ エラーを監視する](http://blogs.msdn.com/b/dmuscett/archive/2015/02/21/monitoring-sql-backup-failures-with-azure-operational-insights-search-and-dashboards.aspx)
-- [IIS 管理パックのイベント アラート ルールでオペレーション インサイトの検索と同等の処理を行う](http://blogs.msdn.com/b/dmuscett/archive/2014/11/05/iis-mp-event-alerting-rules-s-opinsights-searches-equivalents.aspx)
-- [オペレーション インサイトの便利な検索クエリ集](http://blogs.msdn.com/b/dmuscett/archive/2014/10/19/advisor-searches-collection.aspx)
+- [Microsoft Azure Operational Insights での W3C IIS ログ検索](http://blogs.msdn.com/b/dmuscett/archive/2014/09/20/w3c-iis-logs-search-in-system-center-advisor-limited-preview.aspx)
+- [Azure Operational Insights の検索とダッシュボードを使用した SQL バックアップ エラーの監視](http://blogs.msdn.com/b/dmuscett/archive/2015/02/21/monitoring-sql-backup-failures-with-azure-operational-insights-search-and-dashboards.aspx)
+- [IIS Management Pack のイベント アラート ルールに相当する Operational Insights の検索](http://blogs.msdn.com/b/dmuscett/archive/2014/11/05/iis-mp-event-alerting-rules-s-opinsights-searches-equivalents.aspx)
+- [Operational Insights の便利な検索クエリ集](http://blogs.msdn.com/b/dmuscett/archive/2014/10/19/advisor-searches-collection.aspx)
 
 ## その他のリソース
 Stefan Roth が、使いやすい検索チート シートを作成しています。詳しくは彼の[ブログ](http://stefanroth.net/2014/11/05/microsoft-azure-operational-insights-search-data-explorer-cheat-sheet/)を参照してください。チート シートをダウンロードできます。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

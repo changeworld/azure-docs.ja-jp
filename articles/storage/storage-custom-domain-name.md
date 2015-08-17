@@ -32,32 +32,11 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 
 次の表は、**mystorageaccount** というストレージ アカウントの BLOB データにアクセスするためのサンプル URL を示します。ストレージ アカウントに登録されているカスタム ドメインは **www.contoso.com** です。
 
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-	<tbody>
-		<tr>
-			<td style="width: 100px;"><strong>リソースの種類</strong></td>
-			<td><strong>URL の形式</strong></td>
-		</tr>
-		<tr>
-			<td>ストレージ アカウント</td>
-			<td><strong>既定の URL:</strong> http://mystorageaccount.blob.core.windows.net<br />
-			<strong>カスタム ドメインの URL:</strong> http://www.contoso.com</td>
-		</tr>
-		<tr>
-			<td>BLOB</td>
-			<td><strong>既定の URL:</strong> http://mystorageaccount.blob.core.windows.net/mycontainer/myblob<br /><strong>カスタム ドメインの URL:</strong> http://www.contoso.com/mycontainer/myblob</td>
-		</tr>
-		<tr>
-			<td>ルート コンテナー</td>
-			<td><strong>既定の URL:</strong> http://mystorageaccount.blob.core.windows.net/myblob 
-			<br/>または<br />
-			http://mystorageaccount.blob.core.windows.net/$root/myblob<br />
-			<strong>カスタム ドメインの URL:</strong> http://www.contoso.com/myblob
-			<br/>または<br />
-			http://www.contoso.com/$root/myblob</td>
-		</tr>
-	</tbody>
-</table>
+リソースの種類|URL の形式
+---|---
+ストレージ アカウント|**既定の URL:** http://mystorageaccount.blob.core.windows.net<p>**カスタム ドメインの URL:**http://www.contoso.com</td>
+BLOB|**既定の URL:** http://mystorageaccount.blob.core.windows.net/mycontainer/myblob<p>**カスタム ドメインの URL:**http://www.contoso.com/mycontainer/myblob
+ルート コンテナー|**既定の URL:** http://mystorageaccount.blob.core.windows.net/myblobかhttp://mystorageaccount.blob.core.windows.net/$root/myblob<p>**カスタム ドメインの URL:**http://www.contoso.com/myblob もしくは http://www.contoso.com/$root/myblob
 
 ## ストレージ アカウントのカスタム ドメインの登録
 
@@ -138,4 +117,4 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 -   <a href="http://msdn.microsoft.com/library/azure/gg680307.aspx">CDN コンテンツをカスタム ドメインにマッピングする方法</a>
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

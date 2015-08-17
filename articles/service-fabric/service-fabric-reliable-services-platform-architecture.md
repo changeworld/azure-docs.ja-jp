@@ -92,4 +92,4 @@ Service Fabric の詳細については、次の項目を参照してくださ�
 [Reliable Service の構成](../Service-Fabric/service-fabric-reliable-services-configuration.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

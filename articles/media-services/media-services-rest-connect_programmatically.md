@@ -60,9 +60,9 @@ REST API から直接 Media Services にアクセスするには、ACS からア
 	
 **本文**:
 
-この要求の本文で、client_id と client_secret の値を指定する必要があります。client_id と client_secret はそれぞれ、AccountName と AccountKey の値に対応します。Media Services では、アカウントを設定したときにこれらの値が提供されます。
+この要求の本文で、client\_id と client\_secret の値を指定する必要があります。client\_id と client\_secret はそれぞれ、AccountName と AccountKey の値に対応します。Media Services では、アカウントを設定したときにこれらの値が提供されます。
 
-Media Services アカウントの AccountKey は、アクセス トークン要求で client_secret 値として使用されるときは URL エンコード ([Percent-Encoding](http://tools.ietf.org/html/rfc3986#section-2.1) を参照) されている必要があります。
+Media Services アカウントの AccountKey は、アクセス トークン要求で client\_secret 値として使用されるときは URL エンコード ([Percent-Encoding](http://tools.ietf.org/html/rfc3986#section-2.1) を参照) されている必要があります。
 
 	grant_type=client_credentials&client_id=ams_account_name&client_secret=URL_encoded_ams_account_key&scope=urn%3aWindowsAzureMediaServices
 
@@ -93,9 +93,9 @@ Media Services アカウントの AccountKey は、アクセス トークン要�
 	}
 	
 
->[AZURE.NOTE]"access_token " と "expires_in " の値は外部ストレージに保存することをお勧めします。後でそのストレージからトークンのデータを取り出し、Media Services REST API コールで再利用できます。これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
+>[AZURE.NOTE]"access\_token " と "expires\_in " の値は外部ストレージに保存することをお勧めします。後でそのストレージからトークンのデータを取り出し、Media Services REST API コールで再利用できます。これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
 
-アクセス トークンの "expires_in" 値を確認し、必要に応じて新しいトークンで REST API コールを更新してください。
+アクセス トークンの "expires\_in" 値を確認し、必要に応じて新しいトークンで REST API コールを更新してください。
 
 ###Media Services URI への接続
 
@@ -167,4 +167,4 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 
 <!-- URLs. -->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

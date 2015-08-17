@@ -160,4 +160,4 @@ Notification Hubs の詳細については、次のトピックを参照して�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

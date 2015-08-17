@@ -220,4 +220,4 @@ Azure Websites を開発して公開する詳細については、「[Creating W
 [キュー ストレージ]: storage-python-how-to-use-queue-storage.md
 [BLOB ストレージ]: storage-python-how-to-use-blob-storage.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

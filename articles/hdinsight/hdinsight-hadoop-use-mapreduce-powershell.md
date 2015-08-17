@@ -104,7 +104,7 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 
 ##<a id="results"></a>ジョブの出力の表示
 
-MapReduce ジョブは Azure BLOB ストレージの操作の結果を、ジョブの引数として指定された **wasb:///example/data/WordCountOutput** パスに格納しました。Azure BLOB ストレージは Azure PowerShell からアクセスできますが、ストレージ アカウント名、キー、ファイルに直接アクセスするために HDInsight クラスターが使用するコンテナーの情報が必要です。
+MapReduce ジョブは Azure BLOB ストレージの操作の結果を、ジョブの引数として指定された ****wasb:///example/data/WordCountOutput** パスに格納しました。Azure BLOB ストレージは Azure PowerShell からアクセスできますが、ストレージ アカウント名、キー、ファイルに直接アクセスするために HDInsight クラスターが使用するコンテナーの情報が必要です。
 
 これらの情報は次の Azure PowerShell コマンドレットを使用して取得できます。
 
@@ -113,7 +113,7 @@ MapReduce ジョブは Azure BLOB ストレージの操作の結果を、ジョ�
 * **Get-AzureStorageBlob**: コンテキスト オブジェクトとコンテナー名を指定することで、コンテナー内の BLOB の一覧を返します。
 * **Get-AzureStorageBlobContent**: **Get-AzureHDinsightCluster** から返されるコンテキスト オブジェクト、ファイル パス、ファイル名、コンテナー名を指定することで、Azure BLOB ストレージからファイルをダウンロードします。
 
-次の例では、**wasb:///example/data/WordCountOutput** からストレージ情報を取得し、出力をダウンロードします。**CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
+次の例では、****wasb:///example/data/WordCountOutput** からストレージ情報を取得し、出力をダウンロードします。**CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
 
 		#Login to your Azure subscription
 		# Is there an active Azure subscription?
@@ -143,7 +143,7 @@ MapReduce ジョブは Azure BLOB ストレージの操作の結果を、ジョ�
 
 > [AZURE.NOTE]この例では、スクリプトが実行されるディレクトリにある **example/data/WordCountOutput** フォルダーにダウンロードしたファイルを格納します。
 
-MapReduce ジョブの出力は *part-r-#####* という名前のファイルに格納されます。テキスト エディターで **example/data/WordCountOutput/part-r-00000** ファイルを開き、ジョブによって生成された文字と回数を確認します。
+MapReduce ジョブの出力は *part-r-\#\#\#\#\#* という名前のファイルに格納されます。テキスト エディターで **example/data/WordCountOutput/part-r-00000** ファイルを開き、ジョブによって生成された文字と回数を確認します。
 
 > [AZURE.NOTE]MapReduce ジョブの出力ファイルは変更できません。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
@@ -173,4 +173,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

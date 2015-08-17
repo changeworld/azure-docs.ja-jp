@@ -32,4 +32,4 @@
 
 2. モバイル サービス プロジェクトを Azure に対して再発行します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

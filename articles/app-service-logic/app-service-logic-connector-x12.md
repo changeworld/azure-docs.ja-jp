@@ -65,28 +65,11 @@ BizTalk X12 コネクタを使用するには、まず、BizTalk X12 コネク�
 
 	![エンコードの構成][10]
 
-<table>
-	<tr>
-		<th>パラメーター</th>
-		<th>型</th>
-		<th>パラメーターの説明</th>
-	</tr>
-	<tr>
-		<td>コンテンツ</td>
-		<td>文字列</td>
-		<td>XML メッセージ</td>
-	</tr>
-	<tr>
-		<td>契約 ID</td>
-		<td>文字列</td>
-		<td>契約 ID</td>
-	</tr>
-	<tr>
-		<td>Is Batched Message</td>
-		<td>文字列</td>
-		<td>バッチ処理されたメッセージである</td>
-	</tr>
-</table>
+パラメーター|型|パラメーターの説明
+---|---|---
+コンテンツ|文字列|XML メッセージ
+契約 ID|文字列|契約 ID
+Is Batched Message|文字列|バッチ処理されたメッセージである
 
 このアクションは、X12 ペイロードを含むオブジェクトを返します。
 
@@ -109,4 +92,4 @@ BizTalk X12 コネクタを使用するには、まず、BizTalk X12 コネク�
 [10]: ./media/app-service-logic-connector-x12/EncodeConfigured.PNG
 [11]: ./media/app-service-logic-connector-x12/TriggerSettings.PNG
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -154,4 +154,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、「[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)」を参照してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

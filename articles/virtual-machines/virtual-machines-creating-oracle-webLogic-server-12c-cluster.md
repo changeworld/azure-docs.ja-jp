@@ -1,19 +1,5 @@
-<properties 
-	pageTitle="Azure で Oracle WebLogic Server 12c クラスターを作成する" 
-	description="例として Microsoft Azure で Oracle WebLogic Server 12c クラスターを作成します。" 
-	services="virtual-machines" 
-	authors="bbenz" 
-	documentationCenter=""/>
-
-<tags 
-	ms.service="virtual-machines" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="infrastructure-services" 
-	ms.date="06/22/2015" 
-	ms.author="bbenz" />
-
+<properties title="Creating an Oracle WebLogic Server 12c cluster in Azure" pageTitle="Azure で Oracle WebLogic Server 12c クラスターを作成する" description="例として Microsoft Azure で Oracle WebLogic Server 12c クラスターを作成します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 #Azure で Oracle WebLogic Server 12c クラスターを作成する
 次の例は、Windows Server 2012 で実行しているマイクロソフト提供の Oracle WebLogic Server 12c のイメージに基づいて、Azure で Oracle WebLogic Server クラスターを作成する方法を示しています。
 
@@ -113,7 +99,7 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 	2. **[新しいサーバーの作成]** ダイアログ:
 
-		1. **[サーバー名]** に最初の管理対象サーバーの名前を入力します。たとえば\*\*、MYVM2-MANAGED。\*\*
+		1. **[サーバー名]** に最初の管理対象サーバーの名前を入力します。たとえば**、MYVM2-MANAGED。**
 
 		2. **[サーバー リッスン アドレス]** に同じ名前を入力します。
 
@@ -191,7 +177,7 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 	6. コマンド プロンプトの現在のディレクトリを **C:\\Oracle\\Middleware\\Oracle\_Home\\user\_projects\\domains\\base\_domain\\bin** に変更します。
 
-	7. start<<\*MACHINENAME\*>>.cmd を実行します。<<\*MACHINENAME\*>> には管理対象コンピューターの名前を指定します。たとえば、**startMYVM2-MANAGED** です。
+	7. start<<*MACHINENAME*>>.cmd を実行します。<<*MACHINENAME*>> には管理対象コンピューターの名前を指定します。たとえば、**startMYVM2-MANAGED** です。
 
 	8. メッセージが表示されたら、WebLogic Server のユーザー名とパスワードを入力します。
 
@@ -204,13 +190,14 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 16. 管理対象仮想マシンの負荷分散エンドポイント セットを作成します。
 
 	1. [Azure ポータル](https://ms.portal.azure.com/)の **[仮想マシン]** セクションで、最初の管理対象仮想マシン (**MYVM2-MANAGED** など) を選択します。
+
 	2. **[設定]**、**[エンドポイント]**、**[追加]** の順にクリックします。
 
 	3. エンドポイントの名前を指定し、プロトコルに**「TCP」**を指定し、パブリック ポート**「80」**とプライベート ポート**「7008」**を指定します。 残りのオプションはそのままにします。
 
 	4. **[負荷分散セットの作成]** チェック ボックスをオンにし、続いて **[完了]** をクリックします。
 
-	5. 負荷分散セットの名前を指定し、他のパラメーターは既定値をそのまま使用し、続いて **[完了] をクリックします。\*\*
+	5. 負荷分散セットの名前を指定し、他のパラメーターは既定値をそのまま使用し、続いて **[完了]** をクリックします。
 
 17. 仮想マシンのエンドポイントを作成します。
 
@@ -319,4 +306,4 @@ Azure で手に入る Oracle WebLogic Server 12c イメージを使って、管�
 
 - [Microsoft Azure で Linux を使用する Oracle WebLogic Server 12c](http://www.oracle.com/technetwork/middleware/weblogic/learnmore/oracle-weblogic-on-azure-wp-2020930.pdf)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

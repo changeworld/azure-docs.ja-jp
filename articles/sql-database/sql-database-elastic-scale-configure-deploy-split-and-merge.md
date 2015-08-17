@@ -1,7 +1,8 @@
 <properties
-	pageTitle="Elastic Database Split-Merge ツールに関するチュートリアル | Microsoft Azure"
-	description="Elastic Database ツールによる分割とマージ"
-	services="sql-database" documentationCenter=""  
+	pageTitle="エラスティック データベース Split-Merge ツールに関するチュートリアル | Microsoft Azure"
+	description="エラスティック データベース ツールによる分割とマージ"
+	services="sql-database" 
+	documentationCenter=""  
 	manager="jeffreyg"
 	authors="sidneyh"/>
 
@@ -14,7 +15,7 @@
 	ms.date="07/14/2015"
 	ms.author="sidneyh" />
 
-# Elastic Database Split-Merge ツールに関するチュートリアル
+# エラスティック データベース Split-Merge ツールに関するチュートリアル
 
 ## 分割-結合パッケージのダウンロード
 1. [NuGet](http://docs.nuget.org/docs/start-here/installing-nuget) から最新の NuGet バージョンをダウンロードします。
@@ -141,14 +142,14 @@ worker ロールのオンライン化に失敗した場合に最も考えられ�
 
         "Server=myservername.database.windows.net; Database=mydatabasename;User ID=myuserID; Password=mypassword; Encrypt=True; Connection Timeout=30" .
 
-* サーバー名が **https://** で始まっていないことを確認します。
+* サーバー名が ****https://** で始まっていないことを確認します。
 * Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。確認するには、https://manage.windowsazure.com を開き、左側の [SQL Databases] をクリックし、上部の [サーバー] をクリックしてサーバーを選択します。上部の **[構成]** をクリックし、**[Azure サービス]** の値が [はい] に設定されていることを確認します(この記事の冒頭にある前提条件をご覧ください)。
 
 ## Split-Merge サービスのデプロイのテスト
 
 ### Web ブラウザーを使用した接続
 
-Split-Merge サービスの Web エンドポイントを決定します。エンドポイントを見つけるには、Azure 管理ポータルでクラウド サービスの **[ダッシュ ボード]** に移動し、右側の **[サイトの URL]** を検索します。既定のセキュリティ設定では HTTP エンドポイントは無効なため、**http://** を **https://** で置き換えます。この URL のページをブラウザーに読み込みます。
+Split-Merge サービスの Web エンドポイントを決定します。エンドポイントを見つけるには、Azure 管理ポータルでクラウド サービスの **[ダッシュ ボード]** に移動し、右側の **[サイトの URL]** を検索します。既定のセキュリティ設定では HTTP エンドポイントは無効なため、****http://** を ****https://** で置き換えます。この URL のページをブラウザーに読み込みます。
 
 ### PowerShell スクリプトを使用したテスト
 
@@ -328,4 +329,4 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -123,7 +123,7 @@ Select-AzureSubscription を実行して、使用するサブスクリプショ�
 この手順では、仮想ネットワーク ゲートウェイを作成します。次の値を使用します。
 
 - ゲートウェイの種類は *Vpn* です。
-- VpnType には、RouteBased\* (ドキュメントによっては動的ゲートウェイと呼ばれます) または *Policy Based* (ドキュメントによっては静的ゲートウェイと呼ばれます) を指定できます。VPN ゲートウェイの種類については、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md)」を参照してください。 	
+- VpnType には、RouteBased* (ドキュメントによっては動的ゲートウェイと呼ばれます) または *Policy Based* (ドキュメントによっては静的ゲートウェイと呼ばれます) を指定できます。VPN ゲートウェイの種類については、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md)」を参照してください。 	
 
 		New-AzureVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
 
@@ -152,4 +152,4 @@ Select-AzureSubscription を実行して、使用するサブスクリプショ�
 
 仮想ネットワークに仮想マシンを追加します。[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

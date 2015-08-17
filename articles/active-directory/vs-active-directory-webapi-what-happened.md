@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/22/2015"
-	ms.author="patshea123"/>
+	ms.author="patshea"/>
 
 # プロジェクトの変更点
 
@@ -59,11 +59,13 @@
 
 ###app.config ファイルまたは web.config ファイルに新しい構成値が含まれる
 
-次の構成エントリが追加されました。<pre> `<appSettings>
+次の構成エントリが追加されました。```
+	`<appSettings>
     		<add key="ida:ClientId" value="ClientId from the new Azure AD App" />
     		<add key="ida:Tenant" value="Your selected Azure AD Tenant" />
     		<add key="ida:Audience" value="The App ID Uri from the wizard" />
-	</appSettings>` </pre>
+	</appSettings>` 
+```
 
 ###Azure AD アプリが作成された
 
@@ -101,13 +103,17 @@ NuGet パッケージのリファレンスが削除されるほか、ファイ�
 
 ###app.config または web.config にさらに変更が加えられた
 
-次の構成エントリがさらに追加されました。<pre>`<appSettings>
+次の構成エントリがさらに追加されました。
+
+```
+	`<appSettings>
 	    <add key="ida:Password" value="Your Azure AD App's new password" />
-	</appSettings>`</pre>
+	</appSettings>` 
+```
 
 ###Azure Active Directory アプリが更新された
 Azure Active Directory アプリが更新され、*[ディレクトリ データの読み取り]* アクセス許可が含まれるようになりました。また、`web.config` ファイルで *ida:Password* として使用される追加のキーが作成されました。
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -141,8 +141,8 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 
 ## KB 記事
 
--   [保護対象仮想マシンのドライブ文字を保存する方法
-    > http://support.microsoft.com/kb/3031135
+-   [Azure にフェイル オーバーまたは移行されている保護された仮想マシンの
+    > ドライブ文字を保持する方法](http://support.microsoft.com/kb/3031135)
 
 -   [Azure Recovery Services のトラブルシューティング方法
     > ](http://support.microsoft.com/kb/3005185)
@@ -190,11 +190,11 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 
     -   [仮想マシンの選択した復旧ポイントにフェールオーバーする。一般的なアクセス拒否エラー。](http://social.technet.microsoft.com/wiki/contents/articles/25504.fail-over-to-the-selected-recovery-point-for-virtual-machine-general-access-denied-error.aspx)
 
-    -   [Hyper-V が仮想マシンの選択した回復ポイントへのフェールオーバーに失敗した。操作が中止された。最新の復旧ポイントを実行してください。(0x80004004)](http://social.technet.microsoft.com/wiki/contents/articles/25503.hyper-v-failed-to-fail-over-to-the-selected-recovery-point-for-virtual-machine-operation-aborted-try-a-more-recent-recovery-point-0x80004004.aspx)
+    -   [Hyper-V が仮想マシンの選択した回復ポイントへのフェールオーバーに失敗した。 操作が中止された。最新の復旧ポイントを実行してください。(0x80004004)](http://social.technet.microsoft.com/wiki/contents/articles/25503.hyper-v-failed-to-fail-over-to-the-selected-recovery-point-for-virtual-machine-operation-aborted-try-a-more-recent-recovery-point-0x80004004.aspx)
 
     -   サーバーとの接続を確立できない (0x00002EFD)
 
-        -   [Hyper-V で仮想マシンのレプリケーションの反転を有効にできない](http://social.technet.microsoft.com/wiki/contents/articles/25505.a-connection-with-the-server-could-not-be-established-0x00002efd-hyper-v-failed-to-enable-reverse-replication-for-virtual-machine.aspx)
+        -   [Hyper-V で仮想マシンのレプリケーションの反転を有効にできない。](http://social.technet.microsoft.com/wiki/contents/articles/25505.a-connection-with-the-server-could-not-be-established-0x00002efd-hyper-v-failed-to-enable-reverse-replication-for-virtual-machine.aspx)
 
         -   [Hyper-V で仮想マシンのレプリケーションを有効にできない](http://social.technet.microsoft.com/wiki/contents/articles/25506.a-connection-with-the-server-could-not-be-established-0x00002efd-hyper-v-failed-to-enable-replication-for-virtual-machine-virtual-machine.aspx)
 
@@ -206,9 +206,9 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 
 -   [仮想マシンが実行されていなく、電源が入っていない](http://social.technet.microsoft.com/wiki/contents/articles/25510.virtual-machine-is-not-running-and-is-not-powered-off.aspx)
 
--   [帯域外操作が仮想マシンで発生し、](http://social.technet.microsoft.com/wiki/contents/articles/25507.the-virtual-machine-isn-t-ready-for-planned-failover.aspx)フェールオーバーのコミットに失敗した
+-   [帯域外操作が仮想マシンで発生し、 ](http://social.technet.microsoft.com/wiki/contents/articles/25507.the-virtual-machine-isn-t-ready-for-planned-failover.aspx)フェールオーバーのコミットに失敗した
 
--   Test Failover
+-   テスト フェールオーバー
 
     -   [テスト フェールオーバーが進行中であるため、フェールオーバーを開始できない](http://social.technet.microsoft.com/wiki/contents/articles/31111.failover-could-not-be-initiated-since-test-failover-is-in-progress.aspx)
 
@@ -222,4 +222,4 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 ### リモート デスクトップのフェールオーバー後のトラブルシューティング
 多くのお客様が、Azure でフェールオーバー後の VM への接続について、問題に直面しています。トラブルシューティングのドキュメントを使用して、VM に RDP でアクセスしてください。[ドキュメントのリンク](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

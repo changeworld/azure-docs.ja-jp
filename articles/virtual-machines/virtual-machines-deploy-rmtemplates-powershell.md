@@ -956,4 +956,4 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

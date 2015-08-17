@@ -5,7 +5,7 @@
 
 2. ダウンロードしたファイルを解凍し、場所を書き留めておくか、それを Android Studio プロジェクトのディレクトリに移動します。
 
-3. Android Studio を起動します。別のプロジェクトを使用していて、それが表示された場合は、そのプロジェクトを閉じます (**[File]、[Close Project]** の順にクリックします)。
+3. Android Studio を起動します。別のプロジェクトを使用していて、それが表示された場合は、そのプロジェクトを閉じます (**[ファイル] => [プロジェクトを閉じる]**)。
 
 4. **[Open an existing Android Studio project]** を選択し、*GettingStartedWithData* の *AndroidStudio* フォルダーでプロジェクトの場所を参照して、**[OK]** をクリックします。
 
@@ -15,4 +15,4 @@
 	これで、プロジェクトを使用する準備ができました。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -25,12 +25,12 @@
 Media Services は、次のエンコーダーをサポートしてます。
 
 - [メディア エンコーダー スタンダード](#media_encoder_standard)
-- [Azure メディア エンコーダー](#azure_media_encoder)
+- [Azure Media Encoder](#azure_media_encoder)
 - [メディア エンコーダー プレミアム ワークフロー](#media_encoder_premium_workflow)
 
 [次のセクション](#compare_encoders)では、サポートされるエンコーダーのエンコード機能を比較します。
 
-既定では、1 つの Media Services アカウントにつき、同時に 1 つのアクティブなエンコーディング タスクを実行できます。エンコード ユニットを予約して、複数のエンコード タスク (購入したエンコード予約済みユニットごとに 1 つ) を同時に実行できます。エンコード ユニットの拡張の詳細については、**ポータル**と **.NET** のトピックをご覧ください。
+既定では、1 つの Media Services アカウントにつき、同時に 1 つのアクティブなエンコーディング タスクを実行できます。エンコード ユニットを予約して、複数のエンコード タスク (購入したエンコード予約ユニットごとに 1 つ) を同時に実行できます。エンコード ユニットの拡張の詳細については、**ポータル**と **.NET** のトピックをご覧ください。
 
 [AZURE.INCLUDE [media-services-selector-scale-encoding-units](../../includes/media-services-selector-scale-encoding-units.md)]
 
@@ -42,11 +42,11 @@ Media Services は、次のエンコーダーをサポートしてます。
 
 詳細については、[この投稿](http://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)を参照してください。
 
-##<a id="azure_media_encoder"></a>Azure メディア エンコーダー
+##<a id="azure_media_encoder"></a>Azure Media Encoder
 
-[Media Services Encoder でサポートされる形式](media-services-azure-media-encoder-formats.md): **Azure メディア エンコーダー**でサポートされるファイル形式とストリーム形式について説明します。
+[Media Services Encoder でサポートされる形式](media-services-azure-media-encoder-formats.md): **Azure Media Encoder** でサポートされるファイル形式とストリーム形式について説明します。
 
-**Azure メディア エンコーダー**は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。実際の Azure メディア エンコーダーのプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
+**Azure Media Encoder** は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。実際の Azure Media Encoder のプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
 
 **Azure の管理ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
  
@@ -56,7 +56,7 @@ Media Services は、次のエンコーダーをサポートしてます。
 
 [動的パッケージ](https://msdn.microsoft.com/library/azure/jj889436.aspx): アダプティブ ビットレート MP4 のエンコード方法と、スムーズ ストリーミング、Apple HLS、MPEG-DASH を動的に提供する方法について説明します。
 
-[Media Services エンコーダーの出力ファイル名の制御](https://msdn.microsoft.com/library/azure/dn303341.aspx): Azure メディア エンコーダーで使用されるファイルの名前付け規則と、出力ファイル名の変更方法について説明します。
+[Media Services エンコーダーの出力ファイル名の制御](https://msdn.microsoft.com/library/azure/dn303341.aspx): Azure Media Encoder で使用されるファイルの名前付け規則と、出力ファイル名の変更方法について説明します。
 
 [ドルビー デジタル プラスを使ったメディアのエンコード](media-services-encode-with-dolby-digital-plus.md): ドルビー デジタル プラスのエンコーディングを使用してオーディオ トラックをエンコードする方法について説明します。
 
@@ -78,121 +78,117 @@ Media Services は、次のエンコーダーをサポートしてます。
 
 ###<a id="billing"></a>各エンコーダーで使用される課金メーター
 
-<table border="1">
-<tr><th>メディア プロセッサ名</th><th>適用される料金</th><th>メモ</th></tr>
-<tr><td><b>Windows Azure メディア エンコーダー</b></td><td>従来のエンコーダー</td><td>エンコード タスクは、<a href="http://azure.microsoft.com/pricing/details/media-services/">こちら</a>の「従来のエンコーダー」列に指定されている料金で、入力アセットと出力アセットのサイズ合計 (GB) に従って課金されます。</td></tr>
-<tr><td><b>Azure メディア エンコーダー</b></td><td>エンコーダー</td><td>エンコード タスクは、<a href="http://azure.microsoft.com/pricing/details/media-services/">こちら</a>の「エンコーダー」列に指定されている料金で、出力アセットのサイズ (GB) に従って課金されます。</td></tr>
-<tr><td><b>メディア エンコーダー スタンダード</b></td><td>エンコーダー</td><td>エンコード タスクは、<a href="http://azure.microsoft.com/pricing/details/media-services/">こちら</a>の「エンコーダー」列に指定されている料金で、出力アセットのサイズ (GB) に従って課金されます。</td></tr>
-<tr><td><b>メディア エンコーダー プレミアム ワークフロー</b></td><td>プレミアム エンコーダー</td><td>エンコード タスクは、<a href="http://azure.microsoft.com/pricing/details/media-services/">こちら</a>の「PREMIUM エンコーダー」列に指定されている料金で、出力アセットのサイズ (GB) に従って課金されます。</td></tr>
-</table>
+メディア プロセッサ名|適用される料金|メモ
+---|---|---
+**Microsoft Azure Media Encoder** |従来のエンコーダー|エンコード タスクは、[こちら][1]の「従来のエンコーダー」列に指定されている料金で、入力資産と出力資産のサイズ合計 (GB) に従って課金されます。
+**Azure Media Encoder** |エンコーダー|エンコード タスクは、[こちら][1]の「エンコーダー」列に指定されている料金で、出力資産のサイズ (GB) に従って課金されます。
+**メディア エンコーダー スタンダード** |エンコーダー|エンコード タスクは、[こちら][1]の「エンコーダー」列に指定されている料金で、出力資産のサイズ (GB) に従って課金されます。
+**メディア エンコーダー プレミアム ワークフロー** |プレミアム エンコーダー|エンコード タスクは、[こちら][1]の「PREMIUM エンコーダー」列に指定されている料金で、出力資産のサイズ (GB) に従って課金されます。
 
 
-このセクションでは、**Azure メディア エンコーダー**、**メディア エンコーダー プレミアム ワークフロー**、および**メディア エンコーダー スタンダード**のエンコード機能を比較します。
+
+このセクションでは、**Azure Media Encoder**、**メディア エンコーダー プレミアム ワークフロー**、および**メディア エンコーダー スタンダード**のエンコード機能を比較します。
 
 
 ###入力形式
 
 入力コンテナー/ファイル形式
 
-<table border="1">
-<tr><th>入力コンテナー/ファイル形式</th><th>メディア エンコーダー プレミアム ワークフロー</th><th>Azure メディア エンコーダー
-</th><th>メディア エンコーダー スタンダード</th></tr>
-<tr><td>Adobe® Flash® F4V</td><td>あり</td><td>いいえ</td><td>あり</td></tr>
-<tr><td>MXF/SMPTE 377M</td><td>あり</td><td>制限あり</td><td>あり</td></tr>
-<tr><td>GXF</td><td>あり</td><td>いいえ</td><td>あり</td></tr>
-<tr><td>MPEG-2 トランスポート ストリーム</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>MPEG-2 プログラム ストリーム</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>MPEG-4/MP4</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>Windows Media/ASF</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>AVI (非圧縮 8-bit/10-bit)</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>3GPP/3GPP2</td><td>いいえ</td><td>あり</td><td>あり</td></tr>
-<tr><td>スムーズ ストリーミング ファイル形式 (PIFF 1.3)</td><td>いいえ</td><td>あり</td><td>あり</td></tr>
-<tr><td><a href="https://msdn.microsoft.com/ja-jp/library/windows/desktop/dd692984(v=vs.85).aspx">Microsoft Digital Video Recording (DVR-MS)</a></td><td>いいえ</td><td>いいえ</td><td>あり</td></tr>
-<tr><td>Matroska/WebM</td><td>いいえ</td><td>いいえ</td><td>あり</td></tr></table>
+入力コンテナー/ファイル形式|メディア エンコーダー プレミアム ワークフロー|Azure Media Encoder|メディア エンコーダー スタンダード
+---|---|---|---
+Adobe® Flash® F4V|あり|いいえ|あり
+MXF/SMPTE 377M|あり|制限あり|あり
+GXF|あり|いいえ|あり
+MPEG-2 トランスポート ストリーム|あり|あり|あり
+MPEG-2 プログラム ストリーム|あり|あり|あり
+MPEG-4/MP4|あり|あり|あり
+Windows Media/ASF|あり|あり|あり
+AVI (非圧縮 8-bit/10-bit)|あり|あり|あり
+3GPP/3GPP2|いいえ|あり|あり
+スムーズ ストリーミング ファイル形式 (PIFF 1.3)|いいえ|あり|あり
+[Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|いいえ|いいえ|あり
+Matroska/WebM|いいえ|いいえ|あり
 
 入力ビデオ コーデック
 
-<table border="1">
-<tr><th>入力ビデオ コーデック</th><th>メディア エンコーダー プレミアム ワークフロー</th><th>Azure メディア エンコーダー</th><th>メディア エンコーダー スタンダード</th></tr>
-<tr><td>AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む)</td><td>あり</td><td>8 ビット 4:2:0 のみ</td><td>8 ビット 4:2:0 および 4:2:2</td></tr>
-<tr><td>Avid DNxHD (MXF)</td><td>あり</td><td>いいえ</td><td>あり</td></tr>
-<tr><td>DVCPro/DVCProHD (MXF)</td><td>あり</td><td>いいえ</td><td>あり</td></tr>
-<tr><td>JPEG2000</td><td>あり</td><td>いいえ</td><td>あり</td></tr>
-<tr><td>MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)</td><td>あり</td><td>最大 422 プロファイル</td><td>最大 422 プロファイル</td></tr>
-<tr><td>MPEG-1</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>Windows Media ビデオ/VC-1</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>Canopus HQ/HQX</td><td>いいえ</td><td>あり</td><td>いいえ</td></tr>
-<tr><td>MPEG-4 Part 2</td><td>いいえ</td><td>いいえ</td><td>あり</td></tr>
-<tr><td><a href="https://en.wikipedia.org/wiki/Theora">Theora</a></td><td>いいえ</td><td>いいえ</td><td>あり</td></tr>
-</table>
+入力ビデオ コーデック|メディア エンコーダー プレミアム ワークフロー|Azure Media Encoder|メディア エンコーダー スタンダード
+---|---|---|---
+AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む)|あり|8 ビット 4:2:0 のみ|8 ビット 4:2:0 および 4:2:2
+Avid DNxHD (MXF)|あり|いいえ|あり
+DVCPro/DVCProHD (MXF)|あり|いいえ|あり
+JPEG2000|あり|いいえ|あり
+MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|あり|最大 422 プロファイル|最大 422 プロファイル
+MPEG-1|あり|あり|あり
+Windows Media ビデオ/VC-1|あり|あり|あり
+Canopus HQ/HQX|いいえ|あり|いいえ
+MPEG-4 Part 2|いいえ|いいえ|あり
+[Theora](https://en.wikipedia.org/wiki/Theora)|いいえ|いいえ|あり
 
 入力オーディオ コーデック
 
-<table border="1">
-<tr><th>入力オーディオ コーデック</th><th>メディア エンコーダー プレミアム ワークフロー</th><th>Azure メディア エンコーダー</th><th>メディア エンコーダー スタンダード</th></tr>
-<tr><td>AES (SMPTE 331M および 302M、AES3-2003)</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>Dolby® E</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>Dolby® Digital (AC3)</td><td>あり</td><td>あり</td><td>いいえ</td></tr>
-<tr><td>Dolby® Digital Plus (E-AC3)</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>MPEG Layer 2</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>MP3 (MPEG-1 Audio Layer 3)</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>Windows Media オーディオ</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>WAV/PCM</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td><a href="https://en.wikipedia.org/wiki/FLAC">FLAC</a></td><td>いいえ</td><td>いいえ</td><td>あり</td></tr>
-<tr><td><a href="https://en.wikipedia.org/wiki/Opus_(audio_format)">Opus</a></td><td>いいえ</td><td>いいえ</td><td>あり</td></tr>
-<tr><td><a href="https://en.wikipedia.org/wiki/Vorbis">Vorbis</a></td><td>いいえ</td><td>いいえ</td><td>あり</td></tr>
-</table>
+入力オーディオ コーデック|メディア エンコーダー プレミアム ワークフロー|Azure Media Encoder|メディア エンコーダー スタンダード
+---|---|---|---
+AES (SMPTE 331M および 302M、AES3-2003)|あり|いいえ|いいえ
+Dolby® E|あり|いいえ|いいえ
+Dolby® Digital (AC3)|あり|あり|いいえ
+Dolby® Digital Plus (E-AC3)|あり|いいえ|いいえ
+AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|あり|あり
+MPEG Layer 2|あり|あり|あり
+MP3 (MPEG-1 Audio Layer 3)|あり|あり|あり
+Windows Media オーディオ|あり|あり|あり
+WAV/PCM|あり|あり|あり
+[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|いいえ|いいえ|あり
+[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |いいえ|いいえ|あり
+[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|いいえ|いいえ|あり
 
 ###出力形式
 
 出力コンテナー/ファイル形式
 
-<table border="1">
-<tr><th>出力コンテナー/ファイル形式</th><th>メディア エンコーダー プレミアム ワークフロー</th><th>Azure メディア エンコーダー</th><th>メディア エンコーダー スタンダード</th></tr>
-<tr><td>Adobe® Flash® F4V</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>MXF (OP1a、XDCAM および AS02)</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>DPP (AS11 を含む)</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>GXF</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>MPEG-4/MP4</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>MPEG TS</td><td>あり</td><td>いいえ</td><td>あり</td></tr>
-<tr><td>Windows Media/ASF</td><td>あり</td><td>あり</td><td>いいえ</td></tr>
-<tr><td>AVI (非圧縮 8-bit/10-bit)</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>スムーズ ストリーミング ファイル形式 (PIFF 1.3)</td><td>あり</td><td>あり</td><td>いいえ</td></tr>
-</table>
+出力コンテナー/ファイル形式|メディア エンコーダー プレミアム ワークフロー|Azure Media Encoder|メディア エンコーダー スタンダード
+---|---|---|---
+Adobe® Flash® F4V|あり|いいえ|いいえ
+MXF (OP1a、XDCAM および AS02)|あり|いいえ|いいえ
+DPP (AS11 を含む)|あり|いいえ|いいえ
+GXF|あり|いいえ|いいえ
+MPEG-4/MP4|あり|あり|あり
+MPEG TS|あり|いいえ|あり
+Windows Media/ASF|あり|あり|いいえ
+AVI (非圧縮 8-bit/10-bit)|あり|いいえ|いいえ
+スムーズ ストリーミング ファイル形式 (PIFF 1.3)|あり|あり|いいえ
 
 出力ビデオ コーデック
 
-<table border="1">
-<tr><th>出力ビデオ コーデック</th><th>メディア エンコーダー プレミアム ワークフロー</th><th>Azure メディア エンコーダー</th><th>メディア エンコーダー スタンダード</th></tr>
-<tr><td>AVC (H.264、8-bit、最大ハイ プロファイル、レベル 5.2、4K Ultra HD、AVC Intra)</td><td>あり</td><td>8 ビット 4:2:0 のみ (最大 1080p)</td><td>8 ビット 4:2:0 のみ</td></tr>
-<tr><td>Avid DNxHD (MXF)</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>DVCPro/DVCProHD (MXF)</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>MPEG-1</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>Windows Media ビデオ/VC-1</td><td>あり</td><td>あり</td><td>いいえ</td></tr>
-<tr><td>JPEG サムネール作成</td><td>あり</td><td>あり</td><td>いいえ</td></tr>
-</table>
+出力ビデオ コーデック|メディア エンコーダー プレミアム ワークフロー|Azure Media Encoder|メディア エンコーダー スタンダード
+---|---|---|---
+AVC (H.264、8-bit、最大ハイ プロファイル、レベル 5.2、4K Ultra HD、AVC Intra)|あり|8 ビット 4:2:0 のみ (最大 1080p)|8 ビット 4:2:0 のみ
+Avid DNxHD (MXF)|あり|いいえ|いいえ
+DVCPro/DVCProHD (MXF)|あり|いいえ|いいえ
+MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|あり|いいえ|いいえ
+MPEG-1|あり|いいえ|いいえ
+Windows Media ビデオ/VC-1|あり|あり|いいえ
+JPEG サムネール作成|あり|あり|いいえ
 
 出力オーディオ コーデック
 
-<table border="1">
-<tr><th>出力オーディオ コーデック</th><th>メディア エンコーダー プレミアム ワークフロー</th><th>Azure メディア エンコーダー</th><th>メディア エンコーダー スタンダード</th></tr>
-<tr><td>AES (SMPTE 331M および 302M、AES3-2003)</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>Dolby® Digital (AC3)</td><td>あり</td><td>あり</td><td>いいえ</td></tr>
-<tr><td>Dolby® Digital Plus (E-AC3) 最大 7.1</td><td>あり</td><td>最大 5.1</td><td>いいえ</td></tr>
-<tr><td>AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)</td><td>あり</td><td>あり</td><td>あり</td></tr>
-<tr><td>MPEG Layer 2</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>MP3 (MPEG-1 Audio Layer 3)</td><td>あり</td><td>いいえ</td><td>いいえ</td></tr>
-<tr><td>Windows Media オーディオ</td><td>あり</td><td>あり&lt;/td<td>いいえ</td></tr>
-</table>
+出力オーディオ コーデック|メディア エンコーダー プレミアム ワークフロー|Azure Media Encoder|メディア エンコーダー スタンダード
+---|---|---|---
+AES (SMPTE 331M および 302M、AES3-2003)|あり|いいえ|いいえ
+Dolby® Digital (AC3)|あり|あり|いいえ
+Dolby® Digital Plus (E-AC3) 最大 7.1|あり|最大 5.1|いいえ
+AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|あり|あり
+MPEG Layer 2|あり|いいえ|いいえ
+MP3 (MPEG-1 Audio Layer 3)|あり|いいえ|いいえ
+Windows Media オーディオ|あり|あり|いいえ
 
 ##関連記事:
 
 - [Azure Media Services のプレミアム エンコーディングの紹介 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
-- [Azure Media Services でプレミアム エンコーディングを使用する方法 (ブログの投稿](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+- [Azure Media Services でプレミアム エンコーディングを使用する方法 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 - [クォータと制限](media-services-quotas-and-limitations.md)
 
  
+<!--Reference links in article-->
+[1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

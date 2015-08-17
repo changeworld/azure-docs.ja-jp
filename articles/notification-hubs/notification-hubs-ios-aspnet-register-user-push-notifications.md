@@ -17,9 +17,11 @@
 	ms.author="wesmc"/>
 # ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 
-<div class="dev-center-tutorial-selector sublanding">
-    <a href="/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications/" title="Windows ストア C#">Windows ストア C#</a><a href="/documentation/articles/notification-hubs-ios-aspnet-register-user-push-notifications/" title="iOS" class="current">iOS</a>
-</div>
+> [AZURE.SELECTOR]
+- [Windows Store C#](notification-hubs-windows-store-aspnet-register-user-push-notifications.md)
+- [iOS](notification-hubs-ios-aspnet-register-user-push-notifications.md)
+
+
 
 ##概要
 
@@ -27,7 +29,7 @@
 
 ##アプリケーションを更新する  
 
-1. MainStoryboard_iPhone.storyboard で、オブジェクト ライブラリから次のコンポーネントを追加します。
+1. MainStoryboard\_iPhone.storyboard で、オブジェクト ライブラリから次のコンポーネントを追加します。
 
 	+ **ラベル**: "Push to User with Notification Hubs"
 	+ **ラベル**: "InstallationId"
@@ -236,4 +238,4 @@
 [通知ハブの使用]: /manage/services/notification-hubs/get-started-notification-hubs-ios
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

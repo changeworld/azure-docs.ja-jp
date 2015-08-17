@@ -6,4 +6,4 @@ Visual Studio がインストールされていない場合は、SDK と共に V
 
 >[AZURE.NOTE]マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

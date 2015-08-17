@@ -64,9 +64,9 @@
 Git でモバイル サービスにスクリプトをデプロイすることに慣れていない場合は、このセクションを完了する前に、「[Store Server Scripts (サーバー スクリプトの格納)]」チュートリアルを見直してください。
 
 1. モバイル サービスのローカル リポジトリの *./service/shared/* ディレクトリに *rbac.js* という名前の新しいスクリプト ファイルを作成します。
-2. `getAADToken` 関数を定義するファイルの先頭に次のスクリプトを追加します。*tenant_domain*、統合アプリケーションの *client id*、およびアプリケーションの *key* を与えることで、この関数はディレクトリ情報の読み取りに使用する Graph アクセス トークンを提供します。
+2. `getAADToken` 関数を定義するファイルの先頭に次のスクリプトを追加します。*tenant\_domain*、統合アプリケーションの *client id*、およびアプリケーションの *key* を与えることで、この関数はディレクトリ情報の読み取りに使用する Graph アクセス トークンを提供します。
 
-    >[AZURE.NOTE]アクセス確認のたびに新しいトークンを作成するのではなく、トークンをキャッシュする必要があります。その後、「[Windows Azure AD Graph のエラー コード]」に記載されているとおり、トークンの使用を試みたときに 401 Authentication_ExpiredToken 応答が返された場合は、キャッシュを更新します。これは、次に示すコードでは簡略化のために省かれていますが、Active Directory に対して余分なネットワーク トラフィックを軽減する効果があります。
+    >[AZURE.NOTE]アクセス確認のたびに新しいトークンを作成するのではなく、トークンをキャッシュする必要があります。その後、「[Windows Azure AD Graph のエラー コード]」に記載されているとおり、トークンの使用を試みたときに 401 Authentication\_ExpiredToken 応答が返された場合は、キャッシュを更新します。これは、次に示すコードでは簡略化のために省かれていますが、Active Directory に対して余分なネットワーク トラフィックを軽減する効果があります。
 
         var appSettings = require('mobileservice-config').appSettings;
         var tenant_domain = appSettings.AAD_TENANT_DOMAIN;
@@ -285,4 +285,4 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 [IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
 [Azure Active Directory Graph 情報へのアクセス]: mobile-services-javascript-backend-windows-store-dotnet-aad-graph-info.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

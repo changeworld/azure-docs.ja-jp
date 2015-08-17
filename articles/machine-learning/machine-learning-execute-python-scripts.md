@@ -1,7 +1,6 @@
 <properties 
 	pageTitle="Python Machine Learning スクリプトの実行 |Microsoft Azure" 
 	description="Azure Machine Learning における Python スクリプトのサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。" 
-	keywords="python machine learning,pandas,python pandas,python scripts, execute python scripts"
 	services="machine-learning"
 	documentationCenter="" 
 	authors="bradsev" 
@@ -119,7 +118,7 @@ MatplotLib からのイメージを生成するには、次の手順を完了す
 * 軸を取得し、そこにすべてのプロットを生成する 
 * PNG ファイルに図を保存する 
 
-下記の図 8 に、Pandas の scatter_matrix 関数を使用して散布図マトリックスを作成するプロセスを示します。
+下記の図 8 に、Pandas の scatter\_matrix 関数を使用して散布図マトリックスを作成するプロセスを示します。
  
 ![image1v](./media/machine-learning-execute-python-scripts/figure-v1-8.png)
 
@@ -171,4 +170,4 @@ Azure Machine Learning にインストールされている Anaconda 環境に�
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

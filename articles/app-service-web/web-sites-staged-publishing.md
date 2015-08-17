@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2015"
+	ms.date="08/03/2015"
 	ms.author="cephalin"/>
 
 # Azure App Service の Web アプリのステージング環境を設定する
@@ -59,7 +59,7 @@
 
 	![構成元][MultipleConfigurationSources]
 
-5. **[デプロイ スロット]** ブレードで、デプロイ スロットをクリックしてスロットのブレードを開くと、他の Web アプリと同様、一連のメトリックと構成が表示されます。現在表示しているデプロイ スロットが、<strong><i>your-web-app-name</i>-<i>deployment-slot-name</i></strong> という形式でブレードの上部に表示されます。
+5. **[デプロイ スロット]** ブレードで、デプロイ スロットをクリックしてスロットのブレードを開くと、他の Web アプリと同様、一連のメトリックと構成が表示されます。現在表示しているデプロイ スロットが、**your-web-app-name-deployment-slot-name** という形式でブレードの上部に表示されます。
 
 	![デプロイ スロットのタイトル][StagingTitle]
 
@@ -259,4 +259,4 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

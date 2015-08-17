@@ -3,9 +3,9 @@
 	description="一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。制限を引き上げる方法と、最大値に関する情報も記載されています。"
 	services=""
 	documentationCenter=""
-	authors="jeffstokes72"
-	manager="paulettem"
-	editor="cgronlun"/>
+	authors="rothja"
+	manager="jeffreyg"
+	editor="monicar"/>
 
 <tags
 	ms.service="multiple"
@@ -67,13 +67,13 @@
 
 [AZURE.INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
+### Traffic Manager の制限
 
-### ネットワークの制限 - Azure リソース マネージャー
+[AZURE.INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
 
-次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。これらの制限については、前の表を参照してください。
+### DNS の制限
 
-[AZURE.INCLUDE [azure-virtual-network-limits-azure-resource-manager](../includes/azure-virtual-network-limits-azure-resource-manager.md)]
-
+[AZURE.INCLUDE [dns-limits](../includes/dns-limits.md)]
 
 ## ストレージの制限
 
@@ -151,6 +151,11 @@ SQL Database の制限に関する詳細については、次のトピックを�
 
 [AZURE.INCLUDE [azure-servicebus-limits](../includes/service-bus-quotas-table.md)]
 
+## Data Factory の制限
+
+[AZURE.INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]
+
+
 ## Stream Analytics の制限
 
 [AZURE.INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
@@ -202,4 +207,4 @@ SQL Database の制限に関する詳細については、次のトピックを�
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

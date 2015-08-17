@@ -476,4 +476,4 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 [How much does that key cost? (そのキーのコスト)]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

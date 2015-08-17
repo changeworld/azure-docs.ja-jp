@@ -264,7 +264,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 				public static String NotificationHubConnectionString = "...";
 			}
 
-	*API_KEY* には前もって Baidu クラウド プロジェクトから取得した値、*NotificationHubName* には Azure ポータルの通知ハブ名、*NotificationHubConnectionString* には Azure ポータルの DefaultListenSharedAccessSignature をそれぞれ設定します。
+	*API\_KEY* には前もって Baidu クラウド プロジェクトから取得した値、*NotificationHubName* には Azure ポータルの通知ハブ名、*NotificationHubConnectionString* には Azure ポータルの DefaultListenSharedAccessSignature をそれぞれ設定します。
 
 11. **DemoApplication.java** という名前の新しいクラスを追加し、それに次のコードを追加します。
 
@@ -480,4 +480,4 @@ Notification Hubs を使用すると、<a href="http://msdn.microsoft.com/librar
 [Baidu ポータル]: http://www.baidu.com/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

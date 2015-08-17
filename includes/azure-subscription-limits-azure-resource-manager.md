@@ -35,6 +35,11 @@
    <td valign="middle"><p>1 時間あたり 1200</p></td>
 </tr>
 <tr>
+   <td valign="middle"><p>リソース マネージャー API 要求のサイズ</p></td>
+   <td valign="middle"><p>4194304 バイト</p></td>
+   <td valign="middle"><p>4194304 バイト</p></td>
+</tr>
+<tr>
    <td valign="middle"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/documentation/articles/cloud-services-what-is/">クラウド サービス</a>数</p></td>
    <td valign="middle"><p>非推奨<sup>3</sup></p></td>
    <td valign="middle"><p>非推奨<sup>3</sup></p></td>
@@ -52,4 +57,4 @@
 
 <sup>3</sup>これらの機能は、Azure リソース グループと Azure リソース マネージャーでは必要なくなりました。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

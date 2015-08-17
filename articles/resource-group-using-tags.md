@@ -13,22 +13,21 @@
 	ms.tgt_pltfrm="AzurePortal" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/15/2015" 
+	ms.date="08/05/2015" 
 	ms.author="tomfitz"/>
 
 
 # タグを使用した Azure リソースの整理
 
-Azure ポータルとその基になるリソース マネージャーを使うと、リソースを整理したり、ユーザーに合わせて操作方法をカスタマイズしたりできます。
+リソース マネージャーを使用すると、タグを適用してリソースを理論的に整理できます。タグは、定義したプロパティによりリソースを識別するキーと値のペアで構成されます。同じカテゴリに属すリソースとしてマークするには、これらのリソースに同じタグを適用します。
 
-Azure クラシック ポータルでは、サブスクリプションがリソースを分類およびグループ化する唯一の方法になります。Azure ポータルでは、関連するエンティティをグループ化する方法として、[リソース グループが採用されていました](./resource-group-portal.md)。この機能は、[ロールベースのアクセスを導入](./role-based-access-control-configure.md)した際に、より価値が高まりました。現在は、同じ目的で、キーと値のペアを使用してリソースをタグ付けすることにより、リソースをさらに分類し、異なるリソース グループ間、およびポータル内の異なるサブスクリプション間にわたってリソースを表示することができます。
+特定のタグを持つリソースを表示した場合、すべてのリソース グループからリソースが表示されます。同じリソース グループ内のリソースに限定されないため、デプロイメント関係にとらわれずにリソースを整理できます。タグは、課金または管理の目的でリソースを整理する必要がある場合に特に役立ちます。
 
-チーム、プロジェクト、または環境に基づいてリソースをグループ化すれば、必要なときに表示したい情報だけにフォーカスすることができます。
+> [AZURE.NOTE]タグを適用できるのは、リソース マネージャーの操作をサポートするリソースのみです。仮想マシン、Virtual Network、または記憶域を従来のデプロイ モデル (Azure ポータル、[Service Management API](https://msdn.microsoft.com/library/azure/dn948465.aspx) など) を通じて作成した場合、リソースにタグを適用することはできません。タグ付けが必要な場合は、リソース マネージャーを介してこれらのリソースを再デプロイする必要があります。その他のすべてのリソースでは、タグ付けがサポートされています。
 
+## プレビュー ポータルでのタグ
 
-## Azure ポータルでのタグ
-
-ポータルでリソースやリソース グループをタグ付けするのは簡単です。[参照] ハブを使用してタグを付けるリソースまたはリソース グループに移動し、ブレードの上部にある [概要] セクションの [タグ] 部分をクリックします。
+プレビュー ポータルでリソースやリソース グループをタグ付けするのは簡単です。[参照] ハブを使用してタグを付けるリソースまたはリソース グループに移動し、ブレードの上部にある [概要] セクションの [タグ] 部分をクリックします。
 
 ![リソース ブレードとリソース グループのブレードの [タグ] 部分](./media/resource-group-using-tags/rgblade.png)
 
@@ -62,7 +61,7 @@ Azure クラシック ポータルでは、サブスクリプションがリソ�
 ![PowerShell で Get-AzureResource と Get-AzureResourceGroup を使用したタグ付きリソースとリソース グループの取得](./media/resource-group-using-tags/Get-AzureResourceGroup-with-tags-in-PowerShell.png)
 
 
-## リソース マネージャーを使用したタグ付け
+## REST API を使用したタグ付け
 
 ポータルと PowerShell のどちらも、バックグラウンドで[リソース マネージャーの REST AP](http://msdn.microsoft.com/library/azure/dn790568.aspx) を使用します。別の環境にタグ付けを統合する必要がある場合、リソース ID に対する GET 操作でタグを取得し、PATCH 呼び出しでタグのセットを更新できます。
 
@@ -99,26 +98,12 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 ![課金タグを参照してください](./media/resource-group-using-tags/billing_csv.png)
 
 ## 次のステップ
-Getting Started (概要)
 
-- [Azure リソース マネージャーの概要](./resource-group-overview.md)  
-- [Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)
-- [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](./xplat-cli-azure-resource-manager.md)  
-- [Azure ポータルを使用した Azure リソースの管理](./resource-group-portal.md)  
-  
-アプリケーションの作成と展開
-  
-- [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)  
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)  
-- [Azure でのリソース グループのデプロイのトラブルシューティング](./resource-group-deploy-debug.md)  
-- [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)  
-- [高度なテンプレートの操作](./resource-group-advanced-template.md)  
-  
-アクセスの管理と監査
-  
-- [リソースへのアクセスの管理と監査](./resource-group-rbac.md)  
-- [Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)  
-- [Azure クラシック ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)  
+- リソースのデプロイ時に Azure PowerShell を使用する方法の概要については、「[Azure リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)」を参照してください。
+- リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](./xplat-cli-azure-resource-manager.md)」を参照してください。
+- プレビュー ポータルの使用方法の概要については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](./resource-group-portal.md)」を参照してください。  
   
 
-<!---HONumber=July15_HO5-->
+  
+
+<!---HONumber=August15_HO6-->

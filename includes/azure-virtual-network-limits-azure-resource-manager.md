@@ -51,4 +51,4 @@
 
 <sup>1</sup>サポートに連絡して制限を増やすことができます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -66,4 +66,4 @@ Microsoft Azure StorSimple デバイスのボリューム コンテナーには�
 詳細については、「[StorSimple ボリュームの管理](storsimple-manage-volumes.md)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

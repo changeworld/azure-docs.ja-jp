@@ -24,4 +24,4 @@
 
 	![](./media/app-service-api-pub-web-deploy/restartgateway.png)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

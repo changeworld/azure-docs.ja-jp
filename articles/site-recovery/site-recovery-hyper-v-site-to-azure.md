@@ -61,7 +61,12 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 - 最新バージョンのプロバイダーとエージェントを実行する必要があります。
 - コンテナー内のすべての Hyper-V サーバーは、同じバージョンである必要があります。
 - プロバイダーは、インターネット経由で Azure Site Recovery に接続する必要があります。このことは、プロキシを使用せずに、現在 VMM サーバーで構成されているプロキシ設定を使用して、またはプロバイダーのインストール中に構成するカスタム プロキシ設定を使用して行えます。既存のプロキシ サーバーを使用するには、 Azure に接続する次の URL がファイアウォールを通過するのを許可します。
-	- *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net- *.backup.windowsazure.com- *.blob.core.windows.net- *.store.core.windows.net
+	- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+
 - カスタム プロキシを使用するには、プロバイダーをインストールする前に、プロキシ サーバーを設定します。プロバイダーのセットアップ中には、プロキシ サーバーのアドレスとポート、およびアクセスのために使用できる資格情報を指定する必要があります。
 
 次の図は、Azure Site Recovery でオーケストレーションやレプリケーションに使用される、さまざまな通信チャネルと通信ポートを示しています。
@@ -81,7 +86,7 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 
 4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 
-5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[￼Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)￼](pricing/details/site-recovery/)」で利用可能地域を参照してください。
+5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)](pricing/details/site-recovery/)」で利用可能地域をご覧ください。
 
 6. **[コンテナーの作成]** をクリックします。
 
@@ -139,7 +144,12 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 	- Hyper-V サーバー上の既定のプロキシに認証が必要な場合は、カスタム プロキシ サーバーの使用を選択する必要があります。既定のプロキシの詳細を入力し、資格情報を指定します。
 	- カスタム プロキシ サーバーを使用する場合は、プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。 
 	- 次の URL に Hyper-V ホストからアクセスできるようにする必要があります。
-		- *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net- *.backup.windowsazure.com- *.blob.core.windows.net- *.store.core.windows.net
+		- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+
 	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 9. **[コンテナーの設定]** ページで **[参照]** をクリックし、キー ファイルを選択します。Azure Site Recovery のサブスクリプション、コンテナー名、Hyper-V サーバーが属している Hyper-V サイトを指定します。
@@ -157,7 +167,7 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 
 Windows Server 2012 R2 の Server Core またはスタンドアロン Hyper-V Server 2012 R2 にプロバイダーをインストールする場合は、次の操作を行います。
 
-1. プロバイダーのインストール ファイルと、登録キーを C:\ASR などのフォルダーにダウンロードします。
+1. プロバイダーのインストール ファイルと、登録キーを C:\\ASR などのフォルダーにダウンロードします。
 2. 次を入力して、プロバイダーのインストーラーを抽出します。
 
 	    C:\Windows\System32> CD C:\ASR
@@ -296,4 +306,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

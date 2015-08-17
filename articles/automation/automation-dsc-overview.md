@@ -226,4 +226,4 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - Azure Automation DSC にオンボードされた DSC ノードは、最初、マップされている DSC ノード構成に実際には適合していない場合であっても、「適合」状態を示します。ノードが初めてのプルを実行して、最初の DSC レポートを Azure Automation DSC に送信した後、ノードの状態は正しくなります。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

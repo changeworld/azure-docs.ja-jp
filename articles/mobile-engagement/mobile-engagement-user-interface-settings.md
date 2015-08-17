@@ -251,4 +251,4 @@ Ad サーバー名、キャンペーン ID、アプリケーションのダウ�
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

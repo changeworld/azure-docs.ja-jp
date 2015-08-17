@@ -1,4 +1,6 @@
-Resource| Default limit
----|---
-Profiles per subscription | 100
-Endpoints per profile| 200
+| リソース | 既定の制限
+--- | ---
+| サブスクリプションあたりのプロファイル数 | 100
+| プロファイルあたりのエンドポイント数| 200
+
+<!---HONumber=August15_HO6-->

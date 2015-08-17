@@ -7,4 +7,4 @@
 - [Remote Desktop](../articles/hdinsight/hdinsight-hadoop-use-hive-remote-desktop.md)
 - [Curl](../articles/hdinsight/hdinsight-hadoop-use-hive-curl.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -171,14 +171,14 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 次の App.config ファイルには、必須接続値が含まれています。<appSettings> 要素の値は、必須値であり、Media Services アカウントのセットアップ プロセスで取得した値です。
 
 
-<pre><code>
-&lt;configuration>
-    &lt;appSettings>
-	&lt;add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
-    	&lt;add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
-    &lt;/appSettings>
-&lt;/configuration>
-</code></pre>
+```
+&lt;configuration&gt;
+    &lt;appSettings&gt;
+	&lt;add key="MediaServicesAccountName" value="Media-Services-Account-Name" /&gt;
+    	&lt;add key="MediaServicesAccountKey" value="Media-Services-Account-Key" /&gt;
+    &lt;/appSettings&gt;
+&lt;/configuration&gt;
+```
 
 構成から接続値を取得するには、**ConfigurationManager** クラスを使用し、コードでフィールドに値を割り当てます。
 	
@@ -191,4 +191,4 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 <!-- URLs. -->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

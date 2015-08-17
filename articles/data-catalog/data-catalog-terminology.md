@@ -3,8 +3,8 @@
    description="Azure Data Catalog の用語集"
    services="data-catalog"
    documentationCenter=""
-   authors="dvana"
-   manager="mblythe"
+   authors="steelanddata"
+   manager="NA"
    editor=""
    tags=""/>
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="07/13/2015"
-   ms.author="derrickv"/>
+   ms.date="07/31/2015"
+   ms.author="maroche"/>
 
 # Azure Data Catalog の用語集
 
@@ -42,6 +42,15 @@ Azure Data Catalog は、データ ソースとデータ資産を登録できる
 
 記述メタデータは、データ資産の目的または意図を説明するメタデータです。通常、記述メタデータは、カタログ ユーザーが Azure Data Catalog ポータルを使用して追加しますが、登録時にデータ ソースから抽出することもできます。Azure Data Catalog 登録ツールで、SQL Server Analysis Services と SQL Server Reporting Services の場合は Description プロパティから、SQL Server データベースの場合は [ms\_description 拡張プロパティ](https://technet.microsoft.com/library/ms190243.aspx)から記述を抽出します (これらのプロパティに値が設定されている場合)。
 
+## アクセスの要求
+
+データ資産の説明用のメタデータには、データ資産またはデータ ソースへのアクセスを要求する方法に関する情報を含めることができます。この情報にはデータ資産の場所が示され、次のオプションの 1 つ以上を含めることができます。
+
+- データ ソースへのアクセス権の付与を担当するユーザーまたはチームの電子メール アドレス。
+- ユーザーがデータ ソースにアクセスするために従う必要があるプロセスを示すドキュメントの URL。
+- データ ソースにアクセスするために使用できる ID およびアクセス管理ツール (Microsoft Identity Manager など) の URL。
+- ユーザーがデータ ソースにアクセスする方法が示された自由書式のエントリ。
+
 ## プレビュー
 
 Azure Data Catalog のプレビューは、最大 20 レコードのスナップショットです。登録時にデータ ソースから抽出し、データ資産メタデータと共にカタログに格納できます。プレビューを使用すると、データ資産の機能と目的を理解しやすくなります。言い換えると、列名とデータ型だけではなく、サンプル データも確認できるので、わかりやすくなります。テーブルとビューのプレビューのみがサポートされています。登録時にユーザーが明示的にプレビューを選択する必要があります。
@@ -60,7 +69,7 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 所有者は、Azure Data Catalog のデータ資産を管理する追加の特権を持つユーザーです。ユーザーは、登録したデータ資産の所有権を得ることができます。また、所有者は他のユーザーを共同所有者として追加することができます。
 > [AZURE.NOTE]所有権と管理は、Azure Data Catalog の Standard Edition でのみ使用できます。
- 
+
 ## 登録
 
 登録は、データ資産メタデータをデータ ソースから抽出し、Azure Data Catalog サービスにコピーする操作です。登録されたデータ資産は、注釈を付けて検索することができます。
@@ -68,7 +77,7 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 ## 関連項目
 
 - [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md) - この記事では、Azure Data Catalog サービス、もたらされる価値、およびサポートしているシナリオの概要について説明します。
-
+  
 - [GAzure Data Catalog の概要](data-catalog-get-started.md) - この記事は、データ ソースの検出に Azure Data Catalog を使用する方法を示す総合的なチュートリアルです。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

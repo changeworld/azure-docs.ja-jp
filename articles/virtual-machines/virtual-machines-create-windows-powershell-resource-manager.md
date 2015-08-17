@@ -142,4 +142,4 @@ Azure データセンターの場所を指定する必要があります。Azure
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

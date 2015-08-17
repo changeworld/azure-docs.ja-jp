@@ -50,7 +50,7 @@
 
 **[サインオン URL]** に、パブリッシャー ポータルの **[外部 ID]** タブの **[Azure Active Directory]** セクションから書き留めた**リダイレクト URL** を入力し、URL 末尾の **- aad** というサフィックスを削除します。この例では、**サインオン URL** は `https://aad03.portal.current.int-azure-api.net/signin` です。
 
-**[アプリ ID URL]** に、Azure Active Directory の既定のドメインとカスタム ドメインのいずれかを入力し、一意の文字列を追加します。この例では、**https://contoso5api.onmicrosoft.com** という既定のドメインが使用され、**/api** というサフィックスが指定されています。
+**[アプリ ID URL]** に、Azure Active Directory の既定のドメインとカスタム ドメインのいずれかを入力し、一意の文字列を追加します。この例では、****https://contoso5api.onmicrosoft.com** という既定のドメインが使用され、**/api** というサフィックスが指定されています。
 
 ![新しい Azure Active Directory アプリケーションのプロパティ][api-management-new-aad-application-2]
 
@@ -228,4 +228,4 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 
 [Azure Active Directory アカウントを使用して開発者ポータルにログインする方法]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -100,4 +100,4 @@ VNet の設定を表示および変更するには、管理ポータルを使用
 
 [Virtual Network (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

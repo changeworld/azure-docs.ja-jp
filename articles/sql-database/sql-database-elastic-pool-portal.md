@@ -13,7 +13,7 @@
 	ms.date="06/24/2015" 
 	ms.author="sstein" 
 	ms.workload="data-management" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.tgt_pltfrm="NA"/>
 
 
@@ -162,4 +162,4 @@
 [7]: ./media/sql-database-elastic-pool-portal/edit-chart.png
 [8]: ./media/sql-database-elastic-pool-portal/configure-pool.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

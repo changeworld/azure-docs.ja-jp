@@ -50,7 +50,7 @@ Azure ストレージ API を使用するには、ストレージ サービス�
 	    "AccountName=your_storage_account_name;" + 
 	    "AccountKey=your_storage_account_key";
 
-> [AZURE.NOTE]your_storage_account_name と your_storage_account_key を自分のストレージ アカウントの実際の値に換えます。
+> [AZURE.NOTE]your\_storage\_account\_name と your\_storage\_account\_key を自分のストレージ アカウントの実際の値に換えます。
 
 ## Azure ストレージ アカウントに接続する
 
@@ -97,7 +97,7 @@ Azure ファイル ストレージ共有には、少なくとも、ファイル�
 共有のルート ディレクトリの参照が与えられたので、次のコードを利用してディレクトリにファイルをアップロードできます。
 
 	// Define the path to a local file.
-	final String filePath = "C:\temp\Readme.txt";
+	final String filePath = "C:\\temp\\Readme.txt";
 
 	CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
 	cloudFile.uploadFromFile(filePath);
@@ -221,4 +221,4 @@ CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出
 [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

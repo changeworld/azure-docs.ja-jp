@@ -1,4 +1,4 @@
-<properties
+<properties 
 	pageTitle="弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション" 
 	description="弾力性データベース ツールと行レベルのセキュリティを使用して、Azure SQL Database にマルチテナントのシャードをサポートする拡張性の高いデータ層を持つアプリケーションを作成する方法について説明します。" 
 	services="sql-database" 
@@ -47,17 +47,17 @@
 
 RLS はシャード データベースでまだ有効になっていないため、これらの各テストで問題点が明らかになります。テナントは、そのテナントに属さないブログを表示できます。また、アプリケーションは、不適切なテナントにブログを挿入できます。この記事の残りの部分では、RLS によるテナントの分離を適用してこれらの問題を解決する方法について説明します。次の 2 つの手順が含まれます。
 
-1. **アプリケーション層**: アプリケーション コードを変更して、CONTEXT_INFO を常に、接続を開いた後の現在の TenantId に設定します。サンプル プロジェクトでは、この手順は既に完了しています。 
-2. **データ層**: 各シャード データベースで、CONTEXT_INFO の値に基づいて行をフィルター選択するための RLS セキュリティ ポリシーを作成します。この手順は、それぞれのシャード データベースに対して実行する必要があります。そうでないと、マルチテナント シャード内の行がフィルター選択されません。 
+1. **アプリケーション層**: アプリケーション コードを変更して、CONTEXT\_INFO を常に、接続を開いた後の現在の TenantId に設定します。サンプル プロジェクトでは、この手順は既に完了しています。 
+2. **データ層**: 各シャード データベースで、CONTEXT\_INFO の値に基づいて行をフィルター選択するための RLS セキュリティ ポリシーを作成します。この手順は、それぞれのシャード データベースに対して実行する必要があります。そうでないと、マルチテナント シャード内の行がフィルター選択されません。 
 
 
-## 手順 1) アプリケーション層: CONTEXT_INFO を TenantId に設定する
+## 手順 1) アプリケーション層: CONTEXT\_INFO を TenantId に設定する
 
-弾力性データベース クライアント ライブラリのデータ依存型ルーティング API を使用してシャード データベースに接続した後、アプリケーションは、RLS セキュリティ ポリシーを使って他のテナントに属している行を除外できるように、その接続を使用している TenantId をデータベースに通知する必要があります。この情報を渡すために推奨される方法は、[CONTEXT_INFO](https://msdn.microsoft.com/library/ms180125) を対象の接続の現在の TenantId に設定することです。Azure SQL Database では、CONTEXT_INFO がセッション固有の GUID で事前に作成されるため、行が誤ってリークしていないことを確認するために新しい接続に関するあらゆるクエリを実行する前には、CONTEXT_INFO を正しい TenantId に設定する必要があります。
+弾力性データベース クライアント ライブラリのデータ依存型ルーティング API を使用してシャード データベースに接続した後、アプリケーションは、RLS セキュリティ ポリシーを使って他のテナントに属している行を除外できるように、その接続を使用している TenantId をデータベースに通知する必要があります。この情報を渡すために推奨される方法は、[CONTEXT\_INFO](https://msdn.microsoft.com/library/ms180125) を対象の接続の現在の TenantId に設定することです。Azure SQL Database では、CONTEXT\_INFO がセッション固有の GUID で事前に作成されるため、行が誤ってリークしていないことを確認するために新しい接続に関するあらゆるクエリを実行する前には、CONTEXT\_INFO を正しい TenantId に設定する必要があります。
 
 ### Entity Framework
 
-Entity Framework を使用するアプリケーションの場合、最も簡単な方法は、[DbContext を使用したデータ依存型ルーティング](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md/#data-dependent-routing-using-ef-dbcontext)に関するセクションに説明されている ElasticScaleContext オーバーライドの中で CONTEXT_INFO を設定する方法です。データ依存型ルーティングで仲介された接続を返す前に、CONTEXT_INFO をその接続に指定された shardingKey (TenantId) に設定する SqlCommand を作成して実行します。この方法では、CONTEXT_INFO を設定するコードを 1 回記述するだけで済みます。
+Entity Framework を使用するアプリケーションの場合、最も簡単な方法は、[DbContext を使用したデータ依存型ルーティング](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md/#data-dependent-routing-using-ef-dbcontext)に関するセクションに説明されている ElasticScaleContext オーバーライドの中で CONTEXT\_INFO を設定する方法です。データ依存型ルーティングで仲介された接続を返す前に、CONTEXT\_INFO をその接続に指定された shardingKey (TenantId) に設定する SqlCommand を作成して実行します。この方法では、CONTEXT\_INFO を設定するコードを 1 回記述するだけで済みます。
 
 ```
 // ElasticScaleContext.cs 
@@ -103,7 +103,7 @@ public static SqlConnection OpenDDRConnection(ShardMap shardMap, T shardingKey, 
 // ... 
 ```
 
-これで、ElasticScaleContext が呼び出されるたびに、CONTEXT_INFO が指定された TenantId に自動的に設定されます。
+これで、ElasticScaleContext が呼び出されるたびに、CONTEXT\_INFO が指定された TenantId に自動的に設定されます。
 
 ```
 // Program.cs 
@@ -126,7 +126,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 ### ADO.NET SqlClient 
 
-ADO.NET SqlClient を使用したアプリケーションの場合、推奨される方法は、接続を返す前に CONTEXT_INFO を正しい TenantId に自動的に設定する ShardMap.OpenConnectionForKey() を囲むラッパー関数を作成する方法です。CONTEXT_INFO が常に正しく設定されていることを確認するには、このラッパー関数を使用して接続を開くだけです。
+ADO.NET SqlClient を使用したアプリケーションの場合、推奨される方法は、接続を返す前に CONTEXT\_INFO を正しい TenantId に自動的に設定する ShardMap.OpenConnectionForKey() を囲むラッパー関数を作成する方法です。CONTEXT\_INFO が常に正しく設定されていることを確認するには、このラッパー関数を使用して接続を開くだけです。
 
 ```
 // Program.cs
@@ -188,9 +188,9 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 ### SELECT クエリ、UPDATE クエリ、DELETE クエリをフィルター選択するためのセキュリティ ポリシーを作成します。 
 
-アプリケーションでクエリを実行する前に CONTEXT_INFO が現在の TenantId に設定されるようになったため、RLS セキュリティ ポリシーを使ってクエリをフィルター選択して、別の TenantId を持つ行を除外できます。
+アプリケーションでクエリを実行する前に CONTEXT\_INFO が現在の TenantId に設定されるようになったため、RLS セキュリティ ポリシーを使ってクエリをフィルター選択して、別の TenantId を持つ行を除外できます。
 
-RLS は T-SQL で実装されています。ユーザー定義の述語関数を使用してフィルター処理のロジックを定義し、セキュリティ ポリシーを使ってこの関数を任意の数のテーブルにバインドします。このプロジェクトでは、述語関数を使用して、(他の SQL ユーザーではなく) アプリケーションがデータベースに接続されていること、および CONTEXT_INFO の値が特定の行の TenantId と一致することを確認しているのみです。これらの条件を満たす行は、フィルターを通過して SELECT クエリ、UPDATE クエリ、DELETE クエリの対象となります。CONTEXT_INFO を設定しない場合、行は返されません。
+RLS は T-SQL で実装されています。ユーザー定義の述語関数を使用してフィルター処理のロジックを定義し、セキュリティ ポリシーを使ってこの関数を任意の数のテーブルにバインドします。このプロジェクトでは、述語関数を使用して、(他の SQL ユーザーではなく) アプリケーションがデータベースに接続されていること、および CONTEXT\_INFO の値が特定の行の TenantId と一致することを確認しているのみです。これらの条件を満たす行は、フィルターを通過して SELECT クエリ、UPDATE クエリ、DELETE クエリの対象となります。CONTEXT\_INFO を設定しない場合、行は返されません。
 
 RLS を有効にするには、Visual Studio (SSDT)、SSMS、またはプロジェクトに含まれる PowerShell スクリプトを使用して、すべてのシャードで次の T-SQL を実行します (また、[弾力性データベース ジョブ](sql-database-elastic-jobs-overview.md)を使用している場合は、これを使用してすべてのシャードでこの T-SQL の実行を自動化できます)。
 
@@ -262,7 +262,7 @@ GO
 
 ### 挿入用に TenantId を自動的に設定する既定の制約を追加する 
 
-CHECK 制約を使用して不適切なテナントの挿入をブロックすることに加え、行を挿入するときに TenantId に CONTEXT_INFO の現在の値を自動的に設定する既定の制約を各テーブルに配置できます。次に例を示します。
+CHECK 制約を使用して不適切なテナントの挿入をブロックすることに加え、行を挿入するときに TenantId に CONTEXT\_INFO の現在の値を自動的に設定する既定の制約を各テーブルに配置できます。次に例を示します。
 
 ```
 -- Create default constraints to auto-populate TenantId with the value of CONTEXT_INFO for inserts 
@@ -291,7 +291,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 }); 
 ```
 
-> [AZURE.NOTE]Entity Framework プロジェクトで既定の制約を使用する場合は、Entity Framework データ モデルに TenantId 列を含めないことをお勧めします。これは、Entity Framework のクエリでは既定値が自動的に指定され、T-SQL で作成された CONTEXT_INFO を使用する既定の制約が上書きされるためです。たとえば、サンプル プロジェクトで既定の制約を使用するには、DataClasses.cs から TenantId を削除し (さらにパッケージ マネージャー コンソールで Add-Migration を実行し)、T-SQL を使ってフィールドがデータベース テーブルにのみ存在することを確認します。これにより、データを挿入するときに Entity Framework によって不適切な既定値が自動的に指定されなくなります。
+> [AZURE.NOTE]Entity Framework プロジェクトで既定の制約を使用する場合は、Entity Framework データ モデルに TenantId 列を含めないことをお勧めします。これは、Entity Framework のクエリでは既定値が自動的に指定され、T-SQL で作成された CONTEXT\_INFO を使用する既定の制約が上書きされるためです。たとえば、サンプル プロジェクトで既定の制約を使用するには、DataClasses.cs から TenantId を削除し (さらにパッケージ マネージャー コンソールで Add-Migration を実行し)、T-SQL を使ってフィールドがデータベース テーブルにのみ存在することを確認します。これにより、データを挿入するときに Entity Framework によって不適切な既定値が自動的に指定されなくなります。
 
 ### (省略可能) すべての行にアクセスするには "superuser" を有効にします。
 一部のアプリケーションは、すべてのシャード上のすべてのテナント間でレポート作成を有効にするために、またはテナントの行をデータベース間で移行する分割 / マージ操作をシャードで実行するために、すべての行にアクセスできる "superuser" を作成できます。これを可能にするには、新しい SQL ユーザー (この例では "superuser") を各シャード データベースに作成してください。そして、このユーザーがすべての行にアクセスできるようにする新しいの述語関数を使用して、セキュリティ ポリシーを変更してください。
@@ -340,4 +340,4 @@ GO
 [1]: ./media/sql-database-elastic-tools-multi-tenant-row-level-security/blogging-app.png
 <!--anchors-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure モバイル エンゲージメント iOS SDK の概要" 
+<properties
+	pageTitle="Azure モバイル エンゲージメント iOS SDK の概要"
 	description="Azure モバイル エンゲージメント用 iOS SDK の最新の更新プログラムと手順"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-ios" 
-	ms.devlang="objective-c" 
-	ms.topic="article" 
-	ms.date="07/28/2015" 
-	ms.author="piyushjo" />
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="08/05/2015"
+	ms.author="MehrdadMzfr" />
 
 #iOS SDK for Azure Mobile Engagement
 
@@ -32,9 +32,9 @@
 
 ##リリース ノート
 
-###2\.2.0 (05/21/2015)
+##3\.0.0 (08/05/2015)
 
--   iOS 6 より前のデバイスでは、Mobile Engagement のデバイス ID がインストール時に生成された GUID に基づくようになりました。
+-   Mobile Engagement では、サイレント プッシュ通知が使用されます。
 
 以前のバージョンについては、「[完全リリース ノート](mobile-engagement-ios-release-notes.md)」をご覧ください。
 
@@ -48,6 +48,5 @@ SDK のいくつかのバージョンがない場合は、次の手順に従う�
 
 ###2\.0.0 から 2.1.0 に移行
 ありません。
- 
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

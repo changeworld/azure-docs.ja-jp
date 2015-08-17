@@ -40,7 +40,7 @@ Application Insights リソースは、アプリのテレメトリ データが�
 
 ![](./media/app-insights-web-track-usage/02-monitor-web-page.png)
 
-(.NET の) _Layout.cshtml などのマスター ページや、インクルード ファイルにコードを配置して、すべてのページにそれが含まれていることを確認します。
+すべてのページに含まれるように、コードを (.NET の) \_Layout.cshtml などのマスター ページまたはインクルード ファイルに配置します。
 
 コード スニペットには、リソースを識別するインストルメンテーション キー (iKey) が含まれています。たとえば、テスト中に個別のリソースにデータを送信するには、iKey を置き換える必要があります。
 
@@ -371,4 +371,4 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

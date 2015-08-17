@@ -115,4 +115,4 @@ Microsoft **Data Management Gateway** は、オンプレミスのデータ ソ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

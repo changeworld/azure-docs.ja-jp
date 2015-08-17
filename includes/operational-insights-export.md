@@ -8,4 +8,4 @@
 2. ブラウザーで、.csv ファイルを保存するように求められます。ファイルを開くか保存します。
 3. そのファイルを、Excel またはその他のアプリケーションで開きます。データを確認して任意の方法でカスタマイズします。![Excel の結果](./media/operational-insights-export/export-excel.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

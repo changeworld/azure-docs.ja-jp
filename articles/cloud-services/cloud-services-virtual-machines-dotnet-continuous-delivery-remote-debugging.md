@@ -95,4 +95,4 @@
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure AD でのユーザーの作成または編集" 
-	description="Azure AD でユーザー アカウントを作成または編集する方法を説明するトピックです。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
-	editor="LisaToft"/>
+<properties
+	pageTitle="Azure AD でのユーザーの作成または編集"
+	description="Azure AD でユーザー アカウントを作成または編集する方法を説明するトピックです。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="stevepo"
+	editor=""/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/05/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/31/2015"
+	ms.author="curtand"/>
 
 # Azure AD でのユーザーの作成または編集
 
@@ -24,10 +24,10 @@ Microsoft クラウド サービスにアクセスするユーザーごとにア
 
 1. **[Active Directory]** をクリックして、組織のディレクトリの名前をクリックします。
 2. **[ユーザー]** ページで、**[ユーザーの追加]** をクリックします。
-3. **[このユーザーの説明 (Tell us about this user)]** ページで、**[ユーザーの種類 (Type of User)]** に対して、次のいずれかを選択します。 
+3. **[このユーザーの説明 (Tell us about this user)]** ページで、**[ユーザーの種類 (Type of User)]** に対して、次のいずれかを選択します。
 	1. **[組織内の新規ユーザー (New user in your organization)]** – 新しいユーザー アカウントを作成して、ディレクトリ内で管理することを示します。
-	2. **[既存の Microsoft アカウントを持つユーザー (User with an existing Microsoft account)]** – Microsoft アカウントを使って Azure にアクセスする共同管理者と Azure リソースで共同作業するために、ディレクトリに既存の Microsoft アカウントを追加することを示します。	
-	3. **[別の Azure AD ディレクトリ内のユーザー (User in another Azure AD directory)]** – 別の Azure AD ディレクトリに属しているユーザー アカウントを対象のディレクトリに追加することを示します。その別のディレクトリ内のユーザーを選択するには、そのディレクトリのメンバーである必要があります。 
+	2. **[既存の Microsoft アカウントを持つユーザー (User with an existing Microsoft account)]** – Microsoft アカウントを使って Azure にアクセスする共同管理者と Azure リソースで共同作業するために、ディレクトリに既存の Microsoft アカウントを追加することを示します。
+	3. **[別の Azure AD ディレクトリ内のユーザー (User in another Azure AD directory)]** – 別の Azure AD ディレクトリに属しているユーザー アカウントを対象のディレクトリに追加することを示します。その別のディレクトリ内のユーザーを選択するには、そのディレクトリのメンバーである必要があります。
 4. 選択したオプションに応じて、ユーザー名、またはそのユーザーがサインインに使用する Microsoft アカウント名のどちらかを入力します。
 5. ユーザーの **[プロファイル]** ページで、ユーザーの姓と名、わかりやすい名前、[ロール] ドロップダウン メニューからのユーザー ロールを入力します。ユーザーおよび管理者のロールの詳細については、「[Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。**多要素認証を有効にする**かどうかを指定します。
 6. **[一時パスワードの取得 (Get temporary password)]** ページで、**[作成]** をクリックします。
@@ -40,7 +40,7 @@ Microsoft クラウド サービスにアクセスするユーザーごとにア
 ## ユーザーの編集
 
 編集しようとしているユーザーがオンプレミスの Active Directory サービスと同期している場合、エラー メッセージが表示され、この手順を使用してユーザーを編集することができなくなります。このユーザーを編集するには、ローカルの Active Directory 管理ツールを使用します。
- 
+
 Microsoft Azure の管理ポータルでユーザーを編集するには、次の手順を実行します。
 
 1. **[Active Directory]** をクリックして、組織のディレクトリの名前をクリックします。
@@ -110,6 +110,5 @@ Azure AD では、別の Azure AD ディレクトリからのユーザーや、M
 <!--Image references-->
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

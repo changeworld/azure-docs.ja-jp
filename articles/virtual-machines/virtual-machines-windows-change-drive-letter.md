@@ -64,4 +64,4 @@ D ドライブの既存のデータ ディスクを使用する場合は、そ�
 
 [Storage]: ../storage-whatis-account.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

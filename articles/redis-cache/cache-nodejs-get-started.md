@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="cache-redis"
    ms.workload="required"
-   ms.date="04/30/2015"
+   ms.date="08/04/2015"
    ms.author="mwasson"/>
 
 # Node.js で Azure Redis Cache を使用する方法
@@ -25,11 +25,11 @@ Azure Redis Cache を使用すると、Microsoft が管理している、セキ�
 
 ## 前提条件
 
-次のコマンドで、[node_redis](https://github.com/mranney/node_redis) をインストールします。
+次のコマンドで、[node\_redis](https://github.com/mranney/node_redis) をインストールします。
 
     npm install redis
 
-このチュートリアルでは [node_redis](https://github.com/mranney/node_redis) を使用しますが、[http://redis.io/clients](http://redis.io/clients) に記載されている任意の Node.js クライアントを使用できます。
+このチュートリアルでは [node\_redis](https://github.com/mranney/node_redis) を使用しますが、[http://redis.io/clients](http://redis.io/clients) に記載されている任意の Node.js クライアントを使用できます。
 
 ## Azure で Redis Cache を作成する
 
@@ -50,7 +50,7 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 ## 非 SSL エンドポイントを有効にする
 
 
-**[ポート]** の下のリンクをクリックし、[SSL 経由でのみアクセスを許可する] に対して **[いいえ]** をクリックします。これにより、キャッシュに対して非 SSL ポートが有効になります。現在、node_redis クライアントは SSL をサポートしていません。
+**[ポート]** の下のリンクをクリックし、[SSL 経由でのみアクセスを許可する] に対して **[いいえ]** をクリックします。これにより、キャッシュに対して非 SSL ポートが有効になります。現在、node\_redis クライアントは SSL をサポートしていません。
 
   ![][3]
 
@@ -91,4 +91,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 
 [Socket.IO を使用した Node.js チャット アプリケーションの構築]: ../app-service-web/web-sites-nodejs-chat-app-socketio.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

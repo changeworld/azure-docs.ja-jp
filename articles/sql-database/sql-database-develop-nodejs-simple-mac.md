@@ -170,4 +170,4 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 		connection.execSql(request);
 	}
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

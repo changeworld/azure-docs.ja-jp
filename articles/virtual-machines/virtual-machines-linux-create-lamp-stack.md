@@ -110,7 +110,7 @@ SSH ツールを選択すると、新しい仮想マシンに接続できます�
 
 ![][9]
 
-左側のウィンドウで、**[接続]、[SSH]、[認証]** の順にクリックし、**[参照]** をクリックして **privateKey.ppk** ファイルの場所を指定します。このファイルには、「フェーズ 1: イメージを作成する」で puttygen によって生成された秘密キーが含まれています。たとえば次のようになります。
+左側のウィンドウで、**[接続] -> [SSH] -> [認証]** の順にクリックし、**[参照]** をクリックして **privateKey.ppk** ファイルの場所を指定します。このファイルには、「フェーズ 1: イメージを作成する」で puttygen によって生成された秘密キーが含まれています。たとえば次のようになります。
 
 ![][10]
 
@@ -142,7 +142,7 @@ Apache をインストールするには、ターミナルを開いて次のコ�
 
 	sudo service httpd start
 ####Apache のテスト
-Apache が正常にインストールされたかどうかを確認するには、Apache サーバーの DNS 名を参照します (この記事のサンプル URL の場合は、http://lampdemo.cloudapp.net/))。ページには "It works! (成功です)" と表示されます。![][14]
+Apache が正常にインストールされたかどうかを確認するには、Apache サーバーの DNS 名を参照します (この記事のサンプル URL の場合は、http://lampdemo.cloudapp.net/))。ページには「It works! (成功です)」と表示されます。![][14]
 
 ####トラブルシューティング
 Apache は実行されているが、上述の Apache の既定ページが表示されない場合は、次の項目を確認する必要があります。
@@ -452,4 +452,4 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 [18]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-18.jpg
  
 
-<!-----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -105,7 +105,7 @@ Twilio は、Node.js ライブラリを提供します。このライブラリ�
 		  "keywords":[]
 		}
 
-	>[AZURE.NOTE]Twilio の dependency は、`"twilio": "~1.7.0"` のように (~) が追加されます。caret (^) を用いた参照はサポートされていません。
+	>[AZURE.NOTE]Twilio の dependency は、`"twilio": "~1.7.0"` のように (\~) が追加されます。caret (^) を用いた参照はサポートされていません。
 
 4. このファイルへの更新をコミットし、更新をモバイル サービスにプッシュします。
 
@@ -170,7 +170,7 @@ Twilio は、Node.js ライブラリを提供します。このライブラリ�
 
 アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、client.InitiateOutboundCall メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。「方法: 発信通話する」の例では、Twilio から提供される URL http://twimlets.com/message を使用して応答を返します。
 
-> [AZURE.NOTE]TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[twimlet_message_url](http://twimlets.com/message) をクリックすると、空の <Response> 要素が表示されます。もう 1 つの例として、[twimlet_message_url_hello_world](http://twimlets.com/message?Message%5B0%5D=Hello%20World) をクリックすると、&lt;Say&gt; 要素を格納している &lt;Response&gt; 要素が表示されます。
+> [AZURE.NOTE]TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[twimlet\_message\_url](http://twimlets.com/message) をクリックすると、空の <Response> 要素が表示されます。もう 1 つの例として、[twimlet\_message\_url\_hello\_world](http://twimlets.com/message?Message%5B0%5D=Hello%20World) をクリックすると、&lt;Say&gt; 要素を格納している &lt;Response&gt; 要素が表示されます。
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。HTTP 応答を返すサイトは、任意の言語で作成できます。このトピックでは、ASP.NET 汎用ハンドラーから URL をホストすることを想定しています。
 
@@ -207,7 +207,7 @@ TwiML 応答を提供する方法をセットアップしたら、次のコー�
         });
     };
 
-[AZURE.INCLUDE [twilio_additional_services_and_next_steps](../../includes/twilio_additional_services_and_next_steps.md)]
+[AZURE.INCLUDE [twilio\_additional\_services\_and\_next\_steps](../../includes/twilio_additional_services_and_next_steps.md)]
 
 
 [twilio_rest_making_calls]: http://www.twilio.com/docs/api/rest/making-calls
@@ -230,4 +230,4 @@ TwiML 応答を提供する方法をセットアップしたら、次のコー�
 [azure_twilio_howto_php]: /develop/php/how-to-guides/twilio-voice-and-sms-service/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

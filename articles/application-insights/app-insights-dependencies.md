@@ -27,7 +27,7 @@
 * IIS サーバーまたは Azure で実行されている ASP.NET Web アプリおよびサービス
 * [Java Web アプリ](app-insights-java-agent.md)
 
-デバイス アプリなど、それ以外の種類では、TrackDependency API を使用して独自のモニターを作成できます。
+デバイス アプリなどのそれ以外の種類では、[TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) を使用して独自のモニターを作成できます。
 
 すぐに使用できる依存関係モニターは現在、次の種類の依存関係の呼び出しを報告します。
 
@@ -37,7 +37,7 @@
  * ローカルまたはリモートの HTTP 呼び出し
  * Azure DocumentDb、テーブル、BLOB ストレージ、およびキュー
 * Java
- * MySQL、SQL Server、PostgreSQL、SQLite など、[JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/) ドライバーを使用したデータベースの呼び出し
+ * MySQL、SQL Server、PostgreSQL、SQLite などの [JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/) ドライバーを使用したデータベースの呼び出し
 
 この場合も、他の依存関係を監視するための独自の SDK 呼び出しを作成できます。
 
@@ -53,7 +53,7 @@ Java Web サーバー | [Java Web アプリ](app-insights-java-agent.md)
 
 IIS サーバー用の Status Monitor では、Application Insights SDK を使用してソース プロジェクトをリビルドする必要はありません。
 
-## <a name="diagnosis"></a> 依存関係のパフォーマンスの問題の診断
+## <a name="diagnosis"></a>依存関係のパフォーマンスの問題の診断
 
 サーバーでの要求のパフォーマンスを評価するには、次のようにします。
 
@@ -129,4 +129,4 @@ IIS サーバー用の Status Monitor では、Application Insights SDK を使�
 
 <!--Link references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

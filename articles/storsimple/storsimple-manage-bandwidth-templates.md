@@ -176,4 +176,4 @@ StorSimple デバイスに関する次のベスト プラクティスに従っ�
 
 [StorSimple コンポーネント](storsimple-components.md)の詳細
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

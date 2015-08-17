@@ -376,12 +376,7 @@ API アプリから Dropbox API を呼び出すことができるようにする
 
 		browser.Navigate(string.Format(@"{0}/login/aad", GATEWAY_URL));
 
-	他のプロバイダーで使用する値を次に示します:
-	* "microsoftaccount"
-	* "facebook"
-	* "twitter"
-	* "google"
-<br/><br/>
+	他のプロバイダーで使用する値を次に示します: * "microsoftaccount" * "facebook" * "twitter" * "google"<br/><br/>
 
 * `GetConsentLinkAsync()` メソッドの 2 番目のパラメーターは、ユーザーが Dropbox にログインしてユーザー アカウントへのアクセスに同意した後に、同意サーバーによりリダイレクトされるコールバック URL です。
 
@@ -425,7 +420,7 @@ API アプリから Dropbox API を呼び出すことができるようにする
 
 ![](./media/app-service-api-dotnet-connect-to-saas/http405.png)
 
-メソッドが許可されていないことを示す 405 エラーが表示されるのは、クライアントが非 SSL の HTTP POST 要求を試みたところ、ゲートウェイにより *https://* にリダイレクトされ、その結果 GET 要求が返されることが原因です。同意のリンクを取得するための URL で受け取ることができるのは、POST 要求のみです。
+メソッドが許可されていないことを示す 405 エラーが表示されるのは、クライアントが非 SSL の HTTP POST 要求を試みたところ、ゲートウェイにより **https://* にリダイレクトされ、その結果 GET 要求が返されることが原因です。同意のリンクを取得するための URL で受け取ることができるのは、POST 要求のみです。
 
 ### <a id="400"></a>Dropbox ログイン ページの代わりに表示される HTTP エラー 400
 
@@ -450,8 +445,6 @@ Dropbox ログイン後のリダイレクト URL は、次の例のようにな�
 SaaS プラットフォームに接続する API アプリのコード記述と構成の方法について説明しました。API アプリでの認証を処理する方法に関するその他のチュートリアルへのリンクについては、[API Apps と Mobile Apps の認証に関するページの「次のステップ」](../app-service/app-service-authentication-overview.md#next-steps)を参照してください。
 
 [Azure preview portal]: https://portal.azure.com/
-[Azure プレビュー ポータル]: https://portal.azure.com/
 [Azure portal]: https://manage.windowsazure.com/
-[Azure ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

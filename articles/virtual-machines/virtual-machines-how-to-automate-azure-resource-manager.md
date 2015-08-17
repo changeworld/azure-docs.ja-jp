@@ -72,4 +72,4 @@ Azure リソース マネージャーを使用すると、Azure インフラス�
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

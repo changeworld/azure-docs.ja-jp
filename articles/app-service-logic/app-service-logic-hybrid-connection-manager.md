@@ -84,7 +84,7 @@ TCP ポート | 理由
  - IIS Manager (inetmgr) に、MicrosoftAzureBizTalkHybridListener Web サイトが表示され、実行中である必要があります。 
  - この Web サイトは、NetworkService ローカル組み込みユーザー アカウントとして実行される HybridListenerAppPool を使用します。この AppPool も開始されている必要があります。
 3. IIS サーバーで、コネクタがインストールされ、実行されていることを確認します。 
- - App Service コネクタ用の Web サイトが作成されます。たとえば、SQL コネクタを作成した場合は、MicrosoftSqlConnector_nnn Web サイトが存在します。IIS マネージャー (inetmgr) で、この web サイトが表示され、開始されていることを確認します。 
+ - App Service コネクタ用の Web サイトが作成されます。たとえば、SQL コネクタを作成した場合は、MicrosoftSqlConnector\_nnn Web サイトが存在します。IIS マネージャー (inetmgr) で、この web サイトが表示され、開始されていることを確認します。 
  - この Web サイトは、HybridAppPoolnnn という名前の専用の IIS アプリケーション プールを使用します。この AppPool は、NetworkService ローカル組み込みユーザー アカウントとして実行されます。この Web サイトと AppPool の両方が開始されている必要があります。 
  - ローカル コネクタを参照します。たとえば、コネクタ Web サイトがポート 6569 を使用する場合は、http://localhost:6569を参照します。既定のドキュメントが構成されていないため、`HTTP Error 403.14 - Forbidden error` が予期されます。
 4. ファイアウォールで、このトピックに示されている TCP ポートが開いていることを確認します。
@@ -133,4 +133,4 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

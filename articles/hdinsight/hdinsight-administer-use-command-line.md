@@ -158,4 +158,4 @@ Azure ポータルを使用して情報を取得する方法の詳細につい�
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

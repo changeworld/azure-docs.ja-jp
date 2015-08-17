@@ -12,9 +12,10 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="dotnet"
-	ms.topic="get-started-article" 
+	ms.topic="hero-article" 
 	ms.date="06/16/2015"
 	ms.author="wesmc"/>
+	
 # 通知ハブの使用
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -94,7 +95,7 @@
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
 
-5. App.xaml.cs 内の **Application_Launching** メソッドの先頭に、次のコードを追加します。
+5. App.xaml.cs 内の **Application\_Launching** メソッドの先頭に、次のコードを追加します。
 
 	    var channel = HttpNotificationChannel.Find("MyPushChannel");
         if (channel == null)
@@ -114,7 +115,7 @@
 
 	>[AZURE.NOTE]このチュートリアルでは、トースト通知がデバイスに送信されます。タイル通知を送信する場合は、チャネルの **BindToShellTile** メソッドを呼び出す必要があります。トースト通知とタイル通知の両方をサポートするには、**BindToShellTile** と **BindToShellToast** の両方を呼び出します。
 
-6. ソリューション エクスプローラーで **[プロパティ]** を展開して WMAppManifest.xml ファイルを開き、**[機能]** タブで **ID_CAP_PUSH_NOTIFICATION** 機能がオンであることを確認します。
+6. ソリューション エクスプローラーで **[プロパティ]** を展開して WMAppManifest.xml ファイルを開き、**[機能]** タブで **ID\_CAP\_PUSH\_NOTIFICATION** 機能がオンであることを確認します。
 
    	![][14]
 
@@ -215,4 +216,4 @@ MSDN の[トースト カタログ]および[タイル カタログ]に関する
 [Notification Hub - WP Silverlight チュートリアル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Service Fabric アクターの概要"
-   description="Azure Service Fabric アクターのイベントの概要"
+   pageTitle="高信頼アクターのイベント"
+   description="Service Fabric 高信頼アクターのイベントの概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/09/2015"
+   ms.date="08/05/2015"
    ms.author="amanbha"/>
 
 
@@ -22,7 +22,7 @@
 
 次のコード スニペットは、アプリケーションでアクター イベントを使用する方法を示しています。
 
-アクターによって公開されたイベントを表すインターフェイスを定義します。このインターフェイスは、`IActorEvents` インターフェイスから派生する必要があります。メソッドの引数は、[データ コントラクト シリアル化可能](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)である必要があります。イベント通知が一方向かつベスト エフォートであるため、メソッドは void を返す必要があります。
+アクターによって発行されたイベントを表すインターフェイスを定義します。このインターフェイスは、`IActorEvents` インターフェイスから派生する必要があります。メソッドの引数は、[データ コントラクト シリアル化可能](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)である必要があります。イベント通知が一方向かつベスト エフォートであるため、メソッドは void を返す必要があります。
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -31,7 +31,7 @@ public interface IGameEvents : IActorEvents
 }
 ```
 
-アクター インターフェイスで、アクターによって公開されたイベントを宣言します。
+アクター インターフェイスで、アクターによって発行されたイベントを宣言します。
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -55,7 +55,7 @@ class GameEventsHandler : IGameEvents
 }
 ```
 
-クライアント側で、イベントを公開するアクターに対してプロキシを作成し、そのイベントをサブスクライブします。
+クライアント側で、イベントを発行するアクターに対してプロキシを作成し、そのイベントをサブスクライブします。
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -65,11 +65,11 @@ proxy.SubscribeAsync(new GameEventsHandler()).Wait();
 
 フェールオーバーが発生した場合、アクターは別のプロセスまたはノードにフェールオーバーする可能性があります。アクター プロキシは、アクティブなサブスクリプションを管理し、自動的に再サブスクライブします。`ActorProxyEventExtensions.SubscribeAsync<TEvent>` API を介して、再サブスクリプションの間隔を制御できます。サブスクリプションを解除するには、`ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API を使用します。
 
-アクターで、イベントが発生したときに単純に公開します。イベントをサブスクライブしているユーザーがいる場合、アクター ランタイムはこれらのユーザーに通知を送信します。
+アクターで、イベントが発生したときに単純に発行します。イベントをサブスクライブしているユーザーがいる場合、アクター ランタイムはこれらのユーザーに通知を送信します。
 
 ```csharp
 var ev = GetEvent<IGameEvents>();
 ev.GameScoreUpdated(Id.GetGuidId(), State.Status.Score);
 ```
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

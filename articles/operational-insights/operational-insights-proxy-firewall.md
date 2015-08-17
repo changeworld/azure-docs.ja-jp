@@ -9,7 +9,7 @@
 <tags
    ms.service="operational-insights"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="07/21/2015"
@@ -102,18 +102,18 @@ Operations Manager エージェントが Operational Insights サービスと通
 |*.ods.opinsights.azure.com|ポート 443| |service.systemcenteradvisor.com|ポート 443| |scadvisor.accesscontrol.windows.net|ポート 443| |scadvisorservice.accesscontrol.windows.net|ポート 443| |*.blob.core.windows.net/*|ポート 443|
 |data.systemcenteradvisor.com|ポート 443|
 |ods.systemcenteradvisor.com|ポート 443|
-|*.systemcenteradvisor.com|ポート 443|
+|**.systemcenteradvisor.com|ポート 443|
 
 
 |**Operational Insights と Operations Manager のコンソール リソース**|**ポート**|
 |---|---|
 |*.systemcenteradvisor.com|ポート 80 および 443| |*.live.com|ポート 80 と 443|
-|*.microsoftonline.com|ポート 80 および 443| |login.windows.net|ポート 80 および 443|
+|**.microsoftonline.com|ポート 80 および 443| |login.windows.net|ポート 80 および 443|
 
 
 次の手順に従って Operations Manager 管理グループを Operational Insights サービスに登録します。管理グループと Operational Insights サービス間で通信の問題が発生する場合、検証手順を使用して Operational Insights サービスへのデータ送信のトラブルシューティングを行います。
 
-### Operational Insights サービスのエンドポイントの例外を要求するには
+### Operational Insights サービス エンドポイントの例外を要求するには
 
 1. 前述の最初のテーブルからの情報を使用して、Operations Manager 管理サーバーに必要なリソースが、ファイアウォール経由でアクセスできることを確認します。
 
@@ -129,7 +129,7 @@ Operations Manager エージェントが Operational Insights サービスと通
 
 3. [Operational Insights の接続] ビューで、**[プロキシ サーバーの構成]** をクリックします。![Operations Manager Operational Insights Connection Configure Proxy Server](./media/operational-insights-proxy-firewall/proxy-om02.png)
 
-4. [Operational Insights 設定ウィザード: プロキシ サーバー] で **[プロキシ サーバーを使用して Operational Insights Web サービスにアクセスする]** を選択して、ポート番号と URL を入力します (例: **http://myproxy:80**)。![Operations Manager Operational Insights proxy address](./media/operational-insights-proxy-firewall/proxy-om03.png)
+4. [Operational Insights 設定ウィザード: プロキシ サーバー] で **[Operational Insights Web サービスへのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力します (例: ****http://myproxy:80**. ![Operations Manager Operational Insights proxy address](./media/operational-insights-proxy-firewall/proxy-om03.png))。
 
 
 ### プロキシ サーバーで認証が必要な場合の資格情報を指定するには
@@ -166,4 +166,4 @@ Operations Manager エージェントが Operational Insights サービスと通
 3. **HTTP** から始まるすべてのカウンターを追加します。![add counters](./media/operational-insights-proxy-firewall/sendingdata1.png)
 4. Operations Manager の構成が適切であれば、Operational Insights と構成済みのログ収集ポリシーで追加した、管理パックに基づく Health Service Management カウンターのイベントやその他のデータ アイテムにおけるアクティビティが表示されます。![Performance Monitor showing activity](./media/operational-insights-proxy-firewall/sendingdata2.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

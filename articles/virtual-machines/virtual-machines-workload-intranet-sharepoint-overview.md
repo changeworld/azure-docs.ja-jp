@@ -70,4 +70,4 @@ SharePoint と SQL Server AlwaysOn 可用性グループの追加情報につい
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="パイプラインが内部設置型のデータを扱えるようにする | Azure Data Factory" 
-	description="内部設置型のデータ ソースを Azure データ ファクトリに登録し、データをデータ ソース間でコピーする方法について説明します。" 
+	pageTitle="パイプラインがオンプレミスのデータを扱えるようにする | Azure Data Factory" 
+	description="オンプレミスのデータ ソースを Azure データ ファクトリに登録し、データをデータ ソース間でコピーする方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -16,11 +16,11 @@
 	ms.date="07/10/2015" 
 	ms.author="spelluru"/>
 
-# パイプラインが内部設置型のデータを扱えるようにする
+# パイプラインがオンプレミスのデータを扱えるようにする
 
-Azure データ ファクトリ内のパイプラインが内部設置型のデータを扱えるようにするには、Azure 管理ポータルまたは Azure PowerShell を使用し、内部設置型のデータ ソースをリンクされたサービスとしてデータ ファクトリに追加する必要があります。
+Azure データ ファクトリ内のパイプラインがオンプレミスのデータを扱えるようにするには、Azure 管理ポータルまたは Azure PowerShell を使用し、オンプレミスのデータ ソースをリンクされたサービスとしてデータ ファクトリに追加する必要があります。
  
-内部設置型のデータ ソースをリンクされたサービスとしてデータ ファクトリに追加できるようにするには、まず Microsoft Data Management Gateway をダウンロードして内部設置型のコンピューターにインストールし、内部設置型のデータ ソースがゲートウェイを使用できるようにリンクされたサービスを構成する必要があります。
+オンプレミスのデータ ソースをリンクされたサービスとしてデータ ファクトリに追加できるようにするには、まず Microsoft Data Management Gateway をダウンロードしてオンプレミスのコンピューターにインストールし、オンプレミスのデータ ソースがゲートウェイを使用できるようにリンクされたサービスを構成する必要があります。
 
 
 ## <a href="DMG"></a>Data Management Gateway
@@ -33,14 +33,14 @@ Azure データ ファクトリ内のパイプラインが内部設置型のデ�
 - **データを効率的に移動する** - データは並列に転送されます。自動再試行ロジックにより、断続的なネットワークの問題にも対応できます。
 
 
-Data Management Gateway が持つ幅広い内部設置型のデータ接続能力には、以下が含まれます。
+Data Management Gateway が持つ幅広いオンプレミスのデータ接続能力には、以下が含まれます。
 
 - **企業のファイアウォールに影響を及ぼさない** - ファイアウォール接続を開いたり、企業のネットワーク インフラストラクチャに影響する変更を行ったりする必要なく、Data Management Gateway はインストール後すぐに機能します。 
 - **証明書を使用して資格情報を暗号化する** - データ ソースへの接続に使用される資格情報は、ユーザーが完全に所有する証明書を使用して暗号化されます。証明書を持たなければ、資格情報をプレーン テキストへと復号することは Microsoft を含めだれにもできません。
 
 ### Data Management Gateway を使用する上で考慮すること
 1.	Data Management Gateway の 1 つのインスタンスを複数のオンプレミス データ ソースに使用できますが、**ゲートウェイは Azure Data Factory に関連付けられており**、別のデータ ファクトリと共有することはできないことに注意してください。
-2.	コンピューターには、**Data Management Gateway のインスタンスを 1 つだけ**インストールできます。例えば、内部設置型のデータ ソースにアクセスする必要があるデータ ファクトリが 2 つあるとすると、内部設置型のコンピューター 2 台にゲートウェイをインストールし、各ゲートウェイを別々のデータ ファクトリに結び付ける必要があります。
+2.	コンピューターには、**Data Management Gateway のインスタンスを 1 つだけ**インストールできます。例えば、オンプレミスのデータ ソースにアクセスする必要があるデータ ファクトリが 2 つあるとすると、オンプレミスのコンピューター 2 台にゲートウェイをインストールし、各ゲートウェイを別々のデータ ファクトリに結び付ける必要があります。
 3.	**ゲートウェイはデータ ソースと同じコンピューター上に存在する必要はありませんが**、データ ソースの近くにあると、ゲートウェイがデータ ソースに接続する際の時間が短縮されます。ゲートウェイとデータ ソースの間でリソースの競合が発生しないように、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにゲートウェイをインストールすることをお勧めします。
 4.	**同じオンプレミス データ ソースに接続する異なるコンピューターで複数のゲートウェイを使用**できます。たとえば、2 つのデータ ファクトリを提供する 2 つのゲートウェイがあり、どちらのデータ ファクトリにも同じオンプレミス データ ソースが登録されている場合があります。 
 5.	**Power BI** のシナリオを提供するゲートウェイがコンピューターに既にインストールされている場合は、**Azure Data Factory 用のゲートウェイ**を別のコンピューターにインストールしてください。
@@ -67,7 +67,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 ## チュートリアル
 
-このチュートリアルでは、内部設置型の SQL Server データベースから、Azure BLOB にデータを移動するパイプラインを備えたデータ ファクトリを作成します。
+このチュートリアルでは、オンプレミスの SQL Server データベースから、Azure BLOB にデータを移動するパイプラインを備えたデータ ファクトリを作成します。
 
 ## 手順 1. Azure Data Factory を作成する
 この手順では、Azure 管理ポータルを使用して **ADFTutorialOnPremDF** という名前の Azure Data Factory インスタンスを作成します。Azure Data Factory のコマンドレットを使用してデータ ファクトリを作成することもできます。
@@ -148,12 +148,12 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 8. すべてのブレードを閉じて、**Data Factory** のホーム ページに戻ります。 
 
 ## 手順 2. リンク サービスを作成する 
-この手順では、**StorageLinkedService** と **SqlServerLinkedService** の 2 つのリンク サービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server データベースをリンクし、**StorageLinkedService** は Azure BLOB ストアを **ADFTutorialDataFactory** にリンクします。このチュートリアルの後半で、内部設置型の SQL Server データベースから Azure BLOB ストアにデータをコピーするパイプラインを作成します。
+この手順では、**StorageLinkedService** と **SqlServerLinkedService** の 2 つのリンク サービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server データベースをリンクし、**StorageLinkedService** は Azure BLOB ストアを **ADFTutorialDataFactory** にリンクします。このチュートリアルの後半で、オンプレミスの SQL Server データベースから Azure BLOB ストアにデータをコピーするパイプラインを作成します。
 
-### 内部設置型の SQL Server データベースにリンクされたサービスを追加する
+### オンプレミスの SQL Server データベースにリンクされたサービスを追加する
 1.	**[DATA FACTORY]** ブレードで **[作成とデプロイ]** タイルをクリックして、Data Factory **エディター**を起動します。
 
-	![タイルの作成とデプロイ][image-author-deploy-tile]
+	![Author and Deploy Tile][image-author-deploy-tile]
 
 	Data Factory エディターの詳細については、トピック「[Data Factory エディター][data-factory-editor]」を参照してください。
 
@@ -167,7 +167,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 	1.	**gatewayName** プロパティで、「**adftutorialgateway**」と入力して、二重引用符で囲まれたすべてのテキストを置き換えます。  
 	2.	**SQL 認証**を使用している場合は、次の手順を実行します。 
 		1.	**connectionString** プロパティで、**<servername>**、**<databasename>**、**<username>**、**<password>** をオンプレミスの SQL Server 名、データベース名、ユーザー アカウント名、パスワードにそれぞれ置き換えます。インスタンス名を指定するには、エスケープ文字 \\ を使用します。たとえば、**server\\instancename** と指定します。 	
-		2.	JSON ファイルから最後の 2 つのプロパティ (\*\*username\*\* と **password**) を削除し、残りの JSON スクリプトの最後の行の末尾にある**コンマ (,)** を削除します。
+		2.	JSON ファイルから最後の 2 つのプロパティ (**username** と **password**) を削除し、残りの JSON スクリプトの最後の行の末尾にある**コンマ (,)** を削除します。
 		
 				{
 				  "name": "SqlServerLinkedService",
@@ -220,14 +220,14 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
  
 ## 手順 3. 入力データセットと出力データセットを作成する
-このステップでは、コピー操作 (内部設置型の SQL Server データベース => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。データセットまたはテーブル (四角形のデータセット) を作成する前に、以下を実施する必要があります (一覧の後に詳細な手順があります)。
+このステップでは、コピー操作 (オンプレミスの SQL Server データベース => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。データセットまたはテーブル (四角形のデータセット) を作成する前に、以下を実施する必要があります (一覧の後に詳細な手順があります)。
 
 - リンク サービスとしてデータ ファクトリに追加した SQL Server Database 内に "**emp**" という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
 - - 「[Azure Data Factory を使ってみる][adfgetstarted]」のチュートリアルを終えていない場合は、リンク サービスとしてデータ ファクトリに追加した Azure BLOB ストレージ アカウント内に、"**adftutorial**" という名前の BLOB コンテナーを作成します。
 
-### チュートリアル用に内部設置型の SQL Server を用意します。
+### チュートリアル用にオンプレミスの SQL Server を用意します。
 
-1. オンプレミスの SQL Server リンク サービス (\*\*SqlServerLinkedService\*\*) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
+1. オンプレミスの SQL Server リンク サービス (**SqlServerLinkedService**) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
 
 
         CREATE TABLE dbo.emp
@@ -278,10 +278,10 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 	以下の点に注意してください。
 	
-	- **type** は **SqlServerTable** に設定します。
-	- **tableName** を **emp** に設定します。
+	- **type** は **SqlServerTable** に設定されています。
+	- **tableName** は **emp** に設定されています。
 	- **linkedServiceName** を **SqlServerLinkedService** (手順 2. で作成したリンク サービス) に設定します。
-	- Azure Data Factory の別のパイプラインでは生成されない入力テーブルの場合、**external** プロパティを **true** に設定する必要があります。必要に応じて、**externalData** セクションででポリシーを指定できます。   
+	- Azure Data Factory の別のパイプラインでは生成されない入力テーブルの場合、**external** プロパティを **true** に設定する必要があります。必要に応じて、**externalData** セクションでポリシーを指定できます。   
 
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス][json-script-reference]を参照してください。
 
@@ -314,12 +314,12 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
   
 	以下の点に注意してください。
 	
-	- **type** は **AzureBlob** に設定します。
+	- **type** は **AzureBlob** に設定されています。
 	- **linkedServiceName** を **StorageLinkedService** (手順 2. で作成したリンク サービス) に設定します。
 	- **folderPath** を **adftutorial/outfromonpremdf** に設定します。outfromonpremdf は adftutorial コンテナー内のフォルダーです。必要な操作は **adftutorial** コンテナーの作成だけです。
-	- **availability** が **hourly** に設定されています (\*\*frequency\*\* は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。 
+	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。 
 
-	**入力テーブル**の **fileName** を指定しない場合、入力フォルダー (\*\*folderPath\*\*) 内のすべてのファイル/BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルをご覧ください。
+	**入力テーブル**の **fileName** を指定しない場合、入力フォルダー (**folderPath**) 内のすべてのファイル/BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルを参照してください。
  
 	**出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.)。
 
@@ -395,18 +395,19 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
  
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
-	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink を**指定します。- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select \* from emp**" を指定します。
+	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
+- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
-	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://ja.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
+	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
-	**end** プロパティの値を指定しない場合、"\*\*start + 48 hours\*\*" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
+	**end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
 	
 	Azure Data Factory テーブルごとに定義された **Availability** プロパティに基づいて、データ スライスを処理する期間を定義します。
 	
 	上記の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 	
 2. コマンド バーの **[デプロイ]** をクリックして、データセットをデプロイします (テーブルは四角形のデータセットです)。タイトル バーに "**パイプラインは正常にデプロイされました**" というメッセージが表示されていることを確認します。
-5. **[X]** をクリックして **[エディター]** ブレードを閉じます。もう一度 **[X]** をクリックして、[ADFTutorialDataFactory] ブレードをツール バーおよびツリー ビューと共に閉じます。**"保存されていない編集は破棄されます"** というメッセージが表示されたら、**[OK]** をクリックします。
+5. ここで、**[X]** をクリックして **[エディター]** ブレードを閉じます。もう一度 **[X]** をクリックして、[ADFTutorialDataFactory] ブレードをツール バーおよびツリー ビューと共に閉じます。**"保存されていない編集は破棄されます"** というメッセージが表示されたら、**[OK]** をクリックします。
 6. **ADFTutorialOnPremDF** の **[DATA FACTORY]** ブレードに戻ります。
 
 **ご利用ありがとうございます。** これで、Azure Data Factory、リンクされたサービス、テーブル、およびパイプラインの作成と、パイプラインのスケジュール設定が完了しました。
@@ -463,10 +464,10 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 	![Activity Run Details blade][image-data-factory-activity-run-details]
 
 11. **[X]** をクリックしてすべてのブレードを閉じ、**ADFTutorialOnPremDF** のホーム ブレードに戻ります。
-14. (省略可能) **[パイプライン]** をクリックし、**[ADFTutorialOnPremDF]** をクリックして、入力テーブル (\*\*Consumed\*\*) または出力テーブル (\*\*Produced\*\*) をドリル スルーします。
+14. (省略可能) **[パイプライン]** をクリックし、**[ADFTutorialOnPremDF]** をクリックして、入力テーブル (**Consumed**) または出力テーブル (**Produced**) をドリル スルーします。
 15. **Azure Storage Explorer** などのツールを使用して、出力を確認します。
 
-	![Azure ストレージ エクスプローラー][image-data-factory-stroage-explorer]
+	![Azure Storage Explorer][image-data-factory-stroage-explorer]
 
 
 ## Azure PowerShell を使用したゲートウェイの作成と登録 
@@ -510,7 +511,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 		PS C:\> $Key = New-AzureDataFactoryGatewayKey -GatewayName MyGateway -ResourceGroupName ADF -DataFactoryName $df 
 
 	
-4. Azure PowerShell で **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\PowerShellScript\*\* フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行して、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+4. Azure PowerShell で **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\PowerShellScript** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行して、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
 		PS C:\> .\RegisterGateway.ps1 $Key.GatewayKey
 		
@@ -625,4 +626,4 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 [image-data-factory-preview-portal-storage-key]: ./media/data-factory-get-started/PreviewPortalStorageKey.png
 
-<!-----HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

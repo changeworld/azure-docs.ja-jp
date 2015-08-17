@@ -68,4 +68,4 @@
 
         Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

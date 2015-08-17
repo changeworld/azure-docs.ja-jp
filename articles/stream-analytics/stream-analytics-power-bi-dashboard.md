@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="06/30/2015" 
+	ms.date="08/03/2015" 
 	ms.author="jeffstok"/>
 	
 # Azure Stream Analytics & Power BI: ストリーミング データのリアルタイム分析に関するライブ ダッシュボード
@@ -30,7 +30,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 * Microsoft Azure アカウント
 * ストリーミング データの使用元となる Stream Analytics ジョブの入力。Stream Analytics は、Azure Event Hubs または Azure BLOB ストレージストアからの入力を受け入れます。  
-* Microsoft Power BI の組織 ID
+* Power BI 用の会社または学校のアカウント
 
 ## Azure Stream Analytics ジョブの作成 ##
 
@@ -84,7 +84,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 ![図 3][graphic3]
 
-4.  この手順では、Stream Analytics ジョブ出力用の組織 ID を指定します。既に Power BI アカウントがある場合は、**[今すぐ承認]** を選択します。ない場合は、**[今すぐサインアップ]** を選択します。[Power BI のサインアップの詳細については、こちらのブログをご覧ください](http://blogs.technet.com/b/powerbisupport/archive/2015/02/06/power-bi-sign-up-walkthrough.aspx)。
+4.  この手順では、Stream Analytics ジョブ出力用の会社または学校のアカウントを指定します。既に Power BI アカウントがある場合は、**[今すぐ承認]** を選択します。ない場合は、**[今すぐサインアップ]** を選択します。[Power BI のサインアップの詳細については、こちらのブログをご覧ください](http://blogs.technet.com/b/powerbisupport/archive/2015/02/06/power-bi-sign-up-walkthrough.aspx)。
 
 ![図 11][graphic11]
 
@@ -128,7 +128,7 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 ## Power BI でのダッシュボードの作成 ##
 
-[Powerbi.com](https://powerbi.com) にアクセスして、組織 ID でログインします。Stream Analytics ジョブ クエリで結果が出力された場合は、データセットが既に作成されていることがわかります。
+[Powerbi.com](https://powerbi.com) にアクセスして、会社または学校の ID でログインします。Stream Analytics ジョブ クエリで結果が出力された場合は、データセットが既に作成されていることがわかります。
 
 ![図 5][graphic5]
 
@@ -188,7 +188,7 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 
 
 ## 問い合わせ ##
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ ##
 
@@ -211,4 +211,4 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 [graphic10]: ./media/stream-analytics-power-bi-dashboard/10-stream-analytics-power-bi-dashboard.png
 [graphic11]: ./media/stream-analytics-power-bi-dashboard/11-stream-analytics-power-bi-dashboard.png
 
-<!----HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

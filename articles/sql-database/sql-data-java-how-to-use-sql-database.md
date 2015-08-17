@@ -76,9 +76,9 @@ Java コードで Azure SQL データベースを使用するには、Azure SQL 
     ![JDBC 接続文字列の決定][get_jdbc_connection_string]
 
 6. 強調表示した **JDBC** 接続文字列の内容を右クリックし、**[コピー]** をクリックします。
-7. これで、この値をコード ファイルに貼り付けて、次の形式の接続文字列を作成できるようになりました。*your_server* (2 か所) を、前の手順でコピーしたテキストに置き換え、*your_password* を、SQL データベース アカウントの作成時に指定したパスワードの値に置き換えます(さらに、**gettingstarted** と **MySQLAdmin** を使用しない場合は、**database=** と **user=** に設定された値もそれぞれ置き換える)。 
+7. これで、この値をコード ファイルに貼り付けて、次の形式の接続文字列を作成できるようになりました。*your\_server* (2 か所) を、前の手順でコピーしたテキストに置き換え、*your\_password* を、SQL データベース アカウントの作成時に指定したパスワードの値に置き換えます(さらに、**gettingstarted** と **MySQLAdmin** を使用しない場合は、**database=** と **user=** に設定された値もそれぞれ置き換える)。 
 
-    String connectionString = "jdbc:sqlserver://*your_server*.database.windows.net:1433" + ";" + "database=gettingstarted" + ";" + "user=MySQLAdmin@*your_server*" + ";" + "password=*your_password*" + ";" + "encrypt=true" + ";" + "hostNameInCertificate=*.int.mscds.com" + ";" + "loginTimeout=30";
+    String connectionString = "jdbc:sqlserver://*your_server*.database.windows.net:1433" + ";" + "database=gettingstarted" + ";" + "user=MySQLAdmin@*your\_server*" + ";" + "password=*your\_password*" + ";" + "encrypt=true" + ";" + "hostNameInCertificate=*.int.mscds.com" + ";" + "loginTimeout=30";
 
 この文字列はこのガイドで後で実際に使用します。これで、接続文字列を決定する手順がわかりました。さらに、アプリケーションの要件によっては、**encrypt** および **hostNameInCertificate** 設定の使用が不要になったり、**loginTimeout** 設定の変更が必要になったりします。
 
@@ -117,7 +117,7 @@ Java コードで Azure SQL データベースを使用するには、Azure SQL 
         import java.sql.*;
         import com.microsoft.sqlserver.jdbc.*;
 
-5. 接続文字列を指定します。たとえば次のようになります。前の手順と同様に、*your_server* (2 か所)、*your_user*、*your_password* を、SQL データベース サーバーに該当する値に置き換えます。
+5. 接続文字列を指定します。たとえば次のようになります。前の手順と同様に、*your\_server* (2 か所)、*your\_user*、*your\_password* を、SQL データベース サーバーに該当する値に置き換えます。
 
         String connectionString =
         	"jdbc:sqlserver://your_server.database.windows.net:1433" + ";" +  
@@ -726,4 +726,4 @@ Microsoft JDBC Driver for SQL Server の詳細については、「[JDBC ドラ�
 [allowed_ips_dialog]: ./media/sql-data-java-how-to-use-sql-database/WA_Allowed_IPs.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

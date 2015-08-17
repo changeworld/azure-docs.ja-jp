@@ -122,7 +122,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
 
 6. そのクラスターの **[既定のコンテナー]** をダブルクリックします。既定のコンテナーの内容を表示する新しいウィンドウが開きます。
 
-7. アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin \debug** フォルダーを参照します。最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+7. アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin \\debug** フォルダーを参照します。最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
 
 	![アップロード アイコン](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
 
@@ -195,7 +195,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
 
 1. pig ストリーミングは、アプリケーションがクラスター ファイル システムでローカルであると想定しています。「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」の手順に従って、HDInsight クラスターのリモート デスクトップを有効にしてからデスクトップに接続します。
 
-2. 接続されたら、ローカル コンピューターの PigUDF プロジェクトの **bin/debug** ディレクトリから **PigUDF.exe** をコピーし、クラスターの **%PIG_HOME%** ディレクトリに貼り付けます。
+2. 接続されたら、ローカル コンピューターの PigUDF プロジェクトの **bin/debug** ディレクトリから **PigUDF.exe** をコピーし、クラスターの **%PIG\_HOME%** ディレクトリに貼り付けます。
 
 ###Pig Latin のアプリケーションを使用する
 
@@ -240,4 +240,4 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

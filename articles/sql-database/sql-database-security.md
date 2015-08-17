@@ -57,11 +57,11 @@ ALTER ROLE db_datareader ADD MEMBER ApplicationUser; -- allows ApplicationUser t
 ALTER ROLE db_datawriter ADD MEMBER ApplicationUser; -- allows ApplicationUser to write data
 ```
 
-接続しているサーバー管理者のアカウントは db_owner のメンバーであり、データベース内ですべての操作を実行する権限を持ちます。スキーマのアップグレードやその他の管理操作をデプロイするために、このアカウントを保存します。アクセス許可が限定された "ApplicationUser" アカウントを使用して、アプリケーションで必要な最小限の特権により、アプリケーションをデータベースに接続します。
+接続しているサーバー管理者のアカウントは db\_owner のメンバーであり、データベース内ですべての操作を実行する権限を持ちます。スキーマのアップグレードやその他の管理操作をデプロイするために、このアカウントを保存します。アクセス許可が限定された "ApplicationUser" アカウントを使用して、アプリケーションで必要な最小限の特権により、アプリケーションをデータベースに接続します。
 
 ユーザーが Azure SQL Database で実行できる操作をさらに制限する方法がいくつかあります。
 
-* db_datareader と db_datawriter 以外の[データベース ロール](https://msdn.microsoft.com/library/ms189121)を使用して、より権限の大きなアプリケーション ユーザー アカウント、またはより権限の小さな管理アカウントを作成できます。
+* db\_datareader と db\_datawriter 以外の[データベース ロール](https://msdn.microsoft.com/library/ms189121)を使用して、より権限の大きなアプリケーション ユーザー アカウント、またはより権限の小さな管理アカウントを作成できます。
 * 詳細な[アクセス許可](https://msdn.microsoft.com/library/ms191291)により、個々の列、テーブル、ビュー、プロシージャ、その他のデータベース内のオブジェクトで実行できる操作を制御できます。
 * [権限借用](https://msdn.microsoft.com/library/vstudio/bb669087)と[モジュール署名](https://msdn.microsoft.com/library/bb669102)を使用すると、安全にアクセス許可を一時的に昇格できます。
 * [行レベル セキュリティ](https://msdn.microsoft.com/library/dn765131)により、ユーザーが確認できる行をフィルター処理できます。
@@ -98,4 +98,4 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 アプリケーションがさまざまなセキュリティ コンプライアンスの要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。詳細については、「[Microsoft Azure のトラスト センター](http://azure.microsoft.com/support/trust-center/)」を参照してください。ここから最新の[SQL Database コンプライアンス証明書](http://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

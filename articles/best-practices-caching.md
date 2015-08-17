@@ -777,4 +777,4 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - StackExchange.Redis リポジトリの「[Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md)」(Redis のトランザクション) ページ。
 - Microsoft Web サイトの「[Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx)」(データのパーティション分割のガイダンス)。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

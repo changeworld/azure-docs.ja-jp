@@ -10,4 +10,4 @@
 | アクセス パネル | <ul><li> Azure AD Premium または Enterprise Mobility Suite のライセンスが割り当てられているユーザーの場合、1 エンド ユーザーたりにアクセス パネルに表示できるアプリケーション数に制限はありません。</li><li>Azure Active Directory の Free エディションまたは Azure AD Basic エディションのライセンスを割り当てられているユーザーの場合、1 エンド ユーザーたりにアクセス パネルに表示できるアプリ タイル数は最大 10 個です (例: Box、Salesforce、または Dropbox) 。この制限は、管理者アカウントには適用されません。</li></ul> |
 | レポート | いずれのレポートでも、最大 1,000 行を表示またはダウンロードできます。それを超えるデータは切り捨てられます。 |
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

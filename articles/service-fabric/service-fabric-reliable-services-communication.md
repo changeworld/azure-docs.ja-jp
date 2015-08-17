@@ -230,4 +230,4 @@ var myServicePartitionClient = new ServicePartitionClient<MyCommunicationClient>
 * [WebAPI 通信スタックを使用する Reliable Services API を使用したサービスの作成](service-fabric-reliable-services-communication-webapi.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

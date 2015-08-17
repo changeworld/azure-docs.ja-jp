@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2015"
+	ms.date="07/30/2015"
 	ms.author="stepsic"/>
 	
 # Visual Studio からのデプロイ
@@ -23,7 +23,7 @@
 - アプリケーションのすべての側面を含めることができるように、ソリューションに他のアセットと共にロジック アプリを保存する
 - TFS や Git を使用して変更履歴を追跡できるように、ロジック アプリ定義をソース管理にチェックインしたままにする 
 
-次の手順を実行するには、Azure SDK 2.6 をインストールしておく必要があります。最新の SDK for VS は、[こちら](http://azure.microsoft.com/downloads/)で探してください。
+次の手順を実行するには、Azure SDK 2.7 以上をインストールしておく必要があります。最新の SDK for VS は、[こちら](http://azure.microsoft.com/downloads/)で探してください。
 
 ## プロジェクトの作成
 
@@ -45,7 +45,7 @@
 
 現在、Visual Studio には組み込みのデザイナーがありません。そのため、(JSON を記述するのではなく) グラフィカル インターフェイスを使用する場合は、Azure ポータルを使用する必要があります。
 
-以前に Azure ポータル内でロジック アプリを作成していて、それをソース管理にチェックインする場合は、次の手順を実行します。- ポータルで **[コード ビュー]** に移動し、定義をコピーします。- Logic Apps [REST API](https://msdn.microsoft.com/library/azure/dn948510.aspx) を使用して定義を取得します。- [Azure リソース マネージャーの PowerShell](../powershell-azure-resource-manager.md)、具体的には [`Get-AzureResource`コマンド](https://msdn.microsoft.com/library/dn654579.aspx) を使用して定義をダウンロードします。
+以前に Azure ポータル内でロジック アプリを作成していて、それをソース管理にチェックインする場合は、次の 3 つの方法のいずれかを実行できます。- ポータルで **[コード ビュー]** に移動し、定義をコピーします。- Logic Apps [REST API](https://msdn.microsoft.com/library/azure/dn948510.aspx) を使用して定義を取得します。- [Azure リソース マネージャーの PowerShell](../powershell-azure-resource-manager.md)、具体的には [`Get-AzureResource` コマンド](https://msdn.microsoft.com/library/dn654579.aspx)を使用して定義をダウンロードします。
 
 ## ロジック アプリのデプロイ
 
@@ -63,6 +63,6 @@
 
 今後は、ソース管理でロジック アプリを修正し、Visual Studio を使用して新しいバージョンをデプロイできます。Azure ポータルで定義を直接変更した場合、次回 Visual Studio からデプロイすると、変更内容がオーバーライドされることに注意してください。
 
-Visual Studio を使用せず、ソース管理からロジック アプリをデプロイするツールを使用する場合は、いつでも [API](https://msdn.microsoft.com/library/azure/dn948510.aspx) または [PowerShell](../powershell-azure-resource-manager.md) を直接使用してデプロイを自動化できます。
+Visual Studio は使用しないが、ソース管理からロジック アプリをデプロイするツールを使用する場合は、いつでも [API](https://msdn.microsoft.com/library/azure/dn948510.aspx) または [PowerShell](../powershell-azure-resource-manager.md) を直接使用してデプロイを自動化できます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

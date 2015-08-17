@@ -80,7 +80,7 @@ Azure Redis Cache には診断データをストレージ アカウントに格�
 | 設定数 | 指定したレポート期間中に、キャッシュから実行された設定操作の数。この値は、Redis INFO のすべてのコマンド (`cmdstat_set`、`cmdstat_hset`、`cmdstat_hmset`、`cmdstat_hsetnx`、`cmdstat_lset`、`cmdstat_mset`、`cmdstat_msetnx`、`cmdstat_setbit`、`cmdstat_setex`、`cmdstat_setrange`、および `cmdstat_setnx`) からの値の合計です。 |
 | 合計処理数 | 指定したレポート期間中に、キャッシュ サーバーによって処理されたコマンドの合計数。この値は Redis INFO の `total_commands_processed` コマンドにマッピングされます。Azure Redis Cache をパブリッシュ/サブスクライブにのみ使用する場合、`Cache Hits`、`Cache Misses`、`Gets`、または `Sets` のメトリックは存在しませんが、パブリッシュ/サブスクライブ処理のキャッシュの使用状況を反映する `Total Operations` メトリックが用意されています。 |
 | メモリ使用量 | 指定したレポート期間中に使用されるキャッシュ メモリの量 (MB)。この値は Redis INFO の `used_memory` コマンドにマッピングされます。 |
-| CPU | 指定したレポート期間中に Azure Redis Cache で使用される CPU の割合。この値は、オペレーティング システム `\Processor(_Total)% Processor Time` パフォーマンス カウンターにマッピングされます。 |
+| CPU | 指定したレポート期間中に Azure Redis Cache で使用される CPU の割合。この値は、オペレーティング システム `\Processor(_Total)\% Processor Time` パフォーマンス カウンターにマッピングされます。 |
 | キャッシュの読み取り | 指定したレポート期間中に、キャッシュから読み取られたデータ量 (KB/秒)。この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 |
 | キャッシュの書き込み | 指定したレポート期間中に、キャッシュに書き込まれたデータ量 (KB/秒)。この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 |
 
@@ -221,4 +221,4 @@ Azure のアラートの詳細については、「[アラート通知の受信]
 
 [redis-cache-add-alert]: ./media/cache-how-to-monitor/redis-cache-add-alert.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

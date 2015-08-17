@@ -47,7 +47,7 @@ Blitline がどのようなときに役立つかは、使い始める前に Blit
 
 - Blitline は画像のアップロードを受け入れないため、画像を直接 Blitline に送信することはできません。Azure ストレージまたは Blitline でサポートされる他の場所に画像を送信してから、その画像を取得できる場所を Blitline に指定する必要があります。
 
-- Blitline は並列性がきわめて高いため、同期処理を行いません。つまり、マイクロソフトに postback_url を伝える必要があり、処理が完了すると通知を受け取ります。
+- Blitline は並列性がきわめて高いため、同期処理を行いません。つまり、マイクロソフトに postback\_url を伝える必要があり、処理が完了すると通知を受け取ります。
 
 ## <a id="createaccount"></a>Blitline アカウントの作成
 
@@ -95,11 +95,11 @@ JSON を取得した後は、それを `http://api.blitline.com/jobs` に **POST
     }
 
 
-これは、Blitline が要求を受け取って処理中のキューに配置したことと、完了後は画像が次の場所で取得可能になることを示しています。**https://s3.amazonaws.com/dev.blitline/2011110722/YOUR_APP_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
+これは、Blitline が要求を受け取って処理中のキューに配置したことと、完了後は画像が次の場所で取得可能になることを示しています: ****https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
 ## <a id="saveazure"></a>画像を Azure Storage アカウントに保存する方法
 
-Azure ストレージ アカウントを持っている場合は、処理された画像を Blitline から Azure コンテナーに簡単にプッシュすることができます。"azure_destination" を追加することで、Blitline からプッシュする場所とアクセス許可を定義します。
+Azure ストレージ アカウントを持っている場合は、処理された画像を Blitline から Azure コンテナーに簡単にプッシュすることができます。"azure\_destination" を追加することで、Blitline からプッシュする場所とアクセス許可を定義します。
 
 たとえば次のようになります。
 
@@ -150,4 +150,4 @@ Azure ストレージに関する Blitline のドキュメントの最新版を[
   [Blitline ジョブを作成する方法]: #createjob
   [画像を Azure ストレージに保存する方法]: #saveazure
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -217,4 +217,4 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!-----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

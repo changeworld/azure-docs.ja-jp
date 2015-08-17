@@ -40,4 +40,4 @@ Twitter、Yammer、メールなどのソーシャル Media Services と統合す
 いずれかのテンプレートを選択したら、自分のロジック アプリを作成したときと同様にデプロイを完了します。「[Create a Logic App (ロジック アプリの作成)](app-service-logic-create-a-logic-app.md)」をご覧ください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -81,4 +81,4 @@ Application Insights の課金は Azure の課金内容に加えられます。A
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

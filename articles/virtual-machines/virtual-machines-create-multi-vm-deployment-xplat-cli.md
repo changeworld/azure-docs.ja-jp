@@ -24,7 +24,7 @@
 
 ![](./media/virtual-machines-create-multi-vm-deployment-xplat-cli/multi-vm-xplat-cli.png)
 
-このスクリプトによって、クラウド サービス **servercs** で 1 つの VM (**servervm**) が、クラウド サービス **workercs** で 2 つの VM (**clientvm1、clientvm2**) が作成されます。どちらのクラウド サービスも VNET **samplevnet** にあります。**servercs** クラウド サービスは、外部接続用に構成されたエンドポイントも保持しています。
+このスクリプトによって、クラウド サービス **servercs** で 1 つの仮想マシン (**servervm**) が、クラウド サービス **workercs** で 2 つの仮想マシン (**clientvm1, clientvm2**) が作成されます。どちらのクラウド サービスも VNET **samplevnet** にあります。**servercs** クラウド サービスは、外部接続用に構成されたエンドポイントも保持しています。
 
 ## CLI スクリプトでの構成
 比較的簡単なコードで構成できます。具体的には次の通りです。
@@ -67,4 +67,4 @@
 * [Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

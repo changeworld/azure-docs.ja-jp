@@ -45,4 +45,4 @@ Q: 1 つの Media Services アカウントから他のアカウントにアセ�
 
 A: 1 つの Media Services アカウントから他のアカウントにアセットをコピーするには、[Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/) リポジトリで入手できる [IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) 拡張メソッドを使用します。詳細については、[こちらの](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices)フォーラムのスレッドをご覧ください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

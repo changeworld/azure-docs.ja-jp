@@ -69,4 +69,4 @@ Day 3 のビデオの内容は次のとおりです。
 
 [Azure プレミアム エンコーダー ワークフロー デザイナーのトレーニング ビデオ](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -12,7 +12,7 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="07/02/2015" 
 	ms.author="sethm"/>
 
@@ -25,17 +25,17 @@
 
 ## Service Bus リレーとは
 
-Service Bus *リレー* サービスを使用して、Azure データセンターと独自の内部設置型エンタープライズ環境の両方で動作するハイブリッド アプリケーションを構築できます。Service Bus リレーを使用することで、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にある Windows Communication Foundation (WCF) サービスを安全にパブリック クラウドに公開することができます。
+Service Bus *リレー* サービスを使用して、Azure データセンターと独自のオンプレミスのエンタープライズ環境の両方で動作するハイブリッド アプリケーションを構築できます。Service Bus リレーを使用することで、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にある Windows Communication Foundation (WCF) サービスを安全にパブリック クラウドに公開することができます。
 
 ![リレーの概念](./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png)
 
-Service Bus リレーを使用して、既存のエンタープライズ環境内の WCF サービスをホストできます。その後で、その WCF サービスに対する受信セッションと受信要求のリッスンを Azure 内で動作する サービス バスにデリゲートできます。これにより、Azure で実行されるアプリケーション コードや、モバイル ワーカー環境またはエクストラネット パートナー環境に対して、これらのサービスを公開できます。Service Bus を使用すると、これらのサービスにアクセスできるユーザーを詳細なレベルで安全に制御できます。これは、既存のエンタープライズ ソリューションのデータとアプリケーション機能を公開してクラウドで活用するため、強力で安全な手段となります。
+Service Bus リレーを使用して、既存のエンタープライズ環境内の WCF サービスをホストできます。その後で、その WCF サービスに対する受信セッションと受信要求のリッスンを Azure 内で動作するService Bus にデリゲートできます。これにより、Azure で実行されるアプリケーション コードや、モバイル ワーカー環境またはエクストラネット パートナー環境に対して、これらのサービスを公開できます。Service Bus を使用すると、これらのサービスにアクセスできるユーザーを詳細なレベルで安全に制御できます。これは、既存のエンタープライズ ソリューションのデータとアプリケーション機能を公開してクラウドで活用するため、強力で安全な手段となります。
 
 このハウツー ガイドでは、Service Bus リレーを使用して、2 者間の安全な対話を実現する TCP チャネル バインドを使用して公開される WCF Web サービスの作成方法を示します。
 
 ## サービス名前空間の作成
 
-Azure でサービス バス リレーを使用するには、最初にサービス名前空間を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
+Azure で Service Bus リレーを使用するには、最初にサービス名前空間を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
 サービス名前空間を作成するには:
 
@@ -56,7 +56,7 @@ Azure でサービス バス リレーを使用するには、最初にサービ
 
 	重要: アプリケーションをデプロイする予定の国またはリージョンと**同じ国/リージョン**を選択してください。そうすることで、パフォーマンスが最高になります。
 
-6.	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[Standard]** プラン) のままにして、チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
+6.	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[Standard レベル]**) のままにして、チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
 
 	![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-27.png)
 
@@ -76,9 +76,9 @@ Azure でサービス バス リレーを使用するには、最初にサービ
  
 4.  Service Bus 名前空間がプロビジョニングされると、**RootManageSharedAccessKey** に設定された **SharedAccessAuthorizationRule** と **KeyName** が既定で作成されます。このページには、そのキーと、既定のルールのプライマリ キーとセカンダリ キーが表示されます。
 
-## サービス バス NuGet パッケージの取得
+## Service Bus NuGet パッケージの取得
 
-Service Bus **NuGet** パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。サービス バス NuGet パッケージは、Service Bus API を取得し、サービス バス依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
+Service Bus **NuGet** パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
 
 アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
 
@@ -90,9 +90,9 @@ Service Bus **NuGet** パッケージは、Service Bus API を取得し、Servic
 
 ## Service Bus を使用して SOAP Web サービスを TCP で公開、使用する方法
 
-既存の WCF SOAP Web サービスを外部で使用するために公開するには、サービスのバインドとアドレスに変更を加える必要があります。WCF サービスの設定や構成によっては、構成ファイルを変更したり、コードを変更したりする必要があります。WCF を使用すると同じサービス上で複数のネットワーク エンドポイントを持つことができるので、既存の内部エンドポイントを保持しながら、同時に外部アクセス用のサービス バス エンドポイントも追加できます。
+既存の WCF SOAP Web サービスを外部で使用するために公開するには、サービスのバインドとアドレスに変更を加える必要があります。WCF サービスの設定や構成によっては、構成ファイルを変更したり、コードを変更したりする必要があります。WCF を使用すると同じサービス上で複数のネットワーク エンドポイントを持つことができるので、既存の内部エンドポイントを保持しながら、同時に外部アクセス用のService Bus エンドポイントも追加できます。
 
-このタスクでは、単純な WCF サービスを構築し、そのサービスにサービス バス リスナーを追加します。この演習はある程度 Visual Studio に習熟したユーザーを対象としているため、プロジェクトの作成手順の詳しい内容については説明していません。代わりに、コードに重点を置いています。
+このタスクでは、単純な WCF サービスを構築し、そのサービスに Service Bus リスナーを追加します。この演習はある程度 Visual Studio に習熟したユーザーを対象としているため、プロジェクトの作成手順の詳しい内容については説明していません。代わりに、コードに重点を置いています。
 
 次の手順を完了して環境を設定してから、後の手順を開始してください。
 
@@ -155,7 +155,7 @@ Service Bus **NuGet** パッケージは、Service Bus API を取得し、Servic
 
     sh.Close();
 
-この例では、同じコントラクト実装にある 2 つのエンドポイントを作成します。1 つはローカルで、もう 1 つは Service Bus を経由して提示されます。大きな違いはバインドです。ローカルには [`NetTcpBinding`](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) を使用し、Service Bus エンドポイントとアドレスには [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) を使用します。ローカル エンドポイントは、個々のポートを含むローカル ネットワーク アドレスを持ちます。Service Bus エンドポイントは、文字列 "sb"、使用する名前空間の名前、およびパス "solver" で構成されるエンドポイント アドレスを持ちます。全体としては "sb://[serviceNamespace].servicebus.windows.net/solver" という URI になり、このサービス エンドポイントは完全修飾された外部 DNS 名を持つ Service Bus TCP エンドポイントとして識別されます。前述のようにプレースホルダーを置き換えたコードを "Service" アプリケーションの `Main` 関数に配置すると、このサービスが実際に機能します。サービスでサービス バスを排他的にリッスンするには、ローカル エンドポイントの宣言を削除します。
+この例では、同じコントラクト実装にある 2 つのエンドポイントを作成します。1 つはローカルで、もう 1 つは Service Bus を経由して提示されます。大きな違いはバインドです。ローカルには [`NetTcpBinding`](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) を使用し、Service Bus エンドポイントとアドレスには [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) を使用します。ローカル エンドポイントは、個々のポートを含むローカル ネットワーク アドレスを持ちます。Service Bus エンドポイントは、文字列 "sb"、使用する名前空間の名前、およびパス "solver" で構成されるエンドポイント アドレスを持ちます。全体としては "sb://[serviceNamespace].servicebus.windows.net/solver" という URI になり、このサービス エンドポイントは完全修飾された外部 DNS 名を持つ Service Bus TCP エンドポイントとして識別されます。前述のようにプレースホルダーを置き換えたコードを "Service" アプリケーションの `Main` 関数に配置すると、このサービスが実際に機能します。サービスで Service Bus を排他的にリッスンするには、ローカル エンドポイントの宣言を削除します。
 
 ### サービス ホストを App.config ファイルで構成する方法
 
@@ -167,7 +167,7 @@ App.config ファイルを使用してホストを構成することもできま
     Console.ReadLine();
     sh.Close();
 
-エンドポイントの定義は App.config ファイルに移動します。**NuGet** パッケージは既に定義の範囲を App.config ファイルに追加したことに注意してください。これは Service Bus の必要な構成の拡張機能です。次のコード スニペット (先に示したコード スニペットと同じ) は **system.serviceModel** 要素のすぐ下に配置する必要があります。このスニペットでは、プロジェクト C# 名前空間の名前が "Service" であると想定しています。プレースホルダーを実際のサービス バス サービスの名前空間と SAS キーに置き換えてください。
+エンドポイントの定義は App.config ファイルに移動します。**NuGet** パッケージは既に定義の範囲を App.config ファイルに追加したことに注意してください。これは Service Bus の必要な構成の拡張機能です。次のコード スニペット (先に示したコード スニペットと同じ) は **system.serviceModel** 要素のすぐ下に配置する必要があります。このスニペットでは、プロジェクト C# 名前空間の名前が "Service" であると想定しています。プレースホルダーを実際の Service Bus サービスの名前空間と SAS キーに置き換えてください。
 
     <services>
         <service name="Service.ProblemSolver">
@@ -228,7 +228,7 @@ App.config ファイルを使用してクライアントを構成することも
         Console.WriteLine(ch.AddNumbers(4, 5));
     }
 
-エンドポイントの定義は App.config ファイルに移動します。次のコード スニペット (先に示したコードと同じ) は **system.serviceModel** 要素のすぐ下に配置する必要があります。前の例と同じように、プレースホルダーを実際のサービス バスの名前空間と SAS キーに置き換えてください。
+エンドポイントの定義は App.config ファイルに移動します。次のコード スニペット (先に示したコードと同じ) は **system.serviceModel** 要素のすぐ下に配置する必要があります。前の例と同じように、プレースホルダーを実際の Service Bus の名前空間と SAS キーに置き換えてください。
 
     <client>
         <endpoint name="solver" contract="Service.IProblemSolver"
@@ -253,7 +253,7 @@ App.config ファイルを使用してクライアントを構成することも
 これで、Service Bus **リレー** サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 -   サービスの構築: [Service Bus 用のサービスの構築に関するページ][]。
--   クライアントの作成: [サービス バス クライアント アプリケーションの作成に関するページ][]。
+-   クライアントの作成: [Service Bus クライアント アプリケーションの作成に関するページ][]。
 -   Service Bus のサンプル: [Azure のサンプル][]からダウンロードするか、[MSDN][] で概要を参照してください。
 
   [Create a Service Namespace]: #create_namespace
@@ -263,9 +263,9 @@ App.config ファイルを使用してクライアントを構成することも
   [Azure 管理ポータル]: http://manage.windowsazure.com
   [Service Bus での共有アクセス署名認証]: http://msdn.microsoft.com/library/azure/dn170477.aspx
   [Service Bus 用のサービスの構築に関するページ]: http://msdn.microsoft.com/library/azure/ee173564.aspx
-  [サービス バス クライアント アプリケーションの作成に関するページ]: http://msdn.microsoft.com/library/azure/ee173543.aspx
+  [Service Bus クライアント アプリケーションの作成に関するページ]: http://msdn.microsoft.com/library/azure/ee173543.aspx
   [Azure のサンプル]: https://code.msdn.microsoft.com/windowsazure/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [MSDN]: https://msdn.microsoft.com/ja-jp/library/azure/dn194201.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

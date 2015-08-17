@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2015"
+   ms.date="08/05/2015"
    ms.author="banders" />
 
 # 評価ソリューションを使用した環境の最適化
@@ -105,7 +105,7 @@
 
 ## 評価の関心領域に関する推奨事項の使用
 
-Microsoft Azure Operational Insights の評価ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。ソリューションのインストールについて詳しくは、[ソリューション ギャラリーを使用したソリューションの追加または削除](operational-insights-add-solution.md)に関する記事を参照してください。インストール後は、オペレーション インサイトの [概要] ページの [評価] タイルを使用して、推奨事項の概要を表示できます。
+Microsoft Azure Operational Insights の評価ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。ソリューションのインストールについて詳しくは、[ソリューション ギャラリーを使用したソリューションの追加または削除](operational-insights-setup-workspace.md)に関する記事を参照してください。インストール後は、オペレーション インサイトの [概要] ページの [評価] タイルを使用して、推奨事項の概要を表示できます。
 
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認できます。
 
@@ -125,4 +125,4 @@ Microsoft Azure Operational Insights の評価ソリューションを使用す�
 
 [AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

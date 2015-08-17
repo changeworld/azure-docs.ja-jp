@@ -3,7 +3,7 @@
 	description="Microsoft Azure で API アプリを作成し、それをオンプレミスの SQL Server データベースに接続する"
 	services="app-service\api" 
 	documentationCenter="" 
-	authors="tarcher" 
+	authors="TomArcher" 
 	manager="wpickett" 
 	editor="jimbe"/>
 
@@ -22,7 +22,7 @@
 
 このチュートリアルでは、新しいハイブリッド接続機能を使用してローカルのオンプレミスの SQL Server データベースに接続する App Service API アプリを[Azure プレビュー](http://go.microsoft.com/fwlink/?LinkId=529715)で作成する方法について説明します。このチュートリアルは、Azure または SQL Server を使用した経験がない読者を対象に作成されています。
 
-[AZURE.INCLUDE app-service-web-try-app-service.md]
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 前提条件
 
@@ -30,9 +30,7 @@
 
 - **Azure サブスクリプション** - 無料サブスクリプションについては、「[1 か月間無料試用版](/pricing/free-trial/)」を参照してください。 
 
-- **Visual Studio** - Visual Studio 2013 または Visual Studio 2015 の無料試用版のダウンロードについては、「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs)」を参照してください。続行する前に、次のいずれかをインストールします。(このチュートリアルのスクリーン ショットは、Visual Studio 2013 を使用して取得しました)
-
-- **Microsoft .NET Framework 3.5 Service Pack 1** - オペレーティング システムが Windows 8.1、Windows Server 2012 R2、Windows 8、Windows Server 2012、Windows 7、または Windows Server 2008 R2 の場合は、[コントロール パネル] > [プログラムと機能] > [Windows の機能の有効化または無効化] の順に選択してこれを実行できます。そうでない場合は、[Microsoft Download Center](http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=22) からダウンロードできます。
+- **Visual Studio** - Visual Studio 2013 または Visual Studio 2015 の無料評価版のダウンロードについては、「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs)」をご覧ください。続行する前に、次のいずれかをインストールします。(このチュートリアルのスクリーン ショットは、Visual Studio 2013 を使用して取得しました)
 
 - **SQL Server 2014 Express with Tools** - [Microsoft Web プラットフォーム データベースのページ](https://www.microsoft.com/ja-jp/download/details.aspx?id=42299)で Microsoft SQL Server Express の無料版をダウンロードします。このチュートリアルの後半で、[SQL Server をインストールして](#InstallSQLDB)これが適切に構成されていることを確認する方法を説明します。
 
@@ -66,9 +64,9 @@
 	</tr>
 </table>
 
-- オンプレミスのリソースの *hostname*:\*portnumber\* に到達できること 
+- 内部設置型のリソースの *hostname*:*portnumber* に到達できること 
 
-この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
+この記事の手順では、内部設置型のハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
 
 上記の条件を満たす構成および環境に既に SQL Server をインストールしている場合は、この手順をスキップし、「[オンプレミスの SQL Server データベースを作成する](#CreateSQLDB)」から開始できます。
 
@@ -118,7 +116,7 @@ TCP/IP を有効にするには、SQL Server Express をインストールした
 
 	![サーバーへの接続](./media/app-service-api-hybrid-on-premises-sql-server/connect-to-server.png)
 	
-	**[サーバーへの接続]** ダイアログが自動的に表示されない場合は、左パネルの**オブジェクト エクスプローラー**に移動し、**[接続]**、次に **[データベース エンジン]** をクリックします。
+	**[サーバーへの接続]** ダイアログが自動的に表示されない場合は、左パネルの **[オブジェクト エクスプローラー]** に移動し、**[接続]**、**[データベース エンジン]** の順にクリックします。
 	
 2. SQL Server Management Studio を使用して新しいデータベースを作成するには、オブジェクト エクスプローラーで **[データベース]** を右クリックしてから、**[新しいデータベース]** をクリックします。
 	
@@ -142,7 +140,7 @@ TCP/IP を有効にするには、SQL Server Express をインストールした
 
 	![新しいテーブルの列](./media/app-service-api-hybrid-on-premises-sql-server/table-def.png)
 
-4. **[Ctrl]+[S]** キーを押して、新しいテーブルの定義を保存します。テーブル名の入力を求められます。「`Speakers`」と入力して、**[OK]** をクリックします。
+4. **Ctrl + S** キーを押して、新しいテーブルの定義を保存します。テーブル名の入力を求められます。「`Speakers`」と入力して、**[OK]** をクリックします。
 
 	![新しいテーブルの保存](./media/app-service-api-hybrid-on-premises-sql-server/save-new-table.png)
 
@@ -160,7 +158,7 @@ TCP/IP を有効にするには、SQL Server Express をインストールした
 
 1. Visual Studio 2013 を開き、**[ファイル]、[新規]、[プロジェクト]** の順に選択します。 
 
-2. **[Visual c#] > [Web] > [ASP.NET Web アプリケーション]** テンプレートを選択し、**[プロジェクトに application insights を追加する]** オプションをオフにして、プロジェクトに *SpeakersList* と名前を付け、**[OK]** をクリックします。
+2. **[Visual C#] > [Web] > [ASP.NET Web アプリケーション]** テンプレートを選択し、**[プロジェクトに Application Insights を追加する]** オプションをオフにして、プロジェクトに *SpeakersList* と名前を付け、**[OK]** をクリックします。
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/new-project.png)
 
@@ -168,7 +166,7 @@ TCP/IP を有効にするには、SQL Server Express をインストールした
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/new-project-api-app.png)
 
-4. **ソリューション エクスプローラー**で **[モデル]** フォルダーを右クリックし、コンテキスト メニューの **[追加]、[クラス]** の順にクリックします。
+4. **ソリューション エクスプローラー**で **[モデル]** フォルダーを右クリックし、コンテキスト メニューで **[追加]、[クラス]** の順にクリックします。
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/new-model-menu.png)
 
@@ -188,11 +186,11 @@ TCP/IP を有効にするには、SQL Server Express をインストールした
 			}
 		}
 
-7. **ソリューション エクスプローラー**で **[コントローラー]** フォルダーを右クリックし、コンテキスト メニューの **[追加]、[コントローラー]** の順にクリックします。
+7. **ソリューション エクスプローラー**で **[コントローラー]** フォルダーを右クリックし、コンテキスト メニューで **[追加]、[コントローラー]** の順にクリックします。
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/new-controller.png)
 
-8. **[スキャフォールディングの追加]** ダイアログで、**[Web API 2 コントローラー - 空]** を選択し、**[追加]** をクリックします。
+8. **[スキャフォールディングの追加]** ダイアログで、**[Web API 2 コントローラー - 空]** オプションを選択し、**[追加]** をクリックします。
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/add-scaffold.png)
 
@@ -202,7 +200,7 @@ TCP/IP を有効にするには、SQL Server Express をインストールした
 
 10. `SpeakersController.cs` ファイルのコードを次のコードに置き換えます。`connectionString` の <serverName> プレースホルダーと <password> プレースホルダーに独自の値が指定されていることを確認します。<serverName> の値は SQL Server があるマシンの名前、<password> の値は SQL Server をインストールおよび構成したときに設定したパスワードです。
 
-	> [AZURE.NOTE]次のコード スニペットには、パスワードの情報が含まれています。これは、デモを簡潔にするためです。実際の運用環境では、コードに資格情報を格納しないでください。代わりに、「[Best practices for deploying passwords and other sensitive data to ASP.NET and Azure (ASP.NET および Azure へパスワードや機密データをデプロイするためのベスト プラクティス)](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)」を参照してください。
+	> [AZURE.NOTE]次のコード スニペットには、パスワードの情報が含まれています。これは、デモを簡潔にするためです。実際の運用環境では、コードに資格情報を格納しないでください。代わりに、「[Best practices for deploying passwords and other sensitive data to ASP.NET and Azure (ASP.NET および Azure へパスワードや機密データをデプロイするためのベスト プラクティス)](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)」をご覧ください。
 
 		using System;
 		using System.Collections.Generic;
@@ -294,11 +292,11 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 ### API アプリをテストする
 
-1. API テスト ページを表示するには、**[<Ctrl>F5]** キーを押してローカルでアプリを実行します。次のようなエラーが表示されます。
+1. API テスト ページを表示するには、**Ctrl + F5** キーを押してローカルでアプリを実行します。次のようなエラーが表示されます。
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/error-forbidden.png)
 
-2. ブラウザーのアドレス バーで、URL の末尾に `/swagger` を追加し、**[Enter]** キーを押します。これにより、前のセクションで有効にした Swagger UI が表示されます。
+2. ブラウザーのアドレス バーで、URL の末尾に `/swagger` を追加し、**Enter** キーを押します。これにより、前のセクションで有効にした Swagger UI が表示されます。
 
 	![](./media/app-service-api-hybrid-on-premises-sql-server/swagger-ui.png)
 
@@ -343,7 +341,7 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 	![API サービスの作成の開始の確認メッセージ](./media/app-service-api-hybrid-on-premises-sql-server/create-api-app-confirmation.png)
 
-6. プロビジョニング プロセスが Azure サブスクリプションでリソース グループと API アプリを作成している間、Visual Studio の [**Azure App Service アクティビティ**] ウィンドウに進行状況が表示されます。
+6. プロビジョニング プロセスが Azure サブスクリプションでリソース グループと API アプリを作成している間、Visual Studio の **[Azure App Service アクティビティ]** ウィンドウに進行状況が表示されます。
 
 	![[Azure App Service アクティビティ] ウィンドウによる状態の通知](./media/app-service-api-hybrid-on-premises-sql-server/app-service-activity.png)
 
@@ -371,7 +369,7 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 	
 	![ハイブリッド接続](./media/app-service-api-hybrid-on-premises-sql-server/api-app-host-blade-hybrid-connections.png)
 	
-7. **[ハイブリッド接続]** ブレードで、**[追加]** > **[新しいハイブリッド接続]** をクリックします。
+7. **[ハイブリッド接続]** ブレードで、**[追加]**、**[新しいハイブリッド接続]** の順にクリックします。
 	
 8. **[ハイブリッド接続の作成] ブレード**で、次の手順を実行します。
 	- **[名前]** に、接続の名前を入力します。
@@ -401,7 +399,7 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 1. Azure プレビュー ポータルで、[API アプリ ホスト] ブレードに戻り、**[URL]** の下の値をクリックします。
 	
-2. ブラウザーに API アプリのホスト ページが表示されたら、ブラウザーのアドレス バーの URL に `/swagger` を追加して、**[Enter]** キーを押します。
+2. ブラウザーに API アプリのホスト ページが表示されたら、ブラウザーのアドレス バーの URL に `/swagger` を追加して、**Enter** キーを押します。
 	
 3. **[Speakers]** セクションをクリックして展開します。
 
@@ -432,4 +430,4 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

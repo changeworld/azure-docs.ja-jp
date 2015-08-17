@@ -271,4 +271,4 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

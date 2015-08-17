@@ -27,8 +27,8 @@
 
 - プロビジョニング時に、Azure ポータル、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。次の画面は、Azure ポータル上に表示されたワーカー ノード構成を示しています。
 
-	![scaleout_1][image-hdi-optimize-hive-scaleout_1]
-- 実行時に、クラスターを再作成せずにスケールアウトすることもできます。これは次のように表示されます。![scaleout_1][image-hdi-optimize-hive-scaleout_2]
+	![scaleout\_1][image-hdi-optimize-hive-scaleout_1]
+- 実行時に、クラスターを再作成せずにスケールアウトすることもできます。これは次のように表示されます。![scaleout\_1][image-hdi-optimize-hive-scaleout_2]
 
 HDInsight によってサポートされている異なる仮想マシンの詳細については、「[HDInsight の料金詳細](http://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
@@ -36,7 +36,7 @@ HDInsight によってサポートされている異なる仮想マシンの詳�
 
 [Apache Tez](http://hortonworks.com/hadoop/tez/) は、MapReduce エンジンに代わる実行エンジンです。
 
-![tez_1][image-hdi-optimize-hive-tez_1]
+![tez\_1][image-hdi-optimize-hive-tez_1]
 
 
 Tez はより高速です。それは次の理由によります。
@@ -215,4 +215,4 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

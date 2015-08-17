@@ -41,7 +41,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 
 このチュートリアルでは、コマンドライン インターフェイス (Bash、Terminal、Command プロンプト) に慣れていることを前提としています。
 
---help または -h パラメーターを使用すると特定のコマンドに対するヘルプを表示できます。または、azure help [コマンド][オプション] の形式で指定しても、同じ情報が返されます。たとえば、次のコマンドでは、すべて同じ情報が返されます。
+\--help または -h パラメーターを使用すると特定のコマンドに対するヘルプを表示できます。または、azure help [コマンド][オプション] の形式で指定しても、同じ情報が返されます。たとえば、次のコマンドでは、すべて同じ情報が返されます。
 
     azure account set --help
 
@@ -54,7 +54,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 また、次のチュートリアルを読めば、Azure クロスプラットフォーム コマンド ライン インターフェイスでの Azure リソース マネージャーについて詳しく理解できます。
 
 - [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成方法](xplat-cli.md)
-- [Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)
+- [Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)
 
 
 ## サブスクリプションへの接続
@@ -133,13 +133,13 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
 
     azure keyvault key import --vaultName 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' –-password 'PaSSWORD' --destination software
 
-作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定バージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
+作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定バージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
 
 資格情報コンテナーにシークレットを追加するには (SQLPassword という名前のパスワードで、Azure Key Vault に Pa$$w0rd 値を設定)、次のように入力します。
 
     azure keyvault secret set --vault-name 'ContosoKeyVault' --secret-name 'SQLPassword' --value 'Pa$$w0rd'
 
-Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定バージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
+Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定バージョンを取得するには ****https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
 
 作成したキーやシークレットを表示してみましょう。
 
@@ -252,4 +252,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Key Vault の REST API](https://msdn.microsoft.com/library/azure/dn903609.aspx)」と「[Key Vault C# クライアント API リファレンス](https://msdn.microsoft.com/library/azure/dn903628.aspx)」をご覧ください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

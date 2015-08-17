@@ -1,6 +1,6 @@
 このセクションでは、**CompleteDate** という名前の新しいタイムスタンプ フィールドを追加して、データベースのモデルを変更します。このフィールドには、最後に Todo 項目が完了した時刻が記録されます。Entity Framework は、[DropCreateDatabaseIfModelChanges](http://go.microsoft.com/fwlink/?LinkId=394621) から派生した既定のデータベース初期化子クラスを使用し、このモデルの変更に基づいてデータベースを更新します。
 
-1. Visual Studio のソリューション エクスプローラーで、todolist サービス プロジェクト内の **[App_Start]** フォルダーを展開します。WebApiConfig.cs ファイルを開きます。
+1. Visual Studio のソリューション エクスプローラーで、todolist サービス プロジェクト内の **[App\_Start]** フォルダーを展開します。WebApiConfig.cs ファイルを開きます。
 
 2. WebApiConfig.cs ファイルで、既定のデータベース初期化子クラスが `DropCreateDatabaseIfModelChanges` クラスから派生していることに注意してください。つまり、モデルへの変更により、テーブルが削除され、新しいモデルを格納するために再作成されることになります。したがって、テーブル内のデータは失われ、テーブルは再シードされます。次のように登録されたデータが WebApiConfig.cs ファイルを保存するように、データベース初期化子の Seed メソッドを変更します。
 
@@ -40,4 +40,4 @@
 
 次に、クライアント アプリケーションを更新して新しい **CompleteDate** データを表示します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

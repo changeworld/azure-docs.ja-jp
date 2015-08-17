@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="04/27/2015" 
+	ms.date="07/30/2015" 
 	ms.author="mebha"/>
 
 
@@ -41,25 +41,12 @@
 
 ### 必要なモジュールのインストール
 
+要件を満たしたら、Node.js バージョン 0.8.9 が表示されていることを確認します。これは、コマンド ライン ターミナルから次のコマンド node -v で確認できます。<br>**cmd.exe** コマンド ライン ウィンドウで、プロジェクト ディレクトリ (C:\\NodeJSSQLProject など) に移動しします。表示された順序で、次のコマンドを入力します。
 
-**Cmd.exe** コマンド ライン ウィンドウで、msnodesql のあるディレクトリに移動します。表示された順序で、次のコマンドを入力します。
-
-
+	npm init
 	npm install msnodesql
-	npm install -g node-gyp
 
-
-node-gyp がインストールされたら、ディレクトリ *YourProjectDirectory* に移動し、次に **node_modules\msnodesql** に移動します。**cmd.exe** ウィンドウで、次のコマンドを発行します。
-
-
-	node-gyp configure 
-	node-gyp build
-
-
-次に、ディレクトリ **build\release** に移動します。**sqlserver.node** ファイルをコピーし、**msnodesql\lib** ディレクトリに貼り付けます。必要な場合は、古いファイルを置き換えます。
-
-[チーム ブログ](http://blogs.msdn.com/b/sqlphp/archive/2015/05/12/getting-started-with-node-js-and-microsoft-sql-server-and-azure-sql-database.aspx)と[ビデオ](https://www.youtube.com/watch?v=kQo_L-D_zk8)をチェックして、上記の要件をインストールおよびセットアップする方法を確認してください。
-
+次に node\_modules\\msnodesql フォルダーに移動して、**msnodesql-0.2.1-v0.8-ia32** 実行可能ファイルを実行します。インストール ウィザードの手順に従い、完了したら [完了] をクリックします。この時点で Node.js SQL Server ドライバーがインストールされている必要があります。次の手順に従って接続文字列を取得すると、Node.js アプリケーションから Azure SQL DB に接続できるはずです。
 
 ### データベースを作成し、接続文字列を取得します。
  
@@ -234,4 +221,4 @@ node-gyp がインストールされたら、ディレクトリ *YourProjectDire
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

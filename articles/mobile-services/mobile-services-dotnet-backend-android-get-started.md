@@ -26,7 +26,7 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![][88]
+![][0]
 
 このチュートリアルを完了するには、Android Studio 統合開発環境と最新の Android プラットフォームを含む [Android Developer Tools][Android Studio] が必要です。このほか、Android のバージョン 4.2 以降が必要になります。
 
@@ -72,7 +72,7 @@
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
  
-	![][2]  
+	![][2]
 
 3. まだインストールしていない場合は、[Android Developer Tools][Android SDK] をダウンロードしてローカル コンピューターまたは仮想マシンにインストールします。
 
@@ -87,14 +87,11 @@
 ## <a name="next-steps"> </a>次のステップ
 クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-* [認証の使用] 
-  <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
+* [認証の使用] <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
-  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+* [プッシュ通知の使用] <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [Mobile Services .NET バックエンドのトラブルシューティング] 
-  <br/>Mobile Services .NET バックエンドで発生する問題を診断して解決する方法について説明します。
+* [Mobile Services .NET バックエンドのトラブルシューティング] <br/>Mobile Services .NET バックエンドで発生する問題を診断して解決する方法について説明します。
 
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started
@@ -103,7 +100,7 @@
 [Next Steps]: #next-steps
 
 <!-- Images. -->
-[88]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
+[0]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
 [1]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-vs-AS.png
 [2]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-android-AS.png
 
@@ -132,4 +129,4 @@
 [管理ポータル]: https://manage.windowsazure.com/
  
 
-<!-------HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

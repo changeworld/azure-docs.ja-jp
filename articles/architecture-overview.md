@@ -68,4 +68,4 @@ Microsoft は、ポスター/インフォグラフィックに関連するいく
 
 ![Azure Architecture Infographics](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -103,4 +103,4 @@ Azure SDK 2.6 において、Azure コンピューティング エミュレー�
 	上記の問題が解消されない場合は、Azure 2.6 SDK for [VS 2012](http://go.microsoft.com/fwlink/p/?linkid=323511&clcid=0x409)、[VS 2013](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)、または [VS 2015](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409) の最新バージョンをインストールしてください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

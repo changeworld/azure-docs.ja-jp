@@ -205,52 +205,52 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 
 ```
 	armclient get /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/savedSearches?api-version=2014-10-10
-  ```
+```
 
-Supported methods: GET PUT DELETE
+サポートされるメソッド: GET PUT DELETE
 
-Supported collection methods: GET
+サポートされるコレクション メソッド: GET
 
-The following table describes the properties that are available.
+次のテーブルは、使用可能なプロパティについて説明しています。
 
-|Property|Description|
+|プロパティ|説明|
 |---|---|
-|Id|The unique identifier.|
-|Etag|**Required for Patch**. Updated by server on each write. Value must be equal to the current stored value or ‘*’ to update. 409 returned for old/invalid values.|
-|properties.query|**Required**. The search query.|
-|properties.displayName|**Required**. The user defined display name of the query. If modeled as an Azure resource, this would be a Tag.|
-|properties.category|**Required**. The user defined category of the query. If modeled as an Azure resource this would be a Tag.|
+|ID|一意の識別子。|
+|ETag|**PATCH の場合は必須**。書き込みごとにサーバーによって更新されます。更新するには、値を、現在格納されている値と等しくするか、"*"' にする必要があります。古い値や無効な値の場合は、409 が返されます。|
+|properties.query|**必須**。検索クエリ。|
+|properties.displayName|**必須**。ユーザー定義のクエリの表示名。Azure のリソースとしてモデル化されている場合はタグになります。|
+|properties.category|**必須**。ユーザー定義のクエリのカテゴリ。Azure のリソースとしてモデル化されている場合はタグになります。|
 
->[AZURE.NOTE]The Operational Insights Search API currently returns user-created saved searches when polled for saved searches in a workspace. The API will not return saved searches provided by solutions at this time. This functionality will be added at a later date.
+>[AZURE.NOTE]Operational Insights の検索 API では現在、保存された検索をワークスペースでポーリングすると、ユーザー作成の保存された検索が返されます。このとき、ソリューションで提供されている保存された検索は返されません。この機能は、今後追加される予定です。
 
-### Delete saved searches
+### 保存された検索の削除
 
-**Request:**
+**要求:**
 
 ```
 	armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisIsMyId?api-version=2014-10-10
 ```
 
-### Update saved searches
+### 保存された検索の更新
 
- **Request:**
+ **要求:**
 
 ```
-	$savedSearchParametersJson = "{'etag': 'W/`"datetime\'2015-04-16T23%3A35%3A35.3182423Z\'`"', 'properties': { 'Category': 'myCategory', 'DisplayName':'myDisplayName', 'Query':'* | measure Count() by Source', 'Version':'1'  }"
+	$savedSearchParametersJson = "{'etag': 'W/`"datetime'2015-04-16T23%3A35%3A35.3182423Z'`"', 'properties': { 'Category': 'myCategory', 'DisplayName':'myDisplayName', 'Query':'* | measure Count() by Source', 'Version':'1'  }"
 	armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisIsMyId?api-version=2014-10-10 $savedSearchParametersJson
 ```
 
-### Metadata - JSON only
+### メタデータ - JSON のみ
 
-Here’s a way to see the fields for all log types for the data collected in your workspace. For example, if you want you know if the Event type has a field named Computer, then this is one way to look up and confirm.
+ここでは、ワークスペースで収集したデータのすべてのログの種類に対応したフィールドを表示する方法を示します。たとえば、イベントの種類に "Computer" という名前のフィールドがあるかどうかを知りたい場合は、この方法を使用して、検索して確認できます。
 
-**Request for Fields:**
+**フィールドの要求:**
 
 ```
 	armclient get /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/schema?api-version=2014-10-10
 ```
 
-**Response:**
+**応答:**
 
 ```
 	{
@@ -281,29 +281,28 @@ Here’s a way to see the fields for all log types for the data collected in you
 	}
 ```
 
-The following table describes the properties that are available.
+次のテーブルは、使用可能なプロパティについて説明しています。
 
-|**Property**|**Description**|
+|**プロパティ**|**説明**|
 |---|---|
-|name|Field name.|
-|displayName|The display name of the field.|
-|type|The Type of the field value.|
-|facetable|Combination of current ‘indexed’, ‘stored ‘and ‘facet’ properties.|
-|display|Current ‘display’ property. True if field is visible in search.|
-|ownerType|Reduced to only Types belonging to onboarded IP’s.|
+|name|フィールド名。|
+|displayName|フィールドの表示名。|
+|type|フィールド値の型。|
+|facetable|現在の "Indexed"、"stored"、"facet" の各プロパティの組み合わせ。|
+|display|現在の "display" プロパティ。フィールドが検索で表示される場合は true。|
+|ownerType|オンボードされた IP アドレスに属している型のみに限定されます。|
 
 
-## Optional parameters
-The following information describes optional parameters available.
+## 省略可能なパラメーター
+以下では、使用可能なオプションのパラメーターについて説明します。
 
-### Highlighting
+### 強調表示
 
-The “Highlight” parameter is an optional parameter you may use to request the search subsystem include a set of markers in its response.
+“highlight” パラメーターを使用して、マーカーのセットを応答に含めるよう検索サブシステムに要求できます。
 
-These markers indicate the start and end highlighted text that matches the terms provided in your search query.
-You may specify the start and end markers that will be used by search to wrap the highlighted term.
+これらのマーカーは、検索クエリで指定した語句に一致して強調表示されるテキストの開始と終了を示します。強調表示される語句を囲むために検索で使用される開始マーカーと終了マーカーを指定できます。
 
-**Example search query**
+**検索クエリの例**
 
 ```
 	$savedSearchParametersJson =
@@ -320,7 +319,7 @@ You may specify the start and end markers that will be used by search to wrap th
 	armclient post /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/search?api-version=2014-10-10 $searchParametersJson
 ```
 
-**Sample result:**
+**サンプル結果:**
 
 ```
 	{
@@ -346,4 +345,4 @@ You may specify the start and end markers that will be used by search to wrap th
 
 上記の結果にはプレフィックスおよび追加されたエラー メッセージが含まれています。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

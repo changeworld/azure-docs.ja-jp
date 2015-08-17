@@ -36,53 +36,19 @@ Azure 診断 1.2 は、Azure SDK for .NET 2.4 以前で使用します。Azure �
 
 詳細な比較については、この記事の最後にある「[Azure 診断のバージョンの比較][]」を参照してください。
 
-Azure 診断では、次の種類の利用統計情報を収集できます。
+Azure 診断では、次の種類のテレメトリを収集できます。
 
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-<tbody>
-	<tr>
-			<td style="width: 100px;"><strong>データ ソース</strong></td>
-			<td><strong>説明</strong></td>
-	</tr>
-	<tr>
-		<td>IIS Logs</td>
-		<td>IIS Web サイトに関する情報。</td>            
-	</tr>
-	<tr>
-		<td>Azure 診断インフラストラクチャ ログ</td>
-		<td>診断自体に関する情報。</td>            
-	</tr>
-	<tr>
-		<td>IIS の失敗した要求ログ	</td>
-		<td>IIS サイトまたはアプリケーションへの失敗した要求に関する情報。</td>            
-	</tr>
-	<tr>
-		<td>Windows イベント ログ</td>
-		<td>Windows イベント ログ システムに送信された情報。</td>            
-	</tr>
-	<tr>
-		<td>パフォーマンス カウンター</td>
-		<td>オペレーティング システムとカスタム パフォーマンス カウンター</td>            
-	</tr>
-	<tr>
-		<td>クラッシュ ダンプ</td>
-		<td>アプリケーションがクラッシュした場合のプロセスの状態に関する情報。</td>            
-	</tr>
-	<tr>
-		<td>カスタム エラー ログ</td>
-		<td>アプリケーションまたはサービスで作成されたログ。</td>            
-	</tr>
-	<tr>
-		<td>.NET EventSource</td>
-		<td>.NET <a href="http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx">EventSource クラス</a>を使用してコードで生成されたイベント。</td>            
-	</tr>
-	<tr>
-		<td>マニフェスト ベースの ETW</td>
-		<td>すべてのプロセスで生成された ETW イベント。</td>            
-	</tr>
-		
-</tbody>
-</table>
+データ ソース|説明
+---|---
+IIS Logs|IIS Web サイトに関する情報。
+Azure 診断インフラストラクチャ ログ|診断自体に関する情報。
+IIS の失敗した要求ログ|IIS サイトまたはアプリケーションへの失敗した要求に関する情報。
+Windows イベント ログ|Windows イベント ログ システムに送信された情報。
+パフォーマンス カウンター|オペレーティング システムとカスタム パフォーマンス カウンター
+クラッシュ ダンプ|アプリケーションがクラッシュした場合のプロセスの状態に関する情報。
+カスタム エラー ログ|アプリケーションまたはサービスで作成されたログ。
+NET EventSource |<a href="http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx">.NET [EventSource クラス]</a> を使用してコードで生成されたイベント
+マニフェスト ベースの ETW|すべてのプロセスで生成された ETW イベント。
 
 ## Worker ロールの診断を有効にする方法
 
@@ -197,11 +163,12 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource �
 
 2.	**[WorkerRole1]** プロジェクトを右クリックし、**[追加]** -> **[新しい項目]** -> **[Visual C# items]** -> **[データ]** -> **[XML ファイル]** の順に選択して、XML ファイルを **[WorkerRole1]** プロジェクトに追加します。ファイルに「WadExample.xml」という名前を付けます。
 
-	![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
+	![CloudServices\_diag\_add\_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 
-3.	構成ファイルに WadConfig.xsd を関連付けます。WadExample.xml エディタ ウィンドウがアクティブになっていることを確認します。**F4** キーを押し、**[プロパティ]** ウィンドウを開きます。**[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。**[スキーマ]** プロパティで **[…]** をクリックします。**[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。**[OK]** をクリックします。
+3.	構成ファイルに WadConfig.xsd を関連付けます。WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。**F4** キーを押し、**[プロパティ]** ウィンドウを開きます。**[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。**[スキーマ]** プロパティで **[…]** をクリックします。**[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。**[OK]** をクリックします。
 4.	WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 
+```
 		<?xml version="1.0" encoding="utf-8"?>
 		<PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
   			<WadCfg>
@@ -222,6 +189,7 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource �
     			</DiagnosticMonitorConfiguration>
   			</WadCfg>
 		</PublicConfig>
+```
 
 ### 手順 5. worker ロールに診断をインストールする
 Web ロールまたは Worker ロールの診断を管理する PowerShell コマンドレットは、Set-AzureServiceDiagnosticsExtension、Get-AzureServiceDiagnosticsExtension、Remove-AzureServiceDiagnosticsExtension です。
@@ -238,7 +206,7 @@ Web ロールまたは Worker ロールの診断を管理する PowerShell コ�
 
 
 ### 手順 6. テレメトリ データを確認する
-Visual Studio の **[サーバー エクスプローラー]** で wadexample ストレージ アカウントに移動します。クラウド サービスを 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。いずれかのテーブルをダブルクリックして収集したテレメトリを表示します。![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
+Visual Studio の **[サーバー エクスプローラー]** で wadexample ストレージ アカウントに移動します。クラウド サービスを 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。いずれかのテーブルをダブルクリックして収集したテレメトリを表示します。![CloudServices\_diag\_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## 仮想マシンの診断を有効にする方法
 
@@ -258,7 +226,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 
 ### 手順 2. アプリケーションを作成する
 1.	開発コンピューター上で Visual Studio 2013 を起動します。
-2.	.NET Framework 4.5 をターゲットとする Visual C# の新しいコンソール アプリケーションを作成します。プロジェクト名として「WadExampleVM」と入力します。![CloudServices_diag_new_project](./media/cloud-services-dotnet-diagnostics/NewProject.png)
+2.	.NET Framework 4.5 をターゲットとする Visual C# の新しいコンソール アプリケーションを作成します。プロジェクト名として「WadExampleVM」と入力します。![CloudServices\_diag\_new\_project](./media/cloud-services-dotnet-diagnostics/NewProject.png)
 3.	Program.cs の内容を次のコードに置き換えます。**SampleEventSourceWriter** クラスは、4 つのログの作成方法 (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。WriteEvent メソッドの最初のパラメーターは各イベントの ID を定義しています。Run メソッドは、**SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
 
 		using System;
@@ -332,7 +300,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 
 ### 手順 3. アプリケーションをデプロイする
 1.	**[ソリューション エクスプローラー]** で **[WadExampleVM]** プロジェクトを右クリックし、**[エクスプローラーでフォルダーを開く]** を選択します。
-2.	*bin\Debug* フォルダーに移動し、すべてのファイル (WadExampleVM.*) をコピーします。
+2.	*bin\\Debug* フォルダーに移動し、すべてのファイル (WadExampleVM.*) をコピーします。
 3.	**[サーバー エクスプローラー]** で仮想マシンを右クリックし、**[リモート デスクトップを使用して接続]** を選択します。
 4.	VM に接続されたら、WadExampleVM という名前のフォルダーを作成し、コピーしたアプリケーション ファイルをそのフォルダーに貼り付けます。
 5.	アプリケーション ファイルの WadExampleVM.exe を起動します。空白のコンソール ウィンドウが表示されます。
@@ -343,9 +311,10 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 		(Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd' 
 
 2.	既に開いているプロジェクトか、プロジェクトを開かずに Visual Studio インスタンスで、Visual Studio の新しい XML ファイルを開きます。Visual Studio で、**[追加]** -> **[新しい項目]** -> **[Visual C# アイテム]** -> **[データ]** -> **[XML ファイル]** の順に選択します。ファイルに「WadExample.xml」という名前を付けます。
-3.	構成ファイルに WadConfig.xsd を関連付けます。WadExample.xml エディタ ウィンドウがアクティブになっていることを確認します。**F4** キーを押し、**[プロパティ]** ウィンドウを開きます。**[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。**[スキーマ]** プロパティで **[…]** をクリックします。**[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。**[OK]** をクリックします。
+3.	構成ファイルに WadConfig.xsd を関連付けます。WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。**F4** キーを押し、**[プロパティ]** ウィンドウを開きます。**[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。**[スキーマ]** プロパティで **[…]** をクリックします。**[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。**[OK]** をクリックします。
 4.	WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 
+```
 		<?xml version="1.0" encoding="utf-8"?>
 		<PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
   			<WadCfg>
@@ -366,7 +335,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
     			</DiagnosticMonitorConfiguration>
   			</WadCfg>
 		</PublicConfig>
-
+```
 
 ### 手順 5. Azure の仮想マシンに診断をリモートでインストールする
 VM の診断を管理する PowerShell コマンドレットは、Set-AzureVMDiagnosticsExtension、Get-AzureVMDiagnosticsExtension、Remove-AzureVMDiagnosticsExtension です。
@@ -386,7 +355,7 @@ VM の診断を管理する PowerShell コマンドレットは、Set-AzureVMDia
 
 
 ### 手順 6. テレメトリ データを確認する
-Visual Studio の **[サーバー エクスプローラー]** で wadexample ストレージ アカウントに移動します。VM を 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。いずれかのテーブルをダブルクリックして収集したテレメトリを表示します。![CloudServices_diag_wadexamplevm_tables](./media/cloud-services-dotnet-diagnostics/WadExampleVMTables.png)
+Visual Studio の **[サーバー エクスプローラー]** で wadexample ストレージ アカウントに移動します。VM を 5 分程実行すると、**WADEnumsTable**、**WADHighFreqTable**、**WADMessageTable**、**WADPerformanceCountersTable**、**WADSetOtherTable** の各テーブルが表示されます。いずれかのテーブルをダブルクリックして収集したテレメトリを表示します。![CloudServices\_diag\_wadexamplevm\_tables](./media/cloud-services-dotnet-diagnostics/WadExampleVMTables.png)
 
 ## 構成ファイル スキーマ
 
@@ -397,120 +366,32 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 ### Azure 診断が起動しない
 診断は、ゲスト エージェント プラグインと監視エージェントの 2 つのコンポーネントで構成されます。ゲスト エージェント プラグインのログ ファイルは次のファイルにあります。
 
-*%SystemDrive%\ WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics<DiagnosticsVersion>*\CommandExecution.log
+*%SystemDrive%\\ WindowsAzure\\Logs\\Plugins\\Microsoft.Azure.Diagnostics.PaaSDiagnostics<DiagnosticsVersion>*\\CommandExecution.log
 
 プラグインによって次のエラー コードが返されます。
 
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-<tbody>
-	<tr>
-			<td style="width: 100px;"><strong>終了コード</strong></td>
-			<td><strong>説明</strong></td>
-	</tr>
-    <tr>
-		<td>0</td>
-		<td>成功。</td>            
-	</tr>
-    <tr>
-		<td>-1</td>
-        <td>一般的なエラー。</td>		            
-	</tr>
-    <tr>
-		<td>-2</td>
-        <td><p>rcf ファイルを読み込めませんでした。</p>
-<p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。</p></td>		            
-	</tr>
-    <tr>
-		<td>-3</td>
-        <td><p>診断構成ファイルを読み込めませんでした。</p>
-<p>解決方法: これは、構成ファイルがスキーマ検証を渡さないことが原因です。スキーマに準拠する構成ファイルを使用してください。</p></td>		            
-	</tr>
-    <tr>
-		<td>-4</td>
-        <td><p>監視エージェント診断の別のインスタンスが既にローカル リソース ディレクトリを使用しています。</p>
-<p>解決方法: <strong>LocalResourceDirectory</strong> に別の値を指定します。</p></td>		            
-	</tr>
-    <tr>
-		<td>-6</td>
-        <td><p>ゲスト エージェント プラグインの起動ツールが無効なコマンド·ラインで診断を起動しようとしました。</p>
-<p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。</p></td>		            
-	</tr>
-    <tr>
-		<td>-10</td>
-        <td>診断がハンドルされていない例外で終了しました。</td>		            
-	</tr>
-    <tr>
-		<td>-11</td>
-        <td><p>ゲスト エージェントが、監視エージェントの起動と監視を処理するプロセスを作成できませんでした。</p>
+終了コード|説明
+---|---
+0|成功。
+\-1|一般的なエラー。
+\-2|rcf ファイルを読み込めませんでした。<p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
+\-3|診断構成ファイルをロードできませんでした。<p><p>解決方法: これは、構成ファイルがスキーマ検証を渡さないことが原因です。スキーマに準拠する構成ファイルを使用してください。
+\-4|監視エージェント診断の別のインスタンスが既にローカル リソース ディレクトリを使用しています。<p><p>解決方法: **LocalResourceDirectory** に別の値を指定します。
+\-6|ゲスト エージェント プラグインの起動ツールが無効なコマンド ラインで診断を起動しようとしました。<p><p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
+\-10|診断がハンドルされていない例外で終了しました。
+\-11|ゲスト エージェントが、監視エージェントの起動と監視を処理するプロセスを作成できませんでした。<p><p>。解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。<p>
+\-101|診断プラグインを呼び出すときの引数が無効です。<p><p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
+\-102|プラグイン プロセスの初期化でエラーが発生しました。<p><p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。
+\-103|プラグイン プロセスの初期化でエラーが発生しました。具体的にはロガー オブジェクトを作成できません。<p><p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。
+\-104|ゲスト エージェントが指定した rcf ファイルを読み込むことができません。<p><p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
+\-105|診断プラグインが診断構成ファイルを開くことができません。<p><p>これは、診断プラグインが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
+\-106|診断構成ファイルを読み込めませんでした。<p><p>解決方法: これは、構成ファイルがスキーマ検証を渡さないことが原因です。そのため、スキーマに準拠する構成ファイルを使用してください。VM 上の *%SystemDrive%\\WindowsAzure\\Config* フォルダーには、診断拡張機能に渡される XML があります。適切な XML ファイルを開いて **Microsoft.Azure.Diagnostics** を検索し、**xmlCfg** フィールドを見つけます。データは base64 でエンコードされているため、診断で読み込まれた XML を表示するにはこれを[デコードする](http://www.bing.com/search?q=base64+decoder)必要があります。<p>
+\-107|監視エージェントへのリソース ディレクトリのパスが無効です。<p><p>これは、監視エージェントが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。</p>
+\-108 |診断構成ファイルを監視エージェント構成ファイルに変換できません。<p><p>。これは、診断プラグインが無効な構成ファイルを使用して手動で起動された場合にのみ発生する内部エラーです。
+\-110|一般的な診断構成エラー。<p><p>これは、診断プラグインが無効な構成ファイルを使用して手動で起動された場合にのみ発生する内部エラーです。
+\-111|監視エージェントを開始できません。<p><p>解決方法: 新十分なシステム リソースが使用できることを確認します。
+\-112|一般的なエラー
 
-<p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。</p></td>		            
-	</tr>
-    <tr>
-		<td>-101</td>
-        <td><p>診断プラグインを呼び出すときの引数が無効です。</p>
-
-<p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。</p></td>		            
-	</tr>
-    <tr>
-		<td>-102</td>
-        <td><p>プラグイン プロセスの初期化でエラーが発生しました。</p> 
-
-<p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。</p></td>		            
-	</tr>
-    <tr>
-		<td>-103</td>
-        <td><p>プラグイン プロセスの初期化でエラーが発生しました。具体的にはロガー オブジェクトを作成できません。</p>
-
-<p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。</p></td>		            
-	</tr>
-    <tr>
-		<td>-104</td>
-        <td><p>ゲスト エージェントが指定した rcf ファイルを読み込むことができません。</p>
-
-<p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。</p></td>		            
-	</tr>
-    <tr>
-		<td>-105</td>
-        <td><p>診断プラグインが診断構成ファイルを開くことができません。</p>
-
-<p>これは、診断プラグインが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。</p></td>		            
-	</tr>
-    <tr>
-		<td>-106</td>
-        <td><p>診断構成ファイルを読み取れませんでした。</p>
-
-<p>解決方法: これは、構成ファイルがスキーマ検証を渡さないことが原因です。そのため、スキーマに準拠する構成ファイルを使用してください。VM 上の <i>%SystemDrive%\WindowsAzure\Config</i> フォルダーには、診断拡張機能に渡される XML があります。適切な XML ファイルを開いて <strong>Microsoft.Azure.Diagnostics</strong> を検索し、<strong>xmlCfg</strong> フィールドを見つけます。データは base64 でエンコードされているため、診断で読み込まれた XML を表示するにはこれを<a href="http://www.bing.com/search?q=base64+decoder">デコードする</a>必要があります。</p></td>		            
-	</tr>
-    <tr>
-		<td>-107</td>
-        <td><p>監視エージェントへのリソース ディレクトリのパスが無効です。</p>
-
-<p>これは、監視エージェントが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。</p></td>		            
-	</tr>
-    <tr>
-		<td>-108	</td>
-        <td><p>診断構成ファイルを監視エージェント構成ファイルに変換できません。</p>
-
-<p>これは、診断プラグインが無効な構成ファイルを使用して手動で起動された場合にのみ発生する内部エラーです。</p></td>		            
-	</tr>
-    <tr>
-		<td>-110</td>
-        <td><p>一般的な診断構成エラー。</p>
-
-<p>これは、診断プラグインが無効な構成ファイルを使用して手動で起動された場合にのみ発生する内部エラーです。</p></td>		            
-	</tr>
-    <tr>
-		<td>-111</td>
-        <td><p>監視エージェントを開始できません。</p>
-
-<p>解決方法: 十分なシステム リソースを使用できることを確認します。</p></td>		            
-	</tr>
-    <tr>
-		<td>-112</td>
-        <td>一般的なエラー</td>		            
-	</tr>    
-</tbody>
-</table>
 
 ### 診断データがストレージに記録されない
 イベント データが見つからない最も一般的な原因は、不正に定義されたストレージ アカウント情報です。
@@ -535,7 +416,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 
 **Q.** 診断 1.1 拡張機能を既にロールまたは VM 上にインストールしている場合は、どのようにして診断 1.2 または 1.3 にアップグレードしますか。
 
-**A.** 診断 1.1 のインストール時に "–Version "1.*"" を指定した場合は、次にロールまたは VM が再起動するときに、自動で正規表現 "1.*" に一致する最新バージョンに更新されます。診断 1.1 のインストール時に "–Version 1.1" を指定した場合は、Set- コマンドレットを再実行してインストールするバージョンを指定すると、より新しいバージョンに更新できます。
+**A.** 診断 1.1 のインストール時に “–Version “1.*”" を指定した場合は、次にロールまたは VM が再起動するときに、自動で正規表現 “1.*” に一致する最新バージョンに更新されます。診断 1.1 のインストール時に "–Version 1.1" を指定した場合は、Set- コマンドレットを再実行してインストールするバージョンを指定すると、より新しいバージョンに更新できます。
 
 **Q.** テーブルにはどのようにして名前が付けられますか。
 
@@ -563,188 +444,41 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 
 次の 4 つのテーブルが生成されます。
 
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-<tbody>
-	<tr>
-			<td style="width: 100px;"><strong>イベント</strong></td>
-			<td><strong>テーブル名</strong></td>			
-	</tr>
-	<tr>
-			<td>provider=”prov1” &lt;Event id=”1” /></td>
-			<td>WADEvent+MD5(“prov1”)+”1”</td>			
-	</tr>
-	<tr>
-			<td>provider=”prov1” &lt;Event id=”2” eventDestination=”dest1” /></td>
-			<td>WADdest1</td>			
-	</tr>
-	<tr>
-			<td>provider=”prov1” &lt;DefaultEvents /></td>
-			<td>WADDefault+MD5(“prov1”)</td>			
-	</tr>
-	<tr>
-			<td>provider=”prov2” &lt;DefaultEvents eventDestination=”dest2” /></td>
-			<td>WADdest2</td>			
-	</tr>
-	
-
-</table>
-</tbody>
+イベント|テーブル名
+---|---
+provider=”prov1” &lt;Event id=”1” /&gt;|WADEvent+MD5(“prov1”)+”1”
+provider=”prov1” &lt;Event id=”2” eventDestination=”dest1” /&gt;|WADdest1
+provider=”prov1” &lt;DefaultEvents /&gt;|WADDefault+MD5(“prov1”)
+provider=”prov2” &lt;DefaultEvents eventDestination=”dest2” /&gt;|WADdest2
 
 ## Azure 診断のバージョンの比較
 
 次の表は、Azure 診断のバージョン 1.0 および 1.1/1.2/1.3 でサポートされる機能を比較します。
 
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-<tbody>
-	<tr>
-			<td style="width: 100px;"><strong>サポートされるロールの種類</strong></td>
-			<td><strong>診断 1.0</strong></td>
-			<td><strong>診断 1.1/1.2/1.3</strong></td>
-	</tr>
+サポートされるロールの種類|診断 1.0|診断 1.1/1.2/1.3
+---|---
+Web ロール|あり|あり
+Worker ロール|あり|あり
+IaaS|いいえ|あり
 
-	<tr>
-			<td>Web ロール</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>Worker ロール</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>IaaS</td>
-			<td>いいえ</td>
-			<td>あり</td>
-	</tr>
-</tbody>
-</table>
+構成と展開|診断 1.0|診断 1.1/1.2/1.3
+---|---|---
+Visual Studio との統合 - Azure Web/Worker 開発機能への統合。|あり|いいえ
+PowerShell スクリプト - 診断のロールへのインストールと構成を管理するスクリプト。|あり|あり
 
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-<tbody>
-	<tr>
-			<td style="width: 100px;"><strong>構成とデプロイ</strong></td>
-			<td><strong>診断 1.0</strong></td>
-			<td><strong>診断 1.1/1.2/1.3</strong></td>
-	</tr>
+データ ソース|既定のコレクション|形式|説明|診断 1.0|診断 1.1/1.2|診断 1.3
+---|---|---|---|---|---|---
+System.Diagnostics.Trace ログ|あり|テーブル|コードからトレース リスナーに送信されるトレース メッセージを記録します (トレース リスナーを web.config ファイルまたは app.config ファイルに追加する必要があります)。ログ データは、scheduledTransferPeriod の転送間隔でストレージ テーブル WADLogsTable に転送されます。|あり|なし (EventSource を使用)|あり
+IIS ログ|あり|BLOB|IIS サイトに関する情報を記録します。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。|あり|あり|あり
+Azure 診断インフラストラクチャ ログ|あり|テーブル|診断インフラストラクチャ、RemoteAccess モジュール、RemoteForwarder モジュールに関する情報を記録します。ログ データは、scheduledTransferPeriod の転送間隔でストレージ テーブル WADDiagnosticInfrastructureLogsTable に転送されます。|あり|あり|あり
+IIS の失敗した要求ログ|いいえ|BLOB|IIS サイトまたはアプリケーションへの失敗した要求に関する情報を記録します。Web.config の system.WebServer の下でトレース オプションを設定することでも有効にする必要があります。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。|あり|あり|あり
+Windows イベント ログ|いいえ|テーブル|オペレーティング システム、アプリケーション、またはドライバーが適切に動作しているかどうかを示す情報を記録します。パフォーマンス カウンターは明示的に指定する必要があります。これらが追加されると、パフォーマンス カウンター データは scheduledTransferPeriod の転送間隔でストレージ テーブル WADPerformanceCountersTable に転送されます。|あり|あり|あり
+パフォーマンス カウンター|いいえ|テーブル|オペレーティング システム、アプリケーション、またはドライバーが適切に動作しているかどうかを示す情報を記録します。パフォーマンス カウンターは明示的に指定する必要があります。これらが追加されると、パフォーマンス カウンター データは scheduledTransferPeriod の転送間隔でストレージ テーブル WADPerformanceCountersTable に転送されます。|あり|あり|あり
+クラッシュ ダンプ|いいえ|BLOB|システム クラッシュ時のオペレーティング システムの状態に関する情報を記録します。小さいクラッシュ ダンプがローカルで収集されます。完全なダンプを有効にできます。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。ほとんどの例外は ASP.NET によって処理されるため、これは通常 Worker ロールまたは VM でのみ役立ちます。|あり|あり|あり
+カスタム エラー ログ|いいえ|BLOB|ローカル ストレージ リソースを使用することで、カスタム データを記録し、指定したコンテナーにすぐに転送できます。|あり|あり|あり
+EventSource|いいえ|テーブル|.NET EventSource クラスを使用してコードで生成されたログ イベント。|いいえ|あり|あり
+マニフェスト ベースの ETW|いいえ|テーブル|すべてのプロセスで生成された ETW イベント。|いいえ|あり|あり
 
-	<tr>
-			<td>Visual Studio との統合 - Azure Web/Worker 開発機能への統合。</td>
-			<td>あり</td>
-			<td>いいえ</td>
-	</tr>
-	<tr>
-			<td>PowerShell スクリプト - 診断のロールへのインストールと構成を管理するスクリプト。</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	
-</tbody>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-<tbody>
-	<tr>
-			<td style="width: 100px;"><strong>データ ソース</strong></td>
-			<td><strong>既定のコレクション</strong></td>
-			<td><strong>形式</strong></td>
-			<td><strong>説明</strong></td>
-			<td><strong>診断 1.0</strong></td>
-			<td><strong>診断 1.1/1.2</strong></td>
-			<td><strong>診断 1.3</strong></td>
-	</tr>
-	<tr>
-			<td>System.Diagnostics.Trace ログ</td>
-			<td>あり</td>
-			<td>テーブル</td>
-			<td>コードからトレース リスナーに送信されるトレース メッセージを記録します (トレース リスナーを web.config ファイルまたは app.config ファイルに追加する必要があります)。ログ データは、scheduledTransferPeriod の転送間隔でストレージ テーブル WADLogsTable に転送されます。</td>
-			<td>あり</td>
-			<td>なし (EventSource を使用)</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>IIS ログ</td>
-			<td>あり</td>
-			<td>BLOB</td>
-			<td>IIS サイトに関する情報を記録します。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。</td>
-			<td>あり</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>Azure 診断インフラストラクチャ ログ</td>
-			<td>あり</td>
-			<td>テーブル</td>
-			<td>診断インフラストラクチャ、RemoteAccess モジュール、RemoteForwarder モジュールに関する情報を記録します。ログ データは、scheduledTransferPeriod の転送間隔でストレージ テーブル WADDiagnosticInfrastructureLogsTable に転送されます。</td>
-			<td>あり</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>IIS の失敗した要求ログ</td>
-			<td>いいえ</td>
-			<td>BLOB</td>
-			<td>IIS サイトまたはアプリケーションへの失敗した要求に関する情報を記録します。Web.config の system.WebServer の下でトレース オプションを設定することでも有効にする必要があります。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。</td>
-			<td>あり</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>Windows イベント ログ</td>
-			<td>いいえ</td>
-			<td>テーブル</td>
-			<td>オペレーティング システム、アプリケーション、またはドライバーが適切に動作しているかどうかを示す情報を記録します。パフォーマンス カウンターは明示的に指定する必要があります。これらが追加されると、パフォーマンス カウンター データは scheduledTransferPeriod の転送間隔でストレージ テーブル WADPerformanceCountersTable に転送されます。</td>
-			<td>あり</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>パフォーマンス カウンター</td>
-			<td>いいえ</td>
-			<td>テーブル</td>
-			<td>オペレーティング システム、アプリケーション、またはドライバーが適切に動作しているかどうかを示す情報を記録します。パフォーマンス カウンターは明示的に指定する必要があります。これらが追加されると、パフォーマンス カウンター データは scheduledTransferPeriod の転送間隔でストレージ テーブル WADPerformanceCountersTable に転送されます。</td>
-			<td>あり</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>クラッシュ ダンプ</td>
-			<td>いいえ</td>
-			<td>BLOB</td>
-			<td>システム クラッシュ時のオペレーティング システムの状態に関する情報を記録します。小さいクラッシュ ダンプがローカルで収集されます。完全なダンプを有効にできます。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。ほとんどの例外は ASP.NET によって処理されるため、これは通常 Worker ロールまたは VM でのみ役立ちます。</td>
-			<td>あり</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>カスタム エラー ログ</td>
-			<td>いいえ</td>
-			<td>BLOB</td>
-			<td>ローカル ストレージ リソースを使用することで、カスタム データを記録し、指定したコンテナーにすぐに転送できます。</td>
-			<td>あり</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>EventSource</td>
-			<td>いいえ</td>
-			<td>テーブル</td>
-			<td>.NET EventSource クラスを使用してコードで生成されたログ イベント。</td>
-			<td>いいえ</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-	<tr>
-			<td>マニフェスト ベースの ETW</td>
-			<td>いいえ</td>
-			<td>テーブル</td>
-			<td>すべてのプロセスで生成された ETW イベント。</td>
-			<td>いいえ</td>
-			<td>あり</td>
-			<td>あり</td>
-	</tr>
-</tbody>
-</table>
 
 ## その他のリソース
 
@@ -778,4 +512,4 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 [Remove-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495168.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

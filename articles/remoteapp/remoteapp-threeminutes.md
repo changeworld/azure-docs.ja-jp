@@ -3,7 +3,7 @@
     pageTitle="手持ちのデバイスで Azure RemoteApp を 3 分以内に試してみる"
     description="サービスをインストールせずに、Azure RemoteApp の機能を試してみましょう。" 
     services="remoteapp" 
-	documentationCenter="" 
+    documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -37,4 +37,4 @@
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

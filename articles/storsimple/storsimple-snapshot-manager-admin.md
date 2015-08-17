@@ -60,4 +60,4 @@ StorSimple Snapshot Manager を使用すると、現在のバックアップ ジ
 
 [StorSimple Snapshot Manager のダウンロード](https://www.microsoft.com/download/details.aspx?id=44220)。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

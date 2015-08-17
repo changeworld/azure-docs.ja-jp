@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="クエリ エクスプローラーを使用した、DocumentDB コレクションに対する SQL クエリの作成、編集、実行 | Azure" 
+	pageTitle="クエリ エクスプローラーを使用した、DocumentDB コレクションに対する SQL クエリの作成、編集、実行 | Microsoft Azure" 
 	description="DocumentDB クエリ エクスプローラーについて説明します。これは、DocumentDB コレクションに対して SQL クエリを作成、編集、実行する Azure プレビュー ポータル ツールです。" 
 	services="documentdb" 
 	authors="stephbaron" 
-	manager="johnmac" 
+	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
 
@@ -78,4 +78,4 @@
 - クエリ エクスプローラーでサポートされている DocumentDB SQL の文法の詳細については、[ここ](documentdb-sql-query.md)をクリックしてください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

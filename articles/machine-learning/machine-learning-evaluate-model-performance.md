@@ -189,4 +189,4 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -26,7 +26,7 @@ Linux 上で MySQL をインストールする方法の詳細については、[
 
 このチュートリアルでは、次の操作方法について説明します。
 
-- 管理ポータルを使用して、Windows Server 2012 R2 を実行するカスタム仮想マシンを作成します。
+- Azure ポータルを使用して Windows Server 2012 R2 を実行する仮想マシンを作成します。
 
 - MySQL 5.6.23 の Community バージョンを MySQL Server としてこの仮想マシン上にインストールと実行します。
 
@@ -46,7 +46,7 @@ Linux 上で MySQL をインストールする方法の詳細については、[
 次に、MySQL をインストールするために、仮想マシンにログオンします。
 
 [AZURE.INCLUDE [virtual-machines-log-on-win-server](../../includes/virtual-machines-log-on-win-server.md)]
- 
+
 ##仮想マシンに MySQL Community Server をインストールして実行する
 
 MySQL Server の Community バージョンをインストール、構成、と実行するには、次の手順を実行します。
@@ -65,19 +65,19 @@ MySQL Server の Community バージョンをインストール、構成、と�
 10.	**[Type and Networking]** ページで、必要な構成の種類を指定します。さらに、TCP ポートなど接続性のオプションについても必要に応じて指定します。**[Show Advanced Options]**、**[Next]** の順にクリックします。
 
 	![](./media/virtual-machines-mysql-windows-server-2008r2/MySQL_TypeNetworking.png)
- 
+
 11.	**[Accounts and Roles]** ページで強力な MySQL のルート パスワードを指定します。必要に応じて別の MySQL ユーザー アカウントを追加し、**[Next]** をクリックします。
 
 	![](./media/virtual-machines-mysql-windows-server-2008r2/MySQL_AccountsRoles_Filled.png)
- 
+
 12.	**[Windows Service]** ページで、Windows サービスとして MySQL Server を実行するための、既定の設定に対する変更を必要に応じて指定し、**[Next]** をクリックします。
 
 	![](./media/virtual-machines-mysql-windows-server-2008r2/MySQL_WindowsService.png)
- 
+
 13.	**[Advanced Options]** ページで、必要に応じてログ オプションに対する変更を指定し、**[Next]** をクリックします。
 
 	![](./media/virtual-machines-mysql-windows-server-2008r2/MySQL_AdvOptions.png)
- 
+
 14.	**[Apply Server Configuration]** ページで、**[Execute]** をクリックします。構成手順の終了後、**[Finish]** をクリックします。
 15.	**[Product Configuration]** ページで、**[Next]** をクリックします。
 16.	**[Installation Complete]** ページで、後で内容を検討する場合は **[Copy Log to Clipboard]** をクリックしてから **[Finish]** をクリックします。
@@ -85,7 +85,7 @@ MySQL Server の Community バージョンをインストール、構成、と�
 18.	手順 11. で指定したルート パスワードを入力すると、MySQL を構成するためのコマンドを実行できるプロンプトが表示されます。コマンドと構文の詳細については、[MySQL のリファレンス マニュアル](http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html)を参照してください。
 
 	![](./media/virtual-machines-mysql-windows-server-2008r2/MySQL_CommandPrompt.png)
- 
+
 19.	また、**C:\Program Files (x86)\MySQL\MySQL Server 5.6\my-default.ini** ファイルに入力することにより、ベース ディレクトリやデータ ディレクトリ、ドライブなど、サーバー構成に関する既定の設定についても構成できます。詳細については、[5.1.2 サーバー構成の既定値](http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html)に関するページを参照してください。
 
 
@@ -109,11 +109,11 @@ MySQL Server サービスのエンドポイントを構成するには、次の�
 
 Azure 仮想マシンで実行する MySQL Server サービスへのリモート接続をテストするには、最初に、MySQL Server を実行する仮想マシンが属しているクラウド サービスに対応する DNS 名を特定する必要があります。
 
-1.	Azure 管理ポータルで、**[仮想マシン]**、MySQL Server 仮想マシンの名前、**[ダッシュボード]** の順にクリックします。
-2.	仮想マシンのダッシュボードでは、**[概要]** セクションにある **[DNS 名]** の値をメモします。たとえば次のようになります。 
+1.	Azure ポータルで、**[仮想マシン]**、MySQL Server 仮想マシンの名前、**[ダッシュボード]** の順にクリックします。
+2.	仮想マシンのダッシュボードでは、**[概要]** セクションにある **[DNS 名]** の値をメモします。たとえば次のようになります。
 
 	![](./media/virtual-machines-mysql-windows-server-2008r2/MySQL_DNSName.png)
- 
+
 3.	MySQL または MySQL クライアントを実行するローカル コンピューターで、次のコマンドを実行して MySQL ユーザーとしてログインします。
 
 		mysql -u <yourMysqlUsername> -p -h <yourDNSname>
@@ -123,11 +123,8 @@ Azure 仮想マシンで実行する MySQL Server サービスへのリモート
 		mysql -u dbadmin3 -p -h testmysql.cloudapp.net
 
 
-## リソース
+## その他のリソース
 
 MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
 
-
- 
-
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

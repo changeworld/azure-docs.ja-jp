@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/23/2015"
+   ms.date="08/05/2015"
    ms.author="claudioc"/>
 
 # 信頼性の高いアクター: 正規の HelloWorld のチュートリアル シナリオ
@@ -25,7 +25,7 @@
 ## 基本的な概念
 信頼性の高いアクターの使用を開始するには、4 つの基本的な概念を理解する必要があります。
 
-* **アクター サービス**。信頼性の高いアクターは、Service Fabric インフラストラクチャに配置できるサービスにパッケージ化されます。サービスは、1 つまたは複数のアクターをホストできます。サービスごとの単一のアクターと複数のアクターのトレードオフについては、後で詳細に説明します。ここでは、1 つのアクターのみを実装する必要があると仮定します。
+* **アクター サービス**。信頼性の高いアクターは、Service Fabric インフラストラクチャにデプロイできるサービスにパッケージ化されます。サービスは、1 つまたは複数のアクターをホストできます。サービスごとの単一のアクターと複数のアクターのトレードオフについては、後で詳細に説明します。ここでは、1 つのアクターのみを実装する必要があると仮定します。
 * **アクター インターフェイス**。アクター インターフェイスは、アクターのパブリック インターフェイスを定義するために使用されます。アクター モデルの用語では、アクターがプロセスを理解できるメッセージの種類を定義します。アクター インターフェイスは、メッセージをアクターに (非同期に)「送信」するために、他のアクターまたはクライアント アプリケーションによって使用されます。信頼性の高いアクターは、複数のインターフェイスを実装できます。以下に示すように、HelloWorld アクターは IHelloWorld インターフェイスを実装できますが、別のメッセージ/機能を定義する ILogging インターフェイスも実装できます。
 * **サーバー登録**。アクター サービスで、Service Fabric が新しい型を認識し、新しいアクターの作成に使用できるように、アクター型を登録する必要があります。
 * **ActorProxy クラス**。ActorProxy クラスは、アクターにバインドし、そのインターフェイスを介して公開されるメソッドを呼び出すために使用されます。ActorProxy クラスは、次の 2 つの重要な機能を提供します。
@@ -139,14 +139,14 @@ fabricRuntime.RegisterActor(typeof(MyNewActor));
 
 ## デバッグ
 
-Visual Studio 用の Service Fabric ツールは、ローカル マシンでのデバッグをサポートします。デバッグ セッションを開始するには、F5 キーを押します。Visual Studio は、ローカル Service Fabric クラスター上でアプリケーションを構築 (必要な場合)、パッケージ化、および配置し、デバッガーをアタッチします。エクスペリエンスは、ASP.NET アプリケーションのデバッグに似ています。デプロイ プロセス中には、出力ウィンドウで進行状況を確認できます。
+Visual Studio 用の Service Fabric ツールは、ローカル マシンでのデバッグをサポートします。デバッグ セッションを開始するには、F5 キーを押します。Visual Studio は、ローカル Service Fabric クラスター上でアプリケーションを構築 (必要な場合)、パッケージ化、およびデプロイし、デバッガーをアタッチします。エクスペリエンスは、ASP.NET アプリケーションのデバッグに似ています。デプロイ プロセス中には、出力ウィンドウで進行状況を確認できます。
 
 ![Service Fabric デバッグ出力ウィンドウ][3]
 
 
 ## 次のステップ
 
-[Service Fabric のアクターの概要](service-fabric-reliable-actors-introduction.md)[アクター API のリファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)[サンプル コード](https://github.com/Azure/servicefabric-samples)
+[Service Fabric 高信頼アクターの概要](service-fabric-reliable-actors-introduction.md)[アクター API のリファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)[サンプル コード](https://github.com/Azure/servicefabric-samples)
 
 
 <!--Image references-->
@@ -156,4 +156,4 @@ Visual Studio 用の Service Fabric ツールは、ローカル マシンでの�
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

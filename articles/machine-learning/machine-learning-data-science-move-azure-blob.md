@@ -181,4 +181,4 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 [3]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img3.png
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

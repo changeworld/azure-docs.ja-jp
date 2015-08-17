@@ -72,4 +72,4 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 
 > [AZURE.IMPORTANT]サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

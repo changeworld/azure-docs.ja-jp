@@ -83,12 +83,12 @@ SQL Data Warehouse では、接続およびオブジェクトの作成中にい�
 
 | データベースの設定 | 値 |
 | :----------------- | :--------------------------- |
-| ANSI_NULLS | ON |
-| QUOTED_IDENTIFIERS | ON |
-| NO_COUNT | OFF |
+| ANSI\_NULLS | ON |
+| QUOTED\_IDENTIFIERS | ON |
+| NO\_COUNT | OFF |
 | DATEFORMAT | mdy |
 | DATEFIRST | 7 |
-| データベースの照合順序 | SQL_Latin1_General_CP1_CI_AS |
+| データベースの照合順序 | SQL\_Latin1\_General\_CP1\_CI\_AS |
 
 ## セッションと要求
 接続が確立してセッションが構築されたら、SQL Data Warehouse にクエリを送信する準備が整ったことになります。
@@ -158,4 +158,4 @@ WHERE   s.[session_id] <> SESSION_ID()
 
 <!--Other references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

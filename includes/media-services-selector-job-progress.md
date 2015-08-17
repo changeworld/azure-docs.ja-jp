@@ -3,4 +3,4 @@
 - [.NET](../articles/media-services/media-services-check-job-progress.md)
 - [REST API](../articles/media-services/media-services-rest-check-job-progress.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

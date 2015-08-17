@@ -50,4 +50,4 @@
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -9,7 +9,7 @@
 <tags 
    ms.service="storsimple"
    ms.devlang="na"
-   ms.topic="hero-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="07/23/2015"
@@ -148,4 +148,4 @@ StorSimple Manager サービスを使用してデバイスを管理する方法�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

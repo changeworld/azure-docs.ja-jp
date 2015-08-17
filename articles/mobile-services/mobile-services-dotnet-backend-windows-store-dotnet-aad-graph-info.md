@@ -29,7 +29,7 @@ Mobile Services で提供する他の ID プロバイダーと同様に、Azure 
 Azure AD Graph API の詳細については、[Azure Active Directory Graph Team Blog (Azure Active Directory Graph チームのブログ)] を参照してください。
 
 
->[AZURE.NOTE]このチュートリアルは、Azure Active Directory での認証についての知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、「[アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
+>[AZURE.NOTE]このチュートリアルは、Azure Active Directory での認証についての知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル [Mobile Services アプリへの認証の追加]を完了しておく必要があります。このチュートリアルでは、[Mobile Services アプリへの認証の追加]で使用した TodoItem アプリケーションを引き続き更新します。
 
 
 
@@ -38,7 +38,7 @@ Azure AD Graph API の詳細については、[Azure Active Directory Graph Team
 
 このチュートリアルの前に、次の Mobile Services のチュートリアルを完了している必要があります。
 
-+ [アプリへの認証の追加] <br/>TodoList サンプル アプリケーションにログイン要件を追加します。
++ [Mobile Services アプリへの認証の追加] <br/>TodoList サンプル アプリケーションにログイン要件を追加します。
 
 + [Custom API Tutorial (カスタム API チュートリアル)]<br/>カスタム API の呼び出し方法を示します。
 
@@ -242,6 +242,7 @@ Mobile Services でカスタム API をまったく使用したことがない�
 
 
 <!-- URLs. -->
+[Mobile Services アプリへの認証の追加]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md
 [アプリへの認証の追加]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md
 [How to Register with the Azure Active Directory]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure 管理ポータル]: https://manage.windowsazure.com/
@@ -254,4 +255,4 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -80,7 +80,7 @@ Azure Service Fabric を使用すると、既存のアプリケーションを�
 ## アプリケーション パッケージ ファイルの構造
 powershell コマンドレットなどを使用してアプリケーションをデプロイするには、そのアプリケーションは、次の定義済みディレクトリ構造に従っている必要があります。
 
-\applicationmanifest.xml \MyServicePkg \servicemanifest.xml \code \config \data
+\\applicationmanifest.xml \\MyServicePkg \\servicemanifest.xml \\code \\config \\data
 
 root には、アプリケーションを定義する applicationmanifest.xml ファイルが含まれます。アプリケーションに含まれる各サービスのサブディレクトリには、サービスに必要なすべてのアーティファクト、つまり servicemanifest.xml と、通常は次の 3 つのディレクトリが含まれています。
 
@@ -198,7 +198,7 @@ CodePackage は、サービスのコードの場所 (およびバージョン) �
 				  \ ...
 			\config
 			\data
-			...
+			\...
 
 ```
 
@@ -311,4 +311,4 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 
 	
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

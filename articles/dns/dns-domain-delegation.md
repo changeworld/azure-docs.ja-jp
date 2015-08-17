@@ -10,7 +10,7 @@
 <tags
    ms.service="dns"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/28/2015"
@@ -72,8 +72,8 @@ Azure DNS 内に DNS ゾーンを作成した後は、Azure DNS がゾーンの�
 
 Azure PowerShell を使用すると、権限のある NS レコードを次の方法で取得できます (レコード名 "@" は、ゾーンの頂点にあるレコードを指すために使用されています)。
 
-	PS C:> $zone = New-AzureDnsZone –Name contoso.com –ResourceGroupName MyAzureResourceGroup
-	PS C:> Get-AzureDnsRecordSet –Name “@” –RecordType NS –Zone $zone
+	PS C:\> $zone = Get-AzureDnsZone –Name contoso.com –ResourceGroupName MyAzureResourceGroup
+	PS C:\> Get-AzureDnsRecordSet –Name “@” –RecordType NS –Zone $zone
 
 	Name              : @
 	ZoneName          : contoso.com
@@ -93,7 +93,7 @@ Azure PowerShell を使用すると、権限のある NS レコードを次の�
 
 委任が正しく設定されている場合は、通常の DNS 解決プロセスでネーム サーバーが自動的に検出されるため、Azure DNS ネーム サーバーを指定する必要はありません。
 
-	PS C:> nslookup –type=SOA contoso.com
+	PS C:\> nslookup –type=SOA contoso.com
 
 	Server: ns1-04.azure-dns.com
 	Address: 208.76.47.4
@@ -119,22 +119,22 @@ Azure DNS で "contoso.com" を設定して委任した後、別の子ゾーン 
 
 PowerShell の例を次に示します。最初に、親ゾーンと子ゾーンを作成します。リソース グループは同じでも異なっていてもかまいません。
 
-	PS C:> $parent = New-AzureDnsZone -Name contoso.com -ResourceGroupName RG1
-	PS C:> $child = New-AzureDnsZone -Name partners.contoso.com -ResourceGroupName RG1
+	PS C:\> $parent = New-AzureDnsZone -Name contoso.com -ResourceGroupName RG1
+	PS C:\> $child = New-AzureDnsZone -Name partners.contoso.com -ResourceGroupName RG1
 
 次に、子ゾーンから権限のある NS レコードを取得します。
 
-	PS C:> $child_ns_recordset = Get-AzureDnsRecordSet -Zone $child -Name "@" -RecordType NS
+	PS C:\> $child_ns_recordset = Get-AzureDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
 最後に、対応する NS レコード セットを親ゾーンに作成し、委任を完了します (親ゾーンのレコード セット名は子ゾーンの名前と一致します。ここでは "partners" です)。
 
-	PS C:> $parent_ns_recordset = New-AzureDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
-	PS C:> $parent_ns_recordset.Records = $child_ns_recordset.Records
-	PS C:> Set-AzureDnsRecordSet -RecordSet $parent_ns_recordset 
+	PS C:\> $parent_ns_recordset = New-AzureDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
+	PS C:\> $parent_ns_recordset.Records = $child_ns_recordset.Records
+	PS C:\> Set-AzureDnsRecordSet -RecordSet $parent_ns_recordset 
 
 レジストラーを使用して委任したときと同様に、子ゾーンの SOA レコードを検索することで、すべてが正しく設定されていることを確認できます。
 
-	PS C:> nslookup –type=SOA partners.contoso.com
+	PS C:\> nslookup –type=SOA partners.contoso.com
 	
 	Server: ns1-08.azure-dns.com
 	Address: 208.76.47.8
@@ -161,4 +161,4 @@ PowerShell の例を次に示します。最初に、親ゾーンと子ゾーン
 [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -6,4 +6,4 @@
 - [.NET](../articles/hdinsight/hdinsight-hadoop-use-pig-dotnet-sdk.md)
 - [Curl](../articles/hdinsight/hdinsight-hadoop-use-pig-curl.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

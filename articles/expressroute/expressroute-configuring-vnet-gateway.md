@@ -73,4 +73,4 @@ ExpressRoute の詳細については、「[ExpressRoute の技術概要](expres
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

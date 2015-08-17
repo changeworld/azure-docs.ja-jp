@@ -157,4 +157,4 @@
 
 [アセットのダウンロード](media-services-deliver-asset-download.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

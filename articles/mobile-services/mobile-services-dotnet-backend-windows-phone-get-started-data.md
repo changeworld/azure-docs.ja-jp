@@ -99,11 +99,11 @@
 
 1. Visual Studio のソリューション エクスプローラーで、Windows Phone アプリ プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. [NuGet パッケージの管理] ダイアログで、オンライン パッケージ コレクションの **WindowsAzure.MobileServices** を検索し、クリックして Azure Mobile Services Nuget パッケージをインストールします。次に、ダイアログを閉じます。
+2. [NuGet パッケージの管理] ダイアログで、オンライン パッケージ コレクションの **WindowsAzure.MobileServices** を検索し、クリックして Azure のモバイル サービス Nuget パッケージをインストールします。次に、ダイアログを閉じます。
 
     ![Nuget パッケージをインストールする](./media/mobile-services-dotnet-backend-windows-phone-get-started-data/manage-nuget-packages.png)
 
-3. Azure 管理ポータルに戻り、「**アプリケーションを接続してサービスにデータを保存する**」というステップを検索します。`MobileServiceClient` 接続を作成するコード スニペットをコピーします。
+3. Azure の管理ポータルに戻り、「**アプリケーションを接続してサービスにデータを保存する**」というステップを検索します。`MobileServiceClient` 接続を作成するコード スニペットをコピーします。
 
     ![アプリケーション スニペットを接続する](./media/mobile-services-dotnet-backend-windows-phone-get-started-data/copy-mobileserviceclient-snippet.png)
 
@@ -272,4 +272,4 @@
 [How to add a new Windows Firewall port rule]: http://go.microsoft.com/fwlink/?LinkId=392240
    
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

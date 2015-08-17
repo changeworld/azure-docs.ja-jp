@@ -137,4 +137,4 @@
 * Application Insights で [Web ページの可用性と応答性を監視](../app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

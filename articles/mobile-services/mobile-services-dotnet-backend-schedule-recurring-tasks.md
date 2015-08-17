@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure Mobile Services での繰り返し発生するジョブのスケジュール" 
-	description="Azure Mobile Services スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
+	description="Azure Mobile Services Scheduler を使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
 	services="mobile-services" 
 	documentationCenter="" 
 	authors="ggailey777" 
@@ -16,7 +16,7 @@
 	ms.date="07/21/2015" 
 	ms.author="glenga"/>
 
-# モバイル サービスでの繰り返し発生するジョブのスケジュール 
+# Mobile Services での繰り返し発生するジョブのスケジュール 
 
 > [AZURE.SELECTOR-LIST (Platform | Backend)]
 - [(Any | .NET)](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
@@ -86,13 +86,13 @@
 	        public DateTime Date { get; set; }
     	}
 
-4. [モデル] フォルダーを展開し、データ モデルのコンテキスト ファイル (*service\_name\*Context.cs という名前) を開き、**DbSet** という型指定された値を返す、次のプロパティを追加します。
+4. [モデル] フォルダーを展開し、データ モデルのコンテキスト ファイル (*service\_name*Context.cs という名前) を開き、**DbSet** という型指定された値を返す、次のプロパティを追加します。
 
 		public DbSet<Updates> Updates { get; set; }
 
 	DbSet に最初にアクセスしたときにデータベース内に作成される Updates テーブルは、ツイート データを格納する目的でサービスによって使用されます。
 
-	>[AZURE.NOTE]データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](mobile-services-dotnet-backend-use-code-first-migrations.md)を参照してください。
+	>[AZURE.NOTE]データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL Database に対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](mobile-services-dotnet-backend-use-code-first-migrations.md)を参照してください。
 
 次に、Twitter にアクセスしてツイート データを新しい Updates テーブルに格納することを目的とした、スケジュールされたジョブを作成します。
 
@@ -213,7 +213,7 @@
 		    }
 		}
 
-	上記のコードで、文字列 _todolistService_ と _todolistContext_ を、ダウンロードしたプロジェクトの名前空間と DbContext (それぞれ *mobile&#95;service&#95;name\*Service* と mobile&#95;service&#95;name\*Context) に置き換える必要があります。
+	上記のコードで、文字列 _todolistService_ と _todolistContext_ を、ダウンロードしたプロジェクトの名前空間と DbContext (それぞれ *mobile&\#95;service&\#95;name*Service と *mobile&\#95;service&\#95;name*Context) に置き換える必要があります。
    	
 	上記のコードで、**ExecuteAsync** オーバーライド メソッドは保存された資格情報を使用して Twitter のクエリ API を呼び出し、`#mobileservices` というハッシュタグを含む最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
@@ -241,7 +241,7 @@
 
 ##<a name="register-job"></a>サービスを発行して新しいジョブを登録する 
 
-このジョブを **スケジューラ** タブ内に登録する必要があります。その結果、定義したスケジュールに従って、モバイル サービスがこのジョブを実行できるようになります。
+このジョブを **スケジューラ** タブ内に登録する必要があります。その結果、定義したスケジュールに従って、Mobile Services がこのジョブを実行できるようになります。
 
 3. モバイル サービス プロジェクトを Azure に対して再発行します。 
 
@@ -300,4 +300,4 @@
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 [LINQ to Twitter の CodePlex プロジェクトに関するページ]: http://linqtotwitter.codeplex.com/
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

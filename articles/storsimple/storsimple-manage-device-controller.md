@@ -221,4 +221,4 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 このチュートリアルで紹介した手順では解決できないような問題が StorSimple デバイス コントローラーで発生した場合は、[Microsoft サポートにお問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)ください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

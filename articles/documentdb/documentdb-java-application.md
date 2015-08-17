@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB を使用した Java Web アプリケーションの作成" 
+	pageTitle="DocumentDB を使用した Java Web アプリケーションの作成 | Microsoft Azure" 
 	description="このチュートリアルでは、Azure DocumentDB サービスを使用して、Azure Web サイトでホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。" 
 	services="documentdb" 
 	documentationCenter="java" 
@@ -32,7 +32,7 @@
 ##<a id="Prerequisites"></a>前提条件 ##
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](../../pricing/free-trial/)をご覧ください。
 - [Java Development Kit (JDK) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 - [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)。
 - [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト](../web-sites-java-get-started.md)。
@@ -118,7 +118,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 
 	このプロジェクトでは、[Project Lombok](http://projectlombok.org/) を使用して、コンストラクター、getter、setter、ビルダーを生成します。または、手動でこのコードを記述したり、IDE で自動的に生成もできます。
 
-2. DocumentDB サービスを呼び出すには、新しい **DocumentClient** をインスタンス化する必要があります。一般に、後続の要求ごとに新しいクライアントを構築するのではなく、**DocumentClient** を再利用することをお勧めします。**DocumentClientFactory** の中にラップすることによって、クライアントを再利用できます。ここでも、[手順 1.](#CreateDB) でクリップボードに保存した URI 値とプライマリ キー値を貼り付ける必要があります。[YOUR_ENDPOINT_HERE] を URI 値で置き換え、[YOUR_KEY_HERE] をプライマリ キー値で置き換えます。
+2. DocumentDB サービスを呼び出すには、新しい **DocumentClient** をインスタンス化する必要があります。一般に、後続の要求ごとに新しいクライアントを構築するのではなく、**DocumentClient** を再利用することをお勧めします。**DocumentClientFactory** の中にラップすることによって、クライアントを再利用できます。ここでも、[手順 1.](#CreateDB) でクリップボードに保存した URI 値とプライマリ キー値を貼り付ける必要があります。[YOUR\_ENDPOINT\_HERE] を URI 値で置き換え、[YOUR\_KEY\_HERE] をプライマリ キー値で置き換えます。
 
 	    private static final String HOST = "[YOUR_ENDPOINT_HERE]";
 	    private static final String MASTER_KEY = "[YOUR_KEY_HERE]";
@@ -746,8 +746,8 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 
 3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。ファイルのアップロード方法については、「[Azure の Java Web サイトへのアプリケーションの追加](../web-sites-java-add-app.md)」を参照してください。
 
-	WAR ファイルを webapps フォルダーにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
-4. 完成したアプリケーションの動作を確認するには、http://YOUR_SITE_NAME.azurewebsites.net/azure-documentdb-java-sample/ にアクセスして、タスクを追加します。
+	WAR ファイルを webapps ディレクトリにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
+4. 完成したアプリケーションの動作を確認するには、http://YOUR\_SITE\_NAME.azurewebsites.net/azure-documentdb-java-sample/ にアクセスして、タスクを追加します。
 
 ##<a id="GetProject"></a>GitHub からのプロジェクトの入手##
 
@@ -763,7 +763,7 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
 9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。
 10. **[Import Projects]** 画面で、**DocumentDB** プロジェクトを選択解除し、**[Finish]** をクリックします。DocumentDB プロジェクトには、依存関係として追加される DocumentDB Java SDK が含まれています。
-11. **Project Explorer** で、azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER_KEY] 値を DocumentDB の URI とプライマリ キーで置き換え、ファイルを保存します。詳細については、「[手順 1: DocumentDB データベース アカウントを作成する](#CreateDB)」を参照してください。
+11. **Project Explorer** で、azure-documentdb-java-sample\\src\\com.microsoft.azure.documentdb.sample.dao\\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER\_KEY] 値を DocumentDB の URI とプライマリ キーで置き換え、ファイルを保存します。詳細については、「[手順 1: DocumentDB データベース アカウントを作成する](#CreateDB)」を参照してください。
 12. **Project Explorer** で、**azure-documentdb-java-sample** を右クリックし、**[Build Path]**、**[Configure Build Path]** の順にクリックします。
 13. **[Java Build Path]** 画面の右ウィンドウで **[Libraries]** タブを選択し、**[Add External JARs]** をクリックします。lombok.jar ファイルの場所を参照し、**[Open]**、**[OK]** の順にクリックします。
 14. 手順 12. の手順を使用してもう一度 **[Properties]** ウィンドウを開き、左ウィンドウの **[Targeted Runtimes]** をクリックします。
@@ -779,4 +779,4 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 [1]: media/documentdb-java-application/keys.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="06/18/2015"
+	ms.date="08/05/2015"
 	ms.author="sdanie"/>
 
 # Azure API Management でレート制限を使用して API を保護する
@@ -293,4 +293,4 @@ API を追加し、ポリシーを構成したら、準備は完了です。そ�
 [使用量クォータの設定]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

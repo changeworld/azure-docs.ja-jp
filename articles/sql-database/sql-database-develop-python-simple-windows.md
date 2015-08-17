@@ -116,4 +116,4 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

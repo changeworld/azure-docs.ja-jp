@@ -20,7 +20,10 @@
 
 ビッグ データの多くはソーシャル Web サイトからもたらされます。Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。このチュートリアルでは、Twitter streaming API を使用して複数のツイートを取得します。さらに、Azure HDInsight の Apache Hive を使用して、特定の単語を含むツイートを多く送信した Twitter ユーザーの一覧を取得します。
 
-> [AZURE.NOTE]同様のサンプルは、HDInsight のサンプル ギャラリーにあります。<a href="http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Analyze-Twitter-trend-using-Apache-Hive-in-HDInsight" target="_blank">HDInsight の Apache Hive を使用した Twitter の傾向の分析</a>に関する Channel 9 のビデオをご覧ください。
+> [AZURE.NOTE]この記事の手順は、Windows ベースの HDInsight クラスターの使用に基づいています。Linux ベースのクラスターに固有の手順については、「[HDInsight での Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data-linux.md)」を参照してください。
+
+同様のサンプルは、HDInsight のサンプル ギャラリーにあります。<a href="http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Analyze-Twitter-trend-using-Apache-Hive-in-HDInsight" target="_blank">HDInsight の Apache Hive を使用した Twitter の傾向の分析</a>に関する Channel 9 のビデオをご覧ください。
+
 
 ###前提条件
 
@@ -52,7 +55,7 @@ Azure BLOB ストレージの構文を次に示します。
 
 	wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
-> [AZURE.NOTE]HDInsight クラスター バージョン 3.0 では、*wasb://* 構文のみがサポートされます。旧バージョンの *asv://* 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.0 クラスターではサポートされず、以降のバージョンでもサポートされません。
+> [AZURE.NOTE]HDInsight クラスター バージョン 3.0 では、**wasb://* 構文のみがサポートされます。旧バージョンの **asv://* 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.0 クラスターではサポートされず、以降のバージョンでもサポートされません。
 
 > Azure BLOB ストレージのパスは仮想パスです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
@@ -107,13 +110,13 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 8. ページの右上隅にある **[Test OAuth]** をクリックします。
 9. **コンシューマー キー**、**コンシューマー シークレット**、**アクセス トークン**、**アクセス トークン シークレット**を書き留めます。これらの値は後で必要になります。
 
-このチュートリアルでは、Windows PowerShell を使用して Web サービスを呼び出します。.NET の c# サンプルについては、[HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する方法][hdinsight-hbase-twitter-sentiment]に関するページを参照してください。Web サービスを呼び出すその他の一般的なツールは [*Curl*][curl] です。Curl は[ここ][curl-download]からダウンロードできます。
+このチュートリアルでは、Windows PowerShell を使用して Web サービスを呼び出します。.NET の c\# サンプルについては、[HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する方法][hdinsight-hbase-twitter-sentiment]に関するページを参照してください。Web サービスを呼び出すその他の一般的なツールは [*Curl*][curl] です。Curl は[ここ][curl-download]からダウンロードできます。
 
 >[AZURE.NOTE]Windows で curl コマンドを使用する場合、オプション値には一重引用符の代わりに二重引用符を使用します。
 
 **ツイートを取得するには**
 
-1. Windows PowerShell Integrated Scripting Environment (ISE) を開きます (Windows 8 のスタート画面では、「**PowerShell_ISE**」と入力してから、**[Windows PowerShell ISE]** をクリックします。[Windows 8 と Windows での Windows PowerShell の起動][powershell-start]に関するページを参照してください)。
+1. Windows PowerShell Integrated Scripting Environment (ISE) を開きます (Windows 8 のスタート画面では、「**PowerShell\_ISE**」と入力してから、**[Windows PowerShell ISE]** をクリックします。[Windows 8 と Windows での Windows PowerShell の起動][powershell-start]に関するページを参照してください)。
 
 2. 次のスクリプトをスクリプト ウィンドウにコピーします。
 
@@ -269,11 +272,11 @@ Azure PowerShell を使用して、複数の HiveQL ステートメントを一�
 
 HiveQL スクリプトは、次の作業を実行します。
 
-1. **tweets_raw テーブルを削除します** (テーブルが既に存在する場合)。
-2. **tweets_raw Hive テーブルを作成します**。この一時的な Hive 構造テーブルには、さらに抽出、変換、および読み込み (ETL) 処理のデータが保持されます。パーティションの詳細については、[Hive のチュートリアル][apache-hive-tutorial]のページを参照してください。  
+1. **tweets\_raw テーブルを削除します** (テーブルが既に存在する場合)。
+2. **tweets\_raw Hive テーブルを作成します**。この一時的な Hive 構造テーブルには、さらに抽出、変換、および読み込み (ETL) 処理のデータが保持されます。パーティションの詳細については、[Hive のチュートリアル][apache-hive-tutorial]のページを参照してください。  
 3. **データの読み込み。**ソース フォルダー (/tutorials/twitter/data) からデータを読み込みます。JSON ネスト形式の大規模なツイート データセットが、一時的な Hive テーブル構造に変換されました。
 3. **ツイート テーブルを削除します** (テーブルが既に存在する場合)。
-4. **ツイート テーブルを作成します**。Hive を使用してツイート データセットを照会するには、別の ETL 処理を実行する必要があります。この ETL 処理は、"twitter_raw" テーブルに保存したデータのための詳細なテーブル スキーマを定義します。  
+4. **ツイート テーブルを作成します**。Hive を使用してツイート データセットを照会するには、別の ETL 処理を実行する必要があります。この ETL 処理は、"twitter\_raw" テーブルに保存したデータのための詳細なテーブル スキーマを定義します。  
 5. **上書きテーブルを挿入します**。この複雑な Hive スクリプトは、Hadoop クラスターによる一連の長い MapReduce ジョブを開始します。使用するデータセットおよびクラスターのサイズによっては、10 分ほどかかる場合があります。
 6. **上書きディレクトリを挿入します**。クエリを実行し、データセットをファイルに出力します。このクエリは、"Azure" という単語が含まれるツイートを送信した Twitter ユーザーの一覧を返します。
 
@@ -520,7 +523,7 @@ HiveQL スクリプトは、次の作業を実行します。
 	Write-Host "==================================" -ForegroundColor Green
 	#end region
 
-> [AZURE.NOTE]Hive テーブルでは \001 をフィールド区切り記号として使用します。区切り記号は出力には表示されません。
+> [AZURE.NOTE]Hive テーブルでは \\001 をフィールド区切り記号として使用します。区切り記号は出力には表示されません。
 
 分析結果が Azure BLOB ストレージに配置されると、Azure SQL Database/SQL Server へのデータのエクスポート、Power Query を使用してのデータの Excel へのエクスポート、または Hive ODBC ドライバーを使用してのアプリケーションのデータへの接続ができます。詳細については、「[HDInsight での Sqoop の使用][hdinsight-use-sqoop]」、「[HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]」、「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」、および「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-hive-odbc]」を参照してください。
 
@@ -528,7 +531,7 @@ HiveQL スクリプトは、次の作業を実行します。
 
 このチュートリアルでは、Azure 上で HDInsight を使用し、Twitter から収集したデータを照会、探索、分析するため、構造化されていない JSON データセットを構造化された Hive テーブルへ変換する方法を学習しました。詳細については、次を参照してください。
 
-- [HDInsight の使用][hdinsight-get-started]
+- [HDInsight の概要][hdinsight-get-started]
 - [HDInsight 環境での HBase を使用した Twitter センチメントのリアルタイム分析][hdinsight-hbase-twitter-sentiment]
 - [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]
 - [Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]
@@ -559,4 +562,4 @@ HiveQL スクリプトは、次の作業を実行します。
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

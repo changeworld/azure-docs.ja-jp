@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure モバイル エンゲージメント iOS SDK コンテンツ" 
+<properties
+	pageTitle="Azure モバイル エンゲージメント iOS SDK コンテンツ"
 	description="Azure モバイル エンゲージメント用 iOS SDK の最新の更新プログラムと手順"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="kpiteira" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="MehrdadMzfr"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-ios" 
-	ms.devlang="objective-c" 
-	ms.topic="article" 
-	ms.date="02/12/2015" 
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="08/05/2015"
 	ms.author="kapiteir" />
 
 #SDK の内容
@@ -41,6 +41,5 @@
 `src` フォルダー
 
 > エンゲージメント ビュー コントローラーとリーチ SDK のソース コード (エンゲージメント クラスをニーズに適応させたいパワー ユーザー向け)。
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

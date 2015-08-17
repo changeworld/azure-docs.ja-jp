@@ -38,4 +38,4 @@ Azure Active Directory サービスに関する使用上の制約およびその
 * [Azure ID](fundamentals-identity.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

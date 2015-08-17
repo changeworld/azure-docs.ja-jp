@@ -49,7 +49,7 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
 ## Azure サブスクリプションを選択します。
 
-使用するサブスクリプションを選択するには、サブスクリプション ID (\*\*-SubscriptionId\*\*) とサブスクリプション名 (\*\*-SubscriptionName\*\*) が必要になります。前の手順からコピーするか、複数のサブスクリプションがある場合は **Get-AzureSubscription** コマンドレットを実行して結果セットから目的のサブスクリプション情報をコピーできます。
+使用するサブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要になります。前の手順からコピーするか、複数のサブスクリプションがある場合は **Get-AzureSubscription** コマンドレットを実行して結果セットから目的のサブスクリプション情報をコピーできます。
 
 現在のサブスクリプションを設定するには、サブスクリプション情報と共に次のコマンドレットを実行します。
 
@@ -118,7 +118,7 @@ SQL Database は、[Remove-AzureSqlDatabase](https://msdn.microsoft.com/library/
 
 これらの Azure SQL リソースまたは同様のリソースを再作成する場合は、次のことができます。
 
-- これを PowerShell スクリプト ファイル (\*.ps1) として保存します
+- これを PowerShell スクリプト ファイル (*.ps1) として保存します
 - Azure 管理ポータルの [オートメーション] セクションに、これを Azure の Automation Runbook として保存する。 
 
 ## 次のステップ
@@ -137,4 +137,4 @@ SQL Database は、[Remove-AzureSqlDatabase](https://msdn.microsoft.com/library/
 - [Azure SQL Database サービス管理コマンドレット](https://msdn.microsoft.com/library/dn546726.aspx)
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="DocumentDB アカウント制限の引き上げ要求 | Azure" 
+	pageTitle="DocumentDB アカウント制限の引き上げ要求 | Microsoft Azure" 
 	description="使用できるコレクション数、ストアド プロシージャ数、クエリ句数など、DocumentDB 制限の調整を要求する方法について説明します。" 
 	services="documentdb" 
 	authors="stephbaron" 
-	manager="johnmac" 
+	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/04/2015" 
+	ms.date="07/28/2015" 
 	ms.author="stbaro"/>
 
 # DocumentDB アカウント制限の引き上げを要求する
@@ -91,4 +91,4 @@ Azure サポートに問い合わせて調整できる DocumentDB クォータ�
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

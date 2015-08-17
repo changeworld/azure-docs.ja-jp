@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article" 
-	ms.date="06/15/2015"
+	ms.date="08/04/2015"
 	ms.author="tamram"/>
 
 # .NET から Queue ストレージを使用する方法
@@ -24,7 +24,7 @@
 
 このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。例は C# のコードで記述され、Azure .NET 用ストレージ クライアントを利用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。
 
-> [AZURE.NOTE]このガイドは、Azure .NET 用ストレージ クライアント ライブラリ 2.x 以上を対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 4.x です。これは、[NuGet](https://www.nuget.org/packages/WindowsAzure.Storage/) から、または [Azure SDK for .NET](/downloads/) の一部として提供されています。ストレージ クライアント ライブラリの取得の詳細については、下記の「[プログラムでキュー ストレージにアクセスする](#programmatically-access-queue-storage)」を参照してください。
+[AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
 [AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
@@ -241,24 +241,15 @@
 
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
-<ul>
-<li>利用可能な API の詳細については、キュー サービスのリファレンス ドキュメントを参照してください。
-  <ul>
-    <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
-    </li>
-    <li><a href="http://msdn.microsoft.com/library/azure/dd179355">REST API リファレンス</a></li>
-  </ul>
-</li>
-<li>Azure Storage を使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/library/azure/gg433040.aspx">Azure のデータの格納とアクセス</a>」を参照してください。</li>
-<li>Azure Storage で作業するためのコードの記述を簡略化する方法については、<a href="../websites-dotnet-webjobs-sdk/">Azure WebJobs SDK を参照してください。</li>
-<li>Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
-  <ul>
-    <li>構造化データの格納には、<a href="/documentation/articles/storage-dotnet-how-to-use-tables/">テーブル ストレージ</a>を使用します。</li>
-    <li>非構造化データの格納には、<a href="/documentation/articles/storage-dotnet-how-to-use-blobs/">BLOB ストレージ</a>を使用します。</li>
-    <li>リレーショナル データの格納には、<a href="/documentation/articles/sql-database-dotnet-how-to-use/">SQL Database</a> を使用します。</li>
-  </ul>
-</li>
-</ul>
+- 利用可能な API の詳細については、キュー サービスのリファレンス ドキュメントを参照してください。
+    - [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    - [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
+- Azure Storage を使用して実行できるさらに高度なタスクについては、「[Azure のデータの格納とアクセス](http://msdn.microsoft.com/library/azure/gg433040.aspx)」をご覧ください。
+- Azure Storage で作業するために記述したコードを簡略化する方法については、「[Azure WebJobs SDK とは](../websites-dotnet-webjobs-sdk/)」をご覧ください。
+- Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
+    - 構造化データの格納には、[テーブル ストレージ](storage-dotnet-how-to-use-tables.md)を使用します。 
+    - 非構造化データの格納には、[BLOB ストレージ](storage-dotnet-how-to-use-blobs.md)を使用します。
+    - リレーショナル データの格納には、[SQL Database](sql-database-dotnet-how-to-use.md) を使用します。
 
   [Download and install the Azure SDK for .NET]: /develop/net/
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
@@ -272,4 +263,4 @@
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

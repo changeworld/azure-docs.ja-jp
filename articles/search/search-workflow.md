@@ -191,4 +191,4 @@ Standard 価格レベルのみをスケールアップまたはスケールダ�
 [1]: ./media/search-workflow/AzSearch-Workflow.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

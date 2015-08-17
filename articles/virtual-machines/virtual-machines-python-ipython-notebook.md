@@ -146,7 +146,7 @@ Linux で次のコマンドを使用します。
 
 Windows で次のコマンドを使用します。
 
-    cd \users\azureuser.ipython\profile_nbserver
+    cd \users\azureuser\.ipython\profile_nbserver
 
 次のコマンドを使用し、SSL 証明書を作成します (Linux と Windows)。
 
@@ -265,12 +265,9 @@ IPython の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 [Matplotlib]: http://matplotlib.sourceforge.net/ "Matplotlib"
 [portal-vm-windows]: /manage/windows/tutorials/virtual-machine-from-gallery/
 [portal-vm-linux]: /manage/linux/tutorials/virtual-machine-from-gallery/
-
 [リポジトリ]: https://github.com/ipython/ipython
 [python Tools for visual studio]: http://aka.ms/ptvs
-
 [Python 2.7]: http://www.python.org/download
 [OpenSSL]: http://slproweb.com/products/Win32OpenSSL.html
- 
 
-<!--------HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -76,7 +76,7 @@ HDInsight の既定の保管場所であるため、通常は何もしなくて�
 
 	hadoop fs -ls /example/data
 
-一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして **WASB://** を付けることができます。
+一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして ****WASB://** を付けることができます。
 
 HDInsight では、クラスターに複数の BLOB ストレージ アカウントを関連付けることもできます。既定以外の BLOB ストレージ アカウントのデータにアクセスするには、**WASB://&lt;container-name>@<account-name>.blob.core.windows.net/** という形式を使用できます。たとえば、次のコマンドは、指定したコンテナーと BLOB ストレージ アカウントについて、**/example/data** ディレクトリの内容を表示します。
 
@@ -136,7 +136,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 ## 次のステップ
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
-* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+* [HDInsight での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

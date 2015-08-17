@@ -54,7 +54,7 @@ Web アプリを再起動するには、[Azure プレビュー ポータル](htt
 
 	azure site restart [sitename]
 
-> [AZURE.NOTE]診断情報をキャプチャするために最もよく使用される IISNode.yml 構成オプションは loggingEnabled と devErrorsEnabled ですが、IISNode.yml はホスティング環境のさまざまなオプションを構成するためにも使用できます。すべての構成オプションの一覧については、[iisnode_schema.xml ファイル](https://github.com/tjanczuk/iisnode/blob/master/src/config/iisnode_schema.xml)を参照してください。
+> [AZURE.NOTE]診断情報をキャプチャするために最もよく使用される IISNode.yml 構成オプションは loggingEnabled と devErrorsEnabled ですが、IISNode.yml はホスティング環境のさまざまなオプションを構成するためにも使用できます。すべての構成オプションの一覧については、[iisnode\_schema.xml ファイル](https://github.com/tjanczuk/iisnode/blob/master/src/config/iisnode_schema.xml)を参照してください。
 
 <a id="viewlogs"></a>
 ## ログへのアクセス
@@ -125,4 +125,4 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

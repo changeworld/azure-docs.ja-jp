@@ -83,7 +83,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 * [アプリへの認証の追加][Get started with authentication] <br/>Mobile Services を使用して別の種類のアカウントでアプリケーションのユーザーを認証する方法について説明します。
 
-* [通知ハブとは] <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
+* [Notification Hubs とは] <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
 * [Notification Hubs アプリケーションのデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630) </br>Notification Hubs ソリューションのトラブルシューティングとデバッグについて説明します。
 
@@ -117,10 +117,10 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [プッシュ通知を認証ユーザーに送信する]: mobile-services-dotnet-backend-android-push-notifications-app-users.md
 [認証されたユーザーにプッシュ通知を送信する]: mobile-services-dotnet-backend-android-push-notifications-app-users.md
 
-[通知ハブとは]: ../notification-hubs-overview.md
+[Notification Hubs とは]: ../notification-hubs-overview.md
 [登録者へのブロードキャスト通知の送信]: ../notification-hubs-windows-store-dotnet-send-breaking-news.md
 [登録者への通知の送信]: ../notification-hubs-windows-store-dotnet-send-localized-breaking-news.md
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

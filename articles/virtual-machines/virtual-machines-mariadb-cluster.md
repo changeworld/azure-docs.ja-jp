@@ -206,7 +206,7 @@
 
 	- **[mariadb]** セクションを編集し、以下を追加します。
 
-	> [AZURE.NOTE]**innodb_buffer_pool_size** を、お使いの仮想マシンのメモリの 70% にすることをお勧めします。ここでは、3.5 GB の RAM を持つ中の Medium Azure VM に、2.45 GB を設定しています。
+	> [AZURE.NOTE]**innodb\_buffer\_pool\_size** を、お使いの仮想マシンのメモリの 70% にすることをお勧めします。ここでは、3.5 GB の RAM を持つ中の Medium Azure VM に、2.45 GB を設定しています。
 
 	        innodb_buffer_pool_size = 2508M # The buffer pool contains buffered data and the index. This is usually set to 70% of physical memory.
             innodb_log_file_size = 512M #  Redo logs ensure that write operations are fast, reliable, and recoverable after a crash
@@ -370,4 +370,4 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 [Linux 上で MySQL をクラスター化する別の方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

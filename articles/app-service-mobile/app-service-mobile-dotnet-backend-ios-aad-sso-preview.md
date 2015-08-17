@@ -20,9 +20,9 @@ ms.author="mahender" />
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
-このチュートリアルでは、Active Directory 認証ライブラリを使用して、クイック スタート プロジェクトに認証を追加します。
+このチュートリアルでは、Active Directory 認証ライブラリ (ADAL) を使用して、クイック スタート プロジェクトに認証を追加します。「[Add authentication to your app (アプリケーションに認証を追加する)]」チュートリアルに説明されている Mobile Apps SDK を使用して、より少ない構成で認証を有効にすることもできます。ADAL のこのトピックでは、エンド ユーザー向けのより統合された認証方法を説明します。ADAL には、その他の AAD 保護されたリソースにアクセスするための豊富な機能も用意されています。
 
-ユーザーを認証できるようにするには、Azure Active Directory (AAD) テナントにアプリケーションを登録する必要があります。この処理は 2 段階の手順で実行されます。まず、App Service を登録し、App Service に対するアクセス許可を公開する必要があります。次に、iOS アプリを登録し、これらのアクセス許可へのアクセス権を付与する必要があります。
+ADAL を使用してユーザーを認証できるようにするには、Azure Active Directory (AAD) テナントにアプリケーションを登録する必要があります。この処理は 2 段階の手順で実行されます。まず、App Service を登録し、App Service に対するアクセス許可を公開する必要があります。次に、iOS アプリを登録し、これらのアクセス許可へのアクセス権を付与する必要があります。
 
 このチュートリアルには、次のものが必要です。
 
@@ -121,6 +121,6 @@ ms.author="mahender" />
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
  [Mobile Apps の使用]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
- 
+ [Add authentication to your app (アプリケーションに認証を追加する)]: app-service-mobile-dotnet-backend-ios-get-started-users-preview.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/08/2015"
+	ms.date="07/29/2015"
 	ms.author="szark"/>
 
 
@@ -76,7 +76,7 @@ LAMP スタックは次のさまざまな要素で構成されています。
 
 - apache2
 - mysql
-- apache2-mod_php53
+- apache2-mod\_php53
 - php53-mysql
 
 これらのパッケージは 1 つの `zypper install` コマンドでインストールできます。
@@ -125,4 +125,4 @@ Ubuntu 上での LAMP スタックの設定については、他にも多くの�
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

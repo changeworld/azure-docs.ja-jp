@@ -39,7 +39,7 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 		FROM hivesampletable 
 		group by country, state;
 
-	> [AZURE.NOTE]**Tez** エンジンを使用して HQL ファイルで Hive クエリを実行するには、ファイルの先頭に "\*\*set hive.execution.engine=tez\*\*;" を追加します。
+	> [AZURE.NOTE]**Tez** エンジンを使用して HQL ファイルで Hive クエリを実行するには、ファイルの先頭に "**set hive.execution.engine=tez**;" を追加します。
 		
 3.  **hivequery.hql** を BLOB ストレージ内の **adftutorial** コンテナーにアップロードします。
 
@@ -112,7 +112,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 ### パイプラインの作成およびスケジュール設定
    
-1. コマンド バーの **[新しいパイプライン]** をクリックします。コマンドが表示されない場合は、**[... (省略記号)** をクリックすると表示されます。 
+1. コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...](省略記号)** をクリックすると表示されます。 
 2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。**HDInsightLinkedService** リンク サービスの作成手順を実行した場合、独自のクラスターを使用するには、次の JSON で **HDInsightOnDemandLinkedService** を **HDInsightLinkedService** に置き換えます。 
 
 
@@ -140,7 +140,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		                        "Month":"$$Text.Format('{0:%M}',SliceStart)",
 		                        "Day":"$$Text.Format('{0:%d}',SliceStart)"
 		                    },
-		                    "scriptpath": "adftutorial\\hivequery.hql",
+		                    "scriptPath": "adftutorial\\hivequery.hql",
 						    "scriptLinkedService": "StorageLinkedService"
 						},
 						"policy":
@@ -159,7 +159,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
       		}
 		}
 
-	> [AZURE.NOTE]**StartDateTime** の値を現在の 3 日前の日付に置き換え、**EndDateTime** の値を現在の日付に置き換えます。StartDateTime と EndDateTime は、いずれも [ISO 形式](http://ja.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。出力テーブルは毎日生成されるようスケジュール設定されているので、3 つのスライスが生成されることになります。
+	> [AZURE.NOTE]**StartDateTime** の値を現在の 3 日前の日付に置き換え、**EndDateTime** の値を現在の日付に置き換えます。StartDateTime と EndDateTime は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。出力テーブルは毎日生成されるようスケジュール設定されているので、3 つのスライスが生成されることになります。
 	> 
 	> JSON で**ストレージ アカウント**を実際のストレージ アカウント名に置き換えてください。
 	
@@ -236,7 +236,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 HDInsight クラスターに関連付けられている Azure BLOB ストレージに Pig/Hive スクリプトを格納すれば、以下に示す JSON 内のプロパティを使用して Pig/Hive アクティビティからそれらのスクリプトを参照できます。
 
 * **scriptPath** – Pig または Hive スクリプト ファイルへのパス
-* **scriptLinkedService** – スクリプト ファイルを含む Azure Storage アカウント
+* **scriptLinkedService** – スクリプト ファイルを含む Azure ストレージ アカウント
 
 次に示す JSON の例は Hive アクティビティを使用したサンプル パイプラインであり、**StorageLinkedService** で表される Azure BLOB ストレージ内の **adfwalkthrough** コンテナーにある **scripts** フォルダーに格納された **transformdata.hql** ファイルを参照しています。
 
@@ -258,7 +258,7 @@ HDInsight クラスターに関連付けられている Azure BLOB ストレー�
 					"transformation":
 					{
     					"type": "Hive",
-    					"scriptpath": "adfwalkthrough\\scripts\\transformdata.hql",    		
+    					"scriptPath": "adfwalkthrough\\scripts\\transformdata.hql",    		
 						"scriptLinkedService": "StorageLinkedService", 
 						"defines":
 						{
@@ -277,7 +277,7 @@ HDInsight クラスターに関連付けられている Azure BLOB ストレー�
 	}
 
 
-> [AZURE.NOTE]**Tez** エンジンを使用して Hive クエリを実行するには、Hive クエリを実行する前に "\*\*set hive.execution.engine=tez\*\*;" を実行します。
+> [AZURE.NOTE]**Tez** エンジンを使用して Hive クエリを実行するには、Hive クエリを実行する前に "**set hive.execution.engine=tez**;" を実行します。
 > 
 > コマンドレット、JSON スキーマ、スキーマ内のプロパティの詳細については、[開発者用リファレンス](http://go.microsoft.com/fwlink/?LinkId=516908)を参照してください。
 
@@ -353,4 +353,4 @@ Data Factory の Pig アクティビティと Hive アクティビティでは�
 [Azure Portal]: http://portal.azure.com
  
 
-<!------HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

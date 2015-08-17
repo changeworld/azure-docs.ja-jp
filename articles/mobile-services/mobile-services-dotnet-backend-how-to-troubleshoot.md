@@ -135,7 +135,7 @@ Azure にサービスを発行した後、Visual Studio の**サーバー エク
 
 SQL Database と共に Mobile Services .NET バックエンドを使用している場合、Entity Framework (EF) をデータ アクセス テクノロジとして使用することで、データベースのクエリの実行とデータベースへのオブジェクトの保存が可能となります。開発者に代わって EF が処理する重要な側面に、コードに指定したモデル クラスが変更されるときのデータベースの列 (*スキーマ*とも呼ばれます) の変更方法があります。このプロセスは、[Code First Migrations](http://msdn.microsoft.com/data/jj591621) とも呼ばれます。
 
-移行は複雑となる場合があり、データベースの状態が EF モデルと常に同期されていないと成功しない可能性があります。モバイル サービスで移行を処理する手順と発生する可能性があるエラーについては、[データ モデルの変更を .NET バックエンド モバイル サービスに加える方法](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)を参照してください。
+移行は複雑となる場合があり、データベースの状態が EF モデルと常に同期されていないと成功しない可能性があります。モバイル サービスで移行を処理する手順と発生する可能性があるエラーについては、「[データ モデルの変更を .NET バックエンド モバイル サービスに加える方法](mobile-services-dotnet-backend-how-to-use-code-first-migrations.md)」を参照してください。
 
 <!-- IMAGES -->
 
@@ -154,4 +154,4 @@ SQL Database と共に Mobile Services .NET バックエンドを使用してい
 [LogsPortal]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/13.png
 [HelpConflict]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/14.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

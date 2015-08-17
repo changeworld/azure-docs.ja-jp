@@ -39,4 +39,4 @@
 [How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]: ../articles/mobile-services/mobile-services-how-to-register-active-directory-authentication.md
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -4,7 +4,7 @@
 
 # 管理 API: バージョン 2014-07-31-Preview
 
-このドキュメントでは、Azure Search 管理 REST API の **2014-07-31-Preview** バージョンについて説明します。これは MSDN で一般公開バージョンの [Azure Search 管理 REST API 2015-02-28](https://msdn.microsoft.com/library/dn832684.aspx) に取って代わられています。 ________________________________________
+このドキュメントでは、Azure Search 管理 REST API の **2014-07-31-Preview** バージョンについて説明します。これは MSDN で一般公開バージョンの [Azure Search 管理 REST API 2015-02-28](https://msdn.microsoft.com/library/dn832684.aspx) に取って代わられています。 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 ## サービス管理操作
 
@@ -815,4 +815,4 @@ api-key、特に管理者キーは、必ず機密データとして扱ってく�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

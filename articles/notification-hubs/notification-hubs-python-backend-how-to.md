@@ -17,10 +17,12 @@
 	ms.author="yuaxu"/>
 
 # Python で通知ハブを使用する方法
-<div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/documentation/articles/notification-hubs-java-backend-how-to/" title="Java">Java</a><a href="/documentation/articles/notification-hubs-php-backend-how-to/" title="PHP">PHP</a><a href="/documentation/articles/notification-hubs-python-backend-how-to/" title="Python" class="current">Python</a><a href="/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs/" title="Node.js">Node.js</a>
-</div>
-
+> [AZURE.SELECTOR] 
+- [Java](notification-hubs-php-backend-how-to.md)
+- [PHP](notification-hubs-python-backend-how-to.md)
+- [Python](notification-hubs-nodejs-how-to-use-notification-hubs.md)
+- [Node.js](notification-hubs-nodejs-how-to-use-notification-hubs.md)
+		
 MSDN のトピック「[Notification Hubs の REST API](http://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように、Notification Hubs の REST インターフェイスを使用して、Java/PHP/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
 
 > [AZURE.NOTE]これは Python で、通知の送信を実装するためのサンプル参照実装であり、正式にサポートされている通知ハブの Python SDK ではありません。
@@ -222,7 +224,7 @@ Notification Hubs クライアントを初期化します (「[Notification Hubs
 
 	hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
-次に、ターゲット モバイル プラットフォームに応じて送信コードを追加します。このサンプルでは、send_windows_notification (Windows)、send_apple_notification (Apple) など、プラットフォーム通知の送信を有効にするレベルの高いメソッドを追加します。
+次に、ターゲット モバイル プラットフォームに応じて送信コードを追加します。このサンプルでは、send\_windows\_notification (Windows)、send\_apple\_notification (Apple) など、プラットフォーム通知の送信を有効にするレベルの高いメソッドを追加します。
 
 ### Windows ストアおよび Windows Phone 8.1 (非 Silverlight)
 
@@ -350,4 +352,4 @@ HTTP ヘッダーが変更する形式と、ペイロードの本文が HTTP 要
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

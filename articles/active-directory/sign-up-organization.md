@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure への組織としてのサインアップ" 
-	description="職場または学校アカウントを使用して、組織の内部設置型 ID と Azure AD の間の効率性を既に強化した既存のユーザー アカウント、ポリシー、設定、または内部設置型サーバー デプロイを利用する方法について説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="terrylan" 
-	editor="Lisatoft"/>
+<properties
+	pageTitle="Azure への組織としてのサインアップ"
+	description="職場または学校アカウントを使用して、組織の内部設置型 ID と Azure AD の間の効率性を既に強化した既存のユーザー アカウント、ポリシー、設定、または内部設置型サーバー デプロイを利用する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="markvi"
+	manager="stevenpo"
+	editor=""/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/27/2015" 
-	ms.author="terrylan"/>
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/30/2015"
+	ms.author="markvi"/>
 
 
 # Azure への組織としてのサインアップ
@@ -27,13 +27,12 @@
 
 	このディレクトリが作成されたら、管理者がユーザーを作成し、それぞれがアクセスする必要があるクラウド サービス (Azure など) のサブスクリプションに基づいて各ユーザーにライセンスを付与できます。
 
-組織として Azure にサインアップする必要がある場合は、 [**今すぐサインアップ**](http://go.microsoft.com/fwlink/?LinkId=269967)
+組織として Azure にサインアップする必要がある場合は、 [**今すぐサインアップ**](https://azure.microsoft.com/pricing/purchase-options/)
 
 **その他のリソース**
 
-* [Microsoft Azure のブログ](http://azure.microsoft.com/blog/) 
+* [Microsoft Azure のブログ](http://azure.microsoft.com/blog/)
 * [Azure AD とは](active-directory-whatis.md)
 * [クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

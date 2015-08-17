@@ -3,7 +3,7 @@
 	description="Windows ベースの Azure 仮想マシンに接続できない場合は、以下の診断と手順を使用して問題の原因を特定してください。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="JoeDavies-MSFT"
+	authors="dsk-2015"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management,azure-resource-manager"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/07/2015"
-	ms.author="josephd"/>
+	ms.author="dkshir"/>
 
 # Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング
 
@@ -72,7 +72,7 @@ Azure ポータルによって生成された RDP ファイルの例を次に示
 
 原因: 接続先の仮想マシンが、資格情報のユーザー名部分に示されているセキュリティ機関を特定できない。
 
-ユーザー名が *SecurityAuthority*\*UserName* という形式 (例: CORP\User1) の場合、*SecurityAuthority* の部分には、仮想マシンのコンピューター名 (ローカル セキュリティ機関) か、Active Directory ドメイン名を指定します。
+ユーザー名が *SecurityAuthority*\*UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分には、仮想マシンのコンピューター名 (ローカル セキュリティ機関) か、Active Directory ドメイン名を指定します。
 
 考えられるこの問題の解決策
 
@@ -86,14 +86,14 @@ Azure ポータルによって生成された RDP ファイルの例を次に示
 
 Windows ベースのコンピューターでは、ローカル アカウントまたはドメイン ベース アカウントのいずれかの資格情報が認証されます。
 
-- ローカル アカウントの場合は、 *ComputerName*\*UserName* という構文を使用します (例: SQL1\Admin4798)。
-- ドメイン アカウントの場合は、 *DomainName*\*UserName* という構文を使用します (例: CONTOSO\johndoe)。
+- ローカル アカウントの場合は、 *ComputerName*\*UserName* という構文を使用します (例: SQL1\\Admin4798)。
+- ドメイン アカウントの場合は、 *DomainName*\*UserName* という構文を使用します (例: CONTOSO\\johndoe)。
 
-新しい AD フォレスト内でドメイン コント ローラーに昇格するコンピューターの場合、昇格実行時のログインに使用するローカル管理者アカウントは、新しいフォレストとドメインで、同じパスワードを含む同等のアカウントに変換されます。前のローカル管理者アカウントは削除されます。たとえば、ローカル管理者アカウント DC1\DCAdmin でログインして、新しいフォレストで仮想マシンを corp.contoso.com ドメインのドメイン コント ローラーとして昇格すると、DC1\DCAdmin のローカル アカウントは削除され、新しいドメイン アカウント (CORP\DCAdmin) が同じパスワードで作成されます。
+新しい AD フォレスト内でドメイン コント ローラーに昇格するコンピューターの場合、昇格実行時のログインに使用するローカル管理者アカウントは、新しいフォレストとドメインで、同じパスワードを含む同等のアカウントに変換されます。前のローカル管理者アカウントは削除されます。たとえば、ローカル管理者アカウント DC1\\DCAdmin でログインして、新しいフォレストで仮想マシンを corp.contoso.com ドメインのドメイン コント ローラーとして昇格すると、DC1\\DCAdmin のローカル アカウントは削除され、新しいドメイン アカウント (CORP\\DCAdmin) が同じパスワードで作成されます。
 
 アカウント名が、仮想マシンで有効アカウントとして認証される名前であることを再確認してください。パスワードが正しいことを再確認してください。
 
-ローカル管理者アカウントのパスワードを変更する必要がある場合は、「[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)」を参照してください。
+ローカル管理者アカウントのパスワードを変更する必要がある場合は、「[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)」をご覧ください。
 
 ### リモート デスクトップ接続のメッセージ ウィンドウ: このコンピューターはリモート コンピューターに接続できません。
 
@@ -101,7 +101,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 各 Windows ベースのコンピューターにはリモート デスクトップ ユーザーのローカル グループがあり、このグループには、リモート デスクトップ接続にログオンする権利を持つアカウントおよびグループが含まれます。ローカルの Administrators グループのメンバーも、アカウントはリモート デスクトップ ユーザーのローカル グループのメンバーとしてリストされていませんが、アクセスできます。ドメインに参加しているマシンの場合、ローカルの Administrators グループにはドメインのドメイン管理者も含まれます。
 
-接続を開始するために使用しているアカウントに、リモート デスクトップへのログオン権限があることを確認してください。一時的な回避策として、ドメイン管理者アカウントまたはローカル管理者アカウントを使用してリモート デスクトップ接続を作成し、コンピューターの管理スナップインを使用して、必要なアカウントをリモート デスクトップ ユーザーのローカル グループに追加します ([システム ツール] > [ローカル ユーザーとグループ] > [グループ] > [リモート デスクトップ ユーザー])。
+接続を開始するために使用しているアカウントに、リモート デスクトップへのログオン権限があることを確認してください。一時的な回避策として、ドメイン管理者アカウントまたはローカル管理者アカウントを使用してリモート デスクトップ接続を作成し、コンピューターの管理スナップインを使用して、必要なアカウントをリモート デスクトップ ユーザーのローカル グループに追加します (**[システム ツール] > [ローカル ユーザーとグループ] > [グループ] > [リモート デスクトップ ユーザー]**)。
 
 ### リモート デスクトップ接続のメッセージ ウィンドウ: 以下のいずれかの理由によって、リモート デスクトップがリモート コンピューターに接続できません。
 
@@ -182,9 +182,9 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 同じクラウド サービスまたは仮想ネットワーク内の仮想マシンへのリモート デスクトップ接続を作成できる場合は、以下を確認してください。
 
 - ターゲットの仮想マシンでの、リモート デスクトップのトラフィック向けエンドポイントの構成。エンドポイントのプライベート TCP ポートは、仮想マシン上のリモート デスクトップ サービスのサービスがリッスンする TCP ポートと一致する必要があります。この TCP ポートの既定設定は 3389 です。
-- ターゲットの仮想マシンでの、リモート デスクトップのトラフィック向けエンドポイントの ACL。ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへのリモート デスクトップの受信トラフィックを受け取れない場合があります。ご利用になっているプロキシのパブリック IP アドレスからの受信トラフィック、または他のエッジ サーバーからの受信トラフィックが許可されているかを ACL で確認してください。詳細については、「[ネットワーク アクセス制御リスト (ACL) とは](https://msdn.microsoft.com/library/azure/dn376541.aspx)」を参照してください。
+- ターゲットの仮想マシンでの、リモート デスクトップのトラフィック向けエンドポイントの ACL。ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへのリモート デスクトップの受信トラフィックを受け取れない場合があります。ご利用になっているプロキシのパブリック IP アドレスからの受信トラフィック、または他のエッジ サーバーからの受信トラフィックが許可されているかを ACL で確認してください。詳細については、「[ネットワーク アクセス制御リスト (ACL) とは](https://msdn.microsoft.com/library/azure/dn376541.aspx)」をご覧ください。
 
-問題の原因としてをエンドポイントを排除する場合、現在使用されているエンドポイントを削除してから新しいエンドポイントを作成します。このとき、外部ポート番号の範囲 49152 ～ 65535 からランダムなポート番号を選択します。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)」を参照してください。
+問題の原因としてをエンドポイントを排除する場合、現在使用されているエンドポイントを削除してから新しいエンドポイントを作成します。このとき、外部ポート番号の範囲 49152 ～ 65535 からランダムなポート番号を選択します。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)」をご覧ください。
 
 ### <a id="nsgs"></a>ソース 4: ネットワーク セキュリティ グループ
 
@@ -198,10 +198,10 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 ![](./media/virtual-machines-troubleshoot-remote-desktop-connections/tshootrdp_5.png)
 
-まず、**Azure VM との RDP 接続 (再起動が必要)** に関する問題を解決するために[Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を実行できなかった場合、 「[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)」の指示に従って、仮想マシンのリモート デスクトップ サービスのサービスをリセットします。リセットすると、以下のようになります。
+まず、**Azure VM との RDP 接続 (再起動が必要)** に関する問題を解決するために [Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を実行できなかった場合、 「[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)」の指示に従って、仮想マシンのリモート デスクトップ サービスのサービスをリセットします。リセットすると、以下のようになります。
 
 - 「リモート デスクトップ」 の Windows ファイアウォールの既定ルール (TCP ポート 3389) が有効になる。
-- HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections レジストリ値が 0 に設定されるため、リモート デスクトップ接続が有効になる。
+- HKLM\\System\\CurrentControlSet\\Control\\Terminal Server\\fDenyTSConnections レジストリ値が 0 に設定されるため、リモート デスクトップ接続が有効になる。
 
 もう一度、コンピューターから接続を試みてください。接続できなければ、以下の問題が考えらえます。
 
@@ -243,7 +243,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 ### リモート デスクトップ サービスでリッスンする TCP ポートの手動修正
 
-[Azure VM との RDP 接続 (再起動が必要)](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864) に関する問題を解決するために **Azure IaaS (Windows) 診断パッケージ**を実行できなかった場合、リモートの Azure PowerShell セッションのプロンプトで、このコマンドを実行します。
+**Azure VM との RDP 接続 (再起動が必要)** に関する問題を解決するために [Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を実行できなかった場合、リモートの Azure PowerShell セッションのプロンプトで、このコマンドを実行します。
 
 	Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" -Name "PortNumber"
 
@@ -263,11 +263,11 @@ Azure 仮想マシンのリモート デスクトップのエンドポイント�
 
 ## 手順 5: Azure サポート フォーラムに問題を送信します。
 
-世界中の Azure 専門家に質問するには、MSDN Azure フォーラムまたは Stack Overflow Azure フォーラムのいずれかに問題を送信してください。詳細については、「[Microsoft Azure フォーラム](http://azure.microsoft.com/support/forums/)」を参照してください。
+世界中の Azure 専門家に質問するには、MSDN Azure フォーラムまたは Stack Overflow Azure フォーラムのいずれかに問題を送信してください。詳細については、「[Microsoft Azure フォーラム](http://azure.microsoft.com/support/forums/)」をご覧ください。
 
 ## 手順 6: Azure サポート インシデントを送信します。
 
-**Azure VM との RDP 接続 (再起動が必要)** に関する問題を解決するために [Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)またはこの記事の手順 2 ～ 5 を実行し、その問題を Azure サポート フォーラムに送信したにもかかわらず、 リモート デスクトップ接続を作成できない場合、ユーザーができることは、仮想マシンを再作成できるかどうかを確認することです。
+**Azure VM との RDP 接続 (再起動が必要)** に関する問題を解決するために [Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)やこの記事の手順 2～5 を実行し、その問題を Azure サポート フォーラムに送信したにもかかわらず、 リモート デスクトップ接続を作成できない場合、ユーザーができることは、仮想マシンを再作成できるかどうかを確認することです。
 
 仮想マシンを再作成できなければ、Azureサポート インシデントを送信することをお勧めします。
 
@@ -287,4 +287,4 @@ Azure サポートの使用方法の詳細については、「[Microsoft Azure 
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

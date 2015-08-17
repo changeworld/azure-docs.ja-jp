@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.date="08/04/2015" 
 	ms.author="tomfitz"/>
 
 # 既存のゲートウェイを使用する API アプリのプロビジョニング
@@ -40,7 +40,7 @@
 
 ### hostingPlanId
 
-既存のホスティング プランの識別子。
+既存の App Service ホスティング プランの識別子。
 
     "hostingPlanId": {
       "type": "string"
@@ -65,7 +65,7 @@
       "packageId": "Microsoft.ApiApp"
     }
     
-以降では、値は **variables('packageId')** として使用されています。
+以降では、値は **variables('packageId')** として使用されています。API Apps の NuGet パッケージ ID が含まれます。
 
 ## デプロイするリソース
 
@@ -73,7 +73,7 @@
 
 API アプリをホストする Web アプリを作成します。
 
-**kind** が **apiApp** に設定されています。これにより、この Web アプリがゲートウェイをホストしていることが Azure ポータルに通知されます。Web アプリは、ポータルの Web アプリの参照ブレードに表示されなくなります。アプリには、既定の空の API アプリ パッケージをインストールする拡張機能が含まれています。API アプリとホスティング Web アプリの間にリンクが定義されています。アプリ設定セクションには、API アプリをホストするために必要な値が含まれています。
+**kind** が **apiApp** に設定されています。これにより、この Web アプリが API アプリをホストしていることが Azure ポータルに通知されます。Web アプリは、ポータルの Web アプリの参照ブレードに表示されなくなります。アプリには、既定の空の API アプリ パッケージをインストールする拡張機能が含まれています。API アプリとホスティング Web アプリの間にリンクが定義されています。アプリ設定セクションには、API アプリをホストするために必要な値が含まれています。**serverFarmId** プロパティには、**hostingPlanId** パラメーターで指定した値が設定されます。
 
     {
       "type": "Microsoft.Web/sites",
@@ -191,4 +191,4 @@ API アプリを作成します。
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

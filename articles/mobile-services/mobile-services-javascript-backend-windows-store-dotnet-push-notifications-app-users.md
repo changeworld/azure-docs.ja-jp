@@ -49,9 +49,9 @@
 
 	function insert(item, user, request) {
     // Define a payload for the Windows Store toast notification.
-    var payload = '&lt;?xml version="1.0" encoding="utf-8"?>&lt;toast>&lt;visual>' +    
-    '&lt;binding template="ToastText01">&lt;text id="1">' +
-    item.text + '&lt;/text>&lt;/binding>&lt;/visual>&lt;/toast>';
+    var payload = '<?xml version="1.0" encoding="utf-8"?><toast><visual>' +    
+    '<binding template="ToastText01"><text id="1">' +
+    item.text + '</text></binding></visual></toast>';
 
     // Get the ID of the logged-in user.
     var userId = user.userId;		
@@ -64,17 +64,17 @@
                 success: function(pushResponse) {
                     console.log("Sent push:", pushResponse);
 	    			request.respond();
-                    },             
+                    },              
                     error: function (pushResponse) {
                             console.log("Error Sending push:", pushResponse);
 	    				request.respond(500, { error: pushResponse });
-                        {
+                        }
                     });
-                {
+                }
             });
 	}
 
-<p>この insert スクリプトでは、ユーザー ID タグを使用することで、ログインしているユーザーによって作成されたすべての Windows ストア アプリケーション登録に対してプッシュ通知が (挿入された項目のテキストと共に) 送信されます。</p></li></ol>
+&nbsp;&nbsp;この insert スクリプトでは、ユーザー ID タグを使用することで、ログインしているユーザーによって作成されたすべての Windows ストア アプリケーション登録に対してプッシュ通知が (挿入された項目のテキストと共に) 送信されます。
 
 ##<a name="update-app"></a>登録の前にログインするようにアプリケーションを更新する
 
@@ -98,4 +98,4 @@
 [Azure 管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

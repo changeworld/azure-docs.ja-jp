@@ -19,4 +19,4 @@
 [AZURE.INCLUDE [publishing-with-git](../../includes/publishing-with-git.md)]
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

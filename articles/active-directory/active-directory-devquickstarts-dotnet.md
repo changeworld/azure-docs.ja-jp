@@ -42,7 +42,7 @@
 ## *1.DirectorySearcher アプリケーションを登録する*
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
--	Microsoft Azure 管理ポータルにサインインします。
+-	Microsoft Azure の管理ポータルにサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
@@ -79,7 +79,7 @@ public MainWindow()
 }
 ```
 
-- 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリの UI で [検索] ボタンをクリックすると呼び出されます。このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access_token を含める必要があります。この処理を ADAL が実行します。
+- 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリの UI で [検索] ボタンをクリックすると呼び出されます。このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access\_token を含める必要があります。この処理を ADAL が実行します。
 
 ```C#
 private void Search(object sender, RoutedEventArgs e)
@@ -165,4 +165,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

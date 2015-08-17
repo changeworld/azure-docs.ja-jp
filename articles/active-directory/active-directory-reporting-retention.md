@@ -44,4 +44,4 @@ Azure AD レポートは、次に示す一定期間データを保存します�
 |	RMS 対応アプリケーションの利用状況 |	30 日 |
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -262,4 +262,4 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 
 [StorSimple Snapshot Manager を使用したボリュームの表示と管理](storsimple-snapshot-manager-manage-volumes.md)。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -41,4 +41,4 @@ AS2 コネクタの API アプリ インスタンスを参照して [追跡] を
 [1]: ./media/app-service-logic-archive-as2-messages/Tracking.jpg
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

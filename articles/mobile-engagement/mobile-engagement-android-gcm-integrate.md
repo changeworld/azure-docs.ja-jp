@@ -103,7 +103,7 @@ GCM を統合すると、アプリケーションが実行されていないと�
 -   [Server key] を選びます。
 -   次の画面は空白のままにし **(IP 制限なし)**、[Create] をクリックします。
 -   生成された **API キー**をコピーします。
--   $/#application/YOUR_ENGAGEMENT_APPID/native-push に移動します。
+-   $/#application/YOUR\_ENGAGEMENT\_APPID/native-push に移動します。
 -   GCM セクションで、生成してコピーした API キーを貼り付けて編集します。
 
 これで、Reach 通知とポーリングを作成するときに [いつでも] を選択することができます。
@@ -123,4 +123,4 @@ GCM を統合すると、アプリケーションが実行されていないと�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

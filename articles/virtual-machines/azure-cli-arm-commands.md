@@ -1737,4 +1737,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list [options] <location> <publisher> [offer] [sku]
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

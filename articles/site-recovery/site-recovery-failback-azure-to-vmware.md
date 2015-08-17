@@ -58,64 +58,19 @@ vContinuum セットアップをダウンロードするには、[ここ](http:/
 
 また、[ここ](http://go.microsoft.com/fwlink/?LinkID=533813)をクリックして、vConinuum のパッチをダウンロードし、インストールしてください。
 
-1.  セットアップを起動して、vContinuum のインストールを開始します。ようこそ画面が表示されたら、[Next] をクリックして、設定の指定を開始します。
-
-![](./media/site-recovery-failback-azure-to-vmware/image2.png)
-
-2.  CX サーバーの IP アドレスとポートを指定します。[Use Https] チェック ボックスをオンにします。
-
-![](./media/site-recovery-failback-azure-to-vmware/image3.png)
-
-    a.  To discover the CX IP go to the CS deployment on Azure and view
-        its dashboard. The public IP address will be displayed under
-        Public Virtual IP address.
-
-![](./media/site-recovery-failback-azure-to-vmware/image4.png)
-
-    b.  To discover the CX public port go to the endpoints tab in the VM
-        page and identify the HTTPs endpoints public port
-
-![](./media/site-recovery-failback-azure-to-vmware/image5.png)
-
-3.  CS パスフレーズを指定します。パスフレーズは、CS を登録する際にメモされています。パスフレーズは、MT および PS のデプロイメントでも使用しています。パスフレーズを忘れた場合は、Azure 上の CS サーバーにアクセスすると、C:\Program Files (x86)\InMage Systems\private\connection.passphrase の下で見つかります。
-
-    ![](./media/site-recovery-failback-azure-to-vmware/image6.png)
-
-4.  vContinuum サーバーをインストールする場所を指定して、インストールを開始します。
-
-    ![](./media/site-recovery-failback-azure-to-vmware/image7.png)
-
-5.  インストールが完了したら、vContinuum を起動して、動作することを確認します。
-
-    ![](./media/site-recovery-failback-azure-to-vmware/image8.png)
+1.  セットアップを起動して、vContinuum のインストールを開始します。ようこそ画面が表示されたら、[Next] をクリックして、設定の指定を開始します。![](./media/site-recovery-failback-azure-to-vmware/image2.png)
+2.  CX サーバーの IP アドレスとポートを指定します。[Use Https] チェック ボックスをオンにします。![](./media/site-recovery-failback-azure-to-vmware/image3.png) a.CX の IP を確認するには、Azure で CS のデプロイに移動し、そのダッシュボードを表示します。[パブリック仮想 IP アドレス] にパブリック IP アドレスが表示されます。![](./media/site-recovery-failback-azure-to-vmware/image4.png) b.CX のパブリック ポートを確認するには、VM ページの [エンドポイント] タブに移動し、HTTPS エンドポイントのパブリック ポートを特定します。![](./media/site-recovery-failback-azure-to-vmware/image5.png)
+3.  CS パスフレーズを指定します。パスフレーズは、CS を登録する際にメモされています。パスフレーズは、MT および PS のデプロイでも使用しています。パスフレーズを忘れた場合は、Azure 上の CS サーバーにアクセスすると、C:\\Program Files (x86)\\InMage Systems\\private\\connection.passphrase の下で見つかります。![](./media/site-recovery-failback-azure-to-vmware/image6.png)
+4.  vContinuum サーバーをインストールする場所を指定して、インストールを開始します。![](./media/site-recovery-failback-azure-to-vmware/image7.png)
+5.  インストールが完了したら、vContinuum を起動して、動作することを確認します。![](./media/site-recovery-failback-azure-to-vmware/image8.png)
 
 ## PS サーバーを Azure にインストールする
 
 Azure 内の VM がデータをオンプレミスの MT に戻せるようにするために、プロセス サーバー (PS) を Azure 上にインストールする必要があります。Azure 上の PS は、構成サーバー (CS) と同じネットワーク上にデプロイする必要があります。
 
 1.  Azure の [構成サーバー] ページで、新しいプロセス サーバーを追加するアイコン (![](./media/site-recovery-failback-azure-to-vmware/image9.png)) をクリックします。
-
-2.  プロセス サーバーの画面で次の設定を構成し、新しいサーバーをデプロイします。
-
-    a.プロセス サーバーの名前を入力します。
-
-    b.仮想マシンに管理者として接続するためのユーザー名を入力します。
-
-    c.ログインするためのパスワードを入力します。
-
-    d.プロセス サーバーの登録先となる構成サーバーを選択します。正しい構成サーバーを選択していることを確認します。これは、仮想マシンを保護し、フェールオーバーするために使用されるサーバーと同じです。
-
-    e.プロセス サーバーのデプロイ先となる Azure ネットワークを指定します。構成サーバーと同じネットワークを選択する必要があります。
-
-    f.選択したサブネット内の一意の IP アドレスを指定します。
-
-    g.プロセス サーバーのデプロイメントを開始します。
-
-![](./media/site-recovery-failback-azure-to-vmware/image10.png)
-
-1.  プロセス サーバーをデプロイするジョブがトリガーされます。
-
-![](./media/site-recovery-failback-azure-to-vmware/image11.png)
+2.  プロセス サーバーの画面で次の設定を構成し、新しいサーバーをデプロイします。a.プロセス サーバーの名前を入力します。b.仮想マシンに管理者として接続するためのユーザー名を入力します。c.ログインするためのパスワードを入力します。d.プロセス サーバーの登録先となる構成サーバーを選択します。正しい構成サーバーを選択していることを確認します。これは、仮想マシンを保護し、フェールオーバーするために使用されるサーバーと同じです。e.プロセス サーバーのデプロイ先となる Azure ネットワークを指定します。構成サーバーと同じネットワークを選択する必要があります。f.選択したサブネット内の一意の IP アドレスを指定します。g.プロセス サーバーのデプロイを開始します。![](./media/site-recovery-failback-azure-to-vmware/image10.png)
+3.  プロセス サーバーをデプロイするジョブがトリガーされます。![](./media/site-recovery-failback-azure-to-vmware/image11.png)
 
 プロセス サーバーが Azure にデプロイされたら、指定した資格情報を使用してプロセス サーバーにログインできます。保護の前方向処理時に使用した手順を使用して、PS を登録します。
 
@@ -133,7 +88,7 @@ PS が CS の下に一覧表示されるまでには、約 10 ～ 15 分かか�
 
 Windows MT は、vContinuum セットアップに既にバンドルされています。vContinuum をインストールすると、MT も同じマシンにデプロイされ、構成サーバーに登録されます。
 
-1.  デプロイメントを開始するには、Azure からの VM の復旧先となる、オンプレミスの ESX ホスト上に空のマシンを作成します。
+1.  デプロイを開始するには、Azure からの VM の復旧先となる、オンプレミスの ESX ホスト上に空のマシンを作成します。
 
 2.  VM に 2 つ以上のディスクがアタッチされていることを確認します。1 つ目は OS 用に使用され、2 つ目はリテンション期間ドライブとして使用されます。
 
@@ -143,7 +98,7 @@ Windows MT は、vContinuum セットアップに既にバンドルされてい�
 
 ### Linux MT をデプロイする
 
-1.  デプロイメントを開始するには、Azure からの VM の復旧先となる、オンプレミスの ESX ホスト上に空のマシンを作成します。
+1.  デプロイを開始するには、Azure からの VM の復旧先となる、オンプレミスの ESX ホスト上に空のマシンを作成します。
 
 2.  VM に 2 つ以上のディスクがアタッチされていることを確認します。1 つ目は OS 用に使用され、2 つ目はリテンション期間ドライブとして使用されます。
 
@@ -193,53 +148,53 @@ f.そのような行が存在しない場合、**[Add Row]** をクリックし�
 
 注: その他のパッケージをダウンロードおよびインストールする前に、システムがインターネットに接続されていることを確認します。
 
-# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
+\# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
 
 このコマンドは、次に示す 15 のパッケージを CentOS 6.6 リポジトリからダウンロードしてインストールします。
 
-bc-1.06.95-1.el6.x86_64.rpm
+bc-1.06.95-1.el6.x86\_64.rpm
 
-busybox-1.15.1-20.el6.x86_64.rpm
+busybox-1.15.1-20.el6.x86\_64.rpm
 
-elfutils-libs-0.158-3.2.el6.x86_64.rpm
+elfutils-libs-0.158-3.2.el6.x86\_64.rpm
 
-kexec-tools-2.0.0-280.el6.x86_64.rpm
+kexec-tools-2.0.0-280.el6.x86\_64.rpm
 
-lsscsi-0.23-2.el6.x86_64.rpm
+lsscsi-0.23-2.el6.x86\_64.rpm
 
-lzo-2.03-3.1.el6_5.1.x86_64.rpm
+lzo-2.03-3.1.el6\_5.1.x86\_64.rpm
 
-perl-5.10.1-136.el6_6.1.x86_64.rpm
+perl-5.10.1-136.el6\_6.1.x86\_64.rpm
 
-perl-Module-Pluggable-3.90-136.el6_6.1.x86_64.rpm
+perl-Module-Pluggable-3.90-136.el6\_6.1.x86\_64.rpm
 
-perl-Pod-Escapes-1.04-136.el6_6.1.x86_64.rpm
+perl-Pod-Escapes-1.04-136.el6\_6.1.x86\_64.rpm
 
-perl-Pod-Simple-3.13-136.el6_6.1.x86_64.rpm
+perl-Pod-Simple-3.13-136.el6\_6.1.x86\_64.rpm
 
-perl-libs-5.10.1-136.el6_6.1.x86_64.rpm
+perl-libs-5.10.1-136.el6\_6.1.x86\_64.rpm
 
-perl-version-0.77-136.el6_6.1.x86_64.rpm
+perl-version-0.77-136.el6\_6.1.x86\_64.rpm
 
-rsync-3.0.6-12.el6.x86_64.rpm
+rsync-3.0.6-12.el6.x86\_64.rpm
 
-snappy-1.1.0-1.el6.x86_64.rpm
+snappy-1.1.0-1.el6.x86\_64.rpm
 
-wget-1.12-5.el6_6.1.x86_64.rpm
+wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 注: ソース マシンで、ルートまたはブート デバイスとして Reiser または XFS のファイル システムが使用されている場合、保護する前に、次のパッケージを Linux マスター ターゲットにダウンロードしてインストールする必要があります。
 
-# cd /usr/local
+\# cd /usr/local
 
-# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
+\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
 
-# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
+\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
 
-# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm
+\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
-# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
+\# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
 
-# rpm -ivh xfsprogs-3.1.1-16.el6.x86_64.rpm
+\# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
 
 #### カスタム構成変更を適用する
 
@@ -255,11 +210,11 @@ wget-1.12-5.el6_6.1.x86_64.rpm
 
 3. 次のコマンドを実行して、アクセス許可を付与します。
 
-# **chmod 755 ./ApplyCustomChanges.sh**
+\# **chmod 755 ./ApplyCustomChanges.sh**
 
 4. 次のコマンドを実行して、スクリプトを実行します。
 
-**# ./ApplyCustomChanges.sh**
+**\# ./ApplyCustomChanges.sh**
 
 注: スクリプトは、サーバー上で 1 回のみ実行してください。前述のスクリプトが正常に実行されたら、サーバーを**再起動**します。
 
@@ -277,7 +232,7 @@ Linux マスター ターゲット サーバーをデプロイした Azure ネ�
 
 gzip 圧縮された Linux マスター ターゲット サーバー インストーラーの tar アーカイブから、ファイルを抽出します。これを行うには、
 
-Linux マスター ターゲット サーバー インストーラーのコピー先のディレクトリから *"tar –xvzf Microsoft-ASR_UA_8.2.0.0_RHEL6-64*"* を実行します。
+Linux マスター ターゲット サーバー インストーラーのコピー先のディレクトリから *"tar –xvzf Microsoft-ASR\_UA\_8.2.0.0\_RHEL6-64*"* を実行します。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image16.png)
 
@@ -349,11 +304,11 @@ Azure ポータルで仮想マシンの状態をチェックし、フェール�
 
 ![](./media/site-recovery-failback-azure-to-vmware/image8.png)
 
-1.  **[Choose Application]** 設定で、**[P2V]** を選択します。
+2.  **[Choose Application]** 設定で、**[P2V]** を選択します。
 
-2.  **[New Protection]** オプションをクリックして、手順を開始します。
+3.  **[New Protection]** オプションをクリックして、手順を開始します。
 
-3.  開いた新しいウィンドウで、オンプレミスを宛先として仮想マシンの保護を開始します。
+4.  開いた新しいウィンドウで、オンプレミスを宛先として仮想マシンの保護を開始します。
 
     a.フェールバックする VM に応じて、**[OS type]** を選択し、**[Get Details]** を選択します。
 
@@ -365,7 +320,7 @@ Azure ポータルで仮想マシンの状態をチェックし、フェール�
 
     e.保護対象の VM を識別したら、それらを 1 つずつ選択します。
 
-4.  (既に Azure にフェールオーバーしている) 保護対象の仮想マシンを選択すると、仮想マシンの 2 つのエントリがあるポップアップ ウィンドウが表示されます。これは、CS が、登録されている仮想マシンの 2 つのインスタンスを検出しているためです。オンプレミス VM のエントリを削除して、正しい VM を保護できるようにする必要があります。エントリはコンピューター ホスト名を使用して表示されることに注意してください。ここで、正しい Azure VM エントリを識別するには、Azure VM にログインし、C:\Program Files (x86)\Microsoft Azure Site Recovery\Application Data\etc にアクセスします。ファイル drscout.conf に、Host ID のエントリがあります。vContinuum のダイアログで、VM で見つかったホスト ID を持つエントリを残します。他のエントリはすべて削除します。
+5.  (既に Azure にフェールオーバーしている) 保護対象の仮想マシンを選択すると、仮想マシンの 2 つのエントリがあるポップアップ ウィンドウが表示されます。これは、CS が、登録されている仮想マシンの 2 つのインスタンスを検出しているためです。オンプレミス VM のエントリを削除して、正しい VM を保護できるようにする必要があります。エントリはコンピューター ホスト名を使用して表示されることに注意してください。ここで、正しい Azure VM エントリを識別するには、Azure VM にログインし、C:\\Program Files (x86)\\Microsoft Azure Site Recovery\\Application Data\\etc にアクセスします。ファイル drscout.conf に、Host ID のエントリがあります。vContinuum のダイアログで、VM で見つかったホスト ID を持つエントリを残します。他のエントリはすべて削除します。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image22.png)
 
@@ -380,7 +335,7 @@ Azure ポータルで仮想マシンの状態をチェックし、フェール�
 
     d.  Next you can also delete the virtual machines on-premises
 
-5.  次に、VM を保護するために宛先とするオンプレミス MT サーバーを指定します。
+6.  次に、VM を保護するために宛先とするオンプレミス MT サーバーを指定します。
 
     a.フェールバック先の vCenter に接続します。
 
@@ -390,7 +345,7 @@ a.仮想マシンの復旧先となるホストに基づいて、MT サーバー
 
 ![](./media/site-recovery-failback-azure-to-vmware/image24.png)
 
-1.  次に、各仮想マシンのレプリケーション オプションを設定します。
+7.  次に、各仮想マシンのレプリケーション オプションを設定します。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image25.png)
 
@@ -398,32 +353,28 @@ a.復旧側の**データストア**を選択する必要があります。こ�
 
 VM に応じて、次のオプションを設定します。
 
-<table>
-<tr><td>オプション</td><td>推奨されるオプション値</td></tr>
-<tr><td>Process Server IP</td><td>Azure にデプロイ済みの PS を選択します。</td></tr>
-<tr><td>Retention size (in MB)</td><td></td></tr>
-<tr><td>保持するサイズの値</td><td>1</td></tr>
-<tr><td>Days or Hours</td><td>Days</td></tr>
-<tr><td>一貫性を維持する期間</td><td>1</td></tr>
-<tr><td>Select target datastore</td><td>復旧側で利用可能なデータストア。このデータストアは、十分な容量があり、仮想マシンの実体化先の ESX ホストでも利用できる必要があります。</td></tr>
-</table>
+オプション|推奨されるオプション値
+---|---
+Process Server IP|Azure にデプロイ済みの PS を選択します。
+Retention size (in MB)| 
+保持するサイズの値|1
+Days or Hours|Days
+一貫性を維持する期間|1
+Select target datastore|復旧側で利用可能なデータストア。このデータストアは、十分な容量があり、仮想マシンの実体化先の ESX ホストでも利用できる必要があります。
 
 
-1.  次に、仮想マシンが、オンプレミス サイトにフェールオーバーした後に取得するプロパティを構成できます。次に示すさまざまなプロパティを構成できます。
+8.  次に、仮想マシンが、オンプレミス サイトにフェールオーバーした後に取得するプロパティを構成できます。次に示すさまざまなプロパティを構成できます。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image26.png)
 
 
-  <table>
-<tr><td>プロパティ</td><td>構成方法</td></tr>
-<tr><td>Network Configuration</td><td>検出された各 NIC について、仮想マシンのフェールバック IP アドレスを構成します。NIC を選択し、[Change] をクリックして、IP アドレスの詳細を指定します。
-
-</td></tr>
-<tr><td>Hardware Configuration</td><td>VM 用の CPU とメモリの値を指定できます。この設定を、保護対象のすべての VM に適用することもできます。[CPUs] と [Memory] の正しい値を識別するには、IaaS VM ロール サイズを参照し、割り当てられているコア数とメモリ サイズを確認します。
-</td></tr>
-<tr><td>Displayname Settings</td><td>フェールオーバーしてオンプレミスに戻った後で、仮想マシンの名前を変更できます。この名前は、vCenter のインベントリに表示されます。ここで表示される既定値は、仮想マシンのコンピューター ホスト名です。VM 名を識別するには、保護グループの VM リストを参照できます。</td></tr>
-<tr><td>NAT Configuration</td><td>以降で詳細に説明します。</td></tr>
-</table>
+プロパティ|構成方法
+---|---
+Network Configuration|検出された各 NIC について、仮想マシンのフェールバック IP アドレスを構成します。NIC を選択し、**[Change]** をクリックして、IP アドレスの詳細を指定します。
+Hardware Configuration|VM 用の CPU とメモリの値を指定できます。この設定を、保護対象のすべての VM に適用することもできます。
+Displayname Settings|[CPUs] と [Memory] の正しい値を識別するには、IaaS VM ロール サイズを参照し、割り当てられているコア数とメモリ サイズを確認します。
+Displayname Settings|フェールオーバーしてオンプレミスに戻った後で、仮想マシンの名前を変更できます。この名前は、vCenter のインベントリに表示されます。ここで表示される既定値は、仮想マシンのコンピューター ホスト名です。VM 名を識別するには、保護グループの VM リストを参照できます。
+NAT Configuration|以降で詳細に説明します。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image27.png)
 
@@ -437,13 +388,13 @@ VM に応じて、次のオプションを設定します。
 >
 > ![](./media/site-recovery-failback-azure-to-vmware/image28.png)
 >
-> プロセス サーバーのパブリック IP を識別するには、Azure の PS デプロイメントにアクセスし、そのパブリック IP アドレスを確認します。
+> プロセス サーバーのパブリック IP を識別するには、Azure の PS デプロイにアクセスし、そのパブリック IP アドレスを確認します。
 >
 > 2 つ目のチャネルは、プロセス サーバーとマスター ターゲットとの間に確立します。NAT を使用するかしないかのオプション選択は、MT と PS との間に VPN ベースの接続を使用しているか、またはインターネット経由で保護しているかによって異なります。PS が VPN 経由で MT と通信している場合は、このオプションを選択しないでください。マスター ターゲットがプロセス サーバーとインターネット経由で通信する必要がある場合は、PS 用の NAT 設定を指定します。
 >
 > ![](./media/site-recovery-failback-azure-to-vmware/image29.png)
 >
-> プロセス サーバーのパブリック IP を識別するには、Azure の PS デプロイメントにアクセスし、そのパブリック IP アドレスを確認します。
+> プロセス サーバーのパブリック IP を識別するには、Azure の PS デプロイにアクセスし、そのパブリック IP アドレスを確認します。
 >
 > ![](./media/site-recovery-failback-azure-to-vmware/image30.png)
 
@@ -453,7 +404,7 @@ VM に応じて、次のオプションを設定します。
 
 [Advanced settings] の他のオプションは、既定値のままにしておくことができます。フォルダー名設定がすべてのサーバーに適用されることを確認します。
 
-1.  次に、保護手順の最終段階に進みます。ここで、適合性チェックを実行して、仮想マシンが、オンプレミスを宛先として保護される準備が整っていることを確認する必要があります。
+2.  次に、保護手順の最終段階に進みます。ここで、適合性チェックを実行して、仮想マシンが、オンプレミスを宛先として保護される準備が整っていることを確認する必要があります。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image32.png)
 
@@ -471,7 +422,7 @@ VM に応じて、次のオプションを設定します。
     below.
 
 
-1.  これで、保護が始まります。
+3.  これで、保護が始まります。
 
     a.保護の進行状況を、vContinuum で確認できます。
 
@@ -498,15 +449,15 @@ VM に応じて、次のオプションを設定します。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image37.png)
 
-1.  仮想マシンを保護するために使用されたことのあるすべての計画が一覧表示されます。これらは、復旧に使用できるのと同じ計画です。
+3.  仮想マシンを保護するために使用されたことのあるすべての計画が一覧表示されます。これらは、復旧に使用できるのと同じ計画です。
 
-2.  保護計画を選択し、その中で復旧するすべての VM を選択します。
+4.  保護計画を選択し、その中で復旧するすべての VM を選択します。
 
     a.各 VM を選択する際には、ソース VM、VM の復旧先となるターゲット ESX サーバー、およびソース VM ディスクに関する詳細情報を確認できます。
 
-3.  [Next] をクリックして、**Recover** ウィザードを開始します。
+5.  [Next] をクリックして、**Recover** ウィザードを開始します。
 
-4.  復旧する仮想マシンを選択します。
+6.  復旧する仮想マシンを選択します。
 
     a.復旧できるすべての仮想マシンの一覧を確認します。
 
@@ -520,15 +471,15 @@ VM に応じて、次のオプションを設定します。
     chosen for all the virtual machines.
 
 
-1.  **[Run Readiness check]** をクリックして、適合性チェックを実行します。 これにより、仮想マシンの最新のタグ復旧が有効になるように正しいパラメーターが構成されているかどうかがわかります。すべてのチェックが正常に終了した場合は、[Next] をクリックします。そうでない場合は、ログを調査してエラーを解決します。
+7.  **[Run Readiness check]** をクリックして、適合性チェックを実行します。 これにより、仮想マシンの最新のタグ復旧が有効になるように正しいパラメーターが構成されているかどうかがわかります。すべてのチェックが正常に終了した場合は、[Next] をクリックします。そうでない場合は、ログを調査してエラーを解決します。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image39.png)
 
-2.  ウィザードの VM 構成手順で、復旧設定が正しく設定されていることを確認します。VM 設定と必要な設定が異なる場合は、それらを変更することを選択できます。保護を行った時点でこのアクションを既に完了しているので、この時点では無視することをお勧めします。
+8.  ウィザードの VM 構成手順で、復旧設定が正しく設定されていることを確認します。VM 設定と必要な設定が異なる場合は、それらを変更することを選択できます。保護を行った時点でこのアクションを既に完了しているので、この時点では無視することをお勧めします。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image40.png)
 
-1.  最後に、復旧対象の仮想マシンの一覧を確認します。
+9.  最後に、復旧対象の仮想マシンの一覧を確認します。
 
     a.復旧順序を仮想マシンに指定します。
 
@@ -536,7 +487,7 @@ VM に応じて、次のオプションを設定します。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image41.png)
 
-1.  **[Recovery Plan name]** に復旧計画名を入力し、**[Recovery options]** の **[Recover later]** を選択します。
+10.  **[Recovery Plan name]** に復旧計画名を入力し、**[Recovery options]** の **[Recover later]** を選択します。
 
     a.すぐに復旧したい場合は、**[Recovery options]** の **[Recover now]** を選択できます。
 
@@ -544,15 +495,15 @@ VM に応じて、次のオプションを設定します。
 
     c.最後に、**[Recover]** ボタンをクリックして、計画を保存するか、または **[Recovery options]** に基づいて復旧をトリガーします。
 
-2.  復旧のステータス ([Recovery Status]) を確認できます。また、計画が正常に保存されたかどうかも確認できます。
+11.  復旧のステータス ([Recovery Status]) を確認できます。また、計画が正常に保存されたかどうかも確認できます。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image42.png)
 
-1.  [Recover later] を選択した場合、計画が作成され、後で復旧可能であることが通知されます。
+12.  [Recover later] を選択した場合、計画が作成され、後で復旧可能であることが通知されます。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image43.png)
 
-## 仮想マシンを復旧する
+## Virtual Machines を復旧する
 
 計画を作成したら、仮想マシンを復旧することを選択できます。前提条件として、仮想マシンの同期が完了している必要があります。
 
@@ -570,18 +521,18 @@ VM に応じて、次のオプションを設定します。
 
 ![](./media/site-recovery-failback-azure-to-vmware/image45.png)
 
-1.  **[Recovery]** ノードを選択し、復旧する計画を選択します。
+3.  **[Recovery]** ノードを選択し、復旧する計画を選択します。
 
     a.計画がまだ開始されていないことが通知されます。
 
-2.  **[Start]** をクリックして、復旧を開始します。
+4.  **[Start]** をクリックして、復旧を開始します。
 
-3.  仮想マシンの復旧を監視できます。
+5.  仮想マシンの復旧を監視できます。
 
 
 ![](./media/site-recovery-failback-azure-to-vmware/image46.png)
 
-4. VM の電源を ON にすると、vCenter の仮想マシンに接続できます。
+6. VM の電源を ON にすると、vCenter の仮想マシンに接続できます。
 
 ## フェールバック後に Azure を宛先として再び保護する
 
@@ -604,4 +555,4 @@ VM に応じて、次のオプションを設定します。
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -268,4 +268,4 @@ Azure で PHP に基づいて Twilio を使用する方法の詳細について�
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

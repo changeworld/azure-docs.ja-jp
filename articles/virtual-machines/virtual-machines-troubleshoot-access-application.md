@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング" 
+<properties
+	pageTitle="Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング"
 	description="Azure 仮想マシンで実行されているアプリケーションにアクセスできない場合は、次の手順を使用して問題の原因を特定してください。"
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	services="virtual-machines"
+	documentationCenter=""
+	authors="dsk-2015"
+	manager="timlt"
 	editor=""
 	tags="azure-service-management,azure-resource-manager"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/01/2015" 
-	ms.author="josephd"/>
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/01/2015"
+	ms.author="dkshir"/>
 
 # Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング
 
@@ -26,7 +26,7 @@
 Azure 仮想マシンで実行されているアプリケーションへのアクセスに問題がある場合は、次の 4 つの主要領域からトラブルシューティングを行います。
 
 ![](./media/virtual-machines-troubleshoot-access-application/tshoot_app_access1.png)
- 
+
 1.	Azure 仮想マシンで実行されているアプリケーション。
 2.	Azure 仮想マシン。
 3.	仮想マシンが属しているクラウド サービスの Azure エンドポイント (サービス管理内で作成された仮想マシンの場合)、受信 NAT 規則 (リソース マネージャーで作成された仮想マシンの場合)、およびネットワーク セキュリティ グループ。
@@ -37,7 +37,7 @@ Azure 仮想マシンで実行されているアプリケーションへのア�
 ## 手順 1: ターゲットの仮想マシンからアプリケーションにアクセスできますか。
 
 アプリケーションが実行されている仮想マシンから、適切なクライアント プログラムを使用してアプリケーションへのアクセスを試行してください。ローカル ホスト名、ローカル IP アドレス、またはループバック アドレス (127.0.0.1) を使用します。
- 
+
 ![](./media/virtual-machines-troubleshoot-access-application/tshoot_app_access2.png)
 
 たとえば、アプリケーションが Web サーバーである場合は、仮想マシンでブラウザーを実行し、仮想マシンでホストされている Web ページへのアクセスを試行します。
@@ -54,7 +54,7 @@ Windows ベースと Linux ベースの両方の仮想マシンで、 **netstat-
 ## <a id="step2"></a>手順 2: 同じ仮想ネットワーク内の別の仮想マシンからアプリケーションにアクセスできますか。
 
 仮想マシンのホスト名か、Azure によって割り当てられたパブリック、プライベート、またはプロバイダー IP アドレスを使用して、アプリケーションが実行されている仮想マシンと同じ仮想ネットワーク内の別の仮想マシンから、アプリケーションへのアクセスを試行してください。サービス管理内で作成された仮想マシンの場合、クラウド サービスのパブリック IP アドレスは使用しないでください。
- 
+
 ![](./media/virtual-machines-troubleshoot-access-application/tshoot_app_access3.png)
 
 たとえば、アプリケーションが Web サーバーである場合は、同じ仮想ネットワーク内の別の仮想マシン上のブラウザーから、Web ページへのアクセスを試行します。
@@ -75,7 +75,7 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 アプリケーションが実行されている仮想マシンの仮想ネットワーク外にあるが、元のクライアント コンピューターと同じネットワーク上にないコンピューターから、アプリケーションへのアクセスを試行してください。
 
 ![](./media/virtual-machines-troubleshoot-access-application/tshoot_app_access4.png)
- 
+
 たとえば、アプリケーションが Web サーバーである場合は、仮想ネットワーク内にないコンピューターで実行されているブラウザーから、Web ページへのアクセスを試行します。
 
 アプリケーションにアクセスできない場合は、次の点を確認してください。
@@ -110,4 +110,4 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

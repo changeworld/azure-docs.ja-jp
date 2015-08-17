@@ -140,4 +140,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -2,7 +2,7 @@
     pageTitle="RemoteApp のアプリを公開する"
     description="RemoteApp のアプリとリソースを公開する方法について説明します。"
     services="remoteapp"
-	documentationCenter=""
+    documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -27,4 +27,4 @@ RemoteApp コレクションの作成後、ユーザーが使用できるアプ�
 > [AZURE.NOTE][スタート] メニューからアプリを追加する場合は、*テンプレート イメージの [スタート] メニューにアプリを追加しておく*必要があります。 そうしないと、RemoteApp は、[スタート] メニューに現在*存在する*もののみを表示するので、わかりにくくなる可能性があります。テンプレートを作成するときに **[スタート]** メニューにアプリを追加しなかった場合は、アプリのパスを追加する方法を選択します(またはテンプレート イメージを再作成することもできますが、これは少し手間のかかる作業です)。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

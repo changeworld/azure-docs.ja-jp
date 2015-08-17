@@ -81,7 +81,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 ## <a name="monitor"></a> Application Insights を開く
 
-[Azure ポータル][portal]で Application Insights のリソースを開きます。
+[Azure ポータル][portal]に Application Insights のリソースを開きます。
 
 ![プロジェクトを右クリックして Azure ポータルを開く](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
@@ -121,15 +121,15 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 アプリが Web ページに表示される場合は、JavaScript のスニペットをすべてのページに追加します。コードは次に示す Application Insights のリソースから取得できます。
 
-![In your web app, open Quick Start and click 'Get code to monitor my web pages'](./media/app-insights-asp-net/02-monitor-web-page.png)
+![Web アプリでクイック スタートを開き、[Web ページを監視するコードを取得する] をクリックする](./media/app-insights-asp-net/02-monitor-web-page.png)
 
 コードにはアプリケーション リソースを識別するインストルメンテーション キーが含まれています。
 
-[Web ページの追跡については、こちらを参照してください。](app-insights-web-track-usage.md)
+[Web ページの追跡についてはこちら](app-insights-web-track-usage.md)をご覧ください。
 
 #### クライアントがデバイス アプリの場合
 
-アプリケーションがスマートフォンなどのデバイスなどのクライアントに配信される場合は、デバイス アプリに[適切な SDK](app-insights-platforms.md) を追加します。
+アプリケーションがスマートフォンやその他のデバイスなどのクライアントに配信される場合は、デバイス アプリに[適切な SDK](app-insights-platforms.md) を追加します。
 
 SDK クライアントをサーバーの SDK と同じインストルメンテーション キーで構成する場合、まとめて確認できるように 2 つのストリームが統合されます。
 
@@ -142,11 +142,11 @@ SDK クライアントをサーバーの SDK と同じインストルメンテ�
 
 ## 診断ログ
 
-お気に入りのログ記録フレームワークから[ログ トレースをキャプチャ][netlogs]して問題の診断に役立てます。ログ エントリが Application Insights のテレメトリ イベントと共に[診断検索][diagnostic]に表示されます。
+お気に入りのログ記録フレームワークから[ログ トレースをキャプチャ][netlogs]して問題の診断に役立てます。ログ エントリが Application Insights のテレメトリ イベントとともに[診断検索][diagnostic]に表示されます。
 
 ## アプリケーションの発行
 
-(Application Insights を追加するために) アプリをまだ発行していない場合は、今すぐ発行してください。ユーザーがアプリを使用するにつれてグラフのデータが増えます。
+(Application Insights を追加するために) アプリをまだ発行していない場合は、今すぐ発行してください。ユーザーがアプリを使用するに連れてグラフのデータが増えます。
 
 ### 開発、テスト、およびリリース用に別のリソースを用意します。
 
@@ -156,21 +156,21 @@ SDK クライアントをサーバーの SDK と同じインストルメンテ�
 
 ## 依存関係の追跡を追加する
 
-[依存関係のメトリック](app-insights-dependencies.md)は、パフォーマンスに関する問題の診断に非常に役立つ場合があります。これらは、アプリからデータベース、REST API、およびその他の外部コンポーネントへの呼び出しを測定します。
+[依存関係のメトリック](app-insights-dependencies.md)は、パフォーマンスに関する問題の診断に非常に役立つ場合があります。これらは、アプリからデータベース、REST Api、およびその他の外部のコンポーネントへの呼び出しを測定します。
 
 ![](./media/app-insights-asp-net/04-dependencies.png)
 
-#### アプリが IIS サーバーで実行されている場合
+#### アプリが IIS サーバーで実行される場合
 
-管理者権限でサーバーにログインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします
+管理者権限でサーバーにログインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします。
 
-(Status Monitor は、SDK で構築されていない場合でも、[既に実行中のアプリをインストルメント化](app-insights-monitor-performance-live-website-now.md)するためにも使用できます)。
+(Status Monitor は、SDK で構築されていない[既に実行中のアプリをインストルメント化](app-insights-monitor-performance-live-website-now.md)するためにも使用できます。)
 
 #### アプリが Azure の Web アプリの場合
 
 Azure の Web アプリのコントロール パネルで、Application Insights 拡張機能を追加します。
 
-![In your web app, Settings, Extensions, Add, Application Insights](./media/app-insights-asp-net/05-extend.png)
+![Web アプリで、[設定]、[拡張機能]、[追加]、[Application Insights] の順に選択する](./media/app-insights-asp-net/05-extend.png)
 
 (この拡張機能は、SDK で構築されたアプリのみをサポートします。Status Monitor とは異なり、既存のアプリはインストルメント化できません。)
 
@@ -220,4 +220,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -41,4 +41,4 @@
 
 [管理ポータルでの Virtual Network の設定について](http://go.microsoft.com/fwlink/?LinkId=248092)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

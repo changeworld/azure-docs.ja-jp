@@ -51,7 +51,7 @@ Azure ストレージを使用するには、Ruby azure パッケージをダウ
 
 ## Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** および **AZURE_STORAGE_ACCESS_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 	Azure.config.storage_account_name = "<your azure storage account>"
 	Azure.config.storage_access_key = "<your azure storage access key>"
@@ -68,7 +68,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 [AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-**Azure::BlobService** オブジェクトを使用して、コンテナーと BLOB を操作できます。コンテナーを作成するには、**create_container()** メソッドを使用します。
+**Azure::BlobService** オブジェクトを使用して、コンテナーと BLOB を操作できます。コンテナーを作成するには、**create\_container()** メソッドを使用します。
 
 次の例では、コンテナーを作成し、既に存在している場合はエラーを出力します。
 
@@ -81,19 +81,19 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 コンテナー内のファイルを公開する場合は、コンテナーのアクセス許可を設定できます。
 
-<strong>create_container()</strong> の呼び出しを変更して、次のように **:public_access_level** オプションを渡すだけです。
+<strong>create\_container()</strong> の呼び出しを変更して、次のように **:public\_access\_level** オプションを渡すだけです。
 
 	container = azure_blob_service.create_container("test-container", 
 	  :public_access_level => "<public access level>")
 
 
-**:public_access_level** オプションに指定できる値は次のとおりです。
+**:public\_access\_level** オプションに指定できる値は次のとおりです。
 
 * **blob:** コンテナーと BLOB のデータに対する完全パブリック読み取りアクセスを指定します。クライアントは匿名要求でコンテナー内の BLOB を列挙できますが、ストレージ アカウント内のコンテナーを列挙することはできません。
 
 * **container:** BLOB に対するパブリック読み取りアクセスを指定します。該当するコンテナー内の BLOB データは匿名要求で読み取り可能ですが、コンテナー データは参照できません。クライアントはコンテナー内の BLOB を匿名要求で列挙することはできません。
 
-別の方法として、**set_container_acl()** メソッドを使用してパブリック アクセス レベルを指定することでも、コンテナーのパブリック アクセス レベルを変更できます。
+別の方法として、**set\_container\_acl()** メソッドを使用してパブリック アクセス レベルを指定することでも、コンテナーのパブリック アクセス レベルを変更できます。
  
 次の例では、パブリック アクセス レベルを **container** に変更します。
 
@@ -101,7 +101,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 ## 方法: コンテナーに BLOB をアップロードする
 
-BLOB にコンテンツをアップロードするには、**create_block_blob()** メソッドを使用して BLOB を作成し、ファイルまたは文字列を BLOB のコンテンツとして使用します。
+BLOB にコンテンツをアップロードするには、**create\_block\_blob()** メソッドを使用して BLOB を作成し、ファイルまたは文字列を BLOB のコンテンツとして使用します。
 
 次のコードでは、ファイル **test.png** を、コンテナー内の新しい BLOB として "image-blob" という名前でアップロードします。
 
@@ -112,7 +112,7 @@ BLOB にコンテンツをアップロードするには、**create_block_blob()
 
 ## 方法: コンテナー内の BLOB を一覧表示する
 
-コンテナーの一覧を取得するには、**list_containers()** メソッドを使用します。コンテナー内の BLOB の一覧を取得するには、**list_blobs()** メソッドを使用します。
+コンテナーの一覧を取得するには、**list\_containers()** メソッドを使用します。コンテナー内の BLOB の一覧を取得するには、**list\_blobs()** メソッドを使用します。
 
 次のコードでは、アカウントのすべてのコンテナーからすべての BLOB の URL を出力します。
 
@@ -126,15 +126,15 @@ BLOB にコンテンツをアップロードするには、**create_block_blob()
 
 ## 方法: BLOB をダウンロードする
 
-BLOB をダウンロードするには、**get_blob()** メソッドを使用してコンテンツを取得します。
+BLOB をダウンロードするには、**get\_blob()** メソッドを使用してコンテンツを取得します。
 
-次の例は、**get_blob()** を使用して "image-blob" のコンテンツをダウンロードし、ローカル ファイルに書き込む方法を示しています。
+次の例は、**get\_blob()** を使用して "image-blob" のコンテンツをダウンロードし、ローカル ファイルに書き込む方法を示しています。
 
 	blob, content = azure_blob_service.get_blob(container.name,"image-blob")
 	File.open("download.png","wb") {|f| f.write(content)}
 
 ## 方法: BLOB を削除する
-最後に、BLOB を削除するには、**delete_blob()** メソッドを使用します。次の例は、BLOB の削除方法を示しています。
+最後に、BLOB を削除するには、**delete\_blob()** メソッドを使用します。次の例は、BLOB の削除方法を示しています。
 
 	azure_blob_service.delete_blob(container.name, "image-blob")
 
@@ -147,4 +147,4 @@ BLOB をダウンロードするには、**get_blob()** メソッドを使用し
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

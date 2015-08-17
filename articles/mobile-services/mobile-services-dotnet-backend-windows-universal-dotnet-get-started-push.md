@@ -109,4 +109,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Azure Mobile Services 用の .NET クライアントを使用する方法]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [MobileServiceClient]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

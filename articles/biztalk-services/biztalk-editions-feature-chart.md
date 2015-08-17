@@ -257,4 +257,4 @@ Azure BizTalk サービスを Azure 管理ポータルで作成するには、�
 - [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

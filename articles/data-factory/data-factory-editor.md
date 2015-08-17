@@ -221,4 +221,4 @@ Data Factory エディターを使用して Azure データ ファクトリを�
 [clone-datafactory-entity]: ./media/data-factory-editor/clone-datafactory-entity.png
 [add-activity-options]: ./media/data-factory-editor/add-activity-options.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

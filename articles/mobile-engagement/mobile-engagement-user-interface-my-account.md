@@ -44,7 +44,7 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
 3. リーチのお知らせからは、お知らせに関連付けられているアクションの URL に {deviceid} パターンが含まれている場合は、アクションをトリガーするデバイスの ID に自動的に置き換えられます。http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata will be replaced by: http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata 
 4. リーチの Web のお知らせからは、お知らせの HTML コードに {deviceid} パターンが含まれている場合は、Web のお知らせを表示するデバイスの ID に自動的に置き換えられます。自分のデバイス ID: {deviceid} は、次のデバイス ID に置き換えられます。自分のデバイス ID: XXXXXXXXXXXXXXXX
 5.  デバイスでアプリケーションを開き、タグが付けられているアプリでイベントを実行します。[UI] - [アプリ] - [監視] - [イベント] - [詳細] から、実行したイベントを一覧から見つけます。[監視] で、このイベントをクリックします。このイベントを実行したデバイスの一覧に、デバイス ID が見つかるはずです。次に、このデバイス ID をコピーし、[UI] - [マイ アカウント] - [デバイス] - [新しいデバイス] - [デバイスのプラットフォームを選択] で、これを登録できます。
->
+>(IDFA が iOS で無効になっている場合、アプリをアンインストールして再インストールすると、デバイス ID が経時変化する可能性があります)。
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -145,4 +145,4 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
  
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

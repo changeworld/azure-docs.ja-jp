@@ -73,7 +73,7 @@ SQL データベースの接続情報を取得するには、ポータルで **[
 
 ##<a id="Connect"></a>方法: SQL データベース インスタンスに接続する
 
-次の例は、**SQLSRV** および **PDO_SQLSRV** 拡張を使用して、`testdb` という SQL データベースに接続する方法を示しています。**SQLSRV** と **PDO_SQLSRV** API の詳細については、[Microsoft Drivers for PHP for SQL Server のドキュメント][driver-docs]を参照してください。前のセクションで取得した情報が必要になります。`SERVER_ID` を 10 桁のサーバー ID (前のセクションで取得したサーバー値の先頭の 10 文字) に置き換え、正しい値 (ユーザー名およびパスワード) を `$user` および `$pwd` 変数に割り当てます。
+次の例は、**SQLSRV** および **PDO\_SQLSRV** 拡張を使用して、`testdb` という SQL データベースに接続する方法を示しています。**SQLSRV** と **PDO\_SQLSRV** API の詳細については、[Microsoft Drivers for PHP for SQL Server のドキュメント][driver-docs]を参照してください。前のセクションで取得した情報が必要になります。`SERVER_ID` を 10 桁のサーバー ID (前のセクションで取得したサーバー値の先頭の 10 文字) に置き換え、正しい値 (ユーザー名およびパスワード) を `$user` および `$pwd` 変数に割り当てます。
 
 #####SQLSRV
 
@@ -88,7 +88,7 @@ SQL データベースの接続情報を取得するには、ポータルで **[
 		die(print_r(sqlsrv_errors()));
 	}
 
-#####PDO_SQLSRV
+#####PDO\_SQLSRV
 
 	$server = "tcp:<value of SERVER from section above>";
 	$user = "<value of USERNAME from section above>"@SERVER_ID;
@@ -105,7 +105,7 @@ SQL データベースの接続情報を取得するには、ポータルで **[
 
 
 ##<a id="NextSteps"></a>次のステップ
-ここで説明したように、SQL データベースの使用は SQL Server の使用によく似ています。ここで示したように SQL データベースへの接続を確立したら、**SQLSRV** または **PDO_SQLSRV** API を使用して、データの取得、更新、削除、挿入が可能になります。ただし、SQL データベースと SQL Server のいくつかの違いがアプリケーションに影響する場合があります。詳細については、「[ガイドラインと制限事項 (SQL データベース)][limitations]」を参照してください。
+ここで説明したように、SQL データベースの使用は SQL Server の使用によく似ています。ここで示したように SQL データベースへの接続を確立したら、**SQLSRV** または **PDO\_SQLSRV** API を使用して、データの取得、更新、削除、挿入が可能になります。ただし、SQL データベースと SQL Server のいくつかの違いがアプリケーションに影響する場合があります。詳細については、「[ガイドラインと制限事項 (SQL データベース)][limitations]」を参照してください。
 
 Azure での PHP と SQL データベースの使用方法を示すサンプルは、<https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-sqlazure> から入手できます。
 
@@ -130,4 +130,4 @@ Azure での PHP と SQL データベースの使用方法を示すサンプル�
 [quick-create]: ./media/sql-database-php-how-to-use/create-new-sql.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

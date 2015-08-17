@@ -80,4 +80,4 @@
 [Live Connect を使用した Windows Phone アプリケーションへのシングル サインオン]: mobile-services-windows-phone-single-sign-on.md
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

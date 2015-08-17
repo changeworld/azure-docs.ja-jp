@@ -3,4 +3,4 @@
 - [.NET](https://msdn.microsoft.com/library/azure/dn783465.aspx)
 - [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx) 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

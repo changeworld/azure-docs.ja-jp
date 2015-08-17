@@ -5,7 +5,7 @@
 	documentationCenter=".net" 
 	authors="cephalin" 
 	manager="wpickett" 
-	editor="mollybos"/>
+	editor=""/>
 
 <tags 
 	ms.service="app-service-web" 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/29/2015" 
+	ms.date="08/01/2015" 
 	ms.author="cephalin;riande"/>
 
 
 # ASP.NET MVC 5 モバイル Web アプリケーションを Azure App Service に展開する
 
-このチュートリアルでは、モバイル対応である ASP.NET MVC 5 Web アプリケーションをビルドして Azure App Service に展開する方法の基本を説明します。このチュートリアルを実行するには、[Visual Studio Express 2013 for Web][Visual Studio Express 2013] が必要です。Visual Studio のプロフェッショナル エディションを既にお持ちの場合は、それを使用することもできます。
+このチュートリアルでは、モバイル対応である ASP.NET MVC 5 Web アプリケーションをビルドして Azure App Service に展開する方法の基本を説明します。このチュートリアルを実行するには、[Visual Studio Express 2013 for Web][Visual Studio Express 2013] が必要です。Visual Studio のプロフェッショナル エディションを既にお持ちの場合は、それを使用することもできます。[Visual Studio 2015] も使用できますが、スクリーン ショットが異なり、ASP.NET 4.x テンプレートを使用する必要があります。
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
@@ -114,7 +114,7 @@ ASP.NET タグ ビューは、画面に合わせてズームされています�
 
 MVC 5 の新機能の 1 つに、ブートストラップの標準サポートがあります。ブートストラップによって、さまざまなビューの表示品質が瞬時に向上することは先ほど確認したとおりです。たとえば、ブラウザーの幅が小さくなったときに、上部のナビゲーション バーを自動的に折りたたむことができます。デスクトップ ブラウザーで、ブラウザー ウィンドウのサイズを変更して、ナビゲーション バーの外観と操作性がどのように変わるかを確認してください。これが、ブートストラップに組み込まれたレスポンシブ Web デザインです。
 
-ブートストラップを使用しない場合の Web アプリの外観を表示するには、*App_Start\BundleConfig.cs* を開き、*bootstrap.js* と *bootstrap.css* を含む行をコメント アウトします。次のコードは、変更後の `RegisterBundles` メソッドにある最後の 2 つのステートメントを示しています。
+ブートストラップを使用しない場合の Web アプリの外観を表示するには、*App\\\_Start\\\\BundleConfig.cs* を開き、*bootstrap.js* と *bootstrap.css* を含む行をコメント アウトします。次のコードは、変更後の `RegisterBundles` メソッドにある最後の 2 つのステートメントを示しています。
 
      bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
               //"~/Scripts/bootstrap.js",
@@ -140,11 +140,11 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ##<a name="bkmk_overrideviews"></a> ビュー、レイアウト、および部分ビューをオーバーライドする
 
-モバイル ブラウザー全般、個々のモバイル ブラウザー、または特定のブラウザーの (レイアウトと部分ビューを含む) 任意のビューをオーバーライドできます。モバイル専用ビューを用意するには、ビュー ファイルをコピーして *.Mobile* をファイル名に追加します。たとえば、モバイル *インデックス* ビューを作成するには、*Views\Home\Index.cshtml* をコピーして名前を *Views\Home\Index.Mobile.cshtml* に変更します。
+モバイル ブラウザー全般、個々のモバイル ブラウザー、または特定のブラウザーの (レイアウトと部分ビューを含む) 任意のビューをオーバーライドできます。モバイル専用ビューを用意するには、ビュー ファイルをコピーして *.Mobile* をファイル名に追加します。たとえば、モバイル *インデックス* ビューを作成するには、*Views\\Home\\Index.cshtml* をコピーして名前を *Views\\Home\\Index.Mobile.cshtml* に変更します。
 
 このセクションでは、モバイル専用のレイアウト ファイルを作成します。
 
-最初に、*Views\Shared_Layout.cshtml* を *Views\Shared_Layout.Mobile.cshtml* にコピーします。*_Layout.Mobile.cshtml* を開き、タイトルを **MVC5 Application** から **MVC5 Application (Mobile)** に変更します。
+最初に、*Views\\Shared\\\_Layout.cshtml* を *Views\\Shared\\\_Layout.Mobile.cshtml* にコピーします。*\\\_Layout.Mobile.cshtml* を開き、タイトルを **MVC5 Application** から **MVC5 Application (Mobile)** に変更します。
 
 ナビゲーション バーの各 `Html.ActionLink` を呼び出しで、各 *ActionLink* リンクの "Browse by" を削除します。次のコードは、モバイル レイアウト ファイルの完成した `<ul class="nav navbar-nav">` タグです。
 
@@ -155,15 +155,15 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
         <li>@Html.ActionLink("Tag", "AllTags", "Home")</li>
     </ul>
 
-*Views\Home\AllTags.cshtml* ファイルを *Views\Home\AllTags.Mobile.cshtml* にコピーします。新しいファイルを開き、次のように `<h2>` 要素を「Tags」から「Tags (M)」に変更します。
+*Views\\Home\\AllTags.cshtml* ファイルを *Views\\Home\\AllTags.Mobile.cshtml* にコピーします。新しいファイルを開き、次のように `<h2>` 要素を「Tags」から「Tags (M)」に変更します。
 
     <h2>Tags (M)</h2>
 
-デスクトップ ブラウザー、および、モバイル ブラウザー エミュレーターを使用してタグ ページに移動します。モバイル ブラウザー エミュレーターでは、先ほど変更した 2 か所 (*_Layout.Mobile.cshtml* と *AllTags.Mobile.cshtml* の各タイトル) が変更されていることがわかります。
+デスクトップ ブラウザー、および、モバイル ブラウザー エミュレーターを使用してタグ ページに移動します。モバイル ブラウザー エミュレーターでは、先ほど変更した 2 か所 (*\_Layout.Mobile.cshtml* と *AllTags.Mobile.cshtml* の各タイトル) が変更されていることがわかります。
 
 ![][AllTagsMobile_LayoutMobile]
 
-対照的に、デスクトップでの表示は変更されていません (*_Layout.cshtml* と *AllTags.cshtml* のタイトル)。
+対照的に、デスクトップでの表示は変更されていません (*\_Layout.cshtml* と *AllTags.cshtml* のタイトル)。
 
 ![][AllTagsMobile_LayoutMobileDesktop]
 
@@ -191,9 +191,9 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
     using System.Web.WebPages;
 
-変更を保存します。*Views\Shared_Layout.Mobile.cshtml* ファイルを *Views\Shared_Layout.iPhone.cshtml* にコピーします。新しいファイルを開き、タイトルを `MVC5 Application (Mobile)` から `MVC5 Application (iPhone)` に変更します。
+変更を保存します。*Views\\Shared\\\_Layout.Mobile.cshtml* ファイルを *Views\\Shared\\\_Layout.iPhone.cshtml* にコピーします。新しいファイルを開き、タイトルを `MVC5 Application (Mobile)` から `MVC5 Application (iPhone)` に変更します。
 
-*Views\Home\AllTags.Mobile.cshtml* ファイルを *Views\Home\AllTags.iPhone.cshtml* にコピーします。新しいファイルで、`<h2>` 要素を "Tags (M)" から "Tags (iPhone)" に変更します。
+*Views\\Home\\AllTags.Mobile.cshtml* ファイルを *Views\\Home\\AllTags.iPhone.cshtml* にコピーします。新しいファイルで、`<h2>` 要素を "Tags (M)" から "Tags (iPhone)" に変更します。
 
 アプリケーションを実行します。モバイル ブラウザー エミュレーターを実行し、ユーザー エージェントが "iPhone" に設定されていることを確認して、*AllTags* ビューにアクセスします。Internet Explorer 11 F12 開発者ツールのエミュレーターを使用している場合は、エミュレーションを次のとおりに構成します。
 
@@ -205,22 +205,22 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllTagsIPhone_LayoutIPhone]
 
-モバイル ブラウザーで **[Speakers]** リンクをタップします。モバイル ビュー (*AllSpeakers.Mobile.cshtml*) がないため、既定のスピーカー ビュー (*AllSpeakers.cshtml*) がモバイル レイアウト ビュー (*_Layout.Mobile.cshtml*) を使用して描画されます。下図に示すように、**MVC5 Application (Mobile)** が *_Layout.Mobile.cshtml* に定義されています。
+モバイル ブラウザーで **[Speakers]** リンクをタップします。モバイル ビュー (*AllSpeakers.Mobile.cshtml*) がないため、既定のスピーカー ビュー (*AllSpeakers.cshtml*) がモバイル レイアウト ビュー (*\_Layout.Mobile.cshtml*) を使用して描画されます。下図に示すように、**MVC5 Application (Mobile)** が *\_Layout.Mobile.cshtml* に定義されています。
 
 ![][AllSpeakers_LayoutMobile]
 
-*Views_ViewStart.cshtml* ファイルで次のように `RequireConsistentDisplayMode` を `true` に設定すると、モバイル レイアウト内で既定の (非モバイル) ビューの描画をグローバルに無効化できます。
+*Views\\\_ViewStart.cshtml* ファイルで次のように `RequireConsistentDisplayMode` を `true` に設定すると、モバイル レイアウト内で既定の (非モバイル) ビューの描画をグローバルに無効化できます。
 
     @{
         Layout = "~/Views/Shared/_Layout.cshtml";
         DisplayModeProvider.Instance.RequireConsistentDisplayMode = true;
     }
 
-`RequireConsistentDisplayMode` が `true` に設定されていると、モバイル レイアウト (*_Layout.Mobile.cshtml*) はモバイル ビューだけに使用されます (つまり、ビュー ファイルの名前が ***ViewName**.Mobile.cshtml* という形式の場合です)。モバイル レイアウトが非モバイル ビューでうまく動作しない場合は、`RequireConsistentDisplayMode` を `true` に設定します。次のスクリーンショットは、`RequireConsistentDisplayMode` が `true` に設定されている場合の *[Speakers]* ページの表示を示しています (文字列 "(Mobile)" は上部のナビゲーション バーに表示されません)。
+`RequireConsistentDisplayMode` が `true` に設定されていると、モバイル レイアウト (*\_Layout.Mobile.cshtml*) はモバイル ビューだけに使用されます (つまり、ビュー ファイルが ****ViewName**.Mobile.cshtml* という形式の場合です)。モバイル レイアウトが非モバイル ビューでうまく動作しない場合は、`RequireConsistentDisplayMode` を `true` に設定します。次のスクリーンショットは、`RequireConsistentDisplayMode` が `true` に設定されている場合の *[Speakers]* ページの表示を示しています (文字列 "(Mobile)" は上部のナビゲーション バーに表示されません)。
 
 ![][AllSpeakers_LayoutMobileOverridden]
 
-ビュー ファイルで `RequireConsistentDisplayMode` を `false` に設定すると、特定のビューの一貫表示モードを無効化できます。次のマークアップは、*Views\Home\AllSpeakers.cshtml* ファイルで `RequireConsistentDisplayMode` を `false` に設定します。
+ビュー ファイルで `RequireConsistentDisplayMode` を `false` に設定すると、特定のビューの一貫表示モードを無効化できます。次のマークアップは、*Views\\Home\\AllSpeakers.cshtml* ファイルで `RequireConsistentDisplayMode` を `false` に設定します。
 
     @model IEnumerable<string>
 
@@ -235,7 +235,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 いま見たように、*Speakers* ビューは読み取れますが、リンクが小さく、モバイル デバイスではタップが困難です。このセクションでは、*AllSpeakers* ビューをモバイル対応に設定し、大きくてタップしやすいリンクが表示され、スピーカーをすばやく見つけることのできる検索ボックスを表示します。
 
-ブートストラップの[リンクされたリスト グループ][]のスタイリングを使用して、*Speakers* ビューを強化します。*Views\Home\AllSpeakers.cshtml* で、Razor ファイルの内容を次のコードに置き換えます。
+ブートストラップの[リンクされたリスト グループ][]のスタイリングを使用して、*Speakers* ビューを強化します。*Views\\Home\\AllSpeakers.cshtml* で、Razor ファイルの内容を次のコードに置き換えます。
 
      @model IEnumerable<string>
 
@@ -262,7 +262,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllSpeakersFixedDesktop]
 
-モバイル ブラウザー ビューは強化されましたが、スピーカーの長い一覧をスクロールするのは困難です。ブートストラップは、検索フィルターを標準で提供していませんが、数行のコードによって追加できます。まずビューに検索ボックスを追加した後、JavaScript コードを関連付けてフィルター機能を設定します。次に示すように、*Views\Home\AllSpeakers.cshtml* で、\<form\> タグを \<h2\> タグの直後に追加します。
+モバイル ブラウザー ビューは強化されましたが、スピーカーの長い一覧をスクロールするのは困難です。ブートストラップは、検索フィルターを標準で提供していませんが、数行のコードによって追加できます。まずビューに検索ボックスを追加した後、JavaScript コードを関連付けてフィルター機能を設定します。次に示すように、*Views\\Home\\AllSpeakers.cshtml* で、<form> タグを <h2> タグの直後に追加します。
 
     @model IEnumerable<string>
 
@@ -317,13 +317,13 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
         });
     });
 
-さらに、登録済みのバンドルに filter.js を含める必要があります。*App_Start\BundleConfig.cs* を開き、最初のバンドルを変更します。次のように、最初の (**jquery** バンドルの) `bundles.Add` ステートメントを変更して、*Scripts\filter.js* を含めます。
+さらに、登録済みのバンドルに filter.js を含める必要があります。*App\_Start\\BundleConfig.cs* を開き、最初のバンドルを変更します。次のように、最初の (**jquery** バンドルの) `bundles.Add` ステートメントを変更して、*Scripts\\filter.js* を含めます。
 
      bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/filter.js"));
 
-**jquery** バンドルは、既定の *_Layout* ビューによって既に描画されています。後で、同じ JavaScript コードを利用して、フィルター機能を他のリスト ビューに適用できます。
+**jquery** バンドルは、既定の *\_Layout* ビューによって既に描画されています。後で、同じ JavaScript コードを利用して、フィルター機能を他のリスト ビューに適用できます。
 
 モバイル ブラウザーを情報に更新し、*AllSpeakers* ビューに移動します。検索ボックスに、「sc」と入力します。入力した検索文字列に従って、スピーカー一覧がフィルタリングされます。
 
@@ -331,7 +331,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ##<a name="bkmk_improvetags"></a> タグ一覧を強化する
 
-*Speakers* ビューと同様に、*Tags* ビューも読み取れますが、リンクが小さく、モバイル デバイスではタップが困難です。*Tags* ビューも *Speakers* ビューと同じように修正できます。上記のコードの変更を使用している場合、*Views\Home\AllTags.cshtml* で次の `Html.ActionLink` メソッド構文を使用することを除き、手順は同じです。
+*Speakers* ビューと同様に、*Tags* ビューも読み取れますが、リンクが小さく、モバイル デバイスではタップが困難です。*Tags* ビューも *Speakers* ビューと同じように修正できます。上記のコードの変更を使用している場合、*Views\\Home\\AllTags.cshtml* で次の `Html.ActionLink` メソッド構文を使用することを除き、手順は同じです。
 
     @Html.ActionLink(tag, 
                      "SessionsByTag", 
@@ -350,7 +350,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ##<a name="bkmk_improvedates"></a> 日付一覧を強化する
 
-*Speakers* ビューおよび *Tags* ビューと同じように *Dates* ビューもモバイル デバイスで使いやすいように強化できます。上記のコードの変更を使用している場合、*Views\Home\AllDates.cshtml* で `Html.ActionLink` メソッドの構文を使用することを除き、手順は同じです。
+*Speakers* ビューおよび *Tags* ビューと同じように *Dates* ビューもモバイル デバイスで使いやすいように強化できます。上記のコードの変更を使用している場合、*Views\\Home\\AllDates.cshtml* で `Html.ActionLink` メソッドの構文を使用することを除き、手順は同じです。
 
     @Html.ActionLink(date.ToString("ddd, MMM dd, h:mm tt"), 
                      "SessionsByDate", 
@@ -361,7 +361,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllDatesFixed]
 
-*Dates* ビューはさらに、date-time 値を date ごとに整理して表示品質を高めることができます。これには、ブートストラップの[パネル][] スタイリングを使用します。*Views\Home\AllDates.cshtml* ファイルの内容を、次のコードに置き換えます。
+*Dates* ビューはさらに、date-time 値を date ごとに整理して表示品質を高めることができます。これには、ブートストラップの[パネル][] スタイリングを使用します。*Views\\Home\\AllDates.cshtml* ファイルの内容を、次のコードに置き換えます。
 
     @model IEnumerable<DateTime>
 
@@ -409,7 +409,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][SessionsTableTagASP.NET]
 
-ご覧のように、現在、デスクトップ ブラウザーで適切に表示できるように設計された表形式で表示されています。ただし、モバイル ブラウザーで読み取るのは少し困難です。これを修正するために、*Views\Home\SessionsTable.cshtml* を開き、ファイルの内容を次のコードに置き換えます。
+ご覧のように、現在、デスクトップ ブラウザーで適切に表示できるように設計された表形式で表示されています。ただし、モバイル ブラウザーで読み取るのは少し困難です。これを修正するために、*Views\\Home\\SessionsTable.cshtml* を開き、ファイルの内容を次のコードに置き換えます。
 
     @model IEnumerable<Mvc5Mobile.Models.Session>
 
@@ -476,7 +476,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 既定のデスクトップ ビューでも問題はありませんが、ブートストラップの GUI コンポーネントを使用して簡単に表示品質を高めることができます。
 
-*Views\Home\SessionByCode.cshtml* を開き、内容を次のマークアップで置き換えます。
+*Views\\Home\\SessionByCode.cshtml* を開き、内容を次のマークアップで置き換えます。
 
     @model Mvc5Mobile.Models.Session
 
@@ -545,7 +545,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」をご覧ください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 <!-- Internal Links -->
 [Deploy the starter project to an Azure web app]: #bkmk_DeployStarterProject
@@ -560,6 +560,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 <!-- External Links -->
 [Visual Studio Express 2013]: http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-web
+[Visual Studio 2015]: https://www.visualstudio.com/downloads/download-visual-studio-vs
 [AzureSDKVs2013]: http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409
 [Fiddler]: http://www.fiddler2.com/fiddler2/
 [EmulatorIE11]: http://msdn.microsoft.com/library/ie/dn255001.aspx
@@ -616,4 +617,4 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 [SessionByCodeFixed3-644]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionByCode-Fixed-3-644.png
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

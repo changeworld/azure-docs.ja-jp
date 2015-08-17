@@ -69,7 +69,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 		- (IBAction)LogInAction:(id)sender;		
 
-4. ViewController.h で、インポート ステートメントのすぐ下に以下の `#define` を追加します。*<Enter Your Backend Endpoint>* の部分は、前のセクションでアプリのバックエンドをデプロイする際に使用した URL で置き換えてください。たとえば、*http://you_backend.azurewebsites.net* などです。
+4. ViewController.h で、インポート ステートメントのすぐ下に以下の `#define` を追加します。*<Enter Your Backend Endpoint>* の部分は、前のセクションでアプリのバックエンドをデプロイする際に使用した URL で置き換えてください。たとえば、**http://you_backend.azurewebsites.net* のように指定します。
 
 		#define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
 
@@ -466,4 +466,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

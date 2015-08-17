@@ -78,4 +78,4 @@ Azure SQL Data Warehouse に重要なフィックスをインストールする�
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

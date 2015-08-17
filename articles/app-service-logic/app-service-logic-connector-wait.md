@@ -40,18 +40,9 @@
 
 	![構成されたアクション][3]
 
-<table>
-	<tr>
-		<th>パラメーター</th>
-		<th>型</th>
-		<th>パラメーターの説明</th>
-	</tr>
-	<tr>
-		<td>期間 (分)</td>
-		<td>整数</td>
-		<td>分単位の遅延期間</td>
-	</tr>
-</table>
+パラメーター|型|パラメーターの説明
+---|---|---
+期間 (分)|整数|分単位の遅延期間
 
 
 ## コネクタでできること
@@ -64,4 +55,4 @@
 [2]: ./media/app-service-logic-wait/DelayInput.PNG
 [3]: ./media/app-service-logic-wait/ActionConfigured.PNG
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -46,11 +46,11 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 	);
 	```
 
-	ルートは、_api_ などのリテラルと _{controller}_ や _{id}_ などの変数で構成して汎用にすることができます。規約ベースのルーティングでは、ルートの一部の要素を省略可能にすることができます。Web API フレームワークでは、要求の HTTP メソッドを API のメソッド名の最初の部分と照合した後、省略可能なパラメーターを照合することによって、コントローラーで呼び出すメソッドを決定します。たとえば、_orders_ という名前のコントローラーに _GetAllOrders()_ メソッドまたは _GetOrderByInt(int id)_ メソッドが含まれている場合、GET 要求 _http://www.adventure-works.com/api/orders/_ は _GetAlllOrders()_ メソッドにルーティングされ、GET 要求 _http://www.adventure-works.com/api/orders/99_ は _GetOrderByInt(int id)_ メソッドにルーティングされます。コントローラーに Get プレフィックスで始まる一致するメソッドがない場合、Web API フレームワークは HTTP 405 (Method Not Allowed) メッセージで応答します。また、ルーティング テーブルで指定されているパラメーターの名前 (id) が、_GetOrderById_ メソッドのパラメーターの名前と同じである必要があります。それ以外の場合、Web API フレームワークは HTTP 404 (Not Found) で応答します。
+	ルートは、_api_ などのリテラルと _{controller}_ や _{id}_ などの変数で構成して汎用にすることができます。規約ベースのルーティングでは、ルートの一部の要素を省略可能にすることができます。Web API フレームワークでは、要求の HTTP メソッドを API のメソッド名の最初の部分と照合した後、省略可能なパラメーターを照合することによって、コントローラーで呼び出すメソッドを決定します。たとえば、_orders_ という名前のコントローラーに _GetAllOrders()_ メソッドまたは _GetOrderByInt(int id)_ メソッドが含まれている場合、GET 要求 \__http://www.adventure-works.com/api/orders/_ は _GetAlllOrders()_ メソッドにルーティングされ、GET 要求 \__http://www.adventure-works.com/api/orders/99_ は _GetOrderByInt(int id)_ メソッドにルーティングされます。コントローラーに Get プレフィックスで始まる一致するメソッドがない場合、Web API フレームワークは HTTP 405 (Method Not Allowed) メッセージで応答します。また、ルーティング テーブルで指定されているパラメーターの名前 (id) が、_GetOrderById_ メソッドのパラメーターの名前と同じである必要があります。それ以外の場合、Web API フレームワークは HTTP 404 (Not Found) で応答します。
 
-	POST、PUT、DELETE の各 HTTP 要求にも同じ規則が適用されます。注文 101 の詳細を更新する PUT 要求は、URI _http://www.adventure-works.com/api/orders/101_ に送信されます。メッセージの本文には、この注文の新しい詳細が含まれます。この情報は、orders コントローラーの、名前が _Put_ プレフィックスで始まるメソッド (_PutOrder_ など) にパラメーターとして渡されます。
+	POST、PUT、DELETE の各 HTTP 要求にも同じ規則が適用されます。注文 101 の詳細を更新する PUT 要求は、URI \__http://www.adventure-works.com/api/orders/101_ に送信されます。メッセージの本文には、この注文の新しい詳細が含まれます。この情報は、orders コントローラーの、名前が _Put_ プレフィックスで始まるメソッド (_PutOrder_ など) にパラメーターとして渡されます。
 
-	既定のルーティング テーブルは、_http://www.adventure-works.com/api/customers/1/orders_ (顧客 1 によるすべての注文の詳細を検索する) など、REST ベースの Web API で子リソースを参照する要求とは一致しません。このような状況に対応するには、ルーティング テーブルにカスタム ルートを追加します。
+	既定のルーティング テーブルは、\__http://www.adventure-works.com/api/customers/1/orders_ (顧客 1 によるすべての注文の詳細を検索する) など、REST ベースの Web API で子リソースを参照する要求とは一致しません。このような状況に対応するには、ルーティング テーブルにカスタム ルートを追加します。
 
 	```C#
 	config.Routes.MapHttpRoute(
@@ -145,7 +145,7 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 
 - **API をサブドメインに配置するメリットとトレードオフを検討する**
 
-	既定では、ASP.NET Web API は、ドメイン内の _/api_ ディレクトリ (_http://www.adventure-works.com/api/orders_ など) に API をまとめます。このディレクトリは、同じホストで公開されている他のサービスと同じドメインに存在します。_http://api.adventure-works.com/orders_ などの URI を使用して、Web API を別のホストで実行される独自のサブドメインに分けると便利な場合があります。この分離により、_www.adventure-works.com_ ドメインで実行されている他の Web アプリケーションやサービスに影響を与えずに、Web API をパーティションに分割し、より効果的に拡張することができます。
+	既定では、ASP.NET Web API は、ドメイン内の _/api_ ディレクトリ (\__http://www.adventure-works.com/api/orders_ など) に API をまとめます。このディレクトリは、同じホストで公開されている他のサービスと同じドメインに存在します。\__http://api.adventure-works.com/orders_ などの URI を使用して、Web API を別のホストで実行される独自のサブドメインに分けると便利な場合があります。この分離により、_www.adventure-works.com_ ドメインで実行されている他の Web アプリケーションやサービスに影響を与えずに、Web API をパーティションに分割し、より効果的に拡張することができます。
 
 	ただし、Web API を別のサブドメインに配置すると、セキュリティ上の問題が発生する場合もあります。_www.adventure-works.com_ でホストされている Web アプリケーションやサービスが、他の場所で実行されている Web API を呼び出す場合、多くの Web ブラウザーの同一オリジン ポリシーに違反する可能性があります。この場合、ホスト間でのクロス オリジン リソース共有 (CORS) を有効にする必要があります。詳細については、API セキュリティ ガイダンスをご覧ください。
 
@@ -302,14 +302,15 @@ ASP.NET Web API を使用して実装されたサービスでは、各要求は 
 
 	HTTP 応答の例に示す HATEOAS リンクは、クライアント アプリケーションが次の操作を実行できることを示しています。
 
-	- 顧客の詳細を (再度) 取得するための URI _http://adventure-works.com/customers/2_ への HTTP GET 要求。データは、XML または JSON として返すことができます。
-	- 顧客の詳細を変更するための URI _http://adventure-works.com/customers/2_ への HTTP PUT 要求。新しいデータは、要求メッセージで x-www-form-urlencoded 形式で提供する必要があります。
+	- 顧客の詳細を (再度) 取得するための URI \__http://adventure-works.com/customers/2_ への HTTP GET 要求。データは、XML または JSON として返すことができます。
 
-	- 顧客を削除するための URI _http://adventure-works.com/customers/2_ への HTTP DELETE 要求。この要求は、追加情報を求めることも、応答メッセージの本文でデータを返すこともありません。
+	- 顧客の詳細を変更するための URI \__http://adventure-works.com/customers/2_ への HTTP PUT 要求。新しいデータは、要求メッセージで x-www-form-urlencoded 形式で提供する必要があります。
 
-	- この顧客のすべての注文を検索するための URI _http://adventure-works.com/customers/2/orders_ への HTTP GET 要求。データは、XML または JSON として返すことができます。
+	- 顧客を削除するための URI \__http://adventure-works.com/customers/2_ への HTTP DELETE 要求。この要求は、追加情報を求めることも、応答メッセージの本文でデータを返すこともありません。
 
-	- この顧客の新しい注文を作成するための URI _http://adventure-works.com/customers/2/orders_ への HTTP PUT 要求。データは、要求メッセージで x-www-form-urlencoded 形式で提供する必要があります。
+	- この顧客のすべての注文を検索するための URI \__http://adventure-works.com/customers/2/orders_ への HTTP GET 要求。データは、XML または JSON として返すことができます。
+
+	- この顧客の新しい注文を作成するための URI \__http://adventure-works.com/customers/2/orders_ への HTTP PUT 要求。データは、要求メッセージで x-www-form-urlencoded 形式で提供する必要があります。
 
 ## 例外の処理に関する考慮事項
 ASP.NET Web API フレームワークでは、操作でキャッチされない例外がスローされた場合、HTTP 状態コード 500 (Internal Server Error) を含む応答メッセージが既定で返されます。多くの場合、この過度に単純化された方法は単独では役に立たず、例外の原因の特定を困難にしています。そのため、以下の点を考慮して、例外を処理するより包括的な方法を採用する必要があります。
@@ -923,7 +924,7 @@ Web サーバーとクライアント アプリケーションが関与する環
 	}
 	```
 
-	クライアント アプリケーションは、URI _http://www.adventure-works.com/api/orders?limit=30&offset=50_ を使用して、オフセット 50 で始まる 30 個の注文を取得する要求を発行できます。
+	クライアント アプリケーションは、URI \__http://www.adventure-works.com/api/orders?limit=30&offset=50_ を使用して、オフセット 50 で始まる 30 個の注文を取得する要求を発行できます。
 
 	> [AZURE.TIP]URI が 2000 文字を超える長さになるクエリ文字列をクライアント アプリケーションが指定できないようにします。多くの Web クライアントとサーバーは、この長さの URI を処理できません。
 
@@ -1151,4 +1152,4 @@ API Management サービスを使用して Web API を公開した場合、Micro
 - Visual Studio を使用した単体テストの作成と管理の詳細については、Microsoft Web サイトの「[単体テストを使用したコードの検証](https://msdn.microsoft.com/library/dd264975.aspx)」をご覧ください。
 - Visual Studio Ultimate を使用して、Web パフォーマンスおよびロード テスト プロジェクトを作成する方法については、Microsoft Web サイトの[リリース前のアプリケーションでのパフォーマンス テストの実行](https://msdn.microsoft.com/library/dn250793.aspx)に関するページをご覧ください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Service Fabric のアクターの概要"
-   description="Azure Service Fabric アクターのプログラミング モデルの概要"
+   pageTitle="Service Fabric 高信頼アクターの概要"
+   description="Service Fabric 高信頼アクターのプログラミング モデルの概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/10/2015"
+   ms.date="08/05/2015"
    ms.author="claudioc"/>
 
-# Azure Service Fabric のアクターの概要
+# Service Fabric 高信頼アクターの概要
 高信頼アクター API は、[Service Fabric](service-fabric-technical-overview.md) が提供する 2 つの高度なフレームワークの 1 つです (もう 1 つのフレームワークは[高信頼サービス API](service-fabric-reliable-services-introduction.md))。
 
 高信頼アクター API は、アクター パターンに基づいて、Service Fabric によって実現する拡張性と信頼性を利用しながら、コードを簡素化する非同期のシングル スレッド プログラミング モデルを提供します。
@@ -191,11 +191,11 @@ public interface IVoicemailBoxActor : IActor
 
 [Fabric アクターの Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
 
-[KVSActorStateProvider アクターの構成](../Service-Fabric/service-fabric-reliable-actors-KVSActorstateprovider-configuration.md)
+[KVSActorStateProvider アクターの構成](service-fabric-reliable-actors-KVSActorstateprovider-configuration.md)
 
 [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -32,7 +32,7 @@ HDInsight の Apache Spark クラスターを使用して機械学習アプリ�
 
 アプリケーションの作成を始める前に、データの構造およびデータに対して実行する分析の種類を説明します。
 
-この記事では、すべての HDInsight クラスターにおいて既定で使用できる **HVAC.csv** サンプル データ ファイル (**\HdiSamples\SensorSampleData\hvac**) を使用します。CSV ファイルをダウンロードして開き、データのスナップショットを取得します。
+この記事では、すべての HDInsight クラスターにおいて既定で使用できる **HVAC.csv** サンプル データ ファイル (**\\HdiSamples\\SensorSampleData\\hvac**) を使用します。CSV ファイルをダウンロードして開き、データのスナップショットを取得します。
 
 ![HVAC データのスナップショット](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.ML.Show.Data.png "HVAC データのスナップショット")
 
@@ -213,7 +213,7 @@ HDInsight の Apache Spark クラスターを使用して機械学習アプリ�
 
 ##<a name="anaconda"></a>機械学習への Anaconda scikit-learn ライブラリの使用
 
-HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。これには、機械学習用の **scikit-learn** ライブラリも含まれます。ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。scikit-learn ライブラリの使用例については、[http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html) をご覧ください。
+HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。これには、機械学習用の **scikit-learn** ライブラリも含まれます。ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。scikit-learn ライブラリの使用例については、[http://scikit-learn.org/stable/auto\_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html) をご覧ください。
 
 ##<a name="seealso"></a>関連項目
 
@@ -240,4 +240,4 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

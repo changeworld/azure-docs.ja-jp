@@ -12,7 +12,7 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs"
-	ms.topic="get-started-article"
+	ms.topic="article"
 	ms.date="06/01/2015"
 	ms.author="mwasson"/>
 
@@ -25,7 +25,7 @@
 
 このガイドでは、Azure のクラウド サービスで実行される簡単な Node.js アプリケーションを作成します。クラウド サービスは、Azure のスケーラブルなクラウド アプリケーションの構成要素です。クラウド サービスによって、アプリケーションのフロントエンド コンポーネントとバックエンド コンポーネントの分離および独立した管理とスケールアウトを実現できます。クラウド サービスは、各ロールを信頼性の高い方法でホストするための堅牢な専用仮想マシンを提供します。
 
-クラウド サービスの詳細と Azure の Web サイトおよび仮想マシンとの違いについては、[「Azure の Web サイト、クラウド サービス、および仮想マシンの比較」](../choose-web-site-cloud-service-vm.md)を参照してください。
+クラウド サービスの詳細と Azure の Web サイトおよび仮想マシンとの違いについては、[Azure Websites、Cloud Services、および Virtual Machines の比較](../choose-web-site-cloud-service-vm.md)に関するページを参照してください。
 
 >[AZURE.TIP]単純な Web サイトを構築する場合 シナリオが、単純な Web サイトのフロントエンドにのみ関係している場合は、<a href="/documentation/articles/web-sites-nodejs-develop-deploy-mac/">軽量の Web アプリを使用することを検討してください。</a> Web アプリの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。
 
@@ -63,7 +63,7 @@
 
 	このコマンドレットによって作成されるファイルは、次のとおりです。
 
-	-   **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg** および **ServiceDefinition.csdef**: アプリケーションの発行に必要な Azure 固有のファイルです。詳細については、「[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)][]」を参照してください。
+	-   **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg** および **ServiceDefinition.csdef**: アプリケーションの発行に必要な Azure 固有のファイルです。詳細については、[Azure 対応のホストされるサービスの作成の概要][]に関するページを参照してください。
 
 	-   **deploymentSettings.json**: Azure PowerShell デプロイ コマンドレットによって使用されるローカル設定が格納されます。
 
@@ -89,14 +89,14 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 
 このコードは、クラウド環境に割り当てられたポート番号を使用する点を除いて、基本的に [nodejs.org][] Web サイトの "Hello World" サンプルと同じです。
 
-## Azure にアプリケーションを展開する
+## Azure にアプリケーションをデプロイする
 
 	[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 
 ### Azure 発行設定のダウンロード
 
-アプリケーションを Azure に展開するには、まず Azure サブスクリプションの発行設定をダウンロードする必要があります。
+アプリケーションを Azure にデプロイするには、まず Azure サブスクリプションの発行設定をダウンロードする必要があります。
 
 1.  次の Azure PowerShell コマンドレットを実行します。
 
@@ -124,7 +124,7 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 
 - **-Location** は、アプリケーションがホストされるデータ センターを指定します。使用可能なデータ センターの一覧を表示するには、**Get-azurelocation** コマンドレットを使用してください。
 
-- **-Launch** は、デプロイの完了後に、ブラウザー ウィンドウの起動とホステッド サービスへの移動を行います。
+- **-Launch** は、デプロイの完了後に、ブラウザー ウィンドウの起動とホストされるサービスへの移動を行います。
 
 発行が成功すると、次のような応答が表示されます。
 
@@ -132,7 +132,7 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 
 > [AZURE.NOTE]初めてアプリケーションを発行する場合、アプリケーションがデプロイされ、利用可能になるまでに数分かかることがあります。
 
-展開が完了すると、ブラウザー ウィンドウが開き、クラウド サービスに移動します。
+デプロイが完了すると、ブラウザー ウィンドウが開き、クラウド サービスに移動します。
 
 
 ![hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。](./media/cloud-services-nodejs-develop-deploy-app/node21.png)
@@ -141,21 +141,21 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 
 **Publish-AzureServiceProject** コマンドレットによって行われる処理は次のとおりです。
 
-1.  展開するためのパッケージを作成します。このパッケージには、アプリケーション フォルダー内のすべてのファイルが含まれます。
+1.  デプロイするためのパッケージを作成します。このパッケージには、アプリケーション フォルダー内のすべてのファイルが含まれます。
 
-2.  **ストレージ アカウント**が存在しない場合は、新たに作成します。Azure ストレージ アカウントは、展開中にアプリケーション パッケージを格納するために使用されます。展開が完了したら、ストレージ アカウントを削除してかまいません。
+2.  **ストレージ アカウント**が存在しない場合は、新たに作成します。Azure ストレージ アカウントは、デプロイ中にアプリケーション パッケージを格納するために使用されます。デプロイが完了したら、ストレージ アカウントを削除してかまいません。
 
-3.  **クラウド サービス**が存在しない場合は、新たに作成します。**クラウド サービス**は、Azure に展開したアプリケーションがホストされるコンテナーです。詳細については、「[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)][]」を参照してください。
+3.  **クラウド サービス**が存在しない場合は、新たに作成します。**クラウド サービス**は、Azure にデプロイしたアプリケーションがホストされるコンテナーです。詳細については、[Azure 対応のホストされるサービスの作成の概要][]に関するページを参照してください。
 
-4.  展開パッケージを Azure に発行します。
+4.  デプロイ パッケージを Azure に発行します。
 
 
 
 ## アプリケーションの停止と削除
 
-アプリケーションを展開した後、余分なコストを回避するためにアプリケーションを無効にすることができます。Azure では、消費されたサーバー時間の 1 時間単位の料金が Web ロール インスタンスに課金されます。インスタンスが実行されていない場合や停止状態の場合でも、アプリケーションを展開した直後からサーバー時間が消費されます。
+アプリケーションをデプロイした後、余分なコストを回避するためにアプリケーションを無効にすることができます。Azure では、消費されたサーバー時間の 1 時間単位の料金が Web ロール インスタンスに課金されます。インスタンスが実行されていない場合や停止状態の場合でも、アプリケーションをデプロイした直後からサーバー時間が消費されます。
 
-1.  Windows PowerShell ウィンドウで次のコマンドレットを実行し、前のセクションで作成したサービスの展開を停止します。
+1.  Windows PowerShell ウィンドウで次のコマンドレットを実行し、前のセクションで作成したサービスのデプロイを停止します。
 
         Stop-AzureService
 
@@ -180,7 +180,7 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 [mkdir]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-6.png
 [nodejs.org]: http://nodejs.org/
 [A directory listing of the helloworld folder.]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-7.png
-[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: http://msdn.microsoft.com/library/windowsazure/jj155995.aspx
+[Azure 対応のホストされるサービスの作成の概要]: http://msdn.microsoft.com/library/windowsazure/jj155995.aspx
 [A directory listing of the WebRole1 folder]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-8.png
 [The menu displayed when right-clicking the Azure emulator from the task bar.]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-11.png
 [A browser window displaying http://www.windowsazure.com/ with the Free Trial link highlighted]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-12.png
@@ -192,4 +192,4 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

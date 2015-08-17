@@ -35,7 +35,7 @@ Mobile Engagement SDK for Windows Silverlight は次を対象としたアプリ�
 -   Windows Phone 8.0
 -   Windows Phone 8.1 Silverlight
 
-> [AZURE.NOTE]Windows Phone 8.1 (Silverlight 以外) を対象としている場合は、[Windows Universal の統合手順](mobile-engagement-windows-store-integrate-engagement.md)を参照してください。
+> [AZURE.NOTE]Windows Phone 8.1 (Silverlight 以外) を対象としている場合は、「[Windows Universal の統合手順](mobile-engagement-windows-store-integrate-engagement.md)」を参照してください。
 
 ##Mobile Engagement Silverlight SDK をインストールする
 
@@ -115,7 +115,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 -   `PhoneApplicationPage` を `EngagementPage` に置き換えます。
 
-**Engagement を使用しない場合:**
+**エンゲージメントを使用しない場合:**
 
 		namespace Example
 		{
@@ -149,7 +149,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 -   `phone:PhoneApplicationPage` を `engagement:EngagementPage` に置き換えます。
 
-**Engagement を使用しない場合:**
+**エンゲージメントを使用しない場合:**
 
 		<phone:PhoneApplicationPage>
 		    <!-- layout -->
@@ -207,7 +207,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 オプションとして、アプリケーション特有のイベント、エラー、ジョブについて報告できます。そのためには、`EngagementAgent` クラスの別のメソッドを使用します。Engagement API により、Engagement のすべての高度な機能を使用できます。
 
-詳細については、[Windows Phone Silverlight で高度な Mobile Engagement タグ付け API を使用する方法](../mobile-engagement-windows-phone-use-engagement-api/)をご覧ください。
+詳細については、「[How to use the advanced Mobile Engagement tagging API in your Windows Phone Silverlight app (Windows Phone Silverlight で高度なモバイル エンゲージメント タグ付け API を使用する方法)](../mobile-engagement-windows-phone-use-engagement-api/)」をご覧ください
 
 ##詳細な構成
 
@@ -247,4 +247,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 > [AZURE.WARNING]バーストのしきい値は、1 秒よりも短くすることはできません。1 秒未満にしようとすると、SDK でエラーのトレースが表示され、自動的に既定値の 0 秒にリセットされます。これにより、SDK はログをリアルタイムで報告するようになります。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

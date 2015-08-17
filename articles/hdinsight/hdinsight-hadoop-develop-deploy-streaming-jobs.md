@@ -38,7 +38,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 - HDInsight Emulator のインストール。手順については、「[HDInsight Emulator の概要][hdinsight-get-started-emulator]」を参照してください。
 - エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install]を参照してください。
-- Azure サブスクリプションの入手。手順については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
+- Azure サブスクリプションの入手。手順については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[][azure-free-trial]無料試用版に関するページを参照してください。
 
 
 ##<a name="develop"></a>C# でワード カウント Hadoop ストリーミング プログラムを開発する
@@ -149,8 +149,8 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 mapper と reducer の実行可能ファイルは次の場所にあります。
 
-- C:\Tutorials\WordCount\WordCountMapper\bin\Debug\WordCountMapper.exe
-- C:\Tutorials\WordCount\WordCountReducer\bin\Debug\WordCountReducer.exe
+- C:\\Tutorials\\WordCount\\WordCountMapper\\bin\\Debug\\WordCountMapper.exe
+- C:\\Tutorials\\WordCount\\WordCountReducer\\bin\\Debug\\WordCountReducer.exe
 
 
 ##<a name="test"></a>エミュレーターでプログラムをテストする
@@ -167,9 +167,9 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 
 このチュートリアルでは、次のフォルダー構造を使用します。
 
-<table border="1"> <tr><td>フォルダー</td><td>説明</td></tr> <tr><td>\WordCount</td><td>ワード カウント プロジェクトのルート フォルダー。</td></tr> <tr><td>\WordCount\Apps</td><td>mapper と reducer の実行可能ファイルのフォルダー。</td></tr> <tr><td>\WordCount\Input</td><td>MapReduce ソース ファイル フォルダー。</td></tr> <tr><td>\WordCount\Output</td><td>MapReduce 出力ファイル フォルダー。</td></tr> <tr><td>\WordCount\MRStatusOutput</td><td>ジョブ出力フォルダー。</td></tr> </table></br>
+<table border="1"> <tr><td>フォルダー</td><td>説明</td></tr> <tr><td>\\WordCount</td><td>ワード カウント プロジェクトのルート フォルダー。</td></tr> <tr><td>\\WordCount\\Apps</td><td>mapper と reducer の実行可能ファイルのフォルダー。</td></tr> <tr><td>\\WordCount\\Input</td><td>MapReduce ソース ファイル フォルダー。</td></tr> <tr><td>\\WordCount\\Output</td><td>MapReduce 出力ファイル フォルダー。</td></tr> <tr><td>\\WordCount\\MRStatusOutput</td><td>ジョブ出力フォルダー。</td></tr> </table></br>
 
-このチュートリアルでは、%hadoop_home% ディレクトリにある .txt ファイルを使用します。
+このチュートリアルでは、%hadoop\_home% ディレクトリにある .txt ファイルを使用します。
 
 > [AZURE.NOTE]Hadoop HDFS のコマンドは大文字と小文字が区別されます。
 
@@ -263,7 +263,8 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 
 **ジョブの状態を確認するには**
 
-1. デスクトップで **[Hadoop YARN のステータス]** をクリックするか、**http://localhost:50030/jobtracker.jsp** を参照します。2. **[実行中]** カテゴリまたは **[完了]** カテゴリで、このジョブ ID を使用しているジョブを見つけます。 
+1. デスクトップで **[Hadoop YARN のステータス]** をクリックするか、****http://localhost:50030/jobtracker.jsp** を参照します。
+2. **[実行中]** カテゴリまたは **[完了]** カテゴリで、このジョブ ID を使用しているジョブを見つけます。 
 3. ジョブが失敗している場合は **[失敗]** カテゴリに表示されます。ジョブの詳細を開き、デバッグに役立つ情報を検索することもできます。
 
 
@@ -278,7 +279,7 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 	"|more" をコマンドの最後に付けることで、ページ ビューを得られます。
 
 ##<a id="upload"></a>Azure BLOB ストレージにデータをアップロードする
-Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。データ ファイル用に追加の Azure BLOB ストレージを使用するように HDInsight クラスターを構成できます。このセクションでは、Azure ストレージ アカウントを作成し、データ ファイルを BLOB ストレージにアップロードします。データ ファイルは %hadoop_home%\share\doc\hadoop\common ディレクトリ内の .txt ファイルです。
+Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。データ ファイル用に追加の Azure BLOB ストレージを使用するように HDInsight クラスターを構成できます。このセクションでは、Azure ストレージ アカウントを作成し、データ ファイルを BLOB ストレージにアップロードします。データ ファイルは %hadoop\_home%\\share\\doc\\hadoop\\common ディレクトリ内の .txt ファイルです。
 
 
 **ストレージ アカウントとコンテナーを作成するには**
@@ -316,7 +317,7 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 		$localFolder = "C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common"
 		$destFolder = "WordCount/Input"
 
-	ローカル ソース ファイル フォルダーは **C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common** で、アップロード先フォルダーは **WordCount/Input** です。ソースの場所は、HDInsight Emulator 上の .txt ファイルの場所です。アップロード先は、Azure Blob コンテナーに反映するフォルダー構造です。
+	ローカル ソース ファイル フォルダーは **C:\\hdp\\hadoop-2.4.0.2.1.3.0-1981\\share\\doc\\hadoop\\common** で、アップロード先フォルダーは **WordCount/Input** です。ソースの場所は、HDInsight Emulator 上の .txt ファイルの場所です。アップロード先は、Azure Blob コンテナーに反映するフォルダー構造です。
 
 3. 次のコマンドを実行して、ソース ファイル フォルダー内の .txt ファイルの一覧を取得します。
 
@@ -468,7 +469,7 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 
 3. スクリプトの最初の 4 つの変数を設定します。**$stringPrefix** 変数は、指定した文字列をプレフィックスとして HDInsight クラスター名、ストレージ アカウント名、BLOB ストレージ コンテナー名に付けるために使用されます。これらの名前の長さは 3 ～ 24 文字である必要があるため、指定する文字列とこのスクリプトで使用する名前の合計の長さが名前の文字制限を超えないように注意してください。**$stringPrefix** には、すべて小文字を使用する必要があります。
 
-	**$storageAccountName_Data** 変数と **$containerName_Data** 変数はストレージ アカウントとコンテナーで、既に前の手順で作成したものです。そこで、これらに名前を付ける必要があります。これらは、データ ファイルとアプリケーションを格納するために使用します。**$location** 変数は、データ ストレージ アカウントの場所と一致する必要があります。
+	**$storageAccountName\_Data** 変数と **$containerName\_Data** 変数はストレージ アカウントとコンテナーで、既に前の手順で作成したものです。そこで、これらに名前を付ける必要があります。これらは、データ ファイルとアプリケーションを格納するために使用します。**$location** 変数は、データ ストレージ アカウントの場所と一致する必要があります。
 
 4. 残りの変数を確認します。
 5. スクリプト ファイルを保存します。
@@ -551,4 +552,4 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -9,4 +9,4 @@
 - [(Android | .NET)](../articles/mobile-services-dotnet-backend-android-get-started-push.md)
 - [(Android | Javascript)](../articles/mobile-services-javascript-backend-android-get-started-push.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

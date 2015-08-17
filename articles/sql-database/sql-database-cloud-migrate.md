@@ -82,4 +82,4 @@ Visual Studio の SQL Server ツールを使用して、スキーマ内の各オ
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

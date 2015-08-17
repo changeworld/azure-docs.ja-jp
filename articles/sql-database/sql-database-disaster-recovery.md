@@ -101,4 +101,4 @@ REST を使用して、プログラムでデータベースの復旧を実行し
 データベースの復旧後に、「[Finalize a Recovered Database (復旧データベースの最終処理)](sql-database-recovered-finalize.md)」ガイドに従って、復旧したデータベースを構成することができます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

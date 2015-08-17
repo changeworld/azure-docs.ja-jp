@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/22/2015"
+   ms.date="08/05/2015"
    ms.author="jesseb"/>
 
 # Visual Studio での Service Fabric アプリケーションの管理
@@ -68,10 +68,10 @@ Visual Studio で、[ビルド] メニューから、[ソリューションの�
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 
-- [Service Fabric のアプリケーション モデル](../service-fabric-application-model)
-- [Service Fabric アプリケーションのデプロイ](../service-fabric-deploy-remove-applications)
-- [Service Fabric アプリケーションのデバッグ](../service-fabric-debugging-your-application)
-- [Service Fabric エクスプローラーを使用したクラスターの視覚化](../service-fabric-visualizing-your-cluster)
+- [Service Fabric のアプリケーション モデル](service-fabric-application-model.md)
+- [Service Fabric アプリケーションの展開](service-fabric-deploy-remove-applications.md)
+- [Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
+- [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
 <!--Image references-->
 [addserviceproject]: ./media/service-fabric-manage-application-in-visual-studio/addserviceproject.png
@@ -79,4 +79,4 @@ Visual Studio で、[ビルド] メニューから、[ソリューションの�
 [newservice]: ./media/service-fabric-manage-application-in-visual-studio/newservice.png
 [newserviceapplicationmanifest]: ./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -125,13 +125,13 @@
 		federation.reply=https://localhost/phpSample/index.php 
 
 
-> [AZURE.NOTE]**audienceuris** と **realm** の値は "spn:" で始める必要があります。
+	> [AZURE.NOTE]**audienceuris** と **realm** の値は "spn:" で始める必要があります。
 
 4. Eclipse で、**phpSample** プロジェクトを右クリックし、**[New]**、**[PHP File]** の順にクリックします。
 
 5. **[New PHP File]** ダイアログ ボックスで、ファイルに **secureResource.php** という名前を付け、**[Finish]** をクリックします。
 
-6. 新しい **secureResource.php** ファイルに次のコードを入力して、**c:\phpLibraries** パスを、サンプル コードをダウンロードした root の場所に置き換えます。root 場所には **simpleSAML.php** ファイルと **federation** フォルダーがあることが必要です。
+6. 新しい **secureResource.php** ファイルに次のコードを入力して、**c:\\phpLibraries** パスを、サンプル コードをダウンロードした root の場所に置き換えます。root 場所には **simpleSAML.php** ファイルと **federation** フォルダーがあることが必要です。
 
 		<?php
 		ini_set('include_path', ini_get('include_path').';c:\phpLibraries\;');
@@ -181,7 +181,7 @@
 		</body>
 		</html> 
 
-8. **[Run]** メニューの **[Run]** をクリックします。Office 365 の ID プロバイダー ページに自動的にリダイレクトされます。このページでディレクトリ テナントの資格情報を使用してログインできます。たとえば、*john.doe@fabrikam.onmicrosoft.com* などです。
+8. **[Run]** メニューの **[Run]** をクリックします。Office 365 の ID プロバイダー ページに自動的にリダイレクトされます。このページでディレクトリ テナントの資格情報を使用してログインできます。次に例を示します。**john.doe@fabrikam.onmicrosoft.com*
 
 ## 概要
 このチュートリアルでは、シングル サインオン Azure Active Directory 機能を使用する 1 つのテナント PHP アプリケーションを作成および構成する方法について説明しました。
@@ -203,4 +203,4 @@ PHP Web サイト用に Azure Active Directory とシングル サインオン�
 [Azure Active Directory 用の PHP サンプル コード]: https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/WAAD.WebSSO.PHP
  
 
-<!--------HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

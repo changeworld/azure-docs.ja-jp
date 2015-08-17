@@ -58,4 +58,4 @@
 [1]: ./media/sql-database-elastic-job-uninstall/
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

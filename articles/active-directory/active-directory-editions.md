@@ -122,4 +122,4 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

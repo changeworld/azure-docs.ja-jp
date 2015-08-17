@@ -38,7 +38,7 @@
 -----| -----------
 [手順 1. Azure Data Factory を作成する](#CreateDataFactory) | この手順では、**ADFTutorialDataFactoryPSH** という名前の Azure Data Factory を作成します。 
 [手順 2. リンクされたサービスを作成する](#CreateLinkedServices) | この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。StorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactoryPSH にリンクします。
-[手順 3. 入力データセットと出力データセットを作成する](#CreateInputAndOutputDataSets) | この手順では、2 つのデータセット (EmpTableFromBlob と **EmpSQLTable**) を定義します。これらは、次の手順で作成する ADFTutorialPipeline の**コピー アクティビティ**の入力テーブルおよび出力テーブルとして使用されます。
+[手順 3. 入力データセットと出力データセットを作成する](#CreateInputAndOutputDataSets) | この手順では、2 つのデータセット (**EmpTableFromBlob** と **EmpSQLTable**) を定義します。これらは、次の手順で作成する ADFTutorialPipeline の**コピー アクティビティ**の入力テーブルおよび出力テーブルとして使用されます。
 [手順 4. パイプラインを作成して実行する](#CreateAndRunAPipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを **ADFTutorialDataFactoryPSH** という Data Factory に作成します。このパイプラインには、Azure BLOB から Azure データベース出力テーブルにデータをコピーする**コピー アクティビティ**があります。
 [手順 5. データセットとパイプラインを監視する](#MonitorDataSetsAndPipeline) | この手順では、Azure PowerShell を使用してデータセットとパイプラインを監視します。
 
@@ -67,7 +67,7 @@
 ## <a name="CreateLinkedServices"></a>手順 2. リンクされたサービスを作成する
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。これらのデータ ストアには、Data Factory パイプラインの入力データが含まれているか、出力データが格納されています。コンピューティング サービスは、入力データを処理し、出力データを生成するサービスです。
 
-この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。リンクされたサービス StorageLinkedService は Azure Storage アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactoryPSH** という Data Factory にリンクします。このチュートリアルの後半で、StorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
+この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。リンクされたサービス StorageLinkedService は Azure ストレージ アカウントを、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactoryPSH** という Data Factory にリンクします。このチュートリアルの後半で、StorageLinkedService 内の BLOB コンテナーから AzureSqlLinkedService 内の SQL テーブルにデータをコピーするパイプラインを作成します。
 
 ### Azure ストレージ アカウント用にリンクされたサービスを作成する
 1.	次の内容で **C:\\ADFGetStartedPSH** に **StorageLinkedService.json** という名前の JSON ファイルを作成します。ADFGetStartedPSH フォルダーがない場合は作成します。
@@ -98,7 +98,7 @@
 
 	チュートリアルの途中で Azure PowerShell を閉じた場合、次に Azure PowerShell を起動したときに、Get-AzureDataFactory コマンドレットを実行してチュートリアルを完了する必要があります。
 
-### Azure SQL データベース用にリンクされたサービスを作成する
+### Azure SQL Database 用にリンクされたサービスを作成する
 1.	次の内容で AzureSqlLinkedService.json という名前の JSON ファイルを作成します。
 
 		{
@@ -111,7 +111,7 @@
 		  }
 		}
 
-	**servername**、**databasename**、**username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+	**servername**、**databasename**、****username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
 
 2.	次のコマンドを実行して、リンクされたサービスを作成します。
 	
@@ -128,11 +128,11 @@
 
 ## <a name="CreateInputAndOutputDataSets"></a>手順 3. 入力テーブルと出力テーブルを作成する
 
-前の手順では、**StorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure Storage アカウントと Azure SQL Database を **ADFTutorialDataFactoryPSH** という Data Factory にリンクしました。このステップでは、次の手順で作成するパイプラインのコピー アクティビティ用に入力データと出力データを表すテーブルを作成します。
+前の手順では、**StorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL Database を **ADFTutorialDataFactoryPSH** という Data Factory にリンクしました。このステップでは、次の手順で作成するパイプラインのコピー アクティビティ用に入力データと出力データを表すテーブルを作成します。
 
 テーブルとは四角形のデータセットで、現在サポートされている唯一の種類のデータセットです。このチュートリアルの入力テーブルは StorageLinkedService がポイントする Azure Storage 内の BLOB コンテナーを参照し、出力テーブルは AzureSqlLinkedService がポイントする Azure SQL Database 内の SQL テーブルを参照します。
 
-### Azure BLOB ストレージと Azure SQL データベースをチュートリアル用に準備する
+### Azure BLOB ストレージと Azure SQL Database をチュートリアル用に準備する
 「[Azure Data Factory を使ってみる][adf-get-started]」の記事のチュートリアルを完了している場合は、この手順をスキップしてください。
 
 このチュートリアルで使用する Azure BLOB ストレージと Azure SQL Database を準備するには、次の手順を実行する必要があります。
@@ -168,7 +168,7 @@
 	Visual Studio 2013 がコンピューターにインストールされている場合: Azure プレビュー ポータル ([http://portal.azure.com](http://portal.sazure.com)) の左側にある **[参照]** ハブ、**[SQL Server]** の順にクリックしてデータベースを選択します。次に、ツール バーの **[Visual Studio で開く]** をクリックして Azure SQL サーバーに接続し、スクリプトを実行します。クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL Server のファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、上の記事を参照してください。
 		
 ### 入力テーブルの作成 
-テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **￼￼￼￼￼￼EmpBlobTable** という名前のテーブルを作成します。この BLOB コンテナー (\*\*adftutorial\*\*) には、**emp.txt** ファイルの入力データが含まれています。
+テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **￼￼￼￼￼￼EmpBlobTable** という名前のテーブルを作成します。この BLOB コンテナー (**adftutorial**) には、**emp.txt** ファイルの入力データが含まれています。
 
 1.	以下の内容を記述した **EmpBlobTable.json** という名前の JSON ファイルを **C:\\ADFGetStartedPSH** フォルダー内に作成します。
 
@@ -204,14 +204,14 @@
 	
 	以下の点に注意してください。
 	
-	- location の **type** を **AzureBlob** に設定します。
+	- dataset の **type** は **AzureBlob** に設定されています。
 	- **linkedServiceName** は **StorageLinkedService** に設定されています。 
 	- **folderPath** が **adftutorial** コンテナーに設定されています。フォルダー内の BLOB の名前を指定することもできます。BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
 	- format の **type** が **TextFormat** に設定されています。
-	- テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (\*\*columnDelimiter\*\*) で区切られています。	
-	- **availability** が **hourly** に設定されています (\*\*frequency\*\* は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory サービスでは、指定した BLOB コンテナー (\*\*adftutorial\*\*) のルート フォルダーにある入力データを 1 時間ごとに検索します。
+	- テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。	
+	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory サービスでは、指定した BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。
 
-	**input** **table** に **fileName** を指定しない場合、入力フォルダー (\*\*folderPath\*\*) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルを参照してください。
+	**入力****テーブル**に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルを参照してください。
  
 	**output table** に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
 
@@ -234,7 +234,7 @@
 		New-AzureDataFactoryTable $df -File .\EmpBlobTable.json
 
 ### 出力テーブルの作成
-手順のこの部分では、リンクされたサービス **AzureSqlLinkedService** が表す Azure SQL Database 内の SQL テーブル (\*\*emp\*\*) をポイントする **EmpSQLTable** という名前の出力テーブルを作成します。パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。
+手順のこの部分では、リンクされたサービス **AzureSqlLinkedService** が表す Azure SQL Database 内の SQL テーブル (**emp**) をポイントする **EmpSQLTable** という名前の出力テーブルを作成します。パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。
 
 1.	以下の内容を記述した **EmpSQLTable.json** という名前の JSON ファイルを **C:\\ADFGetStartedPSH** フォルダー内に作成します。
 		
@@ -265,11 +265,11 @@
 
      以下の点に注意してください。
 	
-	* location の **type** を **AzureSqlTable** に設定します。
+	* dataset の **type** が **AzureSqlTable** に設定されています。
 	* **linkedServiceName** は **AzureSqlLinkedService** に設定されています。
 	* **tablename** は **emp** に設定されています。
 	* データベース内の emp テーブルに 3 つの列 (**ID**、**FirstName**、**LastName**) がありますが、ID は識別子の列であるため、ここでは **FirstName** と **LastName** のみを指定する必要があります。
-	* **availability** が **hourly** に設定されています (\*\*frequency\*\* は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
+	* **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
 2.	次のコマンドを実行して、Data Factory テーブルを作成します。
 	
@@ -307,7 +307,7 @@
 		          "sink": {
 		            "type": "SqlSink",
 		            "writeBatchSize": 10000,
-		            "writeBatchTimeout": "60:00:00"
+		            "writeBatchTimeout": "00:60:00"
 		          }
 		        },
 		        "Policy": {
@@ -333,7 +333,7 @@
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
-	**end** プロパティの値を指定しない場合、"\*\*start + 48 hours\*\*" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
+	**end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
 	
 	上記の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 	
@@ -418,7 +418,7 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [Data Factory で Pig と Hive を使用する][use-pig-and-hive-with-data-factory] | この記事には、**HDInsight アクティビティ**を使用して **hive/pig** スクリプトを実行し、入力データを処理して出力データを生成する方法を説明したチュートリアルが記載されています。
 [チュートリアル: Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する**現実のシナリオ**の実行方法について、**詳細なチュートリアル**が記載されています。
 [Data Factory でカスタム アクティビティを使用する][use-custom-activities] | この記事には、**カスタム アクティビティ**を作成してパイプラインで使用する詳細な手順のチュートリアルが記載されています。 
-[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題の**トラブルシューティング**を行う方法について説明しています。エラーを発生させて (Azure SQL データベースのテーブルを削除する)、ADFTutorialDataFactory でこの記事のチュートリアルを試すことができます。 
+[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題の**トラブルシューティング**を行う方法について説明しています。エラーを発生させて (Azure SQL Database のテーブルを削除する)、ADFTutorialDataFactory でこの記事のチュートリアルを試すことができます。 
 [Azure Data Factory コマンドレット リファレンス][cmdlet-reference] | このリファレンスには、すべての **Data Factory コマンドレット**に関する詳細が記載されています。
 [Azure Data Factory の開発者向けリファレンス][developer-reference] | この開発者用リファレンスは、コマンドレット、JSON スクリプト、関数などの包括的なリファレンス コンテンツです。 
 
@@ -437,7 +437,6 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [adf-get-started]: data-factory-get-started.md
 [azure-preview-portal]: http://portal.azure.com
 [download-azure-powershell]: ../powershell-install-configure.md
-[data-factory-create-sql-database]: ../sql-database-create-configure.md
 [data-factory-introduction]: data-factory-introduction.md
 
 [image-data-factory-get-started-storage-explorer]: ./media/data-factory-monitor-manage-using-powershell/getstarted-storage-explorer.png
@@ -445,4 +444,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [sql-management-studio]: ../sql-database-manage-azure-ssms.md#Step2
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -64,11 +64,11 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
 **アップロード**
 
-スクリプトを *lamp_install.sh* などとしてテキスト ファイルに保存し、Azure ストレージ アカウントにアップロードします。Azure CLI を使えば簡単にできます。次の例では、ファイルを「scripts」という名前のストレージ コンテナーにアップロードします。注: コンテナーが存在しない場合は、まずコンテナーを作成する必要があります。
+スクリプトを *lamp\_install.sh* などとしてテキスト ファイルに保存し、Azure ストレージ アカウントにアップロードします。Azure CLI を使えば簡単にできます。次の例では、ファイルを「scripts」という名前のストレージ コンテナーにアップロードします。注: コンテナーが存在しない場合は、まずコンテナーを作成する必要があります。
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
-また、Azure ストレージからスクリプトをダウンロードする方法を記述した JSON ファイルも作成します。*public_config.json* という名前でこのファイルを保存します (「mystorage」をご利用のストレージ アカウントの名前に置き換えてください)。
+また、Azure ストレージからスクリプトをダウンロードする方法を記述した JSON ファイルも作成します。*public\_config.json* という名前でこのファイルを保存します (「mystorage」をご利用のストレージ アカウントの名前に置き換えてください)。
 
     {"fileUris":["https://mystorage.blob.core.windows.net/scripts/install_lamp.sh"], "commandToExecute":"sh install_lamp.sh" }
 
@@ -79,7 +79,7 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
     azure vm extension set -c "./public_config.json" lamp-vm CustomScriptForLinux Microsoft.OSTCExtensions 1.*
 
-これによって、*lamp-vm* という名前の仮想マシンで *lamp_install.sh* スクリプトがダウンロードされて実行されます。
+これによって、*lamp-vm* という名前の仮想マシンで *lamp\_install.sh* スクリプトがダウンロードされて実行されます。
 
 アプリに Web サーバーが含まれる場合は、リモート仮想マシンで HTTP リスニング ポートが開かれていることをご確認ください。
 
@@ -92,7 +92,7 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
     cd /var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.0/
     tail -f extension.log
 
-カスタム スクリプト拡張機能の実行が終了すると、作成した PHP ページを参照できるようになります。ここでは *http://lamp-vm.cloudapp.net/phpinfo.php* となります。
+カスタム スクリプト拡張機能の実行が終了すると、作成した PHP ページを参照できるようになります。ここでは **http://lamp-vm.cloudapp.net/phpinfo.php* となります。
 
 ## その他のリソース
 
@@ -107,4 +107,4 @@ Azure CLI、Linux、カスタム スクリプト拡張機能の詳細につい�
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

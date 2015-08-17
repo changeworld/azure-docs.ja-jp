@@ -109,4 +109,4 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 
 -  [Microsoft サポートに問い合わせる](https://msdn.microsoft.com/library/azure/dn757750.aspx)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

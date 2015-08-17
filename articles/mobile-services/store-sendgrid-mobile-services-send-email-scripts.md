@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/24/2015" 
+	ms.date="07/31/2015" 
 	ms.author="Erikre"/>
 
 
-# SendGrid を使用したモバイル サービスからの電子メールの送信
+# SendGrid を使用した Mobile Services からの電子メールの送信
 
 このトピックでは、モバイル サービスに電子メール機能を追加する方法について説明します。このチュートリアルでは、サーバー側スクリプトを追加し、SendGrid を使用して電子メールを送信します。完了すると、モバイル サービスは、レコードが挿入されるたびに電子メールを送信します。
 
@@ -29,7 +29,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 2. [電子メールを送信するためのスクリプトを追加する]
 3. [データを挿入して電子メールを受け取る]
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
+このチュートリアルは、Mobile Services のクイック スタートに基づいています。このチュートリアルを開始する前に、「[Mobile Services の使用]」を完了している必要があります。
 
 ## <a name="sign-up"></a>新しい SendGrid アカウントを作成する
 
@@ -88,7 +88,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 	- **_from-address_**: 電子メールの送信元アドレス。組織に属する登録済みドメイン アドレスの使用を検討してください。
 
-     >[AZURE.NOTE]登録済みドメインがない場合は、Mobile Service のドメインを *notifications@_your-mobile-service_.azure-mobile.net* という形式で使用できます。ただし、モバイル サービス ドメインに送信されたメッセージは無視されます。
+     >[AZURE.NOTE]登録済みドメインがない場合は、Mobile Service のドメインを **notifications@_your-mobile-service_.azure-mobile.net* という形式で使用できます。ただし、モバイル サービス ドメインに送信されたメッセージは無視されます。
 
 6. **[保存]** ボタンをクリックします。これで、**TodoItem** テーブルにレコードが挿入されるたびに電子メールが送信されるように、スクリプトを構成できました。
 
@@ -110,7 +110,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 ## <a name="nextsteps"> </a>次のステップ
 
-モバイル サービスで SendGrid 電子メール サービスを簡単に使用できることがわかりました。SendGrid の詳細については、次のリンク先を参照してください。
+Mobile Services で SendGrid 電子メール サービスを簡単に使用できることがわかりました。SendGrid の詳細については、次のリンク先を参照してください。
 
 -   SendGrid API に関するドキュメント: <https://sendgrid.com/docs>
 -   Azure ユーザー向けの SendGrid 特別プラン: <https://sendgrid.com/windowsazure.html>
@@ -127,7 +127,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 [4]: ./media/store-sendgrid-mobile-services-send-email-scripts/mobile-receive-email.png
 
 <!-- URLs. -->
-[モバイル サービスの使用]: /develop/mobile/tutorials/get-started
+[Mobile Services の使用]: /develop/mobile/tutorials/get-started
 [sign up page]: https://sendgrid.com/windowsazure.html
 [Multiple User Credentials page]: https://sendgrid.com/credentials
 [Azure 管理ポータル]: https://manage.windowsazure.com/
@@ -136,4 +136,4 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -49,7 +49,7 @@ Xamarin ライブラリなど、一部の Azure ストレージ クライアン�
 
 1. Azure PowerShell がまだインストールされていない場合は、インストールします。Azure PowerShell コマンドレットの最新バージョンを使用することをお勧めします。インストールの手順については、「[Azure PowerShell のインストールと構成の方法](../articles/powershell-install-configure.md#Install)」を参照してください。
 
-2. Azure PowerShell を開き、次のコマンドを実行します。*ACCOUNT_NAME* と *ACCOUNT_KEY==* を自分の資格情報に置き換えてください。*CONTAINER_NAME* を自分で選択した名前に置き換えます。
+2. Azure PowerShell を開き、次のコマンドを実行します。*ACCOUNT\_NAME* と *ACCOUNT\_KEY==* を自分の資格情報に置き換えてください。*CONTAINER\_NAME* を自分で選択した名前に置き換えます。
 
 		$context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
 		
@@ -80,7 +80,7 @@ Azure ストレージ エミュレーターを起動するには、[スタート
 
 ストレージ エミュレーターを初めて実行すると、ローカル ストレージ環境が初期化されます。初期化プロセスでは、LocalDB にデータベースが作成され、各ローカル ストレージ サービス用として HTTP ポートが予約されます。
 
-ストレージ エミュレーターは、既定で C:\Program Files(x86)\Microsoft SDKs\Azure\Storage Emulator ディレクトリにインストールされています。
+ストレージ エミュレーターは、既定で C:\\Program Files(x86)\\Microsoft SDKs\\Azure\\Storage Emulator ディレクトリにインストールされています。
 
 ### 別の SQL データベースを使用するための、ストレージ エミュレーターの初期化
 
@@ -89,11 +89,11 @@ Azure ストレージ エミュレーターを起動するには、[スタート
 1. **[スタート]** ボタンをクリックするか、**[Windows]** キーを押します。「`Azure Storage Emulator`」と入力し始め、ストレージ エミュレーター コマンド ライン ツールが表示されるようになったら、それを選択します。
 2. コマンド プロンプト ウィンドウで、次のコマンドを入力します。ここで `<SQLServerInstance>` は、SQL Server インスタンスの名前です。LocalDb を使用するには、SQL Server インスタンスとして `(localdb)\v11.0` を指定します。
 
-		AzureStorageEmulator init /sqlInstance <SQLServerInstance> 
+		AzureStorageEmulator init /server <SQLServerInstance> 
     
 	次のコマンドを使うこともできます。このコマンドを指定すると、エミュレーターは既定の SQL Server インスタンスを使用します。
 
-    	AzureStorageEmulator init /server .\ 
+    	AzureStorageEmulator init /server .\\ 
 
 	または、データベースを既定の LocalDB インスタンスに再初期化する次のコマンドを使うこともできます。
 
@@ -133,7 +133,7 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
     http://127.0.0.1:10000/myaccount-secondary/mycontainer/myblob.txt 
 
-> [AZURE.NOTE]ストレージ エミュレーターを使用した、プログラムによるセカンダリへのアクセスには、.NET 用ストレージ クライアント ライブラリの Version 3.2 以降を使用してください。詳細については、「[ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)」を参照してください。
+> [AZURE.NOTE]ストレージ エミュレーターを使用した、プログラムによるセカンダリへのアクセスには、.NET 用ストレージ クライアント ライブラリの Version 3.2 以降を使用してください。詳細については、[ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)をご覧ください。
 
 ## ストレージ エミュレーター コマンド ライン ツールのリファレンス
 
@@ -143,7 +143,7 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 ### コマンド ライン構文
 
-	AzureStorageEmulator [/start] [/stop] [/status] [/clear] [/init] [/help]
+	AzureStorageEmulator [start] [stop] [status] [clear] [init] [help]
 
 ### オプション
 
@@ -151,11 +151,11 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 | オプション | 説明 | コマンド | 引数 |
 |--------|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| **開始** | ストレージ エミュレーターを起動します。 | `AzureStorageEmulator start [-inprocess]` | *-inprocess*: 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
-| **停止** | ストレージ エミュレーターを停止します。 | `AzureStorageEmulator stop` | |
+| **Start** | ストレージ エミュレーターを起動します。 | `AzureStorageEmulator start [-inprocess]` | *-inprocess*: 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
+| **Stop** | ストレージ エミュレーターを停止します。 | `AzureStorageEmulator stop` | |
 | **状態** | ストレージ エミュレーターの状態を出力します。 | `AzureStorageEmulator status` | |
 | **Clear** | コマンド ラインで指定されたすべてのサービス内のデータを消去します。 | `AzureStorageEmulator clear [blob] [table] [queue] [all]                                                    `| *blob*: BLOB データを消去します。<br/>*queue*: キュー データを消去します。<br/>*table*: テーブル データを消去します。<br/>*all*: すべてのサービスのすべてのデータを消去します。 |
-| **Init** | エミュレーターをセットアップするために、1 回限りの初期化を実行します。 | `AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate] [-inprocess]` | *-server serverName*: SQL インスタンスをホストしているサーバーを指定します。<br/>*-sqlinstance instanceName*: 使用される SQL インスタンスの名前を指定します。<br/>*-forcecreate*: SQL データベースが既に存在していても、強制的に作成します。<br/>*-inprocess*: 新しいプロセスを生成せずに、現在のプロセスで初期化を行います。そのためには、現在のプロセスが管理者特権で起動されている必要があります。 |
+| **Init** | エミュレーターをセットアップするために、1 回限りの初期化を実行します。 | `AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate] [-inprocess]` | *-server serverName\\instanceName*: SQL インスタンスをホストしているサーバーを指定します。<br/>*-sqlinstance instanceName*: 既定のサーバー インスタンスで使用される SQL インスタンスの名前を指定します。<br/>*-forcecreate*: SQL データベースが既に存在していても、強制的に作成します。<br/>*-inprocess*: 新しいプロセスを生成せずに、現在のプロセスで初期化を行います。初期化を実行するために管理者特権のアクセス許可で現在のプロセスを起動する必要があります。 |
                                                                                                                   
 ## ストレージ エミュレーターと Azure Storage との違い
 
@@ -169,9 +169,11 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 - Version 3.1 以降では、ストレージ エミュレーター アカウントで読み取りアクセスの geo 冗長レプリケーション (RA-GRS) がサポートされます。エミュレーターでは、すべてのアカウントで RA-GRS が有効になっていて、プライマリ レプリカとセカンダリ レプリカの間に時間差が生じることはありません。Get Blob Service Stats、Get Queue Service Stats、および Get Table Service Stats 操作は、アカウントのセカンダリ拠点でサポートされており、常に `LastSyncTime` 応答要素の値を、基になる SQL データベースに準じた現在時刻として返します。
 
-	ストレージ エミュレーターを使用した、プログラムによるセカンダリへのアクセスには、.NET 用ストレージ クライアント ライブラリの Version 3.2 以降を使用してください。詳細については、「[ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)」を参照してください。
+	ストレージ エミュレーターを使用した、プログラムによるセカンダリへのアクセスには、.NET 用ストレージ クライアント ライブラリの Version 3.2 以降を使用してください。詳細については、[ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)をご覧ください。
 
 - File サービスおよび SMB プロトコル サービス エンドポイントは、ストレージ エミュレーターでは現在サポートされていません。
+
+- 使用するエミュレーターのバージョンでサポートされていないストレージ サービスのバージョンを使用する場合、ストレージ エミュレーターは VersionNotSupportedByEmulator エラー (HTTP ステータス コード 400 - Bad Request) を返します。
 
 ### BLOB ストレージに対する相違点 
 
@@ -181,17 +183,19 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 - ストレージ エミュレーター内に存在し、アクティブなリースを持つ BLOB に対する Put Blob 操作が、要求の一部としてリース ID が指定されなかった場合でも、成功することがあります。
 
+- エミュレーターでは追加 BLOB の操作はサポートされません。追加 BLOB で操作をしようとすると、FeatureNotSupportedByEmulator エラー (HTTP ステータス コード 400 - Bad Request) が返されます。
+
 ### テーブル ストレージに対する相違点 
 
 以下の相違点が、エミュレーターのテーブル ストレージに該当します。
 
-- ストレージ エミュレーターの Table サービスでの日付プロパティは、SQL Server 2005 でサポートされている範囲だけをサポートします (つまり、1753 年 1 月 1 日より後である必要があります)。1753 年 1 月 1 日より前のすべての日付は、この値に変更されます。日付の精度は、SQL Server 2005 の精度までに制限されます。つまり、日付の精度は 1/300 秒です。
+- ストレージ エミュレーターの Table サービスでの日付プロパティは、SQL Server 2005 でサポートされている範囲だけをサポートします (*つまり*、1753 年 1 月 1 日より後である必要があります)。1753 年 1 月 1 日より前のすべての日付は、この値に変更されます。日付の精度は、SQL Server 2005 の精度までに制限されます。つまり、日付の精度は 1/300 秒です。
 
 - ストレージ エミュレーターでは、それぞれ 512 バイト未満のパーティション キーと行キーのプロパティ値がサポートされます。また、アカウント名、テーブル名、およびキー プロパティ名の合計サイズが 900 バイトを超えることはできません。
 
 - ストレージ エミュレーターのテーブル内の行の合計サイズは、1 MB 未満に制限されます。
 
-- ストレージ エミュレーターのデータ型 `Edm.Guid` または `Edm.Binary` のプロパティは、クエリ フィルター文字列で `Equal (eq)` および `NotEqual (ne)` 比較演算子だけをサポートします。
+- ストレージ エミュレーターで、データ型 `Edm.Guid` または `Edm.Binary` のプロパティは、クエリ フィルター文字列で `Equal (eq)` および `NotEqual (ne)` 比較演算子だけをサポートします。
 
 ### キュー ストレージに対する相違点
 
@@ -199,9 +203,17 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 ## ストレージ エミュレーター リリース ノート
 
+### Version 4.1
+
+- ストレージ エミュレーターでは、新しい追加 BLOB 機能を除く BLOB、Queue、Table サービス エンドポイント上のストレージ サービスのバージョン 2015-02-21 がサポートされるようになりました。 
+
+- エミュレーターのバージョンでサポートされていないストレージ サービスのバージョンを使用する場合でも、ストレージ エミュレーターでは意味のあるエラー メッセージを返すようになりました。最新バージョンのエミュレーターの使用をお勧めします。VersionNotSupportedByEmulator エラー (HTTP ステータス コード 400 - Bad Request) が発生する場合、最新バージョンのストレージ エミュレーターをダウンロードしてください。
+
+- 競争状態のバグが原因となる同時マージ操作時のテーブル エンティティ データの間違いが修正されました。
+
 ### Version 4.0
 
-ストレージ エミュレーターの実行可能ファイルの名前が *AzureStorageEmulator.exe* に変更されました。
+- ストレージ エミュレーターの実行可能ファイルの名前が *AzureStorageEmulator.exe* に変更されました。
 
 ### Version 3.2
 - ストレージ エミュレーターで、BLOB、Queue、および Table サービス エンドポイント上のストレージ サービスのバージョン 2014-02-14 がサポートされるようになりました。File サービス エンドポイントは、ストレージ エミュレーターでは現在サポートされていません。バージョン 2014-02-14 の詳細については、[Azure Storage サービスのバージョン管理](https://msdn.microsoft.com/library/azure/dd894041.aspx)に関するページを参照してください。
@@ -216,8 +228,4 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 - Azure ストレージ サービスのバージョン 2013-08-15 が、完全にサポートされるようになりました。(以前は、このバージョンはストレージ エミュレーター バージョン 2.2.1 プレビューだけでサポートされていました。)
 
-
-
- 
-
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

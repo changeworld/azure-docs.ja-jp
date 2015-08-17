@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/07/2015" 
+	ms.date="08/04/2015" 
 	ms.author="awills"/>
  
 # コード サンプル: worker ロールを使用した Application Insights から SQL へのエクスポート
@@ -134,7 +134,7 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
  * EntityFramework 6.1.2 以降 - これを使用して、BLOB の JSON の内容に基づいて DB テーブル スキーマをその場で生成します。
  * JsonFx - JSON を C# クラスのプロパティにフラット化するためにこれを使用します。
 
-このツールを使用して、単一の JSON ドキュメントから C# クラスを生成します。これにはわずかな変更が必要になります。たとえば、JSON 配列を DB テーブル (たとえば、 urlData_port) の単一列の C# プロパティにフラット化するなどです。
+このツールを使用して、単一の JSON ドキュメントから C# クラスを生成します。これにはわずかな変更が必要になります。たとえば、JSON 配列を DB テーブル (たとえば、 urlData\_port) の単一列の C# プロパティにフラット化するなどです。
 
  * [JSON C# クラス ジェネレーター](http://jsonclassgenerator.codeplex.com/)
 
@@ -519,6 +519,7 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
 * [worker ロールを使用して SQL にエクスポートする](app-insights-code-sample-export-telemetry-sql-database.md)
 * [Application Insights での連続エクスポート](app-insights-export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
+* [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
 <!--Link references-->
 
@@ -530,4 +531,4 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -143,4 +143,4 @@ Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を
 [website-webmatrix]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-webmatrix/
 [twilio_php_github]: https://github.com/twilio/twilio-php
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

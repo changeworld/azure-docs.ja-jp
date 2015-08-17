@@ -31,4 +31,4 @@ Azure で多要素認証を使用する場合は、Azure ポータルで、追�
 
 <center>![Setup](./media/multi-factor-authentication-end-user-manage-azure/proofup.png)</center>
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

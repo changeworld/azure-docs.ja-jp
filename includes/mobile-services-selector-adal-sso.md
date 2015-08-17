@@ -3,4 +3,4 @@
 - [(Windows 8.x Store C# | .NET)](../articles/mobile-services-windows-store-dotnet-adal-sso-authentication.md)
 - [(Xamarin.iOS | .NET)](../articles/mobile-services-dotnet-backend-xamarin-ios-adal-sso-authentication.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

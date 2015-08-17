@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="04/28/2015" 
+    ms.date="08/03/2015" 
     ms.author="elizapo" />
 
 
@@ -21,10 +21,10 @@
 # Azure RemoteApp の Active Directory の構成
 
 
-RemoteApp のハイブリッド コレクションでは、内部設置型 Active Directory ドメイン インフラストラクチャと Azure Active Directory テナントをディレクトリ統合で設定する必要があります (および必要に応じてシングル サインオン)。さらに、内部設置型ディレクトリに Active Directory オブジェクトを作成する必要があります。次の情報を使用して、内部設置型 Active Directory と Azure AD を構成し、その 2 つを統合します。
+Azure RemoteApp のハイブリッド コレクションでは、オンプレミスの Active Directory ドメイン インフラストラクチャと Azure Active Directory テナントをディレクトリ統合 (および必要に応じてシングル サインオン) でセットアップする必要があります 。さらに、オンプレミスのディレクトリに Active Directory オブジェクトを作成する必要があります。次の情報を使用して、オンプレミスの Active Directory と Azure AD を構成し、その 2 つを統合します。
 
-## 内部設置型 Active Directory を構成する
-内部設置型 Active Directory を構成して開始します。使用する UPN ドメイン サフィックスを特定し、RemoteApp に Active Directory オブジェクトを作成します。
+## オンプレミスの Active Directory を構成する
+オンプレミスの Active Directory を構成して開始します。使用する UPN ドメイン サフィックスを特定し、RemoteApp に Active Directory オブジェクトを作成します。
 
 Active Directory ドメイン サービスは、Windows Server 2012 R2 環境にまだ追加されていませんか。 追加方法の詳細については、[次の手順](https://technet.microsoft.com/library/cc731053.aspx)を参照してください。
 ### UPN ドメイン サフィックスを検証し、構成します。
@@ -48,10 +48,10 @@ Active Directory ドメイン サービスは、Windows Server 2012 R2 環境に
 詳細については、「[ユーザー プリンシパル名サフィックスを追加する](http://technet.microsoft.com/library/cc772007.aspx)」を参照してください。
 
 ### Active Directory に RemoteApp のオブジェクトを作成します。
-RemoteApp は、内部設置型 Active Directory に 2 つのオブジェクトを必要とします。
+RemoteApp は、オンプレミスの Active Directory に 2 つのオブジェクトを必要とします。
 
 
-- 内部設置型ドメインに RDSH エンド ポイントを結合して、RemoteApp プログラムのドメイン リソースにアクセスするサービス アカウント。
+- オンプレミスのドメインに RDSH エンド ポイントを結合して、RemoteApp プログラムのドメイン リソースにアクセスするサービス アカウント。
 - RemoteApp マシン オブジェクトを含む組織単位 (OU)。RemoteApp で使用するアカウントとポリシーを特定するために OU の使用を推奨します (必須ではありません)。
 
 次の情報を使用してこれらの各オブジェクトを作成します。
@@ -86,12 +86,12 @@ RemoteApp は、内部設置型 Active Directory に 2 つのオブジェクト�
 
 
 ## Azure Active Directory を構成します
-これで内部設置型 Active Directory が設定されました。Azure AD に移動します。内部設置型ドメインの UPN ドメイン サフィックスと一致するカスタム ドメインを作成し、ディレクトリ統合を設定する必要があります。ハイブリッド コレクションは、Windows Server Active Directory の展開から同期されている (DirSync のようなツールを使用して) Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。
+これでオンプレミスの Active Directory が設定されました。Azure AD に移動します。オンプレミスのドメインの UPN ドメイン サフィックスと一致するカスタム ドメインを作成し、ディレクトリ統合を設定する必要があります。ハイブリッド コレクションは、Windows Server Active Directory のデプロイから同期されている (DirSync のようなツールを使用して) Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。
 
 次の情報を使用して、Azure Active Directory を構成します。
 
 
-- [カスタム ドメインを Azure AD に追加する](http://technet.microsoft.com/library/hh969247.aspx) – この情報を使用して、内部設置型 Active Directory ドメインの UPN ドメイン サフィックスと一致するドメインを追加します。
+- [カスタム ドメインを Azure AD に追加する](http://technet.microsoft.com/library/hh969247.aspx) – この情報を使用して、オンプレミスの Active Directory ドメインの UPN ドメイン サフィックスと一致するドメインを追加します。
 - [ディレクトリ統合](http://technet.microsoft.com/library/jj573653.aspx) – この情報を使用して、[パスワード同期による DirSync](http://technet.microsoft.com/library/dn441214.aspx) または[フェデレーションによる DirSync](http://technet.microsoft.com/library/dn441213.aspx) のいずれかのディレクトリ統合オプションを選択します。
 
 [Multi-Factor Authentication (MFA)](http://technet.microsoft.com/library/dn249466.aspx) を構成することもできます。
@@ -105,7 +105,7 @@ RemoteApp は、内部設置型 Active Directory に 2 つのオブジェクト�
 -	**[Active Directory] -> [既定のディレクトリ] -> [ユーザー]** で、該当のドメインの下に新しいユーザーを追加している (たとえば、myAzureSyncUser@mydomain.com)。
 -	Active Directory のドメインで、新しいドメイン ユーザーを追加し、そのユーザーをエンタープライズ管理者のメンバーにしている (たとえば、myDomainSyncUser@mydomain.com)。
 
-ここで Azure Directory 同期ツールを起動し、**myAzureSyncUser@mydomain.com**最初のプロンプトに対して資格情報 (Microsoft Azure Active Directory 管理者資格情報) を、2 番目のプロンプトに対して **myDomainSyncUser@mydomain.com** を使用します。
+ここで Azure Directory 同期ツールを起動し、最初のプロンプトに対して ****myAzureSyncUser@mydomain.com** 資格情報 (Microsoft Azure Active Directory 管理者資格情報) を、2 番目のプロンプトに対して ****myDomainSyncUser@mydomain.com** を使用します。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

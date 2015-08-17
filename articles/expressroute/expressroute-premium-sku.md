@@ -41,7 +41,7 @@ ExpressRoute Premium アドオンの詳細については、「[ExpressRoute FAQ
 - Azure サブスクリプション
 - Azure PowerShell の最新バージョン
 
-###  1.ExpressRoute 用の PowerShell モジュールをインポートする
+###  1\.ExpressRoute 用の PowerShell モジュールをインポートする
 
 Windows PowerShell は、Azure でのワークロードのデプロイメントと管理を制御し、自動化するために使用できる、強力なスクリプティング環境です。詳細については、[MSDN](https://msdn.microsoft.com/library/windowsazure/jj156055.aspx) にある PowerShell のドキュメントを参照してください。
 
@@ -52,7 +52,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 	    Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
 
 
-### 2.Premium アドオン機能を有効にして新しい ExpressRoute 回線を構成する
+### 2\.Premium アドオン機能を有効にして新しい ExpressRoute 回線を構成する
 
 新しい ExpressRoute 回線を作成するときに Premium アドオンを有効にして作成することができます。[NSP](expressroute-configuring-nsps.md) または [EXP](expressroute-configuring-exps.md) で ExpressRoute 回線を作成する手順に従います。New-AzureDedicatedCircuit コマンドレットに、SKU を指定できる新しいオプション パラメーターが追加されました。SKU には「Standard」または「Premium」を指定できます。既定値は「standard」です。SKU に「Premium」を指定すると、回線の Premium アドオン機能が有効になります。
 
@@ -60,7 +60,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -Sku Premium
 
 
-### 3.ExpressRoute Premium アドオンが有効になったことを確認する
+### 3\.ExpressRoute Premium アドオンが有効になったことを確認する
 回線の ExpressRoute Premium アドオンが有効になったかどうかを調べて確認することができます。次の例では、ExpressRoute 回線の ExpressRoute Premium アドオン機能は有効になっていません。アドオンが有効になっている場合は、SKU に「***Premium***」と表示されます。
 
 		PS C:\> Get-AzureDedicatedCircuit -ServiceKey *********************************
@@ -177,4 +177,4 @@ Premium アドオンが有効になっている ExpressRoute 回線の ExpressRo
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

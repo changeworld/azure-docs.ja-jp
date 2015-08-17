@@ -47,4 +47,4 @@ Azure Machine Learning の Web サービス エンドポイントでは、スロ
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

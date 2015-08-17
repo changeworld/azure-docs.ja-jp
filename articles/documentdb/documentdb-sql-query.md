@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB SQL を使用したクエリ | Azure" 
+	pageTitle="DocumentDB SQL を使用したクエリ | Microsoft Azure" 
 	description="NoSQL ドキュメント データベース サービスである DocumentDB は、階層型の JSON ドキュメントに対し、SQL に似た文法を使用することによって行うクエリをサポートしています。明確なスキーマが不要であり、セカンダリ インデックスを作成する必要もありません。" 
 	services="documentdb" 
 	documentationCenter="" 
@@ -32,7 +32,7 @@ Microsoft Azure DocumentDB は、階層型の JSON ドキュメントに対す�
 
 次に、この記事に戻り、いくつかの簡単な JSON ドキュメントおよびクエリについて理解していきます。
 
-## 概要
+## Getting Started (概要)
 DocumentDB SQL の動作を確認するため、最初にシンプルな JSON ドキュメントを見てみましょう。その後このドキュメントに対して実施するシンプルなクエリについて説明します。これら 2 つの JSON ドキュメントは、2 つの家族に関するドキュメントです。DocumentDB では、スキーマやセカンダリ インデックスを明示的に作成する必要がありません。必要なことは、JSON ドキュメントを DocumentDB コレクションに挿入した後、クエリを実行するだけです。以下は、Andersen 一家に関するシンプルな JSON ドキュメントです。両親、子供 (および子供のペット)、住所、登録に関する情報が記載されています。ドキュメントには、文字列、数値、ブール値、配列、入れ子になったプロパティがあります。
 
 **ドキュメント**
@@ -118,7 +118,7 @@ DocumentDB SQL の重要な項目について理解するため、このデー�
 	}]
 
 
-ここで、この JSON 出力を異なる形式に変更する必要がある場合を考えてみます。このクエリは、住所の都市名と州名が同じ場合に、2 つの特定のフィールド (Name と City) を持つ JSON オブジェクトをプロジェクションします。この場合、"NY, NY" の一致となります。
+ここで、この JSON 出力を異なる形式に変更する必要がある場合を考えてみます。このクエリは、住所の都市名と州名が同じ場合に、2 つの特定のフィールド (Name と City) を持つ JSON オブジェクトを表現します。この場合、"NY, NY" の一致となります。
 
 **クエリ**
 
@@ -240,7 +240,7 @@ DocumentDB SQL の文法について詳しく説明する前に、DocumentDB の
 	  ]
 	]
 
-上記の例では配列をソースとして使用していますが、以下の例のようにオブジェクトをソースとして使用することもできます。ソースで検索できる有効なすべての JSON 値 (未定義以外のもの) は、クエリ結果に含められることが想定されます。`address.state` 値を持たない家族は、クエリ結果から除外されます。
+上記の例では配列をソースとして使用していますが、以下の例のようにオブジェクトをソースとして使用することもできます。ソースで検索できる有効なすべての JSON 値 (未定義でないもの) は、クエリ結果に含められることが想定されます。`address.state` 値を持たない家族は、クエリ結果から除外されます。
 
 **クエリ**
 
@@ -296,7 +296,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句�
 	WHERE c.grade >= 5     -- matching grades == 5
 
 
-単項演算子 (+、-、~、および NOT) もサポートされています。これらはクエリの内側で次の例のように使用することができます。
+単項演算子 (+、-、\~、および NOT) もサポートされています。これらはクエリの内側で次の例のように使用することができます。
 
 	SELECT *
 	FROM Families.children[0] c
@@ -616,7 +616,7 @@ IN は、複数の OR 句を組み合わせることに相当します。ただ�
     FROM Families f
 
 ###引用符で囲まれたプロパティのアクセサー
-プロパティは、引用符で囲まれたプロパティの演算子 `[]` を使用してアクセスすることもできます。たとえば、`SELECT c.grade` と `SELECT c["grade"]` は同等です。この構文はスペース、特殊文字を含むプロパティや、SQL キーワードや予約語と同じ名前を共有するプロパティをエスケープする必要がある場合に役立ちます。
+プロパティは、引用符で囲まれたプロパティの演算子`[]` を使用してアクセスすることもできます。たとえば、`SELECT c.grade` と `SELECT c["grade"]` は同等です。この構文はスペース、特殊文字を含むプロパティや、SQL キーワードや予約語と同じ名前を共有するプロパティをエスケープする必要がある場合に役立ちます。
 
     SELECT f["lastName"]
     FROM Families f
@@ -624,7 +624,7 @@ IN は、複数の OR 句を組み合わせることに相当します。ただ�
 
 
 ##SELECT 句
-ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 句 (`SELECT <select_list>`) は必須です。ソース ドキュメントの先頭でフィルターされたサブセットがプロジェクション フェーズに渡され、渡された入力のそれぞれについて、指定された JSON 値が取得され、新しい JSON オブジェクトが構築されます。
+ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 句 (**`SELECT <select_list>`**) は必須です。ソース ドキュメントの先頭でフィルターされたサブセットがプロジェクション フェーズに渡され、渡された入力のそれぞれについて、指定された JSON 値が取得され、新しい JSON オブジェクトが構築されます。
 
 一般的な SELECT クエリの例を次に示します。
 
@@ -646,7 +646,7 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
 
 
 ###入れ子になったプロパティ
-以下の例では、`f.address.state` と `f.address.city` という 2 つの入れ子になったプロパティをプロジェクションしています。
+以下の例では、`f.address.state` と `f.address.city` という 2 つの入れ子になったプロパティを表しています。
 
 **クエリ**
 
@@ -681,7 +681,7 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
 	}]
 
 
-この `$1` の役割について説明します。`SELECT` 句は、JSON オブジェクトを作成する必要がありますが、キーが提供されていないため、`$1` で始まる暗黙的な引数の変数名を使用しています。たとえば、このクエリは `$1` と `$2` でラベル付けされた暗黙的な引数の変数を返します。
+この `$1` の役割について説明します。`SELECT` 句は、JSON オブジェクトを作成する必要がありますが、キーが提供されていないため、`$1` で始まる暗黙的な引数の変数を使用しています。たとえば、このクエリは `$1` と `$2` でラベル付けされた暗黙的な引数の変数を返します。
 
 **クエリ**
 
@@ -704,9 +704,9 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
 
 
 ###エイリアス化
-ここで、値を明示的にエイリアス化することによって、上記の例を拡張します。AS はエイリアス化に使用されるキーワードです。例からわかるようにこれは省略可能ですが、2 つ目の値を `NameInfo` としてプロジェクションしている点に注意してください。
+ここで、値を明示的にエイリアス化することによって、上記の例を拡張します。AS はエイリアス化に使用されるキーワードです。例からわかるようにこれはオプションですが、2 つ目の値を `NameInfo` として表している点に注意してください。
 
-同じ名前を持つ 2 つのプロパティがクエリにある場合、エイリアス化を使ってプロパティのいずれかまたは両方の名前を変更する必要があります。こうすることで、プロジェクションされた結果でこれらを区別することができます。
+同じ名前を持つ 2 つのプロパティがクエリにある場合、エイリアス化を使ってプロパティのいずれかまたは両方の名前を変更する必要があります。こうすることで、プロジェクションの結果でこれらを区別することができます。
 
 **クエリ**
 
@@ -756,7 +756,7 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
 	}]
 
 
-以下の例では、スカラー式の結果はブール値になります。
+以下の例では、スカラー式の結果は Boolean になります。
 
 **クエリ**
 
@@ -852,7 +852,7 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
 
 
 ###* 演算子
-サポートされている特別な演算子 (*) によって、ドキュメントが現状のままプロジェクションされます。使用する場合は、この演算子が唯一のプロジェクションされるフィールドである必要があります。`SELECT * FROM Families f` のようなクエリは有効ですが、`SELECT VALUE * FROM Families f ` および `SELECT *, f.id FROM Families f ` は無効です。
+サポートされている特別な演算子 (*) によって、ドキュメントが現状のまま表されます。使用する場合は、この演算子が唯一のプロジェクションされるフィールドである必要があります。`SELECT * FROM Families f` のようなクエリは有効ですが、`SELECT VALUE * FROM Families f ` および `SELECT *, f.id FROM Families f ` は無効です。
 
 **クエリ**
 
@@ -1008,7 +1008,7 @@ DocumentDB SQL の **IN** キーワードによる新しいコンストラクト
 ###結合
 リレーショナル データベースでは、テーブル間を結合できることは非常に重要です。このことは、正規化されたスキーマの設計においては論理的必然です。一方 DocumentDB は、スキーマフリーのドキュメントの正規化されていないデータ モデルを扱います。これは、論理的には "自己結合" と同義です。
 
-この言語がサポートする構文は、<from_source1> JOIN <from_source2> JOIN ...JOIN <from_sourceN> です。これによって、**N**-タプル ( **N** 個の値を持つタプル) のセットが返されます。それぞれのタプルは、対応するセットに対する、すべてのコレクションのエイリアスの反復によって生成された値を持ちます。これは、結合に含まれるセットの完全なクロス積ということができます。
+この言語がサポートする構文は、<from_source1> JOIN <from_source2> JOIN ...JOIN <from_sourceN> です。これによって、**N**-タプル (**N** 個の値を持つタプル) のセットが返されます。それぞれのタプルは、対応するセットに対する、すべてのコレクションのエイリアスの反復によって生成された値を持ちます。これは、結合に含まれるセットの完全なクロス積ということができます。
 
 JOIN 句の動作を示す例をいくつか紹介します。以下の例の場合、ソースの各ドキュメントと空集合のクロス積は空になるため、結果は空となります。
 
@@ -1180,12 +1180,12 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 	       collectionSelfLink/* link of the parent collection*/, 
 	       regexMatchUdf).Result;  
                                                                              
-前の例では `REGEX_MATCH` という名前の UDF を作成しています。この UDF は 2 つの JSON 文字列値 `input` と `pattern` を受け取り、JavaScript の string.match() 関数を使用して、1 つ目の文字列値が 2 つ目の文字列値で指定されたパターンに一致するかどうかをチェックします。
+前の例では「`REGEX_MATCH`」という名前の UDF を作成しています。この UDF は 2 つの JSON 文字列値 `input` と `pattern` を受け取り、JavaScript の string.match() 関数を使用して、1 つ目の文字列値が 2 つ目の文字列値で指定されたパターンに一致するかどうかをチェックします。
 
 
 これで、この UDF をプロジェクション内のクエリで使用できるようになりました。UDF をクエリ内から呼び出すときは、大文字と小文字が区別されるプレフィックス "udf." で修飾する必要があります。
 
->[AZURE.NOTE]2015 年 3 月 17 日以前では、SELECT REGEX_MATCH() のような、"udf." プレフィックスのない UDF 呼び出しがサポートされていました。この呼び出しパターンは廃止されました。
+>[AZURE.NOTE]2015 年 3 月 17 日以前では、SELECT REGEX\_MATCH() のような、"udf." プレフィックスのない UDF 呼び出しがサポートされていました。この呼び出しパターンは廃止されました。
 
 **クエリ**
 
@@ -1391,7 +1391,7 @@ DocumentDB では、ユーザー定義関数 (UDF) のようにクエリ内で�
 </tr>
 <tr>
 <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_atn2">ATN2 (num_expr)</a></td>	
-<td>正の x 軸と、原点から点 (y, x) までの射線との間の角度をラジアン単位で返します。ここで x と y は、2 つの指定された float 型の式の値です。</td>
+<td>正の x 軸と、原点から点 (y, x) までの斜線との間の角度をラジアン単位で返します。ここで x と y は、2 つの指定された float 型の式の値です。</td>
 </tr>
 <tr>
 <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_cos">COS (num_expr)</a></td>	
@@ -1651,7 +1651,7 @@ DocumentDB の関数と ANSI SQL の間の主な違いとして、DocumentDB の
       "id": "WakefieldFamily"
     }]
 
-ARRAY_LENGTH を使用して家族あたりの子供の数を取得する、もう 1 つの例を次に示します。
+ARRAY\_LENGTH を使用して家族あたりの子供の数を取得する、もう 1 つの例を次に示します。
 
 **クエリ**
 
@@ -1854,7 +1854,7 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 
 
 ####Where 演算子
-構文は `input.Where(x => f(x))` です。`f` はブール値を返すスカラー式です。
+構文は `input.Where(x => f(x))` です。`f` はブーリアン値を返すスカラー式です。
 
 **LINQ ラムダ式**
 
@@ -1996,7 +1996,7 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
 
 これらのリソースとの基本的な対話モデルでは、HTTP の動詞である GET、PUT、POST、および DELETE が標準の解釈で使用されます。POST 動詞は、新しいリソースの作成、ストアド プロシージャの実行、または DocumentDB クエリの発行に使用されます。クエリは常に読み取り専用の操作で、副作用はありません。
 
-以下の例では、これまでに説明した 2 つのサンプル ドキュメントを含むコレクションに対する、DocumentDB クエリの POST を示しています。このクエリには、JSON の名前プロパティに対するシンプルなフィルターがあります。`x-ms-documentdb-isquery` および Content-Type: `application/query+json` ヘッダーは、クエリによる操作であることを示しています。
+以下の例では、これまでに説明した 2 つのサンプル ドキュメントを含むコレクションに対する、DocumentDB クエリの POST を示しています。このクエリには、JSON の名前プロパティに対するシンプルなフィルターがあります。`x-ms-documentdb-isquery` と Content-Type の使用: `application/query+json` ヘッダーは、クエリによる操作であることを示しています。
 
 
 **要求**
@@ -2056,9 +2056,9 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
 	         },
 	         "_rid":"u1NXANcKogEcAAAAAAAAAA==",
 	         "_ts":1407691744,
-	         "_self":"dbs/u1NXAA==/colls/u1NXANcKogE=/docs/u1NXANcKogEcAAAAAAAAAA==/",
+	         "_self":"dbs\/u1NXAA==\/colls\/u1NXANcKogE=\/docs\/u1NXANcKogEcAAAAAAAAAA==\/",
 	         "_etag":"00002b00-0000-0000-0000-53e7abe00000",
-	         "_attachments":"_attachments/"
+	         "_attachments":"_attachments\/"
 	      }
 	   ],
 	   "count":1
@@ -2261,7 +2261,7 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 2.	[DocumentDB SQL の仕様](http://go.microsoft.com/fwlink/p/?LinkID=510612)
 3.	[DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
 4.	[DocumentDB の一貫性レベル][consistency-levels]
-5.	ANSI SQL 2011 - [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
+5.	ANSI SQL 2011 [http://www.iso.org/iso/iso\_catalogue/catalogue\_tc/catalogue\_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6.	JSON [http://json.org/](http://json.org/)
 7.	Javascript 仕様 [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 8.	LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
@@ -2277,4 +2277,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

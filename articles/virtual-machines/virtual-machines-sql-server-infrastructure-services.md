@@ -19,7 +19,7 @@
 # Azure Virtual Machines における SQL Server
 
 ## 概要
-AlwaysOn 可用性グループと Azure Virtual Network を使用すると、1 つのデータベース サーバーや複数のコンピューターなど、さまざまな構成で、[Azure Virtual Machines に SQL Server][sqlvmlanding] をホストすることができます。
+AlwaysOn 可用性グループと Azure の仮想ネットワークを使用すると、1 つのデータベース サーバーや複数のコンピューターなど、さまざまな構成で、[Azure Virtual Machines に SQL Server][sqlvmlanding] をホストすることができます。
 
 > [AZURE.NOTE]Azure VM で SQL Server を実行することは、リレーショナル データを Azure に格納するための 1 つのオプションです。Azure SQL Database サービスを使用することもできます。詳細については、「[Azure SQL Database と Azure VM 内の SQL Server について][sqldbcompared]」を参照してください。
  
@@ -31,7 +31,7 @@ AlwaysOn 可用性グループと Azure Virtual Network を使用すると、1 �
 SQL Server 仮想マシンを起動した後、マシンに既存のデータベースを移行できます。データベースの移行の詳細については、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)」を参照してください。
 
 ## 複数の VM での高可用性構成のデプロイ
-SQL Server AlwaysOn 可用性グループを使用すると、SQL Server の高可用性を実現できます。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure プレビュー ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート][sqlalwaysonportal]に関する記事を参照してください。または、[AlwaysOn 可用性グループを手動で構成][sqlalwaysonmanual]することもできます。その他の高可用性構成については、「[Azure Virtual Machines における SQL Server の高可用性と災害復旧][sqlhadr]」を参照してください。
+SQL Server AlwaysOn 可用性グループを使用すると、SQL Server の高可用性を実現できます。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure プレビュー ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート][sqlalwaysonportal]に関する記事を参照してください。または、[AlwaysOn 可用性グループを手動で構成][sqlalwaysonmanual]することもできます。その他の高可用性構成については、「[Azure の仮想マシン内の SQL Server の高可用性と災害復旧][sqlhadr]」を参照してください。
 
 ## Azure でのビジネス インテリジェンス、データ ウェアハウジング、OLTP ワークロードの実行   
 Azure Virtual Machines で SQL Server の一般的なワークロードを実行できます。SQL Server では、ギャラリーで提供されている、最適化された仮想マシン イメージをいくつか使用することができます。このイメージには、[ビジネス インテリジェンス][sqlbi]、[データ ウェアハウジング][sqldw]、[OLTP][sqloltp] があります。
@@ -78,4 +78,4 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
   [sqlsecurity]: https://msdn.microsoft.com/library/azure/dn133147.aspx
   [technicalarticles]: https://msdn.microsoft.com/library/azure/dn248435.aspx
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

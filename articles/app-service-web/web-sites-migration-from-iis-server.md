@@ -131,4 +131,4 @@ Migration Assistant により対応状況レポートが作成されます。こ
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -85,7 +85,7 @@ Azure CLI で提供されるほとんどのコマンドで、Azure アカウン�
 
 > [AZURE.NOTE]アカウントが複数の Azure Active Directory テナントに関連付けられている場合は、発行の設定ファイルのダウンロード対象となる Active Directory を選択するよう促されることがあります。
 >
-> ダウンロード ページを使用して選択するか、Azure ポータルにアクセスして選択すると、選択した Active Directory が、ポータルおよびダウンロード ページで既定として使用されようになります。既定を確定した後、クリックして選択ページに戻るように促すメッセージがダウンロード ページの上部に表示されます。選択されたページに戻るには、用意されているリンクを使用します。
+> ダウンロード ページを使用して選択するか、Azure ポータルにアクセスして選択すると、選択した Active Directory が、ポータルおよびダウンロード ページで既定として使用されようになります。既定を確定した後、'__click here to return to the selection page (選択ページに戻るにはここをクリックしてください)__' というテキストが、ダウンロード ページの上部に表示されます。選択されたページに戻るには、用意されているリンクを使用します。
 
 次のコマンドを実行して `.publishsettings` をインポートします。
 
@@ -145,4 +145,4 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: virtual-machines/xplat-cli-azure-resource-manager.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

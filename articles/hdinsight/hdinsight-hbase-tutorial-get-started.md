@@ -1,7 +1,6 @@
 <properties
 	pageTitle="HBase のチュートリアル: Hadoop での HBase の使用 | Microsoft Azure"
 	description="HDInsight の Hadoop で Apache HBase を使用するには、この HBase チュートリアルの手順に従ってください。HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
-	keywords="apache hbase,hbase,hbase shell,hbase tutorial"
 	services="hdinsight"
 	documentationCenter=""
 	authors="mumian"
@@ -44,14 +43,14 @@ HDInsight で HBase クラスターをプロビジョニングする方法、HBa
 1. [Azure ポータル][azure-management-portal]にサインインします。
 2. 左下にある **[新規]** をクリックしてから、**[Data Services]**、**[HDInsight]**、**[HBase]** の順にクリックします。
 
-	>[AZURE.NOTE]**カスタム作成**
+	>[AZURE.NOTE]**[カスタム作成]** オプションも使用できます。
 3. **クラスター名**、**クラスター サイズ**、HTTP ユーザーのパスワード、**ストレージ アカウント**を入力します。
 
 	![Provision HBase cluster in HDInsight][img-hdinsight-hbase-cluster-quick-create]
 
 	既定の HTTP ユーザー名は admin です。名前は、[カスタム作成] オプションを使用してカスタマイズできます。
 
-	既定の HBase プロビジョニング プロセスを使用する場合は、Azure ストレージ アカウントが必要になります。[Azure Storage ストレージ アカウントの作成][azure-create-storageaccount]に関するページを参照して、Azure ストレージ アカウントを作成してください。[カスタム作成] オプションを選択すると、クラスター プロビジョニング プロセス中にストレージ アカウントを作成できます。
+	既定の HBase プロビジョニング プロセスを使用する場合は、Azure ストレージ アカウントが必要になります。[Azure ストレージ ストレージ アカウントの作成][azure-create-storageaccount]に関するページを参照して、Azure ストレージ アカウントを作成してください。[カスタム作成] オプションを選択すると、クラスター プロビジョニング プロセス中にストレージ アカウントを作成できます。
 
 	> [AZURE.WARNING]HBase サービスの高可用性には、最低 **3 つ** のノードを含むクラスターをプロビジョニングする必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
 
@@ -357,4 +356,4 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

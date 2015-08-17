@@ -3,8 +3,8 @@
 	description="Application Insights を使用して Microsoft CRM Online からテレメトリを取得します。設定、データの取得、視覚化、およびエクスポートをしてみましょう。" 
 	services="application-insights" 
     documentationCenter=""
-	authors="alancameronwills" 
-	manager="douge"/>
+	authors="mazharmicrosoft" 
+	manager="klin"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,12 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/23/2015" 
+	ms.date="08/04/2015" 
 	ms.author="awills"/>
  
 # チュートリアル: Application Insights を使用して Microsoft CRM Online のテレメトリを有効にする
 
 この記事では、[Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/) を使用して [Microsoft CRM Online](https://www.dynamics.com/) からテレメトリ データを取得する方法について説明します。アプリケーションに Application Insights のスクリプトを追加し、データをキャプチャし、データを視覚化するすべてのプロセスを見てみましょう。
+
+>[AZURE.NOTE] [Browse the sample code](https://dynamicsandappinsights.codeplex.com/)。
 
 ## 新規または既存の CRM Online インスタンスに Application Insights を追加する 
 
@@ -139,15 +141,24 @@
 
 ![](./media/app-insights-sample-mscrm/30.png)
 
+## コード サンプル
+
+[サンプル コードを参照します](https://dynamicsandappinsights.codeplex.com/)。
+
 ## Power BI
 
 [データを Microsoft Power BI にエクスポート](app-insights-export-power-bi.md)すると、より深い分析を行うことができます。
+
+## CRM ソリューションのサンプル
+
+ここに、テレメトリのキャプチャを開始するために CRM に実装されたサンプル ソリューションがあります。https://dynamicsandappinsights.codeplex.com/
 
 ## 詳細情報
 
 * [Application Insights とは何か?](app-insights-overview.md)
 * [Web ページ向けの Application Insights](app-insights-javascript.md)
+* [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

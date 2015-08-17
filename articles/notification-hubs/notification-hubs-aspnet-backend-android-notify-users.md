@@ -35,7 +35,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 1. 「[Getting Started with Notification Hubs (Android) (Notification Hubs (Android) の使用)](notification-hubs-android-get-started.md)」チュートリアルに従って、アプリケーションを作成、構成して GCM からプッシュ通知を受け取ります。
 
-2. **res/layout/activity_main.xml** ファイルを開き、コンテンツの定義を次と置き換えます。
+2. **res/layout/activity\_main.xml** ファイルを開き、コンテンツの定義を次と置き換えます。
  
     これでユーザーとしてログインするための新しい EditText コントロールが追加されます。また、送信する通知の一部となるユーザー名のタグのフィールドが追加されます。
 			
@@ -133,7 +133,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 			Recipient username tag
 		</string>
 
-	main_activity.xml の画像レイアウトは次のようになります。
+	main\_activity.xml の画像レイアウトは次のようになります。
 
 	![][A1]
 
@@ -434,4 +434,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

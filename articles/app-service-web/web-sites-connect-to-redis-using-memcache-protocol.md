@@ -83,7 +83,7 @@ Web アプリで有効な PHP バージョンの 非スレッド セーフ (NTS)
 
 ### php\_memcache 拡張機能を有効にする
 
-ファイルをダウンロードしたら、**php\_memcache.dll** を解凍して **D:\\home\\site\\wwwroot\\bin\\ext\\** ディレクトリにアップロードします。php\_memcache.dll を Web アプリにアップロードしたら、拡張機能を PHP ランタイムで有効にする必要があります。Azure ポータルで Memcache 拡張機能を有効にするには、Web アプリの **[アプリケーション設定]** ブレードを開き、**PHP\_EXTENSIONS** のキーと **bin\\ext\\php\_memcache.dll** という値を持つ新しいアプリ設定を追加します。
+ファイルをダウンロードしたら、**php\_memcache.dll** を解凍して **D:\\home\\site\\wwwroot\\bin\\ext\** ディレクトリにアップロードします。php\_memcache.dll を Web アプリにアップロードしたら、拡張機能を PHP ランタイムで有効にする必要があります。Azure ポータルで Memcache 拡張機能を有効にするには、Web アプリの **[アプリケーション設定]** ブレードを開き、**PHP\_EXTENSIONS** のキーと **bin\\ext\\php\_memcache.dll** という値を持つ新しいアプリ設定を追加します。
 
 
 > Web アプリで複数の PHP 拡張機能をロードする必要がある場合、PHP\_EXTENSIONS の値は、DLL ファイルへの相対パスをコンマ区切りのリストにする必要があります。
@@ -197,4 +197,4 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 [13]: http://memcached.org
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

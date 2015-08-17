@@ -33,4 +33,4 @@ All Users 専用グループは、ディレクトリ内のすべてのユーザ�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

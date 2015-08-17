@@ -18,9 +18,11 @@
 
 #Azure Notification Hubs の安全なプッシュ
 
-<div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/documentation/articles/notification-hubs-windows-dotnet-secure-push/" title="Windows ユニバーサル" class="current">Windows ユニバーサル</a><a href="/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS">iOS</a> <a href="/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android">Android</a>
-</div>
+> [AZURE.SELECTOR]
+- [Windows Universal](notification-hubs-windows-dotnet-secure-push.md)
+- [iOS](notification-hubs-aspnet-backend-ios-secure-push.md)
+- [Android](notification-hubs-aspnet-backend-android-secure-push.md)
+
 
 ##概要
 
@@ -78,7 +80,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 次の手順では、プッシュ バックグラウンド コンポーネントを作成します。
 
-1. ソリューション エクスプローラーで、ソリューションの最上位ノード (この場合は、[**Solution SecurePush**]) を右クリックし、**[追加]**、**[新しいプロジェクト]** の順にクリックします。
+1. ソリューション エクスプローラーで、ソリューションの最上位ノード (この場合は、**Solution SecurePush**) を右クリックし、**[追加]**、**[新しいプロジェクト]** の順にクリックします。
 
 2. **[ストア アプリ]** を展開し、**[Windows Phone アプリ]**、**[Windows ランタイム コンポーネント (Windows Phone)]** の順にクリックします。プロジェクトの名前として「**PushBackgroundComponent**」と入力し、**[OK]** をクリックしてプロジェクトを作成します。
 
@@ -185,4 +187,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

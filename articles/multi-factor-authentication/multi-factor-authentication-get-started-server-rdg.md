@@ -59,4 +59,4 @@ Azure Multi-Factor Authentication Server は、RD ゲートウェイと NPS 間�
 
 ![RADIUS 認証](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

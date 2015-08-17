@@ -43,4 +43,4 @@ Multi-factor authentication (2 要素認証または 2FA とも呼ばれます) 
 - [Azure サブスクリプションを Azure AD に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 - [Azure AD サービスの制限と制約](active-directory-service-limits-restrictions.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

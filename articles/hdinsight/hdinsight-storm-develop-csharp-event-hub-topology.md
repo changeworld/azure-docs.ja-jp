@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/29/2015"
+   ms.date="07/24/2015"
    ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)
@@ -532,17 +532,17 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 
 * トポロジが強制終了され、**同じ名前で**再起動されます。
 
-また、保存されたチェックポイントを WASB (HDInsight クラスターで使用される Azure のストレージ) にエクスポート、インポートできます。 これを実行するスクリプトは、**c:\apps\dist\storm-0.9.3.2.2.1.0-2340\zkdatatool-1.0\bin** の HDInsight クラスター上の Storm に配置されています。
+また、保存されたチェックポイントを WASB (HDInsight クラスターで使用される Azure のストレージ) にエクスポート、インポートできます。 これを実行するスクリプトは、**c:\\apps\\dist\\storm-0.9.3.2.2.1.0-2340\\zkdatatool-1.0\\bin** の HDInsight クラスター上の Storm に配置されています。
 
 >[AZURE.NOTE]クラスターにインストールされた Storm のバージョンは今後変更される可能性があるため、パスのバージョン番号は異なる場合があります。
 
 このディレクトリのスクリプトは次のとおりです。
 
-* **stormmeta_import.cmd**: クラスターの既定のストレージ コンテナーから Zookeeper にすべての Storm メタデータをインポートします。
+* **stormmeta\_import.cmd**: クラスターの既定のストレージ コンテナーから Zookeeper にすべての Storm メタデータをインポートします。
 
-* **stormmeta_export.cmd**: Zookeeper からクラスターの既定のストレージ コンテナーにすべての Storm メタデータをエクスポートします。
+* **stormmeta\_export.cmd**: Zookeeper からクラスターの既定のストレージ コンテナーにすべての Storm メタデータをエクスポートします。
 
-* **stormmeta_delete.cmd**: Zookeeper からのすべての Storm メタデータを削除します。
+* **stormmeta\_delete.cmd**: Zookeeper からのすべての Storm メタデータを削除します。
 
 インポートのエクスポートにより、クラスターを削除する必要がある一方で、新しいクラスターを再びオンラインにする際にハブの現在のオフセットから処理を再開する場合、チェックポイントのデータを保持できます。
 
@@ -557,4 +557,4 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

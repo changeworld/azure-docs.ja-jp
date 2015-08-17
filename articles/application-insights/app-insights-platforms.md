@@ -11,7 +11,7 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="07/22/2015" 
 	ms.author="awills"/>
  
@@ -58,6 +58,7 @@
 +	[Log4Net、NLog、または System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 +	[Java、Log4J、または Logback](app-insights-java-trace-logs.md)
 +   [セマンティック ログ](https://github.com/fidmor89/SLAB_AppInsights) - [セマンティック ログ アプリケーション ブロックと連携](https://msdn.microsoft.com/library/dn440729.aspx)
++   [クラウド ベースのロード テスト](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 
 ## <a name="projects"></a> 独自の SDK をビルドする
 
@@ -72,4 +73,4 @@
 
 <!--Link references-->
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

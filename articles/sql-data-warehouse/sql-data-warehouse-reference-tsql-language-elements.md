@@ -51,7 +51,7 @@
 - [\+ (文字列連結)](https://msdn.microsoft.com/library/ms177561.aspx)
 - [\- (負)](https://msdn.microsoft.com/library/ms189480.aspx)
 - [\- (減算)](https://msdn.microsoft.com/library/ms189518.aspx)
-- [\* (乗算)](https://msdn.microsoft.com/library/ms176019.aspx)
+- [* (乗算)](https://msdn.microsoft.com/library/ms176019.aspx)
 - [/ (除算)](https://msdn.microsoft.com/library/ms175009.aspx)
 - [剰余](https://msdn.microsoft.com/library/ms190279.aspx)
 
@@ -290,4 +290,4 @@
 
 <!--MSDN references-->
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

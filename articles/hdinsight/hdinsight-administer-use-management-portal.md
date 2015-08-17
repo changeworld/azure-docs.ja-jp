@@ -67,7 +67,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 **HDInsight クラスターのユーザー名とパスワードを変更するには**
 
 1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
-2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。展開した HDInsight クラスターが一覧表示されます。
+2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。デプロイした HDInsight クラスターが一覧表示されます。
 3. ユーザー名とパスワードをリセットする HDInsight クラスターをクリックします。
 4. ページの上部にある **[構成]** をクリックします。
 5. **[HADOOP サービス]** の横の **[オフ]** をクリックします。
@@ -84,7 +84,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 **リモート デスクトップを有効にするには**
 
 1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
-2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。展開した HDInsight クラスターが一覧表示されます。
+2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。デプロイした HDInsight クラスターが一覧表示されます。
 3. 接続する HDInsight クラスターをクリックします。
 4. ページの上部にある **[構成]** をクリックします。
 5. ページの下部にある **[リモートを有効にする]** をクリックします。
@@ -102,7 +102,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 **RDP を使用してクラスターに接続するには**
 
 1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
-2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。展開した HDInsight クラスターが一覧表示されます。
+2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。デプロイした HDInsight クラスターが一覧表示されます。
 3. 接続する HDInsight クラスターをクリックします。
 4. ページの上部にある **[構成]** をクリックします。
 5. **[接続]** クリックし、指示に従います。
@@ -139,7 +139,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 **HTTP Web サービスのアクセス許可を付与する/取り消すには**
 
 1. [Azure ポータル](https://manage.windowsazure.com/)にサインインします。
-2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。展開した HDInsight クラスターが一覧表示されます。
+2. 左側のウィンドウで **[HDINSIGHT]** をクリックします。デプロイした HDInsight クラスターが一覧表示されます。
 3. 構成する HDInsight クラスターをクリックします。
 4. ページの上部にある **[構成]** をクリックします。
 5. **[HADOOP サービス]** の横の **[オン]** または **[オフ]** をクリックします。  
@@ -202,4 +202,4 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal/HDI.ClusterCreate.UploadCert.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

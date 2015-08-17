@@ -1,7 +1,6 @@
 <properties
    pageTitle="Hadoop のチュートリアル: Windows での Hadoop の使用 | Microsoft Azure"
    description="HDInsight での Hadoop の使用Windows での Hadoop クラスターのプロビジョニング、データに対する Hive クエリの実行、Excel での出力の分析を行う方法について説明します。"
-   keywords="hadoop tutorial,hadoop on windows,hadoop cluster,learn hadoop, hive query"
    services="hdinsight"
    documentationCenter=""
    authors="nitinme"
@@ -163,7 +162,7 @@ HDInsight クラスターがプロビジョニングされたら、サンプル�
 
     ![Job Start Time listed in the Job History tab of the HDInsight cluster dashboard.][img-hdi-dashboard-query-select-result-output]
 
-    このページには、**ジョブの出力**と**ジョブのログ**も表示されます。出力ファイル (_stdout) とログ ファイル (_stderr) をダウンロードすることもできます。
+    このページには、**ジョブの出力**と**ジョブのログ**も表示されます。出力ファイル (\_stdout) とログ ファイル (\_stderr) をダウンロードすることもできます。
 
 
 **出力ファイルを参照するには**
@@ -276,4 +275,4 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

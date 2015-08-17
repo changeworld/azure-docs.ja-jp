@@ -12,4 +12,4 @@ Visual Studio の**サーバー エクスプ ローラー**を使用すると、
 
 [Image1]: ./media/vs-storage-getting-started-tables-include/vs-storage-create-tables-in-Server-Explorer.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

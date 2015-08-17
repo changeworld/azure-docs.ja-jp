@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Stream Analytics クエリ パターン | Microsoft Azure"
-	description="Azure Stream Analytics サンプル クエリ言語ガイド"
+	description="一般的な Azure Stream Analytics クエリのパターン"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -13,11 +13,11 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="07/30/2015"
+	ms.date="08/03/2015"
 	ms.author="jeffstok"/>
 
 
-# Azure Stream Analytics サンプル クエリ言語ガイド #
+# 一般的な Azure Stream Analytics クエリのパターン  #
 
 ## はじめに ##
 Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表されます。この言語については、[こちら](https://msdn.microsoft.com/library/azure/dn834998.aspx)をご覧ください。このドキュメントでは、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。このドキュメントは作成中であり、継続的に新しいパターンで更新されます。
@@ -454,4 +454,4 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

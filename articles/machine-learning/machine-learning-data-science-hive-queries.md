@@ -2,7 +2,6 @@
 	pageTitle="高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する | Microsoft Azure" 
 	description="ハイブ テーブルからのデータの処理" 
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
 	authors="hangzh-msft" 
 	manager="paulettm" 
@@ -128,7 +127,7 @@ Azure ストレージ エクスプローラーなどのツールを使用して 
 1. [データの探索](#hive-dataexploration)
 2. [特徴の生成](#hive-featureengineering)
 
-> [AZURE.NOTE]サンプルのハイブ クエリでは、Azure HDInsight Hadoop クラスターのハイブ テーブルにデータがアップロードされていることを前提としています。アップロードされていない場合は、まず「[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)」に従って Hive テーブルにデータをアップロードします。
+> [AZURE.NOTE]サンプルのハイブ クエリでは、Azure HDInsight Hadoop クラスターのハイブ テーブルにデータがアップロードされていることを前提としています。アップロードされていない場合は、まず[データを作成して Hive テーブルに読み込む](machine-learning-data-science-hive-tables.md)に従って Hive テーブルにデータをアップロードします。
 
 ###<a name="hive-dataexploration"></a>データの探索
 Hive テーブルでデータを探索するために使用する、いくつかのサンプル Hive スクリプトは次のとおりです。
@@ -139,7 +138,7 @@ Hive テーブルでデータを探索するために使用する、いくつか
 
 3. カテゴリ列内のレベルを取得する `SELECT  distinct <column_name> from <databasename>.<tablename>`
 
-4. 2 つのカテゴリ列の組み合わせ内のレベルの数を取得する `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+4. 2 つのカテゴリ列の組み合わせ内のレベル数を取得する `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
 
 5. 数値型列の分布を取得する `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 
@@ -220,7 +219,7 @@ Hive テーブルでデータを探索するために使用する、いくつか
 	    	group by <column_name1>, <column_name2>
 	    	)b 
 
-この例では、データから計算されたリスク値をスムーズにするため、変数 `smooth_param1` と `smooth_param2` が設定されています。リスクは -Inf と Inf の間の範囲になります。Risks>0 は、ターゲットが 1 に等しいことの確率が 0.5 より大きいことを意味します。
+この例では、データから計算されたリスク値をスムースにするため、変数 `smooth_param1` と `smooth_param2` が設定されています。リスクは -Inf と Inf の間の範囲になります。Risks>0 は、ターゲットが 1 に等しいことの確率が 0.5 より大きいことを意味します。
 
 リスクのテーブルが計算されると、リスクの値をリスクのテーブルと結合して、リスクの値をテーブルに割り当てることができます。ハイブ結合クエリについては、前のセクションで扱われました。
 
@@ -257,7 +256,7 @@ Hive テーブルでデータを探索するために使用する、いくつか
 
 このセクションで説明されるクエリは、NYC Taxi Trip Data に直接適用できます。このクエリの目的は、機能を生成するために、ハイブの埋め込み数学関数を適用する方法を示すことにあります。
 
-このクエリで使用するフィールドは、ピックアップとドロップオフする場所の GPS 座標で、それぞれ pickup_longitude、pickup_latitude、dropoff_longitude、dropoff_latitude という名前が付けられています。ピックアップとドロップオフの座標間の直線距離を計算するクエリは、次のとおりです。
+このクエリで使用するフィールドは、ピックアップとドロップオフする場所の GPS 座標で、それぞれ pickup\_longitude、pickup\_latitude、dropoff\_longitude、dropoff\_latitude という名前が付けられています。ピックアップとドロップオフの座標間の直線距離を計算するクエリは、次のとおりです。
 
 		set R=3959;
 		set pi=radians(180);
@@ -281,11 +280,11 @@ Hive テーブルでデータを探索するために使用する、いくつか
 
 Hive 埋め込み UDF のリストについては、[こちら](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions)をご覧ください。
 
-## <a name="tuning"></a> 高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
+## <a name="tuning"></a>高度なトピック: Hive パラメーターを調整してクエリ速度を向上させる
 
 ハイブ クラスターの既定のパラメーター設定では、ハイブ クエリやクエリが処理するデータに適さない場合があります。このセクションでは、ハイブ クエリのパフォーマンスが向上するようにユーザーが調整できるいくつかのパラメーターについて説明します。ユーザーは、データ処理のクエリの前に、パラメーター調整クエリを追加する必要があります。
 
-1. Java ヒープ スペース: 大規模なデータセットの結合または長いレコードの処理を伴うクエリでは、一般的なエラーとして**ヒープ領域の不足**があります。これを調整するには、パラメーター `mapreduce.map.java.opts` と `mapreduce.task.io.sort.mb` を必要な値に設定します。たとえば次のようになります。
+1. Java ヒープ スペース: 大規模なデータセットの結合または長いレコードの処理を伴うクエリの場合、一般的なエラーとして、**ヒープ領域の不足**があります。これを調整するには、パラメーター `mapreduce.map.java.opts` と `mapreduce.task.io.sort.mb` を必要な値に設定します。たとえば次のようになります。
 
 		set mapreduce.map.java.opts=-Xmx4096m;
 		set mapreduce.task.io.sort.mb=-Xmx1024m;
@@ -326,4 +325,4 @@ Hive 埋め込み UDF のリストについては、[こちら](https://cwiki.ap
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

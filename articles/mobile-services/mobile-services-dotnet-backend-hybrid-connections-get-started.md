@@ -114,7 +114,7 @@
 
 	>[AZURE.NOTE] [**今すぐ試す**] ボタンを使用して API のヘルプ ページを起動する場合は、アプリケーション キーをパスワードとして指定します (ユーザー名は空白にします)。
 
-4. SQL Server Management Studio で、SQL Server インスタンスに接続し、オブジェクト エクスプローラーを開き、**OnPremisesDB** データベースを展開し、[**テーブル**] を展開します。
+4. SQL Server Management Studio で、SQL Server インスタンスに接続し、オブジェクト エクスプローラーを開き、**OnPremisesDB** データベースを展開し、**[テーブル]** を展開します。
 
 5. **hybridService1.TodoItems** テーブルを右クリックし、[**先頭の 1000 行を選択**] をクリックすると、結果が表示されます。
 
@@ -133,4 +133,4 @@
 [Azure 管理ポータル]: http://manage.windowsazure.com
 [Mobile Services の使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

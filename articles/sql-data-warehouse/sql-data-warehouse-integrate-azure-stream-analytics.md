@@ -82,4 +82,4 @@ SQL Databaseを選択し、[次へ] をクリックします。 ![][Add Output]
 <!--Other Web references-->
 [Azure Stream Analytics documentation]: http://azure.microsoft.com/documentation/services/stream-analytics/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

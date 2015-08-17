@@ -122,4 +122,4 @@ Azure China、Azure Governance など、別のエンドポイント サフィッ
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

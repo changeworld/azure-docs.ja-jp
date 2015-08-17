@@ -35,11 +35,11 @@ Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラッ�
 
 ## AMQP 1.0 JMS クライアント ライブラリのダウンロード
 
-Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョンをダウンロードする場所については、「[http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html)」を参照してください。
+Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョンをダウンロードする場所については、「[http://people.apache.org/\~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html)」を参照してください。
 
 サービス バスを使用する JMS アプリケーションをビルドおよび実行するときは、次の 4 つの JAR ファイルを Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブから Java CLASSPATH に追加する必要があります。
 
-*    geronimo-jms_1.1_spec-1.0.jar
+*    geronimo-jms\_1.1\_spec-1.0.jar
 *    qpid-amqp-1-0-client-[version].jar
 *    qpid-amqp-1-0-client-jms-[version].jar
 *    qpid-amqp-1-0-common-[version].jar
@@ -71,9 +71,9 @@ Qpid Properties File JNDI Provider で **ConnectionFactory** の定義に使用�
 connectionfactory.[jndi_name] = [ConnectionURL]
 ```
 
-ここで、**[jndi_name]** と **[ConnectionURL]** には次の意味があります。
+ここで、**[jndi\_name]** と **[ConnectionURL]** には次の意味があります。
 
-- **[jndi_name]**: ConnectionFactory の論理名。Java アプリケーションで JNDI IntialContext.lookup() メソッドを使用して解決される名前です。
+- **[jndi\_name]**: ConnectionFactory の論理名。Java アプリケーションで JNDI IntialContext.lookup() メソッドを使用して解決される名前です。
 - **[ConnectionURL]**: AMQP ブローカーに必要な情報を JMS ライブラリに渡すための URL。
 
 **ConnectionURL** の形式は次のようになります。
@@ -87,7 +87,7 @@ amqps://[username]:[password]@[namespace].servicebus.windows.net
 - **[username]**: Service Bus 発行者名。
 - **[password]**: Service Bus 発行者キーの URL エンコード形式。
 
-> [AZURE.NOTE]パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
+> [AZURE.NOTE]パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
 
 #### 送信先の構成
 
@@ -103,10 +103,10 @@ queue.[jndi_name] = [physical_name]
 topic.[jndi_name] = [physical_name]
 ```
 
-ここで、**[jndi_name]** と **[physical_name]** には次の意味があります。
+ここで、**[jndi\_name]** と **[physical\_name]** には次の意味があります。
 
-- **[jndi_name]**: 送信先の論理名。Java アプリケーションで JNDI IntialContext.lookup() メソッドを使用して解決される名前です。
-- **[physical_name]**: アプリケーションでのメッセージの送受信に使用する Service Bus エンティティの名前。
+- **[jndi\_name]**: 送信先の論理名。Java アプリケーションで JNDI IntialContext.lookup() メソッドを使用して解決される名前です。
+- **[physical\_name]**: アプリケーションでのメッセージの送受信に使用する Service Bus エンティティの名前。
 
 > [AZURE.NOTE]Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。サブスクリプション名は、持続性の高いサブスクリプションが JMS アプリケーション コードで作成されるときに指定されます。「[サービス バス AMQP: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」では、JMS からのサービス バス トピック サブスクリプションの使用の詳細について説明しています。
 
@@ -338,4 +338,4 @@ JMS を AMQP 1.0 とサービス バスで使用する場合は、次の制限�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

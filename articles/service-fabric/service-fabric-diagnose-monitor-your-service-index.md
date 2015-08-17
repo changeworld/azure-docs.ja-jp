@@ -40,4 +40,4 @@ Service Fabric には、Service Fabric のエンティティのための機能�
 - [Service Fabric のカスタム正常性レポートの追加](service-fabric-report-health.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

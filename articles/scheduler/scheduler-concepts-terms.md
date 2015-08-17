@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="get-started-article" 
- ms.date="05/12/2015"
+ ms.date="08/04/2015"
  ms.author="krisragh"/>
 
 # Scheduler の概念、用語集、エンティティ階層構造
@@ -208,4 +208,4 @@ Scheduler ジョブが失敗した場合、再試行ポリシーを指定して�
  [Scheduler 送信認証](scheduler-outbound-authentication.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -437,4 +437,4 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Use Script Action to customize an HBase cluster"
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

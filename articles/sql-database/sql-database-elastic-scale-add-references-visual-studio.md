@@ -40,4 +40,4 @@
 [1]: ./media/sql-database-elastic-scale-add-references-visual-studio/search-online.png
 <!--anchors-->
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

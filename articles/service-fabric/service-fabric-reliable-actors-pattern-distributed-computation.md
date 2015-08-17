@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Service Fabric アクターの分散計算パターン"
-   description="Azure Service Fabric は並列非同期メッセージングに最適であり、分散状態の管理や並列計算が容易になります。"
+   pageTitle="高信頼アクターの分散計算パターン"
+   description="Service Fabric 高信頼アクターは並列非同期メッセージングに最適であり、分散状態の管理や並列計算が容易になります。"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/01/2015"
+   ms.date="08/05/2015"
    ms.author="claudioc"/>
 
-# Service Fabric アクターの設計パターン: 分散計算
-これは、Azure Service Fabric アクターで実際の顧客が驚くほど短時間で安易に金融計算を行う状況を監視する (つまり、リスク計算のためにモンテカルロ シミュレーションを行う) ためにも必要です。
+# 高信頼アクターの設計パターン: 分散計算
+これは、Service Fabric 高信頼アクターで実際の顧客が驚くほど短時間で安易に金融計算を行う状況を監視する (つまり、リスク計算のためにモンテカルロ シミュレーションを行う) ためにも必要です。
 
 最初は、特にドメインの特定の知識のないユーザーには、Map/Reduce や MPI などのより一般的な手法と比べて、Azure Service Fabric のこの種のワークロード処理はわかりにくいかもしれません。
 
@@ -202,6 +202,5 @@ public class Finaliser : Actor<FinalizerState>, IFinaliser
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-pattern-distributed-computation/distributed-computation-1.png
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

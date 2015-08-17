@@ -8,4 +8,4 @@
 - [Python](../articles/storage/storage-python-how-to-use-blob-storage.md)
 - [Xamarin](../articles/storage/storage-xamarin-blob-storage.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

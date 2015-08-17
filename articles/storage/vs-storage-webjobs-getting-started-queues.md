@@ -532,7 +532,7 @@ Web ジョブのページ (特定の関数呼び出しのページではなく) 
  
 ![[出力切り替え] をクリックします](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-連続的な Web ジョブでは、Web アプリのファイル システム内の /data/jobs/continuous/\*{webjobname}\*/job\_log.txt にアプリケーション ログが表示されます。
+連続的な Web ジョブでは、Web アプリのファイル システム内の /data/jobs/continuous/*{webjobname}*/job\_log.txt にアプリケーション ログが表示されます。
 
 		[09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
 		[09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
@@ -551,4 +551,4 @@ Web ジョブのページ (特定の関数呼び出しのページではなく) 
 この記事では、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

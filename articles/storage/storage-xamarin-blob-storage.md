@@ -179,4 +179,4 @@ BLOB、テーブル、キューの詳細は次のリンクで確認できます�
 [.NET からキュー ストレージを利用する方法](storage-dotnet-how-to-use-queues.md)
  
 
-<!--------HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

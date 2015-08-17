@@ -46,7 +46,7 @@ SSH はシステム管理者にとって重要なツールです。ただし、�
 
 次の手順に従って、SSH 認証のキーを生成します。
 
-1.	次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 
+1.	次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 
 2.	PUTTYGEN.EXE を実行します。
 3.	**[生成]** をクリックしてキーを生成します。処理中にウィンドウの空白の領域にマウスを移動すると、ランダム性を高めることができます。![][1]
 4.	生成処理が終わると、生成されたキーが表示されます。次に例を示します。![][2]
@@ -303,4 +303,4 @@ Tomcat サービスを再起動するには:
 [18]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-18.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

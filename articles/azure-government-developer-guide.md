@@ -105,4 +105,4 @@ SQL Database|*.database.windows.net|*.database.usgovcloudapi.net
 [Link 2 to another azure.microsoft.com documentation topic]: web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

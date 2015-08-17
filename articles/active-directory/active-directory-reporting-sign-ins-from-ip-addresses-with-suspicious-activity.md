@@ -24,4 +24,4 @@
 
 ![不審なアクティビティのある IP アドレスからのサインイン](./media/active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity/signInsFromIPAddressesWithSuspiciousActivity.PNG)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

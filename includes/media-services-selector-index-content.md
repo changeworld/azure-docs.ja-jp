@@ -2,4 +2,4 @@
 - [Portal](../articles/media-services/media-services-manage-content.md)
 - [.NET](../articles/media-services/media-services-index-content.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

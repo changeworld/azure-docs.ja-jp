@@ -98,4 +98,4 @@ Service Bus からライブラリを取得して使用する方法の詳細に�
 [0]: ./media/service-bus-amqp-overview/Example1.png
 [Service Bus AMQP: 開発者ガイド]: http://msdn.microsoft.com/library/jj841071.aspx
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

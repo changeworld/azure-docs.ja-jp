@@ -53,7 +53,8 @@ Azure アカウントの作成がこのプロセスの最初の手順です。SQ
 
 ## SQL Server のコンポーネント
 
-* URL: URL は一意のバックアップ ファイルへの Uniform Resource Identifier (URI) を参照します。URL を使用して SQL Server バックアップ ファイルの場所と名前を指定します。この実装では、Azure のストレージ アカウントのページ BLOB を参照する URL のみ有効です。URL は、コンテナーだけでなく実際の BLOB を参照する必要があります。BLOB が存在しない場合は作成されます。既存の BLOB を指定した場合、> WITH FORMAT オプションを指定していないと、BACKUP は失敗します。BACKUP コマンド **`http[s]://ACCOUNTNAME.Blob.core.windows.net/<CONTAINER>/<FILENAME.bak>`  で URL を指定する例を次に示します。
+* URL: URL は一意のバックアップ ファイルへの Uniform Resource Identifier (URI) を参照します。URL を使用して SQL Server バックアップ ファイルの場所と名前を指定します。この実装では、Azure のストレージ アカウントのページ BLOB を参照する URL のみ有効です。URL は、コンテナーだけでなく実際の BLOB を参照する必要があります。BLOB が存在しない場合は作成されます。既存の BLOB を指定した場合、> WITH FORMAT オプションを指定していないと、BACKUP は失敗します。BACKUP コマンドで URL を指定する例を次に示します。****`http[s]://ACCOUNTNAME.Blob.core.windows.net/<CONTAINER>/<FILENAME.bak>`
+
 <b>注</b>: HTTPS は必須ではありませんが、使用することをお勧めします。<b>重要</b> バックアップ ファイルをコピーして Azure BLOB ストレージ サービスにアップロードする場合、そのファイルを復元処理に使用する予定があれば、ストレージ オプションの BLOB の種類としてページ BLOB を使用する必要があります。BLOB の種類としてブロック BLOB を使用すると、RESTORE がエラーで失敗します。
 
 * 資格情報: Azure BLOB ストレージ サービスに対する接続と認証に必要な情報は資格情報として保存されます。SQL Server から Azure BLOB に対してバックアップを書き込んだり復元したりするには、SQL Server 資格情報を作成する必要があります。その資格情報にストレージ アカウントの名前とアクセス キーを保存します。作成した資格情報は、BACKUP/RESTORE ステートメントの発行時に WITH CREDENTIAL オプションで指定する必要があります。SQL Server 資格情報を作成する手順の詳細については、「[Azure BLOB ストレージ サービスへの SQL Server のバックアップと復元の概要](http://go.microsoft.com/fwlink/?LinkId=271615)」を参照してください。
@@ -72,4 +73,4 @@ Azure アカウントの作成がこのプロセスの最初の手順です。SQ
 
 [バックアップと復元に関するベスト プラクティス (Azure BLOB ストレージ サービス)](http://go.microsoft.com/fwlink/?LinkId=272394)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -15,4 +15,4 @@
 
 7. これで、[管理ポータルを使用して Update 1 をインストールする](#use-the-management-portal-to-install-update-1)ことができます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

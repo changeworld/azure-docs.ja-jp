@@ -120,4 +120,4 @@ Windows PowerShell の [New-AzureAutomationConnection](http://msdn.microsoft.com
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

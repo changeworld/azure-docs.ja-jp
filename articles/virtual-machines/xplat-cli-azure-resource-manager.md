@@ -7,14 +7,7 @@
 	authors="dlepow"
 	services="virtual-machines"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services"" 
-	ms.tgt_pltfrm="command-line-interface" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/09/2015" 
-	ms.author="danlep"/>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services"" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="06/09/2015" ms.author="danlep"/>
 
 # Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用
 
@@ -184,7 +177,7 @@ Azure CLI は既定の VM サイズで仮想マシンを作成します。また
 
 #### リソース グループ テンプレートの検索と構成
 
-1. テンプレートを使用する場合、独自のテンプレートを作成するか、テンプレート ギャラリーのテンプレートを使用するか、[GitHub](https://github.com/azurermtemplates/azurermtemplates) で使用可能なテンプレートを使用します。最初に、テンプレート ギャラリーの CoreOS.CoreOSStable.0.2.40-preview という名前のテンプレートを使用してみましょう。ギャラリーから使用できるテンプレートを一覧表示するには、次のコマンドを使用します。利用可能なテンプレートは何千とあるため、ページを分割するか **grep** や **findstr** (Windows の場合) や任意の文字列検索コマンドを使用して興味のあるテンプレートを検索してください。または、**--json** オプションを使用して JSON 形式のすべてのリストをダウンロードすると簡単に検索できます。
+1. テンプレートを使用する場合、独自のテンプレートを作成するか、テンプレート ギャラリーのテンプレートを使用するか、[GitHub](https://github.com/azurermtemplates/azurermtemplates) で取得可能なテンプレートを使用します。最初に、テンプレート ギャラリーの CoreOS.CoreOSStable.0.2.40-preview という名前のテンプレートを使用してみましょう。ギャラリーから使用できるテンプレートを一覧表示するには、次のコマンドを使用します。利用可能なテンプレートは何千とあるため、ページを分割するか **grep** や **findstr** (Windows の場合) や任意の文字列検索コマンドを使用して興味のあるテンプレートを検索してください。または、**--json** オプションを使用して JSON 形式のすべてのリストをダウンロードすると簡単に検索できます。
 
 		azure group template list
 
@@ -215,7 +208,7 @@ Azure CLI は既定の VM サイズで仮想マシンを作成します。また
 
 	テンプレートを使用する際は、コマンドライン パラメーターの一部としてパラメーターを指定するか、パラメーター値が設定されたファイルを指定します。テンプレートが特定のデプロイに緊密にバインドされ、簡単には再利用できなくなりますが、テンプレートの **parameters** セクション内に **value** フィールドを直接、記述することもできます。いずれの場合も、パラメーターは JSON 形式で記述する必要があります。また既定値を持たないそれらのキーで、ご利用の値を使う必要があります。
 
-	たとえば、CoreOS.CoreOSStable.0.2.40-preview テンプレートのパラメーターが格納されたファイルを作成するには、次のデータを使用して、params.json という名前のファイルを作成します。独自の値でこのサンプルで使用する値を置き換えます。**Location** には、最寄りの Azure リージョン (**North Europe** や **South Central US** など) を指定します。この例では、**West US** を使用しています。
+	たとえば、CoreOS.CoreOSStable.0.2.40-preview テンプレートのパラメーターが格納されたファイルを作成するには、次のデータを使用して、params.json という名前のファイルを作成します。独自の値でこのサンプルで使用する値を置き換えます。**Location** には、最寄りの Azure リージョン (**North Europe** や **South Central US** など) を指定します。(この例では、**West US** を使用しています。)
 
 		{
 		  "newStorageAccountName": {
@@ -336,9 +329,9 @@ Azure CLI は既定の VM サイズで仮想マシンを作成します。また
 
 ## 次のステップ
 
-* Azure コマンド ライン インターフェイス (Azure CLI) の詳細については、「[Azure CLI のインストールと構成][clisetup]」をご覧ください。
-* Azure リソース マネージャーで Azure PowerShell を使用する方法の詳細については、「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
-* Azure ポータルから Azure リソース マネージャーを使用する方法の詳細については、「[リソース グループを使用した Azure リソースの管理][psrm]」をご覧ください。
+* Azure コマンド ライン インターフェイス (Azure CLI) の詳細については、「[Azure CLI のインストールと構成][clisetup]」を参照してください。
+* Azure リソース マネージャーで Azure PowerShell を使用する方法の詳細については、「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+* Azure ポータルから Azure リソース マネージャーを使用する方法の詳細については、「[リソース グループを使用した Azure リソースの管理][psrm]」を参照してください。
 
 [signuporg]: http://www.windowsazure.com/documentation/articles/sign-up-organization/
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
@@ -346,4 +339,4 @@ Azure CLI は既定の VM サイズで仮想マシンを作成します。また
 [clisetup]: ../xplat-cli.md
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

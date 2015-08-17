@@ -70,15 +70,11 @@
 3. San Francisco または Canada で働いている
 
 
-## その他のリソース
-
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-scoping-filters/ic782811.png
 [2]: ./media/active-directory-saas-scoping-filters/ic782812.png
 [3]: ./active-directory-saas-scoping-filters/ic782813.png
 
- 
-
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

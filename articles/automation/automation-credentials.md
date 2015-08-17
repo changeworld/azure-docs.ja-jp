@@ -103,4 +103,4 @@ Runbook で資格情報資産を取得するには、**Get-AutomationPSCredentia
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

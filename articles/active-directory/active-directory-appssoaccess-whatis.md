@@ -78,7 +78,9 @@ Azure AD は、HTML ベースのサインイン ページを持つあらゆる�
 
 パスワードベースの SSO は、ブラウザーの拡張機能に依存して、アプリケーションおよびユーザーに固有の情報を Azure AD から安全に取得してサービスに適用します。Azure AD でサポートされているほとんどのサードパーティ SaaS アプリケーションは、この機能をサポートします。
 
-パスワードベースの SSO に対応するエンド ユーザーのブラウザーは、\* IE 8、IE9、IE10 (Windows 7 以降) \* Chrome (Windows 7 以降または MacOS X 以降) です。
+パスワードベースの SSO に対応するエンド ユーザーのブラウザーを次に示します。- IE 8、IE9、IE10 (Windows 7 以降) - Chrome (Windows 7 以降または MacOS X 以降)
+
+**注:** Windows 10 の Edge でのパスワードベースの SSO の拡張機能は、ブラウザーの拡張機能が Edge をサポートするようになったときに利用可能になります。
 
 ###既存のシングル サインオン
 
@@ -120,10 +122,10 @@ Azure AD 内でユーザーを削除するかまたはユーザー情報を変�
 
 
 *	**開発した独自のアプリケーションを追加する** - 自分でアプリケーションを開発した場合は、Azure AD 開発者向けドキュメントのガイドラインに従って、Azure AD Graph API を使用してフェデレーション シングル サインオンまたはプロビジョニングを実装します。詳細については、次のリソースを参照してください。
-  * https://msdn.microsoft.com/library/azure/dn499820.aspx
-  * https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet
-  * https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet
-  * https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore
+  * [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
+  * [https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet)
+  * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
+  * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)
 
 *	**アプリケーションの統合を要求する** - [Azure AD のフィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)で必要なアプリケーションのサポートを要請します。
 
@@ -162,13 +164,13 @@ Azure AD では、カスタマイズ可能ないくつかの方法で組織内�
 
 ###Azure AD アクセス パネル
 
-アクセス パネル (https://myapps.microsoft.com) は Web ベースのポータルで、Azure Active Directory ディレクトリの組織アカウントを持つエンド ユーザーが、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。[Azure Active Directory Premium](https://msdn.microsoft.com/library/azure/dn532272.aspx) のエンド ユーザーの場合、アクセス パネルを介してセルフサービスのグループ管理機能を利用することもできます。
+アクセス パネル (https://myapps.microsoft.com) は Web ベースのポータルで、Azure Active Directory ディレクトリの組織アカウントを持つエンド ユーザーが、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。[Azure Active Directory Premium](http://azure.microsoft.com/pricing/details/active-directory/) のエンド ユーザーの場合、アクセス パネルを介してセルフサービスのグループ管理機能を利用することもできます。
 
 ![][3]
 
 アクセス パネルは Azure 管理ポータルから独立していて、ユーザーが Azure サブスクリプションまたは Office 365 サブスクリプションを持っている必要はありません。
 
-Azure AD アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/azure/dn308586.aspx)」を参照してください。
+Azure AD アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
 ###Office 365 アプリケーション起動プログラム
 
@@ -194,15 +196,17 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 
 これらのリンクをコピーして任意の場所に貼り付けることにより、選択したアプリケーションへのサインイン リンクを提供できます。これらのリンクは、電子メールや、ユーザー アプリケーション アクセス用に設定した任意のカスタムの Web ベースのポータルに貼り付けることができます。Twitter 用の Azure AD 直接シングル サインオン URL の例を次に示します。
 
-https://myapps.microsoft.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced
+`https://myapps.microsoft.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
 
 アクセス パネルの組織に固有の URL と同様、myapps.microsoft.com ドメインの後にディレクトリのアクティブ ドメインまたは検証済みのドメインの 1 つを追加して、この URL をカスタマイズすることもできます。これにより、サインイン ページで組織のブランド設定が即座に読み込まれ、ユーザーが最初にユーザー ID を入力する必要がなくなります。
 
-https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced
+`https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05a60d29a40fced`
 
 許可されたユーザーがこれらのアプリケーションに固有のリンクのいずれかをクリックすると、最初に組織のサインイン ページ (まだ署名されていない状態を想定) が表示され、サインイン後は最初にアクセス パネルで停止することなくアプリにリダイレクトされます。パスワードベースのシングル サインオン用ブラウザー拡張機能など、ユーザーがアプリケーションにアクセスするための前提条件を満たしていない場合、リンクをクリックすると、ユーザーは不足している拡張機能をインストールするよう要求されます。アプリケーションのシングル サインオン構成が変更された場合でもリンク URL は変わりません。
 
 これらのリンクにはアクセス パネルや Office 365 と同じアクセス制御メカニズムが使用され、Azure 管理ポータルでアプリケーションに割り当てられているユーザーまたはグループのみが正常に認証されます。ただし、許可されていないユーザーには、アクセスが与えられていないことを示すメッセージと、アクセスが許可されている使用可能なアプリケーションを表示するアクセス パネルを呼び出すためのリンクが示されます。
+
+[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
 <!--Image references-->
 [1]: ./media/active-directory-appssoaccess-whatis/onlineappgallery.png
@@ -212,4 +216,4 @@ https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

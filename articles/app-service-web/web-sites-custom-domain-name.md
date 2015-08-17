@@ -44,7 +44,7 @@ Web アプリを作成するときに、Azure は azurewebsites.net のサブド
 
 - ルート ドメインのマッピング。ルート ドメインとは、ドメイン レジストラーで予約したドメインです。たとえば、**contoso.com** などのドメインです。
 - サブドメインのマッピング。たとえば、**blogs.contoso.com** はサブドメインです。複数のサブドメインをそれぞれ異なる Web アプリにマップできます。
-- ワイルドカードのマッピング。たとえば、**\*.contoso.com** などです。ワイルドカードのエントリは、ドメインのすべてのサブドメインに適用されます。
+- ワイルドカードのマッピング。たとえば、***.contoso.com** などです。ワイルドカードのエントリは、ドメインのすべてのサブドメインに適用されます。
 
 [AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-modes.md)]
 
@@ -147,4 +147,4 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

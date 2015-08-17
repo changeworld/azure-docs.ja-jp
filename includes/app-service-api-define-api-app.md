@@ -71,7 +71,7 @@
 
 **注:** API アプリが*パブリックな匿名*としてデプロイされ、Swagger UI が有効な場合、すべてのユーザーが Swagger UI を使用して API を検出して呼び出すことができます。
 
-1. *App_Start/SwaggerConfig.cs* ファイルを開き、**EnableSwaggerUI** を探します。
+1. *App\_Start/SwaggerConfig.cs* ファイルを開き、**EnableSwaggerUI** を探します。
 
 	![](./media/app-service-api-define-api-app/12-enable-swagger-ui-with-box.png)
 
@@ -97,4 +97,4 @@ API のテスト ページを表示するには、次の手順に従います。
 
 	![](./media/app-service-api-define-api-app/15-swagger-ui-post-test.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

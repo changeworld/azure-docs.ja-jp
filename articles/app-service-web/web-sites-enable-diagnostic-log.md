@@ -82,7 +82,7 @@ Web アプリケーション ファイル システムに保存された診断�
 
 * **アプリケーション ログ**: /LogFiles/Application/。このフォルダーには、アプリケーション ログによって生成された情報を含む 1 つ以上のテキスト ファイルが格納されます。
 
-* **失敗した要求トレース**: /LogFiles/W3SVC#########/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
+* **失敗した要求トレース**: /LogFiles/W3SVC#\#\#\#\#\#\#\#\#/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 
 * **詳細なエラー ログ**: /LogFiles/DetailedErrors/。このフォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。
 
@@ -135,7 +135,7 @@ Visual Studio の Application Insights には、ログをフィルターおよ�
 
 > [AZURE.NOTE]一部の種類のログ バッファーはログ ファイルに書き込まれるため、ストリーミング中に無効な順序エラーが発生する可能性があります。たとえば、ユーザーがページにアクセスしたときに発生するアプリケーション ログ エントリは、ページ要求の該当する HTTP ログ エントリより前のストリームに表示されることがあります。
 
-> [AZURE.NOTE]ログのストリーミングでは、**D:\\home\\LogFiles\\** フォルダーに格納されているテキスト ファイルに書き込まれた情報もストリーミングされます。
+> [AZURE.NOTE]ログのストリーミングでは、**D:\\home\\LogFiles\** フォルダーに格納されているテキスト ファイルに書き込まれた情報もストリーミングされます。
 
 ### Azure PowerShell を使用してストリーミングする
 
@@ -197,107 +197,35 @@ __テーブル ストレージ__
 
 テーブル ストレージにログ記録する場合は、追加のプロパティを使用して、テーブルに格納されているデータだけでなく、イベントに関するより詳細な情報も簡単に検索できます。テーブルに格納される各エンティティ (行) に次のプロパティ (列) が使用されます。
 
-<table style="width:100%;border-collapse:collapse">
-<thead>
-<tr>
-<th style="width:45%;border:1px solid black;background-color:#0099dd">プロパティ名</th>
-<th style="border:1px solid black;vertical-align:top;background-color:#0099dd">値/形式</th>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top">PartitionKey</td>
-<td style="border:1px solid black;vertical-align:top">yyyyMMddHH の形式によるイベントの日時</td>
-</tr>
-</thead>
-<tr>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">RowKey</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">このエンティティを一意に識別する GUID 値</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top">Timestamp</td>
-<td style="border:1px solid black;vertical-align:top">イベントが発生した日時</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">EventTickCount</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントが発生した目盛り形式 (高精度) の日時</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top">ApplicationName</td>
-<td style="border:1px solid black;vertical-align:top">Web アプリケーション名</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Level</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベント レベル (例: エラー、警告、情報)</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top">EventId</td>
-<td style="border:1px solid black;vertical-align:top">このイベントのイベント ID<br>指定されていない場合、既定値は 0</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">InstanceId</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントが発生した Web アプリケーションのインスタンス</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top">Pid</td>
-<td style="border:1px solid black;vertical-align:top">プロセス ID</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Tid</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントを生成したスレッドの ID</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top">メッセージ</td>
-<td style="border:1px solid black;vertical-align:top">イベントの詳細メッセージ</td>
-</tr>
-</table>
+プロパティ名|値/形式
+---|---
+PartitionKey|yyyyMMddHH の形式によるイベントの日時
+RowKey|このエンティティを一意に識別する GUID 値
+Timestamp|イベントが発生した日時
+EventTickCount|イベントが発生した目盛り形式 (高精度) の日時
+ApplicationName|Web アプリケーション名
+Level|イベント レベル (例: エラー、警告、情報)
+EventId|このイベントのイベント ID<p><p>何も指定しない場合は既定で 0
+InstanceId|イベントが発生した Web アプリケーションのインスタンス
+Pid|プロセス ID
+Tid|イベントを生成したスレッドの ID
+メッセージ|イベントの詳細メッセージ
 
 __BLOB ストレージ__
 
 BLOB ストレージにログを記録するときには、値をコンマで区切った (CSV) 形式で格納されます。テーブル ストレージと同様、追加のフィールドがログに記録されて、イベントについてより詳細な情報が提供されます。CSV 内の各行に次のプロパティが使用されます。
 
-<table style="width:100%;border-collapse:collapse">
-<thead>
-<tr>
-<th style="width:45%;border:1px solid black;background-color:#0099dd">プロパティ名</th>
-<th style="border:1px solid black;vertical-align:top;background-color:#0099dd">値/形式</th>
-</tr>
-</thead>
-<tr>
-<td style="border:1px solid black;vertical-align:top">Date</td>
-<td style="border:1px solid black;vertical-align:top">イベントが発生した日時</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Level</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベント レベル (例: エラー、警告、情報)</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top">ApplicationName</td>
-<td style="border:1px solid black;vertical-align:top">Web アプリケーション名</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">InstanceId</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントが発生した Web アプリケーションのインスタンス</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">EventTickCount</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントが発生した目盛り形式 (高精度) の日時</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top">EventId</td>
-<td style="border:1px solid black;vertical-align:top">このイベントのイベント ID<br>指定されていない場合、既定値は 0</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top">Pid</td>
-<td style="border:1px solid black;vertical-align:top">プロセス ID</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Tid</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントを生成したスレッドの ID</td>
-</tr>
-<tr>
-<td style="border:1px solid black;vertical-align:top">メッセージ</td>
-<td style="border:1px solid black;vertical-align:top">イベントの詳細メッセージ</td>
-</tr>
-</table>
+プロパティ名|値/形式
+---|---
+Date|イベントが発生した日時
+Level|イベント レベル (例: エラー、警告、情報)
+ApplicationName|Web アプリケーション名
+InstanceId|イベントが発生した Web アプリケーションのインスタンス
+EventTickCount|イベントが発生した目盛り形式 (高精度) の日時
+EventId|このイベントのイベント ID<p><p>何も指定しない場合は既定で 0
+Pid|プロセス ID
+Tid|イベントを生成したスレッドの ID
+メッセージ|イベントの詳細メッセージ
 
 BLOB に格納されるデータは次のようになります。
 
@@ -308,7 +236,7 @@ BLOB に格納されるデータは次のようになります。
 
 ### 失敗した要求トレース
 
-失敗した要求トレースは __fr######.xml__ という名前の XML ファイルに保存されます。ログに記録された情報を見やすくするには、__freb.xsl__ という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。たとえば、次のように表示されます。
+失敗した要求トレースは __fr\#\#\#\#\#\#.xml__ という名前の XML ファイルに保存されます。ログに記録された情報を見やすくするには、__freb.xsl__ という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。たとえば、次のように表示されます。
 
 ![失敗した要求をブラウザーで表示したところ](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
@@ -335,4 +263,4 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

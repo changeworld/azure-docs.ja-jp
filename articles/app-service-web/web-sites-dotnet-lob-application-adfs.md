@@ -61,11 +61,11 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
 
 	> [AZURE.NOTE][README.md](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet/blob/master/README.md) には Azure Active Directory にアプリケーションを設定する手順が記載されていますが、このチュートリアルでは AD FS を使用して設定するため、以降の説明に従ってください。
 
-3.	ソリューションを開き、**ソリューション エクスプローラー**で Controllers\AccountController.cs を開きます。
+3.	ソリューションを開き、**ソリューション エクスプローラー**で Controllers\\AccountController.cs を開きます。
 
-	このコードでは、WS-Federation を使用してユーザーを認証するために、単に認証チャレンジを発行しています。認証はすべて App_Start\Startup.Auth.cs を使用して構成します。
+	このコードでは、WS-Federation を使用してユーザーを認証するために、単に認証チャレンジを発行しています。認証はすべて App\_Start\\Startup.Auth.cs を使用して構成します。
 
-4.  App_Start\Startup.Auth.cs を開きます。`ConfigureAuth` メソッドには、次の行が含まれています。
+4.  App\_Start\\Startup.Auth.cs を開きます。`ConfigureAuth` メソッドには、次の行が含まれています。
 
         app.UseWsFederationAuthentication(
             new WsFederationAuthenticationOptions
@@ -79,34 +79,32 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
 	-	RP 識別子: `https://contoso.com/MyLOBApp`
 	-	メタデータのアドレス: `http://adfs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`
 
-5.	App_Start\Startup.Auth.cs で、静的文字列定義を次のように変更します。強調表示されている部分が変更箇所です。
+5.	App\_Start\\Startup.Auth.cs で、静的文字列定義を次のように変更します。強調表示されている部分が変更箇所です。
 	<pre class="prettyprint">
-	private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIdentifier</mark>"];
-    <mark><del>private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];</del></mark>
-    <mark><del>private static string tenant = ConfigurationManager.AppSettings["ida:Tenant"];</del></mark>
-    <mark><del>private static string metadata = string.Format("{0}/{1}/federationmetadata/2007-06/federationmetadata.xml", aadInstance, tenant);</del></mark>
-    <mark>private static string metadata = string.Format("https://{0}/federationmetadata/2007-06/federationmetadata.xml", ConfigurationManager.AppSettings["ida:ADFS"]);</mark>
+private static string realm = ConfigurationManager.AppSettings["ida:<mark>RPIdentifier</mark>"];
+<mark><del>private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];</del></mark>
+<mark><del>private static string tenant = ConfigurationManager.AppSettings["ida:Tenant"];</del></mark>
+<mark><del>private static string metadata = string.Format("{0}/{1}/federationmetadata/2007-06/federationmetadata.xml", aadInstance, tenant);</del></mark>
+<mark>private static string metadata = string.Format("https://{0}/federationmetadata/2007-06/federationmetadata.xml", ConfigurationManager.AppSettings["ida:ADFS"]);</mark>
 
-    <mark><del>string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);</del></mark>
-    </pre>
+<mark><del>string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);</del></mark>
+</pre>
 
 6.	次に、Web.config に対応する変更を加えます。Web.config を開き、アプリ設定を次のように変更します。強調表示されている部分が変更箇所です。
 	<pre class="prettyprint">
-	&lt;appSettings&gt;
-	  &lt;add key="webpages:Version" value="3.0.0.0" /&gt;
-	  &lt;add key="webpages:Enabled" value="false" /&gt;
-	  &lt;add key="ClientValidationEnabled" value="true" /&gt;
-	  &lt;add key="UnobtrusiveJavaScriptEnabled" value="true" /&gt;
-	  <mark><del>&lt;add key="ida:Wtrealm" value="[Enter the App ID URI of WebApp-WSFederation-DotNet https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet]" /&gt;</del></mark>
-	  <mark><del>&lt;add key="ida:AADInstance" value="https://login.windows.net" /&gt;</del></mark>
-	  <mark><del>&lt;add key="ida:Tenant" value="[Enter tenant name, e.g. contoso.onmicrosoft.com]" /&gt;</del></mark>
-	  <mark>&lt;add key="ida:RPIdentifier" value="[Enter the relying party identifier as configured in AD FS, e.g. https://localhost:44320/]" /&gt;</mark>
-	  <mark>&lt;add key="ida:ADFS" value="[Enter the FQDN of AD FS service, e.g. adfs.contoso.com]" /&gt;</mark>
+&lt;appSettings>
+  &lt;add key="webpages:Version" value="3.0.0.0" />
+  &lt;add key="webpages:Enabled" value="false" />
+  &lt;add key="ClientValidationEnabled" value="true" />
+  &lt;add key="UnobtrusiveJavaScriptEnabled" value="true" />
+  <mark><del>&lt;add key="ida:Wtrealm" value="[Enter the App ID URI of WebApp-WSFederation-DotNet https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet]" /></del></mark>
+  <mark><del>&lt;add key="ida:AADInstance" value="https://login.windows.net" /></del></mark>
+  <mark><del>&lt;add key="ida:Tenant" value="[Enter tenant name, e.g. contoso.onmicrosoft.com]" /></del></mark>
+  <mark>&lt;add key="ida:RPIdentifier" value="[Enter the relying party identifier as configured in AD FS, e.g. https://localhost:44320/]" /></mark>
+  <mark>&lt;add key="ida:ADFS" value="[Enter the FQDN of AD FS service, e.g. adfs.contoso.com]" /></mark>
 
-	&lt;/appSettings&gt;
-	</pre>
-
-	それぞれの環境に合わせてキーの値を入力してください。
+&lt;/appSettings>
+</pre>それぞれの環境に合わせてキーの値を入力してください。
 
 7.	アプリケーションをビルドしてエラーがないことを確認します。
 
@@ -151,7 +149,7 @@ AD FS を使用してサンプル アプリケーションの認証を行う前�
 > [AZURE.NOTE]両方の環境に対して次の手順を繰り返してください。
 
 4.	AD FS サーバーで、AD FS の管理権限を持つ資格情報でログインします。
-5.	AD FS 管理を開きます。**[AD FS]\[信頼関係]\[証明書利用者信頼]** を右クリックし、**[証明書利用者信頼の追加]** を選択します。
+5.	AD FS 管理を開きます。**[AD FS]\\[信頼関係]\\[証明書利用者信頼]** を右クリックし、**[証明書利用者信頼の追加]** を選択します。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/1-add-rptrust.png)
 
@@ -177,7 +175,7 @@ AD FS を使用してサンプル アプリケーションの認証を行う前�
 
 7.	**[識別子の構成]** ページで、プロジェクトの SSL URL が表示されていることを確認し、**[次へ]** をクリックします。ウィザードの最後まで **[次へ]** をクリックして、既定値を受け入れます。
 
-	> [AZURE.NOTE]Visual Studio プロジェクトの App_Start\Startup.Auth.cs では、フェデレーション認証時にこの識別子が <code>WsFederationAuthenticationOptions.Wtrealm</code> の値に一致します。既定では、前の手順のアプリケーションの URL が RP 識別子として追加されます。
+	> [AZURE.NOTE]Visual Studio プロジェクトの App\_Start\\Startup.Auth.cs では、フェデレーション認証時にこの識別子が <code>WsFederationAuthenticationOptions.Wtrealm</code> の値に一致します。既定では、前の手順のアプリケーションの URL が RP 識別子として追加されます。
 
 8.	これで、AD FS でのプロジェクトの RP アプリケーションの構成が完了しました。次に、アプリケーションで必要なクレームを送信するようにこのアプリケーションを構成します。ウィザードの最後に **[クレーム規則の編集]** ダイアログが既定で表示されるため、すぐにこの作業を開始できます。少なくとも次のクレームを構成します (かっこ内にスキーマを示します)。
 
@@ -210,9 +208,7 @@ c2:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticat
 		param = c1.OriginalIssuer,
 		param = "",
 		param = c2.Value);
-	</pre>
-
-	これで、次のようなカスタム規則が作成されました。
+</pre>これで、次のようなカスタム規則が作成されました。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/6-per-session-identifier.png)
 
@@ -253,7 +249,7 @@ AD FS デプロイメントの AD ドメインのユーザーとしてログイ�
 - AD FS によって正常に AD ユーザーが認証され、アプリケーションのホームページにリダイレクトされた。
 - AD FS によって正常に名前クレーム (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name) がアプリケーションに送信された (これは、ユーザー名が画面の隅に表示されたことで示されます)。 
 
-名前クレームがない場合は、**こんにちは、 さん。** という表示になります。Views\Shared_LoginPartial.cshtml の内容を見ると、ユーザー名を表示するために `User.Identity.Name` が使用されていることがわかります。前に説明したように、ASP.NET では、認証されたユーザーの名前クレームがこのプロパティに設定されます (SAML トークンで取得できる場合)。AD FS によって送信されるすべてのクレームを確認するには、Controllers\HomeController.cs の Index 操作メソッドにブレークポイントを設定します。ユーザーが認証された後、`System.Security.Claims.Current.Claims` コレクションを調べます。
+名前クレームがない場合は、**こんにちは、 さん。** という表示になります。Views\\Shared\_LoginPartial.cshtml の内容を見ると、ユーザー名を表示するために `User.Identity.Name` が使用されていることがわかります。前に説明したように、ASP.NET では、認証されたユーザーの名前クレームがこのプロパティに設定されます (SAML トークンで取得できる場合)。AD FS によって送信されるすべてのクレームを確認するには、Controllers\\HomeController.cs の Index 操作メソッドにブレークポイントを設定します。ユーザーが認証された後、`System.Security.Claims.Current.Claims` コレクションを調べます。
 
 ![](./media/web-sites-dotnet-lob-application-adfs/12-test-debugging-all-claims.png)
 
@@ -262,41 +258,32 @@ AD FS デプロイメントの AD ドメインのユーザーとしてログイ�
 
 RP 信頼構成にロール クレームとしてグループ メンバーシップが含まれているため、コントローラーと操作の `[Authorize(Roles="...")]` 装飾内で直接これらを使用できます。"作成、読み取り、更新、削除" (CRUD) パターンを持つ基幹業務アプリケーションでは、特定のロールが各操作にアクセスすることを承認できます。ここでは、既存の Home コントローラーでこの機能を試してみましょう。
 
-1. Controllers\HomeController.cs を開きます。
+1. Controllers\\HomeController.cs を開きます。
 2. 認証されたユーザーが持つセキュリティ グループ メンバーシップを使用して、次のように `About` と `Contact` の操作メソッドを装飾します。  
 	<pre class="prettyprint">
-    <mark>[Authorize(Roles="Test Group")]</mark>
-    public ActionResult About()
-    {
-        ViewBag.Message = "Your application description page.";
+<mark>[Authorize(Roles="Test Group")]</mark>
+public ActionResult About()
+{
+    ViewBag.Message = "Your application description page.";
 
-        return View();
-    }
+    return View();
+}
 
-    <mark>[Authorize(Roles="Domain Admins")]</mark>
-    public ActionResult Contact()
-    {
-        ViewBag.Message = "Your contact page.";
+<mark>[Authorize(Roles="Domain Admins")]</mark>
+public ActionResult Contact()
+{
+    ViewBag.Message = "Your contact page.";
 
-        return View();
-    }
-	</pre>
-
-	この AD FS ラボ環境では **Test User** を **Test Group** に追加しているため、Test Group を使用して `About` に関する承認をテストします。`Contact` については、**Test User** が属していない **Domain Admins** を使用して失敗のケースをテストします。
+    return View();
+}
+</pre>この AD FS ラボ環境では **Test User** を **Test Group** に追加しているため、Test Group を使用して `About` に関する承認をテストします。`Contact` については、**Test User** が属していない **Domain Admins** を使用して失敗のケースをテストします。
 
 3. `F5` キーを押してデバッガーを起動してサインインし、**[About]** をクリックします。認証されたユーザーによるこの操作の実行が承認されている場合、`~/About/Index` ページが正常に表示されます。
 4. 次に、**[Contact]** をクリックします。この例の **Test User** には、この操作は承認されません。ただし、ブラウザーは AD FS にリダイレクトされ、次のメッセージが表示されます。
 
 	![](./media/web-sites-dotnet-lob-application-adfs/13-authorize-adfs-error.png)
 
-	AD FS サーバーのイベント ビューアーでこのエラーを調べると、次の例外メッセージを確認できます。
-	<pre class="prettyprint">
-	Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>The same client browser session has made '6' requests in the last '11' seconds.</mark> Contact your administrator for details.
-	   at Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie(WrappedHttpListenerContext context)
-	   at Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse(WSFederationContext context, MSISSignInResponse response)
-	   at Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest(ProtocolContext protocolContext, PassiveProtocolHandler protocolHandler)
-	   at Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext(WrappedHttpListenerContext context)
-	</pre>
+	AD FS サーバーのイベント ビューアーでこのエラーを調べると、次の例外メッセージを確認できます。<pre class="prettyprint"> Microsoft.IdentityServer.Web.InvalidRequestException: MSIS7042: <mark>The same client browser session has made '6' requests in the last '11' seconds.</mark> Contact your administrator for details. at Microsoft.IdentityServer.Web.Protocols.PassiveProtocolHandler.UpdateLoopDetectionCookie(WrappedHttpListenerContext context) at Microsoft.IdentityServer.Web.Protocols.WSFederation.WSFederationProtocolHandler.SendSignInResponse(WSFederationContext context, MSISSignInResponse response) at Microsoft.IdentityServer.Web.PassiveProtocolListener.ProcessProtocolRequest(ProtocolContext protocolContext, PassiveProtocolHandler protocolHandler) at Microsoft.IdentityServer.Web.PassiveProtocolListener.OnGetContext(WrappedHttpListenerContext context) </pre>
 
 	このエラーの理由は、ユーザーのロールが承認されない場合に MVC が既定で 401 Unauthorized を返すためです。これが、ID プロバイダー (AD FS) への再認証クレームのトリガーとなります。ユーザーは既に認証されているため、AD FS によって同じページが表示されることになります。これが原因で別の 401 が発行され、結果的にリダイレクト ループになります。そこで、リダイレクト ループを続ける代わりに意味のメッセージを表示する単純なロジックで `HandleUnauthorizedRequest` の メソッドをオーバーライドします。
 
@@ -356,4 +343,4 @@ Azure App Service Web Apps では、[ハイブリッド接続](../integration-hy
  
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -300,4 +300,4 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
 [Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!-------HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

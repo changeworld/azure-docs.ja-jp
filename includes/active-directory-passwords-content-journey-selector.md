@@ -9,4 +9,4 @@
 - [Troubleshooting](../articles/active-directory/active-directory-passwords-troubleshoot.md)
 - [Learn more](../articles/active-directory/active-directory-passwords-learn-more.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

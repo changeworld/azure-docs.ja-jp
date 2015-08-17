@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Storage の使用" 
+	pageTitle="Azure BLOB ストレージと Visual Studio 接続済みサービスの概要" 
 	description="Visual Studio のクラウド サービス プロジェクトで Azure BLOB ストレージの使用を開始する方法" 
 	services="storage" 
 	documentationCenter="" 
@@ -13,78 +13,75 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.date="08/04/2015" 
 	ms.author="patshea123"/>
 
-# Azure Storage の使用 (クラウド サービス プロジェクト)
+# Azure Blob ストレージと Visual Studio 接続済みサービスの概要
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-storage-cloud-services-getting-started-blobs.md)
-> - [What Happened](vs-storage-cloud-services-what-happened.md)
+> - [Getting started](vs-storage-cloud-services-getting-started-blobs.md)
+> - [What happened](vs-storage-cloud-services-what-happened.md)
 
 > [AZURE.SELECTOR]
 > - [Blobs](vs-storage-cloud-services-getting-started-blobs.md)
 > - [Queues](vs-storage-cloud-services-getting-started-queues.md)
 > - [Tables](vs-storage-cloud-services-getting-started-tables.md)
 
+##概要
 
-Azure BLOB ストレージは、大量の非構造化データを格納して HTTP または HTTPS を介して世界中のどこからでもアクセスできるようにするサービスです。1 つの BLOB は任意のサイズにできます。BLOB として扱えるのは、画像、オーディオ ファイル、ビデオ ファイル、生データ、およびドキュメント ファイルのようなデータです。この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Azure ストレージを作成した後、BLOB ストレージを使用する方法について説明します。
+この記事では、Visual Studio クラウド サービス オブジェクトの **[接続済みサービスの追加]** ダイアログを使用して Azure ストレージ アカウントを作成または参照した後に、BLOB ストレージの使用を開始する方法について説明します。BLOB コンテナーへのアクセス方法や作成方法、BLOB のアップロード、一覧表示、ダウンロードなどの一般的なタスクの実行方法について説明します。サンプルは C# で記述され、[.NET 用 Azure ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)を使用しています。
 
-ファイルがフォルダーに格納されるのと同様に、ストレージ BLOB はコンテナーに格納されます。ストレージを作成した後、その内部に 1 つまたは複数のコンテナーを作成します。たとえば、"Scrapbook" という名前のストレージに、写真を格納するための "images" という名前のコンテナーと、音声ファイルを格納するための "audio" という名前のコンテナーを作成できます。コンテナーを作成すると、個々の BLOB ファイルをコンテナーにアップロードできるようになります。プログラムを使用して BLOB を操作する方法の詳細については、[.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md "How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)")に関するページを参照してください。
+Azure BLOB ストレージは、大量の非構造化データを格納して HTTP または HTTPS を介して世界中のどこからでもアクセスできるようにするサービスです。1 つの BLOB は任意のサイズにできます。BLOB として扱えるのは、画像、オーディオ ファイル、ビデオ ファイル、生データ、およびドキュメント ファイルのようなデータです。
 
+ファイルがフォルダーに格納されるのと同様に、ストレージ BLOB はコンテナーに格納されます。ストレージを作成した後、その内部に 1 つまたは複数のコンテナーを作成します。たとえば、"Scrapbook" という名前のストレージに、写真を格納するための "images" という名前のコンテナーと、音声ファイルを格納するための "audio" という名前のコンテナーを作成できます。コンテナーを作成すると、個々の BLOB ファイルをコンテナーにアップロードできるようになります。
 
-この記事では、Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C# で記述され、.NET 用 Azure ストレージ クライアント ライブラリを使用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。
+- プログラムを使用して BLOB を操作する方法の詳細については、[.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)に関するページを参照してください。
+- Azure Storage の一般情報については、「[ストレージのドキュメント](https://azure.microsoft.com/documentation/services/storage/)」をご覧ください。
+- Azure クラウド サービスの一般情報については、「[クラウド サービスのドキュメント](http://azure.microsoft.com/documentation/services/cloud-services/)」をご覧ください。
+- ASP.NET アプリケーションのプログラミングについての詳細は、「[ASP.NET](http://www.asp.net)」をご覧ください。
 
-##Visual Studio サーバー エクスプローラーで BLOB コンテナーを作成する
-
-[AZURE.INCLUDE [vs-create-blob-container-in-server-explorer](../../includes/vs-create-blob-container-in-server-explorer.md)]
-
-
-##コードで BLOB コンテナーにアクセスする 
+##コードで BLOB コンテナーにアクセスする
 
 Cloud Services プロジェクトでプログラムを使用して BLOB にアクセスするには、次の項目を追加する必要があります (存在していない場合)。
 
 1. プログラムを使用して Azure Storage にアクセスするすべての C# ファイルの冒頭部分に、次の名前空間宣言コードを追加します。
 
-		using Microsoft.Framework.Configuration;
-		using Microsoft.WindowsAzure.Storage;
-		using Microsoft.WindowsAzure.Storage.Blob;
-		using System.Threading.Tasks;
-		using LogLevel = Microsoft.Framework.Logging.LogLevel;
+        using Microsoft.Framework.Configuration;
+        using Microsoft.WindowsAzure.Storage;
+        using Microsoft.WindowsAzure.Storage.Blob;
+        using System.Threading.Tasks;
+        using LogLevel = Microsoft.Framework.Logging.LogLevel;
 
-2. ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
+2. ストレージ アカウント情報を表す `CloudStorageAccount` オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
 
-		 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-		   CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
-
-    **注:** 上記のコードはすべて、以下のセクションに示すコードの前に使用してください。
+        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+        CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
 
 
-3. ストレージ アカウント内の既存のコンテナーを参照する **CloudBlobClient** オブジェクトを取得します。
+3. ストレージ アカウント内の既存のコンテナーを参照する `CloudBlobClient` オブジェクトを取得します。
 
 		// Create a blob client.
 		CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
+4. 特定の BLOB コンテナーを参照する `CloudBlobContainer` オブジェクトを取得します。
+
         // Get a reference to a container named “mycontainer.”
         CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-
+**注:** 上記のコードはすべて、以下のセクションに示すコードの前に使用してください。
 
 ##コードでコンテナーを作成する
 
-**CloudBlobClient** を使用して、ストレージ アカウント内にコンテナーを作成することもできます。次のコードのようにして、`CreateIfNotExistsAsync()` への呼び出しを追加するだけです。
+**注:** ASP.NET で Azure ストレージへの呼び出しを実行する API の一部は非同期です。詳細については、[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)に関するページを参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
-	// Create a blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+ストレージ アカウントでコンテナーを作成するには、次のコードのように、`CreateIfNotExistsAsync` へ呼び出しを追加する必要があります。
 
-    // Get a reference to a container named “mNewContainer.”
-    CloudBlobContainer container = blobClient.GetContainerReference("mNewContainer");
+	// Get a reference to a CloudBlobContainer with the variable name 'container'
+    // as described in the "Access blob containers in code" section.
 
     // If “mycontainer” doesn’t exist, create it.
     await container.CreateIfNotExistsAsync();    
 
-
-**注:** ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)に関するページを参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
 コンテナー内のファイルをだれでも利用できるようにするには、次のコードを使ってコンテナーをパブリックに設定できます。
 
@@ -98,21 +95,14 @@ Cloud Services プロジェクトでプログラムを使用して BLOB にア�
 
 ## コンテナーに BLOB をアップロードする
 
-Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポートされています。ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
+Azure BLOB ストレージでは、ブロック BLOB とページ BLOB がサポートされています。ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
-ファイルをブロック blob にアップロードするには、コンテナーの参照を取得し、それを使用してブロック blob の参照を取得します。BLOB の参照を取得したら、**UploadFromStream** メソッドを呼び出すことによって、データの任意のストリームを BLOB にアップロードできます。この操作により、BLOB がまだ存在しない場合は作成され、存在する場合は上書きされます。次の例は、BLOB をコンテナーにアップロードする方法を示しています。この例では、既にコンテナーが作成されていることを前提としています。
+ファイルをブロック blob にアップロードするには、コンテナーの参照を取得し、それを使用してブロック blob の参照を取得します。BLOB の参照を取得したら、`UploadFromStream` メソッドを呼び出すことによって、データの任意のストリームを BLOB にアップロードできます。この操作により、BLOB がまだ存在しない場合は作成され、存在する場合は上書きされます。次の例は、BLOB をコンテナーにアップロードする方法を示しています。この例では、既にコンテナーが作成されていることを前提としています。
 
-    // Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
+	// Get a reference to a CloudBlobContainer with the variable name 'container' as described in 
+    // the "Access blob containers in code" section.
 
-    // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-    // Retrieve reference to a previously created container.
-    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
-
-    // Retrieve reference to a blob named "myblob".
+    // Retrieve a reference to a blob named "myblob".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
     // Create or overwrite the "myblob" blob with contents from a local file.
@@ -123,17 +113,10 @@ Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポート�
 
 ## コンテナー内の BLOB を一覧表示する
 
-コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、コンテナーの **ListBlobs** メソッドを使用して、その中の BLOB やディレクトリを取得できます。返される **IListBlobItem** のプロパティやメソッドにアクセスするには、**CloudBlockBlob**、**CloudPageBlob**、**CloudBlobDirectory** のいずれかのオブジェクトにキャストする必要があります。型がわからない場合は、型チェックを使うとどれにキャストすればよいかがわかります。次のコードは、`photos` コンテナー内の各アイテムの URI を取得して出力する方法を示しています。
+コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、コンテナーの `ListBlobs` メソッドを使用して、その中の BLOB やディレクトリを取得します。返された `IListBlobItem` の豊富なプロパティとメソッドのセットにアクセスするには、`CloudBlockBlob`、`CloudPageBlob`、`CloudBlobDirectory` オブジェクトにキャストする必要があります。型がわからない場合は、型チェックを使うとどれにキャストすればよいかがわかります。次のコードは、`photos` コンテナー内の各アイテムの URI を取得して出力する方法を示しています。
 
-    // Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
-
-    // Create the blob client. 
-	CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-	// Retrieve reference to a previously created container.
-	CloudBlobContainer container = blobClient.GetContainerReference("photos");
+	// Get a reference to a CloudBlobContainer with the variable name 'container' as described in 
+    // the "Access blob containers in code" section.
 
 	// Loop over items within the container and output the length and URI.
 	foreach (IListBlobItem item in container.ListBlobs(null, false))
@@ -171,14 +154,14 @@ Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポート�
 	2011/architecture/description.txt
 	2011/photo7.jpg
 
-photos コンテナーの **ListBlobs** を呼び出すと (上の例を参照)、返されるコレクションには最上位レベルにあるディレクトリと BLOB を表す **CloudBlobDirectory** や **CloudBlockBlob** オブジェクトが含まれています。結果の出力は次のようになります。
+コンテナーの `ListBlobs` を呼び出すと (前の例を参照)、返されるコレクションには最上位レベルにあるディレクトリと BLOB を表す `CloudBlobDirectory` や `CloudBlockBlob` オブジェクトが含まれています。結果の出力は次のようになります。
 
 	Directory: https://<accountname>.blob.core.windows.net/photos/2010/
 	Directory: https://<accountname>.blob.core.windows.net/photos/2011/
 	Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
 
-必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に設定することもできます。これで、ディレクトリに関係なく、すべての BLOB が **￼CloudBlockBlob￼￼** として返されるようになります。この場合、**ListBlobs** の呼び出しは次のようになります。
+必要に応じて、`ListBlobs` メソッドの `UseFlatBlobListing` パラメーターを `true` に設定することもできます。そうすると、ディレクトリに関係なく、すべての BLOB が `CloudBlockBlob` として返されるようになります。この場合、`ListBlobs` の呼び出しは次のようになります。
 
     // Loop over items within the container and output the length and URI.
 	foreach (IListBlobItem item in container.ListBlobs(null, true))
@@ -201,19 +184,12 @@ photos コンテナーの **ListBlobs** を呼び出すと (上の例を参照)�
 
 ## BLOB をダウンロードする
 
-BLOB をダウンロードするには、まず BLOB の参照を取得し、次に **DownloadToStream** メソッドを呼び出します。次の例は、**DownloadToStream** メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
+BLOB をダウンロードするには、まず BLOB の参照を取得し、次に `DownloadToStream` メソッドを呼び出します。次の例は、`DownloadToStream` メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
 
-    // Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
+	// Get a reference to a CloudBlobContainer with the variable name 'container' as described in 
+    // the "Access blob containers in code" section.
 
-    // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-    // Retrieve reference to a previously created container.
-    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
-
-    // Retrieve reference to a blob named "photo1.jpg".
+    // Get a reference to a blob named "photo1.jpg".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");
 
     // Save blob contents to a file.
@@ -222,19 +198,12 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
         blockBlob.DownloadToStream(fileStream);
     } 
 
-**DownloadToStream** メソッドを使用して BLOB の内容をテキスト文字列としてダウンロードすることもできます。
+`DownloadToStream` メソッドを使用して BLOB の内容をテキスト文字列としてダウンロードすることもできます。
 
-	// Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	// Get a reference to a CloudBlobContainer with the variable name 'container' as described in 
+    // the "Access blob containers in code" section.
 
-    // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-    // Retrieve reference to a previously created container.
-    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
-
-	// Retrieve reference to a blob named "myblob.txt"
+	// Get a reference to a blob named "myblob.txt"
 	CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
 
 	string text;
@@ -246,19 +215,12 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
 
 ## BLOB を削除する
 
-BLOB を削除するには、まず、BLOB の参照を取得し、次にその **Delete** メソッドを呼び出します。
+BLOB を削除するには、まず BLOB の参照を取得し、次にその `Delete` メソッドを呼び出します。
 
-    // Retrieve storage account from connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
+	// Get a reference to a CloudBlobContainer with the variable name 'container' as described in 
+    // the "Access blob containers in code" section.
 
-    // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-
-    // Retrieve reference to a previously created container.
-    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
-
-    // Retrieve reference to a blob named "myblob.txt".
+    // Get a reference to a blob named "myblob.txt".
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
 
     // Delete the blob.
@@ -269,9 +231,9 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
 
 多数の BLOB を一覧表示する場合や、1 回の一覧表示操作で返される結果の数を制御する場合には、BLOB の一覧を結果のページで表示できます。この例は、大きな結果のセットを返すために待機している間に実行がブロックされないように、結果をページで非同期に返す方法を示しています。
 
-この例は、BLOB をフラットな一覧で表示しますが、**ListBlobsSegmentedAsync** メソッドの `useFlatBlobListing` パラメーターを `false` に設定することによって、階層化された一覧で表示することもできます。
+この例は、BLOB をフラットな一覧で表示しますが、`ListBlobsSegmentedAsync` メソッドの `useFlatBlobListing` パラメーターを `false` に設定することによって、階層化された一覧で表示することもできます。
 
-サンプル メソッドは非同期メソッドを呼び出すため、その先頭を `async` キーワードにする必要があり、**Task** オブジェクトを返す必要があります。**ListBlobsSegmentedAsync** メソッドに対して指定された await キーワードは、一覧表示タスクが完了するまで、サンプル メソッドの実行を中断します。
+サンプル メソッドは非同期メソッドを呼び出すため、その先頭を `async` キーワードにする必要があり、`Task` オブジェクトを返す必要があります。`ListBlobsSegmentedAsync` メソッドに対して指定された await キーワードは、一覧表示タスクが完了するまで、サンプル メソッドの実行を中断します。
 
     async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
     {
@@ -300,28 +262,10 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
             continuationToken = resultSegment.ContinuationToken;
         }
         while (continuationToken != null);
-    }
+    }ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 
 ## 次のステップ
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-
-
-  [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
-  [Blob6]: ./media/storage-dotnet-how-to-use-blobs/blob6.png
-  [Blob7]: ./media/storage-dotnet-how-to-use-blobs/blob7.png
-  [Blob8]: ./media/storage-dotnet-how-to-use-blobs/blob8.png
-  [Blob9]: ./media/storage-dotnet-how-to-use-blobs/blob9.png
-  
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
-  [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731
-  [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
-  [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
-  [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-  [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
- 
-
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

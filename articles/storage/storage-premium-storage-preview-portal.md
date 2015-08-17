@@ -279,6 +279,16 @@ Premium Storage 上で Linux VM を設定するときは、次の重要な手順
 </tbody> </table>
 
 
+### Openlogic Centos 用 LIS ドライバー
+
+OpenLogic CentOS VM を実行しているお客様は、次のコマンドを実行して最新のドライバーをインストールする必要があります。
+
+	sudo yum install microsoft-hyper-v
+
+その後再起動して、新しいドライバーをアクティブ化する必要があります。
+
+
+
 ## Premium Storage を使用するときの料金と課金
 Premium Storage を使用するときには、課金に関する次の考慮事項が適用されます。
 
@@ -392,4 +402,4 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

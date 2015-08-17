@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築 | Azure" 
+	pageTitle="DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築 | Microsoft Azure" 
 	description="DocumentDB を .NET と共に使用して To Do リスト Web アプリケーションを作成する方法について説明します。データは Azure Websites にホストされた ASP.NET MVC Web アプリケーションに格納してアクセスします。" 
 	services="documentdb" 
 	documentationCenter=".net" 
@@ -31,7 +31,7 @@
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](../../pricing/free-trial/)をご覧ください。
 - [Visual Studio 2013](http://www.visualstudio.com/) Update 4 以降。
 - Azure SDK for .NET Version 2.5.1 以降 ([Microsoft Web Platform Installer][] にて提供)。
 
@@ -447,7 +447,7 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 
 ここでは、ルーティングの動作を制御するための値を URL に指定していない場合、**Home** の代わりに **Item** をコント ローラーとしてユーザー **インデックス**をビューとして使用するように ASP.NET MVC に指示しています。
 
-ここでアプリケーションを実行したとすると、**ItemController** が呼び出され、さらにリポジトリ クラスが呼び出されて、GetItems メソッドを使用して **Views**\\\*\*Item\*\*\\\*\*Index\*\* ビューに対するすべての不完全な項目が返されます。
+ここでアプリケーションを実行したとすると、**ItemController** が呼び出され、さらにリポジトリ クラスが呼び出されて、GetItems メソッドを使用して **Views**\**Item**\**Index** ビューに対するすべての不完全な項目が返されます。
 
 このプロジェクトをビルドして実行すると、次のように表示されます。
 
@@ -650,7 +650,7 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 7. これで、[アプリケーションをローカルに実行](#_Toc395637773)し、[Azure Websites](#_Toc395637774) にデプロイできます。
 
 
-[\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
+[*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [GitHub]: http://go.microsoft.com/fwlink/?LinkID=509838&clcid=0x409
@@ -658,4 +658,4 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

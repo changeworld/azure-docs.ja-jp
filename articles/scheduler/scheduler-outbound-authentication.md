@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na" 
  ms.devlang="dotnet" 
  ms.topic="article" 
- ms.date="05/12/2015" 
+ ms.date="08/04/2015" 
  ms.author="krisragh"/>
  
 # Scheduler 送信認証
@@ -104,7 +104,7 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 	  "id": "testScheduler",
 	  "action": {
 		"request": {
-		  "uri": "https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/CS-NorthCentralUS-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/test",
+		  "uri": "https:\/\/management.core.windows.net\/7e2dffb5-45b5-475a-91be-d3d9973c82d5\/cloudservices\/CS-NorthCentralUS-scheduler\/resources\/scheduler\/~\/JobCollections\/testScheduler\/jobs\/test",
 		  "method": "GET",
 		  "headers": {
 			"x-ms-version": "2013-03-01"
@@ -201,7 +201,7 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 	  "id": "testScheduler",
 	  "action": {
 		"request": {
-		  "uri": "https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/CS-NorthCentralUS-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/test",
+		  "uri": "https:\/\/management.core.windows.net\/7e2dffb5-45b5-475a-91be-d3d9973c82d5\/cloudservices\/CS-NorthCentralUS-scheduler\/resources\/scheduler\/~\/JobCollections\/testScheduler\/jobs\/test",
 		  "method": "GET",
 		  "headers": {
 			"x-ms-version": "2013-03-01"
@@ -304,7 +304,7 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
 	  "id": "testScheduler",
 	  "action": {
 		"request": {
-		  "uri": "https://management.core.windows.net/7e2dffb5-45b5-475a-91be-d3d9973c82d5/cloudservices/CS-NorthCentralUS-scheduler/resources/scheduler/~/JobCollections/testScheduler/jobs/test",
+		  "uri": "https:\/\/management.core.windows.net\/7e2dffb5-45b5-475a-91be-d3d9973c82d5\/cloudservices\/CS-NorthCentralUS-scheduler\/resources\/scheduler\/~\/JobCollections\/testScheduler\/jobs\/test",
 		  "method": "GET",
 		  "headers": {
 			"x-ms-version": "2013-03-01"
@@ -353,4 +353,4 @@ Scheduler ジョブに認証を追加するのは簡単です。ジョブを作�
  
   
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

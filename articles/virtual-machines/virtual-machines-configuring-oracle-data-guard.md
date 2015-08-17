@@ -1,4 +1,4 @@
-<properties pageTitle="Azure 用の Oracle データ保護の構成" description="高可用性と障害復旧のために Oracle Data Guar を Azure 仮想マシンにセットアップし実装するチュートリアルの手順" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<properties title="Configuring Oracle Data Guard for Azure" pageTitle="Azure 用の Oracle データ保護の構成" description="高可用性と障害復旧のために Oracle Data Guar を Azure 仮想マシンにセットアップし実装するチュートリアルの手順" services="virtual-machines" authors="bbenz" documentationCenter=""/>
 <tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 #Azure 用の Oracle データ保護の構成
 このチュートリアルでは、高可用性と障害復旧のための Azure 仮想マシン環境に Oracle Data Guard をセットアップ、実装する方法について説明します。このチュートリアルでは、RAC 以外の Oracle データベースの 1 ウェイレプリケーションの方法について説明します。
@@ -15,9 +15,9 @@ Oracle Data Guard は Oracle データベースのデータの保護および災
 
 - Azure ポータルでは、仮想マシンの名前は、プライマリ VM が「Machine1」として、スタンバイ VM が「Machine2」として設定されています。
 
-- **ORACLE_HOME**環境変数を`C:\OracleDatabase\product\11.2.0\dbhome_1\database`のようなプライマリおよびスタンバイ仮想マシン内で同じ oracle ルートインストールパスをポイントするよう設定されています。
+- **ORACLE\_HOME**環境変数を`C:\OracleDatabase\product\11.2.0\dbhome_1\database`のようなプライマリおよびスタンバイ仮想マシン内で同じ oracle ルートインストールパスをポイントするよう設定されています。
 
-- Windows サーバーに、**Administrators**グループのメンバーまたは **ORA_DBA** グループのメンバーとしてログオンしている。
+- Windows サーバーに、**Administrators**グループのメンバーまたは **ORA\_DBA** グループのメンバーとしてログオンしている。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -64,14 +64,14 @@ Oracle Data Guard は Oracle データベースのデータの保護および災
 >| **Oracle リリース** | Oracle11g Enterprise リリース (11.2.0.4.0) | Oracle11g Enterprise リリース (11.2.0.4.0) |
 >| **マシン名** | マシン 1 | マシン 2 |
 >| **オペレーティング システム** | Windows 2008 R2 | Windows 2008 R2 |
->| **Oracle SID** | TEST | TEST_STBY |
+>| **Oracle SID** | TEST | TEST\_STBY |
 >| **メモリ** | 最小 2 GB | 最小 2 GB |
 >| **ディスク領域** | 最小 5 GB | 最小 5 GB |
 
 Oracle データベースおよび Oracle Data Guard の今後のリリースでは、追加の変更を実装する必要が生じる可能性があります。最新バージョンについては、Oracle Web サイトの「[Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html)」と「[Oracle データベース](http://www.oracle.com/us/corporate/features/database-12c/index.html)」のドキュメントをご覧ください。
 
 ##物理スタンバイ データベース環境の展開
-### 1.プライマリ データベースの作成
+### 1\.プライマリ データベースの作成
 
 - プライマリ仮想マシンでプライマリでデータベース"TEST"を作成詳細は、「Oracle データベースの作成と構成」を参照してください。
 - SQL で SYSDBA ロールを持つsql では、SYS ユーザーとしてデータベースに接続 * さらにコマンド プロンプトおよびデータベースの名前を表示するには、次のステートメントを実行します。
@@ -83,7 +83,7 @@ Oracle データベースおよび Oracle Data Guard の今後のリリースで
 		NAME
 		---------
 		TEST
-- 次に、dba_data_files システム ビューからデータベース ファイルの名前をクエリします。
+- 次に、dba\_data\_files システム ビューからデータベース ファイルの名前をクエリします。
 
 		SQL> select file_name from dba_data_files; 
 		FILE_NAME 
@@ -94,7 +94,7 @@ Oracle データベースおよび Oracle Data Guard の今後のリリースで
 		C:<YourLocalFolder>\TEST\SYSTEM01.DBF
 		C:<YourLocalFolder>\TEST\EXAMPLE01.DBF
 
-### 2.スタンバイ データベースを作成るためのプライマリ データベースの準備
+### 2\.スタンバイ データベースを作成るためのプライマリ データベースの準備
 
 スタンバイ データベースを作成する前に、プライマリ データベースが正しく構成されていることを確認することを推奨します。実行する必要のある手順の一覧を次に示します。
 
@@ -118,9 +118,9 @@ Oracle データベースおよび Oracle Data Guard の今後のリリースで
 
 >[AZURE.IMPORTANT]Oracle Database 12 c を使用する場合は、Oracle Data Guard の管理に使用できる新しいユーザー**SYSDG**があります。詳細については、[Oracle Database 12c Release の変更](http://docs.oracle.com/cd/E16655_01/server.121/e10638/release_changes.htm)を参照してください。
 
-さらに、ORACLE_HOME 環境が既に Machine1 で定義されていることを確認します。そうでない場合は「環境変数」ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル[**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。**システム変数**で**新規**ボタンをクリックして環境変数を設定します。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開きます。
+さらに、ORACLE\_HOME 環境が既に Machine1 で定義されていることを確認します。そうでない場合は「環境変数」ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル[**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。**システム変数**で**新規**ボタンをクリックして環境変数を設定します。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開きます。
 
-C:\OracleDatabase\product\11.2.0\dbhome_1\database など Oracle_Home ディレクトリに切り替えるには、次のステートメントを実行します。
+C:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\database など Oracle\_Home ディレクトリに切り替えるには、次のステートメントを実行します。
 
 	cd %ORACLE_HOME%\database
 
@@ -128,7 +128,7 @@ C:\OracleDatabase\product\11.2.0\dbhome_1\database など Oracle_Home ディレ�
 
 	ORAPWD FILE=PWDTEST.ora PASSWORD=password FORCE=y
 
-このコマンドは、ORACLE_HOME\database ディレクトリ内に PWDTEST.ora という名前のパスワード ファイルを作成します。このファイルを手動で Machine2 内の %ORACLE_HOME%\database ディレクトリにコピーする必要があります。
+このコマンドは、ORACLE\_HOME\\database ディレクトリ内に PWDTEST.ora という名前のパスワード ファイルを作成します。このファイルを手動で Machine2 内の %ORACLE\_HOME%\\database ディレクトリにコピーする必要があります。
 
 #### スタンバイ redo ログの構成
 
@@ -223,7 +223,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	SQL> create pfile from spfile;
 	File created.
 
-次に、スタンバイのパラメーターを追加するには pfile を編集する必要があります。そのためには %Oracle_home%\database の場所で INITTEST.ORA ファイルを開きます。次に、INITTEST.ora ファイルに次のステートメントを追加します。INIT.ORA ファイルの命名規則は INIT<YourDatabaseName>.ORA です。
+次に、スタンバイのパラメーターを追加するには pfile を編集する必要があります。そのためには %Oracle\_home%\\database の場所で INITTEST.ORA ファイルを開きます。次に、INITTEST.ora ファイルに次のステートメントを追加します。INIT.ORA ファイルの命名規則は INIT<YourDatabaseName>.ORA です。
 	
 	db_name='TEST' 
 	db_unique_name='TEST' 
@@ -244,7 +244,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	# ---------------------------------------------------------------------------------------------
 
 
-前のステートメント ブロックには 3 つの重要なセットアップ項目が含まれています:-**LOG_ARCHIVE_CONFIG...:**このステートメントを使用して一意のデータベースの id を定義します。 -**LOG_ARCHIVE_DEST_1...:**このステートメントを使用してローカルのアーカイブ フォルダの場所を定義します。データベース用のアーカイブのニーズのための新しいディレクトリを作成し、Oracle の既定フォルダー %ORACLE_HOME%\database\archive を使用する代わりに、明示的にこのステートメントを使用して、ローカルのアーカイブ場所を指定することを推奨します。-**LOG_ARCHIVE_DEST_2 ....LGWR ASYNC...:**トランザクション redo データを収集するために、非同期ログライター プロセス (LGWR) を定義し、スタンバイ変換先に転送します。ここでは、DB_UNIQUE_NAME は転送先のスタンバイ サーバーにあるデータベースの一意の名前を指定します。
+前のステートメント ブロックには 3 つの重要なセットアップ項目が含まれています:-**LOG\_ARCHIVE\_CONFIG...:**このステートメントを使用して一意のデータベースの id を定義します。 -**LOG\_ARCHIVE\_DEST\_1...:**このステートメントを使用してローカルのアーカイブ フォルダの場所を定義します。データベース用のアーカイブのニーズのための新しいディレクトリを作成し、Oracle の既定フォルダー %ORACLE\_HOME%\\database\\archive を使用する代わりに、明示的にこのステートメントを使用して、ローカルのアーカイブ場所を指定することを推奨します。-**LOG\_ARCHIVE\_DEST\_2 ....LGWR ASYNC...:**トランザクション redo データを収集するために、非同期ログライター プロセス (LGWR) を定義し、スタンバイ変換先に転送します。ここでは、DB\_UNIQUE\_NAME は転送先のスタンバイ サーバーにあるデータベースの一意の名前を指定します。
 
 新規パラメーターファイルが準備できたら、ここから spfile を作成する必要があります。
 
@@ -270,7 +270,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 
 次に、spfile を作成します。
 
-	SQL>create spfile frompfile='c:\OracleDatabase\product\11.2.0\dbhome_1\database\initTEST.ora';
+	SQL>create spfile frompfile='c:\OracleDatabase\product\11.2.0\dbhome\_1\database\initTEST.ora';
 
 	File created.
 
@@ -297,7 +297,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 
 まず、Azure ポータルを使用して Machine2 にリモート デスクトップをポイントする必要があります。
 
-次に、スタンバイ サーバー (Machine2) 上には C:\<YourLocalFolder>\TEST などのスタンバイ データベースのために必要なすべてのフォルダーを作成します。このチュートリアルに従いながら、controlfile、datafiles, redologfiles、udump、bdump cdump ファイルなどのすべての必要なファイルを保持するために、ファイル構造が Machine1 上のフォルダー構造と一致していることを確認します。さらに、Machine2 で ORACLE_HOME および ORACLE_BASE 環境変数を定義します。そうでない場合は環境変数ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル[**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。**システム変数**で**新規**ボタンをクリックして環境変数を設定します。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開いて変更を確認します。
+次に、スタンバイ サーバー (Machine2) 上には C:\\<YourLocalFolder>\\TEST などのスタンバイ データベースのために必要なすべてのフォルダーを作成します。このチュートリアルに従いながら、controlfile、datafiles, redologfiles、udump、bdump cdump ファイルなどのすべての必要なファイルを保持するために、ファイル構造が Machine1 上のフォルダー構造と一致していることを確認します。さらに、Machine2 で ORACLE\_HOME および ORACLE\_BASE 環境変数を定義します。そうでない場合は環境変数ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル[**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。**システム変数**で**新規**ボタンをクリックして環境変数を設定します。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開いて変更を確認します。
 
 次に、次の手順に従います。
 
@@ -319,9 +319,9 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 
 6. 物理スタンバイデータベースの検証
 
-### 1.スタンバイ データベースの初期化パラメーターのファイルを準備
+### 1\.スタンバイ データベースの初期化パラメーターのファイルを準備
 
-このセクションでは、初期化パラメーターのファイルのスタンバイ データベースを準備する方法を示します。これには、まず INITTEST.ORA を Machine 1 から Machine2 へ手動でコピーします。両方のマシンの %ORACLE_HOME%\database フォルダで、INITTEST.ORA ファイルが表示されている必要があります。次に、スタンバイ ロールを以下のように設定するには、Machine2 で INITTEST.ora ファイルを変更します。
+このセクションでは、初期化パラメーターのファイルのスタンバイ データベースを準備する方法を示します。これには、まず INITTEST.ORA を Machine 1 から Machine2 へ手動でコピーします。両方のマシンの %ORACLE\_HOME%\\database フォルダで、INITTEST.ORA ファイルが表示されている必要があります。次に、スタンバイ ロールを以下のように設定するには、Machine2 で INITTEST.ora ファイルを変更します。
 	
 	db_name='TEST'
 	db_unique_name='TEST_STBY'
@@ -342,21 +342,21 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 
 前のステートメント ブロックには、2 つの重要なセットアップ項目が含まれています。
 
--	***.LOG_ARCHIVE_DEST_1:**Machine2 で手動で c:\OracleDatabase\TEST_STBY\archives フォルダーを作成する必要があります。
--	***.LOG_ARCHIVE_DEST_2:**これは省略可能な手順です。この設定が必要になるため、プライマリ マシンがメンテナンス中の場合にスタンバイマシンがプライマリ データベースになる場合に必要となる場合があるため、これを設定します。
+-	***.LOG\_ARCHIVE\_DEST\_1:**Machine2 で手動で c:\\OracleDatabase\\TEST\_STBY\\archives フォルダーを作成する必要があります。
+-	***.LOG\_ARCHIVE\_DEST\_2:**これは省略可能な手順です。この設定が必要になるため、プライマリ マシンがメンテナンス中の場合にスタンバイマシンがプライマリ データベースになる場合に必要となる場合があるため、これを設定します。
 
 次に、スタンバイインスタンスを開始する必要があります。スタンバイデータベースサーバーで、新しい Windows サービスを作成することにより Oracle インスタンスを作成するために Windows コマンド プロンプトで次のコマンドを入力します。
 
-	oradim -NEW -SID TEST_STBY -STARTMODE MANUAL
+	oradim -NEW -SID TEST\_STBY -STARTMODE MANUAL
 
-**Oradim**コマンドは Oracle インスタンスを作成しますが、開始しません。これは C:\OracleDatabase\product\11.2.0\dbhome_1\BIN ディレクトリにあります。
+**Oradim**コマンドは Oracle インスタンスを作成しますが、開始しません。これは C:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\BIN ディレクトリにあります。
 
 ##プライマリおよびスタンバイのマシンでデータベースをサポートするためのリスナーと tnsnames の構成
 スタンバイ データベースを作成する際、構成内のプライマリ データベースとスタンバイ データベースが互いに通信しあえることを確認する必要があります。この場合は、手動でまたはネットワーク構成ユーティリティ NETCA を使用してリスナーと TNSNames の両方を構成する必要があります。Recovery Manager ユーティリティ (RMAN) を使用する場合、これは必須のタスクです。
 
 ### 両方のデータベースのエントリを保持するために両方のサーバーで listener.ora を構成
 
-リモート デスクトップから Machine1 へ、および以下で指定した listener.ora ファイルを編集します。listener.ora ファイルを編集するときには、常にかっこひらきと閉じかっこが同じ列に並んでいることを確認します。listener.ora ファイルは c:\OracleDatabase\product\11.2.0\dbhome_1\NETWORK\ADMIN\ に見つけることができます。
+リモート デスクトップから Machine1 へ、および以下で指定した listener.ora ファイルを編集します。listener.ora ファイルを編集するときには、常にかっこひらきと閉じかっこが同じ列に並んでいることを確認します。listener.ora ファイルは c:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\NETWORK\\ADMIN\\ に見つけることができます。
 
 	# listener.ora Network Configuration File: C:\OracleDatabase\product\11.2.0\dbhome_1\network\admin\listener.ora
 	
@@ -380,7 +380,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	    )
 	  )
 
-次に、リモートデスクトップから Machine2 へおよび次のように listener.ora ファイルを編集します: # listener.ora Network Configuration File: C:\OracleDatabase\product\11.2.0\dbhome_1\network\admin\listener.ora
+次に、リモートデスクトップから Machine2 へおよび次のように listener.ora ファイルを編集します: # listener.ora Network Configuration File: C:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\network\\admin\\listener.ora
 	
 	# Generated by Oracle configuration tools.
 	
@@ -405,7 +405,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 
 ### プライマリおよびスタンバイの両方のデータベースのエントリを保持するために、プライマリおよびスタンバイの仮想マシンで tnsnames.ora を構成
 
-リモート デスクトップから Machine1 へ、および以下で指定した tnsnames.ora ファイルを編集します。tnsnames.ora ファイルは c:\OracleDatabase\product\11.2.0\dbhome_1\NETWORK\ADMIN\ に見つけることができます。
+リモート デスクトップから Machine1 へ、および以下で指定した tnsnames.ora ファイルを編集します。tnsnames.ora ファイルは c:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\NETWORK\\ADMIN\\ に見つけることができます。
 
 	TEST =
 	  (DESCRIPTION =
@@ -607,4 +607,4 @@ SQL * Plus コマンド プロンプト ウィンドウを開き、プライマ�
 ##その他のリソース
 [Oracle Virtual Machine images for Azure (Azure の Oracle 仮想マシン イメージ)](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

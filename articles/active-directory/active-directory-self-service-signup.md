@@ -167,7 +167,7 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 
 3. そして、次のように Get-MsolDomainVerificationDns コマンドレットを実行してチャレンジを作成します。
 
-	Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+	Get-MsolDomainVerificationDns –DomainName *your\_domain\_name* –Mode DnsTxtRecord
 
 	例:
 
@@ -185,7 +185,7 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 
 6. 次のように Confirm-MsolDomain コマンドレットを実行してチャレンジを確認します。
 
-	Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+	Confirm-MsolEmailVerifiedDomain -DomainName *your\_domain\_name*
 
 	例:
 
@@ -236,4 +236,4 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

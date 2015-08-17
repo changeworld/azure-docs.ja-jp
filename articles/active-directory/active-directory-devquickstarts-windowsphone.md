@@ -43,7 +43,7 @@ Windows Phone アプリを開発する場合、Azure AD を使用すると、Act
 ## *1.ディレクトリ検索アプリケーションを登録する*
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
--	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
+-	[Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
@@ -74,7 +74,7 @@ redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCur
 ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/
 ```
 
-- Microsoft Azure 管理ポータルでアプリケーションの **[構成]** タブに戻り、**RedirectUri** の値をこの値に置き換えます。  
+- Microsoft Azure の管理ポータルでアプリケーションの **[構成]** タブに戻り、**RedirectUri** の値をこの値に置き換えます。  
 
 ## *3.ADAL を使用して AAD からトークンを取得する*
 ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、アプリは `authContext.AcquireToken(…)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。
@@ -91,7 +91,7 @@ public MainPage()
 }
 ```
 
-- 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリの UI で [検索] ボタンをクリックすると呼び出されます。このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access_token を含める必要があります。この処理を ADAL が実行します。
+- 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリの UI で [検索] ボタンをクリックすると呼び出されます。このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access\_token を含める必要があります。この処理を ADAL が実行します。
 
 ```C#
 private async void Search(object sender, RoutedEventArgs e)
@@ -127,7 +127,7 @@ public async void ContinueWebAuthentication(WebAuthenticationBrokerContinuationE
 }
 ```
 
-- 次に、ADAL がアプリに返す `AuthenticationResult` を使用します。`QueryGraph(...)` コールバックで、取得した access_token を承認ヘッダーの GET 要求にアタッチします。
+- 次に、ADAL がアプリに返す `AuthenticationResult` を使用します。`QueryGraph(...)` コールバックで、取得した access\_token を承認ヘッダーの GET 要求にアタッチします。
 
 ```C#
 private async void QueryGraph(AuthenticationResult result)
@@ -173,4 +173,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

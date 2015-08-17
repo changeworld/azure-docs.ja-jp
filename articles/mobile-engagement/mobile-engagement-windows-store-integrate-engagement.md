@@ -119,7 +119,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 ### 推奨される方法: `Page` クラスをオーバーロードします
 
-ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関する統計情報を計算するために、 Engagement が必要とするすべてのログのレポートを有効にするには、単純にすべての `Page` サブクラスが `EngagementPage` クラスから継承されるようにします。
+ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関する統計情報を計算するために、エンゲージメントが必要とするすべてのログのレポートを有効にするには、単純にすべての `Page` サブクラスが `EngagementPage` クラスから継承されるようにします。
 
 次に、この操作をアプリケーションのページに対して実行する例を示します。同じことを、アプリケーションのすべてのページに対して実行できます。
 
@@ -143,7 +143,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 		  }
 		}
 
-**Engagement を使用する場合:**
+**エンゲージメントを使用する場合:**
 
 		using Microsoft.Azure.Engagement;
 		
@@ -226,7 +226,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 オプションとして、アプリケーション特有のイベント、エラー、ジョブについて報告できます。そのためには、`EngagementAgent` クラスの別のメソッドを使用します。Engagement API により、Engagement のすべての高度な機能を使用できます。
 
-詳細については、[Windows Phone Silverlight で Engagement API を使用する方法](../mobile-engagement-windows-store-use-engagement-api/)をご覧ください
+詳細については、「[How to use the advanced Mobile Engagement tagging API in your Windows Universal app (Windows ユニバーサル アプリで高度なモバイル エンゲージメント タグ付け API を使用する方法)](../mobile-engagement-windows-store-use-engagement-api/)」をご覧ください
 
 ##詳細な構成
 
@@ -234,7 +234,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
 Engagement の自動クラッシュ レポート機能を無効にできます。その場合、未処理の例外が発生しても、Engagement は何も行いません。
 
-> [AZURE.WARNING]この機能を無効にする計画がある場合は、アプリで未処理の例外が発生しても、Engagement はクラッシュを報告せず、**さらに**セッションとジョブを終了しないことに注意してください。
+> [AZURE.WARNING]この機能を無効にする計画がある場合は、アプリで未処理の例外が発生しても、エンゲージメントはクラッシュを報告せず、**さらに**セッションとジョブを終了しないことに注意してください。
 
 自動クラッシュ レポートを無効にするには、宣言した方法に応じて、構成をカスタマイズするだけです。
 
@@ -271,4 +271,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 [NuGet website]: http://docs.nuget.org/docs/start-here/overview
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -168,4 +168,4 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

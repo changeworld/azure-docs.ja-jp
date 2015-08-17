@@ -76,7 +76,7 @@ Facebook の投稿記事、ツイート、レビューなど、オンライン �
 >この Web サービスは、Azure Machine Learning を使用して作成されました。無料評価版の場合、実験を作成して [Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)入門ビデオに加えて、[azure.com/ml](http://azure.com/ml) もご覧ください。Web サービスを作成した実験のスクリーン ショット、および実験内の各モジュールに対するコード例を以下に示します。
 
 
-Azure Machine Learning 内で、新しい空白の実験が作成されました。次の図は、辞書ベースのセンチメント分析の実験フローを示します。"Sent_dict.csv" は MPQA 主観性辞書であり、[R スクリプトの実行][execute-r-script]の入力の 1 つとして設定されています。他の入力は、Amazon レビューのデータセットからテスト用にサンプリングされたレビューです。選択、列名の変更、分割操作を実行しました。ハッシュ パッケージを使用して主観性辞書をメモリに格納し、スコアの計算プロセスを高速化します。テキスト全体は、"tm" パッケージによってトークン化され、センチメント辞書の単語と比較されます。最後に、テキストの主観的な各単語の重みを追加して、スコアが計算されます。
+Azure Machine Learning 内で、新しい空白の実験が作成されました。次の図は、辞書ベースのセンチメント分析の実験フローを示します。"Sent\_dict.csv" は MPQA 主観性辞書であり、[R スクリプトの実行][execute-r-script]の入力の 1 つとして設定されています。他の入力は、Amazon レビューのデータセットからテスト用にサンプリングされたレビューです。選択、列名の変更、分割操作を実行しました。ハッシュ パッケージを使用して主観性辞書をメモリに格納し、スコアの計算プロセスを高速化します。テキスト全体は、"tm" パッケージによってトークン化され、センチメント辞書の単語と比較されます。最後に、テキストの主観的な各単語の重みを追加して、スコアが計算されます。
 
 ###実験フロー:
 
@@ -89,7 +89,7 @@ Azure Machine Learning 内で、新しい空白の実験が作成されました
     sent_dict_data<- maml.mapInputPort(1) # class: data.frame
     dataset2 <- maml.mapInputPort(2) # class: data.frame
  
-   # Install hash package install.packages("src/hash_2.2.6.zip", lib = ".", repos = NULL, verbose = TRUE) success <- library("hash", lib.loc = ".", logical.return = TRUE, verbose = TRUE) library(tm) library(stringr)
+   # Install hash package install.packages("src/hash\_2.2.6.zip", lib = ".", repos = NULL, verbose = TRUE) success <- library("hash", lib.loc = ".", logical.return = TRUE, verbose = TRUE) library(tm) library(stringr)
 
     #create sentiment dictionary
     negation_word <- c("not","nor", "no")
@@ -153,4 +153,4 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

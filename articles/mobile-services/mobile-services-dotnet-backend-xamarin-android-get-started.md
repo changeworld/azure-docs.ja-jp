@@ -84,7 +84,7 @@
 
 	> [AZURE.NOTE]プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
 
-3. アプリケーションで、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、プラス (**+**) アイコンをクリックします。
+3. アプリケーションで、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、正符号 (**[+]**) アイコンをクリックします。
 
 	![][10]
 
@@ -136,4 +136,4 @@
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

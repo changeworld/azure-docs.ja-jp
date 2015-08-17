@@ -46,10 +46,10 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
 
 HDInsight には次のサンプルが付属します。
 
-- [**Pi 推定 Hadoop サンプル**][hdinsight-sample-pi-estimator]: このチュートリアルでは、HDInsight を使用して MapReduce プログラムを実行する方法を紹介します。MapReduce プログラムは、統計的手法 (準モンテカルロ法) に基づいてパイ (Pi) の値を計算します。
-- [**HDInsight の Hadoop クラスターでの MapReduce ワード カウント サンプルの実行**][hdinsight-sample-wordcount]: このチュートリアルでは、HDInsight クラスターを使用してテキスト ファイル内の単語出現回数をカウントする MapReduce プログラムを実行する方法を紹介します。
-- [**10 GB GraySort Hadoop サンプル**][hdinsight-sample-10gb-graysort]: このチュートリアルでは、HDInsight を使用し、10 GB のファイルに対して汎用 GraySort を実行する方法を紹介します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
-- [**Hadoop での C# ストリーミング ワードカウント MapReduce サンプル**][hdinsight-sample-csharp-streaming]: このチュートリアルでは、Hadoop ストリーミング インターフェイスを使用する MapReduce プログラムを C# で記述する方法を紹介します。
+- [**Pi 推定 Hadoop サンプル**][hdinsight-sample-pi-estimator]\: このチュートリアルでは、HDInsight を使用して MapReduce プログラムを実行する方法を紹介します。MapReduce プログラムは、統計的手法 (準モンテカルロ法) に基づいてパイ (Pi) の値を計算します。
+- [**HDInsight の Hadoop クラスターでの MapReduce ワード カウント サンプルの実行**][hdinsight-sample-wordcount]\: このチュートリアルでは、HDInsight クラスターを使用してテキスト ファイル内の単語出現回数をカウントする MapReduce プログラムを実行する方法を紹介します。
+- [**10 GB GraySort Hadoop サンプル**][hdinsight-sample-10gb-graysort]\: このチュートリアルでは、HDInsight を使用し、10 GB のファイルに対して汎用 GraySort を実行する方法を紹介します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
+- [**Hadoop での C# ストリーミング ワードカウント MapReduce サンプル**][hdinsight-sample-csharp-streaming]\: このチュートリアルでは、Hadoop ストリーミング インターフェイスを使用する MapReduce プログラムを C# で記述する方法を紹介します。
 
 
 ## サンプルの実行方法 ##
@@ -89,4 +89,4 @@ HDInsight には次のサンプルが付属します。
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

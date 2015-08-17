@@ -110,10 +110,10 @@ OR  y.[is_user_defined] = 1
 - **image**、**text**、**ntext**: rchar/nvarchar を使用します (より小さいほうが適切)。
 - **nvarchar(max)**: パフォーマンスを向上させるために、varchar(4000) 以下を使用します。
 - **numeric**: decimal を使用します。
-- **sql_variant**: 列を厳密に型指定された複数の列に分割します。
+- **sql\_variant**: 列を厳密に型指定された複数の列に分割します。
 - **sysname**: nvarchar(128) を使用します。
 - **table**: 一時テーブルに変換します。
-- **timestamp**: datetime2 と `CURRENT_TIMESTAMP` 関数を使用するようにコードを再作成します。current_timestamp を既定の制約として指定することはできません。また、値は自動的には更新されません。timestamp で型指定された列から rowversion 値を移行する必要がある場合は、行バージョンの値 NOT NULL または NULL に binary(8) または varbinary(8) を使用します。
+- **timestamp**: datetime2 と `CURRENT_TIMESTAMP` 関数を使用するようにコードを再作成します。current\_timestamp を既定の制約として指定することはできません。また、値は自動的には更新されません。timestamp で型指定された列から rowversion 値を移行する必要がある場合は、行バージョンの値 NOT NULL または NULL に binary(8) または varbinary(8) を使用します。
 - **varchar(max)**: パフォーマンスを向上させるために、varchar(8000) 以下を使用します。
 - **uniqueidentifier**: varbinary(8) を使用します。
 - **ユーザー定義型**: 可能な限り、ネイティブ型に変換します。
@@ -145,4 +145,4 @@ SQLDW にデータベース スキーマを正常に移行した後、次の記�
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

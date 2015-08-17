@@ -5,15 +5,16 @@
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="vm-windows-sharepoint"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2015"
+	ms.date="07/22/2015"
 	ms.author="josephd"/>
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 4: SharePoint サーバーの構成
@@ -95,7 +96,7 @@ Azure PowerShell コマンドの次のブロックを使用して、4 つの Sha
 
 	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName $vnetName
 
-「[リモート デスクトップ接続を使用した仮想マシンへのログオン](virtual-machines-workload-intranet-sharepoint-phase2.md#logon)」の手順を 4 回 (SharePoint サーバーごとに 1 回) 実行し、 [Domain]\sp_farm_db アカウントの資格情報を使用してログオンします。これらの資格情報は、「[フェーズ 2: ドメイン コント ローラーの構成](virtual-machines-workload-intranet-sharepoint-phase2.md)」で作成しました。
+「[リモート デスクトップ接続を使用した仮想マシンへのログオン](virtual-machines-workload-intranet-sharepoint-phase2.md#logon)」の手順を 4 回 (SharePoint サーバーごとに 1 回) 実行し、 [Domain]\\sp\_farm\_db アカウントの資格情報を使用してログオンします。これらの資格情報は、「[フェーズ 2: ドメイン コント ローラーの構成](virtual-machines-workload-intranet-sharepoint-phase2.md)」で作成しました。
 
 「[接続をテストするには](virtual-machines-workload-intranet-sharepoint-phase2.md#testconn)」の手順を 4 回 (SharePoint サーバーごとに 1 回) 実行して、組織のネットワーク上の場所への接続をテストします。
 
@@ -109,8 +110,8 @@ Azure PowerShell コマンドの次のブロックを使用して、4 つの Sha
 4.	**[サーバー ファームへの接続]** ページで、**[新しいサーバー ファームの作成]** をクリックし、**[次へ]** をクリックします。
 5.	**[構成データベースの設定]** ページで、次の操作を行います。
  - **[データベース サーバー]** に、プライマリ データベース サーバーの名前を入力します。
- - **[ユーザー名]**に、「[Domain]**\sp_farm_db** (「[フェーズ 2: ドメイン コントローラーの構成](virtual-machines-workload-intranet-sharepoint-phase2.md)」で作成)」と入力します。sp_farm_db アカウントには、データベース サーバーに対する sysadmin 権限があります。
- - **[パスワード]** に、sp_farm_db アカウントのパスワードを入力します。
+ - **[ユーザー名]**に、「[Domain]**\\sp\_farm\_db** (「[フェーズ 2: ドメイン コントローラーの構成](virtual-machines-workload-intranet-sharepoint-phase2.md)」で作成)」と入力します。sp\_farm\_db アカウントには、データベース サーバーに対する sysadmin 権限があります。
+ - **[パスワード]** に、sp\_farm\_db アカウントのパスワードを入力します。
 6.	**[次へ]** をクリックします。
 7.	**[ファームのセキュリティ設定の指定]** ページで、パスフレーズを 2 回入力します。後で参照できるように、パスフレーズを記録して、安全な場所に保管しておきます。**[次へ]** をクリックします。
 8.	**[SharePoint サーバーの全体管理 Web アプリケーションの構成]** ページで、**[次へ]** をクリックします。
@@ -126,7 +127,7 @@ Azure PowerShell コマンドの次のブロックを使用して、4 つの Sha
 3.	サービス (IIS など) が再起動またはリセットされることを警告する **[SharePoint 製品構成ウィザード]** ダイアログが表示されます。**[はい]** をクリックします。
 4.	**[サーバー ファームへの接続]** ページで、**[既存のサーバー ファームへの接続]** をクリックし、**[次へ]** をクリックします。
 5.	**[構成データベースの設定]** ページで、**[データベース サーバー]** にプライマリ データベース サーバーの名前を入力し、**[データベース名の取得]** をクリックします。
-6.	データベース名の一覧の **[SharePoint_Config]** をクリックし、**[次へ]** をクリックします。
+6.	データベース名の一覧の **[SharePoint\_Config]** をクリックし、**[次へ]** をクリックします。
 7.	**[ファームのセキュリティ設定の指定]** ページで、前の手順のパスフレーズを入力します。**[次へ]** をクリックします。
 8.	**[SharePoint 製品構成ウィザードの終了]** ページが表示されます。**[次へ]** をクリックします。
 9.	**[構成成功]** ページで **[完了]** をクリックします。
@@ -190,4 +191,4 @@ SharePoint ファームへのクライアント トラフィックが 2 つの�
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

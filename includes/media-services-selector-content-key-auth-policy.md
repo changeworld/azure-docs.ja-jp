@@ -3,4 +3,4 @@
 - [.NET](../articles/media-services/media-services-dotnet-configure-content-key-auth-policy.md)
 - [REST API](../articles/media-services/media-services-rest-configure-content-key-auth-policy.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

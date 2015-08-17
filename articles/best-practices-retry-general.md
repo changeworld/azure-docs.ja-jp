@@ -115,4 +115,4 @@
 * [Compensating Transaction パターン](http://msdn.microsoft.com/library/dn589804.aspx)
 * [Idempotency パターン](http://blog.jonathanoliver.com/2010/04/idempotency-patterns/)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

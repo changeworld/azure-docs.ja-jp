@@ -172,4 +172,4 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

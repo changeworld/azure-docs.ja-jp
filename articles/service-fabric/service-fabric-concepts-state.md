@@ -41,4 +41,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 - [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

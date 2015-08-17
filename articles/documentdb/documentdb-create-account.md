@@ -45,4 +45,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

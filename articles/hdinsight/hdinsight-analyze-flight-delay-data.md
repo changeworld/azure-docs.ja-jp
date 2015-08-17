@@ -41,6 +41,7 @@ Azure HDInsight の大きな利点の 1 つに、データ ストレージとコ
 
 フライト遅延データのアップロード手順、Hive クエリ文字列の作成とアップロード手順、および Sqoop ジョブのための Azure SQL データベースの準備手順については、付録を参照してください。
 
+> [AZURE.NOTE]このドキュメントの手順は、Windows ベースのクラスターに固有のものです。Linux ベースのクラスターでの手順については、「[HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data-linux.md)」を参照してください。
 
 ###前提条件
 
@@ -52,7 +53,7 @@ Azure HDInsight の大きな利点の 1 つに、データ ストレージとコ
 
 **HDInsight ストレージについて**
 
-HDInsight の Hadoop クラスターでは、データ ストレージとして Azure BLOB ストレージが使用されます。詳細については、[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]に関するページを参照してください。
+HDInsight の Hadoop クラスターでは、データ ストレージとして Azure BLOB ストレージが使用されます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
 HDInsight クラスターをプロビジョニングするときに、Hadoop 分散ファイル システム (HDFS) と同じように、Azure ストレージ アカウントの BLOB ストレージ コンテナーを、既定のファイル システムとして指定します。このストレージ アカウントは "*既定のストレージ アカウント*" と呼ばれ、BLOB コンテナーは、"*既定の BLOB コンテナー*" または "*既定のコンテナー*" と呼ばれています。既定のストレージ アカウントは、HDInsight クラスターと同じデータ センター内に存在する必要があります。HDInsight クラスターを削除しても、既定のコンテナーと既定のストレージ アカウントは削除されません。
 
@@ -62,7 +63,7 @@ Azure BLOB ストレージの構文を次に示します。
 
 	wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
->[AZURE.NOTE]BLOB ストレージのパスは仮想パスです。詳細については、[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]に関するページを参照してください。
+>[AZURE.NOTE]BLOB ストレージのパスは仮想パスです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
 既定のコンテナーに格納されているファイルは、次の URI のどれを使用しても HDInsight からアクセスできます (例として flightdelays.hql を使用しています)。
 
@@ -104,7 +105,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 詳細については、「[HDInsight: Hive Internal and External Tables Intro (HDInsight: Hive の内部テーブルと外部テーブルの概要)][cindygross-hive-tables]」を参照してください。
 
-> [AZURE.NOTE]HiveQL のステートメントの 1 つが、Hive の外部テーブルを作成します。Hive の外部テーブルは、元の場所にデータ ファイルを保持します。Hive の内部テーブルは、hive\warehouse にデータ ファイルを移動します。Hive の内部テーブルは、データ ファイルを既定のコンテナーに配置する必要があります。既定の BLOB コンテナー外にデータを保存する場合は、Hive 外部テーブルを使用する必要があります。
+> [AZURE.NOTE]HiveQL のステートメントの 1 つが、Hive の外部テーブルを作成します。Hive の外部テーブルは、元の場所にデータ ファイルを保持します。Hive の内部テーブルは、hive\\warehouse にデータ ファイルを移動します。Hive の内部テーブルは、データ ファイルを既定のコンテナーに配置する必要があります。既定の BLOB コンテナー外にデータを保存する場合は、Hive 外部テーブルを使用する必要があります。
 
 
 
@@ -407,7 +408,7 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブの実行方法とし�
 </table>
 
 3. **[Download]** をクリックします。
-4. ファイルを **C:\Tutorials\FlightDelays\Data** フォルダーに解凍します。ファイルはそれぞれ CSV ファイルで、サイズは約 60 GB です。
+4. ファイルを **C:\\Tutorials\\FlightDelays\\Data** フォルダーに解凍します。ファイルはそれぞれ CSV ファイルで、サイズは約 60 GB です。
 5.	ファイルの名前を、データを含む月の名前に変更します。たとえば、1 月のデータを含むファイルの場合、*January.csv* という名前にします。
 6. 手順 2. ～ 5. を繰り返して、2013 年の 12 か月分のファイルをダウンロードします。チュートリアルを実行するには、月別のファイルが少なくとも 1 つ必要です。  
 
@@ -504,11 +505,11 @@ Azure PowerShell を使用して、複数の HiveQL ステートメントを一�
 
 HiveQL スクリプトは、次の作業を実行します。
 
-1. **delays_raw テーブルを削除します** (テーブルが既に存在する場合)。
-2. **delays_raw 外部 Hive テーブルを作成します**。このテーブルはフライト遅延ファイルのある BLOB ストレージの場所を指しています。このクエリでは、フィールドがコンマ (,) 区切りで、行末が "\n" であることを指定しています。この場合、フィールド値にコンマが "含まれている" と問題が発生します。Hive は、フィールド区切りのコンマとフィールド値の一部であるコンマを識別できません (ORIGIN_CITY_NAME フィールドや DEST_CITY_NAME フィールドの値など)。これに対処するため、クエリでは、間違って複数の列に分割されるデータを格納する TEMP 列を作成します。  
+1. **delays\_raw テーブルを削除します** (テーブルが既に存在する場合)。
+2. **delays\_raw 外部 Hive テーブルを作成します**。このテーブルはフライト遅延ファイルのある BLOB ストレージの場所を指しています。このクエリでは、フィールドがコンマ (,) 区切りで、行末が "\\n" であることを指定しています。この場合、フィールド値にコンマが "含まれている" と問題が発生します。Hive は、フィールド区切りのコンマとフィールド値の一部であるコンマを識別できません (ORIGIN\_CITY\_NAME フィールドや DEST\_CITY\_NAME フィールドの値など)。これに対処するため、クエリでは、間違って複数の列に分割されるデータを格納する TEMP 列を作成します。  
 3. **delays テーブルを削除します** (テーブルが既に存在する場合)。
-4. **delays テーブルを作成します**。次へ進む前にデータをクリーンアップしておくと面倒がありません。次のクエリは、delays_raw テーブルを基にして、新しい *delays* テーブルを作成します。(前述のように) TEMP 列はコピーしません。**substring** 関数を使用してデータから引用符を削除します。 
-5. **悪天候による平均遅延を計算し、その結果を都市名ごとにグループ化します。** さらに、結果を BLOB ストレージに出力します。このクエリは、データからアポストロフィを削除し、**weather_delay** の値が null の行を除外します。このチュートリアルで後ほど使用する Sqoop ではこれらの値が既定では適切に処理されないため、この処理が必要です。
+4. **delays テーブルを作成します**。次へ進む前にデータをクリーンアップしておくと面倒がありません。次のクエリは、delays\_raw テーブルを基にして、新しい *delays* テーブルを作成します。(前述のように) TEMP 列はコピーしません。**substring** 関数を使用してデータから引用符を削除します。 
+5. **悪天候による平均遅延を計算し、その結果を都市名ごとにグループ化します。** さらに、結果を BLOB ストレージに出力します。このクエリは、データからアポストロフィを削除し、**weather\_delay** の値が null の行を除外します。このチュートリアルで後ほど使用する Sqoop ではこれらの値が既定では適切に処理されないため、この処理が必要です。
 
 HiveQL コマンドの完全な一覧については、「[Hive Data Definition Language (Hive データ定義言語)][hadoop-hiveql]」を参照してください。各 HiveQL コマンドは、セミコロンで終了します。
 
@@ -673,7 +674,7 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 
 	スクリプトには次の変数が使用されています。
 
-	- **$hqlLocalFileName** - HiveQL スクリプト ファイルは、BLOB ストレージにアップロードされる前に、いったんローカルに保存されます。その際に、このファイル名が使用されます。既定値は <u>C:\tutorials\flightdelays\flightdelays.hql</u> です。
+	- **$hqlLocalFileName** - HiveQL スクリプト ファイルは、BLOB ストレージにアップロードされる前に、いったんローカルに保存されます。その際に、このファイル名が使用されます。既定値は <u>C:\\tutorials\\flightdelays\\flightdelays.hql</u> です。
 	- **$hqlBlobName** - Azure BLOB ストレージで使用される HiveQL スクリプト ファイルの BLOB 名。既定値は tutorials/flightdelays/flightdelays.hql です。ファイルは直接 Azure BLOB ストレージに書き込まれるため、BLOB 名の先頭に "/" はありません。BLOB ストレージからファイルにアクセスする場合は、ファイル名の先頭に "/" を追加する必要があります。
 	- **$srcDataFolder** と **$dstDataFolder** はそれぞれ "tutorials/flightdelays/data" と "tutorials/flightdelays/output" です。
 
@@ -836,7 +837,7 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 4. **F5** キーを押して、スクリプトを実行します。
 5. スクリプトの出力結果を検証します。スクリプトが正常に実行されたことを確認してください。	
 
-##<a id="nextsteps"></a> 次のステップ
+##<a id="nextsteps"></a>次のステップ
 ここでは、ファイルを Azure BLOB ストレージにアップロードする方法、Azure BLOB ストレージのデータを Hive テーブルに取り込む方法、Hive クエリの実行方法、Sqoop を使用して HDFS から Azure SQL データベースにデータをエクスポートする方法を学習しました。詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の概要][hdinsight-get-started]
@@ -844,7 +845,7 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 * [HDInsight での Oozie の使用][hdinsight-use-oozie]
 * [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
 * [HDInsight での Pig の使用][hdinsight-use-pig]
-* [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][hdinsight-develop-mapreduce]
+* [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 * [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][hdinsight-develop-streaming]
 
 
@@ -880,4 +881,4 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

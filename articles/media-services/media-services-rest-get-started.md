@@ -21,7 +21,7 @@
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
 
 このクイックスタートでは Azure Media Services (AMS) の REST API を使用するビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について手順を追って説明します。
 
@@ -37,11 +37,11 @@ REST API を使用して Media Services での開発を始めるには、次の�
 
 1.  ポータルを使用した Media Services アカウントの作成
 1.  REST API で Media Services アカウントに接続する
-1.  新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
+1.  新しい資産を作成し、REST API を使用してビデオのファイルをアップロードする
 1.  REST API でストリーミング ユニットを構成する
 2.  REST API で一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
-1.  REST API でエンコードされたアセットの配信ポリシーの構成
-1.  アセットを発行して REST API によるストリーミングとプログレッシブ ダウンロード用 URL を取得する 
+1.  REST API でエンコードされた資産の配信ポリシーの構成
+1.  資産を発行して REST API によるストリーミングとプログレッシブ ダウンロード用 URL を取得する 
 1.  コンテンツの再生 
 
 
@@ -49,15 +49,15 @@ REST API を使用して Media Services での開発を始めるには、次の�
 
 1. [管理ポータル][]で、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
    
-	![メディア サービスの簡易作成](./media/media-services-rest-get-started/wams-QuickCreate.png)
+	![Media Services の簡易作成](./media/media-services-rest-get-started/wams-QuickCreate.png)
 
-2. **[名前]** ボックスに新しいアカウントの名前を入力します。メディア サービス アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
+2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
 
-3. **[リージョン]** ボックスで、メディア サービス アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能なメディア サービス リージョンだけが表示されます。
+3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンだけが表示されます。
 
-4. **[ストレージ アカウント]** ボックスで、メディア サービス アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。メディア サービス アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
+4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
 
-5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、メディア サービス アカウントと同じです。
+5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
 6. フォームの下部にある **[簡易作成]** をクリックします。
 
@@ -75,7 +75,7 @@ REST API を使用して Media Services での開発を始めるには、次の�
 
 ## <a id="connect"></a>REST API で Media Services アカウントに接続する
 
-Azure Media Services にアクセスする際には、Azure アクセス制御サービス (ACS) から提供されるアクセス トークン、および Media Services 自体の URI の 2 つが必要です。Media Services にコールする際、正しいヘッダー値を指定して適切にアクセス トークンに渡す限り、どのような方法でもこれらのリクエストを作成できます。
+Azure Media Services にアクセスする際には、Azure Access Control Service (ACS) から提供されるアクセス トークン、および Media Services 自体の URI の 2 つが必要です。Media Services にコールする際、正しいヘッダー値を指定して適切にアクセス トークンに渡す限り、どのような方法でもこれらのリクエストを作成できます。
 
 次の手順では、Media Services REST API を使用して Media Services に接続するときの最も一般的なワークフローについて説明します。
 
@@ -113,9 +113,9 @@ REST API から直接 Media Services にアクセスするには、ACS からア
 	
 **本文**:
 
-この要求の本文で、client_id と client_secret の値を指定する必要があります。client_id と client_secret はそれぞれ、AccountName と AccountKey の値に対応します。Media Services では、アカウントを設定したときにこれらの値が提供されます。
+この要求の本文で、client\_id と client\_secret の値を指定する必要があります。client\_id と client\_secret はそれぞれ、AccountName と AccountKey の値に対応します。Media Services では、アカウントを設定したときにこれらの値が提供されます。
 
-Media Services アカウントの AccountKey は、アクセス トークン要求で client_secret 値として使用されるときは URL エンコードされている必要があります。
+Media Services アカウントの AccountKey は、アクセス トークン要求で client\_secret 値として使用されるときは URL エンコードされている必要があります。
 
 	grant_type=client_credentials&client_id=ams_account_name&client_secret=URL_encoded_ams_account_key&scope=urn%3aWindowsAzureMediaServices
 
@@ -146,16 +146,15 @@ Media Services アカウントの AccountKey は、アクセス トークン要�
 	}
 	
 
->[AZURE.NOTE]
->"access_token " と "expires_in " の値は外部ストレージに保存することをお勧めします。後でそのストレージからトークンのデータを取り出し、Media Services REST API コールで再利用できます。これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
+>[AZURE.NOTE]"access\_token " と "expires\_in " の値は外部ストレージにキャッシュすることをお勧めします。後でそのストレージからトークンのデータを取り出し、Media Services REST API コールで再利用できます。これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
 
-アクセス トークンの "expires_in" 値を確認し、必要に応じて新しいトークンで REST API コールを更新してください。
+アクセス トークンの "expires\_in" 値を確認し、必要に応じて新しいトークンで REST API コールを更新してください。
 
 ###Media Services URI への接続
 
 Media Services のルート URI は https://media.windows.net/ です。まず、この URI に接続して、301 リダイレクトが返された場合は続けて新しい URI にコールする必要があります。加えて、要求に auto-redirect/follow ロジックを使うことはできません。HTTP 動詞や応答本文はその新しい URI に転送されません。
 
-アセット ファイルをアップロードしたりダウンロードしたりするルート URI は https://yourstorageaccount.blob.core.windows.net/ です。ストレージ アカウント名には、Media Services アカウントで設定したものと同じものが使われます。
+資産ファイルをアップロードしたりダウンロードしたりするルート URI は https://yourstorageaccount.blob.core.windows.net/ です。ストレージ アカウント名には、Media Services アカウントで設定したものと同じものが使われます。
 
 次の例は、Media Services ルート URI (https://media.windows.net/)) への HTTP 要求を示します。要求に対して 301 リダイレクトが返されています。その後、新しい URI (https://wamsbayclus001rest-hs.cloudapp.net/api/)) に続けて要求を行っています。
 
@@ -215,23 +214,23 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 
 >[AZURE.NOTE]このチュートリアルではこれ以降、新しい URI を使用します。
 
-## <a id="upload"></a>新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
+## <a id="upload"></a>新しい資産を作成し、REST API を使用してビデオのファイルをアップロードする
 
-Media Services で、デジタル ファイルをアセットにアップロードします。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルをアセットにアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
+Media Services で、デジタル ファイルを資産にアップロードします。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
 
-アセット作成時に指定する必要がある値の 1 つに、アセット作成オプションがあります。**Options **プロパティは、アセットの作成に使用できる暗号化オプションを示す列挙値です。有効な値は以下の一覧の値のいずれかですが、この一覧の値を組み合わせて使用することはできません。
+資産作成時に指定する必要がある値の 1 つに、資産作成オプションがあります。**Options **プロパティは、資産の作成に使用できる暗号化オプションを示す列挙値です。有効な値は以下の一覧の値のいずれかですが、この一覧の値を組み合わせて使用することはできません。
 
  
 - **None** = **0** - 暗号化は使用されません。このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。 
-- **StorageEncrypted** = **1** - ローカルで AES-256 ビット暗号化を使用し、平文のコンテンツを暗号化したうえで、それを Azure Storage にアップロードします。アップロードされたデータは、暗号化された状態で保存されます。StorageEncrypted で保護されたアセットは、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに配置されます。その後、必要に応じて再度暗号化を適用して、新しい出力アセットとして再びアップロードできます。StorageEncrypted の主な目的は、高品質の入力メディア ファイルを強力な暗号化によって保護したうえでディスクに保存するというニーズに応えることです。
+- **StorageEncrypted** = **1** - ローカルで AES-256 ビット暗号化を使用し、平文のコンテンツを暗号化したうえで、それを Azure Storage にアップロードします。アップロードされたデータは、暗号化された状態で保存されます。StorageEncrypted で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに配置されます。その後、必要に応じて再度暗号化を適用して、新しい出力資産として再びアップロードできます。StorageEncrypted の主な目的は、高品質の入力メディア ファイルを強力な暗号化によって保護したうえでディスクに保存するというニーズに応えることです。
 - **CommonEncryptionProtected** = **2** - 既に Common Encryption や PlayReady DRM で暗号化されて保護されているコンテンツ (PlayReady DRM で保護されたスムーズ ストリーミングなど) をアップロードする場合は、このオプションを使用します。
 - **EnvelopeEncryptionProtected** = **4** – AES で暗号化された HLS をアップロードする場合はこのオプションを使用します。この場合ファイルは、Transform Manager によってあらかじめエンコードされて暗号化されている必要があります。
 
-### アセットを作成する
+### 資産を作成する
 
-アセットは、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。REST API でアセットを作成するには、Media Services に POST 要求を送信し、要求本文に、アセットに関するプロパティ情報を配置する必要があります。
+資産は、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。REST API で資産を作成するには、Media Services に POST 要求を送信し、要求本文に、資産に関するプロパティ情報を配置する必要があります。
 
-次の例では、アセットを作成する方法を示します。
+次の例では、資産を作成する方法を示します。
 
 **HTTP 要求**
 
@@ -284,7 +283,7 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 	
 ### AssetFile を作成する
 
-[AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。アセット ファイルは常にアセットに関連付けられており、アセットには 1 つまたは複数の Assetfile を含む場合があります。アセット　ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
+[AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。資産ファイルは常に資産に関連付けられており、資産には 1 つまたは複数の Assetfile を含む場合があります。資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
 
 デジタル メディア ファイルを blob コンテナーにアップロードした後、**MERGE** HTTP 要求を使用して、メディア ファイル (トピックの後半に表示) に関する情報とともに AssetFile を更新します。
 
@@ -347,7 +346,7 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 
 ### 書き込みのアクセス許可を持つ AccessPolicy を作成する 
 
-すべてのファイルを blob ストレージにアップロードする前に、アセットに書き込むためのアクセス ポリシーの権限を設定します。そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。AccessPolicies　の詳細については、[AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx) をご覧ください。
+すべてのファイルを blob ストレージにアップロードする前に、資産に書き込むためのアクセス ポリシーの権限を設定します。そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。AccessPolicies　の詳細については、[AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx) をご覧ください。
 
 次の例は、AccessPolicy を作成する方法を示します。
 		
@@ -396,7 +395,7 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 
 ### アップロード URL を取得する
 
-実際のアップロード URL を受信するには、SAS Locator　を作成します。Locator は、アセット内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。詳細については、「[Locator](http://msdn.microsoft.com/library/azure/hh974308.aspx)」をご覧ください。
+実際のアップロード URL を受信するには、SAS Locator　を作成します。Locator は、資産内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。詳細については、「[Locator](http://msdn.microsoft.com/library/azure/hh974308.aspx)」をご覧ください。
 
 
 SAS URL には次の形式があります。
@@ -405,7 +404,7 @@ SAS URL には次の形式があります。
 
 いくつかの考慮事項が適用されます。
 
-- 特定のアセットに関連付けられている 5 つの一意のLocator を同時に使用することはできません。詳細については、「Locator」をご覧ください。
+- 特定の資産に関連付けられている 5 つの一意のLocator を同時に使用することはできません。詳細については、「Locator」をご覧ください。
 - すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。また、StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。	
 - Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。この問題は、SAS URL と Origin Locator の両方に当てはまります。
 
@@ -549,14 +548,15 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
-- コンテンツの配信元となる**ストリーミング エンドポイント**のストリーミング ユニットを 1 つ以上取得する (このセクションで説明)。- mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする (エンコーディングの手順は後述)。  
+- コンテンツの配信元となる**ストリーミング エンドポイント**のストリーミング ユニットを 1 つ以上取得する (このセクションで説明)。
+- mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする (エンコーディングの手順は後述)。  
 
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
 
->[AZURE.NOTE]料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+>[AZURE.NOTE]価格の詳細については、「[Media Services の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
-ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
+ストリーミング予約ユニットの数を変更するには、以下の手順を実行します。
 	
 ### 更新するストリーミング エンドポイントを取得する
 
@@ -661,7 +661,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ## <a id="encode"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
 
-Media Services に取り込んだアセットには、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。これらのアクティビティはジョブと呼ばれ、各[ジョブ](http://msdn.microsoft.com/library/azure/hh974289.aspx)は、アセット ファイルの実際の作業を実行するアトミック タスクで構成されます。
+Media Services に取り込んだ資産には、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。これらのアクティビティはジョブと呼ばれ、各[ジョブ](http://msdn.microsoft.com/library/azure/hh974289.aspx)は、資産ファイルの実際の作業を実行するアトミック タスクで構成されます。
 
 冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。Media Services では、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) のいずれかの形式に一連のアダプティブ ビットレート MP4 ファイルを動的にパッケージ化することができます。
 
@@ -670,7 +670,7 @@ Media Services に取り込んだアセットには、メディアのエンコ�
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードまたはトランスコードする。  
 - コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。 
 
-次のセクションでは、1 つのエンコード タスクを含むジョブを作成する方法を示します。タスクは、**Azure Media Encoder** を使用して一連のアダプティブ ビットレート mp4 にトランスコードする mezzanine ファイルを指定します。ジョブの処理の進行状況を監視する方法についても示します。ジョブが完了すると、アセットにアクセスするために必要なロケーターを作成できます。
+次のセクションでは、1 つのエンコード タスクを含むジョブを作成する方法を示します。タスクは、**Azure Media Encoder** を使用して一連のアダプティブ ビットレート mp4 にトランスコードする mezzanine ファイルを指定します。ジョブの処理の進行状況を監視する方法についても示します。ジョブが完了すると、資産にアクセスするために必要なロケーターを作成できます。
 
 ### メディア プロセッサを取得する
 
@@ -821,17 +821,17 @@ Media Services では、メディア プロセッサは、メディア コンテ
 
 ジョブ要求について注意が必要ないくつかの重要事項があります。
 
-- TaskBody プロパティでは、リテラル XML を使用して、タスクが使用するアセットの入力または出力数を定義する必要があります。タスクのトピックには、XML のための XML スキーマ定義が含まれます。
+- TaskBody プロパティでは、リテラル XML を使用して、タスクが使用する資産の入力または出力数を定義する必要があります。タスクのトピックには、XML のための XML スキーマ定義が含まれます。
 - TaskBody の定義には各 <inputAsset> の内部値と <outputAsset> を JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
-- タスクは、複数の出力アセットを持つことができます。1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
-- タスクの入力アセットとして、JobInputAsset または JobOutputAsset を指定できます。
+- タスクは、複数の出力資産を持つことができます。1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
+- タスクの入力資産として、JobInputAsset または JobOutputAsset を指定できます。
 - タスクは、サイクルを形成することはできません。
 - JobInputAsset または JobOutputAsset に渡す値パラメーターは、Asset のインデックス値を表します。実際の Asset は、Job エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。 
 
->[AZURE.NOTE]Media Services は OData v3 上に構築されるため、 InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々のアセットは、"__metadata : uri" の名前と値のペアによって参照されます。
+>[AZURE.NOTE]Media Services は OData v3 上に構築されるため、 InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"\_\_metadata : uri" の名前と値のペアによって参照されます。
 
-- InputMediaAssets は、Media Services で作成した1 つまたは複数のアセットにマップされます。OutputMediaAssets はシステムによって作成されます。既存のアセットは参照しません。
-- OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ <outputAsset> 要素の内部テキストの値になります。たとえば、"Sample"に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)_NewJob" になります。 
+- InputMediaAssets は、Media Services で作成した1 つまたは複数の資産にマップされます。OutputMediaAssets はシステムによって作成されます。既存の資産は参照しません。
+- OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ <outputAsset> 要素の内部テキストの値になります。たとえば、"Sample"に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)\_NewJob" になります。
 
 	次の例では、assetName 属性を設定する方法を示します。
 	
@@ -906,9 +906,9 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
 >[AZURE.NOTE]ジョブ id (通常は nb:jid:UUID: somevalue)は、CancelJob へのパラメーターとして渡すときは URL エンコードする必要があります。
 
 
-### 出力アセットを取得する 
+### 出力資産を取得する 
 
-次のセクションでは、ジョブの出力アセット (エンコード済みアセット) の配信ポリシーを構成します。次のコードは、出力アセット Id を要求する方法を示しています。
+次のセクションでは、ジョブの出力資産 (エンコード済み資産) の配信ポリシーを構成します。次のコードは、出力資産 ID を要求する方法を示しています。
 
 
 **HTTP 要求**
@@ -957,9 +957,9 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
 	}
 
 
-## <a id="configure_delivery_method"></a>エンコードされたアセットの配信ポリシーの構成
+## <a id="configure_delivery_method"></a>エンコードされた資産の配信ポリシーの構成
 
-Media Services のコンテンツを配信するための作業の一環として、アセットの配信ポリシーを構成します。たとえば、アセットの配信にどのようなプロトコルを使用できるか (MPEG DASH、HLS、HDS、スムーズ ストリーミング、またはそのすべてなど) や、アセットを動的に暗号化するかどうか、またどのように暗号化するか (エンベロープ、Common Encryption など) は、アセット配信ポリシーで構成することになります。
+Media Services のコンテンツを配信するための作業の一環として、資産の配信ポリシーを構成します。たとえば、資産の配信にどのようなプロトコルを使用できるか (MPEG DASH、HLS、HDS、スムーズ ストリーミング、またはそのすべてなど) や、資産を動的に暗号化するかどうか、またどのように暗号化するか (エンベロープ、Common Encryption など) は、資産配信ポリシーで構成することになります。
 
 次の **AssetDeliveryPolicies** HTTP 要求では、動的暗号化を適用しないように指定し (AssetDeliveryPolicyType は、None = 0、Blocked = 1、NoDynamicEncryption = 2、DynamicEnvelopeEncryption = 3、DynamicCommonEncryption = 4 のいずれかの値にすることができます)、MPEG DASH、HLS、Smooth Streaming のいずれかのプロトコルでストリームを配信します (AssetDeliveryProtocol は、None = 0、SmoothStreaming = 1、Dash = 2、HLS = 4、Hds = 8、All = 65535 の値の組み合わせにすることができます)。
 
@@ -1011,9 +1011,9 @@ Media Services のコンテンツを配信するための作業の一環とし�
 	}
     
 
-### アセットの配信ポリシーをアセットとリンクする
+### 資産の配信ポリシーを資産とリンクする
 
-次の HTTP 要求は、指定された配信ポリシーを指定されたアセットに関連付けます。
+次の HTTP 要求は、指定された配信ポリシーを指定された資産に関連付けます。
 
 **HTTP 要求**
 
@@ -1037,9 +1037,9 @@ Media Services のコンテンツを配信するための作業の一環とし�
     . . . 
 
 
-## <a id="publish_get_urls"></a>REST API でアセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
+## <a id="publish_get_urls"></a>REST API で資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
 
-アセットをストリーミングまたはダウンロードするにはまず、ロケーターを作成してアセットを "発行" する必要があります。アセットに含まれているファイルには、ロケーターを通じてアクセスできます。Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に、Access Signature (SAS) ロケーターはメディア ファイルのダウンロードに使用します。
+資産をストリーミングまたはダウンロードするにはまず、ロケーターを作成して資産を "発行" する必要があります。資産に含まれているファイルには、ロケーターを通じてアクセスできます。Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に、Access Signature (SAS) ロケーターはメディア ファイルのダウンロードに使用します。
 
 ロケーターを作成したら、対象ファイルのストリーミングやダウンロードに使用する URL を作成します。
 
@@ -1061,7 +1061,7 @@ MPEG DASH のストリーミング URL の形式は次のとおりです。
 
 	{blob container name}/{asset name}/{file name}/{SAS signature}
 
-このセクションでは、アセットを"発行"するために必要な次のタスクを実行する方法を示します。
+このセクションでは、資産を"発行"するために必要な次のタスクを実行する方法を示します。
 
 - 読み取りアクセス許可を持つ AccessPolicy を作成する 
 - コンテンツをダウンロードするための SAS URL を作成する 
@@ -1086,10 +1086,9 @@ MPEG DASH のストリーミング URL の形式は次のとおりです。
 	
 	{"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-成功した場合、作成した AccessPolicy エンティティについて記述した 201 サクセス コードが返されます。これで、配信して Locator エンティティを作成するファイルが含まれているアセット (出力アセットなど) の Asset Id と AccessPolicy Id を使用できます。
+成功した場合、作成した AccessPolicy エンティティについて記述した 201 サクセス コードが返されます。これで、配信して Locator エンティティを作成するファイルが含まれている資産 (出力資産など) の Asset Id と AccessPolicy Id を使用できます。
 
->[AZURE.NOTE]
->この基本的なワークフローは (このトピックで既に説明した) アセットの取り込み時にファイルをアップロードするのと同じです。また、ファイルのアップロードのように、ファイルにすぐにアクセスする必要がある場合は、StartTime 値を現在の時刻より 5 分前に設定します。この操作は、クライアントと Media Services との間でクロック スキューがある可能性があるために必要です。StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。
+>[AZURE.NOTE]この基本的なワークフローは (このトピックで既に説明した) 資産の取り込み時にファイルをアップロードするのと同じです。また、ファイルのアップロードのように、ファイルにすぐにアクセスする必要がある場合は、StartTime 値を現在の時刻より 5 分前に設定します。この操作は、クライアントと Media Services との間でクロック スキューがある可能性があるために必要です。StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。
 
 
 ###コンテンツをダウンロードするための SAS URL を作成する 
@@ -1143,20 +1142,19 @@ MPEG DASH のストリーミング URL の形式は次のとおりです。
 	         }
 	      },
 	      "Id":"nb:lid:UUID:8e5a821d-2194-4d00-8884-adf979856874",
-	      "ExpirationDateTime":"/Date(1337049393000)/",
+	      "ExpirationDateTime":"\/Date(1337049393000)\/",
 	      "Type":1,
 	      "Path":"https://storagetestaccount001.blob.core.windows.net/asset-71d2dd33-efdf-ec43-8ea1-136a110bd42c?st=2012-05-14T21%3A36%3A33Z&se=2012-05-15T02%3A36%3A33Z&sr=c&si=8e5a821d-2194-4d00-8884-adf979856874&sig=y75dViDpC5V8WutrXM%2B%2FGpR3uOtqmlISiNlHU1YUBOg%3D",
 	      "AccessPolicyId":"nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8",
 	      "AssetId":"nb:cid:UUID:71d2dd33-efdf-ec43-8ea1-136a110bd42c",
-	      "StartTime":"/Date(1337031393000)/"
+	      "StartTime":"\/Date(1337031393000)\/"
 	   }
 	}
 
 
 返された **Path** プロパティには、SAS URL が含まれています。
 
->[AZURE.NOTE]
->ストレージ暗号化コンテンツをダウンロードする場合は、表示する前に手動で暗号化を解除するか、または処理タスク内の Storage Decryption MediaProcessor を使用して、処理されたファイルを OutputAsset にクリア テキストで出力し、その Asset からダウンロードする必要があります。処理の詳細については、「Media Services REST API によるエンコード ジョブの作成」をご覧ください。また、作成した後は SAS URL ロケーターを更新できません。たとえば、更新された StartTime 値を持つ同じロケーターを再利用することはできません。これは、SAS URL の作成方法による制限です。ロケーターの有効期限が切れた後のアセットにダウンロードのためにアクセスする場合、新しい StartTime で新しくロケーターを作成する必要があります。
+>[AZURE.NOTE]ストレージ暗号化コンテンツをダウンロードする場合は、表示する前に手動で暗号化を解除するか、または処理タスク内の Storage Decryption MediaProcessor を使用して、処理されたファイルを OutputAsset にクリア テキストで出力し、その Asset からダウンロードする必要があります。処理の詳細については、「Media Services REST API によるエンコード ジョブの作成」をご覧ください。また、作成した後は SAS URL ロケーターを更新できません。たとえば、更新された StartTime 値を持つ同じロケーターを再利用することはできません。これは、SAS URL の作成方法による制限です。ロケーターの有効期限が切れた後の資産にダウンロードのためにアクセスする場合、新しい StartTime で新しくロケーターを作成する必要があります。
 
 ###ファイルをダウンロードする
 
@@ -1236,12 +1234,12 @@ Azure ストレージ BLOB の使用の詳細については、[BLOB サービ�
 	         }
 	      },
 	      "Id":"nb:lid:UUID:52034bf6-dfae-4d83-aad3-3bd87dcb1a5d",
-	      "ExpirationDateTime":"/Date(1337049395000)/",
+	      "ExpirationDateTime":"\/Date(1337049395000)\/",
 	      "Type":2,
 	      "Path":"http://wamsbayclus001rest-hs.net/52034bf6-dfae-4d83-aad3-3bd87dcb1a5d/",
 	      "AccessPolicyId":"nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8",
 	      "AssetId":"nb:cid:UUID:eb5540a2-116e-4d36-b084-7e9958f7f3c3",
-	      "StartTime":"/Date(1337031395000)/"
+	      "StartTime":"\/Date(1337031395000)\/"
 	   }
 	}
 
@@ -1271,7 +1269,7 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 
 ##その他のリソース
 - <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - 今すぐビデオをオンラインにしましょう!</a>
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - 動的パッケージ化機能とモバイル デバイス</a>
+- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - 動的パッケージ化機能と Mobile Services</a>
 
 
 <!-- Anchors. -->
@@ -1284,4 +1282,4 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

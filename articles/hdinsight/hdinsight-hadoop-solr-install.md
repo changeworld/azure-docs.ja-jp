@@ -18,7 +18,7 @@
 
 # HDInsight Hadoop クラスターに Solr をインストールして使用する
 
-**Script Action** クラスター カスタマイズを使用して、Azure HDInsight の Hadoop の任意の種類のクラスターに Solr をインストールできます。Script Action では、クラスターの作成時のみ、スクリプトを実行してクラスターをカスタマイズできます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ][hdinsight-cluster-customize]」に関するページをご覧ください。
+**Script Action** クラスター カスタマイズを使用して、Azure HDInsight の Hadoop の任意の種類のクラスターに Solr をインストールできます。Script Action では、クラスターの作成時のみ、スクリプトを実行してクラスターをカスタマイズできます。詳細については、[Script Action を使用した HDInsight クラスターのカスタマイズ][hdinsight-cluster-customize]に関するページを参照してください。
 
 このトピックでは、Script Action を使用して、Solr をインストールする方法を学習します。Solr は強力な検索プラットフォームで、Hadoop が管理するデータに対してエンタープライズ レベルの検索機能を提供します。HDInsight クラスターに Solr をインストールした後で、Solr を使用したデータの検索方法についても説明します。
 
@@ -31,7 +31,7 @@
 
 ## <a name="install"></a>Solr をインストールする方法
 
-HDInsight クラスターに Solr をインストールするためのサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) の読み取り専用 Azure ストレージ BLOB から入手できます。このセクションでは、Azure の管理ポータルを使用してクラスターをプロビジョニングする際に、サンプル スクリプトを使用する方法について説明します。
+HDInsight クラスターに Solr をインストールするためのサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) の読み取り専用 Azure ストレージ BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターをプロビジョニングする際に、サンプル スクリプトを使用する方法について説明します。
 
 
 > [AZURE.NOTE]サンプル スクリプトは、HDInsight クラスター version 3.1 でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
@@ -62,7 +62,7 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Solr を
 
 1. **リモート デスクトップ プロトコル (RDP) を使用してインストールされている Solr で HDInsight クラスターにリモート接続します**。Solr のインストールによって作成したクラスターに対し、Azure ポータルでリモート デスクトップを有効にし、クラスターにリモート接続します。手順については、「<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。
 
-2. **データ ファイルをアップロードして Solr のインデックスを作成します**。Solr のインデックスを作成する場合、検索が必要なドキュメントをその中に配置します。Solr のインデックスを作成するには、クラスターに RDP をリモート接続してデスクトップに移動します。次に、Hadoop コマンド ラインを開いて **C:\apps\dist\solr-4.7.2\example\exampledocs** に移動します。次のコマンドを実行します。
+2. **データ ファイルをアップロードして Solr のインデックスを作成します**。Solr のインデックスを作成する場合、検索が必要なドキュメントをその中に配置します。Solr のインデックスを作成するには、クラスターに RDP をリモート接続してデスクトップに移動します。次に、Hadoop コマンド ラインを開いて **C:\\apps\\dist\\solr-4.7.2\\example\\exampledocs** に移動します。次のコマンドを実行します。
 	
 		java -jar post.jar solr.xml monitor.xml
 
@@ -76,7 +76,7 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Solr を
 
 	post.jar ユーティリティは、**solr.xml** と **monitor.xml** という 2 つのサンプル ドキュメントで Solr のインデックスを作成します。post.jar ユーティリティとサンプル ドキュメントは Solr のインストールで利用できるようになります。
 
-3. **Solr ダッシュボードを使用して、インデックス付きドキュメント内を検索します**。HDInsight クラスターへの RDP セッションで Internet Explorer を開き、**http://headnodehost:8983/solr/#/** で Solr のダッシュボードを起動します。左側のウィンドウの **[Core Selector]** ボックスから、**[collection1]** を選択し、メニューの中から **[Query]** をクリックします。例として、Solr 内のすべてのドキュメントを選択して返すために、次の値を指定します。
+3. **Solr ダッシュボードを使用して、インデックス付きドキュメント内を検索します**。HDInsight クラスターへの RDP セッションで Internet Explorer を開き、****http://headnodehost:8983/solr/#/** で Solr のダッシュボードを起動します。左側のウィンドウの **[Core Selector]** ボックスから、**[collection1]** を選択し、メニューの中から **[Query]** をクリックします。例として、Solr 内のすべてのドキュメントを選択して返すために、次の値を指定します。
 	1. **[q]** ボックスに「***:***」を入力します。これにより、Solr でインデックス付けされたすべてのドキュメントが返されます。ドキュメント内の特定の文字列を検索する場合には、ここにその文字列を入力することができます。
 	2. **[wt]** ボックスでは、出力形式を選択します。既定値は、**json** です。**[Execute Query]** をクリックします。
 
@@ -154,7 +154,7 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Solr を
 			  <str name="status">OK</str>
 			</response>
 
-	2. リモート セッションで、{SOLR_HOME}{Collection}\data に移動します。サンプル スクリプトを通じて作成したクラスターの場合、この部分は **C:\apps\dist\solr-4.7.2\example\solr\collection1\data** となります。この場所には、**snapshot.*timestamp*** のような名前でスナップショット フォルダーが作成されていることがわかります。
+	2. リモート セッションで、{SOLR\_HOME}{Collection}\\data に移動します。サンプル スクリプトを通じて作成したクラスターの場合、この部分は **C:\\apps\\dist\\solr-4.7.2\\example\\solr\\collection1\\data** となります。この場所には、**snapshot.*timestamp*** のような名前でスナップショット フォルダーが作成されていることがわかります。
 	
 	3. スナップショット フォルダーを zip 圧縮して Azure BLOB ストレージにアップロードします。Hadoop コマンド ラインで、次のコマンドを使用して、スナップショット フォルダーの場所に移動します。
 
@@ -240,7 +240,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 公開されている SDK の最新のビルドを [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
 
-**自己署名証明書を取得するには**
+**自己署名証明書を作成するには**
 
 自己署名証明書を作成し、それをコンピューターにインストールして、さらに、Azure サブスクリプションにアップロードします。手順については、「[Create a self-signed certificate (自己署名証明書の作成)](http://go.microsoft.com/fwlink/?LinkId=511138)」を参照してください。
 
@@ -344,7 +344,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 **アプリケーションを実行するには**
 
-Windows PowerShell や Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \bin\debug ディレクトリに移動して、次のコマンドを実行します。
+Windows PowerShell や Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \\bin\\debug ディレクトリに移動して、次のコマンドを実行します。
 
 	.\CreateSolrCluster <cluster-name>
 
@@ -365,4 +365,4 @@ Windows PowerShell や Azure PowerShell コンソールを開き、Visual Studio
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

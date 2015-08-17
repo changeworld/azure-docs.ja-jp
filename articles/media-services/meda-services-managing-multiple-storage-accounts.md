@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="複数のストレージ アカウントでの Media Services アセットの管理" 
-	description="この記事では、複数のストレージ アカウントで Media Services のアセットを管理する方法について説明します。" 
+	pageTitle="複数のストレージ アカウントでの Media Services 資産の管理" 
+	description="この記事では、複数のストレージ アカウントで Media Services の資産を管理する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -17,13 +17,13 @@
 	ms.author="juliako"/>
 
 
-#複数のストレージ アカウントでの Media Services アセットの管理
+#複数のストレージ アカウントでの Media Services 資産の管理
 
-Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。アセットを複数のストレージ アカウントに負荷分散します。
+Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。資産を複数のストレージ アカウントに負荷分散します。
 
 大量のコンテンツ処理のために Media Services を拡張します (現在、1 つのストレージ アカウントには最大 500 TB の制限があります)。
 
-このトピックでは、[Azure サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) を使用して、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。また、Media Services SDK を使用してアセットを作成するときに、別のストレージ アカウントを指定する方法も説明します。
+このトピックでは、[Azure サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) を使用して、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。
 
 ##考慮事項
 
@@ -35,25 +35,25 @@ Media Services アカウントに複数のストレージ アカウントをア�
 
 その他の考慮事項
 
-Media Services は、ストリーミング コンテンツ (例: http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !\*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+Media Services は、ストリーミング コンテンツ (例: http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%\#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
 
 ##Azure サービス管理 REST API でストレージ アカウントをアタッチするには
 
 現時点で、複数のストレージ アカウントをアタッチする唯一の方法は、[Azure サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) を使用することです。「[方法: Media Services Management REST API の使用](https://msdn.microsoft.com/library/azure/dn167656.aspx)」トピックのコード サンプルは、**AttachStorageAccountToMediaServiceAccount** メソッドを定義して、指定された Media Services アカウントにストレージ アカウントをアタッチします。同じトピックのコードは、**ListStorageAccountDetails** メソッドを定義し、指定された Media Services アカウントにアタッチされたすべてのストレージ アカウントを表示します。
 
 
-##複数のストレージ アカウントで Media Services アセットを管理するには
+##複数のストレージ アカウントで Media Services 資産を管理するには
 
 次のコードは、最新の Media Services SDK を使用して次のタスクを実行します。
 
 1. 指定された Media Services アカウントに関連付けられているすべてのストレージ アカウントを表示します。
 1. 既定のストレージ アカウントの名前を取得します。
-1. 既定のストレージ アカウントに新しいアセットを作成します。
-1. 指定されたストレージ アカウントにエンコード ジョブの出力アセットを作成します。
+1. 既定のストレージ アカウントに新しい資産を作成します。
+1. 指定されたストレージ アカウントにエンコード ジョブの出力資産を作成します。
 
 	using Microsoft.WindowsAzure.MediaServices.Client; using System; using System.Collections.Generic; using System.Configuration; using System.IO; using System.Linq; using System.Text; using System.Threading; using System.Threading.Tasks;
 	
-	namespace MultipleStorageAccounts { class Program { // Location of the media file that you want to encode. private static readonly string _singleInputFilePath = Path.GetFullPath(@"../..\\supportFiles\\multifile\\interview2.wmv");
+	namespace MultipleStorageAccounts { class Program { // Location of the media file that you want to encode. private static readonly string \_singleInputFilePath = Path.GetFullPath(@"../..\\supportFiles\\multifile\\interview2.wmv");
 	
 	        private static readonly string MediaServicesAccountName = 
 	            ConfigurationManager.AppSettings["MediaServicesAccountName"];
@@ -233,7 +233,7 @@ Media Services は、ストリーミング コンテンツ (例: http://{WAMSAcc
 	            return job;
 	        }
 	    }
-	{
+	}
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

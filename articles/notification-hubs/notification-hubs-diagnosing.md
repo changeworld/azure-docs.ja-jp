@@ -239,4 +239,4 @@ Notification Hubs を使用して通知を送信する場合、通知はまず�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

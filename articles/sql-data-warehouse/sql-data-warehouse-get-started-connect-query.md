@@ -10,7 +10,7 @@
 <tags
    ms.service="sql-data-warehouse"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="06/23/2015"
@@ -105,9 +105,7 @@ SSDT エンジニアは、新しい機能を持つプラグインを定期的に
 
 3. SQL Server オブジェクト エクスプローラーで、[サーバーの追加] をクリックします。これは、以下の図で強調表示されています。
 
-4. [サーバーに接続] ダイアログ ボックスに情報を入力します。
-
-論理サーバーの作成時に選択した値を使用します。
+4. 論理サーバーを作成する場合、[サーバーに接続] ダイアログ ボックスに値を記入します。また、[オプション] ボタンをクリックし、接続する前に (SQL Data Warehouse インスタンス) に接続するデータベースを指定します。
 
 必要に応じて、[パスワードを保存する] チェック ボックスをオンにします。このボックスをオンにすると時間の節約になりますが、プロファイルに物理的にアクセスできるすべての人が、このアカウントを使用してクエリを実行できることに注意してください。
 
@@ -185,6 +183,7 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 	クエリを実行するには、下の緑色の矢印をクリックするか、ショートカット キー `CTRL` + `SHIFT` + `F5` を使用します。
 
 ## 次のステップ ##
+[Load sample data.]: ./sql-data-warehouse-get-started-load-samples.md
 [Start developing code]: ./articles/sql-data-warehouse-overview-develop/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

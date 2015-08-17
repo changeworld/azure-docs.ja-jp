@@ -33,4 +33,4 @@
 * [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)
 * [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx) 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

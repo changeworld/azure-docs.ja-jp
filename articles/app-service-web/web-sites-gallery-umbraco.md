@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/21/2015" 
+	ms.date="08/03/2015" 
 	ms.author="tomfitz"/>
 
 #Microsoft Azure で Marketplace から Umbraco Web アプリを作成する#
@@ -34,15 +34,9 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 
 2. **[Marketplace]** アイコンを選択します。
 	
-	![Choose Web Gallery][01Startboard]
-	
-3. **[Marketplace]** で、**[Web Apps]** タブを選択し、**[Umbraco CMS]** を選択します。
-	
-	![Select Umbraco in the Web Gallery][02WebGallery]
+3. **[Marketplace]** で、**[Web + モバイル]** タブを選択し、**[Umbraco CMS]** を選択します。
 	
 4. 新しい Umbraco CMS Web アプリを作成するには、**[作成]** をクリックします。
-	
-	![Click Create][03UmbracoCMS]
 	
 5. 次の手順では、Umbraco CMS に関連付けるすべてのリソースを構成します。ここでは、リソースは Web アプリと SQL Server データベースです。最初に、**[Web アプリ]** を選択して、**URL**、**App Service プラン**、**Web App の設定**、**場所**など、Web アプリの設定を構成します。
 	
@@ -57,8 +51,6 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 	![Click Create][06UmbracoCMSGroup]
 	
 デプロイメントが完了したら、Umbraco CMS Web アプリのリソース グループのブレードがポータルに表示されます。**[概要]** セクションで、Web アプリ名をクリックして、Web アプリのプロパティを表示します。また、**[サマリー]** セクションでは、データベース リソースを選択して、関連付けられたデータベースのプロパティも確認できます。
-	
-![][07UmbracoCMSGroupBlade]
 
 ## Umbraco CMS Web アプリを起動して構成する ##
 
@@ -135,4 +127,4 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 [17MyPage]: ./media/web-sites-gallery-umbraco/17MyPage.PNG
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

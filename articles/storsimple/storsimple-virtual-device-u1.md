@@ -387,4 +387,4 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 [バックアップ セットから復元する](../storsimple-restore-from-backupset.md)方法
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

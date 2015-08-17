@@ -35,7 +35,7 @@ Windows PowerShell Version 3.0 または 4.0 があることを確認します�
 	-------
 	0.9.0
 
-0.9.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)に関するページを参照してください。
+0\.9.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)に関するページを参照してください。
 
 ### Azure アカウントとサブスクリプションを設定する
 
@@ -77,4 +77,4 @@ Azure リソース マネージャー モジュールを使用するには、既
 
 > [AZURE.NOTE]**Switch-AzureMode AzureServiceManagement** コマンドを使用して、既定のコマンド セットに戻すことができます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

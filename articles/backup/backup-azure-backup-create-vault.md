@@ -1,25 +1,26 @@
 <properties
-	pageTitle="Azure Backup - バックアップ資格情報コンテナーの作成とストレージ冗長の指定"
-	description="バックアップ資格情報コンテナーを作成し、Azure Backup でストレージ冗長オプションを指定する方法について説明します。"
-	services="backup"
-	documentationCenter=""
-	authors="aashishr"
-	manager="shreeshd"
-	editor=""/>
+   pageTitle="Azure Backup - バックアップ資格情報コンテナーの作成とストレージ冗長の指定"
+   description="バックアップ資格情報コンテナーを作成し、Azure Backup でストレージ冗長オプションを指定する方法について説明します。"
+   services="backup"
+   documentationCenter=""
+   authors="aashishr"
+   manager="shreeshd"
+   editor=""/>
 
-<tags 
-	ms.service="backup" 
-	ms.workload="storage-backup-recovery" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/28/2015" 
-	ms.author="prvijay"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/28/2015" ms.author="prvijay"; "jimpark"/>
 
 # バックアップ資格情報コンテナーの作成
 ファイルとデータを Windows Server または System Center Data Protection Manager (SCDPM) から Azure にバックアップしたり、IaaS VM を Azure にバックアップしたりする場合には、データを保存する地理的リージョンにバックアップ資格情報コンテナーを作成する必要があります。　
 
 このチュートリアルは、バックアップの格納に使用する資格情報コンテナーの作成に使用します。
+
+## ビデオ チュートリアル
+
+以下は、このチュートリアルのガイドです。
+
+[AZURE.VIDEO azure-backup-vault-creation]
+
+## バックアップ資格情報コンテナーの作成
 
 1. [管理ポータル](https://manage.windowsazure.com/)にサインインします。
 2. **[新規]**、**[Data Services]**、**[Recovery Services]**、**[バックアップ資格情報コンテナー]** の順にクリックして、**[簡易作成]** を選択します。
@@ -30,7 +31,7 @@
 
 4. **[リージョン]** パラメーターについては、バックアップ資格情報コンテナーの地理的リージョンを選択します。この選択により、バックアップ データの送付先となる geo が決まります。自分の場所から近い geo を選択することによって、Azure にバックアップする際のネットワーク待機時間を削減できます。
 
-5. **[資格情報コンテナーの作成]** をクリックして、ワークフローを完了します。バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。状態を確認するには、ポータルの下部にある通知を監視します。
+5. **[コンテナーの作成]** をクリックして、ワークフローを完了します。バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。状態を確認するには、ポータルの下部にある通知を監視します。
 
   ![Creating Vault][2]
 
@@ -69,4 +70,4 @@ GRS では、データのコピーが 6 つ保持されます。GRS を使用す
 [4]: ./media/backup-azure-backup-create-vault/grs.png
 [5]: ./media/backup-azure-backup-create-vault/lrs.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

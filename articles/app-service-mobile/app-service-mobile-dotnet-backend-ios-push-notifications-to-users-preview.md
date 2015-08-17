@@ -106,4 +106,4 @@
 [テンプレート]: https://msdn.microsoft.com/ja-jp/library/dn530748.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

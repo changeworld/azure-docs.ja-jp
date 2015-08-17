@@ -1,7 +1,9 @@
 
-| Resource	| Default limit 
+| リソース | 既定の制限 
 --- | ---
-| Zones per subscription | 50
-| Record sets per zone| 1000
-| Records per record set| 20
+| サブスクリプションあたりのゾーン数 | 50
+| ゾーンあたりのレコード セット数| 1,000
+| レコード セットあたりのレコード数| 20
  
+
+<!---HONumber=August15_HO6-->

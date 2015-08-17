@@ -213,7 +213,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 <tr><th>表示内容</th><th>表示方法</th><th>用途</th></tr>
 <tr><td>可用性グラフ</td><td><a href="../app-insights-monitor-web-app-availability/">Web テスト</a></td><td>Web アプリが稼働しているか確認する</td></tr>
 <tr><td>サーバー アプリ パフォーマンス: 応答時間、...
-</td><td><a href="../app-insights-start-monitoring-app-health-usage/">Application Insights をプロジェクトに追加する</a><br/>または <br/><a href="../app-insights-monitor-performance-live-website-now/">AI Status Monitor をサーバーにインストールする</a></td><td>パフォーマンスの問題を検出する</td></tr>
+</td><td><a href="../app-insights-start-monitoring-app-health-usage/">Application Insights をプロジェクトに追加する</a><br/>または <br/><a href="../app-insights-monitor-performance-live-website-now/">AI Status Monitor をサーバーにインストールする</a> (または独自のコードを記述して<a href="../app-insights-api-custom-events-metrics/#track-dependency">依存関係を追跡する</a>)</td><td>パフォーマンスの問題を検出する</td></tr>
 <tr><td>依存関係テレメトリ</td><td><a href="../app-insights-monitor-performance-live-website-now/">AI Status Monitor をサーバーにインストールする</a></td><td>データベースや、その他の外部コンポーネントの問題を診断する</td></tr>
 <tr><td>例外からスタック トレースを取得する</td><td><a href="../app-insights-search-diagnostic-logs/#exceptions">コード内に TrackException 呼び出しを挿入する</a> (自動で報告されるものもある)</td><td>例外を検出して診断する</td></tr>
 <tr><td>ログ トレースの検索</td><td><a href="../app-insights-search-diagnostic-logs/">ログ アダプターを追加する</a></td><td>例外、パフォーマンスの問題を診断する</td></tr>
@@ -239,4 +239,4 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

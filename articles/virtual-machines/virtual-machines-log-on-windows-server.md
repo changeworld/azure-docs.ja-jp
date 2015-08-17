@@ -36,4 +36,4 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 この操作を行っても問題が解決しない場合は、より広範なトラブルシューティングを行う必要があります。手順については、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)に関するページを参照してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

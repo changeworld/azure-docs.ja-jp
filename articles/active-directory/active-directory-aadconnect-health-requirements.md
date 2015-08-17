@@ -49,7 +49,8 @@ Azure AD Connect Health の使用を開始するには、こちら ([Azure AD Co
 ### Azure サービスのエンドポイントに対する送信接続
 エージェントをインストールしたり実行したりするためには、以下に示した、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。送信接続をブロックしている場合は、以下の項目を許可リストに追加してください。
 
-- *.servicebus.windows.net - ポート: 5671 - https://*.adhybridhealth.azure.com/
+- **.servicebus.windows.net - ポート: 5671
+- https://*.adhybridhealth.azure.com/
 - https://*.table.core.windows.net/
 - https://policykeyservice.dc.ad.msft.net/
 - https://login.windows.net
@@ -155,4 +156,4 @@ Windows Server 2008 R2 サーバーの場合、次の手順に従います。
  
 ![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install5.png)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

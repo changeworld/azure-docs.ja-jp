@@ -64,4 +64,4 @@ reference 関数を使用すると、式では、他の JSON の名前と値の�
 - Azure リソース マネージャーのテンプレートの作成の詳細については、[テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。 
 - テンプレートで使用可能な関数の一覧については、[テンプレートの関数](resource-group-template-functions.md)に関するページを参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

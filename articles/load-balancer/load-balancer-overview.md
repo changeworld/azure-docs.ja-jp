@@ -99,4 +99,4 @@ Azure ロード バランサーの構成は、UDP のFull cone NAT をサポー�
 [インターネットに接続するロード バランサーの開始](load-balancer-internet-getstarted.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

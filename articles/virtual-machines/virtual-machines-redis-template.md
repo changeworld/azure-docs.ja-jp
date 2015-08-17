@@ -44,7 +44,7 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
 ### 手順 1-a: Azure PowerShell を使用してテンプレート ファイルをダウンロードする
 
-JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\Azure\Templates\RedisCluster)。
+JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\\Azure\\Templates\\RedisCluster)。
 
 フォルダー名をローカル フォルダーのフォルダー名に置き換えて、次のコマンドを実行します。
 
@@ -96,7 +96,7 @@ $webclient.DownloadFile($url,$filePath)
 git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 ```
 
-複製の完了後に、C:\Azure\Templates ディレクトリで **redis-high-availability** フォルダーを探します。
+複製の完了後に、C:\\Azure\\Templates ディレクトリで **redis-high-availability** フォルダーを探します。
 
 ### 手順 2. (省略可能) テンプレート パラメーターを理解する
 
@@ -387,7 +387,7 @@ azure group deployment list TestRG
 
 このセクションでは、Redis クラスターの azuredeploy.json テンプレートの構造について、順を追って説明します。
 
-テンプレート ファイルのコピーをダウンロードしていない場合は、ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\Azure\Templates\RedisCluster)。フォルダー名を指定して以下のコマンドを実行します。
+テンプレート ファイルのコピーをダウンロードしていない場合は、ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\\Azure\\Templates\\RedisCluster)。フォルダー名を指定して以下のコマンドを実行します。
 
 ```powershell
 $folderName="<folder name, such as C:\Azure\Templates\RedisCluster>"
@@ -666,4 +666,4 @@ node-resources.json は、メインの azuredeploy.json ファイルから呼び
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

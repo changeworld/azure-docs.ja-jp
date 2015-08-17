@@ -194,4 +194,4 @@ Blob ストレージからデータベースにデータを移動する 2 つの
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

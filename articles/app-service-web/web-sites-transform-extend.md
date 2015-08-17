@@ -41,7 +41,7 @@ PHP 5.4 を使用する Web アプリに新しいカスタム環境変数を追�
 	</configuration>
 
 
-変換ステータスと詳細を記録したログ ファイルは、FTP ルートの LogFiles\Transform で利用できます。
+変換ステータスと詳細を記録したログ ファイルは、FTP ルートの LogFiles\\Transform で利用できます。
 
 その他のサンプルについては、[https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) を参照してください。
 
@@ -80,7 +80,7 @@ PHP Manager 拡張機能は、Visual Studio ASP.NET MVC 4 Web アプリケーシ
 
 ![TransformSiteSolEx][TransformSiteSolEx]
 
-ファイル I/O で必要とされる唯一の特殊なロジックは、Web アプリの wwwroot ディレクトリが配置されている場所を示すことです。次のコード例に示すように、環境変数 "HOME" は Web アプリのルート パスを示しており、"site\wwwroot" を追加すると wwwroot パスを作成することができます。
+ファイル I/O で必要とされる唯一の特殊なロジックは、Web アプリの wwwroot ディレクトリが配置されている場所を示すことです。次のコード例に示すように、環境変数 "HOME" は Web アプリのルート パスを示しており、"site\\wwwroot" を追加すると wwwroot パスを作成することができます。
 
 	/// <summary>
 	/// Gives the location of the .user.ini file, even if one doesn't exist yet
@@ -92,7 +92,7 @@ PHP Manager 拡張機能は、Visual Studio ASP.NET MVC 4 Web アプリケーシ
     		{
         		rootPath = System.IO.Path.GetTempPath(); // For testing purposes
     		};
-    		var userSettingsFile = Path.Combine(rootPath, @"site\wwwroot.user.ini");
+    		var userSettingsFile = Path.Combine(rootPath, @"site\wwwroot\.user.ini");
     		return userSettingsFile;
 	}
 
@@ -111,7 +111,7 @@ Web アプリケーション内で相対パスのみを使用するか、ASP.NET
 
 ####<a id="XDT"></a> applicationHost.xdt ファイル
 
-Web アプリ拡張機能に対応するコードは、%HOME%\SiteExtensions[拡張機能名] の下に配置されます。これを、拡張機能ルートと呼びます。
+Web アプリ拡張機能に対応するコードは、%HOME%\\SiteExtensions[拡張機能名] の下に配置されます。これを、拡張機能ルートと呼びます。
 
 開発した Web アプリ拡張機能を applicationHost.config ファイルに登録するには、ApplicationHost.xdt という名前のファイルを拡張機能のルートに配置する必要があります。ApplicationHost.xdt ファイルの内容を次のようにする必要があります。
 
@@ -179,4 +179,4 @@ HTTPS が使用され、".scm" が含まれていることを除き、開発す�
 [TransformSiteSolEx]: ./media/web-sites-transform-extend/TransformSiteSolEx.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

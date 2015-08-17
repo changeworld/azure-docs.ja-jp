@@ -220,4 +220,4 @@ DNS サーバーには静的 IP アドレスが必要です。この手順は、
 
 [img-vnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-DNS/HDInsight.HBase.VPN.diagram.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

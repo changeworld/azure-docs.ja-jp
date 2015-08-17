@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="07/24/2015"
+   ms.date="07/30/2015"
    ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple Manager サービスを使用した StorSimple デバイス構成の変更
@@ -127,8 +127,8 @@ StorSimple 8000 シリーズ Update 1 では、DATA 0 のルーティング メ�
 
 ## 次のステップ
 
-[StorSimple デバイスの MPIO を構成する](storsimple-configure-mpio-windows-server.md)。
+[StorSimple デバイスの MPIO の構成](storsimple-configure-mpio-windows-server.md)。
  
      
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

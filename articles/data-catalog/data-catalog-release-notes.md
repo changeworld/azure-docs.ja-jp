@@ -24,8 +24,8 @@ Oracle Database データ ソースに接続する場合、ユーザーは、使
 
 -	32 ビット Windows を実行するコンピューター上の Oracle データ ソースを登録する場合は、32 ビット Oracle ドライバーを使用します。
 -	64 ビット Windows を実行するコンピューター上の Oracle データ ソースを登録する場合は、64 ビット Oracle ドライバーを使用します。
--	64 ビット Windows に含まれる 32 ビット バージョンの Microsoft Office を実行するコンピューター上の Excel を使用して Oracle データ ソースに接続する場合、32 ビット Oracle ドライバーを使用します。
--	64 ビット バージョンの Microsoft Office を実行するコンピューター上の Excel を使用して Oracle データ ソースに接続する場合、64 ビット Oracle ドライバーを使用します。
+-	64 ビット Windows に含まれる 32 ビット バージョンの Microsoft Office を実行するコンピューター上の Excel を使用して、Oracle データ ソースに接続する場合、32 ビット Oracle ドライバーを使用します。
+-	64 ビット バージョンの Microsoft Office を実行するコンピューター上の Excel を使用して、Oracle データ ソースに接続する場合、64 ビット Oracle ドライバーを使用します。
 
 ## SQL Server Reporting Services への登録と接続
 
@@ -33,15 +33,15 @@ Azure Data Catalog の初期プレビュー リリースでの SQL Server Report
 
 ## Excel でのデータ資産のオープン
 
-Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開くと、**[Microsoft Excel のセキュリティに関する通知]** ダイアログ ボックスにメッセージが表示されることがあります。これは標準の予想される動作であり、ユーザーは、**[有効にする]** を選択して続行できます。
+Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開くと、[**Microsoft Excel のセキュリティに関する通知**] ダイアログ ボックスにメッセージが表示されることがあります。これは標準の予想される動作であり、ユーザーは、[**有効にする**] を選択して続行できます。
 
-詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/ja-jp/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」をご覧ください。
+詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/ja-jp/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
 
-## BLOB と UDT 列がプレビューに含まれない
+## BLOB および UDT 列がプレビューに含まれない
 
 バイナリ ラージ オブジェクト (BLOB) 列とユーザー定義データ型 (UDT) 列を含むテーブルとビューを登録し、データ資産のプレビューを含めるように選択しても、これらの列はプレビューに含まれません。
 
-## プロキシとポリシーの構成とデータ ソースの登録
+## プロキシおよびポリシーの構成とデータ ソースの登録
 
 ユーザーは、Azure Data Catalog ポータルにログオンできる状況が発生することがありますが、データ ソース登録ツールにログオンしようとすると、ログオンを妨げるエラー メッセージが表示されます。
 
@@ -51,7 +51,7 @@ Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開�
 
 特定の状況で、ユーザーが企業ネットワーク上にいる場合のみ、またはユーザーが企業ネットワークの外部から接続している場合のみ、このエラー動作が発生することがあります。グローバル認証ポリシーでは、イントラネット接続とエクストラネット接続で個別に認証方法を有効にすることができます。ログオン エラーは、ユーザーの接続元のネットワークで、フォーム認証が有効にされていない場合に発生する可能性があります。
 
-詳細については、「[WIA をサポートしないデバイスのイントラネット フォーム ベースの認証の構成](https://technet.microsoft.com/library/dn727110.aspx)」をご覧ください。
+詳細については、「[WIA をサポートしないデバイスのイントラネット フォーム ベースの認証の構成](https://technet.microsoft.com/library/dn727110.aspx)」を参照してください。
 
 **原因 2: ネットワーク プロキシ構成** 企業ネットワークでプロキシ サーバーを使用している場合、登録ツールが、プロキシ経由で Azure Active Directory に接続できないことがあります。ユーザーは、ツールの構成ファイルを編集し、このセクションをファイルに追加して、登録ツールが確実に接続できるようにします。
 
@@ -67,4 +67,4 @@ Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開�
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

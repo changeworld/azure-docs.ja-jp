@@ -63,13 +63,13 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。
 
 ## 接続文字列の取得
-**cloud_storage_account** クラスを使用してストレージ アカウント情報を表すことができます。ストレージ接続文字列からストレージ アカウント情報を取得するには、**parse** メソッド使用します。
+**cloud\_storage\_account** クラスを使用してストレージ アカウント情報を表すことができます。ストレージ接続文字列からストレージ アカウント情報を取得するには、**parse** メソッド使用します。
 
 	// Retrieve storage account from connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
 ## 方法: キューを作成する
-**cloud_queue_client** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**cloud_queue_client** オブジェクトを作成します。
+**cloud\_queue\_client** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**cloud\_queue\_client** オブジェクトを作成します。
 
 	// Retrieve storage account from connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -77,7 +77,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	// Create a queue client.
 	azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-**cloud_queue_client** オブジェクトを使用して、使用するキューへの参照を取得します。キューが存在しない場合は作成できます。
+**cloud\_queue\_client** オブジェクトを使用して、使用するキューへの参照を取得します。キューが存在しない場合は作成できます。
 
 	// Retrieve a reference to a queue.
 	azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
@@ -86,7 +86,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
  	queue.create_if_not_exists();  
 
 ## 方法: メッセージをキューに挿入する
-既存のキューにメッセージを挿入するには、最初に新しい **cloud_queue_message** を作成します。次に、**add_message** メソッドを呼び出します。**cloud_queue_message** は、文字列または**バイト**配列から作成できます。次のコードでは、キューが存在しない場合は作成し、メッセージ "Hello, World" を挿入します。
+既存のキューにメッセージを挿入するには、最初に新しい **cloud\_queue\_message** を作成します。次に、**add\_message** メソッドを呼び出します。**cloud\_queue\_message** は、文字列または**バイト**配列から作成できます。次のコードでは、キューが存在しない場合は作成し、メッセージ "Hello, World" を挿入します。
 
 	// Retrieve storage account from connection-string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -105,7 +105,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	queue.add_message(message1);  
 
 ## 方法: 次のメッセージをピークする
-**peek_message** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
+**peek\_message** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
 	// Retrieve storage account from connection-string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -147,7 +147,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	std::wcout << U("Changed message content: ") << changed_message.content_as_string() << std::endl;  
 
 ## 方法: 次のメッセージをデキューする
-コードでは、2 つの手順でキューからメッセージをデキューします。**get_message** を呼び出すと、キュー内の次のメッセージを取得します。**get_message** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。また、キューからのメッセージの削除を完了するには、**delete_message** を呼び出す必要があります。このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に **delete_message** を呼び出します。
+コードでは、2 つの手順でキューからメッセージをデキューします。**get\_message** を呼び出すと、キュー内の次のメッセージを取得します。**get\_message** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。また、キューからのメッセージの削除を完了するには、**delete\_message** を呼び出す必要があります。このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に **delete\_message** を呼び出します。
 
 	// Retrieve storage account from connection-string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -166,7 +166,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	queue.delete_message(dequeued_message); 
 
 ## 方法: 追加オプションを利用してメッセージをデキューする
-キューからのメッセージの取得をカスタマイズする方法は 2 つあります。1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。次のコード例では、**get_messages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。その後、**for** ループを使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを 5 分に設定します。この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、**get_messages** の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。次のコード例では、**get\_messages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。その後、**for** ループを使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを 5 分に設定します。この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、**get\_messages** の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
 
 	// Retrieve storage account from connection-string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -192,7 +192,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	}
 
 ## 方法: キューの長さを取得する
-キュー内のメッセージの概数を取得できます。**download_attributes** メソッドは、メッセージ数などのキューの属性を取得するように Queue サービスに要求します。**approximate_message_count** メソッドは、キューのメッセージの概数を取得します。
+キュー内のメッセージの概数を取得できます。**download\_attributes** メソッドは、メッセージ数などのキューの属性を取得するように Queue サービスに要求します。**approximate\_message\_count** メソッドは、キューのメッセージの概数を取得します。
 
 	// Retrieve storage account from connection-string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -213,7 +213,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::endl;  
 
 ## 方法: キューを削除する
-キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **delete_queue_if_exists** メソッドを呼び出します。
+キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **delete\_queue\_if\_exists** メソッドを呼び出します。
 
 	// Retrieve storage account from connection-string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -239,4 +239,4 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

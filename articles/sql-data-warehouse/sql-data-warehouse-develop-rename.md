@@ -17,7 +17,7 @@
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SDL Data Warehouse での名前変更
-SQL Server は、オブジェクトとデータベースの名前変更を、ストアドプロシージャの sp_rename と sp_renamedb をそれぞれ使用してサポートします。
+SQL Server は、オブジェクトとデータベースの名前変更を、ストアドプロシージャの sp\_rename と sp\_renamedb をそれぞれ使用してサポートします。
 
 SQL Data Warehouse は、同じ目標を実現するために、DDL 構文を使用します。DDL コマンドは、RENAME OBJECT と RENAME DATABASE です。
 
@@ -80,4 +80,4 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 <!--Other Web references-->
 [Azure management portal]: http://portal.azure.com/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

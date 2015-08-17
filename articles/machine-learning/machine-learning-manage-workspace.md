@@ -94,4 +94,4 @@ Web サービス エンドポイントの名前をクリックして開きます
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

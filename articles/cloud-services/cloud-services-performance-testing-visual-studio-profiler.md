@@ -195,4 +195,4 @@ Visual Studio プロファイラーでは、エミュレーター内の Azure �
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

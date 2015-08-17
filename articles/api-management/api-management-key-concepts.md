@@ -114,4 +114,4 @@ API Management の全ポリシー一覧については、「[Policy reference (�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -3,7 +3,7 @@
 
 Cloud Services は、サービスとしてのプラットフォーム (PaaS) の 1 つの例です。このテクノロジは、[App Services](app-service-web-overview.md) と同様に、スケーラブルで、信頼性が高く、低運用コストの方法でアプリケーションをサポートするように設計されています。[App Services](app-service-web-overview.md) と同様に、Cloud Services も VM 上でホストされています。しかし、VM に対してより多くのコントロールが可能です。独自のソフトウェアを Cloud Services の VM にインストールして、リモートで操作できます。
 
-![cs_diagram](./media/cloud-services-choose-me-content/diagram.png)
+![cs\_diagram](./media/cloud-services-choose-me-content/diagram.png)
 
 コントロール能力の高さは、使いやすさが低下することも意味します。追加のコントロール オプションを必要としない限り、通常は Web サイトのほうが Cloud Services よりも短時間で Web アプリケーションを容易に実行できます。
 
@@ -30,4 +30,4 @@ Cloud Services は監視も提供します。Azure の仮想マシンと同様�
 
 PaaS というクラウド サービスの本質には、他の含意もあります。最も重要なことの 1 つは、このテクノロジを基盤に構築されるアプリケーションは、Web ロールや Worker ロールのインスタンスでエラーが発生したときに正しく実行するように記述することが必要です。これを実現するには、クラウド サービスのアプリケーションがそれ自体の VM のファイル システムで状態を維持してはなりません。Azure の仮想マシンで作成された VM と異なり、クラウド サービス VM への書き込みは永続的ではありません。その点で仮想マシンのデータ ディスクとは大きく異なります。クラウド サービス アプリケーションはすべての状態を SQL データベース、BLOB、テーブルか、その他の外部ストレージに明示的に書き込む必要があります。この方法でアプリケーションを構築すると、スケーリングしやすく、耐障害性が備わります。この 2 つは Cloud Services の重要なゴールです。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

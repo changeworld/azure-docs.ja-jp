@@ -45,4 +45,4 @@
 
     ![Maintenance page](./media/storsimple-install-update-via-portal/HCS_SoftwareUpdates7-include.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

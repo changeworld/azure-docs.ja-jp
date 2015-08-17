@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na" 
-	ms.topic="hero-article"
+	ms.topic="article"
 	ms.date="04/28/2015"
 	ms.author="dwrede"/>
 
@@ -87,4 +87,4 @@ Microsoft Azure プレビュー ポータルならクラウドでのアプリケ
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

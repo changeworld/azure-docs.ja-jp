@@ -114,7 +114,9 @@ Azure で Access Control Service (ACS) の使用を開始するには、ACS 名�
 3.  **[証明書利用者アプリケーションの追加]** ページで、次の操作を行います。
     1.  **[名前]** に RP の名前を入力します。このチュートリアルでは、「**Azure Web App**」と入力します。
     2.  **[モード]** で **[設定を手動で入力する]** を選択します。
-    3.  **[領域]** で、ACS によって発行されたセキュリティ トークンを適用する URI を入力します。このタスクでは、「**http://localhost:8080/**」と入力します。![コンピューティング エミュレーターで使用する証明書利用者領域][relying_party_realm_emulator] 4.  **[戻り先 URL]** で、ACS がセキュリティ トークンを返す URL を入力します。このタスクでは、「**http://localhost:8080/MyACSHelloWorld/index.jsp**」と入力します。![コンピューティング エミュレーターで使用する証明書利用者の戻り先 URL][relying_party_return_url_emulator] 5.  その他のフィールドは、既定値のままにします。
+    3.  **[領域]** で、ACS によって発行されたセキュリティ トークンを適用する URI を入力します。このタスクでは、**「**http://localhost:8080/**」と入力します。![コンピューティング エミュレーターで使用する証明書利用者領域][relying_party_realm_emulator]
+4.  **[戻り先 URL]** で、ACS がセキュリティ トークンを返す URL を入力します。このタスクでは、**「**http://localhost:8080/MyACSHelloWorld/index.jsp**」と入力します。![コンピューティング エミュレーターで使用する証明書利用者の戻り先 URL][relying_party_return_url_emulator]
+5.  その他のフィールドは、既定値のままにします。
 
 4.  **[保存]** をクリックします。
 
@@ -250,7 +252,7 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 
 また、この例では **[Embed the certificate in the WAR file]** オプションも使用しています。このオプションを使用すると証明書のデプロイが簡単になります。代わりに WAR ファイル以外からの署名証明書を保存する場合は、次の手法を使用できます。
 
-1. **[Azure Access Control Services Filter]** ダイアログ ボックスの **[Security]** セクションで、「**${env.JAVA_HOME}/mycert.cer**」と入力し、**[Embed the certificate in the WAR file]** チェック ボックスをオフにします(証明書のファイル名が異なる場合は mycert.cer を調整)。 **[Finish]** をクリックしてダイアログ ボックスを閉じます。
+1. **[Azure Access Control Services Filter]** ダイアログ ボックスの **[Security]** セクションで、「**${env.JAVA\_HOME}/mycert.cer**」と入力し、**[Embed the certificate in the WAR file]** チェック ボックスをオフにします(証明書のファイル名が異なる場合は mycert.cer を調整)。 **[Finish]** をクリックしてダイアログ ボックスを閉じます。
 2. コンポーネントとして証明書を展開にコピーする場合: Eclipse の Project Explorer で、**MyAzureACSProject** を展開し、**WorkerRole1** を右クリックし、**[Properties]** をクリックします。**[Azure Role]** を展開し、**[Components]** をクリックします。
 3. **[追加]** をクリックします。
 4. **[Add Component]** ダイアログ ボックスで、次の操作を行います。
@@ -260,7 +262,7 @@ ACS によってアプリケーションに返される SAML (Security Assertion
     2. **[As Name]** で、テキスト ボックスをクリックし、既定の名前をそのまま使用します。
     3. **[Deploy]** セクション:
         1. **[Method]** で、**[copy]** を選択します。
-        2. **[To directory]** で、「**%JAVA_HOME%**」と入力します。
+        2. **[To directory]** で、「**%JAVA\_HOME%**」と入力します。
     4. **[Add Component]** ダイアログ ボックスは次のようになります。
 
         ![証明書コンポーネントの追加][add_cert_component]
@@ -309,4 +311,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

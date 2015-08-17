@@ -25,7 +25,7 @@
 
 		# rcmysql stop
 
-5. 警告! インストール後、既定では MySQL ルート パスワードは空になっています。そこで、MySQL の保護に役立つスクリプト、**mysql_secure_installation** を実行することをお勧めします。**mysql_secure_installation** を実行すると、MySQL ルートパスワードの変更、匿名のユーザー アカウントの削除、リモート ルート ログインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。これらのオプションすべてに対して "はい" と答えて、ルート パスワードを変更することをお勧めします。次のコマンドを実行して、スクリプトを実行します。
+5. 警告! インストール後、既定では MySQL ルート パスワードは空になっています。そこで、MySQL の保護に役立つスクリプト、**mysql\_secure\_installation** を実行することをお勧めします。**mysql\_secure\_installation** を実行すると、MySQL ルートパスワードの変更、匿名のユーザー アカウントの削除、リモート ルート ログインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。これらのオプションすべてに対して "はい" と答えて、ルート パスワードを変更することをお勧めします。次のコマンドを実行して、スクリプトを実行します。
 
 		$ mysql_secure_installation
 
@@ -81,4 +81,4 @@
 
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

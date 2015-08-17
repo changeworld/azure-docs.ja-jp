@@ -41,4 +41,4 @@
 <!-- URLs. -->
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

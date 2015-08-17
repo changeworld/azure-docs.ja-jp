@@ -219,4 +219,4 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: http://azure.microsoft.com/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

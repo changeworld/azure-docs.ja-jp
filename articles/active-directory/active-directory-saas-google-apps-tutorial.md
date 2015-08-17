@@ -64,7 +64,7 @@
 
 	![Select Azure AD Single Sign-On][7]
 
-	> [AZURE.NOTE]さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](https://msdn.microsoft.com/library/azure/dn308588.aspx)してください。
+	> [AZURE.NOTE]さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)してください。
 
 3. **[アプリケーション設定の構成]** ページで、**[サインオン URL]** フィールドに、Google Apps テナントの URL を `https://mail.google.com/a/<yourdomain>` という形式を使用して入力します。
 
@@ -212,11 +212,7 @@
 
 4. シングル サインオンの設定をテストするために、アクセス パネル ([https://myapps.microsoft.com](https://myapps.microsoft.com/)) を開き、テスト アカウントにサインインし、**[Google Apps]** をクリックします。
 
-##関連項目
-
-- [SaaS アプリケーションの統合に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-- [Azure AD でのアプリケーションへのアクセス](https://msdn.microsoft.com/library/azure/dn308590.aspx)
-- [アクセス パネルの概要](https://msdn.microsoft.com/library/azure/dn308586.aspx)
+[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
 [0]: ./media/active-directory-saas-google-apps-tutorial/azure-active-directory.png
 [1]: ./media/active-directory-saas-google-apps-tutorial/applications-tab.png
@@ -250,4 +246,4 @@
 [29]: ./media/active-directory-saas-google-apps-tutorial/assign-users.png
 [30]: ./media/active-directory-saas-google-apps-tutorial/assign-confirm.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

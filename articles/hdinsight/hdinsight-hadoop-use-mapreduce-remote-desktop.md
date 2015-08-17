@@ -38,15 +38,15 @@
 
 HDInsight クラスターのデスクトップに接続したら、次の手順に従って Hadoop コマンドを使用して MapReduce ジョブを実行します。
 
-1. HDInsight デスクトップから、**Hadoop コマンド ライン**を起動します。これにより、**c:\apps\dist\hadoop-&lt;version number>** ディレクトリに新しいコマンド プロンプトが開きます。
+1. HDInsight デスクトップから、**Hadoop コマンド ライン**を起動します。これにより、**c:\\apps\\dist\\hadoop-&lt;version number>** ディレクトリに新しいコマンド プロンプトが開きます。
 
-	> [AZURE.NOTE]Hadoop の更新に応じて、バージョン番号が変わります。**HADOOP_HOME** 環境変数を使用して、パスを探します。たとえば、`cd %HADOOP_HOME%` では、バージョン番号がわからなくても、ディレクトリは Hadoop ディレクトリに変更されます。
+	> [AZURE.NOTE]Hadoop の更新に応じて、バージョン番号が変わります。**HADOOP\_HOME** 環境変数を使用して、パスを探します。たとえば、`cd %HADOOP_HOME%` では、バージョン番号がわからなくても、ディレクトリは Hadoop ディレクトリに変更されます。
 
 2. **Hadoop** コマンドを使用してサンプルの MapReduce ジョブ実行するには、次のコマンドを使用します。
 
 		hadoop jar hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-	これは、現在のディレクトリの **hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は **wasb:///example/data/WordCountOutput** に格納されます。
+	これは、現在のディレクトリの **hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として ****wasb://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は ****wasb:///example/data/WordCountOutput** に格納されます。
 
 	> [AZURE.NOTE]この MapReduce ジョブとサンプル データの詳細については、「<a href="hdinsight-use-mapreduce.md">HDInsight での Hadoop MapReduce の使用</a>」をご覧ください。
 
@@ -57,19 +57,19 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 		File Output Format Counters
         Bytes Written=337623
 
-3. ジョブが完了したら、次のコマンドを使用して **wasb://example/data/WordCountOutput** に格納されている出力ファイルを一覧表示します。
+3. ジョブが完了したら、次のコマンドを使用して ****wasb://example/data/WordCountOutput** に格納されている出力ファイルを一覧表示します。
 
 		hadoop fs -ls wasb:///example/data/WordCountOutput
 
-	ここでは、**_SUCCESS** と **part-r-00000** の 2 つのファイルが表示されます。**part-r-00000** ファイルには、このジョブの出力が含まれています。
+	ここでは、**\_SUCCESS** と **part-r-00000** の 2 つのファイルが表示されます。**part-r-00000** ファイルには、このジョブの出力が含まれています。
 
-	> [AZURE.NOTE]一部の MapReduce ジョブでは、複数の **part-r-#####** ファイルに結果が分割される場合があります。このとき、ファイルの順番を特定するには ##### サフィックスを使用します。
+	> [AZURE.NOTE]一部の MapReduce ジョブでは、複数の **part-r-\#\#\#\#\#** ファイルに結果が分割される場合があります。このとき、ファイルの順番を特定するには \#\#\#\#\# サフィックスを使用します。
 
 4. 出力を表示するには、次のコマンドを使用します。
 
 		hadoop fs -cat wasb:///example/data/WordCountOutput/part-r-00000
 
-	ここでは、**wasb://example/data/gutenberg/davinci.txt** ファイルに含まれる単語の一覧と、各単語が発生した回数が表示されます。ファイルに含まれるデータの例を次に示します。
+	ここでは、****wasb://example/data/gutenberg/davinci.txt** ファイルに含まれる単語の一覧と、各単語が発生した回数が表示されます。ファイルに含まれるデータの例を次に示します。
 
 		wreathed        3
 		wreathing       1
@@ -95,4 +95,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -54,4 +54,4 @@ SQL Data Warehouse は、クエリ ラベルと呼ばれる概念をサポート
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

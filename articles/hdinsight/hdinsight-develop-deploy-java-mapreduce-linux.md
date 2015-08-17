@@ -30,7 +30,7 @@
 
 - [Apache Maven](http://maven.apache.org/)
 
-- **Azure サブスクリプション**: [Azure 無料評価版の取得](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)に関するページをご覧ください。
+- **Azure サブスクリプション**: [Azure 無料試用版の取得](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)に関するページをご覧ください。
 
 - **Azure CLI**: 詳細については、[Azure CLI のインストールおよび構成](../xplat-cli.md)に関するページをご覧ください。
 
@@ -38,13 +38,13 @@
 
 Java と JDK をインストールするときに、次のような環境変数が設定される場合があります。ただし、これらが存在するかどうかや、システムに対して適切な値が含まれているかを確認する必要があります。
 
-* **JAVA_HOME** - Java ランタイム環境 (JRE) がインストールされているディレクトリを指している必要があります。たとえば、OS X、Unix、Linux システムの場合は、`/usr/lib/jvm/java-7-oracle` のような値になります。Windows の場合は、`c:\Program Files (x86)\Java\jre1.7` のような値になります。
+* **JAVA\_HOME** - Java ランタイム環境 (JRE) がインストールされているディレクトリを指している必要があります。たとえば、OS X、Unix、Linux システムの場合は、`/usr/lib/jvm/java-7-oracle` のような値になります。Windows の場合は、`c:\Program Files (x86)\Java\jre1.7` のような値になります。
 
 * **PATH** - 次のパスを含む必要があります。
 
-	* **JAVA_HOME** または同等のパス
+	* **JAVA\_HOME** または同等のパス
 
-	* **JAVA_HOME\bin** または同等のパス
+	* **JAVA\_HOME\\bin** または同等のパス
 
 	* Maven がインストールされているディレクトリ
 
@@ -249,7 +249,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 
 		hadoop jar wordcountjava.jar org.apache.hadoop.examples.WordCount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/wordcountout
 
-	これは、ワード カウント MapReduce アプリケーションを使用して davinci.txt ファイル内の単語数をカウントし、結果を __wasb:///example/data/wordcountout__ に保存します。入力ファイルと出力は、両方ともクラスターの既定のストレージに格納されます。
+	これは、WordCount MapReduce アプリケーションを使用して davinci.txt ファイル内の単語数をカウントし、結果を \_\___wasb:///example/data/wordcountout__ に保存します。入力ファイルと出力は、両方ともクラスターの既定のストレージに格納されます。
 
 3. ジョブが完了したら、次のコマンドを使用して結果を表示します。
 
@@ -266,7 +266,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 このドキュメントでは、Java MapReduce ジョブを作成する方法を説明しました。HDInsight を使用する他の方法については、次のドキュメントを参照してください。
 
 - [HDInsight での Hive の使用][hdinsight-use-hive]
-- [HDInsight の Hadoop での Pig の使用][hdinsight-use-pig]
+- [HDInsight での Pig の使用][hdinsight-use-pig]
 - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
@@ -297,4 +297,4 @@ Java と JDK をインストールするときに、次のような環境変数�
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

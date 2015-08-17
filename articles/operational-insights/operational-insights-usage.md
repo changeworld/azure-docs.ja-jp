@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2015"
+   ms.date="08/05/2015"
    ms.author="banders" />
 
 # サーバーと使用量データの管理
@@ -27,7 +27,7 @@
 
 ![[サーバーと使用量] タイルの画像](./media/operational-insights-usage/overview-servers-usage.png)
 
-1 日あたりの使用量の上限を超えたか、上限に近づいている場合、必要に応じてソリューションを削除し、オペレーション インサイト サービスに送信されるデータの量を減らすことができます。ソリューションの削除について詳しくは、[ソリューション ギャラリーを使用したソリューションの追加または削除](operational-insights-add-solution.md)に関する記事を参照してください。
+1 日あたりの使用量の上限を超えたか、上限に近づいている場合、必要に応じてソリューションを削除し、オペレーション インサイト サービスに送信されるデータの量を減らすことができます。ソリューションの削除について詳しくは、[ソリューション ギャラリーを使用したソリューションの追加または削除](operational-insights-setup-workspace.md)に関する記事を参照してください。
 
 Operations Manager 管理グループからオペレーション インサイト サービスへのデータの送信で問題が生じている場合、問題をトラブルシューティングするか、必要であれば、管理グループをオペレーション インサイトから削除してください。
 
@@ -59,4 +59,4 @@ Operations Manager 管理グループからオペレーション インサイト
 
 [AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

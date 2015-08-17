@@ -58,7 +58,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 		├── xml2js@0.2.7 (sax@0.5.2)
 		└── request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
 
-3.  手動で **ls** コマンドを実行して、**node_modules** フォルダーが作成されたことを確認することもできます。このフォルダーに **azure-storage** パッケージがあります。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
+3.  手動で **ls** コマンドを実行して、**node\_modules** フォルダーが作成されたことを確認することもできます。このフォルダーに **azure-storage** パッケージがあります。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
 
 ### パッケージをインポートする
 
@@ -68,7 +68,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 ## Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE_STORAGE_ACCOUNT、AZURE_STORAGE_ACCESS_KEY、および AZURE_STORAGE_CONNECTION_STRING を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
 
 Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリケーション]」を参照してください。
 
@@ -449,4 +449,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Create and deploy a Node.js application to an Azure Web Site]: ../web-sites-nodejs-develop-deploy-mac.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

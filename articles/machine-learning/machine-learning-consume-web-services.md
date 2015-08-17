@@ -2,7 +2,6 @@
 	pageTitle="Machine Learning Web サービスを使用する | Microsoft Azure" 
 	description="機械学習サービスが発行されると、利用可能になっている RESTFul Web サービスを、要求応答サービスまたはバッチ実行サービスのいずれかとして使用できます。" 
 	services="machine-learning" 
-	solutions="big-data" 
 	documentationCenter="" 
 	authors="bradsev" 
 	manager="paulettm" 
@@ -434,4 +433,4 @@ Web サービスとして発行される AzureML 実験には Web サービス�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

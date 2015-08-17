@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="クラウド サービス (Node.js) ワーカー ロール向けの SSL の構成" 
+	pageTitle="クラウド サービス (Node.js) worker ロール向けの SSL の構成" 
 	description="Azure での Node.js クラウド サービスの worker ロール向けの SSL の構成" 
 	services="cloud-services" 
 	documentationCenter="nodejs" 
@@ -20,7 +20,7 @@
 
 
 
-# Azure ワーカー ロールで Node.js アプリケーションの SSL を構成する
+# Azure worker ロールで Node.js アプリケーションの SSL を構成する
 
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、worker ロールで Azure クラウド サービスとしてホストされる Node.js アプリケーションの HTTPS エンドポイントを指定する方法について説明します。
 
@@ -58,7 +58,7 @@ Azure PowerShell を使用し、以下の手順に従って簡単な Node.js "he
 
 	> [AZURE.NOTE]以前に Azure サブスクリプションの発行設定をインポートしていない場合、発行しようとするとエラーが出力されます。サブスクリプションの発行設定のダウンロードとインポートについては、[Azure PowerShell for Node.js の使用方法](https://www.windowsazure.com/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings)に関するページを参照してください。
 
-**Publish-AzureServiceProject** コマンドレットから返される**作成された Web サイトの URL** の値には、ホステッド アプリケーションの完全修飾ドメイン名が含まれます。この特定の完全修飾ドメイン名について SSL 証明書を取得し、Azure に展開する必要があります。
+**Publish-AzureServiceProject** コマンドレットから返される**作成された Web サイトの URL** の値には、ホステッド アプリケーションの完全修飾ドメイン名が含まれます。この特定の完全修飾ドメイン名について SSL 証明書を取得し、Azure にデプロイする必要があります。
 
 ## <a name="step2"> </a>手順 2. SSL 証明書を取得する
 
@@ -71,15 +71,15 @@ Azure PowerShell を使用し、以下の手順に従って簡単な Node.js "he
 -   証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。cloudapp.net ドメインの SSL 証明書を取得する ことはできないため、証明書の件名を、アプリケーションへの接続に使用 されるカスタム ドメイン名と一致させる必要があります。たとえば、「__mysecuresite.cloudapp.net__」のように入力します。
 -   証明書では、2048 ビット以上の暗号化を使用する必要があります。
 
-証明書が含まれている **.pfx** ファイルは、次に示す手順でサービス プロジェクトに追加され、Azure に展開されます。
+証明書が含まれている **.pfx** ファイルは、次に示す手順でサービス プロジェクトに追加され、Azure にデプロイされます。
 
 ## <a name="step3"> </a>手順 3. SSL 証明書を使用するようにアプリケーションを変更する
 
-Node.js アプリケーションを worker ロールに展開すると、サーバー証明書と SSL 接続は Node.exe によって管理されます。SSL トラフィックを処理するには、"http" ではなく "https" モジュールを使用する必要があります。次の手順を実行して、SSL 証明書をプロジェクトに追加し、この証明書を使用するようにアプリケーションを変更します。
+Node.js アプリケーションを worker ロールにデプロイすると、サーバー証明書と SSL 接続は Node.exe によって管理されます。SSL トラフィックを処理するには、"http" ではなく "https" モジュールを使用する必要があります。次の手順を実行して、SSL 証明書をプロジェクトに追加し、この証明書を使用するようにアプリケーションを変更します。
 
-1.   証明機関 (CA) から提供された **.pfx** ファイルを、アプリケーションが格納されているディレクトリに保存します。たとえば、この記事で使用されているアプリケーションが格納されているディレクトリは **c:\node\securesite\workerrole1** です。
+1.   証明機関 (CA) から提供された **.pfx** ファイルを、アプリケーションが格納されているディレクトリに保存します。たとえば、この記事で使用されているアプリケーションが格納されているディレクトリは **c:\\node\\securesite\\workerrole1** です。
 
-2.   Notepad.exe を使用して **c:\node\securesite\workerrole1\server.js** ファイルを開き、ファイルの内容を次の内容に置き換えます。
+2.   Notepad.exe を使用して **c:\\node\\securesite\\workerrole1\\server.js** ファイルを開き、ファイルの内容を次の内容に置き換えます。
 
 		var https = require('https');
 		var fs = require('fs');
@@ -98,7 +98,7 @@ Node.js アプリケーションを worker ロールに展開すると、サー�
 
 3.   **server.js** ファイルを保存します。
 
-**server.js** ファイルをこのように変更すると、アプリケーションを Azure に展開したときに、アプリケーションはポート 443 (SSL 通信用の標準ポート) で通信をリッスンするようになります。**.pfx** ファイルは、このトランスポートで SSL 通信を実装するために使用されます。
+**server.js** ファイルをこのように変更すると、アプリケーションを Azure にデプロイしたときに、アプリケーションはポート 443 (SSL 通信用の標準ポート) で通信をリッスンするようになります。**.pfx** ファイルは、このトランスポートで SSL 通信を実装するために使用されます。
 
 ## <a name="step4"> </a>手順 4. サービス定義ファイルを変更する
 
@@ -173,4 +173,4 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

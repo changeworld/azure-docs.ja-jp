@@ -66,4 +66,4 @@ Windows PowerShell インターフェイスを使用して StorSimple デバイ�
 
 [デバイスの構成を変更する方法について確認する](storsimple-modify-device-config.md)。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

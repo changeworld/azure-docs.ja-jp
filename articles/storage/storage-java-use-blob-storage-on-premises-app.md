@@ -1,42 +1,42 @@
-<properties 
-	pageTitle="BLOB ストレージを使用するオンプレミスのアプリケーション (Java) | Microsoft Azure" 
-	description="画像を Azure にアップロードしてブラウザーに表示するコンソール アプリケーションを作成する方法について説明します。コード サンプルは Java で記述されています。" 
-	services="storage" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
+<properties
+	pageTitle="BLOB ストレージを使用するオンプレミスのアプリケーション (Java) | Microsoft Azure"
+	description="画像を Azure にアップロードしてブラウザーに表示するコンソール アプリケーションを作成する方法について説明します。コード サンプルは Java で記述されています。"
+	services="storage"
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor="jimbe"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="06/03/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="06/03/2015"
 	ms.author="robmcm"/>
 
 # BLOB ストレージを使用するオンプレミスのアプリケーション
 
 ## 概要
 
-次の例では、Azure Storage を使用して画像を Azure に保存する方法を示しています。ここでは、画像を Azure にアップロードし、ブラウザーに画像を表示する HTML ファイルを作成するコンソール アプリケーションのコードを紹介します。
+次の例では、Azure Storage を使用して画像を Azure に保存する方法を示しています。この記事では、画像を Azure にアップロードし、ブラウザーに画像を表示する HTML ファイルを作成するコンソール アプリケーションのコードを紹介します。
 
 ## 前提条件
 
-1.  Java Developer Kit (JDK) v1.6 以降がインストールされていること。
-2.  Azure SDK がインストールされていること。
-3.  Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。Azure Libraries for Java のインストールについては、[Azure SDK for Java のダウンロード]のページを参照してください。
-4.  Azure ストレージ アカウントがセットアップされていること。後に示すコードでは、ストレージ アカウントのアカウント名とアカウント キーが使用されます。ストレージ アカウントの作成については、「[方法: ストレージ アカウントを作成する]」をご覧ください。アカウント キーの取得については[ストレージ アカウントを管理する方法]に関するページをご覧ください。
-5.  ローカル画像ファイルが作成され、c:\myimages\image1.jpg に保存されていること。または、例に含まれている **FileInputStream** コンストラクターを変更して、別の画像パスとファイル名を使用することもできます。
+- Java Developer Kit (JDK) バージョン 1.6 以降がインストールされていること。
+- Azure SDK がインストールされていること。
+- Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。Azure Libraries for Java のインストールについては、「Azure SDK for Java のダウンロード」のページをご覧ください。
+- Azure ストレージ アカウントがセットアップされていること。この記事のコードでは、ストレージ アカウントのアカウント名とアカウント キーが使用されます。ストレージ アカウントの作成については、「[方法: ストレージ アカウントを作成する]」をご覧ください。アカウント キーの取得については[ストレージ アカウントを管理する方法]に関するページをご覧ください。
+- ローカル画像ファイルが作成され、c:\\myimages\\image1.jpg に保存されていること。または、例に含まれている **FileInputStream** コンストラクターを変更して、別の画像パスとファイル名を使用することもできます。
 
 [AZURE.INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
 
 ## Azure BLOB ストレージを使用してファイルをアップロードするには
 
-ここでは詳細な手順を示していますが、この部分をスキップして、後に示すコード全体を確認することもできます。
+ここでは、手順を追って説明します。スキップする場合、この記事の後半でコード全体が確認できます。
 
-コードの先頭には、Azure コア ストレージ クラス、Azure BLOB クライアント クラス、Java IO クラス、および **URISyntaxException** クラスの import を含めます。
+コードの先頭には、Azure コア ストレージ クラス、Azure BLOB クライアント クラス、Java IO クラス、**URISyntaxException** クラスの import を含めます。
 
     import com.microsoft.azure.storage.*;
     import com.microsoft.azure.storage.blob.*;
@@ -47,16 +47,16 @@
 
     public class StorageSample {
 
-**StorageSample** クラス内で、Azure ストレージ アカウントで指定されている既定のエンドポイント プロトコル、ストレージ アカウント名、およびストレージ アクセス キーを格納する文字列変数を宣言します。プレースホルダーの値 **your_account_name** と **your_account_key** は、自分のアカウント名とアカウント キーにそれぞれ置き換えてください。
+**StorageSample** クラス内で、Azure ストレージ アカウントで指定されている既定のエンドポイント プロトコル、ストレージ アカウント名、およびストレージ アクセス キーを格納する文字列変数を宣言します。プレースホルダーの値 **your\_account\_name** と **your\_account\_key** は、自分のアカウント名とアカウント キーにそれぞれ置き換えてください。
 
-    public static final String storageConnectionString = 
-           "DefaultEndpointsProtocol=http;" + 
-               "AccountName=your_account_name;" + 
-               "AccountKey=your_account_name"; 
+    public static final String storageConnectionString =
+           "DefaultEndpointsProtocol=http;" +
+               "AccountName=your_account_name;" +
+               "AccountKey=your_account_name";
 
 **main** の宣言を追加し、**try** ブロックと、必要な左ブラケット **{** を含めます。
 
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
         try
         {
@@ -104,15 +104,15 @@
 
     blob = container.getBlockBlobReference("image1.jpg");
 
-**File** コンストラクターを使用して、アップロードするローカルで作成したファイルへの参照を取得します (このファイルは、コードを実行する前に作成しておいてください)。
+**File** コンストラクターを使用して、アップロードするローカルで作成したファイルへの参照を取得します このファイルは、コードを実行する前に作成しておいてください。
 
-    File fileReference = new File ("c:\myimages\image1.jpg");
+    File fileReference = new File ("c:\\myimages\\image1.jpg");
 
 **CloudBlockBlob.upload** メソッドの呼び出しによってローカル ファイルをアップロードします。**CloudBlockBlob.upload** メソッドの 1 つ目のパラメーターは、Azure Storage にアップロードするローカル ファイルを表す **FileInputStream** オブジェクトです。2 つ目のパラメーターは、ファイルのサイズ (バイト単位) です。
 
     blob.upload(new FileInputStream(fileReference), fileReference.length());
 
-**MakeHTMLPage** という名前のヘルパー関数を呼び出して、現在は Azure ストレージ アカウントにある BLOB に設定されているソースがあり、かつ **&lt;image&gt;** 要素が 1 つ含まれる基本的な HTML ページを作成します (**MakeHTMLPage** のコードについては、このトピックで後述します)。
+**MakeHTMLPage** という名前のヘルパー関数を呼び出して、現在は Azure ストレージ アカウントにある BLOB に設定されているソースがあり、かつ **&lt;image&gt;** 要素が 1 つ含まれる基本的な HTML ページを作成します (**MakeHTMLPage** のコードについては、この記事で後述します)。
 
     MakeHTMLPage(container);
 
@@ -198,7 +198,7 @@
 
 右ブラケット **}** を挿入して **StorageSample** を閉じます。
 
-この例の完全なコードを次に示します。プレースホルダーの値 **your_account_name** と **your_account_key** を変更して、自分のアカウント名とアカウント キーをそれぞれ使用してください。
+この例の完全なコードを次に示します。プレースホルダーの値 **your\_account\_name** と **your\_account\_key** を変更して、自分のアカウント名とアカウント キーをそれぞれ使用してください。
 
     import com.microsoft.azure.storage.*;
     import com.microsoft.azure.storage.blob.*;
@@ -206,14 +206,14 @@
     import java.net.URISyntaxException;
 
     // Create an image, c:\myimages\image1.jpg, prior to running this sample.
-    // Alternatively, change the value used by the FileInputStream constructor 
+    // Alternatively, change the value used by the FileInputStream constructor
     // to use a different image path and file that you have already created.
     public class StorageSample {
 
         public static final String storageConnectionString =
                 "DefaultEndpointsProtocol=http;" +
-                       "AccountName=your_account_name;" + 
-                       "AccountKey=your_account_name"; 
+                       "AccountName=your_account_name;" +
+                       "AccountKey=your_account_name";
 
         public static void main(String[] args) {
             try {
@@ -237,7 +237,7 @@
                 // Upload an image file.
                 blob = container.getBlockBlobReference("image1.jpg");
 
-                File fileReference = new File("c:\myimages\image1.jpg");
+                File fileReference = new File("c:\\myimages\\image1.jpg");
                 blob.upload(new FileInputStream(fileReference), fileReference.length());
 
                 // At this point the image is uploaded.
@@ -310,25 +310,25 @@
 
     public class DeleteContainer {
 
-        public static final String storageConnectionString = 
-                "DefaultEndpointsProtocol=http;" + 
-                   "AccountName=your_account_name;" + 
-                   "AccountKey=your_account_key"; 
+        public static final String storageConnectionString =
+                "DefaultEndpointsProtocol=http;" +
+                   "AccountName=your_account_name;" +
+                   "AccountKey=your_account_key";
 
-        public static void main(String[] args) 
+        public static void main(String[] args)
         {
             try
             {
                 CloudStorageAccount account;
                 CloudBlobClient serviceClient;
                 CloudBlobContainer container;
-                
+
                 account = CloudStorageAccount.parse(storageConnectionString);
                 serviceClient = account.createCloudBlobClient();
                 // Container name must be lower case.
                 container = serviceClient.getContainerReference("gettingstarted");
                 container.delete();
-                
+
                 System.out.println("Container deleted.");
 
             }
@@ -366,6 +366,5 @@
   [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
   [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

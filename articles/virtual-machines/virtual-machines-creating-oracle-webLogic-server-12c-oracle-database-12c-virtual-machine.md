@@ -1,4 +1,4 @@
-<properties pageTitle="Azure での Oracle WebLogic Server 12c および Oracle Database 12c の仮想マシンの作成" description="Windows Server 2012 で実行中の Oracle WebLogic Server 12c および Oracle Database 12c のイメージを Microsoft Azure で作成する例の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<properties title="Creating an Oracle WebLogic Server 12c and Oracle Database 12c virtual machine in Azure" pageTitle="Azure での Oracle WebLogic Server 12c および Oracle Database 12c の仮想マシンの作成" description="Windows Server 2012 で実行中の Oracle WebLogic Server 12c および Oracle Database 12c のイメージを Microsoft Azure で作成する例の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
 <tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 
 #Azure での Oracle WebLogic Server 12c および Oracle Database 12c の仮想マシンの作成
@@ -54,4 +54,4 @@
 
 [Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

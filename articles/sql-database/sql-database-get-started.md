@@ -111,4 +111,4 @@
 [4]: ./media/sql-database-get-started/GettingStarted_FireWall.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

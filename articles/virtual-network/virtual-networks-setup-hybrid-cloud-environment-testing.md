@@ -53,7 +53,7 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 [Windows Server 2012 R2 基本構成 のテスト ラボ ガイド](http://www.microsoft.com/download/details.aspx?id=39638)の Corpnet サブネットの構成手順に関するセクションの指示に従って、Corpnet という名前のサブネット上で DC1、APP1、CLIENT1 というコンピューターを構成します。**このサブネットは、RRAS1 コンピューターを通じてインターネットに直接接続されるため、社内ネットワークから分離する必要があります。**
 
-次に、CORP\User1 の資格情報を使用して、DC1 にログオンします。コンピューターとユーザーが認証にローカル ドメイン コントローラーを使用するよう CORP ドメインを構成するために、管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
+次に、CORP\\User1 の資格情報を使用して、DC1 にログオンします。コンピューターとユーザーが認証にローカル ドメイン コントローラーを使用するよう CORP ドメインを構成するために、管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
 
 	New-ADReplicationSite -Name "TestLab" 
 	New-ADReplicationSite -Name "TestVNET"
@@ -268,7 +268,7 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 	Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 	Install-ADDSDomainController -Credential (Get-Credential CORP\User1) -DomainName "corp.contoso.com" -InstallDns:$true -DatabasePath "F:\NTDS" -LogPath "F:\Logs" -SysvolPath "F:\SYSVOL"
 
-CORP\User1 のパスワードとディレクトリ サービス復元モード (DSRM) のパスワードの両方を入力し、DC2 を再起動するよう求められます。
+CORP\\User1 のパスワードとディレクトリ サービス復元モード (DSRM) のパスワードの両方を入力し、DC2 を再起動するよう求められます。
 
 これで TestVNET 仮想ネットワーク独自の DNS サーバー (DC2) が設定されたので、この DNS サーバーを使用するように TestVNET 仮想ネットワークを構成する必要があります。
 
@@ -304,7 +304,7 @@ CORP\User1 のパスワードとディレクトリ サービス復元モード (
 
 ## この環境の継続的な費用を最小限に抑える
 
-この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに Test_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンできます。詳細については、[Azure Automation の使用](../automation-create-runbook-from-samples.md)に関するページを参照してください。
+この環境で稼働中の仮想マシンの費用を最小限に抑えるためには、できるだけ迅速に必要なテストとデモンストレーションを行ってからそれらの仮想マシンを削除するか、使用していない間は仮想マシンをシャットダウンします。たとえば、Azure Automation と Runbook を使用して、各営業日の終わりに Test\_VNET 仮想ネットワーク内の仮想マシンを自動的にシャットダウンできます。詳細については、[Azure Automation の使用](../automation-create-runbook-from-samples.md)に関するページを参照してください。
 
 Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、[Virtual Network 料金](http://azure.microsoft.com/pricing/details/virtual-network/)に関するページを参照してください。VPN ゲートウェイの費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。
 
@@ -326,4 +326,4 @@ Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンと�
 次に、ローカル コンピューターで Azure 管理ポータルにアクセスし、TestVNET 仮想ネットワークの状態が [接続中] と表示されるまで待ちます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

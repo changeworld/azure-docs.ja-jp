@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 仮想マシンのバックアップ - Backup"
+	pageTitle="Azure 仮想マシンのバックアップ - Backup | Microsoft Azure"
 	description="登録後に、Azure 仮想マシンをバックアップする方法について説明します"
 	services="backup"
 	documentationCenter=""
@@ -7,14 +7,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="07/06/2015"
-	ms.author="aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="hero-article" ms.date="07/30/2015" ms.author="aashishr"; "jimpark"/>
 
 
 # Azure 仮想マシンのバックアップ
@@ -31,15 +24,21 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
 ### 探索プロセスをトリガーするには
 
-1. Azure ポータルの **[復旧サービス]** にあるバックアップ コンテナーに移動し、**[登録されている項目]** タブをクリックします。
+1. Azure ポータルの **[Recovery Services]** にあるバックアップ コンテナーに移動し、**[登録されている項目]** タブをクリックします。
 
-2. ドロップダウン メニューでワークロードの種類として **[Azure 仮想マシン]** を選択し、**[選択]** をクリックします。![ワークロードの選択](./media/backup-azure-vms/discovery-select-workload.png)
+2. ドロップダウン メニューでワークロードの種類として **[Azure 仮想マシン]** を選択し、**[選択]** ボタンをクリックします。
+
+    ![ワークロードの選択](./media/backup-azure-vms/discovery-select-workload.png)
 
 3. ページの下部にある **[探索]** をクリックします。![[探索] ボタン](./media/backup-azure-vms/discover-button-only.png)
 
-4. 仮想マシンが集計されるまで、この探索プロセスに数分かかる場合があります。探索プロセスの実行中は、画面の下部にトースト通知が表示されます。![VMS の探索](./media/backup-azure-vms/discovering-vms.png)
+4. 仮想マシンが集計されるまで、この探索プロセスに数分かかる場合があります。探索プロセスの実行中は、画面の下部にトースト通知が表示されます。
 
-5. 探索プロセスが完了すると、トースト通知が表示されます。![discover-done](./media/backup-azure-vms/discovery-complete.png)
+    ![VMS の探索](./media/backup-azure-vms/discovering-vms.png)
+
+5. 探索プロセスが完了すると、トースト通知が表示されます。
+
+    ![discover-done](./media/backup-azure-vms/discovery-complete.png)
 
 ##  2\.Azure 仮想マシンの登録
 仮想マシンを保護するには、事前に Azure Backup サービスに登録する必要があります。この登録プロセスには、次の 2 つの主要な目的があります。
@@ -54,7 +53,9 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
 1. Azure ポータルの **[Recovery Services]** にあるバックアップ コンテナーに移動し、**[登録されている項目]** タブをクリックします。
 
-2. ドロップダウン メニューでワークロードの種類として **[Azure 仮想マシン]** を選択し、選択ボタンをクリックします。![ワークロードの選択](./media/backup-azure-vms/discovery-select-workload.png)
+2. ドロップダウン メニューでワークロードの種類として **[Azure 仮想マシン]** を選択し、選択ボタンをクリックします。
+
+    ![ワークロードの選択](./media/backup-azure-vms/discovery-select-workload.png)
 
 3. ページの下部にある **[登録]** をクリックします。![[登録] ボタン](./media/backup-azure-vms/register-button-only.png)
 
@@ -64,18 +65,26 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
     >[AZURE.NOTE]ここには、登録されていない、バックアップ コンテナーと同じリージョンにある仮想マシンのみが表示されます。
 
-5. 登録する仮想マシンごとにジョブが作成されます。トースト通知にこのアクティビティの状態が示されます。**[ジョブの表示]** をクリックして **[ジョブ]** ページに移動します。![登録ジョブ](./media/backup-azure-vms/register-create-job.png)
+5. 登録する仮想マシンごとにジョブが作成されます。トースト通知にこのアクティビティの状態が示されます。**[ジョブの表示]** をクリックして **[ジョブ]** ページに移動します。
 
-6. 仮想マシンが登録済みの項目の一覧にも表示され、登録操作の状態が表示されます。![登録状態 1](./media/backup-azure-vms/register-status01.png)
+    ![登録ジョブ](./media/backup-azure-vms/register-create-job.png)
 
-7. 操作が完了すると、登録済みの状態を反映するようにポータルの状態が変更されます。![登録状態 2](./media/backup-azure-vms/register-status02.png)
+6. 仮想マシンが登録済みの項目の一覧にも表示され、登録操作の状態が表示されます。
+
+    ![登録状態 1](./media/backup-azure-vms/register-status01.png)
+
+7. 操作が完了すると、登録済みの状態を反映するようにポータルの状態が変更されます。
+
+    ![登録状態 2](./media/backup-azure-vms/register-status02.png)
 
 ## 3\.保護: Azure Virtual Machines のバックアップ
 この手順では、仮想マシンのバックアップおよび保持ポリシーを設定します。仮想マシンを保護するには、次の手順を実行します。
 
 ### Azure Virtual Machines をバックアップするには
-1. Azure ポータルの **[復旧サービス]** にあるバックアップ コンテナーに移動し、**[登録されている項目]** タブをクリックします。
-2. ドロップダウン メニューでワークロードの種類として **[Azure 仮想マシン]** を選択し、**[選択]** をクリックします。![ポータルでのワークロードの選択](./media/backup-azure-vms/select-workload.png)
+1. Azure ポータルの **[Recovery Services]** にあるバックアップ コンテナーに移動し、**[登録されている項目]** タブをクリックします。
+2. ドロップダウン メニューでワークロードの種類として **[Azure 仮想マシン]** を選択し、**[選択]** ボタンをクリックします。
+
+    ![ポータルでのワークロードの選択](./media/backup-azure-vms/select-workload.png)
 
 3. ページの下部にある **[保護]** をクリックします。
 
@@ -93,17 +102,25 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
     それぞれのバックアップ ポリシーには、複数の仮想マシンを関連付けることができます。仮想マシンは、特定の時点において 1 つのポリシーにのみ関連付けることができます。
 
-6. 仮想マシンごとに、保護ポリシーを構成し、仮想マシンをポリシーに関連付けるためのジョブが作成されます。**[ジョブ]** タブをクリックし、適切なフィルターを選択して、**保護の構成**ジョブの一覧を表示します。![保護の構成ジョブ](./media/backup-azure-vms/protect-configureprotection.png)
+6. 仮想マシンごとに、保護ポリシーを構成し、仮想マシンをポリシーに関連付けるためのジョブが作成されます。**[ジョブ]** タブをクリックし、適切なフィルターを選択して、**保護の構成**ジョブの一覧を表示します。
+
+    ![保護の構成ジョブ](./media/backup-azure-vms/protect-configureprotection.png)
 
 7. ジョブが完了すると、仮想マシンがポリシーによって保護されます。最初のバックアップの実行は、スケジュール設定されたバックアップ時刻まで待つ必要があります。仮想マシンが **[保護された項目]** タブに表示され、保護状態が *[保護済み]* として表示されます (最初のバックアップが未完了の状態)。
     >[AZURE.NOTE]現在、保護を構成した直後に最初のバックアップを開始することはできません。
 
-8. スケジュール設定された時刻になると、Azure Backup サービスによって、バックアップする必要があるそれぞれの仮想マシンに対するバックアップ ジョブが作成されます。**[ジョブ]** タブをクリックして、**バックアップ** ジョブの一覧を表示します。Azure Backup サービスは、バックアップ操作の一部として、各仮想マシンのバックアップ拡張機能に対して、すべての書き込みをフラッシュし、整合性のあるスナップショットを作成するためのコマンドを発行します。![バックアップが進行中](./media/backup-azure-vms/protect-inprogress.png)
+8. スケジュール設定された時刻になると、Azure Backup サービスによって、バックアップする必要があるそれぞれの仮想マシンに対するバックアップ ジョブが作成されます。**[ジョブ]** タブをクリックして、**バックアップ** ジョブの一覧を表示します。Azure Backup サービスは、バックアップ操作の一部として、各仮想マシンのバックアップ拡張機能に対して、すべての書き込みをフラッシュし、整合性のあるスナップショットを作成するためのコマンドを発行します。
 
-9. 操作が完了すると、**[保護された項目]** タブの仮想マシンの保護状態が *[保護済み]* として表示されます。![復旧ポイントを作成した後の仮想マシンのバックアップ](./media/backup-azure-vms/protect-backedupvm.png)
+    ![バックアップが進行中](./media/backup-azure-vms/protect-inprogress.png)
+
+9. 操作が完了すると、**[保護された項目]** タブの仮想マシンの保護状態が *[保護済み]* として表示されます。
+
+    ![復旧ポイントを作成した後の仮想マシンのバックアップ](./media/backup-azure-vms/protect-backedupvm.png)
 
 ## バックアップの状態と詳細の表示
-仮想マシンが保護されると、**[ダッシュボード]** ページの概要に示される仮想マシンの数が増加します。さらに、[ダッシュボード] ページには、過去 24 時間の間に成功したジョブ、失敗したジョブ、現在進行中のジョブの数が表示されます。いずれかのカテゴリをクリックすると、**[ジョブ]** ページにそのカテゴリの詳細が表示されます。![[ダッシュボード] ページのバックアップの状態](./media/backup-azure-vms/dashboard-protectedvms.png)
+仮想マシンが保護されると、**[ダッシュボード]** ページの概要に示される仮想マシンの数が増加します。さらに、[ダッシュボード] ページには、過去 24 時間の間に成功したジョブ、失敗したジョブ、現在進行中のジョブの数が表示されます。いずれかのカテゴリをクリックすると、**[ジョブ]** ページにそのカテゴリの詳細が表示されます。
+
+![[ダッシュボード] ページのバックアップの状態](./media/backup-azure-vms/dashboard-protectedvms.png)
 
 ## エラーのトラブルシューティング
 次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
@@ -181,6 +198,6 @@ Backup 拡張機能は、他の拡張機能と同様に、パブリックなイ�
 Azure Backup の概要については、次のトピックを参照してください。
 
 - [仮想マシンの復元](backup-azure-restore-vms.md)
-- [仮想マシンの管理](backup-azure-manage-vms)
+- [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

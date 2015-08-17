@@ -45,7 +45,7 @@
 
 	![New data factory blade](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
-	> [AZURE.IMPORTANT] 
+	> [AZURE.IMPORTANT]Azure Data Factory の名前はグローバルで一意となります。ファクトリを作成するには、データ ファクトリの名前の先頭にあなたの名前を付ける必要があります。 
 3.	リソース グループを作成していない場合は、リソース グループを作成する必要があります。これを行うには、次の手順を実行します。
 	1.	**[リソース グループ名]** をクリックします。
 	2.	**[リソース グループ]** ブレードで、**[新規リソース グループの作成]** を選択します。
@@ -76,8 +76,8 @@
 	![Azure ストレージのリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
 	Azure Storage のリンクされたサービスを作成するための JSON スクリプトがエディターに表示されます。 
-4. **accountname** を Azure ストレージ アカウントの名前に、**accountkey** を Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピー、および再生成](../storage/storage-create-storage-account.md/#view-copy-and-regenerate-storage-access-keys)」を参照してください。
-5. コマンド バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。
+4. **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md/#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
+5. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
 	![デプロイ ボタン](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
@@ -112,7 +112,7 @@
 	TimeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。
 	JobsContainer | HDInsight によって生成されるログを保存するために作成されるジョブ コンテナーの名前を指定します。
 	linkedServiceName | HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。
-3. コマンド バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。 
+3. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。 
 4. StorageLinkedService と HDInsightOnDemandLinkedService が両方とも左側のツリー ビューに表示されていることを確認します。
 
 	![リンクされたサービスを表示しているツリー ビュー](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
@@ -123,7 +123,7 @@
 1. **Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、**[Azure BLOB ストレージ]** をクリックします。  
 
 	![新しいデータセット](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
-2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。この JSON スニペットでは、**AzureBlobOutput** という名前のデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定します。さらに、結果を **data** という名前の BLOB コンテナーと **partitioneddata** という名前のフォルダーに格納することを指定します。**availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
+2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。この JSON スニペットでは、**AzureBlobOutput** という名前のデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。さらに、結果を **data** という名前の BLOB コンテナーおよび **partitioneddata** という名前のフォルダーに格納することを指定します。**availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
 	
 		{
 		  "name": "AzureBlobOutput",
@@ -157,7 +157,7 @@
 	![[新しいパイプライン] ボタン](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。
 
-	> [AZURE.IMPORTANT]**storageaccountname** を、JSON でのストレージ アカウントの名前に置き換えます。
+	> [AZURE.IMPORTANT]**storageaccountname** は、JSON でのストレージ アカウントの名前に置き換えます。
 
 		{
 		  "name": "MyFirstPipeline",
@@ -178,6 +178,10 @@
 		            "name": "AzureBlobOutput"
 		          }
 		        ],
+                "scheduler": {
+                    "frequency": "Month",
+                    "interval": 1
+                },
 		        "policy": {
 		          "concurrency": 1,
 		          "retry": 3
@@ -193,13 +197,13 @@
  
 	この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
 	
-	Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定された **StorageLinkedService** という名前のアカウント) と **script** という名前のコンテナーに格納されます。
+	Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、**StorageLinkedService** という名前) および **script** という名前のコンテナーに格納されます。
 
 	**extendedProperties** セクションは、Hive 構成値 (例: ${hiveconf:PartitionedData}) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
 
-	パイプラインの **start** プロパティと **end** プロパティは、パイプラインのアクティブな期間を指定します。
+	パイプラインの **start** および **end** プロパティでは、パイプラインのアクティブな期間を指定します。
 
-	アクティビティ JSON では、Hive スクリプトはリンクされたサービス **HDInsightOnDemandLinkedService** で指定されたコンピューティングで実行することを指定します。
+	アクティビティ JSON では、Hive スクリプトがリンクされたサービス **HDInsightOnDemandLinkedService** によって指定されたコンピューティングで実行することを指定します。
 3. コマンド バーの **[デプロイ]** をクリックして、パイプラインをデプロイします。
 4. ツリー ビューにパイプラインが表示されることを確認します。
 
@@ -217,13 +221,13 @@
 9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかることに注意してください。 
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)	
-10. スライスが **[準備完了]** 状態になったら、BLOB ストレージの **data** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
+10. スライスが **Ready** 状態になったら、BLOB ストレージの **data** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
  
 
  
 
 ## 次のステップ
-この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](./data-factory-get-started.md)」を参照してください。
+この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](./data-factory-get-started.md)」をご覧ください。
   
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

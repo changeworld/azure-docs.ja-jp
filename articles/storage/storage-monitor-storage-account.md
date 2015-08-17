@@ -72,7 +72,7 @@
 	
 	- チャートにプロットされているメトリックを非表示にするには、メトリック ヘッダーの横にある色つきのチェック ボックスをオフにします。
 	
-		![Monitoring_nmore](./media/storage-monitor-storage-account/storage_Monitoring_nmore.png)
+		![Monitoring\_nmore](./media/storage-monitor-storage-account/storage_Monitoring_nmore.png)
   
 3. 既定では、チャートには傾向が表示され、各メトリックの現在の値だけが表示されます (チャート上部にある **[相対]** オプション)。Y 軸を表示して絶対値を確認するには、**[絶対]** をクリックします。
 
@@ -99,7 +99,7 @@
 	**[監視]** ページが開きます。既定で、メトリック テーブルには監視に使用できるメトリックのサブセットが表示されます。図は、3 つのサービスすべてに詳細監視を構成したストレージ アカウントで表示される既定の [監視] ページを示しています。**[メトリックの追加]** を使用して、使用できるすべてのメトリックから監視するメトリックを選択します。
 
 
-	![Monitoring_VerboseDisplay](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
+	![Monitoring\_VerboseDisplay](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
 
 	> [AZURE.NOTE]メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://msdn.microsoft.com/library/azure/hh360997.aspx)を参照してください。
 
@@ -159,4 +159,4 @@
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について](http://msdn.microsoft.com/library/azure/hh343262.aspx)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

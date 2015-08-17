@@ -29,4 +29,4 @@
 - 資格情報コンテナーの資格情報ファイルの有効期限は 48 時間であり、ポータルからダウンロードすることができます。
 - ワークフローに関する質問については、Azure Backup の [FAQ](backup-azure-backup-faq.md) を参照してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -34,7 +34,7 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
 1. [管理ポータル](http://go.microsoft.com/fwlink/?LinkID=256666)で、**[メディア サービス]** をクリックし、目的の Media Services アカウント名をクリックしてダッシュボードを開きます。 
 
-	![MediaServices_Dashboard][dashboard]
+	![MediaServices\_Dashboard][dashboard]
 
 2. エンコード ジョブまたはデータを監視するには、Media Services に対するエンコード ジョブの送信を開始するか、Azure メディア オンデマンド ストリーミングを使用して顧客に対するコンテンツのストリーミング配信を開始します。約 1 時間後に、ダッシュボードに監視データが表示されるようになります。
 
@@ -67,4 +67,4 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

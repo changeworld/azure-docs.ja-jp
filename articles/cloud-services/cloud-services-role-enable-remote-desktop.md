@@ -102,7 +102,7 @@ Web ロールか Worker ロールのインスタンスにアクセスするに�
 ### Visual Studio を使用して、RDP ファイルをダウンロードする
 Visual Studio でサーバー エクスプローラーを使用して、リモート デスクトップ接続を作成できます。
 
-1.  サーバー エクスプローラーで、**Azure\Cloud services \ [cloud service name]** ノードを展開します。
+1.  サーバー エクスプローラーで、**Azure\\Cloud services \\ [cloud service name]** ノードを展開します。
 2.  **[ステージング]** か **[運用]** のいずれかを展開します。
 3.  個々のロールを展開します。
 4.  ロール インスタンスの 1 つを右クリックして **[リモート デスクトップを使用して接続]** をクリックして、ユーザー名とパスワードを入力します。
@@ -113,4 +113,4 @@ Visual Studio でサーバー エクスプローラーを使用して、リモ�
 ## 次のステップ
 アプリケーションを[パッケージ化](cloud-services-model-and-package.md)するか、[アップロード (デプロイ)](cloud-services-how-to-create-deploy-portal.md) する必要があります。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

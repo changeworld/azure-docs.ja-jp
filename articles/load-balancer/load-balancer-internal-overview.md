@@ -92,4 +92,4 @@ LOB のもう 1 つのシナリオは、ILB エンドポイントが構成され
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

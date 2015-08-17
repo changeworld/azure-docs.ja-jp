@@ -81,4 +81,4 @@ Azure へのバックアップがサポートされているファイルの種�
 
 >[AZURE.NOTE]System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

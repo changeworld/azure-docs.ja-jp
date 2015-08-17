@@ -134,4 +134,4 @@
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

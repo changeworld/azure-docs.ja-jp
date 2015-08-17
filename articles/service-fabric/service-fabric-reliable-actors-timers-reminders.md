@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Service Fabric のアクターのタイマーとアラーム"
-   description="Azure Service Fabric のアクターのタイマーとアラームの概要"
+   pageTitle="高信頼アクターのタイマーとアラーム"
+   description="Service Fabric 高信頼アクターのタイマーとアラームの概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/09/2015"
+   ms.date="08/05/2015"
    ms.author="amanbha"/>
 
 
@@ -114,4 +114,4 @@ Task reminderUnregistration = UnregisterReminder(reminder);
 
 上記の例のように、 `UnregisterReminder` メソッドは、`IActorReminder` インターフェイスを受け入れます。アクターの基本クラスは、アラーム名で渡すことで、`IActorReminder` インターフェイスを取得できる `GetReminder` メソッドをサポートします。これにより、アクターが `RegisterReminder` メソッドの呼び出しから返された `IActorReminder` インターフェイスを永続化する必要がなくなるため便利です。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

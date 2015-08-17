@@ -10,7 +10,7 @@
 <tags
    ms.service="dns"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="05/01/2015"
@@ -119,4 +119,4 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

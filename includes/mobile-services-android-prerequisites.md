@@ -8,4 +8,4 @@
 [既存のアプリケーションへのMobile Services の追加]: ../articles/mobile-services-android-get-started-data.md
 -->
 
-<!-----------HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

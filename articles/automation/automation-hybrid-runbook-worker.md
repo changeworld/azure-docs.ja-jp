@@ -9,7 +9,7 @@
 <tags
    ms.service="automation"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="07/10/2015"
@@ -136,4 +136,4 @@ Hybrid Runbook Worker 機能を持つ Azure Automation と Service Management Au
 - [Azure Automation での Runbook の編集](https://msdn.microsoft.com/library/dn879137.aspx)
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

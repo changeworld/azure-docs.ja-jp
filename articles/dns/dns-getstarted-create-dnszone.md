@@ -10,10 +10,10 @@
 <tags
    ms.service="dns"
    ms.devlang="na"
-   ms.topic="hero-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/01/2015"
+   ms.date="07/28/2015"
    ms.author="joaoma"/>
 
 # Azure DNS の概要
@@ -147,4 +147,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

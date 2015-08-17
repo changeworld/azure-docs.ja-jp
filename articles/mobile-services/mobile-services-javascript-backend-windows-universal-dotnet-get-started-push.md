@@ -101,4 +101,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [MobileServiceClient]: http://go.microsoft.com/fwlink/p/?LinkId=302030
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

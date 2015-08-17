@@ -23,7 +23,7 @@ Microsoft Azure StorSimple デバイスに適用されるこの記事に記載�
 
 ## 安全性アイコンの表記規則
 
-Microsoft Azure StorSimple デバイスを設定および実行しているときに従うべき安全に関する注意事項に使用されるアイコンについて説明します。
+Microsoft Azure StorSimple デバイスを設定および実行しているときに従うべき安全に関する注意事項に使用されるアイコンを説明します。
 
 | アイコン | 説明 |
 |:------|:-------------| 
@@ -34,7 +34,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 |![感電を示すアイコン](./media/storsimple-safety/IC740882.png) **感電の危険** |高電圧|
 |![ヘビー ウェイト アイコン](./media/storsimple-safety/IC740883.png)**ヘビー ウェイト**| |
 |![ユーザーによる保守不可能な部品のアイコン](./media/storsimple-safety/IC740879.png)**ユーザーによる保守不可能な部品**|適切な訓練を受けている場合を除き、触らないでください。|
-|![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png)\*\*最初にすべての指示を確認してください\*\*| |
+|![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png)**最初にすべての指示を確認してください**| |
 |![危険情報のアイコン](./media/storsimple-safety/IC740886.png) **危険情報**| |
 
 
@@ -175,8 +175,8 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 ## 次のステップ
 
-- 8100 デバイスの場合、「[8600 デバイスの開梱、ラックへの積み込み、およびケーブル接続](storsimple-8600-hardware-installation)」に進んでください。
+- 8100 デバイスの場合、「[8100 デバイスの開梱、ラックへの積み込み、およびケーブル接続](storsimple-8600-hardware-installation)」に進んでください。
 
 - 8600 デバイスの場合、[8600 デバイスの開梱、ラックへの取り付け、およびケーブル接続](storsimple-8600-hardware-installation)に進んでください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -88,4 +88,4 @@ Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、�
 Web アプリケーションのアーキテクチャが、基になるオペレーティング システムに深く依存する場合は、"[スタートアップ タスク](https://msdn.microsoft.com/library/windowsazure/gg456327.aspx)" のような機能や、将来的に存在する可能性がある他の拡張メカニズムなど、プラットフォームでサポートされる機能を使用します。または、[Azure Virtual Machines](http://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS: Infrastructure as a Service) を使用することもできます。この場合、ユーザーが基になるオペレーティング システムの管理を担当します。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

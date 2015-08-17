@@ -86,4 +86,4 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 [powerquery-download]: http://go.microsoft.com/fwlink/?LinkID=286689
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

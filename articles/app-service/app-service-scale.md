@@ -16,7 +16,7 @@
 	ms.date="07/21/2015" 
 	ms.author="stepsic"/>
 
-# Azure App Service における価格レベルのスケール
+# Azure App Service における価格レベルのスケーリング
 
 Microsoft Azure でのアプリのスループットとパフォーマンスを高めるために、[Azure ポータル](https://portal.azure.com/)を使用して App Service プランを **Free** から **Shared**、**Basic**、**Standard**、または **Premium** にスケールアップできます。
 
@@ -50,7 +50,7 @@ Azure に存在する各種コンピューティング階層については、[�
 	
 <a name="ScalingSQLServer"></a>
 ##スケーリングに関連するリソース
-アプリが SQL や Storage などの他のサービスに依存している場合は、これらもニーズに合わせてスケールできます。
+アプリが SQL や Storage などの他のサービスに依存している場合は、これらもニーズに合わせて拡張できます。
 
 1. **[Essentials]** で、**[リソース グループ]** リンクをクリックします。
 
@@ -60,9 +60,9 @@ Azure に存在する各種コンピューティング階層については、[�
 	
 3. リンクされているリソースのブレードで **[価格レベル]** パートをクリックし、パフォーマンス要件に応じていずれかの価格レベルを選択して、**[選択]** をクリックします。
 	
-	![SQL Database のスケール](./media/app-service-scale/ScaleDatabase.png)
+	![SQL Database のスケーリング](./media/app-service-scale/ScaleDatabase.png)
 	
-4. アプリで Storage を使用する場合、Storage をサポートしている価格レベルを選択すると、geo レプリケーションが自動的に設定します。これに対して、SQL を使用する場合は、SQL Database の高可用性と障害復旧機能を向上させるために、geo レプリケーションを手動で構成する必要があります。そのためには、**[geo レプリケーション]** パートをクリックします。
+4. アプリで Storage を使用する場合、Storage をサポートしている価格レベルを選択すると、geo レプリケーションが自動的に設定します。これに対して、SQL を使用する場合は、SQL Database の高可用性と障害復旧機能を向上させるために、geo レプリケーションを手動で構成する必要があります。そのためには、**[ジオ (主要地域) レプリケーション]** パートをクリックします。
 	
 	![SQL Database の geo レプリケーションの設定](./media/app-service-scale/GeoReplication.png)
 	
@@ -83,40 +83,40 @@ Azure に存在する各種コンピューティング階層については、[�
 <a name="OtherFeatures"></a>
 ## その他の機能
 
-- すべてのユーザー (開発者を含む) が関心を持つ価格や機能など、App Service プランのその他すべての機能の詳細については、[App Service の価格の詳細](/pricing/details/web-sites/)に関するページを参照してください。
+- すべてのユーザー (開発者を含む) が関心を持つ料金や機能など、App Service プランのその他すべての機能の詳細については、[App Service の料金の詳細](/pricing/details/web-sites/)に関するページを参照してください。
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <a name="Next Steps"></a>
 ## 次のステップ
 
-- Azure を利用し始めるには、[Microsoft Azure の無料評価版](/pricing/free-trial/)のページを参照してください。
-- 価格、サポート、および SLA については、次のリンクを参照してください。
+- Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト](/pricing/free-trial/)」を参照してください。
+- 料金、サポート、および SLA については、次のリンクを参照してください。
 	
-	[データ転送の価格詳細](/pricing/details/data-transfers/)
+	[データ転送の料金詳細](/pricing/details/data-transfers/)
 	
 	[Microsoft Azure サポート プラン](/support/plans/)
 	
 	[サービス レベル アグリーメント](/support/legal/sla/)
 	
-	[SQL Database の価格詳細](/pricing/details/sql-database/)
+	[SQL Database の料金詳細](/pricing/details/sql-database/)
 	
 	[Microsoft Azure の仮想マシンおよびクラウド サービスのサイズ][vmsizes]
 	
-	[App Service の価格の詳細](/pricing/details/app-service/)
+	[App Service の料金の詳細](/pricing/details/app-service/)
 	
-	[App Service の価格の詳細 - SSL 接続](/pricing/details/web-sites/#ssl-connections)
+	[App Service の料金の詳細 - SSL 接続](/pricing/details/web-sites/#ssl-connections)
 
-- スケーラブルで回復力に優れたアーキテクチャの構築など、Azure App Service のベスト プラクティスについては、「[Azure App Service Web Apps のベスト プラクティス](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)」を参照してください。
+- 拡張性と回復力に優れたアーキテクチャの構築など、Azure App Service のベスト プラクティスについては、「[Azure App Service Web Apps のベスト プラクティス](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)」を参照してください。
 
-- Web Apps の拡張に関するビデオ:
+- Web アプリの拡張に関するビデオ:
 	
 	- [Azure Websites のスケールを設定するタイミング - Stefan Schackow 共演](/documentation/videos/azure-web-sites-free-vs-standard-scaling/)
 	- [Azure Websites、CPU、またはスケジュールの自動スケール - Stefan Schackow 共演](/documentation/videos/auto-scaling-azure-web-sites/)
 	- [Azure Websites のスケールを設定する方法 - Stefan Schackow 共演](/documentation/videos/how-azure-web-sites-scale/)
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 <!-- LINKS -->
@@ -131,4 +131,4 @@ Azure に存在する各種コンピューティング階層については、[�
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -40,4 +40,4 @@ Microsoft アカウント (以前は "Windows Live ID" と呼ばれていまし�
 
 - [ワークスペースの設定および構成](operational-insights-setup-workspace.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="07/21/2015" 
+	ms.date="08/05/2015" 
 	ms.author="genemi"/>
 
 
@@ -150,17 +150,14 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 ## <a name="V12AzureSqlDbPreviewGaTable"></a>プレビューのリージョン
 
 
-V12 は 2014 年 12 月にリリースされましたが、[プレビュー](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)の段階でした。2015 年 12 月までに、V12 はほとんどの地理的リージョンで一般公開 (GA) に昇格されました。
+V12 は 2014 年 12 月にリリースされましたが、プレビューの段階でした。
 
 
-V12 は、次のリージョンではプレビューとして利用できます。
+- [ Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 
-| Azure リージョン | V12 の現在の<br/>リリース状況 | GA に昇格される<br/>時期 (予測) |
-| :--- | :--- | :--- |
-| オーストラリア東部 | **プレビュー** | 暦年 2015 年の第 3 四半期 (予測) |
-| オーストラリア南東部 | **プレビュー** | 暦年 2015 年の第 3 四半期 (予測) |
+2015 年 7 月 31 日までにすべてのリージョンが完全一般公開 (GA) に昇格しました。
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

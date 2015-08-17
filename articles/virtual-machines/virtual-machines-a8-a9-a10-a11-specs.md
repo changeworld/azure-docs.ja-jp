@@ -130,4 +130,4 @@ MPI | MS-MPI 2012 R2 以降 (スタンドアロンまたは HPC Pack 2012 R2 以
 * A8 および A9 インスタンスを使用して Linux ベースのクラスターをデプロイし、Azure RDMA ネットワークにアクセスするように構成する方法については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)」を参照してください。
 * Windows 上の HPC Pack での A8 および A9 インスタンスのデプロイと使用については、「[A8/A9 コンピューティング集中型インスタンス: HPC Pack 使用クイック スタート](https://msdn.microsoft.com/library/azure/dn594431.aspx)」および「[A8 および A9 インスタンス上での MPI アプリケーションの実行](https://msdn.microsoft.com/library/azure/dn592104.aspx)」を参照してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

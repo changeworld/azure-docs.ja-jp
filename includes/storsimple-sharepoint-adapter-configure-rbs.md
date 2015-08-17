@@ -27,7 +27,7 @@
 
           ![Configure StorSimple Adapter Enable Disable](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-    4. **[更新]** をクリックして構成を適用します。[更新] をクリックすると、すべての WFE サーバー上で RBS 構成状態が更新され、ファーム全体で RBS が有効になります。次のメッセージが表示されます。
+    4. **[更新]** をクリックして構成を適用します。[**更新**] をクリックすると、すべての WFE サーバー上で RBS 構成状態が更新され、ファーム全体で RBS が有効になります。次のメッセージが表示されます。
 
            ![Adapter configuration message](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
 
@@ -45,7 +45,7 @@
 
     2. 構成した UNC パスを参照します。RBS のディレクトリ構造が作成されていること、およびアップロードしたオブジェクトがそこに含まれていることを確認します。
 
-6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。詳細については、「[コンテンツを SharePoint 2013 の RBS 外に移行する][6]」または「[コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)][7]」を参照してください。
+6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。詳細については、「[コンテンツを SharePoint 2013 の RBS 外に移行する][6]」か「[コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)][7]」をご覧ください。
 
 7. (省略可能) テスト インストールで、次のように、BLOB がコンテンツ データベースから移動されたことを確認できます。
 
@@ -96,11 +96,11 @@
  
      BLOB とコンテンツ データベースを StorSimple デバイス上の別々のボリュームに保存する場合は、それらのボリュームを同じボリューム コンテナー内に構成することをお勧めします。これにより、これらのボリュームは同時にバックアップされるようになります。
 
-     >[AZURE.WARNING]RBS を有効にしていない場合は、コンテンツ データベースを StorSimple デバイスに移行することはお勧めしません。このような構成はテストされていません。
+       >[AZURE.WARNING]RBS を有効にしていない場合は、コンテンツ データベースを StorSimple デバイスに移行することはお勧めしません。このような構成はテストされていません。
  
 9. 次の「[ガベージ コレクションを構成する](#configure-garbage-collection)」に進みます。
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="03/23/2015"
+      ms.date="07/30/2015"
       ms.author="shoatman"/>
 
 # アプリケーションを Azure AD に追加する方法と理由
@@ -36,7 +36,7 @@ Azure Active Directory のインスタンスでアプリケーションの一覧
 
 Azure AD では、アプリケーションはアプリケーション オブジェクトとサービス プリンシパル オブジェクトという 2 つのオブジェクトを使用して表されます。アプリケーション オブジェクトは 1 つで、"home"/"owner" または "publishing" ディレクトリにおいて登録されます。サービス プリンシパル オブジェクトは 1 つ以上あり、アプリケーションが動作するすべてのディレクトリを表します。
 
-アプリケーション オブジェクトでは Azure AD に対してアプリが記述されており (マルチテナント サービス)、以下のものを含むことができます (注: この一覧がすべてではありません)。
+アプリケーション オブジェクトでは Azure AD に対してアプリが記述されており (マルチテナント サービス)、以下のものを含むことができます (*注*: この一覧がすべてではありません)。
 
 * 名前、ロゴ、発行元
 * シークレット (アプリの認証に使用される対称キーまたは非対称キー)
@@ -65,7 +65,7 @@ Azure AD では、アプリケーションはアプリケーション オブジ�
 ![アプリケーション オブジェクトおよびサービス プリンシパルが Azure AD インスタンスに存在する方法を示す図。][apps_service_principals_directory]
 
 上の図を見るとわかるように、マイクロソフトはアプリケーションを発行するために使用する 2 つのディレクトリを内部的に保持しています (左側)。
- 
+
 * 1 つはマイクロソフトのアプリ用 (Microsoft サービス ディレクトリ)
 * 1 つは事前に統合されたサードパーティのアプリ用 (アプリ ギャラリー ディレクトリ)
 
@@ -145,6 +145,5 @@ Azure AD にアプリケーションを追加する方法およびアプリ用�
 <!--Image references-->
 [apps_service_principals_directory]: media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
 [app_settings]: media/active-directory-how-applications-are-added/IntegratedAppSettings.jpg
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

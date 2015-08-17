@@ -7,14 +7,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags 
-	ms.service="backup" 
-	ms.workload="storage-backup-recovery" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/14/2015" 
-	ms.author="sammehta"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/14/2015" ms.author="sammehta"; "jimpark"/>
 
 
 # Azure への SharePoint ファームのバックアップ
@@ -233,4 +226,4 @@ Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、Shar
 - 「[System Center 2012 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860415.aspx)」をご覧ください
 - 「[System Center 2012 SP1 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860394.aspx)」をご覧ください
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

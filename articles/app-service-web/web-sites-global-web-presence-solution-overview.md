@@ -33,9 +33,9 @@
 
 ギャラリーの人気の CMS から新しいサイトをすばやく作成するか、またはさまざまな言語とフレームワークから既存の Web アセットを App Service Web Apps に取り込みます。
 
-Azure Marketplace では、[Orchard]、[Umbraco]、[Drupal]、[WordPress] など、一般的な Web サイト コンテンツ管理システム (CMS) からのテンプレートを提供しています。お気に入りの CMS フレーバーを使用して Web アプリを作成できます。[Azure SQL Database] と [MySQL] を含むさまざまデータベースのバックエンドから目的に合ったものを選択できます。
+Azure Marketplace では、[Orchard]、[Umbraco]、Drupal、[WordPress] など、一般的な Web サイト コンテンツ管理システム (CMS) からのテンプレートを提供しています。お気に入りの CMS フレーバーを使用して Web アプリを作成できます。[Azure SQL Database] と [MySQL] を含むさまざまデータベースのバックエンドから目的に合ったものを選択できます。
 
-既存のアセットは .NET、PHP、Java、Node.js、Pythonに関係なく App Service Web Apps で実行できます。使い慣れた [FTP] ツールやソース管理システムを使って、それらを Web Apps に移動することができます。Web Apps は、[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションからの直接発行をサポートしています。
+既存のアセットは .NET、PHP、Java、Node.js、Pythonに関係なく App Service Web アプリで実行できます。使い慣れた [FTP] ツールやソース管理システムを使って、それらを Web Apps に移動することができます。Web Apps は、[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションからの直接発行をサポートしています。
 
 ## 確実に発行する
 
@@ -49,9 +49,9 @@ Azure Marketplace では、[Orchard]、[Umbraco]、[Drupal]、[WordPress] など
 
 無料の App Service Web Apps ドメインを使用するか、登録したドメイン名にマップし、証明機関の署名入り SSL 証明書でブランドを安全に保護します。
 
-Web サイトを Web Apps で実行する場合、**\*.azurewebsites.net** ドメインは無料です。または、Web サイトを GoDaddy などの DNS レジストリから取得した[カスタム ドメイン] (contoso.com など) にマップすることもできます。
+Web サイトを Web Apps で実行する場合、***.azurewebsites.net** ドメインは無料です。または、Web サイトを GoDaddy などの DNS レジストリから取得した[カスタム ドメイン] (contoso.com など) にマップすることもできます。
 
-ユーザー情報の収集、電子商取引の実行、その他の機密データ管理などを行う場合は、ブランドの評判や顧客を [HTTPS] で保護できます。**\*.azurewebsites.net** ドメイン名にはすでに SSL 証明書が付属しており、カスタム ドメインを使用する場合は、SSL 証明書を Web Apps 用に取り込むことができます。各 SSL 証明書には月単位の料金 (時間割り計算) が関連付けられています。詳細については、[App Service の料金の詳細]をご覧ください。
+ユーザー情報の収集、電子商取引の実行、その他の機密データ管理などを行う場合は、ブランドの評判や顧客を [HTTPS] で保護できます。***.azurewebsites.net** ドメイン名にはすでに SSL 証明書が付属しており、カスタム ドメインを使用する場合は、SSL 証明書を Web Apps 用に取り込むことができます。各 SSL 証明書には月単位の料金 (時間割り計算) が関連付けられています。詳細については、[App Service の料金の詳細]をご覧ください。
 
 ## グローバル化
 
@@ -99,7 +99,6 @@ Azure またはサードパーティ製のツールで Web サイトのパフォ
 
 [Orchard]: web-sites-dotnet-orchard-cms-gallery.md
 [Umbraco]: web-sites-gallery-umbraco.md
-[Drupal]: web-sites-php-migrate-drupal.md
 [WordPress]: web-sites-php-web-site-gallery.md
 [MySQL]: web-sites-php-mysql-deploy-use-git.md
 [Azure SQL Database]: web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md
@@ -140,4 +139,4 @@ Azure またはサードパーティ製のツールで Web サイトのパフォ
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

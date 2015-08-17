@@ -93,10 +93,7 @@ Get Container Properties|	あり|	いいえ|
 Get Container Metadata|	あり|	いいえ|
 Set Container Metadata|	あり|	あり|
 Get Container ACL|	あり|	いいえ|
-Set Container ACL|	あり|	あり (*)|
-Delete Container|	いいえ|	あり|
-Lease Container|	あり|	あり|
-BLOBs の一覧|	いいえ|	いいえ  
+Set Container ACL|	あり|	あり (*)| Delete Container| なし| あり| Lease Container| あり| あり| List BLOB| なし| なし 
 
 (*) SetContainerACL で定義されたアクセス許可はキャッシュされます。このアクセス許可の更新の伝達には 30 秒間かかり、その間は更新の整合性は保証されません。
 
@@ -110,16 +107,7 @@ Get Blob Properties|	あり|	あり|
 Set Blob Properties|	あり|	あり|
 Get Blob Metadata|	あり|	あり|
 Set Blob Metadata|	あり|	あり|
-Lease Blob (*)|	あり|	あり|
-Snapshot Blob|	あり|	あり|
-BLOB のコピー|	あり|	Yes (コピー元とコピー先 BLOB に対して)|
-Abort Copy Blob|	いいえ|	いいえ|
-Delete Blob|	いいえ|	あり|
-Put Block|	いいえ|	いいえ|
-Put Block List|	あり|	あり|
-Get Block List|	あり|	いいえ|
-Put Page|	あり|	あり|
-Get Page Ranges|	あり|	あり
+Lease BLOB (*)| あり| あり| Snapshot BLOB| あり| あり| Copy BLOB| あり| あり (コピー元 BLOBとコピー先 BLOB)| Abort Copy BLOB| なし| なし| Delete BLOB| なし| あり| Put Block| なし| なし| Put Block List| あり| あり| Get Block List| あり| なし| Put Page| あり| あり| Get Page Ranges| あり| あり
 
 (*) Lease BLOB では、BLOB の ETag は変更されません。
 
@@ -205,7 +193,7 @@ BLOB をロックして排他的に使用する場合は、[リース](http://ms
 2.	エンティティを更新するときに、手順 1. でサービスに送信した要求の必須の **If-Match** ヘッダーで返された ETag の値を含めます。
 3.	サービスによって、要求内の ETag の値とエンティティの現在の ETag の値が比較されます。
 4.	エンティティの現在の ETag の値が、要求の必須 **If-Match** ヘッダーの ETag の値と異なっている場合、サービスはクライアントに 412 エラーを返します。これは、クライアントがこのエンティティを取得した後に、別のプロセスがこれを更新したことを示しています。
-5.	エンティティの現在の ETag の値が、要求に含まれる必須の **If-Match** ヘッダーの ETag の値と等しい場合、または **If-Match** ヘッダーにワイルドカード文字 (*) が含まれている場合、サービスは要求された処理を実行し、更新されたことを示すためにエンティティの ETag の値を更新します。  
+5.	エンティティの現在の ETag の値が、要求に含まれる必須の **If-Match** ヘッダーの ETag の値と等しい場合、または **If-Match** ヘッダーにワイルドカード文字 (*) が含まれている場合、サービスは要求された処理を実行し、更新されたことを示すためにエンティティの ETag の値を更新します。
 
 BLOB サービスとは異なり、Table サービスではクライアントが更新要求に必ず **If-Match** ヘッダーを含める必要があります。ただし、クライアントが要求の **If-Match** ヘッダーにワイルドカード文字 (*) を設定していた場合、無条件の更新 (最終書き込み者優先戦略) を実行し、同時実行制御の確認を省略することができます。
 
@@ -285,4 +273,4 @@ Azure Storage の詳細については、以下を参照してください。
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

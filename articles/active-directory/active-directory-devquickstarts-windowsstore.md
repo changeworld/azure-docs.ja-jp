@@ -25,9 +25,9 @@
 
 Windows ストア用アプリを開発する場合、Azure AD を使用すると、Active Directory アカウントを使用してユーザーの認証処理を容易に行うことができます。また、Office 365 API や Azure API などの Azure AD によって保護された任意の Web API をアプリケーションで安全に使用することもできます。
 
-保護されたリソースにアクセスする必要がある Windows ストア デスクトップ アプリに対しては、Azure AD は Active Directory 認証ライブラリ (ADAL) を提供します。ADAL の唯一の目的は、アプリがアクセス トークンを容易に取得できるようにすることです。どれほど簡単かを示すため、ここでは次のような機能を備えた「ディレクトリ検索」 Windows ストア アプリを作成します。
+保護されたリソースにアクセスする必要がある Windows ストア デスクトップ アプリに対しては、Azure AD は Active Directory 認証ライブラリ (ADAL) を提供します。ADAL の唯一の目的は、アプリケーションがアクセス トークンを容易に取得できるようにすることです。どれほど簡単かを示すため、ここでは次のような機能を備えた「ディレクトリ検索」 Windows ストア アプリを作成します。
 
--	[OAuth 2.0 認証プロトコル](https://msdn.microsoft.com/library/azure/dn645545.aspx)を使用して Azure AD Graph API を呼び出すためのアクセス トークンを取得します。
+-	[OAuth 2.0 認証プロトコル](https://msdn.microsoft.com/library/azure/dn645545.aspx)を使用して Azure AD Graph API を呼び出すためのアクセストークンを取得します。
 -	指定された UPN を持つユーザーをディレクトリで検索します。
 -	ユーザーのサインアウト処理を行います。
 
@@ -42,7 +42,7 @@ Windows ストア用アプリを開発する場合、Azure AD を使用すると
 ## *1.ディレクトリ検索アプリケーションを登録する*
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
--	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
+-	[Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
@@ -73,7 +73,7 @@ redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCur
 ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/
 ```
 
-- Microsoft Azure 管理ポータルでアプリケーションの **[構成]** タブに戻り、**RedirectUri** の値をこの値に置き換えます。  
+- Microsoft Azure の管理ポータルでアプリケーションの **[構成]** タブに戻り、**RedirectUri** の値をこの値に置き換えます。  
 
 ## *3.ADAL を使用して AAD からトークンを取得する*
 ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、アプリは `authContext.AcquireToken(…)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。
@@ -90,7 +90,7 @@ public MainPage()
 }
 ```
 
-- 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリの UI で [検索] ボタンをクリックすると呼び出されます。このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access_token を含める必要があります。この処理を ADAL が実行します。
+- 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリの UI で [検索] ボタンをクリックすると呼び出されます。このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access\_token を含める必要があります。この処理を ADAL が実行します。
 
 ```C#
 private async void Search(object sender, RoutedEventArgs e)
@@ -111,7 +111,7 @@ private async void Search(object sender, RoutedEventArgs e)
 ```
 - アプリが `AcquireTokenAsync(...)` を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。ADAL は、トークンを取得するにはユーザーのサインインが必要であると判断した場合、ログイン ダイアログを表示し、ユーザーの資格情報を収集し、認証が成功するとトークンを返します。また、何らかの理由により ADAL がトークンを返せない場合、`AuthenticationResult` ステータスはエラーになります。
 
-- 次に、取得した access_token を使用します。また、`Search(...)` メソッドで、Graph API GET 要求の Authorization ヘッダーにトークンを設定します。
+- 次に、取得した access\_token を使用します。また、`Search(...)` メソッドで、Graph API GET 要求の Authorization ヘッダーにトークンを設定します。
 
 ```C#
 // Add the access token to the Authorization Header of the call to the Graph API
@@ -124,7 +124,7 @@ httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("
 // Update the Page UI to represent the signed in user
 ActiveUser.Text = result.UserInfo.DisplayableId;
 ```
-- 最後に、ADAL を使用してアプリケーションからユーザーをサインアウトさせることができます。ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` の呼び出しでサインイン ビューが表示されるようにする必要があります。ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じくらい容易に達成できます。
+- 最後に、ADAL を使用してアプリケーションからユーザーをサインアウトさせることができます。ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` の呼び出しでサインイン ビューが表示されるようにする必要があります。ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じぐらい容易に達成できます。
 
 ```C#
 private void SignOut()
@@ -147,4 +147,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

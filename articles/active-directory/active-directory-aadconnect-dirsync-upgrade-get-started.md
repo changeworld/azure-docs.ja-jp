@@ -126,7 +126,7 @@ Azure AD Connect を新しいサーバーでインストールする場合、Dir
 1. Azure AD Connect インストーラー (MSI) を実行します。
 2. 「Azure AD Connect へようこそ」が表示されたら、ウィンドウの右上隅で、[X] をクリックして、ウィザードを終了します。
 3. コマンド プロンプトを開きます。
-4. Azure AD Connect のインストール場所から (既定: C:\Program files \microsoft Azure Active Directory の接続)、次のコマンドを実行します。
+4. Azure AD Connect のインストール場所から (既定: C:\\Program files \\microsoft Azure Active Directory の接続)、次のコマンドを実行します。
     * AzureADConnect.exe /migrate
 
 Azure AD Connects と、次の UI が表示されます。
@@ -206,4 +206,4 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 * [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

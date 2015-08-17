@@ -410,7 +410,7 @@ ID プロバイダーを登録した後は、単純にプロバイダーの [Mob
 
 Facebook 以外の ID プロバイダーを使用している場合は、上の `login` メソッドに渡す値を `microsoftaccount`、`facebook`、`twitter`、`google`、`windowsazureactivedirectory` のいずれかに変更します。
 
-この場合、モバイル サービスは、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[login] 関数は、完了すると、**userId** フィールドのユーザー ID と **authenticationToken** フィールドのモバイル サービス認証トークンの両方を公開する JSON オブジェクト (\*\*user\*\*) を返します。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「認証トークンをキャッシュする」を参照してください。
+この場合、モバイル サービスは、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[login] 関数は、完了すると、**userId** フィールドのユーザー ID と **authenticationToken** フィールドのモバイル サービス認証トークンの両方を公開する JSON オブジェクト (**user**) を返します。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「認証トークンをキャッシュする」を参照してください。
 
 > [AZURE.NOTE]**Windows ストア アプリ** Windows ストア アプリケーションのユーザーの認証に Microsoft アカウント ログイン プロバイダーを使用する場合は、アプリケーション パッケージも Mobile Services に登録する必要があります。Windows ストア アプリケーションのパッケージ情報をモバイル サービスに登録すると、クライアントはシングル サインオン サービス エクスペリエンスを実現するために Microsoft アカウント ログイン資格情報を再利用できます。この操作を行わない場合、login メソッドが呼び出されるたびに、Microsoft アカウント ログイン ユーザーにログイン プロンプトが表示されます。Windows ストア アプリケーション パッケージの登録方法の詳細については、「[Windows ストア アプリケーション パッケージを Microsoft 認証に登録する](/develop/mobile/how-to-guides/register-windows-store-app-package/%20target="_blank")」を参照してください。パッケージ情報がモバイル サービスに登録された後、資格情報を再利用するには、<em>useSingleSignOn</em> パラメーターに値 **true** を指定して [login](http://go.microsoft.com/fwlink/p/?LinkId=322050%20target="_blank") メソッドを呼び出します。
 
@@ -608,4 +608,4 @@ promise はいくつかの異なる方法で使用することができます。
 [クライアントからのカスタム API 呼び出し]: mobile-services-html-call-custom-api.md
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

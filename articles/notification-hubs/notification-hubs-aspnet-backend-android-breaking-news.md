@@ -36,7 +36,7 @@
 
 最初の手順として、既存のメイン アクティビティに UI 要素を追加して、ユーザーが登録するカテゴリを選択できるようにします。ユーザーにより選択されるカテゴリは、デバイスに格納されます。アプリが起動すると、通知ハブにデバイス登録が作成され、選択されたカテゴリがタグとして追加されます。
 
-1. res/layout/activity_main.xml ファイルを開き、コンテンツを次の内容と置き換えます。
+1. res/layout/activity\_main.xml ファイルを開き、コンテンツを次の内容と置き換えます。
 			
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		    xmlns:tools="http://schemas.android.com/tools"
@@ -96,7 +96,7 @@
 	    <string name="label_science">Science</string>
 	    <string name="label_sports">Sports</string>
 
-	main_activity.xml の画像レイアウトは次のようになります。
+	main\_activity.xml の画像レイアウトは次のようになります。
 
 	![][A1]
 
@@ -319,4 +319,4 @@
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

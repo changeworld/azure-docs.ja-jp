@@ -50,7 +50,7 @@
 
 Microsoft Azure AD を使用して Web API を登録する手順
 
-1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
+1. [Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
 2. 左側のナビゲーションで [Active Directory] をクリックします。
 3. サンプル アプリケーションを登録するディレクトリ テナントをクリックします。
 4. [アプリケーション] タブをクリックします。
@@ -76,7 +76,7 @@ Microsoft Azure AD を使用して Web API を登録する手順
 
 *ご想像どおり、別のテナントから Azure Active Directory に登録されている外部 API にアクセスするアプリを構築することができます。そのようにすると、お客様に対してアプリケーションでの API の使用に同意が求められることになります。このようにする利点として、iOS 向け Active Directory 認証ライブラリがユーザーに代わって同意に対応することになります。 より高度な機能を利用するようになるにつれて、これが、Azure、Office、および他のすべてのサービス プロバイダーから一連の Microsoft API にアクセスするために必要な処理の重要な部分であることがわかるようになります。この時点では、同じテナントに Web API とアプリケーションの両方を登録しているので、同意のプロンプトは表示されません。これは、通常、自社のみで使用するアプリケーションを開発している場合に当てはまります。*
 
-1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
+1. [Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
 2. 左側のナビゲーションで [Active Directory] をクリックします。
 3. サンプル アプリケーションを登録するディレクトリ テナントをクリックします。
 4. [アプリケーション] タブをクリックします。
@@ -456,4 +456,4 @@ ADAL バージョン 1.1.0 は、WebViewClient からの onReceivedHttpAuthReque
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -1,4 +1,4 @@
-<properties
+<properties title="Deploying Your Own Private Docker Registry on Azure"
   pageTitle="Azure への独自のプライベート Docker Registry のデプロイ"
   description="Docker Registry を使用して Azure BLOB ストレージ サービスでコンテナー イメージをホストする方法について説明します。"
   services="virtual-machines"
@@ -92,4 +92,4 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 [registry-config]: http://docs.docker.com/registry/configuration/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

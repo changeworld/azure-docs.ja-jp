@@ -1,5 +1,5 @@
 <properties
-    pageTitle="DocumentDB を使用した Python Flask Web アプリケーションの構築 | Azure"
+    pageTitle="DocumentDB を使用した Python Flask Web アプリケーションの構築 | Microsoft Azure"
     description="DocumentDB を使用してデータを格納し、Azure にホストされた Python および Flask (MVC) Web アプリケーションからそのデータにアクセスする方法について説明します。"
     services="documentdb"
     documentationCenter="python"
@@ -350,4 +350,4 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
   [Azure Management Portal]: http://portal.azure.com
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

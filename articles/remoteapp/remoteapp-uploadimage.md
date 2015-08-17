@@ -3,7 +3,7 @@
     pageTitle="Azure RemoteApp のカスタム イメージをアップロードする"
     description="Azure RemoteApp のカスタム イメージをアップロードする方法について説明します。" 
     services="remoteapp" 
-	documentationCenter="" 
+    documentationCenter="" 
     authors="ericorman" 
     manager="mbaldwin" />
 
@@ -52,4 +52,4 @@
 - アップロード中に vhd ファイルがロックアウトされる場合は、ファイルを新しい場所にコピーまたは移動して、再度アップロードを実行してください。一部の Windows プロセスがアップロードを阻んでいる可能性があります。  
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

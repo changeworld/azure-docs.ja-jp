@@ -285,4 +285,4 @@ SharePoint Server を Azure の仮想マシンに正常にデプロイするに�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -54,4 +54,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 - [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -43,7 +43,7 @@
 
 ### 新機能 
  
-* Apache Hadoop のすべてのサービスを自動起動または手動起動に簡単に設定できるように、スクリプトが追加されました。既定では、以前と同様に自動起動ですが、C:\Hadoop にインストールされた set-onebox-manualstart.cmd または set-onebox-autostart.cmd スクリプトを使用して、すべてのサービスを変更できるようになりました。 
+* Apache Hadoop のすべてのサービスを自動起動または手動起動に簡単に設定できるように、スクリプトが追加されました。既定では、以前と同様に自動起動ですが、C:\\Hadoop にインストールされた set-onebox-manualstart.cmd または set-onebox-autostart.cmd スクリプトを使用して、すべてのサービスを変更できるようになりました。 
 
 * インストール時に必要な依存コンポーネントの数が大幅に減少したため、迅速にインストールできます。
 
@@ -110,7 +110,7 @@
 
 	ダッシュボードには、"ローカル (hdfs)" という名前の既定のローカル クラスターが表示されます。ローカル インストールのストレージとして Azure BLOB ストレージを使用する場合は、次の手順を実行します。
 
-	1. C:\Hadoop\hadoop-1.1.0-SNAPSHOT\conf にある core-site.xml にアカウント タグを追加します。       
+	1. C:\\Hadoop\\hadoop-1.1.0-SNAPSHOT\\conf にある core-site.xml にアカウント タグを追加します。       
 
 			<property>
         		<name>fs.azure.account.key.{AccountName}</name>
@@ -245,7 +245,7 @@
 
 * 一時ディレクトリ
 	
-	hadoop.tmp.dir ファイルが間違った場所を指しており、C:\hadoop\hdfs ではなく、c:\hdfs を指しています。このバグは、HDP 関連の次の更新プログラムで修正されます。
+	hadoop.tmp.dir ファイルが間違った場所を指しており、C:\\hadoop\\hdfs ではなく、c:\\hdfs を指しています。このバグは、HDP 関連の次の更新プログラムで修正されます。
 
 * OS の制限
 
@@ -276,4 +276,4 @@
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

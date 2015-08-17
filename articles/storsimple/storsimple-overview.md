@@ -13,18 +13,34 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="05/27/2015"
+   ms.date="08/03/2015"
    ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple について 
 
-Microsoft Azure StorSimple は、企業のストレージとデータ保護に伴う多くの問題を解消し、費用を削減する、効率と経済性、管理性に優れたソリューションです。独自開発のデバイス (Microsoft Azure StorSimple デバイス) と統合管理ツールを使用して、クラウド ストレージを含め、企業が保有するすべてのストレージをシームレスに表示します。
+## 概要
+
+Microsoft Azure StorSimple は、企業のストレージとデータ保護に伴う多くの問題を解消し、費用を削減する、効率と経済性、管理性に優れたソリューションです。独自開発のデバイス (Microsoft Azure StorSimple デバイス)、クラウド サービスとの統合、管理ツールを使用して、クラウド ストレージを含め、企業が保有するすべてのストレージをシームレスに表示します。
+
+StorSimple では、ストレージ階層化を使用し、さまざまなストレージ メディアに格納されているデータを管理します。現在作業中のセットはソリッド ステート ドライブ (SSD) へ、あまり頻繁に使用しないデータはハード ディスク ドライブ (HDD) へ格納され、アーカイブ化したデータはクラウドへプッシュされます。また、StorSimple 圧縮を使用して、データが消費するストレージの量を削減します。ストレージの階層化プロセスは次のように行われます。
+
+1. システム管理者が、Microsoft Azure のクラウド ストレージ アカウントを設定します。
+2. 管理者がシリアル コンソールと StorSimple Manager サービス (Azure 管理ポータルで実行) を使用して、デバイスとファイル サーバーを構成し、ボリュームとデータ保護ポリシーを作成します。オンプレミスのファイル サーバーは、Internet Small Computer System Interface (iSCSI) を使用して StorSimple デバイスにアクセスします。
+3. 最初、StorSimple はデバイスの高速 SSD 階層にデータを格納します。
+4. SSD 階層が容量に近づくと、StorSimple は最も古いデータ ブロックを重複除去して圧縮し、HDD 階層に移動します。
+5. HDD 階層が容量に近づくと、StorSimple は最も古いデータ ブロックを暗号化し、HTTPS 経由で Microsoft Azure ストレージ アカウントに安全に送信します。
+6. Microsoft Azure はデータセンターとリモート データセンターにデータの複数のレプリカを作成し、障害が発生した場合にデータを復旧できるようにします。 
+7. クラウドに格納されているデータをファイル サーバーが要求すると、StorSimple はデータをシームレスに返送し、StorSimple デバイスの SSD 階層にコピーを格納します。
+
+ストレージ管理のほか、StorSimple データ保護機能では、オン デマンドやスケジュールされたバックアップを作成して、それをローカルやクラウドで格納できるようになります。バックアップは増分スナップショットの形式で実行されます。これは短時間で作成し、復元できることを意味しています。クラウド スナップショットはセカンダリ ストレージ システム (テープ バックアップなど) を置き換え、データセンターにデータを復元したり、必要に応じてサイトを交代できるため、非常に重要になります。
+
+>[AZURE.NOTE]ソフトウェア Update 1 以降の StorSimple 8000 シリーズでは、Amazon S3 with RRS、HP、OpenStack クラウド サービス、Microsoft Azure をサポートします(デバイスの管理が目的の場合は Microsoft Azure ストレージ アカウントが必要になります)。 詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u1.md)」の[新しいストレージ アカウントの構成](storsimple-deployment-walkthrough.md#configure-a-new-storage-account)をご覧ください。
 
 ## StorSimple を使用する理由
 
 Microsoft Azure StorSimple には、次のような利点があります。
 
-- **透過的な統合** - Microsoft Azure StorSimple は、Internet Small Computer System Interface (iSCSI) プロトコルを使用して、ユーザーに意識させることなくデータ ストレージ設備を連結します。データは、その保存先がクラウドであれ、データ センターであれ、リモート サーバーであれ、すべて同じ場所に保存されているように見えます。
+- **透過的な統合** - Microsoft Azure StorSimple は、iSCSI プロトコルを使用して、ユーザーに意識させることなくデータ ストレージ設備を連結します。データは、その保存先がクラウドであれ、データ センターであれ、リモート サーバーであれ、すべて同じ場所に保存されているように見えます。
 - **ストレージ コストの削減** - Microsoft Azure StorSimple は、現在の需要と照らして妥当な量のローカル ストレージまたはクラウド ストレージを割り当て、必要なときにのみクラウド ストレージを拡張します。また、重複するデータを排除 (重複除去) したり圧縮を使用したりすることによって、ストレージの要件と費用を削減します。
 - **ストレージ管理の単純化** - Microsoft Azure StorSimple には、システム管理ツールが用意されており、オンプレミス、リモート サーバー、クラウドに保存されているいずれのデータも、このツールを使って構成、管理することができます。加えて、バックアップと復元の機能は、Microsoft 管理コンソール (MMC) スナップインから管理することができます。StorSimple にオプションで用意されている独立したインターフェイスを使うと、StorSimple の管理およびデータ保護サービスの利用範囲を、SharePoint サーバーに保存されているコンテンツにまで拡大することができます。 
 - **障害復旧とコンプライアンスの強化** - Microsoft Azure StorSimple は、無駄に長い時間を復旧に費やしません。データは必要に応じて復元されます。つまり、最小限の中断で通常の業務を継続することができます。また、バックアップ スケジュールとデータ保持の設定を指定したポリシーを構成できます。
@@ -50,10 +66,11 @@ Microsoft Azure StorSimple ソリューションには、次のコンポーネ�
 
 ## 次のステップ
 
-「[StorSimple のコンポーネントについて](storsimple-components.md)」をご覧ください。
+「[StorSimple Solutions Overview (StorSimple ソリューションの概要)](http://www.microsoft.com/ja-jp/server-cloud/products/storsimple/resources.aspx)」を読み、「[StorSimple chalk talk](http://www.microsoft.com/ja-jp/server-cloud/products/storsimple/Features.aspx)」を表示する。
 
+[StorSimple コンポーネントと用語集](storsimple-components.md)についてさらに読む。
 
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

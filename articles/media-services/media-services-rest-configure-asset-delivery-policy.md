@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="REST によるアセットの配信ポリシーの構成" 
-	description="このトピックでは、さまざまなアセットの配信ポリシーを構成する方法を示します。" 
+	pageTitle="REST による資産配信ポリシーの構成" 
+	description="このトピックでは、さまざまな資産配信ポリシーを構成する方法を示します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -16,24 +16,24 @@
 	ms.date="06/05/2015" 
 	ms.author="juliako"/>
 
-#方法: アセットの配信ポリシーを構成する
+#方法: 資産の配信ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
 この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
 
-Media Services におけるコンテンツ配信ワークフローの手順の 1 つは、ストリームするアセットの配信ポリシーを構成することです。アセットの配信ポリシーは、アセットを配信する方法、つまりどのストリーミング プロトコルでアセットを動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、アセットを動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
+Media Services におけるコンテンツ配信ワークフローの手順の 1 つは、ストリームする資産の配信ポリシーを構成することです。資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
 
-このトピックでは、アセットの配信ポリシーを作成して構成する理由と方法をご説明します。
+このトピックでは、資産の配信ポリシーを作成して構成する理由と方法をご説明します。
 
->[AZURE.NOTE]動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール単位 (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+>[AZURE.NOTE]動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール ユニット (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
 >
->また、アセットには、一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。
+>また、資産には、一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。
 
-1 つのアセットにはさまざまなポリシーを適用できます。たとえば、スムーズ ストリーミングに PlayReady 暗号化を適用し、MPEG DASH と HLS に AES エンベロープ暗号化を適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
+1 つの資産にはさまざまなポリシーを適用できます。たとえば、スムーズ ストリーミングに PlayReady 暗号化を適用し、MPEG DASH と HLS に AES エンベロープ暗号化を適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
 
-ストレージ暗号化アセットを配信する場合は、アセットの配信ポリシーを構成する必要があることにご注意ください。アセットをストリームするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリームする必要があります。たとえば、Advanced Encryption Standard (AES) エンベロープ暗号化キーを使用して暗号化されたアセットを配信するには、ポリシーの種類を **DynamicEnvelopeEncryption** に設定します。ストレージ暗号化を解除してアセットを平文でストリームするには、ポリシーの種類を **NoDynamicEncryption** に設定します。これらのポリシーの種類を構成する例を次に示します。
+ストレージ暗号化資産を配信する場合は、資産の配信ポリシーを構成する必要があることにご注意ください。資産をストリームするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリームする必要があります。たとえば、Advanced Encryption Standard (AES) エンベロープ暗号化キーを使用して暗号化された資産を配信するには、ポリシーの種類を **DynamicEnvelopeEncryption** に設定します。ストレージ暗号化を解除して資産を平文でストリームするには、ポリシーの種類を **NoDynamicEncryption** に設定します。これらのポリシーの種類を構成する例を次に示します。
 
-アセットの配信ポリシーの構成方法に応じて、動的パッケージングと動的暗号化を実行し、次のストリーミング プロトコル (スムーズ ストリーミング、HLS、MPEG DASH、HDS ストリーム) を使用してストリームを行うことができます。
+資産の配信ポリシーの構成方法に応じて、動的パッケージングと動的暗号化を実行し、次のストリーミング プロトコル (スムーズ ストリーミング、HLS、MPEG DASH、HDS ストリーム) を使用してストリームを行うことができます。
 
 次の一覧に、スムース、HLS、DASH、HDS でストリームを行うために使用するフォーマットを示します。
 
@@ -53,7 +53,7 @@ HDS
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
 
-アセットを発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
+資産を発行し、ストリーミング URL を構築する手順については、[ストリーミング URL の構築](media-services-deliver-streaming-content.md)に関するページを参照してください。
 
 >[AZURE.NOTE]Media Services REST API を使用する場合は、次のことに考慮します。
 >
@@ -62,10 +62,10 @@ HDS
 >https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect_programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
 
 
-##アセットの配信ポリシーを解除する 
+##資産の配信ポリシーを解除する 
 
-###<a id="create_asset_delivery_policy"></a>アセットの配信ポリシーを作成する
-次の HTTP 要求により、動的暗号化の適用なしで次のいずれかのプロトコルでストリームを配信することを指定するアセット配信ポリシーが作成されます。MPEG DASH、HLS、および Smooth Streaming プロトコル。
+###<a id="create_asset_delivery_policy"></a>資産の配信ポリシーを作成する
+次の HTTP 要求により、動的暗号化の適用なしで次のいずれかのプロトコルでストリームを配信することを指定する資産配信ポリシーが作成されます。MPEG DASH、HLS、および Smooth Streaming プロトコル。
 
 AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types)セクションをご覧ください。
 
@@ -114,9 +114,9 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	"Created":"2015-02-08T06:21:27.6908329Z",
 	"LastModified":"2015-02-08T06:21:27.6908329Z"}
 	
-###<a id="link_asset_with_asset_delivery_policy"></a>アセットをアセット配信ポリシーにリンクする
+###<a id="link_asset_with_asset_delivery_policy"></a>資産を資産配信ポリシーにリンクする
 
-次の HTTP 要求により、指定したアセットがアセットの配信ポリシーにリンクされます。
+次の HTTP 要求により、指定した資産が資産配信ポリシーにリンクされます。
 
 要求:
 
@@ -138,11 +138,11 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	HTTP/1.1 204 No Content
 
 
-##DynamicEnvelopeEncryption アセットの配信ポリシー 
+##DynamicEnvelopeEncryption 資産の配信ポリシー 
 
-###EnvelopeEncryption タイプのコンテンツ キーを作成してアセットにリンクする
+###EnvelopeEncryption タイプのコンテンツ キーを作成して資産にリンクする
 
-DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、アセットを EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、「[コンテンツ キーの作成](media-services-rest-create-contentkey.md)」を参照してください。
+DynamicEnvelopeEncryption delivery 配信ポリシーを指定する際に、資産を EnvelopeEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、「[コンテンツ キーの作成](media-services-rest-create-contentkey.md)」を参照してください。
 
 
 ###<a id="get_delivery_url"></a>配信 URL を取得する
@@ -184,7 +184,7 @@ HTTP 要求の本文に含める URL の種類を指定します。PlayReady を
 	{"odata.metadata":"media.windows.net/api/$metadata#Edm.String","value":"https://amsaccount1.keydelivery.mediaservices.windows.net/?KID=dc88f996-2859-4cf7-a279-c52a9d6b2f04"}
 
 
-###アセットの配信ポリシーを作成する
+###資産の配信ポリシーを作成する
 
 次の HTTP 要求により、**HLS** プロトコルに動的エンベロープ暗号化 (**DynamicEnvelopeEncryption**) を適用するように構成された **AssetDeliveryPolicy** が作成されます (この例では、それ以外のプロトコルはストリーミングからブロックされます)。
 
@@ -205,7 +205,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
 	Host: media.windows.net
 	
-	{"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\/\/amsaccount1.keydelivery.mediaservices.windows.net\/"}]"}
+	{"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\\/"}]"}
 
 	
 応答:
@@ -224,27 +224,27 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	Strict-Transport-Security: max-age=31536000; includeSubDomains
 	Date: Mon, 09 Feb 2015 05:24:38 GMT
 	
-	{"odata.metadata":"media.windows.net/api/$metadata#AssetDeliveryPolicies/@Element","Id":"nb:adpid:UUID:ec9b994e-672c-4a5b-8490-a464eeb7964b","Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\/\/amsaccount1.keydelivery.mediaservices.windows.net\/"}]","Created":"2015-02-09T05:24:38.9167436Z","LastModified":"2015-02-09T05:24:38.9167436Z"}
+	{"odata.metadata":"media.windows.net/api/$metadata#AssetDeliveryPolicies/@Element","Id":"nb:adpid:UUID:ec9b994e-672c-4a5b-8490-a464eeb7964b","Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\\/"}]","Created":"2015-02-09T05:24:38.9167436Z","LastModified":"2015-02-09T05:24:38.9167436Z"}
 
 
-###アセットの配信ポリシーにアセットをリンクする
+###資産を資産配信ポリシーにリンクする
 
-「[アセットをアセット配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)」を参照してください。
+「[資産を資産配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)」を参照してください。
 
-##DynamicCommonEncryption アセットの配信ポリシー 
+##DynamicCommonEncryption 資産の配信ポリシー 
 
-###CommonEncryption タイプのコンテンツ キーを作成してアセットにリンクする
+###CommonEncryption タイプのコンテンツ キーを作成して資産にリンクする
 
-DynamicCommonEncryption 配信ポリシーを指定する際に、アセットを CommonEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、「[コンテンツ キーの作成](media-services-rest-create-contentkey.md)」を参照してください。
+DynamicCommonEncryption 配信ポリシーを指定する際に、資産を CommonEncryption タイプのコンテンツ キーにリンクする必要があります。詳細については、「[コンテンツ キーの作成](media-services-rest-create-contentkey.md)」を参照してください。
 
 
 ###配信 URL を取得する
 
 前の手順で作成されたコンテンツ キーの PlayReady 配信方法向けの配信 URL を取得します。クライアントは取得した URL を使用し、保護されたコンテンツを再生するために PlayReady ライセンスを要求します。詳細については、「[配信 URL を取得する](#get_delivery_url)」をご覧ください
 
-###アセットの配信ポリシーを作成する
+###資産の配信ポリシーを作成する
 
-次の HTTP 要求により、**Smooth Streaming** プロトコルに動的共通暗号化 (**DynamicCommonEncryption**) を適用するように構成された **AssetDeliveryPolicy** が作成されます (この例では、それ以外のプロトコルはストリーミングからブロックされます)。
+次の HTTP 要求により、動的共通暗号化 (**DynamicCommonEncryption**) を**スムーズ ストリーミング** プロトコルに適用するために構成される **AssetDeliveryPolicy** が作成されます (この例では、他のプロトコルはストリーミングからブロックされます)。
 
 AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types)セクションをご覧ください。
 
@@ -263,12 +263,12 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
 	Host: media.windows.net
 	
-	{"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\/\/amsaccount1.keydelivery.mediaservices.windows.net/PlayReady/"}]"}
+	{"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-###アセットの配信ポリシーにアセットをリンクする
+###資産を資産配信ポリシーにリンクする
 
-「[アセットをアセット配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)」を参照してください。
+「[資産を資産配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)」を参照してください。
 
 
 ##<a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
@@ -413,4 +413,4 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
     }
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

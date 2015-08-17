@@ -167,4 +167,4 @@ Azure Event Hubs では、一般的なアプリケーションおよびユーザ
 [キューに格納されたメッセージング ソリューション]: ../cloud-services-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

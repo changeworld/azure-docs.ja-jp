@@ -82,4 +82,4 @@ Docker 対応 VM の作成をすぐに開始するには、以下を参照して
 [Linux および Windows 向けの仮想マシン拡張機能]: #Virtual-Machine-Extensions-For-Linux-and-Windows
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

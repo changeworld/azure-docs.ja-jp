@@ -136,7 +136,7 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
 
     // Local file name and path.
     String attachmentName = "myfile.zip";
-    String attachmentPath = "c:\myfiles\"; 
+    String attachmentPath = "c:\\myfiles\"; 
     MimeBodyPart attachmentPart = new MimeBodyPart();
     // Specify the local file to attach.
     DataSource source = new FileDataSource(attachmentPath + attachmentName);
@@ -228,4 +228,4 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

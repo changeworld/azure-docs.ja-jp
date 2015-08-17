@@ -12,7 +12,7 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article" 
+	ms.topic="hero-article" 
 	ms.date="05/19/2015"
 	ms.author="bwren"/>
 
@@ -26,7 +26,7 @@
 ## チュートリアル
 このチュートリアルでは、オートメーション アカウントを作成し、Azure Automation にサンプルの「Hello World」Runbook をインポートし、その Runbook を実行して、出力を表示する手順について説明します。
 
-このチュートリアルを完了するには、Azure サブスクリプションが必要です。またお持ちでない場合は、<a href="/pricing/member-offers/msdn-benefits-details/" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/pricing/free-trial/" target="_blank">無料評価版にサインアップ</a>してください。
+このチュートリアルを完了するには、Azure サブスクリプションが必要です。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](../pricing/member-offers/msdn-benefits-details/)か、[無料評価版にサインアップ](../pricing/free-trial.md)</a>してください。
 
 [AZURE.INCLUDE [automation-note-authentication](../../includes/automation-note-authentication.md)]
 
@@ -138,7 +138,7 @@ Runbook をインポートし、発行したら、それを実行して、出力
 
 ## フィードバック
 
-<strong>フィードバックの送信</strong> Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
+**フィードバックの送信** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -20,4 +20,4 @@
 
 [AZURE.INCLUDE [create-an-azure-account](../includes/create-an-azure-account.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

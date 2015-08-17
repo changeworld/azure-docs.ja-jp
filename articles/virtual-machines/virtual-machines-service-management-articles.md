@@ -11,7 +11,7 @@
 <tags
 	ms.service="virtual-machines"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.tgt_pltfrm="vm-multiple"
 	ms.workload="infrastructure-services"
 	ms.date="07/28/2015"
@@ -150,4 +150,4 @@
 
 [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

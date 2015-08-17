@@ -79,4 +79,4 @@
 * [詳細情報](active-directory-passwords-learn-more.md)
 * [MSDN のパスワード管理](https://msdn.microsoft.com/library/azure/dn510386.aspx) 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

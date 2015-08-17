@@ -40,4 +40,4 @@ Azure 管理ポータルで Azure AD ディレクトリを追加するには、�
 
 Azure AD のライセンスに関する問題とベスト プラクティスの概要については、[Azure Active Directory ライセンス](active-directory-licensing-what-is.md)に関するページを参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

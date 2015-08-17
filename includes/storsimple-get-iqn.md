@@ -9,4 +9,4 @@
 
 3. この文字列を保存します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

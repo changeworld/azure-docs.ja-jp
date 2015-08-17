@@ -12,8 +12,8 @@
 	ms.workload="storage"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="hero-article" 
-	ms.date="06/15/2015"
+	ms.topic="hero-article"
+	ms.date="08/04/2015"
 	ms.author="tamram"/>
 
 
@@ -25,7 +25,7 @@
 
 このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。例は C# のコードで記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。紹介するシナリオは、**テーブルの作成と削除**、**テーブル エンティティの操作**などです。
 
-> [AZURE.NOTE]このガイドは、Azure .NET 用ストレージ クライアント ライブラリ 2.x 以上を対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 4.x です。これは、[NuGet](https://www.nuget.org/packages/WindowsAzure.Storage/) から、または [Azure SDK for .NET](/downloads/) の一部として提供されています。ストレージ クライアント ライブラリの取得の詳細については、下記の「[プログラムでテーブル ストレージにアクセスする](#programmatically-access-table-storage)」を参照してください。
+[AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -65,7 +65,7 @@
 
 ## エンティティをテーブルに追加する
 
-エンティティは、**TableEntity** から派生するカスタム クラスを使用して C# オブジェクトにマップされます。エンティティをテーブルに追加するには、エンティティのプロパティを定義するクラスを作成します。次のコードは、ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ使用するエンティティ クラスを定義します。エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。一方、多様なパーティション キーを使用すると、並列操作の拡張性が向上します。テーブル サービスに格納するプロパティは `get` と `set` の両方を公開する、サポートされている型のパブリック プロパティである必要があります。また、エンティティ型で、パラメーターのないコンストラクターを*必ず*公開する必要があります。
+エンティティは、**TableEntity** から派生するカスタム クラスを使用して C# オブジェクトにマップされます。エンティティをテーブルに追加するには、エンティティのプロパティを定義するクラスを作成します。次のコードは、ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ使用するエンティティ クラスを定義します。エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。一方、多様なパーティション キーを使用すると、並列操作の拡張性が向上します。Table サービスに格納するプロパティは `get` と `set` の両方を公開する、サポートされている型のパブリック プロパティである必要があります。また、エンティティ型で、パラメーターのないコンストラクターを*必ず*公開する必要があります。
 
     public class CustomerEntity : TableEntity
     {
@@ -82,7 +82,7 @@
         public string PhoneNumber { get; set; }
     }
 
-エンティティに関連するテーブル操作は、「方法: テーブルを作成する」で作成した **CloudTable** オブジェクトを使用して実行されます。 実行する操作は、**TableOperation** オブジェクトによって表されます。次のコード例では、まず **CloudTable** オブジェクトを作成し、次に **CustomerEntity** オブジェクトを作成します。その後、操作を準備するために、ユーザー エンティティをテーブルに挿入する **TableOperation** を作成します。最後に、**CloudTable.Execute** を呼び出して操作を実行します。
+エンティティに関連するテーブル操作は、「方法: テーブルを作成する」で作成した **CloudTable** オブジェクトを使用して実行されます。 実行する操作は、**TableOperation** オブジェクトによって表されます。次のコード例では、まず **CloudTable** オブジェクトを作成し、次に **CustomerEntity** オブジェクトを作成します。その後、操作を準備するために、ユーザー エンティティをテーブルに挿入する **TableOperation** オブジェクトを作成します。最後に、**CloudTable.Execute** を呼び出して操作を実行します。
 
     // Retrieve the storage account from the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -99,7 +99,7 @@
     customer1.Email = "Walter@contoso.com";
     customer1.PhoneNumber = "425-555-0101";
 
-    // Create the TableOperation that inserts the customer entity.
+    // Create the TableOperation object that inserts the customer entity.
     TableOperation insertOperation = TableOperation.Insert(customer1);
 
     // Execute the insert operation.
@@ -109,10 +109,10 @@
 
 1 回の書き込み操作でエンティティのバッチをテーブルに挿入できます。バッチ操作に関しては、次の事項にも留意してください。
 
-1.  更新、削除、および挿入を同じ 1 回のバッチ操作で実行できます。
-2.  1 つのバッチ操作には、最大 100 個のエンティティを含めることができます。
-3.  1 つのバッチ操作に含まれるすべてのエンティティのパーティション キーが同じである必要があります。
-4.  クエリをバッチ操作として実行することもできますが、バッチ内の唯一の操作である必要があります。
+-  更新、削除、および挿入を同じ 1 回のバッチ操作で実行できます。
+-  1 つのバッチ操作には、最大 100 個のエンティティを含めることができます。
+-  1 つのバッチ操作に含まれるすべてのエンティティのパーティション キーが同じである必要があります。
+-  クエリをバッチ操作として実行することもできますが、バッチ内の唯一の操作である必要があります。
 
 <!-- -->
 次のコード例は、2 つのエンティティ オブジェクトを作成し、**Insert** メソッドを使用して **TableBatchOperation** に追加します。その後、**CloudTable.Execute** を呼び出して操作を実行します。
@@ -201,7 +201,7 @@
 
 ## 単一のエンティティを取得する
 
-単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**TableOperation** を使用して、"Ben Smith" というユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、**TableResult.Result** の戻り値は **CustomerEntity** です。クエリでパーティション キーと行キーの両方を指定することが、テーブル サービスから単一のエンティティを取得するための最速の方法です。
+単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**TableOperation** を使用して、"Ben Smith" というユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、**TableResult.Result** の戻り値は **CustomerEntity** オブジェクトです。クエリでパーティション キーと行キーの両方を指定することが、テーブル サービスから単一のエンティティを取得するための最速の方法です。
 
     // Retrieve the storage account from the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -227,13 +227,13 @@
 
 ## エンティティを置換する
 
-エンティティを更新するには、そのエンティティをテーブル サービスから取得し、エンティティ オブジェクトを変更して、変更をテーブル サービスに戻して保存します。次のコードは、既存のユーザーの電話番号を変更します。このコードでは、**Insert** を呼び出す代わりに **Replace** を使用しています。これにより、サーバーでエンティティが完全に置換されます。ただし、エンティティを取得した後にサーバーでエンティティが変更された場合は、操作が失敗します。このエラーは、取得と更新の間にアプリケーションの別のコンポーネントによって行われた変更が意図せず上書きされるのを防ぐためのものです。このエラーを正しく処理するには、もう一度エンティティを取得し、変更を加えて (その変更がまだ有効な場合)、再び **Replace** 操作を実行します。次のセクションでは、この動作をオーバーライドする方法を説明します。
+エンティティを更新するには、そのエンティティを Table サービスから取得し、エンティティ オブジェクトを変更して、変更を Table サービスに戻して保存します。次のコードは、既存のユーザーの電話番号を変更します。このコードでは、**Insert** を呼び出す代わりに **Replace** を使用しています。これにより、サーバーでエンティティが完全に置換されます。ただし、エンティティを取得した後にサーバーでエンティティが変更された場合は、操作が失敗します。このエラーは、取得と更新の間にアプリケーションの別のコンポーネントによって行われた変更が意図せず上書きされるのを防ぐためのものです。このエラーを正しく処理するには、もう一度エンティティを取得し、変更を加えて (その変更がまだ有効な場合)、再び **Replace** 操作を実行します。次のセクションでは、この動作をオーバーライドする方法を説明します。
 
     // Retrieve the storage account from the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
     // Create the CloudTable object that represents the "people" table.
@@ -253,7 +253,7 @@
 	   // Change the phone number.
 	   updateEntity.PhoneNumber = "425-555-0105";
 
-	   // Create the InsertOrReplace TableOperation
+	   // Create the InsertOrReplace TableOperation.
 	   TableOperation updateOperation = TableOperation.Replace(updateEntity);
 
 	   // Execute the operation.
@@ -267,7 +267,7 @@
 
 ## エンティティの挿入または置換を行う
 
-**Replace** 操作は、サーバーからエンティティを取得した後にエンティティが変更されていると失敗します。さらに、**Replace** が成功するためには、先にエンティティをサーバーから取得する必要があります。しかし、サーバーにエンティティが存在するかどうかわからないが、現在格納されている値は不適切であるため、すべての値を上書きする必要がある場合もあります。そのような場合は、**InsertOrReplace** 操作を使用します。この操作は、最終更新日時に関係なく、エンティティが存在しない場合は挿入し、存在する場合は置換します。次のコード例では、先ほどと同じように Ben Smith のユーザー エンティティを取得していますが、今度は **InsertOrReplace** を使用してサーバーに保存しています。そのため、取得操作と更新操作の間に行われたエンティティの更新は上書きされます。
+**Replace** 操作は、サーバーからエンティティを取得した後にエンティティが変更されていると失敗します。さらに、**Replace** 操作を成功させるためには、先にエンティティをサーバーから取得する必要があります。しかし、サーバーにエンティティが存在するかどうかわからないが、現在格納されている値は不適切である場合があります。このため、更新ですべての値を上書きする必要があります。そのような場合は、**InsertOrReplace** 操作を使用します。この操作は、最終更新日時に関係なく、エンティティが存在しない場合は挿入し、存在する場合は置換します。次のコード例では、先ほどと同じように Ben Smith のユーザー エンティティを取得していますが、今度は **InsertOrReplace** を使用してサーバーに保存しています。そのため、取得操作と更新操作の間に行われたエンティティの更新は上書きされます。
 
     // Retrieve the storage account from the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -293,7 +293,7 @@
 	   // Change the phone number.
 	   updateEntity.PhoneNumber = "425-555-1234";
 
-	   // Create the InsertOrReplace TableOperation
+	   // Create the InsertOrReplace TableOperation.
 	   TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(updateEntity);
 
 	   // Execute the operation.
@@ -307,19 +307,19 @@
 
 ## エンティティ プロパティのサブセットを照会する
 
-テーブル クエリでは、エンティティのすべてのプロパティではなくごくわずかのプロパティだけをエンティティから取得できます。プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。次のコードのクエリは、テーブル内のエンティティの電子メール アドレスだけを返します。これは、**DynamicTableEntity** のクエリと **EntityResolver** を使用して行われます。プロジェクションの詳細については、この[ブログの記事][]を参照してください。プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
+テーブル クエリでは、エンティティのすべてのプロパティではなくごくわずかのプロパティだけをエンティティから取得できます。プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。次のコードのクエリは、テーブル内のエンティティの電子メール アドレスだけを返します。これは、**DynamicTableEntity** のクエリと **EntityResolver** を使用して行われます。プロジェクションの詳細については、「[Introducing Upsert and Query Projection blog post (アップサートおよびクエリ プロジェクションの概要ブログ投稿)][]」をご覧ください。プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードは Table サービスのアカウントを使用している場合にのみ機能します。
 
-    // Retrieve storage account from connection string
+    // Retrieve the storage account from the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
     //Create the CloudTable that represents the "people" table.
     CloudTable table = tableClient.GetTableReference("people");
 
-    // Define the query, and only select the Email property
+    // Define the query, and select only the Email property.
     TableQuery<DynamicTableEntity> projectionQuery = new TableQuery<DynamicTableEntity>().Select(new string[] { "Email" });
 
     // Define an entity resolver to work with the entity after retrieval.
@@ -334,11 +334,11 @@
 
 エンティティは、取得後に簡単に削除できます。エンティティの更新のときと同じパターンを使用します。次のコードは、ユーザー エンティティを取得して削除します。
 
-    // Retrieve storage account from connection string
+    // Retrieve the storage account from the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // Create the table client.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
     //Create the CloudTable that represents the "people" table.
@@ -386,28 +386,28 @@
 
 ## ページ内のエンティティを非同期的に取得する
 
-多数のエンティティを読み取る場合、すべてが返されるまで待機するのではなく取得後に処理または表示するには、セグメント化されたクエリを使用してエンティティを取得できます。この例は、大きな結果のセットを返すために待機している間に実行がブロックされないように、Async-Await パターンを使用して結果をページに返す方法を示しています。.NET での Async-Await パターンの使用方法の詳細については、[Async と Await (C# と Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) に関するページを参照してください。
+多数のエンティティを読み取る場合、すべてが返されるまで待機するのではなく取得後に処理または表示するには、セグメント化されたクエリを使用してエンティティを取得できます。この例は、大きな結果のセットが返されるのを待機している間に実行がブロックされないように、Async-Await パターンを使用して結果をページに返す方法を示しています。.NET での Async-Await パターンの使用方法の詳細については、[Async および Await を使用した非同期プログラミング (C# および Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) をご覧ください。
 
-    // Initialize a default TableQuery to retrieve all the entities in the table
+    // Initialize a default TableQuery to retrieve all the entities in the table.
     TableQuery<CustomerEntity> tableQuery = new TableQuery<CustomerEntity>();
 
-    // Initialize the continuation token to null to start from the beginning of the table
+    // Initialize the continuation token to null to start from the beginning of the table.
     TableContinuationToken continuationToken = null;
 
     do
     {
-        // Retrieve a segment (up to 1000 entities)
+        // Retrieve a segment (up to 1,000 entities).
         TableQuerySegment<CustomerEntity> tableQueryResult =
             await table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken);
 
         // Assign the new continuation token to tell the service where to
-        // continue on the next iteration (or null if it has reached the end)
+        // continue on the next iteration (or null if it has reached the end).
         continuationToken = tableQueryResult.ContinuationToken;
 
-        // Print the number of rows retrieved
+        // Print the number of rows retrieved.
         Console.WriteLine("Rows retrieved {0}", tableQueryResult.Results.Count);
 
-    // Loop until a null continuation token is received indicating the end of the table
+    // Loop until a null continuation token is received, indicating the end of the table.
     } while(continuationToken != null);
 
 ## 次のステップ
@@ -422,8 +422,8 @@
     <li><a href="http://msdn.microsoft.com/library/azure/dd179355">REST API リファレンス</a></li>
   </ul>
 </li>
-<li>Azure Storage を使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/library/azure/gg433040.aspx">Azure のデータの格納とアクセス</a>」を参照してください。</li>
-<li>Azure Storage で作業するためのコードの記述を簡略化する方法については、<a href="../websites-dotnet-webjobs-sdk/">Azure WebJobs SDK を参照してください。</li>
+<li>Azure Storage を使用して実行できるさらに高度なタスクについては、<a href="http://msdn.microsoft.com/library/azure/gg433040.aspx">Azure Storage のドキュメント</a>をご覧ください。</li>
+<li><a href="../websites-dotnet-webjobs-sdk/">Azure WebJobs SDK</a> を使用して Azure Storage で作業するためのコードの記述を簡略化する方法を学習してください。</li>
 <li>Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   <ul>
     <li>非構造化データの格納には、<a href="/documentation/articles/storage-dotnet-how-to-use-blobs/">BLOB ストレージ</a>を使用します。</li>
@@ -442,15 +442,14 @@
   [Blob8]: ./media/storage-dotnet-how-to-use-table-storage/blob8.png
   [Blob9]: ./media/storage-dotnet-how-to-use-table-storage/blob9.png
 
-  [ブログの記事]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-  [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
+  [Introducing Upsert and Query Projection blog post (アップサートおよびクエリ プロジェクションの概要ブログ投稿)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
+  [.NET Client Library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
+  [Storing and accessing data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+  [Azure Storage Team blog]: http://blogs.msdn.com/b/windowsazurestorage/
+  [Configure Azure Storage connection strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
-  [How to: Programmatically access Table Storage]: #tablestorage
- 
+  [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

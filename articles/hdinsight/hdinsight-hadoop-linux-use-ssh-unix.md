@@ -50,10 +50,10 @@ Linux ベースの HDInsight クラスターを作成するとき、SSH キー�
 
 	ディレクトリ一覧で、次のファイルを探します。これらは SSH 公開キーの共通名です。
 
-	* d_dsa.pub
-	* id_ecdsa.pub
-	* id_ed25519.pub
-	* id_rsa.pub
+	* d\_dsa.pub
+	* id\_ecdsa.pub
+	* id\_ed25519.pub
+	* id\_rsa.pub
 
 2. 既存のファイルを使用しない場合や、既存の SSH キーがない場合は、次のコマンドを使用して新しいファイルを生成します。
 
@@ -61,12 +61,12 @@ Linux ベースの HDInsight クラスターを作成するとき、SSH キー�
 
 	次の情報の入力を求められます。
 
-	* ファイルの場所 - 既定値は ~/.ssh/id\_rsa です。
+	* ファイルの場所 - 既定値は \~/.ssh/id\\\_rsa です。
 	* パスフレーズ - 1 回入力した後に再入力を求められます。
 
 		> [AZURE.NOTE]キーにセキュリティで保護されたパスフレーズを使用することを強くお勧めします。ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
 
-	コマンドが完了すると、秘密キー (**id\_rsa** など) と公開キー (**id\_rsa.pub** など) の 2 つの新しいファイルが作成されます。
+	コマンドが完了すると、秘密キー (**id\\\_rsa** など) と公開キー (**id\\\_rsa.pub** など) の 2 つの新しいファイルが作成されます。
 
 ##Linux ベースの HDInsight クラスターの作成
 
@@ -295,4 +295,4 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

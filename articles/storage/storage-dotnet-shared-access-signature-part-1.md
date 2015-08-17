@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="共有アクセス署名 : SAS モデルについて | Microsoft Azure" 
-	description="共有アクセス署名 (SAS) を使用して、BLOB、キュー、およびテーブルを含む Azure Storage のリソースへのアクセスを委任する方法について説明します。共有アクセス署名を使用すると、ストレージ アカウント キーを保護しながら、アカウント内のリソースへのアクセスを他のユーザーに与えることができます。付与するアクセス許可と、SAS の有効期間を制御できます。また、ストアド アクセス ポリシーを確立すると、万が一アカウントのセキュリティが侵害される恐れがある場合に SAS を無効にできます。" 
+	description="共有アクセス署名 (SAS) を使用して、BLOB、キュー、テーブル、ファイルを含む Azure Storage のリソースへのアクセスを委任する方法について説明します。共有アクセス署名を使用すると、ストレージ アカウント キーを保護しながら、アカウント内のリソースへのアクセスを他のユーザーに与えることができます。付与するアクセス許可と、SAS の有効期間を制御できます。また、ストアド アクセス ポリシーを確立すると、万が一アカウントのセキュリティが侵害される恐れがある場合に SAS を無効にできます。" 
 	services="storage" 
 	documentationCenter="" 
 	authors="tamram" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/07/2015" 
+	ms.date="08/04/2015" 
 	ms.author="tamram"/>
 
 
@@ -22,11 +22,11 @@
 
 ## 概要
 
-共有アクセス署名 (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントの BLOB、テーブル、およびキューへの制限付きアクセスを他のクライアントに許可するための優れた方法です。共有アクセス署名についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。チュートリアルの[パート 2](storage-dotnet-shared-access-signature-part-2.md) では、BLOB サービスで共有アクセス署名を作成するプロセスを詳しく説明します。
+共有アクセス署名 (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントのオブジェクトへの制限付きアクセスを他のクライアントに許可するための優れた方法です。共有アクセス署名についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。チュートリアルの[パート 2](storage-dotnet-shared-access-signature-part-2.md) では、BLOB サービスで共有アクセス署名を作成するプロセスを詳しく説明します。
 
 ## 共有アクセス署名とは ##
 
-共有アクセス署名を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、自分の BLOB、キュー、またはテーブルへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
+共有アクセス署名を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
 
 ## 共有アクセス署名を使用するタイミング ##
 
@@ -35,15 +35,21 @@ SAS は、自分のアカウント キーを知らせたくないクライアン
 SAS が役立つ一般的なシナリオは、ストレージ アカウント内でユーザーが自分のデータの読み取りや書き込みを行うサービスです。ストレージ アカウントにユーザー データが格納されるシナリオには、2 種類の典型的な設計パターンがあります。
 
 
-1\. 認証を実行するフロントエンド プロキシ サービス経由で、クライアントがデータのアップロードとダウンロードを行います。このフロントエンド プロキシ サービスには、ビジネス ルールの検証が可能であるという利点がありますが、データやトランザクションが大量である場合は、需要に応じて拡張可能なサービスの作成にコストがかかったり、困難が生じたりする可能性があります。
+1\.認証を実行するフロントエンド プロキシ サービス経由で、クライアントがデータのアップロードとダウンロードを行います。このフロントエンド プロキシ サービスには、ビジネス ルールの検証が可能であるという利点がありますが、データやトランザクションが大量である場合は、需要に応じて拡張可能なサービスの作成にコストがかかったり、困難が生じたりする可能性があります。
 
 ![sas-storage-fe-proxy-service][sas-storage-fe-proxy-service]
 
-2\.	軽量サービスが、必要に応じてクライアントを認証してから、SAS を生成します。クライアントは、SAS を受信すると、SAS で定義されたアクセス許可と SAS で許可された期間で、ストレージ アカウントのリソースに直接アクセスできるようになります。SAS によって、すべてのデータをフロントエンド プロキシ サービス経由でルーティングする必要性が減少します。
+2\.軽量サービスが、必要に応じてクライアントを認証してから、SAS を生成します。クライアントは、SAS を受信すると、SAS で定義されたアクセス許可と SAS で許可された期間で、ストレージ アカウントのリソースに直接アクセスできるようになります。SAS によって、すべてのデータをフロントエンド プロキシ サービス経由でルーティングする必要性が減少します。
 
 ![sas-storage-provider-service][sas-storage-provider-service]
 
 実際のサービスの多くでは、関連するシナリオに応じて、この 2 種類のアプローチのハイブリッドを使用できます。つまり、一部のデータをフロントエンド プロキシで処理および検証し、それ以外のデータを SAS で直接保存したり、読み取ったりします。
+
+また、特定のシナリオにおけるコピー操作でソース オブジェクトを認証するには、SAS を使用する必要があります。
+
+- BLOB を別のストレージ アカウント内にある他の BLOB にコピーする場合、コピー元 BLOB の認証には SAS を使用する必要があります。2013-08-15 のストレージ サービスまたはそれ以降のバージョンを使用している限り、コピー先 BLOB の認証には任意で SAS を使用できます。
+- ファイルを別のストレージ アカウント内にある他のファイルにコピーする場合、コピー元ファイルの認証には SAS を使用する必要があります。コピー先ファイルの認証には任意で SAS が使用できます。
+- BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合、同じストレージ アカウント内にコピー先とコピー元のオブジェクトがある場合でも、SAS を使用してソース オブジェクトを認証する必要があります。
 
 ## 共有アクセス署名の機能 ##
 
@@ -51,146 +57,35 @@ SAS が役立つ一般的なシナリオは、ストレージ アカウント内
 
 共有アクセス署名は、その定義である、次の制約を含んでいます。各制約は、URI でパラメーターとして表示されます。
 
-- **ストレージ リソース。** そのアクセスを委任できるストレージ リソースには、コンテナー、BLOB、キュー、テーブル、およびテーブル エンティティの範囲があります。
+- **ストレージ リソース。** アクセスを委任できるストレージ リソースには次が含まれます。
+	- コンテナーと BLOB
+	- ファイル共有とファイル
+	- キュー
+	- テーブルとテーブル エンティティの範囲
 - **開始時刻。** この時刻に SAS が有効になります。共有アクセス署名の開始時刻は省略可能です。省略した場合は、SAS がすぐに有効になります。 
 - **有効期限。** この時刻の後、SAS が有効ではなくなります。ベスト プラクティスでは、SAS の有効期限を指定するか、保存されているアクセス ポリシーに SAS を関連付けることを推奨しています (以下を参照)。
 - **アクセス許可。** SAS に指定されたアクセス許可は、クライアントが SAS を使用して、ストレージ リソースに対して実行できる操作を示します。 
 
 BLOB に読み書きアクセス許可を付与する SAS URI の例を、次に示します。表では、SAS での機能がわかりやすいように、URI の部分ごとに説明しています。
 
-https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&st=2013-04-29T22%3A18%3A26Z&se=2013-04-30T02%3A23%3A26Z&sr=b&sp=rw&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
+	https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&st=2013-04-29T22%3A18%3A26Z&se=2013-04-30T02%3A23%3A26Z&sr=b&sp=rw&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 
-<table border="1" cellpadding="0" cellspacing="0">
-    <tbody>
-        <tr>
-            <td valign="top" width="213">
-                <p>
-                    Blob URI
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    BLOB のアドレス。HTTPS の使用を強くお勧めします。
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" width="213">
-                <p>
-                    ストレージ サービスのバージョン
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    sv=2012-02-12
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" width="213">
-                <p>
-                    開始時刻
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    st=2013-04-29T22%3A18%3A26Z
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    ISO 8061 形式で指定されます。SAS をすぐに有効にする場合は、開始時刻を省略します。
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" width="213">
-                <p>
-                    有効期限
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    se=2013-04-30T02%3A23%3A26Z
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    ISO 8061 形式で指定されます。
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" width="213">
-                <p>
-                    リソース
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    sr=b
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    リソースは BLOB です。
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" width="213">
-                <p>
-                    アクセス許可
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    sp=rw
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    SAS で付与されるアクセス許可には、読み取り (r) および書き込み (w) が含まれます。
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" width="213">
-                <p>
-                    署名
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
-                </p>
-            </td>
-            <td valign="top" width="213">
-                <p>
-                    BLOB へのアクセスを認証するために使用します。署名は、SHA256 アルゴリズムを使用して署名対象文字列とキーを計算した後に、Base 64 エンコードを使用してエンコードした HMAC 値です。
-                </p>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
+名前|リンク セクション|説明
+---|---|---
+Blob URI|https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt | BLOB のアドレス。HTTPS の使用を強くお勧めします。
+ストレージ サービスのバージョン|sv=2012-02-12|ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。
+開始時刻|st=2013-04-29T22%3A18%3A26Z|ISO 8061 形式で指定されます。SAS をすぐに有効にする場合は、開始時刻を省略します。
+有効期限|se=2013-04-30T02%3A23%3A26Z|ISO 8061 形式で指定されます。
+リソース|sr=b|リソースは BLOB です。
+アクセス許可|sp=rw|SAS で付与されるアクセス許可には、読み取り (r) および書き込み (w) が含まれます。
+署名|sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D|BLOB へのアクセスを認証するために使用します。署名は、SHA256 アルゴリズムを使用して署名対象文字列とキーを計算した後に、Base 64 エンコードを使用してエンコードした HMAC 値です。
 
 ## 保存されているアクセス ポリシーによる共有アクセス署名の制御 ##
 
 共有アクセス署名の形式は、次の 2 つのいずれかです。
 
-- **アドホック SAS:** アドホック SAS を作成すると、開始時刻、有効期限、および SAS へのアクセス許可がすべて、SAS URI で指定されます (または、開始時刻を省略した場合は、暗黙で指定されます)。この種類の SAS は、コンテナー、BLOB、テーブル、またはキューで作成できます。
-- **保存されているアクセス ポリシーのある SAS:** 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、またはキュー) で定義されており、これを使用して、1 つ以上の共有アクセス署名のコンテナーを管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。
+- **アドホック SAS:** アドホック SAS を作成すると、開始時刻、有効期限、および SAS へのアクセス許可がすべて、SAS URI で指定されます (または、開始時刻を省略した場合は、暗黙で指定されます)。この種類の SAS は、コンテナー、BLOB、ファイル共有、ファイル、テーブル、またはキューで作成できます。
+- **保存されているアクセス ポリシーのある SAS**: 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、キュー、ファイル共有) で定義されており、これを使用して、1 つ以上の共有アクセス署名のコンテナーを管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。
 
 1 つの重要なシナリオ、失効では、この 2 つの形式の相違点が重要です。SAS は URL であるため、取得したユーザーはだれでも、どのユーザーが最初に要求したかに関係なく、SAS を使用できます。SAS が一般ユーザーに発行された場合は、世界中のだれでも使用できます。配布された SAS は、次の 4 つの状況のいずれかになるまで有効です。
 
@@ -225,17 +120,13 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
 
 ## 次のステップ ##
 
-[共有アクセス署名、第 2 部: BLOB サービスによる SAS の作成および使用](../storage-dotnet-shared-access-signature-part-2/)
-
-[Azure ストレージ リソースへのアクセスの管理](http://msdn.microsoft.com/library/azure/ee393343.aspx)
-
-[共有アクセス署名を使用したアクセスの委任 (REST API) に関するページ](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-
-[テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
-[sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
-[sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
+- [共有アクセス署名、第 2 部: BLOB サービスによる SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)
+- [PowerShell と .NET で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
+- [Azure ストレージ リソースへのアクセスの管理](storage-manage-access-to-resources.md)
+- [共有アクセス署名を使用したアクセスの委任 (REST API) に関するページ](http://msdn.microsoft.com/library/azure/ee395415.aspx)
+- [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx) [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
 
  
 
-<!--------HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

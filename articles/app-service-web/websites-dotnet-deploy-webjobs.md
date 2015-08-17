@@ -24,7 +24,7 @@
 
 Visual Studio では Web ジョブ対応のコンソール アプリケーション プロジェクトをデプロイする場合に、2 つのタスクを実行します。
 
-* ランタイム ファイルを Web アプリの適切なフォルダーにコピーします (継続的な Web ジョブの場合は \*App\_Data/jobs/continuous\*、スケジュールされたオンデマンドの Web ジョブの場合は *App\_Data/jobs/triggered*)。
+* ランタイム ファイルを Web アプリの適切なフォルダーにコピーします (継続的な Web ジョブの場合は *App\_Data/jobs/continuous*、スケジュールされたオンデマンドの Web ジョブの場合は *App\_Data/jobs/triggered*)。
 * 特定の時間に実行するようにスケジュールされる Web ジョブに [Azure Scheduler ジョブ](#scheduler)を設定します(これは継続的な Web ジョブでは必要ありません)。
 
 Web ジョブ対応のプロジェクトでは、次の項目が追加されています。
@@ -200,4 +200,4 @@ Web ジョブ プロジェクトがそれ自身でデプロイされるように
 * Azure ポータルから Azure プレビュー ポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

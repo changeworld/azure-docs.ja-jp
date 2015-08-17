@@ -1,4 +1,5 @@
-<properties pageTitle="Restore a StorSimple volume from a backup set (バックアップ セットから StorSimple ボリュームを復元する)" | Microsoft Azure description="バックアップ カタログを使用してバックアップ セットから StorSimple ボリュームを復元する方法を説明します。" services="storsimple" documentationCenter="NA" authors="SharS" manager="carolz" editor="" /> <tags 
+<properties pageTitle="Restore a StorSimple volume from a backup set (バックアップ セットから StorSimple ボリュームを復元する)" | Microsoft Azure description="バックアップ カタログを使用してバックアップ セットから StorSimple ボリュームを復元する方法を説明します。" services="storsimple" documentationCenter="NA" authors="SharS" manager="carolz" editor="" />
+<tags
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="article"
@@ -74,4 +75,4 @@
 
 [StorSimple ボリュームを管理する](storsimple-manage-volumes.md)方法について説明します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

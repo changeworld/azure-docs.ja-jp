@@ -1,128 +1,77 @@
 <properties 
-	pageTitle="Application Insights を使用したアプリのパフォーマンスと使用状況の監視" 
-	description="内部設置型または Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
+	pageTitle="Application Insights を使ってみる" 
+	description="オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/26/2015" 
+	ms.topic="hero-article" 
+	ms.date="08/04/2015" 
 	ms.author="awills"/>
 
-# Application Insights を使用したアプリのパフォーマンスと使用状況の監視
+# Visual Studio Application Insights を使ってみる
 
 *Application Insights はプレビュー段階です。*
 
+問題を検出し、問題を解決し、アプリケーションの継続的に改善します。実行中のアプリケーションの問題をすぐに診断します。ユーザーがアプリケーションを何に利用しているかを理解します。
 
-Visual Studio Application Insights は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。これはさまざまなアプリケーションの種類で使用できます。たとえば、ASP.NET と Java Web アプリ、iOS、Android、Windows などのデバイスのアプリ、HTML と JavaScript アプリがあります。
+構成は非常に簡単であり、数分以内で結果を確認できます。
 
-この記事では、Visual Studio で開発されたアプリの種類に注目します。他の IDE 用の Application Insights 拡張機能もあります。
+現時点でサポートしているものは次のとおりです。iOS、Android、および Windows アプリ; J2EE および ASP.NET Web アプリケーション、WCF サービス。Web アプリは、Azure 上か、お使いのオンプレミス サーバーで実行できます。JavaScript SDK は任意の Web ページで実行できます。
 
-[Visual Studio 2013 Update 3](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) (またはそれ以降) と [Microsoft Azure](http://azure.com) のアカウントが必要です。
+## 作業開始
 
-## <a name="ide"></a>プロジェクトへの Application Insights の追加
+任意の順序でこのマップの左側に示すエントリ ポイントを組み合わせて開始します。適切なパスを選択します。
 
-#### 新しいプロジェクトの場合
+Application Insights は SDK をアプリに追加することで動作し、テレメトリを [Azure ポータル](http://portal.azure.com)に送信します。サポートされているプラットフォーム、言語、および IDE の多様な組み合わせに対応してさまざまな SDK が用意されています。
 
-Visual Studio に新しいプロジェクトを作成するとき、Application Insights が選択されていることを確認してください。
+[Microsoft Azure](http://azure.com) のアカウントが必要になります。既にお持ちの組織のグループ アカウントにアクセスすることも、従量課金アカウントを取得することもできます。Application Insights には Free レベルが用意されているため、アプリの人気が出るまでお支払いいただく必要はありません。「[料金のページ](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
+使用目的 | 必要な操作 | 取得内容
+---|---|---
+ <a href="app-insights-start-monitoring-app-health-usage.md">![ASP.NET](./media/app-insights-get-started/appinsights-gs-i-01-perf.png)</a> | <a href="app-insights-start-monitoring-app-health-usage.md">Web プロジェクトに Application Insights SDK を追加する</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-start-monitoring-app-health-usage.md">![パフォーマンスと利用状況の監視](./media/app-insights-get-started/appinsights-gs-r-01-perf.png)</a>
+<a href="app-insights-monitor-performance-live-website-now.md">![既にライブの ASP.NET サイト](./media/app-insights-get-started/appinsights-gs-i-04-red2.png)</a><br/><a href="app-insights-monitor-performance-live-website-now.md">![依存関係とパフォーマンスの監視](./media/app-insights-get-started/appinsights-gs-i-03-red.png)</a>|<a href="app-insights-monitor-performance-live-website-now.md">IIS サーバーに状態モニターをインストールする</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-monitor-performance-live-website-now.md">![ASP.NET の依存関係の監視](./media/app-insights-get-started/appinsights-gs-r-03-red.png)</a>
+<a href="insights-perf-analytics.md">![Azure Web アプリまたは VM](./media/app-insights-get-started/appinsights-gs-i-10-azure.png)</a>|<a href="insights-perf-analytics.md">Azure Web アプリまたは VM で Insights を有効にする</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="insights-perf-analytics.md">![依存関係とパフォーマンスの監視](./media/app-insights-get-started/appinsights-gs-r-03-red.png)</a>
+<a href="app-insights-java-get-started.md">![Java](./media/app-insights-get-started/appinsights-gs-i-11-java.png)</a>|<a href="app-insights-java-get-started.md">Java プロジェクトに SDK を追加する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-java-get-started.md">![パフォーマンスと利用状況の監視](./media/app-insights-get-started/appinsights-gs-r-10-java.png)</a>
+<a href="app-insights-web-track-usage.md">![JavaScript](./media/app-insights-get-started/appinsights-gs-i-02-usage.png)</a>|<a href="app-insights-web-track-usage.md">Web ページに Application Insights のスクリプトを挿入する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-web-track-usage.md">![ページ ビューとブラウザーのパフォーマンス](./media/app-insights-get-started/appinsights-gs-r-02-usage.png)</a>
+<a href="app-insights-monitor-web-app-availability.md">![可用性](./media/app-insights-get-started/appinsights-gs-i-05-avail.png)</a>|<a href="app-insights-monitor-web-app-availability.md">Web テストを作成する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-monitor-web-app-availability.md">![可用性](./media/app-insights-get-started/appinsights-gs-r-05-avail.png)</a>
+<a href="app-insights-windows-get-started.md">![Windows と Windows Phone](./media/app-insights-get-started/appinsights-gs-i-06-device.png)</a>|<a href="app-insights-windows-get-started.md">Windows アプリ プロジェクトに Application Insights を追加する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-windows-get-started.md">![クラッシュと使用状況データ](./media/app-insights-get-started/appinsights-gs-r-06-device.png)</a>
+<a href="app-insights-platforms.md">![iOS、Android の詳細](./media/app-insights-get-started/appinsights-gs-i-07-device.png)</a>|<a href="app-insights-platforms.md">iOS または Android アプリに Application Insights を追加する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-platforms.md">![クラッシュと使用状況データ](./media/app-insights-get-started/appinsights-gs-r-06-device.png)</a>
 
-![ASP.NET プロジェクトを作成する](./media/app-service-app-insights-get-started/appinsights-01-vsnewp1.png)
+## サポートとフィードバック
 
-Visual Studio によって、Application Insights にリソースが作成され、プロジェクトに SDK が追加されて、キーが `.config` ファイルに配置されます。
-
-プロジェクトに Web ページが含まれている場合は、[JavaScript SDK][client] がマスター Web ページに追加されます。
-
-#### 既存のプロジェクトの場合
-
-ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。
-
-![[Application Insights の追加] を選択する](./media/app-service-app-insights-get-started/appinsights-03-addExisting.png)
-
-Visual Studio によって、Application Insights にリソースが作成され、プロジェクトに SDK が追加されて、キーが `.config` ファイルに配置されます。
-
-この場合、[JavaScript SDK][client] は Web ページに追加されません。この操作は、次の手順として行うことをお勧めします。
-
-#### セットアップ オプション
-
-初めての場合には、Microsoft Azure プレビュー版にログインまたはサインインするように求められます(Visual Studio Online アカウントとは異なります)。
-
-このアプリがより大きなアプリケーションの一部である場合は、**[設定の構成]** を使用して、他のコンポーネントと同じリソース グループに配置することをお勧めします。
-
-*Application Insights オプションはありせんか。 一部の種類のプロジェクトでは、[SDK を手動で追加][windows]すると Application Insights を使用できます。*
-
-#### プロジェクトから Application Insights を開きます。
-
-![プロジェクトを右クリックして Azure ポータルを開く](./media/app-service-app-insights-get-started/appinsights-04-openPortal.png)
+* 質問および問題点:
+ * [トラブルシューティング][qna]
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+ * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* バグ:
+ * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
+* ご提案:
+ * [ユーザーの声](http://visualstudio.uservoice.com/forums/121579-visual-studio/category/77108-application-insights)
 
 
-## <a name="run"></a> 3.プロジェクトの実行
 
-F5 キーを使用してアプリケーションを実行して、試します。さまざまなページが開き、いくつかのテレメトリが生成されます。
-
-Visual Studio で、送信されたイベント数が表示されます。
-
-![](./media/app-service-app-insights-get-started/appinsights-09eventcount.png)
-
-## <a name="monitor"></a> 4.テレメトリの表示
-
-[Azure ポータル][portal]に戻り、Application Insights のリソースを参照します。
-
-概要グラフでデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。次に例を示します。
-
-![クリックしてより多くのデータを表示する](./media/app-service-app-insights-get-started/12-first-perf.png)
-
-任意のグラフをクリックして、より詳細なメトリックを表示します。[メトリックの詳細についてはこちらをご覧ください。][perf]
-
-ここで、アプリケーションをデプロイし、データ累積を確認します。
+## <a name="video"></a>ビデオ
 
 
-デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。アプリケーションをデプロイすると、データ累積速度は遅くなります。
+> [AZURE.VIDEO 218]
 
+> [AZURE.VIDEO usage-monitoring-application-insights]
 
-#### データが表示されない場合
+> [AZURE.VIDEO performance-monitoring-application-insights]
 
-* [[診断検索]][diagnostic] タイルを開き、個々のイベントを表示します。
-* アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
-* 数秒待機してから [最新の情報に更新] をクリックします。
-* [トラブルシューティング][qna]に関するページを参照します。
-
-
-## 次のステップ
-
-これでアプリのサーバー側からデータを送信しているため、全体像を理解するための手順を次に示します。
-
-* [Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。
-* [Web ページに JavaScript SDK を追加][client]して、ページ ビュー数、ページの読み込み時間、スクリプトの例外などのブラウザー ベースのテレメトリを取得し、ページ スクリプトにカスタムのテレメトリを記述することができます。
-* 依存関係の追跡を追加して、アプリで使用されるデータベースなどのコンポーネントが原因で発生した問題を診断します。 
- * [IIS サーバーでの依存関係の追跡の追加][redfield]
- * [Azure Web アプリでの依存関係の追跡の追加][azure]
-* お気に入りのログ記録フレームワークから[ログ トレースをキャプチャ][netlogs]します。
-* クライアント側とサーバー側 (またはそのいずれか) で[カスタム イベントとメトリックを追跡][api]して、アプリケーションの使用状況の詳細を確認します。
 
 
 <!--Link references-->
 
-[api]: app-insights-api-custom-events-metrics.md
-[availability]: app-insights-monitor-web-app-availability.md
-[azure]: ../insights-perf-analytics.md
-[client]: app-insights-javascript.md
-[detect]: app-insights-detect-triage-diagnose.md
-[diagnostic]: app-insights-diagnostic-search.md
-[knowUsers]: app-insights-overview-usage.md
-[netlogs]: app-insights-asp-net-trace-logs.md
-[perf]: app-insights-web-monitor-performance.md
-[portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
-[redfield]: app-insights-monitor-performance-live-website-now.md
-[windows]: app-insights-windows-get-started.md
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

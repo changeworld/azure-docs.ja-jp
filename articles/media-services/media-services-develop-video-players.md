@@ -65,9 +65,9 @@ Azure Media Services では、Windows メディア プラットフォームの�
 
 コンパニオン – プレーヤーの外部に表示される広告
 
-広告は、メイン ビデオの時系列のどのポイントにも配置できます。広告をいつ再生し、どの広告を再生するかをプレーヤーに通知する必要があります。これは、一連の標準 XML ベース ファイルである Video Ad Service Template (VAST)、Digital Video Multiple Ad Playlist (VMAP)、Media Abstract Sequencing Template (MAST)、Digital Video Player Ad Interface Definition (VPAID) を使用して行います。VAST ファイルは、表示する広告を指定します。VMAP ファイルは、各広告をいつ再生するかを指定します。このファイルには VAST XML が含まれています。MAST ファイルを使用して広告の順序を指定することもできます。このファイルにも VAST XML が含まれています。VPAID ファイルは、ビデオ プレーヤーと広告や広告サーバーの間のインターフェイスを定義します。詳細については、「[広告の挿入](https://msdn.microsoft.com/library/dn387398.aspx)」を参照してください。
+広告は、メイン ビデオの時系列のどのポイントにも配置できます。広告をいつ再生し、どの広告を再生するかをプレーヤーに通知する必要があります。これは、一連の標準 XML ベース ファイルである Video Ad Service Template (VAST)、Digital Video Multiple Ad Playlist (VMAP)、Media Abstract Sequencing Template (MAST)、Digital Video Player Ad Interface Definition (VPAID) を使用して行います。VAST ファイルは、表示する広告を指定します。VMAP ファイルは、各広告をいつ再生するかを指定します。このファイルには VAST XML が含まれています。MAST ファイルを使用して広告の順序を指定することもできます。このファイルにも VAST XML が含まれています。VPAID ファイルは、ビデオ プレーヤーと広告や広告サーバーの間のインターフェイスを定義します。詳細については、「[広告の挿入](https://msdn.microsoft.com/library/dn387398.aspx)」をご覧ください。
 
-ライブ ストリーミング ビデオでのクローズド キャプションと広告のサポートの詳細については、「[サポートされる字幕と広告挿入の標準](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad)」を参照してください。
+ライブ ストリーミング ビデオでのクローズド キャプションと広告のサポートの詳細については、「[サポートされる字幕と広告挿入の標準](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad)」をご覧ください。
 
 ##関連項目
 
@@ -76,4 +76,4 @@ Azure Media Services では、Windows メディア プラットフォームの�
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

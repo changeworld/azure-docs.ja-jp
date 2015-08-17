@@ -56,36 +56,14 @@ Windows ストア アプリケーションの開発の詳細については、�
 2.	**[ファイル]** メニューの **[新規作成]** をポイントし、**[プロジェクト]** をクリックします。
 3.	[新しいプロジェクト] ダイアログ ボックスで、次の値を入力または選択します。
 
-	<table border="1">
-<tr>
-	<th>名前</th>
-	<th>値</th>
-</tr>
-<tr>
-	<td>テンプレート グループ</td>
-	<td>インストール済み/テンプレート/Visual C#/Windows ストア</td>
-</tr>
-<tr>
-	<td>テンプレート</td>
-	<td>新しいアプリケーション (XAML)</td>
-</tr>
-<tr>
-	<td>名前</td>
-	<td>SSPlayer</td>
-</tr>
-<tr>
-	<td>場所</td>
-	<td>C:\SSTutorials</td>
-</tr>
-<tr>
-	<td>ソリューション名</td>
-	<td>SSPlayer</td>
-</tr>
-<tr>
-	<td>ソリューションのディレクトリを作成</td>
-	<td>(オン)</td>
-</tr>
-</table>
+名前|値
+---|---
+テンプレート グループ|インストール済み/テンプレート/Visual C#/Windows ストア
+テンプレート|新しいアプリケーション (XAML)
+名前|SSPlayer
+場所|C:\\SSTutorials
+ソリューション名|SSPlayer
+ソリューションのディレクトリを作成|(オン)
 
 4.	**[OK]** をクリックします。
 
@@ -94,23 +72,12 @@ Windows ストア アプリケーションの開発の詳細については、�
 1.	ソリューション エクスプローラーで **[SSPlayer]** を右クリックし、**[参照の追加]** をクリックします。
 2.	次の値を入力または選択します。
 
-	<table border="1">
-<tr>
-	<th>名前</th>
-	<th>値</th>
-</tr>
-<tr>
-	<td>参照グループ</td>
-	<td>Windows/拡張</td>
-</tr>
-<tr>
-	<td>リファレンス</td>
-	<td>Windows 8 用 Microsoft Smooth Streaming Client SDK と Microsoft Visual C++ ランタイム パッケージを選択 
-	</td>
-</tr>
-</table>
+名前|値
+---|---
+参照グループ|Windows/拡張
+リファレンス|Windows 8 用 Microsoft Smooth Streaming Client SDK と Microsoft Visual C++ ランタイム パッケージを選択
 	
-3.	**[OK]** をクリックします。
+3.	**[OK]** をクリックします。 
 
 参照を追加した後、対象プラットフォーム (x64 または x86) を選択します。[任意の CPU] プラットフォーム構成では参照の追加が機能しません。この場合は、ソリューション エクスプローラーで、追加した参照に黄色の警告マークが表示されます。
 
@@ -228,7 +195,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 		}
 		#endregion
 
-	ここでは sliderProgress_PointerPressed イベント ハンドラーが定義されています。正しく機能させるには他の作業も必要ですが、これらについては次のレッスンで説明します。
+	ここでは sliderProgress\_PointerPressed イベント ハンドラーが定義されています。正しく機能させるには他の作業も必要ですが、これらについては次のレッスンで説明します。
 6.	**Ctrl + S** キーを押して、ファイルを保存します。
 
 完成したコード ビハインド ファイルは次のようになります。
@@ -320,7 +287,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 4.	AdaptiveSourceOpenedEvent をサブスクライブするために、**MainPage** コンストラクターの末尾に次の行を追加します。
 	
-	adaptiveSourceManager.AdaptiveSourceOpenedEvent += new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
+	adaptiveSourceManager.AdaptiveSourceOpenedEvent += new AdaptiveSourceOpenedEventHandler(mediaElement\_AdaptiveSourceOpened);
 
 5.	**Ctrl + S** キーを押して、ファイルを保存します。
 
@@ -352,7 +319,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 		}
 		#endregion Adaptive Source Level Events
 
-4.	各イベントをサブスクライブするために、<strong>mediaElement AdaptiveSourceOpened</strong>￼ メソッドの末尾に次のコードを追加します。
+4.	各イベントをサブスクライブするために、**mediaElement AdaptiveSourceOpened** メソッドの末尾に次のコードを追加します。
 	
 		adaptiveSource.ManifestReadyEvent +=
 	                mediaElement_ManifestReady;
@@ -498,7 +465,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 		  sliderProgress.Maximum = absvalue; }); 
 		
 
-6.	**mediaElement_AdaptiveSourceStatusUpdated** メソッドの末尾に、次のコードを追加します。
+6.	**mediaElement\_AdaptiveSourceStatusUpdated** メソッドの末尾に、次のコードを追加します。
 	
 		setSliderStartTime(args.StartTime);
 		setSliderEndTime(args.EndTime);
@@ -762,7 +729,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 		}
 		#endregion stream selection
 
-5. mediaElement_ManifestReady メソッドを探して、関数の末尾に次のコードを追加します。
+5. mediaElement\_ManifestReady メソッドを探して、関数の末尾に次のコードを追加します。
 	
 		getStreams(manifestObject);
         refreshAvailableStreamsListBoxItemSource();
@@ -788,7 +755,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 2.	**F5** キーを押してアプリケーションを実行します。
 3.	アプリケーションの先頭部分で、既定のスムーズ ストリーミング URL を使用するか、別の URL を入力します。 
 4.	**[ソースの設定]** をクリックします。 
-5.	既定の言語は audio_eng です。audio_eng と audio_es の間で切り替えます。新しいストリームを選択するたびに、[送信] ボタンをクリックする必要があります。
+5.	既定の言語は audio\_eng です。audio\_eng と audio\_es の間で切り替えます。新しいストリームを選択するたびに、[送信] ボタンをクリックする必要があります。
 
 これでレッスン 3 が完了しました。このレッスンでは、ストリームを選択する機能を追加しました。
 
@@ -967,7 +934,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
         }
         #endregion track selection
 
-5. mediaElement_ManifestReady メソッドを探して、関数の末尾に次のコードを追加します。
+5. mediaElement\_ManifestReady メソッドを探して、関数の末尾に次のコードを追加します。
 
 		getTracks(manifestObject);
 		refreshAvailableTracksListBoxItemSource();
@@ -1004,4 +971,4 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

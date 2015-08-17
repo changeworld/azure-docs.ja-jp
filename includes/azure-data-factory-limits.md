@@ -1,32 +1,32 @@
-Data factory is a multi-tenant service that has the following default limits in place to make sure customer subscriptions are protected from each others workloads. Many of the limits can be easily raised for your subscription up to the maximum limit by contacting support. 
+Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。制限のほとんどは、サポートに問い合わせることで上限まで引き上げることができます。
 
-**Resource** | **Default Limit** | **Maximum Limit**
+**リソース** | **既定の制限** | **上限**
 -------- | ------------- | -------------
-pipelines within a data factory | 100 | 2500
-datasets within a data factory | 500 | 5000
-concurrent slices per dataset | 10 | 10
-bytes per object for pipeline objects <sup>1</sup> | 200 KB | 2000 KB
-bytes per object for dataset and linkedservice objects <sup>1</sup> | 30 KB | 2000 KB
-fields per object | 100 | [Contact support](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-bytes per field name or identifier | 2 KB | [Contact support](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-bytes per field | 30 KB | [Contact support](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-HDInsight on-demand cluster cores within a subscription <sup>2</sup> | 48 | [Contact support](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-Retry count for pipeline activity runs | 1000 | MaxInt (32 bit)
+1 つの Data Factory 内のパイプライン数 | 100 | 2500
+1 つの Data Factory 内のデータセット数 | 500 | 5000
+データセットあたりの同時実行のスライス数 | 10 | 10
+オブジェクトのパイプライン オブジェクトあたりのバイト数<sup>1</sup> | 200 KB | 2,000 KB
+データセットと linkedservice オブジェクトのオブジェクトあたりのバイト数<sup>1</sup> | 30 KB | 2,000 KB
+オブジェクトごとのフィールド数 | 100 | [サポートにお問い合せください](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+フィールド名前や識別子あたりのバイト数 | 2 KB | [サポートにお問い合せください](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+フィールドあたりのバイト数 | 30 KB | [サポートにお問い合せください](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+サブスクリプション内 HDInsight オンデマンドのクラスター コア数<sup>2</sup> | 48 | [サポートにお問い合せください](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+パイプラインのアクティビティ実行の再試行カウント | 1,000 | MaxInt (32 ビット)
 
-<sup>1</sup> Pipeline, dataset, and linked service objects represent a logical grouping of your workload. Limits for these objects do not relate to amount of data you can move and process with the Azure Data Factory service. Data factory is designed to scale to handle petabytes of data.
+<sup>1</sup> パイプライン、データセット、リンクされたサービス オブジェクトは、ワークロードの論理グループを表します。これらのオブジェクトの制限は、Azure Data Factory サービスで移動したり処理したりできるデータ量には関係ありません。Data Factory はペタバイトのデータ処理まで拡張できるようになっています。
 
-<sup>2</sup>On-demand HDInsight cores are allocated out of the subscription that contains the data factory. As a result, the above limit is the Data Factory enforced core limit for on-demand HDInsight cores and is different from the core limit associated with your Azure subscription.
+<sup>2</sup> オンデマンド HDInsight コアは、Data Factory を含むサブスクリプション外に割り当てられます。そのため、上記の制限はオンデマンド HDInsight コアで Data Factory を実行しているコアの制限であり、Azure サブスクリプションに関連付けられているコアの制限とは異なります。
 
 
-**Resource** | **Default lower limit** | **Minimum limit**
+**リソース** | **既定値の下限** | **上限**
 -------- | ------------------- | -------------
-Scheduling interval | 15 minutes | 5 minutes
-Interval between retry attempts | 1 second | 1 second
-Retry timeout value | 1 second | 1 second
+スケジュールの間隔 | 約 15 分 | 5 分
+再試行の間隔 | 1 秒 | 1 秒
+再試行のタイムアウト値 | 1 秒 | 1 秒
 
 
-### Web service call limits
+### Web サービス呼び出しの制限
 
-Azure resource manager has limits for API calls. You can make API calls at a rate within the [Azure Resource Manager API limits](azure-subscription-service-limits/#resource-group-limits). 
+Azure リソース マネージャーでは、API 呼び出しの制限があります。API の呼び出しは、[Azure リソース マネージャーの API 制限](azure-subscription-service-limits/#resource-group-limits)内の割合で実行できます。
 
-
+<!---HONumber=August15_HO6-->

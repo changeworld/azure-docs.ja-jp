@@ -189,4 +189,4 @@ Service Bus キューに送信されたメッセージ (および Service Bus �
   [Service Bus のキュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/library/windowsazure/hh367516.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,7 +1,6 @@
 <properties
 	pageTitle=" API Management を使用した AzureML Web サービスの管理方法について説明します | Microsoft Azure"
 	description="API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。"
-	keywords="machine learning,api management"
 	services="machine-learning"
 	documentationCenter=""
 	authors="roalexan"
@@ -26,7 +25,7 @@
 
 ##Azure API Management とは
 
-Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュ ボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。[ここ](http://azure.microsoft.com/services/api-management/)をクリックして、Azure API Management の詳細についてご覧ください。[ここ](api-management/api-management-get-started.md)をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
+Azure API Management は、ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理できる Azure のサービスです。[ここ](http://azure.microsoft.com/services/api-management/)をクリックして、Azure API Management の詳細についてご覧ください。[ここ](api-management/api-management-get-started.md)をクリックして、Azure API Management を使用する方法についてのガイドをご覧ください。このガイドがベースとなる他のガイドでは、通知の構成、価格レベル、応答の処理、ユーザー認証、製品、開発者のサブスクリプション、使用状況のダッシュボードなどのトピックについて説明します。
 
 ##Azure ML とは
 
@@ -36,9 +35,9 @@ AzureML は、高度な分析ソリューションを簡単に構築、デプロ
 
 このガイドを完了するには、以下が必要です。
 
-* Azure アカウント。Azure アカウントを持っていない場合は、[ここ](http://azure.microsoft.com/pricing/free-trial/)をクリックして、無料評価版用アカウントの作成方法の詳細についてご覧ください。
-* AzureML アカウント。AzureML アカウントを持っていない場合は、[ここ](https://studio.azureml.net/)をクリックして、無料評価版用アカウントの作成方法の詳細についてご覧ください。
-* Web サービスとして公開される AzureML 実験用のワークスペース、サービス、api_key。[ここ](machine-learning/machine-learning-create-experiment.md)をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。[ここ](machine-learning/machine-learning-publish-a-machine-learning-web-service.md)をクリックして、Web サービスとして AzureML 実験を公開する方法の詳細についてご覧ください。また、シンプルな AzureML 実験を作成してテストし、Web サービスとして公開する方法については付録 A をご覧ください。
+* Azure アカウント。Azure アカウントを持っていない場合は、[ここ](http://azure.microsoft.com/pricing/free-trial/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
+* AzureML アカウント。AzureML アカウントを持っていない場合は、[ここ](https://studio.azureml.net/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
+* Web サービスとして発行される AzureML 実験用のワークスペース、サービス、api\_key。[ここ](machine-learning/machine-learning-create-experiment.md)をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。[ここ](machine-learning/machine-learning-publish-a-machine-learning-web-service.md)をクリックして、Web サービスとして AzureML 実験を発行する方法の詳細についてご覧ください。また、シンプルな AzureML 実験を作成してテストし、Web サービスとして発行する方法については付録 A をご覧ください。
 
 ##API Management インスタンスの作成
 
@@ -72,7 +71,7 @@ API は API パブリッシャー ポータルから作成され、構成され�
 
 ![api-management-menu](./media/machine-learning-manage-web-service-endpoints-using-api-management/api-management-menu.png)
 
-**[Web API 名]** として「**AzureML Demo API**」と入力します。**[Web サービス URL]** として「**https://ussouthcentral.services.azureml.net**」と入力します。**[Web API URL サフィックス]** として「**azureml-demo**」と入力します。**[Web API URL]** として **[HTTPS]** を選択します。**[製品]** として **[スターター]** を選択します。完了したら、**[保存]** をクリックして、API を作成します。
+**[Web API 名]** として「**AzureML Demo API**」と入力します。**[Web サービス URL]** として「****https://ussouthcentral.services.azureml.net**」と入力します。**[Web API URL サフィックス]** として「**azureml-demo**」と入力します。**[Web API URL]** として **[HTTPS]** を選択します。**[製品]** として **[スターター]** を選択します。完了したら、**[保存]** をクリックして、API を作成します。
 
 ![add-new-api](./media/machine-learning-manage-web-service-endpoints-using-api-management/add-new-api.png)
 
@@ -128,9 +127,9 @@ RRS 操作の追加の場合とよく似ているため、BES 操作のスクリ
 
 ![try-it](./media/machine-learning-manage-web-service-endpoints-using-api-management/try-it.png)
 
-要求パラメーターで、**[apiversion]** に「**workspace**」、「**service**」、「**2.0**」と入力し、**[詳細]** に「**true**」と入力します。AzureML Web サービスのダッシュ ボードに **ワークスペース** と **サービス** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+要求パラメーターで、**[apiversion]** に「**workspace**」、「**service**」、「**2.0**」と入力し、**[詳細]** に「**true**」と入力します。AzureML Web サービスのダッシュボードに **ワークスペース** と **サービス** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
-要求ヘッダーで、**[ヘッダーの追加]** をクリックして「**Content-Type**」と「**application/json**」を入力し、**[ヘッダーの追加]** をクリックして「**Authorization**」と「**Bearer <YOUR AZUREML SERVICE API-KEY>**」を入力します。AzureML Web サービスのダッシュ ボードに **api key** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+要求ヘッダーで、**[ヘッダーの追加]** をクリックして「**Content-Type**」と「**application/json**」を入力し、**[ヘッダーの追加]** をクリックして「**Authorization**」と「**Bearer <YOUR AZUREML SERVICE API-KEY>**」を入力します。AzureML Web サービスのダッシュボードに **api key** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
 要求本文に「**{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}**」と入力します。
 
@@ -148,7 +147,7 @@ RRS 操作の追加の場合とよく似ているため、BES 操作のスクリ
 
 ###実験の作成
 
-シンプルな AzureML 実験を作成し、Web サービスとして公開する手順を次に示します。Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。次に例を示します。
+シンプルな AzureML 実験を作成し、Web サービスとして発行する手順を次に示します。Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。次に例を示します。
 
 テキスト | ハッシュされたテキスト
 --- | ---
@@ -200,11 +199,11 @@ Web サービスを作成します。**[Web サービス]** を展開し、**[�
 
 AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。RSS は、同期の実行用です。BES は、同期ジョブの実行用です。次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「[Python をインストールする方法](python-how-to-install.md)」をご覧ください)。
 
-次のサンプルのソースには、実験の**workspace**、**service**、**api_key** が必要です。Web サービス ダッシュ ボードの実験の **[要求/応答]** か **[バッチの実行]** をクリックするとワークスペースとサービスが表示されます。
+次のサンプルのソースには、実験の**workspace**、**service**、**api\_key** が必要です。Web サービス ダッシュボードの実験の **[要求/応答]** か **[バッチの実行]** をクリックするとワークスペースとサービスが表示されます。
 
 ![find-workspace-and-service](./media/machine-learning-manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
-Web サービス ダッシュ ボードの実験をクリックすると **api_key** が表示されます。
+Web サービス ダッシュボードの実験をクリックすると **api\_key** が表示されます。
 
 ![find-api-key](./media/machine-learning-manage-web-service-endpoints-using-api-management/find-api-key.png)
 
@@ -212,7 +211,7 @@ Web サービス ダッシュ ボードの実験をクリックすると **api_k
 
 #####テスト ボタン
 
-RRS エンドポイントを簡単にテストするには、Web サービス ダッシュ ボードで **[テスト]** をクリックします。
+RRS エンドポイントを簡単にテストするには、Web サービス ダッシュボードで **[テスト]** をクリックします。
 
 ![test](./media/machine-learning-manage-web-service-endpoints-using-api-management/test.png)
 
@@ -226,9 +225,9 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 
 #####サンプル コード
 
-クライアント コードから RRS テストする方法もあります。ダッシュ ボードで **[要求/応答]** をクリックし、と最下部までスクロールすると、C#、Python、R のサンプル コードが表示されます。また、要求 URI、ヘッダー、本文 を含むRRS 要求の構文も表示されます。
+クライアント コードから RRS テストする方法もあります。ダッシュボードで **[要求/応答]** をクリックし、と最下部までスクロールすると、C#、Python、R のサンプル コードが表示されます。また、要求 URI、ヘッダー、本文 を含むRRS 要求の構文も表示されます。
 
-このガイドでは、Python の機能例について説明します。実験の**workspace**、**service**、**api_key** を使用して変更する必要があります。
+このガイドでは、Python の機能例について説明します。実験の**workspace**、**service**、**api\_key** を使用して変更する必要があります。
 
 	import urllib2
 	import json
@@ -258,9 +257,9 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
     	print(json.loads(error.read()))
 
 ####BES エンドポイントのテスト
-ダッシュ ボードの **[バッチの実行]** をクリックして、最下部までスクロールします。C# の場合、Python、R のサンプル コードが表示されます。また、ジョブを送信する、ジョブを送信する、ジョブを開始する、ジョブのステータスか結果を取得する、ジョブを削除するなどの BES 要求の構文も表示されます。
+ダッシュボードの **[バッチの実行]** をクリックして、最下部までスクロールします。C# の場合、Python、R のサンプル コードが表示されます。また、ジョブを送信する、ジョブを送信する、ジョブを開始する、ジョブのステータスか結果を取得する、ジョブを削除するなどの BES 要求の構文も表示されます。
 
-このガイドでは、Python の機能例について説明します。実験の**workspace**、**service**、**api_key** を使用して変更する必要があります。また、**ストレージ アカウント名**、**ストレージ アカウント キー**、**ストレージ コンテナー名**を変更するがあります。最後に、**[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
+このガイドでは、Python の機能例について説明します。実験の**workspace**、**service**、**api\_key** を使用して変更する必要があります。また、**ストレージ アカウント名**、**ストレージ アカウント キー**、**ストレージ コンテナー名**を変更するがあります。最後に、**[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
 
 	import urllib2
 	import json
@@ -272,8 +271,8 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 	storage_account_name = "<REPLACE WITH YOUR AZURE STORAGE ACCOUNT NAME>"
 	storage_account_key = "<REPLACE WITH YOUR AZURE STORAGE KEY>"
 	storage_container_name = "<REPLACE WITH YOUR AZURE STORAGE CONTAINER NAME>"
-	input_file = "<REPLACE WITH THE LOCATION OF YOUR INPUT FILE>" # Example: C:\mydata.csv
-	output_file = "<REPLACE WITH THE LOCATION OF YOUR OUTPUT FILE>" # Example: C:\myresults.csv
+	input_file = "<REPLACE WITH THE LOCATION OF YOUR INPUT FILE>" # Example: C:\\mydata.csv
+	output_file = "<REPLACE WITH THE LOCATION OF YOUR OUTPUT FILE>" # Example: C:\\myresults.csv
 	input_blob_name = "mydatablob.csv"
 	output_blob_name = "myresultsblob.csv"
 	def printHttpError(httpError):
@@ -384,4 +383,4 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 	return
 	invokeBatchExecutionService()
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

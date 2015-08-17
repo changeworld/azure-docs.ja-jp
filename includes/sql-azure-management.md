@@ -3,7 +3,7 @@
 
 SQL Server Management Studio (SSMS) を使用して Azure SQL Database の論理サーバーとデータベースを管理できます。このトピックでは、SSMS を使用した一般的なタスクの手順について説明します。始める前に、Azure SQL Database 論理サーバーとデータベースが既にある必要があります。作業を開始するには、まず「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」に目を通します。
 
-Azure SQL Database を操作する際は、常に最新バージョンの SSMS を使用することをお勧めします。これは、「[Download SQL Server Management Studio (SQL Server Management Studio をダウンロード)](https://msdn.microsoft.com/ja-jp/library/mt238290.aspx)」で取得できます。
+Azure SQL Database を操作する際は、常に最新バージョンの SSMS を使用することをお勧めします。これを取得するには、「[Download SQL Server Management Studio (SQL Server Management Studio のダウンロード)](https://msdn.microsoft.com/ja-jp/library/mt238290.aspx)」にアクセスしてください。
 
 
 ## SQL Database 論理サーバーに接続する
@@ -103,7 +103,7 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
             CREATE USER login1User FROM LOGIN login1;
 
--   このデータベースに対する適切なレベルのアクセス許可をユーザー アカウントに付与するには、**sp_addrolemember** ストアド プロシージャを使用します。詳細については、「[sp_addrolemember (Transact-SQL)](http://msdn.microsoft.com/library/ms187750.aspx)」をご覧ください。次のステートメントは、**login1User** を **db_datareader** ロールに追加することで、データベースに対する読み取り専用アクセス許可を **login1User** に付与します。
+-   このデータベースに対する適切なレベルのアクセス許可をユーザー アカウントに付与するには、**sp\_addrolemember** ストアド プロシージャを使用します。詳細については、「[sp\_addrolemember (Transact-SQL)](http://msdn.microsoft.com/library/ms187750.aspx)」をご覧ください。次のステートメントは、**login1User** を **db\_datareader** ロールに追加することで、データベースに対する読み取り専用アクセス許可を **login1User** に付与します。
 
         exec sp_addrolemember 'db_datareader', 'login1User';    
 
@@ -119,7 +119,7 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
         DROP LOGIN login1;
 
--   master データベースには、ログインを表示する際に使用できる **sys.sql_logins** ビューがあります。既存のログインをすべて表示するには、次のステートメントを実行します。
+-   master データベースには、ログインを表示する際に使用できる **sys.sql\_logins** ビューがあります。既存のログインをすべて表示するには、次のステートメントを実行します。
 
         SELECT * FROM sys.sql_logins;
 
@@ -131,12 +131,12 @@ SQL データベースでは、個々のデータベースを監視するのに�
 
         GRANT VIEW DATABASE STATE TO login1User;
 
--   **sys.dm_db_partition_stats** ビューを使用して、データベース サイズを計算します。**sys.dm_db_partition_stats** ビューは、データベース内のすべてのパーティションのページと行数情報を返します。これらを使ってデータベース サイズを計算できます。次のクエリはデータベース サイズを MB 単位で返します。
+-   **sys.dm\_db\_partition\_stats** ビューを使用して、データベース サイズを計算します。**sys.dm\_db\_partition\_stats** ビューは、データベース内のすべてのパーティションのページと行数情報を返します。これらを使ってデータベース サイズを計算できます。次のクエリはデータベース サイズを MB 単位で返します。
 
         SELECT SUM(reserved_page_count)*8.0/1024
         FROM sys.dm_db_partition_stats;   
 
--   データベースに関連付けられている内部タスクと現在のユーザー接続に関する情報を取得するには、**sys.dm_exec_connections** ビューと **sys.dm_exec_sessions** ビューを使用します。次のクエリは現在の接続に関する情報を返します。
+-   データベースに関連付けられている内部タスクと現在のユーザー接続に関する情報を取得するには、**sys.dm\_exec\_connections** ビューと **sys.dm\_exec\_sessions** ビューを使用します。次のクエリは現在の接続に関する情報を返します。
 
         SELECT
             e.connection_id,
@@ -149,7 +149,7 @@ SQL データベースでは、個々のデータベースを監視するのに�
             INNER JOIN sys.dm_exec_connections e
               ON s.session_id = e.session_id;
 
--   キャッシュされたクエリ プランの集計パフォーマンス統計を取得するには、**sys.dm_exec_query_stats** ビューを使用します。次のクエリは、平均 CPU 時間の上位 5 クエリに関する情報を返します。
+-   キャッシュされたクエリ プランの集計パフォーマンス統計を取得するには、**sys.dm\_exec\_query\_stats** ビューを使用します。次のクエリは、平均 CPU 時間の上位 5 クエリに関する情報を返します。
 
         SELECT TOP 5 query_stats.query_hash AS "Query Hash",
             SUM(query_stats.total_worker_time), SUM(query_stats.execution_count) AS "Avg CPU Time",
@@ -166,4 +166,4 @@ SQL データベースでは、個々のデータベースを監視するのに�
         GROUP BY query_stats.query_hash
         ORDER BY 2 DESC;
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

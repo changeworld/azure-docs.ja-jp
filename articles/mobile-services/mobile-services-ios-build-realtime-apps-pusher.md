@@ -18,9 +18,6 @@
 
 
 # モバイル サービスおよび Pusher を使用したリアルタイム アプリケーションの構築
-<div class="dev-center-tutorial-selector sublanding">
-	<a href="" title="iOS" class="current">iOS</a>
-</div>
 
 このトピックでは、Azure モバイル サービス ベースのアプリケーションにリアルタイム機能を追加する方法を示します。完了すると、アプリケーションのすべての実行中のインスタンスにわたって、TodoList データがリアルタイムで同期されます。
 
@@ -76,11 +73,11 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 	- Security.framework
 	- SystemConfiguration.framework
 
-9. 最後に **[ビルド設定]** 内で、ターゲットのビルド設定 **[Other Linker Flags]** を見つけ、**-all_load** フラグを追加します。
+9. 最後に **[ビルド設定]** 内で、ターゲットのビルド設定 **[Other Linker Flags]** を見つけ、**-all\_load** フラグを追加します。
 
 	![][add-linker-flag]
 
-	これで、[デバッグ] ビルド ターゲット向けに設定された **-all_load** フラグが示されます。
+	これで、[デバッグ] ビルド ターゲット向けに設定された **-all\_load** フラグが示されます。
 
 ライブラリはインストールされ、使用できる状態になりました。
 
@@ -240,7 +237,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 		    }];
 		}
 
-11. プレースホルダー `**your_app_key**` を、前に [出力値] ダイアログからコピーした app_key の値で置き換えます。
+11. プレースホルダー `**your_app_key**` を、前に [出力値] ダイアログからコピーした app\_key の値で置き換えます。
 
 12. **onAdd** メソッドを次のコードに置き換えます。
 
@@ -444,4 +441,4 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

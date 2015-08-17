@@ -130,4 +130,4 @@ Service Fabric でのステートレス サービスの使用方法を示す一�
 + [Reliable Actor プログラミング モデルについて](../service-fabric/service-fabric-reliable-actors-introduction.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

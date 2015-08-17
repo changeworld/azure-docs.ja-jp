@@ -56,4 +56,4 @@ Machine Learning ワークスペースが作成されると、**機械学習**�
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

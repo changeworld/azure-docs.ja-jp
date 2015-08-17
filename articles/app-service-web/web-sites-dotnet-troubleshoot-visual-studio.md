@@ -109,7 +109,7 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
 
 	![詳細なエラー メッセージ](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
 
-	(ここで示されているエラーは、赤く表示されている行を *Views\Home\Index.cshtml* に追加することによって作成したものです。)
+	(ここで示されているエラーは、赤く表示されている行を *Views\\Home\\Index.cshtml* に追加することによって作成したものです。)
 
 Web.config ファイルを編集することは、Azure Web アプリケーションにあるファイルの読み取りと編集を可能にして、トラブルシューティングが容易にする状況における 1 つの例にすぎません。
 
@@ -123,7 +123,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 1. 「[ASP.NET Web アプリケーションを Azure Web サイトに展開する][GetStarted]」で作成した Web プロジェクトを開きます。
 
-1. *Controllers\HomeController.cs* を開きます。
+1. *Controllers\\HomeController.cs* を開きます。
 
 2. `About()` メソッドを削除し、その位置に次のコードを挿入します。
 
@@ -296,7 +296,7 @@ Web ジョブでアプリケーション ログを作成する方法について
 
 ### アプリケーションへのトレース ステートメントの追加
 
-1. *Controllers\HomeController.cs* ファイルを開き、その内容を次のコードで置き換えて、`System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加します。
+1. *Controllers\\HomeController.cs* ファイルを開き、その内容を次のコードで置き換えて、`System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加します。
 
 		using System;
 		using System.Collections.Generic;
@@ -517,9 +517,9 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 	![ダウンロードされたファイル](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
 
-	* アプリケーション トレース ログは、*LogFiles\Application* フォルダーの *.txt* ファイルに記録されます。
-	* Web サーバーのログは、*LogFiles\http\RawLogs* フォルダーの *.log* ファイルに記録されます。これらのファイルの閲覧と操作は、[Log Parser](http://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) などのツールを使って行うことができます。
-	* 詳細なエラー メッセージのログは、*LogFiles\DetailedErrors* フォルダーの *.html* ファイルに記録されます。
+	* アプリケーション トレース ログは、*LogFiles\\Application* フォルダーの *.txt* ファイルに記録されます。
+	* Web サーバーのログは、*LogFiles\\http\\RawLogs* フォルダーの *.log* ファイルに記録されます。これらのファイルの閲覧と操作は、[Log Parser](http://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) などのツールを使って行うことができます。
+	* 詳細なエラー メッセージのログは、*LogFiles\\DetailedErrors* フォルダーの *.html* ファイルに記録されます。
 
 	(*deployments* フォルダーは、ソース管理の発行によって作成されたファイルに使用されます。Visual Studio の発行に関連したファイルは保存されません。*Git* フォルダーは、ログ ファイル ストリーミング サービスやソース管理の発行に関連したトレースに使用されます。)
 
@@ -565,8 +565,7 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 1. Visual Studio の **[Azure Web アプリ]** ウィンドウで、**[ログ]** タブをクリックし、**[管理ポータルでのログの構成]** をクリックします。
 
-    <!-- todo:screenshot of new portal if the VS page link goes to new portal -->
-	![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
+    <!-- todo:screenshot of new portal if the VS page link goes to new portal -->![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
 
 	自分の Web アプリの管理ポータルの **[構成]** タブが開きます。この画面にアクセスするために、**[Web Apps]** タブをクリックして該当する Web アプリをクリックし、**[構成]** タブをクリックすることもできます。
 
@@ -735,7 +734,7 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
 
 エラーをログに記録する方法としては、独自のトレース コードを記述する以外にも、[ELMAH](http://nuget.org/packages/elmah/) のようなオープン ソースのログ記録フレームワークを使う方法があります。詳細については、[Scott Hanselman が ELMAH についてまとめたブログ記事](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)を参照してください。
 
-Azure からストリーミング ログを取得する必要がある場合、必ずしも ASP.NET や System.Diagnostics トレースを使う必要はありません。Azure Web アプリのストリーミング ログ サービスは、*LogFiles* フォルダーに見つかったすべての *.txt* ファイル、*.html* ファイル、*.log* ファイルをストリーミングします。したがって、Web アプリケーションのファイル システムに書き込む独自のログ記録システムを作成することもできます。必要なファイルが自動的にストリーミングされ、ダウンロードされます。必要な作業は、*d:\home\logfiles* フォルダーにファイルを作成するアプリケーション コードを記述するだけです。
+Azure からストリーミング ログを取得する必要がある場合、必ずしも ASP.NET や System.Diagnostics トレースを使う必要はありません。Azure Web アプリのストリーミング ログ サービスは、*LogFiles* フォルダーに見つかったすべての *.txt* ファイル、*.html* ファイル、*.log* ファイルをストリーミングします。したがって、Web アプリケーションのファイル システムに書き込む独自のログ記録システムを作成することもできます。必要なファイルが自動的にストリーミングされ、ダウンロードされます。必要な作業は、*d:\\home\\logfiles* フォルダーにファイルを作成するアプリケーション コードを記述するだけです。
 
 ### Web サーバーのログの分析
 
@@ -764,4 +763,4 @@ Web アプリではなく Azure Cloud Services をデバッグする場合は、
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="manage-vms-azure-powershell"
-   description="Azure PowerShell を使用した仮想マシンの管理"
+   pageTitle="Azure PowerShell を使用した仮想マシンの管理 | Microsoft Azure"
+   description="仮想マシンの管理タスクを自動化するのに使用できるコマンドについて説明します。"
    services="virtual-machines"
    documentationCenter="windows"
    authors="singhkay"
@@ -20,9 +20,9 @@
 
 Azure PowerShell コマンドレットを使用すると、VM を管理するために日常的に行う多くのタスクを自動化できます。この記事では、比較的単純なタスクにはコマンド例を示し、より複雑なタスクには、コマンドが記載されている記事へのリンクを示します。
 
->[AZURE.NOTE]Azure PowerShell をまだインストールして構成していない場合は、[こちら](../install-configure-powershell.md)から手順を参照してください。
+>[AZURE.NOTE]まだ Azure PowerShell をインストール、構成していない場合は、[「Azure PowerShell のインストールおよび構成方法」](../install-configure-powershell.md)の記事に手順が記載されています。
 
-## 例のコマンドを使用する方法
+## サンプル コマンドを使用する方法
 コマンド内のテキストの一部を、使用する環境に適した別のテキストに置き換える必要があります。記号の < and > は置き換える必要があるテキストであることを示しています。テキストを置き換える場合、記号は削除し、引用符はそのままの位置に残します。
 
 ## 仮想マシンの取得
@@ -63,9 +63,9 @@ VM に関する情報を取得するには、このコマンドを実行し、�
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 ## データ ディスクの接続
-このタスクには、いくつかの手順が必要です。最初に、****Add-AzureDataDisk**** コマンドレットを使用して $vm オブジェクトにディスクを追加し、次に Update-AzureVM コマンドレットを使用して VM の構成を更新します。
+このタスクには、いくつかの手順が必要です。まず、****Add-AzureDataDisk**** コマンドレットを使用して、$vm オブジェクトにディスクを追加します。次に、**Update-AzureVM** コマンドレットを使用して、仮想マシンの構成を更新します。
 
-新しいディスクとデータを含むディスクのどちらを接続するかについても決める必要があります。新しいディスクの場合、コマンドによって .vhd ファイルが作成され、それが同じコマンドで接続されます。
+新しいディスクとデータを含むディスクのどちらを接続するかについても決める必要があります。新しいディスクの場合、コマンドによって .vhd ファイルが作成、接続されます。
 
 新しいディスクを接続するには、次のコマンドを実行します。
 
@@ -84,13 +84,13 @@ BLOB ストレージにある既存の .vhd ファイルからデータ ディ�
               -DiskLabel "<main>" -LUN <0> `
               | Update-AzureVM
 
-## Windows VM の作成
+## Windows ベースの VM の作成
 
-Azure で Windows ベースの仮想マシンを新たに作成するには、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」をご覧ください。このトピックでは、次の項目を事前構成することができる Windows 仮想マシンを作成するための PowerShell コマンド セットを作成する手順を説明します。
+Azure で Windows ベースの仮想マシンを新たに作成するには、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」をご覧ください。このトピックでは、次の項目を事前構成することができる Windows ベースの仮想マシンを作成するための Azure PowerShell コマンド セットを作成する手順を説明します。
 
-- Active Directory ドメイン メンバーシップ
-- 追加のディスク
-- 既存の負荷分散セットのメンバーとしての設定
-- 静的 IP アドレス
+- Active Directory ドメイン メンバーシップ。
+- 追加のディスク。
+- 既存の負荷分散セットのメンバーとしての設定。
+- 静的 IP アドレス。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

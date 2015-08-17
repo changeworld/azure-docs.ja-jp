@@ -74,7 +74,7 @@
 
 8. **newStorageAccountName** パラメータを修正します。これは、VM OS ディスクのストレージ アカウントです。このアカウントの名前はグローバルに一意です。
 
-9. **publicDomainName** パラメータを修正します。これが Load Balancer のパブリック IP に関連付けられている DNS 名の一部になります。最後の FQDN は _[このパラメーターの値]_._[region]_.cloudapp.azure.co の形式になります。たとえば、deishbai32 として名前を指定して、リソース グループが米国西部地域に展開されている場合、Load Balancer の最終的な FQDN は deishbai32.westus.cloudapp.azure.com となります。
+9. **publicDomainName** パラメータを修正します。これが Load Balancer のパブリック IP に関連付けられている DNS 名の一部になります。最後の FQDN は_ [このパラメーターの値]_._[region]_ cloudapp.azure.co の形式になります。たとえば、deishbai32 として名前を指定して、リソース グループが米国西部地域に展開されている場合、Load Balancer の最終的な FQDN は deishbai32.westus.cloudapp.azure.com となります。
 
 10. パラメーター ファイルを保存します。Azure PowerShell を使用してプロビジョニングするには、次の手順を実行します。
 
@@ -180,7 +180,7 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
         cd ~/.ssh
         ssh-keygen (press [Enter]s to use default file names and empty passcode)
 
-4. GitHub に id_rsa.pub または任意の公開キーを追加します。これは、SSH キー構成画面で SSH キー追加 ボタンを使用して実行できます。
+4. GitHub に id\_rsa.pub または任意の公開キーを追加します。これは、SSH キー構成画面で SSH キー追加 ボタンを使用して実行できます。
 
   ![Github キー](media/virtual-machines-deis-cluster/github-key.png) <p /> 5.新しいユーザーの登録
 
@@ -254,4 +254,4 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 [resource-group-overview]: ../resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

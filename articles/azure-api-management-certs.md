@@ -52,4 +52,4 @@ Azure の証明書の詳細 (自己署名証明書の作成を含む) につい�
 
 サブスクリプションへの管理証明書の関連付けはこれで完了です。対になる証明書がローカルにインストールされていれば、プログラムから [Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) に接続し、同じサブスクリプションに関連付けられているその他さまざまな Azure リソースを自動化できます。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

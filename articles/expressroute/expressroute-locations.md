@@ -4,15 +4,15 @@
    services="expressroute"
    documentationCenter="na"
    authors="cherylmc"
-   manager="adinah"
+   manager="carolz"
    editor="tysonn" />
 <tags 
    ms.service="expressroute"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/07/2015"
+   ms.date="08/04/2015"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -28,6 +28,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |**地理的リージョン**|**Azure リージョン**|**ExpressRoute の場所**|
 |---|---|---|
 |**米国**|米国内のすべてのリージョン - 米国東部、米国西部、米国東部 2、米国中部、米国中南部、米国中北部|アトランタ、シカゴ、ダラス、ロサンゼルス、ニューヨーク、シアトル、シリコン バレー、ワシントン DC|
+|**米国政府**|アイオワ州、バージニア州|アッシュバーン、シカゴ|
 |**南アメリカ**|ブラジル南部|サンパウロ|
 |**ヨーロッパ**|北ヨーロッパ、西ヨーロッパ|アムステルダム、ロンドン|
 |**アジア**|東アジア、東南アジア|香港、シンガポール|
@@ -76,7 +77,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | サポートされています | サポートされていません | シンガポール |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | サポートされています | 近日対応予定 | アムステルダム、チェンナイ+、香港、ロンドン、ムンバイ+、シンガポール |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | サポートされています | サポートされていません | メルボルン+、シドニー |
-| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされていません | ロンドン、香港、シリコン バレー、ワシントン DC |
+| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされていません | ロンドン、香港、シリコン バレー、ワシントン DC、米国政府アイオワ州、米国政府バージニア州 |
 
  **+** は近日対応予定を表します
 
@@ -115,4 +116,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - 同じ仮想ネットワークに対してサイト間 VPN 接続と ExpressRoute の両方を構成する必要がある場合は、「[Configure ExpressRoute and Site-to-Site VPN connections that coexist (共存する ExpressRoute とサイト間 VPN の接続の構成)](expressroute-coexist.md)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

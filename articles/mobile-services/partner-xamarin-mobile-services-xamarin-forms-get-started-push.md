@@ -49,7 +49,7 @@
 
 アプリケーション データを新しいモバイル サービスに格納できるようにするには、最初に新しいテーブルを作成する必要があります。
 
-1. 管理ポータルで、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. **[データ]** タブをクリックし、**[作成]** をクリックします。
 
@@ -90,7 +90,7 @@ Apple Push Notification サービス (APNS) を使用して、iOS アプリに�
 
 >[AZURE.IMPORTANT]Apple Push Notification サービス (APNS) の要件に合わせて、プッシュ通知を、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) にデプロイおよびテストする必要があります。
 
-APNS では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、Mobile Service にアップロードしてください。公式な APNS 機能のドキュメントについては、[Apple Push Notification Service (Apple Push Notification サービス)] を参照してください。
+APNS では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、Mobile Service にアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service]」を参照してください。
 
 ### <a name="certificates"></a>証明書の署名要求ファイルを生成する
 
@@ -214,7 +214,7 @@ APNS では、証明書を使用してモバイル サービスを認証しま�
 
     エクスポートした証明書のファイル名と場所を書き留めます。
 
-2. [Azure の管理ポータル]にログオンし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。
+2. [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
     ![][18]
 
@@ -830,7 +830,7 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[Apple Push Notification Service (Apple Push Notification サービス)]: http://go.microsoft.com/fwlink/p/?LinkId=272584
+[Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 [Get started with Mobile Services]: mobile-services-ios-get-started.md
 
 [Xamarin デバイス プロビジョニング]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
@@ -847,4 +847,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Completed Xamarin.Forms Azure Push Notification Sample (Xamarin.Forms の Azure プッシュ通知の完全なサンプル)]: https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPushXamarinForms
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

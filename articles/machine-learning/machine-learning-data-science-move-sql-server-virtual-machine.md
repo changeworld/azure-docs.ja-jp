@@ -232,4 +232,4 @@ SQL Server は以下のものをサポートします。
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

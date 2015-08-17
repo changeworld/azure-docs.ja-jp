@@ -134,7 +134,7 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 1.  ソリューション エクスプローラーで、**[Python 環境]** の下にある仮想環境を右クリックし、**[Python パッケージのインストール]** を選択します。
 
-1. **easy_install** を使用してパッケージ `mysql-python` をインストールします。
+1. **easy\_install** を使用してパッケージ `mysql-python` をインストールします。
 
   	![Install Package ダイアログ](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLInstallPackage.png)
 
@@ -211,4 +211,4 @@ Python Tools for Visual Studio、Django および MySQL の詳細については
 [MySQL]: http://www.mysql.com/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

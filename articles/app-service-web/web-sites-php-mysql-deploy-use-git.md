@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="04/29/2015"
+	ms.date="08/03/2015"
 	ms.author="tomfitz"/>
 
 #Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
@@ -41,17 +41,11 @@
 Web アプリと MySQL データベースを作成するには、次のステップに従います。
 
 1. [Azure ポータル][management-portal]にログインします。
-2. ポータルの左下にある **[新規]** アイコンをクリックします。
-
-	![新しい Azure の Web アプリの作成][new-website]
+2. **[次へ]** アイコンをクリックします。
 
 3. **[Web + モバイル]**、**[Azure Marketplace]** の順にクリックします。
 
-	![新しい Web アプリのカスタム作成][custom-create]
-
 4. **[Web Apps]** をクリックし、**[Web app + MySQL]** をクリックします。**[作成]** をクリックします。
-
-	![](./media/web-sites-php-mysql-deploy-use-git/create_marketplace.png)
 
 4. リソース グループの有効な名前を入力します。
 
@@ -66,8 +60,6 @@ Web アプリと MySQL データベースを作成するには、次のステッ
 	![Create new MySQL database][new-mysql-db]
 
 7. Web アプリが作成されると、新しいリソース グループが表示されます。設定を構成する Web アプリの名前をクリックします。
-
-	![Web アプリを開く][go-to-webapp]
 
 7. **[継続的配置の設定]** をクリックします。
 
@@ -210,7 +202,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 		</body>
 		</html>
 
-これで、**http://localhost/registration/index.php** に移動してアプリケーションをテストできるようになりました。
+これで、****http://localhost/registration/index.php** に移動してアプリケーションをテストできるようになりました。
 
 
 ##アプリケーションの発行
@@ -296,4 +288,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

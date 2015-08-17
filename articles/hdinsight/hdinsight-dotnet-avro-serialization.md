@@ -67,11 +67,11 @@ Microsoft Avro ライブラリには、コード生成ユーティリティが�
 
 1. <a href="http://hadoopsdk.codeplex.com/SourceControl/latest" target="_blank">Microsoft .NET SDK For Hadoop</a> から、最新バージョンの HDInsight SDK ソース コードが含まれる zip ファイルをダウンロードします。(**ダウンロード**のアイコンをクリックします)
 
-2. .NET Framework 4 がインストールされたコンピューターのディレクトリに HDInsight SDK を展開し、インターネットに接続して、必要な依存関係の NuGet パッケージをダウンロードします。ここでは、ソース コードを C:\SDK に展開します。
+2. .NET Framework 4 がインストールされたコンピューターのディレクトリに HDInsight SDK を展開し、インターネットに接続して、必要な依存関係の NuGet パッケージをダウンロードします。ここでは、ソース コードを C:\\SDK に展開します。
 
-3. C:\SDK\src\Microsoft.Hadoop.Avro.Tools フォルダーに移動し、build.bat を実行します(このファイルにより、.NET Framework の 32 ビット配布の MS ビルドが呼び出されます。64 ビット版が必要な場合は、ファイル内のコメントに従って build.bat を編集します)。 ビルドが成功したことを確認します (一部のシステムでは、MSBuild で警告が生成されます。ビルド エラーが発生しない限り、これらの警告はユーティリティに影響しません)。
+3. C:\\SDK\\src\\Microsoft.Hadoop.Avro.Tools フォルダーに移動し、build.bat を実行します(このファイルにより、.NET Framework の 32 ビット配布の MS ビルドが呼び出されます。64 ビット版が必要な場合は、ファイル内のコメントに従って build.bat を編集します)。 ビルドが成功したことを確認します (一部のシステムでは、MSBuild で警告が生成されます。ビルド エラーが発生しない限り、これらの警告はユーティリティに影響しません)。
 
-4. コンパイル済みのユーティリティは、C:\SDK\Bin\Unsigned\Release\Microsoft.Hadoop.Avro.Tools にあります。
+4. コンパイル済みのユーティリティは、C:\\SDK\\Bin\\Unsigned\\Release\\Microsoft.Hadoop.Avro.Tools にあります。
 
 
 コマンドラインの構文を確認するには、コード生成ユーティリティがあるフォルダーで、次のコマンドを実行します。`Microsoft.Hadoop.Avro.Tools help /c:codegen`
@@ -82,7 +82,7 @@ Microsoft Avro ライブラリには、コード生成ユーティリティが�
 
 このコマンドは、SensorData.cs と Location.cs の 2 つの C# ファイルを現在のディレクトリに作成するようになっています。
 
-コード生成ユーティリティで使用されるロジックを理解し、JSON スキーマを C# のデータ型に変換する方法については、C:\SDK\src\Microsoft.Hadoop.Avro.Tools\Doc にある GenerationVerification.feature ファイルを参照してください。
+コード生成ユーティリティで使用されるロジックを理解し、JSON スキーマを C# のデータ型に変換する方法については、C:\\SDK\\src\\Microsoft.Hadoop.Avro.Tools\\Doc にある GenerationVerification.feature ファイルを参照してください。
 
 前述したファイルに記述されているロジックを使用して、JSON スキーマから名前空間が抽出されます。スキーマから抽出された名前空間は、ユーティリティのコマンド ラインで /n パラメーターにより抽出される名前空間よりも優先されます。スキーマ内に含まれる名前空間をオーバーライドする場合は、/nf パラメーターを使用します。たとえば、SampleJSONSchema.avsc の名前空間をすべて my.own.nspace に変更する場合は、次のコマンドを実行します。
 
@@ -1389,7 +1389,7 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
 * サンプルのルート ディレクトリにある app.config ファイルを編集し、その後サンプルを作成する。または、 
 * 最初にサンプルを作成してから、ビルド ディレクトリの AvroHDISample.exe.config を編集する。 
 
-どちらの場合も、**<appSettings>** 設定セクションで編集を行います。ファイルのコメントに従ってください。次のコマンドを実行して、サンプルをコマンド ラインから実行します (サンプルを含む zip ファイルは、基本的に C:\AvroHDISample に抽出されます。それ以外の場所を指定する場合は、該当するファイル パスを使用します)。
+どちらの場合も、**<appSettings>** 設定セクションで編集を行います。ファイルのコメントに従ってください。次のコマンドを実行して、サンプルをコマンド ラインから実行します (サンプルを含む zip ファイルは、基本的に C:\\AvroHDISample に抽出されます。それ以外の場所を指定する場合は、該当するファイル パスを使用します)。
 
     AvroHDISample run C:\AvroHDISample\Data
 
@@ -1406,4 +1406,4 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

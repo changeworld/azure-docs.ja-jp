@@ -8,4 +8,4 @@
   - 構造化データの格納には、[テーブル ストレージ](./storage-dotnet-how-to-use-tables.md)を使用します。
   - リレーショナル データの格納には、[SQL Database](../sql-database/sql-database-dotnet-how-to-use.md) を使用します。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

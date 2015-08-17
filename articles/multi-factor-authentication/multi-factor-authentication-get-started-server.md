@@ -12,7 +12,7 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="06/02/2015" 
 	ms.author="billmath"/>
 
@@ -76,18 +76,18 @@ Azure Multi-Factor Authentication Server の要件|説明|
 
 IP サブネット|ネットマスク|IP 範囲
 :------------- | :------------- | :------------- |
-134.170.116.0/25|255.255.255.128|134.170.116.1 – 134.170.116.126
-134.170.165.0/25|255.255.255.128|134.170.165.1 – 134.170.165.126
-70.37.154.128/25|255.255.255.128|70.37.154.129 – 70.37.154.254
+134\.170.116.0/25|255\.255.255.128|134\.170.116.1 – 134.170.116.126
+134\.170.165.0/25|255\.255.255.128|134\.170.165.1 – 134.170.165.126
+70\.37.154.128/25|255\.255.255.128|70\.37.154.129 – 70.37.154.254
 
 Azure Multi-Factor Authentication Event Confirmation 機能を使用しておらず、ユーザーが企業ネットワーク上にあるデバイスから Multi-Factor Auth モバイル アプリによる認証を受けていない場合は、IP の範囲が以下のとおりに狭くなる可能性があります。
 
 
 IP サブネット|ネットマスク|IP 範囲
 :------------- | :------------- | :------------- |
-134.170.116.72/29|255.255.255.248|134.170.116.72 – 134.170.116.79
-134.170.165.72/29|255.255.255.248|134.170.165.72 – 134.170.165.79
-70.37.154.200/29|255.255.255.248|70.37.154.201 – 70.37.154.206
+134\.170.116.72/29|255\.255.255.248|134\.170.116.72 – 134.170.116.79
+134\.170.165.72/29|255\.255.255.248|134\.170.165.72 – 134.170.165.79
+70\.37.154.200/29|255\.255.255.248|70\.37.154.201 – 70.37.154.206
 
 
 ### Azure Multi-Factor Authentication Server をインストールおよび構成するには
@@ -157,4 +157,4 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で多要
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

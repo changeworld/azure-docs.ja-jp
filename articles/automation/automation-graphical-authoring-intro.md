@@ -280,4 +280,4 @@ Runbook の入力パラメーターには、Runbook ツールバーの [**入力
 - [オートメーションの資産](http://msdn.microsoft.com/library/azure/dn939988.aspx)
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

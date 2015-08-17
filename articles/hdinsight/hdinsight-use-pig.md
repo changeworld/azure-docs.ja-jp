@@ -62,7 +62,7 @@ Pig での UDF の使用例については、以下のドキュメントを参�
 
 WASB が HDInsight の既定のストレージであるため、Pig Latin から **/example/data/sample.log** を使用してファイルにアクセスすることもできます。
 
-> [AZURE.NOTE]上の構文 **wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、**wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
+> [AZURE.NOTE]上の構文 ****wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
 
 
 ##<a id="job"></a>サンプル ジョブについて
@@ -127,4 +127,4 @@ HDInsight では、さまざまな方法を使用して Pig Latin ジョブを�
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
 [image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

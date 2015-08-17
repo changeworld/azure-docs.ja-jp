@@ -1,5 +1,5 @@
 
-1. Visual Studio のソリューション エクスプローラーで App_Start フォルダーを展開し、WebApiConfig.cs プロジェクト ファイルを開きます。
+1. Visual Studio のソリューション エクスプローラーで App\_Start フォルダーを展開し、WebApiConfig.cs プロジェクト ファイルを開きます。
 
 2. **ConfigOptions** 定義の後で、次のコード行を Register メソッドに追加します。
 
@@ -92,4 +92,4 @@
 これで、サービスはユーザー ID タグを使用してプッシュ通知 (挿入された項目のテキスト) を、ログイン ユーザーによって作成されるすべての登録に送信するようになります。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

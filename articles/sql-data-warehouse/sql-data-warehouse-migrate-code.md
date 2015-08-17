@@ -60,8 +60,8 @@ Azure SQL Data Warehouse でサポートされていない主な機能を次に�
 - @@NESTLEVEL()
 - @@IDENTITY()
 - @@ROWCOUNT()
-- ROWCOUNT_BIG
-- ERROR_LINE()
+- ROWCOUNT\_BIG
+- ERROR\_LINE()
 
 これらの問題の大部分も回避できます。
 
@@ -100,4 +100,4 @@ AND     request_id IN
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

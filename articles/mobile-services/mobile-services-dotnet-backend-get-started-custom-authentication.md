@@ -251,7 +251,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
 	このメソッドは、[ClaimsIdentity] を認証トークン発行フェーズで使用される [ProviderCredentials] オブジェクトに変換します。このメソッドでは、追加のクレームがあれば、もう一度取得できます。
 	
-6. App_Start フォルダーにある WebApiConfig.cs プロジェクト ファイルを開くと、**ConfigOptions** の後に次のコード行が作成されています。
+6. App\_Start フォルダーにある WebApiConfig.cs プロジェクト ファイルを開くと、**ConfigOptions** の後に次のコード行が作成されています。
 		
 		options.LoginProviders.Add(typeof(CustomLoginProvider));
 
@@ -346,7 +346,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
 	これにより、モバイル サービス バックエンド プロジェクトの新しいデバッグ インスタンスが開始します。サービスが正常に開始した後、**このモバイル サービスは稼働している**という開始ページが表示されます。
 
-2. サービスの開始ページで、**[試してみる]** をクリックし、web.config ファイルで **MS_ApplicationKey** アプリケーション設定に対して設定したパスワードと空のユーザー名を認証ダイアログ ボックスに入力します。
+2. サービスの開始ページで、**[試してみる]** をクリックし、web.config ファイルで **MS\_ApplicationKey** アプリケーション設定に対して設定したパスワードと空のユーザー名を認証ダイアログ ボックスに入力します。
 
 3. ヘルプ ページで、**CustomRegistration** エンドポイントをクリックし、**[試してみる]** をクリックします。
 
@@ -420,4 +420,4 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 [ProviderCredentials]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.security.providercredentials.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -212,4 +212,4 @@ Traffic Manager プロファイルを削除するには、プロファイル名�
 [Azure コマンドレットの概要](https://msdn.microsoft.com/library/jj554332.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

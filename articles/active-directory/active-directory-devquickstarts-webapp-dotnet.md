@@ -34,7 +34,7 @@ Azure AD を使用すると、数行のコードを追加するだけで、Web �
 ## *1.アプリケーションを Azure AD に登録する*
 アプリケーションがユーザー認証を処理できるようにするには、まず、アプリケーションをテナントに登録する必要があります。
 
-- Microsoft Azure 管理ポータルにサインインします。
+- Microsoft Azure の管理ポータルにサインインします。
 - 左側のナビゲーションで **[Active Directory]** をクリックします。
 - アプリケーションの登録先となるテナントを選択します。
 - **[アプリケーション]** タブをクリックし、下部のドロアーで [追加] をクリックします。
@@ -123,7 +123,7 @@ public void SignOut()
 }
 ```
 
--	ここで、`Views\Shared_LoginPartial.cshtml` を開きます。ここは、ユーザーに、アプリのサインイン リンクおよびサインアウト リンクを表示し、ユーザーの名前をビュー内に表示する場所です。
+-	ここで、`Views\Shared\_LoginPartial.cshtml` を開きます。ここは、ユーザーに、アプリのサインイン リンクおよびサインアウト リンクを表示し、ユーザーの名前をビュー内に表示する場所です。
 
 ```HTML
 @if (Request.IsAuthenticated)
@@ -148,7 +148,7 @@ else
 ```
 
 ## *4.ユーザー情報を表示する*
-OpenID Connect を使用してユーザーの認証処理を実行すると、Azure AD は id_token をアプリケーションに返します。id_token には、"クレーム"、またはユーザーに関する "アサーション" を含みます。これらのクレームを使用して、アプリを個人向けにカスタマイズすることができます。
+OpenID Connect を使用してユーザーの認証処理を実行すると、Azure AD は id\_token をアプリケーションに返します。id\_token には、"クレーム"、またはユーザーに関する "アサーション" を含みます。これらのクレームを使用して、アプリを個人向けにカスタマイズすることができます。
 
 - `Controllers\HomeController.cs` ファイルを開きます。`ClaimsPrincipal.Current` セキュリティ プリンシパル オブジェクトを介して、コントローラー内のユーザー クレームにアクセスできます。
 
@@ -176,4 +176,4 @@ public ActionResult About()
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

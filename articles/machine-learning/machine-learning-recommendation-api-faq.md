@@ -130,4 +130,4 @@ API ドキュメントは、「[Azure Machine Learning Recommendations - クイ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

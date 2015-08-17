@@ -50,7 +50,7 @@ Converting plain text "CREATE ASSEMBLY" into a link to the MSDN topic, ms189524.
 5. T-SQL SELECT ステートメントにより、関数を呼び出してテストします。
 
 
-上記の一覧では Microsoft SQL Server では必要でも Azure SQL Database では不要なため...<br/> **execute sp_configure 'clr enabled', 1;**<br/> ... については言及していません。
+上記の一覧では Microsoft SQL Server では必要でも Azure SQL Database では不要なため...<br/> **execute sp\_configure 'clr enabled', 1;**<br/> ... については言及していません。
 
 
 再実行で必要な場合、関数とアセンブリをドロップするための T-SQL コードは、次のようになります。
@@ -328,4 +328,4 @@ Transact-SQL の以下のコード ブロックには、若干の不要な SELEC
 
 <!-- EndOfFile -->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

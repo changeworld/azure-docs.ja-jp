@@ -33,7 +33,7 @@ GitHub テンプレート リポジトリ内のリソース マネージャー �
 
 ### 手順 1. JSON ファイルをダウンローする
 
-JSON テンプレート ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\Azure\Templates\availability)。
+JSON テンプレート ファイルの場所としてローカル フォルダーを指定し、ファイルを作成します (例: C:\\Azure\\Templates\\availability)。
 
 以下のコマンドをコピーして実行します。フォルダー名は適宜置き換えてください。
 
@@ -103,4 +103,4 @@ GitHub テンプレート リポジトリ内のリソース マネージャー �
 
 	azure group deployment create <my-resource-group> <my-deployment-name> --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-2-FDs-no-resource-loops/azuredeploy.json
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

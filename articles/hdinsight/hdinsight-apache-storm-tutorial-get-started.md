@@ -1,7 +1,6 @@
 <properties
 	pageTitle="Apache Storm チュートリアル: Storm 入門 |Microsoft Azure"
 	description="HDInsight での Apache Storm および Storm Starter サンプルを使用したビッグ データ分析の概要Storm を使用してデータをリアルタイムに処理する方法について説明します。"
-	keywords="apache storm,apache storm tutorial,big data analytics,storm starter"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -20,7 +19,7 @@
 
 # Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要
 
-Apache Storm は、データ ストリームの処理を目的とした、拡張性の高い、フォールト トレランスに優れた、分散型のリアルタイム計算システムです。Azure HDInsight の Storm を使用して、Storm でリアルタイムで ビッグデータ分析を実行するクラウドベースの Storm クラスターを作成できます。
+Apache Storm は、データ ストリームの処理を目的とし、スケーラビリティとフォールト トレランスに優れた、分散型のリアルタイム計算システムです。Azure HDInsight の Storm を使用して、Storm でリアルタイムで ビッグ データ分析を実行するクラウドベースの Storm クラスターを作成できます。
 
 ## 開始する前に
 
@@ -34,7 +33,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 
 1. [Azure ポータル](http://manage.windowsazure.com/)にサインインします。
 
-2. 左下隅にある **[新規]** をクリックし、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
+2. 左下隅にある **[新規]** をクリックし、**[DATA SERVICES]**、**[STORAGE]**、**[簡易作成]** の順にクリックします。
 
 	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル。](./media/hdinsight-apache-storm-tutorial-get-started/HDI.StorageAccount.QuickCreate.png)
 
@@ -184,15 +183,15 @@ Storm UI を使用してトポロジを監視できます。
 
 ##概要
 
-この Apache Storm チュートリアルでは、Storm Starter を使用して、HDInsight クラスターで Storm を作成する方法と、Storm ダッシュボードを使用して Storm トポロジを展開、監視、管理する方法について説明しました。
+この Apache Storm チュートリアルでは、Storm Starter を使用して、HDInsight クラスターで Storm を作成する方法と、Storm ダッシュボードを使用して Storm トポロジをデプロイ、監視、管理する方法について説明しました。
 
 ##<a id="next"></a>次のステップ
 
-* **HDInsight Tools for Visual Studio** - HDInsight ツールでは、前述の Storm ダッシュボードのように、Visual Studio を使用して Storm トポロジを送信、監視、管理できます。また HDInsight ツールは、C# Storm のトポロジを作成する機能を提供しており、クラスター上に展開し、実行できるトポロジ サンプルを含んでいます。
+* **HDInsight Tools for Visual Studio** - HDInsight ツールでは、前述の Storm ダッシュボードのように、Visual Studio を使用して Storm トポロジを送信、監視、管理できます。また HDInsight ツールは、C# Storm のトポロジを作成する機能を提供しており、クラスター上にデプロイし、実行できるトポロジ サンプルを含んでいます。
 
 	詳細については、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
-* **サンプル ファイル** - HDInsight Storm クラスターでは、**%STORM_HOME%\contrib** ディレクトリにいくつかの例が用意されています。次の例がそれぞれ含まれます。
+* **サンプル ファイル** - HDInsight Storm クラスターでは、**%STORM\_HOME%\\contrib** ディレクトリにいくつかの例が用意されています。次の例がそれぞれ含まれます。
 
 	* ソース コード - storm-starter-0.9.1.2.1.5.0-2057-sources.jar など
 
@@ -204,7 +203,7 @@ Storm UI を使用してトポロジを監視できます。
 
 	> [AZURE.NOTE]Java ドキュメントは Web ページで構成されます。抽出後、ブラウザーを使用して **index.html** ファイルを表示します。
 
-	これらのサンプルにアクセスするには、HDInsight クラスターの Storm のリモート デスクトップを有効にし、**%STORM_HOME%\contrib** からファイルをコピーする必要があります。
+	これらのサンプルにアクセスするには、HDInsight クラスターの Storm のリモート デスクトップを有効にし、**%STORM\_HOME%\\contrib** からファイルをコピーする必要があります。
 
 * 次のドキュメントには、HDInsight の Storm と使用できるその他のサンプルの一覧が含まれています。
 
@@ -217,4 +216,4 @@ Storm UI を使用してトポロジを監視できます。
 [azureportal]: https://manage.windowsazure.com/
 [hdinsight-provision]: hdinsight-provision-clusters.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

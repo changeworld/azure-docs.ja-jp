@@ -41,4 +41,4 @@ Machine Learning Studio を開くには、[https://studio.azureml.net/Home](http
 このチュートリアルは、Machine Learning Studio に含まれる「[Credit risk prediction sample experiment (クレジット リスク予測のサンプル実験)](../machine-learning-sample-credit-risk-prediction.md)」の簡略版に基づきます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

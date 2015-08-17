@@ -101,7 +101,7 @@
 
 	> [AZURE.NOTE]**セキュリティに関する注意**: `AuthenticationTestHandler` クラスは、本当の認証を提供するわけではありません。基本認証を模倣するためだけに使用されるため、安全ではありません。実稼働のアプリケーションとサービスでは、セキュリティで保護された認証メカニズムを実装する必要があります。
 
-4. **App_Start/WebApiConfig.cs** クラスの `Register` メソッドの末尾に、次のコードを追加してメッセージ ハンドラーを登録します。
+4. **App\_Start/WebApiConfig.cs** クラスの `Register` メソッドの末尾に、次のコードを追加してメッセージ ハンドラーを登録します。
 
 		config.MessageHandlers.Add(new AuthenticationTestHandler());
 
@@ -359,4 +359,4 @@
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

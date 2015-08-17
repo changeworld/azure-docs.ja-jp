@@ -44,7 +44,7 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
 ### 手順 1-a. PowerShell を使用して、テンプレート ファイルをダウンロードします。
 
-JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\Azure\Templates\DataStax)。
+JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\\Azure\\Templates\\DataStax)。
 
 フォルダー名をローカル フォルダーのフォルダー名に置き換えて、次のコマンドを実行します。
 
@@ -84,7 +84,7 @@ JSON テンプレートとその他の関連ファイル用のローカル フ�
 
 	git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 
-完了後に、C:\Azure\Templates の **datastax-on-ubuntu** フォルダーを探します。
+完了後に、C:\\Azure\\Templates の **datastax-on-ubuntu** フォルダーを探します。
 
 ### 手順 2. (省略可能) テンプレート パラメーターを理解する
 
@@ -439,7 +439,7 @@ Azure CLI を使用して DataStax クラスターをデプロイするには、
 
 	bash vm-disk-utils-0.1.sh
 
-vm-disk-utils-0.1.sh は、azure-quickstart-tempates github リポジトリ内の **shared_scripts\ubuntu** フォルダーの一部であり、ディスクのマウント、フォーマット、ストライピングのための便利な機能を含みます。これらの機能は、リポジトリ内のすべてのテンプレートで使用できます。
+vm-disk-utils-0.1.sh は、azure-quickstart-tempates github リポジトリ内の **shared\_scripts\\ubuntu** フォルダーの一部であり、ディスクのマウント、フォーマット、ストライピングのための便利な機能を含みます。これらの機能は、リポジトリ内のすべてのテンプレートで使用できます。
 
 注意が必要なもう 1 つの興味深いフラグメントとして、CustomScriptForLinux VM 拡張機能に関連するものがあります。これらは、各クラスター ノード (および OpsCenter インスタンス) に依存関係を持つ別の種類のリソースとしてインストールされ、仮想マシン用に記述された同じリソース ループ メカニズムを利用します。
 
@@ -482,4 +482,4 @@ vm-disk-utils-0.1.sh は、azure-quickstart-tempates github リポジトリ内�
 詳細については、「[Azure リソース マネージャー テンプレートの言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

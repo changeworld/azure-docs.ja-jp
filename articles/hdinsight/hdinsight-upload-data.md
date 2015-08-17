@@ -95,9 +95,9 @@ Azure CLI は、Azure サービスを管理できるクロスプラットフォ�
 
 > [AZURE.NOTE]常に同じストレージ アカウントで処理する場合は、各コマンドにアカウントとキーを指定する代わりに、次の環境変数を設定することができます。
 >
-> * **[AZURE_STORAGE_ACCOUNT]**: ストレージ アカウント名
+> * **[AZURE\_STORAGE\_ACCOUNT]**: ストレージ アカウント名
 >
-> * **[AZURE_STORAGE_ACCESS_KEY]**: ストレージ アカウント キー名
+> * **[AZURE\_STORAGE\_ACCESS\_KEY]**: ストレージ アカウント キー名
 
 ###<a id="powershell"></a>Azure PowerShell
 
@@ -279,4 +279,4 @@ Azure SDK のインストールの詳細については、[Azure のダウンロ
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

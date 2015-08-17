@@ -12,7 +12,7 @@
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="get-started-article"
 	ms.date="07/02/2015" 
 	ms.author="banders"/>
 # オペレーション インサイトにコンピューターを直接接続する
@@ -76,4 +76,4 @@ $healthServiceSettings.ReloadConfiguration()
 
 - [プロキシとファイアウォール設定の構成 (省略可能)](operational-insights-proxy-firewall.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

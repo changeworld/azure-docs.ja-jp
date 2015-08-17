@@ -178,4 +178,4 @@ FTP コネクタは、次の 4 つのアクションをサポートしていま�
 [13]: ./media/app-service-logic-connector-ftp/ConfiguredUploadFile.PNG
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -65,15 +65,15 @@ NSG には、既定のルールが含まれています。既定のルールは�
 
 | 名前 | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | アクセス |
 |-----------------------------------|----------|--------------------|-------------|-----------------|------------------|----------|--------|
-| ALLOW VNET INBOUND | 65000 | VIRTUAL_NETWORK | * | VIRTUAL_NETWORK | * | * | ALLOW |
-| ALLOW AZURE LOAD BALANCER INBOUND | 65001 | AZURE_LOADBALANCER | * | * | * | * | ALLOW |
+| ALLOW VNET INBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ALLOW |
+| ALLOW AZURE LOAD BALANCER INBOUND | 65001 | AZURE\_LOADBALANCER | * | * | * | * | ALLOW |
 | DENY ALL INBOUND | 65500 | * | * | * | * | * | DENY |
 
 **送信**
 
 | 名前 | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | アクセス |
 |-------------------------|----------|-----------------|-------------|-----------------|------------------|----------|--------|
-| ALLOW VNET OUTBOUND | 65000 | VIRTUAL_NETWORK | * | VIRTUAL_NETWORK | * | * | ALLOW |
+| ALLOW VNET OUTBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ALLOW |
 | ALLOW INTERNET OUTBOUND | 65001 | * | * | INTERNET | * | * | ALLOW |
 | DENY ALL OUTBOUND | 65500 | * | * | * | * | * | DENY |
 
@@ -89,9 +89,9 @@ NSG ルールは、明示的です。NSG ルールで指定されていない限
 
 既定のタグは、IP アドレスのカテゴリに対応するシステム指定の識別子です。ユーザー定義のルールで、既定のタグを指定できます。既定のタグは、次のとおりです。
 
-- **VIRTUAL_NETWORK -** この既定のタグは、ネットワーク アドレス空間のすべてを表します。これには、仮想ネットワーク アドレス空間 (Azure での IP CIDR) だけでなく、すべての接続されているオンプレミス アドレス空間 (ローカル ネットワーク) が含まれます。また、VNet 間のアドレス空間も含まれます。
+- **VIRTUAL\_NETWORK -** この既定のタグは、ネットワーク アドレス空間のすべてを表します。これには、仮想ネットワーク アドレス空間 (Azure での IP CIDR) だけでなく、すべての接続されているオンプレミス アドレス空間 (ローカル ネットワーク) が含まれます。また、VNet 間のアドレス空間も含まれます。
 
-- **AZURE_LOADBALANCER -** この既定のタグは、Azure の インフラストラクチャの Load Balancer を表します。これは、Azure の正常性プローブが開始される Azure データ センター IP に変換されます。これは、NSG に関連付けられている VM または一連の VM が、負荷分散セットに参加している場合にのみ必要です。
+- **AZURE\_LOADBALANCER -** この既定のタグは、Azure の インフラストラクチャの Load Balancer を表します。これは、Azure の正常性プローブが開始される Azure データ センター IP に変換されます。これは、NSG に関連付けられている VM または一連の VM が、負荷分散セットに参加している場合にのみ必要です。
 
 - **INTERNET -** この既定のタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。この範囲には、Azure に所有されているパブリック IP 領域も含まれます。
 
@@ -138,7 +138,7 @@ VM や PaaS ロールなどのオブジェクトを、インターネット ア�
 
 | 名前 | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | アクセス |
 |------|----------|-----------|-------------|----------------|------------------|----------|--------|
-|NO INTERNET|100| VIRTUAL_NETWORK|&#42;|INTERNET|&#42;|TCP|DENY| 
+|NO INTERNET|100| VIRTUAL\_NETWORK|&#42;|INTERNET|&#42;|TCP|DENY| 
 
 このルールは仮想ネットワークからインターネットへのすべてのアクセスを拒否するので、VM は、SQL Database などのパブリック インターネット エンドポイントを必要とするすべての Azure PaaS サービスにアクセスできません。
 
@@ -146,8 +146,8 @@ VM や PaaS ロールなどのオブジェクトを、インターネット ア�
 
 | 名前 | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | アクセス |
 |------|----------|-----------|-------------|----------------|------------------|----------|--------|
-|TO INTERNET|100| VIRTUAL_NETWORK|&#42;|INTERNET|&#42;|TCP|ALLOW|
-|FROM INTERNET|110| INTERNET|&#42;|VIRTUAL_NETWORK|&#42;|TCP|DENY| 
+|TO INTERNET|100| VIRTUAL\_NETWORK|&#42;|INTERNET|&#42;|TCP|ALLOW|
+|FROM INTERNET|110| INTERNET|&#42;|VIRTUAL\_NETWORK|&#42;|TCP|DENY| 
 
 
 ## 計画 - ネットワーク セキュリティ グループのワークフロー
@@ -248,4 +248,4 @@ VM や PaaS ロールなどのオブジェクトを、インターネット ア�
 
 	Get-Command *azurenetworksecuritygroup*
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

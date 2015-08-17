@@ -130,4 +130,4 @@ ARM VNet 用の VPN ゲートウェイを作成するには、以下の手順に
 - [ネットワーク リソース プロバイダー](../resource-groups-networking.md)についてさらに学習できます。
 - [end-to-end solution connecting a classic VNet to an ARM VNet by using a S2S VPN (S2S VPN を使用して従来の VNet と ARM VNet を接続するエンド ツーン エンド ソリューション)](../virtual-networks-arm-asm-s2s.md) を作成します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

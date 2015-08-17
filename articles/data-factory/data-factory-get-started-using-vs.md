@@ -82,12 +82,12 @@
 #### リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。
 
-この手順では、**AzureStorageLinkedService1** と **AzureSqlLinkedService1** の 2 つのリンクされたサービスを作成します。リンクされたサービス AzureStorageLinkedService1 は Azure Storage アカウントをリンクし、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactory** という Data Factory にリンクします。
+この手順では、**AzureStorageLinkedService1** と **AzureSqlLinkedService1** の 2 つのリンクされたサービスを作成します。リンクされたサービス AzureStorageLinkedService1 は Azure ストレージ アカウントをリンクし、AzureSqlLinkedService は Azure SQL Database を **ADFTutorialDataFactory** という Data Factory にリンクします。
 
 ##### Azure ストレージのリンクされたサービスを作成します。
 
 4. ソリューション エクスプローラーの **[Linked Services]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。      
-5. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage Linked Service]**] を選択し、**[追加]** をクリックします。 
+5. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage Linked Service]** を選択し、**[追加]** をクリックします。 
 
 	![新規のリンクされたサービス](./media/data-factory-get-started-using-vs/new-linked-service-dialog.png)
  
@@ -101,11 +101,12 @@
 
 5. **[ソリューション エクスプローラー]** で **[Linked Services]** ノードをもう一度右クリックし、**[追加]** をポイントし、**[新しい項目]** をクリックします。 
 6. このとき、**[Azure SQL Linked Service]** をクリックし、**[追加]** をクリックします。 
-7. **AzureSqlLinkedService1.json ファイル**で、**servername**、**databasename**、**username@servername**、**パスワード**を Azure SQL Server の名前、データベース、ユーザー アカウント、パスワードで置き換えます。8.  **AzureSqlLinkedService1.json** ファイルを保存します。 
+7. **AzureSqlLinkedService1.json ファイル**で、**servername**、**databasename**、****username@servername**、**password** を Azure SQL のサーバー名、データベース、ユーザー アカウント、パスワードで置き換えます。
+8.  **AzureSqlLinkedService1.json** ファイルを保存します。 
 
 
 ### 入力テーブルと出力テーブルを作成する
-前の手順では、**AzureStorageLinkedService1** と **AzureSqlLinkedService1** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL Database を **ADFTutorialDataFactory** という Data Factory にリンクしました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらは AzureStorageLinkedService1 and AzureSqlLinkedService1 が参照するデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。
+前の手順では、**AzureStorageLinkedService1** と **AzureSqlLinkedService1** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL Database を **ADFTutorialDataFactory** というデータ ファクトリにリンクしました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらは AzureStorageLinkedService1 と AzureSqlLinkedService1 がそれぞれ参照するデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。
 
 #### 入力テーブルの作成
 
@@ -176,7 +177,7 @@
 
 
 1. **[ソリューション エクスプローラー]** の **[パイプライン]** を右クリックし、**[追加]** をポイントし、**[新しい項目]** をクリックします。  
-15. **[新しい項目の追加]** ダイアログ ボックスで **[Copy Data Pipeline]** を選択し、**[追加]** をクリックします。 
+15. **[新しい項目の追加]** ダイアログ ボックスで **[データ パイプラインのコピー]** を選択し、**[追加]** をクリックします。 
 16. JSON テキストを次の JSON テキストで置き換え、**CopyActivity1.json** ファイルを保存します。
 			
 		 {
@@ -224,11 +225,11 @@
 
 #### Data Factory エンティティの発行/デプロイ
   
-18. 有効になっていない場合は、ツールバー領域で、**[Data Factory]** を右クリックして Data Factory ツールバーを有効にします。 
-19. **[Data Factory toolbar]** で、**ドロップダウン ボックス**をクリックし、Azure サブスクリプション内に、すべてのデータ ファクトリを表示します。**[Visual Studio にサインイン]** ダイアログ ボックスが表示された場合。 
+18. Data Factory ツール バーが有効になっていない場合は、ツール バー領域で **[Data Factory]** を右クリックして選択すると有効になります。 
+19. **Data Factory ツール バー**で**ドロップダウン ボックス**をクリックし、Azure サブスクリプション内にすべてのデータ ファクトリを表示します。**[Visual Studio にサインイン]** ダイアログ ボックスが表示された場合。 
 	20. データ ファクトリを作成する Azure サブスクリプションに関連付けられている**電子メール アカウント**を入力し、**パスワード**を入力し、**[サインイン]** をクリックします。
 	21. サイン インが成功すると、Azure サブスクリプション内のすべてのデータ ファクトリが表示されます。このチュートリアルでは、新しいデータ ファクトリを作成します。       
-22. ドロップダウン ボックス一覧で、**[ADFTutorialFactoryVS]** を選択し、**[発行]** ボタンをクリックして、リンクされたサービス、データセット、パイプラインをデプロイ/発行します。    
+22. ドロップダウン リストで **[ADFTutorialFactoryVS]** を選択し、**[発行]** ボタンをクリックして、リンクされたサービス、データセット、パイプラインをデプロイ/発行します。    
 
 	![[発行] ボタン](./media/data-factory-get-started-using-vs/publish.png)
 
@@ -237,16 +238,16 @@
 ## サーバー エクスプローラーを使用して Data Factory のエンティティを確認する
 
 1. **Visual Studio** のメニューで **[ビュー]** をクリックし、**[サーバー エクスプローラー]** をクリックします。
-2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory Task List]** ウィンドウで、この操作のステータスが確認できます。![Server Explorer](./media/data-factory-get-started-using-vs/server-explorer.png)
-3. [Data Factory] を右クリックし、[Export Data Factory to New Project] を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。![Data Factory の Visual Studio プロジェクトへのエクスポート](./media/data-factory-get-started-using-vs/export-data-factory-menu.png)  
+2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory タスク リスト]** ウィンドウで、この操作のステータスを確認できます。![Server Explorer](./media/data-factory-get-started-using-vs/server-explorer.png)
+3. データ ファクトリを右クリックし、[データ ファクトリを新しいプロジェクトにエクスポートする] を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。![Data Factory の Visual Studio プロジェクトへのエクスポート](./media/data-factory-get-started-using-vs/export-data-factory-menu.png)  
 
 ## Visual Studio の Data Factory ツールを更新する
 Visual Studio の Azure Data Factory ツールを更新するには、次のように行います。
 
-1. メニューで**[ツール]** をクリックし、**[拡張機能と更新プログラム]** を選択します。 
+1. メニューで **[ツール]** をクリックし、**[拡張機能と更新プログラム]** を選択します。 
 2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
 4. **[Visual Studio の Azure Data Factory ツール]** を選択して、**[更新]** をクリックします。このエントリが表示されない場合は、ツールは既に最新バージョンです。 
 
-Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については「[データセットとパイプラインを監視する](data-factory-get-started-using-editor.md/#MonitorDataSetsAndPipeline)」をご覧ください。
+Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-get-started-using-editor.md/#MonitorDataSetsAndPipeline)に関する記事を参照してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -62,12 +62,12 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。
 
 ## 接続文字列の取得
-**cloud_storage_account** クラスを使用してストレージ アカウント情報を表すことができます。ストレージ接続文字列からストレージ アカウント情報を取得するには、**parse** メソッド使用します。
+**cloud\_storage\_account** クラスを使用してストレージ アカウント情報を表すことができます。ストレージ接続文字列からストレージ アカウント情報を取得するには、**parse** メソッド使用します。
 
 	// Retrieve storage account from connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-次に、**cloud_blob_client** クラスへの参照を取得します。これにより、BLOB ストレージ サービス内に格納されているコンテナーと BLOB を表すオブジェクトを取得できます。次のコードは、前に取得したストレージ アカウント オブジェクトを使用して、**cloud_blob_client** オブジェクトを作成します。
+次に、**cloud\_blob\_client** クラスへの参照を取得します。これにより、BLOB ストレージ サービス内に格納されているコンテナーと BLOB を表すオブジェクトを取得できます。次のコードは、前に取得したストレージ アカウント オブジェクトを使用して、**cloud\_blob\_client** オブジェクトを作成します。
 
 	// Create the blob client.
 	azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();  
@@ -109,7 +109,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 ## 方法: コンテナーに BLOB をアップロードする
 Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポートされています。ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
-ファイルをブロック blob にアップロードするには、コンテナーの参照を取得し、それを使用してブロック blob の参照を取得します。BLOB の参照を取得したら、**upload_from_stream** メソッドを呼び出すことによって、データの任意のストリームを BLOB にアップロードできます。この操作により、BLOB がまだ存在しない場合は作成され、存在する場合は上書きされます。次の例は、BLOB をコンテナーにアップロードする方法を示しています。この例では、既にコンテナーが作成されていることを前提としています。
+ファイルをブロック blob にアップロードするには、コンテナーの参照を取得し、それを使用してブロック blob の参照を取得します。BLOB の参照を取得したら、**upload\_from\_stream** メソッドを呼び出すことによって、データの任意のストリームを BLOB にアップロードできます。この操作により、BLOB がまだ存在しない場合は作成され、存在する場合は上書きされます。次の例は、BLOB をコンテナーにアップロードする方法を示しています。この例では、既にコンテナーが作成されていることを前提としています。
 
 	// Retrieve storage account from connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -137,10 +137,10 @@ Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポート�
 	azure::storage::cloud_block_blob blob3 = container.get_block_blob_reference(U("my-directory/my-sub-directory/my-blob-3"));
 	blob3.upload_text(U("other text"));  
 
-**upload_from_file** メソッドを使用して、ブロック BLOB にファイルをアップロードすることもできます。
+**upload\_from\_file** メソッドを使用して、ブロック BLOB にファイルをアップロードすることもできます。
 
 ## 方法: コンテナー内の BLOB を一覧表示する
-コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、コンテナーの **list_blobs** メソッドを使用して、その中の BLOB やディレクトリを取得できます。返された **list_blob_item** の豊富なプロパティとメソッドのセットにアクセスするには、**list_blob_item.as_blob** メソッドを呼び出して **cloud_blob** オブジェクトを取得するか、**list_blob.as_directory** メソッドを呼び出して cloud_blob_directory オブジェクトを取得する必要があります。次のコードは、**my-sample-container** コンテナー内の各アイテムの URI を取得して出力する方法を示しています。
+コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、コンテナーの **list\_blobs** メソッドを使用して、その中の BLOB やディレクトリを取得できます。返された **list\_blob\_item** の豊富なプロパティとメソッドのセットにアクセスするには、**list\_blob\_item.as\_blob** メソッドを呼び出して **cloud\_blob** オブジェクトを取得するか、**list\_blob.as\_directory** メソッドを呼び出して cloud\_blob\_directory オブジェクトを取得する必要があります。次のコードは、**my-sample-container** コンテナー内の各アイテムの URI を取得して出力する方法を示しています。
 
 	// Retrieve storage account from connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -168,7 +168,7 @@ Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポート�
 一覧取得操作の詳細については、「[C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)」を参照してください。
 
 ## 方法: BLOB をダウンロードする
-BLOB をダウンロードするには、まず BLOB の参照を取得し、次に **download_to_stream** メソッドを呼び出します。次の例は、**download_to_stream** メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
+BLOB をダウンロードするには、まず BLOB の参照を取得し、次に **download\_to\_stream** メソッドを呼び出します。次の例は、**download\_to\_stream** メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
 
 	// Retrieve storage account from connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -193,7 +193,7 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
 	outfile.write((char *)&data[0], buffer.size());
 	outfile.close();  
 
-代わりに、**download_to_file** メソッドを使用して、ファイルに BLOB の内容をダウンロードすることもできます。**download_text** メソッドを使用して BLOB の内容をテキスト文字列としてダウンロードすることもできます。
+代わりに、**download\_to\_file** メソッドを使用して、ファイルに BLOB の内容をダウンロードすることもできます。**download\_text** メソッドを使用して BLOB の内容をテキスト文字列としてダウンロードすることもできます。
 
 	// Retrieve storage account from connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -211,7 +211,7 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
 	utility::string_t text = text_blob.download_text();
 
 ## 方法: BLOB を削除する
-BLOB を削除するには、まず BLOB の参照を取得し、次にその **delete_blob** メソッドを呼び出します。
+BLOB を削除するには、まず BLOB の参照を取得し、次にその **delete\_blob** メソッドを呼び出します。
 
 	// Retrieve storage account from connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -243,4 +243,4 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

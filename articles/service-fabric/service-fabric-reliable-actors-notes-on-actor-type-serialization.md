@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Service Fabric アクターのアクター型のシリアル化に関する留意事項"
-   description="Azure Fabric の信頼性の高いアクターの状態とインターフェイスを定義する場合に使用できるシリアル化可能なクラスを定義するための基本的な要件"
+   pageTitle="高信頼アクターのアクター型のシリアル化に関する留意事項"
+   description="Service Fabric 高信頼アクターの状態とインターフェイスを定義する場合に使用できるシリアル化可能なクラスを定義するための基本的な要件について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="clca"
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/02/2015"
+   ms.date="08/05/2015"
    ms.author="claudioc"/>
 
 
-# Azure Service Fabric のアクター型のシリアル化に関する留意事項
+# Service Fabric 高信頼アクター型のシリアル化に関する留意事項
 
 アクターのインターフェイスと状態を定義する際に留意する必要がある重要な事項がいくつかあり、型はデータ コントラクト シリアル化可能にする必要があります。データ コントラクトの詳細については、「[データ コントラクト シリアライザーでサポートされる型](https://msdn.microsoft.com/library/ms731923.aspx)」を参照してください。
 
@@ -82,6 +82,5 @@ public class VoicemailBox
 }
 
 ```
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

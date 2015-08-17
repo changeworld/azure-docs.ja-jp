@@ -63,4 +63,4 @@ Machine Learning ワークスペースが作成されると、**機械学習**�
 
 <!--Link references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

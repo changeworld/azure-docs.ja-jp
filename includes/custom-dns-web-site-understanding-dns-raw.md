@@ -50,4 +50,4 @@ IP アドレスだけでなく、Web アプリの **awverify** 名と **.azurewe
 
 	![](./media/custom-dns-web-site/managecustomdomains.png)
 
-<!---------HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

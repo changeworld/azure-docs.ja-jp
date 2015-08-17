@@ -95,4 +95,4 @@
 <!-- Images -->
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-java1.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

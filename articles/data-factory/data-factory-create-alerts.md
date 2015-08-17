@@ -126,4 +126,4 @@ StorageAccountName は、デプロイしたアラートの JSON ファイルを�
 	Get-AzureResourceGroupLog –Name $ResourceGroup -All | Where-Object EventSource -eq "Microsoft.DataFactory"
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

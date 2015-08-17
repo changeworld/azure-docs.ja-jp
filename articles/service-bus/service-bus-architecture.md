@@ -69,4 +69,4 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus キューを使用するキューに格納されたメッセージング ソリューション](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -1,21 +1,21 @@
-## Repeatability during Copy
+## コピー中の再現性
 
-When copying data from and to relational stores, you need to keep repeatability in mind to avoid unintended outcomes. 
+データをリレーショナル ストアへコピーする場合、またはリレーショナル ストアからコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。
 
-**Note:** A slice can be re-run automatically in Azure Data Factory as per the retry policy specified. It is recommended to set a retry policy to guard against transient failures. Hence repeatability is an important aspect to take care of during data movement. 
+**注:**スライスは、再試行ポリシーで指定された回数、 Azure データ ファクトリ内で自動的に再実行することができます。一時的なエラーを回避するため、再試行ポリシーを設定することをお勧めします。したがって、再現性は、データの移動中に注意すべき重要な側面です。
 
-**As a source:**
+**ソースとして:**
 
-In most cases when reading from relational stores, you would want to read only the data corresponding to that slice. A way to do so would be by using the WindowStart and WindowEnd variables available in Azure Data Factory. Read about the variables and functions in Azure Data Factory here in the [Scheduling and Execution](data-factory-scheduling-and-execution.md) article. Example: 
+多くの場合、リレーショナル ストアからの読み取り時にそのスライスに対応するデータのみを読み込むことになります。これを行うには、Azure データ ファクトリで使用可能な、WindowStart と WindowEnd 変数を使用します。Azure データ ファクトリの変数と関数については、こちらの[スケジュールおよび実行](data-factory-scheduling-and-execution.md)の記事をお読みください。例:
 	
 	  "source": {
 	    "type": "SqlSource",
-	    "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
+	    "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \'{0:yyyy-MM-dd HH:mm\' AND timestampcolumn < \'{1:yyyy-MM-dd HH:mm\'', WindowStart, WindowEnd)"
 	  },
 
-The above query will read data from ‘MyTable’ that falls in the slice duration range. Re-run of this slice would also always ensure this behavior. 
+上記のクエリでは、スライス期間の範囲内にある "MyTable" からデータを読み取ります。このスライスを再実行すると、この動作は常に確認されます。
 
-In other cases, you may wish to read the entire Table (suppose for one time move only) and may define the sqlReaderQuery as follows:
+その他の場合は、テーブル全体の読み取り (たとえば1 回の移動のみ) にし、次のように、sqlReaderQuery を定義することもできます。
 
 	
 	"source": {
@@ -23,3 +23,5 @@ In other cases, you may wish to read the entire Table (suppose for one time move
 	            "sqlReaderQuery": "select * from MyTable"
 	          },
 	
+
+<!---HONumber=August15_HO6-->

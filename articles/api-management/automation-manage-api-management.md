@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/16/2015"
+	ms.date="07/16/2015"
 	ms.author="csand"/>
 
 
@@ -44,4 +44,4 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 * [#Azure API Management REST API の PowerShell モジュール](https://alexandrebrisebois.wordpress.com/2014/08/17/powershell-module-for-the-azure-api-management-rest-apis/)に関するコミュニティ ブログの投稿をお読みください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

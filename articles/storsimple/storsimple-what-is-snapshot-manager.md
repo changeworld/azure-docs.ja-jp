@@ -148,4 +148,4 @@ StorSimple Snapshot Manager を使用して、今後予定されているバッ�
 
 [StorSimple Snapshot Manager のダウンロード](https://www.microsoft.com/download/details.aspx?id=44220)。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

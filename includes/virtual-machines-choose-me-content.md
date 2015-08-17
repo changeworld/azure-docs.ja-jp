@@ -24,7 +24,7 @@ Azure Virtual Machines では、クラウドで仮想マシンを作成し、使
 
 仮想マシンは、仮想ハード ディスク (VHD) を使用して、オペレーティング システム (OS) およびデータを保存します。VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。次の図はそのことに加えて、VM の作成および管理に使用できる 2 つのツールを示しています。
 
-<a name="fig_createvms"></a> ![vm_diagram](./media/virtual-machines-choose-me-content/diagram.png)
+<a name="fig_createvms"></a> ![vm\_diagram](./media/virtual-machines-choose-me-content/diagram.png)
 
 **図: Azure Virtual Machines はサービスとしてのインフラストラクチャ (IaaS) を提供する。**
 
@@ -42,4 +42,4 @@ VM を考慮する利点は他にもあります。それは次のとおりで�
 
 **回復力** -- Azure は、動作している各 VM をホストする物理ハードウェアを監視します。VM を実行している物理サーバーに障害が生じると、Azure はこれを検出し、VM を新しいハードウェアに移動させて再起動します。このプロセスはサービス復旧と呼ばれることがあります。また、VHD の冗長なコピーを BLOB ストレージに保持することで、仮想マシンのデータを保護します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

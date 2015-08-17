@@ -303,4 +303,4 @@ Runbook を計画に追加したら、テスト フェールオーバーを開�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

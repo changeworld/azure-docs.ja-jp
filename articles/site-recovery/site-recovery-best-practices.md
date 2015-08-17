@@ -31,7 +31,7 @@
 ## Azure の準備
 
 - **Azure アカウント**: [Microsoft Azure](http://azure.microsoft.com/) アカウントが必要です。お持ちでない場合は、[無料試用版](pricing/free-trial/)で作業を開始してください。
-- Site Recovery の料金については、[こちら](pricing/details/site-recovery/)を参照してください。 
+- Site Recovery の価格については、[こちら](pricing/details/site-recovery/)を参照してください。 
 - **Azure Storage**: Azure へのレプリケーションを使用して Site Recovery をデプロイする場合は、Azure ストレージ アカウントが必要です。アカウントはデプロイ中に設定しても、作業開始前に準備しても構いません。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。 
 
 ## 仮想マシン
@@ -103,7 +103,12 @@ System Center 2012 SP1 (最新の累積アップデートをインストール�
 
 	- プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。
 	- 次の URL に、ファイアウォールを通過して接続できるようにします。
-		- *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net- *.backup.windowsazure.com- *.blob.core.windows.net- *.store.core.windows.net
+		- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+
 	- VMM を対象にして Site Recovery をデプロイし、カスタム プロキシを使用する場合、VMM の RunAs アカウント (DRAProxyAccount) が、Site Recovery ポータルからカスタム プロキシの設定で指定したプロキシの資格情報を使用して、自動的に作成されます。このアカウントを正しく認証できるように、プロキシ サーバーを設定する必要があります。
 
 
@@ -189,4 +194,4 @@ System Center 2012 SP1 (最新の累積アップデートをインストール�
 - [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

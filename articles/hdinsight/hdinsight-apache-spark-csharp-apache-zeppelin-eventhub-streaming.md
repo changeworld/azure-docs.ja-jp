@@ -19,7 +19,7 @@
 
 # Spark ストリーミング: HDInsight での Apache Spark による Azure Event Hubs からのイベントの処理
 
-Spark ストリーミングは、コア Spark API を拡張して、スケーラビリティ、高スループット、フォールト トレランスを備えたストリーム処理アプリケーションを構築します。多くのソースからデータを取り込むことができます。この記事では、Event Hubs を使用してデータを取り込みます。Event Hubs は、拡張性に優れたインジェスト システムであり、1 秒間に数百万件のイベントを取り込むことができます。
+Spark ストリーミングは、コア Spark API を拡張して、スケーラビリティ、高スループット、フォールト トレランスを備えたストリーム処理アプリケーションを構築します。多くのソースからデータを取り込むことができます。この記事では、Event Hubs を使用してデータを取り込みます。Event Hubs は、スケーラビリティに優れたインジェスト システムであり、1 秒間に数百万件のイベントを取り込むことができます。
 
 このチュートリアルでは、Azure Event Hubs を作成する方法、C# のコンソール アプリケーションを使用して Event Hubs にメッセージを取り込む方法、および HDInsight で Apache Spark 用に構成されている Zeppelin Notebook を使用して並列にメッセージを取得する方法を説明します。
 
@@ -52,7 +52,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 <tr><th>名前</th><th>アクセス許可</th></tr>
 <tr><td>mysendpolicy</td><td>送信</td></tr>
 <tr><td>myreceivepolicy</td><td>リッスン</td></tr>
-</table>アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、この Event Hub に対する送信 (\*\*mysendpolicy\*\*) とリッスン (\*\*myreceivepolicy\*\*) に使用する共有アクセス ポリシーが作成されます。
+</table>アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、この Event Hub に対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
 
 	![ポリシー](./media/hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming/HDI.Spark.Streaming.Event.Hub.Policies.png "Event Hub のポリシーを作成します")
 
@@ -164,4 +164,4 @@ Zeppelin を使用して HDInsight の Spark クラスターでストリーミ�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

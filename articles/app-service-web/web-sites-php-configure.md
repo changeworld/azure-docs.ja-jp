@@ -69,7 +69,7 @@ Azure コマンド ライン インターフェイスを使用するには、**N
 
 次の手順に従うと、いずれのビルトイン PHP ランタイムについても、任意の構成オプションを変更できます(php.ini ディレクティブについては、[php.ini ディレクティブの一覧]を参照してください)。
 
-### PHP_INI_USER、PHP_INI_PERDIR、PHP_INI_ALL 構成設定の変更
+### PHP\_INI\_USER、PHP\_INI\_PERDIR、PHP\_INI\_ALL 構成設定の変更
 
 1. [.user.ini] ファイルをルート ディレクトリに追加します。
 2. `php.ini` ファイルで使用するものと同じ構文を使用して、構成設定を `.user.ini` ファイルに追加します。たとえば、`display_errors` 設定をオンにして `upload_max_filesize` を 10 M に設定する場合は、`.user.ini` ファイルに次のテキストを含めます。
@@ -81,9 +81,9 @@ Azure コマンド ライン インターフェイスを使用するには、**N
 3. Web アプリをデプロイします。
 4. Web アプリを再起動します。(再起動する必要があるのは、`.user.ini` ファイルが PHP によって読み取られる頻度が、`user_ini.cache_ttl` 設定によって制御されるためです。この設定はシステム レベルの設定であり、既定では 300 秒 (5 分) です。Web アプリを再起動すると、PHP により、`.user.ini` ファイル内の新しい設定が強制的に読み取られます。)
 
-`.user.ini` ファイルを使用する代わりに、スクリプト内で [ini_set()] 関数を使用して、システム レベルのディレクティブではない構成オプションを設定することもできます。
+`.user.ini` ファイルを使用する代わりに、スクリプト内で [ini\_set()] 関数を使用して、システム レベルのディレクティブではない構成オプションを設定することもできます。
 
-### PHP_INI_SYSTEM 構成設定の変更
+### PHP\_INI\_SYSTEM 構成設定の変更
 
 1. アプリの設定 (キー `PHP_INI_SCAN_DIR`、値 `d:\home\site\ini`) を Web アプリに追加する
 2. Kudu コンソール (http://&lt;site-name&gt;.scm.azurewebsite.net) を使用して `d:\home\site\ini` ディレクトリに `settings.ini` ファイルを作成します。
@@ -120,7 +120,7 @@ Azure コマンド ライン インターフェイスを使用するには、**N
 	![Web アプリ設定][settings-button]
 
 5. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、**[アプリの設定]** セクションまでスクロールします。
-6. **[アプリの設定]** セクションで、**PHP_EXTENSIONS** キーを作成します。このキーの値は、Web サイト ルート (**bin\your-ext-file**) への相対パスになります。
+6. **[アプリの設定]** セクションで、**PHP\_EXTENSIONS** キーを作成します。このキーの値は、Web サイト ルート (**bin\\your-ext-file**) への相対パスになります。
 
 	![[アプリケーション設定] で拡張機能を有効にする][php-extensions]
 
@@ -128,7 +128,7 @@ Azure コマンド ライン インターフェイスを使用するには、**N
 
 	![構成設定を保存する][save-button]
 
-Zend 拡張機能も、**PHP_ZENDEXTENSIONS** キーを使用することによってサポートされます。複数の拡張機能を有効にするには、複数の `.dll` ファイルをコンマで区切って指定します。
+Zend 拡張機能も、**PHP\_ZENDEXTENSIONS** キーを使用することによってサポートされます。複数の拡張機能を有効にするには、複数の `.dll` ファイルをコンマで区切って指定します。
 
 
 ## 方法: カスタムの PHP ランタイムを使用する
@@ -162,7 +162,7 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
 [php.ini ディレクティブの一覧]: http://www.php.net/manual/en/ini.list.php
 [.user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
-[ini_set()]: http://www.php.net/manual/en/function.ini-set.php
+[ini\_set()]: http://www.php.net/manual/en/function.ini-set.php
 [application-settings]: ./media/web-sites-php-configure/application-settings.png
 [settings-button]: ./media/web-sites-php-configure/settings-button.png
 [save-button]: ./media/web-sites-php-configure/save-button.png
@@ -176,4 +176,4 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

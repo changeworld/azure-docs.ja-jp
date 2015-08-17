@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na" 
  ms.devlang="dotnet" 
  ms.topic="article" 
- ms.date="05/12/2015" 
+ ms.date="08/04/2015" 
  ms.author="krisragh"/>
  
 # Azure Scheduler のプランと課金
@@ -87,4 +87,4 @@ Premium 課金単位には、最大 10,000 個の Premium ジョブ コレクシ
  [Scheduler 送信認証](scheduler-outbound-authentication.md)
   
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

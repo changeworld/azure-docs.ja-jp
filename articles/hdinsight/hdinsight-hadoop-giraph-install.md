@@ -34,7 +34,7 @@
    
 ## <a name="install"></a>Giraph のインストール方法
 
-HDInsight クラスターに Giraph をインストールするサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1) の読み取り専用の Azure ストレージ BLOB から入手できます。このセクションでは、Azure の管理ポータルを使用してクラスターをプロビジョニングする際に、サンプル スクリプトを使用する方法について説明します。
+HDInsight クラスターに Giraph をインストールするサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1) の読み取り専用の Azure ストレージ BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターをプロビジョニングする際に、サンプル スクリプトを使用する方法について説明します。
 
 > [AZURE.NOTE]サンプル スクリプトは、HDInsight クラスター version 3.1 でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
 
@@ -61,7 +61,7 @@ Azure PowerShell または HDInsight .NET SDK を使用して、HDInsight に Gi
 
 SimpleShortestPathsComputation サンプルを使用して、グラフのオブジェクト間の最短パスを見つけるための基本的な <a href = "http://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> の実装を示します。次の手順を使用して、サンプル データとサンプル jar ファイルをアップロードし、SimpleShortestPathsComputation サンプルでジョブを実行して、結果を表示します。
 
-1. サンプル データ ファイルを Azure Blob ストレージにアップロードします。ローカル ワークステーションに、**tiny_graph.txt** という名前の新しいファイルを作成します。このファイルには、次の行を含めます。
+1. サンプル データ ファイルを Azure Blob ストレージにアップロードします。ローカル ワークステーションに、**tiny\_graph.txt** という名前の新しいファイルを作成します。このファイルには、次の行を含めます。
 
 		[0,0,[[1,1],[3,3]]]
 		[1,0,[[0,1],[2,2],[3,1]]]
@@ -69,17 +69,17 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 		[3,0,[[0,3],[1,1],[4,4]]]
 		[4,0,[[3,4],[2,4]]]
 
-	tiny_graph.txt ファイルを HDInsight クラスターのプライマリ ストレージにアップロードします。データをアップロードする方法の詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」をご覧ください。
+	tiny\_graph.txt ファイルを HDInsight クラスターのプライマリ ストレージにアップロードします。データをアップロードする方法の詳細については、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」をご覧ください。
 
-	このデータは、[source_id, source_value,[[dest_id], [edge_value],...]] の形式を使用して有向グラフ内のオブジェクト間の関係を示しています。各行は、**source_id** オブジェクトと 1 つ以上の **dest_id** オブジェクトとの関係を表現しています。**edge_value** (重み) は、**source_id** と **dest_id** の間のつながりの強さまたは距離であると考えられます。
+	このデータは、[source\_id, source\_value,[[dest\_id], [edge\_value],...]] の形式を使用して有向グラフ内のオブジェクト間の関係を示しています。各行は、**source\_id** オブジェクトと 1 つ以上の **dest\_id** オブジェクトとの関係を表現しています。**edge\_value** (重み) は、**source\_id** と **dest\_id** の間のつながりの強さまたは距離であると考えられます。
 
 	この値 (重み) を使用し、オブジェクト間の距離に応じて線を引くと、先のデータは次の図のようになります。
 
-	![tiny_graph.txt drawn as circles with lines of varying distance between](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
+	![tiny\_graph.txt drawn as circles with lines of varying distance between](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
 
 	
 
-4. SimpleShortestPathsComputation サンプルを実行します。tiny_graph.txt ファイルを入力として使用し、次の Azure PowerShell コマンドレットを使用してサンプルを実行します。これには、[Azure PowerShell][powershell-install] がインストール済みおよび構成済みであることが必要です。
+4. SimpleShortestPathsComputation サンプルを実行します。tiny\_graph.txt ファイルを入力として使用し、次の Azure PowerShell コマンドレットを使用してサンプルを実行します。これには、[Azure PowerShell][powershell-install] がインストール済みおよび構成済みであることが必要です。
 
 		$clusterName = "clustername"
 		# Giraph examples jar
@@ -109,7 +109,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
 	この例では、**clustername** を、Giraph をインストールした HDInsight クラスターの名前で置き換えます。
 
-5. 結果を表示します。ジョブが完了すると、結果が __wasb:///example/out/shotestpaths__ フォルダーの 2 つの出力ファイルに格納されます。この 2 つのファイルは __part-m-00001__ と __part-m-00002__ という名前です。出力をダウンロードして表示するには、次の手順を実行します。
+5. 結果を表示します。ジョブが完了すると、結果が \_\___wasb:///example/out/shotestpaths__ フォルダーの 2 つの出力ファイルに格納されます。この 2 つのファイルは __part-m-00001__ と __part-m-00002__ という名前です。出力をダウンロードして表示するには、次の手順を実行します。
 
 		$subscriptionName = "<SubscriptionName>"       # Azure subscription name
 		$storageAccountName = "<StorageAccountName>"   # Azure Storage account name
@@ -226,7 +226,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 公開されている SDK の最新のビルドを [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
 
-**自己署名証明書を取得するには**
+**自己署名証明書を作成するには**
 
 自己署名証明書を作成し、それをコンピューターにインストールして、さらに、Azure サブスクリプションにアップロードします。手順については、「[Create a self-signed certificate (自己署名証明書の作成)](http://go.microsoft.com/fwlink/?LinkId=511138)」を参照してください。
 
@@ -329,7 +329,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 **アプリケーションを実行するには**
 
-Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \bin\debug ディレクトリに移動して、次のコマンドを実行します。
+Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \\bin\\debug ディレクトリに移動して、次のコマンドを実行します。
 
 	.\CreateGiraphCluster <cluster-name>
 
@@ -353,4 +353,4 @@ Azure PowerShell コンソールを開き、Visual Studio プロジェクトを�
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

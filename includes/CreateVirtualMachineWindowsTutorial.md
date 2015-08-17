@@ -1,4 +1,3 @@
-
 # Windows Server を実行する仮想マシンの作成 #
 
 このチュートリアルは、Windows Azure の管理ポータルのイメージ ギャラリーを使用すると Server を実行する Azure 仮想マシン (VM) を簡単に作成できることを示します。イメージ ギャラリーは、Windows オペレーティング システム、Linux ベースのオペレーティング システム、アプリケーション イメージなどさまざまなイメージを提供します。
@@ -126,4 +125,4 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
 [How to attach a data disk to the new virtual machine]: #attachdisk
 [How to set up communication with the virtual machine]: #endpoints
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

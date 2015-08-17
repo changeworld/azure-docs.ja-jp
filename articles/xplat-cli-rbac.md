@@ -18,30 +18,20 @@
 
 # Azure コマンドライン インターフェイス (Azure CLI) によるロールベースのアクセス制御の管理#
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/documentation/articles/powershell-rbac.md" title="Windows PowerShell" class="current">Windows PowerShell</a><a href="/documentation/articles/xplat-cli-rbac.md" title="Azure CLI">Azure CLI</a></div>
-
 Azure ポータルと Azure Resource Manager AP のロールベースのアクセス制御 (RBAC) を使用すると、サブスクリプションへのアクセスを詳細に管理できます。この機能を使用すれば、特定のスコープで Active Directory のユーザー、グループ、またはサービス プリンシパルに役割を割り当てることで、アクセス権を付与できます。
 
 このチュートリアルでは、Azure CLI を使用して RBAC を管理する方法について学習します。役割の割り当てを作成して確認するプロセスについて説明します。
 
 **推定所要時間:** 15 分
 
-## 前提条件 ##
+## 前提条件
 
 Azure CLI を使用して RBAC を管理するには、事前に以下を用意しておく必要があります。
 
 - Azure CLI バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[インストール](xplat-cli-install.md)」を参照してください。
 - また、Azure CLI での Azure Resource Manager のセットアップと使用について詳しく理解するために、「[リソース マネージャーでの Azure CLI の使用 ](xplat-cli-azure-resource-manager.md)」を参照してください。
 
-## このチュートリアルの内容 ##
-
-* [サブスクリプションへの接続](#connect)
-* [既存のロール割り当ての確認](#check)
-* [ロールの割り当ての作成](#create)
-* [アクセス許可の確認](#verify)
-* [次のステップ](#next)
-
-## <a id="connect"></a>サブスクリプションへの接続 ##
+## サブスクリプションへの接続 
 
 RBAC は Azure リソース マネージャーのみと協働するので、最初に以下のように入力して Azure リソース マネージャー モードに切り替えます。
 
@@ -86,7 +76,7 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
 このコマンドレットのパラメーターはすべて省略可能です。パラメーターを組み合わせて、さまざまなフィルターで役割の割り当てを確認することができます。
 
-## <a id="create"></a>ロールの割り当ての作成 ##
+## 役割の割り当ての作成 
 
 役割の割り当てを作成するには、以下の点について考慮する必要があります。
 
@@ -124,7 +114,7 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
     `azure role assignment create --mail <user's email> -o Owner -g group1 -r Microsoft.Web/sites -u site1`
 
-## <a id="verify"></a>アクセス許可の確認 ##
+## アクセス許可の確認 
 
 ご使用のアカウントに役割の割り当てがあることを確認してから、次を実行することで、実際に役割の割り当てが付与したアクセス許可を確認することができます。
 
@@ -135,7 +125,7 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
 
 他のコマンドレット (`azure group create` など) を実行する場合、アクセス許可がないとアクセス拒否エラーが表示されます。
 
-## <a id="next"></a>次のステップ ##
+## 次のステップ 
 
 Azure CLI を使用したロールベースのアクセス制御の管理の詳細と、関連トピックについては、以下を参照してください。
 
@@ -143,4 +133,4 @@ Azure CLI を使用したロールベースのアクセス制御の管理の詳�
 - [リソース マネージャーでの Azure CLI の使用](xplat-cli-azure-resource-manager.md)
 - [Using Resource groups to manage your Azure resources (リソース グループを使用した Azure リソースの管理)](resource-groups-overview.md): Microsoft Azure 管理ポータルでリソース グループを作成して管理する方法について説明します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

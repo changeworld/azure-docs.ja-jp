@@ -113,4 +113,4 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

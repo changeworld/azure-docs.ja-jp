@@ -83,7 +83,7 @@ RemoteApp に接続するコンピューターで USB リダイレクトを使�
 コンピューターで USB リダイレクト設定を構成するには
 
 1. ローカル グループ ポリシー エディターを開きます (GPEDIT.MSC)。(コマンド プロンプトから gpedit.msc を実行します。)
-2. **Computer Configuration\Policies\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Connection Client\RemoteFX USB Device Redirection** を開きます。
+2. **Computer Configuration\\Policies\\Administrative Templates\\Windows Components\\Remote Desktop Services\\Remote Desktop Connection Client\\RemoteFX USB Device Redirection** を開きます。
 3. **[このコンピューターからサポートされている他の RemoteFX USB デバイスの RDP リダイレクトを許可する]** をダブルクリックします。
 4. **[有効]** を選択し、**[RemoteFX USB リダイレクト アクセス権の管理者とユーザー]** を選択します。
 5. 管理者権限でコマンド プロンプトを開き、次のコマンドを実行します。 
@@ -97,9 +97,9 @@ RemoteApp に接続するコンピューターで USB リダイレクトを使�
 2. グループ ポリシー管理コンソールを開きます。(**[開始] > [管理ツール] > [グループ ポリシー管理]** の順にクリックします。)
 3. ポリシーを作成するドメインまたは組織単位に移動します。
 4. **[既定のドメイン ポリシー]** を右クリックし、**[編集]** をクリックします。
-5. **Computer Configuration\Policies\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Connection Client\RemoteFX USB Device Redirection** を開きます。
+5. **Computer Configuration\\Policies\\Administrative Templates\\Windows Components\\Remote Desktop Services\\Remote Desktop Connection Client\\RemoteFX USB Device Redirection** を開きます。
 6. **[このコンピューターからサポートされている他の RemoteFX USB デバイスの RDP リダイレクトを許可する]** をダブルクリックします。
 7. **[有効]** を選択し、**[RemoteFX USB リダイレクト アクセス権の管理者とユーザー]** を選択します。
 8. **[OK]** をクリックします。  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

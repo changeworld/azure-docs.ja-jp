@@ -169,9 +169,10 @@
 2. TwilioCloud WAR を解凍するように **startup.cmd** を変更します。
 3. アプリケーションをコンピューティング エミュレーター用にコンパイルします。
 4. コンピューティング エミュレーターでデプロイを開始します。
-5. ブラウザーを開き、 **http://localhost:8080/TwilioCloud/callform.jsp**を実行します。6. フォームで値を入力し、**[電話をかける]** をクリックして、makecall.jsp で結果を確認します。
+5. ブラウザーを開き、****http://localhost:8080/TwilioCloud/callform.jsp** を実行します。
+6. フォームで値を入力し、**[電話をかける]** をクリックして、makecall.jsp で結果を確認します。
 
-Azure にデプロイする準備ができたら、クラウドへのデプロイ用に再コンパイルし、Azure にデプロイして、ブラウザーで http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp を実行します( *your_hosted_name* は実際の値に置き換えてください)。
+Azure にデプロイする準備ができたら、クラウドへのデプロイ用に再コンパイルし、Azure にデプロイして、ブラウザーで http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp を実行します( *your\_hosted\_name* は実際の値に置き換えてください)。
 
 ## 次のステップ
 Azure 上の Java で Twilio を使用した基本機能を示すために、このコードが用意されました。運用環境で Azure にデプロイする前に、エラー処理やその他の機能をさらに追加することができます。次に例を示します。
@@ -208,4 +209,4 @@ Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を
 [twilio_java]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaCallForm.jpg
 [twilio_java_response]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaMakeCall.jpg
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

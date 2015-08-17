@@ -147,4 +147,4 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 ## 次のステップ
 デバイスのデプロイまたは Web プロキシ設定の構成中に問題が発生した場合は、[StorSimple デバイスのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページを参照してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

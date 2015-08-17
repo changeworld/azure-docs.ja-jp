@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="11/25/2014" 
+	ms.date="08/02/2015" 
 	ms.author="microsofthelp@twilio.com"/>
 
 
@@ -23,7 +23,7 @@
 
 このガイドでは、Azure でホストされる Web ページから Twilio を使用して通話する方法を説明します。次のスクリーンショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
 
-![Azure call form using Twilio and ASP.NET][twilio\_dotnet\_basic\_f
+![Twilio および ASP.NET を使用した Azure 通話フォーム][twilio_dotnet_basic_form]
 
 ## <a name="twilio-prereqs"></a>前提条件
 
@@ -192,4 +192,4 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
 
 [azure_runtime_ref_dotnet]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -57,7 +57,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
     * **-u**: 要求の認証に使用するユーザー名とパスワード
     * **-G**: GET 要求であることを示します。
 
-    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。次のコマンドを使用して、Hive のバージョンを要求することもできます。
+    URL の先頭は ****https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。次のコマンドを使用して、Hive のバージョンを要求することもできます。
 
         curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
 
@@ -109,7 +109,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 
     > [AZURE.NOTE]この Curl 要求では、ジョブに関する情報が記載された JavaScript Object Notation (JSON) ドキュメントが返されます。状態値のみを取得するには jq を使用します。
 
-4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、**wasb:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
+4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、****wasb:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
 
     これらのファイルは [Mac、Linux、Windows 用の Azure CLI](xplat-cli.md) を使用して一覧表示し、ダウンロードできます。たとえば、**example/curl** 内のファイルを一覧表示するには、次のコマンドを使用します。
 
@@ -119,7 +119,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive
 
 		azure storage blob download <container-name> <blob-name> <destination-file>
 
-	> [AZURE.NOTE]`-a` および `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を設定する必要があります。詳細情報については、「<a href="hdinsight-upload-data.md" target="_blank"」 をご覧ください。
+	> [AZURE.NOTE]`-a` および `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE\_STORAGE\_ACCOUNT** と **AZURE\_STORAGE\_ACCESS\_KEY** を設定する必要があります。詳細情報については、「<a href="hdinsight-upload-data.md" target="\_blank"」 をご覧ください。
 
 6. 次のステートメントを使用して、**errorLogs** という名前の新しい "内部" テーブルを作成します。
 
@@ -189,4 +189,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

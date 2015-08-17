@@ -30,7 +30,7 @@
 
 ## docker マシンを取得またはビルドする
 
-**docker-machine** を始める最も簡単な方法は、[release share](https://github.com/docker/machine/releases) から直接該当のリリースをダウンロードすることです。このチュートリアルでは、クライアントとして x64 コンピューターで Ubuntu を実行していたので、**docker-machine_linux-amd64** イメージを使用しています。
+**docker-machine** を始める最も簡単な方法は、[release share](https://github.com/docker/machine/releases) から直接該当のリリースをダウンロードすることです。このチュートリアルでは、クライアントとして x64 コンピューターで Ubuntu を実行していたので、**docker-machine\_linux-amd64** イメージを使用しています。
 
 [contributing to machine](https://github.com/docker/machine#contributing) の手順でも、自分で **docker-machine** をビルドできます。ビルドには 1 GB 以上の空き容量が必要になりますが、これでご希望の環境を自由にビルドできるようになります。
 
@@ -38,7 +38,7 @@
 
 <br />
 
->  いずれの方法にしても、コマンドラインでバイナリ ディレクトリを直接呼び出すか、**/usr/local/bin** などのパス情報をバイナリで指定する必要があります。また、「`chmod +x` &lt;*`binaryName`*&gt;」と入力して実行可能にする必要があります (ここで、&lt;*`binaryName`*&gt; は実行可能な Docker マシンの名前)。このチュートリアルでは、**docker-machine_linux-amd64** という名前を使用しています。
+>  いずれの方法にしても、コマンドラインでバイナリ ディレクトリを直接呼び出すか、**/usr/local/bin** などのパス情報をバイナリで指定する必要があります。また、「`chmod +x` &lt;*`binaryName`*&gt;」と入力して実行可能にする必要があります (ここで、&lt;*`binaryName`*&gt; は実行可能な Docker マシンの名前)。このチュートリアルでは、**docker-machine\_linux-amd64** という名前を使用しています。
 
 ## Docker、Machine、Azure の証明書とキー ファイルの作成
 
@@ -210,4 +210,4 @@ Docker でコンテナーのポート 80 が VM のポート 49153 に割り当�
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

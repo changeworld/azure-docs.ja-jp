@@ -24,7 +24,7 @@ BLOB を使用するには、まず、Azure *ストレージ アカウント*を
 
 http://&lt;*StorageAccount*&gt;.blob.core.windows.net/&lt;*Container*&gt;/&lt;*BlobName*&gt;
 
-&lt;\*StorageAccount\*&gt; は新しいストレージ アカウントが作成されたときに割り当てられる一意の識別子で、&lt;\*Container\*&gt; および &lt;\*BlobName\*&gt; は、特定のコンテナーの名前と、そのコンテナー内の BLOB の名前です。
+&lt;*StorageAccount*&gt; は新しいストレージ アカウントが作成されたときに割り当てられる一意の識別子で、 &lt;*Container*&gt; と &lt;*BlobName*&gt; は、特定のコンテナーの名前と、そのコンテナー内の BLOB の名前です。
 
 Azure には、2 つの異なる種類の BLOB があります。選択肢は以下のとおりです。
 
@@ -163,7 +163,7 @@ Hadoop on Azure を使用するには、まず、このクラウド プラット
 
 Azure では、MapReduce ジョブの対象となるデータが、通常は BLOB ストレージに保持されます。しかし、Hadoop の MapReduce ジョブでは、データは *Hadoop 分散ファイル システム (HDFS)* に格納されていると想定されています。HDFS は、いくつかの点で BLOB ストレージに似ています。たとえば、複数の物理サーバー間でデータを複製します。Hadoop on Azure は、図で示されているように、この機能を重複させるのではなく、代わりに HDFS API を通じて BLOB ストレージを公開します。MapReduce ジョブのロジックからは通常の HDFS ファイルにアクセスしているように見えますが、実際には BLOB からそこにストリーミングされたデータを操作しています。複数のジョブが同じデータに対して実行される場合をサポートするために、Hadoop on Azure ではデータを BLOB から VM で実行されている HDFS 全体にコピーすることもできます。
 
-MapReduce ジョブは、現在では主に Java で記述されており、Hadoop on Azure でもそのアプローチがサポートされています。Microsoft では、他の言語 (C#、F#、JavaScript など) による MapReduce ジョブの作成もサポートされています。目標は、この Big Data テクノロジに、より大きな開発者のグループが、より簡単にアクセスできるようにすることです。
+MapReduce ジョブは、現在では主に Java で記述されており、Hadoop on Azure でもそのアプローチがサポートされています。Microsoft では、他の言語 (C#、F\#、JavaScript など) による MapReduce ジョブの作成もサポートされています。目標は、この Big Data テクノロジに、より大きな開発者のグループが、より簡単にアクセスできるようにすることです。
 
 Hadoop には、HDFS と MapReduce の他に、ユーザーが自分で MapReduce ジョブを記述しなくてもデータを分析できるようにするためのテクノロジも含まれています。たとえば、Pig はビッグ データの分析用に設計された高レベル言語であり、Hive は SQL 風の HiveQL と呼ばれる言語を提供します。Pig も Hive も実際には HDFS データを処理する MapReduce ジョブを生成しますが、ユーザーからはその複雑さが見えないようになっています。どちらも Hadoop on Azure に付属しています。
 
@@ -181,4 +181,4 @@ Big Data 分析は重要なので、Hadoop も重要です。Microsoft は、Had
 [SQL-tblstor]: ./media/cloud-storage/Data_06_TblStorage.png
 [hadoop]: ./media/cloud-storage/Data_07_Hadoop.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

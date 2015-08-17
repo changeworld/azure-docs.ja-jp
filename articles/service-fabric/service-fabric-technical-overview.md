@@ -54,4 +54,4 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 - [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

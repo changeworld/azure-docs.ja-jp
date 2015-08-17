@@ -91,7 +91,7 @@ Windows 環境で実行していない場合は、qemu-img を使用して変換
 		rounded_size=$((($size/$MB + 1)*$MB))
 		echo "Rounded Size = $rounded_size"
 
- 3. 上記のスクリプトのセットとして $rounded_size を使用して RAW ディスクのサイズを変更します。
+ 3. 上記のスクリプトのセットとして $rounded\_size を使用して RAW ディスクのサイズを変更します。
 
 		# qemu-img resize MyLinuxVM.raw $rounded_size
 
@@ -123,9 +123,9 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
 最低限、以下のパッチが適用されていない場合は、Azure 上で問題が発生することがわかっているため、これらのパッチをカーネルに含める必要があります。この一覧は、すべてのディストリビューションに対して包括的でも完全でもありません。
 
-- [ata_piix: 既定でディスクを Hyper-V ドライバーに従うようにする](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
+- [ata\_piix: 既定でディスクを Hyper-V ドライバーに従うようにする](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
 - [storvsc: RESET パスの転送中パケットを正しく考慮する](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
-- [storvsc: WRITE_SAME の使用を回避する](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
+- [storvsc: WRITE\_SAME の使用を回避する](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
 - [storvsc: RAID と仮想ホスト アダプター ドライバーの WRITE SAME を無効にする](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
 - [storvsc: NULL ポインターの逆参照の修正](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
 - [storvsc: リング バッファーのエラーにより I/O の凍結が発生する可能性がある](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
@@ -189,4 +189,4 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
 - その後、仮想マシンをシャットダウンし、Azure に VHD をアップロードする必要があります。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

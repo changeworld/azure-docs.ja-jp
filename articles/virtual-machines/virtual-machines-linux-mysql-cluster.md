@@ -310,15 +310,15 @@ Pacemaker が DRBD リソース、マウント ポイント、および MySQL �
 
 次のスクリーンショットは、1 つのノードが停止している状態の `crm_mon` を示しています (Control-C で終了)。
 
-![crm_mon node stopped](media/virtual-machines-linux-mysql-cluster/image002.png)
+![crm\_mon node stopped](media/virtual-machines-linux-mysql-cluster/image002.png)
 
 次のスクリーンショットでは、両方のノードのうち、1 つがマスター、もう 1 つがスレーブとなっています。
 
-![crm_mon operational master/slave](media/virtual-machines-linux-mysql-cluster/image003.png)
+![crm\_mon operational master/slave](media/virtual-machines-linux-mysql-cluster/image003.png)
 
 ## テスト
 
-これで、自動フェールオーバー シミュレーションの準備が完了しました。このシミュレーションを実行する場合、ソフト方式とハード方式の 2 つの方法があります。ソフト方式は、クラスターのシャットダウン機能 (``crm_standby -U `uname -n` -v on``) を利用します。マスターでこの機能を使用し、スレーブが引き継ぎます。この機能は、必ずオフに戻してください (そうしないと、crm_mon は、1 つのノードがスタンバイ中であると通知します)。
+これで、自動フェールオーバー シミュレーションの準備が完了しました。このシミュレーションを実行する場合、ソフト方式とハード方式の 2 つの方法があります。ソフト方式は、クラスターのシャットダウン機能 (``crm_standby -U `uname -n` -v on``) を利用します。マスターでこの機能を使用し、スレーブが引き継ぎます。この機能は、必ずオフに戻してください (そうしないと、crm\_mon は、1 つのノードがスタンバイ中であると通知します)。
 
 ハード方式は、ポータル経由でプライマリ VM (hadb01) をシャットダウンするか、この VM の実行レベル (停止、シャットダウンなど) を変更します。さらに、マスターがダウンしているという通知を Corosync と Pacemaker に送る必要があります。このテストはメンテナンス時に有用ですが、単に VM をフリーズさせるだけでも同じ状況を強制的に作り出すこともできます。
 
@@ -348,4 +348,4 @@ Pacemaker が DRBD リソース、マウント ポイント、および MySQL �
 - DRBD はデバイスをリプリケートするためのメカニズムとして、仮想スイッチで VM を相互に接続しているため、書き込み性能は、仮想スイッチでの接続状態に左右されます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

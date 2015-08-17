@@ -4,4 +4,4 @@
 - [(Windows Phone Silverlight 8.x | .NET)](../articles/mobile-services-dotnet-backend-windows-phone-upload-data-blob-storage.md)
 - [(Windows Phone Silverlight 8.x | Javascript)](../articles/mobile-services-windows-phone-upload-data-blob-storage.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

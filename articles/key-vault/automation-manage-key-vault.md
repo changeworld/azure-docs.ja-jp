@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/16/2015"
+	ms.date="07/30/2015"
 	ms.author="csand"/>
 
 
@@ -46,4 +46,4 @@ Azure Key Vault コマンドレットによって、キーの作成やインポ�
 * [Azure Key Vault の PowerShell スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Azure-Key-Vault-Powershell-1349b091)に関するページを参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

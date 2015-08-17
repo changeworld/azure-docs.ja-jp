@@ -69,10 +69,10 @@ SaaS アプリケーションが正常に機能するために必要となる属
 - **定数** – ターゲットの属性に、指定した特定の文字列を設定します。
 
 
-- **式** - ターゲットの属性を、スクリプトのような式の結果に基づいて設定します。詳細については、「Azure Active Directory における属性マッピングの式の書き方」を参照してください。
+- **式** - ターゲットの属性を、スクリプトのような式の結果に基づいて設定します。詳細については、「[Azure Active Directory での属性マッピングのための式の作成](active-directory-saas-writing-expressions-for-attribute-mappings.md)」を参照してください。
 
 
-- **なし** - ターゲットの属性を、変更しません。ただし、ターゲットの属性が空の場合は、指定した既定値が設定されます。
+- **なし** - ターゲットの属性を変更しません。ただし、ターゲットの属性が空の場合は、指定した既定値が設定されます。
 
 
 
@@ -82,16 +82,12 @@ Microsoft Azure AD では、同期プロセスの非常に効率的な実装を�
 
 
 
-
-## その他のリソース
-
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-customizing-attribute-mappings/ic765497.png
 [2]: ./media/active-directory-saas-customizing-attribute-mappings/ic775419.png
 [3]: ./media/active-directory-saas-customizing-attribute-mappings/ic775420.png
 [4]: ./media/active-directory-saas-customizing-attribute-mappings/ic775421.png
- 
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -163,7 +163,7 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 
 
 
-![livebackoff_filter][livebackoff_filter]
+![livebackoff\_filter][livebackoff_filter]
 
 
 ###複数のルールを 1 つのフィルターに組み合わせる
@@ -209,4 +209,4 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -12,7 +12,7 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.date="07/28/2015"
 	ms.author="krisragh"/>
 
@@ -40,18 +40,18 @@
 
 3. **[TodoItem テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
 
-4. **[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。これにより、モバイル サービスに接続されている _To do list_ サンプル アプリケーションのプロジェクトが、Mobile Services iOS SDK と共にダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
+4. **[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。これにより、Mobile Services に接続されている _To do list_ サンプル アプリケーションのプロジェクトが、Mobile Services iOS SDK と共にダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
 ## 新しい iOS アプリを実行する
 
 [AZURE.INCLUDE [mobile-services-ios-run-app](../../includes/mobile-services-ios-run-app.md)]
 
-<ol start="4"><li><p>管理ポータルに戻り、[<strong>データ</strong>] タブ、<strong>TodoItems</strong> テーブルの順にクリックします。これで、アプリケーションによってテーブルに挿入されたデータを参照できます。<p></li></ol></p>
+<ol start="4"> <li><p>管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。これで、アプリケーションによってテーブルに挿入されたデータを参照できます。<p></li></ol></p>
 
 ## <a name="next-steps"> </a>次のステップ
 Mobile Services で重要になるこれ以外の作業については、以下のトピックをご覧ください。
 
-* [既存のアプリにモバイル サービスを追加] <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
+* [既存のアプリにモバイル サービスを追加] <br/>Mobile Services を使用してデータの格納とクエリを実行する方法について説明します。
 
 * [オフライン データの同期の使用]<br/> オフライン データの同期を使用して、アプリの応答性と信頼性を高める方法について説明します。
 
@@ -88,4 +88,4 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [.NET バックエンド バージョン]: mobile-services-dotnet-backend-ios-get-started.md
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -192,7 +192,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 		Server listening at port 3000
 
-2. Web ブラウザーを開き、アドレスとして **http://localhost:3000/** を入力します。次のようなページが表示されます。
+2. Web ブラウザーを開き、アドレスとして ****http://localhost:3000/** を入力します。次のようなページが表示されます。
 
 	![web dashboard](./media/hdinsight-storm-sensor-data-analysis/emptydashboard.png)
 
@@ -258,7 +258,7 @@ Event Hub は、この例のデータ ソースです。新しい Event Hub を�
 
 2. Web サイトが作成されたら、Azure ポータルに移動して、**[構成]** を選択します。**[Web ソケット]** を有効にし、ページの下部にある **[保存]** をクリックします。
 
-2. **hdinsight-eventhub-example\TemperatureMonitor\src\main\java\com\microsoft\examples\bolts\DashboardBolt.java** を開き、発行されたダッシュボードの URL をポイントするように次の行を変更します。
+2. **hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts\\DashboardBolt.java** を開き、発行されたダッシュボードの URL をポイントするように次の行を変更します。
 
 		socket = IO.socket("http://mywebsite.azurewebsites.net");
 
@@ -352,7 +352,7 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
 
 	curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
 
-返された JSON データで、**"host_name"** エントリを見つけます。これには、クラスターのノードの FQDN が含まれています。次に例を示します。
+返された JSON データで、**"host\_name"** エントリを見つけます。これには、クラスターのノードの FQDN が含まれています。次に例を示します。
 
 	...
 	"host_name": "wordkernode0.<clustername>.b1.cloudapp.net
@@ -362,13 +362,13 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
 
 ### HBase ボルトを有効にします。
 
-1. **hdinsight-eventhub-example\TemperatureMonitor\conf\hbase-site.xml** を開き、次の行の `suffix` エントリを前に HBase クラスターに取得した DNS サフィックスに置き換えます。これらの変更を行った後は、ファイルを保存します。
+1. **hdinsight-eventhub-example\\TemperatureMonitor\\conf\\hbase-site.xml** を開き、次の行の `suffix` エントリを前に HBase クラスターに取得した DNS サフィックスに置き換えます。これらの変更を行った後は、ファイルを保存します。
 
 		<value>zookeeper0.suffix,zookeeper1.suffix,zookeeper2.suffix</value>
 
 	これは、HBase クラスターとの通信に HBase ボルトによって使用されます。
 
-1. テキスト エディターで、**hdinsight-eventhub-example\TemperatureMonitor\src\main\java\com\microsoft\examples\bolts** を開き、最初から `//` を削除して次の行を非コメント化します。これらの変更を行った後は、ファイルを保存します。
+1. テキスト エディターで、**hdinsight-eventhub-example\\TemperatureMonitor\\src\\main\\java\\com\\microsoft\\examples\\bolts** を開き、最初から `//` を削除して次の行を非コメント化します。これらの変更を行った後は、ファイルを保存します。
 
 		topologyBuilder.setBolt("HBase", new HBaseBolt("SensorData", mapper).withConfigKey("hbase.conf"), spoutConfig.getPartitionCount())
     	  .fieldsGrouping("Parser", "hbasestream", new Fields("deviceid")).setNumTasks(spoutConfig.getPartitionCount());
@@ -385,7 +385,7 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
 
 2. デスクトップで HDInsight コマンド ラインを開始し、次のコマンドを入力します。
 
-    cd %HBASE_HOME% bin\hbase shell
+    cd %HBASE\_HOME% bin\\hbase shell
 
 3. HBase シェルから、次のコマンドを入力して、センサー データを格納するテーブルを作成します。
 
@@ -420,4 +420,4 @@ Storm クラスターのトポロジを開始し、データを処理すると�
 
 [azure-portal]: https://manage.windowsazure.com/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

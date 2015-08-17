@@ -140,7 +140,7 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ~~~
 
-正常性チェックの障害を調査するには、まず、サービスのファブリックの正常性モデルの理解が必要ですが、このような詳細な知識がなくても、エラーの正常性レポート (この場合は "InjectedFault") により、*fabric:/DemoApp/Svc3* と *fabric:/DemoApp/Svc2* の 2 つのサービスが異常なことを確認できます。この例では、4 つのサービスのうち 2 つは異常な状態で、既定のターゲットの 0% の異常な状態を下回っています (*MaxPercentUnhealthyServices*)。
+正常性チェックの障害を調査するには、まず、Service Fabric の正常性モデルの理解が必要ですが、このような詳細な知識がなくても、エラーの正常性レポート (この場合は "InjectedFault") により、*fabric:/DemoApp/Svc3* と *fabric:/DemoApp/Svc2* の 2 つのサービスが異常なことを確認できます。この例では、4 つのサービスのうち 2 つは異常な状態で、既定のターゲットの 0% の異常な状態を下回っています (*MaxPercentUnhealthyServices*)。
 
 アップグレードを開始するときに、**FailureAction** を手動で指定することで、アップグレードが中断されたため、追加のアクションを実行する前に、必要に応じて障害が発生している状態のライブ システムを調査できます。
 
@@ -225,4 +225,4 @@ Service Fabric は、正常性評価のためのエンティティ (レプリカ
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

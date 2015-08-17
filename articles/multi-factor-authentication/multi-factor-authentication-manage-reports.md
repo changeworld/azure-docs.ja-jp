@@ -50,4 +50,4 @@ Azure Multi-Factor Authentication は、個人や組織が使用できるいく�
 * [Azure Multi-Factor Authentication (MSDN)](https://msdn.microsoft.com/library/azure/dn249471.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

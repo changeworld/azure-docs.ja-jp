@@ -107,4 +107,4 @@ Console.WriteLine("Greeting is {0}", message.Content);
 >[AZURE.NOTE]通信フレームワークは、サービスでスローされた例外のクライアントへの伝播を担当します。そのため、ServiceProxy を使用したクライアントでの例外処理ロジックでは、サービスがスローする可能性がある例外を直接処理できます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

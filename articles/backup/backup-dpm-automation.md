@@ -33,7 +33,7 @@ Full list of cmdlets: Get-Command Only DPM cmdlets: Get-DPMCommand Get general h
 
 ## セットアップと登録
 ### DPM サーバーへの Microsoft Azure Backup エージェントのインストール
-Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)から入手することができます。インストーラーを、*C:\Downloads* などの、簡単にアクセスできる場所に保存します。
+Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)から入手することができます。インストーラーを、*C:\\Downloads* などの、簡単にアクセスできる場所に保存します。
 
 エージェントをインストールするには、**DPM サーバー**の管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
@@ -58,23 +58,15 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | オプション | 詳細 | 既定値 |
 | ---- | ----- | ----- |
-| /q | サイレント インストール | - |
-| /p:"location" | Azure Backup エージェントのインストール フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent |
-| /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m | Microsoft Update のオプトイン | - |
-| /nu | インストールの完了後に更新プログラムを確認しない | - |
-| /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - |
-| /ph | プロキシ ホストのアドレス | - |
-| /po | プロキシ ホストのポート番号 | - |
-| /pu | プロキシ ホストのユーザー名 | - |
-| /pw | プロキシ パスワード | - |
+| /q | サイレント インストール | - | | /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent | | /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch | | /m | Microsoft Update のオプトイン | - | | /nu | インストールの完了後に更新プログラムを確認しない | - | | /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - | | /ph | プロキシ ホストのアドレス | - | | /po | プロキシ ホストのポート番号 | - | | /pu | プロキシ ホストのユーザー名 | - | | /pw | プロキシ パスワード | - |
 
 ### Microsoft Azure Backup サービスへの登録
 Microsoft Azure Backup サービスへの登録を実行する前に、[前提条件](backup-azure-dpm-introduction.md)が満たされていることを確認する必要があります。前提条件は、以下のとおりです。
 
 - 有効な Azure サブスクリプションがあること
-- バックアップ コンテナーを作成していること
-- コンテナーの資格情報をダウンロードし、アクセスしやすい場所 (*C:\Downloads* など) に保管していること。コンテナーの資格情報ファイルは、わかりやすい名前に変更することもできます。
+- バックアップ コンテナーの作成
+- コンテナーの資格情報をダウンロードし、アクセスしやすい場所 (*C:\\Downloads* など) に保管していること。コンテナーの資格情報ファイルは、わかりやすい名前に変更することもできます。
+
 コンテナーへのマシンの登録は、[Start-DPMCloudRegistration](https://technet.microsoft.com/library/jj612787) コマンドレットを使用して実行します。
 
 ```
@@ -118,7 +110,7 @@ DPM サーバーで実行されている Microsoft Azure Backup エージェン�
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
 ```
 
-上の例では、ステージング領域は Azure PowerShell オブジェクト ```$setting``` の *C:\StagingArea* に設定されます。指定したフォルダーが既に存在することを確認します。存在しない場合は、サブスクリプション設定の最終コミットが失敗します。
+上の例では、ステージング領域は Azure PowerShell オブジェクト ```$setting``` の *C:\\StagingArea* に設定されます。指定したフォルダーが既に存在することを確認します。存在しない場合は、サブスクリプション設定の最終コミットが失敗します。
 
 
 ### 暗号化の設定
@@ -189,7 +181,7 @@ PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 データソースが保護グループに追加されたら、次の手順は、[Set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) コマンドレットを使用した保護方法の指定です。この例では、保護グループをローカル ディスクとクラウド バックアップ用にセットアップします。
 
 ```
-PS C:\> Set-DPMProtectionType -ProtectionGroup $PG -ShortTerm Disk –LongTerm Online
+PS C:\> Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
 ```
 
 ### 保有期間の範囲設定
@@ -216,7 +208,7 @@ PS C:\> Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList
 ```Set-DPMPolicyObjective``` コマンドレットを使用して保護目標を指定する場合、DPM は既定のバックアップ スケジュールを自動的に設定します。既定のスケジュールを変更するには、[Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) コマンドレットと、それに続いて [Set-DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) コマンドレットを使用します。
 
 ```
-PS C:\> $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTermOnline
+PS C:\> $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
 PS C:\> Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[0] -TimesOfDay 02:00
 PS C:\> Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[1] -TimesOfDay 02:00 -DaysOfWeek Sa,Su –Interval 1
 PS C:\> Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[2] -TimesOfDay 02:00 -RelativeIntervals First,Third –DaysOfWeek Sa
@@ -280,4 +272,4 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 ## 次のステップ
 Azure DPM Backup の詳細については、「[Azure DPM Backup の概要](backup-azure-dpm-introduction.md)」を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

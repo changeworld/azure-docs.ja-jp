@@ -41,7 +41,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 ヒープ ダンプは、サービスの開始時にオプション (opts またはパラメーターとも呼ばれる) を JVM に渡すことによって有効になります。ほとんどの Hadoop サービスでは、サービスを開始するのに使用されるシェル スクリプトを変更することでこれを実現できます。
 
-各スクリプトには、JVM に渡されるオプションを含む ***_OPTS** のエクスポートが含まれています。たとえば、**hadoop env.sh** スクリプトには、`export HADOOP_NAMENODE_OPTS=` で始まる行に NameNode サービスのオプションが含まれています。
+各スクリプトには、JVM に渡されるオプションを含む ***\_OPTS** のエクスポートが含まれています。たとえば、**hadoop env.sh** スクリプトには、`export HADOOP_NAMENODE_OPTS=` で始まる行に NameNode サービスのオプションが含まれています。
 
 これらが MapReduce サービスの子プロセスである場合は、マップと削減のプロセスが多少異なります。マップや削減のプロセスはそれぞれ子コンテナーで実行され、これらの JVM オプションを含む 2 つのエントリがあります。どちらも **mapred-site.xml** に含まれています。
 
@@ -96,9 +96,9 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     ![フィルター処理された一覧](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
 
-4. ヒープ ダンプを有効にするサービスの ***_OPTS** エントリを検索し、有効にするオプションを追加します。次の図では、`-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` を **HADOOP_NAMENODE_OPTS** エントリに追加しました。
+4. ヒープ ダンプを有効にするサービスの ***\_OPTS** エントリを検索し、有効にするオプションを追加します。次の図では、`-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` を **HADOOP\_NAMENODE\_OPTS** エントリに追加しました。
 
-    ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
+    ![HADOOP\_NAMENODE\_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
 	> [AZURE.NOTE]マップまたは削減の子プロセスのヒープ ダンプが有効になっている場合は、代わりに、**mapreduce.admin.map.child.java.opts** と **mapreduce.admin.reduce.child.java.opts** というフィールドを検索します。
 
@@ -120,4 +120,4 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 8. サービスが再開したら、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。これにより、Ambari はサービスのアラートの監視を再開します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

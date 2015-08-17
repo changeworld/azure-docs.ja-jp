@@ -65,7 +65,7 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 
 ##C# トポロジの作成
 
-1.	HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
+1.	HDInsight Tools for Visual Studio の最新バージョンをまだインストールしていない場合は、「[HDInsight Tools for Visual Studio を使用して Hive クエリを実行する](hdinsight-hadoop-visual-studio-tools-get-started.md)」をご覧ください。
 
 2.	Visual Studio を開いて、**[ファイル]** > **[新規]**、**[プロジェクト]** の順に選択します。
 
@@ -417,13 +417,13 @@ HDInsight Tools for Visual Studio には次のテンプレートがあります�
 
 ハイブリッド トポロジの例として、新しいプロジェクトを作成して **[Storm ハイブリッド サンプル]** を選択します。これで、次を示す複数のトポロジを含む、完全にコメントされたサンプルが作成されます。
 
--	**Java スパウト** と **C# ボルト**: **HybridTopology_javaSpout_csharpBolt** で定義
+-	**Java スパウト** と **C# ボルト**: **HybridTopology\_javaSpout\_csharpBolt** で定義
 
-	-	**HybridTopologyTx_javaSpout_csharpBolt** で定義されたトランザクション バージョン
+	-	**HybridTopologyTx\_javaSpout\_csharpBolt** で定義されたトランザクション バージョン
 
--	**C# スパウト** と **Java ボルト**: **HybridTopology_csharpSpout_javaBolt** で定義
+-	**C# スパウト** と **Java ボルト**: **HybridTopology\_csharpSpout\_javaBolt** で定義
 
-	-	**HybridTopologyTx_csharpSpout_javaBolt** で定義されたトランザクション バージョン
+	-	**HybridTopologyTx\_csharpSpout\_javaBolt** で定義されたトランザクション バージョン
 
 		> [AZURE.NOTE]このバージョンは、Closure コードをテキスト ファイルから Java コンポーネントとして使用する方法も示しています。
 
@@ -595,7 +595,7 @@ SCP.NET の最新リリースでは、NuGet からパッケージをアップグ
 
 6.	変更を保存して、**F5** キーをクリックするか、**[デバッグ]** > **[デバッグの開始]** を使用してプロジェクトを起動します。コンソール ウィンドウが表示され、テストの進行に合わせてステータスを記録します。**[テストの完了]** と表示されたら、いずれかのキーを押してウィンドウを閉じます。
 
-7.	**Windows エクスプローラー**を使用して、たとえば、**C:\Users<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount** などのプロジェクトが含まれるディレクトリを見つけます。このディレクトリで、**Bin** を開き、**[デバッグ]** をクリックします。テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。それぞれのテキスト ファイルを開いてデータを確認します。
+7.	**Windows エクスプローラー**を使用して、たとえば、**C:\\Users<your\_user\_name>\\Documents\\Visual Studio 2013\\Projects\\WordCount\\WordCount** などのプロジェクトが含まれるディレクトリを見つけます。このディレクトリで、**Bin** を開き、**[デバッグ]** をクリックします。テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。それぞれのテキスト ファイルを開いてデータを確認します。
 
 	> [AZURE.NOTE]これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。たとえば、**splitter.txt** ファイルの [[97,103,111]] は「and」という単語を示します。
 
@@ -655,4 +655,4 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 
 -	[HDInsight での HBase の使用](../hdinsight-hbase-get-started.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

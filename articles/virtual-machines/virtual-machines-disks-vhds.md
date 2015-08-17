@@ -65,4 +65,4 @@ Windows 仮想マシンの場合:
 -  [Windows 仮想マシンをキャプチャする](virtual-machines-capture-image-windows-server.md)
 -  [ディスクを取り外す](storage-windows-detach-disk.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

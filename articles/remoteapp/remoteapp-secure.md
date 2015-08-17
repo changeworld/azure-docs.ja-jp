@@ -33,7 +33,7 @@ Azure RemoteApp には、一元管理された Windows アプリにユーザー�
 1.	RemoteApp コレクションがドメインに参加している場合は、任意の[グループ ポリシー](https://technet.microsoft.com/library/cc725828.aspx)を適用できます (ただし、[こちら](../azure-subscription-service-limits.md)に記載されているアイドル ポリシーおよび切断時のタイムアウト ポリシーを除く)。
 2.	(コレクションがドメインに参加していない場合、または AD に適切な権限がない場合は) グループ ポリシーの代わりに、[ローカル ポリシー](https://technet.microsoft.com/library/cc775702.aspx)をテンプレート イメージとして構成できます。2 つのポリシーが競合している場合は、グループ ポリシーがローカル ポリシーに優先することに注意してください。
 3.	OS/アプリの設定の中にはポリシーで構成できないものがありますが、これはテンプレート イメージを構成しているときに、[RegEdit ツール](./remoteapp-hybridtrouble.md)を使用してレジストリで構成できます。
-4.	[Windows ファイアウォール](http://windows.microsoft.com/ja-jp/windows-8/Windows-Firewall-from-start-to-finish)を使用して、アプリが実行されているコンピューターにおけるネットワーク アクセスを制御できます。ここで定義されている URL とポートをブロックしないようにするだけです。
+4.	[Windows ファイアウォール](http://windows.microsoft.com/en-US/windows-8/Windows-Firewall-from-start-to-finish)を使用して、アプリが実行されているコンピューターにおけるネットワーク アクセスを制御できます。ここで定義されている URL とポートをブロックしないようにするだけです。
 5.	[AppLocker](https://technet.microsoft.com/library/hh831440.aspx) を使用して、ユーザーがどのアプリケーションおよびファイルを実行できるかを制御できます。たとえば、あなたが発行していないアプリケーションでも、あなたがコレクションを作成するときに使用したイメージでそのアプリケーションを使用できれば、経験豊富なユーザーは、そのアプリケーションの実行方法を見つけ出すことができます。AppLocker はこれをブロックできます。
  
 ## 詳細情報
@@ -47,4 +47,4 @@ Azure RemoteApp には、一元管理された Windows アプリにユーザー�
 - [Office 2013 のポリシー](https://technet.microsoft.com/library/cc178969.aspx) ([Office ツールバーのカスタマイズ方法](https://technet.microsoft.com/library/cc179143.aspx)を含む)。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

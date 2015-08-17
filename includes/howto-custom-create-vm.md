@@ -60,4 +60,4 @@
 - [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-how-to-log-on.md)
 - [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-log-on-windows-server.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

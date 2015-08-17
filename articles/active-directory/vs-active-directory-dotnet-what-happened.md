@@ -164,4 +164,4 @@ Azure Active Directory アプリが更新され、*[ディレクトリ データ
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

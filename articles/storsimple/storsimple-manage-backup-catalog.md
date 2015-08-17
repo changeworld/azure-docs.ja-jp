@@ -105,7 +105,7 @@
 
     3. 時間範囲を指定します。
 
-    4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
+    4. チェック マーク アイコン ![Check icon](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
 
     選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 
@@ -117,4 +117,4 @@
 
 [バックアップ カタログ] ページを使用して[バックアップ セットからデバイスを復元する](storsimple-restore-from-backup-set.md)方法について説明します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

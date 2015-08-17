@@ -382,4 +382,4 @@ H、I | ホスト (ファイル サーバーなど)
 これで[オンプレミス StorSimple デバイスを配置して構成する](storsimple-deployment-walkthrough.md)準備ができました。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,7 +1,6 @@
 <properties 
 	pageTitle="機械学習アルゴリズム チート シート | Microsoft Azure" 
 	description="印刷可能な機械学習アルゴリズム チート シートは、Azure Machine Learning Studio で予測モデルに適したアルゴリズムを選択するのに役立ちます。"
-	keywords="algorithm cheat sheet,cheat sheet,machine learning algorithm"	
 	services="machine-learning"
 	documentationCenter="" 
 	authors="brohrer" 
@@ -90,4 +89,4 @@ Here's an example from the [Azure Machine Learning Gallery](http://gallery.azure
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

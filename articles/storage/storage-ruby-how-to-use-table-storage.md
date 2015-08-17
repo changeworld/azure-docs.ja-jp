@@ -58,7 +58,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これらの値を取得するには、次の手順を実行します。
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com/)にログインします。
+1. [Azure の管理ポータル](https://manage.windowsazure.com/)にログインします。
 
 2. 使用するストレージ アカウントを表示します。
 
@@ -159,4 +159,4 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 - GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

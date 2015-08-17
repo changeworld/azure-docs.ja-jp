@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="08/05/2015"
    ms.author="banders"/>
 # Microsoft Azure でサーバーからデータを分析する
 
@@ -21,21 +21,21 @@
 
 Operational Insights は、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを使用します。Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。
 
-[Azure 診断](operational-insights-log-collection.md)を有効にすると、Azure Storage から収集されたデータを使用してクラウド サービスや仮想マシンのイベントおよび IIS ログを迅速に検索することができます。また、Microsoft Monitoring Agent をインストールすると仮想マシンから追加のインサイトを取得することもできます。
+Azure Storage から収集されたデータを使用して、クラウド サービスや仮想マシンのイベントおよび IIS ログを迅速に検索することができます。また、Microsoft Monitoring Agent をインストールすると仮想マシンから追加のインサイトを取得することもできます。
 
-更新の評価、変更の追跡、SQL 評価の各ソリューションはすべて、Microsoft Monitoring Agent と連携して、仮想マシンに関する詳細なインサイトを提供します。まだ有効にしていない場合は、[Operational Insights ポータル](https://preview.opinsights.azure.com/)にサインインしたときに[ソリューションを追加](operational-insights-add-solution.md)することができます。
+更新の評価、変更の追跡、SQL 評価の各ソリューションはすべて、Microsoft Monitoring Agent と連携して、仮想マシンに関する詳細なインサイトを提供します。まだ有効にしていない場合は、[Operational Insights ポータル](https://www.microsoft.com/oms/)にサインインしたときに[ソリューションを追加](operational-insights-setup-workspace.md)することができます。
 
 Azure の仮想マシンの場合は、エージェント ベースのデータ収集を有効にする簡単な方法として、次の 2 つがあります。
 
-- Microsoft Azure 管理ポータル
+- Microsoft Azure の管理ポータル
 
 - PowerShell の使用
 
-ログ データにエージェント ベースの収集を使用する場合、[Operational Insights ポータル](https://preview.opinsights.azure.com/)の [ログの管理] 構成ページで収集するログを構成する必要があります。
+ログ データにエージェント ベースの収集を使用する場合、[Operational Insights ポータル](https://www.microsoft.com/oms/)の [ログの管理] 構成ページで収集するログを構成する必要があります。
 
  >[AZURE.NOTE]Azure 診断を使用してログ データにインデックスを作成するように Operational Insights を構成し、ログを収集するようにエージェントを構成すると、同じログに 2 回インデックスが作成されます。両方のデータ ソースに通常のデータ料金が課金されます。エージェントをインストールしている場合はエージェントを使用してログ データを収集し、Azure 診断によって収集されたログにインデックスを作成しないでください。
 
-## Microsoft Azure 管理ポータル
+## Microsoft Azure の管理ポータル
 
 Operational Insights のエージェントは [Azure ポータル](https://manage.windowsazure.com/#Workspaces/OperationalInsightExtension/Workspaces)からインストールできます。
 
@@ -88,7 +88,7 @@ Azure 診断は、Azure で実行している worker ロール、Web ロール�
 Azure 診断では、次の種類のテレメトリを収集できます。
 
 データ ソース|説明
- ---|--- 
+ ---|---
 IIS Logs|IIS Web サイトに関する情報。
 Azure 診断インフラストラクチャ ログ|診断自体に関する情報。
 IIS の失敗した要求ログ |IIS サイトまたはアプリケーションへの失敗した要求に関する情報。
@@ -96,7 +96,7 @@ Windows イベント ログ|Windows イベント ログ システムに送信さ
 パフォーマンス カウンター|オペレーティング システムとカスタム パフォーマンス カウンター
 クラッシュ ダンプ|アプリケーションがクラッシュした場合のプロセスの状態に関する情報。
 カスタム エラー ログ|アプリケーションまたはサービスで作成されたログ。
-NET EventSource|.NET [EventSource クラス]https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx を使用してコードで生成されたイベント
+NET EventSource|.NET [EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx) を使用してコードで生成されたイベント
 マニフェスト ベースの ETW|すべてのプロセスで生成された ETW イベント
 Syslog|Syslog または Rsyslog デーモンに送信されるイベント
 
@@ -131,7 +131,7 @@ Operational Insights で分析できるログを追加する順番を決定す�
 
 ### 診断を有効にするには
 
-Windows イベント ログを有効にする、または scheduledTransferPeriod を変更するには、「クラウド サービスの診断を有効にする方法」のトピック「[手順 2: Visual Studio ソリューションに diagnostics.wadcfg ファイルを追加する](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step2)」と「[手順 3: アプリケーションの診断を構成する](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step3)」に示す XML 構成ファイル (diagnostics.wadcfg) を使用して Azure 診断を構成します。次の構成ファイルの例では、IIS ログとすべてのイベントをアプリケーションおよびシステムのログから収集します。
+Windows イベント ログを有効にする、または scheduledTransferPeriod を変更するには、「クラウド サービスの診断を有効にする方法」のトピック「[手順 2: Visual Studio ソリューションに diagnostics.wadcfg ファイルを追加する](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step2)」と「[手順 3: 診断機能をアプリケーション向けに構成する](https://msdn.microsoft.com/library/azure/dn482131.aspx#BKMK_step3)」に示す XML 構成ファイル (diagnostics.wadcfg) を使用して Azure 診断を構成します。
 
     <?xml version="1.0" encoding="utf-8" ?>
     <DiagnosticMonitorConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"
@@ -162,19 +162,19 @@ Windows イベント ログを有効にする、または scheduledTransferPerio
     </ConfigurationSettings>
 
 
-**AccountName** および **AccountKey** の値は、Microsoft Azure 管理ポータルのストレージ アカウント ダッシュボードの [アクセス キーの管理] に表示されます。接続文字列のプロトコルは **https** である必要があります。
+**AccountName** および **AccountKey** の値は、Microsoft Azure の管理ポータルのストレージ アカウント ダッシュボードの [アクセス キーの管理] に表示されます。接続文字列のプロトコルは **https** である必要があります。
 
 更新された診断の構成がクラウド サービスに適用され、Azure Storage に診断データが書き込まれていれば、オペレーション インサイトを構成する準備が整っています。
 
 ## イベント ログと IIS ログの収集のために仮想マシンで Azure 診断を有効にする
 
-イベント ログと IIS ログを収集するために、Microsoft Azure 管理ポータルを使用して、仮想マシンで Azure 診断を有効にするには、以下の手順を実行します。
+イベント ログと IIS ログを収集するために、Microsoft Azure の管理ポータルを使用して、仮想マシンで Azure 診断を有効にするには、以下の手順を実行します。
 
 ### Azure 管理ポータルを使用して仮想マシンで Azure 診断を有効にするには
 
 1. 仮想マシンを作成する際に、VM エージェントをインストールします。仮想マシンが既に存在する場合は、VM エージェントが既にインストールされていることを確認します。
-	- 既定の Azure 管理ポータルを使って仮想マシンを作成する場合は、**[カスタム作成]** を実行して **[VM エージェントのインストール]** を選択します。
-	- 新しい Azure 管理ポータルを使って仮想マシンを作成する場合は、**[オプションの構成]**、**[診断]** の順に選択し、**[状態]** を **[オン]** に設定します。
+	- 既定の Azure の管理ポータルを使って仮想マシンを作成する場合は、**[カスタム作成]** を実行して **[VM エージェントのインストール]** を選択します。
+	- 新しい Azure の管理ポータルを使って仮想マシンを作成する場合は、**[オプションの構成]**、**[診断]** の順に選択し、**[状態]** を **[オン]** に設定します。
 
 	完了すると、診断データを収集する Azure 診断の拡張機能が VM に自動的にインストールされ、実行されます。
 
@@ -249,4 +249,4 @@ Azure PowerShell を使用すると、Azure Storage に書き込むイベント�
 
 [プロキシとファイアウォール設定の構成 (省略可能)](../operational-insights-proxy-filewall.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

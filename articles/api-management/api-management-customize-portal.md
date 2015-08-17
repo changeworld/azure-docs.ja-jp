@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="06/16/2015"
+	ms.date="08/05/2015"
 	ms.author="sdanie"/>
 
 # Azure API Management での開発者ポータルのカスタマイズ
@@ -99,4 +99,4 @@
 [bootstrap]: http://getbootstrap.com/
 [LESS 変数]: http://getbootstrap.com/css/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -54,4 +54,4 @@ Azure リソース管理 (ARM) モードで Azure CLI を使用するには、�
 
 > [AZURE.NOTE]「`azure config mode asm`」と入力すると、Azure サービス管理モードに戻してそのコマンドを再度使用できます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

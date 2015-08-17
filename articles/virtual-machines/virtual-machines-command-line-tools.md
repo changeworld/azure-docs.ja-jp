@@ -65,7 +65,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	warn:   Remember to delete it now that it has been imported.
 	info:   Account publish settings imported successfully
 
-> [AZURE.NOTE]publishsettings ファイルには、複数のサブスクリプションの詳細 (サブスクリプション名と ID) を含めることができます。publishsettings ファイルをインポートすると、最初のサブスクリプションが既定の説明として使用されます。別のサブスクリプションを使用するには、次のコマンドを実行します。<code>~$ azure config set subscription &lt;other-subscription-id&gt;</code>
+> [AZURE.NOTE]publishsettings ファイルには、複数のサブスクリプションの詳細 (サブスクリプション名と ID) を含めることができます。publishsettings ファイルをインポートすると、最初のサブスクリプションが既定の説明として使用されます。別のサブスクリプションを使用するには、次のコマンドを実行します。<code>\~$ azure config set subscription &lt;other-subscription-id&gt;</code>
 
 **account clear [options]**
 
@@ -188,7 +188,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 ![Azure の技術解説図](./media/virtual-machines-command-line-tools/architecturediagram.jpg)
 
-**create-new** BLOB ストレージ (この図では e:\) にドライブを作成します。**attach** 作成済みでまだ接続していないディスクを、仮想マシンに接続します。
+**create-new** BLOB ストレージ (この図では e:\\) にドライブを作成します。**attach** 作成済みでまだ接続していないディスクを、仮想マシンに接続します。
 
 **vm create [options] &lt;dns-name> &lt;image> &lt;userName> [password]**
 
@@ -196,7 +196,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 vm create コマンドは、Azure ポータルと同様、特定の運用デプロイ環境上にのみ仮想マシンを作成します。クラウド サービスのステージング デプロイ環境に仮想マシンを作成するオプションはありません。サブスクリプションに既存の Azure ストレージ アカウントが含まれていない場合、このコマンドは Azure ストレージ アカウントを作成します。
 
---location パラメーターで場所を指定するか、--affinity-group パラメーターでアフィニティ グループを指定します。どちらも指定しない場合は、有効な場所の一覧から 1 つを選択するように求められます。
+\--location パラメーターで場所を指定するか、--affinity-group パラメーターでアフィニティ グループを指定します。どちらも指定しない場合は、有効な場所の一覧から 1 つを選択するように求められます。
 
 パスワードは、8 文字以上 123 以下で指定し、仮想マシンで使用しているオペレーティング システムに適用されているパスワードの複雑さの要件を満たす必要があります。
 
@@ -206,9 +206,9 @@ Windows 仮想マシンでは、エンドポイントとしてポート 3389 を
 
 このコマンドでは、次のオプション パラメーターがサポートされています。
 
-**-c, --connect** ホスティング サービスで作成済みのデプロイ内に仮想マシンを作成します。このオプションに -vmname を使用しなかった場合には、新しい仮想マシンの名前が自動的に生成されます。<br /> **-n、--vm-name** 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しない場合、新しい仮想マシンの名前は &lt;service-name>&lt;id> の形式で生成されます。この &lt;id> はサービス内の既存の仮想マシンの数に 1 を足した数です。たとえば、このコマンドで既存の仮想マシンが 1 つだけのホスティング サービス MyService に新しい仮想マシンを追加すると、MyService2 という名前になります。<br /> **-u、--blob-url** 仮想マシン システム ディスクの作成場所となる、ターゲット BLOB ストレージの URL を指定します。<br /> **-z、--vm-size** 仮想マシンのサイズを指定します。有効な値を次に示します。"ExtraSmall"、"Small"、"Medium"、"Large"、"ExtraLarge"、"A5"、"A6"、"A7"、"A8"、"A9"、"A10"、"A11"、"Basic_A0"、"Basic_A1"、"Basic_A2"、"Basic_A3"、"Basic_A4"、"Standard_D1"、"Standard_D2"、"Standard_D3"、"Standard_D4"、"Standard_D11"、"Standard_D12"、"Standard_D13"、"Standard_D14"、"Standard_DS1"、"Standard_DS2"、"Standard_DS3"、"Standard_DS4"、"Standard_DS11"、"Standard_DS12"、"Standard_DS13"、"Standard_DS14"、"Standard_G1"、"Standard_G2"、"Standard_G3"、"Standard_G4"、"Standard_G55"。既定値は "Small" です。<br /> **-r** Windows 仮想マシンに RDP 接続を追加します。<br /> **-e、--ssh** Windows 仮想マシンに SSH 接続を追加します。<br /> **-t、--ssh-cert** SSH 証明書を指定します。<br /> **-s** サブスクリプション。<br /> **-o、--community** 指定されるイメージはコミュニティ イメージです。<br /> **-w** 仮想ネットワーク名。<br/> **-l、--location** 場所を指定します ("North Central US" など)。<br /> **-a、--affinity-group** アフィニティ グループを指定します。<br /> **-w、--virtual-network-name** 新しい仮想マシンの追加先の仮想ネットワークを指定します。仮想ネットワークは、Azure ポータルから設定および管理できます。<br /> **-b、--subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
+**-c, --connect** ホスティング サービスで作成済みのデプロイ内に仮想マシンを作成します。このオプションに -vmname を使用しなかった場合には、新しい仮想マシンの名前が自動的に生成されます。<br /> **-n、--vm-name** 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しない場合、新しい仮想マシンの名前は &lt;service-name>&lt;id> の形式で生成されます。この &lt;id> はサービス内の既存の仮想マシンの数に 1 を足した数です。たとえば、このコマンドで既存の仮想マシンが 1 つだけのホスティング サービス MyService に新しい仮想マシンを追加すると、MyService2 という名前になります。<br /> **-u、--blob-url** 仮想マシン システム ディスクの作成場所となる、ターゲット BLOB ストレージの URL を指定します。<br /> **-z、--vm-size** 仮想マシンのサイズを指定します。有効な値を次に示します。"ExtraSmall"、"Small"、"Medium"、"Large"、"ExtraLarge"、"A5"、"A6"、"A7"、"A8"、"A9"、"A10"、"A11"、"Basic\_A0"、"Basic\_A1"、"Basic\_A2"、"Basic\_A3"、"Basic\_A4"、"Standard\_D1"、"Standard\_D2"、"Standard\_D3"、"Standard\_D4"、"Standard\_D11"、"Standard\_D12"、"Standard\_D13"、"Standard\_D14"、"Standard\_DS1"、"Standard\_DS2"、"Standard\_DS3"、"Standard\_DS4"、"Standard\_DS11"、"Standard\_DS12"、"Standard\_DS13"、"Standard\_DS14"、"Standard\_G1"、"Standard\_G2"、"Standard\_G3"、"Standard\_G4"、"Standard\_G55"。既定値は "Small" です。<br /> **-r** Windows 仮想マシンに RDP 接続を追加します。<br /> **-e、--ssh** Windows 仮想マシンに SSH 接続を追加します。<br /> **-t、--ssh-cert** SSH 証明書を指定します。<br /> **-s** サブスクリプション。<br /> **-o、--community** 指定されるイメージはコミュニティ イメージです。<br /> **-w** 仮想ネットワーク名。<br/> **-l、--location** 場所を指定します ("North Central US" など)。<br /> **-a、--affinity-group** アフィニティ グループを指定します。<br /> **-w、--virtual-network-name** 新しい仮想マシンの追加先の仮想ネットワークを指定します。仮想ネットワークは、Azure ポータルから設定および管理できます。<br /> **-b、--subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
 
-この例では、MSFT__Win2K8R2SP1-120514-1520-141205-01-ja-jp-30GB が、プラットフォームによって提供されるイメージです。オペレーティング システムのイメージの詳細については、「vm image list」を参照してください。
+この例では、MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-ja-jp-30GB が、プラットフォームによって提供されるイメージです。オペレーティング システムのイメージの詳細については、「vm image list」を参照してください。
 
 	~$ azure vm create my-vm-name MSFT__Windows-Server-2008-R2-SP1.11-29-2011 username --location "West US" -r
 	info:   Executing command vm create
@@ -787,7 +787,7 @@ Azure の Web アプリは、URI でアクセスできる Web 構成です。Web
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-**-q または **--quiet**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
+****-q または **￼--quiet￼**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
 
 
 **site start [options] [name]**
@@ -810,7 +810,7 @@ Azure の Web アプリは、URI でアクセスできる Web 構成です。Web
 	info:   Site mysite has been stopped
 	info:   site stop command OK
 
-**site restart [options] [name]
+****site restart [options] [name]
 
 このコマンドは、指定された Web アプリを停止し、その後、起動します。
 
@@ -2346,4 +2346,4 @@ SQL Server の新しいファイアウォール ルールを作成します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

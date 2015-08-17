@@ -72,4 +72,4 @@
 [Image7]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint.png
 [Image8]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint2.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

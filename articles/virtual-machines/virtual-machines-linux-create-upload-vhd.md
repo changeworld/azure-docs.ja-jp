@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/15/2015"
+	ms.date="07/29/2015"
 	ms.author="dkshir"/>
 
 # Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
@@ -66,6 +66,8 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 ### Azure CLI を使用する場合
 
+ログインに Azure AD のメソッドを使用します。
+
 1. Azure CLI ウィンドウを開きます。
 
 2. 次のコマンドを入力します。
@@ -74,7 +76,7 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 	メッセージが表示されたら、ユーザー名とパスワードを入力します。
 
-**または**、PublishSettings ファイルを使用するには
+**または**、PublishSettings ファイルを使用します。
 
 1. Azure CLI ウィンドウを開きます。
 
@@ -92,8 +94,22 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 	ここで、`<PathToFile>` は .publishsettings ファイルへの完全なパスです。
 
+	詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」をご覧ください。
+
 
 ### Azure PowerShell を使用する場合
+
+ログインに Azure AD のメソッドを使用します。
+
+1. Azure PowerShell ウィンドウを開きます。
+
+2. 次のコマンドを入力します。
+
+	`Add-AzureAccount`
+
+	メッセージが表示されたらは、組織のユーザー ID とパスワードを入力します。
+
+**または**、代わりに PublishSettings ファイルを使用します。
 
 1. Azure PowerShell ウィンドウを開きます。
 
@@ -113,6 +129,7 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 
 	詳細については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
+> [AZURE.NOTE]Azure サブスクリプションへのログインには、Azure CLI や Azure PowerShell のいずれかから、新しい Azure Active Directory メソッドを使用することをお勧めします。
 
 ## <a id="upload"></a>手順 3. Azure にイメージをアップロードする ##
 
@@ -141,4 +158,4 @@ VHD ファイルをアップロードするストレージ アカウントが必
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

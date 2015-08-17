@@ -33,7 +33,7 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 1.  ビルド サーバーに、[.NET Framework 4][]、[.NET Framework 4.5][]、または [.NET Framework 4.5.2][] をインストールします。これには MSBuild が含まれています。
 2.  [Azure Authoring Tools][] をインストールします (ビルド サーバーのプロセッサに応じて、MicrosoftAzureAuthoringTools-x86.msi または MicrosoftAzureAuthoringTools-x64.msi を選択してください)。以前のバージョンのファイルでは、ファイル名に WindowsAzure が含まれている可能性があります。
 3. [Azure Libraries][] をインストールします (MicrosoftAzureLibsForNet-x86.msi または MicrosoftAzureLibsForNet-x64.msi を選択してください)。
-4.  インストール済みの Visual Studio の Microsoft.WebApplication.targets ファイルをビルド サーバーにコピーします。このファイルは、Visual Studio がインストールされているコンピューターの C:\Program Files(x86)\MSBuild\Microsoft\VisualStudio\v11.0\WebApplications (Visual Studio 2013 の場合は v12.0) ディレクトリに含まれています。このファイルを、ビルド サーバー上の同じディレクトリにコピーします。
+4.  インストール済みの Visual Studio の Microsoft.WebApplication.targets ファイルをビルド サーバーにコピーします。このファイルは、Visual Studio がインストールされているコンピューターの C:\\Program Files(x86)\\MSBuild\\Microsoft\\VisualStudio\\v11.0\\WebApplications (Visual Studio 2013 の場合は v12.0) ディレクトリに含まれています。このファイルを、ビルド サーバー上の同じディレクトリにコピーします。
 5.  [Azure Tools for Visual Studio][] をインストールします。Visual Studio 2012 のプロジェクトのビルドには MicrosoftAzureTools.VS110.exe、Visual Studio 2013 プロジェクトのビルドには MicrosoftAzureTools.VS120.exe、Visual Studio 2015 プレビューのプロジェクトのビルドには MicrosoftAzureTools.VS140.exe を選択してください。
 
 ## ステップ 2.: MSBuild コマンドを使用してパッケージをビルドする
@@ -42,7 +42,7 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
 1.  ビルド サーバーに Visual Studio がインストールされている場合は、**[スタート]** メニューの **[すべてのプログラム]** をクリックし、**[Visual Studio ツール]** フォルダーの **[Visual Studio コマンド プロンプト]** をクリックします。
 
-    Visual Studio がビルド サーバーにインストールされていない場合は、コマンド プロンプトを開き、MSBuild.exe へのパスを確認します。MSBuild は、.NET Framework と共に %WINDIR%\Microsoft.NET\Framework\*Version* というパスにインストールされます。たとえば、.NET Framework 4 をインストールしたときに MSBuild.exe を PATH 環境変数に追加するには、コマンド プロンプトで次のコマンドを入力します。
+    Visual Studio がビルド サーバーにインストールされていない場合は、コマンド プロンプトを開き、MSBuild.exe へのパスを確認します。MSBuild は、.NET Framework と共に %WINDIR%\\Microsoft.NET\\Framework\*Version* というパスにインストールされます。たとえば、.NET Framework 4 をインストールしたときに MSBuild.exe を PATH 環境変数に追加するには、コマンド プロンプトで次のコマンドを入力します。
 
         set PATH=%PATH%;"C:\Windows\Microsoft.NET\Framework\v4.0.30319"
 
@@ -56,7 +56,7 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
     必要に応じて、プロジェクト名を MSBuild のパラメーターとして指定できます。このパラメーターを指定しない場合は、現在のディレクトリが使用されます。MSBuild のコマンド ライン オプションの詳細については、「[MSBuild コマンド ライン リファレンス][1]」を参照してください。
 
-4.  出力を見つけます。既定では、プロジェクトのルート フォルダーに対してディレクトリが作成されます (たとえば、*ProjectDir*\bin\*Configuration*\app.publish\)。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
+4.  出力を見つけます。既定では、プロジェクトのルート フォルダーに対してディレクトリが作成されます (たとえば、*ProjectDir*\\bin\*Configuration*\\app.publish\\)。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
 
     -   Project.cspkg
     -   ServiceConfiguration.*TargetProfile*.cscfg
@@ -67,9 +67,9 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
         MSBuild /t:Publish /p:TargetProfile=Cloud
 
-6.  出力先を指定します。次の例に示すように、/p:PublishDir=*Directory*\ オプションを使用してパスを設定します。末尾のバックスラッシュ区切り記号もパスの一部です。
+6.  出力先を指定します。次の例に示すように、/p:PublishDir=*Directory*\\ オプションを使用してパスを設定します。末尾のバックスラッシュ区切り記号もパスの一部です。
 
-        MSBuild /target:Publish /p:PublishDir=\myserver\drops\
+        MSBuild /target:Publish /p:PublishDir=\\myserver\drops\
 
     プロジェクトをビルドして Azure パッケージに結合するために使用する適切な MSBuild コマンド ラインの作成とテストが完了したら、このコマンド ラインをビルド スクリプトに追加します。ビルド サーバーでカスタム スクリプトを使用する場合、このプロセスは、ビルド カスタム プロセスの特定の内容に依存します。ビルド環境として TFS を使用している場合は、次のステップに従って Azure パッケージ ビルドをビルド プロセスに追加できます。
 
@@ -79,7 +79,7 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
 Azure パッケージをビルドするために TFS を構成するには、次の手順を実行します。
 
-1.  開発コンピューターの Visual Studio で、[表示] メニューの **[チーム エクスプローラー]** をクリックするか、Ctrl + \ キー、Ctrl + M キーを押します。[チーム エクスプローラー] ウィンドウで、**[ビルド]** ノードを展開するか、**[ビルド]** ページを選択し、**[ビルド定義の新規作成]** を選択します。
+1.  開発コンピューターの Visual Studio で、[表示] メニューの **[チーム エクスプローラー]** をクリックするか、Ctrl + \\ キー、Ctrl + M キーを押します。[チーム エクスプローラー] ウィンドウで、**[ビルド]** ノードを展開するか、**[ビルド]** ページを選択し、**[ビルド定義の新規作成]** を選択します。
 
     ![][0]
 
@@ -91,7 +91,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 5.  **[プロセス]** タブをクリックします。**[プロセス]** タブで、既定のテンプレートを選択します。**[ビルド]** で、プロジェクトがまだ選択されていない場合はこれを選択し、グリッドの [ビルド] セクションの **[詳細設定]** セクションを展開します。
 
-6.  **[MSBuild 引数]** を選択し、上の手順 2. で説明したように適切な MSBuild コマンド ライン引数を設定します。たとえば、パッケージをビルドしてパッケージ ファイルを \\myserver\drops\ にコピーするには、「**/t:Publish /p:PublishDir=\\myserver\drops\**」と入力します。
+6.  **[MSBuild 引数]** を選択し、上の手順 2. で説明したように適切な MSBuild コマンド ライン引数を設定します。たとえば、パッケージをビルドしてパッケージ ファイルを \\\\myserver\\drops\\ にコピーするには、「**/t:Publish /p:PublishDir=\\\\myserver\\drops\**」と入力します。
 
     ![][2]
 
@@ -109,11 +109,11 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 3.  PowerShell プロンプトで、PowerShell コマンドレットが読み込まれているかどうかを確認します。そのためには、部分的なコマンド Get-Azure を入力し、Tab キーを押して、ステートメントが補完されるかどうかを確認します。
 
-    Tab キーを何度か押すと、さまざまな PowerShell コマンドが表示されるのを確認できます。
+    Tab キーを何度か押すと、さまざまな Azure PowerShell コマンドが表示されるのを確認できます。
 
 4.  Azure サブスクリプションに接続できることを確認します。そのためには、サブスクリプション情報を .publishsettings ファイルからインポートします。
 
-    Import-AzurePublishSettingsFile c:\scripts\WindowsAzure\default.publishsettings
+    Import-AzurePublishSettingsFile c:\\scripts\\WindowsAzure\\default.publishsettings
 
     次に、次のコマンドを入力します。
 
@@ -121,17 +121,17 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     サブスクリプションに関する情報が表示されます。すべての情報が正しいことを確認します。
 
-4.  [この記事の最後][]に示されているスクリプト テンプレートをスクリプト フォルダーに c:\scripts\WindowsAzure\**PublishCloudService.ps1** として保存します。
+4.  [この記事の末尾][]に示されているスクリプト テンプレートをスクリプト フォルダーに c:\\scripts\\WindowsAzure\**PublishCloudService.ps1** として保存します。
 
 5.  スクリプトのパラメーター セクションを見直します。既定値を追加または変更します。これらの値は、明示的なパラメーター値を渡すことでオーバーライドできます。
 
 6.  発行スクリプトの対象となる有効なクラウド サービスおよびストレージ アカウントがサブスクリプションに作成されていることを確認します。ストレージ アカウント (BLOB ストレージ) はアップロード用に使用され、デプロイを作成するときにデプロイ パッケージと config ファイルを一時的に格納します。
 
-    -   新しいクラウド サービスを作成するには、このスクリプトを呼び出すか、Azure の管理ポータルを使用することができます。クラウド サービス名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。
+    -   新しいクラウド サービスを作成するには、このスクリプトを呼び出すか、Azure 管理ポータルを使用することができます。クラウド サービス名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。
 
             New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
-    -   新しいストレージ アカウントを作成するには、このスクリプトを呼び出すか、Azure の管理ポータルを使用します。ストレージ アカウント名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。クラウド サービスと同じ名前を使用してもかまいません。
+    -   新しいストレージ アカウントを作成するには、このスクリプトを呼び出すか、Azure 管理ポータルを使用します。ストレージ アカウント名は、完全修飾ドメイン名のプレフィックスとして使用されるため、一意である必要があります。クラウド サービスと同じ名前を使用してもかまいません。
 
             New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
 
@@ -143,7 +143,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
         PowerShell c:\scripts\windowsazure\PublishCloudService.ps1 -environment Staging -serviceName mycloudservice -storageAccountName mystoragesaccount -packageLocation c:\drops\app.publish\ContactManager.Azure.cspkg -cloudConfigLocation c:\drops\app.publish\ServiceConfiguration.Cloud.cscfg -subscriptionDataFile c:\scripts\default.publishsettings
 
-    通常は、この後にテスト実行検証と VIP スワップが行われます。VIP スワップは、Azure の管理ポータルまたは Move-Deployment コマンドレットを使用して実行できます。
+    通常は、この後にテスト実行検証と VIP スワップが行われます。VIP スワップは、Azure 管理ポータルまたは Move-Deployment コマンドレットを使用して実行できます。
 
     **サンプル シナリオ 2:** 専用テスト サービスの運用環境への継続的なデプロイ
 
@@ -153,7 +153,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     Azure プロジェクトでリモート デスクトップが有効になっている場合は、1 回限りの追加手順を実行して、適切なクラウド サービス証明書がこのスクリプトの対象となっているすべてのクラウド サービスにアップロードされることを確認する必要があります。
 
-    自分のロールに該当する証明書のサムプリント値を見つけます。サムプリント値は、クラウド構成ファイル (ServiceConfiguration.Cloud.cscfg) の Certificates セクションに記載されています。また、サムプリント値は、Visual Studio の [リモート デスクトップ構成] ダイアログで [オプションの表示] を選択し、選択した証明書を表示する場合にも表示されます。
+    自分のロールに該当する証明書の拇印値を見つけます。拇印値は、クラウド構成ファイル (ServiceConfiguration.Cloud.cscfg) の Certificates セクションに記載されています。また、拇印値は、Visual Studio の [リモート デスクトップ構成] ダイアログで [オプションの表示] を選択し、選択した証明書を表示する場合にも表示されます。
 
         <Certificates>
               <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="C33B6C432C25581601B84C80F86EC2809DC224E8" thumbprintAlgorithm="sha1" />
@@ -167,7 +167,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
         Add-AzureCertificate -serviceName 'mytestcloudservice' -certToDeploy (get-item cert:\CurrentUser\MY\C33B6C432C25581601B84C80F86EC2809DC224E8
 
-    または、Azure の管理ポータルを使用して、証明書ファイル PFX を秘密キーと共にエクスポートし、証明書を各ターゲット クラウド サービスにアップロードすることもできます。詳細については、[http://msdn.microsoft.com/library/windowsazure/gg443832.aspx][] の記事を参照してください。
+    または、Azure 管理ポータルを使用して、証明書ファイル PFX を秘密キーと共にエクスポートし、証明書を各ターゲット クラウド サービスにアップロードすることもできます。詳細については、[http://msdn.microsoft.com/library/windowsazure/gg443832.aspx][] の記事を参照してください。
 
     **デプロイのアップグレードと、デプロイの削除後に新しいデプロイを作成する操作**
 
@@ -181,7 +181,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 この手順では、Azure へのパッケージ ビルドの発行を処理する、手順 4. で作成したスクリプトに TFS チーム ビルドを関連付けます。これには、ビルド定義によって使用されるプロセス テンプレートを変更して、ワークフローの最後に発行アクティビティが実行されるようにする操作が含まれます。発行アクティビティでは、ビルドからのパラメーターを渡して PowerShell コマンドを実行します。MSBuild ターゲットと発行スクリプトの出力は、パイプを使用して標準ビルド出力に送られます。
 
-1.  継続的な展開のためのビルド定義を編集します。
+1.  継続的なデプロイのためのビルド定義を編集します。
 
 2.  **[プロセス]** タブを選択します。
 
@@ -295,7 +295,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 	            </Sequence.Variables>
 	            <mtbwa:ConvertWorkspaceItem DisplayName="Convert publish script filename" sap2010:WorkflowViewState.IdRef="ConvertWorkspaceItem_1" Input="[PublishScriptLocation]" Result="[PublishScriptFilePath]" Workspace="[Workspace]" />
 	            <mtbwa:ConvertWorkspaceItem DisplayName="Convert subscription filename" sap2010:WorkflowViewState.IdRef="ConvertWorkspaceItem_2" Input="[SubscriptionDataFileLocation]" Result="[SubscriptionDataFilePath]" Workspace="[Workspace]" />
-	            <mtbwa:InvokeProcess Arguments="[String.Format("; -File ";";{0}";"; -serviceName {1}&#xD;&#xA;            -storageAccountName {2} -packageLocation ";";{3}";";&#xD;&#xA;            -cloudConfigLocation ";";{4}";"; -subscriptionDataFile ";";{5}";";&#xD;&#xA;            -selectedSubscription {6} -environment ";";{7}";";";,&#xD;&#xA;            PublishScriptFilePath, ServiceName, StorageAccountName,&#xD;&#xA;            PackageLocation, CloudConfigLocation,&#xD;&#xA;            SubscriptionDataFilePath, SubscriptionName, Environment)]" DisplayName="'Execute Publish Script'" FileName="[PowerShell]" sap2010:WorkflowViewState.IdRef="InvokeProcess_1">
+	            <mtbwa:InvokeProcess Arguments="[String.Format(&quot; -File &quot;&quot;{0}&quot;&quot; -serviceName {1}&#xD;&#xA;            -storageAccountName {2} -packageLocation &quot;&quot;{3}&quot;&quot;&#xD;&#xA;            -cloudConfigLocation &quot;&quot;{4}&quot;&quot; -subscriptionDataFile &quot;&quot;{5}&quot;&quot;&#xD;&#xA;            -selectedSubscription {6} -environment &quot;&quot;{7}&quot;&quot;&quot;,&#xD;&#xA;            PublishScriptFilePath, ServiceName, StorageAccountName,&#xD;&#xA;            PackageLocation, CloudConfigLocation,&#xD;&#xA;            SubscriptionDataFilePath, SubscriptionName, Environment)]" DisplayName="'Execute Publish Script'" FileName="[PowerShell]" sap2010:WorkflowViewState.IdRef="InvokeProcess_1">
 	              <mtbwa:InvokeProcess.ErrorDataReceived>
 	                <ActivityAction x:TypeArguments="x:String">
 	                  <ActivityAction.Argument>
@@ -325,11 +325,11 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 9.  [その他] セクションのパラメーター プロパティ値を次のように設定します。
 
-    1.  CloudConfigLocation ='c:\drops\app.publish\ServiceConfiguration.Cloud.cscfg' *この値の派生元: ($PublishDir)ServiceConfiguration.Cloud.cscfg*
+    1.  CloudConfigLocation ='c:\\drops\\app.publish\\ServiceConfiguration.Cloud.cscfg' *この値の派生元: ($PublishDir)ServiceConfiguration.Cloud.cscfg*
 
-    2.  PackageLocation = 'c:\drops\app.publish\ContactManager.Azure.cspkg' *この値の派生元: ($PublishDir)($ProjectName).cspkg*
+    2.  PackageLocation = 'c:\\drops\\app.publish\\ContactManager.Azure.cspkg' *この値の派生元: ($PublishDir)($ProjectName).cspkg*
 
-    3.  PublishScriptLocation = 'c:\scripts\WindowsAzure\PublishCloudService.ps1'
+    3.  PublishScriptLocation = 'c:\\scripts\\WindowsAzure\\PublishCloudService.ps1'
 
     4.  ServiceName = 'mycloudservicename' *適切なクラウド サービス名を使用します*
 
@@ -337,7 +337,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     6.  StorageAccountName = 'mystorageaccountname' *適切なストレージ アカウント名を使用します*
 
-    7.  SubscriptionDataFileLocation = 'c:\scripts\WindowsAzure\Subscription.xml'
+    7.  SubscriptionDataFileLocation = 'c:\\scripts\\WindowsAzure\\Subscription.xml'
 
     8.  SubscriptionName = 'default'
 
@@ -571,11 +571,11 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [2]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
   [Azure PowerShell コマンドレット]: http://go.microsoft.com/fwlink/?LinkId=256262
   [the .publishsettings file]: https://manage.windowsazure.com/download/publishprofile.aspx?wa=wsignin1.0
-  [この記事の最後]: #script
+  [この記事の末尾]: #script
 
   [3]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-03.png
   [4]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-04.png
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

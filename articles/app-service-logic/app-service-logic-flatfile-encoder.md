@@ -46,28 +46,11 @@ API アプリ ブレードでは、*[スキーマ]* 部分をクリックして�
 
 ![BizTalk Flat File Encoder のアクション一覧][5]
 
-<table>
-	<tr>
-		<th>パラメーター</th>
-		<th>型</th>
-		<th>パラメーターの説明</th>
-	</tr>
-	<tr>
-		<td>フラット ファイル</td>
-		<td>string</td>
-		<td>入力フラット ファイルの内容</td>
-	</tr>
-	<tr>
-		<td>スキーマ名</td>
-		<td>string</td>
-		<td>入力フラット ファイルを表すスキーマの名前</td>
-	</tr>
-	<tr>
-		<td>ルート名</td>
-		<td>string</td>
-		<td>フラット ファイル スキーマのルート ノード名</td>
-	</tr>
-</table>
+パラメーター|型|パラメーターの説明
+---|---|---
+フラット ファイル|string|入力フラット ファイルの内容
+スキーマ名|string|入力フラット ファイルを表すスキーマの名前
+ルート名|string|フラット ファイル スキーマのルート ノード名
 
 
 アクションは文字列として出力を返します (出力 XML)。出力 XML には、入力フラット ファイルの内容の XML 表現が含まれています。
@@ -76,18 +59,9 @@ API アプリ ブレードでは、*[スキーマ]* 部分をクリックして�
 
 ![BizTalk Flat File Encoder のアクション一覧][6]
 
-<table>
-	<tr>
-		<th>パラメーター</th>
-		<th>型</th>
-		<th>パラメーターの説明</th>
-	</tr>
-	<tr>
-		<td>入力 XML</td>
-		<td>string</td>
-		<td>入力 XML の内容</td>
-	</tr>
-</table>
+パラメーター|型|パラメーターの説明
+---|---|---
+入力 XML|string|入力 XML の内容
 
 アクションは文字列として出力を返します (フラット ファイル)。出力には、入力 XML の内容のフラット ファイル表現が含まれています。
 
@@ -100,4 +74,4 @@ API アプリ ブレードでは、*[スキーマ]* 部分をクリックして�
 [6]: ./media/app-service-logic-flatfile-encoder/FlatFileEncoder.XmlToFlatFile.PNG
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

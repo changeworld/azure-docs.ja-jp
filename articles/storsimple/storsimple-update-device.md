@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/28/2015"
+   ms.date="07/30/2015"
    ms.author="v-sharos" />
 
 # StorSimple デバイスの更新
@@ -58,7 +58,7 @@ StorSimple の更新プログラムの機能を使用すると、StorSimple デ�
 
 また、StorSimple 用 Windows PowerShell を使用して、通常 (標準モード) の更新プログラムを適用できます。
 
-> [AZURE.IMPORTANT]StorSimple 用 Windows PowerShell を使用して定期的に更新をインストールできますが、管理ポータルから定期的に更新をインストールすることをお勧めします。Update 1 以降、ポータルから更新プログラムをインストールする前に事前チェックが実行されるようになり、失敗を事前に回避してより滑らかなエクスペリエンスを実現します。
+> [AZURE.IMPORTANT]StorSimple 用 Windows PowerShell を使用して定期的に更新をインストールできますが、管理ポータルから定期的に更新をインストールすることをお勧めします。Update 1 以降では、ポータルから更新プログラムをインストールする前に事前チェックが実行されるようになります。こうした事前チェックにより、エラーを回避してより滑らかなエクスペリエンスを実現します。
 
 [AZURE.INCLUDE [storsimple-install-regular-updates-powershell](../../includes/storsimple-install-regular-updates-powershell.md)]
 
@@ -119,4 +119,4 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 [StorSimple 用 Windows PowerShell](https://msdn.microsoft.com/library/azure/dn772425.aspx) について説明します。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

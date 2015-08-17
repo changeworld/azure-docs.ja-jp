@@ -11,7 +11,7 @@
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
-	ms.topic="article" 
+	ms.topic="hero-article" 
 	ms.date="05/27/2015" 
 	ms.author="wesmc"/>
 
@@ -31,7 +31,7 @@
 このチュートリアルには、次のものが必要です。
 
 + Android Studio。<a href="http://go.microsoft.com/fwlink/?LinkId=389797">こちら</a>からダウンロードできます。
-+ このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)を参照してください。
++ このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)をご覧ください。
 
 
 このチュートリアルを完了することは、Android アプリケーションの他のすべての通知ハブ チュートリアルの前提条件です。
@@ -512,4 +512,4 @@
 [通知ハブを使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

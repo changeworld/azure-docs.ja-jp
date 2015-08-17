@@ -112,4 +112,4 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 
 [StorSimple ハードウェア コンポーネントの詳細](https://msdn.microsoft.com/library/azure/dn757755.aspx)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

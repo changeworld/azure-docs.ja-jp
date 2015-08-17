@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="dlepow"
 	manager="timlt"
-	editor="madhana"/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -13,14 +14,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="03/17/2015"
+	ms.date="08/03/2015"
 	ms.author="danlep"/>
 
 # Azure 上の CoreOS で fleet を使ってみる
 
 この記事では、[fleet](https://github.com/coreos/fleet) と [Docker](https://www.docker.com/) を使用して、[CoreOS] 仮想マシンのクラスターでアプリケーションを実行する簡単な例を 2 つ紹介します。
 
-これらの例を使用するには、「[Azure 上で CoreOS を使用する方法]」の説明に従がって、3 ノード構成の CoreOS クラスターを設定します。 設定が終わったら、CoreOS デプロイメントの極めて基本的な要素について理解し、動作中のクラスターとクライアント コンピューターが準備できたことになります。これらの例では、同じクラスター名を使用します。また、これらの例では **fleet** コマンドの実行にローカルの Linux ホストを使用することが前提になっています。
+これらの例を使用するには、「[Azure 上で CoreOS を使用する方法]」の説明に従がって、3 ノード構成の CoreOS クラスターを設定します。 設定が終わったら、CoreOS デプロイメントの極めて基本的な要素について理解し、動作中のクラスターとクライアント コンピューターが準備できたことになります。これらの例では、同じクラスター名を使用します。また、これらの例では **fleetctl** コマンドの実行にローカルの Linux ホストを使用することが前提になっています。
 
 
 
@@ -58,7 +59,7 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 start helloworld.service
 Unit helloworld.service launched on 62f0f66e.../100.79.86.62
 ```
 
->[AZURE.NOTE]リモート **fleetctl** コマンドを **--tunnel** パラメーターなしで実行するには、要求がトンネリングされるように FLEETCTL_TUNNEL 環境変数を設定します。たとえば、「`export FLEETCTL_TUNNEL=coreos-cluster.cloudapp.net:22`」のように入力します
+>[AZURE.NOTE]リモート **fleetctl** コマンドを **--tunnel** パラメーターなしで実行するには、要求がトンネリングされるように FLEETCTL\_TUNNEL 環境変数を設定します。たとえば、「`export FLEETCTL_TUNNEL=coreos-cluster.cloudapp.net:22`」のように入力します
 
 
 コンテナーに接続すると、サービスの出力を参照できます。
@@ -90,7 +91,7 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload helloworld.service
 
 CoreOS、Docker、および** fleet **を使用する利点の 1 つは、可用性の高い方法だとサービス実行が簡単になるということです。この例では、3 つの同じコンテナーで構成される、Apache Web サーバーを実行するサービスをデプロイします。これらのコンテナーは、クラスター内にある 3 つの VM 上で実行されます。この例は、 「[fleet を使用してコンテナーを起動する]」で説明した例に似ており、 [CoreOS Apache Docker Hub イメージ]が使用されています。
 
->[AZURE.NOTE]高可用性の Apache サーバーを実行するには、仮想マシン上で負荷分散された HTTP エンドポイントを構成する必要があります (パブリック ポート 80、プライベート ポート 80) 。これは、CoreOS クラスターの作成後に、Azure 管理ポータルまたは **azure vm endpoint** コマンドを使用すると実行できます。詳細については、「[負荷分散セットの構成]」を参照してください。
+>[AZURE.IMPORTANT]高可用性の Apache サーバーを実行するには、仮想マシン上で負荷分散された HTTP エンドポイントを構成する必要があります (パブリック ポート 80、プライベート ポート 80) 。これは、CoreOS クラスターの作成後に、Azure ポータルか **azure vm endpoint** コマンドを使用すると実行できます。詳細については、「[負荷分散セットの構成]」を参照してください。
 
 クライアント コンピューターで、任意のテキスト エディターを使用して **systemd** テンプレート ユニット ファイルを作成し、apache@.service という名前を付けます。このテンプレートを使用して、apache@1.service 、apache@2.service、および apache@3.service という名前の 3 つの独立したインスタンスを起動します。
 
@@ -120,7 +121,7 @@ X-Conflicts=apache@*.service
 fleetctl --tunnel coreos-cluster.cloudapp.net:22 start apache@{1,2,3}.service
 
 unit apache@3.service launched on 00c927e4.../100.79.62.16
-unit apache@1.service launched on 62f0f66e.../100.79.86.62
+unit apache@1.\service launched on 62f0f66e.../100.79.86.62
 unit apache@2.service launched on df85f2d1.../100.78.126.15
 
 ```
@@ -131,7 +132,7 @@ unit apache@2.service launched on df85f2d1.../100.78.126.15
 次のような既定テキストが、Apache サーバーから返されます。
 
 ```
-<htm\l><body><h1>It works!</h1>
+<html><body><h1>It works!</h1>
 <p>This is the default web page for this server.</p>
 <p>The web server software is running but no content has been added, yet.</p>
 </body></html>
@@ -149,9 +150,11 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload apache@{1,2,3}.service
 
 ## 次のステップ
 
-Azure 上の 3 ノード構成 CoreOS クラスターでは、この他さまざまな操作を試すことができます。「[Tim Park による CoreOS のチュートリアル]」、「[Patrick Chanezon による CoreOS チュートリアル]」、「[Docker]」のドキュメント、および「[CoreOS の概要]」を参照しながら、より複雑なクラスターを作成する方法と、Docker を使用したより興味深いアプリケーションを作成する方法を確認できます。
+* Azure 上の 3 ノード構成 CoreOS クラスターでは、この他さまざまな操作を試すことができます。「[Tim Park による CoreOS のチュートリアル]」、「[Patrick Chanezon による CoreOS チュートリアル]」、「[Docker]」のドキュメント、および「[CoreOS の概要]」を参照しながら、より複雑なクラスターを作成する方法と、Docker を使用したより興味深いアプリケーションを作成する方法を確認できます。
 
-Azure での Linux VM およびオープン ソース環境の使用に関する詳細は、「[Azure 上での Linux およびオープン ソース コンピューティング]」を参照してください。
+* Azure リソース マネージャーで Fleet と CoreOS を開始するには、この[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)を試してください。
+
+* Azure での Linux VM およびオープン ソース環境の使用に関する詳細は、「[Azure 上での Linux およびオープン ソース コンピューティング]」をご覧ください。
 
 <!--Link references-->
 [Azure Command-Line Interface (Azure)]: ../xplat-cli.md
@@ -163,12 +166,11 @@ Azure での Linux VM およびオープン ソース環境の使用に関する
 [Docker]: http://docker.io
 [YAML]: http://yaml.org/
 [Azure 上で CoreOS を使用する方法]: virtual-machines-linux-coreos-how-to.md
-[負荷分散セットの構成]: http://msdn.microsoft.com/library/azure/dn655055.aspx
+[負荷分散セットの構成]: ../load-balancer/load-balancer-internet-getstarted.md
 [fleet を使用してコンテナーを起動する]: https://coreos.com/docs/launching-containers/launching/launching-containers-fleet/
 [ユニット ファイル]: https://coreos.com/docs/launching-containers/launching/fleet-unit-files/
 [BusyBox Docker Hub イメージ]: https://registry.hub.docker.com/_/busybox/
 [CoreOS Apache Docker Hub イメージ]: https://registry.hub.docker.com/u/coreos/apache/
 [Azure 上での Linux およびオープン ソース コンピューティング]: virtual-machines-linux-opensource.md
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

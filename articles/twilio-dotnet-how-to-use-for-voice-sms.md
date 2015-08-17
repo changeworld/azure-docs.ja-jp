@@ -252,7 +252,7 @@ TwiML 応答を提供する方法を設定したら、**client.InitiateOutboundC
 
 ASP.NET を使用する Windows Azure での Twilio の使用に関する詳細については、「[Windows Azure の Web ロールで Twilio を使用して通話する方法][howto_phonecall_dotnet]」を参照してください。
 
-[AZURE.INCLUDE [twilio_additional_services_and_next_steps](../includes/twilio_additional_services_and_next_steps.md)]
+[AZURE.INCLUDE [twilio\_additional\_services\_and\_next\_steps](../includes/twilio_additional_services_and_next_steps.md)]
 
 
 
@@ -279,4 +279,4 @@ ASP.NET を使用する Windows Azure での Twilio の使用に関する詳細�
 [twilio_account]: https://www.twilio.com/user/account
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -53,4 +53,4 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
 
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

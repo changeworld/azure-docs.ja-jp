@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB の学習マップ | Azure" 
+	pageTitle="DocumentDB の学習マップ | Microsoft Azure" 
 	description="Azure DocumentDB の 0 から 60 までの使用可能なリソースのビジュアル マップを取得します。"
 	services="documentdb" 
 	documentationCenter="" 
@@ -23,4 +23,4 @@ Azure DocumentDB は一から設計された NoSQL ドキュメント データ�
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/DocumentDB.Content.Flow.svg" width="100%" height="100%"> </object>
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

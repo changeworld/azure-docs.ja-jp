@@ -90,7 +90,7 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
 4. 新しい **TodoItem** テーブルをクリックし、データ行がないことを確認します。
 
-	>[AZURE.NOTE]Id、__createdAt、__updatedAt、および __version の列を含む新しいテーブルが作成されます。動的スキーマが有効な場合、挿入または更新の要求に含まれる JSON オブジェクトに基づいて、モバイル サービスによって自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://msdn.microsoft.com/library/windowsazure/jj193175.aspx)」を参照してください。
+	>[AZURE.NOTE]Id、\_\_createdAt、\_\_updatedAt、および \_\_version の列を含む新しいテーブルが作成されます。動的スキーマが有効な場合、挿入または更新の要求に含まれる JSON オブジェクトに基づいて、モバイル サービスによって自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://msdn.microsoft.com/library/windowsazure/jj193175.aspx)」を参照してください。
 
 6. **[構成]** タブで、**[クロス オリジン リソース共有 (CORS)]** の **[ホスト名からの要求を許可する]** に `localhost` が既に表示されていることを確認します。表示されていない場合は、**[ホスト名]** フィールドに「`localhost`」と入力して、**[保存]** をクリックします。
 
@@ -257,4 +257,4 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

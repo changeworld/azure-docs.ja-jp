@@ -56,7 +56,7 @@ Microsoft は Thales と連携し、HSM の最新技術を強化しています�
 
 Azure Key Vault の Bring Your Own Key (BYOK) の前提条件の一覧については、次の表を参照してください。
 
-|要件|詳細|
+|要件|詳細情報|
 |---|---|
 |Azure のサブスクリプション|Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版に登録する](http://azure.microsoft.com/pricing/free-trial/)|
 |HSM をサポートする Azure Key Vault|Azure Key Vault のサービス層と機能に関する詳細については、[Azure Key Vault 価格](http://azure.microsoft.com/pricing/details/key-vault/) Web サイトを参照してください。|
@@ -116,7 +116,7 @@ Microsoft ダウンロード センターにアクセスし、お住まいの地
 - セキュリティ ワールド パッケージ。この名前は「**BYOK-SecurityWorld-pkg-**」から始まります。
 - 「verifykeypackage.py」という名前の Python スクリプト。
 - 「**KeyTransferRemote.exe**」という名前のコマンドライン実行可能ファイルと関連 DLL。
-- 「**vcredist_x64.exe**」という名前の Visual C++ 再配布可能パッケージ。
+- 「**vcredist\_x64.exe**」という名前の Visual C++ 再配布可能パッケージ。
 
 USB ドライブまたはその他のポータブル ストレージにパッケージをコピーします。
 
@@ -129,7 +129,7 @@ USB ドライブまたはその他のポータブル ストレージにパッケ
 
 Windows コンピューターに nCipher (Thales) サポート コンピューターをインストールし、そのコンピューターに Thales HSM をアタッチします。
 
-Thales ツールがパスにあることを確認します (%nfast_home%\bin と **%nfast_home%\python\bin**)。たとえば、次を入力します。
+Thales ツールがパスにあることを確認します (**%nfast\_home%\\bin** と **%nfast\_home%\\python\\bin**)。たとえば、次を入力します。
 
 		set PATH=%PATH%;”%nfast_home%\bin”;”%nfast_home%\python\bin”
 
@@ -140,7 +140,7 @@ Thales ツールがパスにあることを確認します (%nfast_home%\bin と
 USB ドライブまたはその他のポータブル ストレージから BYOK ツールセット パッケージをコピーし、次の操作します。
 
 1. ダウンロードしたパッケージから任意のフォルダーにファイルを抽出します。
-2. そのフォルダーから vcredist_x64.exe を実行します。
+2. そのフォルダーから vcredist\_x64.exe を実行します。
 3. 指示に従い、Visual Studio 2012 用の Visual C++ ランタイム コンポーネントをインストールします。
 
 ##手順 3: キーを生成する
@@ -153,7 +153,7 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 
 	new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
 
-このプログラムにより **Security World** ファイルが %NFAST_KMDATA%\local\world で作成されます。これは C:\ProgramData\nCipher\Key Management Data\local フォルダーに対応します。クォーラムにはさまざまな値を使用できますが、今回の例では、3 枚の空白カードと各カードのピンを入力するように求められます。いずれかの 2 枚のカードがセキュリティ ワールドに完全アクセスを与えます。その 2 枚のカードが新しいセキュリティ ワールドの**管理者カード セット**になります。
+このプログラムにより **Security World** ファイルが %NFAST\_KMDATA%\\local\\world で作成されます。これは C:\\ProgramData\\nCipher\\Key Management Data\\local フォルダーに対応します。クォーラムにはさまざまな値を使用できますが、今回の例では、3 枚の空白カードと各カードのピンを入力するように求められます。いずれかの 2 枚のカードがセキュリティ ワールドに完全アクセスを与えます。その 2 枚のカードが新しいセキュリティ ワールドの**管理者カード セット**になります。
 
 次に、次を実行します。
 
@@ -188,11 +188,11 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 
 			python verifykeypackage.py -k BYOK-KEK-pkg-JPN-1 -w BYOK-SecurityWorld-pkg-JPN-1
 
-	>[AZURE.TIP]Thales ソフトウェアの %NFAST_HOME%\python\bin に Python が含まれています。
+	>[AZURE.TIP]Thales ソフトウェアの %NFAST\_HOME%\\python\\bin に Python が含まれています。
 	
 2.	次の表示を確認します。これは検証の成功を示します: **Result: SUCCESS**
 
-このスクリプトは Thales ルート キーまで署名者のチェーンを検証します。このルート キーのハッシュがスクリプトに埋め込まれており、その値は **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** になります。[Thales Web サイト](http://www.thalesesec.com/)にアクセスすれば、この値を個別に確認できます。
+このスクリプトは Thales ルート キーまで署名者のチェーンを検証します。このルート キーのハッシュがスクリプトに埋め込まれており、その値は **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** になります。[Thales Web サイト](http://www.thalesesec.com/)にアクセスすると、この値を個別に確認できます。
 
 これで新しいキーを作成する準備が整いました。
 
@@ -210,7 +210,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 - pubexp はこの例では空白のまま (既定) ですが、特定の値を指定できます。詳細については、Thales の文書を参照してください。
 
-このコマンドにより %NFAST_KMDATA%\local フォルダーにトークン化されたキーのファイルが作成されます。この名前は「**key_simple_**」で始まり、コマンドで指定した ident が続きます。例: **key_simple_contosokey**.このファイルには暗号化されたキーが含まれます。
+このコマンドにより %NFAST\_KMDATA%\\local フォルダーにトークン化されたキーのファイルが作成されます。この名前は "**key\_simple\_**" で始まり、コマンドで指定した ident が続きます (例: **key\_simple\_contosokey**)。このファイルには暗号化されたキーが含まれます。
 
 安全な場所でこのトークン化されたキーのファイルをバックアップします。
 
@@ -242,11 +242,11 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 		KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-JPN-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-JPN-1
 
-このコマンドを実行するとき、*contosokey* を[キーの生成](#step-3-generate-your-key)手順の**手順 3.3: 新しいキーを作成する**で指定した同じ値で置換します。
+このコマンドを実行するとき、*contosokey* を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」で指定した同じ値で置換します。
 
 セキュリティ ワールドの管理者カードを差し込むように求められます。
 
-コマンドが完了すると、**Result: SUCCESS** と表示され、アクセス権が制限されたキーのコピーが「key_xferacId_<contosokey>」という名前のファイルに表示されます。
+コマンドが完了すると、**Result: SUCCESS** と表示され、アクセス権が制限されたキーのコピーが "key\_xferacId\_<contosokey>" という名前のファイルに表示されます。
 
 ###手順 4.2: キーの新しいコピーを検査する
 
@@ -258,7 +258,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 - kmfile-dump.exe:
 
 		"%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-これらのコマンドを実行するとき、contosokey を[キーの生成](#step-3-generate-your-key)手順の**手順 3.3: 新しいキーを作成する**で指定した同じ値で置換します。
+これらのコマンドを実行するとき、contosokey を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」で指定した同じ値で置換します。
 
 ###手順 4.3: Microsoft の Key Exchange Key を使用してキーを暗号化する
 
@@ -282,13 +282,13 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 このコマンドを実行するとき、次の指示に従います。
 
-- *contosokey* を[キーの生成](#step-3-generate-your-key)手順の**手順 3.3: 新しいキーを作成する**でキーの生成に使用した ID で置換します。
+- *contosokey* を[キーの生成](#step-3-generate-your-key)手順の「**手順 3.3: 新しいキーを作成する**」でキーの生成に使用した ID で置換します。
 
-- *SubscriptionID* を Key Vault が含まれる Azure サブスクリプションの ID で置換します。この値は先に、[インターネット接続ワークステーションの準備](#step-1-prepare-your-internet-connected-workstation)の**手順 1.2: Azure サブスクリプション ID** で取得しました。
+- *SubscriptionID* を Key Vault が含まれる Azure サブスクリプションの ID で置換します。この値は先に、[インターネット接続ワークステーションの準備](#step-1-prepare-your-internet-connected-workstation)手順の「**手順 1.2: Azure サブスクリプション ID を取得する**」で取得しました。
 
 - *ContosoFirstHSMKey* を出力ファイル名に使用するラベルで置換します。
 
-完了すると、**Result: SUCCESS** と表示され、「TransferPackage-*ContosoFirstHSMkey*.byok」という名前の新しいファイルが現在のフォルダーに表示されます。
+完了すると、**Result: SUCCESS** と表示され、"TransferPackage-*ContosoFirstHSMkey*.byok" という名前の新しいファイルが現在のフォルダーに表示されます。
 
 ###手順 4.4: キー転送パッケージをインターネット接続ワークステーションにコピーします。 
 
@@ -304,6 +304,6 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 ##次のステップ
 
-これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault 概要](key-vault-get-started.md)チュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
+これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault の概要](key-vault-get-started.md)のチュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

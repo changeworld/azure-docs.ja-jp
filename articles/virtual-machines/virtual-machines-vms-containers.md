@@ -236,4 +236,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

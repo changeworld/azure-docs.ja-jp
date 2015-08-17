@@ -1,21 +1,12 @@
-<properties 
-	pageTitle="構成強制トンネリングを Microsoft Azure VPN ゲートウェイ"
-	description="仮想ネットワークの間のクロスプレミス VPN ゲートウェイを使用していればリダイレクトしたり、インターネット宛てのすべてのトラフィックを内部設置型の場所に「強制」できます。 "
-	services="vpn-gateway"
-	documentationCenter="na"
-	authors="cherylmc"
-	manager="jdial"
-	editor="tysonn" />
-
+< プロパティ pageTitle「構成強制トンネリングを Microsoft Azure VPN ゲートウェイ」の説明の = ="仮想ネットワークの間のクロスプレミス VPN ゲートウェイを使用していればリダイレクトしたり、インターネット宛てのすべてのトラフィックを内部設置型の場所に「強制」できます。"サービス"vpn gateway"documentationCenter = ="na"作成者"cherylmc"manager = ="jdial"エディター"tysonn"=/>
 <tags 
-	ms.service="vpn-gateway"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="07/13/2015"
-	ms.author="cherylmc" />
-
+   ms.service="vpn-gateway"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="07/13/2015"
+   ms.author="cherylmc" />
 
 # 強制トンネリングについて
 
@@ -154,4 +145,4 @@ Azure では、強制トンネリングは Virtual Network User-Defined ルー�
 
 仮想ネットワークに仮想マシンを追加できます。詳細については、「[カスタム仮想マシンの作成方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

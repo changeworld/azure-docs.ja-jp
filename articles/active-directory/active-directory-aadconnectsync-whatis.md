@@ -48,4 +48,4 @@ Azure Active Directory Connect Synchronization Services (Azure AD Connect Sync) 
  
 <!--Image references-->
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -198,4 +198,4 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
 
 [Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

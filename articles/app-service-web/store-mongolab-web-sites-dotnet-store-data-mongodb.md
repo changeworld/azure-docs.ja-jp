@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/20/2015" 
+	ms.date="08/03/2015" 
 	ms.author="chris@mongolab.com"/>
 
 
@@ -500,4 +500,4 @@ Azure App Service で Web アプリを作成する作業は、特に Azure で�
 
  
 
-<!-----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

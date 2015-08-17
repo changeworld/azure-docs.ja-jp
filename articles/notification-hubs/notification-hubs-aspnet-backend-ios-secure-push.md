@@ -18,9 +18,11 @@
 
 #Azure Notification Hubs の安全なプッシュ
 
-<div class="dev-center-tutorial-selector sublanding">
-    	<a href="/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-secure-push/" title="Windows ユニバーサル">Windows ユニバーサル</a><a href="/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS" class="current">iOS</a> <a href="/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android">Android</a>
-</div>
+> [AZURE.SELECTOR]
+- [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-secure-push.md)
+- [iOS](notification-hubs-aspnet-backend-ios-secure-push.md)
+- [Android](notification-hubs-aspnet-backend-android-secure-push.md)
+
 
 ##概要
 
@@ -63,6 +65,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 3. 次に、実装セクションに次のコードを追加します。プレースホルダー `{back-end endpoint}` を前に取得したバックエンドのエンドポイントに置き換えます。
 
+```
 		NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
 
 		- (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
@@ -107,8 +110,9 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 		    }];
 		    [dataTask resume];
 		}
+```
 
-	このメソッドは、共有設定に格納された資格情報によってアプリケーション バックエンドを呼び出して通知コンテンツを取得します。
+	This method calls your app back-end to retrieve the notification content using the credentials stored in the shared preferences.
 
 4. ここでは、受信通知を処理し、上記のメソッドを使用して表示するコンテンツを取得する必要があります。最初に、プッシュ通知を受信するときに iOS アプリケーションがバックグラウンドで実行されるようにします。**XCode** で、左側のパネルのアプリケーション プロジェクトを選択し、中央のウィンドウの **[ターゲット]** セクションでメイン アプリケーション ターゲットをクリックします。
 
@@ -155,4 +159,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

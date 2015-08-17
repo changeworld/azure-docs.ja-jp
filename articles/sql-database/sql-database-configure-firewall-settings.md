@@ -13,7 +13,7 @@
 	ms.workload="data-management"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="06/22/2015"
 	ms.author="rickbyh"/>
 
@@ -62,11 +62,11 @@
 1. 管理ポータルまたは SQL Server Management Studio を使用して、クエリ ウィンドウを起動します。
 2. マスター データベースに接続していることを確認します。
 3. サーバーレベルのファイアウォール規則は、クエリ ウィンドウから作成、更新、または削除することができます。
-4. サーバーレベルのファイアウォール規則を更新または作成するには、sp_set_firewall rule ストアド プロシージャを実行します。次の例では、サーバー Contoso の IP アドレス範囲を有効にします。
+4. サーバーレベルのファイアウォール規則を更新または作成するには、sp\_set\_firewall rule ストアド プロシージャを実行します。次の例では、サーバー Contoso の IP アドレス範囲を有効にします。
 
 		EXEC sp_set_firewall_rule @name = N'ContosoFirewallRule', @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 
-	サーバーレベルのファイアウォール規則を削除するには、sp_delete_firewall_rule ストアド プロシージャを実行します。次の例では、ContosoFirewallRule という名前の規則を削除します。
+	サーバーレベルのファイアウォール規則を削除するには、sp\_delete\_firewall\_rule ストアド プロシージャを実行します。次の例では、ContosoFirewallRule という名前の規則を削除します。
  
 		EXEC sp_delete_firewall_rule @name = N'ContosoFirewallRule'
  
@@ -112,11 +112,11 @@
 1. サーバーレベルのファイアウォールを IP アドレスで作成した後、管理ポータルまたは SQL Server Management Studio からクエリ ウィンドウを起動します。
 2. データベースレベルのファイアウォール規則を作成するデータベースに接続します。
 
-	既存のデータベースレベルのファイアウォール規則を新規作成または更新するには、sp_set_database_firewall_rule ストアド プロシージャを実行します。次の例では ContosoFirewallRule という名前の新しいファイアウォール規則を作成します。
+	既存のデータベースレベルのファイアウォール規則を新規作成または更新するには、sp\_set\_database\_firewall\_rule ストアド プロシージャを実行します。次の例では ContosoFirewallRule という名前の新しいファイアウォール規則を作成します。
  
 		EXEC sp_set_database_firewall_rule @name = N'ContosoFirewallRule', @start_ip_address = '192.168.1.11', @end_ip_address = '192.168.1.11'
  
-	既存のデータベースレベルのファイアウォール規則を削除するには、sp_delete_database_firewall_rule ストアド プロシージャを実行します。次の例では、ContosoFirewallRule という名前の規則を削除します。
+	既存のデータベースレベルのファイアウォール規則を削除するには、sp\_delete\_database\_firewall\_rule ストアド プロシージャを実行します。次の例では、ContosoFirewallRule という名前の規則を削除します。
  
 		EXEC sp_delete_database_firewall_rule @name = N'ContosoFirewallRule'
 
@@ -144,4 +144,4 @@
 [2]: ./media/sql-database-configure-firewall-settings/AzurePortalFirewallSettings.png
 <!--anchors-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

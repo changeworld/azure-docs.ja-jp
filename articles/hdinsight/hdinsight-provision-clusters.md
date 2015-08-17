@@ -529,7 +529,8 @@ Azure CLI は NPM または Windows インストーラーを使用してイン�
 
 **Windows インストーラーを使用して Azure CLI をインストールするには**
 
-1.	ブラウザーで **http://azure.microsoft.com/downloads/** を開きます。2.	下へスクロールして、**[コマンド ライン ツール]** セクションの **[Azure コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラーのウィザードの指示に従います。
+1.	****http://azure.microsoft.com/downloads/** を参照します。
+2.	下へスクロールして、**[コマンド ライン ツール]** セクションの **[Azure コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラーのウィザードの指示に従います。
 
 **発行設定をダウンロードしてインポートするには**
 
@@ -781,4 +782,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

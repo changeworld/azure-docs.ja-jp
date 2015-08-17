@@ -192,4 +192,4 @@ StorSimple ソリューションの最適なパフォーマンスを得るため
 - [StorSimple ソリューションの展開](storsimple-deployment-walkthrough.md)
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -81,7 +81,7 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
 	
 	SELECT * FROM StudentsOneLine
 
-未加工の JSON ファイルは **wasb://processjson@hditutorialdata.blob.core.windows.net/** にあります。*StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指しています。
+未加工の JSON ファイルは ****wasb://processjson@hditutorialdata.blob.core.windows.net/** にあります。*StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指しています。
 
 *StudentsOneLine* Hive テーブルは、*/json/students/* パスの下にある HDInsight の規定のファイル システムにデータを保存します。
 
@@ -126,7 +126,7 @@ get-json\_object UDF にはいくつかの制限があります。
 
 ### JSON\_TUPLE UDF を使用する
 
-Hive に備わっているもう 1 つの UDF に [json\_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) があります。これは、_get\_json\_objecthttps://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) よりもパフォーマンスに優れています。このメソッドは、一連のキーと、JSON 文字列を取り、1 つの関数を使用して値のタプルを返します。次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
+Hive に備わっているもう 1 つの UDF に [json\_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) があります。これは、[get\_ json \_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) よりもパフォーマンスに優れています。このメソッドは、一連のキーと、JSON 文字列を取り、1 つの関数を使用して値のタプルを返します。次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
 
     SELECT q1.StudentId, q1.Grade 
       FROM StudentsOneLine jt
@@ -261,4 +261,4 @@ Hive コンソールの出力を次に示します。
 [image-hdi-hivejson-serde_result]: ./media/hdinsight-using-json-in-hive/serde_result.png
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

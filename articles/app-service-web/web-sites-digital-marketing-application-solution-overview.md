@@ -31,7 +31,7 @@
 
 ギャラリーで人気の CMS から新しい Web アプリをすばやく作成するか、さまざまな言語やフレームワークから既存の Web アセットを App Service Web アプリに取り込みます。
 
-Azure Marketplace では、[Orchard]、[Umbraco]、[Drupal]、[WordPress] など、一般的な Web サイト コンテンツ管理システム (CMS) からのテンプレートを提供しています。お気に入りの CMS フレーバーを使用して Web アプリを作成できます。[Azure SQL Database] と [MySQL] を含むさまざまデータベースのバックエンドから目的に合ったものを選択できます。
+Azure Marketplace では、[Orchard]、[Umbraco]、Drupal、[WordPress] など、一般的な Web サイト コンテンツ管理システム (CMS) からのテンプレートを提供しています。お気に入りの CMS フレーバーを使用して Web アプリを作成できます。[Azure SQL Database] と [MySQL] を含むさまざまデータベースのバックエンドから目的に合ったものを選択できます。
 
 既存の Web アセットは .NET、PHP、Java、Node.js,、Python に関係なく Web アプリで実行できます。使い慣れた [FTP] ツールを使用して、それらを Web アプリに移動させることができます。デジタル マーケティング キャンペーンを頻繁に作成している場合、ソース管理システムに既存の Web アセットが存在している可能性があります。[Visual Studio]、[Visual Studio Online]、[Git] (ローカル、GitHub、BitBucket、DropBox、Mercurial など) などの一般的なソース管理オプションから Web Apps を直接デプロイできます。
 
@@ -97,7 +97,6 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
 
 [Orchard]: web-sites-dotnet-orchard-cms-gallery.md
 [Umbraco]: web-sites-gallery-umbraco.md
-[Drupal]: web-sites-php-migrate-drupal.md
 [WordPress]: web-sites-php-web-site-gallery.md
   
 [MySQL]: web-sites-php-mysql-deploy-use-git.md
@@ -141,4 +140,4 @@ Azure やサードパーティー製のツールで Web アプリのパフォー
   [gitstaging]: http://www.bradygaster.com/post/multiple-environments-with-windows-azure-web-sites
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

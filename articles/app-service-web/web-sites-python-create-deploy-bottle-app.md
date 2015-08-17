@@ -400,4 +400,4 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 [Bottle のドキュメント]: http://bottlepy.org/docs/dev/index.html
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

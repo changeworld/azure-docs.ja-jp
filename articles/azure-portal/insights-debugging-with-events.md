@@ -72,4 +72,4 @@
 * [サービス メトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

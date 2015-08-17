@@ -52,44 +52,42 @@ Azure ポータルから SQL Server のリンクされたサービスをセッ�
 
 ## 問題: 入力スライスが PendingExecution または PendingValidation 状態のままになっている
 
-このスライスは、さまざまな理由から **PendingExecution** または **PendingValidation** になります。一般的な理由の 1 つとして、パイプラインの最初のテーブルまたはデータセットの **availability** セクションで **waitOnExternal** プロパティが指定されていないことが挙げられます。Azure Data Factory の範囲外で生成されるデータセットの場合、**availability** セクションで、**waitOnExternal** プロパティによるマーキングが必要です。これは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
+このスライスは、さまざまな理由から **PendingExecution** または **PendingValidation** になります。一般的な理由の 1 つとして、**external** プロパティが **true** に設定されていることが挙げられます。Azure Data Factory の範囲外で生成されるデータセットの場合、**external** プロパティによるマーキングが必要です。これは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
 
-**waitOnExternal** プロパティの使用方法については、次の例を参照してください。既定値が使用されるように、このセクションでプロパティの値を設定せずに **waitOnExternal {}** を指定できます。
+**external** プロパティの使用方法については、次の例を参照してください。external を true に設定するときに、必要に応じて **externalData*** を指定できます。
 
 このプロパティの詳細については、[JSON スクリプティング リファレンス][json-scripting-reference]のトピック「テーブル」を参照してください。
 	
 	{
-	    "name": "CustomerTable",
-	    "properties":
-	    {
-	        "location":
-	        {
-	            "type": "AzureBlobLocation",
-	            "folderPath": "MyContainer/MySubFolder/",
-	            "linkedServiceName": "MyLinkedService",
-	            "format":
-	            {
-	                "type": "TextFormat",
-	                "columnDelimiter": ",",
-	                "rowDelimiter": ";"
-	            }
-	        },
-	        "availability":
-	        {
-	            "frequency": "Hour",
-	            "interval": 1,
-	            "waitOnExternal":
-	            {
-	                "dataDelay": "00:10:00",
-	                "retryInterval": "00:01:00",
-	                "retryTimeout": "00:10:00",
-	                "maximumRetry": 3
-	            }
-	        }
+	  "name": "CustomerTable",
+	  "properties": {
+	    "type": "AzureBlob",
+	    "linkedServiceName": "MyLinkedService",
+	    "typeProperties": {
+	      "folderPath": "MyContainer/MySubFolder/",
+	      "format": {
+	        "type": "TextFormat",
+	        "columnDelimiter": ",",
+	        "rowDelimiter": ";"
+	      }
+	    },
+	    "external": true,
+	    "availability": {
+	      "frequency": "Hour",
+	      "interval": 1
+	    },
+	    "policy": {
+	      "externalData": {
+	        "dataDelay": "00:10:00",
+	        "retryInterval": "00:01:00",
+	        "retryTimeout": "00:10:00",
+	        "maximumRetry": 3
+	      }
 	    }
+	  }
 	}
 
- このエラーを解決するには、入力テーブルの JSON 定義に **waitOnExternal** セクションを追加し、テーブルをもう一度作成します。
+ このエラーを解決するには、入力テーブルの JSON 定義に **external** プロパティと **externalData** セクション (省略可能) を追加し、テーブルをもう一度作成します。
 
 ## 問題: ハイブリッド コピー操作に失敗する
 詳細情報:
@@ -131,7 +129,7 @@ Azure Data Factory でカスタム アクティビティ (パイプライン ア
 
 カスタム アクティビティの**一般的なエラー** の 1 つは、終了コード "1" でのパッケージの実行の失敗です。詳細については、"wasb://adfjobs@storageaccount.blob.core.windows.net/PackageJobs/<guid>/<jobid>/Status/stderr" を参照してください。
 
-この種類のエラーの詳細を確認するには、**stderr** ファイルを開きます。このファイルで確認できる一般的なエラーの 1 つは、次のようなタイムアウト状態です: INFO mapreduce.Job: Task Id : attempt_1424212573646_0168_m_000000_0, Status : FAILED AttemptID:attempt_1424212573646_0168_m_000000_0 Timed out after 600 secs
+この種類のエラーの詳細を確認するには、**stderr** ファイルを開きます。このファイルで確認できる一般的なエラーの 1 つは、次のようなタイムアウト状態です: INFO mapreduce.Job: Task Id : attempt\_1424212573646\_0168\_m\_000000\_0, Status : FAILED AttemptID:attempt\_1424212573646\_0168\_m\_000000\_0 Timed out after 600 secs
 
 たとえば、30 分間以上にわたり、このジョブを 3 回再試行すると、同じエラーが複数回表示されます。
 
@@ -204,7 +202,7 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 
 6. **EmpSQLTable** の **[データ スライス]** ブレードには、ブレード下部のリスト内のスライスに対して、すべての **[アクティビティの実行]** が表示されています。リスト内の [失敗] になっている **[アクティビティの実行]** をクリックします。
 
-	![アクティビティの実行を表示しているデータ スライス][image-data-factory-troubleshoot-dataslice-blade-with-active-runs]
+	![Data Slice blade with active runs][image-data-factory-troubleshoot-dataslice-blade-with-active-runs]
 
 
 7. 選択したアクティビティの実行に対する **[アクティビティの実行の詳細]** ブレードに、エラーの詳細が表示されます。このシナリオでは、"**Invalid object name ‘emp‘**" と表示されます。
@@ -386,4 +384,4 @@ Azure PowerShell SDK の廃止されたバージョンを使用すると、次�
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

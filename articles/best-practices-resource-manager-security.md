@@ -191,7 +191,7 @@ VM や仮想ネットワーク内のサブネットに NSG を関連付けるこ
 -	発信元ポート範囲: 0 ～ 65536 の整数 (範囲)
 -	宛先 IP の範囲: 宛先 IP 範囲の CIDR
 -	宛先ポートの範囲: 0 ～ 65536 の整数 (範囲)
--	プロトコル: TCP、UDP、または "\*"
+-	プロトコル: TCP、UDP、または "*"
 -	アクセス: 許可または拒否
 
 ### 既定のルール
@@ -206,17 +206,17 @@ NSG には、既定のルールが含まれています。既定のルールは�
 
 名前 |	優先順位 |	発信元 IP |	発信元ポート |	宛先 IP |	宛先ポート |	プロトコル |	アクセス
 --- | --- | --- | --- | --- | --- | --- | ---
-ALLOW VNET INBOUND | 65000 | VIRTUAL\_NETWORK |	\* |	VIRTUAL\_NETWORK | \* |	\* | ALLOW
-ALLOW AZURE LOAD BALANCER INBOUND | 65001 | AZURE\_LOADBALANCER | \* | \* | \* | \* | ALLOW
-DENY ALL INBOUND | 65500 | \* | \* | \* | \* | \* | DENY
+ALLOW VNET INBOUND | 65000 | VIRTUAL\_NETWORK |	* |	VIRTUAL\_NETWORK | * |	* | ALLOW
+ALLOW AZURE LOAD BALANCER INBOUND | 65001 | AZURE\_LOADBALANCER | * | * | * | * | ALLOW
+DENY ALL INBOUND | 65500 | * | * | * | * | * | DENY
 
 **送信の既定のルール**
 
 名前 |	優先順位 |	発信元 IP |	発信元ポート |	宛先 IP |	宛先ポート |	プロトコル |	アクセス
 --- | --- | --- | --- | --- | --- | --- | ---
-ALLOW VNET OUTBOUND | 65000 | VIRTUAL\_NETWORK | \* | VIRTUAL\_NETWORK | \* | \* | ALLOW
-ALLOW INTERNET OUTBOUND | 65001 | \* | \* | INTERNET | \* | \* | ALLOW
-DENY ALL OUTBOUND | 65500 | \* | \* | \* | \* | \* | DENY
+ALLOW VNET OUTBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ALLOW
+ALLOW INTERNET OUTBOUND | 65001 | * | * | INTERNET | * | * | ALLOW
+DENY ALL OUTBOUND | 65500 | * | * | * | * | * | DENY
 
 ### インフラストラクチャの特別なルール
 
@@ -243,7 +243,7 @@ NSG のルールは、1 つの発信元/宛先ポートまたはポート範囲�
 
 ### ICMP トラフィック
 
-現在の NSG のルールでは、プロトコルとして TCP または UDP を指定できますが、ICMP は指定できません。ただし、ICMP トラフィックは、仮想ネットワーク内で任意のポートおよびプロトコル間のトラフィックをサポートする (\*) 受信ルールによって、既定で仮想ネットワーク内で許可されます。
+現在の NSG のルールでは、プロトコルとして TCP または UDP を指定できますが、ICMP は指定できません。ただし、ICMP トラフィックは、仮想ネットワーク内で任意のポートおよびプロトコル間のトラフィックをサポートする (*) 受信ルールによって、既定で仮想ネットワーク内で許可されます。
 
 ### NSG と VM の関連付け
 
@@ -267,7 +267,7 @@ VM またはサブネットに NSG を関連付ける場合、ネットワーク
 
 名前 |	優先順位 |	発信元 IP |	発信元ポート |	宛先 IP |	宛先ポート |	プロトコル |	アクセス
 --- | --- | --- | --- | --- | --- | --- | ---
-WEB | 100 | INTERNET | \* | \* | 80 | TCP | ALLOW
+WEB | 100 | INTERNET | * | * | 80 | TCP | ALLOW
 
 ## ユーザー定義のルート
 
@@ -335,4 +335,4 @@ Azure では、IP トラフィックを各パケットの宛先に基づいて�
 - ルーティングと IP 転送を有効にするには、「[Azure でルートを作成して IP 転送を有効にする方法](virtual-network/virtual-networks-udr-how-to.md)」を参照してください。 
 - ロールベースのアクセス制御の概要については、「[Microsoft Azure ポータルでのロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

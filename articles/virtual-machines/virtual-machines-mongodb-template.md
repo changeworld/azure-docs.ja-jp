@@ -42,7 +42,7 @@ Github テンプレート リポジトリのリソース マネージャー テ�
 
 ### 手順 1-a: PowerShell を使用してテンプレート ファイルをダウンロードする
 
-JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\Azure\Templates\MongoDB)。
+JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\\Azure\\Templates\\MongoDB)。
 
 フォルダー名をローカル フォルダーのフォルダー名に置き換えて、次のコマンドを実行します。
 
@@ -103,7 +103,7 @@ JSON テンプレートとその他の関連ファイル用のローカル フ�
 
     git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 
-完了後に、C:\Azure\Templates ディレクトリで **mongodb-high-availability** フォルダーを探します。
+完了後に、C:\\Azure\\Templates ディレクトリで **mongodb-high-availability** フォルダーを探します。
 
 ### 手順 2: (省略可能) テンプレート パラメーターを理解する
 
@@ -655,7 +655,7 @@ DEPLOY DATA MEMBERS (並列) => DEPLOY LAST DATA MEMBER => (省略可能) DEPLOY
 
     bash ./vm-disk-utils-0.1.sh -b $DATA_DISKS -s
 
-**vm-disk-utils-0.1.sh** は、azure-quickstart-tempates GitHub リポジトリ内の **shared_scripts\ubuntu** フォルダーの一部であり、ディスクのマウント、フォーマット、ストライピングのための便利な機能を含みますが、この機能は、テンプレート作成の一部として同様のタスクを実行する必要があるときにいつでも再利用できます。
+**vm-disk-utils-0.1.sh** は、azure-quickstart-tempates GitHub リポジトリ内の **shared\_scripts\\ubuntu** フォルダーの一部であり、ディスクのマウント、フォーマット、ストライピングのための便利な機能を含みますが、この機能は、テンプレート作成の一部として同様のタスクを実行する必要があるときにいつでも再利用できます。
 
 注意が必要なもう 1 つの興味深いフラグメントは、CustomScriptForLinux VM 拡張機能に関連するものです。これらは異なる種類のリソースとしてインストールされ、各クラスター ノード デプロイメント テンプレートに依存します。各 **member-resources-Dx.json** ファイルの最後にあるこのフラグメントを次に示します。
 
@@ -692,4 +692,4 @@ DEPLOY DATA MEMBERS (並列) => DEPLOY LAST DATA MEMBER => (省略可能) DEPLOY
 詳細については、「[Azure リソース マネージャー テンプレートの言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

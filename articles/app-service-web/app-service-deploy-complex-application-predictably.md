@@ -294,7 +294,6 @@ DevOps では、反復性と予測可能性が、マイクロサービスで構�
 -	[Azure リソース マネージャー テンプレートの言語](http://msdn.microsoft.com/library/azure/dn835138.aspx)
 -	[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
 -	[Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)
--	[高度なテンプレートの操作](../resource-group-advanced-template.md)
 -	[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)
 -	[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
 -	[Azure でのリソース グループのデプロイのトラブルシューティング](../resource-group-deploy-debug.md)
@@ -304,4 +303,4 @@ DevOps では、反復性と予測可能性が、マイクロサービスで構�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

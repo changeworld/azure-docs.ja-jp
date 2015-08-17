@@ -22,7 +22,7 @@
 
 このトピックでは、[クイックスタート プロジェクト](mobile-services-ios-get-started.md)にプッシュ通知を追加して、レコードが挿入されるたびにモバイル サービスがプッシュ通知を送信できるようにします。先に[Mobile Services の使用]を完了しておく必要があります。
 
-> [AZURE.NOTE] [iOS シミュレーターはプッシュ通知をサポートしない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、物理的な iOS デバイスを使用する必要があります。さらに、有料の [Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)にサインアップする必要があります。
+> [AZURE.NOTE] [iOS シミュレーターはプッシュ通知をサポートしない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、物理的な iOS デバイスを使用する必要があります。さらに、有料の[Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)にサインアップする必要があります。
 
 [AZURE.INCLUDE [Apple プッシュ通知を有効にする](../../includes/enable-apple-push-notifications.md)]
 
@@ -119,4 +119,4 @@
 [Mobile Services Objective-C how-to conceptual reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

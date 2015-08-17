@@ -33,7 +33,7 @@ File コネクタを使用するには、まず File コネクタ API アプリ�
 
 	- **[名前]** - File コネクタの名前を指定します。
 	- **[パッケージの設定]**
-		- **[ルート フォルダー]** - ホスト コンピューター上のルート フォルダーのパスを指定します。例: D:\FileConnectorTest
+		- **[ルート フォルダー]** - ホスト コンピューター上のルート フォルダーのパスを指定します。例: D:\\FileConnectorTest
 		- **[Service Bus の接続文字列]** - Service Bus の接続文字列を指定します。Service Bus 名前空間の種類が、Basic ではなく Standard になっていることを確認し、Service Bus Relay を使用できるようにします。Service Bus Relay はハイブリッド接続マネージャーへの接続に使用されます。
 	- **[App Service プラン]** - App Service プランを選択または作成します。
 	- **[価格レベル]** - コネクタの価格レベルを選択します。
@@ -82,7 +82,7 @@ API の詳細については、「[File コネクタの API の定義]」を参�
 
 <!-- Links -->
 [新しい Logic App の作成]: app-service-logic-create-a-logic-app.md
-[File コネクタの API の定義]: https://msdn.microsoft.com/ja-jp/library/dn936296.aspx
+[File コネクタの API の定義]: https://msdn.microsoft.com/en-US/library/dn936296.aspx
 [ハイブリッド接続マネージャーの使用]: app-service-logic-hybrid-connection-manager.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

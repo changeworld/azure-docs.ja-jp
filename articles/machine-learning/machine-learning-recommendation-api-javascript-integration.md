@@ -228,4 +228,4 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
 
-<!------HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

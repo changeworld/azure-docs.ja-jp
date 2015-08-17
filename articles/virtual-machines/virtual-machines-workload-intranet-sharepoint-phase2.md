@@ -29,15 +29,15 @@
 
 項目 | 仮想マシン名 | ギャラリー イメージ | 最小サイズ
 --- | --- | --- | ---
-1. | ______________ (最初のドメイン コントローラー (例: DC1)) | Windows Server 2012 R2 Datacenter | A2 (Medium)
-2. | ______________ (2 番目のドメイン コントローラー (例: DC2)) | Windows Server 2012 R2 Datacenter | A2 (Medium)
-3. | ______________ (最初の SQL Server コンピューター (例: SQL1)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | 	A7
-4. | ______________ (2 番目の SQL Server コンピューター (例: SQL2)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | 	A7
-5. | ______________ (クラスターのマジョリティ ノード監視 (例: MN1)) | Windows Server 2012 R2 Datacenter | A1 (Small)
-6. | ______________ (最初の SharePoint アプリケーション サーバー (例: APP1)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
-7. | ______________ (2 番目の SharePoint アプリケーション サーバー (例: APP2)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
-8. | ______________ (最初の SharePoint Web サーバー (例: WEB1)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
-9. | ______________ (2 番目の SharePoint Web サーバー (例: WEB2)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
+1\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初のドメイン コントローラー (例: DC1)) | Windows Server 2012 R2 Datacenter | A2 (Medium)
+2\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目のドメイン コントローラー (例: DC2)) | Windows Server 2012 R2 Datacenter | A2 (Medium)
+3\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初の SQL Server コンピューター (例: SQL1)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | 	A7
+4\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目の SQL Server コンピューター (例: SQL2)) | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | 	A7
+5\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (クラスターのマジョリティ ノード監視 (例: MN1)) | Windows Server 2012 R2 Datacenter | A1 (Small)
+6\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初の SharePoint アプリケーション サーバー (例: APP1)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
+7\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目の SharePoint アプリケーション サーバー (例: APP2)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
+8\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (最初の SharePoint Web サーバー (例: WEB1)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
+9\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_ (2 番目の SharePoint Web サーバー (例: WEB2)) | Microsoft SharePoint Server 2013 評価版 - Windows Server 2012 R2 | A4 (ExtraLarge)
 
 **表 M - Azure の SharePoint 2013 イントラネット ファームの仮想マシン**
 
@@ -170,9 +170,9 @@ V、S、A、C の各表は、「[フェーズ 1: Azure の構成](virtual-machin
 
 SharePoint ファームでは、次のユーザー アカウントが必要です。
 
-- sp_farm: SharePoint ファームを管理するためのユーザー アカウント。
-- sp_farm_db: SQL Server インスタンスに対する sysadmin 権限を持つユーザー アカウント。
-- sp_install: ロールと機能をインストールするために必要なドメイン管理権限を持つユーザー アカウント。
+- sp\_farm: SharePoint ファームを管理するためのユーザー アカウント。
+- sp\_farm\_db: SQL Server インスタンスに対する sysadmin 権限を持つユーザー アカウント。
+- sp\_install: ロールと機能をインストールするために必要なドメイン管理権限を持つユーザー アカウント。
 - sqlservice: SQL Server インスタンスを実行できるユーザー アカウント。
 
 次に、ドメイン コントローラーがメンバーであるドメインのドメイン管理者アカウントを使用して、任意のコンピューターにログオンします。管理者レベルの Windows PowerShell コマンド プロンプトを開き、次のコマンドを 1 つずつ実行します。
@@ -191,14 +191,14 @@ SharePoint ファームでは、次のユーザー アカウントが必要で�
 
 1.	スタート画面で、「**Active Directory ユーザー**」と入力し、**[Active Directory ユーザーとコンピューター]** をクリックします。
 2.	ツリー ウィンドウでドメインを開き、**[ユーザー]** をクリックします。
-3.	コンテンツ ウィンドウで、**[sp_install]** を右クリックし、**[グループに追加]** をクリックします。
+3.	コンテンツ ウィンドウで、**[sp\_install]** を右クリックし、**[グループに追加]** をクリックします。
 4.	**[グループの選択]** ダイアログで、「**domain admins**」と入力し、**[OK]** を 2 回クリックします。
 5.	ダイアログで **[表示]** をクリックし、[高度な機能] をクリックします。このオプションでは、すべての非表示コンテナーと、Active Directory オブジェクトのプロパティ ウィンドウ内の非表示タブを表示できます。
 6.	ドメイン名を右クリックし、**[プロパティ]** をクリックします。
 7.	**[プロパティ]** ダイアログで、**[セキュリティ]** タブをクリックし、**[詳細設定]** をクリックします。
 8.	**[<YourDomain> のセキュリティの詳細設定]** ウィンドウで、**[追加]** をクリックします。
 9.	**[<YourDomain> のアクセス許可エントリ]** ウィンドウで、**[プリンシパルの選択]** をクリックします。
-10.	テキスト ボックスに「**<YourDomain>\sp_install**」と入力し、**[OK]** をクリックします。
+10.	テキスト ボックスに「**<YourDomain>\\sp\_install**」と入力し、**[OK]** をクリックします。
 11.	**[コンピューター オブジェクトの作成]** の **[許可]** を選択し、**[OK]** を 3 回クリックします。
 
 次に、DNS サーバーとして使用する 2 つの新しいドメイン コントローラーの IP アドレスが仮想マシンに割り当てられるように、仮想ネットワークの DNS サーバーを更新します。この手順では、表 V (仮想ネットワーク設定) の値を使用します。
@@ -217,7 +217,7 @@ SharePoint ファームでは、次のユーザー アカウントが必要で�
 
 2 つのドメイン コントローラーを再起動するのは、オンプレミス DNS サーバーで DNS サーバーとして構成されないようにするためです。これらのドメイン コントローラーは、それ自体が DNS サーバーであるため、ドメイン コントローラーに昇格されたときに、オンプレミス DNS サーバーで DNS フォワーダーとして自動的に構成されます。
 
-次に、Azure 仮想ネットワークのサーバーでローカル ドメイン コントローラーが使用されるように、Active Directory レプリケーション サイトを作成する必要があります。sp_install アカウントを使用してプライマリ ドメイン コントローラーにログオンし、管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを実行します。
+次に、Azure 仮想ネットワークのサーバーでローカル ドメイン コントローラーが使用されるように、Active Directory レプリケーション サイトを作成する必要があります。sp\_install アカウントを使用してプライマリ ドメイン コントローラーにログオンし、管理者レベルの Windows PowerShell コマンド プロンプトで次のコマンドを実行します。
 
 	$vnet="<Table V – Item 1 – Value column>"
 	$vnetSpace="<Table V – Item 5 – Value column>"
@@ -244,4 +244,4 @@ SharePoint ファームでは、次のユーザー アカウントが必要で�
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

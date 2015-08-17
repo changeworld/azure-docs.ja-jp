@@ -113,4 +113,4 @@ Azure Machine Learning ギャラリーは、1 回のクリックで実験を簡�
 **[ギャラリーにアクセスする >>](http://gallery.azureml.net)**
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

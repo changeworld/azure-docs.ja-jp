@@ -1,5 +1,5 @@
 <properties 
-	pageTitle=".NET SDK を使用して DocumentDB 内のデータをパーティション分割する方法" 
+	pageTitle=".NET SDK を使用して DocumentDB 内のデータをパーティション分割する方法 | Microsoft Azure" 
 	description="Azure DocumentDB .NET SDK を使用して、データをパーティション分割 (シャード) したり、複数のコレクションに要求をルーティングしたりする方法について説明します。" 
 	services="documentdb" 
 	authors="arramac" 
@@ -167,4 +167,4 @@ Microsoft では、.NET SDK のお客様からいただいたフィードバッ�
 * [パフォーマンスに関するヒントについての DocumentDB ブログ](http://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

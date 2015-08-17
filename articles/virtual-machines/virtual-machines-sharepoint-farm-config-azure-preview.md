@@ -139,4 +139,4 @@ Azure プレビュー ポータルの SharePoint サーバー ファーム機能
 
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

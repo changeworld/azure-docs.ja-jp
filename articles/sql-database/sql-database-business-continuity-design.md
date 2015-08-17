@@ -67,7 +67,7 @@ geo レプリケーションは Azure ポータルを使用するか REST API �
 6. セカンダリ タイプを選択します (*Readable* または *Non-readable*)。
 7. **[作成]** をクリックして、構成を完了します。
 
-> [AZURE.NOTE]geo レプリケーションのブレードでは、障害復旧のペアのリージョンが *[推奨]* とマークされます。Premium レベルのデータベースを使用する場合は、別のリージョンを選択できます。Standard のデータベースを使用している場合は、変更できません。Premium データベースでは、セカンダリ タイプが選択できます (*Readable* または *Non-readable*)。Standard データベースでは、*Non-readable* セカンダリのみ選択できます。
+> [AZURE.NOTE]geo レプリケーションのブレードでは、障害復旧のペアのリージョンが *[推奨]* とマークされます。Premium レベルのデータベースを使用する場合は、別のリージョンを選択できます。Standard のデータベースを使用している場合は、変更できません。Premium データベースでは、セカンダリ タイプが選択できます (*Readable* か *Non-readable*)。Standard データベースでは、*Non-readable* セカンダリのみ選択できます。
  
 ###PowerShell
 
@@ -80,7 +80,7 @@ Premium データベースの読み取り可能なセカンダリで geo レプ�
 
 		Start-AzureSqlDatabaseCopy -ServerName "SecondaryServerName" -DatabaseName "SecondaryDatabaseName" -PartnerServer "PartnerServerName" –ContinuousCopy
 		 
-このコマンドは非同期になります。返された後に、[Get AzureSqlDatabaseCopy](https://msdn.microsoft.com/library/dn720235.aspx) コマンドレットを使用してこの操作の状態を確認します。返されたオブジェクトの ReplicationState フィールドには操作完了後に CATCH_UP の値がつきます。
+このコマンドは非同期になります。返された後に、[Get AzureSqlDatabaseCopy](https://msdn.microsoft.com/library/dn720235.aspx) コマンドレットを使用してこの操作の状態を確認します。返されたオブジェクトの ReplicationState フィールドには操作完了後に CATCH\_UP の値がつきます。
 
 		Get-AzureSqlDatabaseCopy -ServerName "PrimaryServerName" -DatabaseName "PrimaryDatabaseName" -PartnerServer "SecondaryServerName"
 
@@ -89,7 +89,7 @@ Premium データベースの読み取り可能なセカンダリで geo レプ�
 
 [Start Database Copy](https://msdn.microsoft.com/library/azure/dn509576.aspx) API を使用して geo レプリケーションの構成をプログラムで作成します。
 
-この API は非同期になります。返された後に、[Get Database Copy](https://msdn.microsoft.com/library/azure/dn509570.aspx) API を使用してこの操作の状態を確認します。応答本文の ReplicationState フィールドには、操作が完了すると CATCH_UP の値がつきます。
+この API は非同期になります。返された後に、[Get Database Copy](https://msdn.microsoft.com/library/azure/dn509570.aspx) API を使用してこの操作の状態を確認します。応答本文の ReplicationState フィールドには、操作が完了すると CATCH\_UP の値がつきます。
 
 
 ##フェールオーバーの構成を選択する方法 
@@ -99,4 +99,4 @@ Premium データベースの読み取り可能なセカンダリで geo レプ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

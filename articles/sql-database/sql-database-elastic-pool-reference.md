@@ -133,21 +133,21 @@ Azure SQL Database V12 サーバーは、リソース グループにありま�
 | :-- | :-- |
 | Get-AzureSqlDatabase | Get Azure SQL database |
 | Get-AzureSqLElasticPool | Get Azure SQL Database elastic database pool |
-| Get-AzureSqlElasticPoolActivity | Get Azure SQL Database elastic database pool operations |
+| Get-AzureSqlElasticPoolActivity | Get Azure SQL Database エラスティック データベースプール operations |
 | Get-AzureSqlElasticPoolDatabase | Get Azure SQL Database elastic database |
 | Get-AzureSqlElasticPoolDatabaseActivity | Get Azure SQL Database elastic database operations |
 | Get-AzureSqlServer | Get Azure SQL Database server |
 | Get-AzureSqlServerFirewallRule | Get Azure SQL Database server firewall rule |
 | Get-AzureSqlServerServiceObjective | Get Azure SQL Database server service objective |
 | New-AzureSqlDatabase | Create Azure SQL database |
-| New-AzureSqlElasticPool | Create Azure SQL Database elastic database pool |
+| New-AzureSqlElasticPool | Create Azure SQL Database エラスティック データベースプール |
 | New-AzureSqlServer | Create Azure SQL Database server |
 | New-AzureSqlServerFirewallRule | Create Azure SQL Database server firewall rule) |
 | Remove-AzureSqlDatabase | Remove Azure SQL database |
-| Remove-AzureSqlElasticPool | Remove Azure SQL Database elastic database pool |
+| Remove-AzureSqlElasticPool | Remove Azure SQL Database エラスティック データベースプール |
 | Remove-AzureSqlServer | Remove Azure SQL Database server |
 | Set-AzureSqlDatabase | Set Azure SQL database |
-| Set-AzureSqlElasticPool | Set Azure SQL Database elastic database pool |
+| Set-AzureSqlElasticPool | Set Azure SQL Database エラスティック データベースプール |
 | Set-AzureSqlServer | Set Azure SQL Database server |
 | Set-AzureSqlServerFirewallRule | Set Azure SQL Database server firewall rule |
 | Get-Metrics | Get Metrics |
@@ -192,4 +192,4 @@ Azure SQL Database V12 サーバーは、リソース グループにありま�
 | 40891 | EX_USER | データベースあたりの DTU 最小値 (%d) は、データベースあたりの DTU 最大値 (%d) を超えることはできません。 | データベースあたりの DTU 最小値、データベースあたりの DTU 最大値 | データベースあたりの DTU 最大値を超えるデータベースあたりの DTU 最小値を設定しようとしています。 | データベースあたりの DTU の最小値がデータベースあたりの DTU 最大値を超えていないことをご確認ください。 |
 | TBD | EX_USER | エラスティック プール内の個々のデータベースの記憶域サイズは、サービス階層のエラスティック プール '%.*ls' で許容される最大サイズを超えることはできません。 | エラスティック プールのサービス階層 | データベースの最大サイズが、エラスティック プールのサービス階層によって許可されている最大サイズを超えています。 | データベースの最大サイズを、エラスティック プールのサービス階層によって許可されている最大サイズの制限内に設定してください。 |
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

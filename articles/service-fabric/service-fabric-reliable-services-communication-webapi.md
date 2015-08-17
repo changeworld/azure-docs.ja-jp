@@ -370,7 +370,7 @@ public void Initialize(ServiceInitializationParameters serviceInitializationPara
 
 ```
 
-ここで "Http://+" が使われていることに注意してください。これは、Web サーバーが、localhost、FQDN、マシン IP など、使用可能なすべてのアドレスで確実にリッスンするようにするためです。
+ここで "http://+" が使われていることに注意してください。これは、Web サーバーが、localhost、FQDN、マシン IP など、使用可能なすべてのアドレスで確実にリッスンするようにするためです。
 
 ### OpenAsync
 
@@ -449,7 +449,7 @@ protected override ICommunicationListener CreateCommunicationListener()
 
 ```
 
-ここで、Web API *アプリケーション*と OWIN *ホスト*が最終的に接触します。*ホスト* (\* \* OwinCommunicationListener \* \*) に*アプリケーション* (**Startup** 経由の Web API) のインスタンスが与えられ、Service Fabric がそのライフサイクルを管理します。この同じパターンは、一般に通信スタックでも従うことができます。
+ここで、Web API *アプリケーション*と OWIN *ホスト*が最終的に接触します。*ホスト* (**OwinCommunicationListener**) に*アプリケーション* (**Startup** 経由の Web API) のインスタンスが与えられ、Service Fabric がそのライフサイクルを管理します。この同じパターンは、一般に通信スタックでも従うことができます。
 
 ## まとめ
 
@@ -570,7 +570,7 @@ namespace WebApi
 [開発環境を設定](service-fabric-get-started.md)していない場合は、設定します。
 
 
-これでサービスを構築し、デプロイできます。Visual Studio で **F5** キーを押して、アプリケーションを構築し、デプロイします。[診断イベント] ウィンドウに、Web サーバーが **http://localhost:80/api** で開かれたことを示すメッセージが表示されるはずです。
+これでサービスを構築し、デプロイできます。Visual Studio で **F5** キーを押して、アプリケーションを構築し、展開します。[診断イベント] ウィンドウに、Web サーバーが ****http://localhost:80/api** で開かれたことを示すメッセージが表示されるはずです。
 
 
 ![](media/service-fabric-reliable-services-communication-webapi/webapi-diagnostics.png)
@@ -614,4 +614,4 @@ ASP.NET 5 でも、Web アプリケーションで*ホスト*から*アプリケ
 
 [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

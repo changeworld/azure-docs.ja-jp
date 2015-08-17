@@ -1,9 +1,7 @@
 <properties
 	pageTitle="Azure のデータ サイエンス用仮想マシン | Microsoft Azure"
 	description="データ サイエンス用の Virtual Machinee のセットアップ"
-	metaKeywords=""
 	services="machine-learning"
-	solutions=""
 	documentationCenter=""
 	authors="msolhab"
 	manager="paulettm" 
@@ -34,4 +32,4 @@
 > [AZURE.NOTE]Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用していないときに課金されないようにするには、[Microsoft Azure 管理ポータル](http://manage.windowsazure.com/)から、その仮想マシンを **[停止 (割り当て解除)]** 状態にする必要があります。仮想マシンの割り当てを解除する方法については、「[未使用時に仮想マシンをシャットダウンして割り当てを解除する](machine-learning-data-science-setup-virtual-machine.md#shutdown)」をご覧ください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

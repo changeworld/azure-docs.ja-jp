@@ -246,4 +246,4 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 [zookeeper]: http://zookeeper.apache.org/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,14 +1,14 @@
-## Invoking stored procedure for SQL Sink
+## SQL シンクのストアド プロシージャの呼び出し
 
-When copying data into SQL Server or Azure SQL/SQL Server Database, a user specified stored procedure could be configured and invoked with additional parameters. 
+データの SQL Server または Azure SQL/SQL Server Database へのコピー時に、ユーザーが指定したストアド プロシージャを構成し、追加のパラメーターと共に呼び出すことができます。
 
-A stored procedure can be leveraged when built-in copy mechanisms do not serve the purpose. This is typically leveraged when extra processing (merging columns, looking up additional values, insertion into multiple tables…) needs to be done before the final insertion of source data in the destination table. 
+組み込みのコピー メカニズムが目的通り機能しない場合は、ストアド プロシージャを利用できます。これは通常、変換先テーブル内のソース データを最終的に挿入する前の追加処理 (列の結合、追加の値の検索、複数のテーブルへの挿入など...、) が必要な場合に利用します。
 
-You may invoke a stored procedure of choice. The following sample shows how to use a stored procedure to do a simple insertion into a table in the database. 
+任意のストアド プロシージャを呼び出すことができます。次の例では、データベース内のテーブルに簡単な挿入を行うストアド プロシージャを使用する方法を示します。
 
-**Output dataset**
+**出力データセット**
 
-In this example, type is set to: SqlServerTable. Set it to AzureSqlTable to use with an Azure SQL database. 
+この例では、type は SqlServerTable に設定されています。Azure SQL データベースで使用するには、type を AzureSqlTable に設定します。
 
 	{
 	  "name": "SqlOutput",
@@ -25,7 +25,7 @@ In this example, type is set to: SqlServerTable. Set it to AzureSqlTable to use 
 	  }
 	}
 	
-Define the SqlSink section in copy activity JSON as follows. To call a stored procedure while insert data, both SqlWriterStoredProcedureName and SqlWriterTableType properties are needed.
+次のように、コピー アクティビティ JSON の SqlSink セクションを定義します。データの挿入中にストアド プロシージャを呼び出すには、SqlWriterStoredProcedureName と SqlWriterTableType の両方のプロパティが必要です。
 
 	"sink":
 	{
@@ -41,7 +41,7 @@ Define the SqlSink section in copy activity JSON as follows. To call a stored pr
 	            }
 	}
 
-In your database, define the stored procedure with the same name as SqlWriterStoredProcedureName. It handles input data from your specified source, and insert into the output table. Notice that the parameter name of the stored procedure should be the same as the tableName defined in Table JSON file.
+データベース内で、SqlWriterStoredProcedureName と同じ名前のストアド プロシージャを定義します。これによって指定したソースの入力データが処理され、出力テーブルに挿入されます。ストアド プロシージャのパラメーター名は、テーブル JSON ファイルで定義された tableName と同じにする必要があります。
 
 	CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
 	AS
@@ -51,11 +51,13 @@ In your database, define the stored procedure with the same name as SqlWriterSto
 	    SELECT * FROM @Marketing
 	END
 
-In your database, define the table type with the same name as SqlWriterTableType. Notice that the schema of the table type should be same as the schema returned by your input data.
+データベースで、SqlWriterTableType と同じ名前のテーブル型を定義します。テーブル型のスキーマは、入力データから返されるスキーマと同じにする必要があります。
 
 	CREATE TYPE [dbo].[MarketingType] AS TABLE(
 	    [ProfileID] [varchar](256) NOT NULL,
 	    [State] [varchar](256) NOT NULL,
 	)
 
-The stored procedure feature takes advantage of [Table-Valued Parameters](https://msdn.microsoft.com/library/bb675163.aspx).
+ストアド プロシージャ機能は[テーブル値パラメーター](https://msdn.microsoft.com/library/bb675163.aspx)を利用しています。
+
+<!---HONumber=August15_HO6-->

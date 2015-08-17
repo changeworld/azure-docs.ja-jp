@@ -427,4 +427,4 @@ Azure ストレージ キューを使用する Media Services アプリケーシ
 	
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

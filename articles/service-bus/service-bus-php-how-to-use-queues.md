@@ -38,7 +38,7 @@ Windows Azure BLOB サービスにアクセスする PHP アプリケーショ�
 
 Azure Service Bus キュー API を使用するには、次の操作を行います。
 
-1. [require_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
+1. [require\_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
 2. 使用する可能性のあるクラスを参照する
 
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
@@ -213,4 +213,4 @@ Service Bus キューに送信されたメッセージ (および Service Bus �
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

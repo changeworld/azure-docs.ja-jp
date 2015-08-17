@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="07/22/2015" 
-	ms.author="patshea123"/>
+	ms.author="patshea"/>
 
 # Azure Active Directory の使用 (.NET プロジェクト)
 
@@ -28,9 +28,9 @@
  
 ##SignIn/SignOut コントロールを追加する 
 
-ビューに SignIn/SignOut コントロールを追加するには、**_LoginPartial.cshtml\*\* 部分ビューを使用して、この機能をいずれかのビューに追加します。この機能を標準 **_\_Layout.cshtml \*\* ビューに追加した例を次に示します。(navbar-collapse クラスの div の最後の要素に注目してください):
+ビューに SignIn/SignOut コントロールを追加するには、**\_LoginPartial.cshtml** 部分ビューを使用してこの機能をいずれかのビューに追加します。この機能を標準 **\_Layout.cshtml** ビューに追加した例を次に示します。(div class="navbar-collapse collapse" の最後の要素にご注目ください):
 
-<PRE class="prettyprint">
+```
     &lt;!DOCTYPE html&gt; 
      &lt;html&gt; 
      &lt;head&gt; 
@@ -73,8 +73,8 @@
         @RenderSection("scripts", required: false) 
     &lt;/body&gt; 
     &lt;/html&gt;
-</PRE>
+```
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

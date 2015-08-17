@@ -85,7 +85,7 @@ Get events | サブスクリプション内のイベントやリソースのイ�
 Get metrics | リソース ID のメトリックを取得します。
 
 ## コネクタでできること
-これでコネクタが作成されたため、このコネクタをロジック アプリを使用してビジネス フローに追加することができます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+これでコネクタが作成されたため、このコネクタを Logic App を使用してビジネス フローに追加することができます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[API アプリとコネクタの管理と監視](../app-service-api/app-service-api-manage-in-portal.md)」を参照してください。
 
@@ -94,4 +94,4 @@ Get metrics | リソース ID のメトリックを取得します。
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

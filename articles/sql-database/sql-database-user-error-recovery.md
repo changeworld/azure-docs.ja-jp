@@ -109,4 +109,4 @@ PowerShell を使用して、プログラムでデータベースの復元を実
 復元が終了したら、[復旧データベースの最終処理](sql-database-recovered-finalize.md)に関するガイドに従って、復旧したデータベースを構成できます。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

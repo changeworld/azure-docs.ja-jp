@@ -12,7 +12,7 @@
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile-xamarin-android" 
 	ms.devlang="dotnet" 
-	ms.topic="hero-article" 
+	ms.topic="article" 
 	ms.date="06/09/2015" 
 	ms.author="lindydonna"/>
 
@@ -136,4 +136,4 @@
 [Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

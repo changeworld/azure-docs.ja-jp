@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/16/2015" 
+	ms.date="07/29/2015" 
 	ms.author="szark"/>
 
 
@@ -42,7 +42,7 @@ SSH キーまたはパスワード認証を使用して Linux 仮想マシンに
 	#/etc/sudoers.d/waagent
 	azureuser ALL = (ALL) NOPASSWD: ALL
 
-この変更によって、azureuser ユーザーはパスワードなしで sudo を実行できます。
+この変更によって、"azureuser" ユーザーはパスワードなしで sudo を実行できます。
 
 ## SSH キーのみ
 
@@ -54,4 +54,4 @@ SSH キー認証を使用して Linux 仮想マシンにログオンし、`sudo`
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

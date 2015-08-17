@@ -106,7 +106,7 @@ Hive クエリの結果をヘッド ノード上のローカル ディレクト�
 
 	insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
 
-次の例では、Hive クエリの出力が、Hadoop クラスターの既定のコンテナー内にある BLOB ディレクトリ `queryoutputdir` に書き込まれます。ここでは、ディレクトリ名のみを指定する必要があります。BLOB 名を指定する必要はありません。*wasb:///queryoutputdir/queryoutput.txt* のように、ディレクトリ名と BLOB 名の両方を指定すると、エラーがスローされます。
+次の例では、Hive クエリの出力が、Hadoop クラスターの既定のコンテナー内にある BLOB ディレクトリ `queryoutputdir` に書き込まれます。ここでは、ディレクトリ名のみを指定する必要があります。BLOB 名を指定する必要はありません。**wasb:///queryoutputdir/queryoutput.txt* のように、ディレクトリ名と BLOB 名の両方を指定すると、エラーがスローされます。
 
 ![Create workspace][13]
 
@@ -114,7 +114,7 @@ Azure ストレージ エクスプローラーの (またはそれと同等の) 
 
 ![Create workspace][14]
 
-### Hive エディターまたは Azure の PowerShell コマンドを介して
+### Hive エディターまたは Azure PowerShell コマンドを介して
 
 ユーザーは、クエリのコンソール (Hive エディター) を使用するために、URL
 
@@ -226,14 +226,14 @@ Hive には、[datetime] フィールドを処理するための UDF のセッ�
     	select day(<datetime field>), month(<datetime field>)
 		from <databasename>.<tablename>;
 
-この Hive クエリは、*&#60;datetime フィールド>* が既定の datetime 形式であることを前提としています。
+この Hive クエリは、*&\#60;datetime フィールド>* が既定の datetime 形式であることを前提としています。
 
 [datetime] フィールドが既定の形式でない場合、まず [datetime] フィールドを Unix のタイムスタンプに変換してから、Unix のタイムスタンプを既定の形式の datetime 文字列に変換する必要があります。datetime が既定の形式の場合は、特徴を抽出するために組み込みの datetime ユーザー定義関数を適用することができます。
 
 		select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
 		from <databasename>.<tablename>;
 
-このクエリでは、*&#60;datetime フィールド>* が *03/26/2015 12:04:39* のようなパターンであった場合、*'&#60;datetime フィールドのパターン>'* は `'MM/dd/yyyy HH:mm:ss'` である必要があります。これをテストするために、ユーザーは次を実行できます。
+このクエリでは、*&\#60;datetime フィールド>* が *03/26/2015 12:04:39* のようなパターンであった場合、*'&\#60;datetime フィールドのパターン>'* は `'MM/dd/yyyy HH:mm:ss'` である必要があります。これをテストするために、ユーザーは次を実行できます。
 
 		select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
 		from hivesampletable limit 1;
@@ -270,7 +270,7 @@ Hive テーブルに、スペースで区切られた単語から成る文字列
 		and dropoff_latitude between 30 and 90
 		limit 10;
 
-2 つの GPS 座標の距離を計算する方程式は、Peter Lapisu による <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> サイトにあります。彼の Javascript で、関数 `toRad()` は単に *lat\_or\_lon\*pi/180* であり、これは、角度をラジアンに変換します。ここで、*lat\_or\_lon* は緯度または経度です。Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> に記載された定義を使用して、`atan` 関数により実装されています。
+2 つの GPS 座標の距離を計算する方程式は、Peter Lapisu による <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> サイトにあります。彼の Javascript で、関数 `toRad()` は単に *lat\_or\_lon*pi/180* であり、これは、角度をラジアンに変換します。ここで、*lat\_or\_lon* は緯度または経度です。Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> に記載された定義を使用して、`atan` 関数により実装されています。
 
 ![Create workspace][1]
 
@@ -302,7 +302,7 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 
 	通常、*mapred.min.split.size* の既定値は 0、*mapred.max.split.size* の既定値は **Long.MAX**、*dfs.block.size* の既定値は 64 MB です。お分かりのとおり、指定されたデータのサイズでは、これらのパラメーターを「設定」して調整すると、使用するマッパーの数を調整できるようになります。
 
-5. Hive のパフォーマンスを最適化する他の**高度なオプション**を次に示します。これらのオプションにより、タスクをマップおよび削減するためのメモリの割り当てを設定でき、パフォーマンスの調整に役立ちます。*mapreduce.reduce.memory.mb* は、Hadoop クラスターの各ワーカー ノードの物理メモリのサイズを超えることはできないことに注意してください。
+5. Hive のパフォーマンスを最適化する他の**高度なオプション**を次に示します。これらのオプションにより、タスクをマップおよび削減するためのメモリの割り当てを設定でき、パフォーマンスの調整に役立ちます。*mapreduce.reduce.memory.mb* は、Hadoop クラスターの各 worker ノードの物理メモリのサイズを超えることはできないことに注意してください。
 
 		set mapreduce.map.memory.mb = 2048;
 		set mapreduce.reduce.memory.mb=6144;
@@ -319,4 +319,4 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 [15]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-3.png
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

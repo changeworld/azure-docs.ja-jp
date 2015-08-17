@@ -97,4 +97,4 @@ Azure ではこのテンプレートをイメージとして扱い、**[イメ�
 [How to Attach a Data Disk to a Virtual Machine]: storage-windows-attach-disk.md
 [How to Create a Virtual Machine Running Linux (Linux を実行する仮想マシンの作成方法)]: virtual-machines-linux-tutorial.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

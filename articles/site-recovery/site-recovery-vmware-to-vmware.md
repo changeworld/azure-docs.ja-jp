@@ -62,17 +62,17 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 1. [update](http://download.microsoft.com/download/9/F/D/9FDC6001-1DD0-4C10-BDDD-8A9EBFC57FDF/ASR Scout 8.0.1 Update1.zip) zip ファイルをダウンロードします。この zip ファイルには、次のファイルが含まれています。
 
-	-  RX_8.0.1.0_GA_Update_1_3279231_23Jun15.tar.gz
-	-  CX_Windows_8.0.1.0_GA_Update_1_3259146_23Jun15.exe
-	-  UA_Windows_8.0.1.0_GA_Update_1_3259401_23Jun15.exe
-	-  UA_RHEL6-64_8.0.1.0_GA_Update_1_3259401_23Jun15.tar.gz
-	-  vCon_Windows_8.0.1.0_GA_Update_1_3259523_23Jun15.exe
+	-  RX\_8.0.1.0\_GA\_Update\_1\_3279231\_23Jun15.tar.gz
+	-  CX\_Windows\_8.0.1.0\_GA\_Update\_1\_3259146\_23Jun15.exe
+	-  UA\_Windows\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.exe
+	-  UA\_RHEL6-64\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.tar.gz
+	-  vCon\_Windows\_8.0.1.0\_GA\_Update\_1\_3259523\_23Jun15.exe
 2. zip ファイルを抽出します。
-2. **RX server**: **RX_8.0.1.0_GA_Update_1_3279231_23Jun15.tar.gz** を RX サーバーにコピーし、抽出します。抽出したフォルダで、**/Install** を実行します。
-2. **Configuration server/process server**: **CX_Windows_8.0.1.0_GA_Update_1_3259146_23Jun15.exe** を構成サーバーとプロセス サーバーにコピーします。ダブルクリックして実行します。
-3. **Windows マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA_Windows_8.0.1.0_GA_Update_1_3259401_23Jun15.exe** をマスター ターゲット サーバーにコピーします。ダブルクリックして実行します。Windows 用の統合エージェントは、ソース サーバーでは適用できません。これは、Windows マスター ターゲット サーバーのみにインストールしてください。
-4. **Linux マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA_RHEL6-64_8.0.1.0_GA_Update_1_3259401_23Jun15.tar.gz** をマスター ターゲット サーバーにコピーし、抽出します。抽出したフォルダで、**/Install** を実行します。
-5. **vContinuum サーバー**: **vCon_Windows_8.0.1.0_GA_Update_1_3259523_23Jun15.exe** を vContinuum サーバーにコピーします。vContinuum ウィザードを閉じたことを確認してください。ファイルをダブルクリックして実行します。
+2. **RX server**: **RX\_8.0.1.0\_GA\_Update\_1\_3279231\_23Jun15.tar.gz** を RX サーバーにコピーし、抽出します。抽出したフォルダで、**/Install** を実行します。
+2. **Configuration server/process server**: **CX\_Windows\_8.0.1.0\_GA\_Update\_1\_3259146\_23Jun15.exe** を構成サーバーとプロセス サーバーにコピーします。ダブルクリックして実行します。
+3. **Windows マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA\_Windows\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.exe** をマスター ターゲット サーバーにコピーします。ダブルクリックして実行します。Windows 用の統合エージェントは、ソース サーバーでは適用できません。これは、Windows マスター ターゲット サーバーのみにインストールしてください。
+4. **Linux マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA\_RHEL6-64\_8.0.1.0\_GA\_Update\_1\_3259401\_23Jun15.tar.gz** をマスター ターゲット サーバーにコピーし、抽出します。抽出したフォルダで、**/Install** を実行します。
+5. **vContinuum サーバー**: **vCon\_Windows\_8.0.1.0\_GA\_Update\_1\_3259523\_23Jun15.exe** を vContinuum サーバーにコピーします。vContinuum ウィザードを閉じたことを確認してください。ファイルをダブルクリックして実行します。
 
 ## 手順 4: レプリケーションの設定
 5. ソースとターゲットの VMware サイト間にレプリケーションを設定します。
@@ -105,7 +105,7 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 	- 構成サーバーまたは RX サーバーに対するコンテナー登録に失敗する。
 	- クラスター化された仮想マシンが再開時に保護されている場合、クラスターのボリュームが適切に表示されない。
 	- マスター ターゲット サーバーがオンプレミスの運用仮想マシンとは異なる ESXi サーバーでホストされている場合、フェールバックが失敗する。
-	- 8.0.1 にアップグレードすると構成ファイルのアクセス許可が変更され、保護や操作に影響が出る。
+	- 8\.0.1 にアップグレードすると構成ファイルのアクセス許可が変更され、保護や操作に影響が出る。
 	- 再同期のしきい値が適切に適用されないため、レプリケーションの動作に不整合が生じる。
 	- 構成サーバーのインターフェイスに、RPO 設定が正しく表示されない。圧縮されていないデータ値で圧縮された値が正しく表示されない。
 	-  vContinuum ウィザードで削除操作を行っても適切に削除されず、レプリケーションが構成サーバーのインターフェイスから削除されない。
@@ -117,4 +117,4 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 ご質問があれば、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

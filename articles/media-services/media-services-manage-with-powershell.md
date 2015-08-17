@@ -110,4 +110,4 @@ Azure Media Services を削除する準備ができたら、[Remove-AzureMediaSe
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

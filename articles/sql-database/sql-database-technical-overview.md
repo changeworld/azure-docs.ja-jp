@@ -29,4 +29,4 @@ SQL Database は、Basic、Standard、Premium の[サービス階層](sql-databa
 [無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使用し、少しだけ時間を割いて、[最初の SQL Database を作成](sql-database-get-started.md)しましょう。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -66,4 +66,4 @@ Media Services 調整メカニズムが、サービスに対して過剰な要�
 1. [送信] をクリックして、チケットを開きます。
   
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -78,7 +78,7 @@ Task t = fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 - ステートレス サービスとステートフル サービスの間では使用できません。
 - インスタンスの数が異なるステートレス サービス間では使用できません。たとえば、両方のステートレス サービスとも作成されるときに同じ InstanceCount プロパティが必要です。
 - レプリカの数が異なる可変または永続的なステートフル サービス間では使用できません。たとえば、両方のサービスの Target と ReplicaSetSizes に同じ値が指定されている必要があります。
-- パーティション分割されたサービスでは使用できません。各サービスに FABRIC_PARTITION_SCHEME_SINGLETON パーティション構成が必要です。
+- パーティション分割されたサービスでは使用できません。各サービスに FABRIC\_PARTITION\_SCHEME\_SINGLETON パーティション構成が必要です。
 - アフィニティの関係は、このサービス記述の他のプロパティと同じように、作成されたサービスを変更できない場合に設定されます。
 - サービスのチェーンは許可されません。複数のサービスにアフィニティの関係を作成する必要がある場合は、"スター型" のモデルを使用する必要があります。
 
@@ -229,4 +229,4 @@ Task t = fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 [Image3]: media/service-fabric-resource-balancer-service-description/MW.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

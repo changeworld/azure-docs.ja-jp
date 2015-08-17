@@ -7,7 +7,7 @@
 
 3. [Maintainer.exe を実行します](#to-run-the-maintainer)。
 
-4. [コンテンツ データベースとごみ箱の設定を元に戻します](to-revert-the-content-database-and-recycle-bin-settings)。
+4. [コンテンツ データベースとごみ箱の設定を元に戻します](#to-revert-the-content-database-and-recycle-bin-settings)。
 
 #### Maintainer の実行を準備するには
 
@@ -21,7 +21,7 @@
 
 5. 暗号化が解除された web.config ファイルで、**<connectionStrings>** ノードの下に、SQL Server インスタンスの接続文字列とコンテンツ データベース名を追加します。次の例を参照してください。
 
-    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=";Remote Blob Storage Maintainer for WSS_Content";" providerName="System.Data.SqlClient" />`
+    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
 
 6. `aspnet_regiis –pef connectionStrings` を使用して、web.config ファイルを再び暗号化します。
 
@@ -63,4 +63,4 @@
 
 2. Web フロントエンド サーバーの **[サーバーの全体管理]** で、目的のコンテンツ データベースの **[Web アプリケーションの全般設定]** を編集して、ごみ箱を再び有効にします。そのためには、**[サーバーの全体管理]**、**[アプリケーション管理]**、**[Web アプリケーション (Web アプリケーションの管理)]**、**[SharePoint - 80]**、**[アプリケーションの全般設定]** の順にクリックします。[ごみ箱の状態] を **[オン]** に設定します。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="06/09/2015"
+   ms.date="08/05/2015"
    ms.author="mcoskun"/>
 
 # Reliable Collection
@@ -60,16 +60,16 @@ Reliable Collection では、次の 2 つの分離レベルがサポートされ
 Reliable Dictionary と Reliable Queue では、Read Your Writes がサポートされます。つまり、トランザクション内でのすべての書き込みは、同じトランザクションで行われる次の読み取りによって認識されるということです。
 
 ### Reliable Dictionary
-| 操作\ロール | プライマリ | セカンダリ |
+| 操作\\ロール | プライマリ | セカンダリ |
 | --------------------- | :--------------- | :--------------- |
 | 1 つのエンティティの読み取り | 反復可能読み取り | スナップショット |
-| 列挙\カウント | スナップショット | スナップショット |
+| 列挙\\カウント | スナップショット | スナップショット |
 
 ### Reliable Queue
-| 操作\ロール | プライマリ | セカンダリ |
+| 操作\\ロール | プライマリ | セカンダリ |
 | --------------------- | :--------------- | :--------------- |
 | 1 つのエンティティの読み取り | スナップショット | スナップショット |
-| 列挙\カウント | スナップショット | スナップショット |
+| 列挙\\カウント | スナップショット | スナップショット |
 
 ## 永続性モデル
 Reliable State Manager および Reliable Collection は、ログとチェックポイントと呼ばれる永続性モデルに従います。このモデルでは、各状態の変更がディスクにログ記録され、メモリにのみ適用されます。完全な状態が永続化されるのはごくまれです (チェックポイントとしても知られています)。このモデルを使用する利点は次のとおりです。
@@ -87,7 +87,7 @@ Reliable Collection は、常に排他ロックを取得します。読み取り
 
 次に示すのは、ロックの互換性対応表です。
 
-| 要求\許可 | なし | 共有 | 更新 | 排他的 |
+| 要求\\許可 | なし | 共有 | 更新 | 排他的 |
 | ----------------- | :----------- | :----------- | :---------- | :----------- |
 | 共有 | 競合なし | 競合なし | 競合 | 競合 |
 | 更新 | 競合なし | 競合なし | 競合 | 競合 |
@@ -117,6 +117,5 @@ Reliable Collection は、常に排他ロックを取得します。読み取り
 - [Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
 - [Reliable Service プログラミング モデルの詳細な使用方法](../Service-Fabric/service-fabric-reliable-services-advanced-usage.md)
 - [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -118,4 +118,4 @@ ID の処理は、ほとんどすべてのアプリケーションにとって�
 
 David Chappell は、カリフォルニア州サンフランシスコに拠点を置く Chappell & Associates [www.davidchappell.com](http://www.davidchappell.com) の社長です。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

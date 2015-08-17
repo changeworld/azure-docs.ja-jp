@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="06/16/2015"
+	ms.date="08/05/2015"
 	ms.author="sdanie"/>
 
 # キャッシュを追加して Azure API Management のパフォーマンスを向上させる
@@ -161,4 +161,4 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

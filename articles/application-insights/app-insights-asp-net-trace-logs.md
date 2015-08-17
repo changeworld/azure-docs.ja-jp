@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=".net"
 	authors="alancameronwills" 
-	manager="keboyd"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/27/2015" 
+	ms.date="08/04/2015" 
 	ms.author="awills"/>
  
 # Application Insights の .NET トレース ログを調べる  
@@ -61,7 +61,7 @@ Application Insights トレース API を直接呼び出すことができます
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
-
+TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。たとえば、その中に POST データをエンコードできます。
 
 
 ## ログを調査する
@@ -124,4 +124,4 @@ Application Insights をインストールしないでログ アダプターの 
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

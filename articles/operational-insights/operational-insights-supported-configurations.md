@@ -100,4 +100,4 @@ SQL Server では、分析用に次の 32 ビットと 64 ビット エディシ
 
 また、WOW64 実装で実行する場合は、SQL Server の32 ビット エディションがサポートされています。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

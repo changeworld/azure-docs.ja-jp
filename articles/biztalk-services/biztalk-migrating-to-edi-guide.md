@@ -142,4 +142,4 @@ Microsoft Azure BizTalk Services は定期的なマイルストーンで更新�
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

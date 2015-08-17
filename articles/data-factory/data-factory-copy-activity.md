@@ -20,33 +20,33 @@
 ## 概要
 パイプラインで**コピー アクティビティ**を使用して、ソースからシンク (ターゲット) にデータを一括でコピーできます。コピー アクティビティは、次のシナリオで使用できます。
 
-- **Azure に入力する**。このシナリオでは、次のサブシナリオのために、内部設置型のデータ ソース (例: SQL Server) から Azure データ ストア (例: Azure BLOB、Azure テーブル、Azure SQL データベース) にデータがコピーされます。
+- **Azure に入力する**。このシナリオでは、次のサブシナリオのために、オンプレミスのデータ ソース (例: SQL Server) から Azure データ ストア (例: Azure BLOB、Azure テーブル、Azure SQL データベース) にデータがコピーされます。
 	- さらなる処理のために、Azure 上の 1 か所にデータを収集する。
-	- 内部設置型または Azure 以外のクラウド プラットフォームから Azure にデータを移行する。
+	- オンプレミスまたは Azure 以外のクラウド プラットフォームから Azure にデータを移行する。
 	- コスト効果の高い階層型の保存を実現するために Azure にデータをアーカイブまたはバックアップする。
-- **Azure から出力する**。このシナリオでは、次のサブシナリオのために、Azure (例: Azure BLOB、Azure テーブル、Azure SQL データベース) から内部設置型のデータ マートやデータ ウェアハウス (例: SQL Server) にデータがコピーされます。
-	- クラウドのデータ ウェアハウスをサポートしていないためにデータを内部設置型に転送する。
-	- 既存の内部設置型ソリューションやレポート インフラストラクチャを活用するためにデータを内部設置型に転送する。
-	- 階層型の保存を実現するために内部設置型にデータをアーカイブまたはバックアップする。
+- **Azure から出力する**。このシナリオでは、次のサブシナリオのために、Azure (例: Azure BLOB、Azure テーブル、Azure SQL データベース) からオンプレミスのデータ マートやデータ ウェアハウス (例: SQL Server) にデータがコピーされます。
+	- クラウドのデータ ウェアハウスをサポートしていないためにデータをオンプレミスに転送する。
+	- 既存のオンプレミス ソリューションやレポート インフラストラクチャを活用するためにデータをオンプレミスに転送する。
+	- 階層型の保存を実現するためにオンプレミスにデータをアーカイブまたはバックアップする。
 - **Azure 間でコピーする**。このシナリオでは、Azure の複数のデータ ソースに分散したデータが一元的な Azure データ ストアに集約されます。例: Azure テーブルから Azure BLOB へ、Azure BLOB から Azure テーブルへ、Azure テーブルから Azure SQL へ、Azure BLOB から Azure SQL へ。
 
 詳細については、以下を参照してください。
 
 - ビデオ: [Introducing Azure Data Factory Copy Activity (Azure Data Factory コピーアクティビティの概要)][copy-activity-video]
 - コピー アクティビティを使用して Azure BLOB ストレージから Azure SQL データベースにデータをコピーする方法のチュートリアルは、「[Azure Data Factory を使ってみる][adfgetstarted]」を参照してください。 
-- コピー アクティビティを使用してオンプレミスの Azure SQL データベースから Azure BLOB ストレージにデータをコピーする方法のチュートリアルは、「[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
+- コピー アクティビティを使用してオンプレミスの SQL Server データベースから Azure BLOB ストレージにデータをコピーする方法のチュートリアルは、「[パイプラインがオンプレミスのデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
 
 
 ## サポートされているソースとシンク
 コピー アクティビティでは、次のデータ移行のシナリオがサポートされています。
 
-| *ソース/シンク* | Azure BLOB | Azure テーブル | Azure SQL Database | Azure DocumentDB | Azure VM 上の SQL Server | 内部設置型 SQL Server |
+| *ソース/シンク* | Azure BLOB | Azure テーブル | Azure SQL Database | Azure DocumentDB | Azure VM 上の SQL Server | オンプレミスの SQL Server |
 | ------------- | ---------- | ----------- | ------------------ | ---------------- | ------------------ | ------------------- |
 | Azure BLOB | ○ | ○ | ○ | ○ | ○ | ○ |
 | Azure テーブル | ○ | ○ | ○ | ○ | ○ | ○ |
 | Azure SQL Database | ○ | ○ | ○ | ○ | ○ | ○ |
 | Azure DocumentDB | ○ | ○ | ○ | | | |  
-| 内部設置型 SQL Server | ○ | ○ | ○ | | ○ | ○ |
+| オンプレミスの SQL Server | ○ | ○ | ○ | | ○ | ○ |
 | Azure VM 上の SQL Server | ○ | ○ | ○ | | ○ | ○ |
 | オンプレミスのファイル システム | ○ | ○ | ○ | | ○ | ○ |
 | オンプレミスの Oracle Database | ○ | ○ | ○ | | ○ | ○ |
@@ -60,14 +60,14 @@
 詳細については、MSDN ライブラリの「[サポート対象のソースおよびシンク](https://msdn.microsoft.com/library/dn894007.aspx)」のトピックを参照してください。
 
 ### サービスとしてのインフラストラクチャ (IaaS) 上の SQL
-IaaS 上の SQL Server は、ソースとシンクの両方としてサポートされています。IaaS 上の SQL Server にリンクされたサービスを作成する場合は、Data Management Gateway が必要です。SQL Server とゲートウェイの両方のリソースの競合によるパフォーマンスの低下を回避するため、Data Management Gateway は SQL Server をホストしていない仮想マシンにインストールすることをお勧めします。Data Management Gateway の詳細については、「[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
+IaaS 上の SQL Server は、ソースとシンクの両方としてサポートされています。IaaS 上の SQL Server にリンクされたサービスを作成する場合は、Data Management Gateway が必要です。SQL Server とゲートウェイの両方のリソースの競合によるパフォーマンスの低下を回避するため、Data Management Gateway は SQL Server をホストしていない仮想マシンにインストールすることをお勧めします。Data Management Gateway の詳細については、「[パイプラインがオンプレミスのデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
 
 1.	パブリック DNS 名と静的パブリック ポートを持つ VM: プライベート ポート マッピング
 2.	SQL エンドポイントが公開されていないパブリック DNS 名を持つ VM
-3.	Virtual Network
+3.	仮想ネットワーク
 	<ol type='a'>
 <li>一覧の最後に次のトポロジが含まれている Azure クラウド VPN</li>	
-<li>Azure Virtual Network を使用した内部設置型からクラウドへのサイト間 VPN を持つ VM</li>	
+<li>Azure Virtual Network を使用したオンプレミスからクラウドへのサイト間 VPN を持つ VM</li>	
 </ol>![Data Factory (コピー アクティビティ)][image-data-factory-copy-actvity]
 
 ## コピー アクティビティ - コンポーネント
@@ -131,7 +131,7 @@ JSON プロパティとスクリプトの詳細については、「[JSON Script
 ソースおよびシンクの種類とそれらの種類でサポートされているプロパティの一覧については、MSDN ライブラリの「[サポートされているソースとシンク][msdn-supported-sources-sinks]」を参照してください。
 
 ## コピー アクティビティ - 例
-この例では、入力テーブルと出力テーブルが定義されます。また、これらのテーブルが、内部設置型の SQL Server データベースから Azure BLOB にデータをコピーするパイプライン内のコピー アクティビティで使用されます。
+この例では、入力テーブルと出力テーブルが定義されます。また、これらのテーブルが、オンプレミスの SQL Server データベースから Azure BLOB にデータをコピーするパイプライン内のコピー アクティビティで使用されます。
 
 **前提条件** サンプル JSON スクリプトでは、次の Azure Data Factory アーティファクトが参照されます。
 
@@ -162,7 +162,7 @@ JSON プロパティとスクリプトの詳細については、「[JSON Script
  		}
 	}
 
-次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryTable** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure Data Factory 内にテーブル (**MyOnPremTable**) を作成します。
+次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryTable** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure データ ファクトリ内にテーブル (**MyOnPremTable**) を作成します。
          
 	New-AzureDataFactoryTable -ResourceGroupName ADF –Name MyOnPremTable –DataFactoryName CopyFactory –File <Filepath>\MyOnPremTable.json.
 
@@ -198,7 +198,7 @@ Data Factory コマンドレットの詳細については、[コマンドレッ
    		}
 	}
 
-次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryTable** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure Data Factory 内にテーブル (**MyDemoBlob**) を作成します。
+次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryTable** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure データ ファクトリ内にテーブル (**MyDemoBlob**) を作成します。
          
 	New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName CopyFactory –File <Filepath>
 
@@ -243,7 +243,7 @@ Data Factory コマンドレットの詳細については、[コマンドレッ
 		}
 
 
- 次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryPipeline** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure Data Factory 内にパイプライン (**CopyActivityPipeline**) を作成します。
+ 次の Azure PowerShell コマンド サンプルでは、**New-AzureDataFactoryPipeline** を使用します。このコマンドは、上記のスクリプトが含まれた JSON ファイルを使用して、**CopyFactory** という Azure データ ファクトリ内にパイプライン (**CopyActivityPipeline**) を作成します。
          
 		New-AzureDataFactoryPipeline -ResourceGroupName ADF –DataFactoryName CopyFactory –File <Filepath>
 
@@ -269,11 +269,11 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 ## チュートリアル
 コピー アクティビティを使用して Azure BLOB ストレージから Azure SQL データベースにデータをコピーする方法のチュートリアルは、「[Azure Data Factory を使ってみる][adfgetstarted]」を参照してください。
  
-コピー アクティビティを使用してオンプレミスの Azure SQL データベースから Azure BLOB ストレージにデータをコピーする方法のチュートリアルは、「[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
+コピー アクティビティを使用してオンプレミスの SQL Server データベースから Azure BLOB ストレージにデータをコピーする方法のチュートリアルは、「[パイプラインがオンプレミスのデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
 
 ## 関連項目
 - [コピー アクティビティ - 例][copy-activity-examples]
-- [ビデオ: Introducing Azure Data Factory Copy Activity (Azure Data Factory コピーアクティビティの概要)][copy-activity-video]
+- [ビデオ: Azure Data Factory コピーアクティビティの概要][copy-activity-video]
 - [MSDN ライブラリのコピー アクティビティに関するトピック][msdn-copy-activity]
 - [Advanced Scenarios for using the Copy Activity with Azure Data Factory (Azure Data Factory でコピー アクティビティを使用する高度なシナリオ)][copy-activity-advanced]
 
@@ -299,4 +299,4 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity/ColumnMappingSample2.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

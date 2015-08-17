@@ -49,7 +49,7 @@ Service Bus を使用するには、Node.js Azure パッケージをダウンロ
 		├── xml2js@0.2.7 (sax@0.5.2)
 		└── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
 
-3.  手動で **ls** コマンドを実行して、**node_modules** フォルダーが作成されたことを確認することもできます。そのフォルダーで **azure** パッケージを探します。その中に Service Bus トピックにアクセスするために必要な必要なライブラリが含まれています。
+3.  手動で **ls** コマンドを実行して、**node\_modules** フォルダーが作成されたことを確認することもできます。そのフォルダーで **azure** パッケージを探します。その中に Service Bus トピックにアクセスするために必要な必要なライブラリが含まれています。
 
 ### モジュールのインポート
 
@@ -59,7 +59,7 @@ Service Bus を使用するには、Node.js Azure パッケージをダウンロ
 
 ### Service Bus 接続の設定
 
-azure モジュールは、Azure サービス バスに接続するために必要な情報として、環境変数 AZURE_SERVICEBUS_NAMESPACE および AZURE_SERVICEBUS_ACCESS_KEY を読み取ります。これらの環境変数が設定されていない場合、**createServiceBusService** を呼び出すときにアカウント情報を指定する必要があります。
+azure モジュールは、Azure サービス バスに接続するために必要な情報として、環境変数 AZURE\_SERVICEBUS\_NAMESPACE および AZURE\_SERVICEBUS\_ACCESS\_KEY を読み取ります。これらの環境変数が設定されていない場合、**createServiceBusService** を呼び出すときにアカウント情報を指定する必要があります。
 
 Azure クラウド サービスの構成ファイルで環境変数を設定する例については、[ストレージを使用する Node.js クラウド サービスに関するトピック]を参照してください。
 
@@ -171,7 +171,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
         }
     }
 
-同様に、次の例では "LowMessages" という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、**messagenumber** プロパティが 3 以下のメッセージのみが選択されます。
+同様に、次の例では 'LowMessages' という名前のサブスクリプションを作成し、**SqlFilter** を適用します。このフィルターでは、**messagenumber** プロパティが 3 以下のメッセージのみが選択されます。
 
     serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
         if(!error){
@@ -239,7 +239,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 **isPeekLock** パラメーターが **true** に設定されている場合、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。サービス バスは要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**deleteMessage** メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第 2 段階を完了します。**deleteMessage** メソッドによって、メッセージが読み取り中としてマークされ、サブスクリプションから削除されます。
 
-次の例では、**receiveSubscriptionMessage** を使用したメッセージの受信および処理の方法を示しています。この例では、最初に "LowMessages" サブスクリプションからメッセージを受信して削除し、次に true に設定した **isPeekLock** を使用して "HighMessages" サブスクリプションからメッセージを受信します。次に、**deleteMessage** を使用してメッセージを削除します。
+次の例では、**receiveSubscriptionMessage** を使用したメッセージの受信および処理の方法を示しています。この例では、最初に 'LowMessages' サブスクリプションからメッセージを受信して削除し、次に true に設定した **isPeekLock** を使用して 'HighMessages' サブスクリプションからメッセージを受信します。次に、**deleteMessage** を使用してメッセージを削除します。
 
     serviceBusService.receiveSubscriptionMessage('MyTopic', 'LowMessages', function(error, receivedMessage){
         if(!error){
@@ -305,4 +305,4 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
   [Azure テーブル サービスを使用する Node.js Web アプリケーション]: /develop/nodejs/tutorials/web-site-with-storage/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

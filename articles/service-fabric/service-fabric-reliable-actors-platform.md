@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Fabric アクターの Service Fabric プラットフォームの使用方法"
-   description="この記事では、Fabric アクターが Service Fabric プラットフォームの機能を使用する方法について説明します。アクターの開発者の観点から Service Fabric プラットフォームの概念について説明します。"
+   pageTitle="高信頼アクターの Service Fabric プラットフォームの使用方法"
+   description="この記事では、高信頼アクターが Service Fabric プラットフォームの機能を使用する方法について説明します。アクターの開発者の観点から Service Fabric プラットフォームの概念について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/21/2015"
+   ms.date="08/05/2015"
    ms.author="abhisram"/>
 
-# Fabric アクターの Service Fabric プラットフォームの使用方法
+# 高信頼アクターの Service Fabric プラットフォームの使用方法
 
 ## アクターの Service Fabric アプリケーション モデルの概念
 アクターは、Service Fabric アプリケーション モデルを使用して、アプリケーションのライフサイクルを管理します。すべてのアクターの型は、Service Fabric の[サービスの種類](service-fabric-application-model.md#describe-a-service)にマップされます。アクター コードは Service Fabric アプリケーションとして[パッケージ化され](service-fabric-application-model.md#package-an-application)、クラスターに[展開](service-fabric-deploy-remove-applications.md#deploy-an-application)されます。
@@ -100,7 +100,7 @@ Visual Studio のソリューションには、クラスターとの間のアプ
 
 ![][2]
 
-アプリケーションの後続の管理 (アップグレードや最終的な削除など) は、Service Fabric のアプリケーション管理メカニズムからも実行できます。詳細については、「[アプリケーション モデル](service-fabric-application-model.md)」、「[アプリケーションの展開と削除](service-fabric-deploy-remove-applications.md)」、および「[アプリケーションのアップグレード](service-fabric-application-upgrade.md)」のトピックを参照してください。
+アプリケーションの後続の管理 (アップグレードや最終的な削除など) は、Service Fabric のアプリケーション管理メカニズムからも実行できます。詳細については、[アプリケーション モデル](service-fabric-application-model.md)、[アプリケーションのデプロイと削除](service-fabric-deploy-remove-applications.md)、および[アプリケーションのアップグレード](service-fabric-application-upgrade.md)に関する各トピックを参照してください。
 
 ## アクターのサービスの拡張性
 クラスターの管理者は、クラスター内の各サービスの種類の 1 つ以上のアクターにサービスを作成できます。各アクターのサービスはそれぞれ、1 つまたは複数のパーティション (その他の Service Fabric サービスに似ています) を持つことができます。1 つのサービスの種類に複数のサービスを作成する (アクターの型にマップする) 機能や、サービスに複数のパーティションを作成する機能により、アクターのアプリケーションを拡張できるようになります。詳細については、「[拡張性](service-fabric-concepts-scalability.md)」の記事を参照してください。
@@ -242,4 +242,4 @@ public class VoicemailBoxActor : Actor<VoicemailBox>, IVoicemailBoxActor
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

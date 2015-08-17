@@ -60,7 +60,7 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 
 * [既存のアプリにモバイル サービスを追加] <br/>Mobile Services を使用してデータの格納とクエリを実行する方法について説明します。
 
-* [オフライン データの同期の使用] <br/>オフライン データの同期を使用して、アプリの応答性と信頼性を高める方法について説明します。
+* [オフライン データの同期の使用]<br/> オフライン データの同期を使用して、アプリの応答性と信頼性を高める方法について説明します。
 
 * [既存の Azure Mobile Services アプリへの認証の追加]<br/> ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
@@ -100,4 +100,4 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [ JavaScript バックエンド バージョン]: mobile-services-ios-get-started.md
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

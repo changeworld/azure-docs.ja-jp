@@ -24,7 +24,7 @@ Azure Site Recovery は、仮想マシンと物理サーバーのレプリケー
 
 以下のようなビジネス上の利点があります。
 
-- Site Recovery によって自動化された拡張性のあるエンタープライズ レプリケーション ソリューションを提供します。
+- Site Recovery によって自動化されたスケーラブルなエンタープライズ レプリケーション ソリューションを提供します。
 - ファイバー チャネル記憶域と iSCSI 記憶域の両方で、エンタープライズ記憶域パートナーが提供する SAN レプリケーション機能を利用します。[SAN 記憶域パートナー](http://go.microsoft.com/fwlink/?LinkId=518669)に関するページをご覧ください。
 - 既存の SAN インフラストラクチャを活用して、Hyper-V クラスターにデプロイされているミッション クリティカルなアプリケーションを保護します。 
 - ゲスト クラスターをサポートします。
@@ -55,7 +55,7 @@ Azure Site Recovery は、仮想マシンと物理サーバーのレプリケー
 
 ### Azure の前提条件
 
-- [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](http://aka.ms/try-azure)を使用できます。料金については、「[Azure Site Recovery Manager Pricing Details (Azure Site Recovery Manager の料金詳細)](http://go.microsoft.com/fwlink/?LinkId=378268)」を参照してください。
+- [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](http://aka.ms/try-azure)を使用できます。価格については、[Azure Site Recovery Manager の価格の詳細](http://go.microsoft.com/fwlink/?LinkId=378268)に関するページを参照してください。
 
 ### VMM の前提条件
 
@@ -179,7 +179,7 @@ VMM コンソールで SAN を追加し、分類します。
 	
 4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 
-5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)](href="http://go.microsoft.com/fwlink/?LinkId=389880)」で利用可能地域を参照してください。
+5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)](href="http://go.microsoft.com/fwlink/?LinkId=389880)」で利用可能地域をご覧ください。
 
 6. **[コンテナーの作成]** をクリックします。
 
@@ -217,7 +217,12 @@ VMM コンソールで SAN を追加し、分類します。
 
 	- カスタム プロキシ サーバーを使用する場合は、プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。
 	- 次の URL に VMM サーバーからアクセスできるようにする必要があります。
-		- *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net- *.backup.windowsazure.com- *.blob.core.windows.net- *.store.core.windows.net- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。 
+		- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。 
 	
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。
 	- VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
@@ -356,4 +361,4 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 	
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

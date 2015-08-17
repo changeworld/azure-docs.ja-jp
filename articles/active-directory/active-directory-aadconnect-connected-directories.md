@@ -26,7 +26,7 @@
 
 シナリオ |アクセス許可
 ------------- | ------------- |
-パスワードの同期| <li>ディレクトリの変更のレプリケート。</li> <li>ディレクトリの変更をすべてにレプリケート。</li>
+パスワードの同期| <li>ディレクトリの変更のレプリケート。</li> ディレクトリの変更をすべてにレプリケート。
 Exchange ハイブリッド展開|「[Office 365 Exchange ハイブリッド AAD Sync の書き戻し属性とアクセス許可](https://msdn.microsoft.com/library/azure/dn757602.aspx#exchange)」を参照してください。
 パスワードの書き戻し | <li>パスワードの変更</li><li>パスワードのリセット</li>
 ユーザー、グループ、およびデバイスの書き戻し|"書き戻し" するディレクトリのオブジェクトと属性に対する書き込みアクセス許可
@@ -46,4 +46,4 @@ Exchange ハイブリッド展開|「[Office 365 Exchange ハイブリッド AAD
 * [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

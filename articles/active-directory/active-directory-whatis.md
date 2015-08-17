@@ -12,7 +12,7 @@
                 ms.workload="identity" 
                 ms.tgt_pltfrm="na" 
                 ms.devlang="na" 
-                ms.topic="hero-article" 
+                ms.topic="article" 
                 ms.date="07/14/2015" 
                 ms.author="markusvi"/>
 
@@ -92,4 +92,4 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
 - [クラウドを利用したオンプレミス ID システムの強化と監視](https://msdn.microsoft.com/library/azure/dn906722.aspx)
 - [標準に基づく機能豊富な開発者向けプラットフォーム](https://msdn.microsoft.com/library/azure/ff800682.aspx)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

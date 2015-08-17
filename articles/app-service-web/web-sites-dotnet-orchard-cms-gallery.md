@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/29/2015" 
+	ms.date="08/03/2015" 
 	ms.author="tomfitz"/>
 
 # Azure Marketplace から Orchard CMS Web アプリを作成する
@@ -92,4 +92,4 @@ Marketplace には、Microsoft、サード パーティ企業、およびオー�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

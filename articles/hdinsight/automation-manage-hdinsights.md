@@ -40,7 +40,8 @@ Azure HDInsight コマンドレットでは、Linux または Windows での HDI
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure HDInsight を管理する方法について説明しました。Azure Automation の詳細については、こちらのリンクをご覧ください。
 
 * Azure Automation の[作業開始のチュートリアル](../automation-create-runbook-from-samples.md)に関するページを参照してください。
+* サンプルについては、[スクリプト センター](http://aka.ms/scriptcentergallery)を参照してください。  
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

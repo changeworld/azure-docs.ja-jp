@@ -95,4 +95,4 @@ SQL Azure 移行ウィザード (SAMW) の使用は任意ですが、お勧め�
 
 ![alt text](./media/sql-database-migrate-visualstudio-ssdt/13MigrateSSDT.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

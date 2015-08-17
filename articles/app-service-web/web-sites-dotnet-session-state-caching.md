@@ -28,7 +28,7 @@ ASP.NET Web アプリケーションでセッション状態を使用してい�
 [ここにある手順](../cache-dotnet-how-to-use-azure-redis-cache.md#create-cache)に従ってキャッシュを作成します。
 
 ##<a id="configureproject"></a>RedisSessionStateProvider NuGet パッケージを Web アプリケーションに追加する
-NuGet `RedisSessionStateProvider` パッケージをインストールします。パッケージ マネージャー コンソール ([\*\*Tools\*\*]、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) からインストール するには、次のコマンドを使用します。
+NuGet `RedisSessionStateProvider` パッケージをインストールします。パッケージ マネージャー コンソールからインストールするには、**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** コマンドを使用します。
 
   `PM> Install-Package Microsoft.Web.RedisSessionStateProvider`
   
@@ -44,14 +44,14 @@ NuGet `RedisSessionStateProvider` パッケージをインストールします�
 1. `host`、`accessKey`、`port` (SSL ポートは 6380 とする必要があります) の値を入力し、`SSL` を `true` に設定します。これらの値は、ご利用のキャッシュ インスタンスの [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715) ブレードから取得できます。詳細については、「[キャッシュに接続する](../cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache)」を参照してください。既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。非 SSL ポートの有効化の詳細については、「[Azure Redis Cache でのキャッシュの構成](https://msdn.microsoft.com/library/azure/dn793612.aspx)」トピックの「[アクセス ポート](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts)」セクションを参照してください。次のマークアップは、*web.config* ファイルに対する変更を示しています。
 
 
-  <pre class="prettyprint">  
-    &lt;system.web>
-    &lt;customErrors mode="Off" />
-    &lt;authentication mode="None" />
-    &lt;compilation debug="true" targetFramework="4.5" />
-    &lt;httpRuntime targetFramework="4.5" />
-  &lt;sessionState mode="Custom" customProvider="RedisSessionProvider">
-      &lt;providers>  
+```  
+    &lt;system.web&gt;
+    &lt;customErrors mode="Off" /&gt;
+    &lt;authentication mode="None" /&gt;
+    &lt;compilation debug="true" targetFramework="4.5" /&gt;
+    &lt;httpRuntime targetFramework="4.5" /&gt;
+  &lt;sessionState mode="Custom" customProvider="RedisSessionProvider"&gt;
+      &lt;providers&gt;  
           &lt;!--&lt;add name="RedisSessionProvider" 
             host = "127.0.0.1" [String]
             port = "" [number]
@@ -61,20 +61,23 @@ NuGet `RedisSessionStateProvider` パッケージをインストールします�
             retryTimeoutInMilliseconds = "0" [number]
             databaseId = "0" [number]
             applicationName = "" [String]
-          />-->
+          /&gt;--&gt;
          &lt;add name="RedisSessionProvider" 
               type="Microsoft.Web.Redis.RedisSessionStateProvider" 
               <mark>port="6380"
               host="movie2.redis.cache.windows.net" 
               accessKey="m7PNV60CrvKpLqMUxosC3dSe6kx9nQ6jP5del8TmADk=" 
-              ssl="true"</mark> />
-      &lt;!--&lt;add name="MySessionStateStore" type="Microsoft.Web.Redis.RedisSessionStateProvider" host="127.0.0.1" accessKey="" ssl="false" />-->
-      &lt;/providers>
-    &lt;/sessionState>
-  &lt;/system.web></pre>
+              ssl="true"</mark> /&gt;
+      &lt;!--&lt;add name="MySessionStateStore" type="Microsoft.Web.Redis.RedisSessionStateProvider" host="127.0.0.1" accessKey="" ssl="false" /&gt;--&gt;
+      &lt;/providers&gt;
+    &lt;/sessionState&gt;
+  &lt;/system.web&gt;
+```
 
 
-<a id="usesessionobject">コードでセッション オブジェクトを使用する</a>最後に、ASP.NET コードでセッション オブジェクトを使用します。**Session.Add** メソッドを使用して、セッション状態にオブジェクトを追加します。このメソッドではキーと値のペアに基づいて、セッション状態キャッシュにアイテムが格納されます。
+
+##<a id="usesessionobject"></a> コードでセッション オブジェクトを使用する
+最後に、ASP.NET コードでセッション オブジェクトを使用します。**Session.Add** メソッドを使用して、セッション状態にオブジェクトを追加します。このメソッドではキーと値のペアに基づいて、セッション状態キャッシュにアイテムが格納されます。
 
     string strValue = "yourvalue";
 	Session.Add("yourkey", strValue);
@@ -108,4 +111,4 @@ Redis Cache を使用して、Web アプリケーションのオブジェクト�
   [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

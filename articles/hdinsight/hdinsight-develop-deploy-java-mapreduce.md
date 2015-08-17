@@ -26,7 +26,7 @@
 
 このチュートリアルを開始する前に、次の作業を完了している必要があります。
 
-- HDInsight Emulator のインストール手順については、「[HDInsight Emulator の概要][hdinsight-emulator]」を参照してください。必要なサービスがすべて実行されていることを確認します。HDInsight Emulator をインストールしているコンピューターで、デスクトップのショートカットから Hadoop コマンド ラインを起動し、**C:\hdp** に移動して、コマンド **start_local_hdp_services.cmd** を実行します。
+- HDInsight Emulator のインストール手順については、「[HDInsight Emulator の概要][hdinsight-emulator]」を参照してください。必要なサービスがすべて実行されていることを確認します。HDInsight Emulator をインストールしているコンピューターで、デスクトップのショートカットから Hadoop コマンド ラインを起動し、**C:\\hdp** に移動して、コマンド **start\_local\_hdp\_services.cmd** を実行します。
 - エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
 - エミュレーター コンピューターへの Java プラットフォーム JDK 7 以降のインストール。これはエミュレーター コンピューターで既に利用可能です。
 - [Apache Maven](http://maven.apache.org/) のインストールおよび構成。
@@ -44,7 +44,8 @@
 
 **Maven を使ってプロジェクトを作成するには**
 
-1. **C:\Tutorials\WordCountJava という名前のディレクトリを作成します。2. 開発環境のコマンド ラインから、作成した場所にディレクトリを変更します。
+1. **C:\\Tutorials\\WordCountJava** という名前のディレクトリを作成します。
+2. 開発環境のコマンド ラインから、作成した場所にディレクトリを変更します。
 3. Maven でインストールされた __mvn__ コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
 
 		mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -53,8 +54,8 @@
 
 	* __pom.xml__ - プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
 
-	* __src__ - アプリケーションを作成する __main\java\org\apache\hadoop\examples__ ディレクトリを格納するディレクトリです。
-3. __src\test\java\org\apache\hadoop\examples\apptest.java__ ファイルはこの例で使用しないため、削除します。
+	* __src__ - アプリケーションを作成する __main\\java\\org\\apache\\hadoop\\examples__ ディレクトリを格納するディレクトリです。
+3. __src\\test\\java\\org\\apache\\hadoop\\examples\\apptest.java__ ファイルはこの例で使用しないため、削除します。
 
 **POM を更新するには**
 
@@ -112,7 +113,7 @@
 
 **ワード カウント アプリケーションを作成するには**
 
-1. __wordcountjava\src\main\java\org\apache\hadoop\examples__ ディレクトリに移動し、__app.java__ ファイルの名前を __WordCount.java__ に変更します。
+1. __wordcountjava\\src\\main\\java\\org\\apache\\hadoop\\examples__ ディレクトリに移動し、__app.java__ ファイルの名前を __WordCount.java__ に変更します。
 2. メモ帳を開きます。
 2. 次のプログラムをコピーして、メモ帳に貼り付けます。
 
@@ -199,7 +200,7 @@
 
 	これにより、前のビルド アーティファクトを整理し、まだインストールされていない依存関係をダウンロードして、アプリケーションをビルドおよびパッケージ化します。
 
-3. コマンドが終了すると、__wordcountjava\target__ ディレクトリに __wordcountjava-1.0-SNAPSHOT.jar__ という名前のファイルが格納されます。
+3. コマンドが終了すると、__wordcountjava\\target__ ディレクトリに __wordcountjava-1.0-SNAPSHOT.jar__ という名前のファイルが格納されます。
 
 	> [AZURE.NOTE]__wordcountjava-1.0-SNAPSHOT.jar__ ファイルは uberjar です。
 
@@ -228,7 +229,7 @@ HDInsight Emulator での MapReduce ジョブのテストには次の手順が�
 <tr><td>/WordCount/MRStatusOutput</td><td>ジョブの出力フォルダー。</td></tr>
 </table>
 
-このチュートリアルでは、%hadoop_home% ディレクトリにある .txt ファイルをデータ ファイルとして使用します。
+このチュートリアルでは、%hadoop\_home% ディレクトリにある .txt ファイルをデータ ファイルとして使用します。
 
 > [AZURE.NOTE]Hadoop HDFS のコマンドは大文字と小文字が区別されます。
 
@@ -305,7 +306,7 @@ MapReduce ジョブを実行するための別のオプションは、Azure Powe
 ##<a id="upload"></a>Azure BLOB ストレージにデータとアプリケーションをアップロードする
 Azure HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。HDInsight クラスターをプロビジョニングするときは、Azure BLOB ストレージ コンテナーを使用してシステム ファイルを格納します。この既定のコンテナーか別のコンテナー (Azure の同じストレージ アカウント上、またはクラスターと同じデータ センターに配置された別のストレージ アカウント上) をデータ ファイルの格納に使用できます。
 
-このチュートリアルでは、データ ファイル用と MapReduce アプリケーション用にそれぞれ個別のストレージ アカウント上にコンテナーを作成します。データ ファイルは、エミュレーター ワークステーション上の **C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common** ディレクトリ内のテキスト ファイルです。
+このチュートリアルでは、データ ファイル用と MapReduce アプリケーション用にそれぞれ個別のストレージ アカウント上にコンテナーを作成します。データ ファイルは、エミュレーター ワークステーション上の **C:\\hdp\\hadoop-2.4.0.2.1.3.0-1981\\share\\doc\\hadoop\\common** ディレクトリ内のテキスト ファイルです。
 
 **BLOB ストレージ アカウントとコンテナーを作成するには**
 
@@ -317,7 +318,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 		$containerName_Data = "<ContainerName>"
 		$location = "<MicrosoftDataCenter>"  # For example, "East US"
 
-	**$subscripionName** 変数は、Azure サブスクリプションに関連付けられます。**$storageAccountName_Data** と **$containerName_Data** には名前を付ける必要があります。名前付けの制限については、「[コンテナー、BLOB、およびメタデータの名前付け](http://msdn.microsoft.com/library/windowsazure/dd135715.aspx)」を参照してください
+	**$subscripionName** 変数は、Azure サブスクリプションに関連付けられます。**$storageAccountName\_Data** と **$containerName\_Data** には名前を付ける必要があります。名前付けの制限については、「[コンテナー、BLOB、およびメタデータの名前付け](http://msdn.microsoft.com/library/windowsazure/dd135715.aspx)」を参照してください
 
 3. 次のコマンドを実行して、ストレージ アカウントと、そのアカウントの BLOB ストレージ コンテナーを作成します。
 
@@ -349,9 +350,9 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 		$localFolder = "C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common"
 		$destFolder = "WordCount/Input"
 
-	**$storageAccountName_Data** 変数と **$containerName_Data** 変数は前の手順で定義したものと同じです。
+	**$storageAccountName\_Data** 変数と **$containerName\_Data** 変数は前の手順で定義したものと同じです。
 
-	ソース ファイル フォルダーは **c:\Hadoop\hadoop-1.1.0-SNAPSHOT** で、アップロード先フォルダーは **WordCount/Input** です。
+	ソース ファイル フォルダーは **c:\\Hadoop\\hadoop-1.1.0-SNAPSHOT** で、アップロード先フォルダーは **WordCount/Input** です。
 
 3. 次のコマンドを実行して、ソース ファイル フォルダー内の .txt ファイルの一覧を取得します。
 
@@ -399,7 +400,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 		$jarFile = "C:\Tutorials\WordCountJava\wordcountjava\target\wordcountjava-1.0-SNAPSHOT.jar"
 		$blobFolder = "WordCount/jars"
 
-	**$storageAccountName_Data** 変数と **$containerName_Data** 変数は前の手順で定義したものと同じです。つまり、同じストレージ アカウントの同じコンテナーにデータ ファイルとアプリケーションの両方をアップロードします。
+	**$storageAccountName\_Data** 変数と **$containerName\_Data** 変数は前の手順で定義したものと同じです。つまり、同じストレージ アカウントの同じコンテナーにデータ ファイルとアプリケーションの両方をアップロードします。
 
 	アップロード先フォルダーは **WordCount/jars** です。
 
@@ -527,7 +528,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
 3. スクリプトの最初の 6 つの変数を設定します。**$stringPrefix** 変数は、指定した文字列をプレフィックスとして HDInsight クラスター名、ストレージ アカウント名、BLOB ストレージ コンテナー名に付けるために使用されます。これらの名前の長さは 3 ～ 24 文字である必要があるため、指定する文字列とこのスクリプトで使用する名前の合計の長さが名前の文字制限を超えないように注意してください。**$stringPrefix** には、すべて小文字を使用する必要があります。
 
-	**$storageAccountName_Data** 変数と **$containerName_Data** 変数は、データ ファイルとアプリケーションの格納に使用するストレージ アカウントとコンテナーです。**$location** 変数は、データ ストレージ アカウントの場所と一致する必要があります。
+	**$storageAccountName\_Data** 変数と **$containerName\_Data** 変数は、データ ファイルとアプリケーションの格納に使用するストレージ アカウントとコンテナーです。**$location** 変数は、データ ストレージ アカウントの場所と一致する必要があります。
 
 4. 残りの変数を確認します。
 5. スクリプト ファイルを保存します。
@@ -546,7 +547,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 **出力を取得するには**
 
 1. Azure PowerShell ウィンドウを開きます。
-2. ディレクトリを **C:\Tutorials\WordCountJava** に変更します。Azure PowerShell の既定のフォルダーは **C:\Windows\System32\WindowsPowerShell\v1.0** です。実行するコマンドレットによって出力ファイルが現在のフォルダーにダウンロードされます。出力ファイルをシステム フォルダーにダウンロードするアクセス許可はありません。
+2. ディレクトリを **C:\\Tutorials\\WordCountJava** に変更します。Azure PowerShell の既定のフォルダーは **C:\\Windows\\System32\\WindowsPowerShell\\v1.0** です。実行するコマンドレットによって出力ファイルが現在のフォルダーにダウンロードされます。出力ファイルをシステム フォルダーにダウンロードするアクセス許可はありません。
 2. 次のコマンドを実行して、値を設定します。
 
 		$subscriptionName = "<AzureSubscriptionName>"
@@ -609,4 +610,4 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

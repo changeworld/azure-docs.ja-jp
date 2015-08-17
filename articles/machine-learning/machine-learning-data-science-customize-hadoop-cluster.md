@@ -2,7 +2,6 @@
 	pageTitle="Advanced Analytics Process and Technology 向けに Hadoop クラスターをカスタマイズする | Microsoft Azure" 
 	description="一般的な Python モジュールは、カスタムの Azure HDInsight Hadoop クラスターで利用できます。"
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
 	authors="hangzh-msft" 
 	manager="paulettm" 
@@ -52,7 +51,8 @@
  
 * **[名前]** - このスクリプト アクションの名前として任意の文字列を入力します。 
 * **[ノード タイプ]** - **[すべてのノード]** を選択します。 
-* **[スクリプト URI]** - *http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1* 	* *publicscripts* は、ストレージ アカウントのパブリック コンテナーです。 
+* **スクリプト URI** - **http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1*
+	* *publicscripts* は、ストレージ アカウントのパブリック コンテナーです。 
 	* *getgoing* は、Azure でユーザーが作業しやすくなるように、PowerShell スクリプト ファイルを共有するために使用します。 
 * **[パラメーター]** - (空白のままにします)
 
@@ -98,4 +98,4 @@ Hive レコードを処理するために使用されるクラスターに格納
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

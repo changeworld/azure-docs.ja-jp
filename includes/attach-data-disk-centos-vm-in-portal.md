@@ -1,4 +1,4 @@
-1. Azure [管理ポータル](http://manage.windowsazure.com)で、**[仮想マシン]** をクリックし、先ほど作成した仮想マシン (**testlinuxvm**) を選択します。
+1. Azure の[管理ポータル](http://manage.windowsazure.com)で、**[仮想マシン]** をクリックし、先ほど作成した仮想マシン (**testlinuxvm**) を選択します。
 
 2. コマンド バーで、**[ディスクの接続]**、**[空のディスクの接続]** の順にクリックします。
 
@@ -114,4 +114,4 @@
 [Image8]: ./media/attach-data-disk-centos-vm-in-portal/fdisk4.png
 [Image9]: ./media/attach-data-disk-centos-vm-in-portal/mkfs.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

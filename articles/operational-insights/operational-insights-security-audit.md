@@ -35,7 +35,7 @@
 3. **「Security and Audit」** ページで、**「NOTABLE ISSUES」** ブレードの情報を確認します。この例の画像では今日注意すべき 6 つの問題が、昨日注意すべきだった 2 つの問題とともに表示されています。この例では、疑わしい実行可能ファイルが 1 つあります。**「NOTABLE ISSUES」** ブレードの**疑わしい実行可能ファイル**をクリックします。![[セキュリティと監査] ページの画像](./media/operational-insights-security-audit/sec-audit-dash03.png)
 4. 検索は、クリックした疑わしい実行可能ファイルのクエリと結果を表示します。この例では、 1 つの結果とそのファイル ハッシュが表示されています。**FILEHASH** ID をクリックします。![検索結果の filehash の画像](./media/operational-insights-security-audit/sec-audit-search01.png)
 5. 検索は、ファイル パスとプロセス名を含むその実行ファイルの追加情報を表示します。**「Process &lt;file name&gt;」** をクリックします。この例では、これは HEXEDIT.EXE です。![検索結果のプロセスの画像](./media/operational-insights-security-audit/sec-audit-search02.png)
-6. 検索は、引用符内のプロセスの名前をクエリに追加します。この例では、"** HEXEDIT EXE"** です。![[検索] ページの画像](./media/operational-insights-security-audit/sec-audit-search03.png)
+6. 検索は、引用符内のプロセスの名前をクエリに追加します。この例では、"**HEXEDIT.EXE**" です。![[検索] ページの画像](./media/operational-insights-security-audit/sec-audit-search03.png)
 7. 検索クエリ ボックスで、プロセス名と引用符以外のすべてのものを削除して、検索アイコンをクリックします。 ![詳しい検索情報の画像](./media/operational-insights-security-audit/sec-audit-search04.png)
 8. 検索は、プロセスが実行されたコンピューター、プロセスが実行されたユーザーアカウント、プロセスのイベントが作成された時刻と日付などを含むプロセスに関する詳細情報を表示します。
 9. 表示された情報を使用して、必要に応じて修正措置を実行することができます。たとえば、実行可能ファイルがマルウェアであると判断したら、その影響を受けるすべてのコンピューター システムから削除するアクションを実行します。実行可能ファイルが削除され、オペレーション インサイトがコンピューター システムの更新ログと監査イベントを受信すると、[NOTABLE ISSUES] ブレードの値は翌日に変更されます。
@@ -100,4 +100,4 @@ Windows のコンピューティング環境を使用すると、セキュリテ
 
 ローカル ポリシーの設定に加え、AppLocker を使用して監査データを収集すると、オペレーション インサイトがデータを収集し、データを表示できます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

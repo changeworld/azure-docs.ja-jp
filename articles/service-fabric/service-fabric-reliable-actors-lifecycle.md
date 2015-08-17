@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Service Fabric アクターのライフサイクル"
-   description="Azure Service Fabric アクターのライフサイクルとガベージ コレクションについて説明します。"
+   pageTitle="高信頼アクターのライフサイクル"
+   description="Service Fabric 高信頼アクターのライフサイクルとガベージ コレクションについて説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/09/2015"
+   ms.date="08/05/2015"
    ms.author="amanbha"/>
 
 
-#アクターのライフサイクルとガベージ コレクション
+# アクターのライフサイクルとガベージ コレクション
 アクターは最初の呼び出し時にアクティブ化され、一定期間使用されていない場合は非アクティブ化されます (アクター ランタイムによってガベージ コレクトされる)。この期間を構成する場合は、以下のアクターのガベージ コレクションに関するセクションを参照してください。
 
 アクターをアクティブ化する場合:
@@ -89,6 +89,5 @@ class HelloActor : Actor, IHello
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

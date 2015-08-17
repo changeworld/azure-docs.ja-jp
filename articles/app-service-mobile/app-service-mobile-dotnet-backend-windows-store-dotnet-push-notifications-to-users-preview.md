@@ -57,7 +57,7 @@
 
     また、いくつかの using ステートメントを **MainPage.cs** に移動する必要もあります。
 
-2. このメソッドは、**ButtonLogin_Click** の **AuthenticateAsync** 呼び出しの直後に使用します。
+2. このメソッドは、**ButtonLogin\_Click** の **AuthenticateAsync** 呼び出しの直後に使用します。
 
         await AuthenticateAsync();
         InitNotificationAsync();
@@ -107,4 +107,4 @@
 [テンプレート]: https://msdn.microsoft.com/ja-jp/library/dn530748.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

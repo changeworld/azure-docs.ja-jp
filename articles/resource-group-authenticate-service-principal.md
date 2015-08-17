@@ -158,4 +158,4 @@ Azure CLI for Mac, Linux and Windows がインストールされていない場�
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

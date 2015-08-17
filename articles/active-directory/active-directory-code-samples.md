@@ -1,22 +1,22 @@
-<properties 
-   pageTitle="Azure Active Directory のコード例" 
-   description="シナリオ別に整理された Azure Active Directory のコード サンプルのインデックスです。" 
-   services="active-directory" 
-   documentationCenter="dev-center-name" 
-   authors="msmbaldwin" 
-   manager="mbaldwin" 
+<properties
+   pageTitle="Azure Active Directory のコード例"
+   description="シナリオ別に整理された Azure Active Directory のコード サンプルのインデックスです。"
+   services="active-directory"
+   documentationCenter="dev-center-name"
+   authors="msmbaldwin"
+   manager="mbaldwin"
    editor=""/>
 
 <tags
-   ms.service="azure"
+   ms.service="active-directory"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="identity" 
-   ms.date="04/06/2015"
+   ms.workload="identity"
+   ms.date="07/30/2015"
    ms.author="mbaldwin"/>
 
-# Azure Active Directory のコード例 
+# Azure Active Directory のコード例
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
@@ -26,7 +26,7 @@ Microsoft Azure Active Directory (Azure AD) を使用すると、Web アプリ�
 
 GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory のサンプルおよびドキュメント](https://github.com/AzureADSamples)。
 
-## Web ブラウザー対 Web アプリケーション 
+## Web ブラウザー対 Web アプリケーション
 
 次のサンプルでは、ユーザーのブラウザーに指示を出してユーザーを Azure AD にサインインさせるようにする Web アプリケーションの作成方法を示します。
 
@@ -53,9 +53,9 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 
 ## ネイティブ アプリケーション対 Web API
- 
+
 次のコード サンプルでは、Azure AD によってセキュリティ保護されている Web API を呼び出すネイティブ クライアント アプリケーションの構築方法を示します。[Azure AD Authentication Library (ADAL)](http://go.microsoft.com/fwlink/?LinkID=258232) および [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx) が使用されます。
- 
+
 | 言語/プラットフォーム | サンプル | 説明
 | ----------------- | ------ | -----------
 | JavaScript | [NativeClient-MultiTarget-Cordova](https://github.com/AzureADSamples/NativeClient-MultiTarget-Cordova) | Apache Cordova 用の ADAL プラグインを使用して、認証のために Web API を呼び出し、Azure AD を使用する Apache Cordova アプリを作成します。
@@ -71,7 +71,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 | C#/Xamarin | [NativeClient-MultiTarget-DotNet](http://github.com/AzureADSamples/NativeClient-MultiTarget-DotNet) | 5 つのプラットフォームを対象とし、Azure AD によってセキュリティ保護されている Web API を呼び出す Xamarin プロジェクト。
 | C#/.NET | [NativeClient-Headless-DotNet](http://github.com/AzureADSamples/NativeClient-Headless-DotNet) | 非対話型の認証を実行し、Azure AD によってセキュリティ保護されている Web API を呼び出すネイティブ アプリケーション。
 
-   
+
 
 ## Web アプリケーション対 Web API
 
@@ -150,9 +150,4 @@ PHP | [Azure AD Graph API 用の PHP サンプル アプリ](http://code.msdn.mi
 
 [Developing Modern Applications using OAuth and Active Directory Federation Services](http://msdn.microsoft.com/library/dn633593.aspx)
 
-
-
-
- 
-
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

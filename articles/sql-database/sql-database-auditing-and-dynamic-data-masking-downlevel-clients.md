@@ -40,4 +40,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

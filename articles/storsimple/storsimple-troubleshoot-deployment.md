@@ -80,7 +80,7 @@
 
 | 番号| エラー メッセージ | 考えられる原因 | 推奨される操作 |
 | ---| ------------- | --------------- | ------------------ |
-| 1 | Invoke-HcsSetupWizard: 無効なパラメーター (HRESULT からの例外: 0x80070057) | プロキシ設定に指定されたパラメーターの 1 つが有効ではありません。| URI が正しい形式で指定されていません。次の形式を使用します。http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
+| 1 | Invoke-HcsSetupWizard: 無効なパラメーター (HRESULT からの例外: 0x80070057) | プロキシ設定に指定されたパラメーターの 1 つが有効ではありません。| URI が正しい形式で指定されていません。形式は http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* を使用してください。 |
 | 2 | Invoke-HcsSetupWizard: RPC セーバーを利用できません (HRESULT: 0x800706ba からの例外) | 根本的原因は次のいずれかです。<ol><li>クラスターが動作していません。</li><li>パッシブ コントローラーがアクティブ コントローラーと通信できない状況で、パッシブ コントローラーからコマンドを実行しています。</li></ol> | 根本的な原因によって異なります。<ol><li>[Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)て、クラスターが稼働しているかどうかを確認します。</li><li>アクティブ コントローラーからコマンドを実行します。パッシブ コントローラーからコマンドを実行する場合、パッシブ コントローラーがアクティブ コントローラーと通信できることが必要となります。この接続を確立できない場合、[Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)る必要があります。</li></ol> |
 | 3 | Invoke-HcsSetupWizard: RPC コールに失敗しました (HRESULT からの例外: 0x800706be) | クラスターはダウンしています。 | [Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)て、クラスターが稼働しているかどうかを確認します。|
 | 4 | Invoke-HcsSetupWizard: クラスター リソースが見つかりません (HRESULT からの例外: 0x8007138f) | クラスター リソースが見つかりません。これはインストールが適切でなかった場合に発生することがあります。 | デバイスを工場出荷時の既定の設定にリセットすることが必要な場合があります。[Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)て、クラスター リソースを作成します。|
@@ -167,8 +167,8 @@ StorSimple には、StorSimple ソリューションのトラブルシューテ�
 
 5. イベント ビューアーでログを開いたら、デバイスの構成に関連する問題を含む次のログを探します。
 
-  - hcs_pfconfig/Operational Log
-  - hcs_pfconfig/Config
+  - hcs\_pfconfig/Operational Log
+  - hcs\_pfconfig/Config
 
 6. ログ ファイル内で、セットアップ ウィザードによって呼び出されたコマンドレットに関連する文字列を検索します。これらのコマンドレットの一覧については、「[初回セットアップ ウィザード プロセス](#first-time-setup-wizard-process)」を参照してください。 
 
@@ -575,4 +575,4 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -47,4 +47,4 @@
 - [Azure AD でのユーザーの作成または編集](active-directory-create-users.md)
 - [Azure AD でのグループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -23,4 +23,4 @@ Azure ストアでは、Azure にホストされ、完全に管理された Mong
 [screen-newmongolab]: ./media/howto-provision-mongolab/screen-newmongolab.png
 [message-success]: ./media/howto-provision-mongolab/message-provisionsuccess.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2015"
+   ms.date="08/05/2015"
    ms.author="banders" />
 
 
@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [operational-insights-note-moms](../../includes/operational-insights-note-moms.md)]
 
-Microsoft Azure Operational Insights でアラートの管理を使用するには、ソリューションが事前にインストールされている必要があります。ソリューションのインストールについて詳しくは、[ソリューション ギャラリーを使用したソリューションの追加または削除](operational-insights-add-solution.md)に関する記事を参照してください。ソリューションは、サーバーが Operations Manager エージェントによって監視されている場合にのみ機能します。Operational Insights での Operations Manager の使用の詳細については、「[System Center Operations Manager から Operational Insights に接続する](operational-insights-connect-scom.md)」を参照してください。
+Microsoft Azure Operational Insights でアラートの管理を使用するには、ソリューションが事前にインストールされている必要があります。ソリューションをインストールする方法の詳細については、[ワークスペースの設定](operational-insights-setup-workspace.md)に関するページを参照してください。ソリューションは、サーバーが Operations Manager エージェントによって監視されている場合にのみ機能します。Operational Insights での Operations Manager の使用の詳細については、「[System Center Operations Manager から Operational Insights に接続する](operational-insights-connect-scom.md)」を参照してください。
 
 ソリューションをインストールすると、Operational Insights の **[概要]** ダッシュボードの **[アラートの管理]** タイルを使用して監視対象サーバーのアラートを表示できます。
 
@@ -58,4 +58,4 @@ Microsoft Azure Operational Insights でアラートの管理を使用するに�
 
 [AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

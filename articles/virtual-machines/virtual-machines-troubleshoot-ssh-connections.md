@@ -3,7 +3,7 @@
 	description="Linux ベースの Azure 仮想マシンに接続できない場合は、以下の手順を使用して問題の原因を特定してください。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="JoeDavies-MSFT"
+	authors="dsk-2015"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management,azure-resource-manager"/>
@@ -16,7 +16,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/07/2015"
-	ms.author="josephd"/>
+	ms.author="dkshir"/>
 
 # Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング
 
@@ -86,7 +86,7 @@ SSH クライアントから Azure 仮想マシンの SSH サービスに到達�
 証明書認証を使用している場合は、ホーム ディレクトリの .ssh フォルダーに対してこれらのアクセス許可があることを確認します。
 
 - Chmod 700 \~/.ssh
-- Chmod 644 \~/.ssh/\*.pub
+- Chmod 644 \~/.ssh/*.pub
 - Chmod 600 \~/.ssh/id\_rsa (またはプライベート キーが格納されている他のファイル)
 - Chmod 644 \~/.ssh/known\_hosts (SSH 経由で接続したホストが含まれます)
 
@@ -165,4 +165,4 @@ Azure サポートの使用方法の詳細については、「[Microsoft Azure 
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

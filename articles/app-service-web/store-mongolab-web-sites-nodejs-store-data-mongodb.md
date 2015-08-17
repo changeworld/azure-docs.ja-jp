@@ -575,4 +575,4 @@ Azure App Service では Web アプリを非常に簡単に作成できます。
 [mongolab-view]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/mongolab-view.png
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

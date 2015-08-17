@@ -313,4 +313,4 @@ TelemetryClient のすべてのインスタンスのキーを設定するには 
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-get-started.md
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

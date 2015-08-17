@@ -310,4 +310,4 @@ Azure SQL データベース サービスでは利用統計データとツール
 
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/17/2015"
+   ms.date="07/30/2015"
    ms.author="v-sharos" />
 
 # SharePoint 用 StorSimple アダプター
@@ -230,7 +230,7 @@ SharePoint サイトからオブジェクトを削除しても、RBS ストア �
 
 ## 次のステップ
 
-[StorSimple について](storsimple-overview.md)、[StorSimple コンポーネント](storsimple-components.md)
+[StorSimple の詳細情報](storsimple-overview.md)
 
 <!--Reference links-->
 [1]: https://www.microsoft.com/download/details.aspx?id=44073
@@ -240,4 +240,4 @@ SharePoint サイトからオブジェクトを削除しても、RBS ストア �
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/ja-jp/library/ff943565.aspx
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

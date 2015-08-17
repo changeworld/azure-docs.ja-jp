@@ -32,7 +32,7 @@
 
     - 開いたブレードで、**[すべての設定]**、**[アプリケーション設定]** の順にクリックします。
 
-    - **[接続文字列]** の下の **[接続文字列の表示]** をクリックします。**MS_TableConnectionString** 設定の値をコピーします。これは、モバイル アプリが SQL Database に接続するために使用する接続文字列です。
+    - **[接続文字列]** の下の **[接続文字列の表示]** をクリックします。**MS\_TableConnectionString** 設定の値をコピーします。これは、モバイル アプリが SQL Database に接続するために使用する接続文字列です。
 
 5. Visual Studio で、Web API プロジェクトを右クリックし、**[発行]** を選択します。発行先として **[Azure Web Apps]** を選択し、前の手順で作成した Web アプリを選択します。Web 発行ウィザードの **[設定]** セクションが表示されるまで **[次へ]** をクリックします。
 
@@ -77,4 +77,4 @@
 [MultiChannelToDo]: https://github.com/Azure/mobile-services-samples/tree/web-mobile/MultiChannelToDo
 [モバイル アプリを作成する]: ../article/app-service-mobile/app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -220,4 +220,4 @@ Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイ
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

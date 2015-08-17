@@ -55,7 +55,7 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 			<uses-permission android:name="android.permission.INTERNET"/>
 			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
--   ANDROID_ID からEngagement デバイス ID を生成できないデバイス モデルが少数あります (バグが多い、または使えない可能性があります)。その場合、SDK は、他の Engagement アプリケーションも同じデバイス識別子を共有できるように、ランダムなデバイス識別子を生成してデバイスの外部ストレージに保存しようとします (さらに、外部ストレージに問題が発生した場合でも、アプリケーション自体が常に同じデバイス識別子を使うことを保証するために共有設定としても保存されます)。このメカニズムを適切に機能させるには、次のアクセス権限が不足している場合は (`<application>` タグの前に) 追加する必要があります。
+-   ANDROID\_ID からEngagement デバイス ID を生成できないデバイス モデルが少数あります (バグが多い、または使えない可能性があります)。その場合、SDK は、他の Engagement アプリケーションも同じデバイス識別子を共有できるように、ランダムなデバイス識別子を生成してデバイスの外部ストレージに保存しようとします (さらに、外部ストレージに問題が発生した場合でも、アプリケーション自体が常に同じデバイス識別子を使うことを保証するために共有設定としても保存されます)。このメカニズムを適切に機能させるには、次のアクセス権限が不足している場合は (`<application>` タグの前に) 追加する必要があります。
 
 			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -311,4 +311,4 @@ Engagement では、この設定を管理するために設定ファイル内で
 [デバイス API]: http://go.microsoft.com/?linkid=9876094
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

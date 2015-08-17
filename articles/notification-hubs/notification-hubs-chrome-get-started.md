@@ -40,7 +40,7 @@ Chrome アプリケーション通知を使用する主な利点の 1 つは、G
 
 Notification Hubs を使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、「次のステップ」に記載されているチュートリアルも一緒に参照してください。
 
->[AZURE.NOTE]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F)を参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F)をご覧ください。
 
 ##<a id="register"></a>Google Cloud Messaging (GCM) を有効にする
 
@@ -489,7 +489,7 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Chrome アプリケーションの概要]: https://developer.chrome.com/apps/about_apps
 [Chrome アプリケーションの GCM サンプル]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
-[インストール可能な Web アプリ]: https://developers.google.com/chrome/apps/docs/
+[インストール可能な Web Apps]: https://developers.google.com/chrome/apps/docs/
 [モバイルでの Chrome アプリケーションの実行]: https://developer.chrome.com/apps/chrome_apps_on_mobile
 [登録の作成]: http://msdn.microsoft.com/library/azure/dn223265.aspx
 [crypto-js library]: http://code.google.com/p/crypto-js/
@@ -499,4 +499,4 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

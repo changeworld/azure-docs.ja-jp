@@ -91,9 +91,9 @@
 
 5.	(省略可能) Ubuntu システムにエラーが発生して、Ubuntu システムが再起動すると、多くの場合 Grub のブート プロンプトでユーザーの入力を待機し、適切にシステムが起動しなくなります。この動作を回避するために、次の手順を実行します。
 
-	a) /etc/grub.d/00_header ファイルを開きます。
+	a) /etc/grub.d/00\_header ファイルを開きます。
 
-	b) **make_timeout()** 関数内で **if ["\${recordfail}" = 1 ]; then** を検索します。
+	b) **make\_timeout()** 関数内で **if ["\\${recordfail}" = 1 ]; then** を検索します。
 
 	c) この行の下の文を **set timeout=5** に変更します。
 
@@ -125,4 +125,4 @@
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

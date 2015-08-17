@@ -49,4 +49,4 @@
 [Next steps]: #NextSteps
 [documentdb-manage]: ../articles/documentdb/documentdb-manage.md
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

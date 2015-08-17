@@ -249,4 +249,4 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 
 - [Windows PowerShell ワークフローの概要](http://technet.microsoft.com/library/jj134242.aspx) 
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

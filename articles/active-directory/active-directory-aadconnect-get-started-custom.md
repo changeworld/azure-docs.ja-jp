@@ -83,7 +83,11 @@ sAMAccountName および MailNickName|このオプションは、ユーザーを
 
 - **ソース アンカー** -sourceAnchor 属性はユーザー オブジェクトの有効期間中に変更できない属性です。オンプレミスのユーザーと Azure AD のユーザーをリンクするプライマリ キーです。この属性は変更できないため、適切な属性を使用するように計画する必要があります。適切な属性として考えられるのは objectGUID です。この属性は、ユーザー アカウントをフォレスト/ドメイン間で移動しなければ、変更されません。フォレスト間でアカウントを移動するマルチ フォレスト環境では、employeeID を持つ属性など、別の属性を使用する必要があります。ユーザーが結婚したり割り当てを変更したりした場合に変更される可能性のある属性は、使用すべきではありません。@ 記号が含まれる属性は使用できないので、電子メールや userPrincipalName は使用できません。この属性では大文字小文字も区別されるため、フォレスト間でオブジェクトを移動する場合は、大文字と小文字を維持してください。バイナリ属性の値は base64 でエンコードされますが、他のタイプの属性はエンコードされていない状態が保たれます。フェデレーション シナリオと一部の Azure AD インターフェイスでは、この属性は immutableID とも呼ばれます。
 
-- **UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にログインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことを強くお勧めします。この属性がルーティング不可能で検証できない場合は、ログイン ID を保持する属性として、電子メールなどの別の属性を選択することができます。警告: 代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、https://technet.microsoft.com/ja-jp/library/dn659436.aspx を参照してください。
+- **UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にログインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことを強くお勧めします。この属性がルーティング不可能で検証できない場合は、ログイン ID を保持する属性として、電子メールなどの別の属性を選択することができます。
+
+>[AZURE.WARNING]代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、「[代替ログイン ID を構成する](https://technet.microsoft.com/library/dn659436.aspx.)」を参照してください。
+
+
 
 
 
@@ -286,4 +290,4 @@ AD FS ログイン ページのイラストとロゴのイメージをカスタ�
 	
 	Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.png"} –Illustration @{path=”c:\Contoso\illustration.png”}
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

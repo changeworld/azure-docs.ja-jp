@@ -138,7 +138,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
     * **repositories**: このプロジェクトで使用される依存関係ファイルを含むリポジトリです
 
-    * **scalding-core_2.11** および **hadoop-core**: このプロジェクトは Scalding と Hadoop の両方のコア パッケージに依存します。
+    * **scalding-core\_2.11** および **hadoop-core**: このプロジェクトは Scalding と Hadoop の両方のコア パッケージに依存します。
 
     * **maven-scala-plugin**: Scala アプリケーションをコンパイルするためのプラグインです
 
@@ -168,7 +168,7 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
           //Tokenizer to split sentance into words
           def tokenize(text : String) : Array[String] = {
-            text.toLowerCase.replaceAll("[^a-zA-Z0-9\s]", "").split("\s+")
+            text.toLowerCase.replaceAll("[^a-zA-Z0-9\\s]", "").split("\\s+")
           }
         }
 
@@ -289,4 +289,4 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

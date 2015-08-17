@@ -12,7 +12,7 @@
     ms.workload="operational-insights"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
-    ms.topic="get-started-article"
+    ms.topic="hero-article"
     ms.date="07/09/2015"
     ms.author="banders"/>
 
@@ -97,4 +97,4 @@ Operations Management Suite では、Azure Cloud Services の診断を有効に�
 - [検索](operational-insights-search.md)について理解する
 - カスタム検索結果を保存および表示するために[ダッシュボード](operational-insights-use-dashboards.md)を使用する
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

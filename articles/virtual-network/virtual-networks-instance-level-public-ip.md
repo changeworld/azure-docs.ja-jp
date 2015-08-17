@@ -26,8 +26,8 @@
 
 Azure でクラウド サービスを作成すると、対応する DNS A レコードが自動的に作成され、実際の VIP を使用するのではなく完全修飾ドメイン名 (FQDN) を使用してサービスにアクセスできるようになります。同じ処理が ILPIP に対しても行われ、ILPIP ではなく FQDN による VM またはロール インスタンスへのアクセスが許可されます。たとえば、*contosoadservice* という名前のクラウド サービスを作成し、*contosoweb* という名前の Web ロールの 2 つのインスタンスを構成した場合、Azure によってこれらのインスタンスに対して次の A レコードが登録されます。
 
-- contosoweb_IN_0.contosoadservice.cloudapp.net
-- contosoweb_IN_1.contosoadservice.cloudapp.net 
+- contosoweb\_IN\_0.contosoadservice.cloudapp.net
+- contosoweb\_IN\_1.contosoadservice.cloudapp.net 
 
 >[AZURE.NOTE]各 VM またはロール インスタンスに割り当てることができる ILPIP は 1 つだけです。サブスクリプションにつき最大 5 つの ILPIP を使用できます。現時点では、複数 NIC の VMは ILPIP でサポートされていません。
 
@@ -125,4 +125,4 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

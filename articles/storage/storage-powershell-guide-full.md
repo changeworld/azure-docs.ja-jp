@@ -255,7 +255,7 @@ BLOB をコンテナーにアップロードする場合は、[Set-AzureStorageB
 
 次の例では、[Get-ChildItem](http://technet.microsoft.com/library/hh849800.aspx) コマンドレットを実行して、指定したフォルダー内のすべてのファイルを取得し、パイプライン演算子を使用することでそれらを次のコマンドレットに渡します。[Set-AzureStorageBlobContent](http://msdn.microsoft.com/library/azure/dn806379.aspx) コマンドレットは、ローカル ファイルをコンテナーにアップロードします。
 
-    Get-ChildItem –Path C:\Images\* | Set-AzureStorageBlobContent -Container "yourcontainername"
+    Get-ChildItem –Path C:\Images* | Set-AzureStorageBlobContent -Container "yourcontainername"
 
 ### BLOB をコンテナーからダウンロードする方法
 次の例は、BLOB をコンテナーからダウンロードする方法を示しています。この例では、まず、ストレージ アカウント コンテキストを使用して Azure Storage への接続を確立します。このコンテキストには、ストレージ アカウント名とそのプライマリ アクセス キーが含まれます。次に、[Get-AzureStorageBlob](http://msdn.microsoft.com/library/azure/dn806392.aspx) コマンドレットを使用して、BLOB の参照を取得します。さらに、[Get-AzureStorageBlobContent](http://msdn.microsoft.com/library/azure/dn806418.aspx) コマンドレットを使用して、BLOB をローカルの格納先フォルダーにダウンロードします。
@@ -736,4 +736,4 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 [Next Steps]: #next
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

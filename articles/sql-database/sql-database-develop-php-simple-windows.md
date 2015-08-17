@@ -62,7 +62,7 @@
 
 ## クエリを実行し、結果セットを取得します
 
-[sqlsrv_query()](http://php.net/manual/en/function.sqlsrv-query.php) 関数は、SQL Database に対するクエリから結果セットを取得するために使用できます。この関数は基本的に任意のクエリと接続オブジェクトを受け取り、[sqlsrv_fetch_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) を使用して反復処理できる結果セットを返します。
+[sqlsrv\_query()](http://php.net/manual/en/function.sqlsrv-query.php) 関数は、SQL Database に対するクエリから結果セットを取得するために使用できます。この関数は基本的に任意のクエリと接続オブジェクトを受け取り、[sqlsrv\_fetch\_array()](http://php.net/manual/en/function.sqlsrv-fetch-array.php) を使用して反復処理できる結果セットを返します。
 
 	function ReadData()
 	{
@@ -126,11 +126,11 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 
 このコード例は、以下のトランザクションの使用について示します。
 
-- トランザクションの開始
+\- トランザクションの開始
 
-- データ行の挿入、別のデータ行の更新
+\- データ行の挿入、別のデータ行の更新
 
-- 挿入と更新に成功した場合はトランザクションをコミット。そのどちらか一方に失敗した場合はトランザクションをロールバック
+\- 挿入と更新に成功した場合はトランザクションをコミット。そのどちらか一方に失敗した場合はトランザクションをロールバック
 
 
 	function Transactions()
@@ -180,4 +180,4 @@ PHP のインストールと使用に関する詳細については、「[Access
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

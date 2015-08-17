@@ -94,7 +94,7 @@
 
 Pig コマンドを使用して、ファイルに含まれた Pig Latin を実行することもできます。
 
-3. エラーを解決したら、**メモ帳**を開き、**%PIG_HOME%** ディレクトリに **pigbatch.pig** という名前の新しいファイルを作成します。
+3. エラーを解決したら、**メモ帳**を開き、**%PIG\_HOME%** ディレクトリに **pigbatch.pig** という名前の新しいファイルを作成します。
 
 4. 次の行を **pigbatch.pig** ファイルに入力するか貼り付けて、保存します。
 
@@ -135,4 +135,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

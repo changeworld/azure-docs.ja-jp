@@ -65,4 +65,4 @@
 
    	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、Mobile Services を照会してデータを更新できるようになります。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

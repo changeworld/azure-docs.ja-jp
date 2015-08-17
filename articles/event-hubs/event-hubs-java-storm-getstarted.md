@@ -42,7 +42,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
    	![][1]
 
-3. イベント ハブの名前を入力し、目的のリージョンを選択し、**[新しいイベント ハブを作成する]** をクリックします。
+3. イベント ハブの名前を入力して、目的のリージョンを選択し、**[Create a new Event Hub (新しい Event Hub を作成する)]** をクリックします。
 
    	![][2]
 
@@ -110,4 +110,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

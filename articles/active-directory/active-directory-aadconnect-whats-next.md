@@ -18,9 +18,12 @@
 
 # Azure AD Connect の管理 
 
-<div class="dev-center-tutorial-selector sublanding">
-<a href="../active-directory-aadconnect/" title="概要">概要</a> <a href="../active-directory-aadconnect-how-it-works/" title="動作">動作</a> <a href="../active-directory-aadconnect-get-started/" title="使用">使用</a> <a href="../active-directory-aadconnect-whats-next/" title="次の手順" class="current">次の手順</a> <a href="../active-directory-aadconnect-learn-more/" title="詳細情報">詳細情報</a>
-</div>
+> [AZURE.SELECTOR]
+- [What is It](../active-directory-aadconnect/)
+- [How it Works](../active-directory-aadconnect-how-it-works/)
+- [Getting Started](../active-directory-aadconnect-get-started/)
+- [What's Next](../active-directory-aadconnect-whats-next/) 
+- [Learn More](../active-directory-aadconnect-learn-more/)
 
 組織のニーズや要件を満たすように Azure Active Directory Connect をカスタマイズするための高度な運用に関するトピックを次に示します。
 
@@ -30,13 +33,12 @@
 
 ### Azure AD Premium または Enterprise Mobility Suite のライセンスを割り当てるには
 --------------------------------------------------------------------------------
-<ol>
-<li>Azure ポータルに管理者としてサインインします。</li>
-<li>左側で、**[Active Directory]** を選択します。</li>
-<li>[Active Directory] ページで、有効にするユーザーが存在するディレクトリをダブルクリックします。</li>
-<li>[ディレクトリ] ページの上部にある **[ライセンス]** を選択します。</li>
-<li>[ライセンス] ページで、[Active Directory Premium] または [Enterprise Mobility Suite] を選択し、**[割り当て]** をクリックします。</li>
-<li>ダイアログ ボックスで、ライセンスを割り当てるユーザーを選択し、チェック マーク アイコンをクリックして変更を保存します。</li>
+1. Azure ポータルに管理者としてサインインします。
+2. 左側で、**[Active Directory]** を選択します。
+3. [Active Directory] ページで、有効にするユーザーが存在するディレクトリをダブルクリックします。
+4. ディレクトリ ページの上部にある **[ライセンス]** を選択します。
+5. [ライセンス] ページで、[Active Directory Premium] または [Enterprise Mobility Suite] を選択し、**[割り当て]** をクリックします。
+6. ダイアログ ボックスで、ライセンスを割り当てるユーザーを選択し、チェック マーク アイコンをクリックして変更を保存します。
 
 
 ## スケジュールされた同期タスクを確認する
@@ -66,7 +68,8 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 
 次の表に、これらのタスクの概要と各タスクの簡単な説明を示します。
 
-<center>![Join Rule](./media/active-directory-aadconnect-whats-next/addtasks.png) </center>
+![参加ルール](./media/active-directory-aadconnect-whats-next/addtasks.png)
+
 
 その他のタスク | 説明 
 ------------- | ------------- |
@@ -85,6 +88,7 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 ## その他のドキュメント
 Azure AD Connect の操作に関するその他のドキュメントについては、次を参照してください。
 
+- [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 - [Azure AD Connect の既定の構成の変更](active-directory-aadconnect-whats-next-change-default-config.md)
 - [Azure AD Connect 同期規則エディターの使用](active-directory-aadconnect-whats-next-synch-rules-editor.md)
 - [宣言型のプロビジョニングの使用](active-directory-aadconnect-whats-next-declarative-prov.md)
@@ -94,4 +98,4 @@ Azure AD Connect の操作に関するその他のドキュメントについて
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

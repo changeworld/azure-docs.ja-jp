@@ -38,7 +38,7 @@ Azure RemoteApp について次のような質問が寄せられています。�
 - **ドライブの割り当て、USB とシリアル ポート、クリップボードの共有、およびプリンターのリダイレクトについてはどうでしょうか。** Azure RemoteApp は、これらのすべての機能についてサポートしています。クリップボードの共有とプリンターのリダイレクトは、既定で有効になります。リダイレクトの詳細については、「[Using redirection in Azure RemoteApp](remoteapp-redirection.md)」を参照してください。 
 
 
-- **認証については、 どの方法がサポートされていますか。** クラウド コレクションは、Office 365 アカウントでもある Microsoft アカウントと Azure Active Directory アカウントをサポートしています。ハイブリッド コレクションは、([Azure Active Directory Sync](http://blogs.technet.com/b/ad/archive/2014/09/16/azure-active-directory-sync-is-now-ga.aspx) のようなツールを使用して) Windows Server Active Directory のデプロイメントから同期されている Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。[Multi-Factor Authentication (MFA)](../../services/multi-factor-authentication/) を構成することもできます。
+- **認証については、 どの方法がサポートされていますか。** クラウド コレクションは、Office 365 アカウントでもある Microsoft アカウントと Azure Active Directory アカウントをサポートしています。ハイブリッド コレクションは、([Azure Active Directory Sync](http://blogs.technet.com/b/ad/archive/2014/09/16/azure-active-directory-sync-is-now-ga.aspx) のようなツールを使用して) Windows Server Active Directory のデプロイメントから同期されている Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。[多要素認証 (MFA)](../../services/multi-factor-authentication/) を構成することもできます。
 
 	**注:** Azure Active Directory ユーザーは、サブスクリプションに関連付けられているテナントに属している必要があります (サブスクリプションは、ポータルの **[設定]** タブで表示および変更できます。詳細については、「[Change the Azure Active Directory tenant used by RemoteApp](remoteapp-changetenant.md)」を参照してください)。
 
@@ -56,7 +56,7 @@ Azure RemoteApp について次のような質問が寄せられています。�
 
 ##サポートとフィードバック
 
-- **このサービスは無料で試すことができますか。** はい。30 日間、無料で試すことができます。試行期間が終了すると、(運用環境で使用可能な) 有料アカウントに移行するか、サービスの使用を終了することができます。[manage.windowsazure.com](http://manage.windowsazure.com) にアクセスして無料試用版を開始し、RemoteApp の新しいインスタンスを作成してみてください。無料試用版では、2 つの RemoteApp インスタンスを作成でき、インスタンスあたり 10 ユーザーをサポートできます。 試行期間は、30 日であることに注意してください。
+- **このサービスは無料で試すことができますか。** はい。30 日間、無料で試すことができます。試行期間が終了すると、(運用環境で使用可能な) 有料アカウントに移行するか、サービスの使用を終了することができます。[manage.windowsazure.com](http://manage.windowsazure.com) にアクセスして無料評価版を開始し、RemoteApp の新しいインスタンスを作成してみてください。無料試用版では、2 つの RemoteApp インスタンスを作成でき、インスタンスあたり 10 ユーザーをサポートできます。 試行期間は、30 日であることに注意してください。
 - **RemoteApp のサポート プランについてはどうですか。** 課金およびサブスクリプション管理が、無料でサポートされます。テクニカル サポートが [Azure のサービス プラン](../../../support/plans/)を通して提供されます。[Azure のディスカッション フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp)を通して、無料のコミュニティ サポートも得ることができます。 
 - **RemoteApp の料金についてはどうですか。** 「[Azure RemoteApp の料金体系について](../../../pricing/details/remoteapp/)」を参照してください。
 - **フィードバックを発行する方法を教えてください。** 「[フィードバック フォーラム](http://feedback.azure.com/forums/247748-azure-remoteapp)」にアクセスしてください。
@@ -82,4 +82,4 @@ Azure RemoteApp について次のような質問が寄せられています。�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

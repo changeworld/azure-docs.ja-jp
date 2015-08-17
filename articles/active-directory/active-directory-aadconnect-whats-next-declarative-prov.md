@@ -28,4 +28,4 @@
 
 この式言語の詳細については、「[宣言のプロビジョニングの式の理解](https://msdn.microsoft.com/library/azure/dn801048.aspx)」を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

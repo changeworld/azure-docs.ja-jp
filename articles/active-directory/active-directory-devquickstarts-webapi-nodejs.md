@@ -32,7 +32,7 @@
 
 ## Node.js モジュールとは
 
-このチュートリアルでは、Node.js を使用します。モジュールは、アプリケーションに対して特定の機能を提供する読み込み可能な JavaScript パッケージです。モジュールは、通常、Node.js NPM コマンド ライン ツールを使用して NPM インストール ディレクトリにインストールされますが、HTTP モジュールなどの一部のモジュールは、コア Node.js パッケージに含まれています。インストールされたモジュールは、Node.js インストール ディレクトリのルートにある node_modules ディレクトリに保存されます。node_modules ディレクトリの各モジュールは、それが依存関係を持つすべてのモジュールを含む独自の node_modules ディレクトリを維持し、各必須モジュールは node_modules ディレクトリを持ちます。この再帰的なディレクトリ構造は、依存関係チェーンを表します。
+このチュートリアルでは、Node.js を使用します。モジュールは、アプリケーションに対して特定の機能を提供する読み込み可能な JavaScript パッケージです。モジュールは、通常、Node.js NPM コマンド ライン ツールを使用して NPM インストール ディレクトリにインストールされますが、HTTP モジュールなどの一部のモジュールは、コア Node.js パッケージに含まれています。インストールされたモジュールは、Node.js インストール ディレクトリのルートにある node\_modules ディレクトリに保存されます。node\_modules ディレクトリの各モジュールは、それが依存関係を持つすべてのモジュールを含む独自の node\_modules ディレクトリを維持し、各必須モジュールは node\_modules ディレクトリを持ちます。この再帰的なディレクトリ構造は、依存関係チェーンを表します。
 
 この依存関係チェーンにより、アプリケーションのフットプリントは大きくなりますが、すべての依存関係が満たされ、開発で使用されるモジュールのバージョンが運用で使用されることが保証されます。このため、運用アプリの動作がより期待どおりになり、ユーザーに悪影響を及ぼすバージョン管理の問題を防ぐことができます。
 
@@ -46,7 +46,7 @@ Azure Active Directory テナントを取得したら、このサンプルをテ
 
 アプリケーションがユーザー認証を処理できるようにするには、まず、アプリケーションをテナントに登録する必要があります。
 
-- Microsoft Azure 管理ポータルにサインインします。
+- Microsoft Azure の管理ポータルにサインインします。
 - 左側のナビゲーションで **[Active Directory]** をクリックします。
 - アプリケーションの登録先となるテナントを選択します。
 - **[アプリケーション]** タブをクリックし、下部のドロアーで [追加] をクリックします。
@@ -197,7 +197,7 @@ Restify は、DTrace を使用して REST 呼び出しをトレースする強�
 `cd azuread`
 
 
-次のコマンドを入力して、次のモジュールを node_modules ディレクトリにインストールします。
+次のコマンドを入力して、次のモジュールを node\_modules ディレクトリにインストールします。
 
 * `npm install crypto`
 * `npm install assert-plus`
@@ -274,7 +274,7 @@ server.js ファイルは、Web API サーバーの機能の多くを提供し�
 
 **注:** ほとんどの場合、これらの値を変更する必要はありません。
 
-**注:** キーは頻繁に展開されます。"openid_keys" URL からキーを常に取得し、アプリがインターネットにアクセスできるようにします。
+**注:** キーは頻繁に展開されます。"openid\_keys" URL からキーを常に取得し、アプリがインターネットにアクセスできるようにします。
 
 
 ## 手順 12: 構成を server.js ファイルに追加する
@@ -540,7 +540,7 @@ this.aadutils = new var Metadata = require('./metadata').Metadata;
 
 このチュートリアルでは、***手順 4.*** で説明しているように、MongoDB を使用してタスクを格納します。
 
-***手順 11.*** で作成した `config.js` ファイルは、mogoose_auth_local 接続 URL の末尾に配置されているので、このファイルから再呼び出しを行うと、データベース `tasklist` が呼び出されました。このデータベースを MongoDB で事前に作成する必要はありません。存在しない場合、サーバー アプリケーションの初回実行時に作成されます。
+***手順 11.*** で作成した `config.js` ファイルは、mogoose\_auth\_local 接続 URL の末尾に配置されているので、このファイルから再呼び出しを行うと、データベース `tasklist` が呼び出されました。このデータベースを MongoDB で事前に作成する必要はありません。存在しない場合、サーバー アプリケーションの初回実行時に作成されます。
 
 これで、使用する MongoDB データベースについて、事前にサーバーに通知したことになります。次に、サーバーのタスク用のモデルとスキーマを作成する追加コードを記述する必要があります。
 
@@ -847,7 +847,7 @@ var server = restify.createServer({
     formatters: {
         'application/json': function(req, res, body){
             if(req.params.callback){
-                var callbackFunctionName = req.params.callback.replace(/[^A-Za-z0-9_.]/g, '');
+                var callbackFunctionName = req.params.callback.replace(/[^A-Za-z0-9_\.]/g, '');
                 return callbackFunctionName + "(" + JSON.stringify(body) + ");";
             } else {
                 return JSON.stringify(body);
@@ -1180,4 +1180,4 @@ ADAL に関連するさらに高度な手順に興味がある場合は、学習
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

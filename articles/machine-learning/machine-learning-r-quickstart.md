@@ -269,7 +269,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 
 	cadairydata <- maml.mapInputPort(1)
 
-**[実行]** ボタンをクリックして、実験を実行します。実行が完了したら、[[R スクリプトの実行]][execute-r-script] モジュールをクリックし、プロパティ ウィンドウの **[出力ログの表示]** をクリックします。ブラウザーで新しいページが開き、output.log ファイルの内容が表示されます。下へスクロールすると、次のことがわかります。
+**[実行]** ボタンをクリックして、実験を実行します。実行が完了したら、[[R スクリプトの実行]][execute-r-script] モジュールをクリックし、プロパティ ウィンドウの** [出力ログの表示]** をクリックします。ブラウザーで新しいページが開き、output.log ファイルの内容が表示されます。下へスクロールすると、次のことがわかります。
 
 	[ModuleOutput] [1] "Loading variable port1..."
 	[ModuleOutput]
@@ -431,7 +431,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 	num.month <- function(Year, Month) {
 	  ## Find the starting year
 	  min.year  <- min(Year)
-	
+
 	  ## Compute the number of months from the start of the time series
 	  12 * (Year - min.year) + Month - 1
 	}
@@ -460,31 +460,31 @@ R データフレームは、強力なフィルター処理機能をサポート
 	log.transform <- function(invec, multiplier = 1) {
 	  ## Function for the transformation, which is the log
 	  ## of the input value times a multiplier
-	
+
 	  warningmessages <- c("ERROR: Non-numeric argument encountered in function log.transform",
 	                       "ERROR: Arguments to function log.transform must be greate than zero",
 	                       "ERROR: Aggurment multiplier to funcition log.transform must be a scaler",
 	                       "ERROR: Invalid time seies value encountered in function log.transform"
 	                       )
-	
+
 	  ## Check the input arguments
 	  if(!is.numeric(invec) | !is.numeric(multiplier)) {warning(warningmessages[1]); return(NA)}  
 	  if(any(invec < 0.0) | any(multiplier < 0.0)) {warning(warningmessages[2]); return(NA)}
 	  if(length(multiplier) != 1) {{warning(warningmessages[3]); return(NA)}}
-	
+
 	  ## Wrap the multiplication in tryCatch
 	  ## If there is an exception, print the warningmessage to
 	  ## standard error and return NA
 	  tryCatch(log(multiplier * invec),
 	           error = function(e){warning(warningmessages[4]); NA})
 	}
-	
-	
+
+
 	## Apply the transformation function to the 4 columns
 	## of the dataframe with production data
 	multipliers  <- list(1.0, 6.5, 1000.0, 1000.0)
 	cadairydata[, 4:7] <- Map(log.transform, cadairydata[, 4:7], multipliers)
-	
+
 	## Get rid of any rows with NA values
 	cadairydata <- na.omit(cadairydata)  
 
@@ -498,7 +498,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 2. 各ケースで値 NA を返します。副作用がより少ないその他の選択肢も多数存在します。たとえば、ゼロ ベクトル、またはオリジナルの入力ベクトルを返すこともできます。
 
-3. 関数の引数に関するチェックが実行されます。各ケースでエラーが検出された場合、`warming()` 関数により既定値が戻され、メッセージが生成されます。現在、 `warning()`ではなく `stop()` を使用しているのは、まさに避けようとしている実行の終了を が行ってしまうからです。このコードを手続き型スタイルで記述したことに注意してください。それは、この場合、関数型アプローチでは複雑で曖昧に思えたからです。
+3. 関数の引数に関するチェックが実行されます。各ケースでエラーが検出された場合、`warming()` 関数により既定値が戻され、メッセージが生成されます。現在、`warning()` ではなく `stop()` を使用しているのは、まさに避けようとしている実行の終了を が行ってしまうからです。このコードを手続き型スタイルで記述したことに注意してください。それは、この場合、関数型アプローチでは複雑で曖昧に思えたからです。
 
 4. 例外が発生せず、処理が突然中断しないように、対数計算は `tryCatch()` の中に含まれています。`tryCatch()` を使用しない場合、R 関数により発生したほとんどのエラーは、停止信号になっていしまい、処理が中断します。
 
@@ -522,8 +522,7 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 既に述べたように、時系列データは、時間インデックスを持つ一連のデータ値です。R 時系列オブジェクトは、時間インデックスを作成し管理するために使用されます。時系列オブジェクトの使用には、いくつかの利点があります。時系列オブジェクトにより、オブジェクトにカプセル化されている時系列インデックス値のさまざまな細かな管理から解放されます。さらに、時系列オブジェクトにより、さまざまな時系列メソッドを使用して、プロット、印刷、モデリングなどを行えます。
 
-一般的には、比較的シンプルな POSIXct 時系列クラスが使用されます。この時系列クラスは、エポックの開始 (1970 年 1 月 1 日) からの時間を測定します。この例では、POSIXct 時系列オブジェクトを使用します。その他に使用される時系列オブジェクトには、zoo と xts などの広範な時系列オブジェクトがあります。
-<!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
+一般的には、比較的シンプルな POSIXct 時系列クラスが使用されます。この時系列クラスは、エポックの開始 (1970 年 1 月 1 日) からの時間を測定します。この例では、POSIXct 時系列オブジェクトを使用します。その他に使用される時系列オブジェクトには、zoo と xts などの広範な時系列オブジェクトがあります。<!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
 
 ###	時系列オブジェクトの例
 
@@ -553,11 +552,11 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 	# Comment the following if using RStudio
 	cadairydata <- maml.mapInputPort(1)
-	
+
 	## Create a new column as a POSIXct object
 	Sys.setenv(TZ = "PST8PDT")
 	cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-", as.character(cadairydata$Month.Number), "-01 00:00:00", sep = ""), "%Y-%m-%d %H:%M:%S"))
-	
+
 	str(cadairydata) # Check the results
 
 R デバイス出力をチェックします。図 15 のように表示されます。
@@ -590,7 +589,7 @@ R デバイス出力をチェックします。図 15 のように表示され�
 
 	ts.detrend <- function(ts, Time, min.length = 3){
 	  ## Function to de-trend and standardize a time series
-	
+
 	  ## Define some messages if they are NULL  
 	  messages <- c('ERROR: ts.detrend requires arguments ts and Time to have the same length',
 	                'ERROR: ts.detrend requires argument ts to be of type numeric',
@@ -601,33 +600,33 @@ R デバイス出力をチェックします。図 15 のように表示され�
   	)
 	  # Create a vector of zeros to return as a default in some cases
 	  zerovec  <- rep(length(ts), 0.0)
-	
+
 	  # The input arguments are not of the same length, return ts and quit
 	  if(length(Time) != length(ts)) {warning(messages[1]); return(ts)}
-	
+
 	  # If the ts is not numeric, just return a zero vector and quit
 	  if(!is.numeric(ts)) {warning(messages[2]); return(zerovec)}
-	
+
 	  # If the ts is too short, just return it and quit
 	  if((ts.length <- length(ts)) < min.length) {warning(messages[3]); return(ts)}
-	
+
 	  ## Check that the Time variable is of class POSIXct
 	  if(class(cadairydata$Time)[[1]] != "POSIXct") {warning(messages[4]); return(ts)}
-	
+
 	  ## De-trend the time series by using a linear model
 	  ts.frame  <- data.frame(ts = ts, Time = Time)
 	  tryCatch({ts <- ts - fitted(lm(ts ~ Time, data = ts.frame))},
 	           error = function(e){warning(messages[5]); zerovec})
-	
+
 	  tryCatch( {stdev <- sqrt(sum((ts - mean(ts))^2))/(ts.length - 1)
 	             ts <- ts/stdev},
 	            error = function(e){warning(messages[6]); zerovec})
-	
+
 	  ts
 	}  
 	## Apply the detrend.ts function to the variables of interest
 	df.detrend <- data.frame(lapply(cadairydata[, 4:7], ts.detrend, cadairydata$Time))
-	
+
 	## Plot the results to look at the relationships
 	pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = df.detrend, main = "Pairwise Scatterplots of detrended standardized time series")
 
@@ -654,13 +653,13 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 	pair.cor <- function(pair.ind, ts.list, lag.max = 1, plot = FALSE){
 	  ccf(ts.list[[pair.ind[1]]], ts.list[[pair.ind[2]]], lag.max = lag.max, plot = plot)
 	}
-	
+
 	## A list of the pairwise indices
 	corpairs <- list(c(1,2), c(1,3), c(1,4), c(2,3), c(2,4), c(3,4))
-	
+
 	## Compute the list of ccf objects
 	cadairycorrelations <- lapply(corpairs, pair.cor, df.detrend)  
-	
+
 	cadairycorrelations
 
 このコードを実行すると、図 18 に示す出力が生成されます。
@@ -678,7 +677,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 次のコードは、それ自体がリストである ccf オブジェクトのリストから時間差値を抽出します。
 
 	df.correlations <- data.frame(do.call(rbind, lapply(cadairycorrelations, '[[', 1)))
-	
+
 	c.names <- c("-1 lag", "0 lag", "+1 lag")
 	r.names  <- c("Corr Cot Cheese - Ice Cream",
 	              "Corr Cot Cheese - Milk Prod",
@@ -686,14 +685,14 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 	              "Corr Ice Cream - Mik Prod",
 	              "Corr Ice Cream - Fat Price",
 	              "Corr Milk Prod - Fat Price")
-	
+
 	## Build a dataframe with the row names column and the
 	## correlation data frame and assign the column names
 	outframe <- cbind(r.names, df.correlations)
 	colnames(outframe) <- c.names
 	outframe
-	
-	
+
+
 	## WARNING!
 	## The following line works only in Azure Machine Learning
 	## When running in RStudio, this code will result in an error
@@ -735,11 +734,11 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 	# If running in Machine Learning Studio, uncomment the first line with maml.mapInputPort()
 	cadairydata <- maml.mapInputPort(1)
-	
+
 	## Create a new column as a POSIXct object
 	Sys.setenv(TZ = "PST8PDT")
 	cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-", as.character(cadairydata$Month.Number), "-01 00:00:00", sep = ""), "%Y-%m-%d %H:%M:%S"))
-	
+
 	str(cadairydata)
 
 このコードを実行し、R デバイス出力ポートを調べます。結果が、図 21 のように表示されます。
@@ -755,12 +754,12 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 構築されたデータフレームを使用して、トレーニング データセットを作成する必要があります。このデータはテスト データセットであり、2013 年の 12 か月を除くすべての記録が含まれます。次のコードはデータフレームをサブセット化し、酪農生産のプロットと価格変数を作成します。次に、4 つの生産のプロットと価格変数を作成します。匿名関数を使用してプロット用の引数を定義し、`Map()` を使用して他の 2 つの引数のリストを順に処理します。ここで、for ループが適切に機能すると考えるのは正しいことです。ただし、R は関数型言語なので、ここでは関数型のアプローチを示します。
 
 	cadairytrain <- cadairydata[1:216, ]
-	
+
 	Ylabs  <- list("Log CA Cotage Cheese Production, 1000s lb",
 	               "Log CA Ice Cream Production, 1000s lb",
 	               "Log CA Milk Production 1000s lb",
 	               "Log North CA Milk Milk Fat Price per 1000 lb")
-	
+
 	Map(function(y, Ylabs){plot(cadairytrain$Time, y, xlab = "Time", ylab = Ylabs, type = "l")}, cadairytrain[, 4:7], Ylabs)
 
 このコードを実行すると、R デバイス出力から一連の時系列プロットが生成されます (図 22 を参照)。時間軸は日単位であり、これは時系列プロット メソッドの優れた利点であることに注意してください。
@@ -842,7 +841,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 サニティ テストとして、傾向曲線を示すカリフォルニア酪農生産データの時系列プロットを作成しましょう。モデルとプロットを作成するために、Azure Machine Learning の [R スクリプトの実行][execute-r-script]モデル (RStudio ではない) に、次のコードを追加しました。図 23 に、結果が示されます。
 
 	milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
-	
+
 	plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Milk Production 1000s lb", type = "l")
 	lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 
@@ -900,7 +899,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 別のカリフォルニア酪農生産データの時系列プロットを作成し、季節モデルがうまく機能することを確認します。モデルとプロットを作成するために、Azure Machine Learning の [R スクリプトの実行][execute-r-script]に次のコードを追加しました。
 
 	milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
-	
+
 	plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Milk Production 1000s lb", type = "l")
 	lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 
@@ -917,7 +916,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 	## Compute predictions from our models
 	predict1  <- predict(milk.lm, cadairydata)
 	predict2  <- predict(milk.lm2, cadairydata)
-	
+
 	## Compute and plot the residuals
 	residuals <- cadairydata$Milk.Prod - predict2
 	plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Seasonal Model")
@@ -960,21 +959,21 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 	RMS.error <- function(series1, series2, is.log = TRUE, min.length = 2){
 	  ## Function to compute the RMS error or difference between two
 	  ## series or vectors
-	
+
 	  messages <- c("ERROR: Input arguments to function RMS.error of wrong type encountered",
 	                "ERROR: Input vector to function RMS.error is too short",
 	                "ERROR: Input vectors to function RMS.error must be of same length",
 	                "WARNING: Funtion rms.error has received invald input time series.")
-	
+
 	  ## Check the arguments
 	  if(!is.numeric(series1) | !is.numeric(series2) | !is.logical(is.log) | !is.numeric(min.length)) {
     	warning(messages[1])
 	    return(NA)}
-	
+
 	  if(length(series1) < min.length) {
     	warning(messages[2])
 	    return(NA)}
-	
+
 	  if((length(series1) != length(series2))) {
 	   	warning(messages[3])
 	    return(NA)}
@@ -994,7 +993,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 	 ## Compute predictions from our models
 	predict1  <- predict(milk.lm, cadairydata)
 	predict2  <- predict(milk.lm2, cadairydata)
-	
+
 	## Compute the RMS error in a dataframe
 	  tryCatch( {
 	    sqrt(sum((temp1 - temp2)^2) / length(temp1))},
@@ -1018,7 +1017,7 @@ RMS 誤差を測定する関数を準備したので、ビルドを行い、RMS 
 	    RMS.error(predict2[217:228], cadairydata$Milk.Prod[217:228]))
 	)
 	RMS.df
-	
+
 	## The following line should be executed only when running in
 	## Azure Machine Learning Studio
 	maml.mapOutputPort('RMS.df')
@@ -1116,6 +1115,5 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
- 
 
-<!-----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

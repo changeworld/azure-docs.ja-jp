@@ -25,15 +25,15 @@
 
 ##概要
 
-Microsoft Azure Media Services では、高度暗号化標準 (AES) (128 ビット暗号化キーを使用) と PlayReady DRM を使用して動的に暗号化したコンテンツを配信できます。Media Services では、承認されたクライアントにキーと PlayReady ライセンスを配信するためのサービスも提供しています。
+Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と PlayReady DRM を使用して動的に暗号化したコンテンツを配信できます。Media Services では、承認されたクライアントにキーと PlayReady ライセンスを配信するためのサービスも提供しています。
 
 現時点では、以下のストリーミング形式を暗号化できます。HLS、MPEG DASH、およびスムーズ ストリーミング。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
 
-Media Services でアセットを暗号化する場合は、[こちら](media-services-dotnet-create-contentkey.md)の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) をアセットに関連付ける必要があります。また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。
+Media Services で資産を暗号化する場合は、[こちら](media-services-dotnet-create-contentkey.md)の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) を資産に関連付ける必要があります。また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。
 
 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES か PlayReady でコンテンツを動的に暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
-Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、1 つ以上の承認制限 (**オープン**、**トークン**制限、**IP** 制限) を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。Media Services では、**Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と** JSON Web Token **(JWT) 形式のトークンがサポートされます。
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、1 つ以上の承認制限 (**オープン**、**トークン**制限、**IP** 制限) を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。Media Services では、**Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と **JSON Web Token **(JWT) 形式のトークンがサポートされます。
 
 Media Services では、Secure Token Services は提供されません。トークンを発行するには、カスタム STS を作成するか、Microsoft Azure ACS を活用できます。STS は、指定されたキーで署名されたトークンを作成し、トークン制限構成で指定したクレームを発行するよう構成する必要があります (この記事の説明を参照)。Media Services のキー配信サービスは、トークンが有効で、トークン内のクレームがコンテンツ キー向けに構成されたクレームと一致する場合、暗号化キーをクライアントに返します。
 
@@ -47,12 +47,12 @@ Media Services では、Secure Token Services は提供されません。トー�
 
 ###いくつかの考慮事項が適用されます。
 
-- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング占有ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。 
-- アセットには、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[アセットをエンコードする](media-services-encode-asset.md)」をご覧ください。  
-- **AssetCreationOptions.StorageEncrypted** オプションを使用して、アセットをアップロードしてエンコードします。
+- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。 
+- 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、[資産のエンコード](media-services-encode-asset.md)に関するページを参照してください。  
+- **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
 - 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
 - キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
-- アセットの配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
+- 資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
 
 
 ##AES-128 動的暗号化 
@@ -392,7 +392,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 
 ##次のステップ
-これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、「[アセットの配信ポリシーの構成方法](media-services-dotnet-configure-asset-delivery-policy.md)」トピックにお進みください。
+これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、「[方法: アセットの配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)」トピックにお進みください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

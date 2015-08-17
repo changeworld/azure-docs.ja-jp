@@ -158,4 +158,4 @@ Virtual Network のクロスプレミス接続の詳細については、[Virtua
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

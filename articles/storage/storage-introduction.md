@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/30/2015" 
+	ms.date="08/03/2015" 
 	ms.author="tamram"/>
 
 # Microsoft Azure Storage の概要
@@ -93,7 +93,9 @@ Azure Premium Storage は現在、Azure 仮想マシン ディスクでのみサ
 
 すべての BLOB は、コンテナーに編成されます。コンテナーを使用すると、オブジェクトのグループにセキュリティ ポリシーを便利に割り当てることができます。ストレージ アカウントの容量の上限である 500 TB を超えない限り、ストレージ アカウントには任意の数のコンテナーを含めることができ、コンテナーには任意の数の BLOB を含めることができます。
 
-BLOB ストレージが提供する BLOB には、ブロック BLOB とページ BLOB (ディスク) の 2 種類があります。ブロック BLOB はストリーミングとクラウド オブジェクトの格納に最適化されているので、ドキュメント、メディア ファイル、バックアップなどの格納に適しています。ブロック BLOB は、最大 200 GB までサイズを拡大できます。ページ BLOB は、IaaS のディスクとして使用でき、ランダムな書き込みをサポートするように最適化され、最大 1 TB までサイズを拡大できます。Azure 仮想マシン ネットワークに設置された IaaS ディスクは、ページ BLOB として格納される VHD です。
+BLOB ストレージが提供する BLOB には、ブロック BLOB、追加 BLOB、ページ BLOB (ディスク) の 3 種類があります。ブロック BLOB はストリーミングとクラウド オブジェクトの格納に最適化されているので、ドキュメント、メディア ファイル、バックアップなどの格納に適しています。追加 BLOB はブロック BLOB に似ていますが、追加操作用に最適化されています。追加 BLOB は、新しいブロックを最後に追加することによってのみ更新できます。追加 BLOB は、新しいデータが BLOB の最後のみに書き込まれる必要がある、ログ記録のようなシナリオに適しています。
+
+ページ BLOB は、IaaS のディスクとして使用でき、ランダムな書き込みをサポートするように最適化され、最大 1 TB までサイズを拡大できます。Azure 仮想マシン ネットワークに設置された IaaS ディスクは、ページ BLOB として格納される VHD です。
 
 ネットワーク上の制限があるために、有線接続経由で BLOB ストレージにデータをアップロードまたはダウンロードできない場合は、Microsoft にハード ドライブを送付し、データ センターから直接データをインポートまたはエクスポートする [Azure インポート/エクスポート サービス](storage-import-export-service.md)を使用できます。BLOB データは、ストレージ アカウント内またはストレージ アカウント間でコピーすることもできます。
 
@@ -171,6 +173,7 @@ Azure ストレージを導入するには、次のリソースを参照して�
 - [Azure Storage NuGet パッケージ - .NET、Windows Phone、および Windows Runtime 用クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [Azure SDK とツール](http://azure.microsoft.com/downloads/)
 - [Azure Storage エミュレーター](http://www.microsoft.com/en-in/download/details.aspx?id=43709)
+- [Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409)
 
 ### ソース コード
 
@@ -183,7 +186,9 @@ Azure ストレージを導入するには、次のリソースを参照して�
 - [AzCopy コマンドライン ツール リファレンス](storage-use-azcopy.md)
 
 ### PowerShell ユーザー向け
-- [Azure Storage コマンドレット](http://msdn.microsoft.com/library/azure/dn806401.aspx)
+- [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)
+- [サービス管理向け Azure Storage コマンドレット](http://msdn.microsoft.com/library/azure/dn806401.aspx)
+- [Azure リソース マネージャー向け Azure Storage コマンドレット](https://msdn.microsoft.com/library/azure/mt269418.aspx)
 
 ### .NET 開発者向け
 
@@ -191,6 +196,7 @@ Azure ストレージを導入するには、次のリソースを参照して�
 - [.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)
 - [.NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md)
 - [.NET からキュー ストレージを使用する方法](storage-dotnet-how-to-use-queues.md)
+- [PowerShell と .NET で File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
 
 ### Java/Android 開発者向け
 
@@ -224,4 +230,4 @@ Azure ストレージを導入するには、次のリソースを参照して�
 - [Python からキュー ストレージを使用する方法](storage-python-how-to-use-queue-storage.md)
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

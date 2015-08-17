@@ -89,4 +89,4 @@ Premium 階層は、ミッション クリティカルなアプリケーショ�
 SQL Database の階層については、これで理解できました。では、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)で実際に試してみましょう。また、[初めて SQL Database を作成する方法](sql-database-get-started.md)について詳しく学びましょう。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

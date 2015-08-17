@@ -54,23 +54,20 @@ DATA 0 ネットワーク インターフェイスを再構成するためのも
 
 	`Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`
 
-	IPv6 アドレスを使用している場合は、次のコマンドを使用します。
-
-	`Set-HCSNetInterface -InterfaceAlias Data0 -IPv6Address <> -IPv6Netmask <> -IPv6Gateway <> -Controller0IPv6Address <> -Controller1IPv6Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`
-
+	
 1. 次の項目について、DATA 0 の値を山かっこ (< >) で囲んで入力します。
 											
-	- IPv4/IPv6 アドレス
+	- IPv4 アドレス
 	
-	- IPv4/IPv6 ゲートウェイ
+	- IPv4 ゲートウェイ
 	
-	- IPv4/IPv6 サブネット マスク
+	- IPv4 サブネット マスク
 	
-	- コント ローラー 0 の固定 IPv4/IPv6 アドレス
+	- コント ローラー 0 の固定 IPv4 アドレス
 
-	- コント ローラー 1 の固定 IPv4/IPv6 アドレス
+	- コント ローラー 1 の固定 IPv4 アドレス
 
 ## 次のステップ
-ネットワーク インターフェイスを構成するときに問題が発生した場合は、[デプロイに関する問題のトラブルシューティング](storsimple-troubleshoot-deployment.md)のページを参照してください。
+DATA 0 以外のネットワーク インターフェイスを構成するには、[管理ポータルで [構成] ページ](storsimple-modify-device-config.md)を使用できます。ネットワーク インターフェイスを構成するときに問題が発生した場合は、「[デプロイに関する問題のトラブルシューティング](storsimple-troubleshoot-deployment.md)」のページををご覧ください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -13,11 +13,62 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/26/2015"
+	ms.date="07/30/2015"
 	ms.author="nitinme"/>
 
 
 # Azure HDInsight の Hadoop コンポーネントのリリース ノート
+
+## HDInsight の 2015 年 7 月 31 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 2.1.10.640.1695824 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight 3.0.6.640.1695824 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight 3.1.4.640.1695824 (HDP 2.1.15.0-2334 - 変更なし)
+* HDInsight 3.2.6.640.1695824 (HDP 2.2.6.1-0012 - 変更なし)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| Spark クラスター ノードの再イメージ化ワークフローの修正 | 再イメージ化後に Spark クラスター ノードが復元できないバグを修正しました | サービス | Spark| 該当なし |
+
+
+## HDInsight の 2015 年 7 月 31 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 2.1.10.635.1684502 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight 3.0.6.635.1684502 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight 3.1.4.635.1684502 (HDP 2.1.15.0-2334 - 変更なし)
+* HDInsight 3.2.6.635.1684502 (HDP 2.2.6.1-0012 - 変更なし)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| すべての HDInsight クラスターの HDInsight のバージョンの更新 | このリリースでは、HDInsight のバージョンが更新されています | サービス | すべて| 該当なし |
+
+
+## HDInsight の 2015 年 7 月 7 日リリース ##
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 2.1.10.610.1630216 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight 3.0.6.610.1630216 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight 3.1.4.610.1630216 (HDP 2.1.15.0-2334 - 変更なし)
+* HDInsight 3.2.4.610.1630216 (HDP 2.2.6.1-0012)
+* SDK 1.5.8
+
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| HDInsight 3.2 クラスターの更新された HDP バージョン | このリリースでは、HDInsight 3.2 は HDP 2.2.6.1-0012 をデプロイします | サービス | すべて | 該当なし |
 
 
 ## HDInsight の 2015 年 06 月 26 日リリース ノート ##
@@ -78,7 +129,7 @@
 
 <tr>
 <td>追加で開かれた HTTPS ポート</td>
-<td>クラウド サービスは、クラスターの 5 つのポート (8001 ～ 8005) を開くようになりました (例: <clustername>.azurehdinsight.net:8001/)。これらの URL に対する要求は、ポート 443 と同じ基本認証パスワード メカニズムを使用して認証されます。これらのポートは、アクティブなヘッドノード上の同じポートにバインドされます。スクリプト アクションを使用して、カスタマー サービスがヘッドノード上のこれらのポートをリッスンし、クラスターの外部にルーティングするように設定できます。</td>
+<td>クラウド サービスは、クラスターの 5 つのポート (8001 ～ 8005) を開くようになりました (例: https://<clustername>.azurehdinsight.net:8001/)。これらの URL に対する要求は、ポート 443 と同じ基本認証パスワード メカニズムを使用して認証されます。これらのポートは、アクティブなヘッドノード上の同じポートにバインドされます。スクリプト アクションを使用して、カスタマー サービスがヘッドノード上のこれらのポートをリッスンし、クラスターの外部にルーティングするように設定できます。</td>
 <td>クラウド サービス</td>
 <td>すべて</td>
 <td>該当なし</td>
@@ -1017,7 +1068,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 ## 2014 年 10 月 7 日リリース ##
 
-* Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host_name* フィールドがホスト名だけではなくノードの完全修飾ドメイン名 (FQDN) を返します。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワークに HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
+* Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host\_name* フィールドがホスト名だけではなくノードの完全修飾ドメイン名 (FQDN) を返します。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワークに HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
 * HDInsight クラスターの既定のデプロイのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。今回の新しいメモリ設定は、Hortonworks による推奨に基づき、既定の設定を改善するものです。メモリ設定の変更については、クラスター構成の変更に関する SDK リファレンス ドキュメントをご覧ください。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します(前のリリースで使用された値もかっこ内に記載します)。
 
@@ -1027,9 +1078,9 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 HDInsight で使用される Hortonworks Data Platform で YARN および MapReduce によって使用されるメモリ構成の設定の詳細については、「[Determine HDP Memory Configuration Settings (HDP メモリ構成の設定の決定)](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1-latest/bk_installing_manually_book/content/rpm-chap1-11.html)」をご覧ください。Hortonworks は、適切なメモリ設定を計算するツールも提供しています。
 
-Azure PowerShell と HDInsight SDK のエラー メッセージ "*Cluster is not configured for HTTP services access*" について
+Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスターが HTTP サービスのアクセス用に構成されていません*" について
 
-* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureHDInsightCluster** または **Invoke-Hive**) を使用してジョブを送信する場合、エラー メッセージ "Cluster <clustername> is not configured for HTTP services access*" または操作によっては、"Cannot connect to cluster" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
+* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureHDInsightCluster** または **Invoke-Hive**) を使用してジョブを送信する場合、エラー メッセージ "*クラスター<clustername>が HTTP サービスのアクセス用に構成されていません*" または操作によっては、"*クラスターに接続できません*" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
 
 * これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。[](http://nuget.codeplex.com/wikipage?title=Getting%20Started) から最新の HDInsight SDK にアクセスし、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure/)」から Azure PowerShell ツールにアクセスできます。
 
@@ -1147,7 +1198,7 @@ HDInsight 3.x (HDP2.x) に以下の依存関係が追加されました。
 * javax.inject
 * activation
 * jsr305
-* geronimo-jaspic_1.0_spec
+* geronimo-jaspic\_1.0\_spec
 * jul-to-slf4j
 * java-xmlbuilder
 * ant
@@ -1174,7 +1225,7 @@ HDInsight 3.x (HDP2.x) に以下の依存関係が追加されました。
 * jpam
 * jersey-client
 * aopalliance
-* geronimo-annotation_1.0_spec
+* geronimo-annotation\_1.0\_spec
 * ant-launcher
 * jersey-guice
 * xml-apis
@@ -1182,7 +1233,7 @@ HDInsight 3.x (HDP2.x) に以下の依存関係が追加されました。
 * asm-commons
 * asm-tree
 * wadl
-* geronimo-jta_1.1_spec
+* geronimo-jta\_1.1\_spec
 * guice
 * leveldbjni-all
 * velocity
@@ -1234,7 +1285,7 @@ HDInsight 2.x (HDP1.x) と HDInsight 3.x (HDP2.x) との間で以下のバージ
 * datanucleus-api-jdo: ['3.0.7'] -> ['3.2.6']
 * zookeeper: ['3.4.5.1.3.9.0-01320'] -> ['3.4.5.2.1.3.0-1948']
 * bonecp: ['0.7.1.RELEASE'] -> ['
-* 0.8.0.RELEASE']
+* 0\.8.0.RELEASE']
 
 
 ###ドライバー
@@ -1280,4 +1331,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

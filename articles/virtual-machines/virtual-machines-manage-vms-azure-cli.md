@@ -81,4 +81,4 @@ Linux ベースの VM を新たに作成するには、いくつかの値を用�
 **arm** モードでの Azure CLI のその他の使用例については、[Azure リソース管理による Mac、Linux、および Windows 用 Microsoft Azure CLI の使用](../xplat-cli-resource-manager.md)に関するページを参照してください。Azure リソースとその概念の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

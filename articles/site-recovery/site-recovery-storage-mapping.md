@@ -61,18 +61,18 @@ VMM で分類が適切に構成されている場合、記憶域マッピング�
 
 **場所** | **VMM サーバー** | **ファイル共有 (ソース)** | **分類 (ソース)** | **マップ先** | **ファイル共有 (ターゲット)**
 ---|---|--- |---|---|---
-ニューヨーク | VMM_Source| SourceShare1 | GOLD | GOLD_TARGET | TargetShare1
- | | SourceShare2 | SILVER | SILVER_TARGET | TargetShare2
- | | SourceShare3 | BRONZE | BRONZE_TARGET | TargetShare3
-シカゴ | VMM_Target | | GOLD_TARGET | マッピングなし |
-| | | SILVER_TARGET | マッピングなし |
- | | | BRONZE_TARGET | マッピングなし
+ニューヨーク | VMM\_Source| SourceShare1 | GOLD | GOLD\_TARGET | TargetShare1
+ | | SourceShare2 | SILVER | SILVER\_TARGET | TargetShare2
+ | | SourceShare3 | BRONZE | BRONZE\_TARGET | TargetShare3
+シカゴ | VMM\_Target | | GOLD\_TARGET | マッピングなし |
+| | | SILVER\_TARGET | マッピングなし |
+ | | | BRONZE\_TARGET | マッピングなし
 
 Site Recovery ポータルの **[リソース]** ページの **[サーバー記憶域]** タブでこれらを構成しました。
 
 ![ストレージ マッピングの構成](./media/site-recovery-storage-mapping/StorageMapping1.png)
 
-この例の場合: GOLD 記憶域 (SourceShare1) で仮想マシンのレプリカ仮想マシンを作成すると、レプリカ仮想マシンは GOLD_TARGET 記憶域 (TargetShare1) にレプリケートされます。SILVER 記憶域 (SourceShare2) で仮想マシンのレプリカ仮想マシンを作成すると、レプリカ仮想マシンは SILVER_TARGET 記憶域 (TargetShare2) にレプリケートされます。その他も同様です。
+この例の場合: GOLD 記憶域 (SourceShare1) で仮想マシンのレプリカ仮想マシンを作成すると、レプリカ仮想マシンは GOLD\_TARGET 記憶域 (TargetShare1) にレプリケートされます。SILVER 記憶域 (SourceShare2) で仮想マシンのレプリカ仮想マシンを作成すると、レプリカ仮想マシンは SILVER\_TARGET 記憶域 (TargetShare2) にレプリケートされます。その他も同様です。
 
 実際のファイル共有と、VMM でそれらに割り当てられた分類は次のようになります。
 
@@ -86,24 +86,24 @@ Site Recovery ポータルの **[リソース]** ページの **[サーバー記
 
 **場所** | **分類** | **関連付けられた記憶域**
 ---|---|---
-ニューヨーク | GOLD | <p>C:\ClusterStorage\SourceVolume1</p><p>\FileServer\SourceShare1</p>
- | SILVER | <p>C:\ClusterStorage\SourceVolume2</p><p>\FileServer\SourceShare2</p>
-シカゴ | GOLD_TARGET | <p>C:\ClusterStorage\TargetVolume1</p><p>\FileServer\TargetShare1</p>
- | SILVER_TARGET| <p>C:\ClusterStorage\TargetVolume2</p><p>\FileServer\TargetShare2</p>
+ニューヨーク | GOLD | <p>C:\\ClusterStorage\\SourceVolume1</p><p>\\FileServer\\SourceShare1</p>
+ | SILVER | <p>C:\\ClusterStorage\\SourceVolume2</p><p>\\FileServer\\SourceShare2</p>
+シカゴ | GOLD\_TARGET | <p>C:\\ClusterStorage\\TargetVolume1</p><p>\\FileServer\\TargetShare1</p>
+ | SILVER\_TARGET| <p>C:\\ClusterStorage\\TargetVolume2</p><p>\\FileServer\\TargetShare2</p>
 
 この例の環境で仮想マシン (VM1 ～ VM5) の保護を有効にしたときの動作を次の表にまとめます。
 
 **仮想マシン** | **ソース記憶域** | **ソース分類** | **マップされたターゲット記憶域**
 ---|---|---|---
-VM1 | C:\ClusterStorage\SourceVolume1 | GOLD | <p>C:\ClusterStorage\SourceVolume1</p><p>\\FileServer\SourceShare1</p><p>Both GOLD_TARGET</p>
-VM2 | \FileServer\SourceShare1 | GOLD | <p>C:\ClusterStorage\SourceVolume1</p><p>\FileServer\SourceShare1</p> <p>Both GOLD_TARGET</p>
-VM3 | C:\ClusterStorage\SourceVolume2 | SILVER | <p>C:\ClusterStorage\SourceVolume2</p><p>\FileServer\SourceShare2</p>
-VM4 | \FileServer\SourceShare2 | SILVER |<p>C:\ClusterStorage\SourceVolume2</p><p>\FileServer\SourceShare2</p><p>Both SILVER_TARGET</p>
-VM5 | C:\ClusterStorage\SourceVolume3 | 該当なし | マッピングを構成していないので、Hyper-V ホストの既定の記憶域の場所が使用されます。
+VM1 | C:\\ClusterStorage\\SourceVolume1 | GOLD | <p>C:\\ClusterStorage\\SourceVolume1</p><p>\\\\FileServer\\SourceShare1</p><p>Both GOLD\_TARGET</p>
+VM2 | \\FileServer\\SourceShare1 | GOLD | <p>C:\\ClusterStorage\\SourceVolume1</p><p>\\FileServer\\SourceShare1</p> <p>Both GOLD\_TARGET</p>
+VM3 | C:\\ClusterStorage\\SourceVolume2 | SILVER | <p>C:\\ClusterStorage\\SourceVolume2</p><p>\\FileServer\\SourceShare2</p>
+VM4 | \\FileServer\\SourceShare2 | SILVER |<p>C:\\ClusterStorage\\SourceVolume2</p><p>\\FileServer\\SourceShare2</p><p>Both SILVER\_TARGET</p>
+VM5 | C:\\ClusterStorage\\SourceVolume3 | 該当なし | マッピングを構成していないので、Hyper-V ホストの既定の記憶域の場所が使用されます。
 
 ## 次のステップ
 
 記憶域マッピングについて理解を深めたので、[ベスト プラクティス](site-recovery-best-practices.md)を読み、デプロイの準備をします。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

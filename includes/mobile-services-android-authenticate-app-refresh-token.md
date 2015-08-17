@@ -204,7 +204,55 @@
 
     このサービス フィルターでは、各応答で HTTP ステータス コード 401 "認証エラー" が発生していないかどうかを確認します。401 が発生した場合は、新しいトークンを取得する新しいログイン要求が、UI スレッドで設定されます。その他の呼び出しは、ログインが完了するか、5 回失敗するまでブロックされます。新しいトークンが取得されると、401 を引き起こした要求は新しいトークンを使用して再試行されます。またブロックされた呼び出しも、新しいトークンを使用して再試行されます。
 
-7. ToDoActivity.java ファイルで、`onCreate` メソッドを次のように更新します。
+7. ToDoActivity.java ファイルで、ToDoActivity クラス内に次の新しい `ProgressFilter` クラスのコードを追加します。
+		
+		/**
+		* The ProgressFilter class renders a progress bar on the screen during the time the App is waiting for the response of a previous request.
+		* the filter shows the progress bar on the beginning of the request, and hides it when the response arrived.
+		*/
+		private class ProgressFilter implements ServiceFilter {
+			@Override
+			public ListenableFuture<ServiceFilterResponse> handleRequest(ServiceFilterRequest request, NextServiceFilterCallback nextServiceFilterCallback) {
+
+				final SettableFuture<ServiceFilterResponse> resultFuture = SettableFuture.create();
+
+				runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						if (mProgressBar != null) mProgressBar.setVisibility(ProgressBar.VISIBLE);
+					}
+				});
+
+				ListenableFuture<ServiceFilterResponse> future = nextServiceFilterCallback.onNext(request);
+
+				Futures.addCallback(future, new FutureCallback<ServiceFilterResponse>() {
+					@Override
+					public void onFailure(Throwable e) {
+						resultFuture.setException(e);
+					}
+
+					@Override
+					public void onSuccess(ServiceFilterResponse response) {
+						runOnUiThread(new Runnable() {
+
+							@Override
+							public void run() {
+								if (mProgressBar != null) mProgressBar.setVisibility(ProgressBar.GONE);
+							}
+						});
+
+						resultFuture.set(response);
+					}
+				});
+
+				return resultFuture;
+			}
+		}
+		
+	このフィルターでは、要求の開始時に進行状況バーが表示され、応答が到着すると非表示になります。
+
+8. ToDoActivity.java ファイルで、`onCreate` メソッドを次のように更新します。
 
 		@Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -237,4 +285,4 @@
 
        このコードでは、`ProgressFilter` 以外に `RefreshTokenCacheFilter` が使用されています。また、`onCreate` の間に、トークン キャッシュも読み込みます。そのため、`false` が `authenticate` メソッドに渡されます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -39,24 +39,10 @@ BizTalk JSON エンコーダー を使用するには、まず、BizTalk JSON En
 
 	![エンコードおよび送信の構成][6]
 
-<table>
-	<tr>
-		<th>パラメーター</th>
-		<th>型</th>
-		<th>パラメーターの説明</th>
-	</tr>
-	<tr>
-		<td>Input Xml</td>
-		<td>オブジェクト</td>
-		<td>入力 XML のコンテンツ</td>
-	</tr>
-	<tr>
-		<td>Remove Outer Envelope</td>
-		<td>文字列</td>
-		<td>XML コンテンツからルート ノードを削除するために設定されるフラグ</td>
-	</tr>
-</table>
-
+パラメーター|型|パラメーターの説明
+---|---|---
+Input Xml|オブジェクト|入力 XML のコンテンツ
+Remove Outer Envelope|文字列|XML コンテンツからルート ノードを削除するために設定されるフラグ
 
 アクションは、入力コンテンツを JSON 表記で返します。
 
@@ -76,4 +62,4 @@ BizTalk JSON エンコーダー を使用するには、まず、BizTalk JSON En
 <!--Links -->
 [ロジック アプリの作成]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

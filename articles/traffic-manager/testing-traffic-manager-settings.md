@@ -21,11 +21,11 @@ Traffic Manager の設定をテストするには、複数のクライアント�
 
 ## 基本的なテスト手順
 
-- **DNS TTL を非常に短い時間に設定**して、変更がすぐに反映されるようにします。たとえば 30 秒に設定します。
+\- **DNS TTL を非常に短い時間に設定**して、変更がすぐに反映されるようにします。たとえば 30 秒に設定します。
 
-- テストするプロファイル内の **Azure Cloud Services や Azure Websites の IP アドレスを確認**します。
+\- テストするプロファイル内の **Azure Cloud Services や Azure Websites の IP アドレスを確認します**。
 
-- **DNS 名を IP アドレスに解決**してそのアドレスを表示できるツールを使用します。会社のドメイン名がプロファイル内のエンドポイントの IP アドレスに解決されることを確認します。その名前解決は Traffic Manager プロファイルと同じ負荷分散方法で行われる必要があります。Windows を実行しているコンピューターでは、コマンド プロンプトまたは Windows PowerShell プロンプトから Nslookup.exe ツールを使用できます。他にも、インターネット上には IP アドレスを調べることができるツールがあり、すぐに使用できる状態で公開されています。
+\- **DNS 名を IP アドレスに解決**してそのアドレスを表示できるツールを使用します。会社のドメイン名がプロファイル内のエンドポイントの IP アドレスに解決されることを確認します。その名前解決は Traffic Manager プロファイルと同じ負荷分散方法で行われる必要があります。Windows を実行しているコンピューターでは、コマンド プロンプトまたは Windows PowerShell プロンプトから Nslookup.exe ツールを使用できます。他にも、インターネット上には IP アドレスを調べることができるツールがあり、すぐに使用できる状態で公開されています。
 
 ### nslookup を使用して Traffic Manager プロファイルを確認するには
 
@@ -57,4 +57,4 @@ Traffic Manager の設定をテストするには、複数のクライアント�
 [Traffic Manager での負荷分散方法について](../about-traffic-manager-balancing-methods.md) [Traffic Manager を構成する方法](https://msdn.microsoft.com/library/azure/hh744830.aspx) [Traffic Manager](../traffic-manager.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

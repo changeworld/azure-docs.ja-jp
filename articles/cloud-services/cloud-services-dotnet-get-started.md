@@ -12,7 +12,7 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="get-started-article"
+	ms.topic="hero-article"
 	ms.date="06/08/2015"
 	ms.author="tdykstra"/>
 
@@ -270,7 +270,7 @@ Web ロール プロジェクトと worker ロール プロジェクトの Azure
 
 	![Cloud configuration](./media/cloud-services-dotnet-get-started/sccloud.png)
 
-6. **StorageConnectionString** エントリを選択すると、行の右端に省略記号 [...] ボタンが表示されます。省略記号ボタンをクリックして、**[ストレージ アカウント接続文字列の作成]** ダイアログ ボックスを開きます。
+6. **StorageConnectionString** エントリを選択すると、行の右端に省略記号 **[...]** ボタンが表示されます。省略記号ボタンをクリックして、**[ストレージ アカウント接続文字列の作成]** ダイアログ ボックスを開きます。
 
 	![Open Connection String Create box](./media/cloud-services-dotnet-get-started/opencscreate.png)
 
@@ -467,10 +467,10 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 3. ContosoAdsWeb プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
 	- *Global.asax.cs*  
-	- *Views \shared* フォルダー: <em>_Layout.cshtml</em>。
-	- *Views\Home* フォルダー: *Index.cshtml*。
+	- *Views \\shared* フォルダー: <em>\_Layout.cshtml</em>。
+	- *Views\\Home* フォルダー: *Index.cshtml*。
 	- *Controllers* フォルダー: *AdController.cs*。
-	- *Views\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル。
+	- *Views\\Ad* フォルダー (最初にフォルダーを作成): 5 つの *.cshtml* ファイル。
 
 3. ContosoAdsWorker プロジェクトで、ダウンロードしたプロジェクトから *WorkerRole.cs* を追加します。
 
@@ -571,13 +571,13 @@ ContosoAdsContext クラスは、Entity Framework によって SQL データベ�
 		var imagesQueue = queueClient.GetQueueReference("images");
 		imagesQueue.CreateIfNotExists();
 
-### ContosoAdsWeb - _Layout.cshtml
+### ContosoAdsWeb - \_Layout.cshtml
 
-*_Layout.cshtml* ファイルは、アプリ名をヘッダーとフッターに設定し、"Ads" メニュー エントリを作成します。
+*\_Layout.cshtml* ファイルは、アプリ名をヘッダーとフッターに設定し、"Ads" メニュー エントリを作成します。
 
-### ContosoAdsWeb - Views\Home\Index.cshtml
+### ContosoAdsWeb - Views\\Home\\Index.cshtml
 
-*Views\Home\Index.cshtml* ファイルは、ホーム ページにカテゴリ リンクを表示します。リンクは、querystring 変数の `Category` enum の整数値を Ads Index ページに渡します。
+*Views\\Home\\Index.cshtml* ファイルは、ホーム ページにカテゴリ リンクを表示します。リンクは、querystring 変数の `Category` enum の整数値を Ads Index ページに渡します。
 
 		<li>@Html.ActionLink("Cars", "Index", "Ad", new { category = (int)Category.Cars }, null)</li>
 		<li>@Html.ActionLink("Real estate", "Index", "Ad", new { category = (int)Category.RealEstate }, null)</li>
@@ -666,7 +666,7 @@ HttpPost `Edit` メソッドのコードも似ていますが、ユーザーが�
 		    await blobToDelete.DeleteAsync();
 		}
 
-### ContosoAdsWeb - Views\Ad\Index.cshtml および Details.cshtml
+### ContosoAdsWeb - Views\\Ad\\Index.cshtml および Details.cshtml
 
 *Index.cshtml* ファイルは、縮小表示を他の広告データと共に表示します。
 
@@ -676,7 +676,7 @@ HttpPost `Edit` メソッドのコードも似ていますが、ユーザーが�
 
 		<img src="@Html.Raw(Model.ImageURL)" />
 
-### ContosoAdsWeb - Views\Ad\Create.cshtml および Edit.cshtml
+### ContosoAdsWeb - Views\\Ad\\Create.cshtml および Edit.cshtml
 
 *Create.cshtml* ファイルと *Edit.cshtml* ファイルは、フォームのエンコードを指定してコントローラーが `HttpPostedFileBase` オブジェクトを取得できるようにします。
 
@@ -812,4 +812,4 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [Azure ストレージ](/documentation/services/storage/)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

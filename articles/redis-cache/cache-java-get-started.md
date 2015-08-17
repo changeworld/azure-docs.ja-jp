@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="cache-redis"
    ms.workload="required"
-   ms.date="04/30/2015"
+   ms.date="08/04/2015"
    ms.author="mwasson"/>
 
 # Java で Azure Redis Cache を使用する方法
@@ -87,4 +87,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 [3]: ./media/cache-java-get-started/cache03.png
 [4]: ./media/cache-java-get-started/cache04.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

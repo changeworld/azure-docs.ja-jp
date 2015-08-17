@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="08/05/2015" 
 	ms.author="tdykstra"/>
 
 # Azure Web ジョブ SDK とは
@@ -46,6 +46,8 @@ Web ジョブ SDK には次のコンポーネントが含まれています。
 
 * [電子メールの送信](https://github.com/victorhurdugaci/AzureWebJobsSamples/tree/master/SendEmailOnFailure)など、バックグラウンド スレッドで実行したいその他の時間のかかるタスク。
 
+これらのシナリオの多くでは、Web アプリを複数の VM で実行するように拡張することを検討できます (複数の WebJobs を同時に実行するなど)。一部のシナリオでは、これにより同じデータが複数回処理されることになりますが、WebJobs SDK の組み込みのキュー、BLOB、および Service Bus のトリガーを使用した場合、これは問題にはなりません。SDK では、関数は各メッセージまたは BLOB に対して 1 回のみ処理されます。
+
 ## <a id="code"></a> コード サンプル
 
 Azure Storage と組み合わせて動作する標準的なタスクを処理するコードは、シンプルです。コンソール アプリケーションで、実行するバックグラウンド タスクのメソッドを記述し、Web ジョブ SDK の属性でそれらを装飾します。`Main` メソッドは、記述したメソッドの呼び出しを調整する `JobHost` オブジェクトを作成します。Web ジョブ SDK フレームワークは、メソッド内で使用した WebJobs SDK 属性に基づいて、そのメソッドを呼び出すタイミングを認識します。
@@ -66,15 +68,12 @@ Azure Storage と組み合わせて動作する標準的なタスクを処理す
 
 `JobHost` オブジェクトは、バックグラウンドの関数セット用のコンテナーです。`JobHost` オブジェクトは、関数を監視し、それらをトリガーするイベントを待機して、トリガー イベントが発生した時点でその関数を実行します。`JobHost` メソッドを呼び出すと、コンテナー プロセスを現在のスレッドまたはバックグラウンド スレッドのどちらで実行するかを指定できます。例では、`RunAndBlock` メソッドは、現在のスレッド上でプロセスを継続的に実行しています。
 
-この例の `ProcessQueueMessage` メソッドには `QueueTrigger` 属性があるため、新規キュー メッセージの受信がその関数のトリガーとなります。`JobHost` オブジェクトは指定されたキュー (このサンプルでは "webjobsqueue") で新規キュー メッセージを待機し、それを見つけた時点で、`ProcessQueueMessage` を呼び出します。また、`QueueTrigger` 属性も、`inputText` パラメーターをキュー メッセージの値にバインドするようフレームワークに通知します。
+この例の `ProcessQueueMessage` メソッドには `QueueTrigger` 属性があるため、新規キュー メッセージの受信がその関数のトリガーとなります。`JobHost` オブジェクトは指定されたキュー (このサンプルでは "webjobsqueue") で新規キュー メッセージを待機し、それを見つけた時点で、`ProcessQueueMessage` を呼び出します。
 
-<pre class="prettyprint">public static void ProcessQueueMessage([QueueTrigger("webjobsqueue")]] <mark>string inputText</mark>,
-    [Blob("containername/blobname")]TextWriter writer)</pre>
+`QueueTrigger` 属性は、`inputText` パラメーターをキュー メッセージの値にバインドします。また、`Blob` 属性は、`TextWriter` オブジェクトを "containername" というコンテナー内の "blobname" という BLOB にバインドします。
 
-さらに、フレームワークは、`TextWriter` オブジェクトを "containername" というコンテナー内の "blobname" という BLOB にバインドします。
-
-<pre class="prettyprint">public static void ProcessQueueMessage([QueueTrigger("webjobsqueue")]] string inputText,
-    <mark>[Blob("containername/blobname")]TextWriter writer</mark>)</pre>
+		public static void ProcessQueueMessage([QueueTrigger("webjobsqueue")]] string inputText, 
+		    [Blob("containername/blobname")]TextWriter writer)
 
 その後、関数はこれらのパラメーターを使用して、キュー メッセージの値を BLOB に書き込みます。
 
@@ -105,4 +104,4 @@ Azure Storage のキュー、テーブル、BLOB や、Service Bus キューを�
 Web ジョブ SDK の詳細については、「[Azure WebJobs Recommended Resources (Azure Web ジョブの推奨リソース)](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

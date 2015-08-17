@@ -96,4 +96,4 @@ StorSimple デバイスでチャレンジ ハンドシェイク認証プロト�
 
 [StorSimple Manager サービス ダッシュボードの詳細を確認する](storsimple-service-dashboard.md)。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

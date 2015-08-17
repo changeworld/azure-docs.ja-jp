@@ -27,4 +27,4 @@
 - [Azure サブスクリプションを Azure AD に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 - [Azure AD の用語](active-directory-terminology.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB を使用した Node.js Web アプリケーションの作成 | Azure" 
+	pageTitle="DocumentDB を使用した Node.js Web アプリケーションの作成 | Microsoft Azure" 
 	description="Microsoft Azure DocumentDB を使用して、Azure Websites にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。" 
 	services="documentdb" 
 	documentationCenter="nodejs" 
@@ -41,12 +41,12 @@
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](../../pricing/free-trial/)をご覧ください。
 - [Node.js][] バージョン v0.10.29 以降
 - [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
 - [Git][]
 
-## <a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントの作成
+## <a name="_Toc395637761"></a>手順 1: DocumentDB データベース アカウントを作成する
 
 最初に、DocumentDB アカウントを作成します。既にアカウントを持っている場合は、この手順を省略して「[手順2: 新しい Node.js アプリケーションの作成](#_Toc395783178)」に進んでください。
 
@@ -559,4 +559,4 @@
   [Git]: http://git-scm.com/
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

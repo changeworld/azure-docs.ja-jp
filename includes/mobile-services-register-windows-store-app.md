@@ -9,7 +9,7 @@
 
    	これでアプリケーションの新しい Windows ストア登録が作成されます。
 
-3. Visual Studio で、チュートリアル「[モバイル サービスの使用]」を実行したときに作成したプロジェクトを開きます。
+3. Visual Studio で、チュートリアル [Mobile Services の使用]を実行したときに作成したプロジェクトを開きます。
 
 4. ソリューション エクスプローラーで Windows ストア アプリ プロジェクトを右クリックし、[**ストア**]、[**アプリケーションをストアと関連付ける**] の順にクリックします。
 
@@ -58,8 +58,8 @@
 <!-- Images. -->
 
 <!-- URLs. -->
-[モバイル サービスの使用]: /develop/mobile/tutorials/get-started/#create-new-service
+[Mobile Services の使用]: /develop/mobile/tutorials/get-started/#create-new-service
 [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

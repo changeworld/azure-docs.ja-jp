@@ -28,26 +28,26 @@ wheel をビルドするには、wheel パッケージが必要です。
 
     env\scripts\pip wheel azure==0.8.4
 
-これによって、\wheelhouse フォルダーに .whl ファイルが作成されます。\wheelhouse フォルダーと wheel ファイルをリポジトリに追加します。
+これによって、\\wheelhouse フォルダーに .whl ファイルが作成されます。\\wheelhouse フォルダーと wheel ファイルをリポジトリに追加します。
 
 requirements.txt を編集して先頭に `--find-links` オプションを追加します。このオプションは、python パッケージのインデックスにアクセスする前に、ローカル フォルダーで完全一致を検索するように pip に指示します。
 
     --find-links wheelhouse
     azure==0.8.4
 
-\wheelhouse フォルダー内のすべての依存関係を組み込む必要があり、python パッケージのインデックスを一切使用しない場合は、requirements.txt の先頭に `--no-index` を追加すると、pip で強制的にパッケージ インデックスを無視することができます。
+\\wheelhouse フォルダー内のすべての依存関係を組み込む必要があり、python パッケージのインデックスを一切使用しない場合は、requirements.txt の先頭に `--no-index` を追加すると、pip で強制的にパッケージ インデックスを無視することができます。
 
     --no-index
 
 ### インストールをカスタマイズする
 
-デプロイメント スクリプトをカスタマイズし、easy_install などの代替インストーラーを使用して、仮想環境にパッケージをインストールできます。deploy.cmd のコメントアウトされた例を参照してください。pip でインストールされることを避けるため、このようなパッケージを requirements.txt に指定していないことを確認してください。
+デプロイメント スクリプトをカスタマイズし、easy\_install などの代替インストーラーを使用して、仮想環境にパッケージをインストールできます。deploy.cmd のコメントアウトされた例を参照してください。pip でインストールされることを避けるため、このようなパッケージを requirements.txt に指定していないことを確認してください。
 
 これをデプロイメント スクリプトに追加します。
 
     env\scripts\easy_install somepackage
 
-また、easy_install を使用して、exe インストーラーからインストールすることもできます (一部のインストーラーは zip と互換性があるため、easy_install でサポートされます)。インストーラーをリポジトリに追加し、パスを実行可能ファイルに渡して easy_install を呼び出します。
+また、easy\_install を使用して、exe インストーラーからインストールすることもできます (一部のインストーラーは zip と互換性があるため、easy\_install でサポートされます)。インストーラーをリポジトリに追加し、パスを実行可能ファイルに渡して easy\_install を呼び出します。
 
 これをデプロイメント スクリプトに追加します。
 
@@ -69,4 +69,4 @@ requirements.txt を編集して先頭に `--find-links` オプションを追�
 [Python 2.7 用の Microsoft Visual C++ コンパイラ]: http://aka.ms/vcpython27
 [Microsoft Visual C++ 2010 Express ]: http://go.microsoft.com/?linkid=9709949
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

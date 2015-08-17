@@ -26,7 +26,7 @@
 | 発行元 | プラン | SKU |
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
 | OpenLogic | CentOS | 7 |
-| OpenLogic | CentOS | 7.1 |
+| OpenLogic | CentOS | 7\.1 |
 | CoreOS | CoreOS | ベータ版 |
 | CoreOS | CoreOS | 安定版 |
 | MicrosoftDynamicsNAV | DynamicsNAV | 2015 |
@@ -35,8 +35,8 @@
 | msopentech | Oracle-Database-12c-Weblogic-Server-12c | Enterprise |
 | MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-DW |
 | MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-OLTP |
-| Canonical | UbuntuServer | 12.04.5-LTS |
-| Canonical | UbuntuServer | 14.04.2-LTS |
+| Canonical | UbuntuServer | 12\.04.5-LTS |
+| Canonical | UbuntuServer | 14\.04.2-LTS |
 | MicrosoftWindowsServer | WindowsServer | 2012-Datacenter |
 | MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter |
 | MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 |
@@ -227,4 +227,4 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 [msn]: http://search.msn.com/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

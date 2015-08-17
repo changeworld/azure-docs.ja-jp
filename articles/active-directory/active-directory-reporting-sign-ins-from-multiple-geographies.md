@@ -17,4 +17,4 @@
 
 ![複数の地域からのサインイン](./media/active-directory-reporting-sign-ins-from-multiple-geographies/signInsFromMultipleGeographies.PNG)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

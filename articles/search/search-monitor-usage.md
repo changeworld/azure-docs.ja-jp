@@ -57,4 +57,4 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

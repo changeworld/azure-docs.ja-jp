@@ -106,4 +106,4 @@ MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオ�
 
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

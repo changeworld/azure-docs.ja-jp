@@ -15,10 +15,10 @@
 
 	![](./media/mobile-services-dotnet-backend-configure-local-push/notification-hub-connection-string.png)
 
-4. Visual Studio のモバイル サービス プロジェクトで、サービスの Web.config ファイルを開き、**connectionStrings** で **MS_NotificationHubConnectionString** の接続文字列を前の手順でコピーした文字列で置き換えます。
+4. Visual Studio のモバイル サービス プロジェクトで、サービスの Web.config ファイルを開き、**connectionStrings** で **MS\_NotificationHubConnectionString** の接続文字列を前の手順でコピーした文字列で置き換えます。
 
-5. **appSettings** で、**MS_NotificationHubName** アプリケーション設定の値を通知ハブの名前で置き換えます。
+5. **appSettings** で、**MS\_NotificationHubName** アプリケーション設定の値を通知ハブの名前で置き換えます。
 
 これで、モバイル サービス プロジェクトは、ローカルでの実行時に Azure 内の通知ハブに接続されるように構成されました。Azure 内で実行する際に、Web.config プロジェクトの設定はポータルの設定で上書きされるため、ポータルの設定と同じ通知ハブ名と接続文字列を使用する必要がある点に注意してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -500,4 +500,4 @@ vm-disk-utils-0.1.sh は、azure-quickstart-tempates github リポジトリ内�
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
 
-<!-------HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

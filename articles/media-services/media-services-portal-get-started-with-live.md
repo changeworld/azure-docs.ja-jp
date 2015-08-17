@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ne"
 	ms.topic="get-started-article" 
-	ms.date="04/16/2015"
+	ms.date="08/03/2015"
 	ms.author="juliako"/>
 
 
@@ -22,7 +22,7 @@
 [AZURE.INCLUDE [media-services-selector-manage-channels](../../includes/media-services-selector-manage-channels.md)]
 
 
-このチュートリアルでは、**チャネル**がオンプレミスのライブ エンコーダーからマルチ ビットレートのライブ ストリームを受信する基本的な Media Services のライブ ストリーミング アプリケーションを実装する手順について説明します。チャネルと関連コンポーネントの操作に関する詳細は、「[オンプレミスのエンコーダーからマルチ ビットレート ライブ ストリームを受信するチャネルを操作する](../media-services-channels-overview.md)」を参照してください。
+このチュートリアルでは、**チャネル**がオンプレミスのライブ エンコーダーからマルチ ビットレートのライブ ストリームを受信する基本的な Media Services のライブ ストリーミング アプリケーションを実装する手順について説明します。チャネルと関連コンポーネントの操作に関する詳細は、「[オンプレミスのエンコーダーからマルチ ビットレート ライブ ストリームを受信するチャネルを操作する](media-services-manage-channels-overview.md)」を参照してください。
 
 このチュートリアルでは、Azure の管理ポータルを使用して、次のタスクを実行します。
 
@@ -210,4 +210,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 <!-- Images -->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

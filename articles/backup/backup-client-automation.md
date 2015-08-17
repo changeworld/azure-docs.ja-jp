@@ -23,7 +23,7 @@ Azure PowerShell を使用して次のセットアップおよび登録タスク
 - ネットワーク
 
 ### Microsoft Azure Backup エージェントのインストール
-Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)から入手することができます。インストーラーを、*C:\Downloads* などの、簡単にアクセスできる場所に保存します。
+Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)から入手することができます。インストーラーを、*C:\\Downloads* などの、簡単にアクセスできる場所に保存します。
 
 エージェントをインストールするには、管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
@@ -49,24 +49,16 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | オプション | 詳細 | 既定値 |
 | ---- | ----- | ----- |
-| /q | サイレント インストール | - |
-| /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent |
-| /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m | Microsoft Update のオプトイン | - |
-| /nu | インストールの完了後に更新プログラムを確認しない | - |
-| /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - |
-| /ph | プロキシ ホストのアドレス | - |
-| /po | プロキシ ホストのポート番号 | - |
-| /pu | プロキシ ホストのユーザー名 | - |
-| /pw | プロキシ パスワード | - |
+| /q | サイレント インストール | - | | /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent | | /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch | | /m | Microsoft Update のオプトイン | - | | /nu | インストールの完了後に更新プログラムを確認しない | - | | /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - | | /ph | プロキシ ホストのアドレス | - | | /po | プロキシ ホストのポート番号 | - | | /pu | プロキシ ホストのユーザー名 | - | | /pw | プロキシ パスワード | - |
 
 
 ### Microsoft Azure Backup サービスへの登録
 Microsoft Azure Backup サービスへの登録を実行する前に、[前提条件](backup-try-azure-backup-in-10-mins.md)が満たされていることを確認する必要があります。前提条件は、以下のとおりです。
 
 - 有効な Azure サブスクリプションがあること
-- バックアップ コンテナーを作成していること
-- コンテナーの資格情報をダウンロードし、アクセスしやすい場所 (*C:\Downloads* など) に保管していること。コンテナーの資格情報ファイルは、わかりやすい名前に変更することもできます。
+- バックアップ コンテナーの作成
+- コンテナーの資格情報をダウンロードし、アクセスしやすい場所 (*C:\\Downloads* など) に保管していること。コンテナーの資格情報ファイルは、わかりやすい名前に変更することもできます。
+
 コンテナーへのマシンの登録は、[Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) コマンドレットを使用して実行します。
 
 ```
@@ -377,7 +369,7 @@ PS C:\> $item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyDat
 ```
 
 ### 復元プロセスのトリガー
-復元プロセスをトリガーするには、まず、回復オプションを指定する必要があります。これを行うには、[New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) コマンドレットを使用します。この例では、ファイルを *C:\temp* に復元すると仮定します。また、宛先フォルダー *C:\temp* に既に存在するファイルをスキップすると仮定します。こうした回復オプションを作成するには、次のコマンドを使用します。
+復元プロセスをトリガーするには、まず、回復オプションを指定する必要があります。これを行うには、[New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) コマンドレットを使用します。この例では、ファイルを *C:\\temp* に復元すると仮定します。また、宛先フォルダー *C:\\temp* に既に存在するファイルをスキップすると仮定します。こうした回復オプションを作成するには、次のコマンドを使用します。
 
 ```
 PS C:\> $recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
@@ -432,8 +424,8 @@ PS C:\> Set-ExecutionPolicy unrestricted -force
 コンピューターを、エージェントのインストールを始め、リモートで管理できるようになりました。たとえば、次のスクリプトは、エージェントをリモート コンピューターにコピーし、インストールします。
 
 ```
-PS C:\> $dloc = "\REMOTESERVER01\c$\Windows\Temp"
-PS C:\> $agent = "\REMOTESERVER01\c$\Windows\Temp\MARSAgentInstaller.exe"
+PS C:\> $dloc = "\\REMOTESERVER01\c$\Windows\Temp"
+PS C:\> $agent = "\\REMOTESERVER01\c$\Windows\Temp\MARSAgentInstaller.exe"
 PS C:\> $args = "/q"
 PS C:\> Copy-Item "C:\Downloads\MARSAgentInstaller.exe" -Destination $dloc - force
 
@@ -444,4 +436,4 @@ PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePa
 ## 次のステップ
 Azure Backup for Windows Server/Client の詳細については、「[Azure Backup の概要](backup-introduction-to-azure-backup.md)」を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

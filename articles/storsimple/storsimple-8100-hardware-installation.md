@@ -297,4 +297,4 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 これで[オンプレミス StorSimple デバイスを配置して構成する](storsimple-deployment-walkthrough.md)準備ができました。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -36,7 +36,7 @@
 
 最初の手順として、既存のストーリーボードに UI 要素を追加して、ユーザーが登録するカテゴリを選択できるようにします。ユーザーにより選択されるカテゴリは、デバイスに格納されます。アプリが起動すると、通知ハブにデバイス登録が作成され、選択されたカテゴリがタグとして追加されます。
 
-1. MainStoryboard_iPhone.storyboard で、オブジェクト ライブラリから次のコンポーネントを追加します。
+1. MainStoryboard\_iPhone.storyboard で、オブジェクト ライブラリから次のコンポーネントを追加します。
 	+ "Breaking News" というテキストが付いたラベル
 	+ "World"、"Politics"、"Business"、"Technology"、"Science"、"Sports" というカテゴリ テキストが付いたラベル
 	+ 6 つのスイッチ (カテゴリごとに 1 つ)。各スイッチの **[状態]**は、既定で **[Off]** に設定されます。
@@ -346,8 +346,7 @@
 
 3. ニュース速報を購読している各デバイスが、たった今送信したニュース速報通知を受信します。
 
-	![][4]
-	![][5]
+	![][4] ![][5]
 
 
 ## 次のステップ
@@ -388,4 +387,4 @@
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

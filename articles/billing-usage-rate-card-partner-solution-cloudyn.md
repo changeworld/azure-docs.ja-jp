@@ -90,4 +90,4 @@ Azure ユーザーが Cloudyn for Azure と Azure Billing API を使用して Az
 [6]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Performance-Reports.png
 [7]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Category-Manager.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

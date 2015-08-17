@@ -140,7 +140,7 @@ Web Apps で実行されている MySQL データベースに接続するには�
 
 	表示されたダイアログで、ダウンロードしておいたファイルの場所に移動し、すべて選択して、[開く] をクリックします。確認のメッセージが表示されたら、`index.php` ファイルの置き換えを選択します。
 
-7. 次に、ローカル MySQL データベースの接続情報を `taskmodel.php` ファイルに追加する必要があります。`taskmodel.php` ファイルをダブルクリックして開き、`connect` 関数内のデータベース接続情報を更新します (**注**: アプリケーションをローカルでテストせず、Azure App Service Web Apps に直接発行する場合は、「[アプリケーションの発行](#Publish)」を参照してください)。
+7. 次に、ローカル MySQL データベースの接続情報を `taskmodel.php` ファイルに追加する必要があります。`taskmodel.php` ファイルをダブルクリックして開き、`connect` 関数内のデータベース接続情報を更新します。(**注**: アプリケーションをローカルでテストせず、直接 Azure App Service Web Apps に発行する場合は、「[アプリケーションの発行](#Publish)」に進んでください)。
 
 		// DB connection info
 		$host = "localhost";
@@ -261,4 +261,4 @@ Web Apps で実行されている MySQL データベースに接続するには�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

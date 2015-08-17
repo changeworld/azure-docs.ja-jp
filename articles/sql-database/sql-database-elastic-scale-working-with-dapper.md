@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/20/2015" 
+	ms.date="07/24/2015" 
 	ms.author="sidneyh"/>
 
 # Dapper でのエラスティック データベース クライアント ライブラリの使用 
 
 このドキュメントは、Dapper を使用してアプリケーションを構築する開発者が、[エラスティック データベース ツール](sql-database-elastic-scale-introduction.md)を導入し、シャーディングを実装してデータ層をスケールアウトするアプリケーションを作成する場合に使用します。このドキュメントでは、エラスティック データベース ツールと統合するために Dapper ベースのアプリケーションに加える必要がある変更点を示します。ここでは、Dapper を使用してエラスティック データベース シャード管理とデータ依存ルーティングを構成する方法を重点的に説明します。
 
-**サンプル コード**: [Elastic database tools for Azure SQL Database - Dapper integration (Azure SQL Database のエラスティック データベース ツール - Dapper の統合)](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
+**サンプル コード**: [エラスティック データベースツール for Azure SQL Database - Dapper integration (Azure SQL Database のエラスティック データベース ツール - Dapper の統合)](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
  
 **Dapper** と **DapperExtensions** を Azure SQL Database のエラスティック データベース クライアント ライブラリに統合することは容易です。アプリケーションではデータ依存ルーティングを使用できます。そのためには、[クライアント ライブラリ](http://msdn.microsoft.com/library/azure/dn765902.aspx)の [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しを使用するように新しい [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) オブジェクトを作成する操作と開く操作を変更します。これにより、アプリケーションの変更が、新しい接続を作成して開く場所だけに制限されます。
 
@@ -174,4 +174,4 @@ Dapper と DapperExtensions を使用するアプリケーションは、Azure S
 [1]: ./media/sql-database-elastic-scale-working-with-dapper/dapperimage1.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

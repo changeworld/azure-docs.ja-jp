@@ -40,4 +40,4 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーの Azure の�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

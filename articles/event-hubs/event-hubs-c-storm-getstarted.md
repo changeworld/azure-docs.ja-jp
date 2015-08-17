@@ -34,9 +34,9 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 + [Maven](http://maven.apache.org/) を実行するように構成された Java 開発環境。このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を想定しています。
 
-+ アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
++ アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-## イベント ハブを作成する
+## Event Hub を作成する
 
 1. [Microsoft Azure 管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
@@ -44,7 +44,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 	![][1]
 
-3. イベント ハブの名前を入力し、目的のリージョンを選択し、**[新しいイベント ハブを作成する]** をクリックします。
+3. イベント ハブの名前を入力して、目的のリージョンを選択し、**[Create a new Event Hub (新しい Event Hub を作成する)]** をクリックします。
 
 	![][2]
 
@@ -111,4 +111,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

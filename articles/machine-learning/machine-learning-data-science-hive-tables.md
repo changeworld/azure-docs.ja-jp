@@ -2,7 +2,6 @@
 	pageTitle="データを作成して BLOB ストレージ から Hive テーブルに読み込む | Microsoft Azure" 
 	description="Hive テーブルを作成し、BLOB 内のデータを Hive テーブルに読み込む" 
 	services="machine-learning" 
-	solutions="" 
 	documentationCenter="" 
 	authors="hangzh-msft" 
 	manager="paulettm" 
@@ -75,7 +74,7 @@
 
 データのサイズが大きい場合、テーブルのいくつかのパーティションしかスキャンする必要がないクエリでは、テーブルをパーティション分割することが役立ちます。たとえば、Web サイトのログ データを日付別にパーティション分割することができます。
 
-テーブルのパーティション分割に加え、ORC 形式でハイブ データを格納するのも便利です。ORC は「最適化行多桁式」の略です。詳細については、_[ハイブによるデータの読み取り、書き込み、および処理時における ORC ファイルを使用したパフォーマンスの向上](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles)_に関するページをご覧ください。
+テーブルのパーティション分割に加え、ORC 形式でハイブ データを格納するのも便利です。ORC は「最適化行多桁式」の略です。詳細については、_[「Hive によるデータの読み取り、書き込み、処理時における ORC ファイルを使用したパフォーマンスの向上](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles)」_をご覧ください。
 
 ### パーティション テーブル
 
@@ -132,7 +131,7 @@
 
 		INSERT OVERWRITE TABLE <database name>.<ORC table name> SELECT * FROM <database name>.<external textfile table name>;
 
-> [AZURE.NOTE]TEXTFILE テーブル `<database name>.<external textfile table name>` にパーティションが含まれている場合、手順 3 で、`SELECT * FROM <database name>.<external textfile table name>` は、返されたデータ セット内のフィールドとしてパーティション変数を選択します。`<database name>.<ORC table name>` にはテーブル スキーマのフィールドとしてのパーティション変数が存在しないため、その変数を `<database name>.<ORC table name>` に挿入すると失敗します。この場合、ユーザーは `<database name>.<ORC table name>` に挿入するフィールドを、次のように具体的に選択する必要があります。
+> [AZURE.NOTE]TEXTFILE テーブル `<database name>.<external textfile table name>` にパーティションが含まれている場合、手順 3 で、`SELECT * FROM <database name>.<external textfile table name>` は、返されたデータ セット内のフィールドとしてパーティション変数を選択します。`<database name>.<ORC table name>` にはテーブル スキーマのフィールドとしてのパーティション変数が存在しないため、その変数を `<database name>.<ORC table name>` に挿入すると失敗します。この場合、ユーザーは `<database name>.<ORC table name>` に挿入するフィールドを、以下のように具体的に選択する必要があります。
 
 		INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
 		      SELECT field1, field2, ..., fieldN
@@ -146,4 +145,4 @@
 これで ORC 形式のデータを格納したテーブルを使用する準備が整いました。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

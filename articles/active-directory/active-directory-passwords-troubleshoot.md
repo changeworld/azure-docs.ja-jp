@@ -145,7 +145,7 @@
               <p>パスワード管理レポートが表示されません</p>
             </td>
             <td>
-              <p><strong>[パスワード リセット アクティビティ]</strong> レポートと <strong>[パスワード リセット登録アクティビティ]</strong> レポートは、<strong>[レポート]</strong> タブの <strong>[アクティビティ ログ]</strong> レポートに表示されません。</p>
+              <p><strong>［パスワード リセット アクティビティ]</strong> レポートと <strong>[パスワード リセット登録アクティビティ]</strong> レポートは、<strong>[レポート]</strong> タブの <strong>[アクティビティ ログ]</strong> レポートに表示されません。</p>
             </td>
             <td>
               <p>これは、この操作を実行する管理者に割り当てられる AAD Premium または AAD Basic のライセンスを持っていない場合に発生します。</p>
@@ -1485,4 +1485,4 @@ Azure AD Connect パッケージを再インストールすると、クラウド
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

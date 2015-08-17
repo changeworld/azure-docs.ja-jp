@@ -58,12 +58,13 @@ Azure サブスクリプションを持っていない場合は、[Azure の無�
 
 Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と Microsoft アカウントが必要です。会社名には、Microsoft のサンプル コンテンツで使用される仮の会社の会社名 Contoso のバリエーションを使用することをお勧めします。ただしこの会社名の使用は必須ではありません。
 
-次に、新しい Microsoft アカウントにサインアップします。**http://outlook.com** に移動し、user123@outlook.com のような電子メール アドレスを使用してアカウントを作成します。このアカウントで Office 365 FastTrack 試用版にサインアップすることになります。
+次に、新しい Microsoft アカウントにサインアップします。****http://outlook.com** に移動し、user123@outlook.com のような電子メール アドレスを使用してアカウントを作成します。このアカウントで Office 365 FastTrack 試用版にサインアップすることになります。
 
 次に、新しい Office 365 FastTrack 試用版にサインアップします。
 
 1.	CORP\\User1 アカウント資格情報で CLIENT1 にログオンします。
-2.	Internet Explorer を開き、**http://fasttrack.office.com** にアクセスします。3.	**[Getting started with FastTrack]** をクリックします。
+2.	Internet Explorer を開き、****http://fasttrack.office.com** にアクセスします。
+3.	**[Getting started with FastTrack]** をクリックします。
 4.	[Getting Started with FastTrack] ページで、**[First, sign up for an Office 365 trial]** の下の **[For enterprises, sign up here]** をクリックします。
 5.	手順 1. のページで、**[Business email address]** に新しい Microsoft アカウントを指定してページに入力してから、**[Next]** をクリックします。
 6.	手順 2. のページの最初のフィールドに初期の Office 365 アカウントの名前を入力し、その後に仮の会社名とパスワードを入力します。作成された電子メール アドレス (user123@contoso123.onmicrosoft.com など) とパスワードを安全な場所に記録します。フェーズ 3 の Active Directory Sync ツール構成ウィザードを完了するときにこの情報が必要になります。**[次へ]** をクリックします。
@@ -113,7 +114,8 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 
 次に、DS1 にディレクトリ同期をインストールします。
 
-1.	Internet Explorer を実行し、アドレス バーに「**http://go.microsoft.com/fwlink/?LinkID=278924**」と入力した後、Enter キーを押します。dirsync.exe を実行するように求められたら、**[保存]** の横にある矢印をクリックしてから、**[名前を付けて保存]**、**[保存]** の順にクリックして、ファイルをダウンロード フォルダーに保存します。ツールのインストールの詳細については、「[ディレクトリ同期ツールをインストールまたはアップグレードする](http://technet.microsoft.com/library/jj151800)」をご覧ください。2.	**ダウンロード** フォルダーを開き、**dirsync** ファイルを右クリックして、**[管理者として実行]** をクリックします。
+1.	Internet Explorer を実行し、アドレス バーに「****http://go.microsoft.com/fwlink/?LinkID=278924**」と入力した後、Enter キーを押します。dirsync.exe を実行するように求められたら、**[保存]** の横にある矢印をクリックしてから、**[名前を付けて保存]**、**[保存]** の順にクリックして、ファイルをダウンロード フォルダーに保存します。ツールのインストールの詳細については、[「ディレクトリ同期ツールをインストールまたはアップグレードする」](http://technet.microsoft.com/library/jj151800)をご覧ください。
+2.	**ダウンロード** フォルダーを開き、**dirsync** ファイルを右クリックして、**[管理者として実行]** をクリックします。
 3.	Active Directory 同期のセットアップ ウィザードの [ようこそ] ページで、**[次へ]** をクリックします。 
 4.	[ライセンス条項] ページで、**[同意する]** をクリックしてから、**[次へ]** をクリックします。
 5.	[インストール先フォルダーの選択] ページで **[次へ]** をクリックします。インストールが完了するまで数分かかる場合があります。
@@ -164,7 +166,8 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 3.	**[ライセンスの割り当て]** タブで、**[ユーザーの所在地の設定]** で所在地 (米国など) を選択します。
 4.	**[Microsoft Office 365 プラン E3]** を選択してから、**[保存]** をクリックします。
 5.	Internet Explorer を閉じます。
-6.	Internet Explorer を実行し、**http://portal.microsoftonline.com** にアクセスします。7.	Lynda Meyer の Office 365 の資格情報を使用してログオンします。彼女のユーザー名は lyndam@<\*架空の名前\*>.onmicrosoft.com になります。パスワードは、Lynda Meyer の Active Directory ユーザー アカウントのパスワードです。
+6.	Internet Explorer を実行し、****http://portal.microsoftonline.com** にアクセスします。
+7.	Lynda Meyer の Office 365 の資格情報を使用してログオンします。彼女のユーザー名は lyndam@<*架空の名前*>.onmicrosoft.com になります。パスワードは、Lynda Meyer の Active Directory ユーザー アカウントのパスワードです。
 8.	ログオンに成功すると、Office 365 ポータルのメインのページが **"今日は差を付けてみよう"** のメッセージと共に表示されます。
 
 現在の構成は次のようになります。
@@ -194,4 +197,4 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -120,4 +120,4 @@
 [Get started with data in Mobile Services using Visual Studio 2012]: ../mobile-services-windows-store-dotnet-get-started-data-vs2012.md
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

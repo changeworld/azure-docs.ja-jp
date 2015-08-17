@@ -81,7 +81,7 @@
           }
 
 
-3. Visual Studio のソリューション エクスプローラーで **App_Start** フォルダーを展開し、WebApiConfig.cs ファイルを開きます。
+3. Visual Studio のソリューション エクスプローラーで **App\_Start** フォルダーを展開し、WebApiConfig.cs ファイルを開きます。
 
     WebApiConfig.cs ファイルで、既定のデータベース初期化子クラスが `DropCreateDatabaseIfModelChanges` クラスから派生していることに注意してください。つまり、モデルへの変更により、テーブルが削除され、新しいモデルを格納するために再作成されることになります。したがって、テーブル内のデータは失われ、テーブルは再シードされます。次のように `Seed()` 初期化関数が新しい DueDate 列を初期化するように、データベース初期化子の Seed メソッドを変更します。WebApiConfig.cs ファイルを保存します。
 
@@ -240,4 +240,4 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 [Get started with data]: mobile-services-windows-phone-get-started-data.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

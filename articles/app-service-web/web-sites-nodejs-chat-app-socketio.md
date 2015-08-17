@@ -283,4 +283,4 @@ Azure Web Apps は複数の SKU で使用でき、SKU によってサイトで�
 [pricing]: /pricing/details/web-sites/
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

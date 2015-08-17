@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/16/2015" 
+	ms.date="07/27/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory リリース ノート
@@ -115,7 +115,7 @@ Dataset | RelationTableLocation | RelationalTable
 	        },
 	        "availability": {
 	            "frequency": "Hour",
-	            "interval": "1"
+	            "interval": 1
 	        }
 	    }
 	}
@@ -240,7 +240,7 @@ Dataset | RelationTableLocation | RelationalTable
 - **waitOnExternal** プロパティは **availability** セクションから削除されています。 
 - 新しい **external** プロパティは 1 レベル上に追加され、外部テーブルに対して **true** に設定されています。 
 - **retryInterval** などの **waitOnExternal** 要素のプロパティは、**Policy** 要素の新しい **externalData** セクションに追加されています。
-- **externalData** 要素はオプションの要素です。 
+- **externalData** 要素は省略可能な要素です。 
 - **externalData** 要素を使用する場合は、**external** プロパティを **true** に設定する必要があります。 
  
 
@@ -256,18 +256,18 @@ Dataset | RelationTableLocation | RelationalTable
 **MergeFiles**: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。
  
 ## HDInsight のすべてのアクティビティの新しい getDebugInfo プロパティ
-HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリーミング) は、新しいプロパティである **getDebugInfo** プロパティをサポートします。**GetDebugInfo** プロパティは、オプションの要素です。**Failure** に設定されていると、ログは実行エラー時にのみダウンロードされます。**All** に設定されていると、ログは実行状態に関係なく常にダウンロードされます。**None** に設定されていると、ログはダウンロードされません。
+HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリーミング) は、新しいプロパティである **getDebugInfo** プロパティをサポートします。**getDebugInfo** プロパティは、省略可能な要素です。**Failure** に設定されていると、ログは実行エラー時にのみダウンロードされます。**All** に設定されていると、ログは実行状態に関係なく常にダウンロードされます。**None** に設定されていると、ログはダウンロードされません。
 
   
      
 
 ## Data Factory の 2015 年 04 月 10 日リリース ノート
-**[テーブル]** ブレードに **[最近更新したスライス]** と **[最近失敗したスライス]** の一覧が表示されるようになりました。これらの一覧は、スライスの更新時間で並べ替えられます。次の状況では、スライスの更新時間が変更されます。
+**[テーブル]** ブレードに **[最近更新したスライス]** と **[最近失敗したスライス]** の一覧が表示されるようになりました。これらの一覧は、スライスの更新時間で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
 
 -  **Set-AzureDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 -  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
 
-一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツールバーの **[フィルター]** をクリックします。
+一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
  
 **[データ スライス (スライスの時刻別)]** タイルをクリックして、スライスを時間別に並べ替えて表示することもできます。これらのコレクションのスライスは、スライスの時間で並べ替えられます。たとえば、1 時間ごとのスケジュールである場合、スライスは次のようになります: 4/4/2015 5pm 処理中 - 4/4/2015 4pm 成功 - 4/4/2015 3pm 失敗
 
@@ -331,7 +331,7 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 - CustomActivity から DotNetActivity へ
 	- **ICustomActivity** インターフェイスの名前が **IDotNetActivity** に変更されました。Data Factory NuGet パッケージを更新し、カスタム アクティビティのソース コードで、ICustomActivity を IDotNetActivity に変更する必要があります。  
 	- カスタム アクティビティの JSON 定義におけるカスタム アクティビティの種類を、**CustomActivity** から **DotNetActivity** に変更する必要があります。 
-	- **CustomActivity** と **CustomActivityProperties** クラスの名前は、それぞれ、**DotNetActivity** と **DotNetActivityProperties** に変更されました （プロパティ セットは変わりません)。
+	- **CustomActivity** と **CustomActivityProperties** クラスの名前は、それぞれ、**DotNetActivity** と **DotNetActivityProperties** に変更されました (プロパティ セットは変わりません)。
 
 		古いバージョンの SDK および Azure PowerShell を使用している場合は、DotNetActivity の代わりに、引き続き CustomActivity を使用できます。
     
@@ -355,4 +355,4 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

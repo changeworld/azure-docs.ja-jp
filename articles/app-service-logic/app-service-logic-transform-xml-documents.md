@@ -116,4 +116,4 @@ API のアプリ概要ページから、SQL、SAP、SharePoint などのコネ�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

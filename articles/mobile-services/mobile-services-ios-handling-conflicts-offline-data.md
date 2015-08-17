@@ -17,13 +17,13 @@
 	ms.author="krisragh;donnam"/>
 
 
-# モバイル サービスでのオフライン データの同期との競合の処理
+# Mobile Services でのオフライン データの同期との競合の処理
 
 [AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../../includes/mobile-services-selector-offline-conflicts.md)]
 
 このトピックでは、Azure Mobile Services のオフライン機能を使用しているときに、データを同期し、競合を処理する方法について説明します。このチュートリアルは、前の「[オフライン データの使用]」チュートリアルの手順およびサンプル アプリを基に作成されています。このチュートリアルを開始する前に、「[オフライン データの使用]」チュートリアルを完了している必要があります。
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料評価版サイト</a>」をご覧ください。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
@@ -51,7 +51,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 ### <a name="update-list-view"></a>Todo リスト ビュー コントローラーの更新
 
-1. Xcode プロジェクト ナビゲーターで **MainStoryboard_iPhone.storyboard** を選択し、次に、**[Todo リスト ビュー コントローラー]** を選択します。テーブル ビュー セルを選択して、そのアクセサリ モードを**ディスクロージャー インジケーター**に設定します。ディスクロージャー インジケーターは、関連付けられたテーブル ビュー コントローラーをタップすると、新しいビューが表示されることをユーザーに示します。ディスクロージャー インジケーターは、イベントを生成しません。
+1. Xcode プロジェクト ナビゲーターで **MainStoryboard\_iPhone.storyboard** を選択し、次に、**[Todo リスト ビュー コントローラー]** を選択します。テーブル ビュー セルを選択して、そのアクセサリ モードを**ディスクロージャー インジケーター**に設定します。ディスクロージャー インジケーターは、関連付けられたテーブル ビュー コントローラーをタップすると、新しいビューが表示されることをユーザーに示します。ディスクロージャー インジケーターは、イベントを生成しません。
 
       ![][update-todo-list-view-controller-2]
 
@@ -145,7 +145,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 ### <a name="add-segue"></a>Todo 項目ビュー コントローラーとセグエのストーリーボードへの追加
 
-1. プロジェクト ナビゲーターを使用して、**MainStoryboard_iPhone.storyboard** ファイルに戻ります。
+1. プロジェクト ナビゲーターを使用して、**MainStoryboard\_iPhone.storyboard** ファイルに戻ります。
 
 2. Todo 項目の新しいビュー コントローラーをストーリーボードの既存の **Todo リスト ビュー コントローラー**の右に追加します。この新しいビュー コントローラーのカスタム クラスを **QSItemViewController** に設定します。詳細については、「[Adding a Scene to a Storyboard (シーンのストーリーボードへの追加)]」を参照してください。
 
@@ -171,8 +171,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 7. ここまでで加えたすべての変更を反映してアプリが動作することを確認します。シミュレーターでアプリを実行します。項目を todo リストに追加し、それらをクリックします。項目ビュー コントローラー (現在は空) が表示されます。
 
-      ![][add-todo-item-view-controller-4] 
-      ![][add-todo-item-view-controller-5]
+      ![][add-todo-item-view-controller-4] ![][add-todo-item-view-controller-5]
 
 ### <a name="add-item-details"></a>項目の詳細の Todo 項目ビュー コントローラーへの追加
 
@@ -472,4 +471,4 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 [Get started with Mobile Services]: mobile-services-ios-get-started.md
 [Get started with data]: mobile-services-ios-get-started-data.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

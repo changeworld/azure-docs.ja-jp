@@ -35,7 +35,13 @@
 
 > [AZURE.NOTE]VHDX 形式は、Microsoft Azure ではサポートされていません。Hyper-V マネージャーまたは [Convert-VHD コマンドレット](http://technet.microsoft.com/library/hh848454.aspx)を使用して、ディスクを VHD 形式に変換できます。変換についてのチュートリアルは、[こちら](http://blogs.msdn.com/b/virtual_pc_guy/archive/2012/10/03/using-powershell-to-convert-a-vhd-to-a-vhdx.aspx)をご覧ください。
  
- サポートされている Windows Server のバージョンは以下のとおりです。<P> <TABLE BORDER="1" WIDTH="600"> <TR BGCOLOR="#E9E7E7"> <TH>OS</TH> <TH>SKU</TH> <TH>Service Pack</TH> <TH>アーキテクチャ</TH> </TR> <TR> <TD>Windows Server 2012 R2</TD> <TD>すべてのエディション</TD> <TD>該当なし</TD> <TD>x64</TD> </TR> <TR> <TD>Windows Server 2012</TD> <TD>すべてのエディション</TD> <TD>該当なし</TD> <TD>x64</TD> </TR> <TR> <TD>Windows Server 2008 R2</TD> <TD>すべてのエディション</TD> <TD>SP1</TD> <TD>x64</TD> </TR> </TABLE> </P>
+ 次の Windows Server のバージョンがサポートされています。
+
+OS|SKU|Service Pack|アーキテクチャ
+---|---|---|---
+Windows Server 2012 R2|すべてのエディション|該当なし|x64
+Windows Server 2012|すべてのエディション|該当なし|x64
+Windows Server 2008 R2|すべてのエディション|SP1|x64
 
 
 このタスクの手順は次のとおりです。
@@ -53,7 +59,7 @@
 
 1. オペレーティング システムにログインします。
 
-2. 管理者としてコマンド プロンプト ウィンドウを開きます。ディレクトリを **%windir%\system32\sysprep** に変更し、`sysprep.exe` を実行します。
+2. 管理者としてコマンド プロンプト ウィンドウを開きます。ディレクトリを **%windir%\\system32\\sysprep** に変更し、`sysprep.exe` を実行します。
 
 	![コマンド プロンプト ウィンドウを開く](./media/virtual-machines-create-upload-vhd-windows-server/sysprep_commandprompt.png)
 
@@ -211,4 +217,4 @@
 [手順 4. .vhd ファイルをアップロードする]: #upload
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

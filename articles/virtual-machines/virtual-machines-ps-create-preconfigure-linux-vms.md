@@ -42,11 +42,11 @@ Azure PowerShell コマンド プロンプトで次のコマンドを実行し�
 	Select-AzureSubscription -SubscriptionName $subscr –Current
 	Set-AzureSubscription -SubscriptionName $subscr -CurrentStorageAccountName $staccount
 
-**Get-AzureSubscription** コマンドで出力される SubscriptionName プロパティで正しいサブスクリプション名を取得できます。**Select-AzureSubscription** コマンドの実行後、**Get-AzureStorageAccount** コマンドを実行すると、出力される Label プロパティで正しいストレージ アカウント名を取得できます。これらのコマンドをテキスト ファイルに保存して、後で使用することもできます。
+**Get-AzureSubscription** コマンドで出力される **SubscriptionName** プロパティで正しいサブスクリプション名を取得できます。**Select-AzureSubscription** コマンドの実行後、**Get-AzureStorageAccount** コマンドを実行すると、出力される **Label** プロパティで正しいストレージ アカウント名を取得できます。これらのコマンドをテキスト ファイルに保存して、後で使用することもできます。
 
 ## 手順 3. ImageFamily を特定する
 
-次に、作成する Azure 仮想マシンに対応する特定のイメージで使用するために、ImageFamily 値を特定する必要があります。このコマンドで、利用可能な ImageFamily 値の一覧を取得できます。
+次に、作成する Azure 仮想マシンに対応する特定のイメージで使用するために、ImageFamily 値を特定する必要があります。次のコマンドで、利用可能な ImageFamily 値の一覧を取得できます。
 
 	Get-AzureVMImage | select ImageFamily -Unique
 
@@ -63,7 +63,7 @@ Linux ベースのコンピューターで使用する ImageFamily 値の例は�
 
 ## 手順 4. コマンド セットを構築する
 
-残りのコマンド セットを構築します。具体的には、下の該当するブロック セットを新しいテキスト ファイルまたは PowerShell ISE にコピーし、変数の値を入力した後、文字 < and > を削除します。この記事の末尾にある 2 つの[例](#examples)を、最終結果のアイデアとしてご覧ください。
+次の該当するブロック セットを新しいテキスト ファイルか PowerShell ISE にコピーし、変数の値を入力した後、文字 < and > を削除して、残りのコマンド セットを構築します。この記事の末尾にある 2 つの[例](#examples)を、最終結果のアイデアとしてご覧ください。
 
 この 2 つのコマンド ブロックのいずれかを選択することからコマンド セットを開始します (必須)。
 
@@ -82,7 +82,7 @@ Linux ベースのコンピューターで使用する ImageFamily 値の例は�
 
 D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
-最初の Linux ユーザー名とパスワードを指定します (必須)。強力なパスワードを選択してください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。
+次のコマンドを使用して、最初の Linux ユーザー名とパスワードを指定します (必須)。強力なパスワードを選択してください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。
 
 	$cred=Get-Credential -Message "Type the name and password of the initial Linux account."
 	$vm1 | Add-AzureProvisioningConfig -Linux -LinuxUser $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
@@ -91,19 +91,19 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 	$vm1 | Add-AzureProvisioningConfig -Linux -SSHKeyPairs "<SSH key pairs>"
 
-詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」を参照してください。
+詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」をご覧ください。
 
 場合によっては、サブスクリプションにデプロイ済みの SSH 公開キーの一覧を指定します。
 
 	$vm1 | Add-AzureProvisioningConfig -Linux - SSHPublicKeys "<SSH public keys>"
 
-これ以外の Linux ベースの仮想マシンの事前構成のオプションについては、「[Add-AzureProvisioningConfig](https://msdn.microsoft.com/library/azure/dn495299.aspx)」で **Linux** パラメーター セットの構文を参照してください。
+これ以外の Linux ベースの仮想マシンの事前構成のオプションについては、「[Add-AzureProvisioningConfig](https://msdn.microsoft.com/library/azure/dn495299.aspx)」で **Linux** パラメーター セットの構文をご覧ください。
 
 必要に応じて、次のように、"静的 DIP" と呼ばれる特定の IP アドレスを仮想マシンに割り当てます。
 
 	$vm1 | Set-AzureStaticVNetIP -IPAddress <IP address>
 
-次のように実行すると、特定の IP アドレスが利用可能かどうかを調べることができます。
+次のコマンドを使用して、特定の IP アドレスが利用可能かどうかを調べることができます。
 
 	Test-AzureStaticVNetIP –VNetName <VNet name> –IPAddress <IP address>
 
@@ -131,13 +131,13 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 	$probepath="<URL path for probe traffic>"
 	$vm1 | Add-AzureEndpoint -Name $endpointname -Protocol $prot -LocalPort $localport -PublicPort $pubport -LBSetName $lbsetname -ProbeProtocol $probeprotocol -ProbePort $probeport -ProbePath $probepath
 
-最後に、これらのコマンド ブロックのいずれかを選択して、仮想マシン作成プロセスを開始します (必須)。
+最後に、次のコマンド ブロックのいずれかを選択して、仮想マシン作成プロセスを開始します (必須)。
 
 オプション 1. 既存のクラウド サービスに仮想マシンを作成します。
 
 	New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
-クラウド サービスの短い名前が、Azure の管理ポータルの [クラウド サービス] ボックスの一覧または、Azure プレビュー ポータルの [リソース グループ] ボックスの一覧に表示されます。
+クラウド サービスの短い名前が、Azure ポータルの [クラウド サービス] ボックスの一覧か、Azure プレビュー ポータルの [リソース グループ] ボックスの一覧に表示されます。
 
 オプション 2. 仮想マシンを既存のクラウド サービスと仮想ネットワークに作成します。
 
@@ -153,12 +153,12 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 仮想マシンの作成に使用した、サブスクリプション、ストレージ アカウント、クラウド サービス、可用性セット、仮想ネットワーク、またはサブネットが正しくない場合は、仮想マシンを削除し、コマンド ブロックの構文を修正してから正しいコマンド セットを実行してください。
 
-仮想マシンを作成したら、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)」を参照してください。
+仮想マシンを作成したら、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)」をご覧ください。
 
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
-- このコマンド セットを PowerShell スクリプト ファイル (\*.ps1) として保存する。
-- Microsoft Azure 管理ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
+- このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
+- Azure ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する
 
 ## <a id="examples"></a>例
 
@@ -168,12 +168,12 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 次の条件で MySQL サーバー用の最初の Linux 仮想マシンを作成する PowerShell コマンド セットが必要な場合。
 
-- Ubuntu Server 12.10 イメージを使用する
-- 名前は AZMYSQL1
-- 500 GB の追加データ ディスク容量
-- 静的 IP アドレスは 192.168.244.4
-- AZDatacenter 仮想ネットワークの BackEnd サブネットに属している
-- Azure-TailspinToys クラウド サービスに属している
+- Ubuntu Server 12.10 イメージを使用する。
+- 名前は AZMYSQL1 。
+- 500 GB の追加データ ディスク容量。
+- 静的 IP アドレスが 192.168.244.4 。
+- AZDatacenter 仮想ネットワークの BackEnd サブネットに属している。
+- Azure-TailspinToys クラウド サービスに属している。
 
 この仮想マシンを作成するための対応する Azure PowerShell コマンド セットは次のとおりです。読みやすくするために各ブロックの間に空白行を入れてあります。
 
@@ -205,12 +205,12 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 次の条件で Apache サーバー用に Linux 仮想マシンを作成する PowerShell コマンド セットが必要な場合。
 
-- SUSE Linux Enterprise Server 12 イメージを使用する
-- 名前は LOB1
-- 50 GB の追加データ ディスク容量
-- 標準 Web トラフィックの LOBServers ロード バランサー セットのメンバーである
-- AZDatacenter 仮想ネットワークの FrontEnd サブネットに属している
-- Azure-TailspinToys クラウド サービスに属している
+- SUSE Linux Enterprise Server 12 イメージを使用する。
+- 名前は LOB1。
+- 50 GB の追加データ ディスク容量。
+- 標準 Web トラフィックの LOBServers ロード バランサー セットのメンバーである。
+- AZDatacenter 仮想ネットワークの FrontEnd サブネットに属している。
+- Azure-TailspinToys クラウド サービスに属している。
 
 この仮想マシンを作成するための対応する Azure PowerShell コマンド セットは次のとおりです。
 
@@ -260,4 +260,4 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

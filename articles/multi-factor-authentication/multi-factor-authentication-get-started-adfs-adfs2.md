@@ -93,4 +93,4 @@ AD FS プロキシが使用されないときに AD FS 2.0 を保護するには
 
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

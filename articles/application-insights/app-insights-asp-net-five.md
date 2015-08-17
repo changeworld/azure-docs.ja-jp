@@ -118,7 +118,7 @@ NuGet パッケージの [最新のリリース番号](https://github.com/Micros
 
 ## JavaScript クライアント インストルメンテーションを追加する
 
-_Layout.cshtml ファイルがある場合、そこに次のコードを挿入します。なければ、追跡するいずれかのページにコードを置きます。
+\_Layout.cshtml ファイルがある場合は、その中に次のコードを挿入します。それ以外の場合は、追跡するページにコードを配置します。
 
 ファイルの最上部でインジェクションを定義します。
 
@@ -171,4 +171,4 @@ Visual Studio でアプリケーションをデバッグするか、それを We
 [start]: app-insights-get-started.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

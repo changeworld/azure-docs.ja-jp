@@ -90,4 +90,4 @@ Azure で VM の IP 転送を有効にする方法については、「[Azure �
 - [ルートを作成](../virtual-networks-udr-how-to#How-to-manage-routes)してサブネットと関連付ける方法を説明します。
 - 仮想アプライアンスを実行する VM の [IP 転送を有効にする](../virtual-networks-udr-how-to#How-to-Manage-IP-Forwarding)方法を説明します。 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

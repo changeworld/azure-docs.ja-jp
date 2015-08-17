@@ -18,15 +18,15 @@
 
 #Azure Notification Hubs のリッチなプッシュ
 
-<div class="dev-center-tutorial-selector sublanding">
-        <a href="/documentation/articles/notification-hubs-aspnet-backend-ios-rich-push/" title="iOS" class="current">iOS</a>
-</div>
 
 ##概要
 
 手軽なリッチ コンテンツでユーザーの関心を引くために、アプリケーションはプレーン テキストを超えるべきかもしれません。これらのリッチな通知は、ユーザー インタラクションや、URL、音声、画像、クーポンといったプレゼント コンテンツの成長を促進します。このチュートリアルは「[ユーザーに通知する](notification-hubs-aspnet-backend-ios-notify-users.md)」トピックに基づいて作成され、ペイロード (画像など) を組み込んだプッシュ通知を送信する方法について説明しています。
 
-このチュートリアルは iOS 7 および 8 に対応しています。 ![][IOS1]
+
+このチュートリアルは iOS 7 および 8 に対応しています。
+
+    ![][IOS1]
 
 概要:
 
@@ -382,4 +382,4 @@
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

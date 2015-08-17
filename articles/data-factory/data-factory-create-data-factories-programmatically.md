@@ -244,11 +244,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                                 },
                                 TypeProperties = new CopyActivity()
                                 {
-                                    Source = new BlobSource()
-                                    {
-                                        BlobColumnSeparators = ",",
-                                    },
-                        
+                                    Source = new BlobSource(),
                                     Sink = new BlobSink()
                                     {
                                         WriteBatchSize = 10000,
@@ -313,20 +309,23 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
             Thread.Sleep(1000 * 12);
 
             var datalistResponse = client.DataSlices.List(resourceGroupName, dataFactoryName, Table_Destination,
-                PipelineActivePeriodStartTime.ConvertToISO8601DateTimeString(),
-                PipelineActivePeriodEndTime.ConvertToISO8601DateTimeString());
+                new DataSliceListParameters()
+                {
+                    DataSliceRangeStartTime = PipelineActivePeriodStartTime.ConvertToISO8601DateTimeString(),
+                    DataSliceRangeEndTime = PipelineActivePeriodEndTime.ConvertToISO8601DateTimeString()
+                });
 
             foreach (DataSlice slice in datalistResponse.DataSlices)
             {
-                if (slice.Status == DataSliceStatus.Failed || slice.Status == DataSliceStatus.Ready)
+                if (slice.State == DataSliceState.Failed || slice.State == DataSliceState.Ready)
                 {
-                    Console.WriteLine("Slice execution is done with status: {0}", slice.Status);
+                    Console.WriteLine("Slice execution is done with status: {0}", slice.State);
                     done = true;
                     break;
                 }
                 else
                 {
-                    Console.WriteLine("Slice status is: {0}", slice.Status);
+                    Console.WriteLine("Slice status is: {0}", slice.State);
                 }
             }
         }
@@ -394,4 +393,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

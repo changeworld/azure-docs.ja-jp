@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/24/2015" 
+	ms.date="08/05/2015" 
 	ms.author="genemi"/>
 
 
@@ -46,7 +46,7 @@
 - [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx)
 
 
-## 推奨事項: 認証
+## 認証における推奨事項
 
 
 - Windows の認証ではなく、SQL Database 認証を使用してください。
@@ -58,7 +58,7 @@
  - Transact-SQL の** USE myDatabaseName; **ステートメントを SQL Database に対して使用することはできません。
 
 
-## 推奨事項: 接続
+## 接続における推奨事項
 
 
 - クライアント接続ロジックの中で、タイムアウトが 30 秒になるように既定値をオーバーライドします。
@@ -71,6 +71,12 @@
  - 失敗が持続する場合、理由として考えられるのは、接続文字列の形式が間違っていることです。
  - 失敗の 1 つの一時的理由として考えられるのは、Azure SQL Database システムで負荷全体のバランス調整が必要であるということです。一時的理由はやがて解消されるため、プログラムでは再試行をする必要があります。
  - クエリを再試行する場合、まず接続を閉じた後、別の接続を開きます。
+
+
+### V12 の 1433 以外のポート
+
+
+Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。詳細については、<br/>「[Ports beyond 1433 for ADO.NET 4.5, ODBC 11, and SQL Database V12 (ADO.NET 4.5、ODBC 11、SQL Database V12 における 1433 以外のポート)](sql-database-develop-direct-route-ports-adonet-v12.md)」をご覧ください。
 
 
 次のセクションでは、再試行のロジックと一時的なエラーの処理についてさらに説明します。
@@ -90,10 +96,10 @@ SQL Database でエラーが発生した場合、[SqlException](https://msdn.mic
 
 - [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
  - このメッセージの **Transient Errors, Connection-Loss Errors** セクションには、自動再試行が必ず実行される一時エラーのリストが示されています。
- - たとえば、"<br/>\*サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。\*" などのような番号 40613 のエラーが発生した場合、再試行されます。
+ - たとえば、「<br/>*サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。*」などのような番号 40613 のエラーが発生した場合、再試行されます。
 
 
-一時的な "エラー" は、一時的な "フォールト" とも呼ばれています。このトピックでは、これらの 2 つの語を同義で扱っています。
+一時的な *エラー*は、一時的な *フォールト*とも呼ばれています。このトピックでは、これらの 2 つの語を同義で扱っています。
 
 
 一時的または一時的でない接続エラーが発生した場合、次を参照してください。
@@ -111,31 +117,19 @@ SQL Database でエラーが発生した場合、[SqlException](https://msdn.mic
 <a id="gatewaynoretry" name="gatewaynoretry">&nbsp;</a>
 
 
-## V12 でのゲートウェイによる再試行ロジックの提供停止について
+## ミドルウェアのプロキシと再試行ロジック
 
 
-バージョン V12 よりも前のバージョンでは、Azure SQL Database にはプロキシのように機能してデータベースとクライアント プログラム間のすべての対話をバッファに格納するゲートウェイがありました。このゲートウェイが余分なネットワーク ホップになり、データベース アクセスの待機時間が増加することもありました。
+V11 と ADO.NET 4.5 クライアントの間を仲介するミドルウェアは、再試行ロジックで一時的な障害の一部のみを適切に処理します。2 度目の試行でプロキシが無事に接続する場合、クライアント プログラムでは最初の試行に失敗したことを認識しません。
 
 
-V12 では、このゲートウェイが削除されました。これにより、現在は以下が実現されました。
+V12 プロキシではさらに小規模な一時的な障害のみを処理します。また別の V12 のケースでは、速度を上げるためプロキシは使用せずにN SQL Database に直接接続します。クライアントの ADO.NET 4.5 プログラムにおいて、Azure SQL Database V12 はこうした変更により Microsoft SQL Server のようになります。
 
 
-- クライアント プログラムはデータベースと*直接*対話できるため、効率が高まりました。
-- プログラムに対するエラー メッセージやその他の通信でのゲートウェイのわずかな歪曲が除去されました。
- - プログラムからは、SQL Database と SQL Server が、より等しいものとして認識されます。
+再試行ロジックを実施するコード サンプルについては、<br/>「[Client quick-start code samples to SQL Database (SQL Database に対するクライアントのクイック スタート コード サンプル)](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
 
 
-#### 再試行ロジックの廃止
-
-
-ゲートウェイには、一部の一時エラーをユーザーに代わって処理する再試行ロジックが備わっていました。現在は、プログラムでより完全に一時的なエラーを処理する必要があります。再試行ロジックに関するコード サンプルについては、次をご覧ください。
-
-
-- [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
- - 再試行のロジックを含むコード サンプルへのリンクと、接続およびクエリを行うより簡単なサンプルへのリンクがあります。
-- [方法: Azure SQL Database への信頼性の高い接続](http://msdn.microsoft.com/library/azure/dn864744.aspx)
-- [方法: ADO.NET とエンタープライズ ライブラリを使用して Azure SQL Database に接続する](http://msdn.microsoft.com/library/azure/dn961167.aspx)
-- [コード サンプル: SQL Database に接続するための C# の再試行ロジック](sql-database-develop-csharp-retry-windows.md)
+> [AZURE.TIP]実稼働環境では、Azure SQL Database V11 または V12 に接続するクライアントのコード内に再試行ロジックを実装することをお勧めします。これはカスタム コードや、Enterprise Library. などの API を利用するコードにできます。
 
 
 ## テクノロジ
@@ -154,10 +148,10 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 - [Azure SQL Database 開発作業の方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)
 
 
-**エラスティック スケール:** エラスティック スケール データベースへの接続に関する詳細については、次を参照してください。
+**Elastic Scale:** Elastic Scale データベースへの接続に関する詳細については、次を参照してください。
 
 
-- [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
+- [Azure SQL データベース Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 - [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
 
 
@@ -174,4 +168,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

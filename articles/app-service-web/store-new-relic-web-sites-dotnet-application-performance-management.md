@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/17/2015" 
+	ms.date="07/30/2015" 
 	ms.author="stepsic"/>
 
 
@@ -39,7 +39,6 @@ New Relic Standard は、Azure ユーザーであれば無料でご利用いた�
 Azure ユーザーは、New Relic エージェントのデプロイ時に、New Relic Pro の 2 週間の試用サブスクリプションをご利用になれます。
 
 Azure Marketplace を使用して New Relic にサインアップする
---
 
 New Relic は、Azure の Web ロール、Worker ロール、および Azure App Service とシームレスに統合されます。
 
@@ -47,7 +46,7 @@ Azure Marketplace から New Relic に直接サインアップするには、次
 
 ## 手順 1.New Relic アカウントを作成する
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)にログインし、左下隅にある **[新規]** をクリックします。
+1. [Azure プレビュー ポータル](https://portal.azure.com)にログインし、隅にある **[新規]** をクリックします。
 3. **[開発者向けサービス]** > **[New Relic APM]** の順にクリックします。
 4. 次を指定して New Relic アカウントを構成し、**[作成]** をクリックします。
 	- **名前**
@@ -63,12 +62,16 @@ Azure Marketplace から New Relic に直接サインアップするには、次
 
 ## 手順 2. Web アプリ用に New Relic の統合を構成する
 
-2. [Azure プレビュー ポータル](https://portal.azure.com)で、Web アプリのブレードを開きます。
-3. **[アプリケーション監視]** > **[New Relic]** の順にクリックします。前の手順で作成したアカウントを選択し、**[OK]** をクリックします。 
+1. [Azure プレビュー ポータル](https://portal.azure.com)で、Web アプリのブレードを開きます。
+2. ブレードの上部にある [...] メニューで、**[タイルの追加]** をクリックします。
+3. **[監視]** タブで **[アプリケーションの概要]** を選択し、Web アプリのブレード上のタイルを表示する場所にドラックします。
+4. [完了] をクリックして、タイルの追加を完了します。
+5. **[アプリケーションの監視]** タイルをクリックし、**[New Relic]** を選択します。
+6. 前の手順で作成したアカウントを選択し、**[OK]** をクリックします。 
 
 	![](./media/store-new-relic-web-sites-dotnet-application-performance-management/configure-new-relic-integration.png)
 
-	保存操作が完了したら、Web アプリのブレードで **[すべての設定]** をクリックし、次に **[アプリケーションの設定]** をクリックします。New Relic をサポートする **NEWRELIC_LICENSEKEY** の設定が、ブレードの **[アプリ設定]** セクションに追加されて表示されます。
+	保存操作が完了したら、Web アプリのブレードで **[すべての設定]** をクリックし、次に **[アプリケーションの設定]** をクリックします。New Relic をサポートする **NEWRELIC\_LICENSEKEY** の設定が、ブレードの **[アプリ設定]** セクションに追加されて表示されます。
 
 	>[AZURE.NOTE]新しいアプリ設定が有効になるまで、最大 30 秒かかる場合があります。設定をすぐに強制適用するには、Web アプリを再起動します。
 
@@ -176,4 +179,4 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 [custom]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrcustom.png
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

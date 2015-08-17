@@ -71,7 +71,7 @@ GO
 20150101,1,3
 ```
 
-これをローカル一時ディレクトリ C:\Temp\DimDate2.txt に保存します。
+これをローカル一時ディレクトリ C:\\Temp\\DimDate2.txt に保存します。
 
 > [AZURE.NOTE]bcp.exe は、UTF-8 のファイルのエンコーディングをサポートしていないことに注意してください。bcp.exe を使用する場合は、ASCII でエンコードされたファイルを使用するか、ファイルに UTF-16 エンコードを使用してください。
 
@@ -107,7 +107,7 @@ DateId |CalendarQuarter |FiscalQuarter
 20151201 |4 |2
 
 ## SQL Data Warehouse からのデータのエクスポート
-このチュートリアルでは SQL Data Warehouse 内のテーブルからデータ ファイルを作成します。上記で作成したデータを DimDate2_export.txt という名前の新しいデータ ファイルにエクスポートします。
+このチュートリアルでは SQL Data Warehouse 内のテーブルからデータ ファイルを作成します。上記で作成したデータを DimDate2\_export.txt という名前の新しいデータ ファイルにエクスポートします。
 
 ### 手順 1: データをエクスポートする
 
@@ -152,4 +152,4 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: http://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

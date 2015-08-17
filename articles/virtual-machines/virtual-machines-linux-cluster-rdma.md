@@ -339,4 +339,4 @@ private ip address2:16
 
 * Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/ja-jp/articles/intel-mpi-library-documentation/)を参照してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

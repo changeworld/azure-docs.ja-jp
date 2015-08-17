@@ -196,4 +196,4 @@ ACS の詳細については、「[次のステップ](#next_steps)」を参照�
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

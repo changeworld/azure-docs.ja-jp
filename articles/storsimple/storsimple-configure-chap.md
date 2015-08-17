@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="TBD"
-   ms.date="07/27/2015"
+   ms.date="07/30/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスの CHAP の構成
@@ -192,4 +192,4 @@ CHAP の構成が正しくない場合、**"認証エラー"** というエラ�
 
 [StorSimple のセキュリティ](storsimple-security.md)の詳細を確認してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

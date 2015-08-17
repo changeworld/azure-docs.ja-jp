@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/05/2015"
+   ms.date="08/04/2015"
    ms.author="bwren" />
 
 # Azure Automation Webhook
@@ -37,8 +37,6 @@
 
 ### パラメーター
 Webhook は、Runbook がその Webhook によって開始されたときに使用される Runbook のパラメーターの値を定義できます。Webhook には、Runbook の任意の必須パラメーターの値を含める必要があり、省略可能なパラメーターの値を含めることもできます。1 つの Runbook にリンクされている複数の Webhook は、それぞれ異なるパラメーター値を使用することができます。
-
->[AZURE.NOTE]現在 Webhook によって設定されているパラメーターの値は、Webhook の作成後は変更できません。別のパラメーターの値を使用する別の Webhook を作成する必要があります。
 
 Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値を上書きできません。クライアントからのデータを受け取るために、Runbook は、[object] 型の **$WebhookData** という 1 つのパラメーターを取ることができます。クライアントが POST 要求に含めたデータは、このパラメーターに入れられます。
 
@@ -174,4 +172,4 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
 - [Runbook の開始](automation-starting-a-runbook.md)
 - [Runbook ジョブの状態の表示](automation-viewing-the-status-of-a-runbook-job.md) 
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

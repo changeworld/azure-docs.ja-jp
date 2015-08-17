@@ -112,4 +112,4 @@
 [方法: Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

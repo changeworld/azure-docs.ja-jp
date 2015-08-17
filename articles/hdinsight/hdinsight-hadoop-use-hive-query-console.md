@@ -35,7 +35,8 @@
 
 ##<a id="run"></a>クエリ コンソールを使用して Hive クエリを実行
 
-1. Web ブラウザーを開き、__https://CLUSTERNAME.azurehdinsight.net__ に移動します。__CLUSTERNAME__ は、HDInsight クラスターの名前です。プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
+1. Web ブラウザーを開き、\_\___https://CLUSTERNAME.azurehdinsight.net__ に移動します。__CLUSTERNAME__ は、HDInsight クラスターの名前です。プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
+
 
 2. ページ上部のリンクから、**[Hive エディター]** を選択します。HDInsight クラスターで実行する HiveQL ステートメントの入力に使用できるフォームが表示されます。
 
@@ -119,4 +120,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

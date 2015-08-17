@@ -23,4 +23,4 @@ Chris Risner のチュートリアル「[Mobile Services と Microsoft Azure Sto
 [Mobile Services と Microsoft Azure Storage]: http://chrisrisner.com/Mobile-Services-and-Windows-Azure-Storage
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

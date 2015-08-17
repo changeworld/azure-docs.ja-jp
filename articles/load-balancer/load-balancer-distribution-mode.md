@@ -1,6 +1,6 @@
 <properties 
    pageTitle="ロード バランサー分散モードの構成 |Microsoft Azure"
-   description="ソース IP アフィニティをサポートするように Azure ロード バランサーの分散モードを構成する方法"
+   description="ソース IP アフィニティをサポートするように Azure Load Balancer の分散モードを構成する方法"
    services="load-balancer"
    documentationCenter="na"
    authors="joaoma"
@@ -12,17 +12,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/01/2015"
+   ms.date="08/02/2015"
    ms.author="joaoma" />
 
 
-# 概要
+# ロード バランサー分散モード (ソース IP アフィニティ)
 
-ソース IP アフィニティと呼ばれる新しい分散モードが導入されています (セッション アフィニティやクライアント IP アフィニティとも呼ばれます)。Azure ロード バランサーを 2 組 (ソース IP、接続先 IP) または 3 組 (ソース IP、接続先 IP、プロトコル) を使用するように構成して、使用可能なサーバーにトラフィックをマップできます。ソース IP アフィニティを使用して、同じクライアント コンピューターから開始された接続は、同じ DIP エンドポイントに移動します。
+ソース IP アフィニティと呼ばれる新しい分散モードが導入されています (セッション アフィニティやクライアント IP アフィニティとも呼ばれます)。Azure Load Balancer を 2 組 (ソース IP、接続先 IP) または 3 組 (ソース IP、接続先 IP、プロトコル) を使用するように構成して、使用可能なサーバーにトラフィックをマップできます。ソース IP アフィニティを使用して、同じクライアント コンピューターから開始された接続は、同じ DIP エンドポイントに移動します。
 
 ![ハッシュ ベースのロード バランサー](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
-ソース IP アフィニティは Azure ロード バランサーと RD ゲートウェイ間の非互換性の問題を解決します。これで、1 つのクラウド サービス内に RD ゲートウェイ ファームを構築できます。別の使用シナリオは、実際のデータのアップロードを UDP 経由で行う場合のメディアのアップロードですが、ここではコントロール プレーンが TCP 経由で達成されます。
+ソース IP アフィニティは Azure Load Balancer と RD ゲートウェイ間の非互換性の問題を解決します。これで、1 つのクラウド サービス内に RD ゲートウェイ ファームを構築できます。別の使用シナリオは、実際のデータのアップロードを UDP 経由で行う場合のメディアのアップロードですが、ここではコントロール プレーンが TCP 経由で達成されます。
 
 - クライアントは、まず負荷分散されたパブリック アドレスに TCP セッションを開始し、特定の DIP に接続します。このチャネルは、アクティブなまま接続の状態を監視します。
 - 同じクライアント コンピューターからの新しい UDP セッションが、同じ負荷分散されたパブリック エンドポイントに開始されます。この接続は、前の TCP 接続と同じ DIP エンドポイントにも送られるため、メディアのアップロードは TCP 経由のコントロール チャネルを維持しながら高スループットで実行されることが予想されます。
@@ -67,7 +67,7 @@ Azure エンドポイントを仮想マシンに追加してロード バラン�
 	IdleTimeoutInMinutes : 15
 	LoadBalancerDistribution : sourceIP
  
-LoadBalancerDistribution 要素が存在しない場合、Azure ロード バランサーは既定の 5 組のアルゴリズムを使用します。
+LoadBalancerDistribution 要素が存在しない場合、Azure Load Balancer は既定の 5 組のアルゴリズムを使用します。
 
  
 ### 負荷分散エンドポイント セットで分散モードを設定する
@@ -78,7 +78,7 @@ LoadBalancerDistribution 要素が存在しない場合、Azure ロード バラ
 
 ### 分散モードを変更するクラウド サービス構成
 
-Azure SDK for .NET 2.5 (11 月にリリース予定) を使用して、.csdef に作成される Cloud Services の Cloud Services エンドポイント設定を更新できます。ロード バランサー分散モードをアップデートしてクラウド サービスをデプロイするには、デプロイのアップグレードが必要です。エンドポイント設定の .csdef の変更例は次の通りです。
+Azure SDK for .NET 2.5 (11 月にリリース予定) を使用して、.csdef に作成される Cloud Services の Cloud Services エンドポイント設定を更新できます。ロード バランサー分散モードを更新して Cloud Services をデプロイするには、デプロイのアップグレードが必要です。エンドポイント設定の .csdef の変更例は次の通りです。
 
 	<WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
   	<Endpoints>
@@ -101,7 +101,7 @@ Azure SDK for .NET 2.5 (11 月にリリース予定) を使用して、.csdef �
 
 サービス管理 API を使用して、ロード バランサーの分散を構成できます。x-ms-version ヘッダーが 2014-09-01 以降のバージョンに設定されていることを確認してください。
  
-デプロイで指定した負荷分散セットの構成をアップデートします。
+デプロイで指定した負荷分散セットの構成を更新します。
 
 要求の例
 
@@ -149,4 +149,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

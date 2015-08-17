@@ -55,7 +55,7 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 
 左側のナビゲーション ウィンドウで **[Active Directory]** をクリックして Access Control の値を取得することもできます。
 
-> [AZURE.IMPORTANT]<strong>Active Directory</strong> を使用して Access Control 名前空間を作成すると、サービス ID は自動的に作成**されません**。BizTalk サービスをプロビジョニングすると、Access Control 名前空間、"所有者" (発行者名) という名前のサービス ID、パスワード (発行者キー)、および対称キーが自動的に作成されます。<br /> 「[方法: ACS 管理サービスを使用してサービス ID を構成する](http://go.microsoft.com/fwlink/p/?LinkID=303942)」に、Access Control サービス ID に関する詳しい情報が記載されています。
+> [AZURE.IMPORTANT]**Active Directory** を使用して Access Control 名前空間を作成したときに、サービス ID が自動的に作成されることは**ありません**。BizTalk サービスをプロビジョニングすると、Access Control 名前空間、"所有者" (発行者名) という名前のサービス ID、パスワード (発行者キー)、および対称キーが自動的に作成されます。<br /> 「[方法: ACS 管理サービスを使用してサービス ID を構成する](http://go.microsoft.com/fwlink/p/?LinkID=303942)」に、Access Control サービス ID に関する詳しい情報が記載されています。
 
 
 ## Service Bus 発行者名および発行者キー
@@ -86,4 +86,4 @@ Azure BizTalk サービスに関するその他のトピック:
 - [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

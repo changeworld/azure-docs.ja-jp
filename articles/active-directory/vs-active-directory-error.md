@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="07/22/2015" 
-	ms.author="patshea123"/>
+	ms.author="patshea"/>
 
 # 認証の検出時のエラー
 
@@ -56,45 +56,45 @@ MVC プロジェクトの場合、ウィザードは、以前にウィザード�
 
 MVC プロジェクトで Windows 認証を検出するために、ウィザードは **web.config** ファイルで `authentication` 要素を探します。
 
-<PRE class="prettyprint">
+```
 	&lt;configuration&gt;
 	    &lt;system.web&gt;
 	        <span style="background-color: yellow">&lt;authentication mode="Windows" /&gt;</span>
 	    &lt;/system.web&gt;
 	&lt;/configuration&gt;
-</pre>
+```
 
 Web API プロジェクトで Windows 認証を検出するために、ウィザードはプロジェクトの **.csproj** ファイルで `IISExpressWindowsAuthentication` 要素を探します。
 
-<PRE class="prettyprint">
+```
 	&lt;Project&gt;
 	    &lt;PropertyGroup&gt;
 	        <span style="background-color: yellow">&lt;IISExpressWindowsAuthentication&gt;enabled&lt;/IISExpressWindowsAuthentication&gt;</span>
 	    &lt;/PropertyGroup>
 	&lt;/Project&gt;
-</PRE>
+```
 
 個々のユーザー アカウント認証を検出するために、ウィザードは **Packages.config** ファイルで package 要素を探します。
 
-<PRE class="prettyprint">
+```
 	&lt;packages&gt;
 	    <span style="background-color: yellow">&lt;package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /&gt;</span>
 	&lt;/packages&gt;
-</PRE>
+```
 
 組織アカウント認証の古い形式を検出するために、ウィザードは **web.config** ファイルで次の要素を探します:
 
-<PRE class="prettyprint">
+```
 	&lt;configuration&gt;
 	    &lt;appSettings&gt;
 	        <span style="background-color: yellow">&lt;add key="ida:Realm" value="***" /&gt;</span>
 	    &lt;/appSettings&gt;
 	&lt;/configuration&gt;
-</PRE>
+```
 
 認証の種類を変更するには、互換性のない認証の種類を削除して、再度ウィザードを実行します。
 
 詳細については、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

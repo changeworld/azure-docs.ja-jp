@@ -74,7 +74,7 @@ HealthEvents          :
 
 
 ### 証明書の有効期限
-System.FabricNode は、ノードで使用されている証明書の期限が近づくと Warning を報告します。ノードごとに、Certificate_cluster、Certificate_server、Certificate_default_client という 3 つの証明書があります。有効期限まで 2 週間以上ある場合、レポートの種類は OK です。有効期限まで 2 週間以内の場合、レポートの種類は Warning です。これらのイベントの TTL は無制限で、イベントはノードがクラスターから切り離されると削除されます。
+System.FabricNode は、ノードで使用されている証明書の期限が近づくと Warning を報告します。ノードごとに、Certificate\_cluster、Certificate\_server、Certificate\_default\_client という 3 つの証明書があります。有効期限まで 2 週間以上ある場合、レポートの種類は OK です。有効期限まで 2 週間以内の場合、レポートの種類は Warning です。これらのイベントの TTL は無制限で、イベントはノードがクラスターから切り離されると削除されます。
 
 - SourceId: System.FabricNode
 - プロパティ: "Certificate" で始まり、証明書の種類に関する詳細が含まれます。
@@ -530,4 +530,4 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

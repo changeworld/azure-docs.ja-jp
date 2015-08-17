@@ -125,4 +125,4 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 ![Azure Storage のリソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

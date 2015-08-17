@@ -81,7 +81,7 @@
 	 
 5. **エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure Storage]** を選択します。Azure Storage のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
 
-	![[新しいデータ ストア] ボタン][image-editor-newdatastore-button]
+	![Editor New data store button][image-editor-newdatastore-button]
     
 6. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
@@ -98,7 +98,7 @@
 
 	![Editr Azure SQL Settings][image-editor-azure-sql-settings]
 
-2. **servername**、**databasename**、**username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+2. **servername**、**databasename**、****username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
 3. ツール バーの **[デプロイ]** をクリックして、AzureSqlLinkedService を作成してデプロイします。 
    
 
@@ -106,7 +106,7 @@
 前の手順では、**StorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL Database を **ADFTutorialDataFactory** という Data Factory にリンクしました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらは StorageLinkedService と AzureSqlLinkedService が参照するデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。
 
 ### 入力テーブルの作成 
-テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **EmpBlobTable** という名前のテーブルを作成します。
+テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **￼￼￼￼￼￼EmpBlobTable** という名前のテーブルを作成します。
 
 1. Data Factory **エディター**のツール バーで **[新しいデータセット]** ボタンをクリックし、ドロップダウン メニューから **[BLOB テーブル]** をクリックします。 
 2. 右側のウィンドウの JSON スクリプトを、次の JSON スニペットに置き換えます。 
@@ -145,7 +145,7 @@
 		
      以下の点に注意してください。
 	
-	- location の **type** を **AzureBlob** に設定します。
+	- dataset の **type** は **AzureBlob** に設定されています。
 	- **linkedServiceName** は **StorageLinkedService** に設定されています。このリンクされたサービスは手順 2. で作成しました。
 	- **folderPath** が **adftutorial** コンテナーに設定されています。フォルダー内の BLOB の名前を指定することもできます。BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。  
 	- format の **type** が **TextFormat** に設定されています。
@@ -153,7 +153,7 @@
 	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory サービスでは、指定した BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。 
 	
 
-	**input** **table** に **fileName** を指定しない場合、入力フォルダー (\*\*folderPath\*\*) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルを参照してください。
+	**入力****テーブル**に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルを参照してください。
  
 	**output table** に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.&lt;Guid&gt;.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
 
@@ -207,11 +207,11 @@
 		
      以下の点に注意してください。
 	
-	* location の **type** が **AzureSQLTableLocation** に設定されています。
+	* dataset の **type** が **AzureSQLTable** に設定されています。
 	* **linkedServiceName** が **AzureSqlLinkedService** (手順 2. で作成したリンク) に設定されています。
 	* **tablename** は **emp** に設定されています。
 	* データベース内の emp テーブルに 3 つの列 (**ID**、**FirstName**、**LastName**) がありますが、ID は識別子の列であるため、ここでは **FirstName** と **LastName** のみを指定する必要があります。
-	* **availability** が **hourly** に設定されています (\*\*frequency\*\* は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
+	* **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
 
 3. ツール バーの **[デプロイ]** をクリックし、**EmpSQLTable** テーブルを作成してデプロイします。
@@ -258,7 +258,6 @@
 		        "Policy": {
 		          "concurrency": 1,
 		          "executionPriorityOrder": "NewestFirst",
-		          "style": "StartOfInterval",
 		          "retry": 0,
 		          "timeout": "01:00:00"
 		        }
@@ -279,7 +278,7 @@
 	
 	start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
-	**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。
+	**end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。
 	
 	上記の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 	
@@ -346,7 +345,7 @@
 
 	![table blade][image-data-factory-get-started-table-blade]
  
-7. 現在の時刻までのデータ スライスが既に生成されており、**準備完了**になっています。下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
+7. 現在の時刻までのデータ スライスが既に生成されており、**[準備完了]** になっています。下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
 8. **[...] (省略記号)** をクリックし、すべてのスライスを表示します。
 
 	![data slices blade][image-data-factory-get-started-dataslices-blade]
@@ -363,7 +362,7 @@
 
 	
 12. **[X]** をクリックすると、すべてのブレードが閉じられ、**ADFTutorialDataFactory** のホーム ブレードに戻ります。
-14. (省略可能) **ADFTutorialDataFactory** のホーム ページで **[パイプライン]** をクリックし、**[パイプライン]** ブレードの **[ADFTutorialPipeline]** をクリックし、入力テーブル (Consumed) または出力テーブル (Produced) を表示します。
+14. (省略可能) **ADFTutorialDataFactory** のホーム ページで **[パイプライン]** をクリックし、**[パイプライン]** ブレードの **[ADFTutorialPipeline]** をクリックし、入力テーブル (**Consumed**) または出力テーブル (**Produced**) を表示します。
 15. **SQL Server Management Studio** を起動し、Azure SQL Database に接続して、データベース内の **emp** テーブルに行が挿入されていることを確認します。
 
 	![sql query results][image-data-factory-get-started-sql-query-results]
@@ -389,7 +388,7 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)][copy-activity] | この記事には、本チュートリアルで使用した**コピー アクティビティ**の詳細な説明が記載されています。 
 [パイプラインがオンプレミスのデータを扱えるようにする][use-onpremises-datasources] | この記事には、**オンプレミスの SQL Server データベース**から Azure BLOB にデータをコピーする方法を説明したチュートリアルが記載されています。 
 [チュートリアル: Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する**現実のシナリオ**の実行方法について、**詳細なチュートリアル**が記載されています。
-[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題の**トラブルシューティング**を行う方法について説明しています。エラーを発生させて (Azure SQL データベースのテーブルを削除する)、ADFTutorialDataFactory でこの記事のチュートリアルを試すことができます。 
+[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題の**トラブルシューティング**を行う方法について説明しています。エラーを発生させて (Azure SQL Database のテーブルを削除する)、ADFTutorialDataFactory でこの記事のチュートリアルを試すことができます。 
 [Azure Data Factory の開発者向けリファレンス][developer-reference] | この開発者用リファレンスは、コマンドレット、JSON スクリプト、関数などの包括的なリファレンス コンテンツです。 
 
 
@@ -513,4 +512,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!----HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

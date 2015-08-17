@@ -144,4 +144,4 @@ UI の [監視］ セクションは、リアルタイムの分析情報を提�
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

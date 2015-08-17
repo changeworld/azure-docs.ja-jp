@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="条件付きアクセス ポリシーを使用したリスクの管理" 
-	description="ポリシーに準拠している既知のデバイスであれば、どこからでも特定のリソースにアクセスできるようにする方法と、紛失したデバイス、盗まれたデバイス、非対応のデバイスからのアクセスを禁止する方法を説明するトピックです。" 
-	services="active-directory, virtual-network" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
-	editor="LisaToft"/>
+<properties
+	pageTitle="条件付きアクセス ポリシーを使用したリスクの管理"
+	description="ポリシーに準拠している既知のデバイスであれば、どこからでも特定のリソースにアクセスできるようにする方法と、紛失したデバイス、盗まれたデバイス、非対応のデバイスからのアクセスを禁止する方法を説明するトピックです。"
+	services="active-directory, virtual-network"
+	documentationCenter=""
+	authors="femila"
+	manager="stevepo"
+	editor=""/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.devlang="na" 
-	ms.topic="article" 
-    ms.tgt_pltfrm="na" 
-    ms.workload="identity" 
-	ms.date="05/05/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.devlang="na"
+	ms.topic="article"
+  ms.tgt_pltfrm="na"
+  ms.workload="identity" 
+	ms.date="07/31/2015"
+	ms.author="femila"/>
 
 
 # 条件付きアクセス ポリシーを使用したリスクの管理
@@ -43,6 +43,5 @@ Azure Active Directory、Office 365、Microsoft Intune が提供する複数の�
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access/condaccoverviewvsdx1.png
- 
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

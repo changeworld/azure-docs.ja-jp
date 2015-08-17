@@ -32,6 +32,18 @@
 * ApplicationInsights.config を前のコピーと比較します。表示される変更の大部分は、モジュールを削除したり、パラメーター化できるようにしたことが原因です。前のファイルに対して行ったカスタマイズをもう一度設定します。
 * ソリューションをリビルドします。
 
+## バージョン 1.2
+
+- ASP.NET ライブラリへの依存関係を持たないテレメトリ初期化子が、`Microsoft.ApplicationInsights.Web` から新しい依存関係 nuget である `Microsoft.ApplicationInsights.WindowsServer` に移動されました。
+- `Microsoft.ApplicationInsights.Web.dll` は `Microsoft.AI.Web.dll` に名前が変更されました。
+- `Microsoft.Web.TelemetryChannel` nuget は `Microsoft.WindowsServer.TelemetryChannel` に名前が変更されました。`Microsoft.ApplicationInsights.Extensibility.Web.TelemetryChannel` アセンブリは `Microsoft.AI.ServerTelemetryChannel.dll` に名前が変更されました。`Microsoft.ApplicationInsights.Extensibility.Web.TelemetryChannel` クラスは `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` に名前が変更されました。
+- Web SDK の一部であるすべての名前空間が、`Extensibility` 部分を除外するように変更されました。これには、ApplicationInsights.config 内のすべてのテレメトリ初期化子と web.config 内の `ApplicationInsightsWebTracking` モジュールが含まれます。
+- ランタイム インストルメンテーション エージェント (Status Monitor または Azure WebSite 拡張機能を通して有効にします) を使用して収集される依存関係は、スレッドに HttpContext.Current が存在しない場合は非同期としてマークされません。
+- `DependencyTrackingTelemetryModule` の `SamplingRatio` プロパティは何もせず、廃止とマークされています。
+- `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector` アセンブリは `Microsoft.AI.PerfCounterCollector` に名前が変更されました。
+- Web SDK と Devices SDK でいくつかの小さなバグが修正されています。
+
+
 ## バージョン 1.1
 
 - 新しいテレメトリ タイプ `DependencyTelemetry` が追加されました。これを使用して、アプリケーションからの依存関係の呼び出し (SQL、HTTP 呼び出しなど) に関する情報を送信できます。
@@ -74,4 +86,4 @@
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

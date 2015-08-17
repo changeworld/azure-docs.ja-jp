@@ -22,7 +22,7 @@
 ## Microsoft Azure DocumentDB の基礎
 
 ### Microsoft Azure DocumentDB とは 
-Microsoft Azure DocumentDB は、拡張性の高い NoSQL ドキュメントのサービスとしてのデータベースです。Microsoft Azure の機能と能力に支えられた管理プラットフォームによって、スキーマフリーのデータに高度なクエリを実行することができ、構成可能な信頼性の高いパフォーマンスの提供、および迅速な開発が可能となります。DocumentDB は、予測可能なスループット、遅延時間の短縮、およびスキーマフリー データ モデルが重要な要件となる、Web アプリケーションやモバイル アプリケーションに適したソリューションです。DocumentDB では、ネイティブ JSON データ モデルでスキーマの柔軟性と豊富なインデックス作成機能が提供され、統合 JavaScript でマルチドキュメント トランザクションがサポートされます。
+Microsoft Azure DocumentDB は、スケーラブルな NoSQL ドキュメントのサービスとしてのデータベースです。Microsoft Azure の機能と能力に支えられた管理プラットフォームによって、スキーマフリーのデータに高度なクエリを実行することができ、構成可能な信頼性の高いパフォーマンスの提供、および迅速な開発が可能となります。DocumentDB は、予測可能なスループット、遅延時間の短縮、およびスキーマフリー データ モデルが重要な要件となる、Web アプリケーションやモバイル アプリケーションに適したソリューションです。DocumentDB では、ネイティブ JSON データ モデルでスキーマの柔軟性と豊富なインデックス作成機能が提供され、統合 JavaScript でマルチドキュメント トランザクションがサポートされます。
   
 このサービスのデプロイと使用の手順については、[DocumentDB ドキュメント ページ](http://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
 
@@ -47,8 +47,8 @@ DocumentDB は、拡張性、パフォーマンス、およびスキーマフリ
 ### Microsoft Azure DocumentDB の料金はいくらですか?
 詳細については、「[DocumentDB 料金](http://go.microsoft.com/fwlink/p/?LinkID=402317)」ページを参照してください。DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの[パフォーマンス レベル](documentdb-performance-levels.md)によって決まります。
 
-### 無料評価版は使用できますか?
-Azure を初めて使用する場合は、[Azure 無料評価版](https://azure.microsoft.com/ja-jp/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。MSDN サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?WT.mc_id=azurebg_US_sem_bing_BR_BRMSDN_Nontest_MSDN_msdnazure&WT.srch=1)ですべての Azure サービスを使用できます。クレジット カードを使用しないで 30 日間無料 DocumentDB を試してみる場合は、件名行を「Documentation FAQ, Azure Trial」として askdocdb@microsoft.com に電子メールを送信すると、提供が継続している間はプロモーション コードで対応します。
+### 無料試用版は使用できますか?
+Azure を初めて使用する場合は、[Azure 無料試用版](https://azure.microsoft.com/ja-jp/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。MSDN サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?WT.mc_id=azurebg_US_sem_bing_BR_BRMSDN_Nontest_MSDN_msdnazure&WT.srch=1)ですべての Azure サービスを使用できます。クレジット カードを使用しないで 30 日間無料 DocumentDB を試してみる場合は、件名行を「Documentation FAQ, Azure Trial」として askdocdb@microsoft.com に電子メールを送信すると、提供が継続している間はプロモーション コードで対応します。
 
 ### DocumentDB に関するその他のヘルプはどのようにして得られますか?
 ヘルプが必要な場合は、[Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb) または [Azure DocumentDB MSDN デベロッパー フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)を利用するか、または [DocumentDB エンジニアリング チームとの 1 対 1 のチャット](http://www.askdocdb.com/)をスケジュールしてください。DocumentDB の最新のニュースと機能については、[Twitter](https://twitter.com/DocumentDB) をフォローしてください。
@@ -59,7 +59,7 @@ Azure を初めて使用する場合は、[Azure 無料評価版](https://azure.
 Microsoft Azure DocumentDB は、[Azure プレビュー ポータル][azure-portal]で利用できます。最初に、Microsoft Azure サブスクリプションにサインアップする必要があります。Microsoft Azure サブスクリプションにサインアップした後、DocumentDB アカウントを Azure サブスクリプションに追加できます。DocumentDB アカウントの追加方法については、「[DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
 
 ### マスター キーとは何ですか?
-マスター キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。マスター キーを配布するときには十分な注意が必要となります。プライマリ マスター キーとセカンダリ マスター キーは、[Azure プレビュー ポータル][azure-portal]の **[キー]** ブレードで入手できます。リソース キーの詳細については、「[アクセス キーを表示、コピー、および再生成する](documentdb-manage-account.md#keys)」を参照してください。
+マスター キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。マスター キーを配布するときには十分な注意が必要となります。プライマリ マスター キーとセカンダリ マスター キーは、[Azure プレビュー ポータル][azure-portal]の **[キー] **ブレードで入手できます。リソース キーの詳細については、「[アクセス キーを表示、コピー、および再生成する](documentdb-manage-account.md#keys)」を参照してください。
 
 ### どのようにしてデータベースを作成しますか?
 「[DocumentDB データベースの作成](documentdb-create-database.md)」で説明されているように [Azure プレビュー ポータル]()を使用して、[DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) の 1 つを使用して、または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して、データベースを作成できます。
@@ -78,9 +78,9 @@ Microsoft Azure DocumentDB は、[Azure プレビュー ポータル][azure-port
 ## Microsoft Azure DocumentDB に対する開発
 
 ### どのようにして DocumentDB に対する開発を開始しますか?
-.NET、Python、Node.js、JavaScript、および Java に対する [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) が利用可能です。開発者は、[RESTful HTTP API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を利用して、さまざまなプラットフォームおよび言語から DocumentDB リソースとやり取りすることもできます。
+.NET、Python、Node.js、JavaScript、および Java では、[SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) が利用可能です。開発者は、[RESTful HTTP API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を利用して、さまざまなプラットフォームおよび言語から DocumentDB リソースとやり取りすることもできます。
 
-GitHub では、DocumentDB [.NET](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples)、[Java](https://github.com/Azure/azure-documentdb-java)、[Node.js](https://github.com/Azure/azure-documentdb-node/tree/master/samples)、[Python](https://github.com/Azure/azure-documentdb-python) SDK のサンプルを入手できます。
+GitHub では、[.NET](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples)、[Java](https://github.com/Azure/azure-documentdb-java)、[Node.js](https://github.com/Azure/azure-documentdb-node/tree/master/samples)、[Python](https://github.com/Azure/azure-documentdb-python) 用の DocumentDB SDK のサンプルを入手できます。
 
 ### DocumentDB は SQL をサポートしますか?
 DocumentDB の SQL クエリ言語は、JavaScript ベースのユーザー定義関数 (UDF) により高度な階層型の関係演算子と機能拡張を提供します。JSON 文法では、JSON ドキュメントをツリー ノードとしてラベルが付けられたツリーとしてモデル化することができます。これは、DocumentDB の自動的なインデックス作成手法と DocumentDB の SQL クエリ方言の両方で利用されます。SQL 文法の使用方法の詳細については、「[DocumentDB のクエリ][query]」を参照してください。
@@ -92,7 +92,7 @@ DocumentDB でサポートされるプリミティブ データ型は JSON と�
 DocumentDB では、HTTP エンティティ タグ (または ETag) でオプティミスティック同時実行制御 (OCC) をサポートします。すべての DocumentDB リソースには ETag があり、DocumentDB クライアントでは最新の読み取りバージョンが書き込み要求内に含まれます。ETag が最新である場合は、変更がコミットされます。値が外部で変更されている場合、サーバーは "HTTP 412 Precondition failure" 応答コードにより書き込みを拒否します。クライアントは最新バージョンのリソースを読み取り、要求を再試行する必要があります。
 
 ### どのようにして DocumentDB のトランザクションを実行しますか?
-DocumentDB では、JavaScript ストアド プロシージャおよびトリガーを介して、統合された言語のトランザクションがサポートされます。スクリプト内のすべてのデータベース操作は、コレクションを対象としたスナップショット分離により実行されます。ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。JavaScript がエラーをスローした場合、トランザクションはロールバックされます。詳細については、「[DocumentDB のサーバー側プログラミング](documentdb-programming.md)」を参照してください。
+DocumentDB では、JavaScript ストアド プロシージャおよびトリガーを介して、統合された言語のトランザクションがサポートされます。スクリプト内のすべてのデータベース操作は、コレクションを対象としたスナップショット分離により実行されます。ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。JavaScript がエラーをスローした場合、トランザクションはロールバックされます。詳細については、「[DocumentDB server-side programming](documentdb-programming.md)」(DocumentDB のサーバー側プログラミング) を参照してください。
 
 ### どのようにして DocumentDB にドキュメントを一括挿入しますか? 
 DocumentDB にドキュメントを一括挿入するには 3 つの方法があります。
@@ -111,4 +111,4 @@ DocumentDB にドキュメントを一括挿入するには 3 つの方法があ
 [query]: documentdb-sql-query.md
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="07/13/2015"
+	ms.date="08/04/2015"
 	ms.author="jeffstok"/>
 
 # スループット向上のための Azure Stream Analytics ジョブのスケーリング #
@@ -228,7 +228,7 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## 問い合わせ ##
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ ##
@@ -260,4 +260,4 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

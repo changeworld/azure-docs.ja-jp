@@ -12,7 +12,7 @@
 	ms.workload="big-data" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="07/19/2015" 
 	ms.author="nitinme"/>
 
@@ -78,7 +78,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 	![Zeppelin Notebook のステータス](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.NewNote.Connected.png "Zeppelin Notebook のステータス")
 
-4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターをプロビジョニングすると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\HdiSamples\SensorSampleData\hvac** にコピーされます。
+4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターをプロビジョニングすると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
 
 	新しい Notebook に既定で作成される空の段落に、次のスニペットを貼り付けます。
 
@@ -120,7 +120,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 	![Notebook を使用して Spark SQL ステートメントを実行します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Note.SparkSQLQuery1.png "Notebook を使用して Spark SQL ステートメントを実行します")
 
-	 表示オプション (四角で囲ってある部分) をクリックして、同じ出力の異なる表現に切り替えることができます。**[設定]** をクリックして、出力のキーと値の構成を選択します。上記の画面キャプチャでは、**buildingID** をキーとして使用し、**temp_diff** の平均を値として使用しています。
+	 表示オプション (四角で囲ってある部分) をクリックして、同じ出力の異なる表現に切り替えることができます。**[設定]** をクリックして、出力のキーと値の構成を選択します。上記の画面キャプチャでは、**buildingID** をキーとして使用し、**temp\_diff** の平均を値として使用しています。
 
 	
 6. クエリの変数を使用して Spark SQL ステートメントを実行することもできます。次のスニペットでは、クエリで変数 **Temp** と照会できる値を定義する方法を示します。初めてクエリを実行すると、変数に指定した値がドロップダウンに自動的に設定されます。
@@ -134,7 +134,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 	![Notebook を使用して Spark SQL ステートメントを実行します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Note.SparkSQLQuery2.png "Notebook を使用して Spark SQL ステートメントを実行します")
 
-	後続のクエリでは、ドロップダウンから新しい値を選択し、クエリを再実行できます。**[設定]** をクリックして、出力のキーと値の構成を選択します。上の画面キャプチャでは、**buildingID** をキーとして、**temp_diff** の平均を値として、**targettemp** をグループとして使用しています。
+	後続のクエリでは、ドロップダウンから新しい値を選択し、クエリを再実行できます。**[設定]** をクリックして、出力のキーと値の構成を選択します。上の画面キャプチャでは、**buildingID** をキーとして、**temp\_diff** の平均を値として、**targettemp** をグループとして使用しています。
 
 7. Spark SQL インタープリターを再起動して、アプリケーションを終了します。上部の **[インタープリター]** タブをクリックし、Spark インタープリターの **[再起動]** をクリックします。
 
@@ -169,7 +169,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 	 ![Jupyter Notebook ジョブのステータス](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Jupyter.Job.Status.png "Jupyter Notebook ジョブのステータス")
 
-4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターをプロビジョニングすると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\HdiSamples\SensorSampleData\hvac** にコピーされます。
+4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターをプロビジョニングすると、サンプル データ ファイル **hvac.csv** が関連するストレージ アカウントの **\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
 
 	次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。このスニペットは、**hvac** という一時テーブルにデータを登録します。
 
@@ -243,4 +243,4 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

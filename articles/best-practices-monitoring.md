@@ -612,4 +612,4 @@ _図 6: 分析要件とストレージ要件に基づくデータのパーティ
 - Microsoft Web サイトのページ「[Azure の監視アラートと通知について](https://msdn.microsoft.com/library/azure/dn306639.aspx)」。
 - Microsoft web サイトの [Application Insights](app-insights-get-started/) に関するページ。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -65,68 +65,19 @@ Edifact コネクタを使用するにはまず、AS2 コネクタ API アプリ
 
 	![エンコードの構成][10]
 
-<table>
-	<tr>
-		<th>パラメーター</th>
-		<th>型</th>
-		<th>パラメーターの説明</th>
-	</tr>
-	<tr>
-		<td>コンテンツ</td>
-		<td>文字列</td>
-		<td>XML メッセージ</td>
-	</tr>
-	<tr>
-		<td>契約 ID</td>
-		<td>整数</td>
-		<td>契約 ID</td>
-	</tr>
-	<tr>
-		<td>Is Batched Message</td>
-		<td>ブール値</td>
-		<td>バッチ処理されたメッセージである</td>
-	</tr>
-	<tr>
-		<td>Data Element Separator</td>
-		<td>文字列</td>
-		<td>データ要素の区切り記号</td>
-	</tr>
-	<tr>
-		<td>Component Separator</td>
-		<td>文字列</td>
-		<td>コンポーネントの区切り記号</td>
-	</tr>
-	<tr>
-		<td>Segment Terminator</td>
-		<td>文字列</td>
-		<td>セグメントの終端記号</td>
-	</tr>
-	<tr>
-		<td>Decimal Point Indicator</td>
-		<td>文字列</td>
-		<td>小数点のインジケーター</td>
-	</tr>
-	<tr>
-		<td>Repetition Separator</td>
-		<td>文字列</td>
-		<td>繰り返しの区切り記号</td>
-	</tr>
-	<tr>
-		<td>Escape Character</td>
-		<td>文字列</td>
-		<td>エスケープ文字</td>
-	</tr>
-	<tr>
-		<td>Replacement Character</td>
-		<td>文字列</td>
-		<td>置換文字</td>
-	</tr>
-	<tr>
-		<td>Segment Terminator Suffix</td>
-		<td>文字列</td>
-		<td>セグメント終端記号のサフィックス</td>
-	</tr>
-</table>
+パラメーター|型|パラメーターの説明
+---|---|---
+コンテンツ|文字列|XML メッセージ
+契約 ID|整数|契約 ID
+Is Batched Message|ブール値|バッチ処理されたメッセージである
+Data Element Separator|文字列|データ要素の区切り記号
+Component Separator|文字列|コンポーネントの区切り記号
+Segment Terminator|文字列|セグメントの終端記号
+Decimal Point Indicator|文字列|小数点のインジケーター
+Repetition Separator|文字列|繰り返しの区切り記号
+Escape Character|文字列|エスケープ文字
+Replacement Character|文字列|置換文字
+Segment Terminator Suffix|文字列|セグメント終端記号のサフィックス
 
 アクションが正常に完了すると、EDIFACT ペイロードを含むオブジェクトが返されます。
 
@@ -148,4 +99,4 @@ Edifact コネクタを使用するにはまず、AS2 コネクタ API アプリ
 [9]: ./media/app-service-logic-connector-edifact/EncodeInput.PNG
 [10]: ./media/app-service-logic-connector-edifact/EncodeConfigured.PNG
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

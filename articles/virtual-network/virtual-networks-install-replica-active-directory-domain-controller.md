@@ -122,4 +122,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 <!--Image references-->
 [1]: ./media/virtual-networks-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

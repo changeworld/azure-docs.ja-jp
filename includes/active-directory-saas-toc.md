@@ -1,19 +1,21 @@
-##Related Articles
+##関連記事
 
-This article is part of a series on how to manage SaaS applications with Azure Active Directory. Below are all of the articles in the series:
+この記事は、Azure Active Directory を使用して SaaS アプリケーションを管理する方法についてのシリーズの一部です。シリーズのすべての記事を次に示します。
 
-- [Introduction to Single Sign-On and Managing App Access with Azure Active Directory](active-directory-appssoaccess-whatis.md)
-- [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)
-- [Automate User Provisioning and Deprovisioning to SaaS Applications](active-directory-saas-app-provisioning.md)
-	- [Customizing Attribute Mappings for User Provisioning](active-directory-saas-customizing-attribute-mappings.md)
-	- [Writing Expressions for Attribute Mappings](active-directory-saas-writing-expressions-for-attribute-mappings.md)
-	- [Scoping Filters for User Provisioning](active-directory-saas-scoping-filters.md)
-	- [Account Provisioning Notifications](active-directory-saas-account-provisioning-notifications.md)
-- [List of Tutorials on How to Integrate SaaS Apps](active-directory-saas-tutorial-list.md)
-	- [How to integrate Salesforce](active-directory-saas-salesforce-tutorial.md)
-	- [How to integrate Google Apps](active-directory-saas-google-apps-tutorial.md)
-	- [How to integrate Box](https://msdn.microsoft.com/library/azure/dn308589.aspx)
-	- [How to integrate ServiceNow](https://msdn.microsoft.com/library/azure/dn510971.aspx)
-	- [How to integrate Dropbox for Business](https://msdn.microsoft.com/en-us/library/azure/dn510978.aspx)
-	- [How to integrate Workday](https://msdn.microsoft.com/en-us/library/azure/dn510972.aspx) 
-	- [More SaaS App Tutorials...](active-directory-saas-tutorial-list.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+- [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)
+- [SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
+	- [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)
+	- [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+	- [ユーザーのプロビジョニング用のフィルターのスコープ](active-directory-saas-scoping-filters.md)
+	- [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+	- [Salesforce を統合する方法](active-directory-saas-salesforce-tutorial.md)
+	- [Google Apps を統合する方法](active-directory-saas-google-apps-tutorial.md)
+	- [Box を統合する方法](https://msdn.microsoft.com/library/azure/dn308589.aspx)
+	- [ServiceNow を統合する方法](https://msdn.microsoft.com/library/azure/dn510971.aspx)
+	- [Dropbox for Business を統合する方法](https://msdn.microsoft.com/ja-jp/library/azure/dn510978.aspx)
+	- [Workday を統合する方法](https://msdn.microsoft.com/ja-jp/library/azure/dn510972.aspx) 
+	- [その他のSaaS アプリケーション用チュートリアル](active-directory-saas-tutorial-list.md)
+
+<!---HONumber=August15_HO6-->

@@ -24,13 +24,13 @@
 
 [AZURE.INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## サービス バスを使用するためのアプリケーションの構成
+## Service Bus を使用するためのアプリケーションの構成
 
 Service Bus を使用するアプリケーションを作成するときには、Service Bus アセンブリに対する参照を追加して、対応する名前空間を含める必要があります。
 
-## サービス バス NuGet パッケージの追加
+## Service Bus NuGet パッケージの追加
 
-Service Bus **NuGet** パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。サービス バス NuGet パッケージは、Service Bus API を取得し、サービス バス依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
+Service Bus **NuGet** パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。NuGet Visual Studio 拡張機能を使用すると、Visual Studio や Visual Studio Express でのライブラリやツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。
 
 アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
 
@@ -45,14 +45,14 @@ Service Bus **NuGet** パッケージは、Service Bus API を取得し、Servic
 
 Service Bus では、接続文字列を使用してエンドポイントと資格情報を格納します。接続文字列は、ハードコーディングするのではなく、構成ファイルの中で指定します。
 
-- Azure Cloud Services を使用するときには、Azure サービス構成システム (***.csdef** ファイルと ***.cscfg** ファイル) を使用して接続文字列を格納することをお勧めします。
+- Azure Cloud Services を使用するときには、Azure サービス構成システム (****.csdef** ファイルと ****.cscfg** ファイル) を使用して接続文字列を格納することをお勧めします。
 - Azure Websites または Azure Virtual Machines を使用する場合には、.NET 構成システム (**Web.config** ファイルなど) を使用して接続文字列を格納することをお勧めします。
 
 いずれの場合でも、このガイドで後ほど説明する `CloudConfigurationManager.GetSetting` メソッドを使用して接続文字列を取得できます。
 
-### クラウド サービスを使用する場合の接続文字列の構成
+### Cloud Services を使用する場合の接続文字列の構成
 
-サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても Azure 管理ポータルから構成設定を動的に変更できます。たとえば、次のようにサービス定義 (***.csdef**) ファイルに `Setting` ラベルを追加します。
+サービス構成メカニズムは、Azure Cloud Services プロジェクトに特有のものであり、これを使用すると、アプリケーションを再デプロイしなくても Azure 管理ポータルから構成設定を動的に変更できます。たとえば、次のようにサービス定義 (****.csdef**) ファイルに `Setting` ラベルを追加します。
 
     <ServiceDefinition name="Azure1">
     ...
@@ -64,7 +64,7 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
     ...
     </ServiceDefinition>
 
-次に、サービス構成 (***.cscfg**) ファイルで値を指定します。
+次に、サービス構成 (****.cscfg**) ファイルで値を指定します。
 
     <ServiceConfiguration serviceName="Azure1">
     ...
@@ -79,9 +79,9 @@ Service Bus では、接続文字列を使用してエンドポイントと資�
 
 前のセクションで説明したように、管理ポータルから取得した Shared Access Signature (SAS) のキー名とキー値を使用します。
 
-### Web サイトまたは仮想マシンを使用する場合の接続文字列の構成
+### Websites または Virtual Machines を使用する場合の接続文字列の構成
 
-Web サイトまたは仮想マシンを使用する場合には、.NET 構成システム (**Web.config** など) を使用することをお勧めします。`<appSettings>` 要素を使用して接続文字列を格納します。
+Websites または Virtual Machines を使用する場合には、.NET 構成システム (**Web.config** など) を使用することをお勧めします。`<appSettings>` 要素を使用して接続文字列を格納します。
 
     <configuration>
         <appSettings>
@@ -174,7 +174,7 @@ Service Bus キューでは、[最大 256 KB](service-bus-quotas.md) までの�
 
 **ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。**ReceiveAndDelete** は最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-**PeekLock** モード (既定のモード) では、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。サービス バスは要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [`Complete`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出して受信処理の第 2 段階を完了します。Service Bus が `Complete` の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
+**PeekLock** モード (既定のモード) では、受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [`Complete`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) を呼び出して受信処理の第 2 段階を完了します。Service Bus が `Complete` の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
 
 次の例では、既定の **PeekLock** モードを使用したメッセージの受信および処理の方法を示しています。別の [`ReceiveMode`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 値を指定する場合には、[`CreateFromConnectionString`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.createfromconnectionstring.aspx) の別のオーバーロードを使用できます。この例では、[`OnMessage`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.onmessage.aspx) コールバックを使用して、**TestQueue** にメッセージが到着するごとに処理しています。
 
@@ -221,7 +221,7 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## 次のステップ
 
-これで、サービス バスキューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 -   「MSDN 概要: [キュー、トピック、サブスクリプション][]」を参照してください。
 -   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus が仲介するメッセージングに関する .NET チュートリアル]。
@@ -245,4 +245,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [MSDN]: https://msdn.microsoft.com/library/azure/dn194201.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

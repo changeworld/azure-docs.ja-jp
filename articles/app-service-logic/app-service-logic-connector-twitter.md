@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/14/2015"
+   ms.date="07/28/2015"
    ms.author="sameerch"/>
 
 
@@ -21,8 +21,9 @@
 
 Twitter フィードに接続して、ツイートを投稿し、自分のタイムライン、友人のタイムライン、Twitter アカウントのフォロワーからツイートを取得します。コネクタを Logic Apps で使用して、"ワークフロー" の一部としてデータを取得、処理、またはプッシュできます。Twitter コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
-- 指定したキーワードまたはテキストに関連付けられている新しいツイートを取得します。新しいツイートを取得すると、ワークフローの新しいインスタンスがトリガーされ、ワークフローの次のコネクタにデータが渡されます。たとえば、Twitter コネクタを作成し、#peanutbutterandjelly を監視する New Tweet From Search トリガーを使用します。#peanutbutterandjelly で新しいツイートがある場合は、必ずワークフロー (ロジック アプリともいいます) が自動的に開始されます。
+- 指定したキーワードまたはテキストに関連付けられている新しいツイートを取得します。新しいツイートを取得すると、ワークフローの新しいインスタンスがトリガーされ、ワークフローの次のコネクタにデータが渡されます。たとえば、Twitter コネクタを作成し、\#peanutbutterandjelly を監視する New Tweet From Search トリガーを使用します。\#peanutbutterandjelly で新しいツイートがある場合は、必ずワークフロー (ロジック アプリともいいます) が自動的に開始されます。
 - "Search Tweets" など、さまざまなアクションを使用して、応答を取得し、ワークフロー内で使用します。たとえば、会社名でツイートを検索できます。見つかった場合は、ロジック アプリを使用して、SQL Server データベースにこのデータを書き込むことができます。次に、SQL Server のデータを使用して、会社のどのような話題がツイートされているのかを特定します。 
+- [Twitter の検索](https://twitter.com/search)ですべての演算子を使用します。**演算子**リンクを選択します。Twitter コネクタは、表示されているすべての演算子をサポートします。
 
 
 ## トリガーとアクション
@@ -73,8 +74,8 @@ API アプリを作成した後は、ロジック アプリのトリガーまた
 
 ワークフローで Twitter アクションを使用する方法もほぼ同じです。Twitter アクションを選択して、対象のアクションの入力を構成してください。
 
-	![][7]
-	![][8]
+![][7] ![][8]
+
 ## コネクタでできること
 コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
@@ -82,7 +83,7 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
-	<!--Image references-->
+<!--Image references-->
 [1]: ./media/app-service-logic-connector-twitter/img1.png
 [2]: ./media/app-service-logic-connector-twitter/img2.png
 [3]: ./media/app-service-logic-connector-twitter/img3.png
@@ -92,4 +93,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [7]: ./media/app-service-logic-connector-twitter/img7.png
 [8]: ./media/app-service-logic-connector-twitter/actions.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

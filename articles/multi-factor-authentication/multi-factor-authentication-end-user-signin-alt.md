@@ -33,4 +33,4 @@
 
 <li>代替方法を選択し、サインインします。</li>
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

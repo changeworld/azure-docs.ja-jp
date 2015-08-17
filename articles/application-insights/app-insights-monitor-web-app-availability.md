@@ -11,7 +11,7 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="07/08/2015" 
 	ms.author="awills"/>
  
@@ -69,7 +69,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 #### 他の URL のテスト
 
-テストする URL は必要に応じて追加できます。たとえば、ホーム ページをテストするのに加えて、検索用の URL をテストしてデータベースが稼働していることを確認できます。
+さらにテストを追加します。たとえば、ホーム ページをテストするのに加えて、検索用の URL をテストしてデータベースが稼働していることを確認できます。
 
 
 ### <a name="monitor"></a>3.可用性レポートを表示する
@@ -207,6 +207,16 @@ Web セッションを記録するには、Visual Studio Ultimate を使用し�
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
 
+## 疑問がある場合 問題が発生した場合
+
+* ときに「無効な文字」というエラー メッセージが表示されました。 
+
+* ** "Web テスト" と "可用性" に違いはありますか。
+
+    この 2 つの用語は同じ意味で使用されています。
+
+
+
 ## <a name="video"></a>ビデオ
 
 > [AZURE.VIDEO monitoring-availability-with-application-insights]
@@ -229,4 +239,4 @@ Web セッションを記録するには、Visual Studio Ultimate を使用し�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

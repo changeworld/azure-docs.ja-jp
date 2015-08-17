@@ -25,7 +25,7 @@
 
 ##前提条件
 
--   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。「[メディア サービス アカウントの作成方法](media-services-create-account.md)」を参照してください。
+-   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
 -   オペレーティング システム: Windows 7、Windows Server 2008 R2、Windows 8。
 -   .NET Framework 4.5。
 -   Visual Studio 2013、Visual Studio 2012 または Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 
@@ -33,7 +33,7 @@
 
 ##Visual Studio プロジェクトの作成と構成 
 
-このセクションでは、メディア サービス開発用に Visual Studio でプロジェクトを作成し、セットアップする方法を説明します。ここでは C# Windows コンソール アプリケーション プロジェクトを使用していますが、Media Services アプリケーション用に作成できる他の種類のプロジェクト (Windows フォーム アプリケーション、ASP.NET Web アプリケーションなど) についても、同じセットアップ手順を利用できます。
+このセクションでは、Media Services 開発用に Visual Studio でプロジェクトを作成し、セットアップする方法を説明します。ここでは C# Windows コンソール アプリケーション プロジェクトを使用していますが、Media Services アプリケーション用に作成できる他の種類のプロジェクト (Windows フォーム アプリケーション、ASP.NET Web アプリケーションなど) についても、同じセットアップ手順を利用できます。
 
 このセクションでは、**NuGet** を使用して、Media Services .NET SDK と依存するその他のライブラリを追加する方法を説明します。
 
@@ -95,7 +95,7 @@
 		using System.IO;
 		using Microsoft.WindowsAzure.MediaServices.Client;
 
-これで、メディア サービス アプリケーションの開発準備が整いました。
+これで、Media Services アプリケーションの開発準備が整いました。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

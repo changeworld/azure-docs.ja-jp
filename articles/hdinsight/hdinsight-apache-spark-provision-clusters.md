@@ -503,4 +503,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

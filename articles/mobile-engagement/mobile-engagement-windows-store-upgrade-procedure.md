@@ -22,12 +22,12 @@
 
 SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
 
-##2.0.0 から 3.0.0 に移行
+##2\.0.0 から 3.0.0 に移行
 
 ### リソース
 この手順では、カスタマイズされたリソースが問題になります。SDK 提供のリソース (html、画像、オーバーレイ) をカスタマイズしている場合、アップグレード前にそのリソースをバックアップし、アップグレードしたリソースにカスタマイズを再適用する必要があります。
 
-##1.1.1 から 2.0.0 に移行
+##1\.1.1 から 2.0.0 に移行
 
 Azure Mobile Engagement を使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。
 
@@ -129,8 +129,8 @@ Capptain リソースをカスタマイズした場合、古いファイルの�
 
 Package.appxmanifest で `File Type Associations` が次から更新されています。
 
- -   capptain_reach_content to engagement_reach_content
- -   capptain_log_file to engagement_log_file
+ -   capptain\_reach\_content to engagement\_reach\_content
+ -   capptain\_log\_file to engagement\_log\_file
 
 ### アプリケーション ID / SDK キー
 
@@ -169,4 +169,4 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

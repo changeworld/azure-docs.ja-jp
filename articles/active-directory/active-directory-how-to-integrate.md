@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/29/2015"
+   ms.date="07/30/2015"
    ms.author="mbaldwin"/>
 
 # Azure Active Directory との統合
@@ -90,6 +90,4 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 [Azure AD を使用したユーザーのサインイン](active-directory-authentication-scenarios.md)
 
- 
-
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -49,7 +49,7 @@ HDInsight を使用すると、さまざまなクラスターの種類を、異�
 
 
 ## アクティブなヘッド ノードのサービスの状態を確認する
-アクティブ ヘッド ノードを特定し、そのヘッド ノードで実行中のサービスの状態をチェックするには、リモート デスクトップ プロトコル (RDP) を使用して Hadoop クラスターに接続する必要があります。RDP の手順については、[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md/#connect-to-hdinsight-clusters-by-using-rdp)に関するページを参照してください。クラスターにリモート接続したら、デスクトップにある **[Hadoop サービスの可用性の状態] アイコンをダブルクリックして、Namenode、Jobtracker、Templeton、Oozieservice、Metastore、Hiveserver2 の各サービスが実行されているヘッド ノードについて、状態を取得します。HDI 3.0 の場合、対象のサービスは、Namenode、Resource Manager、History Server、Templeton、Oozieservice、Metastore、Hiveserver2 になります。
+アクティブ ヘッド ノードを特定し、そのヘッド ノードで実行中のサービスの状態をチェックするには、リモート デスクトップ プロトコル (RDP) を使用して Hadoop クラスターに接続する必要があります。RDP の手順については、[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md/#connect-to-hdinsight-clusters-by-using-rdp)に関するページを参照してください。クラスターにリモート接続したら、デスクトップにある **[Hadoop サービスの可用性の状態]** アイコンをダブルクリックして、Namenode、Jobtracker、Templeton、Oozieservice、Metastore、Hiveserver2 の各サービスが実行されているヘッド ノードについて、状態を取得します。HDI 3.0 の場合、対象のサービスは、Namenode、Resource Manager、History Server、Templeton、Oozieservice、Metastore、Hiveserver2 になります。
 
 ![](./media/hdinsight-high-availability/Hadoop.Service.Availability.Status.png)
 
@@ -105,4 +105,4 @@ SDK でも、同じような方法を使用します。SDK を使用したクラ
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

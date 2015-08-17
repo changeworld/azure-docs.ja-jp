@@ -79,4 +79,4 @@ Azure Machine Learning で高度な分析を実行する環境をセットアッ
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

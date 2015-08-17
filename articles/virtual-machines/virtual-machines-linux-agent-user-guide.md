@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/07/2015" 
+	ms.date="07/30/2015" 
 	ms.author="szark"/>
 
 
@@ -211,7 +211,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 
 エージェントのプロビジョニング機能を有効または無効にすることができます。有効な値は "y" または "n" です。プロビジョニングを無効にした場合、イメージ上の SSH ホストとユーザー キーが保持され、Azure プロビジョニング API で指定した構成はすべて無視されます。
 
-	Note that this parameter defaults to "n" on Ubuntu Cloud Images that use cloud-init for provisioning.
+**注意:** cloud-init を使用してプロビジョニング タスクを実行する Ubuntu Cloud Image では、このパラメーターが既定で "n" に設定されています。
 
 **Provisioning.DeleteRootPassword:**
 
@@ -317,4 +317,4 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

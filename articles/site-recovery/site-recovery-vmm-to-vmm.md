@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="オンプレミスの VMM サイト間の保護の設定" 
-	description="Azure Site Recovery は、内部設置型 VMM サイト間で、Hyper-V 仮想マシンのレプリケーション、フェイルオーバー、回復を調整します。" 
+	description="Azure Site Recovery は、オンプレミスの VMM サイト間で、Hyper-V 仮想マシンのレプリケーション、フェイルオーバー、回復を調整します。" 
 	services="site-recovery" 
 	documentationCenter="" 
 	authors="rayne-wiselman" 
@@ -24,7 +24,7 @@
 
 Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想マシンのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。デプロイ シナリオのすべての一覧については、「[Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
 
-このシナリオのガイドでは、Site Recovery をデプロイして、VMM プライベート クラウドに配置されている Hyper-V ホスト サーバー上の仮想マシンで実行されているワークロードの保護を調整および自動化する方法について説明します。このシナリオでは、仮想マシンはプライマリ VMM サイトからセカンダリ VMM サイトに Hyper-V Replica を使用してレプリケートされます。
+このシナリオのガイドでは、Site Recovery をデプロイして、VMM プライベート クラウドにデプロイされている Hyper-V ホスト サーバー上の仮想マシンで実行されているワークロードの保護を調整および自動化する方法について説明します。このシナリオでは、仮想マシンはプライマリ VMM サイトからセカンダリ VMM サイトに Hyper-V Replica を使用してレプリケートされます。
 
 ガイドには、シナリオの前提条件が含まれています。また、Site Recovery コンテナーを設定する方法、ソースとターゲットの VMM サーバーに Azure Site Recovery プロバイダーをインストールする方法、このコンテナーにサーバーを登録する方法、保護されるすべての仮想マシンに適用される VMM クラウドの保護設定を構成する方法、およびこれらの仮想マシンの保護を有効にする方法についても説明しています。すべてが正しく動作していることを確認するために、最後にフェールオーバーをテストします。
 
@@ -35,7 +35,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 次の前提条件を満たしていることを確認してください。
 ### Azure の前提条件
 
-- [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。お持ちでない場合は、[無料試用版](http://aka.ms/try-azure)で作業を開始してください。また、「[Azure Site Recovery Manager の料金](http://go.microsoft.com/fwlink/?LinkId=378268)」も参照してください。
+- [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。お持ちでない場合は、[無料試用版](http://aka.ms/try-azure)で作業を開始してください。また、[Azure Site Recovery Manager の価格](http://go.microsoft.com/fwlink/?LinkId=378268)に関するページも参照してください。
 - 情報およびデータの利用方法を理解するために、[Microsoft Azure のプライバシーに関する声明](http://go.microsoft.com/fwlink/?LinkId=324899)を参照してください。さらに、このトピックの最後にある、「<a href="#privacy">Site Recovery のプライバシー情報</a>」も併せてご覧ください。
 
 ### VMM の前提条件
@@ -107,7 +107,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 	![[クイック スタート] アイコン](./media/site-recovery-vmm-to-vmm/ASRE2EHVR_QuickStartIcon.png)
 
-2. ドロップダウン リストで、**[2 つの内部設置型 Hyper-V サイト間]** を選択します。
+2. ドロップダウン リストで、**[2 つのオンプレミスの Hyper-V サイト間]** を選択します。
 3. **[VMM サーバーの準備]** で、**[登録キー ファイルの生成]** をクリックします。キー ファイルは自動的に生成され、生成後 5 日間有効です。VMM サーバーから Azure ポータルにアクセスしていない場合は、このファイルをサーバーにコピーする必要があります。 
 
 	![登録キー](./media/site-recovery-vmm-to-vmm/ASRE2EHVR_E2ERegisterKey.png)
@@ -135,7 +135,12 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシ設定を構成すると、プロキシの接続を確認するためのテストが実施されます。
 	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合、プロキシのアドレスやポートなどの詳細を入力する必要があります。
 	- 次の URL に VMM サーバーからアクセスできるようにする必要があります。
-		- *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net- *.backup.windowsazure.com- *.blob.core.windows.net- *.store.core.windows.net
+		- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
+
 	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 	
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
@@ -252,7 +257,7 @@ Hyper-V レプリカを使用してレプリケートされる VMM 内に既存�
 
 ## デプロイのテスト
 
-展開をテストするために、1 台の仮想マシンに対するテスト フェールオーバーを実行することや、複数の仮想マシンで構成される復旧計画を作成して、その計画のテスト フェールオーバーを実行することができます。テスト フェールオーバーは、孤立したネットワークでフェールオーバーと復旧のシミュレーションを実行します。
+デプロイをテストするために、1 台の仮想マシンに対するテスト フェールオーバーを実行することや、複数の仮想マシンで構成される復旧計画を作成して、その計画のテスト フェールオーバーを実行することができます。テスト フェールオーバーは、孤立したネットワークでフェールオーバーと復旧のシミュレーションを実行します。
 
 ### 復旧計画の作成
 
@@ -365,4 +370,4 @@ VMM サーバー上のプロバイダーは、本サービスからイベント�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

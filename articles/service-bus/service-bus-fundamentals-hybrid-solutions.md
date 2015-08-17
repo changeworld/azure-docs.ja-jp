@@ -130,4 +130,4 @@ Event Hubs は、毎秒数百万件の処理が可能な高度にスケーラブ
 [3]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [4]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_04_relay.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

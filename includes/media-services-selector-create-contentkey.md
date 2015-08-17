@@ -2,4 +2,4 @@
 - [.NET](../articles/media-services/media-services-dotnet-create-contentkey.md)
 - [REST API](../articles/media-services/media-services-rest-create-contentkey.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

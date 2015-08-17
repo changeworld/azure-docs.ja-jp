@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="04/23/2015"
+	ms.date="08/03/2015"
 	ms.author="mwasson"/>
 
 
@@ -91,7 +91,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 9. **[OK]** を 2 回クリックして **[作成]** をクリックすると、VM が作成されます。
 
-	仮想マシンが作成されると、スタート画面に表示され、VM のブレードをクリックして開くことができます。Web ブラウザーを **http://&lt;YourVMDNSName&gt;.cloudapp.net:28017/** に開いて MongoDB が実行されていることを確認できます。ページの下部に、サービスに関する情報を示す次のようなログが表示されます。
+	仮想マシンが作成されると、スタート画面に表示され、VM のブレードをクリックして開くことができます。Web ブラウザーを ****http://&lt;YourVMDNSName&gt;.cloudapp.net:28017/** に開いて MongoDB が実行されていることを確認できます。ページの下部に、サービスに関する情報を示す次のようなログが表示されます。
 
 		Fri Mar  7 18:57:16 [initandlisten] MongoDB starting : pid=1019 port=27017 dbpath=/var/lib/mongodb 64-bit host=localhost.localdomain
            18:57:16 [initandlisten] db version v2.2.3, pdfile version 4.5
@@ -113,13 +113,13 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 
 1. コマンド ラインで、**tasklist** ディレクトリに移動します。**tasklist** ディレクトリがない場合は作成します。
 
-> [AZURE.NOTE]このチュートリアルでは、**tasklist** フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (**~/node/tasklist** や **c:\node\tasklist** など) に作成してください。
+	> [AZURE.NOTE]このチュートリアルでは、**tasklist** フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (**\~/node/tasklist** や **c:\\node\\tasklist** など) に作成してください。
 
 2. 次のコマンドを入力して、express コマンドをインストールします。
 
 	npm install express-generator -g
 
-> [AZURE.NOTE]一部のオペレーティング システムで "-g" パラメーターを使用すると、"___Error: EPERM, chmod '/usr/local/bin/express'___" というエラーが表示され、管理者としてアカウントを実行することを要求される場合があります。このような場合は、`sudo` コマンドを使用して、より高い権限レベルで npm を実行します。
+	> [AZURE.NOTE]一部のオペレーティング システムで "-g" パラメーターを使用すると、"___Error: EPERM, chmod '/usr/local/bin/express'___" というエラーが表示され、管理者としてアカウントを実行することを要求される場合があります。このような場合は、`sudo` コマンドを使用して、より高い権限レベルで npm を実行します。
 
     このコマンドの出力は次のように表示されます。
 
@@ -127,7 +127,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
 		├── mkdirp@0.3.5
 		└── commander@1.3.2 (keypress@0.1.0)
 
-> [AZURE.NOTE]express モジュールのインストール時に "-g" パラメーターを使用すると、モジュールはグローバルにインストールされます。これは、追加のパス情報を入力することなく ___express___ コマンドにアクセスして、Web アプリのスキャフォールディングを生成できるようにするためです。
+	> [AZURE.NOTE]express モジュールのインストール時に "-g" パラメーターを使用すると、モジュールはグローバルにインストールされます。これは、追加のパス情報を入力することなく ___express___ コマンドにアクセスして、Web アプリのスキャフォールディングを生成できるようにするためです。
 
 4. このアプリケーションで使用するスキャフォールディングを作成するには、**express** コマンドを使用します。
 
@@ -339,7 +339,7 @@ After you have created the virtual machine in Azure and installed MongoDB, be su
         var TaskList = require('./routes/tasklist');
 		var taskList = new TaskList(process.env.MONGODB_URI);
 
-	2 行目に注目してください。後で構成する環境変数にアクセスしています。この変数には、mongo インスタンスの接続情報が格納されます。開発目的で実行中のローカル mongo インスタンスがある場合は、この値を process.env.MONGODB_URI ではなく、一時的に "localhost" に設定することもできます。
+	2 行目に注目してください。後で構成する環境変数にアクセスしています。この変数には、mongo インスタンスの接続情報が格納されます。開発目的で実行中のローカル mongo インスタンスがある場合は、この値を process.env.MONGODB\_URI ではなく、一時的に "localhost" に設定することもできます。
 
 3. 次の行を探します。
 
@@ -478,13 +478,13 @@ Azure CLI では、Azure サービスの管理操作を実行できます。開�
 
 	> [AZURE.NOTE> これがサブスクリプションで最初の App Service Web アプリである場合、ポータルを使用して Web アプリを作成するように指示するメッセージが表示されます。詳細は、「[Azure App Service での Node.js Web アプリの構築とデプロイ](web-sites-nodejs-develop-deploy-mac.md)」を参照してください。
 
-###MONGODB_URI 環境変数の設定
+###MONGODB\_URI 環境変数の設定
 
-このアプリケーションでは、MONGODB_URI 環境変数で MongoDB インスタンスの接続文字列を利用できると想定しています。Web アプリのこの値を設定するには、次のコマンドを実行します。
+このアプリケーションでは、MONGODB\_URI 環境変数で MongoDB インスタンスの接続文字列を利用できると想定しています。Web アプリのこの値を設定するには、次のコマンドを実行します。
 
 	azure site config add MONGODB_URI=mongodb://mymongodb.cloudapp.net/tasks
 
-これで、Web アプリの新しいアプリケーション設定が作成されます。この設定は、Web アプリによって読み取られる MONGODB_URI 環境変数を設定する際に使用されます。値 "mymongodb.cloudapp.net" を、MongoDB をインストールした仮想マシンの名前に置き換えます。
+これで、Web アプリの新しいアプリケーション設定が作成されます。この設定は、Web アプリによって読み取られる MONGODB\_URI 環境変数を設定する際に使用されます。値 "mymongodb.cloudapp.net" を、MongoDB をインストールした仮想マシンの名前に置き換えます。
 
 ###アプリケーションの発行
 
@@ -572,4 +572,4 @@ MongoDB をセキュリティ保護する方法については、「[MongoDB Sec
 [mongodbonazure]: http://docs.mongodb.org/ecosystem/tutorial/install-mongodb-on-linux-in-azure/
  
 
-<!------------HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

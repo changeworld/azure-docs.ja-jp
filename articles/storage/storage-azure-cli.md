@@ -80,9 +80,9 @@ Azure サブスクリプションの詳細については、「[アカウント�
 
     - **<container_name>** スクリプトの所定の名前を使用するか、コンテナーの新しい名前を入力します。
 
-    - **<image_to_upload>** ローカル コンピューター上の画像へのパス ("~/images/HelloWorld.png" など) を入力します。
+    - **<image_to_upload>** ローカル コンピューター上の画像へのパス ("\~/images/HelloWorld.png" など) を入力します。
 
-    - **<destination_folder>** Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパス (“~/downloadImages” など) を入力します。
+    - **<destination_folder>** Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパス (“\~/downloadImages” など) を入力します。
 
 7. vim で必要な変数を更新したら、"Esc キー、: キー、wq! キー" というキーの組み合わせを使用してスクリプトを保存します。
 
@@ -189,7 +189,7 @@ Azure File 共有は、Azure 内の SMB 2.1 ファイル共有です。ディレ
 
 ### ディレクトリにローカル ファイルをアップロードする
 
-次の例では、**~/temp/samplefile.txt** から **myDir** ディレクトリにファイルをアップロードします。ファイル パスを編集して、ローカル マシン上の有効なファイルを指定してください。
+次の例では、**\~/temp/samplefile.txt** から **myDir** ディレクトリにファイルをアップロードします。ファイル パスを編集して、ローカル マシン上の有効なファイルを指定してください。
 
         azure storage file upload '~/temp/samplefile.txt' myshare myDir
 
@@ -214,4 +214,4 @@ Azure Storage の詳細についての関連記事とリソースがあります
 [Image1]: ./media/storage-azure-cli/azure_command.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

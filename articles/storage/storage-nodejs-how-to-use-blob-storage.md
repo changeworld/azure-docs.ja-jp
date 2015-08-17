@@ -54,7 +54,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 		├── xml2js@0.2.7 (sax@0.5.2)
 		└── request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
 
-3.  手動で **ls** コマンドを実行して、**node_modules** フォルダーが作成されたことを確認することもできます。このフォルダーで **azure-storage** パッケージを検索します。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
+3.  手動で **ls** コマンドを実行して、**node\_modules** フォルダーが作成されたことを確認することもできます。このフォルダーで **azure-storage** パッケージを検索します。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
 
 ### パッケージをインポートする
 
@@ -135,7 +135,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 ## 方法: コンテナーに BLOB をアップロードする
 
-BLOB はブロック ベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については、[ブロック BLOB およびページ BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx)に関するページを参照してください。
+BLOB はブロック ベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
 ### ブロック blob
 
@@ -376,4 +376,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

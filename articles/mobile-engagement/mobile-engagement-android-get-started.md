@@ -12,7 +12,7 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
-	ms.topic="get-started-article" 
+	ms.topic="hero-article" 
 	ms.date="05/01/2015"
 	ms.author="piyushjo" />
 
@@ -285,7 +285,7 @@ SDK ライブラリをダウンロードして統合する
 
 ###アプリが GCM のプッシュ通知を受信できるようにする
 
-1. gcm:sender メタデータをコピーして、Manifest.xml の `<application>` タグと `</application>` タグの間に貼り付けます。下の非表示の値 (* が付いています) は、Google Play コンソールから取得した `project number` です。\n は意図的に付けられています。プロジェクト番号の末尾には必ずこれを付けてください。
+1. gcm:sender メタデータをコピーして、Manifest.xml の `<application>` タグと `</application>` タグの間に貼り付けます。下の非表示の値 (* が付いています) は、Google Play コンソールから取得した `project number` です。\\n は意図的に付けられています。プロジェクト番号の末尾には必ずこれを付けてください。
 
 		<meta-data android:name="engagement:gcm:sender" android:value="************\n" />
 
@@ -394,4 +394,4 @@ Mobile Engagement がプッシュ通知を送信できるようにするには�
 [38]: ./media/mobile-engagement-android-get-started/campaign-create.png
 [39]: ./media/mobile-engagement-android-get-started/campaign-activate.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

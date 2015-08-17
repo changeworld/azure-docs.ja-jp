@@ -153,7 +153,7 @@ Azure .NET SDK を使用すると、Web アプリを Azure App Service に簡単
 
   	<!-- ![Top Menu](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonWebSiteTopMenu.png) -->
 
-1.  下方向へ **[アプリケーション設定]** セクションまでスクロールし、前のセクションで説明したように **REPOSITORY_NAME**、**STORAGE_NAME**、**STORAGE_KEY** の値を設定します。
+1.  下方向へ **[アプリケーション設定]** セクションまでスクロールし、前のセクションで説明したように **REPOSITORY\_NAME**、**STORAGE\_NAME**、**STORAGE\_KEY** の値を設定します。
 
   	<!-- ![App Settings](./media/web-sites-python-ptvs-flask-table-storage/PollsCommonWebSiteConfigureSettingsTableStorage.png) -->
 
@@ -210,4 +210,4 @@ Python Tools for Visual Studio、Flask および Azure テーブル ストレー
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

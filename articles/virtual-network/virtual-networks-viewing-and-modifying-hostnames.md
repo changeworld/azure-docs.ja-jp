@@ -71,4 +71,4 @@ REST クライアントから次の手順を実行します。
 
 [ネットワーク構成ファイルを使用した仮想ネットワークの構成](http://go.microsoft.com/fwlink/?LinkId=248094)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

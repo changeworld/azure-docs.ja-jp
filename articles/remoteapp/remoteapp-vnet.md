@@ -3,7 +3,7 @@
     pageTitle="Azure RemoteApp で使用する Azure VNET の検証"
     description="Azure VNET を Azure RemoteApp で使用する準備が整っていることを確認する方法を説明します。"
     services="remoteapp"
-	documentationCenter=""
+    documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -37,4 +37,4 @@ Azure VNET を検証するには、次の手順を行います。
 - [Azure RemoteApp コレクションの Azure Virtual Network へのデプロイ方法 (ExpressRoute のサポートを利用)](http://blogs.msdn.com/b/rds/archive/2015/04/23/deploy-azure-remoteapp-collection-to-your-azure-virtual-network-with-support-for-expressroute.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

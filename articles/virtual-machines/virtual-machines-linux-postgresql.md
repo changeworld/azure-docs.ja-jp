@@ -93,7 +93,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
     >[Azure.NOTE]セキュリティ上の理由から、PostgreSQL ではデータベースの初期化、開始、またはシャットダウンに root 以外のユーザーを使用します。
 
 
-4. *bash_profile* を編集し、次のコマンドを入力します。以下の行を *bash_profile* ファイルの最後に追加します。
+4. *bash\_profile* を編集し、次のコマンドを入力します。以下の行を *bash\_profile* ファイルの最後に追加します。
 
 		cat >> ~/.bash_profile <<EOF
 		export PGPORT=1999
@@ -108,7 +108,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 		alias ll='ls -lh'
 		EOF
 
-5. *bash_profile* ファイルを実行します。
+5. *bash\_profile* ファイルを実行します。
 
 		$ source .bash_profile
 
@@ -142,7 +142,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
 	# cp linux /etc/init.d/postgresql
 
-/etc/init.d/postgresql ファイルの 2 つの変数を変更します。prefix には、PostgreSQL のインストール パス **/opt/pgsql** を設定します。PGDATA には、PostgreSQL のデータ ストレージ パス **/opt/pgsql_data** を設定します。
+/etc/init.d/postgresql ファイルの 2 つの変数を変更します。prefix には、PostgreSQL のインストール パス **/opt/pgsql** を設定します。PGDATA には、PostgreSQL のデータ ストレージ パス **/opt/pgsql\_data** を設定します。
 
 	# sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
@@ -251,4 +251,4 @@ Postgres データベースを作成します。
 ##PostgreSQL に関する詳細
 Microsoft Azure Linux 仮想マシンへの PostgreSQL のインストールは以上で完了です。Microsoft Azure の使用をお楽しみください。PostgreSQL に関する詳細については、[こちら](http://www.postgresql.org/)を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -49,7 +49,7 @@ HDInsight クラスターでサポートされている Sqoop のバージョン
 
 ##シナリオの理解
 
-HDInsight クラスターにはサンプル データがいくつか付属しています。**wasb:///hive/warehouse/hivesampletable** にあるデータ ファイルを参照する **hivesampletable** という名前の Hive テーブルを使用します。テーブルはモバイル デバイスのデータを含んでいます。Hive テーブルのスキーマは次のとおりです。
+HDInsight クラスターにはサンプル データがいくつか付属しています。****wasb:///hive/warehouse/hivesampletable** にあるデータ ファイルを参照する **hivesampletable** という名前の Hive テーブルを使用します。テーブルはモバイル デバイスのデータを含んでいます。Hive テーブルのスキーマは次のとおりです。
 
 | フィールド | データ型 |
 | ----- | --------- |
@@ -65,7 +65,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 | sessionid | bigint |
 | sessionpagevieworder | bigint |
 
-まず、**hivesampletable** を Azure SQL データベース、または SQL Server の **mobiledata** という名前のテーブルにエクスポートしてから、そのテーブルを **wasb:///tutorials/usesqoop/importeddata** の HDInsight にインポートします。
+まず、**hivesampletable** を Azure SQL Database、または SQL Server の **mobiledata** という名前のテーブルにエクスポートしてから、そのテーブルを ****wasb:///tutorials/usesqoop/importeddata** の HDInsight にインポートします。
 
 ##データベースの作成
 
@@ -170,7 +170,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
         sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --export-dir 'wasb:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
 
-    これにより、SQL Database と **sqooptest** データベースに接続して **wasb:///hive/warehouse/hivesampletable** (*hivesampletable* の物理ファイル) から **mobiledata** テーブル にデータをエクスポートするよう Sqoop に指示します。
+    これにより、SQL Database と **sqooptest** データベースに接続して ****wasb:///hive/warehouse/hivesampletable** (*hivesampletable* の物理ファイル) から **mobiledata** テーブルにデータをエクスポートするよう Sqoop に指示します。
 
 5. コマンドが完了したら、次を使用して、TSQL によってデータベースに接続します。
 
@@ -185,7 +185,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 ##Sqoop のインポート
 
-1. 次を使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasb:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
+1. 次を使用して、SQL Database の **mobiledata** テーブルから HDInsight の ****wasb:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
 
         sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
 
@@ -238,14 +238,11 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 ここでは Sqoop の使用方法を説明しました。詳細については、次を参照してください。
 
-- [HDInsight での Oozie の使用][hdinsight-use-oozie]: Oozie ワークフローで Sqoop アクションを使用します。
-- [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]: Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
-- [HDInsight へのデータのアップロード][hdinsight-upload-data]: HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
+- [HDInsight での Oozie の使用][hdinsight-use-oozie]\: Oozie ワークフローで Sqoop アクションを使用します。
+- [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]\: Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
+- [HDInsight へのデータのアップロード][hdinsight-upload-data]\: HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
 
 
-
-
-[azure-management-portal]: https://manage.windowsazure.com/
 
 [hdinsight-versions]: hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
@@ -265,4 +262,4 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

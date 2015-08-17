@@ -12,7 +12,7 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="hero-article"
+	ms.topic="article"
 	ms.date="06/30/2015"
 	ms.author="adegeo"/>
 
@@ -27,7 +27,7 @@
 
 Azure ポータルには、クラウド サービスを作成してデプロイする方法として、**[簡易作成]** と **[カスタム作成]** の 2 つの方法が用意されています。
 
-このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、**[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。この方法を使うと、進行に合わせて必要な事項をすべて完了する便利なリンクが Azure ポータルに表示されます。クラウド サービスの作成時にデプロイする準備が整っている場合は、**[カスタム作成]** を使用して作成とデプロイを同時に実行できます。
+このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、**[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。この方法を使うと、Azure ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。クラウド サービスの作成時にデプロイする準備が整っている場合は、**[カスタム作成]** を使用して作成とデプロイを同時に実行できます。
 
 > [AZURE.NOTE]Visual Studio Online (VSO) からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、**[クイック スタート]** またはダッシュボードから VSO 発行を設定する必要があります。詳細については、[Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信に関するページ)][TFSTutorialForCloudService]を参照するか、**[クイック スタート]** ページのヘルプを参照してください。
 
@@ -66,9 +66,9 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 ## 方法: 簡易作成によるクラウド サービスの作成
 
-1. [管理ポータル](http://manage.windowsazure.com/)で、**[新規]**、**[Compute]**、**[クラウド サービス]**、**[簡易作成]** の順にクリックします。
+1. [管理ポータル](http://manage.windowsazure.com/)で、**[新規]**、**[コンピューティング]**、**[クラウド サービス]**、**[簡易作成]** の順にクリックします。
 
-	![CloudServices_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_QuickCreate.png)
+	![CloudServices\_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_QuickCreate.png)
 
 2. **[URL]** ボックスに、運用デプロイのクラウド サービスにアクセスするパブリック URL で使用するサブドメイン名を入力します。運用デプロイの URL 形式は、http://*myURL*.cloudapp.net です。
 
@@ -76,20 +76,20 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 4. **[クラウド サービスを作成する]** をクリックします。
 
-	![CloudServices_Region](./media/cloud-services-how-to-create-deploy/CloudServices_Regionlist.png)
+	![CloudServices\_Region](./media/cloud-services-how-to-create-deploy/CloudServices_Regionlist.png)
 
 	処理の状態はウィンドウの下部にあるメッセージ領域で監視できます。
 
 	**[Cloud Services]** 領域が開き、新しいクラウド サービスが表示されます。状態が [作成済み] に変わると、クラウド サービスの作成が正常に完了しています。
 
-	![CloudServices_CloudServicesPage](./media/cloud-services-how-to-create-deploy/CloudServices_CloudServicesPage.png)
+	![CloudServices\_CloudServicesPage](./media/cloud-services-how-to-create-deploy/CloudServices_CloudServicesPage.png)
 
 
 ## 方法: クラウド サービスの証明書のアップロード
 
 1. [管理ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[証明書]** をクリックします。
 
-	![CloudServices_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_EmptyDashboard.png)
+	![CloudServices\_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_EmptyDashboard.png)
 
 
 2. **[証明書をアップロードします]** または **[アップロード]** をクリックします。
@@ -100,11 +100,11 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 5. **[OK]** (チェックマーク) をクリックします。
 
-	![CloudServices_AddaCertificate](./media/cloud-services-how-to-create-deploy/CloudServices_AddaCertificate.png)
+	![CloudServices\_AddaCertificate](./media/cloud-services-how-to-create-deploy/CloudServices_AddaCertificate.png)
 
 	アップロードの進捗状況は下図のメッセージ領域で監視できます。アップロードが完了すると、証明書がテーブルに追加されます。メッセージ領域で [OK] をクリックし、メッセージを閉じます。
 
-	![CloudServices_CertificateProgress](./media/cloud-services-how-to-create-deploy/CloudServices_CertificateProgress.png)
+	![CloudServices\_CertificateProgress](./media/cloud-services-how-to-create-deploy/CloudServices_CertificateProgress.png)
 
 ## 方法: クラウド サービスのデプロイ
 
@@ -127,11 +127,11 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 6. **[OK]** (チェックマーク) をクリックして、クラウド サービスのデプロイを開始します。
 
-	![CloudServices_UploadaPackage](./media/cloud-services-how-to-create-deploy/CloudServices_UploadaPackage.png)
+	![CloudServices\_UploadaPackage](./media/cloud-services-how-to-create-deploy/CloudServices_UploadaPackage.png)
 
 	デプロイの状態は、メッセージ領域で監視できます。メッセージを非表示にするには、[OK] をクリックします。
 
-	![CloudServices_UploadProgress](./media/cloud-services-how-to-create-deploy/CloudServices_UploadProgress.png)
+	![CloudServices\_UploadProgress](./media/cloud-services-how-to-create-deploy/CloudServices_UploadProgress.png)
 
 ## デプロイが正常に完了したことを確認する
 
@@ -141,10 +141,10 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 2. **[概要]** で、サイト URL をクリックして、Web ブラウザーでクラウド サービスを開きます。
 
-    ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy/CloudServices_QuickGlance.png)
+    ![CloudServices\_QuickGlance](./media/cloud-services-how-to-create-deploy/CloudServices_QuickGlance.png)
 
 
 [TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796&clcid=0x409
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

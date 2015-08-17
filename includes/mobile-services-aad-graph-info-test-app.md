@@ -10,4 +10,4 @@
 
     ![](./media/mobile-services-aad-graph-info-test-app/custom-greeting.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

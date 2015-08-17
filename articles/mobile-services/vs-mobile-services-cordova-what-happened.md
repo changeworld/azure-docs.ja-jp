@@ -14,7 +14,7 @@
 	ms.devlang="multiple" 
 	ms.topic="article" 
 	ms.date="05/06/2015" 
-	ms.author="patshea123"/>
+	ms.author="patshea"/>
 
 # プロジェクトの変更点
 
@@ -22,7 +22,7 @@
 > - [Getting Started](vs-mobile-services-cordova-getting-started.md)
 > - [What Happened](vs-mobile-services-cordova-what-happened.md)
 
-###プロジェクトの変更点</span>
+###プロジェクトの変更点
 
 #####リファレンスの追加
 
@@ -41,4 +41,4 @@
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

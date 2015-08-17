@@ -101,4 +101,4 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 [Testability シナリオの詳細](service-fabric-testability-scenarios.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

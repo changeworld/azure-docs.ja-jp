@@ -316,4 +316,4 @@ Advanced Analytics Process and Technology とパブリック データセット�
 <!-- Module References -->
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="storage-backup-recovery" 
-   ms.date="03/17/2015"
+   ms.date="07/24/2015"
    ms.author="elfish; v-romcal"/>
 
 # REST API でポイント イン タイム リストアを使用して Azure SQL データベースを復元する
@@ -53,4 +53,4 @@
 [サービス管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/ee460799.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

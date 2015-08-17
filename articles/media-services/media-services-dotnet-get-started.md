@@ -464,4 +464,4 @@ MPEG DASH
   [管理ポータル]: http://manage.windowsazure.com/
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

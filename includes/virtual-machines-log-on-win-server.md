@@ -27,4 +27,4 @@
 
 これで、仮想マシンをリモートで使用して作業できます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

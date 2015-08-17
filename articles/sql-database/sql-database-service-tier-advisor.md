@@ -77,7 +77,7 @@ Azure では、SQL Database の過去のリソースの使用状況を評価し�
 
 ## 次のステップ
 
-データベースの内容によっては、アップグレードまたはダウングレードをすぐに実行することはできません。管理ポータルでは、データベースが新しいレベルに移行されるときに通知が提供されます。また、SQL Database サーバーのマスター データベースで [sys.dm_operation_status (Azure SQL Database )](https://msdn.microsoft.com/library/dn270022.aspx) ビューを照会することにより、アップグレードを監視できます。
+データベースの内容によっては、アップグレードまたはダウングレードをすぐに実行することはできません。管理ポータルでは、データベースが新しいレベルに移行されるときに通知が提供されます。また、SQL Database サーバーのマスター データベースで [sys.dm\_operation\_status (Azure SQL Database )](https://msdn.microsoft.com/library/dn270022.aspx) ビューを照会することにより、アップグレードを監視できます。
 
 
 <!--Image references-->
@@ -90,4 +90,4 @@ Azure では、SQL Database の過去のリソースの使用状況を評価し�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

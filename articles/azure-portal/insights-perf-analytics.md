@@ -83,4 +83,4 @@ Application Insights のブレードが表示されたら、[パフォーマン�
 * Application Insights で [Web ページの可用性と応答性を監視](../app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

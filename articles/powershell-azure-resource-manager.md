@@ -372,29 +372,9 @@ AzureResourceManager モジュールにはエラーを防止するためのコ�
 
 
 ## 次のステップ
-Getting Started (概要)
 
-- [Azure リソース マネージャーの概要](./resource-group-overview.md)
-- [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](./xplat-cli-azure-resource-manager.md)
-- [Azure ポータルを使用した Azure リソースの管理](./resource-group-portal.md)
+- リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)に関するページを参照してください。
+- テンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)」を参照してください。
+- プロジェクトをデプロイする方法の詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 
-アプリケーションの作成と展開
-
-- [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)
-- [Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)
-- [Azure でのリソース グループのデプロイのトラブルシューティング](./resource-group-deploy-debug.md)
-- [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)
-- [高度なテンプレートの操作](./resource-group-advanced-template.md)
-
-リソースの整理
-
-- [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
-
-アクセスの管理と監査
-
-- [リソースへのアクセスの管理と監査](./resource-group-rbac.md)
-- [Azure リソース マネージャーでのサービス プリンシパルの認証](./resource-group-authenticate-service-principal.md)
-- [Azure クラシック ポータルを使用した Azure サービス プリンシパルの新規作成](./resource-group-create-service-principal-portal.md)
-
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

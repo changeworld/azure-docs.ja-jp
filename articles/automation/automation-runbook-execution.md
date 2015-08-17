@@ -9,10 +9,10 @@
 <tags
    ms.service="automation"
    ms.devlang="na"
-   ms.topic="get-started-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/28/2015"
+   ms.date="07/22/2015"
    ms.author="bwren" />
 
 # Azure Automation での Runbook の実行
@@ -105,4 +105,4 @@ Runbook を作成する際には、2 つのチェックポイント間で任意�
 - [Azure Automation で Runbook ジョブの状態を表示する方法](automation-viewing-the-status-of-a-runbook-job)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

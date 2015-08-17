@@ -43,7 +43,7 @@
 -	Visual Studio 2013 と BLOB 管理 GUI 用 [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 -	[Azure PowerShell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) (「[ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する](#upload)」で使用)
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web サイトなど無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
 <a name="static"></a>
 ## Azure CDN エンドポイントから静的コンテンツを配信する ##
@@ -65,7 +65,7 @@
 
 	>[AZURE.NOTE]後で CDN をテストするときに北米から十分な距離の場所が必要であるため、リージョンに東アジアを使用していることに注意してください。
 
-2. 新しいストレージ アカウントのステータスが **[オンライン]** になった後で、作成したストレージ アカウントに関連付けられた新しい CDN エンドポイントを作成します。**[新規]、[アプリ サービス]、[簡易作成]** の順にクリックします。作成したストレージ アカウントを選択して **[作成]** をクリックします。
+2. 新しいストレージ アカウントのステータスが **[オンライン]** になった後で、作成したストレージ アカウントに関連付けられた新しい CDN エンドポイントを作成します。**[新規]、[アプリケーション サービス]、[CDN]、[簡易作成]** の順にクリックします。作成したストレージ アカウントを選択して **[作成]** をクリックします。
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-2.PNG)
 
@@ -79,11 +79,11 @@
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-3-succeed.PNG)
 
-4. この時点で、CDN エンドポインが最も近い CDN ノードを既に決定したことを確認できます。デスクトップ コンピューターで確認した応答 IP アドレスが **93.184.215.201** であるとします。これを [www.ip-address.org](http://www.ip-address.org) のようなサイトで調べると、サーバーが Washington D.C. にあることがわかります。
+4. この時点で、CDN エンドポイントが最も近い CDN ノードを既に決定したことを確認できます。デスクトップ コンピューターで確認した応答 IP アドレスが **93.184.215.201** であるとします。これを [www.ip-address.org](http://www.ip-address.org) のようなサイトで調べると、サーバーが Washington D.C. にあることがわかります。
 
 	![](media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-4.PNG)
 
-	すべての CDN ノードの場所の一覧については、「[Azure コンテンツ配信ネットワーク (CDN) ノードの場所](http://msdn.microsoft.com/library/azure/gg680302.aspx)」を参照してください。
+	すべての CDN ノードの場所の一覧については、[Azure Content Delivery Network (CDN) ノードの場所](http://msdn.microsoft.com/library/azure/gg680302.aspx)に関するページを参照してください。
 
 3. Azure ポータルに戻り、**[CDN]** タブで、作成した CDN エンドポイントの名前をクリックします。
 
@@ -126,7 +126,7 @@
 
 13.	ブラウザーで BLOB が適切にレンダリングされることを確認できたら、この URL を `http://<yourStorageAccountName>.blob.core.windows.net` から自分の Azure CDN の URL に変更します。この例では、CDN エンドポイントで最初の画像をテストするために `http://az623979.vo.msecnd.net/cdn/cephas_lin.png` を使用します。
 
-	>[AZURE.NOTE]CDN エンドポイントの URL は、Azure の管理ポータルの [CDN] タブで見つけることができます。
+	>[AZURE.NOTE]CDN エンドポイントの URL は、Azure 管理ポータルの [CDN] タブで見つけることができます。
 
 	BLOB への直接的なアクセスと CDN アクセスのパフォーマンスを比較すると、Azure CDN の使用によりパフォーマンスが向上することが確認できます。画像の BLOB URL アクセスに関する Internet Explorer 11 F12 開発者ツールのスクリーンショットを次に示します。
 
@@ -218,17 +218,17 @@ BLOB コンテナーの Web アプリケーションから静的ファイルを�
 <a name="query"></a>
 ## クエリ文字列を使用して即座に最新コンテンツを配信する ##
 
-Azure CDN で、クエリ文字列を有効にすることにより、固有のクエリ文字列を含む URL からのコンテンツを別個にキャッシュできます。キャッシュされた CDN コンテンツの期限切れまで待機せずに、特定のコンテンツの更新をクライアント ブラウザーに即座にプッシュする場合に、この機能は役立ちます。URL にバージョン番号を含む Web ページを発行するとします。 <pre class="prettyprint"> &lt;link href=";http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css<mark>?v=3.0.0</mark>"; rel=";stylesheet";/&gt; </pre>
+Azure CDN で、クエリ文字列を有効にすることにより、固有のクエリ文字列を含む URL からのコンテンツを別個にキャッシュできます。キャッシュされた CDN コンテンツの期限切れまで待機せずに、特定のコンテンツの更新をクライアント ブラウザーに即座にプッシュする場合に、この機能は役立ちます。URL にバージョン番号を含む Web ページを発行するとします。<pre class="prettyprint"> &lt;link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css?v=3.0.0&quot; rel=&quot;stylesheet&quot;/&gt; </pre>
 
-CSS 更新を発行して、CSS URL で別のバージョン番号を使用する場合は、次のようになります。 <pre class="prettyprint"> &lt;link href=";http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css<mark>?v=3.1.1</mark>"; rel=";stylesheet";/&gt; </pre>
+CSS 更新を発行して、CSS URL で別のバージョン番号を使用する場合は、次のようになります。<pre class="prettyprint"> &lt;link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css?v=3.1.1&quot; rel=&quot;stylesheet&quot;/&gt; </pre>
 
 クエリ文字列が有効になっている CDN エンドポイントに対して、2 つの URL は相互に一意であり、新しい *bootstrap.css* を取得するための新しい要求が Web サーバーに対して行われます。ただし、クエリ文字列が有効になっていない CDN エンドポイントに対しては、これらは同じ URL であり、単純にキャッシュされた *bootstrap.css* が提供されます。
 
-対処する方法は、バージョン番号を自動的に更新することです。Visual Studio では、簡単に行うことができます。.cshtml ファイルで前述のリンクを使用し、アセンブリ番号に基づいてバージョン番号を指定できます。 <pre class="prettyprint"> @{ <mark>var cdnVersion = System.Reflection.Assembly.GetAssembly( typeof(MyMvcApp.Controllers.HomeController)) .GetName().Version.ToString();</mark> }
+対処する方法は、バージョン番号を自動的に更新することです。Visual Studio では、簡単に行うことができます。.cshtml ファイルで前述のリンクを使用し、アセンブリ番号に基づいてバージョン番号を指定できます。<pre class="prettyprint"> @{ var cdnVersion = System.Reflection.Assembly.GetAssembly( typeof(MyMvcApp.Controllers.HomeController)) .GetName().Version.ToString(); }
 
 ...
 
-&lt;link href=";http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css<mark>?v=@cdnVersion</mark>"; rel=";stylesheet";/&gt; </pre>
+&lt;link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css?v=@cdnVersion&quot; rel=&quot;stylesheet&quot;/&gt; </pre>
 
 すべての発行サイクルの一部としてアセンブリ番号を変更すれば、Web アプリケーションを発行するたびに同様に一意のバージョン番号を取得することができます。これは、次の発行サイクルまでそのまま維持されます。または、Visual Studio プロジェクトで *Properties\\AssemblyInfo.cs* を開き、`*` を `AssemblyVersion` で使用することにより、Web アプリケーションのビルドのたびに Visual Studio でアセンブリ バージョン番号が自動的にインクリメントされます。次に例を示します。
 
@@ -257,8 +257,8 @@ Azure App Service Web Apps または Azure Cloud Services と統合しなくて�
 - [Azure Content Delivery Network (CDN) の概要](cdn-overview.md)
 - [Azure App Service で Azure CDN を使用する](../cdn-websites-with-cdn.md)
 - [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
-- [カスタム ドメインにコンテンツ配信ネットワーク (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
+- [カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
 - [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

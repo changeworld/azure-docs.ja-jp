@@ -10,7 +10,7 @@
 <tags
    ms.service="active-directory"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
    ms.date="06/10/2015"
@@ -132,4 +132,4 @@ Azure Active Directory を使用したアプリ開発に関する次の概要の
 
 - **[Twitter での Azure AD](https://twitter.com/azuread)**: Azure AD に関する発表事項を 140 文字以内で受け取ることができます。
 
-<!-----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

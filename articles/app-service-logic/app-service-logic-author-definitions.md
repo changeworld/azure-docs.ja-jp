@@ -234,7 +234,7 @@ Logic Apps は、多くの場合、離散されているほど管理が簡単に
 }
 ```
 
-MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/ja-jp/library/azure/dn948511.aspx)に関するページを参照してください。
+MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/en-US/library/azure/dn948511.aspx)に関するページを参照してください。
 
 >[AZURE.NOTE]ロジック アプリ デザイナーでは、ロジック アプリの種類のアクションがサポートされていないため、定義を手動で編集する必要があります。
 
@@ -688,4 +688,4 @@ Content-type: application/json
 
 それぞれの環境で、`connection` パラメーターに異なる値を指定できます。ロジック アプリの作成と管理用に用意したすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/dn948513.aspx)を参照してください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

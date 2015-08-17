@@ -4,4 +4,4 @@
 
 [Active Directory 認証ライブラリ Nuget パッケージ]: http://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -39,7 +39,7 @@ Azure AD は、*https://login.windows.net/<TenantDomainName>/FederationMetadata/
 
 **テナント独立のエンドポイント**の場合、<TenantDomainName> は **common**です。この名前は、login.windows.net でホストされているすべての Azure AD テナントに共通するフェデレーション メタデータの要素のみを示します。
 
-たとえば、テナント固有のエンドポイントは、*https://login.windows.net/contoso.onmicrosoft.comFederationMetadata/2007-06/FederationMetadata.xml* にすることができます。テナント独立のエンドポイントは *https://login.windows.net/common/FederationMetadata/2007-06/FederationMetadata.xml* です。
+たとえば、テナント固有のエンドポイントは、**https://login.windows.net/contoso.onmicrosoft.comFederationMetadata/2007-06/FederationMetadata.xml* にすることができます。テナント独立のエンドポイントは **https://login.windows.net/common/FederationMetadata/2007-06/FederationMetadata.xml* です。
 
 ## フェデレーション メタデータの内容
 
@@ -149,4 +149,4 @@ SAML に固有のセクションで、WS-Federation メタデータ リーダー
 
 [Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

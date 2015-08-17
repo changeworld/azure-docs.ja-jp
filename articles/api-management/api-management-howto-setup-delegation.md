@@ -51,11 +51,11 @@
 2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
 
 	* **returnUrl** および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 ハッシュを計算します ([コードの例を次に示します])。
-        > **returnUrl**
+        > HMAC(**salt** + '\\n' + **returnUrl**)
 		 
 	* 上の計算によって求められたハッシュを **sig** クエリ パラメーターの値と比較します。2 つのハッシュ値が等しい場合は、次の手順に移動します。それ以外の場合は、要求を拒否します。
 
-2. サインイン/サインアップの要求を受け取っていることを確認します。**operation** クエリ パラメーターは "**SignIn**" に設定されます。
+2. サインイン/サインアップの要求を受け取っていることを確認します。**operation** クエリ パラメーターが "**SignIn**" に設定されます。
 
 3. サインインまたはサインアップのための UI をユーザーに表示します。
 
@@ -107,7 +107,7 @@
 2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
 
 	* **productId**、**userId**、および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 を計算します。
-		> **productId****userId**
+		> HMAC(**salt** + '\\n' + **productId** + '\\n' + **userId**)
 		 
 	* 上の計算によって求められたハッシュを **sig** クエリ パラメーターの値と比較します。2 つのハッシュ値が等しい場合は、次の手順に移動します。それ以外の場合は、要求を拒否します。
 	
@@ -168,4 +168,4 @@
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

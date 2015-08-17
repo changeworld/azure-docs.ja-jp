@@ -125,4 +125,4 @@ Azure の Web アプリがある場合は、Azure ポータルでアプリ設定
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

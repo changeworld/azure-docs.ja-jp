@@ -135,4 +135,4 @@ Azure 通知ハブでは Azure 管理ポータルでテレメトリ データの
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

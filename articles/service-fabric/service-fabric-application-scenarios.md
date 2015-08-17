@@ -68,4 +68,4 @@ Service Fabric の[信頼性の高いサービス](service-fabric-reliable-servi
  
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

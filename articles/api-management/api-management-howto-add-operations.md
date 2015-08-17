@@ -164,4 +164,4 @@ API Management ポータルで目的の API を選択し、**[操作]** タブ�
 [成果物を作成して発行する方法]: api-management-howto-add-products.md
 [Azure API Management で操作の結果をキャッシュする方法]: api-management-howto-cache.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

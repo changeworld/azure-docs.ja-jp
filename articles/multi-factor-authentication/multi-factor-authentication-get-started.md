@@ -12,7 +12,7 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="06/02/2015" 
 	ms.author="billmath"/>
 
@@ -33,11 +33,11 @@
 
 セキュリティで保護しようとしている対象| クラウドでの Multi-Factor Authentication|Multi-Factor Authentication Server 
 ------------- | :-------------: | :-------------: |
-ファースト パーティの Microsoft アプリ|\* |\* |
-アプリ ギャラリー内の SaaS アプリ|\* |\* |
-Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション|\* |\* |
-Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション | |\* |
-VPN、RDG などのリモート アクセス| |\* |
+ファースト パーティの Microsoft アプリ|* |* |
+アプリ ギャラリー内の SaaS アプリ|* |* |
+Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション|* |* |
+Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション | |* |
+VPN、RDG などのリモート アクセス| |* |
 
 
 
@@ -87,4 +87,4 @@ MFA レポート | ● | ●
 * [ユーザー向け](multi-factor-authentication-end-user.md)
 * [Azure Multi-Factor Authentication (MSDN)](https://msdn.microsoft.com/library/azure/dn249471.aspx) 
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

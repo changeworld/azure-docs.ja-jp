@@ -97,7 +97,7 @@ SAML トークンでは、名 (姓を含まない名前) は givenname SAML Attr
     <Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”>
     <AttributeValue>Frank<AttributeValue>
 
-JWT トークンでは、名は given_name クレームに表示されます。
+JWT トークンでは、名は given\_name クレームに表示されます。
 
     "given_name": "Frank"
 
@@ -156,7 +156,7 @@ JWT トークンでは、発行者は iss クレームに表示されます。
     <Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”>
     <AttributeValue>Miller<AttributeValue>
 
-JWT トークンでは、姓は family_name クレームに表示されます。
+JWT トークンでは、姓は family\_name クレームに表示されます。
 
     "family_name": "Miller"
 
@@ -167,7 +167,7 @@ JWT トークンでは、姓は family_name クレームに表示されます。
     <Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>
     <AttributeValue>frankm@contoso.com<AttributeValue>
 
-JWT クレームでは、unique_name クレームに名前が表示されます。
+JWT クレームでは、unique\_name クレームに名前が表示されます。
 
     "unique_name": "frankm@contoso.com"
 
@@ -195,7 +195,7 @@ JWT トークンでは、ロール クレームは roles クレームに表示�
 
 ### スコープ
 
-トークンのスコープは、クライアント アプリケーションに権限借用が許可されていることを示します。既定のアクセス許可は user_impersonation です。保護されたリソースの所有者は、別の値を Azure AD に登録できます。
+トークンのスコープは、クライアント アプリケーションに権限借用が許可されていることを示します。既定のアクセス許可は user\_impersonation です。保護されたリソースの所有者は、別の値を Azure AD に登録できます。
 
 JWT トークンでは、トークンのスコープは scp クレームで指定できます。
 
@@ -413,4 +413,4 @@ JWT トークンでは、ユーザー プリンシパル名は upn クレーム�
 [Azure Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -49,4 +49,4 @@ Azure AD Premium では、Azure AD と連携する SaaS アプリケーション
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

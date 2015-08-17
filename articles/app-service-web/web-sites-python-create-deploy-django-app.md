@@ -70,7 +70,7 @@ Python と Git は既にインストールされていると思いますが、Py
 
 ここでは、初期の Git リポジトリにあるファイルの概要を説明します。次のセクションではこれらのファイルを複製します。
 
-    \app__init__.py
+    \app\__init__.py
     \app\forms.py
     \app\models.py
     \app\tests.py
@@ -84,7 +84,7 @@ Python と Git は既にインストールされていると思いますが、Py
     \app\templates\layout.html
     \app\templates\login.html
     \app\templates\loginpartial.html
-    \DjangoWebProject__init__.py
+    \DjangoWebProject\__init__.py
     \DjangoWebProject\settings.py
     \DjangoWebProject\urls.py
     \DjangoWebProject\wsgi.py
@@ -423,7 +423,7 @@ Django には静的ファイルの収集に関する概念が設定されてい�
 
 Django アプリケーションで静的なファイルの収集をスキップする場合は、次のようにします。
 
-    .skipDjango
+    \.skipDjango
 
 その後、ローカル コンピューターで手動で収集する必要があります。
 
@@ -515,4 +515,4 @@ SQL データベースと MySQL の詳細については、次のリンクをご
 [Django のドキュメント]: https://www.djangoproject.com/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -38,56 +38,15 @@ Azure Redis Cache には、さまざまなレベルの**サイズ**、**帯域�
 
 次の表に、Azure Redis Cache のエンドポイントに対して Iaas VM から `redis-benchmark.exe` を使用して Azure Redis Cache のさまざまなサイズをテストした結果得られた最大帯域幅を示します。これらの値は保証された値ではなく、これらの値の SLA もありません。これらの値は、標準的な値と考えてください。アプリケーションに最適なキャッシュ サイズを特定するには、アプリケーションに対してロード テストを実行する必要があります。
 
-<table>
-  <tr>
-    <th>キャッシュ名</th>
-    <th>キャッシュ サイズ</th>
-    <th>GET/秒 (1 KB の値の単純な GET 呼び出し)</th>
-    <th>帯域幅 (メガビット/秒)</th>
-  </tr>
-  <tr>
-    <td>C0</td>
-    <td>250 MB</td>
-    <td>610</td>
-    <td>5</td>
-  </tr>
-  <tr>
-    <td>C1</td>
-    <td>1 GB</td>
-    <td>12,200</td>
-    <td>100</td>
-  </tr>
-  <tr>
-    <td>C2</td>
-    <td>2.5 GB</td>
-    <td>24,300</td>
-    <td>200</td>
-  </tr>
-  <tr>
-    <td>C3</td>
-    <td>6 GB</td>
-    <td>48,875</td>
-    <td>400</td>
-  </tr>
-  <tr>
-    <td>C4</td>
-    <td>13 GB</td>
-    <td>61,350</td>
-    <td>500</td>
-  </tr>
-  <tr>
-    <td>C5</td>
-    <td>26 GB</td>
-    <td>112,275</td>
-    <td>1,000</td>
-  </tr>
-  <tr>
-    <td>C6</td>
-    <td>53 GB</td>
-    <td>153,219</td>
-    <td>1,000+</td>
-  </tr>
-</table>
+キャッシュ名|キャッシュ サイズ|GET/秒 (1 KB の値の単純な GET 呼び出し)|帯域幅 (メガビット/秒)
+---|---|---|---
+C0|250 MB|610|5
+C1|1 GB|12,200|100
+C2|2\.5 GB|24,300|200
+C3|6 GB|48,875|400
+C4|13 GB|61,350|500
+C5|26 GB|112,275|1,000
+C6|53 GB|153,219|1,000+
 
 `redis-benchmark.exe` などの Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
 
@@ -99,7 +58,7 @@ Azure Redis Cache には、さまざまなレベルの**サイズ**、**帯域�
 <a name="cache-billing"></a>
 ## Azure Redis Cache の課金方法を教えてください。
 
-Azure Redis Cache の価格は[ここ](http://azure.microsoft.com/pricing/details/cache/)を参照してください。料金ページには、1 時間単位の料金が表示されます。キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。キャッシュの課金を停止または一時停止するオプションはありません。
+Azure Redis Cache の価格については、[ここ](http://azure.microsoft.com/pricing/details/cache/)を参照してください。料金ページには、1 時間単位の料金が表示されます。キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。キャッシュの課金を停止または一時停止するオプションはありません。
 
 <a name="cache-timeouts"></a>
 ## タイムアウトが発生する理由
@@ -134,28 +93,11 @@ Microsoft Azure Redis Cache のインスタンスは、[Azure プレビュー �
 
 StackExchange.Redis には多くのオプションが用意されています。ここでは、いくつかの一般的な設定について説明します。StackExchange.Redis オプションの詳細については、[StackExchange.Redis の構成](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md)に関するページを参照してください。
 
-<table>
-  <tr>
-    <th>構成オプション</th>
-    <th>説明</th>
-    <th>推奨</th>
-  </tr>
-  <tr>
-    <td>AbortOnConnectFail</td>
-    <td>true の場合、ネットワーク障害の後に再接続が行われません。</td>
-    <td>StackExchange.Redis が自動的に再接続するように、false に設定します。</td>
-  </tr>
-  <tr>
-    <td>ConnectRetry</td>
-    <td>初期接続中に接続試行を繰り返す回数。</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>ConnectTimeout</td>
-    <td>接続操作のタイムアウト (ミリ秒単位)。</td>
-    <td></td>
-  </tr>
-</table>
+構成オプション|説明|推奨
+---|---|---
+AbortOnConnectFail|true の場合、ネットワーク障害の後に再接続が行われません。|StackExchange.Redis が自動的に再接続するように、false に設定します。
+ConnectRetry|初期接続中に接続試行を繰り返す回数。||
+ConnectTimeout|接続操作のタイムアウト (ミリ秒単位)。|
 
 ほとんどの場合は、クライアントの既定値で十分です。ワークロードに基づいてオプションを微調整できます。
 
@@ -209,7 +151,7 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 <a name="cache-commands"></a>
 ## Redis コマンドの実行方法
 
-「[Azure Redis Cache でサポートされない Redis コマンド](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache)」に示されているコマンドを除いて、「[Redis コマンド](http://redis.io/commands#)」に示されているすべてのコマンドを使用できます。Redis コマンドを実行するには、いくつかのオプションがあります。
+[Azure Redis Cache でサポートされない Redis コマンド](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache)のページに示されているコマンドを除いて、[Redis コマンド](http://redis.io/commands#)のページに示されているすべてのコマンドを使用できます。Redis コマンドを実行するには、いくつかのオプションがあります。
 
 -	Standard キャッシュがある場合は、[Redis コンソール](cache-configure.md#redis-console)を使用して Redis コマンドを実行できます。これは、Azure ポータルで Redis コマンドを安全に実行するための方法です。
 -	Redis コマンド ライン ツールを使用することもできます。これらを使用するには、次の手順に従います。
@@ -233,4 +175,4 @@ Microsoft Azure Redis Cache は、広く普及しているオープン ソース
 
 クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](http://azure.microsoft.com/documentatgion/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -63,4 +63,4 @@ Azure における SharePoint の詳細と構成については、次のリソ�
 
 - [Microsoft Azure での Office 365 ディレクトリ同期 (DirSync) のデプロイ](https://technet.microsoft.com/library/dn635310.aspx)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

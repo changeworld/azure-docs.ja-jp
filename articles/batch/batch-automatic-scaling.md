@@ -359,8 +359,8 @@ doubleVecList 値は、評価の前に 1 つの doubleVec に変換されます�
           <li><p><b>doubleVec GetSample(double count)</b> - 最新のサンプルから必要なサンプル数を指定します。</p>
 				  <p>サンプルは、5 秒間のメトリック データです。GetSample(1) は、使用可能な最後のサンプルを返しますが、このサンプルはいつ収集されたかわからないので、$CPUPercent などのメトリックでは、これを使用しないでください。最新の場合もありますが、システム上の問題が原因でかなり古い可能性があります。次に示すように、期間を使用することをお勧めします。</p></li>
           <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime [, double samplePercent])</b> – サンプル データを収集する期間を指定し、必要に応じて、必要な範囲内のサンプルの割合を指定します。</p>
-          <p>$CPUPercent.GetSample(TimeInterval\_Minute\*10) は、最後の 10 分間のサンプルがすべて CPUPercent 履歴に存在する場合、200 のサンプルを返す必要があります。最後の 1 分間の履歴がまだ存在していない場合は、180 のサンプルが返されます。</p>
-					<p>$CPUPercent.GetSample(TimeInterval\_Minute\*10, 80) は成功し、$CPUPercent.GetSample(TimeInterval_Minute\*10,95) は失敗します。</p></li>
+          <p>$CPUPercent.GetSample(TimeInterval\_Minute*10) は、最後の 10 分間のサンプルがすべて CPUPercent 履歴に存在する場合、200 のサンプルを返す必要があります。最後の 1 分間の履歴がまだ存在していない場合は、180 のサンプルが返されます。</p>
+					<p>$CPUPercent.GetSample(TimeInterval\_Minute*10, 80) は成功し、$CPUPercent.GetSample(TimeInterval_Minute*10,95) は失敗します。</p></li>
           <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime, (timestamp | timeinterval) endTime [, double samplePercent])</b> – 開始時刻と終了時刻の両方を使用してデータを収集する期間を指定します。</p></li></ul></td>
   </tr>
   <tr>
@@ -407,9 +407,9 @@ doubleVecList 値は、評価の前に 1 つの doubleVec に変換されます�
       <li>$NetworkInBytes</li>
       <li>$NetworkOutBytes</li></ul></p>
     <p>この例は、過去 10 分間の平均 CPU 使用率の最小値が 70% を超える場合、プール内の計算ノード数を現在のノードの目標数の 110% に設定するために使用される数式を示しています。</p>
-    <p><b>totalTVMs = (min($CPUPercent.GetSample(TimeInterval\_Minute\*10)) > 0.7) ? ($CurrentDedicated \* 1.1) : $CurrentDedicated;</b></p>
+    <p><b>totalTVMs = (min($CPUPercent.GetSample(TimeInterval\_Minute*10)) > 0.7) ? ($CurrentDedicated * 1.1) : $CurrentDedicated;</b></p>
     <p>この例は、過去 60 分間の平均 CPU 使用率が 20% 未満の場合、プール内の計算ノード数を現在のノードの目標数の 90% に設定するために使用される数式を示しています。</p>
-    <p><b>totalTVMs = (avg($CPUPercent.GetSample(TimeInterval\_Minute\*60)) &lt; 0.2) ? ($CurrentDedicated \* 0.9) : totalTVMs;</b></p>
+    <p><b>totalTVMs = (avg($CPUPercent.GetSample(TimeInterval\_Minute*60)) &lt; 0.2) ? ($CurrentDedicated * 0.9) : totalTVMs;</b></p>
     <p>この例は、専用計算ノードの目標数を最大 400 に設定します。</p>
     <p><b>$TargetDedicated = min(400, totalTVMs);</b></p></td>
   </tr>
@@ -424,7 +424,7 @@ doubleVecList 値は、評価の前に 1 つの doubleVec に変換されます�
       <li>$FailedTasks</li>
       <li>$CurrentDedicated</li></ul></p>
     <p>この例は、サンプルの 70% が過去 15 分間に記録されているかどうかを検出する数式を示しています。記録されていない場合は、前回のサンプルを使用します。アクティブなタスクの数と一致するように計算ノードの数を増やそうとします (最大 3 つ)。プールの MaxTasksPerVM プロパティが 4 に設定されているため、ノード数をアクティブなタスクの数の 4 分の 1 に設定します。また、Deallocation オプションを "taskcompletion" に設定し、タスクが完了するまでコンピューターを保持します。</p>
-    <p><b>$Samples = $ActiveTasks.GetSamplePercent(TimeInterval\_Minute \* 15); $Tasks = $Samples &lt; 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval\_Minute \* 15))); $Cores = $TargetDedicated \* 4; $ExtraVMs = ($Tasks - $Cores) / 4; $TargetVMs = ($TargetDedicated+$ExtraVMs);$TargetDedicated = max(0,min($TargetVMs,3)); $TVMDeallocationOption = taskcompletion;</b></p></td>
+    <p><b>$Samples = $ActiveTasks.GetSamplePercent(TimeInterval\_Minute * 15); $Tasks = $Samples &lt; 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval\_Minute * 15))); $Cores = $TargetDedicated * 4; $ExtraVMs = ($Tasks - $Cores) / 4; $TargetVMs = ($TargetDedicated+$ExtraVMs);$TargetDedicated = max(0,min($TargetVMs,3)); $TVMDeallocationOption = taskcompletion;</b></p></td>
   </tr>
 </table>
 
@@ -476,4 +476,4 @@ targetDedicated パラメーターを使用して指定した数の計算ノー�
 	- [Get AzureBatchRDPFile](https://msdn.microsoft.com/library/mt149851.aspx) – このコマンドレットは、指定した計算ノードから RDP ファイルを取得し、指定したファイルの場所やストリームに保存します。
 2.	一部のアプリケーションは、処理するのに困難な大量のデータを生成します。これを解決する 1 つの方法は、[効率的なリスト クエリ](batch-efficient-list-queries.md)を使用することです。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

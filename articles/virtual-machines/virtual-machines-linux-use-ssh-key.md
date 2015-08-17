@@ -55,7 +55,7 @@ Azure の管理ポータルの現在のバージョンのみが、X509 証明書
 ## OpenSSH と互換性のある既存のキーからキーを生成する
 前の例では、Azure 用に新しいキーを作成する方法について説明しています。場合によっては、OpenSSH と互換性のある公開キーと秘密キーのペアが既にあり、Azure でこれらのキーを使用する必要がある可能性もあります。
 
-OpenSSH の秘密キーは `openssl` ユーティリティで直接読み取ることができます。次のコマンドは、SSH の既存の秘密キー (ここでは id_rsa) を受け取り、Azure に必要な `.pem` 公開キーを作成します。
+OpenSSH の秘密キーは `openssl` ユーティリティで直接読み取ることができます。次のコマンドは、SSH の既存の秘密キー (ここでは id\_rsa) を受け取り、Azure に必要な `.pem` 公開キーを作成します。
 
 	# openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out myCert.pem
 
@@ -79,7 +79,7 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 ### msysgit を使用する ###
 
 1.	次の場所から msysgit をダウンロードしてインストールします: [http://msysgit.github.com/](http://msysgit.github.com/)
-2.	インストールしたディレクトリ (c:\msysgit\msys.exe など) から `msys` を実行します。
+2.	インストールしたディレクトリ (c:\\msysgit\\msys.exe など) から `msys` を実行します。
 3.	「`cd bin`」と入力し、`bin` ディレクトリに移動します。
 
 
@@ -133,14 +133,14 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 
 ## Putty 用の PPK を作成する ##
 
-1. 次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. 次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
 2. Puttygen は、以前作成された秘密キー (`myPrivateKey.key`) を読み取ることができない可能性があります。それを Puttygen で認識できる RSA 秘密キーに変換するには、次のコマンドを使用してください。
 
 		# openssl rsa -in ./myPrivateKey.key -out myPrivateKey_rsa
 		# chmod 600 ./myPrivateKey_rsa
 
-	このコマンドにより、myPrivateKey_rsa という秘密キーが新たに生成されます。
+	このコマンドにより、myPrivateKey\_rsa という秘密キーが新たに生成されます。
 
 3. `puttygen.exe` を実行します。
 
@@ -163,7 +163,7 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 
 ## Putty を使用して Linux 仮想マシンに接続する ##
 
-1.	次の場所から putty をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1.	次の場所から putty をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2.	putty.exe を実行します。
 3.	ホスト名として、管理ポータルの IP を入力します。
 
@@ -176,4 +176,4 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

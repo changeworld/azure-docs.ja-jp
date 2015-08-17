@@ -76,4 +76,4 @@
 
 [ストリーミング コンテンツを配信する](media-services-deliver-streaming-content.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -36,9 +36,9 @@
 
 3. まだストレージ アカウントを作成していない場合には、[Azure ストレージ アカウントについて](../storage-create-storage-account.md)を参照してください。
 
-4. 管理ポータルで、[**ストレージ**]、ストレージ アカウント、[**キーの管理**] の順にクリックします。
+4. 管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
-5. **Storage アカウント名**と**アクセス キー**をメモします。
+5. **ストレージ アカウント名**と**アクセス キー**をメモします。
  
 6. モバイル サービスで [**構成**] タブをクリックして、下にスクロールして [**接続文字列**] を表示します。`StorageConnectionString` という**名前**で、次の形式で表されるストレージ アカウント接続文字列である**値**を含む新しい接続文字列を入力します。
 
@@ -70,7 +70,7 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 	        public bool Complete { get; set; }
 	    }
 
-	>[AZURE.NOTE]**StorageData** 型には ID プロパティが含まれ、このプロパティには *partitionId*,* rowValue * という形式の文字列の複合キーを入力する必要があります。
+	>[AZURE.NOTE]**StorageData** 型には ID プロパティが含まれ、このプロパティには *partitionId*,*rowValue* という形式の文字列の複合キーを入力する必要があります。
 
 2. **TodoItemController** で、次の using ステートメントを追加します。
 
@@ -135,9 +135,9 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 
 ここまでで、テーブル ストレージを .NET バックエンドに使用するのがいかに簡単かを説明したので、次に示すその他のバックエンド ストレージ オプションの使用も検討してみてください。
 
-+ [.NET バックエンドによる MongoDB をデータ ストアとして使用するサービスの作成](mobile-services-dotnet-backend-use-non-relational-data-store.md)</br>完了したばかりのチュートリアルと同じように、このトピックでは、モバイル サービスに非リレーショナル データ ストアを使用する方法を紹介しています。このチュートリアルでは、データ ストアとして SQL Database ではなく MongoDB が使用されるように Mobile Services クイック スタート プロジェクトを変更します。
++ [.NET バックエンドによる MongoDB をデータ ストアとして使用するサービスの作成](mobile-services-dotnet-backend-use-non-relational-data-store.md)</br>完了したばかりのチュートリアルと同じように、このトピックでは、Mobile Services に非リレーショナル データ ストアを使用する方法を紹介しています。このチュートリアルでは、データ ストアとして SQL Database ではなく MongoDB が使用されるように Mobile Services クイック スタート プロジェクトを変更します。
  
-+ [ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)</br>ハイブリッド接続により、モバイル サービスを安全にオンプレミスのアセットに接続します。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされているアセットには、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。
++ [ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)</br>ハイブリッド接続により、モバイル サービスを安全にオンプレミスの資産に接続します。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされている資産には、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。
 
 + [Mobile Services を使用した Azure Storage へのイメージのアップロード](mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage.md)</br>TodoList サンプル プロジェクトを拡張して、アプリケーションから Azure Blob ストレージにイメージをアップロードする方法を説明します。
 
@@ -158,4 +158,4 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

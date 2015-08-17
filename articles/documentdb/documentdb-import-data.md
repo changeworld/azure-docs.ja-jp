@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="DocumentDB へのデータのインポート | Azure" 
+	pageTitle="DocumentDB へのデータのインポート | Microsoft Azure" 
 	description="オープン ソースの DocumentDB データ移行ツールを使用して、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、DocumentDB コレクションなど、さまざまなソースからデータを DocumentDB にインポートする方法について説明します。" 
 	services="documentdb" 
 	authors="stephbaron" 
-	manager="johnmac" 
+	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
 
@@ -137,20 +137,7 @@ SQL ソース インポーター オプションを使用して、個々の SQL 
 
 Address.AddressType や Address.Location.StateProvinceName などのエイリアスに注目してください。入れ子の区切り記号 "." を指定することで、インポート時に Address や Address.Location のサブドキュメントが作成されています。DocumentDB で結果として生成されるドキュメントの例を以下に示します。
 
-*{
-  "id": "956",
-  "Name": "Finer Sales and Service",
-  "Address": {
-    "AddressType": "Main Office",
-    "AddressLine1": "#500-75 O'Connor Street",
-    "Location": {
-      "City": "Ottawa",
-      "StateProvinceName": "Ontario"
-    },
-    "PostalCode": "K4B 1S2",
-    "CountryRegionName": "Canada"
-  }
-}*
+*{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "\#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
  
 SQL Server からインポートするためのコマンド ライン サンプルを以下にいくつか示します。
 
@@ -170,20 +157,9 @@ SQL ソースの場合と同様、[入れ子の区切り記号] プロパティ�
 
 ![Screenshot of CSV sample records](./media/documentdb-import-data/csvsample.png)
 
-DomainInfo.Domain_Name や RedirectInfo.Redirecting などのエイリアスに注目してください。入れ子の区切り記号 "." を指定することで、インポート時に DomainInfo や RedirectInfo のサブドキュメントが作成されます。DocumentDB で結果として生成されるドキュメントの例を以下に示します。
+DomainInfo.Domain\_Name や RedirectInfo.Redirecting などのエイリアスに注目してください。入れ子の区切り記号 "." を指定することで、インポート時に DomainInfo や RedirectInfo のサブドキュメントが作成されます。DocumentDB で結果として生成されるドキュメントの例を以下に示します。
 
-*{
-  "DomainInfo": {
-    "Domain_Name": "ACUS.GOV",
-    "Domain_Name_Address": "http://www.ACUS.GOV"
-  },
-  "Federal Agency": "Administrative Conference of the United States",
-  "RedirectInfo": {
-    "Redirecting": "0",
-    "Redirect_Destination": ""
-  },
-  "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"
-}*
+*{ "DomainInfo": { "Domain\_Name": "ACUS.GOV", "Domain\_Name\_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect\_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 インポート ツールは、CSV ファイル内の引用符なしの値の型情報を推測しようとします (引用符で囲まれた値は、常に文字列として扱われます)。型は、数値型、DateTime 型、ブール型の順に識別されます。
 
@@ -271,7 +247,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 DocumentDB ソース インポーター オプションには、次の詳細オプションがあります。
 
-1. 内部フィールドを含める: エクスポート内の DocumentDB ドキュメント システム プロパティ (_rid、_ts など) を含めるかどうかを指定します。
+1. 内部フィールドを含める: エクスポート内の DocumentDB ドキュメント システム プロパティ (\_rid、\_ts など) を含めるかどうかを指定します。
 2. エラー発生時の再試行回数: 一時的なエラー (ネットワーク接続の中断など) が発生した場合に DocumentDB への接続を再試行する回数を指定します。
 3. 再試行の間隔: 一時的なエラー (ネットワーク接続の中断など) が発生した場合に DocumentDB への接続を次に再試行するまでの待機時間を指定します。
 4. 接続モード: DocumentDB で使用する接続モードを指定します。使用できる選択肢は、DirectTcp、DirectHttps、およびゲートウェイです。Direct という語が付いている接続モードの方が高速です。これに対して、ゲートウェイ モードはポート 443 のみを使用するため、ファイアウォールとの適合性が高いという特徴があります。
@@ -322,7 +298,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 > [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
 
-1 つのコレクションにインポートするには、データのインポート先のコレクション名を入力し、[追加] をクリックします。複数のコレクションにインポートするには、各コレクション名を個別に入力するか、次の構文を使用して複数のコレクションを指定します。*collection_prefix*[開始インデックス - 終了インデックス]。この構文を使用して複数のコレクションを指定する場合、次の点に注意してください。
+1 つのコレクションにインポートするには、データのインポート先のコレクション名を入力し、[追加] をクリックします。複数のコレクションにインポートするには、各コレクション名を個別に入力するか、次の構文を使用して複数のコレクションを指定します。*collection\_prefix*[開始インデックス - 終了インデックス]。この構文を使用して複数のコレクションを指定する場合、次の点に注意してください。
 
 1. 範囲名のパターンでサポートされるのは整数のみです。たとえば、collection[0-3] と指定すると、collection0、collection1、collection2、collection3 が生成されます。
 2. 省略構文を使用することができます。collection[3] は、手順 1. で説明したのと同じコレクションのセットを生成します。
@@ -346,7 +322,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 -	文字列: 文字列値として保持します。
 -	エポック: エポック番号値として保持します。
--	両方: 文字列値およびエポック番号値の両方を保持します。このオプションにより、サブドキュメントが作成されます。例: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 } 
+-	両方: 文字列値およびエポック番号値の両方を保持します。このオプションにより、サブドキュメントが作成されます。例: "date\_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 } 
 
 
 DocumentDB 一括インポーターには、次の詳細オプションがあります。
@@ -374,7 +350,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 > [AZURE.NOTE][確認] を使用して、[接続文字列] フィールドで指定した DocumentDB インスタンスにアクセスできることを確認してください。
 
-1 つのコレクションにインポートするには、データのインポート先のコレクション名を入力し、[追加] をクリックします。複数のコレクションにインポートするには、各コレクション名を個別に入力するか、次の構文を使用して複数のコレクションを指定します。*collection_prefix*[開始インデックス - 終了インデックス]。この構文を使用して複数のコレクションを指定する場合、次の点に注意してください。
+1 つのコレクションにインポートするには、データのインポート先のコレクション名を入力し、[追加] をクリックします。複数のコレクションにインポートするには、各コレクション名を個別に入力するか、次の構文を使用して複数のコレクションを指定します。*collection\_prefix*[開始インデックス - 終了インデックス]。この構文を使用して複数のコレクションを指定する場合、次の点に注意してください。
 
 1. 範囲名のパターンでサポートされるのは整数のみです。たとえば、collection[0-3] と指定すると、collection0、collection1、collection2、collection3 が生成されます。
 2. 省略構文を使用することができます。collection[3] は、手順 1. で説明したのと同じコレクションのセットを生成します。
@@ -394,7 +370,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 -	文字列: 文字列値として保持します。
 -	エポック: エポック番号値として保持します。
--	両方: 文字列値およびエポック番号値の両方を保持します。このオプションにより、サブドキュメントが作成されます。例: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 } 
+-	両方: 文字列値およびエポック番号値の両方を保持します。このオプションにより、サブドキュメントが作成されます。例: "date\_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 } 
 
 DocumentDB シーケンシャル レコード インポーターには、次の詳細オプションがあります。
 
@@ -501,4 +477,4 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

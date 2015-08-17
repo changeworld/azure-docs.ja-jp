@@ -79,4 +79,4 @@ Azure リソース マネージャーでは、リソース プロバイダーは
 
 [Azure リソース マネージャーの概要](resource-group-overview.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -110,7 +110,7 @@ PolyBase は、区切り文字、Hive RCFILE、および HIVE ORC 形式の圧�
 
 外部テーブルの定義は、リレーショナル テーブルの定義と似ています。主な相違点は、データの場所と形式です。外部テーブルの定義は、SQL Data Warehouse データベースに格納されます。データは、データ ソースで指定された場所に格納されます。
 
-LOCATION オプションで、データ ソースのルートからデータまでのパスが指定されます。この例では、データは 'wasbs://mycontainer@ test.blob.core.windows.net/path/Demo/' にあります。
+LOCATION オプションで、データ ソースのルートからデータまでのパスが指定されます。この例では、データは 'wasbs://mycontainer@ test.blob.core.windows.net/path/Demo/' にあります。同じテーブルのすべてのファイルは、Azure BLOB の同じ論理フォルダーの下にある必要があります。
 
 ```
 -- Creating external table pointing to file stored in Azure Storage
@@ -129,7 +129,6 @@ WITH (LOCATION='/Demo/',
 
 > [AZURE.NOTE]この時点では、外部テーブルで統計を作成することはできません。
 
-同じテーブルのすべてのファイルは、Azure BLOB の同じ論理フォルダーの下にある必要があります。SQL Data Warehouse を使用して並列処理を行う場合、可能であれば Azure Storage データを 1GB 以下のファイルに分割することをお勧めします。
 
 リファレンス トピック: [CREATE EXTERNAL TABLE (Transact-SQL)][]。
 
@@ -207,4 +206,4 @@ PolyBase でのロードでは、UTF-8 エンコード スタイルのみがサ�
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-jp/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-jp/library/ms189450.aspx
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

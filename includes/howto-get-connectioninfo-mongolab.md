@@ -8,11 +8,11 @@ MongoLab データベースをプロビジョニングすると、MongoLab に�
 1. アドオンの一覧で MongoLab サービスを見つけます。![MongolabEntry][entry-mongolabaddon]
 1. アドオンの名前をクリックして、アドオン ページに移動します。
 1. **[接続文字列]** をクリックします。![ConnectionInfoButton][button-connectioninfo]MongoLab の URI が表示されます。![ConnectionInfoScreen][screen-connectioninfo]  
-1.  MONGOLAB_URI 値の右側のクリップボード ボタンをクリックし、値全体をクリップボードにコピーします。
+1.  MONGOLAB\_URI 値の右側のクリップボード ボタンをクリックし、値全体をクリップボードにコピーします。
 
 [entry-mongolabaddon]: ./media/howto-get-connectioninfo-mongolab/entry-mongolabaddon.png
 [button-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/button-connectioninfo.png
 [screen-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/dialog-mongolab_connectioninfo.png
 [button-addons]: ./media/howto-get-connectioninfo-mongolab/button-addons.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

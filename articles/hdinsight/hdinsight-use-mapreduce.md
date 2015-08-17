@@ -67,13 +67,13 @@ HDInsight での Hadoop ストリーミングの使用例については、以�
 
 Azure BLOB ストレージが HDInsight の既定のストレージであるため、**/example/data/gutenberg/davinci.txt** を使用してファイルにアクセスすることもできます。
 
-> [AZURE.NOTE]上の構文 **wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、**wasb://mycontainer@mystorage.blob.core.windows.net/example/data/gutenberg/davinci.txt** のように指定します。
+> [AZURE.NOTE]上の構文 ****wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/gutenberg/davinci.txt** のように指定します。
 
 ##<a id="job"></a>MapReduce 例について
 
-この例で使用される MapReduce ジョブは **wasb://example/jars/hadoop-mapreduce-examples.jar** にあり、HDInsight クラスターと共に提供されます。これには、**davinci.txt** に対して実行するワード カウント例が含まれます。
+この例で使用される MapReduce ジョブは ****wasb://example/jars/hadoop-mapreduce-examples.jar** にあり、HDInsight クラスターと共に提供されます。これには、**davinci.txt** に対して実行するワード カウント例が含まれます。
 
-> [AZURE.NOTE]HDInsight 2.1 クラスターの場合、ファイルの場所は **wasb:///example/jars/hadoop-examples.jar** です。
+> [AZURE.NOTE]HDInsight 2.1 クラスターの場合、ファイルの場所は ****wasb:///example/jars/hadoop-examples.jar** です。
 
 参考のために、ワード カウント MapReduce ジョブの Java コードを以下に示します。
 
@@ -192,4 +192,4 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

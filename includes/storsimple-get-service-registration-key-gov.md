@@ -1,4 +1,3 @@
-
 #### StorSimple サービス登録キーを取得するには
 
 1. **[StorSimple Manager]** サービス ページで、作成したサービスをクリックします。この操作により、**[クイック スタート]** ページが表示されます (**[クイック スタート]** ページには、クイック スタート アイコン ![StorSimple のクイック スタート アイコン](./media/storsimple-get-service-registration-key-gov/HCS_QuickStartIcon-include.png) をクリックすることによっていつでもアクセスできます)。
@@ -19,4 +18,4 @@
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

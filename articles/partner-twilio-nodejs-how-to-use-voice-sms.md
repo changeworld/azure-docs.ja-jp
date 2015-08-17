@@ -63,7 +63,7 @@ Twilio サービスを使用する前に、まず、[アカウントにサイン
 
 Twilio バックエンドに対して認証された要求を行うには、アカウント SID と認証トークンが必要です。これらが Twilio アカウントのユーザー名とパスワードのセットとして機能します。これらを Azure のノード モジュールで使用するように構成する最も安全な方法は、システム環境変数を通じて行う方法です。システム環境変数は、Azure 管理コンソールで直接設定できます。
 
-node.js Web サイトを選択し、[構成] リンクをクリックします。下へ少しスクロールすると表示される領域で、アプリケーションの構成プロパティを設定します。以下のように、Twilio アカウント資格情報を入力します ([Twilio ダッシュボードで確認できます][twilio_dashboard])。それぞれの名前を "TWILIO_ACCOUNT_SID" と "TWILIO_AUTH_TOKEN" にします。
+node.js Web サイトを選択し、[構成] リンクをクリックします。下へ少しスクロールすると表示される領域で、アプリケーションの構成プロパティを設定します。以下のように、Twilio アカウント資格情報を入力します ([Twilio ダッシュボードで確認できます][twilio_dashboard])。それぞれの名前を "TWILIO\_ACCOUNT\_SID" と "TWILIO\_AUTH\_TOKEN" にします。
 
 ![Azure 管理コンソール][azure-admin-console]
 
@@ -80,7 +80,7 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
 <a id="makecall"/>
 ## 発信通話の実行
 
-選択した番号に電話をかける単純なフォームを作成しましょう。server.js を開き、次のコードを入力します。"CHANGE_ME" と記述されている個所は、自分の Azure Web サイトの名前に置き換えてください。
+選択した番号に電話をかける単純なフォームを作成しましょう。server.js を開き、次のコードを入力します。"CHANGE\_ME" と記述されている個所は、自分の Azure Web サイトの名前に置き換えてください。
 
     // Module dependencies
     var express = require('express'), 
@@ -233,4 +233,4 @@ Azure で node.js と Twilio を活用してください。
 [pair]: http://www.twilio.com/blog/2013/06/pair-programming-in-the-browser-with-twilio.html
 [azure-admin-console]: ./media/partner-twilio-nodejs-how-to-use-voice-sms/twilio_1.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

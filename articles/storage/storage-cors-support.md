@@ -134,40 +134,12 @@ CORS ルールは、次のように評価されます。
 
 次に、以下の CORS 要求について考えてみましょう。
 
-<table>
-<tr>
-<td colspan=3><b>要求</b></td>
-<td colspan=2><b>応答</b></td>
-</tr>
-<tr>
-<td><b>メソッド</b></td>
-<td><b>元のドメイン</b></td>
-<td><b>要求ヘッダー</b></td>
-<td><b>ルールの一致</b></td>
-<td><b>結果</b></td>
-</tr>
-<tr>
-<td><b>PUT</b></td>
-<td>http://www.contoso.com</td>
-<td>x-ms-blob-content-type</td>
-<td>最初のルール</td>
-<td>成功</td>
-</tr>
-<tr>
-<td><b>GET</b></td>
-<td>http://www.contoso.com</td>
-<td>x-ms-blob-content-type</td>
-<td>2 番目のルール</td>
-<td>成功</td>
-</tr>
-<tr>
-<td><b>GET</b></td>
-<td>http://www.contoso.com</td>
-<td>x-ms-blob-content-type</td>
-<td>2 番目のルール</td>
-<td>失敗</td>
-</tr>
-</table>
+要求||| Response||
+---|---|---|---|---
+**メソッド** |**元のドメイン** |**要求ヘッダー** |**ルールの一致** |**結果**
+**PUT** | http://www.contoso.com |x-ms-blob-content-type | 最初のルール |成功
+**GET** | http://www.contoso.com| x-ms-blob-content-type | 2 番目のルール |成功
+**GET** | http://www.contoso.com| x-ms-blob-content-type | 2 番目のルール | 失敗
 
 最初の要求は最初のルールと一致します (元のドメインが許可される元のドメインと一致し、メソッドが許可されるメソッドと一致し、ヘッダーが許可されるヘッダーと一致します)。そのため、成功します。
 
@@ -185,7 +157,7 @@ CORS ルールは、次のように評価されます。
 
 Azure ストレージでは、次の場合に、実際の GET/HEAD 要求の *Vary* ヘッダーを **Origin** に設定します。
 
-- 要求元のドメインと CORS ルールで定義されている許可される元のドメインが完全に一致する。完全に一致するためには、CORS ルールにワイルドカード文字 '*' が含まれていない必要があります。
+- 要求元のドメインと CORS ルールで定義されている許可される元のドメインが完全に一致する。完全に一致するためには、CORS ルールにワイルドカード文字 ' * ' が含まれていない必要があります。
 
 - 要求元のドメインと一致するルールはないが、ストレージ サービスに対して CORS が有効になっている。
 
@@ -195,85 +167,17 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 
 前に説明した例に基づいて、Azure ストレージが GET/HEAD 要求にどのように応答するかを次の表に示します。
 
-<table>
-<tr>
-<td><b>要求</b></td>
-<td colspan=3><b>アカウントの設定とルールの評価結果</b></td>
-<td colspan=3><b>応答</b></td>
-</tr>
-<tr>
-<td><b>要求に Origin ヘッダーが存在する</b></td>
-<td><b>このサービスに CORS ルールが指定されている</b></td>
-<td><b>すべての元のドメインを許可する照合ルール (*) が存在する</b></td>
-<td><b>元のドメインと完全に一致する照合ルールが存在する</b></td>
-<td><b>Origin に設定された Vary にヘッダーが応答に含まれている</b></td>
-<td><b>Access-Control-Allowed-Origin が応答に含まれている: "*"</b></td>
-<td><b>Access-Control-Exposed-Headers が応答に含まれている</b></td>
-</tr>
-<tr>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>いいえ</td>
-</tr>
-<tr>
-<td>いいえ</td>
-<td>あり</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>あり</td>
-<td>いいえ</td>
-<td>いいえ</td>
-</tr>
-<tr>
-<td>いいえ</td>
-<td>あり</td>
-<td>あり</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>あり</td>
-<td>あり</td>
-</tr>
-<tr>
-<td>あり</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>いいえ</td>
-</tr>
-<tr>
-<td>あり</td>
-<td>あり</td>
-<td>いいえ</td>
-<td>あり</td>
-<td>あり</td>
-<td>いいえ</td>
-<td>あり</td>
-</tr>
-<tr>
-<td>あり</td>
-<td>あり</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>あり</td>
-<td>いいえ</td>
-<td>いいえ</td>
-</tr>
-<tr>
-<td>あり</td>
-<td>あり</td>
-<td>あり</td>
-<td>いいえ</td>
-<td>いいえ</td>
-<td>あり</td>
-<td>あり</td>
-</tr>
-</table>
+要求|アカウントの設定とルールの評価結果|||Response|||
+---|---|---|---|---|---|---|---|---
+**要求に Origin ヘッダーが存在する** | **このサービスに CORS ルールが指定されている** | **すべての元のドメインを許可する照合ルール (*) が存在する** | **元のドメインと完全に一致する照合ルールが存在する** | **Origin に設定された Vary にヘッダーが応答に含まれている** | **Access-Control-Allowed-Origin が応答に含まれている: "*"** | **Access-Control-Exposed-Headers が応答に含まれている**
+いいえ|いいえ|いいえ|いいえ|いいえ|いいえ|いいえ
+いいえ|あり|いいえ|いいえ|あり|いいえ|いいえ
+いいえ|あり|あり|いいえ|いいえ|あり|あり
+あり|いいえ|いいえ|いいえ|いいえ|いいえ|いいえ
+あり|あり|いいえ|あり|あり|いいえ|あり
+あり|あり|いいえ|いいえ|あり|いいえ|いいえ
+あり|あり|あり|いいえ|いいえ|あり|あり
+
 
 ## CORS 要求への課金
 
@@ -292,4 +196,4 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 [W3C のクロス オリジン リソース共有の仕様](http://www.w3.org/TR/cors/)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

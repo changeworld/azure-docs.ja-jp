@@ -173,4 +173,4 @@ TrackMetric、または TrackEvent の測定値パラメーターを使用した
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

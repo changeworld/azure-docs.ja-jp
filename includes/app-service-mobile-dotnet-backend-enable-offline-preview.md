@@ -6,4 +6,4 @@ ASP.NET プロジェクトは、次のように設定されています。
 
 * WebApiConfig.cs 内の MobileAppConfiguration オブジェクトで `UseDefaultConfiguration()` メソッドが呼び出されている。これによって、上記の NuGet パッケージが提供する `AddTablesWithEntityFramework()` 拡張メソッドが呼び出されます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

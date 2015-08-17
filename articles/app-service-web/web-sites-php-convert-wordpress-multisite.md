@@ -34,7 +34,7 @@
 
 ## Multisite の許可
 
-まず、`wp-config.php` ファイルの **WP_ALLOW_MULTISITE** 定数を使用して、Multisite を有効にする必要があります。Web アプリ ファイルを編集するには、2 つの方法があります。FTP を使用する方法と、Git を使用する方法です。どちらのセットアップ方法にも慣れていない場合は、以下のチュートリアルを参照してください。
+まず、`wp-config.php` ファイルの **WP\_ALLOW\_MULTISITE** 定数を使用して、Multisite を有効にする必要があります。Web アプリ ファイルを編集するには、2 つの方法があります。FTP を使用する方法と、Git を使用する方法です。どちらのセットアップ方法にも慣れていない場合は、以下のチュートリアルを参照してください。
 
 * [MySQL および FTP による PHP Web サイト][website-w-mysql-and-ftp-ftp-setup]
 
@@ -93,7 +93,7 @@ Azure Web Apps でドメインをサイトにマップするには、まず、�
 
 * 自分のドメインの DNS マネージャーにログインします
 * 新しい CNAME *awverify* を作成します
-* *awverify* が *awverify.YOUR_DOMAIN.azurewebsites.net* を指すようにします
+* *awverify* が *awverify.YOUR\_DOMAIN.azurewebsites.net* を指すようにします
 
 場合によっては、DNS の変更が完全に有効になるまで少し時間がかかります。以下の手順がすぐにはうまく動作しない場合は、しばらくしてからやり直してください。
 
@@ -113,7 +113,7 @@ Azure ポータルを通じて Web アプリに戻り、**[設定]** をクリ�
 
 ここまでの手順が成功すると、DNS A レコードを通じてドメインを自分の Azure Web アプリに割り当てられるようになります。
 
-ここで重要なのは、Azure Web アプリでは CNAME と A レコードのどちらも許容されるものの、適切なドメイン マッピングを可能にするには A レコードを使う*必要*があるということです。Azure では、YOUR_DOMAIN.azurewebsites.net で CNAME が作成されますが、CNAME は他の CNAME に転送することができません。
+ここで重要なのは、Azure Web アプリでは CNAME と A レコードのどちらも許容されるものの、適切なドメイン マッピングを可能にするには A レコードを使う*必要*があるということです。Azure では、YOUR\_DOMAIN.azurewebsites.net で CNAME が作成されますが、CNAME は他の CNAME に転送することができません。
 
 DNS マネージャーに戻り、前の手順でメモした IP アドレスを指すように A レコードをセットアップします。
 
@@ -154,4 +154,4 @@ Azure Web Apps では、Web アプリに追加できるドメインの数に制�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

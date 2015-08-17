@@ -95,4 +95,4 @@ Service Fabric を使用すると、次の操作を実行できます。
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

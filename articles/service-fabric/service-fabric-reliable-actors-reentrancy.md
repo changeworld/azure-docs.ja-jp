@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Service Fabric のアクターの再入"
-   description="Azure Service Fabric のアクターの再入の概要"
+   pageTitle="高信頼アクターの再入"
+   description="Service Fabric 高信頼アクターの再入の概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/09/2015"
+   ms.date="08/05/2015"
    ms.author="amanbha"/>
 
 
-# アクターの再入
+# 高信頼アクターの再入
 Fabric アクターは、既定で、論理呼び出しコンテキスト ベースの再入を使用できます。これにより、アクターは、同じ呼び出しコンテキストのチェーンにある場合は再入可能になります。たとえば、アクター A がアクター C にメッセージを送信するアクター B にメッセージを送信する場合です。アクター C がアクター A を呼び出す場合は、メッセージ処理の一環として、メッセージが許可されるように再入可能です。処理が完了するまで、アクター A では異なる呼び出しコンテキストの一部である他のメッセージがブロックされます。
 
 論理呼び出しコンテキスト ベースの再入を許可しないようにするアクターは、アクター クラスを `ReentrantAttribute(ReentrancyMode.Disallowed)` で装飾することで無効にできます。
@@ -39,6 +39,5 @@ class VoicemailBoxActor : Actor<VoicemailBox>, IVoicemailBoxActor
     ...
 }
 ```
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

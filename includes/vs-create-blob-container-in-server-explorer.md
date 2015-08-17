@@ -12,4 +12,4 @@ Visual Studio の**サーバー エクスプローラー**を使用すると、A
 
 [Image1]: ./media/vs-create-blob-container-in-server-explorer/vs-storage-create-blob-containers-in-Server-Explorer.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

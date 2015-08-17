@@ -146,10 +146,10 @@
 			{
             	"type": "BlobSink"
 			},
-			"Translator": 
+			"translator": 
 			{
       			"type": "TabularTranslator",
-      			"ColumnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"
+      			"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"
     		}
 		}
 	}
@@ -157,7 +157,7 @@
 ![列マッピング][image-data-factory-column-mapping-1]
 
 ### 例 2 – SQL クエリを使用した SQL Server から Azure BLOB への列マッピング
-この例では、(前の例のテーブルとの比較として) SQL クエリを使用して、内部設置型 SQL Server からデータを抽出し、クエリ結果の列をソース アーティファクトにマップした後、ターゲット アーティファクトにマップします。この例では、クエリは 5 つの列を返します。
+この例では、(前の例のテーブルとの比較として) SQL クエリを使用して、オンプレミスの SQL Server からデータを抽出し、クエリ結果の列をソース アーティファクトにマップした後、ターゲット アーティファクトにマップします。この例では、クエリは 5 つの列を返します。
 
 	{
 		"name": "CopyActivity",
@@ -170,16 +170,16 @@
 			"source":
 			{
 				"type": "SqlSource",
-				"SqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartDateTime = \'{0:yyyyMMdd-HH}\'', SliceStart)"
+				"SqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartDateTime = \'{0:yyyyMMdd-HH}\'', WindowStart)"
 			},
 			"sink":
 			{
             	"type": "BlobSink"
 			},
-			"Translator": 
+			"translator": 
 			{
       			"type": "TabularTranslator",
-      			"ColumnMappings": "UserId: MyUserId, Group: MyGroup,Name: MyName"
+      			"columnMappings": "UserId: MyUserId, Group: MyGroup,Name: MyName"
     		}
 		}
 	}
@@ -194,7 +194,7 @@
 | ----------- | ------------------------ |
 | SqlSource | テーブル定義の Structure セクションで定義されたデータ型は無視されます。基になる SQL データベースで定義されたデータ型は、コピー アクティビティのデータ抽出に使用されます。 |
 | SqlSink | テーブル定義の Structure セクションで定義されたデータ型は無視されます。基になるソースとターゲットのデータ型を比較し、型の不一致がある場合は、暗黙的な型の変換が行われます。 |
-| BlobSource | BlobSource から BlobSink に転送する場合、型の変換は行われません。テーブル定義の Structure セクションで定義されたデータ型は無視されます。BlobSink 以外のターゲットの場合は、テーブル定義の Structure セクションで定義されたデータ型が受け入れられます。テーブル定義で Structure が指定されていない場合、型の処理は BlobSource の format プロパティに基づいて実行されます。TextFormat：すべての列の種類は文字列として扱われ、すべての列名は "Prop_<0-N>"で設定されます。AvroFormat: Avro ファイルに用意された列の種類と名前を使用します。
+| BlobSource | BlobSource から BlobSink に転送する場合、型の変換は行われません。テーブル定義の Structure セクションで定義されたデータ型は無視されます。BlobSink 以外のターゲットの場合は、テーブル定義の Structure セクションで定義されたデータ型が受け入れられます。テーブル定義で Structure が指定されていない場合、型の処理は BlobSource テーブルの format プロパティに基づいて実行されます。TextFormat: すべての列の種類は文字列として扱われ、すべての列名は "Prop\_<0-N>" として設定されます。AvroFormat: Avro ファイルに用意された列の種類と名前を使用します。
 | BlobSink | テーブル定義の Structure セクションで定義されたデータ型は無視されます。基になる入力データ ストアで定義されたデータ型が使用されます。列は、Avro シリアル化の null 許容型として指定されます。 |
 | AzureTableSource | テーブル定義の Structure セクションで定義されたデータ型は無視されます。基になる Azure テーブルで定義されたデータ型が使用されます。 |
 | AzureTableSink | テーブル定義の Structure セクションで定義されたデータ型は無視されます。基になる入力データ ストアで定義されたデータ型が使用されます。 |
@@ -261,7 +261,7 @@
 ストアド プロシージャ機能は[テーブル値パラメーター][table-valued-parameters]を利用しています。
 
 ## テキスト ファイルのエンコードを指定する
-UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキスト ファイルは、通常、歴史的経緯から他のエンコードを採用しています。**encodingName** プロパティを使用すると、TextFormat 型のテーブルのコード ページ名でエンコードを指定できます。有効なエンコード名の一覧については、Encoding.EncodingName プロパティを参照してください。例: windows-1250 または shift_jis。既定値は UTF-8 です。有効なエンコード名については、「[Encoding クラス](https://msdn.microsoft.com/library/system.text.encoding.aspx)」を参照してください。
+UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキスト ファイルは、通常、歴史的経緯から他のエンコードを採用しています。**encodingName** プロパティを使用すると、TextFormat 型のテーブルのコード ページ名でエンコードを指定できます。有効なエンコード名の一覧については、Encoding.EncodingName プロパティを参照してください。例: windows-1250 または shift\_jis。既定値は UTF-8 です。有効なエンコード名については、「[Encoding クラス](https://msdn.microsoft.com/library/system.text.encoding.aspx)」を参照してください。
 
 ## 関連項目
 
@@ -289,4 +289,4 @@ UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキス
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity-advanced/ColumnMappingSample2.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

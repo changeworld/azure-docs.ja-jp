@@ -159,7 +159,7 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
 
 有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
 
-* FunctionId (*{WebJob name}*.Functions.\*{Function name}\* の形式、たとえば、WebJob1.Functions.CopyBlob)
+* FunctionId (*{WebJob name}*.Functions.*{Function name}* の形式、たとえば、WebJob1.Functions.CopyBlob)
 * BLOB の種類 ("BlockBlob" か "PageBlob")
 * コンテナー名
 * BlobName
@@ -210,7 +210,7 @@ Web ジョブ SDK では、`BlobTrigger` 関数は同一の新しいまたは更
 
 BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が指定した Azure ストレージ アカウントの *azure-webjobs-hosts* という名前のコンテナーに格納されています。BLOB の配信確認メッセージには次の情報が含まれています。
 
-* BLOB に対して呼び出された関数 ("\*{WebJob name}\*.Functions.\*{Function name}\*"。たとえば、"WebJob1.Functions.CopyBlob")
+* BLOB に対して呼び出された関数 ("*{WebJob name}*.Functions.*{Function name}*"。たとえば、"WebJob1.Functions.CopyBlob")
 * コンテナーの名前
 * BLOB の種類 ("BlockBlob" か "PageBlob")
 * BLOB の名前
@@ -239,4 +239,4 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 このガイドでは、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

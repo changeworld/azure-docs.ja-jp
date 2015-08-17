@@ -91,4 +91,4 @@ API アプリを作成すると、Logic App のアクションとして OneDrive
 [新しい Logic App の作成]: app-service-logic-create-a-logic-app.md
 [OneDrive API の定義]: https://msdn.microsoft.com/ja-jp/library/dn974227.aspx
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

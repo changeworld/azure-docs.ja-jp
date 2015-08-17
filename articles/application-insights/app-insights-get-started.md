@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="04/26/2015" 
+	ms.date="08/04/2015" 
 	ms.author="awills"/>
 
 # Visual Studio Application Insights を使ってみる
@@ -41,13 +41,14 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 <a href="app-insights-java-get-started.md">![Java](./media/app-insights-get-started/appinsights-gs-i-11-java.png)</a>|<a href="app-insights-java-get-started.md">Java プロジェクトに SDK を追加する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-java-get-started.md">![パフォーマンスと利用状況の監視](./media/app-insights-get-started/appinsights-gs-r-10-java.png)</a>
 <a href="app-insights-web-track-usage.md">![JavaScript](./media/app-insights-get-started/appinsights-gs-i-02-usage.png)</a>|<a href="app-insights-web-track-usage.md">Web ページに Application Insights のスクリプトを挿入する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-web-track-usage.md">![ページ ビューとブラウザーのパフォーマンス](./media/app-insights-get-started/appinsights-gs-r-02-usage.png)</a>
 <a href="app-insights-monitor-web-app-availability.md">![可用性](./media/app-insights-get-started/appinsights-gs-i-05-avail.png)</a>|<a href="app-insights-monitor-web-app-availability.md">Web テストを作成する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-monitor-web-app-availability.md">![可用性](./media/app-insights-get-started/appinsights-gs-r-05-avail.png)</a>
-<a href="app-insights-windows-get-started.md">![Windows と Windows Phone](./media/app-insights-get-started/appinsights-gs-i-06-device.png)</a>|<a href="app-insights-windows-get-started.md">デバイス アプリ プロジェクトに Application Insights を追加する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-windows-get-started.md">![クラッシュと使用状況データ](./media/app-insights-get-started/appinsights-gs-r-06-device.png)</a>
+<a href="app-insights-windows-get-started.md">![Windows と Windows Phone](./media/app-insights-get-started/appinsights-gs-i-06-device.png)</a>|<a href="app-insights-windows-get-started.md">Windows アプリ プロジェクトに Application Insights を追加する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-windows-get-started.md">![クラッシュと使用状況データ](./media/app-insights-get-started/appinsights-gs-r-06-device.png)</a>
+<a href="app-insights-platforms.md">![iOS、Android の詳細](./media/app-insights-get-started/appinsights-gs-i-07-device.png)</a>|<a href="app-insights-platforms.md">iOS または Android アプリに Application Insights を追加する</a><br/>![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-platforms.md">![クラッシュと使用状況データ](./media/app-insights-get-started/appinsights-gs-r-06-device.png)</a>
 
 ## サポートとフィードバック
 
 * 質問および問題点:
  * [トラブルシューティング][qna]
- * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-jp/home?forum=ApplicationInsights)
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
@@ -73,4 +74,4 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

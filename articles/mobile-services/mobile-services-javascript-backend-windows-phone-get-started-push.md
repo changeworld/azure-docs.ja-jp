@@ -66,7 +66,7 @@
 
 	>[AZURE.NOTE]このチュートリアルでは、モバイル サービスにより、トースト通知がデバイスに送信されます。タイル通知を送信する場合は、チャネルの **BindToShellTile** メソッドを呼び出す必要があります。
 
-4. App.xaml.cs 内で、**Application_Launching** イベント ハンドラーの先頭に、次に示す新しい **AcquirePushChannel** メソッドへの呼び出しを追加します。
+4. App.xaml.cs 内で、**Application\_Launching** イベント ハンドラーの先頭に、次に示す新しい **AcquirePushChannel** メソッドへの呼び出しを追加します。
 
         AcquirePushChannel();
 
@@ -74,7 +74,7 @@
 
 5. **F5** キーを押してアプリケーションを実行します。登録キーを示すポップアップ ダイアログが表示されます。
   
-6.	ソリューション エクスプローラーで、[**プロパティ**] を展開して WMAppManifest.xml ファイルを開き、[**機能**] タブをクリックして、**ID___CAP___PUSH_NOTIFICATION** 機能がオンであることを確認します。
+6.	ソリューション エクスプローラーで、[**プロパティ**] を展開して WMAppManifest.xml ファイルを開き、[**機能**] タブをクリックして、**ID\_\_\_CAP\_\_\_PUSH\_NOTIFICATION** 機能がオンであることを確認します。
 
    	![VS で通知を有効にする](./media/mobile-services-javascript-backend-windows-phone-get-started-push/mobile-app-enable-push-wp8.png)
 
@@ -180,4 +180,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

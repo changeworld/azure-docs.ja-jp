@@ -52,8 +52,8 @@
 ###前提条件
 概念と一般的な作成および構成手順を理解するために、以下のチュートリアルを完了する必要があります。
 
-1. [Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法)]: Service Bus のトピックとサブスクリプションの使用方法、トピックとサブスクリプションを格納する名前空間の作成方法、トピックとサブスクリプションへのメッセージの送信/受信方法の詳細について説明しています。 
-2. [Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: Windows ストア アプリを設定し、Notification Hubs を使用して通知を登録してから受信する方法について説明しています。 
+1. [Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法)]\: Service Bus のトピックとサブスクリプションの使用方法、トピックとサブスクリプションを格納する名前空間の作成方法、トピックとサブスクリプションへのメッセージの送信/受信方法の詳細について説明しています。 
+2. [Notification Hubs の使用 - Windows ユニバーサル チュートリアル]\: Windows ストア アプリを設定し、Notification Hubs を使用して通知を登録してから受信する方法について説明しています。 
 
 ###コード サンプル
 
@@ -272,4 +272,4 @@
 [Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

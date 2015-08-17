@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure AD Privileged Identity Management" 
-	description="Azure AD Privileged Identity Management とは何か、およびその構成方法について説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
-	editor="LisaToft"/>
+<properties
+	pageTitle="Azure AD Privileged Identity Management"
+	description="Azure AD Privileged Identity Management とは何か、およびその構成方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="IHenkel"
+	manager="stevepo"
+	editor=""/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/04/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/31/2015"
+	ms.author="inhenk"/>
 
 # Azure AD Privileged Identity Management
 
@@ -26,18 +26,18 @@ Azure AD Privileged Identity Management を使用すると、特権 ID と、Azu
 
 - Azure AD の管理者であるユーザーを検出する
 - ディレクトリ リソースへのオンデマンド "ジャスト イン タイム" 管理アクセスを有効にする
-- 管理者のアクセス履歴および管理者の割り当ての変更に関するレポートを取得する 
-- 特権ロールへのアクセスに関するアラートを受け取る 
+- 管理者のアクセス履歴および管理者の割り当ての変更に関するレポートを取得する
+- 特権ロールへのアクセスに関するアラートを受け取る
 
 このプレビューの Azure AD Privileged Identity Management では、次の組み込み Azure Active Directory 組織ロールを管理できます。
 
-- グローバル管理者 
-- 課金管理者 
+- グローバル管理者
+- 課金管理者
 - サービス管理者  
-- ユーザー管理者 
-- パスワード管理者 
+- ユーザー管理者
+- パスワード管理者
 
-## ジャスト イン タイム管理者アクセス 
+## ジャスト イン タイム管理者アクセス
 
 従来、管理者ロールへのユーザーの割り当てには、Azure 管理ポータルまたは Windows PowerShell が使用されています。その結果、そのユーザーは**永続的な管理者**になり、割り当てられたロールが常に有効になっています。このプレビューでは、**一時的な管理者**のサポートが追加されています。これは、割り当てられたロールに対するアクティブ化プロセスを完了する必要があるユーザーです。アクティブ化プロセスにより、Azure AD でのロールへのユーザーの割り当てが非アクティブからアクティブに変わります。
 
@@ -49,28 +49,28 @@ Azure AD Privileged Identity Management を使用すると、特権 ID と、Azu
 
 この拡張機能を初期化したユーザーは、自動的にディレクトリの最初の**セキュリティ管理者**になります。セキュリティ管理者だけが、この拡張機能にアクセスして他の管理者のアクセスを管理できます。初期化中に、Azure AD Privileged Identity Management のタイルが、Azure プレビュー ポータルのスタート画面に追加されます。
 
-## Privileged Identity Management ダッシュボード 
+## Privileged Identity Management ダッシュボード
 
 Azure AD Privileged Identity Management には、次のような重要な情報を提供するダッシュボードがあります。
 
 - 各特権ロールに割り当てられているユーザーの数  
-- 一時的管理者および永続的管理者の数 
-- 管理者のアクセスの履歴 
+- 一時的管理者および永続的管理者の数
+- 管理者のアクセスの履歴
 
 ![][2]
 
-## 特権ロールの管理 
+## 特権ロールの管理
 
 Azure AD Privileged Identity Management では、各ロールに永続的または一時的な管理者を追加または削除することによって、管理者を管理できます。
 
 ![][3]
 
-## ロール アクティブ化設定の構成 
+## ロール アクティブ化設定の構成
 
 ロールのアクティブ化の設定を使用して、次のような一時的ロール アクティブ化プロパティを構成できます。
 
 - ロールのアクティブ化の期間
-- ロールのアクティブ化の通知 
+- ロールのアクティブ化の通知
 - ロール アクティブ化プロセス中にユーザーが提供する必要のある情報  
 
 ![][4]
@@ -82,7 +82,7 @@ Azure AD Privileged Identity Management では、各ロールに永続的また�
 ロールのアクティブ化を要求する管理者は、Azure プレビュー ポータルで Azure AD Privileged Identity Management を初期化する必要があります。
 
 任意の種類の管理者が、Azure AD Privileged Identity Management を使用して自分のロールをアクティブ化できます。
- 
+
 ロールのアクティブ化には時間制限があります。ロール アクティブ化の設定では、アクティブ化の期間だけでなく、ロールをアクティブ化するために管理者が指定する必要がある情報を構成できます。
 
 ![][5]
@@ -105,6 +105,4 @@ Azure AD Privileged Identity Management を使用すると、特権ロールの�
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
 
- 
-
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

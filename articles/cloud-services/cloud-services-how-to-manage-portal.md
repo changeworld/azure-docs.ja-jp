@@ -106,4 +106,4 @@ Azure プレビュー ポータルでは、現在の Azure ポータルとは異
 
 [Azure プレビュー ポータル]: https://portal.azure.com
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

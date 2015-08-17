@@ -66,4 +66,4 @@ VNet を作成すると、VNet 内のサービスと VM はインターネット
 [仮想ネットワーク (VNet) の削除方法](../virtual-networks-delete-vnet)
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

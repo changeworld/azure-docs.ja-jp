@@ -1,7 +1,6 @@
 <properties
 	pageTitle="HDInsight Tools for Visual Studio を使用する方法 | Microsoft Azure"
 	description="Visual Studio Hadoop Tools for HDInsight をインストールして、Hadoop クラスターに接続し、Hive クエリを実行する方法について説明します。"
-	keywords="hadoop tools,hive query,visual studio"
 	services="HDInsight"
 	documentationCenter=""
 	authors="mumian"
@@ -67,7 +66,7 @@ HDInsight Tools for Visual Studio を使用して、HDInsight クラスターへ
 2.	**[ビュー]** メニューで、**[サーバー エクスプローラー]** をクリックして、サーバー エクスプローラー ウィンドウを開きます。
 3.	**[Azure]** を展開して、**[HDInsight]** を展開します。
 
-	>[AZURE.NOTE]**HDInsight タスクの一覧****その他のウィンドウ****表示****HDInsight タスクの一覧ウィンドウ**  
+	>[AZURE.NOTE]**[HDInsight タスク一覧]** ウィンドウが開きます。ウィンドウが表示されない場合は、**[ビュー]** メニューで **[その他のウィンドウ]** をクリックし、次に **[HDInsight タスク一覧]** ウィンドウをクリックして開くことができます。  
 4.	Azure サブスクリプションの資格情報を入力し、**[サインイン]** をクリックします。この操作は、このワークステーションで、まだ一度も Visual Studio から Azure サブスクリプションに接続していない場合にのみ必要です。
 5.	サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。クラスターが 1 つもない場合は、Azure ポータル、Azure PowerShell、HDInsight SDK を使用してプロビジョニングできます。詳細については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。
 
@@ -141,7 +140,7 @@ Hive クエリを作成して実行するには次の 2 つの方法がありま
 
 	![Hadoop ツール: HDInsight Visual Studio Tools Intellisense][14]
 
-	> [AZURE.NOTE]
+	> [AZURE.NOTE]クラスターのメタデータのうち、HDInsight のツール バーで選択したものだけが推奨として表示されます。
 4. (任意) **[Validate Script]** をクリックして、スクリプトの構文エラーを確認します。
 
 	![Hadoop ツール: HDinsight Tools for Visual Studio ローカル検証][10]
@@ -160,7 +159,7 @@ Hive クエリを作成して実行するには次の 2 つの方法がありま
 
 **Hive ソリューションを作成し、実行するには**
 
-1. **[ファイル]** メニューの **[新規作成]** をポイントし、**[プロジェクト]** をクリックします。
+1. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
 2. 左側のウィンドウから **[HDInsight]** を選択し、中央のウィンドウで **[Hive アプリケーション]** を選択して、プロパティを入力し、**[OK]** をクリックしします。
 
 	![Hadoop ツール: HDinsight Visual Studio ツール新しい Hive プロジェクト][11]
@@ -183,7 +182,7 @@ Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Ya
 
 ### Tez Hive ジョブのパフォーマンス グラフ
 
-HDInsight Tools for Visual Studio は Tez 実行エンジンで実行された Hive ジョブのパフォーマンス グラフの表示をサポートしています。Tez を有効にする方法については、[HDInsight での Hive の使用][hdinsight.hive]に関するページを参照してください。Visual Studio で Hive ジョブを送信した後、ジョブが完了すると、Visual Studio にグラフが表示されます。最新のジョブの状態を取得するには、更新ボタンをクリックする必要があります。
+HDInsight Tools for Visual Studio は Tez 実行エンジンで実行された Hive ジョブのパフォーマンス グラフの表示をサポートしています。Tez を有効にする方法については、「[HDInsight での Hive の使用][hdinsight.hive]」を参照してください。Visual Studio で Hive ジョブを送信した後、ジョブが完了すると、Visual Studio にグラフが表示されます。最新のジョブの状態を取得するには、更新ボタンをクリックする必要があります。
 
 > [AZURE.NOTE]この機能はバージョン 3.2.4.593 以上の HDInsight クラスターでのみ使用でき、完了したジョブでのみ有効です。これは、Windows ベースと Linux ベースの両方のクラスターで機能します。
 
@@ -236,4 +235,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

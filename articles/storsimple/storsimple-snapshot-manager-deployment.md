@@ -55,7 +55,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
 
 4. ホストにデバイスを接続し、初期構成を実行します。詳細については、「[デプロイメントの手順](storsimple-deployment-walkthrough.md#deployment-steps)」を確認してください。
 
-5. ボリュームをデバイスに作成してホストを割り当ててから、ホストがボリュームをマウントし、使用できることを確認します。StorSimple Snapshot Manager では、次のタイプのボリュームがサポートされています。
+5. デバイスにボリュームを作成し、それらをホストに割り当て、ホストがボリュームをマウントし、使用できることを確認します。StorSimple Snapshot Manager では、次のタイプのボリュームがサポートされています。
 
     - 基本ボリューム
     - シンプル ボリューム
@@ -79,19 +79,19 @@ StorSimple Snapshot Manager をインストールする前に、StorSimple デ�
 
 次の手順に従って、StorSimple Snapshot Manager のフレッシュ インストールを実行します。アップグレードをインストールする場合は、「[StorSimple Snapshot Manager のアップグレードまたは再インストール](#upgrade-or-reinstall-storsimple-snapshot-manager)」をご覧ください。
 
-- 手順 1: StorSimple Snapshot Manager をインストールする 
-- 手順 2: StorSimple Snapshot Manager をデバイスに接続する 
-- 手順 3: デバイスへの接続を確認する 
+- 手順 1: StorSimple Snapshot Manager をインストールします 
+- 手順 2: StorSimple Snapshot Manager をデバイスに接続します 
+- 手順 3: デバイスへの接続を確認します 
 
-###手順 1: StorSimple Snapshot Manager をインストールする
+###手順 1: StorSimple Snapshot Manager をインストールします
 
 StorSimple Snapshot Manager をインストールするには、以下の手順を実行します。
 
 #### StorSimple Snapshot Manager をインストールするには
 
-1. StorSimple Snapshot Manager ソフトウェアをダウンロードして (Microsoft ダウンロード センターの [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) にアクセス)、ローカルのホストに保存します。
+1. StorSimple Snapshot Manager ソフトウェアをダウンロードして (Microsoft ダウンロード センターの [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) にアクセス)、それをホストのローカルに保存します。
 
-2. エクスプローラーで圧縮ファイルを右クリックし、**[すべて展開する]** をクリックします。
+2. エクスプローラーで、圧縮ファイルを右クリックし、**[すべて展開する]** をクリックします。
 
 3. **[圧縮 (ZIP 形式) フォルダーの展開]** ウィンドウの **[展開先の選択とファイルの展開]** ボックスに、ファイルの展開先にするパスを入力するか、参照して指定します。
 
@@ -103,21 +103,21 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 
 4. 展開が完了したら、展開先フォルダーが開きます。展開先フォルダーに表示されるアプリケーションのセットアップ アイコンをダブルクリックします。
 
-5. **[セットアップ完了]** メッセージが表示されたら、**[閉じる]** をクリックします。デスクトップに StorSimple Snapshot Manager のアイコンが表示されます。
+5. **[セットアップ完了]** メッセージが表示されたら、**[閉じる]** をクリックします。デスクトップに [StorSimple Snapshot Manager] アイコンが表示されます。
 
     ![デスクトップ アイコン](./media/storsimple-snapshot-manager-deployment/HCS_SSM_desktop_icon.png)
 
-### 手順 2: StorSimple Snapshot Manager をデバイスに接続する
+### 手順 2: StorSimple Snapshot Manager をデバイスに接続します
 
 次の手順に従って、StorSimple Snapshot Manager を StorSimple デバイスに接続します。
 
 #### StorSimple Snapshot Manager をデバイスに接続するには
 
-1. デスクトップの StorSimple Snapshot Manager のアイコンをクリックします。[StorSimple Snapshot Manager] ウィンドウが表示されます。このウィンドウには、**[スコープ]** ウィンドウ、**[結果]** ウィンドウ、および **[操作]** ウィンドウがあります。 
+1. デスクトップの [StorSimple Snapshot Manager] アイコンをクリックします。[StorSimple Snapshot Manager] ウィンドウが表示されます。このウィンドウには、**[スコープ]** ウィンドウ、**[結果]** ウィンドウ、および **[操作]** ウィンドウがあります。 
 
     ![StorSimple Snapshot Manager のユーザー インターフェイス](./media/storsimple-snapshot-manager-deployment/HCS_SSM_gui_panes.png)
 
-    - **[スコープ]** ウィンドウ (左ウィンドウ) には、ノードのリストがツリー構造で編成されて表示されます。一部のノードを展開すると、そのノードに関連するビューまたは特定のデータを選択できます。ノードを展開または折りたたむには、矢印アイコンをクリックします。**[スコープ]** ウィンドウの項目を右クリックすると、その項目に使用可能な操作のリストが表示されます。 
+    - **[スコープ]** ウィンドウ (左ウィンドウ) には、ノードのリストがツリー構造で編成されて表示されます。一部のノードは展開して、そのノードに関連するビューまたは特定のデータを選択できます。ノードを展開または折りたたむには、矢印アイコンをクリックします。**[スコープ]** ウィンドウの項目を右クリックすると、その項目に使用可能な操作のリストが表示されます。 
 
     - **[結果]** ウィンドウ (中央ウィンドウ) には、**[スコープ]** ウィンドウで選択したノード、ビュー、またはデータに関する詳細な状態情報が表示されます。
 
@@ -129,15 +129,15 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 
     ![デバイスの構成](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png)
 
-3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。**[パスワード]** ボックスに、Microsoft Azure 管理ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。**[OK]** をクリックします。
+3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。**[パスワード]** ボックスに、Microsoft Azure の管理ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。**[OK]** をクリックします。
 
-4. 指定したデバイスが StorSimple Snapshot Manager によって検索されます。指定したデバイスが取得されると、StorSimple Snapshot Manager によって接続が追加されます。[デバイスへの接続を検証](#to-verify-the-connection)して、接続が正常に追加されたことを確認できます。
+4. StorSimple Snapshot Manager により、指定したデバイスが検索されます。デバイスを使用できる場合は、StorSimple Snapshot Manager によって接続が追加されます。[デバイスへの接続を検証](#to-verify-the-connection)して、接続が正常に追加されたことを確認できます。
 
-    何かの理由でデバイスを取得できなかった場合、StorSimple Snapshot Manager によってエラー メッセージが返されます。**[OK]** をクリックしてエラー メッセージを閉じ、**[キャンセル]** をクリックして **[デバイスの構成]** ダイアログ ボックスを閉じます。
+    何かの理由でデバイスを使用できない場合は、StorSimple Snapshot Manager によってエラー メッセージが返されます。**[OK]** をクリックしてエラー メッセージを閉じ、**[キャンセル]** をクリックして **[デバイスの構成]** ダイアログ ボックスを閉じます。
 
-5. ボリューム グループに関連するバックアップがある場合、StorSimple Snapshot Manager はデバイスに接続されると、そのデバイス用に構成された各ボリューム グループをインポートします。関連付けられているバックアップがないボリューム グループはインポートされません。また、ボリューム グループに対して作成されたバックアップ ポリシーはインポートされません。インポートされたグループを表示するには、**[スコープ]** ウィンドウの最上部にある **[ボリューム グループ]** ノードを右クリックし、**[インポートされたグループを切り替え]** をクリックします。
+5. ボリューム グループに関連するバックアップがある場合、デバイスに接続されると、StorSimple Snapshot Manager は、そのデバイス用に構成された各ボリューム グループをインポートします。関連付けられているバックアップがないボリューム グループはインポートされません。また、ボリューム グループに対して作成されたバックアップ ポリシーはインポートされません。インポートされたグループを表示するには、**[スコープ]** ウィンドウの最上部にある **[ボリューム グループ]** ノードを右クリックし、**[インポートされたグループを切り替え]** をクリックします。
 
-### 手順 3: デバイスへの接続を確認する
+### 手順 3: デバイスへの接続を確認します
 
 次の手順に従って、StorSimple Snapshot Manager が StorSimple デバイスに接続されていることを確認します。
 
@@ -149,11 +149,11 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 
 2. 次を参考にして、**[結果]** ウィンドウを確認します。
 
-   - デバイス アイコンに緑色のインジケーターが表示され、**[状態]** 列に **[使用可能]** と表示されている場合、デバイスは接続されています。 
+   - デバイス アイコンに緑色のインジケーターが表示され、**[状態]** 列に **[使用可能]** が表示されている場合、デバイスは接続されています。 
 
-   - デバイス アイコンに赤色のインジケーターが表示され、**[状態]** 列に [使用不可] と表示されている場合、デバイスは接続されていません。
+   - デバイス アイコンに赤色のインジケーターが表示され、**[状態]** 列に [使用不可] が表示されている場合、デバイスは接続されていません。
 
-   - **[状態]** 列に **[更新しています]** と表示されている場合、StorSimple Snapshot Manager は、接続されたデバイスのボリューム グループと関連するバックアップを取得中です。
+   - **[状態]** 列に **[更新しています]** が表示されている場合、StorSimple Snapshot Manager は、接続されたデバイスのボリューム グループと関連するバックアップを取得中です。
 
 ## StorSimple Snapshot Manager のアップグレードまたは再インストール
 
@@ -163,17 +163,17 @@ StorSimple Snapshot Manager を再インストールする前に、ホスト コ
 
 StorSimple Snapshot Manager をアップグレードまたは再インストールするには、以下の手順を実行します。
 
-- 手順 1: StorSimple Snapshot Manager をアンインストールする 
-- 手順 2: StorSimple Snapshot Manager データベースをバックアップする 
-- 手順 3: StorSimple Snapshot Manager を再インストールし、データベースを復元する 
+- 手順 1: StorSimple Snapshot Manager をアンインストールします 
+- 手順 2: StorSimple Snapshot Manager データベースをバックアップします 
+- 手順 3: StorSimple Snapshot Manager を再インストールし、データベースを復元します 
 
-### 手順 1: StorSimple Snapshot Manager をアンインストールする
+### 手順 1: StorSimple Snapshot Manager をアンインストールします
 
 StorSimple Snapshot Manager をアンインストールするには、以下の手順を実行します。
 
 #### StorSimple Snapshot Manager をアンインストールするには
 
-1. ホスト コンピューターで **[コントロール パネル]** を開き、 **[プログラム]**、**[プログラムと機能]** の順にクリックします。
+1. ホスト コンピューターで、**[コントロール パネル]** を開き、 **[プログラム]** をクリックしてから、**[プログラムと機能]** をクリックします。
 
 2. 左側のウィンドウで、**[プログラムのアンインストールまたは変更]** をクリックします。
 
@@ -181,11 +181,11 @@ StorSimple Snapshot Manager をアンインストールするには、以下の�
 
 4. これにより、StorSimple Snapshot Manager のセットアップ プログラムが開始します。**[セットアップの変更]** をクリックし、**[アンインストール]** をクリックします。
 
-    >[AZURE.NOTE]StorSimple Snapshot Manager や ディスクの管理など、バック グラウンドで実行されている MMC プロセスがある場合、アンインストールは失敗し、プログラムのアンインストールを試行する前に MMC のすべてのインスタンスを閉じるように求めるメッセージが表示されます。**[セットアップの完了後、アプリケーションを自動的に終了して、再起動する]** を選択し、**[OK]** をクリックします。
+    >[AZURE.NOTE]StorSimple Snapshot Manager や ディスクの管理など、バック グラウンドで実行されている MMC プロセスがある場合、アンインストールは失敗し、プログラムのアンインストールを試行する前に、MMC のすべてのインスタンスを閉じるように求めるメッセージが表示されます。**[セットアップの完了後、アプリケーションを自動的に終了して、再起動する]** を選択し、**[OK]** をクリックします。
  
 5. アンインストール プロセスが完了したら、**[セットアップ完了]** メッセージが表示されます。**[閉じる]** をクリックします。
 
-### 手順 2: StorSimple Snapshot Manager データベースをバックアップする
+### 手順 2: StorSimple Snapshot Manager データベースをバックアップします
 
 StorSimple Snapshot Manager データベースのコピーを作成して保存するには、以下の手順を実行します。
 
@@ -199,7 +199,7 @@ StorSimple Snapshot Manager データベースのコピーを作成して保存�
 
    3. **[サービス]** ページで、**[Microsoft StorSimple Management Service]** を選択します。
 
-   4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを停止]** をクリックします。
+   4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
 
         ![Stop the StorSimple Manager service](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 
@@ -207,7 +207,7 @@ StorSimple Snapshot Manager データベースのコピーを作成して保存�
 
     >[AZURE.NOTE]ProgramData は隠しフォルダーです。
 
-3. カタログ XML ファイルを検索し、ファイルをコピーして、安全な場所またはクラウドにコピーを保存します。
+3. カタログ XML ファイルを検索し、ファイルをコピーして、安全な場所、またはクラウドにコピーを保存します。
 
     ![StorSimple バックアップ カタログ ファイル](./media/storsimple-snapshot-manager-deployment/HCS_SSM_bacatalog.png)
 
@@ -217,9 +217,9 @@ StorSimple Snapshot Manager データベースのコピーを作成して保存�
 
     2. **[サービス]** ページで、**[Microsoft StorSimple Management Service]** を選択します。
 
-    3. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動]** をクリックします。
+    3. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動する]** をクリックします。
 
-### 手順 3: StorSimple Snapshot Manager を再インストールし、データベースを復元する
+### 手順 3: StorSimple Snapshot Manager を再インストールし、データベースを復元します
 
 StorSimple Snapshot Manager を再インストールするには、「[StorSimple Snapshot Manager の新規インストール](#install-a-new-storsimple-snapshot-manager)」の手順に従います。次に、以下の手順に従って、StorSimple Snapshot Manager データベースを復元します。
 
@@ -233,7 +233,7 @@ StorSimple Snapshot Manager を再インストールするには、「[StorSimpl
 
     3. **[サービス]** ページで、**[Microsoft StorSimple Management Service]** を選択します。
 
-    4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを停止]** をクリックします。
+    4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
 
 2. C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
 
@@ -247,7 +247,7 @@ StorSimple Snapshot Manager を再インストールするには、「[StorSimpl
 
     2. **[サービス]** ページで、**[Microsoft StorSimple Management Service]** を選択します。
 
-    3. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動]** をクリックします。
+    3. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動する]** をクリックします。
 
 ## 次のステップ
 
@@ -255,4 +255,4 @@ StorSimple Snapshot Manager の詳細については、「[StorSimple Snapshot M
 
 StorSimple Snapshot Manager ユーザー インターフェイスの詳細については、「[StorSimple Snapshot Manager のユーザー インターフェイス](storsimple-use-snapshot-manager.md)」をご覧ください。
 
-<!------HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

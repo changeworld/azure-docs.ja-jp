@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ | Azure" 
+	pageTitle="Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ | Microsoft Azure" 
 	description="Azure リソース マネージャーのテンプレートを使用して DocumentDB アカウント、Azure App Service Web Apps、サンプルの Web アプリケーションをデプロイする方法を説明します。" 
 	services="documentdb, app-service\web" 
 	authors="stephbaron" 
-	manager="johnmac" 
+	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/29/2015" 
+	ms.date="07/28/2015" 
 	ms.author="stbaro"/>
 
 # Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ #
@@ -31,16 +31,16 @@
 
 このチュートリアルの手順を実行する前に、次のものを備えておく必要があります。
 
-- Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/)、または[無料評価版](http://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- Azure Storage アカウント。詳細については、「[Azure ストレージ アカウントについて](../storage-whatis-account.md)」を参照してください
+- Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](http://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](http://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- Azure ストレージ アカウント。詳細については、「[Azure ストレージ アカウントについて](../storage-whatis-account.md)」を参照してください
 - Azure PowerShell を実行できるワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ](../install-configure-powershell.md)を参照してください。
 
 ##<a id="CreateDB"></a>手順 1: サンプル ファイルのダウンロードと抽出 ##
 このチュートリアルで使用するサンプル ファイルをダウンロードすることから始めましょう。
 
-1. [DocumentDB アカウントと Web Apps の作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebsiteTodo.zip)を、ローカルのフォルダー (C:\DocumentDBTemplates など) にダウンロードし、ファイルを展開します。このサンプルでは、DocumentDB アカウント、App Service Web アプリ、Web アプリケーションをデプロイします。また、Web アプリケーションをこの DocumentDB アカウントに接続するように自動的に構成します。
+1. [DocumentDB アカウントと Web Apps の作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebsiteTodo.zip)を、ローカルのフォルダー (C:\\DocumentDBTemplates など) にダウンロードし、ファイルを展開します。このサンプルでは、DocumentDB アカウント、App Service Web アプリ、Web アプリケーションをデプロイします。また、Web アプリケーションをこの DocumentDB アカウントに接続するように自動的に構成します。
 
-2. [DocumentDB アカウントと Web Apps の作成のサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebSite.zip)をローカルのフォルダー (C:\DocumentDBTemplates など) にダウンロードし、ファイルを展開します。このサンプルでは、DocumentDB アカウントと App Service Web アプリをデプロイし、Web アプリの構成を変更して DocumentDB の接続情報を容易に表示できるようにしますが、Web アプリケーションは含んでいません。
+2. [DocumentDB アカウントと Web Apps の作成のサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebSite.zip)をローカルのフォルダー (C:\\DocumentDBTemplates など) にダウンロードし、ファイルを展開します。このサンプルでは、DocumentDB アカウントと App Service Web アプリをデプロイし、Web アプリの構成を変更して DocumentDB の接続情報を容易に表示できるようにしますが、Web アプリケーションは含んでいません。
 
 > [AZURE.TIP]コンピューターのセキュリティ設定によっては、展開したファイルを右クリックし、**[プロパティ]**、**[ブロックの解除]** の順にクリックして、ファイルのブロックを解除することが必要になる場合があります。
 
@@ -53,7 +53,7 @@
 
 > [AZURE.TIP]このテンプレートでは、ここで入力する Web アプリ名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては確認されません。PowerShell デプロイメント スクリプトの実行前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
 
-1. Microsoft Azure PowerShell を開き、[DocumentDB アカウントと App Service の Web アプリの作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebsiteTodo.zip)をダウンロードして展開したフォルダー (C:\DocumentDBTemplates\CreateDocDBWebsiteTodo など) に移動します。
+1. Microsoft Azure PowerShell を開き、[DocumentDB アカウントと App Service の Web アプリの作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebsiteTodo.zip)をダウンロードして展開したフォルダー (C:\\DocumentDBTemplates\\CreateDocDBWebsiteTodo など) に移動します。
 
 
 2. CreateDocDBWebsiteTodo.ps1 という PowerShell スクリプトを実行します。このスクリプトでは、次のような必須のパラメーターを使用します。
@@ -128,12 +128,12 @@
 
 	![Todo アプリケーションのサンプル](./media/documentdb-create-documentdb-website/image2.png)
 
-7. 操作を進めていくつかのタスクを作成し、[Azure プレビュー ポータル](https://portal.azure.com)を開きます。
+7. 操作を進めていくつかのタスクを作成し、[Microsoft Azure プレビュー ポータル](https://portal.azure.com)を開きます。
 
 8. リソース グループを参照するように選択し、デプロイメント時に作成したリソース グループを選択します (上のサンプルでは、myDemoResourceGroup)。
 
 	![myDemoResourceGroup を強調表示した Azure ポータルのスクリーン ショット](./media/documentdb-create-documentdb-website/image3.png)
-9.  [概要] レンズのリソース マップに関連リソース (DocumentDB アカウント、App Service Web サイト、監視) がすべて表示されることを確認します。
+9.  [概要] レンズのリソース マップに関連リソース (DocumentDB アカウント、App Service Web アプリ、監視) がすべて表示されることを確認します。
 
 	![[監視] レンズのスクリーン ショット](./media/documentdb-create-documentdb-website/image4.png)
 10.  DocumentDB アカウントをクリックし、(アカウント ブレードの下部にある) クエリ エクスプローラーを起動します。
@@ -153,7 +153,7 @@
 
 > [AZURE.TIP]このテンプレートでは、ここで入力する Web アプリ名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては確認されません。PowerShell デプロイメント スクリプトの実行前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
 
-1. Microsoft Azure PowerShell を開き、[DocumentDB アカウントと Web アプリの作成のサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebSite.zip)をダウンロードして展開したフォルダー (C:\DocumentDBTemplates\CreateDocDBWebsite など) に移動します。
+1. Microsoft Azure PowerShell を開き、[DocumentDB アカウントと Web アプリの作成のサンプル](https://portalcontent.blob.core.windows.net/samples/CreateDocDBWebSite.zip)をダウンロードして展開したフォルダー (C:\\DocumentDBTemplates\\CreateDocDBWebsite など) に移動します。
 
 
 2. CreateDocDBWebsite.ps1 という PowerShell スクリプトを実行します。このスクリプトでは、デプロイした最初のテンプレートと同じパラメーターを使用します。次のようになります。
@@ -210,4 +210,4 @@
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

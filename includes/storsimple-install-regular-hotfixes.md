@@ -1,4 +1,3 @@
-
 #### StorSimple 用 Windows PowerShell を使用して通常の修正プログラムをインストールするには
 
 1. デバイスのシリアル コンソールに接続します。詳細については、「[Connect to the serial console (シリアル コンソールへの接続)](#connect-to-the-serial-console)」をご覧ください。
@@ -15,4 +14,4 @@
 
 5. 確認を求められます。「**Y**」と入力して修正プログラムのインストールを続行します。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

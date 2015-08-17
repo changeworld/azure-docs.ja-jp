@@ -23,7 +23,7 @@ Azure Active Directory Connect Synchronization Service (Azure AD Connect Sync) �
 
 宣言型のプロビジョニングの不可欠な要素は、属性フローに使用される式言語です。使用される言語は、Microsoft ® Visual Basic ® for Applications (VBA) のサブセットです。この言語は、Microsoft Office で使用され、VBScript の経験を持つユーザーも理解できます。宣言型のプロビジョニングの式言語は、関数を使用するだけであり、構造化言語ではありません。メソッドやステートメントはありません。代わりに、関数を入れ子にして、プログラム フローを記述します。
 
-詳細については、[「Office 2013 Visual Basic for Applications 言語リファレンスへようこそ」をご覧ください。](https://msdn.microsoft.com/library/gg264383(v=office.15).aspx)
+詳細については、「Office 2013 Visual Basic for Applications 言語リファレンスへようこそ」をご覧ください。https://msdn.microsoft.com/library/gg264383(v=office.15).aspx)
 
 属性は厳密に型指定されます。単一値の文字列属性を想定している関数では、複数値や異なる型の属性は受け入れられません。また、大文字と小文字が区別されます。関数名と属性名のいずれも、適切に大文字と小文字を使用する必要があります。そのようにしない場合、エラーがスローされます。
 
@@ -36,7 +36,7 @@ Azure Active Directory Connect Synchronization Service (Azure AD Connect Sync) �
 - 関数は、名前の後に山かっこで囲まれた引数が続きます。たとえば、FunctionName(<<argument 1>>,<<argument N>>) などです。
 - 属性は、角かっこで識別されます。たとえば、[attributeName] などです。
 - パラメーターは、パーセント記号で識別されます。たとえば、%ParameterName% などです。
-- 文字列は、引用符で囲まれます。たとえば、“Contoso” などです。
+- 文字列定数は、引用符で囲まれます。たとえば、"Contoso" などです。
 - 数値は、引用符を使用しないで表され、10 進数であることが求められます。16 進数の値には、&H がプレフィックスとして付加されます。例: 98052, &HFF
 - ブール値は、定数 (True、False) で表されます。
 - 組み込み定数は、その名前のみで表されます。たとえば、NULL、CRLF、IgnoreThisFlow などです。
@@ -47,13 +47,14 @@ Azure Active Directory Connect Synchronization Service (Azure AD Connect Sync) �
 次の演算子を使用できます。
 
 - **比較**: <、<=、<>、=、>、>=
-- **算術**: +、-、*、- - **文字列**: & (連結)
-- **論理**: && (および)、|| (または)
+- **算術**: +、-、*、-
+- **文字列**: & (連結)
+- **論理**: && (AND)、|| (OR)
 - **評価順序**: ( )
 
 
 
-演算子は、左から右の順に評価されます。2\*(5+3) は 2\*5+3 と同じではありません。<br> かっこ () は、評価順序を変更するために使用されます。
+演算子は、左から右の順に評価されます。2*(5+3) は 2*5+3 と同じではありません。<br> かっこ () は、評価順序を変更するために使用されます。
 
 
 
@@ -124,7 +125,7 @@ ImportedValues 関数は、属性名を角かっこではなく引用符で囲�
 
 `proxyAddresses <- RemoveDuplicates(Trim(ImportedValues(“proxyAddresses”)))`
 
-関数の完全な一覧については、「[Azure AD Connect Sync: 関数参照](active-directory-aadconnectsync-functions-reference.md)」をご覧ください。
+関数の完全な一覧については、「[Azure AD Connect Sync: 関数参照](active-directory-aadconnectsync-functions-reference.md)」を参照してください。
 
 
 ## その他のリソース
@@ -134,4 +135,4 @@ ImportedValues 関数は、属性名を角かっこではなく引用符で囲�
  
 <!--Image references-->
 
-<!-----HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

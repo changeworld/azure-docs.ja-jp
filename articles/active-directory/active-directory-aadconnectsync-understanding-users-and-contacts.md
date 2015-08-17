@@ -63,7 +63,7 @@ Azure AD に対するオブジェクトのプロビジョニングでは、メ�
 
 ## sourceAnchor の変更
 
-オブジェクトが Azure AD にエクスポートされると、sourceAnchor は変更できなくなります。オブジェクトがエクスポートされると、Azure AD が受け取った **sourceAnchor** 値を使用してメタバース属性 **cloudSourceAnchor** が設定されます。**sourceAnchor** が変更され、**cloudSourceAnchor** と一致しない場合、\*\* Out to AAD – User Join\*\* というルールによって **sourceAnchor 属性が変更されました**というエラーがスローされます。この場合、オブジェクトを再度同期できるようにする前に、構成またはデータを修正して、同じ sourceAnchor がメタバースに再び存在するようにする必要があります。
+オブジェクトが Azure AD にエクスポートされると、sourceAnchor は変更できなくなります。オブジェクトがエクスポートされると、Azure AD が受け取った **sourceAnchor** 値を使用してメタバース属性 **cloudSourceAnchor** が設定されます。**sourceAnchor** が変更され、**cloudSourceAnchor** と一致しない場合、** Out to AAD – User Join** というルールによって **sourceAnchor 属性が変更されました**というエラーがスローされます。この場合、オブジェクトを再度同期できるようにする前に、構成またはデータを修正して、同じ sourceAnchor がメタバースに再び存在するようにする必要があります。
 
 
 
@@ -75,4 +75,4 @@ Azure AD に対するオブジェクトのプロビジョニングでは、メ�
  
 <!--Image references-->
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

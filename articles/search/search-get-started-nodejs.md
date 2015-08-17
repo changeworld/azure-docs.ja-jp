@@ -148,4 +148,4 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [9]: ./media/search-get-started-nodejs/rogerwilliamsschool.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

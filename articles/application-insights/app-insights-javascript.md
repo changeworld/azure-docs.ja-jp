@@ -11,7 +11,7 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="07/10/2015" 
 	ms.author="awills"/>
  
@@ -137,7 +137,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 いずれかのイベントをクリックして、詳細を表示します。詳細ページで、[...] をクリックしてさらに詳しい情報を表示します。
 
-> [AZURE.NOTE][検索][diagnostic]を利用する場合、単語全体が一致しなければならないことに注意してください。「Abou」と「bout」は「About」に一致しませんが、「Abou\*」は一致します。検索語をワイルドカードで始めることもできません。たとえば、「\*bou」を検索しても「About」とは一致しません。
+> [AZURE.NOTE][検索][diagnostic]を利用する場合、単語全体が一致しなければならないことに注意してください。「Abou」と「bout」は「About」に一致しませんが、「Abou*」は一致します。検索語をワイルドカードで始めることもできません。たとえば、「*bou」を検索しても「About」とは一致しません。
 
 > [診断検索の詳細][diagnostic]
 
@@ -182,4 +182,4 @@ Web アプリが Application Insights に送信している利用統計情報を
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

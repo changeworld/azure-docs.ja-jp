@@ -75,4 +75,4 @@ My Dashboard ビューで、ページの下部の [カスタマイズ] の歯車
 ## タイルの削除
 タイルを削除するには、My Dashboard ビューに移動し、ページの下部の **[カスタマイズ]** の歯車をクリックし、カスタマイズ モードに移動します。削除するタイルを選択し、右側のパネルで **[タイルの削除]** を選択します。![タイルの削除](./media/operational-insights-use-dashboards/remove-tile.png)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

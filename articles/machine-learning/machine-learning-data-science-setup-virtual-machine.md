@@ -66,7 +66,7 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 
 ## <a name="run-commands"></a>手順 3: IPython Notebook とその他のサポート ツールをインストールする
 
-仮想マシンの作成後、リモート デスクトップ プロトコル (RDP) を使用して Windows 仮想マシンにログオンします。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines-log-on-windows-server.md)」を参照してください。**管理者**として (Powershell コマンド ウィンドウではなく) **コマンド プロンプト**を開き、次のコマンドを実行します。
+仮想マシンの作成後、リモート デスクトップ プロトコル (RDP) を使用して Windows 仮想マシンにログオンします。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines-log-on-windows-server.md)」を参照してください。**管理者**として (**Powershell コマンド ウィンドウではなく**) **コマンド プロンプト**を開き、次のコマンドを実行します。
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/MachineSetup/Azure_VM_Setup_Windows.ps1'
 
@@ -77,13 +77,13 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 メッセージが表示されたら、IPython Notebook のパスワードと、マシン管理者のパスワードを入力します。これにより、IPython Notebook をマシン上のサービスとして実行させることができます。
 
 ## <a name="access"></a>手順 4: Web ブラウザーから IPython Notebook にアクセスする
-IPython Notebook サーバーにアクセスするには、Web ブラウザーを開き、URL テキスト ボックスに「*https://&#60;virtual マシンの DNS 名>:&#60;パブリック ポート番号>*」と入力します。ここでは、*&#60;パブリック ポート番号>* として、IPython Notebook エンドポイントの追加時に指定したポート番号を入力してください。
+IPython Notebook サーバーにアクセスするには、Web ブラウザーを開き、URL テキスト ボックスに「*https://&#60;virtual マシンの DNS 名>:&\#60;パブリック ポート番号>*」と入力します。ここでは、*&\#60;パブリック ポート番号>* として、IPython Notebook エンドポイントの追加時に指定したポート番号を入力してください。
 
-*&#60;仮想マシンの DNS 名>* は、Microsoft Azure 管理ポータルで確認できます。管理ポータルにログインしたら、**[仮想マシン]** をクリックし、作成済みのマシンを選択して **[ダッシュボード]** を選択すると、DNS 名が次のように表示されます。
+*&\#60;仮想マシンの DNS 名>* は、Microsoft Azure 管理ポータルで確認できます。管理ポータルにログインしたら、**[仮想マシン]** をクリックし、作成済みのマシンを選択して **[ダッシュボード]** を選択すると、DNS 名が次のように表示されます。
 
 ![Create workspace][19]
 
-次の図のように、_この Web サイトのセキュリティ証明書には問題があります_ (Internet Explorer) や_この接続ではプライバシーが保護されません_ (Chrome) という警告が表示されます。Internet Explorer の場合は **[このサイトの閲覧を続行する (推奨されません)]**、Chrome の場合は **[詳細設定]** の **[&#60;DNS 名\*> にアクセスする (安全ではありません)]** をクリックして続行します。次に、既に指定したパスワードを入力して IPython Notebook にアクセスします。
+次の図のように、_この Web サイトのセキュリティ証明書には問題があります_ (Internet Explorer) や_この接続ではプライバシーが保護されません_ (Chrome) という警告が表示されます。Internet Explorer の場合は **[このサイトの閲覧を続行する (推奨されません)]**、Chrome の場合は **[詳細設定]** の **[&\#60;*DNS 名*> にアクセスする (安全ではありません)]** をクリックして続行します。次に、既に指定したパスワードを入力して IPython Notebook にアクセスします。
 
 Internet Explorer: ![Create workspace][20]
 
@@ -104,7 +104,7 @@ IPython Notebook を使用すると、ユーザーはローカル マシン上�
 
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、未使用時に **[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE](Windows 電源オプションを使用して) 仮想マシン内部から仮想マシンをシャット ダウンすると、その仮想マシンは停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure 管理ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
+> [AZURE.NOTE](Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure 管理ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 
@@ -143,4 +143,4 @@ Advanced Analytics Process and Technology における次のステップは、�
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

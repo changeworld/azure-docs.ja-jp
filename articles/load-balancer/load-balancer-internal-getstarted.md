@@ -335,4 +335,4 @@ ILB コマンドレットに関する追加情報を取得するには、Azure W
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

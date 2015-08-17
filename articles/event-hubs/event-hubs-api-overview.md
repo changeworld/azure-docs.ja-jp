@@ -188,4 +188,4 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 - [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 - 
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

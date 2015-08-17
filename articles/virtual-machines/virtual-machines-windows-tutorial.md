@@ -30,7 +30,6 @@
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
-
 ## イメージの選択
 
 プレビュー ポータルで Azure Marketplace に移動して、必要な Windows Server VM イメージを検索します。
@@ -102,4 +101,4 @@ VM を作成したら、VM にログオンして、その設定や、そこで�
 * Azure PowerShell と Azure CLI を使用して、[VM イメージの検索と選択](resource-groups-vm-searching.md)を行います。
 * [Azure リソース マネージャー](virtual-machines-how-to-automate-azure-resource-manager.md)と[Azure リソース マネージャー テンプレート](http://azure.microsoft.com/documentation/templates/)を使用して、VM とワークロードのデプロイと管理を自動化します。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

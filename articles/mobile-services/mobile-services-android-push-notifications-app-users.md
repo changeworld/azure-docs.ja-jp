@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="android" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="04/14/2015" 
+	ms.date="07/29/2015" 
 	ms.author="ricksal"/>
 
 # Mobile Services によるユーザーへのプッシュ通知
@@ -23,4 +23,4 @@
 + [Mobile Services アプリケーションにプッシュ通知を追加する](mobile-services-javascript-backend-android-get-started-push.md)<br/>TodoList のモバイル サービスを更新し、Azure Notification Hubs を使用して TodoList サンプル アプリケーションのユーザーに通知を送信できるようにします。
 + [プッシュ通知を認証ユーザーに送信する](mobile-services-javascript-backend-android-push-notifications-app-users.md)<br/>1 つ前のチュートリアルを拡張し、サインインしているユーザーのみが通知を登録できるようにします。 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

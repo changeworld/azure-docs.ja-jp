@@ -84,7 +84,7 @@ Azure AD は、各アプリケーション ベンダーによって提供され�
  - ユーザーが最近アプリに割り当てられ、既に SaaS アプリにアカウントを持っている場合、そのアカウントは有効として設定され、特定のユーザー プロパティがディレクトリと比較して最新ではない場合は、更新されることがあります。
  - ユーザーの情報 (電話番号、勤務先所在地など) がディレクトリで変更された場合は、SaaS アプリでもその情報が更新されます。
 
-Azure AD とSaaS アプリ間で属性がマップされる方法の詳細については、「[属性マッピングのカスタマイズ](https://msdn.microsoft.com/library/azure/dn872469.aspx)」の記事をご覧ください。
+Azure AD とSaaS アプリ間で属性がマップされる方法の詳細については、「[属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)」の記事をご覧ください。
 
 ##自動ユーザー プロビジョニングをサポートするアプリの一覧
 
@@ -106,4 +106,6 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 
 他のアプリのプロビジョニングに関するサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、[Azure Active Directory フィードバック フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からメッセージを送信してください。
 
-<!---HONumber=July15_HO5-->
+[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
+
+<!---HONumber=August15_HO6-->

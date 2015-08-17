@@ -20,7 +20,7 @@
 
 このトピックでは Entity Framework Code First Migrations を使用して、既存のデータを失うことなく、既存の Azure SQL データベースにデータ モデルの変更を加える方法を説明します。この手順では、モバイル サービス プロジェクトを既に Azure に発行したこと、データベース内に既存のデータがあること、およびリモートとローカルのデータ モデルが同期状態にあることを想定します。また、Azure モバイル サービスによって実装され、開発時に使用するデフォルトの Code First 初期化子についても説明します。こうした初期化子により、既存データを維持する必要がない場合に Code First Migrations を使用せずに簡単にスキーマを変更できます。
 
->[AZURE.NOTE]SQL Database でテーブルのプレフィックスとして使用されるスキーマ名は、web.config ファイルの MS_MobileServiceName アプリ設定で定義されています。ポータルからスターター プロジェクトをダウンロードするとき、この値はモバイル サービス名に既に設定されています。スキーマ名がモバイル サービスと一致すると、複数のモバイル サービスで同じデータベース インスタンスを安全に共有できます。
+>[AZURE.NOTE]SQL Database でテーブルのプレフィックスとして使用されるスキーマ名は、web.config ファイルの MS\_MobileServiceName アプリ設定で定義されています。ポータルからスターター プロジェクトをダウンロードするとき、この値はモバイル サービス名に既に設定されています。スキーマ名がモバイル サービスと一致すると、複数のモバイル サービスで同じデータベース インスタンスを安全に共有できます。
 
 ## データ モデルの更新
 
@@ -74,7 +74,7 @@ Code First Migrations は、実行されたときにスナップショットの�
 
 	この結果、*Initial* という名前の新しい移行が作成されます。移行用コードは、Migrations プロジェクト フォルダーに格納されます。
 
-5. [App_Start] フォルダーを展開し、WebApiConfig.cs プロジェクト ファイルを開き、次の **using** ステートメントを追加します。
+5. [App\_Start] フォルダーを展開し、WebApiConfig.cs プロジェクト ファイルを開き、次の **using** ステートメントを追加します。
 
 		using System.Data.Entity.Migrations;
 		using todolistService.Migrations;
@@ -169,4 +169,4 @@ Code First Migrations は、実行されたときにスナップショットの�
 [DbSet<T>]: https://msdn.microsoft.com/library/azure/gg696460.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

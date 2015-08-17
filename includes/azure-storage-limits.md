@@ -77,4 +77,4 @@
 
 <sup>3</sup>GRS は地理冗長ストレージのことであり、LRS はローカル冗長ストレージのことです。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

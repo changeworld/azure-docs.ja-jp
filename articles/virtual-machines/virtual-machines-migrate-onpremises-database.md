@@ -161,4 +161,4 @@ SQL Server 2014 より前の SQL Server に移行する場合、またはバッ�
 
 ネットワーク経由のアップロードが実現不可能であるか、非常にコストがかかる場合には、[Windows の Import/Export サービス方法](../storage-import-export-service/)を使用して、ファイルの大量のデータを Azure BLOB ストレージに転送します。このサービスでは、そのデータを含む 1 台以上のハード ドライブを Azure データ センターに発送します。このデータ センターでデータがストレージ アカウントにアップロードされます。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2015"
+   ms.date="08/05/2015"
    ms.author="banders" />
 
 # 変更の追跡を使用して違いを特定する
@@ -25,7 +25,7 @@ Microsoft Azure Operational Insights で構成変更の追跡ソリューショ�
 
 ## 変更の追跡を使用する
 
-Operational Insights で変更の追跡を使用するには、事前にソリューションをインストールする必要があります。ソリューションのインストールについて詳しくは、[ソリューション ギャラリーを使用したソリューションの追加または削除](operational-insights-add-solution.md)に関する記事を参照してください。
+Operational Insights で変更の追跡を使用するには、事前にソリューションをインストールする必要があります。ソリューションのインストールについて詳しくは、[ソリューション ギャラリーを使用したソリューションの追加または削除](operational-insights-setup-workspace.md)に関する記事を参照してください。
 
 インストールした後で、Operational Insights の **[概要]** ページにある **[変更の追跡]** タイルを使用すると、監視対象サーバーの変更の概要を確認できます。
 
@@ -54,4 +54,4 @@ Operational Insights で変更の追跡を使用するには、事前にソリ�
 
 [AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -274,4 +274,4 @@ Visual Studio を使用しているのですが...
 [vs_reconfigure]: https://msdn.microsoft.com/library/ee405486.aspx
 [vs_create]: https://msdn.microsoft.com/ja-jp/library/ee405487.aspx
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

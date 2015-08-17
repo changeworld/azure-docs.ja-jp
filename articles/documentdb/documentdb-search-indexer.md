@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="インデクサーを使用した DocumentDB と Azure Search の接続 | Azure" 
+    pageTitle="インデクサーを使用した DocumentDB と Azure Search の接続 | Microsoft Azure" 
     description="この記事では、Azure Search インデクサーとデータ ソースとして DocumentDB を使用する方法を説明します。"
     services="documentdb" 
     documentationCenter="" 
@@ -132,50 +132,16 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
 
 ###図 A: JSON データ型と Azure Search データ型間のマッピング
 
-<table style="font-size:12">
-    <tr>
-        <th>JSON データ型</th>
-        <th>互換性のあるターゲット インデックス フィールドの型</th>
-    </tr>
-    <tr>
-        <td>ブール値</td>
-        <td>Edm.Boolean、Edm.String</td>
-    </tr>
-    <tr>
-        <td>整数などの数値</td>
-        <td>Edm.Int32、Edm.Int64、Edm.String</td>
-    </tr>
-    <tr>
-        <td>浮動小数点などの数値</td>
-        <td>Edm.Double、Edm.String</td>
-    </tr>
-    <tr>
-        <td>String</td>
-        <td>Edm.String</td>
-    </tr>
-    <tr>
-        <td>
-            プリミティブ型の配列<br/>
-            例: [ "a", "b", "c" ]
-        </td>
-        <td>Collection(Edm.String)</td>
-    </tr>
-    <tr>
-        <td>日付などの文字列</td>
-        <td>Edm.DateTimeOffset、Edm.String</td>
-    </tr>
-    <tr>
-        <td>
-            GeoJSON オブジェクト<br/>
-            例: { "type": "Point", "coordinates": [ long, lat ] }
-        </td>
-        <td>Edm.GeographyPoint</td>
-    </tr>
-    <tr>
-        <td>その他の JSON オブジェクト</td>
-        <td>該当なし</td>
-    </tr>
-</table>
+| JSON データ型|	互換性のあるターゲット インデックス フィールドの型|
+|---|---|
+|ブール値|Edm.Boolean、Edm.String|
+|整数などの数値|Edm.Int32、Edm.Int64、Edm.String|
+|浮動小数点などの数値|Edm.Double、Edm.String|
+|String|Edm.String|
+|プリミティブ型の配列。例: "a"、"b"、"c" |Collection(Edm.String)|
+|日付などの文字列| Edm.DateTimeOffset、Edm.String|
+|GeoJSON オブジェクト。例: { "type": "Point", "coordinates": [ long, lat ] } | Edm.GeographyPoint |
+|その他の JSON オブジェクト|該当なし|
 
 ###<a id="CreateIndexExample"></a>要求本文の例
 
@@ -304,4 +270,4 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
  - Azure Search の詳細については、[ここ](/services/search/)をクリックしてください。
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

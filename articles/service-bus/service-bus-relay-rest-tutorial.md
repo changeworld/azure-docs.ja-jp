@@ -9,7 +9,7 @@
 <tags 
    ms.service="service-bus"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
    ms.date="07/07/2015"
@@ -298,7 +298,7 @@ REST スタイルの Service Bus サービスを作成するには、まずコ�
   
 	この手順では、以前に定義した既定の **webHttpRelayBinding** を使用するサービスを構成します。また、既定の **sbTokenProvider** を使用します。この値は次の手順で定義します。
 
-6. `<services>` 要素の後に、次の内容の `<behaviors>` 要素を作成します。このとき、"SAS_KEY" キーを、手順 1 で Azure 管理ポータルから取得した*共有アクセス署名 (SAS)* に置き換えます。
+6. `<services>` 要素の後に、次の内容の `<behaviors>` 要素を作成します。このとき、"SAS\_KEY" キーを、手順 1 で Azure 管理ポータルから取得した*共有アクセス署名 (SAS)* に置き換えます。
   
 	```xml
 	<behaviors>
@@ -568,7 +568,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ソリューションをビルドしたら、次の手順でアプリケーションを実行します。
 
-1. コマンド プロンプトからサービス (ImageListener\bin\Debug\ImageListener.exe) を実行します。
+1. コマンド プロンプトからサービス (ImageListener\\bin\\Debug\\ImageListener.exe) を実行します。
 
 2. コマンド プロンプトのアドレスをコピーし、ブラウザーに貼り付けて画像を確認します。
 
@@ -580,4 +580,4 @@ namespace Microsoft.ServiceBus.Samples
 
 - [Service Bus Relay サービスの使用方法](service-bus-dotnet-how-to-use-relay.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

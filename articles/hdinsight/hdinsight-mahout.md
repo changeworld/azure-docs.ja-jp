@@ -80,7 +80,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
     	PS C:\> Add-HDInsightFile -LocalPath "path\to\u.data" -DestinationPath "example/data/u.data" -ClusterName "your cluster name"
 
-    これは、使用するクラスターの既定のストレージ内の __example/data/u.data__ に __u.data__ ファイルをアップロードします。次に、__wasb:///example/data/u.data__HDInsight ジョブの URI を使用してこのデータにアクセスできます。
+    これは、使用するクラスターの既定のストレージ内の __example/data/u.data__ に __u.data__ ファイルをアップロードします。これにより、HDInsight ジョブから \_\___wasb:///example/data/u.data__ URI を使用してこのデータにアクセスできます。
 
 ###ジョブを実行する
 
@@ -92,7 +92,7 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 	# NOTE: The version number portion of the file path
 	# may change in future versions of HDInsight.
 	# So dynamically grab it using Hive.
-	$mahoutPath = Invoke-Hive -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target\*-job.jar' | where {$_.startswith("C:\apps\dist")}
+	$mahoutPath = Invoke-Hive -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target*-job.jar' | where {$_.startswith("C:\apps\dist")}
 	$noCRLF = $mahoutPath -replace "`r`n", ""
 	$cleanedPath = $noCRLF -replace "\", "/"
 	$jarFile = "file:///$cleanedPath"
@@ -291,7 +291,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
 	![hadoop cli][hadoopcli]
 
-3. 次のコマンドを使用し、Mahout を使用するファイル記述子 (\_\_KDDTrain+.info\_\_) を生成します。
+3. 次のコマンドを使用し、Mahout を使用するファイル記述子 (__KDDTrain+.info__) を生成します。
 
 		hadoop jar "c:/apps/dist/mahout-0.9.0.2.1.3.0-1887/examples/target/mahout-examples-0.9.0.2.1.3.0-1887-job.jar" org.apache.mahout.classifier.df.tools.Describe -p "wasb:///example/data/KDDTrain+.arff" -f "wasb:///example/data/KDDTrain+.info" -d N 3 C 2 N C 4 N C 8 N 2 C 19 N L
 
@@ -301,7 +301,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
 		hadoop jar c:/apps/dist/mahout-0.9.0.2.1.3.0-1887/examples/target/mahout-examples-0.9.0.2.1.3.0-1887-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasb:///example/data/KDDTrain+.arff -ds wasb:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
 
-    この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (__wasb://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
+    この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (\_\___wasb://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
 
 5. __KDDTest+.arff__ データセットを分類してフォレストをテストします。次のコマンドを使用します。
 
@@ -333,7 +333,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 	    Reliability                                53.4921%
 	    Reliability (standard deviation)            0.4933
 
-  このジョブでも、__wasb:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
+  このジョブでも、\_\___wasb:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
 
 > [AZURE.NOTE]Mahout ジョブはファイルを上書きしません。これらのジョブをもう一度実行する場合は、前のジョブで作成したファイルを削除する必要があります。
 
@@ -373,7 +373,7 @@ Mahout ジョブの実行中のエラーを回避するには、実行と実行�
 HDInsight 3.1 クラスターには Mahout が含まれていますが、パスとファイル名にはクラスターにインストールされている Mahout のバージョン番号が含まれています。このチュートリアルの Windows PowerShell サンプル スクリプトでは、2014 年 7 月時点で有効なパスを使用していますが、バージョン番号は将来の HDInsight の更新で変わります。使用しているクラスターの Mahout JAR ファイルへの現在のパスを決定するには、次の Windows PowerShell コマンドを使用して、返されるファイル パスを参照するようにスクリプトを変更します。
 
 	Use-AzureHDInsightCluster -Name $clusterName
-	$jarFile = Invoke-Hive -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target\*-job.jar'
+	$jarFile = Invoke-Hive -Query '!${env:COMSPEC} /c dir /b /s ${env:MAHOUT_HOME}\examples\target*-job.jar'
 
 ###<a name="nopowershell"></a>Windows PowerShell で動作しないクラス
 
@@ -421,4 +421,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

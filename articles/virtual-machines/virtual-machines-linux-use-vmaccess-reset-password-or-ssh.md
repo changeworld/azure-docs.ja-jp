@@ -111,9 +111,9 @@ SSH キーを使用したアクセス権を持つ新しい sudo ユーザーを�
 
 ### <a name="sshconfigresetcli"></a>SSH 構成のリセット
 
-SSH の構成が望ましい状態でない場合は、VM にアクセスできなくなる可能性もあります。VMAccess 拡張機能を使用して、構成を既定の状態にリセットすることができます。そのために必要なのは、"reset_ssh" キーを "True" に設定することだけです。拡張機能によって SSH サーバーが再起動し、VM 上の SSH ポートが開いて、SSH 構成が既定値にリセットされます。ユーザー アカウント (名前、パスワード、または SSH キー) は変更されません。
+SSH の構成が望ましい状態でない場合は、VM にアクセスできなくなる可能性もあります。VMAccess 拡張機能を使用して、構成を既定の状態にリセットすることができます。そのために必要なのは、"reset\_ssh" キーを "True" に設定することだけです。拡張機能によって SSH サーバーが再起動し、VM 上の SSH ポートが開いて、SSH 構成が既定値にリセットされます。ユーザー アカウント (名前、パスワード、または SSH キー) は変更されません。
 
-> [AZURE.NOTE]リセットされる SSH の構成ファイルは、/etc/ssh/sshd_config にあります。
+> [AZURE.NOTE]リセットされる SSH の構成ファイルは、/etc/ssh/sshd\_config にあります。
 
 手順 1. 次の内容を含む PrivateConf.json という名前のファイルを作成します。
 
@@ -228,7 +228,7 @@ SSH の構成にエラーがあると、仮想マシンにアクセスできな�
 	$Version = "1.*"
 	Set-AzureVMExtension -ExtensionName $ExtensionName -VM  $vm -Publisher $Publisher -Version $Version -PrivateConfiguration $PrivateConfig | Update-AzureVM
 
-> [AZURE.NOTE]SSH の構成ファイルは、/etc/ssh/sshd_config にあります。
+> [AZURE.NOTE]SSH の構成ファイルは、/etc/ssh/sshd\_config にあります。
 
 ### <a name="delete"></a>ユーザーの削除
 
@@ -263,4 +263,4 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -66,32 +66,13 @@
 ## 次のステップ
 Getting Started (概要)
 
-- [Azure リソース マネージャーの概要](../resource-group-overview.md)  
-- [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
-- [Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](../xplat-cli-azure-resource-manager.md)  
-  
-アプリケーションの作成と展開
-  
-- [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)  
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)
-- [Azure で複雑なアプリケーションを予測どおりにデプロイする](../app-service-web/app-service-deploy-complex-application-predictably.md)
-- [Azure でのリソース グループのデプロイのトラブルシューティング](../resource-group-deploy-debug.md)  
-- [Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)  
-- [高度なテンプレートの操作](../resource-group-advanced-template.md)  
-- [.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ](../arm-template-deployment.md)
-  
-リソースの整理
-  
-- [タグを使用した Azure リソースの整理](../resource-group-using-tags.md)  
-  
-アクセスの管理と監査
-  
-- [リソースへのアクセスの管理と監査](resource-group-rbac.md)  
-- [Azure リソース マネージャーでのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md)  
-- [Azure クラシック ポータルを使用した Azure サービス プリンシパルの新規作成](../resource-group-create-service-principal-portal.md)  
+- リソース マネージャーでの概念の概要については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。  
+- リソースのデプロイ時に Azure PowerShell を使用する方法の概要については、「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+- リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」を参照してください。 
+- リソースを理論的に整理する方法については、「[タグを使用した Azure リソースの整理](../resource-group-using-tags.md)」を参照してください。
   
 
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

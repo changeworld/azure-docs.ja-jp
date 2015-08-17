@@ -29,7 +29,7 @@
 
 	これにより、認証されたユーザー資格情報を有する同じクライアント インスタンスによって登録が確実に行われます。そうしなければ、登録は失敗し、認証エラー (401) を返します。
 
-3. 共有 MainPage.cs プロジェクト ファイルを開き、**ButtonLogin_Click** ハンドラーを次のコードに置き換えます。
+3. 共有 MainPage.cs プロジェクト ファイルを開き、**ButtonLogin\_Click** ハンドラーを次のコードに置き換えます。
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -44,7 +44,7 @@
 
 	これにより、プッシュ登録が試行される前に、認証が行われるようになります。
 
-4. 	前のコードでは、生成されたプッシュ クラス名 (`todolistPush`) をウィザードによって生成されるクラス名 (形式は通常、<code><em>mobile_service</em>Push</code>) に置き換える必要があります。
+4. 	前のコードでは、生成されたプッシュ クラス名 (`todolistPush`) をウィザードによって生成されるクラス名 (形式は通常、<code><em>mobile\_service</em>Push</code>) に置き換える必要があります。
 
 ###手動で有効にされたプッシュ通知		
 
@@ -54,7 +54,7 @@
  
 2. **InitNotificationsAsync** メソッドのアクセシビリティを、`private` から `public` に変更し、`static` 修飾子を追加します。
 
-3. 共有 MainPage.cs プロジェクト ファイルを開き、**ButtonLogin_Click** ハンドラーを次のコードに置き換えます。
+3. 共有 MainPage.cs プロジェクト ファイルを開き、**ButtonLogin\_Click** ハンドラーを次のコードに置き換えます。
 
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -69,4 +69,4 @@
 	
 	これにより、プッシュ登録が試行される前に、認証が行われるようになります。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

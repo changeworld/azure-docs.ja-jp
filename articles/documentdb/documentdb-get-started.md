@@ -1,5 +1,5 @@
 <properties
-	pageTitle="DocumentDB .NET SDK の使用 | Azure"
+	pageTitle="DocumentDB .NET SDK の使用 | Microsoft Azure"
 	description="Azure DocumentDB アカウントを作成して構成する方法について説明します。また、NoSQL ドキュメント データベース アカウント内でデータベースやコレクションを作成したり、JSON ドキュメントを保存したりする方法についても説明します。"
 	services="documentdb"
 	documentationCenter=".net"
@@ -12,7 +12,7 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="get-started-article" 
+	ms.topic="hero-article" 
 	ms.date="05/19/2015"
 	ms.author="anhoh"/>
 
@@ -38,7 +38,7 @@ DocumentDB は NoSQL ドキュメント データベースで、[多数の API �
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)をご覧ください。
 - [Visual Studio 2013](http://www.visualstudio.com/) Update 4 以降。
 
 ## 手順 1: DocumentDB アカウントを作成する
@@ -475,4 +475,4 @@ Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、�
 [keys]: media/documentdb-get-started/keys.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

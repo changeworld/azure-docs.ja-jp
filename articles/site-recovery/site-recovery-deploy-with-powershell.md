@@ -104,7 +104,7 @@ PowerShell で "< >" 内の要素をユーザー固有の情報に置き換え�
 
 	$VaultName = "<testvault123>"
 	$VaultGeo  = "<Southeast Asia>"
-	$OutputPathForSettingsFile = "<c:>"
+	$OutputPathForSettingsFile = "<C:\>"
 
 ```
 
@@ -125,7 +125,7 @@ PowerShell で "< >" 内の要素をユーザー固有の情報に置き換え�
 	
 		$VaultName = "<testvault123>"
 		$VaultGeo  = "<Southeast Asia>"
-		$OutputPathForSettingsFile = "<c:>"
+		$OutputPathForSettingsFile = "<C:\>"
 	
 		$VaultSetingsFile = Get-AzureSiteRecoveryVaultSettingsFile -Location $VaultGeo -Name $VaultName -Path $OutputPathForSettingsFile;
 	
@@ -461,4 +461,4 @@ if($isJobLeftForProcessing)
 
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> </UL>
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

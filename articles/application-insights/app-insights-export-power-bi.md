@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/23/2015" 
+	ms.date="08/04/2015" 
 	ms.author="awills"/>
  
 # Application Insights データの Power BI ビュー
@@ -152,7 +152,7 @@ Stream Analytics による Power BI リソースへのアクセスを承認し�
 ```SQL
 
     SELECT
-      flat.ArrayValue.name
+      flat.ArrayValue.name,
       count(*)
     INTO
       [pbi-output]
@@ -195,5 +195,6 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 
 * [連続エクスポート](app-insights-export-telemetry.md)
 * [Application Insights](app-insights-overview.md)
+* [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

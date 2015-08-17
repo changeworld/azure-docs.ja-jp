@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB の制限とクォータ | Azure" 
+	pageTitle="DocumentDB の制限とクォータ | Microsoft Azure" 
 	description="DocumentDB の制限とクォータの適用について説明します。" 
 	services="documentdb" 
 	authors="mimig1" 
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

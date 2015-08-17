@@ -90,4 +90,4 @@ App Service では、[Websites](http://azure.microsoft.com/services/websites/)�
 詳細については、「[App Service のドキュメント](http://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -79,4 +79,4 @@ DocumentDB の利用を開始するには、[アカウント](http://azure.micro
 - [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667)。未来の店舗は、スピーディな検索と容易なデータ フローを基盤として運営されます。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

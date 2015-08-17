@@ -24,7 +24,7 @@
 
 モバイル アプリのネットワーク接続は、サービスのない地域に移動したときや、ネットワークの問題によって切断されることがあります。たとえば、建設業界用アプリを使用する際、遠くの建設現場でスケジュール データを入力し、後で Azure に同期する場合があります。Azure Mobile Services のオフライン同期は、ネットワーク接続が失われたときにも作業を続行できるため、多くのモバイル アプリに不可欠な機能です。オフライン同期を使用すると、Azure SQL Server テーブルのローカル コピーで作業するため、これら 2 つが定期的に再同期されます。
 
-このチュートリアルでは、[Mobile Services Quick Start tutorial (モバイル サービスのクイック スタート チュートリアル)] でアプリを更新し、オフライン同期を有効にしてからアプリをテストします。テストでは、オフラインでのデータ追加や、これらの項目のオンライン データベースへの同期を実行して Azure 管理ポータルで変更内容を確認します。
+このチュートリアルでは、[Mobile Services Quick Start tutorial (Mobile Services のクイック スタート チュートリアル)] でアプリを更新し、オフライン同期を有効にしてからアプリをテストします。テストでは、オフラインでのデータ追加や、これらの項目のオンライン データベースへの同期を実行して Azure 管理ポータルで変更内容を確認します。
 
 オフラインかオンラインかにかかわらず、複数の変更をデータに加えると競合が発生する場合があります。今後のチュートリアルでは、いずれのバージョンの変更を承認すべきかを選択することになる、同期の競合を掘り下げて説明します。このチュートリアルでは、同期の競合を想定しないで、既存データに加えたすべての変更が Azure SQL Server に直接適用されるものとします。
 
@@ -38,7 +38,7 @@
 
 オフライン同期では、*同期テーブル*に対して読み取りや書き込みをします (*IMobileServiceSyncTable* インターフェイスを使用)。このテーブルは、デバイス上の **SQL Light** データベースの一部です。
 
-デバイスと Azure Mobile Services の間で変更をプッシュしたりプルしたりするには、*同期コンテキスト* (* MobileServiceClient.SyncContext*) を使用します。この同期コンテキストは、データをローカルに格納するローカル データベースで初期化されます。
+デバイスと Azure Mobile Services の間で変更をプッシュしたりプルしたりするには、*同期コンテキスト* (*MobileServiceClient.SyncContext*) を使用します。この同期コンテキストは、データをローカルに格納するローカル データベースで初期化されます。
 
 1. このコードを *AndroidManifest.xml* ファイルに追加することで、ネットワーク接続を確認する権限を追加します 。
 
@@ -219,6 +219,6 @@ One thing which is important to point out: if there are pending changes in the l
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Azure Mobile Services のオフライン対応アプリケーション]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-[Mobile Services Quick Start tutorial (モバイル サービスのクイック スタート チュートリアル)]: mobile-services-android-get-started.md
+[Mobile Services Quick Start tutorial (Mobile Services のクイック スタート チュートリアル)]: mobile-services-android-get-started.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

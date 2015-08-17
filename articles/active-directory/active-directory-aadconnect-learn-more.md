@@ -18,9 +18,11 @@
 
 # Azure Active Directory Connect - 詳細情報
 
-<div class="dev-center-tutorial-selector sublanding">
-<a href="../active-directory-aadconnect/" title="概要">概要</a> <a href="../active-directory-aadconnect-how-it-works/" title="動作">動作</a> <a href="../active-directory-aadconnect-get-started/" title="使用">使用</a> <a href="../active-directory-aadconnect-whats-next/" title="次の手順">次の手順</a> <a href="../active-directory-aadconnect-learn-more/" title="詳細情報" class="current">詳細情報</a>
-</div>
+> [AZURE.SELECTOR]
+- [What is It](../active-directory-aadconnect.md)
+- [How it Works](../active-directory-aadconnect-how-it-works.md)
+- [Getting Started](../active-directory-aadconnect-get-started.md)
+- [What's Next](../active-directory-aadconnect-whats-next.md) - [Learn More](../active-directory-aadconnect-learn-more.md)
 
 次に、Azure AD Connect の使用、および Azure AD とオンプレミスのディレクトリとの統合に関する他のリソースの一覧を示します。
 
@@ -47,4 +49,4 @@
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

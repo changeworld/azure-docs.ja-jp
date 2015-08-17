@@ -13,10 +13,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/01/2015"
+   ms.date="08/03/2015"
    ms.author="joaoma" />
 
 # インターネットに接続するロード バランサーの構成の開始
+
+> [AZURE.SELECTOR]
+- [Azure classic steps](load-balancer-internet-getstarted.md)
+- [Resource Manager Powershell steps](load-balancer-arm-powershell.md)
 
 Microsoft Azure の負荷分散サービスは、すべてのテナントの種類 (IaaS または PaaS) とすべての OS バージョン (Windows または任意の Linux ベース OS をサポート) で動作します。
 
@@ -135,4 +139,4 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

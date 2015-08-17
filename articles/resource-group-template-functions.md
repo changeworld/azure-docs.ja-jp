@@ -388,4 +388,4 @@
 - リソースの種類を作成するときに、指定した回数を繰り返すには、「[Azure リソース マネージャーにおけるリソースの複数のインスタンスの作成](resource-group-create-multiple.md)」を参照してください。
 - 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

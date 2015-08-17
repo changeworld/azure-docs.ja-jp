@@ -125,23 +125,23 @@ Azure リソース グループとその機能の詳細については、[こち
 
 | 発行元 | プラン | SKU | バージョン |
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
-| OpenLogic | CentOS | 7 | 7.0.201503 |
-| OpenLogic | CentOS | 7.1 | 7.1.201504 |
-| CoreOS | CoreOS | ベータ版 | 647.0.0 |
-| CoreOS | CoreOS | 安定版 | 633.1.0 |
-| MicrosoftDynamicsNAV | DynamicsNAV | 2015 | 8.0.40459 |
-| MicrosoftSharePoint | MicrosoftSharePointServer | 2013 | 1.0.0 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Standard | 1.0.0 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Enterprise | 1.0.0 |
-| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-DW | 12.0.2430 |
-| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-OLTP | 12.0.2430 |
-| Canonical | UbuntuServer | 12.04.5-LTS | 12.04.201504230 |
-| Canonical | UbuntuServer | 14.04.2-LTS | 14.04.201503090 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | 3.0.201503 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | 4.0.201503 |
-| MicrosoftWindowsServer | WindowsServer | Windows-Server-Technical-Preview | 5.0.201504 |
-| MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials | 1.0.141204 |
-| MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 | 4.3.4665 |
+| OpenLogic | CentOS | 7 | 7\.0.201503 |
+| OpenLogic | CentOS | 7\.1 | 7\.1.201504 |
+| CoreOS | CoreOS | ベータ版 | 647\.0.0 |
+| CoreOS | CoreOS | 安定版 | 633\.1.0 |
+| MicrosoftDynamicsNAV | DynamicsNAV | 2015 | 8\.0.40459 |
+| MicrosoftSharePoint | MicrosoftSharePointServer | 2013 | 1\.0.0 |
+| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Standard | 1\.0.0 |
+| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Enterprise | 1\.0.0 |
+| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-DW | 12\.0.2430 |
+| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-OLTP | 12\.0.2430 |
+| Canonical | UbuntuServer | 12\.04.5-LTS | 12\.04.201504230 |
+| Canonical | UbuntuServer | 14\.04.2-LTS | 14\.04.201503090 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | 3\.0.201503 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | 4\.0.201503 |
+| MicrosoftWindowsServer | WindowsServer | Windows-Server-Technical-Preview | 5\.0.201504 |
+| MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials | 1\.0.141204 |
+| MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 | 4\.3.4665 |
 
 VM を作成するため、`azure vm quick-create command` と入力して、メッセージが表示されるのを待ちます。次のような内容が表示されます。
 
@@ -1315,4 +1315,4 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

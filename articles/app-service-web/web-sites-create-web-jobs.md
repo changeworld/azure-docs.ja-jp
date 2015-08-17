@@ -70,7 +70,7 @@ Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング �
 	
 > [AZURE.NOTE]Web アプリが複数のインスタンスで実行される場合、連続的に実行する Web ジョブはすべてのインスタンス上で実行されます。オンデマンドで実行する Web ジョブおよびスケジュールに従って実行するタスクは、負荷分散目的で Microsoft Azure によって選択された単一のインスタンス上で実行されます。
 	
-> 連続的に実行する Web ジョブをすべてのインスタンス上で確実に実行するには、Web アプリで [常時接続]\* 構成設定を有効にします。そうしないと、SCM ホスト サイトが長時間アイドル状態になったときに Web ジョブが実行を停止する可能性があります。
+> 連続的に実行する Web ジョブをすべてのインスタンス上で確実に実行するには、Web アプリで [常時接続]* 構成設定を有効にします。そうしないと、SCM ホスト サイトが長時間アイドル状態になったときに Web ジョブが実行を停止する可能性があります。
 
 ## <a name="CreateScheduled"></a>スケジュールされた Web ジョブの作成
 
@@ -209,4 +209,4 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

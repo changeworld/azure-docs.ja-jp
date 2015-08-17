@@ -15,10 +15,10 @@
 
 7. [Azure の管理ポータル](https://manage.windowsazure.com/)で、モバイル サービスに戻り、**[構成]** タブをクリックします。**[アプリケーション設定]** セクションまで下にスクロールし、次のアプリケーション設定を追加して、**[保存]** をクリックします。
 
-    <table border="1"> <tr> <th>アプリケーション設定名</th><th>説明</th> </tr> <tr> <td>AAD_CLIENT_ID</td><td>前の手順で統合アプリケーションからコピーしたクライアント ID。</td> </tr> <tr> <td>AAD_CLIENT_KEY</td><td>前の手順で AAD 統合アプリケーションで生成されたアプリケーション キー。</td> </tr> <tr> <td>AAD_TENANT_DOMAIN</td><td>AAD ドメイン名。"mydomain.onmicrosoft.com"のような形式にする必要があります。</td> </tr> <tr> <td>AAD_GROUP_ID</td><td>前のセクションで書き留めた Sales グループのグループ ID</td> </tr> </table><br/>
+    <table border="1"> <tr> <th>アプリケーション設定名</th><th>説明</th> </tr> <tr> <td>AAD\_CLIENT\_ID</td><td>前の手順で統合アプリケーションからコピーしたクライアント ID。</td> </tr> <tr> <td>AAD\_CLIENT\_KEY</td><td>前の手順で AAD 統合アプリケーションで生成されたアプリケーション キー。</td> </tr> <tr> <td>AAD\_TENANT\_DOMAIN</td><td>AAD ドメイン名。"mydomain.onmicrosoft.com"のような形式にする必要があります。</td> </tr> <tr> <td>AAD\_GROUP\_ID</td><td>前のセクションで書き留めた Sales グループのグループ ID</td> </tr> </table><br/>
 
  
     ![](./media/mobile-services-generate-aad-app-registration-access-key-rbac/aad-app-settings.png)
   
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

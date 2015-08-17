@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na" 
  ms.devlang="dotnet" 
  ms.topic="article" 
- ms.date="05/15/2015" 
+ ms.date="08/04/2015" 
  ms.author="krisragh"/>
 
 # Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法  
@@ -198,4 +198,4 @@ _schedule_ の要素を次の表に示します。
  
   
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

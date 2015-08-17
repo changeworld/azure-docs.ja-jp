@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Java Web アプリでの依存関係、例外、および実行時間の監視" 
-	description="Application Insights を使用した Java Web サイトの監視の拡張" 
+	description="Extended monitoring of your Java website with Application Insights (Application Insights を使用した Java Web サイトの監視の拡張)" 
 	services="application-insights" 
     documentationCenter="java"
 	authors="alancameronwills" 
@@ -27,7 +27,7 @@
 
 Java エージェントを使用するには、これをサーバーにインストールします。Web アプリを [Application Insights Java SDK][java] を使用してインストルメント化する必要があります。
 
-## Java 用の Application Insights エージェントのインストール
+## Jave 用の Application Insights エージェントのインストール
 
 1. Java サーバーを実行しているコンピューターで[エージェントをダウンロード](http://go.microsoft.com/fwlink/?LinkId=618633)します。
 2. アプリケーション サーバーのスタートアップ スクリプトを編集し、次の JVM を追加します。
@@ -109,4 +109,4 @@ Application Insights リソースで、集計されたリモートの依存関�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

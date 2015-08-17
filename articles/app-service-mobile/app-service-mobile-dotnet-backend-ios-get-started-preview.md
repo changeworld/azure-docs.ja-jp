@@ -12,7 +12,7 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
-	ms.topic="get-started-article"
+	ms.topic="hero-article"
 	ms.date="06/18/2015"
 	ms.author="yuaxu"/>
 
@@ -86,4 +86,4 @@
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

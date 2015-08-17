@@ -241,4 +241,4 @@ Azure の管理ポータル、[PowerShell](https://msdn.microsoft.com/library/az
 [Set-AzureSqlDatabase](http://go.microsoft.com/fwlink/?LinkId=391412)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

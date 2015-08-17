@@ -67,4 +67,4 @@
 
 [Azure Virtual Network へのクロスプレミスのサイト間接続の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

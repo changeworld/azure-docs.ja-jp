@@ -59,7 +59,7 @@ Azure 管理ポータルでは高度なルールを臨機応変に設定し、�
 |----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | エラー: 属性がサポートされていません。 | (user.invalidProperty -eq "Value") | (user.department -eq "value")プロパティは、サポートされているプロパティの一覧に示したいずれかのプロパティと一致している必要があります。 |
 | エラー: 属性で演算子がサポートされていません。 | (user.accountEnabled -contains true) | (user.accountEnabled -eq true)プロパティはブール型です。前掲の一覧からブール型でサポートされている演算子 (-eq または -ne) を使用してください。 |
-| エラー: クエリ コンパイル エラー。 | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "\*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing")論理演算子は、サポートされているプロパティ一覧のいずれかと一致している必要があります。(user.userPrincipalName -match ".\*@domain.ext") または (user.userPrincipalName -match "@domain.ext$") 正規表現の誤り。 |
+| エラー: クエリ コンパイル エラー。 | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing") 論理演算子は、上記のサポートされるプロパティ リストのいずれかと一致する必要があります。(user.userPrincipalName -match ".*@domain.ext") または (user.userPrincipalName -match "@domain.ext$") は正規表現ではエラーになります。 |
 | エラー: バイナリ式の形式が正しくありません。 | (user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")クエリにいくつかの誤りが存在します。かっこの位置が正しくありません。 |
 | エラー: 動的メンバーシップの設定中に不明なエラーが発生しました。 | (user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")クエリにいくつかの誤りが存在します。かっこの位置が正しくありません。 |
 
@@ -168,4 +168,4 @@ Azure 管理ポータルでは高度なルールを臨機応変に設定し、�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

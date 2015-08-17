@@ -53,7 +53,7 @@ Azure AD Graph API の詳細については、[Azure Active Directory Graph Team
 
 このセクションでは、[Graph REST API] を使用して AAD からユーザーについての追加情報を取得する GetUserInfo カスタム API を作成します。
 
-Mobile Services でカスタム API をまったく使用したことがない場合は、このセクションを完了する前に、[クライアントからのカスタム API 呼び出し]を見直すことをお勧めします。
+Mobile Services でカスタム API をまったく使用したことがない場合は、このセクションを完了する前に、「[Custom API Tutorial (カスタム API チュートリアル)]」を見直すことをお勧めします。
 
 1. [Azure の管理ポータル]で、モバイル サービスのための新しい GetUserInfo カスタム API を作成して、**認証されたユーザーだけ**に get メソッドに対する許可を設定します。
 
@@ -88,7 +88,7 @@ Mobile Services でカスタム API をまったく使用したことがない�
             });
         }
 
-    *tenant_domain*、統合アプリケーションの *client id*、およびアプリケーションの *key* を与えることで、この関数はディレクトリ情報の読み取りに使用する Graph アクセス トークンを提供します。
+    *tenant\_domain*、統合アプリケーションの *client id*、およびアプリケーションの *key* を与えることで、この関数はディレクトリ情報の読み取りに使用する Graph アクセス トークンを提供します。
 
 4. Graph API を使用してユーザー情報を返す、次の `getUser` 関数を追加します。
 
@@ -172,7 +172,6 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [How to Register with the Azure Active Directory]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [Custom API Tutorial (カスタム API チュートリアル)]: mobile-services-windows-store-dotnet-call-custom-api.md
-[クライアントからのカスタム API 呼び出し]: mobile-services-windows-store-dotnet-call-custom-api.md
 [Store Server Scripts]: mobile-services-store-scripts-source-control.md
 [アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
 [Graph API]: http://msdn.microsoft.com/library/azure/hh974478.aspx
@@ -182,4 +181,4 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: mobile-services-javascript-backend-windows-store-dotnet-aad-rbac.md
 [Azure Active Directory Graph Team Blog (Azure Active Directory Graph チームのブログ)]: http://go.microsoft.com/fwlink/?LinkId=510536
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

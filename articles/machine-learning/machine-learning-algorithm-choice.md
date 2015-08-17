@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Machine Learning アルゴリズムの選択方法 | Microsoft Azure" 
-	description="クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning のアルゴリズムを選択する方法"	
+	description="クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning のアルゴリズムを選択する方法" 
 	services="machine-learning"
 	documentationCenter="" 
 	authors="garyericson" 
@@ -73,7 +73,7 @@ Machine Learning において、教師なし学習の問題は、ラベルの付
 
 Azure Machine Learning では、教師あり学習と教師なし学習の両方を、**クラスタリング**、**分類**、**回帰**を使用して実行できます。
 
-   ![screenshot_of_experiment](./media/machine-learning-algorithm-choice/help2.png)
+   ![screenshot\_of\_experiment](./media/machine-learning-algorithm-choice/help2.png)
 
 <a name="anchor-4"></a>
 ##クラスタリング
@@ -89,7 +89,7 @@ K-Means は、既知のクラスタリングの問題を解決する最も簡単
 
 [K-Means クラスタリング][k-means-clustering] アルゴリズムのモジュールからは未トレーニングの [K-Means クラスタリング モデル][train-clustering-model]が返され、そのモデルを トレーニング クラスタリング モデル モジュールに渡せばトレーニングできます。
 
-![screenshot_of_experiment](./media/machine-learning-algorithm-choice/k4.png)
+![screenshot\_of\_experiment](./media/machine-learning-algorithm-choice/k4.png)
 
 この図は、K-Means クラスタリングを使用するときに構成するオプションを示しています。K-Means 手法では、D 次元のデータ ポイントのセットから指定された数のクラスターを検索します。この手法では、Lloyd のアルゴリズムを使用し、*K 重心の初期セット*から始めて、重心の位置を繰り返し絞り込みます。このアルゴリズムは、重心が安定したとき、または*指定された数のイテレーション*が完了したときに終了します。このモジュールでは、K × D の配列を N 個のデータ点から見つかった K 個のクラスターを定義する最終的な重心で初期化します。また、このアルゴリズムでは、各データ ポイントから K 個のクラスターの 1 つまでを割り当てた長さ N のベクトルも使用します。検出する特定の数のクラスター (K) を指定した場合、モジュールによって K クラスターのために最初の K 個のデータ ポイントが割り当てられます。
 
@@ -100,7 +100,7 @@ K-Means は、既知のクラスタリングの問題を解決する最も簡単
 ##分類 
 分類分析では、サンプルを複数のクラスに分割します。また、トレーニング済みのデータとして、事前にラベルを付けた一連のデータが使用されます。この手法は、データ インスタンスがどのグループに属すかを予測するために使用されます。Azure Machine Learning では、以下の分類アルゴリズムを使用できます。
 
-![screenshot_of_experiment](./media/machine-learning-algorithm-choice/help3.png)
+![screenshot\_of\_experiment](./media/machine-learning-algorithm-choice/help3.png)
 
 *2 クラス アルゴリズム*は二項応答変数 (yes または no、0 または 1、true または false など) に使用し、*多クラス アルゴリズム*はインスタンスを 3 つ以上のクラスに分類する任意の名義応答変数に使用します。
 
@@ -174,7 +174,7 @@ K-Means は、既知のクラスタリングの問題を解決する最も簡単
  
 回帰分析では、過去の推定に基づいて新しい値を予測します。従属変数に対する新しい値が、1 つ以上の測定された属性値に基づいて計算されます。Azure Machine Learning で使用できる回帰アルゴリズムは次のとおりです。
 
-![screenshot_of_experiment](./media/machine-learning-algorithm-choice/help4.png)
+![screenshot\_of\_experiment](./media/machine-learning-algorithm-choice/help4.png)
 
 ユース ケースと入手可能なデータに応じて、複数の中から 1 つのアルゴリズムを選択します。この後、いくつかの回帰アルゴリズムとその主要なユース ケースについて説明します。
 
@@ -262,4 +262,4 @@ Machine Learning Studio で使用可能な Machine Learning アルゴリズム�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

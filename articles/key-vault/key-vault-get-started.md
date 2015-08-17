@@ -85,7 +85,7 @@ Azure リソース マネージャーを使用すると、すべての関連す�
 
 	New-AzureResourceGroup –Name 'ContosoResourceGroup' –Location 'East Asia'
 
--Location パラメーターでは、[Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn654582.aspx) コマンドを使用して、この例の場所に別の場所を指定する方法を識別します。詳細情報が必要な場合は、`Get-Help Get-AzureLocation` と入力します。
+\-Location パラメーターでは、[Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn654582.aspx) コマンドを使用して、この例の場所に別の場所を指定する方法を識別します。詳細情報が必要な場合は、`Get-Help Get-AzureLocation` と入力します。
 
 
 ## <a id="vault"></a>Key Vault を作成する ##
@@ -110,7 +110,7 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
 
-ただし、既存のソフトウェアで保護されたキーが、C:\ ドライブの PFX ファイルに保存されていて、softkey.pfx という名前で Azure Key Vault にアップロードする場合は、次のように入力して、変数 **securepfxpwd** を .PFX ファイルのパスワード **123** に設定します。
+ただし、既存のソフトウェアで保護されたキーが、C:\\ ドライブの PFX ファイルに保存されていて、softkey.pfx という名前で Azure Key Vault にアップロードする場合は、次のように入力して、変数 **securepfxpwd** を .PFX ファイルのパスワード **123** に設定します。
 
     $securepfxpwd = ConvertTo-SecureString –String '123' –AsPlainText –Force
 
@@ -119,7 +119,7 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd
 
 
-作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定バージョンを取得するには **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
+作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、この特定バージョンを取得するには ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** を使用します。
 
 このキーの URI を表示するには、次のように入力します。
 
@@ -133,7 +133,7 @@ Azure Key Vault でソフトウェアで保護されたキーを作成する場�
 
 	$secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword' -SecretValue $secretvalue
 
-Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定バージョンを取得するには **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
+Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。常に現在のバージョンを取得するには ****https://ContosoVault.vault.azure.net/secrets/SQLPassword** を使用し、この特定バージョンを取得するには ****https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** を使用します。
 
 このシークレットの URI を表示するには、次のように入力します。
 
@@ -211,7 +211,7 @@ Azure Active Directory にアプリケーションを登録するには:
 
 	$key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\ITByok.byok' -Destination 'HSM'
 
-この BYOK パッケージを生成する方法の詳細な手順については、「[Azure Key Vault の HSM 保護キーを生成し、転送する方法](key-vault-hsm-protected-keys.md)」をご覧ください。
+この BYOK パッケージを生成する方法の詳細な手順については、「[Azure Key Vault の HSM 保護キーを生成し、転送する方法](key-vault-hsm-protected-keys.md)」を参照してください。
 
 ## <a id="delete"></a>Key Vault と関連付けられているキーやシークレットを削除する ##
 
@@ -248,4 +248,4 @@ Azure Key Vault の Windows PowerShell コマンドレットの一覧につい�
 プログラミング リファレンスについては、MSDN の Microsoft Azure ドキュメント ライブラリにある「[Key Vault](https://msdn.microsoft.com/library/azure/dn903625.aspx)」をご覧ください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

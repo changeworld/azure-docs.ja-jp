@@ -43,8 +43,7 @@ CPU、メモリ消費、ネットワーク帯域幅、ストレージに関し�
 - CPU 消費率: 約 1% 上昇
 - メモリ消費量: システム メモリ合計の最大 10%
 - ネットワーク帯域幅の使用量: 1000 件の ADFS 要求につき約 1 MB
->[AZURE.NOTE]エージェントが Azure と通信できなくなった場合、エージェントは、システム メモリの合計の 10% を上限に、データをローカルで格納します。物理メモリの合計の 10% に達し、エージェントがデータをサービスにアップロードできなくなると、新しい ADFS トランザクションにより、"キャッシュされている" トランザクションが最近最も使われていないものから順に上書きされます。
-
+>[AZURE.NOTE]エージェントが Azure と通信できない場合は、合計システム メモリの最大 10% の上限に達するまで、データをローカルに保存します。合計物理メモリの 10% に達した後でエージェントがサービスにデータをアップロードできない場合は、新しい ADFS トランザクションによって、“キャッシュされた” トランザクションが “最も過去に処理された” トランザクションから上書きされます。
 
 - AD Health エージェントのローカル バッファー ストレージ: 約 20 MB
 - 監査チャネルに必要なデータ ストレージ
@@ -69,7 +68,7 @@ Register-AdHealthAgent (インストールの最後の手順) を実行する前
 - 手順 1 – machine.config ファイルにエントリを追加する
 
 
-machine.config ファイルを探します。ファイルのパスは、%windir%\Microsoft.NET\Framework64\[version]\config\machine.config です。</li>
+machine.config ファイルを探します。ファイルのパスは、%windir%\\Microsoft.NET\\Framework64\\[version]\\config\\machine.config です。</li>
 
 machine.config ファイルの <configuration></configuration> 要素の下に、次のエントリを追加します。
  
@@ -85,7 +84,7 @@ machine.config ファイルの <configuration></configuration> 要素の下に�
 
  
 
-<defaultProxy> に関する情報は、[こちら](https://msdn.microsoft.com/library/kd3cf2ex(v=vs.110).aspx) も参照してください。
+<defaultProxy> に関する情報は、[こちら](https://msdn.microsoft.com/library/kd3cf2ex(v=vs.110).aspx)) も参照してください。
 
 この設定により、システム全体の .NET アプリケーションが、http .NET 要求を行うときにユーザーが明示的に定義したプロキシを使用するように構成されます。個々の app.config を個別に変更することは、自動更新の間に元に戻るので、お勧めできません。machine.config のみを変更対象にすれば、変更するファイルが 1 つで済み、更新を経ても変更が維持されます。
 
@@ -103,6 +102,9 @@ HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、[詳細�
 **Q: Azure AD Connect Health サービスは、Http プロキシに接続するときに基本認証をサポートしますか。**
 
 いいえ。基本認証に対して任意のユーザー名/パスワードを指定するメカニズムは、現在サポートされていません。
+
+
+
 
 
 ## 操作に関する質問
@@ -126,4 +128,4 @@ Azure AD Connect Health アラートは、成功条件を満たすと解決さ�
 
 Azure AD Health サービス エンドポイントと通信できるようにするには、Azure AD Connect Health エージェント用に TCP/UDP ポート 80 と 443 を開く必要があります。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

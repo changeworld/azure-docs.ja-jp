@@ -71,4 +71,4 @@ SSMS から直接デプロイすると、常にスキーマとデータがデプ
 ##代替手段
 コマンド ライン ユーティリティである sqlpackage.exe を使用して、データベースのデプロイまたは BACPAC のエクスポートとインポートを実行することもできます。Sqlpackage.exe では、SSMS と同じ DAC テクノロジが使用されているため、結果は同じです。詳細については、MSDN の「[SqlPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx)」をご覧ください。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

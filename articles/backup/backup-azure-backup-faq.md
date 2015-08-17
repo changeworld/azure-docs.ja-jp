@@ -1,20 +1,13 @@
 <properties
-	pageTitle="Azure Backup の FAQ | Microsoft Azure"
-	description="Azure Backup サービスに関してよく寄せられる質問"
-	services="backup"
-	documentationCenter=""
-	authors="Jim-Parker"
-	manager="shreeshd"
-	editor=""/>
+   pageTitle="Azure Backup の FAQ | Microsoft Azure"
+   description="Azure Backup サービスに関してよく寄せられる質問"
+   services="backup"
+   documentationCenter=""
+   authors="Jim-Parker"
+   manager="shreeshd"
+   editor=""/>
 
-<tags 
-	ms.service="backup" 
-	ms.workload="storage-backup-recovery" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/23/2015" 
-	ms.author="arunak"; "jimpark"; "aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/31/2015" ms.author="arunak"; "jimpark"; "aashishr"/>
 
 # Azure Backup - FAQ
 Azure Backup に関する一般的な質問を次に示します。Azure Backup に関して他に不明な点がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)にアクセスして、質問を投稿してください。コミュニティのメンバーから回答を得ることができます。よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -54,7 +47,7 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 **Q10.Azure にデータをバックアップしている Windows サーバーの名前を変更するとどうなりますか。** <br/> A10.現在構成されているバックアップは、すべて停止されます。サーバーをバックアップ資格情報コンテナーに再登録する必要があります。このサーバーは Recovery Services によって新しいサーバーと見なされるため、登録後に実行される初回のバックアップ操作は、前回実行されたバックアップからの変更分ではなく、バックアップ対象として含まれているすべてのデータの完全バックアップになります。ただし、復旧操作を実行する必要がある場合は、[別のサーバーからの復旧] という復旧オプションを使用して、バックアップされているデータを復旧できます。詳細については、「サーバーの名前の変更」をご覧ください。
 
-**Q11.ファイルとフォルダーのバックアップ元として、どのような種類のドライブを使用できますか?** <br/> A11.次の一連のドライブやボリュームをバックアップできます。
+**Q11.ファイルとフォルダーのバックアップ元として、どのような種類のドライブを使用できますか?** <br/> A11.次の一連のドライブやボリュームはバックアップできません。
 
 - リムーバブル メディア: バックアップ項目のソースを使用するには、固定のドライブとして認識される必要があります。
 - 読み取り専用ボリューム: ボリューム シャドウ コピー サービス (VSS) が機能するには、ボリュームが書き込み可能である必要があります。
@@ -93,10 +86,10 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 **Q20.どのようなファイアーウォール ルールを Azure Backup のバックアップのために構成する必要がありますか。** <br/> A20.ファイアーウォール ルールで、下記の URL との通信ができるようにし、オンプレミスと Azure 間のシームレスなバックアップと Azure のワークロード保護を確実にしてください。
 
 - www.msftncsi.com
-- \*.Microsoft.com
-- \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+- *.Microsoft.com
+- *.WindowsAzure.com
+- *.microsoftonline.com
+- *.windows.net
 
 
 ## バックアップと保有期間
@@ -148,4 +141,4 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 **Q4.暗号化キーを紛失した場合はどうなりますか? 自分でデータを回復できますか、またはマイクロソフトがデータを回復できますか?** <br/> A4.バックアップ データの暗号化に使用されるキーは、お客様のオンプレミスにのみ存在します。マイクロソフトは Azure にコピーを保持していませんし、キーにもアクセスできません。お客様がキーを紛失した場合、マイクロソフトはバックアップ データを回復できません。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

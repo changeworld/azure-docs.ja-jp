@@ -11,8 +11,8 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.topic="get-started-article" 
+	ms.date="08/05/2015" 
 	ms.author="awills"/>
 
 
@@ -23,13 +23,21 @@
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
 
-Visual Studio Application Insights は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します ([デバイス アプリと Java サーバーも対象になります][start])。
+Visual Studio Application Insights は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します
+
+
 
 ![Example performance monitoring charts](./media/app-insights-start-monitoring-app-health-usage/10-perf.png)
 
-多くのアプリケーションの種類では、ほとんどの場合に通知されることなく、[Visual Studio によってアプリに Application Insights が追加されます](#ide)。ただし、この記事を読んで状況を把握できるように、ここでは手動による手順について説明します。
+*関連項目:*
+
+* [ASP.NET 5](app-insights-asp-net-five.md)
+* [デバイス アプリと Java サーバー][platforms]
 
 #### 開始する前に
+
+多くのアプリケーションの種類では、ほとんどの場合に通知されることなく、[Visual Studio によってアプリに Application Insights が追加されます](#ide)。ただし、この記事を読んで状況を把握できるように、ここでは手動による手順について説明します。
+
 
 必要なもの:
 
@@ -52,10 +60,11 @@ Azure の[リソース][roles]は、サービスのインスタンスです。�
 
 ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-start-monitoring-app-health-usage/02-props-asp.png)
 
-
+新しいリソースを作成するために実行した手順は、任意のアプリケーションの監視を開始するための優れた方法です。これで、データをリソースに送信できます。
 
 ## <a name="sdk"></a> 2.アプリケーションに SDK をインストールする
 
+Application Insights SDK のインストールと構成は、作業中のプラットフォームによって異なります。ASP.NET アプリの場合は簡単です。
 
 1. Visual Studio で、デスクトップ アプリ プロジェクトの NuGet パッケージを編集します。
 
@@ -73,6 +82,8 @@ Azure の[リソース][roles]は、サービスのインスタンスです。�
     (または、アプリ内に[コードを記述してキーを設定][apikey]できます)。
 
 #### 新しいバージョンの SDK にアップグレードするには
+
+SDK の新しいバージョンは不定期でリリースされます。
 
 [SDK の新しいリリース](app-insights-release-notes-dotnet.md)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。[Microsoft.ApplicationInsights.Web]、[アップグレード] の順に選択します。
 
@@ -134,7 +145,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ## クライアント側の監視を追加します。
 
-アプリケーションのサーバー側からテレメトリ データを送信する SDK を既にインストールしています。このため、クライアント側の監視を追加することができます。これにより、ユーザー、セッション、ページ ビュー、およびクライアントで発生する例外やクラッシュに関するデータを入手できます。
+アプリケーションのサーバー側 (バックエンド) からテレメトリ データを送信する SDK を既にインストールしています。このため、クライアント側の監視を追加することができます。これにより、ユーザー、セッション、ページ ビュー、およびクライアントで発生する例外やクラッシュに関するデータを入手できます。
 
 また、独自のコードを記述して、ユーザーのアプリの操作をクリックやキーボード操作までの細部にわたって追跡できます。
 
@@ -165,9 +176,9 @@ SDK クライアントをサーバーの SDK と同じインストルメンテ�
 
 ## <a name="ide"></a> 自動化された方法
 
-Visual Studio で自動設定を行うのは簡単です。
+この記事の前半では、Application Insights のリソースの作成と SDK のインストールを手動で実行する方法を示しました。その手順を構成する 2 つの部分を理解しておくことは良いことであると信じています。ただし、ASP.NET アプリ (とその他の多くのアプリ) には、もっとすばやく実行できる自動化された方法があります。
 
-[Visual Studio 2013 Update 3](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) (またはそれ以降) と [Microsoft Azure](http://azure.com) のアカウントが必要です。
+[Visual Studio](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) (2013 Update 3 またはそれ以降) と [Microsoft Azure](http://azure.com) のアカウントが必要です。
 
 #### 新しいプロジェクトの場合
 
@@ -196,7 +207,7 @@ Visual Studio によって、Application Insights にリソースが作成され
 
 このアプリがより大きなアプリケーションの一部である場合は、**[設定の構成]** を使用して、他のコンポーネントと同じリソース グループに配置することをお勧めします。
 
-*Application Insights オプションはありせんか。 Visual Studio 2013 Update 3 以降を使用していること、[拡張機能と更新プログラム] で Application Insights Tools が有効になっていること、および作成しているのが Web プロジェクトであることを確認します。*
+*Application Insights オプションはありせんか。 Visual Studio 2013 Update 3 以降を使用していること、[拡張機能と更新プログラム] で Application Insights Tools が有効になっていることを確認します。*
 
 #### プロジェクトから Application Insights を開きます。
 
@@ -223,6 +234,7 @@ Visual Studio によって、Application Insights にリソースが作成され
 [metrics]: app-insights-metrics-explorer.md
 [netlogs]: app-insights-asp-net-trace-logs.md
 [perf]: app-insights-web-monitor-performance.md
+[platforms]: app-insights-platforms.md
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
@@ -231,4 +243,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

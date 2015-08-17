@@ -85,4 +85,4 @@ AutocertificateRollover の設定は True だが、フェデレーション メ�
 
 >[AZURE.NOTE]contoso.com や fabrikam.com などの複数の最上位のドメインをサポートする必要がある場合は、すべてのコマンドレットで SupportMultipleDomain スイッチを使用する必要があります。詳細については、複数の最上位のドメインのサポートに関するページを参照してください。最後に、すべての Web アプリケーション プロキシ サーバーが[Windows Server 2014 年 5 月](http://support.microsoft.com/kb/2955164)のロールアップで更新されていることを確認します。更新されていない場合は、プロキシが新しい証明書の更新に失敗し、機能が停止する可能性があります。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

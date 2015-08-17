@@ -210,13 +210,13 @@ MySQL サーバーの設定を最適化するために、サーバーとクラ�
 
 次の構成項目は、MySQL のパフォーマンスに影響する主な要素です。
 
--	**innodb_buffer_pool_size**: バッファー プールには、バッファー内のデータとインデックスが含まれています。通常、これは物理メモリの 70% に設定します。
--	**innodb_log_file_size**: これは、再実行ログのサイズです。再実行ログを使用して、書き込み操作が高速かつ信頼性が高く、クラッシュ後に回復可能なことを確認します。これは、書き込み操作を記録するのに十分な領域である 512 MB に設定されています。
--	**max_connections**: アプリケーションは適切に接続を終了しない場合があります。大きな値では、サーバーがアイドル状態の接続をリサイクルするのに時間がかかります。最大接続数は 10000 ですが、推奨される最大値は 5000 です。
--	**innodb_file_per_table**: この設定は、個別のファイルにテーブルを保存する InnoDB の機能を有効または無効にします。このオプションを有効にすると、いくつかの高度な管理操作を効率的に適用できます。パフォーマンスの観点では、テーブルの領域の転送を高速化し、ごみ管理のパフォーマンスを最適化できます。そのため、推奨設定では ON です。</br> MySQL 5.6 以降では、既定の設定は ON です。そのため、操作は必要ありません。5.6 以前のその他のバージョンでは、既定の設定は OFF です。この設定を ON にする必要があります。また、新しく作成されたテーブルだけが影響を受けるため、データを読み込む前に適用する必要があります。
--	**innodb_flush_log_at_trx_commit**: 既定値は 1 に、範囲は 0 ～ 2 に設定されています。既定値は、スタンドアロン MySQL DB の最も適切なオプションです。2 の設定は、ほとんどのデータの整合性を実現し、MySQL のクラスターのマスターに適しています。0 の設定は、信頼性に影響を与えるデータ損失が発生する可能性がありますが、優れたパフォーマンスを実現する場合もあり、MySQL のクラスター内のスレーブに適してします。
--	**innodb_log_buffer_size**: ログ バッファーによって、トランザクションがコミットする前にログをディスクにフラッシュすることなくトランザクションを実行できます。ただし、ラージ バイナリ オブジェクトまたはテキスト フィールドがある場合、キャッシュが非常に簡単に使用され、頻繁にディスク I/O がトリガーされます。Innodb_log_waits 状態変数が 0 でない場合は、バッファー サイズを大きくすることが推奨されます。
--	**query_cache_size**: 最善のオプションは、最初から無効にすることです。query_cache_size は、0 (これは MySQL 5.6 では既定の設定です) に設定し、その他のメソッドを使用してクエリを高速化します。  
+-	**innodb\_buffer\_pool\_size**: バッファー プールには、バッファー内のデータとインデックスが含まれています。通常、これは物理メモリの 70% に設定します。
+-	**innodb\_log\_file\_size**: これは、再実行ログのサイズです。再実行ログを使用して、書き込み操作が高速かつ信頼性が高く、クラッシュ後に回復可能なことを確認します。これは、書き込み操作を記録するのに十分な領域である 512 MB に設定されています。
+-	**max\_connections**: アプリケーションは適切に接続を終了しない場合があります。大きな値では、サーバーがアイドル状態の接続をリサイクルするのに時間がかかります。最大接続数は 10000 ですが、推奨される最大値は 5000 です。
+-	**innodb\_file\_per\_table**: この設定は、個別のファイルにテーブルを保存する InnoDB の機能を有効または無効にします。このオプションを有効にすると、いくつかの高度な管理操作を効率的に適用できます。パフォーマンスの観点では、テーブルの領域の転送を高速化し、ごみ管理のパフォーマンスを最適化できます。そのため、推奨設定では ON です。</br> MySQL 5.6 以降では、既定の設定は ON です。そのため、操作は必要ありません。5.6 以前のその他のバージョンでは、既定の設定は OFF です。この設定を ON にする必要があります。また、新しく作成されたテーブルだけが影響を受けるため、データを読み込む前に適用する必要があります。
+-	**innodb\_flush\_log\_at\_trx\_commit**: 既定値は 1 に、範囲は 0 ～ 2 に設定されています。既定値は、スタンドアロン MySQL DB の最も適切なオプションです。2 の設定は、ほとんどのデータの整合性を実現し、MySQL のクラスターのマスターに適しています。0 の設定は、信頼性に影響を与えるデータ損失が発生する可能性がありますが、優れたパフォーマンスを実現する場合もあり、MySQL のクラスター内のスレーブに適してします。
+-	**innodb\_log\_buffer\_size**: ログ バッファーによって、トランザクションがコミットする前にログをディスクにフラッシュすることなくトランザクションを実行できます。ただし、ラージ バイナリ オブジェクトまたはテキスト フィールドがある場合、キャッシュが非常に簡単に使用され、頻繁にディスク I/O がトリガーされます。Innodb\_log\_waits 状態変数が 0 でない場合は、バッファー サイズを大きくすることが推奨されます。
+-	**query\_cache\_size**: 最善のオプションは、最初から無効にすることです。query\_cache\_size は、0 (これは MySQL 5.6 では既定の設定です) に設定し、その他のメソッドを使用してクエリを高速化します。  
   
 最適化後のパフォーマンスを比較するには、[付録 D](#AppendixD) を参照してください。
 
@@ -303,20 +303,20 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 
 |パラメーター |既定値 |最適化
 |-----------|-----------|-----------
-|**innodb_buffer_pool_size** |なし |7 G
-|**innodb_log_file_size** |5 M |512 M
-|**max_connections** |100 |5000
-|**innodb_file_per_table** |0 |1
-|**innodb_flush_log_at_trx_commit** |1 |2
-|**innodb_log_buffer_size** |8 M |128 M
-|**query_cache_size** |16 M |0
+|**innodb\_buffer\_pool\_size** |なし |7 G
+|**innodb\_log\_file\_size** |5 M |512 M
+|**max\_connections** |100 |5000
+|**innodb\_file\_per\_table** |0 |1
+|**innodb\_flush\_log\_at\_trx\_commit** |1 |2
+|**innodb\_log\_buffer\_size** |8 M |128 M
+|**query\_cache\_size** |16 M |0
 
 
 詳細な最適化構成パラメーターは、mysql の正式な説明を参照してください。
 
 [http://dev.mysql.com/doc/refman/5.6/en/innodb-configuration.html](http://dev.mysql.com/doc/refman/5.6/en/innodb-configuration.html)
 
-[http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method](http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method)
+[http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar\_innodb\_flush\_method](http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method)
 
 **テスト環境**
 
@@ -345,4 +345,4 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 [14]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-14.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

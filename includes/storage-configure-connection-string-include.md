@@ -63,4 +63,4 @@ Azure クラウド サービスではないアプリケーションを作成す�
 
 [Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

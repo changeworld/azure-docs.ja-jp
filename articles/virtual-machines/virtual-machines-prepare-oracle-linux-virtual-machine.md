@@ -1,4 +1,4 @@
-<properties pageTitle="Azure 用の Oracle Linux 仮想マシンの準備" description="Microsoft Azure で Linux を実行する Oracle の仮想マシンの構成の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<properties title="Prepare an Oracle Linux Virtual Machine for Azure" pageTitle="Azure 用の Oracle Linux 仮想マシンの準備" description="Microsoft Azure で Linux を実行する Oracle の仮想マシンの構成の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
 <tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 #Azure 用の Oracle Linux 仮想マシンの準備
 -   [Azure 用の Oracle Linux 6.4 以上の仮想マシンの準備](virtual-machines-linux-create-upload-vhd-oracle.md)
@@ -162,9 +162,9 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 		# sudo yum clean all
 		# sudo yum -y update
 
-9.  GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、次のように、GRUB_CMDLINE_LINUX パラメーターを編集します。
+9.  GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、次のように、GRUB\_CMDLINE\_LINUX パラメーターを編集します。
 
-		GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
+		GRUB\_CMDLINE\_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
 
 	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。上記のほかに、次のパラメーターを*削除*することをお勧めします。
 
@@ -202,4 +202,4 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 15.  Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

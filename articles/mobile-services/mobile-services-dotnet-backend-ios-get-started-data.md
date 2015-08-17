@@ -87,4 +87,4 @@
 [クイック スタート]: mobile-services-dotnet-backend-ios-get-started.md
 [iOS の GetStartedWithData アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=268622
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -28,7 +28,8 @@ App Service 環境が正常に機能するには、次のすべてを満たす�
 
 
 -  App Service 環境と同じリージョンに配置されている Azure Storage リソースと SQL DB リソースの両方に対する発信ネットワーク接続。このネットワーク パスは、社内のプロキシを通過することはできません。それを行うと、発信ネットワーク トラフィックの有効な NAT アドレスが変更される可能性があるためです。Azure Storage エンドポイントと SQL DB エンドポイント向けの App Service 環境の発信ネットワーク トラフィックの NAT アドレスを変更すると、接続エラーが発生します。
--  仮想ネットワークの DNS 構成は、Azure が管理する次のドメイン内のエンドポイントを解決できる必要があります。**.file.core.windows.net\*、**.blob.core.windows.net\*、**.database.windows.net\*。-  仮想ネットワークの DNS 構成は、App Service 環境の作成時だけではなく、App Service 環境の再構成とスケーリングの変更を行っている間も、安定を維持する必要があります。   
+-  仮想ネットワークの DNS 構成は、Azure が管理する次のドメイン内のエンドポイントを解決できる必要があります。**.file.core.windows.net*、**.blob.core.windows.net*、**.database.windows.net*。
+-  仮想ネットワークの DNS 構成は、App Service 環境の作成時だけではなく、App Service 環境の再構成とスケーリングの変更を行っている間も、安定を維持する必要があります。   
 -  この[記事][requiredports]の説明に従って、App Service 環境の必要なポートへの着信ネットワーク アクセスを許可する必要があります。
 
 DNS 要件は、仮想ネットワークの有効な DNS 構成を保証することによって満たすことができます。
@@ -120,4 +121,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -43,7 +43,7 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 
 <!--Article references-->
 
-[Copy data with Azure Data Factory (Azure Data Factory を使用してデータをコピーする)]: ./data-factory-copy-activity/
+[Copy data with Azure Data Factory]: ./data-factory-copy-activity/
 [SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop/
 [SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: ./sql-data-warehouse-overview-integration/
 
@@ -51,5 +51,6 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 
 <!--Other Web references-->
 [Azure Data Factory のドキュメント]: https://azure.microsoft.com/documentation/services/data-factory/
+[Copy data with Azure Data Factory (Azure Data Factory を使用してデータをコピーする)]: https://azure.microsoft.com/ja-jp/documentation/articles/data-factory-data-movement-activities/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

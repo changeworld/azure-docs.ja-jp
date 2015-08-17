@@ -1,9 +1,9 @@
-### Type conversion sample
-The following sample is for copying data from a Blob to Azure SQL with type conversions.
+### タイプ変換の例
+次の例では、タイプ変換により、データを BLOB から Azure SQL へコピーします。
 
-Suppose the Blob dataset is in CSV format and contains 3 columns. One of them is a datetime column with a custom datetime format using abbreviated French names for day of the week.
+BLOB のデータセットは CSV 形式で、3 つの列を含んでいるとします。列のうち 1 つは、カスタム日付/時刻形式の datetime 型の列です。名前は週の曜日を表すフランス語の省略形を使用しています。
 
-You will define the Blob Source dataset as follows along with type definitions for the columns.
+次のように、列の種類と、コピー元のBLOB データセットを定義します。
 
 	{
 	    "name": " AzureBlobTypeSystemInput",
@@ -42,15 +42,15 @@ You will define the Blob Source dataset as follows along with type definitions f
 	    }
 	}
 
-Given the SQL type to .NET type mapping table above you would define the Azure SQL table with the following schema.
+上部で SQL タイプが .NET 型マッピング テーブルに指定されるので、次のスキーマで Azure SQL テーブルを定義します。
 
-| Column Name | SQL Type |
+| 列名 | SQL 型 |
 | ----------- | -------- |
 | userid | bigint |
-| name | text |
+| name | テキスト |
 | lastlogindate | datetime |
 
-Next you will define the Azure SQL dataset as follows. Note: You do not need to specify “structure” section with type information since the type information is already specified in the underlying data store.
+続いて、次のように Azure SQL のデータセットを定義します。注: 基になるデータ ストアで既に指定されているため、“structure” セクションのタイプ情報を指定する必要はありません。
 
 	{
 	    "name": "AzureSQLOutput",
@@ -67,6 +67,6 @@ Next you will define the Azure SQL dataset as follows. Note: You do not need to 
 	    }
 	}
 
-In this case data factory will automatically do the type conversions including the Datetime field with the custom datetime format using the fr-fr culture when moving data from Blob to Azure SQL.
+ここでは、データを BLOB から Azure SQL に移動するときに、データ ファクトリはカスタム日付/時刻を持つ Datetime フィールドを含むタイプ変換を、fr-fr カルチャを使用して自動的に実行します。
 
-
+<!---HONumber=August15_HO6-->

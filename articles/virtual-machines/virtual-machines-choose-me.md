@@ -29,4 +29,4 @@ Azure にはアプリケーションを実行するための複数のホステ�
 [Virtual Machines]: #tellmevm
 [Cloud Services]: cloud-services-choose-me.md
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

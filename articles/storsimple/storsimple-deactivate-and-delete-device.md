@@ -91,4 +91,4 @@ StorSimple 仮想デバイスでは、非アクティブ化により、プロビ
 
 技術的な詳細については、[Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)てください。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

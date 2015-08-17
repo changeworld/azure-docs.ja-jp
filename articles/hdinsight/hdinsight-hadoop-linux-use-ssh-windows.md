@@ -28,7 +28,7 @@ Linux ベースの Azure HDInsight クラスターには、パスワードまた
 
 ##前提条件
 
-* **PuTTY** と **PuTTYGen** (Windows クライアント)。これらのユーティリティは [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から入手できます。
+* **PuTTY** と **PuTTYGen** (Windows クライアント)。これらのユーティリティは [http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から入手できます。
 
 * HTML5 をサポートする最新の Web ブラウザー
 
@@ -124,7 +124,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 ユーザー アカウントの作成時に SSH キーを指定した場合は、ワーカー ノードに接続するクラスターを認証するときに、次の手順に従ってプライベート キーを使用する必要があります。
 
-1. [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から Pageant をインストールします。このユーティリティを使用して、PuTTY の SSH キーをキャッシュします。
+1. [http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から Pageant をインストールします。このユーティリティを使用して、PuTTY の SSH キーをキャッシュします。
 
 2. Pageant を実行します。ステータス トレイにアイコンが表示されます。アイコンを右クリックし **[キーの追加]** を選択します。
 
@@ -278,4 +278,4 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

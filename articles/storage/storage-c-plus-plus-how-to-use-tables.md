@@ -61,18 +61,18 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。
 
 ## 接続文字列の取得  
-**cloud_storage_account** クラスを使用してストレージ アカウント情報を表すことができます。ストレージ接続文字列からストレージ アカウント情報を取得するには、parse メソッド使用します。
+**cloud\_storage\_account** クラスを使用してストレージ アカウント情報を表すことができます。ストレージ接続文字列からストレージ アカウント情報を取得するには、parse メソッド使用します。
 
 	// Retrieve the storage account from the connection string. 
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-次に、**cloud_table_client** クラスへの参照を取得します。これにより、Table ストレージ サービス内に格納されているテーブルとエンティティの参照オブジェクトを取得できます。次のコードは、前に取得したストレージ アカウント オブジェクトを使用して、**cloud_table_client** オブジェクトを作成します。
+次に、**cloud\_table\_client** クラスへの参照を取得します。これにより、Table ストレージ サービス内に格納されているテーブルとエンティティの参照オブジェクトを取得できます。次のコードは、前に取得したストレージ アカウント オブジェクトを使用して、**cloud\_table\_client** オブジェクトを作成します。
 
 	// Create the table client.
 	azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
 ## 方法: テーブルを作成する
-**cloud_table_client** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**cloud_table_client** オブジェクトを作成し、これを使用して新しいテーブルを作成します。
+**cloud\_table\_client** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**cloud\_table\_client** オブジェクトを作成し、これを使用して新しいテーブルを作成します。
 
 	// Retrieve the storage account from the connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);  
@@ -87,9 +87,9 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	table.create_if_not_exists();  
 
 ## 方法: エンティティをテーブルに追加する
-エンティティをテーブルに追加するには、新しい **table_entity** オブジェクトを作成し、**table_operation::insert_entity** に渡します。次のコードは、ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ使用します。エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。一方、多様なパーティション キーを使用すると、並列操作の拡張性が向上します。詳細については、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md/)」を参照してください。
+エンティティをテーブルに追加するには、新しい **table\_entity** オブジェクトを作成し、**table\_operation::insert\_entity** に渡します。次のコードは、ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ使用します。エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。同じパーティション キーを持つエンティティは、異なるパーティション キーを持つエンティティよりも迅速に照会できます。一方、多様なパーティション キーを使用すると、並列操作の拡張性が向上します。詳細については、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md/)」を参照してください。
 
-次のコードでは、ユーザー データの格納用に **table_entity** の新しいインスタンスを作成しています。次に、このコードでは **table_operation::insert_entity** を呼び出し、テーブルへのエンティティの挿入用に **table_operation** オブジェクトを作成して、それに新しいテーブル エンティティを関連付けています。最後に、このコードでは、**cloud_table** オブジェクトに対して execute メソッドを呼び出します。新しい **table_operation** により、新しいユーザー エンティティを "people" テーブルに挿入する要求がストレージ サービスに送信されます。
+次のコードでは、ユーザー データの格納用に **table\_entity** の新しいインスタンスを作成しています。次に、このコードでは **table\_operation::insert\_entity** を呼び出し、テーブルへのエンティティの挿入用に **table\_operation** オブジェクトを作成して、それに新しいテーブル エンティティを関連付けています。最後に、このコードでは、**cloud\_table** オブジェクトに対して execute メソッドを呼び出します。新しい **table\_operation** により、新しいユーザー エンティティを "people" テーブルに挿入する要求がストレージ サービスに送信されます。
 
 	// Retrieve the storage account from the connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -119,7 +119,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	azure::storage::table_result insert_result = table.execute(insert_operation);
 
 ## 方法: エンティティのバッチを挿入する
-1 回の書き込み操作でエンティティのバッチをテーブル サービスに挿入できます。次のコードでは、**table_batch_operation** オブジェクトを作成し、3 つの挿入操作を追加しています。追加する各挿入操作では、新しいエンティティ オブジェクトを作成してその値を設定してから、**table_batch_operation** オブジェクトの insert メソッドを呼び出して、エンティティを新しい挿入操作に関連付けています。その後、**cloud_table.execute** を呼び出して操作を実行します。
+1 回の書き込み操作でエンティティのバッチをテーブル サービスに挿入できます。次のコードでは、**table\_batch\_operation** オブジェクトを作成し、3 つの挿入操作を追加しています。追加する各挿入操作では、新しいエンティティ オブジェクトを作成してその値を設定してから、**table\_batch\_operation** オブジェクトの insert メソッドを呼び出して、エンティティを新しい挿入操作に関連付けています。その後、**cloud\_table.execute** を呼び出して操作を実行します。
 
 	// Retrieve the storage account from the connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -173,7 +173,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 -	バッチ操作のデータ ペイロードは 4 MB に制限されています。  
 
 ## 方法: パーティション内のすべてのエンティティを取得する
-テーブルに対してパーティション内のすべてのエンティティを照会する場合は、**table_query** オブジェクトを使用します。次のコード例は、'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。この例は、クエリ結果の各エンティティのフィールドをコンソールに出力します。
+テーブルに対してパーティション内のすべてのエンティティを照会する場合は、**table\_query** オブジェクトを使用します。次のコード例は、'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。この例は、クエリ結果の各エンティティのフィールドをコンソールに出力します。
 
 	// Retrieve the storage account from the connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -241,7 +241,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	}  
 
 ## 方法: 単一のエンティティを取得する
-単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**table_operation::retrive_entity** を使用して、"Jeff Smith" というユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみであり、**table_result** の戻り値です。クエリでパーティション キーと行キーの両方を指定することが、テーブル サービスから単一のエンティティを取得するための最速の方法です。
+単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**table\_operation::retrive\_entity** を使用して、"Jeff Smith" というユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみであり、**table\_result** の戻り値です。クエリでパーティション キーと行キーの両方を指定することが、テーブル サービスから単一のエンティティを取得するための最速の方法です。
 
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
@@ -264,7 +264,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 		<< U(", Property2: ") << properties.at(U("Phone")).string_value() << std::endl;
 
 ## 方法: エンティティを置換する
-エンティティを置換するには、そのエンティティを Table サービスから取得し、エンティティ オブジェクトを変更して、変更を Table サービスに戻して保存します。次のコードは、既存のユーザーの電話番号と電子メール アドレスを変更します。**table_operation::insert_entity** を呼び出す代わりに、このコードでは、**table_operation::replace_entity** を使用します。これにより、サーバーでエンティティが完全に置換されます。ただし、エンティティを取得した後にサーバーでエンティティが変更された場合は、操作が失敗します。このエラーは、取得と更新の間にアプリケーションの別のコンポーネントによって行われた変更が意図せず上書きされるのを防ぐためのものです。このエラーを正しく処理するには、もう一度エンティティを取得し、変更を加えて (その変更がまだ有効な場合)、再び **table_operation::replace_entity** 操作を実行します。次のセクションでは、この動作をオーバーライドする方法を説明します。
+エンティティを置換するには、そのエンティティを Table サービスから取得し、エンティティ オブジェクトを変更して、変更を Table サービスに戻して保存します。次のコードは、既存のユーザーの電話番号と電子メール アドレスを変更します。**table\_operation::insert\_entity** を呼び出す代わりに、このコードでは、**table\_operation::replace\_entity** を使用します。これにより、サーバーでエンティティが完全に置換されます。ただし、エンティティを取得した後にサーバーでエンティティが変更された場合は、操作が失敗します。このエラーは、取得と更新の間にアプリケーションの別のコンポーネントによって行われた変更が意図せず上書きされるのを防ぐためのものです。このエラーを正しく処理するには、もう一度エンティティを取得し、変更を加えて (その変更がまだ有効な場合)、再び **table\_operation::replace\_entity** 操作を実行します。次のセクションでは、この動作をオーバーライドする方法を説明します。
 
 	// Retrieve the storage account from the connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -293,7 +293,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	azure::storage::table_result replace_result = table.execute(replace_operation);
 
 ## 方法: エンティティを挿入または置換する
-**table_operation::replace_entity** 操作は、サーバーからエンティティを取得した後にエンティティが変更されていると失敗します。さらに、**table_operation::replace_entity** が成功するためには、先にエンティティをサーバーから取得する必要があります。しかし、サーバーにエンティティが存在するかどうかわからないが、現在格納されている値は不適切であるため、すべての値を上書きする必要がある場合もあります。これを実現するには、**table_operation::insert_or_replace_entity** 操作を使用します。この操作は、最終更新日時に関係なく、エンティティが存在しない場合は挿入し、存在する場合は置換します。次のコード例では、先ほどと同じように Jeff Smith のユーザー エンティティを取得していますが、今度は **table_operation::insert_or_replace_entity** を使用してサーバーに保存しています。そのため、取得操作と更新操作の間に行われたエンティティの更新は上書きされます。
+**table\_operation::replace\_entity** 操作は、サーバーからエンティティを取得した後にエンティティが変更されていると失敗します。さらに、**table\_operation::replace\_entity** が成功するためには、先にエンティティをサーバーから取得する必要があります。しかし、サーバーにエンティティが存在するかどうかわからないが、現在格納されている値は不適切であるため、すべての値を上書きする必要がある場合もあります。これを実現するには、**table\_operation::insert\_or\_replace\_entity** 操作を使用します。この操作は、最終更新日時に関係なく、エンティティが存在しない場合は挿入し、存在する場合は置換します。次のコード例では、先ほどと同じように Jeff Smith のユーザー エンティティを取得していますが、今度は **table\_operation::insert\_or\_replace\_entity** を使用してサーバーに保存しています。そのため、取得操作と更新操作の間に行われたエンティティの更新は上書きされます。
 
 	// Retrieve the storage account from the connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -323,7 +323,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	azure::storage::table_result insert_or_replace_result = table.execute(insert_or_replace_operation);
  
 ## 方法: エンティティ プロパティのサブセットを照会する  
-テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。次のコードのクエリは、**table_query::set_select_columns** メソッドを使用して、テーブル内のエンティティの電子メール アドレスだけを返します。
+テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。次のコードのクエリは、**table\_query::set\_select\_columns** メソッドを使用して、テーブル内のエンティティの電子メール アドレスだけを返します。
 
 	// Retrieve the storage account from the connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -362,7 +362,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 **注:** すべてのプロパティを取得するよりも、エンティティからいくつかのプロパティを照会する方が効率的です。
 
 ## 方法: エンティティを削除する
-エンティティは、取得後に簡単に削除できます。エンティティを取得したら、削除するエンティティを指定して **table_operation::delete_entity** を呼び出します。**cloud_table.execute** メソッドで execute を呼び出します。次のコードは、"Jeff" の行キーと "Smith" のパーティション キーを持つエンティティを取得して削除します。
+エンティティは、取得後に簡単に削除できます。エンティティを取得したら、削除するエンティティを指定して **table\_operation::delete\_entity** を呼び出します。**cloud\_table.execute** メソッドで execute を呼び出します。次のコードは、"Jeff" の行キーと "Smith" のパーティション キーを持つエンティティを取得して削除します。
 
 	// Retrieve the storage account from the connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -416,4 +416,4 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 -	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

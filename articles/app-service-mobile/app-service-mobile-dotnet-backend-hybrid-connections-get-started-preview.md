@@ -12,8 +12,8 @@
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.topic="get-started-article" 
+	ms.date="07/30/2015" 
 	ms.author="glenga"/>
 
   
@@ -107,15 +107,9 @@
 
 	これで、サービスは、SQL Server データベースへの新しい接続を使用するようになります。
  
-##データベース接続をローカルでテストする
-
-ハイブリッド接続を Azure に発行して使用する前に、ローカルで実行したときにデータベース接続が機能するかどうかを確認することをお勧めします。これによって、接続に関する問題を簡単に診断して修正した後、ハイブリッド接続を再発行して使用を開始できます。
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-test-local-service-api-documentation](../../includes/app-service-mobile-dotnet-backend-test-local-service-api-documentation.md)]
-
 ## オンプレミスの接続文字列を使用するように Azure を更新する
 
-データベース接続の検証が終わったら、この新しい接続文字列用のアプリ設定を追加して、Azure から使用できるようにする必要があります。
+次に、この新しい接続文字列用のアプリ設定を追加して、Azure から使用できるようにする必要があります。
 
 1. [Azure ポータル]で Mobile App 用の Web アプリ バックエンド コードに戻り、**[すべての設定]**、**[アプリケーション設定]** の順にクリックします。 
 
@@ -168,4 +162,4 @@
 [Get started with Mobile Services]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

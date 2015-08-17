@@ -18,8 +18,8 @@
 
 #Azure SDK for Java のダウンロード
 
-[AZURE.INCLUDE [download_libraries](../includes/download_libraries.md)]
+[AZURE.INCLUDE [download\_libraries](../includes/download_libraries.md)]
 
-[AZURE.INCLUDE [download_eclipse](../includes/download_eclipse.md)]
+[AZURE.INCLUDE [download\_eclipse](../includes/download_eclipse.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

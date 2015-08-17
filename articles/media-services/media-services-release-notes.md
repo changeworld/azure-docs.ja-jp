@@ -54,11 +54,19 @@
 
 ### <a id="general_issues"></a>Media Services の全般的な問題
 
-<table border="1"> <tr><th>問題</th><th>説明</yt></tr> <tr><td>いくつかの一般的な HTTP ヘッダーが REST API に用意されていない。</td><td>Media Services アプリケーションを REST API を使用して開発する場合、いくつかの一般的な HTTP ヘッダー フィールド (CLIENT-REQUEST-ID、REQUEST-ID、RETURN-CLIENT-REQUEST-ID など) がサポートされていません。これらのヘッダーは、今後の更新プログラムで追加される予定です。</td></tr> <tr><td>アセットをエスケープ文字 (たとえば %20) を含むファイル名でエンコードすると、"MediaProcessor : File not found." で失敗する。</td><td>アセットに追加した後でエンコードするファイルの名前には、英数字とスペースのみを使用する必要があります。この問題は、今後の更新プログラムで修正される予定です。</td></tr> <tr><td>Azure Storage SDK Version 3.x の一部である ListBlobs メソッドが失敗する。</td><td>Media Services は、<a href="http://msdn.microsoft.com/library/azure/dn592123.aspx">2012-02-12</a> バージョンに基づいて SAS URL を生成します。Azure Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Azure Storage SDK Version 2.x の一部である <a href="http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx">CloudBlobContainer.ListBlobs</a> メソッドを使用してください。Azure Storage SDK Version 3.x の一部である ListBlobs メソッドは失敗します。</td></tr> <tr><td>Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。サービスが「サービスを利用できません」(503) HTTP 状態コードを返すことがある。</td><td>詳細については、「<a href="http://msdn.microsoft.com/library/azure/dn168949.aspx">Azure Media Services エラー コード</a>」トピックの 503 HTTP 状態コードの説明をご覧ください。</td></tr></table><br/>
- 
+問題|説明
+---|---
+REST API で一般的な HTTP ヘッダーがいくつか提供されていない。|REST API を使用して Media Services アプリケーションを開発している場合、いくつかの一般的な HTTP フィールド (CLIENT-REQUEST-ID、REQUEST-ID、および RETURN-CLIENT-REQUEST-ID を含む) がサポートされていないことに気付きます。ヘッダーは、今後の更新プログラムで追加される予定です。
+エスケープ文字を含むファイル名 (たとえば、%20) の資産をエンコードすると、"MediaProcessor : File not found." が返され失敗する。|資産に付加し、その後エンコードする予定のファイル名には、英数字とスペースのみを使用する必要があります。問題は、今後の更新プログラムで修正される予定です。
+Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドが失敗する。|Media Services は、[2012-02-12](http://msdn.microsoft.com/library/azure/dn592123.aspx) バージョンに基づいて SAS URL を生成します。Azure Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Azure Storage SDK Version 2.x に含まれる [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) メソッドを使用してください。Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドは失敗します。
+Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。サービスが「サービスを利用できません」(503) HTTP 状態コードを返すことがある。|詳細については、「[Azure Media Services エラー コード](http://msdn.microsoft.com/library/azure/dn168949.aspx)」の 503 HTTP 状態コードの説明を参照してください。
+
+
 ### <a id="dotnet_issues"></a>Media Services SDK for .NET の問題
 
-<table border="1"> <tr><th>問題</th><th>説明</yt></tr> <tr><td>SDK 内の Media Services オブジェクトをシリアル化できず、その結果、Azure Cache と連携しない。</td><td>SDK AssetCollection オブジェクトをシリアル化して、Azure Cache に追加しようとすると、例外がスローされます。</td></tr> </table><br/>
+問題|説明
+---|---
+SDK 内の Media Services オブジェクトをシリアル化できず、その結果、Azure Cache と連携動作しない。|SDK AssetCollection オブジェクトをシリアル化して、Azure Cache に追加しようとすると、例外がスローされます。
 
 ##<a id="rest_version_history"></a>REST API バージョン履歴
 
@@ -68,16 +76,16 @@ Media Services REST API バージョン履歴の詳細については、「[Azur
 
 メディア エンコーダー スタンダードの一般公開の発表。詳細については、[この投稿](http://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)を参照してください。
 
-メディア エンコーダー スタンダードでは、[この](http://go.microsoft.com/fwlink/?LinkId=618336)セクションで説明されているプリセットを使用しています。4k エンコードのプリセットを使用する場合、**プレミアム \*\* 予約ユニットの種類になります。詳細については、「[エンコードの規模の設定方法](media-services-portal-encoding-units)」を参照してください。
+メディア エンコーダー スタンダードでは、[この](http://go.microsoft.com/fwlink/?LinkId=618336)セクションで説明されているプリセットを使用しています。4k エンコードのプリセットを使用する場合、**Premium** 予約ユニットの種類になります。詳細については、[エンコードの規模の設定方法](media-services-portal-encoding-units)に関するページを参照してください。
 
 
 ###Media Services .NET SDK の更新
 
 Azure Media Services .NET SDK が 3.4.0.0 にバージョン アップしました。今回のリリースでは、次の機能が追加されました。
 
-- ライブ アーカイブのサポートが実装されました。ライブ アーカイブを含むアセットはダウンロードできません。
+- ライブ アーカイブのサポートが実装されました。ライブ アーカイブを含む資産はダウンロードできません。
 - 動的フィルターのサポートが実装されました。
-- ユーザーがストレージ コンテナーを維持しながらアセットを削除できる機能が実装されました。
+- ユーザーがストレージ コンテナーを維持しながら資産を削除できる機能が実装されました。
 - チャネルの再試行ポリシーに関連するバグが修正されました。
 - **メディア エンコーダー プレミアム ワークフロー**が有効になりました。
 
@@ -99,7 +107,7 @@ OpenID Connect 検出ドキュメントを公開する ID プロバイダー (�
 
 以下の新しい機能が発表されています。
 
-- [Media Services によるライブ エンコードのプレビュー](media-services-manage-live-encoder-enabled-channels.md)
+- [Media Services による Live Encoding のプレビュー](media-services-manage-live-encoder-enabled-channels.md)
 - [動的マニフェスト](media-services-dynamic-manifest-overview.md)
 - [Azure Media Hyperlapse メディア プロセッサのプレビュー](http://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
@@ -162,7 +170,7 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
 ###Media Services の全般的な更新
 
 - Azure Indexer メディア プロセッサに、いくつかの更新と新機能が追加されています。詳細については、「[Azure Media Indexer Version 1.1.6.7 のリリース ノート](http://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/)」をご覧ください。
-- エンコード占有ユニットを更新できる新しい REST API が追加されました ([EncodingReservedUnitType](http://msdn.microsoft.com/library/azure/dn859236.aspx))。
+- エンコード予約ユニットを更新できる新しい REST API が追加されました ([EncodingReservedUnitType](http://msdn.microsoft.com/library/azure/dn859236.aspx))。
 - キー配信サービスの CORS サポートが追加されました。
 - 承認ポリシー オプションのクエリ パフォーマンスが向上しています。
 - 中国のデータ センターで、[キー配信 URL](http://msdn.microsoft.com/library/azure/ef4dfeeb-48ae-4596-ab28-44d6b36d8769#get_delivery_service_url) が顧客単位となりました (他のデータ センターと同じです)。
@@ -172,7 +180,7 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
 
 - [Azure Media Services .NET SDK](http://www.nuget.org/packages/windowsazure.mediaservices/) が 3.1.0.0 にバージョン アップしました。
 - .Net SDK の依存関係が .NET 4.5 Framework にアップグレードされました。
-- エンコード占有ユニットを更新できる新しい API が追加されました。詳細については、[.NET を使用した占有ユニットの種類の更新とエンコーディング占有ユニットの拡張に関するページ](http://msdn.microsoft.com/library/azure/jj129582.aspx)をご覧ください。
+- エンコード予約ユニットを更新できる新しい API が追加されました。詳細については、[.NET を使用した予約ユニットの種類の更新とエンコーディング予約ユニットの拡張に関するページ](http://msdn.microsoft.com/library/azure/jj129582.aspx)をご覧ください。
 - トークン認証に JWT (JSON Web Token) が新たにサポートされています。詳細については、[Azure Media Services と動的暗号化における JWT トークン認証に関するページ](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)をご覧ください。.
 - PlayReady ライセンス テンプレートに BeginDate と ExpirationDate の相対オフセットが追加されました。
 
@@ -188,7 +196,7 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
 
 ### <a id="new_encoder_release"></a>Media Services Encoder のリリース
 
-Media Services Azure メディア エンコーダーの新規リリースが発表されています。最新の Azure Media Encoder では、出力 GB 分のみ課金されます。それ以外は、新しいエンコーダーの機能は前のエンコーダーと互換性があります。詳細については、「[Media Services の料金詳細]」を参照してください。
+Media Services Azure Media Encoder の新規リリースが発表されています。最新の Azure Media Encoder では、出力 GB 分のみ課金されます。それ以外は、新しいエンコーダーの機能は前のエンコーダーと互換性があります。詳細については、「[Media Services の料金詳細]」を参照してください。
 
 ### <a id="oct_sdk"></a>Media Services .NET SDK 
 
@@ -221,11 +229,11 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 * **オリジン**の名前が[ストリーミング エンドポイント]に変更されました。
 * **Azure 管理ポータル**で MP4 ファイルをエンコードし、その後、発行する際の既定の動作が変更されました。 
 
-	以前は、管理ポータルを使用して単一ファイルの MP4 ビデオ アセットを発行すると、SAS URL が作成されました (SAS URL を使用してビデオを BLOB ストレージからダウンロードできます)。現在は、管理ポータルを使用して、単一ファイルの MP4 ビデオ アセットをエンコードし、その後、発行すると、生成された URL は Azure Media Services ストリーミング エンドポイントを指します。この変更は、Media Services に直接アップロードされ、Azure Media Services によってエンコードされずに発行された MP4 ビデオには影響しません。
+	以前は、管理ポータルを使用して単一ファイルの MP4 ビデオ資産を発行すると、SAS URL が作成されました (SAS URL を使用してビデオを BLOB ストレージからダウンロードできます)。現在は、管理ポータルを使用して、単一ファイルの MP4 ビデオ資産をエンコードし、その後、発行すると、生成された URL は Azure Media Services ストリーミング エンドポイントを指します。この変更は、Media Services に直接アップロードされ、Azure Media Services によってエンコードされずに発行された MP4 ビデオには影響しません。
 	
 	現在、問題を解決するための次の 2 つのオプションがあります。
 	
-	* ストリーミング ユニットを有効にし、動的パッケージを使用して、.mp4 アセットを Smooth Streaming プレゼンテーションとしてストリーミングします。
+	* ストリーミング ユニットを有効にし、動的パッケージを使用して、.mp4 資産を Smooth Streaming プレゼンテーションとしてストリーミングします。
 	
 	* .mp4 をダウンロード (または、漸次的に再生) するための SAS url を作成します。SAS ロケーターの作成方法の詳細については、「[コンテンツの配信]」を参照してください。
 
@@ -263,26 +271,26 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 
 * Media Services PlayReady ライセンス テンプレート。詳細については、「[Media Services PlayReady ライセンス テンプレートの概要]」を参照してください。
 
-* ストリーミング ストレージ暗号化アセット。詳細については、「[Streaming Storage Encrypted Content (ストリーミング ストレージ暗号化コンテンツ)]」を参照してください。
+* ストリーミング ストレージ暗号化資産。詳細については、「[Streaming Storage Encrypted Content (ストリーミング ストレージ暗号化コンテンツ)]」を参照してください。
 
 ##<a id="august_changes_14"></a>2014 年 8 月のリリース
 
-アセットをエンコードすると、エンコード ジョブの完了時に出力アセットが生成されます。このリリースになるまで、Azure Media Services エンコーダーは出力アセットに関するメタデータを生成していました。このリリースから、エンコーダーは入力アセットに関するメタデータも生成します。詳細については、「[Input Metadata (入力メタデータ)]」および「[Output Metadata (出力メタデータ)]」を参照してください。
+資産をエンコードすると、エンコード ジョブの完了時に出力資産が生成されます。このリリースになるまで、Azure Media Services エンコーダーは出力資産に関するメタデータを生成していました。このリリースから、エンコーダーは入力資産に関するメタデータも生成します。詳細については、「[Input Metadata (入力メタデータ)]」および「[Output Metadata (出力メタデータ)]」を参照してください。
 
 
 ##<a id="july_changes_14"></a>2014 年 7 月のリリース
 
 Azure Media Services パッケージおよび暗号化機能で次のバグが修正されました。
 
-* ライブ アーカイブ アセットを HTTP ライブ ストリーミングに変換するとオーディオしか再生されない – これは修正され、現在はオーディオとビデオの両方が再生されます。
+* ライブ アーカイブ資産を HTTP ライブ ストリーミングに変換するとオーディオしか再生されない – これは修正され、現在はオーディオとビデオの両方が再生されます。
 
-* アセットを HTTP ライブ ストリーミングおよび AES 128 ビット エンベローブ暗号化にパッケージ化すると、パッケージ化されたストリームが Android デバイス上で再生されない – このバグは修正され、パッケージ化されたストリームは HTTP ライブ ストリーミングをサポートする Android デバイス上で再生されます。
+* 資産を HTTP ライブ ストリーミングおよび AES 128 ビット エンベローブ暗号化にパッケージ化すると、パッケージ化されたストリームが Android デバイス上で再生されない – このバグは修正され、パッケージ化されたストリームは HTTP ライブ ストリーミングをサポートする Android デバイス上で再生されます。
 
 ##<a id="may_changes_14"></a>2014 年 5 月のリリース
 
 ### <a id="may_14_changes"></a>Media Services の全般的な更新
 
-現在、[動的パッケージ]を使用して、HTTP ライブ ストリーミング (HLS) v3 をストリーミングできます。HLS v3 をストリーミングするには、次のフォーマットをオリジン ロケーター パスに追加します。*.ism/manifest(format=m3u8-aapl-v3)。詳細については、[Nick Drouin のブログ]を参照してください。
+現在、[動的パッケージ]を使用して、HTTP ライブ ストリーミング (HLS) v3 をストリーミングできます。HLS v3 をストリーミングするには、次のフォーマットをオリジン ロケーター パスに追加します。*.ism/manifest(format=m3u8-aapl-v3)。詳細については、「[Nick Drouin's Blog (Nick Drouin のブログ)]」を参照してください。
 
 現在、動的パッケージは、PlayReady によるスムーズ ストリーミング静的暗号化に基づく、PlayReady による HLS (v3 および v4) 暗号化の配信もサポートしています。PlayReady によるスムーズ ストリーミングの暗号化方法の詳細については、「[PlayReady によるスムーズ ストリーミングおよび MPEG DASH の保護]」を参照してください。
 
@@ -290,7 +298,7 @@ Azure Media Services パッケージおよび暗号化機能で次のバグが�
 
 Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられました。
 
-* メディア アセットのアップロードおよびダウンロードの迅速化と復元性の向上。
+* メディア資産のアップロードおよびダウンロードの迅速化と復元性の向上。
 
 * 再試行ロジックと一時的な例外の処理の改善:
 
@@ -331,7 +339,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 * バージョン 3.0.3.0 を使用するように Azure Storage の依存関係がアップグレードされました。 
 
-* 3\.0.\*.\* リリースの下位互換性の問題が修正されました。
+* 3\.0.*.* リリースの下位互換性の問題が修正されました。
 
 
 ##<a id="december_changes_13"></a>2013 年 12 月のリリース
@@ -342,7 +350,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 現在、Media Services SDK の最新バージョンは 3.0.0.0 です。Nuget から最新パッケージをダウンロードするか、[GitHub] からビットを取得できます。
 
-Media Services SDK Version 3.0.0.0 から、[Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。詳細については、「[Media Services SDK による Media Services への接続]」の「アクセス制御サービス トークンの再利用」を参照してください。
+Media Services SDK Version 3.0.0.0 から、[Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。詳細については、[Media Services SDK を使用した Media Services への接続]に関するページの Access Control Service トークンの再利用に関するセクションを参照してください。
 
 ### <a name="dec_13_donnet_ext_changes"></a>Azure Media Services .NET SDK Extensions 2.0.0.0
 
@@ -416,7 +424,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 	
 	StorageAccountName プロパティ
 	
-	詳細については、「[複数のストレージ アカウントでの Media Services アセットの管理]」を参照してください。
+	詳細については、[複数のストレージ アカウントでの Media Services 資産の管理]に関するページを参照してください。
 
 * API 関連の通知。バージョン 2.2.0.0 から、Azure キュー ストレージ通知をリッスンできます。詳細については、「[Media Services ジョブ通知の処理]」を参照してください。
 	
@@ -451,9 +459,9 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 
 * IAssetFile.ContentFileSize : この値は、IAssetFile.Upload(filepath) よるアップロード後に適切に設定されるようになりました。
 
-* IAssetFile.ContentFileSize : このプロパティは、アセット ファイルの作成時に設定できるようになりました。以前は、読み取り専用でした。
+* IAssetFile.ContentFileSize : このプロパティは、資産ファイルの作成時に設定できるようになりました。以前は、読み取り専用でした。
 
-* IAssetFile.Upload(filepath) : この同期アップロード メソッドが複数のファイルをアセットにアップロードしたときに次のエラーをスローする問題が修正されました。エラーは、「Server failed to authenticate the request.Make sure the value of Authorization header is formed correctly including the signature.(サーバーが要求を認証できませんでした。認証ヘッダーの値が、署名を含め正しく形成されていることを確認してください。)」
+* IAssetFile.Upload(filepath) : この同期アップロード メソッドが複数のファイルを資産にアップロードしたときに次のエラーをスローする問題が修正されました。エラーは、「Server failed to authenticate the request.Make sure the value of Authorization header is formed correctly including the signature.(サーバーが要求を認証できませんでした。認証ヘッダーの値が、署名を含め正しく形成されていることを確認してください。)」
 
 * IAssetFile.UploadAsync : 5 個のファイルを同時にアップロードできないという問題が修正されました。
 
@@ -473,9 +481,9 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 
 こおで説明する変更点は、2012 年 11 月 (バージョン 2.0.0.0) SDK に含まれている更新内容です。これらの変更では、2012 年 6 月のプレビュー SDK リリース向けに記述されたコードの変更または書き換えが必要です。
 
-* アセット
+* 資産
 	
-	IAsset.Create(assetName) は、唯一のアセット作成関数です。IAsset.Create は、現在、メソッド呼び出しの一部としてファイルをアップロードしません。アップロードには IAssetFile を使用してください。
+	IAsset.Create(assetName) は、唯一の資産作成関数です。IAsset.Create は、現在、メソッド呼び出しの一部としてファイルをアップロードしません。アップロードには IAssetFile を使用してください。
 	
 	IAsset.Publish メソッドと AssetState.Publish 列挙値は、サービス SDK から削除されました。尾の値に依存しているコードはすべて書き換える必要があります。
 
@@ -541,7 +549,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Streaming Storage Encrypted Content (ストリーミング ストレージ暗号化コンテンツ)]: http://msdn.microsoft.com/library/azure/dn783451.aspx
 [Azure Management Portal]: https://manage.windowsazure.com
 [動的パッケージ]: http://msdn.microsoft.com/library/azure/jj889436.aspx
-[Nick Drouin のブログ]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
+[Nick Drouin's Blog (Nick Drouin のブログ)]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [PlayReady によるスムーズ ストリーミングおよび MPEG DASH の保護]: http://msdn.microsoft.com/library/azure/dn189154.aspx
 [RMedia Services SDK for .NET の再試行ロジック]: http://msdn.microsoft.com/library/azure/dn745650.aspx
 [Grass Valley Announces EDIUS 7 Streaming Through the Cloud (Grass Valley 社、クラウドを介した EDIUS 7 ストリーミングを発表)]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
@@ -550,12 +558,12 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [ビデオのセグメントの結合]: http://msdn.microsoft.com/library/azure/dn640504.aspx
 [Azure Media Services .NET SDK 3.0.0.1 および 3.0.0.2 のリリース]: http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/
 [Azure Active Directory Access Control Service (ACS)]: http://msdn.microsoft.com/library/hh147631.aspx
-[Media Services SDK による Media Services への接続]: http://msdn.microsoft.com/library/azure/jj129571.aspx
+[Media Services SDK を使用した Media Services への接続]: http://msdn.microsoft.com/library/azure/jj129571.aspx
 [Azure Media Services .NET SDK Extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [azure-sdk-tools]: https://github.com/Azure/azure-sdk-tools
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
-[複数のストレージ アカウントでの Media Services アセットの管理]: http://msdn.microsoft.com/library/azure/dn271889.aspx
+[複数のストレージ アカウントでの Media Services 資産の管理]: http://msdn.microsoft.com/library/azure/dn271889.aspx
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

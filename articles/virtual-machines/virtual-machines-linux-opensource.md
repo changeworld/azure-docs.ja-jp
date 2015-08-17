@@ -228,7 +228,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
     - [Microsoft Azure での MySQL の高可用性アーキテクチャ](http://download.microsoft.com/download/6/1/C/61C0E37C-F252-4B33-9557-42B90BA3E472/MySQL_HADR_solution_in_Azure.pdf)
 7. MariaDB
     - [方法: MariaDbs の複数のマスター クラスターを作成する](virtual-machines-mariadb-cluster.md)
-8. [ILB を使用して Corosync、pg_bouncer と Postgres をインストールする](https://github.com/chgeuer/postgres-azure)
+8. [ILB を使用して Corosync、pg\_bouncer と Postgres をインストールする](https://github.com/chgeuer/postgres-azure)
 
 
 ## 認証と暗号化
@@ -296,4 +296,4 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 [How to use docker with swarm on Azure]: virtual-machines-docker-swarm.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

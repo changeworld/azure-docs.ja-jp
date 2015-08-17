@@ -105,7 +105,7 @@
 
 	![](./media/app-service-agile-software-development/production-4-swap.png)
 
-7.	スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;unique_string>\*master.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
+7.	スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;unique_string>*master.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
  
 5.	[Azure プレビュー ポータル](https://portal.azure.com)にログインして、何が作成されたかを調べます。
 
@@ -279,4 +279,4 @@ Git Shell で、次のコマンドを実行します。
 -	[Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

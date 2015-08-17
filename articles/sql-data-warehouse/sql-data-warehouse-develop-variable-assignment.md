@@ -76,4 +76,4 @@ SELECT および UPDATE は変数代入には使用できません。
 
 <!--Other Web references-->
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -3,7 +3,7 @@
 	description="Azure プレビュー ポータルまたは PowerShell コマンドを使用して、Windows 仮想マシンのローカル管理者パスワードまたはリモート デスクトップ サービスをすばやくリセットします。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="JoeDavies-MSFT"
+	authors="dsk-2015"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/21/2015"
-	ms.author="josephd"/>
+	ms.author="dkshir"/>
 
 # Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法
 
@@ -113,4 +113,4 @@ Azure IaaS (Windows) 診断パッケージを実行できないか、実行し�
 
 [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

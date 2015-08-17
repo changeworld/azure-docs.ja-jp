@@ -44,25 +44,24 @@ CastLabs と AMS の両方でライセンスの承認に使用する JWT (JSON W
 
 次の表では AMS での JWT トークンについて説明しています。
 
-<table border="1">
-<tr><td>Issuer</td><td>選択したからセキュリティ トークン サービス (STS) から取得した発行者の文字列</td></tr>
-<tr><td>対象ユーザー</td><td>使用される STS から取得した対象文字列</td></tr>
-<tr><td>Claims</td><td>一連の要求</td></tr>
-<tr><td>NotBefore</td><td>トークンの有効性開始</td></tr>
-<tr><td>Expires</td><td>トークンの有効性終了</td></tr>
-<tr><td>SigningCredentials</td><td>PlayReady ライセンス サーバー、castLabs ライセンス サーバー、STS の間でキーが共有されている場合、対称キーまたは非対称キーのどちらかになります。</td></tr>
-</table>
+Issuer|選択したからセキュリティ トークン サービス (STS) から取得した発行者の文字列
+---|---
+対象ユーザー|使用される STS から取得した対象文字列
+Claims|一連の要求
+NotBefore|トークンの有効性開始
+Expires|トークンの有効性終了
+SigningCredentials|PlayReady ライセンス サーバー、castLabs ライセンス サーバー、STS の間でキーが共有されている場合、対称キーまたは非対称キーのどちらかになります。
 
 ###CastLabs での JWT トークン
 
 次の表では castLabs での JWT トークンについて説明してます。
 
-<table border="1">
-<tr><td>optData</td><td>ユーザーに関する情報が含まれる JSON 文字列</td></tr>
-<tr><td>crt</td><td>アセット、ライセンス情報、再生権に関する情報が含まれる JSON 文字列</td></tr>
-<tr><td>iat</td><td>エポックの現在の日時</td></tr>
-<tr><td>jti</td><td>このトークンの一意の識別子 (どのトークンも castLabs システムで 1 度しか使用できません)</td></tr>
-</table>
+名前|説明
+---|---
+optData|ユーザーに関する情報が含まれる JSON 文字列 
+crt|アセット、ライセンス情報、再生権に関する情報が含まれる JSON 文字列
+iat|エポックの現在の日時
+jti|このトークンの一意の識別子 (どのトークンも castLabs システムで 1 度しか使用できません)
 
 ##サンプル ソリューションの設定 
 
@@ -114,4 +113,4 @@ castLabs プレイヤーを使用して Chrome の HTML5 で保護されたビ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

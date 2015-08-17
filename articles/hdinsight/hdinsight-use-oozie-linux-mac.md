@@ -61,7 +61,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 ##作業ディレクトリの作成
 
-Oozie では、ジョブに必要なリソースを同じディレクトリに保存する必要があります。この例では、**wasb:///tutorials/useoozie** を使用します。次のコマンドを使用して、このディレクトリと、このワークフローで作成される新しい Hive テーブルを保持する data ディレクトリを作成します。
+Oozie では、ジョブに必要なリソースを同じディレクトリに保存する必要があります。この例では、****wasb:///tutorials/useoozie** を使用します。次のコマンドを使用して、このディレクトリと、このワークフローで作成される新しい Hive テーブルを保持する data ディレクトリを作成します。
 
 	hadoop fs -mkdir -p /tutorials/useoozie/data
 
@@ -111,7 +111,7 @@ Oozie では、ジョブに必要なリソースを同じディレクトリに�
 
 2. Ctrl + X キーを押してエディターを終了します。メッセージが表示されたら、**Y** を選択してファイルを保存し、**Enter** キーを押して、ファイル名として **useooziewf.hql** を使用します。
 
-3. 次のコマンドを使用して、**useooziewf.hql** を **wasb:///tutorials/useoozie/useooziewf.hql** にコピーします。
+3. 次のコマンドを使用して、**useooziewf.hql** を ****wasb:///tutorials/useoozie/useooziewf.hql** にコピーします。
 
 		hadoop fs -copyFromLocal useooziewf.hql /tutorials/useoozie/useooziewf.hql
 
@@ -192,7 +192,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 2. Ctrl + X キーを押した後、**Y** キーと **Enter** キーを押してファイルを保存します。
 
-3. 次のコマンドを使用して、**workflow.xml** ファイルを **wasb:///tutorials/useoozie/workflow.xml** にコピーします。
+3. 次のコマンドを使用して、**workflow.xml** ファイルを ****wasb:///tutorials/useoozie/workflow.xml** にコピーします。
 
 		hadoop fs -copyFromLocal workflow.xml wasb:///tutorials/useoozie/workflow.xml
 
@@ -215,7 +215,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
         data:    Server Name i1qwc540ts
         info:    sql server create command OK
 
-    > [AZURE.IMPORTANT]このコマンドによって返されるサーバー名 (上記の例では \*\*i1qwc540ts\*\*) に注意してください。 これは、作成された SQL Database サーバーの短い名前です。完全修飾ドメイン名 (FQDN) は **&lt;shortname&gt;.database.windows.net** です。上記の例の場合、FQDN は **i1qwc540ts.database.windows.net** になります。
+    > [AZURE.IMPORTANT]このコマンドによって返されるサーバー名 (上記の例では **i1qwc540ts**) に注意してください。 これは、作成された SQL Database サーバーの短い名前です。完全修飾ドメイン名 (FQDN) は **&lt;shortname&gt;.database.windows.net** です。上記の例の場合、FQDN は **i1qwc540ts.database.windows.net** になります。
 
 2. 次のコマンドを使用して、SQL Database サーバーに **oozietest** という名前のデータベースを作成します。
 
@@ -283,7 +283,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		<name>fs.defaultFS</name>
 		<value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
 
-	**wasb://mycontainer@mystorageaccount.blob.core.windows.net** 値は次の手順で使用するので、この値を保存します。
+	次の手順で ****wasb://mycontainer@mystorageaccount.blob.core.windows.net** 値を使用するので、この値を保存します。
 
 2. 次のコマンドを使用して、クラスターのヘッド ノードの FQDN を取得します。これは、クラスターの JobTracker アドレスに使用されます。これは構成ファイルですぐに使用されます。
 
@@ -299,7 +299,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 		nano job.xml
 
-2. nano エディターが開いたら、ファイルの内容として次のコードを使用します。
+2. nano エディターが開いたら、ファイルの内容として次のスクリプトを使用します。
 
 		<?xml version="1.0" encoding="UTF-8"?>
 		<configuration>
@@ -360,7 +360,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		  </property>
 		</configuration>
 
-	* **wasb://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、前に返された値に置き換えます。
+	* ****wasb://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、前に返された値に置き換えます。
 
 	> [AZURE.WARNING]パスの一部としてコンテナーとストレージ アカウントが含まれた完全な WASB パスを使用する必要があります。短い形式 (wasb:///) を使用すると、ジョブを開始したときに RunHiveScript アクションが失敗します。
 
@@ -391,7 +391,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		<name>oozie.base.url</name>
 		<value>http://headnode0.CLUSTERNAME-ssh.j7.internal.cloudapp.net:11000/oozie</value>
 
-	**http://headnode0.CLUSTERNAME-ssh.j7.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
+	****http://headnode0.CLUSTERNAME-ssh.j7.internal.cloudapp.net:11000/oozie** の部分が Oozie コマンドで使用する URL です。
 
 2. 次のコマンドを使用して、URL の環境変数を作成します。すべてのコマンドでこれを入力する必要があるわけではありません。
 
@@ -482,7 +482,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
 	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel)
 
-2. トンネルが作成されたら、Web ブラウザーで Ambari Web UI を開きます。Ambari サイトの URI は、**https://CLUSTERNAME.azurehdinsight.net** です。**CLUSTERNAME** を、Linux ベースの HDInsight クラスターの名前に置き換えます。
+2. トンネルが作成されたら、Web ブラウザーで Ambari Web UI を開きます。Ambari サイトの URI は、****https://CLUSTERNAME.azurehdinsight.net** です。**CLUSTERNAME** を、Linux ベースの HDInsight クラスターの名前に置き換えます。
 
 3. ページの左側で **[Oozie]** を選択し、**[Quick Links]**、**[Oozie Web UI]** の順にクリックします。
 
@@ -724,4 +724,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!--------HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

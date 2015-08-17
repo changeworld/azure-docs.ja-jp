@@ -65,7 +65,7 @@ OSMF プラグインは、静的 (コンパイル時) または動的 (実行時
 ###OSMF 用 SS の静的読み込み
 次のコード スニペットは、OSMF 用 SS プラグインを静的に読み込み、OSMF MediaFactory クラスを使用して基本的なビデオを再生する方法を示しています。OSMF 用 SS をコードに含める前に、プロジェクト参照に静的プラグイン "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" が含まれていることを確認してください。
 
-<pre><code>
+```
 package 
 {
 	
@@ -95,7 +95,7 @@ package
 
 			initMediaPlayer();
 
-		{
+		}
 	
 		private function initMediaPlayer():void
 		{
@@ -120,7 +120,7 @@ package
 			// Load the plugin class 
 			loadAdaptiveStreamingPlugin( );  
 			
-		{
+		}
 		
 		private function loadAdaptiveStreamingPlugin( ):void
 		{
@@ -128,7 +128,7 @@ package
 			
 			pluginResource = new PluginInfoResource(new AdaptiveStreamingPluginInfo( )); 
 			_mediaFactory.loadPlugin( pluginResource ); 
-		{
+		}
 		
 		private function onPluginLoaded( event:MediaFactoryEvent ):void
 		{
@@ -136,12 +136,12 @@ package
 			// Your web server needs to host a valid crossdomain.xml file to allow plugin to download Smooth Streaming files.
 		loadMediaSource("http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest")
 		
-		{
+		}
 		
 		private function onPluginLoadFailed( event:MediaFactoryEvent ):void
 		{
 			// The plugin is failed to load ...
-		{
+		}
 		
 		
 		private function onPlayerStateChange(event:MediaPlayerStateChangeEvent) : void
@@ -159,7 +159,7 @@ package
 					break;
 				
 				case  MediaPlayerState.READY :   
-					// Add code to deal with Player Ready when it is hit the first load after a source is loaded.
+					// Add code to deal with Player Ready when it is hit the first load after a source is loaded. 
 					
 					break;
 				
@@ -169,14 +169,14 @@ package
 				
 				case  MediaPlayerState.PAUSED :
 					break;      
-				// other states ...         
-			{
-		{
+				// other states ...          
+			}
+		}
 		
 		private function onPlayerFailed(event:MediaErrorEvent) : void
 		{
-			// Media Player is failed .          
-		{
+			// Media Player is failed .           
+		}
 		
 		private function loadMediaSource(sourceURL : String):void 
 		{
@@ -191,18 +191,18 @@ package
 			
 			// Add the media element
 			_mediaPlayerSprite.media = element;
-		{     
+		}     
 		
-	{
-{
-</code></pre>
+	}
+}
+```
 
 
 ###OSMF 用 SS の動的読み込み
 
 次のコード スニペットは、OSMF 用 SS プラグインを動的に読み込み、OSMF MediaFactory クラスを使用して基本的なビデオを再生する方法を示しています。OSMF 用 SS をコードに含める前に、動的プラグイン "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" をプロジェクト フォルダーにコピー (FILE プロトコルを使用して読み込む場合) するか、Web サーバーにコピー (HTTP プロトコルを使用して読み込む場合) してください。プロジェクト参照に "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" を含める必要はありません。
 
-<pre><code>
+```
 package 
 {
 	
@@ -231,7 +231,7 @@ package
 		{
 			stage.quality = StageQuality.HIGH;
 			initMediaPlayer();
-		{
+		}
 		
 		private function initMediaPlayer():void
 		{
@@ -254,7 +254,7 @@ package
 			// Load the plugin class 
 			loadAdaptiveStreamingPlugin( );  
 			
-		{
+		}
 		
 		private function loadAdaptiveStreamingPlugin( ):void
 		{
@@ -267,7 +267,7 @@ package
 			pluginResource = new URLResource(adaptiveStreamingPluginUrl);
 			_mediaFactory.loadPlugin( pluginResource ); 
 
-		{
+		}
 		
 		private function onPluginLoaded( event:MediaFactoryEvent ):void
 		{
@@ -276,12 +276,12 @@ package
 			// Your web server needs to host a valid crossdomain.xml file to allow plugin to download Smooth Streaming files.
 
 	loadMediaSource("http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest")
-		{
+		}
 		
 		private function onPluginLoadFailed( event:MediaFactoryEvent ):void
 		{
 			// The plugin is failed to load ...
-		{
+		}
 		
 		
 		private function onPlayerStateChange(event:MediaPlayerStateChangeEvent) : void
@@ -299,7 +299,7 @@ package
 					break;
 				
 				case  MediaPlayerState.READY :   
-					// Add code to deal with Player Ready when it is hit the first load after a source is loaded.
+					// Add code to deal with Player Ready when it is hit the first load after a source is loaded. 
 					
 					break;
 				
@@ -309,14 +309,14 @@ package
 				
 				case  MediaPlayerState.PAUSED :
 					break;      
-				// other states ...         
-			{
-		{
+				// other states ...          
+			}
+		}
 		
 		private function onPlayerFailed(event:MediaErrorEvent) : void
 		{
-			// Media Player is failed .          
-		{
+			// Media Player is failed .           
+		}
 		
 		private function loadMediaSource(sourceURL : String):void 
 		{
@@ -330,11 +330,11 @@ package
 			_mediaPlayerSprite.height = stage.stageHeight;
 			// Add the media element
 			_mediaPlayerSprite.media = element;
-		{     
+		}     
 		
-	{
-{
-</code></pre>
+	}
+}
+```
 
 ##Strobe Media Playback と OSMF 用 SS 動的プラグイン
 OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html) との互換性があります。OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。これには、"MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーし、次に示す手順を使用して HTTP 読み込みを行ってください。
@@ -403,4 +403,4 @@ OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe 
 
 [OSMF を更新するための](http://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/)Microsoft Adaptive Streamingプラグイン
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

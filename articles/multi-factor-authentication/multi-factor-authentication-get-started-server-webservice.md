@@ -89,4 +89,4 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,4 +1,4 @@
-<properties pageTitle="Azure 用の Oracle GoldenGate の構成" description="高可用性と障害復旧のために Oracle GoldenGate を Azure Virtual Machines にセットアップして実装するチュートリアルの手順" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<properties title="Configuring Oracle GoldenGate for Azure" pageTitle="Azure 用の Oracle GoldenGate の構成" description="高可用性と障害復旧のために Oracle GoldenGate を Azure Virtual Machines にセットアップして実装するチュートリアルの手順" services="virtual-machines" authors="bbenz" documentationCenter=""/>
 <tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 #Azure 用の Oracle GoldenGate の構成
 このチュートリアルでは、高可用性と障害復旧のために Azure Virtual Machines 環境用に Oracle GoldenGate をセットアップする方法について説明します。このチュートリアルでは、RAC 以外の Oracle データベースに対する[双方向レプリケーション](http://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_about_gg.htm)に重点を合わせており、両サイトがアクティブである必要があります。
@@ -11,7 +11,7 @@ Oracle GoldenGate に含まれる主なコンポーネントには、抽出、�
 
 また、このチュートリアルでは、次の前提条件が既に実装されていることを前提としています。
 
-- [Oracle 仮想マシン イメージ - 他の考慮事項](virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images.md)に関するトピックの「高可用性と障害復旧の考慮事項」セクションを既に確認していること。Azure では、スタンドアロンの Oracle Database インスタンスをサポートしていますが、Oracle Real Application Cluster (Oracle RAC) をサポートしていないことにご注意ください。
+- 「[Oracle 仮想マシン イメージ - 他の考慮事項](virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images.md)」に関するトピックの「高可用性と障害復旧」セクションを既に確認していること。Azure では、スタンドアロンの Oracle Database インスタンスをサポートしていますが、Oracle Real Application Cluster (Oracle RAC) をサポートしていないことにご注意ください。
 
 - [Oracle ダウンロード](http://www.oracle.com/us/downloads/index.html) Web サイトから Oracle GoldenGate ソフトウェアを既にダウンロードしている。製品パックとして、Oracle Fusion Middleware – Data Integration を選択している。その後、Oracle 11g データベース用の Oracle GoldenGate on Oracle v11.2.1 Media Pack for Microsoft Windows x64 (64-bit) を選択している。次に、Oracle GoldenGate V11.2.1.0.3 for Oracle 11g 64bit on Windows 2008 (64bit) をダウンロードします。
 
@@ -21,7 +21,7 @@ Oracle GoldenGate に含まれる主なコンポーネントには、抽出、�
 
 - サイト A には "TestGG1"、サイト B には "TestGG2" というテスト データベースを作成している。
 
-- Windows サーバーに、Administrators グループのメンバーまたは **ORA_DBA** グループのメンバーとしてログオンしている。
+- Windows サーバーに、Administrators グループのメンバーまたは **ORA\_DBA** グループのメンバーとしてログオンしている。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -73,7 +73,7 @@ Oracle GoldenGate に含まれる主なコンポーネントには、抽出、�
 
 Oracle データベースと Oracle GoldenGate の今後のリリースでは、追加の変更を実装する必要が生じる可能性があります。最新バージョンに固有の情報については、Oracle Web サイトの「[Oracle GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html)」と「[Oracle データベース](http://www.oracle.com/us/corporate/features/database-12c/index.html)」のドキュメントをご覧ください。たとえば、リリース 11.2.0.4 以降のソース データベースの場合、DDL のキャプチャはログマイニング サーバーによって非同期的に実行され、特別なトリガー、テーブル、その他のデータベース オブジェクトをインストールする必要はありません。Oracle GoldenGate のアップグレードは、ユーザー アプリケーションを停止しなくても実行できます。DDL トリガーとサポート オブジェクトを使用する必要があるのは、抽出が統合モードで、Oracle 11g ソース データベースがバージョン 11.2.0.4 より前の場合です。詳細については、「[Installing and Configuring Oracle GoldenGate for Oracle Database (Oracle データベース用の Oracle GoldenGate のインストールと構成)](http://docs.oracle.com/goldengate/1212/gg-winux/GIORA.pdf)」をご覧ください。
 
-##1.サイト A とサイト B でデータベースをセットアップする
+##1\.サイト A とサイト B でデータベースをセットアップする
 このセクションでは、サイト A とサイト B の両方でデータベース前提条件を実行する方法について説明します。このセクションのすべての手順をサイト A とサイト B の両方で実行する必要があります。
 
 まず、管理ポータルでリモート デスクトップを使用して、サイト A とサイト B に接続します。Windows コマンド プロンプトを開き、Oracle GoldenGate セットアップ ファイルのホーム ディレクトリを作成します。
@@ -82,7 +82,7 @@ Oracle データベースと Oracle GoldenGate の今後のリリースでは、
 
 次に、このフォルダーに Oracle GoldenGate ソフトウェアを解凍してインストールします。この手順の後、次のコマンドを実行することで、GoldenGate ソフトウェア コマンド インタープリター (GGSCI) を開始できます。
 
-	C:\OracleGG.\ggsci
+	C:\OracleGG\.\ggsci
 
 [GGSCI ](http://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_gettingstarted.htm)を使用すると、Oracle GoldenGate の構成、制御、監視を行ういくつかのコマンドを実行できます。
 
@@ -116,10 +116,10 @@ Oracle データベースと Oracle GoldenGate の今後のリリースでは、
 	      grant delete any table to ggate;
 	      grant drop any table to ggate;
 
-次に、サイト A とサイト B で %ORACLE_HOME%\database フォルダー内の INIT<DatabaseSID>.ORA ファイルを見つけて、以下のデータベース パラメーターを INITTEST.ora に追加します。
+次に、サイト A とサイト B で %ORACLE\_HOME%\\database フォルダー内の INIT<DatabaseSID>.ORA ファイルを見つけて、以下のデータベース パラメーターを INITTEST.ora に追加します。
 
-	UNDO_MANAGEMENT=AUTO
-	UNDO_RETENTION=86400
+	UNDO\_MANAGEMENT=AUTO
+	UNDO\_RETENTION=86400
 
 すべての Oracle GoldenGate GGSCI コマンドの完全な一覧については、[「Oracle GoldenGate for Windows のリファレンス](http://docs.oracle.com/goldengate/1212/gg-winux/GWURF/ggsci_commands.htm)」をご覧ください。
 
@@ -145,7 +145,7 @@ Oracle GoldenGate レプリケーション プロセスを説明するために�
 
 	grant all on scott.inventory to ggate;
 
-次に、新しく作成されたテーブルでデータベース トリガー INVENTORY_CDR_TRG を作成して有効にし、ユーザーが ggate でない場合に、新しいテーブルへのすべてのトランザクションが記録されることを確認します。サイト A とサイト B でこの操作を実行します。
+次に、新しく作成されたテーブルでデータベース トリガー INVENTORY\_CDR\_TRG を作成して有効にし、ユーザーが ggate でない場合に、新しいテーブルへのすべてのトランザクションが記録されることを確認します。サイト A とサイト B でこの操作を実行します。
 
 	CREATE OR REPLACE TRIGGER INVENTORY_CDR_TRG
 	BEFORE UPDATE
@@ -161,7 +161,7 @@ Oracle GoldenGate レプリケーション プロセスを説明するために�
 	/ 
 
 
-##2.データベース レプリケーション用にサイト A とサイト B を準備する
+##2\.データベース レプリケーション用にサイト A とサイト B を準備する
 このセクションでは、データベース レプリケーション用にサイト A とサイト B を準備する方法について説明します。このセクションのすべての手順をサイト A とサイト B の両方で実行する必要があります。
 
 まず、Azure ポータルでリモート デスクトップを使用して、サイト A とサイト B に接続します。SQL*Plus コマンド ウィンドウを使用して、データベースを archivelog モードに切り替えます。
@@ -186,10 +186,10 @@ Oracle GoldenGate レプリケーション プロセスを説明するために�
 	sql>startup
 
 
-##3.DDL レプリケーションのサポートに必要なすべてのオブジェクトを作成する
+##3\.DDL レプリケーションのサポートに必要なすべてのオブジェクトを作成する
 このセクションでは、DDL レプリケーションのサポートに必要なすべてのオブジェクトを作成する際に使用する必要があるスクリプトを一覧表示します。サイト A とサイト B の両方で、このセクションで指定されているスクリプトを実行する必要があります。
 
-Windows コマンド プロンプトを開き、C:\OracleGG などの Oracle GoldenGate フォルダーに移動します。サイト A とサイト B で **SYSDBA** などのデータベース管理者特権を使用して、SQL*Plus コマンド プロンプトを起動します。
+Windows コマンド プロンプトを開き、C:\\OracleGG などの Oracle GoldenGate フォルダーに移動します。サイト A とサイト B で **SYSDBA** などのデータベース管理者特権を使用して、SQL*Plus コマンド プロンプトを起動します。
 
 次に、以下のスクリプトを実行します。
 	
@@ -212,7 +212,7 @@ Oracle GoldenGate ツールには、DDL (データ定義言語) をサポート�
 
 	GGSCI(Hostname) 6> add trandata scott.inventory
 
-##4.サイト A とサイト B で GoldenGate マネージャーを構成する
+##4\.サイト A とサイト B で GoldenGate マネージャーを構成する
 Oracle GoldenGate マネージャーは、他の GoldenGate プロセスの開始、証跡ログ ファイルの管理とレポートのような多数の機能を実行します。
 
 サイト A とサイト B の両方で Oracle GoldenGate マネージャー プロセスを構成する必要があります。そのためには、サイト A とサイト B で次の手順を実行します。
@@ -262,7 +262,7 @@ EDIT PARAMS コマンドを使用してパラメーター ファイルを開き�
 	GGSCI (HostName) 48> start manager
 	Manager started.
 
-##5.サイト A とサイト B で抽出グループとデータ ポンプ プロセスを作成する
+##5\.サイト A とサイト B で抽出グループとデータ ポンプ プロセスを作成する
 
 ###サイト A で抽出とデータ ポンプ プロセスを作成する
 
@@ -277,7 +277,7 @@ EDIT PARAMS コマンドを使用してパラメーター ファイルを開き�
 	GGSCI (MachineGG1) 17> add rmttrail C:\OracleGG\dirdat\ab extract dpump1
 	RMTTRAIL added.
 
-EDIT PARAMS コマンドを使用してパラメーター ファイルを開き、以下の情報を追加します。GGSCI (MachineGG1) 18> edit params ext1 EXTRACT ext1 USERID ggate, PASSWORD ggate EXTTRAIL C:\OracleGG\dirdat\aa TRANLOGOPTIONS EXCLUDEUSER ggate TABLE scott.inventory, GETBEFORECOLS ( ON UPDATE KEYINCLUDING (prod_category,qty_in_stock, last_dml), ON DELETE KEYINCLUDING (prod_category,qty_in_stock, last_dml));
+EDIT PARAMS コマンドを使用してパラメーター ファイルを開き、以下の情報を追加します。GGSCI (MachineGG1) 18> edit params ext1 EXTRACT ext1 USERID ggate, PASSWORD ggate EXTTRAIL C:\\OracleGG\\dirdat\\aa TRANLOGOPTIONS EXCLUDEUSER ggate TABLE scott.inventory, GETBEFORECOLS ( ON UPDATE KEYINCLUDING (prod\_category,qty\_in\_stock, last\_dml), ON DELETE KEYINCLUDING (prod\_category,qty\_in\_stock, last\_dml));
 
 EDIT PARAMS コマンドを使用してパラメーター ファイルを開き、以下の情報を追加します。
 
@@ -532,7 +532,7 @@ ADD TRANDATA コマンドを使用して、テーブル レベルで補足ログ
 	GGSCI (MachineGG2) 27> status replicat rep2
 	REPLICAT REP2: RUNNING
 
-##6.双方向のレプリケーション プロセスを確認する
+##6\.双方向のレプリケーション プロセスを確認する
 
 Oracle GoldenGate 構成を確認するには、サイト A でデータベースに行を挿入します。リモート デスクトップを使用してサイト A に接続します。SQL*Plus コマンド ウィンドウを開いて、以下を実行します。SQL> select name from v$database;
 	
@@ -583,4 +583,4 @@ Oracle GoldenGate 構成を確認するには、サイト A でデータベー�
 ##その他のリソース
 [Oracle Virtual Machine images for Azure (Azure の Oracle 仮想マシン イメージ)](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -57,7 +57,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
     * **-u**: 要求の認証に使用するユーザー名とパスワード
     * **-G**: GET 要求であることを示します。
 
-    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) のステータスを返すことを示します。
+    URL の先頭は ****https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) のステータスを返すことを示します。
 
 2. 次のコードを使用して、Pig Latin ジョブをクラスターに送信します。
 
@@ -87,7 +87,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 ##<a id="results"></a>結果の表示
 
-ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、**wasb:///example/pigcurl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/pigcurl** ディレクトリに保存されます。
+ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、****wasb:///example/pigcurl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/pigcurl** ディレクトリに保存されます。
 
 これらのファイルは [Mac、Linux、Windows 用の Azure CLI](../xplat-cli.md) を使用して一覧表示し、ダウンロードできます。たとえば、**example/pigcurl** 内のファイルを一覧表示するには、次のコマンドを使用します。
 
@@ -97,7 +97,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 	azure storage blob download <container-name> <blob-name> <destination-file>
 
-> [AZURE.NOTE]`-a` や `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を設定する必要があります。
+> [AZURE.NOTE]`-a` や `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE\_STORAGE\_ACCOUNT** と **AZURE\_STORAGE\_ACCESS\_KEY** を設定する必要があります。
 
 ##<a id="summary"></a>概要
 
@@ -117,4 +117,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

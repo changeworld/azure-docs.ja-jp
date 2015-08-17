@@ -28,7 +28,7 @@ Microsoft Azure Site Recovery は、計画済みおよび計画外の停止の�
 
 ## テスト デプロイの実行
 
-テスト デプロイは、それぞれに VMM サーバーを配置した 2 つのオンプレミスのサイトで構成しました。両方の VMM サーバーとも、Azure Site Recovery コンテナーに登録されています。このテスト デプロイは、プライマリ サイトとして機能する本店と、セカンダリまたは復旧サイトとして機能するブランチ オフィスで構成される、本店/ブランチ オフィス デプロイの一般的な例です。
+テスト デプロイは、それぞれに VMM サーバーをデプロイした 2 つのオンプレミスのサイトで構成しました。両方の VMM サーバーとも、Azure Site Recovery コンテナーに登録されています。このテスト デプロイは、プライマリ サイトとして機能する本店と、セカンダリまたは復旧サイトとして機能するブランチ オフィスで構成される、本店/ブランチ オフィス デプロイの一般的な例です。
 
 ### テスト デプロイの手順
 
@@ -171,9 +171,9 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 |SQL Server|51|1|4|167|10|
 |Exchange Server|71|1|4|552|10|
 |ファイル サーバー|50|1|2|552|22|
-|VDI|149|0.5|1|80|6|
-|Web サーバー|149|0.5|1|80|6|
-|合計|470|||96.83 TB|4108|
+|VDI|149|0\.5|1|80|6|
+|Web サーバー|149|0\.5|1|80|6|
+|合計|470|||96\.83 TB|4108|
 
 ### Azure Site Recovery 設定
 
@@ -194,13 +194,7 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 |メトリック|カウンター|
 |---|---|
-|CPU|\Processor(_Total)\% Processor Time|
-|使用可能なメモリ|\Memory\Available MBytes|
-|IOPS|\PhysicalDisk(_Total)\Disk Transfers/sec|
-|VM 読み取り (IOPS) 操作数/秒|\Hyper-V Virtual Storage Device(<VHD>)\Read Operations/Sec|
-|VM 書き込み (IOPS) 操作数/秒|\Hyper-V Virtual Storage Device(<VHD>)\Write Operations/S|
-|VM 読み取りスループット|\Hyper-V Virtual Storage Device(<VHD>)\Read Bytes/sec|
-|VM 書き込みスループット|\Hyper-V Virtual Storage Device(<VHD>)\Write Bytes/sec|
+|CPU|\\Processor(\_Total)\% Processor Time| |使用可能なメモリ|\\Memory\\Available MBytes| |IOPS|\\PhysicalDisk(\_Total)\\Disk Transfers/sec| |VM 読み取り (IOPS) 操作数/秒|\\Hyper-V Virtual Storage Device(<VHD>)\\Read Operations/Sec| |VM 書き込み (IOPS) 操作数/秒|\\Hyper-V Virtual Storage Device(<VHD>)\\Write Operations/S| |VM 読み取りスループット|\\Hyper-V Virtual Storage Device(<VHD>)\\Read Bytes/sec| |VM 書き込みスループット|\\Hyper-V Virtual Storage Device(<VHD>)\\Write Bytes/sec|
 
 
 ## 次のステップ
@@ -214,4 +208,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 - [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

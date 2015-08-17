@@ -199,4 +199,4 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 
 [サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)方法について説明します。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

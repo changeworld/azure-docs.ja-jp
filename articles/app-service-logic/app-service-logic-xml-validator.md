@@ -48,19 +48,9 @@ XML 検証アクションは、特定の XML の入力を、構成済みのス�
 
 ![BizTalk XML Validator の XML の検証][5]
 
-<table>
-	<tr>
-		<th>パラメーター</th>
-		<th>型</th>
-		<th>パラメーターの説明</th>
-	</tr>
-	<tr>
-		<td>入力 XML</td>
-		<td>文字列</td>
-		<td>検証する入力 XML</td>
-	</tr>
-</table>
-
+パラメーター|型|パラメーターの説明
+---|---|---
+入力 XML|文字列|検証する入力 XML
 
 アクションは出力をオブジェクトとして返します。出力には、XML Validator の応答を表すモデルが含まれます。これは、結果、スキーマ名、ルート ノード、およびエラーの説明で構成されます。
 
@@ -75,4 +65,4 @@ XML 検証アクションは、特定の XML の入力を、構成済みのス�
 [6]: ./media/app-service-logic-xml-validator/img1.PNG
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

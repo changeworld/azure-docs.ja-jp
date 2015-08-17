@@ -12,7 +12,7 @@
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="04/29/2015"
 	ms.author="tdykstra"/>
 
@@ -79,7 +79,7 @@ Azure App Service は、過去の IIS6 アプリケーションの移行に伴�
 
 ### <a id="smallbusiness"></a>スモール ビジネスのオーナーです。サイトをホストするための安価な方法が必要ですが、将来の成長も考慮する必要があります。
 
-このシナリオでは、無料で使用を開始して必要なときにさらに機能を追加できる、Azure App Service が最適なソリューションです。無料の Web アプリにはいずれも、Azure によって提供されるドメインが付属しています (*your_company*.azurewebsites.net)。また、統合デプロイメント/管理ツールや、導入作業を支援するアプリケーション ギャラリーも、このプラットフォームに含まれています。他にも、ユーザーの要求が増えるにつれて拡大できる多くのサービスや拡張オプションがあります。Azure App Service を使用すると、次のことができます。
+このシナリオでは、無料で使用を開始して必要なときにさらに機能を追加できる、Azure App Service が最適なソリューションです。無料の Web アプリにはいずれも、Azure によって提供されるドメインが付属しています (*your\_company*.azurewebsites.net)。また、統合デプロイメント/管理ツールや、導入作業を支援するアプリケーション ギャラリーも、このプラットフォームに含まれています。他にも、ユーザーの要求が増えるにつれて拡大できる多くのサービスや拡張オプションがあります。Azure App Service を使用すると、次のことができます。
 
 - 無料の層から開始し、必要に応じてスケール アップできます。
 - アプリケーション ギャラリーを使用して、WordPress などの一般的な Web アプリケーションをすばやくセットアップできます。
@@ -140,197 +140,34 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 
 次の表では、最善の選択ができるように、App Service、Cloud Services、および Virtual Machines の機能を比較しています。それぞれのホスティング方法に関する最新の SLA 情報については、[Azure サービス レベル アグリーメント](/support/legal/sla/)を参照してください。
 
-<table cellspacing="0" border="1">
-<tr>
-   <th align="left" valign="middle">機能</th>
-   <th align="left" valign="middle">App Service (Web Apps)</th>
-   <th align="left" valign="middle">クラウド サービス (Web ロール)</th>
-   <th align="left" valign="middle">仮想マシン</th>
-   <th align="left" valign="middle">メモ</th>
-</tr>
-<tr>
-   <td valign="middle"><p>ほぼ即時の展開</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-   <td valign="middle"></td>
-   <td valign="middle">アプリケーションまたはアプリケーションの更新プログラムを Cloud Services にデプロイしたり、VM を作成したりするには、最低でも数分かかります。一方、アプリケーションを Web アプリにデプロイする場合の所要時間は数秒です。</td>
-</tr>
-<tr>
-   <td valign="middle"><p>再展開なしでの大型マシンへのスケール アップ</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-   <td valign="middle"></td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>Web サーバーのインスタンスは、コンテンツと構成を共有します。つまり、スケールする際に、デプロイまたは構成をやり直す必要はありません。</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-   <td valign="middle"></td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>複数の展開環境 (運用環境とステージング環境)</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>OS の自動更新の管理</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>シームレスなプラットフォームの切り替え (32 ビットと 64 ビット間で簡単に移動)</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>GIT、FTP によるコードの展開</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>Web 展開によるコードの展開</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-   <td valign="middle">○</td>
-   <td valign="middle">Cloud Services では、Web 配置を使用して、個々のロール インスタンスに更新プログラムをデプロイできます。ただし、ロールの初回デプロイメントに Web 配置を使用することはできません。また、更新プログラムに Web 配置を使用する場合は、各ロールのインスタンスに対して個別にデプロイする必要があります。運用環境で Cloud Services の SLA を満たすには、複数のインスタンスが必要です。</td>
-</tr>
-<tr>
-   <td valign="middle"><p>WebMatrix サポート</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サービス バス、ストレージ、SQL データベースのようなサービスへのアクセス</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>多層アーキテクチャの Web 層または Web サービス層のホスト</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>多層アーキテクチャの中間層のホスト</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、<a href="http://go.microsoft.com/fwlink/?linkid=390226">Web ジョブ</a>機能でホストできます。Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保することができます。プレビュー [API apps](../app-service-api/app-service-api-apps-why-best-platform.md) 機能には、REST サービスをホストする機能が多数搭載されています。</td>
-</tr>
-<tr>
-   <td valign="middle"><p>統合されたサービスとしての MySQL のサポート</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">Cloud Services は、ClearDB のサービスを介してサービスとしての MySQL を統合できますが、管理ポータル ワークフローの一部として統合することはできません。</td>
-</tr>
-<tr>
-   <td valign="middle"><p>ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>再展開なしでの複数インスタンスへのスケール アウト</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">Virtual Machines は複数のインスタンスにスケール アウトできますが、そこで実行されるサービスが、このようなスケール アウトに対応できるように記述されていなければなりません。要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。</td>
-</tr>
-<tr>
-   <td valign="middle"><p>SSL のサポート</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。Web Apps での SSL の使い方については、<a href="../web-sites-configure-ssl-certificate/">Azure Web サイトの SSL 証明書の構成</a>に関するページを参照してください。</td>
-</tr>
-<tr>
-   <td valign="middle"><p>Visual Studio 統合</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>リモート デバッグ</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>TFS によるコードの展開</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p><a href="/services/virtual-network/">Azure Virtual Network</a> によるネットワークの分離</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">「<a href="/blog/2014/09/15/azure-websites-virtual-network-integration/">Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)</a>」も参照してください。</td>
-</tr>
-<tr>
-   <td valign="middle"><p><a href="/services/traffic-manager/">Azure Traffic Manager</a> のサポート</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>統合エンドポイント監視</p></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サーバーへのリモート デスクトップ アクセス</p></td>
-   <td valign="middle"></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>カスタム MSI のインストール</p></td>
-   <td valign="middle"></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>スタートアップ タスクの定義と実行</p></td>
-   <td valign="middle"></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>ETW イベントのリッスン</p></td>
-   <td valign="middle"></td>
-   <td valign="middle">○</td>
-   <td valign="middle">○</td>
-   <td valign="middle"></td>
-</tr>
-</table>
+機能|App Service (Web Apps)|クラウド サービス (Web ロール)|仮想マシン|メモ
+---|---|---|---|---
+ほぼ即時の展開|○|||アプリケーションまたはアプリケーションの更新プログラムを Cloud Services にデプロイしたり、VM を作成したりするには、最低でも数分かかります。一方、アプリケーションを Web アプリにデプロイする場合の所要時間は数秒です。
+再展開なしでの大型マシンへのスケール アップ|○|||
+Web サーバーのインスタンスは、コンテンツと構成を共有します。つまり、スケールする際に、デプロイまたは構成をやり直す必要はありません。|○|||
+複数の展開環境 (運用環境とステージング環境)|○|○||
+OS の自動更新の管理|○|○||
+シームレスなプラットフォームの切り替え (32 ビットと 64 ビット間で簡単に移動)|○|○||
+GIT、FTP によるコードの展開|○||○|
+Web 展開によるコードの展開|○||○|Cloud Services では、Web 配置を使用して、個々のロール インスタンスに更新プログラムをデプロイできます。ただし、ロールの初回デプロイメントに Web 配置を使用することはできません。また、更新プログラムに Web 配置を使用する場合は、各ロールのインスタンスに対して個別にデプロイする必要があります。運用環境で Cloud Services の SLA を満たすには、複数のインスタンスが必要です。
+WebMatrix サポート|○||○|
+サービス バス、ストレージ、SQL データベースのようなサービスへのアクセス|○|○|○|
+多層アーキテクチャの Web 層または Web サービス層のホスト|○|○|○|
+多層アーキテクチャの中間層のホスト|○|○|○|REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](http://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。プレビュー [API Apps](../app-service-api/app-service-api-apps-why-best-platform/) 機能には、REST サービスをホストする機能が多数搭載されています。
+統合されたサービスとしての MySQL のサポート|○|○|○|Cloud Services は、ClearDB のサービスを介してサービスとしての MySQL を統合できますが、管理ポータル ワークフローの一部として統合することはできません。
+ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート|○|○|○|
+再展開なしでの複数インスタンスへのスケール アウト|○|○|○|Virtual Machines は複数のインスタンスにスケール アウトできますが、そこで実行されるサービスが、このようなスケール アウトに対応できるように記述されていなければなりません。要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。
+SSL のサポート|○|○|○|App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](../app-service-web/web-sites-configure-ssl-certificate/)に関するページを参照してください。
+Visual Studio 統合|○|○|○|
+リモート デバッグ|○|○|○|
+TFS によるコードの展開|○|○|○|
+[Azure Virtual Network](../services/virtual-network/) によるネットワークの分離|○|○|○|「[Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](../blog/2014/09/15/azure-websites-virtual-network-integration/)」も参照してください。
+[Azure Traffic Manager](../services/traffic-manager/) のサポート|○|○|○|
+統合エンドポイント監視|○|○|○|
+サーバーへのリモート デスクトップ アクセス||○|○|
+カスタム MSI のインストール||○|○|
+スタートアップ タスクの定義と実行||○|○|
+ETW イベントのリッスン||○|○|
 
 
 > [AZURE.NOTE]アカウントにサインアップする前に Azure App Service を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure App Service で、有効期限付きのスターター アプリを無償ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
@@ -367,4 +204,4 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
   [ストレージ]: http://www.windowsazure.com/documentation/services/storage/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

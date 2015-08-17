@@ -204,4 +204,4 @@ Reliable Collection には、LINQ など、`System.Collections.Generic` およ�
 
 [Reliable Service の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

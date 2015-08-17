@@ -3,7 +3,7 @@
 	description="Azure App Service で Web アプリを管理するためのリソースへリンクしています。" 
 	services="app-service\web" 
 	documentationCenter="" 
-	authors="MikeWasson" 
+	authors="erikre" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/23/2015" 
-	ms.author="mwasson"/>
+	ms.date="07/31/2015" 
+	ms.author="erikre"/>
 
 # Azure App Service での Web アプリの管理
 
@@ -103,4 +103,4 @@ Visual Studio Online を使用する場合は、ソース管理から継続的�
 
   
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

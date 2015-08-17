@@ -170,4 +170,4 @@ Mobile Apps を初めて使用する場合は、最初に [Xamarin iOS アプリ
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

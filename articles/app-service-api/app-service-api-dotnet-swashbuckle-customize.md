@@ -30,7 +30,7 @@
 
 Swashbuckle は、コントローラー名とメソッド名を連結することによって、Swagger 操作の ID を生成します。このパターンでは、メソッドに複数のオーバーロードがある場合に問題が発生します。Swashbuckle は重複する操作 ID を生成し、これは無効な Swagger JSON です。
 
-たとえば、次のコントローラー コードでは、Swashbuckle は 3 つの Contact_Get 操作 ID を生成します。
+たとえば、次のコントローラー コードでは、Swashbuckle は 3 つの Contact\_Get 操作 ID を生成します。
 
 ![](./media/app-service-api-dotnet-swashbuckle-customize/multiplegetsincode.png)
 
@@ -74,7 +74,7 @@ Swashbuckle は、コントローラー名とメソッド名を連結するこ�
 		    }
 		}
 
-2. *App_Start\SwaggerConfig.cs* ファイルで、`OperationFilter` メソッドを呼び出し、Swashbuckle が `IOperationFilter` の新しい実装を使うようにします。
+2. *App\_Start\\SwaggerConfig.cs* ファイルで、`OperationFilter` メソッドを呼び出し、Swashbuckle が `IOperationFilter` の新しい実装を使うようにします。
 
 		c.OperationFilter<MultipleOperationsWithSameVerbFilter>();
 
@@ -250,4 +250,4 @@ Visual Studio を使用して REST API のクライアント コードを再生�
 この記事では Swashbuckle により操作 ID と有効な応答コードを生成する方法のカスタマイズについて説明しました。詳細については、[GitHub の Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) をご覧ください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

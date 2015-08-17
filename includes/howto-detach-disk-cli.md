@@ -48,4 +48,4 @@
     data:    1    5         kmlinux-f8ef0006ab182209.vhd
     info:    vm disk list command OK
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

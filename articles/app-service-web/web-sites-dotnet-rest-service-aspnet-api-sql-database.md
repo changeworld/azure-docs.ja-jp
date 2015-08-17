@@ -4,7 +4,6 @@
 	services="app-service\web" 
 	documentationCenter=".net" 
 	authors="Rick-Anderson" 
-	writer="Rick-Anderson" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -76,10 +75,11 @@ Azure にまだサインしていない場合は、サインインするよう�
 ### ページのヘッダーとフッターを設定する
 
 
-1. **ソリューション エクスプローラー**で、*Views\Shared* フォルダーを展開し、*_Layout.cshtml* ファイルを開きます。
-	![_Layout.cshtml in Solution Explorer][newapp004]
+1. **ソリューション エクスプローラー**で、*Views\\Shared* フォルダーを展開し、*\_Layout.cshtml* ファイルを開きます。
 
-1. *Views\Shared_Layout.cshtml* ファイルの内容を、次のコードに置き換えます。
+	![\_Layout.cshtml in Solution Explorer][newapp004]
+
+1. *Views\\Shared\_Layout.cshtml* ファイルの内容を、次のコードに置き換えます。
 
 
 		<!DOCTYPE html>
@@ -232,11 +232,11 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 		add-migration Initial
 
-	**add-migration Initial** コマンドによって、**&lt;date_stamp&gt;Initial** という名前のクラスが生成され、データベースの作成に使用されます。最初のパラメーター (*Initial*) は任意であり、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。
+	**add-migration Initial** コマンドによって、**&lt;date\_stamp&gt;Initial** という名前のクラスが生成され、データベースの作成に使用されます。最初のパラメーター (*Initial*) は任意であり、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。
 
 	**Initial** クラスでは、**Up** メソッドを使用して Contacts テーブルを作成し、**Down** メソッドを使用してそのテーブルを削除します (前の状態に戻します)。
 
-3. *Migrations\Configuration.cs* ファイルを開きます。
+3. *Migrations\\Configuration.cs* ファイルを開きます。
 
 4. 次の名前空間を追加します。
 
@@ -319,7 +319,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 ## ビューの編集
 
-1. *Views\Home\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。 
+1. *Views\\Home\\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。 
 
 
 2. このファイルの内容を次のコードに置き換えます。
@@ -476,7 +476,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 	このスタイル シートは Contact Manager アプリケーションで使用されるレイアウト、色、スタイルに適用されます。
 
-6. *App_Start\BundleConfig.cs* ファイルを開きます。
+6. *App\_Start\\BundleConfig.cs* ファイルを開きます。
 
 
 7. 次のコードを追加して [Knockout](http://knockoutjs.com/index.html "KO") プラグインを登録します。
@@ -629,7 +629,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 	[ValidateHttpAntiForgeryToken] public IHttpActionResult PutContact(int id, Contact contact) {
 
-1. *Views\Home\Index.cshtml* ファイルの *[Scripts]* セクションを更新して、XSRF トークンを取得するコードを含めます。
+1. *Views\\Home\\Index.cshtml* ファイルの *[Scripts]* セクションを更新して、XSRF トークンを取得するコードを含めます。
 
          @section Scripts {
             @Scripts.Render("~/bundles/knockout")
@@ -810,4 +810,4 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="";システムの更新"; でサーバーを更新する"
+   pageTitle="&quot;システムの更新&quot; でサーバーを更新する"
    description="Microsoft Azure Operational Insights で、システムの更新ソリューションを使用して、インフラストラクチャのサーバーに不足している更新プログラムを効率よく適用する方法について説明します。"
    services="operational-insights"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2015"
+   ms.date="08/05/2015"
    ms.author="banders" />
 
 # "システムの更新" でサーバーを更新する
@@ -23,7 +23,7 @@ Microsoft Azure Operational Insights で、システムの更新ソリューシ�
 
 ## "システムの更新" を使用してサーバーを更新する
 
-Microsoft Azure Operational Insights でシステムの更新を使用する前に、ソリューションがインストールされている必要があります。ソリューションのインストールについて詳しくは、[ソリューション ギャラリーを使用したソリューションの追加または削除](operational-insights-add-solution.md)に関する記事を参照してください。インストール後、監視対象のサーバーに不足している更新プログラムを確認するには、オペレーション インサイトの **[概要]** ページの **[System Update Assessment]** タイルを使用します。
+Microsoft Azure Operational Insights でシステムの更新を使用する前に、ソリューションがインストールされている必要があります。ソリューションのインストールについて詳しくは、[ソリューション ギャラリーを使用したソリューションの追加または削除](operational-insights-setup-workspace.md)に関する記事を参照してください。インストール後、監視対象のサーバーに不足している更新プログラムを確認するには、オペレーション インサイトの **[概要]** ページの **[System Update Assessment]** タイルを使用します。
 
 ### 更新プログラムに関する作業を行うには
 
@@ -36,4 +36,4 @@ Microsoft Azure Operational Insights でシステムの更新を使用する前�
 
 [AZURE.INCLUDE [operational-insights-export](../../includes/operational-insights-export.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

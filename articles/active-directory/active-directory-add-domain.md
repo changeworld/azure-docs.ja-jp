@@ -12,7 +12,7 @@
 	ms.workload="infrastructure-services" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="05/12/2015" 
 	ms.author="Justinha"/>
 
@@ -58,7 +58,8 @@ onmicrosoft.com ドメインを他のサービスで使用できます。たと�
 ### Microsoft Azure 管理ポータルを使用したドメインの追加と確認
 
 1. ポータルで **[Active Directory]** をクリックし、組織のディレクトリの名前をクリックします。次のいずれかを実行できます。
-    1. 既定のディレクトリ ページで、**[ユーザーのサインイン エクスペリエンスの向上]** セクションの **[ドメインの追加] をクリックします。2. **[ドメイン]** をクリックし、**[顧客のドメインの追加]** または **[追加]** をクリックします。
+    1. 既定のディレクトリ ページで、**[ユーザーのサインイン エクスペリエンスの向上]** セクションの **[ドメインの追加]** をクリックします。
+2. **[ドメイン]** をクリックし、**[顧客のドメインの追加]** または **[追加]** をクリックします。
 2. **[ドメインの追加]** ページで、追加するドメイン名を入力し、次のいずれかを実行します。
     1. オンプレミスの Active Directory を Azure AD と統合する予定がない場合は、次の手順を実行します。
         1. **[このドメインを構成して、ローカル Active Directory にシングル サインオンします]** チェック ボックスをオフのままにして、**[追加]** をクリックします。
@@ -211,4 +212,4 @@ TXT レコードまたは MX レコードを作成し、Web サイトからサ�
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure AD でのドメインの管理](https://msdn.microsoft.com/library/azure/dn919677.aspx) 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

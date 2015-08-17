@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="最新の Elastic Database クライアント ライブラリへのアップグレード" 
+	pageTitle="最新の エラスティック データベース クライアント ライブラリへのアップグレード" 
 	description="PowerShell と C# を使用したアップグレード手順" 
 	services="sql-database" 
 	documentationCenter="" 
@@ -15,9 +15,9 @@
 	ms.date="05/17/2015" 
 	ms.author="sidneyh" />
 
-# 最新の Elastic Database クライアント ライブラリへのアップグレード
+# 最新の エラスティック データベース クライアント ライブラリへのアップグレード
 
-Elastic Database クライアント ライブラリの新しいバージョンが [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) と Visual Studio の NuGetPackage マネージャーのインターフェイスから利用できるようになりました。アップグレードにはバグ修正が含まれており、クライアント ライブラリの新機能をサポートします。
+エラスティック データベース クライアント ライブラリの新しいバージョンが [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) と Visual Studio の NuGetPackage マネージャーのインターフェイスから利用できるようになりました。アップグレードにはバグ修正が含まれており、クライアント ライブラリの新機能をサポートします。
 
 ## アップグレードの手順
 
@@ -34,7 +34,7 @@ Elastic Database クライアント ライブラリの新しいバージョン�
 
 **2.スクリプトをアップグレードします。** シャードの管理に **PowerShell** スクリプトを使用している場合は、[新しいライブラリ バージョンをダウンロード](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)して、スクリプトを実行するディレクトリにコピーします。
 
-**3.Split-Merge サービスをアップグレードします。** Elastic Database 分割/マージ ツールを使用してシャード化されたデータを再編成する場合は、[最新バージョンのツールをダウンロードして展開](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)します。サービスの詳しいアップグレード手順については、[こちら](sql-database-elastic-scale-overview-split-and-merge.md)をご覧ください。
+**3.Split-Merge サービスをアップグレードします。** エラスティック データベース 分割/マージ ツールを使用してシャード化されたデータを再編成する場合は、[最新バージョンのツールをダウンロードして展開](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)します。サービスの詳しいアップグレード手順については、[こちら](sql-database-elastic-scale-overview-split-and-merge.md)をご覧ください。
 
 **4.シャード マップ マネージャーのデータベースをアップグレードします。**Azure SQL データベースでシャード マップをサポートするメタデータをアップグレードします。これは、PowerShell か C# を使用して実行できます。次に両方の方法について説明します。
 
@@ -46,9 +46,9 @@ Elastic Database クライアント ライブラリの新しいバージョン�
 
 3. ダウンロードした新しいクライアントの DLL バージョンを含むサブフォルダーに移動します。例:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 
-4. [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)から Elastic Database クライアントのアップグレード スクリプトレットをダウンロードして、DLL が含まれる同じフォルダーに保存します。
+4. [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)から エラスティック データベース クライアントのアップグレード スクリプトレットをダウンロードして、DLL が含まれる同じフォルダーに保存します。
 
-5. そのフォルダーのコマンド プロンプトから"PowerShell.\upgrade.ps1"を実行し、画面の指示に従います。
+5. そのフォルダーのコマンド プロンプトから"PowerShell.\\upgrade.ps1"を実行し、画面の指示に従います。
  
 ***オプション 2: C# を使用してメタデータをアップグレードする***
 
@@ -69,7 +69,7 @@ Elastic Database クライアント ライブラリの新しいバージョン�
 
 **注:** 今まで公開されたクライアント ライブラリの新しいバージョンは、Azure SQL DB の古いバージョンのシャード マップ マネージャー メタデータで (逆の場合も同様) 引き続き操作できます。ただし、最新のクライアントで一部の新機能を活用するには、メタデータをアップグレードする必要があります。メタデータのアップグレードはユーザー データやアプリケーション専用データに影響することはありません。シャード マップ マネージャーで作成し、使用したオブジェクトのみに影響します。アプリケーションは以下に説明するアップグレード シーケンスを通じて引き続き操作できます。
 
-## Elastic Database クライアントのバージョン履歴 
+## エラスティック データベース クライアントのバージョン履歴 
 
 **バージョン 1.0 - 2015 年 4 月**
 
@@ -94,4 +94,4 @@ Elastic Database クライアント ライブラリの新しいバージョン�
 [1]: ./media/sql-database-elastic-scale-upgrade-client-library/nuget-upgrade.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

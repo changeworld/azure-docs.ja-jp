@@ -27,9 +27,9 @@
 
 - Azure AD Connect のサポートに関する一般的な障害対応の技術的な解決策について、Microsoft サポート技術情報 (KB) を検索してください。
 
-[Microsoft Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-jp/home?forum=WindowsAzureAD)
+[Microsoft Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 
-- このコミュニティで技術的な質問と回答を検索して参照したり、[こちら](https://social.msdn.microsoft.com/Forums/azure/ja-jp/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)をクリックして独自の質問を行ったりできます。
+- このコミュニティで技術的な質問と回答を検索して参照したり、[こちら](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)をクリックして独自の質問を行ったりできます。
 
 
 [Azure AD Connect のカスタマー サポート](https://manage.windowsazure.com/?getsupport=true)
@@ -40,4 +40,4 @@
 
 [こちら](active-directory-aadconnect-o365-certs.md)の記事に記載されているガイダンスに従って、証明書を更新して解決します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

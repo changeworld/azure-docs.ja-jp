@@ -34,7 +34,7 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 
 2.  Azure の管理ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
-3.  **[仮想マシンの作成]** ページで、実際のデータ要件に応じた SQL Server を含む仮想マシン イメージを 1 つ選択し、ページの右下にある次へ進む矢印をクリックします。Azure でサポートされる SQL Server イメージの最新情報については、「[Azure の仮想マシンにおける SQL Server」](http://go.microsoft.com/fwlink/p/?LinkId=294720)ドキュメント セットの「[Azure の仮想マシンにおける SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294719)」トピックを参照してください。
+3.  **[仮想マシンの作成]** ページで、実際のデータ要件に応じた SQL Server を含む仮想マシン イメージを 1 つ選択し、ページの右下にある次へ進む矢印をクリックします。Azure でサポートされる SQL Server イメージの最新情報については、「[Azure Virtual Machines における SQL Server」](http://go.microsoft.com/fwlink/p/?LinkId=294720)ドキュメント セットの「[Azure Virtual Machines における SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294719)」トピックを参照してください。
 
 	![SQL Server VM の選択][1]
 
@@ -46,22 +46,22 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
     -   **[パスワードの確認]** ボックスに、パスワードを再度入力します。
     -   **[サイズ]** ドロップダウン リストで、適切なサイズを選択します。
 
-     >[AZURE.NOTE]仮想マシンのサイズは、プロビジョニング中に指定します。運用環境のワークロードで推奨される最小サイズは A2 です。SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは A3 です。SQL Server Enterprise Edition を使用する場合は、A3 以上を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Transactional Workloads イメージを使用する場合は A4 を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Data Warehousing Workloads イメージを使用する場合は、A7 を選択してください。選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。料金については、「[仮想マシンの料金](http://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
+     >[AZURE.NOTE]仮想マシンのサイズは、プロビジョニング中に指定します。運用環境のワークロードで推奨される最小サイズは A2 です。SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは A3 です。SQL Server Enterprise Edition を使用する場合は、A3 以上を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Transactional Workloads イメージを使用する場合は A4 を選択してください。SQL Server 2012 または 2014 Enterprise Optimized for Data Warehousing Workloads イメージを使用する場合は、A7 を選択してください。選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。価格については、「[VIrtual Macines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
 
     右下にある次へ進む矢印をクリックして続行します。
 
     ![VM 構成][2]
 
-5.  2 回目の **[仮想マシンの構成]** ページで、ネットワーキング、ストレージ、可用性に関するリソースを構成します。
+5.  2 回目の **[仮想マシンの構成]** ページで、ネットワーク、ストレージ、可用性に関するリソースを構成します。
 
     -   **[クラウド サービス]** ボックスで、**[新しいクラウド サービスの作成]** を選択します。
     -   **[クラウド サービス DNS 名]** ボックスに、目的の DNS 名の最初の部分を入力すると、**TESTNAME.cloudapp.net** という形式の完全な名前を指定できます。
     -   **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
     -   **[ストレージ アカウント]** で、既存のストレージ アカウントか、自動的に生成されたストレージ アカウントを選択します。
     -   **[可用性セット]** ボックスの一覧の **[(なし)]** を選択します。
-    -   料金に関する情報を読んで同意します。
+    -   価格に関する情報を読んで同意します。
 
-6.	**[エンドポイント]** セクションで、**[名前]** の下で空のドロップダウンをクリックし、**[MSSQL]** を選択し、データベース エンジンのインスタンスのポート番号を入力します (既定のインスタンスの場合は「1433」です)。
+6.	**[エンドポイント]** セクションで、**[名前]** の下で空のドロップダウンをクリックし、**[MSSQL]** を選択し、データベース エンジンのインスタンスのポート番号を入力します (既定のインスタンスの場合は「**1433**」です)。
 
 7.  また、SQL Server VM を、後の手順で構成される IPython Notebook Server として機能させることもできます。IPython Notebook サーバー用に使われるポートを指定するために新しいエンドポイントを追加してください。**[名前]** 列に名前を入力し、パブリック ポート用に任意のポート番号、プライベート ポート用に 9999 をそれぞれ選択します。
 
@@ -225,7 +225,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 1.  Azure の管理ポータルで (または前の手順から)、**[仮想マシン]** を選択します。
 
-2.  **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、**http://** から始まる仮想マシンの DNS 名を探してコピーします。(名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
+2.  **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、****http://** から始まる仮想マシンの DNS 名を探してコピーします。(名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
 
 ##<a name="cde"></a>別のコンピューターからデータベース エンジンに接続する
 
@@ -245,7 +245,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 この後の Advanced Analytics Process and Technology 手順で、[Azure Machine Learning Studio](https://studio.azureml.net) を使用して機械学習モデルを構築し、デプロイします。トレーニングまたはスコアリングのために SQL Server VM データベースから Azure Machine Learning にデータを直接取り込むには、新しい [[Azure Machine Learning Studio]](https://studio.azureml.net) テストでリーダー モジュールを使用します。このトピックの詳細は Advanced Analytics Process and Technology のガイド リンクに記載されています。概要については、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
 
-2.	[リーダー モジュール](https://msdn.microsoft.com/library/azure/dn905997.aspx)の **[プロパティ]** ウィンドウで、**[データ ソース]** ドロップダウン リストから **[Azure SQL データベース]** を選択します。
+2.	[リーダー モジュール](https://msdn.microsoft.com/library/azure/dn905997.aspx)の **[プロパティ]** ウィンドウで、**[データ ソース]** ドロップダウン リストから **[Azure SQL Database]** を選択します。
 
 3.	**[データベース サーバー名]** テキスト ボックスに、「`tcp:<DNS name of your virtual machine>,1433`」と入力します。
 
@@ -259,7 +259,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、**[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE](Windows 電源オプションを使用して) 内部から仮想マシンをシャット ダウンすると、仮想マシンは停止しますが、割り当てられた状態のままになります。請求されないようにするには、必ず [Azure 管理ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、ShutdownRoleOperation 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
+> [AZURE.NOTE](Windows 電源オプションを使用して) 内部から仮想マシンをシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。請求されないようにするには、必ず [Azure 管理ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その際、ShutdownRoleOperation 呼び出しで "PostShutdownAction" を "StoppedDeallocated" にしてください。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 
@@ -298,4 +298,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/30/2015" 
+	ms.date="08/05/2015" 
 	ms.author="jeffstok"/>
 
 #Microsoft Stream Analytics リリース ノート
@@ -29,23 +29,23 @@
 </tr>
 <tr>
 <td>Azure ID から切り離された Power BI の組織 ID</td>
-<td>この機能により、任意の Azure アカウント種類 (Live ID または組織 ID) で ASA ジョブの Power BI 出力が可能です。さらに、Azure アカウントに対して 1 つの組織 ID を使用し、Power BI 出力の承認に対して別の ID を使用できます。</td>
+<td>この機能により、任意の Azure アカウント種類 (Live ID または組織 ID) で ASA ジョブの <a href="https://azure.microsoft.com/documentation/articles/stream-analytics-power-bi-dashboard/">Power BI 出力</a>が可能です。さらに、Azure アカウントに対して 1 つの組織 ID を使用し、Power BI 出力の承認に対して別の ID を使用できます。</td>
 </tr>
 <tr>
 <td>Service Bus キューの出力のサポート</td>
-<td>Service Bus キューの出力を、Stream Analytics ジョブで使用できるようになりました。</td>
+<td><a href="https://azure.microsoft.com/documentation/articles/stream-analytics-connect-data-event-outputs/#service-bus-queues">Service Bus キュー</a>の出力を、Stream Analytics ジョブで使用できるようになりました。</td>
 </tr>
 <tr>
 <td>Service Bus トピックの出力のサポート</td>
-<td>Service Bus トピックの出力を、Stream Analytics ジョブで使用できるようになりました。</td>
+<td><a href="https://azure.microsoft.com/documentation/articles/stream-analytics-connect-data-event-outputs/#service-bus-topics">Service Bus トピック</a>の出力を、Stream Analytics ジョブで使用できるようになりました。</td>
 </tr>
 <tr>
 <td>新しい配列関数</td>
-<td>配列関数 GetArrayElement、GetArrayElements、GetArrayLength が追加されました。</td>
+<td>配列関数 <a href="https://msdn.microsoft.com/library/azure/mt270218.aspx">GetArrayElement</a>、<a href="https://msdn.microsoft.com/library/azure/mt298451.aspx">GetArrayElements</a>、<a href="https://msdn.microsoft.com/library/azure/mt270226.aspx">GetArrayLength</a> が追加されました。</td>
 </tr>
 <tr>
 <td>新しいレコード関数</td>
-<td>レコード関数 GetRecordProperties、GetRecordPropertyValue が追加されました。</td>
+<td>レコード関数 <a href="https://msdn.microsoft.com/library/azure/mt270221.aspx">GetRecordProperties</a>、<a href="https://msdn.microsoft.com/library/azure/mt270220.aspx">GetRecordPropertyValue</a> が追加されました。</td>
 </tr>
 </table>
 
@@ -152,4 +152,4 @@
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

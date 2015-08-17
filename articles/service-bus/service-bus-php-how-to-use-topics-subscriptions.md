@@ -39,7 +39,7 @@ Windows Azure BLOB サービスにアクセスする PHP アプリケーショ�
 
 Service Bus API を使用するには、以下の手順を実行します。
 
-1. [require_once][require-once] ステートメントを使用してオートローダー ファイルを参照する
+1. [require\_once][require-once] ステートメントを使用してオートローダー ファイルを参照する
 2. 使用する可能性のあるクラスを参照する
 
 次の例では、オートローダー ファイルをインクルードし、**ServiceBusService** クラスを参照する方法を示しています。
@@ -332,4 +332,4 @@ Service Bus トピックの管理操作は **ServiceBusRestProxy** クラスを�
 [require-once]: http://php.net/require_once
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

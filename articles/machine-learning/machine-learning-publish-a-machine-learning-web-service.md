@@ -109,4 +109,4 @@ Web サービスを更新するには、元の Web サービス発行に使用�
 
 Web サービスを更新するオプションの 1 つに、モデルをプログラムによって再トレーニングする方法があります。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

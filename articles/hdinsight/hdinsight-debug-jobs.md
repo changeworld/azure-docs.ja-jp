@@ -112,7 +112,7 @@ Azure PowerShell または Azure ポータルで発生する可能性のある�
 - **対応策**: 要求をやり直してください。
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-- **説明**: ホステッド サービス *nameOfYourHostedService* には、既に運用環境が展開されています。ホステッド サービスに運用環境のデプロイを含めることはできません。別のクラスター名を使用して要求を再試行してください。   
+- **説明**: ホステッド サービス *nameOfYourHostedService* には、既に運用環境がデプロイされています。ホステッド サービスに運用環境のデプロイを含めることはできません。別のクラスター名を使用して要求を再試行してください。   
 - **対応策**: 別のクラスター名を使用して要求をやり直します。
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
@@ -120,7 +120,7 @@ Azure PowerShell または Azure ポータルで発生する可能性のある�
 - **対応策**: クラスターがエラー状態である場合は、クラスターを削除し、やり直します。 
 
 ### <a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment
-- **説明**: ホステッド サービス *nameOfYourHostedService* には、関連付けられた展開がありません。  
+- **説明**: ホステッド サービス *nameOfYourHostedService* には、関連付けられたデプロイがありません。  
 - **対応策**: クラスターがエラー状態である場合は、クラスターを削除し、やり直します。 
 
 ### <a id="InsufficientResourcesCores"></a>InsufficientResourcesCores
@@ -197,10 +197,12 @@ Azure PowerShell または Azure ポータルで発生する可能性のある�
 
 ### <a id="UnableToResolveDNS"></a>UnableToResolveDNS
 - **説明**: DNS *yourDnsUrl* を解決できません。BLOB エンドポイントの完全修飾 URL が指定されていることを確認してください。  
-- **対応策**: 有効な BLOB URL を指定します。URL は、先頭が *http://* で末尾が *.com* であることを含め、完全に有効である必要があります。完全修飾 URL は通常、manage.windowsazure.com ポータルの [ストレージ] タブに表示されています。
+- **対応策**: 有効な BLOB URL を指定します。URL は、先頭が **http://* で末尾が *.com* であることを含め、完全に有効である必要があります。完全修飾 URL は通常、manage.windowsazure.com ポータルの [ストレージ] タブに表示されています。
+
 ### <a id="UnableToVerifyLocationOfResource"></a>UnableToVerifyLocationOfResource
 - **説明**: リソース *yourDnsUrl* の場所を確認できません。BLOB エンドポイントの完全修飾 URL が指定されていることを確認してください。  
-- **対応策**: 有効な BLOB URL を指定します。URL は、先頭が *http://* で末尾が *.com* であることを含め、完全に有効である必要があります。完全修飾 URL は通常、manage.windowsazure.com ポータルの [ストレージ] タブに表示されています。
+- **対応策**: 有効な BLOB URL を指定します。URL は、先頭が **http://* で末尾が *.com* であることを含め、完全に有効である必要があります。完全修飾 URL は通常、manage.windowsazure.com ポータルの [ストレージ] タブに表示されています。
+
 ### <a id="VersionCapabilityNotAvailable"></a>VersionCapabilityNotAvailable
 - **説明**: バージョン *specifiedVersion* およびサブスクリプション ID *yourSubscriptionId* ではバージョン能力が利用できません。  
 - **対応策**: 利用可能なバージョンを選択し、操作をやり直します。 
@@ -232,4 +234,4 @@ Azure PowerShell または Azure ポータルで発生する可能性のある�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

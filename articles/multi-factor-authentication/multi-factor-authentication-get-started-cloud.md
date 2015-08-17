@@ -12,7 +12,7 @@
 	ms.workload="identity" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="07/02/2015" 
 	ms.author="billmath"/>
 
@@ -156,4 +156,4 @@ Windows PowerShell を使用してユーザーの状態を変更するには、�
 ## 次のステップ
 クラウドでの多要素認証のセットアップが完了したので、「[Azure Multi-Factor Authentication の構成](multi-factor-authentication-whats-next.md)」に移動して次の手順に移動できます。 そこでは、レポート、不正行為のアラート、音声メッセージのカスタマイズ、および Azure Multi-Factor Authentication が提供するすべての機能について学びます。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

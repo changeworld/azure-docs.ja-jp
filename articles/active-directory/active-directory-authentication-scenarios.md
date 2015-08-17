@@ -204,7 +204,7 @@ Azure AD によって発行されたトークンの有効期間が終了する�
 ### シングル ページ アプリケーション (SPA)
 
 
-このセクションでは、Azure AD を使用して Web API バックエンドを保護するシングル ページ アプリケーションの認証について説明します。一般に、シングル ページ アプリケーションは、ブラウザーで動作する JavaScript プレゼンテーション層 (フロントエンド) と、サーバー上で動作し、アプリケーションのビジネス ロジックを実装する Web API バックエンドとして構築されます。このシナリオでは、ユーザーがサインインすると、JavaScript フロントエンドが [Active Directory Authentication Library for JavaScript (ADAL.JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js/tree/dev) プレビューと OAuth 2.0 Implicit Grant プロトコルを使用して、Azure AD から ID トークン (id_token) を取得します。トークンがキャッシュされ、クライアントは、OWIN ミドルウェアを使用して保護された Web API バックエンドを呼び出すときに、トークンをベアラー トークンとして要求に添付します。
+このセクションでは、Azure AD を使用して Web API バックエンドを保護するシングル ページ アプリケーションの認証について説明します。一般に、シングル ページ アプリケーションは、ブラウザーで動作する JavaScript プレゼンテーション層 (フロントエンド) と、サーバー上で動作し、アプリケーションのビジネス ロジックを実装する Web API バックエンドとして構築されます。このシナリオでは、ユーザーがサインインすると、JavaScript フロントエンドが [Active Directory Authentication Library for JavaScript (ADAL.JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js/tree/dev) プレビューと OAuth 2.0 Implicit Grant プロトコルを使用して、Azure AD から ID トークン (id\_token) を取得します。トークンがキャッシュされ、クライアントは、OWIN ミドルウェアを使用して保護された Web API バックエンドを呼び出すときに、トークンをベアラー トークンとして要求に添付します。
 
 
 #### ダイアグラム
@@ -434,7 +434,7 @@ Web アプリケーションは、認証コードを使用して JWT アクセ�
 1. ネイティブ アプリケーションが、第 1 層の Web API にアクセス トークンを送信します。
 
 
-2. 第 1 層の Web API が、クライアント ID と資格情報、およびユーザーのアクセス トークンを提供して、Azure AD のトークン エンドポイントに要求を送信します。また、この要求は、Web API が元のユーザーに代わってダウンストリーム Web API を呼び出すために新しいトークンを要求していることを示す、on_behalf_of パラメーターと共に送信されます。
+2. 第 1 層の Web API が、クライアント ID と資格情報、およびユーザーのアクセス トークンを提供して、Azure AD のトークン エンドポイントに要求を送信します。また、この要求は、Web API が元のユーザーに代わってダウンストリーム Web API を呼び出すために新しいトークンを要求していることを示す、on\_behalf\_of パラメーターと共に送信されます。
 
 
 3. Azure AD は、第 1 層の Web API に第 2 層の Web API へのアクセス権限があることを確認し、要求を検証して、第 1 層の Web API に JWT アクセス トークンと JWT 更新トークンを返します。
@@ -466,4 +466,4 @@ Web アプリケーションは、認証コードを使用して JWT アクセ�
 [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

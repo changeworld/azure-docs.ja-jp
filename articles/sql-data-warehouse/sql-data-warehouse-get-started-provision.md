@@ -10,7 +10,7 @@
 <tags
    ms.service="sql-data-warehouse"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="06/23/2015"
@@ -153,17 +153,17 @@ Azure ファイアウォールを構成するのが初めての場合は、次�
 
 これで、SQLDW サービスが正常にプロビジョニングされました。次は、そのサービスを使用します。
 
-したがって、次は 1. データ ウェアハウスへの[接続とクエリ][]です。2.データ ウェアハウスから Azure BLOB ストレージにデータをエクスポートします。3.データ ウェアハウスにより多くのデータを読み込みます。
-
+したがって、次は 1. データ ウェアハウスへの[接続とクエリ][]です。2.[サンプル データ]を読み込みます。
 
 <!--Image references-->
 
 
 <!-- Articles -->
 [接続とクエリ]: sql-data-warehouse-get-started-connect-query.md
+[サンプル データ]: ./sql-data-warehouse-get-started-load-samples.md
 
 <!--External links-->
 [無料評価版]: https://azure.microsoft.com/ja-jp/pricing/free-trial/
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -302,4 +302,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに会社のブランドを追加します。](active-directory-add-company-branding.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -100,4 +100,4 @@ VMM を高可用性にするために、Windows フェールオーバー クラ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -92,7 +92,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 		├── mkdirp@0.3.5
 		└── commander@1.3.2 (keypress@0.1.0)
 
-	> [AZURE.NOTE] "-g" パラメーターにより、モジュールがグローバルにインストールされます。これにより、追加のパス情報を入力しなくても、**express** を使用して Web アプリのスキャフォールディングを生成できます。
+	> [AZURE.NOTE]"-g" パラメーターにより、モジュールがグローバルにインストールされます。これにより、追加のパス情報を入力しなくても、**express** を使用して Web アプリのスキャフォールディングを生成できます。
 
 4. アプリケーションのスキャフォールディングを作成するには、**express** コマンドを入力します。
 
@@ -340,7 +340,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 		var accountName = nconf.get("STORAGE_NAME");
 		var accountKey = nconf.get("STORAGE_KEY");
 
-	> [AZURE.NOTE] nconf は、環境変数または後で作成する **config.json** ファイルから構成値を読み込みます。
+	> [AZURE.NOTE]nconf は、環境変数または後で作成する **config.json** ファイルから構成値を読み込みます。
 
 3. app.js ファイル内で、次の行が表示されるまで下へスクロールします。
 
@@ -427,7 +427,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 ### config ファイルの作成
 
-アプリケーションをローカルで実行するために、Azure Storage の資格情報を config ファイルに追加します。次の JSON が含まれた **config.json* という名前のファイルを作成します。
+アプリケーションをローカルで実行するために、Azure Storage の資格情報を config ファイルに追加します。次の JSON が含まれた **config.json** という名前のファイルを作成します。
 
 	{
 		"STORAGE_NAME": "<storage account name>",
@@ -481,7 +481,7 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 
 このセクションの手順では、Azure コマンド ライン ツールを使用して App Service で新しい Web アプリを作成し、Git を使用してアプリケーションをデプロイします。これらの手順を実行するには、Azure サブスクリプションが必要です。
 
-> [AZURE.NOTE] これらの手順は、[Azure ポータル](https://portal.azure.com)を使用して実行することもできます。「[Azure App Service での Node.js Web アプリの構築とデプロイ]」をご覧ください。
+> [AZURE.NOTE]これらの手順は、[Azure ポータル](https://portal.azure.com)を使用して実行することもできます。「[Azure App Service での Node.js Web アプリの構築とデプロイ]」をご覧ください。
 >
 > これが初めて作成した Web アプリの場合、Azure ポータルを使用してこのアプリケーションをデプロイする必要があります。
 
@@ -499,9 +499,7 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 
 	このコマンドにより、ブラウザーが起動し、ダウンロード ページに移動します。ログインを求められた場合は、Azure サブスクリプションに関連付けられたアカウントを使用してログインします。
 
-	<!-- ![The download page][download-publishing-settings] -->
-
-	ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。ファイルを保存し、ファイル パスを書き留めます。
+	<!-- ![The download page][download-publishing-settings] -->ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。ファイルを保存し、ファイル パスを書き留めます。
 
 2. 次のコマンドを入力して設定をインポートします。
 
@@ -523,7 +521,7 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 
 	`--git` パラメーターにより、Azure にこの Web アプリの Git リポジトリが作成されます。何も存在しない場合は、現在のディレクトリで Git リポジトリが初期化され、アプリケーションを Azure に発行する際に使用する "azure" という名前の [Git リモート]が追加されます。最後に、**web.config** ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために Azure で使用される設定が含まれます。
 
-	> [AZURE.NOTE] ディレクトリに Git リポジトリが既に含まれている場合、ディレクトリは再初期化されません。`--git` パラメーターを省略した場合でも、ディレクトリに Git リポジトリが含まれていれば、"azure" リモートが作成されます。
+	> [AZURE.NOTE]ディレクトリに Git リポジトリが既に含まれている場合、ディレクトリは再初期化されません。`--git` パラメーターを省略した場合でも、ディレクトリに Git リポジトリが含まれていれば、"azure" リモートが作成されます。
 
 	このコマンドが完了すると、次のような出力が表示されます。**Website created at** で始まる行には、Web アプリの URL が含まれています。
 
@@ -540,7 +538,7 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 		info:   Executing `git remote add azure https://username@tabletasklist.azurewebsites.net/TableTasklist.git`
 		info:   site create command OK
 
-	> [AZURE.NOTE] これがサブスクリプションの最初の App Service Web アプリである場合、Azure ポータルを使用して Web アプリを作成するよう指示するメッセージが表示されます。詳細は、「[Azure App Service での Node.js Web アプリの構築とデプロイ]」を参照してください。
+	> [AZURE.NOTE]これがサブスクリプションの最初の App Service Web アプリである場合、Azure ポータルを使用して Web アプリを作成するよう指示するメッセージが表示されます。詳細は、「[Azure App Service での Node.js Web アプリの構築とデプロイ]」を参照してください。
 
 ### 環境変数の設定
 
@@ -644,4 +642,4 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 [Create and deploy a Node.js application to an Azure Web Site]: web-sites-nodejs-develop-deploy-mac.md
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

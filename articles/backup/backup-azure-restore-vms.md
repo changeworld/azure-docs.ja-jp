@@ -8,14 +8,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/27/2015"
-	ms.author="trinadhk"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/17/2015" ms.author="trinadhk"; "jimpark"/>
 
 # 仮想マシンの復元
 復元操作を使用して、Azure バックアップ資格情報コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元できます。
@@ -34,7 +27,7 @@
 
 ## 回復ポイントを選択する
 
-1. **[回復ポイントの選択]** 画面で、最新の回復ポイントまたは以前の特定の時点から復元できます。ウィザードが開いたときに選択されている既定のオプションは、最新の回復ポイントです。
+1. **[回復ポイントの選択]** 画面で、最新の回復ポイントまたは以前の特定の時点から復元できます。ウィザードが開いたときに選択されている既定のオプションは、*最新の回復ポイント*です。
 
     ![回復ポイントを選択する](./media/backup-azure-restore-vms/select-recovery-point.png)
 
@@ -102,4 +95,4 @@
 ## 次のステップ
 - [仮想マシンの管理](backup-azure-manage-vms)
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

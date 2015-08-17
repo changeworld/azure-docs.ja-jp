@@ -93,4 +93,4 @@ RemoteApp コレクションには複数のアプリケーションを発行で�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

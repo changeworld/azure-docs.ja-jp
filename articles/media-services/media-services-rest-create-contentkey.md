@@ -247,4 +247,4 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
 
 	HTTP/1.1 204 No Content 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

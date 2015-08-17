@@ -22,7 +22,11 @@
 
 ### Q: Azure Data Factory とは何ですか。
 
-Data Factory は、完全に管理されたサービスで、データの保存、移動、処理の各サービスを可用性が高くフォールト トレラントなデータ パイプラインとして構成します。Data Factory は内部設置型とクラウドの両方のデータ ストレージで動作します。パイプラインは、一連のデータ入力、処理アクティビティ、およびデータ出力のセットで、シンプルな JSON スクリプトで定義され、PowerShell コマンドを使用してアクティブ化されます。アクティブ化された Data Factory は、ユーザーに代わり、自動クラスター管理のオプションを使用して、パイプラインを HDInsight (Hadoop) 上で実行するための編成とスケジュール設定を行います。また、Data Factory では、Azure プレビュー ポータルによって管理と監視をビジュアルな環境で実行できます。運用とサービスの正常性に関する豊富な情報が表示される単一のダッシュボードですべてのパイプラインを監視できます。
+Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。原材料を機械で加工して最終製品を作成する工場と同じように、Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。
+
+Data Factory は、オンプレミスとクラウドのデータ ソースおよび SaaS で動作し、データの取り込み、準備、変換、分析、および発行を行います。Data Factory を使えば、各種のサービスを管理されたデータ フロー パイプラインにまとめ上げることによって、ビッグ データのコンピューティング ニーズに応える [Azure HDInsight (Hadoop)](http://azure.microsoft.com/documentation/services/hdinsight/) や [Azure Batch](http://azure.microsoft.com/documentation/services/batch/) のほか、分析ソリューションを運用可能にするための [Azure Machine Learning](http://azure.microsoft.com/documentation/services/machine-learning/) などを使ったデータの変換を実現できます。単なる表形式の監視ビューではなく、Data Factory のリッチな視覚化機能を使用してデータ パイプライン間の系列と依存関係をすばやく表示します。1 つの統一されたビューからすべてのデータ フロー パイプラインを監視し、問題を簡単に特定して監視アラートを設定します。
+
+詳細については、「[概要と主要な概念](data-factory-introduction.md)」を参照してください。
  
 ### Q: Data Factory では顧客のどのような課題が解決されますか。
 
@@ -37,7 +41,7 @@ Azure Data Factory は、従来のリレーショナル ストレージと非構
 
 - 多様化するデータを IT インフラストラクチャに組み込む方法を探している IT プロフェッショナル。
 	- 組織内のすべてのデータから豊富なビジネスの洞察を導き出す必要がある。
-	- コンピューティングとストレージのリソースを管理し、内部設置型とクラウドの間でコストと規模のバランスをとる必要がある。
+	- コンピューティングとストレージのリソースを管理し、オンプレミスとクラウドの間でコストと規模のバランスをとる必要がある。
 	- 新しいビジネス ニーズに対応するためにさまざまなソースと処理を短時間で追加しつつ、すべてのコンピューティング資産とストレージ資産の全体像を常に把握する必要がある。
 
 ###  Q: Azure Data Factory の料金の詳細はどこで確認できますか。
@@ -57,15 +61,12 @@ Azure Data Factory の料金の詳細については、[Data Factory の料金�
 
 ### Q: Data Factory を利用可能なリージョンはどこですか。
 
-パブリック プレビューの時点では、Data Factory は米国西部でのみ提供されます。Data Factory で使用されるコンピューティング サービスとストレージ サービスは、その他の地域でも利用できます。
+Data Factory は米国西部と北ヨーロッパで使用できます。Data Factory で使用されるコンピューティング サービスとストレージ サービスは、その他の地域でも利用できます。
  
-### Q: データ ファクトリ、パイプライン、アクティビティ、データセットの数の制限値はいくつですか。 
+### Q: データ ファクトリ、パイプライン、アクティビティ、データセットの数の制限値はいくつですか。
+ 
+詳細については、記事「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md/#data-factory-limits)」の **Azure Data Factory の制限**に関するセクションを参照してください。
 
-
-- 1 つのサブスクリプション内のデータ ファクトリ数: 50
-- 1 つのデータ ファクトリ内のパイプライン数: 100
-- 1 つのパイプライン内のアクティビティ数: 10
-- 1 つのデータ ファクトリ内のデータセット数: 100
 
 ### Q: Azure Data Factory サービスではどのような作成エクスペリエンスまたは開発者エクスペリエンスが提供されますか。
 
@@ -73,6 +74,7 @@ Azure Data Factory の料金の詳細については、[Data Factory の料金�
 
 - **Azure プレビュー ポータル**。Azure プレビュー ポータルの Data Factory ブレードは、データ ファクトリ、およびリンクされたサービスを作成するための優れたユーザー インターフェイスです。**Data Factory エディター**は、ポータルの一部でもあり、これらの成果物の JSON の定義を指定することによって、リンクされたサービス、テーブル、データ セット、パイプラインを簡単に作成できる機能です。エディターの概要については、[Data Factory エディター][data-factory-editor]に関するページを、データ ファクトリを作成してデプロイするためのポータルやエディターの使用例については、[Data Factory の使用][datafactory-getstarted]に関するページをご覧ください。   
 - **Azure PowerShell**PowerShell ユーザーがポータル UI ではなく PowerShell の使用を希望している場合は、Azure PowerShell の一部として出荷される Azure Data Factory コマンドレットを使用してデータ ファクトリを作成し、デプロイできます。単純な例については、[Azure PowerShell を使用した Azure データ ファクトリの作成と監視][create-data-factory-using-powershell]に関するページをご覧ください。PowerShell コマンドレットを使用してデータ ファクトリを作成してデプロイする高度な例については、[Data Factory を使用したログ ファイルの移動と処理][adf-tutorial]に関するチュートリアルをご覧ください。Data Factory コマンドレットの包括的なドキュメントについては、[MSDN ライブラリの Data Factory コマンドレット リファレンス][adf-powershell-reference]に関するコンテンツをご覧ください。  
+- **Visual Studio**。また、Visual Studio を使用して、プログラムによりデータ ファクトリを作成、監視、管理できます。詳細については、記事「[Data Factory .NET SDK を使用して Azure データ ファクトリを作成、監視、管理する](data-factory-create-data-factories-programmatically)」を参照してください。  
 - **.NET クラス ライブラリ**。Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。.NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、[.NET SDK を使用したデータ ファクトリの作成、監視、管理][create-factory-using-dotnet-sdk]に関するページをご覧ください。Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference]に関するページをご覧ください。  
 - **REST API**。Azure Data Factory サービスで公開されている REST API を使用して、データ ファクトリを作成およびデプロイすることもできます。Data Factory REST API の包括的なドキュメントについては、[Data Factory REST API リファレンス][msdn-rest-api-reference]に関するページをご覧ください。 
 
@@ -82,24 +84,7 @@ Azure Data Factory の料金の詳細については、[Data Factory の料金�
 ## アクティビティ - FAQ
 ### Q: どのようなデータ ソースとアクティビティがサポートされますか。
 
-- **サポートされるデータ ソース:** 
-	- Azure Storage (BLOB とテーブル)
-	- Azure SQL
-	- Azure DocumentDB
-	- 内部設置型 SQL Server
-	- オンプレミスの Oracle 
-	- オンプレミスのファイル システム
-	- オンプレミスの MySQL
-	- オンプレミスの DB2
-	- オンプレミスの Teradata
-	- オンプレミスの Sybase
-	- オンプレミスの PostgreSQL  
-- **サポートされるアクティビティ**: 
-	- コピー アクティビティ (オンプレミスからクラウド、クラウドからオンプレミス)
-	- HDInsight アクティビティ (Pig、Hive、MapReduce、Hadoop ストリーミングの変換)
-	- Azure Machine Learning のバッチ スコアリング アクティビティ
-	- Azure SQL ストアド プロシージャ アクティビティ
-	- カスタム .NET アクティビティ
+サポートされるデータ ソースとアクティビティについては、[データ移動のアクティビティ](data-factory-data-movement-activities.md)に関する記事と、[データ変換のアクティビティ](data-factory-data-transformation-activities.md)に関する記事を参照してください。
 
 ### アクティビティはいつ実行されますか。
 アクティビティが実行されるタイミングは、出力データ テーブルの **availability** 構成設定によって決定されます。アクティビティは、実行を開始する前に、入力データのすべての依存関係が満たされている (つまり、**準備完了**状態になっている) かどうかを確認します。
@@ -115,14 +100,6 @@ Azure Data Factory の料金の詳細については、[Data Factory の料金�
 -------------------------- | -----------------------
 東アジア | 東南アジア
 西日本 | 東日本
-
-### 複数の出力テーブルにコピーするにはどうすればよいですか。
-次の例に示すように、パイプラインに複数の出力テーブルを設定できます。
-
-	"outputs":  [ 
-		{ "name": “outputtable1” }, 
-		{ "name": “outputtable2” }  
-	],
  
 ### 1 つのパイプラインに複数のアクティビティを設定する方法とアクティビティごとに別個のパイプラインを使用する方法ではどちらの方法がよいですか。 
 パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。論理的には、複数のアクティビティを接続するテーブルがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときによりうまく保持されるようになります。パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。作成操作の観点では、パイプラインの 1 つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
@@ -215,4 +192,4 @@ Azure Data Factory の料金の詳細については、[Data Factory の料金�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

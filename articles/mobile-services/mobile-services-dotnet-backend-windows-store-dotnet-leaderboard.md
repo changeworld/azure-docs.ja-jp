@@ -18,7 +18,7 @@
 
 # Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成
 
-このチュートリアルでは、Azure Mobile Services と .NET バックエンドを使用して Windows ストア アプリケーションを作成する方法について説明します。Azure Mobile Services は、組み込まれた認証、監視、プッシュ通知、その他の機能に加え、モバイル アプリケーション作成用のクロスプラットフォーム クライアント ライブラリによって、拡張性が高く、セキュリティで保護されたバックエンドを提供します。Mobile Services 用の .NET バックエンドは、[ASP.NET Web API](http://asp.net/web-api) に基づき、REST API を作成するための最も優れた方法を .NET 開発者に提供します。
+このチュートリアルでは、Azure Mobile Services と .NET バックエンドを使用して Windows ストア アプリケーションを作成する方法について説明します。Azure Mobile Services は、組み込まれた認証、監視、プッシュ通知、その他の機能に加え、モバイル アプリケーション作成用のクロスプラットフォーム クライアント ライブラリによって、スケーラブルで、セキュリティで保護されたバックエンドを提供します。Mobile Services 用の .NET バックエンドは、[ASP.NET Web API](http://asp.net/web-api) に基づき、REST API を作成するための最も優れた方法を .NET 開発者に提供します。
 
 ## 概要
 
@@ -139,7 +139,7 @@ Controllers フォルダーを右クリックし、**[追加]**、**[新しい�
 
 このコントローラーは、**TableController<T>** から派生しています。このクラスは **ApiController** を継承しますが、Azure Mobile Services 用に特化されています。
  
-- ルーティング: **TableController** の既定のルートは `/tables/{table_name}/{id}` であり、*table_name* はエンティティ名に一致します。したがって、Player コントローラーのルートは */tables/player/{id}* となります。このルーティング規則により、**TableController** は Mobile Services の [REST API](http://msdn.microsoft.com/library/azure/jj710104.aspx) との間に一貫性を持ちます。
+- ルーティング: **TableController** の既定のルートは `/tables/{table_name}/{id}` であり、*table\_name* はエンティティ名に一致します。したがって、Player コントローラーのルートは */tables/player/{id}* となります。このルーティング規則により、**TableController** は Mobile Services の [REST API](http://msdn.microsoft.com/library/azure/jj710104.aspx) との間に一貫性を持ちます。
 - データ アクセス: **TableController** クラスは、データベース操作に対して、データ アクセスの抽象化を定義する **IDomainManager** インターフェイスを使用します。スキャフォールディングでは **EntityDomainManager** を使用します。これは、EF コンテキストをラップする **IDomainManager** の具象的な実装です。 
 
 次に、PlayerRank エンティティ用の第 2 のコントローラーを追加します。同じ手順を実行しますが、モデル クラスに PlayerRank を選択します。同じデータ コンテキスト クラスを使用し、新しいクラスは作成しません。コントローラーに "PlayerRankController" という名前を付けます。
@@ -328,11 +328,11 @@ LINQ の Select ステートメントを使用する代わりに、AutoMapper �
 
 ![][10]
  
-NuGet Package Manager を使用して、Mobile Services クライアント ライブラリを追加します。Visual Studio で、**[ツール]** メニューの **NuGet パッケージ マネージャー]** をクリックします。次に、**[パッケージ マネージャー コンソール]** を選択します。[パッケージ マネージャー コンソール] ウィンドウで、次のコマンドを入力します。
+NuGet Package Manager を使用して、Mobile Services クライアント ライブラリを追加します。Visual Studio で、**[ツール]** メニューの **[NuGet パッケージ マネージャー]** をクリックします。次に、**[パッケージ マネージャー コンソール]** を選択します。[パッケージ マネージャー コンソール] ウィンドウで、次のコマンドを入力します。
 
 	Install-Package WindowsAzure.MobileServices -Project LeaderboardApp
 
--Project スイッチは、パッケージをインストールするプロジェクトを指定します。
+\-Project スイッチは、パッケージをインストールするプロジェクトを指定します。
 
 ## モデル クラスを追加する
 
@@ -588,7 +588,7 @@ Model-View-View Model (MVVM) は、Model-View-Controller (MVC) の一種です�
 
 ## MobileServiceClient インスタンスを追加する
 
-*App.xaml.cs ファイルを開き、`App` クラスに **MobileServiceClient** のインスタンスを追加します。
+*App.xaml.cs* ファイルを開き、`App` クラスに **MobileServiceClient** のインスタンスを追加します。
 
 	// New code:
 	using Microsoft.WindowsAzure.MobileServices;
@@ -762,4 +762,4 @@ Model-View-View Model (MVVM) は、Model-View-Controller (MVC) の一種です�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

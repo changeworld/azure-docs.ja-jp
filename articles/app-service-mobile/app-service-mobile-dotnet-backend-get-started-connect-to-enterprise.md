@@ -47,11 +47,11 @@ SharePoint への呼び出しを作成するには、モバイル アプリが�
 
 3. 管理ポータルの [モバイル アプリ コード] セクションで、[構成] タブに移動し、[アプリケーション設定] まで下へスクロールします。ここで、キーと値のペアを入力すると、必要な資格情報の参照に役立ちます。
 
-* SP_Authority を、AAD テナントの機関のエンドポイントになるよう設定します。これは、クライアント アプリケーションに使用する機関の値と同じにする必要があります。形式は、`https://login.windows.net/contoso.onmicrosoft.com` のようになります。
+* SP\_Authority を、AAD テナントの機関のエンドポイントになるよう設定します。これは、クライアント アプリケーションに使用する機関の値と同じにする必要があります。形式は、`https://login.windows.net/contoso.onmicrosoft.com` のようになります。
 
-* SP_ClientSecret を、前に取得したクライアント シークレットの値になるよう設定します。
+* SP\_ClientSecret を、前に取得したクライアント シークレットの値になるよう設定します。
 
-* SP_SharePointURL を、SharePoint サイトの URL になるよう設定します。形式は、`https://contoso-my.sharepoint.com` のようになります。
+* SP\_SharePointURL を、SharePoint サイトの URL になるよう設定します。形式は、`https://contoso-my.sharepoint.com` のようになります。
 
 ApiServices.Settings を使用すると、コード内でこれらの値をもう一度取得できます。
 
@@ -187,4 +187,4 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 [Mobile Apps .NET Backend App Service Extension]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.AppService/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

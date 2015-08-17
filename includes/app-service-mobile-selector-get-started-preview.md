@@ -4,4 +4,4 @@
 - [(Xamarin.Android | .NET)](../articles/app-service-mobile-dotnet-backend-xamarin-android-get-started-preview.md)
 - [(Windows Runtime 8.1 universal | .NET)](../articles/app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-preview.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure モバイル エンゲージメント iOS SDK のアップグレード手順" 
+<properties
+	pageTitle="Azure モバイル エンゲージメント iOS SDK のアップグレード手順"
 	description="Azure モバイル エンゲージメント用 iOS SDK の最新の更新プログラムと手順"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="kpiteira" 
-	manager="dwrede" 
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="MehrdadMzfr"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-ios" 
-	ms.devlang="objective-c" 
-	ms.topic="article" 
-	ms.date="02/12/2015" 
-	ms.author="kapiteir" />
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="08/05/2015"
+	ms.author="MehrdadMzfr" />
 
 #アップグレードの手順
 
@@ -22,7 +22,18 @@
 
 まず、新しいバージョンの SDK ごとに、EngagementSDK フォルダーと EngagementReach フォルダーを置き換える (削除し、xcode で再インポートする) 必要があります。
 
-##1.16.0 から 2.0.0 に移行
+##2\.0.0 から 3.0.0 に移行
+アプリケーションでリーチを使用している場合は、リモート通知を受け取れるように、`remote-notification` 値を Info.plist ファイル内の `UIBackgroundModes` 配列に追加する必要があります。
+
+アプリケーション デリゲートのメソッド `application:applicationDidReceiveRemoteNotification:` は、`application:applicationDidReceiveRemoteNotification:fetchCompletionHandler:` に置き換える必要があります。
+
+次のデリゲート メソッドは廃止されているため、アプリケーション デリゲートから削除する必要があります。
+
+	-(void)willRetrieveLaunchMessage;
+	-(void)didFailToRetrieveLaunchMessage;
+	-(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
+
+##1\.16.0 から 2.0.0 に移行
 Azure モバイル エンゲージメントを使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 1.16 に移行し、次の手順を適用してください。
 
 >[Azure.IMPORTANT]Capptain とモバイル エンゲージメントは、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーからモバイル エンゲージメントのサーバーに移行されません。
@@ -58,6 +69,5 @@ SmartAd の追跡が SDK から削除されました。`AETrackModule` クラス
 -   クラス `CapptainTableViewController` は `EngagementTableViewController` に変更されました。
 -   クラス `CapptainUtils` は `EngagementUtils` に変更されました。
 -   クラス `CapptainViewController` は `EngagementViewController` に変更されました。
- 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

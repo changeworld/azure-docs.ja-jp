@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/13/2015" 
+	ms.date="07/29/2015" 
 	ms.author="szark"/>
 
 
@@ -23,7 +23,7 @@
 
 
 ## データ ディスクをアタッチする
-2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。この記事では、データ ディスクを Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Windows Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](storage-windows-attach-disk.md#attachempty)」を参照してください。
+2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。この記事では、データ ディスクを Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Microsoft Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](storage-windows-attach-disk.md#attachempty)」をご覧ください。
 
 >[AZURE.NOTE]XS の VM サイズでは、仮想マシンへの複数のデータ ディスクのアタッチはサポートされていません。サポートされている VM のサイズとデータ ディスクの数の詳細については、「[Virtual Machine and Cloud Service Sizes for Microsoft Azure (Microsoft Azure の仮想マシンとクラウド サービスのサイズ)](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
@@ -108,20 +108,20 @@
 
 2. 新しい RAID デバイスにファイル システムを作成します。
 
-	**CentOS、Oracle Linux、openSUSE、Ubuntu**
+	**CentOS、Oracle Linux、SLES 12、openSUSE と Ubuntu**
 
 		# sudo mkfs -t ext4 /dev/md127
 
-	**SLES**
+	**SLES 11**
 
 		# sudo mkfs -t ext3 /dev/md127
 
-3. **SLES と openSUSE** - boot.md を有効にし、mdadm.conf を作成します。
+3. **SLES 11 と openSUSE** - boot.md を有効にし、mdadm.conf を作成します
 
 		# sudo -i chkconfig --add boot.md
 		# sudo echo 'DEVICE /dev/sd*[0-9]' >> /etc/mdadm.conf
 
-	>[AZURE.NOTE]SUSE システムでこれらの変更を行った後は再起動が必要になる場合があります。
+	>[AZURE.NOTE]SUSE システムでこれらの変更を行った後は再起動が必要になる場合があります。SLES 12 では、この手順は必須では*ありません*。
 
 
 ## 新しいファイル システムを /etc/ fstab に追加する
@@ -142,7 +142,7 @@
 
 		UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
 
-	または、**SLES と openSUSE** の場合は、次のようになります。
+	または、**SLES 11 と openSUSE** の場合は、次のようになります。
 
 		/dev/disk/by-uuid/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext3  defaults  0  2
 
@@ -178,4 +178,4 @@
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

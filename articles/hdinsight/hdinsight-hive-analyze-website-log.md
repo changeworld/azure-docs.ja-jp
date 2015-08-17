@@ -58,4 +58,4 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 [img-hdi-weblogs-sample]: ./media/hdinsight-hive-analyze-website-log/hdinsight-weblogs-sample.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

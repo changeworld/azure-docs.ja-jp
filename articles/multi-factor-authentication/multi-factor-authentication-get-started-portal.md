@@ -80,16 +80,16 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 別のサーバーにユーザー ポータルをインストールする前に、以下の点に留意してください。
 
 - インターネットに接続された Web サーバーで Web ブラウザーを開き、web.config ファイルに入力された Web サービス SDK の URL に移動することをお勧めします。ブラウザーが Web サービスを正常に取得できる場合、資格情報が求められます。web.config ファイルに入力したユーザー名とパスワードを、ファイルに表示されているとおりに入力します。証明書の警告およびエラーが表示されないことを確認してください。
-- リバース プロキシまたはファイアウォールがユーザー ポータル Web サーバーの前面に配置され、SSL オフロードを実行している場合は、ユーザー ポータルの web.config ファイルを編集し、以下のキーを <appSettings> セクションに追加することで、ユーザー ポータルで https ではなく http を使用できるようにします。<add key="SSL_REQUIRED" value="false"/>
+- リバース プロキシまたはファイアウォールがユーザー ポータル Web サーバーの前面に配置され SSL オフロードを実行している場合、ユーザー ポータルの web.config ファイルを編集し、以下のキーを <appSettings> セクションに追加することで、ユーザー ポータルで https ではなく http を使用できるようにします。<add key="SSL_REQUIRED" value="false"/>
 
 #### ユーザー ポータルをインストールするには
 
-1. Azure Multi-Factor Authentication Server サーバーで Windows エクスプ ローラーを開き、Azure Multi-Factor Authentication Server がインストールされているフォルダーに移動します (C:\Program Files\Multi-Factor Authentication Server など)。ユーザー ポータルがインストールされるサーバーに応じて、MultiFactorAuthenticationUserPortalSetup インストール ファイルの 32 ビットまたは 64 ビット バージョンを選択します。インターネットに接続されたサーバーにインストール ファイルをコピーします。
+1. Azure Multi-Factor Authentication Server サーバーで Windows エクスプ ローラーを開き、Azure Multi-Factor Authentication Server がインストールされているフォルダーに移動します (C:\\Program Files\\Multi-Factor Authentication Server など)。ユーザー ポータルがインストールされるサーバーに応じて、MultiFactorAuthenticationUserPortalSetup インストール ファイルの 32 ビットまたは 64 ビット バージョンを選択します。インターネットに接続されたサーバーにインストール ファイルをコピーします。
 2. インターネットに接続された Web サーバーで、セットアップ ファイルを管理者権限で実行する必要があります。これを最も簡単に行うには、管理者としてコマンド プロンプトを開き、インストール ファイルがコピーされた場所に移動します。
 3. MultiFactorAuthenticationUserPortalSetup64 のインストール ファイルを実行し、必要に応じて、サイトと仮想ディレクトリの名前を変更します。
-4. ユーザー ポータルのインストールを完了したら、C:\inetpub\wwwroot\MultiFactorAuth (または仮想ディレクトリ名に基づく適切なディレクトリ) に移動し、web.config ファイルを編集します。
-5. USE_WEB_SERVICE_SDK キーを見つけて、値を false から true に変更します。WEB_SERVICE_SDK_AUTHENTICATION_USERNAME および WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD キーを見つけ、PhoneFactor Admins セキュリティ グループのメンバーであるサービス アカウントのユーザー名およびパスワードに値を設定します (上記の「要件」セクションを参照)。行末尾 (value=””/>) の引用符の間にユーザー名およびパスワードを入力するようにしてください。修飾されたユーザー名 (domain\username や machine\username など) を使用することをお勧めします。
-6. pfup_pfwssdk_PfWsSdk 設定を見つけ、値を "http://localhost:4898/PfWsSdk.asmx" から Azure Multi-Factor Authentication Server で実行されている Web Service SDK の URL に変更します (例: https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx))。この接続では SSL が使用されているため、IP アドレスではなくサーバー名で Web サービス SDK を参照する必要があります。これは、SSL 証明書がサーバー名に対して発行され、使用される URL が証明書の名前に一致する必要があるためです。サーバー名がインターネットに接続されているサーバーで IP アドレスに解決されない場合、そのサーバーの hosts ファイルにエントリを追加し、Azure Multi-Factor Authentication Server の名前を IP アドレスにマッピングします。変更を行ったら、web.config ファイルを保存します。
+4. ユーザー ポータルのインストールを完了したら、C:\\inetpub\\wwwroot\\MultiFactorAuth (または仮想ディレクトリ名に基づく適切なディレクトリ) に移動し、web.config ファイルを編集します。
+5. USE\_WEB\_SERVICE\_SDK キーを見つけて、値を false から true に変更します。WEB\_SERVICE\_SDK\_AUTHENTICATION\_USERNAME および WEB\_SERVICE\_SDK\_AUTHENTICATION\_PASSWORD キーを見つけ、PhoneFactor Admins セキュリティ グループのメンバーであるサービス アカウントのユーザー名およびパスワードに値を設定します (上記の「要件」セクションを参照)。行末尾 (value=””/>) の引用符の間にユーザー名およびパスワードを入力するようにしてください。修飾されたユーザー名 (domain\\username や machine\\username など) を使用することをお勧めします。
+6. pfup\_pfwssdk\_PfWsSdk 設定を見つけ、値を "http://localhost:4898/PfWsSdk.asmx" から Azure Multi-Factor Authentication Server で実行されている Web Service SDK の URL に変更します (例: https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx))。この接続では SSL が使用されているため、IP アドレスではなくサーバー名で Web サービス SDK を参照する必要があります。これは、SSL 証明書がサーバー名に対して発行され、使用される URL が証明書の名前に一致する必要があるためです。サーバー名がインターネットに接続されているサーバーで IP アドレスに解決されない場合、そのサーバーの hosts ファイルにエントリを追加し、Azure Multi-Factor Authentication Server の名前を IP アドレスにマッピングします。変更を行ったら、web.config ファイルを保存します。
 7. 既定の Web サイトの直下などにユーザー ポータルがインストールされた Web サイトがまだ公的署名証明書にバインドされていない場合、証明書がまだインストールされていないならサーバーにインストールし、IIS マネージャーを開き証明書を Web サイトにバインドします。
 8. 任意のコンピューターから Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (例: https://www.publicwebsite.com/MultiFactorAuth)。証明書の警告およびエラーが表示されないことを確認してください。
 
@@ -113,7 +113,7 @@ Azure Multi-Factor Authentication Server にはユーザー ポータル用の�
 代替認証にセキュリティの質問を使用する|多要素認証が失敗した場合に、セキュリティの質問を使用できます。正解する必要があるセキュリティの質問の数を指定できます。
 ユーザーにサード パーティ製の OATH トークンの関連付けを許可する| ユーザーがサード パーティの OATH トークンを指定できるようにします。
 代替認証に OATH トークンを使用する|多要素認証が失敗した場合に、OATH トークンを使用できます。セッションのタイムアウトを分単位で指定することもできます。
-ログの有効化|ユーザー ポータルでログを有効にします。ログ ファイルは C:\Program Files\Multi-Factor Authentication Server\Logs に配置されます。
+ログの有効化|ユーザー ポータルでログを有効にします。ログ ファイルは C:\\Program Files\\Multi-Factor Authentication Server\\Logs に配置されます。
 
 これらの設定の大部分は、有効になったユーザーがユーザー ポータルにサインインするときに表示されます。
 
@@ -189,4 +189,4 @@ SAML を使用する ID プロバイダーからの要求を受け入れるよ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

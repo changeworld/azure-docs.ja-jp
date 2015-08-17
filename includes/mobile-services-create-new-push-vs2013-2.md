@@ -45,4 +45,4 @@
 		
 	次に、新しい TodoItem を挿入するときに、プッシュ通知をすべての登録デバイスに送信します。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

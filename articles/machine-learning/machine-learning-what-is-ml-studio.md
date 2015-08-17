@@ -91,4 +91,4 @@ Machine Learning Studio を初めて起動したときには、以下のタブ�
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

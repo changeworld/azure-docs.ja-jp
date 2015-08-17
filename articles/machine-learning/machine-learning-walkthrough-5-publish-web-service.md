@@ -67,9 +67,9 @@
 
 - トレーニングしたモデルは、**トレーニング済みのモデル** モジュールとして実験キャンバスの左側にあるモジュールのパレットに保存されます (**[トレーニング済みのモデル]**のパレットにあります)。
 - トレーニングに使用したモジュールは削除されます。具体的には次の処理が行われます。
-  - [2 クラス ブースト デシジョン ツリー][two-class-boosted-decision-tree]
+  - [2クラスのブースト デシジョン ツリー][two-class-boosted-decision-tree]
   - [モデルのトレーニング][train-model] 
-  - [列の][split]
+  - [分割][split]
   - テスト データに使用した 2 番目の [R スクリプトの実行][execute-r-script]モジュール
 - 保存したトレーニング済みのモデルは実験に追加されます。
 - **Web サービスの入力** と **Web サービスの出力**モジュールが追加されます。
@@ -127,4 +127,4 @@ Web サービスによって生成された結果がダッシュボードの下�
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,7 +1,6 @@
 <properties
 	pageTitle="Hive と HiveQL の使用方法の説明 |Microsoft Azure"
 	description="Apache Hive と HDInsight での Hadoop との使用方法について説明します。Hive ジョブを実行し、HiveQL を使用して Apache log4j サンプル ファイルを分析する方法を選択します。"
-	keywords="hiveql,what is hive"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -55,11 +54,11 @@ Hive は**ユーザー定義関数 (UDF)** で拡張することもできます�
 
 Azure BLOB ストレージが HDInsight の既定のストレージであるため、HiveQL から **/example/data/sample.log** を使用してファイルにアクセスすることもできます。
 
-> [AZURE.NOTE]上の構文 **wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、アカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、**wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
+> [AZURE.NOTE]上の構文 ****wasb:///** は HDInsight クラスターの既定のストレージ コンテナーに格納されたファイルにアクセスするために使用します。クラスターをプロビジョニングするときに追加のストレージ アカウントを指定し、そのアカウントに格納されたファイルにアクセスする必要がある場合、コンテナー名とストレージ アカウント アドレスを指定することによって、データにアクセスすることができます。たとえば、****wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log** のように指定します。
 
 ##<a id="job"></a>サンプル ジョブ: 区切られたデータへの列の投影
 
-次の HiveQL ステートメントは、**wasb:///example/data** ディレクトリに格納されている区切りデータに列を投影します。
+次の HiveQL ステートメントは、****wasb:///example/data** ディレクトリに格納されている区切りデータに列を投影します。
 
 	DROP TABLE log4jLogs;
     CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -125,7 +124,7 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 * [HDInsight での Pig の使用][hdinsight-use-pig]
-* [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
+* [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
 
 [check]: ./media/hdinsight-use-hive/hdi.checkmark.png
 
@@ -163,4 +162,4 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

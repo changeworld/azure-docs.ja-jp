@@ -186,7 +186,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 
 **例:**<br> `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`<br> `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-どちらの例でも "\*Hello world!\*" を返します。
+どちらの例でも "*Hello world!*" を返します。
  
  
 
@@ -202,7 +202,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
  
 **解説:**<br> この関数と ConvertFromBase64(,UTF8) との違いは、結果が DN 属性で表示される点です。<br> この形式は Azure Active Directory で DN として使用されます。
  
-**例:**<br> `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`<br> "\* Hello world!\*" を返します。
+**例:**<br> `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`<br> "*Hello world!*" を返します。
  
  
 
@@ -222,7 +222,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 ----------
 ### ConvertToUTF8Hex
 
-**説明:**<br> ConvertFromUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコードされた値に変換します。
+**説明:**<br> ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコードされた値に変換します。
  
 **構文:**<br> `str ConvertToUTF8Hex(str source)`
  
@@ -274,7 +274,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 
 - value: 数値、参照属性、ブール値を指定できます。 
  
-**例:** <br> `CStr([dn]) <br>` “cn=Joe,dc=contoso,dc=com” を返すこともできます。
+**例:** <br> `CStr([dn]) <br>` "cn=Joe,dc=contoso,dc=com" を返すこともできます。
  
  
 
@@ -300,7 +300,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 - value: 追加する単位の数。正の数 (将来の日時を取得する場合) または負の数 (過去の日時を取得する場合) を指定できます。 
 - date: 間隔が追加される日付を表す DateTime。
  
-**例:** <br> `DateAdd("m", 3, CDate("2001-01-01"))` <br> 3 か月間を追加すると、「2001-04-01」を表す DateTime を返します。
+**例:** <br> `DateAdd("m", 3, CDate("2001-01-01"))` <br> 3 か月を追加した結果の "2001-04-01" を表す DateTime を返します。
  
  
 
@@ -308,7 +308,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 ----------
 ### DateFromNum
 
-**説明:**<br> DateromNum 関数は、AD の日付形式の値を DateTime 型に変換します。
+**説明:**<br> DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換します。
  
 **構文:** <br> `dt DateFromNum(num value)`
  
@@ -327,7 +327,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 - dn: 解釈する参照属性
 - ComponentNumber: 返される DN のコンポーネント
  
-**例:** <br> `DNComponent([dn],1)` <br> dn が “cn=Joe,ou=…,“ の場合は、Joe が返されます。
+**例:** <br> `DNComponent([dn],1)` <br> dn が "cn=Joe,ou=…," の場合は、Joe が返されます。
  
 
 
@@ -351,7 +351,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 ----------
 ### エラー
 
-**説明:** <br> エラー関数を使用してカスタム エラーを返します。
+**説明:** <br> Error 関数を使用して、カスタム エラーを返します。
  
 **構文:** <br> `void Error(str ErrorMessage)`
  
@@ -382,11 +382,11 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 - value: DateTime 形式の値 <br>
 - format: 変換する形式を表す文字列。
  
-**解説:** <br> 形式に有効な値は以下で見つけることができます。[ユーザー定義の日付/時刻書式 (Format 関数)] (http://msdn2.microsoft.com/library/73ctwf33(VS.90).aspx)
+**解説:** <br> 形式に有効な値は以下で見つけることができます。[ユーザー定義の日付/時刻書式 (Format 関数)](http://msdn2.microsoft.com/library/73ctwf33(VS.90).aspx)
  
 **例:** <br>
  
-`FormatDateTime(CDate(“12/25/2007”),”yyyy-mm-dd”)` <br> “2007-12-25” になります。
+`FormatDateTime(CDate(“12/25/2007”),”yyyy-mm-dd”)` <br> "2007-12-25" になります。
 
 `FormatDateTime(DateFromNum([pwdLastSet]),”yyyyMMddHHmmss.0Z”)` <br> "20140905081453.0Z" などになります。
  
@@ -414,7 +414,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 - valueIfTrue: 条件の評価結果が true になる場合に返される値。
 - valueIfFalse: 条件の評価結果が false になる場合に返される値。
 
-**例:** <br> `IIF([employeeType]=“Intern”,”t-“&[alias],[alias])` <br> ユーザーがインターンの場合はユーザーのエイリアスの先頭に “t-“ を付けて返し、そうでない場合はユーザーのエイリアスをそのまま返します。
+**例:** <br> `IIF([employeeType]=“Intern”,”t-“&[alias],[alias])` <br> ユーザーがインターンの場合はユーザーのエイリアスの先頭に "t-" を付けて返し、そうでない場合はユーザーのエイリアスをそのまま返します。
  
  
 
@@ -464,13 +464,13 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 ----------
 ### IsBitSet
 
-**説明:** <br> 関数 IsBitSet は、ビットが設定されているかどうかをテストします。
+**説明:** <br> IsBitSet 関数は、ビットが設定されているかどうかをテストします。
  
 **構文:** <br> `bool IsBitSet(num value, num flag)`
 
 - value: 評価対象の数値。flag: 評価対象のビットがある数値。
  
-**例:** <br> `IsBitSet(&HF,4)` <br> ビット “4” が 16 進数値 “F” で設定されているため True が返されます。
+**例:** <br> `IsBitSet(&HF,4)` <br> ビット "4" が 16 進数値 "F" で設定されているため True が返されます。
  
 
 
@@ -591,7 +591,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - attribute: 複数値の属性 <br>
 - index: 複数値の文字列内の項目へのインデックス。
  
-**解説:** <br> Contains 関数は複数値の属性内の項目に対するインデックスを返すため、Item 関数を Contains 関数とともに使用すると便利です。
+**解説:** <br> Contains 関数は複数値の属性内の項目に対するインデックスを返すため、Item 関数を Contains 関数と共に使用すると便利です。
 
 インデックスが範囲外にある場合は、エラーをスローします。
  
@@ -610,7 +610,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - attribute: 複数値の属性 <br>
 - index: 複数値の文字列内の項目へのインデックス。
  
-**解説:** <br> Contains 関数は複数値の属性内の項目に対するインデックスを返すため、ItemOrNull 関数を Contains 関数とともに使用すると便利です。
+**解説:** <br> Contains 関数は複数値の属性内の項目に対するインデックスを返すため、ItemOrNull 関数を Contains 関数と共に使用すると便利です。
 
 インデックスが範囲外にある場合は、Null 値を返します。
  
@@ -629,7 +629,7 @@ CGuid() が成功するかどうかを判断するために使用します。
  
 **解説:**<br> Join 関数と Split 関数の間には類似点があります。Join 関数は、文字列の配列を受け取り、区切り文字列を使用してそれらを結合し、単一の文字列を返します。Split 関数は、文字列を受け取って区切り記号で分割し、文字列の配列を返します。ただし、Join 関数が任意の区切り文字列を使った文字列を連結できるのに対し、Split 関数で文字列を分割する際には 1 文字の区切り記号しか使用できないという大きな違いがあります。
  
-**例:** <br> `Join([proxyAddresses],”,”)` <br> 次を返すこともできます: “SMTP:john.doe@contoso.com,smtp:jd@contoso.com”
+**例:** <br> `Join([proxyAddresses],”,”)` <br> 次を返すこともできます: "SMTP:john.doe@contoso.com,smtp:jd@contoso.com”
  
  
 
@@ -641,7 +641,7 @@ CGuid() が成功するかどうかを判断するために使用します。
  
 **構文:** <br> `str LCase(str value)`
  
-**例:** <br> `LCase(“TeSt”)` <br> “test” を返します。
+**例:** <br> `LCase(“TeSt”)` <br> "test" を返します。
  
  
 
@@ -664,7 +664,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 文字列に含まれる文字数が numChars で指定した数より少ない場合は、文字列と同一の文字列 (パラメーター 1 のすべての文字が含まれる) が返されます。
  
-**例:** <br> `Left(“John Doe”, 3)` <br> “Joh” を返します。
+**例:** <br> `Left(“John Doe”, 3)` <br> "Joh" を返します。
  
 
 
@@ -688,7 +688,7 @@ CGuid() が成功するかどうかを判断するために使用します。
  
 **構文:** <br> `str LTrim(str value)`
  
-**例:** <br> `LTrim(“ Test ”)` <br> “Test” を返します。
+**例:** <br> `LTrim(“ Test ”)` <br> "Test " を返します。
  
  
 
@@ -808,7 +808,7 @@ CGuid() が成功するかどうかを判断するために使用します。
  
 **構文:** <br> `String PCase(string)`
  
-**例:** <br> `PCase(“TEsT”)` <br> “Test” を返します。
+**例:** <br> `PCase(“TEsT”)` <br> "Test" を返します。
  
  
 
@@ -841,7 +841,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 
 ----------
-### \*Views\\\\Home\\\\AllDates.cshtml\*
+### *Views\\\\Home\\\\AllDates.cshtml*
 
 **説明:** <br> Replace 関数は、見つかった文字列をすべて別の文字列に置き換えます。
  
@@ -861,7 +861,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 **例:** <br>
  
-`Replace([address],”\r\n”,”, “)` <br> CRLF をコンマとスペースで置き換え、 “One Microsoft Way, Redmond, WA, USA” とすることができます。
+`Replace([address],”\r\n”,”, “)` <br> CRLF をコンマとスペースで置き換え、"One Microsoft Way, Redmond, WA, USA" とすることができます。
  
  
 
@@ -895,7 +895,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 `ReplaceChars(”Räksmörgås”,%ReplaceString%)` <br> Raksmorgas を返します。
 
-`ReplaceChars(“O’Neil”,%ReplaceString%)` <br> “ONeil” を返します。1 文字のティックを削除するように定義されています。
+`ReplaceChars(“O’Neil”,%ReplaceString%)` <br> "ONeil" を返します。1 文字のティックを削除するように定義されています。
  
 
 
@@ -920,7 +920,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 文字列に含まれる文字数が NumChars に指定した数より少ない場合は、文字列と同一の文字列が返されます。
 
-**例:** <br> `Right(“John Doe”, 3)` <br> “Doe” を返します。
+**例:** <br> `Right(“John Doe”, 3)` <br> "Doe" を返します。
  
 
 
@@ -932,7 +932,7 @@ CGuid() が成功するかどうかを判断するために使用します。
  
 **構文:** <br> `str RTrim(str value)`
 
-**例:** <br> `RTrim(“ Test ”)` <br> “Test” を返します。
+**例:** <br> `RTrim(“ Test ”)` <br> " Test" を返します。
 
 
 
@@ -1006,7 +1006,7 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
  
 **構文:** <br> `str Trim(str value)` <br> `mvstr Trim(mvstr value)`
  
-**例:** <br> `Trim(“ Test ”)` <br> “Test” を返します。
+**例:** <br> `Trim(“ Test ”)` <br> "Test" を返します。
 
 `Trim([proxyAddresses])` <br> proxyAddress 属性の値ごとに先頭と末尾の空白を削除します。
 
@@ -1020,7 +1020,7 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 
 **構文:** <br> `str UCase(str string)`
  
-**例:** <br> `UCase(“TeSt”)` <br> “TEST” を返します。
+**例:** <br> `UCase(“TeSt”)` <br> "TEST" を返します。
  
  
 
@@ -1044,9 +1044,9 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 文字列に含まれる単語の数が指定より少ないか、区切り記号文字で識別されるどの単語も文字列に含まれていない場合は、空の文字列が返されます。
  
 
-**例:** <br> `Word(“The quick brown fox”,3,” “)` <br> “brown” を返します。
+**例:** <br> `Word(“The quick brown fox”,3,” “)` <br> "brown" を返します。
 
-`Word(“This,string!has&many seperators”,3,”,!&#”)` <br> “has” を返します。
+`Word(“This,string!has&many seperators”,3,”,!&#”)` <br> "has" を返します。
 
 
 ## その他のリソース
@@ -1058,4 +1058,4 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
  
 <!--Image references-->
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

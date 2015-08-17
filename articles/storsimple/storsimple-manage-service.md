@@ -113,4 +113,4 @@ StorSimple デバイスを展開する場合は、**[簡易作成]** オプシ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

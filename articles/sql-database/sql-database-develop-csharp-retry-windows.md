@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/24/2015" 
+	ms.date="08/04/2015" 
 	ms.author="genemi"/>
 
 
@@ -395,8 +395,7 @@ Microsoft はこの設計を選択するかどうかについて、推奨も、�
 	        static Custom_SqlDatabaseTransientErrorDetectionStrategy()
 	        {
 	            int[] arrayOfTransientErrorNumbers =
-	                {4060, 10928, 10929, 40197, 40501, 40613
-	};
+	                {4060, 10928, 10929, 40197, 40501, 40613 };
 	
 	            M_listTransientErrorNumbers = new G.List<int>(arrayOfTransientErrorNumbers);
 	        }
@@ -413,10 +412,10 @@ Microsoft はこの設計を選択するかどうかについて、推奨も、�
 ## Program.cs の短いバージョン
 
 
-このセクションのソース コードは、前に示した長い `Program.cs` ファイルを短くしたものです。こちらでは、再試行ロジックと `Exception` 処理がすべて削除されています。
+このセクションのソース コードは、前に示した長い `Program.cs` ファイルを短くしたものです。こちらでは、再試行ロジックと例外処理がすべて削除されています。
 
 
-この短いバージョンでは、ADO.NET の呼び出しが通常は動作することがわかっているため、ADO.NET の呼び出しを見やすくしてあります。通常であれば一時的な障害は発生しないため、`Exception` はスローされません。これは、普通はスカイダイビングに予備のパラシュートが必要ないのと同じです。
+この短いバージョンでは、ADO.NET の呼び出しが通常は動作することがわかっているため、ADO.NET の呼び出しを見やすくしてあります。通常であれば一時的な障害は発生しないため、例外はスローされません。これは、普通はスカイダイビングに予備のパラシュートが必要ないのと同じです。
 
 
 	using     System;  // C#, pure ADO.NET, no retry logic, no Exception handling.
@@ -497,4 +496,4 @@ Microsoft はこの設計を選択するかどうかについて、推奨も、�
 
 - [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

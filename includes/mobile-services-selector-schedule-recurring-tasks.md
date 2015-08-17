@@ -2,4 +2,4 @@
 - [(Any | .NET)](../articles/mobile-services-dotnet-backend-schedule-recurring-tasks.md)
 - [(Any | Javascript)](../articles/mobile-services-schedule-recurring-tasks.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -32,4 +32,4 @@ Azure Table ストレージ サービスは、大量の構造化データを格�
   [Table1]: ./media/storage-table-concepts-include/table1.png
   [OData.org の Web サイト]: http://www.odata.org/
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

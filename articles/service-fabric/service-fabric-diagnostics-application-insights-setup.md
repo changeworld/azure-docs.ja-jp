@@ -41,7 +41,7 @@ Application Insights 内で Service Fabric イベントを自動的に受信す�
     Microsoft.ServiceFabric.Telemetry.ApplicationInsights.Listener.Enable(EventLevel.Verbose);
 ```
  
-### StatefulActor\Program.cs の例:
+### StatefulActor\\Program.cs の例:
 
 ```csharp
     public static void Main(string[] args)
@@ -89,4 +89,4 @@ Application Insights を使用して、Service Fabric アプリをインスト�
 - [独自のカスタム イベントとメトリックを作成する方法を学習する](../app-insights-custom-events-metrics-api.md)
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

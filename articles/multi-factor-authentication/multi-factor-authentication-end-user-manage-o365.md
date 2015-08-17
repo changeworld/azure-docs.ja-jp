@@ -41,4 +41,4 @@ Office 365 で多要素認証を使用する場合は、Office 365 ポータル�
 
 <center>![Cloud](./media/multi-factor-authentication-end-user-manage-o365/addsec.png)</center>
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

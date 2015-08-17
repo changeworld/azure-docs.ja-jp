@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.date="08/04/2015" 
 	ms.author="mandia"/>
 
 # Microsoft Azure App Service の企業間コネクタと API Apps
@@ -49,10 +49,10 @@ B2B API Apps を作成するには、必要なリソースがいくつかあり�
 
 要件 | 説明
 --- | ---
-Azure SQL データベース | パートナー、スキーマ、証明書、契約などの B2B 項目を格納します。B2B API Apps ごとに専用の Azure SQL Database が必要です。<br/><br/>\*\*注\*\*: 接続文字列をこのデータベースにコピーしてください。<br/><br/>[Azure SQL Database を作成する方法](../sql-database-create-configure.md)
-Azure BLOB Storage コンテナー | AS2 アーカイブが有効な場合に、メッセージのプロパティを格納します。AS2 メッセージをアーカイブする必要がない場合は、Storage コンテナーは必要ありません。<br/><br/>\*\*注\*\*: アーカイブを有効にする場合は、接続文字列をこの Blob ストレージにコピーしてください。<br/><br/>[Azure ストレージ アカウントについて](../storage-create-storage-account.md)
-Service Bus 名前空間とそのキー値 | X12 および EDIFACT のバッチ処理データを格納します。バッチ処理が不要な場合は、Service Bus 名前空間は必要ありません。<br/><br/>\*\*注\*\*: バッチ処理を有効にする場合は、これらの値をコピーしてください。<br/><br/>[Service Bus 名前空間を作成する方法](http://msdn.microsoft.com/library/azure/hh690931.aspx)
-TPM インスタンス | BizTalk 取引先管理 (TPM) インスタンスは、AS2 コネクタ、X12 API アプリ、または EDIFACT API アプリを作成するために必要です。TPM API アプリを作成すると、TPM インスタンスが作成されます。<br/><br/>\*\*注\*\*: TPM API アプリの名前を確認してください。 
+Azure SQL データベース | パートナー、スキーマ、証明書、契約などの B2B 項目を格納します。B2B API Apps ごとに専用の Azure SQL Database が必要です。<br/><br/>**注**: 接続文字列をこのデータベースにコピーしてください。<br/><br/>[Azure SQL Database を作成する方法](../sql-database-get-started.md)
+Azure BLOB Storage コンテナー | AS2 アーカイブが有効な場合に、メッセージのプロパティを格納します。AS2 メッセージをアーカイブする必要がない場合は、Storage コンテナーは必要ありません。<br/><br/>**注**: アーカイブを有効にする場合は、接続文字列をこの Blob ストレージにコピーしてください。<br/><br/>[Azure ストレージ アカウントについて](../storage-create-storage-account.md)
+Service Bus 名前空間とそのキー値 | X12 および EDIFACT のバッチ処理データを格納します。バッチ処理が不要な場合は、Service Bus 名前空間は必要ありません。<br/><br/>**注**: バッチ処理を有効にする場合は、これらの値をコピーしてください。<br/><br/>[Service Bus 名前空間を作成する方法](http://msdn.microsoft.com/library/azure/hh690931.aspx)
+TPM インスタンス | BizTalk 取引先管理 (TPM) インスタンスは、AS2 コネクタ、X12 API アプリ、または EDIFACT API アプリを作成するために必要です。TPM API アプリを作成すると、TPM インスタンスが作成されます。<br/><br/>**注**: TPM API アプリの名前を確認してください。 
 
 
 ## API Apps の作成
@@ -205,4 +205,4 @@ Microsoft Azure App Service では、これらの B2B API Apps を使用でき�
 
 [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

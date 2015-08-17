@@ -49,7 +49,7 @@ Microsoft Azure Media Services にライブ インジェストを適用する特
 5. [1] のセクション 3.3.6 では、ライブ インジェストの最後に送信してチャネルで EOS (ストリームの終わり) を示す　MovieFragmentRandomAccessBox (‘mfra’) と呼ばれるボックスを定義する場合があります。Azure Media Services のインジェスト ロジックにより、EOS (ストリームの終わり) の使用は廃止されました。ライブ インジェストの 'mfra' ボックスを送信すべきではありません。送信されても、Azure Media Services は何も行わずに無視します。[Channel のリセット](https://msdn.microsoft.com/library/azure/dn783458.aspx#reset_channels)を使用して取り込みポイントの状態をリセットし、[Program の停止](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs)を使用して、プレゼンテーションとストリームを終了することをお勧めします。
 6. MP4 フラグメントの継続時間は、クライアント マニフェストのサイズを小さくし、繰り返しタグを使用してクライアントのダウンロードのヒューリスティックを改善するために、定数にする必要があります。整数以外のフレーム レートを補正するため、継続時間は変動する場合があります。
 7. MP4 フラグメントの継続時間は約 2 ～ 6 秒間にする必要があります。
-8. MP4 フラグメントのタイムスタンプとインデックス (TrackFragmentExtendedHeaderBox fragment_absolute_time と fragment_index) は昇順で配信される必要があります。Azure Media Services は、重複フラグメントに対する回復力はありますが、メディア タイムラインに従ってフラグメントの順序を変更するには機能が非常に限定されています。
+8. MP4 フラグメントのタイムスタンプとインデックス (TrackFragmentExtendedHeaderBox fragment\_absolute\_time と fragment\_index) は昇順で配信される必要があります。Azure Media Services は、重複フラグメントに対する回復力はありますが、メディア タイムラインに従ってフラグメントの順序を変更するには機能が非常に限定されています。
 
 ##プロトコル形式 - HTTP
 
@@ -139,7 +139,7 @@ Microsoft Azure Media Services 用 ISO Fragmented MP4 ベースのライブ イ�
 3. 新しいエンコーダーの POST 要求には、失敗したインスタンスと同じ Fragmented MP4 ヘッダー ボックスを含めなければなりません。
 4. 新しいエンコーダーは、同じライブ プレゼンテーションに対して実行中の他のすべてのエンコーダーと正しく同期し、整列されたフラグメント境界と同期されたオーディオ サンプルとビデオ サンプルを生成しなければなりません。
 5. 新しいストリームは、前のストリームと同等の意味を持ち、ヘッダーとフラグメント レベルで交換可能でなければなりません。
-6. 新しいエンコーダーはデータの損失を最小限に抑える必要があります。メディア フラグメントの fragment_absolute_time と fragment_index は、エンコーダーが最後に停止した位置から増加する必要があります。Fragment_absolute_time と fragment_index は継続的に増加する必要がありますが、必要に応じて不連続性も許容されます。Azure Media Services は既に受信して処理されたフラグメントを無視するので、メディア タイムラインで不連続性を発生させるよりも、フラグメントの再送信でエラーを発生させる方が有効です。 
+6. 新しいエンコーダーはデータの損失を最小限に抑える必要があります。メディア フラグメントの fragment\_absolute\_time と fragment\_index は、エンコーダーが最後に停止した位置から増加する必要があります。Fragment\_absolute\_time と fragment\_index は継続的に増加する必要がありますが、必要に応じて不連続性も許容されます。Azure Media Services は既に受信して処理されたフラグメントを無視するので、メディア タイムラインで不連続性を発生させるよりも、フラグメントの再送信でエラーを発生させる方が有効です。 
 
 ##エンコーダーの冗長性 
 
@@ -206,4 +206,4 @@ Microsoft Azure Media Services 用 ISO Fragmented MP4 ベースのライブ イ�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -164,10 +164,10 @@
 	  	CloudBlockBlob dataprocessor = container.GetBlockBlobReference("ProcessTaskData.exe");
 	  	CloudBlockBlob storageassembly =
 			container.GetBlockBlobReference("Microsoft.WindowsAzure.Storage.dll");
-		  taskData1.UploadFromFile("..\..\taskdata1.txt", FileMode.Open);
-		  taskData2.UploadFromFile("..\..\taskdata2.txt", FileMode.Open);
-	  	taskData3.UploadFromFile("..\..\taskdata3.txt", FileMode.Open);
-		  dataprocessor.UploadFromFile("..\..\..\ProcessTaskData\bin\debug\ProcessTaskData.exe", FileMode.Open);
+		  taskData1.UploadFromFile("..\\..\\taskdata1.txt", FileMode.Open);
+		  taskData2.UploadFromFile("..\\..\\taskdata2.txt", FileMode.Open);
+	  	taskData3.UploadFromFile("..\\..\\taskdata3.txt", FileMode.Open);
+		  dataprocessor.UploadFromFile("..\\..\\..\\ProcessTaskData\\bin\\debug\\ProcessTaskData.exe", FileMode.Open);
 		  storageassembly.UploadFromFile("Microsoft.WindowsAzure.Storage.dll", FileMode.Open);
 		  Console.WriteLine("Uploaded the files. Press Enter to continue.");
 		  Console.ReadLine();
@@ -208,7 +208,7 @@
 			  newPool.Commit();
 			  Console.WriteLine("Created the pool. Press Enter to continue.");
 			  Console.ReadLine();
-		  }
+		  	}
 
 4. 次のコードを Main に追加します。このコードは、先ほど追加したメソッドを呼び出します。
 
@@ -266,7 +266,7 @@
 				Console.WriteLine("Job id: " + job.Id);
 				Console.WriteLine("   Job status: " + job.State);
 			}
-			Console.WriteLine("Press Enter to continue.")
+			Console.WriteLine("Press Enter to continue.");
 			Console.ReadLine();
 		}
 
@@ -316,7 +316,7 @@
 			{
 				Console.WriteLine("Task " + task.Id + " says:\n" + task.GetNodeFile(Constants.StandardOutFileName).ReadAsString());
 			}
-			Console.WriteLine("Press Enter to continue.")
+			Console.WriteLine("Press Enter to continue.");
 			Console.ReadLine();
 		}
 
@@ -377,7 +377,7 @@ Azure のリソースに対して課金されるため、不要になったリ�
 
 			static void DeleteJob(BatchClient client)
 			{
-				client.JobOperations.DeleteJob("davidmujob1");
+				client.JobOperations.DeleteJob("testjob1");
 				Console.WriteLine("Job was deleted.");
 				Console.ReadLine();
 			}
@@ -394,7 +394,7 @@ Azure のリソースに対して課金されるため、不要になったリ�
 
 		static void DeletePool (BatchClient client)
 		{
-			client.PoolOperations.DeletePool("davidmupl1");
+			client.PoolOperations.DeletePool("testpool1");
 			Console.WriteLine("Pool was deleted.");
 			Console.ReadLine();
 		}
@@ -475,4 +475,4 @@ Azure のリソースに対して課金されるため、不要になったリ�
 
 2. 一部のアプリケーションは、処理するのに困難な大量のデータを生成します。これを解決する 1 つの方法は、[効率的なリスト クエリ](batch-efficient-list-queries.md)を使用することです。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

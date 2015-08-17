@@ -122,4 +122,4 @@ Azure で機能的で高可用なイントラネット SharePoint ファーム�
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

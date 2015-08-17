@@ -422,7 +422,7 @@ Standard D14 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 31 
 8. VMware vCLI をインストールするときは、次のことに注意してください。
 
 	- **サポートされるのは VMware vSphere CLI 5.5.0 だけです**。プロセス サーバーは、他のバージョンまたは更新プログラムの vSphere CLI では動作しません。
-	- vSphere CLI 5.5.0 を[ここ](https://my.vmware.com/web/vmware/details?downloadGroup=VCLI550&productId=352)からダウンロードします。
+	- VSphere CLI 5.5.0 を[ここ](https://my.vmware.com/web/vmware/details?downloadGroup=VCLI550&productId=352)からダウンロードします。
 	- プロセス サーバーのインストールを開始する直前に vSphere CLI をインストールし、セットアップによって検出されない場合は、最大 5 分間待機してからセットアップを再試行してください。これにより、vSphere CLI の検出に必要なすべての環境変数が正しく初期化されます。
 
 9.	**[プロセス サーバーの NIC の選択]** で、プロセス サーバーが使用するネットワーク アダプターを選択します。
@@ -463,7 +463,7 @@ Standard D14 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 31 
 2. プロセス サーバー
 3. マスター ターゲット サーバー
 
-更新プログラムは、Site Recovery の**ダッシュボード**で入手できます。Linux のインストールの場合は、gzip 圧縮されたインストーラーからファイルを抽出し、コマンド “sudo ./install” を実行して更新プログラムをインストールします。
+更新プログラムは、Site Recovery ** の Dashboard ** で入手できます。Linux のインストールの場合は、gzip 圧縮されたインストーラーからファイルを抽出し、コマンド “sudo ./install” を実行して更新プログラムをインストールします。
 
 モビリティ サービスが既にインストールされている仮想マシンまたは物理サーバーを実行している場合は、次のようにしてサービスの更新プログラムを入手できます。
 
@@ -482,7 +482,7 @@ Standard D14 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 31 
 
 ## ステップ 6: vCenter サーバーまたは ESXi ホストの追加
 
-1. **[サーバー]**、**[構成サーバー]** タブの順にクリックして構成サーバーを選択し、**[vCenter サーバーの追加]** をクリックして、vCenter サーバーまたは ESXi ホストを追加します。
+1. **[サーバー]**、**[構成サーバー]** タブの順にクリックし、構成サーバーを選択し、**[vCenter サーバーの追加]** をクリックして、vCenter サーバーまたは ESXi ホストを追加します。
 
 	![vCenter サーバーの選択](./media/site-recovery-vmware-to-azure/ASRVMWare_AddVCenter.png)
 
@@ -547,7 +547,7 @@ Standard D14 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 31 
 	![ファイアウォールの設定](./media/site-recovery-vmware-to-azure/ASRVMWare_PushInstallFirewall.png)
 
 4. プッシュ インストールを実行するために使用するアカウントは、保護するマシンの管理グループに属している必要があります。これらの資格情報はモビリティ サービスのプッシュ インストールにのみ使用され、保護グループにマシンを追加するときに指定します。
-5. 指定したアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。 
+5. 指定したアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。 
 
 **Linux サーバーにモビリティ サービスを自動的にプッシュ インストールします。**
 
@@ -767,4 +767,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!-------HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

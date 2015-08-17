@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="SQL Database のクライアント クイック スタート コード サンプル | Microsoft Azure" 
-	description="Linux での Node.js、Mac OS での Python、Java と Windows など、Azure SQL Database クライアント向けのコード サンプルとドライバーを提供します。"
+	description="Linux での Node.js、Mac OS での Python、Java、Windows、Enterprise Library など、Azure SQL Database クライアント向けのコード サンプルとドライバーを提供します。"
 	services="sql-database" 
 	documentationCenter="" 
 	authors="MightyPen" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/24/2015" 
+	ms.date="08/04/2015" 
 	ms.author="genemi"/>
 
 
@@ -75,7 +75,7 @@
 
 | 言語 | 短いサンプル | 再試行のサンプル | オブジェクトにリレーショナル |
 | :-- | :-- | :-- | :-- |
-| C# | [ADO.NET](sql-database-develop-dotnet-simple.md) | [ADO.NET (カスタム)](sql-database-develop-csharp-retry-windows.md)<br/><br/>[ADO.NET とエンタープライズ ライブラリ](http://msdn.microsoft.com/library/azure/dn961167.aspx) | [ADO.NET Entity Framework](http://msdn.microsoft.com/library/azure/ff951633.aspx) |
+| C# | [ADO.NET](sql-database-develop-dotnet-simple.md) | [ADO.NET (カスタム)](sql-database-develop-csharp-retry-windows.md)<br/><br/>[Enterprise Library](sql-database-develop-entlib-csharp-retry-windows.md) | (Entity Framework) |
 | C++ | [ODBC ドライバー](http://msdn.microsoft.com/library/azure/hh974312.aspx) | . | . |
 | Java | [Java。JDK、JDBC。Insert、Transaction、Select。](sql-database-develop-java-simple-windows.md)<br/><br/>[Java。Eclipse](sql-data-java-how-to-use-sql-database.md)<br/><br/>[Java。JDBC](http://msdn.microsoft.com/library/azure/gg715284.aspx) | . | . |
 | Node.js | [msnodesql](sql-database-develop-nodejs-simple-windows.md) | . | . |
@@ -92,5 +92,6 @@
 - [Azure SQL Database 開発作業の方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)
 - [SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md)
 - [Create your first Azure SQL Database (最初の Azure SQL Database を作成する)](sql-database-get-started.md)
+- [Entity Framework 6 here, EF 7 on GitHub (Entity Framework 6、GitHub における EF7)](http://entityframework.codeplex.com/)
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -69,4 +69,4 @@
 [ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

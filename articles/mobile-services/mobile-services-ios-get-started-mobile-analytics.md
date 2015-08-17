@@ -18,10 +18,6 @@
 
 # モバイル分析の使用 (Capptain)
 
-<div class="dev-center-tutorial-selector sublanding">
-<a href="/documentation/articles/mobile-services-ios-get-started-mobile-analytics" title="iOS" class="current">iOS</a>
-</div>
-
 このチュートリアルでは、[Capptain] を使用して、モバイル分析機能をアプリに追加します。モバイル分析によって、ユーザーがアプリとやり取りしている方法と、アクティビティが最大のセクションを判別できます。これらのデータの取得を開始するには、Capptain SDK を使用してアプリをインストルメントします。
 
 
@@ -102,4 +98,4 @@ Capptain がアプリに対して実行できる機能の詳細については�
 [Mobile Services Standard レベル]: /pricing/details/mobile-services/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

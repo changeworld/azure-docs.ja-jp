@@ -3,7 +3,7 @@
 	description="DocumentDB Document Explorer を使用して JSON ドキュメントを表示、編集、作成、およびアップロードするための Azure プレビュー ポータル ツールである DocumentDB Document Explorer について説明します。"
 	services="documentdb"
 	authors="stephbaron"
-	manager="johnmac"
+	manager="jhubbard"
 	editor="monicar"
 	documentationCenter=""/>
 
@@ -113,7 +113,7 @@ Document Explorer では、ドキュメントを簡単に作成、編集、お�
 
 	![Document Explorer のドキュメントのプロパティ ビューのスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentproperties.png)
 
-	> [AZURE.NOTE]タイムスタンプ (_ts) プロパティは内部ではエポック時間として表現されますが、Document Explorer では、人間が読むことができる GMT 形式で値が表示されます。
+	> [AZURE.NOTE]タイムスタンプ (\_ts) プロパティは内部ではエポック時間として表現されますが、Document Explorer では、人間が読むことができる GMT 形式で値が表示されます。
 
 ##<a id="BulkAdd"></a>Document Explorer を使用したドキュメントの一括追加##
 
@@ -140,4 +140,4 @@ Document Explorer では、1 つまたは複数の既存の JSON ドキュメン
 DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

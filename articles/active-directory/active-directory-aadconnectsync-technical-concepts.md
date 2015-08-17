@@ -91,4 +91,4 @@ Azure AD Connect Sync は、堅牢なメタディレクトリ同期プラット�
 <!--Image references-->
 [1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -11,7 +11,7 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
-	ms.topic="article" 
+	ms.topic="get-started-article" 
 	ms.date="06/16/2015" 
 	ms.author="awills"/>
 
@@ -196,7 +196,7 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 
 ## SDK の新しいリリースにアップグレードするには
 
-[新しいバージョンの SDK がリリースされた](app-insights-release-notes-windows.md)場合: プロジェクトを \* 右クリックし、[NuGet パッケージの管理] を選択します。インストール済みの \* Application Insights パッケージを選択し、アップグレード アクションを選択します。
+[新しいバージョンの SDK がリリースされた](app-insights-release-notes-windows.md)場合: プロジェクトを * 右クリックし、[NuGet パッケージの管理] を選択します。インストール済みの * Application Insights パッケージを選択し、アップグレード アクションを選択します。
 
 
 ## <a name="usage"></a>次のステップ
@@ -229,4 +229,4 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

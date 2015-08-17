@@ -25,26 +25,26 @@
 
 ![Database Overview](./media/sql-database-manage-portal/sqldatabase_annotated.png)
 
-## 1.データベースの管理操作
+## 1\.データベースの管理操作
 ![Db management actions](./media/sql-database-manage-portal/sqldatabase_actions.png)
 
 Azure の管理ポータルには、データベースのブレードの上部からアクセスできる、一般的なデータベース操作が用意されています。データベースは、以前の状態に復元したり、Visual Studio で開いたり、新しいサーバーにコピーしたり、Azure ストレージ アカウントにエクスポートしたりできます。
 
-## 2.データベースの監視
+## 2\.データベースの監視
 ![Database monitoring](./media/sql-database-manage-portal/sqldatabase_monitoring.png)
 
 Azure SQL データベースには、既定で、データベース スループット単位 (DTU)、データベース サイズ、接続の正常性の監視グラフが備わっています。これらの監視グラフは、CPU の割合、データ IO の割合、デッドロック、ログ IO の割合、またはファイアウォールによってブロックされた要求の割合のグラフも作成するようにカスタマイズおよび拡張できます。監視グラフをカスタマイズする方法の詳細については、[こちら][Azure part monitoring]を参照してください。
 
 さらに、アラート ルールは、指定したメトリックを監視して、事前に設定されたしきい値に達したときに指定の管理者と共同管理者に警告するように設定できます。Azure の管理ポータルでアラート ルールを設定する方法の詳細については、[こちら][Azure part monitoring]を参照してください。
 
-## 3.データベースのセキュリティと監査
+## 3\.データベースのセキュリティと監査
 ![Database security](./media/sql-database-manage-portal/sqldatabase_security.png)
 
 Azure SQL データベースは、すべてのデータベース イベントを追跡し、そのイベントを Azure ストレージ アカウントの監査ログに書き込むように構成できます。この機能により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異に対する洞察が容易になります。Azure SQL Database の監査の詳細については、[こちら][AzureDb Auditing]を参照してください。
 
 また、Azure SQL データベースは、権限を持たないユーザーに対して機密データをマスクするように構成することもできます。Azure SQL Database の動的データ マスク機能の詳細については、[こちら][AzureDb datamasking]を参照してください。
 
-## 4.geo レプリケーション
+## 4\.geo レプリケーション
 ![geo レプリケーション  
 ](./media/sql-database-manage-portal/sqldatabase_georeplication.png)
 
@@ -71,4 +71,4 @@ Azure SQL データベースは、コミットされたトランザクション�
  
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -58,7 +58,7 @@ Node.js アプリケーションを Azure Web ロールにデプロイすると�
 
 	> [AZURE.NOTE]以前に Azure サブスクリプションの発行設定をインポートしていない場合、発行しようとするとエラーが出力されます。サブスクリプションの発行設定のダウンロードとインポートについては、[Azure PowerShell for Node.js の使用方法](https://www.windowsazure.com/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings)に関するページを参照してください。
 
-**Publish-AzureServiceProject** コマンドレットから返される**作成された Web サイトの URL** の値には、ホステッド アプリケーションの完全修飾ドメイン名が含まれます。この特定の完全修飾ドメイン名について SSL 証明書を取得し、Azure に展開する必要があります。
+**Publish-AzureServiceProject** コマンドレットから返される**作成された Web サイトの URL** の値には、ホステッド アプリケーションの完全修飾ドメイン名が含まれます。この特定の完全修飾ドメイン名について SSL 証明書を取得し、Azure にデプロイする必要があります。
 
 ## <a name="step2"> </a>手順 2. SSL 証明書を取得する
 
@@ -73,7 +73,7 @@ Node.js アプリケーションを Azure Web ロールにデプロイすると�
 
 ## <a name="step3"> </a>手順 3. SSL 証明書をインポートする
 
-証明書を取得したら、開発用コンピューターの証明書ストアに証明書をインストールします。この証明書は、後の手順で行う構成の変更に基づくアプリケーションの展開パッケージの一部として取得され、Azure にアップロードされます。
+証明書を取得したら、開発用コンピューターの証明書ストアに証明書をインストールします。この証明書は、後の手順で行う構成の変更に基づくアプリケーションのデプロイ パッケージの一部として取得され、Azure にアップロードされます。
 
 > [AZURE.NOTE]このセクションの手順は、Windows 8 バージョンの証明書のインポート ウィザードに基づいています。以前のバージョンの Windows を使用している場合、ここで示されている手順はウィザードに表示される順序と一致しないことがあります。そのような場合は、証明書のインポート ウィザードを使用する前にこのセクション全体を通読して、実行する必要がある全体的なアクションを理解しておいてください。
 
@@ -123,7 +123,7 @@ SSL 証明書をインポートするには、次の手順を実行します。
 
     サービス定義ファイルに対して必要な変更はすべて完了しましたが、サービス構成ファイルに証明書の情報を追加する必要もあります。
 
-3.  サービス構成ファイル (**ServiceConfiguration.Cloud.cscfg** と **ServiceConfiguration.Local.cscfg**) で、**Role** セクション内の空の **Certificates** セクションに証明書を追加し、次に示すサムプリント値のサンプルを証明書のサムプリント値に置き換えます。
+3.  サービス構成ファイル (**ServiceConfiguration.Cloud.cscfg** と **ServiceConfiguration.Local.cscfg**) で、**Role** セクション内の空の **Certificates** セクションに証明書を追加し、次に示す拇印値のサンプルを証明書の拇印値に置き換えます。
 
         <Role name="WebRole1">
         ...
@@ -181,7 +181,7 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   [Azure Management Portal]: http://manage.windowsazure.com
   
   
-  [証明書をサービスに関連付け]: http://msdn.microsoft.com/library/windowsazure/gg465718.aspx
+  [証明書をサービスに関連付ける方法]: http://msdn.microsoft.com/library/windowsazure/gg465718.aspx
   
   [site-url]: ./media/cloud-services-nodejs-configure-ssl-certificate/site-url.png
   [8]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-08.png
@@ -192,4 +192,4 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   [Azure worker ロールで Node.js アプリケーションの SSL を構成する]: /develop/nodejs/common-tasks/enable-ssl-worker-role/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

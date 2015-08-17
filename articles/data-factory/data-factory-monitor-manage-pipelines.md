@@ -31,7 +31,7 @@ Azure プレビュー ポータルを使用すると、Data Factory のダイア
 	![[すべて参照] -> [Data Factory]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 
 	**[Data Factory]** ブレードにすべての Data Factory が表示されます。 
-4. [Data factory] ブレードで参照する Data Factory を選択すると、Data factory のホーム ページ ([\*\*Data factory\*\*] ブレード) が表示されます。
+4. [Data factory] ブレードで参照する Data Factory を選択すると、Data factory のホーム ページ ([**Data factory**] ブレード) が表示されます。
 
 	![Data Factory ブレード](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
@@ -87,7 +87,7 @@ Skip | | このスライスは処理しません。
 
 ![アクティビティ実行の詳細](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
 
-スライスが **[Ready]** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備完了でない上位スライス]** の一覧に表示されます。これは、スライスが **Waiting** 状態のときに、スライスが待機している上位依存関係を理解するのに非常に便利です。
+スライスが **[準備完了]** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備完了でない上位スライス]** の一覧に表示されます。これは、スライスが **Waiting** 状態のときに、スライスが待機している上位依存関係を理解するのに非常に便利です。
 
 ![アップストリーム スライスの準備ができていない](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
@@ -467,4 +467,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 	Parameters        :
 	Outputs           
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

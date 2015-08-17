@@ -172,4 +172,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "クラスター プロビジョニング時の段階"
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

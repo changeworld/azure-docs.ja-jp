@@ -11,4 +11,4 @@
 
 * 最後に、[Xcode クイックスタート プロジェクト内のプロビジョニング プロファイルを更新](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringPushNotifications/ConfiguringPushNotifications.html#//apple_ref/doc/uid/TP40012582-CH32-SW10)した後、[プロビジョニング プロファイルがプッシュ通知を有効にするように作成されたか登録されたことを確認します](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringPushNotifications/ConfiguringPushNotifications.html#//apple_ref/doc/uid/TP40012582-CH32-SW12)。
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

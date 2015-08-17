@@ -107,4 +107,4 @@ API Management には、次に示すシステム グループが用意されて�
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 [関連付けられている Azure Active Directory テナントの外部グループを活用する]: api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

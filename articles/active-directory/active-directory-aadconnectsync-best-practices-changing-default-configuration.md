@@ -55,4 +55,4 @@ Azure AD 構成への変更の適用はサポートされますが、Azure AD �
  
 <!--Image references-->
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

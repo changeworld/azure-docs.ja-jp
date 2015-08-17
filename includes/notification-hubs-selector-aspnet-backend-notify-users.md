@@ -3,4 +3,4 @@
 - [iOS](../articles/notification-hubs/notification-hubs-aspnet-backend-ios-notify-users.md)
 - [Android](../articles/notification-hubs/notification-hubs-aspnet-backend-android-notify-users.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

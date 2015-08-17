@@ -50,4 +50,4 @@
 
 [Azure Content Delivery Network (CDN) で BLOB コンテンツの有効期限を管理する方法](./cdn-manage-expiration-of-blob-content.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

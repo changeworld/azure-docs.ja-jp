@@ -152,4 +152,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
     </LoadBalancedEndpointList>
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

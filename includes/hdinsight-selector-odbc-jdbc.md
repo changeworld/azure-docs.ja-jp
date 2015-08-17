@@ -2,4 +2,4 @@
 - [ODBC](../articles/hdinsight/hdinsight-connect-excel-hive-ODBC-driver.md)
 - [JDBC](../articles/hdinsight/hdinsight-connect-hive-jdbc-driver.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

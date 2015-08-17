@@ -212,4 +212,4 @@ MPIO のインストール手順については、[StorSimple デバイスの MP
 [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

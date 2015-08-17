@@ -562,7 +562,7 @@ ID を使用してインスタンスを直接削除することもできます�
     </ListView>
 	
 
-前のコードで、*listitem* 属性は、リスト内の個々の行のレイアウトの ID を指定します。次にそのコードを示します。チェック ボックスとそれに関連付けられたテキストを指定しています。これは、リスト内のそれぞれの項目に対して 1 回インスタンス化されます。より複雑なレイアウトでは、表示する追加フィールドを指定することもできます。このコードは、*row_list_to_do.xml* ファイルに含まれています。
+前のコードで、*listitem* 属性は、リスト内の個々の行のレイアウトの ID を指定します。次にそのコードを示します。チェック ボックスとそれに関連付けられたテキストを指定しています。これは、リスト内のそれぞれの項目に対して 1 回インスタンス化されます。より複雑なレイアウトでは、表示する追加フィールドを指定することもできます。このコードは、*row\_list\_to\_do.xml* ファイルに含まれています。
 
 	<?xml version="1.0" encoding="utf-8"?>
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -579,7 +579,7 @@ ID を使用してインスタンスを直接削除することもできます�
 
 ### <a name="adapter"></a>方法: アダプターを定義する
 	
-このビューのデータ ソースは *ToDoItem* の配列であるため、*ArrayAdapter<ToDoItem>* クラスからアダプターをサブクラス化します。このサブクラスでは、*row_list_to_do* レイアウトを使用してすべての *ToDoItem* のビューを生成します。
+このビューのデータ ソースは *ToDoItem* の配列であるため、*ArrayAdapter<ToDoItem>* クラスからアダプターをサブクラス化します。このサブクラスでは、*row\_list\_to\_do* レイアウトを使用してすべての *ToDoItem* のビューを生成します。
 
 コードでは、*ArrayAdapter&lt;E&gt;* クラスの拡張である次のクラスを定義します。
 
@@ -928,4 +928,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

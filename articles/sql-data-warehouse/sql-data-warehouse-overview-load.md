@@ -1,9 +1,9 @@
-<properties
+   <properties
    pageTitle="SQL Data Warehouse へのデータのロード | Microsoft Azure"
    description="SQL Data Warehouse にデータをロードするための一般的なシナリオを学習します"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="TwoUnder"
+   authors="lodipalm"
    manager="barbkess"
    editor=""/>
 
@@ -14,40 +14,132 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="06/21/2015"
-   ms.author="mausher;barbkess"/>
+   ms.author="lodipalm;barbkess"/>
 
 # SQL Data Warehouse へのデータのロード
-SQL Data Warehouse には、さまざまなシナリオに合わせてデータをロードするための多数のオプションが用意されています。たとえば、次のようにロードする場合があります。
-
-- 1 日に 1 回大規模なバッチをロードする
-- 1 日を通して小規模なバッチをロードする
-- より小さい (ディメンション) テーブルへの簡単な更新を行う
-
-各シナリオのニーズは、SQL Data Warehouse でロードするデータのタイプによって異なります。この記事では、データをロードする際に選択できる方法をいくつか説明します。
-
-## テクノロジ
-SQL Data Warehouse では、次の標準データ ロード ツールがサポートされています。
+SQL Data Warehouse には、データをロードするために以下のような多数のオプションが用意されています。
 
 - Azure Data Factory
-- bcp コマンド ライン ユーティリティ
+- BCP コマンドライン ユーティリティ
 - PolyBase
 - SQL Server Integration Services (SSIS)
 - サード パーティ製のデータ ロード ツール
 
-### Azure Data Factory (ADF)
-ADF は、データの保存、処理、移動の各サービスを効率的で拡張性が高く信頼性も高いデータ生成パイプラインとして構成する、完全に管理されたサービスです。SQL Data Warehouse は、ADF [コピー アクティビティ][]の[サポートされたソース/シンク][]です。
+上記の手法はすべて SQL Data Warehouse で使用可能です。多くのユーザーは、初期ロードについて 100 ギガバイトから 10 テラバイトまでの範囲で見ています。次のセクションでは、初期データ ロードについてのガイダンスを提供します。
 
-### bcp コマンド ライン ユーティリティ
-**bcp** コマンド ライン実行可能ファイルは、SQL Server、SQL Database、および SQL Data Warehouse からデータのロードや抽出を行うことができる Microsoft ユーティリティです。開始するには、「[bcp を使用したデータのロード][]」チュートリアルに従ってください。
+## SQL Server から SQL Data Warehouse への初期ロード 
+オンプレミスの SQL Server インスタンスから SQL Data Warehouse にロードをするには、以下の手順をお勧めします。
 
-### PolyBase
-PolyBase は、Hadoop や Azure Storage BLOB ストレージをクエリする方法を提供することでデータ分析を簡略化する Microsoft テクノロジです。すべては標準の Transact-SQL を使用して実行可能であり、MapReduce を使用する必要はありません。PolyBase は Azure BLOB ストレージから SQL Data Warehouse にデータをロードすることもできます。開始するには、「[PolyBase を使用したデータのロード][]」チュートリアルに従ってください。
+1. SQL Server データをフラット ファイルに **BCP** する。 
+2. **AZCopy** または **インポート/エクスポート** (大きめのデータセットの場合) を使用して、ファイルを Azure に移動する。
+3. PolyBase を構成して、自身のストレージ アカウントからファイルを読み込む。
+4. 新しいテーブルを作成し、**PolyBase** でデータをロードする。
 
-### SQL Server Integration Services (SSIS)
-[SSIS][] は、エンタープライズ レベルのデータの統合と変換ソリューションを構築するためのプラットフォームです。SQL Data Warehouse に接続するパッケージを構築するには、ADO.Net 接続マネージャーを使用して標準の OLE DB 変換先アダプターを使用します。
+次のセクションでは、各ステップをより詳しく説明し、処理の例を提供します。
 
-### サード パーティ製のツール
-SQL Data Warehouse は、データをロードするための主要な業界ソリューションをサポートします。詳細については、[ソリューション パートナー][]のリストを参照してください。
+> [AZURE.NOTE]SQL Server などのシステムからデータを移動する前に、ドキュメントの[スキーマの移行][]と[コードの移行][]の記事を確認してください。
+
+## BCP によるファイルのエクスポート
+
+Azure へのファイルの移動の準備として、ファイルをフラット ファイルにエクスポートする必要があります。これには BCP コマンドライン ユーティリティを使用すると最適です。まだユーティリティがない場合は、[Microsoft Command Line Utilities for SQL Server][] (SQL Server の Microsoft コマンド ライン ユーティリティ) からダウンロードできます。サンプルの BCP コマンドは、次のようになります。
+
+	bcp "<Directory><File>" -c -T -S <Server Name> -d <Database Name>
+
+このコマンドは、クエリの結果を、指定したディレクトリのファイルにエクスポートします。複数の BCP コマンドを個別のテーブルごとに一度に実行して、並行処理できます。そのため、サーバーのコアごとに 1 つの BCP プロセスまで実行できますが、構成が違う場合には少し控えめの処理を試行して、自分の環境に最適な処理を確かめてください。
+
+さらに、PolyBase を使用してロードする際には、PolyBase が UTF-16 をまだサポートしておらず、すべてのファイルが UTF-8 でなければならないことに注意してください。これは、BCP コマンドで "-c" フラグを使用することで容易に解決し、また、フラット ファイルを下記のコードで UTF-16 から UTF-8 に変換することもできます。
+
+		Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name> -Encoding utf8
+ 
+ファイルへのデータのエクスポートに成功したら、ファイルを Azure に移動します。これは、次のセクションで述べる AZCopy もしくは "インポート/エクスポート" サービスで実行可能です。
+
+
+## AZCopy またはインポート/エクスポートを使用した Azure へのロード
+5 から 10 テラバイトもの範囲かそれ以上のデータを移動する場合、Microsoft のディスク発送サービスの[インポート/エクスポート][]を使用してデータ移動を行うことをお勧めします。しかし、我々が調べたところ、テラバイトまでの範囲なら、AZCopy で公開インターネットを使って問題なくデータを移動できることがわかっています。この処理は ExpressRoute でスピードアップもしくは拡張できます。
+
+次のステップで、AZCopy を使って、オンプレミスから Azure Storage アカウントにデータを移動する方法を詳しく説明します。同じリージョンに Azure Storage アカウントがない場合、[Azure Storage のドキュメント][]にしたがってアカウントを 1 つ作成できます。異なるリージョンのストレージ アカウントからもデータをロードできます。しかし、この場合は最適なパフォーマンスとなりません。
+
+> [AZURE.NOTE]本ドキュメントでは、すでに AZCopy コマンド ライン ユーティリティがインストールされているものとしており、その場合、AZCopy は Powershell で実行可能です。もし AZCopy がインストールされていない場合は、[AZCopy インストール手順][]に従ってください。
+
+BCP を使って作成されたファイルのセットができたら、Azure powershell から、または、powershell スクリプトの実行により、AZCopy を簡単に実行できます。AZCopy を実行する際のプロンプトのおおよその形式は次のようになります。
+
+	 AZCopy /Source:<File Location> /Dest:<Storage Container Location> /destkey:<Storage Key> /Pattern:<File Name> /NC:256
+
+AZCopy でのロードについては、基本に加えて、以下のベスト プラクティスをお勧めします。
+
+
++ **同時接続**: 一度に実行する AZCopy の操作の数を増やすことに加え、/NC パラメーターの設定でロード先への同時接続数を開くことにより、AZCopy 操作自体の並行処理を促進できます。/NC パラメーターは 512 まで高い値に設定できますが、最適なデータ転送は 256 であることがわかっており、構成に最適なパラメーターの数値を試行して見つけることをお勧めします。
+
++ **Express Route**: すでに述べたように、AZCopy の処理は express route を有効にするとスピードアップできます。Express Route の概要と構成手順は、「[ExpressRoute に関するドキュメント][]」を参照してください。
+
++ **フォルダー構造**: PolyBase での転送を容易にするため、各テーブルが必ずその独自のフォルダーにマップされるようにしてください。これにより、PolyBase でのロードを後で行う際に、手順が最小限に簡素化されます。とは言っても、テーブルがフォルダー内で複数のファイルや、さらにはサブ ディレクトリに分割されていたとしても問題はありません。
+	 
+
+## PolyBase の構成 
+
+データが Azure ストレージ BLOB に存在するようになったら、SQL Data Warehouse インスタンスへ PolyBase を使用してデータをインポートします。以下の手順は構成のみであり、手順の多くは SQL Data Warehouse インスタンス、ユーザー、ストレージ アカウントごとに一回だけ完了する必要があります。これらの手順は、「[PolyBase を使用したデータのロード][]」ドキュメントで詳しく説明しています。
+
+1. **データベース マスター キーの作成** この操作はデータベースごとに一回だけ完了する必要があります。 
+
+2. **データベース スコープの資格情報の作成** この操作は新しい資格情報/ユーザーを作成する場合にのみ必要であり、それ以外は事前に作成された資格情報を使用できます。
+
+3. **外部ファイル形式の作成** 外部ファイル形式も同様に再利用でき、新しいファイル形式をアップロードするときのみ作成が必要です。
+
+4. **外部データ ソースの作成** ストレージ アカウントについては、同じコンテナーからロードする場合は、外部データ ソースを使用できます。"LOCATION" パラメーターでは、フォーマットのロケーション： "wasbs://mycontainer@ test.blob.core.windows.net/path" を使用してください。
+
+		-- Creating master key
+		CREATE MASTER KEY;
+
+		-- Creating a database scoped credential
+		CREATE DATABASE SCOPED CREDENTIAL <Credential Name> WITH IDENTITY = '<User Name>', 
+    	Secret = '<Azure Storage Key>';
+
+		-- Creating external file format (delimited text file)
+		CREATE EXTERNAL FILE FORMAT text_file_format 
+		WITH (
+		    FORMAT_TYPE = DELIMITEDTEXT, 
+		    FORMAT_OPTIONS (
+		        FIELD_TERMINATOR ='|', 
+		        USE_TYPE_DEFAULT = TRUE
+		    )
+		);
+
+		--Creating an external data source
+		CREATE EXTERNAL DATA SOURCE azure_storage 
+		WITH (
+	    	TYPE = HADOOP, 
+	        LOCATION ='wasbs://<Container>@<Blob Path>’,
+	        CREDENTIAL = <Credential Name>
+		;
+
+
+ストレージ アカウントが正しく構成されたら、SQL Data Warehouse へのデータのロードに進みます。
+
+## PolyBase を使用したデータのロード 
+PolyBase を構成した後は、ストレージ内のデータを参照する外部テーブルを作成し、そのデータを SQL Data Warehouse 内の新しいテーブルにマップするだけで、データを SQL Data Warehouse に直接ロードできます。これは以下の簡単な 2 つのコマンドだけで実行できます。
+
+1. "CREATE EXTERNAL TABLE" コマンドを使用して、データの構造を定義します。データの状態をすばやく効率的に取得できるように、SQL Server テーブルを SSMS でスクリプティングし、外部テーブルとの相違を解決する際は手動にて調整することをお勧めします。Azure に外部テーブルを作成したら、外部テーブルはデータがアップデートされたり、データが追加されても、同じロケーションを参照しつづけます。  
+
+		-- Creating external table pointing to file stored in Azure Storage
+		CREATE EXTERNAL TABLE <External Table Name> (
+		    <Column name>, <Column type>, <NULL/NOT NULL>
+		)
+		WITH (LOCATION='<Folder Path>',
+		      DATA_SOURCE = <Data Source>,
+		      FILE_FORMAT = <File Format>,      
+		);
+
+2. "CREATE TABLE...AS SELECT" ステートメントでデータをロードします。
+
+		CREATE TABLE <Table Name> 
+		WITH (
+    		CLUSTERED COLUMNSTORE INDEX
+    		)
+		AS SELECT * from <External Table Name>;
+
+	より詳細の SELECT ステートメントを使用すると、テーブルから行のサブセクションのロードもできることに注意してください。しかし、PolyBase は今回はストレージ アカウントに追加の計算を転送してくれるわけではないので、SELECT ステートメントでサブセクションをロードする場合は、データセット全体をロードするよりも早くなることはありません。
+
+"CREATE TABLE...AS SELECT" ステートメントの他に、"INSERT...INTO" ステートメントで外部テーブルから既存テーブルにデータをロードすることもできます。
 
 ## 次のステップ
 開発に関するその他のヒントについては、[開発の概要][]に関するページをご覧ください。
@@ -55,18 +147,24 @@ SQL Data Warehouse は、データをロードするための主要な業界ソ�
 <!--Image references-->
 
 <!--Article references-->
-[bcp を使用したデータのロード]: sql-data-warehouse-load-with-bcp.md
+[Load data with bcp]: sql-data-warehouse-load-with-bcp.md
 [PolyBase を使用したデータのロード]: sql-data-warehouse-load-with-polybase.md
-[ソリューション パートナー]: sql-data-warehouse-solution-partners.md
+[solution partners]: sql-data-warehouse-solution-partners.md
 [開発の概要]: sql-data-warehouse-overview-develop.md
+[スキーマの移行]: sql-data-warehouse-migrate-schema.md
+[コードの移行]: sql-data-warehouse-migrate-code.md
 
 <!--MSDN references-->
-[サポートされたソース/シンク]: https://msdn.microsoft.com/library/dn894007.aspx
-[コピー アクティビティ]: https://msdn.microsoft.com/library/dn835035.aspx
+[supported source/sink]: https://msdn.microsoft.com/library/dn894007.aspx
+[copy activity]: https://msdn.microsoft.com/library/dn835035.aspx
 [SQL Server destination adapter]: https://msdn.microsoft.com/library/ms141237.aspx
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
-
 <!--Other Web references-->
+[AZCopy インストール手順]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-use-azcopy/
+[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-jp/download/details.aspx?id=36433
+[インポート/エクスポート]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-import-export-service/
+[Azure Storage のドキュメント]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/
+[ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

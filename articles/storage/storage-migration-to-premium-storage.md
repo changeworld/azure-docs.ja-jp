@@ -315,4 +315,4 @@ OS イメージまたは OS ディスクを登録したら、新しい DS シリ
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

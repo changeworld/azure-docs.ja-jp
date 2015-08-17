@@ -235,7 +235,7 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 
     ![ダイナミック ディスク変換メッセージ](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png)
 
-10. [ディスクの管理] で、ディスク 1 とディスク 2 がダイナミック ミラー ボリュームとして表示されていることを確認します (状態列に "ダイナミック" と表示され、容量バーの色がミラー ボリュームを示す赤に変わっています)。
+10. ディスクの管理で、Disk 1 と Disk 2 がダイナミック ミラー ボリュームとして表示されていることを確認します([状態] 列には **[動的]** と表示されている必要があり、容量バーの色はミラー化されたボリュームを示す赤に変更する必要があります)。
 
     ![ディスクの管理でミラー化されたダイナミック ディスク](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png)
  
@@ -270,4 +270,4 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -102,7 +102,7 @@ ADM をまだ統合してしない場合は、Engagement では簡単な方法�
 
 ##Engagement OAuth 資格情報を与える
 
-OAuth Credentials (クライアント ID とクライアントシークレット) を $/#application/YOUR_APPID/native-push で送信します。
+OAuth Credentials (クライアント ID とクライアントシークレット) を $/#application/YOUR\_APPID/native-push で送信します。
 
 これで、Reach 通知とポーリングを作成するときに [いつでも] を選択することができます。
 
@@ -113,4 +113,4 @@ OAuth Credentials (クライアント ID とクライアントシークレット
 [この手順]: https://developer.amazon.com/sdk/adm/integrating-app.html#Asset
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -3,7 +3,7 @@
 	description="DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) を表示するための Azure プレビュー ポータル ツール、DocumentDB スクリプト エクスプローラーについて説明します。"
 	services="documentdb"
 	authors="stephbaron"
-	manager="johnmac"
+	manager="jhubbard"
 	editor="monicar"
 	documentationCenter=""/>
 
@@ -12,7 +12,7 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="06/10/2015"
 	ms.author="stbaro"/>
 
@@ -75,11 +75,11 @@
 
 	![スクリプト エクスプローラーのスクリプトのプロパティ表示のスクリーンショット](./media/documentdb-view-scripts/scriptproperties.png)
 
-	> [AZURE.NOTE]タイムスタンプ (_ts) プロパティは内部ではエポック時間として表現されますが、スクリプト エクスプローラーでは、人間が読むことができる GMT 形式で値が表示されます。
+	> [AZURE.NOTE]タイムスタンプ (\_ts) プロパティは内部ではエポック時間として表現されますが、スクリプト エクスプローラーでは、人間が読むことができる GMT 形式で値が表示されます。
 
 ## 次のステップ
 
 DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -84,7 +84,7 @@ Brock | 実働リソース グループ内のすべてのリソースの作成�
 
 ![][3]
 
-*ご使用のサブスクリプションの名前* \*\* > [閲覧者] > [追加]\*\* をクリックします。ユーザーとグループのリストから、Active Directory グループの名前を選択するか入力します。
+*ご使用のサブスクリプションの名前* ** > [閲覧者] > [追加]** をクリックします。ユーザーとグループのリストから、Active Directory グループの名前を選択するか入力します。
 
 ![][4]
 
@@ -441,7 +441,7 @@ Azure のロールベースのアクセス制御では、ユーザー、グル�
 
 ロール名 | 説明
 ------------- | -------------  
-[API Management サービスの共同作業者](#api-management-service-contributor) | アクセス権以外の API Management サービスを管理します。
+[API 管理サービスの共同作業者](#api-management-service-contributor) | アクセス権以外の API Management サービスを管理します。
 [Application Insights コンポーネントの共同作業者](#application-insights-component-contributor) | アクセス権以外の Application Insights コンポーネントを管理します。
 [BizTalk の共同作業者](#biztalk-contributor) | アクセス権以外の BizTalk Services を管理します。
 [ClearDB MySQL DB の共同作業者](#cleardb-mysql-db-contributor) | アクセス権以外の ClearDB MySQL データベースを管理します。
@@ -466,7 +466,7 @@ Azure のロールベースのアクセス制御では、ユーザー、グル�
 [Web サイトの共同作業者](#website-contributor) | アクセス権以外、Web プラン以外の Web サイトを管理します。
 
 
-### API Management サービスの共同作業者
+### API 管理サービスの共同作業者
 
 <table style=width:100%">
 <tr>
@@ -474,7 +474,7 @@ Azure のロールベースのアクセス制御では、ユーザー、グル�
 </tr>
 <tr>
 <td>Microsoft.ApiManagement/Services/*</td>
-<td>API Management サービスの作成と管理</td>
+<td>API 管理サービスの作成と管理</td>
 </tr>
 <tr>
 <td>Microsoft.Authorization/*/read</td>
@@ -1293,4 +1293,4 @@ Azure RBAC を試用して、[フィードバック](http://aka.ms/azurerbacfeed
 [9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
 [10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

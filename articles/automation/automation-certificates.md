@@ -98,7 +98,7 @@ Runbook で証明書を使用するには、**Get-AutomationCertificate** アク
 
 次の図は、グラフィカルな Runbook で証明書を使用する例を示したものです。これは、テキストの Runbook からクラウド サービスに証明書を追加する前述の例と同じです。
 
-この例では、サービスに対する認証に接続オブジェクトを使用する Send-**TwilioSMS アクティビティ**に対して設定された **UseConnectionObject** パラメーターを使用します。シーケンス リンクは Connection パラメーターが予期しない単一のオブジェクトを含むコレクションを返すため、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#links-and-workflow)を使用する必要があります。
+この例では、サービスに対する認証に接続オブジェクトを使用する **Send-TwilioSMS** アクティビティに対して設定された **UseConnectionObject** パラメーターを使用します。シーケンス リンクは Connection パラメーターが予期しない単一のオブジェクトを含むコレクションを返すため、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#links-and-workflow)を使用する必要があります。
 
 ![](media/automation-certificates/add-certificate.png)
 
@@ -107,4 +107,4 @@ Runbook で証明書を使用するには、**Get-AutomationCertificate** アク
 
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow) 
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -142,4 +142,4 @@
 
    	>[AZURE.NOTE]新しい項目の <code>imageUri</code> プロパティが <strong>Image</strong> コントロールにバインドされると、イメージは Blob ストレージ サービスから自動的にダウンロードされます。
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

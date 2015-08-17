@@ -326,4 +326,4 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 [fam1retire]: cloud-services-guestos-family1-retirement.md
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

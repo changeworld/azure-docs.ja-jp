@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/17/2015" 
+	ms.date="07/24/2015" 
 	ms.author="sidneyh"/>
 
-# Elastic Database ツールに関する FAQ 
+# エラスティック データベース ツールに関する FAQ 
 
 #### シャードごとにシングルテナントはあるが、シャーディング キーがない場合、スキーマ情報にどのようにしてシャーディング キーを取り込むのですか。
 スキーマ情報オブジェクトは、分割や結合といったシナリオの場合にのみ使用します。アプリケーションがシングルテナントである場合は、Split Merge ツールは必要ないため、スキーマ情報オブジェクトを取り込む必要はありません。
 
 #### データベースをプロビジョニングし、既にシャード マップ マネージャーもあります。このデータベースをシャードとして登録するにはどうしたらいいですか。
-「**[Elastic Database クライアント ライブラリを使用してアプリケーションに共有を追加する](sql-database-elastic-scale-add-a-shard.md)**」を参照してください。
+「**[エラスティック データベース クライアント ライブラリを使用してアプリケーションに共有を追加する](sql-database-elastic-scale-add-a-shard.md)**」を参照してください。
 
-#### Elastic Databaseデータベース ツールにはどの程度のコストがかかりますか。
-Elastic Database クライアント ライブラリの使用にコストは発生しません。コストが発生するのは、シャードとシャード マップ マネージャーに使用した Azure SQL データベースと、Split Merge ツールにプロビジョニングした Web/worker ロールに対してのみです。
+#### エラスティック データベースデータベース ツールにはどの程度のコストがかかりますか。
+エラスティック データベース クライアント ライブラリの使用にコストは発生しません。コストが発生するのは、シャードとシャード マップ マネージャーに使用した Azure SQL データベースと、Split Merge ツールにプロビジョニングした Web/worker ロールに対してのみです。
 
 #### 別のサーバーからシャードを追加した場合に、資格情報が機能しないのはどうしてですか。
 資格情報は「User ID=username@servername」の形式ではなく、単純に「User ID = username」を使用します。また、「username」ログインがシャードで権限を持っていることを確認します。
@@ -33,7 +33,7 @@ Elastic Database クライアント ライブラリの使用にコストは発�
 #### アプリケーションを起動するたびに、シャード マップ マネージャーを作成してシャードを取り込む必要がありますか。
 必要ありません。シャード マップ マネージャー (たとえば **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) の作成は 1 回だけの操作です。アプリケーションは、アプリケーションの起動時に **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** 呼び出しを使用する必要があります。アプリケーション ドメインごとにそのような呼び出しを 1 回行います。
 
-#### Elastic Database ツールの使い方について質問がある場合、どこに問い合わせればよいですか。 
+#### エラスティック データベース ツールの使い方について質問がある場合、どこに問い合わせればよいですか。 
 [Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) フォーラムからお問い合わせください。
 
 #### シャーディング キーを使用してデータベース接続を取得する場合でも、同じシャードの別のシャーディング キーでデータを照会できますか。設計によって異なりますか。
@@ -48,4 +48,4 @@ Elastic Scale API を使用すると、シャーディング キーの接続デ�
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

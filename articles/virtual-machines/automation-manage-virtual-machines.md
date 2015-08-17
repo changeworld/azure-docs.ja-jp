@@ -42,4 +42,4 @@ Virtual Machines は、[Azure PowerShell](https://msdn.microsoft.com/library/azu
 
 [Azure Automation の使用](../automation-create-runbook-from-samples.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="RemoteApp を使用すれば、あらゆるデバイスで、あらゆるアプリを実行できます"
-   description="RemoteApp を使用して、ユーザーと任意のアプリを共有する方法について説明します。"
+   pageTitle="Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する"
+   description="Azure RemoteApp を使用して、ユーザーと任意の Windows アプリを共有する方法について説明します。"
    services="remoteapp"
    documentationCenter=""
    authors="lizap"
@@ -13,14 +13,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="05/28/2015"
+   ms.date="08/03/2015"
    ms.author="elizapo"/>
 
-# RemoteApp を使用すれば、あらゆるデバイスで、あらゆるアプリを実行できます
+# RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
 
 このチュートリアルでは、Windows アプリケーションを、どこでどんなデバイスを使っていても、今すぐ実行できるようにする方法を紹介します。Internet Explorer 6 であっても、10 年も昔に作成したカスタム アプリケーションであっても、Office アプリであっても、ユーザーは、それらの少数のアプリケーションのために特定のオペレーティング システム (Windows XP など) を使い続ける必要はもうありません。
 
-RemoteApp を使用すれば、ユーザーも、自分の Android や Apple デバイスを使用して Windows (または Windows Phone) でするのと同じエクスペリエンスが得られます。これは、インターネット接続のあるどこからでもユーザーがアクセスできる Azure 上の Windows 仮想マシンに Windows アプリケーションがホストされることにより、実現されます。それでは始めましょう。
+Azure RemoteApp を使用すれば、ユーザーも、自分の Android や Apple デバイスを使用して Windows (または Windows Phone) でするのと同じエクスペリエンスが得られます。これは、インターネット接続のあるどこからでもユーザーがアクセスできる Azure 上の Windows 仮想マシンに Windows アプリケーションがホストされることにより、実現されます。
 
 このチュートリアルでは、すべてのユーザーと Access を共有します。Access はデータベースです。せっかくのデータベースが役立つように、ユーザーが Access データ共有にアクセスできるようにするいくつかの手順を実行しましょう。
 
@@ -113,4 +113,4 @@ RemoteApp を使用すれば、ユーザーも、自分の Android や Apple デ
 
 <!--Image references-->
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -12,7 +12,7 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-phonegap"
 	ms.devlang="js"
-	ms.topic="get-started-article" 
+	ms.topic="article" 
 	ms.date="07/02/2015"
 	ms.author="piyushjo" />
 
@@ -30,7 +30,7 @@
 
 このチュートリアルでは、Mac を使用して空の Cordova アプリを作成してから、Mobile Engagement SDK と統合します。このアプリは、基本的な分析データを収集し、iOS では Apple Push Notification System (APNS)、Android では Google Cloud Messaging (GCM) を使用してプッシュ通知を受信します。このアプリを、テスト用に iOS デバイスまたは Android デバイスにデプロイします。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+> [AZURE.IMPORTANT]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
 
 このチュートリアルには、次のものが必要です。
 
@@ -46,7 +46,7 @@
 
 1. Azure 管理ポータルにログオンし、画面の下部にある **[+新規]** をクリックします。
 
-2. **[アプリ サービス]**、**[モバイル エンゲージメント]**、**[作成]** の順にクリックします。
+2. **[App Services]**、**[モバイル エンゲージメント]**、**[作成]** の順にクリックします。
 
    	![][1]
 
@@ -233,7 +233,7 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 
 **(iOS)**
 
-1. iOS では実在するデバイスへのプッシュ通知だけが許可されているため、XCode を使用してアプリをビルドし、デバイスにデプロイして、プッシュ通知をテストします。Cordova プロジェクトを作成した場所の **...\platforms\ios** に移動します。XCode でネイティブ .xcodeproj ファイルを開きます。 
+1. iOS では実在するデバイスへのプッシュ通知だけが許可されているため、XCode を使用してアプリをビルドし、デバイスにデプロイして、プッシュ通知をテストします。Cordova プロジェクトを作成した場所の **...\\platforms\\ios** に移動します。XCode でネイティブ .xcodeproj ファイルを開きます。 
 	
 2. 先ほど Mobile Engagement ポータルにアップロードした証明書と、Cordova アプリの作成中に指定した App Id を含むプロビジョニング プロファイルが設定されたアカウントを使用して、Cordova アプリをビルドして iOS デバイスにデプロイします。XCode で **Resources*-info.plist** ファイルの *Bundle ID* をチェックアウトして、照合することができます。
 
@@ -273,7 +273,7 @@ GCM 通知は Android エミュレーターでサポートされているため�
 
 	![][15]
 
-5. (オプション) アクション URL を指定することもできます。この URL では、プラグインの **AZME REDIRECT URL** 変数を設定する際に提供された URL スキーム (*myapp://test*) を使用するようにしてください。
+5. (オプション) アクション URL を指定することもできます。この URL では、プラグインの **AZME REDIRECT URL** 変数を設定する際に提供された URL スキーム (**myapp://test*) を使用するようにしてください。
 
 5. 最も基本的なキャンペーンの設定が完了したので、再度下にスクロールし、キャンペーンを**作成**して保存します。
 	
@@ -312,4 +312,4 @@ GCM 通知は Android エミュレーターでサポートされているため�
 [20]: ./media/mobile-engagement-cordova-get-started/native-push-settings.png
 [21]: ./media/mobile-engagement-cordova-get-started/api-key.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

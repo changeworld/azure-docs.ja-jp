@@ -87,8 +87,7 @@ Azure アプリケーションでは、通常、目的を達成するために�
        "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
     }
 
-式と関数に関するここまでの知識でも、テンプレートのセクションを理解するには十分です。パラメーター、戻り値の形式など、すべてのテンプレート関数の詳細については、
-[Azure リソース マネージャーのテンプレート関数](./resource-group-template-functions.md)に関するページを参照してください。
+式と関数に関するここまでの知識でも、テンプレートのセクションを理解するには十分です。パラメーター、戻り値の形式など、すべてのテンプレート関数の詳細については、[Azure リソース マネージャーのテンプレート関数](./resource-group-template-functions.md)に関するページを参照してください。
 
 
 ## パラメーター
@@ -119,7 +118,7 @@ Azure アプリケーションでは、通常、目的を達成するために�
 - string または secureString - 有効な JSON 文字列
 - int - 有効な JSON 整数
 - bool - 有効な JSON ブール値
-- object - 有効な JSON オブジェクト
+- object または secureObject - 有効な JSON オブジェクト
 - array - 有効な JSON 配列
 
 
@@ -421,4 +420,4 @@ For more information, see the [resourceId function](../resource-group-template-f
 - アプリケーションのデプロイの詳細な例については、「[Azure でのマイクロサービスの予測どおりのプロビジョニングとデプロイ](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 - 使用可能なスキーマを確認するには、[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)に関するページを参照してください。
 
-<!-----HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

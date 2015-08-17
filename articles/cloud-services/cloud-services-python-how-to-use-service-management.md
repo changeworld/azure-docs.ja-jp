@@ -74,7 +74,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 	from azure.servicemanagement import *
 
 	subscription_id = '<your_subscription_id>'
-	certificate_path = 'CURRENT_USER\my\AzureCertificate'
+	certificate_path = 'CURRENT_USER\\my\\AzureCertificate'
 
 	sms = ServiceManagementService(subscription_id, certificate_path)
 
@@ -82,7 +82,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="ListAvailableLocations"> </a>方法: 利用可能な場所を列挙する
 
-ホスティング サービスに利用できる場所を列挙するには、**list_locations** メソッドを使用します。
+ホスティング サービスに利用できる場所を列挙するには、**list\_locations** メソッドを使用します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -93,7 +93,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 	for location in result:
 		print(location.name)
 
-クラウド サービスやストレージ サービスを作成するときは、有効な場所を指定する必要があります。**list_locations** メソッドでは常に、現在利用可能な場所の最新のリストが返されます。この記事の執筆時点で利用可能な場所は次のとおりです。
+クラウド サービスやストレージ サービスを作成するときは、有効な場所を指定する必要があります。**list\_locations** メソッドでは常に、現在利用可能な場所の最新のリストが返されます。この記事の執筆時点で利用可能な場所は次のとおりです。
 
 - 西ヨーロッパ
 - 北ヨーロッパ
@@ -112,7 +112,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="CreateCloudService"> </a>方法: クラウド サービスを作成する
 
-アプリケーションを作成して、それを Azure で実行するときは、そのコードと構成をあわせて Azure [クラウド サービス]と呼びます (以前にリリースした Azure では*ホステッド サービス*と呼ばれていました)。**create_hosted_service** メソッドを使用して、新しいホステッド サービスを作成できます。そのためには、このメソッドに、ホステッド サービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
+アプリケーションを作成して、それを Azure で実行するときは、そのコードと構成をあわせて Azure [クラウド サービス]と呼びます (以前にリリースした Azure では*ホステッド サービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホステッド サービスを作成できます。そのためには、このメソッドに、ホステッド サービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -126,7 +126,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 	sms.create_hosted_service(name, label, desc, location)
 
-**list_hosted_services** メソッドを使用して、サブスクリプションのすべてのホステッド サービスを列挙できます。
+**list\_hosted\_services** メソッドを使用して、サブスクリプションのすべてのホステッド サービスを列挙できます。
 
 	result = sms.list_hosted_services()
 
@@ -136,7 +136,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 		print('Location: ' + hosted_service.hosted_service_properties.location)
 		print('')
 
-特定のホステッド サービスに関する情報を取得する場合は、ホステッド サービス名を **get_hosted_service_properties** メソッドに渡します。
+特定のホステッド サービスに関する情報を取得する場合は、ホステッド サービス名を **get\_hosted\_service\_properties** メソッドに渡します。
 
 	hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -144,11 +144,11 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 	print('Management URL: ' + hosted_service.url)
 	print('Location: ' + hosted_service.hosted_service_properties.location)
 
-クラウド サービスを作成した後、**create_deployment** メソッドを使用してコードをサービスにデプロイできます。
+クラウド サービスを作成した後、**create\_deployment** メソッドを使用してコードをサービスにデプロイできます。
 
 ## <a name="DeleteCloudService"> </a>方法: クラウド サービスを削除する
 
-クラウド サービスを削除するには、そのサービス名を **delete_hosted_service** メソッドに渡します。
+クラウド サービスを削除するには、そのサービス名を **delete\_hosted\_service** メソッドに渡します。
 
 	sms.delete_hosted_service('myhostedservice')
 
@@ -156,7 +156,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="DeleteDeployment"> </a>方法: デプロイの削除
 
-デプロイメントを削除するには、**delete_deployment** メソッドを使用します。次の例では、`v1` という名前のデプロイメントを削除する方法を示しています。
+デプロイメントを削除するには、**delete\_deployment** メソッドを使用します。次の例では、`v1` という名前のデプロイメントを削除する方法を示しています。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -184,9 +184,9 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 	operation_result = sms.get_operation_status(result.request_id)
 	print('Operation status: ' + operation_result.status)
 
-上の例では、**create_storage_account** 処理のステータスを取得するため、**create_storage_account** から返された結果を **get_operation_status** メソッドに渡しています。
+上の例では、**create\_storage\_account** 処理のステータスを取得するため、**create\_storage\_account** から返された結果を **get\_operation\_status** メソッドに渡しています。
 
-ストレージ アカウントとそのプロパティを列挙するには、**list_storage_accounts** メソッドを使用します。
+ストレージ アカウントとそのプロパティを列挙するには、**list\_storage\_accounts** メソッドを使用します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -201,7 +201,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="DeleteStorageService"> </a>方法: ストレージ サービスを削除する
 
-ストレージ サービスを削除するには、そのサービス名を **delete_storage_account** メソッドに渡します。ストレージ サービスを削除すると、サービスに格納されているすべてのデータ (BLOB、テーブル、キュー) が削除されます。
+ストレージ サービスを削除するには、そのサービス名を **delete\_storage\_account** メソッドに渡します。ストレージ サービスを削除すると、サービスに格納されているすべてのデータ (BLOB、テーブル、キュー) が削除されます。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -212,7 +212,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="ListOperatingSystems"> </a>方法: 利用可能なオペレーティング システムを列挙する
 
-ホスティング サービスに利用できるオペレーティング システムを列挙するには、**list_operating_systems** メソッドを使用します。
+ホスティング サービスに利用できるオペレーティング システムを列挙するには、**list\_operating\_systems** メソッドを使用します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -226,7 +226,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 		print('Family: ' + os.family_label)
 		print('Active: ' + str(os.is_active))
 
-または、**list_operating_system_families** メソッドを使用することもできます。このメソッドでは、オペレーティング システムがファミリにグループ化されます。
+または、**list\_operating\_system\_families** メソッドを使用することもできます。このメソッドでは、オペレーティング システムがファミリにグループ化されます。
 
 	result = sms.list_operating_system_families()
 
@@ -240,7 +240,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="CreateVMImage"> </a>方法: オペレーティング システム イメージを作成する
 
-オペレーティング システム イメージをイメージ リポジトリに追加するには、**add_os_image** メソッドを使用します。
+オペレーティング システム イメージをイメージ リポジトリに追加するには、**add\_os\_image** メソッドを使用します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -257,7 +257,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 	operation_result = sms.get_operation_status(result.request_id)
 	print('Operation status: ' + operation_result.status)
 
-利用できるオペレーティング システム イメージを列挙するには、**list_os_images** メソッドを使用します。このメソッドでは、すべてのプラットフォーム イメージとユーザー イメージが対象となります。
+利用できるオペレーティング システム イメージを列挙するには、**list\_os\_images** メソッドを使用します。このメソッドでは、すべてのプラットフォーム イメージとユーザー イメージが対象となります。
 
 	result = sms.list_os_images()
 
@@ -273,7 +273,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="DeleteVMImage"> </a>方法: オペレーティング システム イメージを削除する
 
-ユーザー イメージを削除するには、**delete_os_image** メソッドを使用します。
+ユーザー イメージを削除するには、**delete\_os\_image** メソッドを使用します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -287,7 +287,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="CreateVM"> </a>方法: 仮想マシンを作成する
 
-仮想マシンを作成するには、最初に[クラウド サービス](#CreateCloudService)を作成する必要があります。その後で、**create_virtual_machine_deployment** メソッドを使用して、仮想マシンのデプロイメントを作成します。
+仮想マシンを作成するには、最初に[クラウド サービス](#CreateCloudService)を作成する必要があります。その後で、**create\_virtual\_machine\_deployment** メソッドを使用して、仮想マシンのデプロイメントを作成します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -326,7 +326,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="DeleteVM"> </a>方法: 仮想マシンを削除する
 
-仮想マシンを削除するには、最初に **delete_deployment** メソッドを使用してデプロイメントを削除します。
+仮想マシンを削除するには、最初に **delete\_deployment** メソッドを使用してデプロイメントを削除します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -336,13 +336,13 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 	sms.delete_deployment(service_name='myvm',
 		deployment_name='myvm')
 
-その後で、**delete_hosted_service** メソッドを使用して、クラウド サービスを削除することができます。
+その後で、**delete\_hosted\_service** メソッドを使用して、クラウド サービスを削除することができます。
 
 	sms.delete_hosted_service(service_name='myvm')
 
 ##方法: キャプチャした仮想マシン イメージから仮想マシンを作成する
 
-VM イメージをキャプチャするには、まず、**capture_vm_image** メソッドを呼び出します。
+VM イメージをキャプチャするには、まず、**capture\_vm\_image** メソッドを呼び出します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -369,11 +369,11 @@ VM イメージをキャプチャするには、まず、**capture_vm_image** �
 			image
 		)
 
-次に、イメージが正常にキャプチャされたことを確認するには、**list_vm_images** API を使用して、イメージが結果に表示されていることを確認します。
+次に、イメージが正常にキャプチャされたことを確認するには、**list\_vm\_images** API を使用して、イメージが結果に表示されていることを確認します。
 
 	images = sms.list_vm_images()
 
-キャプチャしたイメージを使用して仮想マシンを作成するために、前の手順と同様に、**create_virtual_machine_deployment** メソッドを使用しますが、今回は vm_image_name を渡します。
+キャプチャしたイメージを使用して仮想マシンを作成するために、前の手順と同様に、**create\_virtual\_machine\_deployment** メソッドを使用しますが、今回は vm\_image\_name を渡します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -445,4 +445,4 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 [Virtual Machines]: http://msdn.microsoft.com/library/windowsazure/jj156003.aspx
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

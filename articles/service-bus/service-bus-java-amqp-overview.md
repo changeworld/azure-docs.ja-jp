@@ -99,4 +99,4 @@ Service Bus からライブラリを取得して使用する方法の詳細に�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

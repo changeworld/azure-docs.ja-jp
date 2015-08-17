@@ -132,4 +132,4 @@ Web サービスのパラメーターの詳細については、「[Azure Machin
 [writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

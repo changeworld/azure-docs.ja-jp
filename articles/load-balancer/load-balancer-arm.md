@@ -77,4 +77,4 @@ Azure ロード バランサーを使用したテンプレートは、[GitHub �
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!----HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

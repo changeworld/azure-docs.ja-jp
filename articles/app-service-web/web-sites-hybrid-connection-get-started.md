@@ -30,9 +30,9 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 - 後でこの記事で説明する内部設置型の Hybrid Connection Manager のエージェントをインストールするコンピューターの条件は次のとおりです。
 
 	- ポート 5671 で Azure に接続できること
-	- 内部設置型リソースの *hostname*:*portnumber* に到達できること 
+	- 内部設置型のリソースの *hostname*:*portnumber* に到達できること 
 
-> [AZURE.NOTE]この記事の手順では、内部設置型のハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
+> [AZURE.NOTE]この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
 
 
 ## Azure ポータルで Web アプリを作成する ##
@@ -207,4 +207,4 @@ The error indicates it couldn't find the type, not the instance.
 [HCStatusConnected]: ./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

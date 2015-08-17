@@ -1,11 +1,12 @@
 <properties      
-    pageTitle="DocumentDB でのデータのパーティション分割 | Azure"      
+    pageTitle="DocumentDB でのデータのパーティション分割 | Microsoft Azure"      
     description="DocumentDB でのデータのパーティション分割の方法や、ハッシュ、範囲および検索パーティション分割をどのようなときに使用するかについて説明します。"          
     services="documentdb"      
     authors="arramac"      
-    manager="johnmac"      
+    manager="jhubbard"      
     editor="monicar"      
-    documentationCenter=""/> <tags      
+    documentationCenter=""/>
+<tags      
     ms.service="documentdb"      
     ms.workload="data-services"      
     ms.tgt_pltfrm="na"      
@@ -113,4 +114,4 @@ DocumentDB を使用することで、いつでも作成したコレクション
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

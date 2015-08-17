@@ -58,7 +58,7 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
    	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-edit-app.png)
 
-7. [サービス] ページで **[Azure Mobile Services]** の **[Live サービス サイト]** をクリックします。
+7. [サービス] ページで **[Azure のモバイル サービス]** の **[Live サービス サイト]** をクリックします。
 
 	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-edit2-app.png)
 
@@ -107,4 +107,4 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 [Azure 管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

@@ -57,7 +57,7 @@ Logic Apps デザイナーには操作、フィールド、パラメーターの
 
 	![Set XML Doc property](./media/app-service-api-optimize-for-logic-apps/xml-documentation-file-property.png)
 
-4. (プロジェクトの **App_Start** フォルダーにある) *SwaggerConfig.cs* ファイルを開きます。
+4. (プロジェクトの **App\_Start** フォルダーにある) *SwaggerConfig.cs* ファイルを開きます。
 
 5. *SwaggerConfig.cs* ファイルの先頭に、**System** 名前空間と **System.Globalization** 名前空間の **using** ディレクティブを追加します。
 
@@ -235,4 +235,4 @@ Logic Apps デザイナーでは、あふれる情報に対応するために、
 この記事では、Logic Apps デザイナーで使用したときの API アプリのエンド ユーザー エクスペリエンスを向上させる方法について説明しました。ベスト プラクティスとして、すべての操作 (アクション、トリガー)、パラメーター、プロパティに対して適切なフレンドリ名を付けることをお勧めします。また、基本的な操作については 5 個以下にすることをお勧めします。入力パラメーターについては基本的なプロパティの数を 4 個以下、プロパティについては 5 個以下にすることをお勧めします。残りの操作とプロパティについては、高度な操作とプロパティであることを示すマークを付ける必要があります。
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

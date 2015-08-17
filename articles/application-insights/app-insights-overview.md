@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/14/2015" 
+	ms.date="08/04/2015" 
 	ms.author="awills"/>
  
 # Application Insights とは何か?
@@ -103,6 +103,11 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
 詳細については、このページの左側のナビゲーション バーの [開始] でアプリの種類を選択してください。
 
+## サンプル
+
+
+[サンプルとチュートリアル](app-insights-code-samples.md)
+
 
 ## サポートとフィードバック
 
@@ -145,4 +150,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

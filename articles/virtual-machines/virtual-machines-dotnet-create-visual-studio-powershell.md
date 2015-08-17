@@ -39,6 +39,7 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 9. この仮想マシンのログイン資格情報を指定します。この情報は、リモート デスクトップからこの仮想マシンにアクセスする際に必要なため、メモしておきます。
 10. **[場所]** ボックスの一覧で、仮想マシンをホストするリージョンを選択します。
 11. **[OK]** をクリックして、仮想マシンの作成を開始します。操作の進捗状況は、**[出力]** ウィンドウに表示されます。
+
 	![][3]
 
 12. 仮想マシンがプロビジョニングされている間に、ソリューションの **PublishScripts** ノード内で発行スクリプトが作成されます。発行スクリプトの実行により Azure 内で仮想マシンがプロビジョニングされます。**[出力]** ウィンドウに状態が表示されます。このスクリプトは、仮想マシンを作成するために以下の操作を行います。
@@ -67,4 +68,4 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 [4]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/CreateVM_SolutionExplorer.png
 [5]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/VS_Create_VM_Connect.png
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

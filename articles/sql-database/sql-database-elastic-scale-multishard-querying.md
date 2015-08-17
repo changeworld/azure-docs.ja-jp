@@ -24,7 +24,7 @@
 
 Elastic Database クライアント ライブラリには、1 つのクエリと結果を使用して複数のシャードを照会する機能を提供する、**Microsoft.Azure.SqlDatabase.ElasticScale.Query** と呼ばれる新しい名前空間が採用されています。この名前空間により、シャードのコレクションに対するクエリ抽象化が提供されます。また、多数のシャードを照会したときのエラーを処理するための代替実行ポリシー (具体的には、部分的な結果) も提供されます。
 
-マルチシャード クエリ実行へのメインのエントリ ポイントは、**MultiShardConnection** クラスです。データ依存ルーティングと同様に、API は、**[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient(v=vs.110).aspx)** のクラスとメソッドの慣れ親しんだ操作法を継承しています。**SqlClient** ライブラリの場合、最初に **SqlConnection** を作成し、接続の **SqlCommand** を作成します。次に、**Execute** メソッドのいずれかを使用してコマンドを実行します。最後に、**SqlDataReader** で、コマンドの実行から返された結果セットを反復処理します。マルチシャード クエリ API を操作するには、次の手順に従います。
+マルチシャード クエリ実行へのメインのエントリ ポイントは、**MultiShardConnection** クラスです。データ依存ルーティングと同様に、API は、****[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient(v=vs.110).aspx)** のクラスとメソッドの慣れ親しんだ操作法を継承しています。**SqlClient** ライブラリの場合、最初に **SqlConnection** を作成し、接続の **SqlCommand** を作成します。次に、**Execute** メソッドのいずれかを使用してコマンドを実行します。最後に、**SqlDataReader** で、コマンドの実行から返された結果セットを反復処理します。複数シャード クエリ API を操作するには、次の手順に従います。
 
 1. **MultiShardConnection** を作成する。
 2. **MultiShardConnection** の **MultiShardCommand** を作成する。
@@ -67,4 +67,4 @@ Elastic Database クライアント ライブラリには、1 つのクエリと
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=July15_HO5-->
+<!---HONumber=August15_HO6-->

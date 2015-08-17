@@ -89,4 +89,4 @@ API アプリが作成されたら、Logic App のトリガーやアクション
 [10]: ./media/app-service-logic-connector-chatter/img10.PNG
 [11]: ./media/app-service-logic-connector-chatter/img11.PNG
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

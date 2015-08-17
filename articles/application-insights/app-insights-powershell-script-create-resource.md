@@ -94,4 +94,4 @@ iKey を SDK で使用できるようにする方法は 2 つあります。
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

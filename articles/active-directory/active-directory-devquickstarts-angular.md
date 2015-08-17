@@ -43,7 +43,7 @@ Azure AD を使用すると、シングル ページ アプリに対する、サ
 ## *1.DirectorySearcher アプリケーションを登録する*
 アプリでユーザーを認証し、トークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録する必要があります。
 
--	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
+-	[Microsoft Azure の管理ポータル](https://manage.windowsazure.com)にサインインします。
 -	左側のナビゲーションで **[Active Directory]** をクリックします。
 -	アプリケーションの登録先となるテナントを選択します。
 -	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
@@ -111,7 +111,7 @@ adalProvider.init(
 ...
 ```
 
-これで、ユーザーのサインインを処理し、ベアラー トークンで保護された要求をバックエンド API に送信できる、安全なシングル ページ アプリが完成しました。ユーザーは `TodoList` リンクをクリックすると、必要に応じて、サインインを処理するために、adal.js により Azure AD に自動的にリダイレクトされます。さらに、アプリケーションのバックエンドに送信されるすべての ajax 要求に対して、access_token が adal.js により自動的にアタッチされます。上記の例は、adal.js を使用する SPA を構築するための必要最小限のコードを含んでいますが、これら以外にも、SPA で役立つその他の機能が多数存在します。
+これで、ユーザーのサインインを処理し、ベアラー トークンで保護された要求をバックエンド API に送信できる、安全なシングル ページ アプリが完成しました。ユーザーは `TodoList` リンクをクリックすると、必要に応じて、サインインを処理するために、adal.js により Azure AD に自動的にリダイレクトされます。さらに、アプリケーションのバックエンドに送信されるすべての ajax 要求に対して、access\_token が adal.js により自動的にアタッチされます。上記の例は、adal.js を使用する SPA を構築するための必要最小限のコードを含んでいますが、これら以外にも、SPA で役立つその他の機能が多数存在します。
 
 - サインイン要求とサインアウト要求を明示的に発行するために、adal.js を呼び出すコントローラーで関数を定義できます。`App/Scripts/homeCtrl.js` で、次のように記述します。
 
@@ -151,4 +151,4 @@ adal.js を使用することにより、これらの共通 ID 機能のすべ�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

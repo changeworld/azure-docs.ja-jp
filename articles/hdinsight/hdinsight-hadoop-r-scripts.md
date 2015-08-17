@@ -265,7 +265,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### <a name="runApp"></a>アプリケーションを実行するには
 
-Azure PowerShell コンソールを開き、プロジェクトを保存した場所に移動し、プロジェクト内の \bin\debug ディレクトリに移動して、次のコマンドを実行します。
+Azure PowerShell コンソールを開き、プロジェクトを保存した場所に移動し、プロジェクト内の \\bin\\debug ディレクトリに移動して、次のコマンドを実行します。
 
 	.\CreateRCluster <cluster-name>
 
@@ -283,4 +283,4 @@ Azure PowerShell コンソールを開き、プロジェクトを保存した場
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

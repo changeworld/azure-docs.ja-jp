@@ -25,7 +25,7 @@ J2EE サーバーで既に実行されている Web アプリケーションが�
 
 > [AZURE.NOTE]このページの手順では、実行時の Web アプリに SDK を追加します。これは、ソース コードの更新やリビルドを実行したくない場合に便利です。ただし、できれば、それよりも [SDK をソース コードに追加](app-insights-java-get-started.md)することをお勧めします。追加すると、ユーザーの利用状況を追跡するためのコードの記述などで選択の幅が広がります。
 
-## 1.Application Insights のインストルメンテーション キーを取得する
+## 1\.Application Insights のインストルメンテーション キーを取得する
 
 1. [Microsoft Azure ポータル](https://portal.azure.com)にログインします。
 2. 新しい Application Insights リソースを作成します。
@@ -38,13 +38,13 @@ J2EE サーバーで既に実行されている Web アプリケーションが�
 
     ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-get-started/03-key.png)
 
-## 2.SDK のダウンロード
+## 2\.SDK のダウンロード
 
 1. [Application Insights SDK for Java](http://dl.windowsazure.com/applicationinsights/javabin/sdk.zip) をダウンロードします。 
 2. サーバーで、プロジェクトのバイナリの読み込み元のディレクトリに SDK の内容を展開します。Tomcat を使用している場合、この場所は通常 `webapps<your_app_name>\WEB-INF\lib` になります。
 
 
-## 3.Application Insights の xml ファイルを追加する
+## 3\.Application Insights の xml ファイルを追加する
 
 SDK を追加したフォルダーに ApplicationInsights.xml を作成します。そのファイルに次の XML を入力します。
 
@@ -86,7 +86,7 @@ SDK を追加したフォルダーに ApplicationInsights.xml を作成します
 * イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。これにより、[診断検索](app-insights-diagnostic-search.md)でフィルターを設定して、テレメトリを各要求に関連付けることができます。
 
 
-## 4.HTTP フィルターを追加する
+## 4\.HTTP フィルターを追加する
 
 プロジェクトの web.xml ファイルを見つけて開きます。アプリケーション フィルターが構成されている web-app ノードの下に次のコード スニペットをマージします。
 
@@ -103,9 +103,9 @@ SDK を追加したフォルダーに ApplicationInsights.xml を作成します
        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-## 5.Web アプリを再起動する
+## 5\.Web アプリを再起動する
 
-## 6.Application Insights でのテレメトリを表示する
+## 6\.Application Insights でのテレメトリを表示する
 
 [Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
@@ -139,4 +139,4 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
  
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->

@@ -13,7 +13,7 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.date="06/29/2015"
 	ms.author="davidmu"/>
 
@@ -43,7 +43,7 @@
 
 ## Azure PowerShell
 
-開始する前に、適切なバージョンの Azure PowerShell がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[ここ](virtual-machines-deploy-rmtemplates-powershell.md#setting-up-powershell-for-resource-manager-templates)をクリックします。
+開始する前に、適切なバージョンの Azure PowerShell がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[こちら](virtual-machines-deploy-rmtemplates-powershell.md#setting-up-powershell-for-resource-manager-templates)をクリックします。
 
 次のコマンド セットに、Azure のデプロイ名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
 
@@ -71,13 +71,13 @@
 
 ## Azure CLI
 
-開始する前に、適切なバージョンの Azure CLI がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[ここ](virtual-machines-deploy-rmtemplates-azure-cli.md#getting-ready)をクリックします。
+開始する前に、適切なバージョンの Azure CLI がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[こちら](virtual-machines-deploy-rmtemplates-azure-cli.md#getting-ready)をクリックします。
 
 まず、新しいリソース グループを作成します。次のコマンドを使用して、グループの名前と、デプロイ先の Azure データ センターの場所を指定します。
 
 	azure group create <group name> <location>
 
-次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイの名前を指定します。
+次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイメントの名前を指定します。
 
 	azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sql-server-2014-alwayson-dsc/azuredeploy.json <group name> <deployment name>
 
@@ -105,4 +105,4 @@
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=July15_HO4-->
+<!---HONumber=August15_HO6-->
