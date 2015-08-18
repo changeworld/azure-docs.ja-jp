@@ -64,7 +64,8 @@ AD DS を Azure の仮想マシンにデプロイする方法に関するガイ�
 
 -  パブリック IPv4 アドレスを持つ VPN デバイス。このウィザードを完了するには、IP アドレスが必要です。VPN デバイスはネットワーク アドレス変換 (NAT) の背後に配置することはできず、最低のデバイス標準を満たしている必要があります。詳細については、「[仮想ネットワークに使用する VPN デバイスについて](http://go.microsoft.com/fwlink/p/?LinkID=248098)」を参照してください。
 
-	注: VPN ソリューションの一部として、Windows Server でルーティングとリモート アクセス サービス (RRAS) を使用できます。ただし、このチュートリアルでは RRAS の構成手順については説明しません。RRAS の構成情報については、[ルーティングとリモート アクセス サービス (RRAS) 用テンプレート](http://msdn.microsoft.com/library/windowsazure/dn133801.aspx)に関するページを参照してください。
+	注: VPN ソリューションの一部として、Windows Server でルーティングとリモート アクセス サービス (RRAS) を使用できます。ただし、このチュートリアルでは RRAS の構成手順については説明しません。
+	RRAS の構成情報については、[ルーティングとリモート アクセス サービス (RRAS) 用テンプレート](http://msdn.microsoft.com/library/windowsazure/dn133801.aspx)に関するページを参照してください。
 
 -  IPsec トンネル モード接続用のルーターの構成経験、または構成時に補助する人。
 
@@ -98,7 +99,7 @@ AD DS を Azure の仮想マシンにデプロイする方法に関するガイ�
 	
 4.	**[DNS サーバーおよび VPN 接続]** ページで、次の情報を入力し、右下にある次へ進む矢印をクリックします。
 
-> [AZURE.NOTE]このページでは、**Point-To-Site** 構成と **Site-To-Site** 構成の両方を同時に選択できます。このチュートリアルでは、**[サイト間]** 構成だけを選択します。このページの設定の詳細については、「**管理ポータルでの仮想ネットワークの構成について**」の [[DNS サーバーおよび VPN 接続]](http://go.microsoft.com/fwlink/p/?LinkID=248092) ページを参照してください。
+> [AZURE.NOTE] このページでは、**Point-To-Site** 構成と **Site-To-Site** 構成の両方を同時に選択できます。このチュートリアルでは、**[サイト間]** 構成だけを選択します。このページの設定の詳細については、「**管理ポータルでの仮想ネットワークの構成について**」の [[DNS サーバーおよび VPN 接続]](http://go.microsoft.com/fwlink/p/?LinkID=248092) ページを参照してください。
 
 	-  **DNS SERVERS:** Enter the DNS server name and IP address that you want to use for name resolution. Typically this would be a DNS server that you use for on-premises name resolution. This setting does not create a DNS server. For the example in this tutorial, type **YourDNS** for the name and **10.1.0.4** for the IP address.
 	-  **Configure Point-To-Site VPN:** Leave this field blank. 
@@ -107,7 +108,7 @@ AD DS を Azure の仮想マシンにデプロイする方法に関するガイ�
  
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVNet_03_DNSServersandVPNConnectivity.png)
 
-5.	**[サイト間接続]** ページで、次の情報を入力し、ページの右下にあるチェックマークをクリックにします。このページの設定の詳細については、「**管理ポータルでの仮想ネットワークの構成について**」の [[サイト間接続]](http://go.microsoft.com/fwlink/p/?LinkID=248092) ページ セクションを参照してください。 
+5.	**[サイト間接続]** ページで、次の情報を入力し、ページの右下にあるチェックマークをクリックにします。このページの設定の詳細については、[「**管理ポータルでの仮想ネットワークの構成について**」](http://go.microsoft.com/fwlink/p/?LinkID=248092)の **[サイト間接続]** ページ セクションを参照してください。 
 
 	-  **名前:** たとえばこのチュートリアルでは、「**YourCorpHQ**」と入力します。
 
@@ -215,30 +216,30 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 3.	次のいずれかのコマンドを実行して接続をテストします。
 
 	<table border="1">
-<tr>
-<th>-</th>
-<th>Cisco ASA</th>
-<th>Cisco ISR/ASR</th>
-<th>Juniper SSG/ISG</th>
-<th>Juniper SRX/J</th>
-</tr>
-
-<tr>
-<td><b>メイン モード SA の確認</b></td>
-<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">get ike cookie</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">show security ike security-association</FONT></td>
-</tr>
-
-<tr>
-<td><b>クイック モード SA の確認</b></td>
-<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">get sa</FONT></td>
-<td><FONT FACE="courier" SIZE="-1">show security ipsec security-association</FONT></td>
-</tr>
-</table>
+	<tr>
+	<th>-</th>
+	<th>Cisco ASA</th>
+	<th>Cisco ISR/ASR</th>
+	<th>Juniper SSG/ISG</th>
+	<th>Juniper SRX/J</th>
+	</tr>
+	
+	<tr>
+	<td><b>メイン モード SA の確認</b></td>
+	<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">get ike cookie</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">show security ike security-association</FONT></td>
+	</tr>
+	
+	<tr>
+	<td><b>クイック モード SA の確認</b></td>
+	<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">get sa</FONT></td>
+	<td><FONT FACE="courier" SIZE="-1">show security ipsec security-association</FONT></td>
+	</tr>
+	</table>
 
 
 ##  次のステップ
@@ -271,4 +272,4 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 
  
 
-<!---HONumber=August15_HO6-->
+<!------HONumber=August15_HO6-->
