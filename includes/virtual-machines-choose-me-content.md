@@ -1,8 +1,8 @@
 | コンピューティング オプション | 対象となる読者 |
 | ------------------ | --------   |
-| [App Service] | 任意のデバイス用のスケーラブルな Web Apps、Mobile Apps、API Apps、Logic Apps |
-| [Cloud Services] | OS のより詳細な制御が可能な、可用性と拡張性の高い N 階層のクラウド アプリケーション |
-| [Virtual Machines] | OS の完全な制御が可能な、カスタマイズされた Windows と Linux VM |
+| [App Service](#tellmeas) | 任意のデバイス用のスケーラブルな Web Apps、Mobile Apps、API Apps、Logic Apps |
+| [Cloud Services](#tellmecs) | OS のより詳細な制御が可能な、可用性と拡張性の高い N 階層のクラウド アプリケーション |
+| [Virtual Machines](#tellmevm) | OS の完全な制御が可能な、カスタマイズされた Windows と Linux VM |
 
 <a name="tellmevm"></a>
 ## 仮想マシンに関する詳細情報
@@ -42,4 +42,4 @@ VM を考慮する利点は他にもあります。それは次のとおりで�
 
 **回復力** -- Azure は、動作している各 VM をホストする物理ハードウェアを監視します。VM を実行している物理サーバーに障害が生じると、Azure はこれを検出し、VM を新しいハードウェアに移動させて再起動します。このプロセスはサービス復旧と呼ばれることがあります。また、VHD の冗長なコピーを BLOB ストレージに保持することで、仮想マシンのデータを保護します。
 
-<!---HONumber=August15_HO6-->
+<!-----HONumber=August15_HO6-->
