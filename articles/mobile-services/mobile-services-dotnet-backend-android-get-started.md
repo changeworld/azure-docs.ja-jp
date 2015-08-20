@@ -26,7 +26,7 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![][0]
+![][88]
 
 このチュートリアルを完了するには、Android Studio 統合開発環境と最新の Android プラットフォームを含む [Android Developer Tools][Android Studio] が必要です。このほか、Android のバージョン 4.2 以降が必要になります。
 
@@ -100,7 +100,7 @@
 [Next Steps]: #next-steps
 
 <!-- Images. -->
-[0]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
+[88]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
 [1]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-vs-AS.png
 [2]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-android-AS.png
 
@@ -129,4 +129,4 @@
 [管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!----HONumber=August15_HO6-->

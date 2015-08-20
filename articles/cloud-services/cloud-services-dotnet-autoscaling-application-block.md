@@ -28,7 +28,15 @@
 
 ## 目次
 
-[自動スケール アプリケーション ブロックとは][] [概念][] [ターゲット Azure アプリケーションからのパフォーマンス カウンター データの収集][] [自動スケール アプリケーション ブロックのホスト アプリケーションのセットアップ][] [方法: オートスケーラーをインスタンス化および実行する][] [方法: サービス モデルを定義する][] [方法: 自動スケール規則を定義する][] [方法: 自動スケール アプリケーション ブロックを構成する][] [次のステップ][]
+[自動スケール アプリケーション ブロックとは][]   
+[概念][]   
+[ターゲット Azure アプリケーションからのパフォーマンス カウンター データの収集][]   
+[自動スケール アプリケーション ブロックのホスト アプリケーションのセットアップ][]   
+[方法: オートスケーラーをインスタンス化および実行する][]   
+[方法: サービス モデルを定義する][]   
+[方法: 自動スケール規則を定義する][]   
+[方法: 自動スケール アプリケーション ブロックを構成する][]   
+[次のステップ][]   
 
 ## <a id="WhatIs"> </a>自動スケール アプリケーション ブロックとは
 
@@ -126,14 +134,31 @@ Visual Studio で、サービス モデル ファイルが出力フォルダー�
 
 	次のコード サンプルは、**services.xml** ファイル内のサービス モデルの例を示しています。
 
-    <?xml version="1.0" encoding="utf-8" ?> <serviceModel xmlns="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel"> <subscriptions> <subscription name="[subscriptionname]"
+    <?xml version="1.0" encoding="utf-8" ?>
+    <serviceModel xmlns="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel">
+      <subscriptions>
+        <subscription name="[subscriptionname]"
                       certificateThumbprint="[managementcertificatethumbprint]"
                       subscriptionId="[subscriptionid]"
                       certificateStoreLocation="CurrentUser"
-                      certificateStoreName="My"> <services> <service dnsPrefix="[hostedservicednsprefix]" slot="Staging"> <roles> <role alias="AutoscalingApplicationRole"
+                      certificateStoreName="My">
+          <services>
+            <service dnsPrefix="[hostedservicednsprefix]" slot="Staging">
+              <roles>
+                <role alias="AutoscalingApplicationRole"
                       roleName="[targetrolename]"
-                      wadStorageAccountName="targetstorage"/> </roles> </service> </services> <storageAccounts> <storageAccount alias="targetstorage"
-              connectionString="DefaultEndpointsProtocol=https;AccountName=[storageaccountname];AccountKey=[storageaccountkey]"> </storageAccount> </storageAccounts> </subscription> </subscriptions> </serviceModel>
+                      wadStorageAccountName="targetstorage"/>
+              </roles>
+            </service>
+          </services>
+          <storageAccounts>
+            <storageAccount alias="targetstorage"
+              connectionString="DefaultEndpointsProtocol=https;AccountName=[storageaccountname];AccountKey=[storageaccountkey]">
+            </storageAccount>
+          </storageAccounts>
+        </subscription>
+      </subscriptions>
+    </serviceModel>
 
 角かっこ内の値は、環境とターゲット アプリケーションの固有の値に置き換える必要があります。これらの値の多くは、[Azure 管理ポータル][]にログインすることで確認できます。
 
@@ -262,23 +287,27 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
 
 1.  ソリューション エクスプローラーで **App.config** ファイルを右クリックし、**[構成ファイルの編集]** をクリックします。
 
-2.  **[ブロック]** メニューの **[自動スケールの設定の追加]** をクリックします。![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling10.png)
+2.  **[ブロック]** メニューの **[自動スケールの設定の追加]** をクリックします。  
+	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling10.png)
   
 3.  **[自動スケールの設定]** を展開し、**[データ ポイント格納ストレージ アカウント]** の横にある省略記号 (...) をクリックして、ブロックによって収集されたデータ ポイントの格納先となる Azure ストレージ アカウントの **[アカウント名]** および **[アカウント キー]** を追加します (これらの値の確認方法がわからない場合は、「[方法: サービス モデルを定義する][]」を参照してください)。その後、**[OK]** をクリックします。
 
 	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling11.png)
 
-4.  **[自動スケールの設定]** セクションを展開して、**[規則ストア]** および **[サービス情報ストア]** セクションを表示します。既定では、これらは Azure BLOB ストレージを使用するように構成されています。![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling12.png)
+4.  **[自動スケールの設定]** セクションを展開して、**[規則ストア]** および **[サービス情報ストア]** セクションを表示します。既定では、これらは Azure BLOB ストレージを使用するように構成されています。  
+	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling12.png)
 
 
 5.  **[規則ストア]** の横のプラス記号 (+) をクリックし、**[規則ストアの設定]** をポイントして、**[ローカル ファイル規則ストアの使用]**、**[はい]** の順にクリックします。
 
-6.  ** [ファイル名]** ボックスで「** rules.xml**」と入力します。これは、自動スケール規則を含むファイルの名前です。![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling13.png)
+6.  **[ファイル名]** ボックスで「**rules.xml**」と入力します。これは、自動スケール規則を含むファイルの名前です。  
+	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling13.png)
 
 
 7.  **[サービス情報ストア]** の横のプラス記号 (+) をクリックし、**[サービス情報ストアの設定]** をポイントして、**[ローカル ファイル サービス情報ストアの使用]**、**[はい]** の順にクリックします。
 
-8.  **[ファイル名]** ボックスで「**services.xml**」と入力します。これは、自動スケール規則を含むファイルの名前です。![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling14.png)
+8.  **[ファイル名]** ボックスで「**services.xml**」と入力します。これは、自動スケール規則を含むファイルの名前です。  
+	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling14.png)
 
 
 9.  Enterprise Library の構成ウィンドウで、**[ファイル]** メニューの **[保存]** をクリックして、構成の変更を保存します。次に、Enterprise Library の構成ウィンドウで、**[ファイル]** メニューの **[終了]** をクリックします。
@@ -380,4 +409,4 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
   [Azure の自動スケールによる TechNet と MSDN のホスティング コストと環境への影響の軽減]: http://msdn.microsoft.com/library/jj838718(PandP.50).aspx
  
 
-<!---HONumber=August15_HO6-->
+<!-----HONumber=August15_HO6-->

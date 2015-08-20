@@ -94,7 +94,7 @@ _図 2: 共有キャッシュの使用_
 
 キャッシュされたデータは有効期限が切れるとキャッシュから削除され、アプリケーションは元のデータ ストアからそのデータを取得する必要があります (新しく取得した情報をキャッシュ内に戻すことができます)。キャッシュを設定するときに、既定の有効期限ポリシーを設定できます。多くのキャッシュ サービスでは、個々のオブジェクトをプログラムを使用してキャッシュ内に保存するときにその有効期限を指定することもできます (一部のキャッシュでは、絶対値として、または指定した期間内にアクセスされなかった場合にキャッシュからその項目を削除するスライド式の値として、有効期限を指定することができます)。この設定は、指定したオブジェクトについてのみ、任意のキャッシュ全体の有効期限ポリシーを上書きします。
 
-> [AZURE.NOTE]キャッシュの有効期限とキャッシュに含まれるオブジェクトを慎重に検討してください。有効期限を短くしすぎると、オブジェクトはすぐに期限切れになり、キャッシュを使用するメリットが損なわれます。有効期限を長くしすぎると、データが古くなる危険性があります。
+> [AZURE.NOTE] キャッシュの有効期限とキャッシュに含まれるオブジェクトを慎重に検討してください。有効期限を短くしすぎると、オブジェクトはすぐに期限切れになり、キャッシュを使用するメリットが損なわれます。有効期限を長くしすぎると、データが古くなる危険性があります。
 
 データが長期間にわたって常駐できるように設定されていると、キャッシュがいっぱいになる可能性もあります。この場合、キャッシュに新規項目を追加する要求により、削除と呼ばれるプロセスで、一部の項目が強制的に削除される可能性があります。キャッシュ サービスは、通常、最低使用頻度法 (LRU) に基づいてデータを削除しますが、一般にはこのポリシーを上書きして項目が削除されないようにすることができます。ただし、このアプローチを採用する場合は、キャッシュが使用可能なメモリを超え、キャッシュに項目を追加しようとしたアプリケーションが例外とともに失敗する危険性が生じます。
 
@@ -123,7 +123,8 @@ HTTP 接続経由でデータを提供する Web アプリケーションを作�
 
 ただし、キャッシュが一時的に使用できない場合の元のデータ ストアへのフォール バックは、システムのスケーラビリティに影響を与える可能性があります。データ ストアの復元中に元のデータ ストアにデータの要求が押し寄せて、タイムアウトや接続の中断が起きる可能性があるのです。すべてのアプリケーション インスタンスがアクセスできる共有キャッシュとともに、アプリケーションの各インスタンスにローカルなプライベート キャッシュを実装する方法をお勧めします。アプリケーションは、項目を取得するときに、ローカル キャッシュ内、共有キャッシュ内、元のデータ ストア内の順に確認します。ローカル キャッシュは、共有キャッシュのデータを使用して、または共有キャッシュが使用できない場合はデータベースのデータを使用して設定できます。この方法では、ローカル キャッシュが共有キャッシュと比較して古くなりすぎないように注意深く設定する必要がありますが、ローカル キャッシュは共有キャッシュが到達可能でない場合にバッファーとして機能します。図 3 に、この構造を示します。
 
-![共有キャッシュとローカルなプライベート キャッシュの併用](media/best-practices-caching/Caching3.png) _図 3: 共有キャッシュとローカルなプライベート キャッシュの併用_
+![共有キャッシュとローカルなプライベート キャッシュの併用](media/best-practices-caching/Caching3.png)
+_図 3: 共有キャッシュとローカルなプライベート キャッシュの併用_
 
 一部のキャッシュ サービスでは、有効期間が比較的長いデータを保持する大規模なキャッシュをサポートするために、キャッシュが使用できなくなった場合に自動フェールオーバーを実装する、高可用性オプションを使用できます。通常、このアプローチでは、プライマリ キャッシュ サーバーに格納されているキャッシュされたデータをセカンダリ キャッシュ サーバーにレプリケートして、プライマリ サーバーで障害が発生するか接続が失われた場合にセカンダリ サーバーに切り替えます。複数の送信先への書き込みに伴う待機時間を短くするために、プライマリ サーバーのキャッシュにデータが書き込まれるときに、セカンダリ サーバーへのレプリケーションが非同期的に行われる場合があります。この方法では、障害発生時に一部のキャッシュされた情報が失われる可能性が生じますが、こうしたデータの割合はキャッシュのサイズ全体と比べると小さいと考えられます。
 
@@ -161,7 +162,7 @@ Redis は、可用性、スケーラビリティ、およびセキュリティ�
 
 Azure Redis Cache には、クライアント アプリケーションで使用されるさまざまな API の多くとの互換性があります。オンプレミスで実行される Redis をすでに使用している既存のアプリケーションがある場合、Azure Redis Cache を使用して簡単にクラウド内のキャッシュへと移行することができます。
 
-> [AZURE.NOTE]Azure では、Managed Cache Service も提供します。このサービスは、Microsoft AppFabric Cache エンジンに基づいています。このサービスを使用して、疎結合アプリケーションで共有できる分散キャッシュを作成することができます。キャッシュは、Azure データセンター内で実行されている高パフォーマンス サーバーでホストされます。ただし、このオプションは推奨されなくなりました。このオプションは、これを使用するように組み立てられた既存のアプリケーションをサポートするためだけに提供されています。新しく開発されたすべてのアプリケーションでは、代わりに Azure Redis Cache を使用します。
+> [AZURE.NOTE] Azure では、Managed Cache Service も提供します。このサービスは、Microsoft AppFabric Cache エンジンに基づいています。このサービスを使用して、疎結合アプリケーションで共有できる分散キャッシュを作成することができます。キャッシュは、Azure データセンター内で実行されている高パフォーマンス サーバーでホストされます。ただし、このオプションは推奨されなくなりました。このオプションは、これを使用するように組み立てられた既存のアプリケーションをサポートするためだけに提供されています。新しく開発されたすべてのアプリケーションでは、代わりに Azure Redis Cache を使用します。
 >
 > さらに、Azure はロール内キャッシュをサポートします。この機能では、クラウド サービスに固有のキャッシュを作成することができます。キャッシュは Web ロールまたは worker ロールのインスタンスによってホストされ、同じクラウド サービス デプロイメント ユニットの一部として動作するロールのみがアクセスできます (デプロイメント ユニットは特定のリージョンにクラウド サービスとしてデプロイされたロール インスタンスの集合です)。キャッシュはクラスター化され、同じデプロイメント ユニット内でキャッシュをホストするロールのすべてのインスタンスは、同じキャッシュ クラスターの一部になります。ロール内キャッシュを使用する既存のアプリケーションではその使用を継続できますが、Azure Redis Cache への移行するとさらなるメリットが得られる可能性があります。Azure Redis Cache とロール内キャッシュのどちらを使用するべきかについては、Microsoft web サイトの「[どの Azure Cache を利用すればよいですか。](http://msdn.microsoft.com/library/azure/dn766201.aspx)」ページを参照してください
 
@@ -174,7 +175,7 @@ Redis は、単純なキャッシュ サーバーです。このドキュメン�
 
 Redis は、読み取りと書き込みの両方をサポートします。(一時的なデータ ストアとみなす必要がある) 多くのキャッシュとは異なり、書き込み内容は、ローカルのスナップショット ファイルまたは追加専用のログ ファイルに定期的に保存することで、システムの故障から保護することができます。すべての書き込みは非同期であり、クライアントによるデータの読み取りと書き込みをブロックしません。Redis の実行を開始すると、スナップショットまたはログ ファイルからデータを読み取り、そのデータを使用してメモリ内キャッシュを構築します。詳細については、Redis Web サイトの「[Redis Persistence](http://redis.io/topics/persistence)」(Redis の永続性) を参照してください。
 
-> [AZURE.NOTE]Redis では、重大な障害が発生したときにすべての書き込みが保存されることは保証されませんが、最悪の場合でも数秒間のデータを失うだけです。キャッシュは信頼できるデータ ソースとして機能するものではなく、重要なデータが適切なデータ ストアに正常に保存されるようにするのは、キャッシュを使用するアプリケーションの役割であることを忘れないでください。詳細については、「キャッシュアサイド パターン」を参照してください。
+> [AZURE.NOTE] Redis では、重大な障害が発生したときにすべての書き込みが保存されることは保証されませんが、最悪の場合でも数秒間のデータを失うだけです。キャッシュは信頼できるデータ ソースとして機能するものではなく、重要なデータが適切なデータ ストアに正常に保存されるようにするのは、キャッシュを使用するアプリケーションの役割であることを忘れないでください。詳細については、「キャッシュアサイド パターン」を参照してください。
 
 #### Redis データ型
 
@@ -186,7 +187,7 @@ Redis は、可用性を確保しつつスループットを維持するため�
 
 Redis ではクラスタリングも提供されるため、サーバー間のシャードにデータを透過的に分割して、負荷を分散することができます。この機能によって、キャッシュのサイズの増加に合わせて新しい Redis サーバーを追加し、データを再分割することができるため、スケーラビリティが向上します。さらに、マスターと下位のレプリケーションを使用し、クラスター内の各ノード間の可用性を確保して、クラスター内の各サーバーをレプリケートすることができます。クラスタリングとシャーディングの詳細については、Redis Web サイトの「[Redis Cluster Tutorial](http://redis.io/topics/cluster-tutorial)」(Redis クラスターのチュートリアル) ページを参照してください。
 
-> [AZURE.NOTE]現在、Azure Redis Cache ではクラスタリングをサポートしていません。Redis クラスターを作成する場合は、独自のカスタム Redis サーバーを構築できます。詳細については、このドキュメントの後半の「カスタム Redis キャッシュの構築」セクションを参照してください。
+> [AZURE.NOTE] 現在、Azure Redis Cache ではクラスタリングをサポートしていません。Redis クラスターを作成する場合は、独自のカスタム Redis サーバーを構築できます。詳細については、このドキュメントの後半の「カスタム Redis キャッシュの構築」セクションを参照してください。
 
 ### Redis のメモリ使用量
 
@@ -224,7 +225,7 @@ Microsoft Azure 管理ポータルには、キャッシュのパフォーマン�
 
 CPU、メモリ、およびキャッシュのネットワーク使用率を監視することもできます。
 
-> [AZURE.NOTE]Azure Redis Cache は、データベースではなく、単なるキャッシュとして機能するように設計されています。したがって、現在は Redis の永続性を実装していません。
+> [AZURE.NOTE] Azure Redis Cache は、データベースではなく、単なるキャッシュとして機能するように設計されています。したがって、現在は Redis の永続性を実装していません。
 
 詳細と Azure Redis Cache の作成および設定方法を示す例については、Azure ブログの「[Lap around Azure Redis Cache](http://azure.microsoft.com/blog/2014/06/04/lap-around-azure-redis-cache-preview/)」(Azure Redis Cache に関する説明) ページを参照してください。
 
@@ -431,9 +432,20 @@ Redis は、文字列値を取得および設定する一連のアトミック�
 
 - `INCR`、`INCRBY`、`DECR`、および `DECRBY` は、整数データ値をインクリメントおよびデクリメントするアトミック操作を実行します。StackExchange ライブラリには、これらの操作を実行し、キャッシュに格納された結果の値を返すオーバーロード バージョンの `IDatabase.StringIncrementAsync` メソッドと `IDatabase.StringDecrementAsync` メソッドがあります。次のコード スニペットに、これらのメソッドを使用する方法を示します。
 
-  ```csharp ConnectionMultiplexer redisHostConnection = ...; IDatabase cache = redisHostConnection.GetDatabase(); ... await cache.StringSetAsync("data:counter", 99); ... long oldValue = await cache.StringIncrementAsync("data:counter"); // 1 ずつインクリメント (既定) // oldValue は 100 になるはずです
+  ```csharp
+  ConnectionMultiplexer redisHostConnection = ...;
+  IDatabase cache = redisHostConnection.GetDatabase();
+  ...
+  await cache.StringSetAsync("data:counter", 99);
+  ...
+  long oldValue = await cache.StringIncrementAsync("data:counter");
+  // 1 ずつインクリメント (既定)
+  // oldValue は 100 になるはずです
 
-  long newValue = await cache.StringDecrementAsync("data:counter", 50); // 50 ずつデクリメント// newValue は 50 になるはずです```
+  long newValue = await cache.StringDecrementAsync("data:counter", 50);
+  // 50 ずつデクリメント
+  // newValue は 50 になるはずです
+  ```
 
 - `GETSET` は、キーに関連付けられている値を取得し、新しい値に変更します。StackExchange ライブラリでは、この操作を `IDatabase.StringGetSetAsync` メソッドで実行できます。以下のコード スニペットに、このメソッドの例を示します。このコードは、同じ操作の一部として、上の例の “data:counter” キーに関連付けられている現在の値を返し、このキーの値をゼロにリセットします。
 
@@ -446,9 +458,28 @@ Redis は、文字列値を取得および設定する一連のアトミック�
 
 - `MGET` と `MSET` は、単一の操作として、一連の文字列値を返すか変更します。`IDatabase.StringGetAsync` メソッドと `IDatabase.StringSetAsync` メソッドは、次の例のように、この機能をサポートするためにオーバーロードされます。
 
-  ```csharp ConnectionMultiplexer redisHostConnection = ...; IDatabase cache = redisHostConnection.GetDatabase(); ... // キー/値ペアのリストを作成 var keysAndValues = new List<KeyValuePair<RedisKey  RedisValue>>() { new KeyValuePair<RedisKey  RedisValue>("data:key1", "value1"), new KeyValuePair<RedisKey  RedisValue>("data:key99", "value2"), new KeyValuePair<RedisKey  RedisValue>("data:key322", "value3") };
+  ```csharp
+  ConnectionMultiplexer redisHostConnection = ...;
+  IDatabase cache = redisHostConnection.GetDatabase();
+  ...
+  // キー/値ペアのリストを作成
+  var keysAndValues =
+      new List<KeyValuePair<RedisKey  RedisValue>>()
+      {
+          new KeyValuePair<RedisKey  RedisValue>("data:key1", "value1"),
+          new KeyValuePair<RedisKey  RedisValue>("data:key99", "value2"),
+          new KeyValuePair<RedisKey  RedisValue>("data:key322", "value3")
+      };
 
-  // キー/値ペアのリストをキャッシュに格納 cache.StringSet(keysAndValues.ToArray()); ... // キーのリストに一致するすべての値を検索 RedisKey keys = { "data:key1", "data:key99", "data:key322"}; RedisValue values = null; values = cache.StringGet(keys); // values には { "value1", "value2", "value3" } が含まれるはずです```
+  // キー/値ペアのリストをキャッシュに格納
+  cache.StringSet(keysAndValues.ToArray());
+  ...
+  // キーのリストに一致するすべての値を検索
+  RedisKey keys = { "data:key1", "data:key99", "data:key322"};
+  RedisValue values = null;
+  values = cache.StringGet(keys);
+  // values には { "value1", "value2", "value3" } が含まれるはずです
+  ```
 
 このガイダンスの「Redis のトランザクションとバッチ」セクションで説明されているように、複数の操作を組み合わせて 1 つの Redis トランザクションにすることもできます。StackExchange ライブラリは、`ITransaction` インターフェイスを介してトランザクションをサポートします。IDatabase.CreateTransaction メソッドを使用することで ITransaction オブジェクトを作成し、`ITransaction` オブジェクトが提供するメソッドを使用することでトランザクションに対してコマンドを呼び出すことができます。`ITransaction` インターフェイスでは、`IDatabase` インターフェイスと同様の一連のメソッドを使用できますが、すべてのメソッドが非同期である点が異なります。これらのメソッドは、`ITransaction.Execute` メソッドが呼び出されたときにのみ実行されます。Execute メソッドから返される値は、トランザクションが正常に作成されたか (true) 作成に失敗したか (false) を示します。
 
@@ -682,7 +713,7 @@ foreach (var post in await cache.SortedSetRangeByRankWithScoresAsync(redisKey))
 }
 ```
 
-> [AZURE.NOTE]StackExchange ライブラリには、スコアの順序でデータを返す IDatabase.SortedSetRangeByRankAsync メソッドもあります。ただしこのメソッドは、スコアは返しません。
+> [AZURE.NOTE] StackExchange ライブラリには、スコアの順序でデータを返す IDatabase.SortedSetRangeByRankAsync メソッドもあります。ただしこのメソッドは、スコアは返しません。
 
 IDatabase.SortedSetRangeByRankWithScoresAsync メソッドに追加のパラメーターを指定することで、スコアの降順でも項目を取得でき、返される項目の数を制限することもできます。次の例では、上位 10 個のブログの投稿のタイトルとスコアを表示します。
 
@@ -739,7 +770,8 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 
 - 複数のサブスクライバーが同じチャネルにサブスクライブでき、すべてのサブスクライバーがそのチャネルに発行されたメッセージを受信します。
 - サブスクライバーは、サブスクライブした後に発行されたメッセージのみを受信します。チャネルはバッファリングされません。メッセージが発行されると、Redis インフラストラクチャは各サブスクライバーにメッセージをプッシュし、メッセージを削除します。
-- 既定では、サブスクライバーは、送信された順序でメッセージを受信します。メッセージの数が多く、サブスクライバーとパブリッシャーの数も多い稼働率の高いシステムでは、メッセージの順次配信を保証すると、システムのパフォーマンスが低下する可能性があります。各メッセージが独立していて順序が重要ではない場合は、Redis システムによる同時処理を有効にして、応答性を高めることができます。StackExchange クライアントでこれを実現するには、サブスクライバーで使用する接続の PreserveAsyncOrder を false に設定します。```csharp
+- 既定では、サブスクライバーは、送信された順序でメッセージを受信します。メッセージの数が多く、サブスクライバーとパブリッシャーの数も多い稼働率の高いシステムでは、メッセージの順次配信を保証すると、システムのパフォーマンスが低下する可能性があります。各メッセージが独立していて順序が重要ではない場合は、Redis システムによる同時処理を有効にして、応答性を高めることができます。StackExchange クライアントでこれを実現するには、サブスクライバーで使用する接続の PreserveAsyncOrder を false に設定します。
+  ```csharp
   ConnectionMultiplexer redisHostConnection = ...;
   redisHostConnection.PreserveAsyncOrder = false;
   ISubscriber subscriber = redisHostConnection.GetSubscriber();
@@ -777,4 +809,4 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - StackExchange.Redis リポジトリの「[Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md)」(Redis のトランザクション) ページ。
 - Microsoft Web サイトの「[Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx)」(データのパーティション分割のガイダンス)。
 
-<!---HONumber=August15_HO6-->
+<!-----HONumber=August15_HO6-->

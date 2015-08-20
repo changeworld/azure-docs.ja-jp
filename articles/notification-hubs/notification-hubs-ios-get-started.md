@@ -505,11 +505,11 @@ iOS でのプッシュ通知をテストするには、デバイスにアプリ�
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
-[通知ハブを使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-ios-notify-users.md
+[Mobile Services でのプッシュ通知の使用]: ../mobile-services-javascript-backend-ios-get-started-push.md
+[Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-ios-notify-users.md
 [通知ハブを使用したニュース速報の送信]: notification-hubs-ios-send-breaking-news.md
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
  
 
-<!---HONumber=August15_HO6-->
+<!----HONumber=August15_HO6-->

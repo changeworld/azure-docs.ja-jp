@@ -76,6 +76,6 @@ As the figure illustrates, the Cloud Services VMs run in a separate cloud servic
 * App Service、Cloud Services、および Virtual Machines の[比較](../choose-web-site-cloud-service-vm/)
 * [App Service](../app-service-web-overview.md) に関する詳細情報
 * [Cloud Service](services/cloud-services/) に関する詳細情報
-* [Virtual Machines ](https://msdn.microsoft.com/library/azure/jj156143.aspx)に関する詳細情報 
+* [Virtual Machines](https://msdn.microsoft.com/library/azure/jj156143.aspx)に関する詳細情報 
 
-<!---HONumber=August15_HO6-->
+<!------HONumber=August15_HO6-->
