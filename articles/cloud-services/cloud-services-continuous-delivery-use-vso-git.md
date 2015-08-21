@@ -43,7 +43,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 
 -   [手順 6. 運用デプロイを変更する][]
 
--	[手順 6. working 分岐からデプロイする][]
+-	[手順 7. working 分岐からデプロイする][]
 
 ## <a name="step1"></a>手順 1: Git リポジトリを作成する
 
@@ -164,7 +164,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
  準備が整ったら、管理ポータルで **[スワップ]** を選択してステージング環境を運用環境へ昇格できます。新たにデプロイされたステージング環境は運用に昇格され、以前の運用環境がある場合、運用環境はステージング環境になります。運用環境とステージング環境でアクティブなデプロイが異なることはありますが、最近のビルドのデプロイ履歴は環境にかかわらず同じです。<br/>
 ![][35]
 
-## <a name="step7"></a>手順 7: working 分岐からデプロイする。
+## <a name="step7"></a>手順 6: working 分岐からデプロイする。
 
 Git を使用する場合は、通常、working 分岐で変更を行い、開発が完了状態に到達したときに master 分岐に統合します。プロジェクトの開発フェーズの間に、この working 分岐をビルドして Azure にデプロイします。
 
@@ -204,7 +204,7 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
 [手順 4. 変更を行い、リビルドと再デプロイをトリガーする。]: #step4
 [手順 5. 以前のビルドを再デプロイする (省略可能)]: #step5
 [手順 6. 運用デプロイを変更する]: #step6
-[手順 6. working 分岐からデプロイする]: #step7
+[手順 7. working 分岐からデプロイする]: #step7
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG
 [2]: ./media/cloud-services-continuous-delivery-use-vso/tfs2.png
@@ -252,4 +252,4 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
  
 
-<!-----HONumber=August15_HO6-->
+<!-------HONumber=August15_HO6-->
