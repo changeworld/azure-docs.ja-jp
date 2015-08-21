@@ -43,7 +43,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 
 -   [手順 6. 運用デプロイを変更する][]
 
--	[手順 7. working 分岐からデプロイする][]
+-	[手順 6. working 分岐からデプロイする][]
 
 ## <a name="step1"></a>手順 1: Git リポジトリを作成する
 
@@ -204,7 +204,7 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
 [手順 4. 変更を行い、リビルドと再デプロイをトリガーする。]: #step4
 [手順 5. 以前のビルドを再デプロイする (省略可能)]: #step5
 [手順 6. 運用デプロイを変更する]: #step6
-[手順 7. working 分岐からデプロイする]: #step7
+[手順 6. working 分岐からデプロイする]: #step7
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG
 [2]: ./media/cloud-services-continuous-delivery-use-vso/tfs2.png
