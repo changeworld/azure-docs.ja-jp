@@ -56,8 +56,6 @@
 
 ![作成](./media/web-sites-dotnet-get-started/Create_App.png)
 
-![デプロイ](./media/web-sites-dotnet-get-started/Deploy_App.png)
-
 1. Visual Studio 2015 または Visual Studio 2013 を開きます。 
 
 	Visual Studio 2013 を使用する場合は、画面がスクリーンショットと若干異なる可能性がありますが、基本的に手順は同じです。
@@ -303,4 +301,4 @@
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

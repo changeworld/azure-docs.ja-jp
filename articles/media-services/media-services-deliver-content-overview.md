@@ -191,7 +191,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 **.NET** または **REST API** を使用してアセット配信ポリシーを構成します。
 
-[AZURE.INCLUDE [media-services-selector-asset-delivery-policy](./../includes/media-services-selector-asset-delivery-policy.md)]
+[AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
 ###アセットの公開
 
@@ -205,4 +205,4 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 [ストレージ キーの展開後に Media Services ロケーターを更新する](media-services-roll-storage-access-keys.md)
  
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

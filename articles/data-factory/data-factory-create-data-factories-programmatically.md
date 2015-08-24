@@ -362,7 +362,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         Console.ReadKey();
 
 15. コンソール アプリケーションをビルドします。メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。**ConfigurationManager** クラスについてのエラーが発生した場合は、**System.Configuration** アセンブリへの参照を追加して、再度構築を試行します。
-16. Azure BLOB ストレージ内�� adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
+16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
 
         John, Doe
 		Jane, Doe
@@ -393,4 +393,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

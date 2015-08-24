@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="複数のストレージ アカウントでの Media Services 資産の管理" 
-	description="この記事では、複数のストレージ アカウントで Media Services の資産を管理する方法��ついて説明します。" 
+	description="この記事では、複数のストレージ アカウントで Media Services の資産を管理する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -250,4 +250,4 @@ Media Services は、ストリーミング コンテンツ (例: http://{WAMSAcc
 		}
  
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

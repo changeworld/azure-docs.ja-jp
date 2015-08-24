@@ -38,7 +38,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 
 ### アプリケーション診断
 
-アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/ja-jp/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
+アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/en-us/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
 
 	System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -53,7 +53,7 @@ App Service Web Apps は、Web アプリにコンテンツをパブリッシュ�
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![ログ パーツ](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-**アプリケーション診断**を有効にするときに、**レベル**も選択できま�。この設定を使用して、取得された情報を、**情報**、**警告**、または**エラー情報**にフィルター処理できます。これを**詳細**に設定すると、アプリケーションにより生成されるすべての情報がログに記録されます。
+**アプリケーション診断**を有効にするときに、**レベル**も選択できます。この設定を使用して、取得された情報を、**情報**、**警告**、または**エラー情報**にフィルター処理できます。これを**詳細**に設定すると、アプリケーションにより生成されるすべての情報がログに記録されます。
 
 > [AZURE.NOTE]web.config ファイルの変更とは異なり、アプリケーション診断の有効化や診断ログ レベルの変更によって、アプリケーションが実行されているアプリケーション ドメインがリサイクルされることはありません。
 
@@ -252,8 +252,8 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 
 ##<a name="nextsteps"></a>次のステップ
 
-- [Web アプリを監視する方法](/ja-jp/manage/services/web-sites/how-to-monitor-websites/)
-- [Visual Studio での Azure の Web Apps のトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)
+- [Web アプリを監視する方法](/en-us/manage/services/web-sites/how-to-monitor-websites/)
+- [Visual Studio での Azure の Web Apps のトラブルシューティング](/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)
 - [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
@@ -263,4 +263,4 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->
