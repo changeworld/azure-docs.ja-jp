@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Twilio から通話する方法 (.NET) - Azure" 
+	pageTitle="Twilio から通話する方法 (.NET) | Microsoft Azure" 
 	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは .NET で記述されています。" 
 	services="" 
 	documentationCenter=".net" 
@@ -192,4 +192,4 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
 
 [azure_runtime_ref_dotnet]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

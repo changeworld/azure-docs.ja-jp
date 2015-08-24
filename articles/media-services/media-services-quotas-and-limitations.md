@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2015" 
+	ms.date="08/11/2015"  
 	ms.author="juliako"/>
 
 
@@ -66,4 +66,4 @@ Media Services 調整メカニズムが、サービスに対して過剰な要�
 1. [送信] をクリックして、チケットを開きます。
   
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -4,8 +4,8 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	manager="stevenpo" 
+	editor="curtand"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="06/02/2015" 
+	ms.date="08/10/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication Server の概要
@@ -23,13 +23,15 @@
 
 <center>![Cloud](./media/multi-factor-authentication-get-started-server/server2.png)</center>
 
-オンプレミスの多要素認証を使用するかどうかを判断しました。次に進みましょう。このページでは、新しいサーバーのインストールや、オンプレミスの Active Directory を使用したそのサーバーの設定について説明します。Phonefactor サーバーが既にインストールされており、Azure Multi-Factor Server へのアップグレード方法を探している場合は「Azure Multi-Factor Server へのアップグレード」、Web サービスのみのインストールに関する情報を探している場合は「Azure Multi-Factor Authentication Server モバイル アプリ Web サービスの展開」を参照してください。
+オンプレミスの Multi-Factor Authentication を使用するかどうかを判断しました。次に進みましょう。このページでは、新しいサーバーのインストールや、オンプレミスの Active Directory を使用したそのサーバーの設定について説明します。Phonefactor サーバーが既にインストールされており、Azure Multi-Factor Server へのアップグレード方法を探している場合は「Azure Multi-Factor Server へのアップグレード」、Web サービスのみのインストールに関する情報を探している場合は「Azure Multi-Factor Authentication Server モバイル アプリ Web サービスの展開」を参照してください。
 
 
 
 ## Azure Multi-Factor Authentication Server のダウンロード
 
-Azure Multi-Factor Authentication Server は 2 つの方法でダウンロードできます。1 番目の方法は Azure ポータルにサインインする方法で、2 番目の方法は [https://pfweb.phonefactor.net](https://pfweb.phonefactor.net) から直接ダウンロードする方法です。
+
+
+Azure Multi-Factor Authentication Server は 2 つの方法でダウンロードできます。どちらも Azure ポータルから実行できます。1 つ目の方法では、Multi-Factor Authentication プロバイダーを直接管理します。2 つ目の方法では、サービス設定を使用します。2 つ目の方法には、Multi-Factor Authentication プロバイダーまたは Azure AD Premium ライセンスが必要です。
 
 
 ### Azure ポータルから Azure Multi-Factor Authentication Server をダウンロードするには
@@ -37,20 +39,27 @@ Azure Multi-Factor Authentication Server は 2 つの方法でダウンロード
 
 1. Azure ポータルに管理者としてサインインします。
 2. 左側で、[Active Directory] を選択します。
-3. [Active Directory] ページの上部で **[多要素認証プロバイダー]** をクリックします。
+3. [Active Directory] ページの上部で **[Multi-Factor Authentication プロバイダー]** をクリックします。
 4. 下部で **[管理]** をクリックします。
-5. **[ダウンロード]** をクリックします。
-6. **[アクティブ化資格情報の生成]** の上にある **[ダウンロード]** をクリックします。
+5. これにより、新しいページが開きます。**[ダウンロード]** をクリックします。![ダウンロード](./media/multi-factor-authentication-sdk/download.png)
+6. **[アクティブ化資格情報の生成]** の上にある **[ダウンロード]** をクリックします。![ダウンロード](./media/multi-factor-authentication-get-started-server/download4.png)
 7. ダウンロードしたファイルを保存します。
 
-### Azure Multi-Factor Authentication Server から直接ダウンロードするには
---------------------------------------------------------------------------------
 
-1. [https://pfweb.phonefactor.net](https://pfweb.phonefactor.net) にサインインします。
-2. **[ダウンロード]** をクリックします。
-<center>![Cloud](./media/multi-factor-authentication-get-started-server/download2.png)</center>
-3. **[アクティブ化資格情報の生成]** の上にある **[ダウンロード]** をクリックします。後ほどこのページに戻ってくるため、そのままにしておきます。
-4. ダウンロードしたファイルを保存します。
+
+### サービス設定を使用して Azure Multi-Factor Authentication Server をダウンロードするには
+
+
+1. Azure ポータルに管理者としてサインインします。
+2. 左側で、[Active Directory] を選択します。
+3. Azure AD のインスタンスをダブルクリックします。
+4. 上部の **[構成]** をクリックします。![ダウンロード](./media/multi-factor-authentication-sdk/download2.png)
+5. Multi-Factor Authentication の **[サービス設定の管理]** を選択します。
+6. サービス設定ページで、画面の下部にある **[ポータルに移動する]** をクリックします。![ダウンロード](./media/multi-factor-authentication-sdk/download3.png)
+7. これにより、新しいページが開きます。**[ダウンロード]** をクリックします。
+8. **[アクティブ化資格情報の生成]** の上にある **[ダウンロード]** をクリックします。
+9. ダウンロードしたファイルを保存します。
+
 
 
 
@@ -97,8 +106,7 @@ IP サブネット|ネットマスク|IP 範囲
 1. 実行可能ファイルをダブルクリックします。これによりインストールが開始されます。
 2. [インストール フォルダーの選択] 画面で、フォルダーが正しいかどうかを確認し、[次へ] をクリックします。
 3. インストールが完了したら、[終了] をクリックします。これによって、構成ウィザードが起動します。
-4. 構成ウィザードのようこそ画面で、**[認証構成ウィザードの使用をスキップする]** をオンにし、**[次へ]** をクリックします。これによりウィザードが終了し、サーバーが起動します。
-<center>![Cloud](./media/multi-factor-authentication-get-started-server/skip2.png)</center>
+4. 構成ウィザードのようこそ画面で、**[認証構成ウィザードの使用をスキップする]** をオンにし、**[次へ]** をクリックします。これによりウィザードが終了し、サーバーが起動します。![クラウド](./media/multi-factor-authentication-get-started-server/skip2.png)
 
 5. サーバーをダウンロードしたページに戻るには、**[アクティブ化資格情報の生成]** ボタンをクリックします。この情報を提供されたボックスの Azure MFA Server にコピーし、**[アクティブ化]** をクリックします。
 
@@ -120,12 +128,12 @@ IP サブネット|ネットマスク|IP 範囲
 3. 個々のユーザーを検索したり、AD ディレクトリでユーザーを含む OU を検索したりできるようになります。ここではユーザー OU を指定します。
 4. 右側のすべてのユーザーを強調表示し、**[インポート]** をクリックします。成功したことを通知するポップアップが表示されます。インポート ウィンドウを閉じます。
 
-<center>![Cloud](./media/multi-factor-authentication-get-started-server/import2.png)</center>
+![クラウド](./media/multi-factor-authentication-get-started-server/import2.png)
 
 ## ユーザーへの電子メールの送信
-Azure Multi-Factor Authentication Server にユーザーをインポートしたら、多要素認証に登録されたことを知らせる電子メールをユーザーに送信することをお勧めします。
+Azure Multi-Factor Authentication Server にユーザーをインポートしたら、Multi-Factor Authentication に登録されたことを知らせる電子メールをユーザーに送信することをお勧めします。
 
-Azure Multi-Factor Authentication Server では、さまざまな方法で多要素認証を使用するようにユーザーを構成できます。たとえば、ユーザーの電話番号を知っている場合や、会社のディレクトリから Azure Multi-Factor Authentication Server に電話番号をインポートできる場合は、電子メールでユーザーが Azure Multi-Factor Authentication を使用するように構成されたことを通知し、Azure Multi-Factor Authentication の使用に関する手順を提供するほか、ユーザーに認証を受け取る電話番号を通知します。
+Azure Multi-Factor Authentication Server では、さまざまな方法で Multi-Factor Authentication を使用するようにユーザーを構成できます。たとえば、ユーザーの電話番号を知っている場合や、会社のディレクトリから Azure Multi-Factor Authentication Server に電話番号をインポートできる場合は、電子メールでユーザーが Azure Multi-Factor Authentication を使用するように構成されたことを通知し、Azure Multi-Factor Authentication の使用に関する手順を提供するほか、ユーザーに認証を受け取る電話番号を通知します。
 
 電子メールの内容は、ユーザーに設定されている認証方法 (電話、SMS、モバイル アプリなど) によって異なります。たとえば、認証に PIN が要求される場合は、PIN の初期設定を電子メールで通知します。ユーザーは通常、最初の認証時に PIN の変更を要求されます。
 
@@ -138,7 +146,7 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で多要
 
 ![電子メールの設定](./media/multi-factor-authentication-get-started-server/email1.png)
 
-[電子メールの内容] タブにある各種電子メール テンプレートからテンプレートを選択できます。多要素認証を使用するユーザーの構成方法によって、最適なテンプレートを選択できます。
+[電子メールの内容] タブにある各種電子メール テンプレートからテンプレートを選択できます。Multi-Factor Authentication を使用するユーザーの構成方法によって、最適なテンプレートを選択できます。
 
 ![Email templates](./media/multi-factor-authentication-get-started-server/email2.png)
 
@@ -157,4 +165,4 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で多要
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

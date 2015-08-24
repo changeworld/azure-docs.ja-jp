@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL Database 監査の使用 | Azure" 
+	pageTitle="SQL Database 監査の使用 | Microsoft Azure" 
 	description="SQL Database 監査の使用" 
 	services="sql-database" 
 	documentationCenter="" 
@@ -182,4 +182,4 @@ Azure リソース マネージャー モードを実行中に、`Get-Command *A
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

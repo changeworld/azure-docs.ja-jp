@@ -5,7 +5,7 @@
    documentationCenter=""
    authors="alkohli"
    manager="carolz"
-   editor="tysonn" />
+   editor="" />
 <tags 
    ms.service="storsimple"
    ms.devlang="na"
@@ -29,18 +29,17 @@ Microsoft Azure StorSimple ソリューションで問題が発生した場合�
 
 	![Contact MS Support via ManagementPortal](./media/storsimple-contact-microsoft-support/IC777286.png)
 
-1. **[Microsoft サポートに問い合わせる]** ダイアログで、次の操作を行います。
+2. **[Microsoft サポートに問い合わせる]** ダイアログで、次の操作を行います。
 
+	1. ドロップダウン リストから、StorSimple Manager サービスに関連付けられているターゲットの**サブスクリプション**を選択します。**[サポートの種類]** で **[技術]** を指定します。テクニカル サポートを利用するには、有料サポート プランに加入している必要があります。
 
-	- ドロップダウン リストから、StorSimple Manager サービスに関連付けられているターゲットの**サブスクリプション**を選択します。**[サポートの種類]** で **[技術]** を指定します。テクニカル サポートを利用するには、有料サポート プランに加入している必要があります。
+	2. チェック マーク アイコン ![Check icon](./media/storsimple-contact-microsoft-support/IC740895.png) をクリックして**チケットを作成**します。
 
-	1. チェック マーク アイコン ![Check icon](./media/storsimple-contact-microsoft-support/IC740895.png) をクリックして**チケットを作成**します。
-
-1. **[Microsoft サポート]** ウィンドウで、**[製品]** ボックスの一覧の **[StorSimple]** を選択します。
+3. **[Microsoft サポート]** ウィンドウで、**[製品]** ボックスの一覧の **[StorSimple]** を選択します。
 
 	![Contact Microsoft Support - Product](./media/storsimple-contact-microsoft-support/IC777288.png)
 
-1. 画面の指示に従い、適切に要求を分類し、問題に関する明確で具体的な説明を入力します。
+4. 画面の指示に従い、適切に要求を分類し、問題に関する明確で具体的な説明を入力します。
 
 要求を送信した後、その要求を処理するサポート エンジニアから速やかに連絡があります。
 
@@ -52,24 +51,24 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 
 #### サポート セッションを開始するには
 
-1. シリアル コンソールから直接デバイスにアクセスするか、リモート コンピューターから telnet セッションを使用してデバイスにアクセスします。そのためには、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)」の手順を実行します。
+1. シリアル コンソールから直接デバイスにアクセスするか、リモート コンピューターから telnet セッションを使用してデバイスにアクセスします。そのためには、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)」の手順を実行します。
 
-1. 開いたセッションで、**Enter** キーを押して、コマンド プロンプトを開きます。
+2. 開いたセッションで、**Enter** キーを押して、コマンド プロンプトを開きます。
 
-1. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]** を選択します。
+3. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]** を選択します。
 
-1. プロンプトで、次のパスワードを入力します。
+4. プロンプトで、次のパスワードを入力します。
 
 	`Password1`
 
-1. プロンプトで、次のコマンドを入力します。
+5. プロンプトで、次のコマンドを入力します。
 
 	`Enable-HcsSupportAccess`
 
-1. 暗号化された文字列が表示されます。この文字列をメモ帳などのテキスト エディターにコピーします。
+6. 暗号化された文字列が表示されます。この文字列をメモ帳などのテキスト エディターにコピーします。
 
-1. この文字列を保存し、電子メール メッセージで Microsoft サポートに送信します。
+7. この文字列を保存し、電子メール メッセージで Microsoft サポートに送信します。
 
 > [AZURE.IMPORTANT]サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

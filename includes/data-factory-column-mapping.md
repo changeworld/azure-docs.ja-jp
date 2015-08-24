@@ -34,14 +34,14 @@
 	        },
 	        "availability": {
 	            "frequency": "Hour",
-	            "interval": "1",
+	            "interval": 1
 	        },
 			"external": true,
 			"policy": {
 	            "externalData": {
 	                "retryInterval": "00:01:00",
 	                "retryTimeout": "00:10:00",
-	                "maximumRetry": "3"
+	                "maximumRetry": 3
 	            }
 			}
 	    }
@@ -50,7 +50,7 @@
 この例の出力テーブルには構造体が 1 つあり、Azure BLOB ストレージ内の BLOB をポイントしています。
 
 	{
-	    "name": " AzureBlobOutput",
+	    "name": "AzureBlobOutput",
 	    "properties":
 	    {
 	         "structure": 
@@ -83,9 +83,9 @@
 	{
 	    "name": "CopyActivity",
 	    "description": "description", 
-	    "type": "CopyActivity",
-	    "inputs":  [ { "name": " AzureSQLInput"  } ],
-	    "outputs":  [ { "name": " AzureBlobOutput" } ],
+	    "type": "Copy",
+	    "inputs":  [ { "name": "AzureSQLInput"  } ],
+	    "outputs":  [ { "name": "AzureBlobOutput" } ],
 	    "typeProperties":    {
 	        "source":
 	        {
@@ -95,7 +95,7 @@
 	        {
 	            "type": "BlobSink"
 	        },
-	        "Translator": 
+	        "translator": 
 	        {
 	            "type": "TabularTranslator",
 	            "ColumnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"
@@ -125,7 +125,7 @@
 	        "source":
 	        {
 	            "type": "SqlSource",
-	            "SqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartDateTime = \'{0:yyyyMMdd-HH}\'', WindowStart)"
+	            "SqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartDateTime = \\'{0:yyyyMMdd-HH}\\'', WindowStart)"
 	        },
 	        "sink":
 	        {
@@ -149,4 +149,4 @@
 
 ![列マッピングのフロー - 2](./media/data-factory-data-stores-with-rectangular-tables/column-mapping-flow-2.png)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

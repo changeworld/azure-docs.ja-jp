@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Windows ストア アプリ向け Mobile Services の使用 | モバイル デベロッパー センター" 
+	pageTitle="Windows ストア アプリ向け Mobile Services の使用 | Microsoft Azure" 
 	description="このチュートリアルでは、C# または JavaScript で Windows ストア用の開発を行う場合に Azure Mobile Services を使用する方法を示します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -92,4 +92,4 @@
 [Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

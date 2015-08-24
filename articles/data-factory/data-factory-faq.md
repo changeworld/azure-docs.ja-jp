@@ -20,7 +20,7 @@
 
 ## 一般的な質問
 
-### Q: Azure Data Factory とは何ですか。
+### Azure Data Factory とは何ですか。
 
 Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。原材料を機械で加工して最終製品を作成する工場と同じように、Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。
 
@@ -28,11 +28,11 @@ Data Factory は、オンプレミスとクラウドのデータ ソースおよ
 
 詳細については、「[概要と主要な概念](data-factory-introduction.md)」を参照してください。
  
-### Q: Data Factory では顧客のどのような課題が解決されますか。
+### Data Factory では顧客のどのような課題が解決されますか。
 
 Azure Data Factory は、従来のリレーショナル ストレージと非構造化データを対象とした多様なデータ保存、処理、および移動のサービスを機敏に活用できると共に、完全に管理されたサービスの制御と監視の機能を提供します。
 
-### Q: Data Factory の対象ユーザーはだれですか。
+### Data Factory の対象ユーザーはだれですか。
 
 
 - Hadoop とその他のシステム間における統合サービスの構築を担当しているデータ開発者。
@@ -44,31 +44,31 @@ Azure Data Factory は、従来のリレーショナル ストレージと非構
 	- コンピューティングとストレージのリソースを管理し、オンプレミスとクラウドの間でコストと規模のバランスをとる必要がある。
 	- 新しいビジネス ニーズに対応するためにさまざまなソースと処理を短時間で追加しつつ、すべてのコンピューティング資産とストレージ資産の全体像を常に把握する必要がある。
 
-###  Q: Azure Data Factory の料金の詳細はどこで確認できますか。
+### Azure Data Factory の料金の詳細はどこで確認できますか。
 
 Azure Data Factory の料金の詳細については、[Data Factory の料金詳細][adf-pricing-details]に関するページをご覧ください。
 
-### Q.Azure Data Factory の利用はどのように開始するのですか。
+### Azure Data Factory の利用はどのように開始するのですか。
 
 - Azure Data Factory の概要については、[Azure Data Factory サービスの概要][adf-introduction]に関するページをご覧ください。
 - クイック チュートリアルについては、「[Azure Data Factory を使ってみる][adfgetstarted]」をご覧ください。
 - 包括的なドキュメントについては、[Azure Data Factory のドキュメント][adf-documentation-landingpage]に関するページをご覧ください。
 
   
-### Q: 顧客は Data Factory にどのようにアクセスしますか。
+### 顧客は Data Factory にどのようにアクセスしますか。
 
 お客様は [Azure プレビュー ポータル][azure-preview-portal]を通じて Data Factory にアクセスできます。
 
-### Q: Data Factory を利用可能なリージョンはどこですか。
+### Data Factory を利用可能な地域はどこですか。
 
 Data Factory は米国西部と北ヨーロッパで使用できます。Data Factory で使用されるコンピューティング サービスとストレージ サービスは、その他の地域でも利用できます。
  
-### Q: データ ファクトリ、パイプライン、アクティビティ、データセットの数の制限値はいくつですか。
+### Data Factory/パイプライン/アクティビティ/データセットの数の制限値はいくつですか。
  
-詳細については、記事「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md/#data-factory-limits)」の **Azure Data Factory の制限**に関するセクションを参照してください。
+詳細については、記事「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#data-factory-limits)」の **Azure Data Factory の制限**に関するセクションを参照してください。
 
 
-### Q: Azure Data Factory サービスではどのような作成エクスペリエンスまたは開発者エクスペリエンスが提供されますか。
+### Azure Data Factory サービスではどのような作成エクスペリエンスまたは開発者エクスペリエンスが提供されますか。
 
 データ ファクトリを生成または作成する方法には、以下のものがあります。
 
@@ -78,11 +78,11 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 - **.NET クラス ライブラリ**。Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。.NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、[.NET SDK を使用したデータ ファクトリの作成、監視、管理][create-factory-using-dotnet-sdk]に関するページをご覧ください。Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference]に関するページをご覧ください。  
 - **REST API**。Azure Data Factory サービスで公開されている REST API を使用して、データ ファクトリを作成およびデプロイすることもできます。Data Factory REST API の包括的なドキュメントについては、[Data Factory REST API リファレンス][msdn-rest-api-reference]に関するページをご覧ください。 
 
-### Q: Data Factory の名前を変更できますか。
+### Data Factory の名前を変更できますか。
 いいえ。他の Azure のリソースと同様に、Azure Data Factory の名前は変更できません。
 
 ## アクティビティ - FAQ
-### Q: どのようなデータ ソースとアクティビティがサポートされますか。
+### どのようなデータ ソースとアクティビティがサポートされますか。
 
 サポートされるデータ ソースとアクティビティについては、[データ移動のアクティビティ](data-factory-data-movement-activities.md)に関する記事と、[データ変換のアクティビティ](data-factory-data-transformation-activities.md)に関する記事を参照してください。
 
@@ -90,7 +90,7 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 アクティビティが実行されるタイミングは、出力データ テーブルの **availability** 構成設定によって決定されます。アクティビティは、実行を開始する前に、入力データのすべての依存関係が満たされている (つまり、**準備完了**状態になっている) かどうかを確認します。
 
 ## コピー アクティビティ - FAQ
-### Q: コピー アクティビティでサポートされているリージョンはどこですか。
+### コピー アクティビティでサポートされている地域はどこですか。
 
 コピー アクティビティでは、米国東部、米国東部 2、米国西部、米国中央部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、東南アジア、東日本、ブラジル南部の各リージョンへのデータのコピーがサポートされます。
 
@@ -106,15 +106,15 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 
 ## HDInsight アクティビティ - FAQ
 
-### Q: HDInsight でサポートされているリージョンはどこですか。
+### HDInsight でサポートされているリージョンはどこですか。
 
 次の記事の利用可能な地域に関するセクションをご覧ください。[HDInsight の料金詳細][hdinsight-supported-regions]
 
-### Q: オンデマンドの HDInsight クラスターはどのリージョンで使用されますか。
+### オンデマンドの HDInsight クラスターはどの地域で使用されますか。
 
 オンデマンドの HDInsight クラスターは、クラスターで使用するように指定したストレージが存在するのと同じ地域に作成されます。
 
-### Q: 追加のストレージ アカウントを HDInsight クラスターに関連付けるにはどうすればよいですか。
+### 追加のストレージ アカウントを HDInsight クラスターに関連付けるにはどうすればよいですか。
 
 独自の HDInsight クラスター (BYOC - Bring Your Own Cluster: クラスターを自分で用意する) を使用している場合は、次のトピックをご覧ください。
 
@@ -192,4 +192,4 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

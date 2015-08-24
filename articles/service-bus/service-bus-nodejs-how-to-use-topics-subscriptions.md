@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="サービス バス トピックの使用方法 (Node.js) - Azure" 
+	pageTitle="Service Bus トピックの使用方法 (Node.js) | Microsoft Azure" 
 	description="Node.js アプリから Azure の Service Bus トピックとサブスクリプションを使用する方法を学習します。" 
 	services="service-bus" 
 	documentationCenter="nodejs" 
@@ -305,4 +305,4 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
   [Azure テーブル サービスを使用する Node.js Web アプリケーション]: /develop/nodejs/tutorials/web-site-with-storage/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

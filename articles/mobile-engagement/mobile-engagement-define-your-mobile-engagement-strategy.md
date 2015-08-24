@@ -3,7 +3,7 @@
 	description="オンボードを使用し、分析およびプッシュ通知で Mobile Engagement を最適化する方法を説明します。"
 	services="mobile-engagement"
 	documentationCenter="Mobile"
-	authors="kpiteira"
+	authors="piyushjo"
 	manager="dwrede"
 	editor="" />
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/10/2015"
-	ms.author="kapiteir" />
+	ms.date="08/10/2015"
+	ms.author="piyushjo" />
 
 #Mobile Engagement 戦略の定義
 
@@ -128,4 +128,4 @@
 [チュートリアル]: http://azure.microsoft.com/documentation/articles/mobile-engagement-ios-get-started/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

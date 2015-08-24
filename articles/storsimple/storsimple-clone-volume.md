@@ -1,5 +1,5 @@
 <properties
-   pageTitle="StorSimple ボリュームの複製"
+   pageTitle="StorSimple ボリュームの複製 | Microsoft Azure"
    description="異なる複製の種類と、それらをどのような場合に使用するかについて説明します。また、バックアップ セットを使用して個々のボリュームを複製する方法についても説明します。"
    services="storsimple"
    documentationCenter="NA"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/27/2015"
+   ms.date="08/11/2015"
    ms.author="alkohli" />
 
 # StorSimple ボリュームの複製
@@ -91,4 +91,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

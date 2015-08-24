@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin Android) | モバイル デベロッパー センター"
+	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin Android) | Microsoft Azure"
 	description="Azure Mobile Services を使用して、Xamarin Android アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
 	documentationCenter="xamarin"
 	authors="lindydonna"
@@ -173,4 +173,4 @@
 [NuGet Addin for Xamarin]: https://github.com/mrward/monodevelop-nuget-addin
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Cloud Platform Integration Framework - Azure アーキテクチャ パターン" 
+   pageTitle="Cloud Platform Integration Framework | Microsoft Azure" 
    description="Cloud Platform Integration Framework は、アプリケーションを Microsoft Azure のアーキテクチャ パターンで構成される Microsoft クラウド ソリューションにオンボードするためのワークロード統合ガイダンスを提供します。" 
    services="" 
    documentationCenter="" 
@@ -59,4 +59,4 @@ Azure でのソリューション アーキテクチャの開発をサポート�
 
 [Azure Search](https://gallery.technet.microsoft.com/Cloud-Platform-Integration-e581d65d)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

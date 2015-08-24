@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/30/2015"
+   ms.date="08/11/2015"
    ms.author="v-sharos" />
 
 # SharePoint 用 StorSimple アダプター
@@ -23,13 +23,13 @@ SharePoint 用 StorSimple アダプターは、SharePoint サーバー ファー
 
 SharePoint 用 StorSimple アダプターはリモート BLOB ストレージ (RBS) プロバイダーとして機能し、SQL Server のリモート BLOB ストレージ機能を使用して、StorSimple デバイスでサポートされるファイル サーバー上に、構造化されていない SharePoint コンテンツ (BLOB の形式) を格納します。
 
->[AZURE.NOTE]SharePoint 用 StorSimple アダプターは、SharePoint Server 2010 のリモート BLOB ストレージ (RBS) をサポートしています。SharePoint Server 2010 の External BLOB Storage (EBS) はサポートしていません。
+>[AZURE.NOTE]SharePoint 用 StorSimple アダプターは、SharePoint Server 2010 のリモート BLOB ストレージ (RBS) をサポートしています。SharePoint Server 2010 の External BLOB ストレージ (EBS) はサポートしていません。
 
 - SharePoint 用 StorSimple アダプターをダウンロードするには、Microsoft ダウンロード センターの [SharePoint 用 StorSimple アダプター][1]のページにアクセスしてください。
 
 - RBS の計画と RBS の制限の詳細については、「[SharePoint 2013 で RBS の使用を決める][2]」、または「[RBS を計画する (SharePoint Server 2010)][3]」を参照してください。
 
-この概要の残りの部分では、SharePoint 用 StorSimple アダプターの役割のほか、アダプターをインストールおよび構成する前に認識しておく必要がある SharePoint の容量とパフォーマンスの制限事項について簡単に説明します。この情報を確認してから、「[SharePoint インストール用 StorSimple アダプター](#storsimple-adapter-for-sharepoint-installation)」に進み、アダプターの設定を開始してください。
+この概要の残りの部分では、SharePoint 用 StorSimple アダプターのロールのほか、アダプターをインストールおよび構成する前に認識しておく必要がある SharePoint の容量とパフォーマンスの制限事項について簡単に説明します。この情報を確認してから、「[SharePoint インストール用 StorSimple アダプター](#storsimple-adapter-for-sharepoint-installation)」に進み、アダプターの設定を開始してください。
 
 ### SharePoint 用 StorSimple アダプターの利点
 
@@ -188,7 +188,7 @@ SharePoint 用 StorSimple アダプターをインストールするには、次
 
 SharePoint 用 StorSimple アダプターをインストールしたら、次の手順に従って RBS を構成します。
 
->[AZURE.TIP]SharePoint 用 StorSimple アダプターは [SharePoint サーバーの全体管理] ページに接続されるため、SharePoint ファームの各コンテンツ データベースで RBS を有効または無効にすることができます。ただし、コンテンツ データベースの RBS を有効または無効にすると、IIS がリセットされ、ファームの構成によっては、SharePoint Web フロントエンド (WFE) の可用性が一時的に中断する可能性があります (フロントエンド ロード バランサーの使用、現在のサーバーのワークロードなどの要素によって、この中断時間を短くしたり、中断をなくしたりすることができます)。 ユーザーを中断から保護するために、計画的な保守期間にのみ RBS を有効または無効にすることをお勧めします。
+>[AZURE.TIP]SharePoint 用 StorSimple アダプターは [SharePoint サーバーの全体管理] ページに接続されるため、SharePoint ファームの各コンテンツ データベースで RBS を有効または無効にすることができます。ただし、コンテンツ データベースの RBS を有効または無効にすると、IIS がリセットされ、ファームの構成によっては、SharePoint Web フロントエンド (WFE) の可用性が一時的に中断する可能性があります (フロントエンド Load Balancer の使用、現在のサーバーのワークロードなどの要素によって、この中断時間を短くしたり、中断をなくしたりすることができます)。 ユーザーを中断から保護するために、計画的な保守期間にのみ RBS を有効または無効にすることをお勧めします。
 
 [AZURE.INCLUDE [storsimple-sharepoint-adapter-configure-rbs](../../includes/storsimple-sharepoint-adapter-configure-rbs.md)]
  
@@ -240,4 +240,4 @@ SharePoint サイトからオブジェクトを削除しても、RBS ストア �
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/ja-jp/library/ff943565.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -22,7 +22,7 @@
 
 Azure では、組み込みの診断機能により、[App Service Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)のデバッグを容易に行うことができます。この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
-> [AZURE.NOTE]この記事では、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure のトラブルシューティング](troubleshoot-web-sites-in-visual-studio.md)」を参照してください。
+> [AZURE.NOTE]この記事では、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
 
 ## <a name="whatisdiag"></a>Web サーバーの診断とアプリケーション診断
 
@@ -38,11 +38,11 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 
 ### アプリケーション診断
 
-アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
+アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/ja-jp/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
 
 	System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
-実行時にこれらのログを取得してトラブルシューティングに役立てることができます。詳細については、[Visual Studio での Azure Web アプリのトラブルシューティング](../troubleshoot-web-sites-in-visual-studio.md)に関するページを参照してください。
+実行時にこれらのログを取得してトラブルシューティングに役立てることができます。詳細については、[Visual Studio での Azure Web アプリのトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)に関するページを参照してください。
 
 App Service Web Apps は、Web アプリにコンテンツをパブリッシュしたときのデプロイ情報もログに記録します。これは自動的に行われ、デプロイ ログの構成設定はありません。デプロイ ログでは、デプロイが失敗した理由を特定できます。たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
 
@@ -53,7 +53,7 @@ App Service Web Apps は、Web アプリにコンテンツをパブリッシュ�
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![ログ パーツ](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-**アプリケーション診断**を有効にするときに、**レベル**も選択できます。この設定を使用して、取得された情報を、**情報**、**警告**、または**エラー情報**にフィルター処理できます。これを**詳細**に設定すると、アプリケーションにより生成されるすべての情報がログに記録されます。
+**アプリケーション診断**を有効にするときに、**レベル**も選択できま�。この設定を使用して、取得された情報を、**情報**、**警告**、または**エラー情報**にフィルター処理できます。これを**詳細**に設定すると、アプリケーションにより生成されるすべての情報がログに記録されます。
 
 > [AZURE.NOTE]web.config ファイルの変更とは異なり、アプリケーション診断の有効化や診断ログ レベルの変更によって、アプリケーションが実行されているアプリケーション ドメインがリサイクルされることはありません。
 
@@ -82,7 +82,7 @@ Web アプリケーション ファイル システムに保存された診断�
 
 * **アプリケーション ログ**: /LogFiles/Application/。このフォルダーには、アプリケーション ログによって生成された情報を含む 1 つ以上のテキスト ファイルが格納されます。
 
-* **失敗した要求トレース**: /LogFiles/W3SVC#\#\#\#\#\#\#\#\#/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
+* **失敗した要求トレース**: /LogFiles/W3SVC#########/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 
 * **詳細なエラー ログ**: /LogFiles/DetailedErrors/。このフォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。
 
@@ -236,7 +236,7 @@ BLOB に格納されるデータは次のようになります。
 
 ### 失敗した要求トレース
 
-失敗した要求トレースは __fr\#\#\#\#\#\#.xml__ という名前の XML ファイルに保存されます。ログに記録された情報を見やすくするには、__freb.xsl__ という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。たとえば、次のように表示されます。
+失敗した要求トレースは __fr######.xml__ という名前の XML ファイルに保存されます。ログに記録された情報を見やすくするには、__freb.xsl__ という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。たとえば、次のように表示されます。
 
 ![失敗した要求をブラウザーで表示したところ](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
@@ -263,4 +263,4 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

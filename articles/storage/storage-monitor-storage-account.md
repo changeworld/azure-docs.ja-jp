@@ -1,28 +1,28 @@
-<properties 
-	pageTitle="ストレージ アカウントの監視方法 | Microsoft Azure" 
-	description="管理ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。" 
-	services="storage" 
-	documentationCenter="" 
-	authors="tamram" 
-	manager="adinah" 
+<properties
+	pageTitle="ストレージ アカウントの監視方法 | Microsoft Azure"
+	description="Azure ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。"
+	services="storage"
+	documentationCenter=""
+	authors="tamram"
+	manager="adinah"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/22/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/22/2015"
 	ms.author="tamram"/>
 
-# Azure の監視ポータルでのストレージ アカウントの監視
+# Azure ポータルでのストレージ アカウントの監視
 
 ## 概要
 
-ストレージ アカウントは、Azure の管理ポータルで監視できます。ポータルを通じて監視するためのストレージ アカウントを構成する場合、Azure Storage は [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx) を使用してアカウントのメトリックを追跡し、要求データを記録します。
+ストレージ アカウントは、Azure ポータルで監視できます。ポータルを通じて監視するためのストレージ アカウントを構成する場合、Azure Storage は [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx) を使用してアカウントのメトリックを追跡し、要求データを記録します。
 
-> [AZURE.NOTE]管理ポータルで監視データを調査すると、追加のコストがかかります。詳細については、「<a href="http://msdn.microsoft.com/library/azure/hh360997.aspx">Storage Analytics と課金</a>」を参照してください。<br />
+> [AZURE.NOTE]Azure ポータルで監視データを調査すると、追加のコストがかかります。詳細については、「<a href="http://msdn.microsoft.com/library/azure/hh360997.aspx">Storage Analytics と課金</a>」を参照してください。<br />
 
 > Azure ファイル サービスは、現時点では Storage Analytics をサポートしていません。
 
@@ -31,15 +31,15 @@
 
 ## 方法: ストレージ アカウントの監視の設定
 
-1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
+1. [Azureポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-2. **[構成]** をクリックして、BLOB、テーブル、キューの各サービスの **[監視]** 設定まで下図のようにスクロールします。
+2. **[構成]** をクリックして、BLOB、テーブル、キューの各サービスの **[監視]** 設定まで下にスクロールします。
 
 	![MonitoringOptions](./media/storage-monitor-storage-account/Storage_MonitoringOptions.png)
 
 3. **[監視]** で、各サービスの監視レベルおよびデータ保有ポリシーを設定します。
 
--  監視レベルを設定するには、以下のいずれかを選択します。
+	-  監視レベルを設定するには、以下のいずれかを選択します。
 
       **[最小]** - 受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックを収集して、BLOB、テーブル、キューのサービスごとに集計します。
 
@@ -55,7 +55,7 @@
 
 ストレージ アカウントの監視を構成するまで、監視データは収集されず、ダッシュボードおよび **[監視]** ページのメトリック チャートは空です。
 
-監視レベルと保有ポリシーを設定した後、管理ポータルで監視する利用可能なメトリック、およびメトリック チャートにプロットするメトリックを選択できます。監視レベルごとに既定のメトリック セットが表示されます。**[メトリックの追加]** を使用してメトリック一覧のメトリックを追加または削除できます。
+監視レベルと保有ポリシーを設定した後、Azure ポータルで監視する利用可能なメトリック、およびメトリック チャートにプロットするメトリックを選択できます。監視レベルごとに既定のメトリック セットが表示されます。**[メトリックの追加]** を使用してメトリック一覧のメトリックを追加または削除できます。
 
 メトリックは、ストレージ アカウントの $MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue、$MetricsCapacityBlob という名前の 4 つのテーブルに保存されます。詳細については、「[Storage Analytics Metrics について](http://msdn.microsoft.com/library/azure/hh343258.aspx)」を参照してください。
 
@@ -64,20 +64,20 @@
 
 ダッシュボードで、利用できる 9 個のメトリックから最大 6 個のメトリックを選択してメトリック チャートにプロットできます。サービスごとに (BLOB、テーブル、およびキュー)、空き時間情報、成功のパーセンテージ、および要求数合計のメトリックが利用できます。ダッシュボードで利用できるメトリックは、最少監視でも詳細監視でも同じです。
 
-1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
+1. [Azure ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
 2. チャートにプロットされるメトリックを変更するには、以下のいずれかを実行します。
 
 	- 新しいメトリックをチャートに追加するには、チャートの下にあるテーブルでメトリック ヘッダーの横にある色つきのチェック ボックスをオンにします。
-	
+
 	- チャートにプロットされているメトリックを非表示にするには、メトリック ヘッダーの横にある色つきのチェック ボックスをオフにします。
-	
+
 		![Monitoring\_nmore](./media/storage-monitor-storage-account/storage_Monitoring_nmore.png)
-  
+
 3. 既定では、チャートには傾向が表示され、各メトリックの現在の値だけが表示されます (チャート上部にある **[相対]** オプション)。Y 軸を表示して絶対値を確認するには、**[絶対]** をクリックします。
 
 4. メトリック チャートに表示する期間を変更するには、チャートの上部で 6 時間、24 時間、または 7 日を選択します。
-     
+
 
 ## 方法: [監視] ページのカスタマイズ
 
@@ -92,12 +92,11 @@
 ## How to: メトリック テーブルへのメトリックの追加
 
 
-1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
+1. [Azure ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
 2. **[監視]** をクリックします。
 
 	**[監視]** ページが開きます。既定で、メトリック テーブルには監視に使用できるメトリックのサブセットが表示されます。図は、3 つのサービスすべてに詳細監視を構成したストレージ アカウントで表示される既定の [監視] ページを示しています。**[メトリックの追加]** を使用して、使用できるすべてのメトリックから監視するメトリックを選択します。
-
 
 	![Monitoring\_VerboseDisplay](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
 
@@ -108,13 +107,13 @@
 	最少監視で使用できる集計メトリックは一覧の上部に表示されています。チェック ボックスをオンにすると、そのメトリックがメトリック一覧に表示されます。
 
 	![AddMetricsInitialDisplay](./media/storage-monitor-storage-account/Storage_AddMetrics_InitialDisplay.png)
- 
+
 4. ダイアログ ボックスの右側をポイントするとスクロール バーが表示され、ドラッグして追加のメトリックを表示できます。
 
 	![AddMetricsScrollbar](./media/storage-monitor-storage-account/Storage_AddMetrics_Scrollbar.png)
 
 
-5. メトリックの横にある下向き矢印をクリックして、メトリックの対象となる操作の一覧を展開します。管理ポータルのメトリック テーブルに表示する操作をそれぞれ選択します。
+5. メトリックの横にある下向き矢印をクリックして、メトリックの対象となる操作の一覧を展開します。Azure ポータルのメトリック テーブルに表示する操作をそれぞれ選択します。
 
 	下図では、承認エラーのパーセンテージ メトリックが展開されています。
 
@@ -123,7 +122,7 @@
 
 6. すべてのサービスについてメトリックを選択したら、[OK] (チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
 
-7. テーブルからメトリックを削除するには、下図のようにメトリックをクリックして選択し、**[メトリックの削除]** をクリックします。
+7. テーブルからメトリックを削除するには、メトリックをクリックして選択し、**[メトリックの削除]** をクリックします
 
 	![DeleteMetric](./media/storage-monitor-storage-account/Storage_DeleteMetric.png)
 
@@ -141,13 +140,13 @@
 
 ストレージ アカウントで利用できるストレージ サービス (BLOB、テーブル、およびキュー) ごとに、読み取り要求、書き込み要求、および削除要求の診断ログを保存でき、サービスごとにデータ保有ポリシーを設定できます。
 
-1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
+1. [Azure ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-2. **[構成]** をクリックし、キーボードの下方向キーを使って、**[ログ]** までスクロールします (下図)。
+2. **[構成]** をクリックし、キーボードの下方向キーを使って、**[ログ]** まで下にスクロールします。
 
 	![Storagelogging](./media/storage-monitor-storage-account/Storage_LoggingOptions.png)
 
- 
+
 3. サービス (BLOB、テーブル、およびキュー) ごとに、次のように構成します。
 
 	- ログを記録する要求の種類: 読み取り要求、書き込み要求、および削除要求。
@@ -157,6 +156,5 @@
 4. **[保存]** をクリックします。
 
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について](http://msdn.microsoft.com/library/azure/hh343262.aspx)」を参照してください。
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

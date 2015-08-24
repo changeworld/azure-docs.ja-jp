@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="データの使用 (Android) | モバイル デベロッパー センター" 
+	pageTitle="データの使用 (Android) | Microsoft Azure" 
 	description="モバイル サービスを使用して Android アプリでデータを活用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="android" 
@@ -133,4 +133,4 @@
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=328660
    
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

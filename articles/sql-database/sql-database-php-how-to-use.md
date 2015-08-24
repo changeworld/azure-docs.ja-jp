@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL データベースの使用方法 (PHP) - Azure の機能ガイド" 
+	pageTitle="SQL Database (PHP) を使用する方法 |Microsoft Azure" 
 	description="PHP から Azure SQL Database を作成してそれに接続する方法について説明します。" 
 	services="sql-database" 
 	documentationCenter="php" 
@@ -130,4 +130,4 @@ Azure での PHP と SQL データベースの使用方法を示すサンプル�
 [quick-create]: ./media/sql-database-php-how-to-use/create-new-sql.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

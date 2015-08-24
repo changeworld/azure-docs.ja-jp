@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Access Control の使用方法 (Java) - Azure の機能ガイド"
+    pageTitle="Access Control の使用方法 (Java) | Microsoft Azure"
     description="Azure 上で Java により Access Control を開発して使用する方法について説明します。"
 	services="active-directory" 
     documentationCenter="java"
@@ -16,9 +16,9 @@
     ms.date="06/03/2015"
     ms.author="robmcm" />
 
-# Eclipse を使用して Azure の Access Control サービスで Web ユーザーを認証する方法
+# Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法
 
-このガイドでは、Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 内で Azure の Access Control サービス (ACS) を使用する方法について説明します。ACS の詳細については、「[次のステップ](#next_steps)」を参照してください。
+このガイドでは、Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 内で Azure の Access Control Service (ACS) を使用する方法について説明します。ACS の詳細については、「[次のステップ](#next_steps)」を参照してください。
 
 > [AZURE.NOTE]Azure の Access Control Services Filter (Microsoft Open Technologies 提供) は Community Technology Preview 版です。プレリリース版ソフトウェアとして Microsoft Open Technologies, Inc. によってもマイクロソフトによっても正式にサポートされていません。
 
@@ -34,11 +34,11 @@ ACS では、次の機能を使用できます。
 -   ACS 設定へのプログラムによるアクセスを提供する Open Data Protocol (OData) ベースの管理サービス。
 -   ACS 設定への管理アクセスが可能な管理ポータル。
 
-ACS の詳細については、[アクセス制御サービス 2.0 に関するページ][]を参照してください。
+ACS の詳細については、[Access Control Service 2.0 に関するページ][]を参照してください。
 
 ## 概念
 
-Azure ACS はクレーム ベース ID のプリンシパルに基づいており、内部設置型またはクラウドで実行中のアプリケーションに対する認証メカニズムを一貫したアプローチで作成できます。クレーム ベース ID は、アプリケーションとサービスが必要とする組織内、その他の組織内、インターネット上のユーザーについての ID 情報を取得するための一般的な方法を提供します。
+Azure ACS はクレーム ベース ID のプリンシパルに基づいており、オンプレミスまたはクラウドで実行中のアプリケーションに対する認証メカニズムを一貫したアプローチで作成できます。クレーム ベース ID は、アプリケーションとサービスが必要とする組織内、その他の組織内、インターネット上のユーザーについての ID 情報を取得するための一般的な方法を提供します。
 
 このガイドのタスクを完了するには、次の概念を理解している必要があります。
 
@@ -76,7 +76,7 @@ Azure ACS はクレーム ベース ID のプリンシパルに基づいてお�
 - Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。 
 - Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、GlassFish、JBoss Application Server、Jetty など)。
 - Azure サブスクリプション。<http://www.microsoft.com/windowsazure/offers/> から入手できます。
-- Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 2014 年 4 月リリース。詳細については、「[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)」を参照してください。
+- Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 2014 年 4 月リリース。詳細については、[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)を参照してください。
 - アプリケーションで使用する X.509 証明書。この証明書は .cer (公開証明書) と .PFX (Personal Information Exchange) の両方の形式のものが必要です。(この証明書の作成方法についてはこのチュートリアルで後で説明)。
 - [Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)で説明されている、Azure コンピューティング エミュレーターとそのエミュレーターへのデプロイ手法に精通していること。
 
@@ -84,9 +84,9 @@ Azure ACS はクレーム ベース ID のプリンシパルに基づいてお�
 
 Azure で Access Control Service (ACS) の使用を開始するには、ACS 名前空間を作成する必要があります。名前空間では、アプリケーション内から ACS リソースのアドレスを指定するための一意のスコープが提供されます。
 
-1. [Azure の管理ポータル][]にログインします。
+1. [Azure 管理ポータル][]にログインします。
 2. **[Active Directory]** をクリックします。 
-3. 新しい Access Control 名前空間を作成するには、**[新規]**、**[アプリ サービス]**、**[Access Control]**、**[簡易作成]** の順にクリックします。 
+3. 新しい Access Control 名前空間を作成するには、[**新規**]、[**App Services**]、[**Access Control**]、[**簡易作成**] の順にクリックします。 
 4. 名前空間の名前を入力します。名前が一意であるかが確認されます。
 5. 名前空間が使用されるリージョンを選択します。パフォーマンスを最高にするには、アプリケーションを展開するリージョンと同じにし、[作成] をクリックします。
 6. 複数のサブスクリプションがある場合は、ACS 名前空間に使用するサブスクリプションを選択します。
@@ -193,9 +193,9 @@ ACS 管理ポータルの [アプリケーション統合] ページでは、Jav
 7. Eclipse ダイアログ ボックスの **[Security]** セクションで、既存の証明書を使用する場合は、**[Browse]** をクリックして、使用する証明書に移動します。その証明書を選択し、**[Open]** をクリックします。または、新しい証明書を作成する場合は、**[New]** をクリックして **[New Certificate]** ダイアログ ボックスを表示し、新しい証明書のパスワード、.cer ファイル名、および .pfx ファイル名を指定します。
 8. **[Embed the certificate in the WAR file]** チェック ボックスをオンにします。証明書はこの方法で埋め込むことでデプロイに追加されます。手動でコンポーネントとして追加する必要はありません(代わりに WAR ファイル以外からの証明書を保存する必要がある場合は、証明書をロール コンポーネントとして追加し、**[Embed the certificate in the WAR file]** チェック ボックスをオフにすることができます)。
 9. (省略可能) **[Require HTTPS connections]** チェック ボックスをオンにします。このオプションを設定する場合は、HTTPS プロトコルを使用してアプリケーションにアクセスすることが必要になります。HTTPS 接続が不要な場合は、このチェック ボックスをオフにします。
-10. コンピューティング エミュレーターに展開する場合、**[Azure ACS Filter]** 設定は次のようになります。
+10. コンピューティング エミュレーターにデプロイする場合、**[Azure ACS Filter]** 設定は次のようになります。
 
-    ![コンピューティング エミュレーターに展開する場合の [Azure ACS Filter] 設定][add_acs_filter_lib_emulator]
+    ![コンピューティング エミュレーターにデプロイする場合の [Azure ACS Filter] 設定][add_acs_filter_lib_emulator]
 
 11. **[完了]** をクリックします。
 12. web.xml ファイルの作成を確認するダイアログ ボックスが表示されたら、**[Yes]** をクリックします。
@@ -212,15 +212,15 @@ ACS 管理ポータルの [アプリケーション統合] ページでは、Jav
 7. アプリケーションを実行するために、ブラウザーで <http://localhost:8080/MyACSHelloWorld/> を開きます (または、**[Require HTTPS connections]** をオンにした場合は、<https://localhost:8080/MyACSHelloWorld/> を開きます)。Windows Live ID でログインするように求められます。その資格情報は指定した証明書利用者アプリケーションの戻り先 URL に送信されます。
 99.  アプリケーションの表示が完了したら、**[Reset Azure Emulator]** ボタンをクリックします。
 
-## Azure への展開
+## Azure へのデプロイ
 
-Azure に展開するには、ACS 名前空間の証明書利用者領域と戻り先 URL を変更する必要があります。
+Azure にデプロイするには、ACS 名前空間の証明書利用者領域と戻り先 URL を変更する必要があります。
 
-1. Azure 管理ポータルの **[証明書利用者アプリケーションの編集]** ページで、デプロイするサイトの URL になる**領域**を変更します。**example** を、指定した展開の DNS 名に置き換えます。
+1. Azure 管理ポータルの **[証明書利用者アプリケーションの編集]** ページで、デプロイするサイトの URL になる**領域**を変更します。**example** を、指定したデプロイの DNS 名に置き換えます。
 
     ![運用で使用する証明書利用者の領域][relying_party_realm_production]
 
-2. アプリケーションの URL になる**戻り先 URL** を変更します。**example** を、指定した展開の DNS 名に置き換えます。
+2. アプリケーションの URL になる**戻り先 URL** を変更します。**example** を、指定したデプロイの DNS 名に置き換えます。
 
     ![運用で使用する証明書利用者の戻り先 URL][relying_party_return_url_production]
 
@@ -233,9 +233,9 @@ Azure に展開するには、ACS 名前空間の証明書利用者領域と戻�
 9. Eclipse ダイアログ ボックスの **[Security]** セクションで、既存の証明書を使用する場合は、**[Browse]** をクリックして、使用する証明書に移動します。その証明書を選択し、**[Open]** をクリックします。または、新しい証明書を作成する場合は、**[New]** をクリックして **[New Certificate]** ダイアログ ボックスを表示し、新しい証明書のパスワード、.cer ファイル名、および .pfx ファイル名を指定します。
 10. **[Embed the certificate in the WAR file]** チェック ボックスはオンのままにして、証明書を WAR ファイルに埋め込むものとします。
 11. (省略可能) **[Require HTTPS connections]** チェック ボックスをオンにします。このオプションを設定する場合は、HTTPS プロトコルを使用してアプリケーションにアクセスすることが必要になります。HTTPS 接続が不要な場合は、このチェック ボックスをオフにします。
-12. Azure に展開する場合、[Azure ACS Filter] 設定は次のようになります。
+12. Azure にデプロイする場合、[Azure ACS Filter] 設定は次のようになります。
 
-    ![運用展開用の [Azure ACS Filter] 設定][add_acs_filter_lib_production]
+    ![運用デプロイ用の [Azure ACS Filter] 設定][add_acs_filter_lib_production]
 
 13. **[Finish]** をクリックして、**[Edit Library]** ダイアログ ボックスを閉じます。
 14. **[OK]** をクリックして **[Properties for MyACSHelloWorld]** ダイアログ ボックスを閉じます。
@@ -243,17 +243,17 @@ Azure に展開するには、ACS 名前空間の証明書利用者領域と戻�
 
 Web アプリケーションのデプロイ後、開いているブラウザー セッションをすべて閉じてから、Web アプリケーションを実行します。Windows Live ID 資格情報でログインするように求められます。その資格情報は証明書利用者アプリケーションの戻り先 URL に送信されます。
 
-ACS Hello World アプリケーションの使用後は展開を削除することを忘れないでください (展開の削除方法については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」を参照)。
+ACS Hello World アプリケーションの使用後はデプロイを削除することを忘れないでください (デプロイの削除方法については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」を参照)。
 
 
 ## <a name="next_steps"></a>次のステップ
 
-ACS によってアプリケーションに返される SAML (Security Assertion Markup Language) を調べる場合は、「[How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)][]」を参照してください。さらに ACS の機能を調べたり、より洗練されたシナリオを試してみたりする場合は、「[Access Control Service 2.0 (アクセス制御サービス 2.0)][]」を参照してください。
+ACS によってアプリケーションに返される SAML (Security Assertion Markup Language) を調べる場合は、「[How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)][]」を参照してください。さらに ACS の機能を調べたり、より洗練されたシナリオを試してみたりする場合は、[Access Control Service 2.0][] を参照してください。
 
 また、この例では **[Embed the certificate in the WAR file]** オプションも使用しています。このオプションを使用すると証明書のデプロイが簡単になります。代わりに WAR ファイル以外からの署名証明書を保存する場合は、次の手法を使用できます。
 
 1. **[Azure Access Control Services Filter]** ダイアログ ボックスの **[Security]** セクションで、「**${env.JAVA\_HOME}/mycert.cer**」と入力し、**[Embed the certificate in the WAR file]** チェック ボックスをオフにします(証明書のファイル名が異なる場合は mycert.cer を調整)。 **[Finish]** をクリックしてダイアログ ボックスを閉じます。
-2. コンポーネントとして証明書を展開にコピーする場合: Eclipse の Project Explorer で、**MyAzureACSProject** を展開し、**WorkerRole1** を右クリックし、**[Properties]** をクリックします。**[Azure Role]** を展開し、**[Components]** をクリックします。
+2. コンポーネントとして証明書をデプロイにコピーする場合: Eclipse の Project Explorer で、**MyAzureACSProject** をデプロイし、**WorkerRole1** を右クリックし、**[Properties]** をクリックします。**[Azure Role]** をデプロイし、**[Components]** をクリックします。
 3. **[追加]** をクリックします。
 4. **[Add Component]** ダイアログ ボックスで、次の操作を行います。
     1. **[Import]** セクション:
@@ -269,7 +269,7 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 
     5. **[OK]** をクリックします。
 
-これで、証明書は展開に追加されました。WAR ファイルに証明書を埋め込むか、コンポーネントとして展開に追加するかにかかわらず、「[ACS 名前空間への証明書のアップロード][]」セクションで説明しているように、証明書を名前空間にアップロードする必要があることに注意してください。
+これで、証明書はデプロイに追加されました。WAR ファイルに証明書を埋め込むか、コンポーネントとしてデプロイに追加するかにかかわらず、「[ACS 名前空間への証明書のアップロード][]」セクションで説明しているように、証明書を名前空間にアップロードする必要があることに注意してください。
 
 [What is ACS?]: #what-is
 [Concepts]: #concepts
@@ -288,11 +288,10 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [Next steps]: #next_steps
 [encutil.exe]: http://wastarterkit4java.codeplex.com/releases/view/61026
 [How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)]: /ja-jp/develop/java/how-to-guides/view-saml-returned-by-acs/
-[Access Control Service 2.0 (アクセス制御サービス 2.0)]: http://go.microsoft.com/fwlink/?LinkID=212360
-[アクセス制御サービス 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
+[Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
+[Access Control Service 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
 [Windows Identity Foundation]: http://www.microsoft.com/download/en/details.aspx?id=17331
 [Windows Identity Foundation SDK]: http://www.microsoft.com/download/en/details.aspx?id=4451
-[Azure の管理ポータル]: https://manage.windowsazure.com
 [Azure 管理ポータル]: https://manage.windowsazure.com
 [acs_flow]: ./media/active-directory-java-authenticate-users-access-control-eclipse/ACSFlow.png
 
@@ -311,4 +310,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

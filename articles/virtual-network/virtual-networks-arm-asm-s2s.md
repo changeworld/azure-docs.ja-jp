@@ -202,7 +202,7 @@ ARM テンプレートを使用して、2 つのサブネットおよび従来�
 
 	>[AZURE.NOTE]この操作には数分かかる場合があります。
 
-7. ブラウザーで https://ms.portal.azure.com/ に移動し、必要に応じて資格情報を入力します。
+7. ブラウザーで https://portal.azure.com/ に移動し、必要に応じて資格情報を入力します。
 8. 以下に示すように、Azure ポータルで **[RG1]** リソース グループのタイルをクリックします。
 
 	![VNet のダッシュ ボード](..\virtual-network\media\virtual-networks-arm-asm-s2s\figure06.png)
@@ -317,7 +317,7 @@ ARM VNet (vnet02) 用に作成されたゲートウェイの IP アドレスが�
 
 	![VNet のダッシュ ボード](..\virtual-network\media\virtual-networks-arm-asm-s2s\figure11.png)
 
-5. 従来の VNet とその接続は従来のポータルから管理できますが、新しい Azure ポータルを使用することをお勧めします。新しいポータルを開くには、https://ms.portal.azure.com に移動します。
+5. 従来の VNet とその接続は従来のポータルから管理できますが、新しい Azure ポータルを使用することをお勧めします。新しいポータルを開くには、https://portal.azure.com に移動します。
 6. 新しいポータルで、**[すべて参照]**、**[仮想ネットワーク (従来のもの)]**、**[vnet01]** の順にクリックします。次の **[VPN 接続]** ウィンドウを参照してください。
 
 	![VNet のダッシュ ボード](..\virtual-network\media\virtual-networks-arm-asm-s2s\figure12.png)
@@ -363,4 +363,4 @@ ARM VNet (vnet02) 用に作成されたゲートウェイの IP アドレスが�
 - [ネットワーク リソース プロバイダー](../resource-groups-networking.md)についてさらに学習できます。
 - [create a S2S VPN connection between a classic VNet and an ARM VNet (従来の VNet と ARM VNet の間の S2S VPN 接続を作成する)](../virtual-networks-arm-asm-s2s-howto.md) 方法に関する一般的なガイドラインを参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ハイブリッド接続の概要 |Azure" 
+	pageTitle="ハイブリッド接続の概要 | Microsoft Azure" 
 	description="セキュリティ、TCP ポート、サポートされる構成を含め、ハイブリッド接続について説明します。MABS、WABS" 
 	services="biztalk-services" 
 	documentationCenter="" 
@@ -103,4 +103,4 @@ Port | 必要である理由
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

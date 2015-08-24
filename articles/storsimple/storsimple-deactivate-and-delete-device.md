@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/09/2015"
+   ms.date="08/12/2015"
    ms.author="v-sharos" />
 
 # StorSimple デバイスの非アクティブ化と削除
@@ -47,7 +47,7 @@ StorSimple 仮想デバイスでは、非アクティブ化により、プロビ
 
 1. デバイスを非アクティブ化します。すべてのボリューム コンテナーとデバイスのスナップショットが残ります。手順については、「[非アクティブ化する手順](#steps-to-deactivate)」をご覧ください。
 
-2. これで、ボリューム コンテナーと、関連付けられているスナップショットをフェールオーバーできます。手順については、「[StorSimple デバイスにのフェールオーバーと災害復旧](storsimple-device-failover-disaster-recovery.md)」をご覧ください。
+2. これで、ボリューム コンテナーと、関連付けられているスナップショットをフェールオーバーできます。手順については、「[StorSimple デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)」を参照してください。
 
 3. 非アクティブ化とフェールオーバーを行った後、デバイスを完全に削除できます。手順については、「[デバイスの削除](#delete-a-device)」をご覧ください。
 
@@ -87,8 +87,8 @@ StorSimple 仮想デバイスでは、非アクティブ化により、プロビ
 デバイスが削除されるまで数分かかる場合があります。
 
 ## 次のステップ
-非アクティブ化されたデバイスを出荷時の既定値に復元するには、「[デバイスの出荷時設定へのリセット](https://msdn.microsoft.com/library/dn772373.aspx)」をご覧ください。
+非アクティブ化されたデバイスを出荷時の既定値に復元するには、「[デバイスの出荷時設定へのリセット](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
 
-技術的な詳細については、[Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)てください。
+技術的な詳細については、[Microsoft サポートに問い合わせ](storsimple-contact-microsoft-support.md)てください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

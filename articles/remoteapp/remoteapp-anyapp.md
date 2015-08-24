@@ -13,10 +13,10 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="08/03/2015"
+   ms.date="08/10/2015"
    ms.author="elizapo"/>
 
-# RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
+# Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
 
 このチュートリアルでは、Windows アプリケーションを、どこでどんなデバイスを使っていても、今すぐ実行できるようにする方法を紹介します。Internet Explorer 6 であっても、10 年も昔に作成したカスタム アプリケーションであっても、Office アプリであっても、ユーザーは、それらの少数のアプリケーションのために特定のオペレーティング システム (Windows XP など) を使い続ける必要はもうありません。
 
@@ -113,4 +113,4 @@ Azure RemoteApp を使用すれば、ユーザーも、自分の Android や App
 
 <!--Image references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

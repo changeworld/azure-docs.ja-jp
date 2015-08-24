@@ -1,21 +1,20 @@
 
-<properties 
-	pageTitle="SaaS アプリケーションへのアクセスをグループで管理する| Microsoft Azure" 
-	description="このトピックでは、Azure AD と連携する SaaS アプリケーションへのアクセス権を、Azure AD Premium でグループを使用して割り当てる方法について説明しています。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="femila" 
-	manager="swadhwa" 
-	editor=""
-	tags="azure-classic-portal"/>
+<properties
+	pageTitle="SaaS アプリケーションへのアクセスをグループで管理する| Microsoft Azure"
+	description="Azure AD と連携する SaaS アプリケーションへのアクセス権を、Azure AD Premium または Basic でグループを使用して割り当てる方法。"
+	services="active-directory"
+	documentationCenter=""
+	authors="femila"
+	manager="swadhwa"
+	editor=""/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
+<tags
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
 	ms.devlang="na" identity
-	ms.topic="article" 
-	ms.date="07/13/2015" 
+	ms.topic="article"
+	ms.date="08/10/2015"
 	ms.author="femila"/>
 
 
@@ -39,7 +38,7 @@ Azure AD Premium では、Azure AD と連携する SaaS アプリケーション
 4. アプリケーションに直接割り当てられているユーザーとグループのメンバーシップを通じて割り当てられているユーザーを表示することもできます。その場合は、[表示] ドロップ ダウンを **[グループ]** から **[すべてのユーザー]** に変更してください。ディレクトリ内のユーザーが一覧表示され、アプリケーションに割り当てられているかどうかがユーザーごとに表示されます。ユーザーがアプリケーションに直接割り当てられているのか ([割り当ての種類] = [直接])、グループのメンバーシップを通じて割り当てられているのか ([割り当ての種類] = [継承済み]) も、このリストで確認できます。
 
 
-> [AZURE.NOTE][ユーザーとグループ] タブが表示されるのは、Azure AD Premium を有効にした場合だけです。
+> [AZURE.NOTE][ユーザーとグループ] タブが表示されるのは、Azure AD Premium または Azure AD Basic を有効にした場合のみです。
 
 ここでは、Azure Active Directory の追加情報を提供するいくつかのトピックを紹介します。
 
@@ -49,4 +48,4 @@ Azure AD Premium では、Azure AD と連携する SaaS アプリケーション
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

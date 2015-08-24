@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="既存のアプリケーションへの Mobile Services の追加 (Xamarin.Android) - Azure Mobile Services" 
+	pageTitle="既存のアプリケーションへの Mobile Services の追加 (Xamarin.Android) | Microsoft Azure" 
 	description="Azure Mobile Services Xamarin.Android アプリからのデータを保存する方法、およびデータにアクセスする方法について説明します。" 
 	documentationCenter="xamarin" 
 	authors="ggailey777" 
@@ -283,4 +283,4 @@
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331302
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

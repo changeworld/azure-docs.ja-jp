@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure SQL Database Library for .NET を使用した SQL Database の作成と管理" 
-   description="この記事では、Azure SQL Database Library for .NET を使用して、Azure SQL Database を作成および管理する方法を説明します。" 
+   pageTitle="C# を使用した Azure SQL Database の作成と管理" 
+   description="この記事では、C# で Azure SQL Database Library for .NET を使用して、Azure SQL Database を作成および管理する方法を説明します。" 
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
@@ -13,25 +13,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="data-management" 
-   ms.date="08/04/2015"
+   ms.date="08/07/2015"
    ms.author="sstein"/>
 
-# Azure SQL Database Library for .NET を使用した SQL Database の作成と管理
+# C&#x23; で SQL Database を作成し、管理する
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-elastic-pool-portal.md)
+- [Azure Preview Portal](sql-database-elastic-pool-portal.md)
 - [C#](sql-database-client-library.md)
 - [PowerShell](sql-database-elastic-pool-powershell.md)
 
 
 ## 概要
 
-この記事には、C# を使用した多くの Azure SQL Database の管理タスクを実行するコマンドを記載しています。各コード スニペットはわかりやすさを重視し、細かく分けて説明しています。また、サンプルのコンソール アプリケーションのすべてのコマンドは、この記事の下部にまとめられています。
+この記事には、C# で [Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) を使用して、多くの Azure SQL Database の管理タスクを実行するコマンドを記載しています。
 
-Azure SQL Database Library for .NET は、[リソース マネージャー ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure リソース マネージャー](resource-group-overview.md) ベースの API を提供します。このクライアント ライブラリは、リソース マネージャー ベースのクライアント ライブラリの一般的なパターンに従います。
+各コード スニペットはわかりやすさを重視し、細かく分けて説明しています。また、サンプルのコンソール アプリケーションのすべてのコマンドは、この記事の下部にまとめられています。
 
-
-リソース マネージャーでは、リソース グループ、および [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (AAD) を使用した認証が必要です。
+Azure SQL Database Library for .NET は、[リソース マネージャー ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure リソース マネージャー](resource-group-overview.md) ベースの API を提供します。このクライアント ライブラリは、リソース マネージャー ベースのクライアント ライブラリの一般的なパターンに従います。リソース マネージャーでは、リソース グループ、および [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (AAD) を使用した認証が必要です。
 
 <br>
 
@@ -94,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合、このページ�
 1. ページの下部で **[アプリケーションの追加]** をクリックします。
 1. **[Microsoft Apps]** を選択します。
 1. **[Azure サービス管理 API]** を選択し、ウィザードを完了します。
-2. API を選択した状態で、[**Access Azure Service Management (プレビュー)**]を選択し、この API へのアクセスに必要な特定のアクセス許可を付与する必要があります。
+2. API を選択した状態で、**[Access Azure Service Management (プレビュー)]** を選択し、この API へのアクセスに必要な特定のアクセス許可を付与する必要があります。
 
     ![アクセス許可][2]
 
@@ -250,7 +249,7 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 
 ## データベースの更新 
 
-データベースを更新するには (たとえば、サービス階層やパフォーマンス レベルを変更する場合)、 上記のデータベースの作成や更新のように **Databases.CreateOrUpdate** メソッドを呼び出します。**[Edition]** および **[RequestedServiceObjectiveName]** プロパティを目的のサービス階層やパフォーマンス レベルに設定します。**Premium** から、または、Premium へエディションを変更する場合、データベースのサイズによっては、更新に少し時間がかかる点に注意してください。
+データベースを更新するには (たとえば、サービス階層やパフォーマンス レベルを変更する場合)、上記のデータベースの作成や更新のように **Databases.CreateOrUpdate** メソッドを呼び出します。**[Edition]** および **[RequestedServiceObjectiveName]** プロパティを目的のサービス階層やパフォーマンス レベルに設定します。**Premium** から、または、Premium へエディションを変更する場合、データベースのサイズによっては、更新に少し時間がかかる点に注意してください。
 
 以下は、SQL Database を Standard (S0) レベルに更新します。
 
@@ -795,4 +794,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-client-library/add-application2.png
 [9]: ./media/sql-database-client-library/clientid.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

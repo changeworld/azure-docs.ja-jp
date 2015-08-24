@@ -50,4 +50,4 @@
 ご質問がある場合、または特別なサポートが必要な場合は、[remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help) に電子メールをお送りください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="パイプラインがオンプレミスのデータを扱えるようにする | Azure Data Factory" 
+	pageTitle="パイプラインがオンプレミスのデータを扱えるようにする | Microsoft Azure" 
 	description="オンプレミスのデータ ソースを Azure データ ファクトリに登録し、データをデータ ソース間でコピーする方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -113,7 +113,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 3. **[構成]** ブレードで、**[このコンピューターに直接インストール]** をクリックします。これにより、ゲートウェイのインストール パッケージのダウンロードと、コンピューターへのインストール、構成、および登録が行われます。
 
-	> [AZURE.NOTE] Internet Explorer または Microsoft の ClickOnce と互換性のある Web ブラウザーを使用してください。
+	> [AZURE.NOTE]Internet Explorer または Microsoft の ClickOnce と互換性のある Web ブラウザーを使用してください。
 
 	![Gateway - Configure blade][image-data-factory-gateway-configure-blade]
 
@@ -123,7 +123,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 	
 	ベスト プラクティスや重要な考慮事項など、ゲートウェイの詳細については、「[Data Management Gateway](#DMG)」をご覧ください。
 
-	>[AZURE.NOTE] Data Management Gateway を正常にインストールして構成するには、ローカル コンピューターの管理者である必要があります。他のユーザーをローカル Windows グループの Data Management Gateway Users に追加できます。このグループのメンバーは、Data Management Gateway 構成マネージャー ツールを使用して、ゲートウェイを構成できます。
+	>[AZURE.NOTE]Data Management Gateway を正常にインストールして構成するには、ローカル コンピューターの管理者である必要があります。他のユーザーをローカル Windows グループの Data Management Gateway Users に追加できます。このグループのメンバーは、Data Management Gateway 構成マネージャー ツールを使用して、ゲートウェイを構成できます。
 
 4. 左側にある **[通知]** ハブをクリックします。**[通知]** ブレードに "**'adftutorialgateway' の簡単セットアップが成功しました**" というメッセージが表示されるまで待ちます。
 
@@ -395,8 +395,8 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
  
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
-	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として**BlobSink** を指定します。
-	- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
+- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
@@ -626,4 +626,4 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 [image-data-factory-preview-portal-storage-key]: ./media/data-factory-get-started/PreviewPortalStorageKey.png
 
-<!-----HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

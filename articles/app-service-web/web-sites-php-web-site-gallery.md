@@ -12,7 +12,7 @@
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
-	ms.topic="get-started-article" 
+	ms.topic="hero-article" 
 	ms.date="07/02/2015" 
 	ms.author="tomfitz"/>
 
@@ -31,4 +31,4 @@
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

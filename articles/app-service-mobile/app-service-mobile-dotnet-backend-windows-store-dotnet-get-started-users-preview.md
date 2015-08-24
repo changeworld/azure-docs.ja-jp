@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Windows での Mobile Apps の認証の使用 | Azure App Service"
+	pageTitle="Windows での Mobile Apps の認証の使用 | Microsoft Azure"
 	description="Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを使って Windows アプリのユーザーを認証する方法について説明します。"
 	services="app-service\mobile"
 	documentationCenter="windows"
@@ -75,4 +75,4 @@
 [モバイル アプリの使用]: app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-preview.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -16,7 +16,7 @@
    ms.author="joaoma" />
 
 # クラウド サービスごとの複数の VIP
-Azure Cloud Services は、Azure によって提供される IP アドレスを使用して、パブリック インターネット経由でアクセスできます。このパブリック IP アドレスは、Azure ロード バランサーにリンクされているため VIP (仮想 IP) と呼ばれますが、実際はクラウド サービス内の VM インスタンスではありません。クラウド サービス内の VM インスタンスは、1 つの VIP を使用してアクセスできます。
+Azure Cloud Services は、Azure によって提供される IP アドレスを使用して、パブリック インターネット経由でアクセスできます。このパブリック IP アドレスは、Azure Load Balancer にリンクされているため VIP (仮想 IP) と呼ばれますが、実際はクラウド サービス内の VM インスタンスではありません。クラウド サービス内の VM インスタンスは、1 つの VIP を使用してアクセスできます。
 
 ただし、同じクラウド サービスへのエントリ ポイントとして 1 つ以上の VIP が必要な場合のあるシナリオがあります。たとえば、クラウド サービスは、既定の SLSL ポート 443 を使用して SSL 接続を必要とする複数の Web サイト、異なる顧客をホストする各サイト、テナントをホストできます。このようなシナリオでは、Web サイトごとに異なるパブリック IP アドレスを持つ必要があります。次の図は、同じパブリック ポートで複数の SSL 証明書が必要な一般的なマルチテナント Web ホスティングを示しています。
 
@@ -28,7 +28,7 @@ Azure Cloud Services は、Azure によって提供される IP アドレスを�
 
 VIP は、既定では動的です。つまり、時間の経過と共にクラウド サービスに割り当てられている実際の IP アドレスが変化する可能性があります。この問題を防ぐために、サービスの VIP を予約することができます。予約済み VIP の詳細については、「[予約済みパブリック IP](../virtual-networks-reserved-public-ip)」に関するページをご覧ください。
 
->[AZURE.NOTE]VIP と予約済み IP の料金の詳細については、「[IP アドレスの料金](http://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
+>[AZURE.NOTE]VIP と予約済み IP の価格の詳細については、「[IP アドレスの価格](http://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
 
 PowerShell を使用すると、クラウド サービスで使用される VIP を確認できるだけでなく、VIP の追加 と削除、エンドポイントへの VIP の関連付け、特定の VIP での負荷分散の構成を行うことができます。
 
@@ -91,7 +91,7 @@ VIP をサービスを追加するには、次の PowerShell コマンドを実�
 - **Vip1** は既定の VIP で、IsDnsProgrammedName の値が true に設定されていることがわかります。
 - **Vip2** と **Vip3** は、IP アドレスがない場合は使用されません。VIP にエンドポイントを関連付ける場合のみ使用されます。
 
->[AZURE.NOTE]これらをエンドポイントに関連付けると、サブスクリプションは余分な VIP にのみ課金されます。料金の詳細については、「[IP アドレスの料金](http://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
+>[AZURE.NOTE]これらをエンドポイントに関連付けると、サブスクリプションは余分な VIP にのみ課金されます。価格の詳細については、「[IP アドレスの価格](http://azure.microsoft.com/pricing/details/ip-addresses/)」をご覧ください。
 
 ## VIP をエンドポイントに関連付ける方法
 クラウド サービスの VIP をエンドポイントに関連付けるには、次の PowerShell コマンドを実行します。
@@ -155,4 +155,4 @@ VIP をサービスを追加するには、次の PowerShell コマンドを実�
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

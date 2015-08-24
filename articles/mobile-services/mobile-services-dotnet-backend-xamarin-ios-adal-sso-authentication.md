@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (Xamarin.iOS) | モバイル デベロッパー センター" 
+	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (Xamarin.iOS) | Microsoft Azure" 
 	description="Xamarin.iOS アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" 
 	documentationCenter="xamarin" 
 	authors="mattchenderson" 
@@ -141,4 +141,4 @@
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
 [Xamarin Studio]: http://xamarin.com/download
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

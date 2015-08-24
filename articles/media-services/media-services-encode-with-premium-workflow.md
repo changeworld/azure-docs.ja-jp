@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/23/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 #メディア エンコーダー プレミアム ワークフローでの高度なエンコード
@@ -32,9 +32,12 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 このトピックでは、.NET を使用して**メディア エンコーダー プレミアム ワークフロー**でエンコードする方法を示します。
 
+**メディア エンコーダー プレミアム ワークフロー**のエンコード タスクには、ワークフロー ファイルと呼ばれる別の構成ファイルが必要です。これらのファイルは .workflow 拡張子を持ち、[ワークフロー デザイナー](media-services-workflow-designer.md) ツールで作成されます。
+
 ##エンコード
 
 **メディア エンコーダー プレミアム ワークフロー**のエンコード タスクには、ワークフロー ファイルと呼ばれる別の構成ファイルが必要です。これらのファイルは .workflow 拡張子を持ち、[ワークフロー デザイナー](media-services-workflow-designer.md) ツールで作成されます。
+
 
 既定のワークフロー ファイルは[こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手することもできます。フォルダーにはこれらのファイルの説明も含まれています。
 
@@ -265,4 +268,4 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

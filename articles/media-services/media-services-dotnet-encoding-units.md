@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 
@@ -21,8 +21,12 @@
 
 #.NET SDK を使用してエンコードを拡張する方法
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。
-  
+
+> [AZURE.SELECTOR]
+- [Portal](media-services-portal-encoding-units.md)
+- [.NET](media-services-dotnet-encoding-units.md)
+- [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+
 ##概要
 
 Media Services アカウントは、エンコード ジョブを処理する速度を決定する占有ユニットの種類に関連付けられます。占有ユニットの種類には Basic、Standard、Premium があります。たとえば、同じエンコード ジョブを実行した場合、Standard 占有ユニットの方が Basic 占有ユニットに比べ高速です。詳細については、[Milan Gada](http://azure.microsoft.com/blog/author/milanga/) によるエンコード占有ユニットの種類に関するブログを参照してください。
@@ -70,4 +74,4 @@ Media Services アカウントは、エンコード ジョブを処理する速�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,19 +1,19 @@
 <properties 
-    pageTitle="StorSimple デバイスの技術的仕様とコンプライアンス"
-    description="StorSimple デバイスの技術仕様と規制標準対応情報について説明します。"
-    services="storsimple"
-    documentationCenter="NA"
-    authors="alkohli"
-    manager="adinah"
-    editor="tysonn" />
+   pageTitle="StorSimple デバイスの技術的仕様とコンプライアンス | Microsoft Azure"
+   description="StorSimple デバイスの技術仕様と規制標準対応情報について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="adinah"
+   editor="" />
  <tags 
-    ms.service="storsimple"
-    ms.devlang="NA"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"
-    ms.workload="TBD"
-    ms.date="06/15/2015"
-    ms.author="alkohli" />
+   ms.service="storsimple"
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="08/12/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスの技術的仕様とコンプライアンス
 
@@ -168,8 +168,8 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 ## サポートされるネットワーク ケーブル  
 
-10 GbE ネットワーク インターフェイス、DATA 2、DATA 3 については、[サポートされるネットワーク ケーブルとモジュールの一覧](https://msdn.microsoft.com/library/dn891474.aspx)をご覧ください。
+10 GbE ネットワーク インターフェイス、DATA 2、DATA 3 については、[サポートされるネットワーク ケーブルとモジュールの一覧](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)をご覧ください。
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

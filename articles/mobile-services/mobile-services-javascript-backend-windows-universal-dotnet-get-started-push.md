@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ユニバーサル Windows 8.1 アプリへのプッシュ通知の追加 | Azure Mobile Services" 
+	pageTitle="ユニバーサル Windows 8.1 アプリへのプッシュ通知の追加 | Microsoft Azure" 
 	description="Azure Notification Hubs を使用して、JavaScript バックエンド モバイル サービスからユニバーサル Windows 8.1 アプリにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services,notification-hubs" 
 	documentationCenter="windows" 
@@ -101,4 +101,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [MobileServiceClient]: http://go.microsoft.com/fwlink/p/?LinkId=302030
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

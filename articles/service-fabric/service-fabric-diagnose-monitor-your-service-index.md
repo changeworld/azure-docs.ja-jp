@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/21/2015"
+   ms.date="08/04/2015"
    ms.author="ryanwi"/>
 
 # Service Fabric サービスの診断と監視
@@ -40,4 +40,4 @@ Service Fabric には、Service Fabric のエンティティのための機能�
 - [Service Fabric のカスタム正常性レポートの追加](service-fabric-report-health.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

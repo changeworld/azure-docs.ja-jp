@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
+	ms.date="08/11/2015" 
 	ms.author="cephalin"/>
 
 #Azure App Service のハイブリッド接続を使用して内部設置型リソースにアクセスする
@@ -73,7 +73,7 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 	<!-- ![Add a hybrid connnection][CreateHCAddHC]
 -->
 	
-3. **[ハイブリッド接続の追加]** ブレードが開きます。これは最初のハイブリッド接続であるため、**[新しいハイブリッド接続]** があらかじめ選択され、**[ハイブリッド接続の作成]** ブレードが開きます。
+3. **ハイブリッド接続の追加]** ブレードが開きます。これは最初のハイブリッド接続であるため、**[新しいハイブリッド接続]** があらかじめ選択され、**[ハイブリッド接続の作成]** ブレードが開きます。
 	
 	![Create a hybrid connection][TwinCreateHCBlades]
 	
@@ -207,4 +207,4 @@ The error indicates it couldn't find the type, not the instance.
 [HCStatusConnected]: ./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

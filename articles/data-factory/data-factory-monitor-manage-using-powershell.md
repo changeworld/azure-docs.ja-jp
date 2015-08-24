@@ -409,22 +409,7 @@
 
 Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス][cmdlet-reference]」を参照してください。
 
-## 次のステップ
 
-記事 | 説明
------- | ---------------
-[Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)][copy-activity] | この記事には、本チュートリアルで使用した**コピー アクティビティ**の詳細な説明が記載されています。 
-[パイプラインがオンプレミスのデータを扱えるようにする][use-onpremises-datasources] | この記事には、**オンプレミスの SQL Server データベース**から Azure BLOB にデータをコピーする方法を説明したチュートリアルが記載されています。 
-[Data Factory で Pig と Hive を使用する][use-pig-and-hive-with-data-factory] | この記事には、**HDInsight アクティビティ**を使用して **hive/pig** スクリプトを実行し、入力データを処理して出力データを生成する方法を説明したチュートリアルが記載されています。
-[チュートリアル: Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する**現実のシナリオ**の実行方法について、**詳細なチュートリアル**が記載されています。
-[Data Factory でカスタム アクティビティを使用する][use-custom-activities] | この記事には、**カスタム アクティビティ**を作成してパイプラインで使用する詳細な手順のチュートリアルが記載されています。 
-[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題の**トラブルシューティング**を行う方法について説明しています。エラーを発生させて (Azure SQL Database のテーブルを削除する)、ADFTutorialDataFactory でこの記事のチュートリアルを試すことができます。 
-[Azure Data Factory コマンドレット リファレンス][cmdlet-reference] | このリファレンスには、すべての **Data Factory コマンドレット**に関する詳細が記載されています。
-[Azure Data Factory の開発者向けリファレンス][developer-reference] | この開発者用リファレンスは、コマンドレット、JSON スクリプト、関数などの包括的なリファレンス コンテンツです。 
-
-[copy-activity]: data-factory-copy-activity.md
-[use-onpremises-datasources]: data-factory-use-onpremises-datasources.md
-[use-pig-and-hive-with-data-factory]: data-factory-pig-hive-activities.md
 [adf-tutorial]: data-factory-tutorial.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
@@ -444,4 +429,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [sql-management-studio]: ../sql-database-manage-azure-ssms.md#Step2
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

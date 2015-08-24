@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="05/26/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 #既存の Blob を Media Services 資産にコピーする
@@ -286,4 +286,4 @@ blob は、Media Services アカウントに関連付けられた (または関�
 		}
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

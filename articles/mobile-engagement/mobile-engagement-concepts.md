@@ -3,7 +3,7 @@
 	description="Mobile Engagement の概念"
 	services="mobile-engagement"
 	documentationCenter="mobile"
-	authors="kpiteira"
+	authors="piyushjo"
 	manager="dwrede"
 	editor="" />
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="01/24/2015"
-	ms.author="kapiteir" />
+	ms.date="08/10/2015"
+	ms.author="piyushjo" />
 
 #Azure Mobile Engagement の概念
 
@@ -79,4 +79,4 @@ extras は JSON オブジェクトと同様に構造化されます。キー/値
 キー/値ペアのツリー全体が JSON オブジェクトとして格納されます。それにもかかわらず、キー/値の最初のレベルだけが分解されてセグメントのような一部の高度な機能から直接アクセス可能になります (たとえば、過去 1 か月間に値 "scifi" を設定した追加キー "content\_type" で "content\_viewed" という名前のイベントを 10 回以上を送信したすべてのユーザーから構成される "SciFi fans" というセグメントを簡単に定義できます)。したがって、スカラー値 (文字列、日付、整数、ブール値など) を使用してキー/値ペアの単純なリストから構成される extras のみを送信することを強くお勧めします。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/21/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 #Azure Media Services の Fragmented MP4 ライブ インジェスト仕様
@@ -206,4 +206,4 @@ Microsoft Azure Media Services 用 ISO Fragmented MP4 ベースのライブ イ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

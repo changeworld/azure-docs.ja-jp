@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Javadocs - Azure リソース" 
+	pageTitle="Javadoc | Microsoft Azure" 
 	description="Azure SDK for Java の Javadoc API リファレンス。" 
 	services="" 
 	documentationCenter="java" 
@@ -20,4 +20,4 @@
 
 Azure Libraries for Java の Javadoc のコンテンツは、<http://dl.windowsazure.com/javadoc> で参照できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

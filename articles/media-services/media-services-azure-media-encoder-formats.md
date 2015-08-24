@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 #Azure Media Encoder の形式とコーデック
@@ -131,4 +131,4 @@ YUV 211 形式データ|パックされた YUV 形式。2 番目ごとのピク�
 Cirrus Logic Jr YUV 411 形式|Y、U、および V サンプルあたり 8 ビット未満の Cirrus Logic Jr YUV 411 形式です。各ピクセルの Y サンプル、各行の水平の 4 番目ごとのピクセルの U および V サンプル。各垂直線がサンプリングされます。
 Indeo で生成した YVU9 形式|最後のフレームとの違いに関する追加情報を持つ、Indeo で生成した YVU9 形式です。1 ピクセルあたり 9.5 ビットですが、9 ビットとして報告されます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="SQL Azure 移行ウィザードを使用した移行 | Microsoft" 
+   pageTitle="SQL Azure 移行ウィザードを使用した移行 | Microsoft Azure" 
    description="Microsoft Azure SQL Database、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード" 
    services="sql-database" 
    documentationCenter="" 
@@ -98,4 +98,4 @@ CodePlex から、SQL Azure 移行ウィザードをダウンロードできま�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="認証されたユーザー (ユニバーサル Windows 8.1) へのプッシュ通知の送信 | Azure Mobile Services" 
+	pageTitle="認証されたユーザー (ユニバーサル Windows 8.1) へのプッシュ通知の送信 | Microsoft Azure" 
 	description="Azure Mobile Services を使用して、ユニバーサル Windows 8.1 アプリを実行している特定の認証済みユーザーにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services,notification-hubs" 
 	documentationCenter="windows" 
@@ -66,4 +66,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

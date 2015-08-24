@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Service Bus メッセージングの概要 - Azure"
+	pageTitle="Service Bus メッセージングの概要 | Microsoft Azure"
 	description="Service Bus メッセージング: クラウドの柔軟なデータ配信"
 	services="service-bus"
 	documentationCenter=".net"
@@ -38,4 +38,4 @@ Service Bus メッセージングの詳細については、次のトピック�
 - [How to use Service Bus Topics (Service Bus トピックの利用方法)](service-bus-dotnet-how-to-use-topics-subscriptions.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,15 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 
 
 #コンテンツ キー承認ポリシーを構成する 
 [AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
-
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
 
 
 ##概要
@@ -42,7 +40,7 @@ Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 
 ###いくつかの考慮事項が適用されます。
 
 - 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。 
-- 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、[資産のエンコード](media-services-encode-asset.md)に関するページを参照してください。  
+- 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[資産をエンコードする](media-services-encode-asset.md)」をご覧ください。  
 - キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
 
 
@@ -50,7 +48,7 @@ Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 
 
 キーの承認ポリシーを構成するには、**[コンテンツ保護]** ページを選択します。
 	
-Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、**オープン**、**トークン**、または**IP** 承認制限を設定することができます (**IP** は REST または .NET SDK を使用して構成できます)。
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、**オープン**、**トークン**、または **IP** 承認制限を設定できます (**IP** は REST または .NET SDK を使用して構成できます)。
 
 ###オープン制限
 
@@ -95,4 +93,4 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

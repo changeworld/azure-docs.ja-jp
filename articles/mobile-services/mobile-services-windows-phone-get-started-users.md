@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="認証の使用 (Windows Phone) | モバイル デベロッパー センター" 
+	pageTitle="認証の使用 (Windows Phone) | Microsoft Azure" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Windows Phone アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -80,4 +80,4 @@
 [Live Connect を使用した Windows Phone アプリケーションへのシングル サインオン]: mobile-services-windows-phone-single-sign-on.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

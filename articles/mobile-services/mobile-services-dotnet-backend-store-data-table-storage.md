@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL Database ではなくテーブル ストレージを使用するサービスの作成 | Azure Mobile Services" 
+	pageTitle="SQL Database の代わりに Table ストレージを使用するサービスの作成 | Microsoft Azure" 
 	description=".NET バックエンド モバイル サービスに Azure テーブル ストレージを使用する方法について学習します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -158,4 +158,4 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

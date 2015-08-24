@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="BizTalk サービスのさまざまな状態またはステータスで許可されるタスク | Azure" 
+	pageTitle="BizTalk Services のさまざまな状態またはステータスで許可されるタスク | Microsoft Azure" 
 	description="MABS のさまざまな状態で許可されるアクションと操作: 停止、開始、再起動、中断、再開、削除、スケール、構成の更新、バックアップ" 
 	services="biztalk-services" 
 	documentationCenter="" 
@@ -268,4 +268,4 @@ RestoreFailed<br/></b></td>
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

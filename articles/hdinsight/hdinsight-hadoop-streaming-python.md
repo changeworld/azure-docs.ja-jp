@@ -1,5 +1,5 @@
 <properties
-   pageTitle="HDInsight での Python MapReduce ジョブの開発 | Microsoft Aure"
+   pageTitle="HDInsight での Python MapReduce ジョブの開発 | Microsoft Azure"
    description="Linux ベースの HDInsight クラスターで Python MapReduce ジョブを作成、実行する方法を説明します。"
    services="hdinsight"
    documentationCenter=""
@@ -202,4 +202,4 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 * [HDInsight での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

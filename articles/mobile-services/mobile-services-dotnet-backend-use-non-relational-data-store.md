@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="非リレーショナル データ ストアを使用するサービスの作成 | Azure Mobile Services" 
+	pageTitle="非リレーショナル データ ストアを使用するサービスの作成 | Microsoft Azure" 
 	description="MongoDB や Azure テーブル ストレージなどの非リレーショナル データ ストアを .NET ベースのモバイル サービスで使用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/24/2015" 
+	ms.date="08/08/2015" 
 	ms.author="mahender"/>
 
 # ストレージとして SQL Database の代わりに MongoDB を使用する .NET バックエンド Mobile Service の作成
@@ -97,7 +97,7 @@
 
 + [Build a .NET backend Mobile Service that uses Table storage instead of a SQL Database (SQL Database ではなくデータ ストアを使用する .NET バックエンド Mobile Service の作成)](mobile-services-dotnet-backend-store-data-table-storage.md)</br>完了したばかりのチュートリアルと同じように、このトピックでは、モバイル サービスに非リレーショナル データ ストアを使用する方法を紹介しています。このチュートリアルでは、データ ストアとして SQL Database ではなく Azure Storage が使用されるように Mobile Services クイック スタート プロジェクトを変更します。
  
-+ [ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)</br>ハイブリッド接続により、モバイル サービスを安全にオンプレミスのアセットに接続します。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされているアセットには、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。
++ [ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)</br>ハイブリッド接続により、モバイル サービスを安全にオンプレミスのアセットに接続します。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされている資産には、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。
 
 + [Mobile Services を使用した Azure Storage へのイメージのアップロード](mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage.md)</br>TodoList サンプル プロジェクトを拡張して、アプリケーションから Azure Blob ストレージにイメージをアップロードする方法を説明します。
 
@@ -121,4 +121,4 @@
 [MongoLab Add-on Page (MongoLab アドオンのページ)]: /gallery/store/mongolab/mongolab
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/23/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 
@@ -86,12 +86,12 @@
 
 - TaskBody プロパティでは、リテラル XML を使用して、タスクが使用するアセットの入力または出力数を定義する必要があります。タスクのトピックには、XML のための XML スキーマ定義が含まれます。
 - TaskBody の定義には各 <inputAsset> の内部値と <outputAsset> を JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
-- タスクは、複数の出力アセットを持つことができます。1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
-- タスクの入力アセットとして、JobInputAsset または JobOutputAsset を指定できます。
+- タスクは、複数の出力資産を持つことができます。1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
+- タスクの入力資産として、JobInputAsset または JobOutputAsset を指定できます。
 - タスクは、サイクルを形成することはできません。
 - JobInputAsset または JobOutputAsset に渡す値パラメーターは、Asset のインデックス値を表します。実際の Asset は、Job エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。 
-- Media Services は OData v3 上に構築されるため、 InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々のアセットは、"\_\_metadata : uri" の名前と値のペアによって参照されます。
-- InputMediaAssets は、Media Services で作成した1 つまたは複数のアセットにマップされます。OutputMediaAssets はシステムによって作成されます。既存のアセットは参照しません。
+- Media Services は OData v3 上に構築されるため、 InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"\_\_metadata : uri" の名前と値のペアによって参照されます。
+- InputMediaAssets は、Media Services で作成した1 つまたは複数の資産にマップされます。OutputMediaAssets はシステムによって作成されます。既存の資産は参照しません。
 - OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ <outputAsset> 要素の内部テキストの値になります。たとえば、"Sample"に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)\_NewJob" になります。
 
 
@@ -257,7 +257,6 @@
 	. . . 
 
 
-
 ##次のステップ
 これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、[メディア サービスでジョブの進行状況をチェックする方法](media-services-rest-check-job-progress.md)に関するトピックに進みます。
 
@@ -266,4 +265,4 @@
 
 [メディア プロセッサの取得](media-services-rest-get-media-processor.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure ゲスト OS に適用される更新プログラムの一覧 | Azure" 
+   pageTitle="Azure ゲスト OS に適用される更新プログラムの一覧 | Microsoft Azure" 
    description="ゲスト OS リリースに適用される更新プログラムの一覧" 
    services="cloud-services" 
    documentationCenter="na" 
@@ -239,4 +239,4 @@
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

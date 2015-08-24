@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Google 認証用の登録 - Mobile Services" 
+	pageTitle="Google 認証用の登録 | Microsoft Azure" 
 	description="Google を使用して Azure Mobile Services で認証できるようにアプリケーションを登録する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="android" 
@@ -62,4 +62,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

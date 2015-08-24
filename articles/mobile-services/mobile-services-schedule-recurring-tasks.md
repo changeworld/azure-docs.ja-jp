@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" 
-	description="Azure Mobile Services スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
+	pageTitle="スケジューラによるバックエンド タスクのスケジュール | Microsoft Azure" 
+	description="Azure Mobile Services Scheduler を使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
 	services="mobile-services" 
 	documentationCenter="" 
 	authors="ggailey777" 
@@ -16,7 +16,7 @@
 	ms.date="06/04/2015" 
 	ms.author="glenga"/>
 
-# モバイル サービスでの繰り返し発生するジョブのスケジュール 
+# Mobile Services での繰り返し発生するジョブのスケジュール 
 
 > [AZURE.SELECTOR-LIST (Platform | Backend)]
 - [(Any | .NET)](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
@@ -167,4 +167,4 @@
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

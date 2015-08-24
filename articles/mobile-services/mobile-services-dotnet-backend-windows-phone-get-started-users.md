@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Windows Phone Silverlight アプリへの認証の追加 | Azure Mobile Services" 
+	pageTitle="Windows Phone Silverlight アプリへの認証の追加 | Microsoft Azure" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft アカウントなどのさまざまな ID プロバイダーを通じて Windows Phone Silverlight アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -76,4 +76,4 @@
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

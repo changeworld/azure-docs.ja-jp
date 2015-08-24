@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/30/2015"
+   ms.date="08/10/2015"
    ms.author="joaoma" />
 
 # VM とロール インスタンスの名前解決
@@ -21,9 +21,9 @@ Azure を使用して IaaS、PaaS、ハイブリッド ソリューションを�
 
 Azure でホストされているロール インスタンスと VM がホスト名とドメイン名を内部 IP アドレスに解決する必要がある場合、つぎの 2 つの方法のいずれかを使用できます。
 
-- [Azure で提供される名前解決](azure-provided-name-resolution)
+- [Azure で提供される名前解決](#azure-provided-name-resolution)
 
-- [独自の DNS サーバーを使用する名前解決](name-resolution-using-your-own-DNS-server)
+- [独自の DNS サーバーを使用する名前解決](#name-resolution-using-your-own-dns-server)
 
 どちらの名前解決方法を使用するかは、VM およびロール インスタンスが必要とするクラウド サービス内および他のクラウド サービスとの間での通信方法によって決まります。
 
@@ -108,7 +108,7 @@ VM およびロール インスタンスで使用するように複数の DNS �
 
 ### 管理ポータルを使用した DNS サーバーの指定
 
-管理ポータルを使用して仮想ネットワークを作成するとき、使用する DNS サーバー (1 台または複数台) の IP アドレスと名前を指定できます。デプロイに使用する DNS サーバーを指定していない場合、仮想ネットワークが作成されると、仮想ネットワークにデプロイした仮想マシンとロール インスタンスは、指定した DNS 設定で自動的に構成されます。Azure Virtual Network の設定の構成に関して詳しくは、「[管理ポータルでの仮想ネットワークの設定について](https://msdn.microsoft.com/library/azure/jj156074.aspx)」をご覧ください。
+管理ポータルを使用して仮想ネットワークを作成するとき、使用する DNS サーバー (1 台または複数台) の IP アドレスと名前を指定できます。デプロイに使用する DNS サーバーを指定していない場合、仮想ネットワークが作成されると、仮想ネットワークにデプロイした仮想マシンとロール インスタンスは、指定した DNS 設定で自動的に構成されます。Azure Virtual Network の設定の構成に関して詳しくは、「[管理ポータルでの仮想ネットワークの設定について](virtual-networks-settings.md)」をご覧ください。
 
 > [AZURE.NOTE]使用できる DNS サーバーは最大 9 個までです。
 
@@ -123,8 +123,14 @@ VM およびロール インスタンスで使用するように複数の DNS �
 > [AZURE.NOTE]サービス構成ファイルの設定は、ネットワーク構成ファイルの設定を上書きします。たとえば、仮想ネットワークの一部であるクラウド サービスに VM を追加した場合、ネットワーク構成ファイルとサービス構成ファイルの両方に DNS の設定があると、サービス構成ファイルの DNS 設定が VM に適用されます。
 
 
-## 関連項目
+## 次のステップ
 
-[Azure サービスの構成スキーマ (.cscfg ファイル)](https://msdn.microsoft.com/library/azure/ee758710) [Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100) [管理ポータルでの仮想ネットワークの設定について](https://msdn.microsoft.com/library/azure/jj156074.aspx) [ネットワーク構成ファイルを使用した仮想ネットワークの構成](https://msdn.microsoft.com/library/azure/jj156097.aspx) [仮想ネットワークの構成タスク](https://msdn.microsoft.com/library/azure/jj156206.aspx)
+[Azure サービス構成スキーマ](https://msdn.microsoft.com/library/azure/ee758710)
 
-<!---HONumber=August15_HO6-->
+[仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100)
+
+[管理ポータルでの仮想ネットワークの設定について](virtual-networks-settings.md)
+
+[ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)
+
+<!---HONumber=August15_HO7-->

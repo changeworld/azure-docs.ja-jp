@@ -13,13 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/16/2015" 
+	ms.date="08/11/2015"  
 	ms.author="juliako"/>
 
 
 #エンコードの規模の設定方法
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。
+> [AZURE.SELECTOR]
+- [.NET](media-services-dotnet-encoding-units.md)
+- [Portal](media-services-portal-encoding-units.md)
+- [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
 
 ##概要
 
@@ -58,4 +61,4 @@ Media Services アカウントは、エンコード ジョブを処理する速�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

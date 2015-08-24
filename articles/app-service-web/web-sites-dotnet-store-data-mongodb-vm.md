@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/21/2015" 
+	ms.date="08/11/2015" 
 	ms.author="cephalin"/>
 
 
@@ -22,7 +22,7 @@
 
 Git を使用すると、ASP.NET アプリケーションを Azure App Service Web Apps にデプロイできます。このチュートリアルでは、Azure の仮想マシンで実行されている MongoDB データベースに接続する、ASP.NET MVC の単純なフロントエンド タスク一覧アプリケーションをビルドします。[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。開発用コンピューターで ASP.NET アプリケーションを実行してテストした後、Git を使用してアプリケーションを App Service Web Apps にアップロードします。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 
 ## 背景知識 ##
@@ -55,7 +55,7 @@ Azure に仮想マシンを作成して MongoDB をインストールしたら�
 <a id="createapp"></a>
 ## アプリケーションを作成する ##
 
-このセクションでは、Visual Studio を使用して "My Task List" という ASP.NET アプリケーションを作成し、Azure App Service Web Apps への最初のデプロイメントを実行します。このアプリケーションはローカルで実行されますが、Azure 上の仮想マシンに接続し、そこに作成した MongoDB インスタンスを使用します。
+このセクションでは、Visual Studio を使用して "My Task List" という ASP.NET アプリケーションを作成し、Azure App Service Web Apps への最初のデプロイを実行します。このアプリケーションはローカルで実行されますが、Azure 上の仮想マシンに接続し、そこに作成した MongoDB インスタンスを使用します。
 
 1. Visual Studio で、**[新しいプロジェクト]** をクリックします。
 
@@ -92,7 +92,7 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 
 	![NuGet パッケージの管理][VS2013ManageNuGetPackages]
 
-2. **[NuGet パッケージの管理]** ウィンドウの左側のウィンドウで、**[オンライン]** をクリックします。右側の **[オンラインで検索]** ボックスに「mongocsharpdriver」と入力します。**[インストール]** をクリックして、ドライバーをインストールします。
+2. **[NuGet パッケージの管理]** ウィンドウの左側のウィンドウで、**[オンライン]** をクリックします。右側の **[オンラインで検索]** ボックスに「mongodb.driver」と入力します。**[インストール]** をクリックして、ドライバーをインストールします。
 
 	![MongoDB C# ドライバーの検索][SearchforMongoDBCSharpDriver]
 
@@ -101,7 +101,7 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 4. ドライバーがインストールされたら、**[閉じる]** をクリックします。![インストールされた MongoDB C# ドライバー][MongoDBCsharpDriverInstalled]
 
 
-これで MongoDB C# ドライバーがインストールされました。プロジェクトには、**MongoDB.Driver.dll** ライブラリと **MongoDB.Bson.dll** ライブラリへの参照が追加されています。
+これで MongoDB C# ドライバーがインストールされました。プロジェクトには、**MongoDB.Bson** ライブラリ、**MongoDB.Driver** ライブラリ、および **MongoDB.Driver.Core** ライブラリへの参照が追加されています。
 
 ![MongoDB C# ドライバーの参照][MongoDBCSharpDriverReferences]
 
@@ -429,7 +429,7 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 
  	private string connectionString = "mongodb://testlinuxvm.cloudapp.net:12345";
 
-MongoDB の接続文字列の詳細については、[Connections (接続)][MongoConnectionStrings]」を参照してください。
+MongoDB の接続文字列の詳細については、「[Connections (接続)][MongoConnectionStrings]」を参照してください。
 
 ## ローカル デプロイをテストする ##
 
@@ -444,7 +444,7 @@ MongoDB の接続文字列の詳細については、[Connections (接続)][Mong
 1. ソリューション エクスプローラーで、もう一度 **MyTaskListApp** を右クリックし、**[発行]** をクリックします。
 2. **[発行]** をクリックします。
 
-	Web アプリが Azure App Service で実行され、Azure 仮想マシンの MongoDB データベースにアクセスできるようになります。
+	Web アプリが Azure App Service で実行され、Azure Virtual Machines の MongoDB データベースにアクセスできるようになります。
 
 ## 概要 ##
 
@@ -499,4 +499,4 @@ MongoDB 用 C# アプリケーションの開発の詳細については、[CSha
 [Deploy the ASP.NET application to the web site using Git]: #deployapp
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

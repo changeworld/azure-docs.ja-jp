@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/02/2015" 
+	ms.date="08/10/2015" 
 	ms.author="piyushjo" />
 
 #Azure Mobile Engagement 向け Windows ユニバーサル SDK の概要
@@ -53,4 +53,4 @@ SDK のいくつかのバージョンがない場合は、次の手順に従う�
 
 [アップグレード手順](mobile-engagement-windows-store-upgrade-procedure/)をご覧ください
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -55,7 +55,7 @@ Azure AD のユーザーやサービスにアクセス権を付与するには�
 
 サブスクリプションの管理者と共同管理者には、引き続き Azure ポータルと管理 API に対するフル アクセス権が付与されます。RBAC モデルでは、サブスクリプション レベルで所有者ロールを割り当てられます。ただし、新しい RBAC モデルは Azure ポータルと Azure リソース マネージャーの API のみでサポートされます。RBAC のロールが割り当てられたユーザーやサービスは、Azure 管理ポータルやサービス管理の API にアクセスできません。Azure ポータルでサブスクリプションの所有者ロールにユーザーを追加しても、そのユーザーは完全版の Azure ポータル内のサブスクリプションの共同管理者にはなりません。
 
-まだ Azure ポータルで管理できない Azure リソースに対するアクセス権をユーザーに付与する場合は、Azure 管理ポータルを使ってサブスクリプションの共同管理者に追加する必要があります。現時点で RBAC を使って管理できないリソースの例には、Service Bus や Cloud Services があります。
+まだ Azure ポータルで管理できない Azure リソースに対するアクセス権をユーザーに付与する場合は、Azure 管理ポータルを使ってサブスクリプションの共同管理者に追加する必要があります。現時点で RBAC を使って管理できないリソースの例には、Service Bus や StorSimple があります。
 
 ## 管理用の承認とデータ操作
 
@@ -1293,4 +1293,4 @@ Azure RBAC を試用して、[フィードバック](http://aka.ms/azurerbacfeed
 [9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
 [10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -11,7 +11,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/18/2015" 
+	ms.date="08/06/2015" 
 	ms.author="sergkanz"/>
  
 # .NET 向けの Application Insights SDK のリリース ノート
@@ -36,7 +36,7 @@
 
 - ASP.NET ライブラリへの依存関係を持たないテレメトリ初期化子が、`Microsoft.ApplicationInsights.Web` から新しい依存関係 nuget である `Microsoft.ApplicationInsights.WindowsServer` に移動されました。
 - `Microsoft.ApplicationInsights.Web.dll` は `Microsoft.AI.Web.dll` に名前が変更されました。
-- `Microsoft.Web.TelemetryChannel` nuget は `Microsoft.WindowsServer.TelemetryChannel` に名前が変更されました。`Microsoft.ApplicationInsights.Extensibility.Web.TelemetryChannel` アセンブリは `Microsoft.AI.ServerTelemetryChannel.dll` に名前が変更されました。`Microsoft.ApplicationInsights.Extensibility.Web.TelemetryChannel` クラスは `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` に名前が変更されました。
+- `Microsoft.ApplicationInsights.Web.TelemetryChannel` nuget は `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel` に名前が変更されました。`Microsoft.ApplicationInsights.Extensibility.Web.TelemetryChannel` アセンブリは `Microsoft.AI.ServerTelemetryChannel.dll` に名前が変更されました。`Microsoft.ApplicationInsights.Extensibility.Web.TelemetryChannel` クラスは `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` に名前が変更されました。
 - Web SDK の一部であるすべての名前空間が、`Extensibility` 部分を除外するように変更されました。これには、ApplicationInsights.config 内のすべてのテレメトリ初期化子と web.config 内の `ApplicationInsightsWebTracking` モジュールが含まれます。
 - ランタイム インストルメンテーション エージェント (Status Monitor または Azure WebSite 拡張機能を通して有効にします) を使用して収集される依存関係は、スレッドに HttpContext.Current が存在しない場合は非同期としてマークされません。
 - `DependencyTrackingTelemetryModule` の `SamplingRatio` プロパティは何もせず、廃止とマークされています。
@@ -86,4 +86,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

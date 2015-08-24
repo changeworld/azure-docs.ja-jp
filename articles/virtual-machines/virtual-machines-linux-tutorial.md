@@ -13,7 +13,7 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.date="07/13/2015"
 	ms.author="rasquill"/>
 
@@ -26,6 +26,12 @@
 コマンド ラインやポータルを使用すると、Linux を実行する Azure 仮想マシン (VM) を簡単に作成できます。このチュートリアルでは、Mac、Linux、および Windows (Azure CLI) 用の Azure コマンド ライン インターフェイスを使用して、Azure で実行する Ubuntu Server VM を簡単に作成し、**ssh** を使用してその VM に接続してから、新しいディスクを作成してマウントする方法を説明します (このトピックでは Ubuntu Server VM を使用しますが、[テンプレートとして独自のイメージ](virtual-machines-linux-create-upload-vhd.md)を使用して Linux VM を作成することもできます)。
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
+
+## ビデオ チュートリアル
+
+以下は、このチュートリアルのガイドです。
+
+[AZURE.VIDEO building-a-linux-virtual-machine-tutorial]
 
 ## Azure CLI のインストール
 
@@ -302,4 +308,4 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

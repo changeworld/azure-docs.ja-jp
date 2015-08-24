@@ -19,7 +19,7 @@
 
 # リソース マネージャー テンプレートで Windows 仮想マシンを作成する
 
-Windows ベースの Azure Virtual Machines (VM) は、Azure PowerShell または Azure CLI からリソース マネージャー テンプレートを使って簡単に新規作成できます。このテンプレートは、新しいリソース グループにサブネットを 1 つ持った新しい仮想ネットワークに、Windows を実行する単一の仮想マシンを作成するものです。
+Windows ベースの Azure 仮想マシンは、Azure PowerShell または Azure CLI からリソース マネージャー テンプレートを使って簡単に新規作成できます。このテンプレートは、新しいリソース グループにサブネットを 1 つ持った新しい仮想ネットワークに、Windows を実行する単一の仮想マシンを作成するものです。
 
 ![](./media/virtual-machines-create-windows-powershell-resource-manager-template/windowsvm.png)
 
@@ -29,11 +29,11 @@ Windows ベースの Azure Virtual Machines (VM) は、Azure PowerShell また�
 
 [AZURE.INCLUDE [xplat-getting-set-up-arm](../../includes/xplat-getting-set-up-arm.md)]
 
-## Azure PowerShell からリソース マネージャー テンプレートを使って Windows VM を作成する
+## Azure PowerShell を使用してリソース マネージャー テンプレートで Windows 仮想マシンを作成する
 
-Github テンプレート リポジトリ内のリソース マネージャー テンプレートと Azure PowerShell を使用して Windows VM を作成するには、以下の手順に従います。
+Azure PowerShell で、Github テンプレート リポジトリ内のリソース マネージャー テンプレートを使用して Windows 仮想マシンを作成するには、以下の手順に従います。
 
-### 手順 1. テンプレートの JSON ファイルを確認する。
+### 手順 1. テンプレートの JSON ファイルを確認する
 
 テンプレートの JSON ファイルの内容を次に示します。
 
@@ -75,7 +75,7 @@ Github テンプレート リポジトリ内のリソース マネージャー �
                 "Windows-Server-Technical-Preview"
             ],
             "metadata": {
-                "Description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview."
+                "Description": "The Windows version for the virtual machine. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview."
             }
         }
     },
@@ -214,7 +214,7 @@ Github テンプレート リポジトリ内のリソース マネージャー �
 	}
 
 
-### 手順 2. テンプレートで仮想マシンを作成する。
+### 手順 2. テンプレートで仮想マシンを作成する
 
 Azure のデプロイ名、リソース グループ名、Azure データ センターの場所を入力し、次のコマンドを実行します。
 
@@ -276,9 +276,9 @@ Azure のデプロイ名、リソース グループ名、Azure データ セン
 
 これで、新しいリソース グループに MyWindowsVM という名前の新しい Windows 仮想マシンが作成されました。
 
-## Azure CLI からリソース マネージャー テンプレートを使って Windows VM を作成する
+## Azure CLI を使用してリソース マネージャー テンプレートで Windows 仮想マシンを作成する
 
-Github テンプレート リポジトリ内のリソース マネージャー テンプレートと Azure CLI コマンドを使用して Windows VM を作成するには、以下の手順に従います。
+Azure CLI のコマンドから、Github テンプレート リポジトリ内のリソース マネージャー テンプレートを使用して Windows 仮想マシンを作成するには、以下の手順に従います。
 
 以下のコマンドで、リソース グループの名前と Azure の場所 (米国西部であれば westus など、角かっこは不要) を入力し、コマンドを実行します。
 
@@ -333,4 +333,4 @@ Github テンプレート リポジトリ内のリソース マネージャー �
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

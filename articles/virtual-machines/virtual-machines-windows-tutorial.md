@@ -12,7 +12,7 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
-	ms.topic="get-started-article"
+	ms.topic="hero-article"
 	ms.date="07/13/2015"
 	ms.author="kathydav"/>
 
@@ -99,6 +99,6 @@ VM を作成したら、VM にログオンして、その設定や、そこで�
 ## 次のステップ
 
 * Azure PowerShell と Azure CLI を使用して、[VM イメージの検索と選択](resource-groups-vm-searching.md)を行います。
-* [Azure リソース マネージャー](virtual-machines-how-to-automate-azure-resource-manager.md)と[Azure リソース マネージャー テンプレート](http://azure.microsoft.com/documentation/templates/)を使用して、VM とワークロードのデプロイと管理を自動化します。
+* [Azure リソース マネージャー](virtual-machines-how-to-automate-azure-resource-manager.md)と[Azure リソース マネージャー テンプレート](http://azure.microsoft.com/ja-jp/documentation/templates/)を使用して、VM とワークロードのデプロイと管理を自動化します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

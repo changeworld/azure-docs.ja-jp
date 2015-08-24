@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="ゲスト OS ファミリ 1 の提供終了に関する通知 | Azure" 
+   pageTitle="ゲスト OS ファミリ 1 の提供終了に関する通知 | Microsoft Azure" 
    description="Azure ゲスト OS ファミリ 1 の提供が終了した時期と、利用中のサービスがその影響を受けるかどうかを判断する方法について説明します" 
    services="cloud-services" 
    documentationCenter="na" 
@@ -37,7 +37,7 @@ OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表さ
 
 1. クラウド サービスの ServiceConfiguration.cscfg ファイルに "osFamily = 1" という値が明示的に指定されている。 
 2. クラウド サービスの ServiceConfiguration.cscfg ファイル内で osFamily の値が明示的に指定されていない。現在、この場合、既定値として "1" が使用されます。
-3. Azure の管理ポータルで、ゲスト オペレーティング システム ファミリの値として "Windows Server 2008" が表示されている。この値を調べる方法については、[このページ](https://msdn.microsoft.com/library/azure/gg456325.aspx)を参照してください。
+3. Azure 管理ポータルで、ゲスト オペレーティング システム ファミリの値として "Windows Server 2008" が表示されている。この値を調べる方法については、[このページ](https://msdn.microsoft.com/library/azure/gg456325.aspx)を参照してください。
 
 クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell を設定する](../install-configure-powershell.md)必要があります。スクリプトの詳細については、[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)を参照してください。
 
@@ -66,7 +66,7 @@ foreach($subscription in Get-AzureSubscription) {
 **ゲスト OS ファミリ 3.x** - Windows Server 2012
 
 1. アプリケーションで SDK 1.8 以降と .NET Framework 4.0 または 4.5 を使用していることを確認します。 
-2. ServiceConfiguration.cscfg ファイルで osFamily 属性を “3” に設定し、クラウド サービスを再展開します。
+2. ServiceConfiguration.cscfg ファイルで osFamily 属性を “3” に設定し、クラウド サービスを再デプロイします。
 
 
 **ゲスト OS ファミリ 2.x** - Windows Server 2008 R2
@@ -78,4 +78,4 @@ foreach($subscription in Get-AzureSubscription) {
 ## 2014 年 11 月 3 日付けでゲスト OS ファミリ 1 の延長サポートが終了
 ゲスト OS ファミリ 1 のクラウド サービスはサポートされていません。サービスの中断を回避するには、できるだけ早くファミリ 1 から移行してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

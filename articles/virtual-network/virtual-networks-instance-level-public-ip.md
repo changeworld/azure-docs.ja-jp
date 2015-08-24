@@ -1,10 +1,10 @@
 <properties 
-   pageTitle="インスタンスレベル パブリック IP (ILPIP)"
+   pageTitle="インスタンス レベル パブリック IP (ILPIP)"
    description="ILPIP (PIP) とその管理方法について説明します"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="adinah"
+   manager="carolz"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,11 +12,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/03/2015"
+   ms.date="08/10/2015"
    ms.author="telmos" />
 
-# インスタンスレベル パブリック IP の概要
-インスタンスレベル パブリック IP (ILPIP) は、VM またはロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることのできる IP アドレスです。これは、クラウド サービスに割り当てられる VIP (仮想 IP) の代わりにはなりません。むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。
+# インスタンス レベル パブリック IP の概要
+インスタンス レベル パブリック IP (ILPIP) は、VM またはロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることのできる IP アドレスです。これは、クラウド サービスに割り当てられる VIP (仮想 IP) の代わりにはなりません。むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。
 
 >[AZURE.NOTE]これまで、ILPIP は、パブリック IP を意味する PIP という名前で呼ばれていました。
 
@@ -125,4 +125,4 @@ Azure でクラウド サービスを作成すると、対応する DNS A レコ
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

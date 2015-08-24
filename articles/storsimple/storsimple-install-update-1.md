@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple デバイスへの Update 1 のインストール"
+   pageTitle="StorSimple デバイスへの Update 1 のインストール | Microsoft Azure"
    description="デバイスに StorSimple 8000 シリーズの Update 1 をインストールする方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="06/18/2015"
+   ms.date="08/12/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスへの Update 1 のインストール
@@ -100,4 +100,4 @@ Azure 管理ポータルを使用して GA バージョンを実行している�
 
 [Microsoft Azure StorSimple](storsimple-overview.md) の詳細を確認する
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,29 +1,42 @@
 <properties
-	pageTitle="Azure PowerShell を使用した Windows Server/Client バックアップのデプロイと管理| Microsoft Azure"
-	description="Azure PowerShell を使用して Microsoft Azure Backup をデプロイおよび管理する手順の説明"
+	pageTitle="PowerShell を使用した Windows Server/クライアント バックアップのデプロイと管理| Microsoft Azure"
+	description="PowerShell を使用して Microsoft Azure Backup をデプロイおよび管理する手順の説明"
 	services="backup"
 	documentationCenter=""
 	authors="aashishr"
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/17/2015" ms.author="aashishr"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/11/2015" ms.author="aashishr"; "jimpark"/>
 
 
-# Azure PowerShell を使用して Windows Server/Windows Client 用に Microsoft Azure Backup をデプロイおよび管理する手順
-この記事では、Azure PowerShell を使用して、Windows Server または Windows Client 上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
+# PowerShell を使用して Windows Server/Windows Client 用に Microsoft Azure Backup をデプロイおよび管理する手順
+この記事では、PowerShell を使用して、Windows Server または Windows クライアント上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
 [AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
 ## セットアップと登録
-Azure PowerShell を使用して次のセットアップおよび登録タスクを自動化できます。
+PowerShell を使用して次のセットアップおよび登録タスクを自動化できます。
 
+- バックアップ コンテナーの作成
 - Microsoft Azure Backup エージェントのインストール
 - Microsoft Azure Backup サービスへの登録
-- ネットワーク
+- ネットワークの設定
+- 暗号化の設定
+
+### バックアップ コンテナーの作成
+**New-AzureBackupVault** コマンドレットを使用して、新しいバックアップ コンテナーを作成できます。バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
+
+```
+PS C:\> New-AzureResourceGroup –Name “test-rg” –Region “West US”
+PS C:\> $backupvault = New-AzureBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GRS
+```
+
+**Get-AzureBackupVault** コマンドレットを使用して、特定のサブスクリプション内のすべてのバックアップ コンテナーの一覧を取得できます。
+
 
 ### Microsoft Azure Backup エージェントのインストール
-Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)から入手することができます。インストーラーを、*C:\Downloads* などの、簡単にアクセスできる場所に保存します。
+Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)またはバックアップ コンテナーの [ダッシュボード] ページから入手することができます。インストーラーを、*C:\Downloads* などの、簡単にアクセスできる場所に保存します。
 
 エージェントをインストールするには、管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
@@ -65,25 +78,34 @@ PS C:\> MARSAgentInstaller.exe /?
 Microsoft Azure Backup サービスへの登録を実行する前に、[前提条件](backup-try-azure-backup-in-10-mins.md)が満たされていることを確認する必要があります。前提条件は、以下のとおりです。
 
 - 有効な Azure サブスクリプションがあること
-- バックアップ コンテナーの作成
-- コンテナーの資格情報をダウンロードし、アクセスしやすい場所 (*C:\\Downloads* など) に保管していること。コンテナーの資格情報ファイルは、わかりやすい名前に変更することもできます。
+- バックアップ コンテナーがあること
+
+コンテナーの資格情報をダウンロードするには、Azure PowerShell コンソールで **Get-AzureBackupVaultCredentials** コマンドレットを実行し、*C:\Downloads* などのアクセスしやすい場所に保管します。
+
+```
+PS C:\> $credspath = "C:"
+PS C:\> $credsfilename = Get-AzureBackupVaultCredentials -Vault $backupvault -TargetLocation $credspath
+PS C:\> $credsfilename
+f5303a0b-fae4-4cdb-b44d-0e4c032dde26_backuprg_backuprn_2015-08-11--06-22-35.VaultCredentials
+```
 
 コンテナーへのマシンの登録は、[Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) コマンドレットを使用して実行します。
 
 ```
-PS C:\> Start-OBRegistration -VaultCredentials "C:\Downloads\register.vaultcredentials" -Confirm:$false
+PS C:\> $cred = $credspath + $credsfilename 
+PS C:\> Start-OBRegistration -VaultCredentials $cred -Confirm:$false
 
 CertThumbprint      : 7a2ef2caa2e74b6ed1222a5e89288ddad438df2
 SubscriptionID      : ef4ab577-c2c0-43e4-af80-af49f485f3d1
 ServiceResourceName : test-vault
-Region              : Australia East
+Region              : West US
 
 Machine registration succeeded.
 ```
 
 > [AZURE.IMPORTANT] コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。このコマンドレットへの入力には、絶対パスを指定する必要があります。
 
-### ネットワーク
+### ネットワークの設定
 プロキシ サーバーを介して Windows コンピューターをインターネットに接続した場合、プロキシ設定もエージェントに指定できます。この例では、プロキシ サーバーがないため、プロキシ関連の情報はないことを明示的に示しています。
 
 特定の曜日セットに対して、帯域幅の使用を、```work hour bandwidth```オプションと```non-work hour bandwidth```オプションで制御することもできます。
@@ -287,17 +309,35 @@ Microsoft Azure Backup Are you sure you want to remove this backup policy? This 
 ```
 PS C:\> Set-OBPolicy -Policy $newpolicy
 Microsoft Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
-BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : {DataSource DatasourceId:4508156004108672185 Name:C:\ FileSpec:FileSpec FileSpec:C:\ IsExclude:False IsRecursive:True ,FileSpec FileSpec:C:\windows IsExclude:True IsRecursive:True ,FileSpec FileSpec:C:\temp IsExclude:True IsRecursive:True
-              , DataSource
-              DatasourceId:4508156005178868542
-              Name:D:\
-              FileSpec:FileSpec
-              FileSpec:D:\
-              IsExclude:False
-              IsRecursive:True
-
-              }
-PolicyName : c2eb6568-8a06-49f4-a20e-3019ae411bac RetentionPolicy : Retention Days : 7
+BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) 
+DsList : {DataSource
+         DatasourceId:4508156004108672185 
+         Name:C:\ 
+         FileSpec:FileSpec 
+         FileSpec:C:\ 
+         IsExclude:False
+         IsRecursive:True,
+         
+         FileSpec 
+         FileSpec:C:\windows 
+         IsExclude:True 
+         IsRecursive:True,
+         
+         FileSpec 
+         FileSpec:C:\temp 
+         IsExclude:True 
+         IsRecursive:True,
+         
+         DataSource
+         DatasourceId:4508156005178868542
+         Name:D:\
+         FileSpec:FileSpec
+         FileSpec:D:\
+         IsExclude:False
+         IsRecursive:True
+	}
+PolicyName : c2eb6568-8a06-49f4-a20e-3019ae411bac 
+RetentionPolicy : Retention Days : 7
               WeeklyLTRSchedule :
               Weekly schedule is not set
 
@@ -313,14 +353,40 @@ State : Existing PolicyState : Valid
 
 ```
 PS C:\> Get-OBPolicy | Get-OBSchedule
-SchedulePolicyName : 71944081-9950-4f7e-841d-32f0a0a1359a ScheduleRunDays : {Saturday, Sunday} ScheduleRunTimes : {16:00:00} State : Existing
+SchedulePolicyName : 71944081-9950-4f7e-841d-32f0a0a1359a 
+ScheduleRunDays : {Saturday, Sunday} 
+ScheduleRunTimes : {16:00:00} 
+State : Existing
+
 PS C:\> Get-OBPolicy | Get-OBRetentionPolicy
-RetentionDays : 7 RetentionPolicyName : ca3574ec-8331-46fd-a605-c01743a5265e State : Existing
+RetentionDays : 7 
+RetentionPolicyName : ca3574ec-8331-46fd-a605-c01743a5265e 
+State : Existing
+
 PS C:\> Get-OBPolicy | Get-OBFileSpec
-FileName : * FilePath : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\ FileSpec : D:\ IsExclude : False IsRecursive : True
-FileName : * FilePath : \?\Volume{cdd41007-a22f-11e2-be6c-806e6f6e6963}\ FileSpec : C:\ IsExclude : False IsRecursive : True
-FileName : * FilePath : \?\Volume{cdd41007-a22f-11e2-be6c-806e6f6e6963}\windows FileSpec : C:\windows IsExclude : True IsRecursive : True
-FileName : * FilePath : \?\Volume{cdd41007-a22f-11e2-be6c-806e6f6e6963}\temp FileSpec : C:\temp IsExclude : True IsRecursive : True
+FileName : * 
+FilePath : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\ 
+FileSpec : D:\ 
+IsExclude : False 
+IsRecursive : True
+
+FileName : * 
+FilePath : \?\Volume{cdd41007-a22f-11e2-be6c-806e6f6e6963}\ 
+FileSpec : C:\ 
+IsExclude : False 
+IsRecursive : True
+
+FileName : * 
+FilePath : \?\Volume{cdd41007-a22f-11e2-be6c-806e6f6e6963}\windows 
+FileSpec : C:\windows 
+IsExclude : True 
+IsRecursive : True
+
+FileName : * 
+FilePath : \?\Volume{cdd41007-a22f-11e2-be6c-806e6f6e6963}\temp 
+FileSpec : C:\temp 
+IsExclude : True 
+IsRecursive : True
 ```
 
 ### アドホック バックアップの実行
@@ -328,7 +394,14 @@ FileName : * FilePath : \?\Volume{cdd41007-a22f-11e2-be6c-806e6f6e6963}\temp Fil
 
 ```
 PS C:\> Get-OBPolicy | Start-OBBackup
-Taking snapshot of volumes... Preparing storage... Estimating size of backup items... Estimating size of backup items... Transferring data... Verifying backup... Job completed. The backup operation completed successfully.
+Taking snapshot of volumes... 
+Preparing storage... 
+Estimating size of backup items... 
+Estimating size of backup items... 
+Transferring data... 
+Verifying backup... 
+Job completed. 
+The backup operation completed successfully.
 ```
 
 ## Microsoft Azure Backup からのデータの復元
@@ -344,8 +417,14 @@ Microsoft Azure Backup から項目を復元するには、まず、項目のソ
 
 ```
 PS C:\> $source = Get-OBRecoverableSource
-PS C:\> $source FriendlyName : C:\ RecoverySourceName : C:\ ServerName : myserver.microsoft.com
-FriendlyName : D:\ RecoverySourceName : D:\ ServerName : myserver.microsoft.com
+PS C:\> $source 
+FriendlyName : C:\ 
+RecoverySourceName : C:\ 
+ServerName : myserver.microsoft.com
+
+FriendlyName : D:\ 
+RecoverySourceName : D:\ 
+ServerName : myserver.microsoft.com
 ```
 
 ### バックアップの復元ポイントの選択
@@ -353,8 +432,27 @@ FriendlyName : D:\ RecoverySourceName : D:\ ServerName : myserver.microsoft.com
 
 ```
 PS C:\> $rps = Get-OBRecoverableItem -Source $source[1]
-IsDir : False ItemNameFriendly : D:\ ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\ LocalMountPoint : D:\ MountPointName : D:\ Name : D:\ PointInTime : 18-Jun-15 6:41:52 AM ServerName : myserver.microsoft.com ItemSize : ItemLastModifiedTime :
-IsDir : False ItemNameFriendly : D:\ ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\ LocalMountPoint : D:\ MountPointName : D:\ Name : D:\ PointInTime : 17-Jun-15 6:31:31 AM ServerName : myserver.microsoft.com ItemSize : ItemLastModifiedTime :
+IsDir : False 
+ItemNameFriendly : D:\ 
+ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\ 
+LocalMountPoint : D:\ 
+MountPointName : D:\ 
+Name : D:\ 
+PointInTime : 18-Jun-15 6:41:52 AM 
+ServerName : myserver.microsoft.com 
+ItemSize : 
+ItemLastModifiedTime :
+
+IsDir : False 
+ItemNameFriendly : D:\ 
+ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\ 
+LocalMountPoint : D:\ 
+MountPointName : D:\ 
+Name : D:\ 
+PointInTime : 17-Jun-15 6:31:31 AM 
+ServerName : myserver.microsoft.com 
+ItemSize : 
+ItemLastModifiedTime :
 ```
 オブジェクト ```$rps``` は、バックアップ ポイントの配列です。最初の要素は最新のポイントで、N 番目の要素は最も古いポイントです。最新のポイントを選択するには、```$rps[0]``` を使用します。
 
@@ -365,10 +463,41 @@ IsDir : False ItemNameFriendly : D:\ ItemNameGuid : \?\Volume{b835d359-a1dd-11e2
 
 ```
 PS C:\> $filesFolders = Get-OBRecoverableItem $rps[0]
-PS C:\> $filesFolders IsDir : True ItemNameFriendly : D:\MyData\ ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\ LocalMountPoint : D:\ MountPointName : D:\ Name : MyData PointInTime : 18-Jun-15 6:41:52 AM ServerName : myserver.microsoft.com ItemSize : ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
+PS C:\> $filesFolders 
+IsDir : True 
+ItemNameFriendly : D:\MyData\ 
+ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\ 
+LocalMountPoint : D:\ 
+MountPointName : D:\ 
+Name : MyData 
+PointInTime : 18-Jun-15 6:41:52 AM 
+ServerName : myserver.microsoft.com 
+ItemSize : 
+ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
+
 PS C:\> $filesFolders = Get-OBRecoverableItem $filesFolders[0]
-PS C:\> $filesFolders IsDir : False ItemNameFriendly : D:\MyData\screenshot.oxps ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps LocalMountPoint : D:\ MountPointName : D:\ Name : screenshot.oxps PointInTime : 18-Jun-15 6:41:52 AM ServerName : myserver.microsoft.com ItemSize : 228313 ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
-IsDir : False ItemNameFriendly : D:\MyData\finances.xls ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls LocalMountPoint : D:\ MountPointName : D:\ Name : finances.xls PointInTime : 18-Jun-15 6:41:52 AM ServerName : myserver.microsoft.com ItemSize : 96256 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
+PS C:\> $filesFolders 
+IsDir : False 
+ItemNameFriendly : D:\MyData\screenshot.oxps 
+ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps 
+LocalMountPoint : D:\ 
+MountPointName : D:\ 
+Name : screenshot.oxps 
+PointInTime : 18-Jun-15 6:41:52 AM 
+ServerName : myserver.microsoft.com 
+ItemSize : 228313 
+ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
+
+IsDir : False 
+ItemNameFriendly : D:\MyData\finances.xls 
+ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls 
+LocalMountPoint : D:\ 
+MountPointName : D:\ 
+Name : finances.xls 
+PointInTime : 18-Jun-15 6:41:52 AM 
+ServerName : myserver.microsoft.com 
+ItemSize : 96256 
+ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 ```
 
 復元する項目を検索するには、```Get-OBRecoverableItem``` コマンドレットを使用します。この例では、*finances.xls* を検索するために、次のコマンドを実行して、ファイルのハンドルを取得します。
@@ -387,7 +516,13 @@ PS C:\> $recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -Over
 次に、```Get-OBRecoverableItem``` コマンドレットの出力から選択した ```$item``` で [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) コマンドを使用して復元をトリガーします。
 
 ```
-PS C:\> Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option Estimating size of backup items... Estimating size of backup items... Estimating size of backup items... Estimating size of backup items... Job completed. The recovery operation completed successfully.
+PS C:\> Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option 
+Estimating size of backup items... 
+Estimating size of backup items... 
+Estimating size of backup items... 
+Estimating size of backup items... 
+Job completed. 
+The recovery operation completed successfully.
 ```
 
 
@@ -407,7 +542,7 @@ PS C:\> .\MARSAgentInstaller.exe /d /q
 ただし、Azure に格納されたデータは、設定した保有ポリシーに基づいて維持されます。古いポイントの期限は自動的に切れます。
 
 ## リモート管理
-Microsoft Azure Backup エージェント、ポリシー、およびデータ ソースに関する管理はすべて、Azure PowerShell を使ってリモートで実行できます。リモートで管理されるコンピューターは、適切に準備されている必要があります。
+Microsoft Azure Backup エージェント、ポリシー、およびデータ ソースに関する管理はすべて、PowerShell を使ってリモートで実行できます。リモートで管理されるコンピューターは、適切に準備されている必要があります。
 
 既定では、WinRM サービスは手動で開始されるように設定されています。スタートアップの種類は*自動*に設定する必要があります。これにより、サービスが開始されます。WinRM サービスが実行していることを確認するには、Status プロパティの値が *[実行中]* になっていることを確認します。
 
@@ -419,7 +554,7 @@ Status   Name               DisplayName
 Running  winrm              Windows Remote Management (WS-Manag...
 ```
 
-リモート処理用に Azure PowerShell を構成します。
+リモート処理用に PowerShell を構成します。
 
 ```
 PS C:\> Enable-PSRemoting -force
@@ -445,4 +580,4 @@ PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePa
 ## 次のステップ
 Azure Backup for Windows Server/Client の詳細については、「[Azure Backup の概要](backup-introduction-to-azure-backup.md)」を参照してください。
 
-<!------HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

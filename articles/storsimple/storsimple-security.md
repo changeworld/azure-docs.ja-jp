@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple のセキュリティ" 
+   pageTitle="StorSimple のセキュリティ |Microsoft Azure" 
    description="StorSimple のサービス、デバイス、データを保護するセキュリティ機能およびプライバシー機能について説明します。" 
    services="storsimple" 
    documentationCenter="NA" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="03/19/2015"
+   ms.date="08/11/2015"
    ms.author="v-sharos"/>
 
 # StorSimple のセキュリティ 
@@ -36,11 +36,11 @@ Microsoft Azure StorSimple ソリューションは、互いに連携し合う 4
 
 ## StorSimple Manager サービスの保護
 
-StorSimple Manager サービスは、Microsoft Azure でホストされる管理サービスです。皆さんの会社で導入したすべての StorSimple デバイスは、このサービスを使用して管理されます。StorSimple Manager サービスにアクセスするには、Web ブラウザーから社内の資格情報を使用して Azure の管理ポータルにログオンします。
+StorSimple Manager サービスは、Microsoft Azure でホストされる管理サービスです。皆さんの会社で導入したすべての StorSimple デバイスは、このサービスを使用して管理されます。StorSimple Manager サービスにアクセスするには、Web ブラウザーから社内の資格情報を使用して Azure 管理ポータルにログオンします。
 
 StorSimple Manager サービスにアクセスするには、StorSimple を含む Azure サブスクリプションを会社が保有している必要があります。Azure ポータルから利用できる機能は、保有するサブスクリプションによって決まります。Azure サブスクリプションを会社が保有していない場合、「[Azure への組織としてのサインアップ](../sign-up-organization.md)」で詳しい情報をご覧いただけます。
 
-StorSimple Manager サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure のトラスト センター](http://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
+StorSimple Manager サービスは Azure でホストされるため、Azure のセキュリティ機能によって保護されます。Microsoft Azure のセキュリティ機能の詳細については、「[Microsoft Azure セキュリティ センター](http://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
 ## StorSimple デバイスの保護
 
@@ -50,13 +50,12 @@ StorSimple デバイスは、ソリッド ステート ドライブ (SSD) とハ
 
 Azure サブスクリプションで作成した StorSimple Manager サービスに参加できるのは、承認されている StorSimple デバイスだけです。
 
-デバイスを承認するためには、サービス登録キーを指定して、StorSimple Manager サービスに対象のデバイスを登録する必要があります。サービス登録キーは、ポータルで生成される 128 ビットのランダムなキーです。サービス登録キーの取得方法については、「[手順 2: サービス登録キーを取得する](https://msdn.microsoft.com/library/azure/dn772346.aspx)」をご覧ください。
+デバイスを承認するためには、サービス登録キーを指定して、StorSimple Manager サービスに対象のデバイスを登録する必要があります。サービス登録キーは、ポータルで生成される 128 ビットのランダムなキーです。サービス登録キーの取得方法については、「[手順 2: サービス登録キーを取得する](storsimple-deployment-walkthrough.md#step-2-get-the-service-registration-key)」をご覧ください。
 
 > [AZURE.NOTE]サービス登録キーは、100 文字を超える長いキーです。必要に応じて別のデバイスを承認するときに利用できるよう、登録キーは、テキスト ファイルにコピーして安全な場所に保存しておくことをお勧めします。
 > 
 > * 1 台目のデバイスの登録後は、サービス登録キーを紛失した場合、StorSimple Manager サービスから新しいキーを生成することができます。それによって既存のデバイスの動作に影響が及ぶことはありません。 
 > * 登録されたデバイスは、トークンを使用して Microsoft Azure と通信を行います。デバイスの登録後、サービス登録キーは使用されません。
-
 
 ## パスワードによる StorSimple ソリューションの保護
 
@@ -93,6 +92,8 @@ CHAP は、StorSimple デバイスがリモート クライアントの ID を�
 > * CHAP イニシエーターと CHAP ターゲットに同じパスワードを使用することはできません。
 > * いったん設定したパスワードを変更することはできますが、取得することはできません。パスワードを変更する場合は必ず、リモート アクセス ユーザー全員に通知し、StorSimple デバイスに正しく接続できるように配慮してください。
 
+CHAP の詳細および構成方法については、[StorSimple デバイスの CHAP の構成](storsimple-configure-chap.md)に関するページを参照してください。
+
 ### StorSimple Snapshot Manager のパスワード
 
 StorSimple Snapshot Manager は、ボリューム グループと Windows ボリューム シャドウ コピー サービスを使用してアプリケーション整合バックアップを生成する Microsoft 管理コンソール (MMC) スナップインです。また、StorSimple Snapshot Manager を使用して、バックアップ スケジュールを作成したり、ボリュームを複製または復元したりすることもできます。
@@ -107,7 +108,7 @@ StorSimple Snapshot Manager を使用するための構成をデバイスに対�
 Azure StorSimple のパスワードの強度と保護を徹底するために、次のガイドラインに従うようお勧めします。
 
 - 3 か月に 1 回はパスワードを変更してください。
-- 強力なパスワードを使用します。詳細については、強力なパスワードの作成に関するページを参照してください。
+- 強力なパスワードを使用します。詳細については、[より強力なパスワードの作成と保護](http://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/)に関するページを参照してください。
 - アクセス メカニズムの種類ごとに必ず異なるパスワードを使用してください。指定する各パスワードは一意であることが必要です。
 - StorSimple デバイスへのアクセスが許可されていない人物とは、それがだれであれパスワードを共有することは避けます。
 - 人前でパスワードについて話したり、パスワードの形式をほのめかしたりすることも避けます。
@@ -124,7 +125,7 @@ Azure StorSimple のパスワードの強度と保護を徹底するために、
 
 ## サービスを流れるデータの保護
 
-StorSimple Manager サービスの主な目的は、StorSimple デバイスの管理と構成です。StorSimple Manager サービスは Microsoft Azure 内で実行されます。ユーザーが Azure の管理ポータルを使用してデバイスの構成データを入力すると、Microsoft Azure が StorSimple Manager サービスを使用してそのデータをデバイスに送信します。Azure サービスのセキュリティ侵害が、保管されている情報の侵害にまで発展するのを防ぐために、StorSimple Manager サービスには非対称キー ペアのシステムが使用されています。非対称キー システムは、サービスを経由するデータの保護において次のように寄与します。
+StorSimple Manager サービスの主な目的は、StorSimple デバイスの管理と構成です。StorSimple Manager サービスは Microsoft Azure 内で実行されます。ユーザーが Azure 管理ポータルを使用してデバイスの構成データを入力すると、Microsoft Azure が StorSimple Manager サービスを使用してそのデータをデバイスに送信します。Azure サービスのセキュリティ侵害が、保管されている情報の侵害にまで発展するのを防ぐために、StorSimple Manager サービスには非対称キー ペアのシステムが使用されています。非対称キー システムは、サービスを経由するデータの保護において次のように寄与します。
 
 1. データ暗号化証明書がデバイス上で生成され、データの保護に使用されます。この証明書には、公開キーと秘密キーから成る非対称のキー ペアが使用されます。これらのキーは、最初にデバイスを登録するときに生成されます。 
 2. データ暗号化証明書のキーは、Personal Information Exchange (.pfx) ファイルにエクスポートされます。このファイルは、サービス データ暗号化キーという、登録時にデバイスによってランダムに生成される強力な 128 ビットのキーによって保護されます。
@@ -134,13 +135,13 @@ StorSimple Manager サービスの主な目的は、StorSimple デバイスの�
 > [AZURE.IMPORTANT]
 > 
 > * サービス データ暗号化キーは、サービスに登録された最初のデバイス上でのみ生成されます。それ以降、サービスに登録するすべてのデバイスは、同じサービス データ暗号化キーを使用する必要があります。必ずこのキーのコピーを作成し、安全な場所に保存しておいてください。サービス データ暗号化キーのコピーは、承認された人がアクセスし、デバイスの管理者との間でやり取りしやすいように保管しておく必要があります。
-> * サービス データ暗号化キーとそれに対応するデータ暗号化証明書を変更するには、サービス ダッシュボードでサービス データ暗号化キーの変更オプションを選択します。暗号化キーを変更する場合、すべてのデバイスを新しいキーで更新する必要があります。そのため、キーの変更は、すべてのデバイスがオンライン状態のときに行うようお勧めします。デバイスがオフラインである場合、それらのキーが異なるタイミングで変更される可能性があります。デバイスのキーの有効期限が切れていても、バックアップは実行できますが、キーが更新されるまでデータは復元できません。詳細については、「[サービス ダッシュボード](https://msdn.microsoft.com/library/azure/dn772326.aspx)」をご覧ください。
+> * サービス データ暗号化キーとそれに対応するデータ暗号化証明書を変更するには、サービス ダッシュボードで **[サービス データ暗号化キーの変更]** オプションを選択します。暗号化キーを変更する場合、すべてのデバイスを新しいキーで更新する必要があります。そのため、キーの変更は、すべてのデバイスがオンライン状態のときに行うようお勧めします。デバイスがオフラインである場合、それらのキーが異なるタイミングで変更される可能性があります。デバイスのキーの有効期限が切れていても、バックアップは実行できますが、キーが更新されるまでデータは復元できません。詳細については、[サービス ダッシュボードの使用](storsimple-service-dashboard.md)に関するページを参照してください。
 > * データのセキュリティ侵害を確実に防ぐために、サービス データ暗号化キーは、物理 StorSimple デバイスを使用して変更する必要があります。
-> * サービス データ暗号化キーを紛失した場合、マイクロソフトのサポート担当者の支援を得ることでキーを読み出すことができます。そのためには、少なくとも 1 つのデバイスがオンライン状態であることが必要です。サービス データ暗号化キーは、その取得後に変更するようお勧めします。手順については、「[サービス データ暗号化キーの変更](https://msdn.microsoft.com/library/azure/8158cbe9-1f26-4513-a031-49f88bb3d481#sec01)」をご覧ください。
+> * サービス データ暗号化キーを紛失した場合、マイクロソフトのサポート担当者の支援を得ることでキーを読み出すことができます。そのためには、少なくとも 1 つのデバイスがオンライン状態であることが必要です。サービス データ暗号化キーは、その取得後に変更するようお勧めします。手順については、「[サービス データ暗号化キーの変更](storsimple-service-dashboard.md#change-the-service-data-encryption-key)」をご覧ください。
 > * サービス データ暗号化キーとデータ暗号化証明書には、有効期限がありません。サービス データ暗号化キーは定期的に変更し、キーの侵害を防ぐようお勧めします。</li></ul>
 
 
-## 静止データの保護
+## 保存データの保護
 
 StorSimple デバイスは、データの保存先をその使用頻度に応じてローカルとクラウドに分け、階層的に保存することでデータを管理します。デバイスに接続されたすべてのホスト コンピューターは、デバイスにデータを送信し、そのデータが適宜クラウドに移動されることになります。デバイスからクラウドへのデータ転送には、iSCSI プロトコルが使用されます。それぞれのデバイスには、そのデバイス上のすべての共有ボリュームを連ねた iSCSI ターゲットが 1 つ存在します。データはすべて暗号化されたうえでクラウド ストレージに送信されます。クラウドに移動されるデータのセキュリティと完全性を確保するために、Azure StorSimple では、次のようにして、クラウド ストレージ暗号化キーを定義することができます。
 
@@ -149,6 +150,14 @@ StorSimple デバイスは、データの保存先をその使用頻度に応じ
 - StorSimple Manager サービスでクラウド ストレージ暗号化キーを入力すると、サービス データ暗号化キーの公開部分を使ってそのキーが暗号化され、デバイスに送信されます。
 - クラウド ストレージ暗号化キーはサービス内のどこにも保存されません。クラウド ストレージ暗号化キーを把握するのはデバイスだけです。
 - クラウド ストレージ暗号化キーの指定は任意です。あらかじめホストで暗号化されたデータをデバイスに送信することができます。
+
+### セキュリティに関するその他のベスト プラクティス
+
+- 冗長性を実装するには、マルチパス (MPIO) を使用して、iSCSI SAN の単一障害点を回避します。詳細な手順については、「[StorSimple デバイスの MPIO の構成](#storsimple-configure-mpio-windows-server.md)」を参照してください。
+
+- トラフィックを分割します。完全に切り離されたネットワークをデプロイし、物理的な分離が不可能な VLAN を使用することで、会社の LAN 上のユーザー トラフィックから iSCSI SAN を分離します。iSCSI ストレージ専用ネットワークを使用すれば、ビジネス クリティカルなデータの安全性とパフォーマンスを確保できます。会社の LAN でストレージとユーザー トラフィックを混在させることは推奨されません。待機時間が長くなり、ネットワーク障害が起きる可能性があります。
+
+- ホスト側のネットワーク セキュリティについては、TCP/IP Offload Engine (TOE) をサポートするネットワーク インターフェイスを使用してください。TOE で、ネットワーク アダプター上の TCP を処理することで、CPU の負荷が軽減されます。
 
 ## ストレージ アカウントによるデータの保護
 
@@ -183,20 +192,20 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 **A:** サービス データ暗号化キーと、データの階層化に使用されているストレージ アカウントのストレージ アカウント キーを直ちに変更してください。手順については、次をご覧ください。
 
-- [サービス データ暗号化キーの変更](https://msdn.microsoft.com/library/azure/8158cbe9-1f26-4513-a031-49f88bb3d481#sec01)
-- [ストレージ アカウントのキー ローテーション](https://msdn.microsoft.com/library/azure/1747f56e-858a-4cfe-a020-949d7db23b8b#rotate)
+- [サービス データ暗号化キーの変更](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+- [ストレージ アカウントのキー ローテーション](storsimple-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
 **Q:** 新しい StorSimple デバイスがあるのですが、サービス登録キーを求められました。どうすれば入手できますか。
 
 **A:** このキーは StorSimple Manager サービスを最初に作成したときに作成さていれます。StorSimple Manager サービスを使用してデバイスに接続する場合、サービスのクイック スタート ページを使用してサービス登録キーを表示したり再生成したりできます。新しいサービス登録キーを生成しても、既存の登録済みデバイスには影響ありません。手順については、次をご覧ください。
 
-- [サービス登録キーの表示または再生成](https://msdn.microsoft.com/library/azure/8158cbe9-1f26-4513-a031-49f88bb3d481#BKMK_viewsrk)
+- [サービス登録キーの表示または再生成](storsimple-service-dashboard.md#view-or-regenerate-the-service-registration-key)
 
 **Q:** サービス データ暗号化キーを紛失しました。どうすればよいですか。
 
 **A:** Microsoft サポートにお問い合わせください。デバイスのサポート セッションにログインし、キーを取得できるようにサポートします。サービス データ暗号化キーを取得したらすぐに変更し、お客様だけが新しいキーを認識するようにする必要があります。手順については、次をご覧ください。
 
-- [サービス データ暗号化キーの変更](https://msdn.microsoft.com/library/azure/8158cbe9-1f26-4513-a031-49f88bb3d481#sec01)
+- [サービス データ暗号化キーの変更](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
 
 **Q:** デバイスにサービス データ暗号化キーの変更を承認しましたが、キー変更プロセスが開始されませんでした。どうすればよいですか。
 
@@ -210,18 +219,16 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 **A:** StorSimple デバイスにアクセスするためのパスワードを変更するかリセットし、サービス データ暗号化キーを変更して、承認された人員のみが新しい情報を知っている状態にします。手順については、次をご覧ください。
 
-- [StorSimple Snapshot Manager の構成](https://msdn.microsoft.com/library/azure/02f1412f-e196-4a88-8eda-2113247ea47c#sec08)
-- [デバイス管理者のパスワードの構成](https://msdn.microsoft.com/library/azure/02f1412f-e196-4a88-8eda-2113247ea47c#sec09)
-- [リモート管理の構成](https://msdn.microsoft.com/library/azure/02f1412f-e196-4a88-8eda-2113247ea47c#sec10)
-- [CHAP イニシエーターの構成](https://msdn.microsoft.com/library/azure/02f1412f-e196-4a88-8eda-2113247ea47c#sec06)
-- [CHAP ターゲットの構成](https://msdn.microsoft.com/library/azure/02f1412f-e196-4a88-8eda-2113247ea47c#sec07)
+- [StorSimple Manager サービスを使用した StorSimple のパスワードの変更](storsimple-change-passwords.md)
+- [サービス データ暗号化キーの変更](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+- [StorSimple デバイスの CHAP を構成する](storsimple-configure-chap.md)
 
 **Q:** StorSimple デバイスに接続しているホストに StorSimple Snapshot Manager のパスワードを指定する必要がありますが、パスワードを利用できません。どうすればよいですか。
 
 **A:** パスワードを忘れた場合は、新しいパスワードを作成する必要があります。その後、既存のすべてのユーザーに対して、パスワードが変更されたので新しいパスワードを使用するようにクライアントを更新する必要があることを通知します。手順については、次をご覧ください。
 
-- [Snapshot Manager の構成](https://msdn.microsoft.com/library/azure/02f1412f-e196-4a88-8eda-2113247ea47c#sec08)
-- [デバイスの認証](https://msdn.microsoft.com/library/azure/dn790537.aspx)
+- [StorSimple Snapshot Manager のパスワードの変更](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)
+- [デバイスの認証](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
 **Q:** StorSimple 用 Windows PowerShell にリモート アクセスするための証明書がデバイス上で変更されました。リモート アクセス クライアントを更新するにはどうすればよいですか。
 
@@ -243,7 +250,7 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 ## 次のステップ
 
-[物理デバイスを使ってみる](https://msdn.microsoft.com/library/azure/dn772410.aspx)
+[StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

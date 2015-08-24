@@ -3,7 +3,7 @@
 	description="含まれるリソースのライフサイクルの境界となる論理グループとして、複数のリソースをグループ化します。" 
 	services="azure-portal" 
 	documentationCenter="" 
-	authors="" 
+	authors="tfitzmac" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -75,4 +75,4 @@ Getting Started (概要)
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

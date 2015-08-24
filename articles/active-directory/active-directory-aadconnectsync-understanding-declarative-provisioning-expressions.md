@@ -135,4 +135,4 @@ ImportedValues 関数は、属性名を角かっこではなく引用符で囲�
  
 <!--Image references-->
 
-<!------HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

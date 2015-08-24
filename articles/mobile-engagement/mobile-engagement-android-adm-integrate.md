@@ -3,7 +3,7 @@
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
-	authors="kpiteira" 
+	authors="piyushjo" 
 	manager="dwrede" 
 	editor="" />
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="02/12/2015" 
-	ms.author="kapiteir" />
+	ms.date="08/10/2015" 
+	ms.author="piyushjo" />
 
 
 #ADM を Engagement に統合する方法
@@ -113,4 +113,4 @@ OAuth Credentials (クライアント ID とクライアントシークレット
 [この手順]: https://developer.amazon.com/sdk/adm/integrating-app.html#Asset
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ソース管理へのプロジェクト コードの保存 - Azure Mobile Services" 
+	pageTitle="ソース管理へのプロジェクトのコードの格納 | Microsoft Azure" 
 	description=".NET バックエンド プロジェクトをコンピューターのローカル Git リポジトリに格納し、リポジトリから発行する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -104,4 +104,4 @@
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

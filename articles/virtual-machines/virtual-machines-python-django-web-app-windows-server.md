@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Django を使用した Python Web アプリケーション - Azure チュートリアル"
+	pageTitle="Django を使用した Python Web アプリケーション | Microsoft Azure"
 	description="Windows Server 2012 R2 Datacenter 仮想マシンを使用して Azure で Django ベースの Web サイトをホストする方法について説明するチュートリアルです。"
 	services="virtual-machines"
 	documentationCenter="python"
@@ -8,13 +8,13 @@
 	editor=""/>
 
 
-<tags
-	ms.service="virtual-machines"
-	ms.workload="web"
-	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="python"
-	ms.topic="article"
-	ms.date="05/20/2015"
+<tags 
+	ms.service="virtual-machines" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="vm-windows" 
+	ms.devlang="python" 
+	ms.topic="article" 
+	ms.date="08/04/2015" 
 	ms.author="huvalo"/>
 
 
@@ -41,7 +41,7 @@
 
 ## Django をホストする Azure の仮想マシンの作成と構成
 
-1. [こちら][portal-vm]に記載されている手順に従って、Windows Server 2012 R2 Datacenter ディストリビューションの Azure 仮想マシンを作成します。
+1. [こちら](virtual-machines-windows-tutorial-classic-portal.md)に記載されている手順に従って、Windows Server 2012 R2 Datacenter ディストリビューションの Azure 仮想マシンを作成します。
 
 1. Azure で、ポート 80 トラフィックを Web から仮想マシン上のポート 80 に転送します。
  - Azure ポータルで新しく作成した仮想マシンに移動し、**[エンドポイント]** タブをクリックします。
@@ -52,103 +52,32 @@
 
 **重要:** 以下に示しているすべての手順では、仮想マシンに正しくログインしており、ローカル コンピューターではなく仮想マシンでコマンドを発行することを前提としています。
 
-## <a id="setup"> </a>Python と Django の設定
+## <a id="setup"> </a>Python、Django、WFastCGI のインストール
 
 **注:** Internet Explorer を使ってダウンロードするには、IE ESC 設定の構成が必要になる場合があります。具体的には、[スタート]、[管理ツール]、[サーバー マネージャー]、[ローカル サーバー] の順にクリックしてから、**[IE セキュリティ強化の構成]** をクリックし、[オフ] に設定します。
 
-1. [Web Platform Installer][] をインストールします。
-1. Web Platform Installer を使用して、Python と WFastCGI をインストールします。これにより、wfastcgi.py が Python スクリプト フォルダーにインストールされます。
-	1. Web Platform Installer を起動します。
-	1. 検索バーに「WFastCGI」と入力します。
-	1. 使用する Python のバージョン (2.7 または 3.4) に対応した WFactCGI エントリを選択します。これにより、Python が WFastCGI の依存関係としてインストールされます。
-1. pip を使用して Django をインストールします。
+1. [python.org][] から最新の Python (2.7 または 3.4) をインストールします。
+1. pip を使用して wfastcgi パッケージおよび django パッケージをインストールします。
 
     Python 2.7 の場合、以下のコマンドを使用します。
 
+        c:\python27\scripts\pip install wfastcgi
         c:\python27\scripts\pip install django
 
     Python 3.4 の場合、以下のコマンドを使用します。
 
+        c:\python34\scripts\pip install wfastcgi
         c:\python34\scripts\pip install django
 
-
-## FastCGI での IIS の設定
+## FastCGI を使用した IIS のインストール
 
 1. FastCGI のサポートを利用して IIS をインストールします。この操作には数分かかる可能性があります。
 
-		start /wait %windir%\System32\\PkgMgr.exe /iu:IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-StaticContent;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-LoggingLibraries;IIS-RequestMonitor;IIS-Security;IIS-RequestFiltering;IIS-HttpCompressionStatic;IIS-WebServerManagementTools;IIS-ManagementConsole;WAS-WindowsActivationService;WAS-ProcessModel;WAS-NetFxEnvironment;WAS-ConfigurationAPI;IIS-CGI
-
-
-### Python 2.7
-
-Python 2.7 を使用している場合に限り、これらのコマンドを実行してください。
-
-1. Python FastCGI Handler を設定します。
-
-		%windir%\system32\inetsrv\appcmd set config /section:system.webServer/fastCGI "/+[fullPath='c:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py']"
-
-
-1. このサイトのハンドラーを登録します。
-
-		%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers "/+[name='Python_via_FastCGI',path='*',verb='*',modules='FastCgiModule',scriptProcessor='c:\Python27\python.exe|C:\Python27\Scripts\wfastcgi.py',resourceType='Unspecified']"
-
-
-1. Django アプリケーションを実行するようにハンドラーを構成します。
-
-		%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py'].environmentVariables.[name='DJANGO_SETTINGS_MODULE',value='helloworld.settings']" /commit:apphost
-
-
-1. Python インタープリターで Django アプリケーションを検索できるように PYTHONPATH を構成します。
-
-		%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py'].environmentVariables.[name='PYTHONPATH',value='C:\inetpub\wwwroot\helloworld']" /commit:apphost
-
-
-1. FastCGI から WSGI へのゲートウェイに、使用する WSGI ハンドラーを指定します。
-
-		%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py'].environmentVariables.[name='WSGI_HANDLER',value='django.core.handlers.wsgi.WSGIHandler()']" /commit:apphost
-
-
-1. 以下のスクリーン ショットが表示されます。
-
-	![IIS 構成 1](./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-iis-27.png)
-
-### Python 3.4
-
-Python 3.4 を使用している場合に限り、これらのコマンドを実行してください。
-
-1. Python FastCGI Handler を設定します。
-
-		%windir%\system32\inetsrv\appcmd set config /section:system.webServer/fastCGI "/+[fullPath='c:\Python34\python.exe', arguments='C:\Python34\Scripts\wfastcgi.py']"
-
-
-1. このサイトのハンドラーを登録します。
-
-		%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers "/+[name='Python_via_FastCGI',path='*',verb='*',modules='FastCgiModule',scriptProcessor='c:\Python34\python.exe|C:\Python34\Scripts\wfastcgi.py',resourceType='Unspecified']"
-
-
-1. Django アプリケーションを実行するようにハンドラーを構成します。
-
-		%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python34\python.exe', arguments='C:\Python34\Scripts\wfastcgi.py'].environmentVariables.[name='DJANGO_SETTINGS_MODULE',value='helloworld.settings']" /commit:apphost
-
-
-1. Python インタープリターで Django アプリケーションを検索できるように PYTHONPATH を構成します。
-
-		%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python34\python.exe', arguments='C:\Python34\Scripts\wfastcgi.py'].environmentVariables.[name='PYTHONPATH',value='C:\inetpub\wwwroot\helloworld']" /commit:apphost
-
-
-1. FastCGI から WSGI へのゲートウェイに、使用する WSGI ハンドラーを指定します。
-
-		%windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python34\python.exe', arguments='C:\Python34\Scripts\wfastcgi.py'].environmentVariables.[name='WSGI_HANDLER',value='django.core.handlers.wsgi.WSGIHandler()']" /commit:apphost
-
-1. 以下のスクリーン ショットが表示されます。
-
-	![IIS 構成 1](./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-iis-34.png)
-
+		start /wait %windir%\System32\PkgMgr.exe /iu:IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-StaticContent;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-LoggingLibraries;IIS-RequestMonitor;IIS-Security;IIS-RequestFiltering;IIS-HttpCompressionStatic;IIS-WebServerManagementTools;IIS-ManagementConsole;WAS-WindowsActivationService;WAS-ProcessModel;WAS-NetFxEnvironment;WAS-ConfigurationAPI;IIS-CGI
 
 ## 新しい Django アプリケーションの作成
 
-
-1.  *C:\\inetpub\\wwwroot* から以下のコマンドを入力して、新しい Django プロジェクトを作成します。
+1.  *C:\\inetpub\\wwwroot* から次のコマンドを入力して、新しい Django プロジェクトを作成します。
 
     Python 2.7 の場合、以下のコマンドを使用します。
 
@@ -166,9 +95,7 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
   -   **helloworld\\helloworld\\settings.py** には、アプリケーション向けの Django の設定が含まれています。
   -   **helloworld\\helloworld\\urls.py** には、各 URL とそのビューとの間のマッピング コードが含まれています。
 
-
-
-1.  **views.py** という名前の新しいファイルを *C:\\inetpub\\wwwroot\\helloworld\\helloworld* ディレクトリに作成します。このファイルには、"Hello World" ページをレンダリングするビューが含まれます。エディターを起動し、以下のコードを入力します。
+1.  **views.py** という名前の新しいファイルを *C:\\inetpub\\wwwroot\\helloworld\\helloworld* ディレクトリに作成します。このファイルには、"Hello World" ページをレンダリングするビューが含まれます。エディターを起動し、次のコードを入力します。
 
 		from django.http import HttpResponse
 		def home(request):
@@ -182,9 +109,62 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
 			url(r'^$', 'helloworld.views.home', name='home'),
 		)
 
+## IIS の構成
+
+1. グローバルの applicationhost.config で handlers セクションのロックを解除します。これにより、web.config で python ハンドラーを使用できるようになります。
+
+        %windir%\system32\inetsrv\appcmd unlock config -section:system.webServer/handlers
+
+1. WFastCGI を有効化します。これにより、グローバルの applicationhost.config に、Python インタープリターの実行可能ファイルと wfastcgi.py スクリプトを参照するアプリケーションが追加されます。
+
+    Python 2.7:
+
+        c:\python27\scripts\wfastcgi-enable
+
+    Python 3.4:
+
+        c:\python34\scripts\wfastcgi-enable
+
+1. *C:\\inetpub\\wwwroot\\helloworld* で web.config ファイルを作成します。`scriptProcessor` 属性の値は、前の手順の出力と一致させる必要があります。wfastcgi の設定の詳細については、pypi の [wfastcgi][] に関するページを参照してください。
+
+    Python 2.7:
+
+        <configuration>
+          <appSettings>
+            <add key="WSGI_HANDLER" value="django.core.handlers.wsgi.WSGIHandler()" />
+            <add key="PYTHONPATH" value="C:\inetpub\wwwroot\helloworld" />
+            <add key="DJANGO_SETTINGS_MODULE" value="helloworld.settings" />
+          </appSettings>
+          <system.webServer>
+            <handlers>
+                <add name="Python FastCGI" path="*" verb="*" modules="FastCgiModule" scriptProcessor="C:\Python27\python.exe|C:\Python27\Lib\site-packages\wfastcgi.pyc" resourceType="Unspecified" />
+            </handlers>
+          </system.webServer>
+        </configuration>
+
+    Python 3.4:
+
+        <configuration>
+          <appSettings>
+            <add key="WSGI_HANDLER" value="django.core.handlers.wsgi.WSGIHandler()" />
+            <add key="PYTHONPATH" value="C:\inetpub\wwwroot\helloworld" />
+            <add key="DJANGO_SETTINGS_MODULE" value="helloworld.settings" />
+          </appSettings>
+          <system.webServer>
+            <handlers>
+                <add name="Python FastCGI" path="*" verb="*" modules="FastCgiModule" scriptProcessor="C:\Python34\python.exe|C:\Python34\Lib\site-packages\wfastcgi.py" resourceType="Unspecified" />
+            </handlers>
+          </system.webServer>
+        </configuration>
+
+1. django のプロジェクト フォルダを参照するように、IIS の既定の Web サイトの場所を更新します。
+
+        %windir%\system32\inetsrv\appcmd set vdir "Default Web Site/" -physicalPath:"C:\inetpub\wwwroot\helloworld"
+
 1. 最後に、ブラウザーで Web ページを読み込みます。
 
 ![Azure で Hello World ページを表示するブラウザー ウィンドウ][1]
+
 
 ## Azure の仮想マシンのシャットダウン
 
@@ -194,8 +174,8 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
 
 [port80]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-port80.png
 
-[portal-vm]: /manage/windows/tutorials/virtual-machine-from-gallery/
-
 [Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
+[python.org]: https://www.python.org/downloads/
+[wfastcgi]: https://pypi.python.org/pypi/wfastcgi
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

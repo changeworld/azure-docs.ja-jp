@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/10/2015"
+   ms.date="08/12/2015"
    ms.author="mbaldwin"/>
 
 
@@ -67,6 +67,7 @@ Build 2015 のカンファレンスで発表された AAD の概要を参照す�
 - [Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](active-directory-app-gallery-listing.md)
 - [アプリでの Office 365 API の使用](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
 - [販売者ダッシュボードに Office 365 用 Web アプリを送信する方法](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+- [プレビュー: ユーザーが、個人カウント、および職場または学校のアカウントの両方でサインインできるアプリを構築する方法](active-directory-appmodel-v2-overview.md)
 
 
 ## リファレンス
@@ -132,4 +133,4 @@ Azure Active Directory を使用したアプリ開発に関する次の概要の
 
 - **[Twitter での Azure AD](https://twitter.com/azuread)**: Azure AD に関する発表事項を 140 文字以内で受け取ることができます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

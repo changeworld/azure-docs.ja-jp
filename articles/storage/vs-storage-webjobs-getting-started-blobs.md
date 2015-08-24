@@ -1,26 +1,26 @@
 <properties 
-	pageTitle="Azure Storage の使用" 
-	description="Visual Studio の Azure Web ジョブ プロジェクトで Azure BLOB ストレージの使用を開始する方法" 
-	services="storage" 
-	documentationCenter="" 
-	authors="patshea123" 
-	manager="douge" 
+	pageTitle="Azure Storage と Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)" 
+	description="Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用して WebJob プロジェクトに作成された Azure ストレージ アカウントで BLOB ストレージの使用を開始する方法です。"
+	services="storage"
+	documentationCenter=""
+	authors="patshea123"
+	manager="douge"
 	editor="tglee"/>
 
 <tags 
-	ms.service="storage" 
-	ms.workload="web" 
+	ms.service="storage"
+	ms.workload="web"
 	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/13/2015" 
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/13/2015"
 	ms.author="patshea123"/>
 
 # Azure Storage の使用 (Azure Web ジョブ プロジェクト)
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-storage-webjobs-getting-started-blobs.md)
-> - [What Happened](vs-storage-webjobs-what-happened.md)
+> - [Getting started](vs-storage-webjobs-getting-started-blobs.md)
+> - [What happened](vs-storage-webjobs-what-happened.md)
 
 > [AZURE.SELECTOR]
 > - [Blobs](vs-storage-webjobs-getting-started-blobs.md)
@@ -29,9 +29,9 @@
 
 ## 概要
 
-Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Web ジョブ プロジェクトにストレージ アカウントを追加すると、適切な Azure Storage NuGet パッケージがインストールされ、適切な .NET 参照がプロジェクトに追加され、App.config ファイルのストレージ アカウントの接続文字列が更新されます。
+この記事では、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Web ジョブ プロジェクトにストレージ アカウントを追加すると、適切な Azure Storage NuGet パッケージがインストールされ、適切な .NET 参照がプロジェクトに追加され、App.config ファイルのストレージ アカウントの接続文字列が更新されます。
 
-この記事では、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。
+
 
 ## BLOB が作成または更新されたときに、関数を開始する方法
 
@@ -86,7 +86,7 @@ Visual Studio の **[接続済みサービスの追加]** ダイアログを使�
 		    output = input.ReadToEnd();
 		}
 
-## <a id="types"></a>BLOB にバインドすることができる種類
+## BLOB にバインドすることができる種類
 
 次の種類の `BlobTrigger` 属性を使用できます。
 
@@ -100,7 +100,7 @@ Visual Studio の **[接続済みサービスの追加]** ダイアログを使�
 
 Azure のストレージ アカウントを直接操作する場合は、メソッド シグネチャに `CloudStorageAccount` パラメーターを追加することもできます。
 
-## <a id="string"></a>文字列にバインドすることによってテキスト BLOB のコンテンツを取得する
+## 文字列にバインドすることによってテキスト BLOB のコンテンツを取得する
 
 テキスト BLOB がある場合は、 `BlobTrigger`を `string` パラメーターに適用できます。次のコード サンプルでは、テキスト BLOB を `logMessage` という名前の `string` パラメーターにバインドします。関数は、そのパラメーターを使用して Web ジョブ SDK のダッシュボードに、BLOB の内容を記述します。
  
@@ -113,7 +113,7 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
 		     logger.WriteLine(logMessage);
 		}
 
-## <a id="icbsb"></a>ICloudBlobStreamBinder を使用してシリアル化した BLOB の内容を取得する
+## ICloudBlobStreamBinder を使用してシリアル化した BLOB の内容を取得する
 
 次のコード サンプルでは、`ICloudBlobStreamBinder` を実装するクラスを使用して `BlobTrigger` 属性を有効化して BLOB を `WebImage` 型にバインドします。
 
@@ -151,7 +151,7 @@ Azure のストレージ アカウントを直接操作する場合は、メソ�
 		    }
 		}
 
-## <a id="poison"></a>有害な BLOB の処理方法
+## 有害な BLOB の処理方法
 
 `BlobTrigger` 関数が失敗した場合、失敗が一時的なエラーによって発生した場合は、SDK は再度関数を呼び出します。失敗が BLOB のコンテンツによって発生した場合は、BLOB の処理を試みるたびに関数は失敗します。既定では、SDK は特定の BLOB に対して最大 5 回、関数を呼び出します。5 回目が失敗すると、SDK はメッセージは、 *webjobs-blobtrigger-poison* という名前のキューにメッセージを追加します。
 
@@ -196,7 +196,7 @@ SDK は、自動的にJSON メッセージを逆シリアル化します。こ�
 		    public string ETag { get; set; }
 		}
 
-### <a id="polling"></a>BLOB のポーリング アルゴリズム
+### BLOB のポーリング アルゴリズム
 
 Web ジョブ SDK は、アプリケーションの起動時に `BlobTrigger` 属性が指定するすべてのコンテナーをスキャンします。大容量のストレージ アカウントでは、このスキャンに時間がかかるため、新しい BLOB が見つかり、`BlobTrigger` 関数が実行されるまでにしばらく時間がかかります。
 
@@ -204,7 +204,7 @@ Web ジョブ SDK は、アプリケーションの起動時に `BlobTrigger` �
 
 `Blob` 属性を使用して作成する BLOB には例外があります。Web ジョブ SDK は新しい BLOB を作成すると、一致するすべての`BlobTrigger` 関数に新しい BLOB をすぐに渡します。そのため、一連の BLOB 入力と BLOB 出力がある場合は、SDK は効率的に処理できます。ただし、その他の方法で作成または更新された BLOB に対して 低遅延で実行される BLOB 処理関数を使用する場合は、`BlobTrigger` ではなく `QueueTrigger` をお勧めします。
 
-### <a id="receipts"></a>BLOB の配信確認メッセージ
+### BLOB の配信確認メッセージ
 
 Web ジョブ SDK では、`BlobTrigger` 関数は同一の新しいまたは更新された BLOB を複数回呼び出しません。これは*BLOB の配信確認メッセージ*を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
 
@@ -218,7 +218,7 @@ BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が�
 
 BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテナーからその BLOB の配信確認メッセージを手動で削除します。
 
-## <a id="queues"></a>キューの記事で扱う関連トピック
+## キューの記事で扱う関連トピック
 
 キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください
 
@@ -234,9 +234,9 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 * 手動での関数のトリガー
 * ログの書き込み
 
-## <a id="nextsteps"></a> 次のステップ
+## 次のステップ
 
-このガイドでは、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
+この記事では、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

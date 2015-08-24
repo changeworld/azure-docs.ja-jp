@@ -11,7 +11,7 @@
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
-	ms.topic="hero-article" 
+	ms.topic="article" 
 	ms.date="08/04/2015" 
 	ms.author="awills"/>
 
@@ -48,7 +48,7 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 * 質問および問題点:
  * [トラブルシューティング][qna]
- * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-jp/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
@@ -74,4 +74,4 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

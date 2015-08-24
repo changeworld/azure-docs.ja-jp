@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Hdinsight での Apache Spark クラスターのプロビジョニング |Azure" 
+   pageTitle="Hdinsight での Apache Spark クラスターのプロビジョニング | Microsoft Azure" 
    description="Azure ポータル、Azure PowerShell、コマンド ライン、HDInsight .NET SDK を使用して Azure HDInsight に Spark クラスターをプロビジョニングする方法について説明します" 
    services="hdinsight" 
    documentationCenter="" 
@@ -74,7 +74,7 @@ Spark では、生データに対してスキーマおよび Hive テーブル�
 
 ##<a id="portal"></a>Azure ポータルの使用
 
-HDInsight 上の Spark クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」をご覧ください。
+HDInsight 上の Spark クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」をご覧ください。
 
 **カスタム作成オプションを使用して HDInsight クラスターを作成するには**
 
@@ -503,4 +503,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

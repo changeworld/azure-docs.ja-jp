@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="BizTalk サービスでのバックアップの作成と復元 |Azure" 
+	pageTitle="BizTalk Services でのバックアップの作成と復元 | Microsoft Azure" 
 	description="BizTalk Services には、バックアップと復元の機能が備わっています。バックアップを作成して復元する方法を説明すると共に、何がバックアップされるのかを確認します。MABS、WABS" 
 	services="biztalk-services" 
 	documentationCenter="" 
@@ -233,4 +233,4 @@ Azure BizTalk サービスを Azure 管理ポータルで作成するには、�
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

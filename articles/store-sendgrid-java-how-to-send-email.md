@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SendGrid 電子メール サービスの使用方法 (Java) - Azure" 
+	pageTitle="SendGrid 電子メール サービスの使用方法 (Java) | Microsoft Azure" 
 	description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは Java で記述されています。" 
 	services="" 
 	documentationCenter="java" 
@@ -56,6 +56,7 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
 
 1.  SMTP に関する値を指定します。たとえば、SMTP サーバーは、 SendGrid では smtp.sendgrid.net になります。
     
+```
         import java.util.Properties;
         import javax.activation.*;
         import javax.mail.*;
@@ -78,8 +79,9 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
            	  properties.put("mail.smtp.port", 587);
            	  properties.put("mail.smtp.auth", "true");
            	  // …
+```
 
-2.  <span class="auto-style1">javax.mail.Authenticator</span> クラスを継承し、<span class="auto-style1">getPasswordAuthentication</span> メソッドの実装内で SendGrid のユーザー名とパスワードを返します。
+2.  *javax.mail.Authenticator* クラスを拡張し、*getPasswordAuthentication* メソッドの実装内で SendGrid のユーザー名とパスワードを返します。  
 
         private class SMTPAuthenticator extends javax.mail.Authenticator {
         public PasswordAuthentication getPasswordAuthentication() {
@@ -88,13 +90,13 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
            return new PasswordAuthentication(username, password);
         }
 
-3.  <span class="auto-style1">javax.mail.Session</span> オブジェクトを使用して、認証された電子メール セッションを作成します。
+3.  *javax.mail.Session* オブジェクトを使用して、認証された電子メール セッションを作成します。
 
         Authenticator auth = new SMTPAuthenticator();
         Session mailSession = Session.getDefaultInstance(properties, auth);
 
 4.  メッセージを作成し、**To**、**From**、**Subject**、およびコンテンツの値を設定します。このコードは「[方法: 電子メールを作成する](#bkmk_HowToCreateEmail)」に示しています。
-5.  <span class="auto-style1">javax.mail.Transport</span> オブジェクトを使用してメッセージを送信します。このコードは 「[方法: 電子メールを送信する][How to: Send an Email]」セクションに示しています。
+5.  *javax.mail.Transport* オブジェクトを使用してメッセージを送信します。このコードは 「[方法: 電子メールを送信する][How to: Send an Email]」セクションに示しています。
 
 ## <a name="bkmk_HowToCreateEmail"></a>方法: 電子メールを作成する
 
@@ -228,4 +230,4 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

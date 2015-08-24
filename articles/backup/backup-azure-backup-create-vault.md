@@ -7,7 +7,7 @@
    manager="shreeshd"
    editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/28/2015" ms.author="prvijay"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/11/2015" ms.author="aashishr"; "jimpark"/>
 
 # バックアップ資格情報コンテナーの作成
 ファイルとデータを Windows Server または System Center Data Protection Manager (SCDPM) から Azure にバックアップしたり、IaaS VM を Azure にバックアップしたりする場合には、データを保存する地理的リージョンにバックアップ資格情報コンテナーを作成する必要があります。　
@@ -60,7 +60,6 @@ GRS では、データのコピーが 6 つ保持されます。GRS を使用す
 
 ## 注
 
-- 2015年 3 月の時点で、顧客はプログラム (例: PowerShell) を使用してバックアップ資格情報コンテナーを作成することはできません。
 - ストレージ冗長は、資格情報コンテナーの作成直後で、いずれのコンピューターも資格情報コンテナーに登録される前に選択する必要があります。項目が資格情報コンテナーに登録されたら、ストレージ冗長オプションはロックされ、変更できなくなります。
 
 <!--Image references-->
@@ -70,4 +69,4 @@ GRS では、データのコピーが 6 つ保持されます。GRS を使用す
 [4]: ./media/backup-azure-backup-create-vault/grs.png
 [5]: ./media/backup-azure-backup-create-vault/lrs.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

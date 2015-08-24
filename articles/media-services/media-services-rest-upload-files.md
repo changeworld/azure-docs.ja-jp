@@ -13,9 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/23/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
-
 
 
 #REST API を使用してメディア・サービス アカウントにファイルをアップロードする
@@ -174,7 +173,7 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 
 ## 書き込みのアクセス許可を持つ AccessPolicy を作成する 
 
-すべてのファイルを blob ストレージにアップロードする前に、アセットに書き込むためのアクセス ポリシーの権限を設定します。そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。AccessPolicies　の詳細については、[AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx) をご覧ください。
+すべてのファイルを blob ストレージにアップロードする前に、資産に書き込むためのアクセス ポリシーの権限を設定します。そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。AccessPolicies　の詳細については、[AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx) をご覧ください。
 
 次の例は、AccessPolicy を作成する方法を示します。
 		
@@ -221,7 +220,7 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 
 ##アップロード URL を取得する
 
-実際のアップロード URL を受信するには、SAS Locator　を作成します。Locator は、アセット内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。詳細については、「[Locator](http://msdn.microsoft.com/library/azure/hh974308.aspx)」をご覧ください。
+実際のアップロード URL を受信するには、SAS Locator　を作成します。Locator は、資産内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。詳細については、「[Locator](http://msdn.microsoft.com/library/azure/hh974308.aspx)」をご覧ください。
 
 
 SAS URL には次の形式があります。
@@ -230,7 +229,7 @@ SAS URL には次の形式があります。
 
 いくつかの考慮事項が適用されます。
 
-- 特定のアセットに関連付けられている 5 つの一意のLocator を同時に使用することはできません。詳細については、「Locator」をご覧ください。
+- 特定の資産に関連付けられている 5 つの一意のLocator を同時に使用することはできません。詳細については、「Locator」をご覧ください。
 - すぐにファイルをアップロードする必要がある場合は、StartTime 値を現在の時刻の 5 分前に設定する必要があります。これは、クライアント コンピューターと Media Services の間にクロック スキューがある可能性があるためです。また、StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。	
 - Locator を作成した後に使用可能になるまで 30 ～ 40 秒の遅延が発生する場合があります。この問題は、SAS URL と Origin Locator の両方に当てはまります。
 
@@ -367,4 +366,4 @@ Azure ストレージ BLOB の使用の詳細については、[BLOB サービ�
 [How to Get a Media Processor]: media-services-get-media-processor.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

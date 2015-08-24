@@ -1,5 +1,5 @@
 <properties
-	pageTitle="仮想マシンへのディスクの接続 | Azure"
+	pageTitle="仮想マシンへのディスクの接続 | Microsoft Azure"
 	description="データ ディスクを Azure 仮想マシンに接続し、初期化して、使用できる状態にする方法について説明します。"
 	services="virtual-machines, storage"
 	documentationCenter=""
@@ -53,4 +53,4 @@
 
 [logon]: virtual-machines-log-on-windows-server.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,7 +13,7 @@
                 ms.tgt_pltfrm="na" 
                 ms.devlang="na" 
                 ms.topic="article" 
-                ms.date="07/14/2015" 
+                ms.date="08/10/2015" 
                 ms.author="markusvi"/>
 
 
@@ -46,6 +46,8 @@ Office365、Azure、Dynamics CRM Online をご利用の方は、既に Azure AD 
 
 Azure AD はマルチテナント型で地理的に分散した高可用性のデザインです。つまり Azure AD は、最も重要なビジネス ニーズでも信頼できるツールです。Azure AD は、フェールオーバーが自動化された世界 28 か所のデータ センターから実行されているため、Azure AD の信頼性が高く、データ センターがダウンした場合でも、地理的に分散した 2 か所以上のデータ センターでディレクトリ データのデータが有効で、すぐにアクセスできるという安心感が得られます。
 
+詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
+
 
 
 ## Azure AD の利点について
@@ -67,11 +69,11 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
 
 ## 開始するには?
 -	IT 管理者の場合:
- - [実際に使ってみる](https://azure.microsoft.com/ja-jp/pricing/free-trial/) - 30 日の無料試用版に今すぐサインアップすると、このリンクを使用して、初めてのクラウド ソリューションも 5 分以内にデプロイできます。
+ - [実際に使ってみる](https://azure.microsoft.com/trial/get-started-active-directory/) - 30 日の無料試用版に今すぐサインアップすると、このリンクを使用して、初めてのクラウド ソリューションも 5 分以内にデプロイできます。
  - Azure AD の概要に関するページで、Azure AD テナントをすばやく稼働させるためのヒントとテクニックをお読みください。
 -	開発者の場合:
  - Azure Active Directory の「[開発者向けガイド](https://msdn.microsoft.com/library/azure/ff800682.aspx)」を参照してください。<need link>
- - [試用版の開始](https://azure.microsoft.com/ja-jp/pricing/free-trial/) – 30 日の無料試用版に今すぐサインアップして、Azure AD とアプリの統合を開始してください。 
+ - [試用版の開始](https://azure.microsoft.com/trial/get-started-active-directory/) – 30 日の無料試用版に今すぐサインアップして、Azure AD とアプリの統合を開始してください。 
 
 
 
@@ -81,15 +83,25 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
 
 
 - [Azure AD Connect によるディレクトリのハイブリッド管理を有効にする](active-directory-aadconnect.md)
-- [多要素認証とは](multi-factor-authentication.md)
-- [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
-- [Password Management のデプロイとユーザー トレーニング](active-directory-passwords-best-practices.md)
-- [クラウド上のさまざまな SaaS アプリケーションへのシングル サインオンとアクセスの管理](https://msdn.microsoft.com/library/azure/dn308590.aspx) 
-- [オンプレミスのアプリケーションへのリモート アクセスのセキュリティ保護](https://msdn.microsoft.com/library/azure/dn768219.aspx)
-- [セルフサービス アクセスの管理](https://msdn.microsoft.com/library/azure/dn641267.aspx) 
-- [Cloud App Discovery](https://msdn.microsoft.com/library/azure/mt143581.aspx)
-- [デバイスの正常性、ユーザーの場所、ID に基づくアクセス制御](https://msdn.microsoft.com/library/azure/dn906873.aspx)
-- [クラウドを利用したオンプレミス ID システムの強化と監視](https://msdn.microsoft.com/library/azure/dn906722.aspx)
-- [標準に基づく機能豊富な開発者向けプラットフォーム](https://msdn.microsoft.com/library/azure/ff800682.aspx)
 
-<!---HONumber=August15_HO6-->
+- [多要素認証とは](multi-factor-authentication.md)
+
+- [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
+
+- [Azure AD レポートの概要](active-directory-reporting-getting-started.md)
+
+- [任意の場所からのパスワードの管理](articles/active-directory-passwords.md)
+
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+
+- [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
+
+- [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)
+
+- [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
+
+- [Microsoft Azure Active Directory ライセンスとは](active-directory-licensing-what-is.md)
+
+- [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
+
+<!---HONumber=August15_HO7-->

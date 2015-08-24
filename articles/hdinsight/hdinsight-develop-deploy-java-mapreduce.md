@@ -220,14 +220,14 @@ HDInsight Emulator での MapReduce ジョブのテストには次の手順が�
 
 このチュートリアルでは、次の HDFS フォルダー構造を使用します。
 
-<table border="1">
-<tr><td>フォルダー</td><td>注</td></tr>
-<tr><td>/WordCount</td><td>ワード カウント プロジェクトのルート フォルダー。</td></tr>
-<tr><td>/WordCount/Apps</td><td>mapper と reducer の実行可能ファイルのフォルダー。</td></tr>
-<tr><td>/WordCount/Input</td><td>MapReduce のソース ファイル フォルダー。</td></tr>
-<tr><td>/WordCount/Output</td><td>MapReduce の出力ファイル フォルダー。</td></tr>
-<tr><td>/WordCount/MRStatusOutput</td><td>ジョブの出力フォルダー。</td></tr>
-</table>
+フォルダー|注
+---|---
+/WordCount|ワード カウント プロジェクトのルート フォルダー。 
+/WordCount/Apps|mapper と reducer の実行可能ファイルのフォルダー。
+/WordCount/Input|MapReduce のソース ファイル フォルダー。
+/WordCount/Output|MapReduce の出力ファイル フォルダー。
+/WordCount/MRStatusOutput|ジョブの出力フォルダー。
+
 
 このチュートリアルでは、%hadoop\_home% ディレクトリにある .txt ファイルをデータ ファイルとして使用します。
 
@@ -610,4 +610,4 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

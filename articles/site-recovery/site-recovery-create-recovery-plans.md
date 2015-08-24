@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="05/14/2015" 
+	ms.date="08/05/2015" 
 	ms.author="raynew"/>
 
 # 復旧計画の作成
@@ -124,4 +124,4 @@ VMM ソース サイトが存在する場合、スクリプトをその VMM サ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

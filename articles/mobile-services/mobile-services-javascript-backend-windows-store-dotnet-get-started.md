@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Windows ストア アプリ向け Mobile Services の使用 | モバイル デベロッパー センター"
+	pageTitle="Windows ストア アプリ向け Mobile Services の使用 | Microsoft Azure"
 	description="このチュートリアルでは、C# または JavaScript で Windows ストア用の開発を行う場合に Azure Mobile Services を使用する方法を示します。"
 	services="mobile-services"
 	documentationCenter="windows"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="04/24/2015"
+	ms.date="08/08/2015"
 	ms.author="glenga"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
@@ -103,4 +103,4 @@
 [Get started with data in Mobile Services using Visual Studio 2012]: ../mobile-services-windows-store-dotnet-get-started-data-vs2012.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

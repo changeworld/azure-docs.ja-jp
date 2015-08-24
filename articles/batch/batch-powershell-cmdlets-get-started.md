@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="powershell"
    ms.workload="big-compute"
-   ms.date="07/08/2015"
+   ms.date="08/07/2015"
    ms.author="danlep"/>
 
 # Azure Batch PowerShell コマンドレットの使用
@@ -23,7 +23,7 @@
 
 ## 前提条件
 
-* **Azure PowerShell** - 前提条件、ダウンロード手順、インストール手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。Batch コマンドレットは、0.8.10 以降のバージョンで導入されました。
+* **Azure PowerShell** - 前提条件、ダウンロード手順、インストール手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。Batch コマンドレットは、0.8.10 以降のバージョンで導入されました。Batch コマンドレットは、バージョン 0.9.6 で一般公開されている API を使用するように更新されました。
 
 ## Batch コマンドレットを使用する
 
@@ -112,24 +112,24 @@ Get-AzureBatchPool -BatchContext $context
 ```
 ### OData フィルターを使用する
 
-**Filter** パラメーターを使用して OData フィルターを指定すると、関心のあるオブジェクトのみを検索できます。次の例では、"myPool" で始まる名前のすべてのプールを検索できます。
+**Filter** パラメーターを使用して OData フィルターを指定すると、関心のあるオブジェクトのみを検索できます。たとえば、ID が "myPool" で始まるすべてのプールを検索できます。
 
 ```
-$filter = "startswith(name,'myPool')"
+$filter = "startswith(id,'myPool')"
 Get-AzureBatchPool -Filter $filter -BatchContext $context
 ```
 
 このメソッドは、ローカルのパイプラインで “Where-Object” を使用するほど柔軟ではありません。ただし、クエリは Batch サービスに直接送信されるため、すべてのフィルター処理がサーバー側で行われ、インターネットの帯域幅を節約できます。
 
-### Name パラメーターを使用する
+### ID パラメーターの使用
 
-OData フィルターに代わる方法は、**Name** パラメーターを使用することです。"myPool" という名前の特定のプールを照会するには:
-
-```
-Get-AzureBatchPool -Name "myPool" -BatchContext $context
+OData フィルターに代わる方法は、**ID** パラメーターを使用することです。"myPool" という ID の特定のプールを照会するには:
 
 ```
-**Name** パラメーターは、完全名の検索のみをサポートし、ワイルドカードや OData 形式のフィルターはサポートしません。
+Get-AzureBatchPool -Id "myPool" -BatchContext $context
+
+```
+**ID** パラメーターは、完全 ID の検索のみをサポートし、ワイルドカードや OData 形式のフィルターはサポートしません。
 
 ### パイプラインを使用する
 
@@ -156,4 +156,4 @@ Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 * [Azure Batch コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)
 * [効率的なリスト クエリ](batch-efficient-list-queries.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

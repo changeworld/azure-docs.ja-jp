@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="05/04/2015"
+	ms.date="08/05/2015"
 	ms.author="raynew"/>
 
 #  単一の VMM サーバーを使用した保護の設定
@@ -100,4 +100,4 @@ VMM を高可用性にするために、Windows フェールオーバー クラ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

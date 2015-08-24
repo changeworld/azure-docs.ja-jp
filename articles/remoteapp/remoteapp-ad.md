@@ -108,4 +108,4 @@ RemoteApp は、オンプレミスの Active Directory に 2 つのオブジェ�
 ここで Azure Directory 同期ツールを起動し、最初のプロンプトに対して ****myAzureSyncUser@mydomain.com** 資格情報 (Microsoft Azure Active Directory 管理者資格情報) を、2 番目のプロンプトに対して ****myDomainSyncUser@mydomain.com** を使用します。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

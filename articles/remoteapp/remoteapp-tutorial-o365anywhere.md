@@ -10,14 +10,14 @@
 <tags
    ms.service="remoteapp"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="07/07/2015"
+   ms.date="08/12/2015"
    ms.author="guscatal;elizapo"/>
 
 
-# どのデバイスでも同じ Office 365 のエクスペリエンスを得るには
+# Azure RemoteApp を使用して、どのデバイスでも同じ Office 365 のエクスペリエンスを得るには
 
 この記事では、会社内の任意のデバイスで Office 365 をデプロイする方法を説明します。ユーザーには、Android、Apple、Windows のいずれからでも、同じ機能と UI 操作が提供されます。
 
@@ -64,4 +64,4 @@
 ![PowerPoint](https://raw.githubusercontent.com/guscatalano/azure-content/master/articles/media/remoteapp-tutorial-o365anywhere/11-pp.PNG)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

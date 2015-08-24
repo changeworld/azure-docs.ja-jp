@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="HDInsight での Apache Spark の概要 |Azure" 
+	pageTitle="HDInsight での Apache Spark の概要 | Microsoft Azure" 
 	description="HDInsight での Apache Spark の概要およびアプリケーションで HDInsight の Spark を使用するシナリオです。" 
 	services="hdinsight" 
 	documentationCenter="" 
@@ -66,7 +66,7 @@ HDInsight の Apache Spark では、データは Azure BLOB に格納されま�
 
 [チュートリアルを見る](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 
-Apache Spark には、Spark を基にして作成された機械学習ライブラリである [MLlib](http://spark.apache.org/mllib/) が付属しています。さらに、HDInsight の Spark には、機械学習用のさまざまなパッケージを含む Python ディストリビューションである Anaconda も含まれています。これと Jupyter Notebook の組み込みサポートを組み合わせることで、機械学習アプリケーションを作成するための最高の環境が提供されます。
+Apache Spark には、Spark を基にして作成された機械学習ライブラリである [MLlib](http://spark.apache.org/mllib/) が付属しています。さらに、HDInsight の Spark には、機械学習用のさまざまなパッケージを含む Python ディストリビューションである Anaconda も含まれています。これと Jupyter Notebook の組み込みサポートを組み合わせることで、Machine Learning アプリケーションを作成するための最高の環境が提供されます。
 
 ### ストリーミングおよびリアルタイムのデータ分析
 
@@ -99,4 +99,4 @@ HDInsight の Spark では、Microsoft Power BI や Tableau などの BI ツー�
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

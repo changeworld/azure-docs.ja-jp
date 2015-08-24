@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="Application Insights を使ってみる" 
-	description="オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
-	services="application-insights" 
+<properties
+	pageTitle="Visual Studio Application Insights を使ってみる | Microsoft Azure"
+	description="オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Visual Studio Application Insights で分析します。"
+	services="application-insights"
     documentationCenter=""
-	authors="alancameronwills" 
+	authors="alancameronwills"
 	manager="douge"/>
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="hero-article" 
-	ms.date="08/04/2015" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.date="08/04/2015"
 	ms.author="awills"/>
 
 # Visual Studio Application Insights を使ってみる
@@ -23,13 +23,13 @@
 
 構成は非常に簡単であり、数分以内で結果を確認できます。
 
-現時点でサポートしているものは次のとおりです。iOS、Android、および Windows アプリ; J2EE および ASP.NET Web アプリケーション、WCF サービス。Web アプリは、Azure 上か、お使いのオンプレミス サーバーで実行できます。JavaScript SDK は任意の Web ページで実行できます。
+現時点では、iOS、Android、Windows アプリ、J2EE と ASP.NET Web アプリケーション、WCF サービスをサポートしています。Web アプリは、Azure 上か、お使いのオンプレミス サーバーで実行できます。JavaScript SDK は任意の Web ページで実行できます。
 
 ## 作業開始
 
-任意の順序でこのマップの左側に示すエントリ ポイントを組み合わせて開始します。適切なパスを選択します。
+次の図に示すエントリ ポイントを、任意の順序で自由に組み合わせて開始します。適切なパスを選択します。
 
-Application Insights は SDK をアプリに追加することで動作し、テレメトリを [Azure ポータル](http://portal.azure.com)に送信します。サポートされているプラットフォーム、言語、および IDE の多様な組み合わせに対応してさまざまな SDK が用意されています。
+Application Insights は SDK をアプリに追加することで動作し、テレメトリを [Azure ポータル](http://portal.azure.com)に送信します。サポートされているプラットフォーム、言語、IDE の多様な組み合わせに対応してさまざまな SDK が用意されています。
 
 [Microsoft Azure](http://azure.com) のアカウントが必要になります。既にお持ちの組織のグループ アカウントにアクセスすることも、従量課金アカウントを取得することもできます。Application Insights には Free レベルが用意されているため、アプリの人気が出るまでお支払いいただく必要はありません。「[料金のページ](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
@@ -48,7 +48,7 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 * 質問および問題点:
  * [トラブルシューティング][qna]
- * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-jp/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
@@ -72,6 +72,4 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 [qna]: app-insights-troubleshoot-faq.md
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

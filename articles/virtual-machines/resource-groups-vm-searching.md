@@ -135,6 +135,13 @@
     
 これで、使用するイメージを正確に選択できます。検出した URN 情報を使用して vm を素早く作成する方法や、その URN 情報のあるテンプレートを使用する方法については、「[Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
 
+### ビデオ チュートリアル
+
+このビデオでは、CLI を使用した上記の手順を説明します。
+
+[AZURE.VIDEO resource-groups-vm-searching-cli]
+
+
 ## PowerShell
 
 Azure リソース マネージャーを使用して新しいバーチャル マシンを作成するとき、場合によっては、以下のイメージ プロパティの組み合わせによりイメージを指定する必要があります。
@@ -214,6 +221,12 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 
 この一覧から選択した SKU の名前をコピーすれば、**Set-AzureVMSourceImage** PowerShell コマンドレットに必要なすべての情報や、イメージの発行元、プラン、および SKU を指定する必要のあるリソース グループ テンプレート ファイルに必要なすべての情報が得られます。
 
+### ビデオ チュートリアル
+
+このビデオでは、PowerShell を使用した上記の手順を説明します。
+
+[AZURE.VIDEO resource-groups-vm-searching-posh]
+
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
@@ -227,4 +240,4 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 [msn]: http://search.msn.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

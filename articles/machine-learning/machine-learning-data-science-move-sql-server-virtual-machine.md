@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure で SQL Server にデータを移動する| Microsoft Azure" 
-	description="Azure で SQL Server にデータを移動する" 
+	pageTitle="Azure Virtual Machine 上の SQL Server にデータを移動する| Azure" 
+	description="フラット ファイルまたはオンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動する" 
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="msolhab" 
@@ -13,24 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/04/2015" 
-	ms.author="fashah;garye;mohabib;bradsev" />
+	ms.date="08/10/2015" 
+	ms.author="fashah;mohabib;bradsev" />
 
-#Azure で SQL Server にデータを移動する
+# Azure Virtual Machine 上の SQL Server にデータを移動する
 
-このドキュメントでは、フラット ファイル (csv/tsv) またはオンプレミスの SQL Server から、Azure の SQL Server へのデータの移動について説明します。このタスクは、Azure Machine Learning が提供する Advanced Analytics Process and Technology (ADAPT) の一部です。
+このドキュメントでは、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure Virtual Machine 上の SQL Server にデータを移動するためのオプションについて説明します。クラウドにデータを移動するこれらのタスクは、Azure Machine Learning が提供する Advanced Analytics Process and Technology (ADAPT) の一部です。
 
+Machine Learning 用に Azure SQL データベースにデータを移動するためのオプションに関する説明は、「[Azure Machine Learning 用に Azure SQL データベースにデータを移動する](machine-learning-data-science-move-sql-azure.md)」を参照してください。
 
-<table>
+次の表は、Azure Virtual Machine 上の SQL Server にデータを移動するためのオプションをまとめたものです。<table>
 
 <tr>
 <td><b>ソース</b></td>
-<td colspan="2" align="center"><b>移動先</b></td>
-</tr>
-
-<tr>
-  <td></td>
-  <td><b>Azure 上の SQL Server VM</b></td>
+<td colspan="2" align="center"><b>移動先: Azure VM 上の SQL Server</b></td>
 </tr>
 
 <tr>
@@ -56,17 +52,16 @@
 > [AZURE.TIP]別の方法として、[Azure Data Factory](https://azure.microsoft.com/ja-jp/services/data-factory/) を使用して、データを Azure の SQL Server VM に移動するパイプラインの作成とスケジュール設定を実行できます。詳細については、「[Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)](../data-factory/data-factory-copy-activity.md)」を参照してください。
 
 
-## <a name="sqlonazurevm"></a>Azure の SQL Server VM へのデータの移動
+## <a name="prereqs"></a>前提条件
+このチュートリアルでは、以下があることを前提としています。
 
-このセクションでは、Azure の SQL Server VM にデータを移動するプロセスについて説明します。SQL Server VM をセットアップしていない場合は、「[Azure SQL Server 仮想マシンを高度な分析用の IPython Notebook サーバーとしてセットアップする](machine-learning-data-science-setup-sql-server-virtual-machine.md)」の説明に従って、高度な分析用の新しい SQL Server 仮想マシンをプロビジョニングします。
-
-このドキュメントでは、次のデータ ソースからデータを移動する方法について説明します。
-  
-1. [フラット ファイルから](#filesource_to_sqlonazurevm) 
-2. [オンプレミスの SQL Server から](#sqlonprem_to_sqlonazurevm)
+* **Azure サブスクリプション**。サブスクリプションがない場合でも、[無料評価版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* **Azure ストレージ アカウント**。このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+* **Azure VM 上に SQL Server** がプロビジョニングされていること。手順については、「[高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](machine-learning-data-science-setup-sql-server-virtual-machine.md)」を参照してください。
+* **Azure PowerShell** がローカルにインストールされ構成されていること。手順については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
 
-### <a name="filesource_to_sqlonazurevm"></a>ファイル ソース
+## <a name="filesource_to_sqlonazurevm"></a>フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する
 
 データがフラット ファイル (行と列の形式で配置されている) に存在する場合は、次の方法を使用して Azure の SQL Server VM にデータを移動できます。
 
@@ -102,7 +97,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 
 > **BCP 挿入の最適化** こうした挿入を最適化するには、「[一括インポートを最適化するためのガイドライン](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx)」の記事を参照してください。
 
-#### <a name="insert-tables-bulkquery-parallel"></a>高速データ移動用の挿入の並列処理
+### <a name="insert-tables-bulkquery-parallel"></a>高速データ移動用の挿入の並列処理
 
 移動するデータのサイズが大きい場合は、PowerShell スクリプトで複数の BCP コマンドを並行して同時に実行することによって、高速化できます。
 
@@ -176,7 +171,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 - SQL Server データ ツールの詳細については、「[Microsoft SQL Server データ ツール](https://msdn.microsoft.com/data/tools.aspx)」を参照してください。  
 - インポート/エクスポート ウィザードの詳細については、「[SQL Server のインポートおよびエクスポート ウィザード](https://msdn.microsoft.com/library/ms141209.aspx)」を参照してください。
 
-### <a name="sqlonprem_to_sqlonazurevm"></a>オンプレミスの SQL Server からのデータの移動
+## <a name="sqlonprem_to_sqlonazurevm"></a>オンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動する
 
 データは、オンプレミスの SQL Server から次のように移動できます。
 
@@ -186,7 +181,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 
 それぞれの方法について以下で説明します。
 
-#### <a name="export-flat-file"></a>フラット ファイルへのエクスポート
+### <a name="export-flat-file"></a>フラット ファイルへのエクスポート
 
 [ここ](https://msdn.microsoft.com/library/ms175937.aspx)で説明されているように、さまざまな方法を使用してオンプレミスの SQL Server からデータを一括エクスポートできます。このドキュメントでは、一例として一括コピー プログラム (BCP) について説明します。データをフラット ファイルにエクスポートした後は、一括インポートを使用して別の SQL Server にそのデータをインポートできます。
 
@@ -209,13 +204,13 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 	
 4. 「[ファイル ソースからのデータの移動](#filesource_to_sqlonazurevm)」セクションで説明されているいずれかの方法を使用して、フラット ファイルのデータを SQL Server に移動します。
 
-#### <a name="sql-migration">SQL Database 移行ウィザード</a>
+### <a name="sql-migration">SQL Database 移行ウィザード</a>
 
 [SQL Server データベース移行ウィザード](http://sqlazuremw.codeplex.com/)は、2 つの SQL server インスタンス間でデータを移動するための使いやすい方法を提供します。これにより、ユーザーは、ソースと移動先テーブルの間のデータ スキーマをマップし、列のタイプおよびその他のさまざまな機能を選択できます。これは、内部で一括コピー (BCP) を使用します。次に、SQL データベースの移行ウィザードのようこそ画面のスクリーン ショットを示します。
 
 ![SQL Server 移行ウィザード][2]
 
-#### <a name="sql-backup"></a>データベースのバックアップと復元
+### <a name="sql-backup"></a>データベースのバックアップと復元
 
 SQL Server は以下のものをサポートします。
 
@@ -232,4 +227,4 @@ SQL Server は以下のものをサポートします。
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

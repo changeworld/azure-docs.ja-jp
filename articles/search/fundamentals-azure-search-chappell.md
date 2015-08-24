@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Search | Azure" 
+	pageTitle="Azure Search の概要 | Microsoft Azure" 
 	description="Azure Search がどのように多機能な検索アプリケーションの構築に役立つかについて説明します。" 
 	editor="monicar" 
 	manager="mblythe" 
@@ -42,4 +42,4 @@
 * <a href="http://go.microsoft.com/fwlink/p/?LinkId=522547" target="_blank">「Introducing Azure Search (Azure Search の概要)」 (PDF)</a>
 * <a href="http://go.microsoft.com/fwlink/p/?LinkId=529011" target="_blank">Azure Search の概要に関するドキュメント (Microsoft Word)</a> 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

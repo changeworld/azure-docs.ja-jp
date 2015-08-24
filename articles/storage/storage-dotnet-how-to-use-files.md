@@ -225,11 +225,11 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 
 ## ファイル共有の最大サイズの設定
 
-Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ギガバイトで共有のクォータ (つまり、最大サイズ) を設定できます。共有のクォータを設定することにより、共有に格納するファイルの合計サイズを制限できます。
+Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ギガバイトでファイル共有のクォータ (つまり、最大サイズ) を設定できます。また、共有に現在格納されているデータの量も確認できます。
 
-共有上のファイルの合計サイズが共有に設定されたクォータを超過すると、クライアントは既存ファイルのサイズを増やせなくなったり、空以外の新しいファイルを作成できなくなったりします。
+共有のクォータを設定することにより、共有に格納するファイルの合計サイズを制限できます。共有上のファイルの合計サイズが共有に設定されたクォータを超過すると、クライアントは既存ファイルのサイズを増やせなくなったり、新しいファイルを作成できなくなったりします。ただし、これらのファイルが空である場合は除きます。
 
-以下の例は、既存のファイル共有にクォータを設定する方法を示してます。
+次の例では、共有の現在の使用状況を確認する方法と、共有のクォータを設定する方法を示します。
 
     //Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -244,12 +244,20 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
     //Ensure that the share exists.
     if (share.Exists())
     {
-		//Specify the maximum size of the share, in GB.
-	    share.Properties.Quota = 100;
-	    share.SetProperties();
-	}
+        //Check current usage stats for the share.
+		//Note that the ShareStats object is part of the protocol layer for the File service.
+        Microsoft.WindowsAzure.Storage.File.Protocol.ShareStats stats = share.GetStats();
+        Console.WriteLine("Current share usage: {0} GB", stats.Usage.ToString());
 
-共有の既存クォータの値を取得するには、**FetchAttributes()** メソッドを呼び出して、共有のプロパティを取得します。
+        //Specify the maximum size of the share, in GB.
+        //This line sets the quota to be 10 GB greater than the current usage of the share.
+        share.Properties.Quota = 10 + stats.Usage;
+        share.SetProperties();
+
+        //Now check the quota for the share. Call FetchAttributes() to populate the share's properties. 
+        share.FetchAttributes();
+        Console.WriteLine("Current share quota: {0} GB", share.Properties.Quota);
+    }
 
 ## ファイルまたはファイル共有の共有アクセス署名の生成
 
@@ -404,7 +412,7 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
 
 ## Linux でのファイル ストレージの使用
 
-Linux からファイル共有を作成および管理するには、Azure CLI を使用します。ファイル ストレージでの Azure CLI の使用の詳細については、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md#create-and-manage-file-shares)」をご覧ください。
+Linux からファイル共有を作成および管理するには、Azure CLI を使用します。ファイル ストレージでの Azure CLI の使用方法の詳細については、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md#create-and-manage-file-shares)」をご覧ください。
 
 Linux を実行する仮想マシンから Azure ファイル共有をマウントできます。Azure 仮想マシンを作成するときに、最新バージョンの Ubuntu など、Azure イメージ ギャラリーから SMB 2.1 をサポートする Linux イメージを指定できます。SMB 2.1 をサポートするどの Linux ディストリビューションでも Azure File 共有をマウントできます。
 
@@ -428,4 +436,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Service Bus - Azure の基礎" 
+	pageTitle="Azure Service Bus | Microsoft Azure" 
 	description="Service Bus を使用して Azure アプリケーションを別のソフトウェアに接続するさまざまな方法を紹介します。" 
 	services="service-bus" 
 	documentationCenter=".net" 
@@ -130,4 +130,4 @@ Event Hubs は、毎秒数百万件の処理が可能な高度にスケーラブ
 [3]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [4]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_04_relay.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

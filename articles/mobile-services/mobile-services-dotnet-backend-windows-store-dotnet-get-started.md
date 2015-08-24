@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Windows ユニバーサル アプリ向けの Mobile Services の使用 | モバイル デベロッパー センター"
+	pageTitle="Windows ユニバーサル アプリ向けの Mobile Services の使用 | Microsoft Azure"
 	description="このチュートリアルでは、ユニバーサル Windows を C# で開発するための Azure Mobile Services の使用方法を示します。"
 	services="mobile-services"
 	documentationCenter="windows"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article" 
-	ms.date="05/03/2015"
+	ms.date="08/08/2015"
 	ms.author="glenga"/>
 
 
@@ -126,4 +126,4 @@
 [Mobile Services .NET バックエンドのトラブルシューティング]: mobile-services-dotnet-backend-how-to-troubleshoot.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

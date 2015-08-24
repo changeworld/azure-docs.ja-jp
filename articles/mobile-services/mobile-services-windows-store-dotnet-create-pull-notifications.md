@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="プル通知をサポートするカスタム API を定義する - Azure Mobile Services" 
+	pageTitle="プル通知をサポートするカスタム API の定義 | Microsoft Azure" 
 	description="Azure Mobile Services を使用する Windows ストア アプリの定期的な通知をサポートするカスタム API の定義方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -13,14 +13,10 @@
 	ms.tgt_pltfrm="windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/14/2015" 
+	ms.date="08/08/2015" 
 	ms.author="glenga"/>
 
 # 定期的な通知をサポートするカスタム API を定義します。
-
-<div class="dev-center-tutorial-selector"> 
-	<a href="/documentation/articles/mobile-services-windows-store-dotnet-create-pull-notifications/" title="Windows ストア C#" class="current">Windows ストア C#</a><a href="/documentation/articles/mobile-services-windows-store-javascript-create-pull-notifications/" title="Windows ストア JavaScript">Windows ストア JavaScript</a>
-</div>
 
 このトピックでは、Windows ストア アプリでカスタム API を使用し、定期的な通知をサポートする方法について説明します。定期的な通知が有効になっている場合、Windows が定期的にカスタム API のエンドポイントにアクセスし、返された XML (タイル固有の形式) を使用して、スタート メニューのアプリケーションのタイルを更新します。詳細については、「[定期的な通知の概要]」を参照してください。
 
@@ -167,4 +163,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

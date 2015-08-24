@@ -149,7 +149,7 @@ return $token;
 }
 ```
  
-### C (&) \#35；
+### C (&) #35；
 
 ```
 private static string createToken(string resourceUri, string keyName, string key)
@@ -186,9 +186,9 @@ ContentType: application/atom+xml;type=entry;charset=utf-8
 
 データを Service Bus に送信する前に、発行元から定義済みの **"$cbs"** という AMQP ノードに対して、AMQP メッセージ内で SAS トークンを送信する必要があります。発行元は、AMQP メッセージ内で **"ReplyTo"** フィールドを指定する必要があります。これは、サービスから発行元に対してトークンの検証結果を返信するノードです (発行元とサービス間の簡単な要求と応答のパターン)。この応答ノードは、AMQP 1.0 仕様に記載されているように、"リモート ノードの動的作成" について話すことで "その場で" 作成されます。発行元は SAS トークンが有効であることを確認した後に、次の処理に進み、サービスに対してデータを送信できるようになります。
 
-次の手順は、[AMQP.Net Lite](http://amqpnetlite.codeplex.com) ライブラリを使用して、AMQP トークンで SAS トークンを送信する方法を示しています。この方法は、C&\#35 で開発する公式の Service Bus SDK を使用できない場合に有効です (WinRT、.Net Compact Framework、.Net Micro Framework、Mono など)。当然ながら、HTTP レベル ("Authorization" ヘッダー内で送信される HTTP POST 要求と SAS トークン) の場合と同様に、要求ベースのセキュリティが AMQP レベルでどのように機能するかを理解するためにもこのライブラリは役立ちます。ただし、心配は無用です。 AMQP についてこのように詳細な知識が不要な場合は、公式の Service Bus SDK と処理を自動実行する .NET Framework アプリケーションを利用できます。また、その他すべてのプラットフォームに [Azure SB Lite](http://azuresblite.codeplex.com) ライブラリを使用できます (上記を参照してください)。
+次の手順は、[AMQP.Net Lite](http://amqpnetlite.codeplex.com) ライブラリを使用して、AMQP トークンで SAS トークンを送信する方法を示しています。この方法は、C&#35 で開発する公式の Service Bus SDK を使用できない場合に有効です (WinRT、.Net Compact Framework、.Net Micro Framework、Mono など)。当然ながら、HTTP レベル ("Authorization" ヘッダー内で送信される HTTP POST 要求と SAS トークン) の場合と同様に、要求ベースのセキュリティが AMQP レベルでどのように機能するかを理解するためにもこのライブラリは役立ちます。ただし、心配は無用です。 AMQP についてこのように詳細な知識が不要な場合は、公式の Service Bus SDK と処理を自動実行する .NET Framework アプリケーションを利用できます。また、その他すべてのプラットフォームに [Azure SB Lite](http://azuresblite.codeplex.com) ライブラリを使用できます (上記を参照してください)。
 
-### C (&) \#35；
+### C (&) #35；
 
 ```
 /// <summary>
@@ -251,6 +251,6 @@ AMQP メッセージは、プロパティが多数あり、簡単なメッセー
 
 これらの SAS トークンで実行できる処理の詳細については、[Service Bus REST API リファレンス](https://msdn.microsoft.com/library/azure/hh780717.aspx)を参照してください。
 
-SAS の詳細については、MSDN の [Service Bus 認証](https://msdn.microsoft.com/library/azure/dn155925.aspx)ノードを参照してください。
+SAS の詳細については、MSDN の [Service Bus 認証](https://msdn.microsoft.com/library/azure/dn155925.aspx)ノードを参照してください。[Damir のブログ](http://developers.de/blogs/damir_dobric/archive/2013/10/17/how-to-create-shared-access-signature-for-service-bus.aspx)に、C# および Java スクリプトでの SAS に関する例が他にも紹介されています。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

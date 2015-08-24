@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="既存のユニバーサル Windows ストア アプリへの Mobile Services の追加 | Azure Mobile Services" 
+	pageTitle="既存のユニバーサル Windows ストア アプリへの Mobile Services の追加 | Microsoft Azure" 
 	description="Mobile Services を使用して Windows ストア アプリでデータを活用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -121,4 +121,4 @@
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
   
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/05/2015"
+   ms.date="08/12/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスのコントローラー モジュールを交換する
@@ -180,13 +180,13 @@ Microsoft Azure StorSimple デバイスの両方のコントローラーが故�
 
 2. 親指と人差し指にゆっくり力を加えて、コントローラーのラッチを外します。
 
-    ![コントローラーのラッチを解放する](./media/storsimple-controller-replacement/IC741047.png)
+    ![Releasing controller latch](./media/storsimple-controller-replacement/IC741047.png)
 
     **図 2** コントローラーのラッチを解放する
 
 2. ラッチをハンドルとして使用し、コントローラーをシャーシの外までスライドさせます。
 
-    ![コントローラーをシャーシの外にスライドさせる](./media/storsimple-controller-replacement/IC741048.png)
+    ![Sliding controller out of chassis](./media/storsimple-controller-replacement/IC741048.png)
 
     **図 3** コントローラーをシャーシの外までスライドさせる
 
@@ -200,13 +200,13 @@ Microsoft Azure StorSimple デバイスの両方のコントローラーが故�
 
 2. ラッチを完全に解放した状態で、コントローラー モジュールをシャーシの中にスライドします。
 
-    ![コントローラーをシャーシの中にスライドさせる](./media/storsimple-controller-replacement/IC741053.png)
+    ![Sliding controller into chassis](./media/storsimple-controller-replacement/IC741053.png)
 
     **図 4** シャーシ内にコントローラーをスライドさせる
 
 3. コントローラー モジュールを挿入したら、コントローラー モジュールをシャーシに押しつけながら、ラッチを閉じる操作を開始します。ラッチがはまって所定の位置にコントローラーをガイドします。
 
-    ![コントローラーのラッチを閉じる](./media/storsimple-controller-replacement/IC741054.png)
+    ![Closing controller latch](./media/storsimple-controller-replacement/IC741054.png)
 
     **図 5** コントローラーのラッチを閉じる
 
@@ -232,7 +232,7 @@ Microsoft Azure StorSimple デバイスの両方のコントローラーが故�
 
 管理ポータルで **[デバイス]**、**[メンテナンス]** に移動し、**[コントローラー]** セクションまでスクロールします。ここで、どのコントローラーがアクティブかを確認できます。
 
-![管理ポータルでアクティブなコントローラーを識別する](./media/storsimple-controller-replacement/IC752072.png)
+![Identify active controller in Management Portal](./media/storsimple-controller-replacement/IC752072.png)
 
 **図 6** 管理ポータルでのアクティブなコントローラーの表示
 
@@ -240,7 +240,7 @@ Microsoft Azure StorSimple デバイスの両方のコントローラーが故�
 
 シリアル コンソールでデバイスにアクセスしているときは、バナー メッセージが表示されます。バナー メッセージには、モデル、名前、インストールされているソフトウェアのバージョン、アクセス中のコントローラーの状態などのデバイスの基本情報が含まれます。次の図に、バナー メッセージの例を示します。
 
-![シリアル バナー メッセージ](./media/storsimple-controller-replacement/IC741098.png)
+![Serial banner message](./media/storsimple-controller-replacement/IC741098.png)
 
 **図 7** コントローラー 0 がアクティブと表示されているバナー メッセージ
 
@@ -252,7 +252,7 @@ Microsoft Azure StorSimple デバイスの両方のコントローラーが故�
 
 この LED が点滅している場合、そのコントローラーがアクティブであり、他のコントローラーはスタンバイ モードです。次の図と表を参考にしてください。
 
-![デバイスの主エンクロージャのバックプレーンとデータポート](./media/storsimple-controller-replacement/IC741055.png)
+![Device primary enclosure backplane with dataports](./media/storsimple-controller-replacement/IC741055.png)
 
 **図 8** 主エンクロージャ背面のデータ ポートと監視 LED
 
@@ -266,4 +266,4 @@ Microsoft Azure StorSimple デバイスの両方のコントローラーが故�
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

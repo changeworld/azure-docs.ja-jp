@@ -29,8 +29,8 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
     	"outputs":  [ { "name": "outputtable" } ],
     	"typeProperties":
     	{
-        	"storedProcedureName": “”,
-        	"storedProcedureParameters": “” 
+        	"storedProcedureName": "<name of the stored procedure>",
+        	"storedProcedureParameters":  
         	{
 				"param1": "param1Value"
 				…
@@ -42,7 +42,7 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-name | アクティビティの名前 | はい
+name | アクティビティの名前 | あり
 description | アクティビティの用途を説明するテキストです。 | いいえ
 type | SqlServerStoredProcedure | あり
 inputs | 続行するストアド プロシージャ アクティビティに使用できる状態 (’Ready’ 状態) である必要がある入力。 | いいえ
@@ -72,12 +72,14 @@ Datetime | 対応する ID が生成された日付と時刻
 	    VALUES (newid(), @DateTime)
 	END
 
+> [AZURE.NOTE]パラメーターの**名前**と**大文字と小文字**は (この例では DateTime) は、以下のアクティビティ JSON に指定されたパラメーターのものと一致する必要があります。ストアド プロシージャ定義で、**@** がパラメーターのプレフィックスとして使用されていることを確認します。
+
 Data Factory パイプラインでこのストアド プロシージャを実行するには、以下の手順を実行する必要があります。
 
 1.	[リンク サービス](data-factory-azure-sql-connector.md/#azure-sql-linked-service-properties)を作成して、ストアド プロシージャを実行する Azure SQL データベースの接続文字列を登録します。
 2.	Azure SQL データベースの出力テーブルを示す[データセット](data-factory-azure-sql-connector.md/#azure-sql-dataset-type-properties)を作成します。このデータセット sprocsampleout を呼び出してみましょう。このデータセットは、手順 1 のリンク サービスを参照する必要があります。 
 3.	Azure SQL データベースにストアド プロシージャを作成します。
-4.	SqlServerStoredProcedure アクティビティを使用して次の[パイプライン](data-factory-azure-sql-connector.md/#azure-sql-copy-activity-type-properties)を作成し、Azure SQL データベースのストアド プロシージャを呼び出します。
+4.	SqlServerStoredProcedure アクティビティを使用して次の[パイプライン](data-factory-azure-sql-connector.md/#azure-sql-copy-activity-type-properties)を作成し、Azure SQL Database のストアド プロシージャを呼び出します。
 
 		{
 		    "name": "SprocActivitySamplePipeline",
@@ -86,19 +88,19 @@ Data Factory パイプラインでこのストアド プロシージャを実行
 		        "activities":
 		        [
 		            {
-		             "name": "SprocActivitySample",
-		             "type": " SqlServerStoredProcedure ",
-		             "outputs": [ {"name": "sprocsampleout"} ],
-		             "typeproperties":
-		              {
-		                "storedProcedureName": "sp_sample",
-		        		"storedProcedureParameters": 
-		        		{
-		            	"DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
-		        		}
-				}
-		            }
-		          ]
+		            	"name": "SprocActivitySample",
+		             	"type": " SqlServerStoredProcedure",
+		             	"outputs": [ {"name": "sprocsampleout"} ],
+		             	"typeProperties":
+		              	{
+		                	"storedProcedureName": "sp_sample",
+			        		"storedProcedureParameters": 
+		        			{
+		            			"DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
+		        			}
+						}
+	            	}
+		        ]
 		     }
 		}
 5.	[パイプライン](data-factory-create-pipelines.md)をデプロイします。
@@ -121,9 +123,9 @@ Data Factory パイプラインでこのストアド プロシージャを実行
 	    VALUES (newid(), @DateTime, @Scenario)
 	END
 
-この処理を実行するには、ストアド プロシージャ アクティビティから Scenario パラメーターとその値を渡します。上のサンプルの typeproperties セクションは次のようになります。
+この処理を実行するには、ストアド プロシージャ アクティビティから Scenario パラメーターとその値を渡します。上のサンプルの typeProperties セクションは次のようになります。
 
-	"typeproperties":
+	"typeProperties":
 	{
 		"storedProcedureName": "sp_sample",
 	    "storedProcedureParameters": 
@@ -133,4 +135,4 @@ Data Factory パイプラインでこのストアド プロシージャを実行
 		}
 	}
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

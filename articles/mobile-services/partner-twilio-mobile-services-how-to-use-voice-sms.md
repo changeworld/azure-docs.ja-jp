@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="音声および SMS 機能での Twilio の使用 | モバイル デベロッパー センター" 
+	pageTitle="音声および SMS 機能での Twilio の使用 | Microsoft Azure" 
 	description="Azure Mobile Services で Twilio API を使用して一般的なタスクを実行する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -230,4 +230,4 @@ TwiML 応答を提供する方法をセットアップしたら、次のコー�
 [azure_twilio_howto_php]: /develop/php/how-to-guides/twilio-voice-and-sms-service/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

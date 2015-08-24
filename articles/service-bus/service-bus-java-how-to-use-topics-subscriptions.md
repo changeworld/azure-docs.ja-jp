@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Service Bus トピックの使用方法 (Java) - Azure"
+	pageTitle="Service Bus トピックの使用方法 (Java) | Microsoft Azure"
 	description="Azure での Service Bus のトピックとサブスクリプションの使用方法について学習します。コード サンプルは Java アプリケーション向けに作成されています。"
 	services="service-bus"
 	documentationCenter="java"
@@ -247,4 +247,4 @@ Service Bus トピックに送信されたメッセージは、**BrokeredMessage
   [Service Bus のキュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/hh367516.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

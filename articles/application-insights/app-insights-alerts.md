@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/13/2015" 
+	ms.date="08/12/2015" 
 	ms.author="awills"/>
  
 # Application Insights のアラートの設定
@@ -44,9 +44,11 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 ## アラートの表示
 
-アラートは電子メールで送信されます。
+アラートの状態が非アクティブとアクティブとの間で変化すると、メールが送信されます。
 
-アラートは、操作イベント ログにも表示されます。
+[アラート ルール] ブレードに、各アラートの現在の状態が表示されます。
+
+状態の変更履歴は、操作イベント ログにも表示されます。
 
 ![下部付近の [概要] ブレードで、[過去 1 週間のイベント] をクリックします。](./media/app-insights-alerts/09-alerts.png)
 
@@ -80,4 +82,4 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Media Services REST API の概要 - Azure" 
+	pageTitle="Media Services REST API の概要 | Microsoft Azure" 
 	description="Media Services REST API の概要" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,11 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 
 # Media Services REST API の概要 
+
+[AZURE.INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
 
 Microsoft Azure Media Services は OData ベースの HTTP 要求を受け付けるサービスであり、詳細 JSON または atom+pub で応答が可能です。Media Services は、Azure 設計ガイドラインに準拠しているため、Media Services に接続するときに各クライアントが使用する必要がある必須 HTTP ヘッダーのセットと、使用できる省略可能なヘッダーのセットがあります。次のセクションでは、要求を作成したり Media Services から応答を受信したりするときに使用できるヘッダーと HTTP 動詞について説明します。
 
@@ -43,8 +45,8 @@ MaxDataServiceVersion|小数点|3\.0
 ヘッダー|型|値
 ---|---|---
 Date|RFC 1123 の日付|要求のタイムスタンプ
-Accept|コンテンツの種類|次のような応答に対して要求されるコンテンツの種類があります。<p> -application/json;odata=verbose<p> - application/atom+xml<p> 応答には、blob フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの blob ストリームが含まれます。
-Accept-Encoding|Gzip、デフレート|GZIP および DEFLATE エンコーディング　(該当する場合)。注: 大きなリソースでは、Media Services はこのヘッダーを無視し、圧縮されていないデータを返す場合があります。
+Accept|コンテンツの種類|次のような応答に対して要求されるコンテンツの種類があります。<p> -application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。
+Accept-Encoding|Gzip、deflate|GZIP Encoding および DEFLATE Encoding　(該当する場合)。注: 大きなリソースでは、Media Services はこのヘッダーを無視し、圧縮されていないデータを返す場合があります。
 Accept-Language|"en"、"es" など。|応答の優先言語を指定します。
 Accept-Charset|"UTF-8"　などの文字の種類|既定値は UTF-8 です。
 X-HTTP-Method|HTTP メソッド|PUT や DELETE などの HTTP メソッドをサポートしないクライアントやファイアウォールが、GET 呼び出しを通じてトンネリングされたこれらのメソッドを使用できます。
@@ -97,4 +99,4 @@ Media Services のエンティティを見つけやすくするには、$metadat
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

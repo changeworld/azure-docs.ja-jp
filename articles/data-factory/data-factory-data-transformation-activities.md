@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="データ変換のアクティビティ | Azure Data Factory" 
+	pageTitle="データ変換のアクティビティ | Microsoft Azure" 
 	description="Azure Data Factory サービスを使用してデータを変換、分析する方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -33,4 +33,4 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 
 Data Factory でサポートされているコンピューティングがリンクされたサービスについては、[コンピューティングがリンクされたサービス](data-factory-compute-linked-services.md)に関する記事を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

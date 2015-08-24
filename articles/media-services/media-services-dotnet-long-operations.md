@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 
@@ -186,4 +186,4 @@ Media Services .NET SDK は、要求を送信し、その操作が完了する�
 	Console.WriteLine(channelId);
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

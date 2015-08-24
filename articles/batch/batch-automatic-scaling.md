@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="multiple"
-	ms.date="07/21/2015"
+	ms.date="08/05/2015"
 	ms.author="davidmu"/>
 
 # Azure Batch プール内の計算ノードの自動スケーリング
@@ -23,7 +23,7 @@ Azure Batch プール内の計算ノードの自動スケーリングは、ア�
 
 自動スケーリングがプールで有効になっていて、プールに数式が関連付けられている場合に自動スケーリングが行われます。数式は、アプリケーションの処理に必要な計算ノードの数を決定するために使用されます。自動スケーリングは、プールの作成時に設定したり、既存のプールに後で設定することもできます。自動スケーリングが有効になっていたプールで、数式を更新することもできます。
 
-自動スケーリングを有効にすると、使用可能な計算ノードの数が数式に基づいて 15 分ごとに調整されます。数式は、収集されたサンプルを 5 秒ごとに処理しますが、サンプルが収集されてから数式で使用されるまでに 75 秒の遅延があります。以下で説明する GetSample メソッドを使用する場合は、これらの時間要因を考慮する必要があります。
+自動スケーリングを有効にすると、使用可能な計算ノードの数が数式に基づいて 15 分ごとに調整されます。数式は、収集されたサンプルを定期的に処理しますが、サンプルが収集されてから数式で使用されるまでの間に、遅延が発生します。以下で説明する GetSample メソッドを使用する場合は、このことを考慮する必要があります。
 
 プールに割り当てる前には必ず数式を評価し、自動スケーリングが実行している状態を監視することが重要です。
 
@@ -56,7 +56,7 @@ Azure Batch プール内の計算ノードの自動スケーリングは、ア�
     <td>プールの専用計算ノードの目標数。タスクの実際の使用状況に基づいて値を変更できます。</td>
   </tr>
   <tr>
-    <td>$TVMDeallocationOption</td>
+    <td>$NodeDeallocationOption</td>
     <td>計算ノードがプールから削除されるときに発生するアクション。次のいずれかの値になります。
       <br/>
       <ul>
@@ -115,7 +115,7 @@ Azure Batch プール内の計算ノードの自動スケーリングは、ア�
     <td>送信バイト数</td>
   </tr>
   <tr>
-    <td>$SampleTVMCount</td>
+    <td>$SampleNodeCount</td>
     <td>計算ノードの数</td>
   </tr>
   <tr>
@@ -323,10 +323,6 @@ Azure Batch プール内の計算ノードの自動スケーリングは、ア�
     <td>double val(doubleVec v, double i)</td>
     <td>開始インデックス 0 のベクター v の場所 i にある要素の値。</td>
   </tr>
-  <tr>
-    <td>doubleVec vec(doubleVecList)</td>
-    <td>doubleVecList から 1 つの doubleVec を明示的に作成します。</td>
-  </tr>
 </table>
 
 表に示した一部の関数は、リストを引数として受け入れます。コンマ区切りのリストは、double と doubleVec の任意の組み合わせです。次に例を示します。
@@ -392,7 +388,7 @@ doubleVecList 値は、評価の前に 1 つの doubleVec に変換されます�
     <td><p>CPU 使用率、帯域幅の使用率、メモリ使用量、計算ノードの数に基づきます。上記で説明した次のシステム変数は、プール内の計算ノードを管理するために数式で使用されます。</p>
     <p><ul>
       <li>$TargetDedicated</li>
-      <li>$TVMDeallocationOption</li>
+      <li>$NodeDeallocationOption</li>
     </ul></p>
     <p>次のシステム変数は、ノードのメトリックに基づいて調整を行うために使用されます。</p>
     <p><ul>
@@ -424,7 +420,7 @@ doubleVecList 値は、評価の前に 1 つの doubleVec に変換されます�
       <li>$FailedTasks</li>
       <li>$CurrentDedicated</li></ul></p>
     <p>この例は、サンプルの 70% が過去 15 分間に記録されているかどうかを検出する数式を示しています。記録されていない場合は、前回のサンプルを使用します。アクティブなタスクの数と一致するように計算ノードの数を増やそうとします (最大 3 つ)。プールの MaxTasksPerVM プロパティが 4 に設定されているため、ノード数をアクティブなタスクの数の 4 分の 1 に設定します。また、Deallocation オプションを "taskcompletion" に設定し、タスクが完了するまでコンピューターを保持します。</p>
-    <p><b>$Samples = $ActiveTasks.GetSamplePercent(TimeInterval\_Minute * 15); $Tasks = $Samples &lt; 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval\_Minute * 15))); $Cores = $TargetDedicated * 4; $ExtraVMs = ($Tasks - $Cores) / 4; $TargetVMs = ($TargetDedicated+$ExtraVMs);$TargetDedicated = max(0,min($TargetVMs,3)); $TVMDeallocationOption = taskcompletion;</b></p></td>
+    <p><b>$Samples = $ActiveTasks.GetSamplePercent(TimeInterval\_Minute * 15); $Tasks = $Samples &lt; 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval\_Minute * 15))); $Cores = $TargetDedicated * 4; $ExtraVMs = ($Tasks - $Cores) / 4; $TargetVMs = ($TargetDedicated+$ExtraVMs);$TargetDedicated = max(0,min($TargetVMs,3)); $NodeDeallocationOption = taskcompletion;</b></p></td>
   </tr>
 </table>
 
@@ -476,4 +472,4 @@ targetDedicated パラメーターを使用して指定した数の計算ノー�
 	- [Get AzureBatchRDPFile](https://msdn.microsoft.com/library/mt149851.aspx) – このコマンドレットは、指定した計算ノードから RDP ファイルを取得し、指定したファイルの場所やストリームに保存します。
 2.	一部のアプリケーションは、処理するのに困難な大量のデータを生成します。これを解決する 1 つの方法は、[効率的なリスト クエリ](batch-efficient-list-queries.md)を使用することです。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

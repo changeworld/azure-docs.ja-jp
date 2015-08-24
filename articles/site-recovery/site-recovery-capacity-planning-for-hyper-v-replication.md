@@ -12,7 +12,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="06/01/2015"
+	ms.date="08/05/2015"
 	ms.author="lauraa" />
 
 # Hyper-V レプリケーションの容量計画
@@ -239,4 +239,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 - [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

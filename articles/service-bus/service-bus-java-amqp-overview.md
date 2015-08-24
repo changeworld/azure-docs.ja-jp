@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Service Bus AMQP の概要 (Java) - Azure" 
+	pageTitle="Service Bus AMQP の概要 (Java) | Microsoft Azure" 
 	description="Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。" 
 	services="service-bus" 
 	documentationCenter="java" 
@@ -99,4 +99,4 @@ Service Bus からライブラリを取得して使用する方法の詳細に�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

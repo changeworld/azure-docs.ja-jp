@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Service Bus キューの使用方法 (PHP) - Azure" 
+	pageTitle="Service Bus キューの使用方法 (PHP) | Microsoft Azure" 
 	description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは PHP で記述されています。" 
 	services="service-bus" 
 	documentationCenter="php" 
@@ -213,4 +213,4 @@ Service Bus キューに送信されたメッセージ (および Service Bus �
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

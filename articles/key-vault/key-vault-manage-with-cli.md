@@ -1,5 +1,5 @@
 <properties
-	pageTitle="CLI を使用した Key Vault の管理 | 概要"
+	pageTitle="CLI を使用した Key Vault の管理 | Microsoft Azure"
 	description="このチュートリアルを活用し、CLI を使用した Key Vault での一般的なタスクを自動化します"
 	services="key-vault"
 	documentationCenter=""
@@ -16,7 +16,7 @@
 	ms.author="bruceper"/>
 
 # CLI を使用した Key Vault の管理 #
-Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の料金のページ](../../../../pricing/details/key-vault/)を参照してください。
+Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の価格のページ](../../../../pricing/details/key-vault/)を参照してください。
 
 ## はじめに  
 このチュートリアルを使用すると、Azure Key Vault で、強化されたコンテナー (資格情報コンテナー) を Azure に作成し、暗号化キーやシークレットを Azure に格納して管理できるようになります。ここでは、Azure クロスプラットフォーム コマンドライン インターフェイスを使用して、Azure アプリケーションで使用できるキーまたはパスワードを含む資格情報コンテナーを作成するプロセスについて説明します。アプリケーションがそのキーやパスワードを使用する方法についても説明します。
@@ -252,4 +252,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Key Vault の REST API](https://msdn.microsoft.com/library/azure/dn903609.aspx)」と「[Key Vault C# クライアント API リファレンス](https://msdn.microsoft.com/library/azure/dn903628.aspx)」をご覧ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

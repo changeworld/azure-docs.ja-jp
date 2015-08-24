@@ -62,11 +62,11 @@ BLOB のデータセットは CSV 形式で、3 つの列を含んでいると�
 	        },
 	        "availability": {
 	            "frequency": "Hour",
-	            "interval": 1,
+	            "interval": 1
 	        }
 	    }
 	}
 
 ここでは、データを BLOB から Azure SQL に移動するときに、データ ファクトリはカスタム日付/時刻を持つ Datetime フィールドを含むタイプ変換を、fr-fr カルチャを使用して自動的に実行します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

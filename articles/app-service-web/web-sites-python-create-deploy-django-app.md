@@ -36,7 +36,7 @@ Django Web フレームワークを使用してアプリケーションを作成
 - Python 2.7 または 3.4
 - setuptools、pip、virtualenv (Python 2.7 のみ)
 - Git
-- [Python Tools 2.1 for Visual Studio](optional)
+- [Python Tools 2.1 for Visual Studio] - これはオプションです。
 
 **注**: 現在、TFS 発行は Python プロジェクトではサポートされていません。
 
@@ -53,7 +53,7 @@ Git には、[Git for Windows] または [GitHub for Windows] をお勧めしま
 Python と Git は既にインストールされていると思いますが、Python 2.7 または 3.4 であることをご確認ください。
 
 
-## ポータルでの Web App の作成
+## ポータルでの Web アプリの作成
 
 アプリを作成する最初の手順では、[Azure ポータル](https://portal.azure.com)で Web アプリを作成します。
 
@@ -456,7 +456,7 @@ Django アプリケーションで静的なファイルの収集をスキップ�
 
 実際には、より複雑な設定により、デバッグ モードとリリース モードを切り替え、ホスト名を取得できます。
 
-環境変数は、Azure ポータルの **[構成]** ページの **[アプリケーション設定]** セクションで設定できます。ソースに表示しない値 (接続文字列やパスワードなど) や、Azure とローカル コンピューターで設定を変える値を設定する場合に便利です。`settings.py` では、`os.getenv` を使用して環境変数を照会できます。
+環境変数は、Azure ポータルの **[構成]** ページの **[アプリケーション設定]** セクションで設定できます。ソースに表示しない値 (接続文字列やパスワードなど) や、Azure とローカル コンピューターで設定を変える値を設定する場合に便利です。`settings.py` では、`os.getenv` を使用して環境変数をクエリできます。
 
 
 ## データベースの使用
@@ -484,13 +484,13 @@ Django と Python Tools for Visual Studio の詳細については、次のリ�
 - [Django のドキュメント]
 - [Python Tools for Visual Studio のドキュメント]
 
-SQL データベースと MySQL の詳細については、次のリンクをご覧ください。
+SQL Database と MySQL の詳細については、次のリンクをご覧ください。
 
 - [Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と SQL Database]
 - [Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と MySQL]
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
@@ -515,4 +515,4 @@ SQL データベースと MySQL の詳細については、次のリンクをご
 [Django のドキュメント]: https://www.djangoproject.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

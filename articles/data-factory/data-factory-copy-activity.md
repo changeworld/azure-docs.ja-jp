@@ -247,7 +247,6 @@ Data Factory コマンドレットの詳細については、[コマンドレッ
          
 		New-AzureDataFactoryPipeline -ResourceGroupName ADF –DataFactoryName CopyFactory –File <Filepath>
 
-> [AZURE.NOTE]コピー アクティビティの使用のその他のサンプルについては、「[Examples for using Copy Activity in Azure Data Factory (Azure Data Factory でのコピー アクティビティの使用のその他のサンプル)][copy-activity-examples]」を参照してください。
 
 ## セキュリティ
 このセクションでは、コピー アクティビティでデータ ストアへの安全なアクセスを確立するのに役立つ全般的なセキュリティ ガイドラインとベスト プラクティスを紹介します。
@@ -264,18 +263,15 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 - **コピー アクティビティによるデータ型の処理**。どのような場合にテーブル定義の Structure セクションで指定するデータ型が受け入れられる、または無視されるかを説明します。
 - **SQL シンクのストアド プロシージャの呼び出し**。データの SQL Server または Azure SQL Database へのコピー時に、ユーザーが指定したストアド プロシージャが構成され、呼び出されることがあります。
 
-これらのシナリオの詳細については、記事「[Advanced Scenarios for using the Copy Activity with Azure Data Factory (Azure Data Factory でコピー アクティビティを使用する高度なシナリオ)][copy-activity-advanced]」を参照してください。
 
 ## チュートリアル
 コピー アクティビティを使用して Azure BLOB ストレージから Azure SQL データベースにデータをコピーする方法のチュートリアルは、「[Azure Data Factory を使ってみる][adfgetstarted]」を参照してください。
  
-コピー アクティビティを使用してオンプレミスの SQL Server データベースから Azure BLOB ストレージにデータをコピーする方法のチュートリアルは、「[パイプラインがオンプレミスのデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
+コピー アクティビティを使用してオンプレミスの Azure SQL データベースから Azure BLOB ストレージにデータをコピーする方法のチュートリアルは、「[パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources]」を参照してください。
 
 ## 関連項目
-- [コピー アクティビティ - 例][copy-activity-examples]
 - [ビデオ: Azure Data Factory コピーアクティビティの概要][copy-activity-video]
 - [MSDN ライブラリのコピー アクティビティに関するトピック][msdn-copy-activity]
-- [Advanced Scenarios for using the Copy Activity with Azure Data Factory (Azure Data Factory でコピー アクティビティを使用する高度なシナリオ)][copy-activity-advanced]
 
 [msdn-copy-activity]: https://msdn.microsoft.com/library/dn835035.aspx
 [msdn-linkedservices]: https://msdn.microsoft.com/library/dn834986.aspx
@@ -288,9 +284,7 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 
 [adfgetstarted]: data-factory-get-started.md
 [use-onpremises-datasources]: data-factory-use-onpremises-datasources.md
-[copy-activity-examples]: data-factory-copy-activity-examples.md
 
-[copy-activity-advanced]: data-factory-copy-activity-advanced.md
 [json-script-reference]: http://go.microsoft.com/fwlink/?LinkId=516971
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
 
@@ -299,4 +293,4 @@ HTTPS 接続を提供するデータ ストアの場合、ネットワークで�
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity/ColumnMappingSample2.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

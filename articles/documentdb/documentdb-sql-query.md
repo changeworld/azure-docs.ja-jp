@@ -3,7 +3,7 @@
 	description="NoSQL ドキュメント データベース サービスである DocumentDB は、階層型の JSON ドキュメントに対し、SQL に似た文法を使用することによって行うクエリをサポートしています。明確なスキーマが不要であり、セカンダリ インデックスを作成する必要もありません。" 
 	services="documentdb" 
 	documentationCenter="" 
-	authors="mimig1" 
+	authors="arramac" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/16/2015" 
+	ms.date="08/13/2015" 
 	ms.author="mimig"/>
 
-#DocumentDB のクエリ
+# DocumentDB のクエリ
 Microsoft Azure DocumentDB は、階層型の JSON ドキュメントに対する、SQL (Structured Query Language) を使ったドキュメント クエリをサポートしています。DocumentDB は完全にスキーマフリーです。データベース エンジン内で JSON データ モデルを直接処理することで、明示的なスキーマやセカンダリ インデックスの作成を必要とせずに、JSON ドキュメントの自動インデックス作成を実現しています。
 
 マイクロソフトは、以下の 2 点を目標に DocumentDB 向けのクエリ言語を設計しました。
 
--	<strong>SQL を活用する</strong> – 新しいクエリ言語を開発するのではなく、SQL を活用しました。SQL は最も幅広く普及したクエリ言語の 1 つです。DocumentDB SQL は、JSON ドキュメントに対するリッチ クエリを、正式なプログラミング モデルを通して実現します。
--	<strong>SQL を拡張する</strong> – マイクロソフトでは、データベース エンジン内で JavaScript を直接実行できる JSON ドキュメント データベースを設計するため、JavaScript のプログラミング モデルに基づいてマイクロソフトのクエリ言語を開発することにしました。DocumentDB SQL は、JavaScript の型システム、式評価、関数呼び出しを基盤としています。これによって、リレーショナル プロジェクション、JSON ドキュメント間の階層型ナビゲーション、自己結合、完全に JavaScript で記述されたユーザー定義関数 (UDF) の呼び出しなどに対して、自然なプログラミング モデルが提供されます。 
+-	**SQL を活用する** – 新しいクエリ言語を開発するのではなく、SQL を活用しました。SQL は最も幅広く普及したクエリ言語の 1 つです。DocumentDB SQL は、JSON ドキュメントに対するリッチ クエリを、正式なプログラミング モデルを通して実現します。
+-	**SQL を拡張する** – マイクロソフトでは、データベース エンジン内で JavaScript を直接実行できる JSON ドキュメント データベースを設計するため、JavaScript のプログラミング モデルに基づいてマイクロソフトのクエリ言語を開発することにしました。DocumentDB SQL は、JavaScript の型システム、式評価、関数呼び出しを基盤としています。これによって、リレーショナル プロジェクション、JSON ドキュメント間の階層型ナビゲーション、自己結合、完全に JavaScript で記述されたユーザー定義関数 (UDF) の呼び出しなどに対して、自然なプログラミング モデルが提供されます。 
 
 マイクロソフトでは、アプリケーションとデータベース間の不整合を削減し、開発者の生産性を高めるには、こうした方針が鍵になると考えています。
 
@@ -32,7 +32,7 @@ Microsoft Azure DocumentDB は、階層型の JSON ドキュメントに対す�
 
 次に、この記事に戻り、いくつかの簡単な JSON ドキュメントおよびクエリについて理解していきます。
 
-## Getting Started (概要)
+## 使用の開始
 DocumentDB SQL の動作を確認するため、最初にシンプルな JSON ドキュメントを見てみましょう。その後このドキュメントに対して実施するシンプルなクエリについて説明します。これら 2 つの JSON ドキュメントは、2 つの家族に関するドキュメントです。DocumentDB では、スキーマやセカンダリ インデックスを明示的に作成する必要がありません。必要なことは、JSON ドキュメントを DocumentDB コレクションに挿入した後、クエリを実行するだけです。以下は、Andersen 一家に関するシンプルな JSON ドキュメントです。両親、子供 (および子供のペット)、住所、登録に関する情報が記載されています。ドキュメントには、文字列、数値、ブール値、配列、入れ子になったプロパティがあります。
 
 **ドキュメント**
@@ -161,7 +161,7 @@ DocumentDB SQL の重要な項目について理解するため、このデー�
 -	DocumentDB は厳密な JSON ドキュメントだけをサポートします。つまり、型システムおよび式は、JSON 型のみを扱うように制限されます。詳細については、[JSON の仕様に関するページ](http://www.json.org/)を参照してください。  
 -	DocumentDB コレクションは、スキーマフリーの JSON ドキュメントのコンテナーです。コレクションにあるドキュメント内およびドキュメント間のデータ エンティティの関係はコンテインメントによって暗黙的にキャプチャされます。プライマリ キーと外部キーの関係ではキャプチャされません。これは、この記事で後述するドキュメント間結合の点で注意すべき要素です。
 
-##DocumentDB のインデックス作成
+## DocumentDB のインデックス作成
 
 DocumentDB SQL の文法について詳しく説明する前に、DocumentDB のインデックス作成に関する設計について説明します。
 
@@ -182,7 +182,7 @@ DocumentDB SQL の文法について詳しく説明する前に、DocumentDB の
 コレクションのインデックス作成ポリシーの構成方法については、MSDN の [DocumentDB のサンプル](https://github.com/Azure/azure-documentdb-net)を参照してください。以降は、DocumentDB SQL の文法の詳細を説明していきます。
 
 
-##DocumentDB クエリの基礎
+## DocumentDB クエリの基礎
 すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。通常は、各クエリで FROM 句のソースが列挙されます。次に WHERE 句のフィルターがソースに適用され、JSON ドキュメントのサブセットが取得されます。最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。
     
     SELECT <select_list> 
@@ -190,7 +190,7 @@ DocumentDB SQL の文法について詳しく説明する前に、DocumentDB の
     [WHERE <filter_condition>]    
 
 
-##FROM 句
+## FROM 句
 `FROM <from_specification>` 句はオプションです (ソースがクエリの後半でフィルター処理またはプロジェクションされる場合を除く)。この句の目的は、クエリが動作する対象のデータ ソースを指定することです。通常はコレクション全体がソースになりますが、コレクションのサブセットを指定することもできます。
 
 `SELECT * FROM Families` というクエリは、Families コレクション全体がソースとなり、このソースを対象に列挙が行われることを示します。特別な識別子 ROOT を使うと、コレクション名の代わりにコレクションを表現することができます。クエリごとに以下のバインド規則が強制されます。
@@ -201,7 +201,7 @@ DocumentDB SQL の文法について詳しく説明する前に、DocumentDB の
 
 -	参照先になる必要があるすべてのプロパティは完全修飾する必要があります。準拠する厳密なスキーマが存在しない場合、これが強制されることによって曖昧なバインドが回避されます。このため、`SELECT id FROM Families f` は無効な構文となります。これは、プロパティ `id` がバインドされていないためです。
 	
-###サブドキュメント
+### サブドキュメント
 ソースはさらに小さいサブセットに限定することができます。たとえば各ドキュメントのサブツリーだけを列挙する場合、以下の例のようにサブルートをソースにすることができます。
 
 **クエリ**
@@ -255,7 +255,7 @@ DocumentDB SQL の文法について詳しく説明する前に、DocumentDB の
 	]
 
 
-##WHERE 句
+## WHERE 句
 WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句は、ソースが提供する JSON ドキュメントを結果に含めるために満たす必要がある条件を指定します。結果の対象となるには、指定された条件についてすべての JSON ドキュメントが "true" と評価される必要があります。WHERE 句がインデックス レイヤーで使用されることで、結果に含めることが可能なソース ドキュメントの最小のサブセットが判断されます。
 
 以下のクエリは、name プロパティを含み、そのプロパティ値が `AndersenFamily` であるようなドキュメントを要求しています。name プロパティを持たない、またはそのプロパティ値が `AndersenFamily` に一致しないドキュメントはすべて除外されます。
@@ -279,7 +279,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句�
 
 上記の例では単純な等値クエリを紹介しました。DocumentDB SQL はさまざまなスカラー式もサポートしています。最も多く使用されるのはバイナリ式と単項式です。ソース JSON オブジェクトからのプロパティ参照も有効な式です。
 
-現在サポートされている 2 項演算子を以下に示します。これらは、以下の例のようにクエリ内で使用することができます。<table> <tr> 算術<td></td> <td>+、-、*、/、%</td> </tr> <tr> ビット<td></td> <td>|、&、^、<<、>>、>>> (0 埋め右シフト) </td> </tr> <tr> <td>論理</td> <td>AND、OR</td> </tr> <tr> <td>比較</td> <td>=、!=、>、>=、<、<=、<></td> </tr> <tr> <td>文字列</td> <td>|| (連結)</td> </tr> </table>
+現在サポートされている 2 項演算子を以下に示します。これらは、以下の例のようにクエリ内で使用することができます。<table> <tr> <td>算術</td> <td>+、-、*、/、%</td> </tr> <tr> <td>ビット</td> <td>|、&、^、<<、>>、>>> (0 埋め右シフト) </td> </tr> <tr> <td>論理</td> <td>AND、OR、NOT</td> </tr> <tr> <td>比較</td> <td>=、!=、&lt;、&gt;、&lt;=、&gt;=、<></td> </tr> <tr> <td>文字列</td> <td>|| (連結)</td> </tr> </table>
 
 2 項演算子を使用したクエリを見てみます。
 
@@ -310,7 +310,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句�
 
 2 項演算子と単項演算子に加えてプロパティ参照も許可されます。たとえば、`SELECT * FROM Families f WHERE f.isRegistered` は `isRegistered` プロパティを含む JSON ドキュメントを返し、このプロパティの値は JSON の `true` 値と等しくなります。その他すべての値 (false、null、Undefined、`<number>`、`<string>`、`<object>`、`<array>` など) の場合、ソース ドキュメントが結果から除外されます。
 
-###等値演算子と比較演算子
+### 等値演算子と比較演算子
 以下の表は、DocumentDB SQL の 2 つの JSON 型で等値比較を実行した結果を示しています。<table style = "width:300px"> <tbody> <tr> <td valign="top"> <strong>演算子</strong> </td> <td valign="top"> <strong>Undefined</strong> </td> <td valign="top"> <strong>Null</strong> </td> <td valign="top"> <strong>Boolean</strong> </td> <td valign="top"> <strong>Number</strong> </td> <td valign="top"> <strong>String</strong> </td> <td valign="top"> <strong>Object</strong> </td> <td valign="top"> <strong>Array</strong> </td> </tr> <tr> <td valign="top"> <strong>Undefined<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>Null<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>Boolean<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>Number<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>String<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>Object<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> <td valign="top"> Undefined </td> </tr> <tr> <td valign="top"> <strong>Array<strong> </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> Undefined </td> <td valign="top"> <strong>OK</strong> </td> </tr> </tbody> </table>
 
 その他の比較演算子 (>、>=、! =、<、および <=) については、以下のようになります。
@@ -320,7 +320,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句�
 
 フィルター内のスカラー式が Undefined という結果になった場合、Undefined は論理上 "true" と等しくならないため、対応するドキュメントは結果に含まれません。
 
-###BETWEEN キーワード
+### BETWEEN キーワード
 また、ANSI SQL などの場合と同様に、値の範囲に対してクエリを表現するときに、BETWEEN キーワードを使用することができます。BETWEEN はすべての JSON プリミティブ型 (数値、文字列、ブール値、および null) に対して使用できます。
 
 たとえば、次のクエリは、最初の子のレベルが 1 ～ 5 (両方の値を含む) の間であるすべての家族のドキュメントを返します。
@@ -338,249 +338,28 @@ ANSI-SQL の場合と異なり、次の例のように、FROM 句内に BETWEEN 
 
 DocumentDB と ANSI SQL の BETWEEN の使用に関する主な違いは、混合型のプロパティに対して範囲クエリを表すことができる点です。たとえば、"grade" に数値 (5) が入力されているドキュメントや、文字列 ("grade4") が入力されているドキュメントを混在させることができます。このような場合、JavaScript の場合と同様に、2 種類を比較した結果は "undefined" になり、ドキュメントはスキップされます。
 
-###論理 (AND、OR、および NOT) 演算子
+### 論理 (AND、OR、および NOT) 演算子
 論理演算子は Boolean 値に対して使用されます。これらの演算子に関する真理値表は以下のようになります。
 
-<table style = "width:300px">
-    <tbody>
-        <tr>
-            <td width="55" valign="top">
-                <p>
-                    <strong>OR</strong>
-                </p>
-            </td>
-            <td width="45" valign="top">
-                <p>
-                    <strong>True</strong>
-                </p>
-            </td>
-            <td width="68" valign="top">
-                <p>
-                    <strong>False</strong>
-                </p>
-            </td>
-            <td width="87" valign="top">
-                <p>
-                    <strong>Undefined</strong>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="55" valign="top">
-                <p>
-                    <strong>True</strong>
-                </p>
-            </td>
-            <td width="45" valign="top">
-                <p>
-                    True
-                </p>
-            </td>
-            <td width="68" valign="top">
-                <p>
-                    True
-                </p>
-            </td>
-            <td width="87" valign="top">
-                <p>
-                    True
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="55" valign="top">
-                <p>
-                    <strong>False</strong>
-                </p>
-            </td>
-            <td width="45" valign="top">
-                <p>
-                    True
-                </p>
-            </td>
-            <td width="68" valign="top">
-                <p>
-                    False
-                </p>
-            </td>
-            <td width="87" valign="top">
-                <p>
-                    Undefined
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="55" valign="top">
-                <p>
-                    <strong>Undefined</strong>
-                </p>
-            </td>
-            <td width="45" valign="top">
-                <p>
-                    True
-                </p>
-            </td>
-            <td width="68" valign="top">
-                <p>
-                    Undefined
-                </p>
-            </td>
-            <td width="87" valign="top">
-                <p>
-                    Undefined
-                </p>
-            </td>
-        </tr>
-    </tbody>
-</table>
+または|True|False|Undefined
+---|---|---|---
+True|True|True|True
+False|True|False|Undefined
+Undefined|True|Undefined|Undefined
 
-<table style = "width:300px">
-    <tbody>
-        <tr>
-            <td width="55" valign="top">
-                <p>
-                    <strong>AND</strong>
-                </p>
-            </td>
-            <td width="54" valign="top">
-                <p>
-                    <strong>True</strong>
-                </p>
-            </td>
-            <td width="58" valign="top">
-                <p>
-                    <strong>False</strong>
-                </p>
-            </td>
-            <td width="107" valign="top">
-                <p>
-                    <strong>Undefined</strong>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="55" valign="top">
-                <p>
-                    <strong>True</strong>
-                </p>
-            </td>
-            <td width="54" valign="top">
-                <p>
-                    True
-                </p>
-            </td>
-            <td width="58" valign="top">
-                <p>
-                    False
-                </p>
-            </td>
-            <td width="107" valign="top">
-                <p>
-                    Undefined
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="55" valign="top">
-                <p>
-                    <strong>False</strong>
-                </p>
-            </td>
-            <td width="54" valign="top">
-                <p>
-                    False
-                </p>
-            </td>
-            <td width="58" valign="top">
-                <p>
-                    False
-                </p>
-            </td>
-            <td width="107" valign="top">
-                <p>
-                    False
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="55" valign="top">
-                <p>
-                    <strong>Undefined</strong>
-                </p>
-            </td>
-            <td width="54" valign="top">
-                <p>
-                    Undefined
-                </p>
-            </td>
-            <td width="58" valign="top">
-                <p>
-                    False
-                </p>
-            </td>
-            <td width="107" valign="top">
-                <p>
-                    Undefined
-                </p>
-            </td>
-        </tr>
-    </tbody>
-</table>
+AND|True|False|Undefined
+---|---|---|---
+True|True|False|Undefined
+False|False|False|False
+Undefined|Undefined|False|Undefined
 
-<table style = "width:300px">
-    <tbody>
-        <tr>
-            <td valign="top">
-                <p>
-                    <strong>NOT</strong>
-                </p>
-            </td>
-            <td valign="top">
-                <p>
-                    <strong></strong>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top">
-                <p>
-                    <strong>True</strong>
-                </p>
-            </td>
-            <td valign="top">
-                <p>
-                    False
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top">
-                <p>
-                    <strong>False</strong>
-                </p>
-            </td>
-            <td valign="top">
-                <p>
-                    True
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top">
-                <p>
-                    <strong>Undefined</strong>
-                </p>
-            </td>
-            <td valign="top">
-                <p>
-                    Undefined
-                </p>
-            </td>
-        </tr>
-    </tbody>
-</table>
+NOT| |
+---|---
+True|False
+False|True
+Undefined|Undefined
 
-###IN キーワード
+### IN キーワード
 IN キーワードを使用すると、指定した値がリスト内の任意の値と一致するかどうかを確認することができます。たとえば、次のクエリは、id が "WakefieldFamily" または "AndersenFamily" のどちらかであるすべての家族のドキュメントを返します。
  
     SELECT *
@@ -595,7 +374,7 @@ IN キーワードを使用すると、指定した値がリスト内の任意�
 
 IN は、複数の OR 句を組み合わせることに相当します。ただし、単一のインデックスを使用して処理することができるため、DocumentDB の IN 句で指定できる引数の[制限](documentdb-limits.md)は、より大きくなります。
 
-###3 項 (?) 演算子と合体 (??) 演算子:
+### 3 項 (?) 演算子と合体 (??) 演算子:
 3 項演算子と合体演算子は、一般的なプログラミング言語である C# や JavaScript と同様に、条件式の構築に使用することができます。
 
 3 項 (?) 演算子は、実行中に新しい JSON プロパティを構築するときに役立つ場合があります。たとえば、次のように、初級、中級、上級など、人間が判読できる形式でクラス レベルを分類するクエリを作成できます。
@@ -615,7 +394,7 @@ IN は、複数の OR 句を組み合わせることに相当します。ただ�
     SELECT f.lastName ?? f.surname AS familyName
     FROM Families f
 
-###引用符で囲まれたプロパティのアクセサー
+### 引用符で囲まれたプロパティのアクセサー
 プロパティは、引用符で囲まれたプロパティの演算子`[]` を使用してアクセスすることもできます。たとえば、`SELECT c.grade` と `SELECT c["grade"]` は同等です。この構文はスペース、特殊文字を含むプロパティや、SQL キーワードや予約語と同じ名前を共有するプロパティをエスケープする必要がある場合に役立ちます。
 
     SELECT f["lastName"]
@@ -623,7 +402,7 @@ IN は、複数の OR 句を組み合わせることに相当します。ただ�
     WHERE f["id"] = "AndersenFamily"
 
 
-##SELECT 句
+## SELECT 句
 ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 句 (**`SELECT <select_list>`**) は必須です。ソース ドキュメントの先頭でフィルターされたサブセットがプロジェクション フェーズに渡され、渡された入力のそれぞれについて、指定された JSON 値が取得され、新しい JSON オブジェクトが構築されます。
 
 一般的な SELECT クエリの例を次に示します。
@@ -645,7 +424,7 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
 	}]
 
 
-###入れ子になったプロパティ
+### 入れ子になったプロパティ
 以下の例では、`f.address.state` と `f.address.city` という 2 つの入れ子になったプロパティを表しています。
 
 **クエリ**
@@ -703,7 +482,7 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
 	}]
 
 
-###エイリアス化
+### エイリアス化
 ここで、値を明示的にエイリアス化することによって、上記の例を拡張します。AS はエイリアス化に使用されるキーワードです。例からわかるようにこれはオプションですが、2 つ目の値を `NameInfo` として表している点に注意してください。
 
 同じ名前を持つ 2 つのプロパティがクエリにある場合、エイリアス化を使ってプロパティのいずれかまたは両方の名前を変更する必要があります。こうすることで、プロジェクションの結果でこれらを区別することができます。
@@ -729,7 +508,7 @@ ANSI-SQL と同様に、クエリから取得される値を指定する SELECT 
 	}]
 
 
-###スカラー式
+### スカラー式
 SELECT 句は、プロパティ参照に加えて、定数、算術式、論理式などのスカラー式をサポートします。例として、単純な "Hello World" クエリを以下に示します。
 
 **クエリ**
@@ -775,7 +554,7 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
 	]
 
 
-###オブジェクトと配列の作成
+### オブジェクトと配列の作成
 配列/オブジェクトの作成も、DocumentDB SQL の重要な機能です。新しい JSON オブジェクトはこれまでの例で作成しました。同様に、以下の例のように配列を構築することもできます。
 
 **クエリ**
@@ -800,7 +579,7 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
 	  }
 	]
 
-###VALUE キーワード
+### VALUE キーワード
 **VALUE **キーワードは、JSON 値を返す方法を提供します。たとえば以下のクエリでは、スカラー `"Hello World"` が返され、`{$1: "Hello World"}` とはなりません。
 
 **クエリ**
@@ -880,7 +659,7 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
 	    "isRegistered": true
 	}]
 
-##ORDER BY 句
+## ORDER BY 句
 ANSI SQL 同様、クエリ実行にオプションで Order By 句を含めることができます。句に ASC/DESC 引数 (オプション) を含めて、結果を取得する順番を指定できます。Order By の詳細については「[DocumentDB Order By チュートリアル](documentdb-orderby.md)」を参照してください。
 
 たとえば、居住都市の名前の順序で家族を取得するクエリは次のようになります。
@@ -925,8 +704,8 @@ ANSI SQL 同様、クエリ実行にオプションで Order By 句を含める�
 	  }
 	]
 	
-##高度な概念
-###反復
+## 高度な概念
+### 反復
 DocumentDB SQL の **IN** キーワードによる新しいコンストラクトを追加することで、JSON 配列に対する反復がサポートされています。反復のサポートは FROM ソースが提供します。まず、以下の例から始めます。
 
 **クエリ**
@@ -1005,7 +784,7 @@ DocumentDB SQL の **IN** キーワードによる新しいコンストラクト
 	  "givenName": "Lisa"
 	}]
 
-###結合
+### 結合
 リレーショナル データベースでは、テーブル間を結合できることは非常に重要です。このことは、正規化されたスキーマの設計においては論理的必然です。一方 DocumentDB は、スキーマフリーのドキュメントの正規化されていないデータ モデルを扱います。これは、論理的には "自己結合" と同義です。
 
 この言語がサポートする構文は、<from_source1> JOIN <from_source2> JOIN ...JOIN <from_sourceN> です。これによって、**N**-タプル (**N** 個の値を持つタプル) のセットが返されます。それぞれのタプルは、対応するセットに対する、すべてのコレクションのエイリアスの反復によって生成された値を持ちます。これは、結合に含まれるセットの完全なクロス積ということができます。
@@ -1154,7 +933,7 @@ JOIN の便利な点は、クロス積からタプルを生成できる点です
 	]
 
 
-##JavaScript 統合
+## JavaScript 統合
 DocumentDB が提供するプログラミング モデルでは、ストアド プロシージャとトリガーという点では、JavaScript ベースのアプリケーション ロジックをコレクションで直接実行することができます。これによって以下の両方が実現されます。
 
 -	データベース エンジン内部での JavaScript ランタイムとの直接かつ緊密な統合により、高パフォーマンスなトランザクション CRUD の操作とクエリを実行する能力。 
@@ -1269,14 +1048,14 @@ DocumentDB は、UDF の処理の現在のステージ (WHERE 句または SELEC
 
 複雑なビジネス ロジックをクエリで実行するには、UDF は非常に便利な手段です。
 
-###演算子の評価
+### 演算子の評価
 JSON データベースという特性を持つ DocumentDB は、JavaScript 演算子とその評価セマンティクスに似た関係を備えています。DocumentDB は JSON サポートという点では JavaScript のセマンティクスを可能な限り保持していますが、演算子の評価はいくつかの点で異なっています。
 
 従来の SQL とは異なり、DocumentDB SQL では、実際に値がデータベースから取得されるまで値の型は未知です。クエリの実行を効率化するため、大部分の演算子には厳密な型の要件があります。
 
 DocumentDB SQL は JavaScript とは異なり暗黙的な変換を実行しません。たとえば、`SELECT * FROM Person p WHERE p.Age = 21` のようなクエリは、値が 21 の Age プロパティを含むドキュメントに一致します。Age プロパティが文字列の "21" に一致するようなドキュメントや、 "021"、"21.0"、"0021"、"00021" などの無限のバリエーションに一致するドキュメントは対象外となります。これは、(演算子 == などに基づいて) 文字列の値が暗黙的に数値にキャストされる JavaScript とは異なります。インデックスの効率的な一致のために、DocumentDB SQL ではこのような選択が避けられないものとなっています。
 
-##パラメーター化された SQL
+## パラメーター化された SQL
 DocumentDB では、使い慣れた @ 表記で表されたパラメーターを使用するクエリがサポートされます。パラメーター化された SQL により、ユーザーの入力を堅牢に処理し、流用して、SQL インジェクションによってデータが誤って開示されるリスクを回避することができます。
 
 たとえば、パラメーターとして姓と住所 (都道府県) を使用するクエリを記述し、ユーザーの入力に基づいて、姓と住所 (都道府県) にさまざまな値を指定して実行できます。
@@ -1313,14 +1092,19 @@ DocumentDB では、ユーザー定義関数 (UDF) のようにクエリ内で�
 <td>文字列関数</td>	
 <td>CONCAT、CONTAINS、ENDSWITH、INDEX_OF、LEFT、LENGTH、LOWER、LTRIM、REPLACE、REPLICATE、REVERSE、RIGHT、RTRIM、STARTSWITH、SUBSTRING、UPPER</td>
 </tr>
+<tr>
 <td>配列関数</td>	
 <td>ARRAY_CONCAT、ARRAY_CONTAINS、ARRAY_LENGTH、ARRAY_SLICE</td>
+</tr>
+<tr>
+<td>空間関数</td>	
+<td>ST_DISTANCE、ST_WITHIN、ST_ISVALID、ST_ISVALIDDETAILED</td>
 </tr>
 </table>
 
 現在ユーザー定義関数 (UDF) を使用している処理に対して組み込み関数を利用できる場合は、より高速かつ効率的な対応する組み込み関数を使用する必要があります。
 
-###数学関数
+### 数学関数
 一般に、各数学関数は、引数として提供された入力値に基づいて計算を実行し、数値を返します。次の表に、サポートされている組み込みの数学関数を示します。
 
 <table>
@@ -1436,7 +1220,7 @@ DocumentDB では、ユーザー定義関数 (UDF) のようにクエリ内で�
 
 DocumentDB の関数と ANSI SQL の間の主な違いとして、DocumentDB の関数はスキーマを持たないデータやスキーマが混在するデータをうまく扱えるようになっています。たとえば、Size プロパティがないドキュメントや "unknown" のような数値以外の値を持つドキュメントの場合、エラーを返す代わりに、ドキュメントがスキップされます。
 
-###型チェック関数
+### 型チェック関数
 型チェック関数を使用すると、SQL クエリ内の式の型をチェックできます。型チェック関数を使用すると、ドキュメント内のプロパティの型が変数または不明の場合に型をその場で判定できます。次の表に、サポートされている組み込みの型チェック関数を示します。
 
 <table>
@@ -1489,79 +1273,27 @@ DocumentDB の関数と ANSI SQL の間の主な違いとして、DocumentDB の
 
     [true]
 
-###文字列関数
+### 文字列関数
 次のスカラー関数は、文字列入力値に対して演算を実行し、文字列、数値またはブール値を返します。組み込みの文字列関数を次の表に示します。
 
-<table>
-<tr>
-  <td><strong>使用方法</strong></td>
-  <td><strong>説明</strong></td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length">LENGTH (str_expr)</a></td>
-  <td>指定された文字列式の文字数を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat">CONCAT (str_expr, str_expr [, str_expr])</a></td>
-  <td>2 つ以上の文字列値を連結した結果である文字列を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring">SUBSTRING (str_expr, num_expr, num_expr)</a></td>
-  <td>文字列式の一部を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith">STARTSWITH (str_expr, str_expr)</a></td>
-  <td>1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith">ENDSWITH (str_expr, str_expr)</a></td>
-  <td>1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains">CONTAINS (str_expr, str_expr)</a></td>
-  <td>1 つ目の文字列式に 2 つ目の文字列式が含まれているかどうかを示すブール値を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of">INDEX_OF (str_expr, str_expr)</a></td>
-  <td>1 つ目に指定された文字列式内で 2 つ目の文字列式が最初に出現する箇所の開始位置を返します。文字列が見つからない場合は -1 を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left">LEFT (str_expr, num_expr)</a></td>
-  <td>指定された文字数分、文字列の左側の部分を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right">RIGHT (str_expr, num_expr)</a></td>
-  <td>指定された文字数分、文字列の右側の部分を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim">LTRIM (str_expr)</a></td>
-  <td>文字列式の先頭の空白を削除して返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim">RTRIM (str_expr)</a></td>
-  <td>文字列式のすべての後続の空白を切り捨てて返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower">LOWER (str_expr)</a></td>
-  <td>文字列式の大文字データを小文字に変換して返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper">UPPER (str_expr)</a></td>
-  <td>文字列式の小文字データを大文字に変換して返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace">REPLACE (str_expr, str_expr, str_expr)</a></td>
-  <td>指定された文字列値のすべての出現箇所をもう 1 つの文字列値に置き換えます。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replicate">REPLICATE (str_expr, num_expr)</a></td>
-  <td>文字列値を指定された回数だけ繰り返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse">REVERSE (str_expr)</a></td>
-  <td>文字列値の順序を逆にして返します。</td>
-</tr>
-</table>
+使用法|説明
+---|---
+[LENGTH (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length)|指定された文字列式の文字数を返します。
+[CONCAT (str\_expr, str\_expr [, str\_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat)|2 つ以上の文字列値を連結した結果である文字列を返します。
+[SUBSTRING (str\_expr, num\_expr, num\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring)|文字列式の一部を返します。
+[STARTSWITH (str\_expr, str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith)|1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。
+[ENDSWITH (str\_expr, str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith)|1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。
+[CONTAINS (str\_expr, str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains)|1 つ目の文字列式に 2 つ目の文字列式が含まれているかどうかを示すブール値を返します。
+[INDEX\_OF (str\_expr, str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of)|1 つ目に指定された文字列式内で 2 つ目の文字列式が最初に出現する箇所の開始位置を返します。文字列が見つからない場合は -1 を返します。
+[LEFT (str\_expr, num\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left)|指定された文字数分、文字列の左側の部分を返します。
+[RIGHT (str\_expr, num\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right)|指定された文字数分、文字列の右側の部分を返します。
+[LTRIM (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim)|文字列式の先頭の空白を削除して返します。
+[RTRIM (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim)|文字列式のすべての後続の空白を切り捨てて返します。
+[LOWER (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower)|文字列式の大文字データを小文字に変換して返します。
+[UPPER (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper)|文字列式の小文字データを大文字に変換して返します。
+[REPLACE (str\_expr, str\_expr, str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace)|指定された文字列値のすべての出現箇所をもう 1 つの文字列値に置き換えます。
+[REPLICATE (str\_expr, num\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replicate)|文字列値を指定された回数だけ繰り返します。
+[REVERSE (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse)|文字列値の順序を逆にして返します。
 
 これらの関数を使用して、次のようなクエリを実行できます。たとえば、次のようにすると、ファミリ名を大文字で返すことができます。
 
@@ -1611,31 +1343,15 @@ DocumentDB の関数と ANSI SQL の間の主な違いとして、DocumentDB の
       "city": "NY"
     }]
 
-###配列関数
+### 配列関数
 次のスカラー関数は、配列入力値に対して演算を実行し、数値、ブール値、または配列値を返します。組み込みの配列関数を次の表に示します。
 
-<table>
-<tr>
-  <td><strong>使用方法</strong></td>
-  <td><strong>説明</strong></td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length">ARRAY_LENGTH (arr_expr)</a></td>
-  <td>指定された配列式の要素の数を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat">ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])</a></td>
-  <td>2 つ以上の配列値を連結した結果である配列を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains">ARRAY_CONTAINS (arr_expr, expr)</a></td>
-  <td>配列に指定された値が含まれているかどうかを示すブール値を返します。</td>
-</tr>
-<tr>
-  <td><a href="https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice">ARRAY_SLICE (arr_expr, num_expr [, num_expr])</a></td>
-  <td>配列式の一部を返します。</td>
-</tr>
-</table>
+使用法|説明
+---|---
+[ARRAY\_LENGTH (arr\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length)|指定された配列式の要素の数を返します。
+[ARRAY\_CONCAT (arr\_expr, arr\_expr [, arr\_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat)|2 つ以上の配列値を連結した結果である配列を返します。
+[ARRAY\_CONTAINS (arr\_expr, expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains)|配列に指定された値が含まれているかどうかを示すブール値を返します。
+[ARRAY\_SLICE (arr\_expr, num\_expr [, num\_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice)|配列式の一部を返します。
 
 配列関数を使用すると、JSON に含まれる配列を操作できます。例として、親の 1 人が "Robin Wakefield" であるすべてのドキュメントを返すクエリを次に示します。
 
@@ -1671,8 +1387,102 @@ ARRAY\_LENGTH を使用して家族あたりの子供の数を取得する、も
 
 これは、DocumentDB の組み込み関数と SQL の文法をラップしています。では、LINQ クエリの動作とこれまでに説明した文法との関係を見ていきましょう。
 
+### 空間関数
 
-##LINQ と DocumentDB SQL
+DocumentDB は、以下の Open Geospatial Consortium (OGC) 組み込み関数を使った地理空間検索をサポートしています。DocumentDB での地理空間のサポートの詳細については、[Azure DocumentDB での地理空間データの操作](documentdb-geospatial.md)に関するページを参照してください。
+
+<table>
+<tr>
+  <td><strong>使用方法</strong></td>
+  <td><strong>説明</strong></td>
+</tr>
+<tr>
+  <td>ST_DISTANCE (point_expr, point_expr)</td>
+  <td>2 つの GeoJSON ポイント式間の距離を返します。</td>
+</tr>
+<tr>
+  <td>ST_WITHIN (point_expr, polygon_expr)</td>
+  <td>第 1 引数に指定された GeoJSON ポイントが、第 2 引数の GeoJSON ポリゴン内に存在するかどうかを示すブール式を返します。</td>
+</tr>
+<tr>
+  <td>ST_ISVALID</td>
+  <td>指定された GeoJSON ポイントまたはポリゴン式が有効かどうかを示すブール値を返します。</td>
+</tr>
+<tr>
+  <td>ST_ISVALIDDETAILED</td>
+  <td>指定された GeoJSON ポイントまたはポリゴン式が有効であるかどうかのブール値を含んだ JSON 値を返します。無効である場合はさらに、その理由が文字列値として返されます。</td>
+</tr>
+</table>
+
+空間関数を使用すると、空間データに対して近接検索クエリを実行することができます。指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST\_DISTANCE 組み込み関数で取得するクエリの例を以下に示します。
+
+**クエリ**
+
+    SELECT f.id 
+    FROM Families f 
+    WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
+
+**結果**
+
+    [{
+      "id": "WakefieldFamily"
+    }]
+
+インデックス作成ポリシーに空間インデックスを含めた場合、"距離クエリ" はインデックスを使って効率的に実行されます。空間インデックスの詳細については、以降のセクションを参照してください。指定されたパスに空間インデックスがない場合でも、`x-ms-documentdb-query-enable-scan` 要求ヘッダーの値を "true" に設定して指定することによって空間クエリを実行することはできます。その場合 .NET では、省略可能な引数 **FeedOptions** を、[EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) を true に設定してクエリに渡してください。
+
+ポイントがポリゴン内に存在するかどうかは、ST\_WITHIN を使用してチェックできます。通常ポリゴンは、郵便番号、都道府県の境界など、自然な形状の範囲を表す目的で使用されます。インデックス作成ポリシーに空間インデックスを含めた場合、"範囲内" 検索はインデックスを使って効率的に実行されます。
+
+ST\_WITHIN のポリゴン引数に指定できるのは、単一のリングだけです。つまり、環の内側に穴が含まれているポリゴンは指定できません。ST\_WITHIN クエリのポリゴンに許容される最大ポイント数については、[DocumentDB の制限事項](documentdb-limits.md)を参照してください。
+
+**クエリ**
+
+    SELECT * 
+    FROM Families f 
+    WHERE ST_WITHIN(f.location, {
+    	'type':'Polygon', 
+    	'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
+    })
+
+**結果**
+
+    [{
+      "id": "WakefieldFamily",
+    }]
+    
+>[AZURE.NOTE]DocumentDB クエリで型が一致しないときの動作と同様、いずれかの引数に指定された場所の値が無効であったり形式に誤りがあったりした場合、その値は**未定義**として評価され、評価対象となったドキュメントはクエリの結果からスキップされます。クエリから結果が返されなかった場合は、ST\_ISVALIDDETAILED を実行して、空間データ型が無効である理由をデバッグしてください。
+
+空間オブジェクトが有効であるかどうかは、ST\_ISVALID と ST\_ISVALIDDETAILED を使用してチェックできます。たとえば以下のクエリでは、範囲外の緯度値 (-132.8) を指定して、ポイントの有効性をチェックしています。ST\_ISVALID で返されるのはブール値だけであるのに対し、ST\_ISVALIDDETAILED では、ブール値に加え、無効と考えられる理由の文字列が返されます。
+
+**クエリ**
+
+    SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
+
+**結果**
+
+    [{
+      "$1": false
+    }]
+
+これらの関数を使用して、ポリゴンを検証することもできます。以下の例では、閉じた形状になっていないポリゴンを ST\_ISVALIDDETAILED で検証しています。
+
+**クエリ**
+
+    SELECT ST_ISVALIDDETAILED({ "type": "Polygon", "coordinates": [[ 
+    	[ 31.8, -5 ], [ 31.8, -4.7 ], [ 32, -4.7 ], [ 32, -5 ] 
+    	]]})
+
+**結果**
+
+    [{
+       "$1": { 
+      	  "valid": false, 
+      	  "reason": "The Polygon input is not valid because the start and end points of the ring number 1 are not the same. Each ring of a polygon must have the same start and end points." 
+      	}
+    }]
+    
+これは、DocumentDB の組み込み関数と SQL の文法をラップしています。では、LINQ クエリの動作とこれまでに説明した文法との関係を見ていきましょう。
+
+## LINQ と DocumentDB SQL
 LINQ は、計算処理をオブジェクトのストリームに対するクエリとして表現する .NET プログラミング モデルです。DocumentDB は LINQ と連携するためのクライアント側ライブラリを提供しています。ここでは、JSON オブジェクトと .NET オブジェクト間の変換と、LINQ クエリのサブセットから DocumentDB クエリへのマッピングを実施します。
 
 DocumentDB を使用した LINQ クエリ サポートのアーキテクチャは以下の図のようになります。開発者は DocumentDB クライアントを使用して **IQueryable** オブジェクトを作成できます。このオブジェクトが DocumentDB クエリ プロバイダーを直接照会することで、LINQ クエリが DocumentDB クエリに変換されます。次にクエリが DocumentDB サーバーに渡されることで、結果セットが JSON 形式で取得されます。返された結果は、クライアント側で .NET オブジェクトのストリームに逆シリアル化されます。
@@ -1681,7 +1491,7 @@ DocumentDB を使用した LINQ クエリ サポートのアーキテクチャ�
  
 
 
-###.NET と JSON のマッピング
+### .NET と JSON のマッピング
 .NET オブジェクトと JSON ドキュメント間のマッピングは自然に実行されます。各データ メンバー フィールドが JSON オブジェクトにマップされ、フィールド名がオブジェクトの "key" 部分にマップされ、"value" 部分がオブジェクトの値の部分に再帰的にマップされます。以下の例では、作成された Family オブジェクトが JSON ドキュメントにマップされています。同様に JSON ドキュメントから .NET オブジェクトへのマップも行われています。
 
 **C# クラス**
@@ -1763,7 +1573,7 @@ DocumentDB を使用した LINQ クエリ サポートのアーキテクチャ�
 
 
 
-###LINQ から SQL への変換
+### LINQ から SQL への変換
 DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL クエリへのマッピングをベスト エフォートで実行します。ここからの説明は、LINQ の基本的な知識を持つ読者向けとなります。
 
 まず型システムについては、すべての JSON プリミティブ型 (数値型、ブール値、文字列、Null) がサポートされます。サポートされるのはこれらの JSON 型だけです。以下のスカラー式がサポートされます。
@@ -1793,10 +1603,10 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 		new { first = 1, second = 2 }; //an anonymous type with 2 fields              
 		new int[] { 3, child.grade, 5 };
 
-###クエリ演算子
+### クエリ演算子
 標準 LINQ クエリ演算子が DocumentDB クエリに変換される方法を以下のいくつかの例で示します。
 
-####Select 演算子
+#### Select 演算子
 構文は `input.Select(x => f(x))` です。`f` はスカラー式です。
 
 **LINQ ラムダ式**
@@ -1839,7 +1649,7 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 
 
 
-####SelectMany 演算子
+#### SelectMany 演算子
 構文は `input.SelectMany(x => f(x))` です。`f` はコレクション型を返すスカラー式です。
 
 **LINQ ラムダ式**
@@ -1853,7 +1663,7 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 
 
 
-####Where 演算子
+#### Where 演算子
 構文は `input.Where(x => f(x))` です。`f` はブーリアン値を返すスカラー式です。
 
 **LINQ ラムダ式**
@@ -1882,10 +1692,10 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 	AND f.children[0].grade < 3
 
 
-###複合クエリ
+### 複合クエリ
 上記の演算子を組み合わせることで、より強力なクエリを作成できます。DocumentDB は入れ子になったコレクションをサポートするため、連結による複合も入れ子による複合も可能です。
 
-####連結 
+#### 連結 
 
 構文は `input(.|.SelectMany())(.Select()|.Where())*` です。連結クエリは、オプションの `SelectMany` クエリで開始し、複数の `Select` または `Where` 演算子を追加できます。
 
@@ -1942,7 +1752,7 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 
 
 
-####入れ子
+#### 入れ子
 
 構文は `input.SelectMany(x=>x.Q())` です。Q は `Select`、`SelectMany`、または `Where` 演算子です。
 
@@ -1987,11 +1797,12 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 	WHERE c.familyName = f.parents[0].familyName
 
 
-##クエリの実行
+## クエリの実行
 DocumentDB が公開するリソースには、HTTP/HTTPS 要求機能を持つ任意の言語から REST API を呼び出すことでアクセスできます。さらに、.NET、Node.js、JavaScript、Python など、いくつかの主要な言語のプログラミング ライブラリも用意されています。REST API と各種のライブラリはすべて SQL 経由のクエリをサポートしています。.NET SDK は SQL に加えて LINQ クエリをサポートしています。
 
 以下の例では、クエリを作成して DocumentDB データベース アカウントに送信する方法について説明します。
-###REST API
+
+### REST API
 DocumentDB は、HTTP を介したオープンな RESTful プログラミング モデルを提供します。データベース アカウントは Azure サブスクリプションを使用してプロビジョニングできます。DocumentDB リソース モデルは、データベース アカウントに従属する一連のリソースから成り、個々のリソースは、不変の論理 URI アドレスを使用して参照することができます。このドキュメントでは、そうした一連のリソースをフィードと呼ぶことにします。データベース アカウントはデータベースのセットで構成され、各データベースに複数のコレクションが含まれています。これらのコレクションのそれぞれに、ドキュメント、UDF、その他のリソースが含まれます。
 
 これらのリソースとの基本的な対話モデルでは、HTTP の動詞である GET、PUT、POST、および DELETE が標準の解釈で使用されます。POST 動詞は、新しいリソースの作成、ストアド プロシージャの実行、または DocumentDB クエリの発行に使用されます。クエリは常に読み取り専用の操作で、副作用はありません。
@@ -2125,7 +1936,7 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
 
 指定されたクエリを、コレクションで構成されたインデックス作成ポリシーがサポートできない場合、DocumentDB サーバーは 400 "Bad Request" を返します。これは、ハッシュ (等値) 検索用に構成されたパスに対する範囲クエリと、インデックス作成から明示的に除外されたパスのために返されます。`x-ms-documentdb-query-enable-scan` ヘッダーを指定することで、インデックスを利用できない場合のクエリによるスキャン実行を許可することができます。
 
-###C# (.NET) SDK
+### C# (.NET) SDK
 .NET SDK は LINQ クエリと SQL クエリの両方をサポートしています。以下の例は、このドキュメントで前述したシンプルなフィルター クエリを実行する方法を示しています。
 
 
@@ -2219,7 +2030,7 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
 
 クエリのその他のサンプルについては、[DocumentDB の .NET サンプル](https://github.com/Azure/azure-documentdb-net)を参照してください。
 
-###JavaScript のサーバー側 API 
+### JavaScript のサーバー側 API 
 DocumentDB が提供するプログラミング モデルでは、ストアド プロシージャとトリガーという点では、JavaScript ベースのアプリケーション ロジックをコレクションで直接実行することができます。コレクション レベルで登録された JavaScript ロジックは、特定のコレクション内のドキュメントの操作に対してデータベース操作を発行できるようになっています。これらの操作は周囲の ACID トランザクションにラップされます。
 
 以下の例は、JavaScript サーバー API で queryDocuments を使用して、ストアド プロシージャとトリガーからクエリを実行する方法を示しています。
@@ -2277,4 +2088,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

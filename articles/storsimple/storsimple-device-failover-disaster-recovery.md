@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/23/2015"
+   ms.date="08/12/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスのフェールオーバーと障害復旧
@@ -77,7 +77,7 @@
 
 1. デバイスにあるすべてのボリュームのクラウド スナップショットを取得します。
 
-1. デバイスを工場出荷時の既定値にリセットします。[StorSimple デバイスを工場出荷時の既定の設定にリセットする方法](https://msdn.microsoft.com/library/dn772373.aspx)に関するページの詳細な指示に従います。
+1. デバイスを工場出荷時の既定値にリセットします。[StorSimple デバイスを工場出荷時の既定の設定にリセットする方法](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings)に関するページの詳細な指示に従います。
 
 1. StorSimple Manager サービスでデバイスを構成して再登録します。
 
@@ -97,7 +97,7 @@
 
 この手順を実行する前に、StorSimple 仮想デバイスを作成して構成する必要があります。
  
->[AZURE.NOTE]**このリリースでは、StorSimple の仮想デバイスでサポートされるストレージ容量は 30 TB です。**
+>[AZURE.NOTE]**このリリースでは、StorSimple の仮想デバイスでサポートされるストレージ容量は 30 TB (テラバイト) です。**
 
 ターゲットの StorSimple 仮想デバイスにデバイスを復元するには、次の手順を実行します。
 
@@ -142,10 +142,7 @@
 - [StorSimple デバイスの非アクティブ化](storsimple-deactivate-and-delete-device.md#deactivate-a-device)
 - [StorSimple デバイスの削除](storsimple-deactivate-and-delete-device.md#delete-a-device)
 
-StorSimple Manager サービスを使用してデバイスを管理する方法の詳細については、次のガイドを参照してください。
-
-- [管理者ガイド](https://msdn.microsoft.com/library/dn772401.aspx)
-
+StorSimple Manager サービスを使用してデバイスを管理する方法の詳細については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

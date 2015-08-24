@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/24/2015"
+   ms.date="08/11/2015"
    ms.author="subramar"/>
 
 # アプリケーションのアップグレードのトラブルシューティング
@@ -225,4 +225,4 @@ Service Fabric は、正常性評価のためのエンティティ (レプリカ
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

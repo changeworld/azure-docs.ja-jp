@@ -1,5 +1,5 @@
 <properties
-	pageTitle="コネクタと API Apps の一覧 | Azure"
+	pageTitle="コネクタと API Apps の一覧 | Microsoft Azure"
 	description="Azure App Service マイクロサービス アーキテクチャのコネクタと API Apps について説明します。"
 	services="app-service\logic"
 	documentationCenter=""
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/05/2015"
+	ms.date="08/09/2015"
 	ms.author="mandia"/>
 
 
 # Microsoft Azure App Service のコネクタと API Apps の一覧
 このトピックでは、マイクロソフトによって作成された使用可能なすべてのコネクタと API アプリを示します。
 
-料金情報および各サービス レベルに含まれる新機能の一覧については、[Azure のアプリ サービスの料金](http://azure.microsoft.com/pricing/details/app-service/)を参照してください。
+料金情報および各サービス レベルに含まれる新機能の一覧については、「[Azure App Service の価格](http://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
 
 
 ## Standard コネクタ
@@ -37,7 +37,7 @@
 [Facebook](app-service-logic-connector-facebook.md) | Facebook に接続して、メッセージ、画像、その他の詳細を公開できます。また、メッセージ、コメントを取得できるほか、本や映画などのユーザーの好みに関する情報を取得することもできます。
 [ファイル](app-service-logic-connector-file.md) | このコネクタを使用すると、オンプレミスのファイル システムやネットワークに接続して、ファイルのアップロード、削除、一覧の取得などのさまざまなファイル タスクを実行できます。
 [FTP<br/>FTPS](app-service-logic-connector-ftp.md) | FTP/FTPS サーバーに接続して、ファイルのアップロード、取得、削除などのさまざまな FTP タスクを実行できます。
-[HTTP](app-service-logic-connector-http.md) | HTTP リスナーは、HTTP サーバーとして機能するエンドポイントを開き、着信 HTTP または HTTPS 要求をリッスンします。HTTP アクションに API App は必要ありません。HTTP アクションは Logic Apps 内でネイティブにサポートされます。
+[HTTP](app-service-logic-connector-http.md) | HTTP リスナーは、HTTP サーバーとして機能するエンドポイントを開き、着信 HTTP または HTTPS 要求をリッスンします。HTTP アクションに API アプリは必要ありません。HTTP アクションは Logic Apps 内でネイティブにサポートされます。
 [Microsoft Office 365](app-service-logic-connector-office365.md) | Office 365 コネクタを使用すると、電子メールの送受信、予定表の管理などの操作を実行できます。さらに、Office 365 アカウントを使用して連絡先を管理することができます。
 [Microsoft OneDrive](app-service-logic-connector-onedrive.md) | 個人用の Microsoft OneDrive に接続して、ファイルのアップロード、削除、一覧の取得などの操作を実行できます。
 [Microsoft SharePoint](app-service-logic-connector-sharepoint.md) | オンプレミスの Microsoft SharePoint Server または SharePoint Online に接続して、ドキュメントやリスト項目を管理できます。既定の資格情報、OAuth 2.0、Windows 認証、およびフォームベース認証などのさまざまな認証方法がサポートされています。
@@ -71,7 +71,7 @@ Informix | Windows オペレーティング システムを実行している Az
 MQ | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM WebSphere MQ Server Version 8 に接続します。オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。コネクタには、Microsoft Client for MQ も含まれています。<br/><br/>トリガーはありません。アクションはありません。<br/><br/>**注** 現在のところ、ロジック アプリで使用することはできません。
 [Oracle Database](app-service-logic-connector-oracle.md) | オンプレミスの Oracle Database に接続して、データベース テーブルのエントリを作成、更新、取得、削除できます。
 [SAP](app-service-logic-connector-sap.md) | オンプレミスの SAP サーバーに接続し、RFC、BAPI、tRFC を呼び出して、IDOC を送信します。
-[BizTalk Flat File Encoder](app-service-logic-flatfile-encoder.md) | フラット ファイル データ (Excel、csv など) と XML データ間の相互運用性を提供します。この API App によって、フラット ファイル インスタンスを XML に、またはその逆方向に変換できます。
+[BizTalk Flat File Encoder](app-service-logic-flatfile-encoder.md) | フラット ファイル データ (Excel、csv など) と XML データ間の相互運用性を提供します。この API アプリによって、フラット ファイル インスタンスを XML に、またはその逆方向に変換できます。
 [BizTalk Transform Service](app-service-logic-transform-xml-documents.md) | データをある形式から別の形式に変換します。また、既存のマップ (.trfm ファイル) をアップロードし、ソース スキーマとターゲット スキーマ間のリンクを表示できるほか、サンプルの入力 XML コンテンツを使用した "テスト" 機能も使用できます。文字列操作、条件付き割り当てなどの各種組み込み関数も用意されています。
 [BizTalk XML Validator](app-service-logic-xml-validator.md) | 定義済みの XML スキーマを基準として XML データを検証します。既存のスキーマを使用することも、フラット ファイルのインスタンス、JSON のインスタンス、または既存のコネクタに基づいてスキーマを生成することもできます。
 [BizTalk XPath Extractor](app-service-logic-xpath-extract.md) | 選択した XPath に基づいて XML コンテンツを検索し、データを抽出します。
@@ -86,11 +86,11 @@ MQ | Windows オペレーティング システムを実行している Azure �
 コネクタは、Logic App 内でアクションとして使用することもできます。アクションは、実行時に使用する Logic App 内のデータの検索に役立ちます。たとえば、注文を処理するときに、顧客に関する情報を求めて SQL データベースのデータを検索することが必要になる場合があります。または、変換先のデータの書き込み、更新、または削除が必要になる場合があります。これらを実行するために、コネクタによって提供されるアクションを使用できます。アクションは、Swagger メタデータで定義されているとおりに、API Apps 内の操作と対応付けられています。
 
 ## 独自のコネクタと API Apps の作成
-[コネクタと API Apps のリファレンス](http://aka.ms/appservicesconnectorreference)<br/> [Azure App Service の API アプリのトリガー](../app-service-api/app-service-api-dotnet-triggers.md)<br/> [Logic Apps のリファレンス](https://msdn.microsoft.com/library/azure/dn948510.aspx)
+[コネクタと API Apps のリファレンス](http://aka.ms/appservicesconnectorreference) [Azure App Service の API アプリのトリガー](../app-service-api/app-service-api-dotnet-triggers.md) [Logic Apps のリファレンス](https://msdn.microsoft.com/library/azure/dn948510.aspx)
 
 
 ## コネクタと API Apps の詳細
 
-[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)<br/> [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)<br/> [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
+[コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md) [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md) [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,13 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="data-management" 
-   ms.date="07/28/2015"
+   ms.date="08/12/2015"
    ms.author="adamkr; sstein"/>
 
-# PowerShell を使用した SQL Database エラスティック データベース プールの作成と管理
+# PowerShell を使用したSQL Database のエラスティック データベース プールの作成と管理
 
 > [AZURE.SELECTOR]
 - [Azure portal](sql-database-elastic-pool-portal.md)
+- [C#](sql-database-client-library.md)
 - [PowerShell](sql-database-elastic-pool-powershell.md)
 
 
@@ -41,7 +42,7 @@ PowerShell でエラスティック データベース プールを作成する�
 
 Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行してダウンロードおよびインストールすることができます。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」をご覧ください。
 
-SQL Database とエラスティック データベース プールの作成と管理に使うコマンドレットは、Azure リソース マネージャー モジュールにあります。Azure PowerShell を開始するときに、Azure モジュールのコマンドレットが既定でインポートされます。Azure リソース マネージャー モジュールに切り替えるには、Switch-AzureMode コマンドレットを使用します。
+Azure SQL Database とエラスティック データベース プールの作成と管理に使うコマンドレットは、Azure リソース マネージャー モジュールにあります。Azure PowerShell を開始するときに、Azure モジュールのコマンドレットが既定でインポートされます。Azure リソース マネージャー モジュールに切り替えるには、Switch-AzureMode コマンドレットを使用します。
 
 	Switch-AzureMode -Name AzureResourceManager
 
@@ -50,7 +51,7 @@ SQL Database とエラスティック データベース プールの作成と�
 
 ## 資格情報を構成してサブスクリプションを選択
 
-これで、Azure リソース マネージャー モジュールが実行され、プールを作成して構成するために必要なすべてのコマンドレットにアクセスできるようになりました。はじめに Azure アカウントへのアクセスを確立する必要があります。次を実行すると資格情報を入力するサインイン画面が表示されます。Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
+これで、Azure リソース マネージャー モジュールが実行され、エラスティック データベース プールを作成して構成するために必要なすべてのコマンドレットにアクセスできるようになりました。はじめに Azure アカウントへのアクセスを確立する必要があります。次を実行すると資格情報を入力するサインイン画面が表示されます。Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
 
 	Add-AzureAccount
 
@@ -66,7 +67,7 @@ SQL Database とエラスティック データベース プールの作成と�
 
 ## リソース グループ、サーバー、ファイアウォール規則の作成
 
-これでご利用の Azure サブスクリプションに対してコマンドレットを実行する準備ができましたので、次にプールを作成するサーバーを含むリソース グループを確立します。次のコマンドを編集して選択した任意の有効な場所で使用できます。**(Get-AzureLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations** を実行して有効な場所の一覧を取得します。
+これでご利用の Azure サブスクリプションに対してコマンドレットを実行する準備ができましたので、次にエラスティック データベース プールを作成するサーバーを含むリソース グループを確立します。次のコマンドを編集して選択した任意の有効な場所で使用できます。**(Get-AzureLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations** を実行して有効な場所の一覧を取得します。
 
 すでにリソース グループがある場合は次の手順に進みます。次のコマンドを実行して新しいリソース グループを作ることもできます。
 
@@ -94,15 +95,15 @@ SQL Database とエラスティック データベース プールの作成と�
 
 ## エラスティック データベース プールとエラスティック データベースの作成
 
-これでリソース グループ、サーバー、ファイアウォール規則が構成され、サーバーにアクセスできるようになりました。次のコマンドでプールを作成します。このコマンドで合計 400 DTU を共有するプールが作成されます。プールの各データベースは常に 10 DTU 使用できることが保証されます (DatabaseDtuMin)。プールの各データベースは最大 100 DTU を使用できます (DatabaseDtuMax)。パラメーターの詳細については「[SQL Database のエラスティック プール (プレビュー)](sql-database-elastic-pool.md)」をご覧ください。
+これでリソース グループ、サーバー、ファイアウォール規則が構成され、サーバーにアクセスできるようになりました。次のコマンドでエラスティック データベース プールを作成できます。このコマンドで合計 400 eDTU を共有するプールが作成されます。プールの各データベースは常に 10 eDTU 使用できることが保証されます (DatabaseDtuMin)。プールの各データベースは最大 100 eDTU を使用できます (DatabaseDtuMax)。パラメーターの詳細については「[SQL Database のエラスティック プール (プレビュー)](sql-database-elastic-pool.md)」をご覧ください。
 
 
 	New-AzureSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 
 
-### エラスティック データベースの作成またはプールへの追加
+### エラスティック データベースを作成するか、エラスティック データベースに追加する
 
-前の手順で作成したプールはまだ空で、データベースが含まれていません。このセクションでは、プールに新しいデータベース作成する方法と、既存のデータベースを追加する方法を示します。
+前の手順で作成したプールはまだ空であり、エラスティック データベースが含まれていません。このセクションでは、プール内で新しいエラスティック データベース作成する方法と、既存のデータベースをプールに追加する方法を示します。
 
 
 ### エラスティック データベース プールでの新しい エラスティック データベースの作成
@@ -123,15 +124,21 @@ SQL Database とエラスティック データベース プールの作成と�
 
 	New-AzureSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -Edition "Standard"
 
-既存のデータベースをプールに移動します。
+エラスティック データベース プールで既存のデータベースに移動します。
 
 	Set-AzureSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
+
+## エラスティック データベース プールのパフォーマンス設定の変更
+
+
+    Set-AzureSqlElasticPool –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” –Dtu 1200 –DatabaseDtuMax 100 –DatabaseDtuMin 50 
+
 
 ## エラスティック データベースとエラスティック データベース プールの監視
 
 ### エラスティック データベース プールの操作の状態の取得
 
-作成や更新など、プールに対する操作の状態を追跡できます。
+作成や更新など、エラスティック データベース プール操作の状態を確認できます。
 
 	Get-AzureSqlElasticPoolActivity –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” 
 
@@ -142,16 +149,16 @@ SQL Database とエラスティック データベース プールの作成と�
 
 ### エラスティック データベース プールのリソース消費メトリックの取得
 
-プールの制限値に対するパーセンテージとして取得できるメトリックを以下に示します。
+リソース プールの制限値のパーセンテージとして取得できるメトリックを以下に示します。
 
 * 平均 CPU 使用率 - cpu\_percent 
 * 平均 IO 使用率 - data\_io\_percent 
 * 平均 Log 使用率 - log\_write\_percent 
 * 平均メモリ使用率 - memory\_percent 
-* 平均 DTU 使用率 (CPU、IO、Log 使用率の最大値として) - DTU\_percent 
+* 平均 eDTU 使用率 (CPU、IO、Log 使用率の最大値として) - DTU\_percent 
 * 同時ユーザー リクエストの最大数 (ワーカー) - max\_concurrent\_requests 
 * 同時ユーザー セッションの最大数 - max\_concurrent\_sessions 
-* プールの合計ストレージ サイズ - storage\_in\_megabytes 
+* エラスティック プールの合計ストレージ容量 - storage\_in\_megabytes 
 
 
 メトリックの単位と保有期間を以下に示します。
@@ -183,7 +190,7 @@ CSV ファイルにエクスポートします。
 
 これらの API は、次のセマンティックな相違点を除き、スタンドアロン データベースのリソース使用率の監視に使用する現在の (V12) API と同じです。
 
-* この API では、取得されたメトリックが、プールに設定されている databaseDtuMax (または CPU、IO など、基盤となるメトリックに関してこれと同等の役割を果たす上限) に対するパーセンテージで表示されます。たとえば、これらのメトリックのうちのいずれかの使用率が 50% であることは、特定のリソースの消費量が、親となるプールでそのリソースに対して設けられている DB の上限の 50% であることを示しています。 
+* 取得されたこの API メトリックは、エラスティック データベース プールの databaseDtuMax (または CPU、IO など基盤となるメトリックと同等の上限) セットのパーセンテージとして表されます。たとえば、これらのメトリックいずれかの使用率が 50% であることは、特定のリソース消費量が、DB の上限の 50% (親のエラスティック データベース プールで該当するリソースの制限) であることを示しています。 
 
 メトリックは次のようにして取得します。$metrics = (Get-Metrics -ResourceId /subscriptions/d7c1d29a-ad13-4033-877e-8cc11d27ebfd/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015")
 
@@ -211,7 +218,7 @@ CSV ファイルにエクスポートします。
     New-AzureSqlServerFirewallRule -ResourceGroupName "resourcegroup1" -ServerName "server1" -FirewallRuleName "rule1" -StartIpAddress "192.168.0.198" -EndIpAddress "192.168.0.199"
     New-AzureSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
     New-AzureSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1" -MaxSizeBytes 10GB
-    
+    Set-AzureSqlElasticPool –ResourceGroupName “resourcegroup1” –ServerName “server1” –ElasticPoolName “elasticpool1” –Dtu 1200 –DatabaseDtuMax 100 –DatabaseDtuMin 50 
     
     $metrics = (Get-Metrics -ResourceId /subscriptions/d7c1d29a-ad13-4033-877e-8cc11d27ebfd/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/elasticPools/franchisepool -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015") 
     $metrics = $metrics + (Get-Metrics -ResourceId /subscriptions/d7c1d29a-ad13-4033-877e-8cc11d27ebfd/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/elasticPools/franchisepool -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/21/2015" -EndTime "4/24/2015")
@@ -225,13 +232,11 @@ CSV ファイルにエクスポートします。
 
 ## 次のステップ
 
-エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のエラスティック データベース を管理できます。エラスティック ジョブは、プール内にある任意の数のエラスティック データベースに対して T-SQL スクリプトの実行を容易にします。
-
-詳細については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
+エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のエラスティック データベース を管理できます。エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。詳細については、「[弾力性データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
 
 
 ## エラスティック データベースのリファレンス
 
 API とエラーの詳細を含む弾力性データベースと弾力性データベース プールの詳細については、「[弾力性データベースのリファレンス](sql-database-elastic-pool-reference.md)」をご覧ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,12 +1,11 @@
 <properties
 	pageTitle="Azure AD でのパスワードの管理 | Microsoft Azure"
-	description="Azure AD でパスワードを管理する方法について説明します。"
+	description="Azure AD でのパスワードの管理方法"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="swadwha"
-	editor=""
-	tags="azure-classic-portal"/>
+	manager="stevenpo"
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -14,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/28/2015"
+	ms.date="08/10/2015"
 	ms.author="curtand"/>
 
 # Azure AD でのパスワードの管理
@@ -33,18 +32,20 @@
 
 次のリンクを使用して、最も関心のあるドキュメントに移動してください。
 
-- [概要: Azure AD でのパスワード管理](https://msdn.microsoft.com/library/azure/dn683880.aspx)
-- [Azure AD のセルフ サービス パスワードのリセット: セルフ サービスのパスワード リセットを有効化、構成、テストする方法](https://msdn.microsoft.com/library/azure/dn683881.aspx)
-- [Azure AD のセルフ サービス パスワードのリセット: ニーズに合わせてパスワード リセットをカスタマイズする方法](https://msdn.microsoft.com/library/azure/dn688249.aspx)
-- [Azure AD のセルフ サービス パスワードのリセット: 展開と管理のベスト プラクティス](https://msdn.microsoft.com/library/azure/dn903643.aspx)
-- [Azure AD でのパスワード管理のレポート: テナントでパスワード管理アクティビティを表示する方法](https://msdn.microsoft.com/library/azure/dn903641.aspx)
-- [パスワード ライトバック: オンプレミスのパスワードの管理用に Azure AD を構成する方法](https://msdn.microsoft.com/library/azure/dn903642.aspx)
-- [Azure AD のパスワード管理に関する FAQ/トラブルシューティング](https://msdn.microsoft.com/library/azure/dn683878.aspx)
+- [概要: Azure AD でのパスワード管理](active-directory-passwords-how-it-works.md)
+- [Azure AD のセルフ サービス パスワードのリセット: セルフ サービスのパスワード リセットを有効化、構成、テストする方法](active-directory-passwords-getting-started.md#enable-users-to-reset-their-azure-ad-passwords)
+- [Azure AD のセルフ サービス パスワードのリセット: ニーズに合わせてパスワード リセットをカスタマイズする方法](active-directory-passwords-customize.md)
+- [Azure AD のセルフ サービス パスワードのリセット: 展開と管理のベスト プラクティス](active-directory-passwords-best-practices.md)
+- [Azure AD でのパスワード管理のレポート: テナントでパスワード管理アクティビティを表示する方法](active-directory-passwords-get-insights.md)
+- [パスワード ライトバック: オンプレミスのパスワードの管理用２に Azure AD を構成する方法](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords)
+- [Azure AD のパスワード管理に関するトラブルシューティング](active-directory-passwords-troubleshoot.md)
+- [Azure AD のパスワード管理に関する FAQ](active-directory-passwords-faq.md)
 
-## 参照トピック
+
+## 次の手順
 
 - [Administer your Azure AD directory (Azure AD ディレクトリの管理)](active-directory-administer.md)
 - [Azure AD でのユーザーの作成または編集](active-directory-create-users.md)
 - [Azure AD でのグループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

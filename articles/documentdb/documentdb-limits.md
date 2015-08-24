@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/02/2015" 
+	ms.date="08/11/2015" 
 	ms.author="mimig"/>
 
 
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

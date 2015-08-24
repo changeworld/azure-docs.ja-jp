@@ -35,9 +35,9 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
 
 表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。あるいは、[参照] ボタンをクリックして探します。
 
-## Mac 向けの Application Insights をダウンロードする
+## iOS 向けの Application Insights をダウンロードする
 
-(まだインストールしていない場合。)
+(まだインストールしていない場合)。
 
 1. [Mac 向けの Application Insights](http://go.microsoft.com/fwlink/?LinkID=533209) をダウンロードします。
 
@@ -141,4 +141,4 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

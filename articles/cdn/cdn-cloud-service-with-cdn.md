@@ -5,7 +5,7 @@
 	documentationCenter=".net" 
 	authors="cephalin" 
 	manager="wpickett" 
-	editor="jimbe"/>
+	editor="tysonn"/>
 
 <tags 
 	ms.service="cdn" 
@@ -13,12 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/27/2015" 
+	ms.date="08/06/2015" 
 	ms.author="cephalin"/>
 
-#<a name="intro"></a>クラウド サービスと Azure CDN との統合 #
 
-<!-- Keeping this article pinned to the old portal because CDN is not yet lit up in the new portal -->
+# <a name="intro"></a>クラウド サービスと Azure CDN との統合 
 
 クラウド サービスを Azure CDN に統合すると、クラウド サービスの `~/CDN` パスからコンテンツを配信できます。この方法には、次の利点があります。
 
@@ -91,7 +90,7 @@
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-8-publish-finalize.png)
 
-	>[AZURE.NOTE] クラウド サービスの発行には時間がかかります。[すべてのロールの Web のデプロイを有効にする] オプションを使用すると、Web ロールに対する高速な (ただし一時的な) 更新を提供することでクラウド サービスのデバッグが高速化されます。このオプションの詳細については、「[Azure Tools を使用したクラウド サービスの発行](http://msdn.microsoft.com/library/ff683672.aspx)」を参照してください。
+	>[AZURE.NOTE]クラウド サービスの発行には時間がかかります。[すべてのロールの Web のデプロイを有効にする] オプションを使用すると、Web ロールに対する高速な (ただし一時的な) 更新を提供することでクラウド サービスのデバッグが高速化されます。このオプションの詳細については、「[Azure Tools を使用したクラウド サービスの発行](http://msdn.microsoft.com/library/ff683672.aspx)」を参照してください。
 
 	[**Microsoft Azure のアクティビティ ログ**] に発行状態が [**完了**] と表示されたら、このクラウド サービスと統合される CDN エンドポイントを作成します。
 
@@ -100,7 +99,7 @@
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-10-createcdn.png)
 
-	>[AZURE.NOTE] CDN エンドポイントが作成されると、その URL と統合先のオリジン ドメインが Azure ポータルに表示されます。ただし、新しい CDN エンドポイントの構成がすべての CDN ノードの場所に完全に反映されるまで少し時間がかかる場合があります。
+	>[AZURE.NOTE]CDN エンドポイントが作成されると、その URL と統合先のオリジン ドメインが Azure ポータルに表示されます。ただし、新しい CDN エンドポイントの構成がすべての CDN ノードの場所に完全に反映されるまで少し時間がかかる場合があります。
 
 	CDN エンドポイントは、クラウド サービスのパス **cdn/** に関連付けられます。これに対応するには、**WebRole1** プロジェクトに **cdn** フォルダーを作成するか、または URL の書き換えを使用してこのパスのすべての着信リンクを削除します。このチュートリアルでは、後者の方法を使用します。
 
@@ -112,7 +111,7 @@
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-12-disablequeryb.png)
 
-	>[AZURE.NOTE] チュートリアルのこのセクションでのクエリ文字列の有効化は必須ではありませんが、ここでの変更がすべての CDN ノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。
+	>[AZURE.NOTE]チュートリアルのこのセクションでのクエリ文字列の有効化は必須ではありませんが、ここでの変更がすべての CDN ノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。
 
 3. CDN エンドポイントに対して ping を実行し、CDN エンドポイントが CDN ノードに反映されていることを確認します。場合によっては ping に対する応答が得られるようになるまで最大で 1 時間待つ必要があります。
 
@@ -120,17 +119,17 @@
 
 2. Visual Studio 2013 に戻り、**WebRole1** プロジェクトの **Web.config** を開き、次のコードを `<system.webServer>` タグに追加します。
 	<pre class="prettyprint">
-&lt;system.webServer>
-  <mark>&lt;rewrite>
-    &lt;rules>
-      &lt;rule name="RewriteIncomingCdnRequest" stopProcessing="true">
-        &lt;match url="^cdn/(.*)$"/>
-        &lt;action type="Rewrite" url="{R:1}"/>
-      &lt;/rule>
-    &lt;/rules>
-  &lt;/rewrite></mark>
-  ...
-&lt;/system.webServer>
+		<system.webServer>
+		  <rewrite>
+		    <rules>
+		      <rule name="RewriteIncomingCdnRequest" stopProcessing="true">
+		        <match url="^cdn/(.*)$"/>
+		        <action type="Rewrite" url="{R:1}"/>
+		      </rule>
+		    </rules>
+		  </rewrite>
+		  ...
+		</system.webServer>
 </pre>
 
 4. もう一度クラウド サービスを発行します。クラウド サービス プロジェクトを右クリックし、**[発行]** を選択します。
@@ -172,25 +171,24 @@
 
 また、クラウド サービスで Azure CDN から配信するコンテンツをケースバイケースで決定する方法もあります。CDN エンドポイントから個々のコンテンツ ファイルにアクセスする方法については既に説明しました。CDN エンドポイントを介して特定のコントローラー アクションを配信する方法については、「[Azure CDN を介してコントローラー アクションからコンテンツを配信する](#controller)」で説明します。
 
-より制限の厳しい URL の書き換え規則を指定すると、CDN エンドポイントを介してアクセスできるコンテンツを制限できます。たとえば、URL の書き換えを *\Scripts* フォルダーに制限するには、上記の書き換え規則を次のように変更します。   
-<pre class="prettyprint">
-&lt;rule name=&quot;RewriteIncomingCdnRequest&quot; stopProcessing=&quot;true&quot;&gt;
-  &lt;match url=&quot;^cdn/<mark>Scripts/</mark>(.*)$&quot;/&gt;
-  &lt;action type=&quot;Rewrite&quot; url=&quot;<mark>Scripts/</mark>{R:1}&quot;/&gt;
-&lt;/rule&gt;
-</pre>
+より制限の厳しい URL の書き換え規則を指定すると、CDN エンドポイントを介してアクセスできるコンテンツを制限できます。たとえば、URL の書き換えを *\\Scripts* フォルダーに制限するには、上記の書き換え規則を次のように変更します。
+   
+	<rule name="RewriteIncomingCdnRequest" stopProcessing="true">
+	  <match url="^cdn/Scripts/(.*)$"/>
+	  <action type="Rewrite" url="Scripts/{R:1}"/>
+	</rule>
 
 <a name="caching"></a>
 ## クラウド サービスの静的ファイルのキャッシュ オプションを構成する ##
 
 Azure CDN 統合をクラウド サービスに組み込むと、CDN エンドポイントで静的コンテンツをどのようにキャッシュするかを指定できます。そのためには、Web ロール プロジェクト (たとえば、WebRole1) の *Web.config* を開き、`<staticContent>` 要素を `<system.webServer>` に追加します。次の XML では、3 日間で有効期限が切れるキャッシュを追加しています。
 <pre class="prettyprint">
-&lt;system.webServer&gt;
-  <mark>&lt;staticContent&gt;
-    &lt;clientCache cacheControlMode=&quot;UseMaxAge&quot; cacheControlMaxAge=&quot;3.00:00:00&quot;/&gt;
-  &lt;/staticContent&gt;</mark>
-  ...
-&lt;/system.webServer&gt;
+	<system.webServer>
+	  <staticContent>
+	    <clientCache cacheControlMode="UseMaxAge" cacheControlMaxAge="3.00:00:00"/>
+	  </staticContent>
+	  ...
+	</system.webServer>
 </pre>
 
 この操作を実行すると、クラウド サービス内のすべての静的ファイルは、CDN キャッシュ内で同じ規則に従います。キャッシュ設定をより細かく制御するには、*Web.config* ファイルをフォルダーに追加し、そこに設定を追加します。たとえば、*Web.config* ファイルを *\Content* フォルダーに追加して、その内容を次の XML で置き換えます。
@@ -477,40 +475,39 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
  
 4. ページの HTML コードを表示します。クラウド サービスに変更を再発行するたびに一意のバージョン文字列を付けて CDN URL がレンダリングされているのを確認できます。次に例を示します。
 	<pre class="prettyprint">
-	...
-
-    &lt;link href=&quot;http://az632148.vo.msecnd.net/Content/css?v=1.0.0.25449&quot; rel=&quot;stylesheet&quot;/&gt;
-
-    &lt;script src=&quot;http://az632148.vo.msecnd.net/bundles/modernizer?v=1.0.0.25449&quot;&gt;&lt;/script&gt;
-
-	...
-
-    &lt;script src=&quot;http://az632148.vo.msecnd.net/bundles/jquery?v=1.0.0.25449&quot;&gt;&lt;/script&gt;
-
-    &lt;script src=&quot;http://az632148.vo.msecnd.net/bundles/bootstrap?v=1.0.0.25449&quot;&gt;&lt;/script&gt;
-
-	...</pre>
+		...
+		
+		<link href="http://az632148.vo.msecnd.net/Content/css?v=1.0.0.25449" rel="stylesheet"/>
+		
+		<script src="http://az632148.vo.msecnd.net/bundles/modernizer?v=1.0.0.25449"></script>
+		
+		...
+		
+		<script src="http://az632148.vo.msecnd.net/bundles/jquery?v=1.0.0.25449"></script>
+		
+		<script src="http://az632148.vo.msecnd.net/bundles/bootstrap?v=1.0.0.25449"></script>
+		
+		...
 
 5. Visual Studio で、`F5` キーを押してクラウド サービスをデバッグします。
 
 6. ページの HTML コードを表示します。Visual Studio での一貫したデバッグ エクスペリエンスが得られるように個別にレンダリングされた各スクリプト ファイルを確認できます。
-	<pre class="prettyprint">
-	...
-	
-	    &lt;link href=&quot;/Content/bootstrap.css&quot; rel=&quot;stylesheet&quot;/&gt;
-	&lt;link href=&quot;/Content/site.css&quot; rel=&quot;stylesheet&quot;/&gt;
-	
-	    &lt;script src=&quot;/Scripts/modernizr-2.6.2.js&quot;&gt;&lt;/script&gt;
-	
-	...
-	
-	    &lt;script src=&quot;/Scripts/jquery-1.10.2.js&quot;&gt;&lt;/script&gt;
-	
-	    &lt;script src=&quot;/Scripts/bootstrap.js&quot;&gt;&lt;/script&gt;
-	&lt;script src=&quot;/Scripts/respond.js&quot;&gt;&lt;/script&gt;
-	
-	...    
-	</pre>
+
+		...
+		
+		    <link href="/Content/bootstrap.css" rel="stylesheet"/>
+		<link href="/Content/site.css" rel="stylesheet"/>
+		
+		    <script src="/Scripts/modernizr-2.6.2.js"></script>
+		
+		...
+		
+		    <script src="/Scripts/jquery-1.10.2.js"></script>
+		
+		    <script src="/Scripts/bootstrap.js"></script>
+		<script src="/Scripts/respond.js"></script>
+		
+		...   
 
 <a name="fallback"></a>
 ## CDN URL のフォールバック メカニズム ##
@@ -580,42 +577,44 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	この新しいメソッドでは、同じアイデアを使用するスクリプトを HTML に挿入します。つまり、DOM を調べて CSS バンドルに定義されているクラス名、規則名、および規則値が一致するかどうかを確認し、一致しない場合はオリジン Web サーバーにフォールバックします。
 
 4. クラウド サービスを発行し、ホーム ページにアクセスします。
-5. ページの HTML コードを表示します。次のようなスクリプトが挿入されていることを確認できます。    
+
+5. ページの HTML コードを表示します。次のようなスクリプトが挿入されていることを確認できます。
 	<pre class="prettyprint">...
-	
-		&lt;link href="http://az632148.vo.msecnd.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
-	<mark>&lt;script>(function() {
-	                var loadFallback,
-	                    len = document.styleSheets.length;
-	                for (var i = 0; i &lt; len; i++) {
-	                    var sheet = document.styleSheets[i];
-	                    if (sheet.href.indexOf('http://az632148.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) {
-	                        var meta = document.createElement('meta');
-	                        meta.className = 'sr-only';
-	                        document.head.appendChild(meta);
-	                        var value = window.getComputedStyle(meta).getPropertyValue('width');
-	                        document.head.removeChild(meta);
-	                        if (value !== '1px') {
-	                            document.write('&lt;link href="/Content/css" rel="stylesheet" type="text/css" />');
-	                        }
-	                    {
-	                }
-	                return true;
-	            }())||document.write('&lt;script src="/Content/css">&lt;/script>');&lt;/script></mark>
-	
-	    &lt;script src="http://az632148.vo.msecnd.net/bundles/modernizer?v=1.0.0.25474">&lt;/script>
-	<mark>&lt;script>(window.Modernizr)||document.write('&lt;script src="/bundles/modernizr">&lt;/script>');&lt;/script></mark>
-	
-	...	
-	
-	    &lt;script src="http://az632148.vo.msecnd.net/bundles/jquery?v=1.0.0.25474">&lt;/script>
-	<mark>&lt;script>(window.jquery)||document.write('&lt;script src="/bundles/jquery">&lt;/script>');&lt;/script></mark>
-	
-	    &lt;script src="http://az632148.vo.msecnd.net/bundles/bootstrap?v=1.0.0.25474">&lt;/script>
-	<mark>&lt;script>($.fn.modal)||document.write('&lt;script src="/bundles/bootstrap">&lt;/script>');&lt;/script></mark>
-	
-	...
-	</pre>
+		...
+		
+	    <link href="http://az632148.vo.msecnd.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
+		<script>(function() {
+		                var loadFallback,
+		                    len = document.styleSheets.length;
+		                for (var i = 0; i < len; i++) {
+		                    var sheet = document.styleSheets[i];
+		                    if (sheet.href.indexOf('http://az632148.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) {
+		                        var meta = document.createElement('meta');
+		                        meta.className = 'sr-only';
+		                        document.head.appendChild(meta);
+		                        var value = window.getComputedStyle(meta).getPropertyValue('width');
+		                        document.head.removeChild(meta);
+		                        if (value !== '1px') {
+		                            document.write('<link href="/Content/css" rel="stylesheet" type="text/css" />');
+		                        }
+		                    }
+		                }
+		                return true;
+		            }())||document.write('<script src="/Content/css"><\/script>');</script>
+		
+		    <script src="http://az632148.vo.msecnd.net/bundles/modernizer?v=1.0.0.25474"></script>
+		<script>(window.Modernizr)||document.write('<script src="/bundles/modernizr"><\/script>');</script>
+		
+		... 
+		
+		    <script src="http://az632148.vo.msecnd.net/bundles/jquery?v=1.0.0.25474"></script>
+		<script>(window.jquery)||document.write('<script src="/bundles/jquery"><\/script>');</script>
+		
+		    <script src="http://az632148.vo.msecnd.net/bundles/bootstrap?v=1.0.0.25474"></script>
+		<script>($.fn.modal)||document.write('<script src="/bundles/bootstrap"><\/script>');</script>
+		
+		...
+
 
 	CSS バンドルに対して挿入されたスクリプトには、次の行に `CdnFallbackExpression` プロパティのエラーの残りがまだ含まれている点に注意してください。
 
@@ -624,11 +623,10 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	ただし、(すぐ上の行の) || 式の最初の部分は常に true を返すため、document.write() 関数が実行されることはありません。
 
 ## 詳細情報 ##
-- [Azure コンテンツ配信ネットワーク (CDN) の概要](cdn-overview.md)
+- [Azure コンテンツ配信ネットワーク (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
 - [Web アプリケーションで Azure CDN からコンテンツを配信する](cdn-serve-content-from-cdn-in-your-web-application.md)
 - [Azure App Service で Azure CDN を使用する](../cdn-websites-with-cdn.md)
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
-- [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
- 
+- [Azure 用 CDN の使用](cdn-how-to-use.md)
 
-<!-------HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

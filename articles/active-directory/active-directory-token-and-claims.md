@@ -1,9 +1,9 @@
-<properties 
+ <properties
    pageTitle="サポートされているトークンとクレームの種類"
    description="Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド"
    documentationCenter="dev-center-name"
    authors="msmbaldwin"
-   services="active-directory" 
+   services="active-directory"
    manager="mbaldwin"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/01/2015"
+   ms.date="08/12/2015"
    ms.author="mbaldwin"/>
 
 # サポートされているトークンとクレームの種類
@@ -411,6 +411,5 @@ JWT トークンでは、ユーザー プリンシパル名は upn クレーム�
 ##関連項目
 
 [Azure Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

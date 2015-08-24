@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="05/08/2015"
+	ms.date="08/05/2015"
 	ms.author="raynew"/>
 
 
@@ -106,4 +106,4 @@ VM5 | C:\\ClusterStorage\\SourceVolume3 | 該当なし | マッピングを構�
 記憶域マッピングについて理解を深めたので、[ベスト プラクティス](site-recovery-best-practices.md)を読み、デプロイの準備をします。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

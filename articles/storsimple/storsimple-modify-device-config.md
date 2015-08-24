@@ -131,4 +131,4 @@ StorSimple 8000 シリーズ Update 1 では、DATA 0 のルーティング メ�
  
      
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.topic="article"
    ms.workload="required" 
-   ms.date="07/03/2015"
+   ms.date="08/05/2015"
    ms.author="ruturajd@microsoft.com"/>
 
   
@@ -135,8 +135,18 @@ ASR は、コンテキスト変数を Runbook に渡して、確定的なスク�
 
 
 以下の表には、コンテキスト内の各変数の名前と説明が示されています。
-  
-<table border="1"> <tr><th>変数名</th><th>変数の説明</th></tr> <tr><td>RecoveryPlanName</td><td>実行されている、復旧計画の名前です。<p> この変数を使用すると、同じスクリプトを使用して、復旧計画の名前に基づいて異なるアクションを実行できます。</td></tr> <tr><td>FailoverType</td><td>実行が **Test** (テスト)、**Planned** (計画済み) または **Unplanned** (計画外) のいずれかであることを指定します。<p> この変数を使用すると、フェールオーバーの種類に基づいて異なるアクションを実行できます。</td></tr> <tr><td>FailoverDirection</td><td>復旧がプライマリ側から復旧側に行われるか、またはその逆かを指定します。<p>指定される 2 つの値は、**PrimaryToSecondary** と **SecondaryToPrimary** です。</td></tr> <tr><td>GroupId</td><td>Runbook を実行している復旧計画内で、グループ番号を識別します。<p> たとえば、Runbook が post group 2 の場合は、GroupId は 2 になります。</td></tr> <tr><td>VmMap</td><td> これは、グループ内のすべての仮想マシンの配列です。</td></tr> <tr><td>VmMap キー</td><td>各仮想マシンには、GUID によって識別される一意のキーがあります。この GUID は、仮想マシンの VMM ID と同じです。<p> この GUID を使用すると、どの仮想マシン上で稼働するのかを確定的に指定できます。</td></tr> <tr><td>RoleName</td><td>復旧される Azure 仮想マシンの名前を指定します。</td></tr> <tr><td>CloudServiceName</td><td>仮想マシンが作成される Azure クラウド サービスの名前を指定します。</td></tr> </table><br />
+
+**変数名** | **説明**
+---|---
+RecoveryPlanName | 実行される計画の名前です。同じスクリプトを使用して名前を基にアクションを実行するのに役に立ちます。
+FailoverType | テスト用のフェールオーバーか、計画されたフェールオーバーか、それとも計画外のフェールオーバーかを指定します。 
+FailoverDirection | プライマリへの復旧か、それともセカンダリへの復旧かを指定します。
+GroupID | 復旧計画が実行される場合に、その計画内のグループ番号を識別します。
+VmMap | グループ内のすべての仮想マシンの配列です。
+VMMap キー | VM ごとの一意のキー (GUID) です。これは、該当する仮想マシンの VMM ID と同じです。 
+RoleName | 復元される Azure VM の名前 です。
+CloudServiceName | 仮想マシンが作成される Azure Cloud Service の名前です。
+
 
 コンテキストで VmMap キーを識別するには、ASR の [VM のプロパティ] ページに移動し、VM GUID プロパティを参照することもできます。
 
@@ -303,4 +313,4 @@ Runbook を計画に追加したら、テスト フェールオーバーを開�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

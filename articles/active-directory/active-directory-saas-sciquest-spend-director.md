@@ -64,8 +64,7 @@ Azure AD への SciQuest Spend Director の統合を構成するには、ギャ�
 4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]
 5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]
 6. 検索ボックスに「**sciQuest spend director**」と入力します。<br> ![アプリケーション][5]
-7. 結果ウィンドウで **[SciQuest Spend Director]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br>
-
+7. 結果ウィンドウで **[SciQuest Spend Director]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br> ![アプリケーション][6]
 
 
 ##  Azure AD シングル サインオンの構成とテスト
@@ -83,17 +82,17 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
 ### 単一の Azure AD シングル サインオンの構成
 
-このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、SciQuest Spend Director アプリケーションでシングル サインオンを構成するにです。<br>
+このセクションの目的は、Azure AD ポータルで Azure AD のシングル サインオンを有効にすることと、SciQuest Spend Director アプリケーションでシングル サインオンを構成することです。<br>
 
 **SciQuest Spend Director で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure AD ポータルの **[SciQuest Spend Director]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][8]
+1. Azure AD ポータルの **SciQuest Spend Director ** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][8]
 
 2. **[ユーザーの SciQuest Spend Director へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD Single Sign-On][9]
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行します。<br><br>![Configure App Settings][10]
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure App Settings][10]
  
-     3\.1.**[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが SciQuest Spend Director アプリケーションへのサインオンに使用する URL を入力します: **https://.*sciquest.com/.**。
+     3\.1.**[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが SciQuest Spend Director アプリケーションへのサインオンに使用する URL を入力します。**https://.*sciquest.com/.**。
 
      3\.2.**[応答 URL]** ボックスに、**[サインオン URL]** ボックスに入力したのと同じ値を入力します。
 
@@ -114,7 +113,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![What is Azure AD Connect][100] 
+1. **Microsoft Azure 管理ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br>![What is Azure AD Connect][100] 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. ユーザーの一覧を表示するには、上部のメニューで **[ユーザー]** をクリックします。<br><br>![What is Azure AD Connect][101] 
 4. **[ユーザーの追加]** ダイアログを開くには、下部にあるツール バーで **[ユーザーの追加]** をクリックします。<br><br>![What is Azure AD Connect][102] 
@@ -152,10 +151,10 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 **SciQuest Spend Director に Britta Simon を割り当てるには、次の手順に従います。**
 
 1. Azure ポータルでアプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br> <br><br>![What is Azure AD Connect][201]
-2. アプリケーションの一覧で **[SciQuest Spend Director]** を選択します。<br><br>
-1. 上部のメニューで **[ユーザー]** をクリックします。<br> <br><br>![What is Azure AD Connect][202]
-1. ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![What is Azure AD Connect][203]
-2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![What is Azure AD Connect][204]
+2. アプリケーションの一覧で **[SciQuest Spend Director]** を選択します。<br><br>![What is Azure AD Connect][202]
+1. 上部のメニューで **[ユーザー]** をクリックします。<br> <br><br>![What is Azure AD Connect][203]
+1. ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![What is Azure AD Connect][204]
+2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![What is Azure AD Connect][205]
 
 
 
@@ -175,6 +174,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 [3]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_03.png
 [4]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_04.png
 [5]: ./media/active-directory-saas-sciquest-spend-director/tutorial_sciquest_spend_director_01.png
+[6]: ./media/active-directory-saas-sciquest-spend-director/tutorial_sciquest_spend_director_05.png
 [8]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_06.png
 [9]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_07.png
 [10]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_08.png
@@ -190,8 +190,9 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 [106]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_15.png
 [200]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_16.png
 [201]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_17.png
-[202]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_18.png
-[203]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_19.png
-[204]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_20.png
+[202]: ./media/active-directory-saas-sciquest-spend-director/tutorial_sciquest_spend_director_06.png
+[203]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_18.png
+[204]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_19.png
+[205]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_20.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

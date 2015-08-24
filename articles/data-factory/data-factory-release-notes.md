@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Data Factory - リリース ノート | Azure" 
+	pageTitle="Data Factory - リリース ノート | Microsoft Azure" 
 	description="Data Factory - リリース ノート" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -284,7 +284,7 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 	-  [JSON テーブルの OnPremisesOracleTableLocation プロパティ](https://msdn.microsoft.com/library/dn894089.aspx#Oracle) 
 	-  [サポートされているソースとシンク](https://msdn.microsoft.com/library/dn894007.aspx)更新されたコピー マトリックスと **OracleSource** プロパティを参照してください。
 -  Azure BLOB 内のテキスト ファイルのエンコードを指定できます。新しい [encodingName プロパティ](https://msdn.microsoft.com/library/dn894089.aspx#AzureBlob)を参照してください。 
-- SQL シンクにコピーするときに、追加のパラメーターを使用してストアド プロシージャを呼び出すことができます。詳細については、「[SQL シンクのストアド プロシージャの呼び出し][adf-copy-advanced]」を参照してください。   
+- SQL シンクにコピーするときに、追加のパラメーターを使用してストアド プロシージャを呼び出すことができます。    
 
 例を含む追加情報については、[Azure Data Factory の更新 - 新しいデータ ストア](http://azure.microsoft.com/blog/2015/03/30/azure-data-factory-update-new-data-stores/)に関する BLOB の投稿を参照してください。
 
@@ -299,7 +299,7 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 
 ### 変更点
 - 更新された **Data Management Gateway** インストール パッケージが [Microsoft ダウンロード センター][adf-gateway-download]に投稿されました。今回のリリース以降、このダウンロード元から Azure Data Factory で使用できる最新の Data Management Gateway を検索できるようになりました。このインストール パッケージは、Azure Data Factory と Power BI for Office 365 サービスの両方で機能します。両方のサービスを使用している場合は、Data Factory と Power BI のゲートウェイを別のコンピューターにインストールし、Data Factory または Power BI のドキュメントのガイダンスに従って個別に構成する必要があります。
-- **コピー アクティビティ**で、オンプレミスの SQL Server データベースと Azure SQL Database の間でのデータのコピーがサポートされるようになりました。詳細については、[コピー アクティビティ][adf-copy-activity]に関するページを参照してください。JSON のサンプルについては [GitHub][adf-github-samples] を参照してください。
+- **コピー アクティビティ**で、オンプレミスの SQL Server データベースと Azure SQL Database の間でのデータのコピーがサポートされるようになりました。 
 - **SqlSink** で新しいプロパティ **WriteBatchTimeout** がサポートされるようになりました。このプロパティを使用すると、操作がタイムアウトになる前にバッチ挿入操作が完了するまでの待機時間を柔軟に構成できます。ハイブリッド コピー (オンプレミスのデータ ソースとクラウドのデータ ソースが関連するコピー操作) の場合、このプロパティを使用するには 1.4 以上のバージョンのゲートウェイが必要です。 
 - **SQL Server のリンクされたサービス** で、**Windows 認証**がサポートようになりました。 
 	- ポータルを使用して SQL Server のリンクされたサービスを作成する場合、Windows 認証を使用して適切な資格情報を設定できるようになりました。この設定には 1.4 以上のバージョンのゲートウェイが必要です。 
@@ -331,7 +331,7 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 - CustomActivity から DotNetActivity へ
 	- **ICustomActivity** インターフェイスの名前が **IDotNetActivity** に変更されました。Data Factory NuGet パッケージを更新し、カスタム アクティビティのソース コードで、ICustomActivity を IDotNetActivity に変更する必要があります。  
 	- カスタム アクティビティの JSON 定義におけるカスタム アクティビティの種類を、**CustomActivity** から **DotNetActivity** に変更する必要があります。 
-	- **CustomActivity** と **CustomActivityProperties** クラスの名前は、それぞれ、**DotNetActivity** と **DotNetActivityProperties** に変更されました (プロパティ セットは変わりません)。
+	- **CustomActivity** と **CustomActivityProperties** クラスの名前は、それぞれ、**DotNetActivity** と **DotNetActivityProperties** に変更されました （プロパティ セットは変わりません)。
 
 		古いバージョンの SDK および Azure PowerShell を使用している場合は、DotNetActivity の代わりに、引き続き CustomActivity を使用できます。
     
@@ -339,9 +339,7 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 
 [adf-azure-ml]: data-factory-create-predictive-pipelines.md
 [adf-custom-activities]: data-factory-use-custom-activities.md
-[adf-copy-activity]: data-factory-copy-activity.md
 [adf-editor]: data-factory-editor.md
-[adf-copy-advanced]: data-factory-copy-activity-advanced.md
 
 [adf-editor-video]: http://channel9.msdn.com/Blogs/Windows-Azure/New-Azure-Data-Factory-Editor-UI
 [adf-editor-blog]: http://azure.microsoft.com/blog/2015/03/02/azure-data-factory-editor-a-light-weight-web-editor/
@@ -355,4 +353,4 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

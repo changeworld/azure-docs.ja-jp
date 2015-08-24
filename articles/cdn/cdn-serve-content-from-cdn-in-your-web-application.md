@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/27/2015" 
+	ms.date="08/06/2015" 
 	ms.author="cephalin"/>
 
 # Web アプリケーションで Azure CDN からコンテンツを配信する #
@@ -218,17 +218,27 @@ BLOB コンテナーの Web アプリケーションから静的ファイルを�
 <a name="query"></a>
 ## クエリ文字列を使用して即座に最新コンテンツを配信する ##
 
-Azure CDN で、クエリ文字列を有効にすることにより、固有のクエリ文字列を含む URL からのコンテンツを別個にキャッシュできます。キャッシュされた CDN コンテンツの期限切れまで待機せずに、特定のコンテンツの更新をクライアント ブラウザーに即座にプッシュする場合に、この機能は役立ちます。URL にバージョン番号を含む Web ページを発行するとします。<pre class="prettyprint"> &lt;link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css?v=3.0.0&quot; rel=&quot;stylesheet&quot;/&gt; </pre>
+Azure CDN で、クエリ文字列を有効にすることにより、固有のクエリ文字列を含む URL からのコンテンツを別個にキャッシュできます。キャッシュされた CDN コンテンツの期限切れまで待機せずに、特定のコンテンツの更新をクライアント ブラウザーに即座にプッシュする場合に、この機能は役立ちます。URL にバージョン番号を含む Web ページを発行するとします。
+  
+	<link href="http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css?v=3.0.0" rel="stylesheet"/>
 
-CSS 更新を発行して、CSS URL で別のバージョン番号を使用する場合は、次のようになります。<pre class="prettyprint"> &lt;link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css?v=3.1.1&quot; rel=&quot;stylesheet&quot;/&gt; </pre>
+CSS 更新を発行して、CSS URL で別のバージョン番号を使用する場合は、次のようになります。
+
+	<link href="http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css?v=3.1.1" rel="stylesheet"/>
 
 クエリ文字列が有効になっている CDN エンドポイントに対して、2 つの URL は相互に一意であり、新しい *bootstrap.css* を取得するための新しい要求が Web サーバーに対して行われます。ただし、クエリ文字列が有効になっていない CDN エンドポイントに対しては、これらは同じ URL であり、単純にキャッシュされた *bootstrap.css* が提供されます。
 
-対処する方法は、バージョン番号を自動的に更新することです。Visual Studio では、簡単に行うことができます。.cshtml ファイルで前述のリンクを使用し、アセンブリ番号に基づいてバージョン番号を指定できます。<pre class="prettyprint"> @{ var cdnVersion = System.Reflection.Assembly.GetAssembly( typeof(MyMvcApp.Controllers.HomeController)) .GetName().Version.ToString(); }
+対処する方法は、バージョン番号を自動的に更新することです。Visual Studio では、簡単に行うことができます。.cshtml ファイルで前述のリンクを使用し、アセンブリ番号に基づいてバージョン番号を指定できます。
 
-...
-
-&lt;link href=&quot;http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css?v=@cdnVersion&quot; rel=&quot;stylesheet&quot;/&gt; </pre>
+	@{
+	    var cdnVersion = System.Reflection.Assembly.GetAssembly(
+	        typeof(MyMvcApp.Controllers.HomeController))
+	        .GetName().Version.ToString();
+	}
+	
+	...
+	
+	<link href="http://az623979.vo.msecnd.net/MyMvcApp/Content/bootstrap.css?v=@cdnVersion" rel="stylesheet"/>
 
 すべての発行サイクルの一部としてアセンブリ番号を変更すれば、Web アプリケーションを発行するたびに同様に一意のバージョン番号を取得することができます。これは、次の発行サイクルまでそのまま維持されます。または、Visual Studio プロジェクトで *Properties\\AssemblyInfo.cs* を開き、`*` を `AssemblyVersion` で使用することにより、Web アプリケーションのビルドのたびに Visual Studio でアセンブリ バージョン番号が自動的にインクリメントされます。次に例を示します。
 
@@ -257,8 +267,8 @@ Azure App Service Web Apps または Azure Cloud Services と統合しなくて�
 - [Azure Content Delivery Network (CDN) の概要](cdn-overview.md)
 - [Azure App Service で Azure CDN を使用する](../cdn-websites-with-cdn.md)
 - [クラウド サービスと Azure CDN との統合](cdn-cloud-service-with-cdn.md)
-- [カスタム ドメインに Content Delivery Network (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
+- [カスタム ドメインにコンテンツ配信ネットワーク (CDN) コンテンツをマップする方法](http://msdn.microsoft.com/library/azure/gg680307.aspx)
 - [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="高信頼アクターのリソース ガバナンス設計パターン"
-   description="拡張する必要はあるが制約のあるリソースを使用するアプリケーションのモデル化に高信頼アクターを使用できる設計パターン"
+   pageTitle="Azure Service Fabric アクターのリソース ガバナンス設計パターン"
+   description="拡張する必要はあるが制約のあるリソースを使用するアプリケーションのモデル化に Service Fabric アクターを使用できる設計パターン"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/05/2015"
+   ms.date="08/11/2015"
    ms.author="claudioc"/>
 
 # 高信頼アクターの設計パターン: リソースのガバナンス
@@ -417,4 +417,4 @@ public class EventWriter : Actor<EventWriterState>, IEventWriter
 [2]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch2.png
 [3]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch3.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

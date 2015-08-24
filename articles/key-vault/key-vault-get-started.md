@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Key Vault の概要 | 概要"
+	pageTitle="Azure Key Vault の概要 | Microsoft Azure"
 	description="このチュートリアルを使用すると、Azure Key Vault で、強化されたコンテナーを Azure に作成し、暗号化キーやシークレットを Azure に格納して管理できるようになります。"
 	services="key-vault"
 	documentationCenter=""
@@ -17,7 +17,7 @@
 	ms.author="cabailey"/>
 
 # Azure Key Vault の概要 #
-Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の料金のページ](../../../../pricing/details/key-vault/)を参照してください。
+Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の価格のページ](../../../../pricing/details/key-vault/)を参照してください。
 
 ## はじめに  
 このチュートリアルを使用すると、Azure Key Vault で、強化されたコンテナー (資格情報コンテナー) を Azure に作成し、暗号化キーやシークレットを Azure に格納して管理できるようになります。ここでは、Windows PowerShell を使用して、Azure アプリケーションで使用できるキーまたはパスワードを含む資格情報コンテナーを作成するプロセスについて説明します。アプリケーションがそのキーやパスワードを使用する方法についても説明します。
@@ -248,4 +248,4 @@ Azure Key Vault の Windows PowerShell コマンドレットの一覧につい�
 プログラミング リファレンスについては、MSDN の Microsoft Azure ドキュメント ライブラリにある「[Key Vault](https://msdn.microsoft.com/library/azure/dn903625.aspx)」をご覧ください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

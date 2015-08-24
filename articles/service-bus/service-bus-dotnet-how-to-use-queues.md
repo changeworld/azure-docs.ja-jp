@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Service Bus キューの使用方法 (.NET) - Azure"
+    pageTitle="Service Bus キューの使用方法 (.NET) | Microsoft Azure"
     description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは .NET API を使用して C# で記述されています。"
     services="service-bus"
     documentationCenter=".net"
@@ -245,4 +245,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [MSDN]: https://msdn.microsoft.com/library/azure/dn194201.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

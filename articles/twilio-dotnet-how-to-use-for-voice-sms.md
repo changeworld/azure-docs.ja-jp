@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="音声および SMS に Twilio を使用する方法 (.NET) - Azure" 
+	pageTitle="音声および SMS に Twilio を使用する方法 (.NET) | Microsoft Azure" 
 	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは .NET で記述されています。" 
 	services="" 
 	documentationCenter=".net" 
@@ -80,7 +80,7 @@ Twilio 対応のアプリケーションをホストする Azure アプリケー
 ## <a id="configure_app"></a>Twilio ライブラリを使用するアプリケーションの構成
 Twilio は、一連の .NET ヘルパー ライブラリを提供します。このライブラリは、Twilio のさまざまな側面をラップし、Twilio REST API および Twilio Client と対話して TwiML 応答を生成するためのシンプルで簡単な方法を提供します。
 
-Twilio は .NET 開発者向けに 5 つのライブラリを提供します。 <table border="1"> <tr> <th>ライブラリ</th> <th>説明</th> </tr> <tr> <td>Twilio.API</td> <td>扱いやすい .NET ライブラリで Twilio REST API をラップする主要な Twilio ライブラリです。このライブラリは、.NET、Silverlight、および Windows Phone 7 向けに用意されています。</td> </tr> <tr> <td>Twilio.TwiML</td> <td>.NET 対応の方法で TwiML マークアップを生成します。</td> </tr> <tr> <td>Twilio.MVC</td> <td>ASP.NET MVC を使用する開発者向けのこのライブラリは、TwilioController、TwiML ActionResult、要求検証の属性を含んでいます。</td> </tr> <tr> <td>Twilio.WebMatrix</td> <td>Microsoft が無償で提供する WebMatrix 開発ツールを使用する開発者向けのこのライブラリは、Twilio のさまざまな操作に対応する Razor 構文ヘルパーを含んでいます。</td> </tr> <tr> <td>Twilio.Client.Capability</td> <td>Twilio Client JavaScript SDK と共に使用するための Capability トークン ジェネレーターを含んでいます。</td> </tr> </table>
+Twilio は .NET 開発者向けに 5 つのライブラリを提供します。|説明---|--- Twilio.API|扱いやすい .NET ライブラリで Twilio REST API をラップする、主要な Twilio ライブラリです。このライブラリは、.NET、Silverlight、および Windows Phone 7 向けに用意されています。Twilio.TwiML|.NET 対応の方法で TwiML マークアップを生成します。Twilio.MVC|ASP.NET MVC を使用する開発者向けのこのライブラリは、TwilioController、TwiML ActionResult、要求検証の属性を含んでいます。Twilio.WebMatrix|Microsoft が無償で提供する WebMatrix 開発ツールを使用する開発者向けのこのライブラリは、Twilio のさまざまな操作に対応する Razor 構文ヘルパーを含んでいます。Twilio.Client.Capability|Twilio Client JavaScript SDK と共に使用するための Capability トークン ジェネレーターを含んでいます。
 
 すべてのライブラリに .NET 3.5、Silverlight 4、または Windows Phone 7 以降が必要です。
 
@@ -279,4 +279,4 @@ ASP.NET を使用する Windows Azure での Twilio の使用に関する詳細�
 [twilio_account]: https://www.twilio.com/user/account
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Mobile Services と Azure Active Directory でのロール ベースのアクセス制御 (Windows ストア) | モバイル デベロッパー センター" 
+	pageTitle="Mobile Services と Azure Active Directory でのロール ベースのアクセス制御 (Windows ストア) | Microsoft Azure" 
 	description="Windows ストア アプリケーションで Azure Active Directory ロールに基づいてアクセスを制御する方法について説明します。" 
 	documentationCenter="windows" 
 	authors="wesmc7777" 
@@ -394,4 +394,4 @@
 [Azure Active Directory Graph 情報へのアクセス]: mobile-services-dotnet-backend-windows-store-dotnet-aad-graph-info.md
 [Azure AD Authentication Library for .NET]: https://msdn.microsoft.com/library/azure/jj573266.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

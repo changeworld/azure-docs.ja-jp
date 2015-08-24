@@ -4,7 +4,7 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="adinah"
+   manager="carolz"
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
@@ -12,13 +12,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/22/2015"
+   ms.date="08/10/2015"
    ms.author="telmos" />
 
 # Azure でルートを作成して IP 転送を有効にする方法
 Azure では、仮想アプライアンスを使用して、Azure Virtual Network のトラフィックを処理することができます。ただし、仮想ネットワーク内の VM とクラウド サービスから (目的とする宛先ではなく) 仮想アプライアンスにパケットを送信するためのルートを作成する必要があります。また、仮想アプライアンスとして機能する VM は、実際には自分に宛てられていないパケットを受信して転送する必要があるので、IP 転送を有効にする必要があります。
 
-##ルートを管理する方法
+## ルートを管理する方法
 Azure におけるルートの追加、削除、変更は、PowerShell で行うことができます。ルートを作成するには、そのルートをホストするルート テーブルを事前に作成しておく必要があります。
 
 ### テーブルの作成方法
@@ -144,10 +144,6 @@ Set-AzureIPForwarding -ServiceName DMZService `
 ```powershell
 Get-AzureVM -Name FWAppliance1 -ServiceName ProductionVMs `
 	| Get-AzureIPForwarding
-```
+``` 
 
-## 関連項目
-
-[ユーザー定義のルートと IP 転送の概要](../virtual-networks-udr-overview)
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

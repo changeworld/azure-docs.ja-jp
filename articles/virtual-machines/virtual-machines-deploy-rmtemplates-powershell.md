@@ -1,6 +1,6 @@
 <properties
-	pageTitle="リソース マネージャー テンプレートと PowerShell を使用した Azure Virtual Machines のデプロイと管理"
-	description="Azure Virtual Machines の最も一般的な構成セットを簡単にデプロイし、リソース マネージャー テンプレートと PowerShell を使用してそれらを管理します。"
+	pageTitle="リソース マネージャー テンプレートと PowerShell を使用した Azure 仮想マシンのデプロイと管理"
+	description="リソース マネージャー テンプレートと PowerShell を使用して、Azure 仮想マシンの最も一般的な構成セットを簡単にデプロイし、管理します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="davidmu1"
@@ -16,15 +16,15 @@
 	ms.date="06/02/2015"
 	ms.author="davidmu"/>
 
-# Azure リソース マネージャー テンプレートと PowerShell を使用した Virtual Machines のデプロイと管理
+# Azure リソース マネージャー テンプレートと PowerShell を使用した仮想マシンのデプロイと管理
 
-この記事では、Azure リソース マネージャー テンプレートと PowerShell を使用し、Azure Virtual Machines のデプロイと管理に関する一般的なタスクを自動化する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」および「[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)」を参照してください。
+この記事では、Azure リソース マネージャー テンプレートと PowerShell を使用し、Azure 仮想マシンのデプロイと管理に関する一般的なタスクを自動化する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」および「[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)」を参照してください。
 
-- [Windows VM のデプロイ](#windowsvm)
-- [カスタム VM イメージの作成](#customvm)
-- [仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ](#multivm)
+- [Windows 仮想マシンのデプロイ](#windowsvm)
+- [カスタム仮想マシン イメージの作成](#customvm)
+- [仮想ネットワークと外部ロード バランサーを使用するマルチ VM アプリケーションのデプロイ](#multivm)
 - [リソース グループの削除](#removerg)
-- [仮想マシンへのログオン](#logon)
+- [仮想マシンへのサインイン](#logon)
 - [仮想マシンに関する情報の表示](#displayvm)
 - [仮想マシンの起動](#start)
 - [仮想マシンの停止](#stop)
@@ -37,28 +37,28 @@
 
 ## Azure リソース テンプレートおよびリソース グループについて
 
-Microsoft Azure にデプロイされ、実行されるアプリケーションの大部分は、異なる種類のクラウド リソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL Database、仮想ネットワークなど) から構築されます。Azure リソース マネージャー テンプレートによって、リソースや関連する構成およびデプロイ パラメーターの JSON 記述を使用して、これらのさまざまなリソースをまとめてデプロイし、管理することが可能になります。
+Microsoft Azure にデプロイされて実行されるアプリケーションの大部分は、異なる種類のクラウド リソースの組み合わせ (1 つ以上の仮想マシンやストレージ アカウント、SQL データベース、仮想ネットワークなど) から構築されます。Azure リソース マネージャー テンプレートによって、リソースや関連する構成およびデプロイ パラメーターの JSON 記述を使用して、これらのさまざまなリソースをまとめてデプロイし、管理することが可能になります。
 
-JSON ベースのリソース テンプレートを定義した後は、PowerShell コマンドを使用してそれを実行し、内部で定義されているリソースを Azure にデプロイすることができます。これらのコマンドは、PowerShell 内でスタンドアロンとして実行するか、その他のオートメーション ロジックを含むスクリプト内に統合することができます。
+JSON ベースのリソース テンプレートを定義してから実行し、PowerShell コマンドを実行することで、定義したリソースを Azure にデプロイすることができます。これらのコマンドは、PowerShell コマンド シェルで個別に実行することも、その他のオートメーション ロジックを含むスクリプトに統合することもできます。
 
-Azure リソース マネージャー テンプレートを使用して作成するリソースは、新規または既存の Azure リソース グループにデプロイされます。 *Azure リソース グループ*では、デプロイした複数のリソースを論理グループとしてまとめて管理できます。これによって、グループやアプリケーションのライフ サイクル全体を管理できるようになるほか、以下を可能にする管理 API が提供されます。
+Azure リソース マネージャー テンプレートを使用して作成するリソースは、新規または既存の Azure リソース グループにデプロイされます。*Azure リソース グループ*では、デプロイした複数のリソースを論理グループとしてまとめて管理できます。これによって、グループやアプリケーションのライフ サイクル全体を管理できるようになるほか、以下の操作を可能にする管理 API が提供されます。
 
 - グループ内のすべてのリソースを一度に停止、開始、または削除する。
 - ロールベースの Access Control (RBAC) ルールを適用し、リソースへのセキュリティ アクセス許可をロック ダウンする。
 - 操作を監査する。
 - 追跡機能を向上させるために追加のメタデータでリソースのタグ付けを行う。
 
-Azure リソース マネージャーの詳細については、[こちら](virtual-machines-azurerm-versus-azuresm.md)を参照してください。テンプレートの作成に興味がある場合は、[Azure リソース マネージャー テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
+Azure リソース マネージャーの詳細については、[こちら](virtual-machines-azurerm-versus-azuresm.md)を参照してください。テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
-## <a id="windowsvm"></a>タスク: Windows VM のデプロイ
+## <a id="windowsvm"></a>タスク： Windows 仮想マシンのデプロイ
 
-このセクションの手順に従い、リソース マネージャー テンプレートと Azure PowerShell を使用して、新しい Azure VM をデプロイします。このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに単一の仮想マシンを作成します。
+リソース マネージャー テンプレートと Azure PowerShell を使用して、新しい Azure 仮想マシンをデプロイするには、このセクションの手順に従います。このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに単一の仮想マシンを作成します。
 
 ![](./media/virtual-machines-deploy-rmtemplates-powershell/windowsvm.png)
 
-Github テンプレート リポジトリ内のリソース マネージャー テンプレートと Azure PowerShell を使用して Windows VM を作成するには、以下の手順に従います。
+Azure PowerShell で、GitHub テンプレート リポジトリ内のリソース マネージャー テンプレートを使用して Windows 仮想マシンを作成するには、以下の手順に従います。
 
-### 手順 1. テンプレートの JSON ファイルを確認する。
+### 手順 1. テンプレートの JSON ファイルを確認する
 
 テンプレートの JSON ファイルの内容を次に示します。
 
@@ -69,25 +69,25 @@ Github テンプレート リポジトリ内のリソース マネージャー �
         "newStorageAccountName": {
             "type": "string",
             "metadata": {
-                "Description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
+                "Description": "Unique DNS name for the storage account where the virtual machine's disks will be placed."
             }
         },
         "adminUsername": {
             "type": "string",
             "metadata": {
-               "Description": "Username for the Virtual Machine."
+               "Description": "User name for the virtual machine."
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "Description": "Password for the Virtual Machine."
+                "Description": "Password for the virtual machine."
             }
         },
         "dnsNameForPublicIP": {
             "type": "string",
             "metadata": {
-                  "Description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+                  "Description": "Unique DNS name for the public IP used to access the virtual machine."
             }
         },
         "windowsOSVersion": {
@@ -100,7 +100,7 @@ Github テンプレート リポジトリ内のリソース マネージャー �
                 "Windows-Server-Technical-Preview"
             ],
             "metadata": {
-                "Description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview."
+                "Description": "The Windows version for the virtual machine. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview."
             }
         }
     },
@@ -239,7 +239,7 @@ Github テンプレート リポジトリ内のリソース マネージャー �
 	}
 
 
-### 手順 2. テンプレートで仮想マシンを作成する。
+### 手順 2. テンプレートで仮想マシンを作成する
 
 Azure のデプロイ名、リソース グループ名、Azure データ センターの場所を入力し、次のコマンドを実行します。
 
@@ -301,11 +301,11 @@ Azure のデプロイ名、リソース グループ名、Azure データ セン
 
 これで、新しいリソース グループに MyWindowsVM という名前の新しい Windows 仮想マシンが作成されました。
 
-## <a id="customvm"></a>タスク: カスタム VM イメージの作成
+## <a id="customvm"></a>タスク： カスタム仮想マシン イメージの作成
 
-Azure PowerShell を使用し、リソース マネージャー テンプレートで Azure に カスタム VM イメージを作成するには、このセクションの手順に従います。このテンプレートは、指定した仮想ハード ディスク (VHD) から単一の仮想マシンを作成します。
+Azure PowerShell を使用し、リソース マネージャー テンプレートで Azure に カスタム仮想マシン イメージを作成するには、このセクションの手順に従います。このテンプレートは、指定した仮想ハード ディスク (VHD) から単一の仮想マシンを作成します。
 
-### 手順 1. テンプレートの JSON ファイルを確認する。
+### 手順 1. テンプレートの JSON ファイルを確認する
 
 テンプレートの JSON ファイルの内容を次に示します。
 
@@ -386,13 +386,13 @@ Azure PowerShell を使用し、リソース マネージャー テンプレー�
 	    }]
 	}
 
-### 手順 2. VHD を取得する。
+### 手順 2. VHD を取得する
 
 Windows ベースの仮想マシンについては、「[Windows Server VHD の作成と Azure へのアップロード](virtual-machines-create-upload-vhd-windows-server.md)」を参照してください。
 
 Linux ベースの仮想マシンについては、[Azure 上での Linux VHD の作成とアップロード](virtual-machines-linux-create-upload-vhd.md)に関するページを参照してください。
 
-### 手順 3. テンプレートで仮想マシンを作成する。
+### 手順 3. テンプレートで仮想マシンを作成する
 
 VHD に基づく新しい仮想マシンを作成するには、"< >" 内の要素を特定の情報に置き換え、次のコマンドを実行します。
 
@@ -426,15 +426,15 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
 	vmSize: Standard_A3
 	...
 
-## <a id="multivm"></a>タスク: 仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
+## <a id="multivm"></a>タスク： 仮想ネットワークと外部ロード バランサーを使用するマルチ VM アプリケーションのデプロイ
 
-Azure PowerShell を使用し、リソース マネージャー テンプレートで仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、以下のセクションの手順に従います。このテンプレートは、新しいクラウド サービスで、1 つのサブネットを持つ新しい仮想ネットワークに 2 つの仮想マシンを作成し、それらを TCP ポート 80 への受信トラフィック用に、外部の負荷分散されたセットへ追加します。
+Azure PowerShell を使用し、リソース マネージャー テンプレートから仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、以下のセクションの手順に従います。このテンプレートは、新しいクラウド サービスで、1 つのサブネットを持つ新しい仮想ネットワークに 2 つの仮想マシンを作成し、それらを TCP ポート 80 への受信トラフィック用に、外部の負荷分散されたセットへ追加します。
 
 ![](./media/virtual-machines-deploy-rmtemplates-powershell/multivmextlb.png)
 
-GitHub テンプレート リポジトリのリソース マネージャー テンプレートと Azure PowerShell コマンドによって、仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、次の手順に従います。
+Azure PowerShell コマンドを使用して、GitHub テンプレート リポジトリのリソース マネージャー テンプレートから仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、次の手順に従います。
 
-### 手順 1. テンプレートの JSON ファイルを確認する。
+### 手順 1. テンプレートの JSON ファイルを確認する
 
 テンプレートの JSON ファイルの内容を次に示します。
 
@@ -749,7 +749,7 @@ GitHub テンプレート リポジトリのリソース マネージャー テ�
 	}
 
 
-### 手順 2. テンプレートでデプロイを作成する。
+### 手順 2. テンプレートでデプロイを作成する
 
 Azure のデプロイ名、リソース グループ名、Azure の場所を入力し、次のコマンドを実行します。
 
@@ -760,7 +760,7 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 	New-AzureResourceGroup -Name $RGName -Location $locName
 	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
-New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイルのパラメーター値を指定するよう求められます。パラメーター値をすべて指定している場合、コマンドによってリソース グループとデプロイが作成されます。
+**New-AzureResourceGroupDeployment** コマンドを実行すると、JSON ファイルのパラメーター値を指定するよう求められます。パラメーター値をすべて指定している場合、コマンドによってリソース グループとデプロイが作成されます。
 
 	$deployName="TestDeployment"
 	$RGName="TestRG"
@@ -794,13 +794,13 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	Are you sure you want to remove resource group 'BuildRG'
 	[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
 
-## <a id="logon"></a>タスク: Windows 仮想マシンへのログオン
+## <a id="logon"></a>タスク: Windows 仮想マシンへのサインイン
 
 手順の詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)」を参照してください。
 
 ## <a id="displayvm"></a>タスク: 仮想マシンに関する情報の表示
 
-**Get-AzureVM** コマンドを使用して、VM に関する情報を表示することができます。このコマンドは、VM の状態を更新するために他のさまざまなコマンドレットを使用して操作できる VM オブジェクトを返します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+**Get-AzureVM** コマンドを使用して、仮想マシンに関する情報を表示することができます。このコマンドは、仮想マシンの状態を更新するために他のさまざまなコマンドレットを使用して操作できる仮想マシン オブジェクトを返します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
 	Get-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
@@ -868,7 +868,7 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 
 ## <a id="start"></a>タスク: 仮想マシンの起動
 
-**Start-AzureVM** コマンドを使用して、VM を起動できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+仮想マシンの起動は、**Start-AzureVM** コマンドを使用して行うことができます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
 	Start-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
@@ -885,7 +885,7 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 
 ## <a id="stop"></a>タスク: 仮想マシンの停止
 
-**Stop-AzureVM** コマンドを使用して、VM を停止できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+仮想マシンの停止は、**Stop-AzureVM** コマンドを使用して行うことができます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
 	Stop-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
@@ -905,9 +905,9 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	RequestId           : 5cc9ddba-0643-4b5e-82b6-287b321394ee
 	StatusCode          : OK
 
-## <a id=restart"></a>タスク: 仮想マシンの再起動
+## <a id="restart"></a>タスク: 仮想マシンの再起動
 
-**Restart-AzureVM** コマンドを使用して、VM を再起動できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
+仮想マシンの再起動は、**Restart-AzureVM** コマンドを使用して行うことができます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
 
 	Restart-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
@@ -922,9 +922,9 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 	RequestId           : 7dac33e3-0164-4a08-be33-96205284cb0b
 	StatusCode          : OK
 
-## <a id=delete"></a>タスク: 仮想マシンの削除
+## <a id="delete"></a>タスク: 仮想マシンの削除
 
-**Remove-AzureVM** コマンドを使用して、VM を削除できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。**-Force** パラメーターを使用して確認プロンプトをスキップできます。
+仮想マシンの削除は、**Remove-AzureVM** コマンドを使用して行うことができます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。**-Force** パラメーターを使用して確認プロンプトをスキップできます。
 
 	Remove-AzureVM -ResourceGroupName "<resource group name>" –Name "<VM name>"
 
@@ -956,4 +956,4 @@ New-AzureResourceGroupDeployment コマンドを実行すると、JSON ファイ
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

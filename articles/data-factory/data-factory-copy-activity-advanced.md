@@ -18,7 +18,7 @@
 
 # Azure Data Factory でコピー アクティビティを使用する高度なシナリオ 
 ## 概要
-パイプラインで**コピー アクティビティ**を使用して、ソースからシンク (ターゲット) にデータを一括でコピーできます。このトピックでは、コピー アクティビティがサポートする高度なシナリオについて説明します。コピー アクティビティと、コピー アクティビティがサポートする主要なシナリオの詳細については、「[Azure Data Factory を使用してデータをコピーする][adf-copyactivity]」を参照してください。
+パイプラインで**コピー アクティビティ**を使用して、ソースからシンク (ターゲット) にデータを一括でコピーできます。このトピックでは、コピー アクティビティがサポートする高度なシナリオについて説明します。
 
 
 ## 構造体定義を使用した列のフィルター処理
@@ -170,7 +170,7 @@
 			"source":
 			{
 				"type": "SqlSource",
-				"SqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartDateTime = \'{0:yyyyMMdd-HH}\'', WindowStart)"
+				"SqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartDateTime = \\'{0:yyyyMMdd-HH}\\'', WindowStart)"
 			},
 			"sink":
 			{
@@ -265,8 +265,6 @@ UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキス
 
 ## 関連項目
 
-- [コピー アクティビティの使用例][copy-activity-examples]
-- [Azure Data Factory を使用してデータをコピーする][adf-copyactivity]
 - [コピー アクティビティ - JSON スクリプト リファレンス](https://msdn.microsoft.com/library/dn835035.aspx)
 - [ビデオ: Azure Data Factory コピーアクティビティの概要][copy-activity-video]
 
@@ -276,9 +274,7 @@ UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキス
 
 
 [adfgetstarted]: data-factory-get-started.md
-[adf-copyactivity]: data-factory-copy-activity.md
 [use-onpremises-datasources]: data-factory-use-onpremises-datasources.md
-[copy-activity-examples]: data-factory-copy-activity-examples.md
 
 [json-script-reference]: http://go.microsoft.com/fwlink/?LinkId=516971
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
@@ -289,4 +285,4 @@ UTF-8 エンコードが一般的ではあるものの、Azure BLOB のテキス
 [image-data-factory-column-mapping-2]: ./media/data-factory-copy-activity-advanced/ColumnMappingSample2.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle=".NET バックエンドを使用した Windows ストアのランキング アプリの作成 | Azure Mobile Services" 
+	pageTitle=".NET バックエンドを使用した Windows ストアのランキング アプリの作成 | Microsoft Azure" 
 	description="Azure Mobile Services の .NET バックエンドを使用して、Windows ストアのランキング アプリを作成する方法について説明します。" 
 	documentationCenter="windows" 
 	authors="MikeWasson" 
@@ -762,4 +762,4 @@ Model-View-View Model (MVVM) は、Model-View-Controller (MVC) の一種です�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

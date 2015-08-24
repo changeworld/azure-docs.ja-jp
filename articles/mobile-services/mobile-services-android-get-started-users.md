@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="認証の使用 (Android) | モバイル デベロッパー センター" 
+	pageTitle="認証の使用 (Android) | Microsoft Azure" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Android アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="android" 
@@ -117,4 +117,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

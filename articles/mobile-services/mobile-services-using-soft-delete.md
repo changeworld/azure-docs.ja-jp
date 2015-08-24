@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Mobile Services での論理削除の使用方法 (Windows ストア) | モバイル デベロッパー センター" 
+	pageTitle="Mobile Services での論理削除の使用方法 (Windows ストア) | Microsoft Azure" 
 	description="アプリケーション内で Azure Mobile Services の論理削除機能を使用する方法を説明します。" 
 	documentationCenter="" 
 	authors="wesmc7777" 
@@ -163,4 +163,4 @@ JavaScript バックエンド Mobile Services でのスケジュール ジョブ
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

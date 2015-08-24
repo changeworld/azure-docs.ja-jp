@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="05/08/2015"
+	ms.date="08/07/2015"
 	ms.author="rasquill"/>
 
 
@@ -112,7 +112,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 17. [方法: Azure Linux エージェントのインストール](virtual-machines-linux-agent-user-guide.md)
 18. [Marketplace: Linux ファイル サーバーの Kaspersky AV](http://azure.microsoft.com/marketplace/partners/kaspersky-lab/kav-for-lfs-kav-for-lfs/)
 
-## 基本操作
+## 基本
 
 1. [基本: Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli.md)
 4. [基本: 証明書の使用と管理](http://msdn.microsoft.com/library/azure/gg981929.aspx)
@@ -240,6 +240,15 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 8. [基本: Linux 用のパスワードまたは SSH プロパティをリセットする方法](virtual-machines-linux-use-vmaccess-reset-password-or-ssh.md)
 9. [基本: ルートの使用](virtual-machines-linux-use-root-privileges.md)
 
+## Linux ハイパフォーマンス コンピューティング (HPC)
+
+オープン ソースのツールまたは Microsoft HPC Pack により構築された Linux VM クラスターで、HPC ワークロードを実行します。
+
+1.	[クイックスタート テンプレート： SLURM クラスターの起動](http://azure.microsoft.com/documentation/templates/slurm/) (および[ブログの投稿](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx))
+2.	[クイックスタート テンプレート： トルク クラスターの起動](http://azure.microsoft.com/documentation/templates/torque-cluster/)
+3.	[チュートリアル: Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-cluster-hpcpack.md)
+4.	[チュートリアル： MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)
+
 ## 開発、管理、最適化
 
 このセクションでは、まずビデオ シリーズを含むブログ エントリを紹介します。[ビデオ: Azure Virtual Machines: Chef、Puppet、および Docker を使用した Linux VM の管理](http://azure.microsoft.com/blog/2014/12/15/azure-virtual-machines-using-chef-puppet-and-docker-for-managing-linux-vms/)。ただし、開発、管理、そして最適化は、非常に幅広く、かつ変化の激しい世界です。そのため、次に挙げる事項を最初に考慮する必要があります。
@@ -294,6 +303,5 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 <!--Link references--In actual articles, you only need a single period before the slash. -->
 [How to use docker-machine on Azure]: virtual-machines-docker-machine.md
 [How to use docker with swarm on Azure]: virtual-machines-docker-swarm.md
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

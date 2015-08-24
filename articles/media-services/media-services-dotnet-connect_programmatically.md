@@ -13,13 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015"  
 	ms.author="juliako"/>
 
 
 # Media Services SDK for .NET を使用した Media Services アカウントへの接続
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
+> [AZURE.SELECTOR]
+- [REST](media-services-rest-connect_programmatically.md)
+- [.NET](media-services-dotnet-connect_programmatically.md)
+
 
 このトピックでは、Media Services SDK for .NET でプログラミングする場合に、Microsoft Azure Media Services にプログラムから接続する方法について説明します。
 
@@ -171,14 +174,14 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 次の App.config ファイルには、必須接続値が含まれています。<appSettings> 要素の値は、必須値であり、Media Services アカウントのセットアップ プロセスで取得した値です。
 
 
-```
-&lt;configuration&gt;
-    &lt;appSettings&gt;
-	&lt;add key="MediaServicesAccountName" value="Media-Services-Account-Name" /&gt;
-    	&lt;add key="MediaServicesAccountKey" value="Media-Services-Account-Key" /&gt;
-    &lt;/appSettings&gt;
-&lt;/configuration&gt;
-```
+<pre>
+&lt;configuration>
+    &lt;appSettings>
+	&lt;add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
+    	&lt;add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
+    &lt;/appSettings>
+&lt;/configuration>
+</pre>
 
 構成から接続値を取得するには、**ConfigurationManager** クラスを使用し、コードでフィールドに値を割り当てます。
 	
@@ -191,4 +194,4 @@ Media Services SDK Version 3.0.0.0 からは、ACS トークンを再利用で�
 
 <!-- URLs. -->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

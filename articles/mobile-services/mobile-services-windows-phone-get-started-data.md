@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="既存のアプリケーションへの Mobile Services の追加 (WP8) - Azure Mobile Services" 
+	pageTitle="既存のアプリケーションへの Mobile Services の追加 (WP8) | Microsoft Azure" 
 	description="Azure Mobile Services Windows Phone 8 アプリからのデータを使用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -193,4 +193,4 @@
 [デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkId=271146
  
 
-<!-----HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

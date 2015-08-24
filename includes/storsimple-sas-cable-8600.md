@@ -1,62 +1,48 @@
-<properties 
-   pageTitle="Storsimple SAS cabling for 8600 | Microsoft Azure"
-   description="Explains how to turn on attach the SAS cables to the StorSimple 8600 device."
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/06/2015"
-   ms.author="alkohli" />
 
-#### To attach the SAS cables
+#### SAS ケーブルの取り付け方法
 
-1. Identify the primary and the EBOD enclosures. The two enclosures can be identified by looking at their respective back planes. See the following image for guidance. 
+1. 主エンクロージャと EBOD エンクロージャを識別します。2 つのエンクロージャはそれぞれのバックプレーンを見て識別できます。次の図を参考にしてください。 
 
-    ![Back plane of primary and EBOD enclosures](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
+    ![主エンクロージャと EBOD エンクロージャの背面](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
 
-    **Back view of primary and EBOD enclosures**
+    **主エンクロージャと EBOD エンクロージャの背面**
 
-    |Label|Description|
+    |ラベル|説明|
     |:----|:----------|
-    |1|Primary enclosure|
-    |2|EBOD enclosure|
+    |1|主エンクロージャ|
+    |2|EBOD エンクロージャ|
 
-2. Locate the serial numbers on the primary and the EBOD enclosures. The serial number sticker is affixed to the back ear of each enclosure. The serial numbers must be identical on both enclosures. [Contact Microsoft Support](storsimple-contact-microsoft-support.md) immediately if the serial numbers do not match. See the following illustration to locate the serial numbers.
+2. 主エンクロージャと EBOD エンクロージャのシリアル番号を見つけます。シリアル番号ステッカーが各エンクロージャの背面の耳に付いています。両方のエンクロージャのシリアル番号が一致している必要があります。シリアル番号が一致しない場合は、直ちに [Microsoft サポートに連絡してください](storsimple-contact-microsoft-support.md)。次の図を参考にしてシリアル番号を見つけてください。
 
-    ![Rear view of enclosure showing serial number](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
+    ![シリアル番号の位置を示すエンクロージャの背面図](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
 
-    **Location of serial number sticker**
+    **シリアル番号ステッカーの位置**
 
-    |Label|Description|
+    |ラベル|説明|
     |:----|:----------|
-    |1|Ear of the enclosure|
+    |1|エンクロージャの耳|
 
-3. Use the provided SAS cables to connect the EBOD enclosure to the primary enclosure as follows:
+3. 次のように、付属の SAS ケーブルを使用して EBOD エンクロージャを主エンクロージャに接続します。
 
-    1. Identify the four SAS ports on the primary enclosure and the EBOD enclosure. The SAS ports are labeled as EBOD on the primary enclosure and CTRL on the EBOD enclosure, as shown in the SAS cabling illustration, below.
+    1. 主エンクロージャと EBOD エンクロージャの 4 つの SAS ポートを識別します。SAS ポートには、主エンクロージャでは EBOD、EBOD エンクロージャでは CTRL というラベルが付いています (下の SAS ケーブル配線図を参照)。
 
-    2. Use the provided SAS cables to connect the EBOD ports to the CTRL ports.
+    2. 付属の SAS ケーブルを使用して、EBOD ポートを CTRL ポートに接続します。
 
-    3. The EBOD port on controller 0 should be connected to the CTRL port on EBOD controller 0. The EBOD port on controller 1 should be connected to the CTRL port on EBOD controller 1. See the following illustration for guidance. 
+    3. コントローラー 0 の EBOD ポートを EBOD コントローラー 0 の CTRL ポートに接続する必要があります。コントローラー 1 の EBOD ポートは EBOD コントローラー 1 の CTRL ポートに接続する必要があります。次の図を参考にしてください。
 																	
-     ![SAS cabling for your device](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
+     ![デバイスの SAS ケーブル接続](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
 
-     **SAS cabling**
+     **SAS ケーブル接続**
 
-    |Label|Description|
+    |ラベル|説明|
     |:----|:----------|
-    |A|Primary enclosure|
-    |B|EBOD enclosure|
-    |1|Controller 0|
-    |2|Controller 1|
-    |3|EBOD Controller 0|
-    |4|EBOD Controller 1|
-    |5, 6|SAS ports on primary enclosure (labeled EBOD)|
-    |7, 8|SAS ports on EBOD enclosure (labeled CTRL)|
+    |A|主エンクロージャ|
+    |B|EBOD エンクロージャ|
+    |1|コントローラー 0|
+    |2|コントローラー 1|
+    |3|EBOD コントローラー 0|
+    |4|EBOD コントローラー 1|
+    |5、6|主エンクロージャの SAS ポート (EBOD のラベル)|
+    |7、8|EBOD エンクロージャの SAS ポート (CTRL のラベル)|
+
+<!---HONumber=August15_HO7-->

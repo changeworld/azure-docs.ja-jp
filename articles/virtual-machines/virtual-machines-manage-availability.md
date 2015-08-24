@@ -1,5 +1,5 @@
 <properties
-	pageTitle="仮想マシンの可用性管理 - Azure"
+	pageTitle="仮想マシンの可用性管理 | Virtual Machines"
 	description="複数の仮想マシンを使って Azure アプリケーションの高い可用性を確保する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -69,4 +69,4 @@ Azure ロード バランサーと可用性セットを結合することで、�
 [可用性セット内の仮想マシンが 1 つのみにならないようにする]: #avoid-single-instance-virtual-machines-in-availability-sets
 [仮想マシンの可用性セットを構成する方法]: virtual-machines-how-to-configure-availability.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

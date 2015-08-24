@@ -1,17 +1,19 @@
-In this step, you create a firewall rule to open the probe port for the load-balanced endpoint (59999 as specified earlier), and another rule to open the availability group listener port. Since you created the load-balanced endpoint on the Azure VMs that contain availability group replicas, you need to open the probe port and the listener port on the respective Azure VMs.
+この手順では、ファイアウォール規則を作成して負荷分散エンドポイントのプローブ ポート (以前に指定した 59999) を開き、別の規則を作成して可用性グループ リスナー ポートを開きます。可用性グループ レプリカを含む Azure VM に負荷分散エンドポイントを作成したため、それぞれの Azure VM でプローブ ポートとリスナー ポートを開く必要があります。
 
-1. On VMs hosting replicas, launch **Windows Firewall with Advanced Security**.
+1. レプリカをホストする VM で **セキュリティが強化された Windows ファイアウォール**を起動します。
 
-1. Right-click **Inbound Rules** and click **New Rule**.
+1. **[受信の規則]** を右クリックし、**[新しい規則]** をクリックします。
 
-1. In the **Rule Type** page, select **Port**, then click **Next**.
+1. **[規則の種類]** ページで、**[ポート]** を選択して **[次へ]** をクリックします。
 
-1. In the **Protocol and Ports** page, select **TCP** and type **59999** in the **Specific local ports** box. Then, click **Next**.
+1. **[プロトコルおよびポート]** ページの **[特定のローカル ポート]**ボックスで **[TCP]** を選択して「**59999**」と入力します。次に、**[次へ]** をクリックします。
 
-1. In the **Action** page, keep **Allow the connection** selected and click **Next**.
+1. **[アクション]** ページで、**[接続を許可する]** が選択された状態で、**[次へ]** をクリックします。
 
-1. In the **Profile** page, accept the default settings and click **Next**.
+1. **[プロファイル]** ページで、既定の設定を受け入れて、**[次へ]** をクリックします。
 
-1. In the **Name** page, specify a rule name, such as **AlwaysOn Listener Probe Port** in the **Name** text box, and click **Finish**.
+1. **[名前]** ページの **[名前]** テキスト ボックスで、規則の名前 (**AlwaysOn リスナー プローブ ポート**など) を指定して、**[完了]** をクリックします。
 
-1. Repeat the above steps for the availability group listener port (as specified earlier in the $EndpointPort parameter of the script) and specify an appropriate rule name, such as **AlwaysOn Listener Port**.
+1. 可用性グループ リスナー ポート (前述したスクリプトの $EndpointPort パラメーターで指定) に上記の手順を繰り返し、適切な規則の名前 (**AlwaysOn リスナー ポート**など) を指定します。
+
+<!---HONumber=August15_HO7-->

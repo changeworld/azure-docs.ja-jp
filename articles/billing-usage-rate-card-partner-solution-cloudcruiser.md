@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="billing"
-   ms.date="06/17/2015"
+   ms.date="08/10/2015"
    ms.author="mobandyo;sirishap;bryanla"/>
 
-# Cloud Cruiser と Microsoft Azure Billing API の統合 
+# Cloud Cruiser と Microsoft Azure Billing API の統合
 
 この記事では、新しい Azure Billing API から収集した情報を Cloud Cruiser で使用して、ワークフローのコスト シミュレーションと分析を行う方法について説明します。
 
@@ -25,21 +25,21 @@ RateCard API は、Azure の料金情報を提供します。適切な資格情�
 
 次に、A0 (Windows) インスタンスの料金を表示する API の応答例を示します。
 
-    {       
-		"MeterId": "0e59ad56-03e5-4c3d-90d4-6670874d7e29",       
-		"MeterName": "Compute Hours",       
-		"MeterCategory": "Virtual Machines",       
-		"MeterSubCategory": "A0 VM (Windows)",       
-		"Unit": "Hours",       
-		"MeterRates": 
-		{         
-			"0": 0.029       
-		},       
-		"EffectiveDate": "2014-08-01T00:00:00Z",       
-		"IncludedQuantity": 0.0     
-	}, 
+    {
+		"MeterId": "0e59ad56-03e5-4c3d-90d4-6670874d7e29",
+		"MeterName": "Compute Hours",
+		"MeterCategory": "Virtual Machines",
+		"MeterSubCategory": "A0 VM (Windows)",
+		"Unit": "Hours",
+		"MeterRates":
+		{
+			"0": 0.029
+		},
+		"EffectiveDate": "2014-08-01T00:00:00Z",
+		"IncludedQuantity": 0.0
+	},
 
-## Azure RateCard API に対する Cloud Cruiser のインターフェイス
+### Azure RateCard API に対する Cloud Cruiser のインターフェイス
 Cloud Cruiser は、RateCard API をさまざまな方法で利用できます。この記事では、IaaS ワークロード コストのシミュレーションと分析に使用する方法を説明します。
 
 この使用事例を読むにあたって、Microsoft Azure Pack (WAP) でいくつかのインスタンスが実行されているワークロードを想定してください。目標は、この同じワークロードを Azure でシミュレートし、移行した場合のコストを見積もることです。このシミュレーションを作成するために、主に次の 2 つの作業を実行します。
@@ -48,7 +48,7 @@ Cloud Cruiser は、RateCard API をさまざまな方法で利用できます�
 
 2. **IaaS の WAP サービスと Azure サービスの正規化** - 既定では、WAP サービスは個々のリソース (CPU、メモリ サイズ、ディスク サイズなど) に基づいていますが、Azure サービスはインスタンス サイズ (A0、A1、A2 など) に基づいています。この 1 つ目の作業は、Cloud Cruiser の ETL エンジン (ブックと呼ばれます) で実行できます。これらのリソースは、Azure インスタンス サービスと同様に、インスタンス サイズに基づいてまとめることができます。
 
-## RateCard API からのデータのインポート
+### RateCard API からのデータのインポート
 
 Cloud Cruiser のブックには、RateCard API の情報の収集と処理を自動化する機能があります。ETL (抽出-変換-読み込み) ブックを使用して、データのコレクション、変換、および Cloud Cruiser データベースへの発行を構成できます。
 
@@ -64,7 +64,7 @@ Cloud Cruiser のブックには、RateCard API の情報の収集と処理を�
 
 ![図 3 - RateCard API から収集したデータを処理する変換ステップ][3]
 
-## 新しいサービスと料金プランの定義
+### 新しいサービスと料金プランの定義
 
 Cloud Cruiser には、サービスを定義する方法が複数あります。選択肢の 1 つは、使用状況データからサービスをインポートすることです。一般的に、この方法は、プロバイダーがサービスを定義済みであるパブリック クラウドを使用する場合にのみ使用されます。
 
@@ -76,7 +76,7 @@ Cloud Cruiser には、サービスを定義する方法が複数あります。
 
 ![図 4 - 新しい料金として RateCard API のデータを発行する][4]
 
-## Azure サービスと料金
+### Azure サービスと料金
 
 サービスと料金を発行したら、Cloud Cruiser の *[Services]* タブでインポートされたサービスの一覧を確認できます。
 
@@ -86,7 +86,7 @@ Cloud Cruiser には、サービスを定義する方法が複数あります。
 
 ![図 6 - 新しい料金プランと関連付けられている料金の確認][6]
 
-## WAP と Azure サービスの正規化
+### WAP と Azure サービスの正規化
 
 WAP の既定では、コンピューティング、メモリ、およびネットワーク リソースの使用に基づいて使用状況情報を提供します。Cloud Cruiser では、これらのリソースの割り当てまたは測定使用量に直接基づいてサービスを定義できます。たとえば、各時間の CPU 使用量の基本料金を設定したり、インスタンスに割り当てられたメモリの GB 数に対して課金したりすることができます。
 
@@ -100,7 +100,7 @@ WAP の既定では、コンピューティング、メモリ、およびネッ�
 
 ![図 8 - ブックのスケジュール設定][8]
 
-## ワークロード コスト シミュレーション分析のレポート作成
+### ワークロード コスト シミュレーション分析のレポート作成
 
 使用状況を収集し、Cloud Cruiser データベースに読み込むと、Cloud Cruiser Insights モジュール (高度な分析レポート ツール) を利用して、目的のワークロード コスト シミュレーションを作成できます。
 
@@ -112,14 +112,110 @@ WAP の既定では、コンピューティング、メモリ、およびネッ�
 
 下のグラフは同じデータですが、部門別に分けられ、WAP と Azure でワークロードを実行している各部門の料金を示しています。また、節約バー (緑色) は 2 つの差です。
 
-## 次のステップ
+## Azure Usage API
+
+
+### はじめに
+
+最近、Microsoft は Azure Usage API を導入しました。これにより、利用者は利用状況データをプログラムで取得して、消費量についての洞察が得ることができます。この API を介して豊富なデータセットを利用できるため、この機能の導入は Cloud Cruiser の顧客にとってはよいニュースです。
+
+Cloud Cruiser では、いくつかの方法での Usage API との統合を利用できます。API によって使用可能な粒度 (1 時間ごとの利用状況情報) とリソースのメタデータ情報は、柔軟なショーバック モデルまたはチャージバック モデルをサポートするために必要なデータセットを提供します。
+
+このチュートリアルでは、Cloud Cruiser が Usage API の情報から得ることができる利点の 1 つの例をご紹介します。具体的には、Azure で新しいリソース グループを作成し、アカウント構造のタグを関連付けます。その後、タグ情報の取得と Cloud Cruiser に対するタグ情報の処理についてプロセスを記述します。
+ 
+最終的な目標は、次のようなレポートを作成し、タグによって設定されたアカウント構造に基づいて、コストと消費量を分析できるようになることです。
+
+![図 10 - タグを使用した分析結果のレポート][10]
+
+### Microsoft Azure のタグ
+
+Azure Usage API を介して使用できるデータには、消費量の情報だけでなく、関連付けられているすべてのタグを含むリソースのメタデータも含まれています。タグを使用すると、リソースを簡単に整理できますが、効果を上げるには、次のことを確認する必要があります。
+
+- プロビジョニング時にタグがリソースに正しく適用されている
+- タグが、ショーバック/チャージバック プロセスで適切に使用されて、組織のアカウント構造と利用状況を結び付けている
+
+この両方の要件への適合は、特にプロビジョニング側や課金側で何らかの手動のプロセスを行っていると、難しくなる場合があります。入力ミス、タグの誤りや不足は、顧客がタグの使用時に訴える共通した不満です。このようなエラーは、課金側の対応を非常に難しくする場合があります。
+
+新しい Azure Usage API によって、Cloud Cruiser はリソースのタグ付け情報を取得できます。また、ブックと呼ばれる非常に高度な ETL ツールを使用することで、一般的なタグ付けエラーを修正できます。正規表現およびデータの相関関係を利用する変換の手順で、Cloud Cruiser は、タグ付けが誤っているリソースを特定し、正しいタグを適用します。欠点を補い、リソースとコンシューマーが正しく関連付けられるようにします。
+
+課金側では、Cloud Cruiser はショーバック/チャージバック プロセスを自動化し、タグ情報を利用して適切なコンシューマー (部門、部門、プロジェクトなど) に利用状況を結び付けることができます。この自動化は大きな進歩であり、一貫性のある監査可能な課金プロセスを実現できます。
+ 
+
+### Microsoft Azure でのタグによるリソース グループの作成
+このチュートリアルの最初の手順では、Azure ポータルで新しいリソース グループを作成し、リソースに関連付ける新しいタグを作成します。この例では、Department、Environment、Owner、Project というタグを作成します。
+
+以下の Azure ポータルのスクリーン ショットに、関連付けたタグを使用するサンプル リソース グループを示します。
+
+![図 11 - Azure ポータルで、関連付けられたタグを設定したリソース グループ][11]
+
+次の手順では、Usage API から Cloud Cruiser に情報を取得します。現在、Usage API は、JSON 形式で応答を提供します。取得されるデータのサンプルを次に示します。
+
+
+    {
+      "id": "/subscriptions/bb678b04-0e48-4b44-XXXX-XXXXXXX/providers/Microsoft.Commerce/UsageAggregates/Daily_BRSDT_20150623_0000",
+      "name": "Daily_BRSDT_20150623_0000",
+      "type": "Microsoft.Commerce/UsageAggregate",
+      "properties":
+      {
+        "subscriptionId": "bb678b04-0e48-4b44-XXXX-XXXXXXXXX",
+        "usageStartTime": "2015-06-22T00:00:00+00:00",
+        "usageEndTime": "2015-06-23T00:00:00+00:00",
+        "meterName": "Compute Hours",
+        "meterRegion": "",
+        "meterCategory": "Virtual Machines",
+        "meterSubCategory": "Standard_D1 VM (Non-Windows)",
+        "unit": "Hours",
+        "instanceData": "{"Microsoft.Resources":{"resourceUri":"/subscriptions/bb678b04-0e48-4b44-XXXX-XXXXXXXX/resourceGroups/DEMOUSAGEAPI/providers/Microsoft.Compute/virtualMachines/MyDockerVM","location":"eastus","tags":{"Department":"Sales","Project":"Demo Usage API","Environment":"Test","Owner":"RSE"},"additionalInfo":{"ImageType":"Canonical","ServiceType":"Standard_D1"}}}",
+        "meterId": "e60caf26-9ba0-413d-a422-6141f58081d6",
+        "infoFields": {},
+        "quantity": 8
+
+      },
+	},
+
+
+### Usage API から Cloud Cruiser へのデータのインポート
+
+Cloud Cruiser のブックには、Usage API の情報の収集と処理を自動化する機能があります。ETL (抽出-変換-読み込み) ブックを使用して、データのコレクション、変換、および Cloud Cruiser データベースへの発行を構成できます。
+
+各ブックには、1 つ以上のコレクションを含めることができます。そのため、複数のソースの情報を関連付けて、使用状況データの補完と拡大を行うことができます。この例では、Azure テンプレート ブックに新しいシート (_UsageAPI)_ を作成し、新しい_コレクション_を設定して Usage API から情報をインポートします。
+
+![図 3 - UsageAPI シートにインポートする Usage API データ][12]
+
+既にこのブックには、サービスを Azure からインポートするシート (_ImportServices_) と Billing API の消費量情報を処理するシート (_PublishData_) があることに注意してください。
+
+_UsageAPI_ シートで Usage API から情報を抽出して処理し、_PublishData_ シートでその情報を Billing API の消費データと関連付けます。
+
+### Usage API からのタグ情報の処理
+
+ブックにデータをインポートした後は、API からの情報を処理するために、_UsageAPI_ シートで変換の手順を作成します。最初の手順では、"JSON split" プロセッサを使用して 1 つのフィールドから (タグを API からインポートするように) タグを抽出し、それぞれ (Department、Project、Owner、Environment) に対して新しいフィールドを 1 つ作成します。
+
+![図 4 - タグ情報に対する新しいフィールドの作成][13]
+
+"Networking" サービスにはタグ情報がありません (黄色のボックス) が、_ResourceGroupName_ フィールドを見れば、このサービスは同じリソース グループの一部であることがわかります。この同じリソース グループの他のリソースにはタグがあるため、以降のプロセスでは、この情報を使用して、不足しているタグをこのリソースに適用できます。
+
+次の手順では、タグの情報を _ResourceGroupName_ に関連付けるルックアップ テーブルを作成します。このルックアップ テーブルは、次の手順でタグ情報を使用して、消費データを強化するために使用します。
+
+### 消費データへのタグ情報の追加
+
+ここからは、_PublishData_ シートを使用できます。このシートでは、Billing API の消費情報を処理して、タグから抽出されるフィールドを追加します。このプロセスは、前の手順で作成したルックアップ テーブルを参照して実行します。その際、参照のキーとして _ResourceGroupName_ を使用します。
+
+![図 5 - 参照からの情報を使用したアカウント構造の設定][14]
+
+"Networking" サービスの適切なアカウント構造のフィールドが適用されて、不足タグの問題が解決されたことに注意してください。さらに、ターゲット リソース グループ以外のリソースのアカウント構造フィールドに "Other" を設定して、レポートでこれらを区別するようにもしました。
+
+ここで、利用状況データを公開するために、手順がもう 1 つ必要です。この手順では、料金プランで定義されている各サービスの適切な料金が、利用状況情報に適用され、計算された料金がデータベースに読み込まれます。
+
+この手順の最も大きなメリットは、このプロセスを 1 回だけ行えばよいという点です。ブックが完成したら、必要なのはスケジューラに追加することだけです。ブックは 1 時間ごとに、または毎日スケジュールされた時刻に実行されます。新しいレポートを作成するか、既存のレポートをカスタマイズするだけで、データの視覚と分析を行って、クラウドの利用状況から意味のある情報を取得できます。
+
+### 次のステップ
 
 + Cloud Cruiser のブックとレポートの作成手順については、Cloud Cruiser のオンライン [ドキュメント](http://docs.cloudcruiser.com/)を参照してください (有効なログインが必要です)。Cloud Cruiser の詳細については、[info@cloudcruiser.com](mailto:info@cloudcruiser.com) に問い合わせてください。
-+ Azure Resource Usage API と RateCard API の概要については、「[Microsoft Azure のリソース消費を把握する](billing-usage-rate-card-overview.md)」を参照してください。 
++ Azure Resource Usage API と RateCard API の概要については、「[Microsoft Azure のリソース消費を把握する](billing-usage-rate-card-overview.md)」を参照してください。
 + 両方の API の詳細については、「[Azure Billing REST API リファレンス](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)」を参照してください (Azure リソース マネージャーに用意されている API セットに含まれています)。
 + サンプル コードをすぐに確認するには、[Github の Microsoft Azure Billing API コード サンプル](https://github.com/Azure/BillingCodeSamples)を参照してください。
 
-## 詳細情報
+### 詳細情報
 + Azure リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 
 <!--Image references-->
@@ -132,5 +228,10 @@ WAP の既定では、コンピューティング、メモリ、およびネッ�
 [7]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transforming-WAP-Normalize-Services.png "図 7 - サービスを正規化する WAP データの変換"
 [8]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workbook-Scheduling.png "図 8 - ブックのスケジュール設定"
 [9]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workload-Cost-Simulation-Report.png "図 9 - ワークロードのコスト比較シナリオのサンプル レポート"
+[10]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/1_ReportWithTags.png "図 10 - タグを使用した分析結果のレポート"
+[11]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/2_ResourceGroupsWithTags.png "図 11 - Azure ポータルで、関連付けられたタグを設定したリソース グループ"
+[12]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/3_ImportIntoUsageAPISheet.png "図 12 - UsageAPI シートにインポートする Usage API データ"
+[13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "図 13 - タグ情報に対する新しいフィールドの作成"
+[14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "図 14 - 参照からの情報を使用したアカウント構造の設定"
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

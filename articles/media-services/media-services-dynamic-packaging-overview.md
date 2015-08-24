@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/15/2015" 
+	ms.date="08/11/2015"  
 	ms.author="juliako"/>
 
 
@@ -97,4 +97,4 @@ Media Services Encoder でエンコードされていないアダプティブ �
 - Dolby Digital Plus の MP4 ファイル。
 - Dolby Digital Plus のスムーズ ファイル。 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

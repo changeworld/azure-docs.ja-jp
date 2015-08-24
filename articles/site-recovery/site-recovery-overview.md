@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="05/10/2015" 
+	ms.date="08/05/2015" 
 	ms.author="raynew"/>
 
 #  Site Recovery の概要
@@ -77,4 +77,4 @@ Azure Recovery Services Agent</p><p>Site Recovery に HTTPS 経由で接続す�
 この概要の終了後、[ベスト プラクティスを確認して](site-recovery-best-practices.md)、デプロイの計画を開始します。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

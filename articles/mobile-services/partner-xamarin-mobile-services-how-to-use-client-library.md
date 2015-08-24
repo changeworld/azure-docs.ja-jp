@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Xamarin コンポーネント クライアントを使用する方法 - Azure Mobile Services 機能ガイド" 
+	pageTitle="Xamarin コンポーネント クライアントを使用する方法 | Microsoft Azure" 
 	description="Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法について説明します。" 
 	authors="lindydonna" 
 	manager="dwrede" 
@@ -474,4 +474,4 @@ Xamarin コンポーネント クライアントは厳密に型指定された�
 [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

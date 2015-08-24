@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="発行設定ファイルを Visual Studio 2013 にインポートする | Mobile Services" 
+	pageTitle="発行設定ファイルを Visual Studio 2013 にインポートする | Microsoft Azure" 
 	description="Visual Studio 2013 で Azure Mobile Services アプリケーションのサブスクリプション発行設定ファイルをインポートする方法について説明します。" 
 	documentationCenter="" 
 	services="mobile-services" 
@@ -62,4 +62,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

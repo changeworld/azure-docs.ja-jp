@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Service Bus トピックの使用方法 (Ruby) - Azure"
+	pageTitle="Service Bus トピックの使用方法 (Ruby) | Microsoft Azure"
 	description="Azure での Service Bus のトピックとサブスクリプションの使用方法について学習します。コード サンプルは Ruby アプリケーション向けに作成されています。"
 	services="service-bus"
 	documentationCenter="ruby"
@@ -218,4 +218,4 @@ azure モジュールは、Azure Service Bus 名前空間に接続するため�
 -	GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

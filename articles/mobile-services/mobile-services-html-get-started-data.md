@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="既存のアプリへの Mobile Services の追加 (HTML 5) | モバイル デベロッパー センター" 
+	pageTitle="既存のアプリケーションへの Mobile Services の追加 (HTML 5) | Microsoft Azure" 
 	description="既存の HTML アプリで Mobile Services を使用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -257,4 +257,4 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

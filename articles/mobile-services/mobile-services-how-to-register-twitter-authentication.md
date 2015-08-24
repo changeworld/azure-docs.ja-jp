@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Twitter 認証用の登録 - Mobile Services" 
+	pageTitle="Twitter 認証用の登録 | Microsoft Azure" 
 	description="Azure Mobile Services アプリケーションで Twitter 認証を使用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/13/2015" 
+	ms.date="08/08/2015" 
 	ms.author="glenga"/>
 
 #モバイル サービスでの Twitter ログイン用のアプリケーションの登録
@@ -32,25 +32,19 @@
 
 2. アプリケーションの**名前**、**説明**、**Web サイト**を入力し、_[Callback URL]_ にモバイル サービスの URL の末尾にパス **/login/twitter** を付けて入力します。
 
-	>[AZURE.NOTE]Visual Studio を使用して Azure に発行された .NET バックエンド モバイル サービスについては、リダイレクト URL はユーザーのモバイル サービスの URL の末尾にパス _signin-microsoft_ .NET サービスとしてのユーザーのモバイル サービスを追加したものです (例:<code>https://todolist.azure-mobile.net/signin-twitter</code>)。
+	>[AZURE.NOTE]Visual Studio を使用して Azure に発行された .NET バックエンド モバイル サービスについては、リダイレクト URL は、ユーザーのモバイル サービスの URL の末尾にパス _signin-twitter_ を追加したものです。この例では、モバイル サービスにはコールバック URL ```https://todolist.azure-mobile.net/signin-twitter``` が含まれます。
 
    	![][2]
 
-3.  ページの下部に記載されている条項を読んで同意し、正しい CAPTCHA 文字列を入力して、**[Create your Twitter application]** をクリックします。
-
-   	![][3]
+3.  ページの下部に記載されている条項を読んで同意し、**[Create your Twitter application] ** をクリックします。
 
    	これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
 
-6. **[コンシューマー キー]** と **[コンシューマー シークレット]** の値を書き留めます。
-
-   	![][4]
+6. アプリケーションのダッシュ ボードで **[Keys and Access Tokens] ** タブをクリックし、**[Consumer key]** と **[Consumer secret]** の値をメモします。
 
     > [AZURE.NOTE]コンシューマー シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
 
-7. **[設定]** タブをクリックして下方向へスクロールし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update this Twitter application's settings]** をクリックします。
-
-	![][5]
+7. **[Settings]** タブをクリックして下方向へスクロールし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update Settings]** をクリックします。
 
 これで、コンシューマー キーとコンシューマー シークレットの値をモバイル サービスに渡すことにより、アプリケーションで Twitter ログインを認証に使用する準備ができました。
 
@@ -59,9 +53,6 @@
 <!-- Images. -->
 [1]: ./media/mobile-services-how-to-register-twitter-authentication/mobile-services-twitter-developers.png
 [2]: ./media/mobile-services-how-to-register-twitter-authentication/mobile-services-twitter-register-app1.png
-[3]: ./media/mobile-services-how-to-register-twitter-authentication/mobile-services-twitter-register-app2.png
-[4]: ./media/mobile-services-how-to-register-twitter-authentication/mobile-services-twitter-app-details.png
-[5]: ./media/mobile-services-how-to-register-twitter-authentication/mobile-services-twitter-register-settings.png
 
 <!-- URLs. -->
 
@@ -71,4 +62,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

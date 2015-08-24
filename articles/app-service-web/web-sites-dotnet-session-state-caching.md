@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.date="08/06/2015" 
 	ms.author="riande"/>
 
 
@@ -41,39 +41,35 @@ NuGet `RedisSessionStateProvider` パッケージをインストールします�
 
 1. *web.config* を開き、**sessionState** 要素を見つけます。
 
-1. `host`、`accessKey`、`port` (SSL ポートは 6380 とする必要があります) の値を入力し、`SSL` を `true` に設定します。これらの値は、ご利用のキャッシュ インスタンスの [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715) ブレードから取得できます。詳細については、「[キャッシュに接続する](../cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache)」を参照してください。既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。非 SSL ポートの有効化の詳細については、「[Azure Redis Cache でのキャッシュの構成](https://msdn.microsoft.com/library/azure/dn793612.aspx)」トピックの「[アクセス ポート](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts)」セクションを参照してください。次のマークアップは、*web.config* ファイルに対する変更を示しています。
+1. `host`、`accessKey`、`port` (SSL ポートは 6380 とする必要があります) の値を入力し、`SSL` を `true` に設定します。これらの値は、ご利用のキャッシュ インスタンスの [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715) ブレードから取得できます。詳細については、「[キャッシュに接続する](../cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache)」を参照してください。既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。非 SSL ポートの有効化の詳細については、「[Azure Redis Cache でのキャッシュの構成](https://msdn.microsoft.com/library/azure/dn793612.aspx)」トピックの「[アクセス ポート](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts)」セクションを参照してください。次のマークアップは、*web.config* ファイルに対する変更、特に *port*、*host*、accessKey*、および *ssl* に対する変更を示しています。
 
-
-```  
-    &lt;system.web&gt;
-    &lt;customErrors mode="Off" /&gt;
-    &lt;authentication mode="None" /&gt;
-    &lt;compilation debug="true" targetFramework="4.5" /&gt;
-    &lt;httpRuntime targetFramework="4.5" /&gt;
-  &lt;sessionState mode="Custom" customProvider="RedisSessionProvider"&gt;
-      &lt;providers&gt;  
-          &lt;!--&lt;add name="RedisSessionProvider" 
-            host = "127.0.0.1" [String]
-            port = "" [number]
-            accessKey = "" [String]
-            ssl = "false" [true|false]
-            throwOnError = "true" [true|false]
-            retryTimeoutInMilliseconds = "0" [number]
-            databaseId = "0" [number]
-            applicationName = "" [String]
-          /&gt;--&gt;
-         &lt;add name="RedisSessionProvider" 
-              type="Microsoft.Web.Redis.RedisSessionStateProvider" 
-              <mark>port="6380"
-              host="movie2.redis.cache.windows.net" 
-              accessKey="m7PNV60CrvKpLqMUxosC3dSe6kx9nQ6jP5del8TmADk=" 
-              ssl="true"</mark> /&gt;
-      &lt;!--&lt;add name="MySessionStateStore" type="Microsoft.Web.Redis.RedisSessionStateProvider" host="127.0.0.1" accessKey="" ssl="false" /&gt;--&gt;
-      &lt;/providers&gt;
-    &lt;/sessionState&gt;
-  &lt;/system.web&gt;
-```
-
+		  <system.web>;
+		    <customErrors mode="Off" />;
+		    <authentication mode="None" />;
+		    <compilation debug="true" targetFramework="4.5" />;
+		    <httpRuntime targetFramework="4.5" />;
+		    <sessionState mode="Custom" customProvider="RedisSessionProvider">;
+		      <providers>;  
+		          <!--<add name="RedisSessionProvider" 
+		            host = "127.0.0.1" [String]
+		            port = "" [number]
+		            accessKey = "" [String]
+		            ssl = "false" [true|false]
+		            throwOnError = "true" [true|false]
+		            retryTimeoutInMilliseconds = "0" [number]
+		            databaseId = "0" [number]
+		            applicationName = "" [String]
+		          />;-->;
+		         <add name="RedisSessionProvider" 
+		              type="Microsoft.Web.Redis.RedisSessionStateProvider" 
+		              port="6380"
+		              host="movie2.redis.cache.windows.net" 
+		              accessKey="m7PNV60CrvKpLqMUxosC3dSe6kx9nQ6jP5del8TmADk=" 
+		              ssl="true" />;
+		      <!--<add name="MySessionStateStore" type="Microsoft.Web.Redis.RedisSessionStateProvider" host="127.0.0.1" accessKey="" ssl="false" />;-->;
+		      </providers>;
+		    </sessionState>;
+		  </system.web>;
 
 
 ##<a id="usesessionobject"></a> コードでセッション オブジェクトを使用する
@@ -93,7 +89,7 @@ Redis Cache を使用して、Web アプリケーションのオブジェクト�
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
   *著者 [Rick Anderson](https://twitter.com/RickAndMSFT)*
@@ -111,4 +107,4 @@ Redis Cache を使用して、Web アプリケーションのオブジェクト�
   [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

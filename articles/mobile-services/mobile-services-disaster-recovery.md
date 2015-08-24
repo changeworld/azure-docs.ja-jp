@@ -1,5 +1,5 @@
 <properties
-	pageTitle="障害発生時のモバイル サービスの復旧 - Azure Mobile Services"
+	pageTitle="障害発生時のモバイル サービスの復旧 | Microsoft Azure"
 	description="障害発生時にモバイル サービスを復旧する方法について説明します。"
 	services="mobile-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="04/24/2015"
+	ms.date="08/08/2015"
 	ms.author="christopheranderson"/>
 
 # 障害発生時のモバイル サービスの復旧
@@ -104,4 +104,4 @@ Azure Mobile Services を使用して、アプリケーションをデプロイ�
 [Azure CLI を使用したモバイル サービスの自動化]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

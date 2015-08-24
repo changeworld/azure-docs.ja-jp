@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple 8600 デバイスの取り付け"
+   pageTitle="StorSimple 8600 デバイスの取り付け | Microsoft Azure"
    description="StorSimple 8600 デバイスの開梱、ラック取り付け、およびケーブル接続の方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/17/2015"
+   ms.date="08/06/2015"
    ms.author="alkohli" />
 
 # StorSimple 8600 デバイスの取り付け
@@ -44,7 +44,7 @@
 
     ![ストレージ デバイスの開梱](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
  
-    **図 1: ストレージ デバイスを開梱したようす**
+    **ストレージ デバイスを開梱したようす**
 
      ラベル | 説明 
      ----- | -------------
@@ -114,7 +114,7 @@
 
     ![エンクロージャ シャーシへのレール スライドの取り付け](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
-    **図 2: エンクロージャの両側へのレール スライドの取り付け**
+    **エンクロージャの両側へのレール スライドの取り付け**
 
     ラベル | 説明
     ----- | -----------
@@ -131,7 +131,7 @@
 
      ![ラック キャビネットへのレール スライドの取り付け](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
 
-    **図 3: ラックへのレール アセンブリの取り付け**
+    **ラックへのレール アセンブリの取り付け**
 
      ラベル | 説明
      ----- | -----------
@@ -153,7 +153,7 @@
 
     ![ラックへのデバイスの挿入](./media/storsimple-8600-hardware-installation/HCSInsertingDeviceintheRack.png)
 
-    **図 4: ラックへのエンクロージャの取り付け**
+    **ラックへのエンクロージャの取り付け**
 
 3. 左右の各フランジを通して付属のプラスねじを 1 つ取り付けることにより、エンクロージャをラックに固定します。
 
@@ -161,7 +161,7 @@
 
      ![フランジ キャップの取り付け](./media/storsimple-8600-hardware-installation/HCSInstallingFlangeCaps.png)
 
-    **図 5: フランジ キャップの取り付け**
+    **フランジ キャップの取り付け**
  
      ラベル | 説明
      ----- | -----------
@@ -196,110 +196,17 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 - 付属のシリアル ケーブル
 - PC に適切なドライバーがインストールされているシリアル USB コンバーター (必要に応じて)
 - 10 GbE ネットワーク インターフェイスで使用する付属の単一 QSFP-SFP+ アダプター
-- [10 GbE ネットワーク インターフェイスでサポートされているトランシーバー、ケーブル、およびスイッチ](https://msdn.microsoft.com/library/azure/dn891474.aspx) 
+- [StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces/) 
 
-### SAS ケーブル接続
+### SAS ケーブル接続と電源ケーブル接続
 
-このデバイスは主エンクロージャと EBOD エンクロージャを備えています。SAS ケーブルを使用してこれらのエンクロージャを相互に接続する必要があります。
+このデバイスには、主エンクロージャと EBOD エンクロージャの両方があります。そのため、それらのユニットを SAS (Serial Attached SCSI) ケーブルと電源ケーブルに同時に接続する必要があります。
 
-次に、主エンクロージャと EBOD エンクロージャを識別します。
+このデバイスのセットアップを初めて行うときは、最初に SAS ケーブル接続の手順を実行してから、電源ケーブル接続の手順を実行します。
 
-#### 主エンクロージャと EBOD エンクロージャを識別するには
+[AZURE.INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-sas-cable-8600.md)]
 
-1. 主エンクロージャと EBOD エンクロージャを識別します。2 つのエンクロージャはそれぞれのバックプレーンを見て識別できます。次の図を参考にしてください。
-
-    ![主エンクロージャと EBOD エンクロージャ](./media/storsimple-8600-hardware-installation/HCSBackplaneofprimaryandEBODenclosure.png)
-
-    **図 6: 主エンクロージャと EBOD エンクロージャの背面**
-
-     ラベル | 説明
-     ----- | -----------
-     1 | 主エンクロージャ
-     2 | EBOD エンクロージャ
-
-
-2. 主エンクロージャと EBOD エンクロージャの両方でシリアル番号を見つけます。シリアル番号ステッカーが各エンクロージャの背面の耳に付いています。両方のエンクロージャのシリアル番号が一致している必要があります。シリアル番号が一致しない場合は、直ちに Microsoft サポートに連絡してください。次の図を参考にしてシリアル番号を見つけてください。
-
-    ![シリアル番号の位置](./media/storsimple-8600-hardware-installation/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
-
-    **図 7: シリアル番号の位置を示すエンクロージャの背面図**
-
-     ラベル | 説明
-     ----- | -----------
-     1 | エンクロージャの耳
-
-
-次に、付属の SAS ケーブルを使用して、EBOD エンクロージャを主エンクロージャに接続します。
-
-#### 主エンクロージャと EBOD エンクロージャを接続するには
-
-1. 主エンクロージャと EBOD エンクロージャで 4 個の SAS (Serial Attached SCSI) ポートを識別します。SAS ポートには、主エンクロージャでは EBOD、EBOD エンクロージャでは CTRL というラベルが付いています (図 8 を参照)。
-
-    ![SAS ポートの位置](./media/storsimple-8600-hardware-installation/HCSSAScablingforyourdevice.png)
-
-    **図 8: 主エンクロージャと EBOD エンクロージャの SAS ポートの位置**
-
-     ラベル | 説明
-     ----- | -----------
-     A | 主エンクロージャ
-     B | EBOD エンクロージャ
-     1 | コントローラー 0
-     2 | コントローラー 1
-     3 | EBOD コント ローラー 0
-     4 | EBOD コント ローラー 1
-     5、6 | 主エンクロージャの SAS ポート (EBOD のラベル)
-     7、8 | EBOD エンクロージャの SAS ポート (CTRL のラベル)
-
-2. 付属の SAS ケーブルを使用して、EBOD ポートを CTRL ポートに接続します。
-
-    コントローラー 0 の EBOD ポートを EBOD コントローラー 0 の CTRL ポートに接続する必要があります。コントローラー 1 の EBOD ポートは EBOD コントローラー 1 の CTRL ポートに接続する必要があります。図 8 を参考にしてください。
-
-### 電源ケーブル接続
-
-主エンクロージャと EBOD エンクロージャの両方に冗長な電源および冷却モジュール (PCM) が含まれています。高可用性を確保するには、各エンクロージャの各 PCM を取り付けて、異なる電源に接続する必要があります。
-
-デバイスの電源ケーブル接続を行うには、次のステップを実行します。
-
-#### 電源ケーブル接続を行うには
-
-1. すべての PCM の電源スイッチが OFF の位置になっていることを確認します。
-
-2. 主エンクロージャの両方の PCM に電源コードを接続します。電源コードは、以下の図では赤で示されています。
-
-3. 主エンクロージャの 2 つの PCM が異なる電源を使用するようにします。
-
-4. 次の図に示すように、ラックの配電ユニットに電源コードを接続します。
-
-5. EBOD エンクロージャについて、ステップ 2 から 4 までを繰り返します。
-
-6. 各 PCM の電源スイッチを ON の位置に切り替えて、EBOD エンクロージャの電源を入れます。
-
-7. EBOD コントローラーの LED (シャーシ背面の緑の LED) が ON になっていることを確認して、EBOD エンクロージャの電源が入っていることを確認します。
-
-8. ここで、各 PCM のスイッチを ON の位置に切り替えて、主エンクロージャの電源を入れます。
-
-9. デバイス コントローラーの LED が ON になっていることを確認して、システムが稼動していることを確認します。
-
-10. EBOD コントローラーの SAS LED (SAS ポートの隣の 4 個の LED) を確認して、EBOD コントローラーとデバイス コントローラーの間の接続がアクティブであることを確認します。SAS LED は緑色になっているはずです。
-
-> [AZURE.IMPORTANT]システムの高可用性を確保するために、以下の図に示されている電源ケーブル接続構成に厳密に従うことをお勧めします。
-
-   ![電源ケーブル接続の図](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforPower.png)
-
-   **図 9: デバイスの電源ケーブル接続**
-
-     Label | Description
-     ----- | -----------
-     1     | Primary enclosure
-     2     | PCM 0
-     3     | PCM 1
-     4     | Controller 0
-     5     | Controller 1
-     6     | EBOD controller 0
-     7     | EBOD controller 1
-     8     | EBOD enclosure
-     9     | PDUs
- 
+[AZURE.INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
 ### ネットワークのケーブル配線
 
@@ -313,7 +220,7 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 
      ![8600 デバイスのバックプレーン](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
 
-    **図 10: データ ポートが示されているデバイスの背面**
+    **データ ポートが示されているデバイスの背面**
  
      ラベル | 説明
      ------- | -----------
@@ -334,7 +241,7 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 
 ![4U デバイスのネットワーク ケーブル接続](./media/storsimple-8600-hardware-installation/HCSCableYour4UDeviceforNetwork.png)
 
-**図 11: デバイスのネットワーク ケーブル配線**
+**デバイスのネットワーク ケーブル配線**
 
 ラベル | 説明
 ----- | -----------
@@ -356,7 +263,7 @@ H、I | ホスト (ファイル サーバーなど)
 
 #### シリアル接続のためにケーブルを接続するには
 
-1. デバイスの各コントローラーにはシリアル ポートがあり、レンチのアイコンで識別されます。デバイスのバックプレーンにあるシリアル ポートを見つけるには、図 10 を参照してください。
+1. デバイスの各コントローラーにはシリアル ポートがあり、レンチのアイコンで識別されます。シリアル ポートを見つけるには、デバイスの背面にあるデータ ポートを示す図を参照してください。
 
 2. デバイスのバックプレーンにあるアクティブなコントローラーを識別します。明滅している青の LED はコントローラーがアクティブであることを示しています。
 
@@ -379,7 +286,7 @@ H、I | ホスト (ファイル サーバーなど)
 
 ## 次のステップ
 
-これで[オンプレミス StorSimple デバイスを配置して構成する](storsimple-deployment-walkthrough.md)準備ができました。
+これで[オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough.md)準備ができました。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

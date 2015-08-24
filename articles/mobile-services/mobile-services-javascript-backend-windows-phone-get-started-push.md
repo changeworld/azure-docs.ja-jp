@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Mobile Services アプリケーション (Windows ストア) | モバイル デベロッパー センターへのプッシュ通知の追加" 
+	pageTitle="Mobile Services アプリケーション へのプッシュ通知の追加 (Windows ストア) | Microsoft Azure" 
 	description="Azure Mobile Services と Notification Hubs を使用して Windows ストア アプリにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services,notification-hubs" 
 	documentationCenter="windows" 
@@ -180,4 +180,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

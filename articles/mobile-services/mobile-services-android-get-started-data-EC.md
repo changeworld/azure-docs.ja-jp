@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="データの使用 (Android) | モバイル デベロッパー センター" 
+	pageTitle="データの使用 (Android) | Microsoft Azure" 
 	description="モバイル サービスを使用して Android アプリでデータを活用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="android" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="05/06/2015" 
+	ms.date="08/08/2015" 
 	ms.author="ricksal"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
@@ -132,4 +132,4 @@
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

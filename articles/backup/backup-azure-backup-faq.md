@@ -7,7 +7,7 @@
    manager="shreeshd"
    editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/31/2015" ms.author="arunak"; "jimpark"; "aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/07/2015" ms.author="arunak"; "jimpark"; "aashishr"/>
 
 # Azure Backup - FAQ
 Azure Backup に関する一般的な質問を次に示します。Azure Backup に関して他に不明な点がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)にアクセスして、質問を投稿してください。コミュニティのメンバーから回答を得ることができます。よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -141,4 +141,29 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 **Q4.暗号化キーを紛失した場合はどうなりますか? 自分でデータを回復できますか、またはマイクロソフトがデータを回復できますか?** <br/> A4.バックアップ データの暗号化に使用されるキーは、お客様のオンプレミスにのみ存在します。マイクロソフトは Azure にコピーを保持していませんし、キーにもアクセスできません。お客様がキーを紛失した場合、マイクロソフトはバックアップ データを回復できません。
 
-<!---HONumber=August15_HO6-->
+## Backup のキャッシュ
+
+**Q1.Azure Backup エージェントに指定されたキャッシュ場所を変更する方法を教えてください。**
+
++ 管理者特権のコマンド プロンプトで次のコマンドを実行して OBEngine を停止します。
+
+  ```PS C:\> Net stop obengine```
+
++ キャッシュ領域フォルダーを十分に容量のある別のドライブにコピーします。キャッシュ領域フォルダーからファイルを移動するのではなくコピーすることをお勧めします。元のキャッシュ領域は、バックアップが新しいキャッシュ領域で正常に動作していることを確認したら削除できます。
+
++ 次のレジストリ エントリを新しいキャッシュ領域フォルダーへのパスに更新します。
+
+
+	| レジストリ パス | レジストリ キー | 値 |
+	| ------ | ------- | ------ |
+	| HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows Azure Backup\\Config | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
+	| HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows Azure Backup\\Config\\CloudBackupProvider | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
+
+
++ 管理者特権のコマンド プロンプトで次のコマンドを実行して OBEngine を開始します。
+
+  ```PS C:\> Net start obengine```
+
+バックアップが新しいキャッシュ場所で正常に動作したら、元のキャッシュ フォルダーを削除できます。
+
+<!---HONumber=August15_HO7-->

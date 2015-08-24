@@ -1,21 +1,25 @@
-<properties 
-   pageTitle="Azure SQL Database のリソース制限"
-   description="このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。"
-   services="sql-database"
-   documentationCenter="na"
-   authors="rothja"
-   manager="jeffreyg"
-   editor="monicar" />
-<tags 
-   ms.service="sql-database"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="data-management"
-   ms.date="07/24/2015"
-   ms.author="jroth" />
+<properties
+	pageTitle="Azure SQL Database のリソース制限"
+	description="このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。"
+	services="sql-database"
+	documentationCenter="na"
+	authors="rothja"
+	manager="jeffreyg"
+	editor="monicar" />
+
+
+<tags
+	ms.service="sql-database"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-management"
+	ms.date="08/10/2015"
+	ms.author="jroth" />
+
 
 # Azure SQL Database のリソース制限
+
 
 Azure SQL Database は、トランザクション ログ、I/O、およびその他の多数のリソースなど、共有リソースの使用量を監視します。これにより、Azure SQL Databse は設定されたリソース境界内にデータベースを保持できます。このリソース境界またはしきい値はリソース制限と呼ばれます。クライアントによるリソース使用量がテナントまたは物理ノード レベルのいずれかでこれらの制限を超えると、Azure SQL Database はリソース使用量の管理を開始し、その結果、接続が失われたり、要求が拒否されたりすることがあります。
 
@@ -23,7 +27,7 @@ Azure SQL Database は、トランザクション ログ、I/O、およびその
 
 ## リソースの制限の概要表
 
-次の表には、各リソースに対する制限の概要が示されており、これらの制限を超えると、Azure SQL Database によって影響を受けるリソースへの接続が切断されたり、要求が拒否されたりして、エラー コードが返されます。サービス層 (Basic、Standard、Premium) およびパフォーマンス レベルによって正確な制限が決まる場合もあります。そのような場合については、「[Azure SQL Database のサービス階層とパフォーマンス レベル](https://msdn.microsoft.com/library/azure/dn741336.aspx)」をご覧ください。
+次の表には、各リソースに対する制限の概要が示されており、これらの制限を超えると、Azure SQL Database によって影響を受けるリソースへの接続が切断されたり、要求が拒否されたりして、エラー コードが返されます。[サービス層 (Basic、Standard、Premium)](sql-database-service-tiers.md) およびパフォーマンス レベルによって正確な制限が決まる場合もあります。そのような場合については、「[Azure SQL データベースのサービス階層とパフォーマンス レベル](https://msdn.microsoft.com/library/azure/dn741336.aspx)」をご覧ください。
 
 [AZURE.INCLUDE [azure-sql-database-limits](../../includes/azure-sql-database-limits.md)]
 
@@ -119,7 +123,14 @@ Azure SQL Database は、トランザクション ログ、I/O、およびその
 | **拒否される要求の種類** | DDL または DML ステートメント。 |
 | **推奨** | 次の DMV を使用してトランザクションを監視できます。**sys.dm\_tran\_active\_transactions**、**sys.dm\_tran\_database\_transactions**、**sys.dm\_tran\_locks**、および **sys.dm\_tran\_session\_transactions**。アプリケーションの種類によっては、**PAGLOCK** や **TABLOCK** などのより粒度の粗いロック ヒットを使用して、所定のステートメント/トランザクションで掛けられるロック数を減らせる場合があります。この処理によって、アプリケーションの同時実行に悪影響が及ぼされる可能性があります。 |
 
+
 ## トランザクション ログの長さ
+
+
+Standard または Premium 価格レベルの Azure SQL Database のバージョン V12 の場合、トランザクション ログの最大長の 2 GB 制限がなくなりました。
+
+次の表では、バージョン V11 のトランザクション ログ制限について説明します。
+
 
 | &nbsp; | 詳細 |
 | :--- | :--- |
@@ -152,4 +163,4 @@ Azure SQL Database は、トランザクション ログ、I/O、およびその
 
 [要求拒否または接続終了を防ぐための Azure SQL Database のベスト プラクティス](https://msdn.microsoft.com/library/azure/dn338082.aspx)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

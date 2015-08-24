@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="弾力性データベース プールにユーザーを追加する方法" 
 	description="プール内の各 db に特権を持つユーザーを追加する必要があります。" 
-	services="sql-database"
+	services="sql-database" 
 	documentationCenter=""  
 	manager="jeffreyg" 
 	authors="sidneyh"/>
@@ -12,15 +12,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/24/2015" 
-	ms.author="sidneyh" />
+	ms.date="07/27/2015" 
+	ms.author="ddove; sidneyh" />
 
 # エラスティック データベース プールにユーザーを追加する方法
 
-**エラスティック データベース ジョブ**では、[エラスティック データベース プール](sql-database-elastic-pool.md)内のすべてのデータベースに対して、同じスクリプトを実行することができます。スクリプトを実行するには、プール内のすべてのデータベースに適切なアクセス許可を持つユーザーを追加する必要があります。詳細については、「[Azure SQL Database におけるデータベースとログインの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx?f=255&MSPPError=-2147217396)」か「[Adding Users to Your SQL Azure Database (SQL Azure Database にユーザーを追加する)](http://azure.microsoft.com/blog/2010/06/21/adding-users-to-your-sql-azure-database/)」をご覧ください。
+**エラスティック データベース ジョブ**機能 (プレビュー) を使用すると、Azure SQL Database で、カスタム定義のデータベース コレクション、**エラスティック データベース プール**、**エラスティック データベース シャード セット**など、データベースのグループ全体に対して Transact-SQL スクリプトを実行できます。スクリプトを実行するには、ジョブを実行する各データベースに適切なアクセス許可を持つユーザーを追加する必要があります。詳細については、「[Azure SQL Database におけるデータベースとログインの管理](https://msdn.microsoft.com/library/azure/ee336235.aspx)」か「[Adding Users to Your SQL Azure Database (SQL Azure Database にユーザーを追加する)](http://azure.microsoft.com/blog/2010/06/21/adding-users-to-your-sql-azure-database/)」をご覧ください。
 
 ## 前提条件
-* [弾力性データベース プール (プレビュー) を作成する](sql-database-elastic-pool-portal.md)
 * [弾力性ジョブ コンポーネント](sql-database-elastic-jobs-service-installation.md)をインストールします。 
 
 ## データベースにユーザーを追加する方法
@@ -37,7 +36,7 @@
 
 ## 次のステップ
 
-エラスティック データベース プールに対してジョブを実行します。「[弾力性データベースのジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」をご覧ください。
+ジョブの作成と管理です。「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」を参照してください。
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -45,4 +44,4 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

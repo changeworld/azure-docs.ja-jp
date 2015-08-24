@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="08/11/2015"  
 	ms.author="juliako"/>
 
 #メディア エンコーダー プレミアム ワークフローの形式とコーデック
@@ -127,4 +127,4 @@
 
 入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

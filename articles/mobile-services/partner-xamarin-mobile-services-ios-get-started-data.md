@@ -1,5 +1,5 @@
 <properties
-	pageTitle="既存のアプリケーションへの Mobile Services の追加 (Xamarin.iOS) - Azure Mobile Services"
+	pageTitle="既存のアプリケーションへの Mobile Services の追加 (Xamarin.iOS) | Microsoft Azure"
 	description="Azure Mobile Services Xamarin.iOS アプリからのデータを保存する方法、およびデータにアクセスする方法について説明します。"
 	documentationCenter="xamarin"
 	authors="ggailey777"
@@ -242,4 +242,4 @@
 [Xamarin.iOS]: http://xamarin.com/download
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

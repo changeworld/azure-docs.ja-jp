@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Mobile Services でのオフライン データ同期の使用 (iOS) | モバイル デベロッパー センター"
+	pageTitle="Mobile Services でのオフライン データ同期の使用 (iOS) | Microsoft Azure"
 	description="Azure Mobile Services を使用して、iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
 	documentationCenter="ios"
 	authors="krisragh"
@@ -272,4 +272,4 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 
 [Mobile Services のクイック スタート チュートリアル]: mobile-services-ios-get-started.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

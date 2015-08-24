@@ -10,7 +10,7 @@
 	ms.service="application-insights" 
 	ms.workload="tbd" 
 	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
+	ms.devlang="multiple" 
 	ms.topic="article" 
 	ms.date="08/04/2015" 
 	ms.author="awills"/>
@@ -329,19 +329,6 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
 
     appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
-#### 時間指定ページ ビュー
-
-trackPageView の代わりにこの組み合わせのメソッド呼び出しを使用することで、ユーザーがページに残った時間を分析できます。
-
-    // At the start of a page view:
-    appInsights.startTrackPage(myPage.name);
-
-    // At the completion of a page view:
-    appInsights.stopTrackPage(myPage.name, "http://fabrikam.com/page", properties, measurements);
-
-開始の呼び出しと停止の呼び出しで、最初のパラメーターに同じ文字列を使用します。
-
-[メトリック エクスプ ローラー][metrics]の Page Duration メトリックをご覧ください。
 
 
 ## 要求を追跡する
@@ -420,7 +407,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
             }
 ```
 
-サーバー SDK には、[依存関係モジュール](app-insights-dependencies.md)が含まれることに注意してください。このモジュールは、たとえばデータベースや REST API に対する依存関係呼び出しを自動的に検出して追跡します。このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。この呼び出しは、自動追跡によってキャッチされない呼び出しを追跡する場合、またはエージェントをインストールしない場合に使用します。
+サーバー SDK には、[依存関係モジュール](app-insights-dependencies.md)が含まれることにご注意ください。このモジュールは、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡します。このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。この呼び出しは、自動追跡によってキャッチされない呼び出しを追跡する場合、またはエージェントをインストールしない場合に使用します。
 
 標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) を編集して `DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。
 
@@ -781,4 +768,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

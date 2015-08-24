@@ -3,8 +3,8 @@
 	description="最新の Android SDK - Engagement API を Android で使用する方法"
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
-	authors="kpiteira" 
-	manager="dwrede"
+	authors="piyushjo" 
+	manager="dwrede" 
 	editor="" />
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="01/24/2015" 
-	ms.author="kapiteir" />
+	ms.date="08/10/2015" 
+	ms.author="piyushjo" />
 
 #Engagement API を Android で使用する方法
 
@@ -298,4 +298,4 @@ Engagement を使用してアプリケーションのセッション、アクテ
 			{"expiration":"2016-12-07","status":"premium"}
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

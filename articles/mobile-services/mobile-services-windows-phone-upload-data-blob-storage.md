@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Windows Phone Silverlight アプリから Azure Storage へのイメージのアップロード | Azure Mobile Services" 
+	pageTitle="Windows Phone Silverlight アプリから Azure Storage へのイメージのアップロード | Microsoft Azure" 
 	description="Mobile Services を使用して、Windows Phone Silverlight アプリから Azure BLOB ストレージにイメージをアップロードする方法について説明します。" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
@@ -103,4 +103,4 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

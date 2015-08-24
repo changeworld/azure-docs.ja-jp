@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ユニバーサル Windows アプリでのオフライン データの使用 | Azure Mobile Services" 
+	pageTitle="ユニバーサル Windows アプリでのオフライン データの使用 | Microsoft Azure" 
 	description="Azure Mobile Services を使用して、ユニバーサル Windows アプリでオフライン データをキャッシュおよび同期する方法について説明します。" 
 	documentationCenter="mobile-services" 
 	authors="lindydonna" 
@@ -283,4 +283,4 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

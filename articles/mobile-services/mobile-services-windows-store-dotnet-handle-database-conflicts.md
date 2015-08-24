@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="オプティミスティック同時実行制御でデータベース書き込み競合を処理 (Windows ストア) | モバイル デベロッパー センター" 
+	pageTitle="オプティミスティック同時実行制御でデータベース書き込み競合を処理 (Windows ストア) | Microsoft Azure" 
 	description="サーバーと Windows ストア アプリケーションの両方でデータベースへの書き込みの競合を処理する方法について説明します。" 
 	documentationCenter="windows" 
 	authors="wesmc7777" 
@@ -366,4 +366,4 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 [システム プロパティ]: http://go.microsoft.com/fwlink/?LinkId=331143
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

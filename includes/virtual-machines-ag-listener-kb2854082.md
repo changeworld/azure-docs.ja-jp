@@ -1,9 +1,11 @@
-Next, if any servers on the cluster are running Windows Server 2008 R2 or Windows Server 20012, you must verify that the hotfix [KB2854082](http://support.microsoft.com/kb/2854082) is installed on each of the on-premises servers or Azure VMs that are part of the cluster. Any server or VM that is in the cluster, but not in the availability group, should also have this hotfix installed.
+次に、クラスター上に Windows Server 2008 R2 または Windows Server 20012 を実行しているサーバーがある場合は、修正プログラム [KB2854082](http://support.microsoft.com/kb/2854082) がオンプレミスのサーバーまたはクラスターの一部である Azure VM にそれぞれインストールされていることを確認する必要があります。クラスター内 (可用性グループ内ではなく) のすべてのサーバーまたは VM にも、この修正プログラムがインストールされている必要があります。
 
-In the remote desktop session for each of the cluster nodes, download [KB2854082](http://support.microsoft.com/kb/2854082) to a local directory. Then, install the hotfix on each of the cluster nodes sequentially. If the cluster service is currently running on the cluster node, the server is restarted at the end of the hotfix installation.
+各クラスター ノードのリモート デスクトップ セッションで、[KB2854082](http://support.microsoft.com/kb/2854082) をローカル ディレクトリにダウンロードします。次に、クラスター ノードごとに順番に修正プログラムをインストールします。クラスター ノードでクラスター サービスが実行されている場合は、修正プログラムのインストールの最後に、サーバーが再起動されます。
 
->[AZURE.WARNING] Stopping the cluster service or restarting the server affects the quorum health of your cluster and the availability group, and may cause your cluster to go offline. To maintain the high availability of your cluster during installation, make sure that:
+>[AZURE.WARNING]クラスター サービスの停止やサーバーの再起動は、クラスターおよび可用性グループのクォーラムの正常性に影響し、クラスターがオフラインになる場合があります。インストール中に、クラスターの高可用性を維持するには、次のことを確認します。
 >
-> - The cluster is in optimal quorum health, 
-> - All cluster nodes are online before installing the hotfix on any node, and
-> - Allow the hotfix installation to run to completion on one node, including fully restarting the server, before installing the hotfix on any other node in the cluster.
+> - クラスターのクォーラムの正常性が最適な状態にあること 
+> - 任意のノードに修正プログラムをインストールする前に、すべてのクラスター ノードがオンラインになっていること
+> - クラスター内の他の任意のノードに修正プログラムをインストールする前に、1 つのノードでサーバーの完全な再起動を含む実行を完了するように修正プログラムのインストールで許可されていること。
+
+<!---HONumber=August15_HO7-->

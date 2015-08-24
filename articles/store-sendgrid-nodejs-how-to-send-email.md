@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SendGrid 電子メール サービスの使用方法 (Node.js) - Azure" 
+	pageTitle="SendGrid 電子メール サービスの使用方法 (Node.js) | Microsoft Azure" 
 	description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" 
 	services="" 
 	documentationCenter="nodejs" 
@@ -225,4 +225,4 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

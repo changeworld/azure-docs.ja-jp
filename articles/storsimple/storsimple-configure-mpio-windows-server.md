@@ -1,10 +1,10 @@
 <properties 
-   pageTitle="StorSimple デバイスの MPIO の構成"
+   pageTitle="StorSimple デバイスの MPIO の構成 | Microsoft Azure"
    description="Windows Server 2012 R2 を実行するホストに接続されている、StorSimple デバイスの MPIO を構成します"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
-   manager="adinah"
+   manager="carolz"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/07/2015"
+   ms.date="08/11/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスの MPIO の構成
@@ -36,11 +36,12 @@ MPIO はオプションの機能であり、Windows サーバーに既定では�
 - 手順 4. 高可用性と負荷分散のために MPIO を構成する
 
 これらの各手順を以下のセクションで説明します。
+
 ## 手順 1. Windows Server ホストに MPIO をインストールする
 
 Windows Server ホストにこの機能をインストールするには、次の手順を実行します。
 
-### ホストに MPIO をインストールするには
+#### ホストに MPIO をインストールするには
 
 1. Windows Server ホストでサーバー マネージャーを開きます。既定では、Windows Server 2012 R2 または Windows Server 2012 を実行しているコンピューターに Administrators グループのメンバーがログオンすると、サーバー マネージャーが起動します。サーバー マネージャーが開いていない場合は、**[スタート]** をクリックし、[サーバー マネージャー] をクリックします。![サーバー マネージャー](./media/storsimple-configure-mpio-windows-server/IC740997.png)
 2. **[サーバー マネージャー]、[ダッシュボード]、[役割と機能の追加]** の順にクリックします。**役割と機能の追加**ウィザードが起動します。![役割と機能の追加ウィザード 1](./media/storsimple-configure-mpio-windows-server/IC740998.png)
@@ -58,7 +59,7 @@ Windows Server ホストにこの機能をインストールするには、次�
 
 StorSimple ボリュームを識別するには、MPIO を構成する必要があります。StorSimple ボリュームを認識するように MPIO を構成するには、次の手順を実行します。
 
-### StorSimple ボリュームの MPIO を構成する
+#### StorSimple ボリュームの MPIO を構成する
 
 1. **[MPIO の構成]** を開きます。**[サーバー マネージャー]、[ダッシュボード]、[ツール]、[MPIO]** の順にクリックします。
 
@@ -75,7 +76,7 @@ StorSimple ボリュームを識別するには、MPIO を構成する必要が�
 
 Windows Server で MPIO が構成されると、StorSimple デバイスに作成されたボリュームをマウントし、MPIO を活用して冗長性を確保できます。ボリュームをマウントするには、次の手順を実行します。
 
-### ホストにボリュームをマウントするには
+#### ホストにボリュームをマウントするには
 
 1. Windows Server ホストで、**[iSCSI イニシエーターのプロパティ]** ウィンドウを開きます。**[サーバー マネージャー]、[ダッシュボード]、[ツール]、[iSCSI イニシエーター]** の順にクリックします。
 2. **[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、[探索] タブをクリックし、**[ターゲット ポータルの探索]** をクリックします。
@@ -83,9 +84,10 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 	
 	- StorSimple デバイスの DATA ポートの IP アドレスを入力します (たとえば、「DATA 0」と入力します)。
 	- **[OK]** をクリックして、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスに戻ります。
+
 	>[AZURE.IMPORTANT]**iSCSI 接続のプライベート ネットワークを使用している場合は、プライベート ネットワークに接続されている DATA ポートの IP アドレスを入力します。**
 
-4. デバイスの 2 番目のネットワーク インターフェイス (DATA 1 など) に対して手順 2. ～ 3. を繰り返します。これらのインターフェイスは iSCSI に対応している必要があることに注意してください。詳細については、「[ネットワーク インターフェイスの構成](https://msdn.microsoft.com/library/02f1412f-e196-4a88-8eda-2113247ea47c#sec05)」を参照してください。
+4. デバイスの 2 番目のネットワーク インターフェイス (DATA 1 など) に対して手順 2. ～ 3. を繰り返します。これらのインターフェイスは iSCSI に対応している必要があることに注意してください。詳細については、[ネットワーク インターフェイスの変更](storsimple-modify-device-config.md#modify-network-interfaces)に関するセクションを参照してください。
 5. **[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、**[ターゲット]** タブを選択します。**[検出されたターゲット]** に StorSimple デバイスのターゲット IQN が表示されます。![iSCSI イニシエーターのプロパティ、[ターゲット] タブ](./media/storsimple-configure-mpio-windows-server/IC741007.png)
 6. **[接続]** をクリックして、StorSimple デバイスとの iSCSI セッションを確立します。**[ターゲットへの接続]** ダイアログ ボックスが表示されます。
 
@@ -166,6 +168,9 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 
 12. セッション内に示されるデバイスを表示するには、**[デバイス]** タブを選択します。選択したデバイスの MPIO ポリシーを構成するには、**[MPIO]** をクリックします。**[デバイスの詳細]** ダイアログ ボックスが表示されます。**[MPIO]** タブで、適切な **[負荷分散ポリシー]** の設定を選択できます。**[アクティブ]** または **[スタンバイ]** のパスの種類も表示することができます。
 
+## 次のステップ
+
+[StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-modify-device-config.md)の詳細を確認する。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

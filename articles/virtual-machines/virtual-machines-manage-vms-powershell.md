@@ -5,7 +5,8 @@
    documentationCenter="windows"
    authors="singhkay"
    manager="timlt"
-   editor=""/>
+   editor=""
+   tags="azure-service-management"/>
 
    <tags
    ms.service="virtual-machines"
@@ -93,4 +94,4 @@ Azure で Windows ベースの仮想マシンを新たに作成するには、�
 - 既存の負荷分散セットのメンバーとしての設定。
 - 静的 IP アドレス。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

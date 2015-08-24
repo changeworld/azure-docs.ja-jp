@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="認証の使用 (Windows ストア) | モバイル デベロッパー センター" 
+	pageTitle="認証の使用 (Windows ストア) | Microsoft Azure" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Windows ストア アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -84,4 +84,4 @@
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

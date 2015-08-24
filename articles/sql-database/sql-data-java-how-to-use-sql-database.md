@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL Azure の使用方法 (Java) - Azure の機能ガイド" 
+	pageTitle="SQL Azure (Java) を使用する方法 | Microsoft Azure" 
 	description="Java コードから Azure SQL Database を使用する方法について説明します。" 
 	services="sql-database" 
 	documentationCenter="java" 
@@ -726,4 +726,4 @@ Microsoft JDBC Driver for SQL Server の詳細については、「[JDBC ドラ�
 [allowed_ips_dialog]: ./media/sql-data-java-how-to-use-sql-database/WA_Allowed_IPs.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

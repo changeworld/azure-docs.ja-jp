@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="08/10/2015" 
 	ms.author="tdykstra"/>
 
 # Web ジョブ SDK で Azure Service Bus を使用する方法
@@ -81,6 +81,13 @@ App.config ファイルに Service Bus の接続文字列を含むサンプル �
 		}
 
 POCO のプロパティを使って同じ関数の BLOB やテーブルを操作する方法を示すコード サンプルについては、[この記事のストレージ キュー バージョン](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#pocoblobs)に関するセクションを参照してください。
+
+キュー メッセージを作成するコードで WebJobs SDK を使用しない場合は、次の例に示すようなコードを使用してください。
+
+		var client = QueueClient.CreateFromConnectionString(ConfigurationManager.ConnectionStrings["AzureWebJobsServiceBus"].ConnectionString, "blobadded");
+		BlobInformation blobInformation = new BlobInformation () ;
+		var message = new BrokeredMessage(blobInformation);
+		client.Send(message);
 
 ### ServiceBusTrigger で使用できる型
 
@@ -159,4 +166,4 @@ Service Bus 以外の WebJobs SDK シナリオについては、「[WebJobs SDK 
 このガイドでは、Azure Service Bus を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="08/05/2015"
+   ms.date="08/07/2015"
    ms.author="danlep"/>
 
 # Azure 仮想マシンでの Docker および Compose の概要
@@ -30,7 +30,7 @@ Azure のさまざまな手順と Azure Markeplace で入手できるイメー�
 
 Docker がインストールされた Linux VM を実行したら、SSH を使用してクライアント コンピューターから VM に接続します。必要に応じて、次の 2 つのコマンドを実行して [Compose](https://github.com/docker/compose/blob/882dc673ce84b0b29cd59b6815cb93f74a6c4134/docs/install.md) をインストールします。
 
->[AZURE.TIP]Docker VM 拡張機能を使用して VM を作成した場合、Compose は既にインストールされています。これらのコマンドを省略して、手順 3. に進んでください。Docker を VM に自分でインストールした場合は、Compose をインストールするだけでかまいません。
+>[AZURE.TIP]Docker VM 拡張機能を使用して VM を作成した場合、Compose は既にインストールされています。これらのコマンドを省略して、手順 3. に進んでください。VM に Docker を自分でインストールした場合は、Compose をインストールするだけでかまいません。
 
 ```
 $ curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
@@ -112,4 +112,4 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 
 [wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

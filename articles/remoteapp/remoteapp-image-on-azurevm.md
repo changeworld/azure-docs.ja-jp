@@ -1,6 +1,6 @@
 <properties 
     pageTitle="Azure VM に基づく Azure RemoteApp イメージの作成"
-    description="Azure 仮想マシンを使用して RemoteApp 起動用のイメージを作成する方法について説明します。" 
+    description="Azure 仮想マシンを使用することで Azure RemoteApp のイメージを作成する方法について説明します。" 
     services="remoteapp" 
     documentationCenter="" 
     authors="lizap" 
@@ -12,16 +12,16 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="05/28/2015" 
+    ms.date="08/12/2015" 
     ms.author="elizapo" />
 
 
 
 # Azure 仮想マシンに基づく Azure RemoteApp イメージの作成
 
-Azure 仮想マシンから (コレクションで共有するアプリを保持する) RemoteApp のイメージを作成できます。また、Azure VM イメージ ギャラリーに、RemoteApp イメージのすべての要件を満たす仮想マシン イメージも追加しました。必要に応じて、この VM イメージを独自の VM の開始点として使用することができます。ライブラリにある "Windows Server Remote Desktop Session Host" イメージを探してみましょう。
+Azure 仮想マシンから (コレクションで共有するアプリを保持する) Azure RemoteApp のイメージを作成できます。また、Azure VM イメージ ギャラリーに追加された、Azure RemoteApp イメージのすべての要件を満たす仮想マシン イメージを使用することもできます。必要に応じて、この VM イメージを独自の VM の開始点として使用することができます。ライブラリにある "Windows Server Remote Desktop Session Host" イメージを探してみましょう。
 
-イメージの作成と、Azure VM ライブラリから Azure RemoteApp へのイメージのアップロードという 2 つの手順があります。
+Azure VM に基づく独自のイメージを作成するには、イメージの作成と、Azure VM ライブラリから Azure RemoteApp へのイメージのアップロードという 2 つの手順があります。
 
 ## Azure VM に基づくカスタム イメージの作成
 
@@ -41,9 +41,9 @@ Azure 仮想マシンから (コレクションで共有するアプリを保持
 
  
 
-## RemoteApp イメージ ライブラリへのイメージのインポート
+## Azure RemoteApp イメージ ライブラリへのイメージのインポート
 
-次の手順を使用して、新しいイメージを RemoteApp にインポートします。
+次の手順を使用して、新しいイメージを Azure RemoteApp にインポートします。
 
 1. **[テンプレート イメージ]** タブで次の操作を実行します。
 	- 既存のイメージがない場合は、**[テンプレート イメージのアップロードまたはインポート]** をクリックします。 
@@ -59,4 +59,4 @@ Azure 仮想マシンから (コレクションで共有するアプリを保持
 これで、ニーズに応じて新しいコレクション ([クラウド](remoteapp-create-cloud-deployment.md) コレクションか[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションのいずれか) を作成する準備ができました。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

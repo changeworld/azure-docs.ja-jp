@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/08/2015" 
+	ms.date="08/08/2015" 
 	ms.author="glenga"/>
 
 # Microsoft アカウントを使用して、クライアントによって管理される認証で Windows ストア アプリを認証します。
@@ -163,4 +163,4 @@
 [Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

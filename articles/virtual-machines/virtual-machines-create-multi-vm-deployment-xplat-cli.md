@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure CLI を使用して複数の VM のデプロイメントを作成する | Azure"
+   pageTitle="Azure CLI を使用して複数の VM のデプロイメントを作成する | Microsoft Azure"
    description="Azure CLI を使用して複数の VM のデプロイメントを作成する方法について説明します。"
    services="virtual-machines"
    documentationCenter="nodejs"
@@ -67,4 +67,4 @@
 * [Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="JavaScript バックエンド モバイル サービスでのユーザーのサービス側承認 | Azure Mobile Services"
+	pageTitle="JavaScript バックエンド モバイル サービスでのユーザーのサービス側承認 | Microsoft Azure"
 	description="Azure モバイル サービスの JavaScript バックエンドでユーザーを承認する方法を学習します。"
 	services="mobile-services"
 	documentationCenter=""
@@ -70,4 +70,4 @@
 [Azure 管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

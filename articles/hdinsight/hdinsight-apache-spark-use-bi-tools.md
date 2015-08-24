@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="HDInsight の Apache Spark での BI ツールの使用 | Azure" 
+	pageTitle="HDInsight の Apache Spark での BI ツールの使用 | Microsoft Azure" 
 	description="Apache Spark で Notebook を使用して生データのスキーマを作成し、Hive テーブルとして保存した後、BI ツールを Hive テーブルに使用してデータを分析する手順を説明します" 
 	services="hdinsight" 
 	documentationCenter="" 
@@ -121,7 +121,7 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 
 5. Power BI は、データをインポートして新しいダッシュボードを表示します。新しいデータ セットが **[データセット]** 見出しにも追加されます。ダッシュボードの Spark タイルをクリックし、ワークシートを開いてデータを視覚化します。
 
-	![Power BI ダッシュ ボードの Spark タイル](./media/hdinsight-apache-spark-use-bi-tools/HDI.Spark.PowerBI.Tile.png "Power BI ダッシュ ボードの Spark タイル")
+	![Power BI ダッシュボードの Spark タイル](./media/hdinsight-apache-spark-use-bi-tools/HDI.Spark.PowerBI.Tile.png "Power BI ダッシュボードの Spark タイル")
 
 6. 右側の **[フィールド]** 一覧に、前に作成した **hvac** テーブルが含まれることに注意してください。テーブルを展開し、Notebook で定義したフィールドを表示します。
 
@@ -205,4 +205,4 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

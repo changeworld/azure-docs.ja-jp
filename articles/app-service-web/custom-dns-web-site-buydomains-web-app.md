@@ -19,11 +19,14 @@
 
 # Azure App Service でのカスタム ドメイン名の購入と構成
 
-<div class="dev-center-tutorial-selector sublanding">
-  <a href="/documentation/articles/custom-dns-web-site-buydomains-web-app" title="Web アプリ" class="current">Web アプリ用のドメインの購入</a> <a href="/documentation/articles/web-sites-custom-domain-name" title="Web アプリ">外部ドメインでの Web アプリ</a> <a href="/documentation/articles/web-sites-traffic-manager-custom-domain-name/" title="Traffic Manager を使用した Web アプリ">Traffic Manager を使用した Web アプリ</a> <a href="/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a>
+> [AZURE.SELECTOR]
+- [Buy Domain for Web Apps](custom-dns-web-site-buydomains-web-app.md)
+- [Web Apps with External Domains](web-sites-custom-domain-name.md)
+- [Web Apps with Traffic Manager](web-sites-traffic-manager-custom-domain-name.md)
+- [GoDaddy](web-sites-godaddy-custom-domain-name.md)
 
 
-</div>
+
 
 [AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
@@ -95,4 +98,4 @@ Web アプリのドメイン名を持っていない場合は、[Microsoft Azure
 この時点でブラウザーにカスタム ドメイン名を入力して、対象の Web アプリに正常にアクセスできることを確認できます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

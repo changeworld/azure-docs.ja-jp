@@ -1,5 +1,5 @@
 <properties
-	pageTitle="IPython Notebook - Azure チュートリアル"
+	pageTitle="IPython Notebook | Microsoft Azure"
 	description="Linux または Windows の仮想マシン (VM) を使用して Azure 上に IPython Notebook をデプロイする方法について説明するチュートリアルです。"
 	services="virtual-machines"
 	documentationCenter="python"
@@ -112,7 +112,7 @@ IPython とその依存モジュールを Windows VM にインストールする
 
 	* `PATH` 環境変数に `C:\OpenSSL-Win32\bin` を追加する必要があります。
 
-> [AZURE.NOTE]OpenSSL をインストールする際は、ハートブリードのセキュリティ脆弱性の修正を含む、バージョン 1.0.1g 以降のバージョンを使用してください。
+	> [AZURE.NOTE]OpenSSL をインストールする際は、ハートブリードのセキュリティ脆弱性の修正を含む、バージョン 1.0.1g 以降のバージョンを使用してください。
 
 1.  次のコマンドで IPython をインストールします。
 
@@ -160,31 +160,31 @@ Windows で次のコマンドを使用します。
 
 このコマンドでは、パスワードとその確認が要求され、次のようにパスワードが出力されます。
 
-    Enter password: 
-    Verify password: 
+    Enter password:
+    Verify password:
     sha1:b86e933199ad:a02e9592e59723da722.. (elided the rest for security)
-    
+
 次に、プロファイルの構成ファイルを編集します。このファイルは、現在のプロファイル ディレクトリにある `ipython_notebook_config.py` ファイルです。このファイルは存在しないことがあります。その場合は作成してください。このファイルにはさまざまなフィールドが含まれ、既定ではいずれもコメント アウトされています。このファイルは、よく使用するテキスト エディターで開くことができます。少なくとも次の内容が含まれていることを確認してください。
 
     c = get_config()
-    
+
     # This starts plotting support always with matplotlib
     c.IPKernelApp.pylab = 'inline'
-    
+
     # You must give the path to the certificate file.
-    
+
     # If using a Linux VM:
     c.NotebookApp.certfile = u'/home/azureuser/.ipython/profile_nbserver/mycert.pem'
-    
+
     # And if using a Windows VM:
     c.NotebookApp.certfile = r'C:\Users\azureuser\.ipython\profile_nbserver\mycert.pem'
-    
+
     # Create your own password as indicated above
     c.NotebookApp.password = u'sha1:b86e933199ad:a02e9592e5 etc... '
-    
+
     # Network and browser details. We use a fixed port (9999) so it matches
     # our Azure setup, where we've allowed traffic on that port
-    
+
     c.NotebookApp.ip = '*'
     c.NotebookApp.port = 9999
     c.NotebookApp.open_browser = False
@@ -270,4 +270,4 @@ IPython の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 [Python 2.7]: http://www.python.org/download
 [OpenSSL]: http://slproweb.com/products/Win32OpenSSL.html
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

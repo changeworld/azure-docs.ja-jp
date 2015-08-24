@@ -1,5 +1,5 @@
 <properties
-   pageTitle="HDInsight で Storm を使用して Event Hubs のイベントを処理する | Azure"
+   pageTitle="HDInsight で Storm を使用して Event Hubs のイベントを処理する | Microsoft Azure"
    description="Visual Studio で HDInsight Tools for Visual Studio を使用して作成した C# Storm トポロジによって Event Hubs のデータを処理する方法について説明します。"
    services="hdinsight,notification hubs"
    documentationCenter=""
@@ -557,4 +557,4 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

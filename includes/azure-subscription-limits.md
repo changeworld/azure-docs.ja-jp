@@ -1,81 +1,20 @@
-<table cellspacing="0" border="1">
-<tr>
-   <th align="left" valign="middle">リソース</th>
-   <th align="left" valign="middle">既定の制限</th>
-   <th align="left" valign="middle">上限</th>
-</tr>
-<tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/azure/hh531793.aspx">サブスクリプション</a>あたりのコア数<sup>1</sup></p></td>
-   <td valign="middle"><p>20</p></td>
-   <td valign="middle"><p>10,000</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://msdn.microsoft.com/library/azure/gg456328.aspx">共同管理者</a>数</p></td>
-   <td valign="middle"><p>200</p></td>
-   <td valign="middle"><p>200</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/documentation/articles/storage-create-storage-account/">ストレージ アカウント</a>数</p></td>
-   <td valign="middle"><p>100</p></td>
-   <td valign="middle"><p>100</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/documentation/articles/cloud-services-what-is/">クラウド サービス</a>数</p></td>
-   <td valign="middle"><p>20</p></td>
-   <td valign="middle"><p>200</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://msdn.microsoft.com/library/jj157100.aspx">ローカル ネットワーク</a>数</p></td>
-   <td valign="middle"><p>10</p></td>
-   <td valign="middle"><p>500</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの SQL Database サーバー数</p></td>
-   <td valign="middle"><p>6</p></td>
-   <td valign="middle"><p>150</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サーバーあたりの SQL Database 数</p></td>
-   <td valign="middle"><p>150</p></td>
-   <td valign="middle"><p>500</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの DNS サーバー数</p></td>
-   <td valign="middle"><p>9</p></td>
-   <td valign="middle"><p>100</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの予約済み IP 数</p></td>
-   <td valign="middle"><p>20</p></td>
-   <td valign="middle"><p>100</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの ExpressRoute 専用回線数</p></td>
-   <td valign="middle"><p>10</p></td>
-   <td valign="middle"><p>25</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりのホストされるサービスの証明書数</p></td>
-   <td valign="middle"><p>400</p></td>
-   <td valign="middle"><p>400</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://msdn.microsoft.com/library/azure/jj156085.aspx">アフィニティ グループ</a>数</p></td>
-   <td valign="middle"><p>256</p></td>
-   <td valign="middle"><p>256</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりのリージョンごとの <a href="http://azure.microsoft.com/services/batch/">Batch</a> アカウント数</p></td>
-   <td valign="middle"><p>1</p></td>
-   <td valign="middle"><p>50</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>サブスクリプションあたりのアラート ルール数</p></td>
-   <td valign="middle"><p>250</p></td>
-   <td valign="middle"><p>250</p></td>
-</tr>
-</table>
+リソース|既定の制限|上限
+---|---|---
+[サブスクリプション](http://msdn.microsoft.com/library/azure/hh531793.aspx)あたりのコア数 <sup>1</sup>|20|10,000
+サブスクリプションあたりの[共同管理者](http://msdn.microsoft.com/library/azure/gg456328.aspx)数|200|200
+サブスクリプションあたりの[ストレージ アカウント](storage-create-storage-account.md)数|100|100
+サブスクリプションあたりの[クラウド サービス](cloud-services-what-is.md)数|20|200
+サブスクリプションあたりの[ローカル ネットワーク](http://msdn.microsoft.com/library/jj157100.aspx)数|10|500
+サブスクリプションあたりの SQL Database サーバー数|6|150
+サーバーあたりの SQL Database 数|150|500
+サブスクリプションあたりの DNS サーバー数|9|100
+サブスクリプションあたりの予約済み IP 数|20|100
+サブスクリプションあたりの ExpressRoute 専用回線数|10|25
+サブスクリプションあたりのホストされるサービスの証明書数|400|400
+サブスクリプションあたりの[アフィニティ グループ](http://msdn.microsoft.com/library/azure/jj156085.aspx)数|256|256
+サブスクリプションあたりのリージョンごとの [Batch](http://azure.microsoft.com/services/batch/) アカウント数|1|50
+サブスクリプションあたりのアラート ルール数|250|250
 
 <sup>1</sup>XS のインスタンスで、使用するコア数が 1 コアに満たなくても、コア制限を上限として 1 コアとカウントされます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

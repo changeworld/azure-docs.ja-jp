@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="診断の使用方法 (.NET) - Azure の機能ガイド" 
+	pageTitle="診断の使用方法 (.NET) | Microsoft Azure" 
 	description="Azure で、デバッグ、パフォーマンス測定、監視、トラフィック解析などに診断データを使用する方法を説明します。" 
 	services="cloud-services" 
 	documentationCenter=".net" 
@@ -24,14 +24,14 @@ Azure 診断 1.2 および 1.3 を使用すると、Azure で実行している 
 
 ## 概要
 
-Azure 診断 1.2 および 1.3 は、Azure で実行している Worker ロール、Web ロール、または仮想マシンから診断利用統計情報を収集できる Azure 拡張機能です。利用統計情報は Azure ストレージ アカウントに格納され、デバッグ、トラブルシューティング、パフォーマンス測定、リソース使用状況の監視、トラフィック解析と容量計画、および監査に使用できます。
+Azure 診断 1.2 および 1.3 は、Azure で実行している Worker ロール、Web ロール、または仮想マシンから診断テレメトリを収集できる Azure 拡張機能です。テレメトリ データは Azure ストレージ アカウントに格納され、デバッグ、トラブルシューティング、パフォーマンス測定、リソース使用状況の監視、トラフィック解析と容量計画、および監査に使用できます。
 
 Azure 診断 1.2 は、Azure SDK for .NET 2.4 以前で使用します。Azure 診断 1.3 は、Azure SDK for .NET 2.5 以降で使用します。
 
 診断 1.0 を以前使用したことがある場合は、診断 1.2 および 1.3 と比較して 3 つの大きな違いがあります。
 
 1.	診断 1.2 および 1.3 はクラウド サービスに加えて、仮想マシン上でデプロイできます
-2.	診断 1.0 は Azure SDK の一部で、クラウド サービスの展開時に展開されます。診断 1.2 および 1.3 は拡張機能であり、クラウド サービスのデプロイとは別にデプロイされます。
+2.	診断 1.0 は Azure SDK の一部で、クラウド サービスのデプロイ時にデプロイされます。診断 1.2 および 1.3 は拡張機能であり、クラウド サービスのデプロイとは別にデプロイされます。
 3.	診断 1.2 および 1.3 では、ETW イベントおよび .NET EventSource イベントの収集が可能です。
 
 詳細な比較については、この記事の最後にある「[Azure 診断のバージョンの比較][]」を参照してください。
@@ -40,7 +40,7 @@ Azure 診断では、次の種類のテレメトリを収集できます。
 
 データ ソース|説明
 ---|---
-IIS Logs|IIS Web サイトに関する情報。
+IIS ログ|IIS Web サイトに関する情報。
 Azure 診断インフラストラクチャ ログ|診断自体に関する情報。
 IIS の失敗した要求ログ|IIS サイトまたはアプリケーションへの失敗した要求に関する情報。
 Windows イベント ログ|Windows イベント ログ システムに送信された情報。
@@ -52,15 +52,15 @@ NET EventSource |<a href="http://msdn.microsoft.com/library/system.diagnostics.t
 
 ## Worker ロールの診断を有効にする方法
 
-このチュートリアルでは、.NET EventSource クラスを使用して利用統計情報を生成する Azure Worker ロールの実装方法について説明します。Azure 診断を使用して利用統計情報を収集し、これを Azure ストレージ アカウントに格納します。Worker ロールを作成すると、Visual Studio は Azure SDK for .NET 2.4 以降でソリューションの一部として自動的に診断 1.0 を有効にします。次の手順では、Worker ロールの作成、ソリューションからの診断、1.0 の無効化、Worker ロールへの診断、1.2 または 1.3 のデプロイに関するプロセスについて説明します。
+このチュートリアルでは、.NET EventSource クラスを使用してテレメトリ データを生成する Azure Worker ロールの実装方法について説明します。Azure 診断を使用してテレメトリ データを収集し、これを Azure ストレージ アカウントに格納します。Worker ロールを作成すると、Visual Studio は Azure SDK for .NET 2.4 以降でソリューションの一部として自動的に診断 1.0 を有効にします。次の手順では、Worker ロールの作成、ソリューションからの診断、1.0 の無効化、Worker ロールへの診断、1.2 または 1.3 のデプロイに関するプロセスについて説明します。
 
 ### 前提条件
-この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。Azure サブスクリプションがない場合でも、[無料評価版][]にサインアップできます。[Azure PowerShell Version 0.8.7 以降をインストールして構成している][]ことを確認してください。
+この記事では、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。Azure サブスクリプションがない場合でも、[無料試用版][]にサインアップできます。[Azure PowerShell Version 0.8.7 以降をインストールして構成している][]ことを確認してください。
 
 ### 手順 1. worker ロールを作成する
 1.	**Visual Studio 2013** を起動します。
 2.	.NET Framework 4.5 をターゲットとする **[クラウド]** テンプレートから、新しい **Azure クラウド サービス** プロジェクトを作成します。プロジェクト名を「WadExample」と入力し、[OK] をクリックします。
-3.	**[ワーカー ロール]** を選択して [OK] をクリックします。プロジェクトが作成されます。 
+3.	**[worker ロール]** を選択して [OK] をクリックします。プロジェクトが作成されます。 
 4.	**[ソリューション エクスプローラー]** で、**[WorkerRole1]** プロパティ ファイルをダブルクリックします。
 5.	**[構成]** タブで **[診断を有効にする]** をオフにして、診断 1.0 (Azure SDK 2.4 以前) を無効にします。
 6.	ソリューションを構築してエラーが発生しないことを確認します。
@@ -154,7 +154,7 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource �
 4.	**[クラウド サービスとストレージ アカウントの作成]** ダイアログで **[名前]** を入力し (「WadExample」など)、リージョンまたはアフィニティ グループを選択します。
 5.	**[環境]** を **[Staging]** に設定します。
 6.	必要に応じて、他の **[設定]** を変更し、**[発行]** をクリックします。
-7.	展開が完了したら、クラウド サービスが **[実行中]** 状態になっていることを Azure ポータルで確認します。
+7.	デプロイメントが完了したら、クラウド サービスが **[実行中]** 状態になっていることを Azure ポータルで確認します。
 
 ### 手順 4. 診断構成ファイルを作成して拡張機能をインストールする
 1.	次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義をダウンロードします。
@@ -174,7 +174,7 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource �
   			<WadCfg>
     			<DiagnosticMonitorConfiguration overallQuotaInMB="25000">
       			<PerformanceCounters scheduledTransferPeriod="PT1M">
-        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)% Processor Time" sampleRate="PT1M" unit="percent" />
+        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />
         			<PerformanceCounterConfiguration counterSpecifier="\Memory\Committed Bytes" sampleRate="PT1M" unit="bytes"/>
       				</PerformanceCounters>
       				<EtwProviders>
@@ -210,10 +210,10 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 
 ## 仮想マシンの診断を有効にする方法
 
-このチュートリアルでは、開発コンピューターから Azure の仮想マシンに診断をリモートでインストールする方法について説明します。また、その Azure の仮想マシン上で実行するアプリケーションの実装方法と .NET [EventSource クラス][]を使用した利用統計情報の生成方法を学習します。Azure 診断を使用して利用統計を収集し、これを Azure ストレージ アカウントに格納します。
+このチュートリアルでは、開発コンピューターから Azure の仮想マシンに診断をリモートでインストールする方法について説明します。また、その Azure の仮想マシン上で実行するアプリケーションの実装方法と .NET [EventSource クラス][]を使用したテレメトリ データの生成方法を学習します。Azure 診断を使用してテレメトリを収集し、これを Azure ストレージ アカウントに格納します。
 
 ### 前提条件
-このチュートリアルでは、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。Azure サブスクリプションがない場合でも、[無料評価版][]にサインアップできます。[Azure PowerShell Version 0.8.7 以降をインストールして構成している][]ことを確認してください。
+このチュートリアルでは、Azure サブスクリプションがあり、Azure SDK で Visual Studio 2013 を使用していることを前提としています。Azure サブスクリプションがない場合でも、[無料試用版][]にサインアップできます。[Azure PowerShell Version 0.8.7 以降をインストールして構成している][]ことを確認してください。
 
 ### 手順 1. 仮想マシンを作成する
 1.	開発コンピューター上で Visual Studio 2013 を起動します。
@@ -320,7 +320,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
   			<WadCfg>
     			<DiagnosticMonitorConfiguration overallQuotaInMB="25000">
       			<PerformanceCounters scheduledTransferPeriod="PT1M">
-        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)% Processor Time" sampleRate="PT1M" unit="percent" />
+        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />
         			<PerformanceCounterConfiguration counterSpecifier="\Memory\Committed Bytes" sampleRate="PT1M" unit="bytes"/>
       				</PerformanceCounters>
       				<EtwProviders>
@@ -461,7 +461,7 @@ Web ロール|あり|あり
 Worker ロール|あり|あり
 IaaS|いいえ|あり
 
-構成と展開|診断 1.0|診断 1.1/1.2/1.3
+構成とデプロイメント|診断 1.0|診断 1.1/1.2/1.3
 ---|---|---
 Visual Studio との統合 - Azure Web/Worker 開発機能への統合。|あり|いいえ
 PowerShell スクリプト - 診断のロールへのインストールと構成を管理するスクリプト。|あり|あり
@@ -504,7 +504,7 @@ EventSource|いいえ|テーブル|.NET EventSource クラスを使用してコ�
 [Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス]: http://msdn.microsoft.com/library/windowsazure/hh771389.aspx
 [Azure アプリケーション開発のトラブルシューティングのベスト プラクティス]: http://msdn.microsoft.com/library/windowsazure/hh771389.aspx
-[無料評価版]: http://azure.microsoft.com/pricing/free-trial/
+[無料試用版]: http://azure.microsoft.com/pricing/free-trial/
 [Azure PowerShell Version 0.8.7 以降をインストールして構成している]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
 [Azure 診断 1.2 構成スキーマ]: http://msdn.microsoft.com/library/azure/dn782207.aspx
 [Set-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495270.aspx
@@ -512,4 +512,4 @@ EventSource|いいえ|テーブル|.NET EventSource クラスを使用してコ�
 [Remove-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495168.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

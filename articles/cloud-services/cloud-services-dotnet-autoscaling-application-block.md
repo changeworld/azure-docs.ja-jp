@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="自動スケール アプリケーション ブロックの使用 (.NET) - Azure" 
+	pageTitle="自動スケール アプリケーション ブロックの使用 (.NET) | Microsoft Azure" 
 	description="Azure で自動スケール アプリケーションを使用する方法について説明します。コード サンプルは C# で記述され、.NET API を利用しています。" 
 	services="cloud-services" 
 	documentationCenter=".net" 
@@ -409,4 +409,4 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
   [Azure の自動スケールによる TechNet と MSDN のホスティング コストと環境への影響の軽減]: http://msdn.microsoft.com/library/jj838718(PandP.50).aspx
  
 
-<!-----HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

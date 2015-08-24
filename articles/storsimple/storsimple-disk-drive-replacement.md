@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/05/2015"
+   ms.date="08/12/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスのディスク ドライブを交換する
@@ -124,4 +124,4 @@ Microsoft Azure StorSimple デバイスから障害が発生したドライブ�
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

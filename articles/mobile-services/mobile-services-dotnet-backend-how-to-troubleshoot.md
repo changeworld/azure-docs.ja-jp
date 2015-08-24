@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Mobile Services .NET バックエンドのトラブルシューティング - Azure Mobile Services" 
+	pageTitle="Mobile Services .NET バックエンドのトラブルシューティング | Microsoft Azure" 
 	description=".NET バックエンドを使用する Mobile Services で問題を診断して解決する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -154,4 +154,4 @@ SQL Database と共に Mobile Services .NET バックエンドを使用してい
 [LogsPortal]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/13.png
 [HelpConflict]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/14.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

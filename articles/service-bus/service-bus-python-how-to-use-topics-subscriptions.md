@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Service Bus トピックの使用方法 (Python) - Azure" 
+	pageTitle="Service Bus トピックの使用方法 (Python) | Microsoft Azure" 
 	description="Python から Azure Service Bus のトピックとサブスクリプションを使用する方法を説明します。" 
 	services="service-bus" 
 	documentationCenter="python" 
@@ -158,4 +158,4 @@ SAS キーの名前と値は、Azure 管理ポータルの接続情報で確認�
 [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

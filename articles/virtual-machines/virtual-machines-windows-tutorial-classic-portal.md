@@ -1,11 +1,12 @@
 <properties
 	pageTitle="Azure 上で Windows を実行する仮想マシンの作成"
-	description="Windows の仮想マシンを Azure ポータルで作成する"
+	description="Azure ポータルで Windows 仮想マシンを作成します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="KBDAzure"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/05/2015"
+	ms.date="08/11/2015"
 	ms.author="kathydav"/>
 
 # Windows を実行する仮想マシンを Azure ポータルで作成する
@@ -41,7 +42,7 @@
 
 このセクションでは、Azure ポータルの **[ギャラリーから]** オプションを使用して仮想マシンを作成する方法について説明します。このオプションは、**[簡易作成]** オプションよりも多数の構成の選択肢があります。たとえば、仮想マシンを仮想ネットワークに参加させる場合、**[ギャラリーから]** オプションを使用する必要があります。
 
-> [AZURE.NOTE]さらに、より機能が豊富でカスタマイズも可能な [Azure プレビュー ポータル](https://portal.azure.com)を使用すれば、仮想マシンの作成、複数の仮想マシンのアプリケーション テンプレートのデプロイの自動化、VM の強化された監視や診断の機能の使用など、さまざまな操作を試すことができます。この 2 つのポータルにある利用可能な VM の構成オプションには、性質上、重複するものもありますが、まったく同じではありません。
+> [AZURE.NOTE]さらに、より機能が豊富でカスタマイズも可能な [Azure プレビュー ポータル](https://portal.azure.com)を使用すれば、仮想マシンの作成、強化された監視や診断の使用、Premium Storage の使用など、さまざまな操作を試すことができます。この 2 つのポータルにある利用可能な仮想マシン構成オプションには、性質上、重複するものもありますが、まったく同じではありません。たとえば、プレビュー ポータルを利用して、Premium Storage を使用する仮想マシンを構成します。
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-WindowsVM.md)]
 
@@ -53,6 +54,6 @@
 
 ## その他のリソース
 
-VM 用に構成できる内容とそのタイミングについては、[「Azure VM 構成設定について」](http://msdn.microsoft.com/library/azure/dn763935.aspx)を参照してください。
+仮想マシン用に構成できる内容とそのタイミングについては、「[Azure VM 構成設定について](http://msdn.microsoft.com/library/azure/dn763935.aspx)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

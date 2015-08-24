@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="RemoteApp のクラウド コレクションの作成方法" 
-	description="Azure クラウドにデータを保存する RemoteApp のデプロイメントを作成する方法について学習します。" 
+	pageTitle="Azure RemoteApp のクラウド コレクションの作成方法" 
+	description="Azure クラウドにデータを保存する Azure RemoteApp のデプロイを作成する方法について説明します。" 
 	services="remoteapp" 
 	documentationCenter="" 
 	authors="lizap" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/26/2015" 
+	ms.date="08/12/2015" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp のクラウド コレクションの作成方法
@@ -34,12 +34,12 @@ Azure RemoteApp のコレクションには、次の 2 種類があります。
 
 コレクションを作成する前に以下の操作が必要です:
 
-- RemoteApp に[サインアップ](http://azure.microsoft.com/services/remoteapp/)します。 
+- Azure RemoteApp に[サインアップ](http://azure.microsoft.com/services/remoteapp/)します。 
 - アクセス権を付与するユーザーに関する情報を集めます。この情報とは、ユーザーの Microsoft アカウントの情報または Active Directory の仕事用アカウントの情報です。
 - この手順は、サブスクリプションの一部として提供されたテンプレートのイメージを使用しようとしているか、使用するテンプレートのイメージが既にアップロード済みであることが前提となっています。別のテンプレート イメージをアップロードする必要がある場合は、[テンプレート イメージ] ページから実行できます。**[テンプレート イメージのアップロード]** をクリックして、ウィザードで表示される手順に従います。 
 - カスタム アプリケーションまたは LOB プログラムが必要な場合は、 新しい[イメージ](remoteapp-imageoptions.md)を作成して、クラウド コレクションで使用します。
 
-## 手順 1. RemoteApp コレクションを作成する ##
+## 手順 1. コレクションを作成する ##
 
 
 
@@ -56,7 +56,7 @@ Azure RemoteApp のコレクションには、次の 2 種類があります。
 	
 	**重要:** コレクションがプロビジョニングされるまで最大 30 分かかる場合があります。
 
-RemoteApp コレクションを作成したら、RemoteApp の **[クイック スタート]** ページに進んでセットアップの手順を続行します。
+RemoteApp コレクションが作成されたら、コレクションの名前をダブルクリックします。これにより、**[クイック スタート]** ページが表示されます。このページで、コレクションの構成を完了します。
 
 
 ## 手順 2. Active Directory ディレクトリの同期を構成する (省略可能) ##
@@ -93,4 +93,4 @@ RemoteApp コレクションには複数のアプリケーションを発行で�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

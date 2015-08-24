@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="既存のアプリへの Mobile Services の追加 (Windows ストア JavaScript) | モバイル デベロッパー センター" 
+	pageTitle="既存のアプリへの Mobile Services の追加 (Windows ストア JavaScript) | Microsoft Azure" 
 	description="Mobile Services を使用して Windows ストア JavaScript アプリでデータを活用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -141,4 +141,4 @@
 [Mobile Services HTML/JavaScript How-to Conceptual Reference]: mobile-services-html-how-to-use-client-library.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

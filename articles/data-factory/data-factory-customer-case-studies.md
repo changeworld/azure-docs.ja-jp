@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="お客様導入事例 |Azure Data Factory" 
+	pageTitle="お客様導入事例 | Microsoft Azure" 
 	description="お客様がどのように Azure Data Factory を使用しているかについて、いくつか紹介します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -48,4 +48,4 @@ Data Factory は、データの移動や変換を自動化するクラウド ベ
 
 [Cloud Machine Learning により、顧客とのつながりを強化](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

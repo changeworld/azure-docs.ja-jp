@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="get-started-article"
-	ms.date="04/21/2015"
+	ms.date="08/11/2015"
 	ms.author="pakefali"/>
 
 # Azure App Service での Node.js API アプリの構築とデプロイ
@@ -68,7 +68,7 @@
 
 	![][api-app-host]
 
-2. **[API アプリ]** ブレードの **[デプロイメント]** セクションを見つけて、**[継続的配置の設定]** をクリックします。必要に応じて、ブレードのこの部分まで下へスクロールしてください。
+2. **[API アプリ]** ブレードの **[デプロイメント]** セクションを見��けて、**[継続的配置の設定]** をクリックします。必要に応じて、ブレードのこの部分まで下へスクロールしてください。
 
 	![][deployment-part]
 
@@ -245,4 +245,4 @@ API アプリ バックエンドを使用する Node.js Web アプリケーシ�
 [browse-api-app-page]: ./media/app-service-api-nodejs-api-app/browse-api-app-page.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

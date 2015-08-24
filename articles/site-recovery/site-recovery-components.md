@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Site Recovery コンポーネント" 
-	description="Site Recovery コンポーネントの概要と管理方法について説明します" 
+	pageTitle="Site Recovery コンポーネント"
+	description="Site Recovery コンポーネントの概要と管理方法について説明します"
 	services="site-recovery"
 	documentationCenter=""
 	authors="rayne-wiselman"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/09/2015"
+	ms.date="08/10/2015"
 	ms.author="raynew"/>
 
 # Site Recovery コンポーネント
@@ -53,7 +53,7 @@ Azure Site Recovery をデプロイして、データセンターと Azure 間�
 
 ![オンプレミス VMM と Azure 間](./media/site-recovery-components/Components_OnpremHyperVSite2Azure.png)
 
-### オンプレミス物理サーバーまたは VMware 仮想マシンと、Azure 間の保護 
+### オンプレミス物理サーバーまたは VMware 仮想マシンと、Azure 間の保護
 
 このシナリオでは、レプリケーション方法が 2 つあります。
 
@@ -74,11 +74,11 @@ Azure Site Recovery をデプロイして、データセンターと Azure 間�
 
 #### ポート
 
-**コンポーネント** | **ポート** | **詳細** 
+**コンポーネント** | **ポート** | **詳細**
 --- | --- | --- | ---
 **プロセス サーバー** |9080 | レプリケーションのデータが、保護対象のコンピューターから、TCP 9080 上でプロセス サーバーに送信されます。
 **構成サーバー** | HTTPS/443 | レプリケーションのメタデータが、保護されているコンピューターで実行されているモビリティ サービスから、ポート 443 上で構成サーバーに送信されます。
- | HTTPS/443 | 構成サーバーは、コンピューターの保護を調整します。プロセス サーバーは、443 上で構成サーバーと通信します。または、マップされているパブリック エンドポイントと通信して、管理および制御情報を受信します。 
+ | HTTPS/443 | 構成サーバーは、コンピューターの保護を調整します。プロセス サーバーは、443 上で構成サーバーと通信します。または、マップされているパブリック エンドポイントと通信して、管理および制御情報を受信します。
  | 9443 | フェールバックの方向で、vContinuum ツールが、ポート 9443 上で構成サーバーのコントロールとメタデータを要求します (図には非記載)
  | 5986 | PowerShell でのリモート管理は、ポート 5986 を使用します (図には非記載)
  | 3389 | 3389 を使用した構成サーバーとの RDP 接続 (図には非記載)
@@ -93,7 +93,7 @@ Azure Site Recovery をデプロイして、データセンターと Azure 間�
 **コンポーネント** | **詳細** | **インストール** | **デプロイ シナリオ**
 --- | --- | --- | ---
 **VMM 用 Azure Site Recovery Provider** | VMM サーバーと Site Recovery サービス間の通信を処理します。 | VMM サーバーにインストールされます | 2 つの VMM 間または VMM サイトと Azure 間に保護をセットアップするときに使用されます
-**Hyper-V 用 Azure Site Recovery Provider** | VMM がデプロイされていないときに、Hyper-V ホストと Site Recovery サービス間の通信を処理します。 | Hyper-V ホスト サーバーにインストールされます | Hyper-V サイトと Azure 間に保護をセットアップするときに使用されます。   
+**Hyper-V 用 Azure Site Recovery Provider** | VMM がデプロイされていないときに、Hyper-V ホストと Site Recovery サービス間の通信を処理します。 | Hyper-V ホスト サーバーにインストールされます | Hyper-V サイトと Azure 間に保護をセットアップするときに使用されます。
 **Microsoft Recovery Services エージェント** | Hyper-V ホスト サーバーと Site Recovery サービス間の通信を処理します | Hyper-V ホスト サーバーにインストールされます | <p>Hyper-V サイトと Azure 間に保護をセットアップするときに使用されます。</p><p>Hyper-V 用 Azure Site Recovery Provider と Microsoft Recovery Services エージェントの両方を含む 1 つのプロバイダーをダウンロードします。</p>
 **プロセス サーバー/フェールバック プロセス サーバー** | <p>Azure のマスター ターゲット サーバーに送信する前に、保護対象の VMWare コンピューターまたは Windows/Linux 物理サーバーのデータを最適化します</p><p>VMWare 仮想マシンまたは物理サーバーでモビリティ サービスのプッシュ インストールを行います</p><p>VMWare 仮想マシンの自動検出を実行します。</p> <p>フェールバック プロセス サーバー: レプリケーションをフェールバック プロセス サーバーに適用する前に、データの最適化に関する最初のポイントのみ</p> | <p>Windows Server 2012 R2 以降を実行するオンプレミス サーバーにインストールされます</p><p>フェールバック プロセス サーバー: Standard A4 サイズ Azure 仮想マシンで実行されます</p> | <p>オンプレミス物理サーバーまたは VMWare 仮想マシンと、Azure 間に保護をセットアップするときに使用されます。</p><p>フェールバック プロセス サーバー: Azure からオンプレミスへのフェールバックに使用されます</p>
 **モビリティ サービス** | 保護対象のコンピューターの変更をキャプチャし、オンプレミス プロセス サーバーに通信して、Azure にレプリケーションします。 | 保護するオンプレミス VMWare 仮想マシンまたは物理サーバーにインストールされます| オンプレミス物理サーバーまたは VMware 仮想マシンと、Azure 間の保護を設定するときに使用されます。
@@ -115,7 +115,7 @@ Providerは、VMM サーバー、Hyper-V ホスト サーバー (デプロイに
 -  .backup.windowsazure.com
 	-  **.blob.core.windows.net
 -  **.store.core.windows.net
-	
+
 - ファイアウォールに IP アドレスベースの規則がある場合、構成サーバーから、「[Azure データ センターの IP の範囲](https://www.microsoft.com/download/details.aspx?id=41653)」に記載されている IP アドレスへの通信と、HTTP (443) の通信を許可します。使用する予定がある Azure リージョンと米国西部の IP アドレスの範囲をホワイトリストに登録する必要があります。
 - VMM を対象にして Site Recovery をデプロイし、カスタム プロキシを使用する場合、VMM の RunAs アカウント (DRAProxyAccount) が、Site Recovery ポータルからカスタム プロキシの設定で指定したプロキシの資格情報を使用して、自動的に作成されます。このアカウントを正しく認証できるように、プロキシ サーバーを設定する必要があります。
 - Hyper-V ホスト サーバーにインストールされているプロバイダーからプロキシに送信されるプロキシ トラフィックを使用する場合、HTTP 上で送信する必要があります。
@@ -134,7 +134,7 @@ Providerは、VMM サーバー、Hyper-V ホスト サーバー (デプロイに
 - Standard D14 サイズのマスター ターゲット サーバーは、15 個を超えるディスクを接続するサーバーを保護する場合にのみ必要です。その他すべての構成では、Standard A4 サイズのマスター ターゲット サーバーをデプロイできます。
 - マスター ターゲット サーバーに接続されているディスクの 1 つはリテンション期間ドライブとして予約されています。Azure Site Recovery では、リテンション期間ウィンドウを定義し、保護されたマシンをこのウィンドウ内の回復ポイントに復旧できます。リテンション期間ドライブには、ウィンドウの継続期間中に発生したディスクの変更ジャーナルが保持されます。その結果、レプリケーションに使用できる最大ディスクは、A4 から 15 に、D14 から 31 に減ります。
 
-#### プロセス サーバー 
+#### プロセス サーバー
 
 - プロセス サーバーは、ディスク ベースのキャッシュを使用します。C:/ にキャッシュ用の十分な空き領域があることを確認してください。キャッシュのサイズ変更は、保護しているマシンのデータ変更率の影響を受けます。中規模のデプロイでは、通常、600 GB のキャッシュ ディレクトリ サイズを推奨します。
 - 保護されたマシンのデータ変更率が、既存のプロセス サーバーの能力を超過している場合は、追加のプロセス サーバーをデプロイする必要があります。
@@ -168,14 +168,14 @@ VMware 仮想マシンまたは物理サーバーにインストールします�
 
 ## コンポーネントを最新に保つ
 
-**コンポーネント** | **更新する方法** 
---- | --- 
+**コンポーネント** | **更新する方法**
+--- | ---
 <p>**VMM 用 Azure Site Recovery Provider**</p><p>**Azure Recovery Services エージェント**</p> | <p></p>**初回インストール**: [クイック スタート] ページから最新バージョンをインストールします<p></p>**使用中**: Site Recovery のダッシュボードから最新バージョン (と旧バージョン) をダウンロードできます。また、Microsoft Updates を使用している場合、最新バージョンの Provider とエージェントがサーバーに自動的にインストールされます。
-<p>**プロセス サーバー**</p><p>**構成サーバー**</p><p>**マスター ターゲット サーバー**</p> | Site Recovery ダッシュボードで更新プログラムを確認します。 
+<p>**プロセス サーバー**</p><p>**構成サーバー**</p><p>**マスター ターゲット サーバー**</p> | Site Recovery ダッシュボードで更新プログラムを確認します。
 **モビリティ サービス** | <p>保護する各コンピューターに最新のモビリティ サービスの更新プログラムをインストールします。<p><p>最新の更新プログラムをダウンロードできます。</p><p>[Windows](http://download.microsoft.com/download/7/C/7/7C70CA53-2D8E-4FE0-BD85-8F7A7A8FA163/Microsoft-ASR_UA_8.3.0.0_Windows_GA_03Jul2015_release.exe)</p><p>[RHELP6-64](http://download.microsoft.com/download/B/4/5/B45D1C8A-C287-4339-B60A-70F2C7EB6CFE/Microsoft-ASR_UA_8.3.0.0_RHEL6-64_GA_03Jul2015_release.tar.gz)</p><p>[OL6-64](http://download.microsoft.com/download/9/4/8/948A2D75-FC47-4DED-B2D7-DA4E28B9E339/Microsoft-ASR_UA_8.3.0.0_OL6-64_GA_03Jul2015_release.tar.gz)</p><p>[SLES11-SP3-64](http://download.microsoft.com/download/6/A/2/6A22BFCD-E978-41C5-957E-DACEBD43B353/Microsoft-ASR_UA_8.3.0.0_SLES11-SP3-64_GA_03Jul2015_release.tar.gz)</p><p>また、プロセス サーバーが最新の状態であることを確認した後に、プロセス サーバーの C:\\pushinstallsvc\\repository フォルダーから最新バージョンのモビリティ サービスをダウンロードできます</p>  
 
 ## 次のステップ
 
 デプロイ シナリオに合わせてコンポーネントを構成します。[詳細情報](site-recovery-overview.md)。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

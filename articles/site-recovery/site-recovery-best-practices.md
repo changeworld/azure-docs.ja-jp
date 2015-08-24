@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="05/08/2015"
+	ms.date="08/05/2015"
 	ms.author="raynew"/>
 
 # Site Recovery のデプロイのベスト プラクティス
@@ -194,4 +194,4 @@ System Center 2012 SP1 (最新の累積アップデートをインストール�
 - [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

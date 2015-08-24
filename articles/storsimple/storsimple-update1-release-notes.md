@@ -3,7 +3,7 @@
     description="StorSimple 8000 シリーズ Update 1 における新機能、問題、回避策について説明します。"
     services="storsimple"
     documentationCenter="NA"
-    authors="SharS"
+    authors="alkohli"
     manager="adinah"
     editor="tysonn" />
  <tags 
@@ -12,8 +12,8 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="07/15/2015"
-    ms.author="v-sharos" />
+    ms.date="08/12/2015"
+    ms.author="alkohli" />
 
 # StorSimple 8000 シリーズ Update 1 リリース ノート  
 
@@ -115,4 +115,4 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 - [デバイスへの Update 1 のインストール](storsimple-install-update-1.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

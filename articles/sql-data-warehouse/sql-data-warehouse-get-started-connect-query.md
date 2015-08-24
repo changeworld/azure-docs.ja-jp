@@ -183,7 +183,9 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 	クエリを実行するには、下の緑色の矢印をクリックするか、ショートカット キー `CTRL` + `SHIFT` + `F5` を使用します。
 
 ## 次のステップ ##
-[Load sample data.]: ./sql-data-warehouse-get-started-load-samples.md
-[Start developing code]: ./articles/sql-data-warehouse-overview-develop/
+これで接続してクエリを実行し、[サンプル データを読み込んだり][]、[コードを開発したり][]できます。
 
-<!---HONumber=August15_HO6-->
+[サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-load-samples.md
+[コードを開発したり]: ./articles/sql-data-warehouse-overview-develop/
+
+<!---HONumber=August15_HO7-->

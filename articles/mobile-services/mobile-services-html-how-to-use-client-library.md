@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="HTML クライアントの使用方法 - Azure Mobile Services" 
+	pageTitle="HTML クライアントを使用する方法 | Microsoft Azure" 
 	description="Azure Mobile Services 向け HTML クライアントを使用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -608,4 +608,4 @@ promise はいくつかの異なる方法で使用することができます。
 [クライアントからのカスタム API 呼び出し]: mobile-services-html-call-custom-api.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -199,4 +199,4 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 ## 次のステップ
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場は、「[コマンドレットのトラブルシューティング](storsimple-troubleshoot-deployment.md#cmdlets-available-for-troubleshooting)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

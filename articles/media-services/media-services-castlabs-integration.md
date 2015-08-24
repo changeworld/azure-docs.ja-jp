@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/03/2015" 
+	ms.date="08/11/2015"  
 	ms.author="juliako"/>
 
 
@@ -113,4 +113,4 @@ castLabs プレイヤーを使用して Chrome の HTML5 で保護されたビ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

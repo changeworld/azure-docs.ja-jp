@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (iOS) | モバイル デベロッパー センター" 
+	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (iOS) | Microsoft Azure" 
 	description="iOS アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" 
 	documentationCenter="ios" 
 	authors="mattchenderson" 
@@ -121,4 +121,4 @@
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

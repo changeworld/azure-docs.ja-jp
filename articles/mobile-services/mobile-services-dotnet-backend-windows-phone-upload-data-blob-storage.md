@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Mobile Services を使用した画像の BLOB ストレージへのアップロード (Windows Phone) | Mobile Services" 
+	pageTitle="Mobile Services を使用したイメージの BLOB ストレージへのアップロード (Windows Phone) | Microsoft Azure" 
 	description="Mobile Services を使用して画像を Azure BLOB ストレージにアップロードする方法を説明します。" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
@@ -81,4 +81,4 @@ SAS を使用してアプリケーションから BLOB ストレージにイメ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

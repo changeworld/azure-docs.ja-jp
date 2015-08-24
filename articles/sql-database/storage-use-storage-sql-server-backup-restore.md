@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure ストレージを使用した SQL Server のバックアップと復元の方法 | Azure"
+	pageTitle="Azure ストレージを使用した SQL Server のバックアップと復元の方法 | Microsoft Azure"
 	description="SQL Server および SQL Database を Azure Storage にバックアップします。SQL データベースを Azure ストレージにバックアップすることのメリットについて、また SQL Server および Azure Storage のどのコンポーネントが必要かについて説明します。"
 	services="sql-database, virtual-machines"
 	documentationCenter=""
@@ -22,7 +22,7 @@
 
 ## 概要
 
-SQL Server のバックアップを Azure BLOB ストレージ サービスに書き込むことができる機能は SQL Server 2012 SP1 CU2 でリリースされました。この機能を使用すると、Azure BLOB サービスとの間で、内部設置型の SQL Server データベースまたは Azure の仮想マシン上の SQL Server データベースをバックアップおよび復元できます。クラウドへのバックアップには、高い可用性、無制限の社外ストレージのジオ (主要地域) レプリケーション、クラウドとの間でのデータ移行の容易さという利点があります。このリリースでは、T-SQL または SMO を使用して BACKUP または RESTORE ステートメントを発行できます。
+SQL Server のバックアップを Azure BLOB ストレージ サービスに書き込むことができる機能は SQL Server 2012 SP1 CU2 でリリースされました。この機能を使用すると、Azure BLOB サービスとの間で、内部設置型の SQL Server データベースまたは Azure の仮想マシン上の SQL Server データベースをバックアップおよび復元できます。クラウドへのバックアップには、高い可用性、無制限の社外ストレージのジオ (主要地域) レプリケーション、クラウドとの間でのデータ移行の容易さという利点があります。このリリースでは、Transact-SQL または SMO を使用して BACKUP または RESTORE ステートメントを発行できます。
 
 ## SQL Server のバックアップに Azure BLOB サービスを使用する利点
 
@@ -73,4 +73,4 @@ Azure アカウントの作成がこのプロセスの最初の手順です。SQ
 
 [バックアップと復元に関するベスト プラクティス (Azure BLOB ストレージ サービス)](http://go.microsoft.com/fwlink/?LinkId=272394)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

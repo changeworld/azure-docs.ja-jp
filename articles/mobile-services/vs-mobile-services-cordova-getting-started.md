@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="06/22/2015" 
-	ms.author="patshea123"/>
+	ms.date="08/12/2015" 
+	ms.author="patshea"/>
 
 # Mobile Services の使用 (Cordova プロジェクト)
 
@@ -22,6 +22,7 @@
 > - [Getting Started](vs-mobile-services-cordova-getting-started.md)
 > - [What Happened](vs-mobile-services-cordova-what-happened.md)
 
+##最初の手順
 これらの例で使用されているコードを実行するために行う必要がある最初のステップは、接続しているモバイル サービスの種類によります。
 
 - JavaScript バックエンド モバイル サービスの場合は、TodoItem と呼ばれるテーブルを作成します。テーブルを作成するには、サーバー エクスプローラーの Azure ノード下でモバイル サービスを特定し、そのモバイル サービスのノードを右クリックしてコンテキスト メニューを開き、[**Create Table (テーブルの作成)**] を選択します。テーブル名として「TodoItem」と入力します。
@@ -30,7 +31,7 @@
 
 
 
-#####テーブルへの参照を作成する
+##テーブルへの参照を作成する
 
 次のコードは、TodoItem のデータを含むテーブルへの参照を取得します。この後でデータ テーブルの読み取りと更新の操作を実行する際に、TodoItem のデータを使用できます。モバイル サービスを作成すると、TodoItem テーブルが自動的に作成されます。
 
@@ -38,9 +39,9 @@
 
 これらの例を使用するには、テーブルのアクセス許可を **[アプリケーション キーを持つユーザー]** に設定する必要があります。後で、認証を設定できます。詳細については、「[Add authentication to your Mobile Services app (Mobile Services アプリケーションに認証を追加する)](mobile-services-html-get-started-users.md)」を参照してください。
 
-#####テーブルに項目を追加する
+##テーブルに項目を追加する
 
-新しい項目をデータ テーブルに挿入します。ID (文字列型の GUID) が新しい行のプライマリ キーとして自動的に作成されます。返された [Promise](https://msdn.microsoft.com/library/dn802826.aspx) オブジェクトの `done()` メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
+新しい項目をデータ テーブルに挿入します。ID (文字列型の GUID) が新しい行のプライマリ キーとして自動的に作成されます。返された **Promise** オブジェクト上の [done](https://msdn.microsoft.com/library/dn802826.aspx) メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
 
     function TodoItem(text) {
         this.text = text;
@@ -54,7 +55,7 @@
         });
     };
 
-#####テーブルの読み取りまたは照会を実行する
+##テーブルの読み取りまたはクエリを実行する
 
 次のコードは、テーブルに対してテキスト フィールドでソートされたすべての項目を照会します。コードを追加して、success ハンドラーでクエリ結果を処理できます。この場合、項目のローカル配列が更新されます。
 
@@ -74,18 +75,18 @@ where メソッドを使用してクエリを変更できます。次の例で�
 
 使用できる他のクエリ例については、「[query オブジェクト](http://msdn.microsoft.com/library/azure/jj613353.aspx)」を参照してください。
 
-#####テーブル項目を更新する
+##テーブル項目を更新する
 
-データ テーブルの行を更新します。このコードでは、モバイル サービスが応答すると、項目は一覧から削除されます。返された [Promise](https://msdn.microsoft.com/library/dn802826.aspx) オブジェクトの `done()` メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
+データ テーブルの行を更新します。このコードでは、モバイル サービスが応答すると、項目は一覧から削除されます。返された **Promise** オブジェクト上の [done](https://msdn.microsoft.com/library/dn802826.aspx) メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
 
     todoTable.update(todoItem).done(function (item) {
         // Update a local collection of items.
         items.splice(items.indexOf(todoItem), 1, item);
     });
 
-#####テーブル項目を削除する
+##テーブル項目を削除する
 
-**del** メソッドを使用してデータ テーブルの行を削除します。返された [Promise](https://msdn.microsoft.com/library/dn802826.aspx) オブジェクトの `done()` メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
+**del** メソッドを使用してデータ テーブルの行を削除します。返された **Promise** オブジェクト上の [done](https://msdn.microsoft.com/library/dn802826.aspx) メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
 
     todoTable.del(todoItem).done(function (item) {
         items.splice(items.indexOf(todoItem), 1);
@@ -93,4 +94,4 @@ where メソッドを使用してクエリを変更できます。次の例で�
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

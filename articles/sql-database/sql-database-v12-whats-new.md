@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/05/2015" 
+	ms.date="08/10/2015" 
 	ms.author="genemi"/>
 
 
@@ -29,6 +29,9 @@ V12 には継続的に機能が追加されます。したがって、Azure の�
 
 - サービスを [[SQL Database]](http://azure.microsoft.com/updates/?service=sql-database) でフィルター処理します。
 - SQL Database の機能について、[General Availability] [(GA) のアナウンス](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)でフィルター処理します。
+
+
+Azure SQL Database のリソース制限に関する最新情報は「<br/>[Azure SQL Database のリソース制限](sql-database-resource-limits.md)」にあります。
 
 
 ## SQL Server との強化されたアプリケーションの互換性
@@ -109,17 +112,6 @@ Azure SQL Database を今すぐ V11 から V12 にアップグレードするこ
 - ほとんどの新機能は、Microsoft SQL Server 向けにリリースされる前に、SQL Database V12 でリリースされます。
 
 
-## V12 でのゲートウェイによる再試行ロジックの提供停止について
-
-
-バージョン V12 よりも前のバージョンでは、Azure SQL Database にはプロキシのように機能してデータベースとクライアント プログラム間のすべての対話をバッファに格納するゲートウェイがありました。このゲートウェイでは、一部の*一時的なエラー*に対して自動化された*再試行ロジック*が提供されていました。
-
- V12 では、このゲートウェイが削除されました。現在は、プログラムでより完全に一時的なエラーを処理する必要があります。詳細は、以下を参照してください。
-
-
-- [SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md#gatewaynoretry)
-
-
 ## V12 を既に使っている場合
 
 
@@ -147,17 +139,12 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 まだ V12 で実行していない場合は、[SQL Database V12 へのインプレース アップグレード](sql-database-v12-upgrade.md)の手順に従って、論理サーバーをアップグレードできます。
 
 
-## <a name="V12AzureSqlDbPreviewGaTable"></a>プレビューのリージョン
+## <a name="V12AzureSqlDbPreviewGaTable"></a> 一般公開地域
 
 
-V12 は 2014 年 12 月にリリースされましたが、プレビューの段階でした。
+- 2015 年 7 月 31 日までにすべてのリージョンが完全一般公開 (GA) に昇格しました。
+- V12 は 2014 年 12 月にリリースされましたが、プレビューの段階でした。
 
+[Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-- [ Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)
-
-
-2015 年 7 月 31 日までにすべてのリージョンが完全一般公開 (GA) に昇格しました。
-
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

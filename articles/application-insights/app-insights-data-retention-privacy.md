@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/11/2015" 
+	ms.date="08/11/2015" 
 	ms.author="awills"/>
 
 # Application Insights でのデータの収集、保持、保存 
@@ -35,6 +35,12 @@ Application Insights SDK およびエージェントは、アプリケーショ�
 #### どれくらいの量のデータをキャプチャできますか。 
 
 **1 秒あたり**: インストルメンテーション キー (つまり、アプリケーション) ごとに 1 秒あたり最大 500 データ ポイントとなっています。[価格レベル][pricing]が Free の場合、上限は1 秒あたり 100 データ ポイントです。
+
+次の 3 つのバケットは別々にカウントされます。
+
+* [TrackTrace 呼び出し](app-insights-api-custom-events-metrics.md#track-trace)と[キャプチャしたログ](app-insights-asp-net-trace-logs.md)
+* [例外](app-insights-api-custom-events-metrics.md#track-exception) (1 秒あたり 50 ポイントの下限が適用されます)
+* その他すべてのテレメトリ (ページ ビュー、要求、依存関係、メトリック、カスタム イベント)
 
 **1 か月あたり**: [料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)に応じて、1 か月あたり 500 万～ 1500 万データ ポイントとなっています。Free [価格レベル][pricing]以外は、上限に達した場合に追加の容量を購入できます。
 
@@ -236,4 +242,4 @@ SDK diagnostics | トレース メッセージまたは例外
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

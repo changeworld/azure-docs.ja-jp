@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="監査と動的データ マスキングのための SQL データベース ダウンレベル クライアントのサポート | Azure" 
+	pageTitle="監査と動的データ マスキングのための SQL データベース ダウンレベル クライアントのサポート | Microsoft Azure" 
 	description="監査と動的データ マスキングのための SQL データベース ダウンレベル クライアントのサポート" 
 	services="sql-database" 
 	documentationCenter="" 
@@ -40,4 +40,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="HDInsight での Apache Spark ジョブ サーバー | Azure" 
+	pageTitle="HDInsight での Apache Spark ジョブ サーバー | Microsoft Azure" 
 	description="Spark ジョブ サーバーを使用して Spark クラスター上のジョブをリモートで送信および管理する方法を説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
@@ -81,4 +81,4 @@ mypostdata.txt ではアプリケーションが定義されています。
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

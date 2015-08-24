@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Node.js 概要ガイド - Azure チュートリアル"
+	pageTitle="Node.js 概要ガイド | Microsoft Azure"
 	description="簡単な Node.js Web アプリケーションを作成して、Azure のクラウド サービスにデプロイする方法について説明します。"
 	services="cloud-services"
 	documentationCenter="nodejs"
@@ -12,7 +12,7 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.date="06/01/2015"
 	ms.author="mwasson"/>
 
@@ -192,4 +192,4 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

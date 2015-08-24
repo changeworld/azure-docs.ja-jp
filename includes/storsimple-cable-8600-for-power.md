@@ -1,58 +1,44 @@
-<properties 
-   pageTitle="Cable your StorSimple 8600 for power | Microsoft Azure"
-   description="Explains how to attach the power cables and then turn on a StorSimple 8600 device for the first time.."
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/06/2015"
-   ms.author="alkohli" />
 
-#### To cable your device for power
+#### デバイスの電源ケーブル接続方法
 
->[AZURE.NOTE] Both enclosures on your StorSimple device include redundant PCMs. For each enclosure, the PCMs must be installed and connected to different power sources to ensure high availability.
+>[AZURE.NOTE]StorSimple デバイスの両方のエンクロージャには冗長な PCM があります。両方のエンクロージャで高可用性を確保するには、両方の PCM を取り付けて、異なる電源に接続する必要があります。
 
-1. Make sure that the power switches on all the PCMs are in the OFF position.
+1. すべての PCM の電源スイッチが OFF の位置になっていることを確認します。
 
-2. On the primary enclosure, connect the power cords to both PCMs. The power cords are identified in red in the power cabling diagram, below.
+2. 主エンクロージャの両方の PCM に電源コードを接続します。以下の図では、電源コードが赤で示されています。
 
-3. Make sure that the two PCMs on the primary enclosure use separate power sources.
+3. 主エンクロージャの 2 つの PCM が異なる電源を使用するようにします。
 
-4. Attach the power cords to the power on the rack distribution units as shown in the power cabling diagram.
+4. 電源ケーブルの接続図に示すように、ラックの配電ユニットに電源コードを接続します。
 
-5. Repeat steps 2 through 4 for the EBOD enclosure.
+5. EBOD エンクロージャについて、ステップ 2 から 4 までを繰り返します。
 
-6. Turn on the EBOD enclosure by flipping the power switch on each PCM to the ON position.
+6. 各 PCM の電源スイッチを ON の位置に切り替えて、EBOD エンクロージャの電源を入れます。
 
-7. Verify that the EBOD enclosure is turned on by checking that the green LEDs on the back of the EBOD controller are turned ON.
+7. EBOD コントローラーの背面の緑の LED が ON になっていることを確認して、EBOD エンクロージャの電源が入っていることを確認します。
 
-8. Turn on the primary enclosure by flipping each PCM switch to the ON position.
+8. 各 PCM のスイッチを ON の位置に切り替えて、主エンクロージャの電源を入れます。
 
-9. Verify that the system is on by ensuring the device controller LEDs have turned ON.
+9. デバイス コントローラーの LED が ON になっていることを確認して、システムが稼動していることを確認します。
 
-10. Make sure that the connection between the EBOD controller and the device controller is active by verifying that the four LEDs next to the SAS port on the EBOD controller are green.
+10. EBOD コントローラーの SAS ポートの隣の 4 個の LED を確認して、EBOD コントローラーとデバイス コントローラーの間の接続がアクティブであることを確認します。
 
-    >[AZURE.IMPORTANT] To ensure high availability for your system, we recommend that you strictly adhere to the power cabling scheme shown in the following diagram.
+    >[AZURE.IMPORTANT]システムの高可用性を確保するために、以下の図に示されている電源ケーブル接続構成に厳密に従うことをお勧めします。
 
-    ![Cable your 4U device for power](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
+    ![4U デバイスの電源ケーブル接続](./media/storsimple-cable-8600-for-power/HCSCableYour4UDeviceforPower.png)
 
-    **Power cabling**
+    **電源ケーブル接続**
 
-    |Label|Description|
+    |ラベル|説明|
     |:----|:----------|
-    |1|Primary enclosure|
+    |1|主エンクロージャ|
     |2|PCM 0|
     |3|PCM 1|
-    |4|Controller 0|
-    |5|Controller 1|
-    |6|EBOD controller 0|
-    |7|EBOD controller 1|
-    |8|EBOD enclosure|
-    |9|PDUs|
+    |4|コントローラー 0|
+    |5|コントローラー 1|
+    |6|EBOD コント ローラー 0|
+    |7|EBOD コント ローラー 1|
+    |8|EBOD エンクロージャ|
+    |9|PDU|
+
+<!---HONumber=August15_HO7-->

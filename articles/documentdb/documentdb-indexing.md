@@ -13,20 +13,22 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/03/2015" 
+	ms.date="08/11/2015" 
 	ms.author="arramac"/>
 	
 # Azure DocumentDB での自動インデックス作成
 
-この記事では、DocumentDB による自動インデックス作成のしくみの概要と、[VLDB conference in 2015](http://www.vldb.org/2015/) で発表される論文「Schema-Agnostic Indexing with Azure DocumentDB (Azure DocumentDB を使用したスキーマに依存しないインデックス作成)」からの抜粋を紹介します。この記事を読むと、次の質問に回答できるようになります。
+この記事は、2015 年 8 月 31 日から 9 月 4 日の "[41st International Conference on Very Large Data Bases](http://www.vldb.org/2015/)" で発表される論文「[Schema-Agnostic Indexing with Azure DocumentDB (Azure DocumentDB を使用したスキーマに依存しないインデックス作成)](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)」からの抜粋です。また、Azure DocumentDB でのインデックス作成のしくみの概要についても説明します。
+
+この記事を読むと、次の質問に回答できるようになります。
 
 - DocumentDB は JSON ドキュメントからスキーマをどのように推測するか。
 - DocumentDB はさまざまなドキュメントにまたがるインデックスをどのようにビルドするか。
-- DocumentDB は規模に応じた自動インデックス作成をどのように実行するか。
+- DocumentDB はスケールに応じた自動インデックス作成をどのように実行するか。
 
-##<a id="HowDocumentDBIndexingWorks"></a>DocumentDB インデックス作成のしくみ
+##<a id="HowDocumentDBIndexingWorks"></a>DocumentDB のインデックス作成のしくみ
 
-[Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) は JSON 用にビルドされた完全にスキーマフリーのデータベース システムです。規模に応じたデータのインデックス作成に、スキーマやセカンダリ インデックスの定義を必要としないため、DocumentDB を使用してアプリケーション データ モデルをすばやく定義し、反復処理できます。コレクションにドキュメントを追加するたびに、DocumentDB がすべてのドキュメント プロパティにインデックスを自動作成してクエリを利用可能にします。自動インデックス作成により、スキーマやセカンダリ インデックスを気にせずに、完全に任意のスキーマに属しているドキュメントを格納できます。
+[Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) は JSON 用にビルドされた完全にスキーマフリーのデータベース システムです。スケールに応じたデータのインデックス作成に、スキーマやセカンダリ インデックスの定義を必要としないため、DocumentDB を使用してアプリケーション データ モデルをすばやく定義し、反復処理できます。コレクションにドキュメントを追加するたびに、DocumentDB がすべてのドキュメント プロパティにインデックスを自動作成してクエリを利用可能にします。自動インデックス作成により、スキーマやセカンダリ インデックスを気にせずに、完全に任意のスキーマに属しているドキュメントを格納できます。
 
 データベースとアプリケーション プログラミング モデル間のインピーダンス ミスマッチを排除することを目標に、DocumentDB はシンプルでスキーマ仕様が不要な JSON を利用します。これにより、ドキュメントの前提条件がなくなり、DocumentDB コレクション内にインスタンス固有の値やスキーマの異なるドキュメントを格納できるようになります。その他のドキュメント データベースとは異なり DocumentDB のデータベース エンジンは JSON の文法レベルで直接動作するため、ドキュメント スキーマの概念に依存せず、ドキュメントの構造とインスタンス値との間の境界が不明確になります。このため、スキーマやセカンダリ インデックスを必要とせずにドキュメント インデックスを自動的に作成できます。
 
@@ -55,13 +57,14 @@ DocumentDB のインデックス作成は、JSON 文法によりドキュメン�
 
 スキーマフリーであっても、DocumentDB の SQL と JavaScript クエリ言語は、リレーショナルなプロジェクションとフィルター、ドキュメント間の階層型ナビゲーション、完全に JavaScript で記述されたユーザー定義関数 (UDF) の呼び出しを提供します。DocumentDB のクエリ ランタイムは、このデータのインデックス ツリー表現に対して直接処理を行えるので、これらのクエリをサポートできます。
 
-既定のインデックス作成ポリシーは、自動的にすべてのドキュメントの全プロパティのインデックスを作成し、一貫性のあるクエリ (つまり、インデックスは、ドキュメントの書き込み時に同期的に更新されます) を提供します。DocumentDB は規模に応じたインデックス ツリーへの一貫性のある更新をどのようにサポートするかというと、 DocumentDB は、書き込み最適化、ロック フリー、ログ構造化インデックスのメンテナンス技法を使用します。つまり、DocumentDB は一貫性のあるクエリを提供する一方で、高速なボリュームの書き込みもサポートします。
+既定のインデックス作成ポリシーは、自動的にすべてのドキュメントの全プロパティのインデックスを作成し、一貫性のあるクエリ (つまり、インデックスは、ドキュメントの書き込み時に同期的に更新されます) を提供します。DocumentDB はスケールに応じたインデックス ツリーへの一貫性のある更新をどのようにサポートするかというと、 DocumentDB は、書き込み最適化、ロック フリー、ログ構造化インデックスのメンテナンス技法を使用します。つまり、DocumentDB は一貫性のあるクエリを提供する一方で、高速なボリュームの書き込みもサポートします。
 
 DocumentDB のインデックス作成は、ストレージの効率性とマルチテナントの処理用に設計されています。コスト効率性を実現するため、インデックスのディスク上のストレージ オーバーヘッドは低く、予測可能なものにします。また、インデックスの更新は DocumentDB コレクションごとに割り当てられたシステム リソースの予算内で実行されます。
 
 ##<a name="NextSteps"></a> 次のステップ
-- ここまででインデックス作成のしくみを説明しました。次は、「[DocumentDB のクエリ](documentdb-sql-query.md)」の方法を説明します。
+- 2015 年 8 月 31 日から 9 月 4 日の 41st Internal Conference on Very Large Databases (第 41 回 VLDB 社内会議) で発表される論文「[Schema-Agnostic Indexing with Azure DocumentDB (Azure DocumentDB を使用したスキーマに依存しないインデックス作成)](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)」をダウンロードします。
+- [DocumentDB SQL を使用したクエリ](documentdb-sql-query.md)
 - DocumentDB のインデックスをカスタマイズする方法については、[こちら](documentdb-indexing-policies.md)で説明します。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="パターンとアンチパターンに対する Service Fabric 高信頼アクターの概要"
-   description="Service Fabric の高信頼アクター プログラミング モデルと、アクターで問題なく動作する設計パターンについて学びましょう。"
+   pageTitle="パターンとアンチパターンに対する Azure Service Fabric アクターの概要"
+   description="Service Fabric アクターで問題なく動作する設計パターン"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/05/2015"
+   ms.date="08/11/2015"
    ms.author="claudioc"/>
 
 # 高信頼アクターの設計パターンの概要
@@ -70,4 +70,4 @@ Azure Fabric アクターの主なメリットは、1) エキスパート プロ
 
 * *明示的な非同期性。* Azure Fabric アクターのプログラミング モデルにより、分散アプリケーションの非同期的性質が明確になり、プログラマーが非ブロッキング非同期コードを作成する指針となります。これにより、マルチスレッドを明示的に使わずに、高い分散並列性と全体的スループットが実現されます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

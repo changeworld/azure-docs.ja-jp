@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Data Factory - Data Factory および Machine Learning を使用して予測パイプラインを作成する | Azure" 
+	pageTitle="Data Factory - Data Factory および Machine Learning を使用して予測パイプラインを作成する | Microsoft Azure" 
 	description="Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -199,7 +199,7 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning]
 
 	"typeProperties": {
     	"webServiceParameters": {
-    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \'{0:yyyy-MM-dd HH:mm:ss}\'', Time.AddHours(WindowStart, 0))"
+    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"
     	}
   	}
  
@@ -327,4 +327,4 @@ Azure Machine Learning の実験でリーダー モジュールを使用する�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

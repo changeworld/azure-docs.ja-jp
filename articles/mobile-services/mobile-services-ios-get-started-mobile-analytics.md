@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="モバイル分析の使用 | モバイル デベロッパー センター" 
+	pageTitle="モバイル分析の使用 | Microsoft Azure" 
 	description="モバイル分析の使用" 
 	documentationCenter="ios" 
 	authors="mattchenderson" 
@@ -98,4 +98,4 @@ Capptain がアプリに対して実行できる機能の詳細については�
 [Mobile Services Standard レベル]: /pricing/details/mobile-services/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

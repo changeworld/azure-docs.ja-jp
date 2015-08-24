@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 #.NET を使用した Media Services 開発 
+
+[AZURE.INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
 
 このトピックでは、.NET を使用して Media Services アプリケーションを開発する方法について説明します。
 
@@ -98,4 +100,4 @@
 これで、Media Services アプリケーションの開発準備が整いました。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

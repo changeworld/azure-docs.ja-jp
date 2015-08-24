@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="メディア プロセッサを作成する方法 - Azure" 
+	pageTitle="メディア プロセッサを作成する方法 | Microsoft Azure" 
 	description="メディア プロセッサ コンポーネントを作成し、Azure Media Services 用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 
 #方法: メディア プロセッサ インスタンスを取得する
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」シリーズの一部です。
 
+> [AZURE.SELECTOR]
+- [.NET](media-services-get-media-processor.md)
+- [REST](media-services-rest-get-media-processor.md)
 
 ##概要
 
@@ -30,13 +32,14 @@
 
 メディア プロセッサ名|説明|詳細情報
 ---|---|---
-Azure Media Encoder|Azure Media Encoder を使用してエンコード タスクを実行できます。|[Azure Media Encoder 用のタスク プリセット文字列](http://msdn.microsoft.com/library/jj129582.aspx)
-メディア エンコーダー プレミアム ワークフロー|メディア エンコーダー プレミアム ワークフローを使用してエンコード タスクを実行できます。|[メディア エンコーダー プレミアム ワークフローを使用したエンコード](media-services-encode-with-premium-workflow.md)
+Azure Media Encoder|Azure Media Encoder を使用してエンコード タスクを実行できます。|[Azure Media Encoder](media-services-encode-asset.md#azure_media_encoder)
+Media Encoder Standard|Media Encoder Standard を使用してエンコード タスクを実行できます。|[Azure Media Encoder](media-services-encode-asset.md#media_encoder_standard)
+Media Encoder Premium ワークフロー|Media Encoder Premium ワークフローを使用してエンコード タスクを実行できます。|[Media Encoder Premium ワークフロー](media-services-encode-asset.md#media_encoder_premium_wokrflow)
 Azure Media Indexer| メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。|[Azure Media Indexer によるメディア ファイルのインデックス作成](media-services-index-content.md)
- Microsoft Azure Media Packager| メディア資産を .mp4 からスムーズ ストリーミング形式に変換できます。また、スムーズ ストリーミングから Apple HTTP ライブ ストリーミング (HLS) 形式にメディア資産を変換できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973635.aspx)
- Microsoft Azure Media Encryptor|PlayReady Protection を使用してメディア資産を暗号化できます。|[Azure Media Packager 用のタスク プリセット文字列](http://go.microsoft.com/fwlink/?LinkId=613274)
- Azure Media Hyperlapse (プレビュー)|ビデオ安定化を使用して、ビデオの "凸凹" を取り除いて滑らかにすることができます。コンテンツをすばやく使用可能なクリップにすることもできます。|		[Azure Media Hyperlapse](http://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)</a>
- Storage Decryption| ストレージ暗号化を使用して暗号化されたメディア資産を復号化できます。|該当なし
+Azure Media Hyperlapse (プレビュー)|ビデオ安定化を使用して、ビデオの "凸凹" を取り除いて滑らかにすることができます。コンテンツをすばやく使用可能なクリップにすることもできます。|		[Azure Media Hyperlapse](http://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)</a>
+ストレージの暗号化| ストレージ暗号化を使用して暗号化されたメディア資産を復号化できます。|該当なし
+Microsoft Azure Media Packager|メディア資産を .mp4 からスムーズ ストリーミング形式に変換できます。また、スムーズ ストリーミングから Apple HTTP ライブ ストリーミング (HLS) 形式にメディア資産を変換できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973635.aspx)
+Microsoft Azure Media Encryptor|PlayReady Protection を使用してメディア資産を暗号化できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973610.aspx)
 
 ##MediaProcessor の取得
 
@@ -60,7 +63,7 @@ Azure Media Indexer| メディア ファイルとコンテンツを検索可能�
 	Accept-Charset: UTF-8
 	User-Agent: Microsoft ADO.NET Data Services
 	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-e769-477b-2233-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423635565&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=6zwXEn7YJzVJbVCNpqDUjBLuE5iUwsdJbWvJNvpY3%2b8%3d
-	x-ms-version: 2.8
+	x-ms-version: 2.11
 	Host: media.windows.net
 	
 応答:
@@ -89,4 +92,4 @@ Azure Media Indexer| メディア ファイルとコンテンツを検索可能�
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/library/jj129582.aspx
 [How to: Connect to Media Services Programmatically]: ../media-services-rest-connect_programmatically/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

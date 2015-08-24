@@ -19,7 +19,7 @@
 
 自動修正では、SQL Server 2012 または 2014 を実行している Azure 仮想マシンのメンテナンス期間が設定されます。このメンテナンス期間にのみ、自動更新プログラムをインストールできます。これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。これは SQL Server IaaS エージェントに依存します。
 
->[AZURE.IMPORTANT]自動修正は、SQL Server IaaS エージェントに依存します。このエージェントをインストールして構成するには、ターゲット仮想マシン上で Azure VM エージェントが実行されている必要があります。仮想マシン ギャラリーの最近のイメージでは、このオプションが既定で有効になっていますが、既存の VM では、Azure VM エージェントが存在しない可能性があります。独自の VM イメージを使用している場合は、SQL Server IaaS エージェントもインストールする必要があります。詳細については、「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」をご覧ください。
+>[AZURE.NOTE]自動修正は、SQL Server IaaS エージェントに依存します。このエージェントをインストールして構成するには、ターゲット仮想マシン上で Azure VM エージェントが実行されている必要があります。仮想マシン ギャラリーの最近のイメージでは、このオプションが既定で有効になっていますが、既存の VM では、Azure VM エージェントが存在しない可能性があります。独自の VM イメージを使用している場合は、SQL Server IaaS エージェントもインストールする必要があります。詳細については、「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」をご覧ください。
 
 ## ポータルでの自動修正の構成
 
@@ -88,4 +88,4 @@ Azure の SQL Server VM の関連機能については、「[Azure 仮想マシ�
 
 [Azure Virtual Machines で SQL Server を実行するための他のリソース](virtual-machines-sql-server-infrastructure-services.md)を確認します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

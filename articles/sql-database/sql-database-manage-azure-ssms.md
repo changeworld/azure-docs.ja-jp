@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SSMS を使用した SQL データベースの管理 - Azure" 
+	pageTitle="SSMS を使用した SQL データベースの管理 | Microsoft Azure" 
 	description="SQL Server Management Studio を使用して SQL データベース サーバーとデータベースを管理する方法について説明します。" 
 	services="sql-database" 
 	documentationCenter=".net" 
@@ -186,4 +186,4 @@ SQL データベースでは、個々のデータベースを監視するのに�
  
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

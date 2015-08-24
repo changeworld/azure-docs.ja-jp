@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/16/2015" 
+	ms.date="08/05/2015" 
 	ms.author="raynew"/>
 
 
@@ -117,4 +117,4 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 ご質問があれば、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="Azure Backup - 仮想マシンの復元"
+	pageTitle="Azure Backup - 仮想マシンの復元 | Microsoft Azure"
 	description="Azure 仮想マシンを復元する方法について説明します。"
 	services="backup"
 	documentationCenter=""
@@ -8,7 +8,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/17/2015" ms.author="trinadhk"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/11/2015" ms.author="trinadhk"; "jimpark"/>
 
 # 仮想マシンの復元
 復元操作を使用して、Azure バックアップ資格情報コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元できます。
@@ -93,6 +93,6 @@
 | 復元 | クラウドの内部エラーの復元に失敗しました | <ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。<br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br> を確認します。構成済みのアドレスがある場合は、DNS 設定が構成されていることを意味します。<br> <li>復元先のクラウド サービスに ReservedIP が構成されており、クラウド サービス内の既存 VM が停止状態になっています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName</ol> |
 
 ## 次のステップ
-- [仮想マシンの管理](backup-azure-manage-vms)
+- [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

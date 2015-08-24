@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Service Bus リレーの使用方法 (.NET) - Azure" 
+	pageTitle="Service Bus リレーの使用方法 (.NET) | Microsoft Azure" 
 	description="Azure Service Bus リレー サービスを使用して、別の場所にホストされた 2 つのアプリケーションに接続する方法について説明します。" 
 	services="service-bus" 
 	documentationCenter=".net" 
@@ -268,4 +268,4 @@ App.config ファイルを使用してクライアントを構成することも
   [MSDN]: https://msdn.microsoft.com/ja-jp/library/azure/dn194201.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

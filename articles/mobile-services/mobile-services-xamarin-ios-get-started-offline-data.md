@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | モバイル デベロッパー センター" 
+	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | Microsoft Azure" 
 	description="Azure Mobile Services を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" 
 	documentationCenter="xamarin" 
 	authors="lindydonna" 
@@ -184,4 +184,4 @@
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

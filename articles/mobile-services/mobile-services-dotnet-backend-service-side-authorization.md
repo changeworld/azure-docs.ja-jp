@@ -1,5 +1,5 @@
 <properties
-	pageTitle=".NET バックエンド モバイル サービスでのユーザーのサービス側承認 | Azure Mobile Services"
+	pageTitle=".NET バックエンド モバイル サービスでのユーザーのサービス側承認 | Microsoft Azure"
 	description=".NET バックエンド モバイル サービスで権限のあるユーザーのアクセスを制限する方法を学習します。"
 	services="mobile-services"
 	documentationCenter="windows"
@@ -80,4 +80,4 @@
 [既存の Mobile Services アプリケーションに認証を追加]: mobile-services-dotnet-backend-ios-get-started-users.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

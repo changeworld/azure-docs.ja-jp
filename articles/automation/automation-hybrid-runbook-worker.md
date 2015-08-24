@@ -42,10 +42,10 @@ Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグ�
 Hybrid Runbook Worker 用に Azure Automation 環境を準備するには、次の手順を実行します。
 
 #### 1\.Azure Operational Insights ワークスペースを作成する
-Azure アカウントに Operational Insights ワークスペースがまだない場合は、「[ワークスペースの設定と設定の管理](../operational-insights-setup-workspace)」の手順を使用して作成します。既存のワークスペースがある場合は、それを使用できます。
+Azure アカウントに Operational Insights ワークスペースがまだない場合は、「[ワークスペースの設定と設定の管理](../operational-insights/operational-insights-setup-workspace.md)」の手順を使用して作成します。既存のワークスペースがある場合は、それを使用できます。
 
 #### 2\.Automation ソリューションを配置する
-Operational Insights の Automation ソリューションは、Runbook 環境の構成とサポートに必要なコンポーネントをプッシュダウンします。**Azure Automation** パックをインストールする場合は、「[Operational Insights ソリューション](../operational-insights-add-solution)」の手順に従ってください。
+Operational Insights の Automation ソリューションは、Runbook 環境の構成とサポートに必要なコンポーネントをプッシュダウンします。**Azure Automation** パックをインストールする場合は、「[Operational Insights ソリューション](../operational-insights/operational-insights-setup-workspace.md#1-add-solutions)」の手順に従ってください。
 
 ### オンプレミス マシンを構成する
 Hybrid Runbook Worker として動作するオンプレミス マシンごとに、次の手順を実行します。
@@ -136,4 +136,4 @@ Hybrid Runbook Worker 機能を持つ Azure Automation と Service Management Au
 - [Azure Automation での Runbook の編集](https://msdn.microsoft.com/library/dn879137.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Active Directory Graph 情報へのアクセス (Windows ストア) | モバイル デベロッパー センター" 
+	pageTitle="Azure Active Directory Graph 情報へのアクセス (Windows ストア) | Microsoft Azure" 
 	description="Windows ストア アプリケーションで、Graph API を使用して Azure Active Directory の情報にアクセスする方法について説明します。" 
 	documentationCenter="windows" 
 	authors="wesmc7777" 
@@ -255,4 +255,4 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/23/2015"
+	ms.date="08/10/2015"
 	ms.author="stepsic"/>
 
-#新しいロジック アプリを作成する
-このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートを Dropbox フォルダーに保存できるようにするまでの流れを見ていきます。
+# 新しいロジック アプリを作成する
+このトピックでは、初めての方に向けて [App Services Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートを Dropbox フォルダーに保存できるようにするまでの流れを見ていきます。
 
 このシナリオでは、以下のものが必要になります。
 
@@ -27,15 +27,15 @@
 
 <!--- TODO: Add try it now information here -->
 
-##コネクタを取得する
+## コネクタを取得する
 
-まずは、使用するコネクタとして [**Dropbox Connector**](app-service-logic-connector-dropbox.md) と [**Twitter Connector**](app-service-logic-connector-twitter.md) の 2 つを作成する必要があります。コネクタを作成する手順は、以下のとおりです。
+まずは、使用するコネクタとして [**Dropbox コネクタ**](app-service-logic-connector-dropbox.md) と [**Twitter コネクタ**](app-service-logic-connector-twitter.md) の 2 つを作成する必要があります。コネクタを作成する手順は、以下のとおりです。
 
 0. Azure ポータルにサインインします。
 
 1. ホーム画面の [**[Marketplace]**](https://portal.azure.com/#blade/HubsExtension/GalleryFeaturedMenuItemBlade/selectedMenuItemId/apiapps) をクリックし、**Twitter** を検索します (または、[ここをクリック](https://portal.azure.com/#create/microsoft_com.TwitterConnector.0.2.2)します)。
 
-2. [Twitter Connector] を選択し、[作成] をクリックします。すべての設定が表示されます。名前は **Twitter Connector** のままでかまいません。
+2. [Twitter コネクタ] を選択し、[作成] をクリックします。すべての設定が表示されます。名前は「**Twitter コネクタ**」のままでかまいません。
 
 3. **[App Service プランの新規作成]** に、プランの名前を入力します。
 
@@ -59,7 +59,7 @@
 
 9. [Dropbox](https://portal.azure.com/#create/microsoft_com.DropboxConnector.0.2.2) についても、同じ手順を繰り返します。
 
-##ロジック アプリを作成する
+## ロジック アプリを作成する
 
 次は、新しいロジック アプリを作成します。
 
@@ -98,36 +98,38 @@
 
 アクションとは、ワークフローの動作を指します。アクションの数には上限はありません。また、アクションを調整して、あるアクションの情報がその次のアクションに送られるようにすることもできます。
 
-1. 右側のウィンドウで **Twitter Connector** を探し、クリックします。
+1. 右側のウィンドウで **[Twitter コネクタ]** を探し、クリックします。
 
 
 2. 読み込みが終わったら **[承認]** ボタンをクリックし、Twitter アカウントにサインインして、**[アプリを認証]** をクリックします。
 
-	これにより、コネクタが Twitter アカウントにアクセスできるようになります。Twitter Connector に用意されている処理のリストが表示されます。
+	これにより、コネクタが Twitter アカウントにアクセスできるようになります。Twitter コネクタに用意されている処理のリストが表示されます。
 
 	![アクション](./media/app-service-logic-create-a-logic-app/actions.png)
+
+	> [AZURE.NOTE]**[承認]** ボタンでは、OAUTH セキュリティを使用して、Twitter などの SaaS サービスに接続します。OAUTH の詳細については、[OAUTH のセキュリティ](app-service-logic-oauth-security.md)に関するページを参照してください。
 
 3. **[ツイートの検索]** をクリックし、**[クエリの指定]** に「`#MicrosoftAzure`」などの文字を入力して、緑色のチェック マークをクリックします。
 
 	![Twitter の検索](./media/app-service-logic-create-a-logic-app/twittersearch.png)
 
-これで、Twitter Connector がワークフローの一部となりました。
+これで、Twitter コネクタがワークフローの一部となりました。
 
 ## Dropbox アクションを追加してアプリを作成する
 
 最後に、ツイートを Dropbox のファイルにアップロードするアクションを追加します。
 
-1. 右側のウィンドウで、**[Dropbox Connector]** をクリックします。
+1. 右側のウィンドウで、**[Dropbox コネクタ]** をクリックします。
 
 2. プロビジョニングが完了したら **[承認]** ボタンをクリックし、Dropbox アカウントにサインインして **[許可]** をクリックします。
 
 	![Dropbox コネクタの承認](./media/app-service-logic-create-a-logic-app/authorize.png)
 
-	これで、コネクタが Dropbox アカウントにアクセスできるようになります。Dropbox Connector に用意されている処理のリストが表示されます。
+	これで、コネクタが Dropbox アカウントにアクセスできるようになります。Dropbox コネクタに用意されている処理のリストが表示されます。
 
 4. **[ファイルのアップロード]** をクリックします。
 
-	Dropbox Connector の設定が表示されるので、ここで Twitter の検索結果のデータを Dropbox に送るように設定していきます。
+	Dropbox コネクタの設定が表示されるので、ここで Twitter の検索結果のデータを Dropbox に送るように設定していきます。
 
 	![Dropbox](./media/app-service-logic-create-a-logic-app/dropbox.png)
 
@@ -140,7 +142,7 @@
 	部分 | 説明
 	------------------------------------------ | ------------
 	 `@` | 実際の値ではなく、関数を入力しようとしていることを示します。
-	`actions('twitterconnector').outputs.body` | Twitter Connector のクエリの結果として返されたツイートを取得します。
+	`actions('twitterconnector').outputs.body` | Twitter コネクタのクエリの結果として返されたツイートを取得します。
 	`first()` | ツイートの検索アクションによって返されるのはリストであるものの、アップロードするのは 1 つのファイルのみとなります。
 	`.TweetText` | ツイート メッセージのプロパティを選択します。
 
@@ -172,4 +174,4 @@
 [ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

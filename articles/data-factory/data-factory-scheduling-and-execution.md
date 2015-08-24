@@ -159,7 +159,7 @@ availability セクションで使用できるさまざまなプロパティの�
 	                "typeProperties": {
 	                    "source": {
 	                        "type": "SqlSource",
-	                        "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \'{0:yyyy-MM-dd HH:mm}\' AND timestampcolumn < \'{1:yyyy-MM-dd HH:mm}\'', WindowStart, WindowEnd)"
+	                        "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm}\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
 	                    },
 	                    "sink": {
 	                        "type": "BlobSink",
@@ -538,7 +538,7 @@ SliceEnd | 生成されている現在のデータ スライスの時間間隔�
 	
 	{
 	    "Type": "SqlSource",
-	    "sqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartTime = \'{0:yyyyMMdd-HH}\'', WindowStart)"
+	    "sqlReaderQuery": "$$Text.Format('SELECT * FROM MyTable WHERE StartTime = \\'{0:yyyyMMdd-HH}\\'', WindowStart)"
 	}
 
 ### 関数
@@ -575,7 +575,7 @@ DateTime | Ticks(X) | X: DateTime | パラメーター X の ticks プロパテ�
 	    "Hour" : "$$Text.Format('{0:hh}',WindowStart)"
 	}
 
-> [AZURE.NOTE]別の関数内で関数を使用する場合、内側の関数に **$$** プレフィックスを付ける必要はありません。例: $$Text.Format('PartitionKey eq \'my\_pkey\_filter\_value\' and RowKey ge \'{0:yyyy-MM-dd HH:mm:ss}\'', Time.AddHours(SliceStart, -6)).この例でわかるように、**Time.AddHours** 関数に **$$** プレフィックスは使用されていません。
+> [AZURE.NOTE]別の関数内で関数を使用する場合、内側の関数に **$$** プレフィックスを付ける必要はありません。例: $$Text.Format('PartitionKey eq \\'my\_pkey\_filter\_value\\' and RowKey ge \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)).この例でわかるように、**Time.AddHours** 関数に **$$** プレフィックスは使用されていません。
   
 
 ## データ依存関係の詳細情報
@@ -676,4 +676,4 @@ Data Factory で生成されるデータセットと同様に、外部データ�
 
   
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

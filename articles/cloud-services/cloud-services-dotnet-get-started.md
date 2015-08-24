@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Cloud Services と ASP.NET を使ってみる"
-	description="ASP.NET MVC と Azure を使用して多層アプリケーションを作成する方法について説明します。ここで取り上げるアプリケーションは、クラウド サービス内で、Web ロールとワーカー ロールと連係して動作します。Entity Framework、SQL Database、Azure のストレージ キューおよび BLOB を使用しています。"
+	pageTitle="Azure Cloud Services と ASP.NET を使ってみる | Microsoft Azure"
+	description="ASP.NET MVC と Azure を使用して多層アプリケーションを作成する方法について説明します。ここで取り上げるアプリケーションは、クラウド サービス内で、Web ロールと worker ロールと連係して動作します。Entity Framework、SQL Database、Azure Storage のキューと BLOB を使用しています。"
 	services="cloud-services, storage"
 	documentationCenter=".net"
 	authors="tdykstra"
@@ -30,7 +30,7 @@
 
 ## Contoso Ads アプリケーション
 
-このアプリケーションは、広告の掲示板です。ユーザーは、テキストを入力し、画像をアップロードして広告を作成します。広告の一覧には縮小表示画像が表示されます。広告を選択すると、フルサイズ画像と詳細が表示されます。スクリーンショットを次に示します。
+このアプリケーションは、広告の掲示板です。ユーザーは、テキストを入力し、画像をアップロードして広告を作成します。広告の一覧には縮小表示画像が表示されます。広告を選択すると、フルサイズ画像と詳細が表示されます。
 
 ![Ad list](./media/cloud-services-dotnet-get-started/list.png)
 
@@ -38,14 +38,14 @@
 
 ## 代替アーキテクチャ: Web サイトおよび Web ジョブ
 
-このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。これに代わる方法として、フロントエンドを [Azure Web サイト](/services/web-sites/)で実行し、バックエンド用に (現時点でプレビュー段階の) [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能を使用する方法があります。Web ジョブを使用するチュートリアルについては、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](../websites-dotnet-webjobs-sdk-get-started.md)」を参照してください。自分のシナリオに最適なサービスを選択する方法の詳細については、「[Azure の Web サイト、クラウド サービス、および仮想マシンの比較](../choose-web-site-cloud-service-vm.md)」を参照してください。
+このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。これに代わる方法として、フロントエンドを [Azure Web サイト](/services/web-sites/)で実行し、バックエンド用に (現時点でプレビュー段階の) [Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)機能を使用する方法があります。Web ジョブを使用するチュートリアルについては、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](../websites-dotnet-webjobs-sdk-get-started.md)」を参照してください。自分のシナリオに最適なサービスを選択する方法の詳細については、「[Azure Websites、Cloud Services、および Virtual Machines の比較](../choose-web-site-cloud-service-vm.md)」を参照してください。
 
 ## 学習内容
 
 * Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
 * ASP.NET MVC の Web ロールと worker ロールを使用して、Visual Studio クラウド サービス プロジェクトを作成する方法
 * Azure ストレージ エミュレーターを使用してクラウド サービス プロジェクトをローカルでテストする方法
-* Azure Storage アカウントを使用してクラウド プロジェクトを Azure クラウド サービスに発行し、テストする方法
+* Azure ストレージ アカウントを使用してクラウド プロジェクトを Azure クラウド サービスに発行し、テストする方法
 * ファイルを Azure BLOB サービスにアップロードして保存する方法
 * Azure Queue サービスを使用して階層間の通信を行う方法
 
@@ -53,7 +53,7 @@
 
 このチュートリアルは、[Web ロール](fundamentals-application-models.md#CloudServices)、*worker ロール*などの用語を含む *Azure Cloud Services の基本概念*を理解している方を対象にしています。また、Visual Studio で [ASP.NET MVC](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) または [Web フォーム](http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) プロジェクトを操作する方法を理解していることも前提としています。サンプル アプリケーションでは MVC を使用しますが、チュートリアルのほとんどは Web フォームにも当てはまります。
 
-Azure サブスクリプションがなくてもアプリケーションをローカルに実行できますが、アプリケーションをクラウドにデプロイするには Azure サブスクリプションが必要になります。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)か、[無料評価版にサインアップ](/pricing/free-trial/?WT.mc_id=A55E3C668)してください。
+Azure サブスクリプションがなくてもアプリケーションをローカルに実行できますが、アプリケーションをクラウドにデプロイするには Azure サブスクリプションが必要になります。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)か、[無料試用版にサインアップ](/pricing/free-trial/?WT.mc_id=A55E3C668)してください。
 
 このチュートリアルの手順は、次のどちらの製品でも使用できます。
 
@@ -84,7 +84,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 3. Ctrl + Shift + B キーを押して、ソリューションをビルドします。
 
-	既定では、*.zip* ファイルに含まれていなかった NuGet パッケージのすべての内容が Visual Studio によって自動的に復元されます。パッケージが復元されない場合は、**[ソリューションの NuGet パッケージの管理]** ダイアログの右上にある **[復元]** ボタンをクリックしてパッケージを手動でインストールします。
+	既定では、*.zip* ファイルに含まれていなかった NuGet パッケージのすべての内容が Visual Studio によって自動的に復元されます。パッケージが復元されない場合は、**[ソリューションの NuGet パッケージの管理]** ダイアログ ボックスの右上にある **[復元]** ボタンをクリックしてパッケージを手動でインストールします。
 
 3. **ソリューション エクスプローラー**で、**ContosoAdsCloudService** がスタートアップ プロジェクトとして選択されていることを確認します。
 
@@ -116,24 +116,24 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 次のセクションでは、クラウドで実行されたときにキュー、BLOB、およびアプリケーション データベース用に Azure クラウド リソースを使用するソリューションを構成します。ローカルでの実行を継続しながらクラウド ストレージおよびデータベース リソースを使用したい場合は、接続文字列の設定を構成します。その方法については、後で説明します。
 
-## Azure にアプリケーションを展開する
+## Azure にアプリケーションをデプロイする
 
 アプリケーションをクラウドで実行するには、次の手順を実行します。
 
-* Azure クラウド サービスの作成
-* Azure SQL データベースの作成
-* Azure のストレージ アカウントの作成
-* Azure で実行されたときに Azure SQL データベースを使用するためのソリューションの設定
-* Azure で実行されたときに Azure Storage アカウントを使用するためのソリューションの設定
-* Azure クラウド サービスへのプロジェクトのデプロイ
+* Azure クラウド サービスを作成します。
+* Azure SQL データベースを作成します。
+* Azure ストレージ アカウントを作成します。
+* Azure で実行されたときに Azure SQL データベースを使用するためのソリューションを構成します。
+* Azure で実行されたときに Azure ストレージ アカウントを使用するためのソリューションを構成します。
+* プロジェクトを Azure クラウド サービスにデプロイします。
 
 ### Azure クラウド サービスの作成
 
 Azure クラウド サービスは、アプリケーションの実行環境です。
 
-1. ブラウザーで、[Azure の管理ポータル](http://manage.windowsazure.com)を開きます。
+1. ブラウザーで [Azure ポータル](http://manage.windowsazure.com)を開きます。
 
-2. **[新規]**、**[コンピューティング]**、**[クラウド サービス]**、**[簡易作成]** の順にクリックします。
+2. **[新規]、[コンピューティング]、[クラウド サービス]、[簡易作成]** の順にクリックします。
 
 4. [URL] 入力ボックスに、URL プレフィックスを入力します。
 
@@ -153,7 +153,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
 アプリをクラウドで実行すると、クラウドベースのデータベースがアプリによって使用されます。
 
-1. [Azure 管理ポータル](http://manage.windowsazure.com)で、[**新規**]、[**データ サービス**]、[**SQL データベース**]、[**簡易作成**] の順にクリックします。
+1. [Azure ポータル](http://manage.windowsazure.com)で、**[新規]、[Data Services]、[SQL Database]、[簡易作成]** の順にクリックします。
 
 1. **[データベース名]** ボックスに「*contosoads*」と入力します。
 
@@ -173,7 +173,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
 	![New SQL Database](./media/cloud-services-dotnet-get-started/newdb.png)
 
-1. Azure によってデータベースが作成されたら、ポータルの左側のウィンドウにある **[SQL データベース]** タブをクリックし、新しいデータベースの名前をクリックします。
+1. Azure によってデータベースが作成されたら、ポータルの左側のウィンドウにある **[SQL Database]** タブをクリックし、新しいデータベースの名前をクリックします。
 
 2. **[ダッシュボード]** タブをクリックします。
 
@@ -185,11 +185,11 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
 ### Azure のストレージ アカウントの作成
 
-Azure Storage アカウントは、キューおよび BLOB データをクラウドに格納するためのリソースを提供します。
+Azure ストレージ アカウントは、キューおよび BLOB データをクラウドに格納するためのリソースを提供します。
 
 現実のアプリケーションでは、通常、アプリケーション データとログ データ、テスト データと運用データに別個のアカウントを作成します。このチュートリアルでは、アカウントを 1 つだけ使用します。
 
-1. [Azure 管理ポータル](http://manage.windowsazure.com)で、**[新規]**、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
+1. [Azure ポータル](http://manage.windowsazure.com)で、**[新規]、[Data Services]、[Storage]、[簡易作成]** の順にクリックします。
 
 4. **[URL]** ボックスに、URL プレフィックスを入力します。
 
@@ -228,7 +228,7 @@ Web ロールと worker ロールのクラウド サービス環境設定には�
 
 	ファイルは編集できるように開いたままにしておきます。
 
-2. [Azure 管理ポータル](http://manage.windowsazure.com)で、左側のウィンドウの [**SQL データベース**] をクリックし、このチュートリアル用に作成したデータベースをクリックします。次に、[**ダッシュボード**] タブをクリックし、[**接続文字列の表示**] をクリックします。
+2. [Azure ポータル](http://manage.windowsazure.com)で、左側のウィンドウの **[SQL Database]** をクリックし、このチュートリアル用に作成したデータベースをクリックします。次に、**[ダッシュボード]** タブをクリックし、**[接続文字列の表示]** をクリックします。
 
 	![Show connection strings](./media/cloud-services-dotnet-get-started/showcs.png)
 
@@ -236,7 +236,7 @@ Web ロールと worker ロールのクラウド サービス環境設定には�
 
 	![Connection strings](./media/cloud-services-dotnet-get-started/connstrings.png)
 
-4. *Web.Release.config* 変換ファイルで、`{connectionstring}` を削除し、管理ポータルからコピーした ADO.NET 接続文字列をその場所に貼り付けます。
+4. *Web.Release.config* 変換ファイルで `{connectionstring}` を削除し、Azure ポータルからコピーした ADO.NET 接続文字列をその場所に貼り付けます。
 
 5. *Web.Release.config* 変換ファイルに貼り付けた接続文字列内の `{your_password_here}` を、新しい SQL データベース用に作成したパスワードで置き換えます。
 
@@ -258,9 +258,9 @@ Web ロールと worker ロールのクラウド サービス環境設定には�
 
 7. 変更を保存します。
 
-### Azure で実行されたときに Azure Storage アカウントを使用するためのソリューションの設定
+### Azure で実行されたときに Azure ストレージ アカウントを使用するためのソリューションの設定
 
-Web ロール プロジェクトと worker ロール プロジェクトの Azure Storage アカウント接続文字列は、クラウド サービス プロジェクトの環境設定に保存されます。それぞれのプロジェクトには、アプリケーションがローカルに実行されたときに使用される設定とクラウドで実行されたときに使用される設定の別個のセットがあります。ここでは、Web ロール プロジェクトと worker ロール プロジェクトの両方のクラウド環境設定を更新します。
+Web ロール プロジェクトと worker ロール プロジェクトの Azure ストレージ アカウント接続文字列は、クラウド サービス プロジェクトの環境設定に保存されます。それぞれのプロジェクトには、アプリケーションがローカルに実行されたときに使用される設定とクラウドで実行されたときに使用される設定の別個のセットがあります。ここでは、Web ロール プロジェクトと worker ロール プロジェクトの両方のクラウド環境設定を更新します。
 
 4. **ソリューション エクスプローラー**で、**[ContosoAdsCloudService]** プロジェクトの **[ロール]** の下にある **[ContosoAdsWeb]** を右クリックし、**[プロパティ]** をクリックします。
 
@@ -274,7 +274,7 @@ Web ロール プロジェクトと worker ロール プロジェクトの Azure
 
 	![Open Connection String Create box](./media/cloud-services-dotnet-get-started/opencscreate.png)
 
-1. **[ストレージ接続文字列の作成]** ダイアログ ボックスで、**サブスクリプションを使用して接続する**オプションをクリックします。前に作成したストレージ アカウントを選択し、**[OK]** をクリックします。まだログインしていない場合は、Azure アカウントの資格情報を入力するよう求められます。
+1. **[ストレージ接続文字列の作成]** ダイアログ ボックスで、**[サブスクリプション]** オプションをクリックします。前に作成したストレージ アカウントを選択し、**[OK]** をクリックします。まだログインしていない場合は、Azure アカウントの資格情報を入力するよう求められます。
 
 	![Create Storage Connection String](./media/cloud-services-dotnet-get-started/createstoragecs.png)
 
@@ -335,17 +335,17 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
    **[Azure のアクティビティ ログ]** ウィンドウが Visual Studio で開きます。
 
-2. 右矢印のアイコンをクリックして展開の詳細を展開します。
+2. 右矢印のアイコンをクリックしてデプロイの詳細を展開します。
 
 	デプロイメントが完了するまで 5 分程度かかる場合があります。
 
 	![Azure Activity Log window](./media/cloud-services-dotnet-get-started/waal.png)
 
-1. 展開が完了したら、**Web サイトの URL** をクリックしてアプリケーションを起動します。
+1. ステータスのデプロイメントが完了したら、**Web サイトの URL** をクリックしてアプリケーションを開始します。
 
 9. この段階で、アプリケーションをローカルで実行したときと同様に、広告を作成、表示、編集して、アプリをテストできます。
 
->[AZURE.NOTE]テストが終了したら、クラウド サービスを削除または停止します。クラウド サービスを使用していない場合でも仮想マシンのリソースが予約されるため、課金が発生します。またクラウド サービスを実行したままにしておくと、その URL を見つけた他のユーザーが広告を作成したり表示したりする可能性があります。[Azure 管理ポータル](http://manage.windowsazure.com)で、クラウド サービスの [**ダッシュボード**] タブに移動し、ページの下部の [**削除**] ボタンをクリックします。一時的に他のユーザーがこのサイトにアクセスできないようにするには、代わりに **[停止]** をクリックします。この場合は、課金が継続されます。同様の手順で、不要になった SQL データベースとストレージ アカウントを削除できます。
+>[AZURE.NOTE]テストが終了したら、クラウド サービスを削除または停止します。クラウド サービスを使用していない場合でも仮想マシンのリソースが予約されるため、課金が発生します。またクラウド サービスを実行したままにしておくと、その URL を見つけた他のユーザーが広告を作成したり表示したりする可能性があります。[Azure ポータル](http://manage.windowsazure.com)で、クラウド サービスの **[ダッシュボード]** タブに移動し、ページの下部の **[削除]** ボタンをクリックします。一時的に他のユーザーがこのサイトにアクセスできないようにするには、代わりに **[停止]** をクリックします。この場合は、課金が継続されます。同様の手順で、不要になった SQL データベースとストレージ アカウントを削除できます。
 
 ## アプリケーションを最初から作成する
 
@@ -353,11 +353,11 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
 Contoso Ads アプリケーションを作成するには、次の手順を実行します。
 
-* クラウド サービス Visual Studio ソリューションの作成
-* NuGet パッケージの更新および追加
-* プロジェクト参照の設定
-* 接続文字列の構成
-* コード ファイルの追加
+* クラウド サービスの Visual Studio ソリューションを作成します。
+* NuGet パッケージを更新して追加します。
+* プロジェクト参照を設定します。
+* 接続文字列を構成します。
+* コード ファイルを追加します。
 
 ソリューションを作成したら、クラウド サービス プロジェクト、Azure BLOB、およびキューに一意のコードを見ていきます。
 
@@ -365,21 +365,21 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 1. Visual Studio で、**[ファイル]** メニューの **[新しいプロジェクト]** を選択します。
 
-2. [**新しいプロジェクト**] ダイアログの左側のウィンドウで、[**Visual C#**] を展開し、[**クラウド**] テンプレート、[**Azure クラウド サービス**] テンプレートの順に選択します。
+2. **[新しいプロジェクト]** ダイアログ ボックスの左側のウィンドウで、**[Visual C#]** を展開し、**[クラウド]** テンプレート、**[Azure クラウド サービス]** テンプレートの順に選択します。
 
 3. プロジェクトおよびソリューションに ContosoAdsCloudService という名前を付けて **[OK]** をクリックします。
 
 	![新しいプロジェクト](./media/cloud-services-dotnet-get-started/newproject.png)
 
-4. **[新しい Azure クラウド サービス]** ダイアログで、Web ロールと worker ロールを追加します。Web ロールに ContosoAdsWeb という名前を付け、worker ロールに ContosoAdsWorker という名前を付けます(右側のウィンドウの鉛筆アイコンを使用して、ロールの既定の名前を変更します)。
+4. **[新しい Azure クラウド サービス]** ダイアログ ボックスで、Web ロールと worker ロールを追加します。Web ロールに ContosoAdsWeb という名前を付け、worker ロールに ContosoAdsWorker という名前を付けます(右側のウィンドウの鉛筆アイコンを使用して、ロールの既定の名前を変更します)。
 
 	![New Cloud Service Project](./media/cloud-services-dotnet-get-started/newcsproj.png)
 
-5. Web ロールの **[新しい ASP.NET プロジェクト]** ダイアログで、MVC テンプレートを選択し、**[認証の変更]** をクリックします。
+5. Web ロールの **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、MVC テンプレートを選択し、次に **[認証の変更]** をクリックします。
 
 	![Change Authentication](./media/cloud-services-dotnet-get-started/chgauth.png)
 
-7. [認証の変更] ダイアログで、**[認証なし]** をクリックし、**[OK]** をクリックします。
+7. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、次に **[OK]** をクリックします。
 
 	![[認証なし]](./media/cloud-services-dotnet-get-started/noauth.png)
 
@@ -387,19 +387,19 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 9. **ソリューション エクスプローラー**で (プロジェクトのソリューション以外の) ソリューションを右クリックし、**[追加]、[新しいプロジェクト]** の順に選択します。
 
-11. **[新しいプロジェクトの追加]** ダイアログで、左側のウィンドウの **[Visual C#]** の下の **[Windows デスクトップ]** を選択し、**[クラス ライブラリ]** テンプレートをクリックします。
+11. **[新しいプロジェクトの追加]** ダイアログ ボックスで、左側のウィンドウの **[Visual C#]** の下の **[Windows デスクトップ]** を選択し、**[クラス ライブラリ]** テンプレートをクリックします。
 
 10. プロジェクトに *ContosoAdsCommon* という名前を付けて **[OK]** をクリックします。
 
-	Web ロール プロジェクトと worker ロール プロジェクトの両方から Entity Framework のコンテキストとデータ モデルを参照する必要があります。代わりの方法として、Entity Framework に関連するクラスを Web ロール プロジェクトに定義して、worker ロール プロジェクトからそのプロジェクトを参照することもできます。ただしその場合、worker ロール プロジェクトは、必要としない Web アセンブリへの参照を含むことになります。
+	Web ロール プロジェクトと worker ロール プロジェクトの両方から Entity Framework のコンテキストとデータ モデルを参照する必要があります。代わりの方法として、Entity Framework に関連するクラスを Web ロール プロジェクトに定義して、worker ロール プロジェクトからそのプロジェクトを参照することもできます。ただし別の方法では、worker ロール プロジェクトに、必要としない Web アセンブリへの参照が含まれることになります。
 
 ### NuGet パッケージの更新および追加
 
-11. ソリューションの **[NuGet パッケージの管理]** ダイアログを開きます。
+11. ソリューションの **[NuGet パッケージの管理]** ダイアログ ボックスを開きます。
 
 12. 左側のウィンドウで、**[更新プログラム]** を選択します。
 
-13. *Azure ストレージ* パッケージを見つけます。このパッケージが一覧にない場合は、**[更新]** をクリックして、ストレージ クライアント ライブラリの最新バージョンを取得します。
+13. *Azure Storage* のパッケージを見つけます。このパッケージが一覧にない場合は、**[更新]** をクリックして、ストレージ クライアント ライブラリの最新バージョンを取得します。
 
 	![Update SCL](./media/cloud-services-dotnet-get-started/updstg.png)
 
@@ -411,7 +411,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 ### プロジェクト参照の設定
 
-10. ContosoAdsWeb プロジェクトで、ContosoAdsCommon プロジェクトの参照を設定します。ContosoAdsWeb プロジェクトを右クリックし、**[参照]**、**[参照の追加]** の順にクリックします。**[参照マネージャー]** ダイアログ ボックスで、左側のウィンドウの **[ソリューション]、[プロジェクト]** の順に選択し、[ContosoAdsCommon] を選択して **[OK]** をクリックします。
+10. ContosoAdsWeb プロジェクトで、ContosoAdsCommon プロジェクトの参照を設定します。ContosoAdsWeb プロジェクトを右クリックし、**[参照]**、**[参照の追加]** の順にクリックします。**[参照マネージャー]** ダイアログ ボックスで、左側のウィンドウの **[ソリューション]、[プロジェクト]** の順に選択し、**[ContosoAdsCommon]** を選択して **[OK]** をクリックします。
 
 11. ContosoAdsWorker プロジェクトで、ContosAdsCommon プロジェクトの参照を設定します。
 
@@ -461,12 +461,12 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 このセクションでは、ダウンロードしたソリューションから新しいソリューションにコード ファイルをコピーします。以降のセクションでは、このコードの重要な部分について説明します。
 
-プロジェクトまたはフォルダーにファイルを追加するには、プロジェクトまたはフォルダーを右クリックし、**[追加]**、**[既存の項目]** の順にクリックします。目的のファイルを選択し、**[追加]** をクリックします。既存のファイルを置き換えるかどうかをたずねるメッセージが表示されたら、**[はい]** をクリックします。
+プロジェクトまたはフォルダーにファイルを追加するには、プロジェクトまたはフォルダーを右クリックし、**[追加]**、**[既存の項目]** の順にクリックします。目的のファイルを選択してから **[追加]** をクリックします。既存のファイルを置き換えるかどうかをたずねるメッセージが表示されたら、**[はい]** をクリックします。
 
 3. ContosoAdsCommon プロジェクトで、*Class1.cs* ファイルを削除します。その場所に、ダウンロードしたプロジェクトから *Ad.cs* ファイルと *ContosoAdscontext.cs* ファイルを追加します。
 
 3. ContosoAdsWeb プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
-	- *Global.asax.cs*  
+	- *Global.asax.cs*。  
 	- *Views \\shared* フォルダー: <em>\_Layout.cshtml</em>。
 	- *Views\\Home* フォルダー: *Index.cshtml*。
 	- *Controllers* フォルダー: *AdController.cs*。
@@ -644,7 +644,7 @@ HttpPost `Edit` メソッドのコードも似ていますが、ユーザーが�
 		    ad.ImageURL = imageBlob.Uri.ToString();
 		}
 
-次に示すのは、広告が削除されたときに BLOB を削除するコードです。
+次の例で示すのは、広告が削除されたときに BLOB を削除するコードです。
 
 		private async Task DeleteAdBlobsAsync(Ad ad)
 		{
@@ -799,7 +799,7 @@ Contoso Ads アプリケーションは、入門用のチュートリアルと�
 
 * [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。概念は Contoso Ads に似ていますが、より多くの機能とより現実的なコーディング手法が実装されています。
 * [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs (テーブル、キュー、BLOB を使用する Azure クラウド サービス多層アプリケーション)](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。Azure Storage のテーブル、BLOB、キューについて紹介します。[手順を紹介するチュートリアル シリーズ](../cloud-services-dotnet-multi-tier-app-storage-1-overview.md)が用意されています。
-* [Windows Azure のクラウド サービスの基礎](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。Microsoft Patterns and Practices グループから提供された、さまざまなベスト プラクティスを紹介する包括的なサンプルです。
+* [Microsoft Azure のクラウド サービスの基礎](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。Microsoft Patterns and Practices グループから提供された、さまざまなベスト プラクティスを紹介する包括的なサンプルです。
 
 クラウド向けの開発については、「[Azure を使用した実際のクラウド アプリケーションの作成](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)」をご覧ください。
 
@@ -810,6 +810,5 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [Azure Cloud Services パート 1: 概要](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [クラウド サービスの管理方法](cloud-services-how-to-manage.md)
 * [Azure ストレージ](/documentation/services/storage/)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

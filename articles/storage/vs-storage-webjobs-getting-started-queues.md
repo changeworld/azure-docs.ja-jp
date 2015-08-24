@@ -1,38 +1,40 @@
 <properties 
-	pageTitle="Azure Storage の使用" 
-	description="Visual Studio の Azure Web ジョブ プロジェクトで Azure キュー ストレージの使用を開始する方法" 
-	services="storage" 
-	documentationCenter="" 
-	authors="patshea123" 
-	manager="douge" 
+	pageTitle="Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)" 
+	description="Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用して WebJob プロジェクトに作成された Azure ストレージ アカウントでキュー ストレージの使用を開始する方法です。"
+	services="storage"
+	documentationCenter=""
+	authors="patshea123"
+	manager="douge"
 	editor="tglee"/>
 
 <tags 
-	ms.service="storage" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/13/2015" 
+	ms.service="storage"
+	ms.workload="web"
+	ms.tgt_pltfrm="vs-getting-started"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/13/2015"
 	ms.author="patshea123"/>
 
-# Azure Storage の使用 (Azure Web ジョブ プロジェクト)
+# Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-storage-webjobs-getting-started-queues.md)
-> - [What Happened](vs-storage-webjobs-what-happened.md)
+> - [Getting started](vs-storage-webjobs-getting-started-queues.md)
+> - [What happened](vs-storage-webjobs-what-happened.md)
 
 > [AZURE.SELECTOR]
 > - [Blobs](vs-storage-webjobs-getting-started-blobs.md)
 > - [Queues](vs-storage-webjobs-getting-started-queues.md)
 > - [Tables](vs-storage-webjobs-getting-started-tables.md)
 
+## 概要
+
+この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログ ボックスを使用して Azure ストレージ アカウントを参照または作成した後に、Visual Studio の Azure Web ジョブ プロジェクトで Azure キュー ストレージの使用を開始する方法について説明します。Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Web ジョブ プロジェクトにストレージ アカウントを追加すると、適切な Azure Storage NuGet パッケージがインストールされ、適切な .NET 参照がプロジェクトに追加され、App.config ファイルのストレージ アカウントの接続文字列が更新されます。
+
+この記事では、Azure Web ジョブ SDK バージョン 1.x を Azure キュー ストレージ サービスとともに使用する方法を示す C# コード サンプルについて説明します。
 
 Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。詳細については、「[How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)](storage-dotnet-how-to-use-queues.md)」を参照してください。ASP.NET の詳細については、[ASP.NET](http://www.asp.net) に関するページを参照してください。
 
-Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Web ジョブ プロジェクトにストレージ アカウントを追加すると、適切な Azure Storage NuGet パッケージがインストールされ、適切な .NET 参照がプロジェクトに追加され、App.config ファイルのストレージ アカウントの接続文字列が更新されます。
-
-この記事では、Azure キュー ストレージ サービスを使用して Azure Web ジョブ SDK バージョン 1.x を操作する方法について説明します。この記事には、次のトピックが含まれています。
 
 
 ## キュー メッセージを受信したときに関数をトリガーする方法
@@ -551,4 +553,4 @@ Web ジョブのページ (特定の関数呼び出しのページではなく) 
 この記事では、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="オフライン データ同期を Android Mobile Services アプリに追加する | モバイル デベロッパー センター"
+	pageTitle="オフライン データ同期を Android Mobile Services アプリに追加する | Microsoft Azure"
 	description="Azure Mobile Services を使用して、Android アプリケーションのオフライン データをキャッシュおよび同期する方法を学習します。"
 	documentationCenter="android"
 	authors="RickSaling"
@@ -221,4 +221,4 @@ One thing which is important to point out: if there are pending changes in the l
 
 [Mobile Services Quick Start tutorial (Mobile Services のクイック スタート チュートリアル)]: mobile-services-android-get-started.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

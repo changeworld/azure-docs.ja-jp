@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Active Directory 認証用の登録 | Azure Mobile Services" 
+	pageTitle="Azure Active Directory 認証用の登録 | Microsoft Azure" 
 	description="Mobile Services アプリケーションで Azure Active Directory 認証用に登録する方法について説明します。" 
 	authors="wesmc7777" 
 	services="mobile-services" 
@@ -66,4 +66,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

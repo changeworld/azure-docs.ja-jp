@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Service Bus トピックの使用方法 (PHP) - Azure" 
+	pageTitle="Service Bus トピックの使用方法 (PHP) | Microsoft Azure" 
 	description="Azure 上の PHP で Service Bus トピックを使用する方法について説明します。" 
 	services="service-bus" 
 	documentationCenter="php" 
@@ -332,4 +332,4 @@ Service Bus トピックの管理操作は **ServiceBusRestProxy** クラスを�
 [require-once]: http://php.net/require_once
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="リソース マネージャーを使用した HDInsight の Apache Spark クラスターへのリソースの割り当て | Azure" 
+	pageTitle="リソース マネージャーを使用した HDInsight の Apache Spark クラスターへのリソースの割り当て | Microsoft Azure" 
 	description="リソース マネージャーを使用して HDInsight の Spark クラスターのパフォーマンスを向上させる方法について説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
@@ -25,7 +25,7 @@
 
 1. Azure ポータルで Spark クラスターを選択し、下部にあるポータルのタスク バーで **[Spark ダッシュボード]** をクリックします。
 
-2. ダッシュ ボードの上部ウィンドウで、**[リソース マネージャー]** タブをクリックします。
+2. ダッシュボードの上部ウィンドウで、**[リソース マネージャー]** タブをクリックします。
 
 ##<a name="scenariosrm"></a>リソース マネージャーを使用して問題を解決する方法
 
@@ -49,7 +49,7 @@ HDInsight の Apache Spark クラスターはマルチテナント用に設計�
 	![アプリケーションの実行](./media/hdinsight-apache-spark-resource-manager/HDI.Spark.UI.Running.Apps.png "クラスターで実行されているアプリケーション")
 
 	
-2. HDInsight Spark ダッシュ ボードで、**[リソース マネージャー]** タブをクリックし、**[既定のアプリケーション コア数]** および **[ワーカー ノードごとの既定の実行プログラム メモリ]** の値を指定します。他のプロパティは 0 に設定します。
+2. HDInsight Spark ダッシュボードで、**[リソース マネージャー]** タブをクリックし、**[既定のアプリケーション コア数]** および **[ワーカー ノードごとの既定の実行プログラム メモリ]** の値を指定します。他のプロパティは 0 に設定します。
 
 	![リソースの割り当て](./media/hdinsight-apache-spark-resource-manager/HDI.Spark.UI.Allocate.Resources.png "アプリケーションにリソースを割り当てます")
 
@@ -79,4 +79,4 @@ Thrift サーバーのコア数と Thrift サーバーの実行プログラム �
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

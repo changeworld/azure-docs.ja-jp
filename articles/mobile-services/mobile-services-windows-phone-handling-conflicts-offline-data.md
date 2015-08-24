@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Mobile Services でのオフライン データとの競合の処理 (Windows Phone) | モバイル デベロッパー センター" 
+	pageTitle="Mobile Services でのオフライン データとの競合の処理 (Windows Phone) | Microsoft Azure" 
 	description="Azure Mobile Services を使用して、Windows Phone アプリケーションのオフライン データの同期時に生じる競合を処理する方法を説明します。" 
 	documentationCenter="windows" 
 	authors="wesmc7777" 
@@ -240,4 +240,4 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 [Get started with data]: mobile-services-windows-phone-get-started-data.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

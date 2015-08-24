@@ -1,5 +1,5 @@
 <properties
-	pageTitle="BizTalk Services のエディションに含まれる機能の詳細情報 | Azure"
+	pageTitle="BizTalk Services のエディションに含まれる機能の詳細情報 | Microsoft Azure"
 	description="BizTalk サービスのエディション (無料、開発者、基本、標準、およびプレミアム) の機能を比較します。MABS、WABS"
 	services="biztalk-services"
 	documentationCenter=""
@@ -257,4 +257,4 @@ Azure BizTalk サービスを Azure 管理ポータルで作成するには、�
 - [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="07/20/2015" 
+	ms.date="08/13/2015" 
 	ms.author="anbacker"/>
 	
 # VMware、VMM、Hyper-V、および物理サイトの監視とトラブルシューティング
@@ -169,6 +169,7 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 -   [Hyper-V Recovery Manager コンテナーへの接続を確立できない。プロキシ設定を確認するか、後でもう一度実行してください。](http://social.technet.microsoft.com/wiki/contents/articles/25571.a-connection-cant-be-established-to-the-hyper-v-recovery-manager-vault-verify-the-proxy-settings-or-try-again-later.aspx)
 
 ### 構成
+-   [保護グループを作成できない: サーバーの一覧を取得中にエラーが発生する。](http://blogs.technet.com/b/somaning/archive/2015/08/12/unable-to-create-the-protection-group-in-azure-site-recovery-portal.aspx)
 
 -   [Hyper-V ホスト クラスターに少なくとも 1 つの静的なネットワーク アダプターが含まれているか、DHCP を使用するように接続されたアダプターが構成されていない。](http://social.technet.microsoft.com/wiki/contents/articles/25498.hyper-v-host-cluster-contains-at-least-one-static-network-adapter-or-no-connected-adapters-are-configured-to-use-dhcp.aspx)
 
@@ -222,4 +223,4 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 ### リモート デスクトップのフェールオーバー後のトラブルシューティング
 多くのお客様が、Azure でフェールオーバー後の VM への接続について、問題に直面しています。トラブルシューティングのドキュメントを使用して、VM に RDP でアクセスしてください。[ドキュメントのリンク](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

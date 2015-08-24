@@ -1,5 +1,5 @@
 <properties
-	pageTitle="DocumentDB Document Explorer を使用した JSON ドキュメントの表示、編集、作成、およびアップロード | Azure"
+	pageTitle="DocumentDB Document Explorer を使用した JSON ドキュメントの表示、編集、作成、およびアップロード | Microsoft Azure"
 	description="DocumentDB Document Explorer を使用して JSON ドキュメントを表示、編集、作成、およびアップロードするための Azure プレビュー ポータル ツールである DocumentDB Document Explorer について説明します。"
 	services="documentdb"
 	authors="stephbaron"
@@ -140,4 +140,4 @@ Document Explorer では、1 つまたは複数の既存の JSON ドキュメン
 DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

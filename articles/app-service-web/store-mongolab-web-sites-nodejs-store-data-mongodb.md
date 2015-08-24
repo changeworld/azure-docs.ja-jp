@@ -4,7 +4,7 @@
 	tags="azure-classic-portal"
 	services="app-service\web, virtual-machines"
 	documentationCenter="nodejs"
-	authors="chrisckchang"
+	authors="tdykstra"
 	manager="wpickett"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="04/20/2014"
+	ms.date="08/10/2014"
 	ms.author="mwasson"/>
 
 
@@ -25,7 +25,7 @@
 # MongoLab アドオンを使用して Azure で MongoDB 対応の Node.js Web アプリケーションを作成する
 
 
-<p><em>執筆: Eric Sedor (MongoLab)</em></p>
+*執筆: Eric Sedor (MongoLab)*
 
 こんにちは、冒険家のみなさん。 サービスとしての MongoDB にようこそ。このチュートリアルでは、次のことについて説明します。
 
@@ -575,4 +575,4 @@ Azure App Service では Web アプリを非常に簡単に作成できます。
 [mongolab-view]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/mongolab-view.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

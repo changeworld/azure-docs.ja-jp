@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/26/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 #Azure Media Services の概要
@@ -87,4 +87,4 @@ Azure Media Services には、ほとんどのプラットフォーム (iOS デ�
 [overview]: ./media/media-services-overview/media-services-overview.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

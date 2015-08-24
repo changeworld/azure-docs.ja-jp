@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="HDInsight への Spark クラスターのプロビジョニングと、Zeppelin および Jupyter から Spark SQL を使用した対話型の分析 |Azure" 
+	pageTitle="HDInsight への Spark クラスターのプロビジョニングと、Zeppelin および Jupyter から Spark SQL を使用した対話型の分析 | Microsoft Azure" 
 	description="HDInsight に Apache Spark クラスターをすばやくプロビジョニングし、Zeppelin および Jupyter Notebook から Spark SQL を使用して対話型クエリを実行する手順を説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
@@ -243,4 +243,4 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

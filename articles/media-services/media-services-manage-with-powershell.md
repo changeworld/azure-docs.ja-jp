@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 
@@ -110,4 +110,4 @@ Azure Media Services を削除する準備ができたら、[Remove-AzureMediaSe
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Twilio から通話する方法 (PHP) - Azure" 
+	pageTitle="Twilio から通話する方法 (PHP) | Microsoft Azure" 
 	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。サンプルは PHP アプリケーション用です。" 
 	documentationCenter="php" 
 	services="" 
@@ -143,4 +143,4 @@ Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を
 [website-webmatrix]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-webmatrix/
 [twilio_php_github]: https://github.com/twilio/twilio-php
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

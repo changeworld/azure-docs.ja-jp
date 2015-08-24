@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="05/23/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 #オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
@@ -330,4 +330,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="HTML/JavaScript アプリへの認証の追加 | Azure Mobile Services" 
+	pageTitle="HTML/JavaScript アプリへの認証の追加 | Microsoft Azure" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft アカウントなどのさまざまな ID プロバイダーを通じて HTML アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -138,4 +138,4 @@
 [モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: mobile-services-html-how-to-use-client-library.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

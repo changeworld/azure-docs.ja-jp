@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="音声と SMS に Twilio を使用する方法 (Java) - Azure" 
+	pageTitle="音声と SMS に Twilio を使用する方法 (Java) | Microsoft Azure" 
 	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは Java で記述されています。" 
 	services="" 
 	documentationCenter="java" 
@@ -232,4 +232,4 @@ Azure 上の Java で Twilio を使用する方法の詳細については、「
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

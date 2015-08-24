@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure BLOB ストレージと Visual Studio 接続済みサービスの概要" 
-	description="Visual Studio のクラウド サービス プロジェクトで Azure BLOB ストレージの使用を開始する方法" 
-	services="storage" 
-	documentationCenter="" 
-	authors="patshea123" 
-	manager="douge" 
+	pageTitle="Azure BLOB ストレージと Visual Studio 接続済みサービスの概要"
+	description="Visual Studio のクラウド サービス プロジェクトで Azure BLOB ストレージの使用を開始する方法"
+	services="storage"
+	documentationCenter=""
+	authors="patshea123"
+	manager="douge"
 	editor="tglee"/>
 
 <tags 
-	ms.service="storage" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.service="storage"
+	ms.workload="web"
+	ms.tgt_pltfrm="vs-getting-started"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2015"
 	ms.author="patshea123"/>
 
 # Azure Blob ストレージと Visual Studio 接続済みサービスの概要
@@ -262,10 +262,10 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその `D
             continuationToken = resultSegment.ContinuationToken;
         }
         while (continuationToken != null);
-    }ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+    }
 
 ## 次のステップ
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

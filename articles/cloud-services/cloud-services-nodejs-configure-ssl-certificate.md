@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="クラウド サービス (Node.js) 向けの SSL の構成 - Azure" 
+	pageTitle="クラウド サービス (Node.js) 向けの SSL の構成 | Microsoft Azure" 
 	description="Node.js Web ロールの HTTPS エンドポイントを設定し、SSL 証明書をアップロードしてアプリケーションを保護します。" 
 	services="cloud-services" 
 	documentationCenter="nodejs" 
@@ -192,4 +192,4 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   [Azure worker ロールで Node.js アプリケーションの SSL を構成する]: /develop/nodejs/common-tasks/enable-ssl-worker-role/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

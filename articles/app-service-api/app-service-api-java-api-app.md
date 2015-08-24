@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="java"
 	ms.topic="get-started-article"
-	ms.date="04/21/2015"
+	ms.date="08/11/2015"
 	ms.author="pakefali"/>
 
 # Azure App Service での Java API アプリの構築とデプロイ
@@ -270,4 +270,4 @@ API アプリ バックエンドを使用する Java Web アプリケーショ�
 [api-definition-blade]: ./media/app-service-api-java-api-app/apidefblade.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

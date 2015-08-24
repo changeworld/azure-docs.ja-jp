@@ -1,5 +1,5 @@
 <properties
-	pageTitle=".NET 多層アプリケーション - Azure チュートリアル"
+	pageTitle=".NET 多層アプリケーション | Microsoft Azure"
 	description="Service Bus キューを使用して層間で通信する多層アプリケーションを Azure で開発するのに役立つチュートリアルです。.NET でのサンプル。"
 	services="service-bus"
 	documentationCenter=".net"
@@ -539,4 +539,4 @@ Azure Web サイトにフロンドエンドを展開する方法については�
   [executionmodels]: http://azure.microsoft.com/develop/net/fundamentals/compute/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

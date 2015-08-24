@@ -59,6 +59,5 @@ Azure Multi-Factor Authentication を使う理由について、さらに詳し�
 
 * [Office365 用の Multi-Factor Authentication の設定](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)
 * [Multi-Factor Authentication のユーザーへの影響](multi-factor-authentication-end-user.md)
-* [Azure Multi-Factor Authentication (MSDN)](https://msdn.microsoft.com/library/azure/dn249471.aspx) 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Xamarin iOS アプリケーション用 Mobile Services の使用 - Azure Mobile Services" 
+	pageTitle="Xamarin iOS アプリケーション用 Mobile Services の使用 | Microsoft Azure" 
 	description="Azure Mobile Services と Notification Hubs を使用して Xamarin iOS アプリにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="xamarin" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/24/2015" 
+	ms.date="08/08/2015" 
 	ms.author="lindydonna"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
@@ -23,4 +23,4 @@
 [AZURE.INCLUDE [mobile-services-content-not-ready](../../includes/mobile-services-content-not-ready.md)]
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

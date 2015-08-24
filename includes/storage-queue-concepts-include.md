@@ -4,7 +4,7 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 キュー ストレージの一般的な用途には、次のようなものがあります。
 
--   <span>非同期に処理する作業のバックログを作成する</span>
+-   非同期に処理する作業のバックログを作成する
 -   Azure Web ロールから worker ロールにメッセージを渡す
 
 ## キュー サービスの概念
@@ -16,12 +16,14 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 - **URL 形式:** キューは、次の URL 形式を使用してアドレス指定できます。http://`<storage account>`.queue.core.windows.net/`<queue>` 
       
-次の URL を使用すると、図のいずれかのキューをアドレス指定できます。http://myaccount.queue.core.windows.net/imagesToDownload
+	次の URL を使用すると、図のいずれかのキューをアドレス指定できます。
+		
+		http://myaccount.queue.core.windows.net/imagesToDownload
 
-\- **ストレージ アカウント**: Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、[Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/storage-scalability-targets.md)を参照してください。
+- **ストレージ アカウント**: Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、[Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/storage-scalability-targets.md)を参照してください。
 
 - **キュー:** キューは、メッセージのセットを格納します。すべてのメッセージはキューに 格納されている必要があります。
 
 - **メッセージ:** 形式を問わず、メッセージのサイズは最大で 64 KB です。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

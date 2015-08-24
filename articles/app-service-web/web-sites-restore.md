@@ -5,7 +5,7 @@
 	documentationCenter="" 
 	authors="cephalin" 
 	manager="wpickett" 
-	editor="mollybos"/>
+	editor="jimbe"/>
 
 <tags 
 	ms.service="app-service-web" 
@@ -79,7 +79,7 @@ Web アプリの復元機能 ([Azure プレビュー ポータル](http://portal
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 <!-- IMAGES -->
-[ChooseBackupSource]: ./media/web-sites-restore/01ChooseBackupSource.png
+[ChooseBackupSource]: ./media/web-sites-restore/0ChooseBackupSource.png
 [ChooseRestoreNow]: ./media/web-sites-restore/02ChooseRestoreNow.png
 [ViewContainers]: ./media/web-sites-restore/03ViewContainers.png
 [StorageAccountFile]: ./media/web-sites-restore/02StorageAccountFile.png
@@ -96,4 +96,4 @@ Web アプリの復元機能 ([Azure プレビュー ポータル](http://portal
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

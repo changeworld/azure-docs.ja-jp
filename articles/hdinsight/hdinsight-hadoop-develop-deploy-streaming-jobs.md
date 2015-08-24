@@ -38,7 +38,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 - HDInsight Emulator のインストール。手順については、「[HDInsight Emulator の概要][hdinsight-get-started-emulator]」を参照してください。
 - エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install]を参照してください。
-- Azure サブスクリプションの入手。手順については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[][azure-free-trial]無料試用版に関するページを参照してください。
+- Azure サブスクリプションの入手。手順については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料試用版][azure-free-trial]に関するページを参照してください。
 
 
 ##<a name="develop"></a>C# でワード カウント Hadoop ストリーミング プログラムを開発する
@@ -51,13 +51,13 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 2. **[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックします。
 3. 次の値を入力または選択します。
 
-	<table border="1">
-<tr><td>フィールド</td><td>値</td></tr>
-<tr><td>テンプレート</td><td>Visual C#/Windows/コンソール アプリケーション</td></tr>
-<tr><td>名前</td><td>WordCountMapper</td></tr>
-<tr><td>場所</td><td>C:\Tutorials</td></tr>
-<tr><td>ソリューション名</td><td>WordCount</td></tr>
-</table>
+フィールド|値
+---|---
+テンプレート|Visual C#/Windows/コンソール アプリケーション
+名前|WordCountMapper
+場所|C:\\Tutorials
+ソリューション名|WordCount
+
 	
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
@@ -100,12 +100,12 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 1. Visual Studio 2013 で **[ファイル]**、**[追加]**、**[新しいプロジェクト]** の順にクリックします。
 2. 次の値を入力または選択します。
 
-	<table border="1">
-<tr><td>フィールド</td><td>値</td></tr>
-<tr><td>テンプレート</td><td>Visual C#/Windows/コンソール アプリケーション</td></tr>
-<tr><td>名前</td><td>WordCountReducer</td></tr>
-<tr><td>場所</td><td>C:\Tutorials\WordCount</td></tr>
-</table>
+フィールド|値
+---|---
+テンプレート|Visual C#/Windows/コンソール アプリケーション
+名前|WordCountReducer
+場所|C:\\Tutorials\\WordCount
+	
 3. **[ソリューションのディレクトリを作成]** チェック ボックスをオフにし、**[OK]** をクリックしてプロジェクトを作成します。
 4. ソリューション エクスプローラーで **[Program.cs]** を右クリックし、**[名前の変更]** をクリックします。
 5. ファイルの名前を **WordCountReducer.cs** に変更し、**Enter** キーを押します。
@@ -167,7 +167,14 @@ mapper と reducer の実行可能ファイルは次の場所にあります。
 
 このチュートリアルでは、次のフォルダー構造を使用します。
 
-<table border="1"> <tr><td>フォルダー</td><td>説明</td></tr> <tr><td>\\WordCount</td><td>ワード カウント プロジェクトのルート フォルダー。</td></tr> <tr><td>\\WordCount\\Apps</td><td>mapper と reducer の実行可能ファイルのフォルダー。</td></tr> <tr><td>\\WordCount\\Input</td><td>MapReduce ソース ファイル フォルダー。</td></tr> <tr><td>\\WordCount\\Output</td><td>MapReduce 出力ファイル フォルダー。</td></tr> <tr><td>\\WordCount\\MRStatusOutput</td><td>ジョブ出力フォルダー。</td></tr> </table></br>
+フォルダー|注
+---|---
+\\WordCount|ワード カウント プロジェクトのルート フォルダー。 
+\\WordCount\\Apps|mapper と reducer の実行可能ファイルのフォルダー。
+\\WordCount\\Input|MapReduce のソース ファイル フォルダー。
+\\WordCount\\Output|MapReduce の出力ファイル フォルダー。
+\\WordCount\\MRStatusOutput|ジョブの出力フォルダー。
+
 
 このチュートリアルでは、%hadoop\_home% ディレクトリにある .txt ファイルを使用します。
 
@@ -552,4 +559,4 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

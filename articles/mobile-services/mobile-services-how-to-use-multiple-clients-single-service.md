@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="1 つのモバイル サービス バックエンドで複数のクライアントを使用する方法 | Azure Mobile" 
+	pageTitle="1 つのモバイル サービス バックエンドで複数のクライアントを使用する方法 | Microsoft Azure" 
 	description="Windows ストアや Windows Phone など、さまざまなモバイル プラットフォームを対象とする複数のクライアント アプリから単一の Mobile Services バックエンドを使用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -210,4 +210,4 @@ Windows Phone 8.1 では、以前の Silverlight ベースの XAML を使用し�
 [MVVM を使用した Azure モバイル サービスのユニバーサル Windows アプリ プロジェクト]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

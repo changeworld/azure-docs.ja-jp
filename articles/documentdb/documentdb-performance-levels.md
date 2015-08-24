@@ -33,30 +33,11 @@ Standard アカウントで作成された DocumentDB コレクションはそ�
 
 各パフォーマンス レベルには、関連する要求単位 (RU) レートの制限があります。これは、パフォーマンス レベルに基づいてコレクションに予約されるスループットで、そのコレクションが独占的に使用することができます。コレクションの作成は、[Azure ポータル](http://portal.azure.com)で、または [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用して行います。DocumentDB API を使用して、コレクションのパフォーマンス レベルを指定することができます。
 
-<table> 
-<tbody>
-<tr>
-<td valign="top" ><p><b>コレクションのパフォーマンス レベル</b></p></td>
-<td valign="top" ><p><b>予約済みのスループット</b></p></td>
-</tr>
-
-<tr>
-<td valign="top" ><p>S1</p></td>
-<td valign="top" ><p>250 RU/秒</p></td>
-</tr>
-
-<tr>
-<td valign="top" ><p>S2</p></td>
-<td valign="top" ><p>1,000 RU/秒</p></td>
-</tr>
-
-<tr>
-<td valign="top" ><p>S3</p></td>
-<td valign="top" ><p>2,500 RU/秒</p></td>
-</tr>
-
-</tbody>
-</table>
+コレクションのパフォーマンス レベル|予約済みのスループット
+---|---
+S1|250 RU/秒
+S2|1,000 RU/秒
+S3|2,500 RU/秒
 
 DocumentDB では、クエリ、ユーザー定義関数 (UDF) を使用したクエリ、ストアド プロシージャ、トリガーなど、さまざまなデータベース操作を実行できます。これらの各操作に関連付けられる処理コストは、CPU、IO、操作の完了に必要なメモリによって異なります。ハードウェア リソースの検討や管理をする代わりに、要求単位をさまざまなデータベース操作の実行やアプリケーション要求の処理に必要なリソースの 1 つのメジャーとして考えることができます。
 
@@ -132,7 +113,7 @@ Azure プレビュー ポータルは、コレクションのパフォーマン�
 
 Azure DocumentDB の価格設定とデータ管理の詳細については、以下のリソースを参照してください。
  
-- [DocumentDB の料金](http://azure.microsoft.com/pricing/details/documentdb/)
+- [DocumentDB の価格](http://azure.microsoft.com/pricing/details/documentdb/)
 - [DocumentDB の容量の管理](documentdb-manage.md) 
 - [DocumentDB のデータのモデル化](documentdb-modeling-data.md)
 - [DocumentDB でのデータのパーティション分割](documentdb-partition-data.md)
@@ -141,4 +122,4 @@ DocumentDB の詳細については、Azure DocumentDB に関する[ドキュメ
 
 [1]: ./media/documentdb-performance-levels/img1.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

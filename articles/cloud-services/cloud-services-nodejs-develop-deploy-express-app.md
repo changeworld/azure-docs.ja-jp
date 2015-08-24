@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Express を使用した Web アプリケーション (Node.js) - Azure チュートリアル" 
+	pageTitle="Express を使用した Web アプリケーション (Node.js) | Microsoft Azure" 
 	description="クラウド サービスのチュートリアルを基に、Express モジュールの使用方法を示すチュートリアル。" 
 	services="cloud-services" 
 	documentationCenter="nodejs" 
@@ -135,4 +135,4 @@ Azure PowerShell ウィンドウで、**Publish-AzureServiceProject** コマン�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="チュートリアル: Application Insights を使用して Microsoft CRM を監視する" 
-	description="Application Insights を使用して Microsoft CRM Online からテレメトリを取得します。設定、データの取得、視覚化、およびエクスポートをしてみましょう。" 
+	pageTitle="チュートリアル: Application Insights を使用して Microsoft Dynamics CRM を監視する" 
+	description="Application Insights を使用して Microsoft Dynamics CRM Online からテレメトリを取得します。設定、データの取得、視覚化、およびエクスポートをしてみましょう。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="mazharmicrosoft" 
-	manager="klin"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -15,11 +15,11 @@
 	ms.date="08/04/2015" 
 	ms.author="awills"/>
  
-# チュートリアル: Application Insights を使用して Microsoft CRM Online のテレメトリを有効にする
+# チュートリアル: Application Insights を使用して Microsoft Dynamics CRM Online のテレメトリを有効にする
 
-この記事では、[Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/) を使用して [Microsoft CRM Online](https://www.dynamics.com/) からテレメトリ データを取得する方法について説明します。アプリケーションに Application Insights のスクリプトを追加し、データをキャプチャし、データを視覚化するすべてのプロセスを見てみましょう。
+この記事では、[Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/) を使用して [Microsoft Dynamics CRM Online](https://www.dynamics.com/) からテレメトリ データを取得する方法について説明します。アプリケーションに Application Insights のスクリプトを追加し、データをキャプチャし、データを視覚化するすべてのプロセスを見てみましょう。
 
->[AZURE.NOTE] [Browse the sample code](https://dynamicsandappinsights.codeplex.com/)。
+>[AZURE.NOTE] [Browse the sample solution](https://dynamicsandappinsights.codeplex.com/)。
 
 ## 新規または既存の CRM Online インスタンスに Application Insights を追加する 
 
@@ -149,9 +149,9 @@
 
 [データを Microsoft Power BI にエクスポート](app-insights-export-power-bi.md)すると、より深い分析を行うことができます。
 
-## CRM ソリューションのサンプル
+## Dynamics CRM ソリューションのサンプル
 
-ここに、テレメトリのキャプチャを開始するために CRM に実装されたサンプル ソリューションがあります。https://dynamicsandappinsights.codeplex.com/
+[Dynamics CRM で実装されたサンプルのソリューションを示します](https://dynamicsandappinsights.codeplex.com/)
 
 ## 詳細情報
 
@@ -161,4 +161,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

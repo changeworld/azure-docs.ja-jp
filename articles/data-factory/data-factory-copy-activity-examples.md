@@ -484,8 +484,6 @@ Data Factory パイプラインを定義するための JSON 要素の詳細に�
 - [コピー アクティビティ - JSON スクリプト リファレンス](https://msdn.microsoft.com/library/dn835035.aspx)
 - [ビデオ: Azure Data Factory コピーアクティビティの概要][copy-activity-video]
 
-
-[adf-copyactivity]: data-factory-copy-activity.md
 [copy-activity-video]: http://azure.microsoft.com/documentation/videos/introducing-azure-data-factory-copy-activity/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,7 +1,7 @@
 
 <properties 
-    pageTitle="RemoteApp のアプリの要件"
-    description="RemoteApp で使用するアプリの要件について説明します。" 
+    pageTitle="Azure RemoteApp のアプリの要件"
+    description="Azure RemoteApp で使用するアプリの要件について説明します。" 
     services="remoteapp" 
     documentationCenter="" 
     authors="lizap" 
@@ -13,15 +13,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="05/28/2015" 
+    ms.date="08/12/2015" 
     ms.author="elizapo" />
 
 
 
 # アプリの要件
-RemoteApp は、Windows Server 2012 R2 インストールの 32 ビットまたは 64 ビットの Windows ベース アプリケーションのストリーミングをサポートします。既存の 32 ビットまたは 64 ビットの Windows ベース アプリケーションのほとんどは、RemoteApp (リモート デスクトップ サービス、以前のターミナル サービス) 環境で "そのまま" 動作します。ただし、"動作すること" と "うまく動作すること" は異なります。アプリケーションの中には正常に問題なく機能するものもあれば、そうでないものもあります。以下の情報は、リモート デスクトップ サービス環境でのアプリケーション開発、および互換性を保証するためのテストのガイダンスを示したものです。
+Azure RemoteApp は、Windows Server 2012 R2 イメージの 32 ビットまたは 64 ビットの Windows ベース アプリケーションのストリーミングをサポートします。既存の 32 ビットまたは 64 ビットの Windows ベース アプリケーションのほとんどは、Azure RemoteApp (リモート デスクトップ サービス、以前のターミナル サービス) 環境で "そのまま" 動作します。ただし、"動作すること" と "うまく動作すること" は異なります。アプリケーションの中には正常に問題なく機能するものもあれば、そうでないものもあります。以下の情報は、リモート デスクトップ サービス環境でのアプリケーション開発、および互換性を保証するためのテストのガイダンスを示したものです。
 
-ヒント: Microsoft では、アプリケーションの実行例の作成に取り組んでいます。月末までには、RemoteApp での Microsoft Access、QuickBooks、App-V の使用に関する新しいトピックを掲載する予定です。
+ヒント: Microsoft では、アプリケーションの実行例の作成に取り組んでいます。RemoteApp での Microsoft Access、QuickBooks、App-V の使用に関する新しいトピックを掲載する予定です。
 
 ## 必要条件
 これらの 3 つの要件に従うと、アプリケーションが RemoteApp で快適に動作するのに役立ちます。
@@ -56,4 +56,4 @@ RemoteApp は、Windows Server 2012 R2 インストールの 32 ビットまた�
 - パフォーマンスを最適化するために、クライアント セッションで動作しているかどうかをアプリケーションで[検出する](https://msdn.microsoft.com/library/aa380798.aspx)ことをお勧めします。 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

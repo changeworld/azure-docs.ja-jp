@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="08/11/2015"  
 	ms.author="juliako"/>
 
 #ドルビー デジタル プラスを使ったメディアのエンコード
@@ -651,4 +651,4 @@ DPLM が統合ラウドネスの結果を生成するために使用する音声
 **TruePeak** - この結果には、測定のリセット以降の、任意のチャンネルにおけるトゥルー ピーク絶対値の最大値が含まれます。トゥルー ピークの詳細については、ITU‐R BS.1770‐2 をご覧ください。-70 から 12.04 dBTP の範囲の値が考えられます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="音声および SMS に Twilio を使用する方法 (PHP) - Azure" 
+	pageTitle="音声および SMS に Twilio を使用する方法 (PHP) | Microsoft Azure" 
 	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは PHP で記述されています。" 
 	documentationCenter="php" 
 	services="" 
@@ -267,4 +267,4 @@ Azure で PHP に基づいて Twilio を使用する方法の詳細について�
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

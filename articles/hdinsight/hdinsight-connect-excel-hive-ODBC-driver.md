@@ -54,26 +54,29 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 
 5. 次の値を入力または選択します。
 
-	<table border="1">
-<tr><td><strong>プロパティ</strong></td><td><strong>説明</strong></td></tr>
-<tr><td>データ ソース名</td><td>データ ソースに名前を付けます。</td></tr>
-<tr><td>ホスト</td><td><HDInsightClusterName>.azurehdinsight.net を入力します。たとえば、「myHDICluster.azurehdinsight.net」と入力します。</td></tr>
-<tr><td>Port</td><td><strong>443</strong> を使用します(このポートは 563 から 443 に変更されました)。</td></tr>
-<tr><td>データベース</td><td><strong>既定のデータベース</strong>を使用します。</td></tr>
-<tr><td>Hive サーバーの種類</td><td><strong>Hive Server 2</strong> を選択します。</td></tr>
-<tr><td>メカニズム</td><td><strong>Azure HDInsight サービス</strong>を選択します。</td></tr>
-<tr><td>HTTP パス</td><td>空白のままにします。</td></tr>
-<tr><td>ユーザー名</td><td>HDInsight クラスター ユーザーのユーザー名を入力します。これは、クラスターのプロビジョニング処理中に作成されるユーザー名です。簡易作成オプションを使用する場合、既定のユーザー名は <strong>admin</strong> です。</td></tr>
-<tr><td>パスワード</td><td>HDInsight クラスター ユーザーのパスワードを入力します。</td></tr>
-</table>**[詳細オプション]** をクリックするときに、注意する必要のある重要なパラメーターがいくつかあります。
+プロパティ|説明
+---|---
+データ ソース名|データ ソースに名前を付けます。
+ホスト|<HDInsightClusterName>.azurehdinsight.net を入力します。たとえば、「myHDICluster.azurehdinsight.net」と入力します。
+ポート|<strong>443</strong> を使用します。(このポートは 563 から 443 に変更されました)。
+データベース|<strong>既定値</strong>を使用します。
+Hive サーバーの種類|<strong>Hive Server 2</strong> を選択します。
+メカニズム|<strong>Azure HDInsight サービス</strong>を選択します。
+HTTP パス|空白のままにします。
+ユーザー名|HDInsight クラスター ユーザーのユーザー名を入力します。これは、クラスターのプロビジョニング処理中に作成されるユーザー名です。簡易作成オプションを使用する場合、既定のユーザー名は <strong>admin</strong> です。
+パスワード|HDInsight クラスター ユーザーのパスワードを入力します。
+</table>
 
-	<table border="1">
-<tr><td>ネイティブ クエリの使用</td><td>これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。純粋な HiveQL ステートメントを送信していることを確認している場合にのみ使用します。SQL Server または Azure SQL Database に接続している場合は、オフのままにします。</td></tr>
-<tr><td>ブロック単位でフェッチされた行</td><td>大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。</td></tr>
-<tr><td>既定の文字列の長さ、<br/>
-		バイナリ列の長さ、 <br/>
-		10 進数の列の桁数</td><td>データ型の長さおよび精度は、データが返される方法に影響する可能性があります。精度が失われたり、切り捨てられたりするために間違った情報が返されます。</td></tr>
-</table>![詳細オプション][img-HiveOdbc-DataSource-AdvancedOptions]
+**[詳細オプション]** をクリックするときに、注意する必要のある重要なパラメーターがいくつかあります。
+
+パラメーター|説明
+---|---
+ネイティブ クエリの使用|これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。純粋な HiveQL ステートメントを送信していることを確認している場合にのみ使用します。SQL Server または Azure SQL Database に接続している場合は、オフのままにします。
+ブロック単位でフェッチされた行|大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。
+既定の文字列の列の長さ、バイナリ列の長さ、10 進数の列の桁数|データ型の長さおよび精度は、データが返される方法に影響する可能性があります。精度が失われたり、切り捨てられたりするために間違った情報が返されます。
+
+
+	![Advanced options][img-HiveOdbc-DataSource-AdvancedOptions]
 
 6. **[テスト]** をクリックして、データ ソースをテストします。データ ソースが正しく構成された場合、*テストは無事に完了しました。*と表示されます。
 7. **[OK]** をクリックして [テスト] ダイアログを閉じます。これで新しいデータ ソースが **[ODBC データ ソース アドミニストレーター]** ダイアログに表示されます。
@@ -106,7 +109,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 
 ##<a id="nextsteps"></a>次のステップ
 
-この記事では、Microsoft Hive ODBC ドライバーを使用して HDInsight サービスから Excel にデータを取得する方法を学習しました。同様に、SQL データベースに HDInsight サービスからデータを取得することもできます。また、HDInsight サービスにデータをアップロードすることもできます。詳細については、次を参照してください。
+この記事では、Microsoft Hive ODBC ドライバーを使用して HDInsight サービスから Excel にデータを取得する方法を学習しました。同様に、SQL Database に HDInsight サービスからデータを取得することもできます。また、HDInsight サービスにデータをアップロードすることもできます。詳細については、次を参照してください。
 
 - [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]
 - [HDInsight へのデータのアップロード][hdinsight-upload-data]
@@ -127,4 +130,4 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 [img-hdi-simbahiveodbc-excel-connectionproperties]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveODBC.Excel.ConnectionProperties1.png
 [img-hdi-simbahiveodbc.excel.dataconnection]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

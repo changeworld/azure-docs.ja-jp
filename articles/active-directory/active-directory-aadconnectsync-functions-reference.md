@@ -382,7 +382,7 @@ Azure Active Directory Sync では、同期時の属性値を操作するため�
 - value: DateTime 形式の値 <br>
 - format: 変換する形式を表す文字列。
  
-**解説:** <br> 形式に有効な値は以下で見つけることができます。[ユーザー定義の日付/時刻書式 (Format 関数)](http://msdn2.microsoft.com/library/73ctwf33(VS.90).aspx)
+**解説:** <br> 形式に有効な値は以下で見つけることができます。[[ユーザー定義の日付/時刻書式 (Format 関数)]](http://msdn2.microsoft.com/library/73ctwf33(VS.90).aspx)
  
 **例:** <br>
  
@@ -641,7 +641,7 @@ CGuid() が成功するかどうかを判断するために使用します。
  
 **構文:** <br> `str LCase(str value)`
  
-**例:** <br> `LCase(“TeSt”)` <br> "test" を返します。
+**例:** <br> `LCase(“TeSt”)` <br> " test" を返します。
  
  
 
@@ -656,7 +656,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - string: 返される文字を含む文字列 <br>
 - NumChars: 文字列の左端から数えて返される文字数を指定する数値
  
-**解説:** <br> 文字列内の最初の numChars 文字分の文字を含む文字列。
+**解説:** <br> 文字列内の最初の numChars 文字を含む文字列。
 
 - numChars = 0 の場合、空の文字列を返します。
 - numChars < 0 の場合、入力文字列を返します。
@@ -688,7 +688,7 @@ CGuid() が成功するかどうかを判断するために使用します。
  
 **構文:** <br> `str LTrim(str value)`
  
-**例:** <br> `LTrim(“ Test ”)` <br> "Test " を返します。
+**例:** <br> `LTrim(“ Test ”)` <br> " Test" を返します。
  
  
 
@@ -696,7 +696,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 ----------
 ### Mid
 
-**説明:** <br> Mid 関数は文字列の指定した位置から数えて、指定した文字数分の文字を返します。
+**説明:** <br> Mid 関数は文字列の指定した位置から数えて、指定した文字数を返します。
  
 **構文:** <br> `str Mid(str string, num start, num NumChars)`
 
@@ -770,7 +770,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - 文字列の長さが length 未満の場合、padCharacter が埋め込まれた文字列が含まれる、必要な長さの新しい文字列が返されます。
 - string が null の場合、この関数は空の文字列を返します。
 
-**例:** <br> `PadLeft(“User”, 10, “0”)` <br> "000000User" を返します。
+**例:** <br> `PadLeft(“User”, 10, “0”)` <br> “000000User” を返します。
  
  
 
@@ -796,7 +796,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - string が null の場合、この関数は空の文字列を返します。
  
 
-**例:** <br> `PadRight(“User”, 10, “0”)` <br> "User000000" を返します。
+**例:** <br> `PadRight(“User”, 10, “0”)` <br> “User000000” を返します。
  
  
 
@@ -932,13 +932,13 @@ CGuid() が成功するかどうかを判断するために使用します。
  
 **構文:** <br> `str RTrim(str value)`
 
-**例:** <br> `RTrim(“ Test ”)` <br> " Test" を返します。
+**例:** <br> `RTrim(“ Test ”)` <br> "Test" を返します。
 
 
 
 
 ----------
-### 列の
+### Split
 
 **説明:** <br> Split 関数は区切り記号で区切られた文字列を受け取り、複数値の文字列にします。
  
@@ -1058,4 +1058,4 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
  
 <!--Image references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

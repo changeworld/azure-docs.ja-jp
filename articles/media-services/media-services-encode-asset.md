@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure メディア エンコーダーを使用してオンデマンド コンテンツをエンコードする" 
+	pageTitle="Azure Media Services を使用してオンデマンド コンテンツをエンコードする" 
 	description="このトピックでは、Media Services でのオンデマンド コンテンツのエンコードの概要について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/23/2015" 
+	ms.date="08/11/2015"  
 	ms.author="juliako"/>
 
-#Azure メディア エンコーダーを使用してオンデマンド コンテンツをエンコードする
+#Azure Media Services を使用してオンデマンド コンテンツをエンコードする
 
 このトピックは、[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)の一部です。
 
@@ -48,7 +48,9 @@ Media Services は、次のエンコーダーをサポートしてます。
 
 **Azure Media Encoder** は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。実際の Azure Media Encoder のプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
 
-**Azure の管理ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
+###例
+
+**Azure 管理ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
  
 [AZURE.INCLUDE [media-services-selector-encode](../../includes/media-services-selector-encode.md)]
 
@@ -67,18 +69,21 @@ Media Services は、次のエンコーダーをサポートしてます。
 
 [メディア エンコーダー プレミアム ワークフローでサポートされる形式](media-services-premium-workflow-encoder-formats.md): **メディア エンコーダー プレミアム ワークフロー**でサポートされるファイルの形式とコーデックについて説明します。
 
+### ワークフロー デザイナー
+
 **メディア エンコーダー プレミアム ワークフロー**は複雑なワークフローを使用して構成されています。ワークフローのファイルは、[ワークフロー デザイナー](media-services-workflow-designer.md) ツールを使用して作成します。
 
 既定のワークフロー ファイルは[こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手できます。フォルダーにはこれらのファイルの説明も含まれています。
 
-**.NET** を使用して**メディア エンコーダー プレミアム ワークフロー**でエンコードします。詳細については、「[メディア エンコーダー プレミアム ワークフローでの高度なエンコード](media-services-encode-with-premium-workflow.md)」を参照してください。
+###例
+**.NET** を使用して**メディア エンコーダー プレミアム ワークフロー**でエンコードします。詳細については、「[メディア エンコーダー プレミアム ワークフローでの高度なエンコード](media-services-encode-with-premium-workflow.md)」をご覧ください。
  
 
 ##<a id="compare_encoders"></a>エンコーダーの比較
 
 ###<a id="billing"></a>各エンコーダーで使用される課金メーター
 
-メディア プロセッサ名|適用される料金|メモ
+メディア プロセッサ名|適用される価格|メモ
 ---|---|---
 **Microsoft Azure Media Encoder** |従来のエンコーダー|エンコード タスクは、[こちら][1]の「従来のエンコーダー」列に指定されている料金で、入力資産と出力資産のサイズ合計 (GB) に従って課金されます。
 **Azure Media Encoder** |エンコーダー|エンコード タスクは、[こちら][1]の「エンコーダー」列に指定されている料金で、出力資産のサイズ (GB) に従って課金されます。
@@ -191,4 +196,4 @@ Windows Media オーディオ|あり|あり|いいえ
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

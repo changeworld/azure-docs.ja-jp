@@ -13,13 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/13/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 
 # Media Services REST API を使用して Media Services アカウントに接続する
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
+> [AZURE.SELECTOR]
+- [.NET](media-services-dotnet-connect_programmatically.md)
+- [REST](media-services-rest-connect_programmatically.md)
 
 このトピックでは、Media Services REST API でプログラミングしている場合に、Microsoft Azure Media Services にプログラムで接続する方法について説明します。
 
@@ -93,7 +95,7 @@ Media Services アカウントの AccountKey は、アクセス トークン要�
 	}
 	
 
->[AZURE.NOTE]"access\_token " と "expires\_in " の値は外部ストレージに保存することをお勧めします。後でそのストレージからトークンのデータを取り出し、Media Services REST API コールで再利用できます。これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
+>[AZURE.NOTE]"access\_token " と "expires\_in " の値は外部ストレージにキャッシュすることをお勧めします。後でそのストレージからトークンのデータを取り出し、Media Services REST API コールで再利用できます。これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
 
 アクセス トークンの "expires\_in" 値を確認し、必要に応じて新しいトークンで REST API コールを更新してください。
 
@@ -167,4 +169,4 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 
 <!-- URLs. -->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

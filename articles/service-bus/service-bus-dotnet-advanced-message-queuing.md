@@ -1,5 +1,5 @@
 <properties 
-	pageTitle=".NET Service Bus API で AMQP 1.0 を使用する方法 - Azure" 
+	pageTitle=".NET Service Bus API で AMQP 1.0 を使用する方法 | Microsoft Azure" 
 	description="Azure .NET Service Bus API で Advanced Message Queuing Protodol (AMQP) 1.0 を使用する方法について説明します。" 
 	services="service-bus" 
 	documentationCenter=".net" 
@@ -308,4 +308,4 @@ Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語�
 * [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

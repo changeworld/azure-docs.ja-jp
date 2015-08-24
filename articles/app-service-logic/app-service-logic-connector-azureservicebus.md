@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="06/29/2015"
+   ms.date="08/09/2015"
    ms.author="andalmia"/>
 
 
@@ -36,10 +36,9 @@ Message Available | メッセージを送信
 コネクタは、ロジック アプリ内で作成することも、Azure Marketplace から直接作成することもできます。Marketplace からコネクタを作成するには、次の操作を実行します。
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
-2. **[API Apps]** を選択し、"Azure Service Bus コネクタ" を検索します。
-3. 名前、App Service プラン、その他のプロパティを入力します。
-<br/>
-![][1]
+2. "Azure Service Bus コネクタ" を検索して選択し、**[作成]** を選択します。
+3. 名前、App Service プラン、その他のプロパティを入力します。  
+	![][1]
 
 4. 次のパッケージの設定を入力します。
 
@@ -51,39 +50,32 @@ Message Available | メッセージを送信
 
 5. **[作成]** をクリックします。
 
-コネクタを作成すると、同じリソース グループのロジック アプリに追加できます。
-
 ## ロジック アプリでの Azure Service Bus コネクタの使用
 コネクタが作成されたら、ロジック アプリのトリガーやアクションとして Azure Service Bus コネクタを使用できます。これを行うには、次の手順を実行します。
 
-1.	新しいロジック アプリを作成し、Azure Service Bus コネクタが存在する同じリソース グループを選択します。
-<br/>
-![][2]
+1.	新しいロジック アプリを作成し、Azure Service Bus コネクタが存在する同じリソース グループを選択します。  
+	![][2]
 
-2.	[トリガーとアクション] を開き、Logic Apps デザイナーを開いてワークフローを構成します。
-<br/>
-![][3]
+2.	[トリガーとアクション] を開き、Logic Apps デザイナーを開いてワークフローを構成します。  
+	![][3]
 
-3. Azure Service Bus コネクタが右側のギャラリーの [このリソース グループの API Apps] セクションに表示されます。
-<br/>
-![][4]
+3. Azure Service Bus コネクタが右側のギャラリーの [このリソース グループの API Apps] セクションに表示されます。  
+	![][4]
 
 4. [Azure Service Bus コネクタ] をクリックして、Azure Service Bus コネクタをエディターにドロップできます。
 
-5.	これで、ワークフローで Azure Service Bus コネクタを使用できるようになりました。今後は、Azure Service Bus トリガー ("Message Available") を使って取得したメッセージを、フローの他のアクションで使用できます。
-<br/>
-![][5]
-<br/>
-![][6]
+5.	これで、ワークフローで Azure Service Bus コネクタを使用できるようになりました。今後は、Azure Service Bus トリガー ("Message Available") を使って取得したメッセージを、フローの他のアクションで使用できます。  
+	![][5]  
 
-Azure Service Bus の "Message Available" アクションを使用することもできます。
-<br/>
+	![][6]
+
+Azure Service Bus の "Send Message" アクションを使用することもできます。
 ![][7]
-<br/>
+
 ![][8]
 
 ## コネクタでできること
-コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
 REST API を使用した API Apps を作成します。[コネクタと API Apps のリファレンス](http://go.microsoft.com/fwlink/p/?LinkId=529766)に関するページを参照してください。
 
@@ -100,4 +92,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [7]: ./media/app-service-logic-connector-azureservicebus/img7.PNG
 [8]: ./media/app-service-logic-connector-azureservicebus/img8.PNG
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

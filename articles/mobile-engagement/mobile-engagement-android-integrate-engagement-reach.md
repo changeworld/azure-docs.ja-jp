@@ -3,7 +3,7 @@
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
-	authors="kpiteira" 
+	authors="piyushjo" 
 	manager="dwrede" 
 	editor="" />
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="02/12/2015" 
-	ms.author="kapiteir" />
+	ms.date="08/10/2015" 
+	ms.author="piyushjo" />
 
 #Engagement Reach を Android に統合する方法
 
@@ -247,7 +247,7 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 
 通知のカテゴリ ハンドラーを登録するには、アプリケーションが初期化される際に呼び出しを追加する必要があります。
 
-> [AZURE.IMPORTANT] 先に進む前に、「Engagement を Android に統合する方法」トピックで、android:process 属性 \<android-sdk-engagement-process\> に関する警告を確認してください。
+> [AZURE.IMPORTANT]先に進む前に、「Engagement を Android に統合する方法」トピックで、android:process 属性 <android-sdk-engagement-process> に関する警告を確認してください。
 
 次の例では、前述の警告について把握しており、`EngagementApplication` のサブクラスを使用していることを前提としています。
 
@@ -647,4 +647,4 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 [Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

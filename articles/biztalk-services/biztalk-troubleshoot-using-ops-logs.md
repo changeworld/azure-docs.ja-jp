@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="操作ログを用いた BizTalk Services のトラブルシューティング | Azure" 
+	pageTitle="操作ログを用いた BizTalk Services のトラブルシューティング | Microsoft Azure" 
 	description="操作ログを使用して BizTalk Services のトラブルシューティングを行います。MABS、WABS" 
 	services="biztalk-services" 
 	documentationCenter="" 
@@ -67,4 +67,4 @@ PurgeBackupBizTalkService | 保持期間を超えた BizTalk サービスのバ�
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

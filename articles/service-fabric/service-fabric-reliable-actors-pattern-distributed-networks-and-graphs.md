@@ -1,6 +1,6 @@
 <properties
-   pageTitle="高信頼アクターの分散ネットワークおよびグラフの設計パターン"
-   description="Service Fabric 高信頼アクターを使用して、分散ネットワークやグラフとしてアプリケーションをモデル化する方法に関する設計パターン"
+   pageTitle="Azure Service Fabric アクターの分散ネットワークおよびグラフの設計パターン"
+   description="Service Fabric アクターを使用して、分散ネットワークやグラフとしてアプリケーションをモデル化する方法に関する設計パターン"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/05/2015"
+   ms.date="08/11/2015"
    ms.author="claudioc"/>
 
 # 高信頼アクターの設計パターン: 分散ネットワークおよびグラフ
@@ -224,4 +224,4 @@ public Task PublishMessageAsync(long participantId, string message)
 [1]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch1.png
 [2]: ./media/service-fabric-reliable-actors-pattern-distributed-networks-and-graphs/distributedNetworks_arch2.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

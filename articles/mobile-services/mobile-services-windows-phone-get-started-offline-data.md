@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Mobile Services でのオフライン データの使用 (Windows Phone) | モバイル デベロッパー センター" 
+	pageTitle="Mobile Services でのオフライン データの使用 (Windows Phone) | Microsoft Azure" 
 	description="Azure Mobile Services を使用して、Windows Phone アプリケーションのオフライン データを同期する方法を説明します。" 
 	documentationCenter="mobile-services" 
 	authors="lindydonna" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/16/2015" 
+	ms.date="08/08/2015" 
 	ms.author="wesmc;donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
@@ -245,8 +245,6 @@ Azure Mobile Services のオフライン機能を使用すると、モバイル 
 
 ##概要
 
-##概要
-
 [AZURE.INCLUDE [mobile-services-offline-summary-csharp](../../includes/mobile-services-offline-summary-csharp.md)]
 
 ## 次のステップ
@@ -291,4 +289,4 @@ Azure Mobile Services のオフライン機能を使用すると、モバイル 
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

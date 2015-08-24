@@ -12,7 +12,7 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
-	ms.topic="article"
+	ms.topic="hero-article"
 	ms.date="06/09/2015"
 	ms.author="tomfitz"/>
 
@@ -212,4 +212,4 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [発行の設定をインポートする方法]: /develop/php/how-to-guides/powershell-cmdlets/#ImportPubSettings
 [Azure にクラウド サービスを展開する方法]: /develop/php/how-to-guides/powershell-cmdlets/#Deploy
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

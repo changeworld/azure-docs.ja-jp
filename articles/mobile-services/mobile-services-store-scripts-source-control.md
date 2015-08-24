@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ソース管理へのプロジェクト コードの保存 - Azure Mobile Services" 
+	pageTitle="ソース管理へのプロジェクトのコードの格納 | Microsoft Azure" 
 	description="コンピューターのローカル Git リポジトリにサーバー スクリプト ファイルとモジュールを格納する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -160,4 +160,4 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [node-uuid]: https://npmjs.org/package/node-uuid
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

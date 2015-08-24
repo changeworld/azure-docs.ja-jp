@@ -1,22 +1,19 @@
-<properties writer="kathydav" editor="tysonn" manager="timlt" />
 
+仮想マシンに接続されたデータ ディスクが不要になった場合、そのディスクは簡単に切断できます。そうすれば、ディスクは仮想マシンから削除されますが、ストレージからは削除されません。再びディスク上の既存のデータを使用する場合は、同じ仮想マシンや別の仮想マシンに再接続できます。
 
-When you no longer need a data disk that's attached to a virtual machine, you can easily detach it. This removes the disk from the virtual machine, but doesn't remove it from storage. If you want to use the existing data on the disk again, you can reattach it to the same virtual machine, or another one.  
+> [AZURE.NOTE]Azure の仮想マシンでは、オペレーティング システム ディスク、ローカル一時ディスク、オプションのデータ ディスクなど、さまざまな種類のディスクが使用されます。仮想マシンのデータを格納するうえで、データ ディスクはお勧めの手段です。詳細については、「[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](../../virtual-machines-disks-vhds.md)」を参照してください。仮想マシンを削除しない限り、オペレーティング システム ディスクをデタッチすることはできません。
 
-> [AZURE.NOTE] A virtual machine in Azure uses different types of disks -- an operating system disk, a local temporary disk, and optional data disks. Data disks are the recommended way to store data for a virtual machine. For details, see [About Disks and VHDs for Virtual Machines](../../virtual-machines-disks-vhds.md). It's not possible to detach an operating system disk unless you also delete the virtual machine.
+## ディスクの特定
 
-## Find the disk
+仮想マシンからディスクを切断するには、まず切断するディスクの識別子である LUN 番号を確認する必要があります。そのためには、次の手順に従います。
 
-Before you can detach a disk from a virtual machine, you need to find out the LUN number, which is an identifier for the disk to be detached. To do that, follow these steps:
+1. 	Mac、Linux、および Windows の Azure CLI を開き、Azure サブスクリプションに接続します。詳細については、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../articles/xplat-cli-connect.md)」をご覧ください。
 
-1. 	Open Azure CLI for Mac, Linux, and Windows and connect to your Azure subscription. See [Connect
-    to Azure from Azure CLI](../articles/xplat-cli-connect.md) for more details.
+2.  「`azure config
+ 	mode asm`」と入力して既定の Azure サービス管理モードであることを確認します。
 
-2.  Make sure you are in Azure Service Management mode, which is the default by typing `azure config
- 	mode asm`.
-
-3. 	Find out which disks are attached to your virtual machine by using `azure vm disk list
-	<virtual-machine-name>` as follows:
+3. 	次のように `azure vm disk list
+	<virtual-machine-name>` を使用して仮想マシンに接続されているディスクを確認します。
 
 		$azure vm disk list ubuntuVMasm
 		info:    Executing command vm disk list
@@ -30,15 +27,15 @@ Before you can detach a disk from a virtual machine, you need to find out the LU
 		data:    0    30        ubuntuVMasm-76f7ee1ef0f6dddc.vhd
 		info:    vm disk list command OK
 
-4. 	Note the LUN or the **logical unit number** for the disk that you want to detach.
+4. 	切断するディスクの LUN (**論理ユニット番号**) を記録しておきます。
 
 
-## Detach the disk
+## ディスクの切断
 
-After you find the LUN number of the disk, you're ready to detach it:
+ディスクの LUN 番号がわかれば、そのディスクを切断できます。
 
-1. 	Detach the selected disk from the virtual machine by running the command `azure vm disk detach
- 	<virtual-machine-name> <LUN>` like this:
+1. 	次のように `azure vm disk detach
+ 	<virtual-machine-name> <LUN>` コマンドを実行して仮想マシンから選択したディスクを切断します。
 
 		$azure vm disk detach ubuntuVMasm 0
 		info:    Executing command vm disk detach
@@ -46,7 +43,7 @@ After you find the LUN number of the disk, you're ready to detach it:
 		+ Removing Data-Disk
 		info:    vm disk detach command OK
 
-2. 	You can check if the disk got detached by running this command:
+2. 	ディスクが切断されたかどうかは、次のコマンドを実行して確認できます。
 
 		$azure vm disk list ubuntuVMasm
 		info:    Executing command vm disk list
@@ -59,4 +56,6 @@ After you find the LUN number of the disk, you're ready to detach it:
 		data:    1    10        test.VHD
 		info:    vm disk list command OK
 
-The detached disk remains in storage but is no longer attached to a virtual machine.
+切断したディスクはストレージに残りますが、仮想マシンには接続されなくなっています。
+
+<!---HONumber=August15_HO7-->

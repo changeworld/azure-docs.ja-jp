@@ -56,45 +56,45 @@ MVC プロジェクトの場合、ウィザードは、以前にウィザード�
 
 MVC プロジェクトで Windows 認証を検出するために、ウィザードは **web.config** ファイルで `authentication` 要素を探します。
 
-```
-	&lt;configuration&gt;
-	    &lt;system.web&gt;
-	        <span style="background-color: yellow">&lt;authentication mode="Windows" /&gt;</span>
-	    &lt;/system.web&gt;
-	&lt;/configuration&gt;
-```
+<pre>
+	&lt;configuration>
+	    &lt;system.web>
+	        <span style="background-color: yellow">&lt;authentication mode="Windows" /></span>
+	    &lt;/system.web>
+	&lt;/configuration>
+</pre>
 
 Web API プロジェクトで Windows 認証を検出するために、ウィザードはプロジェクトの **.csproj** ファイルで `IISExpressWindowsAuthentication` 要素を探します。
 
-```
-	&lt;Project&gt;
-	    &lt;PropertyGroup&gt;
-	        <span style="background-color: yellow">&lt;IISExpressWindowsAuthentication&gt;enabled&lt;/IISExpressWindowsAuthentication&gt;</span>
+<pre>
+	&lt;Project>
+	    &lt;PropertyGroup>
+	        <span style="background-color: yellow">&lt;IISExpressWindowsAuthentication>enabled&lt;/IISExpressWindowsAuthentication></span>
 	    &lt;/PropertyGroup>
-	&lt;/Project&gt;
-```
+	&lt;/Project>
+</pre>
 
 個々のユーザー アカウント認証を検出するために、ウィザードは **Packages.config** ファイルで package 要素を探します。
 
-```
-	&lt;packages&gt;
-	    <span style="background-color: yellow">&lt;package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /&gt;</span>
-	&lt;/packages&gt;
-```
+<pre>
+	&lt;packages>
+	    <span style="background-color: yellow">&lt;package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /></span>
+	&lt;/packages>
+</pre>
 
 組織アカウント認証の古い形式を検出するために、ウィザードは **web.config** ファイルで次の要素を探します:
 
-```
-	&lt;configuration&gt;
-	    &lt;appSettings&gt;
-	        <span style="background-color: yellow">&lt;add key="ida:Realm" value="***" /&gt;</span>
-	    &lt;/appSettings&gt;
-	&lt;/configuration&gt;
-```
+<pre>
+	&lt;configuration>
+	    &lt;appSettings>
+	        <span style="background-color: yellow">&lt;add key="ida:Realm" value="***" /></span>
+	    &lt;/appSettings>
+	&lt;/configuration>
+</pre>
 
 認証の種類を変更するには、互換性のない認証の種類を削除して、再度ウィザードを実行します。
 
 詳細については、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

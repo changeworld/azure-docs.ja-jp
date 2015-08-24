@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.date="08/13/2015" 
 	ms.author="mimig"/>
 
 
@@ -42,13 +42,13 @@ DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント
 DocumentDB は、拡張性、パフォーマンス、およびスキーマフリー データでのクエリを実行できることが重要である新しい Web アプリケーションやモバイル アプリケーションに適しています。DocumentDB は、迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。ユーザーが生成したコンテンツとデータを管理するアプリケーションは、[DocumentDB の一般的な使用事例](documentdb-use-cases.md)です。
 
 ### DocumentDB のスケール制限とは何ですか?
-ストレージおよびスループットの観点では、DocumentDB アカウントはコレクションを追加して拡張することができます。コレクションの数に対するサービスのクォータについては、「[DocumentDB の制限](documentdb-limits.md)」を参照してください。追加のコレクションが必要な場合は、[サポートに連絡して](documentdb-increase-limits.md)、アカウント クォータの増加を依頼してください。
+ストレージおよびスループットの観点では、DocumentDB アカウントはコレクションを追加してスケールすることができます。コレクションの数に対するサービスのクォータについては、「[DocumentDB の制限](documentdb-limits.md)」を参照してください。追加のコレクションが必要な場合は、[サポートに連絡して](documentdb-increase-limits.md)、アカウント クォータの増加を依頼してください。
 
 ### Microsoft Azure DocumentDB の料金はいくらですか?
-詳細については、「[DocumentDB 料金](http://go.microsoft.com/fwlink/p/?LinkID=402317)」ページを参照してください。DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの[パフォーマンス レベル](documentdb-performance-levels.md)によって決まります。
+詳細については、「[DocumentDB 価格](http://go.microsoft.com/fwlink/p/?LinkID=402317)」ページを参照してください。DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの[パフォーマンス レベル](documentdb-performance-levels.md)によって決まります。
 
 ### 無料試用版は使用できますか?
-Azure を初めて使用する場合は、[Azure 無料試用版](https://azure.microsoft.com/ja-jp/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。MSDN サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?WT.mc_id=azurebg_US_sem_bing_BR_BRMSDN_Nontest_MSDN_msdnazure&WT.srch=1)ですべての Azure サービスを使用できます。クレジット カードを使用しないで 30 日間無料 DocumentDB を試してみる場合は、件名行を「Documentation FAQ, Azure Trial」として askdocdb@microsoft.com に電子メールを送信すると、提供が継続している間はプロモーション コードで対応します。
+Azure を初めて使用する場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。MSDN サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。クレジット カードを使用せずに 30 日間無料 DocumentDB を試してみる場合は、件名行を "Documentation FAQ, Azure Trial" として askdocdb@microsoft.com に電子メールをお送りください。提供が継続している間はプロモーション コードで対応させていただきます。
 
 ### DocumentDB に関するその他のヘルプはどのようにして得られますか?
 ヘルプが必要な場合は、[Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb) または [Azure DocumentDB MSDN デベロッパー フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)を利用するか、または [DocumentDB エンジニアリング チームとの 1 対 1 のチャット](http://www.askdocdb.com/)をスケジュールしてください。DocumentDB の最新のニュースと機能については、[Twitter](https://twitter.com/DocumentDB) をフォローしてください。
@@ -67,7 +67,7 @@ Microsoft Azure DocumentDB は、[Azure プレビュー ポータル][azure-port
 ### コレクションとは何ですか?
 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。クエリおよびトランザクションの範囲としてコレクションが指定されます。多種多様な JSON ドキュメントのセットを 1 つのコレクション内に格納し、自動的にインデックスを作成することができます。
 
-コレクションも DocumentDB の課金エンティティです。毎月の DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの[パフォーマンス レベル](documentdb-performance-levels.md)によって決まります。詳細については、「[DocumentDB 料金](https://azure.microsoft.com/ja-jp/pricing/details/documentdb/)」を参照してください。
+コレクションも DocumentDB の課金エンティティです。毎月の DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの[パフォーマンス レベル](documentdb-performance-levels.md)によって決まります。詳細については、「[DocumentDB 価格](https://azure.microsoft.com/pricing/details/documentdb/)」を参照してください。
 
 ### データベースとコレクションに制限はありますか?
 各コレクションには、いずれかのサポートされる[パフォーマンス レベル](documentdb-performance-levels.md)でデータベース ストレージとプロビジョニング済みスループットが割り当てられています。サービスで管理される、各リソースに対するクォータも用意されています。すべての制限については、「[DocumentDB の制限](documentdb-limits.md)」を参照してください。アカウント制限の変更を要求する方法については、「[DocumentDB アカウント制限の引き上げを要求する](documentdb-increase-limits.md)」を参照してください。
@@ -111,4 +111,4 @@ DocumentDB にドキュメントを一括挿入するには 3 つの方法があ
 [query]: documentdb-sql-query.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

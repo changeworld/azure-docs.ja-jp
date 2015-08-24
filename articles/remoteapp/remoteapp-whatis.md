@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="RemoteApp とは" 
+	pageTitle="Azure RemoteApp とは" 
 	description="Azure RemoteApp について説明します。" 
 	services="remoteapp" 
 	documentationCenter="" 
@@ -12,8 +12,8 @@
 	ms.workload="compute" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/30/2015" 
+	ms.topic="get-started-article" 
+	ms.date="08/05/2015" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp とは
@@ -94,4 +94,4 @@ Azure RemoteApp は、Windows および Windows RT の RemoteApp クライアン
 - [Azure RemoteApp よく寄せられる質問](remoteapp-faq.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Socket.io を使用する Node.js アプリケーション - Azure チュートリアル" 
+	pageTitle="Socket.io を使用する Node.js アプリケーション | Microsoft Azure" 
 	description="Azure でホストされる Node.js アプリケーションで Socket.IO を使用する方法を説明します。" 
 	services="cloud-services" 
 	documentationCenter="nodejs" 
@@ -129,11 +129,11 @@ server.js の変更内容を保存した後、次の手順に従って必要な�
 
 これで、アプリケーションは Azure で実行されるようになり、Socket.IO を使用する複数のクライアント間でチャット メッセージを中継できます。
 
-> [AZURE.NOTE]わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。つまり、クラウド サービスによって 2 つのワーカー ロール インスタンスが作成された場合、ユーザーは同じワーカー ロール インスタンスに接続された他のユーザーとのみチャットすることができます。複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、サービス バスなどのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。たとえば、[Azure SDK for Node.js GitHub リポジトリ](https://github.com/WindowsAzure/azure-sdk-for-node)にある Service Bus キューおよびトピックの使用例を参照してください。
+> [AZURE.NOTE]わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。つまり、クラウド サービスによって 2 つの worker ロール インスタンスが作成された場合、ユーザーは同じ worker ロール インスタンスに接続された他のユーザーとのみチャットすることができます。複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、サービス バスなどのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。たとえば、[Azure SDK for Node.js GitHub リポジトリ](https://github.com/WindowsAzure/azure-sdk-for-node)にある Service Bus キューおよびトピックの使用例を参照してください。
 
 ##次のステップ
 
-このチュートリアルでは、Azure Cloud Services でホストされる基本的なチャット アプリケーションを作成する方法を説明しました。Azure Websites でこのアプリケーションをホストする方法については、「[Azure Websites で Socket.IO を使用する Node.js チャット アプリケーションを構築する][chatwebsite]」を参照してください。
+このチュートリアルでは、Azure Cloud Services でホストされる基本的なチャット アプリケーションを作成する方法を説明しました。Azure Websites でこのアプリケーションをホストする方法については、「[Azure Web サイトで Socket.IO を使用する Node.js チャット アプリケーションを構築する][chatwebsite]」を参照してください。
 
   [chatwebsite]: /develop/nodejs/tutorials/website-using-socketio/
 
@@ -158,4 +158,4 @@ server.js の変更内容を保存した後、次の手順に従って必要な�
   
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

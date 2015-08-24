@@ -24,12 +24,12 @@ Data Factory には、以下に示すさまざまなデータ ストア間の[�
 
 | **ソース** | **シンク** |
 | ------ | ---- |
-| [Azure BLOB](data-factory-azure-blob-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
+| [Azure BLOB](data-factory-azure-blob-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB､オンプレミスのファイル システム |
 | [Azure テーブル](data-factory-azure-table-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
 | [Azure SQL Dtabase](data-factory-azure-sql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
 | [Azure DocumentDB](data-factory-azure-documentdb-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database |
 | [IaaS 上の SQL Server](data-factory-sqlserver-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
-| [オンプレミスのファイル システム](data-factory-onprem-file-system-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
+| [オンプレミスのファイル システム](data-factory-onprem-file-system-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server、オンプレミスのファイル システム |
 | [オンプレミスの SQL Server](data-factory-sqlserver-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
 | [オンプレミスの Oracle Database](data-factory-onprem-oracle-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
 | [オンプレミスの MySQL データベース](data-factory-onprem-mysql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
@@ -93,4 +93,4 @@ Data Gateway には次の機能が備わっています。
 
 コピー アクティビティの場合、**typeProperties** セクションはソースとシンクの種類によって異なります。上に示した各データ ストア固有のページで、データ ストアの種類に固有のこれらのプロパティが説明されています。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

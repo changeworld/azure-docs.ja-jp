@@ -1,41 +1,51 @@
 <properties
-	pageTitle="Microsoft Azure Backup - Azure PowerShell を使用した DPM バックアップのデプロイと管理| Microsoft Azure"
-	description="Azure PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明"
+	pageTitle="Microsoft Azure Backup - PowerShell を使用した DPM バックアップのデプロイと管理| Microsoft Azure"
+	description="PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明"
 	services="backup"
 	documentationCenter=""
 	authors="Jim-Parker"
 	manager="jwhit"
 	editor=""/>
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/23/2015"
-	ms.author="jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/11/2015" ms.author="jimpark"; "aashishr"/>
 
 
-# Azure PowerShell を使用して Data Protection Manager (DPM) サーバー用に Microsoft Azure Backup をデプロイおよび管理する手順
-この記事では、Azure PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
+# PowerShell を使用して Data Protection Manager (DPM) サーバー用に Microsoft Azure Backup をデプロイおよび管理する手順
+この記事では、PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
-## Azure PowerShell 環境のセットアップ
-Azure PowerShell を使用して Data Protection Manager から Azure へのバックアップを管理する前に、Azure PowerShell に正しい環境があることを確認してください。Azure PowerShell セッションの開始時に、必ず次のコマンドレットを実行して適切なモジュールをインポートし、DPM コマンドレットを適切に参照できるようにしてください。
+## PowerShell 環境のセットアップ
+PowerShell を使用して Data Protection Manager から Azure へのバックアップを管理する前に、PowerShell に正しい環境があることを確認してください。PowerShell セッションの開始時に、必ず次のコマンドレットを実行して適切なモジュールをインポートし、DPM コマンドレットを適切に参照できるようにしてください。
 
 ```
 PS C:\> & "C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin\DpmCliInitScript.ps1"
 
 Welcome to the DPM Management Shell!
 
-Full list of cmdlets: Get-Command Only DPM cmdlets: Get-DPMCommand Get general help: help Get help for a cmdlet: help <cmdlet-name> or <cmdlet-name> -? Get definition of a cmdlet: Get-Command <cmdlet-name> -Syntax Sample DPM scripts: Get-DPMSampleScript
+Full list of cmdlets: Get-Command 
+Only DPM cmdlets: Get-DPMCommand 
+Get general help: help 
+Get help for a cmdlet: help <cmdlet-name> or <cmdlet-name> -? 
+Get definition of a cmdlet: Get-Command <cmdlet-name> -Syntax 
+Sample DPM scripts: Get-DPMSampleScript
 ```
 
 ## セットアップと登録
-### DPM サーバーへの Microsoft Azure Backup エージェントのインストール
-Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)から入手することができます。インストーラーを、*C:\\Downloads* などの、簡単にアクセスできる場所に保存します。
 
-エージェントをインストールするには、**DPM サーバー**の管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
+### バックアップ コンテナーの作成
+**New-AzureBackupVault** コマンドレットを使用して、新しいバックアップ コンテナーを作成できます。バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
+
+```
+PS C:\> New-AzureResourceGroup –Name “test-rg” –Region “West US”
+PS C:\> $backupvault = New-AzureBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GRS
+```
+
+**Get-AzureBackupVault** コマンドレットを使用して、特定のサブスクリプション内のすべてのバックアップ コンテナーの一覧を取得できます。
+
+
+### DPM サーバーへの Microsoft Azure Backup エージェントのインストール
+Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)またはバックアップ コンテナーの [ダッシュボード] ページから入手することができます。インストーラーを、*C:\\Downloads* などの、簡単にアクセスできる場所に保存します。
+
+エージェントをインストールするには、**DPM サーバー**の管理者特権の PowerShell コンソールで、次のコマンドを実行します。
 
 ```
 PS C:\> MARSAgentInstaller.exe /q
@@ -73,13 +83,22 @@ PS C:\> MARSAgentInstaller.exe /?
 Microsoft Azure Backup サービスへの登録を実行する前に、[前提条件](backup-azure-dpm-introduction.md)が満たされていることを確認する必要があります。前提条件は、以下のとおりです。
 
 - 有効な Azure サブスクリプションがあること
-- バックアップ コンテナーの作成
-- コンテナーの資格情報をダウンロードし、アクセスしやすい場所 (*C:\\Downloads* など) に保管していること。コンテナーの資格情報ファイルは、わかりやすい名前に変更することもできます。
+- バックアップ コンテナーがあること
+
+コンテナーの資格情報をダウンロードするには、Azure PowerShell コンソールで **Get-AzureBackupVaultCredentials** コマンドレットを実行し、*C:\Downloads* などのアクセスしやすい場所に保管します。
+
+```
+PS C:\> $credspath = "C:"
+PS C:\> $credsfilename = Get-AzureBackupVaultCredentials -Vault $backupvault -TargetLocation $credspath
+PS C:\> $credsfilename
+f5303a0b-fae4-4cdb-b44d-0e4c032dde26_backuprg_backuprn_2015-08-11--06-22-35.VaultCredentials
+```
 
 コンテナーへのマシンの登録は、[Start-DPMCloudRegistration](https://technet.microsoft.com/library/jj612787) コマンドレットを使用して実行します。
 
 ```
-PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredentialsFilePath "C:\Downloads\REGISTER.VaultCredentials"
+PS C:\> $cred = $credspath + $credsfilename 
+PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredentialsFilePath $cred
 ```
 
 これにより、"TestingServer" という名前の DPM サーバーは、Microsoft Azure Backup コンテナーに、指定されたコンテナーの資格情報を使用して登録されます。
@@ -93,7 +112,7 @@ DPM サーバーが Azure Backup 資格情報コンテナーに登録される�
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-このローカル Azure PowerShell オブジェクト ```$setting``` にすべての変更が行われ、[Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) を使用して保存するために、完全なオブジェクトが DPM および Azure Backup にコミットされます。変更が保持されていることを確認するには、```–Commit``` フラグを使用します。コミットしない限り、Azure Backup により設定が適用または使用されません。
+このローカル PowerShell オブジェクト ```$setting``` にすべての変更が行われ、[Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) コマンドレットを使用して保存するために、完全なオブジェクトが DPM および Azure Backup にコミットされます。変更が保持されていることを確認するには、```–Commit``` フラグを使用します。コミットしない限り、Azure Backup により設定が適用または使用されません。
 
 ```
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -119,7 +138,7 @@ DPM サーバーで実行されている Microsoft Azure Backup エージェン�
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
 ```
 
-上の例では、ステージング領域は Azure PowerShell オブジェクト ```$setting``` の *C:\\StagingArea* に設定されます。指定したフォルダーが既に存在することを確認します。存在しない場合は、サブスクリプション設定の最終コミットが失敗します。
+上の例では、ステージング領域は PowerShell オブジェクト ```$setting``` の *C:\\StagingArea* に設定されます。指定したフォルダーが既に存在することを確認します。存在しない場合は、サブスクリプション設定の最終コミットが失敗します。
 
 
 ### 暗号化の設定
@@ -163,7 +182,7 @@ PS C:\> $MPG = Get-ModifiableProtectionGroup $PG
 ```
 
 ### 保護グループへのグループ メンバーの追加
-各 DPM エージェントは、インストール先のサーバー上でデータソースの一覧を認識しています。保護グループにデータソースを追加するには、DPM エージェントは最初にデータソースの一覧を DPM サーバーに送信する必要があります。1 つ以上のデータソースが選択され、保護グループに追加されます。このために必要な Azure PowerShell の手順は、次のとおりです。
+各 DPM エージェントは、インストール先のサーバー上でデータソースの一覧を認識しています。保護グループにデータソースを追加するには、DPM エージェントは最初にデータソースの一覧を DPM サーバーに送信する必要があります。1 つ以上のデータソースが選択され、保護グループに追加されます。このために必要な PowerShell の手順は、次のとおりです。
 
 1. DPM エージェントから DPM が管理するすべてのサーバーの一覧を取得します。
 2. 特定のサーバーの選択
@@ -281,4 +300,4 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 ## 次のステップ
 Azure DPM Backup の詳細については、「[Azure DPM Backup の概要](backup-azure-dpm-introduction.md)」を参照してください。
 
-<!----HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

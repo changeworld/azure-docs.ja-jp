@@ -28,7 +28,6 @@ Azure SQL Data Warehouse でサポートされていない主な機能を次に�
 - 削除での ANSI の JOIN
 - MERGE ステートメント
 - 複数データベースの JOIN
-- [(PIVOT および UNPIVOT ステートメント][]
 - [カーソル][]
 - [SELECT..INTO][]
 - INSERT..EXEC
@@ -86,7 +85,7 @@ AND     request_id IN
 <!--Image references-->
 
 <!--Article references-->
-[(PIVOT および UNPIVOT ステートメント]: sql-data-warehouse-develop-pivot-unpivot.md
+[pivot and unpivot statements]: sql-data-warehouse-develop-pivot-unpivot.md
 [カーソル]: sql-data-warehouse-develop-loops.md
 [SELECT..INTO]: sql-data-warehouse-develop-ctas.md
 [rollup / cube / grouping セット オプションによる句ごとのグループ化]: sql-data-warehouse-develop-group-by-options.md
@@ -100,4 +99,4 @@ AND     request_id IN
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

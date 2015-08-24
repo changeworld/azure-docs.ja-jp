@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/22/2015" 
+	ms.date="08/06/2015" 
 	ms.author="spelluru"/>
 
 # Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する
@@ -42,7 +42,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 2. <b>[ツール]</b> をクリックし、<b>[NuGet パッケージ マネージャー]</b> にカーソルを合わせ、<b>[パッケージ マネージャー コンソール]</b> をクリックします。
 3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを 1 つずつ入力します。</b> 
 
-		Install-Package Microsoft.Azure.Management.DataFactories –Pre
+		Install-Package Microsoft.Azure.Management.DataFactories
 		Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 6. 次の **appSetttings** セクションを **App.config** ファイルに追加します。これらは、ヘルパー メソッド **GetAuthorizationHeader** によって使用されます。 
 
@@ -362,7 +362,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         Console.ReadKey();
 
 15. コンソール アプリケーションをビルドします。メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。**ConfigurationManager** クラスについてのエラーが発生した場合は、**System.Configuration** アセンブリへの参照を追加して、再度構築を試行します。
-16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
+16. Azure BLOB ストレージ内�� adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
 
         John, Doe
 		Jane, Doe
@@ -393,4 +393,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

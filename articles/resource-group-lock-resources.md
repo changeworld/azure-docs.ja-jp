@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/15/2015" 
+	ms.date="08/10/2015" 
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーによるリソースのロック
@@ -83,7 +83,7 @@ Azure リソース マネージャーは、リソース管理のロックを通�
 
 ## Azure PowerShell を使用したロックの作成
 
-Azure PowerShell を使用してデプロイ済みのリソースをロックするには、次のように **New-AzureResourceLock** を使用します。
+Azure PowerShell を使用してデプロイ済みのリソースをロックするには、次のように **New-AzureResourceLock** を使用します。PowerShell で、**LockLevel** を**CanNotDelete** に設定するだけです。
 
     PS C:\> New-AzureResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName ExampleGroup
 
@@ -91,7 +91,8 @@ PowerShell では、動作中のロックに対するその他のコマンドを
 
 ## 次のステップ
 
-- [タグを使用した Azure リソースの整理](resource-group-using-tags.md)
-- [新しいリソース グループへのリソースの移動](resource-group-move-resources.md)
+- リソース ロックの操作の詳細については、「[Azure リソースのロック ダウン](http://blogs.msdn.com/b/cloud_solution_architect/archive/2015/06/18/lock-down-your-azure-resources.aspx)」を参照してください。
+- リソースを理論的に整理する方法については、「[タグを使用したリソースの整理](resource-group-using-tags.md)」を参照してください。
+- リソースが存在するリソース グループを変更するには、「[新しいリソース グループへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

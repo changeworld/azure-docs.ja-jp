@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/28/2015" 
+    ms.date="08/12/2015" 
     ms.author="elizapo" />
 
 # Azure RemoteApp を構成し、使用するためのベスト プラクティス
@@ -44,4 +44,4 @@
 	- 発行済みのアプリケーションのソフトウェアの自動更新を無効にします - 代わりにそれらをテンプレート イメージに手動で適用し、テンプレートから展開する前にテストします。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -3,7 +3,7 @@
     pageTitle="Azure RemoteApp イメージの要件"
     description="Azure RemoteApp で使用するイメージを作成するための要件について説明します。" 
     services="remoteapp" 
-    documentationCenter="" 
+	documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="07/06/2015" 
+    ms.date="08/12/2015" 
     ms.author="elizapo" />
 
 
@@ -42,5 +42,6 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - イメージはパラメーター **/oobe /generalize /shutdown** を使用して SYSPREP を実施済みでなければなりません (**/mode:vm** パラメーターは使用しないでください)。
 - スナップショット チェーンからの VHD のアップロードはサポートされていません。
  
+Azure RemoteApp のイメージ作成の詳細については、「[Azure RemoteApp イメージの作成](remoteapp-imageoptions.md)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

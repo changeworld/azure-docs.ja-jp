@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="05/26/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 #フィルターと動的マニフェスト
@@ -209,4 +209,4 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

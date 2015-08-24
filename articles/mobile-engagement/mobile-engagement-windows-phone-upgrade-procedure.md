@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/07/2015" 
+	ms.date="08/10/2015" 
 	ms.author="piyushjo" />
 
 #Windows Phone Silverlight SDK アップグレード手順
@@ -142,4 +142,4 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

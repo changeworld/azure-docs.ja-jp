@@ -1,5 +1,5 @@
 <properties
-	pageTitle="ストレージ アカウントを作成、管理、または削除する方法 | Azure"
+	pageTitle="ストレージ アカウントを作成、管理、または削除する方法 | Microsoft Azure"
 	description="Azure 管理ポータルでストレージ アカウントを作成、管理、削除する方法について学習します。"
 	services="storage"
 	documentationCenter=""
@@ -167,4 +167,4 @@ Azure Storage に格納するすべてのオブジェクトは一意の URL ア�
 - [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

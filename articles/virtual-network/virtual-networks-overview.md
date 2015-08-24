@@ -93,4 +93,4 @@ NSG を作成すると、ネットワーク インターフェイス (NIC)、VM�
 - [予約済み IP の概要](../virtual-networks-reserved-public-ip.md)
 - [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)の概要。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 #方法: ストレージ アクセス キーをローリングした後に Media Services を更新する
@@ -43,7 +43,7 @@ Media Services を更新してセカンダリ ストレージ アクセス キ�
 
 - Media Services Management REST API を使用します。
 
-	次のコード例では、指定したストレージ キーを Media Services と同期するために、https://endpoint/<subscriptionId>/services/mediaservices/Accounts/<accountName>/StorageAccounts/<storageAccountName>/Key 要求を作成する方法を示します。この例では、セカンダリ ストレージ キーの値が使用されます。詳細については、「[方法: Media Services Management REST API の使用](http://msdn.microsoft.com/library/azure/dn167656.aspx)」を参照してください。
+	次のコード例では、指定したストレージ キーを Media Services と同期するために、https://endpoint/<subscriptionId>/services/mediaservices/Accounts/<accountName>/StorageAccounts/<storageAccountName>/Key 要求を作成する方法を示します。この例では、セカンダリ ストレージ キーの値が使用されます。詳細については、「[方法: Media Services Management REST API の使用](http://msdn.microsoft.com/ja-jp/library/azure/dn167656.aspx)」を参照してください。
  
 		public void UpdateMediaServicesWithStorageAccountKey(string mediaServicesAccount, string storageAccountName, string storageAccountKey)
 		{
@@ -108,4 +108,4 @@ Media Services を更新してセカンダリ ストレージ アクセス キ�
  
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

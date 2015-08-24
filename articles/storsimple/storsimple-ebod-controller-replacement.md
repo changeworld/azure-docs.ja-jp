@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/05/2015"
+   ms.date="08/12/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスの EBOD コントローラーを交換する
@@ -50,7 +50,7 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
     >[AZURE.NOTE]通常、これはポート A になり、次の図に示す**ホスト イン**になります。
 
-    ![EBOD コントローラーの背面](./media/storsimple-ebod-controller-replacement/IC741049.png)
+    ![Backplane of EBOD controller](./media/storsimple-ebod-controller-replacement/IC741049.png)
 
      **図 1** EBOD モジュールの背面
 
@@ -75,13 +75,13 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
 2. ラッチが開いた状態でモジュールをエンクロージャに差し込み、ラッチをかけられる状態になるまで押し込みます。
 
-    ![EBOD コントローラーの取り付け](./media/storsimple-ebod-controller-replacement/IC741050.png)
+    ![Installing EBOD controller](./media/storsimple-ebod-controller-replacement/IC741050.png)
 
     **図 2** EBOD コントローラー モジュールを取り付ける
 
 3. ラッチを閉じます。ラッチがかかると、カチッと音がします。
 
-    ![EBOD ラッチの解放](./media/storsimple-ebod-controller-replacement/IC741047.png)
+    ![Releasing EBOD latch](./media/storsimple-ebod-controller-replacement/IC741047.png)
 
     **図 3** EBOD モジュールのラッチを閉じる
 
@@ -107,4 +107,4 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

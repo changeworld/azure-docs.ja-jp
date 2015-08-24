@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SendGrid 電子メール サービスの使用方法 (PHP) - Azure" 
+	pageTitle="SendGrid 電子メール サービスの使用方法 (PHP) | Microsoft Azure" 
 	description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは PHP で記述されています。" 
 	documentationCenter="php" 
 	services="" 
@@ -420,4 +420,4 @@ SendGrid では、'フィルター' を使用することでその他の電子�
   [sendgrid-php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
   [[Composer]]: https://getcomposer.org/download/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

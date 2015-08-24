@@ -1,21 +1,21 @@
 <properties
-    pageTitle="RemoteApp テンプレート イメージとは何ですか。"
-    description="RemoteApp に含まれるテンプレート イメージについて説明します。"
+    pageTitle="Azure RemoteApp テンプレート イメージの内容"
+    description="Azure RemoteApp に含まれるテンプレート イメージについて説明します。"
     services="remoteapp"
-	documentationCenter=""
+    documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
 <tags
     ms.service="remoteapp"
-    ms.workload="tbd"
+    ms.workload="compute"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/03/2015" 
+    ms.topic="get-started-article"
+    ms.date="08/12/2015" 
     ms.author="elizapo" />
 
-# RemoteApp テンプレート イメージとは何ですか。
+# Azure RemoteApp テンプレート イメージの内容
 
 Azure RemoteApp サブスクリプションには、次の 3 つのテンプレート イメージが含まれています:
 
@@ -26,7 +26,7 @@ Azure RemoteApp サブスクリプションには、次の 3 つのテンプレ�
 
 > [AZURE.IMPORTANT]Azure RemoteApp サブスクリプションを取得すると、イメージ内のソフトウェアへのアクセス権が付与されます。ただし、別途サブスクリプションが必要な Office 365 ProPlus と、運用環境では使用できない Office 2013 を除きます。つまり、テンプレート イメージ上のプログラムまたはアプリをユーザーと共有できます。たとえば、Windows Server 2012 R2 のイメージを使用するコレクションを作成する場合、ユーザーが RemoteApp でアクセスできる System Center Endpoint Protection を発行できます。
 > 
-> 詳細については、「[How does licensing work in Azure RemoteApp?](remoteapp-licensing.md)」を参照してください。
+> 詳細については、「[How does licensing work in Azure RemoteApp?](remoteapp-licensing.md)」を参照してください。また、Office のライセンス情報については、「[Azure RemoteApp で Office を使用する](remoteapp-o365.md)」を参照してください。
 
 各イメージが含んでいるものについては、詳細を参照してください。
 
@@ -80,7 +80,7 @@ Office 365 は最もリクエストの多いアプリケーションなので、
 - Power Map
 
 
-Office 365 ProPlus のアプリのすべての機能は、Office 365 ProPlus のプランを持つユーザーのみが使用できます。Office 365 のサブスクリプション プランについては、「[Office 365 プランのオプション](http://technet.microsoft.com/library/office-365-plan-options.aspx)」を参照してください。まだ不明な点がある場合は、 [Office 365 と RemoteApp の併用](remoteapp-o365.md)に関する情報を参照してみてください。
+Office 365 ProPlus のアプリのすべての機能は、Office 365 ProPlus のプランを持つユーザーのみが使用できます。Office 365 のサブスクリプション プランについては、「[Office 365 プランのオプション](http://technet.microsoft.com/library/office-365-plan-options.aspx)」を参照してください。まだ不明な点がある場合は、 [Office 365 と RemoteApp の連携](remoteapp-o365.md)に関する情報を参照してください。
 
 ## Microsoft Office 2013 Professional Plus (評価版のみ)
 無料試用期間中には、Office 2013 のイメージを使用してサービスをテストすることができます。
@@ -100,7 +100,7 @@ Office 365 ProPlus のアプリのすべての機能は、Office 365 ProPlus の
 - Word
 - Microsoft Office Proofing Tools
 
-> [AZURE.IMPORTANT]**法的情報:** このイメージには、Microsoft Office のライセンスは含まれていないため、*運用環境では使用できません*。Office 2013 Professional Plus イメージは評価版を使用する目的でのみ提供されます。運用環境で Azure RemoteApp の Office アプリケーションを使用する場合は、Office 365 ProPlus のイメージを使用する必要があります。Office のライセンスの詳細については、「[Azure RemoteApp で Office 365 を使用する](remoteapp-o365.md)」を参照してください。
+> [AZURE.IMPORTANT]**法的情報:** このイメージには、Microsoft Office のライセンスは含まれていないため、*運用環境では使用できません*。Office 2013 Professional Plus イメージは評価版を使用する目的でのみ提供されます。運用環境で Azure RemoteApp の Office アプリケーションを使用する場合は、Office 365 ProPlus のイメージを使用する必要があります。Office のライセンスの詳細については、[Azure RemoteApp での Office 365 の使用](remoteapp-o365.md)に関すページを参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

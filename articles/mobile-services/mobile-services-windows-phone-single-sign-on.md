@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Live Connect によるアプリケーションの認証 (Windows Phone) | モバイル デベロッパー センター" 
+	pageTitle="Live Connect によるアプリケーションの認証 (Windows Phone) | Microsoft Azure" 
 	description="Windows Phone アプリケーションから、Azure Mobile Services で Live Connect シングル サインオンを使用する方法を示します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -142,4 +142,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

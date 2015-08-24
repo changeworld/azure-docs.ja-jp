@@ -17,6 +17,10 @@
 
 # 内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成
 
+> [AZURE.SELECTOR]
+- [Azure classic steps](application-gateway-ilb.md)
+- [Resource Manager Powershell steps](application-gateway-ilb-arm.md)
+
 
 アプリケーション ゲートウェイは、インターネットに接続する VIP のほか、内部ロード バランサー (ILB) エンドポイントとも呼ばれるインターネットに接続されていない内部エンドポイントを使用して構成できます。ILB を使用したゲートウェイの構成は、インターネットに接続されていない社内用ビジネス アプリケーションで便利です。また、セキュリティの境界でインターネットに接続されていない多階層アプリケーション内のサービスや階層でも便利ですが、ラウンド ロビンの負荷分散、セッションの持続性、または SSL 終了が必要です。この記事では、ILB を使用してアプリケーション ゲートウェイを構成する手順について説明します。
 
@@ -208,4 +212,4 @@
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

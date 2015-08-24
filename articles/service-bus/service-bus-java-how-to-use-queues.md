@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Service Bus キューの使用方法 (Java) - Azure"
+	pageTitle="Service Bus キューの使用方法 (Java) | Microsoft Azure"
 	description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは Java で記述されています。"
 	services="service-bus"
 	documentationCenter="java"
@@ -189,4 +189,4 @@ Service Bus キューに送信されたメッセージ (および Service Bus �
   [Service Bus のキュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/library/windowsazure/hh367516.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

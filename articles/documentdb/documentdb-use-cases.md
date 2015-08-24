@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="DocumentDB の一般的なユース ケース | Azure" 
+    pageTitle="DocumentDB の一般的なユース ケース | Microsoft Azure" 
     description="DocumentDB の上位 5 つのユース ケース、ユーザーが生成したコンテンツ、イベントのログ記録、カタログ データ、ユーザー設定のデータ、およびモノのインターネット (IoT) について説明します。" 
     services="documentdb" 
     authors="h0n" 
@@ -79,4 +79,4 @@ DocumentDB の利用を開始するには、[アカウント](http://azure.micro
 - [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667)。未来の店舗は、スピーディな検索と容易なデータ フローを基盤として運営されます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

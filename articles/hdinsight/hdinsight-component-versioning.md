@@ -23,22 +23,21 @@
 Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。各バージョンを選択すると、特定のバージョンの Hortonworks Data Platform (HDP) ディストリビューションと、そのディストリビューションに含まれるコンポーネントがプロビジョニングされます。HDInsight クラスター バージョンに対応するコンポーネントのバージョンを、次の表にまとめます。Azure HDInsight で使用される既定のクラスター バージョンは、2014 年 11 月 7 日現在、HDP 2.1.7 を基盤とした 3.1 です。
 
 
-<table border="1">
-<tr><th>コンポーネント</th><th>HDInsight Version 3.2</th><th>HDInsight Version 3.1 (既定)</th><th>HDInsight Version 3.0</th><th>HDInsight Version 2.1</th></tr>
-<tr><td>Hortonworks Data Platform</td><td>2.2</td><td>2.1.7</td><td>2.0</td><td>1.3</td></tr>
-<tr><td>Apache Hadoop &amp; YARN</td><td>2.6.0</td><td>2.4.0</td><td>2.2.0</td><td>1.2.0</td></tr>
-<tr><td>Tez</td><td>0.5.2</td><td>0.4.0</td><td></td><td></td></tr>
-<tr><td>Apache Pig</td><td>0.14.0</td><td>0.12.1</td><td>0.12.0</td><td>0.11.0</td></tr>
-<tr><td>Apache Hive &amp; HCatalog</td><td>0.14.0</td><td>0.13.1</td><td>0.12.0</td><td>0.11.0</td></tr>
-<tr><td>HBase </td><td>0.98.4</td><td>0.98.0</td><td></td><td></td></tr>
-<tr><td>Apache Sqoop</td><td>1.4.5</td><td>1.4.4</td><td>1.4.4</td><td>1.4.3</td></tr>
-<tr><td>Apache Oozie</td><td>4.1.0</td><td>4.0.0</td><td>4.0.0</td><td>3.3.2</td></tr>
-<tr><td>Zookeeper</td><td>3.4.6</td><td>3.4.5</td><td>3.4.5</td><td></td></tr>
-<tr><td>Storm</td><td>0.9.3</td><td>0.9.1</td><td></td><td></td></tr>
-<tr><td>Mahout</td><td>0.9.0</td><td>0.9.0</td><td></td><td></td></tr>
-<tr><td>Phoenix</td><td>4.2.0</td><td>4.0.0.2.1.7.0-2162</td><td></td><td></td></tr>
-<tr><td>Spark</td><td>1.3.1</td><td></td><td></td><td></td></tr>
-</table>
+コンポーネント|HDInsight Version 3.2|HDInsight Version 3.1 (既定)|HDInsight Version 3.0|HDInsight Version 2.1
+---|---|---|---|---
+Hortonworks Data Platform|2\.2|2\.1.7|2\.0|1\.3
+Apache Hadoop & YARN|2\.6.0|2\.4.0|2\.2.0|1\.2.0
+Tez|0\.5.2|0\.4.0||
+Apache Pig|0\.14.0|0\.12.1|0\.12.0|0\.11.0
+Apache Hive & HCatalog|0\.14.0|0\.13.1|0\.12.0|0\.11.0
+HBase |0\.98.4|0\.98.0||
+Apache Sqoop|1\.4.5|1\.4.4|1\.4.4|1\.4.3
+Apache Oozie|4\.1.0|4\.0.0|4\.0.0|3\.3.2
+Zookeeper|3\.4.6|3\.4.5|3\.4.5|
+Storm|0\.9.3|0\.9.1||
+Mahout|0\.9.0|0\.9.0||
+Phoenix|4\.2.0|4\.0.0.2.1.7.0-2162||
+Spark|1\.3.1|||
 
 
 **現在のコンポーネントのバージョンの取得**
@@ -76,7 +75,7 @@ HDInsight プラットフォームの重要な機能には、次のようなも�
 
 - **スクリプト操作** - このクラスター カスタマイズ機能により、カスタム スクリプトを使用して任意の方法で Hadoop クラスターを変更できます。この新機能により、ユーザーは、Apache Hadoop エコシステムから入手できるプロジェクトを検証し、Azure HDInsight クラスターにデプロイできます。このカスタマイズ機能は、Hadoop、HBase、Storm など、すべての種類の HDInsight クラスターで使用できます。
 
-- **HBase** - HBase は、ビッグ データのオンライン トランザクション処理を可能にする遅延時間の短い NoSQL データベースです。HBase は、管理されるクラスターとして、Azure 環境に統合されて提供されます。クラスターは、Azure BLOB ストレージにデータを直接格納するよう構成されるため、遅延時間が短くなり、パフォーマンスとコストを考慮した選択肢に大きな弾力性が生まれます。そのため、顧客は大規模なデータセットを処理する対話的な Web サイトを構築できます。これにより、何百万ものエンドポイントからセンサーのデータおよび利用統計情報のデータを格納するサービスを構築したり、Hadoop ジョブによりこれらのデータを分析したりすることができます。
+- **HBase** - HBase は、ビッグ データのオンライン トランザクション処理を可能にする遅延時間の短い NoSQL データベースです。HBase は、管理されるクラスターとして、Azure 環境に統合されて提供されます。クラスターは、Azure BLOB ストレージにデータを直接格納するよう構成されるため、遅延時間が短くなり、パフォーマンスとコストを考慮した選択肢に大きな弾力性が生まれます。そのため、顧客は大規模なデータセットを処理する対話的な Web サイトを構築できます。これにより、何百万ものエンドポイントからセンサーのデータおよびテレメトリのデータを格納するサービスを構築したり、Hadoop ジョブによりこれらのデータを分析したりすることができます。
 
 - **Apache Phoenix** - Apache Phoenix は、HBase 上の構造化照会言語 (SQL) クエリ レイヤーです。セカンダリ インデックスのレポートなど、SQL クエリ言語仕様のサブセットを限定的にサポートします。また、HBase データ上で遅延時間が短いクエリを対象とする、クライアント内蔵の Java Database Connectivity (JDBC) ドライバーとして配信されます。Apache Phoenix は SQL クエリを引き継ぎ、一連の HBase スキャンおよびコプロセッサの呼び出しにコンパイルし、通常の JDBC 結果セットを生成します。Apache Phoenix は HBase 上のリレーショナル データベース レイヤーです。また、HBase データ上で遅延時間が短いクエリを対象とする、クライアント内蔵の JDBC ドライバーとして配信されます。Apache Phoenix は SQL クエリを引き継ぎ、一連の HBase スキャンにコンパイルし、それらのスキャンの実行を調整し、通常の JDBC 結果セットを生成します。
 
@@ -105,7 +104,13 @@ HDInsight プラットフォームの重要な機能には、次のようなも�
 * ヘッド ノードを 2 つ備えた可用性の高いクラスターは、HDInsight 2.1 以降では既定でデプロイされています。HDInsight 1.6 クラスターでは利用できません。
 * 特定のバージョンのサポート期限が切れると、Azure ポータルから利用できなくなる可能性があります。次の表に、Azure ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、Windows PowerShell [New-AzureHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx) コマンドの `Version` パラメーターと .NET SDK で利用できます。
 
-<table border="1"> <tr><th>HDInsight のバージョン</th><th>HDP のバージョン</a><th>高可用性</th></th><th>リリース日</th><th>Azure ポータルでの利用</th><th>サポート有効期限</th><th>非推奨となる日</th></tr> <tr><td>HDI 3.2</td><td>HDP 2.2</td><td>あり</td><td>2015 年 2 月 18 日</td><td>あり</td><td></td><td></td></tr> <tr><td>HDI 3.1</td><td>HDP 2.1</td><td>あり</td><td>2014 年 6 月 24 日</td><td>あり</td><td></td><td></td></tr> <tr><td>HDI 3.0</td><td>HDP 2.0</td><td>あり</td><td>2014 年 2 月 11 日</td><td>あり</td><td>2014 年 9 月 17 日</td><td>2015 年 6 月 30 日</td></tr> <tr><td>HDI 2.1</td><td>HDP 1.3</td><td>あり</td><td>2013 年 10 月 28 日</td><td>なし</td><td>2014 年 5 月 12 日</td><td>2015 年 5 月 31 日</td></tr> <tr><td>HDI 1.6</td><td>HDP 1.1</td><td>なし</td><td>2013 年 10 月 28 日</td><td>なし</td><td>2014 年 4 月 26 日</td><td>2015 年 5 月 31 日</td></tr> </table><br>
+HDInsight のバージョン|HDP のバージョン|高可用性|リリース日|Azure ポータルでの利用|サポート有効期限|非推奨となる日
+---|---|---|---|---|---|---
+HDI 3.2|HDP 2.2|あり|2015 年 2 月 18 日|あり||
+HDI 3.1|HDP 2.1|あり|2014 年 6 月 24 日|あり||
+HDI 3.0|HDP 2.0|あり|02/11/2014|あり|09/17/2014|06/30/2015
+HDI 2.1|HDP 1.3|あり|10/28/2013|いいえ|05/12/2014|05/31/2015
+HDI 1.6|HDP 1.1|いいえ|10/28/2013|いいえ|04/26/2014|05/31/2015
 
 **既定以外のクラスターのデプロイメント**
 
@@ -161,4 +166,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 [zookeeper]: http://zookeeper.apache.org/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -4,15 +4,15 @@
 	services="application-insights"
     documentationCenter=""
 	authors="alancameronwills"
-	manager="kamrani"/>
+	manager="douge"/>
 
 <tags
 	ms.service="application-insights"
 	ms.workload="tbd"
 	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
+	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="05/03/2015"
+	ms.date="08/06/2015"
 	ms.author="awills"/>
 
 # Application Insights による利用状況分析
@@ -21,13 +21,41 @@
 
 Application Insights を使用すると、アプリケーションの利用状況を明確に把握できるため、ユーザー エクスペリエンスの向上やビジネス目標の達成に役立ちます。
 
+Application Insights は、スタンドアロン アプリ (iOS、Android Windows) でも、Web アプリ (.NET または J2EE でホストされた) でも機能します。
+
+## アプリケーションの正常性と利用状況の監視
+
+使用を開始するには、[Microsoft Azure](https://azure.com) のサブスクリプションが必要です (無料評価版を利用できます。この試用期間が終了しても、サービスの無料の層は引き続きご利用いただけます)。
+
+[Azure ポータル](https://portal.azure.com)で、Application Insights のリソースを作成します。アプリに関する使用状況とパフォーマンス データはここに表示されます。
+
+![Azure で、[新規]、[開発者向けサービス]、[Application Insights] の順にクリックします。](./media/app-insights-overview-usage/01-create.png)
+
+**アプリがデバイス アプリの場合**、Application Insights SDK をプロジェクトに追加します。実際の手順は、[IDE とプラットフォーム](app-insights-platforms.md)によって異なります。Windows アプリの場合、Visual Studio でプロジェクトを右クリックし、[Application Insights の追加] を選択します。
+
+**Web アプリの場合、**クイック スタート ブレードを開き、Web ページに追加するコード スニペットを取得します。このスニペットを使用して再発行します。
+
+![クイック スタートを開き、[Web ページを監視するコードを取得する] をクリックします。マスター Web ページの先頭にスクリプトをコピーします。](./media/app-insights-overview-usage/02-monitor-web-page.png)
+
+また、[ASP.NET](app-insights-start-monitoring-app-health-usage.md) または [J2EE](app-insights-java-get-started.md) サーバー コードに Application Insights を追加して、クライアントとサーバーの両方からテレメトリを組み合わせることもできます。
+
+
+### プロジェクトを実行し、最初の結果を確認します。
+
+数分間、デバッグ モードでプロジェクトを実行してから [Azure ポータル](http://portal.azure.com)に移動し、Application Insights でプロジェクト リソースを参照します。
+
+![Azure で、[参照]、[Application Insights] の順にクリックして、目的のプロジェクトを選択します。](./media/app-insights-overview-usage/00-start.png)
+
+アプリを発行してさらに多くのテレメトリを取得し、このアプリを使ってユーザーが何を行っているのかを確認します。
+
+
 ## すぐに利用できる分析
 
-[Application Insights][start] をプロジェクトに追加するだけで、特別な作業なしでユーザーの数やその他のデータを表示するグラフを利用できるようになります。
+[ページ ビュー] タイルをクリックして、利用状況の詳細を表示します。
 
-![Azure で、[参照]、[Application Insights]、目的のプロジェクトの順に選択し、下へスクロールします](./media/app-insights-overview-usage/01-overview.png)
+![Azure で、[参照]、[Application Insights]、プロジェクトの順に選択し、[ページ ビュー] タイルまで下へスクロールします](./media/app-insights-overview-usage/01-overview.png)
 
-グラフ上の空白部分にマウス ポインターを移動すると、特定のポイントにおける数が表示されます。それ以外の場合、特定の期間にわたって集計された値 (平均、合計、期間における一意のユーザーの数など) が表示されます。
+グラフ上の空白部分にマウス ポインターを移動すると、特定のポイントにおける数が表示されます。それ以外の場合は、特定の期間にわたって集計された値 (平均、合計、期間における一意のユーザーの数など) が表示されます。
 
 Web アプリケーションでは、ユーザーは Cookie を使用してカウントされます。複数のブラウザーを使用しているユーザー、Cookie を消去しているユーザー、またはプライバシー機能を使用しているユーザーは、複数回カウントされます。
 
@@ -54,7 +82,7 @@ Web セッションは、非アクティブな状態が 30 分続いた後でカ
 
 ## ページ利用状況
 
-ページ ビュー グラフをクリックすると、その拡大バージョンと、最も人気のあるページの内訳が表示されます。
+[ページ ビュー] タイルをクリックすると、最も人気のあるページの内訳が表示されます。
 
 
 ![概要ブレードで、[ページ ビュー] グラフをクリックします](./media/app-insights-overview-usage/05-games.png)
@@ -248,6 +276,11 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 * カナリア テスト。新機能が一部のユーザーにのみ表示されるようにする機能スイッチを設定します。Application Insights を使用して、新機能が意図したように使用されるかどうかを確認します。調整を行った後、より多くのユーザーを対象にリリースします。
 * ユーザーと話をする。 分析は、それだけでは不十分ですが、良好な顧客関係を保つための補完的役割を果たします。
 
+## 詳細情報
+
+* [Application Insights を使用した検出、トリアージ、診断](app-insights-detect-triage-diagnose.md)
+* [さまざまなプラットフォームで Application Insights を使ってみる](app-insights-detect-triage-diagnose.md)
+
 
 ## ビデオ
 
@@ -259,4 +292,4 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 [start]: app-insights-get-started.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

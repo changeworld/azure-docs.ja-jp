@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/19/2015"
+   ms.date="08/11/2015"
    ms.author="bwren" />
 
 # Azure Automation での Runbook を開始する
@@ -232,4 +232,4 @@ credential というパラメーターを受け入れる次のテスト Runbook 
 
 - [別の Runbook からの Runbook の開始](http://msdn.microsoft.com/library/azure/dn857355.aspx) 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

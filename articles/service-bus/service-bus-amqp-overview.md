@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Service Bus AMQP の概要 - Azure" 
+	pageTitle="Service Bus AMQP の概要 | Microsoft Azure" 
 	description="Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。" 
 	services="service-bus" 
 	documentationCenter=".net" 
@@ -98,4 +98,4 @@ Service Bus からライブラリを取得して使用する方法の詳細に�
 [0]: ./media/service-bus-amqp-overview/Example1.png
 [Service Bus AMQP: 開発者ガイド]: http://msdn.microsoft.com/library/jj841071.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

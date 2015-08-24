@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="04/29/2015"
+	ms.date="08/10/2015"
 	ms.author="tdykstra"/>
 
 # Azure App Service、Cloud Services、および Virtual Machines の比較
@@ -50,7 +50,7 @@ Azure App Service は、ほとんどの Web アプリに適しています。デ
 
 ### <a id="onprem"></a> Web フロント エンドとバックエンド (バックグラウンド処理とデータベース) を組み合わせて、ビジネス アプリケーションをオンプレミスのアセットと連係させたいのですが。Web フロント エンドとバックエンド (バックグラウンド処理とデータベース) を組み合わせて、ビジネス アプリケーションをオンプレミスのアセットと連係させたいのですが。
 
-そのような複合的なビジネス アプリケーションには、Azure App Service が最適です。Azure Websites 向けにアプリケーションを開発することで、負荷分散プラットフォーム上でスケールを自動的に調整し、Active Directory でセキュリティを確保しながら、オンプレミスのリソースに接続することが可能です。それらのアプリケーションは、ワールドクラスの管理ポータルと API によって簡単に管理できます。さらに、そのアプリケーションが顧客によってどのように利用されているかを、アプリケーション洞察ツールで深く見通すことができます。新しい [Web ジョブ][]機能を使用してバックグラウンドのプロセスとタスクを Web 階層の中で実行すると共に、ハイブリッド接続と [VNET 機能](../fundamentals-introduction-to-azure.md#networking/)を使ってオンプレミスのリソースに対して簡単に接続することができます。Azure App Service は Web アプリの 99.9% の稼働率が SLA で保証されています。Azure App Service でできることを次に示します。
+そのような複合的なビジネス アプリケーションには、Azure App Service が最適です。Azure Websites 向けにアプリケーションを開発することで、負荷分散プラットフォーム上でスケールを自動的に調整し、Active Directory でセキュリティを確保しながら、オンプレミスのリソースに接続することが可能です。それらのアプリケーションは、ワールドクラスの管理ポータルと API によって簡単に管理できます。さらに、そのアプリケーションが顧客によってどのように利用されているかを、アプリケーション洞察ツールで深く見通すことができます。[Web ジョブ][]機能を使用してバックグラウンドのプロセスとタスクを Web 階層の中で実行すると共に、ハイブリッド接続と [VNET 機能](../fundamentals-introduction-to-azure.md#networking/)を使ってオンプレミスのリソースに対して簡単に接続できます。Azure App Service は Web アプリの 99.9% の稼働率が SLA で保証されています。Azure App Service でできることを次に示します。
 
 * 自己復旧機能と自動修正機能を備えたクラウド プラットフォーム上でアプリケーションを実行し、高い信頼性を確保する。
 * グローバルなデータセンターのネットワークを活かしてスケールを自動的に調整する。
@@ -71,7 +71,7 @@ Azure App Service は、企業 Web サイトをホスティングするための
 
 ### <a id="iis6"></a> Windows Server 2003 上で動作する IIS6 アプリケーションがあるのですが。
 
-Azure App Service は、過去の IIS6 アプリケーションの移行に伴うインフラストラクチャ コストを効果的に抑制します。互換性をチェックして必要な変更点を洗い出すことのできる[使いやすい移行ツールと詳細な移行ガイド](https://www.movemetowebsites.net/)がマイクロソフトから提供されています。Visual Studio や TFS、さらに、広く普及している CMS ツールとの高い親和性により、IIS6 アプリケーションを手間なく直接クラウドにデプロイすることができます。デプロイ後は、Azure の管理ポータルの堅牢な管理ツールを使ってスケールを調整 (スケール ダウンまたはスケール アップ) することにより、必要に応じてコストを抑制したり需要の増大に対応したりることができます。移行ツールを使用すると、次のことができます。
+Azure App Service は、過去の IIS6 アプリケーションの移行に伴うインフラストラクチャ コストを効果的に抑制します。互換性をチェックして必要な変更点を洗い出すことのできる[使いやすい移行ツールと詳細な移行ガイド](https://www.movemetowebsites.net/)がマイクロソフトから提供されています。Visual Studio や TFS、さらに、広く普及している CMS ツールとの高い親和性により、IIS6 アプリケーションを手間なく直接クラウドにデプロイすることができます。デプロイ後は、Azure 管理ポータルの堅牢な管理ツールを使ってスケールを調整 (スケールダウンまたはスケールアップ) することにより、必要に応じてコストを抑制したり需要の増大に対応したりることができます。移行ツールを使用すると、次のことができます。
 
 * 既存の Windows Server 2003 Web アプリケーションをすばやく簡単にクラウドへと移行する。
 * 必要であれば、接続先の SQL Database をオンプレミスに維持し、ハイブリッド型のアプリケーションを作成する。
@@ -81,7 +81,7 @@ Azure App Service は、過去の IIS6 アプリケーションの移行に伴�
 
 このシナリオでは、無料で使用を開始して必要なときにさらに機能を追加できる、Azure App Service が最適なソリューションです。無料の Web アプリにはいずれも、Azure によって提供されるドメインが付属しています (*your\_company*.azurewebsites.net)。また、統合デプロイメント/管理ツールや、導入作業を支援するアプリケーション ギャラリーも、このプラットフォームに含まれています。他にも、ユーザーの要求が増えるにつれて拡大できる多くのサービスや拡張オプションがあります。Azure App Service を使用すると、次のことができます。
 
-- 無料の層から開始し、必要に応じてスケール アップできます。
+- Free レベルから開始し、必要に応じてスケールアップできます。
 - アプリケーション ギャラリーを使用して、WordPress などの一般的な Web アプリケーションをすばやくセットアップできます。
 - 必要に応じて、Azure のその他のサービスや機能をアプリケーションに追加できます。
 - Web アプリのセキュリティを HTTPS で保護することができます。
@@ -93,7 +93,7 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 - [タスクの自動化][scripting]のためのコマンドライン ツールを使用できます。
 - [.Net][dotnet]、[PHP][]、[Node.js][nodejs]、[Python][] など、一般的な言語で作業できます。
 - 非常に高い容量に拡張するための 3 つの異なる拡張レベルを選択できます。
-- [SQL データベース][sqldatabase]、[サービス バス][servicebus]、[ストレージ][]などの他の Azure サービスや、MySQL、MongoDB など、[Windows Azure ストア][azurestore]からのパートナーの製品と統合できます。
+- [SQL Database][sqldatabase]、[Service Bus][servicebus]、[Storage][] などの他の Azure サービスや、MySQL、MongoDB など、[Windows Azure ストア][azurestore]からのパートナーの製品と統合できます。
 - Visual Studio、Git、WebMatrix、WebDeploy、TFS、FTP などのツールと統合できます。
 
 ### <a id="multitier"></a>Web フロント エンドを含む多層アプリケーションをクラウドに移行しています。
@@ -109,7 +109,7 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 アプリケーションを使用するために、ソフトウェアおよびオペレーティング システムの複雑なインストールまたは構成が必要な場合、仮想マシンが最良のソリューションであると思われます。Virtual Machines を使用すると、次のことができます。
 
 - 仮想マシン ギャラリーを使用して、Windows や Linux などのオペレーティング システムから始め、後でアプリケーションの要件に合わせてカスタマイズできます。
-- 既存の内部設置型サーバーのカスタム イメージを作成してアップロードすることで、Azure の仮想マシンで実行できます。
+- 既存のオンプレミス サーバーのカスタム イメージを作成してアップロードすることで、Azure の仮想マシンで実行できます。
 
 ### <a id="oss"></a>自分のサイトではオープン ソース ソフトウェアを使用しており、そのソフトウェアを Azure でホストする必要があります。
 
@@ -142,25 +142,25 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 
 機能|App Service (Web Apps)|クラウド サービス (Web ロール)|仮想マシン|メモ
 ---|---|---|---|---
-ほぼ即時の展開|○|||アプリケーションまたはアプリケーションの更新プログラムを Cloud Services にデプロイしたり、VM を作成したりするには、最低でも数分かかります。一方、アプリケーションを Web アプリにデプロイする場合の所要時間は数秒です。
-再展開なしでの大型マシンへのスケール アップ|○|||
+ほぼ即時のデプロイメント|○|||アプリケーションまたはアプリケーションの更新プログラムを Cloud Services にデプロイしたり、VM を作成したりするには、最低でも数分かかります。一方、アプリケーションを Web アプリにデプロイする場合の所要時間は数秒です。
+再デプロイなしでの大型マシンへのスケールアップ|○|||
 Web サーバーのインスタンスは、コンテンツと構成を共有します。つまり、スケールする際に、デプロイまたは構成をやり直す必要はありません。|○|||
-複数の展開環境 (運用環境とステージング環境)|○|○||
+複数のデプロイメント環境 (運用環境とステージング環境)|○|○||
 OS の自動更新の管理|○|○||
 シームレスなプラットフォームの切り替え (32 ビットと 64 ビット間で簡単に移動)|○|○||
-GIT、FTP によるコードの展開|○||○|
-Web 展開によるコードの展開|○||○|Cloud Services では、Web 配置を使用して、個々のロール インスタンスに更新プログラムをデプロイできます。ただし、ロールの初回デプロイメントに Web 配置を使用することはできません。また、更新プログラムに Web 配置を使用する場合は、各ロールのインスタンスに対して個別にデプロイする必要があります。運用環境で Cloud Services の SLA を満たすには、複数のインスタンスが必要です。
+GIT、FTP によるコードのデプロイ|○||○|
+Web デプロイによるコードのデプロイ|○||○|Cloud Services では、Web 配置を使用して、個々のロール インスタンスに更新プログラムをデプロイできます。ただし、ロールの初回デプロイメントに Web 配置を使用することはできません。また、更新プログラムに Web 配置を使用する場合は、各ロールのインスタンスに対して個別にデプロイする必要があります。運用環境で Cloud Services の SLA を満たすには、複数のインスタンスが必要です。
 WebMatrix サポート|○||○|
-サービス バス、ストレージ、SQL データベースのようなサービスへのアクセス|○|○|○|
+Service Bus、Storage、SQL Database のようなサービスへのアクセス|○|○|○|
 多層アーキテクチャの Web 層または Web サービス層のホスト|○|○|○|
 多層アーキテクチャの中間層のホスト|○|○|○|REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](http://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。プレビュー [API Apps](../app-service-api/app-service-api-apps-why-best-platform/) 機能には、REST サービスをホストする機能が多数搭載されています。
 統合されたサービスとしての MySQL のサポート|○|○|○|Cloud Services は、ClearDB のサービスを介してサービスとしての MySQL を統合できますが、管理ポータル ワークフローの一部として統合することはできません。
 ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート|○|○|○|
-再展開なしでの複数インスタンスへのスケール アウト|○|○|○|Virtual Machines は複数のインスタンスにスケール アウトできますが、そこで実行されるサービスが、このようなスケール アウトに対応できるように記述されていなければなりません。要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。
+再デプロイなしでの複数インスタンスへのスケールアウト|○|○|○|Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。
 SSL のサポート|○|○|○|App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](../app-service-web/web-sites-configure-ssl-certificate/)に関するページを参照してください。
 Visual Studio 統合|○|○|○|
 リモート デバッグ|○|○|○|
-TFS によるコードの展開|○|○|○|
+TFS によるコードのデプロイ|○|○|○|
 [Azure Virtual Network](../services/virtual-network/) によるネットワークの分離|○|○|○|「[Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](../blog/2014/09/15/azure-websites-virtual-network-integration/)」も参照してください。
 [Azure Traffic Manager](../services/traffic-manager/) のサポート|○|○|○|
 統合エンドポイント監視|○|○|○|
@@ -182,7 +182,7 @@ ETW イベントのリッスン||○|○|
 
 アプリケーションに使用するホスティング方法が決まったら、次のリソースで基本事項を確認してください。
 
-* [Azure Websites](/documentation/services/app-service/)
+* [Azure App Service](/documentation/services/app-service/)
 * [Azure Cloud Services](/documentation/services/cloud-services/)
 * [Azure Virtual Machines](/documentation/services/virtual-machines/)
 
@@ -201,7 +201,7 @@ ETW イベントのリッスン||○|○|
   [Python]: http://www.windowsazure.com/develop/python/
   [servicebus]: http://www.windowsazure.com/documentation/services/service-bus/
   [sqldatabase]: http://www.windowsazure.com/documentation/services/sql-database/
-  [ストレージ]: http://www.windowsazure.com/documentation/services/storage/
+  [Storage]: http://www.windowsazure.com/documentation/services/storage/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

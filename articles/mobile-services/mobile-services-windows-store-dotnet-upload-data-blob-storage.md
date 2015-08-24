@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Mobile Services を使用したイメージの BLOB ストレージへのアップロード (Windows ストア) | Mobile Services" 
+	pageTitle="Mobile Services を使用したイメージの BLOB ストレージへのアップロード (Windows ストア) | Microsoft Azure" 
 	description="Mobile Services を使用して画像を Azure BLOB ストレージにアップロードし、その画像に Windows ストア アプリからアクセスする方法を説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -103,4 +103,4 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

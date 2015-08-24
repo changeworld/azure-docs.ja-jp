@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Facebook 認証用の登録 - Mobile Services" 
+	pageTitle="Facebook 認証用の登録 | Microsoft Azure" 
 	description="Azure Mobile Services アプリケーションで Facebook 認証を使用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -73,4 +73,4 @@
 [Azure Mobile Services]: http://azure.microsoft.com/services/mobile-services/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

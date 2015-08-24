@@ -1,26 +1,26 @@
 <properties 
-	pageTitle="Azure Storage の使用" 
-	description="Visual Studio の Azure Web ジョブ 5 プロジェクトで Azure テーブル ストレージの使用を開始する方法" 
-	services="storage" 
-	documentationCenter="" 
-	authors="patshea123" 
-	manager="douge" 
+	pageTitle="Azure Storage と Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)" 
+	description="Visual Studio の Azure Web ジョブ 5 プロジェクトで Azure テーブル ストレージの使用を開始する方法"
+	services="storage"
+	documentationCenter=""
+	authors="patshea123"
+	manager="douge"
 	editor="tglee"/>
 
 <tags 
-	ms.service="storage" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/13/2015" 
+	ms.service="storage"
+	ms.workload="web"
+	ms.tgt_pltfrm="vs-getting-started"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/13/2015"
 	ms.author="patshea123"/>
 
 # Azure Storage の使用 (Azure Web ジョブ プロジェクト)
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-storage-webjobs-getting-started-tables.md)
-> - [What Happened](vs-storage-webjobs-what-happened.md)
+> - [Getting started](vs-storage-webjobs-getting-started-tables.md)
+> - [What happened](vs-storage-webjobs-what-happened.md)
 
 > [AZURE.SELECTOR]
 > - [Blobs](vs-storage-webjobs-getting-started-blobs.md)
@@ -31,9 +31,9 @@
 
 ## 概要
 
-Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。詳細については、[NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md/#create-a-table "How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)")に関するページを参照してください。
-
 この記事では、Azure テーブル ストレージ サービスを使用して Azure Web ジョブ SDK バージョン 1.x を操作する方法について説明します。コード サンプルでは [Web ジョブ SDK](websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。
+
+Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。詳細については、[NET からテーブル ストレージを使用する方法](storage-dotnet-how-to-use-tables.md/#create-a-table "How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)")に関するページを参照してください。
 
 		
 一部のコード スニペットは、[手動で呼び出される](vs-storage-webjobs-getting-started-blobs.md#manual)関数で使用される `Table` 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。
@@ -166,4 +166,4 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 この記事では、Azure テーブルを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

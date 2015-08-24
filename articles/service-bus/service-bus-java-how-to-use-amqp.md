@@ -1,8 +1,8 @@
 <properties 
-	pageTitle="Java Service Bus API で AMQP 1.0 を使用する方法 - Azure" 
+	pageTitle="Java Service Bus API で AMQP 1.0 を使用する方法 | Microsoft Azure"  
 	description="Java Message Service (JMS) API を Azure Service Bus と Advanced Message Queuing Protodol (AMQP) 1.0 と共に使用する方法について説明します。" 
 	authors="sethmanheim" 
-	documentationCenter="java" 
+	documentationCenter="java"  
 	manager="timlt" 
 	editor="" 
 	services="service-bus"/>
@@ -333,4 +333,4 @@ JMS を AMQP 1.0 とサービス バスで使用する場合は、次の制限�
 * [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

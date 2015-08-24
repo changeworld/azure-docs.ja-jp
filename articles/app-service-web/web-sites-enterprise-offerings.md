@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/04/2015" 
-	ms.author="apwestgarth"/>
+	ms.author="anwestg"/>
 
 # Azure App Service Web Apps の企業向け製品・サービスに関するホワイトペーパー #
 
@@ -153,4 +153,4 @@ Azure App Service Web Apps サービスの詳細については、[http://aka.ms
  
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

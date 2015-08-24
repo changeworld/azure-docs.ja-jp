@@ -17,6 +17,12 @@
 
 # アプリケーション ゲートウェイの作成、起動、または削除
 
+
+> [AZURE.SELECTOR]
+- [Azure classic steps](application-gateway-create-gateway.md)
+- [Resource Manager Powershell steps](application-gateway-create-gateway-arm.md)
+
+
 このリリースでは、PowerShell または REST API の呼び出しを使用してアプリケーション ゲートウェイを作成できます。ポータルおよび CLI のサポートは、今後のリリースで提供されます。この記事では、アプリケーション ゲートウェイを作成、構成、起動、および削除する手順について説明します。
 
 ## 開始する前に
@@ -35,7 +41,7 @@ New-AzureApplicationGateway コマンドを使用してアプリケーション 
 
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。 
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-- **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+- **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。 
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
 
@@ -212,20 +218,13 @@ New-AzureApplicationGateway コマンドを使用してアプリケーション 
 
 ## 構成オブジェクトを使用するアプリケーション ゲートウェイの構成
 
-次の例では、構成オブジェクトを使用してアプリケーション ゲートウェイを構成する方法を示します。すべての構成項目は、個別に構成して、アプリケーション ゲートウェイの構成オブジェクトに追加する必要があります。構成オブジェクトを作成したら、`Set-AzureApplicationGateway` コマンドを使用して、前の手順で作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
+次の例では、構成オブジェクトを使用してアプリケーション ゲートウェイを構成する方法を示します。すべての構成項目は、個別に構成して、アプリケーション ゲートウェイの構成オブジェクトに追加する必要があります。構成オブジェクトを作成したら、`Set-AzureApplicationGateway` コマンドを使用して、前の手順で作成した Application Gateway のリソースに構成をコミットします。
 
 >[AZURE.NOTE]各構成オブジェクトに値を割り当てる前に、PowerShell が格納するオブジェクトの種類を宣言する必要があります。個別の項目を作成する最初の行では、Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model (オブジェクト名) を使用する項目を定義します。
 
 ### 手順 1.
 
 すべての個別の構成項目を作成します。
-
-フロントエンド IP を作成します。
-
-	PS C:\> $fip = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration 
-	PS C:\> $fip.Name = "fip1" 
-	PS C:\> $fip.Type = "Private" 
-	PS C:\> $fip.StaticIPAddress = "10.0.0.5" 
 
 フロントエンド ポート を作成します。
 	
@@ -403,4 +402,4 @@ ILB とともに使用するようにアプリケーション ゲートウェイ
 - [Azure のロード バランサー](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

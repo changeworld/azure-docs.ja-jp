@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SendGrid を使用して電子メールを送信する - Azure Mobile Services" 
+	pageTitle="SendGrid を使用した電子メールの送信 | Microsoft Azure" 
 	description="SendGrid サービスを使用して Azure Mobile Services アプリケーションから電子メールを送信する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -136,4 +136,4 @@ Mobile Services で SendGrid 電子メール サービスを簡単に使用で�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

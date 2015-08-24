@@ -66,7 +66,7 @@ Azure Active Directory Connect は 3 つの主要な部分で構成されます�
 
 - 同期 - この部分は、以前 Dirsync と AAD Sync としてリリースされたコンポーネントと機能で構成されます。これは、ユーザーとグループの作成を担当している部分です。オンプレミス環境のユーザーとグループに関する情報とクラウド内の情報が一致することも保証します。
 - AD FS - これは Azure AD Connect のオプションの部分であり、オンプレミスの AD FS インフラストラクチャを使用して、ハイブリッド環境をセットアップするために使用できます。この部分は、ドメイン参加 SSO、AD のログインのポリシーの適用、スマート カードやサード パーティの MFA などを含む複雑なデプロイに対応するために、組織で使用できます。SSO の構成に関する詳細については、「[シングル サインオンを使用した DirSync](https://msdn.microsoft.com/library/azure/dn441213.aspx)」を参照してください。
-- 正常性の監視 - AD FS を使用した複雑なデプロイメントでは、Azure AD Connect Health により、フェデレーション サーバーを強力に監視し、このアクティビティを Azure ポータルで一元的に表示できます。詳細については、「[Azure Active Directory Connect Health](https://msdn.microsoft.com/library/azure/dn906722.aspx)」を参照してください。
+- 正常性の監視 - AD FS を使用した複雑なデプロイでは、Azure AD Connect Health により、フェデレーション サーバーを強力に監視し、このアクティビティを Azure ポータルで一元的に表示できます。詳細については、「[Azure Active Directory Connect Health](https://msdn.microsoft.com/library/azure/dn906722.aspx)」を参照してください。
 
 
 ### Azure AD Connect でサポートされるコンポーネント
@@ -229,6 +229,7 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 ### その他のドキュメント
 Azure AD Connect の操作に関するその他のドキュメントについては、次を参照してください。
 
+- [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md) 
 - [Azure AD Connect の既定の構成の変更](active-directory-aadconnect-whats-next-change-default-config.md)
 - [Azure AD Connect 同期規則エディターの使用](active-directory-aadconnect-whats-next-synch-rules-editor.md)
 - [宣言型のプロビジョニングの使用](active-directory-aadconnect-whats-next-declarative-prov.md)
@@ -248,7 +249,7 @@ Azure AD Connect の操作に関するその他のドキュメントについて
 
 [Azure AD Connect Health](active-directory-aadconnect-health.md) - オンプレミスの AD FS インフラストラクチャの正常性を監視します。
 
-[Azure AD Connect の FAQ](active-directory-aadconnect-faq.md) - Azure AD Connect に関するよく寄せられる質問。
+[Azure AD Connect の FAQ](active-directory-aadconnect-faq.md) - Azure AD Connect に関してよく寄せられる質問。
 
 
 
@@ -257,4 +258,4 @@ Azure AD Connect の操作に関するその他のドキュメントについて
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

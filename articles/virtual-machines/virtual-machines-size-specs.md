@@ -5,7 +5,9 @@
  documentationCenter=""
  authors="KBDAzure"
  manager="timlt"
- editor=""/>
+ editor=""
+ tags="azure-resource-manager,azure-service-management"/>
+
 <tags
 ms.service="virtual-machines"
  ms.devlang="na"
@@ -134,4 +136,4 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 [A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-a8-a9-a10-a11-specs.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

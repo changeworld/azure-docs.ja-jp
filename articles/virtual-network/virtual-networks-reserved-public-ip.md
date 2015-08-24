@@ -20,8 +20,6 @@ Azure での IP アドレスは、動的と予約済みという 2 つのカテ�
 
 IP アドレスが変更されないようにするには、IP アドレスを予約します。予約済み IP は VIP としてのみ使用できるため、リソースがシャット ダウンしたり割り当てが解除されたりした場合でも、クラウド サービスの IP アドレスは変わりません。さらに、VIP として使用されている既存の動的 IP を、予約済み IP アドレスに変換できます。
 
->[AZURE.WARNING]予約済み IP を割り当てられるのは VIP のみです。
-
 ## 予約済み IP が必要になる場合
 - **IP アドレスをサブスクリプションで確実に予約したい場合**。どのような状況でもサブスクリプションから解放されない IP アドレスを予約する必要がある場合は、予約済みパブリック IP を使用します。  
 - **クラウド サービスまたは VM が停止したり割り当て解除された場合でも、IP アドレスを保持したい場合**。クラウド サービスの VM が停止したり割り当て解除された場合でも、変更されない IP アドレスによるサービスへのアクセスを可能にしたい場合です。
@@ -117,10 +115,10 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 ## 次のステップ
 
-[予約済みプライベート IP](../virtual-networks-reserved-private-ip)
+- [予約済みプライベート IP アドレス](../virtual-networks-reserved-private-ip)について理解する。
 
-[インスタンスレベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip)
+- [インスタンスレベル パブリック IP (ILPIP) アドレス](../virtual-networks-instance-level-public-ip)について理解する。
 
-[予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
+- [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

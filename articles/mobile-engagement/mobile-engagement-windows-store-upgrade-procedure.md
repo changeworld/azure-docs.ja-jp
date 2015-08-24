@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="04/02/2015" 
+	ms.date="08/10/2015" 
 	ms.author="piyushjo" />
 
 #Windows ユニバーサル アプリ SDK のアップグレード手順
@@ -169,4 +169,4 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

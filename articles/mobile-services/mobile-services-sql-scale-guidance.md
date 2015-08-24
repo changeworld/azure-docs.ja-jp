@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure SQL Database に支えられたモバイル サービスのスケーリング - Azure Mobile Services" 
+	pageTitle="Azure SQL Database に支えられたモバイル サービスのスケーリング | Microsoft Azure" 
 	description="SQL Database を利用する Mobile Services で発生するスケーラビリティの問題を診断して解決する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="04/20/2015" 
+	ms.date="08/08/2015" 
 	ms.author="donnam;ricksal"/>
 
 # Azure SQL Database に支えられたモバイル サービスのスケーリング
@@ -41,18 +41,18 @@ Azure Mobile Services を使用すると、SQL データベースにデータを
 
 ### 適切な SQL データベース階層の選択 
 
-アプリケーションのニーズに適した階層を確実に選択するには、利用できるさまざまなデータベース階層について理解することが重要です。Azure SQL Database には、さまざまな階層を備えた 2 つの異なるデータベース エディションが用意されています。
+アプリケーションのニーズに適した階層を確実に選択するには、利用できるさまざまなデータベース階層について理解することが重要です。Azure SQL Database では、次に示す 2 つの異なるデータベース エディションと 3 つの異なるサービス階層を利用できます。
 
 - Web および Business Edition (使用中止)
-- Basic、Standard、および Premium Edition 
+- Basic、Standard、Premium サービス階層
 
-Web および Business Edition は完全にサポートされていますが、「[Web および Business エディションの終了に関する FAQ](http://msdn.microsoft.com/library/azure/dn741330.aspx)」で説明しているように、2015 年 4 月 24 日にサポートが終了します。新しい顧客の場合は、この変更に備えて Basic、Standard、および Premium エディションの使用を開始することをお勧めします。この新しいエディションには、さまざまな新しい階層と、データベース パフォーマンスを非常に簡単に把握およびトラブルシューティングできる監視機能が用意されています。新しい Mobile Services は、すべて新しいエディションを使用して作成されます。
+Web および Business Edition は完全にサポートされていますが、「[Web および Business エディションの終了に関する FAQ](http://msdn.microsoft.com/library/azure/dn741330.aspx)」で説明しているように、2015 年 9 月 12 日に提供が終了します。新しい顧客の場合は、この変更に備えて Basic、Standard、および Premium サービス階層の使用を開始することをお勧めします。これらには、データベース パフォーマンスを非常に簡単に把握およびトラブルシューティングできる、さまざまな監視機能が用意されています。新しい Mobile Services は、新しいサービス階層の 1 つを使用して作成されます。
 
-Web と Business エディションを使用してモバイル サービスを Basic、Standard、および Premium エディションに変換するには、次の手順を実行します。
+Web と Business Edition を使用してモバイル サービスを Basic、Standard、および Premium サービス階層に変換するには、次の手順を実行します。
 
 1. [Azure の管理ポータル][]を起動します。
 2. ツール バーの **[+新規]** を選択し、**[データ サービス]**、**[SQL データベース]**、**[簡易作成]** の順に選択します。
-3. データベース名を入力し、**[サーバー]** フィールドで **[新しい SQL データベース サーバー]** を選択します。新しい Basic、Standard、および Premium Edition を使用するサーバーが作成されます。 
+3. データベース名を入力し、**[サーバー]** フィールドで **[新しい SQL データベース サーバー]** を選択します。新しい Basic、Standard、および Premium サービス階層を使用するサーバーが作成されます。 
 4. 残りのフィールドを設定し、**[SQL データベースの作成]** を選択します。Basic 階層を使用する 100 MB のデータベースが作成されます。
 5. 作成したデータベースを使用するように Mobile Services を構成します。そのサービスの [**構成**] タブに移動し、ツール バーの [**データベースの変更**] を選択します。次の画面で、**[SQL データベース]** フィールドの **[既存の SQL データベースを使用します]** を選択し、**[次へ]** を選択します。次の画面で、手順 5. で作成したデータベースを選択し、**[OK]** を選択します。
 
@@ -476,4 +476,4 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 [How much does that key cost? (そのキーのコスト)]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

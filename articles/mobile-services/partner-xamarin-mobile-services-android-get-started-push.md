@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Xamarin Android アプリへのプッシュ通知の追加 | Azure Mobile Services" 
+	pageTitle="Xamarin Android アプリへのプッシュ通知の追加 | Microsoft Azure" 
 	description="Azure Mobile Services と Azure Notification Hubs を使用している Xamarin.Android アプリ向けに、Google Cloud Messaging を使用したプッシュ通知を構成する方法について説明します。" 
 	documentationCenter="xamarin" 
 	authors="ggailey777" 
@@ -86,4 +86,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

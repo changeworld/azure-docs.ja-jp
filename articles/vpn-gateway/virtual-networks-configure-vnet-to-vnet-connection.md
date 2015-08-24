@@ -13,11 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/14/2015"
+   ms.date="08/11/2015"
    ms.author="cherylmc"/>
 
 
 # VNet 間の接続の構成
+
+この記事は、従来のデプロイメント モードで作成された仮想ネットワークを接続する方法について説明します。現在、Azure には、従来のデプロイメント モードと Azure リソース マネージャーのデプロイメント モードの 2 つのデプロイメント モードがあります。設定手順は、仮想ネットワークのデプロイに使用したモードによって変わります。従来のモードで作成した仮想ネットワークをリソース マネージャーで作成した仮想ネットワークに接続する場合は、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+
 
 Azure Virtual Network (VNet) どうしを接続することは、仮想ネットワークをオンプレミスのサイトの場所に接続することとよく似ています。どちらの接続タイプも、仮想ネットワーク ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。接続する VNet は、サブスクリプションやリージョンが異なっていてもかまいません。マルチサイト構成に VNet 間通信を組み合わせることもできます。そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます (下図参照)。
 
@@ -111,7 +114,7 @@ VNet2: アドレス空間 = 10.2.0.0/16、リージョン = 東日本
 
 
 
-**[DNS サーバーおよび VPN 接続] ページで**、次の情報を入力し、右下にある次へ進む矢印をクリックします。
+**[DNS サーバーおよび VPN 接続]** ページで次の情報を入力し、右下にある次へ進む矢印をクリックします。
 
   ![DNS サーバーと VPN 接続](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736056.jpg)
 
@@ -210,17 +213,17 @@ VNet2 の場合
 Virtual Network のクロスプレミス接続の詳細については、「[Virtual Network のセキュリティで保護されたクロスプレミス接続について](https://msdn.microsoft.com/library/azure/dn133798.aspx)」を参照してください。
 
 
-サイト間 VPN 接続を構成する場合は、[サイト間 VPN 接続の構成](vpn-gateway-site-to-site-create.md)に関するページを参照してください。
+サイト間 VPN 接続を構成する場合は、「[サイト間 VPN 接続の構成](vpn-gateway-site-to-site-create.md)」を参照してください。
 
 仮想マシンを仮想ネットワークに追加する場合は、「[カスタム Virtual Machine の作成方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
 
 RRAS を使用して VNet 接続を構成する場合は、「[Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) を使用した Azure 仮想ネットワークのサイト間 VPN](https://msdn.microsoft.com/library/dn636917.aspx)」をご覧ください。
 
-構成スキーマの詳細については、[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)をご覧ください。
+構成スキーマの詳細については、「[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」をご覧ください。
 
 
 [1]: ../hdinsight-hbase-geo-replication-configure-vnets.md
 [2]: http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="07/08/2015"
+   ms.date="08/08/2015"
    ms.author="juliako"/>
 
 
@@ -54,37 +54,37 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 
 	詳しくは、[このマニュアル](http://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409)を参照してください。
 
-##インロール キャッシュの更新
+##In-Role Cache の更新
 
-- **インロール キャッシュ**で **Microsoft Azure Storage SDK** バージョン 4.3 を使用できるようになりました。今まで**インロール キャッシュ**では Azure Storage SDK バージョン 1.7 を使用していました。
+- **In-Role Cache** で **Microsoft Azure Storage SDK** バージョン 4.3 を使用できるようになりました。今まで **In-Role Cache** では Azure Storage SDK バージョン 1.7 を使用していました。
 
 	Azure SDK 2.5 以前を使用しているお客様は、Azure SDK 2.6 に更新し、新しいバージョンの Azure Storage SDK に移行する必要があります。Azure Storage バージョン 2011-08-18 は 2015 年 12 月 9 日を以て廃止されるます。詳しくは、[こちらのお知らせ](http://azure.microsoft.com/blog/2014/08/04/microsoft-azure-storage-service-version-removal/)をお読みください。
 
-	詳細については、「[Azure キャッシュ用のインロール キャッシュ](https://msdn.microsoft.com/library/azure/dn386103.aspx)」を参照してください。
+	詳細については、「[Azure Cache の In-Role Cache](https://msdn.microsoft.com/library/azure/dn386103.aspx)」を参照してください。
 
 ##Azure App Service ツール
 
 Azure SDK 2.6 リリースで次の項目が更新されました。
 
 - Azure 発行に、デプロイ ターゲットとして Azure API Apps が追加されました。
-- API Apps プロビジョニング機能により、ユーザーは API App の作成やプロビジョニング機能を使用できるようになります。
+- API Apps プロビジョニング機能により、ユーザーは API アプリの作成やプロビジョニング機能を使用できるようになります。
 - Server Explorer で、リソース グループにより Web、モバイル、API Apps をグループ化して、新しい App Service ノードが反映されるようになりました。
 - ほとんどの C# プロジェクトに追加された Azure API App Client ジェスチャが追加されました。これにより、Azure のサブスクリプションで実行する Swagger 対応 API Apps の自動生成が可能になります。
 - Server Explorer の API Apps ツールと App Service ノードがVisual Studio 2013 でのみ利用できるようになりました。 
 
-##Azure Resource Manager ツールの更新
+##Azure リソース マネージャー ツールの更新
 
-Azure Resource Manager ツールで Virtual Machines、Networking、Storage のテンプレートを使用できるようになりました。JSON 編集操作にテンプレート用の新しいアウトライン表示と、JSON スニペットを使用してテンプレートを編集する機能が追加されました。Visual Studio からデプロイしたテンプレートでプロジェクトで指定した PowerShell スクリプトが使用されるため、スクリプトに対する変更が Visual Studio でも使用されます。
+Azure リソース マネージャー ツールで Virtual Machines、Networking、Storage のテンプレートを使用できるようになりました。JSON 編集操作にテンプレート用の新しいアウトライン表示と、JSON スニペットを使用してテンプレートを編集する機能が追加されました。Visual Studio からデプロイしたテンプレートでプロジェクトで指定した PowerShell スクリプトが使用されるため、スクリプトに対する変更が Visual Studio でも使用されます。
 
 ##クラウド サービスの診断機能の強化
 
 Azure SDK 2.6 において、Azure コンピューティング エミュレーターでの診断ログの収集と、それらの開発スとレージへの転送機能が復活しました。アプリケーションのエミュレーターでの実行時に生成される診断ログ (アプリケーションのトレース ログ、Event Tracing for Windows (ETW) ログ、パフォーマンス カウンター、インフラストラクチャ ログ、Windows イベント ログなど) を開発ストレージに転送して、診断ログがローカル コンピューターで機能していることを確認できます。
 
-診断ストレージ アカウントがサービス構成 (.cscfg) ファイルで指定されるため、さまざまな環境にあった診断ストレージ アカウントを簡単に使用できるようになります。接続文字列の Azure SDK 2.4 と Azure SDK 2.6 での動作に注目すべきいくつかの違いが見られます。診断ストレージの接続文字列の使用方法と、それがプロジェクトにどのような影響を及ぼすかについては、「[Azure Cloud 用の診断の構成](http://go.microsoft.com/fwlink/?LinkID=532784)」を参照してください。
+診断ストレージ アカウントがサービス構成 (.cscfg) ファイルで指定されるため、さまざまな環境にあった診断ストレージ アカウントを簡単に使用できるようになります。接続文字列の Azure SDK 2.4 と Azure SDK 2.6 での動作に注目すべきいくつかの違いが見られます。診断ストレージの接続文字列の使用方法と、それがプロジェクトにどのような影響を及ぼすかについては、「[Azure クラウド サービス用の診断の構成](http://go.microsoft.com/fwlink/?LinkID=532784)」を参照してください。
 
 ##重大な変更
 
-###Azure Resource Manager ツール 
+###Azure リソース マネージャー ツール 
 
 - Azure SDK 2.5 で使用できる **Cloud Deployment Projects** プロジェクト タイプの名前が **Azure Resource Group** に変わりました。
 - Azure SDK 2.5 で作成されたプロジェクトの **Cloud Deployment Projects** タイプは 2.6 で使用できますが、Visual Studio からテンプレートをデプロイすることはできません。ただし、PowerShell スクリプトでのデプロイは引き続き機能します。2.6 で **Cloud Deployment Projects** を使用する方法については、こちらの[投稿](http://go.microsoft.com/fwlink/?LinkID=534086)をお読みください。
@@ -102,5 +102,8 @@ Azure SDK 2.6 において、Azure コンピューティング エミュレー�
 
 	上記の問題が解消されない場合は、Azure 2.6 SDK for [VS 2012](http://go.microsoft.com/fwlink/p/?linkid=323511&clcid=0x409)、[VS 2013](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)、または [VS 2015](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409) の最新バージョンをインストールしてください。
  
+##関連項目
 
-<!---HONumber=August15_HO6-->
+[Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
+
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Xamarin iOS アプリケーション用 Mobile Services の使用 - Azure Mobile Services"
+	pageTitle="Xamarin iOS アプリケーション用 Mobile Services の使用 | Microsoft Azure"
 	description="次のチュートリアルに従って、Xamarin iOS 開発用の Azure Mobile Services を使用します。"
 	services="mobile-services"
 	documentationCenter="xamarin"
@@ -136,4 +136,4 @@
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

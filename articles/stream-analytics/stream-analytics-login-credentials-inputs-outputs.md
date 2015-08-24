@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Stream Analytics: 入力と出力のログイン資格情報の交換 |Azure" 
+	pageTitle="Stream Analytics: 入力と出力のログイン資格情報の交換 |Microsoft Azure" 
 	description="Stream Analytics の入力と出力の資格情報を更新する方法について説明します。" 
 	services="stream-analytics" 
 	documentationCenter="" 
@@ -139,7 +139,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 	Command(s) completed successfully.
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
@@ -195,4 +195,4 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Xamarin Android アプリに Azure モバイル アプリを使用する - Azure モバイル アプリ"
-	description="次のチュートリアルに従って、Xamarin Android 開発用の Azure モバイル アプリを使用します"
+	pageTitle="Xamarin Android アプリに Azure Mobile Apps を使用する | Microsoft Azure"
+	description="次のチュートリアルに従って、Xamarin Android 開発用の Azure Mobile Apps を使用します"
 	services="app-service\mobile"
 	documentationCenter="xamarin"
 	authors="chrisanderson"
@@ -30,7 +30,7 @@
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 評価版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 * <a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a>。
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751&appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター モバイル アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
@@ -110,4 +110,4 @@
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

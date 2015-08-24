@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ne"
 	ms.topic="get-started-article" 
-	ms.date="07/16/2015"
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 
@@ -226,13 +226,10 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 ![AMSPlayer][AMSPlayer]
 
 
-##次のステップ
-
-ビデオ オン デマンド アプリケーションの構築について説明する[VoD アプリケーションの構築](media-services-video-on-demand-workflow.md)
 
 ###その他のリソース
 - <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - 今すぐビデオをオンラインにしましょう!</a>
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - 動的パッケージ化機能と Mobile Services</a>
+- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - 動的パッケージ化機能とモバイル デバイス</a>
 
 
 <!-- Anchors. -->
@@ -256,4 +253,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

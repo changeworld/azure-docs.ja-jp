@@ -20,9 +20,9 @@
 
 # Azure Stream Analytics の使用 | リアルタイムの不正行為の検出
 
-Stream Analytics を使用してリアルタイムに不正行為を検出するための、エンド ツー エンド ソリューションを作成する方法について説明します。Azure イベント ハブにイベントを取り込み、集計用または警告用の Stream Analytics クエリを作成し、結果を出力シンクに送信することで、リアルタイム処理でデータに対する洞察を得ることができます。
+Azure Stream Analytics を使用してリアルタイムに不正行為を検出するための、エンド ツー エンド ソリューションを作成する方法について説明します。Azure イベント ハブにイベントを取り込み、集計用または警告用の Stream Analytics クエリを作成し、結果を出力シンクに送信することで、リアルタイム処理でデータに対する洞察を得ることができます。
 
-Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。詳細については、「[Azure Stream Analytics の概要](stream-analytics-introduction.md)」を参照してください。
+Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。詳細については、「[Azure Stream Analytics の概要](stream-analytics-introduction.md)」を参照してください。
 
 
 ## シナリオ: 通信および SIM におけるリアルタイムでの不正行為の検出
@@ -35,11 +35,11 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 このシナリオでは、GitHub にあるイベント ジェネレーターを利用します。[ここ](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TelcoGenerator)からダウンロードし、このチュートリアルで示す手順に従って、ソリューションを設定します。
 
-## イベント ハブ入力とコンシューマー グループの作成
+## Azure イベント ハブ入力とコンシューマー グループの作成
 
 サンプル アプリケーションでは、イベントを生成し、それらを Event Hub インスタンスにプッシュしてリアルタイム処理を行います。Service Bus Event Hubs は、Stream Analytics のイベント取り込みの推奨方法です。Event Hubs の詳細については、[Azure Service Bus のマニュアル](/documentation/services/service-bus/)を参照してください。
 
-Event Hub を作成するには、次の手順に従います。
+イベント ハブを作成するには:
 
 1.	[Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[App Services]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。名前、地域、および新規または既存の名前空間を入力し、新しい Event Hub を作成します。  
 2.	各 Stream Analytics ジョブが単一の Event Hub コンシューマー グループから読み取るようにするのがベスト プラクティスです。以下にコンシューマー グループを作成するプロセスを段階的に説明します。コンシューマー グループの詳細については、[ここ](https://msdn.microsoft.com/library/azure/dn836025.aspx)を参照してください。コンシューマー グループを作成するには、新たに作成された Event Hub に移動し、**[コンシューマー グループ]** タブをクリックし、ページ下部の **[作成]** をクリックして、コンシューマー グループの名前を指定します。
@@ -62,7 +62,7 @@ Event Hub を作成するには、次の手順に従います。
 
     	telcodatagen [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]
 
-次の例では、2 時間の間に、不正行為である確率が 20% の、1000 のイベントが生成されます。
+次の例では、2 時間の間に、不正行為の確率が 20% のイベントが 1000 件生成されます。
 
     TelcoDataGen.exe 1000 .2 2
 
@@ -70,11 +70,11 @@ Event Hub に送信されるレコードが表示されます。このリアル�
 
 | レコード | 定義 |
 | ------------- | ------------- |
-| CallrecTime | 通話開始時刻のタイムスタンプ |
-| SwitchNum | 通話の接続に使用された電話交換機 |
-| CallingNum | 発信元の電話番号 |
+| CallrecTime | 通話開始時刻のタイムスタンプ。 |
+| SwitchNum | 通話の接続に使用された電話交換機。 |
+| CallingNum | 発信元の電話番号。 |
 | CallingIMSI | IMSI (International Mobile Subscriber Identity: 国際携帯機器加入者識別番号)。発信元の一意の識別番号。 |
-| CalledNum | 通話受信者の電話番号 |
+| CalledNum | 通話受信者の電話番号。 |
 | CalledIMSI | IMSI (International Mobile Subscriber Identity: 国際携帯機器加入者識別番号)。通話受信者の一意の識別番号。 |
 
 
@@ -83,14 +83,14 @@ Event Hub に送信されるレコードが表示されます。このリアル�
 
 ### Stream Analytics のジョブの準備
 
-1.	Azure ポータルで、**[新規]**、**[データ サービス]**、**[Stream Analytics]**、**[簡易作成]** の順にクリックします。
+1.	Azure ポータルで、**[新規]、[データ サービス]、[Stream Analytics]、[簡易作成]** の順にクリックします。
 2.	次の値を指定してから、**[Stream Analytics ジョブの作成]** をクリックします。
 
 	* **[ジョブ名]**: ジョブ名を入力します。
 
-	* **[リージョン]**: ジョブを実行するリージョンを選択します。パフォーマンスを向上させ、リージョン間のデータ転送が有料にならないように、同じリージョンにジョブと Event Hub を配置することを検討します。
+	* **[リージョン]**: ジョブを実行するリージョンを選択します。パフォーマンスを向上させ、リージョン間のデータ転送が有料にならないように、同じリージョンにジョブとイベント ハブを配置することを検討します。
 
-	* **[ストレージ アカウント]** - このリージョン内で実行されているすべての Stream Analytics ジョブの監視データを格納するために使用するストレージ アカウントを選択します。既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成することができます。
+	* **[ストレージ アカウント]**: このリージョン内で実行されているすべての Stream Analytics ジョブの監視データを格納するために使用する Azure ストレージ アカウントを選択します。既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成することができます。
 
 3.	Stream Analytics ジョブの一覧を表示するには、左側のウィンドウにある **[Stream Analytics]** をクリックします。
 
@@ -109,7 +109,7 @@ Event Hub に送信されるレコードが表示されます。このリアル�
 
 	Event Hub が他のサブスクリプションにある場合、**[別のサブスクリプションのイベント ハブを使用]** を選択し、**[Service Bus 名前空間]**、**[イベント ハブ名]**、**[イベント ハブ ポリシー名]**、**[イベント ハブ ポリシー キー]**、**[イベント ハブ パーティション数]** の情報を手動で入力します。
 
-	* **[イベント ハブ名]**: Event Hub の名前を選択します。
+	* **[イベント ハブ名]**: イベント ハブの名前を選択します。
 
 	* **[イベント ハブ ポリシー名]**: このチュートリアルで前に作成した Event Hub のポリシーを選択します。
 
@@ -129,7 +129,7 @@ Stream Analytics では、リアルタイム処理のために変換を記述す
 実際のジョブ データに対するクエリを検証するには、**サンプル データ**機能を使用して、ストリームからイベントを抽出し、テスト用のイベントの .JSON ファイルを作成できます。次の手順では、これを実行する方法を示しています。さらに、テスト目的のサンプルの [Telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) ファイルも提供しています。
 
 1.	Event Hub の入力を選択して、ページ下部の **[サンプル データ]** をクリックします。
-2.	表示されたダイアログ ボックスで、データ収集を開始する **[開始時刻]** を指定し、使用する追加のデータ量に応じて **[期間]** を指定します。
+2.	表示されたダイアログ ボックスで、データ収集を開始する **[開始時間]** を指定し、使用する追加のデータ量に応じて **[期間]** を指定します。
 3.	入力からのデータのサンプリングを開始するには、チェック ボタンをクリックします。データ ファイルが生成されるまでに、1 ～ 2 分かかります。プロセスが完了したら、**[詳細]** をクリックし、生成された .JSON ファイルをダウンロードして保存します。
 
 	![処理済みデータをダウンロードして JSON ファイルに保存](./media/stream-analytics-get-started/stream-analytics-download-save-json-file.png)
@@ -146,7 +146,7 @@ Stream Analytics では、リアルタイム処理のために変換を記述す
 	> 入力ソースの名前が前に指定した入力の名前と必ず一致するようにします。
 
 3.	クエリ エディターの下の **[テスト]** をクリックします。
-4.	上記の手順を使用して作成したテスト ファイルまたは [Telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) を指定します。
+4.	前の手順を使用して作成したテスト ファイルまたは [Telco.json](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) を指定します。
 5.	チェック ボタンをクリックして、クエリ定義の下に表示される結果を確認します。
 
 	![クエリの定義の結果](./media/stream-analytics-get-started/stream-analytics-sim-fraud-output.png)
@@ -177,7 +177,7 @@ Stream Analytics では、リアルタイム処理のために変換を記述す
 
 	このクエリでは、**Timestamp By** キーワードを使用して、一時的な計算に使用されるペイロードのタイムスタンプ フィールドを指定しています。このフィールドが指定されていない場合は、イベントが Event Hub に到着した時間を使用してウィンドウ化操作が実行されます。[「Stream Analytics クエリ言語リファレンス」にある到着時間とアプリケーション時間の比較に関する説明](https://msdn.microsoft.com/library/azure/dn834998.aspx)を参照してください。
 
-	各期間の終わりのタイムスタンプには、System.Timestamp プロパティを使用してアクセスできることに注意してください。
+	各期間の終わりのタイムスタンプには、**System.Timestamp** プロパティを使用してアクセスできることに注意してください。
 
 2.	クエリ エディターの下の **[再実行]** をクリックして、クエリの結果を表示します。
 
@@ -203,11 +203,11 @@ Stream Analytics では、リアルタイム処理のために変換を記述す
 
 ### 出力シンクの作成
 
-イベント ストリーム、イベントを取り込むための Event Hub 入力、ストリームに対して変換を実行するためのクエリを定義したところで、最後に、ジョブの出力シンクを定義します。BLOB ストレージに不正な動作のイベントを記述します。
+イベント ストリーム、イベントを取り込むためのイベント ハブ入力、ストリームに対して変換を実行するためのクエリを定義したところで、最後に、ジョブの出力シンクを定義します。BLOB ストレージに不正な動作のイベントを記述します。
 
 BLOB ストレージ用のコンテナーがまだない場合は、次の手順に従って作成します。
 
-1.	既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成します。新しいストレージ アカウントを作成するには、**[新規]**、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックして、画面の指示に従います。
+1.	既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成します。新しいストレージ アカウントを作成するには、**[新規]、[データ サービス]、[ストレージ]、[簡易作成]** の順にクリックして、画面の指示に従います。
 2.	ストレージ アカウントを選択し、ページ上部にある **[コンテナー]** をクリックし、**[追加]** をクリックします。
 3.	コンテナーの **[名前]** を指定し、パブリック BLOB に対する **[アクセス]** を設定します。
 
@@ -245,7 +245,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![不正行為の検出: 不正なイベントをリアルタイムで表示](./media/stream-analytics-get-started/stream-ananlytics-view-real-time-fraudent-events.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -255,6 +255,5 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

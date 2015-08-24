@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Xamarin Android アプリケーション用 Mobile Services の使用 - Azure Mobile Services" 
+	pageTitle="Xamarin Android アプリケーション用 Mobile Services の使用 | Microsoft Azure" 
 	description="Azure Mobile Services と Notification Hubs を使用して Xamarin Android アプリにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="xamarin" 
@@ -75,4 +75,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Xamarin.Android]: http://xamarin.com/download/
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

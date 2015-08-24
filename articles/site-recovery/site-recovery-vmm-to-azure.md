@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/07/2015"
+	ms.date="08/05/2015"
 	ms.author="raynew"/>
 
 #  オンプレミスの VMM サイトと Azure 間の保護の設定
@@ -321,4 +321,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> </UL>
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

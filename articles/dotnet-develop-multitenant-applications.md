@@ -1,5 +1,5 @@
 <properties
-	pageTitle="マルチテナント Web アプリケーションのパターン - Azure アーキテクチャ"
+	pageTitle="マルチテナント Web アプリケーションのパターン | Microsoft Azure"
 	description="Azure 上でマルチテナント Web アプリケーションを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。"
 	services=""
 	documentationCenter=".net"
@@ -95,4 +95,4 @@ Azure には、アプリケーション用に新しいテナントをプロビ�
 [Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)]: http://msdn.microsoft.com/library/hh534480.aspx
 [Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

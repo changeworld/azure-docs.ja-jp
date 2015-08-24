@@ -48,7 +48,7 @@ Azure Data Factory インスタンスを作成するための一般的な手順�
 
 Azure Data Factory サービスは、パイプライン内の次のアクティビティをサポートします。
 
-- **コピー アクティビティ**は、データをデータ ストアから別のデータ ストアにコピーします。コピー アクティビティがサポートするデータ ストアの詳細については、「[Azure Data Factory を使用してデータをコピーする][copy-data-with-adf]」を参照してください。 
+- **コピー アクティビティ**は、データをデータ ストアから別のデータ ストアにコピーします。  
 - **HDInsight アクティビティ**は、HDInsight クラスター上で Hive/Pig スクリプトまたは MapReduce プログラムを実行してデータを処理します。詳細については、「[Data Factory で Pig と Hive を使用する][use-pig-hive]」と「[Data Factory から MapReduce プログラムを起動する][run-map-reduce]」を参照してください。 
 - **Azure Machine Learning のバッチ スコアリング アクティビティ**は、Azure Machine Learning のバッチ スコアリング API を呼び出します。詳細については、「[Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する][azure-ml-adf]」を参照してください。 
 - **ストアド プロシージャのアクティビティ**、Azure SQL データベース内のストアド プロシージャを呼び出します。詳細については、MSDN ライブラリの[ストアド プロシージャ アクティビティ][msdn-stored-procedure-activity]に関するページを参照してください。   
@@ -84,7 +84,6 @@ Microsoft **Data Management Gateway** は、オンプレミスのデータ ソ�
 
 [adf-faq]: data-factory-faq.md
 [adf-intro]: data-factory-introduction.md
-[copy-data-with-adf]: data-factory-copy-activity.md
 [use-pig-hive]: data-factory-pig-hive-activities.md
 [run-map-reduce]: data-factory-map-reduce.md
 [azure-ml-adf]: data-factory-create-predictive-pipelines.md
@@ -115,4 +114,4 @@ Microsoft **Data Management Gateway** は、オンプレミスのデータ ソ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

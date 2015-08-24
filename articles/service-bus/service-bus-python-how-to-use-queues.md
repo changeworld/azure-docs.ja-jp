@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Service Bus キューの使用方法 (Python) - Azure" 
+	pageTitle="Service Bus キューの使用方法 (Python) | Microsoft Azure" 
 	description="Python から Azure Service Bus キューを使用する方法を説明します。" 
 	services="service-bus" 
 	documentationCenter="python" 
@@ -98,4 +98,4 @@ SAS キーの名前と値は、Azure ポータル接続情報に含まれてい�
 [Service Bus のキュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/azure/hh367516.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

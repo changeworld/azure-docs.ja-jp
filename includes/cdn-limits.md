@@ -1,7 +1,9 @@
 
-| Resource	| Soft limit 
+| リソース | ソフト制限 
 --- | ---
-| CDN endpoints | 50
-| Custom domains per one customer| 16
+| CDN エンドポイント | 50
+| 顧客ごとのカスタム ドメイン数| 16
 
-You can request to update soft limits by opening a support ticket.
+サポート チケットを開き、ソフト制限の更新を要求できます。
+
+<!---HONumber=August15_HO7-->

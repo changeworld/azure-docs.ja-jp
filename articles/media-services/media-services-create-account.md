@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Media Services アカウントの作成 - Azure"
+	pageTitle="Media Services アカウントの作成 | Microsoft Azure"
 	description="Azure で新しい Media Services アカウントを作成する方法について説明します。"
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="04/20/2015"
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 
@@ -23,8 +23,6 @@
 - [Portal](media-services-create-account.md)
 - [PowerShell](media-services-manage-with-powershell.md)
 - [REST](https://msdn.microsoft.com/library/azure/dn167014.aspx)
-
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
 
 Azure 管理ポータルには、Azure Media Services アカウントをすばやく作成する方法が用意されています。アカウントを使用して Media Services にアクセスすると、Azure でメディア コンテンツを保存、暗号化、エンコード、管理、およびストリーミングすることができます。Media Services アカウントを作成するときは、同時に Media Services アカウントと同じリージョンにストレージ アカウントも作成して関連付けます (または既存のストレージ アカウントを使用します)。
 
@@ -56,12 +54,12 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
 
 	処理の状態はウィンドウの下部にあるメッセージ領域で監視できます。
 
-	アカウントの作成に成功すると、ステータスが [アクティブ] に変化します。**[メディア サービス]** ページが開き、新しいアカウントが表示されます。
+	アカウントの作成に成功すると、ステータスが [アクティブ] に変化します。**[Media Services]** ページが開き、新しいアカウントが表示されます。
 
 	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
 
 
-	![[メディア サービス] ページ](./media/media-services-create-account/wams-mediaservices-page.png)
+	![[Media Services] ページ](./media/media-services-create-account/wams-mediaservices-page.png)
 
 	アカウント名をダブルクリックすると、既定で [クイック スタート] ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
@@ -81,4 +79,4 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
   [管理ポータル]: http://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

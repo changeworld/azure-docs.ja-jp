@@ -1,10 +1,10 @@
 
 <properties 
-	pageTitle="プッシュ通知の使用 (Android JavaScript) | モバイル デベロッパー センター" 
+	pageTitle="プッシュ通知の使用 (Android JavaScript) | Microsoft Azure" 
 	description="Azure モバイル サービスを使用して Android JavaScript アプリにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services, notification-hubs" 
 	documentationCenter="android" 
-	authors="RickSaling" 
+	authors="RickSaling"  
 	manager="dwrede" 
 	editor=""/>
 
@@ -178,4 +178,4 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Advanced Analytics Process and Technology の活用 - 1 TB Criteo データセットで HDInsight Hadoop クラスターを使用する" 
+	pageTitle="Advanced Analytics Process and Technology の活用 - 1 TB Criteo データセットで HDInsight Hadoop クラスターを使用する | Microsoft Azure" 
 	description="HDInsight Hadoop クラスターを用いたエンド ツー エンドのシナリオに Adva nced Analytics Process and Technology (ADAPT) を使用し、大量の (1 TB) 公開されている使用可能なデータセットを使用してモデルを構築してデプロイします。" 
 	services="machine-learning,hdinsight" 
 	documentationCenter="" 
@@ -656,4 +656,4 @@ Web サービス用の 2 つのリンクが左側に表示されます。
 
 以上で、Azure Machine Learning を使用して大規模なデータセットを処理する方法の総合的なチュートリアルは終了です。ここでは、テラバイト単位のデータから始めて、予測モデルを構築し、クラウドに Web サービスとしてデプロイしました。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

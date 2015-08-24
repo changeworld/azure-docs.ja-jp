@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Service Bus キューの使用方法 (Ruby) - Azure"
+	pageTitle="Service Bus キューの使用方法 (Ruby) | Microsoft Azure"
 	description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは Ruby で記述されています。"
 	services="service-bus"
 	documentationCenter="ruby"
@@ -152,4 +152,4 @@ azure モジュールは、Azure Service Bus 名前空間に接続するため�
 この記事で説明されている Azure サービス バス キューと、「[サービス バス キューの使用方法](/develop/ruby/how-to-guides/queue-service/)」で説明されている Azure サービス バス キューの比較については、「[Azure Queues and Azure Service Bus Queues - Compared and Contrasted (Azure キューと Azure サービス バス キューの比較)](http://msdn.microsoft.com/library/windowsazure/hh767287.aspx)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

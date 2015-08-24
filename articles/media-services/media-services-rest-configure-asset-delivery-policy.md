@@ -13,19 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/05/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 #方法: 資産の配信ポリシーを構成する
+
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
-
-Media Services におけるコンテンツ配信ワークフローの手順の 1 つは、ストリームする資産の配信ポリシーを構成することです。資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
+動的に暗号化した資産を配信する場合、Media Services におけるコンテンツ配信ワークフローの手順の 1 つとして、資産の配信ポリシーを構成します。資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
 
 このトピックでは、資産の配信ポリシーを作成して構成する理由と方法をご説明します。
 
->[AZURE.NOTE]動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール ユニット (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+>[AZURE.NOTE]動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール ユニット (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services のスケールの設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
 >
 >また、資産には、一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。
 
@@ -53,7 +52,7 @@ HDS
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
 
-資産を発行し、ストリーミング URL を構築する手順については、[ストリーミング URL の構築](media-services-deliver-streaming-content.md)に関するページを参照してください。
+資産を発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
 
 >[AZURE.NOTE]Media Services REST API を使用する場合は、次のことに考慮します。
 >
@@ -244,7 +243,7 @@ DynamicCommonEncryption 配信ポリシーを指定する際に、資産を Comm
 
 ###資産の配信ポリシーを作成する
 
-次の HTTP 要求により、動的共通暗号化 (**DynamicCommonEncryption**) を**スムーズ ストリーミング** プロトコルに適用するために構成される **AssetDeliveryPolicy** が作成されます (この例では、他のプロトコルはストリーミングからブロックされます)。
+次の HTTP 要求により、**Smooth Streaming** プロトコルに動的共通暗号化 (**DynamicCommonEncryption**) を適用するように構成された **AssetDeliveryPolicy** が作成されます (この例では、他のプロトコルはストリーミングからブロックされます)。
 
 AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types)セクションをご覧ください。
 
@@ -413,4 +412,4 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
     }
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

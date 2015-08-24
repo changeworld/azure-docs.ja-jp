@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Service Bus トピックの使用方法 (.NET) - Azure"
+    pageTitle="Service Bus トピックの使用方法 (.NET) | Microsoft Azure"
     description="Azure での Service Bus のトピックとサブスクリプションの使用方法について学習します。コード サンプルは .NET アプリケーション向けに作成されています。"
     services="service-bus"
     documentationCenter=".net"
@@ -301,4 +301,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [MSDN]: https://msdn.microsoft.com/library/azure/dn194201.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

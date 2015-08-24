@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="インロール キャッシュの使用方法 (.NET) - Azure の機能ガイド" 
+	pageTitle="インロール キャッシュの使用方法 (.NET) | Microsoft Azure" 
 	description="Azure のインロール キャッシュの使用方法について説明します。サンプルは C# コードで記述され、.NET API を利用しています。" 
 	services="cache" 
 	documentationCenter=".net" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/19/2015" 
+	ms.date="08/11/2015" 
 	ms.author="sdanie"/>
 
 
@@ -411,4 +411,4 @@ Caching サービス セッション状態プロバイダーの使い方の詳�
 [最適な Azure のキャッシュ オファリング]: http://msdn.microsoft.com/library/azure/dn766201.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

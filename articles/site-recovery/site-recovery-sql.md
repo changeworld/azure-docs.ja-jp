@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/03/2015" 
+	ms.date="08/05/2015" 
 	ms.author="raynew"/>
 
 
@@ -31,109 +31,35 @@ Site Recovery は、仮想マシンと物理サーバーのレプリケーショ
 
 Site Recovery は、Hyper-V 仮想マシン、VMware 仮想マシン、または物理サーバーとして実行される SQL Server を保護できます。
 
-<table border="1" cellspacing="4" cellpadding="4">
-    <tbody>
-    <tr align="left" valign="top">
-		<td colspan = "2"><b>Hyper-V</b></td>
-		<td colspan = "2"><b>VMware</b></td>
-		<td colspan = "2"><b>物理サーバー</b></td>
-    </tr>
-    <tr align="left" valign="top">
-		<td>オンプレミス間</td>
-		<td>オンプレミスと Azure 間</td>
-		<td>オンプレミス間</td>
-		<td>オンプレミスと Azure 間</td>
-		<td>オンプレミス間</td>
-		<td>オンプレミスと Azure 間</td>
-    </tr>
-	<tr align="left" valign="top">
-		<td>あり</td>
-		<td>あり</td>
-		<td>あり</td>
-		<td>近日対応予定</td>
-		<td>あり</td>
-		<td>近日対応予定</td>
-    </tr>
-    </tbody>
-    </table>
+ |**オンプレミス間** | **オンプレミスと Azure 間** 
+---|---|---
+**Hyper-V** | あり | あり
+**VMware** | あり | あり 
+**物理サーバー** | あり | あり
+
 
 ## サポートと統合
 
 Site Recovery は、次の表に要約したネイティブの SQL Server の BCDR テクノロジと統合して、障害復旧ソリューションを提供できます。
 
-<table border="1" cellspacing="4" cellpadding="4">
-    <tbody>
-    <tr align="left" valign="top">
-		<td><b>機能</b></td>
-		<td><b>詳細</b></td>
-		<td><b>SQL Server のバージョン</b></td>
-    </tr>
-    </tr><tr align="left" valign="top">
-		<td><b>AlwaysOn 可用性グループ</b></td>
-		<td><p>SQL Server の複数のスタンドアロン インスタンスであり、複数のノードを持つフェールオーバー クラスターでそれぞれが実行されます。</p> <p>データベースは、SQL Server インスタンス上でコピー (ミラー化) が可能なフェールオーバー グループにグループ化できるため、共有記憶域は必要ありません</p> <p>プライマリ サイトと 1 つまたは複数のセカンダリ サイトの間で障害復旧を実現します。2 つのノードをシェアード ナッシング クラスターに設定できます。このクラスターでは、同期レプリケーションと自動フェールオーバーを設定した可用性グループに SQL Server データベースを構成しておきます。</p></td>
-		<td>SQL Server 2014/2012 Enterprise エディション</td>
-    </tr>
-	<tr align="left" valign="top">
-		<td><b>フェールオーバー クラスタリング (AlwaysOn FCI)</b></td>
-		<td><p>SQL Server は、Windows のフェールオーバー クラスタリングを利用して、オンプレミスの SQL Server ワークロードの高可用性を実現しています。</p><p>共有ディスクを備えた、SQL Server のインスタンスを実行しているノードは、フェールオーバー クラスター内に構成されます。インスタンスがダウンした場合、クラスターは別のクラスターにフェールオーバーします。</p> <p>クラスターは、共有記憶域のエラーまたは障害からは保護しません。共有ディスクは、iSCSI、ファイバー チャネル、または共有 VHDX を使用して実装できます。</p></td>
-		<td><p>SQL Server Enterprise エディション</p> <p>SQL Server Standard エディション (2 つのノードのみに制限)</p></td>
-	<tr align="left" valign="top">
-		<td><b>高い安全性モードでのデータベース ミラーリング</b></td>
-		<td>1 つのセカンダリ コピーで 1 つのデータベースを保護します。高い安全性 (同期) と高パフォーマンス (非同期) の両方のレプリケーション モードで使用できます。フェールオーバー クラスターは必要はありません。</td>
-		<td><p>SQL Server 2008 R2</p><p>SQL Server Enterprise のすべてのエディション</p></td>
-    </tr>
-    </tr>
-	<tr align="left" valign="top">
-		<td><b>スタンドアロンの SQL Server</b></td>
-		<td>SQL Server とデータベースは、単一のサーバー (物理または仮想) でホストされます。サーバーが仮想である場合、ホスト クラスタリングが高可用性のために使用されます。ゲストレベルの高可用性はありません。</td>
-		<td>Enterprise または Standard エディション</td>
- 
-    </tbody>
-    </table>
+**機能** |**詳細** | **SQL Server のバージョン** 
+---|---|---
+**AlwaysOn 可用性グループ** | <p>SQL Server の複数のスタンドアロン インスタンスであり、複数のノードを持つフェールオーバー クラスターでそれぞれが実行されます。</p> <p>データベースは、SQL Server インスタンス上でコピー (ミラー化) が可能なフェールオーバー グループにグループ化できるため、共有記憶域は必要ありません。</p> <p>プライマリ サイトと 1 つまたは複数のセカンダリ サイトの間で障害復旧を実現します。2 つのノードをシェアード ナッシング クラスターに設定できます。このクラスターでは、同期レプリケーションと自動フェールオーバーを設定した可用性グループに SQL Server データベースを構成しておきます。</p> | SQL Server 2014/2012 Enterprise エディション
+**フェールオーバー クラスタリング (AlwaysOn FCI)** | <p>SQL Server は、Windows のフェールオーバー クラスタリングを利用して、オンプレミスの SQL Server ワークロードの高可用性を実現しています。</p><p>共有ディスクを備えた、SQL Server のインスタンスを実行しているノードは、フェールオーバー クラスター内に構成されます。インスタンスがダウンした場合、クラスターは別のクラスターにフェールオーバーします。</p> <p>クラスターは、共有記憶域のエラーまたは障害からは保護しません。共有ディスクは、iSCSI、ファイバー チャネル、または共有 VHDX を使用して実装できます。</p> | SQL Server Enterprise エディション</p><p>SQL Server Standard エディション (2 つのノードのみに制限)
+**データベース ミラーリング (高い安全性モード)** | 1 つのセカンダリ コピーで 1 つのデータベースを保護します。高い安全性 (同期) と高パフォーマンス (非同期) の両方のレプリケーション モードで使用できます。フェールオーバー クラスターは必要はありません。 | <p>SQL Server 2008 R2</p><p>SQL Server Enterprise のすべてのエディション</p>
+**スタンドアロンの SQL Server** | SQL Server とデータベースは、単一のサーバー (物理または仮想) でホストされます。サーバーが仮想である場合、ホスト クラスタリングが高可用性のために使用されます。ゲストレベルの高可用性はありません。 | Enterprise または Standard エディション
+
+
 
 次の表は、Site Recovery デプロイに SQL Server の BCDR テクノロジを統合するための推奨事項を示しています。
 
-<table border="1" cellspacing="4" cellpadding="4">
-    <tbody>
-    <tr align="left" valign="top">
-		<td><b>バージョン</b></td>
-		<td><b>エディション</b></td>
-		<td><b>デプロイ</b></td>
-		<td><b>オンプレミス間</b></td>
-		<td><b>オンプレミスと Azure 間</b>&lt;/td
-    </tr>
-    <tr align="left" valign="top">
-		<td rowspan = "3">SQL Server 2014 または 2012</td>
-		<td rowspan = "2">Enterprise</td>
-		<td>フェールオーバー クラスター インスタンス</td>
-		<td>AlwaysOn 可用性グループ</td>
-		<td>AlwaysOn 可用性グループ</td>
-    </tr>
-	<tr align="left" valign="top">
-		<td>高可用性のための AlwaysOn 可用性グループ</td>
-		<td>AlwaysOn 可用性グループ</td>
-		<td>AlwaysOn 可用性グループ</td>
-    </tr>
-	<tr align="left" valign="top">
-		<td>Standard</td>
-		<td>フェールオーバー クラスター インスタンス</td>
-		<td>ローカルのミラーを使用した Site Recovery レプリケーション</td>
-		<td>ローカルのミラーを使用した Site Recovery レプリケーション</td>
-    </tr>
-	<tr align="left" valign="top">
-		<td>Enterprise または Standard</td>
-		<td>スタンドアロン</td>
-		<td>ローカルのミラーを使用した Site Recovery レプリケーション</td>
-		<td>ローカルのミラーを使用した Site Recovery レプリケーション</td>
-    </tr>
-	<tr align="left" valign="top">
-		<td>SQL Server 2008 R2</td><td>Enterprise または Standard</td>
-		<td>スタンドアロン</td>
-		<td>ローカルのミラーを使用した Site Recovery レプリケーション</td>
-		<td>ローカルのミラーを使用した Site Recovery レプリケーション</td>
-    </tr>
-    </tbody>
-    </table>
+**バージョン** |**エディション** | **デプロイ** | **オンプレミスからオンプレミス** | **オンプレミスから Azure** 
+---|---|---|---|
+SQL Server 2014 または 2012 | Enterprise | フェールオーバー クラスター インスタンス | AlwaysOn 可用性グループ | AlwaysOn 可用性グループ
+ | Enterprise | 高可用性のための AlwaysOn 可用性グループ | AlwaysOn 可用性グループ | AlwaysOn 可用性グループ
+ | Standard | フェールオーバー クラスター インスタンス | ローカルのミラーを使用した Site Recovery レプリケーション | ローカルのミラーを使用した Site Recovery レプリケーション
+ | Enterprise または Standard | スタンドアロン | ローカルのミラーを使用した Site Recovery レプリケーション | ローカルのミラーを使用した Site Recovery レプリケーション
+SQL Server 2008 R2 | Enterprise または Standard | スタンドアロン | ローカルのミラーを使用した Site Recovery レプリケーション | ローカルのミラーを使用した Site Recovery レプリケーション
 
 
 ## デプロイの前提条件
@@ -436,4 +362,4 @@ SQL Standard のクラスターの場合、計画外のフェールオーバー�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="既存のアプリへの Mobile Services の追加 (iOS) | モバイル デベロッパー センター"
+	pageTitle="既存のアプリケーションへの Mobile Services の追加 (iOS) | Microsoft Azure"
 	description="Mobile Services を使用して iOS アプリでデータを活用する方法について説明します。"
 	services="mobile-services"
 	documentationCenter="ios"
@@ -80,4 +80,4 @@
 [クイック スタート]: ../mobile-services-javascript-backend-ios-get-started.md
 [iOS の GetStartedWithData アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=268622
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

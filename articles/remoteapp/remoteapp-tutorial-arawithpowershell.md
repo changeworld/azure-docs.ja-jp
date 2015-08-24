@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="07/07/2015"
+   ms.date="08/12/2015"
    ms.author="guscatal;spatnaik;elizapo"/>
 
 
@@ -25,6 +25,8 @@
 ## コマンドレットの取得 
 -------------
 最初に Azure Powershell コマンドレットを[ここ](http://go.microsoft.com/?linkid=9811175)からダウンロードする必要があります。RemoteApp のコマンドレットもそれに含まれています。
+
+Azure RemoteApp のコマンドレットのヘルプについては、[こちら](https://msdn.microsoft.com/library/mt428031.aspx)で確認してください。
 
 ## サブスクリプションを使用するために Azure コマンドレットを構成します。
 ------------------
@@ -99,4 +101,4 @@ RemoteApp テンプレート イメージのコマンドレット:
 - Get-AzureRemoteAppOperationResult
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

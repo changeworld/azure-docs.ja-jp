@@ -19,6 +19,7 @@ Visual Studio Application Insights を使用すると、使用状況、イベン
 
 * [Microsoft Azure](http://azure.com) のサブスクリプションWindows、XBox Live、またはその他の Microsoft クラウド サービスで所有している Microsoft アカウントを使用してサインインします。
 * Visual Studio 2015 以降。
+* Windows 10 ユニバーサル アプリケーション
 
 ## Application Insights リソースの作成
 
@@ -139,4 +140,4 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

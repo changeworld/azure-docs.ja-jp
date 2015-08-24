@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="コマンド ラインでの Mobile Services の管理 | Azure Mobile Services" 
+	pageTitle="コマンド ラインでの Mobile Services の管理 | Microsoft Azure" 
 	description="コマンド ライン ツールを使用して Azure Mobile Services を作成、デプロイ、管理する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="Mobile" 
@@ -184,4 +184,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

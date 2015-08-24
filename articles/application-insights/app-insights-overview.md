@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="08/12/2015" 
 	ms.author="awills"/>
  
 # Application Insights とは何か?
@@ -103,17 +103,19 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
 詳細については、このページの左側のナビゲーション バーの [開始] でアプリの種類を選択してください。
 
-## サンプル
+## コード
 
 
 [サンプルとチュートリアル](app-insights-code-samples.md)
+
+[SDK ラボ](https://www.myget.org/gallery/applicationinsights-sdk-labs) - Application Insights SDK の追加機能としてインストール (およびアンインストール) できる NuGet パッケージ。実際にお試しいただき、フィードバックをお寄せください。
 
 
 ## サポートとフィードバック
 
 * 質問および問題点:
  * [トラブルシューティング][qna]
- * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-jp/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
@@ -150,4 +152,4 @@ ASP.NET サーバーと Azure Web アプリについては、[Status Monitor][re
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

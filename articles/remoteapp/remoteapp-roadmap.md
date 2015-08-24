@@ -1,8 +1,8 @@
 <properties
-    pageTitle="RemoteApp で予定される新機能"
-    description="RemoteApp の新機能に関する詳細"
+    pageTitle="Azure RemoteApp で予定される新機能"
+    description="Azure RemoteApp の新機能が使用可能となる時期を説明します。"
     services="remoteapp"
-	documentationCenter=""
+    documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -12,16 +12,16 @@
     ms.tgt_pltfrm="NA"
     ms.devlang="NA"
     ms.topic="article"
-    ms.date="06/10/2015"
+    ms.date="08/12/2015"
     ms.author="elizapo" />
 
-# RemoteApp で予定される新機能
+# Azure RemoteApp で予定される新機能
 
-マイクロソフトは、お客様からのフィードバックに基づいて RemoteApp の改善に常に取り組んでいます。新たな機能が使用可能になるおおよその時期は次のとおりです。
+マイクロソフトは、お客様からのフィードバックに基づいて Azure RemoteApp の改善に常に取り組んでいます。今後、新機能が使用可能になるおおよその時期は次のとおりです。
 
 |機能|2015 年 1 月 - 3 月|2015 年 4 月 - 6 月|2015 年 7 月 - 9 月|2015 年 10 月 - 12 月|
 |-----------|-------|-------|-------|-------|
-|デプロイメントおよび管理用 RemoteApp PowerShell コマンドレットおよび SDK|○| | | |
+|デプロイおよび管理用 RemoteApp PowerShell コマンドレットおよび SDK|○| | | |
 |Azure VM からのイメージの作成およびアップロード|○| | | |
 |ドメインの参加 (Azure 仮想マシンに対するクラウド コレクションの接続) を必要としない VNET へのデプロイ ([フィードバック](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/5928457-provide-ability-to-add-vnet-to-cloud-deloyment-th))| |○| | |
 |RemoteApp ハイブリッド コレクションに対する既存の仮想ネットワークの再利用 (および ExpressRoute の使用) ([フィードバック](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/5933123-existing-virtual-network-does-not-appear-when-tryi))| |○| | |
@@ -39,4 +39,4 @@
 - オーストラリア データ センターでの可用性
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

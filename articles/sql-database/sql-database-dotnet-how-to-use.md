@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL Database の使用方法 (.NET) - Azure の機能ガイド" 
+	pageTitle="SQL Database (.NET) を使用する方法 |Microsoft Azure" 
 	description="SQL Database を使ってみます。SQL Database インスタンスの作成方法と ADO.NET、ODBC、EntityClient プロバイダーを使用した接続方法について説明します。" 
 	services="sql-database" 
 	documentationCenter=".net" 
@@ -211,4 +211,4 @@ Entity Framework を使用することで、開発者は、リレーショナル
 これで、SQL Database への接続の基本を学習できました。「[Azure SQL データベース開発:操作方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/ee621787.aspx)」をご覧ください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="プッシュの使用 (Android) | モバイル デベロッパー センター" 
+	pageTitle="プッシュの使用 (Android) | Microsoft Azure" 
 	description="Azure Mobile Services を使用して Android .Net アプリにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services, notification-hubs" 
 	documentationCenter="android" 
@@ -123,4 +123,4 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

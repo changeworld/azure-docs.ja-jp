@@ -33,11 +33,13 @@ Data Factory は、オンプレミスとクラウドのデータ ソースおよ
 
 Azure Data Factory には、入力および出力データ、処理イベント、および目的のデータ フローの実行に必要なスケジュールとリソースを定義するために連携するいくつかの重要なエンティティがあります。
 
-![主要な概念](./media/data-factory-introduction/key-concepts.png) **図 2** データセット、アクティビティ、パイプライン、リンクされたサービスの間の関係
+![主要な概念](./media/data-factory-introduction/key-concepts.png)
+
+**図 2.** データセット、アクティビティ、パイプライン、リンクされたサービスの間の関係
 
 
 ### アクティビティ
-アクティビティは、データに対して実行するアクションを定義します。各アクティビティは、入力として 0 個以上のデータセットを受け取り、出力として 1 つまたは複数の[データセット](data-factory-create-datasets.md)を生成します。アクティビティは、Azure Data Factory でのオーケストレーションの単位です。たとえば、[コピー アクティビティ](data-factory-data-movement-activities.md)を使用して、データセット間のデータのコピーを調整できます。同様に、Azure HDInsight クラスターに対して Hive クエリを実行する [Hive アクティビティ](data-factory-data-transformation-activities.md)を使用して、データを変換および分析できます。Azure Data Factory には、データ変換、分析、データ移動のための広範なアクティビティがあります。
+アクティビティは、データに対して実行するアクションを定義します。各アクティビティは、入力として 0 個以上の[データセット](data-factory-create-datasets.md)を受け取り、出力として 1 つまたは複数のデータセットを生成します。アクティビティは、Azure Data Factory でのオーケストレーションの単位です。たとえば、[コピー アクティビティ](data-factory-data-movement-activities.md)を使用して、データセット間のデータのコピーを調整できます。同様に、Azure HDInsight クラスターに対して Hive クエリを実行する [Hive アクティビティ](data-factory-data-transformation-activities.md)を使用して、データを変換および分析できます。Azure Data Factory には、データ変換、分析、データ移動のための広範なアクティビティがあります。
 
 ### パイプライン
 [パイプライン](data-factory-create-pipelines.md)は、アクティビティの論理的なグループです。パイプラインは、まとまってタスクを実行するユニットにアクティビティをグループ化するために使用されます。たとえば、複数の変換アクティビティのシーケンスがログ ファイル データのクレンジングに必要な場合があります。このシーケンスには、調整および自動化が必要な複雑なスケジュールと依存関係があります。これらのアクティビティのすべてを "CleanLogFiles" という名前の 1 つのパイプラインにグループ化できます。個々のアクティビティを個別に管理するのではなく、"CleanLogFiles" を 1 つの単位としてデプロイ、スケジューリング、削除できます。
@@ -53,4 +55,4 @@ Azure Data Factory には、入力および出力データ、処理イベント�
 
 データセット、アクティビティ、パイプライン、およびリンクされたサービスという 4 つの簡単な概念を理解すれば、Azure Data Factory を使用できます。 何もない状態から[最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)ことも、[Data Factory のサンプル](data-factory-samples.md)を示した記事の説明に従って既成のサンプルをデプロイすることもできます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

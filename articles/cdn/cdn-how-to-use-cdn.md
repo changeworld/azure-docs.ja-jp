@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="CDN の使用方法 - Azure の機能ガイド" 
+	pageTitle="CDN を使用する方法 | Microsoft Azure" 
 	description="Azure Content Delivery Network (CDN) を使用して、BLOB と静的コンテンツをキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。" 
 	services="cdn" 
 	documentationCenter=".net" 
@@ -54,4 +54,4 @@ CDN にキャッシュされたコンテンツにアクセスするには、ポ�
 [Azure Content Delivery Network (CDN) の概要](cdn-overview.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

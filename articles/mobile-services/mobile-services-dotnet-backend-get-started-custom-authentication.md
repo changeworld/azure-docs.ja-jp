@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="カスタム認証の使用 | モバイル デベロッパー センター" 
+	pageTitle="カスタム認証の使用 | Microsoft Azure" 
 	description="ユーザー名とパスワードを使用してユーザーを認証する方法について説明します。" 
 	documentationCenter="Mobile" 
 	authors="mattchenderson" 
@@ -420,4 +420,4 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 [ProviderCredentials]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.security.providercredentials.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

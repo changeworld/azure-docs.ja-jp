@@ -21,6 +21,10 @@
 
 これは、[Visual Studio Application Insights](app-insights-get-started.md) の使い方を示すコード サンプルのコンパイルです。
 
+## SDK ラボ
+
+[SDK ラボ](https://www.myget.org/gallery/applicationinsights-sdk-labs)は、Application Insights SDK の追加機能としてインストール、アンインストールできる実験用の NuGet パッケージです。実際にお試しいただき、フィードバックをお寄せください。
+
 ## Web サービス
 
 * [テレメトリを Azure Web および worker ロールに追加します](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)。
@@ -49,4 +53,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

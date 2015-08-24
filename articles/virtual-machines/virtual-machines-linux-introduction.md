@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure での Linux 入門 - Azure チュートリアル"
+	pageTitle="Azure での Linux 入門 | Microsoft Azure"
 	description="Azure での Linux 仮想マシンの使用に関する詳細です。"
 	services="virtual-machines"
 	documentationCenter="python"
@@ -110,4 +110,4 @@ Linux では、データ ディスクはカーネルによって `/dev/sdc` と�
  - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

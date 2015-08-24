@@ -1,5 +1,5 @@
 <properties
-	pageTitle="エンタープライズ SaaS へのモバイル アプリの接続 | モバイル デベロッパー センター"
+	pageTitle="エンタープライズ SaaS へのモバイル アプリの接続 | Microsoft Azure"
 	description="SharePoint Online などのエンタープライズ リソースへの呼び出しを作成する方法について説明します"
 	documentationCenter=""
 	authors="mattchenderson"
@@ -187,4 +187,4 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 [Mobile Apps .NET Backend App Service Extension]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.AppService/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

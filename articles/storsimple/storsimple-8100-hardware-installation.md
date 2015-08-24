@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple 8100 デバイスの取り付け"
+   pageTitle="StorSimple 8100 デバイスの取り付け | Microsoft Azure"
    description="StorSimple 8100 デバイスの開梱、ラック取り付け、およびケーブル接続の方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/20/2015"
+   ms.date="08/06/2015"
    ms.author="alkohli" />
 
 # StorSimple 8100 デバイスの取り付け
@@ -47,7 +47,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
      ![ストレージ デバイスの開梱](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
 
-    **図 1: ストレージ デバイスを開梱したようす**
+    **ストレージ デバイスを開梱したようす**
 
      ラベル | 説明 
      ----- | -------------
@@ -115,7 +115,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
     ![エンクロージャ シャーシへのレール スライドの取り付け](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
-   **図 2: エンクロージャの両側へのレール スライドの取り付け**
+   **エンクロージャの両側へのレール スライドの取り付け**
 
     Label | Description
     ----- | -----------
@@ -132,7 +132,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
      ![ラック キャビネットへのレール スライドの取り付け](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
 
-    **図 3: ラックへのレール アセンブリの取り付け**
+    **ラックへのレール アセンブリの取り付け**
 
      ラベル | 説明
      ----- | -----------
@@ -154,7 +154,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
     ![ラックへのデバイスの挿入](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
 
-    **図 4: ラックへのデバイスの取り付け**
+    **ラックへのデバイスの取り付け**
 
 3. 左右の各フランジを通して付属のプラスねじを取り付けることにより、エンクロージャをラックに固定します。
 
@@ -162,7 +162,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
      ![フランジ キャップの取り付け](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
  
-    **図 5: フランジ キャップの取り付け**
+    **フランジ キャップの取り付け**
 
      ラベル | 説明
      ----- | -----------
@@ -192,7 +192,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 - 10 GbE ネットワーク インターフェイスで使用する付属の単一 QSFP-SFP+ アダプター
 
-- [10 GbE ネットワーク インターフェイスでサポートされているトランシーバー、ケーブル、およびスイッチ](https://msdn.microsoft.com/library/azure/dn891474.aspx)
+- [StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
 
 ### 電源ケーブル接続
@@ -201,29 +201,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 デバイスの電源ケーブル接続を行うには、次のステップを実行します。
 
-#### 電源ケーブル接続を行うには
-
-1. 各 PCM の電源スイッチが OFF の位置になっていることを確認します。
-
-2. 主エンクロージャの両方の PCM に電源コードを接続します。
-
-3. 次の図に示すように、ラックの配電ユニット (PDU) に電源コードを接続します。2 つの PCM が別の電源を使用していることを確認します。
-
-4. 両方の PCM の電源スイッチを ON の位置に切り替えることによって、システムの電源を入れます。
-
-    >[AZURE.NOTE]システムの高可用性を確保するには、以下の図に示されている電源ケーブル接続構成に厳密に従う必要があります。
-
-    ![2U デバイスの電源ケーブル接続](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforPower.png)
-
-    **図 6: デバイスの電源ケーブル接続**
-
-     ラベル | 説明
-     ----- | -----------
-     1 | PCM 0
-     2 | コントローラー 1
-     3 | コントローラー 0
-     4 | PCM 1
-     5 | PDU
+[AZURE.INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
 ### ネットワークのケーブル配線
 
@@ -237,7 +215,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
     ![8100 デバイスのバックプレーン](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
 
-    **図 7: データ ポートが示されているデバイスの背面**
+    **データ ポートが示されているデバイスの背面**
  
      ラベル | 説明
      ------- | -----------
@@ -258,7 +236,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
     ![2U デバイスのネットワーク ケーブル接続](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
 
-    **図 8: デバイスのネットワーク ケーブル配線**
+    **デバイスのネットワーク ケーブル配線**
 
     ラベル | 説明
     ----- | -----------
@@ -276,7 +254,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 #### シリアル接続のためにケーブルを接続するには
 
-1. デバイスの各コントローラーにはシリアル ポートがあり、レンチのアイコンで識別されます。デバイスのバックプレーンにあるシリアル ポートを見つけるには、図 7 を参照してください。 
+1. デバイスの各コントローラーにはシリアル ポートがあり、レンチのアイコンで識別されます。デバイスのバックプレーンにあるシリアル ポートを見つけるには、「[ネットワークのケーブル配線](#network-cabling)」セクションの図を参照してください。 
 
 2. デバイスのバックプレーンにあるアクティブなコントローラーを識別します。明滅している青の LED はコントローラーがアクティブであることを示しています。
 
@@ -294,7 +272,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 ## 次のステップ
 
-これで[オンプレミス StorSimple デバイスを配置して構成する](storsimple-deployment-walkthrough.md)準備ができました。
+これで[オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough.md)準備ができました。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

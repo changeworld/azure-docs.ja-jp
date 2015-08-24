@@ -3,7 +3,7 @@
 	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。" 
 	services="application-insights" 
     documentationCenter=""
-	authors="alancameronwills" 
+	authors="noamben" 
 	manager="douge"/>
 
 <tags 
@@ -17,7 +17,7 @@
  
 # チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
 
-この記事では、[連続エクスポート][export]と [Azure Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Visual Studio Application Insights][start] から Azure SQL データベースに移動する方法を示します。
+この記事では、[連続エクスポート][export]と [Azure Stream Analytics](http://azure.microsoft.com/services/stream-analytis/) を使用してテレメトリ データを [Visual Studio Application Insights][start] から Azure SQL データベースに移動する方法を示します。
 
 連続エクスポートにより、JSON 形式でテレメトリ データが Azure Storage に移動されます。Azure Stream Analytics を使って JSON オブジェクトを解析し、データベース テーブルに行を作成します。
 
@@ -305,4 +305,4 @@ SQL データベースを指定します。
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,10 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="05/01/2015"
+   ms.date="08/02/2015"
    ms.author="joaoma"/>
 
 # DNS レコードの管理方法
+
 
 このガイドでは、DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
 
@@ -265,4 +266,4 @@ CNAME レコード セットに格納できるレコードは最大 1 つであ�
 [レコード セットとレコードの作成の概要](../dns-getstarted-create-recordset)<BR> [DNS ゾーンに対する操作の実行](../dns-operations-dnszones)<BR> [.NET SDK を使用した操作の自動化](../dns-sdk)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

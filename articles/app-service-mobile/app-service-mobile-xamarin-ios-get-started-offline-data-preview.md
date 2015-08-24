@@ -162,7 +162,7 @@ Mobile Apps を初めて使用する場合は、最初に [Xamarin iOS アプリ
 <!-- Images -->
 
 <!-- URLs. -->
-[Xamarin iOS アプリの作成]: ../app-service-mobile-dotnet-backend-xamarin-ios-get-started.md
+[Xamarin iOS アプリの作成]: ../app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md
 
 [How to use the Xamarin Component client for Azure Mobile Services]: ../partner-xamarin-mobile-services-how-to-use-client-library.md
 
@@ -170,4 +170,4 @@ Mobile Apps を初めて使用する場合は、最初に [Xamarin iOS アプリ
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

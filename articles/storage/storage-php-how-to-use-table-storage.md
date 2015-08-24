@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="PHP から Table ストレージを使用する方法 | Microsoft Azure" 
-	description="PHP から Table サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。" 
-	services="storage" 
-	documentationCenter="php" 
-	authors="tfitzmac" 
-	manager="adinah" 
+<properties
+	pageTitle="PHP から Table ストレージを使用する方法 | Microsoft Azure"
+	description="PHP から Table サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。"
+	services="storage"
+	documentationCenter="php"
+	authors="tfitzmac"
+	manager="adinah"
 	editor=""/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="PHP" 
-	ms.topic="article" 
-	ms.date="07/29/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="PHP"
+	ms.topic="article"
+	ms.date="07/29/2015"
 	ms.author="tomfitz"/>
 
 
@@ -54,7 +54,7 @@ Azure Table サービス API を使用するには、次の要件があります
 	use WindowsAzure\Common\ServicesBuilder;
 
 
-この後のコード例では、`require_once` ステートメントが常に記述されていますが、コード例の実行に必要なクラスのみ参照されます。
+下のすべてのサンプルに `require_once` ステートメントが入っていますが、サンプルの実行に必要なクラスのみが参照されます。
 
 ## Azure のストレージ接続文字列の設定
 
@@ -85,9 +85,9 @@ Azure Table サービス クライアントをインスタンス化するには�
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
 
 
-## 方法: テーブルを作成する
+## テーブルの作成
 
-**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。テーブルの作成時、Table サービスのタイムアウトを設定できます(Table サービスのタイムアウトの詳細については、「[テーブル サービス操作のサーバー タイムアウトの設定][table-service-timeouts]」を参照)。
+**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。テーブルの作成時、Table サービスのタイムアウトを設定できます(Table サービスのタイムアウトの詳細については、「[Table サービス操作のタイムアウトの設定][table-service-timeouts]」を参照)。
 
 	require_once 'vendor\autoload.php';
 
@@ -105,13 +105,13 @@ Azure Table サービス クライアントをインスタンス化するには�
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		// Handle exception based on error codes and messages.
-		// Error codes and messages can be found here: 
+		// Error codes and messages can be found here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 	}
 
 テーブル名の制限については、「[Table サービス データ モデルについて][table-data-model]」を参照してください。
 
-## 方法: エンティティをテーブルに追加する
+## エンティティをテーブルに追加する
 
 エンティティをテーブルに追加するには、新しい **Entity** オブジェクトを作成し、**TableRestProxy->insertEntity** に渡します。エンティティの作成時には `PartitionKey` と `RowKey` を指定する必要があることに注意してください。これらにはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。システムでは `PartitionKey` が使用されて多くのストレージ ノードにテーブルのエンティティが自動的に配布されます。`PartitionKey` が同じエンティティは同じノードで格納されています (同じノードで格納されている複数のエンティティに対する処理は、異なるノードにまたがって格納されているエンティティに対する処理よりもパフォーマンスは高くなります)。 `RowKey` は特定のパーティション内のエンティティの一意の ID です。
 
@@ -124,22 +124,22 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-	
+
 	$entity = new Entity();
 	$entity->setPartitionKey("tasksSeattle");
 	$entity->setRowKey("1");
 	$entity->addProperty("Description", null, "Take out the trash.");
-	$entity->addProperty("DueDate", 
-						 EdmType::DATETIME, 
+	$entity->addProperty("DueDate",
+						 EdmType::DATETIME,
 						 new DateTime("2012-11-05T08:15:00-08:00"));
 	$entity->addProperty("Location", EdmType::STRING, "Home");
-	
+
 	try{
 		$tableRestProxy->insertEntity("mytable", $entity);
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -158,21 +158,21 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-	
+
 	//Create new entity.
 	$entity = new Entity();
-	
+
 	// PartitionKey and RowKey are required.
 	$entity->setPartitionKey("tasksSeattle");
 	$entity->setRowKey("1");
-	
+
 	// If entity exists, existing properties are updated with new values and
 	// new properties are added. Missing properties are unchanged.
 	$entity->addProperty("Description", null, "Take out the trash.");
 	$entity->addProperty("DueDate", EdmType::DATETIME, new DateTime()); // Modified the DueDate field.
 	$entity->addProperty("Location", EdmType::STRING, "Home");
 	$entity->addProperty("Status", EdmType::STRING, "Complete"); // Added Status field.
-	
+
 	try	{
 		// Calling insertOrReplaceEntity, instead of insertOrMergeEntity as shown,
 		// would simply replace the entity with PartitionKey "tasksSeattle" and RowKey "1".
@@ -180,15 +180,15 @@ Azure Table サービス クライアントをインスタンス化するには�
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
-	   
 
-## 方法: 単一のエンティティを取得する
+
+## 単一のエンティティを取得する
 
 **TableRestProxy->getEntity** メソッドを使用して、その `PartitionKey` と `RowKey` を照会することで、1 つのエンティティを取得できます。次の例では、パーティション キー `tasksSeattle` と行キー `1` を **getEntity** メソッドに渡しています。
 
@@ -199,24 +199,24 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-	
+
 	try	{
 		$result = $tableRestProxy->getEntity("mytable", "tasksSeattle", 1);
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
-	
+
 	$entity = $result->getEntity();
 
 	echo $entity->getPartitionKey().":".$entity->getRowKey();
 
-## 方法: パーティション内のすべてのエンティティを取得する
+## パーティション内のすべてのエンティティを取得する
 
 エンティティのクエリはフィルターを使用して作成します (詳細については「[テーブルおよびエンティティのクエリ][filters]」を参照)。パーティション内のすべてのエンティティを取得するには、フィルター "PartitionKey eq *partition\_name*" を使用します。次の例では、フィルターを **queryEntities** メソッドに渡すことで、`tasksSeattle` パーティション内のすべてのエンティティを取得する方法を示しています。
 
@@ -227,28 +227,28 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-	
+
 	$filter = "PartitionKey eq 'tasksSeattle'";
-	
+
 	try	{
 		$result = $tableRestProxy->queryEntities("mytable", $filter);
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
-	
+
 	$entities = $result->getEntities();
-	
+
 	foreach($entities as $entity){
 		echo $entity->getPartitionKey().":".$entity->getRowKey()."<br />";
 	}
 
-## 方法: パーティション内のエンティティのサブセットを取得する
+## パーティション内のエンティティのサブセットを取得する
 
 前の例で示している同じパターンを使用してパーティション内のエンティティのサブセットを取得できます。取得するエンティティのサブセットは、使用するフィルターによって決まります (詳細については、「[テーブルおよびエンティティのクエリ][filters]」を参照)。次の例では、フィルターを使用して、`Location` で指定した場所で、`DueDate` で指定した日付より前のエンティティをすべて取得する方法を示しています。
 
@@ -259,28 +259,28 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-	
+
 	$filter = "Location eq 'Office' and DueDate lt '2012-11-5'";
-	
+
 	try	{
 		$result = $tableRestProxy->queryEntities("mytable", $filter);
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
-	
+
 	$entities = $result->getEntities();
-	
+
 	foreach($entities as $entity){
 		echo $entity->getPartitionKey().":".$entity->getRowKey()."<br />";
 	}
 
-## 方法: エンティティ プロパティのサブセットを取得する
+## エンティティ プロパティのサブセットを取得する
 
 クエリを使用してエンティティのプロパティのサブセットを取得できます。*プロジェクション*と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。取得するプロパティを指定するには、プロパティの名前を **Query->addSelectField** メソッドに渡します。このメソッドを複数回呼び出して、ほかのプロパティを追加できます。**TableRestProxy->queryEntities** の実行後、返されるエンティティには選択したプロパティのみ格納されています(テーブル エンティティのサブセットが返されるようにする場合は、前のクエリで示したようにフィルターを使用します)。
 
@@ -292,23 +292,23 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-	
+
 	$options = new QueryEntitiesOptions();
 	$options->addSelectField("Description");
-	
+
 	try	{
 		$result = $tableRestProxy->queryEntities("mytable", $options);
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
-	
-	// All entities in the table are returned, regardless of whether 
+
+	// All entities in the table are returned, regardless of whether
 	// they have the Description field.
 	// To limit the results returned, use a filter.
 	$entities = $result->getEntities();
@@ -318,12 +318,12 @@ Azure Table サービス クライアントをインスタンス化するには�
 		echo $description."<br />";
 	}
 
-## 方法: エンティティを更新する
+## エンティティを更新する
 
-既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使用した後、**TableRestProxy->updateEntity** を呼び出すことで更新できます。次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。プロパティを削除するには、その値を **null** に設定することに注意してください。
+既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使用した後、**TableRestProxy->updateEntity** を呼び出すことで更新できます。次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。プロパティの値を **null** に設定して、プロパティを削除できることに注意してください。
 
 	require_once 'vendor\autoload.php';
-	
+
 	use WindowsAzure\Common\ServicesBuilder;
 	use WindowsAzure\Common\ServiceException;
 	use WindowsAzure\Table\Models\Entity;
@@ -331,15 +331,15 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-	
+
 	$result = $tableRestProxy->getEntity("mytable", "tasksSeattle", 1);
-	
+
 	$entity = $result->getEntity();
-	
+
 	$entity->setPropertyValue("DueDate", new DateTime()); //Modified DueDate.
-	
+
 	$entity->setPropertyValue("Location", null); //Removed Location.
-	
+
 	$entity->addProperty("Status", EdmType::STRING, "In progress"); //Added Status.
 
 	try	{
@@ -347,14 +347,14 @@ Azure Table サービス クライアントをインスタンス化するには�
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-## 方法: エンティティを削除する
+## エンティティを削除する
 
 エンティティを削除するには、テーブル名、およびエンティティの `PartitionKey` と `RowKey` を **TableRestProxy->deleteEntity** メソッドに渡します。
 
@@ -365,14 +365,14 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-	
+
 	try	{
 		// Delete entity.
 		$tableRestProxy->deleteEntity("mytable", "tasksSeattle", "2");
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -381,7 +381,7 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 同時実行のチェック用に、削除するエンティティの Etag を設定できることに注意してください。そのためには、**DeleteEntityOptions->setEtag** メソッドを使用して、**DeleteEntityOptions** オブジェクトを 4 番目のパラメーターとして **deleteEntity** に渡します。
 
-## 方法: バッチ テーブル処理
+## バッチ テーブル処理
 
 **TableRestProxy->batch** メソッドを使用すると、1 つの要求で複数の処理を実行できます。ここで示しているパターンでは、処理を **BatchRequest** オブジェクトに追加し、**BatchRequest** オブジェクトを **TableRestProxy->batch** メソッドに渡しています。処理を **BatchRequest** オブジェクトに追加するには、次のいずれかのメソッドを複数回呼び出すことができます。
 
@@ -395,7 +395,7 @@ Azure Table サービス クライアントをインスタンス化するには�
 次の例では、1 つの要求で **insertEntity** 処理と **deleteEntity** 処理を実行する方法を示しています。
 
 	require_once 'vendor\autoload.php';
-	
+
 	use WindowsAzure\Common\ServicesBuilder;
 	use WindowsAzure\Common\ServiceException;
 	use WindowsAzure\Table\Models\Entity;
@@ -404,40 +404,40 @@ Azure Table サービス クライアントをインスタンス化するには�
 
  	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-	
+
 	// Create list of batch operation.
 	$operations = new BatchOperations();
-	
+
 	$entity1 = new Entity();
 	$entity1->setPartitionKey("tasksSeattle");
 	$entity1->setRowKey("2");
 	$entity1->addProperty("Description", null, "Clean roof gutters.");
-	$entity1->addProperty("DueDate", 
-						  EdmType::DATETIME, 
+	$entity1->addProperty("DueDate",
+						  EdmType::DATETIME,
 						  new DateTime("2012-11-05T08:15:00-08:00"));
 	$entity1->addProperty("Location", EdmType::STRING, "Home");
-	
+
 	// Add operation to list of batch operations.
     $operations->addInsertEntity("mytable", $entity1);
 
 	// Add operation to list of batch operations.
 	$operations->addDeleteEntity("mytable", "tasksSeattle", "1");
-	
+
 	try	{
 		$tableRestProxy->batch($operations);
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-テーブル バッチ処理の詳細については、「[エンティティ グループ トランザクションの実行][entity-group-transactions]」を参照してください。
+Table バッチ処理の詳細については、「[エンティティ グループ トランザクションの実行][entity-group-transactions]」を参照してください。
 
-## 方法: テーブルを削除する
+## テーブルを削除する
 
 最後に、テーブルを削除するには、テーブル名を **TableRestProxy->deleteTable** メソッドに渡します。
 
@@ -448,14 +448,14 @@ Azure Table サービス クライアントをインスタンス化するには�
 
 	// Create table REST proxy.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
-	
+
 	try	{
 		// Delete table.
 		$tableRestProxy->deleteTable("mytable");
 	}
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
-		// Error codes and messages are here: 
+		// Error codes and messages are here:
 		// http://msdn.microsoft.com/library/azure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
@@ -470,13 +470,12 @@ Azure Table サービス クライアントをインスタンス化するには�
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
-[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[Storing and accessing data in Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [require_once]: http://php.net/require_once
 [table-service-timeouts]: http://msdn.microsoft.com/library/azure/dd894042.aspx
 
 [table-data-model]: http://msdn.microsoft.com/library/azure/dd179338.aspx
 [filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

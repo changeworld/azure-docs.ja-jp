@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 #Media Services PlayReady ライセンス テンプレートの概要
@@ -301,4 +301,4 @@ Silverlight でサポートされる保護レベルの例については、「[S
 	  <xs:element name="ScmsRestriction" nillable="true" type="tns:ScmsRestriction" />
 	</xs:schema>
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

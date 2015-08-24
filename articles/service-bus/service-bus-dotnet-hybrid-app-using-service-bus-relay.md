@@ -1,5 +1,5 @@
 <properties
-	pageTitle="ハイブリッド内部設置型/クラウド アプリケーション (.NET) - Azure"
+	pageTitle="ハイブリッド内部設置型/クラウド アプリケーション (.NET) | Microsoft Azure"
 	description="Azure Service Bus Relay を使用して .NET 内部設置型/クラウド ハイブリッド アプリケーションを作成する方法について説明します。"
 	services="service-bus"
 	documentationCenter=".net"
@@ -620,4 +620,4 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [executionmodels]: http://azure.microsoft.com/develop/net/fundamentals/compute/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

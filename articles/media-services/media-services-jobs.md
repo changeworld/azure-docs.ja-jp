@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 #Azure Media Services のジョブを操作する
@@ -60,4 +60,4 @@
 [クォータと制限](media-services-quotas-and-limitations.md) – Media Services Encoder で使用するクォータと制限について説明します。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

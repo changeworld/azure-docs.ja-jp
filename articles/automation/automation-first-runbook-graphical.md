@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="07/03/2015"
+	ms.date="08/13/2015"
 	ms.author="bwren"/>
 
 
-# 初めての Runbook
+# 初めてのグラフィカルな Runbook
+
+> [AZURE.SELECTOR]
+- [Graphical](automation-first-runbook-graphical.md)
+- [Textual](automation-first-runbook-textual.md)
 
 このチュートリアルでは、Azure Automation で[グラフィカルな Runbook](automation-graphical-authoring-intro.md) を作成する手順を説明します。簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure Virtual Machine を開始します。そして、Runbook のパラメーターおよび条件付きリンクを追加することによって、Runbook をいっそう堅牢にします。
 
@@ -28,11 +32,11 @@
 - として機能します。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-trial/" target="_blank">[無料評価版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
 - Runbook を保持するための [Automation アカウント](automation-configuring.md)。
 - Azure Virtual Machine。マシンを停止して起動するので、運用環境のものは使用しないでください。
-- Azure リソースに対する認証に使用する [Azure Active Directory のユーザーと資格情報資産](automation-configuring.md)。このユーザーには、仮想マシンを開始および停止するアクセス許可が必要です。
+- Azure リソースに対する認証に使用する [Azure Active Directory のユーザーと Automation の資格情報資産](automation-configuring.md)。このユーザーには、仮想マシンを開始および停止するアクセス許可が必要です。
 
 ## 手順 1 - 新しい Runbook を作成する
 
-*Hello World* というテキストを出力する簡単な Runbook を作成します。
+最初に、*Hello World* というテキストを出力する簡単な Runbook を作成します。
 
 1. Azure プレビュー ポータルで、Automation アカウントを開きます。Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。既に資産がいくつかあります。これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。[前提条件](#prerequisites)で説明されている資格情報資産も必要です。
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。<br> ![Runbook の制御](media/automation-first-runbook-graphical/runbooks-control.png)
@@ -161,8 +165,8 @@ Runbook をテストして発行しましたが、これまでのところ役に
 ## 関連記事:
 
 - [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
-
+- [初めてのテキスト形式の Runbook](automation-first-runbook-textual.md)
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

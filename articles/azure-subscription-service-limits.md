@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/15/2015"
+	ms.date="08/09/2015"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -23,7 +23,6 @@
 本書では、Microsoft Azure での最も一般的な制限について具体的に説明しています。現時点では、すべての Azure サービスを網羅していませんのでご了承ください。今後、Azure Platform 全体を広くカバーするように制限を展開し、更新していく予定です。
 
 > [AZURE.NOTE]「**既定の制限**」を超える制限の引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。以下の表の「**上限**」の値を超える制限の引き上げはできません。「**上限**」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
-
 
 ### 制限と Azure リソース マネージャー
 
@@ -77,7 +76,7 @@
 
 ## ストレージの制限
 
-### Standard Storage の制限 
+### Standard Storage の制限
 
 [AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
@@ -143,6 +142,10 @@ SQL Database の制限に関する詳細については、次のトピックを�
 
 [AZURE.INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
 
+## CDN の制限
+
+[AZURE.INCLUDE [cdn-limits](../includes/cdn-limits.md)]
+
 ## Mobile Services の制限
 
 [AZURE.INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
@@ -207,4 +210,4 @@ SQL Database の制限に関する詳細については、次のトピックを�
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

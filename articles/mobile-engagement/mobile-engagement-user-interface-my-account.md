@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/17/2015"
+   ms.date="08/10/2015"
    ms.author="piyushjo"/>
 
 # アカウント プロファイルとテスト デバイスを管理する方法 
@@ -145,4 +145,4 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
  
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

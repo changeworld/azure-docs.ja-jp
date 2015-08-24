@@ -1,6 +1,6 @@
 <properties
-   pageTitle="高信頼アクター API のアンチ パターン"
-   description="Service Fabric 高信頼アクターを学習しているお客様が陥りやすいいくつかの問題点"
+   pageTitle="いくつかの Azure Service Fabric アクターのアンチパターン"
+   description="Azure Service Fabric アクターを学習しているお客様が陥りやすいいくつかの問題点"
    services="service-fabric"
    documentationCenter=".net"
    authors="jessebenson"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/05/2015"
+   ms.date="08/11/2015"
    ms.author="claudioc"/>
 
 # 高信頼アクターの設計パターン: いくつかアンチ パターン
@@ -30,4 +30,4 @@ Service Fabric 高信頼アクターを学習しているお客様が陥りや�
 
 * エンティティ モデルを無条件にマップする。これは、エンティティとそのリレーションシップを使用して問題がモデル化されるリレーショナル環境にいた開発者が陥りやすい問題点です。このアプローチは、サブジェクト ドメインを理解するために今なお役立ちますが、サービス指向の考え方と組み合わせ、動作と調和させる必要があります。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -5,3 +5,5 @@
 - [iOS](../articles/app-insights-ios.md)
 - [Android](../articles/app-insights-android.md)
 - [Other](../articles/app-insights-platforms.md)
+
+<!---HONumber=August15_HO7-->

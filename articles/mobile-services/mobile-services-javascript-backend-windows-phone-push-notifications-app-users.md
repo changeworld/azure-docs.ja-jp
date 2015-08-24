@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="認証された Windows Phone Silverlight アプリケーション ユーザーへのプッシュ通知の送信 | Azure Mobile Services" 
+	pageTitle="認証された Windows Phone Silverlight アプリケーション ユーザーへのプッシュ通知の送信 | Microsoft Azure" 
 	description="Azure Mobile Services から Windows Phone Silverlight アプリケーションの特定のユーザーにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services,notification-hubs" 
 	documentationCenter="windows" 
@@ -94,4 +94,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

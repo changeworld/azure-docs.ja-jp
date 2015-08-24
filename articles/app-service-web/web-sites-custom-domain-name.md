@@ -18,10 +18,11 @@
 
 # Azure App Service のカスタム ドメイン名の構成
 
-<div class="dev-center-tutorial-selector sublanding">
-  <a href="/documentation/articles/custom-dns-web-site-buydomains-web-app" title="Web アプリ">Web アプリ用のドメインの購入</a> <a href="/documentation/articles/web-sites-custom-domain-name" title="Web アプリ" class="current">外部ドメインでの Web アプリ</a> <a href="/documentation/articles/web-sites-traffic-manager-custom-domain-name/" title="Traffic Manager を使用した Web アプリ">Traffic Manager を使用した Web アプリ</a> <a href="/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a>
-
-</div>
+> [AZURE.SELECTOR]
+- [Buy Domain for Web Apps](custom-dns-web-site-buydomains-web-app.md)
+- [Web Apps with External Domains](web-sites-custom-domain-name.md)
+- [Web Apps with Traffic Manager](web-sites-traffic-manager-custom-domain-name.md)
+- [GoDaddy](web-sites-godaddy-custom-domain-name.md)
 
 [AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
@@ -38,7 +39,7 @@ Web アプリを作成するときに、Azure は azurewebsites.net のサブド
 
 1. ドメイン名を予約します。使用できるレジストラーの種類は数多く存在するため、ここでは、この手順については説明しません。サインアップすると、サイトによってプロセスが順に表示されます。
 1. ドメインを Azure Web アプリにマップする DNS レコードを作成します。
-1. [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)内でドメイン名を追加します。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)内でドメイ��名を追加します。
 
 基本的な手順は以上ですが、特に注意が必要な場合があります。
 
@@ -147,4 +148,4 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

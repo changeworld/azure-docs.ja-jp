@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="認証の使用 (JavaScript) | モバイル デベロッパー センター" 
+	pageTitle="認証の使用 (JavaScript) | Microsoft Azure" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Windows ストア JavaScript アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -94,4 +94,4 @@
 [Register your Windows Store app package for Microsoft authentication]: /develop/mobile/how-to-guides/register-windows-store-app-package
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

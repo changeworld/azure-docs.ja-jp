@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ユニバーサル Windows アプリからの Azure Blob ストレージへのイメージのアップロード | Azure Mobile Services" 
+	pageTitle="ユニバーサル Windows アプリからの Azure BLOB ストレージへのイメージのアップロード | Microsoft Azure" 
 	description=".NET バックエンド モバイル サービスを使用してイメージを Azure BLOB ストレージにアップロードし、そのイメージにユニバーサル Windows アプリからアクセスする方法を説明します。" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
@@ -71,4 +71,4 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

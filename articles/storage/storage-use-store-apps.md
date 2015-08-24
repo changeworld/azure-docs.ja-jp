@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Windows ストア アプリでの Azure ストレージの使用 | Azure" 
+	pageTitle="Windows ストア アプリでの Azure ストレージの使用 | Microsoft Azure" 
 	description="Azure BLOB、キュー、テーブルを使用して Windows ストア アプリのデータを格納する方法を説明します。" 
 	services="storage" 
 	documentationCenter="" 
@@ -94,4 +94,4 @@ WCF Data Services NuGet パッケージを参照したら、ボタンの **Click
 [store-apps-storage-package-manager]: ./media/storage-use-store-apps/store-apps-storage-package-manager.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

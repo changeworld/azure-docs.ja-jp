@@ -3,7 +3,7 @@
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
 	services="mobile-engagement" 
 	documentationCenter="mobile" 
-	authors="kpiteira" 
+	authors="piyushjo" 
 	manager="dwrede" 
 	editor="" />
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="02/12/2015" 
-	ms.author="kapiteir" />
+	ms.date="08/10/2015" 
+	ms.author="piyushjo" />
 
 #Engagement を Android に統合する方法
 
@@ -175,7 +175,7 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 
 ### 遅延エリアの場所レポート
 
-遅延エリアの場所レポートでは、デバイスに関連付けられた国、リージョン、地域をレポートできます。このタイプの場所レポートでは、セル ID または WIFI に基づいたネットワークの場所のみを使用します。デバイス エリアがセッションごとに最大 1 回レポートされます。GPS を使用しないため、このタイプの場所レポートでは、まったくとは言わないまでも、電力消費量にほとんど影響がありません。
+大まかなエリアの位置報告では、デバイスに関連付けられた国、リージョン、地域をレポートできます。このタイプの場所レポートでは、セル ID または WIFI に基づいたネットワークの場所のみを使用します。デバイス エリアがセッションごとに最大 1 回レポートされます。GPS を使用しないため、このタイプの場所レポートでは、まったくとは言わないまでも、電力消費量にほとんど影響がありません。
 
 報告されたエリアを基に、ユーザー、セッション、イベント、エラーに関する地理的な統計を計算します。また、リーチ キャンペーンの条件としても使用されます。デバイスに関する最新の既知のエリアは[デバイス API] を利用して取得できます。
 
@@ -311,4 +311,4 @@ Engagement では、この設定を管理するために設定ファイル内で
 [デバイス API]: http://go.microsoft.com/?linkid=9876094
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

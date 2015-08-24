@@ -26,11 +26,27 @@ SQL Data Warehouse では、ビューが特に役立ちます。ビューをさ�
 ## アーキテクチャの抽象化
 一般的なアプリケーション パターンでは、データを読み込みながら、CREATE TABLE AS SELECT (CTAS) を使用し、その後にオブジェクトの名前変更パターンを使用してテーブルを再作成します。
 
-次の例では、日付ディメンションに新しい日付レコードを追加します。まず、新しいオブジェクト DimDate\_New を作成し、次に、このオブジェクトの名前を変更して、オブジェクトの元のバージョンを置き換えます。``` CREATE TABLE dbo.DimDate\_New WITH (DISTRIBUTION = REPLICATE , CLUSTERED INDEX (DateKey ASC) ) AS SELECT * FROM dbo.DimDate AS prod UNION ALL SELECT * FROM dbo.DimDate\_stg AS stg ;
+次の例では、日付ディメンションに新しい日付レコードを追加します。新しいオブジェクトの DimDate\_New が最初に作成され、名前が変更され、オブジェクトの最初のバージョンに代わることに注意してください。
 
-RENAME OBJECT DimDate TO DimDate\_Old; RENAME OBJECT DimDate\_New TO DimDate;
+```
+CREATE TABLE dbo.DimDate_New
+WITH (DISTRIBUTION = REPLICATE
+, CLUSTERED INDEX (DateKey ASC)
+)
+AS 
+SELECT *
+FROM   dbo.DimDate  AS prod
+UNION ALL
+SELECT *
+FROM   dbo.DimDate_stg AS stg
+;
 
-``` ただし、この結果、SSDT SQL Server オブジェクト エクスプローラーのユーザーのビューに、テーブル オブジェクトが表示されたり、表示されなかったりする可能性があります。ビューを使用すると、基になるオブジェクトの名前は変更されますが、ウェアハウスのデータの利用者に一貫性のあるプレゼンテーション レイヤーを提供できます。ビューからデータにアクセスできるようにすると、ユーザーは基になるテーブルを表示する必要がなくなります。これにより、一貫性のあるユーザー エクスペリエンスを提供すると同時に、データ ウェアハウスの設計者は、データ モデルを進化させ、データの読み込みプロセスで CTAS を使用してパフォーマンスを最大限に高めることもできます。
+RENAME OBJECT DimDate TO DimDate_Old;
+RENAME OBJECT DimDate_New TO DimDate;
+
+```
+
+ただし、この結果、SSDT SQL Server オブジェクト エクスプローラーのユーザーのビューに、テーブル オブジェクトが表示されたり、表示されなかったりする可能性があります。ビューを使用すると、基になるオブジェクトの名前は変更されますが、ウェアハウスのデータの利用者に一貫性のあるプレゼンテーション レイヤーを提供できます。ビューからデータにアクセスできるようにすると、ユーザーは基になるテーブルを表示する必要がなくなります。これにより、一貫性のあるユーザー エクスペリエンスを提供すると同時に、データ ウェアハウスの設計者は、データ モデルを進化させ、データの読み込みプロセスで CTAS を使用してパフォーマンスを最大限に高めることもできます。
 
 ## パフォーマンスの最適化
 ビューは、パフォーマンスに最適化された結合をテーブル間に適用する優れた方法です。たとえば、ビューで結合条件の一部として冗長分散キーを組み込むことで、データの移動を最小限に抑えることができます。別の理由として、特定のクエリ ヒントや結合ヒントを強制できることが挙げられます。これにより、結合が常に最適な方法で実行されることが保証され、ユーザーに依存せずに結合を適切に作成できます。
@@ -53,4 +69,4 @@ SQL Data Warehouse のビューはメタデータ専用です。
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

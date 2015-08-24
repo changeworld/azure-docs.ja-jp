@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ユニバーサル Windows アプリでのオフライン データの競合の処理 | Azure Mobile Services" 
+	pageTitle="ユニバーサル Windows アプリでのオフライン データの競合の処理 | Microsoft Azure" 
 	description="Azure Mobile Services を使用して、ユニバーサル Windows アプリケーションでのオフライン データの同期時に発生する競合を処理する方法について説明します。" 
 	documentationCenter="windows" 
 	authors="wesmc7777" 
@@ -164,4 +164,4 @@ Mobile Services でオフライン機能を使用するためには、ローカ�
 [Todo オフラインのモバイル サービスのサンプル]: http://go.microsoft.com/fwlink/?LinkId=512866
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

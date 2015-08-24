@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/23/2015" 
+	ms.date="08/11/2015" 
 	ms.author="juliako"/>
 
 
@@ -26,11 +26,13 @@
 
 ##概要
 
-オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](media-services-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。コンテンツが暗号化されている場合は、ロケーターを作成する前に、アセット配信ポリシーを構成します ([この](media-services-dotnet-configure-asset-delivery-policy.md)トピックをご覧ください)。
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[資産をエンコードする](media-services-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。
+
+>[AZURE.NOTE]コンテンツが暗号化されている場合は、ロケーターを作成する前に、資産配信ポリシーを構成します ([この](media-services-dotnet-configure-asset-delivery-policy.md)トピックをご覧ください)。
 
 また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
 
-このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
+このトピックでは、オンデマンド ストリーミング ロケーターを作成して資産を発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
   	 
 ##オンデマンド ストリーミング ロケーターを作成する
 
@@ -38,9 +40,9 @@
 
    1. コンテンツが暗号化されている場合は、アクセス ポリシーを定義します。
    2. オンデマンド ストリーミング ロケーターを作成します。
-   3. ストリーミングする場合は、アセットのストリーミング マニフェスト ファイル (.ism) を取得します。 
+   3. ストリーミングする場合は、資産のストリーミング マニフェスト ファイル (.ism) を取得します。 
    		
-	プログレッシブ ダウンロードをする場合は、アセット内の MP4 ファイルの名前を取得します。  
+	プログレッシブ ダウンロードをする場合は、資産内の MP4 ファイルの名前を取得します。  
    4. マニフェスト ファイルまたは MP4 ファイルへの URL を作成します。 
    
 
@@ -93,6 +95,8 @@
 	URL to manifest for client streaming using MPEG DASH protocol:
 	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 	
+
+>[AZURE.NOTE]SSL 接続経由でコンテンツのストリーミングもできます。そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。
 
 プログレッシブ ダウンロード URL を作成します。
 
@@ -155,6 +159,6 @@
  
 ##関連項目
 
-[アセットのダウンロード](media-services-deliver-asset-download.md)
+[資産のダウンロード](media-services-deliver-asset-download.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

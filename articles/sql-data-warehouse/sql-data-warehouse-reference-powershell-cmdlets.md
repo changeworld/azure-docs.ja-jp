@@ -67,7 +67,14 @@ SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST AP
 
 ## Get-AzureSqlDatabaseRestorePoints
 
-このコマンドレットは、Azure SQL Database のバックアップ復元ポイントを一覧表示します。復元ポイントは、データベースの復元に使用されます。返されるオブジェクトのプロパティは、次のとおりです。<table> <tr> <td>プロパティ</td> <td>説明</td> </tr> <tr> <td>RestorePointType</td> <td>不連続/連続。不連続復元ポイントは、Azure SQL Database を復元できる特定の時点を示します。連続復元ポイントは、Azure SQL Database を復元できる最も早い時点を示します。データベースは、最も早い時点以降の任意の時点に復元できます。</td> </tr> <tr> <td>EarliestRestoreDate</td> <td>最も早い復元時間 (restorePointType = CONTINUOUS である場合にデータを取り込む)</td> </tr> <tr> <td>RestorePointCreationDate </td> <td>バックアップ スナップショット時間 (restorePointType = DISCRETE である場合にデータを取り込む)</td> </tr> </table>
+このコマンドレットは、Azure SQL Database のバックアップ復元ポイントを一覧表示します。復元ポイントは、データベースの復元に使用されます。返されるオブジェクトのプロパティは、次のとおりです。
+
+プロパティ|説明
+---|---
+RestorePointType|DISCRETE / CONTINUOUS.不連続復元ポイントは、Azure SQL Database を復元できる特定の時点を示します。連続復元ポイントは、Azure SQL Database を復元できる最も早い時点を示します。データベースは、最も早い時点以降の任意の時点に復元できます。
+EarliestRestoreDate|最も早い復元時間 (restorePointType = CONTINUOUS のときに入力)
+RestorePointCreationDate |バックアップのスナップショット時間 (restorePointType = DISCRETE のときに入力)
+
 ### 例 1: サーバー上で名前によってデータベースの復元ポイントを取得する
 この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースの復元ポイントが取得されます。
 
@@ -99,4 +106,4 @@ SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST AP
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Key Vault の HSM保護キーを生成し、転送する方法 | Microsoft Aure"
+	pageTitle="Azure Key Vault の HSM 保護キーを生成し、転送する方法 | Microsoft Azure"
 	description="この記事は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。"
 	services="key-vault"
 	documentationCenter=""
@@ -39,13 +39,13 @@ HSM 保護キーを生成し、インターネットで転送する方法:
 
 - ツールセットには、Azure Key Vault セキュリティ ワールドも Thales で作成された本物の HSM 内で生成されたことを示す Thales からの証明が含まれます。これにより、Microsoft が本物のハードウェアを使用していることが証明されます。
 
-- Microsoft は地域ごとに個別の KEK と個別のセキュリティ ワールドを使用します。それにより、キーを暗号化した地域のデータ センターでのみキーを使用できます。たとえば、欧州のお客様からのキーは北米やアジアのデータ センターでは使用できません。
+- Microsoft は地域ごとに個別の KEK と個別のセキュリティ ワールドを使用します。それにより、キーを暗号化したリージョンのデータ センターでのみキーを使用できます。たとえば、欧州のお客様からのキーは北米やアジアのデータ センターでは使用できません。
 
 ##Thales HSM と Microsoft のサービスの詳細
 
 Thales e-Security は、金融サービス、ハイテク、製造、政府、テクノロジ セクターにデータ暗号化とサイバー セキュリティのソリューションを提供することで世界をリードする企業です。企業と政府の情報を 40 年間保護してきた実績を持つ Thales ソリューションはエネルギー/航空宇宙産業の大企業 5 社のうち 4 社で採用され、22 の NATO 加盟国で利用されています。世界中の支払処理の 80% 以上を保護しています。
 
-Microsoft は Thales と連携し、HSM の最新技術を強化しています。この改良により、キーの管理を放棄することなく、ホステッド サービスの一般的な長所を得ることができます。具体的には、この改良により、Microsoft があなたの代わりに HSM を管理できます。クラウド サービスとしては、Azure Key Vault は短期間で拡張され、組織の利用率急増に対応します。同時に、キーは Microsoft の HSM 内で保護されます。あなたがキーを生成し、それを Microsoft の HSM に転送するため、キーが存続する間、あなたがそれを管理します。
+Microsoft は Thales と連携し、HSM の最新技術を強化しています。この改良により、キーの管理を放棄することなく、ホステッド サービスの一般的な長所を得ることができます。具体的には、この改良により、Microsoft があなたの代わりに HSM を管理できます。クラウド サービスとしては、Azure Key Vault は短期間でスケールアップされ、組織の利用率急増に対応します。同時に、キーは Microsoft の HSM 内で保護されます。あなたがキーを生成し、それを Microsoft の HSM に転送するため、キーが存続する間、あなたがそれを管理します。
 
 ##Azure Key Vault の Bring Your Own Key (BYOK) の実装
 
@@ -97,7 +97,7 @@ Azure PowerShell ウィンドウを閉じないでください。
 
 ###手順 1.3: Azure Key Vault の BYOK ツールセットをダウンロードする
 
-Microsoft ダウンロード センターにアクセスし、お住まいの地域の [Azure Key Vault BYOK ツールセットをダウンロード](http://www.microsoft.com/download/details.aspx?id=45345)します。
+Microsoft ダウンロード センターにアクセスし、ご自分のリージョンの [Azure Key Vault BYOK ツールセットをダウンロード](http://www.microsoft.com/download/details.aspx?id=45345)します。
 
 |リージョン|パッケージ名|SHA-256 パッケージ ハッシュ|
 |---|---|---|
@@ -171,7 +171,7 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 
 ダウンロードしたパッケージを検証するには:
 
-1.	お住まいの地域によっては、次のいずれかを関連付け、verifykeypackage.py スクリプトを実行します。
+1.	リージョンによっては、次のいずれかを関連付け、verifykeypackage.py スクリプトを実行します。
 	- 北米:
 
 			python verifykeypackage.py -k BYOK-KEK-pkg-NA-1 -w BYOK-SecurityWorld-pkg-NA-1
@@ -224,7 +224,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 ###手順 4.1: アクセス権が制限されたキーのコピーを作成します。
 
-キーのアクセス権を制限するには、コマンド プロンプトから、お住まいの地域に基づいて次のいずれかを実行します。
+キーのアクセス権を制限するには、コマンド プロンプトから、ご自分のリージョンに基づいて次のいずれかを実行します。
 
 - 北米:
 
@@ -262,7 +262,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 ###手順 4.3: Microsoft の Key Exchange Key を使用してキーを暗号化する
 
-お住まいの地域に基づいて次のコマンドのいずれかを実行します。
+ご自分のリージョンに基づいて次のコマンドのいずれかを実行します。
 
 - 北米:
 
@@ -306,4 +306,4 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault の概要](key-vault-get-started.md)のチュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -13,10 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="05/01/2015"
+   ms.date="07/30/2015"
    ms.author="joaoma"/>
 
 # DNS ゾーンの管理方法
+
 
 このガイドでは、DNS ゾーンの管理方法を説明します。このガイドは、DNS ゾーンを管理するために実行する一連の操作を理解するのに役立ちます。
 
@@ -38,7 +39,7 @@ DNS ゾーンを取得するには、Get-AzureDnsZone コマンドレットを�
 
 		PS C:\> $zone = Get-AzureDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
 
-この操作により、Azure DNS 内の既存のゾーンに対応する DNS ゾーン オブジェクトが返されます。このオブジェクトには、ゾーンに関するデータ (レコード セットの数など) が含まれますが、レコード セット自体は含まれません。
+この操作により、Azure DNS 内の既存のゾーンに対応する DNS ゾーン オブジェクトが返されます。このオブジェクトには、ゾーンに関するデータ \(レコード セットの数など\) が含まれますが、レコード セット自体は含まれません。
 
 ## DNS ゾーンの一覧表示
 Get-AzureDnsZone からゾーン名を省略することで、リソース グループ内のすべてのゾーンを列挙できます。
@@ -47,7 +48,7 @@ Get-AzureDnsZone からゾーン名を省略することで、リソース グ�
 この操作により、ゾーン オブジェクトの配列が返されます。
 
 ## DNS ゾーンの更新
-DNS ゾーンのリソースへの変更は、Set-AzureDnsZone を使用して行うことができます。これによって、ゾーン内の DNS レコード セットが更新されることはありません (「[DNS レコードの管理方法](../dns-operations-recordsets)」を参照)。この操作は、ゾーンのリソース自体のプロパティを更新するためだけに使用します。現時点では、この操作は、ゾーンのリソースの Azure リソース マネージャーの "タグ" に限定されています。詳細については、「[Etag とタグ](../dns-getstarted-create-dnszone#Etags-and-tags)」を参照してください。
+DNS ゾーンのリソースへの変更は、Set-AzureDnsZone を使用して行うことができます。これによって、ゾーン内の DNS レコード セットが更新されることはありません \(「[DNS レコードの管理方法](../dns-operations-recordsets)」を参照\)。この操作は、ゾーンのリソース自体のプロパティを更新するためだけに使用します。現時点では、この操作は、ゾーンのリソースの Azure リソース マネージャーの "タグ" に限定されています。詳細については、「[Etag とタグ](../dns-getstarted-create-dnszone#Etags-and-tags)」を参照してください。
 
 DNS ゾーンを更新するには、次の 2 つの方法のいずれかを使用します。
 
@@ -103,4 +104,4 @@ Get-AzureDnsZone の $zone オブジェクトを使用してゾーンを指定�
 
 [.NET SDK を使用した操作の自動化](../dns-sdk)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

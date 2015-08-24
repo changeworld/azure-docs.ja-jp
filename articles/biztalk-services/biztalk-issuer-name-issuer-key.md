@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="BizTalk Services における発行者名と発行者キー | Azure" 
+	pageTitle="BizTalk Services における発行者名と発行者キー | Microsoft Azure" 
 	description="BizTalk サービスの Service Bus または Access Control (ACS) の発行者名と発行者キーを取得する方法について説明します。MABS、WABS" 
 	services="biztalk-services" 
 	documentationCenter="" 
@@ -86,4 +86,4 @@ Azure BizTalk サービスに関するその他のトピック:
 - [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Microsoft 認証用の登録 - Mobile Services" 
+	pageTitle="Microsoft 認証用の登録 | Microsoft Azure" 
 	description="Azure Mobile Services アプリケーションで Microsoft 認証用に登録する方法について説明します。" 
 	authors="ggailey777" 
 	services="mobile-services" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="NA" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="06/14/2015" 
+	ms.date="08/08/2015" 
 	ms.author="glenga"/>
 
 # 認証で Microsoft アカウントを使用するためのアプリケーションの登録
@@ -54,13 +54,9 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
 6. (省略可能) ユニバーサル Windows アプリケーションの場合、Windows Phone ストア プロジェクトの手順 4 および 5 を繰り返します。
 
-6. 新しいアプリケーションの Windows デベロッパー センター ページに戻り、**[サービス]** をクリックします。
+6. 新しいアプリケーションの Windows デベロッパー センター ページに戻り、**[サービス]**、**[プッシュ通知]** の順にクリックします。
 
-   	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-edit-app.png)
-
-7. [サービス] ページで **[Azure のモバイル サービス]** の **[Live サービス サイト]** をクリックします。
-
-	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-edit2-app.png)
+7. **[プッシュ通知]** ページで、**[Windows プッシュ通知サービス (WNS) と Microsoft Azure Mobile Services]** の下にある **[ライブ サービス サイト]** をクリックします。
 
 これにより、アプリの Microsoft アカウント ページが表示されます。
 
@@ -72,7 +68,7 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
    	これにより Microsoft アカウントでアプリ名が確保され、アプリの Microsoft アカウント ページが表示されます。
 
-2. アプリの Microsoft アカウント ページで、**[API 設定]** をクリックし、**[モバイル アプリまたはデスクトップ クライアント アプリ]** を選択し、モバイル サービス URL を **[ターゲット ドメイン]** として設定し、**[リダイレクト URL]** の `https://<mobile_service>.azure-mobile.net/login/microsoftaccount/` の値を指定し、**[保存]** をクリックします。
+2. アプリの Microsoft アカウント ページで、**[API 設定]** をクリックし、**[モバイル アプリまたはデスクトップ クライアント アプリ]** を選択し、モバイル サービス URL を **[ターゲット ドメイン]** として設定し、**[リダイレクト URL]** の `https://<mobile_service>.azure-mobile.net/` の値を指定し、**[保存]** をクリックします。
 
 	 >[AZURE.NOTE]Visual Studio を使用して Azure に発行された .NET バックエンド モバイル サービスについては、リダイレクト URL はユーザーのモバイル サービスの URL の末尾にパス _signin-microsoft_ .NET サービスとしてのユーザーのモバイル サービスを追加したものです (例:`https://todolist.azure-mobile.net/signin-microsoft`)。
 
@@ -107,4 +103,4 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 [Azure 管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

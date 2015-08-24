@@ -13,16 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
 
 
-
-
 #<a id="monitormediaservicesaccount"></a>Media Services アカウントの監視方法
-
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
 
 Azure メディア サービスのダッシュボードには、使用状況のメトリックおよびアカウント情報が表示され、それをメディア サービス アカウントの管理に利用できます。
 
@@ -67,4 +63,4 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

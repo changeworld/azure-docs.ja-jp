@@ -133,7 +133,7 @@ NuGet パッケージを 0.17 以降に更新した後に上記のエラーが�
 #### <a name="q03"></a>Application Insights が正常に追加された後でアプリケーションを実行したところ、ポータルにデータが表示されません。
 
 + 概要ページで、検索タイルをクリックして診断検索を開いてください。データはまずここに表示されます。
-+ [更新] ボタンをクリックします。現在のバージョンでは、ブレードの内容は自動的に更新されません。
++ [更新] ボタンをクリックします。ブレードは周期的に自動で更新されますが、手動でも更新できます。時間範囲が広いと、更新間隔は長くなります。
 + Microsoft Azure のスタート ボードで、サービス状態マップを確認してください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
 + [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)も参照してください。
 + ファイアウォールでは、dc.services.visualstudio.com と f5.services.visualstudio.com への発信トラフィック用に TCP ポート 80 と 443 を開く必要がある場合があります。
@@ -239,4 +239,4 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

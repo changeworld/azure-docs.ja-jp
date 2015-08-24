@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/18/2015" 
+	ms.date="08/12/2015" 
 	ms.author="awills"/>
 
 # Windows デスクトップのアプリとサービスに対する Application Insights
@@ -44,13 +44,21 @@ Windows デスクトップのアプリとサービスに対するサポートは
 
 1. Visual Studio で、デスクトップ アプリ プロジェクトの NuGet パッケージを編集します。![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-windows-desktop/03-nuget.png)
 
-2. Application Insights API パッケージをインストールします。
+2. Application Insights Core API パッケージをインストールします。
 
     ![Search for "Application Insights"](./media/app-insights-windows-desktop/04-core-nuget.png)
 
-3. `TelemetryConfiguration.Active` オブジェクトを使用して、InstrumentationKey をコードに設定します。
+3. InstrumentationKey を、たとえば main() などのコードに設定します。
 
     `TelemetryConfiguration.Active.InstrumentationKey = "your key";`
+
+*ApplicationInsights.config が存在しないのはどうしてですか。*
+
+* .config ファイルは Core API パッケージではインストールされません。これはテレメトリ コレクターの構成のみに使用されます。そのため、独自のコードを記述してインストルメンテーション キーを設定し、テレメトリを送信します。
+
+*別の NuGet パッケージを使用できますか。*
+
+* はい。パフォーマンス カウンターのコレクターをインストールする Web サーバー パッケージを使用できます。[HTTP 要求コレクターを無効にする](app-insights-configuration-with-applicationinsights-config.md)必要があります。これによりインストルメンテーション キーが配置される場所に .config ファイルがインストールされます。
 
 ## <a name="telemetry"></a>テレメトリの呼び出しの挿入
 
@@ -173,4 +181,4 @@ TrackMetric、または TrackEvent の測定値パラメーターを使用した
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

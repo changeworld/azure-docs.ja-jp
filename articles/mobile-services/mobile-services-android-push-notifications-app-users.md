@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ユーザーへのプッシュ通知 (Android) | モバイル デベロッパー センター" 
+	pageTitle="ユーザーへのプッシュ通知 (Android) | Microsoft Azure" 
 	description="Mobile Services を使用して Android アプリのユーザーにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="android" 
@@ -23,4 +23,4 @@
 + [Mobile Services アプリケーションにプッシュ通知を追加する](mobile-services-javascript-backend-android-get-started-push.md)<br/>TodoList のモバイル サービスを更新し、Azure Notification Hubs を使用して TodoList サンプル アプリケーションのユーザーに通知を送信できるようにします。
 + [プッシュ通知を認証ユーザーに送信する](mobile-services-javascript-backend-android-push-notifications-app-users.md)<br/>1 つ前のチュートリアルを拡張し、サインインしているユーザーのみが通知を登録できるようにします。 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

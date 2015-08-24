@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Mobile Services .NET バックエンドによる既存の SQL データベースを使用するサービスの作成 - Azure Mobile Services" 
+	pageTitle="Mobile Services .NET バックエンドによる既存の SQL データベースを使用するサービスの作成 | Microsoft Azure" 
 	description="既存のクラウドまたはオンプレミス SQL データベースと .NET ベースのモバイル サービスを使用する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -615,4 +615,4 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
 次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。詳細については、[既存のアプケーションへの Mobile Services の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md#update-the-app-to-use-the-mobile-service)を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

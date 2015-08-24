@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Apache Spark を使用した HDInsight での Machine Learning アプリケーションの作成 | Azure" 
-	description="Apache Spark で Notebook を使用して機械学習アプリケーションを作成する手順を説明します" 
+	pageTitle="Apache Spark を使用した HDInsight での Machine Learning アプリケーションの作成 | Microsoft Azure" 
+	description="Apache Spark で Notebook を使用して Machine Learning アプリケーションを作成する手順を説明します" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
@@ -17,9 +17,9 @@
 	ms.author="nitinme"/>
 
 
-# Azure HDInsight の Apache Spark を使用した機械学習アプリケーションの構築
+# Azure HDInsight の Apache Spark を使用した Machine Learning アプリケーションの構築
 
-HDInsight の Apache Spark クラスターを使用して機械学習アプリケーションを作成する方法を説明します。この記事では、クラスターで使用できる Jupyter Notebook を使用してアプリケーションを作成およびテストする方法を説明します。このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。
+HDInsight の Apache Spark クラスターを使用して Machine Learning アプリケーションを作成する方法を説明します。この記事では、クラスターで使用できる Jupyter Notebook を使用してアプリケーションを作成およびテストする方法を説明します。このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。
 
 **前提条件:**
 
@@ -40,7 +40,7 @@ HDInsight の Apache Spark クラスターを使用して機械学習アプリ�
 
 このデータを使用し、システム ID とシステム使用年数から得られる目標温度を基にしてビルが暑すぎるか寒すぎるかを予測します。
 
-##<a name="app"></a>Spark MLlib を使用した機械学習アプリケーションの作成
+##<a name="app"></a>Spark MLlib を使用した Machine Learning アプリケーションの作成
 
 1. [Jupyter](https://jupyter.org) Notebook を起動します。Azure ポータルで Spark クラスターを選択し、下部のポータル タスク バーで **[Jupyter Notebook]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
@@ -52,7 +52,7 @@ HDInsight の Apache Spark クラスターを使用して機械学習アプリ�
 
 	![Notebook の名前を指定します](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.Note.Jupyter.Notebook.Name.png "Notebook の名前を指定します")
 
-3. 機械学習アプリケーションの作成を始めます。このアプリケーションでは、Spark ML パイプラインを使用して、ドキュメントの分類を実行します。パイプラインでは、ドキュメントを単語に分割し、単語を数値特徴ベクトルに変換して、最後に特徴ベクトルとラベルを使用して予測モデルを作成します。
+3. Machine Learning アプリケーションの作成を始めます。このアプリケーションでは、Spark ML パイプラインを使用して、ドキュメントの分類を実行します。パイプラインでは、ドキュメントを単語に分割し、単語を数値特徴ベクトルに変換して、最後に特徴ベクトルとラベルを使用して予測モデルを作成します。
 
 	アプリケーションの作成を始めるには、最初に、必要なモジュールをインポートし、アプリケーションにリソースを割り当てます。新しい Notebook の空のセルに次のスニペットを貼り付けてから、**Shift + Enter** キーを押します。
 
@@ -211,9 +211,9 @@ HDInsight の Apache Spark クラスターを使用して機械学習アプリ�
 	![Jupyter カーネルを再起動します](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.Jupyter.Restart.Kernel.png "Jupyter カーネルを再起動します")
 	  	   
 
-##<a name="anaconda"></a>機械学習への Anaconda scikit-learn ライブラリの使用
+##<a name="anaconda"></a>Machine Learning への Anaconda scikit-learn ライブラリの使用
 
-HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。これには、機械学習用の **scikit-learn** ライブラリも含まれます。ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。scikit-learn ライブラリの使用例については、[http://scikit-learn.org/stable/auto\_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html) をご覧ください。
+HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。これには、Machine Learning 用の **scikit-learn** ライブラリも含まれます。ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。scikit-learn ライブラリの使用例については、[http://scikit-learn.org/stable/auto\_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html) をご覧ください。
 
 ##<a name="seealso"></a>関連項目
 
@@ -240,4 +240,4 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->

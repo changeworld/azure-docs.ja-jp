@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Xamarin Android アプリケーション用 Mobile Services の認証の使用 - Azure Mobile Services" 
+	pageTitle="Xamarin Android アプリケーション用 Mobile Services の認証の使用 | Microsoft Azure" 
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="xamarin" 
@@ -112,4 +112,4 @@ In the next tutorial, [Service-side authorization of Mobile Services users][Auth
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO7-->
