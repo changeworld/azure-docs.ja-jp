@@ -89,7 +89,7 @@
     ![SAML シングル サインオン](./media/active-directory-saas-bamboo-hr-tutorial/IC796692.png "SAML シングル サインオン")
 
     1.  Azure ポータルの **[BambooHR でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、[SSO Login URL] テキストボックスに貼り付けます。
-2.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    2.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
         >[AZURE.TIP]詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
@@ -140,4 +140,4 @@ BambooHR の場合、プロビジョニングは手動で行います。
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を参照してください。
 
-<!----HONumber=August15_HO7-->
+<!-------HONumber=August15_HO7-->
