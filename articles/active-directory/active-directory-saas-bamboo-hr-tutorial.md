@@ -3,7 +3,8 @@
 #チュートリアル: Azure Active Directory と Bamboo HR の統合
 >[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=529837)をクリックしてください。
 
-このチュートリアルでは、Azure と Bamboo HR の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と Bamboo HR の統合について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Bamboo HR でのシングル サインオンが有効なサブスクリプション
@@ -51,7 +52,9 @@
     ![BambooHR](./media/active-directory-saas-bamboo-hr-tutorial/IC796687.png "BambooHR")
 ##シングル サインオンの構成
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで BambooHR に対する認証を行えるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで BambooHR に対する認証を行えるようにする方法を説明します。  
+この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
+この手順に慣れていない場合は、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -98,7 +101,8 @@
     ![シングル サインオンの構成](./media/active-directory-saas-bamboo-hr-tutorial/IC796693.png "シングル サインオンの構成")
 ##ユーザー プロビジョニングの構成
 
-Azure AD ユーザーが BambooHR にログインできるようにするには、そのユーザーを BambooHR にプロビジョニングする必要があります。BambooHR の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが BambooHR にログインできるようにするには、そのユーザーを BambooHR にプロビジョニングする必要があります。  
+BambooHR の場合、プロビジョニングは手動で行います。
 
 ###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
@@ -136,4 +140,4 @@ Azure AD ユーザーが BambooHR にログインできるようにするには�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->
