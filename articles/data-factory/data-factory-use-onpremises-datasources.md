@@ -161,7 +161,8 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 	![Editor New data store button][image-editor-newdatastore-onpremsql-button]
     
-3.	右側のウィンドウに、オンプレミスの SQL Server リンク サービスを作成するための JSON テンプレートが表示されます。![On-prem SQL Linked Service - settings][image-editor-newdatastore-onpremsql-settings]
+3.	右側のウィンドウに、オンプレミスの SQL Server リンク サービスを作成するための JSON テンプレートが表示されます。
+	![On-prem SQL Linked Service - settings][image-editor-newdatastore-onpremsql-settings]
 
 4.	JSON ウィンドウで次の手順を実行します。
 	1.	**gatewayName** プロパティで、「**adftutorialgateway**」と入力して、二重引用符で囲まれたすべてのテキストを置き換えます。  
@@ -396,7 +397,7 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
 	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
-- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
+	- **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
@@ -626,4 +627,4 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 
 [image-data-factory-preview-portal-storage-key]: ./media/data-factory-get-started/PreviewPortalStorageKey.png
 
-<!---HONumber=August15_HO7-->
+<!------HONumber=August15_HO7-->

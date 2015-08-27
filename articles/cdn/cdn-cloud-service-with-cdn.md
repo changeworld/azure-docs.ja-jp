@@ -474,7 +474,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 3. クラウド サービスを再発行し、ホーム ページにアクセスします。
  
 4. ページの HTML コードを表示します。クラウド サービスに変更を再発行するたびに一意のバージョン文字列を付けて CDN URL がレンダリングされているのを確認できます。次に例を示します。
-	<pre class="prettyprint">
+
 		...
 		
 		<link href="http://az632148.vo.msecnd.net/Content/css?v=1.0.0.25449" rel="stylesheet"/>
@@ -629,4 +629,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 - [Azure 用 CDN の使用](cdn-how-to-use.md)
 
-<!---HONumber=August15_HO7-->
+<!-----HONumber=August15_HO7-->

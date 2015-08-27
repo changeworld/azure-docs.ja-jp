@@ -112,9 +112,9 @@ Build 2015 のカンファレンスで発表された AAD の概要を参照す�
 
 Azure Active Directory を使用したアプリ開発に関する次の概要のプレゼンテーションでは、エンジニアリング チームで直接実務を担当している話し手が登場し、IDMaaS、認証、ID フェデレーション、シングル サインオンなどの基本的なトピックを取り上げています。
 
-- **[Azure Active Directory: Identity Management as a Service for Modern Applications](http://azure.microsoft.com/documentation/videos/build-2015-azure-active-directory-identity-management-as-a-service-for-modern-applications)**
-- **[Develop Modern Web Applications with Azure Active Directory](http://azure.microsoft.com/documentation/videos/build-2015-develop-modern-web-applications-with-azure-active-directory)**
-- **[Develop Modern Native Applications with Azure Active Directory](http://azure.microsoft.com/documentation/videos/build-2015-develop-modern-native-applications-with-azure-active-directory)**
+- **[Azure Active Directory: モダン アプリケーション向けのサービスとしての ID 管理](http://azure.microsoft.com/documentation/videos/build-2015-azure-active-directory-identity-management-as-a-service-for-modern-applications)**
+- **[Azure Active Directory を使用したモダン Web アプリケーションの開発](http://azure.microsoft.com/documentation/videos/build-2015-develop-modern-web-applications-with-azure-active-directory)**
+- **[Azure Active Directory を使用したモダン ネイティブ アプリケーションの開発](http://azure.microsoft.com/documentation/videos/build-2015-develop-modern-native-applications-with-azure-active-directory)**
 
 ### Azure Friday
 [Azure Friday](http://azure.microsoft.com/documentation/videos/azure-friday/) は、金曜日ごとに定期的に配信される 1 対 1 の対話形式のビデオ シリーズで、さまざまな Azure のトピックに関する専門家への 10 ～ 15 分間の短いインタビューで構成されています。ページにあるサービス フィルター機能を使用すると、すべての Azure Active Directory ビデオを視聴することができます。
@@ -133,4 +133,4 @@ Azure Active Directory を使用したアプリ開発に関する次の概要の
 
 - **[Twitter での Azure AD](https://twitter.com/azuread)**: Azure AD に関する発表事項を 140 文字以内で受け取ることができます。
 
-<!---HONumber=August15_HO7-->
+<!-----HONumber=August15_HO7-->
