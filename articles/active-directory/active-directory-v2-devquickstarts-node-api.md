@@ -20,6 +20,7 @@
 
   Node JS Web API のクイック スタート チュートリアルは、まだ準備ができていません...後でもう一度確認して、Twitter の @AzureAD から最新情報をチェックしてください。
 
-  >[AZURE.NOTE]この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+  > [AZURE.NOTE]
+    この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
 
-<!-----HONumber=August15_HO7-->
+<!-------HONumber=August15_HO7-->
