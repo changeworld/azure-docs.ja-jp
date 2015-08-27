@@ -4,8 +4,7 @@
 
 
 <!-- URLs. 
-[Mobile Services の使用]: ../articles/mobile-services-android-get-started.md
 [既存のアプリケーションへのMobile Services の追加]: ../articles/mobile-services-android-get-started-data.md
 -->
 
-<!---HONumber=August15_HO6-->
+<!-----HONumber=August15_HO6-->
