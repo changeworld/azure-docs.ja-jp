@@ -191,6 +191,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [データの使用]: mobile-services-android-get-started-data.md
+[Mobile Services の使用]: mobile-services-android-get-started.md
 [Get started with authentication]: mobile-services-android-get-started-users.md
 [Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-js
 [Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-js
@@ -211,4 +212,4 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
  
 
-<!----HONumber=August15_HO7-->
+<!------HONumber=August15_HO7-->
