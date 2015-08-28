@@ -127,10 +127,10 @@
    
     	![StorSimple Devices page](./media/storsimple-configure-and-register-device-gov/HCS_DeviceOnline-gov-include.png) 
   
-        If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
+        デバイスの状態が **オフライン** の場合は、デバイスがオンラインになるまで数分待ちます。 
       
-        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in the [network requirements for your StorSimple device](https://msdn.microsoft.com/library/dn772371.aspx). If you do not have HTTP 1.1 support, check port 9354 to make sure that it is open for outbound communication. This port is used for communication between the StorSimple Manager service and your StorSimple device.
+        数分たってもデバイスがまだオフラインの場合、ファイアウォールのネットワークが [StorSimple デバイスのネットワーク要件](https://msdn.microsoft.com/library/dn772371.aspx) で記述されているとおりに構成されているかを確認する必要があります。HTTP 1.1 がサポートされていない場合、ポート 9354 が、送信の通信に対してオープンになっていることを確認します。このポートは、StorSimple Manager サービスおよび StorSimple デバイス間での通信に使用されます。
      
         
 
-<!---HONumber=August15_HO6-->
+<!----HONumber=August15_HO6-->
