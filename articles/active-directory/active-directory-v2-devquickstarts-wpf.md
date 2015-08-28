@@ -10,7 +10,7 @@
 <tags
 	ms.service="active-directory"
 	ms.workload="identity"
-  ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="08/12/2015"
@@ -53,7 +53,8 @@ Now that you have an app registered with Microsoft, you can install ADAL and wri
 -	Begin by adding ADAL to the TodoListClient project using the Package Manager Console.
 
 ```
-PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoListClient -IncludePrerelease ```
+PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoListClient -IncludePrerelease 
+```
 
 -	TodoListClient プロジェクトで `app.config` を開きます。アプリ登録ポータルで入力した値が反映されるように、`<appSettings>` セクションの要素の値を置き換えます。これらの値は、コードで ADAL を使用する際に常に参照されます。
     -	`ida:ClientId` は、ポータルからコピーしたアプリの**アプリケーション ID** です。
@@ -246,4 +247,4 @@ For reference, the completed sample (without your configuration values) [is prov
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=August15_HO7-->
+<!-----HONumber=August15_HO7-->

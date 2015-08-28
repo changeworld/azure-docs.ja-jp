@@ -68,7 +68,7 @@
     ![Configure App Settings](./media/active-directory-saas-aba-sainsburys-connect-tutorial/IC807728.png "Configure App Settings")
 
     1.  **[サインオン URL]** テキスト ボックスに、ユーザーが Aba Sainsburys Connect アプリケーションへのサインオンに使用する URL を入力します (例: *https://myaba.co.uk/client-access/sainsburys/saml.php*))。
-2.  **[次へ]** をクリックします。
+    2.  **[次へ]** をクリックします。
 
 4.  **[Aba Sainsburys Connect でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターに保存します。
 
@@ -105,4 +105,4 @@ Azure AD ユーザーが Aba Sainsburys Connect にログインできるよう�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!------HONumber=August15_HO7-->

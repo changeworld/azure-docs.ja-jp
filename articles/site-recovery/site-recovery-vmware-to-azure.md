@@ -20,7 +20,7 @@
 
 この記事では、Site Recovery をデプロイして以下を実現する方法について説明します。
 
-- ** VMware 仮想マシンを保護する** — Azure へのオンプレミス VMware 仮想マシンのレプリケーション、フェールオーバー、復旧を調整します
+- **VMware 仮想マシンを保護する** — Azure へのオンプレミス VMware 仮想マシンのレプリケーション、フェールオーバー、復旧を調整します
 - **物理サーバーを保護する** — Azure Site Recovery サービスを使用した Azure へのオンプレミス Windows および Linux 物理サーバーのレプリケーション、フェールオーバー、および内復旧を調整します
 
 この記事では、概要、デプロイの前提条件、設定方法について説明します。この記事を読み終わると、VMware 仮想マシンまたは物理サーバーを Azure にレプリケートできるようになります。問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
@@ -771,4 +771,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!--------HONumber=August15_HO7-->
+<!---------HONumber=August15_HO7-->

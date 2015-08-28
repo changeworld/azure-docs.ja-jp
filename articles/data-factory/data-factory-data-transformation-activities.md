@@ -22,7 +22,11 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 
 変換アクティビティ | コンピューティング環境 
 ----------------------- | --------------------
-[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] [Pig](data-factory-pig-activity.md) | HDInsight [Hadoop] [MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop] [Hadoop Streaming] (https://msdn.microsoft.com/library/mt185698.aspx) | HDInsight [Hadoop] [Machine Learning Batch Scoring](data-factory-create-predictive-pipelines.md) | Azure VM 
+[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] 
+[Pig](data-factory-pig-activity.md) | HDInsight [Hadoop]  
+[MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop]  
+[Hadoop Streaming](https://msdn.microsoft.com/library/mt185698.aspx) | HDInsight [Hadoop]
+[Machine Learning Batch Scoring](data-factory-create-predictive-pipelines.md) | Azure VM 
 [ストアド プロシージャ](data-factory-stored-proc-activity.md) | Azure SQL | 
 [DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch    
 
@@ -33,4 +37,4 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 
 Data Factory でサポートされているコンピューティングがリンクされたサービスについては、[コンピューティングがリンクされたサービス](data-factory-compute-linked-services.md)に関する記事を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

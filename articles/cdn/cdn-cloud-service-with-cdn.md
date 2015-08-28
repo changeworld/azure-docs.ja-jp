@@ -118,7 +118,6 @@
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-13-testcdn.png)
 
 2. Visual Studio 2013 に戻り、**WebRole1** プロジェクトの **Web.config** を開き、次のコードを `<system.webServer>` タグに追加します。
-	<pre class="prettyprint">
 		<system.webServer>
 		  <rewrite>
 		    <rules>
@@ -130,7 +129,7 @@
 		  </rewrite>
 		  ...
 		</system.webServer>
-</pre>
+
 
 4. もう一度クラウド サービスを発行します。クラウド サービス プロジェクトを右クリックし、**[発行]** を選択します。
 
@@ -182,14 +181,13 @@
 ## クラウド サービスの静的ファイルのキャッシュ オプションを構成する ##
 
 Azure CDN 統合をクラウド サービスに組み込むと、CDN エンドポイントで静的コンテンツをどのようにキャッシュするかを指定できます。そのためには、Web ロール プロジェクト (たとえば、WebRole1) の *Web.config* を開き、`<staticContent>` 要素を `<system.webServer>` に追加します。次の XML では、3 日間で有効期限が切れるキャッシュを追加しています。
-<pre class="prettyprint">
 	<system.webServer>
 	  <staticContent>
 	    <clientCache cacheControlMode="UseMaxAge" cacheControlMaxAge="3.00:00:00"/>
 	  </staticContent>
 	  ...
 	</system.webServer>
-</pre>
+
 
 この操作を実行すると、クラウド サービス内のすべての静的ファイルは、CDN キャッシュ内で同じ規則に従います。キャッシュ設定をより細かく制御するには、*Web.config* ファイルをフォルダーに追加し、そこに設定を追加します。たとえば、*Web.config* ファイルを *\Content* フォルダーに追加して、その内容を次の XML で置き換えます。
 
@@ -629,4 +627,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 - [Azure 用 CDN の使用](cdn-how-to-use.md)
 
-<!-----HONumber=August15_HO7-->
+<!------HONumber=August15_HO7-->

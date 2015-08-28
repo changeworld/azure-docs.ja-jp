@@ -110,9 +110,12 @@
 
     1.  [ID プロバイダー名] テキスト ボックスに、プロバイダー名を入力します (例: *SPInitiatedSSO*)。
     2.  Azure ポータルで、**[Workday でのシングル サインオンの構成]** ダイアログ ページの **[ID プロバイダーの ID]** の値をコピーし、**[発行者]** テキスト ボックスに貼り付けます。
-    3.  **[ID プロバイダーの公開鍵証明書]** をクリックし、**[作成]** をクリックします。![作成](./media/active-directory-saas-workday-tutorial/IC782928.png "作成")
-    4.  **[x509 公開鍵の作成]** をクリックします。![作成](./media/active-directory-saas-workday-tutorial/IC782929.png "作成")
-    5.  **[x509 公開鍵の表示]** セクションで、次の手順を実行します。![X509 公開鍵の表示](./media/active-directory-saas-workday-tutorial/IC782930.png "X509 公開鍵の表示")
+    3.  **[ID プロバイダーの公開鍵証明書]** をクリックし、**[作成]** をクリックします。
+        ![作成](./media/active-directory-saas-workday-tutorial/IC782928.png "作成")
+    4.  **[x509 公開鍵の作成]** をクリックします。
+        ![作成](./media/active-directory-saas-workday-tutorial/IC782929.png "作成")
+    5.  **[x509 公開鍵の表示]** セクションで、次の手順を実行します。
+        ![X509 公開鍵の表示](./media/active-directory-saas-workday-tutorial/IC782930.png "X509 公開鍵の表示")
         1.  **[名前]** テキスト ボックスに、証明書の名前を入力します (例: *PPE\_SP*)。
         2.  **[有効期間の開始日]** テキスト ボックスに、証明書の有効期間の開始日を示す属性の値を入力します。
         3.  **[有効期間の終了日]** テキスト ボックスに、証明書の有効期間の終了日を示す属性の値を入力します。
@@ -127,16 +130,19 @@
         6.  **[証明書]** テキスト ボックスに、クリップボードの内容を貼り付けます。
         7.  **[OK]** をクリックします。
 
-    6.  次の手順に従います。![SSO 構成](./media/active-directory-saas-workday-tutorial/IC792131.png "SSO 構成")
-        1.  **[サービス プロバイダー ID]** テキスト ボックスに「* ***http://www.workday.com**」と入力します。
-2.  **[SP によって開始された SAML 認証を有効にする]** を選択します。
+    6.  次の手順に従います。
+        ![SSO 構成](./media/active-directory-saas-workday-tutorial/IC792131.png "SSO 構成")
+        1.  **[サービス プロバイダー ID]** テキスト ボックスに「**http://www.workday.com**」と入力します。
+        2.  **[SP によって開始された SAML 認証を有効にする]** を選択します。
         3.  Azure ポータルの **[Workday でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[IdP SSO サービス URL]** テキスト ボックスに貼り付けます。
         4.  **[SP によって開始された認証要求を圧縮しない]** を選択します。
 
-    7.  次の手順に従います。![認証要求署名方法](./media/active-directory-saas-workday-tutorial/IC782932.png "認証要求署名方法")
+    7.  次の手順に従います。
+        ![認証要求署名方法](./media/active-directory-saas-workday-tutorial/IC782932.png "認証要求署名方法")
         1.  **[認証要求署名方法]** として **[SHA256]** を選択します。
 
-    8.  **[OK]** をクリックします。![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
+    8.  **[OK]** をクリックします。
+        ![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
 
 12. Azure AD ポータルの **[Workday でのシングル サインオンの構成]** ページで、**[完了]** をクリックしてダイアログ ボックスを閉じます。
 
@@ -164,4 +170,4 @@ Workday にテスト ユーザーをプロビジョニングするには、Workd
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

@@ -83,16 +83,19 @@
 
 8.  **[Login using SAML]** ダイアログ ページで、次の手順に従ってから、**[Save Changes]** をクリックします。
 
-    1.  **[Enable Single Sign-On with SAML]** をクリックします。![SAML を使用してログイン](./media/active-directory-saas-samanage-tutorial/IC771719.png "SAML を使用してログイン")
-    2.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、[ID プロバイダーの URL]![Configure Single Sign-On](./media/active-directory-saas-samanage-tutorial/IC771720.png "Configure Single Sign-On") テキストボックスに貼り付けます。
-3.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーして、**[ログイン URL]** テキストボックスに貼り付けます。
+    1.  **[Enable Single Sign-On with SAML]** をクリックします。
+        ![SAML を使用してログイン](./media/active-directory-saas-samanage-tutorial/IC771719.png "SAML を使用してログイン")
+    2.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、[ID プロバイダーの URL]
+        ![Configure Single Sign-On](./media/active-directory-saas-samanage-tutorial/IC771720.png "Configure Single Sign-On") テキストボックスに貼り付けます。
+    3.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーして、**[ログイン URL]** テキストボックスに貼り付けます。
     4.  Azure ポータルの **[Samanage でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーして、**[ログアウト URL]** テキストボックスに貼り付けます。
     5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
         >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
     6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキストボックスに貼り付けます。
-    7.  **[Samanage に存在しない場合にユーザーを作成する]** をクリックします。![更新](./media/active-directory-saas-samanage-tutorial/IC771722.png "更新")
+    7.  **[Samanage に存在しない場合にユーザーを作成する]** をクリックします。
+        ![更新](./media/active-directory-saas-samanage-tutorial/IC771722.png "更新")
     8.  **[更新]** をクリックします。
 
 9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
@@ -144,4 +147,4 @@ Azure AD ユーザーが Samanage にログインできるようにするには�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

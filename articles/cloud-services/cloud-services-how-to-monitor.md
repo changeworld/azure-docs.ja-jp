@@ -102,7 +102,7 @@
  
 	![[メトリックの追加] の検索](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png)
 
-3. メトリックの選択が終了したら [OK] (チェックマーク) をクリックします。
+3. メトリックの選択が終了したら OK (チェックマーク) をクリックします。
 
 	下図のように、選択したメトリックがメトリック テーブルに追加されます。
 
@@ -192,4 +192,4 @@
 	WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role instances)
  
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

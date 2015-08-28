@@ -63,7 +63,7 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-arcgis-tutorial/IC784739.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[ArcGIS サインオン URL]** テキスト ボックスに、 *https://company.maps.arcgis.com*" というパターンで、ArcGIS アプリケーションへのサインオンに使用する URLを入力して、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[ArcGIS サインオン URL]** テキスト ボックスに、 "*https://company.maps.arcgis.com*" というパターンで、ArcGIS アプリケーションへのサインオンに使用する URLを入力して、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-arcgis-tutorial/IC784740.png "アプリケーション URL の構成")
 
@@ -99,7 +99,8 @@
     ![Configure Single Sign-On](./media/active-directory-saas-arcgis-tutorial/IC784746.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
-Azure AD ユーザーが ArcGIS にログインできるようにするには、そのユーザーを ArcGIS にプロビジョニングする必要があります。ArcGIS の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが ArcGIS にログインできるようにするには、そのユーザーを ArcGIS にプロビジョニングする必要があります。  
+ArcGIS の場合、プロビジョニングは手動で行います。
 
 ###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
@@ -124,7 +125,7 @@ Azure AD ユーザーが ArcGIS にログインできるようにするには、
 
     ![Add member](./media/active-directory-saas-arcgis-tutorial/IC784750.png "Add member")
 
->[AZURE.NOTE]他の ArcGIS ユーザー アカウントの作成ツールまたは ArcGIS から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] 他の ArcGIS ユーザー アカウントの作成ツールまたは ArcGIS から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
 
@@ -144,4 +145,4 @@ Azure AD ユーザーが ArcGIS にログインできるようにするには、
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

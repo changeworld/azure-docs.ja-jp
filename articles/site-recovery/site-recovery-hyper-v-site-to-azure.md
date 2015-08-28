@@ -144,11 +144,11 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 	- Hyper-V サーバー上の既定のプロキシに認証が必要な場合は、カスタム プロキシ サーバーの使用を選択する必要があります。既定のプロキシの詳細を入力し、資格情報を指定します。
 	- カスタム プロキシ サーバーを使用する場合は、プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。 
 	- 次の URL に Hyper-V ホストからアクセスできるようにする必要があります。
-		- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
+		- *.hypervrecoverymanager.windowsazure.com
+		- *.accesscontrol.windows.net
+		- *.backup.windowsazure.com
+		- *.blob.core.windows.net
+		- *.store.core.windows.net
 
 	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
@@ -306,4 +306,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

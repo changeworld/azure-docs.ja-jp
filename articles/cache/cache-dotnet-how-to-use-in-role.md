@@ -411,4 +411,4 @@ Caching サービス セッション状態プロバイダーの使い方の詳�
 [最適な Azure のキャッシュ オファリング]: http://msdn.microsoft.com/library/azure/dn766201.aspx
  
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

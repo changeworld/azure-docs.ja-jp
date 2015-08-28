@@ -49,7 +49,9 @@
     ![Central Desktop](./media/active-directory-saas-central-desktop-tutorial/IC769560.png "Central Desktop")
 ##シングル サインオンの構成
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Central Desktop に対する認証を行えるようにする方法を説明します。この手順の途中で、Base-64 でエンコードされた証明書を Central Desktop テナントにアップロードする必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (バイナリ証明書をテキスト ファイルに変換する方法)」をご覧ください。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Central Desktop に対する認証を行えるようにする方法を説明します。
+この手順の途中で、Base-64 でエンコードされた証明書を Central Desktop テナントにアップロードする必要があります。
+この手順に慣れていない場合は、「[How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o) (バイナリ証明書をテキスト ファイルに変換する方法)」をご覧ください。
 
 Nase
 
@@ -66,7 +68,7 @@ Nase
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
     -   **[Central Desktop サインイン URL]** ボックスに、Central Desktop テナント の URL を入力します (例: **http://contoso.centraldesktop.com*)。
--   [Central Desktop 応答 URL] ボックスに、Central Desktop AssertionConsumerService URL を入力します (例: https://contoso.centraldesktop.com/saml2-assertion.php)。
+    -   [Central Desktop 応答 URL] ボックスに、Central Desktop AssertionConsumerService URL を入力します (例: https://contoso.centraldesktop.com/saml2-assertion.php)。
 
     >[AZURE.NOTE]この値は、Central Desktop のメタデータから取得できます (例: **http://contoso.centraldesktop.com*)。
 
@@ -152,4 +154,4 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->
