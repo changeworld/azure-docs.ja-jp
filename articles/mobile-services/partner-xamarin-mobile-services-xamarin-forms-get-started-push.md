@@ -379,7 +379,7 @@ Google Cloud Messaging (GCM) サービスを使用して、Android アプリに�
 
 ###<a id="register"></a>Google Cloud Messaging を有効にする
 
-[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
 ###<a id="configure"></a>プッシュ要求を送信するように Mobile Services を構成する
 

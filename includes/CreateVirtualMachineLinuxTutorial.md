@@ -1,5 +1,5 @@
 <!---
-Don't use this file. It's deprecated and will be removed. Instead use, virtual-machines-Linux-tutorial-log-on-attach-disk.md
+Don't use this file. It's deprecated and will be removed. Instead use, virtual-machines-linux-tutorial-log-on-attach-disk.md
 -->
 
 ## <a id="logon"> </a>仮想マシンを作成後にログオンする方法 ##

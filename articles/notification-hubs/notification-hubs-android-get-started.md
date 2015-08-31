@@ -39,7 +39,7 @@
 
 ##Google Cloud Messaging をサポートするプロジェクトを作成する
 
-[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
 
 ##新しい Notification Hub を構成する
@@ -62,7 +62,7 @@
 
 ###プロジェクトへの Google Play Services の追加
 
-[AZURE.INCLUDE [Play サービスの追加](../../includes/mobile-services-add-Google-play-services.md)]
+[AZURE.INCLUDE [Play サービスの追加](../../includes/mobile-services-add-google-play-services.md)]
 
 ###コードの追加
 

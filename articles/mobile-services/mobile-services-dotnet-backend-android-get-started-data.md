@@ -122,7 +122,7 @@
 <!-- Images. -->
 
 <!-- URLs. -->
-[データの使用 (Eclipse)]: mobile-services-dotnet-backend-android-get-started-data-EC.md
+[データの使用 (Eclipse)]: mobile-services-dotnet-backend-android-get-started-data-ec.md
 [Get started with Mobile Services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [認証の使用]: mobile-services-dotnet-backend-android-get-started-users.md
 [プッシュ通知の使用]: mobile-services-dotnet-backend-android-get-started-push.md

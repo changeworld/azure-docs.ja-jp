@@ -28,7 +28,7 @@
  
 ##<a id="register"></a>Google Cloud Messaging を有効にする
 
-[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
 ##<a id="configure"></a>プッシュ要求を送信するように Mobile Services を構成する
 
@@ -51,7 +51,7 @@
 
 ###プロジェクトへの Google Play Services の追加
 
-[AZURE.INCLUDE [Play サービスの追加](../../includes/mobile-services-add-Google-play-services.md)]
+[AZURE.INCLUDE [Play サービスの追加](../../includes/mobile-services-add-google-play-services.md)]
 
 ###コードの追加
 
@@ -105,7 +105,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 <!-- Images. -->
 
 <!-- URLs. -->
-[プッシュ通知の使用 (Eclipse)]: mobile-services-dotnet-backend-android-get-started-push-EC.md
+[プッシュ通知の使用 (Eclipse)]: mobile-services-dotnet-backend-android-get-started-push-ec.md
 [モバイル サービスの使用]: mobile-services-dotnet-backend-android-get-started.md
 [モバイル サービスでのデータの使用]: mobile-services-dotnet-backend-android-get-started-data.md
 [Get started with authentication]: mobile-services-dotnet-backend-android-get-started-users.md

@@ -34,7 +34,7 @@ Linux 上で MySQL をインストールする方法の詳細については、�
 
 ## Windows Server を実行する仮想マシンの作成
 
-[AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-WindowsVM.md)]
+[AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
 ## データ ディスクの接続
 

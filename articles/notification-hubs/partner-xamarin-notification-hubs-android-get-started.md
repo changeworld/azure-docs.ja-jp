@@ -42,7 +42,7 @@
 
 ##<a name="register"></a>Google Cloud Messaging を有効にする
 
-[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
 ##<a name="configure-hub"></a>Notification Hub を構成する
 
