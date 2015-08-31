@@ -3,7 +3,7 @@
 	description="Power BI を使用すると、アプリケーションのパフォーマンスと使用状況を監視できます。" 
 	services="application-insights" 
     documentationCenter=""
-	authors="alancameronwills" 
+	authors="noamben" 
 	manager="douge"/>
 
 <tags 
@@ -118,7 +118,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 * `webapplication27` は Application Insights リソースの名前です。 
 * `1000...` は Application Insights リソースのインストルメンテーション キーです。 
-* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べ、その他の使用可能な種類をご確認ください。
+* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べ、その他の使用可能な種類と[データのエクスポート モデル](app-insights-export-data-model.md)をご確認ください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
 Application Insights リソースの名前と iKey を取得するには、概要ページの [Essentials] を開くか、[設定] を開きます。
@@ -197,4 +197,4 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

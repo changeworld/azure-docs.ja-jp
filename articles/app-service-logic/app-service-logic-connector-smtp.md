@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/01/2015"
+   ms.date="08/19/2015"
    ms.author="andalmia"/>
 
 
@@ -70,7 +70,7 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 
 これで、SMTP コネクタを構成して、ワークフローで使用できます。**Send Email** アクションを選択し、入力プロパティを次のように構成します。
 
-	プロパティ | 説明
+	Property | Description
 	--- | ---
 	To | 受信者のメール アドレスを入力します。セミコロン (;) を使用して複数のメール アドレスを区切ります。たとえば、「recipient1@domain.com;recipient2@domain.com」と入力します。
 	Cc | カーボン コピーの受信者のメール アドレスを入力します。セミコロン (;) を使用して複数のメール アドレスを区切ります。たとえば、「recipient1@domain.com;recipient2@domain.com」と入力します。
@@ -87,7 +87,7 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 ## コネクタでできること
 コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
-REST API を使用した API Apps を作成します。[コネクタと API Apps のリファレンス](http://go.microsoft.com/fwlink/p/?LinkId=529766)に関するページを参照してください。
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
@@ -99,4 +99,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [5]: ./media/app-service-logic-connector-smtp/img5.PNG
 [6]: ./media/app-service-logic-connector-smtp/img6.PNG
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

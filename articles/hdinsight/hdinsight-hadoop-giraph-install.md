@@ -5,7 +5,8 @@
 	documentationCenter="" 
 	authors="nitinme" 
 	manager="paulettm" 
-	editor="cgronlun"/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
 	ms.service="hdinsight" 
@@ -22,6 +23,9 @@
 
 このトピックでは、Script Action を使用して Giraph をインストールする方法を学習します。Giraph をインストールした後は、大規模なグラフを処理する多くの一般的なアプリケーションで Giraph を使用する方法についても説明します。
 
+[AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
+
+* [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install-v1.md)
 
 ## <a name="whatis"></a>Giraph とは
 
@@ -54,8 +58,6 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 	<tr><td>パラメーター</td>
 		<td>スクリプトで必要な場合は、パラメーターを指定します。Giraph をインストールするスクリプトではパラメーターが必要ないため、空白のままにすることができます。</td></tr>
 </table>複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。スクリプトの追加後、チェックマークをクリックしてクラスターのプロビジョニングを開始します。
-
-Azure PowerShell または HDInsight .NET SDK を使用して、HDInsight に Giraph をインストールするためにスクリプトを使用することもできます。これらの手順については、このトピックの後半で説明します。
 
 ## <a name="usegiraph"></a>HDInsight で Giraph を使用する方法
 
@@ -148,193 +150,6 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 	![Drawing of objects as circles with shortest paths drawn between](./media/hdinsight-hadoop-giraph-install/giraph-graph-out.png)
 
 
-## <a name="usingPS"></a>Azure PowerShell を使用した HDInsight Hadoop クラスターでの Giraph のインストール
-
-このセクションでは、**<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptActionScript Action</a>** コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。次に進む前に、Azure PowerShell をインストールして構成したことを確認します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成][powershell-install]」をご覧ください。
-
-次の手順に従います。
-
-1. Azure PowerShell ウィンドウを開き、次の変数を宣言します。
-
-		# Provide values for these variables
-		$subscriptionName = "<SubscriptionName>"		# Name of the Azure subscription
-		$clusterName = "<HDInsightClusterName>"			# HDInsight cluster name
-		$storageAccountName = "<StorageAccountName>"	# Azure Storage account that hosts the default container
-		$storageAccountKey = "<StorageAccountKey>"      # Key for the Storage account
-		$containerName = $clusterName
-		$location = "<MicrosoftDataCenter>"				# Location of the HDInsight cluster. It must be in the same data center as the Storage account.
-		$clusterNodes = <ClusterSizeInNumbers>			# Number of nodes in the HDInsight cluster
-		$version = "<HDInsightClusterVersion>"          # For example, "3.1"
-	
-2. クラスター内のノードや使用する既定のストレージなどの構成値を指定します。
-
-		# Specify the configuration options
-		Select-AzureSubscription $subscriptionName
-		$config = New-AzureHDInsightClusterConfig -ClusterSizeInNodes $clusterNodes
-		$config.DefaultStorageAccount.StorageAccountName="$storageAccountName.blob.core.windows.net"
-		$config.DefaultStorageAccount.StorageAccountKey=$storageAccountKey
-		$config.DefaultStorageAccount.StorageContainerName=$containerName
-	
-3. **Add-AzureHDInsightScriptAction** コマンドレットを使用して、スクリプト アクションをクラスター構成に追加します。その後、クラスターの作成時に、このスクリプト アクションが実行されます。
-
-		# Add a script action to the cluster configuration
-		$config = Add-AzureHDInsightScriptAction -Config $config -Name "Install Giraph" -ClusterRoleCollection HeadNode -Uri https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1
-
-	**Add-AzureHDInsightScriptAction** コマンドレットは、次のパラメーターを受け取ります。
-
-	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
-<tr>
-<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">パラメーター</th>
-<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:550px; padding-left:5px; padding-right:5px;">定義</th></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Config</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">スクリプト アクション情報が追加される構成オブジェクト。</td></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">スクリプト アクションの名前。</td></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">ClusterRoleCollection</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">カスタマイズ スクリプトが実行されるノード。有効な値は HeadNode (ヘッド ノードにインストールする場合) または DataNode (すべてのデータ ノードにインストールする場合) です。いずれかまたは両方の値を使用することができます。</td></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Uri</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">実行されるスクリプトへの URI。</td></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">パラメーター</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">スクリプトで必要なパラメーター。このトピックで使用するサンプル スクリプトでは、パラメーターは必要ありません。そのため、このパラメーターは上記のスニペットに含まれません。
-</td></tr>
-</table>
-	
-4. 最後に、Giraph がインストールされているカスタマイズされたクラスターのプロビジョニングを開始します。
-	
-		# Start provisioning a cluster with Giraph installed
-		New-AzureHDInsightCluster -Config $config -Name $clusterName -Location $location -Version $version 
-
-入力を求められたら、クラスターの資格情報を入力します。クラスターが作成されるまでに数分かかる場合があります。
-
-
-## <a name="usingSDK"></a>.NET SDK を使用した HDInsight Hadoop クラスターでの Giraph のインストール
-
-HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。このセクションでは、SDK からの Script Action を使用して、Giraph がインストールされているクラスターをプロビジョニングする方法について説明します。次の手順を実行する必要があります。
-
-- HDInsight .NET SDK のインストール
-- 自己署名証明書の作成
-- コンソール アプリケーションの作成
-- アプリケーションの実行
-
-
-**HDInsight .NET SDK をインストールするには**
-
-公開されている SDK の最新のビルドを [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
-
-**自己署名証明書を作成するには**
-
-自己署名証明書を作成し、それをコンピューターにインストールして、さらに、Azure サブスクリプションにアップロードします。手順については、「[Create a self-signed certificate (自己署名証明書の作成)](http://go.microsoft.com/fwlink/?LinkId=511138)」を参照してください。
-
-
-**Visual Studio コンソール アプリケーションを作成するには**
-
-1. Visual Studio 2013 を開きます。
-
-2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
-
-3. **[新しいプロジェクト]** で、次の値を入力するか、選択します。
-	
-	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
-<tr>
-<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">プロパティ</th>
-<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">値</th></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">カテゴリ</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">テンプレート/Visual C#/Windows</td></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">テンプレート</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">コンソール アプリケーション</td></tr>
-<tr>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
-<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">CreateGiraphCluster</td></tr>
-</table>
-
-4. **[OK]** をクリックしてプロジェクトを作成します。
-
-5. **[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
-
-6. コンソールで次のコマンドを実行して、パッケージをインストールします。
-
-		Install-Package Microsoft.WindowsAzure.Management.HDInsight
-
-	このコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトから追加します。
-
-7. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。
-
-8. 次の using ステートメントをファイルの先頭に追加します。
-
-		using System.Security.Cryptography.X509Certificates;
-		using Microsoft.WindowsAzure.Management.HDInsight;
-		using Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning;
-		using Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging;
-	
-9. 次のコードをコピーして Main() 関数に貼り付けた後、変数の値を指定します。
-		
-        var clusterName = args[0];
-
-        // Provide values for the variables
-        string thumbprint = "<CertificateThumbprint>";  
-        string subscriptionId = "<AzureSubscriptionID>";
-        string location = "<MicrosoftDataCenterLocation>";
-        string storageaccountname = "<AzureStorageAccountName>.blob.core.windows.net";
-        string storageaccountkey = "<AzureStorageAccountKey>";
-        string username = "<HDInsightUsername>";
-        string password = "<HDInsightUserPassword>";
-        int clustersize = <NumberOfNodesInTheCluster>;
-
-        // Provide the certificate thumbprint to retrieve the certificate from the certificate store 
-        X509Store store = new X509Store();
-        store.Open(OpenFlags.ReadOnly);
-        X509Certificate2 cert = store.Certificates.Cast<X509Certificate2>().First(item => item.Thumbprint == thumbprint);
-
-        // Create an HDInsight client object
-        HDInsightCertificateCredential creds = new HDInsightCertificateCredential(new Guid(subscriptionId), cert);
-        var client = HDInsightClient.Connect(creds);
-		client.IgnoreSslErrors = true;
-        
-        // Provide the cluster information
-		var clusterInfo = new ClusterCreateParameters()
-        {
-            Name = clusterName,
-            Location = location,
-            DefaultStorageAccountName = storageaccountname,
-            DefaultStorageAccountKey = storageaccountkey,
-            DefaultStorageContainer = clusterName,
-            UserName = username,
-            Password = password,
-            ClusterSizeInNodes = clustersize,
-            Version = "3.1"
-        };        
-
-10. [ScriptAction](http://msdn.microsoft.com/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx) クラスを使用して Giraph をインストールするカスタム スクリプトを呼び出すために、次のコードを Main() 関数に追加します。
-
-		// Add the script action to install Giraph
-        clusterInfo.ConfigActions.Add(new ScriptAction(
-          "Install Giraph", // Name of the config action
-          new ClusterNodeType[] { ClusterNodeType.HeadNode }, // List of nodes to install Giraph on
-          new Uri("https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1"), // Location of the script to install Giraph
-		  null //Because the script used does not require any parameters
-        ));
-
-11. 最後に、クラスターを作成します。
-
-		client.CreateCluster(clusterInfo);
-
-12. アプリケーションに変更を保存し、ソリューションをビルドします。
-
-**アプリケーションを実行するには**
-
-Azure PowerShell コンソールを開き、Visual Studio プロジェクトを保存した場所に移動し、プロジェクト内の \\bin\\debug ディレクトリに移動して、次のコマンドを実行します。
-
-	.\CreateGiraphCluster <cluster-name>
-
-クラスター名を指定し、Enter を押して、Giraph がインストールされているクラスターをプロビジョニングします。
-
 
 ## 関連項目##
 - 「[HDInsight クラスターでの Spark のインストールと使用][hdinsight-install-spark]」に関するページでは、HDInsight Hadoop クラスターでの Spark のインストールと使用を行うためのクラスター カスタマイズの使用法に関する手順が説明されています。Spark はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。
@@ -353,4 +168,4 @@ Azure PowerShell コンソールを開き、Visual Studio プロジェクトを�
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

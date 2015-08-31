@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="07/24/2015"
+   ms.date="08/12/2015"
    ms.author="shkurhek"/>
 
 # サービス階層
@@ -68,25 +68,25 @@ Premium 階層は、ミッション クリティカルなアプリケーショ�
 **パフォーマンスとサイズ**
 
 
-| サービス階層 | Premium P1 | Premium P2 | Premium P6 (以前は P3) |
-| :-- | :-- | :-- | :-- |
-| データベース スループット単位 (DTU) | 125 | 250 | 1,000 |
-| データベースの最大サイズ | 500 GB | 500 GB | 500 GB |
+| サービス階層 | Premium P1 | Premium P2 | Premium P4 | Premium P6 (以前は P3) |
+| :-- | :-- | :-- | :-- | :-- |
+| データベース スループット単位 (DTU) | 125 | 250 | 500 | 1,000 |
+| データベースの最大サイズ | 500 GB | 500 GB | 500 GB | 500 GB |
 
 
 **機能**
 
 
-| サービス階層 | Premium (P1、P2、P6) |
+| サービス階層 | Premium (P1、P2、P4、P6) |
 | :-- | :-- |
 | ポイントインタイム リストア (PITR) | 最後の 35 日間のミリ秒まで |
 | 障害復旧 | アクティブ geo レプリケーション、最大 4 つのオンラインの読み取り可能なセカンダリ |
 | パフォーマンス目標 | 1 秒あたりのトランザクション レート |
 
 
-これらの階層の価格の詳細については、「[SQL Database 価格](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+これらの階層の料金の詳細については、「[SQL Database 料金](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
 SQL Database の階層については、これで理解できました。では、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)で実際に試してみましょう。また、[初めて SQL Database を作成する方法](sql-database-get-started.md)について詳しく学びましょう。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

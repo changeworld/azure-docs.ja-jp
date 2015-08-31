@@ -103,4 +103,4 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

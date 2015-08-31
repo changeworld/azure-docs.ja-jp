@@ -234,8 +234,7 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 -	[C++ から Queue ストレージを使用する方法](storage-c-plus-plus-how-to-use-queues.md)
 -	[C++ から Table ストレージを使用する方法](storage-c-plus-plus-how-to-use-tables.md)
 -	[C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
--	[C++ 用ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/gg433040.aspx) 
--	[Azure Storage の MSDN リファレンス](https://msdn.microsoft.com/library/azure/gg433040.aspx)
+-	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 -	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
 
 
@@ -243,4 +242,4 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

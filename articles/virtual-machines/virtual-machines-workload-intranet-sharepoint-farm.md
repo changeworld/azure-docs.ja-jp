@@ -122,4 +122,6 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=August15_HO7-->
+[Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
+
+<!---HONumber=August15_HO8-->

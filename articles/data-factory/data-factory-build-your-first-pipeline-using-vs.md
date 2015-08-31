@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="07/27/2015"
+	ms.date="08/18/2015"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した初めてのパイプラインの作成
@@ -45,7 +45,7 @@
 
 	![New data factory blade](./media/data-factory-build-your-first-pipeline-using-vs/new-data-factory-blade.png)
 
-	> [AZURE.IMPORTANT]Azure Data Factory の名前はグローバルで一意となります。ファクトリを作成するには、データ ファクトリの名前の先頭にあなたの名前を付ける必要があります。 
+	> [AZURE.IMPORTANT] Azure Data Factory の名前はグローバルで一意となります。ファクトリを作成するには、データ ファクトリの名前の先頭にあなたの名前を付ける必要があります。 
 3.	リソース グループを作成していない場合は、リソース グループを作成する必要があります。これを行うには、次の手順を実行します。
 	1.	**[リソース グループ名]** をクリックします。
 	2.	**[リソース グループ]** ブレードで、**[新規リソース グループの作成]** を選択します。
@@ -87,7 +87,7 @@
 この手順では、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクした後、Hive 処理からの出力データを表すデータセットを作成します。
 
 
-#### Azure ストレージのリンクされたサービスを作成する
+#### Azure Storage のリンクされたサービスを作成する
 
 
 4. ソリューション エクスプローラーの **[Linked Services]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。      
@@ -97,7 +97,7 @@
  
 3. **accountname** と **accountkey** を Azure ストレージ アカウントとそのキーで置き換えます。
 
-	![Azure ストレージのリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
+	![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 
 4. **AzureStorageLinkedService1.json** ファイルを保存します。
 
@@ -109,15 +109,14 @@
 3. **JSON** を次のように置き換えます。
 
 		{
-		    "name": "HDInsightOnDemandLinkedService",
-		    "properties": {
-		        "version": "3.1",
-		        "clusterSize": 1,
-		        "timeToLive": "00:05:00",
-		        "jobsContainer": "adfjobs",
-		        "linkedServiceName": "StorageLinkedService",
-		        "type": "HDInsightOnDemandLinkedService"
-		    }
+		  "name": "HDInsightOnDemandLinkedService",
+		  "properties": {
+	        "type": "HDInsightOnDemandLinkedService",
+            "version": "3.1",
+	        "clusterSize": 1,
+	        "timeToLive": "00:05:00",
+	        "linkedServiceName": "AzureStorageLinkedService1"
+		  }
 		}
 	
 	次の表に、このスニペットで使用される JSON プロパティの説明を示します。
@@ -149,7 +148,7 @@
 		                "type": "TextFormat",
 		                "columnDelimiter": ","
 		            },
-		            "linkedServiceName": "StorageLinkedService"
+		            "linkedServiceName": "AzureStorageLinkedService1"
 		        },
 		        "availability": {
 		            "frequency": "Month",
@@ -169,15 +168,15 @@
 3. **JSON** を次のスニペットに置き換え、**storageaccountname** をストレージ アカウントの名前に置き換えます。
 
 		{
-			"name": "MyFirstPipeline",
-			"properties": {
-			"description": "My first Azure Data Factory pipeline",
-		 	"activities": [
+		    "name": "MyFirstPipeline",
+		    "properties": {
+		    "description": "My first Azure Data Factory pipeline",
+		    "activities": [
 		      {
 		            "type": "HDInsightActivity",
 		            "transformation": {
 		                    "scriptPath": "script/partitionweblogs.hql",
-		                    "scriptLinkedService": "StorageLinkedService",
+		                    "scriptLinkedService": "AzureStorageLinkedService1",
 		                    "type": "Hive",
 		                    "extendedProperties": {
 		                        "partitionedtable": "wasb://data@<storageaccountname>.blob.core.windows.net/partitioneddata"
@@ -187,7 +186,7 @@
 		                "policy": {  
 		                    "concurrency": 1,
 		                    "retry": 3
-						},
+		                },
 		                "name": "RunSampleHiveActivity",
 		                "linkedServiceName": "HDInsightOnDemandLinkedService"
 		            }
@@ -199,14 +198,21 @@
  
 	この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
 	
-	Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、**StorageLinkedService** という名前) および **script** という名前のコンテナーに格納されます。
+	Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、**AzureStorageLinkedService1** という名前) および **script** という名前のコンテナーに格納されます。
 
 	**extendedProperties** セクションは、Hive 構成値 (例: ${hiveconf:PartitionedData}) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
 
 	パイプラインの **start** および **end** プロパティでは、パイプラインのアクティブな期間を指定します。
 
 	アクティビティ JSON では、Hive スクリプトがリンクされたサービス **HDInsightOnDemandLinkedService** によって指定されたコンピューティングで実行することを指定します。
-3. **HiveActivity1.json** ファイルを保存します。 
+3. **HiveActivity1.json** ファイルを保存します。
+
+### 依存関係として partitionweblogs.hql を追加する 
+
+1. **[ソリューション エクスプローラー]** ウィンドウで [依存関係] を右クリックし、**[追加]** をポイントし、**[既存の項目]** をクリックします。  
+2. **C:\\ADFGettingStarted** に移動し、**partitionweblogs.hql** ファイルを選択し、**[追加]** をクリックします。 
+
+次の手順でソリューションを公開すると、BLOB ストレージのスクリプト コンテナーに HQL ファイルがアップロードされます。
 
 ### Data Factory エンティティの発行/デプロイ
   
@@ -246,4 +252,4 @@ Azure プレビュー ポータルを使用して、このチュートリアル�
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」をご覧ください。
   
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

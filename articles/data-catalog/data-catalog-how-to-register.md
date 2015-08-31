@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="07/27/2015"
+   ms.date="08/19/2015"
    ms.author="maroche"/>
 
 
@@ -30,11 +30,12 @@
 ## サポートされているソース
 現在のプレビューでは、**Azure Data Catalog** は以下のデータ ソースとオブジェクトの種類の登録をサポートしています。
 
-* SQL Server データベース エンジンのテーブルとビュー
+* SQL Server Database Engine のテーブルとビュー
 * Oracle データベースのテーブルとビュー
 * SQL Server Analysis Services Multidimensional Dimension、Measure、KPI
 * SQL Server Analysis Services 表形式テーブル
 * SQL Server Reporting Services レポート
+* Azure Storage BLOB およびディレクトリ
 
 > [AZURE.NOTE]SQL Server のサポートには Microsoft Azure SQL Database も含まれます
 
@@ -62,4 +63,4 @@
 ## 概要
 **Azure Data Catalog** でデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされることによって、データ ソースの検出と理解が容易になります。登録されたデータ ソースは、**Azure Data Catalog** ポータルを使用して注釈付け、管理、および使用できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

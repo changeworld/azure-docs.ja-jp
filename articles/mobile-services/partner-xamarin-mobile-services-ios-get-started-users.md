@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/14/2015"
+	ms.date="08/18/2015"
 	ms.author="donnam"/>
 
 # Mobile Services アプリへの認証の追加
@@ -149,6 +149,5 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 [Xamarin.iOS]: http://xamarin.com/download
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

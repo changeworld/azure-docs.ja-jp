@@ -1,19 +1,19 @@
 <properties
-	pageTitle="Azure Active Directory のエディション"
+	pageTitle="Azure Active Directory のエディション | Microsoft Azure"
 	description="Azure Active Directory の無料エディションと有料エディションの選択について説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="TerryLan"
+	manager="msStevenPo"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.workload="infrastructure-services"
+	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2015"
+	ms.date="08/14/2015"
 	ms.author="curtand"/>
 
 # Azure Active Directory のエディション
@@ -48,11 +48,11 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 
     詳細については、「[Azure AD でのユーザーのセルフ サービス グループ管理](https://msdn.microsoft.com/library/azure/dn641267.aspx)」を参照してください。
 
-- **高度なセキュリティ レポートとアラート** - より高度な異常性を示す詳細なログおよび一貫性のないアクセス パターンのレポートを表示することにより、クラウド アプリケーションへのアクセスを監視および保護できます。高度なレポートは機械学習に基づいており、アクセスのセキュリティを強化して潜在的な脅威に対応するための新しい知見を得ることができます。
+- **高度なセキュリティ レポートとアラート** - より高度な異常性を示す詳細なログおよび一貫性のないアクセス パターンのレポートを表示することにより、クラウド アプリケーションへのアクセスを監視および保護できます。高度なレポートは Machine Learning に基づいており、アクセスのセキュリティを強化して潜在的な脅威に対応するための新しい知見を得ることができます。
 
     詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-- **Multi-factor Authentication (多要素認証)** - Multi-factor Authentication が Premium に含まれるようになり、オンプレミス アプリケーション (VPN、RADIUS など)、Azure、Microsoft Online Services (Office 365、Dynamics CRM Online など)、および Azure Active Directory に既に統合されている多数の非 MS クラウド サービスに安全にアクセスできます。Azure Active Directory の ID に対する Multi-factor Authentication を有効にするだけで、ユーザーは次回サインイン時に追加検証の設定を求められます。
+- **Multi-factor Authentication (多要素認証)** - Multi-factor Authentication が Premium に含まれるようになり、オンプレミス アプリケーション (VPN、RADIUS など)、Azure、Microsoft Online Services (Office 365、Dynamics CRM Online など)、および Azure Active Directory に既に統合されている多数の非 MS Cloud Services に安全にアクセスできます。Azure Active Directory の ID に対する Multi-factor Authentication を有効にするだけで、ユーザーは次回サインイン時に追加検証の設定を求められます。
 
     詳細については、「[Multi-Factor Authentication を Azure Active Directory に追加する](https://msdn.microsoft.com/library/azure/dn249466.aspx)」を参照してください。
 
@@ -62,10 +62,11 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 
 - **99.9% のエンタープライズ SLA** - Azure Active Directory Premium サービスでは 99.9% 以上の可用性が保証されます。
 
-    詳細については、「[ほとんどの Azure サービスの SLA](http://azure.microsoft.com/support/legal/sla/)」を参照してください。
+    詳細については、「[Active Directory Premium の SLA](http://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
 - **ライトバック機能付きパスワード リセット** - セルフ サービスのパスワード リセットはオンプレミス ディレクトリにライトバックできます。
 
+- [Azure Active Directory Connect Health](https://msdn.microsoft.com/library/azure/dn906722.aspx): オンプレミスの Active Directory インフラストラクチャで正常性を監視し、使用状況の分析を取得します。
 
 
 
@@ -93,11 +94,12 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 - クラウド ユーザーに対するセルフ サービスのグループ管理
 - オンプレミスへのライトバックを備えたセルフ サービスのパスワード リセット
 - Microsoft Identity Manager (MIM) サーバー ライセンス – オンプレミスのデータベースおよびディレクトリと Azure Active Directory との間の同期用
-- 詳細な異常セキュリティ レポート (機械学習に基づく)
+- 詳細な異常セキュリティ レポート (Machine Learning に基づく)
 - [Cloud App Discovery](http://channel9.msdn.com/Series/EMS/Azure-Cloud-App-Discovery)
 - 高度なアプリケーション使用状況レポート
 - クラウド ユーザー向けの Multi-factor Authentication サービス
 - オンプレミス ユーザー向けの Multi-factor Authentication サーバー
+- Azure Active Directory Connect Health
 
 ## 現時点でパブリック プレビュー段階の機能
 
@@ -105,7 +107,6 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 
 - [管理単位](https://msdn.microsoft.com/library/azure/dn832057.aspx): Azure Active Directory の新しいリソース コンテナーであり、管理アクセス許可をユーザーのサブセットに委任したり、ユーザーのサブセットにポリシーを適用したりする場合に使用できます。
 - Azure Active Directory に[独自の SaaS アプリケーション](https://msdn.microsoft.com/library/azure/dn893637.aspx)を追加します。
-- [Azure Active Directory Connect Health](https://msdn.microsoft.com/library/azure/dn906722.aspx): オンプレミスの Active Directory インフラストラクチャで正常性を監視し、使用状況の分析を取得します。
 - Facebook、Twitter、LinkedIn にパスワードをロールオーバーします。詳細については、[こちらの記事](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)を参照してください。
 - 動的グループ メンバーシップ。詳細については、[こちらの記事](https://msdn.microsoft.com/library/azure/dn913807.aspx)を参照してください。
 - [条件付きアクセス](https://msdn.microsoft.com/library/azure/dn906877.aspx): アプリケーションごとの多要素認証です。
@@ -120,6 +121,5 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/11/2015"
+   ms.date="07/27/2015"
    ms.author="cgronlun"/>
 
 
@@ -52,7 +52,7 @@ Azure HDInsight は、**Linux** または **Windows** を基盤 OS として使�
 ---------| -------------------| --------------------
 **クラスターの OS** | Ubuntu 12.04 Long Term Support (LTS) | Windows Server 2012 R2
 **クラスターの種類** | Hadoop は、 | Hadoop、HBase、Storm
-**デプロイメント** | Microsoft Azure 管理ポータル、Azure CLI、Azure PowerShell | Microsoft Azure 管理ポータル、Azure CLI、Azure PowerShell、HDInsight .NET SDK
+**デプロイ** | Azure ポータル、Azure CLI、Azure PowerShell | Azure ポータル、Azure CLI、Azure PowerShell、HDInsight .NET SDK
 **クラスター UI** | Ambari | クラスター ダッシュボード
 **リモート アクセス** | Secure Shell (SSH) | リモート デスクトップ プロトコル (RDP)
 
@@ -60,7 +60,7 @@ Azure HDInsight は、**Linux** または **Windows** を基盤 OS として使�
 
 ### Hadoop、HBase、Storm、およびカスタマイズしたクラスター
 
-HDInsight には、Hadoop、HBase、または Storm という特定のワークロード用のクラスター構成が用意されています。あるいは、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">スクリプト アクションを使用してクラスターをカスタマイズ</a>することもできます。
+HDInsight には、Hadoop、HBase、または Storm というクラスター構成が用意されています。あるいは、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">スクリプト アクションを使用してクラスターをカスタマイズ</a>することもできます。
 
 * **Hadoop** ("クエリ" ワークロード): [HDFS](#HDFS) を使用した信頼できるデータ ストレージと、データの処理および分析を同時に行うシンプルな [MapReduce](#mapreduce) プログラミング モデルを利用できます。
 
@@ -177,7 +177,7 @@ HDInsight の Hadoop を使うその他のメリットについては、[HDInsig
 
 * [Linux での HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - Linux に HDInsight Hadoop クラスターをプロビジョニングし、サンプルの Hive クエリを実行するためのクイック スタート チュートリアル。
 
-* [カスタム オプションを使用した Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md) - Microsoft Azure 管理ポータル、Azure CLI、Azure PowerShell のカスタム オプションを使用して Linux に HDInsight Hadoop クラスターをプロビジョニングする方法について説明します。
+* [カスタム オプションを使用した Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md) - Azure ポータル、Azure CLI、Azure PowerShell のカスタム オプションを使用して Linux に HDInsight Hadoop クラスターをプロビジョニングする方法について説明します。
 
 * [Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md) - Azure でプロビジョニングされた Hadoop Linux クラスターの使用に関するクイック ヒントを示します。
 
@@ -246,4 +246,4 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 [zookeeper]: http://zookeeper.apache.org/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

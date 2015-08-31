@@ -22,20 +22,20 @@
 
 ## Transact-SQL コードの変更点
 
-Azure SQL Data Warehouse でサポートされていない主な機能を次に示します。
+Azure SQL Data Warehouse でサポートされていない主な機能を次に示します。掲載されたリンクをクリックすると、サポートされていない機能に対する解決策が表示されます。
 
-- 更新での ANSI の JOIN
-- 削除での ANSI の JOIN
-- MERGE ステートメント
+- [更新での ANSI の JOIN][]
+- [削除での ANSI の JOIN][]
+- [MERGE ステートメント][]
 - 複数データベースの JOIN
 - [カーソル][]
 - [SELECT..INTO][]
-- INSERT..EXEC
+- [INSERT..EXEC][]
 - OUTPUT 句
 - インライン ユーザー定義関数
 - 複数ステートメント関数
-- 再帰共通テーブル式 (CTE)
-- CTE を介した更新
+- [再帰共通テーブル式 (CTE)](#Recursive-common-table-expressions-(CTE)
+- [CTE を介した更新](#Updates-through-CTEs)
 - CLR 関数およびプロシージャ
 - $partition 関数
 - テーブル変数
@@ -51,6 +51,16 @@ Azure SQL Data Warehouse でサポートされていない主な機能を次に�
 - [動的 SQL 文字列の MAX 以外のデータ型][]
 
 幸運なことに、これらの制限の大部分は回避できます。上記の関連する開発記事に説明が記載されています。
+
+### 再帰共通テーブル式 (CTE)
+
+これは、応急処置のない複雑なシナリオです。CTE をいくつかの手順に分けて処理する必要があります。通常、再帰的な中間クエリの反復処理時に、一時テーブルに値を取り込むといった非常に複雑なループを使用できます。一時テーブルに値が取り込まれたら、単一の結果セットとしてデータを戻すことができます。[group by 句と rollup / cube / grouping sets オプション][]に関する記事でも `GROUP BY WITH CUBE` の解決に同様のアプローチを採用しています。
+
+### CTE を介した更新
+
+CTE が非再帰的である場合、サブクエリを使用するようにクエリを書き換えることができます。再帰 CTE の場合、まず前に説明しているように、結果セットを作成してから、最終的な結果をターゲット テーブルに結合し、更新を実行する必要があります。
+
+### システム関数
 
 また、サポートされていないシステム関数もいくつかあります。データ ウェアハウジングで一般的に使用されている主なものを次に示します。
 
@@ -85,9 +95,14 @@ AND     request_id IN
 <!--Image references-->
 
 <!--Article references-->
-[pivot and unpivot statements]: sql-data-warehouse-develop-pivot-unpivot.md
+[更新での ANSI の JOIN]: sql-data-warehouse-develop-ctas.md
+[削除での ANSI の JOIN]: sql-data-warehouse-develop-ctas.md
+[MERGE ステートメント]: sql-data-warehouse-develop-ctas.md
+[INSERT..EXEC]: sql-data-warehouse-develop-temporary-tables.md
+
 [カーソル]: sql-data-warehouse-develop-loops.md
 [SELECT..INTO]: sql-data-warehouse-develop-ctas.md
+[group by 句と rollup / cube / grouping sets オプション]: sql-data-warehouse-develop-group-by-options.md
 [rollup / cube / grouping セット オプションによる句ごとのグループ化]: sql-data-warehouse-develop-group-by-options.md
 [8 を超えるの入れ子のレベル]: sql-data-warehouse-develop-transactions.md
 [ビューを使用した更新]: sql-data-warehouse-develop-views.md
@@ -99,4 +114,4 @@ AND     request_id IN
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

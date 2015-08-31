@@ -20,9 +20,10 @@
 # Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](virtual-machines-windows-tutorial.md)
-- [Azure Portal](virtual-machines-windows-tutorial-classic-portal.md)
-- [PowerShell](virtual-machines-ps-create-preconfigure-windows-vms.md)
+- [Azure preview portal](virtual-machines-windows-tutorial.md)
+- [Azure portal](virtual-machines-windows-tutorial-classic-portal.md)
+- [PowerShell: Resource Manager deployment](virtual-machines-deploy-rmtemplates-powershell.md)
+- [PowerShell: Classic deployment](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 以下の手順では、構成ブロック手法を使用して、Azure PowerShell コマンド セットをカスタマイズする方法を示します。このコマンド セットでは、Windows ベースの Azure 仮想マシンを作成および事前構成します。このプロセスを使用すると、新しい Windows ベースの仮想マシンのコマンド セットを迅速に作成して既存のデプロイを拡張することや、複数のコマンド セットを作成してカスタムの開発とテスト環境または IT プロの環境をすばやく構築することもできます。
 
@@ -270,4 +271,4 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 [リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

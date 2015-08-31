@@ -103,8 +103,23 @@ Azure Active Directory Connect は 3 つの主要な部分で構成されます�
 - Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。このサーバーをドメイン コントローラーやメンバー サーバーにすることができます。
 - AD スキーマのバージョンとフォレスト レベルは、Windows Server 2003 以降である必要があります。ドメイン コント ローラーは、スキーマとフォレスト レベルの要件を満たしていれば、任意のバージョンを実行できます。
 - Active Directory フェデレーション サービスをデプロイする場合、AD FS をインストールするサーバーは、Windows Server 2012 以降である必要があります。
+- Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。
+- さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール プロセスを、さまざまなバージョンの SQL Server に指定する必要があります。Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。
 - ローカルの Active Directory のエンタープライズ管理者アカウント
-- 省略可能: 同期を検証するテスト ユーザー アカウント。 
+- 送信プロキシを使用している場合、インストールを完了するには、**C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** ファイルに次の設定を追加する必要があります。<code>
+		
+		<system.net>
+    		<defaultProxy>
+      		<proxy
+        	usesystemdefault="true"
+        	proxyaddress=http://<PROXYIP>:80"
+        	bypassonlocal="true"
+     		 />
+    		</defaultProxy>
+  		</system.net>
+</code> このテキストは、ファイルの最下部に入力する必要があります。このコードで、&lt;PROXYIP&gt; は実際のプロキシ IP アドレスを表します。
+
+- 省略可能: 同期を検証するテスト ユーザー アカウント。
 
 #### Azure AD Connect のハードウェア要件
 次の表は、Azure AD Connect コンピューターの最小要件を示しています。
@@ -258,4 +273,4 @@ Azure AD Connect の操作に関するその他のドキュメントについて
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

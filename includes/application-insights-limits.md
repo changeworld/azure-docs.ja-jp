@@ -1,22 +1,24 @@
- Limits depend on the [pricing tier](http://azure.microsoft.com/pricing/details/application-insights/) that you choose.
+ 制限は、選択する[価格レベル](http://azure.microsoft.com/pricing/details/application-insights/)によって異なります。
 
-**Resource** | **Default Limit** | **Maximum Limit**
+**リソース** | **既定の制限** | **上限**
 -------- | ------------- | -------------
-Session data points<sup>1</sup> per month | unlimited | unlimited
-Other data points per month | 5 million | 50 million<sup>2</sup>
-Trace or Log data rate | 200 dp/s | 500 dp/s
-Exception data rate | 50 dp/s | 50 dp/s
-Other telemetry data rate | 200 dp/s | 500 dp/s
-Raw  data retention |7 days| 30 days
-Aggregated data retention | 13 months | unlimited
-Property name count across the app | 100 | 100
-Property name length | 100 | 100
-Property value length | 1000 | 1000
-Trace and Exception message length | 10000 | 10000
-Metric name length |  100 | 100
+セッションのデータ ポイント数<sup>1</sup>/月 | 無制限 | 無制限
+その他のデータ ポイント数/月 | 500 万 | 5,000 万<sup>2</sup>
+トレースまたはログのデータ速度 | 200 dp/s | 500 dp/s
+例外データ速度 | 50 dp/s | 50 dp/s
+その他のテレメトリ データ速度 | 200 dp/s | 500 dp/s
+生データの保持期間 |7 日| 30 日
+集計データの保持期間 | 13 か月 | 無制限
+アプリ全体でのプロパティ名の数 | 100 | 100
+プロパティ名の長さ | 100 | 100
+プロパティ値の長さ | 1,000 | 1,000
+トレースおよび例外のメッセージ長 | 10000 | 10000
+メトリック名の長さ | 100 | 100
 
-<sup>1</sup> A data point is an individual metric value or event, with attached properties and measurements.
+<sup>1</sup> データ ポイントとは、個々のメトリック値またはイベントに、プロパティと測定値を付加したものです。
 
-<sup>2</sup> You can purchase additional capacity beyond 50 million.
+<sup>2</sup> 5,000 万を超える追加容量を購入することができます。
  
-[About pricing and quotas in Application Insights](app-insights-pricing.md)
+[Application Insights の価格とクォータについて](app-insights-pricing.md)
+
+<!---HONumber=August15_HO8-->

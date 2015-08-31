@@ -5,7 +5,8 @@
    documentationCenter=""
    authors="Blackmist"
    manager="paulettm"
-   editor="cgronlun"/>
+   editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -13,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/13/2015"
+   ms.date="08/04/2015"
    ms.author="larryfr"/>
 
 #HDInsight 用 Python ストリーミング プログラムの開発
@@ -199,7 +200,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 これで、HDInsight でストリーミング MapRedcue ジョブを使用する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

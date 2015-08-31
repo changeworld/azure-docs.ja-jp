@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Orchestrator からの Runbook と統合パックを移行する"
+   pageTitle="Orchestrator から Azure Automation へ移行する | Microsoft Azure"
    description="System Center Orchestrator の Runbook と統合パックを Azure Automation に移行する方法を説明します。"
    services="automation"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/22/2015"
+   ms.date="08/18/2015"
    ms.author="bwren" />
 
 
@@ -81,4 +81,4 @@ Microsoft は、System Center のコンポーネントと他の製品を自動�
 - [Orchestrator 標準活動](http://technet.microsoft.com/library/hh403832.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

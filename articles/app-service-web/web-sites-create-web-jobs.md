@@ -209,4 +209,4 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

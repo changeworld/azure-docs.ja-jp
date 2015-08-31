@@ -3,6 +3,7 @@
 	description="デバッグおよび分析に利用できるように、自動的に Hadoop サービスのヒープ ダンプを収集して Azure BLOB ストレージ アカウント内に配置します。"
 	services="hdinsight"
 	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"
 	manager="paulettm"
 	editor="cgronlun"/>
@@ -62,4 +63,4 @@ Hadoop サービスのヒープ ダンプを自動的に収集し、HDInsightHea
 
 	clusterInfo.MapReduceConfiguration.ConfigurationCollection.Add(new KeyValuePair<string, string>("javaargs.jobhistoryserver.XX:HeapDumpPath", "-XX:HeapDumpPath=c:\\Dumps\\jobhistoryserver_%date:~4,2%_%date:~7,2%_%date:~10,2%_%time:~0,2%_%time:~3,2%_%time:~6,2%.hprof"));
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

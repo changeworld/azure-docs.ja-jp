@@ -1,6 +1,15 @@
 
-* [サーバーへのクライアント SSL 署名 ID のインストール](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringPushNotifications/ConfiguringPushNotifications.html#//apple_ref/doc/uid/TP40012582-CH32-SW15)手順に従って、前の手順でダウンロードした証明書を .p12 ファイルにエクスポートします。
+1.  お使いの Mac で、**Keychain Access** を起動します。**[分類]** の **[自分の証明書]** を開きます。エクスポートする SSL 証明書 (事前にダウンロードしたもの) を探して、その内容を開示します。秘密鍵を選択せずに証明書のみを選択し、それを[書き出し](https://support.apple.com/kb/PH20122?locale=en_US)ます。
 
-* Azure プレビュー ポータルで、**[参照]**、**[Mobile Apps]**、[自分のアプリ]、**[プッシュ通知サービス]**、**[Apple Push Notification Services]**、**[証明書のアップロード]** の順にクリックします。.p12 ファイルをアップロードし、正しい **[モード]** が選択されていることを確認します (生成したクライアント SSL 証明書が開発用か配布用かに応じて、[サンドボックス] または [運用] を選択します)。 これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
+2. Azure ポータルで、**[すべて参照]**、**[Mobile Apps]**、バックエンド、**[設定]**、**[モバイル アプリ]**、**[プッシュ]**、**[必要な設定の構成]**、**[+ 通知ハブ]** の順にクリックし、通知ハブの名前と名前空間を指定してから、**[OK]** をクリックします。
 
-<!---HONumber=August15_HO6-->
+  ![][1]
+
+3. **[通知ハブの作成]** ブレードで、**[作成]** をクリックします。
+     
+    次の手順に進む前に、**[通知]** をクリックし、通知ハブのセットアップが完了していることを確認します。 
+4. Azure ポータルで、**[すべて参照]**、**[Mobile Apps]**、バックエンド、**[設定]**、**[モバイル アプリ]**、**[プッシュ]**、**[Apple プッシュ通知サービス]**、**[証明書のアップロード]** の順にクリックします。(生成したクライアント SSL 証明書が開発用か配布用かに応じて) 適切な **[モード]** を選択し、.p12 ファイルをアップロードします。 これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
+
+[1]: ./media/app-service-mobile-apns-configure-push-preview/mobile-push-notification-hub.png
+
+<!---HONumber=August15_HO8-->

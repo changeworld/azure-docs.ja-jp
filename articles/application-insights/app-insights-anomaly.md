@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/21/2015" 
+	ms.date="08/18/2015" 
 	ms.author="awills"/>
 
 #  Application Insights: プロアクティブな異常検出
@@ -67,13 +67,17 @@ Application Insights は、アプリの製品利用統計情報について詳�
 * *通知を受信するために、このサービスに登録する必要はありますか。*
  * いいえ。ボットは定期的に Application Insights を使用するすべてのユーザーからのデータを調査し、問題を検出した場合に通知を送信します。
 * *登録を解除できますか。または、代わりに同僚に通知が送信されるように設定できますか。*
- * アラートやメールのリンクをクリックします。異常設定を開きます。![](./media/app-insights-anomaly/01.png)現在、通知は [Application Insights リソースへの書き込みアクセス](app-insights-resources-roles-access-control.md)権のあるユーザーに送信されます。
+ * アラートやメールのリンクをクリックします。異常設定を開きます。
+ 
+    ![](./media/app-insights-anomaly/01.png)
+
+    現在、通知は [Application Insights リソースへの書き込みアクセス権](app-insights-resources-roles-access-control.md)のあるユーザーに送信されます。
 * *メッセージで受信ボックスをいっぱいにしたくありません。*
  * 1 日 3 通までに制限されています。どのメッセージも繰り返し送信されることはありません。
 * *通知に対して何もしない場合、リマインダが送信されますか。*
  * いいえ。各問題についてのメッセージが送信されるのは 1 回のみです。
 * *メールが消えました。どうしたらポータルで通知を見つけられますか。*
- * アプリの Application Insights の概要で、**[異常 (Anomalies)]** タイルをクリックします。 
+ * アプリの Application Insights の概要で、**[異常 (Anomalies)]**タイルをクリックします。 
 
 
 
@@ -82,4 +86,4 @@ Application Insights は、アプリの製品利用統計情報について詳�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -69,11 +69,11 @@ SharePoint への呼び出しを作成するには、モバイル サービス�
 
     ![][3]
 
-4. SP_Authority を、AAD テナントの機関のエンドポイントになるよう設定します。これは、クライアント アプリケーションに使用する機関の値と同じにする必要があります。形式は、https://login.windows.net/contoso.onmicrosoft.com のようになります。
+4. SP\_Authority を、AAD テナントの機関のエンドポイントになるよう設定します。これは、クライアント アプリケーションに使用する機関の値と同じにする必要があります。形式は、https://login.windows.net/contoso.onmicrosoft.com のようになります。
 
-5. SP_ClientSecret を、前に取得したクライアント シークレットの値になるよう設定します。
+5. SP\_ClientSecret を、前に取得したクライアント シークレットの値になるよう設定します。
 
-6. SP_SharePointURL を、SharePoint サイトの URL になるよう設定します。形式は、https://contoso-my.sharepoint.com のようになります。
+6. SP\_SharePointURL を、SharePoint サイトの URL になるよう設定します。形式は、https://contoso-my.sharepoint.com のようになります。
 
 ApiServices.Settings を使用すると、コード内でこれらの値をもう一度取得できます。
 
@@ -214,9 +214,9 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 [アプリケーションをテストする]: #test-application
 
 <!-- URLs. -->
-[Active Directory]: https://manage.windowsazure.com/
+[[Active Directory]]: https://manage.windowsazure.com/
 [SharePoint Online]: http://office.microsoft.com/sharepoint/
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: http://azure.microsoft.com/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/06/2015"
+   ms.date="08/17/2015"
    ms.author="ryanwi"/>
 
 # REST ベース アプリケーション ライフサイクルのサンプル
@@ -49,7 +49,7 @@
 
 アプリケーション パッケージを作成し、作成したパッケージを ImageStore にコピーする方法は、次のとおりです。
 
-1. C:\\Samples\\Services\\VS2015\\WordCountUpgrade\\WordCount\\pkg\\Debug を C:\\Temp\\WordCount にコピーします。これにより、WordCount アプリケーション パッケージが作成されます。 
+1. C:\\Samples\\Services\\VS2015\\WordCountUpgrade\\WordCount\\pkg\\Debug を C:\\Temp\\WordCount にコピーします。これにより、WordCount アプリケーション パッケージが作成されます。
 2. C:\\Temp\\WordCount を C:\\Temp\\WordCountUpgrade にコピーします。これにより、WordCountUpgrade アプリケーション パッケージが作成されます。
 3. C:\\Temp\\WordCountUpgrade\\ApplicationManifest.xml をテキスト エディターで開きます。
 4. ApplicationManifest 要素で、ApplicationTypeVersion 属性を "1.1.0.0" に変更します。これにより、アプリケーションのバージョン番号が更新されます。
@@ -710,6 +710,4 @@ namespace ServiceFabricRestCaller
 
 [Service Fabric アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -22,8 +22,8 @@
 
 ## 言語
 
-+ [C#|VB (.NET)](app-insights-start-monitoring-app-health-usage.md)
-+ [C#|VB (Windows ストア)](app-insights-windows-get-started.md)
++ [C\#|VB (.NET)](app-insights-start-monitoring-app-health-usage.md)
++ [C\#|VB (Windows ストア)](app-insights-windows-get-started.md)
 + [C++ (Windows ストア)](app-insights-windows-cpp.md)
 + [Java](app-insights-java-get-started.md)
 + [JavaScript Web ページ](app-insights-web-track-usage.md)
@@ -50,9 +50,9 @@
 + [Node.JS](https://www.npmjs.com/package/applicationinsights)
 + [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 + [SharePoint](app-insights-sharepoint.md)
-+ [Windows ストア C#|VB](app-insights-windows-get-started.md)
++ [Windows ストア C\#|VB](app-insights-windows-get-started.md)
 + [Windows ストア C++](app-insights-windows-cpp.md)
-+ [Windows デスクトップのアプリケーションとサービス](app-insights-windows-desktop.md)
++ [Windows デスクトップのアプリケーションとサービス、および worker ロール](app-insights-windows-desktop.md)
 + [WordPress](https://wordpress.org/plugins/application-insights/)
 + [その他](#projects)
 
@@ -77,4 +77,4 @@
 
 <!--Link references-->
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

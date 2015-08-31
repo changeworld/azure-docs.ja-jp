@@ -5,7 +5,8 @@
 	documentationCenter="" 
 	authors="nitinme" 
 	manager="paulettm" 
-	editor="cgronlun"/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
 	ms.service="hdinsight" 
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/10/2015" 
+	ms.date="07/31/2015" 
 	ms.author="nitinme"/>
 
 
@@ -21,7 +22,9 @@
 
 Spark ストリーミングは、コア Spark API を拡張して、スケーラビリティ、高スループット、フォールト トレランスを備えたストリーム処理アプリケーションを構築します。多くのソースからデータを取り込むことができます。この記事では、Event Hubs を使用してデータを取り込みます。Event Hubs は、スケーラブルなインジェスト システムであり、1 秒間に数百万件のイベントを取り込むことができます。
 
-このチュートリアルでは、Azure Event Hubs を作成する方法、C# のコンソール アプリケーションを使用して Event Hubs にメッセージを取り込む方法、および HDInsight で Apache Spark 用に構成されている Zeppelin Notebook を使用して並列にメッセージを取得する方法を説明します。
+このチュートリアルでは、Azure Event Hubs を作成する方法、C#のコンソール アプリケーションを使用して Event Hubs にメッセージを取り込む方法、および HDInsight で Apache Spark 用に構成されている Zeppelin Notebook を使用して並列にメッセージを取得する方法を説明します。
+
+> [AZURE.NOTE]この記事の手順に従うには、両方のバージョンの Azure ポータルを使用する必要があります。イベント ハブを作成するには、[Azure ポータル](https://manage.windowsazure.com)を使用します。HDInsight Spark クラスターを操作するには、[Azure プレビュー ポータル](https://ms.portal.azure.com/)を使用します。
 
 **前提条件:**
 
@@ -52,7 +55,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 <tr><th>名前</th><th>アクセス許可</th></tr>
 <tr><td>mysendpolicy</td><td>送信</td></tr>
 <tr><td>myreceivepolicy</td><td>リッスン</td></tr>
-</table>アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、この Event Hub に対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
+</table>アクセス許可の作成後、ページの下部にある **[保存]** アイコンをクリックします。これにより、このイベント ハブに対する送信 (**mysendpolicy**) とリッスン (**myreceivepolicy**) に使用する共有アクセス ポリシーが作成されます。
 
 	![ポリシー](./media/hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming/HDI.Spark.Streaming.Event.Hub.Policies.png "Event Hub のポリシーを作成します")
 
@@ -71,7 +74,9 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 このセクションでは、[Zeppelin](https://zeppelin.incubator.apache.org) Notebook を作成して、Event Hub からのメッセージを HDInsight の Spark クラスターに受け取ります。
 
-1. Zeppelin Notebook を起動します。Azure ポータルで Spark クラスターを選択し、下部にあるポータル タスク バーの **[Zeppelin Notebook]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。表示されるページの指示に従って Notebook を起動します。
+1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+
+2. Zeppelin Notebook を起動します。Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。表示されるページの指示に従って Notebook を起動します。
 
 2. 新しい Notebook を作成します。ヘッダー ウィンドウで **[Notebook]** をクリックし、ドロップダウンから **[Note の新規作成]** をクリックします。
 
@@ -122,7 +127,8 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 
 3. Zeppelin Notebook の新しい段落に次のスニペットを入力し、Spark で受信したメッセージを読み取ります。
 
-		%sql select * from mytemptable limit 10
+		%sql 
+		select * from mytemptable limit 10
 
 	次のスクリーン キャプチャは、**mytemptable** で受信したメッセージです。
 
@@ -164,4 +170,4 @@ Zeppelin を使用して HDInsight の Spark クラスターでストリーミ�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

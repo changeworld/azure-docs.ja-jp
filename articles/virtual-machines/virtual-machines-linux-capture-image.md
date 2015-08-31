@@ -26,7 +26,7 @@ Azure ではこのテンプレートをイメージとして扱い、**[イメ�
 
 ## 開始する前に
 
-これらの手順は、すでに Azure 仮想マシンを作成し、データ ディスクの接続を含め、オペレーティング システムの構成が完了していることを前提としています。まだ完了していない場合は、下記の手順を確認してください。
+これらの手順は、すでにクラシック デプロイ モデルを使用して Azure 仮想マシンを作成し、データ ディスクの接続を含め、オペレーティング システムの構成が完了していることを前提としています。まだ完了していない場合は、下記の手順を確認してください。
 
 - [How to Create a Virtual Machine Running Linux (Linux を実行する仮想マシンの作成方法)][]
 
@@ -86,7 +86,7 @@ Azure ではこのテンプレートをイメージとして扱い、**[イメ�
 
 
 ## 次のステップ
-イメージの準備ができましたので、これをテンプレートとして使用して仮想マシンを作成します。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、[「Using Azure CLI with Service Management (サービス管理での Azure CLI の使用)」](virtual-machines-command-line-tools.md) を参照してください。または、[管理ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、[「カスタム仮想マシンの作成方法」][]を参照してください。
+イメージの準備ができましたので、これをテンプレートとして使用して仮想マシンを作成します。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Using Azure CLI with Service Management API (サービス管理 API での Azure CLI の使用)](virtual-machines-command-line-tools.md)」をご覧ください。または、[管理ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、[「カスタム仮想マシンの作成方法」][]を参照してください。
 
 **関連項目:** [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)
 
@@ -97,4 +97,4 @@ Azure ではこのテンプレートをイメージとして扱い、**[イメ�
 [How to Attach a Data Disk to a Virtual Machine]: storage-windows-attach-disk.md
 [How to Create a Virtual Machine Running Linux (Linux を実行する仮想マシンの作成方法)]: virtual-machines-linux-tutorial.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

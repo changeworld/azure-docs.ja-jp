@@ -1,4 +1,4 @@
-<properties title="Prepare an Oracle Linux Virtual Machine for Azure" pageTitle="Azure 用の Oracle Linux 仮想マシンの準備" description="Microsoft Azure で Linux を実行する Oracle の仮想マシンの構成の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<properties pageTitle="Azure 用の Oracle Linux 仮想マシンの準備" description="Microsoft Azure で Linux を実行する Oracle の仮想マシンの構成の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
 <tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 #Azure 用の Oracle Linux 仮想マシンの準備
 -   [Azure 用の Oracle Linux 6.4 以上の仮想マシンの準備](virtual-machines-linux-create-upload-vhd-oracle.md)
@@ -51,7 +51,7 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 			PEERDNS=yes
 		IPV6INIT=no
 
-6.  udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Azure または Hyper-V で仮想マシンを複製する際に問題を引き起こします。
+6.  udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
 
 		# sudo mkdir -m 0700 /var/lib/waagent
 		# sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/ 2>/dev/null
@@ -71,13 +71,13 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 
 	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。これにより、Oracle の Red Hat 互換カーネルのバグが原因で NUMA が無効になります。
 
-	上記のほかに、次のパラメーターを*削除*することをお勧めします。
+	上記の他に、次のパラメーターを*削除*することをお勧めします。
 
 		rhgb quiet crashkernel=auto
 
 	クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
 
-	必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
+	必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少します。このため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 
 10.  SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常これが既定です。
 
@@ -92,13 +92,13 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは*一時*ディスクであるため、VM のプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
-		
+
 		ResourceDisk.Filesystem=ext4
-		
+
 		ResourceDisk.MountPoint=/mnt/resource
-		
+
 		ResourceDisk.EnableSwap=y
-		
+
 		ResourceDisk.SwapSizeMB=2048 ## NOTE: set this to whatever you need it to be.
 
 13.  次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
@@ -112,7 +112,7 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
 ##Oracle Linux 7.0 以上
 **Oracle Linux 7 での変更**
 
-Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Linux 6 の場合とほとんど同じですが、次の重要な違いがいくつかあります。
+Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Linux 6 の場合とほとんど同じです。ただし、次のように、重要な違いがいくつかあります。
 
 -   Red Hat 互換カーネルと Oracle の UEK3 は、両方とも Azure でサポートされています。UEK3 カーネルをお勧めします。
 
@@ -143,7 +143,7 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 			PEERDNS=yes
 		IPV6INIT=no
 
-5.  udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題を引き起こします。
+5.  udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
 
 		# sudo mkdir -m 0700 /var/lib/waagent
 		# sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/ 2>/dev/null
@@ -166,15 +166,15 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 		GRUB\_CMDLINE\_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
 
-	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。上記のほかに、次のパラメーターを*削除*することをお勧めします。
+	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。上記の他に、次のパラメーターを*削除*することをお勧めします。
 
 		rhgb quiet crashkernel=auto
 
 	クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
 
-	必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
+	必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少します。このため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 
-10.  上記のとおりに "/etc/default/grub" の編集を終了したら、次のコマンドを実行して GRUB 構成をリビルドします。
+10.  "/etc/default/grub" の編集を終了したら、次のコマンドを実行して GRUB 構成をリビルドします。
 
 		# sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
@@ -192,7 +192,7 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 		ResourceDisk.Filesystem=ext4
 		ResourceDisk.MountPoint=/mnt/resource
 		ResourceDisk.EnableSwap=y
-		ResourceDisk.SwapSizeMB=2048 ## NOTE: set this to whatever you need it to be.
+		ResourceDisk.SwapSizeMB=2048 ## NOTE: Set this to whatever you need it to be.
 
 14.  次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
@@ -202,4 +202,4 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 15.  Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

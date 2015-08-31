@@ -1,5 +1,7 @@
-##Azure portal and Azure preview portal
+##Azure ポータルと Azure プレビュー ポータル
 
-> [AZURE.IMPORTANT] The steps in this document use the Azure portal. Microsoft recommends using the Azure preview portal when creating new services. For an explanation of the advantages of the preview portal, see [DevOps just got a whole lot more awesome](http://azure.microsoft.com/overview/preview-portal/). 
+> [AZURE.IMPORTANT]このドキュメントの手順では、Azure ポータルを使用します。新しいサービスを作成する際は、Azure プレビュー ポータルを使用することをお勧めします。プレビュー ポータルの利点については、「[DevOps は最高](http://azure.microsoft.com/overview/preview-portal/)」を参照してください。
 
-For a version of this document that uses the Azure preview portal, see the following link:
+このドキュメントの Azure プレビュー ポータルを使用するバージョンについては、次のリンクを参照してください。
+
+<!---HONumber=August15_HO8-->

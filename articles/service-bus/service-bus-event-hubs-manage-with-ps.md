@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="04/14/2015"
+   ms.date="08/14/2015"
    ms.author="sethm"/>
 
 # PowerShell で Service Bus と Event Hubs リソースを管理する
@@ -26,13 +26,9 @@ Microsoft Azure PowerShell は、Azure サービスのデプロイメントと�
 
 - Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション]、[メンバー プラン]、または[無料評価版]に関するページを参照してください。
 
-- Azure PowerShell を搭載するコンピューターセットアップ手順は次のセクションで確認してください。
+- Azure PowerShell を搭載するコンピューター手順については、「[Azure PowerShell のインストールおよび構成]」を参照してください。
 
 - PowerShell スクリプト、NuGet パッケージ、.NET Framework の一般的理解。
-
-## PowerShell のセットアップ
-
-[AZURE.INCLUDE [powershell-setup](../../includes/powershell-setup.md)]
 
 ## Service Bus 用の .NET アセンブリへの参照を含む
 
@@ -47,26 +43,26 @@ Service Bus の管理で利用できる PowerShell コマンドレットの数�
 
 次は、こうした手順を PowerShell スクリプトで実装する方法を示しています。
 
-	```powershell
-	
-	try
-	{
-	    # IMPORTANT: Make sure to reference the latest version of Microsoft.ServiceBus.dll
-	    Write-Output "Adding the [Microsoft.ServiceBus.dll] assembly to the script..."
-	    $scriptPath = Split-Path (Get-Variable MyInvocation -Scope 0).Value.MyCommand.Path
-	    $packagesFolder = (Split-Path $scriptPath -Parent) + "\packages"
-	    $assembly = Get-ChildItem $packagesFolder -Include "Microsoft.ServiceBus.dll" -Recurse
-	    Add-Type -Path $assembly.FullName
-	
-	    Write-Output "The [Microsoft.ServiceBus.dll] assembly has been successfully added to the script."
-	}
-	
-	catch [System.Exception]
-	{
-	    Write-Error("Could not add the Microsoft.ServiceBus.dll assembly to the script. Make sure you build the solution before running the provisioning script.")
-	}
-	
-	```
+```powershell
+
+try
+{
+    # IMPORTANT: Make sure to reference the latest version of Microsoft.ServiceBus.dll
+    Write-Output "Adding the [Microsoft.ServiceBus.dll] assembly to the script..."
+    $scriptPath = Split-Path (Get-Variable MyInvocation -Scope 0).Value.MyCommand.Path
+    $packagesFolder = (Split-Path $scriptPath -Parent) + "\packages"
+    $assembly = Get-ChildItem $packagesFolder -Include "Microsoft.ServiceBus.dll" -Recurse
+    Add-Type -Path $assembly.FullName
+
+    Write-Output "The [Microsoft.ServiceBus.dll] assembly has been successfully added to the script."
+}
+
+catch [System.Exception]
+{
+    Write-Error("Could not add the Microsoft.ServiceBus.dll assembly to the script. Make sure you build the solution before running the provisioning script.")
+}
+
+```
 
 ## Service Bus 名前空間のプロビジョニング
 
@@ -86,37 +82,38 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 2. 名前空間が見つかると、記述されているものを報告します。
 3. 名前空間が見つからない場合、名前空間を作成し、新しく作成した名前空間を取得します。
 
-		``` powershell
-		
-		$Namespace = "MyServiceBusNS"
-		$Location = "West US"
-		
-		# Query to see if the namespace currently exists
-		$CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
+	``` powershell
 
-		# Check if the namespace already exists or needs to be created
-		if ($CurrentNamespace)
-		{
-		    Write-Output "The namespace [$Namespace] already exists in the [$($CurrentNamespace.Region)] region."
-		}
-		else
-		{
-		    Write-Host "The [$Namespace] namespace does not exist."
-		    Write-Output "Creating the [$Namespace] namespace in the [$Location] region..."
-		    New-AzureSBNamespace -Name $Namespace -Location $Location -CreateACSNamespace false -NamespaceType Messaging
-		    $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
-		    Write-Host "The [$Namespace] namespace in the [$Location] region has been successfully created."
-		}
-		```
+	$Namespace = "MyServiceBusNS"
+	$Location = "West US"
+
+	# Query to see if the namespace currently exists
+	$CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
+
+	# Check if the namespace already exists or needs to be created
+	if ($CurrentNamespace)
+	{
+	    Write-Output "The namespace [$Namespace] already exists in the [$($CurrentNamespace.Region)] region."
+	}
+	else
+	{
+	    Write-Host "The [$Namespace] namespace does not exist."
+	    Write-Output "Creating the [$Namespace] namespace in the [$Location] region..."
+	    New-AzureSBNamespace -Name $Namespace -Location $Location -CreateACSNamespace false -NamespaceType Messaging
+	    $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
+	    Write-Host "The [$Namespace] namespace in the [$Location] region has been successfully created."
+	}
+	```
 その他の Service Bus エンティティをプロビジョニングするには、SDK から `NamespaceManager` オブジェクトのインスタンスを作成します。[Get-AzureSBAuthorizationRule] コマンドレットを使用して接続文字列を指定するために使用する承認規則を取得できます。この例では、`NamespaceManager` インスタンスへの参照は `$NamespaceManager` 変数に保存されます。スクリプトでは、後ほど `$NamespaceManager` を使用して別のエンティティをプロビジョニングします。
 
-		``` powershell
-		$sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
-		# Create the NamespaceManager object to create the Event Hub
-		Write-Output "Creating a NamespaceManager object for the [$Namespace] namespace..."
-		$NamespaceManager = [Microsoft.ServiceBus.NamespaceManager]::CreateFromConnectionString($sbr.ConnectionString);
-		Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
-		```
+	``` powershell
+	$sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
+	# Create the NamespaceManager object to create the Event Hub
+	Write-Output "Creating a NamespaceManager object for the [$Namespace] namespace..."
+	$NamespaceManager = [Microsoft.ServiceBus.NamespaceManager]::CreateFromConnectionString($sbr.ConnectionString);
+	Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
+	```
+
 ## その他の Service Bus エンティティのプロビジョニング
 
 キュー、トピック、Event Hubs などのエンティティをプロビジョニングするには、[.NET API for Service Bus] を使用できます。その他のエンティティを含むより詳細な例は、この記事の最後をご覧ください。
@@ -129,38 +126,38 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 2. 存在しない場合は`EventHubDescription` を作成して `NamespaceManager` クラスの `CreateEventHubIfNotExists` メソッドに渡します。
 3. Event Hub が利用できるようになったことを確認したら、`ConsumerGroupDescription` と `NamespaceManager` を使いコンシューマー グループを作成します。
 
-		``` powershell
-		
-		$Path  = "MyEventHub"
-		$PartitionCount = 12
-		$MessageRetentionInDays = 7
-		$UserMetadata = $null
-		$ConsumerGroupName = "MyConsumerGroup"
-		
-		# Check if the Event Hub already exists
-		if ($NamespaceManager.EventHubExists($Path))
-		{
-		    Write-Output "The [$Path] event hub already exists in the [$Namespace] namespace."  
-		}
-		else
-		{
-		    Write-Output "Creating the [$Path] event hub in the [$Namespace] namespace: PartitionCount=[$PartitionCount] MessageRetentionInDays=[$MessageRetentionInDays]..."
-		    $EventHubDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.EventHubDescription -ArgumentList $Path
-		    $EventHubDescription.PartitionCount = $PartitionCount
-		    $EventHubDescription.MessageRetentionInDays = $MessageRetentionInDays
-		    $EventHubDescription.UserMetadata = $UserMetadata
-		    $EventHubDescription.Path = $Path
-		    $NamespaceManager.CreateEventHubIfNotExists($EventHubDescription);
-		    Write-Output "The [$Path] event hub in the [$Namespace] namespace has been successfully created."
-		}
-		
-		# Create the consumer group if it doesn't exist
-		Write-Output "Creating the consumer group [$ConsumerGroupName] for the [$Path] event hub..."
-		$ConsumerGroupDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.ConsumerGroupDescription -ArgumentList $Path, $ConsumerGroupName
-		$ConsumerGroupDescription.UserMetadata = $ConsumerGroupUserMetadata
-		$NamespaceManager.CreateConsumerGroupIfNotExists($ConsumerGroupDescription);
-		Write-Output "The consumer group [$ConsumerGroupName] for the [$Path] event hub has been successfully created."
-		```
+	``` powershell
+
+	$Path  = "MyEventHub"
+	$PartitionCount = 12
+	$MessageRetentionInDays = 7
+	$UserMetadata = $null
+	$ConsumerGroupName = "MyConsumerGroup"
+
+	# Check if the Event Hub already exists
+	if ($NamespaceManager.EventHubExists($Path))
+	{
+	    Write-Output "The [$Path] event hub already exists in the [$Namespace] namespace."  
+	}
+	else
+	{
+	    Write-Output "Creating the [$Path] event hub in the [$Namespace] namespace: PartitionCount=[$PartitionCount] MessageRetentionInDays=[$MessageRetentionInDays]..."
+	    $EventHubDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.EventHubDescription -ArgumentList $Path
+	    $EventHubDescription.PartitionCount = $PartitionCount
+	    $EventHubDescription.MessageRetentionInDays = $MessageRetentionInDays
+	    $EventHubDescription.UserMetadata = $UserMetadata
+	    $EventHubDescription.Path = $Path
+	    $NamespaceManager.CreateEventHubIfNotExists($EventHubDescription);
+	    Write-Output "The [$Path] event hub in the [$Namespace] namespace has been successfully created."
+	}
+
+	# Create the consumer group if it doesn't exist
+	Write-Output "Creating the consumer group [$ConsumerGroupName] for the [$Path] event hub..."
+	$ConsumerGroupDescription = New-Object -TypeName Microsoft.ServiceBus.Messaging.ConsumerGroupDescription -ArgumentList $Path, $ConsumerGroupName
+	$ConsumerGroupDescription.UserMetadata = $ConsumerGroupUserMetadata
+	$NamespaceManager.CreateConsumerGroupIfNotExists($ConsumerGroupDescription);
+	Write-Output "The consumer group [$ConsumerGroupName] for the [$Path] event hub has been successfully created."
+	```
 
 ### キューを作成する
 
@@ -168,7 +165,7 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 
 	if ($NamespaceManager.QueueExists($Path))
 	{
-	    Write-Output "The [$Path] queue already exists in the [$Namespace] namespace." 
+	    Write-Output "The [$Path] queue already exists in the [$Namespace] namespace."
 	}
 	else
 	{
@@ -217,7 +214,7 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 
 	if ($NamespaceManager.TopicExists($Path))
 	{
-	    Write-Output "The [$Path] topic already exists in the [$Namespace] namespace." 
+	    Write-Output "The [$Path] topic already exists in the [$Namespace] namespace."
 	}
 	else
 	{
@@ -275,5 +272,6 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
 [.NET API for Service Bus]: https://msdn.microsoft.com/library/microsoft.servicebus.aspx
+[Azure PowerShell のインストールおよび構成]: ../install-configure-powershell.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

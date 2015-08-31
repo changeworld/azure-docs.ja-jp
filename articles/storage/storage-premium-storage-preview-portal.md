@@ -21,9 +21,9 @@
 
 ## 概要
 
-仮想マシンの高速化を実現する **Azure Premium Storage ディスク**へようこそ。
+Azure 仮想マシンの高速化を実現する **Azure Premium Storage ディスク**へようこそ。
 
-新しい Premium Storage の導入により、Microsoft Azure では、**Premium Storage** と **Standard Storage** という耐久性の高い 2 種類のストレージを利用できるようになりました。Premium Storage は最新技術のソリッド ステート ドライブ (SSD) を使用してデータを格納し、Standard Storage はデータをハード ディスク ドライブ (HDD) に格納します。
+Premium Storage の導入により、Microsoft Azure では、**Premium Storage** と **Standard Storage** という耐久性の高い 2 種類のストレージを利用できるようになりました。Premium Storage は最新技術のソリッド ステート ドライブ (SSD) を使用してデータを格納し、Standard Storage はデータをハード ディスク ドライブ (HDD) に格納します。
 
 Premium Storage は、Azure 仮想マシンで実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。仮想マシン (VM) には、複数の Premium Storage ディスクをアタッチできます。Premium Storage を使用すると、アプリケーションに VM あたり最大 32 TB (テラバイト) のストレージを設定できます。さらに、VM あたり 64,000 IOPS (1 秒あたりの入力/出力操作) を実現でき、読み取り操作の待ち時間も非常に短くなります。
 
@@ -51,7 +51,7 @@ Azure Premium Storage を使用するには、[無料試用版](http://azure.mic
 
 - Premium Storage のアカウントをカスタム ドメイン名にマッピングすることはできません。
 
-- 現在、Premium Storage では、Storage Analytics はサポートされていません。Premium Storage アカウントのディスクを使用する VM のパフォーマンス メトリックを分析するには、オペレーティング システム ベースのツールを使用します。たとえば、Windows VM の場合は [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx)、Linux VM の場合は [IOSTAT](http://linux.die.net/man/1/iostat) を使用します。
+- 現在、Premium Storage では、Storage Analytics はサポートされていません。Premium Storage アカウントのディスクを使用する VM のパフォーマンス メトリックを分析するには、オペレーティング システム ベースのツールを使用します。たとえば、Windows VM の場合は [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx)、Linux VM の場合は [IOSTAT](http://linux.die.net/man/1/iostat) を使用します。Azure プレビュー ポータルで Azure VM 診断を有効にすることもできます。詳細については、「[Microsoft Azure Virtual Machine Monitoring with Azure Diagnostics Extension (Azure 診断の拡張機能を使用した Microsoft Azure の仮想マシンの監視)](http://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)」をご覧ください。
 
 ## ディスク向け Premium Storage の使用
 ディスク向け Premium Storage は次のいずれかの方法で使用できます。
@@ -130,7 +130,7 @@ Premium Storage のメリットを活用するには、アカウントの種類�
 </tbody>
 </table>
 
-	最新の情報については、「[Virtual Machine and Cloud Service Sizes for Azure](http://msdn.microsoft.com/library/azure/dn197896.aspx)」をご覧ください。Premium ストレージ ディスクとその IOPS およびスループットの制限については、この記事のセクション「[Scalability and Performance Targets when using Premium Storage](#scalability-and-performance-targets-when-using-premium-storage)」にある表をご覧ください
+	最新の情報については、[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx) を参照してください。 Premium Storage ディスク、およびそれらの IOP およびスループット制限の詳細については、この記事の「[Scalability and Performance Targets when using Premium Storage](#scalability-and-performance-targets-whja-jping-premium-storage)」セクションにある表を参照してください。
 
 > [AZURE.NOTE]キャッシュ ヒットには、ディスクの割り当て済みの IOPS とスループットによる制限はありません。つまり、DS シリーズ VM でキャッシュを読み取り専用に設定したデータ ディスクを使用する場合、そのキャッシュからの読み取りは、Premium Storage のディスク制限の対象にはなりません。そのため、ワークロードの大部分が読み取りの場合、ディスクから非常に高いスループットが得られます。キャッシュには、VM サイズに基づいて、VM レベルで IOPS とスループットの個別の制限が適用されます。DS シリーズ VM は、IOPS が約 4000 で、キャッシュとローカル SSD の IO がコアあたり 33 MB/秒です。
 
@@ -246,10 +246,9 @@ Premium Storage の場合も、Standard Storage を使用してスナップシ�
 
 ### 重要:
 
-- Premium Storage での Copy Blob 操作でコピー先にある既存の BLOB が上書きされる場合は、上借りされる BLOB のスナップショットを作成しないようにします。Premium Storage アカウント内またはアカウント間でコピーを作成する場合は、コピー開始時にコピー先の BLOB がスナップショットを持つことができません。
 - 単一の BLOB のスナップショットの数は 100 に制限されています。スナップショットは最大で 10 分間隔で取得できます。
-- Premium Storage アカウントあたりのスナップショットの最大容量は 10 TB です。スナップショット容量とは、スナップショットに存在する一意のデータのことです。つまり、スナップショット容量にはベース BLOB のサイズは含まれません。
-- スナップショットを Premium Storage アカウントから別のアカウントにコピーするには、最初にスナップショットの Copy Blob を実行して新しい BLOB を同じ Premium Storage アカウント内に作成する必要があります。この新しい BLOB を別のストレージ アカウントにコピーします。コピーが完了したら、中間 BLOB を削除してもかまいません。この手順で Premium Storage アカウントからコピーしたスナップショットを、geo 冗長の Standard Storage アカウントに AzCopy または Copy Blob を使用してコピーします。詳細については、「[Microsoft Azure Storage での AzCopy の使用方法](storage-use-azcopy.md)」および「[Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx)」をご覧ください。
+- Premium Storage アカウントあたりのスナップショットの最大容量は 10 TB (テラバイト) です。スナップショット容量とは、スナップショットのみに存在するデータの総量のことであり、ベース BLOB のデータは含まれないことにご注意ください。
+- スナップショットの Geo 冗長コピーを維持するには、AzCopy か Copy Blob を使用して、Premium Storage アカウントから Geo 冗長 Standard Storage アカウントにスナップショットをコピーできます。詳細については、「[Microsoft Azure Storage での AzCopy の使用方法](storage-use-azcopy.md)」および「[Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx)」をご覧ください。
 - Premium Storage アカウントでページ BLOB に対して REST 操作を実行する方法の詳細については、MSDN ライブラリの「[Azure Premium Storage での BLOB サービス操作の使用](http://go.microsoft.com/fwlink/?LinkId=521969)」をご覧ください。
 
 ## Linux VM とともに Premium Storage を使用する
@@ -262,7 +261,8 @@ Premium Storage 上で Linux VM を設定するときは、次の重要な手順
 
 - Premium Storage ディスクのキャッシュ設定が ReadWrite の場合は、書き込みの耐久性を保証するためにバリアを有効にしてください。
 
-次に示す Linux ディストリビューションは、Premium Storage での検証が完了しています。Premium Storage を使用するときのパフォーマンスと安定性を高めるために、VM をこれらのバージョン (以降) の少なくとも 1 つにアップグレードすることをお勧めします。また、バージョンによっては最新の LIS (Linux Integration Services v4.0 for Microsoft Azure) が必要になります。下記のリンクからダウンロードとインストールを行ってください。マイクロソフトは今後もイメージの検証を行い、この一覧に追加していきます。これらのイメージのパフォーマンスは変動することが検証時に判明しています。また、ワークロードの特性とイメージの設定にも依存することにご注意ください。ワークロードの種類に応じて、異なるイメージをチューニングします。<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;"> <tbody> <tr> <td><strong>ディストリビューション</strong></td> <td><strong>バージョン</strong></td> <td><strong>サポートされているカーネル</strong></td> <td><strong>サポートされているイメージ</strong></td> </tr> <tr> <td rowspan="4"><strong>Ubuntu</strong></td> <td>12.04</td> <td>3.2.0-75.110</td> <td>Ubuntu-12\_04\_5-LTS-amd64-server-20150119-ja-jp-30GB</td> </tr> <tr> <td>14.04</td> <td>3.13.0-44.73</td> <td>Ubuntu-14\_04\_1-LTS-amd64-server-20150123-ja-jp-30GB</td> </tr> <tr> <td>14.10</td> <td>3.16.0-29.39</td> <td>Ubuntu-14\_10-amd64-server-20150202-ja-jp-30GB</td> </tr> <tr> <td>15.04</td> <td>3.19.0-15</td> <td>Ubuntu-15\_04-amd64-server-20150422-ja-jp-30GB</td> </tr> <tr> <td><strong>SUSE</strong></td> <td>SLES 12</td> <td>3.12.36-38.1</td> <td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td> </tr> <tr> <td><strong>CoreOS</strong></td> <td>584.0.0</td> <td>3.18.4</td> <td>CoreOS 584.0.0</td> </tr> <tr> <td rowspan="2"><strong>CentOS</strong></td> <td>6.5、6.6、7.0</td> <td></td> <td><a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (必須)</a></br> *以下の注記参照 </td> </tr> <tr> <td>7.1 </td> <td>3.10.0-229.1.2.el7 </td><td> <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (推奨)</a> <br/>*以下の注記参照</td> </tr>
+次に示す Linux ディストリビューションは、Premium Storage での検証が完了しています。Premium Storage を使用するときのパフォーマンスと安定性を高めるために、VM をこれらのバージョン (以降) の少なくとも 1 つにアップグレードすることをお勧めします。また、バージョンによっては最新の LIS (Linux Integration Services v4.0 for Microsoft Azure) が必要になります。下記のリンクからダウンロードとインストールを行ってください。マイクロソフトは今後もイメージの検証を行い、この一覧に追加していきます。これらのイメージのパフォーマンスは変動することが検証時に判明しています。また、ワークロードの特性とイメージの設定にも依存することにご注意ください。ワークロードの種類に応じて、異なるイメージをチューニングします。
+<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;"> <tbody> <tr> <td><strong>ディストリビューション</strong></td> <td><strong>バージョン</strong></td> <td><strong>サポートされているカーネル</strong></td> <td><strong>サポートされているイメージ</strong></td> </tr> <tr> <td rowspan="4"><strong>Ubuntu</strong></td> <td>12.04</td> <td>3.2.0-75.110</td> <td>Ubuntu-12_04_5-LTS-amd64-server-20150119-ja-jp-30GB</td> </tr> <tr> <td>14.04</td> <td>3.13.0-44.73</td> <td>Ubuntu-14_04_1-LTS-amd64-server-20150123-ja-jp-30GB</td> </tr> <tr> <td>14.10</td> <td>3.16.0-29.39</td> <td>Ubuntu-14_10-amd64-server-20150202-ja-jp-30GB</td> </tr> <tr> <td>15.04</td> <td>3.19.0-15</td> <td>Ubuntu-15_04-amd64-server-20150422-ja-jp-30GB</td> </tr> <tr> <td><strong>SUSE</strong></td> <td>SLES 12</td> <td>3.12.36-38.1</td> <td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td> </tr> <tr> <td><strong>CoreOS</strong></td> <td>584.0.0</td> <td>3.18.4</td> <td>CoreOS 584.0.0</td> </tr> <tr> <td rowspan="2"><strong>CentOS</strong></td> <td>6.5、6.6、7.0</td> <td></td> <td><a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (必須)</a></td> </tr> <tr> <td>7.1</td> <td>3.10.0-229.1.2.el7</td> <td><a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (推奨)</a></td> </tr>
 
 <tr>
 	<td rowspan="2"><strong>Oracle</strong></td>
@@ -401,4 +401,4 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
  
 
-<!-----HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

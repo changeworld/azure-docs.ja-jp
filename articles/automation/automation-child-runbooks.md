@@ -1,0 +1,81 @@
+<properties 
+   pageTitle="Azure Automation での子 Runbook | Microsoft Azure"
+   description="Azure Automation で別の Runbook から Runbook を開始し、それらの間で情報共有する異なる方法について説明します。"
+   services="automation"
+   documentationCenter=""
+   authors="bwren"
+   manager="stevenka"
+   editor="tysonn" />
+<tags 
+   ms.service="automation"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/17/2015"
+   ms.author="bwren" />
+
+# Azure Automation での子 Runbook
+
+
+Azure Automation では、他の Runbook でも使用できる個別の関数で再利用可能なモジュールの Runbook を作成することをお勧めします。親 Runbook は多くの場合、必要な機能を実行する 1 つまたは複数の子 Runbook を呼び出します。子 Runbook を呼び出すには 2 つの方法があります。それぞれの特徴的な相違点を理解しておくと、さまざまな状況でどちらが適しているかを判断できるようになります。
+
+##  インライン実行で子 Runbook を呼び出す
+
+別の Runbook からインラインで Runbook を呼び出すには、Runbook の名前を使用し、アクティビティやコマンドレットに使用するのと同じパラメーター値を指定します。同じ Automation アカウントのすべての Runbook は、他のすべての Runbook で同じ方法で使用されます。親 Runbook は子 Runbook が完了してから次の行に移動し、すべての出力は直接親に返されます。
+
+Runbook をインラインで呼び出すと、親 Runbook と同じジョブで実行されます。実行された子 Runbook はジョブ履歴には表示されません。子 Runbook からのすべての例外とストリーム出力は、親に関連付けられます。これより、子 Runbook やストリーム出力のいずれかによって発生した例外が親 Runbook のジョブに関連付けられるため、ジョブの数が減って追跡しやすくなり、問題の解決がしやすくなります。
+
+Runbook を発行する場合、呼び出される子 Runbook はすべて発行済みでなければなりません。これは、Runbook のコンパイル時に、Azure Automation によってすべての子 Runbook と関連付けが行われるためです。関連付けられていないと、親 Runbook は正常に発行されたかのように見えますが、起動時に例外が発生します。例外が発生した場合、親 Runbook を再発行して、子 Runbook が正しく参照されるようにします。子 Runbook が変更されても、関連付けは作成済みになっているため、親 Runbook を再発行する必要はありません。
+
+インラインで呼び出された子 Runbook のパラメーターは、複雑なオブジェクトを含め任意のデータ型を使用できるほか、Azure 管理ポータルや Start-AzureAutomationRunbook コマンドレットを使用して Runbook が起動されるため、[JSON のシリアル化](automation-starting-a-runbook.md#runbook-parameters)は行われません。
+
+次の例では、複雑なオブジェクト、整数、およびブール値の 3 つのパラメーターを受け入れるテスト用の子 Runbook を呼び出します。子 Runbook の出力は、変数に割り当てられます。
+
+	$vm = Get-AzureVM –ServiceName "MyVM" –Name "MyVM"
+	$output = Test-ChildRunbook –VM $vm –RepeatCount 2 –Restart $true
+
+##  コマンドレットを使用して子 Runbook を開始する
+
+[To start a runbook with Windows PowerShell (Windows PowerShell を使用して Runbook を開始する)](../automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell) で説明されているように、[Start-AzureAutomationRunbook](http://msdn.microsoft.com/library/dn690259.aspx) コマンドレットを使用して Windows PowerShell で Runbook を開始できます。コマンドレットから子 Runbook を開始すると、子 Runbook に対してジョブが作成されると、親 Runbook はすぐに次の行に移動します。Runbook から出力を取得する必要がある場合、[Get-AzureAutomationJobOutput](http://msdn.microsoft.com/library/dn690268.aspx) を使用してジョブにアクセスする必要があります。
+
+コマンドレットで開始した子 Runbook のジョブは、親 Runbook とは別のジョブで実行されます。これにより、インラインでスクリプトを呼び出す場合よりも多くのジョブが実行されるため、追跡が困難になります。しかし親は、それぞれの子 Runbook の完了を待たずに、複数の子 Runbook を開始できます。複数の子 Runbook をインラインで同じように並列実行するには、親 Runbook で[並列キーワード](automation-powershell-workflow.md#parallel-processing)を使用する必要があります。
+
+コマンドレットで開始した子 Runbook のパラメーターは、[Runbook Parameters (Runbook のパラメーター)](automation-starting-a-runbook.md#runbook-parameters) で説明されるハッシュテーブルとして提供されます。単純なデータ型のみを使用できます。Runbook に複雑なデータ型のパラメーターが使用されている場合は、インラインで呼び出す必要があります。
+
+次の例では、パラメーターを含む子 Runbook が開始し、完了まで待機しています。完了すると、その出力が親 Runbook によってジョブから収集されます。
+
+	$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true} 
+	$job = Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test- ChildRunbook" –Parameters $params
+	
+	$doLoop = $true
+	While ($doLoop) {
+	   $job = Get-AzureAutomationJob –AutomationAccountName "MyAutomationAccount" -Id $job.Id
+	   $status = $job.Status
+	   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped") 
+	}
+	
+	Get-AzureAutomationJobOutput –AutomationAccountName "MyAutomationAccount" -Id $job.Id –Stream Output
+
+[Start-ChildRunbook](http://gallery.technet.microsoft.com/scriptcenter/Start-Azure-Automation-1ac858a9) は、コマンドレットから Runbook を開始するために TechNet ギャラリーで使用できるヘルパー Runbook です。これは、子 Runbook が完了するまで待機してから、出力を取得するオプションとなります。この Runbook は、ユーザー独自の Azure Automation 環境で使用する他に、コマンドレットを使用した Runbook とジョブの操作の参照として使用することができます。ヘルパー Runbook 自体はインラインで呼び出す必要があります。子 Runbook のパラメーターの値を受け入れるには、ハッシュテーブル パラメーターが必要なためです。
+
+
+## 子 Runbook を呼び出す方法の比較
+
+次の表は、別の Runbook から Runbook を呼び出すための次の 2 つの方法の相違点をまとめたものです。
+
+| | インライン| コマンドレット|
+|:---|:---|:---|
+|ジョブ|子 Runbook は、親と同じジョブで実行されます。|子 Runbook 用に別のジョブが作成されます。|
+|実行|親 Runbook は、子 Runbook の完了を待ってから続行します。|親 Runbook は、子 Runbook の開始後すぐに続行します。|
+|出力|親 Runbook は、子 Runbook から出力を直接取得できます。|親 Runbook は、子 Runbook のジョブから出力を取得する必要があります。|
+|パラメーター|子 Runbook のパラメーター値は個別に指定され、任意のデータ型を使用できます。|子 Runbook のパラメーターの値は、1 つのハッシュテーブルに結合する必要があり、JSON のシリアル化を利用する、単純、配列、およびオブジェクトの各データ型のみを含めることができます。|
+|Automation アカウント|親 Runbook は、同じ Automation アカウントの子 Runbook のみを使用できます。|親 Runbook は、同じ Azure サブスクリプションのオートメーション アカウントの子 Runbook のほか、接続されていれば別のサブスクリプションのオートメーション アカウントの子 Runbook も使用できます。|
+|発行|親 Runbook を発行する前に、子 Runbook を発行する必要があります。|親 Runbook を開始する前のある時点で、子 Runbook をパブリッシュする必要があります。|
+
+## 関連記事:
+
+- [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
+- [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
+
+<!---HONumber=August15_HO8-->

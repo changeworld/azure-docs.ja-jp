@@ -411,9 +411,8 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 -	[C++ から BLOB ストレージを使用する方法](storage-c-plus-plus-how-to-use-blobs.md)
 -	[C++ から Queue ストレージを使用する方法](storage-c-plus-plus-how-to-use-queues.md)
 -	[C++ での Azure Storage のリソース一覧の取得](storage-c-plus-plus-enumeration.md)
--	[C++ 用ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/gg433040.aspx) 
--	[Azure Storage の MSDN リファレンス](https://msdn.microsoft.com/library/azure/gg433040.aspx)
+-	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 -	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

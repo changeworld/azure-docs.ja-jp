@@ -3,8 +3,8 @@
 	description="サインイン試行に何度も連続して失敗した後に正常にサインインしたユーザーを示すレポート。"
 	services="active-directory"
 	documentationCenter=""
-	authors="kenhoff"
-	manager="ilanas"
+	authors="SSalahAhmed"
+	manager="gchander"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/01/2015"
-	ms.author="kenhoff"/>
+	ms.date="08/17/2015"
+	ms.author="saah;kenhoff"/>
 
 # 複数のエラー後のサインイン
 
@@ -24,4 +24,4 @@
 
 ![複数のエラー後のサインイン](./media/active-directory-reporting-sign-ins-after-multiple-failures/signInsAfterMultipleFailures.PNG)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/20/2015"
+	ms.date="08/11/2015"
 	ms.author="jolevy"/>
 
 
@@ -53,4 +53,4 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
  * [Azure Automation: クラウド内の SQL エージェント](http://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) (ブログ投稿)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="08/17/2015" 
 	ms.author="juliako"/>
 
 
@@ -41,7 +41,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 
 資産を **StorageEncrypted** オプションで暗号化することを指定した場合、Media Services SDK for .NET によって、資産の **StorateEncrypted** の **ContentKey** が作成されます。
 
->[AZURE.NOTE]Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+>[AZURE.NOTE]Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%\#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
 
 このトピックでは、Media Services .NET SDK と Media Services .NET SDK Extensions を使用してファイルを Media Services 資産にアップロードする方法を説明します。
 
@@ -111,53 +111,53 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 >[AZURE.NOTE]非ブロッキング操作としてメソッドを呼び出し、複数のファイルを並列的にアップロードできるようにするため、UploadAsync メソッドを使用します。
  	
  	
-	static public IAsset CreateAssetAndUploadMultipleFiles(AssetCreationOptions assetCreationOptions, string folderPath)
-	{
-	    var assetName = "UploadMultipleFiles_" + DateTime.UtcNow.ToString();
-	
-	    var asset = CreateEmptyAsset(assetName, assetCreationOptions);
-	
-	    var accessPolicy = _context.AccessPolicies.Create(assetName, TimeSpan.FromDays(30),
-	                                                        AccessPermissions.Write | AccessPermissions.List);
+        static public IAsset CreateAssetAndUploadMultipleFiles(AssetCreationOptions assetCreationOptions, string folderPath)
+        {
+            var assetName = "UploadMultipleFiles_" + DateTime.UtcNow.ToString();
 
-	    var locator = _context.Locators.CreateLocator(LocatorType.Sas, asset, accessPolicy);
-	
-	    var blobTransferClient = new BlobTransferClient();
-		blobTransferClient.NumberOfConcurrentTransfers = 20;
-	    blobTransferClient.ParallelTransferThreadCount = 20;
-	
-	    blobTransferClient.TransferProgressChanged += blobTransferClient_TransferProgressChanged;
-	
-	    var filePaths = Directory.EnumerateFiles(folderPath);
-	
-	    Console.WriteLine("There are {0} files in {1}", filePaths.Count(), folderPath);
-	
-	    if (!filePaths.Any())
-	    {
-	        throw new FileNotFoundException(String.Format("No files in directory, check folderPath: {0}", folderPath));
-	    }
-	
-	    var uploadTasks = new List&lt;Task&gt;();
-	    foreach (var filePath in filePaths)
-	    {
-	        var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
-	        Console.WriteLine("Created assetFile {0}", assetFile.Name);
-	                
-	        // It is recommended to validate AccestFiles before upload. 
-	        Console.WriteLine("Start uploading of {0}", assetFile.Name);
-	        uploadTasks.Add(assetFile.UploadAsync(filePath, blobTransferClient, locator, CancellationToken.None));
-	    }
-	
-	    Task.WaitAll(uploadTasks.ToArray());
-	    Console.WriteLine("Done uploading the files");
-	
-	    blobTransferClient.TransferProgressChanged -= blobTransferClient_TransferProgressChanged;
-	
-	    locator.Delete();
-	    accessPolicy.Delete();
-	
-	    return asset;
-	}
+            IAsset asset = _context.Assets.Create(assetName, assetCreationOptions);
+
+            var accessPolicy = _context.AccessPolicies.Create(assetName, TimeSpan.FromDays(30),
+                                                                AccessPermissions.Write | AccessPermissions.List);
+
+            var locator = _context.Locators.CreateLocator(LocatorType.Sas, asset, accessPolicy);
+
+            var blobTransferClient = new BlobTransferClient();
+            blobTransferClient.NumberOfConcurrentTransfers = 20;
+            blobTransferClient.ParallelTransferThreadCount = 20;
+
+            blobTransferClient.TransferProgressChanged += blobTransferClient_TransferProgressChanged;
+
+            var filePaths = Directory.EnumerateFiles(folderPath);
+
+            Console.WriteLine("There are {0} files in {1}", filePaths.Count(), folderPath);
+
+            if (!filePaths.Any())
+            {
+                throw new FileNotFoundException(String.Format("No files in directory, check folderPath: {0}", folderPath));
+            }
+
+            var uploadTasks = new List<Task>();
+            foreach (var filePath in filePaths)
+            {
+                var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
+                Console.WriteLine("Created assetFile {0}", assetFile.Name);
+
+                // It is recommended to validate AccestFiles before upload. 
+                Console.WriteLine("Start uploading of {0}", assetFile.Name);
+                uploadTasks.Add(assetFile.UploadAsync(filePath, blobTransferClient, locator, CancellationToken.None));
+            }
+
+            Task.WaitAll(uploadTasks.ToArray());
+            Console.WriteLine("Done uploading the files");
+
+            blobTransferClient.TransferProgressChanged -= blobTransferClient_TransferProgressChanged;
+
+            locator.Delete();
+            accessPolicy.Delete();
+
+            return asset;
+        }
 	
 	static void  blobTransferClient_TransferProgressChanged(object sender, BlobTransferProgressChangedEventArgs e)
 	{
@@ -213,7 +213,7 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
 	        CloudBlobClient blobClient = storageaccount.CreateCloudBlobClient();
 	        CloudBlobContainer blobContainer = blobClient.GetContainerReference(destBlobURI);
 	
-	        string[] splitfilename = filename.Split('\\');
+	        string[] splitfilename = filename.Split('\');
 	        var blob = blobContainer.GetBlockBlobReference(splitfilename[splitfilename.Length - 1]);
 	
 	        using (var stream = System.IO.File.OpenRead(filename))
@@ -305,4 +305,4 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
 [メディア プロセッサの取得]: media-services-get-media-processor.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

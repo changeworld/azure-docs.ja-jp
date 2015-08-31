@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/09/2015"
+   ms.date="08/18/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用した StorSimple デバイスの接続と管理
@@ -65,7 +65,7 @@ StorSimple Snapshot Manager の **[スコープ]** ウィンドウのノード�
 - 有効期限が切れたデバイス パスワードの変更
 - 障害が発生したデバイスの置き換え
 
->[AZURE.NOTE]StorSimple Snapshot Manager のインターフェイスの使用に関する一般的な情報については、「[StorSimple Snapshot Manager ユーザー インターフェイス](storsimple-use-snapshot-manager.md)」を確認してください。
+>[AZURE.NOTE]StorSimple Snapshot Manager のインターフェイスの使用に関する一般的な情報については、「[StorSimple Snapshot Manager ユーザー インターフェイス](storsimple-use-snapshot-manager.md)」をご確認ください。
 
 
 ## デバイスの追加または置き換え
@@ -252,7 +252,7 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 
 5. StorSimple Snapshot Manager を開始します。
 
-6. 新しい StorSimple デバイスを構成するには、「[StorSimple Snapshot Manager のデプロイ](storsimple-snapshot-manager-deployment.md)」にある[「手順 2: StorSimple Snapshot Manager をデバイスに接続します](storsimple-snapshot-manager-deployment.md#step-2:-connect-a-storsimple-device)」の手順を実行してください。
+6. 新しい StorSimple デバイスを構成するには、「[StorSimple Snapshot Manager のデプロイ](storsimple-snapshot-manager-deployment.md)」にある「手順 2: StorSimple Snapshot Manager をデバイスに接続します」の手順に従ってください。
 
 7. **[スコープ]** ウィンドウの最上位ノード (StorSimple Snapshot Manager など) を右クリックし、**[インポートの表示の切り替え]** をクリックします。
 
@@ -262,4 +262,4 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 
 [StorSimple Snapshot Manager を使用したボリュームの表示と管理](storsimple-snapshot-manager-manage-volumes.md)。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

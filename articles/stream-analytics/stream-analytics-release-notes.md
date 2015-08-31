@@ -13,10 +13,20 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="08/10/2015" 
+	ms.date="08/20/2015" 
 	ms.author="jeffstok"/>
 
 #Microsoft Stream Analytics リリース ノート
+
+## Stream Analytics の 2015 年 8 月 20 日付けリリースに関するノート ##
+
+このリリースには、次の更新プログラムが含まれています。
+
+タイトル|説明
+---|---
+Last 関数の追加 |Stream Analytics ジョブで [Last](http://msdn.microsoft.com/library/mt421186.aspx) 関数が使用できるようになりました。これにより、特定の期間内のイベント ストリームで最新のイベントを取得することができます。
+新しい配列関数|配列関数 [GetArrayElement](http://msdn.microsoft.com/library/mt270218.aspx)、[GetArrayElements](http://msdn.microsoft.com/library/mt298451.aspx)、[GetArrayLength](http://msdn.microsoft.com/library/mt270226.aspx) が使用できるようになりました。
+新しいレコード関数|レコード関数 [GetRecordProperties](http://msdn.microsoft.com/library/mt270221.aspx)、[GetRecordPropertyValue](http://msdn.microsoft.com/library/mt270220.aspx) が使用できるようになりました。
 
 ## Stream Analytics の 2015 年 7 月 30 日付けリリースに関するノート ##
 
@@ -74,4 +84,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

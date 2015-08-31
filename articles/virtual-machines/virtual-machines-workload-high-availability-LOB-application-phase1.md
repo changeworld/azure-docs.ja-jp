@@ -18,7 +18,7 @@
 
 # 基幹業務アプリケーションのワークロード フェーズ 1: Azure を構成する
 
-イントラネット専用の高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、Azure のネットワーキングおよびストレージ インフラストラクチャを構築します。[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)」をご覧ください。
+イントラネット専用の高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、Azure のネットワークおよびストレージ インフラストラクチャを構築します。[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)」をご覧ください。
 
 Azure を次の基本的なネットワーク コンポーネントでプロビジョニングする必要があります。
 
@@ -196,11 +196,11 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 	$vnetConnectionKey="<Table V – Item 8 – Value column>"
 	$vnetConnection=New-AzureVirtualNetworkGatewayConnection -Name $vnetConnectionName -ResourceGroupName $rgName -Location $locName -ConnectionType IPsec -SharedKey $vnetConnectionKey -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localGateway
 
-次に、Azure VPN ゲートウェイに接続するオンプレミスの VPN デバイスを構成します。詳細については、「[VPN デバイスの構成](../virtual-networks/vpn-gateway-configure-vpn-gateway-mp.md#configure-your-vpn-device)」を参照してください。
+次に、Azure VPN Gateway に接続するオンプレミスの VPN デバイスを構成します。詳細については、「[VPN デバイスの構成](../virtual-networks/vpn-gateway-configure-vpn-gateway-mp.md#configure-your-vpn-device)」を参照してください。
 
 オンプレミスの VPN デバイスを構成するには、次のものが必要です。
 
-- 仮想ネットワーク用の Azure VPN ゲートウェイのパブリック IPv4 アドレス (**Get-AzurePublicIpAddress -Name $publicGatewayVipName -ResourceGroupName $rgName** コマンドで表示)
+- 仮想ネットワーク用の Azure VPN Gateway のパブリック IPv4 アドレス (**Get-AzurePublicIpAddress -Name $publicGatewayVipName -ResourceGroupName $rgName** コマンドで表示)
 - サイト間 VPN 接続用の IPsec 事前共有キー (表 V - 項目 8 - "値" 列)
 
 次に、仮想ネットワークのアドレス空間がオンプレミス ネットワークから到達できることを確認します。これは、通常、仮想ネットワークのアドレス空間に対応するルートを VPN デバイスに追加した後、組織ネットワークのルーティング インフラストラクチャの他の部分にそのルートをアドバタイズすることによって行います。IT 部門と相談してこの方法を決定します。
@@ -246,4 +246,6 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=August15_HO7-->
+[Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
+
+<!---HONumber=August15_HO8-->

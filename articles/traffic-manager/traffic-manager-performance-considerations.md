@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/17/2015"
+   ms.date="08/19/2015"
    ms.author="joaoma" />
 
 
@@ -85,9 +85,9 @@ http://www.digwebinterface.com – watchmouse サイトと似ていますが、�
 ## 次のステップ
 
 
-[Traffic Manager での負荷分散方法について](traffic-manager-load-balancing-methods.md)
+[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)
 
-[Traffic Manager の概要](../traffic-manmager-overview.md)
+[Traffic Manager について](../traffic-manmager-overview.md)
 
 [Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
 
@@ -98,4 +98,4 @@ http://www.digwebinterface.com – watchmouse サイトと似ていますが、�
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

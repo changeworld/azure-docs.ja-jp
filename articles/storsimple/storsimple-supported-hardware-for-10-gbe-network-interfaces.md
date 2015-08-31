@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/27/2015"
+   ms.date="08/17/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア
@@ -110,6 +110,6 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 
 ## 次のステップ
 
-[StorSimple ハードウェア コンポーネントの詳細](https://msdn.microsoft.com/library/azure/dn757755.aspx)
+[StorSimple ハードウェア コンポーネントと状態の詳細](storsimple-monitor-hardware-status.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

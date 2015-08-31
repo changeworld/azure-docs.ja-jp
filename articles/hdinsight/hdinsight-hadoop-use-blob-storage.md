@@ -3,6 +3,7 @@
 	description="HDInsight では、BLOB ストレージを HDFS のビッグ データ ストアとして使用します。BLOB ストレージのデータに対するクエリを実行し、分析結果を格納する方法について説明します。"
 	services="hdinsight,storage"
 	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"
 	manager="paulettm"
 	editor="cgronlun"/>
@@ -12,8 +13,8 @@
 	ms.workload="big-data"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="06/10/2015"
+	ms.topic="article"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
 
@@ -76,7 +77,7 @@ HDFS ではなく、Azure BLOB ストレージにデータを格納すること�
 * **データのアーカイブ:** Azure BLOB ストレージにデータを格納した場合、計算で使用する HDInsight クラスターを削除してもユーザー データは失われません。
 * **データ ストレージ コスト:** コンピューティング クラスターは Azure BLOB ストレージ コンテナーよりコストがかかるため、DFS に長期間データを格納すると、Azure BLOB ストレージにデータを格納した場合よりコストが高くなります。さらに、コンピューティング クラスターを生成するたびにデータを読み込む必要がないので、データの読み込みコストも節約できます。
 * **柔軟なスケールアウト:** HDFS は大規模なファイル システムを提供しますが、規模を拡張するにはクラスターのノード数を増やさなければならないので、作業が複雑になります。一方、Azure BLOB ストレージには柔軟なスケール機能がもともと備わっています。
-* **geo レプリケーション:** Azure BLOB ストレージ コンテナーは、Azure ポータルを使用して別の拠点に geo レプリケートできます。災害発生時には別の拠点でデータを回復でき、データの冗長性が高まりますが、geo レプリケートした別拠点へのフェールオーバーはパフォーマンスに大きな影響を与え、追加コストが発生する可能性もあります。geo レプリケーションを利用するときは、追加コストがかかっても保護する価値のあるデータかどうかを十分に考慮してください。
+* **geo レプリケーション:** Azure BLOB ストレージ コンテナーは、別の拠点に geo レプリケートできます。災害発生時には別の拠点でデータを回復でき、データの冗長性が高まりますが、geo レプリケートした別拠点へのフェールオーバーはパフォーマンスに大きな影響を与え、追加コストが発生する可能性もあります。geo レプリケーションを利用するときは、追加コストがかかっても保護する価値のあるデータかどうかを十分に考慮してください。
 
 MapReduce の一部のジョブやパッケージでは中間結果が生成されますが、Azure BLOB ストレージ コンテナーには保存したくない場合もあります。このような場合、中間結果データをローカルの HDFS に保存できます。実際、HDInsight では、Hive ジョブやその他のプロセスで生成される中間結果の一部が DFS に格納されます。
 
@@ -91,23 +92,11 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント][az
 既定のストレージ コンテナーと複数の HDInsight クラスターを共有しないでください。共有のコンテナーを使用して複数の HDInsight クラスターのデータへのアクセスを提供する必要がある場合は、クラスター構成で追加のストレージ アカウントとして追加する必要があります。詳細については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。ただし、元の HDInsight クラスターを削除した後でも既定のストレージ コンテナーを再利用できます。HBase クラスターでは、削除された HBase クラスターで使用される既定の blob ストレージ コンテナーを使用して、新しい HBase クラスターをプロビジョニングすることで、HBase テーブルのスキーマとデータを実際に保持できます。
 
 
-###Azure ポータルの使用
+###Azure プレビュー ポータルの使用
 
-Azure ポータルから HDInsight クラスターをプロビジョニングする場合は、**簡易作成**と**カスタム作成**という 2 つの方法があります。簡易作成オプションを使用する場合は、事前に Azure ストレージ アカウントを作成しておく必要があります。詳しい手順については、「[ストレージ アカウントの作成方法][azure-storage-create]」を参照してください。
+プレビュー ポータルから HDInsight クラスターをプロビジョニングする際、既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成するオプションを利用できます。
 
-簡易作成オプションを使用する場合、既存のストレージ アカウントを選択できます。簡易作成では、HDInsight クラスターと同じ名前の新しいコンテナーが作成されます。同じ名前のコンテナーが既に存在する場合は、<clusterName>-<x> が使用されます。たとえば、*myHDIcluster-1* などの名前になります。このコンテナーが既定のファイル システムとして使用されます。
-
-![Azure ポータルの HDInsight で新しい Hadoop クラスターの簡易作成を使用する。][img-hdi-quick-create]
-
-カスタム作成を使用する場合、既定のストレージ アカウントについて次のいずれかのオプションを選択できます。
-
-- 既存のストレージを使用する
-- 新しいストレージを作成する
-- 別のサブスクリプションのストレージを使用する
-
-さらに、独自のコンテナーを作成するという方法や、既存のコンテナーを使用する方法もあります。
-
-![HDInsight クラスター用の既存のストレージ アカウントを使用するオプション。][img-hdi-custom-create-storage-account]
+![HDinsight Hadoop プロビジョニング データ ソース](./media/hdinsight-hadoop-use-blob-storage/hdinsight.provision.data.source.png)
 
 ###Azure CLI の使用
 
@@ -325,6 +314,5 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 [img-hdi-powershell-blobcommands]: ./media/hdinsight-hadoop-use-blob-storage/HDI.PowerShell.BlobCommands.png
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

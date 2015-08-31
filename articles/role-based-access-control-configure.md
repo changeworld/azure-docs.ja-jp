@@ -3,8 +3,8 @@
 	description="ロール ベースのアクセス制御のしくみとその設定方法について説明します。"
 	services=""
 	documentationCenter=""
-	authors="Justinha"
-	manager="terrylan"
+	authors="IHenkel"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="Ibiza"
 	ms.workload="infrastructure-services"
-	ms.date="06/29/2015"
-	ms.author="justinha"/>
+	ms.date="08/14/2015"
+	ms.author="inhenk"/>
 
 # Microsoft Azure ポータルでのロールベースのアクセス制御
 
@@ -1293,4 +1293,4 @@ Azure RBAC を試用して、[フィードバック](http://aka.ms/azurerbacfeed
 [9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
 [10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

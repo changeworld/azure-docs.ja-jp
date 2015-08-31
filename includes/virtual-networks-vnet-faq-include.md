@@ -20,7 +20,7 @@ VNet を使用して次のことが行えます。
 
 ### 仮想ネットワークが必要かどうかを知る方法
 
-[仮想ネットワークの概要](http://go.microsoft.com/fwlink/?LinkId=296649)にアクセスし、最適なネットワーク設計オプションの決定に役立つディシジョン テーブルを参照してください。
+[仮想ネットワークの概要](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)にアクセスし、最適なネットワーク設計オプションの決定に役立つディシジョン テーブルを参照してください。
 
 ### 開始するには?
 
@@ -264,4 +264,4 @@ Vnet は、1 つの別の機能と、Azure インフラストラクチャでホ�
 
 はい。各種プラットフォームで PowerShell とコマンド ライン ツールを使用することができます。詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkId=317721)で確認できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

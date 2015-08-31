@@ -1,12 +1,20 @@
-<properties pageTitle="セルフ サービス型アプリケーション アクセス管理のための Azure AD 設定| Microsoft Azure" description="Azure AD でグループを管理する方法について説明するトピックです。" services="active-directory" documentationCenter="" authors="femila" manager="swadhwa"" editor="" tags="azure-classic-portal"/>
+<properties
+	pageTitle="アプリケーション アクセス管理のセルフ サービス化に必要な Azure AD の設定 | Microsoft Azure"
+	description="Azure AD でグループを管理する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+    authors="femila"
+	manager="swadhwa" 
+	editor=""
+	tags="azure-classic-portal"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/13/2015" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/13/2015"
 	ms.author="femila"/>
 
 #アプリケーション アクセス管理のセルフ サービス化に必要な Azure AD の設定
@@ -41,4 +49,4 @@ Azure 管理ポータルの [構成] タブで、[委任されたグループ管
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

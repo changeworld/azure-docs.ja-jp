@@ -1,4 +1,5 @@
 1. 「[Azure CLI から Azure に接続する](../articles/xplat-cli-connect.md)」で示されている手順を使用して、Azure サブスクリプションにサインインします。
+
 2. 以下を使用してサービス管理モードであることを確認します。
 
         azure config mode asm
@@ -36,6 +37,6 @@
 
 7. 新しく作成された仮想マシンは、`azure vm start` コマンドで開始できます。
 
-これらすべての Azure CLI 仮想マシン コマンドの詳細については、「[Azure サービス管理での Azure CLI の使用](../articles/virtual-machines/virtual-machines-command-line-tools.md)」をご覧ください。
+これらすべての Azure CLI 仮想マシン コマンドの詳細については、「[サービス管理 API での Azure CLI の使用](../articles/virtual-machines/virtual-machines-command-line-tools.md)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

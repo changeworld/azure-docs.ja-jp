@@ -3,7 +3,7 @@
 	description="Visual Studio 2013 を使用して、API アプリとして Web API プロジェクトを構成する方法を説明します。" 
 	services="app-service\api" 
 	documentationCenter=".net" 
-	authors="tdykstra" 
+	authors="bradygaster" 
 	manager="wpickett" 
 	editor="jimbe"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/19/2015" 
-	ms.author="bradyg;tarcher"/>
+	ms.date="08/14/2015" 
+	ms.author="tdykstra"/>
 
 # API アプリとしての Web API プロジェクトの構成
 
@@ -24,17 +24,17 @@
 
 API アプリの詳細については、「[API Apps とは](app-service-api-apps-why-best-platform.md)」を参照してください。
 
-[AZURE.INCLUDE [install-sdk-2013-only](../../includes/install-sdk-2013-only.md)]
+[AZURE.INCLUDE [install-sdk-2015-2013](../../includes/install-sdk-2015-2013.md)]
 
-このチュートリアルでは、Azure SDK for .NET 2.5.1 以降のバージョンが必要です。
+このチュートリアルでは、Azure SDK for .NET 2.6 以降のバージョンが必要です。
 
 ## Web API プロジェクトの構成 
 
 このセクションでは、API アプリとして既存の Web API プロジェクトを構成する方法を示します。まず Web API プロジェクトのテンプレートを使用して Web API プロジェクトを作成してから、このプロジェクトを API アプリとして構成します。
 
-1. Visual Studio 2013 を開きます。
+1. Visual Studio 2015 または Visual Studio 2013 を開きます。
 
-2. **[ファイル] メニューの [新しいプロジェクト]** をクリックします。
+2. **[ファイル]、[新しいプロジェクト]** の順にクリックします。
 
 3. **[ASP.NET Web アプリケーション]** テンプレートを選択します。
 
@@ -83,4 +83,4 @@ API アプリの詳細については、「[API Apps とは](app-service-api-app
 これで API アプリをデプロイする準備ができました。[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルの手順に従って実際にデプロイできます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

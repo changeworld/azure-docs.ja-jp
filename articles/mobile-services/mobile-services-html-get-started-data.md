@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-html" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="05/02/2015" 
+	ms.date="08/16/2015" 
 	ms.author="glenga"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
@@ -133,7 +133,7 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
    	このコードでは、SQL データベース **TodoItem** のプロキシ オブジェクト (**todoItemTable**) を作成します。
 
-7. **$('#add-item').submit** イベント ハンドラーを次のコードで置き換えます。
+7. **$('\#add-item').submit** イベント ハンドラーを次のコードで置き換えます。
 
 		$('#add-item').submit(function(evt) {
 			var textbox = $('#new-item-text'),
@@ -257,4 +257,4 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

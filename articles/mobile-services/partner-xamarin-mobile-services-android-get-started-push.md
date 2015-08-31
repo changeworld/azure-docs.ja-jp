@@ -32,7 +32,7 @@
 
 ##<a id="register"></a>Google Cloud Messaging を有効にする
 
-[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
 ##<a id="configure"></a>プッシュ要求を送信するように Mobile Services を構成する
 
@@ -86,4 +86,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

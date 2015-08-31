@@ -1,26 +1,26 @@
 <properties
-   pageTitle="Node.js で Azure Redis Cache を使用する方法"
-   description="Node.js と node_redis を使用して Azure Redis Cache を使用します。"
-   services="redis-cache"
-   documentationCenter=""
-   authors="MikeWasson"
-   manager="wpickett"
-   editor=""/>
+	pageTitle="Node.js で Azure Redis Cache を使用する方法 | Microsoft Azure"
+	description="Node.js と node_redis を使用して Azure Redis Cache を使用します。"
+	services="redis-cache"
+	documentationCenter=""
+	authors="steved0x"
+	manager="dwrede"
+	editor="v-lincan"/>
 
 <tags
-   ms.service="cache"
-   ms.devlang="nodejs"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="cache-redis"
-   ms.workload="required"
-   ms.date="08/04/2015"
-   ms.author="mwasson"/>
+	ms.service="cache"
+	ms.devlang="nodejs"
+	ms.topic="hero-article"
+	ms.tgt_pltfrm="cache-redis"
+	ms.workload="tbd"
+	ms.date="08/17/2015"
+	ms.author="sdanie"/>
 
 # Node.js で Azure Redis Cache を使用する方法
 
 Azure Redis Cache を使用すると、Microsoft が管理している、セキュリティで保護された専用 Redis Cache にアクセスできます。キャッシュは、Microsoft Azure 内の任意のアプリケーションからアクセスできます。
 
-このトピックでは、Node.js を使用して Azure Redis Cache を使用する方法を説明しています。Node,js で Azure Redis Cache を使用する別の例については、Azure Web サイトでの [Socket.IO を使用した Node.js チャット アプリケーションの構築][]に関するページを参照してください。
+このトピックでは、Node.js を使用して Azure Redis Cache を使用する方法を説明しています。Node.js で Azure Redis Cache を使用する別の例については、Azure Web サイトでの [Socket.IO を使用した Node.js チャット アプリケーションの構築][]に関するページを参照してください。
 
 
 ## 前提条件
@@ -42,7 +42,7 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
   ![][2]
 
 
-キャッシュが作成されたら、ポータルでそのキャッシュをクリックして設定を表示します。**[キー]** の下のリンクをクリックして、プライマリ キーをコピーします。このキーは、要求を認証するのに必要になります。
+キャッシュを作成したら、Azure ポータルでそのキャッシュをクリックして設定を表示します。**[キー]** の下のリンクをクリックして、プライマリ キーをコピーします。このキーは、要求を認証するために必要です。
 
   ![][4]
 
@@ -59,7 +59,7 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 
 	var redis = require("redis");
 
-    // Put in your cache name and access key.
+    // Add your cache name and access key.
 	var client = redis.createClient(6379,'<name>.redis.cache.windows.net', {auth_pass: '<key>' });
 
 	client.set("foo", "bar", function(err, reply) {
@@ -79,7 +79,7 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 
 ## 次のステップ
 
-- [キャッシュ診断の有効化](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)によってキャッシュの正常性を[監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)できるようにします。
+- [キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を[監視](cache-how-to-monitor.md)できるようにします。
 - 公式の [Redis ドキュメント](http://redis.io/documentation)を読みます。
 
 
@@ -91,4 +91,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 
 [Socket.IO を使用した Node.js チャット アプリケーションの構築]: ../app-service-web/web-sites-nodejs-chat-app-socketio.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

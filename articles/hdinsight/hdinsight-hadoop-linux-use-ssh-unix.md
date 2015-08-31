@@ -5,7 +5,8 @@
    documentationCenter=""
    authors="Blackmist"
    manager="paulettm"
-   editor="cgronlun"/>
+   editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -13,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/06/2015"
+   ms.date="07/24/2015"
    ms.author="larryfr"/>
 
 #Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)
@@ -72,15 +73,17 @@ Linux ベースの HDInsight クラスターを作成するとき、SSH キー�
 
 Linux ベースの HDInsight クラスターを作成するときには、以前に作成した公開キーを指定する必要があります。Linux、Unix、または OS X の各クライアントからは、2 つの方法で HDInsight クラスターを作成できます。
 
-* **Azure 管理ポータル** - Web ベースのポータルを使用してクラスターを作成します。
+* **Azure プレビュー ポータル** - Web ベースのポータルを使用してクラスターを作成します。
 
 * **Mac、Linux、Windows 用の Azure CLI** - コマンドラインでコマンドを使用してクラスターを作成します。
 
 これらの方法では、それぞれパスワードまたは公開キーが必要です。Linux ベースの HDInsight クラスターを作成する方法の詳細については、[HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
-###Azure ポータル
+###Azure プレビュー ポータル
 
-このポータルを使用して Linux ベースの HDInsight クラスターを作成する場合は、**SSH ユーザー名**を入力して、**パスワード**と **SSH 公開キー**のどちらを入力するかを選択する必要があります。**SSH 公開キー**を選択した場合は、(拡張子が **.pub** のファイルに含まれている) 公開キーを次のフォームに貼り付ける必要があります。
+[Azure プレビュー ポータル][preview-portal]を使用して Linux ベースの HDInsight クラスターを作成する場合は、**[SSH ユーザー名]** を入力し、**[パスワード]** と **[SSH 公開キー]** のどちらを選択して入力する必要があります。
+
+**[SSH 公開キー]** を選択した場合は、**.pub** 拡張子付きのファイルに含まれている公開キーを [__SSH 公開キー]__ フィールドに貼り付けるか、__[ファイルの選択]__ を選択し、公開キーファイルを参照して選択できます。
 
 ![公開キーの入力を求めるフォームの画像](./media/hdinsight-hadoop-linux-use-ssh-unix/ssh-key.png)
 
@@ -115,6 +118,8 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 > [AZURE.NOTE]SSH が適切な秘密キーを使用して自動的に認証を行わない場合は、**-i** パラメーターを使用して、秘密キーのパスを指定します。次の例は、`~/.ssh/id_rsa` から秘密キーを読み込みます。
 >
 > `ssh -i ~/.ssh/id_rsa me@mycluster-ssh.azurehdinsight.net`
+
+ポートが指定されない場合、SSH のポートは既定でポート 22 に設定され、HDInsight クラスターの headnode0 に接続されます。ポート 23 を使用した場合は、headnode1 に接続します。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
 ###ワーカー ノードへの接続
 
@@ -203,9 +208,9 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 ##<a id="tunnel"></a>SSH トンネリング
 
-SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングすることもできます。ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求済みリソースにルーティングされます。
+SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングできます。ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求済みリソースにルーティングされます。
 
-これは、クラスター内でヘッドまたはワーカー ノードの内部ドメイン名を使用する HDInsight クラスターで Web ベースのサービスにアクセスするときに最も役立ちます。たとえば、Ambari Web ベースの一部のセクションで、**headnode0.mycluster.d1.internal.cloudapp.net** などの内部ドメイン名を使用する場合です。これらの名前は、クラスター外部で解決できませんが、SSH を介してトンネリングされた要求はクラスター内から発信され、正常に解決します。
+> [AZURE.IMPORTANT]SSH トンネルは、sopme Hadoop サービス用の Web UI にアクセスするための要件です。たとえば、ジョブ履歴 UI とリソース マネージャー UI は、両方とも SSH トンネルでのみアクセスできます。
 
 SSH トンネルを作成し、ブラウザーでこれを使用してクラスターに接続するように構成するには、次の手順を実行します。
 
@@ -295,4 +300,6 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=August15_HO6-->
+[preview-portal]: https://portal.azure.com/
+
+<!---HONumber=August15_HO8-->

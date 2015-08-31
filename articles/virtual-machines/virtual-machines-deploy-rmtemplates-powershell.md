@@ -18,6 +18,12 @@
 
 # Azure リソース マネージャー テンプレートと PowerShell を使用した仮想マシンのデプロイと管理
 
+> [AZURE.SELECTOR]
+- [Azure preview portal](virtual-machines-windows-tutorial.md)
+- [Azure portal](virtual-machines-windows-tutorial-classic-portal.md)
+- [PowerShell: Resource Manager deployment](virtual-machines-deploy-rmtemplates-powershell.md)
+- [PowerShell: Classic deployment](virtual-machines-ps-create-preconfigure-windows-vms.md)
+
 この記事では、Azure リソース マネージャー テンプレートと PowerShell を使用し、Azure 仮想マシンのデプロイと管理に関する一般的なタスクを自動化する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」および「[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)」を参照してください。
 
 - [Windows 仮想マシンのデプロイ](#windowsvm)
@@ -48,9 +54,9 @@ Azure リソース マネージャー テンプレートを使用して作成す
 - 操作を監査する。
 - 追跡機能を向上させるために追加のメタデータでリソースのタグ付けを行う。
 
-Azure リソース マネージャーの詳細については、[こちら](virtual-machines-azurerm-versus-azuresm.md)を参照してください。テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+Azure リソース マネージャーの詳細については、[こちら](virtual-machines-azurerm-versus-azuresm.md)を参照してください。テンプレートの作成に興味がある場合は、[Azure リソース マネージャー テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 
-## <a id="windowsvm"></a>タスク： Windows 仮想マシンのデプロイ
+## <a id="windowsvm"></a>タスク: Windows 仮想マシンのデプロイ
 
 リソース マネージャー テンプレートと Azure PowerShell を使用して、新しい Azure 仮想マシンをデプロイするには、このセクションの手順に従います。このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに単一の仮想マシンを作成します。
 
@@ -301,7 +307,7 @@ Azure のデプロイ名、リソース グループ名、Azure データ セン
 
 これで、新しいリソース グループに MyWindowsVM という名前の新しい Windows 仮想マシンが作成されました。
 
-## <a id="customvm"></a>タスク： カスタム仮想マシン イメージの作成
+## <a id="customvm"></a>タスク: カスタム仮想マシン イメージの作成
 
 Azure PowerShell を使用し、リソース マネージャー テンプレートで Azure に カスタム仮想マシン イメージを作成するには、このセクションの手順に従います。このテンプレートは、指定した仮想ハード ディスク (VHD) から単一の仮想マシンを作成します。
 
@@ -426,7 +432,7 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
 	vmSize: Standard_A3
 	...
 
-## <a id="multivm"></a>タスク： 仮想ネットワークと外部ロード バランサーを使用するマルチ VM アプリケーションのデプロイ
+## <a id="multivm"></a>タスク: 仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
 
 Azure PowerShell を使用し、リソース マネージャー テンプレートから仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、以下のセクションの手順に従います。このテンプレートは、新しいクラウド サービスで、1 つのサブネットを持つ新しい仮想ネットワークに 2 つの仮想マシンを作成し、それらを TCP ポート 80 への受信トラフィック用に、外部の負荷分散されたセットへ追加します。
 
@@ -796,7 +802,7 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 
 ## <a id="logon"></a>タスク: Windows 仮想マシンへのサインイン
 
-手順の詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)」を参照してください。
+詳細な手順については、「[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)」を参照してください。
 
 ## <a id="displayvm"></a>タスク: 仮想マシンに関する情報の表示
 
@@ -868,7 +874,7 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 
 ## <a id="start"></a>タスク: 仮想マシンの起動
 
-仮想マシンの起動は、**Start-AzureVM** コマンドを使用して行うことができます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+仮想マシンの起動には、**Start-AzureVM** コマンドを使用できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
 	Start-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
@@ -885,7 +891,7 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 
 ## <a id="stop"></a>タスク: 仮想マシンの停止
 
-仮想マシンの停止は、**Stop-AzureVM** コマンドを使用して行うことができます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+仮想マシンの停止には、**Stop-AzureVM** コマンドを使用できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
 	Stop-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
@@ -907,7 +913,7 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 
 ## <a id="restart"></a>タスク: 仮想マシンの再起動
 
-仮想マシンの再起動は、**Restart-AzureVM** コマンドを使用して行うことができます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
+仮想マシンの再起動には、**Restart-AzureVM** コマンドを使用できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
 
 	Restart-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
 
@@ -924,7 +930,7 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 
 ## <a id="delete"></a>タスク: 仮想マシンの削除
 
-仮想マシンの削除は、**Remove-AzureVM** コマンドを使用して行うことができます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。**-Force** パラメーターを使用して確認プロンプトをスキップできます。
+仮想マシンの削除には、**Remove-AzureVM** コマンドを使用できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。**-Force** パラメーターを使用して確認プロンプトをスキップできます。
 
 	Remove-AzureVM -ResourceGroupName "<resource group name>" –Name "<VM name>"
 
@@ -956,4 +962,4 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

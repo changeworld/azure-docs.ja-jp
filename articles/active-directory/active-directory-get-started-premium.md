@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure Active Directory Premium の概要" 
-	description="Azure Active Directory Premium エディションにサインアップする方法について説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
+<properties
+	pageTitle="Azure Active Directory Premium の概要"
+	description="Azure Active Directory Premium エディションにサインアップする方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="MarkusVi"
+	manager="stevenpo" 
 	editor="LisaToft"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="05/05/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/14/2015"
+	ms.author="markvi"/>
 
 # Azure Active Directory Premium の概要
 
@@ -121,7 +121,4 @@ Microsoft クラウド サービスで利用できるサービスと機能は、
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

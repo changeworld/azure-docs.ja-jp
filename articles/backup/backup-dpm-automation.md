@@ -3,14 +3,14 @@
 	description="PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明"
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
+	authors="SamirMehta"
 	manager="jwhit"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/11/2015" ms.author="jimpark"; "aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/18/2015" ms.author="jimpark"; "aashishr"; "sammehta"/>
 
 
-# PowerShell を使用して Data Protection Manager (DPM) サーバー用に Microsoft Azure Backup をデプロイおよび管理する手順
+# PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
 この記事では、PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
 ## PowerShell 環境のセットアップ
@@ -21,11 +21,11 @@ PS C:\> & "C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin\DpmCliIn
 
 Welcome to the DPM Management Shell!
 
-Full list of cmdlets: Get-Command 
-Only DPM cmdlets: Get-DPMCommand 
-Get general help: help 
-Get help for a cmdlet: help <cmdlet-name> or <cmdlet-name> -? 
-Get definition of a cmdlet: Get-Command <cmdlet-name> -Syntax 
+Full list of cmdlets: Get-Command
+Only DPM cmdlets: Get-DPMCommand
+Get general help: help
+Get help for a cmdlet: help <cmdlet-name> or <cmdlet-name> -?
+Get definition of a cmdlet: Get-Command <cmdlet-name> -Syntax
 Sample DPM scripts: Get-DPMSampleScript
 ```
 
@@ -85,7 +85,7 @@ Microsoft Azure Backup サービスへの登録を実行する前に、[前提�
 - 有効な Azure サブスクリプションがあること
 - バックアップ コンテナーがあること
 
-コンテナーの資格情報をダウンロードするには、Azure PowerShell コンソールで **Get-AzureBackupVaultCredentials** コマンドレットを実行し、*C:\Downloads* などのアクセスしやすい場所に保管します。
+コンテナーの資格情報をダウンロードするには、Azure PowerShell コンソールで **Get-AzureBackupVaultCredentials** コマンドレットを実行し、*C:\\Downloads* などのアクセスしやすい場所に保管します。
 
 ```
 PS C:\> $credspath = "C:"
@@ -97,7 +97,7 @@ f5303a0b-fae4-4cdb-b44d-0e4c032dde26_backuprg_backuprn_2015-08-11--06-22-35.Vaul
 コンテナーへのマシンの登録は、[Start-DPMCloudRegistration](https://technet.microsoft.com/library/jj612787) コマンドレットを使用して実行します。
 
 ```
-PS C:\> $cred = $credspath + $credsfilename 
+PS C:\> $cred = $credspath + $credsfilename
 PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredentialsFilePath $cred
 ```
 
@@ -298,6 +298,6 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 使用されているコマンドは、任意のデータソースの種類に合わせて簡単に拡張できます。
 
 ## 次のステップ
-Azure DPM Backup の詳細については、「[Azure DPM Backup の概要](backup-azure-dpm-introduction.md)」を参照してください。
+Azure DPM Backup の詳細については、[Azure DPM Backup の概要](backup-azure-dpm-introduction.md)を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

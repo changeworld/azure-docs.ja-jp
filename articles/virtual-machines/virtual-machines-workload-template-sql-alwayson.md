@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ"
+	pageTitle="Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ | Microsoft Azure"
 	description="リソース マネージャーのテンプレートと、Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して、SQL Server AlwaysOn をサポートする 5 つのサーバーを簡単にデプロイします。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -19,7 +19,7 @@
 
 # Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ
 
-このセクションの手順を使用すると、リソース マネージャーのテンプレートを使用して SQL Server AlwaysOn をデプロイできます。このテンプレートでは、新しい仮想ネットワークの 2 つの異なるサブネット上に 5 つの仮想マシンが作成されます。
+この記事の手順を使用すると、Azure リソース マネージャーのテンプレートを使用して SQL Server AlwaysOn をデプロイできます。このテンプレートでは、新しい仮想ネットワークの 2 つの異なるサブネット上に 5 つの仮想マシンが作成されます。
 
 ![](./media/virtual-machines-workload-template-sql-alwayson/five-server-sqlao.png)
 
@@ -27,7 +27,7 @@
 
 ## Azure プレビュー ポータル
 
-リソース マネージャー テンプレートと Azure プレビュー ポータルを使用してこのワークロードをデプロイするには、[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsql-server-2014-alwayson-dsc%2Fazuredeploy.json)をクリックします。
+Azure リソース マネージャー テンプレートと Azure プレビュー ポータルを使用してこのワークロードをデプロイするには、[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsql-server-2014-alwayson-dsc%2Fazuredeploy.json)をクリックします。
 
 ![](./media/virtual-machines-workload-template-sql-alwayson/azure-portal-template.png)
 
@@ -105,4 +105,4 @@
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

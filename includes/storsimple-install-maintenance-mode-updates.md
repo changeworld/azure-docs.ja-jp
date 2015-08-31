@@ -1,3 +1,19 @@
+<properties
+   pageTitle="メンテナンス モードの更新プログラムのインストール"
+   description="StorSimple 用 Windows PowerShell を使用してメンテナンス モードの更新プログラムをインストールする方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
+<tags 
+   ms.service="storsimple"
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="08/18/2015"
+   ms.author="alkohli" />
 
 #### StorSimple 用 Windows PowerShell を使用してメンテナンス モードの更新プログラムをインストールするには
 
@@ -9,7 +25,7 @@
 
      `Get-HcsUpdateAvailability`
     
-4. 更新プログラムが利用可能かどうかと、更新プログラムが中断を伴うものであるかどうかが通知されます。中断を伴う更新プログラムを適用するには、デバイスをメンテナンス モードにする必要があります。手順については、「[メンテナンス モードを開始する](#enter-maintenance-mode)」をご覧ください。
+4. 更新プログラムが利用可能かどうかと、更新プログラムが中断を伴うものであるかどうかが通知されます。中断を伴う更新プログラムを適用するには、デバイスをメンテナンス モードにする必要があります。手順については、「[手順 2: メンテナンス モードを開始する](storsimple-update-device.md#step2)」を参照してください。
 
 5. デバイスがメンテナンス モードになっている状態で、コマンド プロンプトで「`Start-HcsUpdate`」と入力します。
 
@@ -23,6 +39,6 @@
 
 7. 更新プログラムを現在のコントローラーにインストールし、再起動が完了したら、別のコントローラーに接続して手順 1. から 6. を実行します。
 
-8. 両方のコントローラーが更新されたら、メンテナンス モードを終了します。手順については、「[メンテナンス モードを終了する](#exit-maintenance-mode)」をご覧ください。
+8. 両方のコントローラーが更新されたら、メンテナンス モードを終了します。手順については、「[手順 4: メンテナンス モードを終了する](storsimple-update-device.md#step4)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

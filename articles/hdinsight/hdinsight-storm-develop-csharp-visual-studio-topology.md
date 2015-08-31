@@ -5,7 +5,8 @@
    documentationCenter=""
    authors="Blackmist"
    manager="paulettm"
-   editor="cgronlun"/>
+   editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -655,4 +656,4 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 
 -	[HDInsight での HBase の使用](../hdinsight-hbase-get-started.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

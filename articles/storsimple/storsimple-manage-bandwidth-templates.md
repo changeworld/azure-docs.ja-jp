@@ -1,18 +1,18 @@
 <properties 
-   pageTitle="StorSimple 帯域幅テンプレートを管理する"
+   pageTitle="StorSimple 帯域幅テンプレートを管理する | Microsoft Azure"
    description="帯域幅の消費量を制御するのに使用できる StorSimple 帯域幅テンプレートを管理する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
    manager="carolz"
-   editor="tysonn" />
+   editor="" />
 <tags 
    ms.service="storsimple"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/10/2015"
+   ms.date="08/13/2015"
    ms.author="alkohli" />
 
 # StorSimple 帯域幅テンプレートを管理する
@@ -176,4 +176,4 @@ StorSimple デバイスに関する次のベスト プラクティスに従っ�
 
 [StorSimple コンポーネント](storsimple-components.md)の詳細
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

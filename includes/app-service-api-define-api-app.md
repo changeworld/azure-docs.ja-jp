@@ -65,9 +65,9 @@
 
 ## Swagger UI の有効化
 
-既定では、API アプリ プロジェクトは有効で、[Swagger](http://swagger.io/ "公式の Swagger 情報") メタデータは自動生成されます。**[API アプリ SDK の追加]** メニュー エントリを使用して Web API プロジェクトを変換した場合は、API テスト ページも既定で有効になります。
+既定では、API アプリ プロジェクトは有効で、[Swagger](http://swagger.io/ "公式の Swagger 情報") メタデータが自動生成されます。**[API アプリ SDK の追加]** メニュー項目を使用して Web API プロジェクトを変換した場合は、API テスト ページも既定で有効になります。
 
-ただし、Azure API アプリの新しいプロジェクト テンプレートを使った場合は、API テスト ページが無効になります。API アプリ プロジェクト テンプレートを使用して API アプリ プロジェクトを作成した場合は、次の手順を実行してテスト ページを有効にする必要があります。
+ただし、Azure API アプリの新しいプロジェクト テンプレートを使った場合は、API テスト ページが無効になります。API アプリ プロジェクト テンプレートを使用して API アプリ プロジェクトを作成した場合は、次の手順を実行してテスト ページを有効にします。
 
 **注:** API アプリが*パブリックな匿名*としてデプロイされ、Swagger UI が有効な場合、すべてのユーザーが Swagger UI を使用して API を検出して呼び出すことができます。
 
@@ -89,12 +89,18 @@
 
 API のテスト ページを表示するには、次の手順に従います。
 
-1. アプリをローカルで実行 (Ctrl + F5 キー) して `/swagger` に移動します。 
+1. アプリをローカルで実行します (Ctrl + F5 キー)。
 
-	![](./media/app-service-api-define-api-app/14-swagger-ui.png)
+	ブラウザーが開き、HTTP 403 エラーが表示されます。これは、ベース URL がこのプロジェクトに有効な Web ページの URL でも API メソッドの URL でもないためです。
+ 
+3.  ベース URL の末尾に `/swagger` を追加して Swagger ページに移動します。
 
-2. **[Try it out]** をクリックすると、API が機能しており、予期される結果を返すことを確認できます。
+	![](./media/app-service-api-define-api-app/swaggerhome.png)
 
-	![](./media/app-service-api-define-api-app/15-swagger-ui-post-test.png)
+2. **[Contacts]、[Get]、[Try it out]** の順にクリックすると、API が機能しており、予期される結果を返すことを確認できます。
 
-<!---HONumber=August15_HO6-->
+	![](./media/app-service-api-define-api-app/swaggertry.png)
+
+3. Visual Studio で、**[デバッグ]、[デバッグの停止]** の順にクリックします。
+
+<!---HONumber=August15_HO8-->

@@ -6,7 +6,7 @@
    authors="Jim-Parker"
    manager="shreeshd"
    editor=""/>
-<tags ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="08/11/2015" ms.author="jimpark"; "aashishr"/>
+<tags  ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="08/11/2015" ms.author="jimpark"; "aashishr"/>
 
 # 資格情報コンテナーの資格情報を使用して、Azure Backup サービスで認証する
 データを Azure にバックアップする前に、オンプレミスのサーバー (Windows クライアントまたは Windows Server または SCDPM サーバー) をバックアップ資格情報コンテナーで認証する必要があります。認証は "資格情報コンテナーの資格情報" を使用して実行されます。資格情報コンテナーの資格情報の概念は、Azure PowerShell で使用される "発行の設定" ファイルの概念に似ています。
@@ -37,7 +37,13 @@
 - 資格情報コンテナーの資格情報ファイルの有効期限は 48 時間であり、ポータルからダウンロードすることができます。
 - ワークフローに関する質問については、Azure Backup の [FAQ](backup-azure-backup-faq.md) を参照してください。
 
+##ビデオ チュートリアル
+
+以下は、このチュートリアルのビデオです。
+
+[AZURE.VIDEO using-vault-credentials-to-authenticate-with-the-azure-backup-service]
+
 ## 次のステップ
 [Azure Backup エージェントのダウンロード、インストール、および登録](backup-azure-backup-download-register)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

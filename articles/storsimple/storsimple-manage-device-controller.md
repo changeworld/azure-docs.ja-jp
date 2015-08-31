@@ -5,14 +5,14 @@
    documentationCenter=""
    authors="alkohli"
    manager="carolz"
-   editor="tysonn" />
+   editor="" />
 <tags 
    ms.service="storsimple"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/23/2015"
+   ms.date="08/13/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイス コントローラーを管理する
@@ -25,7 +25,7 @@
 - StorSimple Manager サービスの **[メンテナンス]** ページの **[コントローラー]** セクション
 - StorSimple 用 Windows PowerShell。 
 
-デバイス コントローラーは、StorSimple Manager サービスを介して管理することをお勧めします。StorSimple 用 Windows PowerShell でしか実行できない操作については、チュートリアルの中でその旨記載しています。
+デバイス コントローラーは、StorSimple Manager サービスを介して管理することをお勧めします。StorSimple 用 Windows PowerShell を使用しないと実行できない操作については、チュートリアルの中で記載しています。
 
 このチュートリアルを読むと、次のことができるようになります。
 
@@ -59,26 +59,26 @@
 
 1. **[ハードウェアの状態]** に移動し、デバイスの両方のコントローラーのステータスが **[正常]** であることを確認します。
 
-	![Verify StorSimple Device Controllers Are Healthy](./media/storsimple-manage-device-controller/IC766017.png)
+	![StorSimple デバイス コントローラーが正常であることを確認する](./media/storsimple-manage-device-controller/IC766017.png)
 
 1. **[メンテナンス]** ページの一番下にある **[コントローラーの管理]** をクリックします。
 
-	![Manage StorSimple Device Controllers](./media/storsimple-manage-device-controller/IC766018.png)</br>
+	![StorSimple デバイス コントローラーを管理する](./media/storsimple-manage-device-controller/IC766018.png)</br>
 
-	> [AZURE.NOTE][コントローラーの管理] が表示されない場合、更新プログラムをインストールする必要があります。詳細については、[デバイスの更新](storsimple-update-device.md)に関するページを参照してください。
+	>[AZURE.NOTE]**[コントローラーの管理]** が表示されない場合、更新プログラムをインストールする必要があります。詳細については、「[StorSimple デバイスの更新](storsimple-update-device.md)」をご覧ください。
 
 1. **[コントローラー設定の変更]** ダイアログ ボックスで、次の手順に従います。
 
 
-	- **[コントローラーの選択]** ボックスの一覧から、管理するコントローラーを選択します。選択肢は、[コントローラー 0] と [コントローラー 1] です。これらのコントローラーがアクティブであるか、パッシブであるかも表示されます。
+	- **[コントローラーの選択]** ドロップダウン リストから、管理するコントローラーを選択します。選択肢は、[コントローラー 0] と [コントローラー 1] です。これらのコントローラーがアクティブであるか、パッシブであるかも表示されます。
 
-		> [AZURE.NOTE]利用できない、またはオフになっていて管理できないコントローラーは、ドロップダウン リストに表示されません。
+		>[AZURE.NOTE]利用できない、またはオフになっていて管理できないコントローラーは、ドロップダウン リストに表示されません。
 	
 
 
-	- **[アクションの選択]** ボックスの一覧の **[コントローラーの再起動]** または **[コントローラーのシャットダウン]** を選択します。
+	- **[アクションの選択]** ドロップダウン リストで、**[コントローラーの再起動]** または **[コントローラーのシャットダウン]** を選択します。
 	
-		![Restart StorSimple Device Passive Controller](./media/storsimple-manage-device-controller/IC766020.png)
+		![StorSimple デバイス パッシブ コントローラーを再起動する](./media/storsimple-manage-device-controller/IC766020.png)
  
 
 	- チェック マーク アイコン ![Check Icon](./media/storsimple-manage-device-controller/IC740895.png) をクリックします。
@@ -88,17 +88,17 @@
 
 |選択肢番号|操作の内容|想定される結果|
 |---|---|---|
-|1\.|パッシブ コントローラーを再起動する。|コントローラーを再起動するためのジョブが作成されます。ジョブが正常に作成されると通知されます。このジョブによってコントローラーの再起動が開始されます。**[サービス]、[ダッシュボード]、[操作ログの表示]** の順に選択し、対象のサービスに固有のパラメーターでフィルタリングすることによって再起動プロセスを監視することができます。|
-|2\.|アクティブ コントローラーを再起動する。|"アクティブ コントローラーを再起動すると、デバイスがパッシブ コントローラーにフェールオーバーされます。続行してもよろしいですか?" という警告が表示されます。 </br>操作を続行するように選択した場合、その後の手順は、パッシブ コントローラーを再起動する手順 (「選択肢 1」を参照) と同じです。|
-|3\.|パッシブ コントローラーをシャットダウンする。|"シャットダウンが完了した後で、コントローラーの電源ボタンを押して電源をオンにする必要があります。このコントローラーをシャットダウンしてもよろしいですか?" というメッセージが表示されます。 </br>操作を続行するように選択した場合、その後の手順は、パッシブ コントローラーを再起動する手順 (「選択肢 1」を参照) と同じです。|
-|4\.|アクティブ コントローラーをシャットダウンする。|"シャットダウンが完了した後で、コントローラーの電源ボタンを押して電源をオンにする必要があります。このコントローラーをシャットダウンしてもよろしいですか?" というメッセージが表示されます。 </br>操作を続行するように選択した場合、その後の手順は、パッシブ コントローラーを再起動する手順 (「選択肢 1」を参照) と同じです。|
+|1\.|パッシブ コントローラーを再起動する。|コントローラーを再起動するためのジョブが作成されます。ジョブが正常に作成されると通知されます。このジョブによってコントローラーの再起動が開始されます。**[サービス]、[ダッシュボード]、[操作ログの表示]** の順に選択し、対象のサービスに固有のパラメーターでフィルタリングすることによって再起動プロセスを監視できます。|
+|2\.|アクティブ コントローラーを再起動する。|"アクティブ コントローラーを再起動すると、デバイスがパッシブ コントローラーにフェールオーバーされます。続行してもよろしいですか?" という警告が表示されます。 </br>この操作を続行するように選択した場合、その後の手順は、パッシブ コントローラーを再起動する手順 (「選択肢 1」を参照) と同じです。|
+|3\.|パッシブ コントローラーをシャットダウンする。|"シャットダウンが完了した後で、コントローラーの電源ボタンを押して電源をオンにする必要があります。このコントローラーをシャットダウンしてもよろしいですか?" というメッセージが表示されます。 </br>この操作を続行するように選択した場合、その後の手順は、パッシブ コントローラーを再起動する手順 (「選択肢 1」を参照) と同じです。|
+|4\.|アクティブ コントローラーをシャットダウンする。|"シャットダウンが完了した後で、コントローラーの電源ボタンを押して電源をオンにする必要があります。このコントローラーをシャットダウンしてもよろしいですか?" というメッセージが表示されます。 </br>この操作を続行するように選択した場合、その後の手順は、パッシブ コントローラーを再起動する手順 (「選択肢 1」を参照) と同じです。|
 
 
 #### StorSimple 用 Windows PowerShell でコントローラーを再起動またはシャットダウンするには
 StorSimple デバイスの単一のコントローラーを管理ポータルからシャットダウンまたは再起動するには、次の手順を実行します。
 
 
-1. リモート コンピューターからシリアル コンソールまたは Telnet セッションを使ってデバイスにアクセスします。「[PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)」の手順に従い、コントローラー 0 またはコントローラー 1 に接続します。
+1. リモート コンピューターからシリアル コンソールまたは Telnet セッションを使ってデバイスにアクセスします。「[PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)」の手順に従い、コントローラー 0 またはコントローラー 1 に接続します。
 
 1. シリアル コンソール メニューで、オプション 1 を選択し、**フル アクセスでログイン**します。
 
@@ -134,7 +134,7 @@ StorSimple デバイスの単一のコントローラーを管理ポータルか
 
 <!--#### To shut down a StorSimple device in Windows PowerShell for StorSimple
 
-1. Connect to the serial console of the StorSimple device by following the steps in [Use PuTTY to connect to the device serial console](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+1. Connect to the serial console of the StorSimple device by following the steps in [Use PuTTY to connect to the device serial console](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-serial-console).
 
 1. In the serial console menu, verify from the banner message that the controller you are connected to is the passive controller. If you are connected to the active controller, disconnect from this controller and connect to the other controller.
 
@@ -172,7 +172,7 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 	
 	> - 前掲のファクトリ リセット コマンドレットで、"ファームウェア バージョンが一致しないため、ファクトリ リセットを続行できません" というファームウェア不一致エラーが報告された場合に、ファームウェア バージョン チェックをスキップするには、`Reset-HcsFactoryDefault –SkipFirmwareVersionCheck` コマンドを使用してください。Microsoft Update または修正プログラムの機構を使って更新済みのデバイスに対してファクトリ リセットを実行するときは、ファームウェア チェックを (`–SkipFirmwareCheck` オプションを使用して) スキップする必要があります。
 	
-	> - このコマンドレットの使用方法の詳細については、[StorSimple 用 Windows PowerShell のコマンドレット リファレンス](https://technet.microsoft.com/ja-jp/library/dn688168.aspx)を参照してください。
+	> - このコマンドレットの使用方法の詳細については、[StorSimple 用 Windows PowerShell のコマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)をご覧ください。
 
 
 ## デバイス コントローラーの管理に関する FAQ
@@ -207,7 +207,7 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 **Q.** コントローラーが再起動されたかどうかやシャットダウンされたかどうかは、どのようにして確認できるでしょうか。
 
-**A.** コントローラーのステータスは、[メンテナンス] ページで確認できます。コントローラーが再起動またはシャットダウンされたことは、コントローラーのステータスで把握できます。コントローラーが再起動またはシャットダウンされた場合、[アラート] ページにも情報案内アラートが表示されます。また操作ログにも、コントローラーの再起動操作とシャットダウン操作が記録されます。操作ログの詳細については、「[操作ログの表示](storsimple-service-dashboard.md#view-the-operations-logs)」を参照してください。
+**A.** コントローラーのステータスは、[メンテナンス] ページで確認できます。コントローラーが再起動またはシャットダウンされたことは、コントローラーのステータスで把握できます。コントローラーが再起動またはシャットダウンされた場合、[アラート] ページにも情報案内アラートが表示されます。また操作ログにも、コントローラーの再起動操作とシャットダウン操作が記録されます。操作ログの詳細については、「[操作ログの表示](storsimple-service-dashboard.md#view-the-operations-logs)」をご覧ください。
 
 **Q.** コントローラーのフェールオーバーは I/O に影響しますか。
 
@@ -215,10 +215,10 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 **Q.** シャットダウンして運用から除外したコントローラーを再び運用状態に戻すにはどうすればよいでしょうか。
 
-**A.** コントローラーを運用状態に戻すには、「[ハードウェア コンポーネントの交換ガイド](https://msdn.microsoft.com/library/azure/dn757736.aspx)」に従って対象のコントローラーをシャーシに取り付ける必要があります。
+**A.** コントローラーを運用状態に戻すには、「[StorSimple デバイスのコントローラー モジュールを交換する](storsimple-controller-replacement.md)」に従って対象のコントローラーをシャーシに取り付ける必要があります。
 
 ## 次のステップ
 
-このチュートリアルで紹介した手順では解決できないような問題が StorSimple デバイス コントローラーで発生した場合は、[Microsoft サポートにお問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)ください。
+このチュートリアルで紹介した手順では解決できないような問題が StorSimple デバイス コントローラーで発生した場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

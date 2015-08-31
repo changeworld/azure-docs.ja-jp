@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.date="08/13/2015" 
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
@@ -55,12 +55,9 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 ## <a name="analyze"></a>取得されるイベント
 
-エクスポートされるデータは、アプリケーションから受信した未加工のテレメトリです。ただし、次の例外があります。
+エクスポートされたデータは、お客様のアプリケーションから受け取った未加工のテレメトリですが、クライアントの IP アドレスから計算された位置データが追加されます。
 
-* 現在、Web テストの結果は含まれていません。 
-* クライアントの IP アドレスから計算された位置データが追加されます。  
-
-計算メトリックは含まれません。たとえば、平均 CPU 使用率はエクスポートされませんが、平均の計算に使用された未加工のテレメトリはエクスポートされます。
+他の計算メトリックは含まれません。たとえば、平均 CPU 使用率はエクスポートされませんが、平均の計算に使用された未加工のテレメトリはエクスポートされます。
 
 ## <a name="get"></a> データの確認
 
@@ -85,7 +82,7 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 	"receiveRequest": {"value": 30000.0},
 	"clientProcess": {"value": 17970000.0}
 
-
+[データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](app-insights-export-data-model.md)
 
 ## データの処理
 
@@ -185,6 +182,13 @@ Blob ストレージからデータベースにデータを移動する 2 つの
 
     はい。[無効] をクリックします。
 
+## コード サンプル
+
+* [Power BI への Application Insights のストリーム](app-insights-export-power-bi.md)
+* [worker ロールを使用してエクスポートされた JSON を解析する][exportcode]
+* [Stream Analytics を使用して SQL にエクスポートする][exportasa]
+
+* [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](app-insights-export-data-model.md)
 
 <!--Link references-->
 
@@ -194,4 +198,4 @@ Blob ストレージからデータベースにデータを移動する 2 つの
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

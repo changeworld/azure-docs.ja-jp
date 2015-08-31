@@ -13,12 +13,16 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="05/21/2015" 
+    ms.date="08/14/2015" 
     ms.author="sidneyh"/>
 
 # Federations の移行 
 
-Azure SQL Database Federations 機能は、Web と Business エディションと共に、2015 年 9 月にサービスが終了します。有効期限が過ぎると Federations 機能を使用するアプリケーションは実行できなくなります。移行を成功させるには、計画と実施に十分な時間を充てられるようにすぐに作業を始めることを強くお勧めします。このドキュメントでは、Federations Migration Utility のコンテキスト、例、および概要について説明し、現在の Federations アプリケーションを、シャーディング用の [エラスティック データベース クライアント ライブラリ](http://go.microsoft.com/?linkid=9862592) API にシームレスに移行する方法を紹介します。このドキュメントの目的は、データを移動せずに Fedarations アプリケーションを移行するための推奨手順を紹介することです。
+Azure SQL Database Federations 機能は、Web と Business エディションと共に、2015 年 9 月にサービスが終了します。有効期限が過ぎると Federations 機能を使用するアプリケーションは実行できなくなります。移行を成功させるには、計画と実施に十分な時間を充てられるようにすぐに作業を始めることを強くお勧めします。
+
+アプリケーションにフェデレーションなしで動作する準備ができていない場合は、[こちら](https://support.microsoft.com/kb/3087180)で説明する手順を使用して、Microsoft サポートにお問い合わせください。
+
+このドキュメントでは、Federations Migration Utility のコンテキスト、例、および概要について説明し、現在の Federations アプリケーションを、シャーディング用の [エラスティック データベース クライアント ライブラリ](http://go.microsoft.com/?linkid=9862592) API にシームレスに移行する方法を紹介します。このドキュメントの目的は、データを移動せずに Fedarations アプリケーションを移行するための推奨手順を紹介することです。
 
 既存の Federations アプリケーションを エラスティック データベース ツールを使用するアプリケーションに移行するには、次の 3 つの手順を実行します。
 
@@ -129,6 +133,9 @@ Federations 移行ユーティリティが提供する機能は次のとおり�
 
 * フェデレーション メンバーに対して SWITCH OUT ステートメントを実行すると、結果のデータベースは、すべての Azure SQL データベース機能 (新しいエディション、バックアップ、PITR、監査など) を利用できるようになります。
 
+##移行に時間がかかる場合 
+アプリケーションにフェデレーションなしで動作する準備ができていない場合は、[こちら](https://support.microsoft.com/kb/3087180)で説明する手順を使用して、Microsoft サポートにお問い合わせください。
+
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
 <!--Anchors-->
@@ -143,4 +150,4 @@ Federations 移行ユーティリティが提供する機能は次のとおり�
 [3]: ./media/sql-database-elastic-scale-federation-migration/migrate-3.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

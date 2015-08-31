@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Xamarin Android アプリケーション用 Mobile Services の使用 | Microsoft Azure" 
-	description="Azure Mobile Services と Notification Hubs を使用して Xamarin Android アプリにプッシュ通知を送信する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="xamarin" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Xamarin Android アプリケーション用 Mobile Services の使用 | Microsoft Azure"
+	description="Azure Mobile Services と Notification Hubs を使用して Xamarin Android アプリにプッシュ通知を送信する方法について説明します。"
+	services="mobile-services"
+	documentationCenter="xamarin"
+	authors="ggailey777"
+	manager="dwrede"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-android" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/09/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
@@ -39,7 +39,7 @@
 
 ##<a id="register"></a>Google Cloud Messaging を有効にする
 
-[AZURE.INCLUDE [GCM を有効にする](../../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[AZURE.INCLUDE [GCM を有効にする](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
 ##<a id="configure"></a>プッシュ要求を送信するように Mobile Services を構成する
 
@@ -75,4 +75,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Xamarin.Android]: http://xamarin.com/download/
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

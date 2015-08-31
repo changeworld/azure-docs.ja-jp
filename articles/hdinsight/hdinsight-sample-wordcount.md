@@ -5,6 +5,7 @@
 	manager="paulettm"
 	services="hdinsight"
 	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"/>
 
 <tags
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/09/2015" 
+	ms.date="07/09/2015"
 	ms.author="jgao"/>
 
 #HDInsight の Hadoop クラスターで、Java で記述された MapReduce ワード カウント サンプルを実行します。
@@ -216,6 +217,5 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 [powershell-install-configure]: ../install-configure-powershell.md
 
 [image-hdi-sample-wordcount-output]: ./media/hdinsight-sample-wordcount/HDI.Sample.WordCount.Output.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

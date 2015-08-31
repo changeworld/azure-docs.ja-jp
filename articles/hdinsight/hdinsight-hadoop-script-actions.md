@@ -1,22 +1,23 @@
-<properties 
-	pageTitle="HDInsight での Script Action 開発 | Microsoft Azure" 
-	description="Script Action を使用して Hadoop クラスターをカスタマイズする方法について説明します。" 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="mumian" 
-	manager="paulettm" 
+<properties
+	pageTitle="HDInsight での Script Action 開発 | Microsoft Azure"
+	description="Script Action を使用して Hadoop クラスターをカスタマイズする方法について説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	tags="azure-portal"
+	authors="mumian"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/16/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
-# HDInsight 用の Script Action スクリプトの開発 
+# HDInsight 用の Script Action スクリプトの開発
 
 Script Action は、Hadoop クラスターで実行される追加のソフトウェアのインストールや、クラスターにインストールされているアプリケーションの構成を変更するために使用することができます。Script Action は、HDInsight クラスターがデプロイされる際にクラスター ノードで実行されるスクリプトであり、クラスター内のノードが HDInsight 構成を完了すると実行されます。Script Action はシステム管理者アカウント権限で実行され、完全なアクセス権をクラスター ノードに提供します。各クラスターには、指定された順序で実行される Script Action の一覧が提供されます。
 
@@ -34,7 +35,7 @@ HDInsight は、HDInsight クラスターで追加のコンポーネントをイ
 **Solr のインストール** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1「[HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)」をご覧ください。
 \- **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1「[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」をご覧ください。
 
-Script Action は、Azure ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ][hdinsight-cluster-customize]」に関するページをご覧ください。
+Script Action は、Azure プレビュー ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ][hdinsight-cluster-customize]」に関するページをご覧ください。
 
 > [AZURE.NOTE]サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
 
@@ -48,11 +49,11 @@ Script Action は、Azure ポータル、Azure PowerShell から、または HDI
 	    [parameter(Mandatory)][string] $Value,
 	    [parameter()][string] $Description
 	)
-	
+
 	if (!$Description) {
 	    $Description = ""
 	}
-	
+
 	$hdiConfigFiles = @{
 	    "hive-site.xml" = "$env:HIVE_HOME\conf\hive-site.xml";
 	    "core-site.xml" = "$env:HADOOP_HOME\etc\hadoop\core-site.xml";
@@ -60,16 +61,16 @@ Script Action は、Azure ポータル、Azure PowerShell から、または HDI
 	    "mapred-site.xml" = "$env:HADOOP_HOME\etc\hadoop\mapred-site.xml";
 	    "yarn-site.xml" = "$env:HADOOP_HOME\etc\hadoop\yarn-site.xml"
 	}
-	
+
 	if (!($hdiConfigFiles[$ConfigFileName])) {
 	    Write-HDILog "Unable to configure $ConfigFileName because it is not part of the HDI configuration files."
 	    return
 	}
-	
+
 	[xml]$configFile = Get-Content $hdiConfigFiles[$ConfigFileName]
-	
+
 	$existingproperty = $configFile.configuration.property | where {$_.Name -eq $Name}
-	    
+
 	if ($existingproperty) {
 	    $existingproperty.Value = $Value
 	    $existingproperty.Description = $Description
@@ -80,12 +81,12 @@ Script Action は、Azure ポータル、Azure PowerShell から、または HDI
 	    $newproperty.Description = $Description
 	    $configFile.configuration.AppendChild($newproperty)
 	}
-	
+
 	$configFile.Save($hdiConfigFiles[$ConfigFileName])
-	
+
 	Write-HDILog "$configFileName has been configured."
 
-スクリプト ファイルのコピーは、[https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1) から入手できます。Azure ポータルからスクリプトを呼び出すと、次のパラメーターを使用することができます。
+スクリプト ファイルのコピーは、[https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1) から入手できます。プレビュー ポータルからスクリプトを呼び出すと、次のパラメーターを使用することができます。
 
 	hive-site.xml hive.metastore.client.socket.timeout 90
 
@@ -126,7 +127,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 	クラスター ノードにインストールするカスタム コンポーネントは、Hadoop 分散ファイル システム (HDFS) ストレージを使用するように既定で構成されている場合があります。代わりに Azure BLOB ストレージを使用するには、構成を変更する必要があります。クラスターの再イメージ化の際に、HDFS ファイル システムはフォーマットされ、保管されているすべてのデータが失われます。代わりに Azure BLOB ストレージを使用すると、データは確実に保持されます。
 
-## カスタム スクリプトのためのヘルパー メソッド 
+## カスタム スクリプトのためのヘルパー メソッド
 
 Script Action は、カスタム スクリプトの書き込み中に使用できる次のヘルパー メソッドを提供しています。
 
@@ -215,7 +216,7 @@ Script Action は、カスタム スクリプトの書き込み中に使用で�
 **HDInsight Emulator のインストール**: Script Actions をローカルで実行するには、HDInsight Emulator をインストールしておく必要があります。インストールする方法の手順については、「[HDInsight Emulator の概要](../hdinsight-get-started-emulator/)」をご覧ください。
 
 **Azure PowerShell の実行ポリシーの設定**: Azure PowerShell を開き、(管理者として) 次のコマンドを実行して実行ポリシーを *LocalMachine* と *Unrestricted* に設定します。
- 
+
 	Set-ExecutionPolicy Unrestricted –Scope LocalMachine
 
 スクリプトが署名されていないため、このポリシーを無制限にする必要があります。
@@ -243,44 +244,44 @@ Script Action は、カスタム スクリプトの書き込み中に使用で�
 
 カスタム スクリプトの STDOUT と STDERR の両方を表示するために、クラスター ノードにリモート接続することもできます。各ノード上のログは、そのノード専用で、**C:\\HDInsightLogs\\DeploymentAgent.log** に記録されます。これらのログ ファイルには、カスタム スクリプトからのすべての出力が記録されます。Spark Script Action のログ スニペットの例は次のようになります。
 
-	Microsoft.Hadoop.Deployment.Engine.CustomPowershellScriptCommand; Details : BEGIN: Invoking powershell script https://configactions.blob.core.windows.net/sparkconfigactions/spark-installer.ps1.; 
-	Version : 2.1.0.0; 
-	ActivityId : 739e61f5-aa22-4254-aafc-9faf56fc2692; 
-	AzureVMName : HEADNODE0; 
-	IsException : False; 
-	ExceptionType : ; 
-	ExceptionMessage : ; 
-	InnerExceptionType : ; 
-	InnerExceptionMessage : ; 
+	Microsoft.Hadoop.Deployment.Engine.CustomPowershellScriptCommand; Details : BEGIN: Invoking powershell script https://configactions.blob.core.windows.net/sparkconfigactions/spark-installer.ps1.;
+	Version : 2.1.0.0;
+	ActivityId : 739e61f5-aa22-4254-aafc-9faf56fc2692;
+	AzureVMName : HEADNODE0;
+	IsException : False;
+	ExceptionType : ;
+	ExceptionMessage : ;
+	InnerExceptionType : ;
+	InnerExceptionMessage : ;
 	Exception : ;
 	...
 
 	Starting Spark installation at: 09/04/2014 21:46:02 Done with Spark installation at: 09/04/2014 21:46:38;
-	
-	Version : 2.1.0.0; 
-	ActivityId : 739e61f5-aa22-4254-aafc-9faf56fc2692; 
-	AzureVMName : HEADNODE0; 
-	IsException : False; 
-	ExceptionType : ; 
-	ExceptionMessage : ; 
-	InnerExceptionType : ; 
-	InnerExceptionMessage : ; 
+
+	Version : 2.1.0.0;
+	ActivityId : 739e61f5-aa22-4254-aafc-9faf56fc2692;
+	AzureVMName : HEADNODE0;
+	IsException : False;
+	ExceptionType : ;
+	ExceptionMessage : ;
+	InnerExceptionType : ;
+	InnerExceptionMessage : ;
 	Exception : ;
 	...
-	
-	Microsoft.Hadoop.Deployment.Engine.CustomPowershellScriptCommand; 
-	Details : END: Invoking powershell script https://configactions.blob.core.windows.net/sparkconfigactions/spark-installer.ps1.; 
-	Version : 2.1.0.0; 
-	ActivityId : 739e61f5-aa22-4254-aafc-9faf56fc2692; 
-	AzureVMName : HEADNODE0; 
-	IsException : False; 
-	ExceptionType : ; 
-	ExceptionMessage : ; 
-	InnerExceptionType : ; 
-	InnerExceptionMessage : ; 
+
+	Microsoft.Hadoop.Deployment.Engine.CustomPowershellScriptCommand;
+	Details : END: Invoking powershell script https://configactions.blob.core.windows.net/sparkconfigactions/spark-installer.ps1.;
+	Version : 2.1.0.0;
+	ActivityId : 739e61f5-aa22-4254-aafc-9faf56fc2692;
+	AzureVMName : HEADNODE0;
+	IsException : False;
+	ExceptionType : ;
+	ExceptionMessage : ;
+	InnerExceptionType : ;
+	InnerExceptionMessage : ;
 	Exception : ;
 
- 
+
 このログから、HEADNODE0 という名前の VM で Spark Script Action が実行され、実行中に例外がスローされなかったことがわかります。
 
 実行エラーが発生すると、それを記述する出力もこのログ ファイルに含まれます。これらのログで提供される情報は、発生する可能性のあるスクリプトの問題をデバッグするときに役立ちます。
@@ -288,7 +289,7 @@ Script Action は、カスタム スクリプトの書き込み中に使用で�
 
 ## 関連項目
 
-- [Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize] 
+- [Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]
 - [HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]
 - [HDInsight クラスターに R をインストールして使用する][hdinsight-r-scripts]
 - [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)
@@ -302,6 +303,5 @@ Script Action は、カスタム スクリプトの書き込み中に使用で�
 
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

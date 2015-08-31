@@ -1,19 +1,20 @@
-<properties 
-	pageTitle="HDInsight での Hadoop クラスターの可用性 | Microsoft Azure" 
-	description="HDInsight は追加のヘッド ノードを使用して可用性と信頼性の高いクラスターをデプロイします。" 
-	services="hdinsight" 
-	editor="cgronlun" 
-	manager="paulettm" 
-	authors="mumian" 
+<properties
+	pageTitle="HDInsight での Hadoop クラスターの可用性 | Microsoft Azure"
+	description="HDInsight は追加のヘッド ノードを使用して可用性と信頼性の高いクラスターをデプロイします。"
+	services="hdinsight"
+	tags="azure-portal"
+	editor="cgronlun"
+	manager="paulettm"
+	authors="mumian"
 	documentationCenter=""/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="07/10/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
 
@@ -37,7 +38,7 @@ HDInsight を使用すると、さまざまなクラスターの種類を、異�
 	- Nimbus ノード (2 つのノード)
 	- Supervisor サーバー (1 つ以上のノード)
 	- Zookeeper ノード (3 つのノード)
- 
+
 通常 Hadoop クラスターの標準的な実装には、ヘッド ノードは 1 つしかありません。HDInsight は、セカンダリのヘッド ノード/ヘッド サーバー/Nimbus ノードを追加してこの単一障害点を削除して、ワークロードの管理に必要なサービスの可用性と信頼性を高めます。これらのヘッド ノード/ヘッド サーバー/Nimbus ノードは、ワーカー ノードの障害を円滑に管理するよう設計されていますが、ヘッド ノードで実行中のマスター サービスが停止すると、クラスターが動作を停止する原因になることがあります。
 
 
@@ -49,7 +50,7 @@ HDInsight を使用すると、さまざまなクラスターの種類を、異�
 
 
 ## アクティブなヘッド ノードのサービスの状態を確認する
-アクティブ ヘッド ノードを特定し、そのヘッド ノードで実行中のサービスの状態をチェックするには、リモート デスクトップ プロトコル (RDP) を使用して Hadoop クラスターに接続する必要があります。RDP の手順については、[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md/#connect-to-hdinsight-clusters-by-using-rdp)に関するページを参照してください。クラスターにリモート接続したら、デスクトップにある **[Hadoop サービスの可用性の状態]** アイコンをダブルクリックして、Namenode、Jobtracker、Templeton、Oozieservice、Metastore、Hiveserver2 の各サービスが実行されているヘッド ノードについて、状態を取得します。HDI 3.0 の場合、対象のサービスは、Namenode、Resource Manager、History Server、Templeton、Oozieservice、Metastore、Hiveserver2 になります。
+アクティブ ヘッド ノードを特定し、そのヘッド ノードで実行中のサービスの状態をチェックするには、リモート デスクトップ プロトコル (RDP) を使用して Hadoop クラスターに接続する必要があります。RDP の手順については、「[Azure プレビュー ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md#connect-to-hdinsight-clusters-by-using-rdp)」を参照してください。クラスターにリモート接続したら、デスクトップにある **[Hadoop サービスの可用性の状態]** アイコンをダブルクリックして、Namenode、Jobtracker、Templeton、Oozieservice、Metastore、Hiveserver2 の各サービスが実行されているヘッド ノードについて、状態を取得します。HDI 3.0 の場合、対象のサービスは、Namenode、Resource Manager、History Server、Templeton、Oozieservice、Metastore、Hiveserver2 になります。
 
 ![](./media/hdinsight-high-availability/Hadoop.Service.Availability.Status.png)
 
@@ -95,14 +96,6 @@ SDK でも、同じような方法を使用します。SDK を使用したクラ
 
 - [ZooKeeper](http://zookeeper.apache.org/)
 - [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)
-- [HDInsight .NET SDK の使用](hdinsight-provision-clusters.md#sdk) 
+- [HDInsight .NET SDK の使用](hdinsight-provision-clusters.md#sdk)
 
-
-
-
-
-
-
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

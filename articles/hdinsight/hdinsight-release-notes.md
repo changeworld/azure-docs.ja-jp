@@ -5,7 +5,8 @@
 	documentationCenter=""
 	editor="cgronlun"
 	manager="paulettm"
-	authors="nitinme"/>
+	authors="nitinme"
+	tags="azure-portal"/>
 
 <tags
 	ms.service="hdinsight"
@@ -1331,4 +1332,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

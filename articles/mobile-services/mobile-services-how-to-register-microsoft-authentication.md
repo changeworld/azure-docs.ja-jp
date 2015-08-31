@@ -56,7 +56,11 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 
 6. 新しいアプリケーションの Windows デベロッパー センター ページに戻り、**[サービス]**、**[プッシュ通知]** の順にクリックします。
 
+   	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-edit-app.png)
+
 7. **[プッシュ通知]** ページで、**[Windows プッシュ通知サービス (WNS) と Microsoft Azure Mobile Services]** の下にある **[ライブ サービス サイト]** をクリックします。
+
+	![](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-edit2-app.png)
 
 これにより、アプリの Microsoft アカウント ページが表示されます。
 
@@ -103,4 +107,4 @@ Windows ストア アプリを最初に Windows デベロッパー センター�
 [Azure 管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="発行設定ファイルを Visual Studio 2013 にインポートする | Microsoft Azure" 
-	description="Visual Studio 2013 で Azure Mobile Services アプリケーションのサブスクリプション発行設定ファイルをインポートする方法について説明します。" 
-	documentationCenter="" 
-	services="mobile-services" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="発行設定ファイルを Visual Studio 2013 にインポートする | Microsoft Azure"
+	description="Visual Studio 2013 で Azure Mobile Services アプリケーションのサブスクリプション発行設定ファイルをインポートする方法について説明します。"
+	documentationCenter=""
+	services="mobile-services"
+	manager="dwrede"
+	editor=""
 	authors="ggailey777"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="04/13/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="glenga"/>
 
 # サブスクリプション発行設定ファイルを Visual Studio 2013 にインポートする
@@ -22,7 +22,7 @@
 
 >[AZURE.NOTE]Visual Studio 2013 Update 2 から、発行設定ファイルを使用する必要はなくなりました。Visual Studio は、ユーザーが入力した資格情報を使用して直接 Azure 似接続できます。
 
-1. Visual Studio 2013 で、ソリューション エクスプローラーを開き、プロジェクトを右クリックして、**[追加]**、**[接続済みサービス]** の順にクリックします。 
+1. Visual Studio 2013 で、ソリューション エクスプローラーを開き、プロジェクトを右クリックして、**[追加]**、**[接続済みサービス]** の順にクリックします。
 
 	![add connected service](./media/mobile-services-windows-how-to-import-publishsettings/mobile-add-connected-service.png)
 
@@ -60,6 +60,5 @@
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-users-js/
 
 [Azure Management Portal]: https://manage.windowsazure.com/
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

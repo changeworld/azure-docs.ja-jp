@@ -12,16 +12,16 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="08/19/2015" 
 	ms.author="awills"/>
  
 # Application Insights の .NET トレース ログを調べる  
 
 ASP.NET アプリケーションで NLog、log4Net、System.Diagnostics.Trace を診断追跡に使用している場合、ログを [Visual Studio Application Insights][start] に送信し、そこで調査したり、検索したりできます。ログはアプリケーションから送信される他の利用統計情報と結合されます。それにより、互いのユーザー要求にサービスを提供することに関連付けられているトレースを特定し、それらを他のイベントや例外レポートに相互に関連付けることができます。
 
-Application Insights SDK を使用し、ログ トレース、イベント、例外レポートを記述することもできます。
+> [AZURE.NOTE]ログ キャプチャ モジュールは必要ですか。 ログ キャプチャ モジュールは、サード パーティ製のロガーの場合は便利なアダプターですが、NLog、log4Net、または System.Diagnostics.Trace をまだ使用していない場合は、[Application Insights TrackTrace()](app-insights-api-custom-events-metrics.md#track-trace) を直接呼び出すことを検討してください。
 
-[プロジェクトに Application Insights をまだ設定していない場合][start]、今すぐ設定します。
+[プロジェクトに Application Insights をまだ設定していない場合][start]、今すぐ設定します。プロジェクトには、ファイル `ApplicationInsights.config` と、NuGet パッケージ `Microsoft.ApplicationInsights.Web` が必要です。
 
 
 ##  ログ記録フレームワークにアダプターをインストールする
@@ -30,7 +30,7 @@ Application Insights SDK を使用し、ログ トレース、イベント、例
 
 1. log4Net または NLog を使用する場合は、プロジェクト内にインストールします。 
 2. ソリューション エクスプローラーでプロジェクトを右クリックし、[**NuGet パッケージの管理**] を選択します。
-3. [オンライン]、[すべて]、**[プレリリースを含める]** の順に選択し、"Microsoft.ApplicationInsights" を検索します。
+3. Search for "Application Insights"
 
     ![適切なパッケージのプレリリース バージョンを入手する](./media/app-insights-asp-net-trace-logs/appinsights-36nuget.png)
 
@@ -124,4 +124,4 @@ Application Insights をインストールしないでログ アダプターの 
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

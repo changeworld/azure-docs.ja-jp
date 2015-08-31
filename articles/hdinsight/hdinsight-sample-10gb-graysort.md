@@ -4,6 +4,7 @@
 	description="Azure PowerShell を使用して HDInsight で Hadoop 上の非常に大量のデータ (通常 100 TB 以上) に汎用 Graysort を実行する方法について説明します。"
 	editor="cgronlun"
 	manager="paulettm"
+	tags="azure-portal"
 	services="hdinsight"
 	documentationCenter=""
 	authors="mumian"/>
@@ -433,4 +434,4 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -54,13 +54,13 @@
 
 次の図では、作成とデプロイの手順の内容を示しています。
 
-![作成](./media/web-sites-dotnet-get-started/Create_App.png)
+![作成およびデプロイ](./media/web-sites-dotnet-get-started/Create_App.png)
 
 1. Visual Studio 2015 または Visual Studio 2013 を開きます。 
 
 	Visual Studio 2013 を使用する場合は、画面がスクリーンショットと若干異なる可能性がありますが、基本的に手順は同じです。
 
-2. **[ファイル]** メニューの **[新規作成]、[プロジェクト]** の順にクリックします。
+2. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 
 3. **[新しいプロジェクト]** ダイアログ ボックスで、**[C#]** > **[Web]** > **[ASP.NET Web アプリケーション]** の順にクリックします。必要に応じて、**[Visual Basic]** を選択することもできます。
 
@@ -218,7 +218,7 @@
 
 	![変更された Web アプリがデプロイされました](./media/web-sites-dotnet-get-started/deployedandazure.png)
 
-**ヒント:** 簡易デプロイの場合も、**[Web の 1 クリック発行]** ツール バーを有効にできます。**[表示]、[ツール バー]** の順にクリックし、**[Web の 1 クリック発行]** を選択します。このツール バーによって、プロファイルを選択し、ボタンをクリックして発行するか、またはボタンをクリックして **Web の発行**ウィザードを開くことができます。
+**ヒント:** 簡易デプロイメントの場合も、**[Web の 1 クリック発行]** ツール バーを有効にできます。**[表示]、[ツール バー]** の順にクリックし、**[Web の 1 クリック発行]** を選択します。このツール バーによって、プロファイルを選択し、ボタンをクリックして発行するか、またはボタンをクリックして **Web の発行**ウィザードを開くことができます。
 
 ![Web One Click Publish Toolbar](./media/web-sites-dotnet-get-started/weboneclickpublish.png)
 
@@ -256,7 +256,7 @@
 
 * Web プロジェクトをデプロイする他の方法
 
-	このチュートリアルでは、Web アプリを作成して、オールインワン操作ですべてをデプロイする最も簡単な方法を説明しました。Visual Studio を使用した、または[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)からの[デプロイの自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)による他のデプロイ方法の概要については、[Azure Web アプリをデプロイする方法](web-sites-deploy.md)に関するページを参照してください。
+	このチュートリアルでは、Web アプリを作成して、オールインワン操作ですべてをデプロイする最も簡単な方法を説明しました。Visual Studio を使用した、または[ソース管理システム](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)からの[デプロイメントの自動化](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)による他のデプロイ方法の概要については、[Azure Web アプリをデプロイする方法](web-sites-deploy.md)に関するページを参照してください。
 
 	Visual Studio は、デプロイを自動化する Windows PowerShell スクリプトも生成します。詳細については、「[Automate Everything (Building Real-World Cloud Apps with Azure) (すべてを自動化 - Azure での実際のクラウド アプリケーションのビルド)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)」を参照してください。
 
@@ -297,8 +297,8 @@
 
 ## 変更内容
 
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

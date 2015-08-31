@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="08/14/2015" 
 	ms.author="juliako"/>
 
 #REST API を使用してビデオ オン デマンド (VoD) の配信を開始する 
@@ -40,7 +40,6 @@ REST API を使用して Media Services での開発を始めるには、次の�
 1.  新しい資産を作成し、REST API を使用してビデオのファイルをアップロードする
 1.  REST API でストリーミング ユニットを構成する
 2.  REST API で一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
-1.  REST API でエンコードされた資産の配信ポリシーの構成
 1.  資産を発行して REST API によるストリーミングとプログレッシブ ダウンロード用 URL を取得する 
 1.  コンテンツの再生 
 
@@ -53,9 +52,9 @@ REST API を使用して Media Services での開発を始めるには、次の�
 
 2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
 
-3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンだけが表示されます。
+3. **[リージョン]** ボックスで、メディア サービス アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンだけが表示されます。
 
-4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
+4. **[ストレージ アカウント]** ボックスで、メディア サービス アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
 
 5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
@@ -154,7 +153,7 @@ Media Services アカウントの AccountKey は、アクセス トークン要�
 
 Media Services のルート URI は https://media.windows.net/ です。まず、この URI に接続して、301 リダイレクトが返された場合は続けて新しい URI にコールする必要があります。加えて、要求に auto-redirect/follow ロジックを使うことはできません。HTTP 動詞や応答本文はその新しい URI に転送されません。
 
-資産ファイルをアップロードしたりダウンロードしたりするルート URI は https://yourstorageaccount.blob.core.windows.net/ です。ストレージ アカウント名には、Media Services アカウントで設定したものと同じものが使われます。
+アセット ファイルをアップロードしたりダウンロードしたりするルート URI は https://yourstorageaccount.blob.core.windows.net/ です。ストレージ アカウント名には、Media Services アカウントで設定したものと同じものが使われます。
 
 次の例は、Media Services ルート URI (https://media.windows.net/)) への HTTP 要求を示します。要求に対して 301 リダイレクトが返されています。その後、新しい URI (https://wamsbayclus001rest-hs.cloudapp.net/api/)) に続けて要求を行っています。
 
@@ -214,11 +213,11 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 
 >[AZURE.NOTE]このチュートリアルではこれ以降、新しい URI を使用します。
 
-## <a id="upload"></a>新しい資産を作成し、REST API を使用してビデオのファイルをアップロードする
+## <a id="upload"></a>新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
 
 Media Services で、デジタル ファイルを資産にアップロードします。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
 
-資産作成時に指定する必要がある値の 1 つに、資産作成オプションがあります。**Options **プロパティは、資産の作成に使用できる暗号化オプションを示す列挙値です。有効な値は以下の一覧の値のいずれかですが、この一覧の値を組み合わせて使用することはできません。
+資産作成時に指定する必要がある値の 1 つに、資産作成オプションがあります。**Options **プロパティは、アセットの作成に使用できる暗号化オプションを示す列挙値です。有効な値は以下の一覧の値のいずれかですが、この一覧の値を組み合わせて使用することはできません。
 
  
 - **None** = **0** - 暗号化は使用されません。このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。 
@@ -554,7 +553,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
 
->[AZURE.NOTE]価格の詳細については、「[Media Services の価格](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+>[AZURE.NOTE]料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
 ストリーミング予約ユニットの数を変更するには、以下の手順を実行します。
 	
@@ -661,7 +660,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ## <a id="encode"></a>一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードする
 
-Media Services に取り込んだ資産には、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。これらのアクティビティはジョブと呼ばれ、各[ジョブ](http://msdn.microsoft.com/library/azure/hh974289.aspx)は、資産ファイルの実際の作業を実行するアトミック タスクで構成されます。
+Media Services に取り込んだ資産には、メディアのエンコード、再パッケージ化、透かしの追加などをクライアントへの配信前に適用できます。高いパフォーマンスと可用性を確保するために、これらの作業は、複数のバックグラウンド ロール インスタンスに対してスケジューリングされて実行されます。これらのアクティビティはジョブと呼ばれ、各[ジョブ](http://msdn.microsoft.com/library/azure/hh974289.aspx)は、アセット ファイルの実際の作業を実行するアトミック タスクで構成されます。
 
 冒頭で述べたように、Azure Media Services の代表的な用途の 1 つは、クライアントに対するアダプティブ ビットレート ストリーミング配信です。Media Services では、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) のいずれかの形式に一連のアダプティブ ビットレート MP4 ファイルを動的にパッケージ化することができます。
 
@@ -908,7 +907,7 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
 
 ### 出力資産を取得する 
 
-次のセクションでは、ジョブの出力資産 (エンコード済み資産) の配信ポリシーを構成します。次のコードは、出力資産 ID を要求する方法を示しています。
+次のコードは、出力資産 ID を要求する方法を示しています。
 
 
 **HTTP 要求**
@@ -957,87 +956,8 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
 	}
 
 
-## <a id="configure_delivery_method"></a>エンコードされた資産の配信ポリシーの構成
 
-Media Services のコンテンツを配信するための作業の一環として、資産の配信ポリシーを構成します。たとえば、資産の配信にどのようなプロトコルを使用できるか (MPEG DASH、HLS、HDS、スムーズ ストリーミング、またはそのすべてなど) や、資産を動的に暗号化するかどうか、またどのように暗号化するか (エンベロープ、Common Encryption など) は、資産配信ポリシーで構成することになります。
-
-次の **AssetDeliveryPolicies** HTTP 要求では、動的暗号化を適用しないように指定し (AssetDeliveryPolicyType は、None = 0、Blocked = 1、NoDynamicEncryption = 2、DynamicEnvelopeEncryption = 3、DynamicCommonEncryption = 4 のいずれかの値にすることができます)、MPEG DASH、HLS、Smooth Streaming のいずれかのプロトコルでストリームを配信します (AssetDeliveryProtocol は、None = 0、SmoothStreaming = 1、Dash = 2、HLS = 4、Hds = 8、All = 65535 の値の組み合わせにすることができます)。
-
-
-### AssetDeliveryPolicies を作成する
-
-
-**HTTP 要求**
-		
-	POST https://wamsbayclus001rest-hs.cloudapp.net/api/AssetDeliveryPolicies HTTP/1.1
-	Content-Type: application/json
-	DataServiceVersion: 1.0;NetFx
-	MaxDataServiceVersion: 3.0;NetFx
-	Accept: application/json
-	Accept-Charset: UTF-8
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421679198&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=aUvBcDwRAFk1JLxceWu%2bf9dVrCZM7PrTRbZd0TtoKvU%3d
-	x-ms-version: 2.11
-	Host: wamsbayclus001rest-hs.cloudapp.net
-	Content-Length: 83
-	
-	{"Name":"Clear Policy", "AssetDeliveryPolicyType":"2","AssetDeliveryProtocol":"7"} 
-
-
-**HTTP 応答**
-	
-	HTTP/1.1 201 Created
-	Cache-Control: no-cache
-	Content-Length: 361
-	Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-	Location: https://wamsbayclus001rest-hs.cloudapp.net/api/AssetDeliveryPolicies('nb%3Aadpid%3AUUID%3Aef97ae36-b898-4b8a-b427-7819ee726276')
-	Server: Microsoft-IIS/8.5
-	request-id: 7391a4b2-995d-4fc5-aca5-a398786ea38e
-	x-ms-request-id: 7391a4b2-995d-4fc5-aca5-a398786ea38e
-	X-Content-Type-Options: nosniff
-	DataServiceVersion: 3.0;
-	X-Powered-By: ASP.NET
-	Strict-Transport-Security: max-age=31536000; includeSubDomains
-	Date: Mon, 19 Jan 2015 09:13:18 GMT
-
-	{  
-	   "odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#AssetDeliveryPolicies/@Element",
-	   "Id":"nb:adpid:UUID:ef97ae36-b898-4b8a-b427-7819ee726276",
-	   "Name":"Clear Policy",
-	   "AssetDeliveryProtocol":7,
-	   "AssetDeliveryPolicyType":2,
-	   "AssetDeliveryConfiguration":null,
-	   "Created":"2015-01-19T09:13:18.911615Z",
-	   "LastModified":"2015-01-19T09:13:18.911615Z"
-	}
-    
-
-### 資産の配信ポリシーを資産とリンクする
-
-次の HTTP 要求は、指定された配信ポリシーを指定された資産に関連付けます。
-
-**HTTP 要求**
-
-	POST https://wamsbayclus001rest-hs.cloudapp.net/api/Assets('nb%3Acid%3AUUID%3A71d2dd33-efdf-ec43-8ea1-136a110bd42c')/$links/DeliveryPolicies HTTP/1.1
-	DataServiceVersion: 1.0;NetFx
-	MaxDataServiceVersion: 3.0;NetFx
-	Accept: application/json
-	Accept-Charset: UTF-8
-	Content-Type: application/json
-	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421679198&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=aUvBcDwRAFk1JLxceWu%2bf9dVrCZM7PrTRbZd0TtoKvU%3d
-	x-ms-version: 2.11
-	Host: wamsbayclus001rest-hs.cloudapp.net
-	Content-Length: 140
-	
-	{ "uri":"https://wamsbayclus001rest-hs.cloudapp.net/api/AssetDeliveryPolicies('nb%3Aadpid%3AUUID%3Aef97ae36-b898-4b8a-b427-7819ee726276')" }
-
-
-**HTTP 応答**
-
-	HTTP/1.1 204 No Content
-    . . . 
-
-
-## <a id="publish_get_urls"></a>REST API で資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
+## <a id="publish_get_urls"></a>REST API でアセットを発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
 
 資産をストリーミングまたはダウンロードするにはまず、ロケーターを作成して資産を "発行" する必要があります。資産に含まれているファイルには、ロケーターを通じてアクセスできます。Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなど) に、Access Signature (SAS) ロケーターはメディア ファイルのダウンロードに使用します。
 
@@ -1275,4 +1195,4 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

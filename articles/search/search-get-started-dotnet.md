@@ -5,26 +5,26 @@
 	documentationCenter=""
 	authors="HeidiSteen"
 	manager="mblythe"
-	editor=""/>
+	editor="v-lincan"/>
 
 <tags
 	ms.service="search"
 	ms.devlang="rest-api"
 	ms.workload="search"
-	ms.topic="hero-article" 
+	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
-	ms.date="07/08/2015"
+	ms.date="08/18/2015"
 	ms.author="heidist"/>
 
-#.NET での Azure Search アプリケーションの初めての使用#
+# .NET での Azure Search アプリケーションの初めての使用
 
 検索エクスペリエンスとして Azure Search を使用するカスタム .NET 検索アプリケーションを Visual Studio 2013 以降で作成する方法を説明します。Azure Search サービス REST API と同様に、[Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を利用してこの演習で使用するオブジェクトと操作のクラスを作成します。
 
 このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Azure ポータル](https://portal.azure.com)でサインアップできます。
 
-> [AZURE.TIP]このチュートリアルのソース コードは、「[Azure Search .NET Samples (Azure Search .NET サンプル)](http://go.microsoft.com/fwlink/p/?LinkId=530196)」からダウンロードしてください。
+> [AZURE.TIP]このチュートリアルのソース コードは、「[Azure Search .NET Samples (Azure Search .NET サンプル)](http://go.microsoft.com/fwlink/p/?LinkId=530196)」からダウンロードしてください。接続をセットアップし、要求を送信する方法については、「[.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
-##データについて##
+## データについて
 
 このサンプル アプリケーションでは、[United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm) からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
 
@@ -32,11 +32,11 @@
 
 > [AZURE.NOTE]このデータセットにフィルターを提供し、無料価格レベルのドキュメントを 10,000 件未満に制限しました。標準レベルを使用する場合は、この制限は適用されません。各価格レベルの容量の詳細については、「[制限および制約](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
 
-##サービスの作成##
+## Azure Search サービスの作成
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. ジャンプバーで、[**新規**] | [**データ + ストレージ**] | [**Search**] をクリックします。
+2. ジャンプバーで、**[新規]** > **[データ + ストレージ]** > **[検索]** をクリックします。
 
      ![][1]
 
@@ -48,8 +48,8 @@
 
 	- [**価格レベル**] では、容量と課金を決定します。どちらのレベルも同じ機能を提供しますが、リソース レベルが異なります。
 
-		- **[Free]** レベルは、他のサブスクライバーと共有されているクラスター上で実行されます。無料版はチュートリアルを試用して概念実証コードを書くには十分な機能を提供しますが、運用アプリケーションには対応していません。無料サービスは、通常は数分で展開できます。
-		- **[Standard]** レベルは専用リソースで実行され、拡張性に優れています。最初、標準サービスは 1 つのレプリカと 1 つのパーティションを使用してプロビジョニングされますが、サービスを作成した後で容量を調整することができます。標準サービスをデプロイするには、通常は約 15 分かかります。
+		- **[無料]** レベルは、他のサブスクライバーと共有されているクラスター上で実行されます。無料版はチュートリアルを試用して概念実証コードを書くには十分な機能を提供しますが、運用アプリケーションには対応していません。無料サービスは、通常は数分で展開できます。
+		- **[標準]** レベルは専用リソースで実行され、拡張性に優れています。最初、標準サービスは 1 つのレプリカと 1 つのパーティションを使用してプロビジョニングされますが、サービスを作成した後で容量を調整することができます。標準サービスをデプロイするには、通常は約 15 分かかります。
 
 	- **リソース グループ**は、一般的な目的で使用するサービスとリソースのコンテナーです。たとえば、Azure Search、Azure Websites、Azure BLOB ストレージを使用してカスタム検索アプリケーションを構築する場合は、リソース グループを作成することで、これらのサービスをポータル管理ページにまとめておくことができます。
 
@@ -62,11 +62,11 @@
 ジャンプバーで、通知を確認します。サービスが使用できるようになると、通知が表示されます。
 
 <a id="sub-2"></a>
-##Azure Search サービスのサービス名と API キーの取得
+## Azure Search サービスのサービス名と API キーの取得 ##
 
-サービスを作成した後は、ポータルに戻って URL または `api-key` を取得できます。Search サービスに接続するには、URL に加えて、呼び出しを認証するための `api-key` が必要になります。
+サービスを作成したら、ポータルに戻って URL または `api-key` を取得します。Search サービスに接続するには、URL に加えて、呼び出しを認証するための `api-key` が必要になります。
 
-1. ジャンプバーで [**ホーム**] をクリック、検索サービスをクリックして、サービスのダッシュボードを開きます。
+1. ジャンプ バーで **[ホーム]** をクリックし、Search サービスをクリックして、サービスのダッシュボードを開きます。
 
 2. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
 
@@ -74,9 +74,9 @@
 
 3. サービスの URL と管理キーをコピーします。これらは、後で Visual Studio プロジェクトの app.config および web.config ファイルに追加するときに必要になります。
 
-##新しいプロジェクトとソリューションの開始##
+## 新しいプロジェクトとソリューションの開始
 
-このソリューションには 2 つのプロジェクトが含まれます。
+このソリューションには次の 2 つのプロジェクトが含まれています。
 
 - **DataIndexer** は、Visual C# のコンソール アプリケーションであり、データの読み込みに使用されます
 - **SimpleSearchMVCApp** は、Visual C# の ASP.NET MVC Web アプリケーションであり、クエリを実行して検索結果を返すために使用されます
@@ -97,7 +97,7 @@
 
    ![][4]
 
-##.NET クライアント ライブラリのインストールおよび他のパッケージの更新
+## .NET クライアント ライブラリのインストールおよび他のパッケージの更新
 
 1. ソリューション エクスプローラーでソリューションの **[NuGet パッケージの管理]** を右クリックします。
 2. **[更新]**、**[安定版のみ]**、**[すべて更新]** を指定します。
@@ -108,7 +108,7 @@
 
 4. 次に、Azure Search .NET クライアント ライブラリをインストールします。検索を正しく指定してください。そうしないと、パッケージを簡単に検索できません。**[NuGet パッケージの管理]** を再び右クリックします。
 
-5. **[オンライン]**、**[nuget.org]**、**[プレリリースを含む]** を指定し、*azure.search* を検索して、ライブラリをインストールします。
+5. **[オンライン]**、**[nuget.org]**、**[プレリリースを含む]** を指定し、*azure.search* を検索します。**[インストール]** をクリックして、ライブラリをインストールします。
 
    ![][12]
 
@@ -116,20 +116,18 @@
 
    ![][5]
 
-##System.Configuration へのアセンブリ参照の追加
+## System.Configuration へのアセンブリ参照の追加
 
 **DataIndexer** は **System.Configuration** を使用して app.config の構成設定を読み取ります。
 
 1. **[DataIndexer]** を右クリックし、**[追加]**、**[参照]**、**[フレームワーク]**、**[System.Configuration]** の順に選択します。チェック ボックスをオンにします。
 2. **[OK]** をクリックします。
 
-##構成ファイルの更新
+## 構成ファイルの更新
 
 各プロジェクトには、サービス名と API キーを指定する構成ファイルが含まれています。
 
-1. **DataIndexer** で、App.config を次の例に置き換え、[SERVICE NAME] および [SERVICE KEY] を実際のサービスに対して有効な値で更新します。
-
-   サービス名は完全な URL ではありません。たとえば、Search サービス エンドポイントが **https://mysearchsrv.search.microsoft.net* である場合、App.config に入力するサービス名は *mysearchsrv* です。
+1. **DataIndexer** で、App.config を次の例に置き換え、[SERVICE NAME] および [SERVICE KEY] を実際のサービスに対して有効な値で更新します。サービス名は完全な URL ではないことに注意してください。たとえば、Search サービス エンドポイントが **https://mysearchsrv.search.microsoft.net* である場合、App.config に入力するサービス名は *mysearchsrv* です。
 
 	    <?xml version="1.0" encoding="utf-8"?>
 	    <configuration>
@@ -146,7 +144,7 @@
 
 		<?xml version="1.0" encoding="utf-8"?>
 		<!--
-		  For more information on how to configure your ASP.NET application, please visit
+		  For more information on how to configure your ASP.NET application, visit
 		  http://go.microsoft.com/fwlink/?LinkId=152368
 		  -->
 		<configuration>
@@ -203,7 +201,7 @@
 		            If you are deploying to a cloud environment that has multiple web server instances,
 		            you should change session state mode from "InProc" to "Custom". In addition,
 		            change the connection string named "DefaultConnection" to connect to an instance
-		            of SQL Server (including SQL Azure and SQL  Compact) instead of to SQL Server Express.
+		            of SQL Server (including SQL Azure and SQL Compact) instead of to SQL Server Express.
 		      -->
 		    <sessionState mode="InProc" customProvider="DefaultSessionProvider">
 		      <providers>
@@ -266,7 +264,7 @@
 		</configuration>
 
 
-##DataIndexer の変更
+## DataIndexer の変更
 
 このプログラムは、app.config での指定に従って Search サービスに接続し、インデックスを作成して、Azure SQL Database に格納されている USGS データセットを読み込むコンソール アプリケーションです。
 
@@ -278,7 +276,7 @@
 
 - **Program.cs** を置き換えます。これは、インデックスおよびインデクサーの作成、データの読み込み、メッセージの書き込みに使用されます。
 
-###AzureSearchHelper.cs の作成
+### AzureSearchHelper.cs の作成
 
 REST API を呼び出すコードには、接続を処理し、JSON の要求と応答のシリアル化と逆シリアル化の処理を行うクラスが含まれる必要があります。Azure Search で提供されるサンプルでは、通常、このクラスは **AzureSearchHelper.cs** と呼ばれます。次のコードを使用して、このクラスを作成し、**DataIndexer** に追加することができます。
 
@@ -366,7 +364,7 @@ REST API を呼び出すコードには、接続を処理し、JSON の要求と
 
 
 
-###Program.cs の更新
+### Program.cs の更新
 
 1. ソリューション エクスプローラーで、**DataIndexer** の **Program.cs** を開きます。
 2. Program.cs の内容を次のコードに置き換えます。
@@ -394,7 +392,7 @@ REST API を呼び出すコードには、接続を処理し、JSON の要求と
 		        private static SearchServiceClient _searchClient;
 		        private static SearchIndexClient _indexClient;
 
-		        // This Sample shows how to delete, create, upload documents and query an index
+		        // This sample shows how to delete, create, upload documents and query an index
 		        static void Main(string[] args)
 		        {
 		            string searchServiceName = ConfigurationManager.AppSettings["SearchServiceName"];
@@ -435,8 +433,7 @@ REST API を呼び出すコードには、接続を処理し、JSON の要求と
 
 		        private static void CreateIndex()
 		        {
-		            // Create the Azure Search index based on the included schema
-		            try
+		            // Create the Azure Search index based on the included schema            try
 		            {
 		                var definition = new Index()
 		                {
@@ -545,7 +542,7 @@ REST API を呼び出すコードには、接続を処理し、JSON の要求と
 
 
 
-##DataIndexer のビルドと実行
+## DataIndexer のビルドと実行
 
 1. **DataIndexer** プロジェクトを右クリックします。
 2. プロジェクトをビルドします。
@@ -559,7 +556,7 @@ REST API を呼び出すコードには、接続を処理し、JSON の要求と
 
 ![][7]
 
-##SimpleSearchMVCApp の変更
+## SimpleSearchMVCApp の変更
 
 **SimpleSearchMVC** は、IIS Express でローカルに実行する Web アプリです。検索ボックスを提供し、検索結果を表形式で表示します。
 
@@ -571,7 +568,7 @@ REST API を呼び出すコードには、接続を処理し、JSON の要求と
 
 - **FeatureSearch.cs** を追加します。これは、検索クライアントを作成して検索を実行するクラスです。
 
-###HomeController.cs の更新
+### HomeController.cs の更新
 
 既定のコードを以下のコードに置き換えます。
 
@@ -613,7 +610,7 @@ REST API を呼び出すコードには、接続を処理し、JSON の要求と
 	}
 
 
-###Index.cshtml の更新
+### Index.cshtml の更新
 
 既定のコードを以下のコードに置き換えます。
 
@@ -688,7 +685,7 @@ REST API を呼び出すコードには、接続を処理し、JSON の要求と
 	</div>
 
 
-###FeaturesSearch.cs の追加
+### FeaturesSearch.cs の追加
 
 アプリケーションに検索機能を提供するクラスを追加します。
 
@@ -748,17 +745,17 @@ REST API を呼び出すコードには、接続を処理し、JSON の要求と
 		    }
 		}
 
-###スタートアップ プロジェクトとしての SimpleSearchMVCApp の設定
+### スタートアップ プロジェクトとしての SimpleSearchMVCApp の設定
 
 **SimpleSearchMVCApp** プロジェクトを右クリックし、スタートアップ プロジェクトとして設定します。
 
-##SimpleSearchMVCApp のビルドと実行
+## SimpleSearchMVCApp のビルドと実行
 
 このプログラムをビルドして実行すると、既定のブラウザーで Web ページが表示され、Azure Search サービスのインデックスに格納されている USGS データにアクセスするための検索ボックスが提供されます。
 
 ![][8]
 
-###USGS データの検索
+### USGS データの検索
 
 USGS データ セットには、ロードアイランド州に関連するレコードが含まれています。検索ボックスが空の状態で **[Search]** をクリックすると、既定で、上位 50 のエントリが取得されます。
 
@@ -772,7 +769,7 @@ USGS データ セットには、ロードアイランド州に関連するレ�
 - goose +cape -neck
 
 
-##次のステップ##
+## 次のステップ
 
 これは、.NET と USGS データセットに基づく最初の Azure Search チュートリアルです。カスタム ソリューションで使用できる他の検索機能を紹介できるように、時間をかけてこのチュートリアルを拡張する予定です。
 
@@ -796,6 +793,5 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [10]: ./media/search-get-started-dotnet/AzSearch-DotNet-MVCOptions.PNG
 [11]: ./media/search-get-started-dotnet/AzSearch-DotNet-NuGet-1.PNG
 [12]: ./media/search-get-started-dotnet/AzSearch-DotNet-NuGet-2.PNG
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

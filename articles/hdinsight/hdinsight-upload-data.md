@@ -3,6 +3,7 @@
 	description="Azure CLI、Azure Storage エクスプローラー、Azure PowerShell、Hadoop コマンド ライン、または Sqoop を使用して、Hadoop ジョブ用データを HDInsight にアップロードする方法と HDInsight の Hadoop ジョブ用データにアクセスする方法について説明します。"
 	services="hdinsight,storage"
 	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"
 	manager="paulettm"
 	editor="cgronlun"/>
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2015"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
 
@@ -22,7 +23,7 @@
 
 Azure の HDInsight では、Azure BLOB ストレージ上でフル機能の Hadoop 分散ファイル システム (HDFS) を利用できます。HDFS 拡張機能として、シームレスなエクスペリエンスを顧客に提供するように設計されています。Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。Azure BLOB ストレージと HDFS は、データの保管と計算処理のために最適化された別個のファイル システムです。Azure BLOB ストレージを使用するメリットの詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」をご覧ください。
 
-##前提条件
+**前提条件**
 
 開始する前に、次の要件にご注意ください。
 
@@ -109,15 +110,20 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 2. 次のスクリプトで最初の 5 つの変数の値を設定します。
 
 		$subscriptionName = "<AzureSubscriptionName>"
+		$resourceGroupName = "<AzureResourceGroupName>"
 		$storageAccountName = "<StorageAccountName>"
 		$containerName = "<ContainerName>"
 
 		$fileName ="<LocalFileName>"
 		$blobName = "<BlobName>"
 
-		# Get the storage account key
+		Switch-AzureMode -Name AzureResourceManager
+
+		Add-AzureAccount
 		Select-AzureSubscription $subscriptionName
-		$storageaccountkey = get-azurestoragekey $storageAccountName | %{$_.Primary}
+
+		# Get the storage account key
+		$storageaccountkey = get-azurestoragekey -ResourceGroupName $resourceGroupName -Name $storageAccountName | %{$_.Primary}
 
 		# Create the storage context object
 		$destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageaccountkey
@@ -205,6 +211,9 @@ Azure Storage エクスプローラーを使用するには、Azure Storage の�
 
 7. アップロードするファイルを指定して、**[開く]** をクリックします。
 
+##Azure Blob ストレージをローカル ドライブとしてマウントする
+
+「[Azure Blob ストレージをローカル ドライブとしてマウントする](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx)」を参照してください。
 
 ##サービス
 
@@ -247,7 +256,7 @@ Azure SDK のインストールの詳細については、[Azure のダウンロ
 
 
 
-[azure-management-portal]: https://manage.windowsazure.com
+[azure-management-portal]: https://porta.azure.com
 [azure-powershell]: http://msdn.microsoft.com/library/windowsazure/jj152841.aspx
 
 [azure-storage-client-library]: /develop/net/how-to-guides/blob-storage/
@@ -277,6 +286,5 @@ Azure SDK のインストールの詳細については、[Azure のダウンロ
 [image-azure-storage-explorer]: ./media/hdinsight-upload-data/HDI.AzureStorageExplorer.png
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

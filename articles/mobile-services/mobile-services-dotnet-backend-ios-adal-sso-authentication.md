@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (iOS) | Microsoft Azure" 
-	description="iOS アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" 
-	documentationCenter="ios" 
-	authors="mattchenderson" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (iOS) | Microsoft Azure"
+	description="iOS アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。"
+	documentationCenter="ios"
+	authors="mattchenderson"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-ios" 
-	ms.devlang="objective-c" 
-	ms.topic="article" 
-	ms.date="04/29/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="mahender"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
@@ -119,6 +119,5 @@
 [Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

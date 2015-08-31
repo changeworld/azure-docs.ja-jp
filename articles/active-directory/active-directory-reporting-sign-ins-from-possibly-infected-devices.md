@@ -3,8 +3,8 @@
 	description="マルウェア (悪意のあるソフトウェア) が実行されている可能性があるデバイスから実行されたサインイン試行が含まれるレポート。"
 	services="active-directory"
 	documentationCenter=""
-	authors="kenhoff"
-	manager="ilanas"
+	authors="SSalahAhmed"
+	manager="gchander"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/13/2015"
-	ms.author="kenhoff"/>
+	ms.date="08/17/2015"
+	ms.author="saah;kenhoff"/>
 
 # 感染している可能性があるデバイスからのサインイン
 
@@ -24,4 +24,4 @@
 
 ![感染している可能性があるデバイスからのサインイン](./media/active-directory-reporting-sign-ins-from-possibly-infected-devices/signInsFromPossiblyInfectedDevices.PNG)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -1,186 +1,186 @@
-The following steps demonstrate how to connect to the SQL Server instance over the internet using SQL Server Management Studio (SSMS). However, the same steps apply to making your SQL Server virtual machine accessible for your applications, running both on-premises and in Azure.
+次の手順で、SQL Server Management Studio (SSMS) を使用してインターネット経由で SQL Server インスタンスに接続する方法を説明します。ただし、同じ手順が、アプリケーションのアクセスが可能な SQL Server 仮想マシンを作成し、オンプレミスと Azure の両方で実行する際に適用されます。
 
-Before you can connect to the instance of SQL Server from another VM or the internet, you must complete the following tasks as described in the sections that follow:
+別の VM またはインターネットから SQL Server インスタンスに接続するには、次のタスクを完了している必要があります。詳細については、この後のセクションで説明します。
 
-- [Create a TCP endpoint for the virtual machine](#create-a-tcp-endpoint-for-the-virtual-machine)
-- [Open TCP ports in the Windows firewall](#open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine)
-- [Configure SQL Server to listen on the TCP protocol](#configure-sql-server-to-listen-on-the-tcp-protocol)
-- [Configure SQL Server for mixed mode authentication](#configure-sql-server-for-mixed-mode-authentication)
-- [Create SQL Server authentication logins](#create-sql-server-authentication-logins)
-- [Determine the DNS name of the virtual machine](#determine-the-dns-name-of-the-virtual-machine)
-- [Connect to the Database Engine from another computer](#connect-to-the-database-engine-from-another-computer)
+- [仮想マシン用の TCP エンドポイントを作成する](#create-a-tcp-endpoint-for-the-virtual-machine)
+- [Windows ファイアウォールで TCP ポートを開く](#open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine)
+- [TCP プロトコルでリッスンするように SQL Server を構成する](#configure-sql-server-to-listen-on-the-tcp-protocol)
+- [混合モード認証用に SQL Server を構成する](#configure-sql-server-for-mixed-mode-authentication)
+- [SQL Server 認証ログインを作成する](#create-sql-server-authentication-logins)
+- [仮想マシンの DNS 名を特定する](#determine-the-dns-name-of-the-virtual-machine)
+- [別のコンピューターからデータベース エンジンに接続する](#connect-to-the-database-engine-from-another-computer)
 
-The connection path is summarized by the following diagram:
+次の図は、接続パスの概要を示したものです。
 
-![Connecting to a SQL Server virtual machine](./media/virtual-machines-sql-server-connection-steps/SQLServerinVMConnectionMap.png)
+![SQL Server 仮想マシンに接続する](./media/virtual-machines-sql-server-connection-steps/SQLServerinVMConnectionMap.png)
 
-### Create a TCP endpoint for the virtual machine
+### 仮想マシン用の TCP エンドポイントを作成する
 
-In order to access SQL Server from the internet, the virtual machine must have an endpoint to listen for incoming TCP communication. This Azure configuration step, directs incoming TCP port traffic to a TCP port that is accessible to the virtual machine.
+インターネットから SQL Server にアクセスするには、仮想マシンに、着信する TCP 通信をリッスンするエンドポイントが必要です。この Azure 構成手順により、仮想マシンからアクセスできる TCP ポートに、着信する TCP ポート トラフィックが送信されます。
 
->[AZURE.NOTE] If you are connecting within the same cloud service or virtual network, you do not have to create a publically accessible endpoint. In that case, you could continue to the next step. For more information, see [Connectivity Considerations for SQL Server in Azure Virtual Machines](https://msdn.microsoft.com/library/azure/dn133152.aspx).
+>[AZURE.NOTE]同じクラウド サービスまたは仮想ネットワーク内で接続する場合は、公開されたエンドポイントを作成する必要はありません。その場合は、次のステップに進むことができます。詳細については、「[Azure Virtual Machines における SQL Server の接続に関する考慮事項](https://msdn.microsoft.com/library/azure/dn133152.aspx)」を参照してください。
 
-1. On the Azure Management Portal, click on **VIRTUAL MACHINES**.
+1. Azure 管理ポータルで、**[仮想マシン]** をクリックします。
 	
-2. Click on your newly created virtual machine. Information about your virtual machine is presented.
+2. 新しく作成した仮想マシンをクリックします。仮想マシンに関する情報が表示されます。
 	
-3. Near the top of the page, select the **ENDPOINTS** page, and then at the bottom of the page, click **ADD**.
+3. ページの最上部近くにある **[エンドポイント]** ページを選択し、ページの下部にある **[追加]** をクリックします。
 	
-4. On the **Add an Endpoint to a Virtual Machine** page, click **Add a Stand-alone Endpoint**, and then click the Next arrow to continue.
+4. **[仮想マシンにエンドポイントを追加します]** ページで、**[スタンドアロン エンドポイントの追加]** をクリックし、次へ進む矢印をクリックして続行します。
 	
-5. On the **Specify the details of the endpoint** page, provide the following information.
+5. **[エンドポイントの詳細を指定します]** ページで、次の情報を指定します。
 
-	- In the **NAME** box, provide a name for the endpoint.
-	- In the **PROTOCOL** box, select **TCP**. You may type **57500** in the **PUBLIC PORT** box. Similarly, you may type SQL Server's default listening port **1433** in the **Private Port** box. Note that many organizations select different port numbers to avoid malicious security attacks. 
+	- **[名前]** ボックスに、エンドポイントの名前を指定します。
+	- **[プロトコル]** ボックスの一覧の **[TCP]** を選択します。**[パブリック ポート]** ボックスに「**57500**」と入力することもできます。同様に、**[プライベート ポート]** ボックスに、SQL Server の既定のリスニング ポートである「**1433**」と入力することもできます。多くの組織は、悪意のある攻撃を避けるために異なるポート番号を選択することに注意してください。 
 
-6. Click the check mark to continue. The endpoint is created.
+6. チェック マークをクリックして続行します。エンドポイントが作成されます。
 
-### Open TCP ports in the Windows firewall for the default instance of the Database Engine
+### データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く
 
-1. Connect to the virtual machine via Windows Remote Desktop. Once logged in, at the Start screen, type **WF.msc**, and then hit ENTER. 
+1. Windows リモート デスクトップを介して仮想マシンに接続します。ログインしたら、スタート画面で「**WF.msc**」と入力し、Enter キーを押します。 
 
-	![Start the Firewall Program](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
-2. In the **Windows Firewall with Advanced Security**, in the left pane, right-click **Inbound Rules**, and then click **New Rule** in the action pane.
+	![ファイアウォール プログラムを開始する](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
+2. **[セキュリティが強化された Windows ファイアウォール]** の左ペインで、**[受信の規則]** を右クリックし、[操作] ペインの **[新しい規則]** をクリックします。
 
-	![New Rule](./media/virtual-machines-sql-server-connection-steps/13New-FW-Rule.png)
+	![新しい規則](./media/virtual-machines-sql-server-connection-steps/13New-FW-Rule.png)
 
-3. In the **New Inbount Rule Wizard** dialog box, under **Rule Type**, select **Port**, and then click **Next**.
+3. **[新規の受信の規則ウィザード]** ダイアログ ボックスの **[規則の種類]** で、**[ポート]** を選択し、**[次へ]** をクリックします。
 
-4. In the **Protocol and Ports** dialog, use the default **TCP**. In the **Specific local ports** box, then type the port number of the instance of the Database Engine (**1433** for the default instance or your choice for the private port in the endpoint step). 
+4. **[プロトコルおよびポート]** ダイアログ ボックスで、既定の **[TCP]** を使用します。**[特定のローカル ポート]** ボックスで、データベース エンジン インスタンスのポート番号を入力します (既定のインスタンスの場合は「**1433**」を指定し、エンドポイントの手順でプライベート ポートに別のポート番号を指定した場合はその番号を指定します)。
 
-	![TCP Port 1433](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
+	![TCP ポート 1433](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
 
-5. Click **Next**.
+5. **[次へ]** をクリックします。
 
-6. In the **Action** dialog box, select **Allow the connection**, and then click **Next**.
+6. **[操作]** ダイアログ ボックスで、**[接続を許可する]** を選択し、**[次へ]** をクリックします。
 
-	**Security Note:** Selecting **Allow the connection if it is secure** can provide additional security. Select this option if you want to configure additional security options in your environment.
+	**セキュリティ上の注意:** **[セキュリティで保護されている場合、接続を許可する]** を選択すると、セキュリティが追加されます。お使いの環境で追加のセキュリティ オプションを構成する場合はこのオプションを選択してください。
 
-	![Allow Connections](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
+	![接続を許可する](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
 
-7. In the **Profile** dialog box, select **Public**, **Private**, and **Domain**. Then click **Next**. 
+7. **[プロファイル]** ダイアログ ボックスで、**[パブリック]** 、**[プライベート]** および**[ドメイン]** を選択します。その後、**[次へ]** をクリックします。
 
-    **Security Note:**  Selecting **Public** allows access over the internet. Whenever possible, select a more restrictive profile.
+    **セキュリティ上の注意:** **[パブリック]** をオンにすると、インターネット経由のアクセスが許可されます。可能であれば、できるだけ制限の厳しいプロファイルを選択してください。
 
-	![Public Profile](./media/virtual-machines-sql-server-connection-steps/16Public-Private-Domain-Profile.png)
+	![パブリック プロファイル](./media/virtual-machines-sql-server-connection-steps/16Public-Private-Domain-Profile.png)
 
-8. In the **Name** dialog box, type a name and description for this rule, and then click **Finish**.
+8. **[名前]** ダイアログ ボックスで、この規則の名前と説明を入力し、**[完了]** をクリックします。
 
-	![Rule Name](./media/virtual-machines-sql-server-connection-steps/17Rule-Name.png)
+	![規則の名前](./media/virtual-machines-sql-server-connection-steps/17Rule-Name.png)
 
-Open additional ports for other components as needed. For more information, see [Configuring the Windows Firewall to Allow SQL Server Access](http://msdn.microsoft.com/library/cc646023.aspx).
+必要に応じて他のコンポーネント用に追加のポートを開きます。詳細については、「[SQL Server のアクセスを許可するための Windows ファイアウォールの構成](http://msdn.microsoft.com/library/cc646023.aspx)」を参照してください。
 
 
-### Configure SQL Server to listen on the TCP protocol
+### TCP プロトコルでリッスンするように SQL Server を構成する
 
-1. While connected to the virtual machine, on the Start page, type **SQL Server Configuration Manager** and hit ENTER.
+1. 仮想マシンに接続している間に、[スタート] ページで「**SQL Server 構成マネージャー**」と入力し、Enter キーを押します。
 	
-	![Open SSCM](./media/virtual-machines-sql-server-connection-steps/9Click-SSCM.png)
+	![SSCM を開く](./media/virtual-machines-sql-server-connection-steps/9Click-SSCM.png)
 
-2. In SQL Server Configuration Manager, in the console pane, expand **SQL Server Network Configuration**.
+2. SQL Server 構成マネージャーのコンソール ペインで、**[SQL Server ネットワークの構成]** を展開します。
 
-3. In the console pane, click **Protocols for MSSQLSERVER** (he default instance name.) In the details pane, right-click TCP, it should be Enabled for the gallery images by default. For your custom images, click **Enable** (if its status is Disabled.)
+3. コンソール ペインで、**[MSSQLSERVER のプロトコル]** (既定のインスタンス名) をクリックします。 詳細ウィンドウで、[TCP] を右クリックします。ギャラリー イメージの場合、その状態は既定で [有効] です。カスタム イメージの場合、**[有効化]** をクリックします (状態が [無効] の場合)。
 
-	![Enable TCP](./media/virtual-machines-sql-server-connection-steps/10Enable-TCP.png)
+	![TCP を有効にする](./media/virtual-machines-sql-server-connection-steps/10Enable-TCP.png)
 
-5. In the console pane, click **SQL Server Services**. In the details pane, right-click **SQL Server (_instance name_)** (the default instance is **SQL Server (MSSQLSERVER)**), and then click **Restart**, to stop and restart the instance of SQL Server. 
+5. コンソール ペインで、**[SQL Server のサービス]** をクリックします詳細ペインで **[SQL Server (_インスタンス名_)]** (既定のインスタンスでは **[SQL Server (MSSQLSERVER)]**) を右クリックして、**[再起動]** をクリックします。これにより、SQL Server のインスタンスが停止し、再起動されます。
 
-	![Restart Database Engine](./media/virtual-machines-sql-server-connection-steps/11Restart.png)
+	![データベース エンジンの再起動](./media/virtual-machines-sql-server-connection-steps/11Restart.png)
 
-7. Close SQL Server Configuration Manager.
+7. SQL Server 構成マネージャーを閉じます。
 
-For more information about enabling protocols for the SQL Server Database Engine, see [Enable or Disable a Server Network Protocol](http://msdn.microsoft.com/library/ms191294.aspx).
+SQL Server データベース エンジン用のプロトコルを有効にする方法の詳細については、「[サーバー ネットワーク プロトコルの有効化または無効化](http://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。
 
-### Configure SQL Server for mixed mode authentication
+### 混合モード認証用に SQL Server を構成する
 
-The SQL Server Database Engine cannot use Windows Authentication without domain environment. To connect to the Database Engine from another computer, configure SQL Server for mixed mode authentication. Mixed mode authentication allows both SQL Server Authentication and Windows Authentication.
+ドメイン環境がない場合、SQL Server データベース エンジンで Windows 認証を使用することはできません。別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されます
 
->[AZURE.NOTE] Configuring mixed mode authentication might not be necessary if you have configured an Azure Virtual Network with a configured domain environment.
+>[AZURE.NOTE]構成されたドメイン環境でAzure の Virtual Network を構成した場合は、混合モード認証の構成が不要である可能性があります。
 
-1. While connected to the virtual machine, on the Start page, type **SQL Server 2014 Management Studio** and click the selected icon.
+1. 仮想マシンに接続している間に、[スタート] ページで「**SQL Server 2014 Management Studio**」と入力し、選択したアイコンをクリックします。
 
-	![Start SSMS](./media/virtual-machines-sql-server-connection-steps/18Start-SSMS.png)
+	![SSMS を起動する](./media/virtual-machines-sql-server-connection-steps/18Start-SSMS.png)
 
-	The first time you open Management Studio it must create the users Management Studio environment. This may take a few moments.
+	初めて Management Studio を開く場合は、ユーザーの Management Studio 環境の作成が必要になります。これには数分かかることがあります。
 
-2. Management Studio presents the **Connect to Server** dialog box. In the **Server name** box, type the name of the virtual machine to connect to the Database Engine  with the Object Explorer. (Instead of the virtual machine name you can also use **(local)** or a single period as the **Server name**. Select **Windows Authentication**, and leave **_your_VM_name_\your_local_administrator** in the **User name** box. Click **Connect**.
+2. Management Studio では、**[サーバーへの接続]** ダイアログ ボックスが表示されます。**[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します(**[サーバー名]** として、仮想マシン名の代わりに **[(ローカル)]** または単一のピリオドを指定することもできます)。**[Windows 認証]** を選択し、**[ユーザー名]** ボックスで _**your\_VM\_name**\\your\_local\_administrator_ をそのまま使用します。**[接続]** をクリックします。
 
-	![Connect to Server](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
+	![サーバーへの接続](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 
-3. In SQL Server Management Studio Object Explorer, right-click the name of the instance of SQL Server (the virtual machine name), and then click **Properties**.
+3. SQL Server Management Studio のオブジェクト エクスプローラーで、SQL Server のインスタンス名 (仮想マシン名) を右クリックし、**[プロパティ]** をクリックします。
 
-	![Server Properties](./media/virtual-machines-sql-server-connection-steps/20Server-Properties.png)
+	![サーバー プロパティ](./media/virtual-machines-sql-server-connection-steps/20Server-Properties.png)
 
-4. On the **Security** page, under **Server authentication**, select **SQL Server and Windows Authentication mode**, and then click **OK**.
+4. **[セキュリティ]** ページの **[サーバー認証]** で、**[SQL Server 認証モードと Windows 認証モード]** を選択し、**[OK]** をクリックします。
 
-	![Select Authentication Mode](./media/virtual-machines-sql-server-connection-steps/21Mixed-Mode.png)
+	![認証モードを選択する](./media/virtual-machines-sql-server-connection-steps/21Mixed-Mode.png)
 
-5. In the SQL Server Management Studio dialog box, click **OK** to acknowledge the requirement to restart SQL Server.
+5. [SQL Server Management Studio] ダイアログ ボックスで、SQL Server の再起動が必要であるというメッセージに対して **[OK]** をクリックします。
 
-6. In Object Explorer, right-click your server, and then click **Restart**. (If SQL Server Agent is running, it must also be restarted.)
+6. オブジェクト エクスプローラーでサーバーを右クリックし、**[再起動]** をクリックします(実行中であれば、SQL Server エージェントも再起動する必要があります)。
 
-	![Restart](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
+	![再起動](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
 
-7. In the SQL Server Management Studio dialog box, click **Yes** to agree that you want to restart SQL Server.
+7. [SQL Server Management Studio] ダイアログ ボックスで、SQL Server の再起動に同意を求めるメッセージに対して **[はい]** をクリックします。
 
-### Create SQL Server authentication logins
+### SQL Server 認証ログインを作成する
 
-To connect to the Database Engine from another computer, you must create at least one SQL Server authentication login.
+別のコンピューターからデータベース エンジンに接続するには、1 つ以上の SQL Server 認証ログインを作成する必要があります。
 
-1. In SQL Server Management Studio Object Explorer, expand the folder of the server instance in which you want to create the new login.
+1. SQL Server Management Studio のオブジェクト エクスプローラーで、新しいログインを作成するサーバー インスタンスのフォルダーを展開します。
 
-2. Right-click the **Security** folder, point to **New**, and select **Login...**.
+2. **[セキュリティ]** フォルダーを右クリックし、**[新規作成]** をポイントして、**[ログイン]** を選択します。
 
-	![New Login](./media/virtual-machines-sql-server-connection-steps/23New-Login.png)
+	![新しいログイン](./media/virtual-machines-sql-server-connection-steps/23New-Login.png)
 
-3. In the **Login - New** dialog box, on the **General** page, enter the name of the new user in the **Login name** box.
+3. **[ログイン - 新規作成]** ダイアログ ボックスの **[全般]** ページで、新しいユーザーの名前を **[ログイン名]** ボックスに入力します。
 
-4. Select **SQL Server authentication**.
+4. **[SQL Server 認証]** を選択します。
 
-5. In the **Password** box, enter a password for the new user. Enter that password again into the **Confirm Password** box.
+5. **[パスワード]** ボックスに、新しいユーザーのパスワードを入力します。**[パスワードの確認]** ボックスに、パスワードを再度入力します。
 
-6. To enforce password policy options for complexity and enforcement, select **Enforce password policy** (recommended). This is a default option when SQL Server authentication is selected.
+6. パスワードの強制と複雑さに関するパスワード ポリシー オプションを適用するには、**[パスワード ポリシーを適用する]** (推奨) をオンにします。[SQL Server 認証] が選択されている場合、これは既定のオプションです。
 
-7. To enforce password policy options for expiration, select **Enforce password expiration** (recommended). Enforce password policy must be selected to enable this checkbox. This is a default option when SQL Server authentication is selected.
+7. 失効に関するパスワード ポリシー オプションを適用するには、**[パスワードの期限を適用する]** (推奨) をオンにします。このチェック ボックスをオンにする場合は、[パスワード ポリシーを適用する] がオンになっている必要があります。[SQL Server 認証] が選択されている場合、これは既定のオプションです。
 
-8. To force the user to create a new password after the first time the login is used, select **User must change password at next login** (Recommended if this login is for someone else to use. If the login is for your own use, do not select this option.) Enforce password expiration must be selected to enable this checkbox. This is a default option when SQL Server authentication is selected. 
+8. ログインの初回使用後に新しいパスワードの作成をユーザーに強制するには、**[ユーザーは次回ログイン時にパスワードを変更する]** をオンにします (このログインが別のユーザー用の場合は、このチェック ボックスをオンにすることをお勧めします。ログインが自分用の場合は、オンにしないでください)。 このチェック ボックスをオンにする場合は、[パスワードの期限を適用する] がオンになっている必要があります。[SQL Server 認証] が選択されている場合、これは既定のオプションです。
 
-9. From the **Default database** list, select a default database for the login. **master** is the default for this option. If you have not yet created a user database, leave this set to **master**.
+9. **[既定のデータベース]** ボックスの一覧から、ログインの既定のデータベースを選択します。このオプションの既定値は **master** です。ユーザー データベースをまだ作成していない場合は、**master** のままにしておきます。
 
-10. In the **Default language** list, leave **default** as the value.
+10. **[既定の言語]** の値は、**[<既定>]** のままにしておきます。
     
-	![Login Properties](./media/virtual-machines-sql-server-connection-steps/24Test-Login.png)
+	![ログインのプロパティ](./media/virtual-machines-sql-server-connection-steps/24Test-Login.png)
 
-11. If this is the first login you are creating, you may want to designate this login as a SQL Server administrator. If so, on the **Server Roles** page, check **sysadmin**. 
+11. これが初めて作成するログインである場合は、このログインを SQL Server 管理者専用に使用することが考えられます。その場合は、**[サーバー ロール]** ページで、**[sysadmin]** をオンにします。
 
-	**Security Note:** Members of the sysadmin fixed server role have complete control of the Database Engine. You should carefully restrict membership in this role.
+	**セキュリティ上の注意:** sysadmin 固定サーバー ロールのメンバーには、データベース エンジンに対する完全な制御権が与えられています。このロールのメンバーは、適切なユーザーのみに限定してください。
 
 	![sysadmin](./media/virtual-machines-sql-server-connection-steps/25sysadmin.png)
 
-12. Click OK.
+12. [OK] をクリックします。
 
-For more information about SQL Server logins, see [Create a Login](http://msdn.microsoft.com/library/aa337562.aspx).
+SQL Server のログインの詳細については、「[ログインの作成](http://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。
 
-### Determine the DNS name of the virtual machine
+### 仮想マシンの DNS 名を特定する
 
-To connect to the SQL Server Database Engine from another computer, you must know the Domain Name System (DNS) name of the virtual machine. (This is the name the internet uses to identify the virtual machine. You can use the IP address, but the IP address might change when Azure moves resources for redundancy or maintenance. The DNS name will be stable because it can be redirected to a new IP address.)  
+別のコンピューターから SQL Server データベース エンジンに接続するには、仮想マシンのドメイン ネーム システム (DNS) 名が必要になります(これは、仮想マシンを識別するためにインターネットで使用される名前です。IP アドレスを使用することもできますが、Azure で冗長化またはメンテナンスのためにリソースが移動された場合、IP アドレスは変わる可能性があります。DNS 名は、新しい IP アドレスにリダイレクトできるため、安定しています)。
 
-1. In the Azure Management Portal (or from the previous step), select **VIRTUAL MACHINES**. 
+1. Azure 管理ポータルで (または前の手順から)、**[仮想マシン]** を選択します。 
 
-2. On the **VIRTUAL MACHINE INSTANCES** page, under the **Quick Glance** column, find and copy the DNS name for the virtual machine.
+2. **[仮想マシン インスタンス]** ページの **[概要]** 列で、仮想マシンの DNS 名を探してコピーします。
 
 	![DNS name](./media/virtual-machines-sql-server-connection-steps/sql-vm-dns-name.png)
 	
 
-### Connect to the Database Engine from another computer
+### 別のコンピューターからデータベース エンジンに接続する
  
-1. On a computer connected to the internet, open SQL Server Management Studio.
-2. In the **Connect to Server** or **Connect to Database Engine** dialog box, in the**Server name** box, enter the DNS name of the virtual machine (determined in the previous task) and a public endpoint port number in the format of *DNSName,portnumber* such as **tutorialtestVM.cloudapp.net,57500**.
-To get the port number, log in to the Azure Management Portal and find the Virtual Machine. On the Dashboard, click **ENDPOINTS** and use the **PUBLIC PORT** assigned to **MSSQL**.
-	![Public Port](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
-3. In the **Authentication** box, select **SQL Server Authentication**.
-5. In the **Login** box, type the name of a login that you created in an earlier task.
-6. In the **Password** box, type the password of the login that you create in an earlier task.
-7. Click **Connect**.
+1. インターネットに接続されたコンピューターで、SQL Server Management Studio を開きます。
+2. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** ボックスに、前のタスクで特定した仮想マシンの DNS 名とパブリック エンドポイントのポート番号を *DNS 名,ポート番号* という形式で入力します (例: **tutorialtestVM.cloudapp.net,57500**)。ポート番号を取得するには、Azure 管理ポータルにログインし、仮想マシンを検索します。ダッシュボードで **[エンドポイント]** をクリックし、**MSSQL** に割り当てられた**パブリック ポート**を使用します。![パブリック ポート](./media/virtual-machines-sql-server-connection-steps/sql-vm-port-number.png)
+3. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
+5. **[ログイン]** ボックスに、前のタスクで作成したログインの名前を入力します。
+6. **[パスワード]** ボックスに、前のタスクで作成したログインのパスワードを入力します。
+7. **[接続]** をクリックします。
 
-	![Connect using SSMS](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
+	![SSMS を使用した接続](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
+
+<!---HONumber=August15_HO8-->

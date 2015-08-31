@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/21/2015"
+	ms.date="08/14/2015"
 	ms.author="tdykstra"/>
 
 #Azure App Service での Web アプリのデプロイ
@@ -135,7 +135,6 @@ WebMatrix から Web アプリをデプロイする方法については、次�
 詳細については、次のリソースを参照してください。
 
 * [PHP-MySQL Web アプリの作成と FTP でのデプロイ](web-sites-php-mysql-deploy-use-ftp.md)。
-* [Web アプリの管理方法](web-sites-manage.md#ftp-credentials)。FTP の資格情報を設定する方法に関して、PHP のチュートリアルで網羅されていない追加の情報が含まれます。
 
 ##<a name="tfs"></a>Team Foundation Server (TFS)
 
@@ -180,6 +179,9 @@ Web アプリ用に [FTP と FTPS](http://en.wikipedia.org/wiki/File_Transfer_Pr
 
 詳細については、次のリソースを参照してください。
 
+* [GitHub リポジトリにリンクされる Web アプリのデプロイ](app-service-web-arm-from-github-provision.md)
+* [Web アプリと SQL Database をプロビジョニングする](app-service-web-arm-with-sql-database-provision.md)
+* [Azure でマイクロサービスを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
 * [Azure での実際のクラウド アプリケーションのビルド - すべてを自動化](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)。電子書籍の中に掲載されているサンプル アプリケーションが、Windows PowerShell スクリプトをどのように使用して Azure テスト環境を作成し、その環境をデプロイするかを説明する、電子書籍の章。Azure PowerShell の他のドキュメントへのリンクを掲載している「[リソース](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything#resources)」セクションを参照してください。
 * [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](http://msdn.microsoft.com/library/dn642480.aspx)。Visual Studio で生成される Windows PowerShell デプロイ スクリプトの使用方法
 
@@ -226,4 +228,4 @@ Azure のロール ベースのアクセス制御を使用して、Web アプリ
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

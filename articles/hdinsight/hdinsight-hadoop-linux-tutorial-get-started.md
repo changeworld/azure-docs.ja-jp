@@ -1,20 +1,21 @@
 <properties
-   pageTitle="Linux のチュートリアル: Hadoop と Hive の使用 | Microsoft Azure"
-   description="HDInsight で Hadoop を使用するには、この Linux チュートリアルに従います。Linux のクラスターをプロビジョニングする方法、および Hive でデータを照会する方法について説明します。"
-   services="hdinsight"
-   documentationCenter=""
-   authors="nitinme"
-   manager="paulettm"
-   editor="cgronlun"/>
+   	pageTitle="Linux のチュートリアル: Hadoop と Hive の使用 | Microsoft Azure"
+   	description="HDInsight で Hadoop を使用するには、この Linux チュートリアルに従います。Linux のクラスターをプロビジョニングする方法、および Hive でデータを照会する方法について説明します。"
+   	services="hdinsight"
+   	documentationCenter=""
+   	authors="nitinme"
+   	manager="paulettm"
+   	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
-   ms.service="hdinsight"
-   ms.devlang="na"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="07/11/2015"
-   ms.author="nitinme"/>
+   	ms.service="hdinsight"
+   	ms.devlang="na"
+   	ms.topic="hero-article"
+   	ms.tgt_pltfrm="na"
+   	ms.workload="big-data"
+   	ms.date="08/07/2015"
+   	ms.author="nitinme"/>
 
 # Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する (プレビュー)
 
@@ -28,7 +29,7 @@
 > [AZURE.NOTE]Hadoop とビッグ データを初めて扱う方は、<a href="http://go.microsoft.com/fwlink/?LinkId=510084" target="_blank">Apache Hadoop</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510086" target="_blank">MapReduce</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510087" target="_blank">Hadoop Distributed File System (HDFS)</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510085" target="_blank">Hive</a> に関するトピックをご覧ください。HDInsight によって Azure でどのように Hadoop を利用できるかについては、「[Introduction to Hadoop in HDInsight (HDInsight の Hadoop 入門)](hdinsight-hadoop-introduction.md)」を参照してください。
 
 
-## このチュートリアルで目的とする操作 
+## このチュートリアルで目的とする操作
 
 構造化されていないデータ セットが大量にあり、このデータ セットに対してクエリを実行して、意味のある情報を抽出したいとします。これを実現するには、次の手順を実行します。
 
@@ -40,79 +41,79 @@
 Linux でこの Hadoop チュートリアルを開始する前に、以下の条件を満たしている必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Secure Shell (SSH) キー**。パスワードの代わりに SSH とキーを使用して Linux クラスターにリモートでアクセスする場合に必要です。キーはより安全性が高いことから、キーを使用する方法をお勧めします。SSH キーを生成する手順については、次の記事をご覧ください。
+	-  Linux コンピューターの場合 - [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+	-  Windows コンピューターの場合 - [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 **推定所要時間:** 30 分
 
-## このチュートリアルの内容
-
-* [Azure のストレージ アカウントの作成](#storage)
-* [HDInsight Linux クラスターのプロビジョニング](#provision)
-* [クラスターでの Hive ジョブの送信](#hivequery)
-* [次のステップ](#nextsteps)
-
-## <a name="storage"></a>Azure ストレージ アカウントの作成
-
-HDInsight では、データを格納するために Azure BLOB ストレージを使用します。詳細については、「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)」をご覧ください。
-
-HDInsight クラスターをプロビジョニングするときは、Azure Storage アカウントを指定します。HDFS と同様、このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。
-
-このストレージ アカウントに加えて、HDInsight クラスターの構成をカスタマイズするときに他のストレージ アカウントを追加できます。これらの追加のストレージ アカウント用には、同じ Azure サブスクリプションを使用することも異なる Azure サブスクリプションを使用することもできます。手順については、「[カスタム オプションを使用した HDInsight での Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
-
-このチュートリアルでは、わかりやすくするために、既定の BLOB コンテナーと既定のストレージ アカウントが使用されています。実際には、データ ファイルを専用のストレージ アカウントに格納するのが一般的です。
-
-**Azure ストレージ アカウントを作成するには**
-
-1. <a href="https://manage.windowsazure.com/" target="_blank">Azure ポータル</a>にサインインします。
-2. 左下隅にある **[新規]** をクリックし、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
-
-	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル。](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.StorageAccount.QuickCreate.png)
-
-3. **[URL]**、**[場所]**、**[レプリケーション]** に値を入力し、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。新しいストレージ アカウントがストレージ一覧に表示されます。
-
-	>[AZURE.NOTE]このチュートリアルで使用したような、HDInsight Linux クラスターをプロビジョニングする簡易作成オプションでは、クラスターをプロビジョニングする際に場所をたずねるメッセージが表示されません。クラスターは、既定でストレージ アカウントと同じデータ センターに配置されます。
-
-4. 新しいストレージ アカウントの **[状態]** 列が **[オンライン]** になるまで待ちます。
-5. 一覧の新しいストレージ アカウントを選択し、ページの下部の **[アクセス キーの管理]** をクリックします。
-7. **[ストレージ アカウント名]** と **[プライマリ アクセス キー]** (または **[セカンダリ アクセス キー]** の動作しているいずれかのキー) の情報を書き留めます。この情報は後で必要になります。
-
-
-詳細については、「[ストレージ アカウントの作成方法](../storage-create-storage-account.md)」と「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)￼」に関するページをご覧ください。
-
 ## <a name="provision"></a>Linux での HDInsight クラスターのプロビジョニング
 
-HDInsight クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。このセクションでは、簡易作成オプションを使用して、Linux 上に HDInsight クラスターをプロビジョニングします。このオプションでは、既定のユーザー名と Azure ストレージ コンテナーを使用して、Ubuntu 12.04 Long Term Support (LTS) で実行されている HDInsight バージョン 3.2 (Hadoop バージョン 2.6、HDP バージョン 2.2) をクラスターに構成します。異なる HDInsight バージョンとそのサービス レベル アグリーメントについては、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」に関するページをご覧ください。
+クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。このセクションでは、HDInsight バージョン 3.2 クラスターをプロビジョニングします。他のバージョンの Hadoop クラスターも作成できます。手順については、「[Provision HDInsight clusters using custom options (カスタム オプションを使用した HDInsight クラスターのプロビジョニング)][hdinsight-provision]」を参照してください。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
 
->[AZURE.NOTE]Windows Server オペレーティング システムを実行する Hadoop クラスターを作成することもできます。手順については、「[HDInsight の概要](../hdinsight-get-started.md)」に関するページをご覧ください
+>[AZURE.NOTE]Windows Server オペレーティング システムを実行する Hadoop クラスターを作成することもできます。手順については、「[Windows で HDInsight を使用する](hdinsight-hadoop-tutorial-get-started-windows.md)」を参照してください。
 
 
 **HDInsight クラスターをプロビジョニングするには**
 
-1. <a href="https://manage.windowsazure.com/" target="_blank">Azure ポータル</a>にサインインします。
+1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。
+2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-2. 左下にある **[新規]** をクリックし、**[データ サービス]**、**[HDInsight]**、**[Hadoop on Linux]** の順にクリックします。
+    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
 
-	![HDInsight での Hadoop クラスターの作成。](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.QuickCreateCluster.png)
+3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Hadoop]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Ubuntu]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
 
-4. 次の値を入力または選択します。
+	![クラスターの名前と種類の入力](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.2.png "クラスターの名前と種類の入力")
 
-	<table border="1">
-	<tr><th>名前</th><th>値</th></tr>
-	<tr><td>クラスター名</td><td>クラスターの名前です。</td></tr>
-	<tr><td>クラスター サイズ</td><td>デプロイするデータ ノードの数です。既定値は 4 ですが、ボックスの一覧で 1 つまたは 2 つのデータ ノードを使用するオプションも選択できます。<strong>[カスタム作成]</strong> オプションを使用すれば、クラスター ノードの数を自由に指定できます。各種クラスター サイズの料金を確認するには、このボックスのすぐ上にある <strong>[?]</strong> マークをクリックして、表示されるリンクをクリックします。</td></tr>
-	<tr><td>パスワード</td><td><i>HTTP</i> アカウント (既定のユーザー名: admin) と <i>SSH</i> アカウント (既定のユーザー名: hdiuser) のパスワードです。これらはクラスターがプロビジョニングされた仮想マシンの管理者アカウントではないことに注意してください。</td></tr>
+4. 複数のサブスクリプションがある場合は、**[サブスクリプション]** エントリをクリックし、クラスターで使用する Azure サブスクリプションを選択します。
 
-	<tr><td>ストレージ アカウント</td><td>作成したストレージ アカウントをボックスの一覧から選択します。<br/>
+5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
 
-	ストレージ アカウントは、いったん選択すると、変更することはできません。ストレージ アカウントを削除すると、関連付けたクラスターを使用できなくなります。HDInsight クラスターは、ストレージ アカウントと同じデータセンターに配置されます。
-	</td></tr>
-	</table>
-	クラスター名をメモに記録しておきます。この情報は後で必要になります。
+	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
+
+6. **[資格情報]** をクリックし、管理ユーザーのパスワードを入力します。さらに、SSH ユーザーを認証するために使用される **[SSH ユーザー名]** と、**[パスワード]** または **[公開キー]** のどちらかを入力する必要があります。公開キーを使用することをお勧めします。下部にある **[選択]** をクリックして、資格情報の構成を保存します。
+
+	![クラスターの資格情報の指定](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.3.png "クラスターの資格情報の指定")
+
+	HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
+
+	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 
-5. **[HDInsight クラスターの作成]** をクリックします。プロビジョニングが完了すると、[状態] 列に **[実行中]** と表示されます。
+7. **[データ ソース]** をクリックし、クラスターの既存のデータ ソースを選択するか、新しいデータ ソースを作成します。HDInsight で Hadoop クラスターをプロビジョニングするときに、Azure ストレージ アカウントを指定します。Hadoop 分散ファイルシステム (HDFS) と同様、このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)」をご覧ください。
 
-	>[AZURE.NOTE]この手順では、既定の SSH ユーザー名と Azure ストレージ コンテナーを使用する簡易作成オプションを指定して、Linux クラスターを作成します。認証に SSH キーを使用する、追加のストレージ アカウントを使用するなどのカスタム オプションを指定してクラスターを作成するには、「[カスタム オプションを使用した HDInsight Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
+	![[データ ソース] ブレード](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.4.png "データ ソース構成の指定")
 
+	現在、HDInsight クラスターのデータ ソースとして Azure ストレージ アカウントを選択できます。次の説明を参照して、**[データ ソース]** ブレードのエントリを理解してください。
+
+	- **選択方法**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
+
+	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。または、**[新規作成]** をクリックして、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
+
+	- **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+
+	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
+
+		> [AZURE.IMPORTANT]既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
+
+	**[選択]** をクリックしてデータ ソースの構成を保存します。
+
+8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
+
+	![[ノード価格レベル] ブレード](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.5.png "クラスター ノード数の指定")
+
+	**[選択]** をクリックして、ノードの価格構成を保存します。
+
+9. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。これでクラスターが作成され、Azure ポータルのスタート画面にクラスター用のタイルが追加されます。アイコンはクラスターがプロビジョニング中であることを示し、プロビジョニングが完了すると、[HDInsight] アイコンを表示するように変化します。
+
+プロビジョニング中|プロビジョニング完了
+------------------|---------------------
+	![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-hadoop-linux-tutorial-get-started/provisioning.png)|![プロビジョニングされたクラスターのタイル](./media/hdinsight-hadoop-linux-tutorial-get-started/provisioned.png)
+
+> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
+
+プロビジョニングが完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
 ## <a name="hivequery"></a>クラスターでの Hive ジョブの送信
 HDInsight Linux クラスターがプロビジョニングされたら、HDInsight クラスターに付属するサンプル データ (sample.log) を問い合わせるサンプルの Hive ジョブを実行します。サンプル データには、トレース、警告、情報、エラーなどのログ情報が含まれています。このデータを問い合わせて、特定の重大度を持つエラー ログをすべて取得します。HDInsight Linux クラスターで Hive クエリを実行するには、次の手順を実行する必要があります。
@@ -235,18 +236,34 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 
 	返されるデータはすべて、[ERROR] ログに対応しています。
 
-
 ## <a name="nextsteps"></a>次のステップ
 この Linux チュートリアルでは、HDInsight を使用して Linux での Hadoop クラスターをプロビジョニングする方法と、SSH を使用してそのクラスターに Hive クエリを実行する方法を確認しました。詳細については、次の記事を参照してください。
 
-- [カスタム オプションを使用した Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)
-- [Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md)
-- [Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
-- [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
-- [HDInsight での Hive の使用][hdinsight-use-hive]
-- [HDInsight での Pig の使用][hdinsight-use-pig]
-- [HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)
-- [HDInsight へのデータのアップロード][hdinsight-upload-data]
+- [Ambari を使用して HDInsight クラスターを管理する](hdinsight-hadoop-manage-ambari.md): Linux ベースの HDInsight クラスターでは、Hadoop サービスの管理と監視のために Ambari を使用します。各クラスターの Ambari Web UI は、https://CLUSTERNAME.azurehdinsight.net で入手できます。
+
+	> [AZURE.IMPORTANT]Ambari Web の多くのセクションはインターネット経由で直接アクセスできますが、Hadoop サービスのリソース マネジャーやジョブ履歴などの Web UI では SSH トンネルを使用する必要があります。HDInsight での SSH トンネルの使用方法の詳細については、次の記事をご覧ください。
+	>
+	> * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#tunnel)
+	> * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel)
+
+- [カスタム オプションを使用して HDInsight を Linux にプロビジョニングする](hdinsight-hadoop-provision-linux-clusters.md): HDInsight クラスターのプロビジョニング方法について詳しく説明します。
+
+- [Linux で HDInsight を操作する](hdinsight-hadoop-linux-information.md): Linux プラットフォームでの Hadoop の操作を熟知している場合、このドキュメントは、次のような Azure 固有の情報に関するガイダンスを提供します。
+
+	* クラスターでホストされる URL (Ambari や WebHCat など)
+	* Hadoop ファイルの場所とローカル ファイル システムの例
+	* 既定のデータ ストアとして、HDFS ではなく Azure ストレージ (WASB) を使用する
+
+- Hive、Pig、MapReduce の詳細については、次のトピックを参照してください。
+
+	- [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
+	- [HDInsight での Hive の使用][hdinsight-use-hive]
+	- [HDInsight での Pig の使用][hdinsight-use-pig]
+
+- HDInsight クラスターで使用される Azure のストレージを操作する方法の詳細については、次のトピックを参照してください。
+
+	- [HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)
+	- [HDInsight へのデータのアップロード][hdinsight-upload-data]
 
 
 [1]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
@@ -270,6 +287,5 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 [image-hdi-clusterstatus]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.ClusterStatus.png
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
- 
 
-<!------HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

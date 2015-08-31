@@ -12,7 +12,7 @@
 	ms.service="active-directory"
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="na"
-	ms.devlang="na" identity
+	ms.devlang="na" 
 	ms.topic="article"
 	ms.date="08/10/2015"
 	ms.author="femila"/>
@@ -48,4 +48,4 @@ Azure AD Premium では、Azure AD と連携する SaaS アプリケーション
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

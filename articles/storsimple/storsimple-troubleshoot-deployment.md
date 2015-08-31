@@ -1,18 +1,18 @@
 <properties 
-   pageTitle="StorSimple デバイスのデプロイメントのトラブルシューティング"
+   pageTitle="StorSimple デバイスのデプロイメントのトラブルシューティング | Microsoft Azure"
    description="StorSimple を初めてデプロイするときに発生するエラーを診断し、修正する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
-   manager="adinah"
-   editor="tysonn" />
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/17/2015"
+   ms.date="08/18/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスのデプロイメントのトラブルシューティング
@@ -29,11 +29,11 @@
 
 デバイスの初回デプロイ時に問題が発生した場合は、次の点を確認してください。
 
-- 物理デバイスのトラブルシューティングを行う場合、「[デバイスのハードウェア設置](https://msdn.microsoft.com/library/azure/dn772375.aspx)」の説明に従ってハードウェアの設置と構成が済んでいることを確認してください。
-- デプロイの前提条件を確認します。[デプロイメント チェックリスト](storsimple-deployment-walkthrough.md#pre-installation-checklist)にすべての情報が説明されていることを確認します。
+- 物理デバイスのトラブルシューティングを行う場合、「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」または「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」の説明に従ってハードウェアが設置され構成されていることをご確認ください。
+- デプロイの前提条件を確認します。[デプロイメント チェックリスト](storsimple-deployment-walkthrough.md#deployment-configuration-checklist)に記載されているすべての情報が揃っていることを確認します。
 - StorSimple のリリース ノートを読んで、該当する問題についての記述があるかどうかを確認します。設置に関して既に確認されている問題については、リリース ノートに回避策が記述されています。 
 
-デバイスをデプロイするときに最も多く見られる問題は、セットアップ ウィザードの実行時と StorSimple 用 Windows PowerShell によるデバイスの登録時に発生します (StorSimple デバイスの登録と構成は、StorSimple 用 Windows PowerShell を使用して行います。デバイスの登録の詳細については、「[デバイスの登録](https://msdn.microsoft.com/library/azure/dn757742.aspx)」を参照してください)。
+デバイスをデプロイするときに最も多く見られる問題は、セットアップ ウィザードの実行時と StorSimple 用 Windows PowerShell によるデバイスの登録時に発生します (StorSimple デバイスの登録と構成は、StorSimple 用 Windows PowerShell を使用して行います。詳細については、「[手順 3. StorSimple 用 Windows PowerShell を使用してデバイスを構成し登録する](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)」をご覧ください。
 
 次のセクションは、StorSimple デバイスを初めて構成するときに発生する問題を解決するのに役立ちます。
 
@@ -53,7 +53,7 @@
  
     > [AZURE.IMPORTANT]パスワードは登録前に収集されますが、適用されるのは、デバイスの登録に成功した後になります。パスワードの適用に失敗した場合、必要な (複雑さの要件を満たした) パスワードが収集されるまで、パスワードを再入力するように求められます。
 
-4. デバイスの登録: 最後に、Microsoft Azure 内で実行されている StorSimple Manager サービスにデバイスを登録します。登録するには、Azure の管理ポータルから[サービス登録キーを取得](https://msdn.microsoft.com/library/azure/cd4dee49-6ae8-4ff0-b79b-74b2027cb694#sec03)し、セットアップ ウィザードにキーを入力する必要があります。デバイスが正常に登録されると、サービス データ暗号化キーが支給されます。この暗号化キーは以後、他のすべてのデバイスをサービスに登録する際に必要となります。安全な場所に保管しておいてください。
+4. デバイスの登録: 最後に、Microsoft Azure 内で実行されている StorSimple Manager サービスにデバイスを登録します。登録するには、Azure の管理ポータルから[サービス登録キーを取得](storsimple-manage-service.md#get-the-service-registration-key)し、セットアップ ウィザードにキーを入力する必要があります。デバイスが正常に登録されると、サービス データ暗号化キーが支給されます。この暗号化キーは以後、他のすべてのデバイスをサービスに登録する際に必要となります。安全な場所に保管しておいてください。
 
 ## デバイスのデプロイ時に発生する一般的なエラー
 
@@ -68,23 +68,23 @@
 
 | 番号| エラー メッセージ | 考えられる原因 | 推奨される操作 |
 | ---| ------------- | --------------- | ------------------ |
-| 1 | Invoke-HcsSetupWizard: このコマンドは、アクティブなコントローラーでのみ実行することができます。 | パッシブなコントローラーに対して構成を行った可能性があります。| アクティブなコントローラーからコマンドを実行してください。詳細については、「[デバイスでのアクティブなコントローラーの識別](https://msdn.microsoft.com/library/azure/dn790262.aspx)」を参照してください。|
+| 1 | Invoke-HcsSetupWizard: このコマンドは、アクティブなコントローラーでのみ実行することができます。 | パッシブなコントローラーに対して構成を行った可能性があります。| アクティブなコントローラーからコマンドを実行してください。詳細については、「[デバイスでのアクティブなコントローラーの識別](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。|
 | 2 | Invoke-HcsSetupWizard: デバイスの準備ができていません。 | DATA 0 にネットワーク接続の問題があります。| DATA 0 の物理的なネットワーク接続を確認してください。|
 | 3 | Invoke-HcsSetupWizard: ネットワーク上の別のシステムと競合する IP アドレスがあります (HRESULT からの例外: 0x80070263)。 | DATA 0 に対して指定した IP は既に別のシステムによって使用されています。 | 使用されていない新しい IP を指定してください。|
 | 4 | Invoke-HcsSetupWizard: クラスター リソースが失敗しました (HRESULT からの例外: 0x800713AE)。 | VIP が重複しています。指定された IP は既に使用されています。| 使用されていない新しい IP を指定してください。|
 | 5 | Invoke-HcsSetupWizard: IPv4 アドレスが無効です。 | 指定された IP アドレスの形式に誤りがあります。| 形式を確認し、IP アドレスを指定し直してください。詳細については、[Ipv4 のアドレス指定][1]に関するページを参照してください。 |
 | 6 | Invoke-HcsSetupWizard: IPv6 アドレスが無効です。 | 指定された IP アドレスの形式に誤りがあります。| 形式を確認し、IP アドレスを指定し直してください。詳細については、[Ipv6 のアドレス指定][2]に関するページを参照してください。|
-| 7 | Invoke-HcsSetupWizard: エンドポイント マッパーから使用できるエンドポイントはこれ以上ありません (HRESULT からの例外: 0x800706D9) | クラスターの機能が正常に動作していません。 | [Microsoft サポート](https://msdn.microsoft.com/library/azure/dn757750.aspx)に対処法をお問い合わせください。
+| 7 | Invoke-HcsSetupWizard: エンドポイント マッパーから使用できるエンドポイントはこれ以上ありません (HRESULT からの例外: 0x800706D9)。 | クラスターの機能が正常に動作していません。 | [Microsoft サポート](storsimple-contact-microsoft-support.md)に対処法をお問い合わせください。
 
 ## 省略可能な Web プロキシの設定中のエラー
 
 | 番号| エラー メッセージ | 考えられる原因 | 推奨される操作 |
 | ---| ------------- | --------------- | ------------------ |
 | 1 | Invoke-HcsSetupWizard: 無効なパラメーター (HRESULT からの例外: 0x80070057) | プロキシ設定に指定されたパラメーターの 1 つが有効ではありません。| URI が正しい形式で指定されていません。形式は http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* を使用してください。 |
-| 2 | Invoke-HcsSetupWizard: RPC セーバーを利用できません (HRESULT: 0x800706ba からの例外) | 根本的原因は次のいずれかです。<ol><li>クラスターが動作していません。</li><li>パッシブ コントローラーがアクティブ コントローラーと通信できない状況で、パッシブ コントローラーからコマンドを実行しています。</li></ol> | 根本的な原因によって異なります。<ol><li>[Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)て、クラスターが稼働しているかどうかを確認します。</li><li>アクティブ コントローラーからコマンドを実行します。パッシブ コントローラーからコマンドを実行する場合、パッシブ コントローラーがアクティブ コントローラーと通信できることが必要となります。この接続を確立できない場合、[Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)る必要があります。</li></ol> |
-| 3 | Invoke-HcsSetupWizard: RPC コールに失敗しました (HRESULT からの例外: 0x800706be) | クラスターはダウンしています。 | [Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)て、クラスターが稼働しているかどうかを確認します。|
-| 4 | Invoke-HcsSetupWizard: クラスター リソースが見つかりません (HRESULT からの例外: 0x8007138f) | クラスター リソースが見つかりません。これはインストールが適切でなかった場合に発生することがあります。 | デバイスを工場出荷時の既定の設定にリセットすることが必要な場合があります。[Microsoft サポートに問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)て、クラスター リソースを作成します。|
-| 5 | Invoke-HcsSetupWizard: クラスター リソースがオンラインになっていません (HRESULT からの例外: 0x8007138c)| クラスター リソースがオンラインになっていません。 | [Microsoft サポート](https://msdn.microsoft.com/library/azure/dn757750.aspx)に対処法をお問い合わせください。|
+| 2 | Invoke-HcsSetupWizard: RPC セーバーを利用できません (HRESULT: 0x800706ba からの例外) | 根本的原因は次のいずれかです。<ol><li>クラスターが動作していません。</li><li>パッシブ コントローラーがアクティブ コントローラーと通信できない状況で、パッシブ コントローラーからコマンドを実行しています。</li></ol> | 根本的な原因によって異なります。<ol><li>[Microsoft サポートに問い合わせ](storsimple-contact-microsoft-support.md)て、クラスターが稼働しているかどうかを確認します。</li><li>アクティブ コントローラーからコマンドを実行します。パッシブ コントローラーからコマンドを実行する場合、パッシブ コントローラーがアクティブ コントローラーと通信できることが必要となります。この接続を確立できない場合、[Microsoft サポートに問い合わせ](storsimple-contact-microsoft-support.md)る必要があります。</li></ol> |
+| 3 | Invoke-HcsSetupWizard: RPC コールに失敗しました (HRESULT からの例外: 0x800706be) | クラスターはダウンしています。 | [Microsoft サポートに問い合わせ](storsimple-contact-microsoft-support.md)て、クラスターが稼働しているかどうかを確認します。|
+| 4 | Invoke-HcsSetupWizard: クラスター リソースが見つかりません (HRESULT からの例外: 0x8007138f) | クラスター リソースが見つかりません。これはインストールが適切でなかった場合に発生することがあります。 | デバイスを工場出荷時の既定の設定にリセットすることが必要な場合があります。[Microsoft サポートに問い合わせ](storsimple-contact-microsoft-support.md)て、クラスター リソースを作成します。|
+| 5 | Invoke-HcsSetupWizard: クラスター リソースがオンラインになっていません (HRESULT からの例外: 0x8007138c)| クラスター リソースがオンラインになっていません。 | [Microsoft サポート](storsimple-contact-microsoft-support.md)に対処法をお問い合わせください。|
 
 ## デバイス管理者パスワードと StorSimple Snapshot Manager のパスワードに関連するエラー
 
@@ -99,7 +99,7 @@ Windows Server ホスト上で実行されている StorSimple Snapshot Manager 
 - パスワードには、小文字、大文字、数字、および特殊文字の 4 つのうちの 3 つの組み合わせを含める必要があります。 
 - 直近 24 個のパスワードは使用できません。
 
-パスワードは毎年更新する必要があります。パスワードは、デバイスの登録が成功した後でのみ変更されます。何らかの理由で登録に失敗した場合、パスワードは変更されません。デバイス管理者と StorSimple Snapshot Manager のパスワードの詳細については、[パスワード](https://msdn.microsoft.com/library/azure/00fb2b46-e29e-4c4d-90a8-1dbb7db3672e#sec_02)に関するトピックを参照してください。
+パスワードは毎年更新する必要があります。パスワードは、デバイスの登録が成功した後でのみ変更されます。何らかの理由で登録に失敗した場合、パスワードは変更されません。デバイス管理者と StorSimple Snapshot Manager のパスワードの詳細については、「[StorSimple Manager サービスを使用した StorSimple のパスワードの変更](storsimple-change-passwords.md)」をご覧ください。
 
 デバイス管理者のパスワードまたは StorSimple Snapshot Manager のパスワードを設定するときに、以下に示したエラーが発生することがあります。エラーは複数発生する場合もあります。
 
@@ -121,8 +121,8 @@ Windows Server ホスト上で実行されている StorSimple Snapshot Manager 
 
 パスワードのリセットは、StorSimple Manager サービスの管理ポータルから実行できます。詳細については、次を参照してください。
 
-- [デバイス管理者のパスワードの構成](https://msdn.microsoft.com/library/azure/02f1412f-e196-4a88-8eda-2113247ea47c#sec09)
-- [StorSimple Snapshot Manager のパスワードの構成](https://msdn.microsoft.com/library/azure/02f1412f-e196-4a88-8eda-2113247ea47c#sec08)
+- [デバイス管理者のパスワードの変更](storsimple-change-passwords.md#change-the-device-administrator-password)
+- [StorSimple Snapshot Manager のパスワードの変更](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)
 
 ## デバイス登録中のエラー
 
@@ -130,14 +130,14 @@ Windows Server ホスト上で実行されている StorSimple Snapshot Manager 
 
 | 番号| エラー メッセージ | 考えられる原因 | 推奨される操作 |
 | ---| ------------- | --------------- | ------------------ |
-| 1 | エラー 350027: StorSimple Manager にデバイスを登録できませんでした。 | | 数分待ってから操作を再試行してください。引き続き問題が発生する場合は、[Microsoft サポートにお問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)ください。|
-| 2 | エラー 350013: デバイスの登録中にエラーが発生しました。サービス登録キーが正しくない可能性があります。 | | 正しいサービス登録キーを使用して再度デバイスを登録してください。詳細については、「[サービス登録キーの取得](https://msdn.microsoft.com/library/azure/cd4dee49-6ae8-4ff0-b79b-74b2027cb694#sec03)」を参照してください。 |
-| 3 | エラー 350063: StorSimple Manager サービスに対する認証は成功しましたが登録に失敗しました。しばらくしてから、操作を再試行してください。 | このエラーは、ACS での認証には成功しましたが、サービスに対する登録呼び出しに失敗したことを示します。突発的なネットワーク障害が原因として考えられます。 | 問題が解決しない場合は、[Microsoft サポートにお問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)ください。 |
-| 4 | エラー 350049: 登録時にサービスに到達できませんでした。 | サービスの呼び出しで、Web 例外が発生しました。後で操作を再試行すると解決する場合があります。 | IP アドレスと DNS 名を確認して、操作を再試行してください。問題が解決しない場合は、[Microsoft サポートにお問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)ください。 | 
+| 1 | エラー 350027: StorSimple Manager にデバイスを登録できませんでした。 | | 数分待ってから操作を再試行してください。引き続き問題が発生する場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。|
+| 2 | エラー 350013: デバイスの登録中にエラーが発生しました。サービス登録キーが正しくない可能性があります。 | | 正しいサービス登録キーを使用して再度デバイスを登録してください。詳細については、「[サービス登録キーの取得](storsimple-manage-service.md#get-the-service-registration-key)」を参照してください。 |
+| 3 | エラー 350063: StorSimple Manager サービスに対する認証は成功しましたが登録に失敗しました。しばらくしてから、操作を再試行してください。 | このエラーは、ACS での認証には成功しましたが、サービスに対する登録呼び出しに失敗したことを示します。突発的なネットワーク障害が原因として考えられます。 | 問題が解決しない場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。 |
+| 4 | エラー 350049: 登録時にサービスに到達できませんでした。 | サービスの呼び出しで、Web 例外が発生しました。後で操作を再試行すると解決する場合があります。 | IP アドレスと DNS 名を確認して、操作を再試行してください。問題が解決しない場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。 | 
 | 5 | エラー 350031: デバイスは既に登録されています。 | | 対処不要です。 |
 | 6 | エラー 350016: デバイスの登録に失敗しました。 | |登録キーが正しいことを確認してください。 |
-| 7 | Invoke-HcsSetupWizard: デバイスの登録中にエラーが発生しました。原因として、IP アドレスまたは DNS 名の誤りが考えられます。ネットワーク設定を確認して、もう一度実行してください。問題が解決しない場合は、[Microsoft サポートにお問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)ください (エラー 350050)。 | デバイスから外部のネットワークに ping を実行できることを確認してください。外部ネットワークに接続できない場合、このエラーが発生して登録に失敗することがあります。エラーの原因としては、次の要因が考えられます。複数の要因によって発生する場合もあります。<ul><li>IP が正しくない</li><li>サブネットが正しくない</li><li>ゲートウェイが正しくない</li><li>DNS 設定が正しくない</li></ul> | 「[ステップ バイ ステップのトラブルシューティングの例](#step-by-step-storsimple-troubleshooting-example)」で手順を参照してください。 |
-| 8 | Invoke-HcsSetupWizard: サービスの内部エラー [0x1FBE2] が発生したため、現在の操作を実行できませんでした。しばらくしてから、操作をやり直してください。問題が解決しない場合は、Microsoft サポートにお問い合わせください。 | これは、ユーザーからは見えないすべてのエラーについてサービスまたはエージェントからスローされる総称的なエラーです。その最も一般的な原因として ACS 認証の失敗が挙げられます。NTP サーバーの構成に問題があって、デバイス上の時刻が正しく設定されていない可能性があります。 | (問題がある場合は) 時刻を修正してから、登録操作を再試行してください。問題が解決しない場合は、[Microsoft サポート](https://msdn.microsoft.com/library/azure/dn757750.aspx)に対処法をお問い合わせください。 |
+| 7 | Invoke-HcsSetupWizard: デバイスの登録中にエラーが発生しました。原因として、IP アドレスまたは DNS 名の誤りが考えられます。ネットワーク設定を確認して、もう一度実行してください。問題が解決しない場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください (エラー 350050)。 | デバイスから外部のネットワークに ping を実行できることを確認してください。外部ネットワークに接続できない場合、このエラーが発生して登録に失敗することがあります。エラーの原因としては、次の要因が考えられます。複数の要因によって発生する場合もあります。<ul><li>IP が正しくない</li><li>サブネットが正しくない</li><li>ゲートウェイが正しくない</li><li>DNS 設定が正しくない</li></ul> | 「[ステップ バイ ステップのトラブルシューティングの例](#step-by-step-storsimple-troubleshooting-example)」で手順を参照してください。 |
+| 8 | Invoke-HcsSetupWizard: サービスの内部エラー [0x1FBE2] が発生したため、現在の操作を実行できませんでした。しばらくしてから、操作をやり直してください。問題が解決しない場合は、Microsoft サポートにお問い合わせください。 | これは、ユーザーからは見えないすべてのエラーについてサービスまたはエージェントからスローされる総称的なエラーです。その最も一般的な原因として ACS 認証の失敗が挙げられます。NTP サーバーの構成に問題があって、デバイス上の時刻が正しく設定されていない可能性があります。 | (問題がある場合は) 時刻を修正してから、登録操作を再試行してください。問題が解決しない場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)に対処法をお問い合わせください。 |
 | 9 | 警告: デバイスをアクティブ化できませんでした。デバイス管理者のパスワードおよび StorSimple Snapshot Manager のパスワードが変更されていません。 | 登録に失敗した場合、デバイス管理者のパスワードおよび StorSimple Snapshot Manager のパスワードは変更されません。 |
 
 ## StorSimple デプロイメントのトラブルシューティング用ツール
@@ -153,11 +153,11 @@ StorSimple には、StorSimple ソリューションのトラブルシューテ�
 
 ### サポート パッケージのログまたは内容を表示するには
 
-1. 「[サポート パッケージの作成](https://msdn.microsoft.com/library/azure/dn772348.aspx)」の説明に従い、StorSimple 用 Windows PowerShell を使用してサポート パッケージを生成します。
+1. 「[サポート パッケージの作成](storsimple-create-manage-support-package.md)」で説明したとおり、StorSimple 用 Windows PowerShell を使用してサポート パッケージを生成します。
 
 2. クライアント コンピューターにローカルに[復号化スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65)をダウンロードします。
 
-3. この[手順](https://msdn.microsoft.com/library/azure/dn762117.aspx)に従い、このサポート パッケージを開いて暗号化を解除します。
+3. この[手順](storsimple-create-manage-support-package.md#edit-a-support-package)に従い、このサポート パッケージを開いて暗号化を解除します。
 
 4. 暗号化が解除されたサポート パッケージのログは etw/etvx 形式です。次の手順を実行すると、これらのファイルを Windows イベント ビューアーで表示できます。
   1. Windows クライアントで **eventvwr** コマンドを実行します。イベント ビューアーが起動します。
@@ -172,37 +172,37 @@ StorSimple には、StorSimple ソリューションのトラブルシューテ�
 
 6. ログ ファイル内で、セットアップ ウィザードによって呼び出されたコマンドレットに関連する文字列を検索します。これらのコマンドレットの一覧については、「[初回セットアップ ウィザード プロセス](#first-time-setup-wizard-process)」を参照してください。 
 
-7. 問題の原因を特定できない場合は、[Microsoft サポート](https://msdn.microsoft.com/library/azure/dn757750.aspx)に対処法をお問い合わせください。Microsoft サポートに問い合わせる際は、「[サポート セッションの開始](https://msdn.microsoft.com/library/azure/dn757804.aspx)」の手順に従ってください。
+7. 問題の原因を特定できない場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)に対処法をお問い合わせください。Microsoft サポートに問い合わせる際は、「[サポート要求の作成](storsimple-contact-microsoft-support.md#create-a-support-request)」の手順に従ってください。
 
 ## トラブルシューティングに使用できるコマンドレット
 
 接続エラーを検出するには、次の Windows PowerShell コマンドレットを使用します。
 
-- Get-NetAdapter: ネットワーク インターフェイスの正常性を検出するには、このコマンドレットを使用します。 
+- `Get-NetAdapter`: ネットワーク インターフェイスの正常性を検出するには、このコマンドレットを使用します。 
 
-- Test-Connection: ネットワークの内部と外部のネットワーク接続を確認するには、このコマンドレットを使用します。
+- `Test-Connection`: ネットワークの内部と外部のネットワーク接続を確認するには、このコマンドレットを使用します。
 
-- Test-HcsmConnection: 正常に登録されたデバイスの接続を確認するには、このコマンドレットを使用します。
+- `Test-HcsmConnection`: 正常に登録されたデバイスの接続を確認するには、このコマンドレットを使用します。
 
 StorSimple デバイスで Update 1 を実行している場合、次の診断のコマンドレットも使用できます。
 
-- Sync-HcsTime: デバイスの時刻を表示し、NTP サーバーとの時間の同期を強制するにはこのコマンドレットを使用します。
+- `Sync-HcsTime`: デバイスの時刻を表示し、NTP サーバーとの時間の同期を強制するにはこのコマンドレットを使用します。
 
-- Enable-HcsPing と Disable-HcsPing: StorSimple デバイスでホストがネットワーク インターフェイスを ping を実行できるようにするにはこのコマンドレットを使用します。既定では、StorSimple のネットワーク インターフェイスは ping 要求に応答しません。
+- `Enable-HcsPing` と `Disable-HcsPing`: StorSimple デバイスでホストがネットワーク インターフェイスを ping を実行するにはこれらのコマンドレットを使用します。既定では、StorSimple のネットワーク インターフェイスは ping 要求に応答しません。
 
-- Trace-HcsRoute: ルート トレース ツールとしてこのコマンドレットを使用します。最終的な宛先までにある各ルーターに長期にわたってパケットを送信し、各ホップから返されるパケットに基づく結果を計算します。Trace-HcsRoute では、指定のルーターやリンクのパケット損失の程度を表示するため、ネットワークの問題の原因となっているルーターやリンクが特定できます。
+- `Trace-HcsRoute`: ルート トレース ツールとしてこのコマンドレットを使用します。最終的な宛先までにある各ルーターに長期にわたってパケットを送信し、各ホップから返されるパケットに基づく結果を計算します。`Trace-HcsRoute` では、指定のルーターやリンクのパケット損失の程度を表示するため、ネットワークの問題の原因となっているルーターやリンクが特定できます。
 
-- Get-HcsRoutingTable: ローカル IP ルーティング テーブルを表示するにはこのコマンドレットを使用します。
+- `Get-HcsRoutingTable`: ローカル IP ルーティング テーブルを表示するにはこのコマンドレットを使用します。
 
 ## Get-NetAdapter コマンドレットを使用したトラブルシューティング
 
-デバイスを初めてデプロイするためにネットワーク インターフェイスを構成する場合は、デバイスがサービスにまだ登録されていないため、StorSimple Manager サービスの UI にハードウェアの状態が表示されません。また、[ハードウェアの状態] ページにデバイスの状態が必ずしも正しく反映されない場合があります (特に、サービスの同期に影響する問題がある場合)。このような場合は、Get-NetAdapter コマンドレットを使用して、ネットワーク インターフェイスの正常性と状態を確認できます。
+デバイスを初めてデプロイするためにネットワーク インターフェイスを構成する場合は、デバイスがサービスにまだ登録されていないため、StorSimple Manager サービスの UI にハードウェアの状態が表示されません。また、[ハードウェアの状態] ページにデバイスの状態が必ずしも正しく反映されない場合があります (特に、サービスの同期に影響する問題がある場合)。このような場合は、`Get-NetAdapter` コマンドレットを使用して、ネットワーク インターフェイスの正常性と状態を確認できます。
 
 ### デバイスのすべてのネットワーク アダプターの一覧を表示するには
 
-1. StorSimple 用 Windows PowerShell を起動し、「**Get-NetAdapter**」と入力します。 
+1. StorSimple 用 Windows PowerShell を起動し、「`Get-NetAdapter`」と入力します。 
 
-2. Get-NetAdapter コマンドレットの出力と次のガイドラインを使用して、ネットワーク インターフェイスの状態を把握します。
+2. `Get-NetAdapter` コマンドレットの出力と次のガイドラインを使用して、ネットワーク インターフェイスの状態を把握します。
   - インターフェイスが正常な状態で、有効になっている場合、**ifIndex** の状態は **Up** と表示されます。
   - インターフェイスは正常な状態だが、(ネットワーク ケーブルで) 物理的に接続されていない場合、**ifIndex** は **Disabled** と表示されます。
   - インターフェイスは正常な状態だが、有効になっていない場合、**ifIndex** の状態は **NotPresent** と表示されます。
@@ -210,7 +210,7 @@ StorSimple デバイスで Update 1 を実行している場合、次の診断�
 
 このコマンドレットを使用する方法の詳細については、Windows PowerShell コマンドレット リファレンスの「[Get-NetAdapter](https://technet.microsoft.com/library/jj130867.aspx)」を参照してください。
 
-次のセクションでは、Get-NetAdapter コマンドレットの出力のサンプルを示します。
+次のセクションでは、`Get-NetAdapter` コマンドレットの出力のサンプルを示します。
 
  これらのサンプルでは、コントローラー 0 はパッシブ コントローラーで、次のように構成されています。
 
@@ -255,9 +255,9 @@ StorSimple デバイスで Update 1 を実行している場合、次の診断�
  
 ## Test-Connection コマンドレットを使用したトラブルシューティング
 
-Test-Connection コマンドレットを使用すると、StorSimple デバイスを外部ネットワークに接続できるかどうかを確認できます。セットアップ ウィザードですべてのネットワーク パラメーター (DNS など) が正しく構成されている場合は、Test-Connection コマンドレットを使用して、outlook.com など、ネットワークの外部の既知のアドレスに ping を実行することができます。
+`Test-Connection` コマンドレットを使用すると、StorSimple デバイスを外部ネットワークに接続できるかどうかを確認できます。セットアップ ウィザードですべてのネットワーク パラメーター (DNS など) が正しく構成されている場合は、`Test-Connection` コマンドレットを使用して、outlook.com など、ネットワークの外部の既知のアドレスに ping を実行できます。
 
-Test-Connection コマンドレットの次の出力サンプルを参照してください。
+`Test-Connection` コマンドレットの次の出力サンプルをご覧ください。
 
 > [AZURE.NOTE]最初のサンプルでは、デバイスで DNS が正しく構成されていません。2 番目のサンプルでは、DNS が正しく構成されています。
  
@@ -285,7 +285,7 @@ Test-Connection コマンドレットの次の出力サンプルを参照して�
 
 ## Test-HcsmConnection コマンドレットを使用したトラブルシューティング
 
-StorSimple Manager サービスに既に接続され、登録されているデバイスには、Test-HcsmConnection コマンドレットを使用します。このコマンドレットを使用すると、登録済みのデバイスと、対応する StorSimple Manager サービス間の接続を確認できます。このコマンドは StorSimple 用 Windows PowerShell で実行できます。
+StorSimple Manager サービスに既に接続され、登録されているデバイスには、`Test-HcsmConnection` コマンドレットを使用します。このコマンドレットを使用すると、登録済みのデバイスと、対応する StorSimple Manager サービス間の接続を確認できます。このコマンドは StorSimple 用 Windows PowerShell で実行できます。
 
 ### Test-HcsmConnection コマンドレットを実行するには
 
@@ -324,11 +324,11 @@ StorSimple Manager サービスに既に接続され、登録されているデ�
  
 ログ ファイルの CiSCommandletLog0Curr.errlog と CiSAgentsvc0Curr.errlog には、例外の詳細など、詳しい情報が含まれています。
 
-このコマンドレットを使用する方法の詳細については、Windows PowerShell のリファレンス ドキュメントの「[Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx)」を参照してください。
+このコマンドレットを使用する方法の詳細については、Windows PowerShell のリファレンス ドキュメントの「[Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx)」をご覧ください。
 
 > [AZURE.IMPORTANT]このコマンドレットは、アクティブとパッシブの両方のコントローラーに対して実行できます。
  
-Test-HcsmConnection コマンドレットの次の出力サンプルを参照してください。
+`Test-HcsmConnection` コマンドレットの次の出力サンプルをご覧ください。
 
 **サンプル出力 - StorSimple リリースを実行している正常に登録済みのデバイス (2014 年 7 月)**
 
@@ -344,7 +344,7 @@ Test-HcsmConnection コマンドレットの次の出力サンプルを参照し
      Checking connectivity from StorSimple Manager service to StorSimple device. .... Success.
      Controller1>
 
-**サンプル出力 - StorSimple Update 1 を実行している正常に登録済みのデバイス (2015 年 5 月)**
+**サンプル出力 - StorSimple Update 1 を実行している正常に登録済みのデバイス**
 
 StorSimple デバイスで Update 1 を実行している場合、Verbose スイッチを使用して実行する必要はありません。
 
@@ -447,7 +447,7 @@ StorSimple デバイスのルーティング テーブルを表示するには�
 
 StorSimple デバイスで Update 1 を実行している場合は、DATA 0 のネットワーク インターフェイスがクラウド トラフィックで最優先されます。これは、クラウド対応インターフェイスがほかにある場合でも、クラウド トラフィックは DATA 0 を経由してルーティングされることを意味します。
 
-パラメーターを指定しないで Get-HcsRoutingTable コマンドレットを実行する場合 (次の例を参照)、コマンドレットでは IPv4 と IPv6 両方のルーティング テーブルを出力します。または `Get-HcsRoutingTable -IPv4` や `Get-HcsRoutingTable -IPv6` を指定して関連するルーティング テーブルを取得できます。
+パラメーターを指定しないで `Get-HcsRoutingTable` コマンドレットを実行する場合 (次の例を参照)、コマンドレットでは IPv4 と IPv6 両方のルーティング テーブルを出力します。または `Get-HcsRoutingTable -IPv4` や `Get-HcsRoutingTable -IPv6` を指定して関連するルーティング テーブルを取得できます。
 
       Controller0>
       Controller0>Get-HcsRoutingTable
@@ -533,11 +533,11 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 
 ### デバイス登録問題を見つけ、修正するには
 
-1. デバイス構成を確認します。アクティブ コントローラーで **Invoke-HcsSetupWizard** を実行します。
+1. デバイス構成を確認します。アクティブ コントローラーで `Invoke-HcsSetupWizard` を実行します。
 
-     >[AZURE.NOTE]セットアップ ウィザードはアクティブ コントローラー上で実行する必要があります。アクティブ コントローラーに接続されているかどうかは、シリアル コンソールに表示されるバナーを見て確認できます。接続先がコントローラー 0 であるかコントローラー 1 であるか、また、コントローラーがアクティブであるかパッシブであるかがバナーに表示されます。詳細については、「[デバイスでのアクティブなコントローラーの識別](https://msdn.microsoft.com/library/azure/dn790262.aspx)」を参照してください。
+     >[AZURE.NOTE]セットアップ ウィザードはアクティブ コントローラー上で実行する必要があります。アクティブ コントローラーに接続されているかどうかは、シリアル コンソールに表示されるバナーを見て確認できます。接続先がコントローラー 0 であるかコントローラー 1 であるか、また、コントローラーがアクティブであるかパッシブであるかがバナーに表示されます。詳細については、「[デバイスでのアクティブなコントローラーの識別](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
  
-2. デバイスが正しく配線されていることを確認します。デバイスのバック プレーンでネットワークのケーブル配線を確認します。ケーブル配線はデバイスのモデルによって異なります。詳細については、「[8100 デバイスにケーブルを接続する](https://msdn.microsoft.com/library/azure/dn757738.aspx)」または「[8600 デバイスにケーブルを接続する](https://msdn.microsoft.com/library/azure/dn757762.aspx)」を参照してください。
+2. デバイスが正しく配線されていることを確認します。デバイスのバック プレーンでネットワークのケーブル配線を確認します。ケーブル配線はデバイスのモデルによって異なります。詳細については、「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」または「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
 
      >[AZURE.NOTE]10 GbE ネットワーク ポートを使用する場合は、提供されている QSFP-SFP アダプターと SFP ケーブルを使用する必要があります。詳細については、[Mellanox ポートの OEM サプライヤー推奨ケーブル、スイッチ、トランシーバーの一覧](http://www.mellanox.com/page/cables?mtag=cable_overview)を参照してください。
  
@@ -545,7 +545,7 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 
    - Get-NetAdapter コマンドレットを使用し、DATA 0 のネットワーク インターフェイスの状態を検出します。 
    - リンクが正常に動作していない場合、インターフェイスがダウンしていることが **ifindex** ステータスによって示されます。その場合は、ポートとアプライアンス間およびポートとスイッチ間のネットワーク接続を確認する必要があります。ケーブルに不具合がないかも十分に確認してください。 
-   - アクティブ コントローラーの DATA 0 ポートの不具合が疑われる場合、コントローラー 1 の DATA 0 ポートに接続することで確認できます。確認するには、デバイスの背面のコントローラー 0 からネットワーク ケーブルを取り外し、コントローラー 1 に接続してから再度、Get-NetAdapter コマンドレットを実行します。コントローラーの DATA 0 ポートに不具合がある場合は、[Microsoft サポート](https://msdn.microsoft.com/library/azure/dn757750.aspx)に対処法をお問い合わせください。場合によっては、ご使用のシステム上のコントローラーを交換する必要があります。
+   - アクティブ コントローラーの DATA 0 ポートの不具合が疑われる場合、コントローラー 1 の DATA 0 ポートに接続することで確認できます。確認するには、デバイスの背面のコントローラー 0 からネットワーク ケーブルを取り外し、コントローラー 1 に接続してから再度、Get-NetAdapter コマンドレットを実行します。コントローラーの DATA 0 ポートに不具合がある場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)に対処法をお問い合わせください。場合によっては、ご使用のシステム上のコントローラーを交換する必要があります。
  
 4. スイッチとの接続を確認します。
    - 主エンクロージャのコントローラー 0 の DATA 0 ネットワーク インターフェイスとコントローラー 1 の DATA 0 ネットワーク インターフェイスが同じサブネットに属していることを確認します。 
@@ -555,24 +555,24 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 5. ユーザー エラーを排除します。
 
   - セットアップ ウィザードを再実行し (**Invoke-HcsSetupWizard** を実行する)、エラーがないように値をもう一度入力します。 
-  - 使用している登録キーを確認します。StorSimple Manager サービスには、同じ登録キーを使用して複数のデバイスを接続できます。「[サービス登録キーの取得](https://msdn.microsoft.com/library/azure/cd4dee49-6ae8-4ff0-b79b-74b2027cb694#sec03)」の手順に従って、正しい登録キーを使用しているかどうかを確認してください。
+  - 使用している登録キーを確認します。StorSimple Manager サービスには、同じ登録キーを使用して複数のデバイスを接続できます。「[サービス登録キーの取得](storsimple-manage-service.md#get-the-service-registration-key)」の手順に従って、正しい登録キーを使用しているかどうかを確認してください。
 
-    > [AZURE.IMPORTANT]複数のサービスを実行している場合、適切なサービスの登録キーを使用してデバイスを登録する必要があります。デバイスを間違った StorSimple Manager サービスで登録している場合、[Microsoft サポート](https://msdn.microsoft.com/library/azure/dn757750.aspx)に対処法を問い合わせる必要があります。場合によっては、デバイスを出荷時の設定にリセットしたうえで、目的のサービスに接続する必要があります。その場合は、データが失われる可能性があります。
+    > [AZURE.IMPORTANT]複数のサービスを実行している場合、適切なサービスの登録キーを使用してデバイスを登録する必要があります。デバイスを間違った StorSimple Manager サービスで登録している場合、[Microsoft サポート](storsimple-contact-microsoft-support.md)に対処法を問い合わせる必要があります。場合によっては、デバイスを出荷時の設定にリセットしたうえで、目的のサービスに接続する必要があります。その場合は、データが失われる可能性があります。
 
 6. Test-Connection コマンドレットを使用して、外部のネットワークとの接続を確認します。詳細については、「[Test-Connection コマンドレットを使用したトラブルシューティング](#troubleshoot-with-the-test-connection-cmdlet)」を参照してください。
 
-7. ファイアウォールによってブロックされている可能性がないか確認します。仮想 IP (VIP)、サブネット、ゲートウェイ、DNS の設定がすべて正しいことを確認してもなお、接続の問題が解消しない場合、デバイスと外部ネットワーク間の通信がファイアウォールによってブロックされている可能性があります。内側から外側への通信について、StorSimple デバイスのポート 80 とポート 443 を開放する必要があります。詳細については、「[StorSimple デバイスのネットワーク要件](https://msdn.microsoft.com/library/azure/dn772371.aspx)」を参照してください。
+7. ファイアウォールによってブロックされている可能性がないか確認します。仮想 IP (VIP)、サブネット、ゲートウェイ、DNS の設定がすべて正しいことを確認してもなお、接続の問題が解消しない場合、デバイスと外部ネットワーク間の通信がファイアウォールによってブロックされている可能性があります。内側から外側への通信について、StorSimple デバイスのポート 80 とポート 443 を開放する必要があります。詳細については、「[StorSimple デバイスのネットワーク要件](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)」をご覧ください。
 
 8. ログを確認します。「[トラブルシューティングに使用できるサポート パッケージとデバイス ログ](#support-packages-and-device-logs-available-for-troubleshooting)」をご覧ください。
 
-9. 以上の手順で問題を解決できない場合は、[Microsoft サポートにお問い合わせ](https://msdn.microsoft.com/library/azure/dn757750.aspx)ください。
+9. 以上の手順で問題を解決できない場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
 ## 次のステップ
-[運用デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)
+[運用デバイスのトラブルシューティングの方法](storsimple-troubleshoot-operational-device.md)
 
 <!--Link references-->
 
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

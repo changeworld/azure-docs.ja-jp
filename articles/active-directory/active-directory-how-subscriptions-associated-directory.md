@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure サブスクリプションを Azure AD に関連付ける方法" 
-	description="Microsoft Azure へのサインイン、および Azure サブスクリプションと Azure AD の間の関係などの関連する問題につて説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
+<properties
+	pageTitle="Azure サブスクリプションを Azure AD に関連付ける方法"
+	description="Microsoft Azure へのサインイン、および Azure サブスクリプションと Azure AD の間の関係などの関連する問題につて説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="stevenpo"
 	editor="LisaToft"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="05/05/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/14/2015" 
+	ms.author="curtand"/>
 
 # Azure サブスクリプションを Azure AD に関連付ける方法
 
@@ -88,7 +88,7 @@ Azure AD には、ディレクトリおよび ID 関連の機能を管理する�
 
 ![][3]
 
-Azure AD とコンシューマー Microsoft アカウント システムに同じ名前のユーザー アカウントがあります。使用する Azure サブスクリプションに関連付けるアカウントを選択する必要があります。このユーザーに対してサブスクリプションが存在しないというエラーが表示される場合は、正しくないオプションを選択した可能性があります。サインアウトして、もう一度やり直してください。サインインを妨げる可能性のあるエラーの詳細については、「[Troubleshooting "We were unable to find any subscriptions associated with your account" errors ("アカウントに関連付けられたサブスクリプションはありませんでした" というエラーのトラブルシューティング)](https://social.msdn.microsoft.com/Forums/en-US/f952f398-f700-41a1-8729-be49599dd7e2/troubleshooting-we-were-unable-to-find-any-subscriptions-associated-with-your-account-errors-in?forum=windowsazuremanagement)」を参照してください。
+Azure AD とコンシューマー Microsoft アカウント システムに同じ名前のユーザー アカウントがあります。使用する Azure サブスクリプションに関連付けるアカウントを選択する必要があります。このユーザーに対してサブスクリプションが存在しないというエラーが表示される場合は、正しくないオプションを選択した可能性があります。サインアウトして、もう一度やり直してください。サインインを妨げる可能性のあるエラーの詳細については、「[Troubleshooting "We were unable to find any subscriptions associated with your account" errors ("アカウントに関連付けられたサブスクリプションはありませんでした" というエラーのトラブルシューティング)](https://social.msdn.microsoft.com/Forums/ja-jp/f952f398-f700-41a1-8729-be49599dd7e2/troubleshooting-we-were-unable-to-find-any-subscriptions-associated-with-your-account-errors-in?forum=windowsazuremanagement)」を参照してください。
 
 ## Azure での Office 365 サブスクリプションのディレクトリの管理
 
@@ -124,6 +124,4 @@ Azure にサインアップする前に Office 365 にサインアップした�
 [2]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_OrgAccountSubscription.png
 [3]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_SignInDisambiguation.PNG
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

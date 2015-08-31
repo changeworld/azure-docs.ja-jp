@@ -169,4 +169,6 @@ Azure Virtual Network の作成が済むと、Azure 管理ポータルで次の�
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=August15_HO6-->
+[Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
+
+<!---HONumber=August15_HO8-->

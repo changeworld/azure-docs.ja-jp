@@ -88,11 +88,13 @@
 資格情報とは、エラスティック データベース クエリがエラスティック スケール シャード マップ、および Azure SQL DB のリモート データベースに接続するために使用するユーザー ID とパスワードを表します。必要なマスター キーと資格情報は、次の構文を使用して作成できます。
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';  
-    CREATE CREDENTIAL <credential_name> ON DATABASE
+    CREATE DATABASE SCOPED CREDENTIAL <credential_name>
     WITH IDENTITY = '<shard_map_username>',
     SECRET = '<shard_map_password>'
      [;]
 &lt;shard\_map\_username> にサフィックス “@servername” が含まれていないことを確認してください。
+
+資格情報に関する情報は、sys.database\_scoped.credentials のカタログ ビューに表示されます。
 
 マスター キーと資格情報は、次の構文を使用して削除できます。
 
@@ -263,4 +265,4 @@ SP\_EXECUTE\_FANOUT は、シャード マップで表されるデータベー�
 
 <!--anchors-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -3,7 +3,7 @@
 	description="Azure モバイル サービスを使用して Android JavaScript アプリにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services, notification-hubs" 
 	documentationCenter="android" 
-	authors="RickSaling"  
+	authors="RickSaling" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -18,7 +18,7 @@
 
 # Mobile Services アプリへのプッシュ通知の追加
 
-[AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push-EC.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push-ec.md)]
 
 このトピックでは、Azure モバイル サービスで Google Cloud Messaging (GCM) を使用して Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Azure Notification Hubs を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
@@ -35,11 +35,11 @@
 
 ##前提条件
 
-[AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites-EC.md)]
+[AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites-ec.md)]
 
 ##<a id="register"></a>Google Cloud Messaging を有効にする
 
-[AZURE.INCLUDE [GCM を有効にする](../../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[AZURE.INCLUDE [GCM を有効にする](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
 ##<a id="configure"></a>プッシュ要求を送信するように Mobile Services を構成する
 
@@ -49,7 +49,7 @@
 
 ###Android SDK バージョンの検証
 
-[AZURE.INCLUDE [SDK の確認](../../includes/mobile-services-verify-android-sdk-version-EC.md)]
+[AZURE.INCLUDE [SDK の確認](../../includes/mobile-services-verify-android-sdk-version-ec.md)]
 
 次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
 
@@ -57,11 +57,11 @@
 
 ###プロジェクトへの Google Play Services の追加
 
-[AZURE.INCLUDE [Play サービスの追加](../../includes/mobile-services-add-Google-play-services-EC.md)]
+[AZURE.INCLUDE [Play サービスの追加](../../includes/mobile-services-add-google-play-services-ec.md)]
 
 ###コードの追加
 
-[AZURE.INCLUDE [mobile-services-android-getting-started-with-push](../../includes/mobile-services-android-getting-started-with-push-EC.md)]
+[AZURE.INCLUDE [mobile-services-android-getting-started-with-push](../../includes/mobile-services-android-getting-started-with-push-ec.md)]
 
 
 ##<a id="update-scripts"></a>管理ポータルで登録されている挿入スクリプトを更新する
@@ -190,8 +190,8 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[データの使用]: mobile-services-android-get-started-data.md
 [Mobile Services の使用]: mobile-services-android-get-started.md
+[データの使用]: mobile-services-android-get-started-data.md
 [Get started with authentication]: mobile-services-android-get-started-users.md
 [Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-js
 [Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-js
@@ -212,4 +212,4 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
  
 
-<!-------HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

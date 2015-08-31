@@ -5,19 +5,24 @@
 	documentationCenter="" 
 	authors="nitinme" 
 	manager="paulettm" 
-	editor="cgronlun"/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
 	ms.service="hdinsight" 
 	ms.workload="big-data" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="07/19/2015" 
+	ms.topic="article" 
+	ms.date="08/07/2015" 
 	ms.author="nitinme"/>
 
 
 # クイック スタート: HDInsight の Apache Spark のプロビジョニングと Spark SQL を使用した対話型クエリの実行
+
+[AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
+
+* [HDInsight の Apache Spark のプロビジョニングと Spark SQL を使用した対話型クエリの実行](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql-v1.md)
 
 簡易作成オプションを使用して HDInsight に Apache Spark クラスターをプロビジョニングした後、Web ベースの [Zeppelin](https://zeppelin.incubator.apache.org) および [Jupyter](https://jupyter.org) Notebook を使用して Spark クラスターに対して Spark SQL 対話型クエリを実行します。
 
@@ -28,22 +33,7 @@
 
 このチュートリアルを開始する前に、Azure サブスクリプションが必要です。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-##<a name="storage"></a>Azure ストレージ アカウントの作成
 
-HDInsight で HDInsight クラスターをプロビジョニングするときに、Azure ストレージ アカウントを指定します。このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」をご覧ください。
-
-
-**Azure ストレージ アカウントを作成するには**
-
-1. [Azure ポータル][azure-management-portal]にサインインします。
-2. 左下隅にある **[新規]** をクリックし、次の図に示すように、値を入力します。
-
-	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.StorageAccount.QuickCreate.png "簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル")
-
->[AZURE.NOTE]ストレージ アカウントは、クラスターでサポートされる場所
-
-一覧の新しいストレージ アカウントを選択し、ページの下部の **[アクセス キーの管理]** をクリックします。**[プライマリ アクセス キー]** (または **[セカンダリ アクセス キー]** 動作しているいずれかのキー) の値を書き留めます。この情報は後で必要になります。詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」をご覧ください。
-	
 ##<a name="provision"></a>HDInsight Spark クラスターをプロビジョニングする
 
 このセクションでは、Spark バージョン 1.3.1 に基づいて HDInsight バージョン 3.2 クラスターをプロビジョニングします。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
@@ -53,11 +43,59 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 **Spark クラスターをプロビジョニングするには**
 
-1. [Azure ポータル][azure-management-portal]にサインインします。 
+1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。 
 
-2. 左下隅にある **[新規]** をクリックし、次の図に示すように、値を入力します。
+2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-	![HDInsight に Spark クラスターを作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.QuickCreateCluster.png "HDInsight に Spark クラスターを作成します")
+    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
+
+3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Hadoop]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Windows Server 2012 R2 Datacenter]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
+
+	![クラスターの名前と種類の入力](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.CreateCluster.2.png "クラスターの名前と種類の入力")
+
+4. 複数のサブスクリプションがある場合は、**[サブスクリプション]** エントリをクリックし、クラスターで使用する Azure サブスクリプションを選択します。
+
+5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力します。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
+
+	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
+
+6. **[資格情報]** をクリックし、**[クラスターのユーザー名]** と **[クラスターのログイン パスワード]** を入力します。クラスター ノードでリモート デスクトップを有効にする場合は、**[リモート デスクトップを有効にする]** で **[はい]** をクリックし、必要な値を指定します。このチュートリアルではリモート デスクトップは必要ないため、この手順はスキップできます下部にある **[選択]** をクリックして資格情報の構成を保存します。
+
+	![クラスターの資格情報の指定](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.CreateCluster.3.png "クラスターの資格情報の指定")
+
+7. **[データ ソース]** をクリックし、クラスターの既存のデータ ソースを選択するか、新しいデータ ソースを作成します。HDInsight で Hadoop クラスターをプロビジョニングするときに、Azure ストレージ アカウントを指定します。Hadoop 分散ファイルシステム (HDFS) と同様、このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」をご覧ください。
+
+	![[データ ソース] ブレード](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.4.png "データ ソース構成の指定")
+
+	現在、HDInsight クラスターのデータ ソースとして Azure ストレージ アカウントを選択できます。次の説明を参照して、**[データ ソース]** ブレードのエントリを理解してください。
+
+	- **選択方法**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
+
+	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。新しいストレージ アカウントを作成する場合は **[新規作成]** をクリックします。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑のチェック マークが表示されます。
+
+	- **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+
+	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
+
+		> [AZURE.IMPORTANT]既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
+	
+	**[選択]** をクリックしてデータ ソースの構成を保存します。
+
+8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
+
+	![[ノード価格レベル] ブレード](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.CreateCluster.5.png "クラスター ノード数の指定")
+
+	**[選択]** をクリックして、ノードの価格構成を保存します。
+
+9. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。これでクラスターが作成され、Azure ポータルのスタート画面にクラスター用のタイルが追加されます。アイコンはクラスターがプロビジョニング中であることを示し、プロビジョニングが完了すると、[HDInsight] アイコンを表示するように変化します。
+
+	| プロビジョニング中 | プロビジョニング完了 |
+	| ------------------ | --------------------- |
+	| ![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/provisioning.png) | ![プロビジョニングされたクラスターのタイル](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/provisioned.png) |
+
+	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
+
+10. プロビジョニングが完了したら、スタート画面で Spark クラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
 
 ##<a name="zeppelin"></a>Zeppelin Notebook を使用して対話型 Spark SQL クエリを実行する
@@ -66,7 +104,7 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 >[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Zeppelin を起動した後、**Zeppelin HVAC tutorial** という名前でこの Notebook を検索します。
 
-1. Zeppelin Notebook を起動します。Azure ポータルで新しく作成した Spark クラスターを選択し、下部にあるポータル タスク バーの **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。表示されるページの指示に従って Notebook を起動します。
+1. Zeppelin Notebook を起動します。Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。表示されるページの指示に従って Notebook を起動します。
 
 2. 新しい Notebook を作成します。ヘッダー ウィンドウで **[Notebook]** をクリックし、**[Note の新規作成]** をクリックします。
 
@@ -146,7 +184,8 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 
 >[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Jupyter を起動した後、**HVACTutorial.ipynb** という名前でこの Notebook を検索します。
 
-1. Jupyter Notebook を起動します。Azure ポータルで Spark クラスターを選択し、下部のポータル タスク バーで **[Jupyter Notebook]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+1. Jupyter Notebook を起動します。Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+
 2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python2]** をクリックします。
 
 	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Note.Jupyter.CreateNotebook.png "新しい Jupyter Notebook を作成します")
@@ -243,4 +282,4 @@ HDInsight で HDInsight クラスターをプロビジョニングするとき�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

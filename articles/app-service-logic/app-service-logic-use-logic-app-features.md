@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2015"
+	ms.date="08/19/2015"
 	ms.author="stepsic"/>
 	
 # ロジック アプリの機能を使用する
@@ -26,6 +26,15 @@
 - ワークフローを開始するためのオプション。
 
 このトピックを完了する前に、「[新しいロジック アプリを作成する]」の手順を完了する必要があります。[Azure ポータル]でロジック アプリを参照し、概要の **[トリガーとアクション]** をクリックしてロジック アプリの定義を編集します。
+
+## 参考資料
+
+次の資料が役立つ場合があります。
+
+- [Management and runtime REST APIs (管理 REST API およびランタイム REST API)](https://msdn.microsoft.com/library/azure/dn948513.aspx) - Logic Apps を直接起動する方法が記載されています。
+- [Language reference (言語リファレンス)](https://msdn.microsoft.com/library/azure/dn948512.aspx) - サポートされるすべての関数/式の包括的な一覧
+- [Trigger and action types (トリガーおよびアクションのタイプ)](https://msdn.microsoft.com/library/azure/dn948511.aspx) - 各種アクションとそれらで使用される入力値
+- [Overview of App Service (App Service の概要)](app-service-value-prop-what-is.md) - ソリューションを作成するときに選択するコンポーネントの説明
 
 ## 条件付きロジックと繰り返しの追加
 
@@ -112,8 +121,9 @@ Logic App 定義の詳細については、[「Author Logic App definitions (Log
 
 このコールバックを使用すると、カスタム アプリケーション内から、ロジック アプリを起動することができます。**基本**認証を使用する必要があります。`default` のユーザー名が作成され、パスワードは **[プロパティ]** ブレードの**プライマリ アクセス キー** フィールドの値になります。次に例を示します。
 
-        POST https://default:<<your primary access key>>@<< your endpoint>>/run?api-version=2015-02-01-preview
+        POST https://<< your endpoint >>/run?api-version=2015-02-01-preview
         Content-type: application/json
+        Authorization: Basic << base-64 encoded string of default:<access key> >>
         {
             "name" : "nameOfTrigger",
             "outputs" : { "property" : "value" }
@@ -133,4 +143,4 @@ Logic App 定義の詳細については、[「Author Logic App definitions (Log
 [新しいロジック アプリを作成する]: app-service-logic-create-a-logic-app.md
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

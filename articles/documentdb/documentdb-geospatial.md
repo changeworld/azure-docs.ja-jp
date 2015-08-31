@@ -351,8 +351,8 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
 DocumentDB の地理空間機能の基本的な使い方を身に付けたら、次に段階に進みましょう。
 
 - [Github の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/code-samples/Queries.Spatial)を参考にして実際にコードを作成する
-- [DocumentDB Query Playground](www.documentdb.com/sql/demo) で地理空間クエリを実際に体験してみる
+- [DocumentDB Query Playground](http://www.documentdb.com/sql/demo#geospatial) で地理空間クエリを実際に体験してみる
 - [DocumentDB クエリ](documentdb-sql-query.md)についてさらに理解を深める
 - [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)についてさらに理解を深める
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

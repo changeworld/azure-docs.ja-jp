@@ -18,7 +18,7 @@
 
 # 既存のアプリケーションへの Mobile Services の追加
 
-[AZURE.INCLUDE [mobile-services-selector-get-started-data](../../includes/mobile-services-selector-get-started-data-EC.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-data](../../includes/mobile-services-selector-get-started-data-ec.md)]
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
@@ -29,7 +29,7 @@
 <div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-With-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-android-get-started-data-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-With-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a><span class="time">15:32:00</span></div>
 </div>
 
-> [AZURE.NOTE]このチュートリアルの目的は、モバイル サービスが Android アプリのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「[モバイル サービスの使用](../get-started-android-EC.md)」を完了することをお勧めします。
+> [AZURE.NOTE]このチュートリアルの目的は、モバイル サービスが Android アプリのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「[モバイル サービスの使用](../get-started-android-ec.md)」を完了することをお勧めします。
 > 
 > 完成したアプリケーションのソース コードは、[ここ](https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStartedWithData/Android/GetStartedWithData)で確認できます。
 
@@ -49,16 +49,16 @@
 
 ###サンプル コードの取得
 
-[AZURE.INCLUDE [download-android-sample-code](../../includes/download-android-sample-code-EC.md)]
+[AZURE.INCLUDE [download-android-sample-code](../../includes/download-android-sample-code-ec.md)]
 
 ###Android SDK バージョンの検証
 
-[AZURE.INCLUDE [SDK の確認](../../includes/mobile-services-verify-android-sdk-version-EC.md)]
+[AZURE.INCLUDE [SDK の確認](../../includes/mobile-services-verify-android-sdk-version-ec.md)]
 
 
 ###サンプル コードの確認と実行
 
-[AZURE.INCLUDE [mobile-services-android-run-sample-code](../../includes/mobile-services-android-run-sample-code-EC.md)]
+[AZURE.INCLUDE [mobile-services-android-run-sample-code](../../includes/mobile-services-android-run-sample-code-ec.md)]
 
 ##<a name="create-service"></a>管理ポータルで新規モバイル サービスを作成する
 
@@ -70,7 +70,7 @@
 
 ##<a name="update-app"></a>モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する
 
-[AZURE.INCLUDE [mobile-services-android-getting-started-with-data](../../includes/mobile-services-android-getting-started-with-data-EC.md)]
+[AZURE.INCLUDE [mobile-services-android-getting-started-with-data](../../includes/mobile-services-android-getting-started-with-data-ec.md)]
 
 ##<a name="test-app"></a>新しいモバイル サービスに対するアプリケーションのテスト
 
@@ -123,7 +123,7 @@
 
 <!-- URLs. -->
 [認証の使用]: mobile-services-android-get-started-users.md
-[プッシュ通知の使用]: mobile-services-javascript-backend-android-get-started-push-EC.md
+[プッシュ通知の使用]: mobile-services-javascript-backend-android-get-started-push-ec.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
@@ -132,4 +132,4 @@
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

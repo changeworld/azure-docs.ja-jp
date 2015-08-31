@@ -29,13 +29,19 @@
 
 ## コネクタを取得する
 
-まずは、使用するコネクタとして [**Dropbox コネクタ**](app-service-logic-connector-dropbox.md) と [**Twitter コネクタ**](app-service-logic-connector-twitter.md) の 2 つを作成する必要があります。コネクタを作成する手順は、以下のとおりです。
+まずは、使用するコネクタとして [**Dropbox コネクタ**](app-service-logic-connector-dropbox.md) と [**Twitter コネクタ**](app-service-logic-connector-twitter.md) の 2 つを作成する必要があります。Twitter API でリダイレクトが行われるため、無料のアプリを Twitter に登録する必要もあります。コネクタを作成する手順は、以下のとおりです。
 
 0. Azure ポータルにサインインします。
 
 1. ホーム画面の [**[Marketplace]**](https://portal.azure.com/#blade/HubsExtension/GalleryFeaturedMenuItemBlade/selectedMenuItemId/apiapps) をクリックし、**Twitter** を検索します (または、[ここをクリック](https://portal.azure.com/#create/microsoft_com.TwitterConnector.0.2.2)します)。
 
 2. [Twitter コネクタ] を選択し、[作成] をクリックします。すべての設定が表示されます。名前は「**Twitter コネクタ**」のままでかまいません。
+3. [パッケージの設定] を選択します。ここに、Twitter アプリケーションからの情報を入力する必要があります。次の手順で、無料のアプリケーションを設定できます。
+	1. [[Twitter アプリの登録ページ]](http://apps.twitter.com) に移動します。
+	2. 新しいアプリを作成します。
+	3. 名前と説明を入力します。Web サイトの任意の URL を入力し、コールバック URL は空白のままにしておくことができます。
+	4. 登録が完了したら、"コンシューマー キー" を Twitter から Azure の "clientId" フィールドにコピーし、"コンシューマー シークレット" を Twitter から "clientSecret" にコピーします。
+	5. 他の API 設定に戻るには、Azure のウィンドウで [OK] をクリックします。
 
 3. **[App Service プランの新規作成]** に、プランの名前を入力します。
 
@@ -98,7 +104,7 @@
 
 アクションとは、ワークフローの動作を指します。アクションの数には上限はありません。また、アクションを調整して、あるアクションの情報がその次のアクションに送られるようにすることもできます。
 
-1. 右側のウィンドウで **[Twitter コネクタ]** を探し、クリックします。
+1. 右側のウィンドウで **Twitter Connector** を探し、クリックします。
 
 
 2. 読み込みが終わったら **[承認]** ボタンをクリックし、Twitter アカウントにサインインして、**[アプリを認証]** をクリックします。
@@ -119,7 +125,7 @@
 
 最後に、ツイートを Dropbox のファイルにアップロードするアクションを追加します。
 
-1. 右側のウィンドウで、**[Dropbox コネクタ]** をクリックします。
+1. 右側のウィンドウで、**[Dropbox Connector]** をクリックします。
 
 2. プロビジョニングが完了したら **[承認]** ボタンをクリックし、Dropbox アカウントにサインインして **[許可]** をクリックします。
 
@@ -174,4 +180,4 @@
 [ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

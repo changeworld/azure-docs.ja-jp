@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="adinah"
+   manager="carolz"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/09/2015"
+   ms.date="08/17/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager のデプロイ
@@ -63,7 +63,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
     - ミラー化された動的ボリューム (RAID 1)
     - クラスターの共有ボリューム
  
-    StorSimple デバイスまたは StorSimple 仮想デバイスにボリュームを作成する方法については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」の「手順 6: ボリュームを作成する」を確認してください。
+    StorSimple デバイスまたは StorSimple 仮想デバイスにボリュームを作成する方法については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」の「[手順 6: ボリュームを作成する](storsimple-deployment-walkthrough.md#step-6-create-a-volume)」をご確認ください。
 
 ## StorSimple Snapshot Manager の新規インストール
 
@@ -255,4 +255,4 @@ StorSimple Snapshot Manager の詳細については、「[StorSimple Snapshot M
 
 StorSimple Snapshot Manager ユーザー インターフェイスの詳細については、「[StorSimple Snapshot Manager のユーザー インターフェイス](storsimple-use-snapshot-manager.md)」をご覧ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

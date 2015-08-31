@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="Blackmist"
 	manager="paulettm"
-	editor="cgronlun"/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
 	ms.service="hdinsight"
@@ -120,4 +121,4 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 8. サービスが再開したら、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。これにより、Ambari はサービスのアラートの監視を再開します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="Blackmist"
 	manager="paulettm"
-	editor="cgronlun"/>
+	editor="cgronlun"
+    tags="azure-portal"/>
 
 <tags
 	ms.service="hdinsight"
@@ -242,4 +243,4 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

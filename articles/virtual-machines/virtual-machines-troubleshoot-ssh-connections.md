@@ -43,7 +43,7 @@
 Azure 管理ポータルの操作:
 
 1. **[仮想マシン]** > *VM 名*をクリックします。
-2. 状態を確認する仮想マシンの**ダッシュ ボード**をクリックします。
+2. 状態を確認する仮想マシンの**ダッシュボード**をクリックします。
 3. コンピューティング、記憶域、およびネットワーク リソースの最近のアクティビティを確認するには、**[監視]** をクリックします。
 4. SSH トラフィックのエンドポイントがあることを確認するには、**[エンドポイント]** をクリックします。
 
@@ -108,7 +108,7 @@ SSH クライアントから Azure 仮想マシンの SSH サービスに到達�
 
 ### ソース 3: クラウド サービス エンドポイントと ACL
 
-サービス管理内で作成された仮想マシンで問題や構成ミスの原因になっているクラウド サービス エンドポイントと ACL を排除する場合、 同じ仮想ネットワーク内にある別の Azure 仮想マシンから自身の Azure 仮想マシンに SSH 接続できるかを確認します。
+サービス管理 API を使用して作成された仮想マシンで問題や構成ミスの原因になっているクラウド サービス エンドポイントと ACL を排除する場合、同じ仮想ネットワーク内にある別の Azure 仮想マシンから自身の Azure 仮想マシンに SSH 接続できることを確認します。
 
 ![](./media/virtual-machines-troubleshoot-ssh-connections/ssh-tshoot4.png)
 
@@ -145,7 +145,7 @@ SSH クライアントから Azure 仮想マシンの SSH サービスに到達�
 
 ## 手順 4: Azure サポート フォーラムに問題を送信する
 
-世界中の Azure 専門家に質問するには、MSDN Azure フォーラムまたは Stack Overflow Azure フォーラムのいずれかに問題を送信してください。詳細については、「[Microsoft Azure フォーラム](http://azure.microsoft.com/support/forums/)」参照してください。
+世界中の Azure 専門家に質問するには、MSDN Azure フォーラムまたは Stack Overflow Azure フォーラムのいずれかに問題を送信してください。詳細については、「[Microsoft Azure フォーラム](http://azure.microsoft.com/support/forums/)」を参照してください。
 
 ## 手順 5: Azure サポート インシデントを送信します。
 
@@ -165,4 +165,4 @@ Azure サポートの使用方法の詳細については、「[Microsoft Azure 
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

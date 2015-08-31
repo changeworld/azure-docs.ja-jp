@@ -1,18 +1,18 @@
 <properties
-   pageTitle="StorSimple ボリュームの管理"
+   pageTitle="StorSimple ボリュームの管理 | Microsoft Azure"
    description="StorSimple ボリュームを追加、変更、監視する方法と、必要に応じて StorSimple ボリュームをオフラインにする方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/13/2015"
+   ms.date="08/14/2015"
    ms.author="v-sharos" />
 
 # StorSimple ボリュームの管理
@@ -21,7 +21,7 @@
 
 このチュートリアルでは、StorSimple Manager サービスを使用して、StorSimple デバイスおよび StorSimple 仮想デバイスにボリュームを作成して管理する方法について説明します。
 
-StorSimple Manager サービスは、StorSimple ソリューションを単一の Web インターフェイスから管理できる、Azure の管理ポータルの拡張機能です。StorSimple Manager サービスを使用すると、ボリュームの管理に加え、StorSimple サービスの作成と管理、デバイスの表示と管理、アラートの表示、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
+StorSimple Manager サービスは、StorSimple ソリューションを単一の Web インターフェイスから管理できる、Azure ポータルの拡張機能です。StorSimple Manager サービスを使用すると、ボリュームの管理に加え、StorSimple サービスの作成と管理、デバイスの表示と管理、アラートの表示、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
 
 > [AZURE.NOTE]Azure StorSimple は、仮想プロビジョニングされたボリュームのみを作成できます。完全にプロビジョニングされたボリュームまたは部分的にプロビジョニングされたボリュームを Azure StorSimple システム上に作成することはできません。
 >
@@ -55,7 +55,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 ## ボリュームを追加する
 
-[ボリュームの作成](storsimple-deployment-walkthrough.md#to-create-a-volume)は、StorSimple ソリューションのデプロイメント時に完了しています。ボリュームを追加するには、同様の手順を実行します。
+[ボリュームの作成](storsimple-deployment-walkthrough-u1.md#step-6-create-a-volume)は、StorSimple ソリューションのデプロイメント時に完了しています。ボリュームを追加するには、同様の手順を実行します。
 
 ### ボリュームを追加するには
 
@@ -148,7 +148,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 2. 削除するボリュームが含まれているボリューム コンテナーを選択します。ボリューム コンテナーをクリックして **[ボリューム]** ページにアクセスします。
 
-3. このコンテナーに関連付けられているすべてのボリュームが表形式で表示されます。削除するボリュームの状態を確認します。削除するボリュームがオフラインでない場合は、最初に 「[ボリュームをオフラインにする](#Take-a-volume-offline)」の手順に従ってボリュームをオフラインにします。
+3. このコンテナーに関連付けられているすべてのボリュームが表形式で表示されます。削除するボリュームの状態を確認します。削除するボリュームがオフラインでない場合は、最初に 「[ボリュームをオフラインにする](#take-a-volume-offline)」の手順に従ってボリュームをオフラインにします。
 
 4. ボリュームがオフラインになったら、ページ下部にある **[削除]** をクリックします。
 
@@ -181,4 +181,4 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

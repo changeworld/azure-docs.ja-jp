@@ -210,4 +210,4 @@ Windows Phone 8.1 では、以前の Silverlight ベースの XAML を使用し�
 [MVVM を使用した Azure モバイル サービスのユニバーサル Windows アプリ プロジェクト]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

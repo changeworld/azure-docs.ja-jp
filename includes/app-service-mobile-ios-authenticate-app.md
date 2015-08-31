@@ -1,7 +1,4 @@
-
-
-1. **QSTodoListViewController.m** を開き、次のメソッドを追加します。
-
+1. Mac の Xcode で **QSTodoListViewController.m** を開き、次のメソッドを追加します。Facebook を ID プロバイダーとして使用しない場合は、_facebook_ を _microsoftaccount_、_twitter_、_google_、_windowsazureactivedirectory_ のいずれかに変更します。
 
         - (void) loginAndGetData
         {
@@ -15,14 +12,10 @@
             }];
         }
 
-
-    > [AZURE.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、**loginWithProvider** に渡される値を変更します。サポートされている値は、_microsoftaccount_、_facebook_、_twitter_、_google_、_windowsazureactivedirectory_ です。
-
-
-2. 最後の `[self refresh]` を次の内容と交換して、`viewDidLoad` を変更します。
+2. `viewDidLoad` の `[self refresh]` を次のコードに置き換えます。
 
         [self loginAndGetData];
 
-3. **[Run]** をクリックしてアプリを開始し、選択した ID プロバイダーでログインします。ログインが成功すると、Todo リストを表示して更新できます。
+3. **[実行]** をクリックしてアプリを起動したら、ログインします。ログインが成功すると、Todo リストを表示して更新できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

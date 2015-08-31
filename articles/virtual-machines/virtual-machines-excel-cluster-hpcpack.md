@@ -12,7 +12,7 @@ ms.service="virtual-machines"
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="big-compute"
- ms.date="07/27/2015"
+ ms.date="08/18/2015"
  ms.author="danlep"/>
 
 # Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する
@@ -26,7 +26,6 @@ ms.service="virtual-machines"
 ## 前提条件
 
 * **クライアント コンピューター** - Azure PowerShell のクラスター デプロイメント スクリプト (このデプロイメント方法を選択する場合) を実行したり、Excel および SOA のサンプル ジョブをクラスターに送信したりするには、Windows ベースのクライアント コンピューターが必要です。
-
 
 * **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
@@ -61,7 +60,7 @@ Azure クイックスタート テンプレートを使用すると、Azure プ�
     >
     >計算ノードの VM は、選択した計算ノード ファミリの最新のイメージから作成されます。汎用の最新の HPC Pack 2012 R2 Update 2 計算イメージの **ComputeNode** オプションを選択します。Microsoft Excel Professional Plus 2013 の評価版を含む最新の HPC Pack 計算ノード イメージの **ComputeNodeWithExcel** オプションを選択します。一般的な SOA セッション用または Excel UDF オフロード用にクラスターをデプロイする場合は、**ComputeNode** オプションを選択します (Excel はインストールされません)。
     >
-    >運用ワークロードに **ComputeNodeWithExcel** を使用する場合は、有効な Excel ライセンスを提供して計算ノードで Excel をアクティブ化する必要があります。そうしないと、Excel の評価版は 60 日後に有効期限が切れ、その時点から Excel ワークロードは実行できなくなります。
+    >運用ワークロードに **ComputeNodeWithExcel** を使用する場合は、有効な Excel ライセンスを提供して計算ノードで Excel をアクティブ化する必要があります。そうしないと、Excel の評価版は 30 日後に有効期限が切れ、その時点から Excel ワークロードは実行できなくなります。
 
     c.サブスクリプションを選択します。
 
@@ -377,4 +376,4 @@ SOA クライアント アプリケーションでは、IaaS クラスターの�
 [endpoint]: ./media/virtual-machines-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-excel-cluster-hpcpack/udf.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

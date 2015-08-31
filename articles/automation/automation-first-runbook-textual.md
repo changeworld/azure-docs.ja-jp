@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Automation での初めてのテキスト形式の Runbook"
+	pageTitle="Azure Automation での初めてのテキスト形式の Runbook | Microsoft Azure"
 	description="PowerShell ワークフローを使用して簡単なテキスト形式の Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。Azure リソースに対する認証、入力パラメーターなど、複数の概念について説明します。"
 	services="automation"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="08/13/2015"
+	ms.date="08/18/2015"
 	ms.author="bwren"/>
 
 
@@ -29,7 +29,7 @@
 
 このチュートリアルを最後まで行うには、以下のものが必要です。
 
-- として機能します。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-trial/" target="_blank">[無料評価版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
+- として機能します。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-trial/" target="_blank">[無料試用版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
 - Runbook を保持するための [Automation アカウント](automation-configuring.md)。
 - Azure Virtual Machine。マシンを停止して起動するので、運用環境のものは使用しないでください。
 - Azure リソースに対する認証に使用する [Azure Active Directory のユーザーと Automation の資格情報資産](automation-configuring.md)。このユーザーには、仮想マシンを開始および停止するアクセス許可が必要です。
@@ -42,7 +42,7 @@
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。<br> ![Runbook の制御](media/automation-first-runbook-textual/runbooks-control.png)
 2. **[Runbook の追加]** ボタンをクリックし、次に **[新しい Runbook の作成]** をクリックして、新しい Runbook を作成します
 3. Runbook の名前を *MyFirstRunbook-Textual* に設定します。
-4. ここでは、PowerShell ワークフローに基づいた[テキスト形式の Runbook](automation-powershell-workflow.md) を作成するため、**[Runbook type]** として **[Powershell ワークフロー**] を選択します。<br> ![新しい Runbook](media/automation-first-runbook-textual/new-runbook.png)
+4. ここでは、PowerShell ワークフローに基づいた[テキスト形式の Runbook](automation-powershell-workflow.md) を作成するため、**[Runbook type]** として **[Powershell ワークフロー]** を選択します。<br> ![新しい Runbook](media/automation-first-runbook-textual/new-runbook.png)
 5. **[作成]** をクリックして Runbook を作成し、テキスト エディターを開きます。
 
 ## 手順 2 - コードを Runbook に追加する
@@ -82,14 +82,14 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 ## 手順 5 - Azure リソースを管理するための認証を追加する
 
-Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。ここでは、Runbook で Azure リソースを管理します。ただし、[前提条件](#prerequisites)で示されている資格情報を使用して認証を行わないと、これを実現することはできません。**Set-AzureAccount** コマンドレットでこれを行います。
+Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。ここでは、Runbook で Azure リソースを管理します。ただし、[前提条件](#prerequisites)で示されている資格情報を使用して認証を行わないと、これを実現することはできません。**Add-AzureAccount** コマンドレットでこれを行います。
 
 1.  MyFirstRunbook-Textual ウィンドウで **[編集]** をクリックして、テキスト エディターを開きます。<br> ![Runbook の編集](media/automation-first-runbook-textual/runbook-toolbar-edit.png) 
 2.  **Write-Output** の行は不要になったので削除します。
 3.  中かっこ内の空白行にカーソルを置きます。
 3.  ライブラリ コントロールで、**[資産]**、**[資格情報]** の順に展開します。
-4.  資格情報を右クリックし、**[キャンバスに追加]** をクリックします。これにより、資格情報の **Get AutomationCredential** アクティビティが追加されます。
-5.  **Get-AutomationCredential** の前に「*$Credential =*」と入力し、変数に資格情報を割り当てます。 
+4.  資格情報を右クリックし、**[キャンバスに追加]** をクリックします。これにより、資格情報の **Get-AutomationPSCredential** アクティビティが追加されます。
+5.  **Get-AutomationPSCredential** の前に「*$Credential =*」と入力し、変数に資格情報を割り当てます。 
 3.  次の行に「*Add-AzureAccount -Credential $Credential*」と入力します。<br> ![認証](media/automation-first-runbook-textual/authentication.png) 
 3. **テスト ウィンドウ**をクリックして、Runbook をテストできるようにします。
 10. **[開始]** をクリックしてテストを開始します。完了すると、次のような出力により、資格情報内のユーザーに関する情報が返されます。これは、資格情報が有効であることの確認になります。<br> ![認証](media/automation-first-runbook-textual/authentication-test.png) 
@@ -122,4 +122,4 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 - [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

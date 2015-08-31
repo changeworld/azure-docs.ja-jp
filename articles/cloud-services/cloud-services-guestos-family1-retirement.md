@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="06/16/2015"
+   ms.date="08/18/2015"
    ms.author="adegeo"/>
 
 
@@ -33,7 +33,7 @@ OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表さ
 
 ## 利用中のサービスが影響を受けるか
 
-次のいずれかの条件に該当する場合、利用中のクラウド サービスは影響を受けます。
+次のいずれかの条件に該当する場合、利用中の Cloud Services は影響を受けます。
 
 1. クラウド サービスの ServiceConfiguration.cscfg ファイルに "osFamily = 1" という値が明示的に指定されている。 
 2. クラウド サービスの ServiceConfiguration.cscfg ファイル内で osFamily の値が明示的に指定されていない。現在、この場合、既定値として "1" が使用されます。
@@ -78,4 +78,7 @@ foreach($subscription in Get-AzureSubscription) {
 ## 2014 年 11 月 3 日付けでゲスト OS ファミリ 1 の延長サポートが終了
 ゲスト OS ファミリ 1 のクラウド サービスはサポートされていません。サービスの中断を回避するには、できるだけ早くファミリ 1 から移行してください。
 
-<!---HONumber=August15_HO7-->
+## 次のステップ
+最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
+
+<!---HONumber=August15_HO8-->

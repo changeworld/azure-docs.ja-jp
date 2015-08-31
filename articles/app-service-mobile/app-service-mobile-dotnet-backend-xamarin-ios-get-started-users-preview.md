@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/30/2015" 
+	ms.date="08/03/2015" 
 	ms.author="mahender"/>
 
 # Xamarin.iOS アプリに認証を追加する
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
 このトピックでは、クライアント アプリケーションから App Service モバイル アプリのユーザーを認証する方法について説明します。このチュートリアルでは、App Service でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル アプリによって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
@@ -30,6 +28,10 @@
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-auth-preview](../../includes/app-service-mobile-dotnet-backend-enable-auth-preview.md)]
 
+##<a name="create-gateway"></a>App Service ゲートウェイを作成する
+
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-gateway-preview](../../includes/app-service-mobile-dotnet-backend-create-gateway-preview.md)]
+
 ##<a name="register"></a>アプリケーションを認証に登録し、App Services を構成する
 
 [AZURE.INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
@@ -38,25 +40,28 @@
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-<ol start="5">
-<li><p>Visual Studio または Xamarin Studio で、デバイスまたはシミュレーターを使用してクライアント プロジェクトを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。</p>
-   
-   	<p>この問題は、認証されていないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、現在の <em>TodoItem</em> テーブルでは認証が要求されるために発生します。</p></li>
-</ol>
+&nbsp;&nbsp;4.Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターを使用してクライアント プロジェクトを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。デバッガーのコンソールに、エラーが記録されます。Visual Studio では、[出力] ウィンドウでエラーを確認する必要があります。
 
-次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
+&nbsp;&nbsp;この許可されていない問題は、アプリが認証されないユーザーとしてモバイル アプリのバックエンドにアクセスしようとするために発生します。*TodoItem* テーブルは今すぐ認証が必要です。
+
+次に、認証されたユーザーでモバイル アプリのバックエンドからリソースを要求するように、クライアント アプリを更新します。
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
 ここでは、データを表示する前にログイン画面を表示するようにアプリケーションを変更します。アプリケーションが起動したときには、App Service には接続されず、データも表示されません。ユーザーが最初に更新操作を実行した後で、ログイン画面が表示されます。ログインに成功すると、Todo 項目の一覧が表示されます。
 
-1. クライアント プロジェクトで、ファイル **QSTodoService.cs** を開き、QSTodoService に次の宣言を追加します。
+1. クライアント プロジェクトで、ファイル **QSTodoService.cs** を開き、次の using ステートメントとメンバー宣言を QSTodoService に追加します。
+
 
 		// Logged in user
 		private MobileServiceUser user; 
 		public MobileServiceUser User { get { return user; } }
 
-2. 次の定義を使用して、**QSTodoService** に新しいメソッド **Authenticate** を追加します。
+2. UIKit の `using` ステートメントを追加し、次の定義を使用して **QSTodoService** に新しいメソッド **Authenticate** を追加します。
+
+	```
+		using UIKit;
+	```
 
         public async Task Authenticate(UIViewController view)
         {
@@ -70,7 +75,7 @@
             }
         }
 
-> [AZURE.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
+	>[AZURE.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **QSTodoListViewController.cs** を開きます。**ViewDidLoad** のメソッド定義を変更して、終わり近くにある **RefreshAsync()** の呼び出しを削除します。
 
@@ -102,7 +107,7 @@
 		}
 		// rest of RefreshAsync method
 	
-5. **[実行]** ボタンを押してプロジェクトをビルドし、iPhone シミュレーターでアプリケーションを開始します。アプリケーションにデータが表示されないことを確認します。
+5. Mac の Xamarin Build Host に接続しているVisual Studio または Xamarin Studio で、デバイスまたはエミュレーターをターゲットとしているクライアント プロジェクトを実行します。アプリケーションにデータが表示されないことを確認します。
 
 	項目の一覧をプルダウンして更新操作を実行すると、ログイン画面が表示されます。有効な資格情報を正しく入力すると、Todo 項目の一覧が表示され、データを更新できるようになります。
 
@@ -115,4 +120,4 @@
 [Azure Management Portal]: https://portal.azure.com
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

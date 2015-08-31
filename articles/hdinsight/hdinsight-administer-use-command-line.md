@@ -5,6 +5,7 @@
 	editor="cgronlun"
 	manager="paulettm"
 	authors="mumian"
+	tags="azure-portal"
 	documentationCenter=""/>
 
 <tags
@@ -17,6 +18,8 @@
 	ms.author="jgao"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) を使用した HDInsight での Hadoop クラスターの管理
+
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-portal-management-selector.md)]
 
 Azure CLI を使用して Azure HDInsight で Hadoop クラスターを管理する方法について説明します。Azure CLI は Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。
 
@@ -52,7 +55,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 > [AZURE.NOTE]ストレージ アカウントは、HDInsight と共にデータ センターに配置する必要があります。
 
 
-Azure ポータルを使った Azure ストレージ アカウントの作成については、[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]に関するページを参照してください。
+Azure プレビュー ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]」をご覧ください
 
 既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
@@ -63,7 +66,7 @@ Azure ポータルを使った Azure ストレージ アカウントの作成に
 	-- Lists the keys for a Storage account
 	azure account storage keys list <StorageAccountName>
 
-Azure ポータルを使用して情報を取得する方法の詳細については、[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]に関するページの「ストレージ アクセス キーを表示、コピー、再生成する」セクションを参照してください。
+Azure プレビュー ポータルを使用して情報を取得する方法の詳細については、[ストレージ アカウントの作成、管理、削除][azure-create-storageaccount]に関するページの「ストレージ アクセス キーを表示、コピー、再生成する」セクションを参照してください。
 
 
 **azure hdinsight cluster create** コマンドは、コンテナーが存在しない場合、コンテナーを作成します。コンテナーを事前に作成する場合は、次のコマンドを使用できます。
@@ -135,7 +138,7 @@ Azure ポータルを使用して情報を取得する方法の詳細につい�
 ##次のステップ
 この記事では、さまざまな HDInsight クラスター管理タスクを実行する方法について説明しました。詳細については、次の記事を参照してください。
 
-* [Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
+* [Azure プレビュー ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
 * [Azure PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 * [Azure HDInsight の概要][hdinsight-get-started]
 * [Azure CLI の使い方][azure-command-line-tools]
@@ -156,6 +159,5 @@ Azure ポータルを使用して情報を取得する方法の詳細につい�
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

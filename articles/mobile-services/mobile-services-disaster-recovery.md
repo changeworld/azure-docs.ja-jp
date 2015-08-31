@@ -104,4 +104,4 @@ Azure Mobile Services を使用して、アプリケーションをデプロイ�
 [Azure CLI を使用したモバイル サービスの自動化]: http://www.windowsazure.com/develop/mobile/tutorials/command-line-administration/
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

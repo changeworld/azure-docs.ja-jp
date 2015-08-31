@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2015"
+	ms.date="08/05/2015"
 	ms.author="kirillg"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用時に App Service はどのように役立つか
@@ -37,8 +37,10 @@
 
 - Web ジョブを使用して、実行中のバックエンド ロジックを継続的に追加する
 - バックエンド コードが常に実行されていることを確認する
-- カスタムの CNames を使用して、使いやすくて安定した名前をモバイル バックエンド エンドポイントに提供
-- Traffic Manager を使用してアプリを地球スケールに
+- カスタムの CNames を使用して、使いやすくて安定した名前をモバイル バックエンド エンドポイントに提供する
+- Traffic Manager を使用してアプリを地球スケールにする
+- 任意のライブラリとパッケージが含まれます。.NET では、デプロイするアセンブリはランタイムで使用されるアセンブリです。ホスト環境のバージョンとの競合はありません。
+- (.NET の場合) MVC などの ASP.NET の任意の機能を活用します。
 
 
 ##SaaS API への*モバイル アプリ*の接続
@@ -67,4 +69,4 @@ Mobile services では、バックエンド コードのすべてのインスタ
 *Azure App Service モバイル アプリ*機能が一般公開されるまで、既存の Mobile Services に、移行対象として選択する App Service へのシームレスな移行エクスペリエンスが提供されます。その間に *App Service* の調査を開始し、こちらの[チュートリアル](app-service-mobile-dotnet-backend-migrating-from-mobile-services-preview.md)に従って既存の Mobile Service に *App Service* を活用することができます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

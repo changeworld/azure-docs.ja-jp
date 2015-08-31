@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Xamarin iOS アプリケーション用 Mobile Services の認証の使用 | Microsoft Azure" 
-	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin iOS アプリのユーザーを認証する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="xamarin" 
-	authors="lindydonna" 
-	manager="dwrede" 
+<properties
+	pageTitle="Xamarin iOS アプリケーション用 Mobile Services の認証の使用 | Microsoft Azure"
+	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin iOS アプリのユーザーを認証する方法について説明します。"
+	services="mobile-services"
+	documentationCenter="xamarin"
+	authors="lindydonna"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-ios" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/13/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="donnam"/>
 
 # Mobile Services アプリへの認証の追加
@@ -42,7 +42,7 @@
 
 <ol start="6">
 <li><p>Visual Studio または Xamarin Studio で、デバイスまたはシミュレーターを使用してクライアント プロジェクトを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。</p>
-   
+
    	<p>この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、<em>TodoItem</em> テーブルでは認証が要求されるために発生します。</p></li>
 </ol>
 
@@ -55,7 +55,7 @@
 1. クライアント プロジェクトで、ファイル **QSTodoService.cs** を開き、QSTodoService に次の宣言を追加します。
 
 		// Mobile Service logged in user
-		private MobileServiceUser user; 
+		private MobileServiceUser user;
 		public MobileServiceUser User { get { return user; } }
 
 2. 次の定義を使用して、**QSTodoService** に新しいメソッド **Authenticate** を追加します。
@@ -85,7 +85,7 @@
 			todoService.BusyUpdate += (bool busy) => {
 				if (busy)
 					activityIndicator.StartAnimating ();
-				else 
+				else
 					activityIndicator.StopAnimating ();
 			};
 
@@ -107,15 +107,16 @@
 			}
 		}
 		// rest of RefreshAsync method
-	
+
 5. **[実行]** ボタンを押してプロジェクトをビルドし、iPhone シミュレーターでアプリケーションを開始します。アプリケーションにデータが表示されないことを確認します。
 
 	項目の一覧をプルダウンして更新操作を実行すると、ログイン画面が表示されます。有効な資格情報を正しく入力すると、Todo 項目の一覧が表示され、データを更新できるようになります。
 
 <!-- ## <a name="next-steps"> </a>Next steps
 
-In the next tutorial, [Service-side authorization of Mobile Services users][Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. 
+In the next tutorial, [Service-side authorization of Mobile Services users][Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services.
  -->
+
 <!-- Anchors. -->
 [アプリケーションを認証に登録し、Mobile Services を構成する]: #register
 [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
@@ -134,6 +135,5 @@ In the next tutorial, [Service-side authorization of Mobile Services users][Auth
 [JavaScript and HTML]: ../mobile-services-dotnet-backend-windows-store-javascript-get-started-users.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

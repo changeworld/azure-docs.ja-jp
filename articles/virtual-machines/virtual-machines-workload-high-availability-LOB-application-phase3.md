@@ -177,7 +177,7 @@ SQL Server サービスには、クライアントがデータベース サー�
 
 SQL Server 仮想マシンごとに、ローカル管理者としてサインアウトします。
 
-Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://msdn.microsoft.com/library/azure/dn133149.aspx)」をご覧ください。基幹業務アプリケーションのストレージ アカウントの地理冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
+Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://msdn.microsoft.com/library/azure/dn133149.aspx)」をご覧ください。基幹業務アプリケーションのストレージ アカウントの geo 冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
 
 ## クラスター マジョリティ ノード サーバーの構成
 
@@ -207,7 +207,7 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 
 	Install-WindowsFeature Failover-Clustering -IncludeManagementTools
 
-現在、Azure の DHCP によって RFC に準拠していない動作が発生するため、Windows Server フェールオーバー クラスタリング (WSFC) クラスターの作成に失敗する可能性があります。詳細については、「Azure の仮想マシン内の SQL Server の高可用性と災害復旧」で、「Azure ネットワーキングでの WSFC クラスターの動作」を検索してください。ただし、回避策があります。次の手順に従って、クラスターを作成します。
+現在、Azure の DHCP によって RFC に準拠していない動作が発生するため、Windows Server フェールオーバー クラスタリング (WSFC) クラスターの作成に失敗する可能性があります。詳細については、「Azure Virtual Machines 内の SQL Server の高可用性と災害復旧」で、「Azure ネットワークでの WSFC クラスターの動作」を検索してください。ただし、回避策があります。次の手順に従って、クラスターを作成します。
 
 1.	[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) で作成した sqladmin アカウントを使用して、プライマリ SQL Server 仮想マシンにログオンします。
 2.	スタート画面で「**フェールオーバー**」と入力し、**[フェールオーバー クラスター マネージャー]** をクリックします。
@@ -266,4 +266,6 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=August15_HO7-->
+[Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
+
+<!---HONumber=August15_HO8-->

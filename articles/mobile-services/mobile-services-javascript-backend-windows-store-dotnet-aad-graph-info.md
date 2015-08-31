@@ -181,4 +181,4 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: mobile-services-javascript-backend-windows-store-dotnet-aad-rbac.md
 [Azure Active Directory Graph Team Blog (Azure Active Directory Graph チームのブログ)]: http://go.microsoft.com/fwlink/?LinkId=510536
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

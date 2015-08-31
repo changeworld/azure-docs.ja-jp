@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/02/2015"
+	ms.date="08/19/2015"
 	ms.author="andalmia"/>
 
 # ロジック アプリで File コネクタを使用する #
@@ -27,9 +27,7 @@ File コネクタを使用するには、まず File コネクタ API アプリ�
 
 1.	Azure ポータルの左側にある [+ 新規] を使用して Azure Marketplace を開きます。
 2.	[Marketplace]、[API Apps] の順に移動し、"File コネクタ" を検索します。
-3.	次のように、File コネクタを構成します。
-
-	![][1]
+3.	次のように、File コネクタを構成します。![][1]
 
 	- **[名前]** - File コネクタの名前を指定します。
 	- **[パッケージの設定]**
@@ -55,24 +53,25 @@ API アプリが作成されたら、Logic App のアクションとして File 
 
 3.	File コネクタが右側のギャラリーの [API Apps in this resource group (このリソース グループの API Apps)] セクションに表示されます。
 
-4.	[File コネクタ] をクリックして、File コネクタの API アプリをエディターにドロップできます。File コネクタでは、1 つのトリガーと 4 つのアクションが表示されます。
+4.	[File コネクタ] をクリックして、File コネクタの API アプリをエディターにドロップできます。File コネクタでは、1 つのトリガーと 4 つのアクションが表示されます。![][5]
 
-	![][5]
-
-6.	それぞれに特定のプロパティが表示されます。次の図は、トリガーのプロパティと Get File アクションのプロパティを示しています。
-
-	![][6]
+6.	それぞれに特定のプロパティが表示されます。次の図は、トリガーのプロパティと Get File アクションのプロパティを示しています。![][6]
 
 7. これらを構成すると、フローでトリガーとアクションを使用できるようになります。同様に、他のアクションも構成できます。
 
 > [AZURE.NOTE]ファイル トリガーは、ファイルをフォルダーから正常に読み取った後、そのファイルを削除します。
 
 ## File コネクタの REST API ##
-ロジック アプリの外部のコネクタを使用するには、そのコネクタで公開されている REST API を活用できます。[参照]、[API App]、[File コネクタ] の順に選択して、この API 定義を表示できます。[概要] セクションの [API Definition (API 定義)] レンズをクリックすると、このコネクタで公開されているすべての API が表示されます。
-
-  ![][7]
+ロジック アプリの外部のコネクタを使用するには、そのコネクタで公開されている REST API を活用できます。[参照]、[API App]、[File コネクタ] の順に選択して、この API 定義を表示できます。[概要] セクションの [API の定義] レンズをクリックすると、このコネクタで公開されているすべての API が表示されます。![][7]
 
 API の詳細については、「[File コネクタの API の定義]」を参照してください。
+
+## コネクタでできること
+コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
+
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
 <!-- Image reference -->
 [1]: ./media/app-service-logic-connector-file/img1.PNG
@@ -82,7 +81,7 @@ API の詳細については、「[File コネクタの API の定義]」を参�
 
 <!-- Links -->
 [新しい Logic App の作成]: app-service-logic-create-a-logic-app.md
-[File コネクタの API の定義]: https://msdn.microsoft.com/en-US/library/dn936296.aspx
+[File コネクタの API の定義]: https://msdn.microsoft.com/library/dn936296.aspx
 [ハイブリッド接続マネージャーの使用]: app-service-logic-hybrid-connection-manager.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

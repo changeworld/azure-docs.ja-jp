@@ -25,7 +25,7 @@ Azure インフラストラクチャ サービスの仮想マシンと仮想ネ�
 
 ![](./media/virtual-machines-workload-high-availability-LOB-application/workload-lobapp-phase4.png)
  
-Azure 仮想ネットワークは、すべての名前とトラフィック ルーティングを修正したオンプレミス ネットワークの拡張であるため、ユーザーは、オンプレミス データセンターにあるサーバーと同様に、基幹業務アプリケーションのサーバーにアクセスできます。
+Azure Virtual Network は、すべての名前とトラフィック ルーティングを修正したオンプレミス ネットワークの拡張であるため、ユーザーは、オンプレミス データセンターにあるサーバーと同様に、基幹業務アプリケーションのサーバーにアクセスできます。
 
 この構成では、新しい Azure 仮想マシンを追加することで、アプリケーションの機能を簡単に拡張できます。この場合、ハードウェアとメンテナンス両方の継続的なコストは、独自のデータセンターで同等のアプリケーションを実行するよりも低くなります。
 
@@ -101,4 +101,6 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=August15_HO7-->
+[Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
+
+<!---HONumber=August15_HO8-->

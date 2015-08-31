@@ -83,6 +83,8 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 [PowerShell スクリプト](app-insights-powershell-script-create-resource.md)を作成して、リソースを自動で作成できます。
 
 
+
+
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
@@ -92,4 +94,4 @@ SDK には、コードを記述せずにテレメトリを送信する標準的�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

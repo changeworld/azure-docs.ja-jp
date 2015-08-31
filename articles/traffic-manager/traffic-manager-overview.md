@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Traffic Manager の概要"
+   pageTitle="Traffic Manager について | Microsoft Azure"
    description="この記事は、Traffic Manager とそのしくみを理解するのに役立ちます。"
    services="traffic-manager"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/10/2015"
+   ms.date="08/19/2015"
    ms.author="joaoma" />
 
 # Traffic Manager について
@@ -39,11 +39,11 @@ Traffic Manager プロファイルを構成する際に各種設定を指定す�
 1. **会社のドメイン名へのユーザー トラフィック**: クライアントは、会社のドメイン名を使用して情報を要求します。目標は、DNS 名を IP アドレスに解決することです。会社のドメインは、Traffic Manager の外部に保持されている通常のインターネット ドメイン名登録を通じて予約する必要があります。図 1 で、例として示している会社のドメインは*www.contoso.com*です。
 2. **会社のドメイン名をTraffic Managerドメイン名に**: 会社のドメインの DNS リソース レコードでは、Azure Traffic Manager で管理されている Traffic Manager ドメイン名が参照されます。これは、会社のドメイン名を Traffic Manager ドメイン名にマップする CNAME リソース レコードを使用して実現されます。この例では、Traffic Manager ドメイン名は*contoso.trafficmanager.net* です。
 3. **Traffic Manager ドメイン名とプロファイル**: Traffic Manager ドメイン名は、Traffic Manager プロファイルの一部です。ユーザーの DNS サーバーは、Traffic Manager ドメイン名 (この例では *contoso.trafficmanager.net*)の新しい DNS クエリを送信します。これは、Traffic Manager の DNS ネーム サーバーによって受信されます。
-4. **Traffic Manager プロファイルのルールを処理**: Traffic Manager は、指定された負荷分散方法と監視状態を使用して、要求を処理する Azure またはその他のエンドポイントを決定します。
+4. **Traffic Manager プロファイルのルールを処理**: Traffic Manager は、指定されたトラフィック ルーティング方法と監視状態を使用して、要求を処理する Azure またはその他のエンドポイントを決定します。
 5. **エンドポイントのドメイン名をユーザーに送信**: Traffic Manager は、Traffic Manager ドメイン名をエンドポイントのドメイン名にマップする CNAME レコードを返します。ユーザーの DNS サーバーは、エンドポイントのドメイン名を IP アドレスに解決し、ユーザーに送信します。
 6. **ユーザーによるエンドポイントの呼び出し**: ユーザーは、返されたエンドポイントを、IP アドレスを使って直接呼び出します。
 
-会社のドメインと解決された IP アドレスはクライアント コンピューターにキャッシュされるため、ローカルの DNS キャッシュ エントリの有効期限が切れるまで、ユーザーは選択されたエンドポイントと引き続きやり取りすることができます。DNS クライアントには DNS ホスト エントリがそのエントリの Time-to-Live (TTL) の期間中キャッシュされていることに注意する必要があります。DNS クライアント キャッシュからホスト エントリを取得すると、Traffic Manager プロファイルは無視されるため、TTL が期限切れになる前にエンドポイントが使用できなくなった場合には、接続が遅延する可能性があります。キャッシュ内の DNS ホスト エントリの TTL が期限切れになり、会社のドメイン名を再度解決する必要が生じると、クライアント コンピューターは新しい DNS クエリを送信します。この場合にクライアント コンピューターが受け取る IP アドレスは、適用される負荷分散方法や要求時のエンドポイントの状態によっては、前回のアドレスと異なる可能性があります。
+会社のドメインと解決された IP アドレスはクライアント コンピューターにキャッシュされるため、ローカルの DNS キャッシュ エントリの有効期限が切れるまで、ユーザーは選択されたエンドポイントと引き続きやり取りすることができます。DNS クライアントには DNS ホスト エントリがそのエントリの Time-to-Live (TTL) の期間中キャッシュされていることに注意する必要があります。DNS クライアント キャッシュからホスト エントリを取得すると、Traffic Manager プロファイルは無視されるため、TTL が期限切れになる前にエンドポイントが使用できなくなった場合には、接続が遅延する可能性があります。キャッシュ内の DNS ホスト エントリの TTL が期限切れになり、会社のドメイン名を再度解決する必要が生じると、クライアント コンピューターは新しい DNS クエリを送信します。この場合にクライアント コンピューターが受け取る IP アドレスは、適用されるトラフィック ルーティング方法や要求時のエンドポイントの状態によっては、前回のアドレスと異なる可能性があります。
 
 ## Traffic Manager の実装方法
 
@@ -55,17 +55,17 @@ Traffic Manager プロファイルを構成する際に各種設定を指定す�
 
 1. **Azure クラウド サービス、Azure の Web サイト、またはその他のエンドポイントを運用環境にデプロイします**。Traffic Manager プロファイルを作成するときに、そのプロファイルは、サブスクリプションに関連付けられている必要があります。次に、同じサブスクリプションに含まれる運用環境で、クラウド サービスおよび標準的な層の Web サイトのエンドポイントを追加します。エンドポイントが Azure の運用環境ではなく、ステージング環境にあり、または同じサブスクリプションに含まれない場合は、外部エンドポイントとして追加できます。クラウド サービスの詳細については、[クラウド サービス](http://go.microsoft.com/fwlink/p/?LinkId=314074)を参照してください。Web サイトの詳細については、[Web サイト](http://go.microsoft.com/fwlink/p/?LinkId=393327)を参照してください。
 2. **Traffic Manager ドメインの名前を決定します**。一意のプレフィックスを持つドメインの名前を検討してください。ドメインの後半部分、trafficmanager.net は固定されています。詳細については、[ベスト プラクティス](#best-practices)を参照してください
-3. **使用する監視の構成を決定します**。Traffic Manager は、負荷分散方法に関係なく、オンラインであることを確認するために、エンドポイントを監視します。監視設定を構成した後 Traffic Manager は、すべてのエンドポイントがオフラインであることを検出するか、プロファイルに含まれるいずれかのエンドポイントの状態を検出できなくなるまで、監視システムに従って、オフラインであるエンドポイントにトラフィックを送信しません。監視の詳細については、[Traffic Manager の監視](traffic-manager-monitoring.md)に関するページを参照してください。
-4. **使用する負荷分散方法を決定します**。次の 3 つの異なる負荷分散方法を使用できます。時間をかけて、要件に適合する最適な方法を理解してください。後で方法を変更する必要がある場合は、いつでも変更できます。各方法では、わずかに異なる構成手順が必要であることにも注意してください。負荷分散方法については、[Traffic Manager での負荷分散方法について](traffic-manager-load-balancing-methods.md)を参照してください。
+3. **使用する監視の構成を決定します**。Traffic Manager は、トラフィック ルーティング方法に関係なく、オンラインであることを確認するために、エンドポイントを監視します。監視設定を構成した後 Traffic Manager は、すべてのエンドポイントがオフラインであることを検出するか、プロファイルに含まれるいずれかのエンドポイントの状態を検出できなくなるまで、監視システムに従って、オフラインであるエンドポイントにトラフィックを送信しません。監視の詳細については、[Traffic Manager の監視](traffic-manager-monitoring.md)に関するページを参照してください。
+4. **使用するトラフィック ルーティング方法を決定します**。次の 3 つの異なるトラフィック ルーティング方法を使用できます。時間をかけて、要件に適合する最適な方法を理解してください。後で方法を変更する必要がある場合は、いつでも変更できます。各方法では、わずかに異なる構成手順が必要であることにも注意してください。トラフィック ルーティング方法の詳細については、「[Traffic Manager でのトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)」をご覧ください。
 5. **プロファイルを作成し、設定を構成します**。REST API、Windows PowerShell、または管理ポータルを使用して、Traffic Manager プロファイルを作成し、設定を構成することができます。詳細については、[Traffic Manager 設定の構成方法](#how-to-configure-traffic-manager-settings)を参照してください以下の手順は、管理ポータルの **簡易作成** を使用することを前提としています。 
    - **Traffic Manager プロファイルの作成** - 管理ポータルで簡易作成を使用してプロファイルを作成するには、[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)(traffic-manager-manage-profiles.md) を参照してください。
-   - **負荷分散方法の設定の構成** – 簡易作成で、プロファイルの負荷分散方法を選択する必要があります。この設定は、簡易作成の手順を完了した後も、いつでも変更できます。構成手順については、負荷分散方法に対応するトピックを参照してください: [パフォーマンス負荷分散構成](traffic-manager-configure-performance-load-balancing.md)、[フェールオーバー負荷分散構成](traffic-manager-configure-failover-load-balancing.md)、[ラウンド ロビン負荷分散を構成](traffic-manager-configure-round-robin-load-balancing.md)。
+   - **トラフィック ルーティング方法の設定の構成** – [簡易作成] で、プロファイルのトラフィック ルーティング方法を選択する必要があります。この設定は、簡易作成の手順を完了した後も、いつでも変更できます。構成手順は、トラフィック ルーティング方法に対応する次のトピックをご覧ください: 「[パフォーマンスによるトラフィック ルーティング方法の構成](traffic-manager-configure-performance-load-balancing.md)」、「[フェールオーバーによるトラフィック ルーティング 方法の構成](traffic-manager-configure-failover-load-balancing.md)」、「[ラウンド ロビンによるトラフィック ルーティング方法の構成](traffic-manager-configure-round-robin-load-balancing.md)」
    
-   >[AZURE.NOTE]ラウンド ロビン負荷分散方法で、ネットワーク トラフィックの重み付け分布がサポートされるようになりました。ただし、現時点では、REST API と Windows PowerShell のいずれかを使用して重みを構成する必要があります。詳細と構成例については、Azure ブログの [Azure Traffic Manager の外部エンドポイントと PowerShell による重み付けラウンド ロビン](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)に関する記事を参照してください。
+   >[AZURE.NOTE]ラウンド ロビンによるトラフィック ルーティング方法で、ネットワーク トラフィックの重み付け分布がサポートされるようになりました。ただし、現時点では、REST API と Windows PowerShell のいずれかを使用して重みを構成する必要があります。詳細と構成例については、Azure ブログの [Azure Traffic Manager の外部エンドポイントと PowerShell による重み付けラウンド ロビン](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)に関する記事を参照してください。
 
-   - **エンドポイントの構成** – エンドポイントは、簡易作成では構成しません。プロファイルを作成し、負荷分散方法を指定した後で、Traffic Manager に対してエンドポイントを指定する必要があります。エンドポイントを構成する手順については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
+   - **エンドポイントの構成** – エンドポイントは、簡易作成では構成しません。プロファイルを作成し、トラフィック ルーティング方法を指定した後で、Traffic Manager に対してエンドポイントを指定する必要があります。エンドポイントを構成する手順については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
 
-   - **監視設定の構成** –監視設定は、簡易作成では構成しません。プロファイルを作成し、負荷分散方法を指定した後で、Traffic Manager に対して監視対象を指定する必要があります。監視を構成する手順については、「[Traffic Manager の監視](traffic-manager-monitoring.md)」を参照してください。
+   - **監視設定の構成** –監視設定は、簡易作成では構成しません。プロファイルを作成し、トラフィック ルーティング方法を指定した後で、Traffic Manager に対して監視対象を指定する必要があります。監視を構成する手順については、「[Traffic Manager の監視](traffic-manager-monitoring.md)」を参照してください。
 6. **Traffic Manager プロファイルをテストします**。プロファイルとドメインが正常に動作しているかどうかをテストします。これを行う方法については、「[Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)」を参照してください。
 7. **会社のドメイン名の DNS リソース レコードでプロファイルを参照して、有効にします**。詳細については、「[会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする](traffic-manager-point-internet-domain.md)」を参照してください。
 
@@ -79,7 +79,7 @@ REST API 要素は管理ポータルには表示されませんが、どちら�
 
 Traffic Manager 用の Windows PowerShell コマンドレットの詳細については、「[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)」を参照してください。
 
->[AZURE.NOTE]現時点では、管理ポータルで外部エンドポイント (種類 = "Any")、ラウンド ロビン負荷分散方法の重み、および入れ子になったプロファイルを構成することはできません。REST (「[Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772)」を参照) と Windows PowerShell (「[Add-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/library/azure/dn690257.aspx)」を参照) のどちらかを使用する必要があります。
+>[AZURE.NOTE]現時点では、管理ポータルで外部エンドポイント (タイプ = "Any")、ラウンド ロビンによるトラフィック ルーティング方法の重み、入れ子になったプロファイルを構成することはできません。REST (「[Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772)」を参照) と Windows PowerShell (「[Add-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/library/azure/dn690257.aspx)」を参照) のどちらかを使用する必要があります。
 
 ### 管理ポータルでの設定の構成
 
@@ -90,8 +90,8 @@ Traffic Manager 用の Windows PowerShell コマンドレットの詳細につ�
 - **DNS プレフィックス** – 自分で作成できる一意のプレフィックスです。プロファイルはプレフィックス別に管理ポータルに表示されます。
 - **DNS TTL** – DNS Time-to-Live (TTL) の値は、クライアントのローカル キャッシュ ネーム サーバーが、更新された DNS エントリを取得するために Azure Traffic Manager の DNS システムに対してクエリを実行する頻度を制御します。
 - **サブスクリプション** – プロファイルに対応するサブスクリプションを選択します。このオプションは、複数のサブスクリプションを持っている場合にのみ表示されます。
-- **負荷分散方法** – Traffic Manager で負荷分散を処理する方法です。
-- **フェールオーバーの順序** – フェールオーバー負荷分散方法を使用する際のエンドポイントの順序です。
+- **トラフィック ルーティング方法** – Traffic Manager でトラフィック ルーティングを処理する方法です。
+- **フェールオーバーの順序** – フェールオーバーによるトラフィック ルーティング方法を使用する際のエンドポイントの順序です。
 - **監視** – 監視設定には、プロトコル (HTTP または HTTPS)、ポート、相対パス、ファイル名が含まれています。
 
 ### REST API を使用した設定の構成
@@ -102,7 +102,7 @@ REST API を使用して Traffic Manager プロファイルの作成と構成を
 - **定義** – 定義には、ポリシー設定と監視設定が含まれています。定義はプロファイルに対応しています。1 つのプロファイルには定義を 1 つだけ指定できます。定義に含まれている設定の多くは管理ポータルに表示され、管理ポータルで構成できますが、定義そのものは管理ポータルに表示されません。
 - **DNS オプション** – DNS オプションは各定義に含まれています。ここで DNS TTL を構成します。
 - **監視** – 監視設定は各定義に含まれています。ここで、プロトコル、ポート、相対パス、ファイル名を構成します。監視設定は管理ポータルに表示され、管理ポータルで構成できます。詳細については、「[Traffic Manager の監視](traffic-manager-monitoring.md)」を参照してください。
-- **ポリシー** – ポリシー設定は各定義に含まれます。ポリシーでは、負荷分散方法とエンドポイントを指定します。ポリシーに含まれる設定の一部は管理ポータルに表示され、管理ポータルで構成できますが、ポリシーそのものは管理ポータルに表示されません。詳細については、「[Traffic Manager での負荷分散方法について](traffic-manager-load-balancing-methods.md)」を参照してください。
+- **ポリシー** – ポリシー設定は各定義に含まれます。ポリシーでは、トラフィック ルーティング方法とエンドポイントを指定します。ポリシーに含まれる設定の一部は管理ポータルに表示され、管理ポータルで構成できますが、ポリシーそのものは管理ポータルに表示されません。詳細については、「[Traffic Manager でのトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)」をご覧ください。
 
 ## Windows PowerShell を使用した設定の構成
 
@@ -136,12 +136,12 @@ Windows PowerShell を使用して Traffic Manager プロファイルの作成�
 
 **図 3**
 
-最大 10 レベルまで入れ子にできます。負荷分散方法がそれぞれ異なるプロファイルを複数構成できます。
+最大 10 レベルまで入れ子にできます。トラフィック ルーティング方法がそれぞれ異なるプロファイルを複数構成できます。
 
 たとえば、次のような構成を作成できます。
 
-- 最上位の層 (外部 DNS 名にマップされる Traffic Manager プロファイル) において、パフォーマンス負荷分散方法でプロファイルを構成できます。
-- 中間層において、一連の Traffic Manager プロファイルは異なるデータセンターを表し、ラウンド ロビン負荷分散方法を使用します。
+- 最上位の層 (外部 DNS 名にマップされる Traffic Manager プロファイル) において、パフォーマンスによるトラフィック ルーティング方法でプロファイルを構成できます。
+- 中間層において、一連の Traffic Manager プロファイルは異なるデータセンターを表し、ラウンド ロビンによるトラフィック ルーティング方法を使用します。
 - 最下位の層において、各データセンターの一連のクラウド サービス エンドポイントは、ユーザーのトラフィック要求を処理します。
 
 このように構成することで、ユーザーは、パフォーマンスに基づいて適切な地域のデータセンターに転送され、同等または重み付けされた負荷分散に基づいてデータセンター内のクラウド サービスに転送されます。たとえば、重み付けを使用して、テストやカスタマー フィードバック用に、トラフィックの少量の割合を新規デプロイメントまたは試用デプロイメントに分散できます。
@@ -172,4 +172,4 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

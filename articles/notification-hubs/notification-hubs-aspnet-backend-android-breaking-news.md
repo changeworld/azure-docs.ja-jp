@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Notification Hubs ニュース速報チュートリアル - Android" 
-	description="Azure Service Bus Notification Hubs を使用して Android デバイスにニュース速報通知を送信する方法を説明します。" 
-	services="notification-hubs" 
-	documentationCenter="android" 
-	authors="wesmc7777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Notification Hubs ニュース速報チュートリアル - Android"
+	description="Azure Service Bus Notification Hubs を使用して Android デバイスにニュース速報通知を送信する方法を説明します。"
+	services="notification-hubs"
+	documentationCenter="android"
+	authors="wesmc7777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="notification-hubs" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="java" 
-	ms.topic="article" 
-	ms.date="04/24/2015" 
+<tags
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="java"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="wesmc"/>
 
 
@@ -37,7 +37,7 @@
 最初の手順として、既存のメイン アクティビティに UI 要素を追加して、ユーザーが登録するカテゴリを選択できるようにします。ユーザーにより選択されるカテゴリは、デバイスに格納されます。アプリが起動すると、通知ハブにデバイス登録が作成され、選択されたカテゴリがタグとして追加されます。
 
 1. res/layout/activity\_main.xml ファイルを開き、コンテンツを次の内容と置き換えます。
-			
+
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		    xmlns:tools="http://schemas.android.com/tools"
 		    android:layout_width="match_parent"
@@ -48,7 +48,7 @@
 		    android:paddingTop="@dimen/activity_vertical_margin"
 		    tools:context="com.example.breakingnews.MainActivity"
 		    android:orientation="vertical">
-		
+
 		        <CheckBox
 		            android:id="@+id/worldBox"
 		            android:layout_width="wrap_content"
@@ -104,38 +104,38 @@
 
 		import java.util.HashSet;
 		import java.util.Set;
-		
+
 		import android.content.Context;
 		import android.content.SharedPreferences;
 		import android.os.AsyncTask;
 		import android.util.Log;
 		import android.widget.Toast;
-		
+
 		import com.google.android.gms.gcm.GoogleCloudMessaging;
-		import com.microsoft.windowsazure.messaging.NotificationHub;		
-		
+		import com.microsoft.windowsazure.messaging.NotificationHub;
+
 		public class Notifications {
 			private static final String PREFS_NAME = "BreakingNewsCategories";
 			private GoogleCloudMessaging gcm;
 			private NotificationHub hub;
 			private Context context;
 			private String senderId;
-			
+
 			public Notifications(Context context, String senderId) {
 				this.context = context;
 				this.senderId = senderId;
-				
+
 				gcm = GoogleCloudMessaging.getInstance(context);
 		        hub = new NotificationHub(<hub name>, <connection string with listen access>, context);
 			}
-			
+
 			public void storeCategoriesAndSubscribe(Set<String> categories)
 			{
 				SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
 			    settings.edit().putStringSet("categories", categories).commit();
 			    subscribeToCategories(categories);
 			}
-			
+
 			public void subscribeToCategories(final Set<String> categories) {
 				new AsyncTask<Object, Object, Object>() {
 					@Override
@@ -149,7 +149,7 @@
 						}
 						return null;
 					}
-		
+
 					protected void onPostExecute(Object result) {
 						String message = "Subscribed for categories: "
 								+ categories.toString();
@@ -158,7 +158,7 @@
 					}
 				}.execute(null, null, null);
 			}
-			
+
 		}
 
 	このクラスは、このデバイスが受信するニュースのカテゴリを格納するためにローカル ストレージを使用します。ローカル ストレージには、これらのカテゴリを登録するメソッドも格納されます。
@@ -172,25 +172,25 @@
 		// private GoogleCloudMessaging gcm;
 		// private NotificationHub hub;
 		private Notifications notifications;
- 
+
 5. 次に、**onCreate** メソッドで、**hub** フィールドの初期化と **registerWithNotificationHubs** を削除します。次に、**Notifications** クラスのインスタンスを初期化する次の行を追加します。メソッドには次の行が含まれています。
 
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_main);
-	
+
 			NotificationsManager.handleNotifications(this, SENDER_ID,
 					MyHandler.class);
-	
+
 			notifications = new Notifications(this, SENDER_ID);
 		}
 
 6. その後、次のメソッドを追加します。
-	
+
 	    public void subscribe(View sender) {
 			final Set<String> categories = new HashSet<String>();
-	
+
 			CheckBox world = (CheckBox) findViewById(R.id.worldBox);
 			if (world.isChecked())
 				categories.add("world");
@@ -209,10 +209,10 @@
 			CheckBox sports = (CheckBox) findViewById(R.id.sportsBox);
 			if (sports.isChecked())
 				categories.add("sports");
-	
+
 			notifications.storeCategoriesAndSubscribe(categories);
 	    }
-	
+
 	このメソッドは、カテゴリのリストを作成し、**Notifications** クラスを使用してそのリストをローカル ストレージに格納し、対応するタグを通知ハブに登録します。カテゴリが変更されると、新しいカテゴリで登録が再作成されます。
 
 これで、アプリケーションがデバイス上のローカル ストレージに一連のカテゴリを格納したり、ユーザーがカテゴリの選択を変更したときに通知ハブに登録できるようになりました。
@@ -243,9 +243,9 @@
 		@Override
 		protected void onStart() {
 			super.onStart();
-			
+
 			Set<String> categories = notifications.retrieveCategories();
-			
+
 			CheckBox world = (CheckBox) findViewById(R.id.worldBox);
 			world.setChecked(categories.contains("world"));
 			CheckBox politics = (CheckBox) findViewById(R.id.politicsBox);
@@ -271,7 +271,7 @@
 ##アプリケーションを実行して通知を生成する
 
 1. Eclipse で、アプリケーションをビルドし、デバイスまたはエミュレーターで起動します。
-	
+
 	アプリケーションの UI には、購読するカテゴリを選択できる一連の切り替えボタンが表示されている点に注目してください。
 
 2. 1 つ以上のカテゴリ切り替えボタンを有効にし、**[Subscribe]** をクリックします。
@@ -317,6 +317,5 @@
 
 [Azure Management Portal]: https://manage.windowsazure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

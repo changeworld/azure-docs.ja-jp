@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="SSalahAhmed"
-	manager="TerryLan"
+	manager="gchander"
 	editor="LisaToft"/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/24/2015"
-	ms.author="kenhoff"/>
+	ms.date="08/17/2015"
+	ms.author="saah;kenhoff"/>
 
 # Azure Active Directory のレポート通知
 
@@ -67,4 +67,4 @@
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

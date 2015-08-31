@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="既存のアプリケーションへの Mobile Services の追加 (Xamarin.Android) | Microsoft Azure" 
-	description="Azure Mobile Services Xamarin.Android アプリからのデータを保存する方法、およびデータにアクセスする方法について説明します。" 
-	documentationCenter="xamarin" 
-	authors="ggailey777" 
-	manager="dwrede" 
-	services="mobile-services" 
+<properties
+	pageTitle="既存のアプリケーションへの Mobile Services の追加 (Xamarin.Android) | Microsoft Azure"
+	description="Azure Mobile Services Xamarin.Android アプリからのデータを保存する方法、およびデータにアクセスする方法について説明します。"
+	documentationCenter="xamarin"
+	authors="ggailey777"
+	manager="dwrede"
+	services="mobile-services"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-android" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/24/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="ggailey777"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
@@ -26,7 +26,7 @@
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Xamarin.Android アプリ プロジェクトのダウンロード][GitHub] 
+1. [Xamarin.Android アプリ プロジェクトのダウンロード][GitHub]
 2. [モバイル サービスの作成]
 3. [ストレージのデータ テーブルの追加]
 4. [Mobile Services 使用するためのアプリケーションの更新]
@@ -42,7 +42,7 @@
 
 このチュートリアルは、Xamarin.Android アプリケーションである [GetStartedWithData アプリケーション][GitHub]に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービス Android のクイック スタートで生成したアプリケーションと同じです。
 
-1. サンプル アプリケーション `GetStartedWithData` をダウンロードし、コンピューター上でファイルを展開します。 
+1. サンプル アプリケーション `GetStartedWithData` をダウンロードし、コンピューター上でファイルを展開します。
 
 2. Xamarin Studio で、**[File]**、**[Open]** の順にクリックし、GetStartedWithData サンプル プロジェクトを展開した場所を参照します。**XamarinTodoQuickStart.Android.sln** を選択して開きます。
 
@@ -53,7 +53,7 @@
 5. **[Run]** メニューの **[Start Without Debugging]** をクリックします。エミュレーターまたは接続されている USB Android デバイスを選択するよう求めるメッセージが表示されます。
 
 	> [AZURE.IMPORTANT]このプロジェクトは、Android フォンまたは Android エミュレーターを使用して実行できます。Android フォンで実行するには、機器に固有の USB ドライバーをダウンロードする必要があります。
-	> 
+	>
 	> プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
 
 6. アプリケーションで、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、**[Add]** をクリックします。
@@ -113,7 +113,7 @@
 3. **[ソリューション]** ウィンドウで、**TodoActivity** クラスを開き、次のコード行をコメント解除します。
 
 		using Microsoft.WindowsAzure.MobileServices;
- 
+
 4. 次に、現在アプリケーションで使用されているメモリ内のリストを削除して、モバイル サービスで置き換えます。**TodoActivity** クラスで、既存の **todoItemList** リストを定義している次のコード行をコメント解除します。
 
 		public List<TodoItem> todoItemList = new ArrayList<TodoItem>();
@@ -123,7 +123,7 @@
 6. 次に、モバイル サービスを追加します。次のコード行をコメント解除します。
 
         private MobileServiceClient client; // Mobile Service Client references
-        private IMobileServiceTable<TodoItem> todoTable; // Mobile Service Table used to access data   
+        private IMobileServiceTable<TodoItem> todoTable; // Mobile Service Table used to access data
 
 7. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
@@ -137,7 +137,7 @@
 
         public const string ApplicationURL = @"AppUrl";
         public const string ApplicationKey = @"AppKey";
-        
+
 10. 前の変数の **AppUrl** と **AppKey** を、前の管理ポータルから取得した値で置き換えます。
 
 11. **OnCreate** メソッドで、**MobileServiceClient** 変数を定義している次のコード行をコメント解除します。
@@ -149,7 +149,7 @@
 			Constants.ApplicationKey).WithFilter(filter);
 
 		// Get the Mobile Service Table instance to use
-		todoTable = client.GetTable<TodoItem>();    
+		todoTable = client.GetTable<TodoItem>();
 
   	これで、モバイル サービスにアクセスするために使用される MobileServiceClient の新しいインスタンスが作成されます。また、モバイル サービス内のデータ ストレージをプロキシ経由で接続するために使用される MobileServiceTable の新しいインスタンスも作成されます。
 
@@ -166,21 +166,21 @@
 		}
 
    	これにより、項目の更新がモバイル サービスに送信され、チェックされた項目がアダプターから削除されます。
-    
+
 14. 次に示す **AddItem** メソッドの行をコメント解除します。
-	
-		try 
+
+		try
 		{
 			// Insert the new item
 			await todoTable.InsertAsync(item);
 
-			if (!item.Complete) 
-				adapter.Add(item);			
-		} 
-		catch (Exception e) 
+			if (!item.Complete)
+				adapter.Add(item);
+		}
+		catch (Exception e)
 		{
 			CreateAndShowDialog(e, "Error");
-		}   		
+		}
 
   	このコードでは、新しい項目を作成し、それをリモート モバイル サービスのテーブルに挿入します。
 
@@ -194,14 +194,14 @@
 
 			foreach (TodoItem current in list)
 				adapter.Add(current);
-		} 
-        catch (Exception e) 
+		}
+        catch (Exception e)
         {
 			CreateAndShowDialog(e, "Error");
 		}
 
 	このコードでは、モバイル サービスに対するクエリを実行して、完了マークが付けられていないすべての項目を取得します。項目は、バインド用にアダプターに追加されます。
-		
+
 
 バックエンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、モバイル サービスに対してアプリケーションをテストします。
 
@@ -220,7 +220,7 @@
 4. **[データ]** タブをクリックし、**[参照]** をクリックします。
 
    	![][9]
-  
+
    	**TodoItem** テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
 これで、Xamarin.Android 向けの**データの使用**に関するチュートリアルは終了です。
@@ -281,6 +281,5 @@
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331302
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

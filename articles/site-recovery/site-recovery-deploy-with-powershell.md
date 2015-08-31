@@ -45,7 +45,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 - 保護する VMM サーバーにクラウドが少なくとも 1 つ必要です。このクラウドには以下のものが含まれている必要があります。
 	- 1 つ以上の VMM ホスト グループ。
 	- 各ホスト グループ内に 1 つ以上の Hyper-V ホスト サーバーまたはクラスター。
-	- ソース Hyper-V サーバー上に配置された 1 つ以上の仮想マシン。仮想マシンは世代 1 にする必要があります。
+	- ソース Hyper-V サーバー上に配置された 1 つ以上の仮想マシン。
 - VMM クラウドの設定について理解を深めます。
 	- プライベート VMM クラウドの詳細については、[System Center 2012 R2 VMM のプライベート クラウドの新機能に関するページ](http://go.microsoft.com/fwlink/?LinkId=324952)および [VMM 2012 とクラウドに関するページ](http://go.microsoft.com/fwlink/?LinkId=324956)を参照してください。
 	- [VMM クラウド ファブリックの構成に関するページ](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)を参照してください。
@@ -104,7 +104,7 @@ PowerShell で "< >" 内の要素をユーザー固有の情報に置き換え�
 
 	$VaultName = "<testvault123>"
 	$VaultGeo  = "<Southeast Asia>"
-	$OutputPathForSettingsFile = "<C:\>"
+	$OutputPathForSettingsFile = "<c:>"
 
 ```
 
@@ -125,7 +125,7 @@ PowerShell で "< >" 内の要素をユーザー固有の情報に置き換え�
 	
 		$VaultName = "<testvault123>"
 		$VaultGeo  = "<Southeast Asia>"
-		$OutputPathForSettingsFile = "<C:\>"
+		$OutputPathForSettingsFile = "<c:>"
 	
 		$VaultSetingsFile = Get-AzureSiteRecoveryVaultSettingsFile -Location $VaultGeo -Name $VaultName -Path $OutputPathForSettingsFile;
 	
@@ -461,4 +461,4 @@ if($isJobLeftForProcessing)
 
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> </UL>
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

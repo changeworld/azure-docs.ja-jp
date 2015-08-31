@@ -30,6 +30,12 @@
 
 [AZURE.INCLUDE [automation-note-authentication](../../includes/automation-note-authentication.md)]
 
+## ビデオ チュートリアル
+
+次は、このチュートリアルのガイドです。
+
+[AZURE.VIDEO get-started-with-azure-automation]
+
 ## <a name="automationaccount"></a>Automation アカウントの作成
 
 Automation アカウントは、Azure Automation リソースのコンテナーで、環境の分離や、ワークフローの詳細な整理のための方法を提供します。詳細については、Automation ライブラリの「[Automation アカウント](http://aka.ms/runbookauthor/azure/automationaccounts)」を参照してください。オートメーション アカウントを既に作成している場合は、次の手順を省略できます。
@@ -141,4 +147,4 @@ Runbook をインポートし、発行したら、それを実行して、出力
 **フィードバックの送信** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

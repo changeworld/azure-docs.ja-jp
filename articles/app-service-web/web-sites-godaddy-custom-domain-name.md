@@ -3,7 +3,7 @@
 	description="GoDaddy から購入したカスタム ドメイン名を Azure Web Apps で使用する方法"
 	services="app-service\web"
 	documentationCenter=""
-	authors="MikeWasson"
+	authors="erikre"
 	manager="wpickett"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2015"
-	ms.author="mwasson"/>
+	ms.date="08/18/2015"
+	ms.author="erikre"/>
 
 # Azure App Service でのカスタム ドメイン名の構成 (GoDaddy から直接購入した場合)
 
@@ -89,4 +89,4 @@
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="Notification Hubs によるユーザーへのクロスプラットフォーム通知の送信 (ASP.NET)" description="Notification Hubs のテンプレートを使用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を説明します。" 
-	services="notification-hubs" 
-	documentationCenter="" 
-	authors="wesmc7777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Notification Hubs によるユーザーへのクロスプラットフォーム通知の送信 (ASP.NET)" description="Notification Hubs のテンプレートを使用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を説明します。"
+	services="notification-hubs"
+	documentationCenter=""
+	authors="wesmc7777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="notification-hubs" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="04/27/2015" 
+<tags
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="wesmc"/>
 
 # 通知ハブによるユーザーへのクロスプラットフォーム通知の送信
@@ -24,7 +24,7 @@
 
 次の手順を実行し、テンプレートを使用してクロスプラットフォーム通知を送信します。
 
-1. Visual Studio のソリューション エクスプローラーで、**Controllers** フォルダーを展開し、RegisterController.cs ファイルを開きます。 
+1. Visual Studio のソリューション エクスプローラーで、**Controllers** フォルダーを展開し、RegisterController.cs ファイルを開きます。
 
 2. **Post** メソッドで新しい登録を作成するコード ブロックを見つけて、`switch` コンテンツを次のコードに置き換えます。
 
@@ -54,7 +54,7 @@
             default:
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
         }
-	
+
 	このコードは、プラットフォーム固有のメソッドを呼び出して、ネイティブ登録の代わりにテンプレート登録を作成します。テンプレート登録がネイティブ登録から派生している場合、既存の登録を変更する必要はありません。
 
 3. **Notifications** コントローラーで、**sendNotification** メソッドを次のコードに置き換えます。
@@ -65,7 +65,7 @@
             var userTag = "username:" + user;
 
             var notification = new Dictionary<string, string> { { "message", "Hello, " + user } };
-            await Notifications.Instance.Hub.SendTemplateNotificationAsync(notification, userTag);   
+            await Notifications.Instance.Hub.SendTemplateNotificationAsync(notification, userTag);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
@@ -84,7 +84,7 @@
 
 このチュートリアルを完了したら、以下のトピックで通知ハブとテンプレートの詳細を参照してください。
 
-+ **[Notification Hubs を使用したニュース速報の送信]**<br/>別のテンプレート使用シナリオのデモンストレーションを行います。 
++ **[Notification Hubs を使用したニュース速報の送信]**<br/>別のテンプレート使用シナリオのデモンストレーションを行います。
 
 +  **[Azure 通知ハブの概要][Templates]**<br/>この概要トピックでは、テンプレートについて詳細に説明されています。
 
@@ -110,6 +110,5 @@
 [通知ハブによるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [Templates]: http://go.microsoft.com/fwlink/p/?LinkId=317339
 [方法: Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

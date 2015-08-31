@@ -240,4 +240,4 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 [Get started with data]: mobile-services-windows-phone-get-started-data.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

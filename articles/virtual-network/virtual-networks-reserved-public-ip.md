@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/22/2015"
+   ms.date="08/17/2015"
    ms.author="telmos" />
 
 # 予約済み IP の概要
@@ -31,9 +31,7 @@ IP アドレスが変更されないようにするには、IP アドレスを�
 1. 予約済み IP は、いくつ使用できますか。  
   - 現時点では、すべての Azure サブスクリプションで 20 個の予約済み IP を使用できるようになっています。しかし、予約済み IP の追加を要求することができます。詳細については、[サブスクリプションとサービスの制限](../azure-subscription-service-limits/)のページを参照してください。
 1. 予約済み IP に料金はかかりますか。 
-  - 料金については、[予約済み IP アドレスの料金詳細](http://go.microsoft.com/fwlink/?LinkID=398482)のページを参照してください。
-1. クラウド サービスには、予約済み IP アドレスをいくつ割り当てることができますか。　 
-  - IP アドレスが予約されているかどうかにかかわらず、クラウド サービスのエンドポイントあたりに割り当てられる IP アドレスは 1 つです。IP アドレスを予約したからといって、クラウド サービスにそれ以上 IP アドレスを追加することはできません。
+  - 料金については、[予約済み IP アドレスの価格詳細](http://go.microsoft.com/fwlink/?LinkID=398482)に関するページを参照してください。
 1. どうやって IP アドレスを予約するのですか。 
   - PowerShell または [Azure Management REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を使用して、特定のリージョンから予約済み IP を要求します。Azure はそのリージョンの IP アドレスを予約し、サブスクリプションに関連付けます。その後、そのリージョンの予約済み IP を使用できます。管理ポータルを使用して IP アドレスを予約することはできません。
 1. 予約済み IP を VNet ベースのアフィニティ グループで使用できますか。 
@@ -117,8 +115,8 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 - [予約済みプライベート IP アドレス](../virtual-networks-reserved-private-ip)について理解する。
 
-- [インスタンスレベル パブリック IP (ILPIP) アドレス](../virtual-networks-instance-level-public-ip)について理解する。
+- [インスタンス レベル パブリック IP (ILPIP) アドレス](../virtual-networks-instance-level-public-ip)について理解する。
 
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

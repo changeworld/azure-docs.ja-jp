@@ -104,4 +104,4 @@
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

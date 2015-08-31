@@ -21,7 +21,7 @@
 
 次のドキュメントは、Azure AD Connect のカスタム インストール オプションの使用について説明します。このオプションは、追加の構成オプションがある場合や、高速インストールでは設定されないオプションの機能が必要な場合に設定します。
 
-高速インストールの詳細については、[高速インストール](active-directory-aadconnect/#getting-started-with-azure-ad-connect)のページを参照してください。DirSync から Azure AD Connect へのアップグレードについては、[DirSync から Azure Active Directory Connect へのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)に関するページを参照してください。
+高速インストールの詳細については、[高速インストール](active-directory-aadconnect.md#getting-started-with-azure-ad-connect)のページを参照してください。DirSync から Azure AD Connect へのアップグレードについては、[DirSync から Azure Active Directory Connect へのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)に関するページを参照してください。
 
 
 
@@ -290,4 +290,4 @@ AD FS ログイン ページのイラストとロゴのイメージをカスタ�
 	
 	Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.png"} –Illustration @{path=”c:\Contoso\illustration.png”}
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

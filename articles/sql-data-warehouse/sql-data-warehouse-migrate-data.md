@@ -37,7 +37,7 @@ Integration Services (SSIS) は、強力で柔軟な抽出、変換、ロード 
 
 > [AZURE.NOTE]SSIS は、ファイルにバイト オーダーをマークせずに UTF-8 にエクスポートできます。これを構成するには、まず派生された列コンポーネントを使用して、65001 UTF-8 コード ページを使用するようにデータ フローで文字データを変換します。列が変換されたら、ファイルのコード ページとして 65001 も選択されていることを確認し、フラット ファイルの宛先アダプターにデータを書き込みます。
 
-SSIS は、SQL Server のデプロイメントに接続する場合と同様に、SQL Data Warehouse に接続します。ただし、接続には ADO.NET 接続マネージャーを使用する必要があります。また、"" 設定を構成してスループットを最大化することを検討する必要もあります。
+SSIS は、SQL Server のデプロイメントに接続する場合と同様に、SQL Data Warehouse に接続します。ただし、接続には ADO.NET 接続マネージャーを使用する必要があります。また、"使用可能な場合は一括挿入を使用する" 設定を構成してスループットを最大化することを検討する必要もあります。このプロパティの詳細については、「[ADO NET 変換先エディター][]」をご覧ください。
 
 > [AZURE.NOTE]OLEDB を使用した Azure SQL Data Warehouse への接続はサポートされていません。
 
@@ -191,6 +191,7 @@ PolyBase を使用したデータ ロードの詳細については、「[PolyBa
 
 [製品バージョン]: http://aka.ms/downloadazcopy/
 [プレビュー バージョン]: http://aka.ms/downloadazcopypr/
+[ADO NET 変換先エディター]: https://msdn.microsoft.com/ja-jp/library/bb934041.aspx
 [SSIS のドキュメント]: https://msdn.microsoft.com/ja-jp/library/ms141026.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/12/2015"
+   ms.date="08/14/2015"
    ms.author="alkohli" />
 
 # オンプレミスの StorSimple デバイスのデプロイ
@@ -123,15 +123,15 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 
 - 以下のページの説明に従って、デバイスが完全に開梱され、ラックに取り付けられ、電源、ネットワーク、およびシリアル アクセスのケーブルが完全に接続されている。
 
-	-  [8100 デバイスの開梱](storsimple-8100-hardware-installation.md)
-	-  [8600 デバイスの開梱](storsimple-8600-hardware-installation.md)
+	-  [8100 デバイスの開梱、ラック取り付け、ケーブル接続](storsimple-8100-hardware-installation.md)
+	-  [8600 デバイスの開梱、ラック取り付け、ケーブル接続](storsimple-8600-hardware-installation.md)
 
 
 ### データセンターのネットワークの場合
 
 開始する前に次の点を確認します。
 
-- 「[StorSimple デバイスのネットワーク要件]()」で説明するとおり、データセンターのファイアウォールでポートを開くと、iSCSI とクラウドのトラフィックが許可されます。
+- 「[StorSimple デバイスのネットワーク要件](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device)」で説明するとおり、データセンターのファイアウォールでポートを開くと、iSCSI とクラウドのトラフィックが許可されます。
 - データセンター内のデバイスが外部ネットワークに接続できる。以下の [Windows PowerShell 4.0](http://www.microsoft.com/download/details.aspx?id=40855) コマンドレット (次の表を参照) を実行して、外部ネットワークへの接続を検証します。この検証は、Azure への接続が確立された、StorSimple デバイスのデプロイ先となる (データセンター ネットワーク内の) コンピューターに対して実行してください。  
 
 | パラメーター | 検証内容 | 実行するコマンド/コマンドレット |
@@ -139,14 +139,14 @@ StorSimple デバイスを構成し、StorSimple Manager サービスに接続�
 | **IP**</br>**サブネット**</br>**ゲートウェイ** | 有効な IPv4 アドレスまたは IPv6 アドレスかどうか。</br>有効なサブネットかどうか。</br>有効なゲートウェイかどうか。</br>この IP はネットワークで重複していないかどうか。 | `ping ip`</br>`arp -a`</br>`ping` コマンドと `arp` コマンドが失敗した場合、この IP を使用しているデバイスがデータセンター ネットワーク内に存在しないことを示しています。
 | | | |
 | **DNS** | 有効な DNS で、Azure の URL を解決できるかどうか。 | `Resolve-DnsName -Name www.bing.com -Server <DNS server IP address>`</br>代わりに次のコマンドも使用できます。</br>`nslookup --dns-ip=<DNS server IP address> www.bing.com` |
-| | ポート 53 が開いているかどうかを確認します。これは、デバイスに外部 DNS を使用している場合にのみ適用できます。内部 DNS の場合、外部 URL は自動的に解決されます。 | `Test-Port -comp dc1 -port 53 -udp -UDPtimeout 10000` </br>[このコマンドレットの詳細についてはこちらを参照してください。]()|
+| | ポート 53 が開いているかどうかを確認します。これは、デバイスに外部 DNS を使用している場合にのみ適用できます。内部 DNS の場合、外部 URL は自動的に解決されます。 | `Test-Port -comp dc1 -port 53 -udp -UDPtimeout 10000` </br>[このコマンドレットの詳細についてはこちらをご覧ください。](http://learn-powershell.net/2011/02/21/querying-udp-ports-with-powershell/)|
 | | | |
-| **NTP** | NTP サーバーを入力するとすぐに時刻の同期が開始されます。`time.windows.com` またはパブリック タイム サーバーを入力する場合は、UDP ポート 123 が開いていることを確認します。 | [このスクリプトをダウンロードして使用してください]()。 |
+| **NTP** | NTP サーバーを入力するとすぐに時刻の同期が開始されます。`time.windows.com` またはパブリック タイム サーバーを入力する場合は、UDP ポート 123 が開いていることを確認します。 | [このスクリプトをダウンロードして使用してください](https://gallery.technet.microsoft.com/scriptcenter/Get-Network-NTP-Time-with-07b216ca)。 |
 | | | |
-| **プロキシ (省略可能)** | 有効なプロキシ URI とポートかどうか。 </br>この認証モードが正しいかどうか。 | `wget http://bing.com % {$_.StatusCode}`</br>このコマンドは、Web プロキシを構成した後すぐに実行する必要があります。200 が返された場合は、接続が成功したことを示します。 |
+| **プロキシ (省略可能)** | 有効なプロキシ URI とポートかどうか。 </br>この認証モードが正しいかどうか。 | <code>wget http://bing.com | % {$\_.StatusCode}</code></br> このコマンドは、Web プロキシを構成した後すぐに実行する必要があります。状態コード 200 が返された場合は、接続が成功したことを示します。 |
 | | トラフィックをプロキシ経由でルーティングできるかどうか。 | デバイスでプロキシを構成した後、DNS の検証、NTP チェック、または HTTP チェックを 1 回実行します。これによって、プロキシまたは他の場所でトラフィックがブロックされているかどうかが明確になります。 |
 | | | |
-| **登録** | 送信 TCP ポート 443、80、9354 が開いているかどうかを確認します。 | `Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[Test-NetConnection コマンドレットの詳細についてはこちらを参照してください。]() |
+| **登録** | 送信 TCP ポート 443、80、9354 が開いているかどうかを確認します。 | `Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[Test-NetConnection コマンドレットの詳細についてはこちらをご覧ください。](https://technet.microsoft.com/library/dn372891.aspx) |
 
 ## デプロイの手順
 
@@ -164,7 +164,7 @@ StorSimple Manager サービスの新しいインスタンスを作成するに�
 
 > [AZURE.IMPORTANT]サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。このストレージ アカウントは、ボリューム コンテナーを作成するときに使用します。
 >
-> ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#Configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。ストレージ アカウントの自動作成を有効にしている場合は、「[手順 2. サービス登録キーを取得する](#step-2:-get-the-service-registration-key)」に進みます。
+> ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。ストレージ アカウントの自動作成を有効にしている場合は、「[手順 2. サービス登録キーを取得する](#step-2:-get-the-service-registration-key)」に進みます。
 
 ## 手順 2. サービス登録キーを取得する
 
@@ -179,7 +179,7 @@ Azure ポータルで、次の手順を実行します。
 
 > [AZURE.IMPORTANT]この構成を実行する前に、両方 (アクティブおよびパッシブ) のコントローラーで、DATA 0 以外のすべてのネットワーク インターフェイスの接続を解除してください。
 
-次の手順の説明に従い、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの初期セットアップを完了します。この手順を完了するには、ターミナル エミュレーション ソフトウェアを使用する必要があります。詳細については、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console)」を参照してください。
+次の手順の説明に従い、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの初期セットアップを完了します。この手順を完了するには、ターミナル エミュレーション ソフトウェアを使用する必要があります。詳細については、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console)｣を参照してください。
 
 [AZURE.INCLUDE [storsimple-configure-and-register-device](../../includes/storsimple-configure-and-register-device.md)]
 
@@ -220,7 +220,7 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 
 > - StorSimple ソリューションの高可用性を実現するために、Windows Server ホストで iSCSI を構成する前に、Windows Server ホストで MPIO を構成することをお勧めします (省略可能)。ホスト サーバーに MPIO を構成すると、サーバーはリンク、ネットワーク、またはインターフェイスの障害を許容できるようになります。
 
-> - MPIO と iSCSI のインストールおよび構成の手順については、「[StorSimple デバイスの MPIO の構成](storsimple-configure-mpio-windows-server.md)」を参照してください。このページには、StorSimple ボリュームのマウント、初期化、フォーマットを実行する手順も記載されています。
+> - MPIO と iSCSI のインストールと構成の手順については、「[StorSimple デバイスの MPIO の構成](storsimple-configure-mpio-windows-server.md)」をご覧ください。このページには、StorSimple ボリュームのマウント、初期化、フォーマットを実行する手順も記載されています。
 
 MPIO を構成しない場合は、次の手順を実行して、StorSimple ボリュームをマウント、初期化、およびフォーマットします。
 
@@ -242,7 +242,7 @@ MPIO を構成しない場合は、次の手順を実行して、StorSimple ボ�
 
 別のリージョンで Azure のストレージ アカウントを作成する必要がある場合の詳細な手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
-Azure ポータルの **[StorSimple Manager サービス]** ページで次の手順を実行します。
+Azure ポータルの **[StorSimple Manager サービス]** ページで次の手順に従います。
 
 [AZURE.INCLUDE [storsimple-configure-new-storage-account](../../includes/storsimple-configure-new-storage-account.md)]
 
@@ -257,7 +257,7 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 デバイスの更新には、1 ～ 4 時間かかることがあります。次の手順を実行して、更新プログラムをスキャンしてデバイスに適用します。
 
-> [AZURE.NOTE]ゲートウェイを DATA 0 以外のネットワーク インターフェイスで構成している場合は、更新プログラムをインストールする前に、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にする必要があります。**[デバイス]、[構成]** の順に移動し、DATA 2 および DATA 3 のインターフェイスを無効にします。デバイスの更新後に、これらのインターフェイスをもう一度有効にする必要があります。
+> [AZURE.NOTE]ゲートウェイを DATA 0 以外のネットワーク インターフェイスで構成している場合は、更新プログラムをインストールする前に、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にする必要があります。**[デバイス]、[構成]** の順に移動し、DATA 2 と DATA 3 のインターフェイスを無効にします。デバイスの更新後に、これらのインターフェイスをもう一度有効にする必要があります。
 
 #### デバイスを更新するには
 1.	デバイスの **[クイック スタート]** ページで、**[デバイス]** をクリックします。物理デバイスを選択し、**[メンテナンス]**、**[更新プログラムのスキャン]** を順にクリックします。  
@@ -290,4 +290,4 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

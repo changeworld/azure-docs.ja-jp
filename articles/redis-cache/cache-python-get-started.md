@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Python で Azure Redis Cache を使用する方法"
-   description="Python を使用して Azure Redis Cache を使用します"
-   services="redis-cache"
-   documentationCenter=""
-   authors="MikeWasson"
-   manager="wpickett"
-   editor=""/>
+	pageTitle="Python で Azure Redis Cache を使用する方法 | Microsoft Azure"
+	description="Python を使用して Azure Redis Cache を使用します"
+	services="redis-cache"
+	documentationCenter=""
+	authors="steved0x"
+	manager="dwrede"
+	editor="v-lincan"/>
 
 <tags
-   ms.service="cache"
-   ms.devlang="python"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="cache-redis"
-   ms.workload="required"
-   ms.date="08/04/2015"
-   ms.author="mwasson"/>
+	ms.service="cache"
+	ms.devlang="python"
+	ms.topic="hero-article"
+	ms.tgt_pltfrm="cache-redis"
+	ms.workload="tbd"
+	ms.date="08/17/2015"
+	ms.author="sdanie"/>
 
 # Python で Azure Redis Cache を使用する方法
 
@@ -36,7 +36,7 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 
   ![][2]
 
-キャッシュが作成されたら、ポータルでそのキャッシュをクリックして設定を表示します。次が必要です。
+キャッシュを作成したら、Azure ポータルでそのキャッシュをクリックして設定を表示します。次が必要です。
 
 - **ホスト名**。 キャッシュを作成したときに入力した名前です。
 - **ポート**。 **[ポート]** の下のリンクをクリックしてポートを表示します。SSL ポートを使用します。
@@ -59,4 +59,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 [1]: ./media/cache-python-get-started/cache01.png
 [2]: ./media/cache-python-get-started/cache02.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

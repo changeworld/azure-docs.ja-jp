@@ -1,5 +1,5 @@
 <properties
-   pageTitle="会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする"
+   pageTitle="会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする | Microsoft Azure"
    description="この記事は、会社のドメイン名で Traffic Manager ドメイン名が参照されるようにするために役立ちます。"
    services="traffic-manager"
    documentationCenter=""
@@ -12,8 +12,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/27/2015"
-   ms.author="joaoma;cherylmc" />
+   ms.date="08/19/2015"
+   ms.author="joaoma" />
 
 # 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする
 
@@ -27,13 +27,15 @@
 
 >[AZURE.IMPORTANT]*contoso.com* などの第 2 レベル ドメインで、Traffic Manager ドメインを参照させることはできません。これは、第 2 レベルのドメイン名の CNAME レコードを許可しない DNS プロトコルの制限です。
 
-## 関連項目
+## 次のステップ
 
-[Traffic Manager での負荷分散方法について](traffic-manager-load-balancing-methods.md)
+[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)
 
-[Traffic Manager の構成タスク](https://msdn.microsoft.com/library/azure/hh744830.aspx)
+[Traffic Manager - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
 
-[Traffic Manager の概要](traffic-manager-overview.md)
+[Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
+
+[Traffic Manager について](traffic-manager-overview.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -1,25 +1,25 @@
-<properties 
-	pageTitle="サインイン ページとアクセス パネル ページに対する会社のブランドの追加" 
-	description="このトピックでは、企業が、管理するすべての Web サイトとサービスに一貫したルック アンド フィールを適用し、エンド ユーザーがその企業のサイトを利用するたびに、混乱しないようにする方法ついて説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
+<properties
+	pageTitle="サインイン ページとアクセス パネル ページに対する会社のブランドの追加"
+	description="このトピックでは、企業が、管理するすべての Web サイトとサービスに一貫したルック アンド フィールを適用し、エンド ユーザーがその企業のサイトを利用するたびに、混乱しないようにする方法ついて説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="MarkusVi"
+	manager="stevenpo"
 	editor="LisaToft"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="05/05/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/11/2015" 
+	ms.author="MarkVi"/>
 
 # サインイン ページとアクセス パネル ページに対する会社のブランドの追加
 
 > [AZURE.NOTE]
-> 
+>
 - 会社のブランド化は、Azure Active Directory の Premium または Basic エディションにアップグレードする場合にのみ使用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 - Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](http://feedback.azure.com/forums/169401-azure-active-directory)からお問い合わせください。
 
@@ -44,7 +44,7 @@
 テナント固有でない URL (https://mail.office365.com など) を使用してサービスにアクセスすると、ブランド化されていないサインイン ページが表示されます。ユーザーが、ユーザー ID を入力するか、ユーザー タイルを選択しておくと、サインイン ページが更新され、ブランドが表示されます。
 
 > [AZURE.NOTE]
-> 
+>
 - ドメイン名は、ブランド化を構成した Azure の管理ポータルの [**Active Directory**] > [**ディレクトリ**] > [**ドメイン**] セクションに、「アクティブ」として表示されます。
 - サインイン ページのブランド化は、Microsoft のコンシューマー向けサインイン ページに継承されません。つまり、個人の Microsoft アカウント (旧 Windows Live ID) でサインインしているユーザーには、Azure AD によってレンダリングされるユーザー タイルのブランド化された一覧が表示される可能性がありますが、組織のブランドは Microsoft アカウントのサインイン ページには適用されません。
 
@@ -167,7 +167,7 @@ Azure AD でカスタマイズ可能な要素には、複数のユース ケー�
 サインイン ページのユーザー名ラベル | (現在サインイン ページでは未使用) 今後、このテキストを使用して、エクスペリエンスのさまざまな場面で ”職場または学校のアカウント” の汎用文字列を置換する場合があります。このラベルは、“Contoso アカウント” や “Contoso ID” のように設定することができます。 | <p>最大 50 文字の Unicode テキスト</p><p>プレーン テキストのみ (リンクまたは HTML タグはなし)</p> | <p>常に短くシンプルにする</p><p>提供するユーザーに対して、職場または学校のアカウントの通常の呼び方を尋ねる。</p>
 サインイン ページのテキスト | この “定型” テキストが、サインイン ページ フォームの下部に表示され、その他の指示やヘルプとサポートの入手先を伝えるために使用できます。 | <p>最大 256 文字の Unicode テキスト</p><p>プレーン テキストのみ (リンクまたは HTML タグはなし)</p> | 常に 250 文字未満 (約 3 行のテキスト) にする
 サインイン ページの図 | 図は、サインイン ページ内で、サインイン ページ フォームの左側に表示されている大きな画像です。 | <p>JPG または PNG</p><p>1420 x 1200</p><p>500 KB</p> | <p>1420 x 1200 ピクセル</p><p>重要: できる限り小さく保つ。理想的には 200 KB 未満。この画像が大きすぎる場合、画像がキャッシュされていないときに、サインイン ページのパフォーマンスに影響を与えます。</p><p>この画像は、ほとんどの場合、さまざまな画面の縦横比に合わせてトリミングされます。重要な表示要素を常に左上隅 (右から左へ記述する言語では右上隅) に表示されるようにします。これは、通常、ブラウザーのウィンドウが縮小されるのに合わせて、サイズは右下隅から左上隅に向かって変更されるためです。</p>
-サインイン ページの背景色 | サインイン ページの背景色は、サインイン ページ フォームの左側にある領域で使用されます。これはサインイン ページの図がない場合も表示されます。 | RGB 色を 16 進数形式で指定 (例: #FFFFFF) | <p>背景色は、低帯域幅接続、または非常に狭い画面上では、大きな図の代わりに表示される可能性があります。</p><p>バナー ロゴの主要な色を使用することをお勧めします。</p>
+サインイン ページの背景色 | サインイン ページの背景色は、サインイン ページ フォームの左側にある領域で使用されます。これはサインイン ページの図がない場合も表示されます。 | RGB 色を 16 進数形式で指定 (例: \#FFFFFF) | <p>背景色は、低帯域幅接続、または非常に狭い画面上では、大きな図の代わりに表示される可能性があります。</p><p>バナー ロゴの主要な色を使用することをお勧めします。</p>
 
 
 ## 次の内容
@@ -185,6 +185,4 @@ Azure AD でカスタマイズ可能な要素には、複数のユース ケー�
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

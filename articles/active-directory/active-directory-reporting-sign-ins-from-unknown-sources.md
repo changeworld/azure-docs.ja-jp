@@ -3,8 +3,8 @@
 	description="ユーザーが匿名のプロキシ IP アドレスからディレクトリに正常にサインインしたことを示すレポート。"
 	services="active-directory"
 	documentationCenter=""
-	authors="kenhoff"
-	manager="ilanas"
+	authors="SSalahAhmed"
+	manager="gchander"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/01/2015"
-	ms.author="kenhoff"/>
+	ms.date="08/17/2015"
+	ms.author="saah;kenhoff"/>
 
 # 不明なソースからのサインイン
 
@@ -24,4 +24,4 @@
 
 ![不明なソースからのサインイン](./media/active-directory-reporting-sign-ins-from-unknown-sources/signInsFromUnknownSources.PNG)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

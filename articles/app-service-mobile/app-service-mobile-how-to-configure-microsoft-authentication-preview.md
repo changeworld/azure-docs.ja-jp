@@ -13,22 +13,26 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="05/26/2015"
+	ms.date="07/27/2015"
 	ms.author="mahender"/>
 
 # Microsoft アカウント ログインを使用するようにアプリケーションを構成する方法
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
-このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure App Services を構成する方法を示します。
+このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure モバイル アプリを構成する方法を示します。
 
 ## <a name="register"> </a>Microsoft アカウントにアプリケーションを登録する
 
-1. Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
+1. [Azure の管理ポータル]にログオンし、モバイル アプリに移動します。
 
-2. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
+2. **[設定]**、**[ユーザー認証]**、**[Microsoft アカウント]** の順にクリックします。**[リダイレクト URL]** をコピーします。この URL は、Microsoft アカウントの新しいアプリを構成するのに使用します。
 
-3. **[API 設定]** をクリックします。**[モバイル クライアント アプリ/デスクトップ クライアント アプリ]** に対して **[はい]** を選択します。**[リダイレクト URL]** フィールドに、パス _/signin-microsoft_ が末尾に追加されたゲートウェイの URL を入力します。たとえば、「`https://contosogateway.azurewebsites.net/signin-microsoft`」のように入力します。HTTPS スキームを使用していることを確認します。リダイレクト URL を入力したら、**[保存]** をクリックします。
+3. Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
+
+4. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
+
+5. **[API 設定]** をクリックします。**[モバイル クライアント アプリ/デスクトップ クライアント アプリ]** に対して **[はい]** を選択します。**[リダイレクト URL]** フィールドに、先ほどコピーした **[リダイレクト URL]** を入力します。この URL はモバイル アプリ ゲートウェイの後に _/signin-microsoft_ を追加したフォーマットです。たとえば、「`https://contosogateway.azurewebsites.net/signin-microsoft`」のように入力します。HTTPS スキームを使用していることを確認します。リダイレクト URL を入力したら、**[保存]** をクリックします。
 
 	![][0]
 
@@ -41,9 +45,7 @@
 
 ## <a name="secrets"> </a>Microsoft アカウントの情報をモバイル アプリに追加する
 
-5. [Azure の管理ポータル]にログオンし、App Services ゲートウェイに移動します。
-
-6. **[設定]** で、**[ID]**、**[Microsoft アカウント]** の順に選択します。以前に入手したアプリ ID とアプリ シークレットの値を貼り付けます。その後、**[保存]** をクリックします。
+1. [Azure の管理ポータル]に戻り、モバイル アプリの [Microsoft アカウント設定] ブレードに、以前に入手したクライアント ID とクライアント シークレットの値を貼り付けます。その後、**[保存]** をクリックします。
 
     ![][1]
 
@@ -60,7 +62,7 @@
 <!-- Images. -->
 
 [0]: ./media/app-service-mobile-how-to-configure-microsoft-authentication-preview/app-service-microsoftaccount-redirect.png
-[1]: ./media/app-service-mobile-how-to-configure-microsoft-authentication-preview/app-service-microsoftaccount-settings.png
+[1]: ./media/app-service-mobile-how-to-configure-microsoft-authentication-preview/mobile-app-microsoftaccount-settings.png
 
 <!-- URLs. -->
 
@@ -68,4 +70,4 @@
 [Azure の管理ポータル]: https://portal.azure.com/
  
 
-<!------HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

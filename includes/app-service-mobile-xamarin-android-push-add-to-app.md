@@ -1,12 +1,12 @@
 
-4. Create a new class in the project called `ToDoBroadcastReceiver`.
+4. `ToDoBroadcastReceiver` という名前のプロジェクトに新しいクラスを作成します。
 
-5. Add the following using statements to **ToDoBroadcastReceiver** class:
+5. 次の using ステートメントを **ToDoBroadcastReceiver** クラスに追加します。
 
 		using Gcm.Client;
 		using Microsoft.WindowsAzure.MobileServices;
 
-6. Add the following permission requests between the **using** statements and the **namespace** declaration:
+6. **using** ステートメントと **namespace** 宣言の間に次のアクセス許可要求を追加します。
 
 		[assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
 		[assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -17,7 +17,7 @@
 		[assembly: UsesPermission(Name = "android.permission.INTERNET")]
 		[assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
 
-7. Replace the existing **ToDoBroadcastReceiver** class definition with the following:
+7. 既存の **ToDoBroadcastReceiver** クラスの定義を次の内容に置き換えます。
  
 	    [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
 	    [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, 
@@ -32,9 +32,9 @@
 	        public static string[] senderIDs = new string[] { "<PROJECT_NUMBER>" };
         }
 
-	In the above code, you must replace _`<PROJECT_NUMBER>`_ with the project number assigned by Google when you provisioned your app in the Google developer portal. 
+	上記のコードの _`<PROJECT_NUMBER>`_ を、Google の開発者ポータルでアプリケーションをプロビジョニングしたときに Google によって割り当てられたプロジェクト番号に置き換える必要があります。
 
-8. In the ToDoBroadcastReceiver.cs project file, add the following code that defines the **PushHandlerService** class:
+8. ToDoBroadcastReceiver.cs プロジェクト ファイルに、**PushHandlerService** クラスを定義する次のコードを追加します。
  
 		// The ServiceAttribute must be applied to the class.
     	[Service] 
@@ -45,11 +45,11 @@
         	public PushHandlerService() : base(ToDoBroadcastReceiver.senderIDs) { }
     	}
 
-	Note that this class derives from **GcmServiceBase** and that the **Service** attribute must be applied to this class.
+	このクラスは **GcmServiceBase** から派生したものであり、このクラスに **Service** 属性を適用する必要があるということに注意してください。
 
-	>[AZURE.NOTE]The **GcmServiceBase** class implements the **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** and **OnError()** methods. You must override these methods in the **PushHandlerService** class.
+	>[AZURE.NOTE]**GcmServiceBase** クラスでは、**OnRegistered()** メソッド、O**nUnRegistered()** メソッド、**OnMessage()** メソッド、および **OnError()** メソッドを実装しています。**PushHandlerService** クラスでは、これらのメソッドをオーバーライドする必要があります。
 
-5. Add the following code to the **ToDoBroadcastReceiver** class that overrides the **OnRegistered** event handler. 
+5. **OnRegistered** イベント ハンドラーをオーバーライドする次のコードを **ToDoBroadcastReceiver** クラスに追加します。
 
         protected override void OnRegistered(Context context, string registrationId)
         {
@@ -78,9 +78,9 @@
             }
         }
 
-	This method uses the returned GCM registration ID to register with Azure for push notifications.
+	このメソッドでは、返された GCM 登録 ID を使用して、プッシュ通知のために Azure に登録します。
 
-10. Override the **OnMessage** method in **PushHandlerService** with the following code:
+10. **PushHandlerService** の **OnMessage** メソッドを次のコードでオーバーライドします。
 
         protected override void OnMessage(Context context, Intent intent)
         {          
@@ -116,7 +116,7 @@
             }
         }
 
-12. Add the following method overrides for **OnUnRegistered()** and **OnError()**, which are required for the project to compile.
+12. **OnUnRegistered()** および **OnError()** (これらはプロジェクトをコンパイルするために必要) 用の次のメソッド オーバーライド コードを追加します。
 
         protected override void OnUnRegistered(Context context, string registrationId)
         {
@@ -128,3 +128,5 @@
             System.Diagnostics.Debug.WriteLine(
                 string.Format("Error occurred in the notification: {0}.", errorId));
         }
+
+<!---HONumber=August15_HO8-->

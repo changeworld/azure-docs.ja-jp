@@ -4,7 +4,7 @@ Azure Libraries for Java は、[Apache License Version 2.0][license] に準拠�
 
 ## Azure Libraries for Java - Maven
 
-プロジェクトが既に Maven を使用してビルドする設定になっている場合には、pom.xml ファイルに次の依存関係を追加します。
+プロジェクトが既に Maven を使用してビルドする設定になっている場合には、pom.xml ファイルに次の依存関係を追加します。注: Java 用 Azure ライブラリを使用する Maven プロジェクトを Eclipse で作成する方法については、[http://go.microsoft.com/fwlink/?LinkId=622998]() を参照してください。
 
 	<dependency>
 	    <groupId>com.microsoft.azure</groupId>
@@ -58,4 +58,4 @@ Azure Libraries for Java は、[Apache License Version 2.0][license] に準拠�
 [license]: http://www.apache.org/licenses/LICENSE-2.0.html
 [zip-download]: http://go.microsoft.com/fwlink/?LinkId=253887
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

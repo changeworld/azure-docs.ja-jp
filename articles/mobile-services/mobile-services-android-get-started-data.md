@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="05/15/2015" 
+	ms.date="08/18/2015" 
 	ms.author="ricksal"/>
 
 # 既存の Android アプリケーションへの Mobile Services の追加
@@ -101,7 +101,7 @@
 
 ## 古いコードのバージョン
 
-このチュートリアルの Eclipse バージョンを確認する場合は、「[Eclipse を使用したデータの使用](mobile-services-android-get-started-data-EC.md)」をご覧ください。
+このチュートリアルの Eclipse バージョンを確認する場合は、「[Eclipse を使用したデータの使用](mobile-services-android-get-started-data-ec.md)」をご覧ください。
 
 Eclipse プロジェクトのソース コードの完全バージョンは<a href="https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithData/Android">こちら</a>で確認できます。
 
@@ -156,4 +156,4 @@ Azure Mobile Services Android SDK の前のバージョンで使用されてい�
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

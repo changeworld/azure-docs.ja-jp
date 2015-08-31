@@ -3,7 +3,7 @@
 	description="" 
 	services="" 
 	documentationCenter="" 
-	authors="micflan" 
+	authors="flanakin" 
 	manager="lwelicki" 
 	editor=""/>
 
@@ -32,4 +32,4 @@ Microsoft Azure ポータルは、最新の主要なデスクトップ デバイ
 
 *Safari 6 以前はサポートされていません。OS X を使用している場合は、Chrome と Firefox のどちらかを使用すること、または OS X Mavericks にアップグレードして Safari 7 を入手することができます。*
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

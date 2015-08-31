@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2015" 
+	ms.date="08/16/2015" 
 	ms.author="bradyg"/>
 
 # Swashbuckle が生成する API 定義をカスタマイズする 
@@ -250,4 +250,4 @@ Visual Studio を使用して REST API のクライアント コードを再生�
 この記事では Swashbuckle により操作 ID と有効な応答コードを生成する方法のカスタマイズについて説明しました。詳細については、[GitHub の Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) をご覧ください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

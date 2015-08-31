@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="ソース管理へのプロジェクトのコードの格納 | Microsoft Azure" 
-	description="コンピューターのローカル Git リポジトリにサーバー スクリプト ファイルとモジュールを格納する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="ソース管理へのプロジェクトのコードの格納 | Microsoft Azure"
+	description="コンピューターのローカル Git リポジトリにサーバー スクリプト ファイルとモジュールを格納する方法について説明します。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="04/24/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="ggailey777"/>
 
 # ソース管理にプロジェクトのコードを格納する
@@ -32,7 +32,7 @@
 
 ##<a name="clone-repo"></a>Git をインストールし、ローカル リポジトリを作成する
 
-1. ローカル コンピューターに Git をインストールします。 
+1. ローカル コンピューターに Git をインストールします。
 
 	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
 
@@ -75,13 +75,13 @@
 		    request.execute();
 		    console.log(JSON.stringify(item, null, 4));
 		}
-	
+
 	このコードは、挿入された項目を単にログに書き込みます。このファイルに既にコードが含まれている場合は、単に少量の有効な JavaScript コード (`console.log()` への呼び出しなど) をこのファイルに追加し、変更を保存します。
 
 3. Git コマンド プロンプトで次のコマンドを入力し、新しいスクリプト ファイルの追跡を開始します。
 
 		$ git add .
-	
+
 
 4. 次のコマンドを入力し、変更をコミットします。
 
@@ -90,12 +90,10 @@
 5. 次のコマンドを入力し、変更をリモート リポジトリにアップロードします。
 
 		$ git push origin master
-	
+
 	コミットがモバイル サービスにデプロイされることを示す一連のコマンドが表示されるはずです。
 
-6. 管理ポータルに戻って、[**データ**] タブ、**TodoItem** テーブル、[**スクリプト**] の順にクリックし、[**挿入**] 操作を選択します。
-7. 
-	表示された挿入操作のスクリプトが、直前にリポジトリにアップロードした JavaScript コードと同じであることを確認します。
+6. 管理ポータルに戻って、[**データ**] タブ、**TodoItem** テーブル、[**スクリプト**] の順にクリックし、[**挿入**] 操作を選択します。7.表示された挿入操作のスクリプトが、直前にリポジトリにアップロードした JavaScript コードと同じであることを確認します。
 
 ##<a name="use-npm"></a>サーバー スクリプトで共有コードと Node.js モジュールを活用する
 
@@ -125,14 +123,14 @@ Node.js モジュールをモバイル サービスに追加するための推�
 		$ git add .
 		$ git commit -m "added node-uuid module"
 		$ git push origin master
-		
+
 	これで、新しいファイルが追加され、変更がコミットされ、新しい node-uuid モジュールと todoitem.insert.js スクリプトの変更がモバイル サービスにプッシュされます。
 
 ## <a name="next-steps"> </a>次のステップ
 
 このチュートリアルでは、スクリプトをソース管理に保存する方法について説明しました。サーバー スクリプトとカスタム API の操作の詳細については、以下を参照してください。
 
-+ [Mobile Services のサーバー スクリプトの操作] <br/>サーバー スクリプト、ジョブ スケジューラ、およびカスタム API の操作方法について説明します。
++ [モバイル サービスのサーバー スクリプトの操作] <br/>サーバー スクリプト、ジョブ スケジューラ、およびカスタム API の操作方法について説明します。
 
 + [クライアントからのカスタム API 呼び出し] <br/>クライアントから呼び出すことのできる、カスタム API を作成する方法を説明します。
 
@@ -153,11 +151,10 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [Mobile Services の使用]: mobile-services-ios-get-started.md
 [既存のアプリに Mobile Services を追加する]: mobile-services-ios-get-started-data.md
-[Mobile Services のサーバー スクリプトの操作]: mobile-services-how-to-use-server-scripts.md
+[モバイル サービスのサーバー スクリプトの操作]: mobile-services-how-to-use-server-scripts.md
 [Azure Management Portal]: https://manage.windowsazure.com/
 [クライアントからのカスタム API 呼び出し]: mobile-services-ios-call-custom-api.md
 [Modules (モジュール)]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

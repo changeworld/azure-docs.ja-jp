@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/09/2015"
+   ms.date="08/19/2015"
    ms.author="stepsic"/>
 
 # Azure リソース コネクタ
@@ -87,6 +87,8 @@ Get metrics | リソース ID のメトリックを取得します。
 ## コネクタでできること
 これでコネクタが作成されたため、このコネクタを Logic App を使用してビジネス フローに追加することができます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
+
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[API アプリとコネクタの管理と監視](../app-service-api/app-service-api-manage-in-portal.md)」を参照してください。
 
 <!--References -->
@@ -94,4 +96,4 @@ Get metrics | リソース ID のメトリックを取得します。
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/09/2015"
+   ms.date="08/17/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理
@@ -116,6 +116,6 @@
 
 ## 次のステップ
 
-「[StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理](storsimple-snapshot-manager-manage-backup-jobs.md)」
+[StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理](storsimple-snapshot-manager-manage-backup-jobs.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

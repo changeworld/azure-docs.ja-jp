@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015"  
+	ms.date="08/17/2015"  
 	ms.author="juliako"/>
 
 
@@ -219,7 +219,7 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
 1. 時間 – hh:mm:ss または hh:mm:ss.mmm 形式。ここで、.mmm はミリ秒です。この属性の値は、ビデオの時系列の先頭から広告の中断の先頭までの時間を指定します。
 1. パーセント – n% 形式。ここで、n は広告再生前に再生するビデオの時系列のパーセントです。
 1. 開始/終了 – ビデオを表示する前または後に広告を表示することを指定します。
-1. 位置 – 広告の中断のタイミングが不明なとき (ライブ ストリーミングなど) に、広告の中断の順序を指定します。各広告の中断の順序は、#n 形式で指定されます。n は整数 1 以上です。1 は、広告を最初のチャンスに再生することを意味し、2 は広告を 2 番目のチャンスに再生することを意味し、それ以降も同様です。
+1. 位置 – 広告の中断のタイミングが不明なとき (ライブ ストリーミングなど) に、広告の中断の順序を指定します。各広告の中断の順序は、\#n 形式で指定されます。n は整数 1 以上です。1 は、広告を最初のチャンスに再生することを意味し、2 は広告を 2 番目のチャンスに再生することを意味し、それ以降も同様です。
 
 <**AdBreak**> 要素内には、<**AdSource**> 要素を 1 つ配置できます。<**AdSource**> 要素には、次の属性が含まれています。
 
@@ -356,9 +356,7 @@ VPAID は、実行可能広告ユニットがビデオ プレーヤーとやり�
 
 ##広告をサポートする Windows または Windows Phone 8 プレーヤーの実装
 
-Microsoft Media Platform: Player Framework for Windows 8 and Windows Phone 8 には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。Player Framework とサンプルは、[Player Framework for Windows 8 and Windows Phone 8](https://playerframework.codeplex.com/releases/view/105214) サイトからダウンロードできます。
-
-広告の挿入に関する詳細については、「[メディアへの広告の挿入](media-services-inserting-ads-on-client-side.md#insert_ads_into_media)」をご覧ください。
+Microsoft Media Platform: Player Framework for Windows 8 and Windows Phone 8 には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。Player Framework とサンプルは、[Player Framework for Windows 8 and Windows Phone 8](https://playerframework.codeplex.com) サイトからダウンロードできます。
 
 Microsoft.PlayerFramework.Xaml.Samples ソリューションを開くと、多数のフォルダーがプロジェクト内に表示されます。Advertising フォルダーには、広告をサポートするビデオ プレーヤーの作成に関連するサンプル コードが含まれています。Advertising フォルダーには、広告を挿入するさまざまな方法を示した XAML/CS ファイルが含まれています。次の一覧で、これらのファイルについて説明します。
 
@@ -573,7 +571,6 @@ ProgrammaticAdPage.xaml.cs ファイルは、AdHandlerPlugin を作成し、Time
 
 Microsoft Media Platform: Player Framework for iOS には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。Player Framework とサンプルは、[Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework) からダウンロードできます。github ページには、Player Framework に関する追加情報とプレーヤー サンプルの概要が記載された Wiki へのリンク ([Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)) があります。
 
-広告の挿入に関する詳細については、「[メディアへの広告の挿入](media-services-inserting-ads-on-client-side.md#insert_ads_into_media)」をご覧ください。
 
 ###VMAP を使用した広告のスケジュール設定
 
@@ -802,6 +799,6 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
  
 ##関連項目
 
-[ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md) [Azure Media Player Framework for iOS の概要](https://channel9.msdn.com/Series/Windows-Azure-Media-Services-Tutorials/An-introduction-to-Azure-Media-Player-Framework-for-IOS)
+[ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

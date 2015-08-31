@@ -1,6 +1,6 @@
 <properties 
    pageTitle="StorSimple Manager サービスを使用した StorSimple デバイスの管理"
-   description="Azure 管理ポータルで StorSimple Manager サービスを使用して、StorSimple デバイスを管理します。"
+   description="Microsoft Azure 管理ポータルで StorSimple Manager サービスを使用して、StorSimple デバイスを管理します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/27/2015"
+   ms.date="08/13/2015"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの管理
@@ -72,7 +72,7 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |---|---|---|
 |サービスを作成する</br>サービスを削除する</br>サービス登録キーを取得する</br>サービス登録キーを再生成する|StorSimple Manager サービス|[StorSimple Manager サービスをデプロイする](storsimple-manage-service.md)
 |サービス データ暗号化キーを変更する</br>操作ログを表示する|StorSimple Manager サービス → [ダッシュボード]|[StorSimple Manager サービスのダッシュボードを使用する](storsimple-service-dashboard.md)|
-|デバイスを非アクティブ化する</br>デバイスを削除する|StorSimple Manager サービス → [デバイス]|[デバイスを非アクティブ化または削除する]()|
+|デバイスを非アクティブ化する</br>デバイスを削除する|StorSimple Manager サービス → [デバイス]|[デバイスを非アクティブ化または削除する](storsimple-deactivate-and-delete-device.md)|
 |障害復旧とデバイスのフェールオーバーについて学習する</br>物理デバイスにフェールオーバーする</br>仮想デバイスにフェールオーバーする</br>ビジネス継続性障害復旧 (BCDR)|StorSimple Manager サービス → [デバイス]|[StorSimple デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)|
 |ボリュームのバックアップを一覧表示する</br>バックアップ セットを選択する</br>バックアップ セットを削除する|StorSimple Manager サービス → [バックアップ カタログ]|[バックアップを管理する](storsimple-manage-backup-catalog.md)|
 |ボリュームを複製する|StorSimple Manager サービス → [バックアップ カタログ]|[ボリュームを複製する](storsimple-clone-volume.md)|
@@ -83,7 +83,7 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |ジョブの詳細を表示する</br>ジョブを取り消す|StorSimple Manager サービス → [ジョブ]|[ジョブの管理](storsimple-manage-jobs.md)
 |アラート通知を受け取る</br>アラートを管理する</br>アラートを確認する|StorSimple Manager サービス → [アラート]|[StorSimple アラートを表示および管理する](storsimple-manage-alerts.md)
 |接続されているイニシエーターを表示する</br>デバイスのシリアル番号を調べる</br>ターゲット IQN を調べる|StorSimple Manager サービス → [デバイス] → [ダッシュボード]|[StorSimple デバイス ダッシュボードを使用する](storsimple-device-dashboard.md)|
-|監視グラフを作成する|StorSimple Manager サービス → [デバイス] → [監視]|[StorSimple デバイスを監視する](https://msdn.microsoft.com/library/azure/dn757759.aspx)|
+|監視グラフを作成する|StorSimple Manager サービス → [デバイス] → [監視]|[StorSimple デバイスを監視する](storsimple-monitor-device.md)|
 |ボリューム コンテナーを追加する</br>ボリューム コンテナーを変更する</br>ボリューム コンテナーを削除する|StorSimple Manager サービス → [デバイス] → [ボリューム コンテナー]|[ボリューム コンテナーを管理する](storsimple-manage-volume-containers.md)|
 |ボリュームを追加する</br>ボリュームを変更する</br>ボリュームをオフラインにする</br>ボリュームを削除する</br>ボリュームを監視する|StorSimple Manager サービス → [デバイス] → [ボリューム コンテナー] → [ボリューム]|[ボリュームを管理する](storsimple-manage-volumes.md)|
 |デバイスの設定を変更する</br>時刻の設定を変更する</br>DNS.md 設定を変更する</br>ネットワーク インターフェイスを構成する|StorSimple Manager サービス → [デバイス] → [構成]|[StorSimple デバイスのデバイス構成を変更する](storsimple-modify-device-config.md)|
@@ -107,6 +107,6 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 
 問題を解決できず、サービス要求の作成が必要な場合は、次のトピックを参照してください。
 
--  [Microsoft サポートに問い合わせる](https://msdn.microsoft.com/library/azure/dn757750.aspx)
+-  [Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

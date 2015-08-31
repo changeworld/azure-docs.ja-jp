@@ -5,6 +5,7 @@
 	editor="cgronlun"
 	manager="paulettm"
 	authors="mumian"
+	tags="azure-portal"
 	documentationCenter=""/>
 
 <tags
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/09/2015"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
 
@@ -27,17 +28,17 @@ Azure HDInsight は、いつでもデプロイできる Hadoop クラスター �
 ---|---|---|---|---
 Hortonworks Data Platform|2\.2|2\.1.7|2\.0|1\.3
 Apache Hadoop & YARN|2\.6.0|2\.4.0|2\.2.0|1\.2.0
-Tez|0\.5.2|0\.4.0||
+Apache Tez|0\.5.2|0\.4.0||
 Apache Pig|0\.14.0|0\.12.1|0\.12.0|0\.11.0
 Apache Hive & HCatalog|0\.14.0|0\.13.1|0\.12.0|0\.11.0
-HBase |0\.98.4|0\.98.0||
+Apache HBase |0\.98.4|0\.98.0||
 Apache Sqoop|1\.4.5|1\.4.4|1\.4.4|1\.4.3
 Apache Oozie|4\.1.0|4\.0.0|4\.0.0|3\.3.2
-Zookeeper|3\.4.6|3\.4.5|3\.4.5|
-Storm|0\.9.3|0\.9.1||
-Mahout|0\.9.0|0\.9.0||
-Phoenix|4\.2.0|4\.0.0.2.1.7.0-2162||
-Spark|1\.3.1|||
+Apache Zookeeper|3\.4.6|3\.4.5|3\.4.5|
+Apache Storm|0\.9.3|0\.9.1||
+Apache Mahout|0\.9.0|0\.9.0||
+Apache Phoenix|4\.2.0|4\.0.0.2.1.7.0-2162||
+Apache Spark|1\.3.1|||
 
 
 **現在のコンポーネントのバージョンの取得**
@@ -51,9 +52,7 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 ### HDInsight クラスターのプロビジョニング時にバージョンを選択
 
-HDInsight Windows PowerShell コマンドレットまたは HDInsight .NET SDK を使用してクラスターを作成するときは、"Version" パラメーターを使用して、HDInsight Hadoop クラスターのバージョンを選択することができます。
-
-**[簡易作成]** オプションを使用すると、既定で Hadoop クラスターを作成する HDInsight バージョン 3.1 を取得します。Azure ポータルで **[カスタム作成]** オプションを使用する場合は、**[クラスターの詳細]** ページの **[HDInsight のバージョン]** ボックスで、デプロイされるクラスターのバージョンを選択できます。
+HDInsight Windows PowerShell コマンドレットまたは HDInsight .NET SDK を使用してクラスターを作成するときは、Azure プレビュー ポータルの **[オプションの構成]** ブレードの **[HDInsight のバージョン]** ドロップダウンを使用して、HDInsight Hadoop クラスターのバージョンを選択することができます。
 
 ##機能概要
 HDInsight プラットフォームの重要な機能には、次のようなものがあります。
@@ -64,10 +63,10 @@ HDInsight プラットフォームの重要な機能には、次のようなも�
 
 	Spark はスクリプト アクションを使用して追加することもできます。スクリプト アクションは、Spark 1.2.0 を HDInsight 3.2 クラスターに、または Spark 1.0.2 を HDInsight 3.1 クラスターに追加します。詳細については、「[HDInsight Hadoop クラスターで Spark をインストールして使用する](hdinsight-hadoop-spark-install.md)」を参照してください。
 
- 
+
 - **Storm** - 一般公開が開始された Azure HDInsight の Storm は、リアルタイム分析をすばやく簡単にデプロイできる機能で、数回クリックするだけで数分以内にデプロイが完了します。Azure HDInsight の Apache Storm は、Apache Hadoop エコシステムのオープン ソース プロジェクトの 1 つで、何百万ものイベントを信頼性の高い方法で処理できる分析プラットフォームへのアクセスを提供します。これにより、Hadoop ユーザーは、イベントが発生したときだけでなく、過去のイベントからも洞察を得ることができます。Microsoft では、Visual Studio とのビルトイン統合も提供しており、開発者は Storm を簡単に操作できます。Storm トポロジの開発、デプロイ、およびデバッグを、Visual Studio 内から実行できます。
 
-- **Linux での HDInsight (プレビュー)** - Azure HDInsight には、Linux (Ubuntu) 仮想マシン (VM) 上で実行される Hadoop クラスターをプロビジョニングするオプションが用意されています。Linux または Unix に詳しい場合、既存の Linux ベースの Hadoop ソリューションから移行する場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、このオプションを使用して実行できます。Windows または Linux が実行されているクライアント コンピューターから、Azure ポータル、Azure CLI、または HDInsight .NET SDK (Windows のみ) を使用して Linux 上に HDInsight クラスターをプロビジョニングできます。
+- **Linux での HDInsight (プレビュー)** - Azure HDInsight には、Linux (Ubuntu) 仮想マシン (VM) 上で実行される Hadoop クラスターをプロビジョニングするオプションが用意されています。Linux または Unix に詳しい場合、既存の Linux ベースの Hadoop ソリューションから移行する場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、このオプションを使用して実行できます。Windows または Linux が実行されているクライアント コンピューターから、Azure プレビュー ポータル、Azure CLI、または HDInsight .NET SDK (Windows のみ) を使用して Linux 上に HDInsight クラスターをプロビジョニングできます。
 
 - **追加の VM サイズ** - HDInsight クラスターを利用できる VM の種類とサイズが増えました。HDInsight クラスターは、汎用目的でビルドされた A2 ～ A7 サイズ、ソリッド ステート ドライブ (SSD) と 60% 高速のプロセッサを特徴とする D シリーズ ノード、高速ネットワーク用 InfiniBand をサポートする A8 と A9 サイズを利用できます。Azure HDInsight で Apache HBase を使用するお客様は、D シリーズの大容量メモリ構成を利用してパフォーマンスを向上させることができます。また、Azure HDInsight で Apache Storm を使用するお客様は、追加メモリを活用して大規模な参照データ セットを読み込んだり、高速な CPU によってスループットを向上させたりできます。
 
@@ -81,7 +80,7 @@ HDInsight プラットフォームの重要な機能には、次のようなも�
 
 - **クラスター ダッシュボード** - HDInsight クラスターにデプロイする新しい Web アプリケーション。Hive クエリの実行、ジョブ ログの確認、Azure BLOB ストレージの表示に使用します。この Web アプリケーションにアクセスするための URL は <*クラスター名*>.azurehdinsight.net です。
 
-- **Microsoft Avro ライブラリ** - このライブラリは、Microsoft.NET 環境向けに Apache Avro データ シリアル化システムを実装します。Apache Avro は、シリアル化のためのコンパクトなバイナリ データ交換形式を提供します。Apache Avro は、JavaScript Object Notation (JSON) を使用して、言語の相互運用性を保証する、言語に依存しないスキーマを定義します。ある言語でシリアル化されたデータは、別の言語で読むことができます。現在、C、C++、C#、Java、PHP、Python、および Ruby がサポートされています。Apache Avro シリアル化形式は、Hadoop MapReduce ジョブ内の複雑なデータ構造を表すために Azure HDInsight で広く使用されています。
+- **Microsoft Avro ライブラリ** - このライブラリは、Microsoft.NET 環境向けに Apache Avro データ シリアル化システムを実装します。Apache Avro は、シリアル化のためのコンパクトなバイナリ データ交換形式を提供します。Apache Avro は、JavaScript Object Notation (JSON) を使用して、言語の相互運用性を保証する、言語に依存しないスキーマを定義します。ある言語でシリアル化されたデータは、別の言語で読むことができます。現在、C、C++、C\#、Java、PHP、Python、および Ruby がサポートされています。Apache Avro シリアル化形式は、Hadoop MapReduce ジョブ内の複雑なデータ構造を表すために Azure HDInsight で広く使用されています。
 
 - **YARN** - Hadoop クラスターでのデータ処理に使用される従来の Apache Hadoop MapReduce フレームワークに代わる、新しい汎用的な分散アプリケーション管理フレームワーク。Hadoop オペレーティング システムとして効果的に機能し、単一の目的のバッチ処理用データ プラットフォームであった Hadoop を、バッチ、インタラクティブ、オンライン、ストリームの各処理が可能な多目的プラットフォームにします。この新しい管理フレームワークにより、容量の保証、公平性、サービス レベル アグリーメント (SLA) などの基準に従って、スケーラビリティおよびクラスター使用率が向上します。
 
@@ -102,7 +101,7 @@ HDInsight プラットフォームの重要な機能には、次のようなも�
 次の表に、現在使用できる HDInsight のバージョン、該当する Hortonworks Data Platform のバージョン、そのリリース日を示します。非推奨となった場合は、サポート有効期限とその日付も記載されます。以下の点に注意してください。
 
 * ヘッド ノードを 2 つ備えた可用性の高いクラスターは、HDInsight 2.1 以降では既定でデプロイされています。HDInsight 1.6 クラスターでは利用できません。
-* 特定のバージョンのサポート期限が切れると、Azure ポータルから利用できなくなる可能性があります。次の表に、Azure ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、Windows PowerShell [New-AzureHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx) コマンドの `Version` パラメーターと .NET SDK で利用できます。
+* 特定のバージョンのサポート期限が切れると、Azure プレビュー ポータルから利用できなくなる可能性があります。次の表に、Azure ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、Windows PowerShell [New-AzureHDInsightCluster](http://msdn.microsoft.com/library/dn593744.aspx) コマンドの `Version` パラメーターと .NET SDK で利用できます。
 
 HDInsight のバージョン|HDP のバージョン|高可用性|リリース日|Azure ポータルでの利用|サポート有効期限|非推奨となる日
 ---|---|---|---|---|---|---
@@ -114,14 +113,12 @@ HDI 1.6|HDP 1.1|いいえ|10/28/2013|いいえ|04/26/2014|05/31/2015
 
 **既定以外のクラスターのデプロイメント**
 
-Hadoop 2.4 では、既定では HDInsight 3.1 クラスターが作成されるため、他のバージョンの HDInsight クラスターを作成する場合は、ポータルで **[カスタム作成]** オプションを使用してバージョンを指定する必要があります。
-
 ### HDInsight クラスター バージョンのサービス レベル アグリーメント
 
 SLA は、"サポート ウィンドウ" の条件で定義されます。サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サービス & サポートによってサポートされる期間を指しています。HDInsight クラスターは、そのバージョンの**サポート有効期限**が現在の日付を過ぎている場合、サポート対象外となります。サポートされている HDInsight クラスターのバージョンの一覧は上記のテーブルに示されています。所定の HDInsight Version X (新しい X+1 バージョンが利用可能なった後) のサポート有効期限は、次の数式で計算した日付のうち、遅い方とされます。
 
 - 数式 1: HDInsight クラスター バージョン X がリリースされた日に 180 日を加える。
-- 数式 2: HDInsight クラスター バージョン X+1 (X の次のバージョン) が Azure ポータルで使用可能になった日付に 90 日を加える。
+- 数式 2: HDInsight クラスター バージョン X+1 (X の次のバージョン) がプレビュー ポータルで使用可能になった日付に 90 日を加える。
 
 **非推奨となる日**は、それ以降 HDInsight でそのクラスター バージョンが作成できなくなる日付です。
 
@@ -134,7 +131,7 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 	* 各 Apache コンポーネントのリリース ノート - [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450)、[Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954)、[HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810)、[Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581)、[M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180)、[HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181)、[YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197)、[Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179)、[Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742)、[Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486)、[Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)、[Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620)。
 
 
-* HDInsight クラスター Version 3.1 は、[Hortonworks Data Platform 2.1.7][hdp-2-1-7] を基盤とする Hadoop ディストリビューションを使用します。2014 年 11 月 7 日以降は、これが Azure HDInsight ポータルの使用時に作成される**既定の** Hadoop クラスターです。2014 年 11 月 7 日より前に作成された HDInsight 3.1 クラスターは、[Hortonworks Data Platform 2.1.1][hdp-2-1-1] に基づいています。
+* HDInsight クラスター Version 3.1 は、[Hortonworks Data Platform 2.1.7][hdp-2-1-7] を基盤とする Hadoop ディストリビューションを使用します。これが、2014 年 11 月 7 日以降のポータルの使用時に作成される**既定**の Hadoop クラスターです。2014 年 11 月 7 日より前に作成された HDInsight 3.1 クラスターは、[Hortonworks Data Platform 2.1.1][hdp-2-1-1] に基づいています。
 
 * HDInsight クラスター Version 3.0 は、[Hortonworks Data Platform 2.0][hdp-2-0-8] を基盤とする Hadoop ディストリビューションを使用します。
 
@@ -164,6 +161,5 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 [ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
 [zookeeper]: http://zookeeper.apache.org/
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

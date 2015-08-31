@@ -1,7 +1,6 @@
 <properties
 	pageTitle="アプリ モデル v2.0 | Microsoft Azure"
-	description="個人の Microsoft アカウントと会社/学校アカウントの両方からトークンを受け付ける .NET MVC Web アプリを構築する方法を説明します。"
-	that signs users in with both personal Microsoft Account and work or school accounts.
+	description="サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する .NET MVC Web アプリを構築する方法を説明します。"
 	services="active-directory"
 	documentationCenter=".net"
 	authors="dstrockis"
@@ -202,4 +201,4 @@ public ActionResult About()
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

@@ -5,6 +5,7 @@
 	manager="paulettm"
 	services="hdinsight"
 	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"/>
 
 <tags
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="07/09/2015" 
+	ms.date="07/09/2015"
 	ms.author="jgao"/>
 
 # HDInsight の Hadoop での C# ストリーミング ワードカウント MapReduce サンプル
@@ -202,6 +203,5 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

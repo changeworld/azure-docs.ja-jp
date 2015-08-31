@@ -3,7 +3,7 @@
 	description="Microsoft Azure DocumentDB を使用して、ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF) を JavaScript でネイティブに記述する方法について説明します。" 
 	services="documentdb" 
 	documentationCenter="" 
-	authors="mimig1" 
+	authors="aliuy" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/10/2015" 
-	ms.author="mimig"/>
+	ms.date="08/18/2015" 
+	ms.author="andrl"/>
 
 # DocumentDB のサーバー側プログラミング: ストアド プロシージャ、トリガー、UDF
 
@@ -49,7 +49,7 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 	-	生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。これは、データがスキーマを持たない場合に特に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。  
 	-	この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。  
 
-トリガー、ストアド プロシージャ、およびカスタム クエリ演算子の作成と実行は、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) と多くのプラットフォーム (.NET、Node.js、JavaScript など) の[クライアント SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) でサポートされます。**このチュートリアルでは、** **[Node.js SDK](http://dl.windowsazure.com/documentDB/nodedocs/) を使用して**、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。
+トリガー、ストアド プロシージャ、およびカスタム クエリ演算子の作成と実行は、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) と多くのプラットフォーム (.NET、Node.js、JavaScript など) の[クライアント SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) でサポートされます。**このチュートリアルでは、[Node.js SDK](http://dl.windowsazure.com/documentDB/nodedocs/) を使用して**、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。
 
 ## ストアド プロシージャ
 
@@ -471,6 +471,90 @@ DocumentDB には、ドキュメントの操作によって実行またはトリ
 	    console.log("Error" , error);
 	});
 
+## JavaScript 統合言語クエリ API
+DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の SDK では、SQL の知識がなくても、流れるような JavaScript インターフェイスで最適化されたクエリを実行できます。JavaScript クエリ API では、述語関数を連鎖可能な関数の呼び出しに渡すことでクエリをプログラミングできます。構文は ECMAScript5 のアレイ ビルトインや lodash のような人気の JavaScript ライブラリでおなじみのものです。クエリは JavaScript ランタイムで解析され、DocumentDB のインデックスで効率的に実行されます。
+
+> [AZURE.NOTE]`__` (二重下線) は `getContext().getCollection()` のエイリアスです。<br/> 言い換えると、`__` または `getContext().getCollection()` を利用し、JavaScript クエリ API にアクセスできます。
+
+サポートされる関数: <ul> <li> <b>chain() ... .value([callback] [, options])</b> <ul> <li> 連鎖呼び出しを開始します。これは value() で終了しなければなりません。 </li> </ul> </li> <li> <b>filter(predicateFunction [, options] [, callback])</b> <ul> <li> 入力ドキュメントを結果セットに追加するか、除外する目的で真/偽を返す述語関数を利用し、入力を絞り込みます。この動作は SQL の WHERE 句に似ています。 </li> </ul> </li> <li> <b>map(transformationFunction [, options] [, callback])</b> <ul> <li> 各入力項目を JavaScript オブジェクトまたは値にマッピングする変換関数を所与としてプロジェクションを適用します。この動作は SQL の SELECT 句に似ています。 </li> </ul> </li> <li> <b>pluck([propertyName] [, options] [, callback])</b> <ul> <li> これは各入力項目から 1 つのプロパティの値を抽出するマップのショートカットです。 </li> </ul> </li> <li> <b>flatten([isShallow] [, options] [, callback])</b> <ul> <li> 各入力項目の配列を結合し、1 つの配列に平坦化します。この動作は LINQ の SelectMany に似ています。 </li> </ul> </li> <li> <b>sortBy([predicate] [, options] [, callback])</b> <ul> <li> 与えられた述語を利用し、入力ドキュメントのストリームを昇順で並べ替え、ドキュメントの新しいセットを作ります。この動作は SQL の ORDER BY 句に似ています。 </li> </ul> </li> <li> <b>sortByDescending([predicate] [, options] [, callback])</b> <ul> <li> 与えられた述語を利用し、入力ドキュメントのストリームを降順で並べ替え、ドキュメントの新しいセットを作ります。この動作は SQL の ORDER BY x DESC 句に似ています。 </li> </ul> </li> </ul>
+
+
+述語またはセレクター関数の中に含まれるとき、次の JavaScript コンストラクトは自動的に最適化され、DocumentDB インデックスで直接実行されます。
+
+* 単純な演算子: = + - * / % | ^ &amp; == != === !=== &lt; &gt; &lt;= &gt;= || &amp;&amp; &lt;&lt; &gt;&gt; &gt;&gt;&gt;! \~
+* オブジェクト リテラルを含むリテラル: {}
+* var、return
+
+次の JavaScript コンストラクトは DocumentDB インデックスに対して最適化されません。
+
+* 制御フロー (if、for、while など)
+* 関数呼び出し
+
+詳細については、「[サーバー側 JSDocs](http://dl.windowsazure.com/documentDB/jsserverdocs/)」を参照してください。
+
+### 例: JavaScript クエリ API を使用してストアド プロシージャを作成します。
+
+次のコード サンプルでは、ストアド プロシージャで JavaScript クエリ API を使用する方法の例を示します。ストアド プロシージャは入力パラメーターによって与えられたドキュメントを挿入し、`__.filter()` メソッドでメタデータ ドキュメントを更新します。このメソッドと共に入力ドキュメントのサイズ プロパティに基づき、minSize、maxSize、totalSize が指定されます。
+
+    /**
+     * Insert actual doc and update metadata doc: minSize, maxSize, totalSize based on doc.size.
+     */
+    function insertDocumentAndUpdateMetadata(doc) {
+      // HTTP error codes sent to our callback funciton by DocDB server.
+      var ErrorCode = {
+        RETRY_WITH: 449,
+      }
+
+      var isAccepted = __.createDocument(__.getSelfLink(), doc, {}, function(err, doc, options) {
+        if (err) throw err;
+
+        // Check the doc (ignore docs with invalid/zero size and metaDoc itself) and call updateMetadata.
+        if (!doc.isMetadata && doc.size > 0) {
+          // Get the meta document. We keep it in the same collection. it's the only doc that has .isMetadata = true.
+          var result = __.filter(function(x) {
+            return x.isMetadata === true
+          }, function(err, feed, options) {
+            if (err) throw err;
+
+            // We assume that metadata doc was pre-created and must exist when this script is called.
+            if (!feed || !feed.length) throw new Error("Failed to find the metadata document.");
+
+            // The metadata document.
+            var metaDoc = feed[0];
+
+            // Update metaDoc.minSize:
+            // for 1st document use doc.Size, for all the rest see if it's less than last min.
+            if (metaDoc.minSize == 0) metaDoc.minSize = doc.size;
+            else metaDoc.minSize = Math.min(metaDoc.minSize, doc.size);
+
+            // Update metaDoc.maxSize.
+            metaDoc.maxSize = Math.max(metaDoc.maxSize, doc.size);
+
+            // Update metaDoc.totalSize.
+            metaDoc.totalSize += doc.size;
+
+            // Update/replace the metadata document in the store.
+            var isAccepted = __.replaceDocument(metaDoc._self, metaDoc, function(err) {
+              if (err) throw err;
+              // Note: in case concurrent updates causes conflict with ErrorCode.RETRY_WITH, we can't read the meta again 
+              //       and update again because due to Snapshot isolation we will read same exact version (we are in same transaction).
+              //       We have to take care of that on the client side.
+            });
+            if (!isAccepted) throw new Error("replaceDocument(metaDoc) returned false.");
+          });
+          if (!result.isAccepted) throw new Error("filter for metaDoc returned false.");
+        }
+      });
+      if (!isAccepted) throw new Error("createDocument(actual doc) returned false.");
+    }
+
+## SQL と Javascript のチート シート
+次の表はさまざまな SQL クエリとそれに対応する JavaScript クエリをまとめたものです。
+
+SQL クエリと同様に、ドキュメント プロパティ キー (`doc.id` など) では大文字と小文字が区別されます。
+
+<br/> <table border="1" width="100%"> <colgroup> <col span="1" style="width: 40%;"> <col span="1" style="width: 40%;"> <col span="1" style="width: 20%;"> </colgroup> <tbody> <tr> <th>SQL</th> <th>JavaScript クエリ API</th> <th>詳細</th> </tr> <tr> <td> <pre> SELECT * FROM docs </pre> </td> <td> <pre> \_\_.map(function(doc) { return doc; }); </pre> </td> <td>結果的にすべてのドキュメントがそのまま生成されます (継続トークンでページが付けられます)。</td> </tr> <tr> <td> <pre> SELECT docs.id, docs.message AS msg, docs.actions FROM docs </pre> </td> <td> <pre> \_\_.map(function(doc) { return { id: doc.id, msg: doc.message, actions: doc.actions }; }); </pre> </td> <td>すべてのドキュメントから ID、メッセージ (エイリアスは msg)、アクションをプロジェクションします。</td> </tr> <tr> <td> <pre> SELECT * FROM docs WHERE docs.id="X998\_Y998" </pre> </td> <td> <pre> \_\_.filter(function(doc) { return doc.id === "X998\_Y998"; }); </pre> </td> <td>述語があるドキュメントのクエリ: id = "X998\_Y998".</td> </tr> <tr> <td> <pre> SELECT * FROM docs WHERE ARRAY\_CONTAINS(docs.Tags, 123) </pre> </td> <td> <pre> \_\_.filter(function(x) { return x.Tags && x.Tags.indexOf(123) > -1; }); </pre> </td> <td>Tags プロパティを持つドキュメントのクエリ。Tags は値 123 を含む配列です。</td> </tr> <tr> <td> <pre> SELECT docs.id, docs.message AS msg FROM docs WHERE docs.id="X998\_Y998" </pre> </td> <td> <pre> \_\_.chain() .filter(function(doc) { return doc.id === "X998\_Y998"; }) .map(function(doc) { return { id: doc.id, msg: doc.message }; }) .value(); </pre> </td> <td>述語があり、id = "X998\_Y998" のドキュメントのクエリ。ID とメッセージ (エイリアスは msg) をプロジェクションします。</td> </tr> <tr> <td> <pre> SELECT VALUE tag FROM docs JOIN tag IN docs.Tags ORDER BY docs.\_ts </pre> </td> <td> <pre> \_\_.chain() .filter(function(doc) { return doc.Tags && Array.isArray(doc.Tags); }) .sortBy(function(doc) { return doc.\_ts; }) .pluck("Tags") .flatten() .value() </pre> </td> <td>配列プロパティの Tags のあるドキュメントをフィルター処理し、結果的に生成されたドキュメントを \_ts タイムスタンプ システム プロパティで並べ替え、Tags 配列をプロジェクションし、平坦化します。</td> </tr> </tbody> </table>
+
 ## ランタイム サポート
 [DocumentDB JavaScript サーバー側 SDK](http://dl.windowsazure.com/documentDB/jsserverdocs/) では、[ECMA-262](documentdb-interactions-with-resources.md) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
 
@@ -641,4 +725,4 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 -	[サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 -	[Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)  
 
-<!-----HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure のセルフサービス サインアップについて" 
-	description="Azure のセルフサービス サインアップの概要、およびサインアップ プロセスの管理方法と DNS ドメイン名の引き継ぎ方法" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
+<properties
+	pageTitle="Azure のセルフサービス サインアップについて"
+	description="Azure のセルフサービス サインアップの概要、およびサインアップ プロセスの管理方法と DNS ドメイン名の引き継ぎ方法"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="stevenpo"
 	editor="LisaToft"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="identity" 
-	ms.date="05/13/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="identity"
+	ms.date="08/14/2015" 
+	ms.author="stevenpo"/>
 
 
 # Azure のセルフサービス サインアップについて
@@ -103,13 +103,13 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 外部の引き継ぎでは、既に管理対象テナントを持っているため、2 つの異なるテナントを所有する代わりに、すべてのユーザーとグループにその管理対象テナントに参加させます。
 
 管理対象テナントの管理者としてドメインを追加したとき、そのドメインに、管理されていないテナントが偶然関連付けられていたと考えてくだだい。
-	
+
 たとえば IT 管理者が、contoso.com の管理対象テナントをすでに所有しているとします。contoso.com は IT 管理者の所属組織に登録されています。その組織の複数ユーザーが、電子メールのドメイン名 user@contoso.co.uk を使用してセルフサービス サインアップを実行したことをその IT 管理者は知ります。これは、この組織が所有する別のドメイン名です。これらのユーザーは現在、contoso.co.uk の管理されていないテナントのアカウントを持っています。
 
 2 つのテナントの管理は避けたいため、 IT 管理者は contoso.co.uk の管理されていないテナントを、contoso.com の既存の IT 管理対象テナントにマージします。
-	
+
 外部の引き継ぎでも、内部の引き継ぎと同じ DNS 検証プロセスに従います。異なる点は、ユーザーおよびサービスが、IT 管理対象テナントに再マッピングされることです。
-	
+
 #### 外部の引き継ぎの実行から受ける影響について
 
 外部の引き継ぎを実行すると、ユーザーからリソースへのマッピングが作成されるため、ユーザーは引き続き中断されることなくサービスにアクセスできます。個人用 RMS を含む多くのアプリケーションでは、ユーザーからリソースへのマッピングがうまく処理されるため、ユーザーはこれらのサービスに以前と同じようにアクセスできます。ユーザーからリソースへのマッピングが効果的に処理されないアプリケーションの場合は、ユーザー エクスペリエンスの低下を回避するために、外部の引き継ぎが明示的にブロックされている場合があります。
@@ -160,7 +160,7 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 次に例を示します。
 
 1. セルフサービス プランに応答するために使用された資格情報を使用して、次のコマンドレットで import-module MSOnline $msolcred = get-credential connect-msolservice -credential $msolcred Azure AD に接続します。
-		
+
 2. ドメイン一覧を、次のコマンドレットで取得します。
 
 	Get-MsolDomain
@@ -205,8 +205,8 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 
 管理者は、Azure AD コマンドレット Set-MsolCompanySettings パラメータを使用してこれらの機能を構成できます。
 
-+ **AllowEmailVerifiedUsers** によって、ユーザーが管理されていないテナントを作成または参加できるかを管理できます。このパラメータを $false に設定すると、電子メール検証済みのユーザーはテナントに参加できません。 
-+ **AllowAdHocSubscriptions** によって、ユーザーがセルフサービス サインアップを実行できるかどうかを管理できます。このパラメータを $false に設定すると、ユーザーはセルフサービス サインアップを実行できません。 
++ **AllowEmailVerifiedUsers** によって、ユーザーが管理されていないテナントを作成または参加できるかを管理できます。このパラメータを $false に設定すると、電子メール検証済みのユーザーはテナントに参加できません。
++ **AllowAdHocSubscriptions** によって、ユーザーがセルフサービス サインアップを実行できるかどうかを管理できます。このパラメータを $false に設定すると、ユーザーはセルフサービス サインアップを実行できません。
 
 
 ### これらの管理機能の連携について
@@ -234,6 +234,4 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

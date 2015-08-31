@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (Windows ストア) | Microsoft Azure" 
-	description="Windows ストア アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" 
-	documentationCenter="windows" 
-	authors="wesmc7777" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (Windows ストア) | Microsoft Azure"
+	description="Windows ストア アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/29/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-store"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="wesmc"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
@@ -37,7 +37,7 @@
 * Windows 8.1 で実行されている Visual Studio 2013。
 * 「[モバイル サービスの使用]」または「[データの使用]」チュートリアルを完了している。
 * Microsoft Azure Mobile Services SDK の NuGet パッケージ
-* Active Directory 認証ライブラリの NuGet パッケージ 
+* Active Directory 認証ライブラリの NuGet パッケージ
 
 [AZURE.INCLUDE [mobile-services-dotnet-adal-register-service](../../includes/mobile-services-dotnet-adal-register-service.md)]
 
@@ -134,12 +134,12 @@
 
 5. 次のコードを `AuthenticateAsync` メソッドを宣言する MainPage クラスに追加します。
 
-        private MobileServiceUser user; 
+        private MobileServiceUser user;
         private async Task AuthenticateAsync()
         {
             string authority = "<INSERT-AUTHORITY-HERE>";
             string resourceURI = "<INSERT-RESOURCE-URI-HERE>";
-            string clientID = "<INSERT-CLIENT-ID-HERE>"; 
+            string clientID = "<INSERT-CLIENT-ID-HERE>";
             while (user == null)
             {
                 string message;
@@ -155,11 +155,11 @@
                 catch (InvalidOperationException)
                 {
                   message = "You must log in. Login Required";
-                } 
+                }
                 var dialog = new MessageDialog(message);
                 dialog.Commands.Add(new UICommand("OK"));
                 await dialog.ShowAsync();
-            } 
+            }
         }
 
 6. 前の `AuthenticateAsync` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
@@ -212,9 +212,9 @@
 <!-- URLs. -->
 [Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure の管理ポータル]: https://manage.windowsazure.com/
-[Active Directory]: https://manage.windowsazure.com/
+[[Active Directory]]: https://manage.windowsazure.com/
 [データの使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md
 [モバイル サービスの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [Windows デベロッパー センター ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

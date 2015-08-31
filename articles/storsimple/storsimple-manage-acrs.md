@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple でのアクセス制御レコードの管理"
+   pageTitle="StorSimple でのアクセス制御レコードの管理 | Microsoft Azure"
    description="ACR (アクセス制御レコード) を使用して、StorSimple デバイス上のボリュームに接続できるホストを判別する方法について説明します。"
    services="storsimple"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/10/2015"
+   ms.date="08/13/2015"
    ms.author="alkohli" />
 
 # StorSimple でのアクセス制御レコードの管理
@@ -94,4 +94,4 @@ ACR を削除するには、管理ポータルの **[構成]** ページを使�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

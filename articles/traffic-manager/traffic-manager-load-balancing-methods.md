@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Traffic Manager のルーティング方法"
+   pageTitle="Traffic Manager - トラフィック ルーティング方法 | Microsoft Azure"
    description="この記事では、Traffic Manager で使用されるさまざまなトラフィック ルーティング方法について説明します。"
    services="traffic-manager"
    documentationCenter=""
@@ -12,16 +12,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/10/2015"
+   ms.date="08/19/2015"
    ms.author="joaoma" />
 
 # Traffic Manager のルーティング方法
 
-Traffic Manager では、3 つのルーティング方法を使用できます。各 Traffic Manager プロファイルで一度に使用できるルーティング方法は 1 つだけですが、プロファイルに対していつでも別のルーティング方法を選択できます。
+Traffic Manager では、3 つのトラフィック ルーティング方法を使用できます。各 Traffic Manager プロファイルで一度に使用できるトラフィック ルーティング方法は 1 つだけですが、プロファイルに対していつでも別のトラフィック ルーティング方法を選択できます。
 
-重要なのは、すべてのルーティング方法にエンドポイント監視が含まれている点です。Traffic Manager プロファイルを構成して、最も要件に合うルーティング方法を指定したら、監視の設定を構成します。監視が適切に構成されていると、Traffic Manager は、クラウド サービスや Web サイトで構成されているエンドポイントの状態を監視し、利用できないエンドポイントに対してはトラフィックを送信しません。Traffic Manager の監視の詳細については、「[Traffic Manager の監視について](traffic-manager-monitoring.md)」を参照してください。
+重要なのは、すべてのトラフィック ルーティング方法にエンドポイント監視が含まれている点です。Traffic Manager プロファイルを構成して、最も要件に合うトラフィック ルーティング方法を指定したら、監視の設定を構成します。監視が適切に構成されていると、Traffic Manager は、クラウド サービスや Web サイトで構成されているエンドポイントの状態を監視し、利用できないエンドポイントに対してはトラフィックを送信しません。Traffic Manager の監視の詳細については、「[Traffic Manager の監視について](traffic-manager-monitoring.md)」を参照してください。
 
-Traffic Manager での 3 つのルーティング方法を次に示します。
+Traffic Manager での 3 つのトラフィック ルーティング方法を次に示します。
 
 - **フェールオーバー**: 同一または異なる Azure データセンター (管理ポータルでは「リージョン」と呼ばれます) にエンドポイントがあり、すべてのトラフィックにプライマリ エンドポイントを使用するが、プライマリ エンドポイントやバックアップ エンドポイントが利用不可になったときに備えてバックアップを用意する場合は、フェールオーバーを選択します。詳細については、[「フェールオーバーによるトラフィック ルーティング方法」](#failover-traffic-routing-method)を参照してください。
 
@@ -123,7 +123,7 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
 ## 次のステップ
 
-[Traffic Manager の概要](traffic-manager-overview.md)
+[Traffic Manager について](traffic-manager-overview.md)
 
 [Traffic Manager の監視について](traffic-manager-monitoring.md)
 
@@ -137,4 +137,4 @@ Traffic Manager に関する独自のプレゼンテーション用の PowerPoin
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

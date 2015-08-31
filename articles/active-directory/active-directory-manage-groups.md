@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/13/2015" 
+	ms.date="08/14/2015" 
 	ms.author="femila"/>
 
 
@@ -92,4 +92,6 @@ Azure Active Directory のアクセス管理ソリューションの核となる
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=August15_HO6-->
+* [グループ用の Graph API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
+
+<!---HONumber=August15_HO8-->

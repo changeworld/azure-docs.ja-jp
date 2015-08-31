@@ -21,7 +21,7 @@
 
 メトリックとイベントの数は、合計、平均、カウントなどの集計値のグラフに表示されます。
 
-たとえば、Application Insights を Web アプリケーションに追加した場合、概要の上部に次のような情報が表示されます。
+グラフの例を次に示します。
 
 ![Azure ポータルでアプリケーションの概要ブレードを開きます](./media/app-insights-metrics-explorer/01-overview.png)
 
@@ -40,10 +40,11 @@
 
 想定しているデータがまだ表示されていない場合は、[最新の情報に更新] をクリックします。グラフは周期的に自動で更新されますが、時間範囲が広い場合、更新間隔も長くなります。リリース モードでは、データが分析パイプラインを介してグラフとして表示されるまでに時間がかかる場合があります。
 
-概要ブレードでグラフの一部をドラッグすると、その部分が拡大された新しいグラフが表示されます。
-
+グラフの一部を拡大するには、ドラッグして、拡大鏡の記号をクリックします。
 
 ![グラフの一部をドラッグします。](./media/app-insights-metrics-explorer/12-drag.png)
+
+
 
 ## 粒度とポイント値
 
@@ -197,8 +198,8 @@
 
 [alerts]: app-insights-alerts.md
 [start]: app-insights-get-started.md
-[track]: app-insights-custom-events-metrics-api.md
+[track]: app-insights-api-custom-events-metrics.md
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

@@ -102,20 +102,25 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 いずれかのメトリックを選択すると、同じグラフ上に表示できない他のメトリックは無効になります。
 
-## より多くのパフォーマンス カウンターの収集
+## システム パフォーマンス カウンター
 
 [パフォーマンス カウンター](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)から、いくつかのメトリックを選択できます。Windows にはさまざまなパフォーマンス カウンターが用意されていますが、ユーザーが独自に定義することもできます。
 
-必要なカウンターが一覧にない場合は、SDK の収集セットにそれらを追加できます。ApplicationInsights.config を開き、パフォーマンス コレクター ディレクティブを次のように編集します。
+この例では、既定で使用できるパフォーマンス カウンターを表示します。各カウンターに[個別のグラフを追加](app-insights-metrics-explorer.md#editing-charts-and-grids)して、[好みの名前を付けて保存](app-insights-metrics-explorer.md#editing-charts-and-grids)することでグラフに名前を付けました。
+
+![](./media/app-insights-web-monitor-performance/sys-perf.png)
+
+
+必要なカウンターがプロパティ一覧にない場合は、SDK の収集セットにそれらを追加できます。ApplicationInsights.config を開き、パフォーマンス コレクター ディレクティブを次のように編集します。
 
     <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCollector.PerformanceCollectorModule, Microsoft.ApplicationInsights.Extensibility.PerfCollector">
       <Counters>
         <Add PerformanceCounter="\Objects\Processes"/>
-        <Add PerformanceCounter="\Sales(electronics)# Items Sold" ReportAs="Item sales"/>
+        <Add PerformanceCounter="\Sales(electronics)#Items Sold" ReportAs="Item sales"/>
       </Counters>
     </Add>
 
-形式は `\Category(instance)\Counter"` です。インスタンスが存在しないカテゴリの場合は、単に `\Category\Counter` です。
+形式は `\Category(instance)\Counter"` です。インスタンスが存在しないカテゴリの場合は、単に `\Category\Counter` です。システムで使用できるカウンターを確認するには、[こちらの説明](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)をご覧ください。
 
 カウンターの名前に、英字、丸かっこ、スラッシュ、ハイフン、アンダー スコア、スペース、ドットの文字以外が含まれている場合は、`ReportAs` が必要です。
 
@@ -126,7 +131,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
     var perfCollector = new PerformanceCollectorModule();
     perfCollector.Counters = new List<CustomPerformanceCounterCollectionRquest>();
     perfCollector.Counters.Add(new CustomPerformanceCounterCollectionRquest(
-      @"\Sales(electronics)# Items Sold", "Items sold"));
+      @"\Sales(electronics)#Items Sold", "Items sold"));
     perfCollector.Initialize(TelemetryConfiguration.Active);
     TelemetryConfiguration.Active.TelemetryModules.Add(perfCollector);
 
@@ -178,4 +183,4 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

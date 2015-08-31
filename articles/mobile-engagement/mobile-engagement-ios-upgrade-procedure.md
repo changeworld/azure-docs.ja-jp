@@ -25,9 +25,9 @@
 ##2\.0.0 から 3.0.0 に移行
 アプリケーションでリーチを使用している場合は、リモート通知を受け取れるように、`remote-notification` 値を Info.plist ファイル内の `UIBackgroundModes` 配列に追加する必要があります。
 
-アプリケーション デリゲートのメソッド `application:applicationDidReceiveRemoteNotification:` は、`application:applicationDidReceiveRemoteNotification:fetchCompletionHandler:` に置き換える必要があります。
+アプリケーション デリゲートのメソッド `application:didReceiveRemoteNotification:` は、`application:didReceiveRemoteNotification:fetchCompletionHandler:` に置き換える必要があります。
 
-次のデリゲート メソッドは廃止されているため、アプリケーション デリゲートから削除する必要があります。
+AEPushDelegate.h インターフェイスは廃止されるため、すべての参照を削除する必要があります。これには、`[[EngagementAgent shared] setPushDelegate:self]` の削除や、アプリケーション デリゲートからのデリゲート メソッドの削除も含まれます。
 
 	-(void)willRetrieveLaunchMessage;
 	-(void)didFailToRetrieveLaunchMessage;
@@ -70,4 +70,4 @@ SmartAd の追跡が SDK から削除されました。`AETrackModule` クラス
 -   クラス `CapptainUtils` は `EngagementUtils` に変更されました。
 -   クラス `CapptainViewController` は `EngagementViewController` に変更されました。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

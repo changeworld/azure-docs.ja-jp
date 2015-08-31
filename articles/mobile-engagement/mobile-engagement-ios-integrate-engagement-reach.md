@@ -116,9 +116,13 @@
 		[[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
 	}
 
-> [AZURE.NOTE]上記のメソッドは、iOS 7 で導入されました。IOS 7 以前を対象としている場合は、必ず、アプリケーション デリゲートに `application:applicationDidReceiveRemoteNotification:` メソッドを実装し、`handler` 引数の代わりに nil を渡して EngagementAgent の `applicationDidReceiveRemoteNotification` を呼び出してください。
+> [AZURE.NOTE]上記のメソッドは、iOS 7 で導入されました。iOS 7 以前を対象としている場合は、必ず、アプリケーション デリゲートに `application:didReceiveRemoteNotification:` メソッドを実装し、`handler` 引数の代わりに nil を渡して EngagementAgent の `applicationDidReceiveRemoteNotification` を呼び出してください。
 
-	[[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:nil];
+	- (void)application:(UIApplication*)application
+	didReceiveRemoteNotification:(NSDictionary*)userInfo
+	{
+		[[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:nil];
+	}
 
 > [AZURE.IMPORTANT]既定では、エンゲージメント リーチが completionHandler を制御します。コード内の `handler` ブロックに手動で応答する場合は、`handler` 引数の代わりに nil を渡し、完了ブロックを自分で制御できます。使用可能な値の一覧については、`UIBackgroundFetchResult` 型に関するページを参照してください、。
 
@@ -412,4 +416,4 @@
 
 	@end
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

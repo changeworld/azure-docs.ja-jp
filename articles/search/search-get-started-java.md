@@ -1,24 +1,24 @@
 <properties
-	pageTitle="Java での Azure Search の使用"
-	description="プログラミング言語として Java を使用してカスタム Azure Search アプリケーションを作成する手順を示します。"
+	pageTitle="Java での Azure Search の使用 | Microsoft Azure"
+	description="プログラミング言語として Java を使用してカスタム Azure Search アプリケーションを作成する方法を説明します。"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
 	manager="mblythe"
-	editor=""/>
+	editor="v-lincan"/>
 
 <tags
 	ms.service="search"
 	ms.devlang="na"
 	ms.workload="search"
-	ms.topic="hero-article" 
+	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.date="06/24/2015"
 	ms.author="heidist"/>
 
-#Java での Azure Search の使用#
+# Java での Azure Search の使用
 
-検索エクスペリエンスとして Azure Search を使用するカスタム Java 検索アプリケーションを作成する方法を説明します。このチュートリアルでは、[Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を利用して、この演習で使用するオブジェクトおよび操作を作成します。
+検索エクスペリエンスとして Azure Search を使用するカスタム Java 検索アプリケーションを作成する方法を説明します。このチュートリアルでは、[Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を使用して、この演習で使用するオブジェクトおよび操作を作成します。
 
 このサンプルをビルドしてテストするには次のソフトウェアを使用しました。
 
@@ -28,7 +28,7 @@
 
 - [Apache Tomcat 8.0](http://tomcat.apache.org/download-80.cgi)
 
-このサンプルを実行するには、Azure Search サービスも必要です。このサービスには、[Azure 管理ポータル](https://portal.azure.com)でサインアップできます。
+このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Microsoft Azure 管理ポータル](https://portal.azure.com)でサインアップできます。
 
 > [AZURE.TIP]このチュートリアルのソース コードは、Github の [Azure Search Java デモ](http://go.microsoft.com/fwlink/p/?LinkId=530197)からダウンロードしてください。
 
@@ -57,7 +57,7 @@
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. ジャンプバーで、[**新規**] | [**データ + ストレージ**] | [**Search**] をクリックします。
+2. ジャンプバーで、**[新規]** > **[データ + ストレージ]** > **[検索]** をクリックします。
 
      ![][1]
 
@@ -139,7 +139,7 @@
 
 3. **[Apply]** をクリックします。
 
-4. **[Window]**、**[Preferences]**、**[Server]**、**[Runtime Environments]**、**[Add...]** の順に選択します。
+4. **[Window]**、**[Preferences]**、**[Server]**、**[Runtime Environments]**、**[Add..]** の順に選択します。
 
 5. Apache を展開し、前にインストールした Apache Tomcat サーバーのバージョンを選択します。この例では、バージョン 8 をインストールしました。
 
@@ -189,7 +189,7 @@
 
 5. **Search.jsp** を右クリックし、**[Run As]**、**[Run on Server]** の順に選択します。Apache Tomcat サーバーを選択し、**[Run]** をクリックします。
 
-> [AZURE.TIP]既定以外のワークスペースを使用してプロジェクトを保存した場合は、おそらく、サーバー起動エラーを防ぐために、プロジェクトの場所を指し示すように **[Run Configuration]** を変更する必要があります。Project Explorer で、**Search.jsp** を右クリックし、**[Run As]**、**[Run Configurations]** の順に選択します。Apache Tomcat サーバーを選択します。**[Arguments]** をクリックします。**[Workspace]** または **[File System]** をクリックして、プロジェクトを含むフォルダーを設定します。
+> [AZURE.TIP]既定以外のワークスペースを使用してプロジェクトを保存した場合は、サーバー起動エラーを防ぐために、プロジェクトの場所を指し示すように **[Run Configuration]** を変更する必要があります。Project Explorer で、**Search.jsp** を右クリックし、**[Run As]**、**[Run Configurations]** の順に選択します。Apache Tomcat サーバーを選択します。**[Arguments]** をクリックします。**[Workspace]** または **[File System]** をクリックして、プロジェクトを含むフォルダーを設定します。
 
 アプリケーションを実行すると、ブラウザー ウィンドウが開き、語句を入力するための検索ボックスが表示されます。
 
@@ -230,6 +230,5 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [10]: ./media/search-get-started-java/AzSearch-Java-BuildProject1.PNG
 [11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

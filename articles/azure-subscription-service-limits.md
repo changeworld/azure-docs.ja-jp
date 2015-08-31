@@ -50,12 +50,12 @@
 [AZURE.INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
 
-## 仮想マシンの制限
+## Virtual Machines の制限
 
 [AZURE.INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 
-### 仮想マシンの制限 - Azure リソース マネージャー
+### Virtual Machines の制限 - Azure リソース マネージャー
 
 次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。これらの制限については、前の表を参照してください。
 
@@ -74,7 +74,7 @@
 
 [AZURE.INCLUDE [dns-limits](../includes/dns-limits.md)]
 
-## ストレージの制限
+## Storage の制限
 
 ### Standard Storage の制限
 
@@ -88,7 +88,7 @@
 [AZURE.INCLUDE [azure-storage-limits-premium-storage](../includes/azure-storage-limits-premium-storage.md)]
 
 
-### ストレージの制限 - Azure リソース マネージャー
+### Storage の制限 - Azure リソース マネージャー
 
 [AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -102,7 +102,7 @@
 
 [AZURE.INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
-## スケジューラの制限
+## Scheduler の制限
 
 [AZURE.INCLUDE [scheduler-limits-table](../includes/scheduler-limits-table.md)]
 
@@ -189,6 +189,10 @@ SQL Database の制限に関する詳細については、次のトピックを�
 
 [AZURE.INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]
 
+## Application Insights の制限
+
+[AZURE.INCLUDE [application-insights-limits](../includes/application-insights-limits.md)]
+
 ## API Management の制限
 
 [AZURE.INCLUDE [api-management-service-limits](../includes/api-management-service-limits.md)]
@@ -210,4 +214,4 @@ SQL Database の制限に関する詳細については、次のトピックを�
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

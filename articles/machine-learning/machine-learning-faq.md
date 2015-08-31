@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/07/2015" 
+	ms.date="08/18/2015" 
 	ms.author="paulettm"/>
 
 #Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
@@ -93,7 +93,9 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 **Amazon S3 からデータを読み取ることはできますか。**
 
 少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。
-<!--<SEE CLOUD DS PROCESS>-->
+<!--
+<SEE CLOUD DS PROCESS>
+-->
 
 **組み込みイメージの入力機能はありますか。**
 
@@ -176,7 +178,7 @@ Machine Learning Studio は、現在、400 を超える R パッケージをサ�
 
 **Python 用の REPL 環境はありますか。**
 
-いいえ。Studio には Python 用の REPL 環境はありません。
+Machine Learning Studio では Jupyter Notebooks を使用できます。詳細については、「[Introducing Jupyter Notebooks in Azure ML Studio (Azure ML Studio に Jupyter Notebooks を導入する)](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx)」をご覧ください。
 
 ## Web サービス
 ###モデルをプログラムによって再トレーニングする
@@ -201,6 +203,8 @@ Machine Learning Studio は、現在、400 を超える R パッケージをサ�
 
 既にデプロイされたサービスの予測モデルの更新は、トレーニング済みのモデルの作成および保存に使用される実験の変更および再実行と同じくらい簡単です。新しいバージョンのトレーニング済みのモデルが使用できるようになると、ML Studio はステージング環境の Web サービスを更新するかどうかをたずねます。ステージング環境の Web サービスに更新が適用された後に、同じ更新を運用環境の Web サービスにも適用できるようになります。デプロイされた Web サービスを更新する方法の詳細については、「[Machine Learning Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
+Retraining API を使用することもできます。サンプル コードは[こちら](https://azuremlretrain.codeplex.com/)で入手できます。
+
 
 **運用環境にデプロイされた Web サービスはどのように監視できますか。**
 
@@ -208,15 +212,16 @@ Machine Learning Studio は、現在、400 を超える R パッケージをサ�
 
 **RRS/BES の出力を確認できまる場所はありますか。**
 
-はい。BLOB ストレージの場所を指定する必要があり、RR/BES の出力はその場所に保存されます。
-
-
+RRS の場合は通常、Web サービスの応答に結果が表示されます。BLOB に書き込むこともできます。BES の場合、既定では BLOB に出力が書き込まれます。また、ライター モジュールを使用してデータベースやテーブルに出力を書き込むこともできます。
+ 
+ ****Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
+ 
 
 ##拡張性 
 
 **Web サービスのスケーラビリティはどれくらいですか。**
 
-現時点で、80 エンド ポイントまで拡張できますが、1 エンド ポイントあたりの同時要求は最大 20 です。すべてのリソース (300 ワーカー) を使用する場合、4,800 の同時要求に変換されます。
+現在、エンドポイントごとの同時要求数は最大で 20 ですが、10,000 エンドポイントに拡張できます。すべてのリソース (300 ワーカー) を使用する場合、4,800 の同時要求に変換されます。
 
 
 **R のジョブはノード間に分散されますか。**
@@ -258,7 +263,8 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **既定で運用環境にデプロイされている Web サービスの http エンドポイントにはだれがアクセスできますか。 エンドポイントへのアクセスはどのようにして制限できますか。**
 
-予測モデルが運用環境にデプロイされると、デプロイされた Web サービスが Azure ポータルに一覧表示されます。ステージング環境のサービスの URL は、Machine Learning Studio Environment の Web サービス セクションからアクセスできます。運用環境のサービスの URL は、Azure ポータルの Machine Learning セクションからアクセスできます。Machine Learning Studio と Azure ポータル環境でそれぞれ、Web サービス ダッシュボードからステージング環境と運用環境の両方の Web サービスにアクセス キーが提供されます。運用環境およびステージング環境で Web サービスを呼び出すには、アクセス キーが必要です。詳細については、「[Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
+Web サービスが発行された後に、そのサービスに対して既定のエンドポイントが作成されます。既定のエンドポイントは実稼働環境にデプロイされ、API キーを使用して呼び出すことができます。追加のエンドポイントは、独自のキーを使用して Azure ポータルから、または Web Service Management API を使用してプログラムで追加することができます。運用環境およびステージング環境で Web サービスを呼び出すには、アクセス キーが必要です。詳細については、「[Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
+
 
 **ストレージ アカウントが見つからない場合はどうなりますか。**
 
@@ -302,4 +308,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

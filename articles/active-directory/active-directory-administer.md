@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure AD ディレクトリの管理" 
-	description="Azure AD テナントの概要と、Azure AD ディレクトリを管理する方法を説明するトピック。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
+<properties
+	pageTitle="Azure AD ディレクトリの管理"
+	description="Azure AD テナントの概要と、Azure AD ディレクトリを管理する方法を説明するトピック。"
+	services="active-directory"
+	documentationCenter=""
+	authors="Markusvi"
+	manager="stevenpo"
 	editor="LisaToft"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="05/05/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="05/05/2015"
+	ms.author="markvi"/>
 
 # Azure AD ディレクトリの管理
 
@@ -124,7 +124,7 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 
 - ディレクトリ内のユーザーは、ディレクトリを削除するグローバル管理者に限られます。ディレクトリを削除するには、他のすべてのユーザーを削除しておく必要があります。ユーザーがオンプレミスから同期されている場合は、同期を無効にする必要があります。また、管理ポータルまたは Windows PowerShell 用 Azure モジュールを使用して、クラウド ディレクトリでユーザーを削除する必要があります。グループまたは連絡先 (Office 365 管理センターから追加された連絡先など) を削除する要件はありません。
 - ディレクトリ内にアプリケーションが存在してはいけません。ディレクトリを削除するには、すべてのアプリケーションを削除しておく必要があります。 
-- ディレクトリに関連付けられている、Microsoft Azure、Office 365、Azure AD Premium などの Microsoft Online Services のサブスクリプションが存在してはいけません。たとえば、Azure で既定のディレクトリが作成されている場合、Azure サブスクリプションが認証にこのディレクトリを引き続き使用していれば、このディレクトリを削除することはできません。同様に、別のユーザーがディレクトリにサブスクリプションを関連付けている場合、そのディレクトリを削除することはできません。サブスクリプションを別のディレクトリに関連付けるには、Azure 管理ポータルにサインインし、左側のナビゲーションで **[設定]** をクリックします。次に、**[サブスクリプション]** ページの下部にある **[ディレクトリの編集]** をクリックします。Azure サブスクリプションの詳細については、「[How Azure subscriptions are associated with Azure AD (Azure サブスクリプションを Azure AD に関連付ける方法)](active-directory-how-subscriptions-associated-directory.md)」をご覧ください。 
+- ディレクトリに関連付けられている、Microsoft Azure、Office 365、Azure AD Premium などの Microsoft Online Services のサブスクリプションが存在してはいけません。たとえば、Azure で既定のディレクトリが作成されている場合、Azure サブスクリプションが認証にこのディレクトリを引き続き使用していれば、このディレクトリを削除することはできません。同様に、別のユーザーがディレクトリにサブスクリプションを関連付けている場合、そのディレクトリを削除することはできません。サブスクリプションを別のディレクトリに関連付けるには、Azure 管理ポータルにサインインし、左側のナビゲーションで **[設定]** をクリックします。次に、**[サブスクリプション]** ページの下部にある **[ディレクトリの編集]** をクリックします。Azure サブスクリプションの詳細については、「[How Azure subscriptions are associated with Azure AD (Azure サブスクリプションを Azure AD に関連付ける方法)](active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
     > [AZURE.NOTE]ユーザーが職場または学校アカウントを使用してサインインしている場合、そのユーザーは自分のホーム ディレクトリを削除することはできません。たとえば、ユーザーが joe@contoso.onmicrosoft.com としてサインインしている場合、そのユーザーは既定のドメインが contoso.onmicrosoft.com であるディレクトリを削除することはできません。
 
@@ -144,7 +144,4 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 [1]: ./media/active-directory-administer/aad_portals.png
 [2]: ./media/active-directory-administer/azure_tenants.png
 
-
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

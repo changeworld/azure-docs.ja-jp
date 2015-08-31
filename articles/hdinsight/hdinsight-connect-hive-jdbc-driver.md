@@ -5,7 +5,8 @@
  documentationCenter=""
  authors="Blackmist"
  manager="paulettm"
- editor="cgronlun"/>
+ editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
  ms.service="hdinsight"
@@ -71,4 +72,4 @@ Java クライアントを使用して HDInsight の Hive をクエリする例�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

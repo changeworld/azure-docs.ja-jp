@@ -161,6 +161,8 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/34-create-table.png)
 
+このサンプルでは、ページ ビューからデータを使用します。使用可能なその他のデータを確認するには、JSON 出力を検査して、[データのエクスポート モデル](app-insights-export-data-model.md)を確認してください。
+
 ## Azure Stream Analytics インスタンスの作成
 
 [従来の Azure ポータル](https://manage.windowsazure.com/)で、Azure Stream Analytics サービスを選択し、新しい Stream Analytics ジョブを作成します。
@@ -200,7 +202,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 * `webapplication27` は Application Insights リソースの名前です。 
 * `1000...` は Application Insights リソースのインストルメンテーション キーです。 
-* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べ、その他の使用可能な種類をご確認ください。
+* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べ、その他の使用可能な種類と[データのエクスポート モデル](app-insights-export-data-model.md)をご確認ください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
 Application Insights リソースの名前と iKey を取得するには、概要ページの [Essentials] を開くか、[設定] を開きます。
@@ -305,4 +307,4 @@ SQL データベースを指定します。
 
  
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

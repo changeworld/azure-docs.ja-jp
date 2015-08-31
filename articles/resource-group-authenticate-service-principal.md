@@ -13,30 +13,33 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="07/24/2015"
+   ms.date="08/14/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのサービス プリンシパルの認証
 
 このトピックでは、サブスクリプション内の他のリソースにアクセスできるように、サービス プリンシパル (自動プロセス、アプリケーション、サービスなど) を許可する方法を示します。Azure リソース マネージャーでは、ロール ベースのアクセス制御を使用して、許可されたアクションをサービス プリンシパルに付与し、そのサービス プリンシパルを認証することができます。このトピックでは、PowerShell と Azure CLI を使用して、サービス プリンシパルにロールを割り当て、そのサービス プリンシパルを認証する方法を示します。
 
+ユーザー名とパスワードで認証する方法と証明書で認証する方法を示します。
+
+Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を利用できます。Azure PowerShell がインストールされていない場合、[Azure PowerShell のインストールと構成の方法](./powershell-install-configure.md)を参照してください。Azure CLI がインストールされていない場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
 
 ## 概念
 1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、[Azure Active Directory とは何ですか。](active-directory/active-directory-whatis.md)を参照してください。
 2. サービス プリンシパル - 他のリソースにアクセスする必要がある、ディレクトリ内のアプリケーションのインスタンス。
 3. AD アプリケーション - AAD に対してアプリケーションを特定するディレクトリ レコード。詳しくは、[Azure AD での認証の基本](https://msdn.microsoft.com/library/azure/874839d9-6de6-43aa-9a5c-613b0c93247e#BKMK_Auth)を参照してください。
 
-## PowerShell を使用したサービス プリンシパルに対するアクセス付与と認証
+## パスワードによるサービス プリンシパルの認証 - PowerShell
 
-Azure PowerShell がインストールされていない場合、[Azure PowerShell のインストールと構成の方法](./powershell-install-configure.md)を参照してください。
-
-まず、サービス プリンシパルを作成します。これを行うには、ディレクトリにアプリケーションを作成する必要があります。このセクションでは、ディレクトリに新しいアプリケーションを作成する手順を示します。
+このセクションでは、Azure Active Directory アプリケーションのサービス プリンシパルを作成し、ロールをサービス プリンシパルに割り当て、アプリケーションの ID とパスワードを指定することでサービス プリンシパルとして認証する手順を実行します。
 
 1. **New-AzureADApplication** コマンドを実行して、新しい AAD アプリケーションを作成します。アプリケーションの表示名、アプリケーションを説明するページへの URI (リンクが確認されていません)、アプリケーションを識別する URI、およびアプリケーション ID のパスワードを指定します。
 
         PS C:\> $azureAdApplication = New-AzureADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -Password "<Your_Password>"
 
-     Azure AD アプリケーションが返されます。サービス プリンシパルの作成、ロールの割り当て、および JWT トークンの取得には、**ApplicationId** プロパティが必要です。出力を保存するか、または変数内にキャプチャします。
+     新しいアプリケーション オブジェクトを調べます。サービス プリンシパルの作成、ロールの割り当て、および JWT トークンの取得には、**ApplicationId** プロパティが必要です。
+
+        PS C:\> $azureAdApplication
 
         Type                    : Application
         ApplicationId           : a41acfda-d588-47c9-8166-d659a335a865
@@ -44,10 +47,9 @@ Azure PowerShell がインストールされていない場合、[Azure PowerShe
         AvailableToOtherTenants : False
         AppPermissions          : {{
                             "claimValue": "user_impersonation",
-                            "description": "Allow the application to access My
-                              Application on behalf of the signed-in user.",
+                            "description": "Allow the application to access <Your Application Display Name> on behalf of the signed-in user.",
                             "directAccessGrantTypes": [],
-                            "displayName": "Access <<Your Application Display Name>>",
+                            "displayName": "Access <Your Application Display Name>",
                             "impersonationAccessGrantTypes": [
                               {
                                 "impersonated": "User",
@@ -56,12 +58,10 @@ Azure PowerShell がインストールされていない場合、[Azure PowerShe
                             ],
                             "isDisabled": false,
                             "origin": "Application",
-                            "permissionId":
-                            "b866ef28-9abb-4698-8c8f-eb4328533831",
+                            "permissionId": "b866ef28-9abb-4698-8c8f-eb4328533831",
                             "resourceScopeType": "Personal",
-                            "userConsentDescription": "Allow the application
-                             to access <<Your Application Display Name>> on your behalf.",
-                            "userConsentDisplayName": "Access <<Your Application Display Name>>",
+                            "userConsentDescription": "Allow the application to access <Your Application Display Name> on your behalf.",
+                            "userConsentDisplayName": "Access <Your Application Display Name>",
                             "lang": null
                           }}
 
@@ -99,9 +99,111 @@ Azure PowerShell がインストールされていない場合、[Azure PowerShe
      これで、作成した AAD アプリケーションのサービス プリンシパルとして認証されるはずです。
 
 
-## Azure CLI を使用したサービス プリンシパルに対するアクセス付与と認証
+## 証明書によるサービス プリンシパルの認証 - PowerShell
 
-Azure CLI for Mac, Linux and Windows がインストールされていない場合は、[Azure CLI のインストール](xplat-cli-install.md)を参照してください。
+このセクションでは、Azure Active Directory アプリケーションのサービス プリンシパルを作成し、ロールをサービス プリンシパルに割り当て、証明書を指定することでサービス プリンシパルとして認証する手順を実行します。このトピックでは、証明書が発行されているものとします。
+
+証明書を使用するための 2 つの方法を示します。キーの資格情報とキーの値です。いずれかの方法を使用できます。
+
+最初に、後にアプリケーションを作成するときに使用するいくつかの値を PowerShell に設定する必要があります。
+
+1. いずれの方法でも、証明書から X509Certificate オブジェクトを作成し、キーの値を取得します。証明書のパスとその証明書のパスワードを使用します。
+
+        $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate("C:\certificates\examplecert.pfx", "yourpassword")
+        $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData())
+
+2. キーの資格情報を使用する場合、キーの資格情報オブジェクトを作成し、その値を前の手順の `$keyValue` に設定します。
+
+        $currentDate = Get-Date
+        $endDate = $currentDate.AddYears(1)
+        $keyId = [guid]::NewGuid()
+        $keyCredential = New-Object  Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential
+        $keyCredential.StartDate = $currentDate
+        $keyCredential.EndDate= $endDate
+        $keyCredential.KeyId = $keyId
+        $keyCredential.Type = "AsymmetricX509Cert"
+        $keyCredential.Usage = "Verify"
+        $keyCredential.Value = $keyValue
+
+3. ディレクトリにアプリケーションを作成します。最初のコマンドはキーの値を使用する方法を示します。
+
+        $azureAdApplication = New-AzureADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -KeyValue $keyValue -KeyType AsymmetricX509Cert       
+        
+    または、2 番目の例を使用し、キーの資格情報を割り当てます。
+
+         $azureAdApplication = New-AzureADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -KeyCredentials $keyCredential
+
+    新しいアプリケーション オブジェクトを調べます。サービス プリンシパルの作成、ロールの割り当て、および JWT トークンの取得には、**ApplicationId** プロパティが必要です。
+
+        PS C:\> $azureAdApplication
+
+        Type                    : Application
+        ApplicationId           : 76fa8d97-f07e-4b9a-b871-a57a7acd777a
+        ApplicationObjectId     : c36b7b57-a949-4401-b381-18a5210aff10
+        AvailableToOtherTenants : False
+        AppPermissions          : {{
+                            "claimValue": "user_impersonation",
+                            "description": "Allow the application to access <Your Application Display Name> on behalf of the signed-in
+                          user.",
+                            "directAccessGrantTypes": [],
+                            "displayName": "Access <Your Application Display Name>",
+                            "impersonationAccessGrantTypes": [
+                              {
+                                "impersonated": "User",
+                                "impersonator": "Application"
+                              }
+                            ],
+                            "isDisabled": false,
+                            "origin": "Application",
+                            "permissionId": "9f13c6c6-35ba-43d6-b8b3-6a87aa641388",
+                            "resourceScopeType": "Personal",
+                            "userConsentDescription": "Allow the application to access <Your Application Display Name> on your behalf.",
+                            "userConsentDisplayName": "Access <Your Application Display Name>",
+                            "lang": null
+                          }}
+
+4. アプリケーションのサービス プリンシパルを作成します。
+
+        PS C:\> New-AzureADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+
+    これでディレクトリにサービス プリンシパルが作成されましたが、そのサービスには権限やスコープが割り当てられていません。いくつかのスコープで操作を実行する権限を、サービス プリンシパルに明示的に付与する必要があります。
+
+5. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、[Managing and Auditing Access to Resources (リソースへのアクセスの管理と監査)](azure-portal/resource-group-rbac.md) を参照してください。
+
+        PS C:\> New-AzureRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId
+
+6. アプリケーションから認証するには、次のコードを含めます。クライアントを取得すると、サブスクリプションのリソースにアクセスできます。
+
+        string clientId = "<Client ID for your AAD app>"; 
+        var subscriptionId = "<Your Azure SubscriptionId>"; 
+        string tenant = "<AAD tenant name>.onmicrosoft.com"; 
+
+        var authContext = new AuthenticationContext(string.Format("https://login.windows.net/{0}", tenant)); 
+
+        X509Certificate2 cert = null; 
+        X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser); 
+        string certName = "examplecert"; 
+        try 
+        { 
+            store.Open(OpenFlags.ReadOnly); 
+            var certCollection = store.Certificates; 
+            var certs = certCollection.Find(X509FindType.FindBySubjectName, certName, false); 
+            cert = certs[0]; 
+        } 
+        finally 
+        { 
+            store.Close(); 
+        }        
+
+        var certCred = new ClientAssertionCertificate(clientId, cert); 
+        var token = authContext.AcquireToken("https://management.core.windows.net/", certCred); 
+        var creds = new TokenCloudCredentials(subscriptionId, token.AccessToken); 
+        var client = new ResourceManagementClient(creds); 
+        
+
+## パスワードによるサービス プリンシパルの認証 - Azure CLI
+
+まず、サービス プリンシパルを作成します。これを行うには、ディレクトリにアプリケーションを作成する必要があります。このセクションでは、ディレクトリに新しいアプリケーションを作成する手順を示します。
 
 1. **azure ad app create** コマンドを実行して、新しい AAD アプリケーションを作成します。アプリケーションの表示名、アプリケーションを説明するページへの URI (リンクが確認されていません)、アプリケーションを識別する URI、およびアプリケーション ID のパスワードを指定します。
 
@@ -158,4 +260,4 @@ Azure CLI for Mac, Linux and Windows がインストールされていない場�
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -1,8 +1,7 @@
 <properties
 	pageTitle="エラスティック データベース Split-Merge ツールに関するチュートリアル | Microsoft Azure"
 	description="エラスティック データベース ツールによる分割とマージ"
-	services="sql-database" 
-	documentationCenter=""  
+	services="sql-database" documentationCenter=""  
 	manager="jeffreyg"
 	authors="sidneyh"/>
 
@@ -12,7 +11,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/14/2015"
+	ms.date="08/14/2015"
 	ms.author="sidneyh" />
 
 # エラスティック データベース Split-Merge ツールに関するチュートリアル
@@ -45,7 +44,11 @@
 
 2. 使い慣れたテキスト エディターで、ServiceConfiguration.cscfg を開きます。証明書の拇印の形式などの入力値が検証されるため、Visual Studio を使用することをお勧めします。
 
-3. 新しいデータベースを作成するか、Split/Merge 操作用のステータス データベースとして使用する既存のデータベースを選択し、そのデータベースの接続文字列を取得します。Azure SQL DB では、通常、接続文字列の形式は次のようになります。
+3. 新しいデータベースを作成するか、Split/Merge 操作用のステータス データベースとして使用する既存のデータベースを選択し、そのデータベースの接続文字列を取得します。
+
+	**重要**: 現時点では、状態データベースでラテン語の照合順序 (SQL\_Latin1\_General\_CP1\_CI\_AS) を使用する必要があります。詳細については、「[Windows 照合順序名 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)」をご覧ください。
+
+	Azure SQL DB では、通常、接続文字列の形式は次のようになります。
 
         "Server=myservername.database.windows.net; Database=mydatabasename;User ID=myuserID; Password=mypassword; Encrypt=True; Connection Timeout=30" .
 4.    ElasticScaleMetadata 設定の **SplitMergeWeb** ロールと **SplitMergeWorker** ロールの両方のセクションに cscfg ファイルの接続文字列を入力します。
@@ -329,4 +332,4 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

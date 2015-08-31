@@ -5,7 +5,8 @@
 	documentationCenter="" 
 	authors="nitinme" 
 	manager="paulettm" 
-	editor="cgronlun"/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
 	ms.service="hdinsight" 
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/19/2015" 
+	ms.date="07/31/2015" 
 	ms.author="nitinme"/>
 
 
@@ -39,9 +40,11 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 
 データを Hive テーブルとして保存した後、次のセクションでは、Power BI や Tableau などの BI ツールを使用して Hive テーブルに接続します。
 
-1. Jupyter Notebook を起動します。Azure ポータルで Spark クラスターを選択し、下部のポータル タスク バーで **[Jupyter Notebook]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。 
+ 
+2. [Jupyter](https://jupyter.org) Notebook を起動します。Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
-2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python2]** をクリックします。
+2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python 2]** をクリックします。
 
 	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-use-bi-tools/HDI.Spark.Note.Jupyter.CreateNotebook.png "新しい Jupyter Notebook を作成します")
 
@@ -205,4 +208,4 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

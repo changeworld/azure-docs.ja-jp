@@ -19,7 +19,8 @@
 
 [AZURE.INCLUDE [storsimple-version-selector-sva](../../includes/storsimple-version-selector-sva.md)]
 
-##概要
+## 概要
+
 StorSimple 仮想デバイスは、Microsoft Azure StorSimple ソリューションに付属する追加的な機能です。StorSimple 仮想デバイスは Microsoft Azure の仮想ネットワーク内の仮想マシン上で動作します。この仮想マシンを使用して、ホストからデータをバックアップしたり、複製したりできます。この記事の次のトピックでは、StorSimple 仮想デバイスの概要のほか、構成方法や使用方法についてわかりやすく説明しています。
 
 
@@ -56,7 +57,7 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 
 - 仮想デバイスは Microsoft Azure サブスクリプションを通じてセキュリティで保護されます。つまり、仮想デバイスを使用している場合に Azure サブスクリプションが侵害されると、仮想デバイス上に格納されたデータも影響を受けます。
 
-- Azure StorSimple に格納されたデータの暗号化に使われる証明書の公開キーは、Microsoft Azure 管理ポータルに対して安全に公開され、秘密キーは StorSimple デバイス上に保持されます。StorSimple 仮想デバイスでは、公開キーと秘密キーの両方が Azure に格納されます。
+- Azure StorSimple に格納されたデータの暗号化に使われる証明書の公開キーは、Azure ポータルに対して安全に公開され、秘密キーは StorSimple デバイス上に保持されます。StorSimple 仮想デバイスでは、公開キーと秘密キーの両方が Azure に格納されます。
 
 - 仮想デバイスは、Microsoft Azure データセンターでホストされます。
 
@@ -95,7 +96,6 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 
 作業を開始する前に、次の情報を確認してください。
 
-
 - アクセス資格情報のある Azure ポータル アカウントを持っていること。
 
 - Azure ストレージ アカウントのアクセス資格情報。
@@ -123,7 +123,7 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 - **[デバイス]** ページに移動します。
 
-- **[仮想デバイスの作成]** ダイアログ ボックスで、次のように指定します。
+- **[仮想デバイスの作成]** ダイアログ ボックスで、次のように詳細を指定します。
 
 	![StorSimple create virtual device](./media/storsimple-virtual-device/StorSimple_CreateVirtualDevice1.png)
 
@@ -147,8 +147,9 @@ StorSimple 仮想デバイスを構成して登録するには、次の手順を
 
 
 1. **[デバイス]** ページで、先ほど作成した **StorSimple 仮想デバイス**を選択します。
+
 2. **[デバイスの構成完了]** をクリックします。デバイスの構成ウィザードが起動します。
- 
+
 	![StorSimple complete device setup in Devices page](./media/storsimple-virtual-device/StorSimple_CompleteDeviceSetupSVA1M.png)
 
 1. デバイスの構成ウィザードで、次のように実行します。
@@ -156,15 +157,15 @@ StorSimple 仮想デバイスを構成して登録するには、次の手順を
 	1. 所定の場所に **[サービス データ暗号化キー]** を入力します。
 	2. **Snapshot Manager のパスワード**を入力します。**Snapshot Manager のパスワード**は 14 ～ 15 文字とし、小文字、大文字、数字、特殊文字を組み合わせて構成する必要があります。
 	3. **デバイス管理者のパスワード**を入力します。**デバイス管理者のパスワード**は 8 ～ 15 文字とし、小文字、大文字、数字、特殊文字を組み合わせて構成する必要があります。
-	4. チェック マーク アイコンをクリックして、仮想デバイスの初期構成と登録を完了します。 
-	
+	4. チェック マーク アイコンをクリックして、仮想デバイスの初期構成と登録を完了します。
+
 		![StorSimple virtual device settings](./media/storsimple-virtual-device/StorSimple_VirtualDeviceSettings1.png)
 
 構成と登録が完了したら、デバイスがオンラインになります。デバイスがオンラインになるまでに数分かかる場合があります。
 
 ![StorSimple virtual device online stage](./media/storsimple-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
 
-### デバイスの構成設定の変更 
+### デバイスの構成設定の変更
 
 次のセクションでは、StorSimple 仮想デバイスの構成で必要になる可能性のあるデバイスの構成設定について説明します。これらの設定には、CHAP の設定、StorSimple Snapshot Manager のパスワード、またはデバイス管理者のパスワードが含まれています。
 
@@ -180,7 +181,7 @@ StorSimple 仮想デバイスを構成して登録するには、次の手順を
 
 StorSimple Snapshot Manager ソフトウェアは Windows ホスト上に常駐し、管理者が、ローカル スナップショットとクラウド スナップショットの形式で StorSimple デバイスのバックアップを管理することを可能にします。
 
->[AZURE.NOTE]**仮想デバイスの場合、Windows ホストは Azure VM です。**
+>[AZURE.NOTE]仮想デバイスの場合、Windows ホストは Azure VM です。
 
 StorSimple Snapshot Manager でデバイスを構成するとき、ストレージ デバイスを認証するためのパスワードと StorSimple デバイスの IP アドレスを入力するように求められます。このパスワードは、Windows PowerShell のインターフェイスを使用して最初に構成されます。
 
@@ -278,7 +279,7 @@ StorSimple Manager サービス ページで非アクティブとして表示さ
 
 StorSimple デバイスの構成ページで Windows PowerShell リモート処理を有効にしたら、それを使って、同じ仮想ネットワーク内の別の仮想マシンから仮想デバイスに接続することができます。たとえば、iSCSI に接続するために構成して使用しているホスト VM から接続することができます。ほとんどのデプロイでは、仮想デバイスへのアクセスに使用できるホスト VM にアクセスするパブリック エンドポイントは既に開かれています。
 
->[AZURE.WARNING]**セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。**
+>[AZURE.WARNING]セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。
 
 「[Windows PowerShell を使用するリモート接続](storsimple-remote-connect.md)」の手順に従って、仮想デバイスのリモート処理をセットアップしてください。
 
@@ -356,7 +357,7 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 フェールオーバー プロセスが開始されます。フェールオーバーが完了したら、[デバイス] ページに進み、フェールオーバー プロセスのターゲットとして使用した仮想デバイスを選択します。[ボリューム コンテナー] ページに移動します。すべてのボリューム コンテナーと古いデバイスのボリュームが表示されます。
 
->[AZURE.NOTE]**仮想デバイスでサポートされるストレージの量は 30 TB (テラバイト) です。**
+>[AZURE.NOTE]仮想デバイスでサポートされるストレージの量は 30 TB (テラバイト) です。
 
 ## 仮想デバイスのシャットダウンまたは削除
 
@@ -374,7 +375,7 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 ### StorSimple 仮想デバイスを削除するには
 
-1. 管理ポータルにサインインします。
+1. Azure ポータルにサインインします。
 
 - **[Virtual Machines]** をクリックし、仮想デバイスを選択します。
 
@@ -383,10 +384,6 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 ## 次のステップ
 
-仮想デバイスを管理するには、[StorSimple デバイスの管理](storsimple-manager-service-administration.md#administer-storsimple-device-using-storsimple-manager-service)に関するページでワークフローの詳細な一覧を参照してください。
+仮想デバイスを管理するには、[StorSimple デバイスの管理](storsimple-manager-service-administration.md#administer-storsimple-device-using-storsimple-manager-service)に関するページでワークフローの詳細な一覧をご覧ください。
 
-
-
- 
-
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

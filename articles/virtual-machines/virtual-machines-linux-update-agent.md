@@ -30,7 +30,7 @@ Azure での動作保証済み Linux ディストリビューションは、そ�
 
 Ubuntu の場合は、次のように入力するだけでかまいません。
      
-    #sudo apt-get install waagent
+    #sudo apt-get install walinuxagent
 
 また CentOS に次のように入力します。
 
@@ -52,26 +52,52 @@ SSH を使用して VM にログインします。
 
 ## 最新版のダウンロード
 
-[Github の Azure Linux エージェントのリリース](https://github.com/Azure/WALinuxAgent/releases)が記載されている Web ページを開き、2.0.12 などの最新バージョンを見つけます (「`#waagent --version`」と入力すると最新のバージョンを検索できます)。
+[Github の Azure Linux エージェントのリリース](https://github.com/Azure/WALinuxAgent/releases)が記載されている Web ページを開き、最新バージョンを見つけます。(「`#waagent --version`」と入力すると最新のバージョンを検索できます)。
+
+###バージョン 2.0.x の場合は次のように入力します:
 
     #wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-[version]/waagent  
 
-次の行は、バージョン 2.0.12 を例として使用しています。
+   次は、バージョン 2.0.14 を例として使用しています。
 
-    #wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.12/waagent  
+    #wget https://raw.githubusercontent.com/Azure/WALinuxAgent/WALinuxAgent-2.0.14/waagent  
 
-## waagent を実行可能にする
+###バージョン 2.1.x 以降の場合は次のように入力します:
+  
+    #wget https://github.com/Azure/WALinuxAgent/archive/WALinuxAgent-[version].zip 
+    #unzip WALinuxAgent-[version].zip
+    #cd WALinuxAgent-[version]
+
+   次の行は、バージョン 2.1.0 を例として使用しています。
+
+    #wget https://github.com/Azure/WALinuxAgent/archive/WALinuxAgent-2.1.0.zip
+    #unzip WALinuxAgent-2.1.0.zip  
+    #cd WALinuxAgent-2.1.0
+
+##Linux エージェントのインストール
+
+###バージョン 2.0.x の場合は次を使用します:
+
+ waagent を実行可能にする
 
     #chmod +x waagent
 
-## 新しい実行可能ファイルを /usr/sbin にコピーする
-    
-    #sudo cp waagent /usr/sbin
+ 新しい実行可能ファイルを /usr/sbin にコピーする
+   
+  ほとんどの Linux では、次のコマンドを使用します。
+         
+      #sudo cp waagent /usr/sbin
 
-CoreOs の場合は、次のコマンドを使用します。
+  CoreOs の場合は、次のコマンドを使用します。
 
     #sudo cp waagent /usr/share/oem/bin/
  
+###バージョン 2.1.x の場合は次を使用します:
+
+パッケージ `setuptools` を先にインストールする必要がある場合は、[こちら](https://pypi.python.org/pypi/setuptools)をご覧ください。次に以下を実行します。
+
+    #sudo python setup.py install
+
 ## waagent サービスを再起動する
 
 ほとんどの Linux ディストリビューションでは、次のコマンドを使用します。
@@ -100,4 +126,4 @@ Azure Linux エージェントの詳細については、[Azure Linux エージ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

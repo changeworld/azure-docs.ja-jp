@@ -22,8 +22,8 @@
 > [AZURE.SELECTOR]
 - [Azure preview portal](virtual-machines-windows-tutorial.md)
 - [Azure portal](virtual-machines-windows-tutorial-classic-portal.md)
-- [PowerShell - Resource management](virtual-machines-deploy-rmtemplates-powershell.md)
-- [PowerShell - Service management](virtual-machines-ps-create-preconfigure-windows-vms.md)
+- [PowerShell: Resource Manager deployment](virtual-machines-deploy-rmtemplates-powershell.md)
+- [PowerShell: Classic deployment](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
 
 このチュートリアルでは、Azure ポータルで Azure 仮想マシン (VM) を簡単に作成する方法を示します。例として Windows Server イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。イメージの選択肢は、サブスクリプションによって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
@@ -44,7 +44,7 @@
 
 > [AZURE.NOTE]さらに、より機能が豊富でカスタマイズも可能な [Azure プレビュー ポータル](https://portal.azure.com)を使用すれば、仮想マシンの作成、強化された監視や診断の使用、Premium Storage の使用など、さまざまな操作を試すことができます。この 2 つのポータルにある利用可能な仮想マシン構成オプションには、性質上、重複するものもありますが、まったく同じではありません。たとえば、プレビュー ポータルを利用して、Premium Storage を使用する仮想マシンを構成します。
 
-[AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-WindowsVM.md)]
+[AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
 ## 次のステップ
 
@@ -56,4 +56,4 @@
 
 仮想マシン用に構成できる内容とそのタイミングについては、「[Azure VM 構成設定について](http://msdn.microsoft.com/library/azure/dn763935.aspx)」を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

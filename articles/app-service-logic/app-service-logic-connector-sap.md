@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/02/2015"
+   ms.date="08/19/2015"
    ms.author="sameerch"/>
 
 
@@ -52,7 +52,7 @@ SAP コネクタを使用するには、まず SAP コネクタ API アプリの
 
 ![][2]
 
-ハイブリッド接続を確立するには、次の操作を行います。
+SAP コネクタでは、*任意の* SAP エンドポイントに接続するためのハイブリッド接続が必要になります。ハイブリッド接続を確立するには、次の操作を行います。
 
 1. プライマリ接続文字列をコピーします。
 2. [ダウンロードして構成] リンクをクリックします。
@@ -85,6 +85,13 @@ SAP コネクタは、ロジック アプリ内でアクションまたはステ
 
 ビジネス プロセスを定義するロジック アプリを完成させます。ロジック アプリを実行して、目的の操作を実現します。
 
+## コネクタでできること
+コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
+
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
+
 <!--Image references-->
 [1]: ./media/app-service-logic-connector-sap/Create.jpg
 [2]: ./media/app-service-logic-connector-sap/BrowseSetupIncomplete.jpg
@@ -94,4 +101,4 @@ SAP コネクタは、ロジック アプリ内でアクションまたはステ
 [6]: ./media/app-service-logic-connector-sap/LogicApp2.jpg
 [7]: ./media/app-service-logic-connector-sap/LogicApp3.jpg
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

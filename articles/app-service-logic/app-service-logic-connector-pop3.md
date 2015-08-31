@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/02/2015"
+   ms.date="08/19/2015"
    ms.author="sameerch"/>
 
 
@@ -62,12 +62,18 @@ API アプリが作成されたら、Logic App のトリガーとして POP3 コ
 
 5.	これで、フローで POP3 コネクタを使用できるようになりました。[Get Email (メールの取得)] トリガーを選択し、頻度と間隔を構成します。今後は、POP3 トリガーを使って取得したメールを、フローの他のアクションで使用できます。
 		 
-	
+
 	![][5]
 	![][6]
+## コネクタでできること
+コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
+
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
 
-	<!--Image references-->
+<!--Image references-->
 [1]: ./media/app-service-logic-connector-pop3/img1.PNG
 [2]: ./media/app-service-logic-connector-pop3/img2.PNG
 [3]: ./media/app-service-logic-connector-pop3/img3.png
@@ -75,4 +81,4 @@ API アプリが作成されたら、Logic App のトリガーとして POP3 コ
 [5]: ./media/app-service-logic-connector-pop3/img5.PNG
 [6]: ./media/app-service-logic-connector-pop3/img6.PNG
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

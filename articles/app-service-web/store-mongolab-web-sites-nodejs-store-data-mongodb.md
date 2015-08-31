@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="08/10/2014"
-	ms.author="mwasson"/>
+	ms.date="08/18/2015"
+	ms.author="tdykstra"/>
 
 
 
@@ -510,7 +510,7 @@ Azure App Service では Web アプリを非常に簡単に作成できます。
 あともう少しで終了です。
 
 ### 環境の構成
-コード内の process.env.CUSTOMCONNSTR_MONGOLAB_URI を覚えていますか。 この環境変数に、MongoLab データベースのプロビジョニング中に、Azure に対して指定された値を入力できます。
+コード内の process.env.CUSTOMCONNSTR\_MONGOLAB\_URI を覚えていますか。 この環境変数に、MongoLab データベースのプロビジョニング中に、Azure に対して指定された値を入力できます。
 
 #### MongoLab 接続文字列を取得する
 
@@ -575,4 +575,4 @@ Azure App Service では Web アプリを非常に簡単に作成できます。
 [mongolab-view]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/mongolab-view.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

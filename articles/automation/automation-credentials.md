@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure Automation での資格情報資産"
+   pageTitle="Azure Automation での資格情報資産 | Microsoft Azure"
    description="Azure Automation の資格情報資産には、Runbook によってアクセスされるリソースの認証に使用できるセキュリティ資格情報が含まれます。この記事では、資格情報資産を作成し、Runbook でそれを使用する方法について説明します。"
    services="automation"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/21/2015"
+   ms.date="08/18/2015"
    ms.author="bwren" />
 
 # Azure Automation での資格情報資産
@@ -92,7 +92,7 @@ Runbook で資格情報資産を取得するには、**Get-AutomationPSCredentia
 
 ![キャンバスに資格情報を追加する](media/automation-credentials/credential-add-canvas.png)
 
-次の図は、グラフィカルな Runbook で資格情報を使用する例を示したものです。この例では、「[Azure リソースへの認証の構成](#automation-configuring.md)」で説明されているように、Runbook 用の認証を Azure リソースに提供するために使用されています。最初のアクティビティは、Azure サブスクリプションへのアクセス権を持つ資格情報を取得します。その後、**Add-AzureAccount** アクティビティはこの資格情報を使用して、その後にあるすべてのアクティビティに認証を提供します。**Get-AutomationPSCredential** は 1 つのオブジェクトを受け取るので、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#links-and-workflow)を使用します。
+次の図は、グラフィカルな Runbook で資格情報を使用する例を示したものです。この例では、[Azure リソースへの認証の構成](#automation-configuring.md)で説明されているように、Runbook 用の認証を Azure リソースに提供するために使用されています。最初のアクティビティは、Azure サブスクリプションへのアクセス権を持つ資格情報を取得します。その後、**Add-AzureAccount** アクティビティはこの資格情報を使用して、その後にあるすべてのアクティビティに認証を提供します。**Get-AutomationPSCredential** は 1 つのオブジェクトを受け取るので、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#links-and-workflow)を使用します。
 
 ![キャンバスに資格情報を追加する](media/automation-credentials/get-credential.png)
 
@@ -103,4 +103,4 @@ Runbook で資格情報資産を取得するには、**Get-AutomationPSCredentia
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

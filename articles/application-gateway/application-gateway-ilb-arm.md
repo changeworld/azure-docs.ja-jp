@@ -60,14 +60,14 @@ ARM コマンドレットを使用するように PowerShell モードを切り�
 
 ### 手順 1.
 
-    PS C:\> Switch-AzureMode -Name AzureResourceManager
+    Switch-AzureMode -Name AzureResourceManager
 
 ### 手順 2.
 
 Azure アカウントにログインします。
 
 
-    PS C:\> Add-AzureAccount
+    Add-AzureAccount
 
 資格情報を使用して認証を行うよう求められます。
 
@@ -76,7 +76,7 @@ Azure アカウントにログインします。
 
 使用する Azure サブスクリプションを選択します。
 
-    PS C:\> Select-AzureSubscription -SubscriptionName "MySubscription"
+    Select-AzureSubscription -SubscriptionName "MySubscription"
 
 使用できるサブスクリプションのリストを表示するには、Get-AzureSubscription コマンドレットを使用します。
 
@@ -85,7 +85,7 @@ Azure アカウントにログインします。
 
 新しいリソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
-    PS C:\> New-AzureResourceGroup -Name appgw-rg -location "West US"
+    New-AzureResourceGroup -Name appgw-rg -location "West US"
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。Application Gateway を作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
@@ -118,13 +118,13 @@ Azure リソース マネージャーでは、すべてのリソース グルー
  
 ### 手順 2.
 
-	$pool = New-AzureApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
+	$pool = New-AzureApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.0.0.10,10.0.0.11,10.0.0.12
 
-この手順は、IP アドレス "134.170.185.46、134.170.188.221、134.170.185.50" を使用して、"pool01" という名前のバックエンド IP アドレス プールを構成します。これらは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスとなります。独自のアプリケーションの IP アドレス エンドポイントを追加するために、上記の IP アドレスを置き換えます。
+この手順は、IP アドレス "10.0.0.10、10.0.0.11、10.0.0.12" を使用して、"pool01" という名前のバックエンド IP アドレス プールを構成します。これらは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスとなります。独自のアプリケーションの IP アドレス エンドポイントを追加するために、上記の IP アドレスを置き換えます。
 
 ### 手順 3.
 
-	$poolSetting = New-AzureApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol HTTP -CookieBasedAffinity Disabled
+	$poolSetting = New-AzureApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 
 バックエンド プール内の負荷を分散したネットワーク トラフィックに対して、Application Gateway の設定 "poolsetting01" を構成します。
 
@@ -136,21 +136,21 @@ ILB に対して、"frontendport01" という名前のフロントエンド IP �
 
 ### 手順 5
 
-	$fipconfig = New-AzureApplicationGatewayFrontendIPConfig -Name $fipconfigName -Subnet $subnet
+	$fipconfig = New-AzureApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 
-現在の仮想ネットワーク サブネットからプライベート IP を関連付けるフロントエンド IP 構成を作成します。
+"fipconfig01" というフロントエンド IP 構成を作成し、現在の仮想ネットワーク サブネットからプライベート IP を関連付けます。
 
 ### 手順 6
 
-	$listener = New-AzureApplicationGatewayHttpListener -Name $listenerName  -Protocol http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
+	$listener = New-AzureApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 
-フロントエンド IP 構成にフロントエンドのポートを関連付けるリスナーを作成します。
+"listener01" というリスナーを作成し、フロントエンド IP 構成にフロントエンド ポートを関連付けます。
 
 ### 手順 7. 
 
-	$rule = New-AzureApplicationGatewayRequestRoutingRule -Name $ruleName -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
+	$rule = New-AzureApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
-ロード バランサーのルーティング規則を作成し、ロード バランサーの動作を構成します。
+"rule01" というロード バランサーのルーティング規則を作成し、ロード バランサーの動作を構成します。
 
 ### 手順 8.
 
@@ -158,11 +158,11 @@ ILB に対して、"frontendport01" という名前のフロントエンド IP �
 
 Application Gateway のインスタンスのサイズを構成します。
 
->[AZURE.NOTE]*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
+>[AZURE.NOTE]*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Standard\_Small、Standard\_Medium、Standard\_Large のいずれかを選択できます。
 
 ## New-AzureApplicationGateway を使用した Application Gateway の作成
 
-	$appgw = New-AzureApplicationGateway -Name appgwtest -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
+	$appgw = New-AzureApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 
 上記の手順の構成項目をすべて使用して、Application Gateway を作成します。この例では、Application Gateway は "appgwtest" という名前です。
 
@@ -176,14 +176,14 @@ Application Gateway のインスタンスのサイズを構成します。
 
 **注:** `Start-AzureApplicationGateway` コマンドレットの実行には最大で 15 ～ 20 分かかる場合があります。
 
-次の例では、Application Gateway の名前は "appgwtest" で、リソース グループの名前は "app-rg" です。
+次の例では、Application Gateway の名前は "appgwtest" で、リソース グループの名前は "appgw-rg" です。
 
 
 ### 手順 1.
 
 Application Gateway オブジェクトを取得し、変数 "$getgw" に関連付けます。
  
-	$getgw =  Get-AzureApplicationGateway -Name appgwtest -ResourceGroupName app-rg
+	$getgw =  Get-AzureApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 ### 手順 2.
 	 
@@ -283,4 +283,4 @@ ILB とともに使用するようにアプリケーション ゲートウェイ
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

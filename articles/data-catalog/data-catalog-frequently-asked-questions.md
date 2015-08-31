@@ -3,8 +3,8 @@
    description="Azure Data Catalog: カタログのよく寄せられる質問"
    services="data-catalog"
    documentationCenter=""
-   authors="dvana"
-   manager="mblythe"
+   authors="steelanddata"
+   manager="NA"
    editor=""
    tags=""/>
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="07/13/2015"
-   ms.author="derrickv"/>
+   ms.date="08/19/2015"
+   ms.author="maroche"/>
 
 # Azure Data Catalog のよく寄せられる質問
 
@@ -62,16 +62,18 @@ Standard Edition の Azure Data Catalog は、最大 100,000 の登録済みの�
 - SQL Server ビュー
 - SQL Server Analysis Services ディメンション
 - SQL Server Analysis Services メジャー
-- SQL Server Analysis Services KPI 
+- SQL Server Analysis Services KPI
 - SQL Server Analysis Services テーブル
 - SQL Server Reporting Services レポート  
 - Oracle Database テーブル
 - Oracle Database ビュー
+- Azure Storage BLOB
+- Azure Storage ディレクトリ
 
 ## Q: 別のデータ ソースのサポートを要求するにはどうすればよいですか。
 
 機能要求やその他のフィードバックは [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)で送信することができます。
- 
+
 ## Q: Azure Data Catalog はどのように使用を開始するのですか。
 
 使用を開始する最適な場所は、「Data Catalog の概要」の手順に従うことです。この記事は、パブリック プレビューでの機能のエンド ツー エンドのツアーです。
@@ -87,7 +89,7 @@ Standard Edition の Azure Data Catalog は、最大 100,000 の登録済みの�
 - 資産名
 - 資産の種類
 - 資産の説明
-- 属性/列名 
+- 属性/列名
 - 属性/列データ型
 - 属性/列の説明
 
@@ -123,7 +125,7 @@ Standard Edition の Azure Data Catalog は、最大 100,000 の登録済みの�
 
 **Azure Data Catalog** フォーラムを使用して、問題を報告し、情報を共有して、質問をしてください。フォーラムは、http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409 にあります
 
-##Q: Azure Data Catalog は興味があるこの他のデータ ソースを処理しますか。 
+##Q: Azure Data Catalog は興味があるこの他のデータ ソースを処理しますか。
 **Azure Data Catalog** へのデータ ソースの追加には積極的に取り組んでいるところです。サポートされることを期待するデータ ソースがある場合は、[Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)で、それを提案 (またはそれが既に提案されている場合は、その指示を表明) してください。
 
 ## Q: Azure Data Catalog は Power BI for Office 365 のデータ カタログとどのように関連しますか。
@@ -158,4 +160,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

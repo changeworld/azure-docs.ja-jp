@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="認証の使用 (Xamarin.Android) - Mobile Services" 
-	description="Xamarin.Android 向け Azure Mobile Services アプリケーションで認証を使用する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="xamarin" 
-	manager="dwrede" 
-	authors="lindydonna" 
+<properties
+	pageTitle="認証の使用 (Xamarin.Android) - Mobile Services"
+	description="Xamarin.Android 向け Azure Mobile Services アプリケーションで認証を使用する方法について説明します。"
+	services="mobile-services"
+	documentationCenter="xamarin"
+	manager="dwrede"
+	authors="lindydonna"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-android" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/14/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="donnam"/>
 
 # Mobile Services アプリへの認証の追加
@@ -42,7 +42,7 @@
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
 
-3. Eclipse で、チュートリアル「Mobile Services の使用」を完了したときに作成したプロジェクトを開きます。 
+3. Eclipse で、チュートリアル「Mobile Services の使用」を完了したときに作成したプロジェクトを開きます。
 
 4. **[実行]** メニューの **[実行]** をクリックして、アプリケーションを開始します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
 
@@ -85,7 +85,7 @@
 
         private async Task CreateTable()
         {
-            
+
             await InitLocalStoreAsync();
 
             // Get the Mobile Service Table instance to use
@@ -136,6 +136,5 @@
 [スクリプトを使用したユーザーの認証]: mobile-services-javascript-backend-service-side-authorization.md
 [Azure Management Portal]: https://manage.windowsazure.com/
 [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

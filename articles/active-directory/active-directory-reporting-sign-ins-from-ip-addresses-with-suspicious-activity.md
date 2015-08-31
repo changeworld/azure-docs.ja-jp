@@ -3,8 +3,8 @@
 	description="不審なアクティビティが検出された IP アドレスからのサインイン試行が含まれるレポート。"
 	services="active-directory"
 	documentationCenter=""
-	authors="kenhoff"
-	manager="ilanas"
+	authors="SSalahAhmed"
+	manager="gchander"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/01/2015"
-	ms.author="kenhoff"/>
+	ms.date="08/17/2015"
+	ms.author="saah; kenhoff"/>
 
 # 不審なアクティビティのある IP アドレスからのサインイン
 
@@ -24,4 +24,4 @@
 
 ![不審なアクティビティのある IP アドレスからのサインイン](./media/active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity/signInsFromIPAddressesWithSuspiciousActivity.PNG)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

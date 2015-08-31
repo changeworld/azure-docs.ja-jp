@@ -5,7 +5,7 @@
    documentationCenter="NA"
    authors="lodipalm"
    manager="barbkess"
-   editor=""/>
+   editor="jrowlandjones"/>
 
 <tags
    ms.service="sql-data-warehouse"
@@ -43,16 +43,19 @@ SQL Data Warehouse には、データをロードするために以下のよう�
 
 Azure へのファイルの移動の準備として、ファイルをフラット ファイルにエクスポートする必要があります。これには BCP コマンドライン ユーティリティを使用すると最適です。まだユーティリティがない場合は、[Microsoft Command Line Utilities for SQL Server][] (SQL Server の Microsoft コマンド ライン ユーティリティ) からダウンロードできます。サンプルの BCP コマンドは、次のようになります。
 
-	bcp "<Directory><File>" -c -T -S <Server Name> -d <Database Name>
+```
+bcp "<Directory><File>" -c -T -S <Server Name> -d <Database Name>
+```
 
 このコマンドは、クエリの結果を、指定したディレクトリのファイルにエクスポートします。複数の BCP コマンドを個別のテーブルごとに一度に実行して、並行処理できます。そのため、サーバーのコアごとに 1 つの BCP プロセスまで実行できますが、構成が違う場合には少し控えめの処理を試行して、自分の環境に最適な処理を確かめてください。
 
 さらに、PolyBase を使用してロードする際には、PolyBase が UTF-16 をまだサポートしておらず、すべてのファイルが UTF-8 でなければならないことに注意してください。これは、BCP コマンドで "-c" フラグを使用することで容易に解決し、また、フラット ファイルを下記のコードで UTF-16 から UTF-8 に変換することもできます。
 
-		Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name> -Encoding utf8
+```
+Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name> -Encoding utf8
+```
  
 ファイルへのデータのエクスポートに成功したら、ファイルを Azure に移動します。これは、次のセクションで述べる AZCopy もしくは "インポート/エクスポート" サービスで実行可能です。
-
 
 ## AZCopy またはインポート/エクスポートを使用した Azure へのロード
 5 から 10 テラバイトもの範囲かそれ以上のデータを移動する場合、Microsoft のディスク発送サービスの[インポート/エクスポート][]を使用してデータ移動を行うことをお勧めします。しかし、我々が調べたところ、テラバイトまでの範囲なら、AZCopy で公開インターネットを使って問題なくデータを移動できることがわかっています。この処理は ExpressRoute でスピードアップもしくは拡張できます。
@@ -63,7 +66,9 @@ Azure へのファイルの移動の準備として、ファイルをフラッ�
 
 BCP を使って作成されたファイルのセットができたら、Azure powershell から、または、powershell スクリプトの実行により、AZCopy を簡単に実行できます。AZCopy を実行する際のプロンプトのおおよその形式は次のようになります。
 
-	 AZCopy /Source:<File Location> /Dest:<Storage Container Location> /destkey:<Storage Key> /Pattern:<File Name> /NC:256
+```
+AZCopy /Source:<File Location> /Dest:<Storage Container Location> /destkey:<Storage Key> /Pattern:<File Name> /NC:256
+```
 
 AZCopy でのロードについては、基本に加えて、以下のベスト プラクティスをお勧めします。
 
@@ -87,31 +92,38 @@ AZCopy でのロードについては、基本に加えて、以下のベスト 
 
 4. **外部データ ソースの作成** ストレージ アカウントについては、同じコンテナーからロードする場合は、外部データ ソースを使用できます。"LOCATION" パラメーターでは、フォーマットのロケーション： "wasbs://mycontainer@ test.blob.core.windows.net/path" を使用してください。
 
-		-- Creating master key
-		CREATE MASTER KEY;
+```
+-- Creating master key
+CREATE MASTER KEY;
 
-		-- Creating a database scoped credential
-		CREATE DATABASE SCOPED CREDENTIAL <Credential Name> WITH IDENTITY = '<User Name>', 
-    	Secret = '<Azure Storage Key>';
+-- Creating a database scoped credential
+CREATE DATABASE SCOPED CREDENTIAL <Credential Name> 
+WITH 
+    IDENTITY = '<User Name>'
+,   Secret = '<Azure Storage Key>'
+;
 
-		-- Creating external file format (delimited text file)
-		CREATE EXTERNAL FILE FORMAT text_file_format 
-		WITH (
-		    FORMAT_TYPE = DELIMITEDTEXT, 
-		    FORMAT_OPTIONS (
-		        FIELD_TERMINATOR ='|', 
-		        USE_TYPE_DEFAULT = TRUE
-		    )
-		);
+-- Creating external file format (delimited text file)
+CREATE EXTERNAL FILE FORMAT text_file_format 
+WITH 
+(
+    FORMAT_TYPE = DELIMITEDTEXT 
+,   FORMAT_OPTIONS  (
+                        FIELD_TERMINATOR ='|' 
+                    ,   USE_TYPE_DEFAULT = TRUE
+                    )
+);
 
-		--Creating an external data source
-		CREATE EXTERNAL DATA SOURCE azure_storage 
-		WITH (
-	    	TYPE = HADOOP, 
-	        LOCATION ='wasbs://<Container>@<Blob Path>’,
-	        CREDENTIAL = <Credential Name>
-		;
-
+--Creating an external data source
+CREATE EXTERNAL DATA SOURCE azure_storage 
+WITH 
+(
+    TYPE = HADOOP 
+,   LOCATION ='wasbs://<Container>@<Blob Path>'
+,   CREDENTIAL = <Credential Name>
+)
+;
+```
 
 ストレージ アカウントが正しく構成されたら、SQL Data Warehouse へのデータのロードに進みます。
 
@@ -120,26 +132,36 @@ PolyBase を構成した後は、ストレージ内のデータを参照する�
 
 1. "CREATE EXTERNAL TABLE" コマンドを使用して、データの構造を定義します。データの状態をすばやく効率的に取得できるように、SQL Server テーブルを SSMS でスクリプティングし、外部テーブルとの相違を解決する際は手動にて調整することをお勧めします。Azure に外部テーブルを作成したら、外部テーブルはデータがアップデートされたり、データが追加されても、同じロケーションを参照しつづけます。  
 
-		-- Creating external table pointing to file stored in Azure Storage
-		CREATE EXTERNAL TABLE <External Table Name> (
-		    <Column name>, <Column type>, <NULL/NOT NULL>
-		)
-		WITH (LOCATION='<Folder Path>',
-		      DATA_SOURCE = <Data Source>,
-		      FILE_FORMAT = <File Format>,      
-		);
+```
+-- Creating external table pointing to file stored in Azure Storage
+CREATE EXTERNAL TABLE <External Table Name> 
+(
+    <Column name>, <Column type>, <NULL/NOT NULL>
+)
+WITH 
+(   LOCATION='<Folder Path>'
+,   DATA_SOURCE = <Data Source>
+,   FILE_FORMAT = <File Format>      
+);
+```
 
-2. "CREATE TABLE...AS SELECT" ステートメントでデータをロードします。
+2. "CREATE TABLE...AS SELECT" ステートメントでデータをロードします。 
 
-		CREATE TABLE <Table Name> 
-		WITH (
-    		CLUSTERED COLUMNSTORE INDEX
-    		)
-		AS SELECT * from <External Table Name>;
+```
+CREATE TABLE <Table Name> 
+WITH 
+(
+	CLUSTERED COLUMNSTORE INDEX
+)
+AS 
+SELECT  * 
+FROM    <External Table Name>
+;
+```
 
-	より詳細の SELECT ステートメントを使用すると、テーブルから行のサブセクションのロードもできることに注意してください。しかし、PolyBase は今回はストレージ アカウントに追加の計算を転送してくれるわけではないので、SELECT ステートメントでサブセクションをロードする場合は、データセット全体をロードするよりも早くなることはありません。
+より詳細の SELECT ステートメントを使用すると、テーブルから行のサブセクションのロードもできることに注意してください。しかし、PolyBase は今回はストレージ アカウントに追加の計算を転送してくれるわけではないので、SELECT ステートメントでサブセクションをロードする場合は、データセット全体をロードするよりも早くなることはありません。
 
-"CREATE TABLE...AS SELECT" ステートメントの他に、"INSERT...INTO" ステートメントで外部テーブルから既存テーブルにデータをロードすることもできます。
+`CREATE TABLE...AS SELECT` ステートメントの他に、"INSERT...INTO" ステートメントで外部テーブルから既存テーブルにデータをロードすることもできます。
 
 ## 次のステップ
 開発に関するその他のヒントについては、[開発の概要][]に関するページをご覧ください。
@@ -167,4 +189,4 @@ PolyBase を構成した後は、ストレージ内のデータを参照する�
 [Azure Storage のドキュメント]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/
 [ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

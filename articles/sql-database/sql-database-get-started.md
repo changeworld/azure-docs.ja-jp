@@ -1,5 +1,5 @@
 <properties
-	pageTitle="SQL Database の使用"
+	pageTitle="SQL Database の使用 | Microsoft Azure"
 	description="クラウドで提供される Microsoft のリレーショナル データベース管理サービス (RDBMS) である Azure SQL Database を利用し、Azure ポータルと AdventureWorks サンプル データベースを使って初めてのクラウド データベースを数分で作成します。"
 	services="sql-database"
 	documentationCenter=""
@@ -46,7 +46,7 @@
 
 
 
-1. [SQL Database] ブレードで、データベースの**名前**を選択します (この例では、**AdventureWorks**)。
+1. **[SQL Database]** ブレードで、データベースの**名前**を選択します (この例では、**AdventureWorks**)。
 2. データベースの論理サーバーを作成するには、**[サーバー]** をクリックし、**[新しいサーバーの作成]** をクリックします。
 
 
@@ -66,7 +66,7 @@
 ## 手順 4. データベースを作成する
 
 
-1. [SQL Database] ブレードで、**[ソースの選択]** をクリックし、データベースのソースを指定します。
+1. **[SQL Database]** ブレードで、**[ソースの選択]** をクリックし、データベースのソースを指定します。
  - この手順を省略すると、空のデータベースが作成されます。
 2. **[サンプル]** を選びます。
  - 標準のサンプル データベースがコピーされ、**AdventureWorks** という名前のデータベースが作成されます。
@@ -86,7 +86,7 @@
 1. 画面の左側にあるリボンで、**[参照]** をクリックし、**[SQL サーバー]** をクリックします。
 2. 選択可能な項目の中から、先ほど作成した SQL サーバーをクリックします。
 3. **[設定]** をクリックし、**[ファイアウォール]** をクリックします。
-4. このリンクをクリックして、[Bing](http://www.bing.com/search?q=my%20ip%20address) から現在の IP アドレスを取得します。
+4. [Bing](http://www.bing.com/search?q=my%20ip%20address) から現在の IP アドレスを取得します。
 5. [ファイアウォール設定] で、**[ルール名]** にルール名を入力し、前の手順で取得したパブリック IP アドレスを **[開始 IP]** ボックスと **[終了 IP]** ボックスに入力します。
 6. 作業が完了したら、ページの上部にある **[保存]** をクリックします。
 
@@ -109,6 +109,5 @@
 [2]: ./media/sql-database-get-started/GettingStarted_CreateServer.png
 [3]: ./media/sql-database-get-started/GettingStarted_BrowseServer.png
 [4]: ./media/sql-database-get-started/GettingStarted_FireWall.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

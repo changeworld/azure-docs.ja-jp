@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Mobile Services 向け .NET クライアント ライブラリの操作" 
-	description="Azure Mobile Services 向け .NET クライアントを使用する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Mobile Services 向け .NET クライアント ライブラリの操作"
+	description="Azure Mobile Services 向け .NET クライアントを使用する方法について説明します。"
+	services="mobile-services"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/01/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="glenga"/>
 
 # Azure モバイル サービス向け .NET クライアントを使用する方法
@@ -296,7 +296,7 @@ Mobile Services クライアントでは、Azure Notification Hubs によるプ�
 		    var channel =
 		        await PushNotificationChannelManager
 		            .CreatePushNotificationChannelForApplicationAsync();
-		
+
 		    // Register for notifications using the new channel and a tag collection.
 			var tags = new List<string>{ "mytag1", "mytag2"};
 		    await MobileService.GetPush().RegisterNativeAsync(channel.Uri, tags);
@@ -699,6 +699,5 @@ Mobile Services クライアント ライブラリは、Json.NET を使用して
 [Azure モバイル サービス クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [クライアントからのカスタム API 呼び出し]: mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api.md
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

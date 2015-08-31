@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/02/2015"
+   ms.date="08/19/2015"
    ms.author="sameerch"/>
 
 
@@ -116,6 +116,13 @@ Salesforce にアカウントを作成し、このアカウントの請求先住
 
 19. Salesforce アカウントに "Contoso" という名前の新しいアカウントが作成されることを確認します。
 
+## コネクタでできること
+コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
+
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
+
 <!--Image references-->
 [1]: ./media/app-service-logic-connector-salesforce/1_New_Logic_App.png
 [2]: ./media/app-service-logic-connector-salesforce/2_Logic_App_Settings.png
@@ -133,4 +140,4 @@ Salesforce にアカウントを作成し、このアカウントの請求先住
 [14]: ./media/app-service-logic-connector-salesforce/14_Update_Account_Address.png
 [15]: ./media/app-service-logic-connector-salesforce/15_Create_new_salesforce_connector.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

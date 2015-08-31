@@ -1,14 +1,12 @@
 
-## <a id="add-push"></a>アプリケーションへのプッシュ通知の追加
-
-* QSAppDelegate.m で、iOS SDK および QSTodoService.h をインポートします。
+* **QSAppDelegate.m** で、iOS SDK および **QSTodoService.h** をインポートします。
 
 ```
         #import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
         #import "QSTodoService.h"
 ```
 
-* QSAppDelegate.m の `didFinishLaunchingWithOptions` で、`return YES;` の直前に、次の行を挿入します。
+* **QSAppDelegate.m** の `didFinishLaunchingWithOptions` で、`return YES;` の直前に次の行を挿入します。
 
 ```
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -16,7 +14,7 @@
         [[UIApplication sharedApplication] registerForRemoteNotifications];
 ```
 
-* QSAppDelegate.m で、次のハンドラー メソッドを追加します。これで、アプリケーションがプッシュ通知をサポートするように更新されました。
+* **QSAppDelegate.m** で、次のハンドラー メソッドを追加します。これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
 ```
         // Registration with APNs is successful
@@ -57,4 +55,4 @@
         }
 ```
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

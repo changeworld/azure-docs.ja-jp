@@ -1,24 +1,24 @@
 <properties
-	pageTitle="NodeJS での Azure Search の使用"
+	pageTitle="NodeJS での Azure Search の使用 | Microsoft Azure"
 	description="プログラミング言語として NodeJS を使用してカスタム Azure Search アプリケーションを作成する手順を示します。"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
 	manager="mblythe"
-	editor=""/>
+	editor="v-lincan"/>
 
 <tags
 	ms.service="search"
 	ms.devlang="na"
 	ms.workload="search"
-	ms.topic="hero-article" 
+	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
-	ms.date="07/08/2015"
+	ms.date="08/18/2015"
 	ms.author="heidist"/>
 
-#NodeJS での Azure Search の使用#
+# NodeJS での Azure Search の使用
 
-検索エクスペリエンスとして Azure Search を使用するカスタム NodeJS 検索アプリケーションを作成する方法を説明します。このチュートリアルでは、[Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を利用して、この演習で使用するオブジェクトおよび操作を作成します。
+検索エクスペリエンスとして Azure Search を使用するカスタム NodeJS 検索アプリケーションを作成する方法を説明します。このチュートリアルでは、[Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を使用して、この演習で使用するオブジェクトおよび操作を作成します。
 
 [NodeJS](https://nodejs.org) と NPM、[Sublime Text 3](http://www.sublimetext.com/3)、および Windows 8.1 の Windows PowerShell を使用して、このコードを開発しテストしました。
 
@@ -26,7 +26,7 @@
 
 > [AZURE.TIP]このチュートリアルのソース コードは、[AzureSearchNodeJSIndexerDemo](http://go.microsoft.com/fwlink/p/?LinkId=530198) からダウンロードしてください。
 
-##データについて##
+## データについて
 
 このサンプル アプリケーションでは、[United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm) からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
 
@@ -34,11 +34,11 @@
 
 > [AZURE.NOTE]このデータセットにフィルターを提供し、無料価格レベルのドキュメントを 10,000 件未満に制限しました。標準レベルを使用する場合は、この制限は適用されません。各価格レベルの容量の詳細については、「[制限および制約](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
 
-##サービスの作成##
+## サービスの作成
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. ジャンプバーで、[**新規**] | [**データ + ストレージ**] | [**Search**] をクリックします。
+2. ジャンプバーで、**[新規]** > **[データ + ストレージ]** > **[検索]** をクリックします。
 
      ![][1]
 
@@ -64,11 +64,11 @@
 ジャンプバーで、通知を確認します。サービスが使用できるようになると、通知が表示されます。
 
 <a id="sub-2"></a>
-##Azure Search サービスのサービス名と API キーの取得
+## Azure Search サービスのサービス名と API キーの取得
 
-サービスを作成した後は、ポータルに戻って URL または `api-key` を取得できます。Search サービスに接続するには、URL に加えて、呼び出しを認証するための `api-key` が必要になります。
+サービスを作成したら、ポータルに戻って URL または `api-key` を取得します。Search サービスに接続するには、URL に加えて、呼び出しを認証するための `api-key` が必要になります。
 
-1. ジャンプバーで [**ホーム**] をクリック、検索サービスをクリックして、サービスのダッシュボードを開きます。
+1. ジャンプ バーで **[ホーム]** をクリックし、Search サービスをクリックして、サービスのダッシュボードを開きます。
 
 2. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
 
@@ -76,7 +76,7 @@
 
 3. サービスの URL、管理キー、クエリ キーをコピーします。後で config.js ファイルに追加するときにこれら 3 つがすべて必要になります。
 
-##サンプル ファイルのダウンロード
+## サンプル ファイルのダウンロード
 
 次のいずれかの方法を使用してサンプルをダウンロードします。
 
@@ -87,7 +87,7 @@
 
 または、パス ステートメントに GIT がある場合は、PowerShell ウィンドウを開いて「`git clone https://github.com/EvanBoyle/AzureSearchNodeJSIndexerDemo.git`」と入力してもかまいません。
 
-##Search サービスの URL と API キーでの config.js の更新
+## Search サービスの URL と API キーでの config.js の更新
 
 先にコピーした URL と API キーを使用し、構成ファイルで URL、管理キー、クエリ キーを指定します。
 
@@ -100,7 +100,7 @@
 ![][5]
 
 
-##サンプルのランタイム環境のホスト
+## サンプルのランタイム環境のホスト
 
 このサンプルには HTTP サーバーが必要です。これは、npm を使用してグローバルにインストールできます。
 
@@ -110,14 +110,14 @@ PowerShell ウィンドウを使用して次のコマンドを実行します。
 2. 「`npm install`」と入力します。
 2. 「`npm install -g http-server`」と入力します。
 
-##インデックスの作成とアプリケーションの実行
+## インデックスの作成とアプリケーションの実行
 
 1. 「`npm run indexDocuments`」と入力します。
 2. 「`npm run build`」と入力します。
 3. 「`npm run start_server`」と入力します。
 4. ブラウザーで `http://localhost:8080/index.html` にアクセスします。
 
-##USGS データの検索##
+## USGS データの検索
 
 USGS データ セットには、ロードアイランド州に関連するレコードが含まれています。検索ボックスが空の状態で **[Search]** をクリックすると、既定で、上位 50 のエントリが取得されます。
 
@@ -132,7 +132,7 @@ USGS データ セットには、ロードアイランド州に関連するレ�
 - goose +cape
 
 
-##次のステップ##
+## 次のステップ
 
 これは、NodeJS と USGS データセットに基づく最初の Azure Search チュートリアルです。カスタム ソリューションで使用できる他の検索機能を紹介できるように、時間をかけてこのチュートリアルを拡張する予定です。
 
@@ -146,6 +146,5 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [3]: ./media/search-get-started-nodejs/create-search-portal-3.PNG
 [5]: ./media/search-get-started-nodejs/AzSearch-NodeJS-configjs.png
 [9]: ./media/search-get-started-nodejs/rogerwilliamsschool.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -1,7 +1,7 @@
 
 <properties
-	pageTitle="Azure Batch プール内の計算ノードの自動スケーリング"
-	description="自動スケーリングは、プールでこれを有効にし、アプリケーションの処理に必要な計算ノード数の計算に使用される数式をそのプールに関連付けることで実行されます。"
+	pageTitle="Azure Batch プール内のコンピューティング ノードの自動スケーリング"
+	description="自動スケーリングは、プールでこれを有効にし、アプリケーションの処理に必要なコンピューティング ノード数の計算に使用される数式をそのプールに関連付けることで実行されます。"
 	services="batch"
 	documentationCenter=""
 	authors="davidmu1"
@@ -17,21 +17,21 @@
 	ms.date="08/05/2015"
 	ms.author="davidmu"/>
 
-# Azure Batch プール内の計算ノードの自動スケーリング
+# Azure Batch プール内のコンピューティング ノードの自動スケーリング
 
-Azure Batch プール内の計算ノードの自動スケーリングは、アプリケーションによって使用される処理能力を動的に調整します。この調整のしやすさによって、時間と費用を節約できます。計算ノードとプールの詳細については、「[Azure Batch の技術概要](batch-technical-overview.md)」をご覧ください。
+Azure Batch プール内のコンピューティング ノードの自動スケーリングは、アプリケーションによって使用される処理能力を動的に調整します。この調整のしやすさによって、時間と費用を節約できます。コンピューティング ノードとプールの詳細については、[Azure Batch の技術概要](batch-technical-overview.md)をご覧ください。
 
-自動スケーリングがプールで有効になっていて、プールに数式が関連付けられている場合に自動スケーリングが行われます。数式は、アプリケーションの処理に必要な計算ノードの数を決定するために使用されます。自動スケーリングは、プールの作成時に設定したり、既存のプールに後で設定することもできます。自動スケーリングが有効になっていたプールで、数式を更新することもできます。
+自動スケーリングがプールで有効になっていて、プールに数式が関連付けられている場合に自動スケーリングが行われます。数式は、アプリケーションの処理に必要なコンピューティング ノードの数を決定するために使用されます。自動スケーリングは、プールの作成時に設定したり、既存のプールに後で設定することもできます。自動スケーリングが有効になっていたプールで、数式を更新することもできます。
 
-自動スケーリングを有効にすると、使用可能な計算ノードの数が数式に基づいて 15 分ごとに調整されます。数式は、収集されたサンプルを定期的に処理しますが、サンプルが収集されてから数式で使用されるまでの間に、遅延が発生します。以下で説明する GetSample メソッドを使用する場合は、このことを考慮する必要があります。
+自動スケーリングを有効にすると、使用可能なコンピューティング ノードの数が数式に基づいて 15 分ごとに調整されます。数式は、収集されたサンプルを定期的に処理しますが、サンプルが収集されてから数式で使用されるまでの間に、遅延が発生します。以下で説明する GetSample メソッドを使用する場合は、このことを考慮する必要があります。
 
 プールに割り当てる前には必ず数式を評価し、自動スケーリングが実行している状態を監視することが重要です。
 
-> [AZURE.NOTE]各 Azure Batch アカウントは、処理のために使用できる最大計算ノード数に制限されています。システムはその制限までノードを作成し、数式で指定された目標数に到達しない場合があります。
+> [AZURE.NOTE]各 Azure Batch アカウントは、処理のために使用できる最大コンピューティング ノード数に制限されています。システムはその制限までノードを作成し、数式で指定された目標数に到達しない場合があります。
 
 ## 数式を定義する
 
-定義した数式は、次の処理間隔にプール内で使用可能な計算ノード数を決定するために使用されます。数式はサイズが 8 KB 以下の文字列で、最大 100 のステートメントをセミコロンで区切って含めることができます。
+定義した数式は、次の処理間隔にプール内で使用可能なコンピューティング ノード数を決定するために使用されます。数式はサイズが 8 KB 以下の文字列で、最大 100 のステートメントをセミコロンで区切って含めることができます。
 
 数式内のステートメントの式は自由形式です。システム定義の変数、ユーザー定義の変数、定数値、これらの変数や定数でサポートされる操作を含めることができます。
 
@@ -44,7 +44,7 @@ Azure Batch プール内の計算ノードの自動スケーリングは、ア�
 
 ### 変数
 
-システム定義の変数とユーザー定義の変数を数式で使用できます。これらのシステム定義の変数の値を設定することで、プール内の計算ノードを管理できます。
+システム定義の変数とユーザー定義の変数を数式で使用できます。これらのシステム定義の変数の値を設定することで、プール内のコンピューティング ノードを管理できます。
 
 <table>
   <tr>
@@ -53,11 +53,11 @@ Azure Batch プール内の計算ノードの自動スケーリングは、ア�
   </tr>
   <tr>
     <td>$TargetDedicated</td>
-    <td>プールの専用計算ノードの目標数。タスクの実際の使用状況に基づいて値を変更できます。</td>
+    <td>プールの専用コンピューティング ノードの目標数。タスクの実際の使用状況に基づいて値を変更できます。</td>
   </tr>
   <tr>
     <td>$NodeDeallocationOption</td>
-    <td>計算ノードがプールから削除されるときに発生するアクション。次のいずれかの値になります。
+    <td>コンピューティング ノードがプールから削除されるときに発生するアクション。次のいずれかの値になります。
       <br/>
       <ul>
         <li><p><b>requeue</b> – すぐにタスクを終了し、再スケジュールされるようにジョブ キューに配置します。</p></li>
@@ -68,7 +68,7 @@ Azure Batch プール内の計算ノードの自動スケーリングは、ア�
    </tr>
 </table>
 
-これらのシステム定義の変数の値のみを読み取り、サンプルの計算ノードのメトリックに基づいて調整を行うことができます。
+これらのシステム定義の変数の値のみを読み取り、サンプルのコンピューティング ノードのメトリックに基づいて調整を行うことができます。
 
 <table>
   <tr>
@@ -116,7 +116,7 @@ Azure Batch プール内の計算ノードの自動スケーリングは、ア�
   </tr>
   <tr>
     <td>$SampleNodeCount</td>
-    <td>計算ノードの数</td>
+    <td>コンピューティング ノードの数</td>
   </tr>
   <tr>
     <td>$ActiveTasks</td>
@@ -136,7 +136,7 @@ Azure Batch プール内の計算ノードの自動スケーリングは、ア�
   </tr>
   <tr>
     <td>$CurrentDedicated</td>
-    <td>専用計算ノードの現在の数</td>
+    <td>専用コンピューティング ノードの現在の数</td>
   </tr>
 </table>
 
@@ -147,7 +147,14 @@ Azure Batch プール内の計算ノードの自動スケーリングは、ア�
 - double
 - doubleVec
 - string
-- timestamp
+- timestamp。timestamp は、次のメンバーを含む複合構造になっています。
+	- year
+	- month (1 ～ 12)
+	- day (1 ～ 31)
+	- weekday (数字で表記します。例: 1 は月曜日を示します)
+	- hour (24 時間の数字で表記します。例: 13 は午後 1 時を示します)
+	- minute (00 ～ 59)
+	- second (00 ～ 59)
 - timeinterval
 	- TimeInterval\_Zero
 	- TimeInterval\_100ns
@@ -385,7 +392,7 @@ doubleVecList 値は、評価の前に 1 つの doubleVec に変換されます�
   </tr>
   <tr>
     <td>リソース</td>
-    <td><p>CPU 使用率、帯域幅の使用率、メモリ使用量、計算ノードの数に基づきます。上記で説明した次のシステム変数は、プール内の計算ノードを管理するために数式で使用されます。</p>
+    <td><p>CPU 使用率、帯域幅の使用率、メモリ使用量、コンピューティング ノードの数に基づきます。上記で説明した次のシステム変数は、プール内のコンピューティング  ノードを管理するために数式で使用されます。</p>
     <p><ul>
       <li>$TargetDedicated</li>
       <li>$NodeDeallocationOption</li>
@@ -402,11 +409,11 @@ doubleVecList 値は、評価の前に 1 つの doubleVec に変換されます�
       <li>$DiskWriteOps</li>
       <li>$NetworkInBytes</li>
       <li>$NetworkOutBytes</li></ul></p>
-    <p>この例は、過去 10 分間の平均 CPU 使用率の最小値が 70% を超える場合、プール内の計算ノード数を現在のノードの目標数の 110% に設定するために使用される数式を示しています。</p>
+    <p>この例は、過去 10 分間の平均 CPU 使用率の最小値が 70% を超える場合、プール内のコンピューティング ノード数を現在のノードの目標数の 110% に設定するために使用される数式を示しています。</p>
     <p><b>totalTVMs = (min($CPUPercent.GetSample(TimeInterval\_Minute*10)) > 0.7) ? ($CurrentDedicated * 1.1) : $CurrentDedicated;</b></p>
-    <p>この例は、過去 60 分間の平均 CPU 使用率が 20% 未満の場合、プール内の計算ノード数を現在のノードの目標数の 90% に設定するために使用される数式を示しています。</p>
+    <p>この例は、過去 60 分間の平均 CPU 使用率が 20% 未満の場合、プール内のコンピューティング ノード数を現在のノードの目標数の 90% に設定するために使用される数式を示しています。</p>
     <p><b>totalTVMs = (avg($CPUPercent.GetSample(TimeInterval\_Minute*60)) &lt; 0.2) ? ($CurrentDedicated * 0.9) : totalTVMs;</b></p>
-    <p>この例は、専用計算ノードの目標数を最大 400 に設定します。</p>
+    <p>この例は、専用コンピューティング ノードの目標数を最大 400 に設定します。</p>
     <p><b>$TargetDedicated = min(400, totalTVMs);</b></p></td>
   </tr>
   <tr>
@@ -419,7 +426,7 @@ doubleVecList 値は、評価の前に 1 つの doubleVec に変換されます�
       <li>$SucceededTasks</li>
       <li>$FailedTasks</li>
       <li>$CurrentDedicated</li></ul></p>
-    <p>この例は、サンプルの 70% が過去 15 分間に記録されているかどうかを検出する数式を示しています。記録されていない場合は、前回のサンプルを使用します。アクティブなタスクの数と一致するように計算ノードの数を増やそうとします (最大 3 つ)。プールの MaxTasksPerVM プロパティが 4 に設定されているため、ノード数をアクティブなタスクの数の 4 分の 1 に設定します。また、Deallocation オプションを "taskcompletion" に設定し、タスクが完了するまでコンピューターを保持します。</p>
+    <p>この例は、サンプルの 70% が過去 15 分間に記録されているかどうかを検出する数式を示しています。記録されていない場合は、前回のサンプルを使用します。アクティブなタスクの数と一致するようにコンピューティング ノードの数を増やそうとします (最大 3 つ)。プールの MaxTasksPerVM プロパティが 4 に設定されているため、ノード数をアクティブなタスクの数の 4 分の 1 に設定します。また、Deallocation オプションを "taskcompletion" に設定し、タスクが完了するまでコンピューターを保持します。</p>
     <p><b>$Samples = $ActiveTasks.GetSamplePercent(TimeInterval\_Minute * 15); $Tasks = $Samples &lt; 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval\_Minute * 15))); $Cores = $TargetDedicated * 4; $ExtraVMs = ($Tasks - $Cores) / 4; $TargetVMs = ($TargetDedicated+$ExtraVMs);$TargetDedicated = max(0,min($TargetVMs,3)); $NodeDeallocationOption = taskcompletion;</b></p></td>
   </tr>
 </table>
@@ -443,10 +450,10 @@ doubleVecList 値は、評価の前に 1 つの doubleVec に変換されます�
 
 ## プールを作成した後に自動スケーリングを有効にする
 
-targetDedicated パラメーターを使用して指定した数の計算ノードで既にプールを設定している場合は、自動でスケーリングするように、後で既存のプールを更新できます。次のいずれかの方法で行います。
+targetDedicated パラメーターを使用して指定した数のコンピューティング ノードで既にプールを設定している場合は、自動でスケーリングするように、後で既存のプールを更新できます。次のいずれかの方法で行います。
 
 - [IPoolManager.EnableAutoScale メソッド](https://msdn.microsoft.com/library/azure/dn931709.aspx) – この .NET メソッドでは、既存のプール名と自動スケーリングの数式が必要です。
-- [自動スケールの有効化または無効化](https://msdn.microsoft.com/library/azure/dn820173.aspx) – この REST API では、URI に既存のプール名と、要求本文に自動スケーリングの数式が必要です。
+- [自動スケールの有効化または無効化](https://msdn.microsoft.com/library/azure/dn820173.aspx) – この REST API では、URI に既存のプール名が、要求本文に自動スケーリングの数式がそれぞれ必要です。
 
 > [AZURE.NOTE]プールの作成時に targetDedicated パラメーターに指定された値は、自動スケーリングの数式の評価時に無視されます。
 
@@ -457,19 +464,49 @@ targetDedicated パラメーターを使用して指定した数の計算ノー�
 - [ICloudPool.AutoScaleRun プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.icloudpool.autoscalerun.aspx) – .NET ライブラリを使用するときに、プールのこのプロパティが [AutoScaleRun クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.aspx)のインスタンスを提供します。このクラスには、[AutoScaleRun.Error プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.error.aspx)、[AutoScaleRun.Results プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.results.aspx)、[AutoScaleRun.Timestamp プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscalerun.timestamp.aspx)が用意されています。
 - [プールに関する情報を取得する](https://msdn.microsoft.com/library/dn820165.aspx) – この REST API は、最新の自動スケーリングの実行を含むプールに関する情報を返します。
 
+## 例
+
+### 例 1:
+
+曜日と時間帯に合わせてプールのサイズを調整するとします。
+
+    curTime=time();
+    workhours=curTime.hour>=8 && curTime.hour <18;
+    isweekday=curTime.weekday>=1 && curTime.weekday<=5;
+    isworkingweekdayhour = workhours && isweekday;
+    $TargetDedicated=workhours?20:10;
+    
+この数式によって、現在の時刻が検出されます。現在の曜日と時間帯が平日 (1 ～ 5) の勤務時間 (午前 8 時～午後 6 時) である場合、プール サイズのターゲットは 20 に設定されます。それ以外の場合、プール サイズのターゲットは 10 に設定されます。
+
+### 例 2:
+
+プールのサイズを調整する別の例は、キュー内のタスクに基づいたものです。
+
+    // Get pending tasks for the past 15 minutes
+    $Samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15); 
+    // If we have less than 70% data points, we use the last sample point, otherwise we use the maximum of last sample point and the history average
+    $Tasks = $Samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1), avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
+    // If number of pending task is not 0, set targetVM to pending tasks, otherwise half of current dedicated
+    $TargetVMs = $Tasks > 0? $Tasks:max(0, $TargetDedicated/2);
+    // The pool size is capped at 20, if target vm value is more than that, set it to 20. This value should be adjusted according to your case.
+    $TargetDedicated = max(0,min($TargetVMs,20));
+    // optionally, set vm Deallocation mode - shrink VM after task is done.
+    $TVMDeallocationOption = taskcompletion;
+    
+
 ## 次のステップ
 
-1.	アプリケーションの効率を完全に評価できるように、計算ノードにアクセスする必要がある場合があります。リモート アクセスを利用するには、アクセスする計算ノードにユーザー アカウントを追加し、そのノードから RDP ファイルを取得する必要があります。次のいずれかの方法でユーザー アカウントを追加します。
+1.	アプリケーションの効率を完全に評価できるように、コンピューティング ノードにアクセスする必要がある場合があります。リモート アクセスを利用するには、アクセスするコンピューティング ノードにユーザー アカウントを追加し、そのノードから RDP ファイルを取得する必要があります。次のいずれかの方法でユーザー アカウントを追加します。
 
-	- [New-AzureBatchVMUser](https://msdn.microsoft.com/library/mt149846.aspx) – このコマンドレットは、プール名、計算ノード名、アカウント名、パスワードをパラメーターとして受け取ります。
-	- [IVM.CreateUser メソッド](https://msdn.microsoft.com/library/microsoft.azure.batch.ivm.createuser.aspx)– この .NET メソッドは、計算ノードにアカウント名とパスワードを設定できる [IUser インターフェイス](https://msdn.microsoft.com/library/microsoft.azure.batch.iuser.aspx)のインスタンスを作成します。
-	- [ユーザー アカウントをノードに追加する](https://msdn.microsoft.com/library/dn820137.aspx) – プール名と計算ノード名は URI で指定され、アカウント名とパスワードはこの REST API の要求本文のノードに送信されます。
+	- [New-AzureBatchVMUser](https://msdn.microsoft.com/library/mt149846.aspx) – このコマンドレットは、プール名、コンピューティング ノード名、アカウント名、パスワードをパラメーターとして受け取ります。
+	- [IVM.CreateUser メソッド](https://msdn.microsoft.com/library/microsoft.azure.batch.ivm.createuser.aspx) – この .NET メソッドは、コンピューティング ノードにアカウント名とパスワードを設定できる [IUser インターフェイス](https://msdn.microsoft.com/library/microsoft.azure.batch.iuser.aspx)のインスタンスを作成します。
+	- [ユーザー アカウントをノードに追加する](https://msdn.microsoft.com/library/dn820137.aspx) – プール名と計算ノード名は URI で指定され、アカウント名とパスワードはこの REST API の要求本文の一部としてノードに送信されます。
 
 		RDP ファイルを取得する
 
 	- [IVM.GetRDPFile メソッド](https://msdn.microsoft.com/library/microsoft.azure.batch.ivm.getrdpfile.aspx) – この .NET メソッドでは、作成する RDP ファイル名が必要です。
-	- [ノードからリモート デスクトップ プロトコル ファイルを取得する](https://msdn.microsoft.com/library/dn820120.aspx) – この REST API では、プール名と計算ノード名が必要です。応答に RDP ファイルの内容が含まれています。
-	- [Get AzureBatchRDPFile](https://msdn.microsoft.com/library/mt149851.aspx) – このコマンドレットは、指定した計算ノードから RDP ファイルを取得し、指定したファイルの場所やストリームに保存します。
+	- [ノードからリモート デスクトップ プロトコル ファイルを取得する](https://msdn.microsoft.com/library/dn820120.aspx) – この REST API では、プール名とコンピューティング ノード名が必要です。応答に RDP ファイルの内容が含まれています。
+	- [Get AzureBatchRDPFile](https://msdn.microsoft.com/library/mt149851.aspx) – このコマンドレットは、指定したコンピューティング ノードから RDP ファイルを取得し、指定したファイルの場所やストリームに保存します。
 2.	一部のアプリケーションは、処理するのに困難な大量のデータを生成します。これを解決する 1 つの方法は、[効率的なリスト クエリ](batch-efficient-list-queries.md)を使用することです。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

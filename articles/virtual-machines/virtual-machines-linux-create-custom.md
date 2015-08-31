@@ -19,7 +19,7 @@
 
 # Azure 上で Linux を実行するカスタム仮想マシンを作成する方法
 
-このトピックでは、Azure サービス管理モードで Mac、Linux、Windows 用の Azure CLI を利用し、*カスタム*仮想マシンを作成する方法について説明します。Azure の**イメージ**にある Linux イメージを使用します。Azure CLI では、次のような構成を選択できます。
+このトピックでは、Azure CLI でクラシック デプロイ モデルを使用して*カスタム*仮想マシンを作成する方法について説明します。Azure の**イメージ**にある Linux イメージを使用します。Azure CLI では、次のような構成を選択できます。
 
 - 仮想ネットワークと VM との接続
 - 既存のクラウド サービスへの VM の追加
@@ -34,8 +34,8 @@
 - [Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)
 
 
-## Azure サービス管理で Linux 仮想マシンを作成する方法
+## クラシック デプロイ モデルを使用して Linux 仮想マシンを作成する方法
 
-[AZURE.INCLUDE [virtual-machines-create-LinuxVM](../../includes/virtual-machines-create-LinuxVM.md)]
+[AZURE.INCLUDE [virtual-machines-create-LinuxVM](../../includes/virtual-machines-create-linuxvm.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -5,7 +5,8 @@
  documentationCenter=""
  authors="Blackmist"
  manager="paulettm"
- editor="cgronlun"/>
+ editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
  ms.service="hdinsight"
@@ -197,4 +198,4 @@ START イベントと同じ方法で END イベントを検索できます。た
 Storm の例の詳細については、「[HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

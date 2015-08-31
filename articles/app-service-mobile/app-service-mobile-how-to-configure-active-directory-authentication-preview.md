@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="05/26/2015" 
+	ms.date="07/27/2015" 
 	ms.author="mahender"/>
 
 # Azure Active Directory ログインを使用するようにアプリケーションを構成する方法
@@ -24,9 +24,9 @@
 
 ## <a name="register"> </a>Azure Active Directory にアプリケーションを登録する
 
-1. [プレビュー段階の Azure の管理ポータル]にログオンし、App Service ゲートウェイに移動します。
+1. [プレビュー段階の Azure の管理ポータル]にログオンし、モバイル アプリに移動します。
 
-2. **[設定]** で、**[ID]**、**[Azure Active Directory]** の順に選択します。**[APP URL]** をコピーします。HTTPS スキームを使用していることを確認します。
+2. **[設定]** の下の **[ユーザー認証]** をクリックし、**[Azure Active Directory]** をクリックします。表示された **[アプリ URL]** と **[応答 URL]** をコピーします。これらは、後で使用します。**[アプリ URL]** と **[応答 URL]** で HTTPS スキームが使用されていることを確認します。
 
     ![][1]
 
@@ -40,9 +40,9 @@
 
 6. アプリケーションの追加ウィザードで、アプリケーションの**名前**を入力し、種類として **[Web アプリケーションや Web API]** をクリックします。その後、クリックして続行します。
 
-7. **[サインオン URL]** ボックスで、ゲートウェイの Active Directory ID プロバイダーの設定からコピーしたアプリ ID を貼り付けます。**[アプリケーション ID/URI]** ボックスに同じ一意のリソース識別子を入力します。その後、クリックして続行します。
+7. **[サインオン URL]** ボックスに、モバイル アプリの Active Directory ID プロバイダーの設定からコピーしたアプリ ID を貼り付けます。**[アプリケーション ID/URI]** ボックスに同じリソース識別子を入力します。その後、クリックして続行します。
 
-8. アプリケーションが追加されたら **[構成]** タブをクリックします。**[シングル サインオン]** の **[応答 URL]** を編集して、ゲートウェイの URL の末尾にパス _/signin-aad_ を追加します。たとえば、「`https://contosogateway.azurewebsites.net/signin-aad`」のように入力します。HTTPS スキームを使用していることを確認します。
+8. アプリケーションが追加されたら **[構成]** タブをクリックします。**[シングル サインオン]** の下の **[応答 URL]** を編集して、先ほどコピーしたモバイル アプリの応答 URL を指定します。モバイル アプリ ゲートウェイの後に _/signin-aad_ を追加したフォーマットにする必要があります。たとえば、「`https://contosogateway.azurewebsites.net/signin-aad`」のように入力します。HTTPS スキームを使用していることを確認します。
 
     ![][3]
 
@@ -50,9 +50,9 @@
 
 ## <a name="secrets"> </a>Azure Active Directory の情報をモバイル アプリに追加する
 
-10. プレビュー管理ポータルに戻り、ゲートウェイの **[ユーザー認証]** ブレードに移動します。Azure Active Directory ID プロバイダーの **[クライアント ID]** 設定に貼り付けます。
+1. プレビュー管理ポータルと、モバイル アプリの　**[Azure Active Directory]** 設定ブレードに戻ります。Azure Active Directory ID プロバイダーの **[クライアント ID]** 設定に貼り付けます。
   
-11. **[許可されたテナント]** リストで、アプリケーションを登録したディレクトリのドメインを追加する必要があります (contoso.onmicrosoft.com など)。既定のドメイン名は、Azure Active Directory テナントで **[ドメイン]** タブをクリックすると見つかります。ドメイン名を **[許可されたテナント]** リストに追加して **[保存]** をクリックします。
+2. **[許可されたテナント]** リストで、アプリケーションを登録したディレクトリのドメインを追加する必要があります (contoso.onmicrosoft.com など)。既定のドメイン名は、Azure Active Directory テナントで **[ドメイン]** タブをクリックすると見つかります。ドメイン名を **[許可されたテナント]** リストに追加して **[保存]** をクリックします。
 
 これで、アプリケーションで認証に Azure Active Directory を使用する準備ができました。
 
@@ -64,7 +64,7 @@ Azure Active Directory シングル サインオンでモバイル アプリの�
 
 <!-- Images. -->
 
-[1]: ./media/app-service-mobile-how-to-configure-active-directory-authentication-preview/app-service-aad-settings.png
+[1]: ./media/app-service-mobile-how-to-configure-active-directory-authentication-preview/mobile-app-aad-settings.png
 [2]: ./media/app-service-mobile-how-to-configure-active-directory-authentication-preview/app-service-navigate-aad.png
 [3]: ./media/app-service-mobile-how-to-configure-active-directory-authentication-preview/app-service-aad-app-configure.png
 
@@ -75,4 +75,4 @@ Azure Active Directory シングル サインオンでモバイル アプリの�
 [ios-adal]: ../app-service-mobile-dotnet-backend-xamarin-ios-aad-sso-preview.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

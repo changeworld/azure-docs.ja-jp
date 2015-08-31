@@ -18,7 +18,7 @@
 
 # Mobile Services アプリへのプッシュ通知の追加
 
-[AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push-EC.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push-ec.md)]
 
 ##概要
 
@@ -28,7 +28,7 @@
 
 ##<a id="register"></a>Google Cloud Messaging を有効にする
 
-[AZURE.INCLUDE [GCM を有効にする](../../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[AZURE.INCLUDE [GCM を有効にする](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
 
 ##<a id="configure"></a>プッシュ要求を送信するように Mobile Services を構成する
@@ -99,7 +99,7 @@
 
 ###Android SDK バージョンの検証
 
-[AZURE.INCLUDE [mobile-services-verify-android-sdk-version](../../includes/mobile-services-verify-android-sdk-version-EC.md)]
+[AZURE.INCLUDE [mobile-services-verify-android-sdk-version](../../includes/mobile-services-verify-android-sdk-version-ec.md)]
 
 
 次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
@@ -108,11 +108,11 @@
 
 ###プロジェクトへの Google Play Services の追加
 
-[AZURE.INCLUDE [Play サービスの追加](../../includes/mobile-services-add-Google-play-services-EC.md)]
+[AZURE.INCLUDE [Play サービスの追加](../../includes/mobile-services-add-google-play-services-ec.md)]
 
 ###コードの追加
 
-[AZURE.INCLUDE [mobile-services-android-getting-started-with-push](../../includes/mobile-services-android-getting-started-with-push-EC.md)]
+[AZURE.INCLUDE [mobile-services-android-getting-started-with-push](../../includes/mobile-services-android-getting-started-with-push-ec.md)]
 
 ##<a name="test-app"></a>発行されたモバイル サービスに対してアプリケーションをテストする
 
@@ -237,4 +237,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Azure の管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

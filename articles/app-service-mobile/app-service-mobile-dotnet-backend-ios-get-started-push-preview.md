@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure App Service を使用して iOS アプリにプッシュ通知を追加する"
-	description="Azure App Service を使用して iOS アプリにプッシュ通知を送信する方法について説明します。"
+	pageTitle="Azure Mobile Apps を使用した、iOS アプリへのプッシュ通知の追加"
+	description="Azure Mobile Apps を使用して iOS アプリにプッシュ通知を送信する方法について説明します。"
 	services="app-service\mobile"
 	documentationCenter="ios"
 	manager="dwrede"
@@ -13,21 +13,17 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="06/01/2015"
+	ms.date="07/29/2015"
 	ms.author="krisragh"/>
 
 
-# iOS アプリにプッシュ通知を追加する
+# iOS アプリへのプッシュ通知の追加
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-push-preview](../../includes/app-service-mobile-selector-get-started-push-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-push-preview](../../includes/app-service-mobile-selector-get-started-push-preview.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
-このトピックでは、[クイックスタート プロジェクト](app-service-mobile-dotnet-backend-ios-get-started-preview.md)にプッシュ通知を追加して、レコードが挿入されるたびにモバイル サービスがプッシュ通知を送信できるようにします。先に「[Mobile Services の使用]」を完了しておく必要があります。
+このチュートリアルでは、[iOS クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている [iOS のクイック スタート] チュートリアルを完了しておく必要があります。[iOS シミュレーターではプッシュ通知がサポートされていない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、このチュートリアルでは物理的な iOS デバイスと [Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)が必要です。
 
-> [AZURE.NOTE] [IOS シミュレーターはプッシュ通知をサポートしない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、物理的な iOS デバイスを使用する必要があります。さらに、有料の [Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)にサインアップする必要があります。
-
-##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-push-preview](../../includes/app-service-mobile-dotnet-backend-enable-push-preview.md)]
+## <a id="register"></a>アプリのプッシュ通知を登録する
 
 [AZURE.INCLUDE [Apple プッシュ通知を有効にする](../../includes/enable-apple-push-notifications.md)]
 
@@ -35,36 +31,23 @@
 
 [AZURE.INCLUDE [app-service-mobile-apns-configure-push-preview](../../includes/app-service-mobile-apns-configure-push-preview.md)]
 
-##<a id="update-server"></a>プッシュ通知を送信するようにバックエンド コードを更新する
+##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
 
-* バックエンド コード用の Visual Studio プロジェクトをダウンロードします。ポータルで、**[参照]**、アプリ名、**[クライアントの追加]**、**[iOS]** (Objective-C または Swift)、**[サーバー プロジェクトをダウンロードして実行する]** の順にクリックします。**Controllers**、TodoItemController.cs の順に開き、次の using ステートメントを追加します。
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-push-preview](../../includes/app-service-mobile-dotnet-backend-enable-push-preview.md)]
 
-```
-			using Microsoft.Azure.Mobile.Server.Config;
-			using Microsoft.Azure.NotificationHubs;
-```
+##<a id="update-server"></a>サーバー プロジェクトを更新してプッシュ通知を送信する
 
-* 以下を `PostTodoItem` の `InsertAsync` 呼び出しの後ろに追加します。Todo 項目が挿入されると、このコードはプッシュ通知を項目のテキストと共に送信します。
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
-```
-        // get Notification Hubs credentials associated with this Mobile App
-        string notificationHubName = this.Services.Settings.NotificationHubName;
-        string notificationHubConnection = this.Services.Settings.Connections[ServiceSettingsKeys.NotificationHubConnectionString].ConnectionString;
-
-        // connect to notification hub
-        NotificationHubClient Hub = NotificationHubClient.CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
-
-        // iOS payload
-        var appleNotificationPayload = "{"aps":{"alert":"" + item.Text + ""}}";
-
-        await Hub.SendAppleNativeNotificationAsync(appleNotificationPayload);
-```
-
-## <a name="publish-the-service"></a>モバイル サービスを Azure に発行する
+## <a name="publish-the-service"></a>サーバー プロジェクトを Azure にデプロイする
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service-preview](../../includes/app-service-mobile-dotnet-backend-publish-service-preview.md)]
 
+## <a id="add-push"></a>プッシュ通知をアプリに追加する
+
 [AZURE.INCLUDE [プッシュ通知をアプリに追加する](../../includes/app-service-add-push-notifications-to-app.md)]
+
+## <a id="test"></a>アプリでプッシュ通知をテストする
 
 [AZURE.INCLUDE [アプリでプッシュ通知をテストする](../../includes/test-push-notifications-in-app.md)]
 
@@ -116,15 +99,17 @@
 [117]: ./media/mobile-services-ios-get-started-push/mobile-services-ios-push-17.png
 
 <!-- URLs. -->
+[iOS のクイック スタート]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
+[iOS クイック スタート]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 [Azure Mobile App iOS SDK]: https://go.microsoft.com/fwLink/?LinkID=529823
 [Azure Notification Hubs Nuget]: https://www.nuget.org/packages/WindowsAzure.ServiceBus/
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 [Get started with Mobile Services]: ../mobile-services-dotnet-backend-ios-get-started.md
-[Mobile Services の使用]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
+[Get Started with Mobile Apps]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
 [Azure Management Portal]: https://manage.windowsazure.com/
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

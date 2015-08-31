@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Live Connect によるアプリケーションの認証 (Windows Phone) | Microsoft Azure" 
-	description="Windows Phone アプリケーションから、Azure Mobile Services で Live Connect シングル サインオンを使用する方法を示します。" 
-	services="mobile-services" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Live Connect によるアプリケーションの認証 (Windows Phone) | Microsoft Azure"
+	description="Windows Phone アプリケーションから、Azure Mobile Services で Live Connect シングル サインオンを使用する方法を示します。"
+	services="mobile-services"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/09/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="glenga"/>
 
 # Microsoft アカウントを使用して、クライアントによって管理される認証で Windows Phone アプリを認証します。
@@ -30,11 +30,11 @@
 + Microsoft Visual Studio 2013 Update 3 以降のバージョン
 + また、最初にチュートリアル「[既存のアプリケーションへの Mobile Services の追加]」を完了しておく必要があります。
 
-##Microsoft アカウントを使用するためのアプリケーションの登録 
+##Microsoft アカウントを使用するためのアプリケーションの登録
 
 ユーザーを認証できるようにするには、Microsoft アカウント デベロッパー センターでアプリケーションを登録する必要があります。この登録をモバイル サービスと接続する必要があります。Microsoft アカウントの登録を作成し、モバイル サービスに接続するには、次のトピックの手順を完了してください。
 
-+ [Microsoft アカウント ログインを使用するためのアプリケーションの登録](mobile-services-how-to-register-microsoft-authentication.md) 
++ [Microsoft アカウント ログインを使用するためのアプリケーションの登録](mobile-services-how-to-register-microsoft-authentication.md)
 
 ##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
@@ -54,10 +54,10 @@
 
 5. mainpage.xaml.cs プロジェクト ファイルを開き、次の using ステートメントを追加します。
 
-        using Microsoft.Live;      
+        using Microsoft.Live;
 
 6. MainPage クラスに、次のコード スニペットを追加します。
-	
+
         private LiveConnectSession session;
         private static string clientId = "<microsoft-account-client-id>";
         private async System.Threading.Tasks.Task AuthenticateAsync()
@@ -107,12 +107,12 @@
             this.ButtonLogin.Visibility = System.Windows.Visibility.Collapsed;
             RefreshTodoItems();
         }
-		
+
 7. アプリケーション プロジェクトで、MainPage.xaml プロジェクト ファイルを開き、次の **Button** 要素を、**TitlePanel** の **TextBlock** 要素の後に追加します。
 
-		<Button Name="ButtonLogin" Click="ButtonLogin_Click" 
+		<Button Name="ButtonLogin" Click="ButtonLogin_Click"
                         Visibility="Visible">Sign in</Button>
-		
+
 9. F5 キーを押してアプリケーションを実行し、Microsoft アカウントを使用してサインインします。
 
    ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
@@ -140,6 +140,5 @@
 [スクリプトを使用したユーザーの認証]: ../mobile-services-windows-phone-authorize-users-in-scripts.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

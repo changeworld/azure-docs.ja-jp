@@ -15,7 +15,7 @@
    ms.date="07/22/2015"
    ms.author="joaoma" />
 
-# Azure リソース マネージャーを使用したロード バランサーの作成方法
+# Azure リソース マネージャーを使用した内部ロード バランサーの構成の開始
 
 
 > [AZURE.SELECTOR]
@@ -245,4 +245,4 @@ PS C:\> $backendnic1
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

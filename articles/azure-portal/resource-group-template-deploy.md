@@ -48,16 +48,16 @@ Azure リソース マネージャーのテンプレートを使用すると、�
 
 ## プレビュー ポータルでデプロイする
 
-ご存知でしょうか。 [プレビュー ポータル](https://portal.azure.com/)を使用して作成するすべてのアプリケーションは、Azure リソース マネージャーのテンプレートに基づいています。 ポータルを使用して仮想マシン、仮想ネットワーク、ストレージ アカウント、App Service、またはデータベースを作成するだけで、追加の操作を行わなくても、Azure リソース マネージャーの恩恵を得られます。**[新規]** アイコンを選択するだけで、Azure リソース マネージャーを使用してアプリケーションのデプロイを進めることができます。
+ご存知でしょうか。 [プレビュー ポータル](https://portal.azure.com/)を使用して作成するすべてのアプリケーションは、Azure リソース マネージャーのテンプレートに基づいています。 ポータルを使用して Virtual Machines、Virtual Network、ストレージ アカウント、App Service、またはデータベースを作成するだけで、追加の操作を行わなくても、Azure リソース マネージャーの恩恵を得られます。**[新規]** アイコンを選択するだけで、Azure リソース マネージャーを使用してアプリケーションのデプロイを進めることができます。
 
 ![新規](./media/resource-group-template-deploy/new.png)
 
-Azure リソース マネージャーによるプレビュー ポータルの使用方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
+Azure リソース マネージャーによるプレビュー ポータルの使用方法の詳細については、[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)を参照してください。
 
 
 ## PowerShell でデプロイする
 
-リソース マネージャーで Azure PowerShell を使用したことがない場合は、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+リソース マネージャーで Azure PowerShell を使用したことがない場合は、[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)を参照してください。
 
 1. Azure アカウントにログインします。資格情報を提供すると、コマンドがアカウントの情報を返します。
 
@@ -67,7 +67,7 @@ Azure リソース マネージャーによるプレビュー ポータルの使
         --                             ----    
         someone@example.com            User       ...   
 
-2. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。
+2. 複数のサブスクリプションがある場合、デプロイに使用するサブスクリプション ID を提供します。
 
         PS C:\> Select-AzureSubscription -SubscriptionID <YourSubscriptionId>
 
@@ -89,7 +89,7 @@ Azure リソース マネージャーによるプレビュー ポータルの使
                     *
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 
-5. リソース グループに新しいデプロイメントを作成するには、**New-AzureResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイメントの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
+5. リソース グループに新しいデプロイを作成するには、**New-AzureResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
    
      次のオプションを使用してパラメーターの値を提供できます。
    
@@ -102,11 +102,11 @@ Azure リソース マネージャーによるプレビュー ポータルの使
             PS C:\> $parameters = @{"<ParameterName>"="<Parameter Value>"}
             PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterObject $parameters
 
-     - パラメーター ファイルの使用テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。
+     - パラメーター ファイルの使用テンプレート ファイルについては、[パラメーター ファイル](./#parameter-file)を参照してください。
 
             PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterFile <PathOrLinkToParameterFile>
 
-     リソース グループをデプロイすると、デプロイメントの概要が表示されます。
+     リソース グループをデプロイすると、デプロイの概要が表示されます。
 
           DeploymentName    : ExampleDeployment
           ResourceGroupName : ExampleResourceGroup
@@ -115,17 +115,24 @@ Azure リソース マネージャーによるプレビュー ポータルの使
           Mode              : Incremental
           ...
 
-6. デプロイメント エラーに関する情報を取得するには
+6. デプロイ エラーに関する情報を取得するには
 
         PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed
 
-7. デプロイメント エラーに関する詳細情報を取得するには
+7. デプロイ エラーに関する詳細情報を取得するには
 
         PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
+        
+### ビデオ
+
+このビデオでは、PowerShell を使用したリソース マネージャーのテンプレートの利用方法を説明しています。
+
+[AZURE.VIDEO deploy-an-application-with-azure-resource-manager-template]
+
 
 ## Mac、Linux、および Windows 用の Azure CLI でデプロイする
 
-リソース マネージャーで Azure CLI を使用したことがない場合は、「[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」に関するページを参照してください。
+リソース マネージャーで Azure CLI を使用したことがない場合は、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)に関するページを参照してください。
 
 1. Azure アカウントにログインします。資格情報を提供すると、コマンドがログインの結果を返します。
 
@@ -134,7 +141,7 @@ Azure リソース マネージャーによるプレビュー ポータルの使
         ...
         info:    login command OK
 
-2. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。
+2. 複数のサブスクリプションがある場合、デプロイに使用するサブスクリプション ID を提供します。
 
         azure account set <YourSubscriptionNameOrId>
 
@@ -160,7 +167,7 @@ Azure リソース マネージャーによるプレビュー ポータルの使
         data:
         info:    group create command OK
 
-5. リソース グループに新しいデプロイメントを作成するには、次のコマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイメントの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
+5. リソース グループに新しいデプロイを作成するには、次のコマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
    
      次のオプションを使用してパラメーターの値を提供できます。
 
@@ -172,11 +179,11 @@ Azure リソース マネージャーによるプレビュー ポータルの使
 
              azure group deployment create --template-uri <LinkToTemplate> {"ParameterName":"ParameterValue"} -g ExampleResourceGroup -n ExampleDeployment
 
-     - パラメーター ファイルを使用します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。
+     - パラメーター ファイルを使用します。テンプレート ファイルについては、[パラメーター ファイル](./#parameter-file)を参照してください。
     
              azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g ExampleResourceGroup -n ExampleDeployment
 
-     リソース グループをデプロイすると、デプロイメントの概要が表示されます。
+     リソース グループをデプロイすると、デプロイの概要が表示されます。
   
            info:    Executing command group deployment create
            + Initializing template configurations and parameters
@@ -185,17 +192,17 @@ Azure リソース マネージャーによるプレビュー ポータルの使
            info:    group deployment create command OK
 
 
-6. 最新のデプロイメントに関する情報を取得するには
+6. 最新のデプロイに関する情報を取得するには
 
          azure group log show -l ExampleResourceGroup
 
-7. デプロイメント エラーに関する詳細情報を取得するには
+7. デプロイ エラーに関する詳細情報を取得するには
       
          azure group log show -l -v ExampleResourceGroup
 
 ## REST API でデプロイする
 1. [一般的なパラメーターおよびヘッダー](https://msdn.microsoft.com/library/azure/8d088ecc-26eb-42e9-8acc-fe929ed33563#bk_common) (認証トークンを含む) を設定します。
-2. 既存のリソース グループがない場合は、新しいリソース グループを作成します。ソリューションに必要なサブスクリプション ID、新しいリソース グループの名前、および場所を指定します。詳細については、「[リソース グループの作成](https://msdn.microsoft.com/library/azure/dn790525.aspx)」を参照してください。
+2. 既存のリソース グループがない場合は、新しいリソース グループを作成します。ソリューションに必要なサブスクリプション ID、新しいリソース グループの名前、および場所を指定します。詳細については、[リソース グループの作成](https://msdn.microsoft.com/library/azure/dn790525.aspx)を参照してください。
 
          PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2015-01-01
            <common headers>
@@ -206,7 +213,7 @@ Azure リソース マネージャーによるプレビュー ポータルの使
              }
            }
    
-3. リソース グループの新しいデプロイを作成します。サブスクリプション ID、デプロイするリソース グループの名前、デプロイの名前、およびテンプレートの場所を指定します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。リソース グループを作成する REST API の詳細については、「[テンプレートのデプロイを作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。
+3. リソース グループの新しいデプロイを作成します。サブスクリプション ID、デプロイするリソース グループの名前、デプロイの名前、およびテンプレートの場所を指定します。テンプレート ファイルについては、[パラメーター ファイル](./#parameter-file)を参照してください。リソース グループを作成する REST API の詳細については、[テンプレートの展開を作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)を参照してください。
     
          PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
             <common headers>
@@ -224,7 +231,7 @@ Azure リソース マネージャーによるプレビュー ポータルの使
               }
             }
    
-4. テンプレートのデプロイの状態を取得します。詳細については、「[テンプレートのデプロイに関する情報を取得](https://msdn.microsoft.com/library/azure/dn790565.aspx)」を参照してください。
+4. テンプレートのデプロイの状態を取得します。詳細については、[テンプレートの展開に関する情報を取得](https://msdn.microsoft.com/library/azure/dn790565.aspx)を参照してください。
 
          GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
            <common headers>
@@ -250,11 +257,11 @@ Azure リソース マネージャーによるプレビュー ポータルの使
     }
 
 ## 次のステップ
-- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[.NET ライブラリおよびテンプレートを使用したリソースのデプロイ](../arm-template-deployment.md)」を参照してください。
-- アプリケーションのデプロイの詳細な例については、「[Azure でのマイクロサービスの予測どおりのプロビジョニングとデプロイ](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
-- Azure リソース マネージャーのテンプレートのセクションについては、「[テンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+- .NET クライアント ライブラリを使用したリソースのデプロイの例については、[.NET ライブラリおよびテンプレートを使用したリソースのデプロイ](../arm-template-deployment.md)を参照してください。
+- アプリケーションのデプロイの詳細な例については、[Azure でのマイクロ サービスの予測どおりのプロビジョニングとデプロイ](../app-service-web/app-service-deploy-complex-application-predictably.md)を参照してください。
+- Azure リソース マネージャーのテンプレートのセクションについては、[テンプレートの作成](../resource-group-authoring-templates.md)を参照してください。
 - Azure リソース マネージャーのテンプレートで使用できる関数の一覧については、[テンプレートの関数](../resource-group-template-functions.md)に関するページを参照してください。
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

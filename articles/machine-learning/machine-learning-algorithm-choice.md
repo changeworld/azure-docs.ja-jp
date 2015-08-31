@@ -3,7 +3,7 @@
 	description="クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning のアルゴリズムを選択する方法"
 	services="machine-learning"
 	documentationCenter=""
-	authors="garyericson"
+	authors="brohrer"
 	manager="paulettm"
 	editor="cgronlun"
     tags=""/>
@@ -222,4 +222,4 @@ Azure Machine Learning には、[Vowpal Wabbit](https://msdn.microsoft.com/libra
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

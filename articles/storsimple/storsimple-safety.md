@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/14/2015"
+   ms.date="08/14/2015"
    ms.author="alkohli" />
 
 # デバイスの安全性
 
 ![警告のアイコン](./media/storsimple-safety/IC740879.png) ![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png) **安全衛生に関する情報を確認してください**
 
-Microsoft Azure StorSimple デバイスに適用されるこの記事に記載されたすべての安全衛生に関する情報を確認してください。後で参照できるように、StorSimple デバイスに同梱されているすべての印刷されたガイドを保管してください。これらの指示に従わず、本製品の設定、使用、管理を適切に行わなければ、重大な傷害または死亡事故や、デバイスが破損するリスクが高まる恐れがあります。[このガイドのダウンロード可能なバージョン](http://www.microsoft.com/ja-jp/download/details.aspx?id=44233)も利用できます。
+Microsoft Azure StorSimple デバイスに適用されるこの記事に記載されたすべての安全衛生に関する情報を確認してください。後で参照できるように、StorSimple デバイスに同梱されているすべての印刷されたガイドを保管してください。これらの指示に従わず、本製品の設定、使用、管理を適切に行わなければ、重大な傷害または死亡事故や、デバイスが破損するリスクが高まる恐れがあります。[このガイドのダウンロード可能なバージョン](http://www.microsoft.com/download/details.aspx?id=44233)も利用できます。
 
 ## 安全性アイコンの表記規則
 
@@ -175,8 +175,8 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 ## 次のステップ
 
-- 8100 デバイスの場合、「[8100 デバイスの開梱、ラックへの積み込み、およびケーブル接続](storsimple-8600-hardware-installation)」に進んでください。
+- 8100 デバイスの場合は、「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」をご覧ください。
 
-- 8600 デバイスの場合、[8600 デバイスの開梱、ラックへの取り付け、およびケーブル接続](storsimple-8600-hardware-installation)に進んでください。
+- 8600 デバイスの場合は、「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

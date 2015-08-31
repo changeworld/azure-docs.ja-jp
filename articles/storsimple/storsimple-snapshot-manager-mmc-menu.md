@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/09/2015"
+   ms.date="08/17/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager での MMC メニュー操作の使用
@@ -127,4 +127,4 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
 
 [StorSimple Snapshot Manager のユーザー インターフェイスの詳細](storsimple-use-snapshot-manager.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

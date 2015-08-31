@@ -1,4 +1,11 @@
-<properties pageTitle="複数のリージョンからのサインイン" description="2 回のサインインが異なるリージョンから実行されたと判断され、サインイン間の時間からユーザーが 2 か所のリージョン間を移動することが不可能であると判断される異なるリージョンからサインインを実行したユーザーが含まれるレポート。"" services="active-directory" documentationCenter="" authors="kenhoff" manager="ilanas" editor=""/>
+<properties
+	pageTitle="複数の地域からのサインイン"
+	description="2 回のサインインが異なるリージョンから実行されたと思われ、サインイン間の時間からユーザーがそれらのリージョン間を移動することは不可能と判断される場合に、そのユーザーを示すレポート。"
+	services="active-directory"
+	documentationCenter=""
+	authors="SSalahAhmed"
+	manager="gchander"
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
@@ -6,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/01/2015"
-	ms.author="kenhoff"/>
+	ms.date="08/17/2015"
+	ms.author="saah;kenhoff"/>
 
 # 複数の地域からのサインイン
 
@@ -17,4 +24,4 @@
 
 ![複数の地域からのサインイン](./media/active-directory-reporting-sign-ins-from-multiple-geographies/signInsFromMultipleGeographies.PNG)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

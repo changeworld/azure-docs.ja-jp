@@ -13,16 +13,12 @@
 	ms.tgt_pltfrm="javascript" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="06/05/2015" 
+	ms.date="08/17/2015" 
 	ms.author="ricksal"/>
 
 
 # JavaScript バックエンド モバイル サービスを操作する
 
-> [AZURE.SELECTOR]
-[.NET backend](mobile-services-dotnet-backend-how-to-use.md)
-[JavaScript backend](mobile-services-how-to-use-server-scripts.md)
- 
 この記事では、Azure Mobile Services で JavaScript バックエンドを使用する方法についての詳細な情報と例を提供します。
 
 ##<a name="intro"></a>はじめに
@@ -35,7 +31,7 @@ JavaScript バックエンド モバイル サービスを使用すると、サ�
 
 サーバー スクリプトのメイン関数のシグネチャは、スクリプトが使用されるコンテキストによって異なります。スクリプト間で共有される共通スクリプト コードを nodes.js モジュールとして定義することもできます。詳細については、「[ソース管理と共有コード][Source control, shared code, and helper functions]」を参照してください。
 
-個々のサーバー スクリプト オブジェクトおよび関数の詳細については、[Mobile Services のサーバー スクリプト リファレンス]に関するページを参照してください。
+個々のサーバー スクリプト オブジェクトおよび関数の詳細については、「[Mobile Services server script reference (モバイル サービスのサーバー スクリプト リファレンス)]」を参照してください。
 
 
 ##<a name="table-scripts"></a>テーブル操作
@@ -97,7 +93,7 @@ JavaScript バックエンド モバイル サービスを使用すると、サ�
 
 	![1][1]
 	
-	この方法については、[サーバー スクリプトを使用した Mobile Services のデータの検証および変更]に関するページを参照してください。
+	この方法については、「[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]」を参照してください。
 
 + ソース管理を使用して。ソース管理を有効にしている場合は、単に git リポジトリの .\\service\\table サブフォルダーに <em>`<table>`</em>.<em>`<operation>`</em>.js という名前のファイルを作成します。ここで、<em>`<table>`</em> はテーブルの名前であり、<em>`<operation>`</em> は登録するテーブル操作です。詳細については、「[ソース管理と共有コード][Source control, shared code, and helper functions]」を参照してください。
 
@@ -178,7 +174,7 @@ execute を呼び出すときに **success** ハンドラーを渡すことで�
 	    });
 	}
 
-**execute** 関数に **success** ハンドラーを渡す場合は、スクリプトが完了して応答を書き込むことができることをランタイムに通知するために、**success** ハンドラーの一部として **respond** 関数も呼び出す必要があります。引数を渡さずに **respond** を呼び出すと、既定の応答が Mobile Services によって生成されます。
+**execute** 関数に **success** ハンドラーを渡す場合は、スクリプトが完了して応答を書き込むことができることをランタイムに通知するために、**success** ハンドラーの一部として **respond** 関数も呼び出す必要があります。引数を渡さずに **respond** を呼び出すと、既定の応答がモバイル サービスによって生成されます。
 
 >[AZURE.NOTE]最初に **execute** 関数を呼び出した後でのみ、引数を指定せずに **respond** 関数を呼び出すと、既定の応答を呼び出すことができます。
  
@@ -198,7 +194,7 @@ execute を呼び出すときに **success** ハンドラーを渡すことで�
 	}
  
 
-error ハンドラーを渡した場合は、**respond** が呼び出されたときに、Mobile Services からクライアントにエラー結果が返されます。
+error ハンドラーを渡した場合は、**respond** が呼び出されたときに、モバイル サービスからクライアントにエラー結果が返されます。
 
 必要であれば、**success** ハンドラーと **error** ハンドラーも渡すことができます。
 
@@ -245,7 +241,7 @@ Mobile Services は、テーブルの **ID** 列で一意のカスタム文字�
 
 		https://todolist.azure-mobile.net/tables/TodoItem?duplicateText=false
 
-これらのカスタム クエリ パラメーターには、**request オブジェクト**の [parameters] プロパティから JSON 値としてアクセスします。**request** オブジェクトは、Mobile Services からテーブル操作に登録されている関数に提供されます。次の挿入操作のサーバー スクリプトでは、挿入操作を実行する前に、`duplicateText` パラメーターの値を確認します。
+これらのカスタム クエリ パラメーターには、**request オブジェクト**の [parameters] プロパティから JSON 値としてアクセスします。**request** オブジェクトは、モバイル サービスからテーブル操作に登録されている関数に提供されます。次の挿入操作のサーバー スクリプトでは、挿入操作を実行する前に、`duplicateText` パラメーターの値を確認します。
 
 		function insert(item, user, request) {
 		    var todoItemTable = tables.getTable('TodoItem');
@@ -293,7 +289,7 @@ JavaScript では、これは次のようなより長い構文の短縮版です
 
 ###<a name="work-with-users"></a>方法: ユーザーを処理する
 
-Azure Mobile Services では、ID プロバイダーを使用して、ユーザーを認証できます。詳細については、「[認証の使用]」を参照してください。認証されたユーザーがテーブル操作を呼び出したとき、Mobile Services では [user オブジェクト]を使用して、登録されたスクリプト関数にユーザーに関する情報を渡します。**userId** プロパティを使用すると、ユーザー固有の情報を保存および取得できます。次の例では、認証済みのユーザーの userId に基づいて、item の owner プロパティを設定します。
+Azure Mobile Services では、ID プロバイダーを使用して、ユーザーを認証できます。詳細については、「[認証の使用]」を参照してください。認証されたユーザーがテーブル操作を呼び出したとき、モバイル サービスでは [user オブジェクト]を使用して、登録されたスクリプト関数にユーザーに関する情報を渡します。**userId** プロパティを使用すると、ユーザー固有の情報を保存および取得できます。次の例では、認証済みのユーザーの userId に基づいて、item の owner プロパティを設定します。
 
 	function insert(item, user, request) {
 	    item.owner = user.userId;
@@ -324,7 +320,7 @@ Azure Mobile Services では、ID プロバイダーを使用して、ユーザ�
 
 カスタム API は、GET、POST、PUT、PATCH、DELETE という 1 つ以上の標準 HTTP メソッドによってアクセスされる、モバイル サービスのエンドポイントです。カスタム API によってサポートされている各 HTTP メソッドに個別の関数 export を定義し、すべてを 1 つのスクリプト ファイルに含めることができます。特定のメソッドを使用するカスタム API への要求が受信されると、登録されたスクリプトが呼び出されます。詳細については、「[カスタム API]」を参照してください。
 
-カスタム API 関数が Mobile Services ランタイムによって呼び出される場合は、[request オブジェクト][request object]と [response オブジェクト][response object]の両方が提供されます。これらのオブジェクトは、[express.js ライブラリ]の機能を公開します。その機能をスクリプトで利用できます。次の **hello** という名前のカスタム API は、非常に単純な例で、POST 要求に対して "_Hello, world!_" を返します。
+カスタム API 関数がモバイル サービス ランタイムによって呼び出される場合は、[request オブジェクト][request object]と [response オブジェクト][response object]の両方が提供されます。これらのオブジェクトは、[express.js ライブラリ]の機能を公開します。その機能をスクリプトで利用できます。次の **hello** という名前のカスタム API は、非常に単純な例で、POST 要求に対して "_Hello, world!_" を返します。
 
 		exports.post = function(request, response) {
 		    response.send(200, "{ message: 'Hello, world!' }");
@@ -380,7 +376,7 @@ Azure Mobile Services では、ID プロバイダーを使用して、ユーザ�
 
 ###<a name="get-api-user"></a>方法: カスタム API でユーザーとヘッダーを操作する
 
-Azure Mobile Services では、ID プロバイダーを使用して、ユーザーを認証できます。詳細については、「[認証の使用]」を参照してください。認証されたユーザーがカスタム API を要求すると、Mobile Services は [user オブジェクト]を使用して、カスタム API コードにユーザーに関する情報を提供します。[user オブジェクト]には、[request オブジェクト]の user プロパティからアクセスします。**userId** プロパティを使用すると、ユーザー固有の情報を保存および取得できます。
+Azure Mobile Services では、ID プロバイダーを使用して、ユーザーを認証できます。詳細については、「[認証の使用]」を参照してください。認証されたユーザーがカスタム API を要求すると、モバイル サービスは [user オブジェクト]を使用して、カスタム API コードにユーザーに関する情報を提供します。[user オブジェクト]には、[request オブジェクト]の user プロパティからアクセスします。**userId** プロパティを使用すると、ユーザー固有の情報を保存および取得できます。
 
 次の **OrderPizza** カスタム API 関数では、認証済みのユーザーの userId に基づいて、item の owner プロパティを設定します。
 
@@ -461,7 +457,7 @@ Mobile Services を使用すると、決まったスケジュールでのジョ�
 
 	![3][3]
 
-	これを行う方法の詳細については、[Mobile Services でのバックエンド ジョブのスケジュール設定]に関するページを参照してください。
+	これを行う方法の詳細については、[モバイル サービスでのバックエンド ジョブの計画に関するページ]を参照してください。
 
 + コマンド プロンプトから Azure コマンド ライン ツールを使用して。詳細については、「[コマンド ライン ツールの使用]」を参照してください。
 
@@ -488,14 +484,14 @@ Mobile Services はサーバーの Node.js を使用するため、スクリプ�
 + **path**: ファイル パスを操作するためのユーティリティが含まれています。詳細については、[Node.js に関するドキュメント][path API]を参照してください。
 + **querystring**: クエリ文字列を操作するためのユーティリティが含まれています。詳細については、[Node.js に関するドキュメント][querystring API]を参照してください。
 + **request**: Twitter や Facebook などの外部 REST サービスに HTTP 要求を送信します。詳細については、「[HTTP 要求の送信]」を参照してください。
-+ **sendgrid**: Azure の Sendgrid 電子メール サービスを使用して、電子メールを送信します。詳細については、「[SendGrid を使用したモバイル サービスからの電子メールの送信]」を参照してください。
++ **sendgrid**: Azure の Sendgrid 電子メール サービスを使用して、電子メールを送信します。詳細については、「[Send email from Mobile Services with SendGrid (SendGrid を使用したモバイル サービスからの電子メールの送信)]」を参照してください。
 + **url**: URL を解析および解決するためのユーティリティが含まれています。詳細については、[Node.js に関するドキュメント][url API]を参照してください。
 + **util**: 文字列の書式設定やオブジェクトの種類の確認など、さまざまなユーティリティが含まれています。詳細については、[Node.js に関するドキュメント][util API]を参照してください。 
 + **zlib**: gzip や deflate などの圧縮機能を公開します。詳細については、[Node.js に関するドキュメント][zlib API]を参照してください。 
 
 ###<a name="modules-helper-functions"></a>方法: モジュールを利用する
 
-Mobile Services では、スクリプトで **require** グローバル関数を使用して読み込むことができる一連のモジュールを公開しています。たとえば、スクリプトから **request** で HTTP 要求を行うよう要求できます。
+モバイル サービスでは、スクリプトで **require** グローバル関数を使用して読み込むことができる一連のモジュールを公開しています。たとえば、スクリプトから **request** で HTTP 要求を行うよう要求できます。
 
 	function update(item, user, request) { 
 	    var httpRequest = require('request'); 
@@ -592,7 +588,7 @@ Mobile Services を使用すると、値をアプリケーション設定とし�
 		var accessToken= config.appSettings.TWITTER_ACCESS_TOKEN,
 		    accessTokenSecret = config.appSettings.TWITTER_ACCESS_TOKEN_SECRET;
 
-このコードは、ポータルの **[ID]** タブに格納されている Twitter コンシューマー キー値も取得します。**config オブジェクト**はテーブル操作とスケジュールされたジョブ スクリプトでは使用できないため、アプリケーション設定にアクセスするには構成モジュールを要求する必要があります。完全な例については、[Mobile Services でのバックエンド ジョブのスケジュール設定]に関するページを参照してください。
+このコードは、ポータルの **[ID]** タブに格納されている Twitter コンシューマー キー値も取得します。**config オブジェクト**はテーブル操作とスケジュールされたジョブ スクリプトでは使用できないため、アプリケーション設定にアクセスするには構成モジュールを要求する必要があります。完全な例については、「[モバイル サービスでのバックエンド ジョブの計画]」を参照してください。
 
 <h2><a name="command-prompt"></a>コマンド ライン ツールの使用</h2>
 
@@ -651,7 +647,7 @@ Mobile Services では、Azure コマンド ライン ツールを使用して�
 
 Mobile Services の多くのシナリオでは、サーバー スクリプトがデータベース内のテーブルにアクセスする必要があります。たとえば、Mobile Services はスクリプトの実行間で状態を保持しないため、スクリプトの実行間で保持する必要があるデータはテーブルに格納しておかなければなりません。アクセス許可テーブルのエントリを調べたり、監査データを単にログに書き込むだけでなくテーブルに保存したりする場合もあります (ログではデータの保存期間に限定があり、プログラムでアクセスすることができません)。
 
-Mobile Services には、テーブルにアクセスするための 2 つの方法があります。[table オブジェクト] プロキシを使用する方法と、[mssql オブジェクト]を使用して Transact-SQL クエリを作成する方法です。[table オブジェクト]を使用するとサーバー スクリプト コードからテーブル データに簡単にアクセスできるようになりますが、[mssql オブジェクト]はより複雑なデータ操作をサポートしており、最高レベルの柔軟性を提供します。
+モバイル サービスには、テーブルにアクセスするための 2 つの方法があります。[table オブジェクト] プロキシを使用する方法と、[mssql オブジェクト]を使用して Transact-SQL クエリを作成する方法です。[table オブジェクト]を使用するとサーバー スクリプト コードからテーブル データに簡単にアクセスできるようになりますが、[mssql オブジェクト]はより複雑なデータ操作をサポートしており、最高レベルの柔軟性を提供します。
 
 ###<a name="access-tables"></a>方法: スクリプトからテーブルにアクセスする
 
@@ -771,7 +767,7 @@ Mobile Services には、テーブルにアクセスするための 2 つの方�
 
 クライアント スキーマから JSON への変換方法は、プラットフォームによって異なります。Windows ストア クライアントと Windows Phone クライアントでは、JSON.NET が使用されます。Android クライアントでは gson ライブラリが使用されます。iOS クライアントでは NSJSONSerialization クラスが使用されます。このようなライブラリでは既定のシリアル化動作が使用されます。ただし、日付のオブジェクトを、ISO 8601 を使用してエンコードされた日付が含まれている JSON 文字列に変換する場合は例外です。
 
-[insert 関数]、[update 関数]、[read 関数]、または [delete 関数]を使用したサーバー スクリプトを作成する場合、データの JavaScript 表現にアクセスすることができます。Mobile Services では Node.js の逆シリアル化関数 ([JSON.parse](http://es5.github.io/#x15.12)) を使用して、ネットワーク上で JSON を JavaScript オブジェクトに変換します。ただし、ISO 8601 文字列から **Date** オブジェクトを取得する際には、変換を実行します。
+[insert 関数]、[update 関数]、[read 関数]、または [delete 関数]を使用したサーバー スクリプトを作成する場合、データの JavaScript 表現にアクセスすることができます。モバイル サービスでは Node.js の逆シリアル化関数 ([JSON.parse](http://es5.github.io/#x15.12)) を使用して、ネットワーク上で JSON を JavaScript オブジェクトに変換します。ただし、ISO 8601 文字列から **Date** オブジェクトを取得する際には、変換を実行します。
 
 [tables オブジェクト]または [mssql オブジェクト]を使用するとき、または単純にテーブル スクリプトを実行するときに、逆シリアル化された JavaScript オブジェクトが SQL データベースに挿入されます。このプロセスでは、オブジェクトのプロパティが T-SQL 型にマッピングされます。
 
@@ -993,8 +989,9 @@ Stream|サポートされていません
 [4]: ./media/mobile-services-how-to-use-server-scripts/4-mobile-source-local-cli.png
 
 <!-- URLs. -->
-[Mobile Services のサーバー スクリプト リファレンス]: http://msdn.microsoft.com/library/windowsazure/jj554226.aspx
-[Mobile Services でのバックエンド ジョブのスケジュール設定]: /develop/mobile/tutorials/schedule-backend-tasks/
+[Mobile Services server script reference (モバイル サービスのサーバー スクリプト リファレンス)]: http://msdn.microsoft.com/library/windowsazure/jj554226.aspx
+[モバイル サービスでのバックエンド ジョブの計画]: /develop/mobile/tutorials/schedule-backend-tasks/
+[モバイル サービスでのバックエンド ジョブの計画に関するページ]: /develop/mobile/tutorials/schedule-backend-tasks/
 [request object]: http://msdn.microsoft.com/library/windowsazure/jj554218.aspx
 [execute]: http://msdn.microsoft.com/library/windowsazure/jj554218.aspx
 [parameters]: http://msdn.microsoft.com/library/windowsazure/jj554218.aspx
@@ -1031,7 +1028,7 @@ Stream|サポートされていません
 [Management Portal]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
 [ジョブのスケジュール]: http://msdn.microsoft.com/library/windowsazure/jj860528.aspx
-[サーバー スクリプトを使用した Mobile Services のデータの検証および変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet/
+[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet/
 [Azure Mobile Services の管理用コマンド]: ../virtual-machines-command-line-tools.md#Mobile_Scripts
 [Windows Store Push]: /develop/mobile/tutorials/get-started-with-push-dotnet/
 [Windows Phone Push]: /develop/mobile/tutorials/get-started-with-push-wp8/
@@ -1039,7 +1036,7 @@ Stream|サポートされていません
 [Android Push]: /develop/mobile/tutorials/get-started-with-push-android/
 [Azure SDK for Node.js]: http://go.microsoft.com/fwlink/p/?LinkId=275539
 [HTTP 要求の送信]: http://msdn.microsoft.com/library/windowsazure/jj631641.aspx
-[SendGrid を使用したモバイル サービスからの電子メールの送信]: /develop/mobile/tutorials/send-email-with-sendgrid/
+[Send email from Mobile Services with SendGrid (SendGrid を使用したモバイル サービスからの電子メールの送信)]: /develop/mobile/tutorials/send-email-with-sendgrid/
 [認証の使用]: http://go.microsoft.com/fwlink/p/?LinkId=287177
 [crypto API]: http://go.microsoft.com/fwlink/p/?LinkId=288802
 [path API]: http://go.microsoft.com/fwlink/p/?LinkId=288803
@@ -1060,4 +1057,4 @@ Stream|サポートされていません
 [Azure Mobile Services 内での package.json のサポート]: http://go.microsoft.com/fwlink/p/?LinkId=391036
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

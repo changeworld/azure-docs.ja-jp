@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple ストレージ アカウントの管理"
+   pageTitle="StorSimple ストレージ アカウントの管理 | Microsoft Azure"
    description="[構成] ページを使用してストレージ アカウントを追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="06/25/2015"
+   ms.date="08/14/2015"
    ms.author="v-sharos" />
 
 # StorSimple ストレージ アカウントの管理
@@ -50,7 +50,7 @@
 
 StorSimple デバイスで使用できるストレージ アカウントには、次の 3 つの種類があります。
 
-- **自動生成されたストレージ アカウント** - 名前のとおり、このストレージ アカウントは、サービスが最初に作成されるときに自動的に生成されます。このストレージ アカウントの作成方法の詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」の「手順 1. 新しいサービスを作成する」を参照してください。 
+- **自動生成されたストレージ アカウント** - 名前のとおり、このストレージ アカウントは、サービスが最初に作成されるときに自動的に生成されます。このストレージ アカウントの作成方法の詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」の「[手順 1. 新しいサービスを作成する](storsimple-deployment-walkthrough-u1.md#step-1-create-a-new-service)」をご覧ください。 
 - **サービス サブスクリプションのストレージ アカウント** - サービスと同じサブスクリプションに関連付けられている Azure ストレージ アカウントです。このストレージ アカウントの作成方法の詳細については、[Azure ストレージ アカウント](../storage/storage-create-storage-account.md)に関するページを参照してください。 
 - **サービス サブスクリプションの外部のストレージ アカウント** - これらは、サービスに関連付けられていない、サービスが作成される前に存在していた可能性のある Azure ストレージ アカウントです。
 
@@ -150,6 +150,6 @@ StorSimple Manager サービスにこの変更を認識させるには、StorSim
 
 ## 次のステップ
 
-[StorSimple のセキュリティ](storsimple-security.md)の詳細を確認する
+[StorSimple のセキュリティの詳細](storsimple-security.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

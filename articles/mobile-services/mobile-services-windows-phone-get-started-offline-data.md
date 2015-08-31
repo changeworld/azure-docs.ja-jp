@@ -289,4 +289,4 @@ Azure Mobile Services のオフライン機能を使用すると、モバイル 
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

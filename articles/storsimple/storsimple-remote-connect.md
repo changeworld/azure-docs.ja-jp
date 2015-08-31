@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/04/2015"
+   ms.date="08/14/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスにリモート接続する
@@ -21,7 +21,7 @@
 
 Windows PowerShell リモート処理を使用して StorSimple デバイスに接続できます。この方法で接続すると、メニューは表示されません (メニューは、デバイスのシリアル コンソールを使用して接続する場合のみ表示されます)。 Windows PowerShell リモート処理を使用して、特定の実行空間に接続します。表示言語を指定することもできます。
 
-Windows PowerShell リモート処理を使用してデバイスを管理する方法の詳細については、「[Windows PowerShell for StorSimple を使用してデバイスを管理する](storsimple-windows-powershell-administration.md)」を参照してください。
+Windows PowerShell リモート処理を使用してデバイスを管理する方法の詳細については、「[Windows PowerShell for StorSimple を使用してデバイスを管理する](storsimple-windows-powershell-administration.md)」をご覧ください。
 
 このチュートリアルでは、リモート管理用にデバイスを構成する方法と、Windows PowerShell for StorSimple に接続する方法について説明します。HTTP または HTTPS を使用して Windows PowerShell リモート処理経由で接続できます。ただし、Windows PowerShell for StorSimple に接続する方法を決定するときは、次の点を考慮してください。
 
@@ -37,9 +37,9 @@ Windows PowerShell インターフェイスにリモート接続できます。�
 
 HTTP セッション経由の Windows PowerShell for StorSimple への接続は、StorSimple デバイスのシリアル コンソール経由での接続よりも高い安全性を提供します。これは最も安全な方法ではありませんが、信頼されたネットワークでは容認できます。
 
-管理ポータルまたはシリアル コンソールを使用してリモート管理を構成できます。次の手順から選択してください。
+Azure ポータルまたはシリアル コンソールを使用してリモート管理を構成できます。次の手順から選択してください。
 
-- [管理ポータルを使用して HTTP 経由でリモート管理を有効にする](#use-the-management-portal-to-enable-remote-management-over-http)
+- [Azure ポータルを使用して HTTP 経由でリモート管理を有効にする](#use-the-azure-portal-to-enable-remote-management-over-http)
 
 - [シリアル コンソールを使用して HTTP 経由でリモート管理を有効にする](#use-the-serial-console-to-enable-remote-management-over-http)
 
@@ -47,11 +47,11 @@ HTTP セッション経由の Windows PowerShell for StorSimple への接続は�
 
 - [リモート接続用のクライアントを準備する](#prepare-the-client-for-remote-connection)
 
-### 管理ポータルを使用して HTTP 経由でリモート管理を有効にする 
+### Azure ポータルを使用して HTTP 経由でリモート管理を有効にする 
 
-管理ポータルで、次の手順に従って、HTTP 経由でのリモート管理を有効にします。
+Azure ポータルで、次の手順に従って、HTTP 経由でのリモート管理を有効にします。
 
-#### 管理ポータル経由でリモート管理を有効にするには
+#### Azure ポータル経由でリモート管理を有効にするには
 
 1. **[デバイス]** を選択し、デバイス用の **[構成]** をクリックします。
 
@@ -122,9 +122,9 @@ HTTP セッション経由の Windows PowerShell for StorSimple への接続は�
 
 HTTPS セッション経由での Windows PowerShell for StorSimple への接続は、Microsoft Azure StorSimple デバイスへのリモート接続よりも安全性が高い推奨される方法です。次の手順は、HTTPS を使用して Windows PowerShell for StorSimple に接続できるようにシリアル コンソールとクライアント コンピューターを設定する方法について説明しています。
 
-管理ポータルまたはシリアル コンソールを使用してリモート管理を構成できます。次の手順から選択してください。
+Azure ポータルまたはシリアル コンソールを使用してリモート管理を構成できます。次の手順から選択してください。
 
-- [管理ポータルを使用して HTTPS 経由でのリモート管理を有効にする](#use-the-management-portal-to-enable-remote-management-over-https)
+- [Azure ポータルを使用して HTTPS 経由でリモート管理を有効にする](#use-the-azure-portal-to-enable-remote-management-over-https)
 
 - [シリアル コンソールを使用して HTTPS 経由でのリモート管理を有効にする](#use-the-serial-console-to-enable-remote-management-over-https)
 
@@ -134,11 +134,11 @@ HTTPS セッション経由での Windows PowerShell for StorSimple への接続
 
 - [リモート ホストからデバイスに接続する](#connect-to-the-device-from-the-remote-host)
 
-### 管理ポータルを使用して HTTPS 経由でのリモート管理を有効にする
+### Azure ポータルを使用して HTTPS 経由でリモート管理を有効にする
 
-管理ポータルで、次の手順を実行して、HTTPS 経由でのリモート管理を有効にします。
+Azure ポータルで、次の手順に従って、HTTPS 経由でのリモート管理を有効にします。
 
-#### 管理ポータルから HTTPS 経由でのリモート管理を有効にするには
+#### Azure ポータル経由で HTTPS 経由でリモート管理を有効にするには
 
 1. **[デバイス]** を選択し、デバイス用の **[構成]** をクリックします。
 
@@ -194,9 +194,9 @@ HTTPS セッション経由での Windows PowerShell for StorSimple への接続
 
 HTTPS セッションを使用するリモート接続のホスト コンピューターを準備するには、次の手順を実行します。
 
-- [.cer ファイルをクライアントまたはリモート ホストのルート ストアにインポートする](to-import-the-certificate-on-the-remote-host)
+- [.cer ファイルをクライアントまたはリモート ホストのルート ストアにインポートする](#to-import-the-certificate-on-the-remote-host)。
 
-- [デバイスのシリアル番号をリモート ホストの hosts ファイルに追加する](to-add-device-serial-numbers-to-the-remote-host)
+- [デバイスのシリアル番号をリモート ホストの hosts ファイルに追加する](#to-add-device-serial-numbers-to-the-remote-host)。
 
 この後、これらの手順について説明します。
 
@@ -254,7 +254,7 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 
 4. 次のように入力して、セッションを作成します。
 
-     $session = new-pssession -usessl -CN <Serial number of target device> -credential $cred -configurationname "SSAdminConsole"
+     `$session = new-pssession -usessl -CN <Serial number of target device> -credential $cred -configurationname "SSAdminConsole"`
 
     コマンドレットの CN 名には *<serial number of target device>* を指定します。このシリアル番号は、リモート ホストの hosts ファイルで、DATA 0 の IP アドレスにマップしたものです。たとえば、次の図に示す **SHX0991003G44MT** です。
 
@@ -268,6 +268,6 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 
 ## 次のステップ
 
-[Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する](storsimple-windows-powershell-administration.md)
+[Windows PowerShell を使用して StorSimple デバイスを管理する方法の詳細](storsimple-windows-powershell-administration.md)。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

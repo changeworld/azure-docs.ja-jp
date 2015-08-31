@@ -5,7 +5,8 @@
 	documentationCenter="" 
 	authors="nitinme" 
 	manager="paulettm" 
-	editor="cgronlun"/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
 	ms.service="hdinsight" 
@@ -99,4 +100,4 @@ HDInsight の Spark では、Microsoft Power BI や Tableau などの BI ツー�
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage/
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

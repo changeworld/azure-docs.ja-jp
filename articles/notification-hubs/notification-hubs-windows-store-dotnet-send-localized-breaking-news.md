@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Notification Hubs ローカライズ ニュース速報のチュートリアル" 
-	description="Azure Service Bus Notification Hubs を使用して、ローカライズしたニュース速報通知を送信する方法を説明します。" 
-	services="notification-hubs" 
-	documentationCenter="windows" 
-	authors="wesmc7777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Notification Hubs ローカライズ ニュース速報のチュートリアル"
+	description="Azure Service Bus Notification Hubs を使用して、ローカライズしたニュース速報通知を送信する方法を説明します。"
+	services="notification-hubs"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="notification-hubs" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/27/2015" 
+<tags
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="wesmc"/>
 
 # 通知ハブを使用したローカライズ ニュース速報の送信
@@ -29,7 +29,7 @@
 
 このシナリオは次の 2 つに分けられます。
 
-- Windows ストア アプリケーションで、クライアント デバイスが言語を指定し、さまざまなニュース速報カテゴリを購読できるようになります。 
+- Windows ストア アプリケーションで、クライアント デバイスが言語を指定し、さまざまなニュース速報カテゴリを購読できるようになります。
 
 - Azure Notification Hubs の**タグ**機能と**テンプレート**機能を使用して、バックエンドから通知がブロードキャストされます。
 
@@ -146,7 +146,7 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 3. 次に示すように、MainPage.xaml.cs でロケール コンボボックスの現在の値を取得し、それを Notifications クラスへの呼び出しに提供することで、ボタン クリック ハンドラーを更新します。
 
 		 var locale = (string)Locale.SelectedItem;
-            
+
          var categories = new HashSet<string>();
          if (WorldToggle.IsOn) categories.Add("World");
          if (PoliticsToggle.IsOn) categories.Add("Politics");
@@ -231,6 +231,5 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 [通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [方法: Windows Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/jj927172.aspx
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

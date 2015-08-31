@@ -6,7 +6,7 @@ BLOB のデータセットは CSV 形式で、3 つの列を含んでいると�
 次のように、列の種類と、コピー元のBLOB データセットを定義します。
 
 	{
-	    "name": " AzureBlobTypeSystemInput",
+	    "name": "AzureBlobTypeSystemInput",
 	    "properties":
 	    {
 	         "structure": 
@@ -30,7 +30,7 @@ BLOB のデータセットは CSV 形式で、3 つの列を含んでいると�
 	        "availability":
 	        {
 	            "frequency": "Hour",
-	            "interval": 1,
+	            "interval": 1
 	        },
 			"policy": {
 	            "externalData": {
@@ -69,4 +69,4 @@ BLOB のデータセットは CSV 形式で、3 つの列を含んでいると�
 
 ここでは、データを BLOB から Azure SQL に移動するときに、データ ファクトリはカスタム日付/時刻を持つ Datetime フィールドを含むタイプ変換を、fr-fr カルチャを使用して自動的に実行します。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

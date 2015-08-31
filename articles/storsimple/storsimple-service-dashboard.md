@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/25/2015"
+   ms.date="08/17/2015"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスのダッシュボードを使用する
@@ -51,7 +51,7 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 キーを再生成しても、以前に登録したデバイスには影響ありません。キーを再生成した後でサービスに登録されたデバイスのみが影響を受けます。
 
-サービス登録キーの表示および再生成に関する詳細は、「[サービス登録キーを取得する](storsimple-manage-service.md#get-the-service-registration-key)」を参照してください。
+サービス登録キーの表示と再生成に関する詳細は、「[サービス登録キーを取得する](storsimple-manage-service.md#get-the-service-registration-key)」をご覧ください。
 
 ## サービス データ暗号化キーの変更
 
@@ -74,6 +74,6 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 ## 次のステップ
 
-[StorSimple デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)を行う方法
+[StorSimple デバイスのトラブルシューティングを行う方法](storsimple-troubleshoot-operational-device.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

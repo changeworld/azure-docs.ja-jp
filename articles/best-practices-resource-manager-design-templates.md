@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/15/2015"
+	ms.date="08/13/2015"
 	ms.author="mmercuri"/>
 
 # Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス
 
 大企業やシステム インテグレーター (SI)、クラウド サービス ベンダー (CSV)、オープン ソース ソフトウェア (OSS) のプロジェクト チームと連携する中で、環境やワークロード、スケール ユニットを短時間でデプロイしなければならないケースは少なくありません。そのデプロイ作業は、実績のある手法と決められた方針に沿って行うことが大切です。サポートも必要となります。Azure リソース マネージャー テンプレートに基づく柔軟性の高いアプローチを用いることで、複雑なトポロジをすばやく、かつ一貫性を保ちながらデプロイすることができます。また、主な機能が刷新されたり、例外的な状況や顧客から生じる変動要因に対応したりする目的で、それらのデプロイを簡単に調整することができます。
+
+このトピックは大型のホワイト ペーパーの一部です。ペーパーの完全版を参照するには、[World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf) をダウンロードしてください。
 
 Azure リソース マネージャー テンプレートは、Azure リソース マネージャーそのものの利点に加えて、JavaScript Object Notation (JSON) の順応性と可読性を兼ね備えているのが特徴です。以下に挙げたのは、テンプレートを使用してできることの例です。
 
@@ -99,7 +101,7 @@ Azure Marketplace などのマーケットプレイスで提供物を宣伝、�
 
 - サーバーのロールや機能をインストールまたは削除する。
 - ノード レベルまたはクラスター レベルでソフトウェアをインストールして構成する。
-- Web サーバーに Web サイトをデプロイする。
+- Web サーバーに Websites をデプロイする。
 - データベース スキーマをデプロイする。
 - レジストリや各種の構成設定を管理する。
 - ファイルとディレクトリを管理する。
@@ -381,4 +383,4 @@ T シャツ サイズ テンプレートは、指定されたサイズ (*large*)
 - Azure リソース マネージャーのセキュリティ上の推奨事項については、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 - テンプレート内やテンプレート間での状態の共有方法については、「[Azure リソース マネージャーのテンプレートでの状態の共有](best-practices-resource-manager-state.md)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

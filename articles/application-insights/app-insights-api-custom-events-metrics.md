@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="08/18/2015" 
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -52,7 +52,7 @@ Application Insights でデータを集めるとき、この API を使用すれ
 
 * デバイスまたは Web サーバー コードに次を追加します。
 
-    *C#:* `using Microsoft.ApplicationInsights;`
+    *C\#:* `using Microsoft.ApplicationInsights;`
 
     *VB:* `Imports Microsoft.ApplicationInsights`
 
@@ -62,7 +62,7 @@ Application Insights でデータを集めるとき、この API を使用すれ
 
 TelemetryClient のインスタンスの作成 (Web ページの JavaScript を除く):
 
-*C#:*
+*C\#:*
 
     private TelemetryClient telemetry = new TelemetryClient();
 
@@ -92,7 +92,7 @@ TelemetryClient はスレッド セーフです。
 
     appInsights.trackEvent("WinGame");
 
-*C#*
+*C\#*
     
     telemetry.TrackEvent("WinGame");
 
@@ -148,7 +148,7 @@ TelemetryClient はスレッド セーフです。
          {Score: currentGame.score, Opponents: currentGame.opponentCount}
          );
 
-*C#*
+*C\#*
 
     // Set up some properties and metrics:
     var properties = new Dictionary <string, string> 
@@ -238,7 +238,7 @@ TelemetryClient はスレッド セーフです。
 何らかのアクションを実行するためにかかる時間をグラフに示す必要が生じることがあります。たとえば、ユーザーがゲームで選択肢について考える時間について調べることができます。これは、測定のパラメーターの使用に役立つ例です。
 
 
-*C#*
+*C\#*
 
     var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
@@ -271,7 +271,7 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
 
     appInsights.trackMetric("Queue", queue.Length);
 
-*C#*
+*C\#*
 
     telemetry.TrackMetric("Queue", queue.Length);
 
@@ -285,7 +285,7 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
 
 実際には、バックグラウンド スレッドでこれを行うことがあります。
 
-*C#*
+*C\#*
 
     private void Run() {
      var appInsights = new TelemetryClient();
@@ -316,7 +316,7 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
 
     appInsights.trackPageView("tab1");
 
-*C#*
+*C\#*
 
     telemetry.TrackPageView("GameReviewPage");
 
@@ -337,7 +337,7 @@ HTTP 要求を記録するために、サーバー SDK によって使用され�
 
 Web サービス モジュールが実行されていない状況で要求をシミュレーションする場合に、これを自分で呼び出すこともできます。
 
-*C#*
+*C\#*
 
     // At start of processing this request:
 
@@ -358,7 +358,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 例外を Application Insights に送信して[数え][metrics]、問題の発生頻度を示し、[個々の問題を調べます][diagnostic]。レポートにはスタック トレースが含まれます。
 
-*C#*
+*C\#*
 
     try
     {
@@ -381,7 +381,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 [ログ アダプター][trace]はこの API を使用し、ポータルにサード パーティのログを送信します。
 
 
-*C#*
+*C\#*
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 
@@ -415,7 +415,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 
 記述するカスタム イベントにいくつかに既定のプロパティ値を設定する場合、TelemetryClient でそれを設定できます。既定値はそのクライアントから送信されたすべてのテレメトリ アイテムに追加されます。
 
-*C#*
+*C\#*
 
     using Microsoft.ApplicationInsights.DataContracts;
 
@@ -451,7 +451,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 
 ## <a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
 
-*C#*
+*C\#*
     
     var telemetry = new TelemetryClient();
     telemetry.Context.InstrumentationKey = "---my key---";
@@ -467,7 +467,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 **初期化子を定義する**
 
 
-*C#*
+*C\#*
 
 ```C#
 
@@ -520,7 +520,7 @@ ApplicationInsights.config で:
 
 *または、*コード内で初期化子をインスタンス化することもできます。
 
-*C#*
+*C\#*
 
 ```C#
 
@@ -552,7 +552,7 @@ ApplicationInsights.config で:
 
 **初期化子を定義する**
 
-*C#*
+*C\#*
 
 ```C#
 
@@ -624,7 +624,7 @@ ApplicationInsights.config で:
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
-*C#*
+*C\#*
 
     protected void Application_Start()
     {
@@ -660,7 +660,7 @@ Web ページで、スクリプトに一語一語コーディングするので�
 
 通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯に、データを送信します。ただし、場合によっては、バッファーをフラッシュする必要が生じることがあります (たとえば、終了するアプリケーションで SDK を使用している場合)。
 
-*C#*
+*C\#*
 
     telemetry.Flush();
 
@@ -680,7 +680,7 @@ Web ページで、スクリプトに一語一語コーディングするので�
 デバッグ中、結果をすぐに確認できるように、テレメトリをパイプラインから送信すると便利です。テレメトリで問題を追跡する際に役立つ付加的なメッセージも取得できます。アプリケーションを遅くする可能性があるため、本稼働ではオフにします。
 
 
-*C#*
+*C\#*
     
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 
@@ -728,12 +728,25 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 * [ASP.NET リファレンス](https://msdn.microsoft.com/library/dn817570.aspx)
 * [Java リファレンス](http://dl.windowsazure.com/applicationinsights/javadoc/)
 * [JavaScript リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
+* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
+* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
+
+
+## SDK コード
+
+* [ASP.NET コア SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-aspnet5)
+* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
+* [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
+* [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
+* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
+* [すべてのプラットフォーム](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
 
 ## 疑問がある場合
 
-* *Track * の呼び出しでは、どのような例外がスローされることがありますか。*
+* *Track\_() の呼び出しでは、どのような例外がスローされることがありますか。*
     
-    ありません。Catch 句で例外をキャッチする必要はありません。
+    ありません。try catch 句で例外をラップする必要はありません。SDK で問題が発生すると、デバッグ コンソール出力に表示されるメッセージが記録されます。メッセージがスルーされる場合は、診断検索にも記録されます。
 
 
 
@@ -768,4 +781,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

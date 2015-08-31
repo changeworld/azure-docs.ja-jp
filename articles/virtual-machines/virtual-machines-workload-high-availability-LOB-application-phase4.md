@@ -31,7 +31,7 @@ ASP.NET アプリケーション、または Windows Server 2012 R2 のインタ
 
 	Switch-AzureMode AzureServiceManagement
 	$vnet="<Table V – Item 1 – Value column>"
-	$testIP="<a chosen IP address from the subnet address space, Table S - Item 1 – Subnet address space column>"
+	$testIP="<a chosen IP address from the subnet address space, Table S - Item 2 – Subnet address space column>"
 	Test-AzureStaticVNetIP –VNetName $vnet –IPAddress $testIP
 
 Test-AzureStaticVNetIP コマンドで表示される **IsAvailable** フィールドが **True** の場合は、その IP アドレスを使用できます。
@@ -152,7 +152,7 @@ Test-AzureStaticVNetIP コマンドで表示される **IsAvailable** フィー�
 
 ![](./media/virtual-machines-workload-high-availability-LOB-application-phase4/workload-lobapp-phase4.png)
 
-## 次の手順
+## 次のステップ
 
 このワークロードを引き続き構成するには、「[フェーズ 5: 可用性グループを作成してアプリケーション データベースを追加する](virtual-machines-workload-high-availability-LOB-application-phase5.md)」に進んでください。
 
@@ -166,4 +166,6 @@ Test-AzureStaticVNetIP コマンドで表示される **IsAvailable** フィー�
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=August15_HO7-->
+[Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
+
+<!---HONumber=August15_HO8-->

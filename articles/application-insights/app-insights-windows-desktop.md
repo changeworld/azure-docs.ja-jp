@@ -12,10 +12,10 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/12/2015" 
+	ms.date="08/19/2015" 
 	ms.author="awills"/>
 
-# Windows デスクトップのアプリとサービスに対する Application Insights
+# Windows デスクトップ アプリ、サービス、ワーカー ロールに対する Application Insights
 
 *Application Insights はプレビュー段階です。*
 
@@ -23,7 +23,7 @@
 
 Application Insights を使用すると、デプロイしたアプリケーションの使用状況とパフォーマンスを監視できます。
 
-Windows デスクトップのアプリとサービスに対するサポートは、Application Insights のコア SDK によって提供されます。この SDK は、すべてのテレメトリ データ用の API を完全にサポートしていますが、テレメトリの自動収集には対応していません。
+デスクトップ アプリ、バックグラウンド サービス、ワーカー ロールなどの Windows アプリケーションはすべて、Application Insights のコア SDK を使用して、Application Insights にテレメトリを送信します。コア SDK は API を提供するだけです。つまり、Web またはデバイス SDKと違い、データを自動で集めるモジュールを含まないため、コードを記述して、自身のテレメトリを送信する必要があります。
 
 
 ## <a name="add"></a>Application Insights リソースの作成
@@ -42,11 +42,15 @@ Windows デスクトップのアプリとサービスに対するサポートは
 ## <a name="sdk"></a>アプリケーションでの SDK のインストール
 
 
-1. Visual Studio で、デスクトップ アプリ プロジェクトの NuGet パッケージを編集します。![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-windows-desktop/03-nuget.png)
+1. Visual Studio で、デスクトップ アプリ プロジェクトの NuGet パッケージを編集します。
+
+    ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-windows-desktop/03-nuget.png)
 
 2. Application Insights Core API パッケージをインストールします。
 
     ![Search for "Application Insights"](./media/app-insights-windows-desktop/04-core-nuget.png)
+
+    Performance Counter や、ログ キャプチャ パッケージなどの他のパッケージをインストールすれば、それらの機能を使えます。
 
 3. InstrumentationKey を、たとえば main() などのコードに設定します。
 
@@ -55,16 +59,17 @@ Windows デスクトップのアプリとサービスに対するサポートは
 *ApplicationInsights.config が存在しないのはどうしてですか。*
 
 * .config ファイルは Core API パッケージではインストールされません。これはテレメトリ コレクターの構成のみに使用されます。そのため、独自のコードを記述してインストルメンテーション キーを設定し、テレメトリを送信します。
+* 他のパッケージを一つでもインストールしたら、.config ファイルができます。コードの記述による設定をしないで、インストルメンテーション キーを .config ファイルに挿入できます。
 
 *別の NuGet パッケージを使用できますか。*
 
-* はい。パフォーマンス カウンターのコレクターをインストールする Web サーバー パッケージを使用できます。[HTTP 要求コレクターを無効にする](app-insights-configuration-with-applicationinsights-config.md)必要があります。これによりインストルメンテーション キーが配置される場所に .config ファイルがインストールされます。
+* はい。Web サーバー パッケージ (Microsoft.ApplicationInsights.Web) を使用すると、Performance Counter などのさまざまなコレクション モジュール用のコレクターをインストールできます。これによりインストルメンテーション キーが配置される場所に .config ファイルがインストールされます。[ApplicationInsights.config を使用して](app-insights-configuration-with-applicationinsights-config.md)、HTTP 要求コレクターなどの必要のないモジュールを無効にできます。 
+* [ログまたはトレースのコレクター パッケージ](app-insights-asp-net-trace-logs.md)を使用する場合は、Web サーバー パッケージで開始します。 
 
 ## <a name="telemetry"></a>テレメトリの呼び出しの挿入
 
 `TelemetryClient` インスタンスを作成してから、[このインスタンスを使用してテレメトリを送信][api]します。
 
-`TelemetryClient.Flush()` を使用して、アプリを閉じる前にメッセージを送信します Core SDK は、メモリ内バッファーを使用します。フラッシュのメソッドは、プロセスのシャット ダウンでデータ損失が発生しないように、このバッファーを空にすることを確認します。(これは他の種類のアプリには使用しないでください。プラットフォーム SDK では、この動作を自動的に実装します。)
 
 たとえば、Windows フォーム アプリケーションでは、次のように記述します。
 
@@ -108,6 +113,10 @@ Windows デスクトップのアプリとサービスに対するサポートは
 * 特定のイベントに関連付けられていないメトリックの標準レポートをバックグラウンド タスクで送信するには TrackMetric(name, value)。
 * [診断ログの記録][diagnostic]には TrackTrace(logEvent)。
 * Catch 句では TrackException(exception)。
+
+
+アプリケーションを閉じる前に必ずすべてのテレメトリが送信されるようにするには、`TelemetryClient.Flush()` を使用してください。通常は、テレメトリは一定の間隔でバッチ処理され、送信されます。(コア API だけを使用している場合にのみフラッシュが推奨されます。Web およびデバイス SDK ではこの動作が自動的に実装されます。)
+
 
 #### コンテキストの初期化子
 
@@ -181,4 +190,4 @@ TrackMetric、または TrackEvent の測定値パラメーターを使用した
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

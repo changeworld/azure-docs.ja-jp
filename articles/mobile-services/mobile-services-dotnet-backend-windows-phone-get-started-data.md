@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="既存のアプリへの Mobile Services の追加 (Windows Phone) | Microsoft Azure" 
-	description="Mobile Services を使用して Windows Phone アプリでデータを活用する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="windows" 
-	authors="wesmc7777" 
-	manager="dwrede" 
+<properties
+	pageTitle="既存のアプリへの Mobile Services の追加 (Windows Phone) | Microsoft Azure"
+	description="Mobile Services を使用して Windows Phone アプリでデータを活用する方法について説明します。"
+	services="mobile-services"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/12/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/18/2015" 
 	ms.author="wesmc"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
@@ -24,7 +24,7 @@
 
 このトピックでは、Azure Mobile Services を Windows Phone 8.1 Silverlight アプリのバックエンド データ ソースとして使用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションの Visual Studio プロジェクトをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合し、アプリケーションの実行時にデータに加えられた変更を表示します。Mobile Services を Windows Phone ストア 8.1 アプリに追加するには、[このバージョンのチュートリアル](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md)を参照してください。
 
-このチュートリアルで作成するモバイル サービスは、Mobile Services の .NET ランタイムをサポートします。これによって、モバイル サービスでサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの [JavaScript バックエンド バージョン](mobile-services-windows-phone-get-started-data.md)を参照してください。
+このチュートリアルで作成するモバイル サービスは、Mobile Services の .NET ランタイムをサポートします。これによって、モバイル サービスでサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン](mobile-services-windows-phone-get-started-data.md)」を参照してください。
 
 
 ##前提条件
@@ -32,13 +32,13 @@
 このチュートリアルには、次のものが必要です。
 
 + Visual Studio 2013 Update 2 以降のバージョン。
-+ Microsoft Azure アカウント。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F" target="_blank">Azure の無料試用版サイト</a>を参照してください。 
++ Microsoft Azure アカウント。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F" target="_blank">Azure の無料試用版サイト</a>を参照してください。
 
 ##GetStartedWithData プロジェクトをダウンロードする
 
 このチュートリアルは、Visual Studio 2013 の Windows Phone Silverlight 8.1 アプリケーション プロジェクトである [GetStartedWithMobileServices アプリケーション](https://code.msdn.microsoft.com/Add-Azure-Mobile-to-a-8b906f72)に基づいています。
 
-1. C# バージョンの GetStartedWithMobileServices サンプル アプリケーションを[デベロッパー サンプル コード集のサイト](https://code.msdn.microsoft.com/Add-Azure-Mobile-to-a-8b906f72)からダウンロードします。 
+1. C# バージョンの GetStartedWithMobileServices サンプル アプリケーションを[デベロッパー サンプル コード集のサイト](https://code.msdn.microsoft.com/Add-Azure-Mobile-to-a-8b906f72)からダウンロードします。
 
 	>[AZURE.NOTE]Windows Phone Silverlght 8.1 アプリケーションを作成するには、ダウンロードした Windows Phone Silverlight 8 アプリケーション プロジェクトの対象 OS を Windows Phone 8.1 に変更します。Windows Phone Store アプリケーションを作成するには、GetStartedWithData サンプル アプリケーション プロジェクトの [Windows Phone Store アプリケーション バージョン](http://go.microsoft.com/fwlink/p/?LinkId=397372)をダウンロードします。
 
@@ -66,7 +66,7 @@
 ##モバイル サービス プロジェクトをダウンロードしてソリューションに追加する
 
 1. [Visual Studio Professional 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) 以降をダウンロードしてインストールします (まだインストールしていない場合)。
- 
+
 2. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)で新しい Mobile Service をクリックし、クイック スタート ページで [**Windows**] プラットフォームをクリックします。次に、[**作業の開始**] の下にある [**既存の Windows アプリまたは Windows Phone アプリに接続する**] を展開します。
 
     ![モバイル サービス プロジェクトをダウンロードする](./media/mobile-services-dotnet-backend-windows-phone-get-started-data/download-service-project.png)
@@ -122,26 +122,26 @@
         public sealed partial class MainPage : PhoneApplicationPage
         {
             private MobileServiceCollection<TodoItem, TodoItem> items;
-            private IMobileServiceTable<TodoItem> todoTable = 
-                App.MobileService.GetTable<TodoItem>();            
+            private IMobileServiceTable<TodoItem> todoTable =
+                App.MobileService.GetTable<TodoItem>();
             public MainPage()
             {
                 this.InitializeComponent();
             }
             private async void InsertTodoItem(TodoItem todoItem)
             {
-                await todoTable.InsertAsync(todoItem); 
+                await todoTable.InsertAsync(todoItem);
                 items.Add(todoItem);
             }
             private async void RefreshTodoItems()
             {
-                items = await todoTable 
-                    .ToCollectionAsync(); 
+                items = await todoTable
+                    .ToCollectionAsync();
                 ListItems.ItemsSource = items;
             }
             private async void UpdateCheckedTodoItem(TodoItem item)
             {
-                await todoTable.UpdateAsync(item);      
+                await todoTable.UpdateAsync(item);
             }
             private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
             {
@@ -184,7 +184,7 @@
         //public static MobileServiceClient MobileService = new MobileServiceClient(
         //    "https://todolist.azure-mobile.net/",
         //    "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-        //);        
+        //);
 
 
 7. Visual Studio で、F7 キーを押すか、[ビルド] メニューの **[ビルド ソリューション]** をクリックして、Windows Phone アプリとモバイル サービスの両方をビルドします。両方のプロジェクトが Visual Studio の出力ウィンドウにエラーが表示されることなくビルドされることを確認します。
@@ -195,7 +195,7 @@
 
 9. 新しい todoitem のテキストを入力します。その後、**[保存]** をクリックします。これによって、IIS Express でローカルにホストされているモバイル サービスで作成されたデータベースに新しい todoItem が挿入されます。項目のうちの 1 つのチェックボックスをオンにして、完了マークを付けます。
 
-10. Visual Studio でアプリケーションのデバッグを終了します。サーバー エクスプ ローラーを開き、データ接続を展開して、バックエンド サービスに作成されたデータベースの変更を表示できます。**MS_TableConnectionString** の TodoItems テーブルを右クリックし、**[テーブル データの表示]** をクリックします。
+10. Visual Studio でアプリケーションのデバッグを終了します。サーバー エクスプ ローラーを開き、データ接続を展開して、バックエンド サービスに作成されたデータベースの変更を表示できます。**MS\_TableConnectionString** の TodoItems テーブルを右クリックし、**[テーブル データの表示]** をクリックします。
 
     ![Show data in the table]([14]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-show-local-table-data.png)
 
@@ -220,7 +220,7 @@
             public static MobileServiceClient MobileService = new MobileServiceClient(
                  "https://todolist.azure-mobile.net/",
                  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-            );        
+            );
             ....
 
 2. Visual Studio で F5 キーを押すか、[デバッグ] メニューの **[デバッグ開始]** をクリックします。これにより、Azure でリモートでホストされるモバイル サービスに接続するためにアプリケーションを実行する前に、アプリケーションは前の変更で再ビルドされます。
@@ -251,7 +251,7 @@
 * [アプリケーションにプッシュ通知を追加する]() <br/>アプリにごく基本的なプッシュ通知を送信する方法について説明します。
 
 * [Mobile Services .NET の使用方法の概念リファレンス] <br/>.NET で Mobile Services を使用する方法について説明します。
-  
+
 
 
 <!-- Images. -->
@@ -270,6 +270,5 @@
 [Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
 [How to add a new Windows Firewall port rule]: http://go.microsoft.com/fwlink/?LinkId=392240
-   
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

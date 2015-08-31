@@ -1,15 +1,16 @@
 
-1. Right-click the Windows Store project, click **Set as StartUp Project**, then press the F5 key to run the Windows Store app.
+1. Windows ストア プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックしてから、F5 キーを押して Windows ストア アプリを実行します。
 	
-	After the app starts, the device is registered for push notifications.
+	アプリが起動すると、デバイスがプッシュ通知に登録されます。
 
-2. Stop the Windows Store app and repeat the previous step for the Windows Phone Store app.
+2. Windows ストア アプリを停止し、Windows Phone ストア アプリに対して前の手順を繰り返します。
 
-	At this point, both devices are registered to receive push notifications.
+	この時点で、両方のデバイスがプッシュ通知を受信するように登録されています。
 
-3. Run the Windows Store app again, and type text in **Insert a TodoItem**, and then click **Save**.
+3. 再度 Windows ストア アプリを実行し、**[TodoItem の挿入]** にテキストを入力してから、**[保存]** をクリックします。
 
-   	Note that after the insert completes, both the Windows Store and the Windows Phone apps receive a push notification from WNS. The notification is displayed on Windows Phone even when the app isn't running.
+   	挿入が完了すると、Windows ストアと Windows Phone アプリの両方が WNS からのプッシュ通知を受信します。通知は、アプリが実行していなくても Windows Phone に表示されます。
 
    	![](./media/app-service-mobile-windows-universal-test-push-preview/mobile-quickstart-push5-wp8.png)
 
+<!---HONumber=August15_HO8-->

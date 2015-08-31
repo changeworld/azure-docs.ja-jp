@@ -20,7 +20,7 @@
 
 # How to install and configure Trend Micro Deep Security as a Service on an Azure VM (Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法)
 
-この記事では、Windows Server を実行している既存の仮想マシン (VM) または新しい VM に Trend Micro Deep Security as a Service をインストールして構成する方法を説明します。Deep Security as a Service には、ウイルス対策、ファイアウォール、侵入防止システム、変更監視などの保護機能が含まれています。
+この記事では、Windows Server を実行している既存の仮想マシン (VM) または新しい VM に Trend Micro Deep Security as a Service をインストールして構成する方法を説明します。Deep Security as a Service には、ウイルス対策、ファイアウォール、侵入防止システム、変更監視などの保護機能が含まれています。この記事では、クラシック デプロイ モデルを使用して作成された仮想マシンを参照していることに注意してください。
 
 このクライアントは、VM エージェントを使用することにより、セキュリティ拡張機能としてインストールできます。新しい仮想マシンの場合には、Deep Security Agent と同時に VM エージェントをインストールします。既存の仮想マシンで、VM エージェントがインストールされていない場合には、最初に VM エージェントをダウンロードしてインストールする必要があります。この記事では、この両方の場合について説明します。
 
@@ -84,4 +84,4 @@ VM エージェントがインストールされている場合は、次のコ�
 [Windows Server が実行されている仮想マシンにログオンする方法]: virtual-machines-log-on-windows-server.md
 [Azure VM 拡張機能とその機能]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

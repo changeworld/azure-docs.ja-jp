@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Traffic Manager でのエンドポイントの管理"
+   pageTitle="Traffic Manager でのエンドポイントの管理 | Microsoft Azure"
    description="この記事では、Traffic Manager からエンドポイントの追加、削除、有効化、無効化を行う方法について説明します。"
    services="traffic-manager"
    documentationCenter=""
@@ -12,12 +12,12 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/27/2015"
-   ms.author="joaoma;cherylmc" />
+   ms.date="08/19/2015"
+   ms.author="joaoma" />
 
 # エンドポイントの追加と削除、有効化と無効化
 
-Azure Websites では、データセンター内の Web サイト向けに、Web サイトのモードに関係なく、フェールオーバーおよびラウンド ロビンによる負荷分散機能が既に用意されています。Traffic Manager を使用すると、異なるデータセンター内の Web サイトやクラウド サービスに対して、フェールオーバーおよびラウンド ロビンによる負荷分散を指定できます。この機能の実現に必要な最初の手順は、Traffic Manager にクラウド サービスまたは Web サイトのエンドポイントを追加することです。
+Azure Websites では、データセンター内の Web サイト向けに、Web サイトのモードに関係なく、フェールオーバーとラウンド ロビンによるトラフィック ルーティング機能があらかじめ用意されています。Traffic Manager を使用すると、異なるデータセンター内の Web サイトやクラウド サービスに対して、フェールオーバーとラウンド ロビンによるトラフィックルーティング方法を指定できます。この機能の実現に必要な最初の手順は、Traffic Manager にクラウド サービスまたは Web サイトのエンドポイントを追加することです。
 
 >[AZURE.NOTE]管理ポータルを使用して、外部の場所や Traffic Manager プロファイルをエンドポイントとして追加することはできません。REST API [Create Definition](http://go.microsoft.com/fwlink/p/?LinkId=400772) または Windows PowerShell [Add-AzureTrafficManagerEndpoint](http://go.microsoft.com/fwlink/p/?LinkId=400774) を使用する必要があります。
 
@@ -36,7 +36,7 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 6. このプロファイルでエンドポイントとして追加する Web サイトを一覧から選択します。Web サイトの名前をクリアすると、エンドポイントの一覧から削除されます。選択できる Web サイトは、各 Azure データセンター (リージョンとも呼ばれます) につき 1 つだけです。複数の Web サイトをホストしているデータセンター内の Web サイトを選択する場合、1 つの Web サイトを選択すると、そのデータセンター内の他の Web サイトは選択できなくなります。また、一覧には標準 Web サイトのみが表示されます。
 7. このプロファイルのエンドポイントを選択したら、右下にあるチェックマークをクリックして変更を保存します。
 
->[AZURE.NOTE]*フェールオーバー*負荷分散方法を使用している場合は、エンドポイントを追加または削除した後で、[構成] ページの [フェールオーバー優先度リスト] を調整して、構成に必要なフェールオーバー順序を反映させてください。詳細については、「[フェールオーバーの負荷分散の構成](traffic-manager-configure-failover-load-balancing.md)」を参照してください。
+>[AZURE.NOTE]*フェールオーバー*トラフィック ルーティング方法を使用している場合は、エンドポイントを追加または削除した後で、[構成] ページの [フェールオーバー優先度リスト] を調整して、構成に必要なフェールオーバー順序を反映させてください。詳細については、「[フェールオーバーによるトラフィック ルーティング方法の構成](traffic-manager-configure-failover-load-balancing.md)」をご覧ください。
 
 ## エンドポイントを無効にするには
 
@@ -68,7 +68,9 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 [Traffic Manager の監視について](traffic-manager-monitoring.md)
 
-[Traffic Manager の構成タスク](https://msdn.microsoft.com/library/azure/hh744830.aspx)
+[Traffic Manager - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
+
+[Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
 
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
 
@@ -77,4 +79,4 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 [Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

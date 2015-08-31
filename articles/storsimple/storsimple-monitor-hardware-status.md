@@ -1,18 +1,18 @@
 <properties 
-   pageTitle="StorSimple のハードウェア コンポーネントと状態"
+   pageTitle="StorSimple のハードウェア コンポーネントと状態 | Microsoft Azure"
    description="StorSimple Manager サービスを使用して StorSimple デバイスのハードウェア コンポーネントを監視する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
    manager="carolz"
-   editor="tysonn" />
+   editor="" />
 <tags 
    ms.service="storsimple"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/31/2015"
+   ms.date="08/14/2015"
    ms.author="alkohli" />
 
 # StorSimple のハードウェア コンポーネントと状態
@@ -45,14 +45,14 @@
 デバイス コンポーネントのハードウェアの状態を表示するには、次の手順を実行します。
 
 1. **[デバイス]** に移動し、特定の StorSimple デバイスを選択します。クリックしてデバイスレベルのメニューに移動し、**[メンテナンス]** タブをクリックします。 
-2. **[ハードウェアの状態]** セクションを見つけて、(既に説明したように) 使用可能なコンポーネントから選択します。コンポーネント ラベルの前にある矢印をクリックするだけで、一覧が展開され、さまざまなデバイス コンポーネントの状態が表示されます。[主エンクロージャのコンポーネントの詳細な一覧](Component-list-for-primary-enclosure)と[EBOD エンクロージャのコンポーネントの詳細な一覧](Component-list-for-EBOD-enclosure)を参照してください。
+2. **[ハードウェアの状態]** セクションを見つけて、(既に説明したように) 使用可能なコンポーネントから選択します。コンポーネント ラベルの前にある矢印をクリックするだけで、一覧が展開され、さまざまなデバイス コンポーネントの状態が表示されます。[主エンクロージャのコンポーネントの詳細な一覧](#component-list-for-primary-enclosure-of-storsimple-device)と[EBOD エンクロージャのコンポーネントの詳細な一覧](#component-list-for-ebod-enclosure-of-storsimple-device)をご覧ください。
 2. コンポーネントの状態を判断するには、次の色の設定スキームを使用します。
 	-  **緑色のチェック**: **正常**または**問題のない**コンポーネントを示します。
 	-  **黄色**: **警告**状態のコンポーネントを示します。
 	-  **赤色の感嘆符**: **障害**または**要注意**の状態にあるコンポーネントを示します。
 	-  **白地に黒色のテキスト**: 存在しないコンポーネントを示します。
 
-3. **正常**な状態にないコンポーネントを見つけた場合は、Microsoft サポートにお問い合わせください。デバイスでアラートが有効になっている場合は、電子メール アラートを受信します。障害が発生したハードウェア コンポーネントを交換する必要がある場合は、「[ハードウェア コンポーネントの交換ガイド](https://msdn.microsoft.com/library/azure/dn757736.aspx)」を参照してください。
+3. **正常**な状態にないコンポーネントを見つけた場合は、Microsoft サポートにお問い合わせください。デバイスでアラートが有効になっている場合は、電子メール アラートを受信します。障害が発生したハードウェア コンポーネントを交換する必要がある場合は、「[StorSimple のハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」をご覧ください。
 
 
 ## StorSimple デバイスの主エンクロージャのコンポーネントの一覧
@@ -125,10 +125,10 @@
 |デバイス コントローラーへの接続|I/O|物理|Controller|いいえ|EBOD I/O モジュールとデバイス コントローラー間の接続の状態を示します。|
 
 ## 次のステップ
-機能低下または障害の状態のデバイス コンポーネントのトラブルシューティングが必要な場合は、「[監視インジケーターによるトラブルシューティング](storsimple-monitoring-indicators)」を参照してください。
+機能低下または障害の状態のデバイス コンポーネントのトラブルシューティングが必要な場合は、「[StorSimple モニタリング インジケーター](storsimple-monitoring-indicators.md)」をご覧ください。
 
-障害が発生したハードウェア コンポーネントを交換するには、「[ハードウェア コンポーネントの交換ガイド](https://msdn.microsoft.com/library/azure/dn757736.aspx)」を参照してください。
+障害が発生したハードウェア コンポーネントを交換するには、「[StorSimple のハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」をご覧ください。
 
 デバイスの問題が解決しない場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

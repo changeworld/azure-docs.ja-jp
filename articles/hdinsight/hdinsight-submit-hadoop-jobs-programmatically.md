@@ -1,19 +1,20 @@
-<properties 
-	pageTitle="HDInsight での Hadoop ジョブの送信 | Microsoft Azure" 
-	description="Hadoop ジョブを Azure HDInsight Hadoop へ送信する方法について説明します。" 
-	editor="cgronlun" 
-	manager="paulettm" 
-	services="hdinsight" 
-	documentationCenter="" 
+<properties
+	pageTitle="HDInsight での Hadoop ジョブの送信 | Microsoft Azure"
+	description="Hadoop ジョブを Azure HDInsight Hadoop へ送信する方法について説明します。"
+	editor="cgronlun"
+	manager="paulettm"
+	services="hdinsight"
+	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/15/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
 # HDInsight での Hadoop ジョブの送信
@@ -47,12 +48,12 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 1.	**Azure PowerShell** を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」をご覧ください。
 
 3. これらの Azure PowerShell コマンドを実行して、次の変数を設定します。
-		
-		$subscriptionName = "<SubscriptionName>"   
-		$clusterName = "<HDInsightClusterName>"    
+
+		$subscriptionName = "<SubscriptionName>"
+		$clusterName = "<HDInsightClusterName>"
 
 	サブスクリプション名は、HDInsight クラスターの作成時に使用したサブスクリプションです。HDInsight クラスターは、MapReduce ジョブの実行に使用するクラスターです。
-	
+
 5. 次のコマンドを実行して、MapReduce ジョブ定義を作成します。
 
 		# Define the word count MapReduce job
@@ -64,34 +65,34 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 
 		# Submit the MapReduce job
 		Select-AzureSubscription $subscriptionName
-		$wordCountJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $wordCountJobDefinition 
+		$wordCountJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $wordCountJobDefinition
 
 	MapReduce ジョブ定義に加えて、MapReduce ジョブを実行する HDInsight クラスター名も指定します。
 
 7. 次のコマンドを実行して、MapReduce ジョブの完了を確認します。
 
 		# Wait for the job to complete
-		Wait-AzureHDInsightJob -Job $wordCountJob -WaitTimeoutInSeconds 3600 
-		
+		Wait-AzureHDInsightJob -Job $wordCountJob -WaitTimeoutInSeconds 3600
+
 
 8. 次のコマンドを実行して、MapReduce ジョブの実行中に発生したエラーを確認します。
 
 		# Get the job standard error output
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $wordCountJob.JobId -StandardError 
-					
+		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $wordCountJob.JobId -StandardError
+
 	次のスクリーンショットは、正常実行時の出力を示しています。正常でない場合は、エラー メッセージが表示されます。
 
 	![HDI.GettingStarted.RunMRJob][image-hdi-gettingstarted-runmrjob]
 
-		
+
 **MapReduce ジョブの結果を取得するには**
 
 1. **Azure PowerShell** を開きます。
 2. これらの Azure PowerShell コマンドを実行して、次の変数を設定します。
 
-		$subscriptionName = "<SubscriptionName>"       
+		$subscriptionName = "<SubscriptionName>"
 		$storageAccountName = "<StorageAccountName>"
-		$containerName = "<ContainerName>"			
+		$containerName = "<ContainerName>"
 
 	ストレージ アカウント名は、HDInsight クラスターのプロビジョニング時に指定した Azure ストレージ アカウントです。ストレージ アカウントは、既定の HDInsight クラスター ファイル システムとして使用する BLOB コンテナーをホストするために使用されます。コンテナー名は、クラスターのプロビジョニング時に別の名前を指定しない限り、通常、HDInsight クラスターと同じ名前です。
 
@@ -270,9 +271,9 @@ HDInsight クラスターには、*hivesampletable* という Hive テーブル�
 1.	**Azure PowerShell** を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」をご覧ください。
 
 2. 次のコマンドで最初の 2 つの変数を設定して、コマンドを実行します。
-		
-		$subscriptionName = "<SubscriptionName>"   
-		$clusterName = "<HDInsightClusterName>"             
+
+		$subscriptionName = "<SubscriptionName>"
+		$clusterName = "<HDInsightClusterName>"
 		$querystring = "SELECT * FROM hivesampletable WHERE Country='United Kingdom';"
 
 	$querystring は HiveQL クエリです。
@@ -354,10 +355,10 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 		using System.IO;
 		using System.Threading;
 		using System.Security.Cryptography.X509Certificates;
-		
+
 		using Microsoft.WindowsAzure.Storage;
 		using Microsoft.WindowsAzure.Storage.Blob;
-		
+
 		using Microsoft.WindowsAzure.Management.HDInsight;
 		using Microsoft.Hadoop.Client;
 
@@ -372,26 +373,26 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
                 Thread.Sleep(TimeSpan.FromSeconds(10));
             }
         }
-	
+
 10. **Main()** 関数で、次のコードをファイルに貼り付けます。
-		
+
 		// Set the variables
 		string subscriptionID = "<Azure subscription ID>";
 		string certFriendlyName = "<certificate friendly name>";
 
 		string clusterName = "<HDInsight cluster name>";
-		
+
 		string storageAccountName = "<Azure storage account name>";
 		string storageAccountKey = "<Azure storage account key>";
 		string containerName = "<Blob container name>";
-		
-	
-	これがプログラムで設定する必要のある変数のすべてです。Azure のサブスクリプション名は [Azure ポータル][azure-management-portal]で確認できます。
+
+
+	これがプログラムで設定する必要のある変数のすべてです。Azure のサブスクリプション名は [Azure プレビュー ポータル][azure-management-portal]で確認できます。
 
 	証明書については、「[Azure の管理証明書の作成とアップロード][azure-certificate]」をご覧ください。証明書を構成する簡単な方法は、Azure PowerShell コマンドレットの **Get-AzurePublishSettingsFile** と **Import-AzurePublishSettingsFile** を実行することです。管理証明書が自動的に作成されアップロードされます。これらのコマンドレットを実行した後、ワークステーションから **certmgr.msc** を開いて **[個人]** > **[証明書]** の順に展開すると、証明書が表示されます。Azure PowerShell コマンドレットによって作成された証明書は、**[発行先]** と **[発行元]** が [Azure Tools] になります。
 
 	Azure のストレージ アカウント名は、HDInsight クラスターのプロビジョニング時に指定するアカウントです。既定のコンテナー名は、HDInsight クラスター名と同じです。
-	
+
 11. **Main()** 関数の最後に次のコードをコピーして、MapReduce ジョブを定義します。
 
 
@@ -406,7 +407,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
         mrJobDefinition.Arguments.Add("wasb:///example/data/WordCountOutput");
 
 	引数が 2 つあります。最初の引数はソース ファイル名で、2 つ目の引数は出力ファイル パスです。wasb:// プレフィックスの詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」をご覧ください。
-		
+
 12. **Main()** 関数の最後に次のコードをコピーして、JobSubmissionCertificateCredential オブジェクトを作成します。
 
         // Get the certificate object from certificate store using the friendly name to identify it
@@ -414,7 +415,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
         store.Open(OpenFlags.ReadOnly);
         X509Certificate2 cert = store.Certificates.Cast<X509Certificate2>().First(item => item.FriendlyName == certFriendlyName);
         JobSubmissionCertificateCredential creds = new JobSubmissionCertificateCredential(new Guid(subscriptionID), cert, clusterName);
-		
+
 13. **Main()** 関数の最後に次のコードをコピーして、ジョブを実行し、ジョブの完了を待ちます。
 
         // Create a hadoop client to connect to HDInsight
@@ -430,18 +431,18 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 		// Print the MapReduce job output
 		Stream stream = new MemoryStream();
-		
+
 		CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=" + storageAccountName + ";AccountKey=" + storageAccountKey);
 		CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 		CloudBlobContainer blobContainer = blobClient.GetContainerReference(containerName);
 		CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference("example/data/WordCountOutput/part-r-00000");
-		
+
 		blockBlob.DownloadToStream(stream);
 		stream.Position = 0;
-		
+
 		StreamReader reader = new StreamReader(stream);
 		Console.WriteLine(reader.ReadToEnd());
-		
+
         Console.WriteLine("Press ENTER to continue.");
 		Console.ReadLine();
 
@@ -452,25 +453,25 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 アプリケーションを Visual Studio で開いている間に、**F5** キーを押してアプリケーションを実行します。コンソール ウィンドウが開き、アプリケーションの状態とアプリケーションの出力が表示されます。
 
 ##HDInsight .NET SDK を使用して Hadoop ストリーミング ジョブを送信する
-HDInsight クラスターには、C# で開発されたワード カウント Hadoop ストリーミング プログラムが付属します。Mapper プログラムは */example/apps/cat.exe* で、Reduce プログラムは */example/apps/wc.exe* です。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。
+HDInsight クラスターには、C#で開発されたワード カウント Hadoop ストリーミング プログラムが付属します。Mapper プログラムは */example/apps/cat.exe* で、Reduce プログラムは */example/apps/wc.exe* です。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。
 
 MapReduce ジョブを送信する .NET アプリケーションの作成方法の詳細については、「[HDInsight .NET SDK を使用して MapReduce ジョブを送信する](#mapreduce-sdk)」をご覧ください。
 
-Hadoop ストリーミング ジョブの開発とデプロイ方法の詳細については、「[HDInsight 用 C# Hadoop ストリーミング プログラムの開発][hdinsight-develop-streaming-jobs]」をご覧ください。
+Hadoop ストリーミング ジョブの開発とデプロイ方法の詳細については、「[HDInsight 用 C#Hadoop ストリーミング プログラムの開発][hdinsight-develop-streaming-jobs]」をご覧ください。
 
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 	using System.Threading.Tasks;
-	
+
 	using System.IO;
 	using System.Threading;
 	using System.Security.Cryptography.X509Certificates;
-	
+
 	using Microsoft.WindowsAzure.Management.HDInsight;
 	using Microsoft.Hadoop.Client;
-	
+
 	namespace SubmitStreamingJob
 	{
 	    class Program
@@ -481,7 +482,7 @@ Hadoop ストリーミング ジョブの開発とデプロイ方法の詳細に
 				// Set the variables
 				string subscriptionID = "<Azure subscription ID>";
 				string certFriendlyName = "<certificate friendly name>";
-		
+
 				string clusterName = "<HDInsight cluster name>";
 				string statusFolderName = @"/tutorials/wordcountstreaming/status";
 
@@ -495,28 +496,28 @@ Hadoop ストリーミング ジョブの開発とデプロイ方法の詳細に
 	                Reducer = "wc.exe",
 	                Mapper = "cat.exe"
 	            };
-	
+
 	            myJobDefinition.Files.Add("/example/apps/wc.exe");
 	            myJobDefinition.Files.Add("/example/apps/cat.exe");
-	
+
 	            // Get the certificate object from certificate store using the friendly name to identify it
 	            X509Store store = new X509Store();
 	            store.Open(OpenFlags.ReadOnly);
 	            X509Certificate2 cert = store.Certificates.Cast<X509Certificate2>().First(item => item.FriendlyName == certFriendlyName);
-	
+
 	            JobSubmissionCertificateCredential creds = new JobSubmissionCertificateCredential(new Guid(subscriptionID), cert, clusterName);
-	
+
 	            // Create a hadoop client to connect to HDInsight
 	            var jobClient = JobSubmissionClientFactory.Connect(creds);
-	
+
 	            // Run the MapReduce job
 	            Console.WriteLine("----- Submit the Hadoop streaming job ...");
 	            JobCreationResults mrJobResults = jobClient.CreateStreamingJob(myJobDefinition);
-	
+
 	            // Wait for the job to complete
 	            Console.WriteLine("----- Wait for the Hadoop streaming job to complete ...");
 	            WaitForJobCompletion(mrJobResults, jobClient);
-	
+
 	            // Display the error log
 	            Console.WriteLine("----- The hadoop streaming job error log.");
 	            using (Stream stream = jobClient.GetJobErrorLogs(mrJobResults.JobId))
@@ -524,7 +525,7 @@ Hadoop ストリーミング ジョブの開発とデプロイ方法の詳細に
 	                var reader = new StreamReader(stream);
 	                Console.WriteLine(reader.ReadToEnd());
 	            }
-	
+
 	            // Display the output log
 	            Console.WriteLine("----- The hadoop streaming job output log.");
 	            using (Stream stream = jobClient.GetJobOutput(mrJobResults.JobId))
@@ -532,11 +533,11 @@ Hadoop ストリーミング ジョブの開発とデプロイ方法の詳細に
 	                var reader = new StreamReader(stream);
 	                Console.WriteLine(reader.ReadToEnd());
 	            }
-	
+
 	            Console.WriteLine("----- Press ENTER to continue.");
 	            Console.ReadLine();
 	        }
-	
+
 	        private static void WaitForJobCompletion(JobCreationResults jobResults, IJobSubmissionClient client)
 	        {
 	            JobDetails jobInProgress = client.GetJob(jobResults.JobId);
@@ -554,7 +555,7 @@ Hadoop ストリーミング ジョブの開発とデプロイ方法の詳細に
 
 
 
-##HDInsight .NET SDK を使用して Hive ジョブを送信する 
+##HDInsight .NET SDK を使用して Hive ジョブを送信する
 HDInsight クラスターには、*hivesampletable* という Hive テーブルのサンプルが付属します。ここでは、.NET アプリケーションを作成して Hive ジョブを実行して、HDInsight クラスター上に作成された Hive テーブルを一覧表示する方法を説明します。Hive の使い方の詳細については、「[HDInsight での Hive の使用][hdinsight-use-hive]」をご覧ください。
 
 SDK を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
@@ -623,19 +624,19 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
                 Thread.Sleep(TimeSpan.FromSeconds(10));
             }
         }
-	
+
 10. **Main()** 関数で、次のコードをファイルに貼り付けます。
-		
+
 		// Set the variables
 		string subscriptionID = "<Azure subscription ID>";
 		string clusterName = "<HDInsight cluster name>";
-		string certFriendlyName = "<certificate friendly name>";		
-		
-	
+		string certFriendlyName = "<certificate friendly name>";
+
+
 	これがプログラムで設定する必要のある変数のすべてです。Azure のサブスクリプション ID はシステム管理者から入手できます。
 
 	証明書については、「[Azure の管理証明書の作成とアップロード][azure-certificate]」をご覧ください。証明書を構成する簡単な方法は、Azure PowerShell コマンドレットの **Get-AzurePublishSettingsFile** と **Import-AzurePublishSettingsFile** を実行することです。管理証明書が自動的に作成されアップロードされます。これらのコマンドレットを実行した後、ワークステーションから **certmgr.msc** を開いて **[個人]** > **[証明書]** の順に展開すると、証明書が表示されます。Azure PowerShell コマンドレットによって作成された証明書には、**[発行先]** と **[発行元]** フィールドの Azure Tools があります。
-	
+
 11. **Main()** 関数の最後に次のコードをコピーして、Hive ジョブを定義します。
 
         // define the Hive job
@@ -656,15 +657,15 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
             File = "/user/admin/showtables.hql"
         };
 
-		
+
 12. **Main()** 関数の最後に次のコードをコピーして、**JobSubmissionCertificateCredential**オブジェクトを作成します。
-	
+
         // Get the certificate object from certificate store using the friendly name to identify it
         X509Store store = new X509Store();
         store.Open(OpenFlags.ReadOnly);
         X509Certificate2 cert = store.Certificates.Cast<X509Certificate2>().First(item => item.FriendlyName == certFriendlyName);
         JobSubmissionCertificateCredential creds = new JobSubmissionCertificateCredential(new Guid(subscriptionID), cert, clusterName);
-		
+
 13. **Main()** 関数の最後に次のコードをコピーして、ジョブを実行し、ジョブの完了を待ちます。
 
         // Submit the Hive job
@@ -673,7 +674,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
         // Wait for the job to complete
         WaitForJobCompletion(jobResults, jobClient);
-		
+
 14. **Main()** 関数の最後に次のコードをコピーして、Hive ジョブの出力を表示します。
 
         // Print the Hive job output
@@ -691,7 +692,9 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 	hivesampletable
 
+##Visual Studio の HDInsight ツールを使用してジョブを送信する
 
+Visual Studio の HDInsight ツールを使用して、Hive クエリと Pig スクリプトを実行できます。[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページをご覧ください。
 
 
 ##次のステップ
@@ -706,7 +709,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 
 [azure-certificate]: http://msdn.microsoft.com/library/windowsazure/gg551722.aspx
-[azure-management-portal]: http://manage.windowsazure.com/
+[azure-management-portal]: https://portal.azure.com/
 
 [hdinsight-visual-studio-tools]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
@@ -727,6 +730,5 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [image-hdi-gettingstarted-mrjoboutput]: ./media/hdinsight-submit-hadoop-jobs-programmatically/HDI.GettingStarted.MRJobOutput.png
 
 [apache-hive]: http://hive.apache.org/
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

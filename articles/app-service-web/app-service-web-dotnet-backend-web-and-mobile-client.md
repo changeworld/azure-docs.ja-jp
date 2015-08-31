@@ -13,12 +13,11 @@
 	ms.tgt_pltfrm="NA"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="03/24/2015"
+	ms.date="08/18/2015"
 	ms.author="donnam"/>
 
 # Azure App Service でモバイルおよび Web クライアントを使用してアプリを作成する
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-web-and-mobile](../../includes/app-service-mobile-dotnet-backend-web-and-mobile.md)]
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

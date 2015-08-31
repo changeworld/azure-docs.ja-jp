@@ -5,6 +5,7 @@
 	manager="paulettm"
 	services="hdinsight"
 	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"/>
 
 <tags
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/11/2015"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
 #HDInsight の Hadoop での Sqoop の使用 (Windows)
@@ -57,7 +58,7 @@ HDInsight クラスターでサポートされている Sqoop のバージョン
 <tr><td>Azyre SQL データベースのログイン名</td><td>$sqlDatabaseLogin</td><td></td><td>Azure SQL データベースのログイン名。</td></tr>
 <tr><td>Azure SQL データベースのログイン パスワード</td><td>$sqlDatabasePassword</td><td></td><td>Azure SQL データベースのログイン パスワード。</td></tr>
 <tr><td>Azure SQL データベース名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先、またはインポート元になる Azure SQL データベース。</td></tr>
-</table>> [AZURE.NOTE]既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
+</table>> [AZURE.NOTE]既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure プレビュー ポータルから有効にする必要があります。Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
 
 * **SQL Server**: HDInsight クラスターが SQL Server と同じ Azure の仮想ネットワーク上にある場合は、この記事の手順を使用して、SQL Server データベースとの間でデータをインポートおよびエクスポートできます。
 
@@ -220,7 +221,7 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 		Write-Host "Done" -ForegroundColor Green
 
 5. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。
-6. [Azure ポータル][azure-management-portal]を使用して、テーブルとクラスター化インデックスを確認します。
+6. [プレビュー ポータル][azure-management-portal]を使用して、テーブルとクラスター化インデックスを確認します。
 
 **SQL Server の場合**
 
@@ -343,7 +344,7 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 		$destBlob.UploadFromStream($memStream)
 
 5. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。
-6. 変更されたデータ ファイルを確認する場合は、Azure ポータル、Azure Storage エクスプローラー ツール、または Azure PowerShell を使用できます。「[Azure HDInsight の概要][hdinsight-get-started]」に、Azure PowerShell を使用してファイルをダウンロードし、ファイルの内容を表示するコード例が示されています。
+6. 変更されたデータ ファイルを確認する場合は、プレビュー ポータル、Azure Storage エクスプローラー ツール、または Azure PowerShell を使用できます。「[Azure HDInsight の概要][hdinsight-get-started]」に、Azure PowerShell を使用してファイルをダウンロードし、ファイルの内容を表示するコード例が示されています。
 
 
 ##PowerShell を使用して Sqoop エクスポートを実行する
@@ -408,7 +409,7 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 	フィールドの区切り記号は **\\0x20** (スペース) です。区切り記号は、sample.log ファイルの Azure PowerShell スクリプトで定義されています。**-m 1** については、[Sqoop ユーザー ガイド][sqoop-user-guide-1.4.4]を参照してください。
 
 5. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。
-6. [Azure ポータル][azure-management-portal]を使用して、エクスポートされたデータを確認します。
+6. [プレビュー ポータル][azure-management-portal]を使用して、エクスポートされたデータを確認します。
 
 **hivesampletable Hive テーブルをエクスポートするには**
 
@@ -459,7 +460,7 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardOutput
 
 5. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。
-6. [Azure ポータル][azure-management-portal]を使用して、エクスポートされたデータを確認します。
+6. [プレビュー ポータル][azure-management-portal]を使用して、エクスポートされたデータを確認します。
 
 
 
@@ -611,7 +612,7 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardOutput
 
 5. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。
-6. 変更されたデータ ファイルを確認する場合は、Azure ポータル、Azure Storage エクスプローラー ツール、または Azure PowerShell を使用できます。「[HDInsight の概要][hdinsight-get-started]」に、Azure PowerShell を使用してファイルをダウンロードし、ファイルの内容を表示するコード例が示されています。
+6. 変更されたデータ ファイルを確認する場合は、プレビュー ポータル、Azure Storage エクスプローラー ツール、または Azure PowerShell を使用できます。「[HDInsight の概要][hdinsight-get-started]」に、Azure PowerShell を使用してファイルをダウンロードし、ファイルの内容を表示するコード例が示されています。
 
 ##次のステップ
 
@@ -624,7 +625,7 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 
 
 
-[azure-management-portal]: https://manage.windowsazure.com/
+[azure-management-portal]: https://portal.azure.com/
 
 [hdinsight-versions]: hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
@@ -643,6 +644,5 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure Automation の証明書資産"
+   pageTitle="Azure Automation の証明書資産 | Microsoft Azure"
    description="証明書を Azure Automation に安全に保存し、Runbook でアクセスして Azure およびサードパーティのリソースで認証できます。この記事では、証明書の詳細およびテキスト作成とグラフィカル作成の両方で証明書を使用する方法について説明します。"
    services="automation"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/14/2015"
+   ms.date="08/18/2015"
    ms.author="bwren" />
 
 # Azure Automation の証明書資産
@@ -107,4 +107,4 @@ Runbook で証明書を使用するには、**Get-AutomationCertificate** アク
 
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow) 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

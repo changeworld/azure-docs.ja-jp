@@ -1,18 +1,18 @@
 <properties 
-    pageTitle="StorSimple 8000 シリーズ リリース バージョンのリリース ノート - 2014 年 7 月"
+    pageTitle="StorSimple 8000 シリーズ リリース バージョンのリリース ノート - 2014 年 7 月 | Microsoft Azure"
     description="Microsoft Azure StorSimple の 2014 年 7 月リリースにおける新機能、問題、回避策について説明します。"
     services="storsimple"
     documentationCenter="NA"
     authors="SharS"
-    manager="adinah"
-    editor="tysonn" />
+    manager="carolz"
+    editor="" />
  <tags 
     ms.service="storsimple"
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="05/27/2015"
+    ms.date="08/19/2015"
     ms.author="v-sharos" />
 
 # StorSimple 8000 シリーズ リリース バージョンのリリース ノート - 2014 年 7 月 
@@ -42,4 +42,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

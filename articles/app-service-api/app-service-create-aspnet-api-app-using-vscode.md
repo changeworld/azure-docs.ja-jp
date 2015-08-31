@@ -448,4 +448,4 @@ Azure プレビュー ポータルで、目的の API アプリの **[API アプ
 このチュートリアルでは、Visual Studio Code を使用して API アプリを作成する方法について説明しました。Visual Studio Code の詳細については、[Visual Studio Code](https://code.visualstudio.com/Docs/) に関するページをご覧ください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページをご覧ください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

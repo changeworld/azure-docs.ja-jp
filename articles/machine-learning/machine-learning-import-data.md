@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2015"
+	ms.date="08/14/2015"
 	ms.author="garye" />
 
 
-#さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする
+# さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする
 
 Azure Machine Learning Studio で予測分析ソリューションを開発する場合、問題のある領域の代表的なデータを使用してモデルをトレーニングします。このチュートリアルでは、Machine Learning Studio でモデルをトレーニングするためにさまざまなデータ ソースからデータをインポートする方法を紹介します。サポートされているデータ形式についても紹介します。
 
@@ -141,6 +141,5 @@ OData URL を指定することによって、データ フィード プロバ�
 [convert-to-dataset]: https://msdn.microsoft.com/library/azure/72bf58e0-fc87-4bb1-9704-f1805003b975/
 [metadata-editor]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

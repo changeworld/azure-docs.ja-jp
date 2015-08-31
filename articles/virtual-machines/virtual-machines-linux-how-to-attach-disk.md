@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="dsk-2015"
 	manager="timlt"
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -18,7 +19,7 @@
 
 # データ ディスクを Linux 仮想マシンに接続する方法
 
-空のディスクと、データが含まれているディスクのどちらも接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。
+空のディスクと、データが含まれているディスクのどちらも接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。この記事では、クラシック デプロイ モデルを使用して作成した仮想マシンを参照します。
 
 > [AZURE.NOTE]仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成するとき、オペレーティング システム ディスクと一時ディスクが表示されます。**データの格納に一時ディスクを使用しないでください。** 名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。一時ディスクは通常、Azure Linux Agent によって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt** )に自動的にマウントされます。一方で、データ ディスクには Linux カーネルによって `/dev/sdc` のような名前が付けられる場合があります。その場合、このリソースをパーティション分割し、フォーマットしてからマウントする必要があります。詳細については、「[Azure Linux エージェント ユーザー ガイド][Agent]」を参照してください。
 
@@ -164,10 +165,10 @@
 
 [Linux 仮想マシンからディスクを切断する方法](virtual-machines-linux-how-to-detach-disk.md)
 
-[Azure サービス管理での Azure CLI の使用](virtual-machines-command-line-tools.md)
+[サービス管理 API での Azure CLI の使用](virtual-machines-command-line-tools.md)
 
 <!--Link references-->
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-how-to-log-on.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

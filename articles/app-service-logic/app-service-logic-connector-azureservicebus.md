@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/09/2015"
+   ms.date="08/19/2015"
    ms.author="andalmia"/>
 
 
@@ -37,7 +37,7 @@ Message Available | メッセージを送信
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
 2. "Azure Service Bus コネクタ" を検索して選択し、**[作成]** を選択します。
-3. 名前、App Service プラン、その他のプロパティを入力します。  
+3. 名前、App Service プラン、その他のプロパティを入力します。
 	![][1]
 
 4. 次のパッケージの設定を入力します。
@@ -53,36 +53,36 @@ Message Available | メッセージを送信
 ## ロジック アプリでの Azure Service Bus コネクタの使用
 コネクタが作成されたら、ロジック アプリのトリガーやアクションとして Azure Service Bus コネクタを使用できます。これを行うには、次の手順を実行します。
 
-1.	新しいロジック アプリを作成し、Azure Service Bus コネクタが存在する同じリソース グループを選択します。  
+1.	新しいロジック アプリを作成し、Azure Service Bus コネクタが存在する同じリソース グループを選択します。
 	![][2]
 
-2.	[トリガーとアクション] を開き、Logic Apps デザイナーを開いてワークフローを構成します。  
+2.	[トリガーとアクション] を開き、Logic Apps デザイナーを開いてワークフローを構成します。
 	![][3]
 
-3. Azure Service Bus コネクタが右側のギャラリーの [このリソース グループの API Apps] セクションに表示されます。  
+3. Azure Service Bus コネクタが右側のギャラリーの [このリソース グループの API Apps] セクションに表示されます。
 	![][4]
 
 4. [Azure Service Bus コネクタ] をクリックして、Azure Service Bus コネクタをエディターにドロップできます。
 
-5.	これで、ワークフローで Azure Service Bus コネクタを使用できるようになりました。今後は、Azure Service Bus トリガー ("Message Available") を使って取得したメッセージを、フローの他のアクションで使用できます。  
-	![][5]  
+5.	これで、ワークフローで Azure Service Bus コネクタを使用できるようになりました。今後は、Azure Service Bus トリガー ("Message Available") を使って取得したメッセージを、フローの他のアクションで使用できます。
+	![][5]
 
 	![][6]
 
 Azure Service Bus の "Send Message" アクションを使用することもできます。
-![][7]
+	![][7]
 
 ![][8]
 
 ## コネクタでできること
 コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
-REST API を使用した API Apps を作成します。[コネクタと API Apps のリファレンス](http://go.microsoft.com/fwlink/p/?LinkId=529766)に関するページを参照してください。
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
 
-	<!--Image references-->
+<!--Image references-->
 [1]: ./media/app-service-logic-connector-azureservicebus/img1.PNG
 [2]: ./media/app-service-logic-connector-azureservicebus/img2.PNG
 [3]: ./media/app-service-logic-connector-azureservicebus/img3.png
@@ -92,4 +92,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [7]: ./media/app-service-logic-connector-azureservicebus/img7.PNG
 [8]: ./media/app-service-logic-connector-azureservicebus/img8.PNG
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

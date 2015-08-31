@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="07/31/2015"
+   ms.date="08/19/2015"
    ms.author="maroche"/>
 
 # Azure Data Catalog とは何ですか
@@ -71,6 +71,8 @@ Microsoft **Azure Data Catalog** は、完全に管理されたクラウド サ�
 - SQL Server Analysis Services Multidimensional KPI
 - SQL Server Analysis Services 表形式テーブル
 - SQL Server Reporting Services レポート
+- Azure Storage BLOB
+- Azure Storage ディレクトリ
 
 **Azure Data Catalog** のプレビュー期間中に、データ ソースと資産の種類は追加される予定です。
 
@@ -111,7 +113,7 @@ Microsoft **Azure Data Catalog** は、完全に管理されたクラウド サ�
 
 > [AZURE.IMPORTANT]**Azure Data Catalog** からデータ ソースを削除すると、**Azure Data Catalog** サービスに保存されているメタデータのみが削除されます。元のデータ ソースは、一切影響を受けません。
 
-## データ ソースの使用 
+## データ ソースの使用
 
 データ検出の最終的な目標は、必要なデータを見つけて、選択したデータ ツールで使用することです。Azure Data Catalog のデータ使用エクスペリエンスでは、2 つの方法でこの機能を利用できます。
 
@@ -120,4 +122,4 @@ Microsoft **Azure Data Catalog** は、完全に管理されたクラウド サ�
 
 > [AZURE.NOTE]Azure Data Catalog のプレビューでは、直接サポートされているのは Microsoft Excel と SQL Server Reporting Services レポート マネージャーのみです。これらは **[開く]** メニューで使用できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -3,8 +3,8 @@
 	description="Azure コマンドライン インターフェイスによるロールベースのアクセス制御の管理"
 	services="azure-portal"
 	documentationCenter="na"
-	authors="Justinha"
-	manager="terrylan"
+	authors="IHenkel"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2015"
-	ms.author="justinha"/>
+	ms.date="08/14/2015"
+	ms.author="inhenk"/>
 
 # Azure コマンドライン インターフェイス (Azure CLI) によるロールベースのアクセス制御の管理 #
 
@@ -94,13 +94,15 @@ Azure AD ディレクトリ内の特定のユーザー (リソース グルー�
 
 - ロールを割り当てるユーザー: 次の Azure Active Directory コマンドレットを使用して、ディレクトリに入っているユーザー、グループ、およびサービス プリンシパルを確認できます。
 
-    `azure ad user list
-    azure ad user show
-    azure ad group list
-    azure ad group show
-    azure ad group member list
-    azure ad sp list
-    azure ad sp show`
+    ```
+    azure ad user list  
+    azure ad user show  
+    azure ad group list  
+    azure ad group show  
+    azure ad group member list  
+    azure ad sp list  
+    azure ad sp show  
+    ```
 
 - 割り当てる役割: 次のコマンドレットを使用して、サポートされているロールの定義を表示できます。
 
@@ -148,6 +150,5 @@ Azure CLI を使用したロールベースのアクセス制御の管理の詳�
 - [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
 - [Windows PowerShell を使用したロールベースのアクセス制御の構成](role-based-access-control-powershell.md)
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

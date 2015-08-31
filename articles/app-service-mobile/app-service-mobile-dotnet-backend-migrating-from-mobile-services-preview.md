@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/23/2015" 
+	ms.date="08/11/2015" 
 	ms.author="mahender"/>
 
 # 既存の Azure Mobile Service を Azure App Service モバイル アプリに移行する
@@ -30,18 +30,12 @@ App Service Mobile Apps は、Microsoft Azure を使用してモバイル アプ
 
 新しいモデルは、Mobile Services の操作における主な問題の 1 つにも対処します。現在は、依存関係の競合を気にせずに、任意のバージョンの NuGet パッケージをデプロイできます。移行の利点の詳細については、[Web サイトと Mobile Services を使用している場合に App Service を使用する利点]に関するトピックを参照してください。
 
-App Service モバイル アプリを作成すると、以下が実現されます。
-
-- 新しい機能が含まれるモバイル アプリ リソース 
-- モバイル アプリ サーバー SDK を使用して Web API プロジェクトを実行するモバイル アプリ コード サイト
-- ログインを処理し、App Service API Apps をアプリケーションに追加できる App Service ゲートウェイ
-
 ##<a name="overview"></a>基本的な移行の概要
 移行の最も簡単な方法は、App Service モバイル アプリの新しいインスタンスを作成することです。多くの場合、移行は、新しいサーバー SDK に切り替え、コードを新しいモバイル アプリに再発行するのと同じくらい簡単です。ただし、一部のシナリオは、高度な認証シナリオやスケジュールされたジョブの操作など、いくつか追加の構成が必要になります。次の各のセクションで、これらについて説明します。
 
 >[AZURE.NOTE]移行を開始する前に、このトピックの残りの部分を読み、よく理解しておくことをお勧めします。下に列記した機能のうち、使用する機能をすべてメモしてください。
 
-自分のペースでコードを移行し、テストできます。モバイル アプリ バックエンドの準備ができたら、クライアント アプリケーションの新しいバージョンをリリースすることができます。この時点で、アプリケーションの 2 つのコピーが同時に実行しています。バグの修正が両方に適用されることを確認する必要があります。最後に、ユーザーが最新のバージョンに更新したら、元のモバイル サービスを削除することができます。
+自分のペースでコードを移行し、テストできます。モバイル アプリ バックエンドの準備ができたら、クライアント アプリケーションの新しいバージョンをリリースすることができます。この時点で、アプリケーション バックエンドの 2 つのコピーが同時に実行しています。バグの修正が両方に適用されることを確認する必要があります。最後に、ユーザーが最新のバージョンに更新したら、元のモバイル サービスを削除することができます。
 
 この移行の全手順は、次のとおりです。
 
@@ -52,24 +46,59 @@ App Service モバイル アプリを作成すると、以下が実現されま�
 
 
 ##<a name="mobile-app-version"></a>アプリケーションのモバイル アプリ バージョンを設定する
-移行の最初の手順では、アプリケーションの新しいバージョンをホストする App Service を作成します。[Azure の管理ポータルのプレビュー]で新しいモバイル アプリを作成することができます。詳細については、[モバイル アプリの作成]に関するトピックを参照してください。
+移行の最初の手順では、アプリケーションの新しいバージョンをホストする Mobile App リソースを作成します。[Azure の管理ポータルのプレビュー]で新しいモバイル アプリを作成することができます。詳細については、[モバイル アプリの作成]に関するトピックを参照してください。
 
-Mobile Services で使用したのと同じデータベースと通知ハブを使用することもできます。[Azure の管理ポータル]の [Mobile Services] セクションの **[構成]** タブから次の値をコピーします。**[接続文字列]** の `MS_NotificationHubConnectionString` と `MS_TableConnectionString` をコピーします。モバイル アプリ コード サイトに移動し、**[設定]**、**[アプリケーションの設定]** の順にクリックします。これらの接続文字列を追加して、既存の値を上書きします。同様に、これらの値をモバイル アプリ リソースに追加する必要があります。そのためには、[モバイル アプリ] ブレードに移動し、**[設定]**、**[プロパティ]** の順にクリックします。**[API アプリ ホスト]** というラベルの付いたリンクをクリックして、モバイル アプリ リソースをホストしているサイトを表示します。**[設定]**、**[アプリケーションの設定]** の順にクリックして、コード サイトと同様に、接続文字列に貼り付けます。その他の値は変更しないでください。モバイル アプリの機能を損なうことになります。この時点では、この構成手順の後も、[モバイル アプリ] ブレードには既存の接続が引き続き表示されることに注意してください。モバイル アプリ エクスペリエンスが更新されると、追加の操作が必要になる場合があります。
+Mobile Services で使用したのと同じデータベースと通知ハブを使用することもできます。[Azure の管理ポータル]の [Mobile Services] セクションの **[構成]** タブから次の値をコピーします。**[接続文字列]** の `MS_NotificationHubConnectionString` と `MS_TableConnectionString` をコピーします。Mobile App サイトに移動し、**[設定]**、**[アプリケーションの設定]** の順にクリックし、これらの接続文字列を **[接続文字列]** セクションに追加して、既存の値を上書きします。
 
-Mobile Apps は、Mobile Services ランタイムとほぼ同じ機能を持つ新しい[モバイル アプリ サーバー SDK] を提供します。既存のプロジェクトから Mobile Services NuGet を削除して、代わりに、サーバー SDK を含めてください。Visual Studio を使用して、一部の using ステートメントを修正することが必要になる場合があります。サーバー SDK に含まれていない主な項目として、PushRegistrationHandler クラスがあります。登録処理はモバイル アプリとはわずかに異なり、タグのない登録が既定で有効になっています。カスタム API を使用してタグを管理することができます。詳細については、[モバイル アプリへのプッシュ通知の追加]に関するトピックを参照してください。
+Mobile Apps は、Mobile Services ランタイムとほぼ同じ機能を持つ新しい[モバイル アプリ サーバー SDK] を提供します。最初に既存のプロジェクトから Mobile Services NuGet を削除して、代わりに、サーバー SDK を含めてください。この移行では、大部分の開発者は `Microsoft.Azure.Mobile.Server.Quickstart` パッケージをダウンロードしてインストールしようと考えます。これにより、必要な設定全体を取得できるからです。このため、WebApiConfig.cs では、
+
+    // Use this class to set configuration options for your mobile service
+    ConfigOptions options = new ConfigOptions();
+    
+    // Use this class to set WebAPI configuration options
+    HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
+
+を以下に置き換えることができます。
+
+    HttpConfiguration config = new HttpConfiguration();
+
+    new MobileAppConfiguration()
+	    .UseDefaultConfiguration()
+	    .ApplyTo(config);
+
+
+>[AZURE.NOTE]新しいサーバー SDK と、アプリから機能を追加/削除する方法の詳細については、「[.NET サーバー SDK の使用法 (How to use the .NET server SDK)]」トピックをご覧ください。
+
+Mobile Services と Mobile Apps SDK には他にもいくつかの変更点がありますが、簡単に対処できます。プロジェクト全体にわたって、Visual Studio を使用して、一部の using ステートメントを修正する必要が生じる場合があります。
+
+クラス定義の直前に単にそのデコレーターを置くことで、`[MobileAppController]` 属性をすべての ApiControllers に追加する必要があります。
+
+`[AuthorizeLevel]` 属性はなくなるため、代わりに標準 ASP.NET `[Authorize]` 属性を使用してコントローラーとメソッドを装飾する必要があります。また、`[AuthorizeLevel]` が含まれないデコレーターはアプリケーション キーによって保護されなくなることにも注意してください。これはパブリックとして扱われます。新しい SDK ではアプリケーション キーとマスター キーは使用されません。
+
+プッシュについては、サーバー SDK に含まれていない主な項目として、PushRegistrationHandler クラスがあります。登録処理はモバイル アプリとはわずかに異なり、タグのない登録が既定で有効になっています。カスタム API を使用してタグを管理することができます。詳細については、[モバイル アプリへのプッシュ通知の追加]に関するトピックを参照してください。
 
 スケジュールされたジョブは、モバイル アプリには組み込まれません。そのため、.NET バックエンド内にある既存のジョブは個別に移行する必要があります。1 つの方法としては、スケジュールされた [Web ジョブ]をモバイル アプリ コード サイトで作成します。また、ジョブ コードを保持するコントローラーを設定し、必要なスケジュールでそのエンドポイントをヒットするように [Azure Scheduler] を構成することもできます。
 
+`ApiServices` オブジェクトは SDK に含まれなくなりました。Mobile App の設定にアクセスするために、次の手順を使用できます。
+
+    MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings(); 
+
+同様に、ロギングは標準の ASP.NET トレース書き込みを使用して行われるようになりました。
+
+    ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
+    traceWriter.Info("Hello, World");  
 
 ##<a name="authentication"></a>認証に関する考慮事項
-モバイル アプリと Mobile Services の最も大きな違いの 1 つは、モバイル アプリの場合、ログインは、コード サイトではなく、App Service ゲートウェイによって処理されるということです。ほとんどのアプリケーションでは、そのための追加のアクションは必要ありませんが、注目すべき高度なシナリオがいくつかあります。
+Mobile Apps と Mobile Services の大きな違いの 1 つは、Mobile Apps の場合、ログインはコードを実行しているサイトではなく、App Service ゲートウェイによって処理されるということです。リソース グループにそのゲートウェイがない場合、管理ポータルの Azure Mobile App に移動することでゲートウェイをプロビジョニングできます。次に **[設定]** を選択し、**[モバイル]** カテゴリの下にある **[ユーザー認証]** を選択します。**[作成]** をクリックしてゲートウェイと Mobile App を関連付けます。
+
+この他に、ほとんどのアプリケーションでは追加のアクションは必要ありませんが、注目すべき高度なシナリオがいくつかあります。
 
 ほとんどのアプリケーションでは、ターゲット ID プロバイダーへの新しい登録を使用できます。App Service アプリへの ID の追加の詳細については、[モバイル アプリへの認証の追加]に関するチュートリアルを参照してください。
 
 アプリケーションでユーザー ID をデータベースに格納しているなど、ユーザー ID と依存関係がある場合は、Mobile Services のユーザー ID と App Service Mobile Apps のユーザー ID が異なることに注意する必要があります。ただし、次を使用して、App Service Mobile App アプリケーションで Mobile Services のユーザー ID を取得することができます (例として Facebook を使用)。
 
-    ServiceUser user = (ServiceUser) this.User;
-    FacebookCredentials creds = (await user.GetIdentitiesAsync()).OfType< FacebookCredentials >().FirstOrDefault();
+    MobileAppUser = (MobileAppUser) this.User;
+    FacebookCredentials creds = await user.GetIdentityAsync<FacebookCredentials>();
     string mobileServicesUserId = creds.Provider + ":" + creds.UserId;
 
 さらに、ユーザー ID と依存関係がある場合は、可能であれば、ID プロバイダーへの同じ登録を使用することが重要です。ユーザー ID は通常、使用されたアプリケーション登録に制限されるため、新しい登録を導入した場合、ユーザーとそのデータを照合する際に問題が生じる可能性があります。何かの理由で、アプリケーションで同じ ID プロバイダー登録を使用する必要がある場合は、次の手順を使用できます。
@@ -79,15 +108,15 @@ Mobile Apps は、Mobile Services ランタイムとほぼ同じ機能を持つ�
 
 >[AZURE.NOTE]Twitter、Microsoft アカウントなどの一部のプロバイダーでは、異なるドメインのリダイレクト URI を複数指定することはできません。アプリケーションでこれらプロバイダーのいずれかを使用しており、ユーザー ID と依存関係がある場合は、現時点では移行しないことをお勧めします。
 
-##<a name="updating clients"></a>クライアントの更新
+##<a name="updating-clients"></a>クライアントの更新
 モバイル アプリ バックエンドを運用している場合は、クライアント アプリケーションを更新して新しいモバイル アプリを使用することができます。モバイル アプリには、新しいバージョンの Mobile Services クライアント SDK も含まれ、開発者は App Service の新しい機能を活用できるようになります。モバイル アプリ バージョンのバックエンドを使用している場合は、新しいバージョンの SDK を利用する新しいバージョンのクライアント アプリケーションをリリースすることができます。
 
-クライアント コードに必要にな主な変更は、コンストラクターに関するものです。モバイル アプリ コード サイトの URL とアプリケーション キーのほかに、認証設定をホストする App Service ゲートウェイの URL を指定する必要があります。
+クライアント コードに必要にな主な変更は、コンストラクターに関するものです。Mobile App サイトの URL のほかに、認証設定をホストする App Service ゲートウェイの URL を指定する必要があります。
 
     public static MobileServiceClient MobileService = new MobileServiceClient(
-        "https://contoso-code.azurewebsites.net", //URL of the Mobile App Code
-        "https://contosogateway.azurewebsites.net", //URL of the App Service Gateway
-        "983682c4-f043-483e-a75b-8a8545fc1846"
+        "https://contoso.azurewebsites.net", // URL of the Mobile App
+        "https://contoso-gateway.azurewebsites.net", // URL of the App Service Gateway
+        "" // Formerly app key. To be removed in future client SDK update
     );
 
 これにより、クライアントは、モバイル アプリのコンポーネントに要求をルーティングすることができます。ターゲット プラットフォームごとの詳細については、該当する[モバイル アプリの作成]に関するトピックを参照してください。
@@ -114,5 +143,6 @@ Mobile Apps は、Mobile Services ランタイムとほぼ同じ機能を持つ�
 [Azure Scheduler]: /ja-jp/documentation/services/scheduler/
 [Web ジョブ]: ../app-service-web/websites-webjobs-resources.md
 [クロスプラットフォーム プッシュ通知の送信]: app-service-mobile-dotnet-backend-xamarin-ios-push-notifications-to-user-preview.md
+[.NET サーバー SDK の使用法 (How to use the .NET server SDK)]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

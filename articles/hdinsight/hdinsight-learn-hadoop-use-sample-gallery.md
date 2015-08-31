@@ -3,6 +3,7 @@
    description="HDInsight 概要ギャラリーのサンプル アプリケーションを実行して Hadoop をすばやく学習できます。サンプル データを使用するか、独自のデータを用意します。"
    services="hdinsight"
    documentationCenter=""
+   tags="azure-portal"
    authors="mumian"
    manager="paulettm"
    editor="cgronlun"/>
@@ -12,7 +13,7 @@
    ms.workload="big-data"
    ms.tgt_pltfrm="na"
    ms.devlang="na"
-   ms.topic="get-started-article" 
+   ms.topic="get-started-article"
    ms.date="07/09/2015"
    ms.author="jgao"/>
 
@@ -29,20 +30,24 @@ HDInsight 概要ギャラリーでは、HDInsight でサンプル アプリケ�
 	- Web サイト ログの分析
 	- Mahout 映画のリコメンデーション
 
+[AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
+
+* [HDInsight の概要ギャラリーを使用して、Hadoop について説明します。](hdinsight-learn-hadoop-use-sample-gallery-v1.md)
+
 ![HDInsight Hadoop、Storm、HBase 概要ギャラリー ソリューション (サンプル データ付き)。][hdinsight.sample.gallery]
 
 次のビデオ クリップでは、Twitter の傾向分析サンプルを実行する方法を示しています。
 
 <center><a href="https://www.youtube.com/embed/7ePbHot1SN4">https://www.youtube.com/embed/7ePbHot1SN4></a></center>
 
+ダッシュボードには http://<YourHDInsightClusterName>.azurehdinsight.net/ を参照して、または、Azure プレビュー ポータルからアクセスできます。
 
 **概要ギャラリーからサンプルを実行するには**
 
-1.	[Azure ポータル][azure.portal]にサインインします。
-2.	左側のメニューで **[HDInsight]** をクリックします。Hadoop クラスター、Storm クラスター、HBase クラスターなど、既存の HDInsight クラスターの一覧が表示されます。
-3.	サンプルを実行するクラスターをクリックします。
-4.	ページの下部にある、**[クエリ コンソール]** を選択します。
-5.	クラスターの Hadoop ユーザー名とパスワードを入力します。
+1. [Azure プレビュー ポータル][azure.portal]にサインインします。
+2. 左メニューから **[すべて参照]** をクリックし、**[HDInsight クラスター]**、クラスター名の順にクリックします。
+3. 上部のメニューから **[ダッシュボード]** をクリックします。
+4. HTTP ユーザー (別名: クラスター ユーザー) のユーザー名とパスワードを入力します。
 6.	ページの上部にある **[概要ギャラリー]** をクリックします。
 7.	サンプルを 1 つクリックします。各サンプルで、実行するための詳細な手順が表示されます。次の図は、Twitter の傾向分析のサンプルを示しています。
 
@@ -61,7 +66,6 @@ HDInsight に関するその他の資料。
 <!--Link references-->
 [hdinsight.learn.map]: hdinsight-learn-map.md
 [hdinsight.infographic]: http://go.microsoft.com/fwlink/?linkid=523960
-[azure.portal]: https://manage.windowsazure.com
- 
+[azure.portal]: https://portal.azure.com
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

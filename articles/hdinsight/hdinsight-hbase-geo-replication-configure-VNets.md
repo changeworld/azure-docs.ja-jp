@@ -29,7 +29,7 @@ Azure 仮想ネットワークのサイト間接続では、VPN ゲートウェ�
 - 特定のリージョン内で強固な分離境界を備えた多層アプリケーション 
 - サブスクリプションや組織の境界を越えた通信を Azure 内で実現
 
-詳細については、「[VNet 間の接続の構成](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)」を参照してください。
+詳細については、「[VNet 間の接続の構成](https://msdn.microsoft.com/library/azure/dn690122.aspx)」を参照してください。
 
 次のビデオを参照してください。
 
@@ -256,8 +256,7 @@ Vnet に VM をデプロイすることなく、Azure ポータルの VNet ダ�
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-portal]: http://manage.windowsazure.com
-
+[azure-portal]: https://portal.azure.com
 
 [powershell-install]: ../install-configure-powershell
 
@@ -271,4 +270,4 @@ Vnet に VM をデプロイすることなく、Azure ポータルの VNet ダ�
 [img-vnet-lnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.LNet.diagram.png
 [img-vpn-status]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.status.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

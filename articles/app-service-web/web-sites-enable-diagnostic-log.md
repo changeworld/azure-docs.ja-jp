@@ -38,7 +38,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 
 ### アプリケーション診断
 
-アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/en-us/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
+アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
 
 	System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -82,7 +82,7 @@ Web アプリケーション ファイル システムに保存された診断�
 
 * **アプリケーション ログ**: /LogFiles/Application/。このフォルダーには、アプリケーション ログによって生成された情報を含む 1 つ以上のテキスト ファイルが格納されます。
 
-* **失敗した要求トレース**: /LogFiles/W3SVC#########/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
+* **失敗した要求トレース**: /LogFiles/W3SVC\#\#\#\#\#\#\#\#\#/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 
 * **詳細なエラー ログ**: /LogFiles/DetailedErrors/。このフォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。
 
@@ -236,7 +236,7 @@ BLOB に格納されるデータは次のようになります。
 
 ### 失敗した要求トレース
 
-失敗した要求トレースは __fr######.xml__ という名前の XML ファイルに保存されます。ログに記録された情報を見やすくするには、__freb.xsl__ という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。たとえば、次のように表示されます。
+失敗した要求トレースは __fr\#\#\#\#\#\#.xml__ という名前の XML ファイルに保存されます。ログに記録された情報を見やすくするには、__freb.xsl__ という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。たとえば、次のように表示されます。
 
 ![失敗した要求をブラウザーで表示したところ](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
@@ -252,8 +252,8 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 
 ##<a name="nextsteps"></a>次のステップ
 
-- [Web アプリを監視する方法](/en-us/manage/services/web-sites/how-to-monitor-websites/)
-- [Visual Studio での Azure の Web Apps のトラブルシューティング](/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)
+- [Web アプリを監視する方法](/ja-jp/manage/services/web-sites/how-to-monitor-websites/)
+- [Visual Studio での Azure の Web Apps のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)
 - [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
@@ -263,4 +263,4 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

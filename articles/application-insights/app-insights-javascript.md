@@ -25,6 +25,10 @@ Web ページのパフォーマンスと使用状況について調べます。V
 
 [ASP.NET][greenbrown] または [Java][java] Web アプリにサーバー利用統計情報を既に設定している場合、クライアントとサーバーの両方の角度からの画像が与えられます。この 2 つのストリームは Application Insights ポータルで統合されます。
 
+#### 簡単なデモ
+
+Azure サブスクリプションがなく、Web ページ上で Application Insights をお試しになりたい場合は、[Application Insights の試用についてのページ](http://aka.ms/ainow)を参照してください。
+
 ## Application Insights リソースの作成
 
 Application Insights リソースは、ページのパフォーマンスと使用状況に関するデータが表示される場所です。(Web サーバーからデータを集めるなどの目的で、既にリソースを作成している場合、この手順を省略します。)
@@ -124,7 +128,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
     appInsights.trackPageView(myPageName);
 
-ページ名には、同じ文字を URL として含めることできますが、「#」または「?」の後の文字はすべて無視されます。
+ページ名には、同じ文字を URL として含めることできますが、「\#」または「?」の後の文字はすべて無視されます。
 
 
 ## 個別のページ ビュー イベントを調査する
@@ -182,4 +186,4 @@ Web アプリが Application Insights に送信している利用統計情報を
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

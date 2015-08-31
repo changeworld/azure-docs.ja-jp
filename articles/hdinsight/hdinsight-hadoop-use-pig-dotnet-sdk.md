@@ -5,7 +5,8 @@
    documentationCenter=".net"
    authors="Blackmist"
    manager="paulettm"
-   editor="cgronlun"/>
+   editor="cgronlun"
+   tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -13,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/06/2015"
+   ms.date="07/24/2015"
    ms.author="larryfr"/>
 
 #HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
@@ -22,7 +23,11 @@
 
 このドキュメントでは、.NET SDK for Hadoop を使用して HDInsight クラスターで Hadoop に Pig ジョブを送信する方法の例を紹介します。
 
-HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。Pig では、一連のデータ変換をモデル化することで MapReduce 操作を作成できます。基本的な C# アプリケーションを使用して、Pig ジョブを HDInsight クラスターに送信する方法を説明します。
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。Pig では、一連のデータ変換をモデル化することで MapReduce 操作を作成できます。基本的な C#アプリケーションを使用して、Pig ジョブを HDInsight クラスターに送信する方法を説明します。
+
+[AZURE.INCLUDE [azure-portal](../../includes/hdinsight-azure-portal.md)]
+
+* [HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行](hdinsight-hadoop-use-pig-dotnet-sdk-v1.md)
 
 ##<a id="prereq"></a>前提条件
 
@@ -44,11 +49,11 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 
 各 Azure サブスクリプションは、サブスクリプション ID と呼ばれる GUID で識別されます。次の手順に従って、この値を検索します。
 
-1. [Azure 管理コンソール](https://manage.windowsazure.com/)にアクセスします。
+1. [Azure プレビュー ポータル][preview-portal] にアクセスします。
 
-2. ポータルの左側のバーから **[設定]** を選択します。
+2. ポータルの左側のバーから __[すべて参照]__ を選択し、__[参照]__ ブレードから __[サブスクリプション]__ を選択します。
 
-3. ページの右にある情報から使用するサブスクリプションと、**[サブスクリプション ID]** 列の値を見つけます。
+3. __[サブスクリプション]__ ブレードにある情報から使用するサブスクリプションを見つけたら、**[サブスクリプション ID]** 列の値を見つけます。
 
 後で使用するため、サブスクリプション ID を書き留めます。
 
@@ -227,6 +232,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md) [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="05/05/2015"
+   ms.date="07/29/2015"
    ms.author="jgao"/>
 
 # HDInsight での Phoenix、SQuirreL、HBase クラスターの使用  
@@ -212,7 +212,7 @@ X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Expr
 
 **SQuirreL をインストールするには**
 
-1. [http://squirrel-sql.sourceforge.net/#installation](http://squirrel-sql.sourceforge.net/#installation) から SQuirreL SQL クライアントの jar ファイルをダウンロードします。
+1. [http://squirrel-sql.sourceforge.net/\#installation](http://squirrel-sql.sourceforge.net/#installation) から SQuirreL SQL クライアントの jar ファイルをダウンロードします。
 2. jar ファイルを開くか実行します。[Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)が必要です。
 3. **[次へ]** を 2 回クリックします。
 4. 書き込みアクセス許可のあるパスを指定し、**[次へ]** をクリックします。
@@ -285,7 +285,7 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 - 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-geo-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。 
 - 「[HDInsight 環境の HBase で Twitter のセンチメントを分析する][hbase-twitter-sentiment]」: HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析する](http://en.wikipedia.org/wiki/Sentiment_analysis)方法について説明します。
 
-[azure-portal]: https://manage.windowsazure.com
+[azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
 
 [hdinsight-versions]: hdinsight-component-versioning.md
@@ -306,4 +306,4 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

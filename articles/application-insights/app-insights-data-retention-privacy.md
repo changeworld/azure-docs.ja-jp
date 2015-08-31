@@ -40,16 +40,24 @@ Application Insights SDK およびエージェントは、アプリケーショ�
 
 * [TrackTrace 呼び出し](app-insights-api-custom-events-metrics.md#track-trace)と[キャプチャしたログ](app-insights-asp-net-trace-logs.md)
 * [例外](app-insights-api-custom-events-metrics.md#track-exception) (1 秒あたり 50 ポイントの下限が適用されます)
-* その他すべてのテレメトリ (ページ ビュー、要求、依存関係、メトリック、カスタム イベント)
+* その他すべてのテレメトリ (ページ ビュー、要求、依存関係、メトリック、カスタム イベント、Web テストの結果)。
 
 **1 か月あたり**: [料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)に応じて、1 か月あたり 500 万～ 1500 万データ ポイントとなっています。Free [価格レベル][pricing]以外は、上限に達した場合に追加の容量を購入できます。
 
 
-*データ ポイント*は、テレメトリの項目です。これには、次の項目が含まれます。
+*データ ポイント*とは、アプリに関して Azure ポータルに送信されるテレメトリの項目のことです。次の手段で送信できます。
 
-* API `Track...` 呼び出し (たとえば、`TrackEvent`、`trackPageView`)。
-* 要求、クラッシュなどを報告するために SDK モジュールによって送信されるテレメトリ項目。
-* パフォーマンス カウンター データ (測定ごとに 1 つのポイント)。
+* [SDK モジュール](app-insights-configuration-with-applicationinsights-config.md)。要求またはクラッシュをレポートするためや、パフォーマンスを測定するために、自動的にデータを収集します。
+* [API](app-insights-api-custom-events-metrics.md) `Track...` の呼び出し。`TrackEvent` や `trackPageView` などの記述した呼び出しです。
+* [可用性 Web テスト](app-insights-monitor-web-app-availability.md)。設定済みのテストです。
+
+テレメトリには次の項目が含まれます。
+
+* [診断検索](app-insights-diagnostic-search.md)の各行
+* 生データ。このデータから、[メトリック エクスプ ローラー](app-insights-metrics-explorer.md)でグラフが集計されます。パフォーマンス カウンターのようなメトリック データは、通常は、メトリック エクスプローラーの個々のポイントとして表示されません。
+* [可用性](app-insights-monitor-web-app-availability.md)レポートの各 Web テストの結果
+
+ユーザーとセッションの数は、価格設定の目的のクォータには含まれません。
 
 *アプリがどれだけのデータ ポイントを送信しているかを知る方法はありますか。*
 
@@ -202,7 +210,7 @@ Requests |URL、期間、応答コード
 Crashes | プロセス ID、親プロセスの ID、クラッシュ スレッドの ID。アプリケーションの修正プログラム、ID、ビルド。例外の種類、アドレス、理由。難読化されたシンボルとレジスタ、バイナリの開始アドレスと終了アドレス、バイナリ名とパス、CPU の種類
 Trace | **メッセージ**と重大度レベル
 Perf counters | プロセッサ時間、使用可能なメモリ、要求レート、例外レート、プロセスのプライベート バイト、IO レート、要求の期間、要求のキューの長さ
-可用性 | Web テストの応答コード、各テスト ステップの期間
+可用性 | Web テストの応答コード、各テスト ステップの期間、テスト名、タイムスタンプ、成功、応答時間、テストの場所
 SDK diagnostics | トレース メッセージまたは例外 
 
 [ApplicationInsights.config を編集して、データの一部を無効にできます][config]
@@ -242,4 +250,4 @@ SDK diagnostics | トレース メッセージまたは例外
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

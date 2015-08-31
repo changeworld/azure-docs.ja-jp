@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/31/2015" 
-	ms.author="bradyg"/>
+	ms.date="08/14/2015" 
+	ms.author="tdykstra"/>
 
 # Azure App Service での API アプリのデプロイ 
 
@@ -34,17 +34,33 @@ API アプリが Web アプリをベースにしているという事実は、AS
 
 [AZURE.INCLUDE [app-service-api-pub-web-create](../../includes/app-service-api-pub-web-create.md)]
 
-## <a id="deploy"></a>新しい API アプリにコードをデプロイする
+## <a id="deploy"></a>新しい Azure API アプリへのコードのデプロイ
 
 同じ **Web の発行**ウィザードを使用して、新しい API アプリにコードをデプロイします。
 
 [AZURE.INCLUDE [app-service-api-pub-web-deploy](../../includes/app-service-api-pub-web-deploy.md)]
 
-## Azure プレビュー ポータルでのアプリの表示
+## Azure API アプリの呼び出し 
 
-このセクションでは、ポータルで API Apps に使用できる基本設定を確認し、API アプリに何度か繰り返し変更を加えます。デプロイするたびに、API アプリに加えた変更がポータルに反映されます。
+前のチュートリアルで Swagger UI を有効にしたので、その Swagger UI を使用して、API アプリが Azure で実行されていることを確認できます。
 
 1. [Azure プレビュー ポータル](https://portal.azure.com)で、先ほどデプロイしたAPI アプリの **API アプリ** ブレードに移動します。
+
+2. API アプリの URL をクリックします。
+
+	![URL をクリック](./media/app-service-dotnet-deploy-api-app/clickurl.png)
+
+	[API アプリが正常に作成されました] ページが表示されます。
+
+3. ブラウザーのアドレス バーで、URL の最後に "/swagger" を追加します。
+
+4. 表示された Swagger ページで、**[Contacts]、[Get]、[Try it Out]** の順にクリックします。
+
+	![実際に使ってみる](./media/app-service-dotnet-deploy-api-app/swaggerui.png)
+
+## ポータルでの API 定義の表示
+
+1. [Azure プレビュー ポータル](https://portal.azure.com)で、先ほどデプロイした API アプリの **API アプリ** ブレードに戻ります。
 
 4. **[API の定義]** をクリックします。
  
@@ -52,7 +68,9 @@ API アプリが Web アプリをベースにしているという事実は、AS
 
 	![API の定義](./media/app-service-dotnet-deploy-api-app/29-api-definition-v3.png)
 
-5. ここで Visual Studio のプロジェクトに戻り、**ContactsController.cs** ファイルに次のコードを追加します。
+次に、API 定義を変更し、その変更がポータルに反映されていることを確認します。
+
+5. Visual Studio のプロジェクトに戻り、 **ContactsController.cs** ファイルに次のコードを追加します。   
 
 		[HttpPost]
 		public HttpResponseMessage Post([FromBody] Contact contact)
@@ -61,27 +79,41 @@ API アプリが Web アプリをベースにしているという事実は、AS
 			return Request.CreateResponse(HttpStatusCode.Created);
 		}
 
-	![コントローラーへの Post メソッドの追加](./media/app-service-dotnet-deploy-api-app/30-post-method-added-v3.png)
-
 	このコードは、新しい `Contact` インスタンスを API にポストできる **Post** メソッドを追加します。
 
-6. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。
+	Contacts クラスのコードが次のように表示されます。
 
-	![プロジェクトの [発行] コンテキスト メニュー](./media/app-service-dotnet-deploy-api-app/31-publish-gesture-v3.png)
+		public class ContactsController : ApiController
+		{
+		    [HttpGet]
+		    public IEnumerable<Contact> Get()
+		    {
+		        return new Contact[]{
+		                    new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
+		                    new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
+		                    new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
+		                };
+		    }
+		
+		    [HttpPost]
+		    public HttpResponseMessage Post([FromBody] Contact contact)
+		    {
+		        // todo: save the contact somewhere
+		        return Request.CreateResponse(HttpStatusCode.Created);
+		    }
+		}
 
-7. **[設定]** タブをクリックします。
-
-8. **[構成]** ボックスの一覧で、**[デバッグ]** をクリックします。
-
-	![[Web の発行] の設定](./media/app-service-dotnet-deploy-api-app/36.5-select-debug-option-v3.png)
+7. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。
 
 9. **[プレビュー]** タブをクリックします。
 
-10. **[プレビュー開始]** をクリックして、適用される変更を表示します。
+10. **[プレビューの開始]** をクリックし、どのファイルが Azure にコピーされるかを確認します。
 
 	![[Web の発行] ダイアログ](./media/app-service-dotnet-deploy-api-app/39-re-publish-preview-step-v2.png)
 
 11. **[発行]** をクリックします。
+
+6. 最初に発行したときのように、ゲートウェイを再起動します。
 
 12. 発行プロセスが完了したら、ポータルに戻り、**[API の定義]** ブレードを閉じてから再び開きます。先ほど作成し、Azure サブスクリプションに直接デプロイした新しい API エンドポイントが表示されます。
 
@@ -92,4 +124,4 @@ API アプリが Web アプリをベースにしているという事実は、AS
 ここまでは、Visual Studio の直接デプロイする機能を使用して、反復処理、迅速なデプロイ、および API が正常に機能しているかどうかのテストを簡単に実行する方法について説明しました。[次のチュートリアル](../app-service-dotnet-remotely-debug-api-app.md)では、Azure で実行中の API アプリをデバッグする方法について説明します。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -3,6 +3,7 @@
 	description="ビッグ データ サービスとして HDInsight の Hadoop で時間ベースの Oozie コーディネーターを使用します。Oozie ワークフローとコーディネーターを定義し、ジョブを送信する方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"
 	manager="paulettm"
 	editor="cgronlun"/>
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/09/2015"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
 
@@ -82,7 +83,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 <tr><td>SQL データベース ログイン名</td><td>$sqlDatabaseLogin</td><td></td><td>SQL データベースのログイン名。</td></tr>
 <tr><td>SQL データベース ログイン パスワード</td><td>$sqlDatabaseLoginPassword</td><td></td><td>SQL データベースのログイン パスワード。</td></tr>
 <tr><td>SQL データベース名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先となる Azure SQL データベース。</td></tr>
-</table>> [AZURE.NOTE]既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。SQL Database の作成方法とファイアウォール ルールの構成方法については、「[SQL Database の作成と構成][sqldatabase-create-configure]」を参照してください。
+</table>> [AZURE.NOTE]既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure プレビュー ポータルから有効にする必要があります。SQL Database の作成方法とファイアウォール ルールの構成方法については、「[SQL Database の作成と構成][sqldatabase-create-configure]」を参照してください。
 
 
 > [AZURE.NOTE]テーブルに値を入力します。そうしておくと、このチュートリアルを読み進める際に役に立ちます。
@@ -495,7 +496,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 		   <property>
 		       <name>sqlDatabaseConnectionString</name>
-		       <value>&quot;$sqlDatabaseConnectionString&quot;</value>
+		       <value>";$sqlDatabaseConnectionString";</value>
 		   </property>
 
 		   <property>
@@ -622,7 +623,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 		# ShowOozieJobLog($oozieJobId)
 		# killOozieJob($oozieJobId)
 
-	追加の機能を実行するには、\# 記号を削除します。
+	追加の機能を実行するには、#記号を削除します。
 
 7. HDInsight クラスターが Version 2.1 である場合は、"https://$clusterName.azurehdinsight.net:443/oozie/v2/" を "https://$clusterName.azurehdinsight.net:443/oozie/v1/" に置き換えてください。HDInsight クラスター Version 2.1 は、Web サービスの Version 2 をサポートしていません。
 
@@ -634,7 +635,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 **ジョブのエラー ログを確認するには**
 
-ワークフローのトラブルシューティングを実行するには、クラスター ヘッドノードの C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log にある Oozie のログ ファイルを参照します。RDP の詳細については、「[管理ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]」を参照してください。
+ワークフローのトラブルシューティングを実行するには、クラスター ヘッドノードの C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log にある Oozie のログ ファイルを参照します。RDP の詳細については、「[Azure プレビュー ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]」を参照してください。
 
 **チュートリアルを再実行するには**
 
@@ -683,7 +684,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 - [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
 - [HDInsight での Hive の使用][hdinsight-use-hive]
 - [HDInsight での Pig の使用][hdinsight-use-pig]
-- [HDInsight 用 C# Hadoop ストリーミング ジョブの開発][hdinsight-develop-streaming-jobs]
+- [HDInsight 用 C#Hadoop ストリーミング ジョブの開発][hdinsight-develop-streaming-jobs]
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-java-mapreduce]
 
 
@@ -712,7 +713,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 [sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
-[azure-management-portal]: https://manage.windowsazure.com/
+[azure-management-portal]: https://portal.azure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
@@ -733,4 +734,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

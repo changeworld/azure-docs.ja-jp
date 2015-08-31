@@ -12,9 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/27/2015"
+   ms.date="08/19/2015"
    ms.author="joaoma" />
-
 
 
 
@@ -207,9 +206,9 @@ Traffic Manager プロファイルを削除するには、プロファイル名�
 
 ## 関連項目
 
-[Traffic Manager の概要](traffic-manager-overview.md)
+[Traffic Manager について](traffic-manager-overview.md)
 
 [Azure コマンドレットの概要](https://msdn.microsoft.com/library/jj554332.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

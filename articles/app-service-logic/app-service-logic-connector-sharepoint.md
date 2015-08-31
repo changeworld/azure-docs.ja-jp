@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/02/2015"
+   ms.date="08/19/2015"
    ms.author="sameerch"/>
 
 # ロジック アプリでの SharePoint コネクタの使用
@@ -56,7 +56,7 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されるドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「*Lists/Task, Shared Documents*」のように入力します。
 Service Bus の接続文字列 | いいえ | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)
 
-5. 完了すると、パッケージの設定は次のようになります。<br/> ![][2]
+5. 完了すると、パッケージの設定は次のようになります。![][2]
 
 作業が完了すると、同じリソース グループ内に SharePoint Server コネクタを使用するロジック アプリを作成できます。
 
@@ -71,13 +71,17 @@ API アプリを作成すると、ロジック アプリのトリガーやアク
 
 3. ロジック アプリの先頭で SharePoint コネクタを選択した場合、SharePoint コネクタはトリガーとして動作します。それ以外の場合は、コネクタを使用する SharePoint アカウントに対するアクションとして動作します。
 
-4. SharePoint Online コネクタを使用している場合は、ユーザーの代わりに操作を実行するロジック アプリの認証と承認を行います。承認を開始するには SharePoint コネクタの **[承認]** をクリックします。<br/> ![][3]
+4. SharePoint Online コネクタを使用している場合は、ユーザーの代わりに操作を実行するロジック アプリの認証と承認を行います。承認を開始するには SharePoint コネクタの **[承認]** をクリックします。![][3]
 
-5. [承認] をクリックすると SharePoint の認証ダイアログ ボックスが開きます。操作を実行する SharePoint アカウントのサインイン詳細情報を入力します。<br/> ![][4]
+5. [承認] をクリックすると SharePoint の認証ダイアログ ボックスが開きます。操作を実行する SharePoint アカウントのサインイン詳細情報を入力します。![][4]
 
-6. 代わりに操作を行わせるために、アカウントにロジック アプリのアクセス権を付与します。 <br/> ![][5]
+6. ユーザーの代わりに操作を実行できるように、ロジック アプリにユーザーのアカウントへのアクセス権を付与します。![][5]
 
-7. SharePoint コネクタがトリガーとして構成されている場合は、そのトリガーが表示されます。それ以外の場合は、アクションの一覧が表示され、実行する操作を選択できます。<br/> ![][6] <br/> **ドキュメント ライブラリ用に構成された相対 URL** <br/> ![][7] <br/> **ドキュメント リスト用に構成された相対 URL**
+7. SharePoint コネクタがトリガーとして構成されている場合は、そのトリガーが表示されます。その他の場合はアクションの一覧が表示され、実行する適切な操作を選択できます。![][6]
+  
+**ドキュメント ライブラリ用に構成された相対 URL** ![][7]
+
+**ドキュメント リスト用に構成された相対 URL**
 
 > [AZURE.NOTE]次のトリガーでは、コネクタのパッケージ設定で "Shared Documents, Lists/Task" を入力したものと想定しています。ここで、"Shared Documents" はドキュメント ライブラリ、"Lists/Task" はリストです。
 
@@ -451,7 +455,10 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 ## コネクタでできること
 コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
+
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[API アプリとコネクタの管理と監視](app-service-api-manage-in-portal.md)」を参照してください。
+
 
 <!--Image references-->
 [1]: ./media/app-service-logic-connector-sharepoint/image_0.png
@@ -462,4 +469,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [6]: ./media/app-service-logic-connector-sharepoint/image_5.png
 [7]: ./media/app-service-logic-connector-sharepoint/image_6.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

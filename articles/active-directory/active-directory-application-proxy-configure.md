@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="セキュリティで保護されたリモート アクセスのためのアプリケーション プロキシを使用したアプリケーションの発行" 
-	description="SharePoint サイト、Outlook Web Access、IIS ベースのアプリなどのアプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供する方法について説明するトピック。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
+<properties
+	pageTitle="セキュリティで保護されたリモート アクセスのためのアプリケーション プロキシを使用したアプリケーションの発行"
+	description="SharePoint サイト、Outlook Web Access、IIS ベースのアプリなどのアプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供する方法について説明するトピック。"
+	services="active-directory"
+	documentationCenter=""
+	authors="rkarlin"
+	manager="stevenpo"
 	editor="LisaToft"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/04/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/14/2015" 
+	ms.author="rkarlin"/>
 
 
 # セキュリティで保護されたリモート アクセスのためのアプリケーション プロキシを使用したアプリケーションの発行
@@ -30,6 +30,5 @@ Azure AD アプリケーション プロキシは、Azure Active Directory の P
 ## 次の手順
 
 [Microsoft Azure のブログ](http://azure.microsoft.com/blog/) [アプリケーション プロキシ サービスを有効にする](https://msdn.microsoft.com/library/azure/dn768214.aspx) [アプリケーション プロキシを使用したアプリケーションの発行](https://msdn.microsoft.com/library/azure/dn768220.aspx) [アプリケーション プロキシのトラブルシューティング](https://msdn.microsoft.com/library/azure/dn768218.aspx)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

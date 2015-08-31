@@ -36,7 +36,7 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 
 ## カスタム スクリプト拡張機能のシナリオ:
 
- ### ファイルを既定のコンテナーにアップロードします。サブスクリプションの既定アカウントのストレージ コンテナーにスクリプトがある場合、下記のコマンドレット スニペットは VM でスクリプトを実行する方法について示しています。下記のサンプルの ContainerName は、スクリプトをアップロードする場所を示します。既定のストレージ アカウントは、Get-AzureSubscription –Default コマンドレットを使って検証できます。
+ \#\#\# ファイルを既定のコンテナーにアップロードします。サブスクリプションの既定アカウントのストレージ コンテナーにスクリプトがある場合、下記のコマンドレット スニペットは VM でスクリプトを実行する方法について示しています。下記のサンプルの ContainerName は、スクリプトをアップロードする場所を示します。既定のストレージ アカウントは、Get-AzureSubscription –Default コマンドレットを使って検証できます。
 
 注: ここでは新しい VM を作成していますが、既存の VM でも同様の操作を行うことができます。
 
@@ -58,7 +58,7 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 ここでは同一サブスクリプションで、または異なるサブスクリプションで、既定以外のストレージを使用してスクリプトやファイルをアップロードする方法について説明します。ここでは既存の VM を使用していますが、新しい VM を作成して同様の操作を行うことができます。
 
         Get-AzureVM -Name $name -ServiceName $servicename | Set-AzureVMCustomScriptExtension -StorageAccountName $storageaccount -StorageAccountKey $storagekey -ContainerName $container -FileName 'file1.ps1','file2.ps1' -Run 'file.ps1' | Update-AzureVM
-  ### 異なるストレージ アカウントの複数のコンテナーにスクリプトをアップロードします。スクリプト ファイルが複数のコンテナーに保存されており、現在それらのスクリプトを実行している場合、それらのファイルの完全な SAS URL を指定する必要があります。
+  \#\#\# 異なるストレージ アカウントの複数のコンテナーにスクリプトをアップロードします。スクリプト ファイルが複数のコンテナーに保存されており、現在それらのスクリプトを実行している場合、それらのファイルの完全な SAS URL を指定する必要があります。
 
       Get-AzureVM -Name $name -ServiceName $servicename | Set-AzureVMCustomScriptExtension -StorageAccountName $storageaccount -StorageAccountKey $storagekey -ContainerName $container -FileUri $fileUrl1, $fileUrl2 -Run 'file.ps1' | Update-AzureVM
 
@@ -66,7 +66,7 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 ### ポータルからカスタム スクリプト拡張機能を追加
 <a href="https://portal.azure.com/ " target="_blank">Azure プレビュー ポータル</a>の仮想マシンを参照し、実行するスクリプト ファイルを指定して拡張機能を追加します。 ![][5]
 
-  ### カスタム スクリプト拡張機能のアンインストール
+  \#\#\# カスタム スクリプト拡張機能のアンインストール
 
 次のコマンドレットを使って、VM からカスタム スクリプト拡張機能をアンインストールできます。
 
@@ -79,4 +79,4 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 <!--Image references-->
 [5]: ./media/virtual-machines-extensions-customscript/addcse.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

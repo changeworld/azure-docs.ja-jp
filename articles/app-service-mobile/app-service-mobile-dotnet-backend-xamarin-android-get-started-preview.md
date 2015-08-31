@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Xamarin Android アプリに Azure Mobile Apps を使用する | Microsoft Azure"
+	pageTitle="Xamarin Android アプリに Azure Mobile Apps を使用する"
 	description="次のチュートリアルに従って、Xamarin Android 開発用の Azure Mobile Apps を使用します"
 	services="app-service\mobile"
 	documentationCenter="xamarin"
-	authors="chrisanderson"
+	authors="normesta"
 	manager="dwrede"
-	editor="mollybos"/>
+	editor="" />
 
 <tags
 	ms.service="app-service-mobile"
@@ -13,80 +13,67 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="05/01/2015"
-	ms.author="chrande"/>
+	ms.date="08/12/2015"
+	ms.author="normesta" />
 
-# <a name="getting-started"> </a>Xamarin Android アプリを作成する
+#Xamarin.Android アプリの作成
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-preview](../../includes/app-service-mobile-selector-get-started-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-preview](../../includes/app-service-mobile-selector-get-started-preview.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+ 
+##概要
 
-このチュートリアルでは、Azure Mobile Apps を使用して Xamarin Android アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しい .NET サービスと、.NET バックエンドにアプリケーション データを格納する簡単な _To do list_ アプリケーションの両方を作成します。
+このチュートリアルでは、Azure Mobile App バックエンドを使用して Xamarin.Android アプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。新しい Mobile App バックエンドと、アプリのデータを Azure に格納する簡単な _Todo list_ Xamarin.Andorid アプリの両方を作成します。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![][0]
 
-このチュートリアルを完了することは、Xamarin Android アプリケーションの他のすべての Azure モバイル アプリのチュートリアルの前提条件です。
+Xamarin Android アプリケーションの他のすべての Mobile Apps のチュートリアルを行う前に、このチュートリアルを完了してください。
+ 
+##前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
-* <a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a>。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+ 
+* [Visual Studio Community 2013] 以降。Visual Studio Community 2013 をインストールする場合は、[Xamarin] を別個にインストールしてください。Visual Studio 2015 をインストールするときに、Xamarin ツールをインストールできます。
+ 
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751&appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター Mobile App をすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751&appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター モバイル アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## 新しいモバイル アプリ バックエンドを作成する
+## 新しい Azure Mobile App バックエンドの作成
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service-preview](../../includes/app-service-mobile-dotnet-backend-create-new-service-preview.md)]
 
-## 新しい Xamarin Android アプリケーションを作成する
+## サーバー プロジェクトのダウンロード
 
-モバイル アプリ バックエンドを作成すると、[Azure ポータル]の簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル アプリ バックエンドに接続することができます。
+1. お使いの PC で [Azure ポータル]にアクセスします。**[すべて参照]**、**[Mobile Apps]** の順にクリックし、作成した Mobile App バックエンドをクリックします。
 
-このチュートリアルでは、モバイル アプリ用の新しい Xamarin Android アプリケーションと .NET バックエンド サービス プロジェクトをダウンロードします。
-
-1. Azure ポータルで、**[参照]**、**[モバイル アプリ]** の順にクリックします。次に、作成したモバイル アプリをクリックします。
-
-2. ブレードの上部にある、**[クライアントの追加]** をクリックし、 **[Xamarin.Android]** を展開します。
-
-    ![][6]
-
-    これにより、モバイル アプリ バックエンドに接続された Xamarin Android アプリケーションを作成するための簡単な 3 つの手順が表示されます。
-
-
-3. まだインストールしていない場合は、<a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a> をダウンロードし、ローカル コンピューターまたは仮想マシンにインストールします。
-
-4. [Xamarin Studio] をまだインストールしていない場合は、ダウンロードしてインストールします。また、Xamarin for Visual Studio を使用することもできます。
-
-5. **[サービスのダウンロードとクラウドへの発行]** で **[ダウンロード]** をクリックします。
-
-  	これにより、モバイル アプリ バックエンド コードと、モバイル アプリ バックエンドに接続されているサンプル_To do list_ クライアント アプリケーションの両方のプロジェクトが含まれるソリューションがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
-
-6. 発行プロファイルをダウンロードしてローカル コンピューターに保存し、保存場所を書き留めておいてください。
-
-## モバイル アプリ バックエンドをテストする
+2. Mobile App ブレードで **[設定]** をクリックし、**[Mobile App]** の下で **[クイック スタート]**、**[Xamarin.Android]** の順にクリックします。
+ 
+3. **[サーバー プロジェクトをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。圧縮されたプロジェクト ファイルを PC に抽出し、Visual Studio でソリューションを開きます。
+ 
+## バックエンドのプロジェクトをローカルでテストします。
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-test-local-service-preview](../../includes/app-service-mobile-dotnet-backend-test-local-service-preview.md)]
 
-## モバイル アプリ バックエンドを発行する
+## Azure へのサーバー プロジェクトの発行
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-publish-service-preview](../../includes/app-service-mobile-dotnet-backend-publish-service-preview.md)]
 
-## Xamarin Android アプリケーションを実行する
+## Xamarin.Android アプリのダウンロードと実行
 
-このチュートリアルの最後に、新しいアプリケーションをビルドして実行します。
+1. **[Xamarin.Android プロジェクトをダウンロードして実行する]** の下の **[ダウンロード]** ボタンをクリックします。
 
-1. Visual Studio または Xamarin Studio で、モバイル アプリ ソリューション内のクライアント プロジェクトに移動します。
+  	これにより、モバイル アプリに接続されているクライアント アプリケーションが含まれているプロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
 	![][8]
 
 	![][9]
 
-2. **[Run]** ボタンを押してプロジェクトをビルドし、アプリケーションを開始します。エミュレーターまたは接続されている USB デバイスを選択するよう求めるメッセージが表示されます。
+2. **F5** キーを押してプロジェクトをビルドし、アプリケーションを開始します。
 
-	> [AZURE.NOTE]プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
-
-3. アプリケーションで、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、正符号 (**[+]**) アイコンをクリックします。
+3. アプリケーションで、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、**[追加]** ボタンをクリックします。
 
 	![][10]
 
@@ -94,6 +81,9 @@
 
 	> [AZURE.NOTE]モバイル アプリ バックエンドにアクセスしてデータのクエリと挿入を行うコードを確認できます (ToDoActivity.cs C# ファイルにあります)。
 
+##次のステップ
+
+* [アプリへの認証の追加](app-service-mobile-dotnet-backend-xamarin-android-get-started-users-preview.md)<br/> ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
 
 <!-- Images. -->
@@ -105,9 +95,10 @@
 
 <!-- URLs. -->
 [Azure ポータル]: https://azure.portal.com/
-[Xamarin Studio]: http://xamarin.com/download
+[Xamarin]: http://xamarin.com/download
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532&clcid=0x409
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
  
+[Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/02/2015"
+	ms.date="08/19/2015"
 	ms.author="andalmia"/>
 
 # ロジック アプリで OneDrive コネクタを使用する #
@@ -78,6 +78,13 @@ API アプリを作成すると、Logic App のアクションとして OneDrive
 
 9. API の詳細については、「[OneDrive API の定義]」を参照してください。
 
+## コネクタでできること
+コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
+
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
+
 <!-- Image reference -->
 [1]: ./media/app-service-logic-connector-onedrive/img1.PNG
 [2]: ./media/app-service-logic-connector-onedrive/img2.PNG
@@ -89,6 +96,6 @@ API アプリを作成すると、Logic App のアクションとして OneDrive
 
 <!-- Links -->
 [新しい Logic App の作成]: app-service-logic-create-a-logic-app.md
-[OneDrive API の定義]: https://msdn.microsoft.com/ja-jp/library/dn974227.aspx
+[OneDrive API の定義]: https://msdn.microsoft.com/library/dn974227.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

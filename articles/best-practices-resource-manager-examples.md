@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/16/2015"
+	ms.date="08/13/2015"
 	ms.author="mmercuri"/>
 
 # テンプレート実装のベスト プラクティスの具体的な例
 
 このトピックでは、Azure リソース マネージャーのテンプレートを実装する方法に関する 7 つの具体的な例を紹介します。これらの例で説明する原理の概要については、「[Azure リソース マネージャーのテンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
+
+このトピックは大型のホワイト ペーパーの一部です。ペーパーの完全版を参照するには、[World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf) をダウンロードしてください。
 
 ## 機能スコープ テンプレートをエンド ツー エンド ソリューション スコープ テンプレートに移行する
 
@@ -202,7 +204,7 @@ Key Vault に格納されたシークレットは、厳密な RBAC により信�
 
 ## "サブスクリプション持ち込み" モデルを有効にする
 
-社内 IT 部門、システム インテグレーター、クラウド サービス ベンダーは、顧客と共同で "サブスクリプション持ち込み" モデルを使用する場合があります。具体的には、組織が最終顧客にサービスを提供し、その顧客の Azure サブスクリプションをなんらかの方法で使用します。
+社内 IT 部門、システム インテグレーター、Cloud Services ベンダーは、顧客と共同で "サブスクリプション持ち込み" モデルを使用する場合があります。具体的には、組織が最終顧客にサービスを提供し、その顧客の Azure サブスクリプションをなんらかの方法で使用します。
 
 この方法には複数のバリエーションがあり、次に説明するように、それぞれで要件が若干異なります。
 
@@ -252,4 +254,4 @@ Key Vault に格納されたシークレットは、厳密な RBAC により信�
 - Azure リソース マネージャーのセキュリティ上の推奨事項については、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 - テンプレート内やテンプレート間での状態の共有方法については、「[Azure リソース マネージャーのテンプレートでの状態の共有](best-practices-resource-manager-state.md)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

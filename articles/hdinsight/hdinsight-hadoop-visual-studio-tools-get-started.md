@@ -3,6 +3,7 @@
 	description="Visual Studio Hadoop Tools for HDInsight をインストールして、Hadoop クラスターに接続し、Hive クエリを実行する方法について説明します。"
 	services="HDInsight"
 	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"
 	manager="paulettm"
 	editor="cgronlun"/>
@@ -13,12 +14,12 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="07/21/2015"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
 # HDInsight Tools for Visual Studio を使用して Hive クエリを実行する
 
-HDInsight Tools for Visual Studio を使用して HDInsight クラスターに接続し、Hive クエリを送信する方法について説明します。HDInsight の使用に関する詳細については、「[HDInsight での Hadoop 入門][hdinsight.introduction]」と「[HDInsight の概要][hdinsight.get.started]」をご覧ください。Storm クラスターへの接続に関する詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する][hdinsight.storm.visual.studio.tools]」をご覧ください。
+HDInsight Tools for Visual Studio を使用して HDInsight クラスターに接続し、Hive クエリを送信する方法について説明します。HDInsight の使用に関する詳細については、「[HDInsight での Hadoop 入門][hdinsight.introduction]」と「[HDInsight の概要][hdinsight.get.started]」をご覧ください。Storm クラスターへの接続に関する詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C#トポロジを開発する][hdinsight.storm.visual.studio.tools]」をご覧ください。
 
 >[AZURE.NOTE]最新のリリースでは、Hive エディターのサポート、Hive スクリプトのローカルでの検証、YARN ログへのアクセスといった一部の新機能が追加されました。
 
@@ -68,7 +69,7 @@ HDInsight Tools for Visual Studio を使用して、HDInsight クラスターへ
 
 	>[AZURE.NOTE]**[HDInsight タスク一覧]** ウィンドウが開きます。ウィンドウが表示されない場合は、**[ビュー]** メニューで **[その他のウィンドウ]** をクリックし、次に **[HDInsight タスク一覧]** ウィンドウをクリックして開くことができます。  
 4.	Azure サブスクリプションの資格情報を入力し、**[サインイン]** をクリックします。この操作は、このワークステーションで、まだ一度も Visual Studio から Azure サブスクリプションに接続していない場合にのみ必要です。
-5.	サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。クラスターが 1 つもない場合は、Azure ポータル、Azure PowerShell、HDInsight SDK を使用してプロビジョニングできます。詳細については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。
+5.	サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。クラスターが 1 つもない場合は、Azure プレビュー ポータル、Azure PowerShell、HDInsight SDK を使用してプロビジョニングできます。詳細については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。
 
 	![Hadoop ツール: HDInsight Tools for Visual Studio サーバー エクスプローラー クラスターの一覧][5]
 6.	HDInsight クラスターを展開します。**Hive データベース**、既定のストレージ アカウント、リンクされたストレージ アカウント、**Hadoop サービス ログ**が表示されます。さらに、エンティティを展開できます。
@@ -134,7 +135,7 @@ Hive クエリを作成して実行するには次の 2 つの方法がありま
 
 1. **サービス エクスプローラー**から、**[Azure]**、**[HDInsight クラスター]** の順に展開します。
 2. クエリを実行するクラスターを右クリックして、**[Hive クエリの作成]** をクリックします。
-3. Hive クエリを入力します。Hive エディターは Intellisense をサポートしています。HDInsight Tools for Visual Studio で、Hive スクリプトの編集時にリモート メタデータの読み込みがサポートされます。たとえば、"SELECT * FROM" と入力すると、Intellisense には推奨されるテーブル名が一覧表示されます。テーブル名を指定すると、列名が Intellisense に一覧表示されます。ツールは、ほとんどすべての Hive の DML ステートメント、サブクエリ、および組み込みの UDF をサポートします。 
+3. Hive クエリを入力します。Hive エディターは Intellisense をサポートしています。HDInsight Tools for Visual Studio で、Hive スクリプトの編集時にリモート メタデータの読み込みがサポートされます。たとえば、"SELECT * FROM" と入力すると、Intellisense には推奨されるテーブル名が一覧表示されます。テーブル名を指定すると、列名が Intellisense に一覧表示されます。ツールは、ほとんどすべての Hive の DML ステートメント、サブクエリ、および組み込みの UDF をサポートします。
 
 	![Hadoop ツール: HDInsight Visual Studio Tools Intellisense][13]
 
@@ -235,4 +236,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

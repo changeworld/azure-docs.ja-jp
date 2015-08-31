@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 開発環境の更新"
+   pageTitle="Service Fabric 開発環境の更新 | Microsoft Azure"
    description="Service Fabric 開発環境を更新して、最新のランタイム、SDK、およびツールを使用します。"
    services="service-fabric"
    documentationCenter=".net"
@@ -53,4 +53,4 @@
 
  [1]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

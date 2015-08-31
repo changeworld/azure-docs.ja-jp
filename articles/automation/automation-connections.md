@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure Automation での接続資産"
+   pageTitle="Azure Automation での接続資産 | Microsoft Azure"
    description="Azure Automation の接続資産には、Runbook から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。この記事では、接続の詳細およびテキスト作成とグラフィカル作成の両方で接続を使用する方法について説明します。"
    services="automation"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/21/2015"
+   ms.date="08/18/2015"
    ms.author="bwren" />
 
 # Azure Automation での接続資産
@@ -120,4 +120,4 @@ Windows PowerShell の [New-AzureAutomationConnection](http://msdn.microsoft.com
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

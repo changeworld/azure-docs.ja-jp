@@ -5,7 +5,8 @@
 	editor="cgronlun"
 	manager="paulettm"
 	authors="Blackmist"
-	documentationCenter=""/>
+	documentationCenter=""
+	tags="azure-portal"/>
 
 <tags
 	ms.service="hdinsight"
@@ -297,4 +298,4 @@ Java と JDK をインストールするときに、次のような環境変数�
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

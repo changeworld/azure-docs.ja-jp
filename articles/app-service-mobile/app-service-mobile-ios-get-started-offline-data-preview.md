@@ -1,8 +1,8 @@
 <properties
-	pageTitle="モバイル アプリのオフライン同期を有効にする (iOS)"
+	pageTitle="Azure Mobile App (iOS) に対するオフライン同期の有効化"
 	description="App Service Mobile Apps を使用して、iOS アプリケーション内のオフライン データをキャッシュおよび同期する方法を説明します。"
 	documentationCenter="ios"
-	authors="lindydonna"
+	authors="krisragh"
 	manager="dwrede"
 	editor=""
 	services="app-service\mobile"/>
@@ -13,40 +13,30 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="07/01/2015"
-	ms.author="donnam"/>
+	ms.date="08/11/2015"
+	ms.author="krisragh"/>
 
 # iOS モバイル アプリのオフライン同期を有効にする
 
-[AZURE.INCLUDE [app-service-mobile-selector-offline-preview](../../includes/app-service-mobile-selector-offline-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-offline-preview](../../includes/app-service-mobile-selector-offline-preview.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
-このチュートリアルでは、iOS 向けのモバイル アプリのオフライン同期機能について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。変更はローカル データベースに格納され、デバイスが再びオンラインになると、これらの変更がリモート バックエンドと同期されます。
+## 概要
 
-オフライン同期には、いくつかの潜在的な用途があります。
+このチュートリアルでは、Azure Mobile Apps for iOS 向けのモバイル アプリのオフライン同期機能について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。変更はローカル データベースに格納され、デバイスが再びオンラインになると、これらの変更がリモート バックエンドと同期されます。
 
-* サーバー データをデバイスにローカルでキャッシュすることにより、アプリケーションの応答性を向上させる。
-* 断続的なネットワーク接続に対してアプリケーションに弾力性を持たせる。
-* エンド ユーザーがネットワークにアクセスできなくてもデータを作成および変更できるようにすることで、接続がほとんどまたはまったく得られないような状況をサポートする。
-* 複数のデバイス間でデータを同期させ、同じレコードが 2 つのデバイスによって変更されたときに競合を検出する。
+Azure Mobile Apps を初めて使用する場合は、最初に [iOS アプリの作成] に関するチュートリアルを完了してください。
 
-Mobile Apps を初めて使用する場合は、最初に [iOS アプリの作成]に関するチュートリアルを完了してください。
+オフラインの同期機能の詳細については、トピック「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
-##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
+##<a name="review"></a>サーバーのプロジェクト構成の確認 (省略可能)
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-offline-preview](../../includes/app-service-mobile-dotnet-backend-enable-offline-preview.md)]
 
-## <a name="get-app"></a>オフラインの ToDo サンプル アプリケーションの取得
+## <a name="review-sync"></a>クライアント同期コードの確認 
 
-[GitHub の Mobile Apps サンプル リポジトリ]で、リポジトリを複製し、[オフライン iOS サンプル] プロジェクトを Xcode で開きます。
+チュートリアル「[iOS アプリの作成]」でダウンロードしたクライアント プロジェクトには、ローカルのコア データに基づくデータベースを使用したオフライン同期をサポートするコードが既に含まれてます。このセクションでは、チュートリアルのコードに既に含まれているものの概要を示します。機能の概念的な概要については、「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
-### ベータ SDK
-オフライン サポートを既存のアプリケーションに追加するには、最新の [ベータ iOS SDK](http://aka.ms/gc6fex) を取得します。
-
-## <a name="review-sync"></a>Mobile Apps 同期コードの確認
-
-モバイル アプリのオフライン同期により、ネットワークにアクセスできないときでも、エンド ユーザーはローカル データベースとやり取りできます。アプリケーションでこれらの機能を使用するには、`MSClient` の同期コンテキストを初期化して、ローカル ストアを参照します。その後、`MSSyncTable` インターフェイスを使用してテーブルを参照します。
-
-このセクションでは、サンプルのオフライン同期に関連するコードについて説明します。
+Azure Mobile Apps のオフライン データ同期機能を使用すると、ネットワークにアクセスできない場合でもエンド ユーザーはローカル データベースとやり取りできるようになります。アプリケーションでこれらの機能を使用するには、`MSClient` の同期コンテキストを初期化して、ローカル ストアを参照します。その後、`MSSyncTable` インターフェイスを使用してテーブルを参照します。
 
 1. **QSTodoService.m** で、メンバー `syncTable` の種類が `MSSyncTable` であることを確認します。オフライン同期では、`MSTable` の代わりにこの同期テーブル インターフェイスを使用します。同期テーブルが使用されると、すべての操作はローカル ストアを参照し、明示的なプッシュ操作とプル操作を使用するリモート バックエンドのみが同期されます。
 
@@ -119,7 +109,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
       * MS\_TableConfig: すべてのプル操作に対する最後の同期操作の最終更新時刻の追跡用
       * TodoItem: Todo 項目の格納用。システム列 **ms\_createdAt**、**ms\_updatedAt**、および **ms\_version** は省略可能なシステム プロパティです。
 
->[AZURE.NOTE]モバイル アプリ SDK では、**`ms_`** が付く列名が予約されています。システム列以外でこのプレフィックスを使用しないでください。使用した場合、リモート バックエンドを使用するときに列名が変更されます。
+>[AZURE.NOTE]Azure Mobile Apps SDK では、"**`ms_`**" が付く列名が予約されています。システム列以外でこのプレフィックスを使用しないでください。使用した場合、リモート バックエンドを使用するときに列名が変更されます。
 
 - オフライン同期機能を使用する場合は、次のようにシステム テーブルを定義する必要があります。
 
@@ -169,7 +159,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
     | 属性 | 型 | 注 |
     |-----------   |  ------ | -------------------------------------------------------|
-    | id | String | リモート ストア内のプライマリ キー |
+    | id | 文字列、必須のマーク | リモート ストア内のプライマリ キー |
     | 完了 | Boolean | Todo 項目フィールド |
     | テキスト | String | Todo 項目フィールド |
     | ms\_createdAt | 日付 | (省略可能) \_\_createdAt システム プロパティにマップ | | ms\_updatedAt | Date | (省略可能) \_\_updatedAt システム プロパティにマップ | | ms\_version | String | (省略可能) 競合の検出に使用され、\_\_version にマップ |
@@ -218,7 +208,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 Core Data ローカル ストアを使用する場合は、[正しいシステム プロパティ](#review-core-data)を使用して、複数のテーブルを定義する必要があります。
 
-モバイル アプリに対する通常の CRUD 操作は、アプリケーションはまだ接続されているが、すべての操作はローカル ストアに対して発生したかのように動作します。
+Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーションはまだ接続されているが、すべての操作はローカル ストアに対して発生したかのように動作します。
 
 ローカル ストアをサーバーと同期しようとする場合は、`MSSyncTable.pullWithQuery` と `MSClient.syncContext.pushWithCompletion` の各メソッドを使用しました。
 
@@ -241,45 +231,23 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 
 ## その他のリソース
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期]
+* [Azure Mobile Apps でのオフライン データ同期]
 
-* [Azure Friday: Azure Mobile Services のオフライン対応アプリケーション] (注: デモは Windows 向けですが、機能の説明はすべてのプラットフォームに適用されます)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注記: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
 <!-- URLs. -->
 
-[iOS アプリの作成]: ../app-service-mobile-dotnet-backend-ios-get-started.md
 
-[core-data-1]: ./media/mobile-services-ios-get-started-offline-data/core-data-1.png
-[core-data-2]: ./media/mobile-services-ios-get-started-offline-data/core-data-2.png
-[core-data-3]: ./media/mobile-services-ios-get-started-offline-data/core-data-3.png
-[defining-core-data-main-screen]: ./media/mobile-services-ios-get-started-offline-data/defining-core-data-main-screen.png
-[defining-core-data-model-editor]: ./media/mobile-services-ios-get-started-offline-data/defining-core-data-model-editor.png
+[iOS アプリの作成]: ../app-service-mobile-dotnet-backend-ios-get-started-preview.md
+[Azure Mobile Apps でのオフライン データ同期]: ../app-service-mobile-offline-data-sync-preview.md
+
 [defining-core-data-tableoperationerrors-entity]: ./media/app-service-mobile-ios-get-started-offline-data-preview/defining-core-data-tableoperationerrors-entity.png
 [defining-core-data-tableoperations-entity]: ./media/app-service-mobile-ios-get-started-offline-data-preview/defining-core-data-tableoperations-entity.png
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data-preview/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data-preview/defining-core-data-todoitem-entity.png
-[update-framework-1]: ./media/mobile-services-ios-get-started-offline-data/update-framework-1.png
-[update-framework-2]: ./media/mobile-services-ios-get-started-offline-data/update-framework-2.png
-
-[Core Data Model Editor Help]: https://developer.apple.com/library/mac/recipes/xcode_help-core_data_modeling_tool/Articles/about_cd_modeling_tool.html
-[Creating an Outlet Connection]: https://developer.apple.com/library/mac/recipes/xcode_help-interface_builder/articles-connections_bindings/CreatingOutlet.html
-[Build a User Interface]: https://developer.apple.com/library/mac/documentation/ToolsLanguages/Conceptual/Xcode_Overview/Edit_User_Interfaces/edit_user_interface.html
-[Adding a Segue Between Scenes in a Storyboard]: https://developer.apple.com/library/ios/recipes/xcode_help-IB_storyboard/chapters/StoryboardSegue.html#//apple_ref/doc/uid/TP40014225-CH25-SW1
-[Adding a Scene to a Storyboard]: https://developer.apple.com/library/ios/recipes/xcode_help-IB_storyboard/chapters/StoryboardScene.html
-
-[Core Data]: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html
-[Download the preview SDK here]: http://aka.ms/Gc6fex
-[How to use the Mobile Services client library for iOS]: ../mobile-services-ios-how-to-use-client-library.md
-[オフライン iOS サンプル]: https://github.com/Azure/mobile-services-samples/tree/master/TodoOffline/iOS/blog20140611
-[GitHub の Mobile Apps サンプル リポジトリ]: https://github.com/Azure/mobile-services-samples
-
-[Get started with Mobile Services]: ../mobile-services-ios-get-started.md
-[Get started with data]: ../mobile-services-ios-get-started-data.md
-[Handling conflicts with offline support for Mobile Services]: ../mobile-services-ios-handling-conflicts-offline-data.md
-[Soft Delete]: ../mobile-services-using-soft-delete.md
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday: Azure Mobile Services のオフライン対応アプリケーション]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

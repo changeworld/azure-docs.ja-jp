@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Virtual Machines における SQL Server" 
+	pageTitle="Azure Virtual Machines における SQL Server の概要" 
 	description="この記事は、Azure IaaS Virtual Machines でホストされている SQL Server の概要を示します。この記事には詳しいコンテンツへのリンクが掲載されています。" 
 	services="virtual-machines" 
 	documentationCenter="" 
@@ -13,69 +13,54 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services" 
-	ms.date="07/17/2015"
+	ms.date="08/18/2015"
 	ms.author="jroth"/>
 
-# Azure Virtual Machines における SQL Server
+# Azure Virtual Machines における SQL Server の概要
 
 ## 概要
-AlwaysOn 可用性グループと Azure の仮想ネットワークを使用すると、1 つのデータベース サーバーや複数のコンピューターなど、さまざまな構成で、[Azure Virtual Machines に SQL Server][sqlvmlanding] をホストすることができます。
+AlwaysOn 可用性グループと Azure Virtual Network を使用すると、1 つのデータベース サーバーや複数のコンピューターなど、さまざまな構成で、[Azure Virtual Machines に SQL Server](http://azure.microsoft.com/services/virtual-machines/sql-server/) をホストすることができます。このトピックでは、Azure 仮想マシンで SQL Server の実行を開始するための最適なリソースをいくつか紹介します。
 
-> [AZURE.NOTE]Azure VM で SQL Server を実行することは、リレーショナル データを Azure に格納するための 1 つのオプションです。Azure SQL Database サービスを使用することもできます。詳細については、「[Azure SQL Database と Azure VM 内の SQL Server について][sqldbcompared]」を参照してください。
+>[AZURE.NOTE]Azure VM で SQL Server を実行することは、リレーショナル データを Azure に格納するための 1 つのオプションです。Azure SQL Database サービスを使用することもできます。詳細については、「[Azure SQL Database と Azure VM 内の SQL Server について](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。
  
 ## 1 つの VM での SQL Server インスタンスのデプロイ
-自動化または [Azure ポータルを使用して Azure の仮想マシンを作成する][createvmportal]と、ライセンスがある SQL Server の任意のインスタンスをインストールすることができます。ただし、SQL Server コンピューターと他のクライアント コンピューターの間で[接続をセットアップ][setupconnectivity]する追加の手順が必要になります。
- 
-また、ギャラリーにある各種 SQL Server 仮想マシン イメージのいずれかをインストールすることもできます。それらのイメージには、VM の料金での SQL Server のライセンスが含まれます。詳細およびステップ バイ ステップの接続については、「[Azure での SQL Server 仮想マシンのプロビジョニング][provisionsqlvm]」を参照してください。
 
-SQL Server 仮想マシンを起動した後、マシンに既存のデータベースを移行できます。データベースの移行の詳細については、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)」を参照してください。
+Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Azure 管理ポータルで SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-provision-sql-server.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
+
+ただし、SQL Server がプレインストールされていない状態で [Azure の仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。
+
+これらのプロビジョニングと構成の初期段階での一般的なタスクは、次のとおりです。
+
+- [Azure VM における SQL Server のパフォーマンスに関するベスト プラクティスの確認](https://msdn.microsoft.com/library/azure/dn133149.aspx)
+- [Azure VM における SQL Server のセキュリティに関するベスト プラクティスの確認](https://msdn.microsoft.com/library/azure/dn133147.aspx)
+- [接続のセットアップ](virtual-machines-sql-server-connectivity.md)
 
 ## 複数の VM での高可用性構成のデプロイ
-SQL Server AlwaysOn 可用性グループを使用すると、SQL Server の高可用性を実現できます。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure プレビュー ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート][sqlalwaysonportal]に関する記事を参照してください。または、[AlwaysOn 可用性グループを手動で構成][sqlalwaysonmanual]することもできます。その他の高可用性構成については、「[Azure の仮想マシン内の SQL Server の高可用性と災害復旧][sqlhadr]」を参照してください。
+
+SQL Server AlwaysOn 可用性グループを使用すると、SQL Server の高可用性を実現できます。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure プレビュー ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。
+
+可用性グループおよび関連付けられているリスナーを手動で構成する場合は、次の記事を参照してください。
+
+- [Azure AlwaysOn 可用性グループの構成 (GUI)](virtual-machines-sql-server-alwayson-availability-groups-gui.md)
+- [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)
+- [オンプレミスの AlwaysOn 可用性グループの Azure への拡張](virtual-machines-sql-server-extend-on-premises-alwayson-availability-groups.md)
+
+その他の高可用性構成については、「[Azure Virtual Machines 内の SQL Server の高可用性と災害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)」を参照してください。
 
 ## Azure でのビジネス インテリジェンス、データ ウェアハウジング、OLTP ワークロードの実行   
-Azure Virtual Machines で SQL Server の一般的なワークロードを実行できます。SQL Server では、ギャラリーで提供されている、最適化された仮想マシン イメージをいくつか使用することができます。このイメージには、[ビジネス インテリジェンス][sqlbi]、[データ ウェアハウジング][sqldw]、[OLTP][sqloltp] があります。
+Azure Virtual Machines で SQL Server の一般的なワークロードを実行できます。SQL Server では、ギャラリーで提供されている、最適化された仮想マシン イメージをいくつか使用することができます。次のイメージが含まれます。
+
+- [ビジネス インテリジェンス](https://msdn.microsoft.com/library/azure/jj992719.aspx)
+- [データ ウェアハウス](https://msdn.microsoft.com/library/azure/dn387396.aspx)
+- [OLTP](https://msdn.microsoft.com/library/azure/dn387396.aspx)
 
 ## データの移行
+
 SQL Server 仮想マシンを起動した後、マシンに既存のデータベースを移行できます。複数の手法がありますが、SQL Server Management Studio のデプロイ ウィザードは、ほとんどのシナリオに適してします。シナリオの詳細とウィザードのチュートリアルについては、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)」を参照してください。
 
-## Backup と復元
-オンプレミス データベースを使う場合は、SQL Server のバックアップ ファイルを格納するためのセカンダリ データ センターとして Azure を利用できます。[SQL Server Backup to URL][backupurl] を実行すると、Azure のバックアップ ファイルが Azure BLOB ストレージに格納されます。[SQL Server マネージ バックアップ][managedbackup]を実行すると、Azure でバックアップのスケジュールと保持期間を設定できます。これらのサービスは、オンプレミスの SQL Server インスタンスか、Azure VM で実行されている SQL Server で使用できます。Azure VM は、SQL Server の[自動バックアップ][autobackup]や[修正プログラムの自動適用][autopatching]を活用することもできます。詳細については、「[Azure の仮想マシンにおける SQL Server の管理タスク][managementtasks]」を参照してください。
+## バックアップと復元
+オンプレミス データベースを使う場合は、SQL Server のバックアップ ファイルを格納するためのセカンダリ データ センターとして Azure を利用できます。バックアップと復元のオプションの概要については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。
 
-## リソース:
-[Azure VM 内の SQL Server][sqlmsdnlanding]
+[SQL Server Backup to URL](https://msdn.microsoft.com/library/dn435916.aspx) を実行すると、Azure のバックアップ ファイルが Azure BLOB ストレージに格納されます。[SQL Server マネージ バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)を実行すると、Azure でバックアップのスケジュールと保持期間を設定できます。これらのサービスは、オンプレミスの SQL Server インスタンスか、Azure VM で実行されている SQL Server で使用できます。Azure VM は、SQL Server の[自動バックアップ](virtual-machines-sql-server-automated-backup.md)や[修正プログラムの自動適用](virtual-machines-sql-server-automated-patching.md)を活用することもできます。
 
-[Azure での SQL Server 仮想マシンのプロビジョニング][provisionsqlvm]
-
-[Azure の仮想マシンにおける SQL Server の概要][sqlvmgetstarted]
-
-[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)
-
-[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス][sqlperf]
-
-[Azure 仮想マシンにおける SQL Server のセキュリティに関する考慮事項][sqlsecurity]
-
-  [sqlvmlanding]: http://azure.microsoft.com/services/virtual-machines/sql-server/
-  [sqldbcompared]: http://azure.microsoft.com/documentation/articles/data-management-azure-sql-database-and-sql-server-iaas
-  [createvmportal]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/
-  [setupconnectivity]: https://msdn.microsoft.com/library/azure/dn133152.aspx
-  [provisionsqlvm]: http://azure.microsoft.com/documentation/articles/virtual-machines-provision-sql-server/
-  [sqlalwaysonportal]: http://go.microsoft.com/fwlink/?LinkId=526941
-  [sqlalwaysonmanual]: https://msdn.microsoft.com/library/azure/dn249504.aspx
-  [sqlhadr]: https://msdn.microsoft.com/library/azure/jj870962.aspx
-  [sqlbi]: https://msdn.microsoft.com/library/azure/jj992719.aspx
-  [sqldw]: https://msdn.microsoft.com/library/azure/dn387396.aspx
-  [sqloltp]: https://msdn.microsoft.com/library/azure/eb0188e2-5569-48ff-b92c-1f6c0bf79620#about
-  [migratesql]: https://msdn.microsoft.com/library/azure/dn133142.aspx
-  [backupurl]: https://msdn.microsoft.com/library/dn435916(v=sql.120).aspx
-  [managedbackup]: https://msdn.microsoft.com/library/dn449496.aspx
-  [autobackup]: https://msdn.microsoft.com/library/azure/dn906091.aspx
-  [autopatching]: https://msdn.microsoft.com/library/azure/dn961166.aspx
-  [managementtasks]: https://msdn.microsoft.com/library/azure/dn906886.aspx
-  [sqlmsdnlanding]: https://msdn.microsoft.com/library/azure/jj823132.aspx
-  [sqlvmgetstarted]: https://msdn.microsoft.com/library/azure/dn133151.aspx
-  [sqlperf]: https://msdn.microsoft.com/library/azure/dn133149.aspx
-  [sqlsecurity]: https://msdn.microsoft.com/library/azure/dn133147.aspx
-  [technicalarticles]: https://msdn.microsoft.com/library/azure/dn248435.aspx
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

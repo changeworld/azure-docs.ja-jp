@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure AD での管理者ロールの割り当て" 
-	description="Azure AD で使用できる管理者ロールと、管理者ロールを割り当てる方法について説明するトピック。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="Justinha" 
-	manager="TerryLan" 
+<properties
+	pageTitle="Azure AD での管理者ロールの割り当て"
+	description="Azure AD で使用できる管理者ロールと、管理者ロールを割り当てる方法について説明するトピック。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand" 
+	manager="stevenpo"
 	editor="LisaToft"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/05/2015" 
-	ms.author="Justinha"/>
+<tags
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/14/2015"
+	ms.author="curtand"/>
 
 # Azure AD での管理者ロールの割り当て
 
@@ -85,7 +85,4 @@
 - [パスワードの管理](active-directory-manage-passwords.md)
 - [グループの管理](active-directory-manage-groups.md)
 
-
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -18,7 +18,7 @@
 
 # 特定のユーザーにクロスプラット フォーム通知を送信する
 
-[AZURE.INCLUDE [app-service-mobile-selector-push-users-preview](../../includes/app-service-mobile-selector-push-users-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-push-users-preview](../../includes/app-service-mobile-selector-push-users-preview.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
 このトピックでは、特定のユーザーのすべての登録済みデバイスにモバイル バックエンドから通知を送信する方法について説明します。[テンプレート]の概念が導入されました。これにより、クライアント アプリケーションで、登録時にペイロードの形式と変数プレースホルダーを自由に指定することができます。送信すると、これらのプレースホルダーにより、すべてのプラットフォームにヒットし、クロスプラットフォーム通知が有効になります。
 
@@ -112,4 +112,4 @@
 [プッシュ通知の使用]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-push-preview.md
 [テンプレート]: https://msdn.microsoft.com/ja-jp/library/dn530748.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

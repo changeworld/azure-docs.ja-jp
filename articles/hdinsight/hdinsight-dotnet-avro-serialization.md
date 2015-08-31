@@ -1,19 +1,20 @@
-<properties 
-	pageTitle="Microsoft Avro ライブラリを使用したデータのシリアル化 | Microsoft Azure" 
-	description="Azure HDInsight が Avro を使用してビッグ データをシリアル化する方法について説明します。" 
-	services="hdinsight" 
-	documentationCenter="" 
+<properties
+	pageTitle="Microsoft Avro ライブラリを使用したデータのシリアル化 | Microsoft Azure"
+	description="Azure HDInsight が Avro を使用してビッグ データをシリアル化する方法について説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian" 
-	manager="paulettm" 
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/09/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/09/2015"
 	ms.author="jgao"/>
 
 
@@ -27,14 +28,14 @@
 
 Avro システムにおけるオブジェクトのシリアル化表現は、スキーマと実際の値の 2 つの部分で構成されます。Avro スキーマは、シリアル化されたデータの言語に依存しないデータ モデルを JSON 形式で記述します。Avro スキーマは、データのバイナリ表現と共存します。スキーマをバイナリ表現から切り離すことで、値ごとのオーバーヘッドなしにそれぞれのオブジェクトを書き込めるため、シリアル化が高速になり、表現を小さくできます。
 
-##<a name="hadoopScenario"></a>Hadoop のシナリオ 
+##<a name="hadoopScenario"></a>Hadoop のシナリオ
 Apache Avro のシリアル化形式は、Azure HDInsight やその他の Apache Hadoop 環境で広く使用されています。Avro は、Hadoop MapReduce ジョブ内の複雑なデータ構造を表すのに便利です。Avro ファイル (Avro オブジェクト コンテナー ファイル) の形式は、分散型 MapReduce プログラミング モデルをサポートするように設計されています。分散を可能にする重要な機能として、ファイル内の任意のポイントを検索し、特定のブロックから読み取りを開始できるという意味で、ファイルが "分割可能" であることがあります。
- 
+
 ##<a name="serializationMAL"></a>Microsoft Avro ライブラリにおけるシリアル化
 .NET Library for Avro では、オブジェクトをシリアル化する方法として次の 2 つの方法をサポートしています。
 
-- **リフレクション**: これらの型に対応する JSON スキーマは、シリアル化する .NET 型のデータのコントラクト属性を考慮に入れたうえで、自動的に作成されます。 
-- **汎用レコード**: JSON スキーマは、シリアル化するデータのスキーマを記述する .NET 型がないときに [**AvroRecord**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) クラスによって表されるレコードに明示的に指定されます。 
+- **リフレクション**: これらの型に対応する JSON スキーマは、シリアル化する .NET 型のデータのコントラクト属性を考慮に入れたうえで、自動的に作成されます。
+- **汎用レコード**: JSON スキーマは、シリアル化するデータのスキーマを記述する .NET 型がないときに [**AvroRecord**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) クラスによって表されるレコードに明示的に指定されます。
 
 ストリームのライターとリーダーの両方でデータ スキーマがわかっている場合は、データをスキーマなしで送信できます。Avro オブジェクト コンテナー ファイルを使用する場合は、ファイル内にスキーマを保存する必要があります。データ圧縮に使用するコーデックなどの他のパラメーターを指定することもできます。これらのシナリオについては、次のコード例で詳しく説明します。
 
@@ -42,7 +43,7 @@ Apache Avro のシリアル化形式は、Azure HDInsight やその他の Apache
 ##<a name="prerequisites"></a>Microsoft Avro ライブラリの前提条件
 
 - <a href="http://www.microsoft.com/download/details.aspx?id=17851" target="_blank">Microsoft .NET Framework 4</a>
-- <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a> (6.0.4 以降) 
+- <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a> (6.0.4 以降)
 
 Newtonsoft.Json.dll 依存関係は Microsoft Avro ライブラリのインストールと共に自動的にダウンロードされます。この手順は、次のセクションで説明しています。
 
@@ -51,17 +52,17 @@ Microsoft Avro ライブラリは、NuGet パッケージとして配布され�
 
 1. **[プロジェクト]** タブの **[NuGet パッケージの管理]** を選択します。
 2. **[オンライン検索]** ボックスを使用して "Microsoft.Hadoop.Avro" を検索します。
-3. **[Microsoft Azure HDInsight Avro ライブラリ]** の横にある **[インストール]** をクリックします。 
+3. **[Microsoft Azure HDInsight Avro ライブラリ]** の横にある **[インストール]** をクリックします。
 
 Newtonsoft.Json.dll (6.0.4 以降) 依存関係も Microsoft Avro ライブラリと共に自動的にダウンロードされます。
 
 <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro ライブラリのホーム ページ</a>にアクセスして現在のリリース ノートを参照することをお勧めします。
- 
+
 ##<a name="sourceCode"></a>Microsoft Avro ライブラリのソース コード
 
 Microsoft Avro ライブラリのソース コードは、<a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro ライブラリのホーム ページ</a>から入手できます。
 
-##<a name="compiling"></a>Microsoft Avro ライブラリを使用したスキーマのコンパイル 
+##<a name="compiling"></a>Microsoft Avro ライブラリを使用したスキーマのコンパイル
 
 Microsoft Avro ライブラリには、コード生成ユーティリティがあります。このユーティリティにより、あらかじめ定義した JSON スキーマに基づいて、C# のデータ型を自動的に作成できます。このコード生成ユーティリティは、バイナリの実行可能ファイルとして配布されませんが、次の手順に従って簡単に作成できます。
 
@@ -111,7 +112,7 @@ Microsoft Avro ライブラリには、コード生成ユーティリティが�
  * <a href="#Scenario6">**Avro を使用した Microsoft Azure HDInsight サービスのデータのアップロード**</a>: この例では、Avro のシリアル化による HDInsight サービスの操作方法を示します。この例を実行するには、有効な Azure サブスクリプションと、Azure HDInsight クラスターへのアクセスが必要です。
 
 ###<a name="Scenario1"></a>例 1: リフレクションを使用したシリアル化
- 
+
 Microsoft Avro ライブラリでリフレクションを使用して、型の JSON スキーマを、シリアル化する C# オブジェクトのデータ コントラクト属性から自動的に作成できます。Microsoft Avro ライブラリは、[**IAvroSeralizer<T>**](http://msdn.microsoft.com/library/dn627341.aspx) を作成して、シリアル化するフィールドを識別します。
 
 この例では、オブジェクト (**Location** 構造体をメンバーとして含む **SensorData** クラス) をメモリ ストリームにシリアル化した後、このストリームを逆シリアル化します。次に、その結果を初期インスタンスと比較して、回復された **SensorData** オブジェクトが元のオブジェクトと同じかどうかを確認します。
@@ -170,7 +171,7 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
                 //Create a memory stream buffer
                 using (var buffer = new MemoryStream())
                 {
-                    //Create a data set by using sample class and struct 
+                    //Create a data set by using sample class and struct
                     var expected = new SensorData { Value = new byte[] { 1, 2, 3, 4, 5 }, Position = new Location { Room = 243, Floor = 1 } };
 
                     //Serialize the data to the specified stream
@@ -225,7 +226,7 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
             }
         }
     }
-    // The example is expected to display the following output: 
+    // The example is expected to display the following output:
     // SERIALIZATION USING REFLECTION
     //
     // Serializing Sample Data Set...
@@ -276,8 +277,8 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
                                 ""name"":""Microsoft.Hadoop.Avro.Specifications.SensorData"",
                                 ""fields"":
                                     [
-                                        { 
-                                            ""name"":""Location"", 
+                                        {
+                                            ""name"":""Location"",
                                             ""type"":
                                                 {
                                                     ""type"":""record"",
@@ -349,7 +350,7 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
         }
     }
 	}
-    // The example is expected to display the following output: 
+    // The example is expected to display the following output:
     // SERIALIZATION USING GENERIC RECORD
     //
     // Defining the Schema and creating Sample Data Set...
@@ -600,7 +601,7 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
     // For Pair 2 result of Data Set Identity Comparison is True
     // ----------------------------------------
     // Press any key to exit.
-  
+
 
 ###<a name="Scenario4"></a>例4: オブジェクト コンテナー ファイルを使用したシリアル化と汎用レコードを使用したシリアル化
 
@@ -644,8 +645,8 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
                                 ""name"":""Microsoft.Hadoop.Avro.Specifications.SensorData"",
                                 ""fields"":
                                     [
-                                        { 
-                                            ""name"":""Location"", 
+                                        {
+                                            ""name"":""Location"",
                                             ""type"":
                                                 {
                                                     ""type"":""record"",
@@ -873,7 +874,7 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
 [Avro 仕様](http://avro.apache.org/docs/current/spec.html#Required+Codecs)では、(既定の **Null** と **Deflate** 以外に) オプションの圧縮コーデックを使用することもできます。この例には、(サポートされるオプションのコーデックとして [Avro Specification](http://avro.apache.org/docs/current/spec.html#snappy) に明記されている) Snappy のような新しいコーデックは実装されていません。この例では、既定の .NET Framework 4 バージョンよりも [zlib](http://zlib.net/) 圧縮ライブラリに基づくより優れた圧縮アルゴリズムを提供する [**Deflate**][deflate-110] コーデックの .NET Framework 4.5 実装の使用法を紹介します。
 
 
-    // 
+    //
     // This code needs to be compiled with the parameter Target Framework set as ".NET Framework 4.5"
     // to ensure the desired implementation of the Deflate compression algorithm is used.
     // Ensure your C# project is set up accordingly.
@@ -916,7 +917,7 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
         #endregion
 
         #region Defining custom codec based on .NET Framework V.4.5 Deflate
-        //Avro.NET codec class contains two methods, 
+        //Avro.NET codec class contains two methods,
         //GetCompressedStreamOver(Stream uncompressed) and GetDecompressedStreamOver(Stream compressed),
         //which are the key ones for data compression.
         //To enable a custom codec, one needs to implement these methods for the required codec.
@@ -926,7 +927,7 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
         //cannot be directly used for Avro because it does not support vital operations like Seek.
         //Thus one needs to implement two classes inherited from stream
         //(one for compressed and one for decompressed stream)
-        //that use Deflate compression and implement all required features. 
+        //that use Deflate compression and implement all required features.
         internal sealed class CompressionStreamDeflate45 : Stream
         {
             private readonly Stream buffer;
@@ -1128,7 +1129,7 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
 
         #region Define modified Codec Factory
         //Define modified codec factory to be used in the reader.
-        //It will catch the attempt to use "Deflate" and provide  a custom codec. 
+        //It will catch the attempt to use "Deflate" and provide  a custom codec.
         //For all other cases, it will rely on the base class (CodecFactory).
         internal sealed class CodecFactoryDeflate45 : CodecFactory
         {
@@ -1386,8 +1387,8 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
 
 この前提条件の情報をすべてサンプル構成ファイルに入力してから、サンプルを実行する必要があります。その方法は次の 2 つです。
 
-* サンプルのルート ディレクトリにある app.config ファイルを編集し、その後サンプルを作成する。または、 
-* 最初にサンプルを作成してから、ビルド ディレクトリの AvroHDISample.exe.config を編集する。 
+* サンプルのルート ディレクトリにある app.config ファイルを編集し、その後サンプルを作成する。または、
+* 最初にサンプルを作成してから、ビルド ディレクトリの AvroHDISample.exe.config を編集する。
 
 どちらの場合も、**<appSettings>** 設定セクションで編集を行います。ファイルのコメントに従ってください。次のコマンドを実行して、サンプルをコマンド ラインから実行します (サンプルを含む zip ファイルは、基本的に C:\\AvroHDISample に抽出されます。それ以外の場所を指定する場合は、該当するファイル パスを使用します)。
 
@@ -1403,7 +1404,4 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
 [deflate-100]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.100).aspx
 [deflate-110]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.110).aspx
 
-
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

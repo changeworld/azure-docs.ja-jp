@@ -5,7 +5,8 @@
    documentationCenter=""
    authors="nitinme"
    manager="paulettm"
-   editor="cgronlun"/>
+   editor="cgronlun"
+   tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -13,17 +14,21 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/20/2015"
+   ms.date="08/07/2015"
    ms.author="nitinme"/>
 
 
 # Hadoop のチュートリアル: Windows 上の HDInsight で Hadoop と Hive クエリを使用する
 
 > [AZURE.SELECTOR]
-- [Windows](../hdinsight-get-started.md)
-- [Linux](../hdinsight-hadoop-linux-get-started.md)
+- [Windows](../hdinsight-hadoop-tutorial-get-started-windows.md)
+- [Linux](../hdinsight-hadoop-linux-tutorial-get-started.md)
 
 Hadoop on Windows を理解して HDInsight の使用を開始できるように、このチュートリアルでは、Hadoop クラスターの非構造化データで Hive クエリを実行し、その結果を Microsoft Excel で分析する方法について説明します。
+
+[AZURE.INCLUDE [hdinsight-azure-preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
+
+* [HDInsight での Hadoop の使用 (Windows)](hdinsight-hadoop-tutorial-get-started-windows-v1.md)
 
 ## この Hadoop チュートリアルでは何が達成されますか?
 
@@ -40,8 +45,6 @@ HDInsight での Hadoop の説明については、このチュートリアル�
 
 Azure の HDInsight を一般に利用可能にすると共に、Microsoft は HDInsight Emulator for Azure (旧称 *Microsoft HDInsight 開発者プレビュー*) もリリースしました。このエミュレーターは開発者シナリオを対象としており、単一ノード デプロイメントのみをサポートします。HDInsight Emulator の使用法については、「[HDInsight Emulator の概要][hdinsight-emulator]」に関するページをご覧ください。
 
-> [AZURE.NOTE]HBase クラスターのプロビジョニング方法については、「[Provision HBase cluster in HDInsight (HDInsight での HBase クラスターのプロビジョニング)][hdinsight-hbase-custom-provision]」を参照してください。2 つのデータベースのどちらかを選ぶ理由については、「<a href="http://go.microsoft.com/fwlink/?LinkId=510237">What Is The Difference Between HBase and Hadoop/HDFS? (HBase と Hadoop/HDFS の違い)</a>」をご覧ください。
-
 ## 前提条件
 
 このチュートリアルを開始する前に、以下の条件を満たしている必要があります。
@@ -50,79 +53,81 @@ Azure の HDInsight を一般に利用可能にすると共に、Microsoft は H
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、または Office 2010 Professional Plus がインストールされた**ワークステーション**。
 
-**このチュートリアルの推定所要時間:** 30 分
-
-
-
-##<a name="storage"></a>Azure ストレージ アカウントの作成
-
-HDInsight で Hadoop クラスターをプロビジョニングするときに、Azure ストレージ アカウントを指定します。Hadoop 分散ファイルシステム (HDFS) と同様、このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」をご覧ください。
-
->[AZURE.NOTE]既定の BLOB ストレージ コンテナーと複数の Hadoop クラスターを共有しないでください。
-
-このストレージ アカウントに加えて、クラスターの構成をカスタマイズするときに他のストレージ アカウントを追加できます。この追加のストレージ アカウント用には、同じ Azure サブスクリプションを使用することも異なる Azure サブスクリプションを使用することもできます。手順については、「[Provision HDInsight clusters using custom options (カスタム オプションを使用した HDInsight クラスターのプロビジョニング)][hdinsight-provision]」を参照してください。
-
-このチュートリアルでは、既定の BLOB と既定のストレージ アカウントが使用されています。
-
-**Azure ストレージ アカウントを作成するには**
-
-1. [Azure ポータル][azure-management-portal]にサインインします。
-2. 左下隅にある **[新規]** をクリックし、次の図に示すように、値を入力します。
-
-	![Azure portal where you can use Quick Create to set up a new storage account.][image-hdi-storageaccount-quickcreate]
-
->[AZURE.NOTE]ストレージ アカウントは、クラスターでサポートされる場所 (**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、**米国中南部**) に作成してください。
-
-一覧の新しいストレージ アカウントを選択し、ページの下部の **[アクセス キーの管理]** をクリックします。**[プライマリ アクセス キー]** (または **[セカンダリ アクセス キー]** 動作しているいずれかのキー) の値を書き留めます。この情報は後で必要になります。詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」をご覧ください。
 
 ##<a name="provision"></a>Hadoop クラスターのプロビジョニング
 
-クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。このセクションでは、Hadoop バージョン 2.4 に基づいて HDInsight バージョン 3.1 クラスターをプロビジョニングします。また、Azure ポータル、HDInsight PowerShell コマンドレット、HDInsight .NET SDK を使用して、他のバージョン用の Hadoop クラスターを作成することもできます。手順については、「[Provision HDInsight clusters using custom options (カスタム オプションを使用した HDInsight クラスターのプロビジョニング)][hdinsight-provision]」を参照してください。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
-
-[AZURE.INCLUDE [provisioningnote](../../includes/hdinsight-provisioning.md)]
+クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。このセクションでは、HDInsight バージョン 3.2 クラスターをプロビジョニングします。他のバージョンの Hadoop クラスターも作成できます。手順については、「[Provision HDInsight clusters using custom options (カスタム オプションを使用した HDInsight クラスターのプロビジョニング)][hdinsight-provision]」を参照してください。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
 
 
 **Hadoop クラスターをプロビジョニングするには**
 
-1. [Azure ポータル][azure-management-portal]にサインインします。
+1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。
+2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-2. 左下隅にある **[新規]** をクリックし、次の図に示すように、値を入力します。
+    ![Azure プレビュー ポータルでの新しいクラスターの作成](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.1.png "Azure プレビュー ポータルでの新しいクラスターの作成")
 
-	![Creation of a Hadoop cluster in HDInsight.][image-hdi-quickcreatecluster]
+3. **[クラスター名]** を入力し、**[クラスターの種類]** で **[Hadoop]** を選択し、**[クラスターのオペレーティング システム]** ボックスの一覧から **[Windows Server 2012 R2 Datacenter]** を選択します。クラスターを使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
 
-<!-- COMMENTED OUT TEXT BEGINS --
+	![クラスターの名前と種類の入力](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.2.png "クラスターの名前と種類の入力")
 
-4. Enter or select the following values:
+4. 複数のサブスクリプションがある場合は、**[サブスクリプション]** エントリをクリックし、クラスターで使用する Azure サブスクリプションを選択します。
 
+5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
 
-	<table border="1">
-	<tr><th>Name</th><th>Value</th></tr>
-	<tr><td>Cluster Name</td><td>Name of the cluster.</td></tr>
-	<tr><td>Cluster Size</td><td>Number of data nodes you want to deploy. The default value is 4. But the option to use 1 or 2 data nodes is also available from the drop-down list. Any number of cluster nodes can be specified by using the <strong>Custom Create</strong> option. Pricing details about the billing rates for various cluster sizes are available. Click the <strong>?</strong> symbol above the drop-down list and follow the link that appears.</td></tr>
-	<tr><td>Password</td><td>The password for the <i>admin</i> account. The cluster user name "admin" is specified when you are not using the <strong>Custom Create</strong> option. Note that this is NOT the Windows Administrator account for the VMs on which the clusters are provisioned. The account name can be changed by using the <strong>Custom Create</strong> wizard.</td></tr>
-	<tr><td>Storage Account</td><td>Click the drop-down list, and select the storage account that you created. <br/>
+	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
 
-	When a storage account is chosen, it cannot be changed. If the storage account is removed, the cluster will no longer be available for use.
+6. **[資格情報]** をクリックし、**[クラスターのユーザー名]** と **[クラスターのログイン パスワード]** を入力します。クラスター ノードでリモート デスクトップを有効にする場合は、**[リモート デスクトップを有効にする]** で **[はい]** をクリックし、必要な値を指定します。このチュートリアルではリモート デスクトップは必要ないため、この手順はスキップできます下部にある **[選択]** をクリックして、資格情報の構成を保存します。
 
-	The HDInsight cluster is located in the same datacenter as the storage account.
-	</td></tr>
-	</table>
+	![クラスターの資格情報の指定](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.3.png "クラスターの資格情報の指定")
 
-	Keep a copy of the cluster name. You will need it later in the tutorial.
+7. **[データ ソース]** をクリックし、クラスターの既存のデータ ソースを選択するか、新しいデータ ソースを作成します。HDInsight で Hadoop クラスターをプロビジョニングするときに、Azure ストレージ アカウントを指定します。Hadoop 分散ファイルシステム (HDFS) と同様、このアカウントの特定の BLOB ストレージ コンテナーが、既定のファイル システムとして設定されます。既定では、HDInsight クラスターは、指定されたストレージ アカウントと同じデータ センターにプロビジョニングされます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」をご覧ください。
 
+	![[データ ソース] ブレード](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.4.png "データ ソース構成の指定")
+	
+	現在、HDInsight クラスターのデータ ソースとして Azure ストレージ アカウントを選択できます。次の説明を参照して、**[データ ソース]** ブレードのエントリを理解してください。
+	
+	- **選択方法**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
+	
+	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。または、**[新規作成]** をクリックして、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
+	
+	- **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+	
+	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
+	
+		> [AZURE.IMPORTANT]既定のデータ ソースの場所を選択すると、HDInsight クラスターの場所も設定されます。クラスターと既定のデータ ソースは、同じリージョンに存在する必要があります。
+		
+	**[選択]** をクリックしてデータ ソースの構成を保存します。
 
-5. Click **Create HDInsight Cluster**. When the provisioning completes, the  status column shows **Running**.
+8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
 
--- COMMENTED OUT TEXT ENDS -->
+	![[ノード価格レベル] ブレード](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.CreateCluster.5.png "クラスター ノード数の指定")
+	
+	**[選択]** をクリックして、ノードの価格構成を保存します。
 
->[AZURE.NOTE]この手順では、HDInsight クラスターをバージョン 3.1 でプロビジョニングします。他のバージョンのクラスターを作成するには、ポータルで **[カスタム作成]** オプションを使用するか、Azure PowerShell を使用します。各バージョンの相違については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」をご覧ください。**[カスタム作成]** オプションの使用法については、「[Provision HDInsight clusters using custom options (カスタム オプションを使用した HDInsight クラスターのプロビジョニング)][hdinsight-provision]」ご覧ください。
+9. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。これでクラスターが作成され、Azure ポータルのスタート画面にクラスター用のタイルが追加されます。アイコンはクラスターがプロビジョニング中であることを示し、プロビジョニングが完了すると、[HDInsight] アイコンを表示するように変化します。
+
+	| プロビジョニング中 | プロビジョニング完了 |
+	| ------------------ | --------------------- |
+	| ![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioning.png) | ![プロビジョニングされたクラスターのタイル](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioned.png) |
+
+	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
+
+10. プロビジョニングが完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
 
 ##<a name="sample"></a>ポータルからサンプル データを実行する
 
 正常にプロビジョニングされた HDInsight クラスターは、ポータルからサンプルを直接実行する概要ギャラリーを含むクエリ コンソールを提供します。サンプルを使っていくつかの基本的なシナリオを検証することで、HDInsight の操作方法を学ぶことができます。これらのサンプルには、分析対象のデータ、データに対して実行するクエリなど、必要なものがすべて用意されています。概要ギャラリーのサンプルの詳細については、「[Learn Hadoop in HDInsight using the HDInsight Getting Started Gallery (HDInsight 概要ギャラリーを使用した HDInsight での Hadoop の説明](hdinsight-learn-hadoop-use-sample-gallery.md)」をご覧ください。
 
-**サンプルを実行するには**、Azure ポータルでサンプルを実行するクラスターの名前をクリックし、ページの下部にある **[クエリ コンソール]** をクリックします。開いた Web ページの **[概要ギャラリー]** タブをクリックし、**[サンプル]** カテゴリで、実行するサンプルをクリックします。Web ページの指示に従ってサンプルを実行します。次の表では、いくつかのサンプルを一覧し、各サンプルについて詳しく説明します。
+**サンプルを実行するには**
+
+1. Azure プレビュー ポータル スタート画面で、作成したクラスターのタイルをクリックします。
+ 
+2. [新しいクラスター] ブレードで、**[ダッシュボード]** をクリックします。プロンプトが表示されたら、クラスターの管理者のユーザー名とパスワードを入力します。
+
+	![クラスター ダッシュボードの起動](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.Cluster.Dashboard.png "クラスター ダッシュボードの起動")
+ 
+3. 開いた Web ページの **[概要ギャラリー]** タブをクリックし、**[サンプル データでのソリューション]** カテゴリで、実行するサンプルをクリックします。Web ページの指示に従ってサンプルを実行します。次の表では、いくつかのサンプルを一覧し、各サンプルについて詳しく説明します。
 
 サンプル | 内容
 ------ | ---------------
@@ -242,7 +247,7 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[azure-management-portal]: https://manage.windowsazure.com/
+[azure-management-portal]: https://ms.portal.azure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account.md
 
 [apache-hadoop]: http://go.microsoft.com/fwlink/?LinkId=510084
@@ -275,4 +280,4 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

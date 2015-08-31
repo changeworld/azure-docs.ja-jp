@@ -13,22 +13,27 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="05/26/2015"
+	ms.date="07/27/2015"
 	ms.author="mahender"/>
 
 # Twitter ログインを使用するようにアプリケーションを構成する方法
 
 [AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
-このトピックでは、認証プロバイダーとして Twitter を使用するように Azure App Services を構成する方法を示します。
+このトピックでは、認証プロバイダーとして Twitter を使用するように Azure モバイル アプリを構成する方法を示します。
 
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Twitter アカウントが必要になります。新しい Twitter アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a> にアクセスしてください。
 
 ## <a name="register"> </a>Twitter にアプリケーションを登録する
 
-1. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[Create New App]** をクリックします。
 
-2. アプリの**名前**、**説明**、および **Web サイト**の値を入力します。次に、**[Callback URL]** に、パス _/signin-twitter_ が末尾に追加されたゲートウェイの URL を入力します。たとえば、「`https://contosogateway.azurewebsites.net/signin-twitter`」のように入力します。HTTPS スキームを使用していることを確認します。
+1. [Azure の管理ポータル]にログオンし、モバイル アプリに移動します。**[URL]** をコピーします。この URL は、Twitter アプリの構成で使用します。
+
+2. **[設定]**、**[ユーザー認証]**、**[Twitter]** の順にクリックします。**[コールバック URL]** をコピーします。この URL は、Twitter アプリの構成で使用します。
+
+3. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[Create New App]** をクリックします。
+
+4. 新しいアプリの **[名前]** と **[説明]** を入力します。**[Web サイト]** 値に**モバイル アプリの URL** を貼り付けます。次に、**[コールバック URL]** に先ほどコピーした **[コールバック URL]** を貼り付けます。この URL は、モバイル アプリ ゲートウェイの後にパス _/signin-twitter_ を追加したフォーマットです。たとえば、「`https://contosogateway.azurewebsites.net/signin-twitter`」のように入力します。HTTPS スキームを使用していることを確認します。
 
     ![][0]
 
@@ -43,9 +48,7 @@
 
 ## <a name="secrets"> </a>モバイル アプリに Twitter 情報を追加する
 
-6. [Azure の管理ポータル]にログオンし、App Service ゲートウェイに移動します。
-
-7. **[設定]** で、**[ID]**、**[Twitter]** の順に選択します。以前に入手したアプリ ID とアプリ シークレットの値を貼り付けます。その後、**[保存]** をクリックします。
+1. [Azure の管理ポータル]に戻り、モバイル アプリの [twitter 設定] ブレードに、以前に入手した API キーと API サーバーの値を貼り付けます。その後、**[保存]** をクリックします。
 
     ![][1]
 
@@ -60,7 +63,7 @@
 <!-- Images. -->
 
 [0]: ./media/app-service-mobile-how-to-configure-twitter-authentication-preview/app-service-twitter-redirect.png
-[1]: ./media/app-service-mobile-how-to-configure-twitter-authentication-preview/app-service-twitter-settings.png
+[1]: ./media/app-service-mobile-how-to-configure-twitter-authentication-preview/mobile-app-twitter-settings.png
 
 <!-- URLs. -->
 
@@ -69,4 +72,4 @@
 [xamarin]: ../app-services-mobile-app-dotnet-backend-xamarin-ios-get-started-users-preview.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

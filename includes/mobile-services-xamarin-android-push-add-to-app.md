@@ -26,7 +26,7 @@
 	        Categories = new string[] { "@PACKAGE_NAME@" })]
 	    [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY }, 
         Categories = new string[] { "@PACKAGE_NAME@" })]
-        public class ToDoBroadcastReceiver : GcmBroadcastReceiverBase<GcmService>
+        public class ToDoBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
         {
 	        // Set the Google app ID.
 	        public static string[] senderIDs = new string[] { "<PROJECT_NUMBER>" };
@@ -49,7 +49,7 @@
 
 	>[AZURE.NOTE]**GcmServiceBase** クラスでは、**OnRegistered()** メソッド、O**nUnRegistered()** メソッド、**OnMessage()** メソッド、および **OnError()** メソッドを実装しています。**PushHandlerService** クラスでは、これらのメソッドをオーバーライドする必要があります。
 
-5. **OnRegistered** イベント ハンドラーをオーバーライドする次のコードを **ToDoBroadcastReceiver** クラスに追加します。
+5. **OnRegistered** イベント ハンドラーをオーバーライドする次のコードを **PushHandlerService** クラスに追加します。
 
         protected override void OnRegistered(Context context, string registrationId)
         {
@@ -116,7 +116,7 @@
             }
         }
 
-12. **OnUnRegistered()** および **OnError()** (これらはプロジェクトをコンパイルするために必要) 用の次のメソッド オーバーライド コードを追加します。
+12. 次のコードで **OnUnRegistered()** メソッドと **OnError()** メソッドをオーバーライドします。
 
         protected override void OnUnRegistered(Context context, string registrationId)
         {
@@ -129,4 +129,4 @@
                 string.Format("Error occurred in the notification: {0}.", errorId));
         }
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

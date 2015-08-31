@@ -3,6 +3,7 @@
 	description="ビッグ データ サービスとして HDInsight で Hadoop Oozie を使用します。Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"
 	manager="paulettm"
 	editor="cgronlun"/>
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2015"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
 
@@ -438,7 +439,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 		   <property>
 		       <name>sqlDatabaseConnectionString</name>
-		       <value>&quot;$sqlDatabaseConnectionString&quot;</value>
+		       <value>";$sqlDatabaseConnectionString";</value>
 		   </property>
 
 		   <property>
@@ -519,7 +520,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 **ジョブのエラー ログを確認するには**
 
-ワークフローのトラブルシューティングを行うには、クラスター ヘッド ノードの *C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log* または *C:\\apps\\dist\\oozie-4.0.0.2.0.7.0-1528\\oozie-win-distro\\logs\\Oozie.log* にある Oozie ログ ファイルを参照します。RDP については、「[Azure 管理ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」を参照してください。
+ワークフローのトラブルシューティングを行うには、クラスター ヘッド ノードの *C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log* または *C:\\apps\\dist\\oozie-4.0.0.2.0.7.0-1528\\oozie-win-distro\\logs\\Oozie.log* にある Oozie ログ ファイルを参照します。RDP については、「[Azure プレビュー ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-portal]」を参照してください。
 
 **チュートリアルを再実行するには**
 
@@ -601,7 +602,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 [sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
-[azure-management-portal]: https://manage.windowsazure.com/
+[azure-management-portal]: https://portal.azure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account.md
 
 [apache-hadoop]: http://hadoop.apache.org/
@@ -622,4 +623,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!----HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

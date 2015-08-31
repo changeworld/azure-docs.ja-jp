@@ -104,9 +104,11 @@ Test-AzureName コマンドで "False" と表示される場合、指定した�
 
 	$domName="<domain name label to test>"
 	$loc="<short name of an Azure location, for example, for West US, the short name is westus>"
-	Get-AzureCheckDnsAvailability -DomainQualifiedName $domName -Location $loc
+	Test-AzureDnsAvailability -DomainQualifiedName $domName -Location $loc
 
 DNSNameAvailability が"True"の場合、指定の名前はグローバルに一意です。
+
+>[AZURE.NOTE]Test-AzureDnsAvailability コマンドレットは、バージョン 0.9.5 より前のバージョンの Azure PowerShell では Get-AzureCheckDnsAvailability という名前でした。バージョン 0.9.4 以前を使用している場合は、上記のコマンドの Test-AzureDnsAvailability を Get-AzureCheckDnsAvailability に置き換えてください。
 
 リソース マネージャー ベースの仮想マシンは、リソース マネージャー ベースの可用性セットに配置できます。必要に応じて、次のコマンドを実行して新しい仮想マシンの新しい可用性セットを作成します。
 
@@ -211,7 +213,7 @@ NIC を作成し、受信 NAT ルールのロード バランサーのインス�
 	$lbName="<name of the load balancer instance>"
 	$bePoolIndex=<index of the back end pool, starting at 0>
 	$natRuleIndex=<index of the inbound NAT rule, starting at 0>
-	$lb=Get-AzureLoadBalancer -Name $lbName -ResourceGroupName $rgName 
+	$lb=Get-AzureLoadBalancer -Name $lbName -ResourceGroupName $rgName
 	$nic=New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
 
 $NicName 文字列はリソース グループで一意にする必要があります。最良事例は、「LOB07-NIC」のように文字列に仮想マシン名を組み込むことです。
@@ -230,7 +232,7 @@ NIC を作成し、負荷分散セットのロード バランサーのインス
 	$nicName="<name of the NIC of the VM>"
 	$lbName="<name of the load balancer instance>"
 	$bePoolIndex=<index of the back end pool, starting at 0>
-	$lb=Get-AzureLoadBalancer -Name $lbName -ResourceGroupName $rgName 
+	$lb=Get-AzureLoadBalancer -Name $lbName -ResourceGroupName $rgName
 	$nic=New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex]
 
 次に、ローカル VM オブジェクトを作成し、必要に応じて可用性セットに追加します。次の 2 つのオプションのいずれかをコマンド セットをコピーし、名前、サイズ、および可用性セット名を入力します。
@@ -387,4 +389,4 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

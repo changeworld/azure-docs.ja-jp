@@ -1,18 +1,18 @@
 <properties 
-    pageTitle="StorSimple モニタリング インジケーター"
+    pageTitle="StorSimple モニタリング インジケーター | Microsoft Azure" 
     description="StorSimple デバイスの状態を監視するための LED とアラームについて説明します。"
     services="storsimple"
     documentationCenter="NA"
     authors="SharS"
     manager="adinah"
-    editor="tysonn" />
+    editor="" />
  <tags 
     ms.service="storsimple"
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="06/11/2015"
+    ms.date="08/14/2015"
     ms.author="v-sharos" />
 
 # StorSimple モニタリング インジケーター   
@@ -45,7 +45,7 @@ StorSimple デバイスには、StorSimple デバイスの各モジュールお�
 4. 論理的な障害のインジケーター LED (オン - レッドアンバー/オフ)
 5. ユニット ID ディスプレイ  
 
-デバイスと EBOD エンクロージャにおける前面パネルの LED の大きな違いは、LED ディスプレイに表示される**システム ユニット識別番号**です。デバイスに表示される既定のユニット ID が **00** であるのに対し、EBOD エンクロージャに表示される既定のユニット ID は **01** です。これにより、デバイスの電源をオンにしたときに、デバイスと EBOD エンクロージャをすぐに見分けることができます。デバイスの電源が入っていないときにデバイスと EBOD エンクロージャを見分ける方法については、「[新しいデバイスの電源投入](https://msdn.microsoft.com/library/azure/dn772378.aspx)」を参照してください。
+デバイスと EBOD エンクロージャにおける前面パネルの LED の大きな違いは、LED ディスプレイに表示される**システム ユニット識別番号**です。デバイスに表示される既定のユニット ID が **00** であるのに対し、EBOD エンクロージャに表示される既定のユニット ID は **01** です。これにより、デバイスの電源をオンにしたときに、デバイスと EBOD エンクロージャをすぐに見分けることができます。デバイスの電源が入っていないときにデバイスと EBOD エンクロージャを見分ける方法については、「[新しいデバイスの電源投入](storsimple-turn-device-on-or-off.md#turn-on-a-new-device)」をご覧ください。
 
 ## 前面パネルの LED の状態  
 
@@ -148,7 +148,7 @@ StorSimple デバイスは、StorSimple デバイスのプライマリ コント
 
 | LED | 説明                                                                            
 |---- | ----------- |
-| ID LED (青) | モジュールが識別されていることを示します。青色の LED が動作中のコントローラーで点滅している場合、そのコントローラーがアクティブ コントローラーで、もう一方がスタンバイ コントローラーです。詳細については、「[デバイスでのアクティブなコントローラーの識別](https://msdn.microsoft.com/library/azure/dn790262.aspx)」を参照してください。 |
+| ID LED (青) | モジュールが識別されていることを示します。青色の LED が動作中のコントローラーで点滅している場合、そのコントローラーがアクティブ コントローラーで、もう一方がスタンバイ コントローラーです。詳細については、「[デバイスでのアクティブなコントローラーの識別](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」をご覧ください。 |
 | 障害 LED (アンバー) | コントローラー内の障害を示します。        
 | OK LED (緑) | 緑色の点灯は、コントローラーが OK であることを示します。緑色の点滅は、コントローラーの VPD 構成エラーを示します。 |
 | SAS アクティビティ LED (緑) | 緑色の点灯は、現時点でのアクティビティがない接続を示します。緑色の点滅は、現在進行中のアクティビティがある接続を示します。 |
@@ -255,6 +255,10 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 | ドライブが取り外されている | 警告 | なし | モジュール障害 |
 | 電力供給が不十分である | 警告 | なし | モジュール障害 |
 
+## 次のステップ
+
+[StorSimple ハードウェア コンポーネントと状態](storsimple-monitor-hardware-status.md)の詳細
+
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png
 [3]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE03.png
@@ -264,4 +268,4 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

@@ -13,22 +13,24 @@
 	ms.tgt_pltfrm="mobile-xamarin-android" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/23/2015" 
+	ms.date="08/03/2015" 
 	ms.author="mahender"/>
 
 # Xamarin.Android アプリに認証を追加する
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
-
-このトピックでは、クライアント アプリケーションから App Service モバイル アプリのユーザーを認証する方法について説明します。このチュートリアルでは、App Service でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル アプリによって正常に認証され、承認されると、ユーザー ID 値が表示されます。
+このトピックでは、クライアント アプリケーションから Mobile App のユーザーを認証する方法について説明します。このチュートリアルでは、Azure Mobile Apps でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。Mobile App によって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
 このチュートリアルは、モバイル アプリのクイック スタートに基づいています。また、先に [Xamarin.Android アプリの作成]に関するチュートリアルを完了している必要があります。
 
-##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
+##<a name="review"></a>サーバーのプロジェクト構成の確認 (省略可能)
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-auth-preview](../../includes/app-service-mobile-dotnet-backend-enable-auth-preview.md)]
+
+##<a name="create-gateway"></a>App Service ゲートウェイの作成
+
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-gateway-preview](../../includes/app-service-mobile-dotnet-backend-create-gateway-preview.md)]
 
 ##<a name="register"></a>アプリケーションを認証に登録し、App Services を構成する
 
@@ -38,13 +40,13 @@
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-<ol start="5">
+<ol start="4">
 <li><p>Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターを使用してクライアント プロジェクトを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。</p>
    
-   	<p>この問題は、認証されていないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、現在の <em>TodoItem</em> テーブルでは認証が要求されるために発生します。</p></li>
+   	<p>これは、認証されないユーザーとして Mobile App バックエンドにアプリがアクセスしようとするために生じます。<em>TodoItem</em> テーブルは今すぐ認証が必要です。</p></li>
 </ol>
 
-次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
+次に、認証されたユーザーで Mobile App のバックエンドからリソースを要求するように、クライアント アプリを更新します。
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
@@ -67,23 +69,24 @@
 	            }
 	        }
 
-    これで、認証プロセスを処理する新しいメソッドが作成されます。ユーザーは、Facebook ログインを使用して認証されます。認証されたユーザーの ID を示すダイアログが表示されます。
+    これにより、ユーザーを認証する新しいメソッドが作成されます。上記のサンプル コードでは、ユーザーは Facebook ログインを使用して認証されます。認証されると、ダイアログを使用してユーザー ID が表示されます。
 
-    > [AZURE.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
+    > [AZURE.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上記の例の **LoginAsync** に渡される値を _MicrosoftAccount_、_Twitter_、_Google_、_WindowsAzureActiveDirectory_ のいずれかに変更します。
 
 3. **OnCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 
-		// Get the Mobile App Table instance to use
-        toDoTable = client.GetTable <ToDoItem> ();
-
-        await Authenticate(); // add this line
+		// Create the Mobile Service Client instance, using the provided
+		// Mobile Service URL, Gateway URL and key
+		client = new MobileServiceClient (applicationURL, gatewayURL, applicationKey);
+		
+		await Authenticate(); // Added for authentication
 
 	この呼び出しは、認証プロセスを開始し、認証プロセスを非同期に待機します。
 
 
-4. **[実行]** メニューの **[実行]** をクリックしてアプリケーションを再開し、選択した ID プロバイダーでサインインします。
+4. Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターでクライアント プロジェクトを実行し、選択した ID プロバイダーを使用してサインインします。
 
-   	ログインに成功すると、アプリケーションに todo 項目の一覧が表示され、データを更新することができます。
+   	ログインに成功すると、アプリケーションにログイン ID と todo 項目の一覧が表示され、データを更新することができます。
 
 
 <!-- URLs. -->
@@ -95,4 +98,4 @@
 [Azure Management Portal]: https://portal.azure.com
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

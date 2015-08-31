@@ -107,11 +107,11 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 ### 複数のエラー後のサインイン
 
-このレポートの詳細については、「[複数のエラー後のサインイン](active-directory-sign-ins-after-multiple-failures.md)」をご確認ください。
+このレポートの詳細については、「[複数のエラー後のサインイン](active-directory-reporting-sign-ins-after-multiple-failures.md)」をご確認ください。
 
 ### 複数の地域からのサインイン
 
-このレポートの詳細については、「[複数の地域からのサインイン](active-directory-sign-ins-from-multiple-geographies.md)」をご確認ください。
+このレポートの詳細については、「[複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md)」をご確認ください。
 
 ### 不審なアクティビティのある IP アドレスからのサインイン
 
@@ -302,4 +302,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに会社のブランドを追加します。](active-directory-add-company-branding.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

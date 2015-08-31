@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/06/2015"
+   ms.date="08/19/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスのオンとオフ 
@@ -28,7 +28,7 @@ Microsoft Azure StorSimple デバイスを通常のシステム運用の一環�
 |新しいデバイスの電源をオンにする|[新しいデバイスの電源をオンにする](#turn-on-a-new-device)<ul><li>[主エンクロージャのみを備える新しいデバイス](#new-device-with-primary-enclosure-only)</li><li>[EBOD エンクロージャを備える新しいデバイス](#new-device-with-ebod-enclosure)</li></ul>|
 |シャットダウン後にデバイスの電源をオンにする|[シャットダウン後にデバイスの電源をオンにする](#turn-on-a-device-after-shutdown)<ul><li>[主エンクロージャのみを備えるデバイス](#device-with-primary-enclosure-only)</li><li>[EBOD エンクロージャを備えるデバイス](#device-with-ebod-enclosure)</li></ul>|
 |電力喪失後にデバイスの電源をオンにする|[電力喪失後にデバイスの電源をオンにする](#turn-on-a-device-after-a-power-loss)<ul><li>[主エンクロージャのみのデバイス](#8100)</li><li>[EBOD エンクロージャ付きのデバイス](#8600)</li></ul>|
-|主エンクロージャと EBOD の接続が失われた後にデバイスの電源をオンにする|[主エンクロージャと EBOD エンクロージャの接続が失われた後にデバイスの電源をオンにする](turn-on-a-device-after-the-primary-and-EBOD-enclosure-connection-is-lost)|
+|主エンクロージャと EBOD の接続が失われた後にデバイスの電源をオンにする|[主エンクロージャと EBOD エンクロージャの接続が失われた後にデバイスの電源をオンにする](#turn-on-a-device-after-the-primary-and-EBOD-enclosure-connection-is-lost)|
 |動作中のデバイスをシャットダウンする|[動作中のデバイスの電源をオフにする](#turn-off-a-running-device)<ul><li>[主エンクロージャのみを備えるデバイス](#8100a)</li><li>[EBOD エンクロージャを備えるデバイス](#8600a)</li></ul>|
 
 ## 新しいデバイスの電源をオンにする
@@ -37,7 +37,7 @@ Microsoft Azure StorSimple デバイスを通常のシステム運用の一環�
 
 - [主エンクロージャのみを備える新しいデバイス](#new-device-with-primary-enclosure-only)
 
-- [EBOD エンクロージャを備える新しいデバイス](#new-device-with-EBOD-enclosure)
+- [EBOD エンクロージャを備える新しいデバイス](#new-device-with-ebod-enclosure)
 
 ### 主エンクロージャのみを備える新しいデバイス
 
@@ -241,4 +241,4 @@ Windows PowerShell for StorSimple には、デバイスのシリアル コンソ
 
 StorSimple デバイスの電源を入れるときまたはシャットダウンするときに問題が発生した場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

@@ -5,6 +5,7 @@
    documentationCenter=""
    authors="mumian"
    manager="paulettm"
+   tags="azure-portal"
    editor="cgronlun"/>
 
 <tags
@@ -130,4 +131,4 @@ HTTP パス|空白のままにします。
 [img-hdi-simbahiveodbc-excel-connectionproperties]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveODBC.Excel.ConnectionProperties1.png
 [img-hdi-simbahiveodbc.excel.dataconnection]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

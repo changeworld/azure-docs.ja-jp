@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/27/2015"
-   ms.author="joaoma;cherylmc" />
+   ms.date="08/19/2015"
+   ms.author="joaoma" />
 
 # Traffic Manager の監視について
 
@@ -27,7 +27,7 @@ Azure Traffic Manager は、クラウド サービスや Web サイトなどの�
 
 ## 正常性状態の監視について
 
-Azure Traffic Manager は、管理ポータルで、プロファイルとエンドポイント サービスの正常性状態を表示します。プロファイルとエンドポイントの両方の [状態] 列には、最新のモニター状態が表示されます。この状態を使用すると、Traffic Manager の監視設定に従って、プロファイルの正常性を把握できます。プロファイルが正常な場合は、DNS クエリが、プロファイルの負荷分散設定 (ラウンド ロビン、パフォーマンス、またはフェールオーバー) に基づいて、サービスに配信されます。Traffic Manager の監視システムが監視状態の変更を検出すると、管理ポータルで、状態エントリが更新されます。状態の変更を更新するまでに、最大 5 分かかることがあります。
+Azure Traffic Manager は、管理ポータルで、プロファイルとエンドポイント サービスの正常性状態を表示します。プロファイルとエンドポイントの両方の [状態] 列には、最新のモニター状態が表示されます。この状態を使用すると、Traffic Manager の監視設定に従って、プロファイルの正常性を把握できます。プロファイルが正常な場合は、DNS クエリが、プロファイルのトラフィック ルーティング設定 (ラウンド ロビン、パフォーマンス、フェールオーバー) に基づいて、サービスに配信されます。Traffic Manager の監視システムが監視状態の変更を検出すると、管理ポータルで、状態エントリが更新されます。状態の変更を更新するまでに、最大 5 分かかることがあります。
 
 ### エンドポイント監視の状態
 
@@ -89,7 +89,7 @@ Azure Traffic Manager は、管理ポータルで、プロファイルとエン�
 
 ## 入れ子になったプロファイルに対する子と親のエンドポイントの状態
 
-次の表では、入れ子になったプロファイルに対する子と親のプロファイルおよび minChildEndpoints 設定に対する Traffic Manager の監視の動作について説明します。詳細については、「[Traffic Managerの概要](traffic-manager-overview.md)」を参照してください。
+次の表では、入れ子になったプロファイルに対する子と親のプロファイルおよび minChildEndpoints 設定に対する Traffic Manager の監視の動作について説明します。詳細については、「[Traffic Managerについて](traffic-manager-overview.md)」をご覧ください。
 
 |子プロファイル モニターの状態|親エンドポイント監視の状態|メモ|
 |---|---|---|
@@ -108,9 +108,9 @@ Azure Traffic Manager は、管理ポータルで、プロファイルとエン�
 
 ## 関連項目
 
-[Traffic Manager の概要](traffic-manager-overview.md)
+[Traffic Manager について](traffic-manager-overview.md)
 
-[Traffic Manager での負荷分散方法について](traffic-manager-load-balancing-methods.md)
+[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-load-balancing-methods.md)
 
 [Cloud Services](http://go.microsoft.com/fwlink/p/?LinkId=314074)
 
@@ -119,4 +119,4 @@ Azure Traffic Manager は、管理ポータルで、プロファイルとエン�
 [Azure Traffic Manager での機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

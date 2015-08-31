@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/02/2015"
+   ms.date="08/19/2015"
    ms.author="sameerch"/>
 
 
-#Logic App で SugarCRM コネクタを使用する#
+# Logic App で SugarCRM コネクタを使用する
 
 ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。SugarCRM コネクタでは、取引先企業や潜在顧客、連絡先などのさまざまなエンティティを作成および変更できます。SugarCRM に関連する一般的な統合シナリオを次に示します。
 
@@ -30,7 +30,7 @@
 
 コネクタ パッケージの設定の一部として、ユーザーは、コネクタで管理できるエンティティを指定できます。アクション、入力パラメーター、および出力パラメーターは、動的に設定されます。
 
-##SugarCRM コネクタのアクション##
+## SugarCRM コネクタのアクション
 次に、SugarCRM コネクタで使用できるさまざまなアクションを示します。
 
 - モジュールの作成 - このアクションを使用して、アカウント、潜在顧客、連絡先などの SugarCRM モジュールの新しいレコードを作成します。
@@ -47,55 +47,28 @@
 
 - 重複するモジュールの確認 - このアクションを使用して、モジュール内で重複するレコードを確認します。
 
-*注*: クエリでサポートされている引数の詳細については、SugarCRM REST API のドキュメントをご覧ください。
+*注*: クエリでサポートされている引数の詳細については、[SugarCRM REST API](https://msdn.microsoft.com/library/dn705870) のドキュメントをご覧ください。
 
-##SugarCRM コネクタの API App を作成する##
+## SugarCRM コネクタの API App を作成する
 1.	portal.azure.com に移動します。Azure ポータルの左上隅にある [+ 新規] を使用して Azure Marketplace を開きます。
 2.	[Marketplace]、[すべて] の順に移動し、"SugarCRM" を検索します。
 3.	リソース グループに App Service プランの詳細を指定し、API アプリの名前を入力して、SugarCRM コネクタを構成します。
 4. SugarCRM コネクタのパッケージ設定を構成します。次に、コネクタを作成するために入力する必要があるパッケージ設定を示します。
 
-	<table>
-  <tr>
-    <td><b>名前</b></td>
-    <td><b>必須</b></td>
-    <td><b>説明</b></td>
-  </tr>
-  <tr>
-    <td>サイトの URL</td>
-    <td>あり</td>
-    <td>SugarCRM インスタンスの URL を指定します。例: https://abcde1234.sugarcrm.com</td>
-  </tr>
-  <tr>
-    <td>クライアント ID</td>
-    <td>あり</td>
-    <td>SugarCRM で OAuth 2.0 キーのコンシューマー キーを指定します。 </td>
-  </tr>
-  <tr>
-    <td>クライアント シークレット</td>
-    <td>あり</td>
-    <td>SugarCRM で OAuth 2.0 キーのコンシューマー シークレットを指定します。 </td>
-  </tr>
-<tr>
-    <td>ユーザー名</td>
-    <td>あり</td>
-    <td>SugarCRM ユーザーのユーザー名を指定します。</td>
-  </tr>
-	<tr>
-    <td>パスワード</td>
-    <td>あり</td>
-    <td>SugarCRM ユーザーのパスワードを指定します。</td>
-  </tr>
-  <tr>
-    <td>モジュール名</td>
-    <td>あり</td>
-    <td>操作を実行する SugarCRM モジュール (アカウント、連絡先、製品など) を指定します。<br><br>例: アカウント、潜在顧客、連絡先</td>
-  </tr>
-</table>![][9]
+	名前 | 必須 | 説明
+--- | --- | ---
+サイトの URL | あり | SugarCRM インスタンスの URL を入力します。たとえば、「https://abcde1234.sugarcrm.com」のように入力します。
+クライアント ID | あり | SugarCRM で OAUTH 2.0 キーのコンシューマー キーを入力します。 
+クライアント シークレット | あり | OAUTH のコンシューマー シークレットを入力します。
+ユーザー名 | あり | SugarCRM ユーザーのユーザー名を入力します。
+パスワード | あり | SugarCRM ユーザーのパスワードを入力します。
+モジュール名 | あり | 操作を実行する SugarCRM モジュール (アカウント、連絡先、製品など) を入力します。<br><br>例: アカウント、潜在顧客、連絡先  
+  
+![][9]
 
 
 
-##ロジック アプリの作成##
+## ロジック アプリの作成
 SugarCRM にアカウントを作成し、このアカウントの請求先住所の詳細を更新する単純なロジック アプリを作成してみましょう。
 
 1.	Azure ポータルにログインし、[新規作成]、[Web と Mobile]、[Logic App] の順にクリックします。
@@ -142,6 +115,13 @@ SugarCRM にアカウントを作成し、このアカウントの請求先住�
 
 19. SugarCRM アカウントに Microsoft Account という名前の新しいアカウントが作成され、さらに、このアカウントの請求先住所の情報が更新されたことを確認できます。
 
+## コネクタでできること
+コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
+
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
+
 <!--Image references-->
 [1]: ./media/app-service-logic-connector-sugarcrm/1_New_Logic_App.png
 [2]: ./media/app-service-logic-connector-sugarcrm/2_Logic_App_Settings.png
@@ -153,4 +133,4 @@ SugarCRM にアカウントを作成し、このアカウントの請求先住�
 [8]: ./media/app-service-logic-connector-sugarcrm/8_Update_Account_Address.png
 [9]: ./media/app-service-logic-connector-sugarcrm/9_Create_new_SugarCRM_connector.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

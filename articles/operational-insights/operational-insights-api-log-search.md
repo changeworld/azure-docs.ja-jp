@@ -197,7 +197,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 	armclient post /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/search/{SearchId}?api-version=2014-10-10
 ```
 
->[AZURE.NOTE] 検索によって「Pending」状態が返される場合、この API を使用して更新後の結果をポーリングできます。検索の結果は 6 分後にキャッシュから削除され、Http Gone が返されます。最初の検索要求によって「Successful」状態がすぐに返された場合、結果はキャッシュに追加されず、クエリを実行してもこの API で Http Gone は返されません。Http 200 の結果の内容は最初の検索要求と同じ形式で、値のみが更新されます。
+>[AZURE.NOTE]検索によって「Pending」状態が返される場合、この API を使用して更新後の結果をポーリングできます。検索の結果は 6 分後にキャッシュから削除され、Http Gone が返されます。最初の検索要求によって「Successful」状態がすぐに返された場合、結果はキャッシュに追加されず、クエリを実行してもこの API で Http Gone は返されません。Http 200 の結果の内容は最初の検索要求と同じ形式で、値のみが更新されます。
 
 ### 保存された検索 - REST のみ
 
@@ -205,11 +205,11 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 
 ```
 	armclient get /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/savedSearches?api-version=2014-10-10
-  ```
+```
 
 サポートされるメソッド: GET PUT DELETE
 
-サポートされるコレクション メソッド:  GET
+サポートされるコレクション メソッド: GET
 
 次のテーブルは、使用可能なプロパティについて説明しています。
 
@@ -300,8 +300,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 
 “highlight” パラメーターを使用して、マーカーのセットを応答に含めるよう検索サブシステムに要求できます。
 
-これらのマーカーは、検索クエリで指定した語句に一致して強調表示されるテキストの開始と終了を示します。
-強調表示される語句を囲むために検索で使用される開始マーカーと終了マーカーを指定できます。
+これらのマーカーは、検索クエリで指定した語句に一致して強調表示されるテキストの開始と終了を示します。強調表示される語句を囲むために検索で使用される開始マーカーと終了マーカーを指定できます。
 
 **検索クエリの例**
 
@@ -346,4 +345,4 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 
 上記の結果にはプレフィックスおよび追加されたエラー メッセージが含まれています。
 
-<!------HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

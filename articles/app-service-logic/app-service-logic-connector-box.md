@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/10/2015"
+   ms.date="08/19/2015"
    ms.author="andalmia"/>
 
 # Box コネクタ
@@ -65,7 +65,7 @@ d.*ファイルの削除*: フォルダーから指定したファイルを削�
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
 2. "Box コネクタ" を検索して選択し、**[作成]** を選択します。
-3. 名前、App Service プラン、その他のプロパティを入力します。  
+3. 名前、App Service プラン、その他のプロパティを入力します。
 	![][1]
 4. **[作成]** を選択します。
 
@@ -93,7 +93,7 @@ API アプリを作成したら、ロジック アプリのアクションとし
 ## コネクタでできること
 コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
-REST API を使用した API Apps を作成します。[コネクタと API Apps のリファレンス](http://go.microsoft.com/fwlink/p/?LinkId=529766)に関するページを参照してください。
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
@@ -104,4 +104,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [4]: ./media/app-service-logic-connector-box/image_3.jpg
 [5]: ./media/app-service-logic-connector-box/image_4.jpg
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

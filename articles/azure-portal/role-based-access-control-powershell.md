@@ -3,8 +3,8 @@
 	description="Windows PowerShell を使用した役割ベースのアクセス制御の管理"
 	services="azure-portal"
 	documentationCenter="na"
-	authors="Justinha"
-	manager="terrylan"
+	authors="IHenkel"
+	manager="stevenpo"
 	editor="mollybos"/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="powershell"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2015"
-	ms.author="justinha"/>
+	ms.date="08/14/2015"
+	ms.author="inhenk"/>
 
 # Windows PowerShell を使用した役割ベースのアクセス制御の管理 #
 
@@ -163,6 +163,5 @@ Windows PowerShell を使用した役割ベースのアクセス制御の管理�
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 - [Azure CLI を使用したロール ベースの Access Control の構成](role-based-access-control-xplat-cli.md)
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

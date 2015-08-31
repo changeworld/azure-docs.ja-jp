@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure Automation での変数アセット"
+   pageTitle="Azure Automation の変数資産 | Microsoft Azure"
    description="変数アセットとは、Azure Automation 内のすべての Runbook に使用できる値です。この記事では、変数の詳細およびテキスト作成とグラフィカル作成の両方で変数を使用する方法について説明します。"
    services="automation"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/21/2015"
+   ms.date="08/18/2015"
    ms.author="bwren" />
 
 # Azure Automation での変数アセット
@@ -188,4 +188,4 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

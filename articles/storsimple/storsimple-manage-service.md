@@ -1,25 +1,25 @@
 <properties 
-   pageTitle="StorSimple Manager サービスを展開する"
+   pageTitle="StorSimple Manager サービスを展開する | Microsoft Azure"
    description="管理ポータルで StorSimple Manager サービスを作成および削除する方法、さらにサービス登録キーを管理する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="SharS"
    manager="carolz"
-   editor="tysonn" />
+   editor="" />
 <tags 
    ms.service="storsimple"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/12/2015"
+   ms.date="08/18/2015"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを展開する
 
 ## 概要
 
-StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。サービスを作成したら、それを使用することで、ブラウザーで実行される Microsoft Azure の管理ポータルで StorSimple デバイスを管理することができます。このポータルを使用すると、StorSimple Manager サービスに接続されているすべてのデバイスを 1 か所から集中的に監視できるので、管理の負荷を最小限に抑えることができます。
+StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure 管理ポータルでデバイスを管理できます。このポータルを使用すると、StorSimple Manager サービスに接続されているすべてのデバイスを 1 か所から集中的に監視できるので、管理の負荷を最小限に抑えることができます。
 
 StorSimple Manager のランディング ページには、StorSimple ストレージ デバイスの管理に使用できるすべての StorSimple Manager サービスの一覧が示されています。各 StorSimple Manager について、以下の情報が [StorSimple Manager] ページに表示されます。
 
@@ -74,7 +74,7 @@ StorSimple デバイスを展開する場合は、**[簡易作成]** オプシ�
 
 ## サービス登録キーを取得する
 
-正常にサービスを作成した後、そのサービスに StorSimple デバイスを登録します。初めて StorSimple デバイスを登録する場合は、サービス登録キーが必要です。既存の StorSimple サービスに追加のデバイスを登録するには、登録キーとサービス データ暗号化キー (最初のデバイスの登録中に生成される) の両方が必要です。サービス データ暗号化キーの詳細については、「[StorSimple セキュリティ](storsimple-security.md)」を参照してください。登録キーは、**[サービス]** ページの **[登録キー]** にアクセスすることで取得できます。
+正常にサービスを作成した後、そのサービスに StorSimple デバイスを登録します。初めて StorSimple デバイスを登録する場合は、サービス登録キーが必要です。既存の StorSimple サービスに追加のデバイスを登録するには、登録キーとサービス データ暗号化キー (最初のデバイスの登録中に生成される) の両方が必要です。サービス データ暗号化キーの詳細については、「[StorSimple セキュリティ](storsimple-security.md)」をご覧ください。登録キーは、**[サービス]** ページの **[登録キー]** にアクセスすることで取得できます。
 
 次の手順を実行して、サービス登録キーを取得します。
 
@@ -82,7 +82,7 @@ StorSimple デバイスを展開する場合は、**[簡易作成]** オプシ�
 
 サービス登録キーは、安全な場所に保管してください。このキーは、サービスに追加のデバイスを登録するときにサービス データ暗号化キーと共に必要です。サービス登録キーを取得したら、StorSimple 用 Windows PowerShell インターフェイスを介してデバイスを構成する必要があります。
 
-登録キーの使用方法の詳細については、「[手順 3: StorSimple 用 Windows PowerShell インターフェイスを使用したデバイスの構成と登録](storsimple-deployment-walkthrough.md/#step-2:-configure-and-register-the-device-through-windows-powershell-for-storsimple)」を参照してください。
+登録キーの使用方法の詳細については、「[手順 3: StorSimple 用 Windows PowerShell インターフェイスを使用したデバイスの構成と登録](storsimple-deployment-walkthrough.md#step-2-configure-and-register-the-device-through-windows-powershell-for-storsimple)」を参照してください。
 
 ## サービス登録キーを再生成する
 
@@ -107,10 +107,10 @@ StorSimple デバイスを展開する場合は、**[簡易作成]** オプシ�
 
 ## 次のステップ
 
-[StorSimple 展開プロセス](storsimple-deployment-walkthrough.md)に関する詳細を参照してください。
+[StorSimple デプロイのプロセス](storsimple-deployment-walkthrough.md)に関する詳細をご覧ください。
 
-[StorSimple ストレージ アカウントの管理](../storsimple-manage-storage-account.md)に関する詳細を参照してください。
+[StorSimple ストレージ アカウントの管理](storsimple-manage-storage-accounts.md)に関する詳細をご覧ください。
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

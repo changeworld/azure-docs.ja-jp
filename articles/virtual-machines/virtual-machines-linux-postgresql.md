@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Linux を実行する Microsoft Azure Virtual Machine への PostgreSQL のインストールと構成"
-	description="Azure の Ubuntu または CentOS 仮想マシン (VM) に PostgreSQL をインストールして構成する方法を説明します。"
+	description="Azure の Linux 仮想マシン (VM) に PostgreSQL をインストールして構成する方法を説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="SuperScottz"
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="linux"
 	ms.workload="infrastructure-services"
-	ms.date="06/04/2015"
+	ms.date="08/10/2015"
 	ms.author="mingzhan"/>
 
 
@@ -24,7 +24,7 @@ PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース デ�
 
 この記事では、Linux を実行している Azure Virtual Machine に PostgreSQL をインストールして構成する方法を説明します。
 
-> [Azure.NOTE]このチュートリアルを実行するには、Linux を実行する Microsoft Azure Virtual Machine が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て Linux VM を作成およびセットアップしてください。
+> [AZURE.NOTE]このチュートリアルを実行するには、Linux を実行する Microsoft Azure Virtual Machine が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て Linux VM を作成およびセットアップしてください。
 
 (この例では、PostgreSQL ポートとしてポート 1999 を使用します。)
 
@@ -34,19 +34,19 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
 1. 次のコマンドを実行して、ルート (admin) に切り替えます。
 
-		$ sudo su -
+		# sudo su -
 
 2. 一部のディストリビューションには、PostgreSQL をインストールする前にインストールする必要がある依存アプリケーションがあります。次の一覧でお使いのディストリビューションを確認し、適切なコマンドを実行してください。
 
-	- Redhat:
+	- Red Hat ベースの Linux:
 
 			# yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
 
-	- Debian:
+	- Debian ベースの Linux:
 
  			# apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y  
 
-	- Suse:
+	- Suse Linux:
 
 			# zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
 
@@ -90,7 +90,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
 		# su - postgres
 
-    >[Azure.NOTE]セキュリティ上の理由から、PostgreSQL ではデータベースの初期化、開始、またはシャットダウンに root 以外のユーザーを使用します。
+   >[AZURE.NOTE]セキュリティ上の理由から、PostgreSQL ではデータベースの初期化、開始、またはシャットダウンに root 以外のユーザーを使用します。
 
 
 4. *bash\_profile* を編集し、次のコマンドを入力します。以下の行を *bash\_profile* ファイルの最後に追加します。
@@ -251,4 +251,4 @@ Postgres データベースを作成します。
 ##PostgreSQL に関する詳細
 Microsoft Azure Linux 仮想マシンへの PostgreSQL のインストールは以上で完了です。Microsoft Azure の使用をお楽しみください。PostgreSQL に関する詳細については、[こちら](http://www.postgresql.org/)を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

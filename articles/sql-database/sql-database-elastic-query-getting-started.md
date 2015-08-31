@@ -62,12 +62,11 @@ Azure SQL Database 用の エラスティック データベース クエリ (�
 
 		CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
 
-		CREATE CREDENTIAL ElasticDBQueryCred ON DATABASE
+		CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
 		WITH IDENTITY = '<username>',
 		SECRET = '<password>';
 
 	"username" と "password" は、「[エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」の「[サンプル アプリケーションのダウンロードと実行](sql-database-elastic-scale-get-started.md#Getting-started-with-elastic-database-tools)」の手順 6 で使用するログイン情報と同じである必要があります。
-
 
 ### 外部データ ソース
 
@@ -143,4 +142,4 @@ ElasticDBQuery データベースでこのクエリを実行します。
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

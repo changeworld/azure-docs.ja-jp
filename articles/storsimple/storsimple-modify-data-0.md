@@ -5,14 +5,14 @@
    documentationCenter=""
    authors="alkohli"
    manager="carolz"
-   editor="tysonn" />
+   editor="" />
 <tags 
    ms.service="storsimple"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/30/2015"
+   ms.date="08/14/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスの DATA 0 ネットワーク インターフェイスの設定の変更
@@ -40,7 +40,7 @@ DATA 0 ネットワーク設定を再構成するには、StorSimple デバイ�
 
 1. デバイスの DATA 0 インターフェイスの構成に役立つセットアップ ウィザードが表示されます。IP アドレス、ゲートウェイ、およびネットマスクの新しい値を指定します。
 
-> [AZURE.NOTE]固定コントローラーの IP は、Azure 管理ポータルの StorSimple デバイスの [構成] ページで再構成する必要があります。詳細については、[[構成 (デバイス)] ページでネットワーク インターフェイスを変更する](storsimple-modify-device-config.md#modify-network-interfaces)方法に関するセクションを参照してください。
+> [AZURE.NOTE]固定コントローラーの IP は、Microsoft Azure 管理ポータルの StorSimple デバイスの **[構成]** ページで再構成する必要があります。詳細については、[ネットワーク インターフェイスの変更](storsimple-modify-device-config.md#modify-network-interfaces)をご覧ください。
 
 
 ## Set-HcsNetInterface コマンドレットを使用して DATA 0 ネットワーク設定を変更する
@@ -48,14 +48,13 @@ DATA 0 ネットワーク インターフェイスを再構成するためのも
 
 #### Set-HcsNetInterface コマンドレットを使用して DATA 0 ネットワーク設定を変更するには
 
-1. シリアル コンソール メニューで、オプション 1 を選択し、**フル アクセスでログイン**します。画面の指示に従って、**デバイス管理者のパスワード**を入力します。既定のパスワードは `Password1` です。
+1. シリアル コンソール メニューで、オプション 1 を選択し、**フル アクセスでログイン**します。画面の指示に従って、デバイス管理者のパスワードを入力します。既定のパスワードは `Password1` です。
 
-1. コマンド プロンプトに、次のコマンドを入力します。
+2. コマンド プロンプトに、次のコマンドを入力します。
 
 	`Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`
-
 	
-1. 次の項目について、DATA 0 の値を山かっこ (< >) で囲んで入力します。
+    次の項目について、DATA 0 の値を山かっこ (< >) で囲んで入力します。
 											
 	- IPv4 アドレス
 	
@@ -68,6 +67,7 @@ DATA 0 ネットワーク インターフェイスを再構成するためのも
 	- コント ローラー 1 の固定 IPv4 アドレス
 
 ## 次のステップ
-DATA 0 以外のネットワーク インターフェイスを構成するには、[管理ポータルで [構成] ページ](storsimple-modify-device-config.md)を使用できます。ネットワーク インターフェイスを構成するときに問題が発生した場合は、「[デプロイに関する問題のトラブルシューティング](storsimple-troubleshoot-deployment.md)」のページををご覧ください。
 
-<!---HONumber=August15_HO6-->
+DATA 0 以外のネットワーク インターフェイスを構成するには、[管理ポータルで [構成] ページ](storsimple-modify-device-config.md)を使用できます。ネットワーク インターフェイスを構成するときに問題が発生した場合は、「[StorSimple デバイスのデプロイメントのトラブルシューティング](storsimple-troubleshoot-deployment.md)」をご覧ください。
+
+<!---HONumber=August15_HO8-->

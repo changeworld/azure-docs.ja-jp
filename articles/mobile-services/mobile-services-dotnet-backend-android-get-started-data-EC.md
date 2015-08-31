@@ -18,13 +18,13 @@
 
 # 既存のアプリケーションへの Mobile Services の追加
 
-[AZURE.INCLUDE [mobile-services-selector-get-started-data](../../includes/mobile-services-selector-get-started-data-EC.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-data](../../includes/mobile-services-selector-get-started-data-ec.md)]
 
 ##概要
 
 このトピックでは、Azure Mobile Services を Android アプリのバックエンド データソースとして使用する方法について説明します。このチュートリアルでは、新しいモバイル サービスの作成、メモリにデータを格納するアプリケーション用の Eclipse Android のダウンロード、モバイル サービスとアプリケーションとの統合、アプリケーションの実行時にデータに加えられた変更の表示について説明します。
 
-このチュートリアルで作成するモバイル サービスは、Mobile Services の .NET ランタイムをサポートします。これによって、モバイル サービスのサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン](mobile-services-android-get-started-data-EC.md)」を参照してください。
+このチュートリアルで作成するモバイル サービスは、Mobile Services の .NET ランタイムをサポートします。これによって、モバイル サービスのサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン](mobile-services-android-get-started-data-ec.md)」を参照してください。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -53,20 +53,20 @@
 
 ###サンプル コードの取得
 
-[AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../../includes/download-android-sample-code-EC.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-create-new-service](../../includes/download-android-sample-code-ec.md)]
 
 ###Android SDK バージョンの検証
 
-[AZURE.INCLUDE [mobile-services-verify-android-sdk-version](../../includes/mobile-services-verify-android-sdk-version-EC.md)]
+[AZURE.INCLUDE [mobile-services-verify-android-sdk-version](../../includes/mobile-services-verify-android-sdk-version-ec.md)]
 
 
 ###サンプル コードの確認と実行
 
-[AZURE.INCLUDE [mobile-services-android-run-sample-code](../../includes/mobile-services-android-run-sample-code-EC.md)]
+[AZURE.INCLUDE [mobile-services-android-run-sample-code](../../includes/mobile-services-android-run-sample-code-ec.md)]
 
 ##<a name="update-app"></a>モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する
 
-[AZURE.INCLUDE [mobile-services-android-getting-started-with-data](../../includes/mobile-services-android-getting-started-with-data-EC.md)]
+[AZURE.INCLUDE [mobile-services-android-getting-started-with-data](../../includes/mobile-services-android-getting-started-with-data-ec.md)]
 
 ##<a name="test-app"></a>発行されたモバイル サービスに対してアプリケーションをテストする
 
@@ -126,7 +126,7 @@
 <!-- URLs. -->
 [Get started with Mobile Services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [認証の使用]: mobile-services-dotnet-backend-android-get-started-users.md
-[プッシュ通知の使用]: mobile-services-dotnet-backend-android-get-started-push-EC.md
+[プッシュ通知の使用]: mobile-services-dotnet-backend-android-get-started-push-ec.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
 [Management Portal]: https://manage.windowsazure.com/
@@ -134,4 +134,4 @@
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=328660
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

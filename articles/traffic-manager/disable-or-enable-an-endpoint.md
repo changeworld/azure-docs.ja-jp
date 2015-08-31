@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Traffic Manager エンドポイントの無効化または有効化"
+   pageTitle="Traffic Manager エンドポイントの無効化または有効化 | Microsoft Azure"
    description="この記事では、Traffic Manager プロファイル エンドポイントの無効化または有効化について説明します。"
    services="traffic-manager"
    documentationCenter="na"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/10/2015"
+   ms.date="08/19/2015"
    ms.author="joaoma" />
 
 # Traffic Manager エンドポイントの無効化または有効化
@@ -38,9 +38,9 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 ## 次のステップ
 
-[Traffic Manager の構成タスク](https://msdn.microsoft.com/library/azure/hh744830.aspx)
+[Traffic Manager - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
 
-[Traffic Manager の概要](../traffic-manager.md)
+[Traffic Manager について](../traffic-manager.md)
 
 [Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
 
@@ -50,4 +50,4 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

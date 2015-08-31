@@ -5,7 +5,8 @@
    documentationCenter=""
    authors="Blackmist"
    manager="paulettm"
-   editor="cgronlun"/>
+   editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -466,4 +467,4 @@ Trident アプリケーションの例については、「[HDInsight での Apa
 
 Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」をご確認ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

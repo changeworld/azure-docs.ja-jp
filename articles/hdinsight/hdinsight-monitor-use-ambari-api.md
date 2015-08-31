@@ -3,6 +3,7 @@
 	description="Apache Ambari API は、Hadoop クラスターのプロビジョニング、管理、および監視を目的として使用します。直観的なオペレーター ツールと API によって、Hadoop の複雑さに悩まされずに作業を進められます。"
 	services="hdinsight"
 	documentationCenter=""
+	tags="azure-portal"
 	authors="mumian"
 	editor="cgronlun"
 	manager="paulettm"/>
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/08/2015"
+	ms.date="07/28/2015"
 	ms.author="jgao"/>
 
 # Ambari API を使用した HDInsight の Hadoop クラスターの監視
@@ -49,7 +50,7 @@ HDInsight クラスター名|$clusterName||HDInsight クラスターの名前で
 クラスター ユーザー名|$clusterUsername||プロビジョニングで指定されたクラスター ユーザー名です。
 クラスター パスワード|$clusterPassword||クラスター ユーザー パスワードです。
 
-	> [AZURE.NOTE] テーブルに値を入力します。そうしておくと、このチュートリアルを読み進める際に役に立ちます。
+	> [AZURE.NOTE] Fill-in the values in the table. This will be helpful for going through this tutorial.
 
 
 
@@ -146,7 +147,7 @@ API 呼び出しの監視|URI|説明
 
 ここでは Ambari での API 呼び出しの監視の使用方法を説明しました。詳細については、次を参照してください。
 
-- [管理ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]
+- [Azure プレビュー ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]
 - [Azure PowerShell を使用した HDInsight クラスターの管理][hdinsight-admin-powershell]
 - [コマンド ライン インターフェイスを使用した HDInsight クラスターの管理][hdinsight-admin-cli]
 - [HDInsight のドキュメント][hdinsight-documentation]
@@ -173,6 +174,5 @@ API 呼び出しの監視|URI|説明
 [hdinsight-provision]: hdinsight-provision-clusters.md
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

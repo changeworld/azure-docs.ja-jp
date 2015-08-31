@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.workload="mobile" 
+	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/24/2015"
+	ms.date="08/18/2015"
 	ms.author="donnam"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
@@ -134,6 +134,5 @@
 [Xamarin Studio]: http://xamarin.com/download
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532&clcid=0x409
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/02/2015"
+   ms.date="08/19/2015"
    ms.author="sameerch"/>
 
 
@@ -63,13 +63,17 @@ API アプリを作成すると、Logic App のアクションとして Twilio �
 	- **通話元の電話番号** - 送信するメッセージの種類が有効になっている Twilio の電話番号を入力します。Twilio から購入した電話番号または短いコードのみがこのコネクタで機能します。
 	- **通話先の電話番号** - 宛先電話番号。使用できる書式: + の後に国コード、その次に電話番号を続けます。たとえば、+16175551212 です。+ を省略した場合、Twilio は [通話元の電話番号] に入力した国コードを使用します。
 	- **テキスト** - 送信するメッセージのテキスト。
- 
+
 	![][5]
 	![][6]
+## コネクタでできること
+コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
+「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
-	<!--Image references-->
+<!--Image references-->
 [1]: ./media/app-service-logic-connector-twilio/img1.PNG
 [2]: ./media/app-service-logic-connector-twilio/img2.PNG
 [3]: ./media/app-service-logic-connector-twilio/img3.png
@@ -77,4 +81,4 @@ API アプリを作成すると、Logic App のアクションとして Twilio �
 [5]: ./media/app-service-logic-connector-twilio/img5.PNG
 [6]: ./media/app-service-logic-connector-twilio/img6.PNG
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

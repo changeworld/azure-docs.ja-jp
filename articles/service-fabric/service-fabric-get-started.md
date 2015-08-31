@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 開発環境の設定"
+   pageTitle="Service Fabric 開発環境の設定 | Microsoft Azure"
    description="Service Fabric ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。"
    services="service-fabric"
    documentationCenter=".net"
@@ -22,12 +22,12 @@
  >[AZURE.NOTE]次の手順は、新しい PC を設定するためのものです。PC に以前のバージョンの Service Fabric がインストールされている場合は、[開発環境を更新する手順](service-fabric-update-your-development-environment.md)に従ってください。
 
 ## 前提条件
-### サポートされるオペレーティング システムのバージョン:
+### サポートされるオペレーティング システムのバージョン
 次のオペレーティング システムのバージョンがサポートされます。
 
 - Windows 8/8.1
 - Windows Server 2012 R2
-- Windows 10 Technical Preview
+- Windows 10
 
 ### Visual Studio 2015
 
@@ -41,7 +41,7 @@ Service Fabric のコンポーネントは、Web Platform Installer によって
 
 1. Web Platform Installer を使用して [SDK をダウンロード][3]します。
 
-2. [インストール] をクリックして、インストール プロセスを開始します。
+2. **[インストール]** をクリックして、インストール プロセスを開始します。
 
 3. 使用許諾契約書を確認し、同意します。
 
@@ -93,4 +93,4 @@ SDK に付属している Service Fabric エクスプローラー ツールを�
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

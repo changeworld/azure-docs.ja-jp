@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2015"
+	ms.date="08/05/2015"
 	ms.author="kirillg"/>
 
-# <a name="getting-started"> </a>Mobile Apps とは
+# <a name="getting-started"></a>Mobile Apps とは
 
->[AZURE.NOTE]**Mobile Services のドキュメントは[こちら](http://azure.microsoft.com/documentation/services/mobile-services/)です。**
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
-Azure App Service は、プロの開発者のための完全に管理されたサービスとしてのプラットフォーム (PaaS) 製品であり、Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル アプリに豊富な機能のセットを提供します。
+Azure App Service は、プロの開発者のための完全に管理されたサービスとしてのプラットフォーム (PaaS) 製品であり、Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。
 
 ![Mobile Apps](./media/app-service-mobile-value-prop-preview/overview.png)
 
 ##モバイル アプリを使用する理由
-*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル アプリに豊富な機能のセットを提供します。モバイル アプリでは、次のことを実行できます。
+*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。モバイル アプリでは、次のことを実行できます。
 
 - **ネイティブ アプリとクロスプラットフォーム アプリの構築** - iOS、Android、Windows のネイティブ アプリを構築する場合でも、Xamarin や Cordova (Phonegap) のクロスプラットフォーム アプリを構築する場合でも、ネイティブ SDK を使用して App Service を活用することができます。  
 - **エンタープライズ システムへの接続** - Mobile Apps を使用して、企業へのサインオンを数分で追加し、企業のオンプレミス リソースまたはクラウド リソースに接続することができます。
@@ -44,6 +44,7 @@ Mobile Apps の使用を開始するには、[作業の開始]に関するチュ
 
 Azure App Service プラットフォームの詳細については、[Azure App Service] に関するページを参照してください。
 
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <!-- URLs. -->
 [Migrate your Mobile Service to App Service]: app-service-mobile-dotnet-backend-migrating-from-mobile-services-preview.md
@@ -56,4 +57,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [JavaScript backend version]: ../mobile-services-ios-get-started.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

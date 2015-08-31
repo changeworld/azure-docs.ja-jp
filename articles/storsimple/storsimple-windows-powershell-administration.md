@@ -1,18 +1,18 @@
 <properties 
-   pageTitle="Windows PowerShell for StorSimple を使用してデバイスを管理する"
+   pageTitle="Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する | Microsoft Azure"
    description="Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
    manager="carolz"
-   editor="tysonn" />
+   editor="" />
 <tags 
    ms.service="storsimple"
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/04/2015"
+   ms.date="08/19/2015"
    ms.author="alkohli@microsoft.com" />
 
 # Windows PowerShell for StorSimple を使用してデバイスを管理する
@@ -37,11 +37,9 @@ Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイス�
 
 >- Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。StorSimple に対する Azure PowerShell コマンドレットの詳細については、「[Azure StorSimple コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn920427.aspx)」を参照してください。
 
-
-
 Windows PowerShell for StorSimple には、次のいずれかの方法でアクセスできます。
 
-- [StorSimple デバイスのシリアル コンソールに接続する](#connect-to-windows-powershell-for-storsimple-via-device-serial-console)
+- [StorSimple デバイスのシリアル コンソールに接続する](#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)
 - [Windows PowerShell を使用して StorSimple にリモート接続する](#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple)
 	
 
@@ -55,7 +53,7 @@ Windows PowerShell for StorSimple に接続するには、[PuTTY をダウンロ
 
 バナー メッセージには、モデル、名前、インストールされているソフトウェアのバージョン、アクセス中のコントローラーの状態などの StorSimple デバイスの基本情報が含まれます。次の図に、バナー メッセージの例を示します。
 
-![シリアル バナー メッセージ](./media/storsimple-windows-powershell-administration/IC741098.png)
+![Serial banner message](./media/storsimple-windows-powershell-administration/IC741098.png)
 
 
 
@@ -160,7 +158,7 @@ Windows PowerShell for StorSimple に接続する方法を決定するときは�
 |メンテナンス モードで更新プログラムと修正プログラムをインストールする|[デバイスを更新する](storsimple-update-device.md)|
 |メンテナンス モードに移行する</br>メンテナンス モードを終了する|[StorSimple デバイスのモード](storsimple-device-modes.md)|
 |サポート パッケージを作成する</br>サポート パッケージの暗号化を解除して編集する|[サポート パッケージを作成および管理する](storsimple-create-manage-support-package.md)|
-|サポート セッションを開始する</br>|[Windows PowerShell for StorSimple でサポート セッションを開始する](/storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)
+|サポート セッションを開始する</br>|[StorSimple 用 Windows PowerShell でのサポート セッションの開始](/storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)
  
 
 ## Windows PowerShell for StorSimple のヘルプを取得する
@@ -194,9 +192,9 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 1. ヘルプ ファイルがインストールされた後、「`Get-Help Get-Command`」と入力します。これにより、ヘルプを利用できるコマンドレットの一覧が表示されます。
 
 
->[AZURE.NOTE]**いずれかの実行空間で利用できるすべてのコマンドレットの一覧を取得するには、該当するメニュー オプションにログインし、`Get-Command` コマンドレットを実行します。**
+>[AZURE.NOTE]いずれかの実行空間で利用できるすべてのコマンドレットの一覧を取得するには、該当するメニュー オプションにログインし、`Get-Command` コマンドレットを実行します。
 
 ## 次のステップ
-上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場は、「[コマンドレットのトラブルシューティング](storsimple-troubleshoot-deployment.md#cmdlets-available-for-troubleshooting)」を参照してください。
+上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「[StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->

@@ -5,7 +5,8 @@
    documentationCenter=""
    authors="Blackmist"
    manager="paulettm"
-   editor="cgronlun"/>
+   editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -52,13 +53,16 @@ Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実
 	>
 	> 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-* **SSH** - <clustername>-ssh.azurehdinsight.net on port 22
+* **SSH** - ポート 22 または 23 上の &lt;clustername>-ssh.azurehdinsight.net。ポート 22 は headnode0 への接続に、23 は headnode1 への接続に使用されます。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
 	> [AZURE.NOTE]クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。接続されたら、ヘッド ノードから SSH を使用してワーカー ノードにアクセスできます。
 
 ## ファイルの場所
 
-Hadoop 関連ファイルは、`/usr/hdp/current` のクラスター ノードにあります。
+Hadoop 関連ファイルは、`/usr/hdp` のクラスター ノードにあります。このディレクトリには、次のサブディレクトリが含まれます。
+
+* __2.2.4.9-1__: このディレクトリは HDInsight が使用する Hortonworks Data Platform のバージョンから名前が付けられるため、クラスター上の番号がここに記載されたものと異なる場合があります。
+* __current__: このディレクトリには、__2.2.4.9-1__ ディレクトリ下のディレクトリへのリンクが含まれており、(変わる可能性がある) バージョン番号を、ファイルにアクセスするたびに入力する手間を省くために存在します
 
 サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システム (HDFS) または Azure BLOB ストレージの '/example' または 'wasb:///example' にあります。
 
@@ -136,7 +140,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 ## 次のステップ
 
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight での Pig の使用](hdinsight-use-pig.md)
-* [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
+* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO8-->

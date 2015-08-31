@@ -1,18 +1,18 @@
 <properties 
-    pageTitle="StorSimple 8000 シリーズ Update 1 リリース ノート"
+    pageTitle="StorSimple 8000 シリーズ Update 1 リリース ノート | Microsoft Azure"
     description="StorSimple 8000 シリーズ Update 1 における新機能、問題、回避策について説明します。"
     services="storsimple"
     documentationCenter="NA"
     authors="alkohli"
-    manager="adinah"
-    editor="tysonn" />
+    manager="carolz"
+    editor="" />
  <tags 
     ms.service="storsimple"
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="08/12/2015"
+    ms.date="08/19/2015"
     ms.author="alkohli" />
 
 # StorSimple 8000 シリーズ Update 1 リリース ノート  
@@ -45,7 +45,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 
     StorSimple 5000/7000 シリーズから 8000 シリーズ デバイスに移行する方法の詳細については、[移行ガイド](http://www.microsoft.com/download/details.aspx?id=47322)を参照してください。
 
-- **Azure Government Portal での可用性** – StorSimple が Azure Government Portal で使用できるようになりました。[Azure Government Portal で StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough-gov.md)方法に関するページを参照してください。
+- **Azure Government Portal での可用性** – StorSimple が Azure Government Portal で使用できるようになりました。[Azure Government Portal で StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough-gov.md)方法に関するページをご覧ください。
 
 - **他のクラウド サービス プロバイダーのサポート** – サポートされているその他のクラウド サービス プロバイダーは、Amazon S3、Amazon S3 with RRS、HP、OpenStack (ベータ) です。
 
@@ -82,10 +82,10 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 | 3 | ストレージ アカウント | Storage サービスを使用したストレージ アカウントの削除は、サポートされていないシナリオです。これにより、ユーザー データを取得できなくなります。 | あり | あり |
 | 4 | デバイスのフェールオーバー | 同じソース デバイスのボリューム コンテナーについて、複数のフェールオーバーを異なるターゲット デバイスに対して実行することはサポートされません。1 つの障害発生デバイスから複数のデバイスにフェールオーバーすると、フェールオーバーされた最初のデバイス上のボリューム コンテナーがデータの所有権を失います。このようなフェールオーバーが発生した後、これらのボリューム コンテナーを管理ポータルで表示するとその表示や動作が変わります。 | | あり | いいえ |
 | 5 | インストール | SharePoint 用 StorSimple アダプターのインストール中にインストールを正常に完了するためには、デバイスの IP を指定する必要があります。 | | あり | いいえ |
-| 6 | Web プロキシ | Web プロキシ構成で指定プロトコルとして HTTPS を使用している場合、デバイスとサービス間の通信が影響を受け、デバイスがオフラインになります。プロセスでサポート パッケージも生成され、デバイスで大量のリソースが使用されます。 | Web プロキシ URL で指定プロトコルとして HTTP を使用していることを確認してください。詳細については、「[デバイスの Web プロキシの構成](https://msdn.microsoft.com/library/azure/dn764937.aspx)」を参照してください。 | あり | いいえ |
+| 6 | Web プロキシ | Web プロキシ構成で指定プロトコルとして HTTPS を使用している場合、デバイスとサービス間の通信が影響を受け、デバイスがオフラインになります。プロセスでサポート パッケージも生成され、デバイスで大量のリソースが使用されます。 | Web プロキシ URL で指定プロトコルとして HTTP を使用していることを確認してください。詳細については、「[デバイスの Web プロキシの構成](storsimple-configure-web-proxy.md)」を参照してください。 | あり | いいえ |
 | 7 | Web プロキシ | 登録されたデバイスで Web プロキシを構成して有効にする場合は、デバイス上でアクティブなコントローラーを再起動する必要があります。 | | あり | いいえ |
 | 8 | クラウドの長い待機時間と高い I/O ワークロード | StorSimple デバイスで、非常に長いクラウドの待機時間 (秒単位) や高い I/O ワークロードの組み合わせが発生した場合、デバイス ボリュームはパフォーマンスが低下した状態になり、I/O は "デバイスの準備未完了" エラーで失敗します。 | デバイス コントローラーを手動で再起動するか、デバイスのフェールオーバーを実行して、この状況から復旧する必要があります。 | あり | いいえ |
-| 9 | Azure PowerShell | 新しい **VolumeContainer** オブジェクトを作成できるように、StorSimple のコマンドレット **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** を使用して最初のオブジェクトを選択すると、コマンドレットからすべてのオブジェクトが返されます。 | 次のように、コマンドレットをかっこで囲みます: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** | あり | あり |
+| 9 | Azure PowerShell | 新しい **VolumeContainer** オブジェクトを作成できるように、StorSimple のコマンドレット **Get-AzureStorSimpleStorageAccountCredential | Select-Object -First 1 -Wait** を使用して最初のオブジェクトを選択すると、コマンドレットからすべてのオブジェクトが返されます。 | 次のように、コマンドレットをかっこで囲みます: **(Get-Azure-StorSimpleStorageAccountCredential) | Select-Object -First 1 -Wait** | あり | あり |
 | 10| 移行 | 複数のボリューム コンテナーを渡して移行する場合、最新のバックアップの ETA は、最初のボリューム コンテナーに対してのみ正確です。さらに、最初のボリューム コンテナー内の最初の 4 つのバックアップが移行された後に、移行が並列で開始されます。 | 一度に 1 つのボリューム コンテナーを移行することをお勧めします。 | あり | いいえ |
 | 11| 移行 | 復元後、ボリュームはバックアップ ポリシーや仮想ディスク グループに追加されません。 | バックアップを作成するために、バックアップ ポリシーにこれらのボリュームを追加する必要があります。 | あり | あり |
 | 12| 移行 | 移行の完了後は、5000/7000 シリーズのデバイスから移行後のデータ コンテナーにアクセスできなくなります。 | 移行が完了しコミットした後、移行後のデータ コンテナーを削除することをお勧めします。 | あり | いいえ |
@@ -112,7 +112,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 
 ## 次のステップ
 
-- [デバイスへの Update 1 のインストール](storsimple-install-update-1.md)
+- [デバイスへの Update 1 のインストール](storsimple-install-update-1.md)。
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO8-->
