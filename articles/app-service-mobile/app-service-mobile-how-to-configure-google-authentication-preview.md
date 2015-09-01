@@ -31,15 +31,15 @@
  
 2. **[設定]**、**[ユーザー認証]**、**[Google]** の順にクリックします。**[リダイレクト URI]** をコピーします。この URI は、Google アプリの構成に使用します。
 
-3. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> Web サイトに移動して、Google アカウント資格情報でサインインします。**[プロジェクトの作成]** をクリックして**プロジェクト名**を入力し、**[作成]** をクリックします。
+3. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> Web サイトに移動して、Google アカウント資格情報でサインインします。**[Create Project]** をクリックして**Project name**を入力し、**[Create]** をクリックします。
 
-4. 左側のナビゲーション バーで、**[API と認証]** をクリックします。次に、**[同意画面]** をクリックします。**[メール アドレス]** を選択し、**サービス名**を入力します。その後、**[保存]** をクリックします。
+4. 左側のナビゲーション バーで、**[API & Auth]** をクリックします。次に、**[Consent screen]** をクリックします。**[Email address]** を選択し、**Product name**を入力します。その後、**[Save]** をクリックします。
 
-5. また、**[API と認証]** で **[API]** を選択して、**[Google+ API]** を有効にします。**ソーシャル API** の下にあります。**Google + API** を検索することもできます。
+5. また、**[API & Auth]** で **[API]** を選択して、**[Google+ API]** を有効にします。**Social APIs** の下にあります。**Google + API** を検索することもできます。
 
-6. もう一度 **[API と認証]** で、**[認証情報]**、**[新しいクライアント ID を作成]** の順に選択します。
+6. もう一度 **[API & Auth]** で、**[Credentials]**、**[Create client ID]** の順に選択します。
 
-7. **[ウェブ アプリケーション]** を選択します。**[Authorized JavaScript Origins]** に先ほどコピーした **[URL]** を貼り付け、**[Authorized Redirect URI]** で生成された URL を先ほどコピーしたモバイル アプリの **[リダイレクト URI]** に置換します。この URI は、モバイル アプリ ゲートウェイの後にパス _/signin-google_ を追加したフォーマットです。たとえば、「`https://contosogateway.azurewebsites.net/signin-google`」のように入力します。HTTPS スキームを使用していることを確認します。**[クライアント ID を作成]** をクリックします。
+7. **[Web application]** を選択します。**[Authorized JavaScript Origins]** に先ほどコピーした **[URL]** を貼り付け、**[Authorized Redirect URI]** で生成された URL を先ほどコピーしたモバイル アプリの **[リダイレクト URI]** に置換します。この URI は、モバイル アプリ ゲートウェイの後にパス _/signin-google_ を追加したフォーマットです。たとえば、「`https://contosogateway.azurewebsites.net/signin-google`」のように入力します。HTTPS スキームを使用していることを確認します。**[Create client ID]** をクリックします。
 
      ![][0]
 
