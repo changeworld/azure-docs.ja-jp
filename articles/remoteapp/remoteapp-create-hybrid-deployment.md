@@ -55,7 +55,7 @@ RemoteApp のコレクションには、次の 2 種類があります:
 
 まず[仮想ネットワーク](https://msdn.microsoft.com/library/azure/dn631643.aspx)の作成から開始します。これは Azure 管理ポータルの **[ネットワーク]** タブで実行します。仮想ネットワークを、Azure Active Directory テナントと同期している Active Directory デプロイに接続する必要があります。
 
-詳細については、「[](https://msdn.microsoft.com/library/azure/jj156074.aspx)管理ポータルでの仮想ネットワークの設定について」を参照してください。
+詳細については、「[管理ポータルでの仮想ネットワークの設定について](https://msdn.microsoft.com/library/azure/jj156074.aspx)管理ポータルでの仮想ネットワークの設定について」を参照してください。
 
 ### 仮想ネットワークで RemoteApp を使用する準備ができていることを確認します。
 RemoteApp コレクションを作成する前に、新しい仮想ネットワークで準備ができていることを確認します。これは次の手順を実行することで検証できます。
@@ -136,4 +136,4 @@ RemoteApp コレクションには複数のアプリケーションを発行で�
 
  
 
-<!---HONumber=August15_HO7-->
+<!----HONumber=August15_HO7-->

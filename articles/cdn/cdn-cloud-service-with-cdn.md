@@ -117,7 +117,8 @@
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-13-testcdn.png)
 
-2. Visual Studio 2013 に戻り、**WebRole1** プロジェクトの **Web.config** を開き、次のコードを `<system.webServer>` タグに追加します。
+2. Visual Studio 2013 に戻り、**WebRole1** プロジェクトの **Web.config** を開き、次のコードを `<system.webServer>` タグに追加します。  
+
 		<system.webServer>
 		  <rewrite>
 		    <rules>
@@ -129,7 +130,6 @@
 		  </rewrite>
 		  ...
 		</system.webServer>
-
 
 4. もう一度クラウド サービスを発行します。クラウド サービス プロジェクトを右クリックし、**[発行]** を選択します。
 
@@ -627,4 +627,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 - [Azure 用 CDN の使用](cdn-how-to-use.md)
 
-<!------HONumber=August15_HO7-->
+<!-------HONumber=August15_HO7-->
