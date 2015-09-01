@@ -49,7 +49,7 @@ DocumentDB では、統合された JavaScript 言語によるトランザクシ
 	-	生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。これは、データがスキーマを持たない場合に特に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。  
 	-	この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。  
 
-トリガー、ストアド プロシージャ、およびカスタム クエリ演算子の作成と実行は、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) と多くのプラットフォーム (.NET、Node.js、JavaScript など) の[クライアント SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) でサポートされます。**このチュートリアルでは、[Node.js SDK](http://dl.windowsazure.com/documentDB/nodedocs/) を使用して**、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。
+トリガー、ストアド プロシージャ、およびカスタム クエリ演算子の作成と実行は、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) と多くのプラットフォーム (.NET、Node.js、JavaScript など) の[クライアント SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) でサポートされます。**このチュートリアルでは、 [Node.js SDK](http://dl.windowsazure.com/documentDB/nodedocs/) を使用して**、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。
 
 ## ストアド プロシージャ
 
