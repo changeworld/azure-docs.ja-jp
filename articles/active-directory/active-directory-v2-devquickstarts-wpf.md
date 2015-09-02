@@ -38,19 +38,19 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git```
 
-The completed app is provided at the end of this tutorial as well.
+完成したアプリは、このチュートリアルの終わりにも示しています。
 
-## 1. Register an App
-Create a new app at [apps.dev.microsoft.com](https://apps.dev.microsoft.com), or follow these [detailed steps](active-directory-v2-app-registration.md).  Make sure to:
+## 1. アプリの登録
+[apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、またはこちらの[詳細な手順](active-directory-v2-app-registration.md)に従います。以下を忘れずに行ってください。
 
-- Copy down the **Application Id** assigned to your app, you'll need it soon.
-- Add the **Mobile** platform for your app.
-- Copy down the **Redirect URI** from the portal. You must use the default value of `urn:ietf:wg:oauth:2.0:oob`.
+- アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
+- アプリ用の**モバイル** プラットフォームを追加します。
+- ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob` を使用する必要があります。
 
-## 2. Install & Configure ADAL
-Now that you have an app registered with Microsoft, you can install ADAL and write your identity-related code.  In order for ADAL to be able to communicate the v2.0 endpoint, you need to provide it with some information about your app registration.
+## 2. ADAL のインストールと構成
+マイクロソフトへのアプリの登録が完了したら、ADAL をインストールし、自分の ID 関連コードを記述できます。ADAL が v2.0 エンドポイントと通信できるようにするには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
 
--	Begin by adding ADAL to the TodoListClient project using the Package Manager Console.
+-	最初に、パッケージ マネージャー コンソールを使用して、ADAL を TodoListClient プロジェクトに追加します。
 
 ```
 PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoListClient -IncludePrerelease 
@@ -231,11 +231,11 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null) { /
 		...
 ```
 
-Congratulations! You now have a working .NET WPF app that has the ability to authenticate users & securely call Web APIs using OAuth 2.0.  Run your both projects, and sign in with either a personal Microsoft account or a work or school account.  Add tasks to that user's To-Do list.  Sign out, and sign back in as another user to view their To-Do list.  Close the app, and re-run it.  Notice how the user's session remains intact - that is becuase the app caches tokens in a local file.
+おめでとうございます。ユーザーを認証し、OAuth 2.0 を使用して安全に Web API を呼び出すことができる、.NET WPF アプリが動作するようになりました。両方のプロジェクトを実行し、個人用の Microsoft アカウントか職場または学校アカウントでサインインしてください。ユーザーの To Do リストにタスクを追加します。いったんサインアウトしてから、別のユーザーとして再度サインインし、ユーザーの To Do リストを表示します。アプリをいったん終了し、再実行します。ユーザーのセッションに影響がないことを確認してください。これは、アプリがトークンをローカル ファイルにキャッシュしているためです。
 
-ADAL makes it easy to incorporate common identity features into your app, using both personal and work accounts.  It takes care of all the dirty work for you - cache management, OAuth protocol support, presenting the user with a login UI, refreshing expired tokens, and more.  All you really need to know is a single API call, `authContext.AcquireTokenAsync(...)`.
+ADAL では、個人用アカウントと職場アカウントの両方を使用して、一般的な ID 機能をアプリに簡単に組み込むことができます。キャッシュ管理、OAuth プロトコルのサポート、ユーザーへのログイン UI の表示、期限の切れたトークンの更新など、面倒な作業はすべて自動的に実行されます。知っておく必要があるのは、`authContext.AcquireTokenAsync(...)` というただ 1 つの API 呼び出しだけです。
 
-For reference, the completed sample (without your configuration values) [is provided as a .zip here](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip), or you can clone it from GitHub:
+参考として、完成したサンプル (ユーザーの構成値は含まない) の [.zip ファイルをここに用意しています](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git```
 
@@ -247,4 +247,4 @@ For reference, the completed sample (without your configuration values) [is prov
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!-----HONumber=August15_HO7-->
+<!------HONumber=August15_HO7-->

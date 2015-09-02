@@ -306,6 +306,6 @@ ConsentReturnUrl にエンコードされた URL の一部として、追加の�
 
 - [アプリケーション オブジェクトとサービス プリンシパル オブジェクト](active-directory-application-objects.md)について学ぶ
 
-- Active Directory 開発者ガイド (active-directory-developer's guide.md) を参照する
+- [Active Directory 開発者ガイド](active-directory-developer's guide.md) を参照する
 
-<!---HONumber=August15_HO8-->
+<!----HONumber=August15_HO8-->

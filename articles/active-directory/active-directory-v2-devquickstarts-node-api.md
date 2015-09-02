@@ -23,4 +23,4 @@
   > [AZURE.NOTE]
     この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
 
-<!-------HONumber=August15_HO7-->
+<!--------HONumber=August15_HO7-->

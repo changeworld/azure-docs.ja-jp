@@ -106,22 +106,22 @@ ArcGIS の場合、プロビジョニングは手動で行います。
 
 1.  **ArcGIS** テナントにログインします。
 
-2.  **[Invite Members]** をクリックします。
+2.  **[メンバーを招待]** をクリックします。
 
     ![Invite Members](./media/active-directory-saas-arcgis-tutorial/IC784747.png "Invite Members")
 
-3.  **[Add members automatically without sending an email]** を選択して、**[Next]** をクリックします。
+3.  **[電子メールを送信せずにメンバーを自動的に追加]** を選択して、**[次へ]** をクリックします。
 
     ![Add Members Automatically](./media/active-directory-saas-arcgis-tutorial/IC784748.png "Add Members Automatically")
 
-4.  **[Members]** ダイアログ ページで、次の手順に従います。
+4.  **[メンバー]** ダイアログ ページで、次の手順に従います。
 
     ![Add and review](./media/active-directory-saas-arcgis-tutorial/IC784749.png "Add and review")
 
-    1.  プロビジョニングする有効な AAD アカウントの **[First Name]**、**[Last Name]**、**[Email]** を入力します。
+    1.  プロビジョニングする有効な AAD アカウントの **[名]**、**[姓]**、**[Email]** を入力します。
     2.  **[Add And Review]** をクリックします。
 
-5.  入力したデータを確認してから、**[Add Members]** をクリックします。
+5.  入力したデータを確認してから、**[メンバーの追加]** をクリックします。
 
     ![Add member](./media/active-directory-saas-arcgis-tutorial/IC784750.png "Add member")
 
@@ -145,4 +145,4 @@ ArcGIS の場合、プロビジョニングは手動で行います。
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を参照してください。
 
-<!----HONumber=August15_HO7-->
+<!-----HONumber=August15_HO7-->
