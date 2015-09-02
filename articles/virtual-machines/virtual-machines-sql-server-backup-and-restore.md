@@ -61,7 +61,7 @@ SQL Server 2014 には、次の拡張機能が用意されています。
  - SQL Server Management Studio で、*SQL Server Backup to URL* がサポートされるようになりました。SQL Server Management Studio でバックアップ タスクまたは復元タスクを使用するときや、メンテナンス プラン ウィザードを使用するときに、Azure にバックアップするオプションを利用できるようになりました。詳細については、「[SQL Server Backup to URL](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)」をご覧ください。
  - *Azure への SQL Server マネージ バックアップ*は、バックアップ管理の自動化を可能にする新機能です。この機能は、Azure マシンで実行されている SQL Server 2014 インスタンスのバックアップ管理を自動化する際に特に役立ちます。詳細については、「[SQL Server Managed Backup to Microsoft Azure (Microsoft Azure への SQL Server マネージ バックアップ)](https://msdn.microsoft.com/library/dn449496%28v=sql.120%29.aspx)」をご覧ください。
  - *自動アックアップ*は、Azure の SQL Server VM の既存のデータベースと新しいデータベースのすべてを対象とした *Azure への SQL Server マネージ バックアップ*を自動的に有効にする別の自動化機能です。詳細については、「[Azure 仮想マシンでの SQL Server の自動バックアップ](virtual-machines-sql-server-automated-backup.md)」をご覧ください。
- - Azure に SQL Server 2014 をバックアップする際のすべてのオプションの概要については、「[SQL Server Backup and Restore with Microsoft Azure Blob Storage Service (Microsoft Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元)](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)」をご覧ください。
+ - Azure に SQL Server 2014 をバックアップする際のすべてのオプションの概要については、「[(Microsoft Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元)](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)」をご覧ください。
 
 1. **暗号化**: SQL Server 2014 では、バックアップの作成時におけるデータの暗号化をサポートしています。複数の暗号化アルゴリズムと、証明書または非対称キーの使用をサポートしています。詳細については、「[バックアップの暗号化](https://msdn.microsoft.com/library/dn449489%28v=sql.120%29.aspx)」をご覧ください。
 
@@ -89,4 +89,4 @@ Azure VM に SQL Server をデプロイすることを計画している場合�
 
 [Azure 仮想マシンで SQL Server を実行するための他のリソース](virtual-machines-sql-server-infrastructure-services.md)を確認します。
 
-<!----HONumber=August15_HO7-->
+<!-----HONumber=August15_HO7-->
