@@ -138,7 +138,7 @@
 
      11\.4.**[形式]** で **[PEM]** を選択します。
 
-     11\.5.ダウンロードした証明書から base-64 でエンコードされたファイルを作成します。[AZURE.NOTE]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+     11\.5.ダウンロードした証明書から base-64 でエンコードされたファイルを作成します。  > [AZURE.NOTE]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
      11\.6.**メモ帳**で、Base-64 エンコード ファイルを開き、このファイルの内容をクリップボードにコピーします。
 
@@ -213,4 +213,4 @@
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=August15_HO8-->
+<!----HONumber=August15_HO8-->

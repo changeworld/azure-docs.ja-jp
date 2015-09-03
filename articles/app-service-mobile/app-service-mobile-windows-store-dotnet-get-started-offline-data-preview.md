@@ -255,7 +255,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 * [Azure モバイル アプリでのオフライン データ同期]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure モバイル アプリでも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure モバイル アプリでも同様に機能します)
 
 * [Azure Friday: Azure Mobile Services のオフライン対応アプリ]
 
@@ -284,4 +284,4 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Azure Mobile Services のオフライン対応アプリ]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=August15_HO8-->
+<!----HONumber=August15_HO8-->

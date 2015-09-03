@@ -25,7 +25,7 @@
 
 - 暗号化キーを、[作成](https://msdn.microsoft.com/library/azure/dn903634.aspx)、[インポート](https://msdn.microsoft.com/library/azure/dn903626.aspx)、[更新](https://msdn.microsoft.com/library/azure/dn903616.aspx)、[削除](https://msdn.microsoft.com/library/azure/dn903611.aspx)などの操作を使用して管理する
 
-- シークレットを、[取得](https://msdn.microsoft.com/library/azure/dn903633.aspx)、更新 (https://msdn.microsoft.com/library/azure/dn986818.aspx、[削除](https://msdn.microsoft.com/library/azure/dn903613.aspx)などの操作を使用して管理する
+- シークレットを、[取得](https://msdn.microsoft.com/library/azure/dn903633.aspx)、[更新](https://msdn.microsoft.com/library/azure/dn986818.aspx)  [削除] などの操作を使用して管理する
 
 - 暗号化キーを、[署名](https://msdn.microsoft.com/library/azure/dn878096.aspx)/[確認](https://msdn.microsoft.com/library/azure/dn878082.aspx)、[WrapKey](https://msdn.microsoft.com/library/azure/dn878066.aspx)/[UnwrapKey](https://msdn.microsoft.com/library/azure/dn878079.aspx)、[暗号化](https://msdn.microsoft.com/library/azure/dn878060.aspx)/[暗号化解除](https://msdn.microsoft.com/library/azure/dn878097.aspx)操作で使用する
 
@@ -62,4 +62,4 @@ Azure Key Vault のキーとシークレットは、次の記事の説明に従�
 
 - [Azure Key Vault のコード サンプル](http://www.microsoft.com/download/details.aspx?id=45343)
 
-<!---HONumber=August15_HO8-->
+<!----HONumber=August15_HO8-->

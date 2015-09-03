@@ -150,7 +150,7 @@ VHD ファイルをアップロードするストレージ アカウントが必
 
 		Add-AzureVhd -Destination <BlobStorageURL>/<YourImagesFolder>/<VHDName> -LocalFilePath <PathToVHDFile>
 
-詳細については、[Add-AzureVhd][https://msdn.microsoft.com/library/azure/dn495173.aspx)] を参照してください。
+詳細については、[Add-AzureVhd](https://msdn.microsoft.com/library/azure/dn495173.aspx) を参照してください。
 
 
 
@@ -159,4 +159,4 @@ VHD ファイルをアップロードするストレージ アカウントが必
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=August15_HO8-->
+<!----HONumber=August15_HO8-->

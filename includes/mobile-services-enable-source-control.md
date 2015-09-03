@@ -9,7 +9,7 @@
 
 	Git リポジトリがモバイル サービスに作成されます。指定した資格情報をメモしておきます。このリポジトリとサブスクリプション内のその他の Mobile Services リポジトリにアクセスするときに、必要になります。
 
-4. **[構成]** タブをクリックし、**[ソース管理]** フィールドがあることを確認します。
+4. **[構成]** タブをクリックし、**[ソース管理\]** フィールドがあることを確認します。
 
 	![ソース管理を構成する](./media/mobile-services-enable-source-control/mobile-source-control-configure.png)
 
@@ -18,4 +18,4 @@
 Mobile Services のソース管理が有効な場合は、Git を使用して、リポジトリをローカル コンピューターに複製できます。
  
 
-<!---HONumber=August15_HO6-->
+<!----HONumber=August15_HO6-->
