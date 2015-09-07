@@ -1,20 +1,20 @@
 <properties
    pageTitle="Testability アクション。"
-   description="この記事は、Microsoft Azure Service Fabric の Testability アクションについて説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="heeldin"
-   manager="timlt"
-   editor=""/>
+	description="この記事は、Microsoft Azure Service Fabric の Testability アクションについて説明します。"
+	services="service-fabric"
+	documentationCenter=".net"
+	authors="heeldin"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="03/17/2015"
-   ms.author="heeldin;motanv"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="03/17/2015"
+	ms.author="heeldin;motanv"/>
 
 # Testability アクション
 信頼性の低いインフラストラクチャをシミュレートするため、Service Fabric はさまざまな現実世界の障害と状態遷移をシミュレートする方法を開発者に提供します。これらは、Testability アクションとして公開されます。これらのアクションは、特定のフォールト インジェクション、状態遷移、検証を発生させる低レベルの API です。サービス開発者は、これらのアクションを組み合わせて、サービスに対する包括的なテスト シナリオを記述することができます。
@@ -211,6 +211,7 @@ ReplicaSelector は、Testability 内に公開されるヘルパーであり、T
 
 Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829"); PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(serviceName, partitionIdGuid); long replicaId = 130559876481875498;
 
+
 ```csharp
 // Select Random replica
 ReplicaSelector randomReplicaSelector = ReplicaSelector.RandomOf(partitionSelector);
@@ -233,4 +234,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [サービス間の通信障害](service-fabric-testability-scenarios-service-communication.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

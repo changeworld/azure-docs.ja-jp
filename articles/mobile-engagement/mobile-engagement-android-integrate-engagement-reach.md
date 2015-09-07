@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Mobile Engagement Android SDK の統合" 
+	pageTitle="Azure Mobile Engagement Android SDK の統合"
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
-	editor="" />
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
+	editor=""/>
 
 <tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="08/10/2015" 
-	ms.author="piyushjo" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="08/10/2015"
+	ms.author="piyushjo"/>
 
 #Engagement Reach を Android に統合する方法
 
@@ -93,6 +93,8 @@ Eclipse を使用しない場合は、[こちら]の手順をご覧ください�
 
 			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 			<uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+
+  -   Android M で、アプリケーションの対象が Android API レベル 23 以上になる場合、``WRITE_EXTERNAL_STORAGE`` アクセス許可はユーザー承認を必要とします。[このセクション](mobile-engagement-android-integrate-engagement.md#android-m-permissions)をお読みください。
 
 -   また、システム通知では、Reach キャンペーンでデバイスの音を鳴らしたりバイブレーションが動作したりするように指定できます。キャンペーンが機能するには、次のアクセス許可 (`</application>` タグの後) を宣言する必要があります。
 
@@ -247,7 +249,7 @@ Engagement Reach SDK では、このアクティビティに通知レイアウ�
 
 通知のカテゴリ ハンドラーを登録するには、アプリケーションが初期化される際に呼び出しを追加する必要があります。
 
-> [AZURE.IMPORTANT]先に進む前に、「Engagement を Android に統合する方法」トピックで、android:process 属性 <android-sdk-engagement-process> に関する警告を確認してください。
+> [AZURE.IMPORTANT] 先に進む前に、「Engagement を Android に統合する方法」トピックで、android:process 属性 <android-sdk-engagement-process> に関する警告を確認してください。
 
 次の例では、前述の警告について把握しており、`EngagementApplication` のサブクラスを使用していることを前提としています。
 
@@ -647,4 +649,4 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 [Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

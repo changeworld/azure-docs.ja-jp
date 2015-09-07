@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="Windows Phone アプリとストア アプリ用の Application Insights" 
-	description="Application Insights を使用して Windows デバイス アプリの使用状況とパフォーマンスを分析します。" 
-	services="application-insights" 
-    documentationCenter="windows"
-	authors="alancameronwills" 
+<properties
+	pageTitle="Windows Phone アプリとストア アプリ用の Application Insights | Microsoft Azure"
+	description="Application Insights を使用して Windows デバイス アプリの使用状況とパフォーマンスを分析します。"
+	services="application-insights"
+	documentationCenter="windows"
+	authors="alancameronwills"
 	manager="douge"/>
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="06/16/2015" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="06/16/2015"
 	ms.author="awills"/>
 
 # Windows Phone アプリとストア アプリ用の Application Insights
@@ -23,8 +23,8 @@
 
 Visual Studio Application Insights を使用すると、発行されたアプリケーションの次の内容を監視できます。
 
-* [**使用状況**][windowsUsage] - ユーザーの数やユーザーがアプリで操作している内容を確認できます。
-* [**クラッシュ**][windowsCrash] - クラッシュの診断レポートを取得し、ユーザーに与える影響を把握します。
+* [**使用状況**][windowsUsage] &#151; ユーザーの数やユーザーがアプリで操作している内容を確認できます。
+* [**クラッシュ**][windowsCrash] &#151; クラッシュの診断レポートを取得し、ユーザーに与える影響を把握します。
 
 ![](./media/app-insights-windows-get-started/appinsights-d018-oview.png)
 
@@ -35,7 +35,7 @@ Visual Studio Application Insights を使用すると、発行されたアプリ
 * [Microsoft Azure][azure] のサブスクリプション
 * Visual Studio 2013 以降
 
-## 1\.Application Insights リソースの作成 
+## 1\.Application Insights リソースの作成
 
 [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。
 
@@ -45,7 +45,7 @@ Azure の[リソース][roles]は、サービスのインスタンスです。�
 
 #### インストルメンテーション キーのコピー
 
-このキーでリソースが識別されます。リソースへデータを送信ように SDK を構成するには、このキーがすぐに必要になります。
+このキーでリソースが識別されます。このキーは、リソースにデータを送信するように SDK を構成するために必要です。
 
 ![[要点] ボックスのドロワを開き、インストルメンテーション キーを選択する](./media/app-insights-windows-get-started/02-props.png)
 
@@ -76,7 +76,7 @@ Windows ユニバーサル アプリの場合は、Windows Phone プロジェク
 	```
 
     ApplicationInsights.config ファイルのプロパティを次のように設定します。[**ビルド アクション**] == [**コンテンツ**]、[**出力ディレクトリにコピー**] == [**常にコピーする**]。
-	
+
 	![](./media/app-insights-windows-get-started/AIConfigFileSettings.png)
 
 5. 次の初期化コードを追加します。このコードを `App()` コンストラクターに追加することをお勧めします。他の場所にコピーすると、最初の PageViews のコレクションが失われることがあります。
@@ -84,9 +84,9 @@ Windows ユニバーサル アプリの場合は、Windows Phone プロジェク
 ```C#
 	public App()
 	{
-	   // Add this initilization line. 
+	   // Add this initilization line.
 	   WindowsAppInitializer.InitializeAsync();
-	
+
 	   this.InitializeComponent();
 	   this.Suspending += OnSuspending;
 	}  
@@ -120,7 +120,7 @@ Visual Studio で、受け取ったイベント数を確認できます。
 
 ![クリックしてより多くのデータを表示する](./media/app-insights-windows-get-started/appinsights-26-devices-01.png)
 
-大量のデータが予想される場合は、数秒後に [最新の情報に更新] をクリックします。
+大量のデータが予想される場合は、数秒後に **[最新の情報に更新]** をクリックします。
 
 いずれかのグラフをクリックして、詳細を表示します。
 
@@ -138,7 +138,7 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
     WindowsAppInitializer.InitializeAsync( "00000000-0000-0000-0000-000000000000",
        WindowsCollectors.Metadata
        | WindowsCollectors.PageView
-       | WindowsCollectors.Session 
+       | WindowsCollectors.Session
        | WindowsCollectors.UnhandledException);
 
 #### 独自のテレメトリ データを送信する
@@ -178,25 +178,25 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 
 セットアップ手順を Visual Studio で自動実行する場合は、Windows Phone、Windows ストアなどのさまざまな種類のアプリで自動実行できます。
 
-###<a name="new"></a>新しい Windows アプリ プロジェクトを作成する場合
+### <a name="new"></a>新しい Windows アプリ プロジェクトを作成する場合 ...
 
-[新しいプロジェクト] ダイアログ ボックスで [Application Insights] を選択します。
+**[新しいプロジェクト]** ダイアログ ボックスで **[Application Insights]** を選択します。
 
 サインインを求めるメッセージが表示されたら、Azure アカウント (Visual Studio Online アカウントとは異なります) の資格情報を使用します。
 
 ![](./media/app-insights-windows-get-started/appinsights-d21-new.png)
 
 
-###<a name="existing"></a> 既存のプロジェクトの場合
+### <a name="existing"></a>既存のプロジェクトの場合 ...
 
 ソリューション エクスプローラーから Application Insights を追加します。
 
 
 ![](./media/app-insights-windows-get-started/appinsights-d22-add.png)
 
-## SDK の新しいリリースにアップグレードするには
+## SDK の新しいリリースにアップグレードする
 
-[新しいバージョンの SDK がリリースされた](app-insights-release-notes-windows.md)場合: プロジェクトを * 右クリックし、[NuGet パッケージの管理] を選択します。インストール済みの * Application Insights パッケージを選択し、アップグレード アクションを選択します。
+[新しいバージョンの SDK がリリースされた](app-insights-release-notes-windows.md)場合: プロジェクトを * 右クリックし、[NuGet パッケージの管理] を選択します。インストール済みの * Application Insights パッケージを選択し、**[アップグレード アクション]** を選択します。
 
 
 ## <a name="usage"></a>次のステップ
@@ -227,6 +227,4 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 [windowsCrash]: app-insights-windows-crashes.md
 [windowsUsage]: app-insights-windows-usage.md
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

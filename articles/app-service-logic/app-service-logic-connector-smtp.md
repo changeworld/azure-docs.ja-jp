@@ -1,27 +1,27 @@
 <properties
-   pageTitle="SMTP コネクタの API アプリ"
-   description="SMTPConnector の使用方法"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での SMTP コネクタの使用 | Microsoft Azure App Service"
+	description="SMTP コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="andalmia"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="andalmia"/>
 
 
-# SMTP コネクタ
+# SMTP コネクタの使用開始とロジック アプリへの追加
+SMTP サーバーに接続して、電子メール (添付ファイルを含むメールを含む) を送信します。SMTP コネクタの [電子メールの送信] アクションを使用すると、指定されたメール アドレスにメールを送信できます。
 
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、ワークフローの一環としてデータの取得と処理のためのコネクタを提供します。
+ロジック アプリはさまざまなデータ ソースを基にトリガーでき、ワークフローの一環としてデータの取得と処理のためのコネクタを提供します。この SMTP コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
-SMTP コネクタを使用すると、SMTP サーバーに接続し、添付ファイル付きのメールを送信するアクションを実行できます。SMTP コネクタの [電子メールの送信] アクションを使用すると、指定されたメール アドレスにメールを送信できます。
 
 ## トリガーとアクション
 *トリガー*とは、発生するイベントを指します。たとえば、注文が更新された、新しい顧客が追加された、といったイベントがあります。*アクション*は、トリガーの結果です。たとえば、注文が更新されたり、新しい顧客が追加されたりすると、その新しい顧客に電子メールを送信します。
@@ -57,15 +57,12 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 ## ロジック アプリで SMTP コネクタを使用する
 コネクタが作成されたら、ロジック アプリのアクションとして SMTP コネクタを使用できます。これを行うには、次の手順を実行します。
 
-1.	新しいロジック アプリを作成します。
-
-	![][2]
-2.	**[トリガーとアクション]** を開き、Logic Apps デザイナーを開いてワークフローを構成します。
-
-	![][3]
-3.	SMTP コネクタが右側のギャラリーの [このリソース グループの API Apps] セクションに表示されます。それを選択します。
-
-	![][4]
+1.	新しいロジック アプリを作成します。  
+![][2]
+2.	**[トリガーとアクション]** を開き、Logic Apps デザイナーを開いてワークフローを構成します。  
+![][3]
+3.	SMTP コネクタが右側のギャラリーの [このリソース グループの API Apps] セクションに表示されます。それを選択します。  
+![][4]
 4.	SMTP コネクタを選択すると、ワークフロー デザイナーに自動的に追加されます。
 
 これで、SMTP コネクタを構成して、ワークフローで使用できます。**Send Email** アクションを選択し、入力プロパティを次のように構成します。
@@ -81,8 +78,8 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 	Importance | メールの重要度を入力します。[標準]、[低]、[高] のいずれかです。
 	Attachments | メールと共に送信される添付ファイルです。これには、次のフィールドが含まれます。 <ul><li>Content (String)</li><li>Content transfer Encoding (Enum) (“none”|”base64”)</li><li>Content Type (String)</li><li>Content ID (String)</li><li>File Name (String)</li></ul>
 
-	![][5]
-	![][6]
+![][5]
+![][6]
 
 ## コネクタでできること
 コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
@@ -99,4 +96,4 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 [5]: ./media/app-service-logic-connector-smtp/img5.PNG
 [6]: ./media/app-service-logic-connector-smtp/img6.PNG
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

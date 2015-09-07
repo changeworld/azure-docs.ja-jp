@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Java で Azure Redis Cache を使用する方法"
+   pageTitle="Java で Azure Redis Cache を使用する方法 | Microsoft Azure"
 	description="Java を使用して Azure Redis Cache を使用します"
 	services="redis-cache"
 	documentationCenter=""
@@ -13,14 +13,14 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="08/17/2015"
+	ms.date="08/25/2015"
 	ms.author="sdanie"/>
 
 # Java で Azure Redis Cache を使用する方法
 
-Azure Redis Cache を使用すると、Microsoft が管理している、セキュリティで保護された専用 Redis Cache にアクセスできます。キャッシュは、Microsoft Azure 内の任意のアプリケーションからアクセスできます。
+Azure Redis Cache を使用すると、Microsoft が管理している専用の Redis Cache にアクセスできます。キャッシュは、Microsoft Azure 内の任意のアプリケーションからアクセスできます。
 
-このトピックでは、Java を使用して Azure Redis Cache を使用する方法を説明しています。
+このトピックでは、Java を使用して Azure Redis Cache を使用する方法を説明します。
 
 
 ## 前提条件
@@ -32,7 +32,7 @@ Azure Redis Cache を使用すると、Microsoft が管理している、セキ�
 
 ## Azure で Redis Cache を作成する
 
-[Azure の管理ポータル](http://go.microsoft.com/fwlink/?LinkId=398536)で、**[新規]**、**[データ + ストレージ]** をクリックし、**[Redis Cache]** を選択します。
+[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=398536)で、**[新規]**、**[データ + ストレージ]** をクリックし、**[Redis Cache]** を選択します。
 
   ![][1]
 
@@ -41,7 +41,7 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
   ![][2]
 
 
-キャッシュが作成されたら、ポータルでそのキャッシュをクリックして設定を表示します。**[キー]** の下のリンクをクリックして、プライマリ キーをコピーします。このキーは、要求を認証するのに必要になります。
+キャッシュを作成したら、プレビュー ポータルでそのキャッシュをクリックして設定を表示します。**[キー]** の下のリンクをクリックして、プライマリ キーをコピーします。このキーは、要求を認証するために必要です。
 
   ![][4]
 
@@ -60,7 +60,7 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 	import redis.clients.jedis.Jedis;
 	import redis.clients.jedis.JedisShardInfo;
 
-	/* Make sure your turn on non SSL port in Azure Redis using the Configuration section in the Azure portal */
+	/* Make sure you turn on non-SSL port in Azure Redis using the Configuration section in the preview portal */
 	public class App
 	{
 	  public static void main( String[] args )
@@ -87,4 +87,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 [3]: ./media/cache-java-get-started/cache03.png
 [4]: ./media/cache-java-get-started/cache04.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

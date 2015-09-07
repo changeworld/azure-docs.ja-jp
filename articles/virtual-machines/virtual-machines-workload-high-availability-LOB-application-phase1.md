@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="基幹業務アプリケーションのワークロード フェーズ 1: Azure を構成する" 
-	description="高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこの第 1 フェーズでは、Azure Virtual Network およびその他の Azure インフラストラクチャ要素を作成します。" 
+	pageTitle="基幹業務アプリケーションのフェーズ 1 | Microsoft Azure"
+	description="仮想ネットワークおよびその他の Azure インフラストラクチャ要素を作成します。"
 	documentationCenter=""
-	services="virtual-machines" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	services="virtual-machines"
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/11/2015"
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 1: Azure を構成する
@@ -60,7 +60,7 @@ IT 部門と相談して、仮想ネットワーク アドレス空間からこ�
 
 **表 S: 仮想ネットワークのサブネット**
 
-> [AZURE.NOTE]この定義済みアーキテクチャでは、わかりやすくするため単一のサブネットを使用します。一連のトラフィック フィルターをオーバーレイしてサブネットの分離をエミュレートする場合は、Azure の[ネットワーク セキュリティ グループ](https://msdn.microsoft.com/library/azure/dn848316.aspx)を使用できます。
+> [AZURE.NOTE]この定義済みアーキテクチャでは、わかりやすくするため単一のサブネットを使用します。一連のトラフィック フィルターをオーバーレイしてサブネットの分離をエミュレートする場合は、Azure の[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を使用できます。
 
 仮想ネットワーク内にドメイン コント ローラーを最初にセットアップするときに使用する 2 つのオンプレミス DNS サーバーについて、表 D に記入します。各 DNS サーバーの表示名および単一の IP アドレスを指定します。この表示名は、DNS サーバーのホスト名またはコンピューター名と一致している必要はありません。記入欄は 2 つですが、さらに追加してもかまいません。IT 部門と相談してこのリストを決定します。
 
@@ -234,7 +234,7 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 
 ## 次のステップ
 
-このワークロードを引き続き構成するには、「[フェーズ 2: ドメイン コントローラーの構成](virtual-machines-workload-high-availability-LOB-application-phase2.md)」に進んでください。
+このワークロードを引き続き構成するには、[フェーズ 2: ドメイン コントローラーの構成](virtual-machines-workload-high-availability-LOB-application-phase2.md)に進んでください。
 
 ## その他のリソース
 
@@ -248,4 +248,4 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

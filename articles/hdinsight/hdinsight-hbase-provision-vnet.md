@@ -9,12 +9,12 @@
 
 <tags
    ms.service="hdinsight"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="08/12/2015"
-   ms.author="jgao"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="08/12/2015"
+	ms.author="jgao"/>
 
 # Azure Virtual Network での HBase クラスターのプロビジョニング
 
@@ -89,7 +89,7 @@ HBase クラスターをプロビジョニングする前に、Azure 仮想ネ�
 
 5. **[作成]** をクリックします。
 
-既定では、仮想ネットワークは、Azure によって提供される内部ドメイン ネーム システム (DNS) サーバーを使用します。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、「[名前解決 (DNS)](http://msdn.microsoft.com/library/azure/jj156088.aspx)」をご覧ください。
+既定では、仮想ネットワークは、Azure によって提供される内部ドメイン ネーム システム (DNS) サーバーを使用します。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 **(省略可能) DNS サーバー仮想マシンを仮想ネットワークに追加するには**
 
@@ -146,7 +146,7 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 
 			curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
 
-		返された JavaScript Object Notation (JSON) データで、"host_name" エントリを見つけます。これには、クラスターのノードの FQDN が含まれています。次に例を示します。
+		返された JavaScript Object Notation (JSON) データで、"host\_name" エントリを見つけます。これには、クラスターのノードの FQDN が含まれています。次に例を示します。
 
 			...
 			"host_name": "wordkernode0.<clustername>.b1.cloudapp.net
@@ -281,7 +281,7 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
     	<value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
 	</property>
 
-> [AZURE.NOTE]独自の DNS サーバーの使用方法を含め、Azure Virtual Network の名前解決の詳細については、「[名前解決 (DNS)](http://msdn.microsoft.com/library/azure/jj156088.aspx)」をご覧ください。
+> [AZURE.NOTE]独自の DNS サーバーの使用方法を含め、Azure Virtual Network の名前解決の詳細については、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 ##Azure PowerShell を使用して HBase クラスターをプロビジョニングする
 
@@ -341,7 +341,7 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 
 [hbase-get-started]: ../hdinsight-hbase-get-started.md
 [hbase-twitter-sentiment]: ../hdinsight-hbase-twitter-sentiment.md
-[vnet-overview]: http://msdn.microsoft.com/library/azure/jj156007.aspx
+[vnet-overview]: ../virtual-network/virtual-networks-overview.md
 [vm-create]: ../virtual-machines-windows-tutorial.md
 
 [azure-portal]: https://portal.azure.com
@@ -379,4 +379,4 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 [img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "Provision details for the new HBase cluster"
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Use Script Action to customize an HBase cluster"
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

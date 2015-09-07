@@ -44,13 +44,13 @@ SaaS アプリケーションに対してプロビジョニングを構成する
    3. 他の関数例: FunctionOne(<<argument1>>, FunctionTwo(<<argument2>>))
 
 
-- 文字列定数では、文字列に円記号 (\\) または引用符 (") を含める必要がある場合は、円記号 (\\) でエスケープする必要があります。例: "Company name: "Contoso""
+- 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。例: "Company name: "Contoso""
 
 
 
 ## 関数の一覧
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [MatchRegex](#matchregex) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [ObsoleteReplace](#obsoletereplace) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [ReplaceRegex](#replaceregex) &nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 
 
@@ -61,7 +61,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **関数:**<br> Append(source, suffix)
 
-**説明:**<br>source 文字列値を受け取り、その末尾に suffix を追加します。
+**説明:**<br> source 文字列値を受け取り、その末尾に suffix を追加します。
  
 **パラメーター:**<br>
 
@@ -72,24 +72,9 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 
 ----------
-### Coalesce
-
-**関数:**<br> Coalesce(source1, source2, …)
-
-**説明:**<br>source パラメーターの一覧から最初の空でない値を返します。
- 
-**パラメーター:**<br>
-
-|名前| 必須/繰り返し | 型 | メモ |
-|--- | ---                 | ---  | ---   |
-| **source1 .. sourceN ** | 必須、回数は可変 | String | 選択対象の **source** の値 |
-
-
-
-----------
 ### FormatDateTime
 
-**関数:**<br>FormatDateTime(source, inputFormat, outputFormat)
+**関数:**<br> FormatDateTime(source, inputFormat, outputFormat)
 
 **説明:**<br>1 つの形式の日付文字列を受け取り、別の形式に変換します。
  
@@ -106,14 +91,14 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 ----------
 ### Join
 
-**関数:**<br>Join(separator, source1, source2, …)
+**関数:**<br> Join(separator, source1, source2, …)
 
-**説明:**<br>Join() は、複数の **source** 文字列値を 1 つの文字列に結合することができる点以外は Append() によく似ています。各値を **separator** で区切ります。
+**説明:**<br> Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。
 
 source 値の 1 つが複数値属性である場合は、その属性のすべての値を結合し、separator 値で区切ります。
 
  
-**パラメーター:**<br>
+**パラメータ:**<br>
 
 |名前| 必須/繰り返し | 型 | メモ |
 |--- | ---                 | ---  | ---   |
@@ -122,32 +107,12 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 
 
-
-
-----------
-### MatchRegex
-
-**関数:**<br>MatchRegex(source, find, group)
-
-**説明:**<br>find パラメーターで指定された正規表現パターンに一致する source 値内の部分文字列を返します。group が指定された場合は、その正規表現グループの値のみを返します。
-
-
-**パラメーター:**<br>
-
-|名前| 必須/繰り返し | 型 | メモ |
-|--- | ---                 | ---  | ---   |
-| **source セクション** | 必須 | String | 検索対象の **source** 値。 |
-| **find** | 必須 | String | **source** 値内で一致させる正規表現。 |
-| **group** | 省略可能。 | String | 値を使用する正規表現一致内のグループの名前。 |
-
-
-
 ----------
 ### Mid
 
-**関数:**<br>Mid(source, start, length)
+**関数:**<br> Mid(source, start, length)
 
-**説明:**<br>source 値の部分文字列を返します。部分文字列は、source 文字列の文字のみを含む文字列です。
+**説明:**<br> source 値の部分文字列を返します。部分文字列は、source 文字列の文字のみを含む文字列です。
 
 
 **パラメーター:**<br>
@@ -156,7 +121,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 |--- | ---                 | ---  | ---   |
 | **source セクション** | 必須 | String | 通常、属性の名前。 |
 | **start** | 必須 | integer | 部分文字列が始まる **source** 文字列のインデックス。文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
-| **length** | 必須 | integer | 部分文字列の長さ。length が **source** 文字列の外で終端する場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
+| **length** | 必須 | integer | 部分文字列の長さ。length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
 
 
 
@@ -164,9 +129,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 ----------
 ### Not
 
-**関数:**<br>Not(source)
+**関数:**<br> Not(source)
 
-**説明:**<br>**source** のブール値を反転します。**source** 値が "*True*" の場合は "*False*" を返します。"False" の場合は "*True*" を返します。
+**説明:**<br> **source** のブール値を反転します。**source** 値が "*True*" の場合は "*False*" を返します。"False" の場合は "*True*" を返します。
 
 
 **パラメーター:**<br>
@@ -178,14 +143,11 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 
 ----------
-### ObsoleteReplace
+### *Views\\\Home\\\AllDates.cshtml*
 
-**関数:**<br>ObsoleteReplace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
+**関数:**<br> ObsoleteReplace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
-**説明:**<br>
-> [AZURE.NOTE]この関数は近い将来廃止され、単純なバージョンに置き換えられる予定です
-
-文字列内の値を置換します。指定されたパラメーターに応じて異なる動作をします。
+**説明:**<br> 文字列内の値を置換します。指定されたパラメーターに応じて異なる動作をします。
 
 - **oldValue** と **replacementValue** が指定された場合:
 
@@ -203,7 +165,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
    - **source** に値が指定されている場合は、**source** を返します。
 
-- **source** に値が指定されていない場合は、**oldValueRegexPattern** と **oldValueRegexGroupName** を使用して、**replacementPropertyName** を持つプロパティから置換値を抽出します。置換値を、結果として返します。
+   - **source** に値が指定されていない場合は、**oldValueRegexPattern** と **oldValueRegexGroupName** を使用して、**replacementPropertyName** を持つプロパティから置換値を抽出します。置換値を、結果として返します。
 
 
 **パラメーター:**<br>
@@ -216,52 +178,16 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 | **regexGroupName** | 省略可能。 | String | **regexPattern** 内のグループの名前。ReplacementPropertyName を使用した場合にのみ、置換プロパティから replacementValue としてこのグループの値を抽出します。 |
 | **replacementValue** | 省略可能。 | String | 古い値を置き換える新しい値。 |
 | **replacementAttributeName** | 省略可能。 | String | source に値を指定しないときに、置換値に使用する属性の名前。 |
-| **template** | 省略可能。 | String | **template** 値を指定するときに、template 内の **oldValue** を検索し、source 値で置換します。 |
-
-
-
-----------
-### *Views\\\\Home\\\\AllDates.cshtml*
-
-**関数:**<br>Replace(source, find, replace)
-
-**説明:**<br>**source** 文字列に含まれるすべての **find** 値を **replace** パラメーターの値で置換します。
-
-**パラメーター:**<br>
-
-|名前| 必須/繰り返し | 型 | メモ |
-|--- | ---                 | ---  | ---   |
-| **source セクション** | 必須 | String | 検索対象の **source** 値。 |
-| **find** | 必須 | String | 検索する値。 |
-| **replace** | 必須 | String | 置換後の値。 |
-
-
-
-----------
-### ReplaceRegex
-
-**関数:**<br>ReplaceRegex(source, find, replace, group)
-
-**説明:**<br>**source** 文字列の、**find** 正規表現に一致するすべての部分文字列を **replace** 値に置換します。**group** が指定されると、その正規表現グループの値のみを置換します。
-
-**パラメーター:**<br>
-
-|名前| 必須/繰り返し | 型 | メモ |
-|--- | ---                 | ---  | ---   |
-| **source セクション** | 必須 | String | 検索対象の **source** 値。 |
-| **find** | 必須 | String | **source** 値内で一致させる正規表現。 |
-| **replace** | 必須 | String | 置換後の値。 |
-| **group** | 省略可能。 | String | 値を使用する正規表現一致内のグループの名前。 |
-
+| **template** | 省略可能。 | String | **template** 値が指定されている場合は、template 内の **oldValue** を検索し、source 値で置換します。 |
 
 
 
 ----------
 ### StripSpaces
 
-**関数:**<br>StripSpaces(source)
+**関数:**<br> StripSpaces(source)
 
-**説明:**<br>source 文字列からすべての空白文字 ("") を削除します。
+**説明:**<br> source 文字列からすべての空白文字 (" ") を削除します。
 
 **パラメーター:**<br>
 
@@ -274,9 +200,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 ----------
 ### Switch
 
-**関数:**<br>Switch(source, defaultValue, key1, value1, key2, value2, …)
+**関数:**<br> Switch(source, defaultValue, key1, value1, key2, value2, …)
 
-**説明:**<br>**source** 値が **key** と一致するときに、その **key** の **value** を返します。**source** 値がどの key とも一致しない場合は、**defaultValue** を返します。**key** と **value** パラメーターは、常にペアで指定する必要があります。この関数には、常に、偶数個のパラメーターを指定する必要があります。
+**説明:**<br> **source** 値が **key** と一致するときに、その **key** の **value** を返します。**source** 値がどの key とも一致しない場合は、**defaultValue** を返します。**key** と **value** パラメーターは、常にペアで指定する必要があります。この関数には、常に、偶数個のパラメーターを指定する必要があります。
 
 **パラメーター:**<br>
 
@@ -296,14 +222,13 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 ユーザーの電子メールから既知のドメイン名をストリップして、ユーザー名を取得する必要があります。<br>たとえば、ドメインが "contoso.com" の場合は、次の式を使用することができます。
 
 
-**式:** <br> `Replace([mail], "@contoso.com", "")`
+**式:** <br> `Replace([mail], "@contoso.com", , ,"", ,)`
 
 **サンプル入力/出力:** <br>
 
 - **入力** (mail): "john.doe@contoso.com"
 
 - **出力**: "john.doe"
-
 
 
 ### ユーザー名に定数のサフィックスを追加する
@@ -382,4 +307,4 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

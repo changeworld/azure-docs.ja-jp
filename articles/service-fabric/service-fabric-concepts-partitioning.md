@@ -1,20 +1,20 @@
 <properties
    pageTitle="Service Fabric サービスのパーティション分割"
-   description="Service Fabric サービスのパーティションの分割方法について説明します"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="appi101"
-   manager="timlt"
-   editor=""/>
+	description="Service Fabric サービスのパーティションの分割方法について説明します"
+	services="service-fabric"
+	documentationCenter=".net"
+	authors="appi101"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="04/13/2015"
-   ms.author="aprameyr"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/26/2015"
+	ms.author="aprameyr"/>
 
 # Service Fabric サービスのパーティション分割
 Service Fabric は、サービスの状態のパーティション分割をサポートし、全体的状態のサブセットに対して各パーティションを動作させることによって、スケーラブルなステートフル サービスの構築を容易にしています。各パーティションは、[高可用性](service-fabric-availability-services.md)ユニットになっています。パーティションのレプリカは、クラスター内のノードに分散され、バランスが取られます。
@@ -54,4 +54,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 - [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

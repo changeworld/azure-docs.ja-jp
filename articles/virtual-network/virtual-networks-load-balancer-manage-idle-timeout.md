@@ -1,22 +1,20 @@
 <properties 
-   authors="danielceckert" 
-   documentationCenter="dev-center-name" 
-   editor=""
-   manager="jefco" 
-   pageTitle="管理: ロード バランサーのアイドル タイムアウト" 
-   description="Azure ロード バランサーのアイドル タイムアウトの管理機能" 
-   services="virtual-network" 
-   />
+   authors="danielceckert"
+	documentationCenter="dev-center-name"
+	editor=""
+	manager="jefco"
+	pageTitle="管理: ロード バランサーのアイドル タイムアウト"
+	description="Azure ロード バランサーのアイドル タイムアウトの管理機能"
+	services="virtual-network"/>
 
 <tags
    ms.author="danecke"
-   ms.date="05/27/2015"
-   ms.devlang="na"
-   ms.service="virtual-network"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   />
+	ms.date="05/27/2015"
+	ms.devlang="na"
+	ms.service="virtual-network"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"/>
    
 # 仮想ネットワークの管理: ロード バランサーの TCP アイドル タイムアウト
 
@@ -34,8 +32,8 @@ TCP Keep-Alive は便利ですが、モバイル アプリケーションでは�
 
 TCP アイドル タイムアウトは次のように構成できます。
 
-* [インスタンスレベル パブリック IP](http://msdn.microsoft.com/library/azure/dn690118.aspx)
-* [負荷分散エンドポイント セット](http://msdn.microsoft.com/library/azure/dn655055.aspx)
+* [インスタンスレベル パブリック IP](virtual-networks-instance-level-public-ip.md)
+* [負荷分散エンドポイント セット](../load-balancer/load-balancer-overview.md)
 * [仮想マシン エンドポイント](../virtual-machines/virtual-machines-set-up-endpoints.md)
 * [Web ロール](http://msdn.microsoft.com/library/windowsazure/ee758711.aspx)
 * [worker ロール](http://msdn.microsoft.com/library/windowsazure/ee758711.aspx)
@@ -152,4 +150,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
     </LoadBalancedEndpointList>
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

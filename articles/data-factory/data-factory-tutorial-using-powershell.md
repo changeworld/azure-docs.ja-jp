@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う" 
-	description="この高度なチュートリアルでは、実際に使用されているものに近いシナリオについて説明すると共に、Azure データ ファクトリ サービスを使用してそのシナリオを実装します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う"
+	description="この高度なチュートリアルでは、実際に使用されているものに近いシナリオについて説明すると共に、Azure データ ファクトリ サービスを使用してそのシナリオを実装します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2015"
 	ms.author="spelluru"/>
 
 # チュートリアル: Data Factory を使用したログ ファイルの移動と処理 [PowerShell]
@@ -466,8 +466,7 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 [adfgetstarted]: data-factory-get-started.md
 [adfintroduction]: data-factory-introduction.md
-[useonpremisesdatasources]: data-factory-use-onpremises-datasources.md
-[usepigandhive]: data-factory-pig-hive-activities.md
+[usepigandhive]: data-factory-data-transformation-activities.md
 [tutorial-onpremises-using-powershell]: data-factory-tutorial-extend-onpremises-using-powershell.md
 [download-azure-powershell]: ../powershell-install-configure.md
 
@@ -559,4 +558,4 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial-using-powershell/DataFactoryCreateButton.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,30 +1,31 @@
 <properties 
-	pageTitle="Media Services アカウントでストリーミング エンドポイントを管理する方法" 
-	description="このトピックでは、Azure 管理ポータルを使用して、ストリーミング エンドポイントを管理する方法について説明します。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Juliako" 
-	manager="dwrede" 
+	pageTitle="Media Services アカウントでストリーミング エンドポイントを管理する方法"
+	description="このトピックでは、Azure 管理ポータルを使用して、ストリーミング エンドポイントを管理する方法について説明します。"
+	services="media-services"
+	documentationCenter=""
+	authors="Juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/11/2015"
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/20/2015"
 	ms.author="juliako"/>
 
 
 #<a id="managemediaservicesorigins"></a>Media Services アカウントでストリーミング エンドポイントを管理する方法
 
-この記事は、「[Media Services ビデオ オン デマンド ワークフロー](media-services-video-on-demand-workflow.md)」や「[Media Services のライブ ストリーミングのワークフロー](media-services-live-streaming-workflow.md)」シリーズの一部です。
-
+> [AZURE.SELECTOR]
+- [Portal](media-services-manage-origins.md)
+- [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 
 Microsoft Azure Media Services では、**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のためのコンテンツ配信ネットワーク (CDN) に直接配信するストリーミング サービスを表します。Media Services は、シームレスな Azure CDN 統合もサポートしています。StreamingEndpoint サービスからの送信ストリームには、ライブ ストリームまたは Media Services アカウントのオンデマンド ビデオ資産を使用します。
 
-さらに、スケール単位 (ストリーミング占有ユニットとも呼ばれます) を調整することによって、帯域幅で増え続けるニーズを処理するストリーミング エンドポイント サービスの容量を制御できます。実稼働環境でのアプリケーションの 1 つ以上のスケール単位を割り当てることをお勧めします。スケール ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほかに、[動的パッケージング](https://msdn.microsoft.com/library/azure/jj889436.aspx)、CDN 統合、高度な構成などの追加機能を利用できるようになります。
+さらに、スケール単位 (ストリーミング占有ユニットとも呼ばれます) を調整することによって、帯域幅で増え続けるニーズを処理するストリーミング エンドポイント サービスの容量を制御できます。実稼働環境でのアプリケーションの 1 つ以上のスケール単位を割り当てることをお勧めします。スケール ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほかに、[動的パッケージング](media-services-dynamic-packaging-overview.md)、CDN 統合、高度な構成などの追加機能を利用できるようになります。
 
 StreamingEndpoint が実行状態の場合にのみ課金されます。
 
@@ -46,11 +47,11 @@ StreamingEndpoint が実行状態の場合にのみ課金されます。
 	![ストリーミング エンドポイント ページ][streaming-endpoint]
 
 
-既定では、最大 2 つのストリーミング エンドポイントを作成できます。それ以上を要求する必要がある場合は、「[クォータと制限](media-services-quotas-and-limitations/)」をご覧ください。
+既定では、最大 2 つのストリーミング エンドポイントを作成できます。それ以上を要求する必要がある場合は、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
 
 ##<a id="scale_streaming_endpoints"></a>ストリーミング エンドポイントのスケールを設定する
 
-ストリーミング占有ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほか、[動的パッケージ化機能](http://go.microsoft.com/fwlink/?LinkId=276874)などの追加機能を利用できるようになります。既定では、ストリーミングは、サーバー リソース (コンピューティング、送信容量など) を他のユーザーと共有する共有インスタンス モデルとして構成されます。ストリーミングのスループットを向上させるにはストリーミング占有ユニットの購入を勧めします。
+ストリーミング占有ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほか、[動的パッケージ化機能](media-services-dynamic-packaging-overview.md)などの追加機能を利用できるようになります。既定では、ストリーミングは、サーバー リソース (コンピューティング、送信容量など) を他のユーザーと共有する共有インスタンス モデルとして構成されます。ストリーミングのスループットを向上させるにはストリーミング占有ユニットの購入を勧めします。
 
 スケールは、.NET SDK、REST API、Azure 管理ポータルを使用して設定できます。
 
@@ -139,4 +140,4 @@ CDN 統合は、すべての Azure データ センター (米国西部、米国
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

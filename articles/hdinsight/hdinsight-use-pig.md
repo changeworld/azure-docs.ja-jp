@@ -1,21 +1,21 @@
 <properties
    pageTitle="HDInsight での Hadoop Pig の使用 | Microsoft Azure"
-   description="HDInsight で Pig と Hadoop を使用する方法を説明します。"
-   services="hdinsight"
-   documentationCenter=""
-   authors="Blackmist"
-   manager="paulettm"
-   editor="cgronlun"
+	description="HDInsight で Pig と Hadoop を使用する方法を説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="Blackmist"
+	manager="paulettm"
+	editor="cgronlun"
 	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="07/06/2015"
-   ms.author="larryfr"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="08/21/2015"
+	ms.author="larryfr"/>
 
 # HDInsight での Pig と Hadoop の使用
 
@@ -94,6 +94,19 @@ HDInsight では、さまざまな方法を使用して Pig Latin ジョブを�
 | [Windows PowerShell](hdinsight-hadoop-use-pig-powershell.md) | &nbsp; | ✔ | Linux または Windows | Windows |
 | [リモート デスクトップ](hdinsight-hadoop-use-pig-remote-desktop.md) | ✔ | ✔ | Windows | Windows |
 
+
+## オンプレミスの SQL Server Integration Services を利用した Azure HDInsight での Pig ジョブの実行
+
+SQL Server Integration Services (SSIS) を利用して Pig ジョブを実行することもできます。Azure Feature Pack for SSIS には、HDInsight の Pig ジョブと連動する次のコンポーネントがあります。
+
+
+- [Azure HDInsight Pig タスク][pigtask]
+- [Azure サブスクリプション接続マネージャー][connectionmanager]
+
+
+Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
+
+
 ##<a id="nextsteps"></a>次のステップ
 
 これで、HDInsight で Pig を使用する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
@@ -107,6 +120,9 @@ HDInsight では、さまざまな方法を使用して Pig Latin ジョブを�
 [apachepig-home]: http://pig.apache.org/
 [putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 [curl]: http://curl.haxx.se/
+[pigtask]: http://msdn.microsoft.com/ja-JP/library/mt146781(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/ja-JP/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/ja-JP/library/mt146770(v=sql.120).aspx
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -128,4 +144,4 @@ HDInsight では、さまざまな方法を使用して Pig Latin ジョブを�
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
 [image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

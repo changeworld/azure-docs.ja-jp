@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="07/06/2015"
+	ms.date="08/21/2015"
 	ms.author="larryfr"/>
 
 # HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する
@@ -119,13 +119,26 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 | [Windows PowerShell](hdinsight-hadoop-use-hive-powershell.md) | &nbsp; | ✔ | Linux または Windows | Windows |
 | [リモート デスクトップ](hdinsight-hadoop-use-hive-remote-desktop.md) | ✔ | ✔ | Windows | Windows |
 
+## オンプレミスの SQL Server Integration Services を利用した Azure HDInsight での Hive ジョブの実行
+
+SQL Server Integration Services (SSIS) を利用して Hive ジョブを実行することもできます。Azure Feature Pack for SSIS には、HDInsight の Hive ジョブと連動する次のコンポーネントがあります。
+
+
+- [Azure HDInsight Hive タスク][hivetask]
+- [Azure サブスクリプション接続マネージャー][connectionmanager]
+
+
+Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
+
+
 ##<a id="nextsteps"></a>次のステップ
 
 これで、Hive と、HDInsight での Hadoop との使用方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
-* [HDInsight へのデータのアップロード][hdinsight-upload-data]
-* [HDInsight での Pig の使用][hdinsight-use-pig]
-* [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
+
+- [HDInsight へのデータのアップロード][hdinsight-upload-data]
+- [HDInsight での Pig の使用][hdinsight-use-pig]
+- [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
 
 [check]: ./media/hdinsight-use-hive/hdi.checkmark.png
 
@@ -142,6 +155,9 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 [apache-log4j]: http://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
 [import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[hivetask]: http://msdn.microsoft.com/ja-JP/library/mt146771(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/ja-JP/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/ja-JP/library/mt146770(v=sql.120).aspx
 
 [hdinsight-use-pig]: hdinsight-use-pig.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -163,4 +179,4 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

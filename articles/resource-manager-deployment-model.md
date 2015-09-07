@@ -1,20 +1,20 @@
 <properties
    pageTitle="リソース マネージャーと従来のデプロイ モデルの違いを理解する"
-   description="リソース マネージャーのデプロイ モデルと従来 (あるいはサービス管理) のデプロイ モデルの違いについて説明します。"
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+	description="リソース マネージャーのデプロイ モデルと従来 (あるいはサービス管理) のデプロイ モデルの違いについて説明します。"
+	services="azure-resource-manager"
+	documentationCenter="na"
+	authors="tfitzmac"
+	manager="wpickett"
+	editor=""/>
 
 <tags
    ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/13/2015"
-   ms.author="tomfitz"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/20/2015"
+	ms.author="tomfitz"/>
 
 # リソース マネージャー デプロイと従来のデプロイを理解する
 
@@ -151,9 +151,11 @@ Virtual Machines を使用するときには、重要な考慮事項がいくつ
 
 Compute、Storage、ネットワーキングのリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure コンピューティング、ネットワーク、ストレージ プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
 
+さまざまなデプロイ モデルから仮想ネットワークを接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](./virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+
 ## 次のステップ
 
 - 宣言型デプロイ テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

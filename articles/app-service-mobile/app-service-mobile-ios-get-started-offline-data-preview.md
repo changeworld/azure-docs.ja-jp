@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.date="08/22/2015"
 	ms.author="krisragh"/>
 
 # iOS モバイル アプリのオフライン同期を有効にする
@@ -22,19 +22,15 @@
 
 ## 概要
 
-このチュートリアルでは、Azure Mobile Apps for iOS 向けのモバイル アプリのオフライン同期機能について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。変更はローカル データベースに格納され、デバイスが再びオンラインになると、これらの変更がリモート バックエンドと同期されます。
+このチュートリアルでは、Azure Mobile Apps for iOS 向けのモバイル アプリのオフライン同期機能について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。変更はローカル データベースに格納され、デバイスが再びオンラインになると、これらの変更がリモート バックエンドと同期されます。
 
-Azure Mobile Apps を初めて使用する場合は、最初に [iOS アプリの作成] に関するチュートリアルを完了してください。
+Azure Mobile Apps を初めて使用する場合は、最初に [iOS アプリの作成] に関するチュートリアルを完了してください。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 オフラインの同期機能の詳細については、トピック「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
-##<a name="review"></a>サーバーのプロジェクト構成の確認 (省略可能)
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-offline-preview](../../includes/app-service-mobile-dotnet-backend-enable-offline-preview.md)]
-
 ## <a name="review-sync"></a>クライアント同期コードの確認 
 
-チュートリアル「[iOS アプリの作成]」でダウンロードしたクライアント プロジェクトには、ローカルのコア データに基づくデータベースを使用したオフライン同期をサポートするコードが既に含まれてます。このセクションでは、チュートリアルのコードに既に含まれているものの概要を示します。機能の概念的な概要については、「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
+チュートリアル「[iOS アプリの作成]」でダウンロードしたクライアント プロジェクトには、ローカルのコア データに基づくデータベースを使用したオフライン同期をサポートするコードが既に含まれています。このセクションでは、チュートリアルのコードに既に含まれているものの概要を示します。機能の概念的な概要については、「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
 Azure Mobile Apps のオフライン データ同期機能を使用すると、ネットワークにアクセスできない場合でもエンド ユーザーはローカル データベースとやり取りできるようになります。アプリケーションでこれらの機能を使用するには、`MSClient` の同期コンテキストを初期化して、ローカル ストアを参照します。その後、`MSSyncTable` インターフェイスを使用してテーブルを参照します。
 
@@ -233,15 +229,16 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 
 ## その他のリソース
 
-* [Azure Mobile Apps でのオフライン データ同期]
+* [Azure モバイル アプリでのオフライン データ同期]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注記: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
 <!-- URLs. -->
 
 
 [iOS アプリの作成]: ../app-service-mobile-dotnet-backend-ios-get-started-preview.md
 [Azure Mobile Apps でのオフライン データ同期]: ../app-service-mobile-offline-data-sync-preview.md
+[Azure モバイル アプリでのオフライン データ同期]: ../app-service-mobile-offline-data-sync-preview.md
 
 [defining-core-data-tableoperationerrors-entity]: ./media/app-service-mobile-ios-get-started-offline-data-preview/defining-core-data-tableoperationerrors-entity.png
 [defining-core-data-tableoperations-entity]: ./media/app-service-mobile-ios-get-started-offline-data-preview/defining-core-data-tableoperations-entity.png
@@ -252,4 +249,4 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
  
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

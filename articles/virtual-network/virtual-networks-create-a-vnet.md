@@ -1,20 +1,20 @@
 <properties
    pageTitle="仮想ネットワークの作成"
-   description="基本的な仮想ネットワークを簡単に作成する方法"
-   services="virtual-network"
-   documentationCenter=""
-   authors="telmos"
-   manager="carolz"
-   editor="tysonn"/>
+	description="基本的な仮想ネットワークを簡単に作成する方法"
+	services="virtual-network"
+	documentationCenter=""
+	authors="telmos"
+	manager="carolz"
+	editor="tysonn"/>
 
 <tags
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/06/2015"
-   ms.author="telmosampaio"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="07/06/2015"
+	ms.author="telmosampaio"/>
 
 # 仮想ネットワークの作成
 
@@ -22,7 +22,7 @@
 
 仮想ネットワークを一度作成したら、そこに新しい VM と PaaS インスタンスを追加できます。管理ポータルを使用して VM を作成する場合は、仮想ネットワークを指定できるように、**[ギャラリーから]** を選択してください。手順の途中で元に戻ることや、作成後の VM を仮想ネットワークに配置することはできないため、この選択は重要です。
 
-[Azure メモ] **クラウドのみの専用仮想ネットワークを作成するには、以下の手順に従います。** クロスプレミス構成の作成では複雑な作業が発生するため、後で内部設置型ネットワークに接続する仮想ネットワークを作成する場合は、この手順を使用しないでください。Azure と内部設置型ネットワークとの間にセキュリティで保護されたクロスプレミス接続を作成する場合は、「[セキュリティで保護されたクロスプレミス接続について](https://msdn.microsoft.com/library/azure/dn133798.aspx)」を参照してください。
+[Azure メモ] **クラウドのみの専用仮想ネットワークを作成するには、以下の手順に従います。** クロスプレミス構成の作成では複雑な作業が発生するため、後で内部設置型ネットワークに接続する仮想ネットワークを作成する場合は、この手順を使用しないでください。Azure と内部設置型ネットワークとの間にセキュリティで保護されたクロスプレミス接続を作成する場合は、「[セキュリティで保護されたクロスプレミス接続について](vpn-gateway-cross-premises-options.md)」を参照してください。
 
 ## 仮想ネットワークの作成
 
@@ -35,7 +35,7 @@
 
 
 
-4. **[DNS サーバーおよび VPN 接続]** ページでは、何も変更しません。矢印をクリックして次のページに進みます。Azure には既定で、仮想ネットワーク用の基本的な名前解決サービスが用意されています。ただし、基本的な Azure の名前解決では対応できないほど名前解決の要件が複雑である場合もあります。そのような場合は、DNS を実行する仮想マシンを後で仮想ネットワークに追加することも可能です。Azure の名前解決と DNS の詳細については、「[名前解決 (DNS)](https://msdn.microsoft.com/library/azure/jj156088.aspx)」を参照してください。
+4. **[DNS サーバーおよび VPN 接続]** ページでは、何も変更しません。矢印をクリックして次のページに進みます。Azure には既定で、仮想ネットワーク用の基本的な名前解決サービスが用意されています。ただし、基本的な Azure の名前解決では対応できないほど名前解決の要件が複雑である場合もあります。そのような場合は、DNS を実行する仮想マシンを後で仮想ネットワークに追加することも可能です。Azure の名前解決と DNS の詳細については、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。
 5. **[仮想ネットワーク アドレス空間]** ページでは、この VNet で使用するアドレス空間を入力します。VM 用に特定の内部 IP アドレス範囲が必要な場合や、静的 DIP を受け取る VM 用に特定のサブネットを作成する場合を除き、このページで変更を行う必要はありません。複数のサブネットを作成する場合は、このページの **[サブネットの追加]** をクリックします。詳細ページの設定の詳細については、「[VNet プロパティを管理する方法](../virtual-networks-settings)」の「**[仮想ネットワークの詳細]**」セクションを参照してください。
 
 	-  詳細ページの設定の詳細については、「[VNet プロパティを管理する方法](../virtual-networks-settings)」の「**[仮想ネットワークの詳細]**」セクションを参照してください。
@@ -48,8 +48,8 @@
 
 
 ## 次のステップ
--  Asure の[仮想ネットワーク](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)について学習します。 
+-  Asure の[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)について学習します。 
 
 -  仮想ネットワークへ [Virtual Machine を追加](../virtual-machines/virtual-machines-create-custom.md)します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

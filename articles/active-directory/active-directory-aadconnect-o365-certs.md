@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Office 365 と Azure AD のユーザー向けの証明書更新ガイダンス" 
-	description="この記事では、証明書の更新を通知する電子メールによって生じる問題を解決する方法を Office 365 のユーザー向けに説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Office 365 と Azure AD のユーザー向けの証明書更新ガイダンス"
+	description="この記事では、証明書の更新を通知する電子メールによって生じる問題を解決する方法を Office 365 のユーザー向けに説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/10/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 
@@ -85,4 +85,4 @@ AutocertificateRollover の設定は True だが、フェデレーション メ�
 
 >[AZURE.NOTE]contoso.com や fabrikam.com などの複数の最上位のドメインをサポートする必要がある場合は、すべてのコマンドレットで SupportMultipleDomain スイッチを使用する必要があります。詳細については、複数の最上位のドメインのサポートに関するページを参照してください。最後に、すべての Web アプリケーション プロキシ サーバーが[Windows Server 2014 年 5 月](http://support.microsoft.com/kb/2955164)のロールアップで更新されていることを確認します。更新されていない場合は、プロキシが新しい証明書の更新に失敗し、機能が停止する可能性があります。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

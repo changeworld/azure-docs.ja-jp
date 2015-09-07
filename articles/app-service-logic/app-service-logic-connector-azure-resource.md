@@ -1,23 +1,23 @@
 <properties
-   pageTitle="Azure リソース コネクタ"
-   description="Azure リソース コネクタ"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="stepsic-microsoft-com"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での Azure リソース コネクタの使用 | Microsoft Azure App Service"
+	description="Azure リソース コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="stepsic-microsoft-com"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="stepsic"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="stepsic"/>
 
-# Azure リソース コネクタ
-Azure リソース コネクタを使用すると、ロジック アプリ内の Azure リソースを簡単に管理できます。
+# Azure リソース コネクタの使用開始とロジック アプリへの追加 
+Azure リソース コネクタを使用して、Logic App 内の Azure リソースを簡単に管理できます。
 
 ## Azure リソース コネクタの作成
 Azure リソース コネクタ API アプリを使用するにはまず、そのインスタンスを作成する必要があります。インスタンスの作成には、ロジック アプリを作成するときにインラインで行う方法と、Azure Marketplace から Azure Resource Manger Connector API アプリを選択して行う方法とがあります。
@@ -96,4 +96,4 @@ Get metrics | リソース ID のメトリックを取得します。
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

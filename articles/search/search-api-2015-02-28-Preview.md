@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Search サービス REST API バージョン 2015-02-28-Preview | Microsoft Azure"
-   description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、自然言語アナライザーや moreLikeThis 検索などの試験的機能が含まれています。"
-   services="search"
-   documentationCenter="na"
-   authors="HeidiSteen"
-   manager="mblythe"
-   editor=""/>
+	description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、自然言語アナライザーや moreLikeThis 検索などの試験的機能が含まれています。"
+	services="search"
+	documentationCenter="na"
+	authors="HeidiSteen"
+	manager="mblythe"
+	editor=""/>
 
 <tags
    ms.service="search"
-   ms.devlang="rest-api"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="search"
-   ms.date="07/22/2015"
-   ms.author="heidist"/>
+	ms.devlang="rest-api"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="search"
+	ms.date="08/25/2015"
+	ms.author="heidist"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
 
@@ -95,7 +95,7 @@ ________________________________________
       {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false},
       {"name": "baseRate", "type": "Edm.Double"},
       {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-	  {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, analyzer: "fr.lucene"},
+	  {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
       {"name": "hotelName", "type": "Edm.String"},
       {"name": "category", "type": "Edm.String"},
       {"name": "tags", "type": "Collection(Edm.String)"},
@@ -154,7 +154,7 @@ HTTPS はすべてのサービス要求に必要です。**Create Index** 要求
 - `api-key`: 必須。`api-key` は、
 - Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Create Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 <a name="RequestData"></a> **要求本文の構文**
 
@@ -262,7 +262,7 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 
   - **注**: 上記のどの属性 (`searchable`、`filterable`、`sortable`、`facetable`) も `true` に設定されていないフィールドは、実質的に逆インデックスから除外されます。このオプションは、クエリでは使用されませんが、検索結果には必要なフィールドに便利です。このようなフィールドをインデックスから除外と、パフォーマンスが向上します。
 
-  - `suggestions` - 以前のバージョンの API には `suggestions` プロパティが含まれていました。このブール型プロパティは現在は非推奨になっており、`2015-02-28` または `2015-02-28-Preview` では使用できません。代わりに、[サジェスター API](#Suggesters) を使用してください。`2014-07-31` バージョンでは、`suggestions` プロパティは、`Edm.String` 型または `Collection(Edm.String)` 型のフィールドに対し、フィールドを先行入力のオート コンプリートに使用できるかどうかを指定するために使用されていました。`suggestions` はインデックスで余分な領域を必要とするために既定で `false` でしたが、有効にしていた場合は、新しい API への移行方法について、「[Azure Search のプレビューから一般リリースへの移行](search-transition-from-preview.md)」を参照してください。
+`suggestions` - 以前のバージョンの API には `suggestions` プロパティが含まれていました。このブール型プロパティは現在は非推奨になっており、`2015-02-28` または `2015-02-28-Preview` では使用できません。代わりに、[サジェスター API](#Suggesters) を使用してください。`2014-07-31` バージョンでは、`suggestions` プロパティは、`Edm.String` 型または `Collection(Edm.String)` 型のフィールドに対し、フィールドを先行入力のオート コンプリートに使用できるかどうかを指定するために使用されていました。`suggestions` はインデックスで余分な領域を必要とするために既定で `false` でしたが、有効にしていた場合は、新しい API への移行方法について、「[Azure Search のプレビューから一般リリースへの移行](search-transition-from-preview.md)」を参照してください。
 
 `key` - インデックス内のドキュメントに対する一意の識別子を含んでいるものとしてフィールドをマークします。正確に 1 つのフィールドを `key` として選択する必要があり、そのフィールドは `Edm.String` 型でなければなりません。キー フィールドは、[参照 API](#LookupAPI) を使用してドキュメントを直接参照するために使用できます。
 
@@ -270,7 +270,7 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 
 `analyzer` - フィールドに使用するテキスト アナライザーの名前を設定します。設定できる値については、「[言語のサポート](#LanguageSupport)」を参照してください。このオプションは、`searchable` フィールドでのみ使用できます。フィールドのアナライザーを選択した後は変更できません。
 
-`sugggesters` - 検索モードおよび検索候補の内容のソースであるフィールドを設定します。詳細については、「[サジェスター](#Suggesters)」を参照してください。
+`suggesters` - 検索モードおよび検索候補の内容のソースであるフィールドを設定します。詳細については、「[サジェスター](#Suggesters)」を参照してください。
 
 `scoringProfiles` - 検索結果での項目の順序を変更できるカスタム スコアリング動作を定義します。スコアリング プロファイルは、フィールドの重みと関数で構成されます。スコアリング プロファイルで使用される属性の詳細については、「[検索インデックスにスコア付けプロファイルを追加する](https://msdn.microsoft.com/library/azure/dn798928.aspx)」を参照してください。
 
@@ -279,894 +279,316 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 
 検索可能なフィールドで最も頻繁に行われる分析は、単語の分割、テキストの正規化、語句の除外などです。既定では、Azure Search の検索可能フィールドは [Apache Lucene 標準アナライザー](http://lucene.apache.org/core/4_9_0/analyzers-common/index.html)で分析されます。このアナライザーは、["Unicode Text Segmentation"](http://unicode.org/reports/tr29/) ルールに従ってテキストを要素に分割します。さらに、標準アナライザーはすべての文字を小文字形式に変換します。インデックス付きドキュメントと検索語句の両方について、インデックス作成とクエリ処理の間に分析が行われます。
 
-Azure Search は、さまざまな言語でのフィールドのインデックス作成をサポートします。各言語には、特定の言語の特性が考慮されている標準以外のテキスト アナライザーが必要です。Azure Search では 2 種類のアナライザーが用意されています。
+Azure Search は、さまざまな言語をサポートしています。各言語には、特定の言語の特性が考慮されている標準以外のテキスト アナライザーが必要です。Azure Search では 2 種類のアナライザーが用意されています。
 
-- 28 個のアナライザーは Lucene によって提供されます。
+- 35 個のアナライザーは Lucene によって提供されます。
 - 50 個のアナライザーは、Office および Bing で使用されるマイクロソフト独自の自然言語処理技術によって提供されます。
 
-開発者によっては、使い慣れた簡単なオープン ソース ソリューションである Lucene を好む場合があります。Lucene は高速ですが、マイクロソフトのアナライザーにはレンマ化などの高度な機能があります。可能であれば、マイクロソフトと Lucene の両方のアナライザーを比較し、より適したものを選んでください。
+開発者によっては、使い慣れた簡単なオープン ソース ソリューションである Lucene を好む場合があります。Lucene のアナライザーは高速です。しかし、マイクロソフトのアナライザーには高度な機能があります。たとえば、レンマ化、単語複混合化 (ドイツ語、デンマーク語、オランダ語、スウェーデン語、ノルウェー語、エストニア語、フィンランド語、ハンガリー語、スロバキア語などの言語で)、エンティティ認識 (URL、電子メール、日付、数値) などです。可能であれば、マイクロソフトと Lucene の両方のアナライザーを比較し、より適したものを選んでください。
 
 ***比較***
 
-英語用 Lucene アナライザーは標準アナライザーを拡張します。単語から所有格を (末尾の 's) を除去し、[Porter Stemming アルゴリズム](http://tartarus.org/~martin/PorterStemmer/)に従ってステミングを適用し、英語の[ストップ ワード](http://en.wikipedia.org/wiki/Stop_words)を除去します。Lucene アナライザーでのクエリとインデックス作成は非常に高速です。
+英語用 Lucene アナライザーは標準アナライザーを拡張します。単語から所有格を (末尾の 's) を除去し、[Porter Stemming アルゴリズム](http://tartarus.org/~martin/PorterStemmer/)に従ってステミングを適用し、英語の[ストップ ワード](http://en.wikipedia.org/wiki/Stop_words)を除去します。
 
-一方、マイクロソフトのアナライザーは、クエリ時に各クエリ語句のすべての可能な単語形式を生成する広範なステマーを実装しており、結果の精度は高くなりますが、遅延も長くなります。クエリ パフォーマンスの低下は、拡張ステマーに共通することです。マイクロソフトのアナライザーでのインデックス作成には、平均して、Lucene の同等機能の 3 倍の時間がかかります。
+これに対し、マイクロソフトのアナライザーは、ステミングではなくレンマ化を実行します。すなわち、語形変化および変則的な語形をより適切に処理し、関連性の高い検索結果をもたらします (詳細については、「[Azure Search MVA プレゼンテーション](http://www.microsoftvirtualacademy.com/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps)」のモジュール 7 を参照してください)。
+
+言語によっては、マイクロソフトのアナライザーでのインデックス作成には、平均して、Lucene の同等機能の 2 ～ 3 倍の時間がかかります。平均的なサイズのクエリの場合、検索のパフォーマンスはさほど影響はありません。
 
 ***構成***
 
-インデックス定義の各フィールドについて、言語とベンダーを指定するアナライザー名を `analyzer` プロパティに設定できます。たとえば、英語、フランス語、スペイン語によるホテルの説明を含む個別のフィールドを同じインデックスに同時に作成できます。クエリでは、検索クエリでどの言語固有フィールドを返すかを指定します。`analyzer` プロパティを含むクエリの例は、「[ドキュメントの検索](#SearchDocs)」で確認できます。
+インデックス定義の各フィールドについて、言語とベンダーを指定するアナライザー名を `analyzer` プロパティに設定できます。そのフィールドに対してインデックスの作成および検索を行う場合は、同じアナライザーが適用されます。たとえば、英語、フランス語、スペイン語によるホテルの説明を含む個別のフィールドを同じインデックスに同時に作成できます。['searchFields' クエリ パラメーター](#SearchQueryParameters) を使用して、クエリ内で検索対象とする言語固有のフィールドを指定します。`analyzer` プロパティを含むクエリの例は、「[ドキュメントの検索](#SearchDocs)」で確認できます。
 
 ***アナライザー一覧***
 
-サポートされているアナライザーとその機能の簡単な説明を以下に示します。
+サポートされている言語と、Lucene およびマイクロソフトのアナライザーの名前を以下に一覧します。
 
 <table style="font-size:12">
     <tr>
 		<th>言語</th>
-		<th>アナライザーの名前</th>
-		<th>説明</th>
-	</tr>
-    <tr>
-		<td>アラビア語</td>
-		<td>ar.lucene</td>
-		<td>
-		<ul>
-			<li>アラビア語の正字法正規化を実装します</li>
-			<li>ライト アルゴリズム ステミングを適用します</li>
-			<li>アラビア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<th>マイクロソフトのアナライザーの名前</th>
+		<th>Lucene のアナライザーの名前</th>
 	</tr>
     <tr>
 		<td>アラビア語</td>
 		<td>ar.microsoft</td>
-		<td>
-		<ul>
-			<li>還元的ステマー</li>
-			<li>アラビア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>ar.lucene</td>		
 	</tr>
     <tr>
     	<td>アルメニア語</td>
+		<td></td>
     	<td>hy.lucene</td>
-    	<td>
-    	<ul>
-      		<li>ライト アルゴリズム ステミングを適用します</li>
-    		<li>アルメニア語のストップ ワードを除外します</li>
-	    </ul>
-    	</td>
   	</tr>
     <tr>
 		<td>バングラ語</td>
-		<td>bg.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td>bn.microsoft</td>
+		<td></td>
 	</tr>
   	<tr>
     	<td>バスク語</td>
+		<td></td>
     	<td>eu.lucene</td>
-    	<td>
-    	<ul>
-      		<li>ライト アルゴリズム ステミングを適用します</li>
-    		<li>バスク語のストップ ワードを除外します</li>
-	    </ul>
-    	</td>
     </tr>
   	<tr>
- 	   <td>ブルガリア語</td>
+ 		<td>ブルガリア語</td>
+		<td>bg.microsoft</td>
     	<td>bg.lucene</td>
-    	<td>
-    	<ul>
-      		<li>ライト アルゴリズム ステミングを適用します</li>
-    		<li>ブルガリア語のストップ ワードを除外します</li>
-	    </ul>
-    	</td>
   	</tr>
-    <tr>
-		<td>ブルガリア語</td>
-		<td>bn.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
-	</tr>
   	<tr>
     	<td>カタルニア語</td>
-    	<td>ca.lucene</td>
-    	<td>
-    	<ul>
-      		<li>ライト アルゴリズム ステミングを適用します</li>
-      		<li>カタルニア語のストップ ワードを除外します</li>
-      		<li>エリジョンを除去します</li>
-   		</ul>
-    	</td>
+    	<td>ca.microsoft</td>
+		<td>ca.lucene</td>  		
   	</tr>
-    <tr>
-		<td>カタルニア語</td>
-		<td>ca.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>付加記号を削除します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>中国語 (簡体字)</td>
-		<td>zh-Hans.lucene</td>
-		<td>
-		<ul>
-			<li>確率的知識モデルを使用して、最適な単語の分割を探します</li>
-			<li>中国語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
     <tr>
 		<td>中国語 (簡体字)</td>
 		<td>zh-Hans.microsoft</td>
-		<td>
-		<ul>
-			<li>確率的知識モデルを使用して、最適な単語の分割を探します</li>
-		</ul>
-		</td>
+		<td>zh-Hans.lucene</td>		
 	</tr>
     <tr>
 		<td>中国語 (繁体字)</td>
-		<td>zh-Hant.lucene</td>
-		<td>
-		<ul>
-			<li>二重字 (隣接する 2 つの中国語文字の重なり合ったグループ) のインデックスを作成します</li>
-			<li>文字幅の違いを正規化します</li>
-		</ul>
-		</td>
-	<tr>
-    <tr>
-		<td>中国語 (繁体字)</td>
 		<td>zh-Hant.microsoft</td>
-		<td>
-		<ul>
-			<li>確率的知識モデルを使用して、最適な単語の分割を探します</li>
-		</ul>
-		</td>
+		<td>zh-Hant.lucene</td>		
 	<tr>
     <tr>
 		<td>クロアチア語</td>
 		<td>hr.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>チェコ語</td>
-		<td>cs.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>チェコ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td/></td>
 	</tr>
     <tr>
 		<td>チェコ語</td>
 		<td>cs.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>チェコ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>デンマーク語</td>
-		<td>da.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>デンマーク語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
+		<td>cs.lucene</td>		
+	</tr>    
     <tr>
 		<td>デンマーク語</td>
 		<td>da.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>デンマーク語のストップ ワードを除外します</li>
-			<li>複混合化</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>オランダ語</td>
-		<td>nl.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>オランダ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
+		<td>da.lucene</td>		
+	</tr>    
     <tr>
 		<td>オランダ語</td>
 		<td>nl.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>オランダ語のストップ ワードを除外します</li>
-			<li>複混合化</li>
-			<li>付加記号を削除します</li>
-		</ul>
-		</td>
-	</tr>
+		<td>nl.lucene</td>	
+	</tr>    
     <tr>
-		<td>英語</td>
-		<td>en.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>英語のストップ ワードを除外します</li>
-			<li>所有格を除去します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>英語</td>
+		<td>英語</td>		
 		<td>en.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>英語のストップ ワードを除外します</li>
-			<li>所有格と付加記号を除去します</li>
-		</ul>
-		</td>
+		<td>en.lucene</td>		
 	</tr>
     <tr>
 		<td>エストニア語</td>
 		<td>et.microsoft</td>
-		<td>
-		<ul>
-			<li>還元的ステマー</li>
-			<li>複混合化</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>フィンランド語</td>
-		<td>fi.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>フィンランド語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>フィンランド語</td>
 		<td>fi.microsoft</td>
-		<td>
-		<ul>
-			<li>還元的ステマー</li>
-			<li>フィンランド語のストップ ワードを除外します</li>
-			<li>複混合化</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>フランス語</td>
-		<td>fr.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>フランス語のストップ ワードを除外します</li>
-			<li>エリジョンを除去します</li>
-		</ul>
-		</td>
-	</tr>
+		<td>fi.lucene</td>		
+	</tr>    
     <tr>
 		<td>フランス語</td>
 		<td>fr.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>フランス語のストップ ワードを除外します</li>
-			<li>付加記号を削除します</li>
-		</ul>
-		</td>
+		<td>fr.lucene</td>		
 	</tr>
     <tr>
     	<td>ガリシア語</td>
-	    <td>gl.lucene</td>
-    	<td>
-    	<ul>
-    		<li>ライト ステミングを適用します</li>
-      		<li>ガリシア語のストップ ワードを除外します</li>
-    	</ul>
-    	</td>
+	    <td></td>
+		<td>gl.lucene</td>    	
   	</tr>
     <tr>
 		<td>ドイツ語</td>
-		<td>de.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ドイツ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ドイツ語</td>
 		<td>de.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>ドイツ語のストップ ワードを除外します</li>
-			<li>複混合化</li>
-			<li>付加記号を削除します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ギリシャ語</td>
-		<td>el.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ギリシャ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>de.lucene</td>		
 	</tr>
     <tr>
 		<td>ギリシャ語</td>
 		<td>el.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>ギリシャ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>el.lucene</td>		
 	</tr>
     <tr>
 		<td>グジャラート語</td>
 		<td>gu.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>ヘブライ語</td>
 		<td>he.microsoft</td>
-		<td>
-		<ul>
-			<li>還元的ステマー</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ヒンディー語</td>
-		<td>hi.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ヒンディー語のストップ ワードを除外します</li>
-			<li>スペル バリエーションの一部の相違を除去します</li>
-			<li>インドの言語でのテキストの Unicode 表現を正規化します</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>ヒンディー語</td>
 		<td>hi.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>ヒンディー語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>hi.lucene</td>		
 	</tr>
     <tr>
-		<td>ハンガリー語</td>
-		<td>hu.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ハンガリー語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ハンガリー語</td>
+		<td>ハンガリー語</td>		
 		<td>hu.microsoft</td>
-		<td>
-		<ul>
-			<li>還元的ステマー</li>
-			<li>ハンガリー語のストップ ワードを除外します</li>
-			<li>複混合化</li>
-		</ul>
-		</td>
+		<td>hu.lucene</td>
 	</tr>
     <tr>
 		<td>アイスランド語</td>
 		<td>is.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>インドネシア語</td>
-		<td>id.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>インドネシア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>インドネシア語</td>
 		<td>id.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>インドネシア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>id.lucene</td>		
 	</tr>
     <tr>
     	<td>アイルランド語</td>
+		<td></td>
       	<td>ga.lucene</td>
-      	<td>
-      	<ul>
-        	<li>ライト ステミングを適用します</li>
-        	<li>アイルランド語のストップ ワードを除外します</li>
-      	</ul>
-      	</td>
     </tr>
     <tr>
 		<td>イタリア語</td>
-		<td>it.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>イタリア語のストップ ワードを除外します</li>
-			<li>エリジョンを除去します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>イタリア語</td>
 		<td>it.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>イタリア語のストップ ワードを除外します</li>
-			<li>付加記号を削除します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>日本語</td>
-		<td>ja.lucene</td>
-		<td>
-		<ul>
-			<li>形態素分析を使用します</li>
-			<li>一般的なカタカナのスペルのバリエーションを正規化します</li>
-			<li>ライト ストップ ワード/ストップ タグを除去します</li>
-			<li>文字幅を正規化します</li>
-			<li>レンマ化 - 屈折した形容詞と動詞を基本形式に削減します</li>
-		</ul>
-		</td>
+		<td>it.lucene</td>		
 	</tr>
     <tr>
 		<td>日本語</td>
 		<td>ja.microsoft</td>
-		<td>
-		<ul>
-			<li>形態素分析を使用します</li>
-		</ul>
-		</td>
+		<td>ja.lucene</td>
+		
 	</tr>
     <tr>
 		<td>カンナダ語</td>
 		<td>ka.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>韓国語</td>
+		<td></td>
 		<td>ko.lucene</td>
-		<td>
-		<ul>
-			<li>二重字 (隣接する 2 つのハングル文字の重なり合ったグループ) のインデックスを作成します</li>
-			<li>文字幅の違いを正規化します</li>
-		</ul>
-		</td>
-	</tr>
-  	<tr>
-		<td>韓国語</td>
-		<td>ko.microsoft</td>
-		<td>
-		<ul>
-			<li>還元的ステマー (レンマ化)</li>
-		</ul>
-		</td>
 	</tr>
     <tr>
-		<td>ラトビア語</td>
-		<td>lv.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ラトビア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ラトビア語</td>
+		<td>ラトビア語</td>		
 		<td>lv.microsoft</td>
-		<td>
-		<ul>
-			<li>還元的ステマー</li>
-			<li>ラトビア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>lv.lucene</td>	
 	</tr>
     <tr>
 		<td>リトアニア語</td>
 		<td>lt.microsoft</td>
-		<td>
-		<ul>
-			<li>還元的ステマー</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>マラヤーラム語</td>
 		<td>ml.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>マレー語 (ラテン)</td>
 		<td>ms.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>マラーティー語</td>
 		<td>mr.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>ノルウェー語</td>
-		<td>no.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ノルウェー語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ノルウェー語</td>
-		<td>no.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>ノルウェー語のストップ ワードを除外します</li>
-			<li>複混合化</li>
-		</ul>
-		</td>
+		<td>nb.microsoft</td>
+		<td>no.lucene</td>		
 	</tr>
   	<tr>
     	<td>ペルシャ語</td>
-		<td>fa.lucene</td>
-    	<td>
-    	<ul>
-      		<li>アルゴリズム ステミングを適用します</li>
-      		<li>ペルシャ語のストップ ワードを除外します</li>
-      		<li>アラビア語とペルシャ語の正字法正規化を実装します</li>
-    	</ul>
-    	</td>
+		<td></td>
+		<td>fa.lucene</td>    	
   	</tr>
     <tr>
 		<td>ポーランド語</td>
-		<td>pl.lucene</td>
-		<td>
-		<ul>
-			<li>アルゴリズム ステミング (Stempel) を適用します</li>
-			<li>ポーランド語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ポーランド語</td>
 		<td>pl.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>ポーランド語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ポルトガル語 (ブラジル)</td>
-		<td>pt-Br.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ブラジル語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>pl.lucene</td>		
 	</tr>
     <tr>
 		<td>ポルトガル語 (ブラジル)</td>
 		<td>pt-Br.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>ブラジル語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>pt-Br.lucene</td>		
 	</tr>
     <tr>
 		<td>ポルトガル語 (ポルトガル)</td>
+		<td>pt-Pt.microsoft</td>		
 		<td>pt-Pt.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ポルトガル語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ポルトガル語 (ポルトガル)</td>
-		<td>pt-Pt.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>ポルトガル語のストップ ワードを除外します</li>
-			<li>付加記号を削除します</li>
-		</ul>
-		</td>
 	</tr>
     <tr>
 		<td>パンジャーブ語</td>
 		<td>pa.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ルーマニア語</td>
-		<td>ro.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ルーマニア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>ルーマニア語</td>
 		<td>ro.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>ルーマニア語のストップ ワードを除外します</li>
-			<li>付加記号を削除します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ロシア語</td>
-		<td>ru.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ロシア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>ro.lucene</td>
 	</tr>
     <tr>
 		<td>ロシア語</td>
 		<td>ru.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>ロシア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>ru.lucene</td>	
 	</tr>
     <tr>
 		<td>セルビア語 (キリル文字)</td>
 		<td>sr-cyrillic.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>セルビア語 (ラテン)</td>
 		<td>sr-latin.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>スロバキア語</td>
 		<td>sk.microsoft</td>
-		<td>
-		<ul>
-			<li>還元的ステマー</li>
-			<li>複混合化</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>スロベニア語</td>
-		<td>sk.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>スペイン語</td>
-		<td>es.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>スペイン語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>sl.microsoft</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>スペイン語</td>
 		<td>es.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>スペイン語のストップ ワードを除外します</li>
-			<li>付加記号を削除します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>スウェーデン語</td>
-		<td>sv.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>スウェーデン語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>es.lucene</td>
 	</tr>
     <tr>
 		<td>スウェーデン語</td>
 		<td>sv.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-			<li>スウェーデン語のストップ ワードを除外します</li>
-			<li>複混合化</li>
-		</ul>
-		</td>
+		<td>sv.lucene</td>
 	</tr>
+
     <tr>
 		<td>タミール語</td>
 		<td>ta.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>テルグ語</td>
 		<td>te.microsoft</td>
-		<td>
-		<ul>
-			<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>タイ語</td>
-		<td>th.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>タイ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>タイ語</td>
 		<td>th.microsoft</td>
-		<td>
-		<ul>
-			<li>タイ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>トルコ語</td>
-		<td>tr.lucene</td>
-		<td>
-		<ul>
-			<li>アポストロフィから後のすべての文字を除去します (アポストロフィ自体を含みます)</li>
-			<li>ライト ステミングを適用します</li>
-			<li>トルコ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>th.lucene</td>
 	</tr>
     <tr>
 		<td>トルコ語</td>
 		<td>tr.microsoft</td>
-		<td>
-		<ul>
-			<li>還元的ステマー</li>
-			<li>トルコ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
+		<td>tr.lucene</td>		
 	</tr>
     <tr>
 		<td>ウクライナ語</td>
 		<td>uk.microsoft</td>
-		<td>
-		<ul>
-		<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>ウルドゥー語</td>
 		<td>ur.microsoft</td>
-		<td>
-		<ul>
-		<li>拡張ステマー (レンマ化)</li>
-		</ul>
-		</td>
+		<td></td>
 	</tr>
     <tr>
 		<td>ベトナム語</td>
 		<td>vi.microsoft</td>
-		<td>
-		<ul>
-
-		</ul>
-		</td>
+		<td></td>
 	</tr>
 	<td colspan="3">さらに、Azure Search では言語に依存しないアナライザー構成が提供されます。</td>
     <tr>
@@ -1191,7 +613,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
 
 `scoringProfile` - 検索結果での項目の順序を変更できるカスタム スコアリング動作を定義します。スコアリング プロファイルは、フィールドの重みと関数で構成されます。使用するには、クエリ文字列にプロファイル名を指定します。
 
-既定のスコアリング プロファイルはバックグラウンドで実行され、検索セットの各項目の検索スコアが計算されます。内部的な名前のないスコアリング プロファイルを使用できます。または、クエリ文字列にカスタム プロファイルが指定されていない場合に常に呼び出される既定値として、カスタム プロファイルを使用するように `defaultScoringProfile` を設定します。
+既定のスコアリング プロファイルはバックグラウンドで実行され、検索セットの各項目の検索スコアがコンピューティングされます。内部的な名前のないスコアリング プロファイルを使用できます。または、クエリ文字列にカスタム プロファイルが指定されていない場合に常に呼び出される既定値として、カスタム プロファイルを使用するように `defaultScoringProfile` を設定します。
 
 詳細については、「[検索インデックスにスコア付けプロファイルを追加する (Azure Search サービス REST API)](search-api-scoring-profiles-2015-02-28.md)」を参照してください。
 
@@ -1211,7 +633,7 @@ Azure Search は、さまざまな言語でのフィールドのインデック�
         {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false},
         {"name": "baseRate", "type": "Edm.Double"},
         {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-	    {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, analyzer="fr.lucene"},
+	    {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer"="fr.lucene"},
         {"name": "hotelName", "type": "Edm.String"},
         {"name": "category", "type": "Edm.String"},
         {"name": "tags", "type": "Collection(Edm.String)"},
@@ -1565,7 +987,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 ________________________________________
 <a name="DocOps"></a>
-## ドキュメントの操作 #
+## ドキュメントの操作
 
 Azure Search では、インデックスはクラウドに格納され、サービスにアップロードされた JSON ドキュメントを使用して設定されます。アップロードされたすべてのドキュメントが、検索データのコーパスを構成します。ドキュメントにはフィールドが含まれ、その一部はアップロード時に検索語句にトークン化されます。Azure Search API の `/docs` URL セグメントは、インデックス内のドキュメントのコレクションを表します。ドキュメントのアップロード、マージ、削除、クエリなど、コレクションに対して実行される操作はすべて単一インデックスのコンテキストで行われるので、これらの操作の URL は常に特定のインデックス名に対する `/indexes/[index name]/docs` で始まります。
 
@@ -1720,7 +1142,7 @@ ________________________________________
 
 **GET ではなく、POST を使用する場合**
 
-HTTP GET を使用して **Search** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーション、具体的には OData フィルター式では、非常に大きなクエリが生成されます。これらのアプリケーションについては、HTTP POST の使用をお勧めします。POST の要求サイズの上限は 17 MB に近いため、最も複雑なクエリでも十分な長さとなります。
+HTTP GET を使用して **Search** API を呼び出す場合、要求 URL の長さが 8 KB を超えてはならないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーション、具体的には OData フィルター式では、非常に大きなクエリが生成されます。これらのアプリケーションについては、HTTP POST の使用をお勧めします。POST の要求サイズの上限は 17 MB に近いため、最も複雑なクエリでも十分な長さとなります。
 
 **要求**
 
@@ -1741,7 +1163,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 また、URL エンコードは、GET を使用して REST API を直接呼び出すときにのみ必要です。POST を使用して **Search** を呼び出す場合や、URL のエンコーディングを処理する [.NET クライアント ライブラリ](https://msdn.microsoft.com/library/dn951165.aspx)を使用する場合は、URL エンコードする必要はありません。
 
-**クエリ パラメーター**
+<a name="SearchQueryParameters"></a>**クエリ パラメーター**
 
 **Search**は、クエリ条件を提供して検索の動作も指定するいくつかのパラメーターを受け取ります。これらのパラメーターは、GET を介して **Search** を呼び出すときは URL クエリ文字列に指定します。POST を介して **Search** を呼び出すときは要求本文に JSON プロパティとして指定します。いくつかのパラメーターの構文は、GET および POST の間で多少異なります。その違いは、以下で随時説明しています。
 
@@ -1761,7 +1183,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 `$top=#` (省略可能) - 取得する検索結果の数。これは、`$skip` と組み合わせて使用して、検索結果のクライアント側のページングを実装できます。
 
-> [AZURE.NOTE]Azure Search では、***サーバー側のページング***を使用して、クエリが一度に大量のドキュメントを取得することを防ぎます。既定のページ サイズは 50 で、最大ページ サイズは 1,000 です。つまり、`$top` を指定しない場合、既定では **Search** は最大で 50 個の結果を返します。50 個を超える結果がある場合は、応答には 最大で 50 個の結果を含む次のページを取得するための情報が含まれています ([次の例](#SearchResponse)の `@odata.nextLink` と `@search.nextPageParameters` を参照)。同様に、`$top` に 1,000 を超える値を指定し、結果が 1,000 個より多い場合は、最初の 1,000 個の結果だけが返されます。その際、最大 1,000 個の結果を含む次のページを取得するための情報も含まれます。
+> [AZURE.NOTE]Azure Search では、***サーバー側のページング***を使用して、クエリが一度に大量のドキュメントを取得することを防ぎます。既定のページ サイズは 50 で、最大ページ サイズは 1,000 です。つまり、`$top` を指定しない場合、既定では **Search** は最大で 50 個の結果を返します。50 個を超える結果がある場合は、応答には 最大で 50 個の結果を含む次のページを取得するための情報が含まれています ([次の例](#SearchResponse)の `@odata.nextLink` と `@search.nextPageParameters` を参照)。　同様に、`$top` に 1,000 を超える値を指定し、結果が 1,000 個より多い場合は、最初の 1,000 個の結果だけが返されます。その際、最大 1,000 個の結果を含む次のページを取得するための情報も含まれます。
 
 > [AZURE.NOTE]POST を使用して **Search** を呼び出す場合は、このパラメーターの名前は `top` ではなく `$top` です。
 
@@ -2144,7 +1566,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 - `Accept`: この値は `text/plain` に設定する必要があります。
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Count Documents** 要求では、`api-key` に対して管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -2243,7 +1665,7 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 - `api-key`: `api-key` は Search サービスに対する要求の認証に使用されます。これはサービス URL に固有の文字列値です。**Suggestions** 要求では、`api-key` として管理者キーまたはクエリ キーを指定できます。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 **要求本文**
 
@@ -2307,4 +1729,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

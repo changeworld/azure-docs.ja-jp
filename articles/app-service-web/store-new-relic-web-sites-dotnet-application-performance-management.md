@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure App Service の .NET Web アプリに対する New Relic によるパフォーマンス管理" 
-	description="New Relic のパフォーマンス監視を、Azure App Service で実行する ASP.NET アプリケーションに対して使用する方法について説明します。" 
-	services="app-service\web" 
-	documentationCenter=".net" 
-	authors="cephalin" 
-	manager="wpickett" 
+	pageTitle="Azure App Service の .NET Web アプリに対する New Relic によるパフォーマンス管理"
+	description="New Relic のパフォーマンス監視を、Azure App Service で実行する ASP.NET アプリケーションに対して使用する方法について説明します。"
+	services="app-service\web"
+	documentationCenter=".net"
+	authors="cephalin"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="07/30/2015" 
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="07/30/2015"
 	ms.author="stepsic"/>
 
 
@@ -77,7 +77,7 @@ Azure Marketplace から New Relic に直接サインアップするには、次
 
 ## 手順 3. ASP.NET Web アプリを発行する
 
-Visual Studio または WebMatrix を使用して、Web アプリを発行します。Web アプリが既に発行済みの場合は、もう一度発行します。これにより Web アプリのインスタンスに、New Relic の監視を有効にするために必要な New Relic NuGet パッケージが追加されます。
+Visual Studio を使用して Web アプリを発行します。Web アプリが既に発行済みの場合は、もう一度発行します。これにより Web アプリのインスタンスに、New Relic の監視を有効にするために必要な New Relic NuGet パッケージが追加されます。
 
 ## 手順 4.New Relic でアプリケーションのパフォーマンスをチェックする
 
@@ -179,4 +179,4 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 [custom]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrcustom.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

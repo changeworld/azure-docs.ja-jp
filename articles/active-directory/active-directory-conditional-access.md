@@ -1,19 +1,19 @@
 <properties
 	pageTitle="条件付きアクセス ポリシーを使用したリスクの管理"
-	description="ポリシーに準拠している既知のデバイスであれば、どこからでも特定のリソースにアクセスできるようにする方法と、紛失したデバイス、盗まれたデバイス、非対応のデバイスからのアクセスを禁止する方法を説明するトピックです。"
+	description="ポリシーに準拠している既知のデバイスであれば、どこからでも企業ネットワーク内の特定のリソースにアクセスできるようなり、紛失したデバイス、盗まれたデバイス、非対応のデバイスからのアクセスが禁止されます。"
 	services="active-directory, virtual-network"
 	documentationCenter=""
 	authors="femila"
-	manager="stevepo"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
 	ms.devlang="na"
 	ms.topic="article"
-  ms.tgt_pltfrm="na"
-  ms.workload="identity" 
-	ms.date="07/31/2015"
+	ms.tgt_pltfrm="na"
+	ms.workload="identity"
+	ms.date="08/19/2015"
 	ms.author="femila"/>
 
 
@@ -35,13 +35,13 @@ Azure Active Directory、Office 365、Microsoft Intune が提供する複数の�
 
 以下のトピックでは、組織で条件付きのアクセス ポリシーを設定するときに利用できる各メカニズムについて説明しています。
 
-- [Azure Active Directory Device Registration の概要](https://msdn.microsoft.com/library/azure/dn903763.aspx)
-- [Azure Active Directory Device Registration を使用してオンプレミスの条件付きアクセスを設定する](https://msdn.microsoft.com/library/azure/dn788908.aspx)
-- [Office 365 サービスに対する条件付きアクセスのデバイス ポリシー](https://msdn.microsoft.com/library/azure/dn903766.aspx)
-- [Azure Conditional Access Preview for SaaS アプリ](https://msdn.microsoft.com/library/azure/dn906877.aspx)
+- [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)
+- [Azure Active Directory Device Registration を使用してオンプレミスの条件付きアクセスを設定する](active-directory-conditional-access-on-premises-setup.md)
+- [Office 365 サービスに対する条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)
+- [Azure Conditional Access Preview for SaaS アプリ](active-directory-conditional-access-azuread-connected-apps.md)
 
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access/condaccoverviewvsdx1.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

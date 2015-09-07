@@ -1,12 +1,13 @@
 <properties 
-   pageTitle="Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する"
-   description="Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用してアプリに Azure Active Directory を追加する"
-   services="visual-studio-online"
-   documentationCenter="n/a"
-   authors="patshea123"
-   manager="douge"
-   editor="tlee" />
-<tags  ms.service="visual-studio-online"" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="na" ms.date="08/12/2015" ms.author="patshea" />
+   pageTitle="Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する | Microsoft Azure"
+	description="Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用してアプリに Azure Active Directory を追加する"
+	services="visual-studio-online"
+	documentationCenter="na"
+	authors="patshea123"
+	manager="douge"
+	editor="tlee"/>
+
+<tags  ms.service="visual-studio-online"" ms.devlang="multiple" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="visual-studio-online" ms.date="08/12/2015" ms.author="patshea"/>
 
 # Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する 
 
@@ -24,7 +25,7 @@ Azure Active Directory (Azure AD) を使用し、ASP.NET MVC Web アプリケー
 
 ### [接続済みサービス] ダイアログを使用して Azure AD に接続する
 
-1. Azure アカウントがあることを確認します。Azure アカウントを持っていない場合、[無料評価版](http://go.microsoft.com/fwlink/?LinkId=518146)でサインアップできます。
+1. Azure アカウントがあることを確認します。Azure アカウントを持っていない場合、[無料試用版](http://go.microsoft.com/fwlink/?LinkId=518146)でサインアップできます。
 
 1. Visual Studio で、プロジェクトの **[参照]** ノードのショートカット メニューを開き、**[接続済みサービスの追加]** を選択します。
 1. **[Azure AD 認証]** を選択し、**[構成]** を選択します。
@@ -48,9 +49,7 @@ Azure Active Directory (Azure AD) を使用し、ASP.NET MVC Web アプリケー
 
 1. **[完了]** ボタンを選択します。ダイアログにより必要な構成コードと参照が追加され、プロジェクトの Azure AD 認証を有効にします。Azure ポータルに AD ドメインが表示されます。
 
-    ![Azure 管理ポータルでドメインを見つける](./media/vs-azure-tools-connected-services-add-active-directory/IC765882.png)
-
-1. ブラウザーに表示された [概要] ページで次の手順の内容を確認します。[変更内容] ページでプロジェクトの変更内容を確認します。すべてが機能したことを確認するには、変更した構成ファイルの 1 つを開き、[変更内容] の設定がそこにあることを確認します。たとえば、ASP.NET MVC プロジェクトのメインの web.config にこれらの設定が追加されます。
+1. ブラウザーに表示される [作業の開始] ページで次のステップの内容について確認し、[変更内容] ページでプロジェクトがどのように変更されたか確認します。すべて問題なく機能したことを確認するには、変更された構成ファイルの 1 つを開き、[変更内容] ページで説明している設定があることを確認します。たとえば、ASP.NET MVC プロジェクトのメインの web.config にこれらの設定が追加されます。
 
         <appSettings> 
             <add key="ida:ClientId" value="ClientId from the new Azure AD App" />
@@ -62,7 +61,7 @@ Azure Active Directory (Azure AD) を使用し、ASP.NET MVC Web アプリケー
 
 ## プロジェクトを変更する方法
 
-ウィザードを実行すると、Visual Studio により Azure AD と関連参照がプロジェクトに追加されます。プロジェクトの構成ファイルとコード ファイルも変更され、Azure AD のサポートが追加されます。Visual Studio による特定の変更はプロジェクトの種類によって異なります。ASP.NET MVC プロジェクトを変更する方法の詳細については、「[変更内容 – MVC プロジェクト](http://go.microsoft.com/fwlink/p/?LinkID=513809)」を参照してください。Web API プロジェクトの場合、「[変更内容 - Web API プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513810)」を参照してください。
+ウィザードを実行すると、Visual Studio により Azure AD と関連参照がプロジェクトに追加されます。プロジェクトの構成ファイルとコード ファイルも変更され、Azure AD のサポートが追加されます。Visual Studio による特定の変更はプロジェクトの種類によって異なります。ASP.NET MVC プロジェクトを変更する方法の詳細については、[変更内容 – MVC プロジェクト](http://go.microsoft.com/fwlink/p/?LinkID=513809)に関するページを参照してください。Web API プロジェクトの場合、[変更内容 - Web API プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513810)に関するページを参照してください。
 
 ##次のステップ
 
@@ -74,4 +73,4 @@ Azure Active Directory (Azure AD) を使用し、ASP.NET MVC Web アプリケー
 
  - [ブログの投稿: Azure AD の概要](http://blogs.msdn.com/b/brunoterkaly/archive/2014/03/03/introduction-to-windows-azure-active-directory.aspx)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="Hdinsight での Apache Spark クラスターのプロビジョニング | Microsoft Azure"
-   description="Azure ポータル、Azure PowerShell、コマンド ライン、または HDInsight .NET SDK を使用して、Azure HDInsight 用の Spark クラスターをプロビジョニングする方法について説明します"
-   services="hdinsight"
-   documentationCenter=""
-   authors="nitinme"
-   manager="paulettm"
-   editor="cgronlun"
-   tags="azure-portal"/>
+	description="Azure ポータル、Azure PowerShell、コマンド ライン、または HDInsight .NET SDK を使用して、Azure HDInsight 用の Spark クラスターをプロビジョニングする方法について説明します"
+	services="hdinsight"
+	documentationCenter=""
+	authors="nitinme"
+	manager="paulettm"
+	editor="cgronlun"
+	tags="azure-portal"/>
 <tags
     ms.service="hdinsight"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="big-data"
-    ms.date="08/17/2015"
-    ms.author="nitinme"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="08/17/2015"
+	ms.author="nitinme"/>
 
 # カスタム オプションを使用した HDInsight での Apache Spark クラスターのプロビジョニング
 
@@ -33,7 +33,7 @@
 
 構成中に、Azure BLOB ストレージ アカウントと既定のコンテナーを指定する必要があります。このコンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターに関連付ける追加の Azure ストレージ アカウントBLOB も指定できます。
 
->[AZURE.NOTE] 1 つの Blob ストレージ コンテナーを複数のクラスターで共有しないでください。これはサポートされていません。
+>[AZURE.NOTE]1 つの Blob ストレージ コンテナーを複数のクラスターで共有しないでください。これはサポートされていません。
 
 従属的な BLOB ストアの使用の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)」をご覧ください。
 
@@ -66,7 +66,7 @@ Azure での SQL データベースの作成方法について詳しくは、「
 
 	![diagram of point-to-site configuration](./media/hdinsight-apache-spark-provision-clusters/hdinsight-vnet-point-to-site.png)
 
-仮想ネットワークの機能、利点の詳細については、「[Azure 仮想ネットワークの概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
+仮想ネットワークの機能、利点の詳細については、「[Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 > [AZURE.NOTE]クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの作成方法](virtual-networks-create-vnet.md)」をご覧ください
 >
@@ -101,13 +101,13 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 
 7. **[データ ソース]** をクリックし、クラスターの既存のデータ ソースを選択するか、新しいデータ ソースを作成します。
 
-	![データ ソースブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.4.png "データ ソース構成の指定")
+	![[データ ソース] ブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.4.png "データ ソース構成の指定")
 
 	現在、HDInsight クラスターのデータ ソースとして Azure ストレージ アカウントを選択できます。次の説明を参照して、**[データ ソース]** ブレードのエントリを理解してください。
 
 	- **選択方法**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
 
-	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。新しいストレージ アカウントを作成する場合は **[新規作成]** をクリックします。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑のチェック マークが表示されます。
+	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。新しいストレージ アカウントを作成する場合は **[新規作成]** をクリックします。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
 
 	- **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
 
@@ -119,7 +119,7 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 
 8. **[ノード価格レベル]** をクリックして、このクラスターのために作成されるノードに関する情報を表示します。クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
 
-	![ノード価格レベルブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.5.png "クラスター ノード数の指定")
+	![[ノード価格レベル] ブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.5.png "クラスター ノード数の指定")
 
 	**[選択]** をクリックして、ノードの価格構成を保存します。
 
@@ -129,11 +129,11 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 
 	* **[仮想ネットワーク]** をクリックし、クラスターを仮想ネットワークの一部として構成するための構成の詳細を指定します。 **[仮想ネットワーク]** ブレードで、**[仮想ネットワーク]** をクリックし、使用するネットワークをクリックします。同様に、ネットワークの **[サブネット]** を選択し、**[選択]** をクリックして仮想ネットワークの構成を保存します。
 
-		![仮想ネットワークブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.6.png "仮想ネットワークの詳細の指定")
+		![[仮想ネットワーク] ブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.6.png "仮想ネットワークの詳細の指定")
 
 	* **[外部メタストア]** をクリックし、クラスターに関連付けられた Hive と Oozie のメタデータを保存するために使用する SQL データベースを指定します。
 
-		![カスタム メタストアブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.7.png "外部メタストアの指定")
+		![[カスタム メタストア] ブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.7.png "外部メタストアの指定")
 
 		**[Hive メタデータで既存の SQL DB を使用する]** で、**[はい]** をクリックし、SQL データベースを選択し、データベースのユーザー名/パスワードを指定します。**[Oozie メタデータで既存の SQL DB を使用する]** 場合は、これらの手順を繰り返します。**[オプションの構成]** ブレードに戻るまで **[選択]** をクリックします。
 
@@ -141,13 +141,13 @@ HDInsight 上の Spark クラスターは、既定のファイル システム�
 
 	* クラスターを作成するときに、カスタム スクリプトを使用してクラスターをカスタマイズする場合は、**[Script Action]** をクリックします。スクリプト アクションの詳細については、「[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。[Script Action] ブレードで、次の画面キャプチャに示すように、詳細を指定します。
 
-		![Script ction ブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.8.png "スクリプト アクションの指定")
+		![[Script ction] ブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.8.png "スクリプト アクションの指定")
 
 		**[選択]** をクリックして、スクリプトアクションの構成の変更を保存します。
 
 	* **[Azure ストレージ キー]** をクリックして、クラスターに関連付ける追加のストレージ アカウントを指定します。 **[Azure ストレージ キー]** ブレードで、**[ストレージ キーの追加]** をクリックし、既存のストレージ アカウントを選択するか新しいアカウントを作成します。
 
-		![追加ストレージブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.9.png "追加ストレージ アカウントの指定")
+		![[追加ストレージ] ブレード](./media/hdinsight-apache-spark-provision-clusters/HDI.CreateCluster.9.png "追加ストレージ アカウントの指定")
 
 		**[新しい HDInsight クラスター]** ブレードに戻るまで **[選択]** をクリックします。
 
@@ -437,4 +437,4 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,23 +1,23 @@
 <properties 
-   pageTitle="Azure Storage BLOB コネクタ" 
-   description="Azure Storage BLOB コネクタの使用" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="anuragdalmia" 
-   manager="dwrede" 
-   editor=""/>
+   pageTitle="Logic Apps での Azure Storage Blob コネクタの使用 | Microsoft Azure App Service"
+	description="Azure Storage Blob コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="08/19/2015"
-   ms.author="rajram"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="rajram"/>
    
-# Azure Storage BLOB コネクタ
-BLOB をアップロード、ダウンロード、BLOB コンテナーから削除するには、Azure Storage BLOB に接続します。コネクタは、"ワークフロー" の一部として Logic Apps で使用できます。
+# Azure Storage Blob コネクタの使用開始とロジック アプリへの追加 
+BLOB をアップロード、ダウンロード、BLOB コンテナーから削除するには、Azure Storage BLOB に接続します。コネクタは、"ワークフロー" の一部として Logic Apps で使用されます。
 
 ## トリガーとアクション
 *トリガー*とは、発生するイベントを指します。たとえば、注文が更新された、新しい顧客が追加された、といったイベントがあります。*アクション*は、トリガーの結果です。たとえば、注文が更新されたときに、営業担当者にアラートを送信します。または、新しい顧客が追加されたときに、ウェルカム メールを新しい顧客に送信します。
@@ -102,4 +102,4 @@ BLOB の書き込みコンテンツ | アップロードする BLOB のコンテ
 [11]: ./media/app-service-logic-connector-azurestorageblob/BasicInputsUploadBlob.PNG
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

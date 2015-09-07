@@ -479,7 +479,7 @@ vm-disk-utils-0.1.sh は、azure-quickstart-tempates github リポジトリ内�
 -	リソース グループの同一メンバー (クラスター内のノードなど) に対して、一意のプロパティを持つ複数のインスタンスをデプロイするため、リソース ループを活用する特定のテンプレートを作成します。
 -	すべてのデプロイメント後のタスク (製品のインストールや構成など) について、スクリプト デプロイメントの拡張機能を活用し、各テクノロジに固有のスクリプトを作成します。
 
-詳細については、「[Azure リソース マネージャー テンプレートの言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
+詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

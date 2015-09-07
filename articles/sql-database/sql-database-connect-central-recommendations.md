@@ -1,58 +1,48 @@
 <properties 
-	pageTitle="SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン" 
-	description="ADO.NET および PHP などのテクノロジから Azure SQL Database に接続するクライアント プログラムのリンクおよび推奨事項のまとめが示されている開始ポイントのトピックです。" 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="MightyPen" 
-	manager="jeffreyg" 
+	pageTitle="SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン"
+	description="ADO.NET および PHP などのテクノロジから Azure SQL Database に接続するクライアント プログラムのリンクおよび推奨事項のまとめが示されている開始ポイントのトピックです。"
+	services="sql-database"
+	documentationCenter=""
+	authors="MightyPen"
+	manager="jeffreyg"
 	editor=""/>
 
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/05/2015" 
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/05/2015"
 	ms.author="genemi"/>
 
 
 # SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン
 
 
-このトピックは、Azure SQL Database にクライアント接続を開始するときにお勧めします。ここには、SQL Database に接続して対話的に作業するためのさまざまなテクノロジのコード サンプルへのリンクがあります。これらのテクノロジは、Enterprise Library、JDBC、PHP を含め、その他にもいくつかあります。接続テクノロジやプログラミング言語に関係なく、一般的に該当する推奨事項が示されています。
+このトピックは、Azure SQL Database にクライアント接続を開始するときにお勧めします。ここには、SQL Database に接続して対話的に作業するためのさまざまなテクノロジのコード サンプルへのリンクがあります。これらのテクノロジは、Enterprise Library、JDBC、PHP を含め、その他にもいくつかあります。提供される情報は、SQL Database への接続に使用する特定のテクノロジとは関係なく適用されます。
 
 
 ## テクノロジに依存しない推奨事項
 
 
-このセクションの情報は、SQL Database に接続するために使用する特定のテクノロジとは関係なく適用されます。
-
-
 - 「[プログラムによる Azure SQL Database への接続のガイドライン](http://msdn.microsoft.com/library/azure/ee336282.aspx)」 - 以下の話題が含まれています。
- - ポート
- - ファイアウォール
- - 接続文字列
+ - [ポートとファイアウォール](https://azure.microsoft.com/ja-JP/documentation/articles/sql-database-configure-firewall-settings/)
+ - Connection strings
 - 「[Azure SQL Database のリソース管理](https://msdn.microsoft.com/library/azure/dn338083.aspx)」 - 以下の話題が含まれています。
  - リソース ガバナンス
  - 制限の適用
  - 調整
 
 
-どの接続テクノロジ、さらには個々のデータベースを使用するとしても、SQL Database サーバーのファイアウォールの特定の設定値が問題になります。
-
-
-- [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx)
 
 
 ## 認証における推奨事項
 
 
-- Windows の認証ではなく、SQL Database 認証を使用してください。
+- Azure SQL Database で使用できない Windows 認証ではなく、Azure SQL Database 認証を使用します。
 - 既定の*マスター* データベースではなく、特定のデータベースを明示的に指定してください。
-- *@yourservername* の接尾辞としてユーザー名を指定することが必要な場合と、接尾辞を付けてはならない場合とがあります。それは、ツールや API の作成方法に応じて異なります。
- - 個々のテクノロジのそれぞれの詳細を確認してください。
 - [包含データベース](http://msdn.microsoft.com/library/ff929071.aspx)でユーザーを指定して接続します。
  - このアプローチでは、マスター データベースにログインする必要がなく、パフォーマンスと拡張性が向上します。
  - Transact-SQL の** USE myDatabaseName; **ステートメントを SQL Database に対して使用することはできません。
@@ -65,8 +55,8 @@
  - 既定では 15 秒ですが、インターネットに依存する接続の場合、それでは短すぎます。
 - [Azure SQL Database ファイアウォール](http://msdn.microsoft.com/library/ee621782.aspx)で、ポート 1433 の TCP 発信が許可されていることを確認してください。
  - [ファイアウォール](http://msdn.microsoft.com/library/azure/ee621782.aspx)の設定値は、SQL Database サーバーについて、あるいは個々のデータベースについて構成することができます。
-- [接続プール](http://msdn.microsoft.com/library/8xx3tyca.aspx)を使用している場合、プログラムで接続をアクティブに使用しておらず、単に再使用の準備をしている時間は、接続を閉じてください。
- - プログラムがその接続を別の操作のために休止せずに即座に再使用する場合を除き、以下のパターンを使用することをお勧めします。<br/><br/>接続を開きます。<br/>その接続を使用して操作を 1 つ実行します。<br/>接続を閉じます。<br/><br/>
+- [接続プール](http://msdn.microsoft.com/library/8xx3tyca.aspx)を使用している場合、プログラムで接続をアクティブに使用しておらず、再使用の準備をしている時間は、接続を閉じてください。
+ - プログラムがその接続を別の操作のために休止せずに即座に再使用するというのでない限り、以下のパターンが推奨されています。<br/><br/>接続を開きます。<br/>その接続を使用して操作を 1 つ実行します。<br/>接続を閉じます。<br/><br/>
 - 接続ロジックでは、一時エラーの場合にのみ、再試行ロジックを使用します。SQL Database を使用する場合、接続を開いたりクエリを発行したりする試行は、さまざまな理由で失敗する可能性があります。
  - 失敗が持続する場合、理由として考えられるのは、接続文字列の形式が間違っていることです。
  - 失敗の 1 つの一時的理由として考えられるのは、Azure SQL Database システムで負荷全体のバランス調整が必要であるということです。一時的理由はやがて解消されるため、プログラムでは再試行をする必要があります。
@@ -126,7 +116,7 @@ V11 と ADO.NET 4.5 クライアントの間を仲介するミドルウェアは
 V12 プロキシではさらに小規模な一時的な障害のみを処理します。また別の V12 のケースでは、速度を上げるためプロキシは使用せずにN SQL Database に直接接続します。クライアントの ADO.NET 4.5 プログラムにおいて、Azure SQL Database V12 はこうした変更により Microsoft SQL Server のようになります。
 
 
-再試行ロジックを実施するコード サンプルについては、<br/>「[Client quick-start code samples to SQL Database (SQL Database に対するクライアントのクイック スタート コード サンプル)](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
+再試行ロジックを実施するコード サンプルについては、<br/>「[SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
 
 
 > [AZURE.TIP]実稼働環境では、Azure SQL Database V11 または V12 に接続するクライアントのコード内に再試行ロジックを実装することをお勧めします。これはカスタム コードや、Enterprise Library. などの API を利用するコードにできます。
@@ -168,4 +158,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

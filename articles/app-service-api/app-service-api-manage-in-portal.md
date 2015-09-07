@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="API アプリの管理" 
-	description="Azure ポータルと Visual Studio のサーバー エクスプローラーを使用して Azure App Service API アプリを管理する方法について説明します。" 
-	services="app-service\api" 
-	documentationCenter="" 
-	authors="tdykstra" 
-	manager="wpickett" 
+	pageTitle="API アプリの管理"
+	description="Azure ポータルと Visual Studio のサーバー エクスプローラーを使用して Azure App Service API アプリを管理する方法について説明します。"
+	services="app-service\api"
+	documentationCenter=""
+	authors="tdykstra"
+	manager="wpickett"
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-api" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
+	ms.service="app-service-api"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
-	ms.date="06/17/2015" 
+	ms.topic="article"
+	ms.date="06/17/2015"
 	ms.author="tdykstra"/>
 
 # Azure App Service の API アプリの管理
@@ -65,7 +65,7 @@ Azure App Service では、API アプリとは、Web サービスをホストす
 
 ### [API アプリ ホスト] ブレードでのみ実行できるタスク
 
-**[API アプリ ホスト]** ブレードは、すべての Web アプリを対象とするあらゆるタスクに使用します。詳細については、[ポータルでの Web アプリの管理](../app-service-web/web-sites-manage.md)に関するページを参照してください。
+**[API アプリ ホスト]** ブレードは、すべての Web アプリを対象とするあらゆるタスクに使用します。
 
 ### [ゲートウェイ] ブレードでのみ実行できるタスク
 
@@ -80,7 +80,7 @@ Azure App Service では、API アプリとは、Web サービスをホストす
 
 ### [ゲートウェイ ホスト] ブレードでのみ実行できるタスク
 
-**[ゲートウェイ ホスト]** ブレードは、すべての Web アプリを対象とするあらゆるタスクに使用します。詳細については、[ポータルでの Web アプリの管理](web-sites-manage.md)に関するページを参照してください。
+**[ゲートウェイ ホスト]** ブレードは、すべての Web アプリを対象とするあらゆるタスクに使用します。
 
 ## <a id="navigate"></a>API アプリとゲートウェイのブレードに移動する方法 
 
@@ -134,4 +134,4 @@ Visual Studio の**サーバー エクスプローラー**には、リモート 
 
 コマンド ラインを使用して API アプリを管理する方法については、この記事の左側 (幅の広いブラウザー ウィンドウの場合) または上部 (幅の狭いブラウザー ウィンドウの場合) に表示されているメニューの **[自動化]** セクションの記事を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

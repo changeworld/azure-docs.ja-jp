@@ -1,20 +1,20 @@
 <properties
    pageTitle="Apache Storm と HBase を使用したセンサー データの分析 | Microsoft Azure"
-   description="仮想ネットワークで Apache Storm に接続する方法について説明します。Storm と HBase を使用して、イベント ハブが発するセンサー データを処理して D3.js で視覚化します。"
-   services="hdinsight"
-   documentationCenter=""
-   authors="Blackmist"
-   manager="paulettm"
-   editor="cgronlun"/>
+	description="仮想ネットワークで Apache Storm に接続する方法について説明します。Storm と HBase を使用して、イベント ハブが発するセンサー データを処理して D3.js で視覚化します。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="Blackmist"
+	manager="paulettm"
+	editor="cgronlun"/>
 
 <tags
    ms.service="hdinsight"
-   ms.devlang="java"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="07/06/2015"
-   ms.author="larryfr"/>
+	ms.devlang="java"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="07/06/2015"
+	ms.author="larryfr"/>
 
 # Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する
 
@@ -300,7 +300,7 @@ Storm と HBase を一緒に使用するには、Azure Virtual Network を作成
 
 	- **場所**: 場所は作成する HBase クラスターと同じである必要があります。
 
-	- **DNS サーバー**: この記事では、Azure が提供する内部 DNS サーバーを使用するため、**[なし]** を選択します。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、「[名前解決 (DNS)](http://msdn.microsoft.com/library/azure/jj156088.aspx)」をご覧ください。
+	- **DNS サーバー**: この記事では、Azure が提供する内部 DNS サーバーを使用するため、**[なし]** を選択します。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 4. **[仮想ネットワークの作成]** をクリックします。新しい仮想ネットワーク名が一覧に表示されます。[ステータス] 列に **[作成済み]** が表示されるまで待機します。
 
@@ -420,4 +420,4 @@ Storm クラスターのトポロジを開始し、データを処理すると�
 
 [azure-portal]: https://manage.windowsazure.com/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

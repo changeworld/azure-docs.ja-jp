@@ -208,7 +208,7 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
     > [AZURE.NOTE]**ポイント対サイト**仮想ネットワークの場合、SQL Server が VPN クライアント構成アプリケーションを実行している必要があります。このアプリケーションは、Azure 仮想ネットワーク構成の**ダッシュボード**から入手できます。
 
-    仮想ネットワークの作成と構成方法の詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/library/azure/jj156206.aspx)」を参照してください。
+    仮想ネットワークの作成と構成方法の詳細については、「[仮想ネットワークの構成タスク](../services/virtual-machines/)」を参照してください。
 
 * SQL 認証を許可するよう、SQL Server を構成する必要があります。詳細については、「[認証モードの選択](https://msdn.microsoft.com/ms144284.aspx)」を参照してください。
 
@@ -263,4 +263,4 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

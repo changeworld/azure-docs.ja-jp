@@ -18,7 +18,7 @@
 
 インターネットから SQL Server にアクセスするには、仮想マシンに、着信する TCP 通信をリッスンするエンドポイントが必要です。この Azure 構成手順により、仮想マシンからアクセスできる TCP ポートに、着信する TCP ポート トラフィックが送信されます。
 
->[AZURE.NOTE]同じクラウド サービスまたは仮想ネットワーク内で接続する場合は、公開されたエンドポイントを作成する必要はありません。その場合は、次のステップに進むことができます。詳細については、「[Azure Virtual Machines における SQL Server の接続に関する考慮事項](https://msdn.microsoft.com/library/azure/dn133152.aspx)」を参照してください。
+>[AZURE.NOTE]同じクラウド サービスまたは仮想ネットワーク内で接続する場合は、公開されたエンドポイントを作成する必要はありません。その場合は、次のステップに進むことができます。詳細については、[Connection Scenarios (接続のシナリオ)](../articles/virtual-machines/virtual-machines-sql-server-connectivity.md#connection-scenarios) を参照してください。
 
 1. Azure 管理ポータルで、**[仮想マシン]** をクリックします。
 	
@@ -183,4 +183,4 @@ SQL Server のログインの詳細については、「[ログインの作成](
 
 	![SSMS を使用した接続](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

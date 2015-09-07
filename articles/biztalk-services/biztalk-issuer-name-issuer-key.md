@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="BizTalk Services における発行者名と発行者キー | Microsoft Azure" 
-	description="BizTalk サービスの Service Bus または Access Control (ACS) の発行者名と発行者キーを取得する方法について説明します。MABS、WABS" 
-	services="biztalk-services" 
-	documentationCenter="" 
-	authors="MandiOhlinger" 
-	manager="dwrede" 
+	pageTitle="BizTalk Services における発行者名と発行者キー | Microsoft Azure"
+	description="BizTalk サービスの Service Bus または Access Control (ACS) の発行者名と発行者キーを取得する方法について説明します。MABS、WABS"
+	services="biztalk-services"
+	documentationCenter=""
+	authors="MandiOhlinger"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="biztalk-services" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/07/2015" 
+	ms.service="biztalk-services"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="mandia"/>
 
 
@@ -42,7 +42,9 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 1. [Azure の管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 左のナビゲーション ウィンドウで、**[BizTalk サービス]** を選択します。
 3. BizTalk サービスを選択します。 
-4. タスク バーの **[接続情報]** をクリックします。Access Control 名前空間、既定の発行者 (発行者名)、既定のキー (発行者キー) が一覧に表示され、コピーして貼り付けることができます。<br/><br/> まとめると次のようになります: <br/>発行者名 = 既定の発行者<br/>発行者キー = 既定のキー
+4. タスク バーの **[接続情報]** をクリックします。Access Control 名前空間、既定の発行者 (発行者名)、既定のキー (発行者キー) が一覧に表示され、コピーして貼り付けることができます。  
+
+まとめると次のようになります: 発行者名 = 既定の発行者 発行者キー = 既定のキー
 
 
 [**ACS 管理ポータルを開く**] を選択して Access Control の値を取得することもできます。
@@ -51,7 +53,9 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 2. 左のナビゲーション ウィンドウで、**[BizTalk サービス]** を選択します。
 3. BizTalk サービスを選択します。
 4. [接続情報] をクリックし、**[ACS 管理ポータルを開く]** をクリックします。
-5. [**サービスの設定**] にあるポータルで、[**サービス ID**] を選択します。これにより、サービス ID が表示されます。これは Access Control 発行者名の値です。サービス ID リンクを選択すると、パスワードが表示されます。これは発行者キーの値です。これらの値はコピーできます。<br/><br/> たとえば、[**サービス ID**] に "所有者" と表示されているとします。"所有者" は Access Control 発行者名です。"所有者" リンクをクリックすると、**パスワード**が表示されます。"パスワード" リンクをクリックすると、値が表示されます。このパスワード値は Access Control 発行者キーです。<br/><br/>まとめると次のようになります。<br/>発行者名 = サービス ID 名<br/>発行者キー = パスワード値
+5. [**サービスの設定**] にあるポータルで、[**サービス ID**] を選択します。これにより、サービス ID が表示されます。これは Access Control 発行者名の値です。サービス ID リンクを選択すると、パスワードが表示されます。これは発行者キーの値です。これらの値はコピーできます。<br/><br/> たとえば、[**サービス ID**] に "所有者" と表示されているとします。"所有者" は Access Control 発行者名です。"所有者" リンクをクリックすると、**パスワード**が表示されます。"パスワード" リンクをクリックすると、値が表示されます。このパスワード値は Access Control 発行者キーです。  
+
+まとめると次のようになります。発行者名 = サービス ID 名 発行者キー = パスワード値
 
 左側のナビゲーション ウィンドウで **[Active Directory]** をクリックして Access Control の値を取得することもできます。
 
@@ -65,7 +69,9 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 
 1. [Azure の管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 左のナビゲーション ウィンドウで、[**Service Bus**] を選択します。
-3. 名前空間を選択します。タスク バーで [**接続情報**] をクリックします。これにより、**既定の発行者** (発行者名) と**既定のキー** (発行者キー) が表示されます。これらの値はコピーできます。<br/><br/> まとめると次のようになります:<br/> 発行者名 = 既定の発行者<br/>発行者キー = 既定のキー
+3. 名前空間を選択します。タスク バーで [**接続情報**] をクリックします。これにより、**既定の発行者** (発行者名) と**既定のキー** (発行者キー) が表示されます。これらの値はコピーできます。  
+
+まとめると次のようになります: 発行者名 = 既定の発行者 発行者キー = 既定のキー
 
 ## 次へ
 Azure BizTalk サービスに関するその他のトピック:
@@ -86,4 +92,4 @@ Azure BizTalk サービスに関するその他のトピック:
 - [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

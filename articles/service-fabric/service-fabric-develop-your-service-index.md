@@ -1,20 +1,20 @@
 <properties
    pageTitle="Service Fabric サービスを開発する"
-   description="高信頼アクターや Reliable Services のプログラミング モデルの使用を理解できる概念的な情報とチュートリアル。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="rwike77"
-   manager="timlt"
-   editor=""/>
+	description="高信頼アクターや Reliable Services のプログラミング モデルの使用を理解できる概念的な情報とチュートリアル。"
+	services="service-fabric"
+	documentationCenter=".net"
+	authors="rwike77"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="05/14/2015"
-   ms.author="ryanwi"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/20/2015"
+	ms.author="ryanwi"/>
 
 # Service Fabric サービスを開発する
 このページには、Service Fabric サービスを開発できるようにする概要の記事やチュートリアルのリンクが記載されています。Service Fabric は、サービスを構築するための 2 つの高度なプログラミング モデルを提供します。すなわち、高信頼アクター API と、高信頼サービス API です。いずれも同一の Service Fabric コア上に構築されていますが、同時実行、パーティション分割、および通信の点で、簡潔性と柔軟性の釣り合いの取り方に違いがあります。アプリケーション内の特定のサービスに適切なフレームワークを選択できるように、両方のモデルを理解しておくと便利です。
@@ -53,7 +53,7 @@
 - [同時実行に関連するイベントとパフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md)
 - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
 - [アクターのタイマー](service-fabric-reliable-actors-timers-reminders.md)
- 
+
 高信頼アクターの構成の詳細については、次を参照してください。
 
 - [KVSActorStateProvider 構成](../Service-Fabric/service-fabric-reliable-actors-KVSActorstateprovider-configuration.md)  
@@ -86,6 +86,5 @@ Reliable Services との通信と、クライアントがサービス エンド�
 Reliable Services はイベントとパフォーマンス カウンターを出力し、サービスの診断と監視に使用することができます。
 
 - [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

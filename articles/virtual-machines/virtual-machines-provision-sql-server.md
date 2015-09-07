@@ -1,22 +1,28 @@
 <properties 
-	pageTitle="Azure での SQL Server 仮想マシンのプロビジョニング" 
-	description="Azure で SQL Server 仮想マシンを作成して構成する方法を学習するチュートリアルです。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="rothja" 
-	manager="jeffreyg" 
+	pageTitle="Azure での SQL Server 仮想マシンのプロビジョニング"
+	description="このチュートリアルでは、Azure で SQL Server VM を作成および構成する方法を説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="rothja"
+	manager="jeffreyg"
 	editor="monicar"/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-windows-sql-server" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/28/2015" 
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="jroth"/>
 
-# Azure での SQL Server 仮想マシンのプロビジョニング #
+# Azure での SQL Server 仮想マシンのプロビジョニング
+
+> [AZURE.SELECTOR]
+- [Portal](virtual-machines-provision-sql-server.md)
+- [PowerShell](virtual-machines-sql-server-create-vm-with-powershell.md)
+
+## 概要
 
 Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。ギャラリーからいずれかの仮想マシン イメージを選択すると、わずか数クリックで、Azure 環境への仮想マシンのプロビジョニングを行うことができます。
 
@@ -37,11 +43,11 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 
 	![Choose an Image](./media/virtual-machines-provision-sql-server/choose-sql-vm.png)
 
-Azure でサポートされる SQL Server イメージの最新情報については、「[Azure の仮想マシンにおける SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294720)」をご覧ください。
+Azure でサポートされる SQL Server イメージの最新情報については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)」をご覧ください。
 
 >[AZURE.NOTE]プラットフォーム イメージの SQL Server 評価エディションを使用して仮想マシンを作成した場合、それをギャラリーにある分単位課金エディション イメージにアップグレードすることはできません。次の 2 つのオプションのいずれかを選択できます。
 >
-> - ギャラリーにある分単位課金エディションの SQL Server を使用して新しい仮想マシンを作成し、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database)」の手順に従って、データベース ファイルをこの新しい仮想マシンに移行します。
+> - ギャラリーにある分単位課金エディションの SQL Server を使用して新しい仮想マシンを作成し、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database)」の手順に従って、データベース ファイルをこの新しい仮想マシンに移できます。
 > - または、「[SQL Server の別のエディションへのアップグレード](https://msdn.microsoft.com/library/cc707783.aspx)」の手順に従って、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の合意に基づき、SQL Server 評価エディションの既存のインスタンスを異なるエディションの SQL Server にアップグレードします。SQL Server のライセンス コピーを購入する方法については、[SQL Server の購入方法に関するページ](http://www.microsoft.com/sqlserver/get-sql-server/how-to-buy.aspx)を参照してください。
 
 4. 最初の **[仮想マシンの構成]** ページで、次の情報を指定します。
@@ -61,7 +67,7 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
     > - SQL Server Enterprise Edition を使用する場合は、A3 以上を選択してください。
    	> - SQL Server 2012 または 2014 Enterprise Optimized for Transactional Workloads イメージを使用する場合は A4 以上を選んでください。  
    	> - SQL Server 2012 または 2014 Enterprise Optimized for Data Warehousing Workloads イメージを使用する場合は A7 以上を選んでください。 
-   	> - 最大のパフォーマンスを得るには、Premium Storage の DS2 または DS3 を使用します。詳細については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://msdn.microsoft.com/library/azure/dn133149.aspx)」をご覧ください。
+   	> - 最大のパフォーマンスを得るには、Premium Storage の DS2 または DS3 を使用します。詳細については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」をご覧ください。
    	> - 選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines-size-specs.md)」を参照してください。
 
 5. VM 構成の詳細を入力後、右下にある次へ進む矢印をクリックして続行します。
@@ -70,7 +76,7 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 	- **[クラウド サービス]** ボックスで、**[新しいクラウド サービスの作成]** を選択します。
 	- **[クラウド サービス DNS 名]** ボックスに、目的の DNS 名の最初の部分を入力すると、**TESTNAME.cloudapp.net** という形式の完全な名前を指定できます。 
 	- 複数のサブスクリプションがある場合は、**[サブスクリプション]** を選択します。この選択で、利用できる**ストレージ アカウントが決まります。
-	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
+- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
 	- **[ストレージ アカウント]** で、自動的にアカウントを生成するか、一覧から 1 つ選択します。**[サブスクリプション]** を変更して複数のアカウントを表示します。 
 	- **[可用性セット]** ボックスの一覧の **[(なし)]** を選択します。
 	- 法律条項を読み、同意します。
@@ -124,30 +130,30 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 
 プラットフォーム イメージを使用してAzure に SQL Server 仮想マシンを作成し、構成する方法を見てきました。多くの場合、次の手順はこの新しい SQL Server VM にデータベースを移行することです。データベース移行方法については、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)」をご覧ください。
 
-これらのリソースの他、[Azure の仮想マシンにおける SQL Serverに関連するその他のトピック](virtual-machines-sql-server-infrastructure-services.md)もご覧になることをお勧めします。次に、具体的なお勧めのリソースの一覧を示します。
+次の一覧には、Azure 仮想マシンにおける SQL Server のその他のリソースが示されています。
 
 ### Azure VM 上の SQL Server 用のお勧めのリソース:
-- [Azure の仮想マシンにおける SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294720)
+- [Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)
 
-- [Azure の仮想マシンにおける SQL Server の接続に関する考慮事項](http://go.microsoft.com/fwlink/p/?LinkId=294723)
+- [Azure での SQL Server 仮想マシンへの接続](virtual-machines-sql-server-connectivity.md)
 
-- [Azure Virtual Machines における SQL Server のパフォーマンスに関する考慮事項](http://go.microsoft.com/fwlink/?LinkId=294724)
+- [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)
 
-- [Azure 仮想マシンにおける SQL Server のセキュリティに関する考慮事項](http://go.microsoft.com/fwlink/p/?LinkId=294725)
+- [Azure 仮想マシンにおける SQL Server のセキュリティに関する考慮事項](virtual-machines-sql-server-security-considerations.md)
 
 ### 高可用性と障害復旧
-- [Azure の仮想マシン内の SQL Server の高可用性と災害復旧](http://go.microsoft.com/fwlink/p/?LinkId=294727)
+- [Azure の仮想マシン内の SQL Server の高可用性と災害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)
 
-- [Azure の仮想マシンにおける SQL Server のバックアップと復元](http://go.microsoft.com/fwlink/p/?LinkId=294728)
+- [Azure の仮想マシンにおける SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)
 
 ### Azure での SQL Server ワークロード
-- [Azure の仮想マシンでの SQL Server Business Intelligence](http://go.microsoft.com/fwlink/p/?LinkId=294729)
+- [Azure の仮想マシンでの SQL Server Business Intelligence](virtual-machines-sql-server-business-intelligence.md)
 
-- [SQL Server Data Warehousing and Transactional Workloads in Azure Virtual Machines (Azure の仮想マシンにおける SQL Server データ ウェアハウスおよびトランザクション ワークロード)](http://msdn.microsoft.com/library/windowsazure/dn387396.aspx)
+- [SQL Server Data Warehousing and Transactional Workloads in Azure Virtual Machines (Azure の仮想マシンにおける SQL Server データ ウェアハウスおよびトランザクション ワークロード)](virtual-machines-sql-server-dw-and-oltp-workloads.md)
 
 ### ホワイト ペーパー
 - [Understand Azure SQL Database and SQL Server in Azure Virtual Machines (Azure Virtual Machines における Azure SQL Database と SQL Server について)](sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)
 
-- [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](http://msdn.microsoft.com/library/azure/dn574746.aspx)
+- [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

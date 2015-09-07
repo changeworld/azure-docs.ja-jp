@@ -490,7 +490,7 @@ azuredeploy.json の "parameters" セクションには、このテンプレー�
 
 Spark クラスターのデプロイのサイズをカスタマイズするには、azuredeploy.json テンプレート内の変数 **tshirtSizeS**、**tshirtSizeM**、および **tshirtSizeL** のプロパティを変更します。
 
-テンプレート言語の詳細については、MSDN の「[Azure リソース マネージャーのテンプレート言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
+テンプレート言語の詳細については、MSDN の「[Azure リソース マネージャーのテンプレート言語](../resource-group-authoring-templates.md)」を参照してください。
 
 
 ### "resources" セクション
@@ -833,7 +833,7 @@ Spark クラスターのデプロイのサイズをカスタマイズするに�
 -	リソース グループの同一メンバー (クラスター内のノードなど) に対して、一意のプロパティを持つ複数のインスタンスをデプロイするため、リソース ループを活用する特定のテンプレートを作成します。
 -	すべてのデプロイメント後のタスク (製品のインストールや構成など) について、スクリプト デプロイメントの拡張機能を活用し、各テクノロジに固有のスクリプトを作成します。
 
-詳細については、「[Azure リソース マネージャー テンプレートの言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
+詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
 
 ## 次のステップ
 
@@ -843,4 +843,4 @@ Spark クラスターのデプロイのサイズをカスタマイズするに�
 
 [Troubleshoot template deployments (テンプレート デプロイのトラブルシューティング)](resource-group-deploy-debug.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

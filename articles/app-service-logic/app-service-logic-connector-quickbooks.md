@@ -1,25 +1,24 @@
 <properties
-   pageTitle="QuickBooks コネクタ"
-   description="QuickBooks コネクタの使用方法"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での QuickBooks コネクタの使用 | Microsoft Azure App Service"
+	description="QuickBooks コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="sameerch"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="sameerch"/>
 
 
-#Logic App で QuickBooks コネクタを使用する#
-
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。QuickBooks コネクタを使用すると、さまざまな QuickBooks エンティティを作成、変更できます。次に、QuickBooks コネクタでサポートされている QuickBooks エンティティの一覧を示します。
+# QuickBooks コネクタの使用開始とロジック アプリへの追加
+QuickBooks コネクタを使用して、さまざまな QuickBooks エンティティを作成、変更します。次の表は、サポートされるエンティティを一覧表示しています。
 
 エンティティ|説明
 ---|---
@@ -31,7 +30,7 @@ CreditMemo|CreditMemo は、販売された商品またはサービスに対す�
 項目|項目は、会社が購入、販売、再販売するもの (製品、送料、手数料、割引、消費税 (該当する場合) など) です。1つの項目は、請求書や他の販売様式で一行で表示されます。
 SalesReceipt|このエンティティは、顧客に与えられるレシートを表します。
 
-
+ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。この QuickBooks コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ##QuickBooks アクション ##
 次に、QuickBooks コネクタで使用できるさまざまなアクションを示します。
@@ -141,4 +140,4 @@ QuickBooks にアカウントを作成し、同じアカウントの [カテゴ�
 [12]: ./media/app-service-logic-connector-quickbooks/12_Update_Account_Address.png
 [13]: ./media/app-service-logic-connector-quickbooks/13_Create_new_quickbooks_connector.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

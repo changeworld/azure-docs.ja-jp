@@ -1,15 +1,15 @@
-## How to create a VNet using the Azure CLI
+## Azure CLI を使用して VNet を作成する方法
 
-You can use the Azure CLI to manage your Azure resources from the command prompt from any computer running Windows, Linux, or OSX. To create a VNet by using the Azure CLI, follow the steps below.
+Azure CLI を使用すると、Windows、Linux、または OSX を実行している任意のコンピューターのコマンド プロンプトから Azure のリソースを管理することができます。Azure CLl を使用して VNet を作成するには、次の手順に従います。
 
-1. If you have never used the Azure CLI, see [Install and Configure the Azure CLI](xplat-cli.md) and follow the instructions up to the point where you select your Azure account and subscription.
-2. Run the **azure config mode** command to switch to Resource Manager mode, as shown below.
+1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli.md)を参照して、指示に従い Azure のアカウントとサブスクリプションを選択します。
+2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
 
 		info:    New mode is arm
 
-3. If necessary, run the **azure group create** to create a new resource group, as shown below. Notice the output of the command. The list shown after the output explains the parameters used. For more information about resource groups, visit [Azure Resource Manager Overview](resource-group-overview.md/#resource-groups).
+3. 必要に応じて、次のように **azure group create** で新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。リソース グループの詳細については、[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)を参照してください。
 
 		azure group create -n TestRG -l centralus
 
@@ -25,10 +25,10 @@ You can use the Azure CLI to manage your Azure resources from the command prompt
 		data:
 		info:    group create command OK
 
-	- **-n (or --name)**. Name for the new resource group. For our scenario, *TestRG*.
-	- **-l (or --location)**. Azure region where the new resource group will be created. For our scenario, *centralus*.
+	- **-n (または --name)**。新しいリソース グループの名前です。ここでは、*TestRG* です。
+	- **-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。ここでは、*centralus* です。
 
-4. Run the **azure network vnet create** command to create a VNet and a subnet, as shown below. Notice the output from the CLI command. The list shown after the output explains the parameters used.
+4. 次に示すように、**azure network vnet create** コマンドを実行し、 VNet とサブネットを作成します。CLI コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。
 5. 
 		azure network vnet create -g TestRG -n TestVNet -a 192.168.0.0/16 -l centralus
 
@@ -45,12 +45,12 @@ You can use the Azure CLI to manage your Azure resources from the command prompt
 		data:      192.168.0.0/16
 		info:    network vnet create command OK
 
-	- **-g (or --resource-group)**. Name of the resource group where the VNet will be created. For our scenario, *TestRG*.
-	- **-n (or --name)**. Name of the VNet to be created. For our scenario, *TestVNet*
-	- **-a (or --address-prefixes)**. List of CIDR blocks used for the VNet address space. For our scenario, *192.168.0.0/16*
-	- **-l (or --location)**. Azure region where the VNet will be created. For our scenario, *centralus*.
+	- **-g (または --resource-group)**。VNet の作成場所となるリソース グループの名前です。ここでは、*TestRG* です。
+	- **-n (または --name)**。作成する VNet の名前です。ここでは、*TestVNet* です。
+	- **-a (または --address-prefixes)**。VNet のアドレス空間に使用される CIDR ブロックの一覧です。ここでは、*192.168.0.0/16* です。
+	- **-l (または --location)**。VNet が作成される Azure リージョンです。ここでは、*centralus* です。
 
-5. Run the **azure network vnet subnet create** command to create a subnet as shown below. Notice the output of the command. The list shown after the output explains the parameters used.
+5. 次に示すように、**azure network vnet subnet create** コマンドを実行してサブネットを作成します。コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。
 
 		azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
 
@@ -66,15 +66,15 @@ You can use the Azure CLI to manage your Azure resources from the command prompt
 		data:
 		info:    network vnet subnet create command OK
 
-	- **-e (or --vnet-name**. Name of the VNet where the subnet will be created. For our scenario, *TestVNet*.
-	- **-n (or --name)**. Name of the new subnet. For our scenario, *FrontEnd*.
-	- **-a (or --address-prefix)**. Subnet CIDR block. Four our scenario, *192.168.1.0/24*.
+	- **-e (または --vnet-name)**。サブネットの作成先となる VNet の名前です。ここでは、*TestVNet* です。
+	- **-n (または --name)**。新しいサブネットの名前です。ここでは、*FrontEnd* です。
+	- **-a (または --address-prefix)**。サブネットの CIDR ブロックです。ここでは、*192.168.1.0/24* です。
 
-6. Repeat step 5 above to create other subnets, if necessary. For our scenario, run the command below to create the *BackEnd* subnet.
+6. 必要に応じて、上記の手順 5. を繰り返して他のサブネットを作成します。次のコマンドを使用して、このシナリオの *BackEnd* サブネットを作成します。
 
 		azure network vnet subnet create -g TestRG -e TestVNet -n BackEnd -a 192.168.2.0/24
 
-4. Run the **azure network vnet show** command to view the properties of the new vnet, as shown below.
+4. 次に示すように、**azure network vnet show** コマンドを実行して新しい VNet のプロパティを表示します。
 
 		azure network vnet show -g TestRG -n TestVNet
 
@@ -95,3 +95,5 @@ You can use the Azure CLI to manage your Azure resources from the command prompt
 		data:      Address prefix                : 192.168.2.0/24
 		data:
 		info:    network vnet show command OK
+
+<!---HONumber=August15_HO9-->

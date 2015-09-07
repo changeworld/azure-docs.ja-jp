@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Azure Automation DSC の概要" 
-   description="Azure Automation Desired State Configuration (DSC) の概要、その利用規約、および既知の問題" 
-   services="automation" 
-   documentationCenter="dev-center-name" 
-   authors="coreyp-at-msft" 
-   manager="stevenka" 
-   editor="tysonn"/>
+   pageTitle="Azure Automation DSC の概要"
+	description="Azure Automation Desired State Configuration (DSC) の概要、その利用規約、および既知の問題"
+	services="automation"
+	documentationCenter="dev-center-name"
+	authors="coreyp-at-msft"
+	manager="stevenka"
+	editor="tysonn"/>
 
 <tags
    ms.service="automation"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="powershell"
-   ms.workload="TBD" 
-   ms.date="07/09/2015"
-   ms.author="coreyp"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="powershell"
+	ms.workload="TBD"
+	ms.date="08/18/2015"
+	ms.author="coreyp"/>
 
 # Azure Automation DSC の概要 #
 
@@ -57,7 +57,7 @@ PowerShell DSC では、構成という新しい概念が導入されました�
 
 ![alt text](./media/automation-dsc-overview/AADSC_1.png)
 
-構成ブロック内には、まったく同じように構成する必要がある環境内の一連のノード (コンピューター) に必要な構成を指定するノードの構成ブロックを定義できます。このようにして、ノード構成では想定される 1 つ以上のノードの「ロール」を示します。ノードの構成ブロックはノード キーワードで始まります。このキーワードの後にロール名 (変数の場合あり) を付加します。コンピューター名の後に中かっこ {} を使用して、ノードの構成ブロックを区切ります。
+構成ブロック内には、まったく同じように構成する必要がある環境内の一連のノード (コンピューター) に必要な構成を指定するノードの構成ブロックを定義できます。このようにして、ノード構成では想定される 1 つ以上のノードの「ロール」を示します。ノードの構成ブロックはノード キーワードで始まります。このキーワードの後にロール名 (変数または式の場合あり) を付加します。ロール名の後に中かっこ {} を使用して、ノードの構成ブロックを区切ります。
 
 ![alt text](./media/automation-dsc-overview/AADSC_2.png)
  
@@ -89,7 +89,7 @@ PS DSC ノードは、DSC プッシュまたはプル メソッドのいずれ�
 
 ###ノード###
 
-DSC ノードは任意のコンピューターで、構成は DSC によって管理されます。これは、Azure VM またはオンプレミス VM/物理ホストである場合があります。ノードは、定義した必要な状態になり、その状態の準拠を維持するようにノード構成を制定します。また、構成状態と準拠に関するレポートをレポート サーバーに返すこともできます。
+DSC ノードは、その構成が DSC によって管理される任意のコンピューターです。これは、Azure VM またはオンプレミスの VM/物理ホストである場合があります。ノードは、定義した必要な状態になり、その状態の準拠を維持するようにノード構成を制定します。また、構成状態と準拠に関するレポートをレポート サーバーに返すこともできます。
 
 Azure Automation DSC は Azure Automation DSC によって管理されるノードのオンボードを容易にし、ノード サーバー側にそれぞれ割り当てられているノード構成を変更できるようにするため、ノードは次回サーバーの指示を確認する際に、別のロールを想定し、一致するように構成方法を変更します。また、ノードはその状態と構成の準拠について、Azure Automation DSC にレポートします。
 
@@ -170,7 +170,7 @@ DSC リソースは、一連の組み込み DSC リソースを拡張するた�
 
 Azure Automation DSC には、PS DSC と同じ組み込み DSC リソースがすべて付属しています。Azure Automation にリソースを含む PowerShell モジュールをインポートすることで、Azure Automation DSC にリソースをさらに追加することができます。
 
-現在、Azure Automation DSC では、DSC ノードを管理するために [Azure リソース マネージャーの PowerShell モジュール](https://msdn.microsoft.com/library/mt244122.aspx)で以下のコマンドレットが提供されます。
+現在、Azure Automation DSC では、PowerShell モジュールを管理するために [Azure リソース マネージャーの PowerShell モジュール](https://msdn.microsoft.com/library/mt244122.aspx)で以下のコマンドレットが提供されます。
 
 - `New-AzureAutomationModule`
 - `Remove-AzureAutomationModule`
@@ -195,7 +195,7 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 ##認識されている既知の問題##
 
-- Azure Automation DSC はプレビュー段階であるため、この機能を初めて使用する際には、Azure PowerShell コマンドレットを使用してサインアップする必要があります。次の 2 つのコマンドレットを呼び出すことでサインアップできます。
+- Azure Automation DSC はプレビュー段階であるため、この機能を初めて使用する際には、Azure PowerShell コマンドレットまたは Azure プレビュー ポータルを使用してサインアップする必要があります。次の 2 つのコマンドレットを呼び出すことでサインアップできます。
 
  - `Register-AzureProvider –ProviderNamespace Microsoft.Automation`
  - `Register-AzureProviderFeature -FeatureName dsc -ProviderNamespace Microsoft.Automation` 
@@ -226,4 +226,4 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - Azure Automation DSC にオンボードされた DSC ノードは、最初、マップされている DSC ノード構成に実際には適合していない場合であっても、「適合」状態を示します。ノードが初めてのプルを実行して、最初の DSC レポートを Azure Automation DSC に送信した後、ノードの状態は正しくなります。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

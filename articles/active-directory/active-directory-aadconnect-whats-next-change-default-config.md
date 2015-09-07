@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure AD Connect の既定の構成の変更" 
-	description="Azure AD Connect の既定の構成を変更する方法について説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure AD Connect の既定の構成の変更"
+	description="Azure AD Connect の既定の構成を変更する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/28/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure AD Connect の既定の構成の変更 
@@ -27,4 +27,4 @@
 - 同期規則エディターを使用して、カスタムの同期規則をエクスポートします。これにより、障害復旧シナリオの場合に、簡単に再作成をするために使用できる PowerShell スクリプトが提供されます。
 - "標準" の同期規則のスコープ設定または結合の設定を変更する必要がある場合は、このことを文書化し、Azure AD Connect の新しいバージョンにアップグレードした後、変更を適用します。 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

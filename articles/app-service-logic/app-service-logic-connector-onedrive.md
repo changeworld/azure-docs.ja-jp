@@ -1,6 +1,6 @@
 <properties
-	pageTitle="OneDrive コネクタ"
-	description="OneDrive コネクタの使用"
+	pageTitle="Logic Apps での OneDrive コネクタの使用 | Microsoft Azure App Service"
+	description="OneDrive コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
 	authors="anuragdalmia"
 	manager="dwrede"
 	editor=""
@@ -13,14 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/19/2015"
+	ms.date="08/23/2015"
 	ms.author="andalmia"/>
 
-# ロジック アプリで OneDrive コネクタを使用する #
-
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
-
-OneDrive コネクタを使用すると、OneDrive アカウントからファイルをアップロード、ダウンロード、削除できます。
+# OneDrive コネクタの使用開始とロジック アプリへの追加
+OneDrive に接続して、ファイルのアップロード、ダウンロード、および削除を実行できます。ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。この OneDrive コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ## Logic App 用の OneDrive コネクタを作成する ##
 OneDrive コネクタを使用するには、まず OneDrive コネクタ API アプリのインスタンスを作成する必要があります。これは、ロジック アプリ デザイナーから直接作成することも、ロジック アプリ デザイナーの外から作成することも実行できます。デザイナーの外からインスタンスを作成する場合の手順は次のとおりです。
@@ -98,4 +95,4 @@ API アプリを作成すると、Logic App のアクションとして OneDrive
 [新しい Logic App の作成]: app-service-logic-create-a-logic-app.md
 [OneDrive API の定義]: https://msdn.microsoft.com/library/dn974227.aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

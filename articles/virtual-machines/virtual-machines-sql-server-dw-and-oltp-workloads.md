@@ -5,7 +5,7 @@
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar" />
+	editor="monicar"/>
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="08/19/2015"
-	ms.author="jroth" />
+	ms.author="jroth"/>
 
 # SQL Server Data Warehousing and Transactional Workloads in Azure Virtual Machines (Azure Virtual Machines における SQL Server データ ウェアハウスおよびトランザクション ワークロード)
 
-Azure の仮想マシンでデータ ウェアハウスまたはトランザクションのワークロード用に SQL Server を使用するには、Azure Virtual Machines ギャラリーにある構成済み仮想マシン イメージの 1 つを使用することをお勧めします。これらのイメージは、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://msdn.microsoft.com/library/azure/dn133149.aspx)」に記載されている推奨事項に基づいて最適化されています。
+Azure の仮想マシンでデータ ウェアハウスまたはトランザクションのワークロード用に SQL Server を使用するには、Azure Virtual Machines ギャラリーにある構成済み仮想マシン イメージの 1 つを使用することをお勧めします。これらのイメージは、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」に記載されている推奨事項に基づいて最適化されています。
 
 この記事では、Azure Virtual Machines におけるこれらのワークロードの実行を中心に説明します (これは、サービスとしてのインフラストラクチャ (IaaS) とも呼ばれます)。また、データ ウェアハウスとトランザクション ワークロードを Azure でサービスとして実行することができます。詳細については、[Azure SQL Data Warehouse プレビュー](http://azure.microsoft.com/documentation/services/sql-data-warehouse/)に関するページと [Azure SQL Database](http://azure.microsoft.com/documentation/services/sql-database/) に関するページを参照してください。
 
@@ -75,27 +75,30 @@ PowerShell を使用してイメージを作成する方法の詳細について
 
 ## トランザクション/DW イメージに含まれる個々の構成
 
-イメージに含まれる最適化は「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://msdn.microsoft.com/library/azure/dn133149.aspx)」に基づいています。具体的には、これらのイメージの構成には、次のような最適化が含まれます。
+イメージに含まれる最適化は「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」に基づいています。具体的には、これらのイメージの構成には、次のような最適化が含まれます。
 
 >[AZURE.NOTE]独自のライセンスを持ち込んで、一からデータ ウェアハウスまたはトランザクションの仮想マシンを作成する場合は、パフォーマンスに関する記事と、以下の構成済みギャラリー イメージの最適化の例に基づいて最適化できます。
 
 ### ディスクの構成
 
-
+|構成|設定|
 |---|---|
 |接続されているデータ ディスクの数|15|
-|記憶域|次の 2 つの記憶域プール:<br/>12 個のデータ ディスクを含む 1 つのデータ プール (固定サイズ: 12 TB、列: 12)<br/>-- 3 つのデータ ディスクを含む 1 つのログ プール (固定サイズ: 3 TB、列: 3)<br/><br/>1 つのデータ ディスクは、ユーザーが接続し、使用法を決定するためのものです。<br/><br/>**DW**: ストライプ サイズ = 256 KB<br/>**トランザクション**: ストライプ サイズ = 64 KB|
-|ディスクのサイズ、キャッシュ、割り当てサイズ|それぞれ 1 TB、HostCache = なし、NTFS アロケーション ユニット サイズ = 64 KB|
+|記憶域|次の 2 つの記憶域プール:<br/>--12 個のデータ ディスクを含む 1 つのデータ プール (固定サイズ: 12 TB、列: 12)<br/>-- 3 つのデータ ディスクを含む 1 つのログ プール (固定サイズ: 3 TB、列: 3)<br/><br/>1 つのデータ ディスクは、ユーザーが接続し、使用法を決定するためのものです。<br/><br/>**DW**: ストライプ サイズ = 256 KB<br/>**トランザクション**: ストライプ サイズ = 64 KB|
+|ディスク サイズ|各 1 TB|
+|キャッシュ|HostCache=なし|
+|アロケーション サイズ|NTFS アロケーション ユニット サイズ = 64KB|
 
 ### SQL Server の構成
 
+|構成|設定|
 |---|---|
-|起動時のパラメーター|- T1117。データベースで自動拡張が必要な場合に、データ ファイルを同じサイズに保つことができます。<br/><br/>-T1118。tempdb スケーラビリティをサポートします (詳細については、[SQL Server (2005 および 2008) トレース フラグ 1118 (-T1118) の使用](http://blogs.msdn.com/b/psssql/archive/2008/12/17/sql-server-2005-and-2008-trace-flag-1118-t1118-usage.aspx?WT.mc_id=Blog_SQL_Announce_Announce)に関するページを参照してください)。|
-|復旧モデル|**DW**: ALTER DATABASE を使用して、モデル データベースを "SIMPLE" に設定します。<br/>**トランザクション**: 変更しません。|
+|起動時のパラメーター|- T1117。データベースで自動拡張が必要な場合に、データ ファイルを同じサイズに保つことができます。<br/><br/>-T1118。tempdb のスケーラビリティをサポートします (詳細については、[SQL Server (2005 および 2008) トレース フラグ 1118 (-T1118) の使用](http://blogs.msdn.com/b/psssql/archive/2008/12/17/sql-server-2005-and-2008-trace-flag-1118-t1118-usage.aspx?WT.mc_id=Blog_SQL_Announce_Announce)に関するページをご覧ください)。|
+|復旧モデル|**DW**: ALTER DATABASE を使用して、モデル データベースを "SIMPLE" に設定します。<br/>**トランザクション**: 変更なし|
 |既定の場所の設定|SQL Server のエラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。|
 |データベースの既定の場所|システム データベースはデータ ディスクに移動されました。<br/><br/>ユーザー データベースを作成するための場所はデータ ディスクに変更されました。|
 |ファイルの瞬時初期化|有効|
-|メモリ内のページのロック|有効 (詳細については、「[Lock Pages in Memory オプションの有効化 (Windows)](https://msdn.microsoft.com/library/ms190730.aspx)」を参照してください。|
+|メモリ内のページのロック|有効 (詳細については、「[Lock Pages in Memory オプションの有効化 (Windows)](https://msdn.microsoft.com/library/ms190730.aspx)」をご覧ください。|
 
 ## FAQ
 
@@ -113,7 +116,7 @@ PowerShell を使用してイメージを作成する方法の詳細について
 
 - 記憶域の詳細情報はどこにありますか。
 
-	記憶域の詳細については、[記憶域に関してよく寄せられる質問 (FAQ)](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx) に関するページを参照してください。
+	記憶域の詳細については、[記憶域に関してよく寄せられる質問 (FAQ)](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx) に関するページをご覧ください。
 
 - 新しい DW イメージと以前の DW イメージとの違いは何ですか。
 
@@ -132,4 +135,4 @@ PowerShell を使用してイメージを作成する方法の詳細について
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

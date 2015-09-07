@@ -1,21 +1,12 @@
-<properties 
-   pageTitle="構成強制トンネリングを Microsoft Azure VPN ゲートウェイ"
-   description="仮想ネットワークの間のクロスプレミス VPN ゲートウェイを使用していればリダイレクトしたり、インターネット宛てのすべてのトラフィックを内部設置型の場所に「強制」できます。"
-   services="vpn-gateway"
-   documentationCenter="na"
-   authors="cherylmc"
-   manager="jdial"
-   editor="tysonn" />
-
-
-<tags 
+<properties pageTitle="Microsoft Azure VPN Gateways の強制トンネリングの構成 | Microsoft Azure" description="クロスプレミスの VPN ゲートウェイを含む仮想ネットワークの場合、インターネットへのすべてのトラフィックをオンプレミスの場所にリダイレクトまたは ”強制的” に戻すことができます。" services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carolz" editor=""/>
+<tags  
    ms.service="vpn-gateway"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/13/2015"
-   ms.author="cherylmc" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/20/2015"
+	ms.author="cherylmc"/>
 
 # 強制トンネリングについて
 
@@ -29,7 +20,7 @@
 
 ## 要件と考慮事項
 
-Azure では、強制トンネリングは Virtual Network User-Defined ルートを使用して構成されます。オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN ゲートウェイへの既定のルートとして表されます。以下のセクションでは、Azure Virtual Network のルーティング テーブルおよびルートの現在の制限を一覧表示します。
+Azure では、強制トンネリングは仮想ネットワークのユーザー定義ルートを使用して構成されます。オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN Gateway への既定のルートとして表されます。以下のセクションでは、Azure Virtual Network のルーティング テーブルおよびルートの現在の制限を一覧表示します。
 
 
 
@@ -43,15 +34,17 @@ Azure では、強制トンネリングは Virtual Network User-Defined ルー�
 
 
 
--  User-Defined Route をリリースすることにより、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを、ご使用の VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
+-  ユーザー定義ルートをリリースすることにより、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを、ご使用の VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にします。
 
-- 強制トンネリングは、Azure Dynamic Routing VPN ゲートウェイ (静的ゲートウェイではない) を持つ VNet に関連付ける必要があります。仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。
+- 強制トンネリングは、動的ルーティング VPN ゲートウェイ (静的ゲートウェイではない) を持つ VNet に関連付ける必要があります。仮想ネットワークに接続されたクロスプレミス ローカル サイト間で「既定のサイト」を設定する必要があります。
 
-- ExpressRoute Forced Tunneling は、このメカニズムを介して構成されていませんが、代わりに ExpressRoute BGP ピアリング セッションを介して、既定のルートの告知がユーザーによって有効になることに注意してください。詳細については、[ExpressRoute Documentation](https://azure.microsoft.com/documentation/services/expressroute/) を参照してください。
+- ExpressRoute の強制トンネリングは、このメカニズムを介して構成されていませんが、代わりに ExpressRoute BGP ピアリング セッションを介して既定ルートを告知することで有効になっています。詳細については、[ExpressRoute Documentation](https://azure.microsoft.com/documentation/services/expressroute/) を参照してください。
 
-## 強制トンネリングの構成方法
+## 構成の概要
 
-以下の手順は、仮想ネットワークで強制トンネリングを指定するのに役立ちます。構成手順は、次の仮想ネットワークの例に対応します。仮想ネットワークである MultiTier-VNet には、*Frontend*、*Midtier*、および*Backend* の 3 つのサブネットがあり、 *DefaultSiteHQ*、および 3 つの*Branch* の計 4 つのクロス プレミス接続があります。以下の構成手順で *DefaultSiteHQ* を強制トンネリングの既定のサイト接続として設定し、強制トンネリングを使用するために*Midtier* と *Backend* を構成します。
+以下の手順は、仮想ネットワークで強制トンネリングを指定するのに役立ちます。構成手順は、以下に示す仮想ネットワークの netcfg ファイルの例に対応します。
+
+この例では、仮想ネットワークである ”MultiTier-VNet” には、*Frontend*、*Midtier*、および*Backend* の 3 つのサブネットがあり、 *DefaultSiteHQ*、および 3 つの*Branch* の計 4 つのクロス プレミス接続があります。以下の手順で *DefaultSiteHQ* を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように *Midtier* と *Backend* を構成します。
 
 	<VirtualNetworkSite name="MultiTier-VNet" Location="North Europe">
      <AddressSpace>
@@ -97,6 +90,8 @@ Azure では、強制トンネリングは Virtual Network User-Defined ルー�
 
 - Web Platform Installer を使用した、Azure PowerShell コマンドレットの最新バージョン。[ダウンロード ページ](http://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
 
+## 強制トンネリングについて
+
 強制トンネリングを構成するには、以下の手順を使用します。
 
 1. ルーティング テーブルを作成します。ルート テーブルを作成するには、以下のコマンドレットを使用します。
@@ -126,6 +121,8 @@ Azure では、強制トンネリングは Virtual Network User-Defined ルー�
 
 ## その他の PowerShell コマンドレット
 
+強制トンネリングの構成に役立つその他の PowerShell コマンドレットを以下に示します。
+
 **ルート テーブルを削除するには:**
 
 	Remove-AzureRouteTable -RouteTableName <routeTableName>
@@ -152,6 +149,6 @@ Azure では、強制トンネリングは Virtual Network User-Defined ルー�
 
 ## 次のステップ
 
-仮想ネットワークに仮想マシンを追加できます。詳細については、「[カスタム仮想マシンの作成方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
+ネットワーク トラフィックのセキュリティ保護の詳細については、[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

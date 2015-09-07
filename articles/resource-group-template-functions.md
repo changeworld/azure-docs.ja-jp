@@ -1,24 +1,36 @@
 <properties
    pageTitle="Azure リソース マネージャーのテンプレートの関数"
-   description="値の取得、文字列の書式設定、およびデプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+	description="値の取得、文字列の書式設定、およびデプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
+	services="azure-resource-manager"
+	documentationCenter="na"
+	authors="tfitzmac"
+	manager="wpickett"
+	editor=""/>
 
 <tags
    ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/27/2015"
-   ms.author="tomfitz"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/21/2015"
+	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
 
 このトピックでは、Azure リソース マネージャーのテンプレートで使用できるすべての関数について説明します。
+
+## 追加
+
+**add(operand1, operand2)**
+
+指定された 2 つ整数の合計を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| operand1 | あり | 使用する最初のオペランドです。
+| operand2 | あり | 使用する 2 番目のオペランドです。
+
 
 ## base64
 
@@ -56,7 +68,7 @@
 
 **copyIndex(offset)**
 
-反復処理のループの現在のインデックスを返します。この関数を使用する例については、「[Azure リソース マネージャーにおけるリソースの複数のインスタンスの作成](resource-group-create-multiple.md)」を参照してください。
+反復処理のループの現在のインデックスを返します。この関数を使用する例については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
 ## デプロイ
 
@@ -85,6 +97,23 @@
       }
     }
 
+## div
+
+**div(operand1, operand2)**
+
+指定された 2 つの整数の整数除算を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| operand1 | あり | 割られる数。
+| operand2 | あり | 割る数。ゼロ (0) 以外にする必要があります。
+
+## length
+
+**length(array)**
+
+配列内の要素数を返します。通常、リソースの作成時にイテレーション数の指定に使用します。この関数を使用する例については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+
 ## listKeys
 
 **listKeys (resourceName or resourceIdentifier, [apiVersion])**
@@ -104,6 +133,30 @@
         "type" : "object" 
       } 
     } 
+
+## mod
+
+**mod(operand1, operand2)**
+
+指定された 2 つの整数を使用した整数除算の剰余を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| operand1 | あり | 割られる数。
+| operand2 | あり | 割る数。ゼロ (0) 以外にする必要があります。
+
+
+## mul
+
+**mul(operand1, operand2)**
+
+指定された 2 つの整数の乗算を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| operand1 | あり | 使用する最初のオペランドです。
+| operand2 | あり | 使用する 2 番目のオペランドです。
+
 
 ## padLeft
 
@@ -261,7 +314,7 @@
 | resourceGroupName | いいえ | 省略可能なリソース グループの名前。既定値は、現在のリソース グループです。別のリソース グループ内のリソースを取得するときには、この値を指定します。
 | resourceType | あり | リソース プロバイダーの名前空間を含むリソースの種類。
 | resourceName1 | あり | リソースの名前。
-| resourceName2 | いいえ | リソースが入れ子になっている場合、次のリソース名セグメント 。
+| resourceName2 | いいえ | リソースが入れ子になっている場合、次のリソース名セグメント。
 
 次の例では、Web サイトとデータベースのリソース ID を取得する方法を示します。Web サイトは **myWebsitesGroup** という名前のリソース グループ内にあり、データベースはこのテンプレートの現在のリソース グループ内にあります。
 
@@ -310,6 +363,37 @@
            }
       }]
     }
+
+## split
+
+**split(inputString, delimiter)** **split(inputString, [delimiters])**
+
+送信された区切り記号で区切られた、入力文字列の部分文字列が格納されている、文字列の配列を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| inputString | あり | 分割する文字列。
+| delimiter | あり | 使用する区切り記号。1 つの文字列または文字列の配列を指定できます。
+
+次の例では、入力文字列をコンマで分割します。
+
+    "parameters": {
+        "inputString": { "type": "string" }
+    },
+    "variables": { 
+        "stringPieces": "[split(parameters('inputString'), ',')]"
+    }
+
+## sub
+
+**sub(operand1, operand2)**
+
+指定された 2 つの整数の減算を返します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| operand1 | あり | 減算される数値。
+| operand2 | あり | 減算する数値。
 
 
 ## subscription
@@ -384,8 +468,8 @@
 
 ## 次のステップ
 - Azure リソース マネージャー テンプレートのセクションの説明については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-- 複数のテンプレートをマージするには、「[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。
-- リソースの種類を作成するときに、指定した回数を繰り返すには、「[Azure リソース マネージャーにおけるリソースの複数のインスタンスの作成](resource-group-create-multiple.md)」を参照してください。
-- 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
+- 複数のテンプレートをマージするには、[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
+- ある種類のリソースの作成時に指定した回数を繰り返すには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+- 作成したテンプレートをデプロイする方法を確認するには、[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)に関する記事を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

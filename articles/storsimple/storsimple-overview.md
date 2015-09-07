@@ -1,22 +1,22 @@
 <properties 
-   pageTitle="StorSimple について" 
-   description="StorSimple の機能とアーキテクチャについて説明し、StorSimple のコンポーネントを紹介します。" 
-   services="storsimple" 
-   documentationCenter="NA" 
-   authors="SharS" 
-   manager="carolz" 
-   editor=""/>
+   pageTitle="StorSimple について | Microsoft Azure"
+	description="StorSimple のデータ管理と保護プロセス、利点、アーキテクチャについて説明し、StorSimple のコンポーネントを紹介します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 
 <tags
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD" 
-   ms.date="08/14/2015"
-   ms.author="v-sharos@microsoft.com"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/26/2015"
+	ms.author="v-sharos@microsoft.com"/>
 
-# StorSimple について 
+# StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション 
 
 ## 概要
 
@@ -66,11 +66,11 @@ Microsoft Azure StorSimple ソリューションには、次のコンポーネ�
 
 ## 次のステップ
 
-「[StorSimple Solutions Overview (StorSimple ソリューションの概要)](http://www.microsoft.com/server-cloud/products/storsimple/resources.aspx)」を読み、「[StorSimple chalk talk](http://www.microsoft.com/server-cloud/products/storsimple/Features.aspx)」を表示する。
+[StorSimple の詳細情報](https://azure.microsoft.com/documentation/services/storsimple/)
 
 [StorSimple コンポーネントと用語集](storsimple-components.md)についてさらに読む。
 
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

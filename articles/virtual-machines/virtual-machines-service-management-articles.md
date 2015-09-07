@@ -46,7 +46,7 @@
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-[仮想ネットワークの概要](https://msdn.microsoft.com/library/azure/jj156007.aspx)
+[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)
 
 ## 作成
 
@@ -150,4 +150,4 @@
 
 [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="Azure SQL コネクタ - Azure SQL との間のデータの移動" 
-	description="Azure SQL データベースとの間でのデータ移動を可能にする Data Factory サービスのための Azure SQL コネクタについて学習する" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Azure SQL との間でのデータの移動 | Azure Data Factory"
+	description="Azure Data Factory を使用して Azure SQL Database に、または Azure SQL Database からデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# Azure SQL コネクタ - Azure SQL との間のデータの移動
+# Azure Data Factory を使用した Azure SQL との間でのデータの移動
 
 この記事では、Azure Data Factory のコピー アクティビティを利用し、Azure SQL と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -24,11 +24,11 @@
 
 下のサンプルで確認できる要素:
 
-1. AzureSqlDatabase 型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md/#LinkedService) 型のリンクされたサービス。 
-3. AzureSqlTable 型の入力データセット。 
-4. [AzureBlob](data-factory-azure-blob-connector.md/#Dataset) 型の出力データセット。
-4. SqlSource と [BlobSink](data-factory-azure-blob-connector.md/#CopyActivity) を使用するコピー アクティビティを含むパイプライン。
+1. [AzureSqlDatabase](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) 型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。 
+3. [AzureSqlTable](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。 
+4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4. [SqlSource](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルはある時系列に属するデータを 1 時間おきに Azure SQL データベースのテーブルから BLOB にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -196,11 +196,11 @@
 
 下のサンプルで確認できる要素:
 
-1.	AzureSqlDatabase 型のリンクされたサービス。
-2.	AzureStorage 型のリンクされたサービス。
-3.	AzureBlob 型の入力データセット。
-4.	AzureSqlTable 型の出力データセット。
-4.	BlobSource と SqlSink を使用するコピー アクティビティのパイプライン
+1.	[AzureSqlDatabase](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.	[AzureSqlTable](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4.	[BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) と [SqlSink](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) を使用するコピー アクティビティの[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB から Azure SQL データベースのテーブルにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -427,7 +427,7 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 マッピングは ADO.NET の SQL Server データ型マッピングと同じです。
 
-| SQL Server データベース エンジンの型 | .NET Framework 型 |
+| SQL Server Databases エンジンの型 | .NET Framework 型 |
 | ------------------------------- | ------------------- |
 | bigint | Int64 |
 | binary | Byte |
@@ -471,4 +471,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 	 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

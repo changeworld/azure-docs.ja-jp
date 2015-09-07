@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure AD Connect - Windows リモート管理のヒント" 
-	description="AD FS と共に使用するための Azure AD Connect Windows リモート管理のヒント" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure AD Connect - Windows リモート管理のヒント"
+	description="AD FS と共に使用するための Azure AD Connect Windows リモート管理のヒント"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/28/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure AD Connect - Windows リモート管理のヒント
@@ -43,6 +43,6 @@ Azure AD Connect を使用して、Active Directory フェデレーション サ
 
 * [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-account-summary.md)
 * [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)
-* [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx) 
+* [MSDN の Azure AD Connect](active-directory-aadconnect.md) 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Data Factory - よく寄せられる質問" 
-	description="Azure データ ファクトリについてよく寄せられる質問です。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Azure Data Factory - よく寄せられる質問"
+	description="Azure データ ファクトリについてよく寄せられる質問です。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/16/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="spelluru"/>
 
 # Azure Data Factory - よく寄せられる質問
@@ -90,17 +90,6 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 アクティビティが実行されるタイミングは、出力データ テーブルの **availability** 構成設定によって決定されます。アクティビティは、実行を開始する前に、入力データのすべての依存関係が満たされている (つまり、**準備完了**状態になっている) かどうかを確認します。
 
 ## コピー アクティビティ - FAQ
-### コピー アクティビティでサポートされている地域はどこですか。
-
-コピー アクティビティでは、米国東部、米国東部 2、米国西部、米国中央部、米国中北部、米国中南部、北ヨーロッパ、西ヨーロッパ、東南アジア、東日本、ブラジル南部の各リージョンへのデータのコピーがサポートされます。
-
-その他のリージョンへのデータ コピーも、上記のリージョンのいずれかをデータのルーティングに使用することで、実行できます。コピー操作は、データがルーティングされた地域に基づいて課金されます。
-
-コピー先のリージョン | ルーティングに使用するリージョン
--------------------------- | -----------------------
-東アジア | 東南アジア
-西日本 | 東日本
- 
 ### 1 つのパイプラインに複数のアクティビティを設定する方法とアクティビティごとに別個のパイプラインを使用する方法ではどちらの方法がよいですか。 
 パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。論理的には、複数のアクティビティを接続するテーブルがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときによりうまく保持されるようになります。パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。作成操作の観点では、パイプラインの 1 つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
 
@@ -192,4 +181,4 @@ Data Factory は米国西部と北ヨーロッパで使用できます。Data Fa
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

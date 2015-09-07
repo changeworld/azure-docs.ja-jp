@@ -1,85 +1,75 @@
-<properties 
-   pageTitle="Azure SQL Database へのデータベースの移行" 
-   description="Microsoft Azure SQL Database、データベースのデプロイ、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード" 
-   services="sql-database" 
-   documentationCenter="" 
-   authors="pehteh" 
-   manager="jeffreyg" 
-   editor="monicar"/>
+<properties
+   pageTitle="Azure SQL Database へのデータベースの移行"
+	description="Microsoft Azure SQL Database、データベースのデプロイ、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード"
+	services="sql-database"
+	documentationCenter=""
+	authors="carlrabeler"
+	manager="jeffreyg"
+	editor=""/>
 
 <tags
    ms.service="sql-database"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-management" 
-   ms.date="07/17/2015"
-   ms.author="pehteh"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-management"
+	ms.date="08/26/2015"
+	ms.author="carlrab"/>
 
 # Azure SQL Database へのデータベースの移行
 
-Azure SQL Database V12 は、SQL Server 2014 とのほぼ完全なエンジン互換性を提供します。そのため、SQL Server から Azure SQL Database にデータベースを移行するタスクが大幅に簡略化されます。大量のデータベースの移行は、簡単な移動操作であり、スキーマの変更がほとんど不要で、アプリケーションの再構築もほとんど、もしくはまったく必要としません。データベースの変更が必要な場合も、変更の範囲は限定的です。
+Azure SQL Database V12 は、SQL Server 2014 以降とのほぼ完全なエンジン互換性を提供します。そのため、SQL Server 2005 以降のオンプレミスのインスタンスから Azure SQL Database にデータベースを移行するタスクが大幅に簡略化されます。大量のデータベースの移行は、スキーマとデータの簡単な移動操作であり、スキーマの変更がほとんど不要で、アプリケーションの再構築もほとんど、もしくはまったく必要としません。データベースの変更が必要な場合も、変更の範囲は限定的です。
 
-仕様では、SQL Database は、SQL Server のサーバー スコープの機能はサポートしていません。これらに依存するデータベースとアプリケーションは、引き続き移行前に再構築する必要があります。SQL Database V12 と SQL Server との互換性は向上していますが、特に大規模で複雑なデータベースの移行では、慎重に計画し、実行する必要があります。
+仕様では、Azure SQL Database V12 は、SQL Server のサーバー スコープの機能をサポートしていません。これらの機能に依存するデータベースとアプリケーションは、移行前に再構築する必要があります。Azure SQL Database V12 とオンプレミスの SQL Server データベースとの互換性は向上していますが、特に大規模で複雑なデータベースの移行では、慎重に計画し、実行する必要があります。
 
-## 概略
-1 つ以上のツールを使用して Azure に SQL Server データベースを移行するさまざまな方法があります。迅速で簡単な方法もありますが、準備に時間がかかるものもあります。大規模で複雑なデータベースの移行には、数時間を要する場合があることに注意してください。
+## 互換性を判断する
+オンプレミスの SQL Server データベースが Azure SQL Database V12 と互換性があるかどうかを判断するには、以下のオプション 1 で説明する 2 つの方法のいずれかを使用して移行を開始し、スキーマの検証ルーチンが非互換性を検出するかを確認するか、以下のオプション 2 で説明するように Visual Studio の SQL Server Data Tools を使用して互換性を検証できます。オンプレミスの SQL Server データベースに互換性の問題がある場合は、Visual Studio の SQL Server Data Tools または SQL Server Management Studio を使用して互換性の問題に対応し、解決できます。
+
+## 移行方法
+互換性のあるオンプレミスの SQL Server データベースを Azure SQL Database V12 に移行する方法は多数あります。
+
+- 小規模から中規模のデータベースの場合、接続に問題点 (接続なし、低帯域幅、タイムアウト) がなければ、互換性のある SQL Server 2005 以降のデータベースの移行は、SQL Server Management Studio の [データベースの Microsoft Azure Database へのデプロイ] ウィザードを実行するのと同じくらい簡単です。
+- 中規模から大規模のデータベースの場合や接続に問題点がある場合は、SQL Server Management Studio を使用して、データとスキーマを BACPAC ファイル (ローカルまたは Azure BLOB に保存される) にエクスポートしてから、Azure SQL インスタンスに BACPAC ファイルをインポートできます。Azure BLOB に BACPAC を保存する場合は、Azure ポータルから BACPAC ファイルをインポートすることもできます。  
+- 大規模なデータベースの場合は、スキーマとデータを個別に移行することでパフォーマンスを最適化できます。SQL Server Management Studio または Visual Studio を使用してスキーマをデータベース プロジェクトに抽出し、スキーマをデプロイして Azure SQL Database を作成できます。BCP を使用してデータを抽出したら、BCP を使用して、並列ストリームを使用したデータを Azure SQL Database にインポートできます。大規模で複雑なデータベースの移行には、どの方法でも数時間かかる場合があります。
 
 ### 方法 1
-***SQL Server Management Studio (SSMS) を使用した互換性のあるデータベースの移行***
+******SQL Server Management Studio を使用した互換性のあるデータベースの移行***
 
-SSMS を使用して、Azure SQL Database にデータベースをデプロイします。データベースは直接デプロイすることもできますが、インポートして新しい Azure SQL Database を作成する BACPAC にエクスポートすることもできます。この方法は、ソース データベースが Azure SQL Database と完全な互換性を持つ場合に使用します。
+SQL Server Management Studio では、互換性のあるオンプレミスの SQL Server データベースを Azure SQL Database に移行する 2 つの方法を提供しています。[データベースの Microsoft Azure SQL Database へのデプロイ] ウィザードを使用するか、BACPAC ファイルにデータベースをエクスポートでき、その後それをインポートして新しい Azure SQL Database を作成できます。ウィザードは、Azure SQL Database V12 の互換性を検証し、スキーマとデータを BACPAC ファイルに抽出し、これを指定された Azure SQL Database インスタンスにインポートします。
 
 ### 方法 2
-***SQL Azure 移行ウィザード (SAMW) を使用して、ある程度互換性のあるデータベースの移行***
+***Visual Studio を使用してオフラインでデータベース スキーマを更新し、SQL Server Management Studio でデプロイする***
 
-データベースは SAMW を使用して処理され、スキーマ、またはスキーマとデータを含む移行スクリプトを BCP 形式で生成します。この方法は、データベース スキーマにアップグレードが必要であり、変更をウィザードで処理できる場合に使用します。
-
-### 方法 3
-***Visual Studio (VS) と SAMW を使用してオフラインでデータベース スキーマを更新し、SSMS でデプロイする***
-
-オフラインで処理するために、ソース データベースは、Visual Studio データベース プロジェクトにインポートされます。SAMW は、プロジェクト内のすべてのスクリプトで実行され、一連の変換と修正を適用します。プロジェクトは SQL Database V12 を対象にして構築され、残りのエラーが報告されます。これらのエラーは、Visual Studio の SQL Server Data Tools (SSDT) を使用して手動で解決します。プロジェクトが正常に構築されると、そのプロジェクトはソース データベースのコピーに発行されます。この更新されたデータベースは、方法 1 を使用して、Azure SQL Database にデプロイされます。スキーマのみの移行が必要な場合は、Visual Studio から Azure SQL Database に直接、発行することができます。この方法は移行ウィザードのみで処理できる変更よりも多数の変更を、データベース スキーマで行う必要がある場合に使用します。
+オンプレミスの SQL Server データベースに互換性がない場合や、互換性があるかどうかを判断する場合は、分析のために Visual Studio データベース プロジェクトにデータベース スキーマをインポートできます。分析するには、SQL Database V12 にプロジェクトのターゲット プラットフォームを指定し、プロジェクトを構築します。構築に成功した場合は、データベースには互換性があります。構築に失敗した場合は、Visual Studio 用の SQL Server Data Tools ("SSDT") でエラーを解決できます。プロジェクトが正常に構築されたら、これをソース データベースのコピーとして発行し、SSDT のデータ比較機能を使用して、ソース データベースから Azure SQL V12 互換のデータベースにデータをコピーできます。この更新されたデータベースは、方法 1 を使用して、Azure SQL Database にデプロイされます。スキーマのみの移行が必要な場合は、Visual Studio から Azure SQL Database に直接、発行することができます。この方法は移行ウィザードのみで処理できる変更よりも多数の変更を、データベース スキーマで行う必要がある場合に使用します。
 
 ## 使用する方法を決定する
 - 変更することなくデータベースを移行することができると予想される場合は、迅速かつ簡単な方法 1 を使用してください。不明な場合は、方法 1 の説明に従って、データベースからスキーマのみの BACPAC をエクスポートして開始します。エラーなしで、エクスポートが成功した場合は、方法 1 を使用してそのデータとデータベースを移行することができます。  
-- 方法 1 のエクスポート中にエラーが発生した場合は、方法 2 で説明したように SQL Azure 移行ウィザードを使用して、スキーマのみのモードでデータベースを処理します。移行ウィザードでエラーが報告されない場合には、方法 2 を使用します。 
-- SAMW でスキーマに追加の作業が必要であることが報告された場合は、必要な修正が簡単なものでない限り、移行ウィザードと手動で適用したスキーマの変更の組み合わせを使用して Visual Studio のデータベース スキーマをオフラインで修正する方法 3 を使用するのが最善です。ソース データベースのコピーはその場で更新され、方法 1 を使用して Azure に移行されます。
+- 方法 1 のエクスポート中にエラーが発生した場合は、方法 2 を使用し、移行ウィザードと手動で適用したスキーマの変更の組み合わせを使用して Visual Studio のデータベース スキーマをオフラインで修正します。ソース データベースのコピーはその場で更新され、方法 1 を使用して Azure に移行されます。
 
 ## 移行ツール
-使用されるツールには、SQL Server Management Studio (SSMS)、Visual Studio (VS、SSDT) の SQL Server ツール、SQL Azure 移行ウィザード (SAMW)、Azure ポータルが含まれます。
+使用されるツールには、SQL Server Management Studio (SSMS)、Visual Studio (VS、SSDT) の SQL Server ツール、Azure ポータルが含まれます。
 
-> 以前のバージョンは、SQL Database v12 と互換性がないため、クライアント ツールの最新バージョンをインストールしてください。
+> 以前のバージョンは、Azure SQL Database V12 と互換性がないため、クライアント ツールの最新バージョンをインストールしてください。
 
 ### SQL Server Management Studio (SSMS)
 SSMS を使用して、互換性のあるデータベースを Azure SQL Database に直接デプロイすることもできますし、BACPAC としてデータベースの論理バックアップをエクスポートし、その後、SSMS を使用してインポートし、新しい Azure SQLDatabase を作成することもできます。
 
-[SSMS の最新バージョンをダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)するか、SQL Server 2013 以降で CU6 を使用します。
-
-### SQL Azure 移行ウィザード (SAMW)
-SAMW は、既存のデータベースのスキーマのAzure SQL Database との互換性の分析に使用することができます。また多くの場合、スキーマとデータを含む Transact-SQL スクリプトの生成とデプロイにも使用することができます。変換中に変換できないスキーマ コンテンツが発生した場合、ウィザードはエラーを報告します。このような場合、生成されるスクリプトは正常にデプロイする前にさらに編集することが必要です。SAMW は関数の本文か、通常は、Visual Studio の SQL Server ツールによって実行される検証から除外されたストアド プロシージャを処理します (下記をご覧ください)。これにより、Visual Studio のみの検証では報告されない問題を発見します。SAMW と Visual Studio の SQL Server ツールを組み合わせて使用することにより、複雑なスキーマを移行するために必要な作業の量を大幅に低減できます。
-
-CodePlex の最新バージョンの [SQL Azure 移行ウィザード](http://sqlazuremw.codeplex.com/)を使用してください。
+[最新バージョンの SSMS をダウンロードする](https://msdn.microsoft.com/library/mt238290.aspx)
 
 ### Visual Studio の SQL Server ツール (VS、SSDT)
-Visual Studio の SQL Server ツールを使用して、スキーマ内の各オブジェクトの Tranact-SQL ファイルのセットを構成するデータベース プロジェクトを作成し、管理することができます。プロジェクトは、データベースかスクリプト ファイルからインポートできます。プロジェクトが作成されると、プロジェクトを構築し、スキーマの互換性を検証する Azure SQL Database v12 に移行します。エラーをクリックすると、対応する Tranact-SQL ファイルが開き、編集とエラーの修正が可能になります。すべてのエラーが修正されると、プロジェクトを SQL Database に直接発行して空のデータベースを作成するか、元の SQL Server Database (のコピー) に発行してスキーマを更新することができます。これによって、上記のように SSMS を使用してデータとデータベースをデプロイできます。
+Visual Studio の SQL Server ツールを使用して、スキーマ内の各オブジェクトの Transact-SQL ファイルのセットを構成するデータベース プロジェクトを作成し、管理することができます。プロジェクトは、データベースかスクリプト ファイルからインポートできます。プロジェクトが作成されると、プロジェクトを構築し、スキーマの互換性を検証する Azure SQL Database v12 に移行します。エラーをクリックすると、対応する Tranact-SQL ファイルが開き、編集とエラーの修正が可能になります。すべてのエラーが修正されると、プロジェクトを SQL Database に直接発行して空のデータベースを作成するか、元の SQL Server Database (のコピー) に発行してスキーマを更新することができます。これによって、上記のように SSMS を使用してデータとデータベースをデプロイできます。
 
 [最新の Visual Studio 用 SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) は Visual Studio 2013 Update 4 以降で使用してください。
 
 ## 比較
-| 方法 1 | 方法 2 | 方法 3 |
+| 方法 1 | 方法 2 |
 | ------------ | ------------ | ------------ |
-| Azure SQL Database に互換性のあるデータベースをデプロイする | 変更を含む移行スクリプトの生成と Azure SQL Database での実行 | データベースのインプレース更新と Azure SQL Database へのデプロイ |
-|![SSMS](./media/sql-database-cloud-migrate/01SSMSDiagram.png)| ![SAMW](./media/sql-database-cloud-migrate/02SAMWDiagram.png) | ![オフライン編集](./media/sql-database-cloud-migrate/03VSSSDTDiagram.png) |
-| SSMS の使用 | SAMW の使用 | SAMW、VS、SSMS の使用 |
-|単純なプロセスでは、そのスキーマに互換性があることが必要です。スキーマは変更されずに移行されます。 | SAMW によって生成される Transact-SQL スクリプトには、互換性を保証するために必要な変更が含まれています。サポートされていない機能は、スキーマから削除され、ほとんどはエラーとしてフラグが付けられます。 | スキーマは Visual Studio のデータベース プロジェクトにインポートされ、(必要に応じて) SAMW を使用して変換されます。Visual Studio の SSDT を使用して追加の更新が行われ、最後のスキーマを使用してその場でデータベースが更新されます。 |
-| BACPAC をエクスポートする場合は、スキーマのみの移行を選択できます。 | スクリプト スキーマかデータを含むスキーマにウィザードを構成できます。 | Visual Studio から Azure にスキーマのみを直接発行できます。データベースは、すべての必要な変更によってその場で更新され、スキーマとデータのデプロイとエクスポートを行えるようになります。 |
-| 常にデータベース全体をデプロイするか、エクスポートします。 | 特定のオブジェクトを移行から除外することを選択できます。 | 移行にはオブジェクトの完全な制御が含まれています。 |
-| エラーがある場合、出力を変更するためのプロビジョニングはありません。送信元スキーマには互換性が必要です。 | 単一のモノリシック生成されるたスクリプトは、編集が難しい場合があります。スクリプトは、SSDT を使用して、Visual Studio か SSMS で開いて編集できます。スクリプトを Azure SQL Database にデプロイする前に、すべてのエラーを修正する必要があります。| Visual Studio の SSDT のすべての機能を使用できます。スキーマはオフラインで変更されます。 |
-| アプリケーションの検証は Azure で行われます。変更することなく移行するには、スキーマを最小にする必要があります。 | アプリケーションの検証は、移行後に Azure で行われます。生成されたスクリプトは、最初のアプリケーションの検証のためにオンプレミスでインストールすることもできます。 | データベースを Azure にデプロイする前に、SQL Server でアプリケーションの検証を実行できます。 |
-| Microsoft がサポートしているツール。 | CodePlex からダウンロードするコミュニティ サポート ツール。 | CodePlex からダウンロードする Microsoft がサポートしているツールとオプションで使用できるコミュニティ サポート ツール。 |
-| 簡単に構成簡単に構成された 1 つまたは 2 つの処理手順。 | スキーマの変換、生成、およびクラウドへのデプロイメントは、単一の使いやすいウィザードで調整されます。 | より複雑な複数の処理手順 (スキーマのデプロイのみの場合はより簡単)。 |
+| Azure SQL Database に互換性のあるデータベースをデプロイする | データベースのインプレース更新と Azure SQL Database へのデプロイ |
+|![SSMS](./media/sql-database-cloud-migrate/01SSMSDiagram.png)| ![オフライン編集](./media/sql-database-cloud-migrate/03VSSSDTDiagram.png) |
+| SSMS の使用 | VS と SSMS の使用 |
+|単純なプロセスでは、そのスキーマに互換性があることが必要です。スキーマは変更されずに移行されます。 | スキーマは Visual Studio のデータベース プロジェクトにインポートされます。Visual Studio の SSDT を使用して追加の更新が行われ、最後のスキーマを使用してその場でデータベースが更新されます。 |
+| 常にデータベース全体をデプロイするか、エクスポートします。 | 移行にはオブジェクトの完全な制御が含まれています。 |
+| エラーがある場合、出力を変更するためのプロビジョニングはありません。送信元スキーマには互換性が必要です。 | Visual Studio の SSDT のすべての機能を使用できます。スキーマはオフラインで変更されます。 | アプリケーションの検証は Azure で行われます。変更することなく移行するには、スキーマを最小にする必要があります。 | データベースを Azure にデプロイする前に、SQL Server でアプリケーションの検証を実行できます。 |
+| 簡単に構成簡単に構成された 1 つまたは 2 つの処理手順。 | より複雑な複数の処理手順 (スキーマのデプロイのみの場合はより簡単)。 |
 
-
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

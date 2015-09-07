@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure ハイブリッド クラウド テスト環境"
-	description="Azure ハイブリッド クラウドの開発/テストまたは概念実証で使用できるテスト環境を構築する方法を説明する主要なトピックを確認します。"
+	pageTitle="Azure のハイブリッド クラウド テスト環境 | Microsoft Azure"
+	description="Azure ベースのハイブリッド クラウドに対する開発/テストまたは概念実証を行う IT プロフェッショナル向けの環境を構築する方法が説明されている記事を示します。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -58,4 +58,4 @@
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

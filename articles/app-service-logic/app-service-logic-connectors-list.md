@@ -1,6 +1,6 @@
 <properties
-	pageTitle="コネクタと API Apps の一覧 | Microsoft Azure"
-	description="Azure App Service マイクロサービス アーキテクチャのコネクタと API Apps について説明します。"
+	pageTitle="使用可能なコネクタと API Apps の一覧 | Microsoft Azure App Service"
+	description="Azure App Service のコネクタと API Apps に関するページを参照してください。"
 	services="app-service\logic"
 	documentationCenter=""
 	authors="MandiOhlinger"
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/09/2015"
+	ms.date="08/23/2015"
 	ms.author="mandia"/>
 
 
-# Microsoft Azure App Service のコネクタと API Apps の一覧
-このトピックでは、マイクロソフトによって作成された使用可能なすべてのコネクタと API アプリを示します。
+# Logic Apps で使用するコネクタと API Apps の一覧
+このトピックでは、マイクロソフトによって作成された、Logic Apps 内で使用できるすべてのコネクタと API Apps を示します。
 
 料金情報および各サービス レベルに含まれる新機能の一覧については、「[Azure App Service の価格](http://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
 
@@ -93,4 +93,4 @@ MQ | Windows オペレーティング システムを実行している Azure �
 
 [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md) [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md) [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

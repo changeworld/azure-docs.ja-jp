@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="PowerShell を使用したSQL Database のエラスティック データベース プールの作成と管理" 
-   description="PowerShell を使用した SQL Database のエラスティック データベースの作成と管理" 
-   services="sql-database" 
-   documentationCenter="" 
-   authors="stevestein" 
-   manager="jeffreyg" 
-   editor=""/>
+   pageTitle="PowerShell を使用したSQL Database のエラスティック データベース プールの作成と管理"
+	description="PowerShell を使用した SQL Database のエラスティック データベースの作成と管理"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jeffreyg"
+	editor=""/>
 
 <tags
    ms.service="sql-database"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="powershell"
-   ms.workload="data-management" 
-   ms.date="08/12/2015"
-   ms.author="adamkr; sstein"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="powershell"
+	ms.workload="data-management"
+	ms.date="08/25/2015"
+	ms.author="adamkr; sstein"/>
 
 # PowerShell を使用したSQL Database のエラスティック データベース プールの作成と管理
 
@@ -105,6 +105,7 @@ Azure SQL Database とエラスティック データベース プールの作�
 
 前の手順で作成したプールはまだ空であり、エラスティック データベースが含まれていません。このセクションでは、プール内で新しいエラスティック データベース作成する方法と、既存のデータベースをプールに追加する方法を示します。
 
+*プールを作成したら、Transact-SQL を使用してプールに新しいエラスティック データベースを作成したり、既存のデータベースをプールの内外に移動したりできます。詳細については、「[エラスティック データベース プールのリファレンス - Transact-SQL](sql-database-elastic-pool-reference.md#Transact-SQL)」をご覧ください。*
 
 ### エラスティック データベース プールでの新しい エラスティック データベースの作成
 
@@ -117,7 +118,7 @@ Azure SQL Database とエラスティック データベース プールの作�
 
 ### 既存のデータベースをエラスティック データベース プールに移動
 
-既存のデータベースをプールに移動するには、**Set-AzurSqlDatabase** コマンドレットを使用して **ElasticPoolName** パラメーターを設定します。
+既存のデータベースをプールに移動するには、**Set-AzureSqlDatabase** コマンドレットを使用して **ElasticPoolName** パラメーターを設定します。
 
 
 デモでは、エラスティック データベース プールに含まれていないデータベースを作成します。
@@ -239,4 +240,4 @@ CSV ファイルにエクスポートします。
 
 API とエラーの詳細を含む弾力性データベースと弾力性データベース プールの詳細については、「[弾力性データベースのリファレンス](sql-database-elastic-pool-reference.md)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

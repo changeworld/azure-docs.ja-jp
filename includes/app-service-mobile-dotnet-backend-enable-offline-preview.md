@@ -1,9 +1,4 @@
-ポータルからダウンロードされたサーバー プロジェクトでは、データ機能が既に有効になっています。
 
-ASP.NET プロジェクトは、次のように設定されています。
+>[AZURE.TIP]データの拡張機能パッケージは、クイック スタートの拡張機能パッケージに含まれています。ポータルからダウンロードしたサーバー プロジェクトでは、Entity Framework を使用したデータ アクセスが既に有効になっています。クイック スタートの拡張機能を使用していない場合に、データ アクセスするための Entity Framework をインストールおよび初期化する方法については、[How to: Define a table controller (テーブル コント ローラーを定義する方法)](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-define-a-table-controller) を参照してください。
 
-* `Microsoft.Azure.Mobile.Server.Tables` と `Microsoft.Azure.Mobile.Server.Entity` NuGet パッケージがインストールされている。
-
-* WebApiConfig.cs 内の MobileAppConfiguration オブジェクトで `UseDefaultConfiguration()` メソッドが呼び出されている。これによって、上記の NuGet パッケージが提供する `AddTablesWithEntityFramework()` 拡張メソッドが呼び出されます。
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

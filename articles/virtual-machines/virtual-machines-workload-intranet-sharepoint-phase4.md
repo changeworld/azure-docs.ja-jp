@@ -1,6 +1,6 @@
 <properties
-	pageTitle="SharePoint イントラネット ファーム ワークロードのフェーズ 4: SharePoint サーバーの構成"
-	description="イントラネット専用 SharePoint 2013 ファームをデプロイする作業の第 4 フェーズでは、SharePoint サーバー仮想マシンと新しい SharePoint ファームを作成します。"
+	pageTitle="SharePoint Server 2013 ファームのフェーズ 4 | Microsoft Azure"
+	description="SharePoint サーバーの仮想マシンおよび新しい SharePoint ファームを作成します。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -193,4 +193,4 @@ SharePoint ファームへのクライアント トラフィックが 2 つの�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

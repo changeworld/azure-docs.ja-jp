@@ -28,7 +28,7 @@
 1.	このページで [**Microsoft Azure IaaS (Windows) 診断パッケージ**] をクリックして、新しい診断セッションを作成します。
 2.	[**Azure VM で発生している問題**] ページで、[**Azure VM との RDP 接続 (再起動が必要)**] の問題を選択します。
 
-詳細については、「[Microsoft Azure IaaS (Windows) 診断パッケージについてのナレッジベース](http://support.microsoft.com/kb/2976864)」の記事を参照してください。
+詳細については、[Microsoft Azure IaaS (Windows) 診断パッケージについてのナレッジベース](http://support.microsoft.com/kb/2976864)の記事を参照してください。
 
 Azure IaaS 診断パッケージを実行しても問題が解決されない場合、または診断パッケージを実行できない場合は、これ以降の手順で説明する、より詳細なトラブルシューティングが必要になる場合があります。
 
@@ -72,7 +72,7 @@ Azure ポータルによって生成された RDP ファイルの例を次に示
 
 原因: 接続先の仮想マシンが、資格情報のユーザー名部分に示されているセキュリティ機関を特定できない。
 
-ユーザー名が *SecurityAuthority*\*UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分には、仮想マシンのコンピューター名 (ローカル セキュリティ機関) か、Active Directory ドメイン名を指定します。
+ユーザー名が *SecurityAuthority**UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分には、仮想マシンのコンピューター名 (ローカル セキュリティ機関) か、Active Directory ドメイン名を指定します。
 
 考えられるこの問題の解決策
 
@@ -86,14 +86,14 @@ Azure ポータルによって生成された RDP ファイルの例を次に示
 
 Windows ベースのコンピューターでは、ローカル アカウントまたはドメイン ベース アカウントのいずれかの資格情報が認証されます。
 
-- ローカル アカウントの場合は、 *ComputerName*\*UserName* という構文を使用します (例: SQL1\\Admin4798)。
-- ドメイン アカウントの場合は、 *DomainName*\*UserName* という構文を使用します (例: CONTOSO\\johndoe)。
+- ローカル アカウントの場合は、 *ComputerName**UserName* という構文を使用します (例: SQL1\\Admin4798)。
+- ドメイン アカウントの場合は、 *DomainName**UserName* という構文を使用します (例: CONTOSO\\johndoe)。
 
 新しい AD フォレスト内でドメイン コント ローラーに昇格するコンピューターの場合、昇格実行時のログインに使用するローカル管理者アカウントは、新しいフォレストとドメインで、同じパスワードを含む同等のアカウントに変換されます。前のローカル管理者アカウントは削除されます。たとえば、ローカル管理者アカウント DC1\\DCAdmin でログインして、新しいフォレストで仮想マシンを corp.contoso.com ドメインのドメイン コント ローラーとして昇格すると、DC1\\DCAdmin のローカル アカウントは削除され、新しいドメイン アカウント (CORP\\DCAdmin) が同じパスワードで作成されます。
 
 アカウント名が、仮想マシンで有効アカウントとして認証される名前であることを再確認してください。パスワードが正しいことを再確認してください。
 
-ローカル管理者アカウントのパスワードを変更する必要がある場合は、「[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)」をご覧ください。
+ローカル管理者アカウントのパスワードを変更する必要がある場合は、[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)をご覧ください。
 
 ### リモート デスクトップ接続のメッセージ ウィンドウ: このコンピューターはリモート コンピューターに接続できません。
 
@@ -177,20 +177,20 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 > [AZURE.NOTE]リソース マネージャーで作成された仮想マシンについては、「[ソース 4: ネットワーク セキュリティ グループ](#nsgs)」はスキップしてください。
 
-同じクラウド サービスまたは仮想ネットワーク内に別の仮想マシンがない場合、新しい仮想マシンを簡単に作成することができます。詳細については、「[Azure 上で Windows を実行する仮想マシンの作成](virtual-machines-windows-tutorial.md)」を参照してください。テストの完了後に、追加した仮想マシンを削除してください。
+同じクラウド サービスまたは仮想ネットワーク内に別の仮想マシンがない場合、新しい仮想マシンを簡単に作成することができます。詳細については、[Azure 上で Windows を実行する仮想マシンの作成](virtual-machines-windows-tutorial.md)を参照してください。テストの完了後に、追加した仮想マシンを削除してください。
 
 同じクラウド サービスまたは仮想ネットワーク内の仮想マシンへのリモート デスクトップ接続を作成できる場合は、以下を確認してください。
 
 - ターゲットの仮想マシンでの、リモート デスクトップのトラフィック向けエンドポイントの構成。エンドポイントのプライベート TCP ポートは、仮想マシン上のリモート デスクトップ サービスのサービスがリッスンする TCP ポートと一致する必要があります。この TCP ポートの既定設定は 3389 です。
-- ターゲットの仮想マシンでの、リモート デスクトップのトラフィック向けエンドポイントの ACL。ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへのリモート デスクトップの受信トラフィックを受け取れない場合があります。ご利用になっているプロキシのパブリック IP アドレスからの受信トラフィック、または他のエッジ サーバーからの受信トラフィックが許可されているかを ACL で確認してください。詳細については、「[ネットワーク アクセス制御リスト (ACL) とは](https://msdn.microsoft.com/library/azure/dn376541.aspx)」をご覧ください。
+- ターゲットの仮想マシンでの、リモート デスクトップのトラフィック向けエンドポイントの ACL。ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへのリモート デスクトップの受信トラフィックを受け取れない場合があります。ご利用になっているプロキシのパブリック IP アドレスからの受信トラフィック、または他のエッジ サーバーからの受信トラフィックが許可されているかを ACL で確認してください。詳細については、[ネットワーク アクセス制御リスト (ACL) とは](../virtual-network/virtual-networks-acl.md)をご覧ください。
 
-問題の原因としてをエンドポイントを排除する場合、現在使用されているエンドポイントを削除してから新しいエンドポイントを作成します。このとき、外部ポート番号の範囲 49152 ～ 65535 からランダムなポート番号を選択します。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)」を参照してください。
+問題の原因としてをエンドポイントを排除する場合、現在使用されているエンドポイントを削除してから新しいエンドポイントを作成します。このとき、外部ポート番号の範囲 49152 ～ 65535 からランダムなポート番号を選択します。詳細については、[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)を参照してください。
 
 ### <a id="nsgs"></a>ソース 4: ネットワーク セキュリティ グループ
 
 ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。ネットワークのセキュリティ グループのルールによって、インターネットからのリモート デスクトップ トラフィックが許可されていることを確認してください。
 
-詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。
+詳細については、[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)を参照してください。
 
 ### ソース 5: Windows ベースの Azure 仮想マシン
 
@@ -198,7 +198,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 ![](./media/virtual-machines-troubleshoot-remote-desktop-connections/tshootrdp_5.png)
 
-まず、**Azure VM との RDP 接続 (再起動が必要)** に関する問題を解決するために [Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を実行できなかった場合、 「[Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)」の指示に従って、仮想マシンのリモート デスクトップ サービスのサービスをリセットします。リセットすると、以下のようになります。
+まず、**Azure VM との RDP 接続 (再起動が必要)** に関する問題を解決するために [Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を実行できなかった場合、 [Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-password.md)の指示に従って、仮想マシンのリモート デスクトップ サービスのサービスをリセットします。リセットすると、以下のようになります。
 
 - 「リモート デスクトップ」 の Windows ファイアウォールの既定ルール (TCP ポート 3389) が有効になる。
 - HKLM\\System\\CurrentControlSet\\Control\\Terminal Server\\fDenyTSConnections レジストリ値が 0 に設定されるため、リモート デスクトップ接続が有効になる。
@@ -210,11 +210,11 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 - Windows ファイアウォールまたは他のローカルのファイアウォールで、リモート デスクトップのトラフィックを妨げている送信ルールが設定されている。
 - Azure 仮想マシンで実行されている侵入検出ソフトウェアまたは監視ソフトウェアが、リモート デスクトップ接続を妨げている。
 
-サービス管理 API を使用して作成された仮想マシンについて考えられるこれらの問題を修正するには、リモート Azure PowerShell セッションを Azure 仮想マシンに使用します。最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。「[Azure 仮想マシンへの安全なリモート PowerShell アクセスを構成する](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)」を参照し、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上のフォルダーにダウンロードします。
+サービス管理 API を使用して作成された仮想マシンについて考えられるこれらの問題を修正するには、リモート Azure PowerShell セッションを Azure 仮想マシンに使用します。最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。[Azure 仮想マシンへの安全なリモート PowerShell アクセスを構成する](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)を参照し、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上のフォルダーにダウンロードします。
 
-次に、まだ Azure PowerShell がインストールされていなければ、インストールします。「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」を参照してください。
+次に、まだ Azure PowerShell がインストールされていなければ、インストールします。[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)を参照してください。
 
-次に、Azure PowerShell のコマンド プロンプトを開き、現在のフォルダーを、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルのある場所に変更します。Azure PowerShell スクリプトを実行するには、適切な実行ポリシーを設定する必要があります。**Get-executionpolicy** コマンドを実行して、現在のポリシー レベルを決定します。適切なレベルの設定方法の詳細については、「[Set-executionpolicy](https://technet.microsoft.com/library/hh849812.aspx)」 を参照してください。
+次に、Azure PowerShell のコマンド プロンプトを開き、現在のフォルダーを、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルのある場所に変更します。Azure PowerShell スクリプトを実行するには、適切な実行ポリシーを設定する必要があります。**Get-executionpolicy** コマンドを実行して、現在のポリシー レベルを決定します。適切なレベルの設定方法の詳細については、[Set-executionpolicy](https://technet.microsoft.com/library/hh849812.aspx)を参照してください。
 
 次に、Azure のサブスクリプション名、クラウド サービス名、および仮想マシン名を入力してから (< and > 文字を削除する)、これらのコマンドを実行します。
 
@@ -263,7 +263,7 @@ Azure 仮想マシンのリモート デスクトップのエンドポイント�
 
 ## 手順 5: Azure サポート フォーラムに問題を送信します。
 
-世界中の Azure 専門家に質問するには、MSDN Azure フォーラムまたは Stack Overflow Azure フォーラムのいずれかに問題を送信してください。詳細については、「[Microsoft Azure フォーラム](http://azure.microsoft.com/support/forums/)」を参照してください。
+世界中の Azure 専門家に質問するには、MSDN Azure フォーラムまたは Stack Overflow Azure フォーラムのいずれかに問題を送信してください。詳細については、[Microsoft Azure フォーラム](http://azure.microsoft.com/support/forums/)を参照してください。
 
 ## 手順 6: Azure サポート インシデントを送信します。
 
@@ -273,7 +273,7 @@ Azure 仮想マシンのリモート デスクトップのエンドポイント�
 
 インシデントを送信するには、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)で [**サポートの要求**] をクリックします。
 
-Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
+Azure サポートの使用方法の詳細については、[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)を参照してください。
 
 ## その他のリソース
 
@@ -287,4 +287,4 @@ Azure サポートの使用方法の詳細については、「[Microsoft Azure 
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

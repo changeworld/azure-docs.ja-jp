@@ -127,7 +127,6 @@ Visual Studio から Web アプリをデプロイする方法については、�
 
 WebMatrix から Web アプリをデプロイする方法については、次のリソースを参照してください。
 
-* [Microsoft WebMatrix を使用した Web アプリの開発とデプロイ](web-sites-dotnet-using-webmatrix.md)。WebMatrix テンプレートを使用して簡単な ASP.NET Web アプリを作成し、WebMatrix と Web Deploy を使用してその Web サイトを Azure の Web アプリにデプロイする方法。
 * [ WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ](web-sites-nodejs-use-webmatrix.md)
 * [WebMatrix を使用した PHP-MySQL Web アプリの作成とデプロイ](web-sites-php-mysql-use-webmatrix.md)。
 * [WebMatrix 3: Git の統合と Azure へのデプロイ](http://www.codeproject.com/Articles/577581/Webmatrixplus3-3aplusIntegratedplusGitplusandplusD)。WebMatrix を使用して、Git ソース管理リポジトリからデプロイを実行する方法です。
@@ -228,4 +227,4 @@ Azure のロール ベースのアクセス制御を使用して、Web アプリ
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

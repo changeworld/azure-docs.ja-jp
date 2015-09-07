@@ -1,19 +1,19 @@
 <properties
    pageTitle="StorSimple ボリュームの管理 | Microsoft Azure"
-   description="StorSimple ボリュームを追加、変更、監視する方法と、必要に応じて StorSimple ボリュームをオフラインにする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
+	description="StorSimple ボリュームを追加、変更、監視する方法と、必要に応じて StorSimple ボリュームをオフラインにする方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/14/2015"
-   ms.author="v-sharos" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/21/2015"
+	ms.author="v-sharos"/>
 
 # StorSimple ボリュームの管理
 
@@ -71,7 +71,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
   1. **[名前]** に、ボリュームの名前を指定します。
   2. **[プロビジョニング容量]** に、ボリュームのプロビジョニング容量を GB または TB 単位で指定します。物理デバイスの場合、1 GB ～ 64 TB の範囲で容量を指定する必要があります。StorSimple 仮想デバイス上のボリュームにプロビジョニングできる最大容量は 30 TB です。
-  3. **[使用法の種類]** ボックスの一覧で、ボリュームの使用法の種類を選択します。アクセス頻度の低いアーカイブ データを使用する場合は、**[アーカイブ ボリューム]** を選択します。それ以外の場合は、**[プライマリ ボリューム]** を選択します。
+  3. **[使用法の種類]** ボックスの一覧で、ボリュームの使用法の種類を選択します。アクセス頻度の低いアーカイブ データを使用する場合は、**[アーカイブ ボリューム]** を選択します。それ以外の場合は、**[Tiered Volume (階層化されたボリューム)]** を選びます。(「階層化されたボリューム」は、以前は「プライマリ ボリューム」と呼ばれていました)。
   5. 矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes/HCS_ArrowIcon.png) をクリックして **[追加設定]** ページに移動します。
 
      ![ボリュームの追加](./media/storsimple-manage-volumes/HCs_AddVolume2M.png)
@@ -181,4 +181,4 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

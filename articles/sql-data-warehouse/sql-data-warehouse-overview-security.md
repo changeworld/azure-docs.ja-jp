@@ -1,20 +1,20 @@
 <properties
    pageTitle="SQL Data Warehouse でのデータベースの保護 | Microsoft Azure"
-   description="ソリューション開発のための Azure SQL Data Warehouse でのデータベース保護に関するヒント。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="sahaj08"
-   manager="barbkess"
-   editor=""/>
+	description="ソリューション開発のための Azure SQL Data Warehouse でのデータベース保護に関するヒント。"
+	services="sql-data-warehouse"
+	documentationCenter="NA"
+	authors="sahaj08"
+	manager="barbkess"
+	editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/22/2015"
-   ms.author="sahajs"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-services"
+	ms.date="06/22/2015"
+	ms.author="sahajs"/>
 
 # SQL Data Warehouse でのデータベース保護
 
@@ -58,6 +58,28 @@ Azure SQL Database でユーザーが実行できる事柄をさらに限定す�
 Azure の管理ポータルまたは Azure リソース マネージャー API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。このトピックの詳細については、「[Azure プレビュー ポータルでのロール ベースのアクセス制御][]」を参照してください。
 
 
+
+## 暗号化
+
+Azure SQL Data Warehouse では、[透過的なデータ暗号化][]を使用して、データが "静止" 状態のとき、またはデータベース ファイルやバックアップに格納されているときに、そのデータを暗号化することによりデータを保護できます。データベースを暗号化するには、データベースの所有者として接続し、次のコマンドを実行します。
+
+
+```
+
+ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
+
+```
+
+透過的なデータ暗号化は、[Azure ポータル][]のデータベース設定から有効にすることもできます。
+
+
+
+## 監査
+
+データベースの監査イベントと追跡イベントは、規制遵守の維持や、疑わしいアクティビティの特定に役立ちます。SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。詳細については、「[SQL Database 監査の使用][]」を参照してください。
+
+
+
 ## 次のステップ
 開発のその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
@@ -73,9 +95,11 @@ Azure の管理ポータルまたは Azure リソース マネージャー API �
 [Azure SQL データベースにおけるデータベース、ログイン、およびユーザーの管理]: https://msdn.microsoft.com/library/ee336235.aspx
 [権限]: https://msdn.microsoft.com/library/ms191291.aspx
 [ストアド プロシージャ]: https://msdn.microsoft.com/library/ms190782.aspx
-[Transparent Data Encryption]: http://go.microsoft.com/fwlink/?linkid=526242&clcid=0x409
+[透過的なデータ暗号化]: http://go.microsoft.com/fwlink/?LinkId=526242
+[SQL Database 監査の使用]: sql-database-auditing-get-started.md
+[Azure ポータル]: https://portal.azure.com/
 
 <!--Other Web references-->
 [Azure プレビュー ポータルでのロール ベースのアクセス制御]: http://azure.microsoft.com/documentation/articles/role-based-access-control-configure.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

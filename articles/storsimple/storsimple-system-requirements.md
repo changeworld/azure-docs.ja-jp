@@ -1,22 +1,22 @@
 <properties 
-   pageTitle="StorSimple のシステム要件 | Microsoft Azure" 
-   description="Azure StorSimple ソリューションでのソフトウェア、高可用性、およびネットワークの要件およびベスト プラクティスについて説明します。" 
-   services="storsimple" 
-   documentationCenter="NA" 
-   authors="alkohli" 
-   manager="carolz" 
-   editor=""/>
+   pageTitle="StorSimple のシステム要件 | Microsoft Azure"
+	description="Azure StorSimple ソリューションでのソフトウェア、高可用性、およびネットワークの要件およびベスト プラクティスについて説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 
 <tags
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD" 
-   ms.date="08/17/2015"
-   ms.author="alkohli"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/26/2015"
+	ms.author="alkohli"/>
 
-# StorSimple のシステム要件
+# StorSimple ソフトウェア、高可用性、ネットワークの要件
 
 ## 概要
 
@@ -194,4 +194,4 @@ StorSimple ソリューションの最適なパフォーマンスを得るため
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

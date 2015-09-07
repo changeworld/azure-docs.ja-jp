@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Python から Queue ストレージを使用する方法 | Microsoft Azure" 
-	description="Python から Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。" 
-	services="storage" 
-	documentationCenter="python" 
-	authors="huguesv" 
-	manager="wpickett" 
+	pageTitle="Python から Queue ストレージを使用する方法 | Microsoft Azure"
+	description="Python から Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。"
+	services="storage"
+	documentationCenter="python"
+	authors="emgerner-msft"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="python" 
-	ms.topic="article" 
-	ms.date="03/11/2015" 
-	ms.author="huvalo"/>
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="python"
+	ms.topic="article"
+	ms.date="08/25/2015"
+	ms.author="emgerner"/>
 
 # Python から Queue ストレージを使用する方法
 
@@ -22,7 +22,7 @@
 
 ## 概要
 
-このガイドでは、Azure Queue ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python で記述され、[Python Azure パッケージ][]を使用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ][]」セクションを参照してください。
+このガイドでは、Azure Queue ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python で記述され、[Python Azure Storage パッケージ][]を使用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ][]」セクションを参照してください。
 
 [AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
@@ -35,7 +35,7 @@
 
 **QueueService** オブジェクトを使用して、キューを操作できます。次のコードでは、**QueueService** オブジェクトを作成します。プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
 
-	from azure.storage import QueueService
+	from azure.storage.queue import QueueService
 
 次のコードでは、ストレージ アカウント名とアカウント キーを使用して **QueueService** オブジェクトを作成します。'myaccount' と 'mykey' の部分は、実際のアカウントとキーに置き換えてください。
 
@@ -110,6 +110,7 @@
 [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure Storage チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
+[Python Azure Storage パッケージ]: https://pypi.python.org/pypi/azure-storage
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

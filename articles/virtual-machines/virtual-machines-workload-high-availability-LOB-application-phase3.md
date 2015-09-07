@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="基幹業務アプリケーションのワークロード フェーズ 3: SQL Server インフラストラクチャを構成する" 
-	description="高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこの第 3 フェーズでは、SQL Server クラスター コンピューターとクラスター自体を作成します。" 
+	pageTitle="基幹業務アプリケーションのフェーズ 3 | Microsoft Azure"
+	description="コンピューターと SQL Server クラスターを作成し、可用性グループを有効にします。"
 	documentationCenter=""
-	services="virtual-machines" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	services="virtual-machines"
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/11/2015"
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 3: SQL Server インフラストラクチャを構成する
@@ -177,7 +177,7 @@ SQL Server サービスには、クライアントがデータベース サー�
 
 SQL Server 仮想マシンごとに、ローカル管理者としてサインアウトします。
 
-Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://msdn.microsoft.com/library/azure/dn133149.aspx)」をご覧ください。基幹業務アプリケーションのストレージ アカウントの geo 冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
+Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」をご覧ください。基幹業務アプリケーションのストレージ アカウントの geo 冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
 
 ## クラスター マジョリティ ノード サーバーの構成
 
@@ -254,7 +254,7 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 ## 次のステップ
 
-このワークロードを引き続き構成するには、「[フェーズ 4: Web サーバーを構成する](virtual-machines-workload-high-availability-LOB-application-phase4.md)」に進んでください。
+このワークロードを引き続き構成するには、[フェーズ 4: Web サーバーを構成する](virtual-machines-workload-high-availability-LOB-application-phase4.md)に進んでください。
 
 ## その他のリソース
 
@@ -268,4 +268,4 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

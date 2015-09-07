@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure AD Connect の FAQ" 
-	description="このページでは、Azure AD Connect についてよく寄せられる質問を紹介します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure AD Connect の FAQ"
+	description="このページでは、Azure AD Connect についてよく寄せられる質問を紹介します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/02/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure Active Directory Connect の FAQ
@@ -40,4 +40,4 @@
 
 [こちら](active-directory-aadconnect-o365-certs.md)の記事に記載されているガイダンスに従って、証明書を更新して解決します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

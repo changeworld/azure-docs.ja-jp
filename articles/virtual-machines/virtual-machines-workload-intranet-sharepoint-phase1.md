@@ -1,6 +1,6 @@
 <properties
-	pageTitle="SharePoint イントラネット ファーム ワークロードのフェーズ 1: Azure の構成"
-	description="イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこの第 1 フェーズでは、Azure Virtual Network および他の Azure インフラストラクチャ要素を作成します。"
+	pageTitle="SharePoint Server 2013 ファームのフェーズ 1 | Microsoft Azure"
+	description="仮想ネットワークおよびその他の Azure インフラストラクチャ要素を作成します。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -53,7 +53,7 @@ Azure コンポーネントの構成を開始する前に、次の表を作成�
 
 **表 S: 仮想ネットワークのサブネット**
 
-> [AZURE.NOTE]この定義済みアーキテクチャでは、わかりやすくするため単一のサブネットを使用します。一連のトラフィック フィルターをオーバーレイしてサブネットの分離をエミュレートする場合は、Azure の[ネットワーク セキュリティ グループ](https://msdn.microsoft.com/library/azure/dn848316.aspx)を使用できます。
+> [AZURE.NOTE]この定義済みアーキテクチャでは、わかりやすくするため単一のサブネットを使用します。一連のトラフィック フィルターをオーバーレイしてサブネットの分離をエミュレートする場合は、Azure の[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を使用できます。
 
 仮想ネットワーク内にドメイン コント ローラーを最初にセットアップするときに使用する 2 つのオンプレミス DNS サーバーについて、表 D に記入します。各 DNS サーバーの表示名および単一の IP アドレスを指定します。この表示名は、DNS サーバーのホスト名またはコンピューター名と一致している必要はありません。記入欄は 2 つですが、さらに追加してもかまいません。IT 部門と相談してこのリストを決定します。
 
@@ -78,7 +78,7 @@ Azure コンポーネントの構成を開始する前に、次の表を作成�
 
 表 V、S、D、L の設定で仮想ネットワークを作成するには、「[構成テーブルを使用してクロスプレミス仮想ネットワークを作成する](virtual-machines-workload-deploy-vnet-config-tables.md)」の手順を使用します。
 
-> [AZURE.NOTE]この手順では、サイト間 VPN 接続を使用する仮想ネットワークを作成します。サイト間接続に ExpressRoute を使用する方法については、「[ExpressRoute の技術概要](http://msdn.microsoft.com/library/dn606309.aspx)」を参照してください。
+> [AZURE.NOTE]この手順では、サイト間 VPN 接続を使用する仮想ネットワークを作成します。サイト間接続に ExpressRoute を使用する方法については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
 Azure Virtual Network の作成が済むと、Azure 管理ポータルで次のことが決定されます。
 
@@ -87,9 +87,9 @@ Azure Virtual Network の作成が済むと、Azure 管理ポータルで次の�
 
 仮想ネットワーク作成後に Azure 管理ポータルでこれらを確認するには、[**ネットワーク**] をクリックし、仮想ネットワークの名前をクリックして、[**ダッシュボード**] メニュー オプションをクリックします。
 
-次に、仮想ネットワーク ゲートウェイを構成して、セキュリティで保護されたサイト間 VPN 接続を作成します。方法については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](http://msdn.microsoft.com/library/jj156210.aspx)」を参照してください。
+次に、仮想ネットワーク ゲートウェイを構成して、セキュリティで保護されたサイト間 VPN 接続を作成します。方法については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。
 
-次に、新しい仮想ネットワークとオンプレミス VPN デバイスの間に、サイト間 VPN 接続を作成します。詳細な手順については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](http://msdn.microsoft.com/library/jj156210.aspx)」を参照してください。
+次に、新しい仮想ネットワークとオンプレミス VPN デバイスの間に、サイト間 VPN 接続を作成します。詳細な手順については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。
 
 次に、仮想ネットワークのアドレス空間がオンプレミス ネットワークから到達できることを確認します。これは、通常、仮想ネットワークのアドレス空間に対応するルートを VPN デバイスに追加した後、組織ネットワークのルーティング インフラストラクチャの他の部分にそのルートをアドバタイズすることによって行います。IT 部門と相談してこの方法を決定します。
 
@@ -171,4 +171,4 @@ Azure Virtual Network の作成が済むと、Azure 管理ポータルで次の�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

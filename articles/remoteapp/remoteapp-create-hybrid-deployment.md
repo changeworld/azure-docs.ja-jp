@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure RemoteApp のハイブリッド コレクションの作成方法" 
-	description="内部ネットワークに接続する RemoteApp のデプロイを作成する方法について説明します。" 
-	services="remoteapp" 
-	documentationCenter="" 
-	authors="lizap" 
-	manager="mbaldwin" 
+	pageTitle="Azure RemoteApp のハイブリッド コレクションの作成方法"
+	description="内部ネットワークに接続する RemoteApp のデプロイを作成する方法について説明します。"
+	services="remoteapp"
+	documentationCenter=""
+	authors="lizap"
+	manager="mbaldwin"
 	editor=""/>
 
 <tags 
-	ms.service="remoteapp" 
-	ms.workload="compute" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/12/2015" 
+	ms.service="remoteapp"
+	ms.workload="compute"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/12/2015"
 	ms.author="elizapo"/>
 
 # Azure RemoteApp のハイブリッド コレクションの作成方法
@@ -53,9 +53,9 @@ RemoteApp のコレクションには、次の 2 種類があります:
 
 ### Azure VNET を作成して Active Directory のデプロイに参加させる
 
-まず[仮想ネットワーク](https://msdn.microsoft.com/library/azure/dn631643.aspx)の作成から開始します。これは Azure 管理ポータルの **[ネットワーク]** タブで実行します。仮想ネットワークを、Azure Active Directory テナントと同期している Active Directory デプロイに接続する必要があります。
+まず[仮想ネットワーク](../virtual-network/virtual-networks-create-vnet.md)の作成から開始します。これは Azure 管理ポータルの **[ネットワーク]** タブで実行します。仮想ネットワークを、Azure Active Directory テナントと同期している Active Directory デプロイに接続する必要があります。
 
-詳細については、「[管理ポータルでの仮想ネットワークの設定について](https://msdn.microsoft.com/library/azure/jj156074.aspx)管理ポータルでの仮想ネットワークの設定について」を参照してください。
+詳細については、「[管理ポータルでの仮想ネットワークの設定について](../virtual-network/virtual-networks-settings.md)」を参照してください。
 
 ### 仮想ネットワークで RemoteApp を使用する準備ができていることを確認します。
 RemoteApp コレクションを作成する前に、新しい仮想ネットワークで準備ができていることを確認します。これは次の手順を実行することで検証できます。
@@ -136,4 +136,4 @@ RemoteApp コレクションには複数のアプリケーションを発行で�
 
  
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

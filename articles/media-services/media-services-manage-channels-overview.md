@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する" 
-	description="このトピックでは、オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Juliako" 
-	manager="dwrede" 
+	pageTitle="オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する"
+	description="このトピックでは、オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。"
+	services="media-services"
+	documentationCenter=""
+	authors="Juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="ne" 
-	ms.topic="article" 
-	ms.date="08/11/2015"
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="ne"
+	ms.topic="article"
+	ms.date="08/20/2015"
 	ms.author="juliako"/>
 
 #オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
@@ -117,7 +117,7 @@ RTMP ライブ エンコーダーの詳細については、「[Azure Media Serv
 
 取り込み URL は、チャネルの作成時に取得できます。これらの URL を取得するために、チャネルが**実行中**状態である必要はありません。データをチャネルにプッシュする準備ができたら、チャネルを**実行中**状態にする必要があります。チャネルがデータの取り込みを開始すると、プレビュー URL 経由でストリームをプレビューできます。
 
-Fragmented MP4 (スムーズ ストリーミング) のライブ ストリームを、SSL 経由で取り込むこともできます。SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。現時点では、SSL 経由で RTMP を取り込むことはできません。
+Fragmented MP4 (スムーズ ストリーミング) のライブ ストリームを、SSL 接続で取り込むこともできます。SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。現時点では、SSL 経由で RTMP を取り込むことはできません。
 
 ####<a id="keyframe_interval"></a>キーフレームの間隔
 
@@ -214,7 +214,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 Standard|メモ
 ---|---
-CEA-708 と EIA-608 (708/608)|CEA 708 と EIA 608 は、米国とカナダのクローズド キャプションの標準です。<p><p>現時点では、キャプションがサポートされるのはエンコードされた入力ストリーム内でのみです。608 または 708 キャプションを、Media Services に送信されるエンコードされたストリームに挿入できるライブ メディア エンコーダーを使用する必要があります。Media Services はキャプションが挿入されたコンテンツをユーザーに配信します。
+CEA-708 と EIA-608 (708/608)|CEA 708 と EIA 608 は、米国とカナダのクローズド キャプションの標準です。<p><p>現時点では、キャプションがサポートされるのはエンコードされた入力ストリーム内でのみです。608 または 708 キャプションを、Media Services に送信されるエンコードされたストリームに挿入できるライブ Media Encoder を使用する必要があります。Media Services はキャプションが挿入されたコンテンツをユーザーに配信します。
 ismt (スムーズ ストリーミング テキスト トラック) 内の TTML|Media Services の動的パッケージ機能では、クライアントが MPEG DASH、HLS、スムーズ ストリーミングのいずれかの形式でコンテンツをストリームできます。ただし、.ismt (スムーズ ストリーミング テキスト トラック) 内のキャプションのある Fragment MP4 を取り込む場合は、ストリーミングを配信できるのはスムーズ ストリーミング クライアントのみになります。
 SCTE-35|広告の挿入のキューには、デジタル信号システムが使用されます。ダウンストリームの受信側は信号を使用して、割り当てられた時間のストリームに広告をスプライスします。SCTE 35 は、入力ストリームのスパース トラックとして送信する必要があります。<p><p>現時点では、信号の伝送がサポートされている入力ストリーム形式は Fragmented MP4 (スムーズ ストリーミング) のみです。サポートされている出力形式も、スムーズ ストリーミングのみです。
 
@@ -234,90 +234,17 @@ SCTE-35|広告の挿入のキューには、デジタル信号システムが使
 
 - ライブ エンコーダーを再構成する際は、毎回チャネルで **Reset** メソッドを呼び出します。チャネルをリセットする前に、プログラムを停止する必要があります。チャネルをリセットしたら、プログラムを再起動します。 
 - チャネルを停止できるのは実行中の状態で、チャネルのすべてのプログラムが停止しているときのみです。
-- 既定では、Media Services カウントに追加できるチャネル数は 5 つのみです。詳しくは、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
+- 既定では、Media Services アカウントに追加できるチャネル数は 5 つのみです。詳しくは、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
 - チャネルやチャネルに関連付けられたプログラムの実行中は、入力プロトコルを変更できません。別のプロトコルが必要な場合は、入力プロトコルごとに別のチャネルを作成します。 
 - チャネルが**実行中**状態のときにのみ課金されます。詳しくは、[こちら](media-services-manage-channels-overview.md#states)のセクションを参照してください。
 
-##<a id="tasks"></a>ライブ ストリーミングに関連するタスク
-
-###Media Services アカウントの作成
-
-[Azure Media Services アカウントを作成](media-services-create-account.md)します。
-
-###ストリーミング エンドポイントの構成
-
-ストリーミング エンドポイントの概要とその管理方法の詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」をご覧ください。
-
-###開発環境の設定  
-
-開発環境に関して **.NET** または **REST API** を選択します。
-
-[AZURE.INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
-
-###プログラムによる接続  
-
-プログラムを使用して Azure Media Services に接続するため、**.NET** または **REST API** を選択します。
-
-[AZURE.INCLUDE [media-services-selector-connect](../../includes/media-services-selector-connect.md)]
-
-###オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを作成する
+##オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを作成する方法
 
 オンプレミスのライブ エンコーダーの詳細については、「[Azure Media Services でのサード パーティ ライブ エンコーダーの使用](https://msdn.microsoft.com/library/azure/dn783464.aspx)」をご覧ください。
 
 チャネルとプログラムの作成および管理方法を表示する**ポータル**、**.NET**、**REST API** を選択します。
 
 [AZURE.INCLUDE [media-services-selector-manage-channels](../../includes/media-services-selector-manage-channels.md)]
-
-###資産の保護
-
-**概要**:
-
-[コンテンツ保護の概要](media-services-content-protection-overview.md)
-
-
-Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) または PlayReady DRM と資産を関連付けて暗号化する場合、コンテンツ キーを作成する必要があります。
-
-キーを作成するために **.NET** または **REST API** を使用します。
-
-[AZURE.INCLUDE [media-services-selector-create-contentkey](../../includes/media-services-selector-create-contentkey.md)]
-
-コンテンツ キーを作成すると、**.NET** または **REST API** を使用してキー承認ポリシーを構成できます。
-
-[AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
-
-####パートナーとの統合
-
-[castLabs を使用して Azure Media Services に DRM ライセンスを配信する](media-services-castlabs-integration.md)
-
-###資産の発行と配信
-
-**概要**:
-
-- [動的パッケージの概要](media-services-dynamic-packaging-overview.md)
-
-**.NET** または **REST API** を使用して資産配信ポリシーを構成します。
-
-[AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
-
-**Azure の管理ポータル**または **.NET** を使用して資産を発行します (ロケータを作成して)。
-
-[AZURE.INCLUDE [media-services-selector-publish](../../includes/media-services-selector-publish.md)]
-
-コンテンツを配信する
-
-> [AZURE.SELECTOR]
-- [Overview](media-services-deliver-content-overview.md)
-
-
-###Azure CDN を有効にする
-
-Media Services では、Azure CDN との統合をサポートしています。Azure CDN を有効にする方法については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md#enable_cdn)」をご覧ください。
-
-###Media Services アカウントのスケーリング
-
-**Media Services** のスケーリングは、アカウントのプロビジョニングに使用する [**ストリーミング予約ユニット**] の数を指定して行えます。
-
-ストリーミング ユニットのスケーリングについては、「[スケーリング ユニットの規模変更方法](media-services-manage-origins.md#scale_streaming_endpoints.md)」をご覧ください。
 
 ##関連トピック
 
@@ -330,4 +257,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

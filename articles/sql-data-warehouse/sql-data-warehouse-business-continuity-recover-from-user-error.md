@@ -1,20 +1,20 @@
 <properties
    pageTitle="SQL Data Warehouse でデータベースをユーザー エラーから復旧する |Microsoft Azure"
-   description="SQL Data Warehouse でデータベースをユーザー エラーから復旧するための手順です。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="sahaj08"
-   manager="barbkess"
-   editor=""/>
+	description="SQL Data Warehouse でデータベースをユーザー エラーから復旧するための手順です。"
+	services="sql-data-warehouse"
+	documentationCenter="NA"
+	authors="sahaj08"
+	manager="barbkess"
+	editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/26/2015"
-   ms.author="sahajs"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-services"
+	ms.date="06/26/2015"
+	ms.author="sahajs"/>
 
 # SQL Data Warehouse でのデータベースのユーザー エラーからの復旧
 
@@ -58,6 +58,8 @@ $RestoreRequest = Start-AzureSqlDatabaseRestore -SourceServerName "<YourServerNa
 # Monitor progress of restore operation
 Get-AzureSqlDatabaseOperation -ServerName "<YourServerName>" –OperationGuid $RestoreRequest.RequestID
 ```
+
+サーバーが foo.database.windows.net である場合は、PowerShell コマンドレットでサーバー名として "foo" を使用してください。
 
 ### REST API
 プログラムでデータベースの復元を実行するには、REST を使用します。
@@ -116,8 +118,8 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 [データベース操作の状態]: http://msdn.microsoft.com/library/azure/dn720371.aspx
 [削除された復元可能なデータベースの取得]: http://msdn.microsoft.com/library/azure/dn509574.aspx
 [削除された復元可能なデータベースの一覧表示]: http://msdn.microsoft.com/library/azure/dn509562.aspx
-[Start-AzureSqlDatabaseRestore]: https://msdn.microsoft.com/ja-jp/library/dn720218.aspx
+[Start-AzureSqlDatabaseRestore]: https://msdn.microsoft.com/ja-JP/library/dn720218.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

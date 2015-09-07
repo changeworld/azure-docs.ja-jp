@@ -18,31 +18,31 @@
 
 #Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする#
 
-Linux 向け Azure カスタム スクリプト拡張機能では、Python や Bash など仮想マシンでサポートされているスクリプト言語で記述された任意のコードを実行する仮想マシンをカスタマイズする方法が提供されます。これによって、非常に柔軟に複数のマシンにアプリケーションを自動的にデプロイすることが可能になります。
+Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Python や Bash など、仮想マシン (VM) でサポートされているスクリプト言語で記述された任意のコードを実行する VM をカスタマイズすることができます。これによって、非常に柔軟に複数のマシンにアプリケーションを自動的にデプロイすることが可能になります。
 
-カスタム スクリプト拡張機能は、Azure ポータル、PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) を使ってデプロイできます。
+カスタム スクリプト拡張機能は、Azure ポータル、Windows PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) を使ってデプロイできます。
 
-ここでは、Azure CLI を使って簡単な LAMP アプリケーションを Ubuntu にデプロイしていきます。
+ここでは、Azure CLI を使って簡単な LAMP アプリケーションを Ubuntu にデプロイします。
 
 ## 前提条件
 
-ここでは Ubuntu 14.04 を実行する 2 つの Azure 仮想マシンを作成します。それぞれ *script-vm* と *lamp-vm* という名前にします。自身の環境で行うときは、それぞれ固有の名前を付けてください。1 つは CLI コマンド向け、もう 1 つは LAMP アプリのデプロイに使用します。
+次の例では、まず、Ubuntu 14.04 を実行している 2 つの Azure VM を作成します。VM の名前は *script-vm* と *lamp-vm* です。自分で VM を作成するときは、固有の名前を付けてください。1 つは CLI コマンドの実行に使用し、もう 1 つは LAMP アプリのデプロイに使用します。
 
 また、Azure ストレージ アカウントとアカウントにアクセスするキーが必要になります (Azure ポータルで取得できます)。
 
 Azure での Linux VM の作成については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)」をご覧ください。
 
-ここで使用するインストール コマンドは Ubuntu を前提としていますが、どのサポートされたディストリビューションに対しても基本的な手順は同じです。
+インストール コマンドでは Ubuntu が想定されますが、サポートされる Linux ディストリビューションに応じてインストールを調整できます。
 
-仮想マシン *script-vm* では、Azure に接続できる Azure CLI がインストールされていることが必要です。詳細については、[Azure コマンド ライン インターフェイスのインストールと構成](../xplat-cli.md)に関するページを参照してください。
+仮想マシン script-vm では、Azure に接続できる Azure CLI がインストールされていることが必要です。詳細については、[Azure コマンド ライン インターフェイスのインストールと構成](../xplat-cli.md)に関するページを参照してください。
 
 ## スクリプトのアップロード
 
-ここでは、カスタム スクリプト拡張機能によってリモート仮想マシンでスクリプトが実行され、LAMP スタックがインストールされて PHP ページが作成されます。Azure BLOB のようにアップロードすれば、どこからでもスクリプトにアクセスできます。
+ここでは、カスタム スクリプト拡張機能によってリモート VM でスクリプトが実行され、LAMP スタックがインストールされて PHP ページが作成されます。Azure BLOB のようにアップロードすれば、どこからでもスクリプトにアクセスできます。
 
-**スクリプト**
+### スクリプトの概要
 
-次のスクリプトでは、LAMP スタックを Ubuntu にインストールし (MySQL のサイレント インストールの設定を含む)、簡単な PHP ファイルを記述して Apache を起動します。
+次のスクリプトの例では、LAMP スタックを Ubuntu にインストールし (MySQL のサイレント インストールの設定を含む)、簡単な PHP ファイルを記述して Apache を起動します。
 
 	#!/bin/bash
 	# set up a silent install of MySQL
@@ -62,9 +62,9 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 	# restart Apache
 	apachectl restart
 
-**アップロード**
+### スクリプトのアップロード
 
-スクリプトを *lamp\_install.sh* などとしてテキスト ファイルに保存し、Azure ストレージ アカウントにアップロードします。Azure CLI を使えば簡単にできます。次の例では、ファイルを「scripts」という名前のストレージ コンテナーにアップロードします。注: コンテナーが存在しない場合は、まずコンテナーを作成する必要があります。
+スクリプトを *lamp\_install.sh* などとしてテキスト ファイルに保存し、Azure ストレージ アカウントにアップロードします。Azure CLI を使えば簡単にできます。次の例では、ファイルを「scripts」という名前のストレージ コンテナーにアップロードします。コンテナーが存在しない場合は、まずコンテナーを作成する必要があります。
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
@@ -75,36 +75,35 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
 ## 拡張機能のデプロイ
 
-これで、Azure CLI を使ってリモート仮想マシンに Linux カスタム スクリプト拡張機能をデプロイする準備ができました。
+次のコマンドを使用して、Azure CLI を使ってリモート VM に Linux カスタム スクリプト拡張機能をデプロイします。
 
     azure vm extension set -c "./public_config.json" lamp-vm CustomScriptForLinux Microsoft.OSTCExtensions 1.*
 
-これによって、*lamp-vm* という名前の仮想マシンで *lamp\_install.sh* スクリプトがダウンロードされて実行されます。
+前のコマンドによって、*lamp\_install.sh* スクリプトが *lamp-vm* という名前の VM にダウンロードされて実行されます。
 
-アプリに Web サーバーが含まれる場合は、リモート仮想マシンで HTTP リスニング ポートが開かれていることをご確認ください。
+アプリに Web サーバーが含まれる場合は、次のコマンドを使用して、リモート VM で HTTP リスニング ポートが開かれていることを確認してください。
 
     azure vm endpoint create -n Apache -o tcp lamp-vm 80 80
 
 ## 監視とトラブルシューティング
 
-リモート仮想マシンのログファイルを参照すれば、カスタム スクリプトの実行の進行状況を確認できます。*lamp-vm* に SSH で通信し、ログ ファイルの内容を確認します。
+リモート VM 上のログ ファイルを確認し、カスタム スクリプトの実行状況を確認できます。次のコマンドを使用して、*lamp-vm* に SSH で通信し、ログ ファイルの内容を確認します。
 
     cd /var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.0/
     tail -f extension.log
 
-カスタム スクリプト拡張機能の実行が終了すると、作成した PHP ページを参照できるようになります。ここでは **http://lamp-vm.cloudapp.net/phpinfo.php* となります。
+CustomScript 拡張機能を実行すると、参照用に作成した PHP ページを参照できます。たとえば、この記事の PHP ページは **http://lamp-vm.cloudapp.net/phpinfo.php* です。
 
 ## その他のリソース
 
 同じ基本的な手順で、より複雑なアプリをデプロイすることも可能です。この例では、インストール スクリプトは Azure ストレージのパブリック BLOB として保存されています。インストール スクリプトを [Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx) (SAS) を使ったセキュアな BLOB として保存すると、より安全です。
 
-Azure CLI、Linux、カスタム スクリプト拡張機能の詳細については、次をご覧ください。
+次に、Azure CLI、Linux、およびカスタム スクリプト拡張機能のその他のリソースをリストします。
 
 [Linux VM カスタム タスクをカスタム スクリプト拡張機能を使って自動化する](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/)
 
 [Azure Linux 拡張機能 (GitHub)](https://github.com/Azure/azure-linux-extensions)
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

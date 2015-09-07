@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Mobile Engagement Android SDK の統合" 
+	pageTitle="Azure Mobile Engagement Android SDK の統合"
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
-	editor="" />
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
+	editor=""/>
 
 <tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="08/10/2015" 
-	ms.author="piyushjo" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="08/10/2015"
+	ms.author="piyushjo"/>
 
 #Engagement を Android に統合する方法
 
@@ -28,7 +28,7 @@
 
 > [AZURE.IMPORTANT]Android SDK の最小の API レベルは 10 以降 (Android 2.3.3 以降) である必要があります。
  
-ユーザー、セッション、アクティビティ、クラッシュ、および技術に関するすべての統計を計算するために必要なログ レポートをアクティブ化するには、以下の手順で十分です。イベント、エラー、ジョブなどの他の統計情報を計算するのに必要なログのレポートについては、これらの統計がアプリケーションに依存しているので、エンゲージメント API を使用して手動で実行する必要があります ([Android で高度なモバイル エンゲージメント タグ付け API を使用する方法を参照](mobile-engagement-android-use-engagement-api.md))。
+ユーザー、セッション、アクティビティ、クラッシュ、および技術に関するすべての統計をコンピューティングするために必要なログ レポートをアクティブ化するには、以下の手順で十分です。イベント、エラー、ジョブなどの他の統計情報をコンピューティングするのに必要なログのレポートについては、これらの統計がアプリケーションに依存しているので、エンゲージメント API を使用して手動で実行する必要があります ([Android で高度な Mobile Engagement タグ付け API を使用する方法を参照](mobile-engagement-android-use-engagement-api.md))。
 
 ##Android プロジェクトに Engagement SDK とサービスを埋め込む
 
@@ -54,10 +54,6 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 
 			<uses-permission android:name="android.permission.INTERNET"/>
 			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
--   ANDROID\_ID からEngagement デバイス ID を生成できないデバイス モデルが少数あります (バグが多い、または使えない可能性があります)。その場合、SDK は、他の Engagement アプリケーションも同じデバイス識別子を共有できるように、ランダムなデバイス識別子を生成してデバイスの外部ストレージに保存しようとします (さらに、外部ストレージに問題が発生した場合でも、アプリケーション自体が常に同じデバイス識別子を使うことを保証するために共有設定としても保存されます)。このメカニズムを適切に機能させるには、次のアクセス権限が不足している場合は (`<application>` タグの前に) 追加する必要があります。
-
-			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 -   次のセクションを (`<application>` タグと `</application>` タグの間に) 追加します。
 
@@ -93,7 +89,7 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 
 ### 推奨される方法: `Activity` クラスをオーバーロードします
 
-ユーザー、セッション、アクティビティ、クラッシュ、および技術に関する統計を計算するために Engagement が必要とするすべてのログ レポートをアクティブ化するには、すべての `*Activity` サブ クラスが対応する `Engagement*Activity` クラスから継承されるようにする必要があります (例: レガシー アクティビティが `ListActivity` を拡張している場合は、`EngagementListActivity` も拡張します)。
+ユーザー、セッション、アクティビティ、クラッシュ、および技術に関する統計をコンピューティングするために Engagement が必要とするすべてのログ レポートをアクティブ化するには、すべての `*Activity` サブ クラスが対応する `Engagement*Activity` クラスから継承されるようにする必要があります (例: レガシー アクティビティが `ListActivity` を拡張している場合は、`EngagementListActivity` も拡張します)。
 
 **エンゲージメントを使用しない場合:**
 
@@ -177,35 +173,49 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 
 大まかなエリアの位置報告では、デバイスに関連付けられた国、リージョン、地域をレポートできます。このタイプの場所レポートでは、セル ID または WIFI に基づいたネットワークの場所のみを使用します。デバイス エリアがセッションごとに最大 1 回レポートされます。GPS を使用しないため、このタイプの場所レポートでは、まったくとは言わないまでも、電力消費量にほとんど影響がありません。
 
-報告されたエリアを基に、ユーザー、セッション、イベント、エラーに関する地理的な統計を計算します。また、リーチ キャンペーンの条件としても使用されます。デバイスに関する最新の既知のエリアは[デバイス API] を利用して取得できます。
+報告されたエリアを基に、ユーザー、セッション、イベント、エラーに関する地理的な統計をコンピューティングします。また、リーチ キャンペーンの条件としても使用されます。
 
-レイジー エリア ロケーション レポートを有効にするには、以下を追加します。
+大まかなエリアの位置報告を有効にするには、この手順の前の構成を利用できます。
 
-			<meta-data android:name="engagement:locationReport:lazyArea" android:value="true"/>
+    EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+    engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
+    engagementConfiguration.setLazyAreaLocationReport(true);
+    EngagementAgent.getInstance(this).init(engagementConfiguration);
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
 			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+あるいは、アプリケーションで ``ACCESS_FINE_LOCATION`` を使用している場合、引き続きそれを利用できます。
 
 ### リアル タイム場所レポート
 
 リアル タイム場所レポートでは、デバイスに関連付けられた緯度と経度をレポートできます。既定では、このタイプの場所レポートでは (セル ID または WIFI に基づいた) ネットワークの場所のみが使用されます。レポートは、アプリケーションを前景で実行した場合 (セッション中) にのみアクティブになります。
 
-リアル タイム場所レポートは、統計の計算に使用することは*できません*。その唯一の目的は、リーチ キャンペーンでリアルタイム ジオフェンシング <Reach-Audience-geofencing> 基準の利用を可能にすることです。
+リアル タイム場所レポートは、統計のコンピューティングに使用することは*できません*。その唯一の目的は、リーチ キャンペーンでリアルタイム ジオフェンシング <Reach-Audience-geofencing> 基準の利用を可能にすることです。
 
-リアルタイム ロケーション レポートを有効にするには、以下を追加します。
+リアルタイム場所レポートを有効にするには、この手順の前の構成を利用できます。
 
-			<meta-data android:name="engagement:locationReport:realTime" android:value="true" />
+    EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+    engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
+    engagementConfiguration.setRealtimeLocationReport(true);
+    EngagementAgent.getInstance(this).init(engagementConfiguration);
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
 			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
+あるいは、アプリケーションで ``ACCESS_FINE_LOCATION`` を使用している場合、引き続きそれを利用できます。
+
 #### GPS ベースのレポート
 
-既定では、リアル タイム場所レポートでは、ネットワーク ベースの場所のみを使用します。GPS ベースの場所 (正確性が格段に優れています) を使用できるようにするには、以下を追加します。
+既定では、リアル タイム場所レポートでは、ネットワーク ベースの場所のみを使用します。GPS ベースの場所 (正確性が格段に優れています) を使用できるようにするには、構成オブジェクトを使用します。
 
-			<meta-data android:name="engagement:locationReport:realTime:fine" android:value="true" />
+    EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+    engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
+    engagementConfiguration.setRealtimeLocationReport(true);
+    engagementConfiguration.setFineRealtimeLocationReport(true);
+    EngagementAgent.getInstance(this).init(engagementConfiguration);
 
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
@@ -213,9 +223,13 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 
 #### 背景レポート
 
-既定では、リアル タイム場所レポートは、アプリケーションを前景で実行した場合 (セッション中) にのみアクティブになります。バックグウランドでのレポートも有効にするには、以下を追加します。
+既定では、リアル タイム場所レポートは、アプリケーションを前景で実行した場合 (セッション中) にのみアクティブになります。バックグラウンドでのレポートも有効にするには、構成オブジェクトを使用します。
 
-			<meta-data android:name="engagement:locationReport:realTime:background" android:value="true" />
+    EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+    engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
+    engagementConfiguration.setRealtimeLocationReport(true);
+    engagementConfiguration.setBackgroundRealtimeLocationReport(true);
+    EngagementAgent.getInstance(this).init(engagementConfiguration);
 
 > [AZURE.NOTE]アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
 
@@ -231,6 +245,63 @@ Android SDK を[こちら](http://go.microsoft.com/?linkid=9863935&clcid=0x409)�
 さらに、次のアクセス権限が不足している場合は追加する必要があります。
 
 			<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+### Android M アクセス許可
+
+Android M より、一部のアクセス許可が実行時に管理され、ユーザーの承認を必要とします。
+
+Android API レベル 23 が対象の場合、新しいアプリのインストールでは既定で実行時のアクセス許可がオフになります。それ以外の場合、既定でオンになります。
+
+デバイスの設定メニューからアクセス許可の有効/無効を設定できます。システム メニューでアクセス許可をオフにした場合、アプリケーションのバックグラウンド プロセスが停止します。これはシステム動作であり、バックグラウンドでプッシュを受信する機能には影響を与えません。
+
+Mobile Engagement の場合、次のアクセス許可で実行時に承認が必要になります。
+
+- `ACCESS_COARSE_LOCATION`
+- `ACCESS_FINE_LOCATION`
+- `WRITE_EXTERNAL_STORAGE` (この場合、Android API レベル 23 を対象とするときのみ)
+
+外部ストレージはリーチの大きい画像機能でのみ使用されます。このアクセス許可をユーザーに求めることが混乱を招くようであれば、Mobile Engagement のためにのみ使用した場合、このアクセス許可を削除できます。ただし、大きい画像機能を無効にする必要があります。
+
+場所機能の場合、標準のシステム ダイアログを利用してユーザーにアクセス許可を要求する必要があります。ユーザーが承認した場合、その変更をリアルタイムで考慮するように ``EngagementAgent`` に通知する必要があります (認識されない場合、ユーザーが次回アプリケーションを起動したときに変更が処理されます)。
+
+ここにコード サンプルがあります。これはアクセス許可を要求し、``EngagementAgent`` が肯定された場合、結果を転送するアプリケーション アクティビティで使用されます。
+
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+      /* Other code... */
+    
+      /* Request permissions */
+      requestPermissions();
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void requestPermissions()
+    {
+      /* Avoid crashing if not on Android M */
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+      {
+        /*
+         * Request location permission, but this won't explain why it is needed to the user.
+         * The standard Android documentation explains with more details how to display a rationale activity to explain the user why the permission is needed in your application.
+         * Putting COARSE vs FINE has no impact here, they are part of the same group for runtime permission management.
+         */
+        if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+          requestPermissions(new String[] { android.Manifest.permission.ACCESS_FINE_LOCATION }, 0);
+    
+        /* Only if you want to keep features using external storage */
+        if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+          requestPermissions(new String[] { android.Manifest.permission.WRITE_EXTERNAL_STORAGE }, 1);
+      }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+    {
+      /* Only a positive location permission update requires engagement agent refresh, hence the request code matching from above function */
+      if (requestCode == 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+        getEngagementAgent().refreshPermissions();
+    }
 
 ##詳細な報告
 
@@ -308,7 +379,7 @@ Engagement では、この設定を管理するために設定ファイル内で
 			  android:summaryOff="Engagement is disabled." />
 
 <!-- URLs. -->
-[デバイス API]: http://go.microsoft.com/?linkid=9876094
+[Device API]: http://go.microsoft.com/?linkid=9876094
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

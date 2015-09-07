@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う" 
-	description="この高度なチュートリアルは、ほぼの実際のシナリオについて説明し、Azure のデータのファクトリのサービスとデータの工場出荷時のエディターを使用してシナリオを実装します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う"
+	description="この高度なチュートリアルは、ほぼの実際のシナリオについて説明し、Azure のデータのファクトリのサービスとデータの工場出荷時のエディターを使用してシナリオを実装します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2015"
 	ms.author="spelluru"/>
 
 # チュートリアル: マーケティング キャンペーンの有効性の測定  
@@ -429,8 +429,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [adfgetstarted]: data-factory-get-started.md
 [adftutorial-using-powershell]: data-factory-tutorial-using-powershell.md
 [adfintroduction]: data-factory-introduction.md
-[useonpremisesdatasources]: data-factory-use-onpremises-datasources.md
-[usepigandhive]: data-factory-pig-hive-activities.md
+[usepigandhive]: data-factory-data-transformation-activities.md
 [tutorial-onpremises]: data-factory-tutorial-extend-onpremises.md
 [download-azure-powershell]: ../powershell-install-configure.md
 
@@ -527,4 +526,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial/DataFactoryCreateButton.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

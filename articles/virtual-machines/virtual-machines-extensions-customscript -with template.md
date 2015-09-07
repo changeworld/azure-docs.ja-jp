@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure リソース マネージャー テンプレートでのカスタム スクリプト拡張機能の使用"
-   description="ARM テンプレートでカスタム スクリプトを使用して、Azure 仮想マシンの構成タスクを自動化します。"
-   services="virtual-machines"
-   documentationCenter=""
-   authors="kundanap"
-   manager="madhana"
-   editor=""/>
+	description="ARM テンプレートでカスタム スクリプトを使用して、Azure 仮想マシンの構成タスクを自動化します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="kundanap"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/01/2015"
-   ms.author="kundanap"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="07/01/2015"
+	ms.author="kundanap"/>
 
 # Azure リソース マネージャー テンプレートでのカスタム スクリプト拡張機能の使用
 
@@ -42,7 +42,7 @@ Azure リソース マネージャー テンプレートでは、リソース間
 
 テンプレートを使用したデプロイでは、Azure サービス管理 API で使用できるバージョンと同じバージョンのカスタム スクリプト拡張機能を使用します。拡張機能では、同じパラメーターとシナリオ (Azure ストレージ アカウントまたは Github へのファイルのアップロードなど) をサポートします。テンプレートで使用する際の重要な違いは、拡張機能のバージョンを majorversion.* 形式で指定するのではなく、正確なバージョンを指定する必要があることです。
 
- \#\# Linux VM のカスタム スクリプト拡張機能のテンプレート スニペット
+ ## Linux VM のカスタム スクリプト拡張機能のテンプレート スニペット
 
 テンプレートの Resource セクションで、次の拡張機能リソースを定義します。
 
@@ -97,4 +97,4 @@ Azure リソース マネージャー テンプレートでは、リソース間
 
 <a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/" target="_blank">Linux VM のカスタム スクリプト拡張機能</a></br><a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">Windows VM のカスタム スクリプト拡張機能</a>
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

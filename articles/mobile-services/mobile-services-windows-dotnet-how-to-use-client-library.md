@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/18/2015" 
+	ms.date="08/18/2015"
 	ms.author="glenga"/>
 
 # Azure モバイル サービス向け .NET クライアントを使用する方法
@@ -22,7 +22,7 @@
 
 ##概要
 
-このガイドでは、Windows ストア アプリと Windows Phone アプリで Azure のモバイル サービス用の .NET クライアントを使用する一般的なシナリオを実行する方法を示します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず「[Mobile Services のクイック スタート]()」または「[既存のアプリケーションに Mobile Services を追加する]()」のチュートリアルを完了することを検討してください。
+このガイドでは、Windows ストア アプリと Windows Phone アプリで Azure のモバイル サービス用の .NET クライアントを使用する一般的なシナリオを実行する方法を示します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず「[Mobile Services のクイック スタート](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md)」または「[既存のアプリケーションに Mobile Services を追加する](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md)」のチュートリアルを完了することを検討してください。
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
@@ -700,4 +700,4 @@ Mobile Services クライアント ライブラリは、Json.NET を使用して
 [クライアントからのカスタム API 呼び出し]: mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api.md
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

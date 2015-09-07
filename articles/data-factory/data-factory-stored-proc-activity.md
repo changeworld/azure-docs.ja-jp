@@ -1,24 +1,24 @@
 <properties 
-	pageTitle="SQL Server ストアド プロシージャ アクティビティ" 
-	description="SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL データベースでストアド プロシージャを呼び出す方法について説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="SQL Server ストアド プロシージャ アクティビティ"
+	description="SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Databases でストアド プロシージャを呼び出す方法について説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2015"
 	ms.author="spelluru"/>
 
 # SQL Server ストアド プロシージャ アクティビティ
 
-SQL Server ストアド プロシージャ アクティビティを Data Factory の[パイプライン](data-factory-create-pipelines.md)で使用して、**Azure SQL** データベースでストアド プロシージャを呼び出すことができます。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
+SQL Server ストアド プロシージャ アクティビティを Data Factory の[パイプライン](data-factory-create-pipelines.md)で使用して、**Azure SQL** Databases でストアド プロシージャを呼び出すことができます。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
 
 ## 構文
 	{
@@ -45,13 +45,10 @@ SQL Server ストアド プロシージャ アクティビティを Data Factory
 name | アクティビティの名前 | あり
 description | アクティビティの用途を説明するテキストです。 | いいえ
 type | SqlServerStoredProcedure | あり
-inputs | 続行するストアド プロシージャ アクティビティに使用できる状態 (’Ready’ 状態) である必要がある入力。 | いいえ
-outputs | ストアド プロシージャ アクティビティで生成された出力。出力テーブルでは、必ず Azure SQL データベースを Data Factory にリンクするリンク サービスを使用します。 | あり
+inputs | 続行するストアド プロシージャ アクティビティに使用できる状態 (’Ready’ 状態) である必要がある入力データセット。ストアド プロシージャ アクティビティへの入力は、このアクティビティと他のアクティビティを関連付けるときの依存関係管理にのみ使用されます。入力データセットは、ストアド プロシージャでパラメーターとして使用できません。 | いいえ
+outputs | ストアド プロシージャ アクティビティで生成された出力データセット。出力テーブルでは、必ず Azure SQL Databases を Data Factory にリンクするリンク サービスを使用します。ストアド プロシージャ アクティビティの出力は、後続の処理にストアド プロシージャ アクティビティの結果を渡すための手段として、およびこのアクティビティと他のアクティビティを関連付けるときの依存関係管理に使用できます。 | あり
 storedProcedureName | 出力テーブルに使用するリンク サービスで示される Azure SQL データベースのストアド プロシージャ名を指定します。 | あり
 storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します | いいえ
-
-> [AZURE.NOTE]ストアド プロシージャ アクティビティへの入力は、依存関係管理と、このアクティビティと他のアクティビティの関連付けにのみ使用されます。入力は、ストアド プロシージャでパラメーターとして使用できません。
- 
 
 ## 例
 
@@ -78,7 +75,7 @@ Data Factory パイプラインでこのストアド プロシージャを実行
 
 1.	[リンク サービス](data-factory-azure-sql-connector.md/#azure-sql-linked-service-properties)を作成して、ストアド プロシージャを実行する Azure SQL データベースの接続文字列を登録します。
 2.	Azure SQL データベースの出力テーブルを示す[データセット](data-factory-azure-sql-connector.md/#azure-sql-dataset-type-properties)を作成します。このデータセット sprocsampleout を呼び出してみましょう。このデータセットは、手順 1 のリンク サービスを参照する必要があります。 
-3.	Azure SQL データベースにストアド プロシージャを作成します。
+3.	Azure SQL Databases にストアド プロシージャを作成します。
 4.	SqlServerStoredProcedure アクティビティを使用して次の[パイプライン](data-factory-azure-sql-connector.md/#azure-sql-copy-activity-type-properties)を作成し、Azure SQL Database のストアド プロシージャを呼び出します。
 
 		{
@@ -106,7 +103,7 @@ Data Factory パイプラインでこのストアド プロシージャを実行
 5.	[パイプライン](data-factory-create-pipelines.md)をデプロイします。
 6.	データ ファクトリの監視と管理のビューを使用して、[パイプラインを監視](data-factory-monitor-manage-pipelines.md)します。
 
-> [AZURE.NOTE]上の例では、SprocActivitySample に入力がありません。アップストリームでこれとアクティビティを関連付ける場合、アップストリーム アクティビティの出力をこのアクティビティの入力として使用できます。この場合、このアクティビティは、アップストリーム アクティビティが完了し、出力を使用できる状態 (Ready 状態) になるまで実行されません。入力は、ストアド プロシージャ アクティビティのパラメーターとして直接使用できません。
+> [AZURE.NOTE]上の例では、SprocActivitySample に入力がありません。アップストリームのアクティビティ (つまり前の処理) とこれを関連付ける場合、アップストリーム アクティビティの出力をこのアクティビティの入力として使用できます。この場合、このアクティビティは、アップストリーム アクティビティが完了し、アップストリーム アクティビティの出力を使用できる状態 (Ready 状態) になるまで実行されません。入力は、ストアド プロシージャ アクティビティのパラメーターとして直接使用できません。
 > 
 > JSON ファイルのストアド プロシージャ パラメーターの名前と大文字と小文字は、対象データベースのストアド プロシージャ パラメーターの名前と一致する必要があります。
 
@@ -135,4 +132,4 @@ Data Factory パイプラインでこのストアド プロシージャを実行
 		}
 	}
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

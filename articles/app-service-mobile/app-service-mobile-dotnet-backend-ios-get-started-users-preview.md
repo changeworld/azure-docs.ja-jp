@@ -3,7 +3,7 @@
 	description="Azure Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて iOS アプリのユーザーを認証する方法について説明します。"
 	services="app-service\mobile"
 	documentationCenter="ios"
-	authors="krisragh" 
+	authors="krisragh"
 	manager="dwrede"
 	editor=""/>
 
@@ -13,18 +13,14 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="08/27/2015"
 	ms.author="krisragh"/>
 
 # Azure Mobile Apps を使用した iOS の認証
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
-このチュートリアルでは、サポートされている ID プロバイダーを使用して、[iOS クイック スタート] プロジェクトに認証を追加します。最初に、このチュートリアルの基になっている [iOS のクイック スタート] チュートリアルを完了しておく必要があります。
-
-##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-auth-preview](../../includes/app-service-mobile-dotnet-backend-enable-auth-preview.md)]
+このチュートリアルでは、サポートされている ID プロバイダーを使用して、[iOS クイック スタート] プロジェクトに認証を追加します。最初に、このチュートリアルの基になっている [iOS のクイック スタート] チュートリアルを完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、認証拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 ##<a name="create-gateway"></a>App Service ゲートウェイを作成する
 
@@ -38,7 +34,7 @@
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Xcode で、**[実行]** をクリックして、アプリケーションを開始します。認証されないユーザーとしてアプリがバックエンドにアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるため、例外が発生します。
+Xcode で、**[Run]** をクリックしてアプリケーションを開始します。認証されないユーザーとしてアプリがバックエンドにアクセスしようとしても、_TodoItem_ テーブルで認証が要求されるために例外が発生します。
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
@@ -53,4 +49,4 @@ Xcode で、**[実行]** をクリックして、アプリケーションを開�
 [Azure Management Portal]: https://portal.azure.com
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

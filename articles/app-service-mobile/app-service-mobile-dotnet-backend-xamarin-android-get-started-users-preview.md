@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Xamarin Android でのモバイル アプリの認証の使用" 
-	description="モバイル アプリを使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。" 
-	services="app-service\mobile" 
-	documentationCenter="xamarin" 
-	authors="mattchenderson" 
-	manager="dwrede" 
+	pageTitle="Xamarin Android でのモバイル アプリの認証の使用"
+	description="モバイル アプリを使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter="xamarin"
+	authors="mattchenderson"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="app-service" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-android" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="08/03/2015" 
+	ms.service="app-service"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/27/2015"
 	ms.author="mahender"/>
 
 # Xamarin.Android アプリに認証を追加する
@@ -22,13 +22,9 @@
 
 このトピックでは、クライアント アプリケーションから Mobile App のユーザーを認証する方法について説明します。このチュートリアルでは、Azure Mobile Apps でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。Mobile App によって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
-このチュートリアルは、モバイル アプリのクイック スタートに基づいています。また、先に [Xamarin.Android アプリの作成]に関するチュートリアルを完了している必要があります。
+このチュートリアルは、モバイル アプリのクイック スタートに基づいています。また、先に [Xamarin.Android アプリの作成]に関するチュートリアルを完了している必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、認証拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
-##<a name="review"></a>サーバーのプロジェクト構成の確認 (省略可能)
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-auth-preview](../../includes/app-service-mobile-dotnet-backend-enable-auth-preview.md)]
-
-##<a name="create-gateway"></a>App Service ゲートウェイの作成
+##<a name="create-gateway"></a>App Service ゲートウェイを作成する
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-gateway-preview](../../includes/app-service-mobile-dotnet-backend-create-gateway-preview.md)]
 
@@ -98,4 +94,4 @@
 [Azure Management Portal]: https://portal.azure.com
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

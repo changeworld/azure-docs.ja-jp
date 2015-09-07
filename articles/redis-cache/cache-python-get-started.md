@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="08/17/2015"
+	ms.date="08/25/2015"
 	ms.author="sdanie"/>
 
 # Python で Azure Redis Cache を使用する方法
@@ -28,7 +28,7 @@
 
 ## Azure で Redis Cache を作成する
 
-[Azure の管理ポータル](http://go.microsoft.com/fwlink/?LinkId=398536)で、**[新規]**、**[データ + ストレージ]** をクリックし、**[Redis Cache]** を選択します。
+[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=398536)で、**[新規]**、**[データ + ストレージ]** をクリックし、**[Redis Cache]** を選択します。
 
   ![][1]
 
@@ -36,7 +36,7 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 
   ![][2]
 
-キャッシュを作成したら、Azure ポータルでそのキャッシュをクリックして設定を表示します。次が必要です。
+キャッシュを作成したら、プレビュー ポータルでそのキャッシュをクリックして設定を表示します。次が必要です。
 
 - **ホスト名**。 キャッシュを作成したときに入力した名前です。
 - **ポート**。 **[ポート]** の下のリンクをクリックしてポートを表示します。SSL ポートを使用します。
@@ -59,4 +59,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 [1]: ./media/cache-python-get-started/cache01.png
 [2]: ./media/cache-python-get-started/cache02.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

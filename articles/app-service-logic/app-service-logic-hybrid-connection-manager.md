@@ -1,23 +1,23 @@
 <properties 
-	pageTitle="Azure App Service のための Hybrid Connection Manager の使用" 
-	description="Azure App Service での Hybrid Connection Manager のインストールと構成; マイクロサービス アーキテクチャ" 
-	services="app-service\logic" 
+	pageTitle="Hybrid Connection Manager の使用 | Microsoft Azure App Service"
+	description="Hybrid Connection Manager をインストールして構成し、Azure App Service 内のオンプレミス コネクターに接続する"
+	services="app-service\logic"
 	documentationCenter=".net,nodejs,java"
-	authors="MandiOhlinger" 
-	manager="dwrede" 
+	authors="MandiOhlinger"
+	manager="dwrede"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.service="app-service-logic"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/23/2015"
 	ms.author="mandia"/>
 
-# Azure App Service での Hybrid Connection Manager の使用
-一部のコネクタは、SQL Server、SAP、SharePoint などのオンプレミス システムに接続できます。オンプレミス システムを使用するため、Azure App Service は Hybrid Connection Manager を使用します。
+# Hybrid Connection Manager を使用して Azure App Service 内のオンプレミス コネクターに接続する
+オンプレミス システムを使用するため、Azure App Service は Hybrid Connection Manager を使用します。一部のコネクタは、SQL Server、SAP、SharePoint などのオンプレミス システムに接続できます。
 
 Hybrid Connection Manager (HCM) は、ワンクリック インストーラーであり、ネットワーク内のファイアウオールの背後にある IIS サーバーにインストールされます。HCM は、Azure Service Bus リレーを使用して、Azure 内にコネクタを持つオンプレミス システムを認証します。
 
@@ -133,4 +133,4 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

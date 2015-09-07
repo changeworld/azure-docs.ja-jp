@@ -1,25 +1,29 @@
-
 <properties 
-	pageTitle="Media Services REST API を使用したフィルターの作成" 
-	description="このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Juliako" 
-	manager="dwrede" 
+	pageTitle="Media Services REST API を使用したフィルターの作成"
+	description="このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。"
+	services="media-services"
+	documentationCenter=""
+	authors="Juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="ne" 
-	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="ne"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="juliako"/>
 
 #Media Services REST API を使用したフィルターの作成
 
-Media Services のリリース 2.11 以降では、アセットにフィルターを定義できます。これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (アセットに関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。このアセットのフィルター処理は**動的マニフェスト**によって実行されます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
+> [AZURE.SELECTOR]
+- [.NET](media-services-dotnet-dynamic-manifest.md)
+- [REST](media-services-rest-dynamic-manifest.md)
+
+
+Media Services のリリース 2.11 以降では、資産にフィルターを定義できます。これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。この資産のフィルター処理は**動的マニフェスト**によって実行されます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
 
 フィルターと動的マニフェストに関連する詳細については、「[動的マニフェストの概要](media-services-dynamic-manifest-overview.md)」をご覧ください。
 
@@ -29,10 +33,10 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 
 次の種類の REST API を使用してフィルターを作成します。
 
-- [Filter](https://msdn.microsoft.com/library/azure/hh973617.aspx)
-- [AssetFilter](https://msdn.microsoft.com/library/azure/hh973617.aspx)
-- [PresentationTimeRange](https://msdn.microsoft.com/library/azure/hh973617.aspx)
-- [FilterTrackSelect と FilterTrackPropertyCondition](https://msdn.microsoft.com/library/azure/hh973617.aspx)
+- [Filter](http://msdn.microsoft.com/library/azure/mt149056.aspx)
+- [AssetFilter](http://msdn.microsoft.com/library/azure/mt149053.aspx)
+- [PresentationTimeRange](http://msdn.microsoft.com/library/azure/mt149052.aspx)
+- [FilterTrackSelect と FilterTrackPropertyCondition](http://msdn.microsoft.com/library/azure/mt149055.aspx)
 
 
 
@@ -41,7 +45,6 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
 >https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect_programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
-
 
 
 ##フィルターの作成
@@ -174,7 +177,7 @@ Request body
 	x-ms-version: 2.11 
 	Host: media.windows.net 
 	
-### アセットに関連付けられている **AssetFilter** を取得する
+### 資産に関連付けられている **AssetFilter** を取得する
 
 ####HTTP 要求
 
@@ -328,7 +331,7 @@ Request body
 
 ##フィルターを使用するストリーミング URL の構築
 
-アセットの発行と配信方法については、「[顧客へのコンテンツの配信に関する概要](media-services-deliver-content-overview.md)」をご覧ください。
+資産の発行と配信方法については、「[顧客へのコンテンツの配信に関する概要](media-services-deliver-content-overview.md)」をご覧ください。
 
 
 次の例では、ストリーミング URL にフィルターを追加する方法を示します。
@@ -363,4 +366,4 @@ Request body
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

@@ -1,40 +1,40 @@
-<properties 
-	pageTitle="Azure Notification Hubs の使用" 
-	description="Azure Notification Hubs を使用してプッシュ通知を行う方法について説明します。" 
-	services="notification-hubs" 
-	documentationCenter="android" 
-	authors="wesmc7777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Azure Notification Hubs の使用 | Microsoft Azure"
+	description="このチュートリアルでは、Azure Notification Hubs を使用して Android デバイスにプッシュ通知を送信する方法について学習します。"
+	services="notification-hubs"
+	documentationCenter="android"
+	authors="wesmc7777"
+	manager="dwrede"
 	editor=""/>
-<tags 
-	ms.service="notification-hubs" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="java" 
-	ms.topic="hero-article" 
-	ms.date="05/27/2015" 
+<tags
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="java"
+	ms.topic="hero-article"
+	ms.date="05/27/2015"
 	ms.author="wesmc"/>
 
-# 通知ハブの使用
+# Notification Hubs の使用
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ##概要
 
-このトピックでは、Azure Notification Hubs を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。
+このチュートリアルでは、Azure Notification Hubs を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。
 
-このチュートリアルでは、通知ハブを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。通知ハブを使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒に参照してください。
+このチュートリアルでは、Notification Hubs を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。Notification Hubs を使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、次のチュートリアルも一緒に参照してください。
 
 
 ##前提条件
 
 このチュートリアルには、次のものが必要です。
 
-+ Android Studio。<a href="http://go.microsoft.com/fwlink/?LinkId=389797">こちら</a>からダウンロードできます。
-+ このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)をご覧ください。
++ Android Studio。<a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android サイト</a>からダウンロードできます。
++ アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)を参照してください。
 
 
-このチュートリアルを完了することは、Android アプリケーションの他のすべての通知ハブ チュートリアルの前提条件です。
+このチュートリアルを完了することは、Android アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
 
 
 ##Google Cloud Messaging をサポートするプロジェクトを作成する
@@ -46,7 +46,7 @@
 
 [AZURE.INCLUDE [notification-hubs-android-configure-push](../../includes/notification-hubs-android-configure-push.md)]
 
-##<a id="connecting-app"></a>Notification Hub にアプリを接続する
+##<a id="connecting-app"></a>Notification Hub にアプリケーションを接続する
 
 ###新しい Android プロジェクトを作成する
 
@@ -58,7 +58,7 @@
 
    	![][14]
 
-3. 主なアクティビティに **[Blank Activity (空のアクティビティ)]** を選択します。**[次へ]** をクリックし、**[完了]** をクリックします。
+3. 主なアクティビティに **[Blank Activity (空のアクティビティ)]** を選択し、**[次へ]** をクリックし、**[完了]** をクリックします。
 
 ###プロジェクトへの Google Play Services の追加
 
@@ -66,16 +66,16 @@
 
 ###コードの追加
 
-1. Notification Hubs Android SDK を<a href="https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409">ここ</a>からダウンロードします。.zip ファイルを展開し、**notificationhubs\notification-hubs-0.4.jar** と **notifications\notifications-1.0.1.jar** をプロジェクトの **app\libs** ディレクトリにコピーします。Android Studio の [Project View (プロジェクト ビュー)] ウィンドウにある **libs** フォルダーへファイルを直接ドラッグできます。libs フォルダーを更新します。
+1. <a href="https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409">Notification Hubs Android SDK</a> をダウンロードします。.zip ファイルを展開し、**notificationhubs\\notification-hubs-0.4.jar** と **notifications\\notifications-1.0.1.jar** をプロジェクトの **app\\libs** ディレクトリにコピーします。Android Studio の [Project View (プロジェクト ビュー)] ウィンドウにある **libs** フォルダーへファイルを直接ドラッグできます。**libs** フォルダーを更新します。
 
 
 
-	これら 2 つのパッケージのリファレンス ドキュメントは、以下のリンク * [com.microsoft.windowsazure.messaging](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/messaging/package-summary.html) * [com.microsoft.windowsazure.notifications](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/notifications/package-summary.html) にあります。
+	これら 2 つのパッケージのリファレンス ドキュメントはリンク * [com.microsoft.windowsazure.messaging](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/messaging/package-summary.html) * [com.microsoft.windowsazure.notifications](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/notifications/package-summary.html) にあります。
 
 
     > [AZURE.NOTE]ファイル名の末尾にある数値は、今後の SDK リリースで変更される可能性があります。
 
-2. ここで、GCM から登録 ID を取得し、その ID を使用してアプリケーション インスタンスを通知ハブに登録するようにアプリケーションを設定します。
+2. GCM から登録 ID を取得し、それを使用してアプリケーション インスタンスを通知ハブに登録するようにアプリケーションを設定します。
 
 	AndroidManifest.xml ファイルで、`</application>` タグのすぐ下に次の許可を追加します。`<your package>` は、AndroidManifest.xml ファイルの上部に表示されるパッケージ名に必ず置き換えてください (この例では `com.example.testnotificationhubs`)。
 
@@ -106,7 +106,7 @@
 		private String HubListenConnectionString = "<Your default listen connection string>";
 
 
-	次の 3 つのプレース ホルダーを必ず更新します。* **SENDER_ID**: `SENDER_ID` を [Google Cloud Console](http://cloud.google.com/console) で作成したプロジェクトから取得したプロジェクト番号に設定します。* **HubListenConnectionString**: `HubListenConnectionString` をハブ用の **DefaultListenAccessSignature** 接続文字列に設定します。[Microsoft Azure 管理ポータル]のハブにある**[ダッシュボード]** タブの **[View Connection String (接続文字列の表示)]** をクリックすると接続文字列がコピーできます。**HubName**: 使用するハブの Azure のページ上部に表示される通知ハブの名前 (完全な URL では**ありません**)です。たとえば、「`"myhub"`」のように入力します。
+	次の 3 つのプレースホルダーを必ず更新します。* **SENDER\_ID**: `SENDER_ID` を [Google Cloud Console](http://cloud.google.com/console) で作成したプロジェクトから取得したプロジェクト番号に設定します。* **HubListenConnectionString**: `HubListenConnectionString` をハブ用の **DefaultListenAccessSignature** 接続文字列に設定します。[Azure ポータル]のハブにある **[ダッシュボード]** タブの **[接続文字列の表示]** をクリックすると接続文字列をコピーできます。* **HubName**: ハブの Azure のページ上部に表示される通知ハブの名前 (完全な URL では**ありません**) を使用します。たとえば、`"myhub"` です。
 
 
 
@@ -127,7 +127,7 @@
             	protected Object doInBackground(Object... params) {
                 	try {
                     	String regid = gcm.register(SENDER_ID);
-                    DialogNotify("Registered Successfully","RegId : " + 
+                    DialogNotify("Registered Successfully","RegId : " +
 						hub.register(regid).getRegistrationId());
                 	} catch (Exception e) {
                     	DialogNotify("Exception",e.getMessage());
@@ -138,12 +138,12 @@
         	}.execute(null, null, null);
     	}
 
-		
+
 		/**
 		  * A modal AlertDialog for displaying a message on the UI thread
-		  * when theres an exception or message to report.
-		  * 
-		  * @param title   Title for the AlertDialog box. 
+		  * when there's an exception or message to report.
+		  *
+		  * @param title   Title for the AlertDialog box.
 		  * @param message The message displayed for the AlertDialog box.
 		  */
     	public void DialogNotify(final String title,final String message)
@@ -156,8 +156,8 @@
             	public void run() {
                 	AlertDialog dlgAlert = dlg.create();
                 	dlgAlert.setTitle(title);
-                	dlgAlert.setButton(DialogInterface.BUTTON_POSITIVE, 
-						(CharSequence) "OK", 
+                	dlgAlert.setButton(DialogInterface.BUTTON_POSITIVE,
+						(CharSequence) "OK",
 						new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
@@ -187,8 +187,8 @@
 
 	![][6]
 
-9. 新しいクラスの **[名前]** フィールで、**MyHandler** と入力して **[OK]** とクリックします。
-	
+9. 新しいクラスの **[名前]** フィールドに「**MyHandler**」と入力して **[OK]** とクリックします。
+
 
 10. **MyHandler.java** の先頭に、次の import ステートメントを追加します。
 
@@ -199,7 +199,7 @@
 		import android.os.Bundle;
 		import android.support.v4.app.NotificationCompat;
 		import com.microsoft.windowsazure.notifications.NotificationsHandler;
-		
+
 
 11. 次のようにクラスの宣言を更新し、次のように `MyHandler` を `com.microsoft.windowsazure.notifications.NotificationsHandler` のサブクラスにします。
 
@@ -208,7 +208,7 @@
 
 12. 次のコードを `MyHandler` クラスに追加します。
 
-	このコードは `OnReceive` メソッドを上書きするため、ハンドラーが `AlertDialog` をポップアップ表示し、受信した通知を表示します。またハンドラ―は `sendNotification()` メソッドを使用して Android の通知マネージャーにも通知を送信します。
+	このコードは `OnReceive` メソッドを上書きするため、ハンドラーが `AlertDialog` をポップアップ表示し、受信した通知を表示します。ハンドラーは `sendNotification()` メソッドを使用して Android の通知マネージャーにも通知を送信します。
 
     	public static final int NOTIFICATION_ID = 1;
     	private NotificationManager mNotificationManager;
@@ -244,10 +244,10 @@
 			mBuilder.setContentIntent(contentIntent);
 			mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 		}
-	
-13. Android Studio のメニュー バーで、**[ビルド]**、**[Rebuild Project (プロジェクトのリビルド)]** と順にクリックし、エラーが検出されないかどうかを確認します。
 
-##通知の送信方法
+13. Android Studio のメニュー バーで、**[ビルド]**、**[Rebuild Project (プロジェクトのリビルド)]** の順にクリックし、エラーが検出されないことを確認します。
+
+##通知を送信する
 
 
 
@@ -259,7 +259,7 @@
 
 ![][31]
 
-1. Android Studio の [プロジェクト] ビューで**[アプリ]**、[**src**]、[**main**]、[**res**]、[**layout**] と展開します。**activity_main.xml** レイアウト ファイルを開き、**[テキスト]** タブをクリックしてファイルのテキスト内容の更新します。次のコードで更新します。このコードで通知ハブに通知メッセージを送信するための新しい `Button` と `EditText` コントロールを追加します。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
+1. Android Studio の [プロジェクト] ビューで**[アプリ]**、**[src]**、**[main]**、**[res]**、**[layout]** の順に展開します。**activity\_main.xml** レイアウト ファイルを開き、**[テキスト]** タブをクリックしてファイルのテキスト内容の更新します。次のコードで更新します。このコードで通知ハブに通知メッセージを送信するための新しい `Button` と `EditText` コントロールを追加します。このコードは一番下の `</RelativeLayout>` のすぐ前に追加します。
 
 	    <Button
         android:layout_width="wrap_content"
@@ -279,7 +279,7 @@
         android:layout_marginBottom="42dp"
         android:hint="@string/notification_message_hint" />
 
-2. Android Studio の [プロジェクト] ビューで**[アプリ]**、**[src]**、**[main]**、**[res]**、**[values]** と順に展開します。**strings.xml** ファイルを開き、新しい `Button` と `EditText` コントロールで参照される文字列の値を追加します。これらは、ファイル一番下の `</resources>` の前に追加します。
+2. Android Studio の [プロジェクト] ビューで**[アプリ]**、**[src]**、**[main]**、**[res]**、**[values]** の順に展開します。**strings.xml** ファイルを開き、新しい `Button` と `EditText` コントロールで参照される文字列の値を追加します。これらはファイルの一番下の `</resources>` のすぐ前に追加します。
 
         <string name="send_button">Send Notification</string>
         <string name="notification_message_hint">Enter notification message text</string>
@@ -290,11 +290,11 @@
 		import java.net.URLEncoder;
 		import javax.crypto.Mac;
 		import javax.crypto.spec.SecretKeySpec;
-		
+
 		import android.util.Base64;
 		import android.view.View;
 		import android.widget.EditText;
-		
+
 		import org.apache.http.HttpResponse;
 		import org.apache.http.client.HttpClient;
 		import org.apache.http.client.methods.HttpPost;
@@ -304,7 +304,7 @@
 
 3. **MainActivity** ファイルで、`MainActivity` クラスの上に次のメンバーを追加します。
 
-	`HubName` にハブの名前を入力します。名前空間ではありません。たとえば、「myhub」です。また、**DefaultFullSharedAccessSignature** 接続文字列を入力します。この接続文字列は、通知ハブの **[ダッシュボード]** タブで **[View Connection String (接続文字列の表示)]** をクリックすると、[Microsoft Azure 管理ポータル]からコピーできます。
+	`HubName` にハブの名前を入力します。名前空間ではありません。たとえば、「myhub」にします。また、**DefaultFullSharedAccessSignature** 接続文字列を入力します。この接続文字列は[Azure ポータル]からコピーできます。通知ハブの **[ダッシュボード]** タブで **[接続文字列の表示]** をクリックします。
 
 	    private String HubEndpoint = null;
 	    private String HubSasKeyName = null;
@@ -317,9 +317,9 @@
 
 	    /**
     	 * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx
-    	 * to parse the connection string so a SaS authentication token can be 
+    	 * to parse the connection string so a SaS authentication token can be
     	 * constructed.
-    	 * 
+    	 *
     	 * @param connectionString This must be the DefaultFullSharedAccess connection
     	 *                         string for this example.
 	     */
@@ -329,7 +329,7 @@
 	        if (parts.length != 3)
 	            throw new RuntimeException("Error parsing connection string: "
 	                    + connectionString);
-	
+
 	        for (int i = 0; i < parts.length; i++) {
 	            if (parts[i].startsWith("Endpoint")) {
 	                this.HubEndpoint = "https" + parts[i].substring(11);
@@ -346,69 +346,69 @@
         /**
          * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx to
          * construct a SaS token from the access key to authenticate a request.
-         * 
-         * @param uri The un-encoded resource URI string for this operation. The resource
+         *
+         * @param uri The unencoded resource URI string for this operation. The resource
          *            URI is the full URI of the Service Bus resource to which access is
-         *            claimed. For example, 
-         *            "http://<namespace>.servicebus.windows.net/<hubName>" 
+         *            claimed. For example,
+         *            "http://<namespace>.servicebus.windows.net/<hubName>"
          */
         private String generateSasToken(String uri) {
-    
+
             String targetUri;
             try {
                 targetUri = URLEncoder
                         .encode(uri.toString().toLowerCase(), "UTF-8")
                         .toLowerCase();
-    
+
                 long expiresOnDate = System.currentTimeMillis();
                 int expiresInMins = 60; // 1 hour
                 expiresOnDate += expiresInMins * 60 * 1000;
                 long expires = expiresOnDate / 1000;
                 String toSign = targetUri + "\n" + expires;
-    
+
                 // Get an hmac_sha1 key from the raw key bytes
                 byte[] keyBytes = HubSasKeyValue.getBytes("UTF-8");
                 SecretKeySpec signingKey = new SecretKeySpec(keyBytes, "HmacSHA256");
-    
+
                 // Get an hmac_sha1 Mac instance and initialize with the signing key
                 Mac mac = Mac.getInstance("HmacSHA256");
                 mac.init(signingKey);
-    
+
                 // Compute the hmac on input data bytes
                 byte[] rawHmac = mac.doFinal(toSign.getBytes("UTF-8"));
-    
-            	// Using android.util.Base64 for Android Studio instead of 
-	            // Apache commons codec.
+
+            	// Using android.util.Base64 for Android Studio instead of
+	            // Apache commons codec
                 String signature = URLEncoder.encode(
                         Base64.encodeToString(rawHmac, Base64.NO_WRAP).toString(), "UTF-8");
-    
-                // construct authorization string
+
+                // Construct authorization string
                 String token = "SharedAccessSignature sr=" + targetUri + "&sig="
                         + signature + "&se=" + expires + "&skn=" + HubSasKeyName;
                 return token;
             } catch (Exception e) {
                 DialogNotify("Exception Generating SaS",e.getMessage().toString());
             }
-    
+
             return null;
         }
 
 
-6. **MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して、**[Send Notification (通知の送信)]** ボタン クリックを処理し、REST API を使用してハブに通知メッセージを送信します。
+6. **MainActivity.java** で、次のメソッドを `MainActivity` クラスに追加して、**[通知の送信]** ボタン クリックを処理し、REST API を使用してハブに通知メッセージを送信します。
 
         /**
-         * Send Notification button click handler. This method parses the 
-         * DefaultFullSharedAccess connection string and generates a SaS token. The 
-         * token is added to the Authorization header on the POST request to the 
+         * Send Notification button click handler. This method parses the
+         * DefaultFullSharedAccess connection string and generates a SaS token. The
+         * token is added to the Authorization header on the POST request to the
          * notification hub. The text in the editTextNotificationMessage control
          * is added as the JSON body for the request to add a GCM message to the hub.
-         * 
-         * @param v 
+         *
+         * @param v
          */
         public void sendNotificationButtonOnClick(View v) {
             EditText notificationText = (EditText) findViewById(R.id.editTextNotificationMessage);
             final String json = "{"data":{"message":"" + notificationText.getText().toString() + ""}}";
-    
+
             new Thread()
             {
                 public void run()
@@ -416,23 +416,23 @@
                     try
                     {
                         HttpClient client = new DefaultHttpClient();
-    
+
                         // Based on reference documentation...
                         // http://msdn.microsoft.com/library/azure/dn223273.aspx
                         ParseConnectionString(HubFullAccess);
                         String url = HubEndpoint + HubName + "/messages/?api-version=2015-01";
                         HttpPost post = new HttpPost(url);
-    
-                        // Authenticate the POST request with the SaS token.
+
+                        // Authenticate the POST request with the SaS token
                         post.setHeader("Authorization", generateSasToken(url));
-    
+
                         // JSON content for GCM
                         post.setHeader("Content-Type", "application/json;charset=utf-8");
-    
+
                         // Notification format should be GCM
                         post.setHeader("ServiceBusNotification-Format", "gcm");
                         post.setEntity(new StringEntity(json));
-    
+
                         HttpResponse response = client.execute(post);
                     }
                     catch(Exception e)
@@ -445,16 +445,17 @@
 
 
 
-##アプリケーションのテスト
+##アプリケーションをテストする
 
 ####エミュレーターのテスト
-エミュレーターをテストする場合は、エミュレーター イメージが、アプリ用に選択した Google API レベルをサポートされていることを確認します。イメージが Google API をサポートしていない場合、**SERVICE_NOT_AVAILABLE** 例外を受け取ることになります。
 
-また、**[設定]**、[**アカウント**] で実行しているエミュレーターに Google アカウントが追加していることを確認します。それ以外の場合、GCM での登録の試行が **AUTHENTICATION_FAILED** 例外になる可能性があります。
+エミュレーターをテストする場合は、エミュレーター イメージがアプリ用に選択した Google API レベルをサポートしていることを確認します。イメージが Google API をサポートしていない場合、**SERVICE\_NOT\_AVAILABLE** 例外を受け取ることになります。
 
-####アプリケーションをテストする     
+また、**[設定]**、**[アカウント]** で実行しているエミュレーターに Google アカウントを追加していることを確認します。それ以外の場合、GCM での登録の試行が **AUTHENTICATION\_FAILED** 例外になる可能性があります。
 
-1. アプリケーションを実行し、無事に登録された登録 ID が報告されることを確認します。
+####アプリケーションをテストする
+
+1. アプリケーションを実行し、登録 ID の登録完了が報告されていることを確認します。
 
    	![][18]
 
@@ -462,13 +463,13 @@
 
    	![][19]
 
-3. **[Send Notification (通知の送信)]** を押します。実行しているアプリケーションがあるすべてのデバイスで、通知メッセージと `AlertDialog` が表示されます。実行中のアプリケーションがなくても事前に登録されているデバイスでは、通知マネージャーに追加された通知を受信します。左上から下へスワイプすると、通知を表示できます。
+3. **[Send Notification (通知の送信)]** を押します。実行しているアプリケーションがあるすべてのデバイスで、通知メッセージと `AlertDialog` が表示されます。実行中のアプリケーションがなくても事前に登録されているデバイスでは、通知マネージャーに追加された通知を受信します。左上隅から下へスワイプすると、通知を表示できます。
 
    	![][21]
 
 ##次のステップ
 
-この簡単な例では、すべての Android デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。通知ハブの使用方法の詳細については、「[Windows Azure 通知ハブの概要]」を参照してください。
+この簡単な例では、すべての Android デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Windows Azure Notification Hubs の概要]」を参照してください。
 
 
 <!-- Images. -->
@@ -502,14 +503,12 @@
 
 
 <!-- URLs. -->
-[Mobile Services でのプッシュ通知の使用]: ../mobile-services-javascript-backend-android-get-started-push.md
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
-[Windows Azure 通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[通知ハブを使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-android-notify-users.md
+[Azure ポータル]: https://manage.windowsazure.com/
+[Windows Azure Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-android-notify-users.md
-[通知ハブを使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
- 
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,22 +1,23 @@
 <properties
-   pageTitle="ロジック アプリでの Box コネクタの使用"
-   description="ロジック アプリでの Box コネクタの使用方法"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="rajeshramabathiran"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での Box コネクタの使用 | Microsoft Azure App Service"
+	description="Box コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="rajeshramabathiran"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="andalmia"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="andalmia"/>
 
-# Box コネクタ
+# Box コネクタの使用開始とロジック アプリへの追加 
+Box に接続して、ファイルの取得、アップロード、削除などを実行します。コネクタは、"ワークフロー" の一部として Logic Apps で使用されます。
 
 状況によっては、ファイアウォールの外側にいる人ともデータを安全に共有できる Box を操作しなければならない場合があります。ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
 
@@ -65,7 +66,7 @@ d.*ファイルの削除*: フォルダーから指定したファイルを削�
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
 2. "Box コネクタ" を検索して選択し、**[作成]** を選択します。
-3. 名前、App Service プラン、その他のプロパティを入力します。
+3. 名前、App Service プラン、その他のプロパティを入力します。  
 	![][1]
 4. **[作成]** を選択します。
 
@@ -74,20 +75,20 @@ d.*ファイルの削除*: フォルダーから指定したファイルを削�
 
 API アプリを作成したら、ロジック アプリのアクションとして Box コネクタを使用できます。これを行うには、次の手順を実行します。
 
-1. ロジック アプリで **[トリガーとアクション]** を選択してロジック アプリ デザイナーを開き、フローを構成します。Box コネクタがギャラリーの一覧に表示されます。この Box コネクタを選択すると、自動的にロジック アプリ デザイナーに追加されます。
+1. ロジック アプリで **[トリガーとアクション]** を選択して Logic Apps デザイナーを開き、フローを構成します。Box コネクタがギャラリーの一覧に表示されます。この Box コネクタを選択すると、自動的にロジック アプリ デザイナーに追加されます。
 
 	> [AZURE.NOTE]ロジック アプリの先頭で Box コネクタを選択した場合、Box コネクタはトリガーとして動作します。それ以外の場合は、コネクタを使用する Box アカウントに対するアクションとして動作します。この記事の執筆時点では、Box コネクタにトリガーはありません。
 
-2. ユーザーの代わりに操作を実行するロジック アプリの認証および承認を行います。Box コネクタで **[承認]** を選択します。
+2. ユーザーの代わりに操作を実行するロジック アプリの認証および承認を行います。Box コネクタで **[承認]** を選択します。  
 	![][2]
 
-3. 操作を実行する Box アカウントのサインイン詳細情報を入力します。
+3. 操作を実行する Box アカウントのサインイン詳細情報を入力します。  
 	![][3]
 
-4. ユーザーの代わりに操作を実行できるように、ロジック アプリにユーザーのアカウントへのアクセス権を付与します。
+4. ユーザーの代わりに操作を実行できるように、ロジック アプリにユーザーのアカウントへのアクセス権を付与します。  
 	![][4]
 
-5. アクションの一覧が表示され、実行する適切な操作を選択できます。
+5. アクションの一覧が表示され、実行する適切な操作を選択できます。  
 	![][5]
 
 ## コネクタでできること
@@ -104,4 +105,4 @@ API アプリを作成したら、ロジック アプリのアクションとし
 [4]: ./media/app-service-logic-connector-box/image_3.jpg
 [5]: ./media/app-service-logic-connector-box/image_4.jpg
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

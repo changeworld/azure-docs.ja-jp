@@ -1,9 +1,4 @@
-ポータルからダウンロードしたサーバー プロジェクトでは、プッシュ通知が既に有効になっています。
 
-ASP.NET プロジェクトでは、次のことを確認できます。
+>[AZURE.TIP]プッシュ通知の拡張機能パッケージは、クイック スタートの拡張機能パッケージに含まれます。ポータルからダウンロードしたサーバー プロジェクトでは、プッシュ通知が既に有効になっています。クイック スタートの拡張機能を使用していない場合に、プッシュ通知をインストールおよび初期化する方法については、[How to: Add push notifications to a server project (プッシュ追加をサーバー プロジェクトに追加する方法)](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-push-notifications-to-a-server-project) を参照してください。
 
-* `Microsoft.Azure.Mobile.Server.Notifications` NuGet パッケージがインストールされている。
-
-* WebApiConfig.cs 内の MobileAppConfiguration オブジェクトで `UseDefaultConfiguration()` メソッドが呼び出されている。これによって、上記の NuGet パッケージが提供する `AddPushNotifications()` 拡張メソッドが呼び出されます。
-
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

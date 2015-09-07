@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Batch PowerShell コマンドレットの使用 | Microsoft Azure"
-   description="Azure Batch サービスの管理に使用される Azure PowerShell コマンドレットを紹介します。"
-   services="batch"
-   documentationCenter=""
-   authors="dlepow"
-   manager="timlt"
-   editor=""/>
+	description="Azure Batch サービスの管理に使用される Azure PowerShell コマンドレットを紹介します。"
+	services="batch"
+	documentationCenter=""
+	authors="dlepow"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="batch"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="powershell"
-   ms.workload="big-compute"
-   ms.date="08/07/2015"
-   ms.author="danlep"/>
+	ms.devlang="NA"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="powershell"
+	ms.workload="big-compute"
+	ms.date="08/07/2015"
+	ms.author="danlep"/>
 
 # Azure Batch PowerShell コマンドレットの使用
 この記事では、Batch アカウントの管理と Batch ジョブ、タスク、他の詳細に関する情報の取得に使用できる Azure PowerShell コマンドレットについて簡単に紹介します。
@@ -39,6 +39,12 @@
 
     ```
     Switch-AzureMode -Name AzureResourceManager
+    ```
+
+* **Batch プロバイダーの名前空間に登録する (1 回限りの操作)** - Batch アカウントを管理するには、Batch プロバイダーの名前空間に登録する必要があります。この操作は、サブスクリプションごとに 1 回のみ実行する必要があります。
+
+    ```
+    Register-AzureProvider -ProviderNamespace Microsoft.Batch
     ```
 
 ## Batch アカウントとキーを管理する
@@ -123,7 +129,7 @@ Get-AzureBatchPool -Filter $filter -BatchContext $context
 
 ### ID パラメーターの使用
 
-OData フィルターに代わる方法は、**ID** パラメーターを使用することです。"myPool" という ID の特定のプールを照会するには:
+OData フィルターに代わる方法として、**ID** パラメーターを使用します。"myPool" という ID の特定のプールを照会するには:
 
 ```
 Get-AzureBatchPool -Id "myPool" -BatchContext $context
@@ -156,4 +162,4 @@ Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 * [Azure Batch コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)
 * [効率的なリスト クエリ](batch-efficient-list-queries.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

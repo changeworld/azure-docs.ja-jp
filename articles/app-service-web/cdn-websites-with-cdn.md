@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure App Service で Azure CDN を使用する" 
-	description="統合 Azure CDN エンドポイントからのコンテンツを提供する Web アプリを Azure App Service にデプロイする方法について説明するチュートリアル" 
-	services="app-service\web" 
-	documentationCenter=".net" 
-	authors="cephalin" 
-	manager="wpickett" 
+	pageTitle="Azure App Service で Azure CDN を使用する"
+	description="統合 Azure CDN エンドポイントからのコンテンツを提供する Web アプリを Azure App Service にデプロイする方法について説明するチュートリアル"
+	services="app-service\web"
+	documentationCenter=".net"
+	authors="cephalin"
+	manager="wpickett"
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="06/25/2015" 
+	ms.service="app-service-web"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/25/2015"
 	ms.author="cephalin"/>
 
 
@@ -79,7 +79,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 	発行が完了すると、発行済みの Web アプリがブラウザーに表示されます。
 
 1. CDN エンドポイントを作成するは、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)にログインします。
-2. **[新規]**、**[アプリ サービス]**、**[CDN]**、**[簡易作成]** の順にクリックします。**[http://*&lt;sitename>*.azurewebsites.net/]** を選択し、**[作成]** をクリックします。
+2. **[新規]**、**[App Services]**、**[CDN]**、**[簡易作成]** の順にクリックします。**[http://*&lt;sitename>*.azurewebsites.net/]** を選択し、**[作成]** をクリックします。
 
 	![](media/cdn-websites-with-cdn/7-create-cdn.png)
 
@@ -99,7 +99,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 	![](media/cdn-websites-with-cdn/11-access-success.png)
 
-1. 次に、ASP.NET プロジェクトで **\~/Content/bootstrap.css** ファイルにアクセスしてみます。ブラウザーのウィンドウで **http://*&lt;cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動します。この設定では、次の URL を使用します。
+1. 次に、ASP.NET プロジェクトで **~/Content/bootstrap.css** ファイルにアクセスしてみます。ブラウザーのウィンドウで **http://*&lt;cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動します。この設定では、次の URL を使用します。
 
 		http://az673227.vo.msecnd.net/Content/bootstrap.css
 
@@ -107,7 +107,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 		http://cdnwebapp.azurewebsites.net/Content/bootstrap.css
 
-     **http://*&lt;cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動すると、Azure の Web アプリから bootstrap.css をダウンロードするよう求められます。
+	**http://*&lt;cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動すると、Azure の Web アプリから bootstrap.css をダウンロードするよう求められます。
 
 	![](media/cdn-websites-with-cdn/12-file-access.png)
 
@@ -149,7 +149,7 @@ Azure CDN 統合を Azure Web アプリに組み込むと、CDN エンドポイ�
 	  </system.webServer>
 	</configuration>
 
-この設定は、*\Content* フォルダーのすべての静的ファイルを 15 日間キャッシュすることを指定しています。
+この設定は、*\\Content* フォルダーのすべての静的ファイルを 15 日間キャッシュすることを指定しています。
 
 `<clientCache>` 要素を構成する方法については、[クライアント キャッシュ &lt;clientCache>](http://www.iis.net/configreference/system.webserver/staticcontent/clientcache) に関するページを参照してください。
 
@@ -167,7 +167,7 @@ Web アプリで次のような Chuck Norris の若いときの画像 ([Alan Lig
 
 上記の手順を実行して、このコントローラー アクションを設定します。
 
-1. *\Controllers* フォルダーに、*MemeGeneratorController.cs* という名前の新しい .cs ファイルを作成し、その内容を次のコードで置き換えます。`~/Content/chuck.bmp` を実際のファイル パスに、`yourCDNName` を CDN 名に置き換えてください。
+1. *\\Controllers* フォルダーに、*MemeGeneratorController.cs* という名前の新しい .cs ファイルを作成し、その内容を次のコードで置き換えます。`~/Content/chuck.bmp` を実際のファイル パスに、`yourCDNName` を CDN 名に置き換えてください。
 
 
         using System;
@@ -212,11 +212,11 @@ Web アプリで次のような Chuck Norris の若いときの画像 ([Alan Lig
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
               }
 
-              if (Debugger.IsAttached) // デバッグ操作を維持
+              if (Debugger.IsAttached) // Preserve the debug experience
               {
                 return Redirect(string.Format("/MemeGenerator/Generate?top={0}&bottom={1}", data.Item1, data.Item2));
               }
-              else // のコンテンツを取得 Azure CDN
+              else // Get content from Azure CDN
               {
                 return Redirect(string.Format("http://<yourCDNName>.vo.msecnd.net/MemeGenerator/Generate?top={0}&bottom={1}", data.Item1, data.Item2));
               }
@@ -247,16 +247,16 @@ Web アプリで次のような Chuck Norris の若いときの画像 ([Alan Lig
 
             private Font FindBestFitFont(Image i, Graphics g, String text, Font font, out SizeF size)
             {
-              // 実際のサイズを計算、必要に応じて縮小
+              // Compute actual size, shrink if needed
               while (true)
               {
                 size = g.MeasureString(text, font);
 
-                // 収まる、バック アウト
+                // It fits, back out
                 if (size.Height < i.Height &&
                      size.Width < i.Width) { return font; }
 
-                // より小さいフォントで試す (古いサイズの 90%)
+                // Try a smaller font (90% of old size)
                 Font oldFont = font;
                 font = new Font(font.Name, (float)(font.Size * .9), font.Style);
                 oldFont.Dispose();
@@ -378,8 +378,8 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
           bundles.Add(new ScriptBundle("~/bundles/jqueryval", string.Format(cdnUrl, "bundles/jqueryval")).Include(
                 "~/Scripts/jquery.validate*"));
 
-          // 開発、学習用に Modernizr の開発バージョンを使用。次に、運用の準備ができたら
-          // ビルド ツール (http://modernizr.com) を使って、必要なテストのみを選択。
+          // Use the development version of Modernizr to develop with and learn from. Then, when you're
+          // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
           bundles.Add(new ScriptBundle("~/bundles/modernizr", string.Format(cdnUrl, "bundles/modernizer")).Include(
                 "~/Scripts/modernizr-*"));
 
@@ -462,8 +462,8 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
                 { CdnFallbackExpression = "$.validator" }
                 .Include("~/Scripts/jquery.validate*"));
 
-          // 開発、学習用に Modernizr の開発バージョンを使用。次に、運用の準備ができたら、
-          // ビルド ツール (http://modernizr.com) を使って、必要なテストのみを選択。
+          // Use the development version of Modernizr to develop with and learn from. Then, when you're
+          // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
           bundles.Add(new ScriptBundle("~/bundles/modernizr", string.Format(cdnUrl, "bundles/modernizer")) 
                 { CdnFallbackExpression = "window.Modernizr" }
                 .Include("~/Scripts/modernizr-*"));
@@ -507,25 +507,8 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 4. もう一度 Azure Web アプリに発行し、ホーム ページにアクセスします。
 5. ページの HTML コードを表示します。次のようなスクリプトが挿入されていることを確認できます。    
 	
-	&lt;link href=&quot;http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474&quot; rel=&quot;stylesheet&quot;/&gt;
-&lt;script&gt;(function() {
-                var loadFallback,
-                    len = document.styleSheets.length;
-                for (var i = 0; i &lt; len; i++) {
-                    var sheet = document.styleSheets[i];
-                    if (sheet.href.indexOf(&#39;http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474&#39;) !== -1) {
-                        var meta = document.createElement(&#39;meta&#39;);
-                        meta.className = &#39;sr-only&#39;;
-                        document.head.appendChild(meta);
-                        var value = window.getComputedStyle(meta).getPropertyValue(&#39;width&#39;);
-                        document.head.removeChild(meta);
-                        if (value !== &#39;1px&#39;) {
-                            document.write(&#39;&lt;link href=&quot;/Content/css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;&#39;);
-                        }
-                    }
-                }
-                return true;
-            }())||document.write(&#39;&lt;script src=&quot;/Content/css&quot;&gt;&lt;\/script&gt;&#39;);&lt;/script&gt;
+	``` ... <link href="http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
+<script>(function() { var loadFallback, len = document.styleSheets.length; for (var i = 0; i < len; i++) { var sheet = document.styleSheets[i]; if (sheet.href.indexOf('http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) { var meta = document.createElement('meta'); meta.className = 'sr-only'; document.head.appendChild(meta); var value = window.getComputedStyle(meta).getPropertyValue('width'); document.head.removeChild(meta); if (value !== '1px') { document.write('<link href="/Content/css" rel="stylesheet" type="text/css" />'); } } } return true; }())||document.write('<script src="/Content/css"><\\/script>');</script>
 
 	<script src="http://az673227.vo.msecnd.net/bundles/modernizer?v=1.0.0.25474"></script>
  	<script>(window.Modernizr)||document.write('<script src="/bundles/modernizr"><\/script>');</script>
@@ -542,7 +525,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 		}())||document.write('<script src="/Content/css"><\/script>');</script>
 
-	ただし、(すぐ上の行の) || 式の最初の部分は常に true を返すため、document.write() 関数が実行されることはありません。
+	But since the first part of the || expression will always return true (in the line directly above that), the document.write() function will never run.
 
 6. フォールバック スクリプトが動作するかどうかをテストするには、CDN エンドポイントのダッシュボードに戻り、**[エンドポイントを無効にする]** をクリックします。
 
@@ -558,8 +541,8 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 - [Azure 用 CDN の使用](../cdn-how-to-use-cdn.md)
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

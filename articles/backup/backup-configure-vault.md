@@ -7,14 +7,7 @@
 	manager="jwhit"
 	editor=""/>
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/12/2015"
-	ms.author="jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2015" ms.author="jimpark"; "aashishr"/>
 
 # Azure Backup を Windows Server のバックアップ用に構成する
 
@@ -28,7 +21,7 @@
 - **コンテナー資格情報のダウンロード** — Azure Backup で、コンテナーに対して作成した管理証明書をダウンロードします。
 - **Azure Backup エージェントのインストールおよびサーバーの登録** — Azure Backup からエージェントをインストールし、バックアップ コンテナーにサーバーを登録します。
 
-[AZURE.INCLUDE [backup-create-vault](../../includes/backup-create-vault.md)]
+[AZURE.INCLUDE [backup-create-vault-wgif](../../includes/backup-create-vault-wgif.md)]
 
 [AZURE.INCLUDE [backup-download-credentials](../../includes/backup-download-credentials.md)]
 
@@ -41,4 +34,4 @@
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 - [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

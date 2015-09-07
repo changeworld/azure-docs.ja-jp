@@ -100,36 +100,8 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 
 ## 異常アクティビティ レポート
+異常サインイン アクティビティ レポートには、フェデレーション プロバイダーに関係なく、Microsoft Azure 管理ポータル、Azure AD アクセスパネル、Office365、Sharepoint Online、Dynamics CRM Online、その他の Microsoft オンライン サービスに対する不審なサインイン アクティビティが含まれます。<p>次のレポートを利用できます。</p><ul> <li>[不明なソースからのサインイン](active-directory-reporting-sign-ins-from-unknown-sources.md) </li> <li>[複数回失敗した後のサインイン](active-directory-reporting-sign-ins-after-multiple-failures.md)</li> <li>[複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md)</li> <li>[不審なアクティビティが発生している IP アドレスからのサインイン](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)</li> <li>[不規則なサインイン アクティビティ](active-directory-reporting-irregular-sign-in-activity.md)</li> <li>[感染している可能性があるデバイスからのサインイン](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)</li> <li>[異常なサインイン アクティビティがあるユーザー](active-directory-reporting-users-with-anomalous-sign-in-activity.md)</li> <li>資格情報が漏洩したユーザー</li></ul>
 
-### 不明なソースからのサインイン
-
-このレポートの詳細については、「[不明なソースからのサインイン](active-directory-reporting-sign-ins-from-unknown-sources.md)」をご確認ください。
-
-### 複数のエラー後のサインイン
-
-このレポートの詳細については、「[複数のエラー後のサインイン](active-directory-reporting-sign-ins-after-multiple-failures.md)」をご確認ください。
-
-### 複数の地域からのサインイン
-
-このレポートの詳細については、「[複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md)」をご確認ください。
-
-### 不審なアクティビティのある IP アドレスからのサインイン
-
-このレポートの詳細については、「[不審なアクティビティのある IP アドレスからのサインイン](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)」をご確認ください。
-
-### 不規則なサインイン アクティビティ
-
-このレポートの詳細については、「[不規則なサインイン アクティビティ](active-directory-reporting-irregular-sign-in-activity.md)」をご確認ください。
-
-### 感染している可能性があるデバイスからのサインイン
-
-このレポートの詳細については、「[感染している可能性があるデバイスからのサインイン](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)」をご確認ください。
-
-### 異常なサインイン アクティビティがあるユーザー
-
-このレポートの詳細については、「[異常なサインイン アクティビティがあるユーザー](active-directory-reporting-users-with-anomalous-sign-in-activity.md)」をご確認ください。
-
-<!-- Users with leaked credentials goes here -->
 
 
 
@@ -254,7 +226,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | ディレクトリに追加されているカスタム ビジネス アプリケーションへのサインイン | なし (近日対応予定) |
 | ディレクトリに追加されている Azure AD アプリケーション プロキシ アプリへのサインイン | なし (近日対応予定) |
 
-> 注: このレポートでノイズの量を減らすには、[Lync/Skype for Business](http://products.office.com/ja-jp/skype-for-business/online-meetings) ネイティブ アプリケーションにサインインします。 [Microsoft Online Services サインイン アシスタント](http://community.office365.com/ja-jp/w/sso/534.aspx) は表示されなくなります。
+> 注: このレポートでノイズの量を減らすには、[Lync/Skype for Business](http://products.office.com/ja-JP/skype-for-business/online-meetings) ネイティブ アプリケーションにサインインします。 [Microsoft Online Services サインイン アシスタント](http://community.office365.com/ja-JP/w/sso/534.aspx) は表示されなくなります。
 
 
 
@@ -302,4 +274,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに会社のブランドを追加します。](active-directory-add-company-branding.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,22 +1,27 @@
 <properties 
-   pageTitle="Azure DNS の DNS レコード セットとレコードの管理 | Microsoft Azure" 
-   description="Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。レコード セットとレコードに対する操作のための PowerShell コマンドをすべて紹介します。" 
-   services="dns" 
-   documentationCenter="na" 
-   authors="joaoma" 
-   manager="Adinah" 
-   editor=""/>
+   pageTitle="Azure DNS の DNS レコード セットとレコードの管理 | Microsoft Azure"
+	description="Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。レコード セットとレコードに対する操作のための PowerShell コマンドをすべて紹介します。"
+	services="dns"
+	documentationCenter="na"
+	authors="joaoma"
+	manager="Adinah"
+	editor=""/>
 
 <tags
    ms.service="dns"
-   ms.devlang="en"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services" 
-   ms.date="08/02/2015"
-   ms.author="joaoma"/>
+	ms.devlang="en"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/02/2015"
+	ms.author="joaoma"/>
 
 # DNS レコードの管理方法
+
+
+> [AZURE.SELECTOR]
+- [Azure CLI](dns-operations-recordsets-cli.md)
+- [Azure Powershell](dns-operations-recordsets.md)
 
 
 このガイドでは、DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
@@ -266,4 +271,4 @@ CNAME レコード セットに格納できるレコードは最大 1 つであ�
 [レコード セットとレコードの作成の概要](../dns-getstarted-create-recordset)<BR> [DNS ゾーンに対する操作の実行](../dns-operations-dnszones)<BR> [.NET SDK を使用した操作の自動化](../dns-sdk)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

@@ -1,19 +1,19 @@
 <properties 
    pageTitle="ExpressRoute Premium アドオンを有効または無効にする方法 | Microsoft Azure"
-   description="ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にする方法ExpressRoute Premium では、ExpressRoute 回線に最大 10,000 個の (パブリックおよびプライベートのピアリングの) ルートと最大 10 個の仮想ネットワークを追加できます。あるリージョンの仮想ネットワークを別のリージョンの ExpressRoute 回線にリンクすることもできます。"
-   services="expressroute"
-   documentationCenter="na"
-   authors="cherylmc"
-   manager="jdial"
-   editor="tysonn" />
+	description="ExpressRoute 回線の ExpressRoute Premium アドオンを有効または無効にする方法ExpressRoute Premium では、ExpressRoute 回線に最大 10,000 個の (パブリックおよびプライベートのピアリングの) ルートと最大 10 個の仮想ネットワークを追加できます。あるリージョンの仮想ネットワークを別のリージョンの ExpressRoute 回線にリンクすることもできます。"
+	services="expressroute"
+	documentationCenter="na"
+	authors="cherylmc"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="06/02/2015"
-   ms.author="cherylmc" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/25/2015"
+	ms.author="cherylmc"/>
 
 # ExpressRoute 回線用の ExpressRoute Premium アドオンの構成
 
@@ -172,9 +172,9 @@ Premium アドオンが有効になっている ExpressRoute 回線の ExpressRo
 		Sku                              : Premium
 		Status                           : Standard
 
-	これで、回線の ExpressRoute Premium アドオンは無効になります。
+	これで回路で Premium アドオンが無効になりました。
 
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

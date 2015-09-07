@@ -1,19 +1,19 @@
 <properties 
    pageTitle="ネットワーク アクセス制御リスト (ACL) とは"
-   description="ACL の概要"
-   services="virtual-network"
-   documentationCenter="na"
-   authors="telmosampaio"
-   manager="carolz"
-   editor="tysonn" />
+	description="ACL の概要"
+	services="virtual-network"
+	documentationCenter="na"
+	authors="telmosampaio"
+	manager="carolz"
+	editor="tysonn"/>
 <tags 
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="06/08/2015"
-   ms.author="telmos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="06/08/2015"
+	ms.author="telmos"/>
 
 # ネットワーク アクセス制御リスト (ACL) とは
 
@@ -21,7 +21,7 @@
 
 > [AZURE.IMPORTANT]可能な限り、ACL ではなくネットワーク セキュリティ グループ (NSG) を使用することをお勧めします。NSG の詳細については、「[ネットワーク セキュリティ グループの概要](../virtual-networks-nsg)」を参照してください。
 
-ACL は、PowerShell または管理ポータルを使用して構成できます。PowerShell を使用してネットワーク ACL を構成するには、「[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](https://msdn.microsoft.com/library/azure/dn376543.aspx)」を参照してください。管理ポータルを使用してネットワーク ACL を構成するには、「[仮想マシンに対してエンドポイントを設定する方法](../virtual-machines-set-up-endpoints/)」を参照してください。
+ACL は、PowerShell または管理ポータルを使用して構成できます。PowerShell を使用してネットワーク ACL を構成するには、「[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)」を参照してください。管理ポータルを使用してネットワーク ACL を構成するには、「[仮想マシンに対してエンドポイントを設定する方法](../virtual-machines-set-up-endpoints/)」を参照してください。
 
 ネットワーク ACL を使用すると、次の操作を実行できます。
 
@@ -99,4 +99,4 @@ ACL は、ルールの一覧が格納されたオブジェクトです。ACL を
 
 [PowerShell を使用してエンドポイントのアクセス制御リスト (ACL) を管理する方法](../virtual-networks-acl-powershell)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

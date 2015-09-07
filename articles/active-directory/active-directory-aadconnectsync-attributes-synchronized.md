@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure AD Connect Sync: Azure Active Directory に同期される属性"
+	pageTitle="Azure AD Connect Sync: Azure Active Directory に同期される属性 | Microsoft Azure"
 	description="Azure Active Directory に同期される属性の一覧を示します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="swadhwa"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,37 +13,34 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2015"
-	ms.author="markusvi"/>
+	ms.date="08/24/2015"
+	ms.author="markusvi;andkjell"/>
 
 
 # Azure AD Connect Sync: Azure Active Directory に同期される属性
 
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。<br> 属性は、関連する Azure AD アプリによってグループ化されます。
- 
-
-
 
 
 ## Office 365 ProPlus
 
 | 属性名| ユーザー| コメント |
 | --- | :-: | --- |
-| accountEnabled| ○| userAccountControl から派生|
+| accountEnabled| ○| アカウントが有効な場合に定義します。|
 | cn| ○| |
 | displayName| ○| |
-| objectSID| ○| |
-| pwdLastSet| ○| |
-| sourceAnchor| ○| ユーザー向けに使用される属性は、インストール ガイドで構成されます。|
-| usageLocation| ○| AD DS の msExchUsageLocation|
-| userPrincipalName| ○| |
+| objectSID| ○| 機械的なプロパティ。Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。|
+| pwdLastSet| ○| 機械的なプロパティ。既に発行されているトークンを無効にする時期を確認するために使用されます。パスワード同期とフェデレーションの両方で使用されます。|
+| sourceAnchor| ○| 機械的なプロパティ。ADDS と Azure AD 間の関係を維持する変更不可の識別子です。|
+| usageLocation| ○| 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
+| userPrincipalName| ○| UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 
 
 ## Exchange Online
 
 | 属性名| ユーザー| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
-| accountEnabled| ○| | | userAccountControl から派生|
+| accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | assistant| ○| ○| | |
 | authOrig| ○| ○| ○| |
 | c| ○| ○| | |
@@ -132,7 +129,7 @@
 | msExchTeamMailboxSharePointUrl| ○| | | |
 | msExchUserHoldPolicies| ○| | | |
 | msOrg-IsOrganizational| | | ○| |
-| objectSID| ○| | ○| |
+| objectSID| ○| | ○| 機械的なプロパティ。Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。|
 | oOFReplyToOriginator| | | ○| |
 | otherFacsimileTelephone| ○| ○| | |
 | otherHomePhone| ○| ○| | |
@@ -142,12 +139,12 @@
 | postalCode| ○| ○| | |
 | proxyAddresses| ○| ○| ○| |
 | publicDelegates| ○| ○| ○| |
-| pwdLastSet| ○| | | |
+| pwdLastSet| ○| | | 機械的なプロパティ。既に発行されているトークンを無効にする時期を確認するために使用されます。パスワード同期とフェデレーションの両方で使用されます。|
 | reportToOriginator| | | ○| |
 | reportToOwner| | | ○| |
 | securityEnabled| | | ○| groupType から派生|
 | sn| ○| ○| | |
-| sourceAnchor| ○| ○| ○| ユーザー向けに使用される属性は、インストール ガイドで構成されます。|
+| sourceAnchor| ○| ○| ○| 機械的なプロパティ。ADDS と Azure AD 間の関係を維持する変更不可の識別子です。|
 | st| ○| ○| | |
 | streetAddress| ○| ○| | |
 | targetAddress| ○| ○| | |
@@ -156,18 +153,19 @@
 | thumbnailphoto| ○| ○| | |
 | title| ○| ○| | |
 | unauthOrig| ○| ○| ○| |
-| usageLocation| ○| | | AD DS の msExchUsageLocation|
+| usageLocation| ○| | | 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
 | userCertificate| ○| ○| | |
-| userPrincipalName| ○| | | |
+| userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 | userSMIMECertificates| ○| ○| | |
 | wWWHomePage| ○| ○| | |
+
 
 
 ## SharePoint Online
 
 | 属性名| ユーザー| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
-| accountEnabled| ○| | | userAccountControl から派生|
+| accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | authOrig| ○| ○| ○| |
 | c| ○| ○| | |
 | cn| ○| | ○| |
@@ -213,7 +211,7 @@
 | msExchTeamMailboxOwners| ○| | | |
 | msExchTeamMailboxSharePointLinkedBy| ○| | | |
 | msExchTeamMailboxSharePointUrl| ○| | | |
-| objectSID| ○| | ○| |
+| objectSID| ○| | ○| 機械的なプロパティ。Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。|
 | oOFReplyToOriginator| | | ○| |
 | otherFacsimileTelephone| ○| ○| | |
 | otherHomePhone| ○| ○| | |
@@ -227,12 +225,12 @@
 | postOfficeBox| ○| ○| | |
 | preferredLanguage| ○| | | |
 | proxyAddresses| ○| ○| ○| |
-| pwdLastSet| ○| | | |
+| pwdLastSet| ○| | | 機械的なプロパティ。既に発行されているトークンを無効にする時期を確認するために使用されます。パスワード同期とフェデレーションの両方で使用されます。|
 | reportToOriginator| | | ○| |
 | reportToOwner| | | ○| |
 | securityEnabled| | | ○| groupType から派生|
 | sn| ○| ○| | |
-| sourceAnchor| ○| ○| ○| ユーザー向けに使用される属性は、インストール ガイドで構成されます。|
+| sourceAnchor| ○| ○| ○| 機械的なプロパティ。ADDS と Azure AD 間の関係を維持する変更不可の識別子です。|
 | st| ○| ○| | |
 | streetAddress| ○| ○| | |
 | targetAddress| ○| ○| | |
@@ -242,15 +240,15 @@
 | title| ○| ○| | |
 | unauthOrig| ○| ○| ○| |
 | url| ○| ○| | |
-| usageLocation| ○| | | AD DS の msExchUsageLocation|
-| userPrincipalName| ○| | | |
+| usageLocation| ○| | | 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
+| userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 | wWWHomePage| ○| ○| | |
 
 ## Lync Online
 
 | 属性名| ユーザー| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
-| accountEnabled| ○| | | userAccountControl から派生|
+| accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | c| ○| ○| | |
 | cn| ○| | ○| |
 | co| ○| ○| | |
@@ -277,23 +275,23 @@
 | msRTCSIP-OwnerUrn| ○| | | |
 | msRTCSIP-PrimaryUserAddress| ○| ○| | |
 | msRTCSIP-UserEnabled| ○| ○| | |
-| objectSID| ○| | ○| |
+| objectSID| ○| | ○| 機械的なプロパティ。Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。|
 | otherTelephone| ○| ○| | |
 | physicalDeliveryOfficeName| ○| ○| | |
 | postalCode| ○| ○| | |
 | preferredLanguage| ○| | | |
 | proxyAddresses| ○| ○| ○| |
-| pwdLastSet| ○| | | |
+| pwdLastSet| ○| | | 機械的なプロパティ。既に発行されているトークンを無効にする時期を確認するために使用されます。パスワード同期とフェデレーションの両方で使用されます。|
 | securityEnabled| | | ○| groupType から派生|
 | sn| ○| ○| | |
-| sourceAnchor| ○| ○| ○| ユーザー向けに使用される属性は、インストール ガイドで構成されます。|
+| sourceAnchor| ○| ○| ○| 機械的なプロパティ。ADDS と Azure AD 間の関係を維持する変更不可の識別子です。|
 | st| ○| ○| | |
 | streetAddress| ○| ○| | |
 | telephoneNumber| ○| ○| | |
 | thumbnailphoto| ○| ○| | |
 | title| ○| ○| | |
-| usageLocation| ○| | | AD DS の msExchUsageLocation|
-| userPrincipalName| ○| | | |
+| usageLocation| ○| | | 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
+| userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 | wWWHomePage| ○| ○| | |
 
 
@@ -319,7 +317,7 @@
 
 | 属性名| ユーザー| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
-| accountEnabled| ○| | | userAccountControl から派生|
+| accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | c| ○| ○| | |
 | cn| ○| | ○| |
 | description| ○| ○| ○| |
@@ -327,20 +325,21 @@
 | mail| ○| ○| ○| |
 | mailnickname| ○| ○| ○| |
 | member| | | ○| |
-| objectSID| ○| | ○| |
+| objectSID| ○| | ○| 機械的なプロパティ。Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。|
 | proxyAddresses| ○| ○| ○| |
-| pwdLastSet| ○| | | |
+| pwdLastSet| ○| | | 機械的なプロパティ。既に発行されているトークンを無効にする時期を確認するために使用されます。パスワード同期とフェデレーションの両方で使用されます。|
 | securityEnabled| | | ○| groupType から派生|
-| sourceAnchor| ○| ○| ○| ユーザー向けに使用される属性は、インストール ガイドで構成されます。|
-| usageLocation| ○| | | AD DS の msExchUsageLocation|
-| userPrincipalName| ○| | | |
+| sourceAnchor| ○| ○| ○| 機械的なプロパティ。ADDS と Azure AD 間の関係を維持する変更不可の識別子です。|
+| usageLocation| ○| | | 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
+| userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
+
 
 
 ## Dynamics CRM
 
 | 属性名| ユーザー| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
-| accountEnabled| ○| | | userAccountControl から派生|
+| accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | c| ○| ○| | |
 | cn| ○| | ○| |
 | co| ○| ○| | |
@@ -355,27 +354,66 @@
 | manager| ○| ○| | |
 | member| | | ○| |
 | mobile| ○| ○| | |
-| objectSID| ○| | ○| |
+| objectSID| ○| | ○| 機械的なプロパティ。Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。|
 | physicalDeliveryOfficeName| ○| ○| | |
 | postalCode| ○| ○| | |
 | preferredLanguage| ○| | | |
-| pwdLastSet| ○| | | |
+| pwdLastSet| ○| | | 機械的なプロパティ。既に発行されているトークンを無効にする時期を確認するために使用されます。パスワード同期とフェデレーションの両方で使用されます。|
 | securityEnabled| | | ○| groupType から派生|
 | sn| ○| ○| | |
-| sourceAnchor| ○| ○| ○| ユーザー向けに使用される属性は、インストール ガイドで構成されます。|
+| sourceAnchor| ○| ○| ○| 機械的なプロパティ。ADDS と Azure AD 間の関係を維持する変更不可の識別子です。|
 | st| ○| ○| | |
 | streetAddress| ○| ○| | |
 | telephoneNumber| ○| ○| | |
 | title| ○| ○| | |
-| usageLocation| ○| | | AD DS の msExchUsageLocation|
-| userPrincipalName| ○| | | |
+| usageLocation| ○| | | 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
+| userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
+
+## サード パーティ製アプリケーション
+これは、Office 365、Dynamics、Intune のサポートに Azure AD ディレクトリを使用しない場合に使用できる一連の属性です。この中には、少数のコア属性が含まれます。
+
+| 属性名| ユーザー| 連絡先| グループ| コメント |
+| --- | :-: | :-: | :-: | --- |
+| accountEnabled| ○| | | アカウントが有効な場合に定義します。|
+| cn| ○| | ○| |
+| displayName| ○| ○| ○| |
+| givenName| ○| ○| | |
+| mail| ○| | ○| |
+| managedBy| | | ○| |
+| mailNickName| ○| ○| ○| |
+| member| | | ○| |
+| objectSID| ○| | | 機械的なプロパティ。Azure AD と AD 間で同期を維持するために使用される AD ユーザー識別子です。|
+| proxyAddresses| ○| ○| ○| |
+| pwdLastSet| ○| | | 機械的なプロパティ。既に発行されているトークンを無効にする時期を確認するために使用されます。パスワード同期とフェデレーションの両方で使用されます。|
+| sn| ○| ○| | |
+| sourceAnchor| ○| ○| ○| 機械的なプロパティ。ADDS と Azure AD 間の関係を維持する変更不可の識別子です。|
+| usageLocation| ○| | | 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
+| userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
+
+
+## Exchange ハイブリッドの書き戻し
+次の属性は、Exchange ハイブリッドを有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
+
+| 属性名| ユーザー| 連絡先| グループ| コメント |
+| --- | :-: | :-: | :-: | --- |
+| msDS-ExternalDirectoryObject| ○| | | Azure AD の cloudAnchor から派生します。|
+| msExchArchiveStatus| ○| | | オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。|
+| msExchBlockedSendersHash| ○| | | フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。|
+| msExchSafeRecipientsHash| ○| | | フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。|
+| msExchSafeSendersHash| ○| | | フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。|
+| msExchUCVoiceMailSettings| ○| | | ユニファイド メッセージング (UM) の有効化 - オンラインのボイス メール: Microsoft Lync Server の統合で使用され、オンプレミスの Lync Server に対して、ユーザーがオンライン サービスでボイス メールを使用していることを示します。|
+| msExchUserHoldPolicies| ○| | | 訴訟ホールド: クラウド サービスが訴訟ホールド状態のユーザーを特定できるようにします。|
+| proxyAddresses| ○| ○| ○| Exchange Online の x500 アドレスのみが挿入されます。|
+
+## 属性に関する注意事項
+- 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。mail などの代替 ID 属性は、Azure AD の属性 userPrincipalName と同期されます。
 
 
 ## その他のリソース
 
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
- 
+
 <!--Image references-->
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

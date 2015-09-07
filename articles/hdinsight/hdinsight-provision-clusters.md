@@ -1,23 +1,23 @@
 <properties
    pageTitle="HDInsight での Hadoop クラスターのカスタム プロビジョニング | Microsoft Azure"
-   	description="Azure プレビュー ポータル、Azure PowerShell、コマンド ライン、.NET SDK を使用して Azure HDInsight クラスターのカスタム プロビジョニングを行う方法について説明します。"
-   services="hdinsight"
-   documentationCenter=""
-   tags="azure-portal"
-   authors="mumian"
-   manager="paulettm"
-   editor="cgronlun"/>
+	description="Azure プレビュー ポータル、Azure PowerShell、コマンド ライン、.NET SDK を使用して Azure HDInsight クラスターのカスタム プロビジョニングを行う方法について説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	tags="azure-portal"
+	authors="mumian"
+	manager="paulettm"
+	editor="cgronlun"/>
 
 <tags
    ms.service="hdinsight"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="08/11/2015"
-   ms.author="jgao"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="08/21/2015"
+	ms.author="jgao"/>
 
-# Provision Hadoop clusters in HDInsight (HDInsight での Hadoop クラスターのプロビジョニング)Provision Hadoop clusters in HDInsight
+# Provision Hadoop clusters in HDInsight (HDInsight での Hadoop クラスターのプロビジョニング)
 
 HDInsight クラスターのプロビジョニングを計画する方法について説明します。
 
@@ -72,7 +72,7 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 
 	> [AZURE.NOTE]*Azure HDInsight クラスター*は *HDInsight の Hadoop クラスター* または *HDInsight クラスター*とも呼ばれます。また、*Hadoop クラスター*と同じ意味で使用される場合もあります。これらはすべて、Microsoft Azure 環境でホストされている Hadoop クラスターを指します。
 
-	特定のクラスターの種類には、各種ノードのさまざまなロールがあります。これにより、ワークロードの詳細に適した特定のロールでノードのサイズを設定できます。たとえば、Hadoop クラスターで実行する分析がメモリ消費型である場合、大量のメモリを備えたワーカー ノードをプロビジョニングできます。
+	特定のクラスターの種類には、各種ノードのさまざまなロールがあります。これにより、ワークロードの詳細に適した特定のロールでノードのサイズを設定できます。たとえば、Hadoop クラスターで実行する分析がメモリ消費型である場合、大量のメモリを備えた worker ノードをプロビジョニングできます。
 
 	![HDInsight Hadoop クラスターのロール](./media/hdinsight-provision-clusters/HDInsight.Hadoop.roles.png)
 
@@ -92,7 +92,7 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 
 	![HDInsight Hadoop クラスターのロール](./media/hdinsight-provision-clusters/HDInsight.Spark.roles.png)
 
-	HDInsight 用 Spark クラスターは 3 つのロールでデプロイされます。ヘッド ノード (2 ノード) - ワーカー ノード (1 ノード以上) - Zookeeper ノード (3 ノード) (A1 Zookeeper は無料)
+	HDInsight 用 Spark クラスターは 3 つのロールでデプロイされます。ヘッド ノード (2 ノード) - worker ノード (1 ノード以上) - Zookeeper ノード (3 ノード) (A1 Zookeeper は無料)
 
 	クラスターの有効期間中、これらのノードの使用量に対して課金されます。課金は、クラスターが作成された時点で開始され、クラスターが削除されると終了します (クラスターを割り当て解除したり、保留にしたりすることはできません)。クラスター サイズはクラスターの価格に影響します。学習目的の場合、データ ノードを 1 つ使用することをお勧めします。HDInsight の価格の詳細については、「[HDInsight の価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」をご覧ください。
 
@@ -109,7 +109,7 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 
 	![HDInsight VM ノードのサイズ](./media/hdinsight-provision-clusters/hdinsight.node.sizes.png)
 
-	ノードの VM サイズを選択します。詳細については、「[クラウド サービスのサイズ](cloud-services-sizes-specs.md)」をご覧ください。
+	ノードの VM サイズを選択します。詳細については、「[Cloud Services のサイズ](cloud-services-sizes-specs.md)」をご覧ください。
 
 	VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて Standard レベルの VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
 
@@ -203,12 +203,12 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 ### スクリプト アクションを使用したクラスターのカスタマイズ
 
-追加コンポーネントをインストールするか、プロビジョニング中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**スクリプト操作** を使用して実行します。これは Azure プレビュー ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。
+追加コンポーネントをインストールするか、プロビジョニング中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**Script Action** を使用して実行します。これは Azure プレビュー ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。
 
 
 ### Azure Virtual Network の使用
 
-[Azure 仮想ネットワーク](http://azure.microsoft.com/documentation/services/virtual-network/)によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
+[AzureVirtual Network](http://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。仮想ネットワークでは、次のことが可能になります。
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
@@ -224,13 +224,13 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 	![diagram of point-to-site configuration](./media/hdinsight-provision-clusters/hdinsight-vnet-point-to-site.png)
 
-仮想ネットワークの機能、利点の詳細については、「[Azure 仮想ネットワークの概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
+Virtual Network の機能、利点の詳細については、「[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 > [AZURE.NOTE]HDInsight クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークに Hadoop クラスターをプロビジョニングする](hdinsight-hbase-provision-vnet.md#provision-an-hbase-cluster-into-a-virtual-network)」を参照してください。
 >
-> Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。既存の Azure Virtual Network が場所ベースかどうかを確認するには、Azure PowerShell コマンドレットの Get-AzureVNetConfig を使用します。Virtual Network が場所ベースでない場合、次のオプションがあります。
+> Azure HDInsight は場所ベースの Virtual Networks のみをサポートし、アフィニティ グループ ベースの Virtual Networks は現在取り扱っていません。既存の Azure Virtual Network が場所ベースかどうかを確認するには、Azure PowerShell コマンドレットの Get-AzureVNetConfig を使用します。Virtual Network が場所ベースでない場合、次のオプションがあります。
 >
-> - 既存の Virtual Network 構成をエクスポートし、新しい Virtual Network を作成します。新しい Virtual Network はすべて、既定で場所ベースになります。
+> - 既存の Virtual Network 構成をエクスポートし、新しい Virtual Network を作成します。新しい Virtual Networks はすべて、既定で場所ベースになります。
 > - 場所ベースの Virtual Network に移行します。「[Migrating Existing Services to Regional Scope (リージョン スコープへの既存のサービスの移行)](http://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)」をご覧ください。
 >
 > 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
@@ -267,17 +267,17 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
   	- **選択方法**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
   	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。または、**[新規作成]** をクリックして、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
-    - **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+    - **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
   	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。この場所は、クラスターの場所を決定します。クラスターとその既定のストレージ アカウントは、同じデータセンター内に配置されている必要があります。
 
-  - **ノード価格レベル**: クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
+  - **ノード価格レベル**: クラスターで必要なworker ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
 
 	![[ノード価格レベル] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.5.png "クラスター ノード数の指定")
 
-  - **[オプションの構成]** をクリックし、クラスターのバージョンを選択し、その他のオプションの設定を構成します。その他のオプションには、**仮想ネットワーク**に参加すること、Hive と Oozie 用のデータを保持する**外部メタストア** を設定すること、Script Action を使用してカスタム コンポーネントをインストールするようにクラスターをカスタマイズすること、クラスターで追加のストレージ アカウントを使用することなどがあります。
+  - **[オプションの構成]** をクリックし、クラスターのバージョンを選択し、その他のオプションの設定を構成します。その他のオプションには、**Virtual Network**に参加すること、Hive と Oozie 用のデータを保持する**外部メタストア** を設定すること、Script Action を使用してカスタム コンポーネントをインストールするようにクラスターをカスタマイズすること、クラスターで追加のストレージ アカウントを使用することなどがあります。
 
   	- **[HDInsight のバージョン]**: クラスターで使用するバージョンを選択します。詳細については、「[HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。
-  	- **仮想ネットワーク**: クラスターを仮想ネットワークに配置する場合は、Azure 仮想ネットワークとサブネットを選択します。  
+  	- **Virtual Network**: クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。  
 
 		![[仮想ネットワーク] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.6.png "仮想ネットワークの詳細の指定")
 
@@ -289,7 +289,7 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 		**[Hive メタデータで既存の SQL DB を使用する]** で、**[はい]** をクリックし、SQL データベースを選択し、データベースのユーザー名/パスワードを指定します。**[Oozie メタデータで既存の SQL DB を使用する]** 場合は、これらの手順を繰り返します。**[オプションの構成]** ブレードに戻るまで **[選択]** をクリックします。
 
-		>[AZURE.NOTE]メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+		>[AZURE.NOTE]メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL Database インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
 
   	- クラスターを作成するときに、カスタム スクリプトを使用してクラスターをカスタマイズする場合は、**[Script Actions]** をクリックします。スクリプト アクションの詳細については、「[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。[Script Action] ブレードで、次の画面キャプチャに示すように、詳細を指定します。
 
@@ -299,7 +299,7 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 		![[追加ストレージ] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.9.png "追加ストレージ アカウントの指定")
 
-4. **[作成]** をクリックします。**[スタート画面にピン留め]**を選択すると、プレビュー ポータルのスタート画面にクラスターのタイルが追加されます。アイコンはクラスターがプロビジョニング中であることを示し、プロビジョニングが完了すると、[HDInsight] アイコンを表示するように変化します。
+4. **[作成]** をクリックします。**[スタート画面にピン留めする]**を選択すると、プレビュー ポータルのスタート画面にクラスターのタイルが追加されます。アイコンはクラスターがプロビジョニング中であることを示し、プロビジョニングが完了すると、[HDInsight] アイコンを表示するように変化します。
 
 	| プロビジョニング中 | プロビジョニング完了 |
 	| ------------------ | --------------------- |
@@ -319,7 +319,7 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 	* **リモート デスクトップ**: クラスター ノードのリモート デスクトップを有効/無効にすることができます。
 
-	* **クラスターのスケーリング**: このクラスターの worker ノードの数を変更できます。
+	* **クラスターのスケール**: このクラスターの worker ノードの数を変更できます。
 
 	* **削除**: HDInsight クラスターを削除します。
 
@@ -335,7 +335,7 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 
 ### Azure PowerShell の使用
-Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、Azure PowerShell を使用して HDInsight クラスターをプロビジョニングする方法について説明します。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」をご覧ください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」をご覧ください。
+Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、Azure PowerShell を使用して HDInsight クラスターをプロビジョニングする方法について説明します。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」をご覧ください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」をご覧ください。
 
 
 Azure PowerShell を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
@@ -543,7 +543,20 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 7. **F5** キーを押してアプリケーションを実行します。コンソール ウィンドウが開き、アプリケーションの状態が表示されます。Azure アカウントの資格情報の入力も求められます。HDInsight クラスターの作成は数分かかる場合があります。
 
 
-##<a id="nextsteps"></a>次のステップ
+## オンプレミスの SQL Server Integration Services を利用した HDInsight クラスターの作成
+
+SQL Server Integration Services (SSIS) を利用して HDInsight クラスターを作成または削除することもできます。Azure Feature Pack for SSIS には、HDInsight クラスターと連動する次のコンポーネントがあります。
+
+
+- [Azure HDInsight クラスターの作成タスク][ssisclustercreate]
+- [Azure HDInsight クラスターの削除タスク][ssisclusterdelete]
+- [Azure サブスクリプション接続マネージャー][connectionmanager]
+
+Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
+
+
+
+##<a id="nextsteps"></a> 次のステップ
 この記事では、HDInsight クラスターをプロビジョニングする方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の概要](hdinsight-get-started.md) - HDInsight クラスターの使用方法について説明しています。
@@ -555,5 +568,9 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-preview-portal]: https://manage.windowsazure.com
+[connectionmanager]: http://msdn.microsoft.com/ja-JP/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/ja-JP/library/mt146770(v=sql.120).aspx
+[ssisclustercreate]: http://msdn.microsoft.com/ja-JP/library/mt146774(v=sql.120).aspx
+[ssisclusterdelete]: http://msdn.microsoft.com/ja-JP/library/mt146778(v=sql.120).aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定" 
-	description="IT プロまたは開発のテスト用のハイブリッド クラウド環境で Web ベースの基幹業務アプリケーションを作成する方法について説明します。" 
-	services="virtual-network" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	pageTitle="LOB アプリケーションのテスト環境 | Microsoft Azure"
+	description="IT プロまたは開発のテスト用のハイブリッド クラウド環境で Web ベースの基幹業務アプリケーションを作成する方法について説明します。"
+	services="virtual-network"
+	documentationCenter=""
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
 
 <tags 
-	ms.service="virtual-network" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.service="virtual-network"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/08/2015"
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定
@@ -80,7 +80,7 @@ DC2 コンピューターが起動されていない場合は、Azure 管理ポ�
 3.	SQL1.rdp を開くよう求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
-	- 名前: **SQL1\**[ローカル管理者アカウントの名前]
+	- 名前: **SQL1**[ローカル管理者アカウントの名前]
 	- パスワード: [ローカル管理者アカウントのパスワード]
 6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
 
@@ -196,4 +196,4 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 [Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

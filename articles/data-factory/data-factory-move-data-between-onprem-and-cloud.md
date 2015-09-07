@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する" 
-	description="Data Management Gateway と Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する方法を説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する"
+	description="Data Management Gateway と Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/29/2015"
 	ms.author="spelluru"/>
 
 # Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
@@ -32,7 +32,7 @@ Data Gateway には次の機能が備わっています。
 
 ## Data Management Gateway を使用する上で考慮すること
 1.	Data Management Gateway の 1 つのインスタンスを複数のオンプレミス データ ソースに使用できますが、**1 つの Gateway インスタンスはただ 1 つの Azure Data Factory に関連付けられており**、別の Data Factory と共有することはできないことに注意してください。
-2.	1 台のコンピューターには、**Data Management Gateway のインスタンスを 1 つだけ**インストールできます。例えば、内部設置型のデータ ソースにアクセスする必要があるデータ ファクトリが 2 つあるとすると、内部設置型のコンピューター 2 台にゲートウェイをインストールし、各ゲートウェイを別々のデータ ファクトリに結び付ける必要があります。
+2.	1 台のコンピューターには、**Data Management Gateway のインスタンスを 1 つだけ**インストールできます。例えば、オンプレミスのデータ ソースにアクセスする必要があるデータ ファクトリが 2 つあるとすると、オンプレミスのコンピューター 2 台にゲートウェイをインストールし、各ゲートウェイを別々のデータ ファクトリに結び付ける必要があります。
 3.	**ゲートウェイはデータ ソースと同じコンピューター上に存在する必要はありませんが**、データ ソースの近くにあると、ゲートウェイがデータ ソースに接続する際の時間が短縮されます。ゲートウェイとデータ ソースの間でリソースの競合が発生しないように、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにゲートウェイをインストールすることをお勧めします。
 4.	**同じオンプレミス データ ソースに接続する異なるコンピューターで複数のゲートウェイを使用**できます。たとえば、2 つのデータ ファクトリを提供する 2 つのゲートウェイがあり、どちらのデータ ファクトリにも同じオンプレミス データ ソースが登録されている場合があります。
 5.	**Power BI** のシナリオを提供するゲートウェイがコンピューターに既にインストールされている場合は、**Azure Data Factory 用のゲートウェイ**を別のコンピューターにインストールしてください。
@@ -82,10 +82,10 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 会社でプロキシ サーバーを使用している場合は、Microsoft Azure をホワイト リストに追加する必要があります。Microsoft Azure の有効な IP アドレスの一覧は、[Microsoft ダウンロード センター](http://msdn.microsoft.com/library/windowsazure/dn175718.aspx)からダウンロードできます。
 
 ## Data Gateway の使用手順
-このチュートリアルでは、内部設置型の SQL Server データベースから、Azure BLOB にデータを移動するパイプラインを備えたデータ ファクトリを作成します。
+このチュートリアルでは、オンプレミスの SQL Server Database から、Azure BLOB にデータを移動するパイプラインを備えたデータ ファクトリを作成します。
 
 ### 手順 1. Azure Data Factory を作成する
-この手順では、Azure 管理ポータルを使用して **ADFTutorialOnPremDF** という名前の Azure Data Factory インスタンスを作成します。Azure Data Factory のコマンドレットを使用してデータ ファクトリを作成することもできます。
+この手順では、Microsoft Azure 管理ポータルを使用して **ADFTutorialOnPremDF** という名前の Azure Data Factory インスタンスを作成します。Azure Data Factory のコマンドレットを使用してデータ ファクトリを作成することもできます。
 
 1.	[Azure プレビュー ポータル](https://portal.azure.com)にログインしたら、左下隅にある **[新規]** をクリックします。**[作成]** ブレードで **[データ分析]** を選択し、**[データ分析]** ブレードで **[Data Factory]** をクリックします。
 
@@ -103,7 +103,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 
 8. **[新しいデータ ファクトリ]** ブレードで、**[作成]** をクリックします。
 
-	Azure Data Factor の名前はグローバルに一意にする必要があります。"**データ ファクトリ名 "ADFTutorialOnPremDF" は使用できません**" というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialOnPremDF など) 作成し直してください。このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialOnPremDF の代わりに使用します。
+	Azure Data Factory の名前はグローバルに一意にする必要があります。"**データ ファクトリ名 "ADFTutorialOnPremDF" は使用できません**" というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialOnPremDF など) 作成し直してください。このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialOnPremDF の代わりに使用します。
 
 9. 左側の **[通知]** ハブで作成プロセスの通知を探します。**[通知]** ブレードが開いている場合は、**[X]** をクリックして閉じます。
 
@@ -168,9 +168,9 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 
 
 ### 手順 2. リンク サービスを作成する 
-この手順では、**StorageLinkedService** と **SqlServerLinkedService** の 2 つのリンク サービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server データベースをリンクし、**StorageLinkedService** は Azure BLOB ストアを **ADFTutorialDataFactory** にリンクします。このチュートリアルの後半で、内部設置型の SQL Server データベースから Azure BLOB ストアにデータをコピーするパイプラインを作成します。
+この手順では、**StorageLinkedService** と **SqlServerLinkedService** の 2 つのリンク サービスを作成します。**SqlServerLinkedService** はオンプレミスの SQL Server Database をリンクし、**StorageLinkedService** は Azure BLOB ストアを **ADFTutorialDataFactory** にリンクします。このチュートリアルの後半で、オンプレミスの SQL Server Database から Azure BLOB ストアにデータをコピーするパイプラインを作成します。
 
-#### 内部設置型の SQL Server データベースにリンクされたサービスを追加する
+#### オンプレミスの SQL Server Database にリンクされたサービスを追加する
 1.	**[リンクされたサービス]** ブレードで、コマンド バーの **[新しいデータ ストア]** をクリックします。
 2.	**名前**として「**SqlServerLinkedService**」と入力します。 
 2.	**[種類]** の横の矢印をクリックして、**[SQL Server]** を選択します。
@@ -193,18 +193,7 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 5. **[新しいデータ ストア]** ブレードで、**[OK]** をクリックします。 	
 6. [リンクされたサービス] ブレードで **SqlServerLinkedService** のステータスが [オンライン] に設定されていることを確認します。![SQL Server のリンクされているサービスの状態](./media/data-factory-move-data-between-onprem-and-cloud/sql-server-linked-service-status.png)
 
-ゲートウェイ コンピューターとは異なるコンピューターからポータルにアクセスする場合は、資格情報マネージャー アプリケーションがゲートウェイ コンピューターに接続できることを確認する必要があります。アプリケーションがゲートウェイ コンピューターにアクセスできない場合、データ ソースの資格情報を設定したり、データ ソースへの接続をテストしたりすることはできません。
-
-##### 資格情報とセキュリティの設定
-Azure ポータルから起動した [資格情報の設定] アプリケーションで前に説明した方法を使用してオンプレミス データ ソースの資格情報を設定すると、ポータルは、ユーザーがゲートウェイ コンピューターの Data Management Gateway Configuration Manager の [証明書] タブで指定した証明書で資格情報を暗号化します。
-
-API を使用して資格情報を暗号化した方がよい場合は、[New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/azure/dn834940.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。このコマンドレットによって返される資格情報を、[New-AzureDataFactoryLinkedService](https://msdn.microsoft.com/library/azure/dn820246.aspx) コマンドレットで使用する JSON ファイルの connectionString の EncryptedCredential 要素や、ポータルの Data Factory エディターで JSON スニペットに、追加できます。
-
-	"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
-
-**注:** 「資格情報の設定」アプリケーションを使用すると、上記のようにリンクされたサービスに暗号化された資格情報が自動的に設定されます。
-
-Data Factory エディターを使用して資格情報を設定するもう 1 つの方法があります。エディターを使用して SQL Server のリンクされたサービスを作成し、プレーン テキストで資格情報を入力した場合、資格情報は、ゲートウェイが使用するように構成されている証明書ではなく、Data Factory が所有する証明書で暗号化されます。この方法は、場合によっては少し高速ですが、セキュリティは低下します。したがって、この方法は開発/テストの目的のみに使用することをお勧めします。
+資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](#setting-credentials-and-security)」をご覧ください。
 
 #### Azure ストレージ アカウント用のリンクされたサービスを追加する
  
@@ -218,12 +207,12 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 
  
 ### 手順 3. 入力データセットと出力データセットを作成する
-このステップでは、コピー操作 (内部設置型の SQL Server データベース => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。データセットまたはテーブル (四角形のデータセット) を作成する前に、以下を実施する必要があります (一覧の後に詳細な手順があります)。
+このステップでは、コピー操作 (オンプレミスの SQL Server Database => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。データセットまたはテーブル (四角形のデータセット) を作成する前に、以下を実施する必要があります (一覧の後に詳細な手順があります)。
 
 - リンク サービスとしてデータ ファクトリに追加した SQL Server Database 内に "**emp**" という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
 - Data Factory にリンクされたサービスとして追加した Azure BLOB ストレージ アカウントに **adftutorial** という名前の BLOB コンテナーを作成します。
 
-### チュートリアル用に内部設置型の SQL Server を用意します。
+### チュートリアル用にオンプレミスの SQL Server を用意します。
 
 1. オンプレミスの SQL Server リンク サービス (**SqlServerLinkedService**) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
 
@@ -279,7 +268,7 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 
 	以下の点に注意してください。
 	
-	- **type** は **SqlServerTable** に設定します。
+	- **type** は **SqlServerTable** に設定されています。
 	- **tableName** を **emp** に設定します。
 	- **linkedServiceName** を **SqlServerLinkedService** (手順 2. で作成したリンク サービス) に設定します。
 	- Azure Data Factory の別のパイプラインでは生成されない入力テーブルの場合、**external** を **true** に設定する必要があります。これは、入力データが Azure Data Factory サービスの外部で生成されることを意味します。必要に応じて、**Policy** セクションの **externalData** 要素を使用して外部データ ポリシーを指定できます、    
@@ -315,12 +304,12 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
   
 	以下の点に注意してください。
 	
-	- **type** は **AzureBlob** に設定します。
+	- **type** は **AzureBlob** に設定されています。
 	- **linkedServiceName** を **StorageLinkedService** (手順 2. で作成したリンク サービス) に設定します。
 	- **folderPath** を **adftutorial/outfromonpremdf** に設定します。outfromonpremdf は adftutorial コンテナー内のフォルダーです。必要な操作は **adftutorial** コンテナーの作成だけです。
 	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。 
 
-	**入力テーブル**の **fileName** を指定しない場合、入力フォルダー (**folderPath**) 内のすべてのファイル/BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルを参照してください。
+	**入力テーブル**に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。例については、[チュートリアル][adf-tutorial]のサンプル ファイルを参照してください。
  
 	**出力テーブル**に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.)。
 
@@ -400,12 +389,12 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
  
 	- activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
 	- アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
-	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink **を指定します。
+	- **transformation** セクションでは、**ソースの種類**として **SqlSource** を指定し、**シンクの種類**として **BlobSink** を指定します。
 - **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ "**select * from emp**" を指定します。
 
 	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
-	**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
+	**end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
 	
 	Azure Data Factory テーブルごとに定義された **Availability** プロパティに基づいて、データ スライスを処理する期間を定義します。
 	
@@ -441,7 +430,7 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 
 	![EmpOnPremSQLTable slices](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
 
-6. 現在の時刻までのデータ スライスが既に生成されており、**[準備完了]** になっています。これは、SQL Server データベースに挿入したデータが、現在まで残っているためです。下部の **[問題のあるスライス]** セクションにスライスが表示されていないことを確認します。
+6. 現在の時刻までのデータ スライスが既に生成されており、**[準備完了]** になっています。これは、SQL Server Database に挿入したデータが、現在まで残っているためです。下部の **[問題のあるスライス]** セクションにスライスが表示されていないことを確認します。
 
 
 	**[最近更新したスライス]** と **[最近失敗したスライス]** の一覧は、どちらも **[最終更新時刻]** で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
@@ -474,6 +463,20 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 15. **Azure Storage Explorer** などのツールを使用して、出力を確認します。
 
 	![Azure ストレージ エクスプローラー](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+
+
+## 資格情報とセキュリティの設定
+ゲートウェイ コンピューターとは異なるコンピューターからポータルにアクセスする場合は、資格情報マネージャー アプリケーションがゲートウェイ コンピューターに接続できることを確認する必要があります。アプリケーションがゲートウェイ コンピューターにアクセスできない場合、データ ソースの資格情報を設定したり、データ ソースへの接続をテストしたりすることはできません。
+
+Microsoft Azure ポータルから起動した [資格情報の設定] アプリケーションを使用してオンプレミスのデータ ソースの資格情報を設定すると、ポータルは、ユーザーがゲートウェイ コンピューターの Data Management Gateway Configuration Manager の [証明書] タブで指定した証明書で資格情報を暗号化します。
+
+API を使用して資格情報を暗号化した方がよい場合は、[New-AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/azure/dn834940.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。このコマンドレットによって返される資格情報を、[New-AzureDataFactoryLinkedService](https://msdn.microsoft.com/library/azure/dn820246.aspx) コマンドレットで使用する JSON ファイルの connectionString の EncryptedCredential 要素や、ポータルの Data Factory エディターで JSON スニペットに、追加できます。
+
+	"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
+
+**注:** 「資格情報の設定」アプリケーションを使用すると、上記のようにリンクされたサービスに暗号化された資格情報が自動的に設定されます。
+
+Data Factory エディターを使用して資格情報を設定するもう 1 つの方法があります。エディターを使用して SQL Server のリンクされたサービスを作成し、プレーン テキストで資格情報を入力した場合、資格情報は、ゲートウェイが使用するように構成されている証明書ではなく、Data Factory が所有する証明書で暗号化されます。この方法は、場合によっては少し高速ですが、セキュリティは低下します。したがって、この方法は開発/テストの目的のみに使用することをお勧めします。
 
 
 ## Azure PowerShell を使用したゲートウェイの作成と登録 
@@ -551,9 +554,9 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 	
 			msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 3.	**資格情報の設定**アプリケーションを使用している場合は、データ ソースへの接続をテストできるようにするために、Data Management Gateway に接続できるコンピューターで資格情報マネージャー アプリケーションを起動する必要があります。
-4.	オンプレミスの SQL Server データベースと Azure SQL Database の間でデータをコピーするときは、次のことを確認してください。	
-	- 	ゲートウェイ コンピューターのファイアウォールが、**TCP** ポート **1433** での送信 TCP 通信を許可している。
-	- 	[Azure SQL ファイアウォール設定](https://msdn.microsoft.com/library/azure/jj553530.aspx)を構成して、**許可する IP アドレス**に**ゲートウェイ コンピューターの IP アドレス**を追加している。
+4.	オンプレミスの SQL Server と Azure SQL Database の間でデータをコピーするときは、次のことを確認してください。	
+	- 	ゲートウェイ コンピューターのファイアウォールが、**TCP** ポート **1433** での送信 TCP 通信を許可している
+	- 	[Azure SQL ファイアウォール設定](https://msdn.microsoft.com/library/azure/jj553530.aspx)を構成して、**許可する IP アドレス**に**ゲートウェイ コンピューターの IP アドレス**を追加している
 5.	オンプレミスの SQL Server から任意のコピー先にデータをコピーするときに、ゲートウェイ コンピューターと SQL Server コンピューターが異なる場合は、SQL Server インスタンスがリッスンしているポートを介してゲートウェイがデータベースにアクセスできるように、SQL Server コンピューターで [Windows ファイアウォールを構成](https://msdn.microsoft.com/library/ms175043.aspx)します。既定のインスタンスの場合、ポート 1433 です。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

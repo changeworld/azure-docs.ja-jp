@@ -1,29 +1,30 @@
 <properties
-   pageTitle="Microsoft Azure App Service での SQL コネクタの使用"
-   description="SQL コネクタの使用方法"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での SQL コネクタの使用 | Microsoft Azure App Service"
+	description="SQL コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="sameerch"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="sameerch"/>
 
 
-# Microsoft SQL コネクタ
-
+# Microsoft SQL コネクタの使用開始とロジック アプリへの追加
 オンプレミスの SQL Server または Azure SQL Database に接続し、情報またはデータの作成と変更を行います。コネクタを Logic Apps で使用して、"ワークフロー" の一部としてデータを取得、処理、またはプッシュできます。SQL コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
 - Web またはモバイル アプリケーションを使用して、SQL データベースに存在するデータの一部を公開する。
 - ストレージ用の SQL データベース テーブルにデータを挿入する。たとえば、従業員レコードの入力や販売注文の更新などを実行できます。
 - データを SQL から抽出してビジネス プロセスで使用する。たとえば、顧客レコードを取得し、SalesForce にそれらの顧客レコードを書き込むことができます。
+
+この SQL コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ## トリガーとアクション
 *トリガー*とは、発生するイベントを指します。たとえば、注文が更新された、新しい顧客が追加された、といったイベントがあります。*アクション*は、トリガーの結果です。たとえば、注文が更新されたときに、営業担当者にアラートを送信します。または、新しい顧客が追加されたときに、ウェルカム メールを新しい顧客に送信します。
@@ -87,9 +88,9 @@ SQL コネクタをトリガーとして使用するには、**データの存�
 		(SELECT Id FROM [Order] WHERE OrderStatus = 'ProcessedForCollection' ORDER BY Id DESC)
 
 ### トリガーを追加する
-1. ロジック アプリを作成または編集するときに、トリガーとして作成した SQL コネクタを選択します。使用できるトリガーが一覧表示されます: **[データのポーリング (JSON)]** および **[データのポーリング (XML)]** ![][5]
+1. ロジック アプリを作成または編集するときに、トリガーとして作成した SQL コネクタを選択します。使用できるトリガーが一覧表示されます: **[データのポーリング (JSON)]** および **[データのポーリング (XML)]**: ![][5]
 
-2. **[データのポーリング (JSON)]** トリガーを選択し、頻度を入力して、[✓] をクリックします。![][6]
+2. **[データのポーリング (JSON)]** トリガーを選択し、頻度を入力して、[✓] をクリックします: ![][6]
 
 3. これで、トリガーは、ロジック アプリで構成されたものとして表示されます。トリガーの出力が表示され、後続のアクションの入力として使用できます。![][7]
 
@@ -148,4 +149,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [11]: ./media/app-service-logic-connector-sql/LogicApp7.png
 [12]: ./media/app-service-logic-connector-sql/LogicApp8.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

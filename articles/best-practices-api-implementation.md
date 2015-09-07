@@ -1,21 +1,21 @@
 <properties
    pageTitle="API 実装ガイダンス | Microsoft Azure"
-   description="API の実装方法に関するガイダンス。"
-   services=""
-   documentationCenter="na"
-   authors="dragon119"
-   manager="masimms"
-   editor=""
-   tags=""/>
+	description="API の実装方法に関するガイダンス。"
+	services=""
+	documentationCenter="na"
+	authors="dragon119"
+	manager="masimms"
+	editor=""
+	tags=""/>
 
 <tags
    ms.service="best-practice"
-   ms.devlang="rest-api"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="05/13/2015"
-   ms.author="masashin"/>
+	ms.devlang="rest-api"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="05/13/2015"
+	ms.author="masashin"/>
 
 # API 実装ガイダンス
 
@@ -1061,7 +1061,7 @@ Azure には、Web API の公開と管理に使用できる [API Management サ�
 
 これらのタスクの実行方法の詳細については、Microsoft Web サイトの「[API Management](http://azure.microsoft.com/services/api-management/)」をご覧ください。Azure API Management サービスでは、独自の REST インターフェイスも提供しています。これにより、Web API の構成プロセスを簡素化するためのカスタム インターフェイスを構築できます。詳細については、Microsoft Web サイトの「[Azure API Management REST API リファレンス](https://msdn.microsoft.com/library/azure/dn776326.aspx)」をご覧ください。
 
-> [AZURE.TIP]Azure には、フェールオーバーと負荷分散を実装し、さまざまな地理的な場所でホストされている Web サイトの複数のインスタンスで待機時間を短縮できる Azure Traffic Manager が用意されています。Azure Traffic Manager は、API Management サービスと組み合わせて使用できます。API Management サービスでは、Azure Traffic Manager を使用して Web サイトのインスタンスに要求をルーティングできます。詳細については、Microsoft Web サイトの「[Traffic Manager での負荷分散方法について](https://msdn.microsoft.com/library/azure/dn339010.aspx)」をご覧ください。
+> [AZURE.TIP]Azure には、フェールオーバーと負荷分散を実装し、さまざまな地理的な場所でホストされている Web サイトの複数のインスタンスで待機時間を短縮できる Azure Traffic Manager が用意されています。Azure Traffic Manager は、API Management サービスと組み合わせて使用できます。API Management サービスでは、Azure Traffic Manager を使用して Web サイトのインスタンスに要求をルーティングできます。詳細については、Microsoft Web サイトの「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」をご覧ください。
 
 > この構造では、Web サイトにカスタム DNS 名を使用している場合に、各 Web サイトの適切な CNAME レコードを、Azure Traffic Manager の Web サイトの DNS 名を指すように構成する必要があります。
 
@@ -1147,9 +1147,9 @@ API Management サービスを使用して Web API を公開した場合、Micro
 - Azure Notification Hubs を使用して非同期応答をクライアント アプリケーションにプッシュする方法については、Microsoft Web サイトの「[Azure Notification Hubs によるユーザーへの通知](notification-hubs-aspnet-backend-windows-dotnet-notify-users/)」をご覧ください。
 - Web API への制御された安全なアクセスを提供する成果物を発行する方法については、Microsoft Web サイトの「[API Management](http://azure.microsoft.com/services/api-management/)」をご覧ください。
 - API Management REST API を使用して、カスタム管理アプリケーションを構築する方法については、Microsoft Web サイトの「[Azure API Management REST API リファレンス](https://msdn.microsoft.com/library/azure/dn776326.aspx)」をご覧ください。
-- Azure Traffic Manager を使用して、Web API をホストする Web サイトの複数のインスタンスに要求の負荷を分散する方法の概要については、Microsoft Web サイトの「[Traffic Manager での負荷分散方法について](https://msdn.microsoft.com/library/azure/dn339010.aspx)」をご覧ください。
+- Azure Traffic Manager を使用して、Web API をホストする Web サイトの複数のインスタンスに要求の負荷を分散する方法の概要については、Microsoft Web サイトの「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」をご覧ください。
 - ASP.NET Web API プロジェクトでの Application Insights のインストールと構成の詳細については、Microsoft Web サイトの「[Application Insights - アプリケーションの状態と利用状況の監視を開始する](app-insights-start-monitoring-app-health-usage.md)」をご覧ください。
 - Visual Studio を使用した単体テストの作成と管理の詳細については、Microsoft Web サイトの「[単体テストを使用したコードの検証](https://msdn.microsoft.com/library/dd264975.aspx)」をご覧ください。
 - Visual Studio Ultimate を使用して、Web パフォーマンスおよびロード テスト プロジェクトを作成する方法については、Microsoft Web サイトの[リリース前のアプリケーションでのパフォーマンス テストの実行](https://msdn.microsoft.com/library/dn250793.aspx)に関するページをご覧ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

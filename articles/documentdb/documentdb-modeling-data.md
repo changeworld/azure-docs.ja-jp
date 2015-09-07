@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure DocumentDB のデータのモデル化 | Microsoft Azure" 
-	description="Azure DocumentDB のような NoSQL ドキュメント データベースのデータをモデル化する方法について説明します。" 
-	services="documentdb" 
-	authors="ryancrawcour" 
-	manager="jhubbard" 
-	editor="mimig1" 
+	pageTitle="Azure DocumentDB のデータのモデル化 | Microsoft Azure"
+	description="Azure DocumentDB のような NoSQL ドキュメント データベースのデータをモデル化する方法について説明します。"
+	services="documentdb"
+	authors="ryancrawcour"
+	manager="jhubbard"
+	editor="mimig1"
 	documentationCenter=""/>
 
 <tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/21/2015" 
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="ryancraw"/>
 
 #DocumentDB のデータのモデル化#
@@ -392,4 +392,4 @@ Azure DocumentDB でのインデックスのチューニングの詳細につい
 最後に、マルチテナント アプリケーションのデータのモデル化とシャーディングのガイダンスについては、「[Scaling a Multi-Tenant Application with Azure DocumentDB](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)」(Azure DocumentDB でのマルチテナント アプリケーションの拡張) を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

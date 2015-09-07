@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Traffic Manager のパフォーマンスに関する考慮事項 | Microsoft Azure"
-   description="Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。"
-   services="traffic-manager"
-   documentationCenter=""
-   authors="kwill-MSFT"
-   manager="adinah"
-   editor="joaoma" />
+	description="Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。"
+	services="traffic-manager"
+	documentationCenter=""
+	authors="kwill-MSFT"
+	manager="adinah"
+	editor="joaoma"/>
 
 <tags 
    ms.service="traffic-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
-   ms.author="joaoma" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/19/2015"
+	ms.author="joaoma"/>
 
 
 # Traffic Manager のパフォーマンスに関する考慮事項
@@ -28,7 +28,7 @@ Azure Traffic Manager に関してよく寄せられる質問に、Traffic Manag
 
 ## Traffic Manager の動作に関する重要な注意事項
 
-http://msdn.microsoft.com/library/windowsazure/hh744833.aspx は Traffic Manager の動作についての優れたリソースですが、そのページには多くの情報があり、パフォーマンスに関する重要な情報を取り出すのは難しいかもしれません。この MSDN ドキュメントを見るときの重要な点は図 3 の手順 5 と 6 であり、ここでそれについて詳しく説明します。
+「[Traffic Manager について](traffic-manager-overview.md)」は Traffic Manager の動作について学習できる優れたリソースですが、非常に多くの情報が記載されているため、パフォーマンスに関する重要な情報を見つけ出すのが困難な場合があります。この MSDN ドキュメントを見るときの重要な点は図 3 の手順 5 と 6 であり、ここでそれについて詳しく説明します。
 
 - Traffic Manager は基本的に DNS の解決だけを行います。つまり、Traffic Manager が Web サイトに対して与える可能性があるパフォーマンスに関する唯一の影響は、初期 DNS 参照です。
 - Traffic Manager の DNS 参照に関する説明のポイント。Traffic Manager は、ポリシーとプローブの結果に基づいて、通常の Microsoft DNS ルート サーバーを設定し、定期的に更新します。したがって、初期 DNS 参照の間であっても、DNS 要求は通常の Microsoft DNS ルート サーバーによって処理されるため、Traffic Manager による影響はありません。Traffic Manager が「停止」しても (つまり、ポリシーのプローブと DNS の更新を行っている VM での障害)、Microsoft DNS サーバーのエントリは維持されるため、Traffic Manager の DNS 名への影響はありません。唯一の影響は、ポリシーに基づくプローブと更新が行われないことです (つまり、プライマリ サイトがダウンした場合、Traffic Manager は DNS を更新してフェールオーバー サイトを参照できません)。
@@ -98,4 +98,4 @@ http://www.digwebinterface.com – watchmouse サイトと似ていますが、�
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

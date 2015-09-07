@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure AD Connect Health の FAQ" 
-	description="この FAQ は、Azure AD Connect Health について寄せられる質問とその回答です。サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure AD Connect Health の FAQ"
+	description="この FAQ は、Azure AD Connect Health について寄せられる質問とその回答です。サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/12/2015"
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/14/2015"
 	ms.author="billmath"/>
 
 
@@ -68,10 +68,9 @@ Register-AdHealthAgent (インストールの最後の手順) を実行する前
 - 手順 1 – machine.config ファイルにエントリを追加する
 
 
-machine.config ファイルを探します。ファイルのパスは、%windir%\\Microsoft.NET\\Framework64\\[version]\\config\\machine.config です。</li>
+machine.config ファイルを探します。ファイルのパスは、%windir%\\Microsoft.NET\\Framework64\[version]\\config\\machine.config です。</li>
 
 machine.config ファイルの <configuration></configuration> 要素の下に、次のエントリを追加します。
- 
 		
 	<system.net>  
 			<defaultProxy useDefaultCredentials="true">
@@ -84,7 +83,7 @@ machine.config ファイルの <configuration></configuration> 要素の下に�
 
  
 
-<defaultProxy> に関する情報は、[こちら](https://msdn.microsoft.com/library/kd3cf2ex(v=vs.110).aspx)) も参照してください。
+<defaultProxy> に関する情報は、[こちら](https://msdn.microsoft.com/library/kd3cf2ex(v=vs.110))) も参照してください。
 
 この設定により、システム全体の .NET アプリケーションが、http .NET 要求を行うときにユーザーが明示的に定義したプロキシを使用するように構成されます。個々の app.config を個別に変更することは、自動更新の間に元に戻るので、お勧めできません。machine.config のみを変更対象にすれば、変更するファイルが 1 つで済み、更新を経ても変更が維持されます。
 
@@ -128,4 +127,11 @@ Azure AD Connect Health アラートは、成功条件を満たすと解決さ�
 
 Azure AD Health サービス エンドポイントと通信できるようにするには、Azure AD Connect Health エージェント用に TCP/UDP ポート 80 と 443 を開く必要があります。
 
-<!---HONumber=August15_HO6-->
+## 関連リンク
+
+* [Azure AD Connect Health](active-directory-aadconnect-health.md)
+* [AD FS の Azure AD Connect Health エージェントのインストール](active-directory-aadconnect-health-agent-install-adfs.md)
+* [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
+* [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
+
+<!---HONumber=August15_HO9-->

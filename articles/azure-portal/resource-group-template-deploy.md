@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ"
-   services="azure-resource-manager"
-   description="Azure リソース マネージャーを使用してアプリケーションを Azure にデプロイします。テンプレートは JSON ファイルであり、ポータル、PowerShell、Azure コマンドライン インターフェイス (Mac、Linux、Windows 用)、または REST で使用できます。"
-   documentationCenter="na"
-   authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+	services="azure-resource-manager"
+	description="Azure リソース マネージャーを使用してアプリケーションを Azure にデプロイします。テンプレートは JSON ファイルであり、ポータル、PowerShell、Azure コマンドライン インターフェイス (Mac、Linux、Windows 用)、または REST で使用できます。"
+	documentationCenter="na"
+	authors="tfitzmac"
+	manager="wpickett"
+	editor=""/>
 
 <tags
    ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/24/2015"
-   ms.author="tomfitz"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/20/2015"
+	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ
 
@@ -256,6 +256,8 @@ Azure リソース マネージャーによるプレビュー ポータルの使
        }
     }
 
+パラメーター ファイルのサイズは、64 KB 以下である必要があります。
+
 ## 次のステップ
 - .NET クライアント ライブラリを使用したリソースのデプロイの例については、[.NET ライブラリおよびテンプレートを使用したリソースのデプロイ](../arm-template-deployment.md)を参照してください。
 - アプリケーションのデプロイの詳細な例については、[Azure でのマイクロ サービスの予測どおりのプロビジョニングとデプロイ](../app-service-web/app-service-deploy-complex-application-predictably.md)を参照してください。
@@ -264,4 +266,4 @@ Azure リソース マネージャーによるプレビュー ポータルの使
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -12,11 +12,15 @@
 	ms.workload="media"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article" 
-	ms.date="08/06/2015"
+	ms.topic="get-started-article"
+	ms.date="08/14/2015"
 	ms.author="juliako"/>
 
 #PlayReady DRM の動的暗号化とライセンス提供サービスの使用
+
+> [AZURE.SELECTOR]
+- [.NET](media-services-protect-with-drm.md)
+- [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 
 Microsoft Azure Media Services を使用すると、MPEG DASH、Smooth Streaming、および HTTP ライブ ストリーミング (HLS) のストリームを [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) で保護して配信できます。
 
@@ -142,7 +146,7 @@ Media Services では、コンテンツ キーに、資産を暗号化すると�
 詳細については、[コンテンツ キーの作成](media-services-dotnet-create-contentkey.md)に関するページを参照してください。
 
 
-##<a id="configure_key_auth_policy"></a>コンテンツ キー承認ポリシーを構成する
+##<a id="configure_key_auth_policy"></a>コンテンツ キー承認ポリシーの構成
 
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーを構成する必要があります。キーがクライアント (プレーヤー) に配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープン、トークン制限、IP 制限) を指定できます。
 
@@ -575,4 +579,4 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		    }
 		}
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

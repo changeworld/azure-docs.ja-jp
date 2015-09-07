@@ -1,21 +1,21 @@
 <properties
    pageTitle="Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー"
-   description="コンピューティング、ネットワーク、ストレージ リソース プロバイダー (CRP、NRP、SRP) の概念の概要"
-   services="virtual-machines"
-   documentationCenter="dev-center-name"
-   authors="mahthi"
-   manager="coreysa"
-   editor=""
+	description="コンピューティング、ネットワーク、ストレージ リソース プロバイダー (CRP、NRP、SRP) の概念の概要"
+	services="virtual-machines"
+	documentationCenter="dev-center-name"
+	authors="mahthi"
+	manager="timlt"
+	editor=""
 	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
    ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="04/29/2015"
-   ms.author="mahthi"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="04/29/2015"
+	ms.author="mahthi"/>
 
 # Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー
 
@@ -110,4 +110,4 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 現時点ではサポートされません。新しい Azure リソース マネージャー API で作成した Virtual Network を Express Route 回線と接続することはできません。これは、後でサポートされます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

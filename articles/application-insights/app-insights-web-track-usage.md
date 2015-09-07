@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Application Insights による Web アプリケーションの利用状況の分析" 
-	description="Application Insights による利用状況分析の概要" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="alancameronwills" 
+	pageTitle="Application Insights による Web アプリケーションの利用状況の分析"
+	description="Application Insights による利用状況分析の概要"
+	services="application-insights"
+	documentationCenter=""
+	authors="alancameronwills"
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/19/2015" 
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="awills"/>
  
 # Application Insights による Web アプリケーションの利用状況の分析
@@ -109,13 +109,33 @@ Web ページを発行するか、デバッグ モードで使用するには、
 
 ## ユーザーとユーザー数
 
+
 各ユーザーのセッションは、一意のユーザー ID に関連付けられます。
 
-既定では、ユーザーは、Cookie を配置することによって識別されます。この場合、複数のブラウザーやデバイスを使用しているユーザーは複数回カウントされます。
+既定では、ユーザーは、Cookie を配置することによって識別されます。複数のブラウザーやデバイスを使用しているユーザーは複数回カウントされます。ただし、次の場合は[認証されたユーザー](#authenticated-users)に関するページを参照してください:
+
 
 特定の間隔の**ユーザー数**メトリックは、この間隔の間に記録されたアクティビティとの一意のユーザー数として定義されます。その結果、時間範囲を1 時間未満に設定した場合、長いセッションを持つユーザーは複数回カウントされることがあります。
 
 **新しいユーザー**は、最初のセッションに、この間隔の間に発生したアプリを持つユーザーをカウントします。Cookie によってユーザーをカウントする既定のメソッドを使用した場合、Cookie をクリアしているユーザー、または、新しいデバイスやブラウザーを使用して初めてアプリにアクセスするユーザーも含まれます。![[使用状況] ブレードで [ユーザー] グラフをクリックして新しいユーザーを確認します。](./media/app-insights-web-track-usage/031-dual.png)
+
+### 認証されたユーザー
+
+ユーザーがサインインできる Web アプリの場合、Application Insights に一意のユーザー識別子を提供することで、より正確な数値を取得できます。ユーザーの名前や、アプリで使用しているのと同じ ID を使用する必要はありません。アプリでユーザーが識別されたら、次のコードを使用します。
+
+
+*クライアント側の JavaScript*
+
+      appInsights.setAuthenticatedUserContext(userId);
+
+アカウントにアプリのグループ ユーザーがある場合、アカウントの識別子も渡すことができます。
+
+      appInsights.setAuthenticatedUserContext(userId, accountId);
+
+ユーザー ID とアカウント ID には、スペースまたは文字 (`,;=|`) を含めることはできません。
+
+
+[メトリックス エクスプローラー](app-insights-metrics-explorer.md)で、**認証されたユーザー**と**アカウント**のグラフを作成できます。
 
 ## 合成トラフィック
 
@@ -144,7 +164,7 @@ Application Insight は合成トラフィックを自動的に特定して分類
 
 この場合も、Application Insights を使用して、別個の Web ページでゲームを実装していた場合とまったく同じように、それぞれのゲームが開かれた回数を記録したいとします。これを実現するのは簡単です。新しい "ページ" が開かれたことを記録する JavaScript コードにテレメトリ モジュールの呼び出しを挿入するだけです。
 
-	telemetryClient.trackPageView(game.Name);
+	appInsights.trackPageView(game.Name);
 
 ## カスタム イベント
 
@@ -152,7 +172,7 @@ Application Insight は合成トラフィックを自動的に特定して分類
 
 *JavaScript*
 
-    telemetryClient.trackEvent("GameEnd");
+    appInsights.trackEvent("GameEnd");
 
 *C#*
 
@@ -371,4 +391,4 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

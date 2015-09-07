@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure AD Connect の資格情報とアクセス許可の詳細" 
-	description="Azure AD Connect の資格情報とアクセス許可のカスタム設定の説明です。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure AD Connect の資格情報とアクセス許可の詳細"
+	description="Azure AD Connect の資格情報とアクセス許可のカスタム設定の説明です。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/02/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 
@@ -88,7 +88,7 @@ AD FS:GMSA アカウント (aadcsvc$)|ドメイン ユーザー|FS サービス 
 * [Exchange ハイブリッドのアクセス許可](https://msdn.microsoft.com/library/azure/dn757602.aspx#exchange)
 * [パスワードの書き戻しのアクセス許可](https://msdn.microsoft.com/library/azure/dn757602.aspx#pwriteback)
 * [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)
-* [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx)
+* [MSDN の Azure AD Connect](active-directory-aadconnect.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

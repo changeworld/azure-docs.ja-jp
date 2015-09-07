@@ -1,6 +1,6 @@
 <properties
-	pageTitle="構成テーブルを使用してクロスプレミス仮想ネットワークを作成する"
-	description="このトピックでは、事前に決定されている構成テーブルを使用して、クロスプレミス仮想ネットワークを構成する方法について説明します。"
+	pageTitle="構成テーブルを使用した仮想ネットワーク | Microsoft Azure"
+	description="事前に設定済みの構成テーブル設定を使用した、クロスプレミス Azure 仮想ネットワークの構成方法について説明します。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -28,9 +28,9 @@
 
 これらのテーブルは通常、Azure 内の IT ワークロードの構成を説明するトピックで設定され、クロスプレミス仮想ネットワークを含みます。例については、「[フェーズ 1: Azure を構成する](virtual-machines-workload-intranet-sharepoint-phase1.md)」を参照してください。
 
-次の手順では、これらのテーブルの情報を参考にして、仮想ネットワークの構成プロセスの手順を説明します。別のトピックでこれらのテーブルの設定をまだ指定していない状態で、クロスプレミス仮想ネットワークを構成する場合は、「[Azure 仮想ネットワークへのクロスプレミス サイト間接続の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)」を参照してください。
+次の手順では、これらのテーブルの情報を参考にして、仮想ネットワークの構成プロセスの手順を説明します。別のトピックでこれらのテーブルの設定をまだ指定していない状態で、クロスプレミス仮想ネットワークを構成する場合は、[Azure 仮想ネットワークへのクロスプレミス サイト間接続の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)を参照してください。
 
-> [AZURE.NOTE]この手順では、サイト間 VPN 接続を使用する仮想ネットワークを作成します。サイト間接続に Azure ExpressRoute を使用する方法については、「[ExpressRoute の技術概要](https://msdn.microsoft.com/library/dn606309.aspx)」を参照してください。
+> [AZURE.NOTE]この手順では、サイト間 VPN 接続を使用する仮想ネットワークを作成します。サイト間接続に Azure ExpressRoute を使用する方法については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
 ## 構成テーブルの設定を使用して新しいクロスプレミス Azure Virtual Network を作成する
 
@@ -61,10 +61,10 @@
 
 ## その他のリソース
 
-[仮想ネットワークの概要](https://msdn.microsoft.com/library/jj156007.aspx)
+[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)
 
-[仮想ネットワークの構成タスク](https://msdn.microsoft.com/library/jj156206.aspx)
+[仮想ネットワークの構成タスク](../documentation/services/virtual-machines/)
 
 [Azure Virtual Network へのクロスプレミスのサイト間接続の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

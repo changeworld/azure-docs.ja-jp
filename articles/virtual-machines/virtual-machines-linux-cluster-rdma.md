@@ -1,19 +1,19 @@
 <properties
  pageTitle="MPI アプリケーションを実行するように Linux RDMA クラスターを設定する |Microsoft Azure"
- description="RDMA を使用して MPI アプリケーションを実行する、 サイズ A8 または A9 VM の Linux クラスターを作成する方法について説明します。"
- services="virtual-machines"
- documentationCenter=""
- authors="dlepow"
- manager="timlt"
- editor=""/>
+	description="RDMA を使用して MPI アプリケーションを実行する、 サイズ A8 または A9 VM の Linux クラスターを作成する方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="dlepow"
+	manager="timlt"
+	editor=""/>
 <tags
 ms.service="virtual-machines"
- ms.devlang="na"
- ms.topic="article"
- ms.tgt_pltfrm="vm-linux"
- ms.workload="infrastructure-services"
- ms.date="07/17/2015"
- ms.author="danlep"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-linux"
+	ms.workload="infrastructure-services"
+	ms.date="07/17/2015"
+	ms.author="danlep"/>
 
 # MPI アプリケーションを実行するように Linux RDMA クラスターを設定する
 
@@ -137,7 +137,7 @@ $ ssh-keygen
 $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
-\~/.ssh ディレクトリにある、ssh\_config ファイルを編集 (存在しない場合は作成) します。Azure で使用するプライベート ネットワークの IP アドレスの範囲を指定します。
+~/.ssh ディレクトリにある、ssh\_config ファイルを編集 (存在しない場合は作成) します。Azure で使用するプライベート ネットワークの IP アドレスの範囲を指定します。
 
 ```
 host 10.32.0.*
@@ -190,7 +190,7 @@ azure vm capture -t <vm-name> <image-name>
 ### Select a region where A8 and A9 VMs are available, such as West US
 ### See Azure Pricing pages for prices and availability of A8 and A9 VMs
 
-azure network vnet create -l "West US" –e 10.32.0.0 <network-name>
+azure network vnet create -l "West US" -e 10.32.0.0 <network-name>
 
 ### Create a cloud service. All the A8 and A9 instances need to be in the same cloud service for Linux RDMA to work across InfiniBand.
 ### Note: The current maximum number of VMs in a cloud service is 50. If you need to provision more than 50 VMs in the same cloud service in your cluster, contact Azure Support.
@@ -339,4 +339,4 @@ private ip address2:16
 
 * Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/ja-jp/articles/intel-mpi-library-documentation/)を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

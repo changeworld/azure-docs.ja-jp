@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure App Service での ASP.NET API アプリの作成"
+	pageTitle="Azure App Service での ASP.NET API アプリの作成 | Microsoft Azure"
 	description="Visual Studio 2013 を使用して、Azure App Service で ASP.NET API アプリを作成する方法について説明します。"
 	services="app-service\api"
 	documentationCenter=".net"
@@ -12,7 +12,7 @@
 	ms.workload="web"
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
-	ms.topic="hero-article" 
+	ms.topic="hero-article"
 	ms.date="08/14/2015"
 	ms.author="tdykstra"/>
 
@@ -34,7 +34,7 @@
 
 ## API アプリ プロジェクトの作成
 
-プロジェクトの名前を入力するよう要求されたら、「*ContactsList*」と入力します。
+プロジェクトの名前を入力するよう要求されたら、「**ContactsList**」と入力します。
 
 [AZURE.INCLUDE [app-service-api-create](../../includes/app-service-api-create.md)]
 
@@ -47,6 +47,5 @@
 ## 次のステップ
 
 これで API アプリをデプロイする準備ができました。[API アプリのデプロイ](app-service-dotnet-deploy-api-app.md)に関するチュートリアルの手順に従って実際にデプロイできます。
- 
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

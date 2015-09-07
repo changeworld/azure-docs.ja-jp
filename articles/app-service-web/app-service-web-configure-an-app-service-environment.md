@@ -1,26 +1,26 @@
 <properties 
-	pageTitle="App Service 環境の構成方法" 
-	description="App Service 環境の構成、管理、および監視" 
-	services="app-service\web" 
-	documentationCenter="" 
-	authors="ccompy" 
-	manager="stefsch" 
+	pageTitle="App Service 環境の構成方法"
+	description="App Service 環境の構成、管理、および監視"
+	services="app-service\web"
+	documentationCenter=""
+	authors="ccompy"
+	manager="stefsch"
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/27/2015" 
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/27/2015"
 	ms.author="ccompy"/>
 
 # App Service 環境の構成 #
 
 ## 概要 ##
 
-App Service 環境は、プレビュー段階で提供されている新しい Premium レベルの機能です。これには、新しいスケーリングおよびネットワーク アクセス機能が用意されています。この新しいスケール機能では、VNET に Azure App Service のインスタンスを配置することができます。App Service 環境 (ASE) の機能に慣れていない場合は、[App Service 環境の概要](app-service-app-service-environment-intro.md) を参照してください。ASE を作成する方法の詳細については、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)のドキュメントを参照してください。
+App Service 環境は、プレビュー段階で提供されている新しい Premium レベルの機能です。これには、新しいスケーリングおよびネットワーク アクセス機能が用意されています。この新しいスケール機能では、VNET に Azure App Service のインスタンスを配置することができます。App Service 環境 (ASE) の機能に慣れていない場合は、「App Service 環境の概要」(app-service-app-service-environment-intro.md) を参照してください。ASE を作成する方法の詳細については、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)のドキュメントを参照してください。
 
 大まかに言えば、App Service 環境は次に挙げるいくつかの主要なコンポーネントで構成されます。
 
@@ -126,9 +126,9 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [HowtoCreateASE]: http://azure.microsoft.com/documentation/articles/app-service-web-how-to-create-an-app-service-environment/
 [HowtoScale]: http://azure.microsoft.com/documentation/articles/app-service-web-scale-a-web-app-in-an-app-service-environment/
 [ControlInbound]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-control-inbound-traffic/
-[virtualnetwork]: https://msdn.microsoft.com/library/azure/dn133803.aspx
+[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
 [AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

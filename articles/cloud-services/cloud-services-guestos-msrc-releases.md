@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Azure ゲスト OS に適用される更新プログラムの一覧 | Microsoft Azure" 
-   description="ゲスト OS リリースに適用される更新プログラムの一覧" 
-   services="cloud-services" 
-   documentationCenter="na" 
-   authors="yuemlu" 
-   manager="markkie" 
-   editor=""/>
+   pageTitle="Azure ゲスト OS に適用される更新プログラムの一覧 | Microsoft Azure"
+	description="ゲスト OS リリースに適用される更新プログラムの一覧"
+	services="cloud-services"
+	documentationCenter="na"
+	authors="yuemlu"
+	manager="markkie"
+	editor=""/>
 
 <tags
    ms.service="cloud-services"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="tbd" 
-   ms.date="04/17/2015"
-   ms.author="adegeo"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="tbd"
+	ms.date="08/24/2015"
+	ms.author="yuemlu"/>
 
 # Azure ゲスト OS 
 
@@ -32,7 +32,6 @@
 | MS15-088 | [3082458] | 安全でないコマンド ライン パラメーターの引き渡しにより、情報漏えいが起こる | 4\.23、3.30、2.42 | 2015 年 8 月 11 日 |
 | MS15-089 | [3060716] | Microsoft Windows の脆弱性により、特権が昇格される | 4\.23、3.30、2.42 | 2015 年 8 月 11 日 |
 | MS15-090 | [3076949] | WebDAV の脆弱性により、情報漏えいが起こる | 4\.23、3.30、2.42 | 2015 年 8 月 11 日 |
-| MS15-092 | [3086251] | .NET Framework の脆弱性により、特権が昇格される | 4\.23、3.30、2.42 | 2015 年 8 月 11 日 |
 
 
 ## 7 月のゲスト OS
@@ -265,4 +264,4 @@
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

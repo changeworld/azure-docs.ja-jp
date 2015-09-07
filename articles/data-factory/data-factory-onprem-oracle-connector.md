@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="Oracle コネクタ - Oracle との間でのデータの移動" 
-	description="オンプレミスの Oracle データベースとの間でのデータ移動を可能にする Data Factory サービスの Oracle コネクタについて学習する" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Oracle との間でのデータの移動 | Azure Data Factory"
+	description="Azure Data Factory を使用してオンプレミスの Oracle データベースとの間でデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# Oracle コネクタ - オンプレミスの Oracle へのデータの移動 
+# Azure Data Factory を使用してオンプレミスの Oracle にデータを移動する 
 
 この記事では、データ ファクトリのコピー アクティビティを使用して Oracle から他のデータ ソースにデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -24,11 +24,11 @@
 
 下のサンプルで確認できる要素:
 
-1.	OnPremisesOracle 型のリンクされたサービス。
-2.	AzureStorage 型のリンクされたサービス。
-3.	OracleTable 型の入力データセット。 
-4.	AzureBlob 型の出力データセット。
-5.	source として OracleSource を、sink として BlobSink を使用するコピー アクティビティを含むパイプライン。
+1.	[OnPremisesOracle](data-factory-onprem-oracle-connector.md#oracle-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。 
+4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+5.	source として [OracleSource](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) を、sink として [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルはオンプレミスの Oracle データベース内のテーブルから BLOB に 1 時間ごとにデータをコピーします。下のサンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションの各プロパティのドキュメントを参照してください。
 
@@ -208,6 +208,7 @@ type | type プロパティを **OnPremisesOracle** に設定する必要があ�
 connectionString | connectionString プロパティの Oracle Database インスタンスに接続するために必要な情報を指定します。 | あり 
 gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です | あり
 
+オンプレミスの Oracle データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 ## Oracle データセットの type プロパティ
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Oracle、Azure BLOB、Azure テーブルなど) で同じです。
@@ -273,4 +274,4 @@ XML | String
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

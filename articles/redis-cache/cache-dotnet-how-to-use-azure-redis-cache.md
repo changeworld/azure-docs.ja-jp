@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Redis Cache の使用方法" 
-	description="Azure Redis Cache を使用して Azure アプリケーションのパフォーマンスを向上させる方法を説明します" 
-	services="redis-cache" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="dwrede" 
+	pageTitle="Azure Redis Cache の使用方法"
+	description="Azure Redis Cache を使用して Azure アプリケーションのパフォーマンスを向上させる方法を説明します"
+	services="redis-cache"
+	documentationCenter=""
+	authors="steved0x"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="cache" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="cache-redis" 
-	ms.devlang="dotnet" 
-	ms.topic="hero-article" 
-	ms.date="08/05/2015" 
+	ms.service="cache"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="cache-redis"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="08/25/2015"
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の使用方法
@@ -30,7 +30,7 @@ Microsoft Azure Redis Cache には、次の 2 つのレベルがあります。
 -	**Basic** – 単一ノード、複数のサイズ、最大 53 GB
 -	**Standard** – 2 ノード (プライマリ/レプリカ)。複数のサイズ、最大 53 GB99.9% の SLA。
 
-各レベルは、機能と料金ごとに異なります。機能については、このガイドで後述します。料金の詳細については、「[キャッシュの料金詳細][]」を参照してください。
+各レベルは、機能と価格ごとに異なります。機能については、このガイドで後述します。価格の詳細については、「[キャッシュの価格詳細][]」を参照してください。
 
 このガイドでは、Azure Redis Cache の基本的な概要について説明します。この概要ガイドでは扱われていない機能の詳細については、[Azure Redis Cache の概要に関するページ][]を参照してください。
 
@@ -45,19 +45,19 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 <a name="create-cache"></a>
 ## キャッシュの作成
 
-キャッシュを作成するには、まず [Microsoft Azure プレビュー ポータル][]にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** をクリックします。
+キャッシュを作成するには、まず [Azure プレビュー ポータル][]にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** をクリックします。
 
-![New cache][NewCacheMenu]
+![新しいキャッシュ][NewCacheMenu]
 
 >[AZURE.NOTE]Azure アカウントがない場合は、無料評価版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][]を参照してください。
 
 **[Redis Cache の新規作成]** ブレードで、必要なキャッシュ構成を指定します。
 
-![Create cache][CacheCreate]
+![キャッシュの作成][CacheCreate]
 
 キャッシュ エンドポイントに使用するサブドメイン名を **[DNS 名]** に入力します。エンドポイントは、数字と小文字のみを含む、先頭が文字の 6 ～ 12 文字の文字列にしてください。
 
-**[料金レベル]** を使用して、必要なキャッシュ サイズと機能を選択します。**Basic** キャッシュは複数のサイズ、最大 53 GB の単一ノードです。**Standard** キャッシュは複数のサイズ、最大 53 GB で 99.9% SLA の 2 ノード (プライマリ/レプリカ) 構成です。
+**[価格レベル]** を使用して、必要なキャッシュ サイズと機能を選択します。**Basic** キャッシュは複数のサイズ、最大 53 GB の単一ノードです。**Standard** キャッシュは複数のサイズ、最大 53 GB で 99.9% SLA の 2 ノード (プライマリ/レプリカ) 構成です。
 
 **[リソース グループ]** で、キャッシュのリソース グループを選択または作成します。
 
@@ -67,13 +67,13 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 
 **[場所]** を使用して、キャッシュのホストの地理的位置を指定します。パフォーマンスを最大限に引き出すために、キャッシュは、キャッシュ クライアント アプリケーションと同じリージョンに作成することを強くお勧めします。
 
-新しいキャッシュ オプションを構成したら、**[作成]** をクリックします。キャッシュが作成されるまで数分かかる場合があります。状態を確認するには、スタートボードで進行状況を監視してください。キャッシュが作成されると、新しいキャッシュの状態が "**実行中**" になって、既定の設定で使用できるようになります。
+新しいキャッシュ オプションを構成したら、**[作成]** をクリックします。キャッシュが作成されるまで数分かかる場合があります。状態を確認するには、スタート画面で進行状況を監視してください。キャッシュが作成されると、新しいキャッシュの状態が "**実行中**" になって、既定の設定で使用できるようになります。
 
-![Cache created][CacheCreated]
+![作成されたキャッシュ][CacheCreated]
 
 作成されたキャッシュには、**[参照]** ブレードからアクセスすることができます。
 
-![Browse blade][BrowseCaches]
+![ブレードの表示][BrowseCaches]
 
 **[Redis Caches]** をクリックしてキャッシュを表示します。
 
@@ -96,7 +96,7 @@ Visual Studio で StackExchange.Redis NuGet パッケージを使用してクラ
 
 ![StackExchange.Redis NuGet package][StackExchangeNuget]
 
-クライアント アプリケーションから StackExchange.Redis キャッシュ クライアントを使用して Azure Redis Cache にアクセスするために必要なアセンブリ参照が NuGet パッケージによってダウンロードされ追加されます。
+クライアント アプリケーションから StackExchange.Redis Cache クライアントを使用して Azure Redis Cache にアクセスするために必要なアセンブリ参照が NuGet パッケージによってダウンロードされ追加されます。
 
 クライアント プロジェクトをキャッシュ用に構成できたら、以降のセクションで説明されている、キャッシュを操作するための技法を使用できます。
 
@@ -120,7 +120,7 @@ Visual Studio で StackExchange.Redis NuGet パッケージを使用してクラ
 
 Azure Redis Cache への接続には、`ConnectionMultiplexer` クラスを使用します。このクラスはクライアント アプリケーションの開始から終了まで共有、再利用する前提で設計されており、操作単位で作成する必要はありません。
 
-Azure Redis Cache に接続して、接続済みの `ConnectionMultiplexer` インスタンスを取得するには、次の例のように、静的 `Connect` メソッドを呼び出して、キャッシュのエンドポイントとキーを渡します。password パラメーターには、ポータルから生成された Azure キーを使用してください。
+Azure Redis Cache に接続して、接続済みの `ConnectionMultiplexer` インスタンスを取得するには、次の例のように、静的 `Connect` メソッドを呼び出して、キャッシュのエンドポイントとキーを渡します。password パラメーターには、プレビュー ポータルから生成された Azure キーを使用してください。
 
 	ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
 
@@ -134,9 +134,9 @@ SSL を使用しない場合は、`ssl=false` を設定するか、`ssl`パラ�
 
 キャッシュのエンドポイントとキーは、ご利用のキャッシュ インスタンスの **Redis Cache** ブレードから取得できます。
 
-![Cache properties][CacheProperties]
+![キャッシュのプロパティ][CacheProperties]
 
-![Manage keys][ManageKeys]
+![キーの管理][ManageKeys]
 
 接続が確立されたら、`ConnectionMultiplexer.GetDatabase` メソッドを呼び出して Redis Cache データベースへの参照を取得します。
 
@@ -207,7 +207,7 @@ Visual Studio で Redis Cache Session State NuGet パッケージを使用して
 
 ![Redis Cache Session State NuGet Package][SessionStateNuGet]
 
-NuGet パッケージによって、必要なアセンブリ参照がダウンロードされて追加されます。さらに、web.config ファイルには、ASP.NET アプリケーションが Redis Cache Session State プロバイダーを使用するために必要な構成を記述した以下のセクションが追加されます。
+NuGet パッケージによって、必要なアセンブリ参照がダウンロードされて追加されます。さらに、web.config ファイルには、ASP.NET アプリケーションが Redis Cache Session 状態プロバイダーを使用するために必要な構成を記述した以下のセクションが追加されます。
 
     <sessionState mode="Custom" customProvider="MySessionStateStore">
       <providers>
@@ -231,7 +231,7 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
 
 コメント化されたセクションには、属性の例とそのサンプル設定が記述されています。
 
-属性の構成には、 ポータルのキャッシュ ブレードからの値を使用してください。その他の値は適宜構成します。
+属性の構成には、プレビュー ポータルのキャッシュ ブレードからの値を使用してください。その他の値は適宜構成します。
 
 	<sessionState mode="Custom" customProvider="MySessionStateStore">
       <providers>
@@ -269,7 +269,7 @@ Azure Redis セッション状態プロバイダーの構成と使用の詳細�
 
 これで、Azure Redis Cache の基本を学習できました。さらに複雑なキャッシュ タスクを実行する方法については、次のリンク先を参照してください。
 
--	[キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を監視できるようにします。ポータルではメトリックを表示できますが、お好みのツールを使用し、それを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
+-	[キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を監視できるようにします。プレビュー ポータルではメトリックを表示できますが、お好みのツールを使用し、それを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
 -	[StackExchange.Redis キャッシュ クライアントのドキュメント][]を参照してください。
 	-	Azure Redis Cache は、さまざまな Redis クライアントや開発言語からアクセスできます。詳細については、[http://redis.io/clients][] および「[他の言語での Azure Redis Cache の開発][]」を参照してください。
 	-	Azure Redis Cache は、Redsmin などのサービスと共に使用することもできます。詳細については、「[Azure Redis 接続文字列を取得し、Redsmin と共に使用する方法][]」を参照してください。
@@ -346,8 +346,8 @@ Azure Redis セッション状態プロバイダーの構成と使用の詳細�
 
 
 [NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
-[キャッシュの料金詳細]: http://www.windowsazure.com/pricing/details/cache/
-[Microsoft Azure プレビュー ポータル]: https://portal.azure.com/
+[キャッシュの価格詳細]: http://www.windowsazure.com/pricing/details/cache/
+[Azure プレビュー ポータル]: https://portal.azure.com/
 
 [Azure Redis Cache の概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=398247
@@ -368,4 +368,4 @@ Azure Redis セッション状態プロバイダーの構成と使用の詳細�
 
 [Azure の無料評価版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

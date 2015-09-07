@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure インフラストラクチャ サービスでホストされる SharePoint ファーム"
-	description="Microsoft Azure インフラストラクチャ サービスで開発/テストまたは運用 SharePoint 2013 ファームをセットアップする方法について説明する主要記事を紹介します。"
+	pageTitle="Azure の SharePoint Server 2013 ファーム | Microsoft Azure"
+	description="Microsoft Azure で開発/テスト環境または運用 SharePoint Server 2013 ファームをセットアップする方法について説明する記事を紹介します。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -63,4 +63,4 @@ Azure における SharePoint の詳細と構成については、次のリソ�
 
 - [Microsoft Azure での Office 365 ディレクトリ同期 (DirSync) のデプロイ](https://technet.microsoft.com/library/dn635310.aspx)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

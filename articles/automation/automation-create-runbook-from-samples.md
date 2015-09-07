@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Automation の使用"
+	pageTitle="Azure Automation の概要 | Microsoft Azure"
 	description="Azure でオートメーション ジョブをインポートして実行する方法について説明します。"
 	services="automation"
 	documentationCenter=""
@@ -12,7 +12,7 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="hero-article" 
+	ms.topic="hero-article"
 	ms.date="05/19/2015"
 	ms.author="bwren"/>
 
@@ -21,7 +21,7 @@
 
 ## Azure Automation とは
 
-ユーザーは Microsoft Azure オートメーションを使用すると、クラウド環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。Runbook を使用して、Azure 環境内でリソースを作成、監視、管理、およびデプロイすることができます。Runbook は、Windows PowerShell のワークフローに基づいています。このガイドでは、チュートリアルを通じて、簡単なサンプルの Runbook を実行します。次に、サービスのより高度な機能を探るためのリソースを紹介します。
+ユーザーは Microsoft Azure オートメーションを使用すると、クラウド環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。Runbook を使用して、Azure 環境内でリソースを作成、監視、管理、およびデプロイすることができます。Runbook は、Windows PowerShell のワークフローに基づいています。この記事では、チュートリアルを通じて、簡単なサンプルの Runbook を実行します。次に、サービスのより高度な機能を探るためのリソースを紹介します。
 
 ## チュートリアル
 このチュートリアルでは、オートメーション アカウントを作成し、Azure Automation にサンプルの「Hello World」Runbook をインポートし、その Runbook を実行して、出力を表示する手順について説明します。
@@ -32,17 +32,17 @@
 
 ## ビデオ チュートリアル
 
-次は、このチュートリアルのガイドです。
+以下は、このチュートリアルのガイドです。
 
 [AZURE.VIDEO get-started-with-azure-automation]
 
-## <a name="automationaccount"></a>Automation アカウントの作成
+## <a name="automationaccount"></a>オートメーション アカウントの作成
 
-Automation アカウントは、Azure Automation リソースのコンテナーで、環境の分離や、ワークフローの詳細な整理のための方法を提供します。詳細については、Automation ライブラリの「[Automation アカウント](http://aka.ms/runbookauthor/azure/automationaccounts)」を参照してください。オートメーション アカウントを既に作成している場合は、次の手順を省略できます。
+オートメーション アカウントは、Azure Automation リソースのコンテナーで、環境の分離や、ワークフローの詳細な整理のための方法を提供します。詳細については、Automation ライブラリの「[Automation アカウント](http://aka.ms/runbookauthor/azure/automationaccounts)」を参照してください。オートメーション アカウントを既に作成している場合は、次の手順を省略できます。
 
-1.	[Azure 管理ポータル](http://manage.windowsazure.com)にログインします。
+1.	[Azure ポータル](http://manage.windowsazure.com)にログインします。
 
-2.	管理ポータルで、**[オートメーション アカウントの作成]** をクリックします。
+2.	Azure ポータルで、**[オートメーション アカウントの作成]** をクリックします。
 
 	![アカウントの作成](./media/automation-create-runbook-from-samples/automation_01_CreateAccount.png)
 
@@ -123,7 +123,7 @@ Runbook をインポートし、発行したら、それを実行して、出力
 ご利用ありがとうございます。 チュートリアルが完了しました。
 
 ## <a name="nextsteps"></a>次のステップ
-1. このチュートリアルの単純な Runbook では、**Azure サービスを管理できません**。ほとんどの Runbook では [Azure コマンドレット](http://msdn.microsoft.com/library/jj156055.aspx)を使ってこれを行います。このためには、Azure サブスクリプションに対する認証が必要です。「[Runbook での管理用の Azure の構成](http://aka.ms/azureautomationauthentication)」の手順に従って、Azure サブスクリプションをこれらのコマンドレットを操作するように構成します。  
+1. このチュートリアルの単純な Runbook では、*Azure サービスを管理できません*。ほとんどの Runbook では [Azure コマンドレット](http://msdn.microsoft.com/library/jj156055.aspx)を使ってこれを行います。このためには、Azure サブスクリプションに対する認証が必要です。「[Runbook での管理用の Azure の構成](http://aka.ms/azureautomationauthentication)」の手順に従って、Azure サブスクリプションをこれらのコマンドレットを操作するように構成します。  
 2. Azure Automation の機能の詳細については、以下に示された[リソース](#resources)を参照してください。
 3. [Azure Automation ブログ](http://azure.microsoft.com/blog/tag/azure-automation)をサブスクライブすると、Azure Automation チームにより常に最新の情報を把握できます。
 
@@ -139,12 +139,11 @@ Runbook をインポートし、発行したら、それを実行して、出力
 
 ## サンプル Runbook とユーティリティ Runbook
 
-マイクロソフトおよび Azure Automation コミュニティが提供するサンプル Runbook を使うと、独自のソリューションを作成できます。また、ユーティリティ Runbook は大きめのオートメーション タスクの構成ブロックとして使用できます。これらの Runbook は[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=393029)からダウンロードするか、[Runbook ギャラリー](http://aka.ms/runbookgallery)を使用して Azure Automation に直接インポートできます。
+マイクロソフトおよび Azure Automation コミュニティが提供するサンプル Runbook を使うと、独自のソリューションを作成できます。また、ユーティリティ Runbook は大きめのオートメーション タスクの構成ブロックとして使用できます。これらの Runbook は[スクリプト センター](http://azure.microsoft.com/documentation/scripts/)からダウンロードするか、[Runbook ギャラリー](http://aka.ms/runbookgallery)を使用して Azure Automation に直接インポートできます。
 
 
 ## フィードバック
 
 **フィードバックの送信** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
- 
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

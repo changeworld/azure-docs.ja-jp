@@ -1,26 +1,27 @@
 <properties
    pageTitle="PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択"
-   description="リソース マネージャーで Azure 仮想マシンを作成する際に、イメージの発行元、プラン、および SKU イメージを決定する方法について説明します。"
-   services="virtual-machines"
-   documentationCenter=""
-   authors="squillace"
-   manager="timlt"
-   editor=""/>
+	description="リソース マネージャーで Azure 仮想マシンを作成する際に、イメージの発行元、プラン、および SKU イメージを決定する方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="squillace"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
    ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="command-line-interface"
-   ms.workload="infrastructure"
-   ms.date="05/29/2015"
-   ms.author="rasquill"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="command-line-interface"
+	ms.workload="infrastructure"
+	ms.date="05/29/2015"
+	ms.author="rasquill"/>
 
-# PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択
+# Windows PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択
 
-> [AZURE.NOTE]このトピックで VM イメージを検索している場合、Azure Command-Line Interface for Mac, Linux, and Windows または Windows PowerShell のいずれかの最新のインストール環境で [Azure リソース管理モード](../resource-group-overview.md)を使用しています。Azure CLI を使用している場合、次のように入力してこのモードに入ります`azure config mode arm`。PowerShell を使用している場合、次のように入力します`Switch-AzureMode AzureResourceManager`。更新および構成の詳細については、「[Azure CLI with resource management (リソース管理での Azure CLI)](xplat-cli-azure-resource-manager.md)」および「[Azure リソース管理での PowerShell (PowerShell with Azure resource management)](../powershell-azure-resource-manager.md)」を参照してください。
+> [AZURE.NOTE]このトピックで VM イメージを検索している場合、Mac、Linux、Windows 用の Azure CLI または Windows PowerShell のいずれかの最新のインストール環境で [Azure リソース マネージャー モード](../resource-group-overview.md)を使用しています。Azure CLI を使用している場合、次のように入力してこのモードに入ります`azure config mode arm`。PowerShell を使用している場合、次のように入力します`Switch-AzureMode AzureResourceManager`。更新と構成の詳細については、「[Using Azure CLI with Resource Manager (リソース マネージャーでの Azure CLI の使用)](xplat-cli-azure-resource-manager.md)」と「[Using Azure PowerShell with Azure Resource Manager (Azure リソース マネージャーでの Azure PowerShell の使用)](../powershell-azure-resource-manager.md)」をご覧ください。
 
-## 一般的に使用されるイメージの表
+## よく使用されるイメージの表
 
 
 | 発行元 | プラン | SKU |
@@ -31,8 +32,8 @@
 | CoreOS | CoreOS | 安定版 |
 | MicrosoftDynamicsNAV | DynamicsNAV | 2015 |
 | MicrosoftSharePoint | MicrosoftSharePointServer | 2013 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Standard |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Enterprise |
+| Microsoft | Oracle-Database-12c-Weblogic-Server-12c | Standard |
+| Microsoft | Oracle-Database-12c-Weblogic-Server-12c | Enterprise |
 | MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-DW |
 | MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-OLTP |
 | Canonical | UbuntuServer | 12\.04.5-LTS |
@@ -53,7 +54,7 @@
     info:    Executing command vm image list
     warn:    The parameter --sku if specified will be ignored
     + Getting virtual machine image skus (Publisher:"canonical" Offer:"ubuntuserver" Location:"westus")
-    data:    Publisher  Offer         Sku          Version          Location  Urn                                               
+    data:    Publisher  Offer         Sku          Version          Location  Urn
     data:    ---------  ------------  -----------  ---------------  --------  --------------------------------------------------
     data:    canonical  ubuntuserver  12.04-DAILY  12.04.201504201  westus    canonical:ubuntuserver:12.04-DAILY:12.04.201504201
     data:    canonical  ubuntuserver  12.04.2-LTS  12.04.201302250  westus    canonical:ubuntuserver:12.04.2-LTS:12.04.201302250
@@ -63,15 +64,15 @@
     data:    canonical  ubuntuserver  12.04.2-LTS  12.04.201305270  westus    canonical:ubuntuserver:12.04.2-LTS:12.04.201305270
     data:    canonical  ubuntuserver  12.04.2-LTS  12.04.201306030  westus    canonical:ubuntuserver:12.04.2-LTS:12.04.201306030
     data:    canonical  ubuntuserver  12.04.2-LTS  12.04.201306240  westus    canonical:ubuntuserver:12.04.2-LTS:12.04.201306240
-    
+
 **Urn** 列は、`azure vm quick-create` に渡すフォームです。
-    
+
 ただし、多くの場合、何が使用可能かをまだ知りません。この場合は、まず `azure vm image list-publishers` を使用して発行元を検出し、場所のプロンプトにはリソース グループに使用するデータ センターの場所を指定して応答することにより、イメージをナビゲートできます。たとえば、以下は米国西部の場所にあるすべてのイメージ発行元をリストしたものです (場所の引数は、標準の場所名を小文字化し、スペースを削除して渡します)
 
     azure vm image list-publishers
     info:    Executing command vm image list-publishers
     Location: westus
-    + Getting virtual machine image publishers (Location: "westus")                
+    + Getting virtual machine image publishers (Location: "westus")
     data:    Publisher                                       Location
     data:    ----------------------------------------------  --------
     data:    a10networks                                     westus  
@@ -79,10 +80,10 @@
     data:    alertlogic                                      westus  
     data:    AlertLogic.Extension                            westus  
 
-    
-これらのリストは非常に長くなることがあるので、上記のリスト例は抜粋にすぎません。たとえば、「Canonical 」が、実際に米国西部の場所にあるイメージ発行元であることに気付いたとします。これで、次の例のように、`azure vm image list-offers を呼び出して、プロンプトが出されたときに場所と発行元を渡すことで、プランを検索できます。
 
-    azure vm image list-offers           
+これらのリストは非常に長くなることがあるため、上記のリスト例は抜粋にすぎません。たとえば、「Canonical 」が、実際に米国西部の場所にあるイメージ発行元であることに気付いたとします。これで、次の例のように、`azure vm image list-offers` を呼び出して、プロンプトが出されたときに場所と発行元を渡すことで、プランを検索できます。
+
+    azure vm image list-offers
     info:    Executing command vm image list-offers
     Location: westus
     Publisher: canonical
@@ -91,10 +92,10 @@
     data:    ---------  ------------  --------
     data:    canonical  UbuntuServer  westus  
     info:    vm image list-offers command OK
-    
-これで、米国西部の領域で、Canonical が Azure で **UbuntuServer** プランを発行していることが分かりました。どんな SKU ですか。 それらを取得するには、`azure vm image list-skus` を呼び出して、プロンプトが出されたときに場所、発行元、および検出したプランを指定して応答します。
 
-    azure vm image list-skus           
+これで、米国西部の領域で、Canonical が Azure で **UbuntuServer** プランを発行していることが分かりました。どんな SKU でしょうか。 それらを取得するには、`azure vm image list-skus` を呼び出して、プロンプトが出されたときに場所、発行元、検出したプランを指定して応答します。
+
+    azure vm image list-skus
     info:    Executing command vm image list-skus
     Location: westus
     Publisher: canonical
@@ -120,20 +121,20 @@
     data:    canonical  ubuntuserver  15.04-beta   westus  
     data:    canonical  ubuntuserver  15.04-DAILY  westus  
     info:    vm image list-skus command OK
-    
+
 この情報を使用すると、元の呼び出しを先頭で呼び出すことによって、必要なイメージを正確に検索できます。
 
     azure vm image list westus canonical ubuntuserver 14.04.2-LTS
     info:    Executing command vm image list
     + Getting virtual machine images (Publisher:"canonical" Offer:"ubuntuserver" Sku: "14.04.2-LTS" Location:"westus")
-    data:    Publisher  Offer         Sku          Version          Location  Urn                                               
+    data:    Publisher  Offer         Sku          Version          Location  Urn
     data:    ---------  ------------  -----------  ---------------  --------  --------------------------------------------------
     data:    canonical  ubuntuserver  14.04.2-LTS  14.04.201503090  westus    canonical:ubuntuserver:14.04.2-LTS:14.04.201503090
-    data:    canonical  ubuntuserver  14.04.2-LTS  14.04.20150422   westus    canonical:ubuntuserver:14.04.2-LTS:14.04.20150422 
+    data:    canonical  ubuntuserver  14.04.2-LTS  14.04.20150422   westus    canonical:ubuntuserver:14.04.2-LTS:14.04.20150422
     data:    canonical  ubuntuserver  14.04.2-LTS  14.04.201504270  westus    canonical:ubuntuserver:14.04.2-LTS:14.04.201504270
     info:    vm image list command OK
-    
-これで、使用するイメージを正確に選択できます。検出した URN 情報を使用して vm を素早く作成する方法や、その URN 情報のあるテンプレートを使用する方法については、「[Azure リソース 管理での Azure CLI for Mac, Linux, and Windows の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
+
+これで、使用するイメージを正確に選択できます。検出した URN 情報を使用して仮想マシンを素早く作成する方法や、その URN 情報のあるテンプレートを使用する方法については、「[Azure リソース マネージャーでの Azure CLI for Mac, Linux, and Windows の使用](xplat-cli-azure-resource-manager.md)」をご覧ください。
 
 ### ビデオ チュートリアル
 
@@ -160,7 +161,7 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 
 これを PowerShell で行うには、まず Azure PowerShell のリソース マネージャー モードに切り替えます。
 
-	Switch-AzureMode AzureResourceManager 
+	Switch-AzureMode AzureResourceManager
 
 上記の最初のステップで、以下のコマンドによって発行元を一覧表示します。
 
@@ -183,7 +184,7 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 
 	PS C:\> $locName="West US"
 	PS C:\> Get-AzureVMImagePublisher -Location $locName | Select PublisherName
-	
+
 	PublisherName
 	-------------
 	a10networks
@@ -202,7 +203,7 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 
 	PS C:\> $pubName="MicrosoftWindowsServer"
 	PS C:\> Get-AzureVMImageOffer -Location $locName -Publisher $pubName | Select Offer
-	
+
 	Offer
 	-----
 	WindowsServer
@@ -211,7 +212,7 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 
 	PS C:\> $offerName="WindowsServer"
 	PS C:\> Get-AzureVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
-	
+
 	Skus
 	----
 	2008-R2-SP1
@@ -219,7 +220,7 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 	2012-R2-Datacenter
 	Windows-Server-Technical-Preview
 
-この一覧から選択した SKU の名前をコピーすれば、**Set-AzureVMSourceImage** PowerShell コマンドレットに必要なすべての情報や、イメージの発行元、プラン、および SKU を指定する必要のあるリソース グループ テンプレート ファイルに必要なすべての情報が得られます。
+この一覧から選択した SKU の名前をコピーすれば、**Set-AzureVMSourceImage** PowerShell コマンドレットに必要なすべての情報や、イメージの発行元、プラン、SKU を指定する必要のあるリソース グループ テンプレート ファイルに必要なすべての情報が得られます。
 
 ### ビデオ チュートリアル
 
@@ -238,6 +239,5 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 [gog]: http://google.com/
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

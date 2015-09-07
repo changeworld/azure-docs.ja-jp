@@ -4,7 +4,7 @@
    <th align="left" valign="middle">既定の制限</th>
 </tr>
 <tr>
-   <td valign="middle"><p>サブスクリプションあたりの<a href="http://msdn.microsoft.com/library/azure/jj156007.aspx">仮想ネットワーク数</a><sup>1</sup></p></td>
+   <td valign="middle"><p>サブスクリプションあたりの<a href="../virtual-network/virtual-networks-overview.md">仮想ネットワーク数</a><sup>1</sup></p></td>
    <td valign="middle"><p>リージョンあたり 50<sup>1</sup></p></td>
 </tr>
 <tr>
@@ -51,4 +51,4 @@
 
 <sup>1</sup>サポートに連絡して制限を増やすことができます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

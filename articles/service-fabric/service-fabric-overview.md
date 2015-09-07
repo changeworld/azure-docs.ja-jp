@@ -1,25 +1,25 @@
 <properties 
-   pageTitle="Service Fabric の概要" 
-   description="アプリケーションがマイクロサービスで構成されている Service Fabric を紹介します。Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。" 
-   services="service-fabric" 
-   documentationCenter=".net" 
-   authors="msfussell" 
-   manager="timlt" 
-   editor="masnider"/>
+   pageTitle="Service Fabric の概要 | Microsoft Azure"
+	description="アプリケーションがマイクロサービスで構成されている Service Fabric を紹介します。Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。"
+	services="service-fabric"
+	documentationCenter=".net"
+	authors="msfussell"
+	manager="timlt"
+	editor="masnider"/>
 
 <tags
    ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA" 
-   ms.date="04/14/2015"
-   ms.author="mfussell"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/25/2015"
+	ms.author="mfussell"/>
 
 # Service Fabric の概要
 Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題に対処します。Service Fabric を使用することで、開発者と管理者は複雑なインフラストラクチャの問題を解決する必要がなくなり、代わりにミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。こうしたワークロードは、スケーラブルで信頼性が高く管理しやすいからです。Service Fabric は、これらのエンタープライズ クラスの Tier-1 クラウド スケール サービスを構築して管理するための次世代のミドルウェア プラットフォームを表します。
 
-## マイクロサービスで構成されたアプリケーション ##
+## マイクロサービスで構成されたアプリケーション
 Service Fabric を使用すると、マシンの共有プール (通常、Service Fabric クラスターと呼ばれる) 上で超高密度で実行されるマイクロサービスで構成された、スケーラブルで信頼性の高いアプリケーションを構築して管理することができます。分散型のスケーラブルなステートレスおよびステートフル マイクロサービスを構築するための高度なランタイムを提供するとともに、デプロイ済みのアプリケーションをプロビジョニング、デプロイ、監視、アップグレード/修正、および削除するための包括的なアプリケーション管理機能を提供します。
 
 現在、Service Fabric は、Azure SQL Database、Azure DocumentDB、Cortana、Power BI、Microsoft Intune、Azure Event Hubs、さまざまなコア Azure サービス、Skype for Business など、多数の Microsoft サービスの機能を強化しています。
@@ -42,7 +42,7 @@ Service Fabric は、これらのマイクロサービスで構成されたア�
 
 2) 完全にステートレスなマイクロサービスの可用性と待機時間の要件に対応するために従来必要だった追加のキューおよびキャッシュが、ステートフル マイクロサービスでは不要になるため、アプリケーション設計が単純化されます。ステートフル サービスは高可用性と低待機時間を特徴とするため、アプリケーション全体では管理すべき変動要素が少なくなります。
 
-Service Fabric を使用したアプリケーションのパターンと設計の詳細については、[アプリケーション シナリオ](../service-fabric-application-scenarios)に関するページを参照してください。
+Service Fabric を使用したアプリケーションのパターンと設計の詳細については、[アプリケーション シナリオ](service-fabric-application-scenarios.md)に関するページを参照してください。
 
 ## アプリケーション ライフサイクル管理
 Service Fabric は、開発からデプロイ、日常的な管理、保守、および最終的な使用停止に至るまで、クラウド アプリケーションの完全なアプリケーション ライフサイクル管理 (ALM) に対して高度なサポートを提供します。
@@ -51,7 +51,7 @@ Service Fabric ALM 機能を使用すると、アプリケーション管理者�
 
 ほとんどのアプリケーションは、ステートレス マイクロサービスとステートフル マイクロサービスの組み合わせ、および一緒にデプロイされた他の EXE/ランタイムで構成されています。Service Fabric は、アプリケーションの厳密な型およびパッケージ化されたマイクロサービスを備えており、個別に管理およびアップグレードできる複数のアプリケーション インスタンスのデプロイが可能です。重要な点として、Service Fabric は*任意の*実行可能ファイルまたはランタイムをデプロイし、これらを信頼性の高いものにすることができます。たとえば、ASP.NET 5、node.js、スクリプト、またはアプリケーションを構成する任意の要素をデプロイすることができます。
   
-アプリケーション ライフサイクル管理の詳細については、[アプリケーション ライフサイクル](../service-fabric-application-lifecycle)に関するページを参照してください。
+アプリケーション ライフサイクル管理の詳細については、[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)に関するページを参照してください。
 
 ## 主な機能
 Service Fabric を使用すると、次の操作を実行できます。
@@ -82,17 +82,20 @@ Service Fabric を使用すると、次の操作を実行できます。
 
 - アプリケーションの状態を監視および診断し、自動修復を実行するようにポリシーを設定します。
 
-- 使用可能なリソースに応じてアプリケーションがスケーリングされるため、Service Fabric クラスターを容易にスケール アップまたはスケール ダウンすることができます。
+- 使用可能なリソースに応じてアプリケーションがスケールされるため、Service Fabric クラスターを容易にスケール アップまたはスケール ダウンすることができます。
 
 - 自己修復リソース バランサーが、障害から回復し、利用可能なリソースに基づいて負荷分散を最適化するために、Service Fabric クラスター全体でアプリケーションの再配布を統制するのを監視します。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 
-詳細については、[技術的概要](../service-fabric-technical-overview)に関するページを参照してください。
+* 詳細については、[技術的概要](service-fabric-technical-overview.md)に関するページを参照してください。
+* Service Fabric [開発環境](service-fabric-get-started.md)の設定  
+* サービスの[フレームワーク](service-fabric-choose-framework.md)の選択
+
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

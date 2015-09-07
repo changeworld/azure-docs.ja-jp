@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Event Hubs API 概要"
-   description="主要な Event Hubs .NET クライアント API のまとめ。"
-   services="event-hubs"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
+	description="主要な Event Hubs .NET クライアント API のまとめ。"
+	services="event-hubs"
+	documentationCenter="na"
+	authors="sethmanheim"
+	manager="timlt"
+	editor=""/>
 <tags 
    ms.service="event-hubs"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="tbd"
-   ms.date="07/10/2015"
-   ms.author="sethm" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="tbd"
+	ms.date="07/10/2015"
+	ms.author="sethm"/>
 
 # Event Hubs API 概要
 
@@ -186,6 +186,5 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 
 - [Service Bus と Event Hubs の .NET API リファレンス](https://msdn.microsoft.com/library/jj933424.aspx)
 - [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx)
-- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

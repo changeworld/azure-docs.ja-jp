@@ -1,17 +1,17 @@
-## Deploy the ARM template by using PowerShell
+## PowerShell を使用して ARM テンプレートをデプロイする
 
-To deploy the ARM template you downloaded by using PowerShell, follow the steps below.
+PowerShell を使用してダウンロードした ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. If you have never used Azure PowerShell, see [How to Install and Configure Azure PowerShell](powershell-install-configure.md) and follow the instructions all the way to the end to sign into Azure and select your subscription.
-2. Run the **Switch-AzureMode** cmdlet to switch to Resource Manager mode, as shown below.
+1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
+2. 次に示すように、**Switch-AzureMode** コマンドレットを実行して、リソース マネージャー モードに切り替えます。
 
 	Switch-AzureMode AzureResourceManager
 
-	WARNING: The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.
+	警告: Switch-AzureMode コマンドレットは廃止予定で、今後のリリースで削除される予定です。
 
-	>[AZURE.WARNING] The Switch-AzureMode cmdlet will be deprecated soon. When that happens, all Resource Manager cmdlets will be renamed.
+	>[AZURE.WARNING]Switch-AzureMode コマンドレットは間もなく廃止予定です。これらが廃止された場合は、すべてのリソース マネージャー コマンドレットの名前が変更されます。
 
-3. If necessary, run the **New-AzureResourceGroup** cmdlet to create a new resource group. The command below creates a resource group named *TestRG* in the *Central US* azure region. For more information about resource groups, visit [Azure Resource Manager Overview](resource-group-overview.md/#resource-groups).
+3. 必要に応じて **New-AzureResourceGroup** コマンドレットを実行して、新しいリソース グループを作成します。次のコマンドを実行すると、*TestRG* というリソース グループが *Central US* Azure リージョンに作成されます。リソース グループの詳細については、[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)を参照してください。
 
 		New-AzureResourceGroup -Name TestRG -Location centralus
 		
@@ -25,7 +25,7 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
 		                    *
 		ResourceId        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG
 
-4. Run the **New-AzureResourceGroupDeployment** cmdlet to deploy the new VNet by using the template and parameter files you downloaded and modified above.
+4. **New-AzureResourceGroupDeployment** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい VNet をデプロイします。
 
 		New-AzureResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
 			-TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
@@ -50,7 +50,7 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
 		
 		Outputs           :
 
-5. Run the **Get-AzureVirtualNetwork** cmdlet to view the properties of the new VNet, as shown below.
+5. 次に示すように、**Get-AzureVirtualNetwork** コマンドレットを実行して新しい VNet のプロパティを表示します。
 
 
 		Get-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
@@ -75,7 +75,7 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
 		Subnets           : [
 		                      {
 		                        "Name": "FrontEnd",
-		                        "Etag": "W/\"2ed52eec-8c92-471f-b43b-2914d69f3f04\"",
+		                        "Etag": "W/"2ed52eec-8c92-471f-b43b-2914d69f3f04"",
 		                        "Id": "/subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd",
 		                        "AddressPrefix": "192.168.1.0/24",
 		                        "IpConfigurations": [],
@@ -85,7 +85,7 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
 		                      },
 		                      {
 		                        "Name": "BackEnd",
-		                        "Etag": "W/\"2ed52eec-8c92-471f-b43b-2914d69f3f04\"",
+		                        "Etag": "W/"2ed52eec-8c92-471f-b43b-2914d69f3f04"",
 		                        "Id": "/subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd",
 		                        "AddressPrefix": "192.168.2.0/24",
 		                        "IpConfigurations": [],
@@ -94,3 +94,5 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
 		                        "ProvisioningState": "Succeeded"
 		                      }
 		                    ]
+
+<!---HONumber=August15_HO9-->

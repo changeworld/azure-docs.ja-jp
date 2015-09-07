@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="基幹業務アプリケーション ワークロード フェーズ 5: 可用性グループを作成してアプリケーション データベースを追加する" 
-	description="高可用な基幹業務アプリケーションをデプロイするこの最終フェーズでは、可用性グループを作成してアプリケーション データベースをそれに追加します。" 
+	pageTitle="基幹業務アプリケーションのフェーズ 5 | Microsoft Azure"
+	description="可用性グループを作成して 、アプリケーション データベースを追加します。"
 	documentationCenter=""
-	services="virtual-machines" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	services="virtual-machines"
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/11/2015"
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーション ワークロード フェーズ 5: 可用性グループを作成してアプリケーション データベースを追加する
@@ -56,7 +56,7 @@
 3.	左ウィンドウで **[データベース]** ノードを展開します。
 4.	バックアップするデータベースを右クリックし、**[タスク]** をポイントして、**[バックアップ]** をクリックします。
 5.	**[バックアップ先]** セクションで、**[削除]** をクリックして、バックアップ ファイルの既定のファイル パスを削除します。
-6.	**[追加]** をクリックします。**[ファイル名]** に、「**\\[machineName]\\backup[databaseName].bak**」と入力します。**machineName** はプライマリ SQL **サーバー コンピューター**の名前、**databaseName** はデータベースの名前です。**[OK]** をクリックし、バックアップの成功に関するメッセージが表示されたら、もう一度 **[OK]** をクリックします。
+6.	**[追加]** をクリックします。**[ファイル名]** に、「**\[machineName]\\backup[databaseName].bak**」と入力します。**machineName** はプライマリ SQL **サーバー コンピューター**の名前、**databaseName** はデータベースの名前です。**[OK]** をクリックし、バックアップの成功に関するメッセージが表示されたら、もう一度 **[OK]** をクリックします。
 7.	左ウィンドウで、**[databaseName]** を右クリックし、**[タスク]** をポイントして、**[バックアップ]** をクリックします。
 8.	**[バックアップの種類]** で **[トランザクション ログ]** を選択し、**[OK]** を 2 回クリックします。
 9.	このリモート デスクトップ セッションを開いたままにしておきます。
@@ -69,7 +69,7 @@
 4.	左ウィンドウで、**[データベース]** を右クリックし、**[データベースの復元]** をクリックします。
 5.	**[ソース]** セクションで **[デバイス]** を選択し、省略記号 (…) ボタンをクリックします。
 6.	**[バックアップ デバイスの選択]** で、**[追加]** をクリックします。
-7.	**[バックアップ ファイルの場所]** で、「**\\[machineName]\\backup**」と入力し、**Enter** キーを押します。**[databaseName].bak** を選択し、**[OK]** を 2 回クリックします。**[復元するバックアップ セット]** セクションに完全バックアップとログ バックアップが表示されます。
+7.	**[バックアップ ファイルの場所]** で、「**\[machineName]\\backup**」と入力し、**Enter** キーを押します。**[databaseName].bak** を選択し、**[OK]** を 2 回クリックします。**[復元するバックアップ セット]** セクションに完全バックアップとログ バックアップが表示されます。
 8.	**[ページの選択]** で **[オプション]** をクリックします。**[復元オプション]** セクションの **[復旧状態]** で、**[RESTORE WITH NORECOVERY]** を選択し、**[OK]** をクリックします。 
 9.	メッセージが表示されたら、**[OK]** をクリックします。
 
@@ -125,4 +125,4 @@
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

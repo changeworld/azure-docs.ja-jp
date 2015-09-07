@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="BizTalk Services での調整について | Microsoft Azure" 
-	description="調整のしきい値についてと、結果として生じる BizTalk Services のランタイムの動作について説明します。調整は、メモリ使用率とメッセージの数に基づいて行われます。MABS、WABS" 
-	services="biztalk-services" 
-	documentationCenter="" 
-	authors="MandiOhlinger" 
-	manager="dwrede" 
+	pageTitle="BizTalk Services での調整について | Microsoft Azure"
+	description="調整のしきい値についてと、結果として生じる BizTalk Services のランタイムの動作について説明します。調整は、メモリ使用率とメッセージの数に基づいて行われます。MABS、WABS"
+	services="biztalk-services"
+	documentationCenter=""
+	authors="MandiOhlinger"
+	manager="dwrede"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="biztalk-services" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/07/2015" 
+	ms.service="biztalk-services"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="mandia"/>
 
 
@@ -70,4 +70,4 @@ Azure BizTalk Services が調整状態になると、次のことが発生しま
 - [BizTalk Services: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

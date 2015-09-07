@@ -1,30 +1,37 @@
 <properties
    pageTitle="VNet 間の接続の構成 | Microsoft Azure"
-   description="サブスクリプションまたはリージョンが同じ場合または異なる場合に、Azure Virtual Network を接続する方法。"
-   services="vpn-gateway"
-   documentationCenter="na"
-   authors="cherylmc"
-   manager="jdial"
-   editor="tysonn"/>
+	description="サブスクリプションまたはリージョンが同じ場合または異なる場合に、Azure Virtual Network を接続する方法。"
+	services="vpn-gateway"
+	documentationCenter="na"
+	authors="cherylmc"
+	manager="carolz"
+	editor=""/>
 
 <tags
    ms.service="vpn-gateway"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/11/2015"
-   ms.author="cherylmc"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/20/2015"
+	ms.author="cherylmc"/>
 
 
-# VNet 間の接続の構成
+# Azure ポータルでの VNet 間接続の構成
 
-この記事は、従来のデプロイメント モードで作成された仮想ネットワークを接続する方法について説明します。現在、Azure には、従来のデプロイメント モードと Azure リソース マネージャーのデプロイメント モードの 2 つのデプロイメント モードがあります。設定手順は、仮想ネットワークのデプロイに使用したモードによって変わります。従来のモードで作成した仮想ネットワークをリソース マネージャーで作成した仮想ネットワークに接続する場合は、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+> [AZURE.SELECTOR]
+- [Azure Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
+- [PowerShell - Azure Resource Manager](vpn-gateway-vnet-vnet-rm-ps.md)
+
+この記事では、Azure ポータルおよび PowerShell を併用して、従来のデプロイ モードで仮想ネットワークを接続する方法について説明します。
 
 
-Azure Virtual Network (VNet) どうしを接続することは、仮想ネットワークをオンプレミスのサイトの場所に接続することとよく似ています。どちらの接続タイプも、仮想ネットワーク ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。接続する VNet は、サブスクリプションやリージョンが異なっていてもかまいません。マルチサイト構成に VNet 間通信を組み合わせることもできます。そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます (下図参照)。
+仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することとよく似ています。どちらの接続タイプでも、仮想ネットワーク ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。接続する VNet は、サブスクリプションやリージョンが異なっていてもかまいません。マルチサイト構成に VNet 間通信を組み合わせることもできます。そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます (下図参照)。
 
 ![VNet 間接続の図](./media/virtual-networks-configure-vnet-to-vnet-connection/IC727360.png)
+
+
+>[AZURE.NOTE]現在、Azure には、従来のデプロイ モードと Azure リソース マネージャーのデプロイ モードの 2 つのデプロイ モードがあります。構成コマンドレットと手順は、デプロイ モードによって異なります。このトピックでは、従来のデプロイ モードで作成された仮想ネットワークを接続する方法について説明します。Azure リソース マネージャー モードで作成された仮想ネットワークを接続する場合は、[Configure a VNet-to-VNet connection using Azure Resource Manager and PowerShell (Azure リソース マネージャーおよび PowerShell を使用した VNet 間接続の構成)](vpn-gateway-vnet-vnet-rm-ps.md) を参照してください 従来のモードで作成した仮想ネットワークを、Azure リソース マネージャーで作成した仮想ネットワークに接続する場合は、[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)を参照してください。
 
 ## 仮想ネットワークを接続する理由
 
@@ -49,7 +56,7 @@ Azure Virtual Network (VNet) どうしを接続することは、仮想ネット
 
 - クラウド サービスや負荷分散エンドポイントは、仮にそれらが相互に接続されていたとしても、仮想ネットワークの境界を越えることはできません。
 
-- 複数の Azure Virtual Network を接続するときに、オンプレミスの VPN ゲートウェイは必要ありません (クロスプレミス接続が必要な場合を除く)。
+- 複数の仮想ネットワークを接続する場合は、オンプレミスの VPN ゲートウェイは必要ありません (クロスプレミス接続が必要な場合を除く)。
 
 - VNet 間接続でサポートされるのは、Azure Virtual Network の接続です。仮想ネットワーク内に存在しない仮想マシンやクラウド サービスを接続することはできません。
 
@@ -63,11 +70,13 @@ Azure Virtual Network (VNet) どうしを接続することは、仮想ネット
 
 - 仮想ネットワークのすべての VPN トンネル (P2S VPN を含む) は、Azure VPN ゲートウェイ上の使用可能な帯域幅を共有し、Azure 内の同じ VPN ゲートウェイ アップタイム SLA を共有します。
 
+- VNet 間のトラフィックは、Azure バックボーン経由で送信できます。
+
 ## VNet 間の接続の構成
 
-ここでは、2 つの仮想ネットワーク VNet1 と VNet2 を接続する手順を見ていきます。実際のネットワーク設計の要件に対応した IP アドレス範囲に置き換えるためには、ネットワークに関する知識が必要です。Azure Virtual Network から別の Azure Virtual Network に接続することは、サイト間 (S2S) VPN を介してオンプレミス ネットワークに接続することと変わりありません。
+ここでは、2 つの仮想ネットワーク VNet1 と VNet2 を接続する手順を見ていきます。実際のネットワーク設計の要件に対応した IP アドレス範囲に置き換えるためには、ネットワークに関する知識が必要です。Azure 仮想ネットワークから別の Azure 仮想ネットワークに接続することは、サイト間 (S2S) VPN を介してオンプレミス ネットワークに接続することと変わりありません。
 
-この手順では主に管理ポータルを使用しています。ただし、VPN ゲートウェイに接続するためには、Microsoft Azure PowerShell コマンドレットを使用する必要があります。
+この手順では主に Azure ポータルを使用しています。ただし、VPN ゲートウェイに接続するには、Microsoft Azure PowerShell コマンドレットを使用する必要があります。
 
 ![VNet 間の接続](./media/virtual-networks-configure-vnet-to-vnet-connection/IC727361.png)
 
@@ -133,22 +142,23 @@ VNet2: アドレス空間 = 10.2.0.0/16、リージョン = 東日本
   - **[アドレス空間]**: 開始 IP とアドレス数を指定します。指定したアドレス空間がオンプレミス ネットワーク内に存在するどのアドレス空間とも重複していないことを確認してください。この例では、VNet1 に 10.1.0.0/16 を使用します。
   - **[サブネットの追加]**: 開始 IP とアドレス数を指定します。追加サブネットは必須ではありませんが、VM 用に静的 DIP を持つ別のサブネットを作成することをお勧めします。または、他のロール インスタンスとは分離したサブネットに VM を配置することができます。
 
-ページの右下にある**チェックマークをクリック**すると、仮想ネットワークの作成が開始されます。完了すると、管理ポータルの *Networks * ページにある [*状態*] に [*作成済み*] と表示されます。
+ページの右下にある**チェックマークをクリック**すると、仮想ネットワークの作成が開始されます。完了すると、Azure ポータルの [*ネットワーク*] ページにある [*状態*] に [*作成済み*] と表示されます。
 
 ## 別の仮想ネットワークを作成する
 
 次に、上記の手順を繰り返して仮想ネットワークをもう 1 つ作成します。この演習では、後でこれら 2 つの仮想ネットワークを接続します。アドレス空間が重複したりオーバーラップしたりしていないことが非常に重要です。このチュートリアルでは、次の値を使用します。
 
-- **VNet2**: アドレス空間 = 10.2.0.0/16
+- **VNet2**
+- **アドレス空間** = 10.2.0.0/16
 - **リージョン** = 東日本
 
 ## ローカル ネットワークを追加する
 
-VNet 間の構成を作成する場合は、VNet が互いをローカル ネットワーク サイトとして認識するように各 VNet を構成する必要があります。この手順では、各 VNet をローカル ネットワークとして構成します。以下の手順は、既に VNet を構成してある場合に、管理ポータルでそれらをローカル ネットワークとして追加する方法を示したものです。
+VNet 間の構成を作成する場合は、VNet が互いをローカル ネットワーク サイトとして認識するように各 VNet を構成する必要があります。この手順では、各 VNet をローカル ネットワークとして構成します。以下の手順は、既に VNet を構成してある場合に、Azure ポータルでそれらをローカル ネットワークとして追加する方法を示したものです。
 
 1. 画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで **[ネットワーク サービス]** をクリックし、**[仮想ネットワーク]** をクリックします。**[ローカル ネットワークの追加]** をクリックします。
 
-2. **[ローカル ネットワークの詳細を指定する]** ページの **[名前]** には、VNet 間の構成で使用する仮想ネットワークの名前を入力します。この例の構成では、VNet2 が VNet 1 を指すことになるので、VNet 1 とします。
+2. [**ローカル ネットワークの詳細を指定する**] ページの [**名前**] に、VNet 間の構成で使用する仮想ネットワークの名前を入力します。この例の構成では、VNet2 が VNet 1 を指すことになるので、VNet 1 とします。
 
   [VPN デバイスの IP アドレス] に使用する IP アドレスは任意です。通常は、VPN デバイスの実際の外部 IP アドレスを使用します。VNet 間の構成の場合は、ゲートウェイ IP アドレスを使用します。ただし、ゲートウェイの作成はこれから行うので、ここで指定する IP アドレスは一時的なものです。Azure によってゲートウェイが生成されたら、これらの設定に戻り、対応するゲートウェイ IP アドレスを使用して設定を構成します。
 
@@ -210,20 +220,16 @@ VNet2 の場合
 
 ## 次のステップ
 
-Virtual Network のクロスプレミス接続の詳細については、「[Virtual Network のセキュリティで保護されたクロスプレミス接続について](https://msdn.microsoft.com/library/azure/dn133798.aspx)」を参照してください。
 
+仮想マシンを仮想ネットワークに追加する場合は、[カスタム Virtual Machine の作成方法](../virtual-machines/virtual-machines-create-custom.md)を参照してください。
 
-サイト間 VPN 接続を構成する場合は、「[サイト間 VPN 接続の構成](vpn-gateway-site-to-site-create.md)」を参照してください。
+RRAS を使用して VNet 接続を構成する場合は、[Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) を使用した Azure 仮想ネットワークのサイト間 VPN](https://msdn.microsoft.com/library/dn636917.aspx)をご覧ください。
 
-仮想マシンを仮想ネットワークに追加する場合は、「[カスタム Virtual Machine の作成方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
-
-RRAS を使用して VNet 接続を構成する場合は、「[Windows Server 2012 のルーティングとリモート アクセス サービス (RRAS) を使用した Azure 仮想ネットワークのサイト間 VPN](https://msdn.microsoft.com/library/dn636917.aspx)」をご覧ください。
-
-構成スキーマの詳細については、「[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」をご覧ください。
+構成スキーマの詳細については、[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)をご覧ください。
 
 
 [1]: ../hdinsight-hbase-geo-replication-configure-vnets.md
 [2]: http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

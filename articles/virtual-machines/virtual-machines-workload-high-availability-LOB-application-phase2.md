@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="基幹業務アプリケーションのワークロード フェーズ 2: ドメイン コントローラーを構成する" 
-	description="この 2 番目のフェーズでは、2 つの Active Directory ドメイン コントローラーを作成して構成します。" 
+	pageTitle="基幹業務アプリケーションのフェーズ 2 | Microsoft Azure"
+	description="2 つの Active Directory のレプリカ ドメイン コント ローラーを作成および構成します。"
 	documentationCenter=""
-	services="virtual-machines" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	services="virtual-machines"
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/11/2015"
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 2: ドメイン コントローラーを構成する
@@ -206,4 +206,4 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -4,7 +4,7 @@
 	services="virtual-machines"
 	documentationCenter=""
 	authors="karthmut"
-	manager="madhana"
+	manager="timlt"
 	editor="tysonn"/>
 
 <tags
@@ -162,4 +162,4 @@ Azure ではこのテンプレートをイメージとして扱い、イメー�
 [データ ディスクを仮想マシンに接続する方法]: storage-windows-attach-disk.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

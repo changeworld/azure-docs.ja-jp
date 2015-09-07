@@ -1,23 +1,22 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication - 詳細" 
-	description="これは、Azure Multi-Factor Authentication に関するその他のコンテンツへのリンクを提供する Azure Multi-Factor Authentication ページです。ここからは、Multi-Factor Authentication に関するその他のトピックについて学習できます。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	pageTitle="Azure Multi-Factor Authentication - 詳細"
+	description="これは、Azure Multi-Factor Authentication に関するその他のコンテンツへのリンクを提供する Azure Multi-Factor Authentication ページです。ここからは、Multi-Factor Authentication に関するその他のトピックについて学習できます。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
+	editor="curtland"/>
 
 <tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/02/2015" 
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の詳細について
-[概要](multi-factor-authentication.md)<br> [しくみ](multi-factor-authentication-how-it-works.md)<br> [使用の開始](multi-factor-authentication-get-started.md)<br> [その次に](multi-factor-authentication-whats-next.md)<br> [詳細](multi-factor-authentication-learn-more.md)
 
 
 次に、Azure Multi-Factor Authentication で使用できるすべての機能をフルに活用するうえで役立つその他のリソースのコレクションを示します。
@@ -39,4 +38,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

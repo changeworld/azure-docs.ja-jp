@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Data Factory - Data Factory および Machine Learning を使用して予測パイプラインを作成する | Microsoft Azure" 
-	description="Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Data Factory - Data Factory および Machine Learning を使用して予測パイプラインを作成する | Microsoft Azure"
+	description="Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2015"
 	ms.author="spelluru"/>
 
 # Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する 
@@ -22,7 +22,7 @@
 Azure Data Factory を使用すると、公開された [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。これにより、Azure Data Factory を使用してデータの移動と処理を調整し、Azure Machine Learning を使用してバッチ スコアリングを実行できます。これを実現するのには、以下を行う必要があります。
 
 1. **AzureMLBatchScoring** アクティビティを使用します。
-2. バッチ実行 API の**要求 URI**。要求 URI は、Web サービス ページ (下図) で **[バッチ実行]** リンクをクリックするとわかります。
+2. Batch 実行 API の**要求 URI**。要求 URI は、Web サービス ページ (下図) で **[バッチ実行]** リンクをクリックするとわかります。
 3. 発行済みの Azure Machine Learning Web サービスの **API キー**。この情報は、発行した Web サービスをクリックするとわかります。 
 
 	![Machine Learning Dashboard][machine-learning-dashboard]
@@ -31,14 +31,14 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning]
 
 -	入力テーブルと出力テーブル
 -	Azure Storage/Azure SQL と Azure ML のリンクされたサービス
--	Azure ML バッチ スコアリング アクティビティのパイプライン
+-	Azure ML Batch スコアリング アクティビティのパイプライン
 
 > [AZURE.NOTE]発行されている Azure Machine Learning Web サービスによって公開されている Web サービス パラメーターを Azure Data Factory (ADF) パイプラインで使用できます。詳細については、この記事の「Web サービス パラメーター」セクションをご覧ください。
 
 ## 例
 この例では、Azure Storage を使用して、入力データと出力データの両方を保持します。Azure Storage を使用する代わりに Azure SQL Database を使用することもできます。
 
-この例に進む前に、[Get started with Azure Data Factory の使用][adf-getstarted]に関するチュートリアルを行い、Data Factory エディターを使用してこの例の Data Factory アーティファクト (リンクされたサービス、テーブル、パイプライン) を作成することをお勧めします。
+この例に進む前に、「[Azure Data Factory を使用した初めてのパイプラインの作成][adf-build-1st-pipeline]」チュートリアルを行い、Data Factory エディターを使用してこの例の Data Factory アーティファクト (リンクされたサービス、テーブル、パイプライン) を作成することをお勧めします。
  
 
 1. **Azure Storage** 用の**リンクされたサービス**を作成します。スコアリングの入力ファイルと出力ファイルが異なるストレージ アカウントにある場合は、リンクされたサービスが 2 つ必要です。JSON の例を次に示します。
@@ -179,7 +179,6 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning]
 		  }
 		}
 
-	**start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能です。**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)を参照してください。
 
 ## Web サービス パラメーター
 発行されている Azure Machine Learning Web サービスによって公開されている Web サービス パラメーターを Azure Data Factory (ADF) パイプラインで使用できます。Azure Machine Learning で実験を作成して Web サービスとして発行した後、この Web サービスを複数の ADF パイプラインまたはアクティビティで使用するときに、Web サービス パラメーターを介して異なる入力を渡すことができます。
@@ -199,7 +198,7 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning]
 
 	"typeProperties": {
     	"webServiceParameters": {
-    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"
+    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \'{0:yyyy-MM-dd HH:mm:ss}\'', Time.AddHours(WindowStart, 0))"
     	}
   	}
  
@@ -229,7 +228,7 @@ Azure SQL リーダーと同様、Azure SQL ライターにも、Web サービ�
 
 | 出力/入力 | 入力は Azure SQL | 入力は Azure BLOB |
 | ------------ | ------------------ | ------------------- |
-| 出力は Azure SQL | <p>Data Factory サービスは、入力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio の Web サービス パラメーターではこれらの既定の名前を使用する必要があります。</p><p>Azure ML モデルの Azure SQL リーダーと Azure SQL ライターが上記の同じ Web サービス パラメーターを共有する場合は問題ありません。Azure SQL リーダーと Azure SQL ライターが同じ Web サービス パラメーターを共有しない場合、たとえば、Azure SQL ライターが異なるパラメーター名 (Database server name1、Database name1、Server user account name1、Server user account password1 のように末尾に "1" が付加された名前) を使用する場合は、アクティビティ JSON の webServiceParameters セクションを使用して、これらの出力 Web サービス パラメーターの値を渡す必要があります。</p><p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。</p> | <p>Data Factory サービスは、出力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があります。</p><p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。<p>入力 BLOB は、入力の場所として使用されます。</p> |
+| 出力は Azure SQL | <p>Data Factory サービスは、入力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio の Web サービス パラメーターではこれらの既定の名前を使用する必要があります</p><p>。Azure ML モデルの Azure SQL リーダーと Azure SQL ライターが上記の同じ Web サービス パラメーターを共有する場合は問題ありません。Azure SQL リーダーと Azure SQL ライターが同じ Web サービス パラメーターを共有しない場合、たとえば、Azure SQL ライターが異なるパラメーター名 (Database server name1、Database name1、Server user account name1、Server user account password1 のように末尾に "1" が付加された名前) を使用する場合は、アクティビティ JSON の webServiceParameters セクションを使用して、これらの出力 Web サービス パラメーターの値を渡す必要があります。</p><p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。</p> | <p>Data Factory サービスは、出力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があります。</p><p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。<p>入力 BLOB は、入力の場所として使用されます。</p> |
 |出力は Azure BLOB | Data Factory サービスは、入力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があります。 | <p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡す必要があります。</p><p>BLOB は、入力の場所と出力の場所として使用されます。</p> |
     
 
@@ -301,30 +300,17 @@ Azure Machine Learning の実験でリーダー モジュールを使用する�
 - ライターのパラメーター ("1" サフィックスが付加されたパラメーター) は、Data Factory サービスによって自動的に設定されません。したがって、これらのパラメーターについては、アクティビティ JSON の **webServiceParameters** セクションで値を指定する必要があります。  
 - **Customer ID**、**scored labels**、**scored probabilities** は、コンマ区切りの列として保存されます。 
 - この例の **Data table name** は、出力データベースのテーブルに対応します。
-- **start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能です。**end** プロパティの値を指定しない場合、"**start + 48 hours**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)を参照してください。
+- **start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能です。**end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)を参照してください。
 
 
 
 
-## 関連項目
 
-記事 | 説明
------- | ---------------
-[Azure Data Factory の開発者用リファレンス][developer-reference] | この開発者用リファレンスは、コマンドレット、JSON スクリプト、.NET クラス ライブラリ、関数などの包括的なリファレンス コンテンツです。 
-
-[adf-introduction]: data-factory-introduction.md
-[adf-getstarted]: data-factory-get-started.md
-[use-onpremises-datasources]: data-factory-use-onpremises-datasources.md
-[use-pig-and-hive-with-data-factory]: data-factory-pig-hive-activities.md
-[adf-tutorial]: data-factory-tutorial.md
-[use-custom-activities]: data-factory-use-custom-activities.md
-[troubleshoot]: data-factory-troubleshoot.md
-[data-factory-introduction]: data-factory-introduction.md
-[developer-reference]: http://go.microsoft.com/fwlink/p/?LinkId=516908
+[adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 
 [azure-machine-learning]: http://azure.microsoft.com/services/machine-learning/
 [machine-learning-dashboard]: ./media/data-factory-create-predictive-pipelines/AzureMLDashboard.png
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

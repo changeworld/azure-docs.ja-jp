@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="ディレクトリ統合ツールの比較" 
-	description="このページの包括的な表では、さまざまなディレクトリ統合ツールを比較しています。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="ディレクトリ統合ツールの比較"
+	description="このページの包括的な表では、さまざまなディレクトリ統合ツールを比較しています。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # ディレクトリ統合ツールの比較
@@ -88,4 +88,4 @@
 AD から Azure AD に流れる属性の削除の許可 | ● | ● | |  
 属性フローの高度なカスタマイズの許可 | ● | ● | | ●  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

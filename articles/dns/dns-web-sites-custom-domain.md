@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Web アプリのカスタム DNS レコードの作成 | Microsoft Azure" 
-   description="Azure DNS を使用して Web アプリのカスタム ドメイン DNS レコードを作成する方法。CNAME または A レコードを使用して、ドメインの所有権を確認する手順" 
-   services="dns" 
-   documentationCenter="na" 
-   authors="joaoma" 
-   manager="carolz" 
-   editor=""/>
+   pageTitle="Web アプリのカスタム DNS レコードの作成 | Microsoft Azure"
+	description="Azure DNS を使用して Web アプリのカスタム ドメイン DNS レコードを作成する方法。CNAME または A レコードを使用して、ドメインの所有権を確認する手順"
+	services="dns"
+	documentationCenter="na"
+	authors="joaoma"
+	manager="carolz"
+	editor=""/>
 
 <tags
    ms.service="dns"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services" 
-   ms.date="05/20/2015"
-   ms.author="joaoma"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/23/2015"
+	ms.author="joaoma"/>
 
 # カスタム ドメインにおける Web アプリの DNS レコードの作成
 
@@ -165,4 +165,4 @@ awverify レコード セットが作成されると、次のコマンドに示�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

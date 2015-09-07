@@ -1,28 +1,31 @@
 <properties
-   pageTitle="Azure App Service のロジック アプリでの Facebook コネクタの使用"
-   description="ロジック アプリでの Facebook コネクタの使用方法"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での Facebook コネクタの使用 | Microsoft Azure App Service"
+	description="Facebook コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="andalmia"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="andalmia"/>
 
 
-# Facebook コネクタ
+# Facebook コネクタの使用開始とロジック アプリへの追加
+Facebook アカウントに接続して、メッセージを投稿したり、写真を公開したりできます。ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
 
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
+Facebook コネクタでは、次のことを行えます。
 
-- Facebook コネクタ トリガーは、ユーザー タイムラインの新しい投稿またはページの新しい投稿を取得します。新しいツイートが取得されると、フローの新しいインスタンスをトリガーし、要求で受信したデータを処理のためにフローに渡します。
-- Facebook コネクタ アクションを使用すると、投稿の発行、写真の発行などの操作を実行できます。これらのアクションによって応答を取得すると、フローの後続のアクションで使用できます。
+- トリガーを使用して、"ユーザー タイムラインの新しい投稿" または "ページの新しい投稿" を取得します。新しい投稿が取得されると、フローの新しいインスタンスをトリガーし、要求で受信したデータを処理のためにフローに渡します。
+- "投稿の発行"、"写真の発行" などを実行できるアクションを使用します。これらのアクションによって応答を取得すると、フローの後続のアクションで使用できます。
+
+この Facebook コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ## トリガーとアクション
 
@@ -33,7 +36,7 @@
 
 
 ## ロジック アプリ用の Facebook コネクタを作成する
-Facebook コネクタを使用するには、まず Facebook コネクタ API アプリのインスタンスを作成する必要があります。そのためには、次の手順に従います。
+コネクタは、ロジック アプリ内で作成することも、Azure Marketplace から直接作成することもできます。Marketplace からコネクタを作成するには、次の操作を実行します。
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
 2. "Facebook コネクタ" を検索して選択し、**[作成]** を選択します。
@@ -44,7 +47,7 @@ Facebook コネクタを使用するには、まず Facebook コネクタ API �
 ## ロジック アプリでの Facebook コネクタの使用
 API アプリを作成すると、ロジック アプリのトリガーやアクションとして Facebook コネクタを使用できます。そのためには、次の手順を実行する必要があります。
 
-1.	ロジック アプリで **[トリガーとアクション]** を選択してロジック アプリ デザイナーを開き、フローを構成します。![][3]
+1.	ロジック アプリで **[トリガーとアクション]** を選択して Logic Apps デザイナーを開き、フローを構成します。![][3]
 2.	Facebook コネクタがギャラリーの一覧に表示されます。![][4]
 3. Facebook コネクタを選択すると、自動的にデザイナーに追加されます。**[承認]** を選択して資格情報を入力し、**[許可]** を選択します。![][5] ![][6] ![][7] ![][8]
 4.	トリガーを選択します。![][9]
@@ -75,4 +78,4 @@ API アプリを作成すると、ロジック アプリのトリガーやアク
 [10]: ./media/app-service-logic-connector-facebook/img10.png
 [11]: ./media/app-service-logic-connector-facebook/img11.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

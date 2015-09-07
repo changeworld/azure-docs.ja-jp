@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Linux を実行する Microsoft Azure Virtual Machine への PostgreSQL のインストールと構成"
-	description="Azure の Linux 仮想マシン (VM) に PostgreSQL をインストールして構成する方法を説明します。"
+	pageTitle="Linux を実行する Microsoft Azure Virtual Machines への PostgreSQL のインストールと構成 | Microsoft Azure"
+	description="Azure の Linux 仮想マシンに PostgreSQL をインストールして構成する方法を説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="SuperScottz"
 	manager="timlt"
 	editor=""
-  tags=""/>
+	tags=""/>
 
 <tags
 	ms.service="virtual-machines"
@@ -18,19 +18,19 @@
 	ms.author="mingzhan"/>
 
 
-#Microsoft Azure での PostgreSQL のインストールと構成
+#Azure での PostgreSQL のインストールと構成
 
-PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース データベースです。PostgreSQL には、完全な ACID 準拠、信頼性の高いトランザクション処理、複数バージョンの同時実行制御など、エンタープライズ対応の機能が含まれます。また、ANSI SQL や SQL/MED などの標準をサポートします (Oracle、MySQL、MongoDB、その他多くの外部データ ラッパーを含みます).12 以上の手続き型言語、GIN および GIST のインデックス、空間データ、および JSON またはキーと値に基づくアプリケーションに対する NoSQL に似た複数の機能などのサポートにより、高度な拡張が可能です。
+PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース データベースです。PostgreSQL には、完全な ACID 準拠、信頼性の高いトランザクション処理、複数バージョンの同時実行制御など、エンタープライズ対応の機能が含まれます。また、ANSI SQL や SQL/MED などの標準をサポートします (Oracle、MySQL、MongoDB、その他多くの外部データ ラッパーを含みます).12 を超える手続き型言語、GIN および GIST のインデックス、空間データ、および JSON またはキーと値に基づくアプリケーションに対する NoSQL に似た複数の機能などのサポートにより、高度な拡張を行えます。
 
 この記事では、Linux を実行している Azure Virtual Machine に PostgreSQL をインストールして構成する方法を説明します。
 
-> [AZURE.NOTE]このチュートリアルを実行するには、Linux を実行する Microsoft Azure Virtual Machine が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て Linux VM を作成およびセットアップしてください。
+> [AZURE.NOTE]このチュートリアルを実行するには、Linux を実行する Azure Virtual Machines が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て Linux VM を作成およびセットアップしてください。
 
-(この例では、PostgreSQL ポートとしてポート 1999 を使用します。)
+この例では、PostgreSQL ポートとしてポート 1999 を使用します。
 
 ## PostgreSQL のインストール
 
-putty を使用して作成した Linux VM に接続します。初めて Azure Linux VM を使用する場合、putty を使用して Linux VM に接続する方法については、[こちら](virtual-machines-linux-use-ssh-key.md)を参照してください。
+PuTTY を使用して作成した Linux VM に接続します。Azure Linux VM を初めて使用する場合は、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」を参照し、PuTTY を使用して Linux VM に接続する方法を確認してください。
 
 1. 次のコマンドを実行して、ルート (admin) に切り替えます。
 
@@ -56,7 +56,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
 		# tar jxvf  postgresql-9.3.5.tar.bz2
 
-	上に示したのは例です。詳細なダウンロード アドレスは、[こちら](https://ftp.postgresql.org/pub/source/)を参照してください。
+	上に示したのは例です。[Index of /pub/source/](https://ftp.postgresql.org/pub/source/) で、詳細なダウンロード アドレスを参照できます。
 
 4. ビルドを開始するには、以下のコマンドを実行します。
 
@@ -93,7 +93,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
    >[AZURE.NOTE]セキュリティ上の理由から、PostgreSQL ではデータベースの初期化、開始、またはシャットダウンに root 以外のユーザーを使用します。
 
 
-4. *bash\_profile* を編集し、次のコマンドを入力します。以下の行を *bash\_profile* ファイルの最後に追加します。
+4. *bash\_profile* ファイルを編集し、次のコマンドを入力します。以下の行を *bash\_profile* ファイルの最後に追加します。
 
 		cat >> ~/.bash_profile <<EOF
 		export PGPORT=1999
@@ -112,7 +112,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
 		$ source .bash_profile
 
-6. 次のコマンドでインストールを検証します。
+6. 次のコマンドを使用してインストールを検証します。
 
 		$ which psql
 
@@ -168,7 +168,7 @@ PostgreSQL のエンドポイントがオンかどうかを確認します。
 
 ## Postgres データベースへの接続
 
-次に、postgres ユーザーに再び切り替えます。
+postgres ユーザーに再び切り替えます。
 
 	# su - postgres
 
@@ -180,9 +180,9 @@ Postgres データベースを作成します。
 
 	$ psql -d events
 
-## Postgres テーブルを作成および削除する方法
+## Postgres テーブルの作成および削除
 
-データベースに接続したので、そこにテーブルを作成できます。
+データベースに接続しているため、そこにテーブルを作成できます。
 
 たとえば、サンプルの Postgres テーブルを新しく作成するには、次のコマンドを実行します。
 
@@ -237,18 +237,18 @@ Postgres データベースを作成します。
 
 	delete from potluck where name=’John’;
 
-これにより、"John" 行のすべての情報が削除されます。出力は次のようになります。
+これにより、"John" 列内のすべての情報が削除されます。出力は次のようになります。
 
 ![image](./media/virtual-machines-linux-postgresql/no8.png)
 
 ### テーブルのデータの更新
 
-テーブル内のデータを更新するには、次のコマンドを使用します。この例では、Sandy が参加を確認したので、RSVP を "N" から "Y" に変更します。
+テーブル内のデータを更新するには、次のコマンドを使用します。この例では、Sandy が参加を確定したため、RSVP を "N" から "Y" に変更します。
 
  	UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 
 
-##PostgreSQL に関する詳細
-Microsoft Azure Linux 仮想マシンへの PostgreSQL のインストールは以上で完了です。Microsoft Azure の使用をお楽しみください。PostgreSQL に関する詳細については、[こちら](http://www.postgresql.org/)を参照してください。
+##PostgreSQL の詳細情報
+PostgreSQL を Azure Linux VM にインストールする作業が完了したため、Azure でそれを使用できるようになりました。PostgreSQL についてさらに学習するには、[PostgreSQL のWeb サイト](http://www.postgresql.org/)にアクセスしてください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

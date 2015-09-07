@@ -1,28 +1,30 @@
 <properties
    pageTitle="Azure リソース マネージャーの概要"
-   description="Azure リソース マネージャーを使用して、 Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。"
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+	description="Azure リソース マネージャーを使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。"
+	services="azure-resource-manager"
+	documentationCenter="na"
+	authors="tfitzmac"
+	manager="wpickett"
+	editor=""/>
 
 <tags
    ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/24/2015"
-   ms.author="tomfitz"/>
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/20/2015"
+	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーの概要
 
 アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、およびサード パーティのサービスなどの、複数のコンポーネントで構成されます。これらのコンポーネントは別々のエンティティではなく、1 つのエンティティの中で互いに関連付けられ相互依存しています。これらのコンポーネントを、1 つのグループとしてデプロイ、管理、および監視するのが好ましいです。Azure リソース マネージャーを使用すると、アプリケーション内の複数リソースを 1 つのグループと見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。
 
-Azure リソース マネージャーでは、 アクセス制御が管理プラットフォームにネイティブに統合されているため、組織内のユーザーがリソース グループに対して実行できるアクションを指定できます。
+Azure リソース マネージャーでは、アクセス制御が管理プラットフォームにネイティブに統合されているため、組織内のユーザーがリソース グループに対して実行できるアクションを指定できます。
 
-この概要のデモンストレーションを次に示します。
+リソース マネージャーには、ソリューションをデプロイして管理するための新しい方法が用意されています。この新しいデプロイ モデルの変更の詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](resource-manager-deployment-model.md)」を参照してください。
+
+この概要のデモンストレーション ビデオを次に示します。
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
@@ -42,13 +44,13 @@ Azure リソース マネージャーでは、 アクセス制御が管理プラ
 
 Azure プレビュー ポータルでは、すべての新しいリソースはリソース グループ内で作成されます。Web サイトなどのリソースを 1 つだけ作成した場合でも、そのリソースを既存のグループに追加するのか、またはそのリソース用の新しいグループを作成するのかを決定する必要があります。
 
-次の図は、Application Insights、データベース サーバー、データベース、アプリ サービス プラン、Web サイトを含むリソース グループを示しています。
+次の図は、Application Insights、データベース サーバー、データベース、App Service プラン、Web サイトを含むリソース グループを示しています。
 
 ![リソース グループの概要](./media/resource-group-overview/resourcegroupsummary2.png)
 
-リソース グループは、別のリソース グループ内のリソースへもリンクできます。リソースがリンク済みと見なされるのは、異なるリソース グループ内にあるリソースとの間にデプロイの依存関係が存在する場合です。たとえば、 1 つのリソース グループ内の Web アプリが、別のリソース グループ内のデータベースに接続している場合、これらのリソースはリンク済みです。その他のリソース グループ内のリソース間のリンクを明示的に定義することもできます。
+リソース グループは、別のリソース グループ内のリソースへもリンクできます。リソースがリンク済みと見なされるのは、異なるリソース グループ内にあるリソースとの間にデプロイの依存関係が存在する場合です。たとえば、1 つのリソース グループ内の Web アプリが、別のリソース グループ内のデータベースに接続している場合、これらのリソースはリンク済みです。その他のリソース グループ内のリソース間のリンクを明示的に定義することもできます。
 
-リソースのリンクの詳細については、「[Azure リソース マネージャーでのリソースのリンク](resource-group-link-resources.md)」を参照してください。
+リソースのリンクの詳細については、[Azure リソース マネージャーでのリソースのリンク](resource-group-link-resources.md)に関するページを参照してください。
 
 新しいリソース グループにリソースを移動する必要がある場合は、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 
@@ -62,7 +64,7 @@ Azure リソース マネージャーで、アプリケーションのデプロ�
 
 テンプレート内では、アプリのインフラストラクチャ、構成方法、およびアプリケーション コードをインフラストラクチャに発行する方法を定義します。Azure リソース マネージャーでは、依存関係を分析し、リソースが確実に正しい順序で作成されるため、デプロイの順序について心配する必要はありません。
 
-インフラストラクチャの更新にも、テンプレートを使用することができます。たとえば、アプリに新しいリソースを追加したり、既にデプロイされたリソースに構成ルールを追加したりできます。テンプレートで新しいリソースの作成を指定した際、そのリソースが既に存在する場合は、Azure リソース マネージャーでは、新しいアセットを作成する代わりに更新が実行されます。Azure リソース マネージャーでは、既存のアセットが、新しいアセットと同じ状態になるよう更新されます。
+インフラストラクチャの更新にも、テンプレートを使用することができます。たとえば、アプリに新しいリソースを追加したり、既にデプロイされたリソースに構成ルールを追加したりできます。テンプレートで新しいリソースの作成を指定した際、そのリソースが既に存在する場合は、Azure リソース マネージャーでは、新しい資産を作成する代わりに更新が実行されます。Azure リソース マネージャーでは、既存の資産が、新しい資産と同じ状態になるよう更新されます。
 
 テンプレートでパラメーターを指定すると、デプロイをカスタマイズでき、柔軟性が高まります。たとえば、テスト環境に合わせてデプロイを調整するためのパラメーター値を渡すことができます。パラメーターを指定すると、同じテンプレートを、すべてのアプリ環境のデプロイに使用できます。
 
@@ -76,9 +78,9 @@ Marketplace からソリューションを作成すると、ソリューショ�
 
 テンプレートのスキーマについては、「[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)」を参照してください。
 
-デプロイにテンプレートを使用する方法については、[Deploy an application with Azure Resource Manager template (Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ)](azure-portal/resource-group-template-deploy.md) と [Deploy a complex application predictably in Azure (Azure での複雑なアプリケーションの予測可能な方法でのデプロイ)](app-service-web/app-service-deploy-complex-application-predictably.md) を参照してください。
+デプロイにテンプレートを使用する方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」と「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 
-テンプレートを構成する方法のガイダンスについては、「[Azure リソース マネージャーのテンプレートのデザインのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
+テンプレートを構造化する方法のガイダンスについては、[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)に関するページを参照してください。
 
 ## タグ
 
@@ -88,7 +90,7 @@ Azure リソース マネージャーでは、管理や課金の要件に合わ�
 
 ![タグ](./media/resource-group-overview/tags.png)
 
-タグを共有するために、リソースが同じリソース グループ内に格納されている必要はありません。組織内のユーザーが類似したタグを誤って適用しないよう (「department」の代わりに「dep」など) 、組織内のすべてのユーザーが共通のタグを使用できる独自のタグ分類法を作成することができます。
+タグを共有するために、リソースが同じリソース グループ内に格納されている必要はありません。組織内のユーザーが類似したタグを誤って適用しないよう (「department」の代わりに「dep」など)、組織内のすべてのユーザーが共通のタグを使用できる独自のタグ分類法を作成することができます。
 
 タグの詳細については、[タグを使用した Azure リソースの整理](./resource-group-using-tags.md)を参照してください。
 
@@ -103,11 +105,11 @@ Azure リソース マネージャーは、組織に対する特定アクショ�
 
 Azure リソース マネージャーでは、監査のために、自動的にユーザー操作が記録されます。
 
-重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。詳細については、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
+重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。詳細については、[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)に関するページを参照してください。
 
-ロールベースのアクセス制御の詳細については、[Azure プレビュー ポータルでのロール ベースのアクセス制御](./role-based-access-control-configure.md)を参照してください。
+ロールベースのアクセス制御の詳細については、「[Microsoft Azure プレビュー ポータルでのロール ベースのアクセス制御](./role-based-access-control-configure.md)」を参照してください。
 
-アクセス ポリシー設定の例については、[Managing and Auditing Access to Resources (リソースへのアクセスの管理および監視)](azure-portal/resource-group-rbac.md) を参照してください。
+アクセス ポリシー設定の例については、「[リソースへのアクセスの管理と監査](azure-portal/resource-group-rbac.md)」を参照してください。
 
 ベスト プラクティスについては、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 
@@ -115,19 +117,19 @@ Azure リソース マネージャーでは、監査のために、自動的に�
 
 Azure リソース マネージャーでの操作は、Azure PowerShell、Mac、Linux、および Windows 用の Azure CLI、Azure ポータル、または REST API の操作と完全な互換性があります。ユーザーに最適なインターフェイスを使用できるほか、インターフェイス間を混乱せずにすばやく移動できます。ポータルでは、ポータルの外で実行された操作さえも表示されます。
 
-PowerShell に関する詳細については、[リソース マネージャーでの Windows PowerShell の使用](./powershell-azure-resource-manager.md)および [Azure Resource Manager Cmdlets (Azure リソース マネージャのコマンドレッド)](https://msdn.microsoft.com/library/azure/dn757692.aspx) を参照してください。
+PowerShell に関する詳細については、「[リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)」と「[Azure リソース マネージャーのコマンドレッド](https://msdn.microsoft.com/library/azure/dn757692.aspx)」を参照してください。
 
 Azure CLI の詳細については、[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)を参照してください。
 
 REST API の詳細については、[Azure リソース マネージャー REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790568.aspx)を参照してください。
 
-プレビュー ポータルの使用方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)」を参照してください。
+プレビュー ポータルの使用方法の詳細については、[Azure プレビュー ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)に関するページを参照してください。
 
 ## 次のステップ
 
 - テンプレート作成の詳細については、[テンプレートの作成](./resource-group-authoring-templates.md)に関するページを参照してください。
-- 作成したテンプレートをデプロイするには、「[テンプレートのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
-- テンプレートで使用できる関数については、「[テンプレート関数](./resource-group-template-functions.md)」を参照してください。
-- テンプレートのデザインのガイダンスについては、「[Azure リソース マネージャーのテンプレートのデザインのベスト プラクティス](best-practices-resource-manager-design-templates.md)」を参照してください。
+- 作成したテンプレートをデプロイするには、[テンプレートのデプロイ](azure-portal/resource-group-template-deploy.md)に関するページを参照してください。
+- テンプレートで使用できる関数については、[テンプレートの関数](./resource-group-template-functions.md)に関するページを参照してください。
+- テンプレートのデザインのガイダンスについては、[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](best-practices-resource-manager-design-templates.md)に関するページを参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

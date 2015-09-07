@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="DocumentDB Connector - DocumentDB との間のデータ移動" 
-	description="Azure DocumentDB コレクションとの間でのデータ移動を可能にする Data Factory サービスのための Azure DocumentDB コネクタについて学習する" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="DocumentDB との間でのデータの移動 | Azure Data Factory"
+	description="Azure Data Factory を使用して Azure DocumentDB コレクションに、または Azure DocumentDB コレクションからデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# DocumentDB Connector - DocumentDB との間のデータ移動
+# Azure Data Factory を使用した DocumentDB との間でのデータの移動
 
 この記事では、Azure Data Factory のコピー アクティビティを利用し、Azure DocumentDB と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -24,11 +24,11 @@
 
 下のサンプルで確認できる要素:
 
-1. DocumentDB 型のリンクされたサービス。
-2. AzureStorage 型のリンクされたサービス。 
-3. DocumentDbCollection 型の入力データセット。 
-4. AzureBlob 型の出力データセット。
-4. DocumentDbCollectionSource と BlobSink を使用するコピー アクティビティを含むパイプライン。
+1. [DocumentDB](#azure-documentdb-linked-service-properties) 型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。 
+3. [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。 
+4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4. [DocumentDbCollectionSource](#azure-documentdb-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルでは、Azure DocumentDB のデータが Azure BLOB にコピーされます。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -60,7 +60,7 @@
 
 このサンプルでは、「**Person**」というコレクションが Azure DocumentDB データベースにあるものと想定しています。
  
-「“external”: ”true”」を設定して externalData ポリシーを指定すると、テーブルがデータ ファクトリに対して外部にあり、データ ファクトリのアクティビティでは生成されていないことが Azure Data Factory のサービスに通知されます。
+「“external”: ”true”」を設定して externalData ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、 Data Factory のアクティビティでは生成されていないことが Azure Data Factory のサービスに通知されます。
 
 	{
 	  "name": "PersonDocumentDbTable",
@@ -164,11 +164,12 @@ DocumentDB では、階層的な JSON 文書に SQL タイプの構文を使用�
 
 下のサンプルで確認できる要素:
 
-1. DocumentDB 型のリンクされたサービス。
-2. AzureStorage 型のリンクされたサービス。
-3. AzureBlob 型の入力データセット。
-4. DocumentDbCollection 型の出力データセット。 
-4. BlobSource と DocumentDbCollectionSink を使用するコピー アクティビティを含むパイプライン。
+1. [DocumentDB](#azure-documentdb-linked-service-properties) 型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4. [DocumentDbCollection](#azure-documentdb-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。 
+4. [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) と [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+
 
 このサンプルでは、Azure BLOB から Azure DocumentDB にデータがコピーされます。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -341,7 +342,7 @@ DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許�
 
 次の表は、Azure DocumentDB のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| **プロパティ** |  | **必須** |
+| **プロパティ** | **説明** | **必須** |
 | -------- | ----------- | --------- |
 | type | type プロパティを **DocumentDb** に設定する必要があります。 | あり |
 | connectionString | Azure DocumentDB データベースに接続するために必要な情報を指定します。 | あり |
@@ -352,7 +353,7 @@ DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許�
  
 typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**DocumentDbCollection** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
-| **プロパティ** |  | **必須** |
+| **プロパティ** | **説明** | **必須** |
 | -------- | ----------- | -------- |
 | collectionName | DocumentDB ドキュメント コレクションの名前です。 | あり |
 
@@ -385,14 +386,14 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 コピー アクティビティで、source の種類が **DocumentDbCollectionSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| **プロパティ** |  | **使用できる値** | **必須** |
+| **プロパティ** | **説明** | **使用できる値** | **必須** |
 | ------------ | --------------- | ------------------ | ------------ |
 | query | データを読み取るためのクエリを指定します。 | DocumentDB でサポートされているクエリ文字列。<p>例: SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > "2009-01-01T00:00:00"</p> | いいえ <p>指定されていない場合に実行される SQL ステートメント: select <columns defined in structure> from mycollection </p>
 | nestingSeparator | ドキュメントが入れ子であることを示す特殊文字 | 任意の文字。<p>DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許可されます。Azure Data Factory を利用すると、nestingSeparator で階層が示されます。上記の例では「.」です。区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。</p> | いいえ
 
 **DocumentDbCollectionSink** では次のプロパティがサポートされます。
 
-| **プロパティ** |  | **使用できる値** | **必須** |
+| **プロパティ** | **説明** | **使用できる値** | **必須** |
 | -------- | ----------- | -------------- | -------- |
 | nestingSeparator | 入れ子になった文書が必要であることを示すソース列名の特殊文字。<p>上記の例の場合: 出力テーブルの Name.First は DocumentDB 文書で次の JSON 構造を生成します。</p><p>"Name": {<br/> "First": "John"<br/>},</p> | 入れ子レベルの分割に使用される文字。<p>既定値は . (ドット) です。</p> | 入れ子レベルの分割に使用される文字。<p>既定値は . (ドット) です。</p> | いいえ | 
 | writeBatchSize | DocumentDB サービスに文書の作成を要求する並列要求の数。<p>このプロパティを利用し、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。ただし、調整は回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。</p><p>調整は、文書のサイズ、文書内の用語の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっと良いコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。</p> | 整数値 | いいえ |
@@ -400,4 +401,4 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
  
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

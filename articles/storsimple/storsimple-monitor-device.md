@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple Manager サービスを使用した StorSimple デバイスの監視 | Microsoft Azure"
-   description="StorSimple Manager サービスを使用して I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンスを監視する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+	description="StorSimple Manager サービスを使用して I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンスを監視する方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/14/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/25/2015"
+	ms.author="alkohli"/>
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの監視 
 
@@ -61,7 +61,7 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 	![クラウド スナップショット後のクラウドの容量使用率](./media/storsimple-monitor-device/StorSimple_CloudCapacityUtil_For_AllVolumeContainers1M.png)
 
 
-- **デバイス ストレージの容量使用率**は、デバイスの使用率の合計を示しています。これには SSD リニア層が含まれているため、プライマリ ストレージの使用率よりも大きくなります。この層には、デバイスの他の層にあるデータの容量も含まれています。SSD リニア層の容量は、新しいデータが入ってくると古いデータがクラウドに移動されて循環します (このときデータは重複除去されて圧縮されます)。
+- **デバイス ストレージの容量使用率**は、デバイスの使用率の合計を示しています。これには SSD リニア層が含まれているため、プライマリ ストレージの使用率よりも大きくなります。この層には、デバイスの他の層にあるデータの容量も含まれています。SSD リニア層の容量は、新しいデータが入ってくると古いデータが HDD 層に、その後クラウドに移動されて循環します (このときデータは重複除去されて圧縮されます)。
 
 	時間が経つにつれて、プライマリの容量使用率とデバイスの容量使用率は、ほとんどの場合、共に増加していき、やがてデータがクラウドに積み上がり始めます。そうなると、デバイスの容量使用率が安定し始めることもありますが、さらに多くのデータが書き込まれると、プライマリの容量使用率が増大します。
 
@@ -93,4 +93,4 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 
 [StorSimple Manager サービスのデバイス ダッシュボードを使用する方法の詳細](storsimple-device-dashboard.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

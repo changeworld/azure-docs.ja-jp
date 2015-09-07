@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="チュートリアルの出力データをオンプレミスの SQL Server データベースにコピーする" 
+	pageTitle="チュートリアルの出力データをオンプレミスの SQL Server データベースにコピーする"
 	description="このチュートリアルでは、Data Factory のチュートリアルを拡張し、オンプレミスの SQL Server データベースにマーケティング キャンペーンの有効性のデータをコピーします。"
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2015"
 	ms.author="spelluru"/>
 
 
@@ -28,7 +28,7 @@
 
 この記事のチュートリアルを実行する前に、[Data Factory を使用したログ ファイルの移動と処理のチュートリアル][datafactorytutorial]を実行する**必要があります**。
 
-**(推奨)** パイプラインを作成してオンプレミスの SQL Server から Azure BLOB ストアにデータを移動するチュートリアルに関する、[パイプラインがオンプレミスのデータを扱えるようにする][useonpremisesdatasources]記事内のチュートリアルの確認と練習をしてください。
+**(推奨)** パイプラインを作成して内部設置型の SQL Server から Azure BLOB ストアにデータを移動するチュートリアルに関する、[パイプラインが内部設置型のデータを扱えるようにする][useonpremisesdatasources]記事内のチュートリアルの確認と練習をしてください。
 
 
 このチュートリアルでは、次の手順に従います。
@@ -151,8 +151,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 [datafactorytutorial]: data-factory-tutorial.md
 [adfgetstarted]: data-factory-get-started.md
 [adfintroduction]: data-factory-introduction.md
-[useonpremisesdatasources]: data-factory-use-onpremises-datasources.md
-[usepigandhive]: data-factory-pig-hive-activities.md
+[useonpremisesdatasources]: data-factory-move-data-between-onprem-and-cloud.md
 
 [azure-preview-portal]: http://portal.azure.com
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
@@ -170,4 +169,4 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

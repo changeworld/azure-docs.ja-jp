@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure ポータルの HDInsight に関する記事の索引 | Microsoft Azure"
-   description="Azure ポータルの HDInsight に関する記事のリンクがある索引ページ。HDInsight の新しい Hadoop クラスターには Azure プレビュー ポータルをお勧めします。"
-   services="hdinsight"
-   documentationCenter="na"
-   authors="cjgronlund"
-   manager="pablissima"
-   editor=""/>
+	description="Azure ポータルの HDInsight に関する記事のリンクがある索引ページ。HDInsight の新しい Hadoop クラスターには Azure プレビュー ポータルをお勧めします。"
+	services="hdinsight"
+	documentationCenter="na"
+	authors="cjgronlund"
+	manager="pablissima"
+	editor=""/>
 
 <tags
    ms.service="hdinsight"
-   ms.devlang="na"
-   ms.topic="index-page"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="08/17/2015"
-   ms.author="cjgronlund"/>
+	ms.devlang="na"
+	ms.topic="index-page"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="08/17/2015"
+	ms.author="cjgronlund"/>
 
 # Azure ポータルの HDInsight に関する記事の索引
 
@@ -40,7 +40,7 @@ HDInsight で Hadoop を初めて使用する場合は、「[HDInsight のドキ
 
 Linux と Linux クラスターの使用に関するすべての記事については、「[HDInsight のドキュメント](/documentation/services/hdinsight/)」ページを参照してください。
 
-## Hadoop: バッチ クエリ
+## Hadoop: Batch クエリ
 
 * [4 つの簡単なサンプルを実行する](hdinsight-run-samples.md)
 * [HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)
@@ -63,7 +63,7 @@ Linux と Linux クラスターの使用に関するすべての記事につい�
 * [Hive と Pig ストリーミングでの C# ユーザー定義関数の使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
 * [C# Hadoop ストリーミング プログラムの開発](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
 
-## HBase: NoSQL 分析
+## HBase: NoSQL データベース
 
 * [HBase geo レプリケーションの構成](hdinsight-hbase-geo-replication.md)
 * [HBase を使用する Java アプリケーションを Maven で構築する](hdinsight-hbase-build-java-maven.md)
@@ -97,7 +97,7 @@ Azure プレビュー ポータルでの Apache Spark ネイティブ クラス�
 * [Apache Storm を使用した Twitter のトレンディング トピックの確認](hdinsight-storm-twitter-trending.md)
 * [Apache Storm、Event Hub、HBase を使用してセンサー データを分析する](hdinsight-storm-sensor-data-analysis.md)
 
-## HDInsight の機械学習
+## HDInsight の Machine Learning
 
 * [Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する](hdinsight-mahout.md)
 * [Learning path: Build advanced analytics solutions (ラーニング パス: 高度な分析ソリューションを構築する)](machine-learning-data-science-how-to-create-machine-learning-service.md)
@@ -132,4 +132,4 @@ Azure プレビュー ポータルでの Apache Spark ネイティブ クラス�
 * [エラー メッセージを解釈する](hdinsight-debug-jobs.md)
 * [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

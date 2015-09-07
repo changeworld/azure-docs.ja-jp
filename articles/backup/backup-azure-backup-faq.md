@@ -1,13 +1,13 @@
 <properties
    pageTitle="Azure Backup の FAQ | Microsoft Azure"
-   description="Azure Backup サービスに関してよく寄せられる質問"
-   services="backup"
-   documentationCenter=""
-   authors="Jim-Parker"
-   manager="shreeshd"
-   editor=""/>
+	description="Azure Backup サービスに関してよく寄せられる質問"
+	services="backup"
+	documentationCenter=""
+	authors="Jim-Parker"
+	manager="shreeshd"
+	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/07/2015" ms.author="arunak"; "jimpark"; "aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/26/2015" ms.author="giridham"; "arunak"; "jimpark"; "aashishr"/>
 
 # Azure Backup - FAQ
 Azure Backup に関する一般的な質問を次に示します。Azure Backup に関して他に不明な点がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)にアクセスして、質問を投稿してください。コミュニティのメンバーから回答を得ることができます。よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -21,6 +21,7 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 | Windows 8 と最新 SP | 64 ビット | Enterprise、Pro |
 | Windows 7 と最新 SP | 64 ビット | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter |
 | Windows 8.1 と最新 SP | 64 ビット | Enterprise、Pro |
+| Windows 10 | 64 ビット | Enterprise、Pro、Home |
 |Windows Server 2012 R2 と最新 SP|	64 ビット|	Standard、Datacenter、Foundation|
 |Windows Server 2012 と最新 SP|	64 ビット|	Datacenter、Foundation、Standard|
 |Windows Storage Server 2012 R2 と最新 SP |64 ビット|	Standard、Workgroup|
@@ -83,7 +84,7 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 **Q19.Q19: 定期的なバックアップのスケジュールを設定してあるのに、「このサーバーに対してバックアップは構成されていません」という警告が表示されるのはなぜですか?** <br/> A19: ローカル サーバーに保存されているバックアップ スケジュールの設定がバックアップ コンテナーに格納されている設定と異なる場合、このような現象が発生することがあります。サーバーまたは設定が既知の正常な状態に復旧されると、バックアップ スケジュールの同期が失われることがあります。この問題が発生する場合は、バックアップ ポリシーを再構成した後、**[今すぐバックアップ]** を実行してローカル サーバーと Azure を再同期します。
 
-**Q20.どのようなファイアーウォール ルールを Azure Backup のバックアップのために構成する必要がありますか。** <br/> A20.ファイアーウォール ルールで、下記の URL との通信ができるようにし、オンプレミスと Azure 間のシームレスなバックアップと Azure のワークロード保護を確実にしてください。
+**Q20.どのようなファイアーウォール ルールを Azure Backup のバックアップのために構成する必要がありますか。** <br/>A20.ファイアーウォール ルールで、下記の URL との通信ができるようにし、オンプレミスと Azure 間のシームレスなバックアップと Azure のワークロード保護を確実にしてください。
 
 - www.msftncsi.com
 - *.Microsoft.com
@@ -93,13 +94,25 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 
 ## バックアップと保有期間
-**Q1.バックアップされる各データ ソースのサイズに制限はありますか?** <br/> A1.2015 年 7 月時点で、各データ ソースは 1.7 TB (テラバイト) 以下にする必要があります。データ ソースとは次のいずれかです。
+**Q1.バックアップされる各データ ソースのサイズに制限はありますか?** <br/> A1.2015 年 8 月時点の、各オペレーティング システム別データ ソースの最大サイズは次のとおりです。
 
-- ファイル / フォルダーのボリューム
-- SQL DB
-- Sharepoint ファーム
-- Exchange サーバー
-- Hyper-V VM
+|No. |	オペレーティング システム |	データ ソースの最大サイズ |
+| :-------------: |:-------------| :-----|
+|1| Windows Server 2012 またはそれ以降| 54,400 GB|
+|2| Windows Server 8 またはそれ以降| 54,400 GB|
+|3| Windows Server 2008、Windows Server 2008 R2 | 1,700 GB|
+|4| Windows 7 | 1,700 GB|
+ 
+データソースのサイズは、以下のように計測されます。
+
+|	データソース |	詳細 |
+| :-------------: |:-------------|
+|ボリューム |コンピューターの 1 つのボリュームからバックアップされるデータの量。これは、サーバーとクライアント両方のコンピューターで保護されているボリュームに適用されます。|
+|Hyper-V 仮想マシン|バックアップ対象の仮想マシンのすべての VHD のデータの合計|
+|Microsoft SQL Server データベース|バックアップ対象の 1 つの SQL データベースのサイズ |
+|Microsoft SharePoint|バックアップ対象の SharePoint ファーム内のコンテンツと構成データベースの合計|
+|Microsoft Exchange|バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計|
+|BMR/システム状態|バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー|
 
 **Q2.1 日にバックアップをスケジュールできる回数に制限はありますか?**<br/> A2.はい。Azure Backup では、Windows サーバー / クライアントで 1 日に 3 回、SCDPM で 1 日に 2 回のバックアップ コピーが可能です。
 
@@ -166,4 +179,4 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 バックアップが新しいキャッシュ場所で正常に動作したら、元のキャッシュ フォルダーを削除できます。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

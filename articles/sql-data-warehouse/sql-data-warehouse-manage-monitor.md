@@ -1,20 +1,20 @@
 <properties
    pageTitle="DMV を利用してワークロードを監視する | Microsoft Azure"
-   description="DMV を利用してワークロードを監視するについて説明します。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="sahaj08"
-   manager="barbkess"
-   editor=""/>
+	description="DMV を利用してワークロードを監視するについて説明します。"
+	services="sql-data-warehouse"
+	documentationCenter="NA"
+	authors="sahaj08"
+	manager="barbkess"
+	editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="08/06/2015"
-   ms.author="sahajs"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-services"
+	ms.date="08/06/2015"
+	ms.author="sahajs"/>
 
 # DMV を利用してワークロードを監視する
 
@@ -135,7 +135,11 @@ ORDER BY step_index;
 
 実行時間の長い手順の手順インデックスを保存します。
 
-実行時間の長いクエリ手順の *operation\_type* 列を確認します: - **SQL 操作**の手順 4a に進みます: OnOperation、RemoteOperation、ReturnOperation - **Data Movement 操作**の手順 4b に進みます: ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation
+実行時間の長いクエリ手順の *operation\_type* 列を確認します。
+
+- 手順 4a の **SQL 操作** (OnOperation、RemoteOperation、ReturnOperation) に進みます。
+- 手順 4b の **Data Movement 操作** (ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation) に進みます。
+
 
 
 
@@ -198,12 +202,12 @@ DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
 ```
 
 
-このクエリの結果は、データベースの 60 の分散のそれぞれに保存されているテーブル行の数を示します。パフォーマンスを最適化するには、分散テーブルの行を配布全体で均等に広げる必要があります。詳細については、「[テーブル設計][]」を参照してください。
+このクエリの結果は、データベースの 60 の分散のそれぞれに保存されているテーブル行の数を示します。パフォーマンスを最適化するには、分散テーブルの行を配布全体で均等に広げる必要があります。詳細については、「[テーブル設計][]」をご覧ください。
 
 
 
 ## 次のステップ
-SQL Data Warehouse の管理に関するヒントについては、「[管理概要][]」を参照してください。
+SQL Data Warehouse の管理に関するヒントについては、「[管理概要][]」をご覧ください。
 
 <!--Image references-->
 
@@ -213,4 +217,4 @@ SQL Data Warehouse の管理に関するヒントについては、「[管理概
 
 <!--MSDN references-->
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

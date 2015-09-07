@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Mobile Engagement Android SDK の統合" 
+	pageTitle="Azure Mobile Engagement Android SDK の統合"
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
-	editor="" />
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
+	editor=""/>
 
 <tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="08/10/2015" 
-	ms.author="piyushjo" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="08/10/2015"
+	ms.author="piyushjo"/>
 
 
 #アップグレードの手順
@@ -24,6 +24,29 @@
 SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。たとえば、1.4.0 から 1.6.0 に移行する場合、まず「1.4.0から 1.5.0」への手順を実行してから「1.5.0 から 1.6.0」への手順を実行する必要があります。
 
 どのバージョンからアップグレードする場合でも、`mobile-engagement-VERSION.jar` を新しいバージョンのものに置き換える必要があります。
+
+##4\.0.0 から 4.1.0 に移行
+
+SDK で Android M の新しいアクセス許可モデルを処理できるようになりました。
+
+場所の機能または大きな画像の機能を利用する場合、[このセクション](mobile-engagement-android-integrate-engagement.md#android-m-permissions)をお読みください。
+
+新しいアクセス許可モデルに加え、実行時に場所の機能を構成できるようになりました。場所のマニフェスト パラメーターとの互換性は維持されていますが、推奨されません。ランタイム構成を使用するには、``AndroidManifest.xml`` から次のセクションを削除します。
+
+    <meta-data
+      android:name="engagement:locationReport:lazyArea"
+      android:value="true"/>
+    <meta-data
+      android:name="engagement:locationReport:realTime"
+      android:value="true"/>
+    <meta-data
+      android:name="engagement:locationReport:realTime:background"
+      android:value="true"/>
+    <meta-data
+      android:name="engagement:locationReport:realTime:fine"
+      android:value="true"/>
+
+そして、[この更新されたプロシージャ](mobile-engagement-android-integrate-engagement.md#location-reporting)を読み込み、代わりにランタイム構成を使用します。
 
 ##3\.0.0 から 4.0.0 に移行
 
@@ -90,9 +113,9 @@ SDK の一部のバージョンが不足している場合、いくつかの手�
 
 ##2\.4.0 から 3.0.0 に移行
 
-Azure モバイル エンゲージメントを使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 2.4.0 に移行し、次の手順を適用してください。
+Azure Mobile Engagement を使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 2.4.0 に移行し、次の手順を適用してください。
 
->[AZURE.IMPORTANT]Capptain とモバイル エンゲージメントは、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーからモバイル エンゲージメントのサーバーに移行されません。
+>[AZURE.IMPORTANT]Capptain と Mobile Engagement は、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーから Mobile Engagement のサーバーに移行されません。
 
 ### JAR ファイル
 
@@ -363,4 +386,4 @@ Proguard の構成はブランド変更の影響を受けるため、ルール�
 			}
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

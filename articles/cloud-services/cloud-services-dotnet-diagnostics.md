@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="診断の使用方法 (.NET) | Microsoft Azure" 
-	description="Azure で、デバッグ、パフォーマンス測定、監視、トラフィック解析などに診断データを使用する方法を説明します。" 
-	services="cloud-services" 
-	documentationCenter=".net" 
-	authors="rboucher" 
-	manager="jwhit" 
+	pageTitle="診断の使用方法 (.NET) | Microsoft Azure"
+	description="Azure で、デバッグ、パフォーマンス測定、監視、トラフィック解析などに診断データを使用する方法を説明します。"
+	services="cloud-services"
+	documentationCenter=".net"
+	authors="rboucher"
+	manager="jwhit"
 	editor=""/>
 
 <tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="04/27/2015" 
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/25/2015"
 	ms.author="robb"/>
 
 
@@ -174,7 +174,7 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource �
   			<WadCfg>
     			<DiagnosticMonitorConfiguration overallQuotaInMB="25000">
       			<PerformanceCounters scheduledTransferPeriod="PT1M">
-        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />
+        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)% Processor Time" sampleRate="PT1M" unit="percent" />
         			<PerformanceCounterConfiguration counterSpecifier="\Memory\Committed Bytes" sampleRate="PT1M" unit="bytes"/>
       				</PerformanceCounters>
       				<EtwProviders>
@@ -320,7 +320,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
   			<WadCfg>
     			<DiagnosticMonitorConfiguration overallQuotaInMB="25000">
       			<PerformanceCounters scheduledTransferPeriod="PT1M">
-        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />
+        			<PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)% Processor Time" sampleRate="PT1M" unit="percent" />
         			<PerformanceCounterConfiguration counterSpecifier="\Memory\Committed Bytes" sampleRate="PT1M" unit="bytes"/>
       				</PerformanceCounters>
       				<EtwProviders>
@@ -373,24 +373,24 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 終了コード|説明
 ---|---
 0|成功。
-\-1|一般的なエラー。
-\-2|rcf ファイルを読み込めませんでした。<p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
-\-3|診断構成ファイルをロードできませんでした。<p><p>解決方法: これは、構成ファイルがスキーマ検証を渡さないことが原因です。スキーマに準拠する構成ファイルを使用してください。
-\-4|監視エージェント診断の別のインスタンスが既にローカル リソース ディレクトリを使用しています。<p><p>解決方法: **LocalResourceDirectory** に別の値を指定します。
-\-6|ゲスト エージェント プラグインの起動ツールが無効なコマンド ラインで診断を起動しようとしました。<p><p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
-\-10|診断がハンドルされていない例外で終了しました。
-\-11|ゲスト エージェントが、監視エージェントの起動と監視を処理するプロセスを作成できませんでした。<p><p>。解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。<p>
-\-101|診断プラグインを呼び出すときの引数が無効です。<p><p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
-\-102|プラグイン プロセスの初期化でエラーが発生しました。<p><p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。
-\-103|プラグイン プロセスの初期化でエラーが発生しました。具体的にはロガー オブジェクトを作成できません。<p><p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。
-\-104|ゲスト エージェントが指定した rcf ファイルを読み込むことができません。<p><p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
-\-105|診断プラグインが診断構成ファイルを開くことができません。<p><p>これは、診断プラグインが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
-\-106|診断構成ファイルを読み込めませんでした。<p><p>解決方法: これは、構成ファイルがスキーマ検証を渡さないことが原因です。そのため、スキーマに準拠する構成ファイルを使用してください。VM 上の *%SystemDrive%\\WindowsAzure\\Config* フォルダーには、診断拡張機能に渡される XML があります。適切な XML ファイルを開いて **Microsoft.Azure.Diagnostics** を検索し、**xmlCfg** フィールドを見つけます。データは base64 でエンコードされているため、診断で読み込まれた XML を表示するにはこれを[デコードする](http://www.bing.com/search?q=base64+decoder)必要があります。<p>
-\-107|監視エージェントへのリソース ディレクトリのパスが無効です。<p><p>これは、監視エージェントが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。</p>
-\-108 |診断構成ファイルを監視エージェント構成ファイルに変換できません。<p><p>。これは、診断プラグインが無効な構成ファイルを使用して手動で起動された場合にのみ発生する内部エラーです。
-\-110|一般的な診断構成エラー。<p><p>これは、診断プラグインが無効な構成ファイルを使用して手動で起動された場合にのみ発生する内部エラーです。
-\-111|監視エージェントを開始できません。<p><p>解決方法: 新十分なシステム リソースが使用できることを確認します。
-\-112|一般的なエラー
+-1|一般的なエラー。
+-2|rcf ファイルを読み込めませんでした。<p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
+-3|診断構成ファイルをロードできませんでした。<p><p>解決方法: これは、構成ファイルがスキーマ検証を渡さないことが原因です。スキーマに準拠する構成ファイルを使用してください。
+-4|監視エージェント診断の別のインスタンスが既にローカル リソース ディレクトリを使用しています。<p><p>解決方法: **LocalResourceDirectory** に別の値を指定します。
+-6|ゲスト エージェント プラグインの起動ツールが無効なコマンド ラインで診断を起動しようとしました。<p><p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
+-10|診断がハンドルされていない例外で終了しました。
+-11|ゲスト エージェントが、監視エージェントの起動と監視を処理するプロセスを作成できませんでした。<p><p>。解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。<p>
+-101|診断プラグインを呼び出すときの引数が無効です。<p><p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
+-102|プラグイン プロセスの初期化でエラーが発生しました。<p><p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。
+-103|プラグイン プロセスの初期化でエラーが発生しました。具体的にはロガー オブジェクトを作成できません。<p><p>解決方法: 新しいプロセスを起動するのに十分なシステム リソースが使用できることを確認します。
+-104|ゲスト エージェントが指定した rcf ファイルを読み込むことができません。<p><p>これは、ゲスト エージェント プラグインの起動ツールが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
+-105|診断プラグインが診断構成ファイルを開くことができません。<p><p>これは、診断プラグインが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。
+-106|診断構成ファイルを読み込めませんでした。<p><p>解決方法: これは、構成ファイルがスキーマ検証を渡さないことが原因です。そのため、スキーマに準拠する構成ファイルを使用してください。VM 上の *%SystemDrive%\\WindowsAzure\\Config* フォルダーには、診断拡張機能に渡される XML があります。適切な XML ファイルを開いて **Microsoft.Azure.Diagnostics** を検索し、**xmlCfg** フィールドを見つけます。データは base64 でエンコードされているため、診断で読み込まれた XML を表示するにはこれを[デコードする](http://www.bing.com/search?q=base64+decoder)必要があります。<p>
+-107|監視エージェントへのリソース ディレクトリのパスが無効です。<p><p>これは、監視エージェントが VM 上で不正に手動で起動された場合にのみ発生する内部エラーです。</p>
+-108 |診断構成ファイルを監視エージェント構成ファイルに変換できません。<p><p>。これは、診断プラグインが無効な構成ファイルを使用して手動で起動された場合にのみ発生する内部エラーです。
+-110|一般的な診断構成エラー。<p><p>これは、診断プラグインが無効な構成ファイルを使用して手動で起動された場合にのみ発生する内部エラーです。
+-111|監視エージェントを開始できません。<p><p>解決方法: 新十分なシステム リソースが使用できることを確認します。
+-112|一般的なエラー
 
 
 ### 診断データがストレージに記録されない
@@ -512,4 +512,4 @@ EventSource|いいえ|テーブル|.NET EventSource クラスを使用してコ�
 [Remove-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/library/dn495168.aspx
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

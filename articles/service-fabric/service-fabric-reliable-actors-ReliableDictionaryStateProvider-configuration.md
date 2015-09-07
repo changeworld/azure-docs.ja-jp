@@ -1,20 +1,20 @@
 <properties
    pageTitle="Service Fabric の信頼性の高いアクター 'ReliableDictionaryActorStateProvider' の構成の概要"
-   description="Service Fabric の 'ReliableDictionaryActorStateProvider' という型のステートフル アクターの構成について"
-   services="Service-Fabric"
-   documentationCenter=".net"
-   authors="sumukhs"
-   manager="vipulm"
-   editor=""/>
+	description="Service Fabric の 'ReliableDictionaryActorStateProvider' という型のステートフル アクターの構成について"
+	services="Service-Fabric"
+	documentationCenter=".net"
+	authors="sumukhs"
+	manager="anuragg"
+	editor=""/>
 
 <tags
    ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="04/20/2015"
-   ms.author="sumukhs"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/26/2015"
+	ms.author="sumukhs"/>
 
 # 信頼性の高いアクターの構成 - ReliableDictionaryActorStateProvider
 ReliableDictionaryActorStateProvider の既定の構成は、対象の指定されたアクターの "Config" フォルダーの下にある Visual Studio パッケージ ルートで生成された "settings.xml" ファイルを変更することで変更できます。
@@ -88,4 +88,4 @@ MaxRecordSizeInKB は、レプリケーターがログ ファイルに書き込�
 SharedLogId と SharedLogPath の設定は、常に一緒に使用して、サービスがノードの既定の共有ログとは別の共有ログを使用できるようにします。最適な効率を得るため、できるだけ多くのサービスで同じ共有ログを指定してください。共有ログ ファイルは、ヘッドの移動の競合が減るように、共有ログ ファイル専用に使用されるディスクに配置する必要があります。これを変更する必要があるのは、まれなケースだけであると予想されます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

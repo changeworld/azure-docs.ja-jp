@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Redis Cache の監視方法" 
-	description="Azure Redis Cache のインスタンスの正常性とパフォーマンスを監視する方法を学習する" 
-	services="redis-cache" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="dwrede" 
+	pageTitle="Azure Redis Cache の監視方法"
+	description="Azure Redis Cache のインスタンスの正常性とパフォーマンスを監視する方法を学習する"
+	services="redis-cache"
+	documentationCenter=""
+	authors="steved0x"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="cache" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="cache-redis" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.service="cache"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="cache-redis"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2015"
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の監視方法
@@ -24,11 +24,11 @@ Azure Redis Cache には、キャッシュのインスタンスを監視する�
 
 キャッシュ メトリックは、Redis の [INFO](http://redis.io/commands/info) コマンドを使用して収集されます。各キャッシュ メトリックで使用される各種 INFO コマンドの詳細については、「[使用可能なメトリックとレポート期間](#available-metrics-and-reporting-intervals)」を参照してください。
 
-キャッシュ メトリックを確認するには、[Azure ポータル](https://portal.azure.com)で対象のキャッシュ インスタンスに[移動](https://msdn.microsoft.com/library/azure/cbe6d113-7bdc-4664-a59d-ff0df6f4e214#CacheSettings)します。Azure Redis Cache インスタンスのメトリックは、**[Redis Cache]** ブレードからアクセスします。
+キャッシュ メトリックを確認するには、[Azure プレビュー ポータル](https://portal.azure.com)で対象のキャッシュ インスタンスに[移動](https://msdn.microsoft.com/library/azure/cbe6d113-7bdc-4664-a59d-ff0df6f4e214#CacheSettings)します。Azure Redis Cache インスタンスのメトリックは、**[Redis Cache]** ブレードからアクセスします。
 
 ![監視][redis-cache-monitor-overview]
 
->[AZURE.IMPORTANT]Azure ポータルに次のメッセージが表示された場合は、「[キャッシュ診断の有効化](#enable-cache-diagnostics)」セクションの手順に従ってキャッシュ診断を有効にします。
+>[AZURE.IMPORTANT]プレビュー ポータルに次のメッセージが表示された場合は、「[キャッシュ診断の有効化](#enable-cache-diagnostics)」セクションの手順に従ってキャッシュ診断を有効にします。
 >
 >`Monitoring may not be enabled. Click here to turn on Diagnostics.`
 
@@ -58,9 +58,9 @@ Azure Redis Cache には診断データをストレージ アカウントに格�
 
 >[AZURE.IMPORTANT]同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ アカウントを共有するため、構成が変更されるとそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。
 
-格納されたメトリックを表示するには、ストレージ アカウントにあるテーブルで `WADMetrics` で始まる名前を確認します。Azure ポータル外に格納されたメトリックにアクセスする方法の詳細については、[Redis Cache の監視データへのアクセスに関するページ](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)のサンプルを参照してください。
+格納されたメトリックを表示するには、ストレージ アカウントにあるテーブルで `WADMetrics` で始まる名前を確認します。プレビュー ポータル外に格納されたメトリックにアクセスする方法の詳細については、[Redis Cache の監視データへのアクセスに関するページ](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)のサンプルを参照してください。
 
->[AZURE.NOTE]選択したストレージ アカウントに格納されているメトリックのみがポータルに表示されます。ストレージ アカウントを変更すると、以前に構成されたストレージ アカウント内のデータはダウンロードできますが、ポータルでは表示されず、保持期間が経過しても消去されません。
+>[AZURE.NOTE]選択したストレージ アカウントに格納されているメトリックのみがプレビュー ポータルに表示されます。ストレージ アカウントを変更すると、以前に構成されたストレージ アカウント内のデータはダウンロードできますが、プレビュー ポータルでは表示されず、保持期間が経過しても消去されません。
 
 ## 使用可能なメトリックとレポート期間
 
@@ -80,7 +80,7 @@ Azure Redis Cache には診断データをストレージ アカウントに格�
 | 設定数 | 指定したレポート期間中に、キャッシュから実行された設定操作の数。この値は、Redis INFO のすべてのコマンド (`cmdstat_set`、`cmdstat_hset`、`cmdstat_hmset`、`cmdstat_hsetnx`、`cmdstat_lset`、`cmdstat_mset`、`cmdstat_msetnx`、`cmdstat_setbit`、`cmdstat_setex`、`cmdstat_setrange`、および `cmdstat_setnx`) からの値の合計です。 |
 | 合計処理数 | 指定したレポート期間中に、キャッシュ サーバーによって処理されたコマンドの合計数。この値は Redis INFO の `total_commands_processed` コマンドにマッピングされます。Azure Redis Cache をパブリッシュ/サブスクライブにのみ使用する場合、`Cache Hits`、`Cache Misses`、`Gets`、または `Sets` のメトリックは存在しませんが、パブリッシュ/サブスクライブ処理のキャッシュの使用状況を反映する `Total Operations` メトリックが用意されています。 |
 | メモリ使用量 | 指定したレポート期間中に使用されるキャッシュ メモリの量 (MB)。この値は Redis INFO の `used_memory` コマンドにマッピングされます。 |
-| CPU | 指定したレポート期間中に Azure Redis Cache で使用される CPU の割合。この値は、オペレーティング システム `\Processor(_Total)\% Processor Time` パフォーマンス カウンターにマッピングされます。 |
+| CPU | 指定したレポート期間中に Azure Redis Cache で使用される CPU の割合。この値は、オペレーティング システム `\Processor(_Total)% Processor Time` パフォーマンス カウンターにマッピングされます。 |
 | キャッシュの読み取り | 指定したレポート期間中に、キャッシュから読み取られたデータ量 (KB/秒)。この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 |
 | キャッシュの書き込み | 指定したレポート期間中に、キャッシュに書き込まれたデータ量 (KB/秒)。この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 |
 
@@ -221,4 +221,4 @@ Azure のアラートの詳細については、「[アラート通知の受信]
 
 [redis-cache-add-alert]: ./media/cache-how-to-monitor/redis-cache-add-alert.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

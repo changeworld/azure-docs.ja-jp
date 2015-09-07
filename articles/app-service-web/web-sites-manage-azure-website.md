@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure App Service での Web アプリの管理" 
-	description="Azure App Service で Web アプリを管理するためのリソースへリンクしています。" 
-	services="app-service\web" 
-	documentationCenter="" 
-	authors="erikre" 
-	manager="wpickett" 
+	pageTitle="Azure App Service での Web アプリの管理"
+	description="Azure App Service で Web アプリを管理するためのリソースへリンクしています。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="erikre"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/31/2015" 
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/31/2015"
 	ms.author="erikre"/>
 
 # Azure App Service での Web アプリの管理
@@ -22,7 +22,7 @@
 
 Web アプリのライフタイム全体にわたって、初期デプロイから、通常の運用、保守、更新に至るまで、さまざまな管理作業を実行することになります。
 
-Azure ポータルでは、多くの Web アプリ管理作業を実行できます。詳細については、「[Azure ポータルを使用した Web アプリの管理](web-sites-manage.md)」を参照してください。
+Azure ポータルでは、多くの Web アプリ管理作業を実行できます。
 
 ## Web アプリを運用環境にデプロイする前
 
@@ -103,4 +103,4 @@ Visual Studio Online を使用する場合は、ソース管理から継続的�
 
   
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

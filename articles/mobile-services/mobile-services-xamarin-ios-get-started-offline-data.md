@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | Microsoft Azure" 
-	description="Azure Mobile Services を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" 
-	documentationCenter="xamarin" 
-	authors="lindydonna" 
-	editor="wesmc" 
-	manager="dwrede" 
+	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | Microsoft Azure"
+	description="Azure Mobile Services を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
+	documentationCenter="xamarin"
+	authors="lindydonna"
+	editor="wesmc"
+	manager="dwrede"
 	services="mobile-services"/>
 
 <tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
 	ms.date="07/01/2015"
 	ms.author="donnam"/>
 
@@ -47,7 +47,7 @@
 
 ## <a name="review-offline"></a>Mobile Services 同期コードのレビュー
 
-ネットワークにアクセスできない場合、エンドユーザーは Azure モバイル サービスのオフライン同期により、ローカル データベースとやり取りできるようになります。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。このセクションでは、`QSTodoService.cs` のオフライン同期に関連するコードについて説明します。
+ネットワークにアクセスできない場合、エンドユーザーは Azure Mobile Services のオフライン同期により、ローカル データベースとやり取りできるようになります。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。このセクションでは、`QSTodoService.cs` のオフライン同期に関連するコードについて説明します。
 
 1. Visual Studio で、「[Mobile Services の使用]」チュートリアルで完了したプロジェクトを開きます。ファイル `QSTodoService.cs` を開きます。
 
@@ -147,7 +147,7 @@
 
 3. Microsoft Azure の管理ポータルにログインし、モバイル サービスに対応するデータベースを参照します。開発中のサービスが JavaScript バックエンドを使用している場合は、モバイル サービスの [**データ**] タブからデータを参照できます。
 
-    モバイル サービスの .NET バックエンドを使用している場合は、Visual Studio で、[**サーバー エクスプローラー**]、[**Azure**]、[**SQL データベース**] の順に移動します。データベースを右クリックし、[**SQL Server オブジェクト エクスプローラーで開く**] を選択します。
+    モバイル サービスの .NET バックエンドを使用している場合は、Visual Studio で、[**サーバー エクスプローラー**]、[**Azure**]、[**SQL Databases**] の順に移動します。データベースを右クリックし、[**SQL Server オブジェクト エクスプローラーで開く**] を選択します。
 
     データベースとローカル ストアの間でデータがまだ同期されて*いない*ことを確認します。
 
@@ -184,4 +184,4 @@
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,26 +1,27 @@
 <properties
-   pageTitle="ロジック アプリで使用する SharePoint コネクタの作成"
-   description="SharePoint コネクタの作成、ロジック アプリでの SharePoint コネクタの使用"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での SharePoint コネクタの使用 | Microsoft Azure App Service"
+	description="SharePoint コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="sameerch"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="sameerch"/>
 
-# ロジック アプリでの SharePoint コネクタの使用
-
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。Microsoft SharePoint コネクタを使用すると、Microsoft SharePoint Server または SharePoint Online に接続して、ドキュメントやリスト項目を管理できます。さらに、ドキュメントやリスト項目の作成、更新、取得、削除などの操作を実行できます。オンプレミスの SharePoint サーバーを使用する場合は、コネクタの構成の一部として Service Bus 接続文字列を入力し、サーバーに接続するオンプレミスのリスナー エージェントをインストールすることができます。
+# SharePoint コネクタの使用を開始して、SharePoint コネクタをロジック アプリに追加する
+SharePoint Server または SharePoint Online に接続して、ドキュメントやリスト項目を管理します。さらに、ドキュメントやリスト項目の作成、更新、取得、削除などの操作を実行できます。オンプレミスの SharePoint サーバーを使用する場合は、コネクタの構成の一部として Service Bus 接続文字列を入力し、サーバーに接続するオンプレミスのリスナー エージェントをインストールすることができます。
 
 SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラリー アプリでは、SharePoint とやり取りするメカニズムとしてトリガーとアクションを使用できます。
+
+ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。この SharePoint コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ## SharePoint Online コネクタの作成
 
@@ -35,7 +36,8 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 --- | --- | ---
 サイトの URL | はい | SharePoint Web サイトの完全な URL を入力します。たとえば、「**https://microsoft.sharepoint.com/teams/wabstest*」のように入力します。ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されているドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「*Lists/Task, Shared Documents*」のように入力します。
 
-5. 完了すると、パッケージの設定は次のようになります。<br/> ![][1]
+5. 完了すると、パッケージの設定は次のようになります。  
+![][1]
 
 上記の手順を完了すると、同じリソース グループ内に SharePoint Online コネクタを使用するロジック アプリを作成できます。
 
@@ -56,7 +58,8 @@ SharePoint Online コネクタおよび SharePoint Server コネクタ ギャラ
 ドキュメント ライブラリ / リストの相対 URL | はい | コネクタが変更を加えることが許可されるドキュメント ライブラリまたはリストの URL を、SharePoint サイトの URL からの相対位置で入力します。たとえば、「*Lists/Task, Shared Documents*」のように入力します。
 Service Bus の接続文字列 | いいえ | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)
 
-5. 完了すると、パッケージの設定は次のようになります。![][2]
+5. 完了すると、パッケージの設定は次のようになります。  
+![][2]
 
 作業が完了すると、同じリソース グループ内に SharePoint Server コネクタを使用するロジック アプリを作成できます。
 
@@ -71,15 +74,20 @@ API アプリを作成すると、ロジック アプリのトリガーやアク
 
 3. ロジック アプリの先頭で SharePoint コネクタを選択した場合、SharePoint コネクタはトリガーとして動作します。それ以外の場合は、コネクタを使用する SharePoint アカウントに対するアクションとして動作します。
 
-4. SharePoint Online コネクタを使用している場合は、ユーザーの代わりに操作を実行するロジック アプリの認証と承認を行います。承認を開始するには SharePoint コネクタの **[承認]** をクリックします。![][3]
+4. SharePoint Online コネクタを使用している場合は、ユーザーの代わりに操作を実行するロジック アプリの認証と承認を行います。承認を開始するには SharePoint コネクタの **[承認]** をクリックします。  
+![][3]
 
-5. [承認] をクリックすると SharePoint の認証ダイアログ ボックスが開きます。操作を実行する SharePoint アカウントのサインイン詳細情報を入力します。![][4]
+5. [承認] をクリックすると SharePoint の認証ダイアログ ボックスが開きます。操作を実行する SharePoint アカウントのサインイン詳細情報を入力します。  
+![][4]
 
-6. ユーザーの代わりに操作を実行できるように、ロジック アプリにユーザーのアカウントへのアクセス権を付与します。![][5]
+6. ユーザーの代わりに操作を実行できるように、ロジック アプリにユーザーのアカウントへのアクセス権を付与します。  
+![][5]
 
-7. SharePoint コネクタがトリガーとして構成されている場合は、そのトリガーが表示されます。その他の場合はアクションの一覧が表示され、実行する適切な操作を選択できます。![][6]
+7. SharePoint コネクタがトリガーとして構成されている場合は、そのトリガーが表示されます。その他の場合はアクションの一覧が表示され、実行する適切な操作を選択できます。  
+![][6]
   
-**ドキュメント ライブラリ用に構成された相対 URL** ![][7]
+**ドキュメント ライブラリ用に構成された相対 URL**  
+![][7]
 
 **ドキュメント リスト用に構成された相対 URL**
 
@@ -469,4 +477,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [6]: ./media/app-service-logic-connector-sharepoint/image_5.png
 [7]: ./media/app-service-logic-connector-sharepoint/image_6.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

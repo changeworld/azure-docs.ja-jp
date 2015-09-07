@@ -1,4 +1,3 @@
-
 #Azure インフラストラクチャ サービスの負荷分散#
 
 Azure インフラストラクチャ サービスで利用できる負荷分散には 2 つのレベルがあります。
@@ -18,7 +17,7 @@ Azure トラフィック マネージャーは、トラフィックの分散に�
 - **パフォーマンス**: 地理的に異なる複数の場所にエンドポイントがあり、遅延が最小という意味で "最も近い" エンドポイントを使用するようにクライアントに要求する場合に使用します。
 - **ラウンド ロビン**: 同じデータセンター内にある一連のクラウド サービス、または異なるデータセンター内にあるクラウド サービスや Web サイトの間で負荷を分散する場合に使用します。
 
-詳細については、「[Traffic Manager での負荷分散方法について](http://msdn.microsoft.com/library/azure/dn339010.aspx)」を参照してください。
+詳細については、「[Traffic Manager での負荷分散方法について](../traffic-manager/traffic-manager-load-balancing-methods.md)」を参照してください。
 
 次の図は、異なるクラウド サービス間でトラフィックを分散するラウンド ロビンの負荷分散方法の例を示します。
 
@@ -31,8 +30,6 @@ Azure トラフィック マネージャーは、トラフィックの分散に�
 3.	トラフィック マネージャーは、ラウンド ロビン リストにあるクラウド サービスの DNS 名を返します。インターネット クライアントの DNS サーバーは、その名前を IP アドレスに解決してインターネット クライアントに送信します。
 4.	インターネット クライアントは、選択されたクラウド サービスに接続します。
 
-詳細については、「[Traffic Manager](http://msdn.microsoft.com/library/azure/hh745750.aspx)」を参照してください。
-
 ## Azure の仮想マシンの負荷分散 ##
 
 同じクラウド サービスまたは仮想ネットワーク内の複数の仮想マシンは、プライベート IP アドレスを使用して直接やり取りすることができます。クラウド サービスまたは仮想ネットワークの外側にあるコンピューターやサービスは、構成されたエンドポイント経由でのみ、クラウド サービスや仮想ネットワーク内の仮想マシンとやり取りすることができます。エンドポイントとは、Azure クラウド サービス内の仮想マシンまたは Web ロールのパブリック IP アドレスとポートからプライベート IP アドレスとポートへのマッピングです。
@@ -43,7 +40,7 @@ Azure ロード バランサーは、特定の種類の着信トラフィック�
 
 ![負荷分散](./media/load-balancing-vms/LoadBalancing.png)
 
-詳細については、「[Azure ロード バランサー](http://msdn.microsoft.com/library/azure/dn655058.aspx)」を参照してください。負荷分散セットの作成手順については、「[負荷分散セットの構成](http://msdn.microsoft.com/library/azure/dn655055.aspx)」を参照してください。
+詳細については、「[Azure ロード バランサー](../articles/load-balancer/load-balancer-overview.md)」を参照してください。負荷分散セットの作成手順については、「[負荷分散セットの構成](../load-balancer/load-balancer-overview.md)」を参照してください。
 
 Azure はまた、クラウド サービスや仮想ネットワーク内で負荷を分散することもできます。これは内部負荷分散と呼ばれ、次の方法で使用できます。
 
@@ -57,8 +54,8 @@ Azure の負荷分散と同様、内部負荷分散セットを構成すると�
 
 ![負荷分散](./media/load-balancing-vms/LOBServers.png)
 
-詳細については、「[内部負荷分散](http://msdn.microsoft.com/library/azure/dn690121.aspx)」を参照してください。負荷分散セットの作成手順については、「[内部負荷分散セットの構成](http://msdn.microsoft.com/library/azure/dn690125.aspx)」を参照してください。
+詳細については、「[内部負荷分散](../load-balancer/load-balancer-internal-overview.md)」を参照してください。負荷分散セットの作成手順については、「[内部負荷分散セットの構成](../load-balancer/load-balancer-internal-getstarted.md)」を参照してください。
 
 <!-- LINKS -->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

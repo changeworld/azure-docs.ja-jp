@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure SQL Database と Azure VM 内の SQL Server について" 
-	description="Azure Virtual Machines における Azure SQL Database と SQL Server について説明します。アプリケーションにとって最適な SQL テクノロジを決定する一般的なビジネスの要因について確認します。" 
-	services="sql-database, virtual-machines" 
-	documentationCenter="" 
-	authors="Selcin" 
-	manager="jeffreyg" 
+	pageTitle="Azure SQL Database と Azure VM 内の SQL Server について"
+	description="Azure Virtual Machines における Azure SQL Database と SQL Server について説明します。アプリケーションにとって最適な SQL テクノロジを決定する一般的なビジネスの要因について確認します。"
+	services="sql-database, virtual-machines"
+	documentationCenter=""
+	authors="Selcin"
+	manager="jeffreyg"
 	editor="tysonn"/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="vm-windows-sql-server" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/15/2015" 
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="selcint"/>
 
 # Azure SQL Database と Azure VM 内の SQL Server について
@@ -60,7 +60,7 @@ Azure と内部設置型 SQL Server データベースの話を始める前に�
 概して、目的別に最適化された次の 2 つの SQL オプションがあります。
 
 - **Azure SQL Database** は、多くのデータベースをプロビジョニングして管理するためのコスト全体を最小限に抑えられるように最適化されています。アップグレード、高可用性、バックアップなどを含め、仮想マシン、オペレーティング システム、データベース ソフトウェアを管理する必要がないため、継続して発生する管理コストが最小限になります。通常、SQL Database を使用すると、単一の IT または開発リソースで管理されるデータベースの数を飛躍的に増加させることができます。
-- **Azure VM 内で実行される SQL Server** は、ハイブリッド シナリオで既存の内部設置型 SQL Server アプリケーションを Azure に拡張したり、移行シナリオや開発およびテスト シナリオで既存のアプリケーションを Azure にデプロイしたりするために最適化されています。[Azure Virtual Network](http://msdn.microsoft.com/library/azure/jj156007.aspx) 経由で Azure のセカンダリ データベース レプリカを保持するのは、ハイブリッド シナリオの一例です。Azure VM 内の SQL Server では、専用の SQL Server インスタンスおよびクラウド ベースの VM に対する完全な管理者権限があります。仮想マシンの維持に使用できる IT リソースが組織に既にある場合は、Azure VM 内の SQL Server を選択することをお勧めします。VM 内で SQL Server を使用すると、高度にカスタマイズされたシステムを構築して、アプリケーションの固有のパフォーマンスや可用性の要件に対処できます。
+- **Azure VM 内で実行される SQL Server** は、ハイブリッド シナリオで既存の内部設置型 SQL Server アプリケーションを Azure に拡張したり、移行シナリオや開発およびテスト シナリオで既存のアプリケーションを Azure にデプロイしたりするために最適化されています。[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) 経由で Azure のセカンダリ データベース レプリカを保持するのは、ハイブリッド シナリオの一例です。Azure VM 内の SQL Server では、専用の SQL Server インスタンスおよびクラウド ベースの VM に対する完全な管理者権限があります。仮想マシンの維持に使用できる IT リソースが組織に既にある場合は、Azure VM 内の SQL Server を選択することをお勧めします。VM 内で SQL Server を使用すると、高度にカスタマイズされたシステムを構築して、アプリケーションの固有のパフォーマンスや可用性の要件に対処できます。
 
 次の表に Azure SQL Database と Azure VM 内の SQL Server の主な特徴をまとめます。
 
@@ -90,7 +90,7 @@ Azure と内部設置型 SQL Server データベースの話を始める前に�
       <li type=round>セキュリティで保護されたトンネル経由で Azure から内部設置型リソース (Active Directory など) にアクセスする必要がある SQL Server アプリケーション。
       <li type=round>完全な管理者アクセス権があるカスタマイズされた IT 環境を必要とする場合。
       <li type=round>運用環境以外の内部設置型 SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。
-      <li type=round><a href="http://msdn.microsoft.com/library/jj919148.aspx">Azure Storage でのバックアップ</a>や <a href="http://msdn.microsoft.com/library/azure/jj870962.aspx">Azure VM 内の AlwaysOn レプリカ</a>を使用した内部設置型 SQL Server アプリケーションの災害復旧。
+      <li type=round><a href="http://msdn.microsoft.com/library/jj919148.aspx">Azure Storage でのバックアップ</a>や <a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure VM 内の AlwaysOn レプリカ</a>を使用した内部設置型 SQL Server アプリケーションの災害復旧。
       <li type=round>サイズが 1 TB を超える大きなデータベース。
       </ul></td>
    
@@ -114,15 +114,15 @@ Azure と内部設置型 SQL Server データベースの話を始める前に�
 <tr>
    <td valign="middle"><p><b>ビジネス継続性</b></p></td>
    <td valign="middle"><ul><li type=round>Azure SQL Database は、組み込みのフォールト トレランスのインフラストラクチャ機能以外にも、ビジネス継続性を向上させるために、特定の時点への復元、geo リストア、geo レプリケーションなどの機能を提供します。詳細については、「<a href="http://msdn.microsoft.com/library/azure/hh852669.aspx">Azure SQL Database のビジネス継続性</a>」を参照してください。</ul></td>
-   <td valign="middle"><ul><li type=round>Azure VM 内の SQL Server では、データベース固有のニーズのために、高可用性と災害復旧のソリューションを設定できます。そのため、アプリケーション向けにシステムを大幅に最適化できます。必要なときに自分でフェールオーバーをテストして実行できます。詳細については、「<a href="http://msdn.microsoft.com/library/azure/jj870962.aspx">Azure Virtual Machines における SQL Server の高可用性と災害復旧</a>」を参照してください。</ul></td>
+   <td valign="middle"><ul><li type=round>Azure VM 内の SQL Server では、データベース固有のニーズのために、高可用性と災害復旧のソリューションを設定できます。そのため、アプリケーション向けにシステムを大幅に最適化できます。必要なときに自分でフェールオーバーをテストして実行できます。詳細については、「<a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure Virtual Machines における SQL Server の高可用性と災害復旧</a>」を参照してください。</ul></td>
    
 </tr>
 <tr>
    <td valign="middle"><p><b>ハイブリッド クラウド</b></p></td>
    <td valign="middle"><ul><li type=round>内部設置型アプリケーションから Azure SQL Database 内のデータにアクセスできます。</ul></td>
    <td valign="middle"><ul>
-      <li type=round>Azure VM 内の SQL Server を使用して、アプリケーションの一部をクラウドに、一部を内部設置型にすることができます。たとえば、<a href="http://msdn.microsoft.com/library/azure/gg433091.aspx">Azure Network Services</a> 経由で内部設置型ネットワークと Active Domain Directory をクラウドに拡張できます。さらに、<a href="http://msdn.microsoft.com/library/dn385720.aspx">Azure の機能の SQL Server データ ファイル</a>を使用して、Azure Storage に内部設置型のデータ ファイルを格納することができます。詳細については、「<a href="http://msdn.microsoft.com/library/dn606154.aspx">SQL Server 2014 ハイブリッド クラウドの概要</a>」を参照してください。
-      <li type=round>内部設置型 SQL Server アプリケーションの災害復旧をサポートします (<a href="http://msdn.microsoft.com/library/jj919148.aspx">Azure Storage 上のバックアップ</a>または <a href="http://msdn.microsoft.com/library/azure/jj870962.aspx">Azure VM 内の AlwaysOn レプリカ</a>を使用)。
+      <li type=round>Azure VM 内の SQL Server を使用して、アプリケーションの一部をクラウドに、一部を内部設置型にすることができます。たとえば、<a href="https://azure.microsoft.com/documentation/articles/virtual-networks-overview/">Azure Network Services</a> 経由で内部設置型ネットワークと Active Domain Directory をクラウドに拡張できます。さらに、<a href="http://msdn.microsoft.com/library/dn385720.aspx">Azure の機能の SQL Server データ ファイル</a>を使用して、Azure Storage に内部設置型のデータ ファイルを格納することができます。詳細については、「<a href="http://msdn.microsoft.com/library/dn606154.aspx">SQL Server 2014 ハイブリッド クラウドの概要</a>」を参照してください。
+      <li type=round>内部設置型 SQL Server アプリケーションの災害復旧をサポートします (<a href="http://msdn.microsoft.com/library/jj919148.aspx">Azure Storage 上のバックアップ</a>または <a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions">Azure VM 内の AlwaysOn レプリカ</a>を使用)。
       </ul></td>
    
 </tr>
@@ -173,7 +173,7 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 
 手に余るほどの多くのタスクを抱えていると、サーバーやデータベースの管理作業は後回しにしたくなることがあります。多くの企業にとって、クラウド サービスを使用するかどうかは、複雑な管理の負荷を軽減する機能にすべてがかかっています。マイクロソフトでは、**Azure SQL Database** を使用して、ハード ドライブ、サーバー、ストレージなどの物理的ハードウェアを管理しながら、高可用性を提供するためにすべてのデータを自動的にレプリケートし、データベース ソフトウェアの構成やアップグレードを実行し、負荷分散を管理し、サーバー エラーが発生した場合には透過的なフェールオーバーを実行しています。Azure SQL Database インスタンスを引き続き管理できますが、基になる SQL Server インスタンスや Azure プラットフォームの物理リソースは制御できません。たとえば、データベースとログインの管理、インデックスのチューニング、クエリの最適化を行うことができますが、システム テーブルとファイル グループは管理できません。詳細については、「[Azure SQL Database のガイドラインと制限事項](http://msdn.microsoft.com/library/ff394102.aspx)」を参照してください。
 
-一方で、社内に専門知識を蓄積し、コンピューター自体に配置されたデータベースまで制御したいとユーザーが希望することもあります。**Azure VM 内で実行される SQL Server** では、オペレーティング システムと SQL Server インスタンスの構成を完全に制御できます。VM を使用する場合、オペレーティング システムとデータベースのソフトウェアの更新およびアップグレードのタイミングや、ウイルス対策とバックアップ ツールなど追加のソフトウェアのインストールのタイミングは、ユーザーが決定します。また、VM のサイズ、ディスクの数、ストレージの構成を制御できます。たとえば、Azure では、必要に応じて、実行中の VM のサイズを変更できます。詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
+一方で、社内に専門知識を蓄積し、コンピューター自体に配置されたデータベースまで制御したいとユーザーが希望することもあります。**Azure VM 内で実行される SQL Server** では、オペレーティング システムと SQL Server インスタンスの構成を完全に制御できます。VM を使用する場合、オペレーティング システムとデータベースのソフトウェアの更新およびアップグレードのタイミングや、ウイルス対策とバックアップ ツールなど追加のソフトウェアのインストールのタイミングは、ユーザーが決定します。また、VM のサイズ、ディスクの数、ストレージの構成を制御できます。たとえば、Azure では、必要に応じて、実行中の VM のサイズを変更できます。詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](https://azure.microsoft.com/documentation/articles/virtual-machines-size-specs)」を参照してください。
 
 ###<a name="sla"></a>サービス レベル アグリーメント (SLA)
 
@@ -188,7 +188,7 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 
 **Azure SQL Database** は、開発者の生産性と製品化に要する時間の短縮が重要な、クラウド用に設計されたアプリケーションに最適なソリューションです。プログラムによる DBA のような機能を備えることで、基になるオペレーティング システムとデータベースを管理する必要性が減少するため、クラウドの設計者と開発者に最適です。開発者がデータベースに関連するタスクを理解し構成しやすくなります。たとえば、[REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) と [PowerShell のコマンドレット](http://msdn.microsoft.com/library/azure/dn546726.aspx)を使用して、数千のデータベースの管理の操作を自動化し、管理できます。クラウドを[柔軟にスケーリング](sql-database-elastic-pool.md)することで、アプリケーション層に容易に専念し、アプリケーションをより早く市場に提供することができます。
 
-**Azure VM 内で実行される SQL Server** は、既存および新規のアプリケーションで SQL Server インスタンスのすべての機能に対するアクセスと制御が必要な場合や、既存の内部設置型アプリケーションとデータベースをクラウドにそのまま移行する場合に最適です。プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。代わりに、VM へのソリューションのすべてのパッケージの移行と、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。詳細については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](http://msdn.microsoft.com/library/azure/dn133149.aspx)」を参照してください。
+**Azure VM 内で実行される SQL Server** は、既存および新規のアプリケーションで SQL Server インスタンスのすべての機能に対するアクセスと制御が必要な場合や、既存の内部設置型アプリケーションとデータベースをクラウドにそのまま移行する場合に最適です。プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。代わりに、VM へのソリューションのすべてのパッケージの移行と、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。詳細については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices)」を参照してください。
 
 ##<a name="summary"></a>概要
 
@@ -234,13 +234,13 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 </tr>
 <tr>
    <td valign="middle"><p><a href="http://msdn.microsoft.com/library/azure/ee336279.aspx">MSDN: Azure SQL データベース</a></p>
-<p><a href="http://msdn.microsoft.com/library/azure/jj823132.aspx">MSDN: Azure の仮想マシンにおける SQL Server</a></p>
+<p><a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/">Azure の仮想マシンにおける SQL Server の概要</a></p>
 
 <p><a href="http://azure.microsoft.com/services/sql-database/">Azure.com: Azure SQL Database</a></p></td>
    <td valign="middle">ライブラリのドキュメントへのリンク</td>   
 </tr>
 <tr>
-   <td valign="middle"><p><a href="http://msdn.microsoft.com/library/dn574746.aspx">Azure の仮想マシンにおける SQL Server のアプリケーション パターンと開発計画</p></td>
+   <td valign="middle"><p><a href="https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-application-patterns-and-development-strategies/">Azure の仮想マシンにおける SQL Server のアプリケーション パターンと開発計画</p></td>
    <td valign="middle">この記事では、Azure VM における SQL Server と Azure SQL Database などのハイブリッド シナリオに適用される最も一般的なアプリケーション パターンについて説明しています。</td>   
 </tr>
 <tr>
@@ -253,4 +253,4 @@ Azure SQL Database と Azure VM 内の SQL Server で実行されるアプリケ
 [1]: ./media/data-management-azure-sql-database-and-sql-server-iaas/SQLIAAS_SQL_Server_Cloud_Continuum.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

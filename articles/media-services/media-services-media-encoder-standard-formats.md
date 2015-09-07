@@ -1,33 +1,33 @@
 <properties 
-	pageTitle="メディア エンコーダーの標準形式とコーデック" 
-	description="このトピックでは、Azure Media Encoder の標準形式とコーデックの概要を示します。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="juliako" 
-	manager="dwrede" 
+	pageTitle="Media Encoder Standard の形式とコーデック"
+	description="このトピックでは、Azure Media Encoder Standard の形式とコーデックの概要を示します。"
+	services="media-services"
+	documentationCenter=""
+	authors="juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
 	ms.date="08/11/2015"
 	ms.author="juliako"/>
 
-#メディア エンコーダーの標準形式とコーデック
+#Media Encoder Standard の形式とコーデック
 
 
-このドキュメントでは、メディア エンコーダーの標準で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。
+このドキュメントでは、Media Encoder Standard で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。
 
 
-[メディア エンコーダーのインポート形式](#import_formats)
+[Media Encoder のインポート形式](#import_formats)
 
-[メディア エンコーダーのエクスポート形式](#export_formats)
+[Media Encoder のエクスポート形式](#export_formats)
 
 
-##<a id="import_formats"></a>メディア エンコーダーのインポート形式 
+##<a id="import_formats"></a>Media Encoder Standard のインポート形式 
 
 次のセクションでは、インポートでサポートされるコーデックとファイル形式の一覧を示します。
 
@@ -69,7 +69,7 @@ GXF|.gxf
 WAVE/WAV |.wav
 
 
-##<a id="export_formats"></a>メディア エンコーダーのエクスポート形式
+##<a id="export_formats"></a>Media Encoder Standard のエクスポート形式
 
 次の表では、エクスポートでサポートされるコーデックおよびファイル形式の一覧を示します。
 
@@ -81,6 +81,6 @@ MPEG2-TS |H.264 (High、Main、Baseline Profile)|AAC-LC、HE-AAC v1、HE-AAC v2
 
 ##関連項目
 
-[Azure メディア エンコーダーを使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md)
+[Azure Media Services を使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

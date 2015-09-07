@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/03/2015"
+	ms.date="08/26/2015"
 	ms.author="mandia"/>
 
 
@@ -28,9 +28,9 @@
 選択したエディションによっては、BizTalk サービスの設定の一部が使用できないことがあります。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 下部のナビゲーション ウィンドウで、[**新規**] をクリックします。<br/>![[新規] をクリック][NEWButton]
+2. 下部のナビゲーション ウィンドウで、**[新規]** をクリックします。![[新規] をクリック][NEWButton]
 
-3. [**アプリケーション サービス**]、[**BizTalk サービス**]、[**カスタム作成**] の順に選択します。 <br/> ![[BizTalk サービス]、[カスタム作成] の順にクリックします。][NewBizTalkService]
+3. **[アプリケーション サービス]**、**[BizTalk サービス]**、**[カスタム作成]** の順に選択します。![[BizTalk サービス]、[カスタム作成] の順にクリックします。][NewBizTalkService]
 
 4. BizTalk サービスの設定を入力します。
 
@@ -107,11 +107,11 @@ BizTalk サービスで使用される SQL データベース名を入力しま�
 </tr>
 </table>
 
-チェック マークをオンにして、ウィザードを完了します。進行状況アイコンが表示されます。<br/> ![完了時に表示される進行状況アイコン][ProgressComplete]
+チェック マークをオンにして、ウィザードを完了します。進行状況アイコンが表示されます。![完了時に表示される進行状況アイコン][ProgressComplete]
 
-完了すると、Azure BizTalk サービスが作成され、アプリケーションで使用できる状態になります。既定の設定で十分です。既定の設定を変更する場合は、左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービスを選択します。追加の設定が、一番上の [[ダッシュボード]、[監視]、および [スケール] の各タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)に表示されます。
+完了すると、Azure BizTalk サービスが作成され、アプリケーションで使用できる状態になります。既定の設定で十分です。既定の設定を変更する場合は、左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービスを選択します。追加の設定が、一番上の [[ダッシュボード]、[監視]、および [スケール] の各タブ](biztalk-dashboard-monitor-scale-tabs.md)に表示されます。
 
-BizTalk サービスの状態によっては、一部の操作を完了できません。これに該当する操作の一覧については、[BizTalk サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)を参照してください。
+BizTalk サービスの状態によっては、一部の操作を完了できません。これに該当する操作の一覧については、[BizTalk サービスの状態のチャート](biztalk-service-state-chart.md)を参照してください。
 
 
 ## プロビジョニング後の手順
@@ -126,7 +126,7 @@ BizTalk サービスをプロビジョニングするときに、自己署名証
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービス サブスクリプションを選択します。
 3. **[ダッシュボード]** タブを選択します。
-4. [**SSL 証明書のダウンロード**] を選択します。 <br/> ![SSL 証明書の変更][QuickGlance]
+4. **[SSL 証明書のダウンロード]** を選択します。![SSL 証明書の変更][QuickGlance]
 5. 証明書をダブルクリックし、ウィザードを最後まで実行して証明書をインストールします。この証明書は必ず **[信頼されたルート証明機関]** ストアにインストールしてください。
 
 #### <a name="AddCert"></a>運用対応証明書を追加する
@@ -139,7 +139,7 @@ BizTalk サービスの作成時に自動的に作成される自己署名証明
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
 2. 左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービスを選択します。
-3. タスク バーで [**接続情報**] をクリックします。 <br/> ![[接続情報] の選択][ACSConnectInfo]
+3. タスク バーで **[接続情報]** をクリックします。![[接続情報] の選択][ACSConnectInfo]
 
 4. Access Control の値をコピーします。
 
@@ -147,13 +147,13 @@ Visual Studio から BizTalk サービス プロジェクトを展開すると�
 
 Access Control の値は、どのアプリケーションでも使用できます。Azure BizTalk サービスが作成されると、この Access Control 名前空間によって BizTalk サービス デプロイメントでの認証が制御されます。サブスクリプションを変更する場合や名前空間を管理する場合は、左側のナビゲーション ウィンドウで **[Active Directory]** をクリックし、名前空間を選択します。タスク バーに、選択可能なオプションが表示されます。
 
-**[管理]** をクリックすると、Access Control 管理ポータルが開きます。Access Control 管理ポータルでは、BizTalk サービスにより**サービス ID** が使用されます。 <br/> ![Access Control 管理ポータルにおける ACS サービス ID][ACSServiceIdentities]
+**[管理]** をクリックすると、Access Control 管理ポータルが開きます。Access Control 管理ポータルでは、BizTalk サービスにより**サービス ID** が使用されます。![Access Control 管理ポータルにおける ACS サービス ID][ACSServiceIdentities]
 
 Access Control サービス ID は、アプリケーションまたはクライアントが Access Control で直接認証してトークンを受け取るための一連の資格情報です。
 
 > [AZURE.IMPORTANT]BizTalk サービスでは、既定のサービス ID の**所有者**と**パスワード**値が使用されます。パスワード値の代わりに対称キー値を使用した場合、次のエラーが発生する可能性があります。<br/><br/>*指定された資格情報を使用して Access Control 管理サービス アカウントに接続できませんでした*
 
-ガイドラインと推奨事項については、[ACS 名前空間の管理](http://go.microsoft.com/fwlink/p/?LinkID=285670)に関するページを参照してください。
+ガイドラインと推奨事項については、[ACS 名前空間の管理](https://msdn.microsoft.com/library/azure/hh674478.aspx)に関するページを参照してください。
 
 ## 要件の説明
 
@@ -213,21 +213,21 @@ Azure BizTalk サービスを作成するときに、**[ハイブリッド接続
 
 "ハイブリッド接続" を使用すると、Azure Web サイトや Azure モバイル サービスと、静的 TCP ポートを使用する内部設置型リソース (たとえば SQL Server、MySQL、HTTP Web API、Mobile Services、ほとんどのカスタム Web サービス) とを接続できます。ハイブリッド接続と BizTalk Adapter サービスは別のものです。BizTalk Adapter サービスは、Azure BizTalk サービスを内部設置型の基幹業務 (LOB) システムに接続するために使用されます。
 
- ハイブリッド接続の作成と管理の方法などの情報については、「[ハイブリッド接続](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
+ ハイブリッド接続の作成と管理の方法などの情報については、「[ハイブリッド接続](integration-hybrid-connection-overview.md)」を参照してください。
 
 
 ## 次のステップ
 
-BizTalk サービスが作成されたので、[BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)のページでこれらのタブについての理解を深めてください。BizTalk サービスをアプリケーションで使用する準備ができました。アプリケーションの作成を開始するには、[Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
+BizTalk サービスが作成されたので、[BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)のページでこれらのタブについての理解を深めてください。BizTalk サービスをアプリケーションで使用する準備ができました。アプリケーションの作成を開始するには、[Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
 
 ## 関連項目
-- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [BizTalk サービス: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-- [BizTalk サービス: バックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-- [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-- [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-- [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
-- [ハイブリッド接続](http://go.microsoft.com/fwlink/p/?LinkID=397274)
+- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)<br/>
+- [BizTalk サービス: サービスの状態のチャート](biztalk-service-state-chart.md)<br/>
+- [BizTalk サービス: バックアップと復元](biztalk-backup-restore.md)<br/>
+- [BizTalk サービス: 調整](biztalk-throttling-thresholds.md)<br/>
+- [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
+- [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+- [ハイブリッド接続](integration-hybrid-connection-overview.md)
 
 [NewBizTalkService]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png
 [NEWButton]: ./media/biztalk-provision-services/WABS_New.png
@@ -237,4 +237,4 @@ BizTalk サービスが作成されたので、[BizTalk サービス: [ダッシ
 [ACSServiceIdentities]: ./media/biztalk-provision-services/WABS_ACSServiceIdentities.png
 [HybridConnectionTab]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

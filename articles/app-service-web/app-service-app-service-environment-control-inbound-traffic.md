@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="App Service 環境への受信トラフィックを制御する方法" 
-	description="App Service 環境への受信トラフィックを制御するネットワーク セキュリティ ルールを構成する方法について説明します。" 
-	services="app-service\web" 
-	documentationCenter="" 
-	authors="ccompy" 
-	manager="wpickett" 
+	pageTitle="App Service 環境への受信トラフィックを制御する方法"
+	description="App Service 環境への受信トラフィックを制御するネットワーク セキュリティ ルールを構成する方法について説明します。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="ccompy"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/30/2015" 
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/30/2015"
 	ms.author="stefsh"/>
 
 # App Service 環境への受信トラフィックを制御する方法
@@ -121,13 +121,13 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[virtualnetwork]: https://msdn.microsoft.com/library/azure/dn133803.aspx
+[virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
 [HowToCreateAnAppServiceEnvironment]: http://azure.microsoft.com/documentation/articles/app-service-web-how-to-create-an-app-service-environment/
-[NetworkSecurityGroups]: https://msdn.microsoft.com/library/azure/dn848316.aspx
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 [IntroToAppServiceEnvironment]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
 [SecurelyConnecttoBackend]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-securely-connecting-to-backend-resources/
 
 <!-- IMAGES -->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

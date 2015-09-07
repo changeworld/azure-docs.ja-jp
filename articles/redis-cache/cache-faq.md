@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Redis Cache の FAQ" 
-	description="Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。" 
-	services="redis-cache" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="dwrede" 
+	pageTitle="Azure Redis Cache の FAQ"
+	description="Azure Redis Cache についてよく寄せられる質問の回答、パターンとベスト プラクティスについて説明します。"
+	services="redis-cache"
+	documentationCenter=""
+	authors="steved0x"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="cache" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="cache-redis" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/24/2015" 
+	ms.service="cache"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="cache-redis"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2015"
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -32,7 +32,7 @@ Azure Redis Cache には、さまざまなレベルの**サイズ**、**帯域�
 
 キャッシュ サイズと帯域幅は、キャッシュをホストする仮想マシンのサイズと帯域幅にほぼ対応します。Basic プランと Standard プランの 250 MB のサイズは、共有コアを使用してホストされる XS (A0) 仮想マシン サイズでホストされます。これ以外のサイズは、専用のコアを使用してホストされます。1 GB のキャッシュ サイズは、オペレーティング システムと Redis キャッシュの両方のサービスに使用される 1 つの専用仮想コアを持つ S (A1) 仮想マシン サイズでホストされます。さらにサイズが大きなキャッシュは、複数の専用仮想コアを持つより大きな VM インスタンスでホストされます。
 
-キャッシュのスループットが高い場合は、1 GB 以上のサイズを選択します。この場合、キャッシュは専用のコアを使用して実行されます。1 GB のキャッシュ サイズは、シングル コアの仮想マシンでホストされます。このコアは、OS とキャッシュの両方のサービスに使用されます。1 GB を超えるキャッシュは複数のコアを持つ仮想マシンで実行されます。Redis キャッシュは、OS と共有されない専用のコアを使用します。
+キャッシュのスループットが高い場合は、1 GB 以上のサイズを選択します。この場合、キャッシュは専用のコアを使用して実行されます。1 GB のキャッシュ サイズは、シングル コアの仮想マシンでホストされます。このコアは、OS とキャッシュの両方のサービスに使用されます。1 GB を超えるキャッシュは複数のコアを持つ仮想マシンで実行されます。Redis Cache は、OS と共有されない専用のコアを使用します。
 
 **Redis はシングル スレッドです**。したがって、3 つ以上のコアを使用しても 2 つのコアを使用する場合と比べて追加のメリットはありません。ただし、一般に、**VM のサイズが大きいほど、小さなサイズよりも多くの帯域幅を利用できます**。キャッシュ サーバーまたはクライアントが帯域幅の制限に達すると、クライアント側でタイムアウトが発生します。
 
@@ -58,7 +58,7 @@ C6|53 GB|153,219|1,000+
 <a name="cache-billing"></a>
 ## Azure Redis Cache の課金方法を教えてください。
 
-Azure Redis Cache の価格については、[ここ](http://azure.microsoft.com/pricing/details/cache/)を参照してください。料金ページには、1 時間単位の料金が表示されます。キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。キャッシュの課金を停止または一時停止するオプションはありません。
+Azure Redis Cache の価格については、[ここ](http://azure.microsoft.com/pricing/details/cache/)を参照してください。価格ページには、1 時間単位の価格が表示されます。キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。キャッシュの課金を停止または一時停止するオプションはありません。
 
 <a name="cache-timeouts"></a>
 ## タイムアウトが発生する理由
@@ -141,11 +141,11 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 <a name="cache-benchmarking"></a>
 ## キャッシュのベンチマークを実行およびテストする方法
 
--	[キャッシュ診断の有効化](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)によってキャッシュの正常性を[監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)できるようにします。ポータルではメトリックを表示できますが、お好みのツールを使用し、それを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
+-	[キャッシュ診断の有効化](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)によってキャッシュの正常性を[監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)できるようにします。プレビュー ポータルではメトリックを表示できますが、お好みのツールを使用し、それを[ダウンロードして確認](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)することも可能です。
 -	redis-benchmark.exe を使用して Redis サーバーのロード テストを実行できます。
 	-	ロード テスト クライアントと Redis キャッシュが同じリージョン内にあることを確認します。
 -	redis-cli.exe を使用し、INFO コマンドを使用してキャッシュを監視します。
-	-	負荷が高いことが原因でメモリの断片化が発生している場合は、キャッシュのサイズを大きくする必要があります。
+	-	負荷が高いことが原因でメモリの断片化が発生している場合は、キャッシュのサイズをスケールアップする必要があります。
 -	Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
 
 <a name="cache-commands"></a>
@@ -153,7 +153,7 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 
 [Azure Redis Cache でサポートされない Redis コマンド](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache)のページに示されているコマンドを除いて、[Redis コマンド](http://redis.io/commands#)のページに示されているすべてのコマンドを使用できます。Redis コマンドを実行するには、いくつかのオプションがあります。
 
--	Standard キャッシュがある場合は、[Redis コンソール](cache-configure.md#redis-console)を使用して Redis コマンドを実行できます。これは、Azure ポータルで Redis コマンドを安全に実行するための方法です。
+-	Standard キャッシュがある場合は、[Redis コンソール](cache-configure.md#redis-console)を使用して Redis コマンドを実行できます。これは、プレビュー ポータルで Redis コマンドを安全に実行するための方法です。
 -	Redis コマンド ライン ツールを使用することもできます。これらを使用するには、次の手順に従います。
 	-	[Redis コマンド ライン ツール](https://github.com/MSOpenTech/redis/releases/download/win-2.8.19.1/redis-2.8.19.zip)をダウンロードします。
 	-	`redis-cli.exe` を使用してキャッシュに接続します。次の例に示すように、-h スイッチを使用してキャッシュ エンドポイントを渡し、-a を使用してキーを渡します。
@@ -175,4 +175,4 @@ Microsoft Azure Redis Cache は、広く普及しているオープン ソース
 
 クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](http://azure.microsoft.com/documentatgion/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

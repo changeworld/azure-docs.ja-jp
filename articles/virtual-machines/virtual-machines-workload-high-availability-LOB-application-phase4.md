@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="基幹業務アプリケーションのワークロード フェーズ 4: Web サーバーを構成する" 
-	description="高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこの第 4 フェーズでは、Web サーバーを作成して基幹業務アプリケーションをロードします。" 
+	pageTitle="基幹業務アプリケーションのフェーズ 4 | Microsoft Azure"
+	description="Web サーバーを作成し、基幹業務アプリケーションを Web サーバーにロードします。"
 	documentationCenter=""
-	services="virtual-machines" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	services="virtual-machines"
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/11/2015"
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 4: Web サーバーを構成する
@@ -168,4 +168,4 @@ Test-AzureStaticVNetIP コマンドで表示される **IsAvailable** フィー�
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

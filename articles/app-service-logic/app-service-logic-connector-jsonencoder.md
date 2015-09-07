@@ -1,23 +1,25 @@
 <properties
-   pageTitle="BizTalk JSON エンコーダー"
-   description="BizTalk JSON エンコーダー"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="rajeshramabathiran"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での BizTalk JSON エンコーダー コネクタの使用 | Microsoft Azure App Service"
+	description="BizTalk JSON エンコーダー コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="rajeshramabathiran"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="rajram"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="rajram"/>
 
-# BizTalk JSON エンコーダー
+# BizTalk JSON エンコーダーの使用開始とロジック アプリへの追加 
 BizTalk JSON エンコード/デコード コネクタは、JSON データと XML データの間でアプリを相互運用するのに役立ちます。JSON インスタンスを指定して XML に変換したり、その逆方向に変換したりできます。
+
+この BizTalk JSON エンコーダーをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ## BizTalk JSON エンコーダーを使用する
 BizTalk JSON エンコーダー を使用するには、まず、BizTalk JSON Encoder API アプリのインスタンスを作成する必要があります。これは、ロジック アプリの作成時にインラインで作成するか、または Azure Marketplace から BizTalk JSON エンコーダー API アプリを選択することによって作成できます。
@@ -64,4 +66,4 @@ Remove Outer Envelope|文字列|XML コンテンツからルート ノードを�
 <!--Links -->
 [ロジック アプリの作成]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

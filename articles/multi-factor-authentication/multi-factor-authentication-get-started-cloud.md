@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="クラウドでの Azure Multi-Factor Authentication Server の概要" 
-	description="クラウドで Azure MFA を開始する方法について説明する Azure Multi-Factor Authentication のページです。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="クラウドでの Azure Multi-Factor Authentication Server の概要"
+	description="クラウドで Azure MFA を開始する方法について説明する Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="07/02/2015" 
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # クラウドでの Azure Multi-Factor Authentication Server の概要
@@ -156,4 +156,4 @@ Windows PowerShell を使用してユーザーの状態を変更するには、�
 ## 次のステップ
 クラウドでの多要素認証のセットアップが完了したので、「[Azure Multi-Factor Authentication の構成](multi-factor-authentication-whats-next.md)」に移動して次の手順に移動できます。 そこでは、レポート、不正行為のアラート、音声メッセージのカスタマイズ、および Azure Multi-Factor Authentication が提供するすべての機能について学びます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

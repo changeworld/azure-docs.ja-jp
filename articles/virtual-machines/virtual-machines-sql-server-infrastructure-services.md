@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="Azure Virtual Machines における SQL Server の概要" 
-	description="この記事は、Azure IaaS Virtual Machines でホストされている SQL Server の概要を示します。この記事には詳しいコンテンツへのリンクが掲載されています。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="rothja" 
+	pageTitle="Azure VM 上の SQL Server の概要"
+	description="この記事は、Azure IaaS Virtual Machines でホストされている SQL Server の概要を示します。この記事には詳しいコンテンツへのリンクが掲載されています。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="rothja"
 	manager="jeffreyg"
 	editor=""/>
 
@@ -12,32 +12,55 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
-	ms.workload="infrastructure-services" 
-	ms.date="08/18/2015"
+	ms.workload="infrastructure-services"
+	ms.date="08/24/2015"
 	ms.author="jroth"/>
 
 # Azure Virtual Machines における SQL Server の概要
 
-## 概要
-AlwaysOn 可用性グループと Azure Virtual Network を使用すると、1 つのデータベース サーバーや複数のコンピューターなど、さまざまな構成で、[Azure Virtual Machines に SQL Server](http://azure.microsoft.com/services/virtual-machines/sql-server/) をホストすることができます。このトピックでは、Azure 仮想マシンで SQL Server の実行を開始するための最適なリソースをいくつか紹介します。
+## 使用の開始
+AlwaysOn 可用性グループと Azure Virtual Network を使用すると、1 つのデータベース サーバーや複数のコンピューターなど、さまざまな構成で、[Azure Virtual Machines に SQL Server](http://azure.microsoft.com/services/virtual-machines/sql-server/) をホストすることができます。
 
 >[AZURE.NOTE]Azure VM で SQL Server を実行することは、リレーショナル データを Azure に格納するための 1 つのオプションです。Azure SQL Database サービスを使用することもできます。詳細については、「[Azure SQL Database と Azure VM 内の SQL Server について](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。
- 
-## 1 つの VM での SQL Server インスタンスのデプロイ
 
-Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Azure 管理ポータルで SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-provision-sql-server.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
+Azure で SQL Server 仮想マシンを作成するには、最初に Azure プラットフォーム サブスクリプションを入手する必要があります。Azure サブスクリプションは、[Purchase Options](http://azure.microsoft.com/pricing/purchase-options/) で購入できます。無料で試用するには、[Azure 無料評価版](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
-ただし、SQL Server がプレインストールされていない状態で [Azure の仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。
+### 1 つの VM での SQL Server インスタンスのデプロイ
+
+サブスクリプションにサインアップした後、Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Azure 管理ポータルで SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-provision-sql-server.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
+
+Azure Virtual Machines で SQL Server の一般的なワークロードを実行できます。SQL Server では、ギャラリーで提供されている、最適化された仮想マシン イメージをいくつか使用することができます。特定のワークロードについては、次を参照してください。
+
+- [Azure の仮想マシンでの SQL Server Business Intelligence](virtual-machines-sql-server-business-intelligence.md)
+- [SQL Server Data Warehousing and Transactional Workloads in Azure Virtual Machines (Azure の仮想マシンにおける SQL Server データ ウェアハウスおよびトランザクション ワークロード)](virtual-machines-sql-server-dw-and-oltp-workloads.md)
+
+次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。
+
+|SQL Server のバージョン|オペレーティング システム|SQL Server のエディション|
+|---|---|---|
+|SQL Server 2008 R2 SP2|Windows Server 2008 R2|Enterprise、Standard、および Web|
+|SQL Server 2008 R2 SP3|Windows Server 2008 R2|Enterprise、Standard、および Web|
+|SQL Server 2012 SP2|Windows Server 2012|Enterprise、Standard、Web、OLTP (Enterprise)、および Data Warehouse (Enterprise)|
+|SQL Server 2012 SP2|Windows Server 2012 R2|Enterprise、Standard、Web、OLTP (Enterprise)、および Data Warehouse (Enterprise)|
+|SQL Server 2014|Windows Server 2012 R2|Enterprise、Standard、Web、OLTP (Enterprise)、および Data Warehouse (Enterprise)|
+|SQL Server 2014 SP1|Windows Server 2012 R2|Enterprise、Standard、Web、OLTP (Enterprise)、および Data Warehouse (Enterprise)|
+|SQL Server 2016 CTP|Windows Server 2012 R2|評価|
+
+これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure の仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure の仮想マシンで SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure のコンピューティングおよびストレージ [コスト](http://azure.microsoft.com/pricing/details/virtual-machines) のみを支払います。
 
 これらのプロビジョニングと構成の初期段階での一般的なタスクは、次のとおりです。
 
-- [Azure VM における SQL Server のパフォーマンスに関するベスト プラクティスの確認](https://msdn.microsoft.com/library/azure/dn133149.aspx)
-- [Azure VM における SQL Server のセキュリティに関するベスト プラクティスの確認](https://msdn.microsoft.com/library/azure/dn133147.aspx)
+- [Azure VM における SQL Server のパフォーマンスに関するベスト プラクティスの確認](virtual-machines-sql-server-performance-best-practices.md)
+- [Azure VM における SQL Server のセキュリティに関するベスト プラクティスの確認](virtual-machines-sql-server-security-considerations.md)
 - [接続のセットアップ](virtual-machines-sql-server-connectivity.md)
 
-## 複数の VM での高可用性構成のデプロイ
+### データの移行
 
-SQL Server AlwaysOn 可用性グループを使用すると、SQL Server の高可用性を実現できます。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure プレビュー ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。
+SQL Server 仮想マシンを起動した後、マシンに既存のデータベースを移行できます。複数の手法がありますが、SQL Server Management Studio のデプロイ ウィザードは、ほとんどのシナリオに適してします。シナリオの詳細とウィザードのチュートリアルについては、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)」をご覧ください。
+
+## 高可用性
+
+高可用性が必要な場合は、SQL Server AlwaysOn 高可用性グループの構成を検討してください。そのために、1 つの仮想ネットワークで複数の Azure VM を使用します。Azure プレビュー ポータルには、この構成が事前に設定されたテンプレートがあります。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。
 
 可用性グループおよび関連付けられているリスナーを手動で構成する場合は、次の記事を参照してください。
 
@@ -45,22 +68,80 @@ SQL Server AlwaysOn 可用性グループを使用すると、SQL Server の高�
 - [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)
 - [オンプレミスの AlwaysOn 可用性グループの Azure への拡張](virtual-machines-sql-server-extend-on-premises-alwayson-availability-groups.md)
 
-その他の高可用性構成については、「[Azure Virtual Machines 内の SQL Server の高可用性と災害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)」を参照してください。
-
-## Azure でのビジネス インテリジェンス、データ ウェアハウジング、OLTP ワークロードの実行   
-Azure Virtual Machines で SQL Server の一般的なワークロードを実行できます。SQL Server では、ギャラリーで提供されている、最適化された仮想マシン イメージをいくつか使用することができます。次のイメージが含まれます。
-
-- [ビジネス インテリジェンス](https://msdn.microsoft.com/library/azure/jj992719.aspx)
-- [データ ウェアハウス](https://msdn.microsoft.com/library/azure/dn387396.aspx)
-- [OLTP](https://msdn.microsoft.com/library/azure/dn387396.aspx)
-
-## データの移行
-
-SQL Server 仮想マシンを起動した後、マシンに既存のデータベースを移行できます。複数の手法がありますが、SQL Server Management Studio のデプロイ ウィザードは、ほとんどのシナリオに適してします。シナリオの詳細とウィザードのチュートリアルについては、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)」を参照してください。
+その他の高可用性構成については、「[Azure の仮想マシン内の SQL Server の高可用性と災害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)」を参照してください。
 
 ## バックアップと復元
-オンプレミス データベースを使う場合は、SQL Server のバックアップ ファイルを格納するためのセカンダリ データ センターとして Azure を利用できます。バックアップと復元のオプションの概要については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。
+オンプレミス データベースを使う場合は、SQL Server のバックアップ ファイルを格納するためのセカンダリ データ センターとして Azure を利用できます。バックアップと復元のオプションの概要については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」をご覧ください。
 
 [SQL Server Backup to URL](https://msdn.microsoft.com/library/dn435916.aspx) を実行すると、Azure のバックアップ ファイルが Azure BLOB ストレージに格納されます。[SQL Server マネージ バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)を実行すると、Azure でバックアップのスケジュールと保持期間を設定できます。これらのサービスは、オンプレミスの SQL Server インスタンスか、Azure VM で実行されている SQL Server で使用できます。Azure VM は、SQL Server の[自動バックアップ](virtual-machines-sql-server-automated-backup.md)や[修正プログラムの自動適用](virtual-machines-sql-server-automated-patching.md)を活用することもできます。
 
-<!---HONumber=August15_HO8-->
+## SQL Server VM イメージ構成の詳細
+
+次の表では、プラットフォームによって提供される SQL Server の仮想マシン イメージの構成について説明します。
+
+### Windows Server
+
+プラットフォーム イメージでの Windows Server のインストールには、次の構成設定とコンポーネントが含まれています。
+
+|機能|構成
+|---|---|
+|リモート デスクトップ|管理アカウントに対して有効|
+|Windows Update|有効|
+|ユーザー アカウント|既定では、プロビジョニング中に指定されるユーザー アカウントは、ローカルの管理グループのメンバーです。この管理者アカウントは、SQL Server の sysadmin サーバー ロールのメンバーでもあります|
+|ワークグループ|仮想マシンは、WORKGROUP という名前のワークグループのメンバーです|
+|ゲスト アカウント|無効|
+|セキュリティが強化された Windows ファイアウォール|反対に、|
+|.NET Framework|バージョン 4|
+|ディスク|選択したサイズにより、構成できるデータ ディスクの数が制限されます。「[Azure の仮想マシンのサイズ](virtual-machines-size-specs.md)」をご覧ください。|
+
+### SQL Server
+
+プラットフォーム イメージでの SQL Server のインストールには、次の構成設定とコンポーネントが含まれています。
+
+|機能|構成|
+|---|---|
+|データベース エンジン|インストール済み|
+|Analysis Services|インストール済み|
+|Integration Services|インストール済み|
+|Reporting Services|ネイティブ モードで構成|
+|AlwaysOn 可用性グループ|SQL Server 2012 以降で使用できます。[追加構成](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)が必要です
+|レプリケーション|インストール済み|
+|検索用のフルテキストおよびセマンティック抽出|インストール済み (セマンティック抽出は SQL Server 2012 以降のみ)|
+|Data Quality Services|インストール済み (SQL Server 2012 以降のみ)|
+|Master Data Services|インストール済み (SQL Server 2012 以降のみ)。[追加構成とコンポーネント](https://msdn.microsoft.com/library/ee633752.aspx)が必要です
+|PowerPivot for SharePoint|使用可能 (SQL Server 2012 以降のみ)追加構成とコンポーネントが必要です (SharePoint を含む)|
+|分散再生クライアント|使用可能 (SQL Server 2012 以降のみ)、ただし未インストール「[Running SQL Server setup from the platform-provided SQL Server image (プラットフォームによって提供される SQL Server イメージからの SQL Server セットアップの実行)](#running-sql-server-setup-from-the-platform-provided-sql-server-image)」をご覧ください|
+|ツール|SQL Server Management Studio、SQL Server Configuration Manager、Business Intelligence Development Studio、SQL Server Setup、Client Tools Connectivity、Client Tools SDK、SQL Client Connectivity SDK や、データ層アプリケーション (DAC) などのアップグレードおよび移行ツール、バックアップ、リストア、アタッチ、および切断用ツールなど、すべてのツール|
+|SQL Server オンライン ブック|インストールされているが、ヘルプ ビューアーを使用して構成する必要があります|
+
+### データベース エンジンの構成
+
+次のデータベース エンジンの設定が構成されています。その他の設定については、SQL Server のインスタンスを調べてください。
+
+|機能|構成|
+|---|---|
+|インスタンス|共有メモリー プロトコルでのみライセンスを受けている SQL Server データベース エンジンの既定 (名前なし) インスタンスが含まれています|
+|認証|既定で、Azure は SQL Server 仮想マシンのセットアップ中に Windows 認証を選択します。sa ログインを使用するか、新しい SQL Server アカウントを作成する場合は、この認証モードを変更する必要があります。詳細については、「[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-sql-server-security-considerations.md)」をご覧ください。|
+|sysadmin|仮想マシンをインストールした Azure ユーザーが最初に属するのは、SQL Server sysadmin 固定サーバー ロールのメンバーのみです|
+|メモリ|データベース エンジンのメモリは、動的メモリ構成に設定されます|
+|データベース認証を含む|オフ|
+|既定の言語|英語|
+|データベース間での所有権の継承|オフ|
+
+[カスタマー エクスペイレンス向上プログラム (CEIP)](https://technet.microsoft.com/library/cc730757.aspx) が有効です。SQL Server エラーと使用状況レポート ユーティリティを使用して、CEIP を無効にすることができます。SQL Server エラーと使用状況レポート ユーティリティを起動するには、[スタート] メニューで [すべてのプログラム] をクリックし、[Microsoft SQL Server バージョン]、[構成ツール、]、[SQL Server エラーと使用状況レポート] の順にクリックします。CEIP を有効にした状態で SQL Server のインスタンスを使用しない場合は、独自の仮想マシン イメージを Azure にデプロイすることも検討できます。詳細については、「[Creating and Uploading a Virtual Hard Disk that Contains the Windows Server Operating System (Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード)](virtual-machines-create-upload-vhd-windows-server.md)」をご覧ください。
+
+### プラットフォームによって提供される SQL Server イメージからの SQL Server セットアップの実行
+
+プラットフォームによって提供される SQL Server イメージを使用して仮想マシンを作成する場合、仮想マシンの **C:\\SqlServer\_SQLMajorVersion.SQLMinorVersion\_Full** ディレクトリに保存されている SQL Server セットアップ メディアを使用できます。ディスク スペースに空きがある場合には、このディレクトリからセットアップを実行して、機能の追加や削除、新しいインスタンスの追加、またはインスタンスの修復などのセットアップ アクションを実行できます。
+
+>[AZURE.NOTE]Azure では、ポータルで複数のバージョンの SQL Server イメージを提供しています。SQL Server プラットフォームによって提供されるイメージのバージョン リリース日が 2014 年 5 月 15 日以降の場合、既定でプロダクト キーが含まれています。この日よりも前にパブリッシュされる、プラットフォームによって提供される SQL Server イメージを使用して仮想マシンをプロビジョニングする場合、VM にプロダクト キーは含まれません。ベスト プラクティスとして、新しい VM をプロビジョニングするときは常に、最新のバージョンのイメージを選択することをお勧めします。
+
+## リソース
+
+- [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)
+- [Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)
+- [Azure の仮想マシン内の SQL Server の高可用性と災害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)
+- [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
+- [Azure Virtual Machines](virtual-machines-about.md) 
+
+<!---HONumber=August15_HO9-->

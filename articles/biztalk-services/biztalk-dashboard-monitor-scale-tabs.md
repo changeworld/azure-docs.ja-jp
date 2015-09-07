@@ -1,25 +1,25 @@
 <properties 
-	pageTitle="BizTalk サービスでの [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] | Azure" 
-	description="BizTalk Services の管理ポータルのタブのコントロールについて説明し、パフォーマンスを監視します: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続]。MABS、WABS" 
-	services="biztalk-services" 
-	documentationCenter="" 
-	authors="MandiOhlinger" 
-	manager="dwrede" 
+	pageTitle="BizTalk Services での [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] | Microsoft Azure"
+	description="BizTalk Services の管理ポータルのタブのコントロールについて説明し、パフォーマンスを監視します: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続]。MABS、WABS"
+	services="biztalk-services"
+	documentationCenter=""
+	authors="MandiOhlinger"
+	manager="dwrede"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="biztalk-services" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/07/2015" 
+	ms.service="biztalk-services"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="mandia"/>
 
 
 
 
-# BizTalk サービス: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブ
+# [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブの確認
 
 BizTalk サービスを作成してアプリケーションを配置した後は、BizTalk サービスの設定の一部を変更し、アプリケーションのパフォーマンスを監視できます。
 
@@ -236,19 +236,16 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 
 ##### グラフ内のメトリックを削除または表示するには:
 1. **[監視]** タブを選択します。
-2. タスク バーで [**メトリックの追加**] を選択します。
-<br/>
+2. タスク バーで [**メトリックの追加**] を選択します。  
 ![[メトリックの追加] を選択する][AddMetrics]
 3. 表示したいパフォーマンス メトリックのチェック ボックスをオンにします。
 4. チェックマークを選択して **[監視]** タブに戻ります。
-5. グラフにメトリック値を表示するメトリックの横にある円を選択します。
-<br/>
-たとえば、[**CPU 使用率**] メトリックは淡色表示になっており、その出力はグラフに表示されません。
-<br/>
+5. グラフにメトリック値を表示するメトリックの横にある円を選択します。  
+
+	たとえば、**[CPU 使用率]** メトリックが淡色表示されているとき、グラフにその出力は表示されません。
 ![CPU 使用率のメトリックは淡色表示される][GrayedMetric]
-<br/>
-淡色表示されている円を選択して [**CPU 使用率**] メトリックの出力をグラフに表示します。
-<br/>
+
+	淡色表示された円をクリックすると、**[CPU 使用率]** メトリックが有効になり、グラフ内で表示されます。
 ![[CPU 使用率] メトリックが有効になっている][EnabledMetric]
 
 6. 特定のメトリックをグラフ表示とリストから削除するには、タスク バーの **[メトリックの削除]** を選択します。メトリックを再びリストに追加するには、タスク バーの **[メトリックの追加]** を選択し、そのメトリックのチェック ボックスをオンにしてから、チェックマークを選択して **[監視]** タブに戻ります。淡色表示されている円を選択すると、そのメトリックが有効な状態になります。
@@ -322,11 +319,11 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 ## スケール
 [スケール] タブで、BizTalk サービスで使用されるユニット数を追加または削減できます。既定では、1 つのユニットが構成されています。ユニットを追加して BizTalk サービスをスケールできます。スケールを増やすと、スループットが増えます。また、デプロイされるブリッジ、契約、LOB 接続、処理能力などのリソース量も増えます。たとえば、ユニットを 1 から 2 に増やすとします。この場合、2 倍のブリッジ数をデプロイでき、契約数、LOB 接続数、処理能力をそれぞれ 2 倍にできます。
 
-一部の BizTalk エディションではスケール オプションが提供されません。この場合、許容されるユニットは 1 つです。お使いのエディションでスケールできるユニット数については、「[BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)」を参照してください。
+一部の BizTalk エディションではスケール オプションが提供されません。この場合、許容されるユニットは 1 つです。お使いのエディションでスケールできるユニット数については、「[BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)」を参照してください。
 
 ユニット数を増やすと、料金に影響する可能性があります。ユニットを増やした場合は、**[保存]** を選択したときに、料金に影響があるかどうかを示すメッセージが表示されます。[OK] をクリックして続行します。ユニット数を増やすと、BizTalk サービスのステータスがアクティブから更新中に代わります。更新中というステータスで、BizTalk サービスの実行が続行されます。
 
-「[BizTalk サービス: エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)」に、"ユニット" の定義の説明があります。
+「[BizTalk サービス: エディションのチャート](biztalk-editions-feature-chart.md)」に、"ユニット" の定義の説明があります。
 
 
 ## 構成
@@ -334,7 +331,7 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 
 [バックアップ ステータス] を [なし] または [自動] に設定します。[なし] に設定すると、バックアップが自動的には作成されなくなります。[自動] に設定するときは、管理者がバックアップの場所、バックアップの頻度、バックアップ ファイルの保持期間を構成します。
 
-「[BizTalk サービス: バックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)」に、詳しい説明があります。
+「[BizTalk サービス: バックアップと復元](biztalk-backup-restore.md)」に、詳しい説明があります。
 
 
 ## <a name="HybridConnections"></a>ハイブリッド接続
@@ -344,22 +341,22 @@ Azure の Web サイトでハイブリッド接続を作成するには、[ハ�
 
 Azure Mobile Services でハイブリッド接続を使用するには、[Azure Mobile Services とハイブリッド接続に関するページ](../mobile-services-dotnet-backend-hybrid-connections-get-started.md)を参照してください。
 
-Azure BizTalk サービスでハイブリッド接続を作成または管理するには、「[ハイブリッド接続](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
+Azure BizTalk サービスでハイブリッド接続を作成または管理するには、「[ハイブリッド接続](integration-hybrid-connection-overview.md)」を参照してください。
 
 
 
 ## 次へ
 ここでは、各種のタブについて学びました。Azure BizTalk サービスの機能についてさらに学習できます。
 
-- [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-- [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-- [BizTalk サービス: バックアップと復元](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+- [BizTalk サービス: 調整](biztalk-throttling-thresholds.md)  
+- [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)  
+- [BizTalk サービス: バックアップと復元に関するページ](biztalk-backup-restore.md)
 
 ## 関連項目
-- [ハイブリッド接続](http://go.microsoft.com/fwlink/p/?LinkID=397274)
-- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [Azure 管理ポータルを使用して BizTalk サービスを作成する](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk サービス: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+- [ハイブリッド接続](integration-hybrid-connection-overview.md)  
+- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)  
+- [BizTalk サービス: Azure 管理ポータルを使用した BizTalk サービスのプロビジョニング](biztalk-provision-services.md)  
+- [BizTalk サービス: BizTalk サービスの状態のグラフに関するページ](biztalk-service-state-chart.md)  
 - [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [QuickStart]: ./media/biztalk-dashboard-monitor-scale-tabs/QuickStartIcon.png
@@ -368,4 +365,4 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

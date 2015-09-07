@@ -1,40 +1,26 @@
 <properties 
-	pageTitle="データを作成して BLOB ストレージ から Hive テーブルに読み込む | Microsoft Azure" 
-	description="Hive テーブルを作成し、BLOB 内のデータを Hive テーブルに読み込む" 
-	services="machine-learning,storage" 
-	documentationCenter="" 
-	authors="hangzh-msft" 
-	manager="jacob.spoelstra" 
-	editor="cgronlun"  />
+	pageTitle="データを作成して BLOB ストレージ から Hive テーブルに読み込む | Microsoft Azure"
+	description="Hive テーブルを作成し、BLOB 内のデータを Hive テーブルに読み込む"
+	services="machine-learning,storage"
+	documentationCenter=""
+	authors="hangzh-msft"
+	manager="jacob.spoelstra"
+	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/22/2015" 
-	ms.author="hangzh;bradsev" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
+	ms.author="hangzh;bradsev"/>
 
  
 #データを作成して Azure BLOB ストレージから Hive テーブルに読み込む
  
+## はじめに
 このドキュメントには Hive テーブルを作成し、Azure BLOB ストレージからデータを読み込む汎用の Hive クエリがあります。Hive テーブルをパーティション分割する方法や、Optimized Row Columnar (ORC) 形式を使用してクエリのパフォーマンスを向上させる方法についてのガイダンスも提供されます。
-
-
-Hive クエリは、<a href="https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql" target="_blank">Github リポジトリ</a>内で共有されており、そこからダウンロードできます。
-
-[高度な分析のための Azure 仮想マシンのセットアップ](machine-learning-data-science-setup-virtual-machine.md)に関するページの指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\\<ユーザー名>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。
-
-ここでは、Hive テーブルのデータが**圧縮されていない**表形式であることと、Hadoop クラスターが使用するストレージ アカウントの既定の (または追加の) コンテナーにデータがアップロードされていることを想定しています。_NYC タクシー乗車データ_の実習を行う場合は、まず 24 個の <a href="http://www.andresmh.com/nyctaxitrips/" target="_blank">NYC タクシー乗車データ</a> ファイル (12 個の Trip ファイルと 12 個の Fare ファイル) をダウンロードし、すべてのファイルを .csv ファイルに**解凍**します。次に、「[Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」で説明する手順で作成された Azure ストレージ アカウントの既定のコンテナー (または適切なコンテナー) にそれらのファイルをアップロードする必要があります。ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この[ページ](machine-learning-data-science-process-hive-walkthrough/#upload)をご覧ください。
-
-Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop コマンド ライン コンソールから送信できます。そのためには、Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。この方法については、「[Advanced Analytics Process and Technology で HDInsight Hadoop クラスターに Hive クエリを送信する](machine-learning-data-science-process-hive-tables.md)」をご覧ください。
-
-ユーザーは、クエリのコンソール (Hive エディター) を使用するために、URL
-
-https://&#60;Hadoop クラスター名>.azurehdinsight.net/Home/HiveEditor
-
-を Web ブラウザーに入力することもできます。ログインするために、Hadoop クラスターの資格情報の入力を求められます。また、[PowerShell を使用して Hive ジョブを送信する](../hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md#hive-powershell)こともできます。
 
 ## 前提条件
 この記事では、以下のことを前提としています。
@@ -43,8 +29,29 @@ https://&#60;Hadoop クラスター名>.azurehdinsight.net/Home/HiveEditor
 * HDInsight サービスでカスタマイズされた Hadoop クラスターがプロビジョニングされている。手順については、「[Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」をご覧ください。
 * クラスターへのリモート アクセスを有効にし、ログインし、Hadoop コマンド ライン コンソールを開いている。手順については、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#headnode)」をご覧ください。 
 
+## Azure BLOB ストレージにデータをアップロードする
+[高度な分析のための Azure 仮想マシンのセットアップ](machine-learning-data-science-setup-virtual-machine.md)に関するページの指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\<ユーザー名>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。
+
+ここでは、Hive テーブルのデータが**圧縮されていない**表形式であることと、Hadoop クラスターが使用するストレージ アカウントの既定の (または追加の) コンテナーにデータがアップロードされていることを想定しています。
+
+_NYC タクシー乗車データ_の実習を行う場合は、まず 24 個の <a href="http://www.andresmh.com/nyctaxitrips/" target="_blank">NYC タクシー乗車データ</a> ファイル (12 個の Trip ファイルと 12 個の Fare ファイル) をダウンロードし、すべてのファイルを .csv ファイルに**解凍**します。次に、「[Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」で説明する手順で作成された Azure ストレージ アカウントの既定のコンテナー (または適切なコンテナー) にそれらのファイルをアップロードする必要があります。ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この[ページ](machine-learning-data-science-process-hive-walkthrough/#upload)をご覧ください。
+
+## Hive クエリを送信する方法
+Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop コマンド ライン コンソールから送信できます。そのためには、Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。この方法については、「[高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する](machine-learning-data-science-process-hive-tables.md)」をご覧ください。
+
+ユーザーは、クエリのコンソール (Hive エディター) を使用するために、URL
+
+https://&#60;Hadoop クラスター名>.azurehdinsight.net/Home/HiveEditor
+
+を Web ブラウザーに入力することもできます。ログインするには Hadoop クラスター資格情報を入力するように求められます。そのため、資格情報を用意しておく必要があります。
+
+また、[PowerShell を使用して Hive ジョブを送信する](../hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md#hive-powershell)こともできます。
+
 
 ## <a name="create-tables"></a>Hive データベースとテーブルの作成。
+
+Hive クエリは、[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql)内で共有されており、そこからダウンロードできます。
+
 Hive テーブルを作成する Hive クエリを次に示します。
 
     create database if not exists <database name>;
@@ -74,7 +81,7 @@ Hive テーブルにデータを読み込む Hive クエリを次に示します
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-- **&#60;BLOB データのパス>**: Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、*&#60;BLOB データのパス>* は *'wasb:///&#60;このコンテナー内のディレクトリ>/&#60;BLOB ファイル名>'* の形式にする必要があります。BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。この場合、*&#60;BLOB データのパス>* は *'wasb://&#60;コンテナー名>@&#60;ストレージ アカウント名>.blob.windows.core.net/&#60;BLOB ファイル名>'* の形式にする必要があります。
+- **&#60;BLOB データのパス>**: Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、*&#60;BLOB データのパス>* は *'wasb:///&#60;このコンテナー内のディレクトリ>/&#60;BLOB ファイル名>'* の形式にする必要があります。BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。この場合、*&#60;BLOB データのパス>* は *'wasb://&#60;コンテナー名>@&#60;ストレージ アカウント名>.blob.core.windows.net/&#60;BLOB ファイル名>'* の形式にする必要があります。
 
 	>[AZURE.NOTE]Hive テーブルにアップロードする BLOB データは、Hadoop クラスターのストレージ アカウントの既定のコンテナーまたは追加のコンテナーに配置されている必要があります。それ以外の場合、*LOAD DATA* クエリはデータにアクセスできないために失敗します。
 
@@ -153,4 +160,4 @@ Hive テーブルをパーティション分割することに加え、Optimized
 
 この手順が終了すれば、すぐに使用できる ORC 形式のデータを含むテーブルが手に入ったことになります。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

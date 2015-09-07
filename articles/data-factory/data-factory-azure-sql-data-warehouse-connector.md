@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="Azure SQL Data Warehouse コネクタ - Azure SQL Data Warehouse との間のデータ移動" 
-	description="Azure SQL Data Warehouse との間でのデータ移動を可能にする Data Factory サービスのための Azure SQL Data Warehouse コネクタについて学習する" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Azure SQL Data Warehouse との間でのデータの移動 | Azure Data Factory"
+	description="Azure Data Factory を使用して Azure SQL Data Warehouse に、または Azure SQL Data Warehouse からデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# Azure SQL Data Warehouse コネクタ - Azure SQL Data Warehouse との間のデータ移動 
+# Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動
 
 この記事では、Data Factory のコピー アクティビティを利用し、Azure SQL Data Warehouse と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -24,11 +24,11 @@
 
 下のサンプルで確認できる要素:
 
-1. AzureSqlDW 型のリンクされたサービス。
-2. AzureStorage 型のリンクされたサービス。 
-3. AzureSqlDWTable 型の入力データセット。 
-4. AzureBlob 型の出力データセット。
-4. SqlDWSource と BlobSink を使用するコピー アクティビティを含むパイプライン。
+1. [AzureSqlDW](#azure-sql-data-warehouse-linked-service-properties) 型のリンクされたサービス。
+2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。 
+3. [AzureSqlDWTable](#azure-sql-data-warehouse-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。 
+4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4. [SqlDWSource](#azure-sql-data-warehouse-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルはある時系列に属するデータを 1 時間おきに Azure SQL Data Warehouse データベースのテーブルから BLOB にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -60,7 +60,7 @@
 
 このサンプルでは、Azure SQL Data Warehouse で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
  
-“external”: ”true” を設定して externalData ポリシーを指定すると、テーブルがデータ ファクトリに対して外部にあり、データ ファクトリのアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
+“external”: ”true” を設定して externalData ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、Data Factory のアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
 
 	{
 	  "name": "AzureSqlDWInput",
@@ -197,11 +197,12 @@
 
 下のサンプルで確認できる要素:
 
-1.	AzureSqlDWDatabase 型のリンクされたサービス。
-2.	AzureStorage 型のリンクされたサービス。
-3.	AzureBlob 型の入力データセット。
-4.	AzureSqlDWTable 型の出力データセット。
-4.	BlobSource と SqlDWSink を使用するコピー アクティビティのパイプライン
+1.	[AzureSqlDW](#azure-sql-data-warehouse-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の[データセット](data-factory-create-datasets.md) データセット。
+4.	[AzureSqlDWTable](#azure-sql-data-warehouse-dataset-type-properties) 型の[データセット](data-factory-create-datasets.md) データセット。
+4.	[BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) と [SqlDWSink](#azure-sql-data-warehouse-copy-activity-type-properties) を使用するコピー アクティビティの[パイプライン](data-factory-create-pipelines.md)。
+
 
 このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB から Azure SQL Data Warehouse データベースのテーブルにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -425,7 +426,7 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 マッピングは [ADO.NET の SQL Server データ型マッピング](https://msdn.microsoft.com/library/cc716729.aspx)と同じです。
 
-| SQL Server データベース エンジンの型 | .NET Framework 型 |
+| SQL Server Databases エンジンの型 | .NET Framework 型 |
 | ------------------------------- | ------------------- |
 | bigint | Int64 |
 | binary | Byte |
@@ -466,4 +467,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

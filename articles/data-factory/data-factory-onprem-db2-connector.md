@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="DB2 コネクタ - DB2 からのデータの移動" 
-	description="DB2 データベースからデータを移動できる Data Factory サービスの DB2 コネクタについて説明します" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="DB2 からデータを移動する | Azure Data Factory"
+	description="Azure Data Factory を使用して DB2 データベースからデータを移動する方法を説明します"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# DB2 コネクタ - DB2 からのデータの移動
+# Azure Data Factory を使用して DB2 からデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使用して、DB2 と他のデータ ストアとの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
 Data Factory は、Data Management Gateway を使用したオンプレミスの DB2 ソースへの接続をサポートします。Data Management Gateway の詳細およびゲートウェイの設定手順については、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
@@ -35,11 +35,11 @@ Windows 8 への IBM DB2 Data Server Driver のインストールに関しては
 
 下のサンプルで確認できる要素:
 
-1.	OnPremisesDb2 型のリンクされたサービス。
-2.	AzureStorage 型のリンクされたサービス。 
-3.	RelationalTable 型の入力データセット。
-4.	AzureBlob 型の出力データセット。 
-5.	RelationalSource と BlobSink を使用するコピー アクティビティを含むパイプライン。 
+1.	[OnPremisesDb2](data-factory-onprem-db2-connector.md#db2-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。 
+3.	[RelationalTable](data-factory-onprem-db2-connector.md#db2-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。 
+5.	[RelationalSource](data-factory-onprem-db2-connector.md#db2-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。 
 
 このサンプルは DB2 データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -224,6 +224,9 @@ Windows 8 への IBM DB2 Data Server Driver のインストールに関しては
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ |
 | gatewayName | Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 | あり |
 
+オンプレミスの DB2 データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
+
+
 ## DB2 データセットの type プロパティ
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
@@ -268,7 +271,7 @@ Float | Double
 小数点 | 小数点
 DecimalFloat | 小数点
 数値 | 小数点
-Date | Datetime
+日付 | Datetime
 時刻 | TimeSpan
 タイムスタンプ | DateTime
 Xml | Byte
@@ -306,4 +309,4 @@ Char | String
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

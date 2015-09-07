@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Data Catalog のよく寄せられる質問"
-   description="Azure Data Catalog: カタログのよく寄せられる質問"
-   services="data-catalog"
-   documentationCenter=""
-   authors="steelanddata"
-   manager="NA"
-   editor=""
-   tags=""/>
+	description="データ ソースの検出、注釈、管理など、Azure Data Catalog プレビューについてのよく寄せられる質問です。"
+	services="data-catalog"
+	documentationCenter=""
+	authors="steelanddata"
+	manager="NA"
+	editor=""
+	tags=""/>
 <tags
    ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="08/19/2015"
-   ms.author="maroche"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="08/21/2015"
+	ms.author="maroche"/>
 
 # Azure Data Catalog のよく寄せられる質問
 
@@ -37,7 +37,7 @@ Azure Data Catalog は、次の技術者と技術者以外のユーザー向け�
 - データ コンシューマー: 選択したツールを使用して、ジョブの実行に必要なデータを簡単に検出し、理解し、接続できる必要があるユーザー
 - 中央 IT: ビジネス ユーザー向けに、数百のデータ ソースを探索可能にする必要があり、データの使用方法と使用者を監視し続ける必要があるユーザー
 
-## Q: Azure Data Catalog の提供先の地域はどこですか。
+## Q: Azure Data Catalog の提供先のリージョンはどこですか。
 
 プレビュー期間中、Azure Data Catalog サービスは次のデータ センターでのみ使用できます。
 
@@ -48,7 +48,7 @@ Azure Data Catalog は、次の技術者と技術者以外のユーザー向け�
 
 ## Q: Azure Data Catalog のデータ資産の数の制限はどのくらいですか。
 
-無償エディションの Azure Data Catalog は、5,000 の登録済みデータ資産に制限されます。
+Free エディションの Azure Data Catalog は、5,000 の登録済みデータ資産に制限されます。
 
 Standard Edition の Azure Data Catalog は、最大 100,000 の登録済みのデータ資産をサポートします。
 
@@ -160,4 +160,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

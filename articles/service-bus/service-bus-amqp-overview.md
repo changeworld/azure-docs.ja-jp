@@ -1,26 +1,26 @@
 <properties 
-	pageTitle="Service Bus AMQP の概要 | Microsoft Azure" 
-	description="Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。" 
-	services="service-bus" 
-	documentationCenter=".net" 
-	authors="sethmanheim" 
-	manager="timlt" 
+	pageTitle="Service Bus AMQP の概要 | Microsoft Azure"
+	description="Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。"
+	services="service-bus"
+	documentationCenter=".net"
+	authors="sethmanheim"
+	manager="timlt"
 	editor="mattshel"/>
 
 <tags 
-	ms.service="service-bus" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="07/21/2015" 
+	ms.service="service-bus"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="07/21/2015"
 	ms.author="sethm"/>
 
 
 
 # Service Bus での AMQP 1.0 サポート
 
-Azure Service Bus クラウド サービスと内部設置型 [Windows Server の Service Bus (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) では、Advanced Message Queueing Protocol (AMQP) 1.0 をサポートしています。AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。異なる言語とフレームワークを使用して作成され、異なるオペレーティング システムで実行可能であるコンポーネントを使用して、アプリケーションを構築できます。これらのコンポーネントはすべてサービス バスに接続でき、構造化されたビジネス メッセージを効率よく完全な忠実度でシームレスに交換できます。
+Azure Service Bus クラウド サービスとオンプレミス [Windows Server の Service Bus (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) では、Advanced Message Queueing Protocol (AMQP) 1.0 をサポートしています。AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。異なる言語とフレームワークを使用して作成され、異なるオペレーティング システムで実行可能であるコンポーネントを使用して、アプリケーションを構築できます。これらのコンポーネントはすべて Service Bus に接続でき、構造化されたビジネス メッセージを効率よく完全な忠実度でシームレスに交換できます。
 
 ## 概要: AMQP 1.0 の紹介とその重要な理由
 
@@ -41,7 +41,7 @@ AMQP 1.0 は、堅牢なクロス プラットフォーム メッセージング
 *    **柔軟性**: AMQP 1.0 は、さまざまなトポロジのサポートに使用できる柔軟なプロトコルです。同じプロトコルをクライアント間通信、クライアント/ブローカー間通信、およびブローカー間通信に使用できます。
 *    **ブローカー モデルに依存しない**: AMQP 1.0 の仕様には、ブローカーによって使用されるメッセージング モデルの要件がありません。これは、既存のメッセージング ブローカーに AMQP 1.0 のサポートを簡単に追加できることを意味します。
 
-## "標準" である AMQP 1.0
+## AMQP 1.0 は Standard (大文字の S で始まる場合)
 
 AMQP 1.0 は、2008 年以降、20 社を超える企業 (テクノロジ サプライヤーとエンド ユーザー企業の両方) で構成される中核的なグループにより開発されています。その間、ユーザー企業は実際のビジネス要件を提供し、テクノロジ ベンダーはそれらの要件に合わせてプロトコルを進化させてきました。プロセス全般にわたり、ベンダーはワークショップに参加し、実装間の相互運用性を検証するために協力してきました。
 
@@ -69,7 +69,7 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 
 **図 1: Service Bus と AMQP 1.0 を使用したクロスプラットフォーム メッセージングを示すサンプルのデプロイ シナリオ**
 
-現時点では、次のクライアント ライブラリが サービス バスで機能することがわかっています。
+現時点では、次のクライアント ライブラリが Service Bus で機能することがわかっています。
 
 | 言語 | ライブラリ |
 |----------|-------------------------------------------------------------------------------|
@@ -77,13 +77,13 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 | C | Apache Qpid Proton-C |
 | PHP | Apache Qpid Proton-PHP |
 | Python | Apache Qpid Proton-Python |
-
+| C# | AMQP .Net Lite |
 
 **図 2: AMQP 1.0 クライアント ライブラリの表**
 
 Service Bus からライブラリを取得して使用する方法の詳細については、「[Service Bus AMQP: 開発者ガイド][]」をご覧ください。詳細については、以下の「参照」セクションをご覧ください。
 
-## まとめ
+## 概要
 
 *    AMQP 1.0 は、プラットフォーム間共通のハイブリッド アプリケーションを構築するために使用できる、信頼性の高いオープンなメッセージング プロトコルです。AMQP 1.0 は OASIS の標準です。
 *    AMQP 1.0 サポートは、Azure Service Bus と Windows Server の Service Bus (Service Bus 1.1) で利用できるようになりました。料金は、既存のプロトコルと同じです。
@@ -98,4 +98,4 @@ Service Bus からライブラリを取得して使用する方法の詳細に�
 [0]: ./media/service-bus-amqp-overview/Example1.png
 [Service Bus AMQP: 開発者ガイド]: http://msdn.microsoft.com/library/jj841071.aspx
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

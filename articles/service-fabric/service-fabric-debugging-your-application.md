@@ -1,20 +1,20 @@
 <properties
    pageTitle="F5 キーを使用した Visual Studio での Service Fabric アプリケーションのデバッグ"
-   description="Visual Studio とローカル開発クラスターを使用して、サービスの信頼性とパフォーマンスを改善する。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="jessebenson"
-   manager="timlt"
-   editor=""/>
+	description="Visual Studio とローカル開発クラスターを使用して、サービスの信頼性とパフォーマンスを改善する。"
+	services="service-fabric"
+	documentationCenter=".net"
+	authors="jessebenson"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="05/18/2015"
-   ms.author="jesseb"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/26/2015"
+	ms.author="jesseb"/>
 
 # F5 キーを使用した Visual Studio での Service Fabric アプリケーションのデバッグ
 
@@ -34,7 +34,7 @@
 
     ![リアルタイムに診断イベントを表示する][diagnosticevents]
 
-5. **[診断イベント]** ウィンドウは、サーバー エクスプローラーで開くこともできます。**[Azure]** の下で、**[サービス ファブリック クラスター]**、**[診断イベントの表示...]** の順に右クリックします。
+5. **[診断イベント]** ウィンドウは、サーバー エクスプローラーで開くこともできます。**[Azure]** の下で、**[Service Fabric クラスター]**、**[診断イベントの表示...]** の順に右クリックします。
 
     ![診断イベント ウィンドウを開く][viewdiagnosticevents]
 
@@ -66,4 +66,4 @@
 [breakpoint]: ./media/service-fabric-debugging-your-application/breakpoint.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

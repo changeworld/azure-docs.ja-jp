@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Xamarin iOS でのモバイル アプリの認証の使用" 
-	description="モバイル アプリを使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin iOS アプリのユーザーを認証する方法について説明します。" 
-	services="app-service\mobile" 
-	documentationCenter="xamarin" 
-	authors="mattchenderson" 
-	manager="dwrede" 
+	pageTitle="Xamarin iOS でのモバイル アプリの認証の使用"
+	description="モバイル アプリを使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin iOS アプリのユーザーを認証する方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter="xamarin"
+	authors="mattchenderson"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="app-service" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-ios" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="08/03/2015" 
+	ms.service="app-service"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/27/2015"
 	ms.author="mahender"/>
 
 # Xamarin.iOS アプリに認証を追加する
@@ -22,11 +22,7 @@
 
 このトピックでは、クライアント アプリケーションから App Service モバイル アプリのユーザーを認証する方法について説明します。このチュートリアルでは、App Service でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル アプリによって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
-このチュートリアルは、モバイル アプリのクイック スタートに基づいています。また、先に [Xamarin.iOS アプリの作成]に関するチュートリアルを完了している必要があります。
-
-##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-auth-preview](../../includes/app-service-mobile-dotnet-backend-enable-auth-preview.md)]
+このチュートリアルは、モバイル アプリのクイック スタートに基づいています。また、先に [Xamarin.iOS アプリの作成]に関するチュートリアルを完了している必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、認証拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 ##<a name="create-gateway"></a>App Service ゲートウェイを作成する
 
@@ -42,15 +38,15 @@
 
 &nbsp;&nbsp;4.Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターを使用してクライアント プロジェクトを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。デバッガーのコンソールに、エラーが記録されます。Visual Studio では、[出力] ウィンドウでエラーを確認する必要があります。
 
-&nbsp;&nbsp;この許可されていない問題は、アプリが認証されないユーザーとしてモバイル アプリのバックエンドにアクセスしようとするために発生します。*TodoItem* テーブルは今すぐ認証が必要です。
+&nbsp;&nbsp;この許可されていない問題は、アプリが認証されないユーザーとしてモバイル アプリのバックエンドにアクセスしようとするために発生します。*TodoItem* テーブルは認証が必要になっています。
 
-次に、認証されたユーザーでモバイル アプリのバックエンドからリソースを要求するように、クライアント アプリを更新します。
+次に、認証されたユーザーで Mobile App のバックエンドからリソースを要求するように、クライアント アプリを更新します。
 
 ##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
 ここでは、データを表示する前にログイン画面を表示するようにアプリケーションを変更します。アプリケーションが起動したときには、App Service には接続されず、データも表示されません。ユーザーが最初に更新操作を実行した後で、ログイン画面が表示されます。ログインに成功すると、Todo 項目の一覧が表示されます。
 
-1. クライアント プロジェクトで、ファイル **QSTodoService.cs** を開き、次の using ステートメントとメンバー宣言を QSTodoService に追加します。
+1. クライアント プロジェクトで、**QSTodoService.cs** ファイルを開き、次の using ステートメントとメンバー宣言を QSTodoService に追加します。
 
 
 		// Logged in user
@@ -120,4 +116,4 @@
 [Azure Management Portal]: https://portal.azure.com
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure での高可用な基幹業務アプリケーションのデプロイ" 
-	description="Azure では、Web ベースの高可用な基幹業務アプリケーションと SQL Server AlwaysOn 可用性グループを 5 つのフェーズでデプロイすることができます。" 
+	pageTitle="基幹業務アプリケーションのデプロイ | Microsoft Azure"
+	description="Azure では、Web ベースの高可用な基幹業務アプリケーションと SQL Server AlwaysOn 可用性グループを 5 つのフェーズでデプロイできます。"
 	documentationCenter=""
-	services="virtual-machines" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	services="virtual-machines"
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/11/2015"
 	ms.author="josephd"/>
 
 # Azure での高可用な基幹業務アプリケーションのデプロイ
@@ -66,4 +66,4 @@ Azure の IT ワークロードの設計に関する詳細については、「[
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,23 +1,25 @@
 <properties 
-   pageTitle="BizTalk Edifact コネクタ" 
-   description="BizTalk Edifact コネクタ" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="rajeshramabathiran" 
-   manager="dwrede" 
-   editor=""/>
+   pageTitle="Logic Apps での BizTalk Edifact コネクタの使用 | Microsoft Azure App Service"
+	description="BizTalk Edifact コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="rajeshramabathiran"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="08/19/2015"
-   ms.author="rajram"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="rajram"/>
 
-# BizTalk Edifact コネクタ
-Microsoft Azure Edifact サービスにより、Edifact プロトコルに従って企業間通信のメッセージを送受信できます。Edifact は、一般に ASC Edifact、または Accredited Standards Committee Edifact とも呼ばれています。これは、さまざまな業界で広く使用されています。
+# BizTalk Edifact コネクタの使用開始とロジック アプリへの追加  
+Edifact サービスを使用して、Edifact プロトコルに従って企業間通信のメッセージを送受信します。Edifact は、一般に ASC Edifact (Accredited Standards Committee Edifact) とも呼ばれており、さまざまな業界で広く使用されています。
+
+この BizTalk Edifact コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ## 前提条件
 - TPM API App: Edifact コネクタを作成する前に、[BizTalk 取引先管理コネクタ][1]を作成する必要があります。
@@ -93,4 +95,4 @@ Segment Terminator Suffix|文字列|セグメント終端記号のサフィッ�
 [9]: ./media/app-service-logic-connector-edifact/EncodeInput.PNG
 [10]: ./media/app-service-logic-connector-edifact/EncodeConfigured.PNG
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

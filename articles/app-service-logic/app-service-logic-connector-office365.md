@@ -1,25 +1,26 @@
 <properties
-   pageTitle="Office 365 コネクタ"
-   description="Office 365 コネクタの使用方法"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での Office 365 コネクタの使用 | Microsoft Azure App Service"
+	description="Office 365 コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="sameerch"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="sameerch"/>
 
 
-#ロジック アプリでの Office 365 コネクタの使用#
+# Office 365 コネクタの使用開始とロジック アプリへの追加
+Office 365 アカウントに接続して、電子メールの送受信、および予定表と連絡先の管理を実行できます。電子メールの送受信や取得、予定表のイベントの作成や削除、連絡先の作成、更新、取得や削除など、さまざまなアクションを実行できます。
 
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。Office 365 コネクタでは、Office 365 アカウントで電子メールを送受信し、予定表と連絡先を管理できます。電子メールの送受信や取得、予定表のイベントの作成や削除、連絡先の作成、更新、取得や削除など、さまざまなアクションを実行できます。
+ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。この Office 365 コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 **基本的なアクション**
 
@@ -126,4 +127,4 @@
 [20]: ./media/app-service-logic-connector-office365/20_Office365_Send_Configured.png
 [21]: ./media/app-service-logic-connector-office365/21-create-new-o365-api-app.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

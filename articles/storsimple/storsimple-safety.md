@@ -1,21 +1,21 @@
 <properties 
-   pageTitle="StorSimple デバイスの安全性"
-   description="StorSimple デバイスの導入と操作に関する安全ガイドラインの確認"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="tysonn" />
+   pageTitle="StorSimple デバイスの安全性 | Microsoft Azure"
+	description="安全性についての規定事項、ガイドライン、考慮事項を解説し、StorSimple デバイスを安全にインストールして操作する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/14/2015"
-   ms.author="alkohli" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/26/2015"
+	ms.author="alkohli"/>
 
-# デバイスの安全性
+# StorSimple デバイスを安全にインストールして操作する
 
 ![警告のアイコン](./media/storsimple-safety/IC740879.png) ![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png) **安全衛生に関する情報を確認してください**
 
@@ -179,4 +179,4 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 - 8600 デバイスの場合は、「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

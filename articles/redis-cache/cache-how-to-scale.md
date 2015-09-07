@@ -1,26 +1,26 @@
 <properties 
-	pageTitle="Azure Redis Cache のスケーリング方法" 
-	description="Azure Redis Cache インスタンスをスケーリングする方法を学習する" 
-	services="redis-cache" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="dwrede" 
+	pageTitle="Azure Redis Cache のスケーリング方法"
+	description="Azure Redis Cache インスタンスをスケーリングする方法を学習する"
+	services="redis-cache"
+	documentationCenter=""
+	authors="steved0x"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="cache" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="cache-redis" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/18/2015" 
+	ms.service="cache"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="cache-redis"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2015"
 	ms.author="sdanie"/>
 
 # Azure Redis Cache のスケーリング方法
 
 >[AZURE.NOTE]Azure Redis Cache のスケーリング機能は現在プレビュー中です。
 
-Azure Redis Cache は、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングを用意しています。キャッシュを作成した後にご利用のアプリケーションの要件が変わった場合は、[Azure ポータル](https://portal.azure.com)の **[価格レベルの変更]** ブレードを使用して、キャッシュのサイズを変更することができます。
+Azure Redis Cache は、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングを用意しています。キャッシュを作成した後にご利用のアプリケーションの要件が変わった場合は、[Azure プレビュー ポータル](https://portal.azure.com)の **[価格レベルの変更]** ブレードを使用して、キャッシュのサイズを変更することができます。
 
 >[AZURE.NOTE]Azure Redis Cache をスケーリングする際にサイズは変更することができますが、Standard から Basic キャッシュ、またはその逆への変更はできません。
 
@@ -38,7 +38,7 @@ Azure Redis Cache の[監視](cache-how-to-monitor.md)機能を使用して、�
 現在のキャッシュがアプリケーションの要件を満たさないと判断した場合は、ご利用のアプリケーションにとって適切な価格レベルのキャッシュに変更できます。使用するキャッシュの価格レベルを決定する方法の詳細については、「[Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
 
 ## キャッシュのスケーリング
-キャッシュをスケーリングするには、[Azure ポータル](https://portal.azure.com)で[キャッシュに移動](https://msdn.microsoft.com/library/azure/dn793612.aspx#RedisCacheConfiguration)して、**[Redis Cache]** ブレードで、**[Standard レベル]** または **[Basic レベル]** をクリックします。
+キャッシュをスケーリングするには、[プレビュー ポータル](https://portal.azure.com)で[キャッシュに移動](cache-configure.md#configure-redis-cache-settings)して、**[Redis Cache]** ブレードで、**[Standard レベル]** または **[Basic レベル]** をクリックします。
 
 ![[価格レベル]][redis-cache-pricing-tier-part]
 
@@ -58,12 +58,12 @@ Azure Redis Cache の[監視](cache-how-to-monitor.md)機能を使用して、�
 
 ## スケーリング処理を自動化する方法
 
-Azure Redis Cache インスタンスは、Azure ポータルのほか、[Microsoft Azure 管理ライブラリ (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/) を使用してスケーリングすることができます。キャッシュをスケーリングするには、`IRedisOperations.CreateOrUpdate` メソッドを呼び出して `RedisProperties.SKU.Capacity` に新しいサイズを指定します。
+Azure Redis Cache インスタンスは、プレビュー ポータルのほか、[Microsoft Azure 管理ライブラリ (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/) を使用してスケーリングすることができます。キャッシュをスケーリングするには、`IRedisOperations.CreateOrUpdate` メソッドを呼び出して `RedisProperties.SKU.Capacity` に新しいサイズを指定します。
 
     static void Main(string[] args)
     {
         // For instructions on getting the access token, see
-        // https://msdn.microsoft.com/ja-jp/library/azure/dn790557.aspx#bk_portal
+        // https://azure.microsoft.com/documentation/articles/cache-configure/#access-keys
         string token = GetAuthorizationHeader();
 
         TokenCloudCredentials creds = new TokenCloudCredentials(subscriptionId,token);
@@ -120,7 +120,7 @@ Azure Redis Cache インスタンスは、Azure ポータルのほか、[Microso
 
 ## スケーリングが完了したことをどのようにして確認できますか
 
-スケーリング処理の進捗はポータルで確認できます。スケーリングが完了すると、キャッシュの状態が **[実行中]** に変わります。
+スケーリング処理の進捗はプレビュー ポータルで確認できます。スケーリングが完了すると、キャッシュの状態が **[実行中]** に変わります。
 
 ## この機能をプレビューする理由は何ですか
 
@@ -138,4 +138,4 @@ Azure Redis Cache インスタンスは、Azure ポータルのほか、[Microso
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

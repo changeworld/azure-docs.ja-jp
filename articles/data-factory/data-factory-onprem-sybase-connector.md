@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="Sybase コネクタ - Sybase からのデータの移動" 
-	description="Sybase データベースからデータを移動できる Data Factory サービスの Sybase コネクタについて学習する" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Sybase からデータを移動する | Azure Data Factory"
+	description="Azure Data Factory を使用して Sybase データベースからデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/27/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# Sybase コネクタ - Sybase からのデータの移動 
+# Azure Data Factory を使用して Sybase からデータを移動する 
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Sybase と他のデータ ストアとの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -34,11 +34,11 @@ Data Management Gateway で Sybase データベースに接続するには、[Sy
 
 下のサンプルで確認できる要素:
 
-1.	OnPremisesSybase 型のリンクされたサービス。
-2.	AzureStorage 型のリンクされたサービス。
-3.	RelationalTable 型の入力データセット。
-4.	AzureBlob 型の出力データセット。
-4.	RelationalSource と BlobSink を使用するコピー アクティビティを含むパイプライン。
+1.	[OnPremisesSybase](data-factory-onprem-sybase-connector.md#sybase-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[RelationalTable](data-factory-onprem-sybase-connector.md#sybase-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4.	[RelationalSource](data-factory-onprem-sybase-connector.md#sybase-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルは Sybase データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -79,7 +79,7 @@ Data Management Gateway で Sybase データベースに接続するには、[Sy
 
 このサンプルでは、Sybase で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestamp」という名前の列が含まれているものと想定しています。
 
-「“external”: true」を設定して externalData ポリシーを指定すると、このテーブルがデータ ファクトリに対して外部にあるテーブルで、データ ファクトリのアクティビティでは生成されていないことが Data Factory に通知されます。リンクされたサービスの**型**は **RelationalTable** に設定されることに注意してください。
+「“external”: true」を設定して externalData ポリシーを指定すると、このテーブルが Data Factory に対して外部にあるテーブルで、 Data Factory のアクティビティでは生成されていないことが Data Factory に通知されます。リンクされたサービスの**型**は **RelationalTable** に設定されることに注意してください。
 	
 	{
 	    "name": "SybaseDataSet",
@@ -225,6 +225,8 @@ username | Basic または Windows 認証を使用している場合は、ユー
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ
 gatewayName | Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 | あり 
 
+オンプレミスの Sybase データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
+
 ## Sybase データセットの type プロパティ
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
@@ -262,4 +264,4 @@ Sybase では、T-SQL と T-SQL 型をサポートします。sql 型から .NET
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

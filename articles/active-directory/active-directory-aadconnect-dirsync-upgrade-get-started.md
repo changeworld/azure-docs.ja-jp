@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Microsoft Azure AD Connect - Windows Azure AD 同期ツール (DirSync) からのアップグレード" 
-   description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Windows Azure AD 同期 ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。" 
-   services="active-directory" 
-   documentationCenter="" 
-   authors="shoatman" 
-   manager="terrylanfear" 
-   editor="billmath"/>
+   pageTitle="Microsoft Azure AD Connect - Windows Azure AD 同期ツール (DirSync) からのアップグレード"
+	description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Windows Azure AD 同期 ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="shoatman"
+	manager="terrylanfear"
+	editor="billmath"/>
 
 <tags 
-   ms.service="active-directory" 
-   ms.workload="identity" 
-   ms.tgt_pltfrm="na" 
-   ms.devlang="na" 
-   ms.topic="article" 
-   ms.date="05/26/2015" 
-   ms.author="shoatman"/>
+   ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/26/2015"
+	ms.author="shoatman"/>
 
 # Azure Active Directory Connect に Windows Azure Active Directory 同期 (DirSync) をアップグレードします。
 
@@ -203,7 +203,7 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 * [Azure AD Connect の動作](active-directory-aadconnect-how-it-works.md)
 * [Azure AD Connect の次のトピック](active-directory-aadconnect-whats-next.md)
 * [詳細情報](active-directory-aadconnect-learn-more.md)
-* [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx)
+* [MSDN の Azure AD Connect](active-directory-aadconnect.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

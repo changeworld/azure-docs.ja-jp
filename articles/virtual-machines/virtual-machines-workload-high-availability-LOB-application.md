@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション" 
-	description="Azure でデプロイした Web ベース基幹業務アプリケーションの価値、開発/テスト環境のセットアップ方法、および高可用な運用構成をデプロイする方法について説明します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	pageTitle="Azure の基幹業務アプリケーション | Microsoft Azure"
+	description="Azure の基幹業務アプリケーションの価値を説明し、テスト環境の設定および高可用性構成のデプロイを実行します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/11/2015"
 	ms.author="josephd"/>
 
 # Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション
@@ -103,4 +103,4 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

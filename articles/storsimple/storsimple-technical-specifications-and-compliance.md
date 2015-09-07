@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="StorSimple デバイスの技術的仕様とコンプライアンス | Microsoft Azure"
-   description="StorSimple デバイスの技術仕様と規制標準対応情報について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="adinah"
-   editor="" />
+   pageTitle="StorSimple の技術仕様 |Microsoft Azure"
+	description="StorSimple ハードウェア コンポーネントの技術仕様と規制標準対応情報について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
  <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/12/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/26/2015"
+	ms.author="alkohli"/>
 
 # StorSimple デバイスの技術的仕様とコンプライアンス
 
@@ -172,4 +172,4 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

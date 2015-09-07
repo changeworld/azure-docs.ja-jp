@@ -1,25 +1,25 @@
 <properties 
    pageTitle="仮想ネットワーク (VNet) の作成方法"
-   description="仮想ネットワーク (VNet) の作成方法について説明します。"
-   services="virtual-network"
-   documentationCenter="na"
-   authors="telmosampaio"
-   manager="carolz"
-   editor="tysonn" />
+	description="仮想ネットワーク (VNet) の作成方法について説明します。"
+	services="virtual-network"
+	documentationCenter="na"
+	authors="telmosampaio"
+	manager="carolz"
+	editor="tysonn"/>
 <tags 
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="06/08/2015"
-   ms.author="telmos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="06/08/2015"
+	ms.author="telmos"/>
 
 # 仮想ネットワーク (VNet) の作成方法
 
 VNet を作成すると、VNet 内のサービスと VM はインターネットを経由せずに相互に安全な通信を行うことができるようになります。Azure VNet の作成は、他の VNet やオンプレミス ネットワークに接続することを目的としない場合、それほど時間のかからない簡単なプロセスです。これは、VPN デバイスの取得や構成、選択した IP アドレスと他の VNet やローカル ネットワークとの調整が不要のためです。
 
->[AZURE.WARNING]後で他の VNet やオンプレミス ネットワークに接続される VNet を作成する場合は、この手順を使用しないでください。安全なクロスプレミス接続またはハイブリッド接続を作成する場合は、「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](https://msdn.microsoft.com/library/azure/dn133798.aspx)」をご覧ください。別の VNet に接続する VNet を作成する場合は、「[VNet 間の接続の構成](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)」をご覧ください。
+>[AZURE.WARNING]後で他の VNet やオンプレミス ネットワークに接続される VNet を作成する場合は、この手順を使用しないでください。安全なクロスプレミス接続またはハイブリッド接続を作成する場合は、「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](vpn-gateway-cross-premises-options.md)」をご覧ください。別の VNet に接続する VNet を作成する場合は、「[VNet 間の接続の構成](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)」をご覧ください。
 
 ## VNet の構成
 
@@ -35,7 +35,7 @@ VNet を作成すると、VNet 内のサービスと VM はインターネット
 
 	- **[場所]** - ドロップダウン リストから場所 (リージョン) を選択します。場所は、リソース (VM) をこの VNet にデプロイするときに配置する物理的な場所に直接関係します。たとえば、VM を物理的に "*米国東部*" に配置する場合は、その場所のリージョンを選択します。VNet を作成した後に、その VNet に関連付けられたリージョンを変更することはできません。
 
-1. **[DNS サーバーおよび VPN 接続]** ページでは、何も変更しません。矢印をクリックして次のページに進みます。Azure には既定で、VNet 用の基本的な名前解決が用意されています。ただし、基本的な Azure の名前解決では対応できないほど名前解決の要件が複雑である場合もあります。そのような場合は、DNS を実行する仮想マシンを後で VNet に追加することも可能です。Azure の名前解決と DNS の詳細については、「[名前解決 (DNS)](https://msdn.microsoft.com/library/azure/jj156088.aspx)」をご覧ください。
+1. **[DNS サーバーおよび VPN 接続]** ページでは、何も変更しません。矢印をクリックして次のページに進みます。Azure には既定で、VNet 用の基本的な名前解決が用意されています。ただし、基本的な Azure の名前解決では対応できないほど名前解決の要件が複雑である場合もあります。そのような場合は、DNS を実行する仮想マシンを後で VNet に追加することも可能です。Azure の名前解決と DNS の詳細については、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 1. **[仮想ネットワーク アドレス空間]** ページでは、この VNet で使用するアドレス空間を入力します。VM 用に特定の内部 IP アドレス範囲が必要な場合や、静的 DIP を受け取る VM 用に特定のサブネットを作成する場合を除き、このページで変更を行う必要はありません。複数のサブネットを作成する場合は、このページの **[サブネットの追加]** をクリックします。
 
@@ -66,4 +66,4 @@ VNet を作成すると、VNet 内のサービスと VM はインターネット
 [仮想ネットワーク (VNet) の削除方法](../virtual-networks-delete-vnet)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

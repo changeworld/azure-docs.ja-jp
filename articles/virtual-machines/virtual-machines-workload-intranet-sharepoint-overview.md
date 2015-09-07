@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ"
-	description="5 つのフェーズで、Azure に SharePoint と SQL Server AlwaysOn 可用性グループをデプロイできます。"
+	pageTitle="SharePoint Server 2013 ファームのデプロイ | Microsoft Azure"
+	description="5 つのフェーズで、Azure の SQL Server AlwaysOn 可用性グループを使用して、高可用性 SharePoint Server 2013 ファームをデプロイします。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -43,21 +43,21 @@
 
 この SharePoint と SQL Server AlwaysOn のデプロイは、[SharePoint と SQL Server AlwaysOn のインフォグラフィック](http://go.microsoft.com/fwlink/?LinkId=394788)が付属し、最新の推奨事項が組み込まれるように設計されています。
 
-この構成は、Azure インフラストラクチャ サービスに機能する高可用性のイントラネット SharePoint ファームを作成するための、事前に定義されたアーキテクチャの規範的なフェーズ単位のガイドです。Azure への SharePoint 2013 の実装に関する他のアーキテクチャ ガイダンスについては、「[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)」を参照してください。
+この構成は、Azure インフラストラクチャ サービスに機能する高可用性のイントラネット SharePoint ファームを作成するための、事前に定義されたアーキテクチャの規範的なフェーズ単位のガイドです。Azure への SharePoint 2013 の実装に関する他のアーキテクチャ ガイダンスについては、[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)を参照してください。
 
 次の点に注意してください。
 
 - SharePoint の実装に関する経験が豊富な場合は、フェーズ 3 ～ 5 の指示を自由に調整して、ニーズに最も適したファームを構築してください。
 - 既存の Azure ハイブリッド クラウド実装が既にある場合は、フェーズ 1 および 2 の指示を自由に調整するかスキップし、適切なサブネットで新しい SharePoint ファームをホストしてください。
-- すべてのサーバーは、Azure Virtual Network 内の 1 つのサブネット上の存在します。サブネットの分離に相当する追加のセキュリティを提供する場合は、[ネットワーク セキュリティ グループ](https://msdn.microsoft.com/library/azure/dn848316.aspx)を使用できます。
+- すべてのサーバーは、Azure Virtual Network 内の 1 つのサブネット上の存在します。サブネットの分離に相当する追加のセキュリティを提供する場合は、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を使用できます。
 
-この構成の開発/テスト環境または概念実証環境を構築する場合は、「[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)」を参照してください。
+この構成の開発/テスト環境または概念実証環境を構築する場合は、[テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)を参照してください。
 
-SharePoint と SQL Server AlwaysOn 可用性グループの追加情報については、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」を参照してください。
+SharePoint と SQL Server AlwaysOn 可用性グループの追加情報については、[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)を参照してください。
 
 ## 次のステップ
 
-このワークロードの構成を開始するには、「[フェーズ 1: Azure を構成する](virtual-machines-workload-intranet-sharepoint-phase1.md)」に進んでください。
+このワークロードの構成を開始するには、[フェーズ 1: Azure を構成する](virtual-machines-workload-intranet-sharepoint-phase1.md)に進んでください。
 
 
 ## その他のリソース
@@ -72,4 +72,4 @@ SharePoint と SQL Server AlwaysOn 可用性グループの追加情報につい
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

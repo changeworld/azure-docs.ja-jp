@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="2 つの仮想ネットワーク間の VPN 接続の構成 | Microsoft Azure" 
-   description="2 つの Azure 仮想ネットワーク間に VPN 接続とドメイン名の解決を構成する方法と、HBase geo レプリケーションを構成する方法について説明します。" 
-   services="hdinsight,virtual-network" 
-   documentationCenter="" 
-   authors="mumian" 
-   manager="paulettm" 
-   editor="cgronlun"/>
+   pageTitle="2 つの仮想ネットワーク間の VPN 接続の構成 | Microsoft Azure"
+	description="2 つの Azure 仮想ネットワーク間に VPN 接続とドメイン名の解決を構成する方法と、HBase geo レプリケーションを構成する方法について説明します。"
+	services="hdinsight,virtual-network"
+	documentationCenter=""
+	authors="mumian"
+	manager="paulettm"
+	editor="cgronlun"/>
 
 <tags
    ms.service="hdinsight"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
-   ms.date="07/08/2015"
-   ms.author="jgao"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="07/08/2015"
+	ms.author="jgao"/>
 
 # 2 つの Azure 仮想ネットワーク間の VPN 接続の構成  
 
@@ -29,7 +29,7 @@ Azure 仮想ネットワークのサイト間接続では、VPN ゲートウェ�
 - 特定のリージョン内で強固な分離境界を備えた多層アプリケーション 
 - サブスクリプションや組織の境界を越えた通信を Azure 内で実現
 
-詳細については、「[VNet 間の接続の構成](https://msdn.microsoft.com/library/azure/dn690122.aspx)」を参照してください。
+詳細については、「[VNet 間の接続の構成](../virtual-network/virtual-networks-configure-vnet-to-vnet-connection.md)」を参照してください。
 
 次のビデオを参照してください。
 
@@ -83,7 +83,7 @@ Azure 仮想ネットワークのサイト間接続では、VPN ゲートウェ�
 
 	- **DNS サーバー**: (空白のままに) 
 	
-		仮想ネットワーク内での名前解決には、独自の DNS サーバーが必要になります。Azure によって提供される名前解決を使用する状況と独自の DNS サーバーを使用する状況の詳細については、「[名前解決 (DNS)](https://msdn.microsoft.com/library/azure/jj156088.aspx)」を参照してください。VNet 間で名前解決を構成する手順については、「[2 つの Azure 仮想ネットワーク間の DNS の構成][hdinsight-hbase-dns]」を参照してください。
+		仮想ネットワーク内での名前解決には、独自の DNS サーバーが必要になります。Azure によって提供される名前解決を使用する状況と独自の DNS サーバーを使用する状況の詳細については、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。VNet 間で名前解決を構成する手順については、「[2 つの Azure 仮想ネットワーク間の DNS の構成][hdinsight-hbase-dns]」を参照してください。
   
 	- **ポイント対サイト VPN の構成**: (オフ)
 
@@ -270,4 +270,4 @@ Vnet に VM をデプロイすることなく、Azure ポータルの VNet ダ�
 [img-vnet-lnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.LNet.diagram.png
 [img-vpn-status]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.status.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -5,15 +5,15 @@
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="mo	nicar" />
+	editor="mo	nicar"/>
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/11/2015"
-	ms.author="jroth" />
+	ms.date="08/24/2015"
+	ms.author="jroth"/>
 
 # Azure での AlwaysOn 可用性グループの外部リスナーの構成
 
@@ -58,7 +58,7 @@
 		# Configure a load balanced endpoint for each node in $AGNodes, with direct server return enabled
 		ForEach ($node in $AGNodes)
 		{
-		    Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort $EndpointPort -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
+		    Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -Protocol "TCP" -PublicPort 1433 -LocalPort 1433 -LBSetName "ListenerEndpointLB" -ProbePort 59999 -ProbeProtocol "TCP" -DirectServerReturn $true | Update-AzureVM
 		}
 
 1. 変数の設定後、スクリプトを、テキスト エディターからそれを実行する Azure の PowerShell セッションにコピーします。プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
@@ -124,4 +124,4 @@ AlwaysOn レプリカが異なるサブネットにある場合、クライア�
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

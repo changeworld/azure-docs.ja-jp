@@ -1,23 +1,23 @@
 <properties 
-	pageTitle="Azure メディア エンコーダーを使用してアセットをエンコードする方法" 
-	description="Azure メディア エンコーダーを使用して Media Services でメディア コンテンツをエンコードする方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Juliako" 
-	manager="dwrede" 
+	pageTitle="Azure Media Encoder を使用して資産をエンコードする方法"
+	description="Azure Media Encoder を使用して Media Services でメディア コンテンツをエンコードする方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。"
+	services="media-services"
+	documentationCenter=""
+	authors="Juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="juliako"/>
 
 
-#Azure メディア エンコーダーを使用してアセットをエンコードする方法
+#Azure Media Encoder を使用して資産をエンコードする方法
 
 
 > [AZURE.SELECTOR]
@@ -27,21 +27,21 @@
 
 ##概要
 
-インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客の端末でうまく表示したりできない可能性があります。エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
+インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客のデバイスでうまく表示したりできない可能性があります。エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
 
-エンコード ジョブは Media Services で最も一般的な処理の 1 つです。エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。エンコードには、Media Services の組み込みメディア エンコーダーを使用できます。Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。使用できるプリセットの種類を表示するには、「[Azure Media Services のタスク プリセット](https://msdn.microsoft.com/library/azure/dn619392.aspx)」をご覧ください。サード パーティのエンコーダーを使用した場合は、[ファイルを検証](https://msdn.microsoft.com/library/azure/dn750842.aspx)する必要があります。
+エンコード ジョブは Media Services で最も一般的な処理の 1 つです。エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。エンコードには、Media Services の組み込み Media Encoder を使用できます。Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。使用できるプリセットの種類を表示するには、「[Azure Media Services のタスク プリセット](https://msdn.microsoft.com/library/azure/dn619392.aspx)」をご覧ください。サード パーティのエンコーダーを使用した場合は、[ファイルを検証](https://msdn.microsoft.com/library/azure/dn750842.aspx)する必要があります。
 
-中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](https://msdn.microsoft.com/library/azure/jj889436.aspx)を使用して目的の形式に変換することをお勧めします。動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する 必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
+中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する 必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
 
-出力アセットがストレージで暗号化されている場合は、アセット配信のポリシーを構成する必要があります。詳細については、「[アセット配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)」をご覧ください。
+出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。詳細については、「[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)」をご覧ください。
 
 ##1 つのエンコード タスクを持つジョブの作成 
 
-Azure メディア エンコーダーでエンコードするときは、[こちら](https://msdn.microsoft.com/library/azure/dn619389.aspx)で指定されているタスク構成のプリセットを使うことができます。
+Azure Media Encoder でエンコードするときは、[こちら](https://msdn.microsoft.com/library/azure/dn619389.aspx)で指定されているタスク構成のプリセットを使うことができます。
 
 ###Media Services SDK for .NET の使用  
 
-次の **EncodeToAdaptiveBitrateMP4Set** メソッドは、エンコード ジョブを作成し、ジョブにエンコード タスクを 1 つ追加します。このタスクは、"Azure メディア エンコーダー" を使用して、"H264 アダプティブ ビットレート MP4 セット 720p"へのエンコードを行います。
+次の **EncodeToAdaptiveBitrateMP4Set** メソッドは、エンコード ジョブを作成し、ジョブにエンコード タスクを 1 つ追加します。このタスクは、"Azure Media Encoder" を使用して、"H264 アダプティブ ビットレート MP4 セット 720p"へのエンコードを行います。
 
     static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset inputAsset)
     {
@@ -144,11 +144,11 @@ Azure メディア エンコーダーでエンコードするときは、[こち
 
 ##チェーン タスクによるジョブの作成 
 
-アプリケーション シナリオの多くで、一連のタスク処理が開発者によって作成されます。Media Services では、一連のチェーン タスクを作成できます。各タスクはそれぞれ異なる処理手順を実行し、異なるメディア プロセッサを使うことができます。チェーン タスクでは、あるタスクから別のタスクにアセットを渡しながら一連のタスクを順番に実行できます。ただし、ジョブで実行されるタスクが必ず順番に実行されなければならないということではありません。チェーン タスクを作成するときは、一連の **ITask** オブジェクトは 1 つの **IJob** オブジェクト内で作成されます。
+アプリケーション シナリオの多くで、一連のタスク処理が開発者によって作成されます。Media Services では、一連のチェーン タスクを作成できます。各タスクはそれぞれ異なる処理手順を実行し、異なるメディア プロセッサを使うことができます。チェーン タスクでは、あるタスクから別のタスクに資産を渡しながら一連のタスクを順番に実行できます。ただし、ジョブで実行されるタスクが必ず順番に実行されなければならないということではありません。チェーン タスクを作成するときは、一連の **ITask** オブジェクトは 1 つの **IJob** オブジェクト内で作成されます。
 
 >[AZURE.NOTE]現時点では、ジョブごとに設定できるタスクは 30 までです。30 以上のタスクをつなげる必要がある場合、別のジョブを作成してタスクを設定します。
 
-次の **CreateChainedTaskEncodingJob** メソッドは、2 つのチェーン タスクが含まれるジョブを作成します。そのため、このメソッドは、2 つの出力アセットを含むジョブを返します。
+次の **CreateChainedTaskEncodingJob** メソッドは、2 つのチェーン タスクが含まれるジョブを作成します。そのため、このメソッドは、2 つの出力資産を含むジョブを返します。
 
 	
     public static IJob CreateChainedTaskEncodingJob(IAsset asset)
@@ -211,15 +211,10 @@ Azure メディア エンコーダーでエンコードするときは、[こち
     }
 
 
-##次のステップ
+##関連項目 
 
-[Azure Marketplace]: https://datamarket.azure.com/
-[Encoder Preset]: http://msdn.microsoft.com/library/dn619392.aspx
-[How to: Get a Media Processor Instance]: http://go.microsoft.com/fwlink/?LinkId=301732
-[How to: Upload an Encrypted Asset]: http://go.microsoft.com/fwlink/?LinkId=301733
-[How to: Deliver an Asset by Download]: http://go.microsoft.com/fwlink/?LinkId=301734
-[How to Check Job Progress]: http://go.microsoft.com/fwlink/?LinkId=301737
-[Task Preset for Azure Media Packager]: http://msdn.microsoft.com/library/windowsazure/hh973635.aspx
+[Media Services Encoding の概要](media-services-encode-asset.md)
+
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

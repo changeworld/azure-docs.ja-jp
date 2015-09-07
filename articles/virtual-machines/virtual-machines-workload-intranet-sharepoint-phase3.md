@@ -1,6 +1,6 @@
 <properties
-	pageTitle="SharePoint イントラネット ファーム ワークロードのフェーズ 3: SQL Server インフラストラクチャの構成"
-	description="イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業の第 3 フェーズでは、SQL Server クラスター コンピューターとクラスター自体を作成します。"
+	pageTitle="SharePoint Server 2013 ファームのフェーズ 3 | Microsoft Azure"
+	description="コンピューターと SQL Server クラスターを作成し、可用性グループを有効にします。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -44,7 +44,7 @@ PowerShell コマンドの次のブロックを使用して、3 つのサーバ�
 	$vmSize="<Table M – Item 3 - Minimum size column, specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
 	$availSet="<Table A – Item 2 – Availability set name column>"
 
-	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "SQL Server 2014 RTM Standard on Windows Server 2012 R2" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
+	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "SQL Server 2014 RTM Enterprise on Windows Server 2012 R2" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -ImageName $image -AvailabilitySetName $availSet
 
 	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for the first SQL Server computer."
@@ -143,7 +143,7 @@ SQL Server には、クライアントがデータベース サーバーへの�
 
 SQL サーバー仮想マシンごとに、ローカル管理者としてサインアウトします。
 
-Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://msdn.microsoft.com/library/azure/dn133149.aspx)」をご覧ください。SharePoint ファームのストレージ アカウントの地理冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
+Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」をご覧ください。SharePoint ファームのストレージ アカウントの地理冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
 
 ## クラスター マジョリティ ノード サーバーの構成
 
@@ -165,7 +165,7 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 
 	Install-WindowsFeature Failover-Clustering -IncludeManagementTools
 
-現在、Azure の DHCP によって RFC に準拠していない動作が発生するため、Windows Server フェールオーバー クラスタリング (WSFC) クラスターの作成に失敗する可能性があります。詳細については、「Azure の仮想マシン内の SQL Server の高可用性と災害復旧」で、「Azure ネットワーキングでの WSFC クラスターの動作」を検索してください。ただし、回避策があります。次の手順に従って、クラスターを作成します。
+現在、Azure の DHCP によって RFC に準拠していない動作が発生するため、Windows Server フェールオーバー クラスタリング (WSFC) クラスターの作成に失敗する可能性があります。詳細については、「Azure Virtual Machines 内の SQL Server の高可用性と災害復旧」で、「Azure ネットワークでの WSFC クラスターの動作」を検索してください。ただし、回避策があります。次の手順に従って、クラスターを作成します。
 
 1.	**sp\_install** アカウントを使用して、プライマリ SQL Server 仮想マシンにログオンします。
 2.	スタート画面で「**フェールオーバー**」と入力し、**[フェールオーバー クラスター マネージャー]** をクリックします。
@@ -228,4 +228,4 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,26 +1,23 @@
 <properties 
-	pageTitle="Azure AD Connect の使用" 
-	description="Azure AD Connect のセットアップ ウィザードをダウンロード、インストール、および実行する方法について説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure AD Connect の使用"
+	description="Azure AD Connect のセットアップ ウィザードをダウンロード、インストール、および実行する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/28/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure AD Connect の使用
 
-<div class="dev-center-tutorial-selector sublanding">
-<a href="../active-directory-aadconnect/" title="概要">概要</a> <a href="../active-directory-aadconnect-how-it-works/" title="動作">動作</a> <a href="../active-directory-aadconnect-get-started/" title="使用" class="current">使用</a> <a href="../active-directory-aadconnect-whats-next/" title="次の手順">次の手順</a> <a href="../active-directory-aadconnect-learn-more/" title="詳細情報">詳細情報</a>
-</div>
 
 
 次のドキュメントは、Azure Active Directory Connect の使用を開始する際に役立ちます。このドキュメントでは、Azure AD Connect の高速インストールの使用について説明します。カスタム インストールについては、[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)に関するページを参照してください。DirSync から Azure AD Connect へのアップグレードについては、[DirSync から Azure Active Directory Connect へのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)に関するページを参照してください。
@@ -114,4 +111,4 @@ Azure AD Connect がインストールされたので、[こちら](active-direc
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

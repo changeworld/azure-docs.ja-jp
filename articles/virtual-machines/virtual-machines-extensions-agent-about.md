@@ -1,26 +1,27 @@
-<properties 
- pageTitle="仮想マシン エージェントおよび拡張機能について | Microsoft Azure" 
- description="エージェントおよび拡張機能の概要とエージェントのインストール方法について説明します。" 
- services="virtual-machines" 
- documentationCenter="" 
- authors="squillace" 
- manager="timlt" 
- editor=""/>
-<tags 
-ms.service="virtual-machines" 
- ms.devlang="na" 
- ms.topic="article" 
- ms.tgt_pltfrm="vm-multiple" 
- ms.workload="infrastructure-services"
- ms.date="03/10/2015" 
- ms.author="kathydav"/>
+<properties
+ pageTitle="仮想マシン エージェントおよび拡張機能について | Microsoft Azure"
+	description="エージェントおよび拡張機能の概要とエージェントのインストール方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="squillace"
+	manager="timlt"
+	editor=""/>
+<tags
+ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-multiple"
+	ms.workload="infrastructure-services"
+	ms.date="03/10/2015"
+	ms.author="rasquill"/>
+ 
 #仮想マシンのエージェントおよび拡張機能について
 Azure 仮想マシン エージェント (VM エージェント) は、Azure 仮想マシン拡張機能 (VM 拡張機能) のインストール、構成、管理、および実行に使用します。VM 拡張機能により、Microsoft とその他のサード パーティが提供する動的機能を使用できます。エージェントと拡張機能は主に管理ポータルを使用して追加しますが、VM の作成時または既存の VM の使用時に、[PowerShell](../install-configure-powershell.md) コマンドレットまたは [xplat-cli](virtual-machines-command-line-tools.md) を使用して追加および構成することもできます。例を挙げると、VM 拡張機能には、[Visual Studio でのリモート デバッグ](https://msdn.microsoft.com/library/y7f5zaaa.aspx)、[System Center 2012](http://social.technet.microsoft.com/wiki/contents/articles/18274.system-center-2012-r2-virtual-machine-role-authoring-guide-resource-extension-package.aspx)、[Microsoft Azure 診断](http://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)、および [Docker](virtual-machines-docker-vm-extension.md) のサポートが含まれています。
 
 VM 拡張機能により以下を実行できます。
 
--   セキュリティおよび ID 機能の変更 (アカウント値のリセットやマルウェア対策の使用など) 
--   監視および診断の開始、停止、構成 
+-   セキュリティおよび ID 機能の変更 (アカウント値のリセットやマルウェア対策の使用など)
+-   監視および診断の開始、停止、構成
 -   接続機能 (RDP や SSH など) のリセットまたはインストール
 -   VM の診断、監視、管理
 
@@ -58,4 +59,4 @@ VM エージェントは、次のような状況で有効化されます。
 
 これらのタスクの詳細については、「[Azure VM 拡張機能の追加、検索、更新および削除](https://msdn.microsoft.com/library/dn850373.aspx)」を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

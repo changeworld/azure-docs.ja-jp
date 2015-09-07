@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Media Services リリース ノート" 
-	description="Media Services リリース ノート" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Juliako" 
-	manager="dwrede" 
+	pageTitle="Media Services リリース ノート"
+	description="Media Services リリース ノート"
+	services="media-services"
+	documentationCenter=""
+	authors="Juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="media" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="08/11/2015"  
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="media"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/25/2015"
 	ms.author="juliako"/>
 
 
@@ -25,6 +25,7 @@
 
 - [現在の既知の問題](#issues)
 - [REST API バージョン履歴](#rest_version_history)
+- [2015 年 8 月のリリース](#august_changes_15)
 - [2015 年 7 月のリリース](#july_changes_15)
 - [2015 年 6 月のリリース](#june_changes_15)
 - [2015 年 5 月のリリース](#may_changes_15)
@@ -70,14 +71,23 @@ SDK 内の Media Services オブジェクトをシリアル化できず、その
 
 ##<a id="rest_version_history"></a>REST API バージョン履歴
 
-Media Services REST API バージョン履歴の詳細については、「[Azure モバイル サービス REST API リファレンス]」を参照してください。
+Media Services REST API バージョン履歴の詳細については、「[Azure Media Services REST API リファレンス]」を参照してください。
+
+##<a id="august_changes_15"></a>2015 年 8 月のリリース
+
+- Azure Media Services SDK for Java V0.8.0 リリースと新しいサンプルをご利用いただけるようになりました。詳細については、次を参照してください。
+
+	- [ブログの投稿](http://southworks.com/blog/2015/08/25/microsoft-azure-media-services-sdk-for-java-v0-8-0-released-and-new-samples-available/)
+	- [Java サンプルのリポジトリ](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+- 複数のオーディオ ストリームのサポートを含む Azure Media Player の更新。詳細については、次を参照してください。
+	- [ブログの投稿](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)
 
 ##<a id="july_changes_15"></a>2015 年 7 月のリリース
 
-メディア エンコーダー スタンダードの一般公開の発表。詳細については、[この投稿](http://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)を参照してください。
+- Media Encoder Standard の一般公開の発表。詳細については、[このブログ投稿](http://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)を参照してください。
 
-メディア エンコーダー スタンダードでは、[この](http://go.microsoft.com/fwlink/?LinkId=618336)セクションで説明されているプリセットを使用しています。4k エンコードのプリセットを使用する場合、**Premium** 予約ユニットの種類になります。詳細については、[エンコードの規模の設定方法](media-services-portal-encoding-units)に関するページを参照してください。
-
+	Media Encoder Standard では、[この](http://go.microsoft.com/fwlink/?LinkId=618336)セクションで説明されているプリセットを使用しています。4k エンコードのプリセットを使用する場合、**Premium** 予約ユニットの種類になります。詳細については、[Encoding の規模の設定方法](media-services-portal-encoding-units)に関するページを参照してください。
+- Azure Media Services と Azure Media Player のライブ リアルタイム キャプション。詳細については、[このブログ投稿](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)を参照してください。
 
 ###Media Services .NET SDK の更新
 
@@ -87,7 +97,7 @@ Azure Media Services .NET SDK が 3.4.0.0 にバージョン アップしまし�
 - 動的フィルターのサポートが実装されました。
 - ユーザーがストレージ コンテナーを維持しながら資産を削除できる機能が実装されました。
 - チャネルの再試行ポリシーに関連するバグが修正されました。
-- **メディア エンコーダー プレミアム ワークフロー**が有効になりました。
+- **Media Encoder Premium ワークフロー**が有効になりました。
 
 ##<a id="june_changes_15"></a>2015 年 6 月のリリース
 
@@ -107,7 +117,7 @@ OpenID Connect 検出ドキュメントを公開する ID プロバイダー (�
 
 以下の新しい機能が発表されています。
 
-- [Media Services による Live Encoding のプレビュー](media-services-manage-live-encoder-enabled-channels.md)
+- [Media Services によるライブ エンコードのプレビュー](media-services-manage-live-encoder-enabled-channels.md)
 - [動的マニフェスト](media-services-dynamic-manifest-overview.md)
 - [Azure Media Hyperlapse メディア プロセッサのプレビュー](http://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
@@ -140,7 +150,7 @@ Azure Media Services .NET SDK が 3.2.0.0 にバージョン アップしまし�
 ### Media Services の全般的な更新
 
 - Media Services で、シームレスな Azure CDN 統合が提供されるようになりました。統合をサポートするために、**CdnEnabled** プロパティが **StreamingEndpoint** に追加されました。**CdnEnabled** はバージョン 2.9 以降の REST API で使用できます (詳細については「[StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx)」をご覧ください)。**CdnEnabled** はバージョン 3.1.0.2 以降の .NET SDK で使用できます (詳細については「[StreamingEndpoint.aspx]」https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint(v=azure.10).aspx))をご覧ください)。
-- **Media Encoder Premium Workflow** の発表。詳細については、[Azure Media Services へのプレミアム エンコードの導入に関するページ](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)をご覧ください。
+- **Media Encoder Premium Workflow** の発表。詳細については、[Azure Media Services への Premium Encoding の導入に関するページ](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)をご覧ください。
  
 
 
@@ -154,7 +164,7 @@ Media Services REST API は、現在、バージョン 2.9 です。このバー
 
 ### Media Services の全般的な更新
 
-動的な暗号化によるコンテンツを保護する General Availability (GA) についてのお知らせ。詳細については、[Azure Media Services での DRM テクノロジの一般的な可用性によるストリーミング セキュリティの強化に関するページ](http://azure.microsoft.com/blog/2015/01/29/azure-media-services-enhances-streaming-security-with-general-availability-of-drm-technology/)をご覧ください。
+動的な暗号化による Content Protection の General Availability (GA) についてのお知らせ。詳細については、[Azure Media Services での DRM テクノロジの一般的な可用性によるストリーミング セキュリティの強化に関するページ](http://azure.microsoft.com/blog/2015/01/29/azure-media-services-enhances-streaming-security-with-general-availability-of-drm-technology/)をご覧ください。
 
 ###Media Services .NET SDK の更新
 
@@ -180,7 +190,7 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
 
 - [Azure Media Services .NET SDK](http://www.nuget.org/packages/windowsazure.mediaservices/) が 3.1.0.0 にバージョン アップしました。
 - .Net SDK の依存関係が .NET 4.5 Framework にアップグレードされました。
-- エンコード予約ユニットを更新できる新しい API が追加されました。詳細については、[.NET を使用した予約ユニットの種類の更新とエンコーディング予約ユニットの拡張に関するページ](http://msdn.microsoft.com/library/azure/jj129582.aspx)をご覧ください。
+- エンコード予約ユニットを更新できる新しい API が追加されました。詳細については、[.NET を使用した予約ユニットの種類の更新とエンコード予約ユニットの拡張に関するページ](http://msdn.microsoft.com/library/azure/jj129582.aspx)をご覧ください。
 - トークン認証に JWT (JSON Web Token) が新たにサポートされています。詳細については、[Azure Media Services と動的暗号化における JWT トークン認証に関するページ](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)をご覧ください。.
 - PlayReady ライセンス テンプレートに BeginDate と ExpirationDate の相対オフセットが追加されました。
 
@@ -314,7 +324,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 * Grass Valley HQ/HQX コーデックを使用してビデオをすばやく圧縮する Grass Valley EDIUS 非線形エディターを使用して作成された AVI ファイルの取り込みがサポートされるようになりました。詳細については、「[Grass Valley Announces EDIUS 7 Streaming Through the Cloud (Grass Valley 社、クラウドを介した EDIUS 7 ストリーミングを発表)]」を参照してください。
 
-* メディア エンコーダーによって生成されたファイルの名前付け規則を指定できるようになりました。詳細については、「[Media Services Encoder の出力ファイル名の制御]」を参照してください。
+* Media Encoder によって生成されたファイルの名前付け規則を指定できるようになりました。詳細については、「[Media Services Encoder の出力ファイル名の制御]」を参照してください。
 
 * ビデオ オーバーレイおよびオーディオ オーバーレイのサポートが追加されました。詳細については、「[オーバーレイの作成]」を参照してください。
 
@@ -350,11 +360,11 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 現在、Media Services SDK の最新バージョンは 3.0.0.0 です。Nuget から最新パッケージをダウンロードするか、[GitHub] からビットを取得できます。
 
-Media Services SDK Version 3.0.0.0 から、[Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。詳細については、[Media Services SDK を使用した Media Services への接続]に関するページの Access Control Service トークンの再利用に関するセクションを参照してください。
+Media Services SDK Version 3.0.0.0 から、[Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。詳細については、「[Media Services SDK による Media Services への接続]」の「Access Control Service トークンの再利用」を参照してください。
 
 ### <a name="dec_13_donnet_ext_changes"></a>Azure Media Services .NET SDK Extensions 2.0.0.0
 
-Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure Media Services による開発を容易にする一連の拡張メソッドおよびヘルパー機能です。[Azure Media Services .NET SDK Extensions] から最新のビットを取得できます。
+Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure Media Services による開発を容易にする一連の拡張機能メソッドおよびヘルパー機能です。[Azure Media Services .NET SDK Extensions] から最新のビットを取得できます。
 
 ##<a id="november_changes_13"></a>2013 年 11 月のリリース
 
@@ -424,7 +434,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 	
 	StorageAccountName プロパティ
 	
-	詳細については、[複数のストレージ アカウントでの Media Services 資産の管理]に関するページを参照してください。
+	詳細については、「[複数のストレージ アカウントでの Media Services 資産の管理]」を参照してください。
 
 * API 関連の通知。バージョン 2.2.0.0 から、Azure キュー ストレージ通知をリッスンできます。詳細については、「[Media Services ジョブ通知の処理]」を参照してください。
 	
@@ -530,6 +540,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 
 <!-- URLs. -->
 [Azure Media Services MSDN フォーラム]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
+[Azure Media Services REST API リファレンス]: http://msdn.microsoft.com/library/azure/hh973617.aspx
 [Azure モバイル サービス REST API リファレンス]: http://msdn.microsoft.com/library/azure/hh973617.aspx
 [Media Services の料金詳細]: http://azure.microsoft.com/pricing/details/media-services/
 [Input Metadata (入力メタデータ)]: http://msdn.microsoft.com/library/azure/dn783120.aspx
@@ -558,7 +569,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [ビデオのセグメントの結合]: http://msdn.microsoft.com/library/azure/dn640504.aspx
 [Azure Media Services .NET SDK 3.0.0.1 および 3.0.0.2 のリリース]: http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/
 [Azure Active Directory Access Control Service (ACS)]: http://msdn.microsoft.com/library/hh147631.aspx
-[Media Services SDK を使用した Media Services への接続]: http://msdn.microsoft.com/library/azure/jj129571.aspx
+[Media Services SDK による Media Services への接続]: http://msdn.microsoft.com/library/azure/jj129571.aspx
 [Azure Media Services .NET SDK Extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [azure-sdk-tools]: https://github.com/Azure/azure-sdk-tools
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
@@ -566,4 +577,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

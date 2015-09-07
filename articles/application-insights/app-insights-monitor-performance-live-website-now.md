@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="実行中の Web サイトのパフォーマンスの問題の診断" 
-	description="Web サイトを再デプロイせずにそのパフォーマンスを監視します。依存関係のテレメトリを取得するには、スタンドアロンで使用するか、Application Insights SDK と併用します。" 
-	services="application-insights" 
-    documentationCenter=".net"
-	authors="alancameronwills" 
+<properties
+	pageTitle="実行中の Web サイトのパフォーマンスの問題の診断 | Microsoft Azure"
+	description="Web サイトを再デプロイせずにそのパフォーマンスを監視します。依存関係のテレメトリを取得するには、スタンドアロンで使用するか、Application Insights SDK と併用します。"
+	services="application-insights"
+	documentationCenter=".net"
+	authors="alancameronwills"
 	manager="ronmart"/>
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="04/27/2015" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="04/27/2015"
 	ms.author="awills"/>
- 
+
 
 # Application Insights Status Monitor をインストールして Web サイトのパフォーマンスを監視する
 
@@ -27,12 +27,12 @@ Visual Studio Application Insights の Status Monitor があれば、どんな I
 Application Insights を IIS Web アプリケーションに適用するには、次の 3 つの方法があります。
 
 * **ビルド時:** Web アプリ コードに [Application Insights SDK を追加][greenbrown]します。次の機能が使用可能になります。
- * さまざまな標準診断と使用状況のテレメトリ。 
+ * さまざまな標準診断と使用状況のテレメトリ。
  * 独自のテレメトリを記述して使用状況追跡や問題の診断に活用するために、[Application Insights API][api] を使用できます。
 * **実行時:** Status Monitor を使用して、サーバー上の Web アプリをインストルメント化します。
  * 既に実行されている Web アプリの監視。リビルドや再パブリッシュの必要はありません。
  * さまざまな標準診断と使用状況のテレメトリ。
- * 依存関係の診断 - アプリが、データベース、REST API、その他のサービスなどの他のコンポーネントを使用して発生している障害やパフォーマンスが低下している箇所を特定します。
+ * 依存関係の診断 &#151; アプリが、データベース、REST API、その他のサービスなどの他のコンポーネントを使用して発生している障害やパフォーマンスが低下している箇所を特定します。
  * テレメトリに関する問題のトラブルシューティング。
 * **両方:** SDK を Web アプリ コードにコンパイルし、Web サーバー上で Status Monitor を実行します。両方の長所を活用できます。
  * 標準診断と使用状況のテレメトリ。
@@ -42,12 +42,12 @@ Application Insights を IIS Web アプリケーションに適用するには�
 
 
 
-> [AZURE.TIP][Azure App Service の Web アプリ](../app-service-web/websites-learning-map.md)をご利用ですか。 Azure のアプリのコントロール パネルから、[Application Insights SDK を追加][greenbrown]し、[Application Insights の拡張機能を追加](../insights-perf-analytics.md)してください。
+> [AZURE.TIP][Azure App Service の Web アプリ](../app-service-web/websites-learning-map.md)をご利用ですか。 Microsoft Azure のアプリのコントロール パネルから、[Application Insights SDK を追加][greenbrown]し、[Application Insights の拡張機能を追加](../insights-perf-analytics.md)してください。
 
 
 ## IIS Web サーバーへの Application Insights Status Monitor のインストール
 
-1. [Microsoft Azure](http://azure.com) サブスクリプションが必要です。 
+1. [Microsoft Azure](http://azure.com) サブスクリプションが必要です。
 
 1. IIS Web サーバーで、管理者の資格情報を使用してログインします。
 2. [Status Monitor インストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。
@@ -106,7 +106,7 @@ HTTP、SQL、AZUREBLOB というラベルの付いたグラフには、依存関
 #### パフォーマンス カウンター
 
 パフォーマンス カウンターのグラフをクリックすると表示内容が変わります。新しいグラフを追加することもできます。
- 
+
 #### 例外
 
 ![サーバーの例外グラフをクリックする](./media/app-insights-monitor-performance-live-website-now/appinsights-039-1exceptions.png)
@@ -117,16 +117,16 @@ HTTP、SQL、AZUREBLOB というラベルの付いたグラフには、依存関
 ### テレメトリが見つかりませんか?
 
   * サイトを使用してデータを生成します。
-  * データが到着するまで数分待ち、[最新の情報に更新] をクリックします。
+  * データが到着するまで数分待ち、**[最新の情報に更新]** をクリックします。
   * 診断検索 ([検索] タイル) を開き、個々のイベントを表示します。グラフに集計データが表示される前であっても、大抵の場合、イベントは診断検索に表示されます。
   * Status Monitor を開き、左ウィンドウ枠でアプリケーションを選択します。「通知の構成」セクションに、このアプリケーションの診断メッセージがあるかどうかを確認します。
-  
+
   ![](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
 
-  * サーバーのファイアウォールで、ポート 443 を介した dc.services.visualstudio.com への発信トラフィックが許可されていることを確認します。 
+  * サーバーのファイアウォールで、ポート 443 を介した dc.services.visualstudio.com への発信トラフィックが許可されていることを確認します。
   * サーバーに「権限が不十分」であるという内容のメッセージが表示される場合、次を実行してください。
-  * IIS マネージャーで、アプリケーション プールを選択し、[詳細設定] を開きます。[プロセス モデル] に表示されている ID をメモします。
-  * コンピューターの管理コントロール パネルで、この ID をパフォーマンス モニター ユーザー グループに追加します。
+    * IIS マネージャーで、アプリケーション プールを選択し、**[詳細設定]** を開きます。**[プロセス モデル]** に表示されている ID をメモします。
+    * コンピューターの管理コントロール パネルで、この ID をパフォーマンス モニター ユーザー グループに追加します。
   * [トラブルシューティング][qna]に関するページを参照します。
 
 ## システム要件
@@ -168,6 +168,4 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

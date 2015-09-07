@@ -1,6 +1,6 @@
 <properties
-	pageTitle="File コネクタ"
-	description="File コネクタの使用"
+	pageTitle="Logic Apps での File コネクタの使用 | Microsoft Azure App Service"
+	description="File コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
 	authors="anuragdalmia"
 	manager="dwrede"
 	editor=""
@@ -13,14 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/19/2015"
+	ms.date="08/23/2015"
 	ms.author="andalmia"/>
 
-# ロジック アプリで File コネクタを使用する #
+# File コネクタの使用開始とロジック アプリへの追加
+ファイル システムに接続して、アップロードやダウンロードなど、ホスト コンピューター上のファイルの操作を行います。ロジック アプリはさまざまなデータ ソースを基にトリガーでき、データの取得と処理のためのコネクタを提供します。この File コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
-
-File コネクタを使用すると、ホスト コンピューターのファイル システムからファイルをアップロード、ダウンロード、削除できます。ホスト コンピューターへのハイブリッド接続にはハイブリッド接続マネージャーを使用します。
+File コネクタは、ホスト ファイル システムへのハイブリッド接続にハイブリッド接続マネージャーを使用します。
 
 ## Logic App 用の File コネクタを作成する ##
 File コネクタを使用するには、まず File コネクタ API アプリのインスタンスを作成する必要があります。そのためには、次の手順に従います。
@@ -84,4 +83,4 @@ API の詳細については、「[File コネクタの API の定義]」を参�
 [File コネクタの API の定義]: https://msdn.microsoft.com/library/dn936296.aspx
 [ハイブリッド接続マネージャーの使用]: app-service-logic-hybrid-connection-manager.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

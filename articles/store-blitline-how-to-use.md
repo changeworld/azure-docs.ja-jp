@@ -1,35 +1,25 @@
 <properties 
-	pageTitle="Blitline を使用した画像処理の方法 - Azure の機能ガイド" 
-	description="Azure アプリケーション内で Blitline サービスを使用して画像を処理する方法について説明します。" 
-	services="" 
-	documentationCenter=".net" 
-	authors="blitline-dev" 
-	manager="jason@blitline.com" 
+	pageTitle="Blitline を使用した画像処理の方法 - Azure の機能ガイド"
+	description="Azure アプリケーション内で Blitline サービスを使用して画像を処理する方法について説明します。"
+	services=""
+	documentationCenter=".net"
+	authors="blitline-dev"
+	manager="jason@blitline.com"
 	editor="jason@blitline.com"/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="12/09/2014" 
+	ms.service="multiple"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="12/09/2014"
 	ms.author="support@blitline.com"/>
-
-
-
-
-
-
-# Azure と Azure ストレージで Blitline を使用する方法
+# Azure と Azure Storage で Blitline を使用する方法
 
 このガイドでは、Blitline サービスへのアクセス方法と Blitline へのジョブの送信方法について説明します。
 
-## 目次
-
-[Blitline とは][] [Blitline に当てはまらないこと][] [Blitline アカウントの作成][] [Blitline ジョブを作成する方法][] [画像を Azure ストレージに保存する方法][] [次のステップ][]
-
-## <a id="whatis"></a>Blitline とは
+## Blitline とは
 
 Blitline は、自分で構築する場合と比べてわずかな価格でエンタープライズ レベルの画像処理が可能なクラウド ベースの画像処理サービスです。
 
@@ -37,7 +27,7 @@ Blitline は、自分で構築する場合と比べてわずかな価格でエ�
 
 詳細については、[http://www.blitline.com](http://www.blitline.com) を参照してください。
 
-## <a id="whatisnot"></a>Blitline に当てはまらないこと
+## Blitline に当てはまらないこと
 
 Blitline がどのようなときに役立つかは、使い始める前に Blitline に当てはまらないことを知っておいた方が簡単に理解できます。
 
@@ -45,15 +35,15 @@ Blitline がどのようなときに役立つかは、使い始める前に Blit
 
 - Blitline には、Aviary.com のようなライブ画像処理機能がありません。
 
-- Blitline は画像のアップロードを受け入れないため、画像を直接 Blitline に送信することはできません。Azure ストレージまたは Blitline でサポートされる他の場所に画像を送信してから、その画像を取得できる場所を Blitline に指定する必要があります。
+- Blitline は画像のアップロードを受け入れないため、画像を直接 Blitline に送信することはできません。Azure Storage または Blitline でサポートされる他の場所に画像を送信してから、その画像を取得できる場所を Blitline に指定する必要があります。
 
 - Blitline は並列性がきわめて高いため、同期処理を行いません。つまり、マイクロソフトに postback\_url を伝える必要があり、処理が完了すると通知を受け取ります。
 
-## <a id="createaccount"></a>Blitline アカウントの作成
+## Blitline アカウントの作成
 
 [AZURE.INCLUDE [blitline-signup](../includes/blitline-signup.md)]
 
-## <a id="createjob"></a>Blitline ジョブを作成する方法
+## Blitline ジョブを作成する方法
 
 Blitline では、JSON を使用して画像に対して実行する操作を定義します。この JSON は、いくつかの簡単なフィールドで構成されています。
 
@@ -95,9 +85,9 @@ JSON を取得した後は、それを `http://api.blitline.com/jobs` に **POST
     }
 
 
-これは、Blitline が要求を受け取って処理中のキューに配置したことと、完了後は画像が次の場所で取得可能になることを示しています: ****https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
+これは、Blitline が要求を受け取って処理中のキューに配置したことと、完了後は画像が次の場所で取得可能になることを示しています。****https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg**
 
-## <a id="saveazure"></a>画像を Azure Storage アカウントに保存する方法
+## 画像を Azure ストレージ アカウントに保存する方法
 
 Azure ストレージ アカウントを持っている場合は、処理された画像を Blitline から Azure コンテナーに簡単にプッシュすることができます。"azure\_destination" を追加することで、Blitline からプッシュする場所とアクセス許可を定義します。
 
@@ -121,7 +111,7 @@ Azure ストレージ アカウントを持っている場合は、処理され�
 
 大文字の値を独自の値に設定すると、この JSON を http://api.blitline.com/job に送信できます。"src" 画像は、blur フィルターで処理された後、Azure の送信先にプッシュされます。
 
-<h3>注意:</h3>
+###注意:
 
 SAS には、送信先ファイルのファイル名を含む SAS URL 全体が含まれている必要があります。
 
@@ -130,10 +120,10 @@ SAS には、送信先ファイルのファイル名を含む SAS URL 全体が�
     http://blitline.blob.core.windows.net/sample/image.jpg?sr=b&sv=2012-02-12&st=2013-04-12T03%3A18%3A30Z&se=2013-04-12T04%3A18%3A30Z&sp=w&sig=Bte2hkkbwTT2sqlkkKLop2asByrE0sIfeesOwj7jNA5o%3D
 
 
-Azure ストレージに関する Blitline のドキュメントの最新版を[ここ](http://www.blitline.com/docs/azure_storage)で参照することもできます。
+Azure Storage に関する Blitline のドキュメントの最新版を[ここ](http://www.blitline.com/docs/azure_storage)で参照することもできます。
 
 
-## <a id="nextsteps"></a>次のステップ
+## 次のステップ
 
 他のすべての機能については、blitline.com の次のページを参照してください。
 
@@ -142,12 +132,4 @@ Azure ストレージに関する Blitline のドキュメントの最新版を[
 * Blitline API の例 <http://www.blitline.com/docs/examples>
 * サード パーティの Nuget ライブラリ <http://nuget.org/packages/Blitline.Net>
 
-
-  [次のステップ]: #nextsteps
-  [Blitline とは]: #whatis
-  [Blitline に当てはまらないこと]: #whatisnot
-  [Blitline アカウントの作成]: #createaccount
-  [Blitline ジョブを作成する方法]: #createjob
-  [画像を Azure ストレージに保存する方法]: #saveazure
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

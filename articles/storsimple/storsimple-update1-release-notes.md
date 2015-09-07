@@ -1,19 +1,19 @@
 <properties 
     pageTitle="StorSimple 8000 シリーズ Update 1 リリース ノート | Microsoft Azure"
-    description="StorSimple 8000 シリーズ Update 1 における新機能、問題、回避策について説明します。"
-    services="storsimple"
-    documentationCenter="NA"
-    authors="alkohli"
-    manager="carolz"
-    editor="" />
+	description="StorSimple 8000 シリーズ Update 1 における新機能、問題、回避策について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
  <tags 
     ms.service="storsimple"
-    ms.devlang="NA"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"
-    ms.workload="TBD"
-    ms.date="08/19/2015"
-    ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/21/2015"
+	ms.author="alkohli"/>
 
 # StorSimple 8000 シリーズ Update 1 リリース ノート  
 
@@ -28,7 +28,7 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 >[AZURE.IMPORTANT]
 > 
 - 重要な修正プログラム Update 1.1 は、6 月 23 日にリリースされました。この修正プログラムでは、バックアップ エンジンで発生する問題を解決します。6 月 23 日より前に Update 1 を適用し、現在ソフトウェア バージョン **6.3.9600.17491** を使用している場合、この重要な更新プログラムを適用してバックアップの問題を回避してください。更新プログラムをインストールすると、ソフトウェアのバージョンは **6.3.9600.17521** に変更します。
-- 5 月 27 日から 7 月 10 日の間にソフトウェア バージョンが 6.3.9600.17481 の仮想デバイスを作成した場合、仮想デバイスを新規作成して、古い仮想デバイスのすべてのボリュームを新しい仮想デバイスにフェールオーバーしてください(これは、古い仮想デバイスを更新できないためです)。 仮想デバイスを新規作成しない場合、バックアップを開始できない可能性があります。フェールオーバーと障害復旧の手順については、「[StorSimple デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)」を参照してください。
+- 5 月 27 日から 7 月 10 日の間にソフトウェア バージョンが **6.3.9600.17481** の仮想デバイスを作成した場合、仮想デバイスを新規作成して、古い仮想デバイスのすべてのボリュームを新しい仮想デバイスにフェールオーバーしてください。(これは、古い仮想デバイスを更新できないためです)。 仮想デバイスを新規作成しない場合、バックアップを開始できない可能性があります。フェールオーバーと障害復旧の手順については、「[StorSimple デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)」をご覧ください。
 - StorSimple 用 Windows PowerShell ではなく StorSimple Manager サービスを使用して、Update 1 をインストールします。
 - このリリースには、デバイスがメンテナンス モードの場合にのみ適用できる、ディスクのファームウェア更新プログラムも含まれています。これらは中断を伴う更新プログラムで、デバイスのダウンタイムの原因となります。これらの更新プログラムは、計画的メンテナンス中に適用できます。
 - この更新プログラムをインストールするには、(Windows の更新プログラムを含めて) 約 5 ～ 10 時間がかかります。 
@@ -94,9 +94,9 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 
 ## Update 1 での物理デバイスの更新
 
-これらの更新プログラムを物理デバイスに適用すると、ソフトウェア バージョンは 6.3.9600.17521 に変更します。
+Update 1 より前のバージョンを実行している物理デバイスに、Update 1.2 修正プログラムを適用した場合、ソフトウェアのバージョンは、6.3.9600.17521 に変更されます。
 
-## Update 1 のシリアル接続 SCSI (SAS) コントローラーおよびファームウェアの更新プログラム
+## Update 1 のコントローラーとファームウェアの更新プログラム
 
 このリリースでは、物理デバイスの SAS コントローラー上のドライバーとファームウェアが更新されます。また、デバイス上のディスクのファームウェアも更新されます。
  
@@ -115,4 +115,4 @@ StorSimple ソリューションの更新プログラムをデプロイする前
 - [デバイスへの Update 1 のインストール](storsimple-install-update-1.md)。
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

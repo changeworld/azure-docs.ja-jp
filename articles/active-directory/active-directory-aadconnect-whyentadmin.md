@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="エンタープライズ管理者アカウントが必要な理由" 
-	description="カスタム設定の説明。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="エンタープライズ管理者アカウントが必要な理由"
+	description="カスタム設定の説明。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/28/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure AD Connect を設定するときに、AD DS に接続するためのエンタープライズ管理者アカウントが必要な理由
@@ -31,6 +31,6 @@
 
 * [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-account-summary.md)
 * [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)
-* [MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx) 
+* [MSDN の Azure AD Connect](active-directory-aadconnect.md) 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

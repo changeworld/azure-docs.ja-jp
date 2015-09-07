@@ -1,20 +1,20 @@
 <properties
    pageTitle="Service Fabric サービスの拡張性"
-   description="Service Fabric サービスの拡張方法を説明する"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="appi101"
-   manager="timlt"
-   editor=""/>
+	description="Service Fabric サービスの拡張方法を説明する"
+	services="service-fabric"
+	documentationCenter=".net"
+	authors="appi101"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="04/23/2015"
-   ms.author="aprameyr"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/26/2015"
+	ms.author="aprameyr"/>
 
 # Service Fabric アプリケーションのスケーリング
 Service Fabric により、クラスターのすべてのノードのサービス、パーティション、およびレプリカの負荷分散を実施することにより、スケーラブルなアプリケーションを簡単に構築できます。これにより、リソースを最大限活用できます。
@@ -61,4 +61,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 - [状態の定義と管理](service-fabric-concepts-state.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

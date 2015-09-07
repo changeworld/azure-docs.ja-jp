@@ -1,20 +1,20 @@
 <properties 
    pageTitle="NSP との Expressroute の構成"
-   description="このチュートリアルでは、NSP を通じた ExpressRoute の設定について説明します。"
-   documentationCenter="na"
-   services="expressroute"
-   authors="cherylmc"
-   manager="adinah"
-   editor="tysonn"/>
+	description="このチュートリアルでは、NSP を通じた ExpressRoute の設定について説明します。"
+	documentationCenter="na"
+	services="expressroute"
+	authors="cherylmc"
+	manager="adinah"
+	editor="tysonn"/>
 
 <tags 
    ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="article" 
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services" 
-   ms.date="06/29/2015"
-   ms.author="cherylmc"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="06/29/2015"
+	ms.author="cherylmc"/>
 
 #  ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成
 
@@ -134,7 +134,7 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 4. **Virtual Network とゲートウェイを構成します。**
 
-	「[ExpressRoute 用の仮想ネットワークとゲートウェイの構成](https://msdn.microsoft.com/library/azure/dn643737.aspx)」を参照してください。ExpressRoute 接続を使用するために、ゲートウェイ サブネットは /28 にする必要があります。
+	「[ExpressRoute 用の仮想ネットワークとゲートウェイの構成](../expressroute/expressroute-configuring-vnet-gateway.md)」を参照してください。ExpressRoute 接続を使用するために、ゲートウェイ サブネットは /28 にする必要があります。
 
 5. **ネットワークを回線にリンクします。**
 
@@ -150,4 +150,4 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 		
 		Provisioned 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

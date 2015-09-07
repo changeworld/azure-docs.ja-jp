@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure での NoSQL テクノロジについて | Microsoft Azure" 
-	description="ビッグ データや JSON ドキュメント、グラフのようなリレーショナル データベースに適していないデータを管理するのに、HDInsight 上の NoSQL テクノロジがどのように役立つかについて説明します。" 
-	editor="cgronlun" 
-	manager="jhubbard" 
-	services="documentdb, storage, hdinsight" 
-	documentationCenter="" 
+	pageTitle="Azure での NoSQL テクノロジについて | Microsoft Azure"
+	description="ビッグ データや JSON ドキュメント、グラフのようなリレーショナル データベースに適していないデータを管理するのに、HDInsight 上の NoSQL テクノロジがどのように役立つかについて説明します。"
+	editor="cgronlun"
+	manager="jhubbard"
+	services="documentdb, storage, hdinsight"
+	documentationCenter=""
 	authors="mimig1"/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/13/2015" 
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/21/2015"
 	ms.author="mimig"/>
 
 # Microsoft Azure での NoSQL について
@@ -31,4 +31,4 @@ Azure で利用できる一連の NoSQL テクノロジに関心があるもの�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

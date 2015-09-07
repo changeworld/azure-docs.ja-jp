@@ -1,20 +1,20 @@
 <properties 
-   pageTitle=".NET SDK を使用した DNS とレコード セットの操作の自動化 |Microsoft Azure" 
-   description=".NET SDK を使用した Azure DNS のすべての DNS 操作の自動化" 
-   services="dns" 
-   documentationCenter="na" 
-   authors="joaoma" 
-   manager="adinah" 
-   editor=""/>
+   pageTitle=".NET SDK を使用した DNS とレコード セットの操作の自動化 |Microsoft Azure"
+	description=".NET SDK を使用した Azure DNS のすべての DNS 操作の自動化"
+	services="dns"
+	documentationCenter="na"
+	authors="joaoma"
+	manager="adinah"
+	editor=""/>
 
 <tags
    ms.service="dns"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services" 
-   ms.date="05/20/2015"
-   ms.author="joaoma"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/20/2015"
+	ms.author="joaoma"/>
 # .NET SDK を使用した DNS ゾーンとレコード セットの作成
 DNS ゾーン、レコードセット、レコードを作成、削除、更新する操作は、DNS SDK と .NET DNS 管理ライブラリを使用して自動化できます。Visual Studio プロジェクト全体は、[こちら](http://download.microsoft.com/download/2/A/C/2AC64449-1747-49E9-B875-C71827890126/AzureDnsSDKExample_2015_05_05.zip)から入手できます。
 
@@ -54,7 +54,7 @@ DNS ゾーンを作成する
 	dnsClient.Zones.CreateOrUpdate("myresgroup", "myzone.com", zoneParams);
 
 
-Azure DNS では、[Etag](../dns-getstarted-create-dnszone#Etags-and-tags) と呼ばれるオプティミスティック同時実行制御がサポートされます。Etag は Zone のプロパティで、IfNoneMatch は ZoneCreateOrUpdateParameters 内のプロパティです。
+Azure DNS では、[Etag](dns-getstarted-create-dnszone.md#Etags-and-tags) と呼ばれるオプティミスティック同時実行制御がサポートされます。Etag は Zone のプロパティで、IfNoneMatch は ZoneCreateOrUpdateParameters 内のプロパティです。
 
 ## DNS レコードの作成または更新
 DNS レコードはレコード セットとして管理されます。レコード セットは、ゾーン内で名前とレコードの種類が同じレコードのセットです。レコード セットを作成または更新するには、RecordSet オブジェクトを作成し、dnsClient.RecordSets.CreateOrUpdate に渡します。レコード セットの名前は、完全修飾 DNS 名とは対照的に、ゾーン名を基準として相対的であることに注意してください。ここでも、場所は "global" に設定されます。
@@ -74,10 +74,10 @@ DNS レコードはレコード セットとして管理されます。レコー
 	"myzone.com", "www", RecordType.A, recordParams);
 	
     
-Azure DNS では、[Etag](../dns-getstarted-create-dnszone#Etags-and-tags) と呼ばれるオプティミスティック同時実行制御がサポートされます。Etag は RecordSet のプロパティで、IfNoneMatch は RecordSetCreateOrUpdateParameters 内のプロパティです。
+Azure DNS では、[Etag](dns-getstarted-create-dnszone.md#Etags-and-tags) と呼ばれるオプティミスティック同時実行制御がサポートされます。Etag は RecordSet のプロパティで、IfNoneMatch は RecordSetCreateOrUpdateParameters 内のプロパティです。
 
-## Zones と RecordSets の取得
-Zones コレクションと RecordSets コレクションを使用すると、それぞれゾーンとレコード セットを取得できます。RecordSets は、その種類、名前、それが存在するゾーン (およびリソース グループ) で識別されます。Zones は、その名前と、それが存在するリソース グループで識別されます。
+## ゾーンと RecordSets の取得
+ゾーン コレクションと RecordSets コレクションを使用すると、それぞれゾーンとレコード セットを取得できます。RecordSets は、その種類、名前、それが存在するゾーン (およびリソース グループ) で識別されます。ゾーンは、その名前と、それが存在するリソース グループで識別されます。
 
 	ZoneGetResponse getZoneResponse = 
 	dnsClient.Zones.Get("myresgroup", "myzone.com");
@@ -85,7 +85,7 @@ Zones コレクションと RecordSets コレクションを使用すると、�
 	dnsClient.RecordSets.Get("myresgroup", 
 	"myzone.com", "www", RecordType.A);
 
-##Zones と RecordSets の一覧表示
+##ゾーンと RecordSets の一覧表示
 
 ゾーンの一覧を表示するには、Zones コレクションで List メソッドを使用します。レコード セットの一覧を表示するには、RecordSets コレクションで List メソッドまたは ListAll メソッドを使用します。List メソッドは、指定された種類のレコード セットのみを返すという点で ListAll メソッドと異なります。
 
@@ -100,11 +100,12 @@ Zones コレクションと RecordSets コレクションを使用すると、�
 
     // do something like write out each record set
 	}
-## 関連項目 
-[Traffic Manager の概要](../traffic-manager-overview)
+## 次のステップ
 
-[Azure DNS の概要](../dns-overview)
+[Traffic Manager について](traffic-manager-overview.md)
+
+[Azure DNS とは](dns-overview.md)
 
 [Visual Studio SDK のサンプル プロジェクト](http://download.microsoft.com/download/2/A/C/2AC64449-1747-49E9-B875-C71827890126/AzureDnsSDKExample_2015_05_05.zip)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

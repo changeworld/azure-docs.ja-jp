@@ -11,10 +11,10 @@
 サブスクリプションあたりの予約済み IP 数|20|100
 サブスクリプションあたりの ExpressRoute 専用回線数|10|25
 サブスクリプションあたりのホストされるサービスの証明書数|400|400
-サブスクリプションあたりの[アフィニティ グループ](http://msdn.microsoft.com/library/azure/jj156085.aspx)数|256|256
+サブスクリプションあたりの[アフィニティ グループ](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)数|256|256
 サブスクリプションあたりのリージョンごとの [Batch](http://azure.microsoft.com/services/batch/) アカウント数|1|50
 サブスクリプションあたりのアラート ルール数|250|250
 
 <sup>1</sup>XS のインスタンスで、使用するコア数が 1 コアに満たなくても、コア制限を上限として 1 コアとカウントされます。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

@@ -1,44 +1,46 @@
-## Create a Backup Vault
-To back up files and data from your Windows Server or System Center Data Protection Manager (SCDPM) to Azure or when backing up IaaS VMs to Azure, you must create a backup vault in the geographic region where you want to store the data.
+## バックアップ資格情報コンテナーの作成
+ファイルとデータを Windows Server または System Center Data Protection Manager (SCDPM) から Azure にバックアップしたり、IaaS VM を Azure にバックアップしたりする場合には、データを保存する地理的リージョンにバックアップ資格情報コンテナーを作成する必要があります。　
 
-This article will walk you through the creation of the vault you will use to store backups.
+このチュートリアルでは、バックアップの格納に使用する資格情報コンテナーの作成方法を説明します。
 
-## Video walkthrough
+## ビデオ チュートリアル
 
-Here's a quick video of the process.
+これは、作成手順を簡単に説明するビデオです。
 
 [AZURE.VIDEO azure-backup-vault-creation]
 
-The following steps will walk you through the creation of the vault used to store backups.
+次の手順は、バックアップの格納に使用する資格情報コンテナーの作成に使用します。
 
-### Creating a backup vault
-1. Sign in to the [Management Portal](https://manage.windowsazure.com/)
-2. Click **New** > **Data Services** > **Recovery Services** > **Backup Vault** and choose **Quick Create**.
-3. For the **Name** parameter, enter a friendly name to identify the backup vault. This needs to be unique for each subscription.
-4. For the **Region** parameter, select the geographic region for the backup vault. The choice determines the geographic region to which your backup data is sent. By choosing a geographic region close to your location, you can reduce the network latency when backing up to Azure.
-5. Click on **Create Vault** to complete the workflow. It can take a while for the backup vault to be created. To check the status, you can monitor the notifications at the bottom of the portal.
+### バックアップ資格情報コンテナーの作成
+1. [管理ポータル](https://manage.windowsazure.com/)にサインインします。
+2. **[新規]**、**[Data Services]**、**[Recovery Services]**、**[バックアップ資格情報コンテナー]** の順にクリックして、**[簡易作成]** を選択します。
+3. **[名前]** パラメーターについては、バックアップ資格情報コンテナーを識別する表示名を入力します。これは、サブスクリプションごとに一意である必要があります。
+4. **[リージョン]** パラメーターについては、バックアップ資格情報コンテナーの地理的リージョンを選択します。この選択により、バックアップ データの送付先となる地理的リージョンが決まります。自分の場所から近い地理的リージョンを選択することによって、Azure にバックアップする際のネットワーク待機時間を削減できます。
+5. **[資格情報コンテナーの作成]** をクリックして、ワークフローを完了します。バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。状態を確認するには、ポータルの下部にある通知を監視します。
 
     ![Creating Vault](./media/backup-create-vault-wgif/create-vault-wgif.gif)
 
-6. After the backup vault has been created, a message tells you the vault has been successfully created. The vault is also listed in the resources for Recovery Services as **Active**.
+6. バックアップ資格情報コンテナーが作成された後、資格情報コンテナーが正常に作成されたことを示すメッセージが表示されます。この資格情報コンテナーはまた、Recovery Services 用のリソースで **Active** としてリストされます。
 
 
 
 
-### Azure Backup - Storage Redundancy Options
+### Azure Backup - ストレージ冗長オプション
 
-The best time to identify your storage redundancy option is right after vault creation, and before any machines are registered to the vault. Once an item has been registered to the vault, the storage redundancy option is locked and cannot be modified.
+ストレージ冗長オプションを識別する最適なタイミングは、資格情報コンテナーの作成直後で、いずれかのコンピューターが資格情報コンテナーに登録される前です。項目が資格情報コンテナーに登録されたら、ストレージ冗長オプションはロックされ、変更できなくなります。
 
-Your business needs would determine the storage redundancy of the Azure Backup backend storage. If you are using Azure as a primary backup storage endpoint (e.g. you are backing up to Azure from a Windows Server), you should consider picking (the default) Geo-Redundant storage option. This is seen under the **Configure** option of your Backup vault.
+ビジネス ニーズによって、Azure Backup のバックエンド ストレージのストレージ冗長性が決まります。プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合 (たとえば、Windows Server から Azure にバックアップする場合)、geo 冗長ストレージ オプション (既定値) の選択を検討する必要があります。これは、バックアップ資格情報コンテナーの **[構成]** オプションの下に表示されます。
 
 ![GRS](./media/backup-create-vault/grs.png)
 
-#### Geo-Redundant Storage (GRS)
-GRS maintains six copies of your data. With GRS, your data is replicated three times within the primary region, and is also replicated three times in a secondary region hundreds of miles away from the primary region, providing the highest level of durability. In the event of a failure at the primary region, by storing data in GRS, Azure Backup ensures that your data is durable in two separate regions.
+#### geo 冗長ストレージ (GRS)
+GRS では、データのコピーが 6 つ保持されます。GRS を使用すると、データがプライマリ リージョン内で 3 回複製され、プライマリ リージョンから数百マイル離れたセカンダリ リージョンでも 3 回複製されます。そのため、最も優れたレベルの持続性が実現されます。プライマリ リージョンで障害が発生した場合は、Azure Backup は GRS にデータを格納することによって、2 つの別個のリージョンでデータが持続するようにします。
 
-#### Locally Redundant Storage (LRS)
-Loclly redundant storage (LRS) maintains three copies of your data. LRS is replicated three times within a single facility in a single region. LRS protects your data from normal hardware failures, but not from the failure of an entire Azure facility.
+#### ローカル冗長ストレージ (LRS)
+ローカル冗長ストレージ (LRS) では、データのコピーが 3 つ保持されます。LRS は、1 つのリージョンの 1 つの施設内で 3 回複製されます。LRS では、データは通常のハードウェア障害から保護されますが、Azure 施設全体の障害からは保護されません。
 
-If you are using Azure as a tertiary backup storage endpoint (e.g. you are using SCDPM to have a local backup copy on-premises & using Azure for your long term retention needs), you should consider choosing Locally Redundant Storage from the **Configure** option of your Backup vault. This brings down the cost of storing data in Azure, while providing a lower level of durability for your data that might be acceptable for tertiary copies.
+第 3 のバックアップ ストレージ エンドポイントとして Azure を使用している場合 (たとえば、SCDPM を使用してオンプレミスのローカルのバックアップ コピーを取ったり、Azure を使用して長期保存したりする場合)、バックアップ資格情報コンテナーの **[構成]** オプションから、ローカル冗長ストレージの選択を検討する必要があります。これにより、Azure でデータを格納するためのコストは削減されますが、データの持続性レベルは低くなります。これは、第 3 のコピーとしてなら許容される可能性があります。
 
 ![LRS](./media/backup-create-vault/lrs.png)
+
+<!---HONumber=August15_HO9-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication と Active Directory 間のディレクトリ統合" 
-	description="ディレクトリを同期できるように Azure Multi-Factor Authentication Server と Active Directory を統合する方法を説明する Azure Multi-Factor Authentication のページです。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure Multi-Factor Authentication と Active Directory 間のディレクトリ統合"
+	description="ディレクトリを同期できるように Azure Multi-Factor Authentication Server と Active Directory を統合する方法を説明する Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/14/2015" 
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure MFA Server と Active Directory 間のディレクトリ統合
@@ -137,4 +137,4 @@ LDAP を使用するように構成したときに、LDAP ディレクトリが 
 
 ![Multi-Factor-Auth Server](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Azure の仮想マシンにおける SQL Server の高可用性と障害復旧"
-   description="Azure Virtual Machines で実行されている SQL Server に対するさまざまな種類の HADR 戦略について説明します。"
-   services="virtual-machines"
-   documentationCenter="na"
-   authors="rothja"
-   manager="jeffreyg"
-   editor="monicar" />
+	description="Azure Virtual Machines で実行されている SQL Server に対するさまざまな種類の HADR 戦略について説明します。"
+	services="virtual-machines"
+	documentationCenter="na"
+	authors="rothja"
+	manager="jeffreyg"
+	editor="monicar"/>
 <tags 
    ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows-sql-server"
-   ms.workload="infrastructure-services"
-   ms.date="08/17/2015"
-   ms.author="jroth" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.workload="infrastructure-services"
+	ms.date="08/17/2015"
+	ms.author="jroth"/>
 
 # Azure の仮想マシンにおける SQL Server の高可用性と障害復旧
 
@@ -134,7 +134,7 @@ Azure ディスク内の geo レプリケーションでは、同じデータベ
 
 Azure 仮想マシンと SQL Server を作成する必要がある場合は、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
 
-Azure VM で実行されている SQL Server のパフォーマンスを最高にするには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](https://msdn.microsoft.com/library/azure/dn133149.aspx)」のガイダンスを参照してください。
+Azure VM で実行されている SQL Server のパフォーマンスを最大限まで高めるには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」のガイダンスをご覧ください。
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
@@ -143,4 +143,4 @@ Azure VM での SQL Server の実行に関するその他のトピックにつ�
 - [Azure での新しい Active Directory フォレストのインストール](../active-directory/active-directory-new-forest-virtual-machine.md)
 - [Azure VM での AlwaysOn 可用性グループの WSFC クラスターの作成](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

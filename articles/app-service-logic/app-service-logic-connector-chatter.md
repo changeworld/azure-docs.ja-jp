@@ -1,27 +1,26 @@
 <properties
-   pageTitle="Chatter コネクタの API アプリ"
-   description="Chatter コネクタの使用方法"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での Chatter コネクタの使用 | Microsoft Azure App Service"
+	description="Chatter コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="sameerch"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="sameerch"/>
 
 
-# ロジック アプリで Chatter コネクタを使用する
+# Chatter コネクタの使用開始とロジック アプリへの追加 
+Chatter に接続して、メッセージの投稿またはフィードの検索を実行します。たとえば、Chatter フィードを検索して、特定の項目が見つかったときに、Sales グループにその Chatter メッセージを投稿できます。
 
-Chatter コネクタを使うと、Chatter に接続し、メッセージの投稿などの一般的なタスクを実行できます。たとえば、Chatter フィードを検索して、特定の項目が見つかったときに、Sales グループにその Chatter メッセージを投稿できます。
-
-この Chatter コネクタをビジネス ワークフローに追加し、そのワークフローの一部としてデータを処理できます。
+この Chatter コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ## トリガーとアクション
 
@@ -39,7 +38,7 @@ Chatter コネクタは、ロジック アプリでトリガーまたはアク�
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
 2. "Chatter コネクタ" を検索して選択し、**[作成]** を選択します。
-3. 名前、App Service プラン、その他のプロパティを入力します。
+3. 名前、App Service プラン、その他のプロパティを入力します。  
 	![][1]  
 	- **[場所]** - コネクタをデプロイする地域を選択します。
 	- **[サブスクリプション]** - コネクタを作成するサブスクリプションを選択します。
@@ -56,16 +55,16 @@ API アプリが作成されたら、ロジック アプリのトリガーやア
 
 1. ロジック アプリで **[トリガーとアクション]** を選択してロジック アプリ デザイナーを開き、フローを構成します。
 
-2. Chatter コネクタがギャラリーの一覧に表示されます。
+2. Chatter コネクタがギャラリーの一覧に表示されます。  
 	![][4]
-3. Chatter コネクタを選択すると、自動的にデザイナーに追加されます。**[承認]** を選択して資格情報を入力し、**[許可]** を選択します。
+3. Chatter コネクタを選択すると、自動的にデザイナーに追加されます。**[承認]** を選択して資格情報を入力し、**[許可]** を選択します。  
 	![][5]
 	![][6]
 	![][7]
 
 これで、フローで Chatter コネクタを使用できるようになりました。今後は、Chatter トリガー ([新しいメッセージ]) を使って取得した新しいメッセージを、フローの他のアクションで使用できます。Chatter トリガーの入力プロパティを次のように構成します。
 
-**[グループ ID]** - 新しいメッセージを取得する必要があるグループの ID を入力します。グループ ID を指定しない場合は、新しいメッセージがユーザーのフィードから取得されます。
+**[グループ ID]** - 新しいメッセージを取得する必要があるグループの ID を入力します。グループ ID を指定しない場合は、新しいメッセージがユーザーのフィードから取得されます。  
 	![][8]
 	![][9]
 
@@ -96,4 +95,4 @@ API アプリが作成されたら、ロジック アプリのトリガーやア
 [10]: ./media/app-service-logic-connector-chatter/img10.PNG
 [11]: ./media/app-service-logic-connector-chatter/img11.PNG
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

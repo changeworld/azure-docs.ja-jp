@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する" 
-	description="このトピックでは、オンプレミスのエンコーダーからシングル ビットレートのライブ ストリームを受信し、その後に Media Services でアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Juliako" 
-	manager="dwrede" 
+	pageTitle="Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する"
+	description="このトピックでは、オンプレミスのエンコーダーからシングル ビットレートのライブ ストリームを受信し、その後に Media Services でアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。"
+	services="media-services"
+	documentationCenter=""
+	authors="Juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="ne" 
-	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="ne"
+	ms.topic="article"
+	ms.date="08/20/2015"
 	ms.author="juliako"/>
 
 #Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する (プレビュー)
@@ -23,19 +23,19 @@
 Azure Media Services では、**チャネル**は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。**チャネル**は、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
 - オンプレミスのライブ エンコーダーは、マルチ ビットレート **RTMP** または **スムーズ ストリーミング** (Fragmented MP4) をチャネルに送信します。マルチ ビットレートのスムーズ ストリーミングを出力するライブ エンコーダーとして、Elemental、Envivio、Cisco を使用できます。Adobe Flash Live、Telestream Wirecast、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。取り込んだストリームは、追加の処理なしで**チャネル**を通過します。Media Services は、要求に応じて、ストリームを顧客に配信します。
-- **RTP** (MPEG-TS)、**RTMP**、**スムーズ ストリーミング** (Fragmented MP4) のいずれかの形式のシングル ビットレート ストリームは、Media Services によるライブ エンコードが有効な**チャネル**に送信されます。次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードが**チャネル**で実行されます。Media Services は、要求に応じて、ストリームを顧客に配信します。 
+- **RTP** (MPEG-TS)、**RTMP**、**スムーズ ストリーミング** (Fragmented MP4) のいずれかの形式のシングル ビットレート ストリームは、Media Services による Live Encoding が有効な**チャネル**に送信されます。次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードが**チャネル**で実行されます。Media Services は、要求に応じて、ストリームを顧客に配信します。 
 
 	Media Services でのライブ ストリームのエンコードは現在**プレビュー**です。
 
 Media Services 2.10 リリース以降、チャネルを作成するときに、チャネルで入力ストリームを受信する方法、およびチャネルでストリームのライブ エンコードを実行するかどうかを指定できます。2 つのオプションがあります。
 
-- **なし** – オンプレミスのライブ エンコーダーを使用してマルチ ビットレート ストリームを出力する場合には、この値を指定します。この場合は、受信ストリームはエンコードなしで出力に渡されます。これは、2.10 リリースより前のチャネル動作です。この種類のチャネル動作について詳しくは、「[内部設置型のエンコーダーからマルチ ビットレート ライブ ストリームを受信するチャネルを操作する](media-services-manage-channels-overview.md)」をご覧ください。
+- **なし** – オンプレミスのライブ エンコーダーを使用してマルチ ビットレート ストリームを出力する場合には、この値を指定します。この場合は、受信ストリームはエンコードなしで出力に渡されます。これは、2.10 リリースより前のチャネル動作です。この種類のチャネル動作について詳しくは、「[オンプレミスのエンコーダーからマルチ ビットレート ライブ ストリームを受信するチャネルを操作する](media-services-manage-channels-overview.md)」をご覧ください。
 
 - **Standard** (プレビュー) – Media Services を使用して、シングル ビットレートのライブ ストリームをマルチ ビットレート ストリームにエンコードする場合に、この値を選択します。
 
 	Media Services を使用したライブ ストリームのエンコードは現在プレビュー段階です。
 
->[AZURE.NOTE]このトピックでは、ライブ エンコードの実行が有効なチャネルの属性について取り上げます (**標準**エンコード型)。ライブ エンコードの実行が無効なチャネルの操作については、「[内部設置型のエンコーダーからマルチ ビットレート ライブ ストリームを受信するチャネルを操作する](media-services-manage-channels-overview.md)」をご覧ください。
+>[AZURE.NOTE]このトピックでは、ライブ エンコードの実行が有効なチャネルの属性について取り上げます (**標準**エンコード型)。Live Encoding の実行が無効なチャネルの操作については、「[オンプレミスのエンコーダーからマルチ ビットレート ライブ ストリームを受信するチャネルを操作する](media-services-manage-channels-overview.md)」をご覧ください。
 
 次のダイアグラムは、チャネルが RTMP、スムーズ ストリーミング、RTP (MPEG-TS) のいずれかでシングル ビットレートストリームを受信し、そのストリームをマルチ ビットレート ストリームにエンコードするライブ ストリーミング ワークフローを示しています。
 
@@ -43,11 +43,11 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 
 >[AZURE.NOTE]すべてのデータ センターが Azure Media Services による Live Encoding をサポートしているわけではありません。
 >
->Microsoft Azure 管理ポータルを使用してチャネルを作成する場合は、チャネルのエンコードの種類で 2 つのオプション (**[なし]** と **[標準]**) を使用できます。**[なし]** オプションしか表示されない場合は、データ センターが AMS による Live Encoding をサポートしていないことを意味します。
+>Microsoft Azure 管理ポータルを使用してチャネルを作成する場合は、チャネルのエンコードの種類で 2 つのオプション (**[なし]** と **[Standard]**) を使用できます。**[なし]** オプションしか表示されない場合は、データ センターが AMS による Live Encoding をサポートしていないことを意味します。
 >
 >.NET SDK または REST API を使用している場合は、次の操作を実行して確認します。
 >
->1. エンコードの種類を [標準] に設定して、チャネルの作成を試みます。 
+>1. エンコードの種類を [Standard] に設定して、チャネルの作成を試みます。 
 >2. 結果として HTTP Error Code 412 (PreconditionFailed) と *"このリージョンでは Live Encoding がサポートされていません。エンコードの種類を 'なし' に設定する必要があります"* というメッセージが返される場合は、データ センターは Live Encoding をサポートしていません。
 
 
@@ -95,7 +95,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 
 ###<a id="Ingest_Protocols"></a>取り込みストリーミング プロトコル
 
-[**エンコーダーの種類**] が [**標準**] に設定されている場合の有効なオプションは次のとおりです。
+[**エンコーダーの種類**] が [**Standard**] に設定されている場合の有効なオプションは次のとおりです。
 
 - **RTP** (MPEG-TS): MPEG-2 Transport Stream over RTP。  
 - シングル ビットレート **RTMP**
@@ -206,7 +206,7 @@ Elemental Technologies、Ericsson、Ateme、Envivio などのベンダーのオ�
 
 チャネルを作成すると、取り込み URL を取得できます。これらの URL を取得するために、チャネルが**実行中**状態である必要はありません。データをチャネルにプッシュする準備ができたら、チャネルを**実行中**状態にする必要があります。チャネルがデータの取り込みを開始すると、プレビュー URL 経由でストリームをプレビューできます。
 
-Fragmented MP4 (スムーズ ストリーミング) のライブ ストリームを、SSL 経由で取り込むこともできます。SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。
+Fragmented MP4 (スムーズ ストリーミング) のライブ ストリームを、SSL 接続で取り込むこともできます。SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。
 
 ###許可された IP アドレス
 
@@ -231,9 +231,9 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 プレビューのエンドポイントへの接続を許可する IP アドレスを定義できます。IP アドレスを指定しない場合、すべての IP アドレスが許可されます。許可された IP アドレスは、1 つの IP アドレス (例: '10.0.0.1')、IP アドレスと CIDR のサブネットを使用した IP 範囲 (例: ‘10.0.0.1/22’)、または IP アドレスとピリオド区切りのサブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1(255.255.252.0)’) のいずれかの形式で指定できます。
 
-##ライブ エンコードの設定
+##Live Encoding の設定
 
-このセクションでは、チャネルの [**エンコードの種類**] が [**標準**] に設定されているときに、チャネル内のライブ エンコーダーの設定を調整する方法について説明します。
+このセクションでは、チャネルの [**エンコードの種類**] が [**Standard**] に設定されているときに、チャネル内のライブ エンコーダーの設定を調整する方法について説明します。
 
 ###Ad マーカー ソース
 
@@ -400,7 +400,7 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 - チャネルやチャネルに関連付けられたプログラムの実行中は、入力プロトコルを変更できません。別のプロトコルが必要な場合は、入力プロトコルごとに別のチャネルを作成します。 
 - ライブ エンコーダーを再構成する際は、毎回チャネルで **Reset** メソッドを呼び出します。チャネルをリセットする前に、プログラムを停止する必要があります。チャネルをリセットしたら、プログラムを再起動します。 
 - チャネルを停止できるのは実行中の状態で、チャネルのすべてのプログラムが停止しているときのみです。
-- 既定では、Media Services カウントに追加できるチャネル数は 5 つのみです。これは、すべての新しいアカウントに関するソフト クォータです。詳しくは、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
+- 既定では、Media Services アカウントに追加できるチャネル数は 5 つのみです。これは、すべての新しいアカウントに関するソフト クォータです。詳しくは、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
 - チャネルやチャネルに関連付けられたプログラムの実行中は、入力プロトコルを変更できません。別のプロトコルが必要な場合は、入力プロトコルごとに別のチャネルを作成します。
 - チャネルが**実行中**状態のときにのみ課金されます。詳しくは、[こちら](media-services-manage-live-encoder-enabled-channels.md#states)のセクションを参照してください。
 
@@ -410,30 +410,7 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 - RTP サポートは、専門の放送事業者に提供されます。RTP に関する注意事項については、[こちら](http://azure.microsoft.com/blog/2015/04/13/an-introduction-to-live-encoding-with-azure-media-services/)のブログをご覧ください。
 - スレート イメージは、[こちら](media-services-manage-live-encoder-enabled-channels.md#default_slate)で説明した制限に準拠する必要があります。1920 x 1080 を超える既定のスレートでチャネルを作成しようとすると、要求は最終的にエラーになります。
 
-
-##<a id="tasks"></a>ライブ ストリーミングに関連するタスク
-
-###Media Services アカウントの作成
-
-[Azure Media Services アカウントを作成](media-services-create-account.md)します。
-
-###ストリーミング エンドポイントの構成
-
-ストリーミング エンドポイントの概要とその管理方法の詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」をご覧ください。
-
-###開発環境の設定  
-
-開発環境に関して **.NET** または **REST API** を選択します。
-
-[AZURE.INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
-
-###プログラムによる接続  
-
-プログラムを使用して Azure Media Services に接続するため、**.NET** または **REST API** を選択します。
-
-[AZURE.INCLUDE [media-services-selector-connect](../../includes/media-services-selector-connect.md)]
-
-###シングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの作成 
+###シングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルを作成する方法 
 
 チャネルとプログラムの作成および管理方法を表示する**ポータル**、**.NET**、**REST API** を選択します。
 
@@ -441,58 +418,6 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 - [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 - [.NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 - [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
-
-###資産の保護
-
-**概要**:
-
-[コンテンツ保護の概要](media-services-content-protection-overview.md)
-
-Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) または PlayReady DRM と資産を関連付けて暗号化する場合、コンテンツ キーを作成する必要があります。
-
-キーを作成するために **.NET** または **REST API** を使用します。
-
-[AZURE.INCLUDE [media-services-selector-create-contentkey](../../includes/media-services-selector-create-contentkey.md)]
-
-コンテンツ キーを作成すると、**.NET** または **REST API** を使用してキー承認ポリシーを構成できます。
-
-[AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
-
-####パートナーとの統合
-
-[castLabs を使用して Azure Media Services に DRM ライセンスを配信する](media-services-castlabs-integration.md)
-
-
-###資産の発行と配信
-
-**概要**:
-
-- [動的パッケージの概要](../media-services-dynamic-overview.md)
-
-
-**.NET** または **REST API** を使用して資産配信ポリシーを構成します。
-
-[AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
-
-**Azure の管理ポータル**または **.NET** を使用して資産を発行します (ロケータを作成して)。
-
-[AZURE.INCLUDE [media-services-selector-publish](../../includes/media-services-selector-publish.md)]
-
-
-コンテンツを配信する
-
-> [AZURE.SELECTOR]
-- [Overview](media-services-deliver-content-overview.md)
-
-###Azure CDN を有効にする
-
-Media Services では、Azure CDN との統合をサポートしています。Azure CDN を有効にする方法については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md#enable_cdn)」をご覧ください。
-
-###Media Services アカウントのスケーリング
-
-**Media Services** のスケーリングは、アカウントのプロビジョニングに使用する [**ストリーミング予約ユニット**] の数を指定して行えます。
-
-ストリーミング ユニットのスケーリングについては、「[スケーリング ユニットの規模変更方法](media-services-manage-origins.md#scale_streaming_endpoints.md)」をご覧ください。
 
 ##関連トピック
 
@@ -505,4 +430,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

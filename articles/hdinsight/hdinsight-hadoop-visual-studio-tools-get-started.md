@@ -19,7 +19,7 @@
 
 # HDInsight Tools for Visual Studio を使用して Hive クエリを実行する
 
-HDInsight Tools for Visual Studio を使用して HDInsight クラスターに接続し、Hive クエリを送信する方法について説明します。HDInsight の使用に関する詳細については、「[HDInsight での Hadoop 入門][hdinsight.introduction]」と「[HDInsight の概要][hdinsight.get.started]」をご覧ください。Storm クラスターへの接続に関する詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C#トポロジを開発する][hdinsight.storm.visual.studio.tools]」をご覧ください。
+HDInsight Tools for Visual Studio を使用して HDInsight クラスターに接続し、Hive クエリを送信する方法について説明します。HDInsight の使用に関する詳細については、「[HDInsight での Hadoop 入門][hdinsight.introduction]」と「[HDInsight の概要][hdinsight.get.started]」をご覧ください。Storm クラスターへの接続に関する詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する][hdinsight.storm.visual.studio.tools]」をご覧ください。
 
 >[AZURE.NOTE]最新のリリースでは、Hive エディターのサポート、Hive スクリプトのローカルでの検証、YARN ログへのアクセスといった一部の新機能が追加されました。
 
@@ -97,7 +97,7 @@ HDInsight クラスターに対して Hive スクリプトをテストするに�
 
 加えて、HDInsight Tools for Visual Studio では、特定の Hive ジョブの YARN ログを収集して表示することで、Hive ジョブの内容を見ることができます。
 
-###**hivesampletable** の表示
+### **hivesampletable** の表示
 すべての HDInsight クラスターには、*hivesampletable* という Hive テーブルのサンプルが付属します。このテーブルを使用して Hive テーブルの一覧表示、テーブル スキーマの表示、Hive テーブル内の行の一覧表示を行う方法を説明します。
 
 
@@ -113,7 +113,7 @@ HDInsight クラスターに対して Hive スクリプトをテストするに�
 
 	![Hadoop ツール: HDinsight Hive Visual Studio スキーマ クエリ][6]
 
-###Hive テーブルの作成
+### Hive テーブルの作成
 
 GUI を使用して Hive テーブルを作成するか、Hive クエリを使用できます。Hive クエリの使用については、[Hive クエリの実行](#run.queries)をご覧ください。
 
@@ -125,7 +125,7 @@ GUI を使用して Hive テーブルを作成するか、Hive クエリを使�
 
 	![Hadoop ツール: HDinsight Visual Studio ツールで Hive テーブルを作成する][7]
 
-###<a name="run.queries"></a>Hive クエリの検証と実行
+### <a name="run.queries"></a>Hive クエリの検証と実行
 Hive クエリを作成して実行するには次の 2 つの方法があります。
 
 - アドホック クエリを作成する
@@ -168,7 +168,7 @@ Hive クエリを作成して実行するには次の 2 つの方法がありま
 4. Hive スクリプトを検証するには、**[Validate Script]** ボタンをクリックするか、Hive エディターでスクリプトを右クリックしてコンテキスト メニューから **[Validate Script]** をクリックします。
 
 
-###Hive ジョブの表示
+### Hive ジョブの表示
 Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Yarn ログを表示できます。詳細については、先のスクリーンショットをご覧ください。
 
 最新版のツールでは、YARN ログを収集して表示することで、Hive ジョブの内容を確認できます。YARN ログは、パフォーマンス問題の検証に役立ちます。HDInsight での YARN ログの収集に関する詳細については、「[プログラムで HDInsight アプリケーション ログにアクセスする][hdinsight.access.application.logs]」をご覧ください。
@@ -183,7 +183,7 @@ Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Ya
 
 ### Tez Hive ジョブのパフォーマンス グラフ
 
-HDInsight Tools for Visual Studio は Tez 実行エンジンで実行された Hive ジョブのパフォーマンス グラフの表示をサポートしています。Tez を有効にする方法については、「[HDInsight での Hive の使用][hdinsight.hive]」を参照してください。Visual Studio で Hive ジョブを送信した後、ジョブが完了すると、Visual Studio にグラフが表示されます。最新のジョブの状態を取得するには、更新ボタンをクリックする必要があります。
+HDInsight Tools for Visual Studio は Tez 実行エンジンで実行された Hive ジョブのパフォーマンス グラフの表示をサポートしています。Tez を有効にする方法については、「[HDInsight での Hive の使用][hdinsight.hive]」を参照してください。Visual Studio で Hive ジョブを送信した後、ジョブが完了すると、Visual Studio にグラフが表示されます。最新のジョブの状態を取得するには、**更新**ボタンをクリックする必要があります。
 
 > [AZURE.NOTE]この機能はバージョン 3.2.4.593 以上の HDInsight クラスターでのみ使用でき、完了したジョブでのみ有効です。これは、Windows ベースと Linux ベースの両方のクラスターで機能します。
 
@@ -236,4 +236,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

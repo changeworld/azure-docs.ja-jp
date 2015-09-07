@@ -1,23 +1,24 @@
 <properties
-   pageTitle="POP3 コネクタの API アプリ"
-   description="POP3Connector の使用方法"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での POP3 コネクタの使用 | Microsoft Azure App Service"
+	description="POP3 コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="sameerch"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="sameerch"/>
 
 
-# ロジック アプリで POP3 コネクタを使用する #
+# POP3 コネクタの使用開始とロジック アプリへの追加
+POP3 サーバーに接続して、電子メール (添付ファイルを含むメールを含む) を取得します。
 
 ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。
 
@@ -65,6 +66,7 @@ API アプリが作成されたら、Logic App のトリガーとして POP3 コ
 
 	![][5]
 	![][6]
+
 ## コネクタでできること
 コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
@@ -81,4 +83,4 @@ API アプリが作成されたら、Logic App のトリガーとして POP3 コ
 [5]: ./media/app-service-logic-connector-pop3/img5.PNG
 [6]: ./media/app-service-logic-connector-pop3/img6.PNG
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

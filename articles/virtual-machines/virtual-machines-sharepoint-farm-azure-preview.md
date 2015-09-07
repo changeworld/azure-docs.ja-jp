@@ -1,6 +1,6 @@
 <properties
-	pageTitle="SharePoint Server Farm"
-	description="Azure プレビュー ポータルの SharePoint サーバー ファーム機能を使用して、新規の SharePoint Server 2013 ファームをすばやく作成できます。"
+	pageTitle="SharePoint サーバー ファーム | Microsoft Azure"
+	description="Azure プレビュー ポータルの SharePoint サーバー ファームを使用して、新規の基本または高可用性 SharePoint Server 2013 ファームをすばやく作成します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="JoeDavies-MSFT"
@@ -95,4 +95,4 @@ Azure プレビュー ポータルの SharePoint サーバー ファーム機能
 
 [Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

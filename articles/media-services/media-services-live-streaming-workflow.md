@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Media Services を使用したライブ ストリーミング配信" 
-	description="このトピックでは、ライブ ストリーミングに関連する主要なコンポーネントの概要を説明します。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Juliako" 
-	manager="dwrede" 
+	pageTitle="Azure Media Services を使用したライブ ストリーミング配信"
+	description="このトピックでは、ライブ ストリーミングに関連する主要なコンポーネントの概要を説明します。"
+	services="media-services"
+	documentationCenter=""
+	authors="Juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/11/2015"  
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/20/2015"
 	ms.author="juliako"/>
 
 
@@ -85,4 +85,4 @@ Azure Media Services、**チャネル**、**プログラム**、**ストリー�
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

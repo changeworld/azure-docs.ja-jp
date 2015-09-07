@@ -1,52 +1,33 @@
 <properties 
-	pageTitle="自動スケール アプリケーション ブロックの使用 (.NET) | Microsoft Azure" 
-	description="Azure で自動スケール アプリケーションを使用する方法について説明します。コード サンプルは C# で記述され、.NET API を利用しています。" 
-	services="cloud-services" 
-	documentationCenter=".net" 
-	authors="squillace" 
-	manager="timlt" 
+	pageTitle="自動スケール アプリケーション ブロックの使用 (.NET) | Microsoft Azure"
+	description="Azure で自動スケール アプリケーションを使用する方法について説明します。コード サンプルは C# で記述され、.NET API を利用しています。"
+	services="cloud-services"
+	documentationCenter=".net"
+	authors="squillace"
+	manager="timlt"
 	editor=""/>
 
 <tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/18/2015" 
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="05/18/2015"
 	ms.author="rasquill"/>
-
-
-
-
-
-
-
 # 自動スケール アプリケーション ブロックの使用方法
 
-このガイドでは、[Microsoft Enterprise Library 5.0 Integration Pack for Azure][] の自動スケール アプリケーション ブロックを使用する一般的なシナリオの実行方法を示します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオは、**ブロックのホスティング**、**制約規則の使用**、および**リアクティブ規則の使用**です。自動スケール アプリケーション ブロックの詳細については、「[次のステップ][]」セクションを参照してください。
+このガイドでは、[Microsoft Enterprise Library 5.0 Integration Pack for Azure][] の自動スケール アプリケーション ブロックを使用する一般的なシナリオの実行方法を示します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオは、**ブロックのホスティング**、**制約規則の使用**、および**リアクティブ規則の使用**です。オートスケーリング アプリケーション ブロックの詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
 
-## 目次
-
-[自動スケール アプリケーション ブロックとは][]   
-[概念][]   
-[ターゲット Azure アプリケーションからのパフォーマンス カウンター データの収集][]   
-[自動スケール アプリケーション ブロックのホスト アプリケーションのセットアップ][]   
-[方法: オートスケーラーをインスタンス化および実行する][]   
-[方法: サービス モデルを定義する][]   
-[方法: 自動スケール規則を定義する][]   
-[方法: 自動スケール アプリケーション ブロックを構成する][]   
-[次のステップ][]   
-
-## <a id="WhatIs"> </a>自動スケール アプリケーション ブロックとは
+## オートスケーリング アプリケーション ブロックとは
 
 自動スケール アプリケーション ブロックは、アプリケーション用に個別に定義した規則に基づいて、Azure アプリケーションの規模を自動的に調整できます。これらの規則を使用すると、Azure アプリケーションがワークロードの変化に対応してスループットを維持できるようにすることができます。同時に、Azure でのアプリケーションのホストに関連するコストを制御することもできます。ブロックは、アプリケーション内のロール インスタンスの数を増減するスケーリングだけでなく、アプリケーションの特定の機能の調整、カスタム定義の操作の使用など、その他のスケーリング操作も利用できるようにします。
 
 ブロックを Azure ロールでホストするか、オンプレミスのアプリケーションでホストするかを選択できます。
 
-自動スケール アプリケーション ブロックは、[Microsoft Enterprise Library 5.0 Integration Pack for Azure][] の一部です。
+オートスケーリング アプリケーション ブロックは、[Microsoft Enterprise Library 5.0 Integration Pack for Azure][] の一部です。
 
-## <a id="Concepts"> </a>概念
+## 概念
 
 次の図では、緑の線が、2 日間にわたる Azure ロールの実行インスタンスの数を示しています。インスタンスの数は、自動スケール規則のセットに応じて、時間の経過と共に自動的に変化します。
 
@@ -60,17 +41,17 @@
 
 ブロックは、構成設定を次の 2 つのストアに格納します。
 
--   **規則ストア:** 規則ストアは、ビジネス構成を保持します。つまり、Azure アプリケーション用に定義したすべての自動スケール規則の一覧が格納されます。このストアは、通常は、自動スケール アプリケーション ブロックが読み取れる場所 (たとえば、Azure BLOB ストレージやローカル ファイル内) にある XML ファイルです。
+-   **規則ストア:** 規則ストアは、ビジネス構成を保持します。つまり、Azure アプリケーション用に定義したすべてのオートスケーリング規則の一覧が格納されます。このストアは、通常は、自動スケール アプリケーション ブロックが読み取れる場所 (たとえば、Azure BLOB ストレージやローカル ファイル内) にある XML ファイルです。
 
 -   **サービス情報ストア:** サービス情報ストアは、運用構成を格納します。運用構成とは、Azure アプリケーションのサービス モデルです。このサービス モデルには、ブロックがターゲット Azure アプリケーションからデータ ポイントを収集してスケーリング操作を行うために必要な、Azure アプリケーションについてのすべての情報 (ロール名、ストレージ アカウントの詳細など) が含まれます。
 
-## <a id="PerfCounter"> </a>ターゲット Azure アプリケーションからのパフォーマンス カウンター データの収集
+## ターゲット Azure アプリケーションからのパフォーマンス カウンター データの収集
 
 リアクティブ規則は、ロールのパフォーマンス カウンター データを規則定義の一部として使用できます。たとえば、リアクティブ規則は Azure ロールの CPU 使用率を監視して、ブロックがスケーリング操作を開始する必要があるかどうかを判断できます。ブロックは、パフォーマンス カウンター データを Azure Storage の **WADPerformanceCountersTable** という名前の Azure 診断テーブルから読み取ります。
 
 既定では、Azure はパフォーマンス カウンター データを Azure Storage の Azure 診断テーブルに書き込みません。そのため、パフォーマンス カウンター データの収集対象のロールで、このデータを保存するための変更を行う必要があります。アプリケーションでパフォーマンス カウンターを有効にする方法の詳細については、[Azure でのパフォーマンス カウンターの使用][]に関するページを参照してください。
 
-## <a id="CreateHost"> </a>自動スケール アプリケーション ブロックのホスト アプリケーションのセットアップ
+## オートスケーリング アプリケーション ブロックのホスト アプリケーションのセットアップ
 
 自動スケール アプリケーション ブロックは、Azure ロールまたはオンプレミスのアプリケーションでホストできます。通常、自動スケール アプリケーション ブロックは、自動的に規模を調整するターゲット アプリケーションとは別のアプリケーションでホストされます。このセクションでは、ホスト アプリケーションの構成方法に関するガイドラインを示します。
 
@@ -109,7 +90,7 @@ NuGet パッケージをインストールすると、自動スケール アプ�
     using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
     using Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Autoscaling;
 
-## <a id="Instantiate"> </a>方法: オートスケーラーをインスタンス化および実行する
+## 方法: オートスケーラーをインスタンス化および実行する
 
 **IServiceLocator.GetInstance** メソッドを使用してオートスケーラーをインスタンス化し、**Autoscaler.Start** メソッドを呼び出して**オートスケーラー**を実行します。
 
@@ -117,7 +98,7 @@ NuGet パッケージをインストールすると、自動スケール アプ�
         EnterpriseLibraryContainer.Current.GetInstance<Autoscaler>();
     scaler.Start();
 
-## <a id="DefineServiceModel"> </a>方法: サービス モデルを定義する
+## 方法: サービス モデルを定義する
 
 通常は、サービス モデル (サブスクリプション、ホストされるサービス、ロール、およびストレージ アカウントの情報を含む Azure 環境の記述) を、XML ファイルに格納します。この XML ファイル用のスキーマのコピーは、プロジェクトの **AutoscalingServiceModel.xsd** ファイル内にあります。Visual Studio でサービス モデル XML ファイルを編集するときに、このスキーマが Intellisense および検証を提供します。
 
@@ -134,67 +115,50 @@ Visual Studio で、サービス モデル ファイルが出力フォルダー�
 
 	次のコード サンプルは、**services.xml** ファイル内のサービス モデルの例を示しています。
 
-    <?xml version="1.0" encoding="utf-8" ?>
-    <serviceModel xmlns="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel">
-      <subscriptions>
-        <subscription name="[subscriptionname]"
+    <?xml version="1.0" encoding="utf-8" ?> <serviceModel xmlns="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel"> <subscriptions> <subscription name="[subscriptionname]"
                       certificateThumbprint="[managementcertificatethumbprint]"
                       subscriptionId="[subscriptionid]"
                       certificateStoreLocation="CurrentUser"
-                      certificateStoreName="My">
-          <services>
-            <service dnsPrefix="[hostedservicednsprefix]" slot="Staging">
-              <roles>
-                <role alias="AutoscalingApplicationRole"
+                      certificateStoreName="My"> <services> <service dnsPrefix="[hostedservicednsprefix]" slot="Staging"> <roles> <role alias="AutoscalingApplicationRole"
                       roleName="[targetrolename]"
-                      wadStorageAccountName="targetstorage"/>
-              </roles>
-            </service>
-          </services>
-          <storageAccounts>
-            <storageAccount alias="targetstorage"
-              connectionString="DefaultEndpointsProtocol=https;AccountName=[storageaccountname];AccountKey=[storageaccountkey]">
-            </storageAccount>
-          </storageAccounts>
-        </subscription>
-      </subscriptions>
-    </serviceModel>
+                      wadStorageAccountName="targetstorage"/> </roles> </service> </services> <storageAccounts> <storageAccount alias="targetstorage"
+              connectionString="DefaultEndpointsProtocol=https;AccountName=[storageaccountname];AccountKey=[storageaccountkey]"> </storageAccount> </storageAccounts> </subscription> </subscriptions> </serviceModel>
 
-角かっこ内の値は、環境とターゲット アプリケーションの固有の値に置き換える必要があります。これらの値の多くは、[Azure 管理ポータル][]にログインすることで確認できます。
+角かっこ内の値は、環境とターゲット アプリケーションの固有の値に置き換える必要があります。これらの値の多くは、[Azure の管理ポータル][]にログインすることで確認できます。
 
 管理ポータルにサインインします。
 
--   **[subscriptionname]:** 自動スケールを使うアプリケーションを 含む Azure サブスクリプションを参照する 表示名を選択します。
+-   **[subscriptionname]:** オートスケーリングを使うアプリケーションを 含む Azure サブスクリプションを参照する 表示名を選択します。
 
--   **[subscriptionid]:** 自動スケールを使う アプリケーションを含む Azure サブスクリプションの 一意の ID。
+-   **[subscriptionid]:** オートスケーリングを使う アプリケーションを含む Azure サブスクリプションの 一意の ID。
 
-    1.  Azure 管理ポータルで、**[クラウド サービス]** をクリックします。
+    1.  Azure の管理ポータルで、**[クラウド サービス]** をクリックします。
 
     2.  クラウド サービスの一覧で、自動スケールを使うアプリケーションをホストするサービスをクリックします。右側の [概要] ウィンドウに **[サブスクリプション ID]** が表示されます。
 
         ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling05.png)
 
   
-	-   **[hostedservicednsprefix]:** 自動スケールを使うホストされるサービスの DNS プレフィックス。
+	-   **[hostedservicednsprefix]:** オートスケーリングを使うホステッド サービスの DNS プレフィックス。
 
-    1.  Azure 管理ポータルで、**[クラウド サービス]** をクリックします。
+    1.  Azure の管理ポータルで、**[クラウド サービス]** をクリックします。
 
     2.  クラウド サービスの一覧で、自動スケールを使うアプリケーションをホストするサービスを見つけます。クラウド サービスの名前は **DNS Prefix** です。
 
         ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling06.png)
  
-	-   **[targetrolename]:** 自動スケール規則のターゲットであるロールの名前。
+	-   **[targetrolename]:** オートスケーリング規則のターゲットであるロールの名前。
 
-    1.  Azure 管理ポータルで、**[クラウド サービス]** をクリックします。
+    1.  Azure の管理ポータルで、**[クラウド サービス]** をクリックします。
 
-    2.  クラウド サービスの一覧で、自動スケールを使用するアプリケーションがホストされるサービスをクリックし、**[インスタンス]** をクリックします。**[ロール]* 列にターゲット ロールの名前が表示されます。
+    2.  クラウド サービスの一覧で、オートスケーリングを使用するアプリケーションがホストされるサービスをクリックし、**[インスタンス]** をクリックします。**[ロール]* 列にターゲット ロールの名前が表示されます。
 
         ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling07.png)
 
 
 	-   **[storageaccountname]** および **[storageaccountkey]:** ターゲット Azure アプリケーションで使用している Azure ストレージ アカウントの名前。
 
-    1.  Azure 管理ポータルで、**[ストレージ]** をクリックします。
+    1.  Azure の管理ポータルで、**[ストレージ]** をクリックします。
 
     2.  ストレージ アカウントの一覧で、使用しているストレージ アカウントを選択します。**[名前]** 列に**名前**が表示されます。
 
@@ -203,18 +167,18 @@ Visual Studio で、サービス モデル ファイルが出力フォルダー�
         ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling08.png)
   
  
-	-   **[managementcertificatethumbprint]:** ターゲット アプリケーションへのスケーリング要求をセキュリティで保護するためにブロックが使用する管理証明書の**拇印**。
+	-   **[managementcertificatethumbprint]:** ターゲット アプリケーションへのスケーリング要求をセキュリティで保護するためにブロックが使用する管理証明書の**サムプリント**。
 
-    1.  Azure 管理ポータルで、[**設定**] をクリックします。
+    1.  Azure の管理ポータルで、[**設定**] をクリックします。
 
-    2.  **[拇印]** 列にが表示されます。
+    2.  **[サムプリント]** 列に**サムプリント**が表示されます。
 
         ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling09.png)
  
 
 サービス モデル ファイルの内容の詳細については、[サービス情報データの格納][]に関するページを参照してください。
 
-## <a id="DefineAutoscalingRules"> </a>方法: 自動スケール規則を定義する
+## 方法: オートスケーリング規則を定義する
 
 通常は、ターゲット アプリケーションのロール インスタンスの数を制御する自動スケール規則を、XML ファイルに格納します。この XML ファイル用のスキーマのコピーは、プロジェクトの **AutoscalingRules.xsd** ファイル内にあります。Visual Studio で XML ファイルを編集するときに、このスキーマが Intellisense および検証を提供します。
 
@@ -267,7 +231,7 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
       </operands>
     </rules>
 
-この例では、3 つの自動スケール規則 (**制約規則**が 1 つと、**リアクティブ規則**が 2 つ) があります。それらは **AutoscalingApplicationRole** という名前のターゲットに対して適用されます。このターゲット名は、**サービス モデル**で定義されているロールのエイリアスです。
+この例では、3 つのオートスケーリング規則 (**制約規則**が 1 つと、**リアクティブ規則**が 2 つ) があります。それらは **AutoscalingApplicationRole** という名前のターゲットに対して適用されます。このターゲット名は、**サービス モデル**で定義されているロールのエイリアスです。
 
 -   制約規則は常にアクティブで、ロール インスタンスの最小数を 2、ロール インスタンスの最大数を 6 に設定しています。
 
@@ -277,7 +241,7 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
 
 -   **ScaleDownOnLowUtilization** という名前のリアクティブ規則は、直前の 5 分間の平均 CPU 使用率が 60% より低い場合に、ターゲット ロールのインスタンス数を 1 つ減らします。
 
-## <a id="Configure"> </a>方法: 自動スケール アプリケーション ブロックを構成する
+## 方法: オートスケーリング アプリケーション ブロックを構成する
 
 サービス モデルおよび自動スケール規則を定義したら、次に、それらを使用する自動スケール アプリケーション ブロックを構成する必要があります。この運用構成情報は、アプリケーション構成ファイルに格納されます。
 
@@ -287,26 +251,26 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
 
 1.  ソリューション エクスプローラーで **App.config** ファイルを右クリックし、**[構成ファイルの編集]** をクリックします。
 
-2.  **[ブロック]** メニューの **[自動スケールの設定の追加]** をクリックします。  
+2.  **[ブロック]** メニューの **[オートスケーリングの設定の追加]** をクリックします。
 	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling10.png)
   
-3.  **[自動スケールの設定]** を展開し、**[データ ポイント格納ストレージ アカウント]** の横にある省略記号 (...) をクリックして、ブロックによって収集されたデータ ポイントの格納先となる Azure ストレージ アカウントの **[アカウント名]** および **[アカウント キー]** を追加します (これらの値の確認方法がわからない場合は、「[方法: サービス モデルを定義する][]」を参照してください)。その後、**[OK]** をクリックします。
+3.  **[自動スケールの設定]** を展開し、**[データ ポイント格納ストレージ アカウント]** の横にある省略記号 (...) をクリックして、ブロックによって収集されたデータ ポイントの格納先となる Azure ストレージ アカウントの **[アカウント名]** および **[アカウント キー]** を追加します (これらの値の確認方法がわからない場合は、「方法: サービス モデルを定義する」を参照してください)。その後、**[OK]** をクリックします。
 
 	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling11.png)
 
-4.  **[自動スケールの設定]** セクションを展開して、**[規則ストア]** および **[サービス情報ストア]** セクションを表示します。既定では、これらは Azure BLOB ストレージを使用するように構成されています。  
+4.  **[オートスケーリングの設定]** セクションを展開して、**[規則ストア]** および **[サービス情報ストア]** セクションを表示します。既定では、これらは Azure BLOB ストレージを使用するように構成されています。
 	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling12.png)
 
 
 5.  **[規則ストア]** の横のプラス記号 (+) をクリックし、**[規則ストアの設定]** をポイントして、**[ローカル ファイル規則ストアの使用]**、**[はい]** の順にクリックします。
 
-6.  **[ファイル名]** ボックスで「**rules.xml**」と入力します。これは、自動スケール規則を含むファイルの名前です。  
+6.  ** [ファイル名]** ボックスで「** rules.xml**」と入力します。これは、オートスケーリング規則を含むファイルの名前です。
 	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling13.png)
 
 
 7.  **[サービス情報ストア]** の横のプラス記号 (+) をクリックし、**[サービス情報ストアの設定]** をポイントして、**[ローカル ファイル サービス情報ストアの使用]**、**[はい]** の順にクリックします。
 
-8.  **[ファイル名]** ボックスで「**services.xml**」と入力します。これは、自動スケール規則を含むファイルの名前です。  
+8.  **[ファイル名]** ボックスで「**services.xml**」と入力します。これは、オートスケーリング規則を含むファイルの名前です。
 	![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling14.png)
 
 
@@ -366,47 +330,38 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
     "InstanceChanges":{"AutoscalingApplicationRole":{"CurrentValue":1,"DesiredValue":2}},
     "SettingChanges":{},"RequestID":"f8ca3ada07c24559b1cb075534f02d44"}
 
-## <a id="NextSteps"> </a>次のステップ
+## 次のステップ
 
 これで、自動スケール アプリケーション ブロックの使用の基本を学習できました。より複雑な自動スケール シナリオを実装する方法については、次のリンク先を参照してください。
 
--   [worker ロールでの自動スケール アプリケーション ブロックのホスト][]
+-   [ワーカー ロールでのオートスケーリング アプリケーション ブロックのホスト][]
 -   [調整動作の実装][]
 -   [規則の順位と調整について][]
--   [自動スケール アプリケーション ブロックの拡張と変更][]
+-   [オートスケーリング アプリケーション ブロックの拡張と変更][]
 -   [頻繁な変動を防ぎ、コストを最適化するための最適化スタビライザーの使用][]
 -   [通知と手動スケーリングの使用][]
 -   [スケール グループの定義][]
 -   [Windows PowerShell でブロックを操作するための WASABiCmdlets の使用][]
 -   [Enterprise Library 5.0 Integration Pack for Azure 開発者ガイド][]
--   [Sage による自動スケールを使用した Azure のホスティング コスト削減方法][]
+-   [Sage によるオートスケーリングを使用した Azure のホスティング コスト削減方法][]
 -   [Azure の自動スケールによる TechNet と MSDN のホスティング コストと環境への影響の軽減][]
 
   [Microsoft Enterprise Library 5.0 Integration Pack for Azure]: http://go.microsoft.com/fwlink/?LinkID=235134
-  [次のステップ]: #NextSteps
-  [自動スケール アプリケーション ブロックとは]: #WhatIs
-  [概念]: #Concepts
-  [ターゲット Azure アプリケーションからのパフォーマンス カウンター データの収集]: #PerfCounter
-  [自動スケール アプリケーション ブロックのホスト アプリケーションのセットアップ]: #CreateHost
-  [方法: オートスケーラーをインスタンス化および実行する]: #Instantiate
-  [方法: サービス モデルを定義する]: #DefineServiceModel
-  [方法: 自動スケール規則を定義する]: #DefineAutoscalingRules
-  [方法: 自動スケール アプリケーション ブロックを構成する]: #Configure
   [Azure でのパフォーマンス カウンターの使用]: http://www.windowsazure.com/develop/net/common-tasks/performance-profiling/
   [NuGet]: http://nuget.org/
-  [Azure 管理ポータル]: http://manage.windowsazure.com
+  [Azure の管理ポータル]: http://manage.windowsazure.com
   [サービス情報データの格納]: http://msdn.microsoft.com/library/hh680878(PandP.50).aspx
-  [worker ロールでの自動スケール アプリケーション ブロックのホスト]: http://msdn.microsoft.com/library/hh680914(PandP.50).aspx
+  [ワーカー ロールでのオートスケーリング アプリケーション ブロックのホスト]: http://msdn.microsoft.com/library/hh680914(PandP.50).aspx
   [調整動作の実装]: http://msdn.microsoft.com/library/hh680896(PandP.50).aspx
   [規則の順位と調整について]: http://msdn.microsoft.com/library/hh680923(PandP.50).aspx
-  [自動スケール アプリケーション ブロックの拡張と変更]: http://msdn.microsoft.com/library/hh680889(PandP.50).aspx
+  [オートスケーリング アプリケーション ブロックの拡張と変更]: http://msdn.microsoft.com/library/hh680889(PandP.50).aspx
   [頻繁な変動を防ぎ、コストを最適化するための最適化スタビライザーの使用]: http://msdn.microsoft.com/library/hh680951(PandP.50).aspx
   [通知と手動スケーリングの使用]: http://msdn.microsoft.com/library/hh680885(PandP.50).aspx
   [スケール グループの定義]: http://msdn.microsoft.com/library/hh680902(PandP.50).aspx
   [Windows PowerShell でブロックを操作するための WASABiCmdlets の使用]: http://msdn.microsoft.com/library/hh680938(PandP.50).aspx
   [Enterprise Library 5.0 Integration Pack for Azure 開発者ガイド]: http://msdn.microsoft.com/library/hh680949(PandP.50).aspx
-  [Sage による自動スケールを使用した Azure のホスティング コスト削減方法]: http://msdn.microsoft.com/library/jj838716(PandP.50).aspx
+  [Sage によるオートスケーリングを使用した Azure のホスティング コスト削減方法]: http://msdn.microsoft.com/library/jj838716(PandP.50).aspx
   [Azure の自動スケールによる TechNet と MSDN のホスティング コストと環境への影響の軽減]: http://msdn.microsoft.com/library/jj838718(PandP.50).aspx
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

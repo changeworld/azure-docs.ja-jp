@@ -1,20 +1,20 @@
 <properties
     pageTitle="Azure モバイル アプリ (Xamarin iOS) のオフライン同期を有効にする"
-    description="App Service Mobile App を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
-    documentationCenter="xamarin"
-    authors="wesmc7777"
-    manager="dwrede"
-    editor=""
-    services="app-service\mobile"/>
+	description="App Service Mobile App を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
+	documentationCenter="xamarin"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""
+	services="app-service\mobile"/>
 
 <tags
     ms.service="app-service-mobile"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-xamarin-ios"
-    ms.devlang="dotnet"
-    ms.topic="article"
-	ms.date="08/11/2015"
-    ms.author="wesmc"/>
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/22/2015"
+	ms.author="wesmc"/>
 
 # Xamarin iOS モバイル アプリのオフライン同期を有効にする
 
@@ -24,7 +24,7 @@
 
 このチュートリアルでは、Xamarin iOS 向けの Azure モバイル アプリのオフライン同期機能について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。変更は、ローカル データベースに格納されます。デバイスがオンラインに戻ると、これらの変更は、リモート サービスと同期されます。
 
-このチュートリアルでは、「[Create a Xamarin iOS app (Xamarin iOS アプリの作成)]」チュートリアルから Xamarin iOS アプリ プロジェクトを更新し、Azure モバイル アプリのオフライン機能をサポートできるようにします。
+このチュートリアルでは、「[Create a Xamarin iOS app (Xamarin iOS アプリの作成)]」チュートリアルから Xamarin iOS アプリ プロジェクトを更新し、Azure モバイル アプリのオフライン機能をサポートできるようにします。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 オフラインの同期機能の詳細については、トピック「[Azure モバイル アプリでのオフライン データ同期]」をご覧ください。
 
@@ -34,11 +34,7 @@
 
 * Visual Studio 2013
 * Visual Studio の [Xamarin 拡張機能]**または** OS X の [Xamarin Studio]
-* チュートリアル[Xamarin iOS アプリの作成]の完了このチュートリアルはそのチュートリアルでカバーされている完成したアプリを使用します。
-
-##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-offline-preview](../../includes/app-service-mobile-dotnet-backend-enable-offline-preview.md)]
+* チュートリアル「[Xamarin iOS アプリの作成]」を完了していること。このチュートリアルはそのチュートリアルでカバーされている完成したアプリを使用します。
 
 ## クライアント同期コードの確認
 
@@ -64,7 +60,7 @@
  
 	これらの変更がいつ Azure モバイル アプリのバックエンドにプッシュされるかを決定するには、クライアント接続のための同期コンテキストを使用して `IMobileServiceSyncContext.PushAsync()` を呼び出すことで行います。同期コンテキストは、`PushAsync` が呼び出されたときに、クライアント アプリが変更を行ったすべてのテーブルで、変更を追跡およびプッシュすることで、テーブルの関係を保持するのに役立ちます。
 
-	todoitem リストの更新、または todoitem の追加や完了があれば、提供されているコードは `QSTodoService.SyncAsync()` を呼び出して同期します。同期コンテキストへのプッシュや同期テーブルへのプルを実行するようなローカルの変更があれば毎回同期が行われます。ただし、コンテキストによって追跡された保留中のローカル更新のあるテーブルに対してプルが実行される場合、そのプルの処理は自動的にコンテキストのプッシュを最初にトリガーします。これら (項目の更新、追加、完了) のケースでは、明示的な `PushAsync` の呼び出しを省略することとなります。冗長となるからです。
+	todoitem リストの更新、または todoitem の追加や完了があれば、提供されているコードは `QSTodoService.SyncAsync()` を呼び出して同期します。同期コンテキストへのプッシュや同期テーブルへのプルを実行するようなローカルの変更があれば毎回同期が行われます。ただし、コンテキストによって追跡された保留中のローカル更新のあるテーブルに対してプルが実行される場合、そのプルの処理は自動的にコンテキストのプッシュを最初にトリガーします。これら (項目の更新、追加、完了) のケースでは、明示的な `PushAsync` の呼び出しを省略できます。冗長となるからです。
 
     提供されたコードでは、リモートの `TodoItem` テーブルのすべてのレコードはクエリされますが、クエリ ID やクエリを `PushAsync` に渡すことでレコードをフィルター処理することも可能です。詳細は、「[ Azure モバイル アプリでのオフライン データ同期]」の「*増分同期*」のセクションを参照してください。
 
@@ -127,9 +123,9 @@
 
 5. (省略可能) Visual Studio を使用して、Azure SQL Database テーブルを表示し、バックエンドのデータベースのデータが変更されていないことを確認します。
 
-   Visual Studio で、**サーバー エクスプローラー**を開きます。**Azure** -> **SQL Databases** でデータベースに移動します。データベースを右クリックし、[**SQL Server オブジェクト エクスプローラーで開く**] を選択します。これで SQL データベースのテーブルとその内容を参照できます。
+   Visual Studio で、**サーバー エクスプローラー**を開きます。**[Azure]**、**[SQL Databases]** を選択して、データベースに移動します。データベースを右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。これで SQL データベースのテーブルとその内容を参照できます。
 
-6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。`https://your-mobile-app-backend-name.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。 
+6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://your-mobile-app-backend-name.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。 
 
 ## クライアント アプリを更新し、モバイルのバックエンドを再接続します。
 
@@ -175,4 +171,4 @@
  
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

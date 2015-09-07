@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure 管理ポータルを使用して Azure Media Services でメディア コンテンツを管理する方法" 
-	description="Azure Media Services でメディア コンテンツを管理する方法について説明します。ここで取り上げる内容は、アップロード、インデックスの作成、エンコード、暗号化、および発行についてです。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Juliako" 
-	manager="dwrede" 
+	pageTitle="Azure 管理ポータルを使用して Azure Media Services でメディア コンテンツを管理する方法"
+	description="Azure Media Services でメディア コンテンツを管理する方法について説明します。ここで取り上げる内容は、アップロード、インデックスの作成、エンコード、暗号化、および発行についてです。"
+	services="media-services"
+	documentationCenter=""
+	authors="Juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/11/2015"
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/23/2015"
 	ms.author="juliako"/>
 
 
@@ -81,7 +81,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 - [REST](media-services-rest-encode-asset.md)
 - [Portal](media-services-manage-content.md#encode)
 
-インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。Media Services には、コンテンツのエンコード方法 (使用するコーデック、ファイル形式、解像度、ビットレートなど) を指定できるメディア エンコーダーが用意されています。
+インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。Media Services には、コンテンツのエンコード方法 (使用するコーデック、ファイル形式、解像度、ビットレートなど) を指定できる Media Encoder が用意されています。
 
 クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure Media Services の代表的な用途の 1 つです。アダプティブ ビットレート ストリーミングでは、現在のネットワーク帯域幅、CPU 使用率などの条件に基づいてビデオが表示されるため、高低のビットレート ストリームの切り替えをクライアント側で行うことができます。Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
 
@@ -90,7 +90,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
 - メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードします (エンコードの手順は、このチュートリアルの後半で説明しています)。
-- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、[オンデマンド ストリーミング予約ユニットのスケールの変更方法](media-services-manage-origins.md#scale_streaming_endpoints/)に関するページを参照してください。
+- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[オンデマンド ストリーミング予約ユニットのスケールの変更方法](media-services-manage-origins.md#scale_streaming_endpoints/)」をご覧ください。
 
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
@@ -99,7 +99,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 ここでは、管理ポータルから Azure Media Encoder でコンテンツをエンコードするための手順について説明します。
 
 1.  エンコードの対象となるファイルを選択します。そのファイル タイプのエンコードがサポートされている場合、[コンテンツ] ページの一番下にある [プロセス] ボタンが有効になります。
-4. **[プロセス]** ダイアログで **[Azure メディア エンコーダー]** プロセッサを選択します。
+4. **[プロセス]** ダイアログで **[Azure Media Encoder]** プロセッサを選択します。
 5. いずれかの**エンコーディング構成**を選択します。
 
 	![Process2][process2]
@@ -110,7 +110,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 	以下、**[その他]** の構成について説明します。
 
-	+ **PlayReady コンテンツ保護を使用したエンコード**。このプリセットは、PlayReady コンテンツ保護を使用してエンコードされた資産を生成します。  
+	+ **PlayReady Content Protection を使用したエンコード**。このプリセットは、PlayReady Content Protection を使用してエンコードされた資産を生成します。  
 	
 	
 		既定では、Media Services PlayReady ライセンス サービスが使用されます。クライアントが PlayReady 暗号化コンテンツを再生するためにライセンスを取得可能な他のサービスを指定するには、REST または Media Services .NET SDK API を使用します。詳細については、「[静的暗号化を使用したコンテンツの保護]()」を参照し、Media Encryptor プリセットの **licenseAcquisitionUrl** プロパティを設定してください。代わりに、「**Using PlayReady Dynamic Encryption and License Delivery Service (PlayReady 動的暗号化とライセンス配信サービスの使用)**」に説明されているように、動的暗号化を使用して [PlayReadyLicenseAcquisitionUrl](http://go.microsoft.com/fwlink/?LinkId=507720) プロパティを設定することもできます。 
@@ -129,10 +129,11 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ##<a id="encrypt"></a>方法: コンテンツを暗号化する
 
+
 Media Services で AES キーまたは PlayReady DRM を使用して資産を暗号化するには、次の操作を実行します。
 
 - メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレートスムーズ ストリーミング ファイルにエンコードします (エンコーディングの手順は [エンコード](#encode) セッションで説明しています)
-- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、[オンデマンド ストリーミング予約ユニットのスケールの変更方法](media-services-manage-origins.md#scale_streaming_endpoints/)に関するページを参照してください。
+- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[オンデマンド ストリーミング予約ユニットのスケールの変更方法](media-services-manage-origins.md#scale_streaming_endpoints/)」をご覧ください。
 - 「既定の AES クリア キー サービス ポリシー」または「既定 PlayReady ライセンス サービス ポリシー」を構成します。詳細については、「[コンテンツ キー承認ポリシーを構成する](media-services-portal-configure-content-key-auth-policy.md)」をご覧ください。  
 
 
@@ -141,6 +142,11 @@ Media Services で AES キーまたは PlayReady DRM を使用して資産を暗
 	![Encrypt][encrypt]
 
 	暗号化を有効にすると、プレーヤーからストリームが要求されるたびに、Media Services は指定されたキーを使用して、AES または PlayReady 暗号化でコンテンツを動的に暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
+
+関連トピック:
+
+- [PlayReady DRM による保護](media-services-rest-deliver-streaming-content.md)
+- [AES-128 キーによる保護](media-services-protect-with-aes128.md)
 
 ##<a id="publish"></a>方法: コンテンツを発行する
 
@@ -215,4 +221,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-manage-content/media-services-portal-player.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

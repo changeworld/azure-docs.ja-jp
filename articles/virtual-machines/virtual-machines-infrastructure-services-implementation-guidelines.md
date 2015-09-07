@@ -25,7 +25,7 @@ Azure は、わずかな投資でソリューションの実装に対する具�
 
 この記事は、[Azure 実装ガイドライン](http://blogs.msdn.com/b/thecolorofazure/archive/2014/05/13/azure-implementation-guidelines.aspx)に関するブログ投稿の内容を基にしています。基の資料を作成した Santiago Cánepa (Microsoft のアプリケーション開発マネージャー) と Hugo Salcedo (Microsoft のアプリケーション開発マネージャー) に感謝します。
 
-> [AZURE.NOTE]アフィニティ グループの使用は推奨されません。これらの使用についてはここでは説明しません。詳しくは、「[地域 VNet およびアフィニティ グループについて](https://msdn.microsoft.com/library/azure/jj156085.aspx)」をご覧ください。
+> [AZURE.NOTE]アフィニティ グループの使用は推奨されません。これらの使用についてはここでは説明しません。詳しくは、「[地域 VNet およびアフィニティ グループについて](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」をご覧ください。
 
 ## 1\.名前付け規則
 
@@ -440,4 +440,4 @@ Contoso は、Azure Virtual Machines に対して次の名前を決定しまし�
 
 [Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

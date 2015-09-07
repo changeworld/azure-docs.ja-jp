@@ -1,20 +1,20 @@
 
 <properties 
     pageTitle="Azure RemoteApp のアプリの要件"
-    description="Azure RemoteApp で使用するアプリの要件について説明します。" 
-    services="remoteapp" 
-    documentationCenter="" 
-    authors="lizap" 
-    manager="mbaldwin" />
+	description="Azure RemoteApp で使用するアプリの要件について説明します。"
+	services="remoteapp"
+	documentationCenter=""
+	authors="lizap"
+	manager="mbaldwin"/>
 
 <tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/12/2015" 
-    ms.author="elizapo" />
+    ms.service="remoteapp"
+	ms.workload="compute"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/12/2015"
+	ms.author="elizapo"/>
 
 
 
@@ -56,4 +56,4 @@ Azure RemoteApp は、Windows Server 2012 R2 イメージの 32 ビットまた�
 - パフォーマンスを最適化するために、クライアント セッションで動作しているかどうかをアプリケーションで[検出する](https://msdn.microsoft.com/library/aa380798.aspx)ことをお勧めします。 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

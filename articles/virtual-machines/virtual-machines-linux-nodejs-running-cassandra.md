@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure 上の Linux での Cassandra の実行" 
-	description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法" 
-	services="virtual-machines" 
-	documentationCenter="nodejs" 
-	authors="MikeWasson" 
-	manager="wpickett" 
+	pageTitle="Azure 上の Linux での Cassandra の実行"
+	description="Node.js アプリから Azure Virtual Machines の Linux で Cassandra クラスターを実行する方法"
+	services="virtual-machines"
+	documentationCenter="nodejs"
+	authors="MikeWasson"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-linux" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/30/2015" 
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/30/2015"
 	ms.author="MikeWasson"/>
 
 
@@ -53,7 +53,7 @@ Cassandra は、単一の Azure リージョンにデプロイすることも、
 
 この記事の執筆時において、Azure では、特定の障害ドメインへの VM のグループの明示的なマッピングを許可していません。したがって、図 1 に示すデプロイメント モデルを使用している場合でも、多くの場合、すべての仮想マシンが 4 つの障害ドメインではなく、2 つの障害ドメインにマップされています。
 
-**負荷分散 Thrift トラフィック:** Web サーバー内の Thrift クライアント ライブラリは、内部ロード バランサーを介してクラスターに接続します。このため、Cassandra クラスターをホストするクラウド サービスのコンテキストでは、"data" サブネット (図 1 を参照) に内部ロード バランサーを追加するプロセスが必要になります。内部ロード バランサーの定義後は、この定義されたロード バランサー名を持つ負荷分散セットの注釈を使用して、各ノードに、負荷分散エンドポイントを追加する必要があります。詳細については、「[内部負荷分散](http://msdn.microsoft.com/library/azure/dn690121.aspx)」を参照してください。
+**負荷分散 Thrift トラフィック:** Web サーバー内の Thrift クライアント ライブラリは、内部ロード バランサーを介してクラスターに接続します。このため、Cassandra クラスターをホストするクラウド サービスのコンテキストでは、"data" サブネット (図 1 を参照) に内部ロード バランサーを追加するプロセスが必要になります。内部ロード バランサーの定義後は、この定義されたロード バランサー名を持つ負荷分散セットの注釈を使用して、各ノードに、負荷分散エンドポイントを追加する必要があります。詳細については、「[内部負荷分散](../load-balancer/load-balancer-internal-overview.md)」を参照してください。
 
 **クラスター シード:** 新しいノードは、クラスターのトポロジを検出するためにシード ノードと通信するため、シードには最も可用性の高いノードを選択することが重要です。単一障害点を回避するために、可用性セットごとに 1 つのノードをシード ノードとして指定します。
 
@@ -124,7 +124,7 @@ Azure にデプロイされたシステムのうち高い可用性(例: 99.9 は
 
 JRE のダウンロードには、Oracle のライセンスの手動での承認が必要です。そのため、デプロイメントを簡略化するには、クラスターのデプロイメントの前段階として作成する Ubuntu テンプレート イメージに後でアップロードするために、必要なすべてのソフトウェアをあらかじめデスクトップにダウンロードしておく必要があります。
 
-上記のソフトウェアは、ローカル デスクトップ上のダウンロード ディレクトリ (Windows の %TEMP%/downloads や Linux や Mac の \~/downloads など) に、ダウンロードします。
+上記のソフトウェアは、ローカル デスクトップ上のダウンロード ディレクトリ (Windows の %TEMP%/downloads や Linux や Mac の ~/downloads など) に、ダウンロードします。
 
 ### Ubuntu VM の作成
 必要なソフトウェアを含む Ubuntu イメージを作成し、複数の Cassandra ノードのプロビジョニングに、イメージを再利用できるようにします。
@@ -165,7 +165,7 @@ Azure では、プロビジョニング時に PEM または DER でエンコー�
 
 ###必要なソフトウェアのインストール
 ####手順 1. tarball のアップロード 
-先ほどダウンロードしたソフトウェアを、scp または pscp を使って、次のコマンド形式で \~/downloads ディレクトリにコピーします。
+先ほどダウンロードしたソフトウェアを、scp または pscp を使って、次のコマンド形式で ~/downloads ディレクトリにコピーします。
 
 #####pscp server-jre-8u5-linux-x64.tar.gz localadmin@hk-cas-template.cloudapp.net:/home/localadmin/downloads/server-jre-8u5-linux-x64.tar.gz
 
@@ -301,7 +301,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
 これは数秒で完了し、その後、イメージ ギャラリーの [マイ イメージ] セクションでイメージが利用できるようになります。ソース VM は、イメージが正常にキャプチャされた後に自動的に削除されます。
 
 ##単一リージョン デプロイメント プロセス
-**手順 1. 仮想ネットワークの作成**管理ポータルにログインし、次の表に記載の属性で仮想ネットワークを作成します。プロセスの詳細な手順については、「[仮想ネットワークの作成](http://msdn.microsoft.com/library/azure/dn631643.aspx)」を参照してください。
+**手順 1. 仮想ネットワークの作成**管理ポータルにログインし、次の表に記載の属性で仮想ネットワークを作成します。プロセスの詳細な手順については、「[仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet.md)」を参照してください。
 
 <table>
 <tr><th>VM の属性名</th><th>値</th><th>解説</th></tr>
@@ -467,7 +467,7 @@ VM にログインし、次の処理を行います。
 完了した単一リージョン デプロイメントを利用して、同じ処理を繰り返し、2 番目のリージョンをインストールします。単一リージョン デプロイメントと複数リージョン デプロイメントの主な違いは、リージョン間通信のための VPN トンネルのセットアップです。ここでは、最初にネットワーク インストールを実行してから、VM をプロビジョニングし、Cassandra を構成します。
 
 ###手順 1. 2 つ目のリージョンでの仮想ネットワークの作成
-管理ポータルにログインし、次の表に記載の属性で仮想ネットワークを作成します。プロセスの詳細な手順については、「[仮想ネットワークの作成](http://msdn.microsoft.com/library/azure/dn631643.aspx)」を参照してください。
+管理ポータルにログインし、次の表に記載の属性で仮想ネットワークを作成します。プロセスの詳細な手順については、「[仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet.md)」を参照してください。
 
 <table>
 <tr><th>属性名    </th><th>値	</th><th>解説</th></tr>
@@ -700,4 +700,4 @@ Microsoft Azure は、この演習でもわかるように、オープン ソー
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="最新の Azure ゲスト OS のリリースについて | Microsoft Azure" 
-   description="Azure Cloud Services のゲスト OS の最新のリリース情報と SDK との互換性について説明します。" 
-   services="cloud-services" 
-   documentationCenter="na" 
-   authors="yuemlu" 
-   manager="markkie" 
-   editor=""/>
+   pageTitle="最新の Azure ゲスト OS のリリースについて | Microsoft Azure"
+	description="Azure Cloud Services のゲスト OS の最新のリリース情報と SDK との互換性について説明します。"
+	services="cloud-services"
+	documentationCenter="na"
+	authors="yuemlu"
+	manager="markkie"
+	editor=""/>
 
 <tags
    ms.service="cloud-services"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="tbd" 
-   ms.date="08/14/2015"
-   ms.author="yuemlu"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="tbd"
+	ms.date="08/19/2015"
+	ms.author="yuemlu"/>
 
 # Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。
@@ -123,7 +123,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 | ゲスト OS バージョン | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | ---------------- | -------------------------- | ---------------------- | ------------ | --- |
 | 4\.23 | WA-GUEST-OS-4.23\_201508-01 | 2015 年 9 月 11 日予定 | 4\.25 のリリース時に更新予定 | TBD |
-| 4\.22 | WA-GUEST-OS-4.22\_201507-01 | 2015 年 8 月 7 日 | 4\.24 のリリース時に更新予定 | TBD |
+| 4\.22 | WA-GUEST-OS-4.22\_201507-02 | 2015 年 8 月 7 日 | 4\.24 のリリース時に更新予定 | TBD |
 | 4\.21 | WA-GUEST-OS-4.21\_201506-01 | 2015 年 7 月 9 日 | 4\.23 のリリース時に更新予定 | TBD |
 | 4\.20 | WA-GUEST-OS-4.20\_201505-02 | 2015 年 6 月 12 日 | 2015 年 9 月 7 日 | TBD |
 | 4\.19 | WA-GUEST-OS-4.19\_201504-01 | 2015 年 4 月 17 日 | 2015 年 8 月 9日 | TBD |
@@ -148,7 +148,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 | ゲスト OS バージョン | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | ---------------- | -------------------------- | ---------------------- | ------------ | --- |
 | 3\.30 | WA-GUEST-OS-3.30\_201508-01 | 2015 年 9 月 11 日予定 | 3\.32 のリリース時に更新予定 | TBD |
-| 3\.29 | WA-GUEST-OS-3.29\_201507-01 | 2015 年 8 月 7 日 | 3\.31 のリリース時に更新予定 | TBD |
+| 3\.29 | WA-GUEST-OS-3.29\_201507-02 | 2015 年 8 月 7 日 | 3\.31 のリリース時に更新予定 | TBD |
 | 3\.28 | WA-GUEST-OS-3.28\_201506-01 | 2015 年 7 月 9 日 | 3\.30 のリリース時に更新予定 | TBD |
 | 3\.27 | WA-GUEST-OS-3.27\_201505-02 | 2015 年 6 月 12 日 | 2015 年 9 月 7 日 | TBD |
 | 3\.26 | WA-GUEST-OS-3.26\_201504-01 | 2015 年 4 月 17 日 | 2015 年 8 月 9日 | TBD |
@@ -174,7 +174,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 | ゲスト OS バージョン | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | ---------------- | -------------------------- | ---------------------- | ------------ | --- |
 | 2\.42 | WA-GUEST-OS-2.42\_201508-01 | 2015 年 9 月 11 日予定 | 2\.44 のリリース時に更新予定 | TBD |
-| 2\.41 | WA-GUEST-OS-2.41\_201507-01 | 2015 年 8 月 7 日 | 2\.43 のリリース時に更新予定 | TBD |
+| 2\.41 | WA-GUEST-OS-2.41\_201507-02 | 2015 年 8 月 7 日 | 2\.43 のリリース時に更新予定 | TBD |
 | 2\.40 | WA-GUEST-OS-2.40\_201506-01 | 2015 年 7 月 9 日 | 2\.42 のリリース時に更新予定 | TBD |
 | 2\.39 | WA-GUEST-OS-2.39\_201505-02 | 2015 年 6 月 12 日 | 2015 年 9 月 7 日 | TBD |
 | 2\.38 | WA-GUEST-OS-2.38\_201504-01 | 2015 年 4 月 17 日 | 2015 年 8 月 9日 | TBD |
@@ -336,4 +336,4 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 [fam1retire]: cloud-services-guestos-family1-retirement.md
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

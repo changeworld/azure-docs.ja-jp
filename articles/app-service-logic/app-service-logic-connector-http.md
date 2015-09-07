@@ -1,41 +1,41 @@
 <properties
-   pageTitle="HTTP リスナーとコネクタ"
-   description="ロジック アプリでの HTTP リスナーと HTTP アクションの使用"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での HTTP リスナーとコネクタの使用 | Microsoft Azure App Service"
+	description="HTTP リスナーと HTTP アクションのコネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="prkumar"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="prkumar"/>
 
 
-#ロジック アプリでの HTTP リスナーと HTTP アクションの使用#
-
-ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。ただし、次のような一部のシナリオで、直接の HTTP 接続が必要になる場合があります。
+# HTTP リスナーと HTTP アクションの使用を開始し、ロジック アプリにこれらを追加する
+HTTP リソースに直接接続して、HTTP 要求をリッスンし、HTTP Web 要求を構成します。次のような一部のシナリオで、直接の HTTP 接続が必要になる場合があります。
 
 1.	Web ユーザーまたはモバイル ユーザーの対話型のフロント エンドをサポートするロジック アプリを開発する。
 2.	すぐに使用できるコネクタがない Web サービスからデータを取得して、処理する。
 3.	Web サービスとして既に公開されているが、API アプリとしては利用できないアクションを実行する。
 
-
-これらのシナリオに対して、ギャラリーでは 2 つのオプションを用意しています。
+これらのシナリオに対して、2 つのオプションが用意されています。
 
 1. **HTTP リスナー**: このコネクタは、トリガーとして機能し、構成されたエンドポイントで HTTP 要求をリッスンします。呼び出しが、構成されたエンドポイントで受信されると、このコネクタはフローの新しいインスタンスをトリガーし、処理のために、要求された受信データをフローに渡します。また、このコネクタは、フローが開始したときに受信要求に対して自動的に応答するか、またはフローの実行に合わせて応答を作成し、呼び出し元に応答を送信するように構成することもできます。
 2. **HTTP アクション**: このアクションでは、インターネットで使用可能な任意のエンドポイントへの Web 要求を構成し、応答を取得して、使用するフローで他のアクションがその応答を使用できるようします。
+
+ロジック アプリはさまざまなデータ ソースを基にトリガーでき、フローの一環としてデータの取得と処理のためのコネクタを提供します。この HTTP コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ## アプリ ロジックの HTTP リスナーの作成
 コネクタは、ロジック アプリ内で作成することも、Azure Marketplace から直接作成することもできます。Marketplace からコネクタを作成するには、次の操作を実行します。
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
-2. “HTTP” を検索し、[HTTP リスナー] を選択して、**[作成]** を選択します。
+2. "HTTP" を検索し、[HTTP リスナー] を選択して、**[作成]** を選択します。
 3.	次のように、HTTP リスナーを構成します。![][1]
 
 4.	パッケージの設定をセットアップするときに、次のオプションが表示され、リスナーが自動的に応答する必要があるのか、またはユーザーが明示的な応答を送信する必要があるのかを選択できます。これを **False** に設定し、ユーザー自身の応答を送信します。![][2]
@@ -84,4 +84,4 @@ HTTP アクションの出力は、ヘッダーと本文です。これらは、
 [9]: ./media/app-service-logic-connector-http/9.png
 [10]: ./media/app-service-logic-connector-http/10.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="MySQL コネクタ - MySQL からのデータの移動" 
-	description="MySQL データベースからデータを移動できる Data Factory サービスの MySQL コネクタについて学習する" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="MySQL からデータを移動する | Azure Data Factory"
+	description="Azure Data Factory を使用して MySQL データベースからデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# MySQL コネクタ - MySQL からのデータの移動
+# Azure Data Factory を使用して MySQL からデータを移動する
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、MySQL と他のデータ ストアとの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -27,17 +27,17 @@ Data Factory のサービスでは、Data Management Gateway を使用したオ�
 データ ファクトリは、他のデータ ストアから MySQL へのデータの移動ではなく、MySQL から他のデータ ストアへのデータの移動のみをサポートします。
 
 ## インストール 
-Data Management Gateway で MySQL データベースに接続するには、[MySQL コネクタ/Net 6.6.5 for Microsoft Windows](http://go.microsoft.com/fwlink/?LinkId=278885) を Data Management Gateway と同じシステムにインストールする必要があります。
+Data Management Gateway で MySQL Databases に接続するには、[MySQL コネクタ/Net 6.6.5 for Microsoft Windows](http://go.microsoft.com/fwlink/?LinkId=278885) を Data Management Gateway と同じシステムにインストールする必要があります。
 
 ## サンプル: MySQLから Azure BLOB にデータをコピーする
 
 下のサンプルで確認できる要素:
 
-1.	OnPremisesMySql 型のリンクされたサービス。
-2.	AzureStorage 型のリンクされたサービス。
-3.	RelationalTable 型の入力データセット。
-4.	AzureBlob 型の出力データセット。
-4.	RelationalSource と BlobSink を使用するコピー アクティビティを含むパイプライン。
+1.	[OnPremisesMySql](data-factory-onprem-mysql-connector.md#mysql-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[RelationalTable](data-factory-onprem-mysql-connector.md#mysql-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4.	[RelationalSource](data-factory-onprem-mysql-connector.md#mysql-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルは MySQL データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -61,7 +61,7 @@ Data Management Gateway で MySQL データベースに接続するには、[MyS
 	  }
 	}
 
-**Azure ストレージのリンクされたサービス**
+**Azure Storage linked service**
 
 	{
 	  "name": "AzureStorageLinkedService",
@@ -77,7 +77,7 @@ Data Management Gateway で MySQL データベースに接続するには、[MyS
 
 このサンプルでは、MySQL で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
 
-“external”: ”true” を設定して externalData ポリシーを指定すると、テーブルがデータ ファクトリに対して外部にあり、データ ファクトリのアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
+“external”: ”true” を設定して externalData ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、データ ファクトリのアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
 	
 	{
 	    "name": "MySqlDataSet",
@@ -228,6 +228,8 @@ Data Management Gateway で MySQL データベースに接続するには、[MyS
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ | 
 | gatewayName | Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 | あり |
 
+オンプレミスの MySQL データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
+
 ## MySQL データセットの type プロパティ
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
@@ -236,7 +238,7 @@ Data Management Gateway で MySQL データベースに接続するには、[MyS
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| tableName | リンクされたサービスが参照する MySQL データベース インスタンスのテーブルの名前です。 | はい | 
+| tableName | リンクされたサービスが参照する MySQL Databases インスタンスのテーブルの名前です。 | はい | 
 
 ## MySQL のコピー アクティビティの type プロパティ
 
@@ -261,7 +263,7 @@ Data Management Gateway で MySQL データベースに接続するには、[MyS
 
 MySQL にデータを移動する場合、MySQL 型から .NET 型に対する次のマッピングが使用されます。
 
-| MySQL データベース型 | .NET Framework 型 |
+| MySQL Databases 型 | .NET Framework 型 |
 | ------------------- | ------------------- | 
 | 符号なしの bigint | 小数点 |
 | bigint | Int64 |
@@ -308,4 +310,4 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

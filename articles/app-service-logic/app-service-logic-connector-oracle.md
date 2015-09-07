@@ -1,24 +1,23 @@
 <properties
-   pageTitle="Microsoft Azure App Service での Oracle コネクタの使用"
-   description="Oracle コネクタの使用方法"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での Oracle Database コネクタの使用 | Microsoft Azure App Service"
+	description="Oracle Database コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="sameerch"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="sameerch"/>
 
 
-# Oracle データベース コネクタ
-
+# Oracle Database コネクタの使用開始とロジック アプリへの追加
 オンプレミスの Oracle Database サーバーに接続して、情報やデータの作成と変更を行います。コネクタを Logic Apps で使用して、"ワークフロー" の一部としてデータを取得、処理、またはプッシュできます。Oracle コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
 - Web またはモバイル アプリケーションを使用して、Oracle Database に存在するデータの一部を公開する。
@@ -117,4 +116,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [11]: ./media/app-service-logic-connector-oracle/LogicApp7.png
 [12]: ./media/app-service-logic-connector-oracle/LogicApp8.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

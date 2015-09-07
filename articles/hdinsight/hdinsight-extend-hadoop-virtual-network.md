@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Virtual Network を使用した HDInsight の拡張 | Microsoft Azure"  
+	pageTitle="Virtual Network を使用した HDInsight の拡張 | Microsoft Azure"
 	description="Azure Virtual Network を使用して HDInsight を他のクラウド リソースまたはデータ センター内のリソースに接続する方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
@@ -9,12 +9,12 @@
 
 <tags
    ms.service="hdinsight"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="07/06/2015"
-   ms.author="larryfr"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="07/06/2015"
+	ms.author="larryfr"/>
 
 
 #Azure Virtual Network を使用した HDInsight 機能の拡張
@@ -55,9 +55,9 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 	* **LOB アプリケーションから HDInsight サービスを呼び出す。**たとえば、HBase Java API を使用して HDInsight HBase クラスターにデータを格納したり、クラスターからデータを取得したりします。
 
-仮想ネットワークの機能、利点の詳細については、「[Azure 仮想ネットワークの概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
+仮想ネットワークの機能、利点の詳細については、「[Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
-> [AZURE.NOTE]HDInsight クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](http://msdn.microsoft.com/library/azure/jj156206.aspx)」を参照してください。
+> [AZURE.NOTE]HDInsight クラスターをプロビジョニングする前に、Azure 仮想ネットワークを作成する必要があります。詳細については、「[仮想ネットワークの構成タスク](/documentation/services/virtual-network/)」を参照してください。
 >
 > Azure HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在取り扱っていません。
 >
@@ -171,6 +171,6 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 * [HDInsight での Hadoop と Sqoop の使用](hdinsight-use-sqoop.md) - SQL Server と Sqoop を使用した仮想ネットワーク経由のデータ転送に関する情報を提供します。
 
-Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](http://msdn.microsoft.com/library/azure/jj156007.aspx)に関するページを参照してください。
+Azure のかそうネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

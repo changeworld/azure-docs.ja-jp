@@ -3,7 +3,7 @@
 	description="Python からテーブル サービスを使用して、テーブルを作成、削除する方法、テーブルのエンティティを挿入、照会する方法について説明します。"
 	services="storage"
 	documentationCenter="python"
-	authors="huguesv"
+	authors="emgerner-msft"
 	manager="wpickett"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="03/11/2015"
-	ms.author="huvalo"/>
+	ms.date="08/25/2015"
+	ms.author="emgerner"/>
 
 
 # Python から Table ストレージを使用する方法
@@ -23,7 +23,7 @@
 
 ## 概要
 
-このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python で記述され、[Python Azure パッケージ][]を使用しています。紹介するシナリオは、テーブルのエンティティの挿入とクエリ実行のほか、テーブルの作成と削除などがあります。
+このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python で記述され、[Python Azure Storage パッケージ][]を使用しています。紹介するシナリオは、テーブルのエンティティの挿入とクエリ実行のほか、テーブルの作成と削除などがあります。
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -36,7 +36,7 @@
 
 **TableService** オブジェクトを使用して、テーブル サービスを操作できます。次のコードでは、**TableService** オブジェクトを作成します。プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に、コードを追加します。
 
-	from azure.storage import TableService, Entity
+	from azure.storage.table import TableService, Entity
 
 次のコードでは、ストレージ アカウント名とアカウント キーを使用して **TableService** オブジェクトを作成します。'myaccount' と 'mykey' の部分は、実際のアカウントとキーに置き換えてください。
 
@@ -139,5 +139,6 @@
 [Azure Storage]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure Storage チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
+[Python Azure Storage パッケージ]: https://pypi.python.org/pypi/azure-storage
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

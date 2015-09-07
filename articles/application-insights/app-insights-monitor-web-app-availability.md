@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Web サイトの可用性と応答性の監視" 
-	description="Application Insights で Web テストを設定します。Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="alancameronwills" 
+<properties
+	pageTitle="Web サイトの可用性と応答性の監視 | Microsoft Azure"
+	description="Application Insights で Web テストを設定します。Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。"
+	services="application-insights"
+	documentationCenter=""
+	authors="alancameronwills"
 	manager="douge"/>
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="07/08/2015" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="07/08/2015"
 	ms.author="awills"/>
- 
+
 # Web サイトの可用性と応答性の監視
 
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
@@ -30,8 +30,6 @@ Web テストには次の 2 種類があります。
 * [URL の Ping テスト](#set-up-a-url-ping-test): Azure ポータルで作成できる簡単なテストです。
 * [複数手順の Web テスト](#multi-step-web-tests): Visual Studio Ultimate または Visual Studio Enterprise で作成してポータルにアップロードします。
 
-*Azure の Web アプリですか。 [Web アプリ ブレードで Web テストを作成][azure-availability]してください。*
-
 
 
 ## URL の Ping テストを設定します。
@@ -44,7 +42,7 @@ Web テストには次の 2 種類があります。
 
 ![New > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
-新しいリソースの概要ブレードが開きます。[Azure ポータル](https://portal.azure.com)で [参照] をクリックすると、いつでもここを見ることができます。
+新しいリソースの概要ブレードが開きます。[Azure ポータル](https://portal.azure.com)で **[参照]** をクリックすると、いつでもここを見ることができます。
 
 ### <a name="setup"></a>2.Web テストを作成する
 
@@ -74,7 +72,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 ### <a name="monitor"></a>3.可用性レポートを表示する
 
-1 ～ 2 分後に、可用性/Web テスト ブレードで [更新] をクリックします(自動的には更新されません)。
+1 ～ 2 分後に、可用性/Web テスト ブレードで **[更新]** をクリックします(自動的には更新されません)。
 
 ![Summary results on the home blade](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
@@ -104,7 +102,7 @@ Web ページのイメージ、スタイル シート、スクリプトとその
 
 ![Click a specific webtest](./media/app-insights-monitor-web-app-availability/16-1test.png)
 
-複数の場所からテストが実行されています - 結果が 100% 未満のいずれかの場所を選択します。
+複数の場所からテストが実行されています&#151;結果が 100% 未満のいずれかの場所を選択します。
 
 ![Click a specific webtest](./media/app-insights-monitor-web-app-availability/17-availViewDetails.png)
 
@@ -129,6 +127,8 @@ URL の順序に関連するシナリオを監視することができます。�
 
 複数手順のテストを作成するには、Visual Studio を使用してシナリオを記録してから、その記録を Application Insights にアップロードします。Application Insights は周期的にそのシナリオを再生し、応答を確認します。
 
+コード化された機能をテストで使用できないことに注意してください。シナリオの手順は、.webtest ファイルにスクリプトとして含まれる必要があります。
+
 #### 1\.シナリオを記録する
 
 Web セッションを記録するには、Visual Studio Ultimate を使用します。
@@ -149,12 +149,12 @@ Web セッションを記録するには、Visual Studio Ultimate を使用し�
 
 4. 動作を確認するには、Visual Studio でテストを実行します。
 
-    Web テスト ランナーは、web ブラウザーを開き、記録したアクションを繰り返します。予想どおりに動作するかどうかを確認します
+    Web テスト ランナーは、web ブラウザーを開き、記録したアクションを繰り返します。予想どおりに動作するかどうかを確認します。
 
     ![Visual Studio で .webtest ファイルを開き、[実行] をクリックします。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
- 
 
-(Web テストのコードには、ループを挿入しないでください。)
+
+(Web テストには、ループを挿入しないでください。)
 
 #### 2\.Web テストを Application Insights にアップロードする
 
@@ -171,6 +171,8 @@ Web セッションを記録するには、Visual Studio Ultimate を使用し�
 失敗の一般的な理由は、テストの実行時間が長すぎることです。テストの実行は、2 分未満にする必要があります。
 
 テストが正常に完了するには、スクリプト、スタイル シート、イメージなど、ページのすべてのリソースが正しく読み込まれる必要があることに注意してください。
+
+Web テスト全体が .webtest ファイルに含まれる必要があります。コード化された機能をテストで使用することはできません。
 
 
 ### 複数手順のテストに対する時間とランダムな数の組み込み
@@ -209,13 +211,14 @@ Web セッションを記録するには、Visual Studio Ultimate を使用し�
 
 ## 疑問がある場合 問題が発生した場合
 
-* ときに「無効な文字」というエラー メッセージが表示されました。 
 
-* ** "Web テスト" と "可用性" に違いはありますか。
+* *"Web テスト" と "可用性" に違いはありますか。*
 
     この 2 つの用語は同じ意味で使用されています。
 
+* *Web テストからコードを呼び出すことはできますか。*
 
+    いいえ。テストの手順は、.webtest ファイルに含まれている必要があります。
 
 ## <a name="video"></a>ビデオ
 
@@ -237,6 +240,4 @@ Web セッションを記録するには、Visual Studio Ultimate を使用し�
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-get-started.md
 
- 
-
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

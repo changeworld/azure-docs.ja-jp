@@ -9,12 +9,12 @@
 
 <tags
    ms.service="hdinsight"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="08/07/2015"
-   ms.author="jgao"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="08/07/2015"
+	ms.author="jgao"/>
 
 # Azure Virtual Network での HBase クラスターのプロビジョニング
 
@@ -60,7 +60,7 @@ HBase クラスターをプロビジョニングする前に、Azure 仮想ネ�
 	- **アドレス空間**: クラスター内のすべてのノードにアドレスを提供するために十分な大きさの、仮想ネットワークのアドレス空間を選択します。そうでないと、プロビジョニングは失敗します。このチュートリアルを読み進めるには、3 つの中から任意のアドレス空間を選択できます。
 	- **最大 VM 数**: 仮想マシン (VM) の最大数のいずれかを選択します。この値は、アドレス空間内に作成できる潜在的なホスト (VM) の数を決定します。このチュートリアルを進めるには、**4096 [CIDR: /20]** で十分です。
 	- **場所**: 場所は作成する HBase クラスターと同じである必要があります。
-	- **DNS サーバー**: このチュートリアルでは、Azure が提供する内部のドメイン ネーム システム (DNS) サーバーを使用するため **[なし]** を選択できます。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、「[名前解決 (DNS)](http://msdn.microsoft.com/library/azure/jj156088.aspx)」をご覧ください。
+	- **DNS サーバー**: このチュートリアルでは、Azure が提供する内部のドメイン ネーム システム (DNS) サーバーを使用するため **[なし]** を選択できます。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 4. 右下にある **[仮想ネットワークの作成]** をクリックします。新しい仮想ネットワーク名が一覧に表示されます。[ステータス] 列に **[作成済み]** が表示されるまで待機します。
 5. メイン ウィンドウで、作成した仮想ネットワークをクリックします。
 6. ページの上部にある **[ダッシュボード]** をクリックします。
@@ -132,9 +132,7 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 	<tr><td>ヘッド ノード サイズ</td><td><p>ヘッド ノードの VM サイズを選択します。</p></td></tr>
 	<tr><td>データ ノード サイズ</td><td><p>データ ノードの VM サイズを選択します。</p></td></tr>
 	<tr><td>Zookeeper サイズ</td><td><p>Zookeeper ノードの VM サイズを選択します。</p></td></tr>
-</table>
-
-	>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて Standard レベルの VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
+</table>>[AZURE.NOTE]VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて Standard レベルの VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」をご覧ください。
 
 	右側のボタンをクリックします。
 
@@ -150,7 +148,7 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 		<td>HDInsight クラスターのユーザー パスワードを指定します。</td></tr>
 	<tr><td>Enable remote desktop for cluster (クラスターのリモート デスクトップ アクセスを有効にする)</td>
 		<td>このチェック ボックスをオンにして、プロビジョニングされるとクラスター ノードにリモートにできるリモート デスクトップ ユーザーのユーザー名、パスワード、有効期限を指定します。また、クラスターがプロビジョニングされた後にリモート デスクトップを有効にすることもできます。手順については、「<a href="hdinsight-administer-use-management-portal/#rdp" target="_blank">RDP を使用した HDInsight クラスターへの接続</a>」をご覧ください。</td></tr>
-	</table>
+</table>
 
 6. **[ストレージ アカウント]** ページで、次の値を指定します。
 
@@ -179,9 +177,7 @@ DNS サーバーはオプションですが、場合によっては必要にな�
     </td></tr>
 	<tr><td>追加のストレージ アカウント</td>
 		<td>必要に応じてクラスターに追加するストレージ アカウントを指定します。HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、Azure ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントのそれぞれに対する <strong>[ストレージ アカウント]</strong> ページがウィザードに追加され、そこでアカウント情報を指定できます。たとえば、上のスクリーンショットでは、追加のストレージ アカウントが選択されていないため、ページがウィザードに追加されることはありません。</td></tr>
-	</table>
-
-	右矢印をクリックします。
+</table>右矢印をクリックします。
 
 7. **[Script Actions]** ページで、右下にあるチェック マークを選択します。このチュートリアルではクラスターの設定をカスタマイズする必要はないため、**[スクリプト アクションの追加]** はクリックしないでください。
 
@@ -336,7 +332,7 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
     	<value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
 	</property>
 
-> [AZURE.NOTE]独自の DNS サーバーの使用方法を含め、Azure Virtual Network の名前解決の詳細については、「[名前解決 (DNS)](http://msdn.microsoft.com/library/azure/jj156088.aspx)」をご覧ください。
+> [AZURE.NOTE]独自の DNS サーバーの使用方法を含め、Azure Virtual Network の名前解決の詳細については、「[名前解決 (DNS)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 ##Azure PowerShell を使用して HBase クラスターをプロビジョニングする
 
@@ -395,7 +391,7 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 
 [hbase-get-started]: ../hdinsight-hbase-get-started.md
 [hbase-twitter-sentiment]: ../hdinsight-hbase-twitter-sentiment.md
-[vnet-overview]: http://msdn.microsoft.com/library/azure/jj156007.aspx
+[vnet-overview]: ../virtual-network/virtual-networks-overview.md
 [vm-create]: ../virtual-machines-windows-tutorial.md
 
 [azure-portal]: https://management.windowsazure.com
@@ -433,4 +429,4 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 [img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "Provision details for the new HBase cluster"
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "Use Script Action to customize an HBase cluster"
 
-<!-----HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

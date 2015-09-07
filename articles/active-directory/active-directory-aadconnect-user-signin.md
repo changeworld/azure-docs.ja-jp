@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure AD Connect - ユーザー サインイン" 
-	description="Azure AD Connect ユーザー サインインのカスタム設定" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure AD Connect - ユーザー サインイン"
+	description="Azure AD Connect ユーザー サインインのカスタム設定"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/28/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 
@@ -64,4 +64,4 @@ Azure AD Connect では、ユーザーは同じパスワードを使用して、
 	- デバイス登録、Azure AD 参加、または Intune MDM ポリシーを使用するオンプレミスとクラウド両方のリソースへの条件付きアクセス
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

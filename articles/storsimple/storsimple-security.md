@@ -1,22 +1,22 @@
 <properties 
-   pageTitle="StorSimple のセキュリティ |Microsoft Azure" 
-   description="StorSimple のサービス、デバイス、データを保護するセキュリティ機能およびプライバシー機能について説明します。" 
-   services="storsimple" 
-   documentationCenter="NA" 
-   authors="SharS" 
-   manager="AdinaH" 
-   editor=""/>
+   pageTitle="StorSimple のセキュリティ |Microsoft Azure"
+	description="StorSimple のサービス、デバイス、オンプレミスまたはクラウド上のデータを保護するセキュリティ機能とプライバシー機能について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="Carolz"
+	editor=""/>
 
 <tags
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD" 
-   ms.date="08/17/2015"
-   ms.author="v-sharos"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/26/2015"
+	ms.author="v-sharos"/>
 
-# StorSimple のセキュリティ 
+# StorSimple のセキュリティとデータの保護
 
 ## 概要
 
@@ -253,4 +253,4 @@ StorSimple ソリューションに保存されるデータとソリューショ
 [StorSimple デバイスをデプロイする](storsimple-deployment-walkthrough.md)
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

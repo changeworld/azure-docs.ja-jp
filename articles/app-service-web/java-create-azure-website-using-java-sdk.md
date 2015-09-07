@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure SDK for Java を使用した Azure App Service での Web アプリの作成" 
-	description="Azure SDK for Java を使用してプログラムで Azure App Service の Web アプリを作成する方法について説明します。" 
+	pageTitle="Azure SDK for Java を使用した Azure App Service での Web アプリの作成"
+	description="Azure SDK for Java を使用してプログラムで Azure App Service の Web アプリを作成する方法について説明します。"
 	tags="azure-classic-portal"
-	services="app-service\web" 
-	documentationCenter="Java" 
-	authors="donntrenton" 
-	manager="wpickett" 
+	services="app-service\web"
+	documentationCenter="Java"
+	authors="donntrenton"
+	manager="wpickett"
 	editor="jimbe"/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="04/24/2015" 
+	ms.service="multiple"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="04/24/2015"
 	ms.author="v-donntr"/>
 
 
@@ -438,7 +438,6 @@ WAR ファイルのデプロイ方法の詳細については、「[Azure の Ja
 
 FTP を使用した App Service Web アプリへのデプロイの詳細については、次のトピックをご覧ください。
 
-- [Manage web apps using the Azure Portal: Deployment (Azure ポータルを使用した Web アプリの管理: デプロイ)](web-sites-manage.md/#deployment)
 - [FTP ユーティリティを使用したデプロイ](web-sites-deploy.md)
 
 
@@ -590,4 +589,4 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
   [10]: ./media/java-create-azure-website-using-java-sdk/kudu-console-jsphello-war-2.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

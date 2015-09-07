@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="オンプレミス ID と Azure Active Directory の統合" 
-	description="これは、Azure AD Connect の内容と使用する理由を説明するページです。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="オンプレミス ID と Azure Active Directory の統合"
+	description="これは、Azure AD Connect の内容と使用する理由を説明するページです。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="07/13/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
@@ -249,7 +249,7 @@ Azure AD Connect の操作に関するその他のドキュメントについて
 - [Azure AD Connect 同期規則エディターの使用](active-directory-aadconnect-whats-next-synch-rules-editor.md)
 - [宣言型のプロビジョニングの使用](active-directory-aadconnect-whats-next-declarative-prov.md)
 
-また、Azure AD Sync 用に作成されたドキュメントの一部は、まだ Azure AD Connect と関連があり、Azure AD Connect に当てはまります。Azure.com にこのドキュメントを提供するためにあらゆる努力を重ねていますが、このドキュメントの一部は、現在も MSDN の範囲のライブラリに掲載されています。その他のドキュメントについては、「[MSDN の Azure AD Connect](https://msdn.microsoft.com/library/azure/dn832695.aspx)」と「[MSDN の Azure AD Sync](https://msdn.microsoft.com/library/azure/dn790204.aspx)」を参照してください。
+また、Azure AD Sync 用に作成されたドキュメントの一部は、まだ Azure AD Connect と関連があり、Azure AD Connect に当てはまります。Azure.com にこのドキュメントを提供するためにあらゆる努力を重ねていますが、このドキュメントの一部は、現在も MSDN の範囲のライブラリに掲載されています。その他のドキュメントについては、「[MSDN の Azure AD Connect](active-directory-aadconnect.md)」と「[MSDN の Azure AD Sync](https://msdn.microsoft.com/library/azure/dn790204.aspx)」を参照してください。
 
 
 **その他のリソース**
@@ -273,4 +273,4 @@ Azure AD Connect の操作に関するその他のドキュメントについて
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="新しいリソース グループへのリソースの移動" 
-	description="Azure PowerShell または REST API を使用して、リソースを Azure リソース マネージャーの新しいリソース グループに移動します。" 
-	services="azure-resource-manager" 
-	documentationCenter="" 
-	authors="tfitzmac" 
-	manager="wpickett" 
+	pageTitle="新しいリソース グループへのリソースの移動"
+	description="Azure PowerShell または REST API を使用して、リソースを Azure リソース マネージャーの新しいリソース グループに移動します。"
+	services="azure-resource-manager"
+	documentationCenter=""
+	authors="tfitzmac"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="azure-resource-manager" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/14/2015" 
+	ms.service="azure-resource-manager"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/20/2015"
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -55,6 +55,11 @@
 
 - Virtual Networks
 
+Web アプリを使用している場合、App Service プランのみを移動することはできません。Web アプリを移動するには、次のオプションがあります。
+
+- 移動先のリソース グループにまだ Microsoft.Web リソースがない場合は、すべてのリソースをあるリソース グループから別のリソース グループに移動します。
+- Web アプリは別のリソース グループに移動しますが、App Service プランは元のリソース グループで保持します。
+
 ## PowerShell を使用したリソースの移動
 
 既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、**Move-AzureResource** コマンドを使用します。
@@ -93,7 +98,7 @@
 ## 次のステップ
 - [リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)
 - [リソース マネージャーでの Azure クロスプラットフォーム CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)
-- [Using the Azure Preview Portal to manage your Azure resources (Azure プレビュー ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
+- [Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)
 - [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

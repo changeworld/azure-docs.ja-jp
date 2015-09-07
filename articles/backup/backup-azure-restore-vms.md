@@ -1,4 +1,3 @@
-
 <properties
 	pageTitle="Azure Backup - 仮想マシンの復元 | Microsoft Azure"
 	description="Azure 仮想マシンを復元する方法について説明します。"
@@ -95,4 +94,4 @@
 ## 次のステップ
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

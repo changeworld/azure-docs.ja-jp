@@ -1,20 +1,20 @@
 <properties
    pageTitle="SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール | Microsoft Azure"
-   description="コンピューティング リソースをスケールアップおよびスケールダウンするために Data Warehouse ユニットを使用した SQL Data Warehouse の柔軟性を理解します。コード例が提供されています。"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="TwoUnder"
-   manager="barbkess"
-   editor=""/>
+	description="コンピューティング リソースをスケールアップおよびスケールダウンするために Data Warehouse ユニットを使用した SQL Data Warehouse の柔軟性を理解します。コード例が提供されています。"
+	services="sql-data-warehouse"
+	documentationCenter="NA"
+	authors="TwoUnder"
+	manager="barbkess"
+	editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/25/2015"
-   ms.author="nicw;JRJ@BigBangData.co.uk;mausher"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-services"
+	ms.date="06/25/2015"
+	ms.author="nicw;JRJ@BigBangData.co.uk;mausher"/>
 
 # SQL Data Warehouse を使用した弾力的なパフォーマンスとスケール
 コンピューティング機能を弾力的に増減するために必要なことは、SQL Data Warehouse に割り当てられた Data Warehouse ユニット (DWU) の数を調整することのみです。Data Warehouse ユニットとは、SQL Data Warehouse によって生じた新しい概念であり、この調整を簡単かつ効率的に管理できます。このトピックでは Data Warehouse ユニットを紹介し、これを使用してコンピューティング機能を弾力的に調整する方法を説明します。この記事には、環境に適した DWU 値を設定する方法に関するいくつかの基本ガイダンスも含まれています。
@@ -39,15 +39,16 @@ SQL Data Warehouse には、顧客に対するブロックを解除できるさ�
 ## コンピューティング リソースのスケーリングの増減
 クラウド ストレージとは関係なく、SQL Data Warehouse の弾力性により、Data Warehouse ユニット (DWU) のスライディング スケールを使用してコンピューティング機能を拡大、縮小、または一時停止できます。これにより、ビジネスに最適なレベルにコンピューティング機能を調整できる柔軟性が得られます。
 
-コンピューティング機能の増加は [Azure ポータル][]で T-SQL を使用し、REST API または Powershell を介して行うことができます。スケールを増減すると、実行中のアクティビティやキューに入れられているアクティビティはすべてキャンセルされますが、数秒以内で完了するため、増加または減少されたコンピューティング機能で再開できます。
+コンピューティング機能を高めるには、Azure ポータルのスケール スライダーを使用して、サービスに複数の DWU を追加できます。T-SQL、REST API、Powershell コマンドレットから DWU を追加することもできます。スケールを増減すると、実行中のアクティビティやキューに入れられているアクティビティはすべてキャンセルされますが、数秒以内で完了するため、増加または減少されたコンピューティング機能で再開できます。
 
-次の T-SQL コードは、SQL Data Warehouse に対して DWU の割り当てを調整する方法を示しています。
+[Azure ポータル][]で、SQL Data Warehouse ページの上部にある [スケール] アイコンをクリックし、スライダーを使用して Data Warehouse に適用される DWU の量を増減し、[保存] をクリックします。プログラムを使用してスケールを変更する場合は、次の T-SQL コードが SQL Data Warehouse に対して DWU の割り当てを調整する方法を示しています。
 
 ```
 ALTER DATABASE MySQLDW 
 MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 ;
 ```
+この T-SQL は、論理サーバーに対して実行し、SQL Data Warehouse インスタンス自体に対しては実行しないでください。
 
 また、次のコードを使用し、Powershell を使用して同様に調整することもできます。
 
@@ -95,4 +96,4 @@ PowerShell の使用の詳細については、「[Introduction to PowerShell cm
 
 [Azure ポータル]: http://portal.azure.com/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

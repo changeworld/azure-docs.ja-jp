@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Data Catalog の用語集"
-   description="Azure Data Catalog の用語集"
-   services="data-catalog"
-   documentationCenter=""
-   authors="steelanddata"
-   manager="NA"
-   editor=""
-   tags=""/>
+	description="Azure Data Catalog のドキュメントで使用される概念と用語について説明します。"
+	services="data-catalog"
+	documentationCenter=""
+	authors="steelanddata"
+	manager="NA"
+	editor=""
+	tags=""/>
 <tags
    ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="07/31/2015"
-   ms.author="maroche"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="08/20/2015"
+	ms.author="maroche"/>
 
 # Azure Data Catalog の用語集
 
@@ -77,7 +77,7 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 ## 関連項目
 
 - [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md) - この記事では、Azure Data Catalog サービス、もたらされる価値、およびサポートしているシナリオの概要について説明します。
-  
+
 - [GAzure Data Catalog の概要](data-catalog-get-started.md) - この記事は、データ ソースの検出に Azure Data Catalog を使用する方法を示す総合的なチュートリアルです。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

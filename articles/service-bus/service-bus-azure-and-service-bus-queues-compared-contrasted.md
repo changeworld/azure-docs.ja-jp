@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Azure キューと Service Bus キューの比較"
-   description="Azure によって提供される 2 種類のキューの相違点と共通点について説明します。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+	description="Azure によって提供される 2 種類のキューの相違点と共通点について説明します。"
+	services="service-bus"
+	documentationCenter="na"
+	authors="sethmanheim"
+	manager="timlt"
+	editor="tysonn"/>
 <tags 
    ms.service="service-bus"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="tbd"
-   ms.date="05/21/2015"
-   ms.author="sethm" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="tbd"
+	ms.date="08/25/2015"
+	ms.author="sethm"/>
 
 # Azure キューと Service Bus キューの比較
 
@@ -109,7 +109,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - Azure キューは、アプリケーション コンポーネントを分離してスケーラビリティや耐障害性を向上させ、負荷平準化やプロセス ワークフロー構築を容易にするなどの、標準的なキュー シナリオをサポートするように設計されています。
 
-- Service Bus キューは、*At-Least-Once* の配信保証をサポートしています。また、セッション状態を使用してアプリケーションの状態を格納し、トランザクションを使用してメッセージの受信とセッション状態の更新の原子性を確保することにより、*At-Most-Once* セマンティクスをサポートすることもできます。Azure ワークフロー サービスでは、この方法を使用して At-Most-Once の配信を保証しています。
+- Service Bus キューは、*At-Least-Once* の配信保証をサポートしています。また、セッション状態を使用してアプリケーションの状態を格納し、トランザクションを使用してメッセージの受信とセッション状態の更新の原子性を確保することにより、*At-Most-Once* セマンティクスをサポートすることもできます。Azure Workflow Service では、この方法を使用して At-Most-Once の配信を保証しています。
 
 - Azure キューでは、開発者とオペレーション チームの双方に対し、キュー、テーブル、BLOB で一貫性のあるプログラミング モデルを提供します。
 
@@ -141,7 +141,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 |有害なメッセージのサポート|**はい**|**はい**|
 |インプレース更新|**はい**|**はい**|
 |サーバー側のトランザクション ログ|**はい**|**いいえ**|
-|ストレージのメトリック|**はい**<br/><br/>**分単位のメトリック**: 可用性、TPS、API 呼び出し数、エラー数、その他のメトリックをすべてリアルタイムで提供します (分単位で集計され、運用環境での発生から数分以内にレポートされます)。詳細については、「[Storage Analytics Metrics について](https://msdn.microsoft.com/library/hh343258.aspx)」を参照してください。|**はい**<br/><br/>([GetQueues](https://msdn.microsoft.com/library/hh293128.aspx) の呼び出しによる一括クエリ)|
+|ストレージのメトリック|**はい**<br/><br/>**分単位のメトリック**: 可用性、TPS、API 呼び出し数、エラー数、その他のメトリックをすべてリアルタイムで提供します (分単位で集計され、運用環境での発生から数分以内にレポートされます)。詳細については、「[ストレージ分析 メトリックスについて](https://msdn.microsoft.com/library/hh343258.aspx)」を参照してください。|**はい**<br/><br/>([GetQueues](https://msdn.microsoft.com/library/hh293128.aspx) の呼び出しによる一括クエリ)|
 |状態管理|**いいえ**|**はい**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.entitystatus.aspx)|
 |メッセージの自動転送|**いいえ**|**はい**|
 |キューの消去機能|**はい**|**いいえ**|
@@ -189,13 +189,13 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - Service Bus キューは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。パーティション分割を有効にすると (既定)、Service Bus は指定した各 GB あたりに 16 個のパーティションを作成できます。そのため、5 GB のキューを作成すると、16 個のパーティションで、キューの最大サイズは (5 * 16) = 80 GB になります。Azure 管理ポータルの各エントリで、パーティション分割したキューやトピックの最大サイズを確認できます。
 
-- Azure キューでは、内容が XML セーフでないメッセージに対しては **Base64** エンコードを使用する必要があります。**Base64** エンコードを使用する場合、ユーザー ペイロードの上限は 64 KB ではなく 48 KB になります。
+- Azure キューでは、内容が XML セーフでないメッセージに対しては **Base64** エンコードを使用する必要があります。メッセージを **Base64** エンコードを使用する場合、ユーザー ペイロードの上限は 64 KB ではなく 48 KB になります。
 
 - Service Bus キューでは、キューに格納される各メッセージはヘッダーおよび本文で構成されます。メッセージの合計サイズが 256 KB を超えることはできません。
 
 - クライアントが TCP プロトコルで Service Bus キューと通信する場合は、1 つの Service Bus キューに対する同時接続の最大数が 100 に制限されます。この数は送信側と受信側で共有されます。このクォータに達すると、その後の接続要求は拒否され、呼び出し元のコードが例外を受け取ります。この制限は、REST ベースの API を使用してキューに接続するクライアントには適用されません。
 
-- 1 つの Service Bus サービスの名前空間で 10,000 を超える数のキューが必要な場合は、Azure サポート チームに連絡してキューの数を増やすことができます。Service Bus でキューの数を 10,000 より多くするには、Azure 管理ポータルを使用して追加のサービス名前空間を作成することもできます。
+- 1 つの Service Bus Service の名前空間で 10,000 を超える数のキューが必要な場合は、Azure サポート チームに連絡してキューの数を増やすことができます。Service Bus でキューの数を 10,000 より多くするには、Azure 管理ポータルを使用して追加のサービス名前空間を作成することもできます。
 
 ## 管理と操作
 
@@ -204,7 +204,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 |比較条件|Azure キュー|Service Bus キュー|
 |---|---|---|
 |管理プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**|
-|ランタイム プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**<br/><br/>**AMQP 1.0 Standard (TCP と TLS)**| |.NET マネージ API|**はい**<br/><br/>(.NET managed Storage Client API)|**はい**<br/><br/>(.NET の仲介型メッセージング API)|
+|ランタイム プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**<br/><br/>**AMQP 1.0 Standard (TCP と TLS)**| |.NET マネージ API|**はい**<br/><br/>(.NET 管理対象ストレージ クライアント API)|**はい**<br/><br/>(.NET の仲介型メッセージング API)|
 |ネイティブ C++|**はい**|**いいえ**|
 |Java API|**はい**|**はい**|
 |PHP API|**はい**|**はい**|
@@ -264,7 +264,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - どちらのキュー テクノロジでも、すべての要求を認証する必要があります。匿名アクセスを使用するパブリック キューはサポートされていません。SAS を使用すると、書き込み専用 SAS、読み取り専用 SAS、フルアクセス SAS を発行することで、このシナリオに対応できます。
 
-- Azure キューによって提供される認証方式では対称キーが使用されます。対称キーとは、SHA-256 アルゴリズムを使用して計算され、**Base64 **文字列としてエンコードされるハッシュ ベースのメッセージ認証コード (HMAC) です。各プロトコルの詳細情報については、「[Authenticating Access to Your Storage Account (ストレージ アカウントへのアクセスの認証)](https://msdn.microsoft.com/library/hh225339.aspx)」をご覧ください。Service Bus キューでは、対称キーを使用する類似のモデルをサポートします。詳細については、「[Service Bus での共有アクセス署名認証](https://msdn.microsoft.com/library/dn170477.aspx)」をご覧ください。
+- Azure キューによって提供される認証方式では対称キーが使用されます。対称キーとは、SHA-256 アルゴリズムを使用してコンピューティングされ、**Base64 **文字列としてエンコードされるハッシュ ベースのメッセージ認証コード (HMAC) です。各プロトコルの詳細情報については、「[Authenticating Access to Your Storage Account (ストレージ アカウントへのアクセスの認証)](https://msdn.microsoft.com/library/hh225339.aspx)」をご覧ください。Service Bus キューでは、対称キーを使用する類似のモデルをサポートします。詳細については、「[Service Bus での共有アクセス署名認証](https://msdn.microsoft.com/library/dn170477.aspx)」をご覧ください。
 
 - Service Bus によってサポートされる Microsoft Azure Active Directory Access Control (Access Control Service または ACS) は、3 種類のロール **Admin**、**Sender**、**Receiver** を提供します。Receiver は現時点では Azure キューに対してサポートされていません。
 
@@ -290,11 +290,9 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - このドキュメントの作成時点では、受信データ転送には料金はかかりません。
 
-- Service Bus キューに対してメッセージング操作を実行するときの ACS トランザクションのコストはわずかです。Service Bus は、メッセージング ファクトリ オブジェクトのインスタンス 1 つにつき 1 つの ACS トークンを取得します。取得したトークンは、約 20 分後に有効期限が切れるまで再利用されます。したがって、Service Bus のメッセージング操作の量と、それらの操作をサポートするために必要な ACS トランザクションの量は比例しません。
-
 - Service Bus キューでは長いポーリングがサポートされているため、待機時間の短い配信が必要な状況でこのキューを使用すると、コスト効率が向上する可能性があります。
 
->[AZURE.NOTE]すべてのコストは、変更されることがあります。上記の表は、このドキュメントの作成時点の価格を反映しています。ここには、現在利用できるキャンペーン プランは含まれていません。Azure の価格の詳細については、「[Azure の価格](http://azure.microsoft.com/pricing/)」ページをご覧ください。Service Bus の価格の詳細については、「[Service Bus の価格]((http://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
+>[AZURE.NOTE]すべてのコストは、変更されることがあります。上記の表は、このドキュメントの作成時点の価格を反映しています。ここには、現在利用できるキャンペーン プランは含まれていません。Azure の最新の価格情報については、「[Azure の価格](http://azure.microsoft.com/pricing/)」ページをご覧ください。Service Bus の価格の詳細については、「Service Bus の価格((http://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
 ## まとめ
 
@@ -317,4 +315,4 @@ Service Bus キューには高度な機能が数多く用意されているた�
 - [Azure Storage の課金について - 帯域幅、トランザクション、容量 (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,19 +1,19 @@
-<properties 
-    pageTitle="Android アプリ向けの Application Insights" 
-    description="Application Insights を使用して Android アプリの使用状況とパフォーマンスを分析します。" 
-    services="application-insights" 
-    documentationCenter="android"
-    authors="alancameronwills" 
-    manager="ronmart"/>
+<properties
+    pageTitle="Android アプリ向けの Application Insights | Microsoft Azure"
+	description="Application Insights を使用して Android アプリの使用状況とパフォーマンスを分析します。"
+	services="application-insights"
+	documentationCenter="android"
+	authors="alancameronwills"
+	manager="ronmart"/>
 
-<tags 
-    ms.service="application-insights" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="mobile-android" 
-    ms.devlang="na" 
-    ms.topic="get-started-article" 
-	ms.date="04/28/2015" 
-    ms.author="awills"/>
+<tags
+    ms.service="application-insights"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="04/28/2015"
+	ms.author="awills"/>
 
 # Android アプリ向けの Application Insights
 
@@ -50,10 +50,10 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
 ## <a name="sdk"></a>アプリケーションでの SDK のインストール
 
 
-1.  [ツール]-> [Application Insights を統合] を選択します。
+1.  **[ツール]**、**[Application Insights SDK を統合]** の順に選択します。
 
     ![Application Insights の統合](./media/app-insights-android/04-tools-integrate.png)
-    
+
 3.  サブスクリプション内でコンポーネントを作成します。
 
     ![コンポーネントの作成](./media/app-insights-android/07-create-component.png)
@@ -63,9 +63,9 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
 4.  SDK をダウンロードし、プロジェクトと統合するには、Gradle を同期します。
 
     ![SDK をダウンロードするための Gradle ファイルの同期](./media/app-insights-android/08-successful-integration.png)
-    
+
     (詳細については、[[使い方] ページ](http://go.microsoft.com/fwlink/?LinkID=533220)を参照してください。)
-    
+
 この時点で、モジュール build.gradle に次の参照が追加され、`INTERNET` と `ACCESS_NETWORK_STATE` に対するアクセス許可とコンポーネントのインストルメンテーション キーを含むメタデータ タグがこのモジュールに追加されました。`AndroidManifest.xml`
 
 ```java
@@ -80,7 +80,7 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
     <manifest>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
+
     <application>
         <meta-data
             android:name="com.microsoft.applicationinsights.instrumentationKey"
@@ -119,9 +119,9 @@ SDK を初期化し、テレメトリの追跡を開始します。
     ApplicationInsights.start();
 ```
 
-`ApplicationInsights.start()` が呼び出されると、SDK は Android のライフ サイクル アクティビティと処理されていない例外の追跡を開始します。
+`ApplicationInsights.start()` が呼び出されると、SDK は Android のライフサイクル アクティビティと処理されていない例外の追跡を開始します。
 
-> [AZURE.NOTE]アプリケーション ライフ サイクル イベントは、Android SDK version 15 以上 (アイスクリームサンドイッチ以上) のみで収集されます。
+> [AZURE.NOTE]アプリケーション ライフサイクル イベントは、Android SDK version 15 以上 (アイスクリームサンドイッチ以上) のみで収集されます。
 
 さらに、カスタム イベント、トレース、メトリック、および処理された例外を収集できます。テレメトリを送信するには、[Application Insights API][api] のいずれかを使用します。
 
@@ -130,7 +130,7 @@ SDK を初期化し、テレメトリの追跡を開始します。
 * Catch 句の TrackHandledException(exception)
 * 特定のイベントに関連付けられていないメトリックの標準レポートをバックグラウンド タスクで送信するには TrackMetric(name, value)。
 
-次に、初期化と手動のテレメトリ収集の例を示します。
+次のコードは、初期化と手動のテレメトリ収集の例です。
 
 ```java
 
@@ -138,11 +138,11 @@ SDK を初期化し、テレメトリの追跡を開始します。
 
       @Override
       protected void onCreate(Bundle savedInstanceState) {
-        
+
         ApplicationInsights.setup(this);
         //... other initialization code ...//
         ApplicationInsights.start();
-        
+
         // track telemetry data
         TelemetryClient client = TelemetryClient.getInstance();
         HashMap<String, String> properties = new HashMap<String, String>();
@@ -163,7 +163,7 @@ SDK を初期化し、テレメトリの追跡を開始します。
 
 http://portal.azure.com に戻り、Application Insights リソースを参照します。
 
-[検索] をクリックして [[診断検索]][diagnostic] を開きます。ここには、最初のイベントが表示されます。何も表示されない場合は 1 ～ 2 分待機し、[更新] をクリックします。
+**[検索]** をクリックして [[診断検索]][diagnostic] を開きます。ここには、最初のイベントが表示されます。何も表示されない場合は 1 ～ 2 分待機し、**[更新]** をクリックします。
 
 ![[診断検索] をクリックする](./media/app-insights-android/21-search.png)
 
@@ -195,8 +195,6 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 [metrics]: app-insights-metrics-explorer.md
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
-[track]: app-insights-custom-events-metrics-api.md
+[track]: app-insights-api-custom-events-metrics.md
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

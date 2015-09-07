@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="SQL Server Connector - SQL Server との間でデータを移動する" 
-	description="オンプレミスまたは Azure VM でホストされている SQL Server データベースとの間でデータを移動できる Data Factory サービスの SQL Server Connector について説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="SQL Server との間でのデータの移動 | Azure Data Factory"
+	description="Azure Data Factory を使用してオンプレミスまたは Azure VM の SQL Server データベースとの間でデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# SQL Server Connector - オンプレミスと IaaS (Azure VM) の SQL Server 間でデータを移動する
+# Azure Data Factory を使用してオンプレミスまたは IaaS (Azure VM) の SQL Server との間でデータを移動する
 
 この記事では、Azure Data Factory のコピー アクティビティを利用し、SQL Server と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -32,11 +32,11 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 
 下のサンプルで確認できる要素:
 
-1.	OnPremisesSqlServer 型のリンクされたサービス。
-2.	AzureStorage 型のリンクされたサービス。
-3.	SqlServerTable 型の入力データセット。 
-4.	AzureBlob 型の出力データセット。
-4.	SqlSource と BlobSink を使用するコピー アクティビティを含むパイプライン。
+1.	[OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。 
+4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4.	[SqlSource](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルはある時系列に属するデータを 1 時間おきに SQL Server データベースのテーブルから BLOB にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -208,11 +208,11 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 
 下のサンプルで確認できる要素:
 
-1.	OnPremisesSqlServer 型のリンクされたサービス。
-2.	AzureStorage 型のリンクされたサービス。
-3.	AzureBlob 型の入力データセット。
-4.	SqlServerTable 型の入力データセット。
-4.	BlobSource と SqlSink を使用するコピー アクティビティのパイプライン
+1.	[OnPremisesSqlServer](data-factory-sqlserver-connector.md#sql-server-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.	[SqlServerTable](data-factory-sqlserver-connector.md#sql-server-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4.	[BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) と [SqlSink](data-factory-sqlserver-connector.md#sql-server-copy-activity-type-properties) を使用するコピー アクティビティの[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB から SQL Server データベースのテーブルにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -388,6 +388,10 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 | username | Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ |
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ |
 
+**New-AzureDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
+
+	"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
+
 ### サンプル
 
 **SQL 認証を使用している場合の JSON**
@@ -417,6 +421,8 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 	         "gatewayName": "<gateway name>" 
 	     } 
 	}
+
+SQL Server データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
 ## SQL Server データセット型のプロパティ
 
@@ -471,7 +477,7 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 マッピングは ADO.NET の SQL Server データ型マッピングと同じです。
 
-| SQL Server データベース エンジンの型 | .NET Framework 型 |
+| SQL Server Databases エンジンの型 | .NET Framework 型 |
 | ------------------------------- | ------------------- |
 | bigint | Int64 |
 | binary | Byte |
@@ -512,4 +518,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

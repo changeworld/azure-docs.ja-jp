@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="テスト用のハイブリッド クラウド環境の設定" 
-	description="IT プロまたは開発のテスト用のハイブリッド クラウド環境を作成する方法について説明します。" 
-	services="virtual-network" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	pageTitle="ハイブリッド クラウドのテスト環境 | Microsoft Azure"
+	description="シンプル化されたオンプレミス ネットワークを含む、IT プロまたは開発のテスト用のハイブリッド クラウド環境を作成する方法について説明します。"
+	services="virtual-network"
+	documentationCenter=""
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
 
 <tags 
-	ms.service="virtual-network" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.service="virtual-network"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/08/2015"
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウド環境の設定
@@ -239,7 +239,7 @@ CLIENT1 で管理者レベルの Windows PowerShell コマンド プロンプト
 3.	DC2.rdp を開くよう求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
-	- 名前: **DC2\**[ローカル管理者アカウントの名前]
+	- 名前: **DC2**[ローカル管理者アカウントの名前]
 	- パスワード: [ローカル管理者アカウントのパスワード]
 6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
 
@@ -326,4 +326,4 @@ Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンと�
 次に、ローカル コンピューターで Azure 管理ポータルにアクセスし、TestVNET 仮想ネットワークの状態が [接続中] と表示されるまで待ちます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

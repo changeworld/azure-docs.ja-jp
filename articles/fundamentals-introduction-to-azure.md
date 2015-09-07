@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure 入門 | Microsoft Azure" 
-	description="Microsoft Azure を使うのは初めてですか。 提供されるサービスの基本的な概要を、便利な使用例を使って説明します。" 
-	services=" " 
-	documentationCenter=".net" 
-	authors="Rboucher" 
+	pageTitle="Azure 入門 | Microsoft Azure"
+	description="Microsoft Azure を使うのは初めてですか。 提供されるサービスの基本的な概要を、便利な使用例を使って説明します。"
+	services=" "
+	documentationCenter=".net"
+	authors="Rboucher"
 	manager="jwhit"
 	editor=""/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/30/2015"  
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/30/2015"
 	ms.author="robb"/>
 
 # Microsoft Azure の概要
@@ -179,9 +179,9 @@ BLOB ストレージは、ユーザーのワークロードを確実に処理で
 
 
 ### ファイル サービス
-![Azure ファイル サービス](./media/fundamentals-introduction-to-azure/FileServiceIntroNew.png) *図: Azure ファイル サービスは、SMB にクラウド内でアプリケーションを実行するための \\\\server\\share パスを提供する。*
+![Azure ファイル サービス](./media/fundamentals-introduction-to-azure/FileServiceIntroNew.png) *図: Azure ファイル サービスは、SMB にクラウド内でアプリケーションを実行するための \\\server\\share パスを提供する。*
 
-オンプレミスでは、\\\\Server\\share 形式を使用し、サーバー メッセージ ブロック (SMB) プロトコルを介してアクセス可能な大量のファイル ストレージがあるのが一般的です。現在、Azure には、クラウド内でこのプロトコルを使用可能にするサービスが用意されています。Azure 内で稼働するアプリケーションは、このプロトコルを使用して、ReadFile や WriteFile などの使い慣れたファイル システム API を使用している VM 間でファイルを共有できます。さらに、REST インターフェイスを介して同時にファイルにアクセスできるため、仮想ネットワークも設定されている場合は、オンプレミス サーバーから共有部分へアクセスできます。Azure ファイルは、BLOB サービスを基にして構築されているため、Azure Storage と同じ可用性、耐久性、スケーラビリティ、geo 冗長性を継承しています。
+オンプレミスでは、\\\Server\\share 形式を使用し、サーバー メッセージ ブロック (SMB) プロトコルを介してアクセス可能な大量のファイル ストレージがあるのが一般的です。現在、Azure には、クラウド内でこのプロトコルを使用可能にするサービスが用意されています。Azure 内で稼働するアプリケーションは、このプロトコルを使用して、ReadFile や WriteFile などの使い慣れたファイル システム API を使用している VM 間でファイルを共有できます。さらに、REST インターフェイスを介して同時にファイルにアクセスできるため、仮想ネットワークも設定されている場合は、オンプレミス サーバーから共有部分へアクセスできます。Azure ファイルは、BLOB サービスを基にして構築されているため、Azure Storage と同じ可用性、耐久性、スケーラビリティ、geo 冗長性を継承しています。
 
 **Azure Files のシナリオ**
 
@@ -212,7 +212,7 @@ VM は必要に応じて作成し、不要になった時点で削除 (および
 
 この有用性を高めるためには、これらのアプリケーションがまるで自社のデータセンターで実行されているかのようにユーザーがアプリケーションを扱うことができる必要があります。これを Azure の Virtual Network で実現できます。管理者は、VPN ゲートウェイ デバイスを使用して、自社のローカル ネットワークと Azure 内の仮想ネットワークにデプロイされた VM の間に仮想プライベート ネットワーク (VPN) を設定できます。クラウド VM には独自の IP v4 アドレスを割り当てるため、VM は自社のネットワーク上にあるように見えます。組織内のユーザーは、ローカルで実行されているかのように、VM に含まれるアプリケーションにアクセスできます。
 
-専用の仮想ネットワークの計画および作成の詳細については、「[Virtual Network](http://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
+専用の仮想ネットワークの計画および作成の詳細については、「[Virtual Network](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 ### ExpressRoute
 
@@ -224,7 +224,7 @@ Azure Virtual Network 接続が提供可能なレベルより広い帯域幅や�
 
 ExpressRoute 接続を設定するには多くの時間と計画が必要なため、サイト間 VPN から着手して、ExpressRoute 接続へ移行することもできます。
 
-ExpressRoute の詳細については、「[ExpressRoute の技術概要](http://msdn.microsoft.com/library/azure/dn606309.aspx)」を参照してください。
+ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
 ### Traffic Manager
 
@@ -592,4 +592,4 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

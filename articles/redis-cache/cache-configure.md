@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Azure Redis Cache の構成方法"
-   description="Azure Redis Cache の既定の Redis 構成を理解し、Azure Redis Cache インスタンスの構成方法について説明します。"
-   services="redis-cache"
-   documentationCenter="na"
-   authors="steved0x"
-   manager="dwrede"
-   editor="tysonn" />
+	description="Azure Redis Cache の既定の Redis 構成を理解し、Azure Redis Cache インスタンスの構成方法について説明します。"
+	services="redis-cache"
+	documentationCenter="na"
+	authors="steved0x"
+	manager="dwrede"
+	editor="tysonn"/>
 <tags 
    ms.service="cache"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="cache-redis"
-   ms.workload="tbd"
-   ms.date="07/24/2015"
-   ms.author="sdanie" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="cache-redis"
+	ms.workload="tbd"
+	ms.date="08/25/2015"
+	ms.author="sdanie"/>
 
 # Azure Redis Cache の構成方法
 
@@ -21,7 +21,7 @@
 
 ## Redis Cache の設定の構成
 
-キャッシュには、[Microsoft Azure プレビュー ポータル](https://portal.azure.com)で **[参照]** ブレードを使用してアクセスできます。
+キャッシュには、[Azure プレビュー ポータル](https://portal.azure.com)で **[参照]** ブレードを使用してアクセスできます。
 
 ![Azure Redis Cache Browse Blade](./media/cache-configure/IC796920.png)
 
@@ -98,7 +98,7 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 ![Redis Cache Users and Tags](./media/cache-configure/IC808320.png)
 
-**[ユーザー]** セクションでは、ポータルでのロールベースのアクセス制御 (RBAC) をサポートしているため、組織はアクセス管理の要件を簡単かつ正確に満たすことができます。詳細については、[Microsoft Azure プレビュー ポータルでのロールベースのアクセス制御￼](http://go.microsoft.com/fwlink/?LinkId=512803)に関するページを参照してください。
+**[ユーザー]** セクションでは、プレビュー ポータルでのロールベースのアクセス制御 (RBAC) をサポートしているため、組織はアクセス管理の要件を簡単かつ正確に満たすことができます。詳細については、「[Azure プレビュー ポータルでのロールベースのアクセス制御](http://go.microsoft.com/fwlink/?LinkId=512803)」を参照してください。
 
 **[タグ]** セクションでは、リソースを整理できます。詳細については、[タグを使用した Azure リソースの整理](../resource-group-using-tags.md)に関するページを参照してください。
 
@@ -110,13 +110,13 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 >
 >`StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >  
->**max-memory-policy** などの構成可能な値、ポータルを使用して構成できます。
+>**max-memory-policy** などの構成可能な値を、プレビュー ポータルを使用して構成できます。
 
 |設定|既定値|説明|
 |---|---|---|
 |databases|16|既定のデータベースは DB 0 です。接続を使用して、接続ごとに異なるデータベースを選択できます。GetDataBase(dbid) の dbid は 0 ～ 15 の数値です。|
 |maxclients|10,000|これは、同時に接続が許可されているクライアントの最大数です。制限に達すると、Redis はすべての新しい接続を終了し、エラー 'max number of clients reached' を送信します。|
-|maxmemory-policy|volatile-lru|Maxmemory ポリシーは、maxmemory (キャッシュ作成時に選択したキャッシュのサイズ) に達したときに、Redis が削除する項目を選択する方法についての設定です。Azure Redis Cache の既定の設定は volatile-lru で、LRU アルゴリズムを使用して有効期限が設定されたキーを削除します。この設定は、ポータルで構成できます。詳細については、「[maxmemory-policy と maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)」を参照してください。|
+|maxmemory-policy|volatile-lru|Maxmemory ポリシーは、maxmemory (キャッシュ作成時に選択したキャッシュのサイズ) に達したときに、Redis が削除する項目を選択する方法についての設定です。Azure Redis Cache の既定の設定は volatile-lru で、LRU アルゴリズムを使用して有効期限が設定されたキーを削除します。この設定は、プレビュー ポータルで構成できます。詳細については、「[maxmemory-policy と maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)」を参照してください。|
 |maxmemory-samples|3|LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、(メモリを節約するための) 近似アルゴリズムです。そのため、サンプル サイズも選択して確認できます。既定の Redis インスタンスの場合、キーを 3 つ確認し、直近の使用頻度が比較的低い ものを 1 つ選択します。|
 |lua-time-limit|5,000|Lua スクリプトの最大実行時間 (ミリ秒)。最大実行時間に達した場合は、Redis は、最大許容時間の後もスクリプトが実行中であることをログに記録し、クエリに対してエラーを知らせる応答を開始します。|
 |lua-event-limit|500|これは、スクリプト イベント キューの最大サイズです。|
@@ -124,7 +124,7 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 ## Azure Redis Cache でサポートされない Redis コマンド
 
->[AZURE.IMPORTANT]Azure Redis Cache インスタンスの構成と管理にはAzure ポータルを使用する関係上、次のコマンドは無効です。これらのコマンドを呼び出そうとすると、`"(error) ERR unknown command"` のようなエラー メッセージを受け取ります。
+>[AZURE.IMPORTANT]Azure Redis Cache インスタンスの構成と管理にはプレビュー ポータルを使用するので、次のコマンドは無効です。これらのコマンドを呼び出そうとすると、`"(error) ERR unknown command"` のようなエラー メッセージを受け取ります。
 >
 >-	BGREWRITEAOF
 >-	BGSAVE
@@ -154,4 +154,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、「[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

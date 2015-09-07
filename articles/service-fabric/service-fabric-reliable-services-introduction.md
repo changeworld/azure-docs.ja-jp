@@ -1,20 +1,20 @@
 <properties
    pageTitle="Service Fabric の Reliable Service プログラミング モデルの概要"
-   description="Service Fabric の Reliable Service プログラミング モデルについて学び、独自のサービスを作成しましょう。"
-   services="Service-Fabric"
-   documentationCenter=".net"
-   authors="masnider"
-   manager="timlt"
-   editor="jessebenson; mani-ramaswamy"/>
+	description="Service Fabric の Reliable Service プログラミング モデルについて学び、独自のサービスを作成しましょう。"
+	services="Service-Fabric"
+	documentationCenter=".net"
+	authors="masnider"
+	manager="timlt"
+	editor="jessebenson; mani-ramaswamy"/>
 
 <tags
    ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="07/17/2015"
-   ms.author="masnider;jesseb"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/26/2015"
+	ms.author="masnider;jesseb"/>
 
 # Reliable Service の概要
 Service Fabric を使用すると、信頼性の高いステートレス サービスとステートフル サービスを簡単に作成および管理できます。このドキュメントでは、以下について説明します。
@@ -23,11 +23,11 @@ Service Fabric を使用すると、信頼性の高いステートレス サー�
 2. Reliable Service を作成するうえでの異なる選択肢。
 3. Reliable Service を使用する場合のさまざまなシナリオと例、および Reliable Service の作成方法
 
-Reliable Service は、Service Fabric で使用できるプログラミング モデルの 1 つです。Reliable Actor プログラミング モデルの詳細については、[その概要](../service-fabric/service-fabric-reliable-actors-introduction.md)を参照してください。
+Reliable Service は、Service Fabric で使用できるプログラミング モデルの 1 つです。Reliable Actor プログラミング モデルの詳細については、[その概要](service-fabric-reliable-actors-introduction.md)を参照してください。
 
 Service Fabric では、サービスは構成およびアプリケーション コードで構成されますが、オプションで状態を追加することもできます。
 
-Service Fabric では、プロビジョニングからデプロイまでのサービスの有効期間と削除が[Service Fabric のアプリケーション管理](../service-fabric/service-fabric-deploy-remove-applications.md)で管理されます。
+Service Fabric では、プロビジョニングからデプロイまでのサービスの有効期間と削除が[Service Fabric のアプリケーション管理](service-fabric-deploy-remove-applications.md)で管理されます。
 
 ## Reliable Service について
 Reliable Service は、重要機能をアプリケーションに組み込むためのシンプルかつ強力な最上位レベルのプログラミング モデルを提供します。Reliable Service プログラミング モデルを使用すると、以下のことを実現できます。
@@ -36,7 +36,7 @@ Reliable Service は、重要機能をアプリケーションに組み込むた
 
 2. 見慣れたプログラミング モデルに似た、コードを実行するためのシンプルなモデル。コードには、適切に定義されたエントリ ポイントと管理が簡単なライフ サイクルが含まれます。
 
-3. プラグ可能な通信モデル - HTTP と [Web API](../service-fabric/service-fabric-reliable-services-communication-webapi.md)、Websocket、カスタム TCP プロトコルなど、好みのトランスポートを使用できます。Reliable Service には、すぐに使用できる優れたオプションも用意されていますが、自身のオプションを提供することもできます。
+3. プラグ可能な通信モデル - HTTP と [Web API](service-fabric-reliable-services-communication-webapi.md)、Websocket、カスタム TCP プロトコルなど、好みのトランスポートを使用できます。Reliable Service には、すぐに使用できる優れたオプションも用意されていますが、自身のオプションを提供することもできます。
 
 ## Reliable Service の特長
 Service Fabric の Reliable Service は、以前に作成されたことがあるサービスとは異なります。Service Fabric は信頼性、可用性、整合性、およびスケーラビリティを提供します。
@@ -52,7 +52,7 @@ Service Fabric の Reliable Service は、以前に作成されたことがあ�
 ## サービスのライフサイクル
 サービスがステートフルまたはステートレスかどうかにかかわらず、Reliable Service は、コードをすばやく追加して使用開始できるというシンプルなライフサイクルを提供します。サービスを稼動開始するために実装しなければならないメソッドは 1 つまたは 2 つしかありません。
 
-+ CreateCommunicationListener - サービスで使用される通信スタックがここで定義されます。[Web API](../service-fabric/service-fabric-reliable-services-communication-webapi.md) などの通信スタックによって、サービスをリッスンするエンドポイント (クライアントによるアクセス方法) が定義されるほか、表示されるメッセージがサービス コードの残りの部分と最終的にやり取りする方法が定義されます。
++ CreateCommunicationListener - サービスで使用される通信スタックがここで定義されます。[Web API](service-fabric-reliable-services-communication-webapi.md) などの通信スタックによって、サービスをリッスンするエンドポイント (クライアントによるアクセス方法) が定義されるほか、表示されるメッセージがサービス コードの残りの部分と最終的にやり取りする方法が定義されます。
 
 + RunAsync - ここでサービスによってビジネス ロジックが実行されます。ここで提供されているキャンセル トークンは、そのサービス実行を停止する信号となります。たとえば、常に ReliableQueue からメッセージを取得して処理する必要があるサービスの場合、ここでサービスが実行されます。
 
@@ -79,7 +79,7 @@ Reliable Service のライフサイクル内での主要イベントを次に示
 
 たとえば、メモリのない電卓を考えてみてください。電卓は、同時に処理しなければならないすべての項と演算を受け取ります。
 
-この場合は、サービスの RunAsync() を空にしておくことができます。これは、サービスが実行する必要のあるバック グラウンドのタスク処理がないためです。電卓サービスを作成すると、CommunicationListener (たとえば [Web API](../service-fabric/service-fabric-reliable-services-communication-webapi.md)) が返され、このメソッドが任意のポートでリッスン エンドポイントを開始します。このリッスン エンドポイントは別のメソッド (例: "Add (n1, n2)") に接続して、電卓のパブリック API を定義します。
+この場合は、サービスの RunAsync() を空にしておくことができます。これは、サービスが実行する必要のあるバック グラウンドのタスク処理がないためです。電卓サービスを作成すると、CommunicationListener (たとえば [Web API](service-fabric-reliable-services-communication-webapi.md)) が返され、このメソッドが任意のポートでリッスン エンドポイントを開始します。このリッスン エンドポイントは別のメソッド (例: "Add (n1, n2)") に接続して、電卓のパブリック API を定義します。
 
 クライアントから呼び出しが行われた場合は、適切なメソッドが呼び出され、電卓サービスは提供されたデータに対する操作を実行して、結果を返します。この処理では、状態はまったく保存されません。
 
@@ -125,9 +125,9 @@ Service Fabric でのステートレス サービスの使用方法を示す一�
 
 
 ## 次のステップ
-+ [Reliable Service のクイック スタート](../service-fabric/service-fabric-reliable-services-quick-start.md)
++ [Reliable Service のクイック スタート](service-fabric-reliable-services-quick-start.md)
 + [Reliable Service の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
-+ [Reliable Actor プログラミング モデルについて](../service-fabric/service-fabric-reliable-actors-introduction.md)
++ [Reliable Actor プログラミング モデルについて](service-fabric-reliable-actors-introduction.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

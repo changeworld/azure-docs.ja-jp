@@ -1,19 +1,19 @@
 <properties 
    pageTitle="複数 NIC を持つ VM の作成"
-   description="複数の NIC を使用する VM を作成して構成する方法について説明します"
-   services="virtual-network, virtual-machines"
-   documentationCenter="na"
-   authors="telmosampaio"
-   manager="carolz"
-   editor="tysonn" />
+	description="複数の NIC を使用する VM を作成して構成する方法について説明します"
+	services="virtual-network, virtual-machines"
+	documentationCenter="na"
+	authors="telmosampaio"
+	manager="carolz"
+	editor="tysonn"/>
 <tags 
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/10/2015"
-   ms.author="telmos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/10/2015"
+	ms.author="telmos"/>
 
 # 複数 NIC を持つ VM の作成
 
@@ -117,7 +117,7 @@
 この例の PowerShell コマンドを実行するには、次の前提条件を満たしておく必要があります。
 
 - Azure サブスクリプション。
-- 構成済みの仮想ネットワーク。Vnet の詳細については、「[仮想ネットワークの概要](https://msdn.microsoft.com/library/azure/jj156007.aspx)」を参照してください。
+- 構成済みの仮想ネットワーク。Vnet の詳細については、「[仮想ネットワークの概要](virtual-networks-overview.md)」を参照してください。
 - Azure PowerShell の最新バージョンをダウンロードしてインストールしていること。「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell)」を参照してください。
 
 複数の NIC を使用する VM を作成するには、次の手順に従います。
@@ -249,4 +249,4 @@ Azure の現在のモデルでは、仮想マシンのすべての NIC にはデ
 
 Linux VM の場合、既定の動作では弱いホスト ルーティングが使用されるので、セカンダリ NIC を同じサブネット内のトラフィック フローだけに制限することをお勧めします。ただし、特定のシナリオでサブネット外部への接続が必要な場合は、送信と受信のトラフィックが同じ NIC を使用するようにポリシー ベースのルーティングを有効にする必要があります。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

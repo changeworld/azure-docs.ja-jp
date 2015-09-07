@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定" 
-	description="IT プロまたは開発テストのための、ハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) サーバーの構成方法について説明します。" 
-	services="virtual-network" 
-	documentationCenter="" 
-	authors="JoeDavies-MSFT" 
-	manager="timlt" 
+	pageTitle="Office 365 DirSync のテスト環境 | Microsoft Azure"
+	description="IT プロまたは開発テストのための、ハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) サーバーの構成方法について説明します。"
+	services="virtual-network"
+	documentationCenter=""
+	authors="JoeDavies-MSFT"
+	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
 
 <tags 
-	ms.service="virtual-network" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.service="virtual-network"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/08/2015"
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定
@@ -33,7 +33,7 @@
 
 この構成を基盤や共通の出発点にして以下を実行できます。
 
-- パスワード同期を使用して、内部設置型 Active Directory ドメインとの同期に依拠する Office 365 のアプリケーションを開発とテストする。
+- パスワード同期を使用して、オンプレミスの Active Directory ドメインとの同期に依拠する Office 365 のアプリケーションを開発とテストする。
 - このクラウド ベースの IT ワークロードのテストを実行する。
 
 このハイブリッド クラウド テスト環境を設定する手順は、大きく次の 3 つのフェーズに分かれています。
@@ -197,4 +197,4 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

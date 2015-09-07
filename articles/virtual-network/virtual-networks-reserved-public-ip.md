@@ -1,19 +1,19 @@
 <properties 
    pageTitle="予約済み IP"
-   description="予約済み IP、VIP、ILPIP、およびそれらを管理する方法を理解します。"
-   services="virtual-network"
-   documentationCenter="na"
-   authors="telmosampaio"
-   manager="adinah"
-   editor="tysonn" />
+	description="予約済み IP、VIP、ILPIP、およびそれらを管理する方法を理解します。"
+	services="virtual-network"
+	documentationCenter="na"
+	authors="telmosampaio"
+	manager="adinah"
+	editor="tysonn"/>
 <tags 
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/17/2015"
-   ms.author="telmos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/17/2015"
+	ms.author="telmos"/>
 
 # 予約済み IP の概要
 Azure での IP アドレスは、動的と予約済みという 2 つのカテゴリに分類されます。 Azure で管理されるパブリック IP アドレスは、既定では動的です。これは、特定のクラウド サービス (VIP) に使用される IP アドレス、または VM やロール インスタンスへの直接アクセスに使用される IP アドレスが、リソースがシャット ダウンまたは割り当て解除された場合に変更される場合があるということです。
@@ -35,7 +35,7 @@ IP アドレスが変更されないようにするには、IP アドレスを�
 1. どうやって IP アドレスを予約するのですか。 
   - PowerShell または [Azure Management REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を使用して、特定のリージョンから予約済み IP を要求します。Azure はそのリージョンの IP アドレスを予約し、サブスクリプションに関連付けます。その後、そのリージョンの予約済み IP を使用できます。管理ポータルを使用して IP アドレスを予約することはできません。
 1. 予約済み IP を VNet ベースのアフィニティ グループで使用できますか。 
-  - 予約済み IP はリージョン VNet に対してのみサポートされます。アフィニティ グループに関連付けられている VNet に対してはサポートされません。リージョンまたはアフィニティ グループとの VNet の関連付けの詳細については、[リージョン VNet およびアフィニティ グループについて](https://msdn.microsoft.com/library/azure/jj156085.aspx)を参照してください。 
+  - 予約済み IP はリージョン VNet に対してのみサポートされます。アフィニティ グループに関連付けられている VNet に対してはサポートされません。リージョンまたはアフィニティ グループとの VNet の関連付けの詳細については、[リージョン VNet およびアフィニティ グループについて](virtual-networks-migrate-to-regional-vnet.md)を参照してください。 
 
 ## 予約済み VIP の管理方法
 
@@ -119,4 +119,4 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

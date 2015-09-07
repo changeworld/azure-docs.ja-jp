@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS" 
-	description="これは、RADIUS を使用してリモート デスクトップ (RD) ゲートウェイと Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS"
+	description="これは、RADIUS を使用してリモート デスクトップ (RD) ゲートウェイと Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/14/2015" 
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Remote Desktop Gateway and Azure Multi-Factor Authentication Server using RADIUS
@@ -59,4 +59,4 @@ Azure Multi-Factor Authentication Server は、RD ゲートウェイと NPS 間�
 
 ![RADIUS 認証](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,24 +1,26 @@
 <properties 
    pageTitle="Application Gateway の概要 | Microsoft Azure"
-   description="このページは、ゲートウェイのサイズ、HTTP の負荷分散、cookie ベースのセッション アフィニティ、SSL オフロードを含む、Application Gateway サービスのレイヤー 7 負荷分散の概要について説明します。"
-   documentationCenter="na"
-   services="application-gateway"
-   authors="joaoma"
-   manager="jdial"
-   editor="tysonn"/>
+	description="このページは、ゲートウェイのサイズ、HTTP の負荷分散、cookie ベースのセッション アフィニティ、SSL オフロードを含む、Application Gateway サービスのレイヤー 7 負荷分散の概要について説明します。"
+	documentationCenter="na"
+	services="application-gateway"
+	authors="joaoma"
+	manager="jdial"
+	editor="tysonn"/>
 <tags 
    ms.service="application-gateway"
-   ms.devlang="na"
-   ms.topic="article" 
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services" 
-   ms.date="06/24/2015"
-   ms.author="joaoma"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/23/2015"
+	ms.author="joaoma"/>
 
-# Application Gateway の技術概要 
+# Application Gateway とは
 
 
-Microsoft Azure Application Gateway は、レイヤ 7 の負荷分散に基づく、Azure で管理される HTTP の負荷分散ソリューションを提供します。アプリケーションの負荷分散では、IT 管理者や開発者は、HTTP に基づくネットワーク トラフィックのルーティング ルールを作成することができます。このアプリケーション ゲートウェイ サービスは可用性が高く、従量課金制で使用できます。価格と SLA については、[SLA](http://azure.microsoft.com/support/legal/sla/) と[価格](https://azure.microsoft.com/pricing/details/application-gateway/)のページを参照してください。
+Microsoft Azure Application Gateway は、レイヤー 7 の負荷分散に基づく、Azure で管理される HTTP の負荷分散ソリューションを提供します。
+
+アプリケーションの負荷分散では、IT 管理者や開発者は、HTTP に基づくネットワーク トラフィックのルーティング ルールを作成することができます。このアプリケーション ゲートウェイ サービスは可用性が高く、従量課金制で使用できます。価格と SLA については、[SLA](http://azure.microsoft.com/support/legal/sla/) と[価格](https://azure.microsoft.com/pricing/details/application-gateway/)のページを参照してください。
 
 Application Gateway は現在、次のレイヤー 7 アプリケーションの配信をサポートします。
 
@@ -59,4 +61,4 @@ REST API や PowerShell コマンドレットを使用して、アプリケー�
 
 SSL オフロードを構成します。「[SSL オフロードのアプリケーション ゲートウェイの構成](application-gateway-ssl.md)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

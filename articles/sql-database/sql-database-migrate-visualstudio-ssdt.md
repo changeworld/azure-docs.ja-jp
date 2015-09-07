@@ -1,98 +1,85 @@
 <properties 
-   pageTitle="Visual Studio と SSDT を使用した移行" 
-   description="Microsoft Azure SQL Database、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード" 
-   services="sql-database" 
-   documentationCenter="" 
-   authors="pehteh" 
-   manager="jeffreyg" 
-   editor="monicar"/>
+   pageTitle="Visual Studio と SSDT を使用した移行"
+	description="Microsoft Azure SQL Database、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード"
+	services="sql-database"
+	documentationCenter=""
+	authors="carlrabeler"
+	manager="jeffreyg"
+	editor=""/>
 
 <tags
    ms.service="sql-database"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-management" 
-   ms.date="07/17/2015"
-   ms.author="pehteh"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-management"
+	ms.date="08/24/2015"
+	ms.author="carlrab"/>
 
 #データベースのインプレース更新と Azure SQL Database へのデプロイ
 
 ![alt text](./media/sql-database-migrate-visualstudio-ssdt/01VSSSDTDiagram.png)
 
-Azure SQL Database V12 へのデータベースの移行で、Azure SQL Database ではサポートされていない SQL Server 機能をデータベースが使用しているため SQL Azure 移行ウィザード (SAMW) を使用して対処できないスキーマの変更を実行する必要がある場合、このオプションを使用します。このオプションでは、まず Visual Studio を使用して、ソース データベースからデータベース プロジェクトを作成します。その後、プロジェクトのターゲット プラットフォームを Azure SQL Database V12 に設定し、プロジェクトをビルドして互換性のすべての問題を特定します。SAMW はすべてではないものの、多くの互換性の問題を修正できるため、最初のパスとしてプロジェクトのすべてのスクリプトを処理するために SAMW を使用します。SAMW の使用は任意ですが、強くお勧めします。SAMW でスクリプト ファイルを処理した後にプロジェクトをビルドすると、未解決の問題が特定されます。これらの問題は、Visual Studio の Transact-SQL 編集ツールを使用して手動で解決する必要があります。プロジェクトのビルドに成功すると、スキーマは、ソース データベースのコピー (推奨) に発行されて、そのスキーマとデータをその場で更新します。その後、更新されたデータベースは、方法 1 で説明した手法を使用して、直接、または BACPAC ファイルのエクスポートとインポートによって Azure にデプロイされます。
+Azure SQL Database V12 へのオンプレミスのデータベースの移行で、Azure SQL Database ではサポートされていない SQL Server 機能をデータベースが使用しているためスキーマの変更を実行する必要がある場合、またはオンプレミスのデータベース内にサポートされていない機能があるかどうかをテストする場合はこのオプションを使用します。
+
+[最新の Visual Studio 用 SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) は Visual Studio 2013 Update 4 以降で使用してください。
+
+このオプションでは、
+
+ - まず Visual Studio 用の SQL Server Data Tools ("SSDT") を使用して、ソース データベースからデータベース プロジェクトを作成します。 
+ - その後、プロジェクトのターゲット プラットフォームを Azure SQL Database V12 に設定し、プロジェクトをビルドして互換性のすべての問題を特定します。 
+ - プロジェクトのビルドに成功すると、スキーマは、ソース データベースのコピーに発行されます (ソース データベースは上書きされません)。
+ - SSDT のデータ比較機能を使用してソース データベースと新しく作成した Azure SQL 互換のデータベースを比較し、ソース データベースのデータを使用して新しいデータベースを更新します。 
+ - その後、更新されたデータベースは、SSMS を使用して、直接または BACPAC ファイルのエクスポートとインポートによって Azure にデプロイされます。
  
-このオプションでは、データベースのスキーマをその場で更新してから Azure にデプロイする必要があるため、データベースのコピーでこの操作を実行することを強くお勧めします。Visual Studio のスキーマ比較ツールを使用すると、プロジェクトを発行する前にデータベースに適用されるすべての変更を確認できます。
-
-SQL Azure 移行ウィザード (SAMW) の使用は任意ですが、お勧めします。SAMW は、関数、ストアド プロシージャ、およびトリガーの本文内にある互換性の問題を検出します。SAMW を使用しない場合、これらの問題は、デプロイメントするまで検出されません。
-
-スキーマのみのデプロイメントが必要な場合は、更新されたスキーマを Visual Studio から Azure SQL Database に直接発行することができます。
+>[AZURE.NOTE]注: スキーマのみのデプロイメントが必要な場合は、更新されたスキーマを Visual Studio から Azure SQL Database に直接発行することができます。
 
 ## 移行の手順
 
 1.	Visual Studio で **SQL Server オブジェクト エクスプローラー**を開きます。**[SQL Server の追加]** を使用して、移行されるデータベースを含む SQL Server インスタンスに接続します。エクスプローラーでデータベースを選択して右クリックし、**[新しいプロジェクトの作成]** を選択します。 
 
-![alt text](./media/sql-database-migrate-visualstudio-ssdt/02MigrateSSDT.png)
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/02MigrateSSDT.png)
 
-2.	インポート設定を構成し、**[アプリケーション スコープのオブジェクトのみをインポートする]** チェック ボックスをオンにします。参照先のログイン、アクセス許可、およびデータベースの設定をインポートするためのオプションの選択を解除します。
+2.	インポート設定を構成し、**[アプリケーション スコープのオブジェクトのみをインポートする]** チェック ボックスをオンにします。参照先のログイン、アクセス許可、データベースの設定をインポートするためのオプションの選択を解除します。
 
-![alt text](./media/sql-database-migrate-visualstudio-ssdt/03MigrateSSDT.png)
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/03MigrateSSDT.png)
 
 3.	**[開始]** をクリックしてデータベースをインポートし、プロジェクトを作成します。これには、データベース内の各オブジェクトの T-SQL スクリプト ファイルが含まれます。スクリプト ファイルは、プロジェクト内のフォルダーに入れ子になっています。
 
-![alt text](./media/sql-database-migrate-visualstudio-ssdt/04MigrateSSDT.png)
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/04MigrateSSDT.png)
 
 4.	Visual Studio のソリューション エクスプローラーで、データベース プロジェクトを右クリックして [プロパティ] を選択します。これにより、**[プロジェクトの設定]** ページが開きます。このページでは、ターゲット プラットフォームを Microsoft Azure SQL Database V12 に構成します。
 
-![alt text](./media/sql-database-migrate-visualstudio-ssdt/05MigrateSSDT.png)
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/05MigrateSSDT.png)
 
-5.	省略可能: プロジェクトを右クリックして **[ビルド]** を選択し、プロジェクトをビルドします (この時点では、この操作は厳密には必要ありませんが、実行すると、プロジェクト内の互換性の問題の数と以降の手順の有効性の基準が示されます)。
+5.	プロジェクトを右クリックして **[ビルド]** を選択し、プロジェクトをビルドします。
 
-![alt text](./media/sql-database-migrate-visualstudio-ssdt/06MigrateSSDT.png)
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/06MigrateSSDT.png)
 
-6.	省略可能: プロジェクトを右クリックして **[スナップショット プロジェクト]** を選択します。変換時に最初とその後の段階でスナップショットを作成することにより、スキーマ比較ツールを使用して、各段階のスキーマを比較することができます。
+6.	**[エラー一覧]** には、各非互換性が表示されます。この場合、ユーザー名 NT AUTHORITY\\NETWORK SERVICE は互換性がありません。互換性がないため、これをコメント アウトまたは削除できます (このログインとロールをデータベース ソリューションから削除することによる影響に対応できます)。
 
-![alt text](./media/sql-database-migrate-visualstudio-ssdt/07MigrateSSDT.png) - プロジェクトのスナップショットを作成すると、プロジェクトのスキーマ全体が含まれる、タイムスタンプ付きの .dacpac ファイルが作成されます。このスナップショットが作成された、プロセスの段階を示すようにファイル名を変更することができます。![alt text](./media/sql-database-migrate-visualstudio-ssdt/08MigrateSSDT.png)
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/07MigrateSSDT.png)
+7.	最初のスクリプトをダブルクリックしてクエリ ウィンドウでスクリプトを開き、スクリプトをコメント アウトし、スクリプトを実行します。![alt text](./media/sql-database-migrate-visualstudio-ssdt/08MigrateSSDT.png)
 
-7.	SQL Azure 移行ウィザード (SAMW) を使用して、インポートしたスクリプト ファイルを処理します。フォルダー オプションを使用して、ルート プロジェクト フォルダーを選択します。![alt text](./media/sql-database-migrate-visualstudio-ssdt/09MigrateSSDT.png)
+8.	このプロセスを互換性のない各スクリプトに対して、エラーがなくなるまで繰り返します。![alt text](./media/sql-database-migrate-visualstudio-ssdt/09MigrateSSDT.png)
+9.	データベースにエラーがなくなったら、プロジェクトを右クリックして **[発行]** を選択し、データベースをビルドしてソース データベースのコピーに発行します (少なくとも最初のうちは、コピーを使用することを強くお勧めします)。 
+ - 発行前に、ソースの SQL Server のバージョン (SQL Server 2014 より前) に応じて、プロジェクトのターゲット プラットフォームをリセットしてデプロイメントを有効にすることが必要になる場合があります。 
+ - 古い SQL Server データベースを移行する場合は、最初にデータベースを新しいバージョンの SQL Server に移行しない限り、ソースの SQL Server でサポートされていない機能をプロジェクトに導入しないでください。 
 
-8.	ウィザードでは、このフォルダーとすべてのサブフォルダー内の各スクリプト ファイルが処理されます。次のページで、結果の概要が表示されます。![alt text](./media/sql-database-migrate-visualstudio-ssdt/10MigrateSSDT.png)
-9.	[次へ] をクリックして、変更されたファイルの一覧を表示します。 
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/10MigrateSSDT.png)
 
-![alt text](./media/sql-database-migrate-visualstudio-ssdt/11MigrateSSDT.png)
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/11MigrateSSDT.png)
 
-> [AZURE.NOTE]一時的なコピーは、ページの上部に示された場所にある、処理前の元のファイルと処理後の変更されたファイルの両方で構成されています。
+10.	SQL Server オブジェクト エクスプ ローラーで、ソース データベースを右クリックして **[データ比較]** をクリックし、プロジェクトを元のデータベースと比較して、ウィザードによってどのような変更が加えられたかを把握します。Azure SQL V12 バージョンのデータベースを選択し、**[完了]** をクリックします。
 
-10.	**[上書き]** をクリックし、確認のダイアログで **[OK]** をクリックすると、元のファイルが変更後のファイルで上書きされます。実際に変更されたファイルのみが上書きされます。
-11.	省略可能。[スキーマ比較] を使用して、プロジェクトを前のスナップショットまたは元のデータベースと比較し、ウィザードで行われた変更内容を理解します。また、この時点でもう 1 つスナップショットを作成することもできます。 
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/12MigrateSSDT.png)
 
-![alt text](./media/sql-database-migrate-visualstudio-ssdt/12MigrateSSDT.png)
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/13MigrateSSDT.png)
 
-12.	プロジェクトをもう一度ビルドして (前の手順を参照)、残っているエラーを確認します。
+12.	検出された相違点を確認し、**[Update Target]** をクリックしてデータをソース データベースから Azure SQL V12 データベースに移行します。
 
-13.	系統的にエラーに対処して、各問題を解決します。データベースを使用するアプリケーションへの各変更の影響を評価します。
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/14MigrateSSDT.png)
 
-14.	データベースにエラーがなくなったら、プロジェクトを右クリックして **[発行]** を選択し、データベースをビルドしてソース データベースのコピーに発行します (少なくとも最初のうちは、コピーを使用することを強くお勧めします)。この手順の目的は、ソース データベース スキーマを更新し、それに伴ってデータベース内のデータを変更することです。
-- 発行前に、ソースの SQL Server のバージョンに応じて、プロジェクトのターゲット プラットフォームをリセットしてデプロイメントを有効にすることが必要になる場合があります。古い SQL Server データベースを移行する場合は、最初にデータベースを新しいバージョンの SQL Server に移行しない限り、ソースの SQL Server でサポートされていない機能をプロジェクトに導入しないでください。 
-- 適切な発行オプションが有効になるように発行手順を構成する必要があります。たとえば、プロジェクトでサポートされていないオブジェクトを削除またはコメントアウトした場合、これらのオブジェクトはデータベースから削除する必要があるため、ターゲット データベースのデータを削除するために発行を許可する必要があります。 
-- 繰り返し発行が予想される場合 
+14.	SSMS を使用して、Azure SQL V12 互換のデータベース スキーマとデータを Azure SQL Database にデプロイします。「[SSMS を使用した互換性のあるデータベースの移行](sql-database-migrate-ssms.md)」をご覧ください。
 
-15.	オプション 1 で説明した手法を使用して、コピーしたデータベースを Azure SQL Database にデプロイします。
-
-## 移行の検証
-
-移行が完了したら、移行後のデータベース内のスキーマとソース データベース内のスキーマを比較し、行われた変更が予想どおりで、アプリケーションを新しいデータベースに移行する際に問題の原因にならないことを納得できるように、これらの変更をよく理解することをお勧めします。Visual Studio の SQL Server ツールに同梱されているスキーマ比較ツールを使用すると、比較を実行できます。Azure SQL Database のデータベースは、元の SQL Server データベース、またはデータベースが初めてプロジェクトにインポートされたときに作成されるスナップショットと比較できます。
-
-1.	移行されたデータベースを含む Azure SQL Database のサーバーに接続し、データベースを探します。 
-
-2.	データベースを右クリックして **[スキーマ比較]** を選択します。これにより、左側でソースとして選択された Azure データベースとの新しいスキーマ比較が開きます。右側にある [ターゲットの選択] ボックスの一覧で、比較対象のターゲット データベースまたはスナップショット ファイルを選択します。
-
-3.	ソースとターゲットを選択した状態で、[比較] をクリックすると、比較が開始されます。Azure SQL Database の複雑なデータベースからスキーマを読み込むと、かなりの時間がかかる場合があります。Azure SQL Database でスキーマを読み込んだり、その他のメタデータ タスクを実行したりする場合は、価格レベルが高くなるほど、処理に要する時間が短くなります。
-
-4.	比較が完了したら、差分を確認します。懸念事項がなければ、一般的には、どちらのスキーマにも変更を適用しないでください。
-
-次のスキーマ比較では、左側にある、SQL Azure 移行ウィザードで変換および移行された Azure SQL Database V12 の Adventure Works 2014 データベースと、右側にある SQL Server のソース データベースと比較されています。
-
-![alt text](./media/sql-database-migrate-visualstudio-ssdt/13MigrateSSDT.png)
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

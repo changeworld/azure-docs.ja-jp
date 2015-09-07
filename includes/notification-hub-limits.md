@@ -1,9 +1,11 @@
 
-| TIER: | FREE | BASIC | STANDARD |
+| レベル: | 無料 | 基本 | 標準 |
 |----|----|----|----|
-| Included Pushes | 1 Million | 10 Million | 10 Million |
-| Active Devices | 500 | Unlimited | Unlimited |
-| Broadcast Tag Size | 10K | 10K | Unlimited |
-| # of tags (broadcast groups) | 3K | 3K unless broadcasted to less than 5 devices | Unlimited |
+| 含まれるプッシュ | 100 万 | 1000 万 | 1000 万 |
+| アクティブなデバイス | 500 | 無制限 | 無制限 |
+| タグ サイズのブロードキャスト | 10K | 10K | 無制限 |
+| タグの数 (ブロードキャスト グループ) | 3K | 3K (ブロードキャスト先デバイスが 5 個未満でない場合) | 無制限 |
 
-For additional details on these limits and for information on pricing, see [Notification Hubs Pricing](http://azure.microsoft.com/pricing/details/notification-hubs/). 
+これらの制限に関する詳細と価格の詳細については、[Notification Hubs の価格](http://azure.microsoft.com/pricing/details/notification-hubs/)を参照してください。
+
+<!---HONumber=August15_HO9-->

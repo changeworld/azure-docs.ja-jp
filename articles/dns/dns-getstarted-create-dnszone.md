@@ -1,22 +1,28 @@
 <properties
    pageTitle="Azure DNS の概要 | Microsoft Azure"
-   description="Azure DNS の DNS ゾーンを作成する方法について説明します。これは、DNS ドメインのホストを開始するために最初の DNS ゾーンを作成する手順です。"
-   services="dns"
-   documentationCenter="na"
-   authors="joaoma"
-   manager="adinah"
-   editor=""/>
+	description="Azure DNS の DNS ゾーンを作成する方法について説明します。これは、DNS ドメインのホストを開始するために最初の DNS ゾーンを作成する手順です。"
+	services="dns"
+	documentationCenter="na"
+	authors="joaoma"
+	manager="adinah"
+	editor=""/>
 
 <tags
    ms.service="dns"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/28/2015"
-   ms.author="joaoma"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/20/2015"
+	ms.author="joaoma"/>
 
 # Azure DNS の概要
+
+
+> [AZURE.SELECTOR]
+- [Azure CLI](dns-getstarted-create-dnszone-cli.md)
+- [Azure Powershell steps](dns-getstarted-create-dnszone.md)
+
 ドメイン "contoso.com" には、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、多数の DNS レコードが含まれている場合があります。DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。<BR><BR> ドメインのホストを開始するには、まず DNS ゾーンを作成する必要があります。特定のドメイン用に作成された DNS レコードは、そのドメインの DNS ゾーン内に含まれます。<BR><BR> 以下の手順では、Microsoft Azure PowerShell を使用します。Azure DNS コマンドレットを使用するために、必ず最新の Azure PowerShell に更新してください。Microsoft Azure コマンド ライン インターフェイス、REST API、または SDK を使用して、同じ手順を実行することもできます。<BR><BR>
 
 ## Azure DNS PowerShell のセットアップ
@@ -24,7 +30,7 @@
 Azure PowerShell を使用して Azure DNS を管理するには、次の手順を完了しておく必要があります。
 
 ### 手順 1.
- Azure DNS では、Azure リソース マネージャー (ARM) を使用します。ARM コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager)」を参照してください。<BR><BR>
+ Azure DNS では、Azure リソース マネージャー (ARM) を使用します。ARM コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。<BR><BR>
 
 		PS C:\> Switch-AzureMode -Name AzureResourceManager
 
@@ -55,7 +61,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 Azure DNS サービスは Microsoft.Network リソース プロバイダーによって管理されます。Azure DNS を使用するには、このリソース プロバイダーを使用するように Azure サブスクリプションを登録する必要があります。この操作は、サブスクリプションごとに 1 回だけ実行します。
 
-	PS C:\> Register-AzureProvider -ProviderNamespace Microsoft.Network
+	PS c:> Register-AzureProvider -ProviderNamespace Microsoft.Network
 
 
 
@@ -91,7 +97,7 @@ DNS ゾーンは、New-AzureDnsZone コマンドレットを使用して作成�
 
 
 - 'Start of Authority' (SOA) レコード。このレコードは、すべての DNS ゾーンのルートに存在します。
-- 権威ネーム サーバー (NS) レコード。このレコードは、どのネーム サーバーがゾーンをホストしているのかを表します。Azure DNS は、ネーム サーバーのプールを使用しているため、Azure DNS 内のゾーンによって、割り当てられるネーム サーバーは異なる場合があります。詳細については、[Azure DNS へのドメインの委任](../dns-domain-delegation)に関するページを参照してください。<BR>
+- 権威ネーム サーバー (NS) レコード。このレコードは、どのネーム サーバーがゾーンをホストしているのかを表します。Azure DNS は、ネーム サーバーのプールを使用しているため、Azure DNS 内のゾーンによって、割り当てられるネーム サーバーは異なる場合があります。詳細については、[Azure DNS へのドメインの委任](dns-domain-delegation.md)に関するページを参照してください。<BR>
 
 これらのレコードを表示するには、Get-AzureDnsRecordSet を使用します。
 
@@ -147,4 +153,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,22 +1,22 @@
 <properties 
    pageTitle="Azure での SQL Server 仮想マシンへの接続"
-   description="このトピックでは、Azure の仮想マシンで実行されている SQL Server に接続する方法について説明します。シナリオは、ネットワーク構成とクライアントの場所によって異なります。"
-   services="virtual-machines"
-   documentationCenter="na"
-   authors="rothja"
-   manager="jeffreyg"
-   editor="monicar" />
+	description="このトピックでは、Azure の仮想マシンで実行されている SQL Server に接続する方法について説明します。シナリオは、ネットワーク構成とクライアントの場所によって異なります。"
+	services="virtual-machines"
+	documentationCenter="na"
+	authors="rothja"
+	manager="jeffreyg"
+	editor="monicar"/>
 <tags 
    ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-windows-sql-server"
-   ms.workload="infrastructure-services"
-   ms.date="08/18/2015"
-   ms.author="jroth" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.workload="infrastructure-services"
+	ms.date="08/18/2015"
+	ms.author="jroth"/>
 
 # Azure での SQL Server 仮想マシンへの接続
-
+ 
 ## 概要
 
 Azure の仮想マシンで実行されている SQL Server への接続の構成は、オンプレミスの SQL Server インスタンスに必要な手順と大きく異なってはいません。ファイアウォール、認証、データベースのログインに関連する構成は引き続き行う必要があります。
@@ -79,8 +79,8 @@ DNS が構成済みであることを前提として、接続文字列で SQL Se
 
 高可用性と障害復旧のために AlwaysOn 可用性グループを使用する予定もある場合、リスナーの実装を検討してください。データベース クライアントは、SQL Server インスタンスの 1 つに直接接続せずに、リスナーに接続します。その上でリスナーがクライアントを可用性グループのプライマリ レプリカにルーティングします。詳細については、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)」を参照してください。
 
-Azure の仮想マシンで実行されている SQL Server のセキュリティに関するベスト プラクティスをすべて確認することが重要です。詳細については、「[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](https://msdn.microsoft.com/library/azure/dn133147.aspx)」を参照してください。
+Azure の仮想マシンで実行されている SQL Server のセキュリティに関するベスト プラクティスをすべて確認することが重要です。詳細については、「[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-sql-server-security-considerations.md)」をご覧ください。
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

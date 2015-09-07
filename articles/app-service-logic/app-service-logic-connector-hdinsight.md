@@ -1,25 +1,26 @@
 <properties
-   pageTitle="HDInsight コネクタ"
-   description="Azure App Service での HDInsight コネクタの使用"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での HDInsight コネクタの使用 | Microsoft Azure App Service"
+	description="HDInsight コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="sameerch"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="sameerch"/>
 
 
-# Microsoft HDInsight コネクタ #
+# HDInsight コネクタの使用開始とロジック アプリへの追加
+HDInsight コネクタでは、Azure 上で Hadoop クラスターを作成し、Hive、Pig、MapReduce、ストリーミング MapReduce など、さまざまな Hadoop ジョブを作成して送信できます。Azure HDInsight サービスは、Apache Hadoop クラスターをクラウドにデプロイしてプロビジョニングするためのサービスです。ビッグ データの管理、分析、レポート生成を支援するソフトウェア フレームワークとなります。Hadoop コアには、データ ストレージの信頼性を高める Hadoop 分散ファイル システム (HDFS) と、この分散システムに格納されているデータの処理と分析を同時に行うシンプルな MapReduce プログラミング モデルが用意されています。HDInsight コネクタを使用して、クラスターの作成または削除、ジョブの送信、ジョブの完了待機を実行できます。
 
-コネクタをロジック アプリで使用すると、フローの一部として、データをフェッチ、処理、またはプッシュ転送できます。HDInsight コネクタでは、Azure 上で Hadoop クラスターを作成し、Hive、Pig、MapReduce、ストリーミング MapReduce など、さまざまな Hadoop ジョブを作成して送信できます。Azure HDInsight サービスは、Apache Hadoop クラスターをクラウドにデプロイしてプロビジョニングするためのサービスです。ビッグ データの管理、分析、レポート生成を支援するソフトウェア フレームワークとなります。Hadoop コアには、データ ストレージの信頼性を高める Hadoop 分散ファイル システム (HDFS) と、この分散システムに格納されているデータの処理と分析を同時に行うシンプルな MapReduce プログラミング モデルが用意されています。HDInsight コネクタを使用して、クラスターの作成または削除、ジョブの送信、ジョブの完了待機を実行できます。
+コネクタをロジック アプリで使用すると、フローの一部として、データをフェッチ、処理、またはプッシュ転送できます。この HDInsight コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
 
 ### 基本的なアクション
 
@@ -37,10 +38,10 @@
 コネクタは、ロジック アプリ内で作成することも、Azure Marketplace から直接作成することもできます。Marketplace からコネクタを作成するには、次の操作を実行します。
 
 1. Azure のスタート画面で、**[Marketplace]** を選択します。
-2. “HDInsight Connector” を検索して選択し、**[作成]** を選択します。
+2. "HDInsight コネクタ" を検索して選択し、**[作成]** を選択します。
 3. 名前、App Service プラン、その他のプロパティを入力します。
 4. パッケージ設定で HDInsight クラスターのユーザー名とパスワードを入力します。**[OK]** を選択します。
-5. **[作成]** を選択します: ![][1]  
+5. **[作成]** を選択します。![][1]  
 
 ## 証明書の構成 (省略可能) ##
 
@@ -51,7 +52,7 @@
 API アプリに管理証明書をアップロードするには、次の手順を実行します。
 
 1. [セキュリティ] コンポーネントを選択します。
-2. [セキュリティ] ブレードで **[証明書のアップロード] **を選択します。
+2. [セキュリティ] ブレードで **[証明書のアップロード]** を選択します。
 3. 次のブレードで証明書ファイルを参照して選択します。
 4. 証明書を選択したら、**[OK]** を選択します。
 
@@ -103,4 +104,4 @@ HDInsight コネクタは、ロジック アプリでアクションとしての
 [10]: ./media/app-service-logic-connector-hdinsight/LogicApp6.jpg
 [11]: ./media/app-service-logic-connector-hdinsight/LogicApp7.jpg
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

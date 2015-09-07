@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure SQL エラスティック データベース プールのリファレンス" 
-	description="このリファレンスでは、エラスティック データベース プールの記事やプログラミング情報のリンクと詳細が提供されています。" 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="stevestein" 
-	manager="jeffreyg" 
+	pageTitle="Azure SQL エラスティック データベース プールのリファレンス"
+	description="このリファレンスでは、エラスティック データベース プールの記事やプログラミング情報のリンクと詳細が提供されています。"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jeffreyg"
 	editor=""/>
 
 <tags 
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="08/13/2015" 
-	ms.author="sstein" 
-	ms.workload="data-management" 
-	ms.topic="article" 
+	ms.date="08/25/2015"
+	ms.author="sstein"
+	ms.workload="data-management"
+	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
 
@@ -33,7 +33,9 @@
 
 
 - エラスティック データベース プールは、Azure SQL Database V12 サーバーでのみ使用できます。   
-- エラスティック データベース プールの作成と管理は、[プレビュー ポータル](https://portal.azure.com)、PowerShell、Azure リソース マネージャーの .NET クライアント ライブラリ (REST API のラッパー) のみでの使用に対応しています。[ポータル](https://manage.windowsazure.com/)とサービス管理コマンドはサポートされません。 
+- エラスティック データベース プールの作成と管理は、[プレビュー ポータル](https://portal.azure.com)、PowerShell、Azure リソース マネージャーの .NET クライアント ライブラリ (REST API のラッパー) のみでの使用に対応しています。[ポータル](https://manage.windowsazure.com/)とサービス管理コマンドはサポートされません。
+- さらに、新しいエラスティック データベースの作成と、既存のデータベースのプールの内外への移動は、Transact-SQL を使用してサポートされています。
+
 
 
 ## 現行のプレビューの考慮事項
@@ -143,32 +145,31 @@ Azure SQL Database V12 サーバーは、リソース グループにありま�
 
 
 
-## エラスティック データベース プールの PowerShell コマンドレットと REST API コマンド (Azure リソース マネージャーのみ)
+## PowerShell、REST API、.NET クライアント ライブラリ
 
-エラスティック プールの作成と管理には、次の PowerShell コマンドレットと REST API コマンドを使用できます。
+エラスティック プールの作成と管理には、いくつかの PowerShell コマンドレットと REST API コマンドを使用できます。詳細とコード例については、「[PowerShell を使用したSQL Database のエラスティック データベース プールの作成と管理](sql-database-elastic-pool-powershell.md)」と「[C# で SQL Database を作成し、管理する](sql-database-client-library.md)」をご覧ください。
 
-| [PowerShell コマンドレット](https://msdn.microsoft.com/library/mt125356.aspx) | [REST API のコマンド](https://msdn.microsoft.com/library/azure/mt163571.aspx) |
+
+
+| [PowerShell コマンドレット](https://msdn.microsoft.com/library/mt163521.aspx) | [REST API のコマンド](https://msdn.microsoft.com/library/mt163571.aspx) |
 | :-- | :-- |
-| Get-AzureSqlDatabase | Get Azure SQL database |
-| Get-AzureSqLElasticPool | Get Azure SQL Database elastic database pool |
-| Get-AzureSqlElasticPoolActivity | Get Azure SQL Database エラスティック データベースプール operations |
-| Get-AzureSqlElasticPoolDatabase | Get Azure SQL Database elastic database |
-| Get-AzureSqlElasticPoolDatabaseActivity | Get Azure SQL Database elastic database operations |
-| Get-AzureSqlServer | Get Azure SQL Database server |
-| Get-AzureSqlServerFirewallRule | Get Azure SQL Database server firewall rule |
-| Get-AzureSqlServerServiceObjective | Get Azure SQL Database server service objective |
-| New-AzureSqlDatabase | Create Azure SQL database |
-| New-AzureSqlElasticPool | Create Azure SQL Database エラスティック データベースプール |
-| New-AzureSqlServer | Create Azure SQL Database server |
-| New-AzureSqlServerFirewallRule | Create Azure SQL Database server firewall rule) |
-| Remove-AzureSqlDatabase | Remove Azure SQL database |
-| Remove-AzureSqlElasticPool | Remove Azure SQL Database エラスティック データベースプール |
-| Remove-AzureSqlServer | Remove Azure SQL Database server |
-| Set-AzureSqlDatabase | Set Azure SQL database |
-| Set-AzureSqlElasticPool | Set Azure SQL Database エラスティック データベースプール |
-| Set-AzureSqlServer | Set Azure SQL Database server |
-| Set-AzureSqlServerFirewallRule | Set Azure SQL Database server firewall rule |
-| Get-Metrics | Get Metrics |
+| [New-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125987.aspx) | [エラスティック データベース プールの作成](https://msdn.microsoft.com/library/mt163596.aspx) |
+| [Set-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125994.aspx) | [Set Performance Settings of an Elastic Database Pool](https://msdn.microsoft.com/library/mt163641.aspx) |
+| [Remove-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125830.aspx) | [Delete an elastic database pool](https://msdn.microsoft.com/library/mt163672.aspx) |
+| [Get-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt126017.aspx) | [Gets elastic database pools and their property values](https://msdn.microsoft.com/ja-JP/library/mt163646.aspx) |
+| [Get-AzureSqlElasticPoolActivity](https://msdn.microsoft.com/library/mt125837.aspx) | [Get Status of Elastic Database Pool Operations](https://msdn.microsoft.com/library/mt163669.aspx) |
+| [Get-AzureSqlElasticPoolDatabase](https://msdn.microsoft.com/library/mt125960.aspx) | [Get Databases in an Elastic Database Pool](https://msdn.microsoft.com/library/mt163646.aspx) |
+| [Get-AzureSqlElasticPoolDatabaseActivity](https://msdn.microsoft.com/library/mt125973.aspx) | [Gets the status of moving databases in and out of a pool](https://msdn.microsoft.com/library/mt163669.aspx) |
+
+## Transact-SQL
+
+TRANSACT-SQL を使用して、次のエラスティック データベース管理タスクを実行できます。
+
+| タスク | 詳細 |
+| :-- | :-- |
+| 新しいエラスティック データベースを作成する (プール内で直接) | [CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) |
+| 既存のデータベースをプールの内外に移動する | [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/ms174269.aspx) |
+| プールのリソース使用状況の統計を取得する | [sys.elastic\_pool\_resource\_stats (Azure SQL Database)](https://msdn.microsoft.com/library/mt280062.aspx) |
 
 
 ## 課金と料金情報
@@ -181,6 +182,7 @@ Azure SQL Database V12 サーバーは、リソース グループにありま�
 
 
 - エラスティック プールの価格は、プールの eDTU 数と、プール内のデータベース数に基づきます。
+エラスティック プールの価格は、内部のエラスティック データベースの使用率とは関係ありません。
 - 価格は、(プール eDTU 数) x (eDTU あたりの単価) + (データベース数) x (データベースあたりの単価) で計算されます。
 
 エラスティック プールの eDTU 単価は、同じサービス階層のスタンドアロン データベースの DTU 単価よりも高くなります。詳細については、「[SQL Database 料金](http://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
@@ -210,4 +212,4 @@ Azure SQL Database V12 サーバーは、リソース グループにありま�
 | 40891 | EX_USER | データベースあたりの DTU 最小値 (%d) は、データベースあたりの DTU 最大値 (%d) を超えることはできません。 | データベースあたりの DTU 最小値、データベースあたりの DTU 最大値 | データベースあたりの DTU 最大値を超えるデータベースあたりの DTU 最小値を設定しようとしています。 | データベースあたりの DTU の最小値がデータベースあたりの DTU 最大値を超えていないことをご確認ください。 |
 | TBD | EX_USER | エラスティック プール内の個々のデータベースの記憶域サイズは、サービス階層のエラスティック プール '%.*ls' で許容される最大サイズを超えることはできません。 | エラスティック プールのサービス階層 | データベースの最大サイズが、エラスティック プールのサービス階層によって許可されている最大サイズを超えています。 | データベースの最大サイズを、エラスティック プールのサービス階層によって許可されている最大サイズの制限内に設定してください。 |
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

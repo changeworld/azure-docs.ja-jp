@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Data Factory - 用語" 
-	description="この記事では、Azure Data Factory サービスで Data Factory を作成する際に使われる用語を紹介します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Azure Data Factory - 用語"
+	description="この記事では、Azure Data Factory サービスで Data Factory を作成する際に使われる用語を紹介します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/07/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2015"
 	ms.author="spelluru"/>
 
 #Azure Data Factory - 用語
@@ -49,7 +49,7 @@ Azure Data Factory インスタンスを作成するための一般的な手順�
 Azure Data Factory サービスは、パイプライン内の次のアクティビティをサポートします。
 
 - **コピー アクティビティ**は、データをデータ ストアから別のデータ ストアにコピーします。  
-- **HDInsight アクティビティ**は、HDInsight クラスター上で Hive/Pig スクリプトまたは MapReduce プログラムを実行してデータを処理します。詳細については、「[Data Factory で Pig と Hive を使用する][use-pig-hive]」と「[Data Factory から MapReduce プログラムを起動する][run-map-reduce]」を参照してください。 
+- **HDInsight アクティビティ**は、HDInsight クラスター上で Hive/Pig スクリプトまたは MapReduce プログラムを実行してデータを処理します。  
 - **Azure Machine Learning のバッチ スコアリング アクティビティ**は、Azure Machine Learning のバッチ スコアリング API を呼び出します。詳細については、「[Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する][azure-ml-adf]」を参照してください。 
 - **ストアド プロシージャのアクティビティ**、Azure SQL データベース内のストアド プロシージャを呼び出します。詳細については、MSDN ライブラリの[ストアド プロシージャ アクティビティ][msdn-stored-procedure-activity]に関するページを参照してください。   
 
@@ -84,8 +84,6 @@ Microsoft **Data Management Gateway** は、オンプレミスのデータ ソ�
 
 [adf-faq]: data-factory-faq.md
 [adf-intro]: data-factory-introduction.md
-[use-pig-hive]: data-factory-pig-hive-activities.md
-[run-map-reduce]: data-factory-map-reduce.md
 [azure-ml-adf]: data-factory-create-predictive-pipelines.md
 [adf-common-scenarios]: data-factory-common-scenarios.md
 [create-factory-using-dotnet-sdk]: data-factory-create-data-factories-programmatically.md
@@ -114,4 +112,4 @@ Microsoft **Data Management Gateway** は、オンプレミスのデータ ソ�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

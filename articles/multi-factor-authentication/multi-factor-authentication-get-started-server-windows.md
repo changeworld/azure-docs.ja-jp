@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Windows 認証と Azure Multi-Factor Authentication Server" 
-	description="これは、Windows 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Windows 認証と Azure Multi-Factor Authentication Server"
+	description="これは、Windows 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/14/2015" 
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Windows 認証と Azure Multi-Factor Authentication Server
@@ -49,4 +49,4 @@ Windows 認証セクションでは、管理者が 1 つ以上のアプリケー
 10. サブネット表記を使用して IP の範囲を指定する場合は、[サブネット] を選択します。サブネットの開始 IP を入力し、ドロップダウン リストから適切なネットマスクを選択します。 
 11. [OK] ボタンをクリックします。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

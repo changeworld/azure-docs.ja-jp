@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Data Catalog リリース ノート"
-   description="Azure Data Catalog の 2015 年 7 月 13 日リリースのリリース ノート"
-   services="data-catalog"
-   documentationCenter=""
-   authors="dvana"
-   manager="mblythe"
-   editor=""
-   tags=""/>
+	description="Azure Data Catalog の 2015 年 7 月 13 日パブリック プレビュー リリースのリリース ノート"
+	services="data-catalog"
+	documentationCenter=""
+	authors="dvana"
+	manager="mblythe"
+	editor=""
+	tags=""/>
 <tags
    ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="07/13/2015"
-   ms.author="derrickv"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="07/13/2015"
+	ms.author="derrickv"/>
 
 # Azure Data Catalog の 2015 年 7 月 13 日リリースのノート
 
@@ -35,7 +35,7 @@ Azure Data Catalog の初期プレビュー リリースでの SQL Server Report
 
 Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開くと、[**Microsoft Excel のセキュリティに関する通知**] ダイアログ ボックスにメッセージが表示されることがあります。これは標準の予想される動作であり、ユーザーは、[**有効にする**] を選択して続行できます。
 
-詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/ja-jp/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
+詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/ja-JP/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
 
 ## BLOB および UDT 列がプレビューに含まれない
 
@@ -67,4 +67,4 @@ Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開�
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,45 +1,27 @@
 <properties 
-	pageTitle="SendGrid 電子メール サービスの使用方法 (Node.js) | Microsoft Azure" 
-	description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" 
-	services="" 
-	documentationCenter="nodejs" 
-	authors="MikeWasson" 
-	manager="wpickett" 
+	pageTitle="SendGrid 電子メール サービスの使用方法 (Node.js) | Microsoft Azure"
+	description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは Node.js API を使用して記述されています。"
+	services=""
+	documentationCenter="nodejs"
+	authors="MikeWasson"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="10/30/2014" 
+	ms.service="multiple"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="nodejs"
+	ms.topic="article"
+	ms.date="10/30/2014"
 	ms.author="mwasson"/>
-
-
-
-
-
 # SendGrid を使用して Node.js から電子メールを送信する方法
 
-このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。サンプルは Node.js API を使用して記述されています。紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、**添付ファイルの追加**、**フィルターの使用**、および**プロパティの更新**です。SendGrid と電子メールの送信の詳細については、「[次のステップ][]」を参照してください。
+このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。サンプルは Node.js API を使用して記述されています。紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、**添付ファイルの追加**、**フィルターの使用**、および**プロパティの更新**です。SendGrid と電子メールの送信の詳細については、「[次のステップ](#next-steps)」を参照してください。
 
-## 目次
+## SendGrid 電子メール サービスとは
 
-* [SendGrid 電子メール サービスとは][]   
-* [SendGrid アカウントを作成する][]   
-* [SendGrid Node.js モジュールの参照][]   
-* [方法: 電子メールを作成する][]   
-* [方法: 電子メールを送信する][]   
-* [方法: 添付ファイルを追加する][]   
-* [方法: フィルターを使用してフッター、追跡、および分析を有効にする][]   
-* [方法: 電子メールのプロパティを更新する][]   
-* [方法: その他の SendGrid サービスを使用する][]   
-* [次のステップ][1]
-
-## <a name="whatis"></a>SendGrid 電子メール サービスとは
-
-SendGrid は、信頼性の高い[トランザクション電子メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベース電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。SendGrid の一般的な使用シナリオを次に示します。
+SendGrid は、信頼性の高い[トランザクション電子メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベースの電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。SendGrid の一般的な使用シナリオを次に示します。
 
 -   顧客に受信通知を自動送信する
 -   顧客に広告メールを月 1 回送信するための配布リストを管理する
@@ -50,11 +32,11 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 詳細については、[https://sendgrid.com](https://sendgrid.com)を参照してください。
 
-## <a name="createaccount"></a>SendGrid アカウントを作成する
+## SendGrid アカウントの作成
 
 [AZURE.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="reference"></a>SendGrid Node.js モジュールの参照
+## SendGrid Node.js モジュールの参照
 
 Node.js 用の SendGrid モジュールは、次のコマンドを使用することによって、ノード パッケージ マネージャー (npm) でインストールできます。
 
@@ -66,7 +48,7 @@ Node.js 用の SendGrid モジュールは、次のコマンドを使用する�
 
 SendGrid モジュールは、**SendGrid** 機能および **Email** 機能をエクスポートします。**SendGrid** は Web API による電子メールの送信を処理します。**Email** は電子メール メッセージをカプセル化します。
 
-## <a name="createemail"></a>方法: 電子メールを作成する
+## 方法: 電子メールを作成する
 
 SendGrid モジュールを使って電子メール メッセージを作成するには、最初に Email 機能で電子メール メッセージを作成し、次に SendGrid 機能でメッセージを送信します。以下は、Email 機能を使用した新しいメッセージの作成の例です。
 
@@ -83,9 +65,9 @@ SendGrid モジュールを使って電子メール メッセージを作成す�
 
 text プロパティと html プロパティの両方を設定することで、HTML メッセージをサポートできないクライアントに対しては、テキスト コンテンツへの正常なフォールバックを提供できます。
 
-Email 機能でサポートされるすべてのプロパティについて詳しくは、[sendgrid-nodejs][] に関するページを参照してください。
+Email 機能でサポートされるすべてのプロパティの詳細については、[sendgrid-nodejs][] に関するページを参照してください。
 
-## <a name="sendemail"></a>方法: 電子メールを送信する
+## 方法: 電子メールを送信する
 
 Email 機能で電子メール メッセージを作成した後で、SendGrid の Web API を使用してメッセージを送信できます。
 
@@ -107,7 +89,7 @@ sendgrid.send({
 });
 `````
 
-## <a name="addattachment"></a>方法: 添付ファイルを追加する
+## 方法: 添付ファイルを追加する
 
 添付ファイルをメッセージに追加するには、**files** プロパティでファイル名とパスを指定します。次の例に、添付ファイルを送信する方法を示します。
 
@@ -128,9 +110,9 @@ sendgrid.send({
         ],
     });
 
-> [AZURE.NOTE]**files** プロパティを使用する場合、[fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile) を使ってファイルにアクセスできることが必要です。添付するファイルが、BLOB コンテナーなどの Azure ストレージでホストされている場合、**files** プロパティを使用して添付ファイルとして送信するには、最初にファイルをローカル ストレージまたは Azure ドライブにコピーする必要があります。
+> [AZURE.NOTE]**files** プロパティを使用する場合、[fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile) を使ってファイルにアクセスできることが必要です。添付するファイルが、BLOB コンテナーなどの Azure Storage でホストされている場合、**files** プロパティを使用して添付ファイルとして送信するには、最初にファイルをローカル ストレージまたは Azure ドライブにコピーする必要があります。
 
-## <a name="usefilters"></a>方法: フィルターを使用してフッターと追跡を有効にする
+## 方法: フィルターを使用してフッターと追跡を有効にする
 
 SendGrid では、*フィルター* を使用することでその他の電子メール機能も利用できます。その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。すべてのフィルターの一覧については、[フィルター設定][]に関するページを参照してください。
 
@@ -175,7 +157,7 @@ SendGrid では、*フィルター* を使用することでその他の電子�
     
     sendgrid.send(email);
 
-## <a name="updateproperties"></a>方法: 電子メールのプロパティを更新する
+## 方法: 電子メールのプロパティを更新する
 
 一部の電子メールのプロパティは、**set*Property*** を使用して上書きすることや、**add*Property*** を使用して追加することができます。たとえば、次のようにして、新しい受信者を追加できます。
 
@@ -186,43 +168,18 @@ SendGrid では、*フィルター* を使用することでその他の電子�
     email.addFilter('footer', 'enable', 1);
     email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 
-詳細については、[sendgrid-nodejs に関するページ][]を参照してください。
+詳細については、[sendgrid-nodejs][] に関するページを参照してください。
 
-## <a name="useservices"></a>方法: その他の SendGrid サービスを使用する
+## 方法: その他の SendGrid サービスを使用する
 
 SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。詳細については、[SendGrid API に関するドキュメント][]を参照してください。
 
-## <a name="nextsteps"> </a>次のステップ
+## 次のステップ
 
 これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 -   SendGrid Node.js モジュールのリポジトリ: [sendgrid-nodejs][]
 -   SendGrid API に関するドキュメント: <https://sendgrid.com/docs>
--   Azure ユーザー向けの SendGrid 特別プラン: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
+-   Azure ユーザー向けの SendGrid 特別プラン: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html) [特別プラン]: https://sendgrid.com/windowsazure.html [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs [フィルターの設定]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html [SendGrid API に関するドキュメント]: https://sendgrid.com/docs [クラウドベースの電子メール サービス]: https://sendgrid.com/email-solutions [トランザクション電子メール配信] https://sendgrid.com/transactional-email
 
-  [次のステップ]: http://www.windowsazure.com/develop/nodejs/how-to-guides/blob-storage/#next-steps
-  [SendGrid 電子メール サービスとは]: #whatis
-  [SendGrid アカウントを作成する]: #createaccount
-  [SendGrid Node.js モジュールの参照]: #reference
-  [方法: 電子メールを作成する]: #createemail
-  [方法: 電子メールを送信する]: #sendemail
-  [方法: 添付ファイルを追加する]: #addattachment
-  [方法: フィルターを使用してフッター、追跡、および分析を有効にする]: #usefilters
-  [方法: 電子メールのプロパティを更新する]: #updateproperties
-  [方法: その他の SendGrid サービスを使用する]: #useservices
-  [1]: #nextsteps
-
-  
-  
-  [special offer]: https://sendgrid.com/windowsazure.html
-  
-  
-  [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs
-  [sendgrid-nodejs に関するページ]: https://github.com/sendgrid/sendgrid-nodejs
-  
-  [フィルター設定]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
-  [SendGrid API に関するドキュメント]: https://sendgrid.com/docs
-  [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
-  [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
-
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

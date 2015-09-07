@@ -1,6 +1,6 @@
 <properties
-	pageTitle="SharePoint サーバー ファームの構成の詳細"
-	description="この記事では、Azure プレビュー ポータルの SharePoint サーバー ファーム機能を使用するときの SharePoint ファームの初期設定について説明します。"
+	pageTitle="SharePoint サーバー ファームの構成 | Microsoft Azure"
+	description="Azure プレビュー ポータルの SharePoint サーバー ファーム機能を使用するときの SharePoint ファームの既定の構成設定について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="JoeDavies-MSFT"
@@ -139,4 +139,4 @@ Azure プレビュー ポータルの SharePoint サーバー ファーム機能
 
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

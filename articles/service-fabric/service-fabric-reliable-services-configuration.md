@@ -1,20 +1,20 @@
 <properties
    pageTitle="ステートフル Reliable Services の構成"
-   description="Service Fabric のステートフル Reliable Services を構成する方法について説明します。"
-   services="Service-Fabric"
-   documentationCenter=".net"
-   authors="sumukhs"
-   manager="vipulm"
-   editor=""/>
+	description="Service Fabric のステートフル Reliable Services を構成する方法について説明します。"
+	services="Service-Fabric"
+	documentationCenter=".net"
+	authors="sumukhs"
+	manager="anuragg"
+	editor=""/>
 
 <tags
    ms.service="Service-Fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="04/24/2015"
-   ms.author="sumukhs"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/26/2015"
+	ms.author="sumukhs"/>
 
 # ステートフル Reliable Services の構成
 ステートフル Reliable Service の既定の構成は、アプリケーションの各サービスの "Config" フォルダーの下にある Visual Studio パッケージ ルートに生成された "settings.xml" ファイルを変更することによって変更できます。
@@ -91,4 +91,4 @@ MaxRecordSizeInKB は、レプリケーターがログ ファイルに書き込�
 SharedLogId と SharedLogPath の設定は、常に一緒に使用して、サービスがノードの既定の共有ログとは別の共有ログを使用できるようにします。最適な効率を得るため、できるだけ多くのサービスで同じ共有ログを指定してください。共有ログ ファイルは、ヘッドの移動の競合が減るように、共有ログ ファイル専用に使用されるディスクに配置する必要があります。これを変更する必要があるのは、まれなケースだけであると予想されます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,19 +1,19 @@
 <properties 
    pageTitle="ネットワーク セキュリティ グループ (NSG)"
-   description="ネットワーク セキュリティ グループ (NSG) の詳細"
-   services="virtual-network"
-   documentationCenter="na"
-   authors="telmosampaio"
-   manager="carolz"
-   editor="tysonn" />
+	description="ネットワーク セキュリティ グループ (NSG) の詳細"
+	services="virtual-network"
+	documentationCenter="na"
+	authors="telmosampaio"
+	manager="carolz"
+	editor="tysonn"/>
 <tags 
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/13/2015"
-   ms.author="telmos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/13/2015"
+	ms.author="telmos"/>
 
 # ネットワーク セキュリティ グループ (NSG) について
 
@@ -23,7 +23,7 @@ NSG を使用して、仮想ネットワーク内で 1 つまたは複数の仮�
 
 VM または VNet 内のサブネットに NSG を関連付けることができます。VM に関連付けた場合、NSG は、VM インスタンスで送受信されるすべてのトラフィックに適用されます。VNet 内のサブネットに適用した場合は、サブネット内のすべての VM インスタンスで送受信されるすべてのトラフィックに適用されます。VM またはサブネットは、 1 つの NSG のみに関連付けることができます。各 NSG には、最大 200 のルールを含めることができます。サブスクリプションあたり 100 の NSG を割り当てることができます。
 
->[AZURE.NOTE]エンドポイント ベースの ACL とネットワーク セキュリティ グループは、同じ VM インスタンスではサポートされません。エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。これを行う方法については、[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](https://msdn.microsoft.com/library/azure/dn376543.aspx)を参照してください。
+>[AZURE.NOTE]エンドポイント ベースの ACL とネットワーク セキュリティ グループは、同じ VM インスタンスではサポートされません。エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。これを行う方法については、[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)を参照してください。
 
 ## ネットワーク セキュリティ グループのしくみ
 
@@ -249,4 +249,4 @@ VM や PaaS ロールなどのオブジェクトを、インターネット ア�
 
 	Get-Command *azurenetworksecuritygroup*
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

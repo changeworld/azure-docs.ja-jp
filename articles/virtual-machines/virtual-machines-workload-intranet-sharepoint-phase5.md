@@ -1,6 +1,6 @@
 <properties
-	pageTitle="SharePoint イントラネット ファーム ワークロードのフェーズ 5: 可用性グループの作成と SharePoint データベースの追加"
-	description="イントラネット専用 SharePoint 2013 ファームをデプロイする作業の最終フェーズでは、可用性グループを作成し、SharePoint データベースを追加します。"
+	pageTitle="SharePoint Server 2013 ファームのフェーズ 5 | Microsoft Azure"
+	description="可用性グループを作成し、SharePoint データベースをそのグループに追加します。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -56,7 +56,7 @@ SharePoint では、初期構成の一環として複数のデータベースを
 3.	左ウィンドウで **[データベース]** ノードを展開します。
 4.	バックアップするデータベースを右クリックし、**[タスク]** をポイントして、**[バックアップ]** をクリックします。
 5.	**[バックアップ先]** セクションで、**[削除]** をクリックして、バックアップ ファイルの既定のファイル パスを削除します。
-6.	**[追加]** をクリックします。**[ファイル名]** に、「**\\[machineName]\\backup[databaseName].bak**」と入力します。machineName はプライマリ SQL Server コンピューターの名前、databaseName はデータベースの名前です。**[OK]** をクリックし、バックアップの成功に関するメッセージが表示されたら、もう一度 **[OK]** をクリックします。
+6.	**[追加]** をクリックします。**[ファイル名]** に、「**\[machineName]\\backup[databaseName].bak**」と入力します。machineName はプライマリ SQL Server コンピューターの名前、databaseName はデータベースの名前です。**[OK]** をクリックし、バックアップの成功に関するメッセージが表示されたら、もう一度 **[OK]** をクリックします。
 7.	左ウィンドウで、**[databaseName]** を右クリックし、**[タスク]** をポイントして、**[バックアップ]** をクリックします。
 8.	**[バックアップの種類]** で **[トランザクション ログ]** を選択し、**[OK]** を 2 回クリックします。
 9.	このリモート デスクトップ セッションを開いたままにしておきます。
@@ -69,7 +69,7 @@ SharePoint では、初期構成の一環として複数のデータベースを
 4.	左ウィンドウで、**[データベース]** を右クリックし、**[データベースの復元]** をクリックします。
 5.	**[ソース]** セクションで **[デバイス]** を選択し、省略記号 (…) ボタンをクリックします。
 6.	**[バックアップ デバイスの選択]** で、**[追加]** をクリックします。
-7.	**[バックアップ ファイルの場所]** で、「**\\[machineName]\\backup**」と入力し、Enter キーを押します。**[databaseName].bak** を選択し、**[OK]** を 2 回クリックします。**[復元するバックアップ セット]** セクションに完全バックアップとログ バックアップが表示されます。
+7.	**[バックアップ ファイルの場所]** で、「**\[machineName]\\backup**」と入力し、Enter キーを押します。**[databaseName].bak** を選択し、**[OK]** を 2 回クリックします。**[復元するバックアップ セット]** セクションに完全バックアップとログ バックアップが表示されます。
 8.	**[ページの選択]** で **[オプション]** をクリックします。**[復元オプション]** セクションの **[復旧状態]** で、**[RESTORE WITH NORECOVERY]** を選択し、**[OK]** をクリックします。
 9.	メッセージが表示されたら、**[OK]** をクリックします。
 
@@ -105,9 +105,9 @@ SharePoint データベースの SQL Server AlwaysOn 可用性グループが正
 
 ## AlwaysOn 可用性グループのリスナーの構成
 
-必要に応じて、AlwaysOn 可用性グループのリスナー構成を作成することもできます。手順については、「[チュートリアル: AlwaysOn 可用性グループのリスナー構成](https://msdn.microsoft.com/library/dn425027.aspx)」をご覧ください。リスナーを 1 つだけ作成し、内部負荷分散インスタンスの仮想 IP アドレスを使用するように構成します。
+必要に応じて、AlwaysOn 可用性グループのリスナー構成を作成することもできます。手順については、[チュートリアル: AlwaysOn 可用性グループのリスナー構成](https://msdn.microsoft.com/library/dn425027.aspx)をご覧ください。リスナーを 1 つだけ作成し、内部負荷分散インスタンスの仮想 IP アドレスを使用するように構成します。
 
-リスナーを作成したら、クラスターの最初の SQL サーバーの名前ではなく、リスナーを使用するようにすべての SharePoint 仮想マシンを構成する必要があります。名前を使用するのではなく、SQL エイリアスを使用するように SharePoint 仮想マシンを構成します。詳細と手順については、「[SQL Alias for SharePoint (SharePoint の SQL エイリアス)](http://blogs.msdn.com/b/priyo/archive/2013/09/13/sql-alias-for-sharepoint.aspx)」をご覧ください。
+リスナーを作成したら、クラスターの最初の SQL サーバーの名前ではなく、リスナーを使用するようにすべての SharePoint 仮想マシンを構成する必要があります。名前を使用するのではなく、SQL エイリアスを使用するように SharePoint 仮想マシンを構成します。詳細と手順については、[SQL Alias for SharePoint (SharePoint の SQL エイリアス)](http://blogs.msdn.com/b/priyo/archive/2013/09/13/sql-alias-for-sharepoint.aspx)をご覧ください。
 
 SharePoint と SQL Server AlwaysOn 可用性グループの追加情報については、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」を参照してください。
 
@@ -126,4 +126,4 @@ SharePoint と SQL Server AlwaysOn 可用性グループの追加情報につい
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,29 +1,29 @@
 <properties
-   pageTitle="ExpressRoute の場所"
-   description="このページでは、サービスが提供されている場所と Azure リージョンに接続する方法の詳細について説明します。"
-   services="expressroute"
-   documentationCenter="na"
-   authors="cherylmc"
-   manager="carolz"
-   editor="tysonn" />
-<tags 
+   pageTitle="ExpressRoute の場所 | Microsoft Azure"
+	description="この記事では、サービスが提供されている場所と Azure リージョンに接続する方法の詳細について説明します。"
+	services="expressroute"
+	documentationCenter="na"
+	authors="cherylmc"
+	manager="carolz"
+	editor="tysonn"/>
+<tags
    ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/06/2015"
-   ms.author="cherylmc" />
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/06/2015"
+	ms.author="cherylmc"/>
 
-# ExpressRoute パートナーとピアリングの場所
-このページの表では、ExpressRoute 接続プロバイダー (EXP と NSP)、ExpressRoute の地理的範囲、ExpressRoute でサポートされる Microsoft クラウド サービス、ExpressRoute システム インテグレーター (SI) に関する情報を提供します。
+# Azure ExpressRoute パートナーとピアリングの場所
+この記事の表では、ExpressRoute 接続プロバイダー (EXP と NSP)、ExpressRoute の地理的範囲、ExpressRoute でサポートされる Microsoft クラウド サービス、ExpressRoute システム インテグレーター (SI) に関する情報を提供します。
 
 ## ExpressRoute 接続プロバイダー
-ExpressRoute は、すべての Azure のリージョンと場所でサポートされています。次のマップは、Azure のリージョンと ExpressRoute の場所を一覧しています。ExpressRoute の場所は、Microsoft がいくつかのサービス プロバイダーと接続している場所を示します。
- 
+ExpressRoute は、すべての Azure のリージョンと場所でサポートされています。次のマップは Azure のリージョンと ExpressRoute の場所を一覧しています。ExpressRoute の場所は、Microsoft がいくつかのサービス プロバイダーと接続している場所を示します。
+
 ![](./media/expressroute-locations/expressroute-locations-map.png)
 
-地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。次の表は、地理的リージョン内の ExpressRoute の場所に Azure リージョンのマップを提供します。
+地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。次の表は、地理的リージョン、ExpressRoute の場所、Azure リージョンをまとめたものです。
 
 |**地理的リージョン**|**Azure リージョン**|**ExpressRoute の場所**|
 |---|---|---|
@@ -71,7 +71,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Colt IPVPN](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされていません | アムステルダム、ロンドン |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2013/pdf/Azure_E.pdf)** | サポートされています | サポートされていません | 東京 |
 | **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされていません | シカゴ、ダラス、ロンドン、シアトル、シリコン バレー、ワシントン DC |
-| **NTT Communications** | 近日対応予定 | サポートされていません | 東京+ | 
+| **NTT Communications** | 近日対応予定 | サポートされていません | 東京+ |
 | **[Orange](http://www.orange-business.com/)** | サポートされています | サポートされていません | アムステルダム、ロンドン、シリコン バレー、ワシントン DC |
 | **PCCW Global Limited** | サポートされています | サポートされていません | 香港 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | サポートされています | サポートされていません | シンガポール |
@@ -83,16 +83,16 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 接続を設定する手順については、[NSP 接続の構成](expressroute-configuring-nsps.md)に関するページをご覧ください。
 
-## 一覧にないサービス プロバイダー経由の接続 
+## 一覧にないサービス プロバイダー経由の接続
 
 接続プロバイダーが上記のセクションの一覧にない場合でも、接続を作成できます。
 
 - その接続プロバイダーが、EXP の場所に一覧されているいずれかの Exchange プロバイダーに接続されているかどうかを確認します。次のリンクから、Exchange プロバイダーが提供するサービスの詳細情報を収集できます。いくつかの接続プロバイダーは、既に EXP のイーサネットに接続されています。
-	- [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/) 
+	- [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
 	- [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
 - その接続プロバイダーに、選択した Exchange の場所までネットワークを拡張してもらいます。
 	- 単一障害点がないように、接続プロバイダーが可用性の高い方法で接続を拡張していることを確認します。
-	- 接続プロバイダー (特に、イーサネット プロバイダー) は、高可用性を確保するために、イーサネット交換に 1 組の回線を調達する必要があります。 
+	- 接続プロバイダー (特に、イーサネット プロバイダー) は、高可用性を確保するために、イーサネット交換に 1 組の回線を調達する必要があります。
 - Azure に接続するには、Exchange プロバイダーを通じて ExpressRoute 回線を注文します。
 	- 「[EXP 接続の構成](expressroute-configuring-exps.md)」の手順に従って接続を設定します。
 
@@ -114,6 +114,5 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - 詳細については、[FAQ](expressroute-faqs.md) をご覧ください。
 - ExpressRoute 接続を構成する必要がある場合は、[EXP 接続の構成](expressroute-configuring-exps.md)または [NSP 接続の構成](expressroute-configuring-nsps.md)に関するページを参照してください。
 - 同じ仮想ネットワークに対してサイト間 VPN 接続と ExpressRoute の両方を構成する必要がある場合は、「[Configure ExpressRoute and Site-to-Site VPN connections that coexist (共存する ExpressRoute とサイト間 VPN の接続の構成)](expressroute-coexist.md)」を参照してください。
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

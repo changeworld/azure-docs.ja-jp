@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Azure Mobile Engagement iOS SDK の統合"
-	description="Azure モバイル エンゲージメント用 iOS SDK の最新の更新プログラムと手順"
+	description="Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="MehrdadMzfr"
 	manager="dwrede"
-	editor="" />
+	editor=""/>
 
 <tags
 	ms.service="mobile-engagement"
@@ -14,7 +14,7 @@
 	ms.devlang="objective-c"
 	ms.topic="article"
 	ms.date="08/05/2015"
-	ms.author="MehrdadMzfr" />
+	ms.author="MehrdadMzfr"/>
 
 #Engagement を iOS に統合する方法
 
@@ -26,9 +26,9 @@
 
 この手順では、iOS アプリケーションで Engagement の分析機能、監視機能を有効化する最も簡単な方法を説明します。
 
-> [AZURE.IMPORTANT]Engagement SDK には iOS5 以降が必要です。アプリケーションのデプロイ ターゲットは iOS 5 以降である必要があります。
+> [AZURE.IMPORTANT]Engagement SDK には iOS6 以降が必要です。アプリケーションのデプロイ ターゲットは iOS6 以降である必要があります。
 
-次の手順は、ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関するすべての統計情報を計算するのに必要なログのレポートを有効にするためのものです。イベント、エラー、ジョブなどの他の統計情報を計算するのに必要なログのレポートについては、これらの統計がアプリケーションに依存しているので、エンゲージメント API を使用して手動で実行する必要があります ([iOS アプリで高度な Mobile Engagement タグ付け API を使用する方法を参照](mobile-engagement-ios-use-engagement-api.md))。
+次の手順は、ユーザー、セッション、アクティビティ、クラッシュ、テクニカルに関するすべての統計情報をコンピューティングするのに必要なログのレポートを有効にするためのものです。イベント、エラー、ジョブなどの他の統計情報をコンピューティングするのに必要なログのレポートについては、これらの統計がアプリケーションに依存しているので、エンゲージメント API を使用して手動で実行する必要があります ([iOS アプリで高度な Mobile Engagement タグ付け API を使用する方法を参照](mobile-engagement-ios-use-engagement-api.md))。
 
 ##Engagement SDK を iOS プロジェクトに埋め込む
 
@@ -43,7 +43,7 @@ Engagement では追加のフレームワークを動作させる必要がある
 > -   `CoreLocation.framework`
 > -   `libxml2.dylib`
 
-> [AZURE.NOTE]AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます \<ios-sdk-engagement-idfa\>。
+> [AZURE.NOTE]AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます <ios-sdk-engagement-idfa>。
 
 ##エンゲージメント SDK を初期化する
 
@@ -67,7 +67,7 @@ Engagement では追加のフレームワークを動作させる必要がある
 
 ### 推奨される方法: `UIViewController` クラスをオーバーロードします
 
-Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計の計算に必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\\> `EngagementTableViewController` と同じルール)。
+Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計のコンピューティングに必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\> `EngagementTableViewController` と同じルール)。
 
 **エンゲージメントを使用しない場合:**
 
@@ -110,7 +110,7 @@ iOS 8 以降では、アプリケーションの Info.plist ファイルにキ�
 
 大まかなエリアの位置報告では、デバイスに関連付けられた国、リージョン、地域をレポートできます。このタイプの場所レポートでは、セル ID または WIFI に基づいたネットワークの場所のみを使用します。デバイス エリアがセッションごとに最大 1 回レポートされます。GPS を使用しないため、このタイプの場所レポートでは、まったくとは言わないまでも、電力消費量にほとんど影響がありません。
 
-報告されたエリアを基に、ユーザー、セッション、イベント、エラーに関する地理的な統計を計算します。また、リーチ キャンペーンの条件としても使用されます。デバイスに関する最新の既知のエリアは[デバイス API] を利用して取得できます。
+報告されたエリアを基に、ユーザー、セッション、イベント、エラーに関する地理的な統計をコンピューティングします。また、リーチ キャンペーンの条件としても使用されます。デバイスに関する最新の既知のエリアは[デバイス API] を利用して取得できます。
 
 大まかなエリアの位置報告を有効にするには、Engagement エージェントを初期化した後、次の行を追加します。
 
@@ -125,7 +125,7 @@ iOS 8 以降では、アプリケーションの Info.plist ファイルにキ�
 
 リアル タイム場所レポートでは、デバイスに関連付けられた緯度と経度をレポートできます。既定では、このタイプの場所レポートでは (セル ID または WIFI に基づいた) ネットワークの場所のみが使用されます。レポートは、アプリケーションを前景で実行した場合 (セッション中) にのみアクティブになります。
 
-リアル タイム場所レポートは、統計の計算に使用することは*できません*。その唯一の目的は、リーチ キャンペーンでリアルタイム ジオフェンシング <Reach-Audience-geofencing> 基準の利用を可能にすることです。
+リアル タイム場所レポートは、統計のコンピューティングに使用することは*できません*。その唯一の目的は、リーチ キャンペーンでリアルタイム ジオフェンシング <Reach-Audience-geofencing> 基準の利用を可能にすることです。
 
 リアル タイム場所レポートを有効にするには、Engagement エージェントの初期化後に、次の行を追加します。
 
@@ -207,4 +207,4 @@ Engagement でログの送信を停止したい場合は、以下を呼び出し
 [startMonitoringSignificantLocationChanges]: http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
 [IDFA]: https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
 
-<!----HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

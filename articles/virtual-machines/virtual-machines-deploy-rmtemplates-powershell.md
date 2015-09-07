@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2015"
+	ms.date="08/25/2015"
 	ms.author="davidmu"/>
 
 # Azure リソース マネージャー テンプレートと PowerShell を使用した仮想マシンのデプロイと管理
@@ -962,4 +962,4 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

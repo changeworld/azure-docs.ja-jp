@@ -59,7 +59,7 @@ Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます�
 
 2. **[サイズ]** をクリックし、ニーズに応じた VM サイズを選択します。それぞれのサイズによって、コンピューティング コアの数、メモリ、および Premium Storage サポートなどの他の機能が指定されており、これが価格に影響します。Azure では、ユーザーが選択したイメージに応じて、特定のサイズが自動的に推奨されます。完了したら、![[選択] ボタン](media/virtual-machines-linux-tutorial-portal-rm/selectbutton-size.png) をクリックします。
 
-	>[AZURE.NOTE]プレミアム ストレージは、特定のリージョンの DS シリーズの仮想マシンで使用できます。プレミアム ストレージは、データベースなどの高負荷のワークロードに最適なストレージ オプションです。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)に関するページを参照してください。
+	>[AZURE.NOTE]プレミアム ストレージは、特定のリージョンの DS シリーズの仮想マシンで使用できます。Premium Storage は、データベースなどの高負荷のワークロードに最適なストレージ オプションです。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)に関するページを参照してください。
 
 3. **[設定]** をクリックして、新しい VM のストレージおよびネットワークの設定を表示します。最初の VM については、通常、既定の設定をそのまま使用します。Premium Storage がサポートされる VM サイズを選択した場合は、**[ディスクの種類]** の **[Premium (SSD)]** を選択することで、Premium Storage をお試しいただくことができます。完了したら、![[OK] ボタン](media/virtual-machines-linux-tutorial-portal-rm/okbutton.png) をクリックします。
 
@@ -114,6 +114,8 @@ Linux を実行する Azure 仮想マシン (VM) は簡単に作成できます�
 	ops@ubuntuvm:~$
 
 
+> [AZURE.NOTE]ポータルで仮想マシンに完全修飾ドメイン名 (FQDN) を構成することもできます。FQDN の詳細については、[ここ](virtual-machines-create-fqdn-on-portal.md)をご覧ください。
+
 ## 次のステップ
 
 Azure 上の Linux の詳細については、次の内容を参照してください。
@@ -126,4 +128,4 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

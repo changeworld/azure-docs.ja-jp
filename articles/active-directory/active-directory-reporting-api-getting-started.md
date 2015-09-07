@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure AD Reporting API の概要"
-   description="Azure Active Directory Reporting API の概要について説明します。"
-   services="active-directory"
-   documentationCenter=""
-   authors="kenhoff"
-   manager="mbaldwin"
-   editor=""/>
+	description="Azure Active Directory Reporting API の概要について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="kenhoff"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
    ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="07/17/2015"
-   ms.author="kenhoff;yossib"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="identity"
+	ms.date="07/17/2015"
+	ms.author="kenhoff;yossib"/>
 
 
 # Azure AD Reporting API の概要
@@ -73,7 +73,9 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 
 
 ## スクリプトの変更
-ディレクトリで動作するように以下の PowerShell スクリプトを編集するには、$ClientID、$ClientSecret、$tenantdomain を、「Delegating Access in Azure AD (Azure AD でのアクセスの委任)」の正しい値に置き換えます。
+次のスクリプトのいずれかで、$ClientID、$ClientSecret、$tenantdomain を「Delegating Access in Azure AD (Azure AD でのアクセスの委任)」の説明に従って正しい値に置き換えることで、ディレクトリで動作するように編集します。
+
+### PowerShell スクリプト
 
     # This script will require the Web Application and permissions setup in Azure Active Directory
     $ClientID      = "<<YOUR CLIENT ID HERE>>"                # Should be a ~35 character string insert your info here
@@ -125,6 +127,30 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
         Write-Host "ERROR: No Access Token"
         }
 
+### Bash スクリプト
+
+    #!/bin/bash
+
+    # Author: Ken Hoff (kenhoff@microsoft.com)
+    # Date: 2015.08.20
+    # NOTE: This script requires jq (https://stedolan.github.io/jq/)
+
+    CLIENT_ID="<<YOUR CLIENT ID HERE>>"			# Should be a ~35 character string insert your info here
+    CLIENT_SECRET="<<YOUR CLIENT SECRET HERE>>"	# Should be a ~44 character string insert your info here
+    LOGIN_URL="https://login.windows.net"
+    TENANT_DOMAIN="<<YOUR TENANT NAME HERE>>"	 # For example, contoso.onmicrosoft.com
+
+    TOKEN_INFO=$(curl -s --data-urlencode "grant_type=client_credentials" --data-urlencode "client_id=$CLIENT_ID" --data-urlencode "client_secret=$CLIENT_SECRET" "$LOGIN_URL/$TENANT_DOMAIN/oauth2/token?api-version=1.0")
+
+    TOKEN_TYPE=$(echo $TOKEN_INFO | jq -r '.token_type')
+    ACCESS_TOKEN=$(echo $TOKEN_INFO | jq -r '.access_token')
+
+    REPORT=$(curl -s --header "Authorization: $TOKEN_TYPE $ACCESS_TOKEN" https://graph.windows.net/$TENANT_DOMAIN/reports/auditEvents?api-version=beta)
+
+    echo $REPORT | jq -r '.value' | jq -r ".[]"
+
+
+
 
 ## スクリプトの実行
 スクリプトの編集が完了したら、実行して、AuditEvents レポートから予期したデータが返されることを確認します。
@@ -137,4 +163,4 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 - 監査レポートの詳細については、「[Azure Active Directory 監査レポートのイベント](active-directory-reporting-audit-events.md)」を参照してください
 - Graph API REST サービスの詳細については、「[Azure AD Reports and Events (Preview) (Azure AD のレポートとイベント (プレビュー))](https://msdn.microsoft.com/library/azure/mt126081.aspx)」を参照してください
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

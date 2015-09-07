@@ -1,21 +1,20 @@
 <properties 
-	pageTitle="Azure Multi-factor Authentication で初めてサインインする" 
-	description="このページでは、初めてサインインするときのユーザー エクスペリエンスについて説明します。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	pageTitle="Azure Multi-factor Authentication で初めてサインインする"
+	description="このページでは、初めてサインインするときのユーザー エクスペリエンスについて説明します。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenp"
+	editor="curtland"/>
 
 <tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/30/2015" 
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
-
 # Azure Multi-Factor Authentication のセットアップ エクスペリエンス
 
  管理者が、お客様の ID を検証するためにパスワードと電話からの応答の両方が必要となるようにアカウントを構成した場合、追加のセキュリティ確認設定が使用されます。追加のセキュリティ確認が必要となるように管理者がアカウントを構成した場合には、**自動登録プロセスが完了するまではサインインすることができません**。
@@ -37,4 +36,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

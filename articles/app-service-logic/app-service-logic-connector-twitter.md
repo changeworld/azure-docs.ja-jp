@@ -1,27 +1,26 @@
 <properties
-   pageTitle="Microsoft Azure App Service での Twitter コネクタの使用"
-   description="Twitter コネクタ API アプリを使用する方法"
-   services="app-service\logic"
-   documentationCenter=".net,nodejs,java"
-   authors="anuragdalmia"
-   manager="dwrede"
-   editor=""/>
+   pageTitle="Logic Apps での Twitter コネクタの使用 | Microsoft Azure App Service"
+	description="Twitter コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="anuragdalmia"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration"
-   ms.date="08/19/2015"
-   ms.author="sameerch"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="sameerch"/>
 
 
-# Twitter コネクタ
-
+# Twitter コネクタの使用開始とロジック アプリへの追加
 Twitter フィードに接続して、ツイートを投稿し、自分のタイムライン、友人のタイムライン、Twitter アカウントのフォロワーからツイートを取得します。コネクタを Logic Apps で使用して、"ワークフロー" の一部としてデータを取得、処理、またはプッシュできます。Twitter コネクタをワークフローで使用すると、さまざまなシナリオを実現できます。たとえば、次のようなことができます。
 
-- 指定したキーワードまたはテキストに関連付けられている新しいツイートを取得します。新しいツイートを取得すると、ワークフローの新しいインスタンスがトリガーされ、ワークフローの次のコネクタにデータが渡されます。たとえば、Twitter コネクタを作成し、#peanutbutterandjelly を監視する New Tweet From Search トリガーを使用します。#peanutbutterandjelly で新しいツイートがある場合は、必ずワークフロー (ロジック アプリともいいます) が自動的に開始されます。
+- 指定したキーワードまたはテキストに関連付けられている新しいツイートを取得します。新しいツイートを取得すると、ワークフローの新しいインスタンスがトリガーされ、ワークフローの次のコネクタにデータが渡されます。たとえば、Twitter コネクタを作成し、\#peanutbutterandjelly を監視する New Tweet From Search トリガーを使用します。\#peanutbutterandjelly で新しいツイートがある場合は、必ずワークフロー (ロジック アプリともいいます) が自動的に開始されます。
 - "Search Tweets" など、さまざまなアクションを使用して、応答を取得し、ワークフロー内で使用します。たとえば、会社名でツイートを検索できます。見つかった場合は、ロジック アプリを使用して、SQL Server データベースにこのデータを書き込むことができます。次に、SQL Server のデータを使用して、会社のどのような話題がツイートされているのかを特定します。 
 - [Twitter の検索](https://twitter.com/search)ですべての演算子を使用します。**演算子**リンクを選択します。Twitter コネクタは、表示されているすべての演算子をサポートします。
 
@@ -49,14 +48,10 @@ New Tweet From Search | <ul><li>Get User Timeline</li><li>Search Tweets</li><li>
 1. Twitter 用の無料アプリケーションを [http://apps.twitter.com](http://apps.twitter.com) で作成します。
     * アプリを登録するときに、Web サイトの任意の URL に置いて、コールバック URL は空白のままにすることができます。
 2. Azure のスタート画面で、**[Marketplace]** を選択します。
-2. "Twitter コネクタ" を検索します。
-3. [Twitter コネクタ] を選択し、[作成] をクリックします。これにより、[作成] ブレードが開きます。
-3. [パッケージの設定] をクリックし、Twitter アプリから「clientId」フィールドに「コンシューマー キー」を貼り付けます。「コンシューマー シークレット」を Twitter アプリから「clientSecret」フィールドに貼り付けます。
-	
-	![][10]
-	
-4. コネクタ名、App Service、およびリソース グループなど、その他の必要な設定を入力します。
-5.	**[作成]** をクリックします。
+3. "Twitter コネクタ" を検索して選択し、**[作成]** を選択します。
+4. [パッケージの設定] をクリックし、Twitter アプリから「clientId」フィールドに「コンシューマー キー」を貼り付けます。「コンシューマー シークレット」を Twitter アプリから「clientSecret」フィールドに貼り付けます。![][10]
+5. コネクタ名、App Service、およびリソース グループなど、その他の必要な設定を入力します。
+6.	**[作成]** をクリックします。
 
 > [AZURE.NOTE]リダイレクト URL で Twitter API をさらに保護する場合は、[ここ](app-service-logic-oauth-security.md)をクリックして詳細な方法を参照できます。
 
@@ -64,27 +59,21 @@ New Tweet From Search | <ul><li>Get User Timeline</li><li>Search Tweets</li><li>
 ## ロジック アプリで Twitter Connector を使用する
 API アプリを作成した後は、ロジック アプリのトリガーまたはアクションとして Twitter コネクタを使用できます。これを行うには、次の手順を実行します。
 
-1.	新しいロジック アプリを作成するか、既存のロジック アプリを開きます。
-
-	![][2]
-2.	**[トリガーとアクション]** を開いて、Logic Apps デザイナーを開きます。
-
-	![][3]
-3.	Twitter コネクタは、右側に一覧表示されます。コネクタを選択すると、自動的にロジック アプリに追加されます。
-
-	![][4]
-4.	**[承認]** を選択し、Twitter の資格情報を入力します。**[アプリの承認]** を選択します。
-
-	![][5]
+1.	新しいロジック アプリを作成するか、既存のロジック アプリを開きます。  
+![][2]
+2.	**[トリガーとアクション]** を開いて、Logic Apps デザイナーを開きます。  
+![][3]
+3.	Twitter コネクタは、右側に一覧表示されます。コネクタを選択すると、自動的にロジック アプリに追加されます。  
+![][4]
+4.	**[承認]** を選択し、Twitter の資格情報を入力します。**[アプリの承認]** を選択します。  
+![][5]
 
 
-これで、Twitter コネクタを構成して、ワークフローを構築できます。Twitter トリガーを使って取得したツイートを、フローの他のアクションで使用できます。
-
+これで、Twitter コネクタを構成して、ワークフローを構築できます。Twitter トリガーを使って取得したツイートを、フローの他のアクションで使用できます。  
 ![][6]
 
-ワークフローで Twitter アクションを使用する方法もほぼ同じです。Twitter アクションを選択して、対象のアクションの入力を構成してください。
-
-![][7] 
+ワークフローで Twitter アクションを使用する方法もほぼ同じです。Twitter アクションを選択して、対象のアクションの入力を構成してください。  
+![][7]  
 ![][8]
 
 ## コネクタでできること
@@ -106,4 +95,4 @@ API アプリを作成した後は、ロジック アプリのトリガーまた
 [9]: ./media/app-service-logic-connector-twitter/settings.PNG
 [10]: ./media/app-service-logic-connector-twitter/TwitterAPISettings.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

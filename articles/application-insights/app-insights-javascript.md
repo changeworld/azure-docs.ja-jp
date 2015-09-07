@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="JavaScript Web アプリのための Application Insights" 
-	description="ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。JavaScript Web ページの例外とパフォーマンスの問題を検出します。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="alancameronwills" 
+<properties
+	pageTitle="JavaScript Web アプリのための Application Insights | Microsoft Azure"
+	description="ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。JavaScript Web ページの例外とパフォーマンスの問題を検出します。"
+	services="application-insights"
+	documentationCenter=""
+	authors="alancameronwills"
 	manager="douge"/>
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="07/10/2015" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="07/10/2015"
 	ms.author="awills"/>
- 
+
 # JavaScript Web アプリのための Application Insights
 
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
@@ -48,19 +48,19 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 追跡するすべてのページの &lt;/head&gt; タグの直前に、スクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。次に例を示します。
 
-* ASP.NET MVC プロジェクトで、View\\Shared\\\_Layout.cshtml にスクリプトを配置します。
+* ASP.NET MVC プロジェクトで、View\\Shared\\_Layout.cshtml にスクリプトを配置します。
 * SharePoint サイトのコントロール パネルで、[[サイト設定 / マスター ページ](app-insights-sharepoint.md)] を開きます。
 
 このスクリプトには、Application Insights リソースにデータを転送するインストルメンテーション キーが含まれています。
 
 *(よく知られている Web ページ フレームワークを使用している場合、Application Insights アダプターを探してください。たとえば、[AngularJS モジュール](http://ngmodules.org/modules/angular-appinsights)があります。)*
 
- 
+
 ## <a name="run"></a>アプリを実行する
 
-Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。F5 キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
+Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。**F5** キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
 
-Web アプリが Application Insights に送信している利用統計情報を確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで F12 です)。データは dc.services.visualstudio.com に送信されます。
+Web アプリが Application Insights に送信している利用統計情報を確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで **F12** です)。データは dc.services.visualstudio.com に送信されます。
 
 ## データを調査する
 
@@ -96,7 +96,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ## クライアント使用状況の概要
 
-概要ブレードに戻り、使用状況をクリックします。
+概要ブレードに戻り、**[使用状況]** をクリックします。
 
 ![](./media/app-insights-javascript/14-usage.png)
 
@@ -128,7 +128,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
     appInsights.trackPageView(myPageName);
 
-ページ名には、同じ文字を URL として含めることできますが、「\#」または「?」の後の文字はすべて無視されます。
+ページ名には、同じ文字を URL として含めることできますが、「#」または「?」の後の文字はすべて無視されます。
 
 
 ## 個別のページ ビュー イベントを調査する
@@ -147,7 +147,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ### ページ ビュー プロパティ
 
-* **ページ ビュー時間** ページの読み込みや、スクリプト実行の開始にかかる時間です。具体的には、ページ読み込みの開始から trackPageView の実行までの間隔です。スクリプトの初期化後、trackPageView をその定位置から移動した場合、別の値が反映されます。 
+* **ページ ビュー時間**: ページの読み込みや、スクリプト実行の開始にかかる時間です。具体的には、ページ読み込みの開始から trackPageView の実行までの間隔です。スクリプトの初期化後、trackPageView をその定位置から移動した場合、別の値が反映されます。
 
 ## 使用状況の追跡 (カスタム)
 
@@ -184,6 +184,4 @@ Web アプリが Application Insights に送信している利用統計情報を
 [qna]: app-insights-troubleshoot-faq.md
 [track]: app-insights-api-custom-events-metrics.md
 
- 
-
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

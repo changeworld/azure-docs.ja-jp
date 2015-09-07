@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication - 次の手順" 
-	description="これは、MFA で次に何を実行するかを説明する Azure Multi-factor Authentication のページです。レポート、不正アクセスの通報、ワンタイム バイパス、カスタム音声メッセージ、キャッシュ、信頼できる IP、およびアプリ パスワードの説明が含まれます。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure Multi-Factor Authentication - 次の手順"
+	description="これは、MFA で次に何を実行するかを説明する Azure Multi-factor Authentication のページです。レポート、不正アクセスの通報、ワンタイム バイパス、カスタム音声メッセージ、キャッシュ、信頼できる IP、およびアプリ パスワードの説明が含まれます。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/02/2015" 
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の構成
@@ -28,7 +28,7 @@
 [キャッシュ](#caching)|キャッシュは、以降の認証の試みが自動的に成功する特定の期間を設定できるようにします。 |認証キャッシュの設定および構成方法
 [信頼できる IP](#trusted-ips)|信頼できる IP は、管理者常駐型テナントまたはフェデレーション テナントの管理者が、会社のローカル イントラネットからサインインするユーザーの多要素認証をバイパスできるようにする多要素認証の機能です。|多要素認証の対象外となる IP アドレスの構成および設定	
 [アプリ パスワード](#app-passwords)|アプリ パスワードは、MFA (multi-factor authentication: 多要素認証) を認識しないアプリケーションが多要素認証をバイパスして動作を続行できるようにします。|アプリ パスワードに関する情報
-[記憶されたデバイスとブラウザーに対する多要素認証の一時停止 (パブリック プレビュー)](#suspend-multi-factor-authentication-for-remembered-devices-and-browsers-public-preview)|ユーザーが MFA を使用して正常にサインインした後、一定の日数の間 MFA を一時停止できます。|この機能の有効化と日数の設定に関する情報
+[記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の一時停止 (パブリック プレビュー)](#suspend-multi-factor-authentication-for-remembered-devices-and-browsers-public-preview)|ユーザーが MFA を使用して正常にサインインした後、一定の日数の間 MFA を一時停止できます。|この機能の有効化と日数の設定に関する情報
 
 
 
@@ -41,8 +41,8 @@
 
 1. [http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。
 2. 左側で、[Active Directory] を選択します。
-3. 上部にある [多要素認証プロバイダー] を選択します。多要素認証プロバイダーの一覧が表示されます。
-4. 複数の多要素認証プロバイダーがある場合は、不正アクセスのアラートを有効にするプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
+3. 上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。
+4. 複数の Multi-Factor Authentication プロバイダーがある場合は、不正アクセスのアラートを有効にするプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
 5. Azure Multi-Factor Authentication 管理ポータルで、左側の [設定] をクリックします。
 6. [不正アクセスのアラート] セクションで、[ユーザーが不正アクセスを通報できるようにする] をオンにします。
 7. 不正アクセスが通報されたときにユーザーをブロックする場合は、[不正アクセスを通報したユーザーをブロックする] をオンにします。
@@ -72,8 +72,8 @@
 
 1. [http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。
 2. 左側で、[Active Directory] を選択します。
-3. 上部にある [多要素認証プロバイダー] を選択します。多要素認証プロバイダーの一覧が表示されます。
-4. 複数の多要素認証プロバイダーがある場合は、不正アクセスのアラート レポートを表示するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
+3. 上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。
+4. 複数の Multi-Factor Authentication プロバイダーがある場合は、不正アクセスのアラート レポートを表示するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
 5. Azure Multi-Factor Authentication 管理ポータルで、左側の [レポートの表示] の下の [不正アクセスのアラート] をクリックします。
 6. レポートに表示する日付範囲を指定します。特定のユーザー名、電話番号、およびユーザーの状態を指定することもできます。
 7. [実行] をクリックします。次のようなレポートが表示されます。[CSV にエクスポート] をクリックして、レポートをエクスポートすることもできます。
@@ -86,9 +86,9 @@
 
 <ol>
 <li>[http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。</li>
-<li>左側の [Active Directory] を選択します。</li>
-<li>上部にある [多要素認証プロバイダー] を選択します。多要素認証プロバイダーの一覧が表示されます。</li>
-<li>複数の多要素認証プロバイダーがある場合は、ワンタイム バイパスを作成するユーザーのディレクトリに関連付けられているプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。</li>
+<li>左側で、[Active Directory] を選択します。</li>
+<li>上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。</li>
+<li>複数の Multi-Factor Authentication プロバイダーがある場合は、ワンタイム バイパスを作成するユーザーのディレクトリに関連付けられているプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。</li>
 <li>Azure Multi-Factor Authentication 管理ポータルで、左側の [ユーザーの管理] の下の [設定] をクリックします。</li>
 
 <center>![Cloud](./media/multi-factor-authentication-whats-next/create1.png)</center>
@@ -104,8 +104,8 @@
 
 1. [http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。
 2. 左側で、[Active Directory] を選択します。
-3. 上部にある [多要素認証プロバイダー] を選択します。多要素認証プロバイダーの一覧が表示されます。
-4. 複数の多要素認証プロバイダーがある場合は、不正アクセスのアラート レポートを表示するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
+3. 上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。
+4. 複数の Multi-Factor Authentication プロバイダーがある場合は、不正アクセスのアラート レポートを表示するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
 5. Azure Multi-Factor Authentication 管理ポータルで、左側の [レポートの表示] の下の [ワンタイム バイパス] をクリックします。
 6. レポートに表示する日付範囲を指定します。特定のユーザー名、電話番号、およびユーザーの状態を指定することもできます。
 7. [実行] をクリックします。次のようなレポートが表示されます。[CSV にエクスポート] をクリックして、レポートをエクスポートすることもできます。
@@ -128,9 +128,9 @@
 <ol>
 <li>サポートされているファイル形式のいずれかを使用してカスタム音声メッセージを作成します。この後のカスタム音声メッセージの推奨事項を参照してください。</li>
 <li>[http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。</li>
-<li>左側の [Active Directory] を選択します。</li>
-<li>上部にある [多要素認証プロバイダー] を選択します。多要素認証プロバイダーの一覧が表示されます。</li>
-<li>複数の多要素認証プロバイダーがある場合は、カスタム音声メッセージを構成するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。</li>
+<li>左側で、[Active Directory] を選択します。</li>
+<li>上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。</li>
+<li>複数の Multi-Factor Authentication プロバイダーがある場合は、カスタム音声メッセージを構成するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。</li>
 <li>Azure Multi-Factor Authentication 管理ポータルで、左側の [音声メッセージ] をクリックします。</li>
 
 <center>![Cloud](./media/multi-factor-authentication-whats-next/custom1.png)</center>
@@ -172,8 +172,8 @@
 
 1. [http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。
 2. 左側で、[Active Directory] を選択します。
-3. 上部にある [多要素認証プロバイダー] を選択します。多要素認証プロバイダーの一覧が表示されます。
-4. 複数の多要素認証プロバイダーがある場合は、不正アクセスのアラートを有効にするプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
+3. 上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。
+4. 複数のMulti-Factor Authentication プロバイダーがある場合は、不正アクセスのアラートを有効にするプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
 5. Azure Multi-Factor Authentication 管理ポータルで、左側の [キャッシュ] をクリックします。
 6. [キャッシュの構成] ページで [新しいキャッシュ] をクリックします。
 7. キャッシュの種類と、キャッシュする秒数を選択します。[作成] をクリックします。
@@ -228,6 +228,8 @@ Azure AD テナントの種類| 使用可能な信頼できる IP オプショ�
 >
 > Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートするようになり、Multi-Factor Authentication をサポートするように有効化できます。つまり、Multi-Factor Authentication を有効にすると、Office 2013 クライアントでアプリ パスワードは不要になります。詳しくは、「[発表された Office 2013 の最新の認証のパブリック プレビュー](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。
 
+
+
 ### アプリ パスワードについて理解しておくべきこと
 
 アプリ パスワードについて知っておくべきことの重要な事柄の一覧を次に示します。
@@ -240,6 +242,11 @@ Azure AD テナントの種類| 使用可能な信頼できる IP オプショ�
 - パスワードをキャッシュし、オンプレミスで使用するアプリは、アプリ パスワードが組織 ID の外では不明になるため、起動できないことがあります。例として、オンプレミスだが、アーカイブ メールはクラウド内にある Exchange メールがあります。同じパスワードは機能しません。
 - 実際のパスワードは自動的に生成され、ユーザーが指定することはありません。これは、自動的に生成されたパスワードのほうが攻撃者から推測されづらく、より安全なためです。
 - 現在は、1 ユーザーあたり 40 個というパスワード数の制限があります。この制限を超えて新しいパスワードを作成するには、既存のアプリ パスワードのいずれかを削除する必要があります。
+- ユーザーのアカウントで多要素認証を有効にすると、Outlook や Lync など、ほとんどのブラウザー クライアントでアプリ パスワードを利用できます。ただし、ユーザーに管理者アカウントが割り当てられている場合でも、Windows PowerShell などの非ブラウザー アプリケーションを介してアプリ パスワードで管理操作を実行することはできません。強固なパスワードでサービス アカウントを作成し、PowerShell スクリプトを実行してください。そのアカウントは多要素認証で有効にしないでください。
+
+>[AZURE.WARNING]クライアントがオンプレミスの自動検出エンドポイントとクラウドの自動検出エンドポイントの両方と通信するハイブリッド環境ではアプリ パスワードは機能しません。
+>
+>オンプレミスの認証にはドメイン パスワードが必要であり、クラウドで認証するにはアプリ パスワードが必要であるため、クライアントがオンプレミスの自動検出エンドポイントとクラウドの自動検出エンドポイントの両方と通信するハイブリッド環境ではアプリ パスワードは機能しないことに注意してください。
 
 
 ### アプリ パスワードの名前付けのガイダンス
@@ -285,7 +292,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 2. 左側の [Active Directory] をクリックします。
 3. [ディレクトリ] の下で、有効にするユーザーのディレクトリをクリックします。
 4. 上部の [ユーザー] をクリックします。
-5. ページ下部の [多要素認証の管理] をクリックします。[多要素認証] ページが開きます。
+5. ページ下部の [Multi-Factor Authentication の管理] をクリックします。[多要素認証] ページが開きます。
 6. [多要素認証] ページ上部の [サービス設定] をクリックします。
 7. [ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可する] の横のラジオ ボタンがオンになっていることを確認します。
 
@@ -302,9 +309,9 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 
 1. Office 365 ポータルにサインインします
 2. 右上隅の設定ウィジェットを選択します
-3. 左側の [追加のセキュリティ確認] を選択します。
+3. 左側で、[追加のセキュリティ確認] を選択します。
 4. 右側の **[アカウントのセキュリティのために使用される電話番号を更新]** を選択します。
-5. プルーフアップ ページの上部の [アプリ パスワード] を選択します。
+5. 確認ページの上部の [アプリ パスワード] を選択します。
 6. **[作成]** をクリックします。
 7. アプリ パスワードの名前を入力し、**[次へ]** をクリックします。
 8. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
@@ -327,20 +334,20 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 ### Office 365 または Azure のサブスクリプションがない場合にアプリ パスワードを作成するには
 --------------------------------------------------------------------------------
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。	
-2. 上部の [プロファイル] を選択します。
+2. 上部にある [プロファイル] を選択します。
 3. ユーザー名をクリックし、[追加のセキュリティ確認] を選択します。
-5. プルーフアップ ページの上部の [アプリ パスワード] を選択します。
+5. 確認ページの上部の [アプリ パスワード] を選択します。
 6. **[作成]** をクリックします。
 7. アプリ パスワードの名前を入力し、**[次へ]** をクリックします。
 8. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
 
 <center>![Cloud](./media/multi-factor-authentication-whats-next/myapp.png)</center>
 
-## 記憶されたデバイスとブラウザーに対する多要素認証を一時停止する (パブリック プレビュー)
+## 記憶されたデバイスとブラウザーに対する Multi-Factor Authentication を一時停止する (パブリック プレビュー)
 
-記憶されたデバイスとブラウザーに対する多要素認証の一時停止は、ユーザーが MFA を使用して正常にサインインした後、設定された日数にわたって MFA を一時停止するオプションをユーザーに与えることができる機能です。これはすべての MFA ユーザー向けの無料の機能であり、ユーザーの使いやすさを向上させます。ただし、ユーザーが MFA を一時停止できるため、この機能はアカウントのセキュリティを低下させる可能性があります。
+記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の一時停止は、ユーザーが MFA を使用して正常にサインインした後、設定された日数にわたって MFA を一時停止するオプションをユーザーに与えることができる機能です。これはすべての MFA ユーザー向けの無料の機能であり、ユーザーの使いやすさを向上させます。ただし、ユーザーが MFA を一時停止できるため、この機能はアカウントのセキュリティを低下させる可能性があります。
 
-ユーザー アカウントのセキュリティを確保するために、次に該当する場合はデバイスの多要素認証を復元する必要があります。
+ユーザー アカウントのセキュリティを確保するために、次に該当する場合はデバイスの Multi-Factor Authentication を復元する必要があります。
 
 - 企業アカウントが侵害されている場合
 - 記憶されたデバイスが紛失または盗まれた場合
@@ -358,4 +365,4 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 <li>[サービスの設定] ページで、[ユーザーのデバイス設定の管理] の下の [デバイスを記憶させることで多要素認証を一時停止することをユーザーに許可する] をオン/オフします。</li>
 ![デバイスの一時停止](./media/multi-factor-authentication-manage-users-and-devices/suspend.png) <li>一時停止を許可する日数を設定します。既定値は 14 日です。</li> <li>[保存] をクリックします。</li> 。<li>[閉じる] をクリックします。</li>
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

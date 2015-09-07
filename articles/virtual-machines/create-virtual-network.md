@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="チュートリアル: クラウド専用仮想ネットワークの作成" 
-	description="このチュートリアルでは、サンプルのクラウド専用 Azure Virtual Network を作成する方法について説明します。" 
-	services="virtual-machines, virtual-network" 
-	documentationCenter="" 
-	authors="cherylmc" 
-	manager="adinah" 
+	pageTitle="チュートリアル: クラウド専用仮想ネットワークの作成"
+	description="このチュートリアルでは、サンプルのクラウド専用 Azure Virtual Network を作成する方法について説明します。"
+	services="virtual-machines, virtual-network"
+	documentationCenter=""
+	authors="cherylmc"
+	manager="adinah"
 	editor=""/>
 
 <tags 
-	ms.service="virtual-network" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/18/2015" 
+	ms.service="virtual-network"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/17/2015"
 	ms.author="cherylmc"/>
 
 # チュートリアル: Azure でのクラウド専用仮想ネットワークの作成
@@ -24,7 +24,7 @@
 
 たとえば、FrontEndSubnet は Web サーバーに使用でき、BackEndSubnet は SQL Server またはドメイン コントローラーに使用できます。
 
-このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。目的は、構成の手順を実行して、読者が仮想ネットワークの作成に必要な手順を習得できるようにすることです。特定の構成で機能するクラウド専用の仮想ネットワークを作成するには、「[管理ポータルでのクラウド専用仮想ネットワークの構成](http://msdn.microsoft.com/library/azure/dn631643.aspx)」を参照してください。仮想ネットワークのデザイン シナリオや詳細情報については、[Azure Virtual Network の概要](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)に関するページを参照してください。
+このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。目的は、構成の手順を実行して、読者が仮想ネットワークの作成に必要な手順を習得できるようにすることです。特定の構成で機能するクラウド専用の仮想ネットワークを作成するには、「[管理ポータルでのクラウド専用仮想ネットワークの構成](../virtual-network/virtual-networks-create-vnet.md)」を参照してください。仮想ネットワークのデザイン シナリオや詳細情報については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
 
 > [AZURE.NOTE]このチュートリアルでは、仮想ネットワークを組織のネットワークに接続するクロスプレミス構成を作成する手順については説明しません。クロスプレミス接続とサイト間 VPN 接続 (社内の Active Directory または SharePoint への接続) が可能な仮想ネットワークの作成手順を説明するチュートリアルについては、[サイト間クロスプレミス接続用の仮想ネットワークの作成に関するチュートリアル](../virtual-network/virtual-networks-create-site-to-site-cross-premises-connectivity.md)を参照してください。
@@ -90,9 +90,9 @@ Azure インフラストラクチャ サービスについてさらに学習す�
 
 この仮想ネットワークを削除するには、選択して **[削除]**、**[はい]** の順にクリックします。
 
-特定の構成で機能するクラウド専用の仮想ネットワークを作成する準備ができたら、「[管理ポータルでのクラウド専用仮想ネットワークの構成](http://msdn.microsoft.com/library/azure/dn631643.aspx)」を参照してください。
+特定の構成で機能するクラウド専用の仮想ネットワークを作成する準備ができたら、「[管理ポータルでのクラウド専用仮想ネットワークの構成](../virtual-network/virtual-networks-create-vnet.md)」を参照してください。
 
-仮想ネットワークのデザイン シナリオや詳細情報については、[Azure Virtual Network の概要](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)に関するページを参照してください。
+仮想ネットワークのデザイン シナリオや詳細情報については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
 仮想ネットワーク構成のその他の手順と設定については、[Azure Virtual Network の構成タスク](http://go.microsoft.com/fwlink/p/?linkid=296652&clcid=0x409)に関するページを参照してください。
 
@@ -118,4 +118,4 @@ Azure インフラストラクチャ サービスについてさらに学習す�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,21 +1,21 @@
 <properties
    pageTitle="監視と診断のガイダンス | Microsoft Azure"
-   description="クラウド内の分散アプリケーションを監視するためのベスト プラクティスです。"
-   services=""
-   documentationCenter="na"
-   authors="dragon119"
-   manager="masimms"
-   editor=""
-   tags=""/>
+	description="クラウド内の分散アプリケーションを監視するためのベスト プラクティスです。"
+	services=""
+	documentationCenter="na"
+	authors="dragon119"
+	manager="masimms"
+	editor=""
+	tags=""/>
 
 <tags
    ms.service="best-practice"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="04/28/2015"
-   ms.author="masashin"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="04/28/2015"
+	ms.author="masashin"/>
 
 # 監視と診断のガイダンス
 
@@ -608,8 +608,8 @@ _図 6: 分析要件とストレージ要件に基づくデータのパーティ
 - Microsoft Web サイトのページ「[Azure Cloud Services および Virtual Machines 用の診断の構成](https://msdn.microsoft.com/library/azure/dn186185.aspx)」。
 - Microsoft Web サイトの [Azure Redis Cache](http://azure.microsoft.com/services/cache/)、[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/)、および [HDInsight](http://azure.microsoft.com/services/hdinsight/) に関するページ。
 - Microsoft Web サイトのページ「[Service Bus キューの使用方法](http://azure.microsoft.com/)」。
-- Microsoft Web サイトの記事「[Azure の仮想マシンでの SQL Server Business Intelligence](https://msdn.microsoft.com/library/azure/jj992719.aspx)」。
+- Microsoft Web サイトの記事「[Azure の仮想マシンでの SQL Server Business Intelligence](./virtual-machines/virtual-machines-sql-server-business-intelligence.md)」。
 - Microsoft Web サイトのページ「[Azure の監視アラートと通知について](https://msdn.microsoft.com/library/azure/dn306639.aspx)」。
 - Microsoft web サイトの [Application Insights](app-insights-get-started/) に関するページ。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

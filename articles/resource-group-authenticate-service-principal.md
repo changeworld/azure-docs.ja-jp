@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure リソース マネージャーでのサービス プリンシパルの認証"
-   description="ロール ベースのアクセス制御を使用して、サービス プリンシパルにアクセス権限を付与し、それを認証する方法について説明します。PowerShell と Azure CLI を使用してこれらのタスクを実行する方法を示します。"
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+	description="ロール ベースのアクセス制御を使用して、サービス プリンシパルにアクセス権限を付与し、それを認証する方法について説明します。PowerShell と Azure CLI を使用してこれらのタスクを実行する方法を示します。"
+	services="azure-resource-manager"
+	documentationCenter="na"
+	authors="tfitzmac"
+	manager="wpickett"
+	editor=""/>
 
 <tags
    ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="multiple"
-   ms.workload="na"
-   ms.date="08/14/2015"
-   ms.author="tomfitz"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="08/25/2015"
+	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのサービス プリンシパルの認証
 
@@ -25,13 +25,18 @@
 Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を利用できます。Azure PowerShell がインストールされていない場合、[Azure PowerShell のインストールと構成の方法](./powershell-install-configure.md)を参照してください。Azure CLI がインストールされていない場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
 
 ## 概念
-1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、[Azure Active Directory とは何ですか。](active-directory/active-directory-whatis.md)を参照してください。
+1. Azure Active Directory (AAD) - クラウドの ID およびアクセス管理サービス。詳しくは、「[Azure Active Directory とは](active-directory/active-directory-whatis.md)」を参照してください。
 2. サービス プリンシパル - 他のリソースにアクセスする必要がある、ディレクトリ内のアプリケーションのインスタンス。
 3. AD アプリケーション - AAD に対してアプリケーションを特定するディレクトリ レコード。詳しくは、[Azure AD での認証の基本](https://msdn.microsoft.com/library/azure/874839d9-6de6-43aa-9a5c-613b0c93247e#BKMK_Auth)を参照してください。
 
 ## パスワードによるサービス プリンシパルの認証 - PowerShell
 
 このセクションでは、Azure Active Directory アプリケーションのサービス プリンシパルを作成し、ロールをサービス プリンシパルに割り当て、アプリケーションの ID とパスワードを指定することでサービス プリンシパルとして認証する手順を実行します。
+
+1. Azure リソース マネージャー モードに切り替えて、アカウントにサインインします。
+
+        PS C:\> Switch-AzureMode AzureResourceManager
+        PS C:\> Add-AzureAccount
 
 1. **New-AzureADApplication** コマンドを実行して、新しい AAD アプリケーションを作成します。アプリケーションの表示名、アプリケーションを説明するページへの URI (リンクが確認されていません)、アプリケーションを識別する URI、およびアプリケーション ID のパスワードを指定します。
 
@@ -98,6 +103,24 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 
      これで、作成した AAD アプリケーションのサービス プリンシパルとして認証されるはずです。
 
+7. アプリケーションから認証するには、次の .NET コードを含めます。トークンを取得すると、サブスクリプションのリソースにアクセスできます。
+
+        public static string GetAToken()
+        {
+          var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantId or tenant name}");  
+          var credential = new ClientCredential(clientId: "{application id}", clientSecret: {application password}");
+          var result = authenticationContext.AcquireToken(resource: "https://management.core.windows.net/", clientCredential:credential);
+
+          if (result == null) {
+            throw new InvalidOperationException("Failed to obtain the JWT token");
+          }
+
+          string token = result.AccessToken;
+
+          return token;
+        }
+
+
 
 ## 証明書によるサービス プリンシパルの認証 - PowerShell
 
@@ -106,6 +129,11 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 証明書を使用するための 2 つの方法を示します。キーの資格情報とキーの値です。いずれかの方法を使用できます。
 
 最初に、後にアプリケーションを作成するときに使用するいくつかの値を PowerShell に設定する必要があります。
+
+1. Azure リソース マネージャー モードに切り替えて、アカウントにサインインします。
+
+        PS C:\> Switch-AzureMode AzureResourceManager
+        PS C:\> Add-AzureAccount
 
 1. いずれの方法でも、証明書から X509Certificate オブジェクトを作成し、キーの値を取得します。証明書のパスとその証明書のパスワードを使用します。
 
@@ -172,11 +200,11 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 
         PS C:\> New-AzureRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId
 
-6. アプリケーションから認証するには、次のコードを含めます。クライアントを取得すると、サブスクリプションのリソースにアクセスできます。
+6. アプリケーションから認証するには、次の .NET コードを含めます。クライアントを取得すると、サブスクリプションのリソースにアクセスできます。
 
-        string clientId = "<Client ID for your AAD app>"; 
+        string clientId = "<Application ID for your AAD app>"; 
         var subscriptionId = "<Your Azure SubscriptionId>"; 
-        string tenant = "<AAD tenant name>.onmicrosoft.com"; 
+        string tenant = "<Tenant id or tenant name>"; 
 
         var authContext = new AuthenticationContext(string.Format("https://login.windows.net/{0}", tenant)); 
 
@@ -205,7 +233,12 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 
 まず、サービス プリンシパルを作成します。これを行うには、ディレクトリにアプリケーションを作成する必要があります。このセクションでは、ディレクトリに新しいアプリケーションを作成する手順を示します。
 
-1. **azure ad app create** コマンドを実行して、新しい AAD アプリケーションを作成します。アプリケーションの表示名、アプリケーションを説明するページへの URI (リンクが確認されていません)、アプリケーションを識別する URI、およびアプリケーション ID のパスワードを指定します。
+1. Azure リソース マネージャー モードに切り替えて、アカウントにサインインします。
+
+        azure config mode arm
+        azure login
+
+2. **azure ad app create** コマンドを実行して、新しい AAD アプリケーションを作成します。アプリケーションの表示名、アプリケーションを説明するページへの URI (リンクが確認されていません)、アプリケーションを識別する URI、およびアプリケーション ID のパスワードを指定します。
 
         azure ad app create --name "<Your Application Display Name>" --home-page "<https://YourApplicationHomePage>" --identifier-uris "<https://YouApplicationUri>" --password <Your_Password>
         
@@ -221,7 +254,7 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
         ...
         info:    ad app create command OK
 
-2. アプリケーションのサービス プリンシパルを作成します。前の手順で返されたアプリケーション ID を入力します。
+3. アプリケーションのサービス プリンシパルを作成します。前の手順で返されたアプリケーション ID を入力します。
 
         azure ad sp create b57dd71d-036c-4840-865e-23b71d8098ec
         
@@ -236,15 +269,15 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 
     これでディレクトリにサービス プリンシパルが作成されましたが、そのサービスには権限やスコープが割り当てられていません。いくつかのスコープで操作を実行する権限を、サービス プリンシパルに明示的に付与する必要があります。
 
-3. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、[Managing and Auditing Access to Resources (リソースへのアクセスの管理と監査)](azure-portal/resource-group-rbac.md) を参照してください。
+4. サブスクリプションに対する権限をサービス プリンシパルに付与します。このサンプルでは、サブスクリプション内のすべてのリソースを読み取る権限をサービス プリンシパルに付与します。**ServicePrincipalName** パラメーターには、アプリケーションを作成するときに使用した **ApplicationId** または **IdentifierUris** を指定します。ロール ベースのアクセス制御について詳しくは、[Managing and Auditing Access to Resources (リソースへのアクセスの管理と監査)](azure-portal/resource-group-rbac.md) を参照してください。
 
         azure role assignment create --objectId 47193a0a-63e4-46bd-9bee-6a9f6f9c03cb -o Reader -c /subscriptions/{subscriptionId}/
 
-4. アカウントを一覧表示し、その出力から **TenantId** プロパティを検索することによって、サービス プリンシパルのロールの割り当てが存在するテナントの **TenantId** を決めます。
+5. アカウントを一覧表示し、その出力から **TenantId** プロパティを検索することによって、サービス プリンシパルのロールの割り当てが存在するテナントの **TenantId** を決めます。
 
         azure account list
 
-5. サービス プリンシパルを ID として使用してサインインします。ユーザー名には、アプリケーションの作成時に使用した **ApplicationId** を使用します。パスワードには、アカウントの作成時に指定したものを使用します。
+6. サービス プリンシパルを ID として使用してサインインします。ユーザー名には、アプリケーションの作成時に使用した **ApplicationId** を使用します。パスワードには、アカウントの作成時に指定したものを使用します。
 
         azure login -u "<ApplicationId>" -p "<password>" --service-principal --tenant "<TenantId>"
 
@@ -260,4 +293,4 @@ Azure PowerShell を利用するか、Azure CLI for Mac, Linux and Windows を�
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

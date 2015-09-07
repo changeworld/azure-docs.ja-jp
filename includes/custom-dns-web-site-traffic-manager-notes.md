@@ -1,3 +1,3 @@
-トラフィック マネージャーのプロファイルをまだ作成していない場合は、「[簡易作成による Traffic Manager プロファイルの作成](/library/windowsazure/dn339012.aspx)」の手順に従って作成します。トラフィック マネージャー プロファイルに関連付けられている **.trafficmanager.net** ドメイン名は、このドキュメントの後の手順で使用するのでメモしておいてください。
+トラフィック マネージャーのプロファイルをまだ作成していない場合は、「[簡易作成による Traffic Manager プロファイルの作成](../traffic-manager/traffic-manager-manage-profiles.md)」の手順に従って作成します。トラフィック マネージャー プロファイルに関連付けられている **.trafficmanager.net** ドメイン名は、このドキュメントの後の手順で使用するのでメモしておいてください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Fiddler を使用して Azure Search REST API を評価およびテストする方法"
+	pageTitle="Fiddler を使用して Azure Search REST API を評価およびテストする方法 | Microsoft Azure"
 	description="コードを作成せずに、Fiddler を使用して、Azure Search の可用性を検証し、REST API を試してみます。"
 	services="search"
 	documentationCenter=""
@@ -16,7 +16,7 @@
 	ms.date="07/08/2015"
 	ms.author="heidist"/>
 
-# Fiddler を使用して Azure Search REST API を評価およびテストする方法
+# Fiddler を使用して Azure Search REST API を評価およびテストする
 
 この記事では、コードを記述することなく、[Telerik から無料でダウンロードできる](http://www.telerik.com/fiddler) Fiddler を利用し、Azure Search REST API を使用して HTTP 要求を発行し、応答を表示する方法について説明します。Azure Search サービス REST API については、[MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。
 
@@ -26,16 +26,16 @@
 
 ## インデックスを作成する
 
-1. Fiddler を起動します。ファイル メニューの **[トラフィックのキャプチャ]** をオフにして、現在のタスクには関係ない外部の HTTP アクティビティを非表示にします。
+1. Fiddler を起動します。**[ファイル]** メニューの **[トラフィックのキャプチャ]** をオフにして、現在のタスクには関係ない外部の HTTP アクティビティを非表示にします。
 
-3. [Composer] タブで、次のような要求を生成します。
+3. **[Composer]** タブで、次のスクリーン ショットのような要求を生成します。
 
   	![][1]
 
 2. **[PUT]** を選択します。
 
 3. サービス URL、要求属性、および API バージョンを指定する URL を入力します。次の点に留意してください。
-   + HTTPS をプレフィックスとして使用する
+   + HTTPS をプレフィックスとして使用します。
    + 要求属性は "/indexes/hotels" です。この属性は Search に "hotels" という名前のインデックスを作成することを指定します。
    + API バージョンは、小文字で「?api-version=2015-02-28」と指定します。Azure Search は定期的に更新をデプロイするため、API バージョンは重要です。まれに、サービスの更新により API に対する重要な変更が発生する可能性があります。API バージョンを使用すると、既存のバージョンの使用を継続して、必要に応じて新しいバージョンにアップグレードすることができます。
 
@@ -77,7 +77,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 ## ドキュメントを読み込む
 
-[Composer] タブでは、ドキュメントを送信する要求を次のように記述します。要求の本文には、4 つの hotel の検索データが含まれています。
+**[Composer]** タブでは、ドキュメントを送信する要求を次のように記述します。要求の本文には、4 つの hotel の検索データが含まれています。
 
    ![][2]
 
@@ -163,7 +163,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 ## インデックスのクエリを実行する
 
-インデックスとドキュメントが読み込まれたら、クエリを発行することができます。[Composer] タブで、サービスのクエリを実行する GET コマンドは次のようになります。
+インデックスとドキュメントが読み込まれたら、クエリを発行することができます。**[Composer]** タブで、サービスのクエリを実行する **GET** コマンドは次のスクリーン ショットようになります。
 
    ![][3]
 
@@ -182,7 +182,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
         content-type: application/json
         api-key: 1111222233334444
 
-応答コードは 200 で、応答出力は次の図のようになります。
+応答コードは 200 で、応答出力は次のスクリーン ショットのようになります。
 
    ![][4]
 
@@ -198,7 +198,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 ## システムのクエリを実行する
 
-システムのクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。[Composer] タブでは、要求は次のように表示され、応答ではドキュメント数と使用されているストレージ領域が返されます。
+システムのクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。**[Composer]** タブでは、要求は次のように表示され、応答ではドキュメント数と使用されているストレージ領域が返されます。
 
  ![][5]
 
@@ -219,13 +219,13 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 5.	**[実行]** をクリックします。セッション一覧に、状態コード HTTP 200 が表示されます。コマンドに対して送信されたエントリを選択します。
 
-6.	**[インスペクター]** タブの **[ヘッダー]** をクリックし、JSON 形式を選択します。ドキュメント数とストレージ サイズ (KB) が表示されます。
+6.	**[インスペクター]** タブをクリックし、**[ヘッダー]** タブをクリックし、JSON 形式を選択します。ドキュメント数とストレージ サイズ (KB) が表示されます。
 
 ## 次のステップ
 
 コードを作成しないで Azure Search を管理および使用する方法の詳細については、次のリンクを参照してください。
 
--  [Microsoft Azure で検索サービスを管理する](search-manage.md)
+-  [Microsoft Azure で Search サービスを管理する](search-manage.md)
 -  [Azure Search で Chrome Postman を使用する方法](search-chrome-postman.md)
 
 <!--Image References-->
@@ -234,6 +234,5 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [3]: ./media/search-fiddler/AzureSearch_Fiddler3_Query.png
 [4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png
 [5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,28 +1,28 @@
 <properties 
-	pageTitle="チュートリアルの出力データを内部設置型 SQL Server データベースにコピーする" 
-	description="このチュートリアルでは、Data Factory のチュートリアルを拡張し、内部設置型 SQL Server データベースにマーケティング キャンペーンの有効性のデータをコピーします。"
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="チュートリアルの出力データをオンプレミスの SQL Server データベースにコピーする"
+	description="このチュートリアルでは、Data Factory のチュートリアルを拡張し、オンプレミスの SQL Server データベースにマーケティング キャンペーンの有効性のデータをコピーします。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/07/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2015"
 	ms.author="spelluru"/>
 
 
-# チュートリアル: 内部設置型 SQL Server データベースへのキャンペーンの有効性のデータのコピー
-このチュートリアルでは、パイプラインが内部設置型のデータを扱えるようにするため、その環境を設定する方法を学びます。
+# チュートリアル: オンプレミスの SQL Server データベースへのキャンペーンの有効性のデータのコピー
+このチュートリアルでは、パイプラインがオンプレミスのデータを扱えるようにするため、その環境を設定する方法を学びます。
  
-パーティション -> 強化 -> 分析のワークフローを含む最初のチュートリアルにおいて、ログ処理のシナリオの最後の手順で、マーケティング キャンペーンの有効性のアウトプットが Azure SQL データベースにコピーされました。分析のため、所属する組織内にある内部設置型の SQL Server にこのデータを移動することも可能です。
+パーティション -> 強化 -> 分析のワークフローを含む最初のチュートリアルにおいて、ログ処理のシナリオの最後の手順で、マーケティング キャンペーンの有効性のアウトプットが Azure SQL データベースにコピーされました。分析のため、所属する組織内にあるオンプレミスの SQL Server にこのデータを移動することも可能です。
  
-マーケティング キャンペーンの有効性データを Azure BLOB から内部設置型の SQL Server にコピーするため、最初のチュートリアルで導入したものと同じコマンドレット一式を使って、内部設置型のリンクされたサービス、テーブル、およびパイプラインを追加で作成する必要があります。
+マーケティング キャンペーンの有効性データを Azure BLOB からオンプレミスの SQL Server にコピーするため、最初のチュートリアルで導入したものと同じコマンドレット一式を使って、オンプレミスのリンクされたサービス、テーブル、およびパイプラインを追加で作成する必要があります。
 
 ## 前提条件
 
@@ -33,11 +33,11 @@
 
 このチュートリアルでは、次の手順に従います。
 
-1. [手順 1: Data Management Gateway を作成する](#OnPremStep1)。Data Management Gateway は、所属する組織内の内部設置型のデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、内部設置型の SQL Server と Azure データ ストアの間でデータ転送が可能になります。	
+1. [手順 1: Data Management Gateway を作成する](#OnPremStep1)。Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。	
 
-	内部設置型の SQL Server データベースをリンクされたサービスとして Azure データ ファクトリに追加する前に、企業環境内に少なくとも 1 つのゲートウェイがインストールされており、それが Azure Data Factory に登録されている必要があります。
+	オンプレミスの SQL Server データベースをリンクされたサービスとして Azure データ ファクトリに追加する前に、企業環境内に少なくとも 1 つのゲートウェイがインストールされており、それが Azure Data Factory に登録されている必要があります。
 
-2. [手順 2: 内部設置型の SQL Server 用にリンクされたサービスを作成する](#OnPremStep2)。この手順では、まず内部設置型の SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスの **OnPremSqlLinkedService** を作成します。
+2. [手順 2: オンプレミスの SQL Server 用にリンクされたサービスを作成する](#OnPremStep2)。この手順では、まずオンプレミスの SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスの **OnPremSqlLinkedService** を作成します。
 3. [手順 3: テーブルとパイプラインを作成する](#OnPremStep3)。この手順では、**MarketingCampaignEffectivenessOnPremSQLTable** テーブルと **EgressDataToOnPremPipeline** パイプラインを作成します。 
 
 4. [手順 4: パイプラインを監視して結果を確認する](#OnPremStep4)。この手順では、Azure ポータルを使用して、パイプライン、テーブル、およびデータ スライスを監視します。
@@ -45,9 +45,9 @@
 
 ## <a name="OnPremStep1"></a>手順 1: Data Management Gateway を作成する
 
-Data Management Gateway は、所属する組織内の内部設置型のデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、内部設置型の SQL Server と Azure データ ストアの間でデータ転送が可能になります。
+Data Management Gateway は、所属する組織内のオンプレミスのデータ ソースに、クラウドからのアクセスを提供するクライアント エージェントです。このゲートウェイによって、オンプレミスの SQL Server と Azure データ ストアの間でデータ転送が可能になります。
   
-内部設置型の SQL Server データベースをリンクされたサービスとして Azure データ ファクトリに追加する前に、企業環境内に少なくとも 1 つのゲートウェイがインストールされており、それが Azure Data Factory に登録されている必要があります。
+オンプレミスの SQL Server データベースをリンクされたサービスとして Azure データ ファクトリに追加する前に、企業環境内に少なくとも 1 つのゲートウェイがインストールされており、それが Azure Data Factory に登録されている必要があります。
 
 すでに使用できるデータ ゲートウェイがある場合は、この手順をスキップします。
 
@@ -64,11 +64,11 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
 9. **[OK]** をクリックして **[構成]** ブレードを閉じ、**[OK]** をクリックして **[作成]** ブレードを閉じます。**[関連付けられているサービス]** ブレードの **MyGateway** の状態が **[良好]** に変わるまで待ちます。また、**Data Management Gateway Configuration Manager (プレビュー)** ツールを起動し、ゲートウェイの名前がポータル上の名前と一致すること、および**状態**が **[登録済み]** であることを確認することもできます。最新の状態を確認するため、場合によっては [リンクされたサービス] ブレードをいったん閉じて再度開く必要があります。画面が最新の状態に更新されるまで、数分かかる場合があります。
 
-## <a name="OnPremStep2"></a>手順 2: 内部設置型の SQL Server 用にリンクされたサービスを作成する。
+## <a name="OnPremStep2"></a>手順 2: オンプレミスの SQL Server 用にリンクされたサービスを作成する。
 
-この手順では、まず内部設置型の SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスを作成します。
+この手順では、まずオンプレミスの SQL Server コンピューター上にデータベースとテーブルを作成し、その後リンクされたサービスを作成します。
 
-### 内部設置型のデータベースとテーブルを準備する
+### オンプレミスのデータベースとテーブルを準備する
 
 最初に、SQL Server データベース、テーブル、ユーザー定義型、およびストアド プロシージャを作成する必要があります。これらは **MarketingCampaignEffectiveness** の結果を Azure BLOB から SQL Server データベースに移動するために使用されます。
 
@@ -141,7 +141,7 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
  
 **MarketingCampaignEffectivenessOnPremSQLTable** テーブルのスライスの状態が [準備完了] に変われば、パイプラインがスライスの実行を完了したことを意味します。結果を表示するには、SQL Server 内の **MarketingCampaigns** データベースの **MarketingCampaignEffectiveness** テーブルにクエリを実行します。
  
-ご利用ありがとうございます。 内部設置型のデータ ソースを使用するためのチュートリアルを無事に終了しました。
+ご利用ありがとうございます。 オンプレミスのデータ ソースを使用するためのチュートリアルを無事に終了しました。
  
 
 [monitor-manage-using-powershell]: data-factory-monitor-manage-using-powershell.md
@@ -152,8 +152,7 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 [datafactorytutorial]: data-factory-tutorial-using-powershell.md
 [adfgetstarted]: data-factory-get-started.md
 [adfintroduction]: data-factory-introduction.md
-[useonpremisesdatasources]: data-factory-use-onpremises-datasources.md
-[usepigandhive]: data-factory-pig-hive-activities.md
+[useonpremisesdatasources]: data-factory-move-data-between-onprem-and-cloud.md
 
 [azure-preview-portal]: http://portal.azure.com
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
@@ -171,4 +170,4 @@ Data Management Gateway は、所属する組織内の内部設置型のデー�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

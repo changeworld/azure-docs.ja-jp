@@ -1,19 +1,19 @@
 <properties 
    pageTitle="ExpressRoute の概要 | Microsoft Azure"
-   description="このページでは、ExpressRoute 接続のしくみ、Exchange プロバイダーとネットワーク サービス プロバイダー、ExpressRoute のパブリック ピアリング、プライベート ピアリング、Microsoft ピアリングの使用を含む、ExpressRoute サービスの概要について説明します。"
-   documentationCenter="na"
-   services="expressroute"
-   authors="cherylmc"
-   manager="adinah"
-   editor="tysonn"/>
+	description="このページでは、ExpressRoute 接続のしくみ、Exchange プロバイダーとネットワーク サービス プロバイダー、ExpressRoute のパブリック ピアリング、プライベート ピアリング、Microsoft ピアリングの使用を含む、ExpressRoute サービスの概要について説明します。"
+	documentationCenter="na"
+	services="expressroute"
+	authors="cherylmc"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="article" 
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services" 
-   ms.date="06/15/2015"
-   ms.author="cherylmc"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/25/2015"
+	ms.author="cherylmc"/>
 
 # ExpressRoute の技術概要
 
@@ -104,4 +104,4 @@ Azure Storage、SQL Database、Websites などのサービスは、パブリッ�
 - サービス プロバイダーを検索します。[ExpressRoute のサービス プロバイダーと提供地域](expressroute-locations.md)に関するページをご覧ください。
 - ExpressRoute 接続を構成します。手順については、「[ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)」または「[Exchange プロバイダーを通じて ExpressRoute 接続を構成する](expressroute-configuring-exps.md)」をご覧ください。 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

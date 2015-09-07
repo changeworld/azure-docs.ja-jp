@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure インフラストラクチャ サービスのワークロード: イントラネット SharePoint ファーム"
-	description="Azure でデプロイしたイントラネット SharePoint ファームの価値、開発/テスト環境のセットアップ方法、および高可用な運用構成をデプロイする方法について説明します。"
+	pageTitle="Azure の SharePoint Server 2013 ファーム | Microsoft Azure"
+	description="Azure の SharePoint Server 2013 ファームの価値について説明し、テスト環境の設定および高可用性構成のデプロイを実行します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="JoeDavies-MSFT"
@@ -124,4 +124,4 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

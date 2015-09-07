@@ -1,20 +1,20 @@
 <properties
    pageTitle="状態の定義と管理"
-   description="Service Fabric でサービスの状態を定義し管理する方法"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="appi101"
-   manager="timlt"
-   editor=""/>
+	description="Service Fabric でサービスの状態を定義し管理する方法"
+	services="service-fabric"
+	documentationCenter=".net"
+	authors="appi101"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="04/13/2015"
-   ms.author="aprameyr"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/26/2015"
+	ms.author="aprameyr"/>
 
 # サービスの状態
 **サービスの状態** とは、サービスが機能するために必要とするデータのことです。これは、サービスが機能するために読み取りや書き込みをする、データ構造および変数を指します。
@@ -41,4 +41,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 - [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

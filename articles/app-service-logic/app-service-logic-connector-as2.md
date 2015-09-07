@@ -1,23 +1,25 @@
 <properties 
-   pageTitle="Microsoft Azure App Service での AS2 コネクタの使用" 
-   description="AS2 コネクタの使用方法" 
-   services="app-service\logic" 
-   documentationCenter=".net,nodejs,java" 
-   authors="rajeshramabathiran" 
-   manager="dwrede" 
-   editor=""/>
+   pageTitle="Logic Apps での AS2 コネクタの使用 | Microsoft Azure App Service"
+	description="AS2 コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="rajeshramabathiran"
+	manager="dwrede"
+	editor=""/>
 
 <tags
    ms.service="app-service-logic"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="integration" 
-   ms.date="08/19/2015"
-   ms.author="rajram"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="integration"
+	ms.date="08/23/2015"
+	ms.author="rajram"/>
 
-# Microsoft AS2 コネクタ
-Microsoft Azure AS2 コネクタにより、AS2 (Applicability Statement 2) トランスポート プロトコルを使用した企業間通信におけるメッセージの送受信が可能になります。データはインターネット経由で安全かつ確実に転送されます。セキュリティはデジタル証明書と暗号化を使用して実現されています。
+# AS2 コネクタの使用開始とロジック アプリへの追加
+AS2 コネクタを使って、AS2 (Applicability Statement 2) トランスポート プロトコルにより企業間通信でメッセージの送受信を行います。データはインターネット経由で安全かつ確実に転送されます。セキュリティはデジタル証明書と暗号化を使用して実現されています。
+
+AS2 コネクタをビジネス ワークフローに追加し、ロジック アプリ内の企業間ワークフローの一部としてデータを処理できます。
 
 ## トリガーとアクション
 トリガーは、パートナーからの AS2 メッセージの着信などの特定のイベントに応じて新しいインスタンスを起動します。アクションは、AS2 メッセージを受け取った後に、AS2 を使用してこのメッセージを送信するなどの結果を指します。
@@ -113,4 +115,4 @@ AS2 の宛先 | 文字列 | AS2 メッセージの受信側の AS2 の ID。こ�
 [9]: ./media/app-service-logic-connector-as2/EncodeAndSendInput.PNG
 [10]: ./media/app-service-logic-connector-as2/EncodeAndSendConfigured.PNG
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

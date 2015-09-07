@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="カスタムのイベントとメトリックのための Application Insights API" 
-	description="デバイスまたはデスクトップ アプリケーション、Web ページまたはサービスに数行のコードを追加し、使用状況を追跡し、問題を診断します。" 
+	pageTitle="カスタムのイベントとメトリックのための Application Insights API"
+	description="デバイスまたはデスクトップ アプリケーション、Web ページまたはサービスに数行のコードを追加し、使用状況を追跡し、問題を診断します。"
 	services="application-insights"
-    documentationCenter="" 
-	authors="alancameronwills" 
+	documentationCenter=""
+	authors="alancameronwills"
 	manager="douge"/>
  
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="08/18/2015" 
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -52,7 +52,7 @@ Application Insights でデータを集めるとき、この API を使用すれ
 
 * デバイスまたは Web サーバー コードに次を追加します。
 
-    *C\#:* `using Microsoft.ApplicationInsights;`
+    *C#:* `using Microsoft.ApplicationInsights;`
 
     *VB:* `Imports Microsoft.ApplicationInsights`
 
@@ -62,7 +62,7 @@ Application Insights でデータを集めるとき、この API を使用すれ
 
 TelemetryClient のインスタンスの作成 (Web ページの JavaScript を除く):
 
-*C\#:*
+*C#:*
 
     private TelemetryClient telemetry = new TelemetryClient();
 
@@ -82,7 +82,7 @@ TelemetryClient はスレッド セーフです。
 
 ## イベントを追跡する
 
-イベントは [メトリック エクスプローラー][metrics]に総数として表示できます。[診断検索][diagnostic]の個別出現回数を表示することもできます。
+イベントは[メトリックス エクスプローラー][metrics]に総数として表示できます。[診断検索][diagnostic]の個別出現回数を表示することもできます。
 
 イベントをコードに挿入し、特定の機能を使用する頻度、特定の目標を達成する頻度、特定の選択を行う頻度を数えます。
 
@@ -92,7 +92,7 @@ TelemetryClient はスレッド セーフです。
 
     appInsights.trackEvent("WinGame");
 
-*C\#*
+*C#*
     
     telemetry.TrackEvent("WinGame");
 
@@ -148,7 +148,7 @@ TelemetryClient はスレッド セーフです。
          {Score: currentGame.score, Opponents: currentGame.opponentCount}
          );
 
-*C\#*
+*C#*
 
     // Set up some properties and metrics:
     var properties = new Dictionary <string, string> 
@@ -190,7 +190,7 @@ TelemetryClient はスレッド セーフです。
 
 > [AZURE.NOTE]プロパティで個人を特定できる情報を記録しないように注意します。
 
-**メトリックを使用した場合**、メトリック エクスプ ローラーを開き、カスタム グループからメトリックを選択します。
+**メトリックを使用した場合**、メトリック エクスプローラーを開き、カスタム グループからメトリックを選択します。
 
 ![メトリック エクスプローラーを開き、グラフを選択し、メトリックを選択する](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
@@ -238,7 +238,7 @@ TelemetryClient はスレッド セーフです。
 何らかのアクションを実行するためにかかる時間をグラフに示す必要が生じることがあります。たとえば、ユーザーがゲームで選択肢について考える時間について調べることができます。これは、測定のパラメーターの使用に役立つ例です。
 
 
-*C\#*
+*C#*
 
     var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
@@ -271,7 +271,7 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
 
     appInsights.trackMetric("Queue", queue.Length);
 
-*C\#*
+*C#*
 
     telemetry.TrackMetric("Queue", queue.Length);
 
@@ -285,7 +285,7 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
 
 実際には、バックグラウンド スレッドでこれを行うことがあります。
 
-*C\#*
+*C#*
 
     private void Run() {
      var appInsights = new TelemetryClient();
@@ -296,7 +296,7 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
     }
 
 
-結果を表示するには、メトリック エクスプローラーを開き、新しいグラフを追加します。メトリックを表示するように設定します。
+結果を表示するには、メトリックス エクスプローラーを開き、新しいグラフを追加します。メトリックを表示するように設定します。
 
 ![新しいグラフを追加するか、グラフを選択して、[カスタム] の下でメトリックを選択する](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
@@ -316,7 +316,7 @@ TrackMetric を使用し、特定のイベントに関連付けられていな�
 
     appInsights.trackPageView("tab1");
 
-*C\#*
+*C#*
 
     telemetry.TrackPageView("GameReviewPage");
 
@@ -337,7 +337,7 @@ HTTP 要求を記録するために、サーバー SDK によって使用され�
 
 Web サービス モジュールが実行されていない状況で要求をシミュレーションする場合に、これを自分で呼び出すこともできます。
 
-*C\#*
+*C#*
 
     // At start of processing this request:
 
@@ -358,7 +358,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 例外を Application Insights に送信して[数え][metrics]、問題の発生頻度を示し、[個々の問題を調べます][diagnostic]。レポートにはスタック トレースが含まれます。
 
-*C\#*
+*C#*
 
     try
     {
@@ -381,7 +381,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 [ログ アダプター][trace]はこの API を使用し、ポータルにサード パーティのログを送信します。
 
 
-*C\#*
+*C#*
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 
@@ -411,11 +411,41 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 
 標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) を編集して `DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。
 
+
+## 認証されたユーザー
+
+Web アプリでは、ユーザーは既定で Cookie により識別されます。ユーザーは、別のコンピューターまたはブラウザーからアプリにアクセスしたり、Cookie を削除した場合、複数回カウントされることがあります。
+
+ただし、ユーザーがアプリにサインインしていれば、ブラウザーのコードに認証されたユーザーの ID を設定して、より正確な数値を取得できます。
+
+*JavaScript*
+
+```JS
+    // Called when my app has identified the user.
+    function Authenticated(signInId) {
+      var validatedId = signInId.replace(/[,;=| ]+/g, "_");
+      appInsights.setAuthenticatedUserContext(validatedId);
+      ...
+    }
+```
+
+ユーザーの実際のサインイン名を使用する必要はありません。必要なのは、そのユーザーに一意の ID であるということだけです。ID には、スペースや `,;=|` を含めることはできません。
+
+ユーザー ID は、セッション Cookie にも設定され、サーバーに送信されます。サーバー SDK がインストールされている場合、認証されたユーザーの ID は、フィルター処理や検索を行えるように、クライアントおよびサーバー テレメトリの両方のコンテキスト プロパティの一部として送信されます。
+
+アカウントにアプリのグループ ユーザーがある場合、アカウントの識別子も渡すことができます (同じ文字制約が適用されます)。
+
+
+      appInsights.setAuthenticatedUserContext(validatedId, accountId);
+
+[メトリックス エクスプローラー](app-insights-metrics-explorer.md)で、**認証されたユーザー**と**アカウント**のグラフを作成できます。
+
+
 ## <a name="defaults"></a>選択したカスタム テレメトリに既定値を設定する
 
 記述するカスタム イベントにいくつかに既定のプロパティ値を設定する場合、TelemetryClient でそれを設定できます。既定値はそのクライアントから送信されたすべてのテレメトリ アイテムに追加されます。
 
-*C\#*
+*C#*
 
     using Microsoft.ApplicationInsights.DataContracts;
 
@@ -443,15 +473,17 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
     context.getProperties().put("Game", currentGame.Name);
     
     gameTelemetry.TrackEvent("WinGame");
+
+
     
 個別のテレメトリの呼び出しはプロパティ ディクショナリの既定値を上書きできます。
 
-
+**JavaScript Web クライアント**の場合、[JavaScript テレメトリ初期化子](#js-initializer)を使用します。
 
 
 ## <a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
 
-*C\#*
+*C#*
     
     var telemetry = new TelemetryClient();
     telemetry.Context.InstrumentationKey = "---my key---";
@@ -467,7 +499,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 **初期化子を定義する**
 
 
-*C\#*
+*C#*
 
 ```C#
 
@@ -520,7 +552,7 @@ ApplicationInsights.config で:
 
 *または、*コード内で初期化子をインスタンス化することもできます。
 
-*C\#*
+*C#*
 
 ```C#
 
@@ -540,7 +572,10 @@ ApplicationInsights.config で:
     TelemetryConfiguration.getActive().getContextInitializers().add(new MyContextInitializer());
 ```
 
-現時点では、JavaScript Web クライアントに、既定のプロパティを設定する方法はありません。
+
+### JavaScript Web クライアント
+
+JavaScript Web クライアントの場合、[テレメトリ初期化子を使用して、既定値を設定します](#js-initializer)。
 
 ## テレメトリの初期化子
 
@@ -552,7 +587,7 @@ ApplicationInsights.config で:
 
 **初期化子を定義する**
 
-*C\#*
+*C#*
 
 ```C#
 
@@ -618,13 +653,62 @@ ApplicationInsights.config で:
 
 [このトピックのその他のサンプルについては、こちらをご覧ください。](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
+<a name="js-initializer"></a>
+### JavaScript テレメトリ初期化子
+
+*JavaScript*
+
+ポータルから取得した初期化コードの直後にテレメトリ初期化子を挿入します。
+
+```JS
+
+    <script type="text/javascript">
+        // ... initialization code
+        ...({
+            instrumentationKey: "your instrumentation key"
+        });
+        window.appInsights = appInsights;
+
+
+        // Adding telemetry initializer.
+        // This is called whenever a new telemetry item
+        // is created.
+
+        appInsights.queue.push(function () {
+            appInsights.context.addTelemetryInitializer(function (envelope) {
+                var telemetryItem = envelope.data.baseData;
+
+                // To check the telemetry item’s type - for example PageView:
+                if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
+                    // this statement removes url from all page view documents
+                    telemetryItem.url = "URL CENSORED";
+                }
+
+                // To set custom properties:
+                telemetryItem.properties = telemetryItem.properties || {};
+                telemetryItem.properties["globalProperty"] = "boo";
+
+                // To set custom metrics:
+                telemetryItem.measurements = telemetryItem.measurements || {};
+                telemetryItem.measurements["globalMetric"] = 100;
+            });
+        });
+
+        // End of inserted code.
+
+        appInsights.trackPageView();
+    </script>
+```
+
+telemetryItem で使用できる非ユーザー設定プロパティの概要は、[データ モデル](app-insights-export-data-model.md/#lttelemetrytypegt)に関するページを参照してください。
+
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
 開発、テスト、および実稼働環境からのテレメトリの混合を回避するために、[別の Application Insights リソースを作成し、][create]環境に応じてそれぞれのキーを変更することができます。
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
-*C\#*
+*C#*
 
     protected void Application_Start()
     {
@@ -660,7 +744,7 @@ Web ページで、スクリプトに一語一語コーディングするので�
 
 通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯に、データを送信します。ただし、場合によっては、バッファーをフラッシュする必要が生じることがあります (たとえば、終了するアプリケーションで SDK を使用している場合)。
 
-*C\#*
+*C#*
 
     telemetry.Flush();
 
@@ -680,7 +764,7 @@ Web ページで、スクリプトに一語一語コーディングするので�
 デバッグ中、結果をすぐに確認できるように、テレメトリをパイプラインから送信すると便利です。テレメトリで問題を追跡する際に役立つ付加的なメッセージも取得できます。アプリケーションを遅くする可能性があるため、本稼働ではオフにします。
 
 
-*C\#*
+*C#*
     
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 
@@ -704,7 +788,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
  * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプ ローラーでの計算から除外されます。
 * **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track* 呼び出しでオーバーライドできます。
 * **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
-* **User** によって、ユーザーを数えることができます。Web アプリケーションで、Cookie がある場合、ユーザー Id は Cookie から取得されます。Cookie がない場合は、新しい Id が生成されます。ユーザーがアプリケーションにログインする必要がある場合は、認証済みの ID から Id を設定できます。これにより、ユーザーが別のコンピューターからサインインしている場合でも、正確でより信頼できる数が提供されます。 
+* **User**: ユーザー情報。 
 
 
 
@@ -781,4 +865,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,34 +1,34 @@
 <properties 
-	pageTitle="Azure BLOB コネクタ - Azure BLOB との間のデータの移動" 
-	description="Azure BLOB ストレージとの間でのデータ移動を可能にする Data Factory サービスのための Azure BLOB コネクタについて学習する" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="Azure BLOB との間でのデータの移動 | Azure Data Factory"
+	description="Azure Data Factory を使用して Azure BLOB ストレージに、または Azure BLOB ストレージからデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# Azure BLOB コネクタ - Azure BLOB との間のデータの移動
+# Azure Data Factory を使用した Azure BLOB との間でのデータの移動
 この記事では、Azure Data Factory のコピー アクティビティを利用し、Azure BLOB と別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
 ## サンプル: Azure BLOB から Azure SQL にデータをコピーする
 下のサンプルで確認できる要素:
 
-1.	[AzureSqlDatabase](data-factory-azure-sql-connector.md) 型のリンクされたサービス。
-2.	[AzureStorage](#LinkedService) 型のリンクされたサービス。
-3.	[AzureBlob](#Dataset) 型の入力データセット。
-4.	[AzureSqlTable](data-factory-azure-sql-connector.md) 型の出力データセット。
-4.	[BlobSource](#CopyActivity) と [SqlSink](data-factory-azure-sql-connector.md) を使用するコピー アクティビティのパイプライン
+1.	[AzureSqlDatabase](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[AzureBlob](#azure-blob-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.	[AzureSqlTable](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4.	[BlobSource](#azure-blob-copy-activity-type-properties) と [SqlSink](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) を使用するコピー アクティビティの[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB から Azure SQL データベースのテーブルにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB から Azure SQL Database のテーブルにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure SQL のリンクされたサービス:**
 
@@ -42,7 +42,7 @@
 	  }
 	}
 
-**Azure ストレージのリンクされたサービス:**
+**Azure Storage のリンクされたサービス:**
 
 	{
 	  "name": "StorageLinkedService",
@@ -123,7 +123,7 @@
 
 **Azure SQL の出力データセット:**
 
-このサンプルは Azure SQL データベースの「MyTable」というテーブルにデータをコピーします。BLOB CSV ファイルに含めることが予想される数の列で Azure SQL データベースにテーブルを作成する必要があります。新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルは Azure SQL Database の「MyTable」というテーブルにデータをコピーします。BLOB CSV ファイルに含めることが予想される数の列で Azure SQL Database にテーブルを作成する必要があります。新しい行は 1 時間ごとにテーブルに追加されます。
 
 	{
 	  "name": "AzureSqlOutput",
@@ -192,13 +192,14 @@
 ## サンプル: Azure SQL から Azure BLOB にデータをコピーする
 下のサンプルで確認できる要素:
 
-1.	AzureSqlDatabase 型のリンクされたサービス。
-2.	AzureStorage 型のリンクされたサービス。
-3.	AzureSqlTable 型の入力データセット。
-4.	AzureBlob 型の出力データセット。
-4.	SqlSource と BlobSink を使用するコピー アクティビティを含むパイプライン。
+1.	[AzureSqlDatabase](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[AzureSqlTable](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.	[AzureBlob](#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4.	[SqlSource](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) と [BlobSink](#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルはある時系列に属するデータを 1 時間おきに Azure SQL データベースのテーブルから BLOB にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+
+このサンプルはある時系列に属するデータを 1 時間おきに Azure SQL Database のテーブルから BLOB にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure SQL のリンクされたサービス:**
 
@@ -212,7 +213,7 @@
 	  }
 	}
 
-**Azure ストレージのリンクされたサービス:**
+**Azure Storage のリンクされたサービス:**
 
 	{
 	  "name": "StorageLinkedService",
@@ -361,16 +362,16 @@
 		}
 	}
 
-## <a name="LinkedService"></a>Azure ストレージのリンクされたサービスのプロパティ
+## Azure Storage のリンクされたサービスのプロパティ
 
-Azure ストレージのリンクされたサービスを利用し、Azure ストレージ アカウントを Azure Data Factory にリンクできます。次の表は、Azure ストレージのリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+Azure Storage のリンクされたサービスを利用し、Azure ストレージ アカウントを Azure Data Factory にリンクできます。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
 | type | type プロパティを **AzureStorage** に設定する必要があります。 | あり |
 | connectionString | connectionString プロパティのために Azure ストレージに接続するために必要な情報を指定します。Azure ポータルから Azure ストレージの connectionString を取得できます。 | あり |
 
-## <a name="Dataset"></a> Azure BLOB データセットの type プロパティ
+## Azure BLOB データセットの type プロパティ
 
 データセットの定義に利用できる JSON のセクションとプロパティの完全一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
 
@@ -423,7 +424,7 @@ Azure ストレージのリンクされたサービスを利用し、Azure ス�
 | escapeChar | <p>コンテンツに表示される列区切り記号のエスケープに使用される特殊文字です。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。</p><p>たとえば、列の区切り文字としてコンマ (,) を使用しているとき、テキストにもコンマ文字が必要な場合 (例: “Hello, world”)、エスケープ文字として「$」を定義し、ソースで文字列「Hello$, world」を使用できます。</p><p>1 つのテーブルに escapeChar と quoteChar の両方を指定できないことに注意してください。</p> | いいえ | 
 | quoteChar | <p>この特殊文字は文字列値を引用符で囲むために使用されます。引用符文字内の列区切り文字と行区切り文字は文字列値の一部として処理されます。このタグは任意です。既定値はありません。このプロパティに指定する文字は 1 つだけです。</p><p>たとえば、列の区切り文字としてコンマ (,) を使用しているとき、テキストにもコンマ文字が必要な場合 (例: <Hello  world>)、引用符文字として「"」を定義し、ソースで文字列「"Hello, world"」を使用できます。このプロパティは入力テーブルと出力テーブルの両方に適用されます。</p><p>1 つのテーブルに escapeChar と quoteChar の両方を指定できないことに注意してください。</p> | いいえ |
 | nullValue | <p>BLOB ファイル コンテンツで null 値を表すために使用する文字です。このタグは任意です。既定値は「\\N」です。</p><p>たとえば、上記のサンプルに基づくと、BLOB の「NaN」は SQL Server などにコピーされるとき、null 値として変換されます。</p> | いいえ |
-| encodingName | エンコード名の指定。有効なエンコード名の一覧については、「[Encoding.EncodingName プロパティ](https://msdn.microsoft.com/library/system.text.encoding.aspx)」を参照してください。例: windows-1250 または shift\_jis。既定値は UTF-8 です。 | いいえ | 
+| encodingName | エンコード名の指定。有効なエンコード名の一覧については、[Encoding.EncodingName プロパティ](https://msdn.microsoft.com/library/system.text.encoding.aspx)を参照してください。例: windows-1250 または shift\_jis。既定値は UTF-8 です。 | いいえ | 
 
 #### サンプル
 次の例は、TextFormat の format プロパティの一部を示します。
@@ -456,7 +457,7 @@ quoteChar ではなく escapeChar を使用するには、quoteChar の行を次
 
 Hive テーブルで Avro 形式を使用するには、「[Apache Hive のチュートリアル](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)」を参照してください。
 
-## <a name="CopyActivity"></a> Azure BLOB のコピー アクティビティの type プロパティ  
+## Azure BLOB のコピー アクティビティの type プロパティ  
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、sources と sinks の種類によって異なります。
@@ -481,4 +482,4 @@ Hive テーブルで Avro 形式を使用するには、「[Apache Hive のチ�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

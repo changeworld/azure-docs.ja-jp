@@ -1,19 +1,19 @@
 <properties 
    pageTitle="ネットワーク リソース プロバイダー"
-   description="ネットワーク リソース プロバイダー"
-   services="azure-portal"
-   documentationCenter="na"
-   authors="telmosampaio"
-   manager="adinah"
-   editor="tysonn" />
+	description="ネットワーク リソース プロバイダー"
+	services="azure-portal"
+	documentationCenter="na"
+	authors="telmosampaio"
+	manager="adinah"
+	editor="tysonn"/>
 <tags 
    ms.service="azure-portal"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="04/22/2015"
-   ms.author="telmos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="04/22/2015"
+	ms.author="telmos"/>
 
 # ネットワーク リソース プロバイダー
 今日のビジネスの成功を支えるニーズとは、大規模なネットワーク対応アプリケーションを俊敏、柔軟、安全、かつ反復可能な方法でビルドおよび管理する能力です。Azure リソース マネージャー (ARM) では、リソース グループ内の 1 つのリソース コレクションとして、このようなアプリケーションを作成することができます。このようなリソースは、ARM の下でさまざまなリソース プロバイダーを介して管理されています。
@@ -210,7 +210,7 @@ REST API を呼び出す際に、次の HTTP メソッドがサポートされ�
 
 テンプレートのサンプルについては、「[Azure のクイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates)」を参照してください。
 
-ARM テンプレート言語の詳細については、「[Azure リソース マネージャーのテンプレート言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
+ARM テンプレート言語の詳細については、「[Azure リソース マネージャーのテンプレート言語](../resource-group-authoring-templates.md)」を参照してください。
 
 上記のサンプル テンプレートでは、仮想ネットワークとサブネットのリソースを使用します。その他の使用可能なネットワーク リソースは、次の一覧のとおりです。
 
@@ -349,7 +349,7 @@ Traffic Manager プロファイルの主なプロパティは次のとおりで�
 
 [ネットワーク用 Azure PowerShell のリファレンス](https://msdn.microsoft.com/library/azure/mt163510.aspx)
 
-[Azure リソース マネージャー テンプレートの言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)
+[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)
 
 [Azure のネットワーク – 一般的に使用されているテンプレート](https://github.com/Azure/azure-quickstart-templates)
 
@@ -363,4 +363,4 @@ Traffic Manager プロファイルの主なプロパティは次のとおりで�
 
 [テンプレートの展開](https://msdn.microsoft.com/library/azure/dn790549.aspx)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

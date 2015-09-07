@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Azure モバイル エンゲージメント iOS SDK の概要"
-	description="Azure モバイル エンゲージメント用 iOS SDK の最新の更新プログラムと手順"
+	pageTitle="Azure Mobile Engagement iOS SDK の概要"
+	description="Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="piyushjo"
 	manager="dwrede"
-	editor="" />
+	editor=""/>
 
 <tags
 	ms.service="mobile-engagement"
@@ -14,16 +14,16 @@
 	ms.devlang="objective-c"
 	ms.topic="article"
 	ms.date="08/05/2015"
-	ms.author="MehrdadMzfr" />
+	ms.author="MehrdadMzfr"/>
 
 #iOS SDK for Azure Mobile Engagement
 
-ここでは、iOS アプリで Azure モバイル エンゲージメントを統合する方法の詳細を確認します。まず試してみる場合は、「[15 分間チュートリアル](mobile-engagement-ios-get-started.md)」をご覧ください
+ここでは、iOS アプリで Azure Mobile Engagement を統合する方法の詳細を確認します。まず試してみる場合は、「[15 分間チュートリアル](mobile-engagement-ios-get-started.md)」をご覧ください
 
 [SDK コンテンツ](mobile-engagement-ios-sdk-content.md)について表示するにはここをクリックします。
 
 ##統合手順
-1. ここから開始: [iOS アプリでモバイル エンゲージメントを統合する方法](mobile-engagement-ios-integrate-engagement.md)
+1. ここから開始: [iOS アプリで Mobile Engagement を統合する方法](mobile-engagement-ios-integrate-engagement.md)
 
 2. 通知: [リーチ (通知) を iOS アプリに統合する方法](mobile-engagement-ios-integrate-engagement-reach.md)
 
@@ -32,9 +32,9 @@
 
 ##リリース ノート
 
-##3\.0.0 (08/05/2015)
+###3\.1.0 (2015 年 8 月 26 日)
 
--   Mobile Engagement では、サイレント プッシュ通知が使用されます。
+-   サードパーティ ライブラリと iOS 9 の互換性バグを修正。ポーリングの結果、アプリケーション情報、追加のデータの送信時にクラッシュを引き起こしていました。
 
 以前のバージョンについては、「[完全リリース ノート](mobile-engagement-ios-release-notes.md)」をご覧ください。
 
@@ -46,7 +46,17 @@ SDK のいくつかのバージョンがない場合は、次の手順に従う�
 
 まず、新しいバージョンの SDK ごとに、EngagementSDK フォルダーと EngagementReach フォルダーを置き換える (削除し、xcode で再インポートする) 必要があります。
 
-###2\.0.0 から 2.1.0 に移行
-ありません。
+###2\.0.0 から 3.0.0 に移行
+iOS 4.X のサポートが終了。このバージョンから、アプリケーションのデプロイ ターゲットは iOS 6 以降である必要があります。
 
-<!---HONumber=August15_HO6-->
+アプリケーションでリーチを使用している場合は、リモート通知を受け取れるように、`remote-notification` 値を Info.plist ファイル内の `UIBackgroundModes` 配列に追加する必要があります。
+
+アプリケーション デリゲートのメソッド `application:didReceiveRemoteNotification:` は、`application:didReceiveRemoteNotification:fetchCompletionHandler:` に置き換える必要があります。
+
+AEPushDelegate.h インターフェイスは廃止されるため、すべての参照を削除する必要があります。これには、`[[EngagementAgent shared] setPushDelegate:self]` の削除や、アプリケーション デリゲートからのデリゲート メソッドの削除も含まれます。
+
+	-(void)willRetrieveLaunchMessage;
+	-(void)didFailToRetrieveLaunchMessage;
+	-(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
+
+<!---HONumber=August15_HO9-->

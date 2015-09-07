@@ -1,20 +1,20 @@
 <properties
    pageTitle="SQL Data Warehouse でのコマンドレットの概要"
-   description="PowerShell コマンドレットを使用した SQL Data Warehouse の一時停止と再開"
-   services="sql-data-warehouse"
-   documentationCenter="NA"
-   authors="sidneyh"
-   manager="jhubbard"
-   editor=""/>
+	description="PowerShell コマンドレットを使用した SQL Data Warehouse の一時停止と再開"
+	services="sql-data-warehouse"
+	documentationCenter="NA"
+	authors="sidneyh"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/29/2015"
-   ms.author="sidneyh;barbkess"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-services"
+	ms.date="06/29/2015"
+	ms.author="sidneyh;barbkess"/>
 
 # Azure Data Warehouse コマンドレットと REST API の概要
 
@@ -90,6 +90,10 @@ RestorePointCreationDate |バックアップのスナップショット時間 (r
 	$restorePoints = $database | Get-AzureSqlDatabaseRestorePoints
 
 
+
+> [AZURE.NOTE]サーバーが foo.database.windows.net である場合は、PowerShell コマンドレットでサーバー名として "foo" を使用してください。
+
+
 ## 次のステップ
 詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][]に関するページを参照してください。
 
@@ -106,4 +110,4 @@ RestorePointCreationDate |バックアップのスナップショット時間 (r
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

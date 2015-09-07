@@ -1,15 +1,15 @@
-## Deploy the ARM template by using the Azure CLI
+## Azure CLI を使用して ARM テンプレートをデプロイする
 
-To deploy the ARM template you downloaded by using PowerShell, follow the steps below.
+PowerShell を使用してダウンロードした ARM テンプレートをデプロイするには、次の手順に従います。
 
-1. If you have never used Azure CLI, see [Install and Configure the Azure CLI](xplat-cli.md) and follow the instructions up to the point where you select your Azure account and subscription.
-2. Run the **azure config mode** command to switch to Resource Manager mode, as shown below.
+1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli.md)を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
 
 		info:    New mode is arm
 
-3. If necessary, run the **azure group create** to create a new resource group, as shown below. Notice the output of the command. The list shown after the output explains the parameters used. For more information about resource groups, visit [Azure Resource Manager Overview](resource-group-overview.md/#resource-groups).
+3. 必要に応じて、次のように **azure group create** を実行して、新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。リソース グループの詳細については、[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)を参照してください。
 
 		azure group create -n TestRG -l centralus
 		info:    Executing command group create
@@ -24,10 +24,10 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
 		data:
 		info:    group create command OK
 
-	- **-n (or --name)**. Name for the new resource group. For our scenario, *TestRG*.
-	- **-l (or --location)**. Azure region where the new resource group will be created. For our scenario, *centralus*.
+	- **-n (または --name)**。新しいリソース グループの名前です。ここでは、*TestRG*です。
+	- **-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。ここでは、*centralus* です。
 
-4. Run the **azure group deployment create** cmdlet to deploy the new VNet by using the template and parameter files you downloaded and modified above. The list shown after the output explains the parameters used.
+4. **azure group deployment create** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい VNet をデプロイします。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
 		azure group deployment create -g TestRG -n TestVNetDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
 
@@ -54,11 +54,11 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
 		data:    subnet2Name    String  BackEnd
 		info:    group deployment create command OK
 
-	- **-g (or --resource-group)**. Name of the resource group the new VNet will be created in.
-	- **-f (or --template-file)**. Path to your ARM template file.
-	- **-e (or --parameters-file)**. Path to your ARM parameters file.
+	- **-g (または --resource-group)**。新しい VNet の作成場所となるリソース グループの名前です。
+	- **-f (または --template-file)**。ARM テンプレート ファイルへのパスです。
+	- **-e (または--parameters-file)**。ARM パラメーター ファイルへのパスです。
 
-5. Run the **azure network vnet show** command to view the properties of the new vnet, as shown below.
+5. 次に示すように、**azure network vnet show** コマンドを実行して新しい VNet のプロパティを表示します。
 
 		azure network vnet show -g TestRG -n TestVNet
 
@@ -79,3 +79,5 @@ To deploy the ARM template you downloaded by using PowerShell, follow the steps 
 		data:      Address prefix                : 192.168.2.0/24
 		data:
 		info:    network vnet show command OK
+
+<!---HONumber=August15_HO9-->

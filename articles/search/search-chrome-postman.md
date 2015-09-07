@@ -1,54 +1,54 @@
 <properties
-	pageTitle="Azure Search で Chrome Postman を使用する方法"
-	description="Azure Search で Chrome Postman を使用する方法"
+	pageTitle="Azure Search で Chrome Postman を使用する | Microsoft Azure"
+	description="Azure Search で Chrome Postman を使用するPostman をインストールおよび構成するAzure Search インデックスを作成する。Postman を使用してドキュメントをインデックスにポストし、インデックスに対してクエリを実行します。"
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
 	manager="mblythe"
 	editor=""
-    tags="azure-portal"/>
+	tags="azure-portal"/>
 
 <tags
 	ms.service="search"
 	ms.devlang="rest-api"
 	ms.workload="search"
-	ms.topic="get-started-article" 
+	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.date="07/08/2015"
 	ms.author="heidist"/>
 
 # Azure Search で Chrome Postman を使用する方法 #
 
-[Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm "Chrome Postman") は、開発者が Azure Search などの REST ベースの API サービスで効率的に作業できるように、Google Chrome の一部として提供されるツールです。コードを記述しなくても、Postman を介して API 呼び出しを送信することで、Postman を使用して検索インデックスを簡単に作成およびクエリすることができます。この方法では、API について効率的に学習し、新しい機能を試すことができます。
+[Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm "Chrome Postman") は、開発者が Azure Search などの REST ベースの API サービスで効率的に作業できるように、Google Chrome の一部として提供されるツールです。Postman を使用すれば、コードを記述しなくても、Postman を介して API 呼び出しを送信することによって検索インデックスの作成および検索インデックスに対するクエリを容易に実行することができます。この方法では、API について効率的に学習し、新しい機能を試すことができます。
 
 ![][1]
 
 ## 必要条件 ##
 
-Azure Search サービスを備えている必要があります。Azure Search を使用するすべてのカスタム アプリケーションと同様に、サービスへの URL のほか、インデックスを作成するために管理者 `api-key` が必要です。Search サービスの価値を引き出す方法の詳細については、[ポータルでのサービスの作成](search-create-service-portal.md)に関するページを参照してください。
+Azure Search サービスを備えている必要があります。Azure Search を使用するすべてのカスタム アプリケーションと同様に、サービスへの URL のほか、インデックスを作成するために管理者 `api-key` が必要です。検索サービス用の値を取得する方法については、「[ポータルでサービスを作成する](search-create-service-portal.md)」を参照してください。
 
-## Postman のインストール ##
-Postman をダウンロードするには、[Google Chrome ストア](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm)にアクセスします。このページのリンクを使用して、Postman の REST クライアントをダウンロードしてインストールすることができます。インストールすると、Chrome アプリ ランチャーから Postman を起動できるようになります。
+## Postman をインストールするには ##
+Postman をダウンロードするには、[Google Chrome ストア](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm)にアクセスします。このページのリンクを使用して、Postman の REST クライアントをダウンロードしてインストールすることができます。インストール後は、Chrome アプリ ランチャーから Postman を起動できます。
 
 ![][2]
 
-## Azure Search のクエリ用の Postman の構成 ##
-Postman を構成するには、次の手順に従います。
+## Azure Search に対してクエリを実行するように Postman を構成するには ##
+Postman を構成するのには、次の手順を実行します。
 
 1. "Enter request URL here (要求 URL をここに入力)" と表示されている場所に、Azure Search サービスの URL を入力します。  
 2. URL に `?api-version=2015-02-28` を付加します。別の API バージョンを指定することもできます。詳細については、「[Azure Search サービスのバージョン](https://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 3. `GET` が選択されていることを確認します。
-4. [**ヘッダー**] ボタンをクリックします。
+4. **[ヘッダー]** ボタンをクリックします。
 5. 次の値を入力します。
 	- `api-key`: [管理者キー]
 	- `Content-Type`: `application/json; charset=utf-8`
-6. [**送信**] をクリックして、Azure Search に REST 呼び出しを発行し、JSON 応答を表示します。
+6. **[送信]** をクリックして、Azure Search に REST 呼び出しを発行し、JSON 応答を表示します。
 
 ![][3]
 
-## Postman での Azure Search インデックスの作成 ##
+## Postman で Azure Search インデックスを作成するには ##
 
-次に、REST 呼び出しを発行して新しい Azure Search インデックスを作成することで、前の手順で実行した内容を発展させます。前の呼び出しとは異なり、インデックスの作成には HTTP PUT のほか、インデックス スキーマの定義を含む JSON ドキュメントが必要です。このサンプルでは、ハイキング トレイルの一覧を格納するインデックスを作成します。これを行うには、次の手順を実行します。
+次に、REST 呼び出しを発行して新しい Azure Search インデックスを作成することで、前の手順で実行した内容を発展させます。前の呼び出しとは異なり、インデックスの作成には HTTP PUT と、インデックス スキーマの定義を含む JSON ドキュメントが必要です。このサンプルでは、ハイキング トレイルの一覧を格納するインデックスを作成します。これを行うには、次の手順を実行します。
 
 1. 検索サービス名を使用して、URL を `https://[SEARCH SERVICE].search.windows.net/indexes/trails?api-version=2015-02-28` に変更します。
 2. 要求の種類を `GET` から `PUT` に変更します。
@@ -68,8 +68,8 @@ Postman を構成するには、次の手順に従います。
 
 ![][4]
 
-## Postman での Azure Search インデックスへのドキュメントのポスト ##
-インデックスが作成されたので、ドキュメントを読み込むことができます。そのために、米国地質調査所 (USG) のデータセットにある 5 つのトレイルのデータを使用して、ドキュメントのグループをバッチでポストします。
+## Postman で Azure Search インデックスにドキュメントをポストするには ##
+インデックスが作成されたので、ドキュメントを読み込むことができます。そのために、米国地質調査所 (USGS) のデータセットにある 5 つのトレイルのデータを使用して、ドキュメントのグループをバッチでポストします。
 
 1. 検索サービス名を使用して、URL を `https://[SEARCH SERVICE].windows.net/indexes/trails/docs/index?api-version=2015-02-28` に変更します。作成したインデックスへのパスが URL に含まれることに注意してください。
 2. HTTP の種類を `POST` に変更します。
@@ -89,7 +89,7 @@ Postman を構成するには、次の手順に従います。
 
 ![][5]
 
-## Postman でのインデックスのクエリ ##
+## Postman でインデックスのクエリを実行するには ##
 最後の手順では、インデックスをクエリして、語 *trail* に対する簡単なフルテキストの検索要求を発行します。
 
 1. 検索サービス名を使用して、URL に `https://[SEARCH SERVICE].search.windows.net/indexes/trails/docs?api-version=2015-02-28&search=trail` を入力します。URL には、`search` のクエリ パラメーターおよび検索語句 *trail* が含まれています。
@@ -117,6 +117,5 @@ REST API のドキュメントは、[MSDN](https://msdn.microsoft.com/library/az
 [4]: ./media/search-chrome-postman/create_index.png
 [5]: ./media/search-chrome-postman/upload_documents.png
 [6]: ./media/search-chrome-postman/query.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

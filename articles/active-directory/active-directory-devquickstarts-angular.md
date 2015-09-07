@@ -34,7 +34,7 @@ Azure AD を使用すると、シングル ページ アプリに対する、サ
 
 完全に動作するアプリケーションを構築するには、次の手順を行う必要があります。
 
-2. Azure AD にアプリケーションを登録する
+2. Azure AD にアプリケーションを登録します。
 3. ADAL をインストールし、SPA を構成する
 5. ADAL を使用して、SPA 内のページをセキュリティで保護する
 
@@ -151,4 +151,4 @@ adal.js を使用することにより、これらの共通 ID 機能のすべ�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

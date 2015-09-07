@@ -18,7 +18,7 @@
 	ms.author="jgao"/>
 
 
-#HDInsight の Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用
+# HDInsight の Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用
 
 このチュートリアルでは、HDInsight で低コストの Azure BLOB ストレージを使用する方法、Azure ストレージ アカウントと BLOB ストレージ コンテナーを作成する方法、内部のデータのアドレス指定を行う方法について説明します。
 
@@ -35,7 +35,7 @@ BLOB ストレージにデータを格納した場合、計算で使用する HD
 HDInsight クラスターのプロビジョニングについては、「[HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」ご覧ください。
 
 
-##<a id="architecture"></a>HDInsight のストレージ アーキテクチャ
+## <a id="architecture"></a>HDInsight のストレージ アーキテクチャ
 次の図は、HDInsight のストレージ アーキテクチャを示しています。
 
 ![Hadoop クラスターは、HDFS API を使用して、BLOB ストレージの構造化データおよび非構造化データへのアクセスと保存を実行します。](./media/hdinsight-hadoop-use-blob-storage/HDI.WASB.Arch.png "HDInsight のストレージ アーキテクチャ")
@@ -83,7 +83,7 @@ MapReduce の一部のジョブやパッケージでは中間結果が生成さ�
 
 
 
-##<a id="preparingblobstorage"></a>BLOB コンテナーの作成
+## <a id="preparingblobstorage"></a>BLOB コンテナーの作成
 
 BLOB を使用するには、まず、[Azure ストレージ アカウント][azure-storage-create]を作成します。その一環として、このアカウントを使用して作成するオブジェクトを格納する Azure データセンターを指定します。クラスターとストレージ アカウントは、同じデータセンターに置く必要があります。Hive メタストア SQL Server データベースと Oozie メタストア SQL Server データベースも、同じデータセンターに配置する必要があります。
 
@@ -92,7 +92,7 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント][az
 既定のストレージ コンテナーと複数の HDInsight クラスターを共有しないでください。共有のコンテナーを使用して複数の HDInsight クラスターのデータへのアクセスを提供する必要がある場合は、クラスター構成で追加のストレージ アカウントとして追加する必要があります。詳細については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。ただし、元の HDInsight クラスターを削除した後でも既定のストレージ コンテナーを再利用できます。HBase クラスターでは、削除された HBase クラスターで使用される既定の blob ストレージ コンテナーを使用して、新しい HBase クラスターをプロビジョニングすることで、HBase テーブルのスキーマとデータを実際に保持できます。
 
 
-###Azure プレビュー ポータルの使用
+### Azure プレビュー ポータルの使用
 
 プレビュー ポータルから HDInsight クラスターをプロビジョニングする際、既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成するオプションを利用できます。
 
@@ -116,7 +116,7 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント][az
 
 	azure storage container create <containername> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-###Azure PowerShell の使用
+### Azure PowerShell の使用
 
 [Azure PowerShell のインストールと構成][powershell-install]が完了している場合は、Azure PowerShell プロンプトで次のスクリプトを使用して、ストレージ アカウントとコンテナーを作成できます。
 
@@ -136,7 +136,7 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント][az
 	New-AzureStorageContainer -Name $containerName -Context $destContext
 
 
-##<a id="addressing"></a>BLOB ストレージ内のファイルの指定
+## <a id="addressing"></a>BLOB ストレージ内のファイルの指定
 
 HDInsight から BLOB ストレージ内のファイルにアクセスするための URI スキームは次のとおりです。
 
@@ -166,7 +166,7 @@ HDInsight から BLOB ストレージ内のファイルにアクセスするた�
 
 > [AZURE.NOTE]HDInsight の外部から BLOB を操作する場合、ほとんどのユーティリティで WASB 形式が認識されず、代わりに `example/jars/hadoop-mapreduce-examples.jar` などの基本的なパス形式が要求されます。
 
-##<a id="azurecli"></a>Azure CLI を使用した BLOB へのアクセス
+## <a id="azurecli"></a>Azure CLI を使用した BLOB へのアクセス
 
 BLOB 関連のコマンドを一覧表示するには、次のコマンドを使用します。
 
@@ -188,7 +188,7 @@ BLOB 関連のコマンドを一覧表示するには、次のコマンドを使
 
 	azure storage blob list <containername> <blobname|prefix> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-##<a id="powershell"></a>Azure PowerShell を使用した BLOB へのアクセス
+## <a id="powershell"></a>Azure PowerShell を使用した BLOB へのアクセス
 
 > [AZURE.NOTE]このセクションでは、PowerShell を使用して BLOB に格納されているデータにアクセスする基本的なコマンドの例を紹介します。HDInsight を使用した操作にカスタマイズされた高度な例については、[HDInsight ツール](https://github.com/Blackmist/hdinsight-tools)に関するページを参照してください。
 
@@ -290,11 +290,11 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 
 	Invoke-Hive -Defines $defines -Query "dfs -ls wasb://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
-##<a id="nextsteps"></a>次のステップ
+## <a id="nextsteps"></a>次のステップ
 
-この記事では、HDInsight で HDFS と互換性のある Azure BLOB ストレージを使用する方法と、Azure BLOB ストレージが HDInsight の重要なコンポーネントであることについて説明しました。Azure BLOB ストレージを使用すれば、収集したデータを長期にわたって格納できるスケーラビリティに優れたソリューションを構築できます。さらに HDInsight を使用することで、格納されている構造化データおよび非構造化データから有益な情報を得ることができます。
+この記事では、HDInsight で HDFS と互換性のある Azure BLOB ストレージを使用する方法と、Azure BLOB ストレージが HDInsight の重要なコンポーネントであることについて説明しました。Azure BLOB ストレージを使用すれば、収集したデータを長期にわたって格納できるスケーラブルなソリューションを構築できます。さらに HDInsight を使用することで、格納されている構造化データおよび非構造化データから有益な情報を得ることができます。
 
-詳細については、次の記事を参照してください。
+詳細については、次を参照してください。
 
 * [Azure HDInsight の概要][hdinsight-get-started]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
@@ -315,4 +315,4 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

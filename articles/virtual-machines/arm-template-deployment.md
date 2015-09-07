@@ -1,12 +1,12 @@
-<properties pageTitle="テンプレートを使用した Azure リソースのデプロイ" description="Azure リソース管理ライブラリで利用可能ないくつかのクライアントを使用して、仮想マシン、仮想ネットワーク、ストレージ アカウントをデプロイする方法について説明します。" services="virtual-machines,virtual-networks,storage" documentationCenter="" authors="davidmu1" manager="timlt" editor="tysonn" tags="azure-resource-manager/>
+<properties pageTitle="テンプレートを使用した Azure リソースのデプロイ" description="Azure リソース管理ライブラリで利用可能ないくつかのクライアントを使用して、仮想マシン、仮想ネットワーク、ストレージ アカウントをデプロイする方法について説明します。" services="virtual-machines,virtual-networks,storage" documentationCenter="" authors="davidmu1" manager="timlt" editor="tysonn" tags="azure-resource-manager"/>
 
 <tags
-	ms.service="multiple"
+	ms.service="azure-resource-manager"
 	ms.workload="multiple"
 	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="na" 
+	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2015"
+	ms.date="08/25/2015"
 	ms.author="davidmu"/>
 
 # .NET ライブラリとテンプレートを使用した Azure リソースのデプロイ
@@ -75,7 +75,7 @@ Azure リソース マネージャー テンプレートによって、リソー
             "contentVersion": "1.0.0.0",
         }
 
-6. [パラメーター](https://msdn.microsoft.com/library/azure/dn835138.aspx#parameters)は常に必要なわけではありませんが、テンプレートの管理が容易になります。パラメーターでは、値の型、必要な場合の既定値、および場合によっては許容される値を記述します。このチュートリアルでは、仮想マシン、ストレージ アカウント、および仮想ネットワークの作成に使用されるパラメーターをテンプレートに追加します。
+6. [パラメーター](../resource-group-authoring-templates.md#parameters)は常に必要なわけではありませんが、テンプレートの管理が容易になります。パラメーターでは、値の型、必要な場合の既定値、および場合によっては許容される値を記述します。このチュートリアルでは、仮想マシン、ストレージ アカウント、および仮想ネットワークの作成に使用されるパラメーターをテンプレートに追加します。
 
     contentVersion 要素の後に、parameters 要素とその子要素を追加します。
 
@@ -106,7 +106,7 @@ Azure リソース マネージャー テンプレートによって、リソー
           },
         }
 
-7.	[変数](https://msdn.microsoft.com/library/azure/dn835138.aspx#variables)をテンプレートで使用して、頻繁に変化する可能性がある値、またはパラメーター値の組み合わせから作成する必要のある値を指定できます。
+7.	[変数](../resource-group-authoring-templates.md#variables)をテンプレートで使用して、頻繁に変化する可能性がある値、またはパラメーター値の組み合わせから作成する必要のある値を指定できます。
 
     parameters セクションの後に、variables 要素を追加します。
 
@@ -142,7 +142,7 @@ Azure リソース マネージャー テンプレートによって、リソー
           },
         }
 
-8.	次に、仮想マシン、仮想ネットワーク、ストレージ アカウントなどの[リソース](https://msdn.microsoft.com/library/azure/dn835138.aspx#resources)を定義します。
+8.	次に、仮想マシン、仮想ネットワーク、ストレージ アカウントなどの[リソース](../resource-group-authoring-templates.md#resources)を定義します。
 
     variables セクションの後に、resources セクションを追加します。
 
@@ -443,4 +443,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/arm-template-deployment/crpportal.png)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

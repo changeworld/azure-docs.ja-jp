@@ -1,21 +1,21 @@
 <properties 
    pageTitle="StorSimple 8100 デバイスの取り付け | Microsoft Azure"
-   description="StorSimple 8100 デバイスの開梱、ラック取り付け、およびケーブル接続の方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+	description="ソフトウェアのデプロイと構成の前に、StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブルの接続方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/06/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/26/2015"
+	ms.author="alkohli"/>
 
-# StorSimple 8100 デバイスの取り付け
+# StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブル接続
 
 ## 概要
 
@@ -275,4 +275,4 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 これで[オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough.md)準備ができました。
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

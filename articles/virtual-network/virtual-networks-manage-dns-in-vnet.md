@@ -1,19 +1,19 @@
 <properties 
    pageTitle="仮想ネットワーク (VNet) で使用される DNS サーバーの管理"
-   description="仮想ネットワーク (VNet) の DNS サーバーを追加および削除する方法について説明します。"
-   services="virtual-network"
-   documentationCenter="na"
-   authors="telmosampaio"
-   manager="carolz"
-   editor="tysonn" />
+	description="仮想ネットワーク (VNet) の DNS サーバーを追加および削除する方法について説明します。"
+	services="virtual-network"
+	documentationCenter="na"
+	authors="telmosampaio"
+	manager="carolz"
+	editor="tysonn"/>
 <tags 
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="06/08/2015"
-   ms.author="telmos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="06/08/2015"
+	ms.author="telmos"/>
 
 # 仮想ネットワーク (VNet) で使用される DNS サーバーの管理
 
@@ -49,11 +49,11 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 
 ネットワーク構成ファイルを使用して DNS サーバーの一覧を編集するには、最初に管理ポータルから構成設定をエクスポートします。次に、ネットワーク構成ファイルを編集し、管理ポータルでもう一度インポートします。このプロセスを完了するための手順の概要は次のとおりです。
 
-1. 仮想ネットワークの設定をネットワーク構成ファイルにエクスポートします。ネットワーク構成設定のエクスポートの詳細と手順については、「[ネットワーク構成ファイルへの仮想ネットワーク設定のエクスポート](https://msdn.microsoft.com/library/azure/dn133804.aspx)」をご覧ください。
+1. 仮想ネットワークの設定をネットワーク構成ファイルにエクスポートします。ネットワーク構成設定のエクスポートの詳細と手順については、「[ネットワーク構成ファイルへの仮想ネットワーク設定のエクスポート](virtual-networks-using-network-configuration-file.md)」をご覧ください。
 
-1. 仮想ネットワークの DNS サーバーの情報を指定します。DNS サーバーの指定の詳細については、[仮想ネットワーク構成ファイルでの DNS サーバーの指定](https://msdn.microsoft.com/library/windowsazure/jj156098.aspx)に関するページをご覧ください。ネットワーク構成ファイルの詳細については、「[Azure Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」と「[ネットワーク構成ファイルを使用した仮想ネットワークの構成](https://msdn.microsoft.com/library/azure/jj156097.aspx)」をご覧ください。
+1. 仮想ネットワークの DNS サーバーの情報を指定します。DNS サーバーの指定の詳細については、[仮想ネットワーク構成ファイルでの DNS サーバーの指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)に関するページをご覧ください。ネットワーク構成ファイルの詳細については、「[Azure Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」と「[ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)」をご覧ください。
 
-1. ネットワーク構成ファイルをインポートします。ネットワーク構成ファイルのインポートの詳細と手順については、「[ネットワーク構成ファイルのインポート](https://msdn.microsoft.com/library/azure/jj156213.aspx)」をご覧ください。
+1. ネットワーク構成ファイルをインポートします。ネットワーク構成ファイルのインポートの詳細と手順については、「[ネットワーク構成ファイルのインポート](virtual-networks-using-network-configuration-file.md)」をご覧ください。
 
 1. 仮想ネットワークにある仮想マシンを再起動して、新しい DNS の設定を取得できるようにします。
 
@@ -65,4 +65,4 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 
 [仮想ネットワーク (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

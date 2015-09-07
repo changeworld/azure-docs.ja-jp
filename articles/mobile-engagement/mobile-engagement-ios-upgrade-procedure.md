@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Azure モバイル エンゲージメント iOS SDK のアップグレード手順"
-	description="Azure モバイル エンゲージメント用 iOS SDK の最新の更新プログラムと手順"
+	pageTitle="Azure Mobile Engagement iOS SDK のアップグレード手順"
+	description="Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="MehrdadMzfr"
 	manager="dwrede"
-	editor="" />
+	editor=""/>
 
 <tags
 	ms.service="mobile-engagement"
@@ -14,7 +14,7 @@
 	ms.devlang="objective-c"
 	ms.topic="article"
 	ms.date="08/05/2015"
-	ms.author="MehrdadMzfr" />
+	ms.author="MehrdadMzfr"/>
 
 #アップグレードの手順
 
@@ -23,20 +23,22 @@
 まず、新しいバージョンの SDK ごとに、EngagementSDK フォルダーと EngagementReach フォルダーを置き換える (削除し、xcode で再インポートする) 必要があります。
 
 ##2\.0.0 から 3.0.0 に移行
+iOS 4.X のサポートが終了。このバージョンから、アプリケーションのデプロイ ターゲットは iOS 6 以降である必要があります。
+
 アプリケーションでリーチを使用している場合は、リモート通知を受け取れるように、`remote-notification` 値を Info.plist ファイル内の `UIBackgroundModes` 配列に追加する必要があります。
 
 アプリケーション デリゲートのメソッド `application:didReceiveRemoteNotification:` は、`application:didReceiveRemoteNotification:fetchCompletionHandler:` に置き換える必要があります。
 
-AEPushDelegate.h インターフェイスは廃止されるため、すべての参照を削除する必要があります。これには、`[[EngagementAgent shared] setPushDelegate:self]` の削除や、アプリケーション デリゲートからのデリゲート メソッドの削除も含まれます。
+AEPushDelegate.h インターフェイスは廃止されるため、すべての参照を消去する必要があります。これには、`[[EngagementAgent shared] setPushDelegate:self]` の削除や、アプリケーション デリゲートからのデリゲート メソッドの削除も含まれます。
 
 	-(void)willRetrieveLaunchMessage;
 	-(void)didFailToRetrieveLaunchMessage;
 	-(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
 ##1\.16.0 から 2.0.0 に移行
-Azure モバイル エンゲージメントを使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 1.16 に移行し、次の手順を適用してください。
+Azure Mobile Engagement を使用するアプリに Capptain SAS によって提供される Capptain サービスから SDK の統合を移行する方法を次に示します。以前のバージョンから移行する場合は、Capptain web サイトをご覧のうえ、まず 1.16 に移行し、次の手順を適用してください。
 
->[Azure.IMPORTANT]Capptain とモバイル エンゲージメントは、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーからモバイル エンゲージメントのサーバーに移行されません。
+>[Azure.IMPORTANT]Capptain と Mobile Engagement は、同じサービスではありません。次の手順では、クライアント アプリケーションを移行する方法についてのみ詳しく説明します。アプリで SDK を移行しても、データは Capptain サーバーから Mobile Engagement のサーバーに移行されません。
 
 ### エージェント
 
@@ -70,4 +72,4 @@ SmartAd の追跡が SDK から削除されました。`AETrackModule` クラス
 -   クラス `CapptainUtils` は `EngagementUtils` に変更されました。
 -   クラス `CapptainViewController` は `EngagementViewController` に変更されました。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

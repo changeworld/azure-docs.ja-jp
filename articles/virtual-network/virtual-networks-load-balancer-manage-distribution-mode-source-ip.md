@@ -1,22 +1,20 @@
 <properties 
    pageTitle="管理: ロード バランサー分散モード (ソース IP アフィニティ)"
-   description="Azure ロード バランサー分散モードの管理機能" 
-   services="virtual-network" 
-   documentationCenter="" 
-   authors="telmosampaio" 
-   manager="carolz" 
-   editor=""
-   />
+	description="Azure ロード バランサー分散モードの管理機能"
+	services="virtual-network"
+	documentationCenter=""
+	authors="telmosampaio"
+	manager="carolz"
+	editor=""/>
 
 <tags
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="05/27/2015"
-   ms.author="telmos"
-   />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/21/2015"
+	ms.author="telmos"/>
    
 # 仮想ネットワークの管理: ロード バランサー分散モード (ソース IP アフィニティ)
 **ソース IP アフィニティ** (**セッション アフィニティ**や**クライアント IP アフィニティ**とも呼ばれます) は、Azure のロード バランサー分散モードであり、各クライアントの接続を異なる Azure ホスト サーバーに動的に分散するのではなく (既定のロード バランサーの動作)、クライアント 1 つと Azure にホストされたサーバー 1 つを結び付けます。
@@ -32,7 +30,7 @@
 ソース IP アフィニティは、次のように構成できます。
 
 * [仮想マシン エンドポイント](../virtual-machines/virtual-machines-set-up-endpoints.md)
-* [負荷分散エンドポイント セット](http://msdn.microsoft.com/library/azure/dn655055.aspx)
+* [負荷分散エンドポイント セット](../load-balancer/load-balancer-overview.md)
 * [Web ロール](http://msdn.microsoft.com/library/windowsazure/ee758711.aspx)
 * [worker ロール](http://msdn.microsoft.com/library/windowsazure/ee758711.aspx)
 
@@ -161,4 +159,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
     Date: Thu, 16 Oct 2014 22:49:21 GMT
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

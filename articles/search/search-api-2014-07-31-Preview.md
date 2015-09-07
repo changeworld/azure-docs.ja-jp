@@ -1,10 +1,10 @@
 <properties pageTitle="Azure Search サービス REST API バージョン 2014-07-31-Preview" description="Azure Search サービス REST API: バージョン 2014-07-31-Preview" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor=""/>
 
-<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="07/22/2015" ms.author="heidist" />
+<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="08/26/2015" ms.author="heidist"/>
 
 # Azure Search サービス REST API バージョン: 2014-07-31-Preview
 
-このドキュメントでは、Azure Search サービス REST API の以前の **2014-07-31-Preview** バージョンについて説明します。これは 2014 年 8 月に Azure Search 公開プレビューとしてリリースされたものです。このバージョンはまもなく廃止されるため、一般公開版のリリースに関連付けられているバージョンを使用することを強くお勧めします。コード移行のガイダンスについては、「[プレビューから一般公開版への API バージョンの移行](search-transition-from-preview.md)」を参照してください。
+このドキュメントでは、Azure Search サービス REST API の以前の **2014-07-31-Preview** バージョンについて説明します。これは 2014 年 8 月に Azure Search 公開プレビューとしてリリースされたものです。このバージョンはまもなく廃止されるため、一般公開版のリリースに関連付けられているバージョンを使用することを強くお勧めします。コード移行のガイダンスについては、「[プレビューから一般公開版への API バージョンへの切り替え](search-transition-from-preview.md)」を参照してください。
 
 **2014-07-31-Preview** に関連するその他の API コンテンツとしては次のものがあります。
 
@@ -58,7 +58,7 @@ Azure Search サービスの認証には、Search サービスの URL と `api-k
 
 サービスごとに、2 個の管理者キーと最大 50 個のクエリ キーを使用できます。一方のキーをロールオーバーする必要がある場合に、2 個の管理者キーがあるので役立ちます。
 
-アクセス制御は、Azure プレビュー ポータルで提供されるロール ベースのアクセス制御 (RBAC) によってサービス管理に限定されます。ロールは、サービス管理のアクセス レベルの設定に使用されます。たとえば、管理者キーの表示は所有者ロールと共同作成者ロールに制限されるのに対し、サービスの状態はすべてのロールのメンバーが表示できます。
+Access Control は、Azure プレビュー ポータルで提供されるロール ベースのアクセス制御 (RBAC) によってサービス管理に限定されます。ロールは、サービス管理のアクセス レベルの設定に使用されます。たとえば、管理者キーの表示は所有者ロールと共同作成者ロールに制限されるのに対し、サービスの状態はすべてのロールのメンバーが表示できます。
 
 インデックスの管理、インデックスの設定、クエリなど、Search サービスのエンドポイントに対して実行されるデータ操作は、`api-keys` を使用して排他的にアクセスされます。RBAC は、インデックスまたはドキュメント関連の操作には適用されません。Azure Search での `api-keys` または RBAC の詳細については、「[Microsoft Azure で検索サービスを管理する](search-manage.md)」を参照してください。
 
@@ -125,8 +125,7 @@ ________________________________________
     "fields": [
       {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false},
       {"name": "baseRate", "type": "Edm.Double"},
-      {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "suggestions": true},
-	  {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "suggestions": true, analyzer="fr.lucene"},
+      {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "suggestions": true}
       {"name": "hotelName", "type": "Edm.String", "suggestions": true},
       {"name": "category", "type": "Edm.String"},
       {"name": "tags", "type": "Collection(Edm.String)"},
@@ -164,7 +163,7 @@ HTTPS はすべてのサービス要求に必要です。**Create Index** 要求
 
 インデックスの名前は小文字にします。文字または数字で始めます。スラッシュとドットは使用できません。文字数の制限は 128 文字です。インデックスの名前は文字または数字で始め、残りの部分には文字、数字、ダッシュを使用できます。ダッシュは連続することができません。
 
-`api-version` は必須です。有効な値は、`2014-07-31-Preview` または `2014-10-20-Preview` です。要求ごとに使用するバージョンを指定してバージョン固有の動作を取得できますが、ベスト プラクティスとしては、コード全体で同じバージョンを使用します。推奨されるバージョンは、一般的な使用の場合は `2014-07-31-Preview` です。または、アナライザー インデックス属性によって表される言語アナライザーのサポートなどの試験的機能を評価するには、`2014-10-20-Preview` を使用します。API のバージョンの詳細については、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。言語アナライザーの詳細については、「[言語のサポート](#LanguageSupport)」を参照してください。
+`api-version` は必須です。有効な値は、`2014-07-31-Preview` または `2014-10-20-Preview` です。要求ごとに使用するバージョンを指定してバージョン固有の動作を取得できますが、ベスト プラクティスとしては、コード全体で同じバージョンを使用します。推奨されるバージョンは、一般的な使用の場合は `2014-07-31-Preview` です。または、アナライザー インデックス属性によって表される言語アナライザーのサポートなどの試験的機能を評価するには、`2014-10-20-Preview` を使用します。
 
 **要求ヘッダー**
 
@@ -274,321 +273,6 @@ POST 要求の場合、要求本文でインデックスの名前を指定する
 
 `scoringProfiles` - 検索結果での項目の順序を変更できるカスタム スコアリング動作を定義します。スコアリング プロファイルは、重み付けされたフィールドと関数で構成されます。スコアリング プロファイルで使用される属性の詳細については、「[検索インデックスにスコア付けプロファイルを追加する](http://msdn.microsoft.com/library/azure/dn798928.aspx)」を参照してください。
 
-`analyzer` - フィールドに使用するテキスト アナライザーの名前を設定します。設定できる値については、「[言語のサポート](#LanguageSupport)」を参照してください。このオプションは、`searchable` フィールドでのみ使用できます。フィールドのアナライザーを選択した後は変更できません。
-
-
-<a name="LanguageSupport"></a> **言語のサポート**
-
-検索可能なフィールドで最も頻繁に行われる分析は、単語の分割、テキストの正規化、語句の除外などです。既定では、Azure Search の検索可能フィールドは [Apache Lucene 標準アナライザー](http://lucene.apache.org/core/4_9_0/analyzers-common/index.html)で分析されます。このアナライザーは、["Unicode Text Segmentation"](http://unicode.org/reports/tr29/) ルールに従ってテキストを要素に分割します。さらに、標準アナライザーはすべての文字を小文字形式に変換します。インデックス付きドキュメントと検索語句の両方について、インデックス作成とクエリ処理の間に分析が行われます。
-
-Azure Search では、さまざまな言語でフィールドのインデックスを作成できます。これらの各言語には、特定の言語の特性が考慮されている標準以外のテキスト アナライザーが必要です。たとえば、フランス語のアナライザーは、[Light French Stemmer](http://lucene.apache.org/core/4_9_0/analyzers-common/org/apache/lucene/analysis/fr/FrenchLightStemmer.html) を適用して単語を[単語の語幹](http://en.wikipedia.org/wiki/Stemming)に削減します。さらに、分析されたテキストから[エリジョン](http://en.wikipedia.org/wiki/Elision)およびフランス語のストップ ワードを除去します。英語のアナライザーは標準アナライザーを拡張します。単語から所有格を (末尾の 's) を除去し、[Porter Stemming アルゴリズム](http://tartarus.org/~martin/PorterStemmer/)に従ってステミングを適用し、英語の[ストップ ワード](http://en.wikipedia.org/wiki/Stop_words)を除去します。
-
-`analyzer` プロパティを設定することにより、インデックス定義のフィールドごとに個別のアナライザーを構成できます。たとえば、英語、フランス語、スペイン語によるホテルの説明を含む個別のフィールドを同じインデックスに同時に作成できます。クエリでは、検索クエリでどの言語固有フィールドを返すかを指定します。
-
-サポートされているアナライザーとその機能の簡単な説明を以下に示します。
-
-<table style="font-size:12">
-    <tr>
-		<th>言語</th>
-		<th>アナライザーの名前</th>
-		<th>説明</th>
-	</tr>
-    <tr>
-		<td>アラビア語</td>
-		<td>ar.lucene</td>
-		<td>
-		<ul>
-			<li>アラビア語の正字法正規化を実装します</li>
-			<li>ライト アルゴリズム ステミングを適用します</li>
-			<li>アラビア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ブラジル語</td>
-		<td>pt-Br.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ブラジル語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>中国語 (簡体字)</td>
-		<td>zh-Hans.lucene</td>
-		<td>
-		<ul>
-			<li>確率的知識モデルを使用して、最適な単語の分割を探します</li>
-			<li>中国語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>中国語 (繁体字)</td>
-		<td>zh-Hant.lucene</td>
-		<td>
-		<ul>
-			<li>二重字 (隣接する 2 つの中国語文字の重なり合ったグループ) のインデックスを作成します</li>
-			<li>文字幅の違いを正規化します</li>
-		</ul>
-		</td>
-	<tr>
-    <tr>
-		<td>チェコ語</td>
-		<td>cs.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>チェコ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>デンマーク語</td>
-		<td>da.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>デンマーク語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>オランダ語</td>
-		<td>nl.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>オランダ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ドイツ語</td>
-		<td>de.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ドイツ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ギリシャ語</td>
-		<td>el.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ギリシャ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>英語</td>
-		<td>en.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>英語のストップ ワードを除外します</li>
-			<li>所有格を除去します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>フィンランド語</td>
-		<td>fi.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>フィンランド語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>フランス語</td>
-		<td>fr.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>フランス語のストップ ワードを除外します</li>
-			<li>エリジョンを除去します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ヒンディー語</td>
-		<td>hi.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ヒンディー語のストップ ワードを除外します</li>
-			<li>スペル バリエーションの一部の相違を除去します</li>
-			<li>インドの言語でのテキストの Unicode 表現を正規化します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ハンガリー語</td>
-		<td>hu.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ハンガリー語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>インドネシア語</td>
-		<td>id.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>インドネシア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>イタリア語</td>
-		<td>it.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>イタリア語のストップ ワードを除外します</li>
-			<li>エリジョンを除去します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>日本語</td>
-		<td>ja.lucene</td>
-		<td>
-		<ul>
-			<li>形態素分析を使用します</li>
-			<li>一般的なカタカナのスペルのバリエーションを正規化します</li>
-			<li>ライト ストップ ワード/ストップ タグを除去します</li>
-			<li>文字幅を正規化します</li>
-			<li>レンマ化 - 屈折した形容詞と動詞を基本形式に削減します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>韓国語</td>
-		<td>ko.lucene</td>
-		<td>
-		<ul>
-			<li>二重字 (隣接する 2 つの中国語文字の重なり合ったグループ) のインデックスを作成します</li>
-			<li>文字幅の違いを正規化します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ラトビア語</td>
-		<td>lv.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ラトビア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-
-    <tr>
-		<td>ノルウェー語</td>
-		<td>no.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ノルウェー語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ポーランド語</td>
-		<td>pl.lucene</td>
-		<td>
-		<ul>
-			<li>アルゴリズム ステミング (Stempel) を適用します</li>
-			<li>ポーランド語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ポルトガル語</td>
-		<td>pt-Pt.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ポルトガル語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-
-    <tr>
-		<td>ルーマニア語</td>
-		<td>ro.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ルーマニア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>ロシア語</td>
-		<td>ru.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>ロシア語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>スペイン語</td>
-		<td>es.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>スペイン語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>スウェーデン語</td>
-		<td>sv.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>スウェーデン語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>トルコ語</td>
-		<td>tr.lucene</td>
-		<td>
-		<ul>
-			<li>アポストロフィから後のすべての文字を除去します (アポストロフィ自体を含みます)</li>
-			<li>ライト ステミングを適用します</li>
-			<li>トルコ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-    <tr>
-		<td>タイ語</td>
-		<td>th.lucene</td>
-		<td>
-		<ul>
-			<li>ライト ステミングを適用します</li>
-			<li>タイ語のストップ ワードを除外します</li>
-		</ul>
-		</td>
-	</tr>
-</table>
-
-名前に <i>lucene</i> が含まれるすべてのアナライザーは、[Apache Lucene の言語アナライザー](http://lucene.apache.org/core/4_9_0/analyzers-common/overview-summary.html)を利用しています。
-
 **CORS のオプション**
 
 ブラウザーがすべてのクロス オリジン要求を禁止するので、既定ではクライアント側 Javascript はどの API も呼び出すことができません。インデックスへのクロス オリジン クエリを許可するには、`corsOptions` 属性を設定することによって CORS (クロス オリジン リソース共有) を有効にします。セキュリティ上の理由から、CORS をサポートするのはクエリ API だけであることに注意してください。CORS に対しては以下のオプションを設定できます。
@@ -605,7 +289,6 @@ Azure Search では、さまざまな言語でフィールドのインデック�
         {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false},
         {"name": "baseRate", "type": "Edm.Double"},
         {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "suggestions": true},
-	    {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "suggestions": true, analyzer="fr.lucene"},
         {"name": "hotelName", "type": "Edm.String", "suggestions": true},
         {"name": "category", "type": "Edm.String"},
         {"name": "tags", "type": "Collection(Edm.String)"},
@@ -632,9 +315,9 @@ Azure Search 内の既存のインデックスを、HTTP PUT 要求を使用し�
     Content-Type: application/json
     api-key: [admin key]
 
-**重要:** Azure Search パブリック プレビューでは、限定的なインデックス スキーマの更新がサポートされます。フィールドの種類の変更といったインデックスの再作成を必要とするスキーマ更新は、現在はサポートされていません。新しいフィールドはいつでも追加できますが、既存のフィールドを変更または削除することはできません。
+**重要:** Azure Search 検索パブリック プレビューでは、フィールド タイプの変更など、インデックスの再作成を必要とするスキーマの更新をサポートしていません。新しいフィールドはいつでも追加できますが、既存のフィールドを変更または削除することはできません。
 
-新しいフィールドをインデックスに追加すると、インデックス内のすべての既存ドキュメントでそのフィールドに null 値が自動的に設定されます。新しいドキュメントがインデックスに追加されるまで、追加の記憶域は使用されません。
+新しいフィールドをインデックスに追加すると、インデックス内のすべての既存ドキュメントでそのフィールドに null 値が自動的に設定されます。新しいドキュメントがインデックスに追加されるまで、追加のストレージは使用されません。
 
 **要求**
 
@@ -857,7 +540,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 <a name="GetIndexStats"></a>
 ## Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))
 
-**Get Index Statistics** 操作は、現在のインデックスに対するドキュメントの数と記憶域の使用状況を Azure Search から返します。
+**Get Index Statistics** 操作は、現在のインデックスに対するドキュメントの数とストレージの使用状況を Azure Search から返します。
 
 	GET https://[service name].search.windows.net/indexes/[index name]/stats?api-version=[api-version]
     api-key: [admin key]
@@ -999,7 +682,6 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
           "hotelId": "1",
           "baseRate": 199.0,
           "description": "Best hotel in town",
-		  "description_fr": "Meilleur hôtel en ville",
           "hotelName": "Fancy Stay",
 		  "category": "Luxury",
           "tags": ["pool", "view", "wifi", "concierge"],
@@ -1014,7 +696,6 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
           "hotelId": "2",
           "baseRate": 79.99,
           "description": "Cheapest hotel in town",
-	      "description_fr": "Hôtel le moins cher en ville",
           "hotelName": "Roach Motel",
 		  "category": "Budget",
           "tags": ["motel", "budget"],
@@ -1381,4 +1062,4 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 
     GET /indexes/hotels/docs/suggest?search=lux&$top=5&api-version=2014-07-31-Preview
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

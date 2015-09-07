@@ -1,20 +1,20 @@
 
 <properties 
-	pageTitle="Azure AD Connect 同期規則エディターの使用" 
-	description="Azure AD Connect 同期規則エディターの使用方法について説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure AD Connect 同期規則エディターの使用"
+	description="Azure AD Connect 同期規則エディターの使用方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/28/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure AD Connect 同期規則エディター
@@ -74,4 +74,4 @@ Azure AD Connect では、同期規則を構成することにより、Azure AD 
 変換に関するトピックは膨大となるため、Azure AD Connect で可能なカスタム構成の大部分を占めます。この概要ドキュメントではカスタム構成については説明しませんが、追加の属性フローの一部については後述します。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を追加する" 
-	description="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を送信する方法について説明します" 
-	services="app-service\mobile" 
-	documentationCenter="xamarin" 
+	pageTitle="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を追加する"
+	description="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を送信する方法について説明します"
+	services="app-service\mobile"
+	documentationCenter="xamarin"
 	authors="normesta"
-	manager="dwrede" 
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="app-service-mobile" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-xamarin-ios" 
-	ms.devlang="dotnet" 
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="07/29/2015" 
+	ms.date="08/22/2015"
 	ms.author="yuaxu"/>
 
 # Xamarin iOS アプリへのプッシュ通知の追加
@@ -22,39 +22,31 @@
 
 ##概要
 
-このチュートリアルでは、[Xamarin.iOS クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている [Xamarin.iOS のクイック スタート] チュートリアルを完了しておく必要があります。 [iOS シミュレーターはプッシュ通知をサポートしない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、物理的な iOS デバイスを使用する必要があります。さらに、[Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)にサインアップする必要があります。
+このチュートリアルでは、[Xamarin.iOS クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている [Xamarin.iOS のクイック スタート] チュートリアルを完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+
+[iOS シミュレーターはプッシュ通知をサポートしない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、物理的な iOS デバイスを使用する必要があります。さらに、[Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)にサインアップする必要があります。
 
 ##前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント
+* アクティブな Azure アカウントアカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手してください。このアプリは、評価終了後も使用できます。[Azure 無料評価版のサイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-    アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手してください。このアプリは、評価終了後も使用できます。[Azure 無料評価版のサイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
-
-    >[AZURE.NOTE]サインアップして Azure アカウントを得る前にモバイル アプリを開始するには、「[Try App Service (App Service を試す)](http://go.microsoft.com/fwlink/?LinkId=523751&appServiceName=mobile)」にアクセスしてください。短期間のスターター モバイル アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-
-* [Xamarin Studio] と [Xcode] v4.4 以降がインストールされた Mac。
-
-    >[AZURE.NOTE]Xamarin Studio を使用して、Mac で Xamarin.iOS アプリを実行するほうが簡単です。必要であれば Visual Studio を使用して Windows コンピューター上で Xamarin.iOS を実行できますが、ネットワーク化された Mac に接続する必要があるため、少し複雑になります。この設定に関心がある場合は、「[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]」をご覧ください。
+* [Xamarin Studio] と [Xcode] v4.4 以降がインストールされた Mac。Xamarin Studio を使用して、Mac で Xamarin.iOS アプリを実行するほうが簡単であることに注意してください。必要であれば Visual Studio を使用して Windows コンピューター上で Xamarin.iOS を実行できますが、ネットワーク化された Mac に接続する必要があるため、少し複雑になります。この設定に関心がある場合は、「[Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]」をご覧ください。
 
 * 物理的な iOS デバイス
 
-* [クイック スタート チュートリアル](../app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md)の完了。
+* [クイック スタート チュートリアル](../app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md)を完了していること。
 
-## <a id="register"></a>アプリのプッシュ通知を登録する
+## <a id="register"></a>アプリをプッシュ通知用に登録する
 
 [AZURE.INCLUDE [Apple プッシュ通知を有効にする](../../includes/enable-apple-push-notifications.md)]
-
-##<a name="review"></a>サーバーのプロジェクト構成を確認する (省略可能)
-
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-enable-push-preview](../../includes/app-service-mobile-dotnet-backend-enable-push-preview.md)]
 
 ## プッシュ通知を送信するように Azure を構成する
 
 [AZURE.INCLUDE [app-service-mobile-apns-configure-push-preview](../../includes/app-service-mobile-apns-configure-push-preview.md)]
 
-##<a id="update-server"></a>サーバー プロジェクトを更新してプッシュ通知を送信する
+##<a id="update-server"></a>サーバー プロジェクトをプッシュ通知を送信するように更新する
 
 [AZURE.INCLUDE [app-service-mobile-apns-configure-push-preview](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
@@ -201,12 +193,12 @@
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
-[Get started with Mobile Services]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-ios
-[Get started with data]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios
-[Get started with authentication]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[Get started with push notifications]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios
-[Push notifications to app users]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios
-[Authorize users with scripts]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
+[Get started with Mobile Services]: /ja-JP/develop/mobile/tutorials/get-started-xamarin-ios
+[Get started with data]: /ja-JP/develop/mobile/tutorials/get-started-with-data-xamarin-ios
+[Get started with authentication]: /ja-JP/develop/mobile/tutorials/get-started-with-users-xamarin-ios
+[Get started with push notifications]: /ja-JP/develop/mobile/tutorials/get-started-with-push-xamarin-ios
+[Push notifications to app users]: /ja-JP/develop/mobile/tutorials/push-notifications-to-users-ios
+[Authorize users with scripts]: /ja-JP/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
 [Xamarin Device Provisioning]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
 [Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 
@@ -218,4 +210,4 @@
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="ファイル システム コネクタ - ファイル システムとの間のデータ移動" 
-	description="オンプレミスのファイル システムとの間でのデータ移動を可能にする Data Factory サービスのファイル システム コネクタについて学習する" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="ファイル システムとの間でデータを移動する | Azure Data Factory"
+	description="Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/27/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# ファイル システム コネクタ - オンプレミスのファイル システムとの間のデータ移動
+# Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する
 
 この記事では、データ ファクトリのコピー アクティビティを使用してオンプレミスのファイル システムとの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -35,11 +35,11 @@
 
 下のサンプルで確認できる要素:
 
-1.	OnPremisesFileServer 型のリンクされたサービス
-2.	AzureStorage 型のリンクされたサービス
-3.	FileShare 型の入力データセット。
-4.	AzureBlob 型の出力データセット。
-4.	FileSystemSource および BlobSink を使用するコピー アクティビティを含むパイプライン。 
+1.	[OnPremisesFileServer](data-factory-onprem-file-system-connector.md#onpremisesfileserver-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス
+3.	[FileShare](data-factory-onprem-file-system-connector.md#on-premises-file-system-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4.	[FileSystemSource](data-factory-onprem-file-system-connector.md#file-share-copy-activity-type-properties) および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。 
 
 次のサンプルは、時系列に属するデータを 1 時間ごとにオンプレミスのファイル システムから Azure BLOB にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -52,7 +52,7 @@
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\\\Contosogame-Asia",
+	      "host": "\\\Contosogame-Asia",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
@@ -252,7 +252,7 @@
 3.	FileShare 型の出力データセット。
 4.	SqlSource と FileSystemSink を使用するコピー アクティビティを含むパイプライン。
 
-このサンプルはある時系列に属するデータを 1 時間おきに Azure SQL データベースのテーブルからオンプレミスのファイル システムにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルはある時系列に属するデータを 1 時間おきに Azure SQL Database のテーブルからオンプレミスのファイル システムにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure SQL のリンクされたサービス:**
 
@@ -273,7 +273,7 @@
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\\\Contosogame-Asia",
+	      "host": "\\\Contosogame-Asia",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
@@ -427,11 +427,13 @@
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティは、**OnPremisesFileServer** に設定されます。 | あり 
-host | サーバーのホスト名。次の例のように '\' をエスケープ文字として使用します: 共有が \\servername である場合、\\\\servername を指定します。<p>。ファイル システムが、ゲートウェイ コンピューターに対してローカルである場合は、Local または localhost を使用します。ファイル システムがゲートウェイ コンピューターとは異なるサーバー上にある場合は、\\\\servername を使用します。</p> | あり
-userid | サーバーにアクセスするユーザーの ID を指定します | No (encryptedcredential を選択する場合)
-パスワード | ユーザー (userid) のパスワードを指定します | No (encryptedcredential を選択する場合) 
-encryptedcredential | New-AzureDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します<p>**注: ** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります</p> | No (プレーン テキストでユーザー ID とパスワードを指定する場合)
+host | サーバーのホスト名。次の例のように '\' をエスケープ文字として使用します: 共有が \\servername である場合、\\\servername を指定します。<p>。ファイル システムが、ゲートウェイ コンピューターに対してローカルである場合は、Local または localhost を使用します。ファイル システムがゲートウェイ コンピューターとは異なるサーバー上にある場合は、\\\servername を使用します。</p> | あり
+userid | サーバーにアクセスするユーザーの ID を指定します | No (encryptedCredential を選択する場合)
+パスワード | ユーザー (userid) のパスワードを指定します | No (encryptedCredential を選択する場合) 
+encryptedCredential | New-AzureDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します<p>**注: ** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります</p> | No (プレーン テキストでユーザー ID とパスワードを指定する場合)
 gatewayName | Data Factory サービスが、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前 | あり
+
+オンプレミスのファイル システム データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
 **例: プレーン テキストでのユーザー名とパスワードの使用**
 	
@@ -440,7 +442,7 @@ gatewayName | Data Factory サービスが、オンプレミスのファイル �
 	  "properties": {
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
-	      "host": "\\\\Contosogame-Asia",
+	      "host": "\\\Contosogame-Asia",
 	      "userid": "Admin",
 	      "password": "123456",
 	      "gatewayName": "mygateway"
@@ -456,7 +458,7 @@ gatewayName | Data Factory サービスが、オンプレミスのファイル �
 	    "type": "OnPremisesFileServer",
 	    "typeProperties": {
 	      "host": "localhost",
-	      "encryptedcredential": "WFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5xxxxxxxxxxxxxxxxx",
+	      "encryptedCredential": "WFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5xxxxxxxxxxxxxxxxx",
 	      "gatewayName": "mygateway"
 	    }
 	  }
@@ -571,4 +573,4 @@ quoteChar ではなく escapeChar を使用するには、quoteChar の行を次
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

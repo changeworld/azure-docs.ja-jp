@@ -1,25 +1,25 @@
 <properties 
    pageTitle="仮想ネットワーク (VNet) の削除方法"
-   description="既存の VNet を削除する方法について説明します。"
-   services="virtual-network"
-   documentationCenter="na"
-   authors="telmosampaio"
-   manager="carolz"
-   editor="tysonn" />
+	description="既存の VNet を削除する方法について説明します。"
+	services="virtual-network"
+	documentationCenter="na"
+	authors="telmosampaio"
+	manager="carolz"
+	editor="tysonn"/>
 <tags 
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="05/29/2015"
-   ms.author="telmos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="05/29/2015"
+	ms.author="telmos"/>
 
 # 仮想ネットワーク (VNet) の削除方法
 
 VNet を削除する場合は、**[削除]** をクリックするだけではできません。最初にいくつか操作が必要になります。
 
-1. **設定を保存する (省略可能)**: 仮想ネットワークの設定をローカル ファイルに保存する場合は、仮想ネットワークを削除する前に構成ファイルをエクスポートします。詳細については、「[ネットワーク構成ファイルへの仮想ネットワーク設定のエクスポート](https://msdn.microsoft.com/library/azure/dn133804.aspx)」をご覧ください。設定を保存すると、必要に応じて、後で VNet を作成し直すことができます。
+1. **設定を保存する (省略可能)**: 仮想ネットワークの設定をローカル ファイルに保存する場合は、仮想ネットワークを削除する前に構成ファイルをエクスポートします。詳細については、「[ネットワーク構成ファイルへの仮想ネットワーク設定のエクスポート](virtual-networks-using-network-configuration-file.md)」をご覧ください。設定を保存すると、必要に応じて、後で VNet を作成し直すことができます。
 
 1. **仮想ネットワーク ゲートウェイを削除する**: VNet 用にゲートウェイを構成した場合は、VNet を削除する前にゲートウェイを削除する必要があります。仮想ネットワーク ゲートウェイを削除するには、仮想ネットワークの [ダッシュボード] ページに移動します。ページの下部にある **[ゲートウェイの削除]** をクリックします。
 						
@@ -32,4 +32,4 @@ VNet を削除する場合は、**[削除]** をクリックするだけでは�
 1. **その他**: 仮想ネットワークを削除した後、ローカル ネットワーク設定、DNS サーバー、アフィニティ グループを削除することもできます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

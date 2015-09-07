@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="チュートリアル: サイト間接続用のクロスプレミス仮想ネットワークの作成" 
-	description="このチュートリアルでは、クロスプレミス接続を使う Azure の仮想ネットワークを作成する方法について説明します。" 
-	services="virtual-network" 
-	documentationCenter="" 
-	authors="cherylmc" 
-	manager="adinah" 
+	pageTitle="チュートリアル: サイト間接続用のクロスプレミス仮想ネットワークの作成"
+	description="このチュートリアルでは、クロスプレミス接続を使う Azure の仮想ネットワークを作成する方法について説明します。"
+	services="virtual-network"
+	documentationCenter=""
+	authors="cherylmc"
+	manager="adinah"
 	editor="tysonn"/>
 
 <tags 
-	ms.service="virtual-network" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/28/2015" 
+	ms.service="virtual-network"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/17/2015"
 	ms.author="cherylmc"/>
 
 
@@ -24,7 +24,7 @@
 
 クラウド専用の仮想ネットワークを作成するには、[Azure でクラウド専用仮想ネットワークを作成するチュートリアル](../virtual-machines/create-virtual-network.md)を参照してください。証明書と VPN クライアントを使用してポイント対サイト VPN を作成する場合は、「[管理ポータル ウィザードを使用したポイント対サイト VPN の構成](http://go.microsoft.com/fwlink/p/?LinkId=296653)」を参照してください。
 
-このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。目的は、読者がクロスプレミス仮想ネットワークのサンプルの作成に必要な手順を習得できるようにすることです。仮想ネットワークのデザイン シナリオや詳細情報については、「[Azure の仮想ネットワークの概要](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)」を参照してください。
+このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。目的は、読者がクロスプレミス仮想ネットワークのサンプルの作成に必要な手順を習得できるようにすることです。仮想ネットワークのデザイン シナリオや詳細情報については、「[Azure の仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 このチュートリアルを完了すると、クロスプレミス仮想ネットワークのサンプルが作成されます。次の図は、このチュートリアルの設定例に基づいた詳細を示しています。
 
@@ -108,7 +108,7 @@ AD DS を Azure の仮想マシンにデプロイする方法に関するガイ�
  
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVNet_03_DNSServersandVPNConnectivity.png)
 
-5.	**[サイト間接続]** ページで、次の情報を入力し、ページの右下にあるチェックマークをクリックにします。このページの設定の詳細については、[「**管理ポータルでの仮想ネットワークの構成について**」](http://go.microsoft.com/fwlink/p/?LinkID=248092)の **[サイト間接続]** ページ セクションを参照してください。 
+5.	**[サイト間接続]** ページで、次の情報を入力し、ページの右下にあるチェックマークをクリックにします。このページの設定の詳細については、「**管理ポータルでの仮想ネットワークの構成について**」の [[サイト間接続]](http://go.microsoft.com/fwlink/p/?LinkID=248092) ページ セクションを参照してください。 
 
 	-  **名前:** たとえばこのチュートリアルでは、「**YourCorpHQ**」と入力します。
 
@@ -253,9 +253,9 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 
 ## 関連項目
 
--  [Azure の仮想ネットワークの技術概要](http://msdn.microsoft.com/library/windowsazure/jj156007.aspx)
+-  [Azure の仮想ネットワークの技術概要](../virtual-network/virtual-networks-overview.md)
 
--  [仮想ネットワーク FAQ](http://msdn.microsoft.com/library/windowsazure/dn133803.aspx)
+-  [仮想ネットワーク FAQ](virtual-networks-faq.md)
 
 -  [ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)
 
@@ -272,4 +272,4 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 
  
 
-<!------HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

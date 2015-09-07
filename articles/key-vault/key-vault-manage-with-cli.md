@@ -41,7 +41,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 
 このチュートリアルでは、コマンドライン インターフェイス (Bash、Terminal、Command プロンプト) に慣れていることを前提としています。
 
-\--help または -h パラメーターを使用すると特定のコマンドに対するヘルプを表示できます。または、azure help [コマンド][オプション] の形式で指定しても、同じ情報が返されます。たとえば、次のコマンドでは、すべて同じ情報が返されます。
+--help または -h パラメーターを使用すると特定のコマンドに対するヘルプを表示できます。または、azure help [コマンド][オプション] の形式で指定しても、同じ情報が返されます。たとえば、次のコマンドでは、すべて同じ情報が返されます。
 
     azure account set --help
 
@@ -117,7 +117,7 @@ Azure リソース マネージャーを使用すると、すべての関連す�
 
 このコマンドの出力は、作成されたばかりの Key Vault のプロパティを示します。最も重要な 2 つのプロパティは、次のとおりです。
 
-- **Name**: この例では、これは ContosoKeyVault です。この名前を他の ContosoKeyVault コマンドレットに使用できます。
+- **Name**: この例では、これは ContosoKeyVault です。この名前を他の Key Vault コマンドレットに使用できます。
 - **vaultUri**: この例では、これは https://contosokeyvault.vault.azure.net です。その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
 
 Azure アカウントは、この Key Vault ですべての操作の実行が許可されるようになりました。まだ、どのユーザーも許可されていません。
@@ -185,7 +185,10 @@ Azure Active Directory にアプリケーションを登録するには:
 たとえば、資格情報コンテナー名が ContosoKeyVault で、承認するアプリケーションのクライアント ID が 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed の場合、アプリケーションの暗号化を解除し、資格情報コンテナー内のキーで署名することを承認するには、次のように実行します。
 
     azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perm-to-keys '[“decrypt”,”sign”]'
+    
+その同じアプリケーションを認証し、資格情報コンテナーのシークレットの読み取りを許可する場合、次を実行します。
 
+	azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perm-to-secrets '["Get"]'
 
 ## ハードウェア セキュリティ モジュール (HSM) を使用する場合 ##
 
@@ -252,4 +255,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Key Vault の REST API](https://msdn.microsoft.com/library/azure/dn903609.aspx)」と「[Key Vault C# クライアント API リファレンス](https://msdn.microsoft.com/library/azure/dn903628.aspx)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

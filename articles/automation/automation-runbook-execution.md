@@ -1,19 +1,19 @@
 <properties
    pageTitle="Azure Automation での Runbook の実行"
-   description="Azure Automation で Runbook が処理される方法の詳細について説明します。"
-   services="automation"
-   documentationCenter=""
-   authors="bwren"
-   manager="stevenka"
-   editor="tysonn" />
+	description="Azure Automation で Runbook が処理される方法の詳細について説明します。"
+	services="automation"
+	documentationCenter=""
+	authors="bwren"
+	manager="stevenka"
+	editor="tysonn"/>
 <tags
    ms.service="automation"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/22/2015"
-   ms.author="bwren" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="07/22/2015"
+	ms.author="bwren"/>
 
 # Azure Automation での Runbook の実行
 
@@ -89,7 +89,7 @@ Runbook Dashboard を表示するには、次の手順を使用します。
 
 ## フェア シェア
 
-クラウド内のすべての Runbook 間でリソースを共有するために、Azure Automation は任意のジョブが 3 時間実行された後で一時的にそのジョブをアンロードし、次にそのジョブをその最後の[チェックポイント](http://aka.ms/runbookauthor/checkpoints)から再起動します。この間、ジョブの状態は [実行中、リソースを待機中] となります。Runbook がチェックポイントを持っていないか、またはアンロードされる前にジョブがまだ最初のチェックポイントに達していない場合、ジョブは最初から再開されます。
+クラウド内のすべての Runbook 間でリソースを共有するために、Azure Automation は任意のジョブが 3 時間実行された後で一時的にそのジョブをアンロードし、次にそのジョブをその最後の[チェックポイント](http://technet.microsoft.com/library/dn469257.aspx#bk_Checkpoints)から再起動します。この間、ジョブの状態は [実行中、リソースを待機中] となります。Runbook がチェックポイントを持っていないか、またはアンロードされる前にジョブがまだ最初のチェックポイントに達していない場合、ジョブは最初から再開されます。
 
 Runbook が同じチェックポイントから、または Runbook の先頭から 3 回連続して再起動した場合、Runbook は終了し、[失敗、リソースを待機中] という状態になります。これは、Runbook が次のチェックポイントに進むことができず再度アンロードされない場合に、Runbook が完了せずに無期限に実行されるのを防ぐためのものです。この場合は、エラー発生時に次の例外を受信します。
 
@@ -101,8 +101,6 @@ Runbook を作成する際には、2 つのチェックポイント間で任意�
 
 ## 関連記事:
 
-- [Azure Automation での Runbook を開始する](automation-starting-a-runbook)
-- [Azure Automation で Runbook ジョブの状態を表示する方法](automation-viewing-the-status-of-a-runbook-job)
- 
+- [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

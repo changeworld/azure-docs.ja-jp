@@ -1,23 +1,25 @@
 <properties 
-   pageTitle="StorSimple のコンポーネントについて | Microsoft Azure" 
-   description="StorSimple のデバイス、サービス、管理テクノロジについて説明します。" 
-   services="storsimple" 
-   documentationCenter="NA" 
-   authors="SharS" 
-   manager="AdinaH" 
-   editor=""/>
+   pageTitle="StorSimple のコンポーネントについて | Microsoft Azure"
+	description="StorSimple デバイス、仮想デバイス、サービス、管理テクノロジについて説明し、ソリューションで使用される主な用語を説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="AdinaH"
+	editor=""/>
 
 <tags
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD" 
-   ms.date="08/13/2015"
-   ms.author="v-sharos"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/26/2015"
+	ms.author="v-sharos"/>
 
 
-# StorSimple のコンポーネントについて 
+# StorSimple のコンポーネントとその仕組みについて 
+
+## 概要
 
 Microsoft Azure StorSimple へようこそ。StorSimple は、オンプレミスのデバイスと Microsoft Azure クラウド ストレージとの間で実行されるストレージ タスクを管理する統合ストレージ ソリューションです。Azure StorSimple は、ストレージ コストを削減し、ストレージ管理を簡略化し、障害復旧の機能および効率を向上させ、データ モビリティを提供する設計になっています。
 
@@ -40,7 +42,7 @@ StorSimple デバイスには、ソリッド ステート ドライブ (SSD) と
 
 どの時点でも、1 つのコントローラーのみがアクティブです。アクティブなコントローラーに障害が発生すると、2 つ目のコントローラーが自動的にアクティブになります。
 
-詳細については、「[StorSimple のハードウェア コンポーネントと状態](storsimple-monitor-hardware-status.md)」を参照してください。
+詳細については、「[StorSimple のハードウェア コンポーネントと状態](storsimple-monitor-hardware-status.md)」をご覧ください。
 
 ## StorSimple 仮想デバイス
 
@@ -55,7 +57,7 @@ StorSimple 仮想デバイス (仮想アプライアンスともいいます) �
 
 クラウドへのデプロイやテスト シナリオなど、物理デバイスを使用できない障害復旧シナリオに対しては、StorSimple 仮想デバイスを使用することをお勧めします。
 
-詳細については、「[StorSimple 仮想デバイス](storsimple-virtual-device.md)」を参照してください。
+詳細については、「[StorSimple 仮想デバイス](storsimple-virtual-device.md)」をご覧ください。
 
 
 ## ストレージ管理テクノロジ
@@ -110,7 +112,7 @@ StorSimple 用 Windows PowerShell にはコマンドライン インターフェ
 
 StorSimple 用 Windows PowerShell には、(デバイスに直接接続されているホスト コンピューター上の) シリアル コンソールを使用してアクセスできるほか、Windows PowerShell リモート処理を使用してリモート アクセスできます。デバイスの最初の登録など、StorSimple 用 Windows PowerShell の一部のタスクは、シリアル コンソールでのみ実行できます。
 
-詳細については、「[Windows PowerShell for StorSimple を使用してデバイスを管理する](storsimple-windows-powershell-administration.md)」を参照してください。
+詳細については、「[Windows PowerShell for StorSimple を使用してデバイスを管理する](storsimple-windows-powershell-administration.md)」をご覧ください。
 
 ## StorSimple 用 Azure PowerShell コマンドレット
 
@@ -131,7 +133,7 @@ Microsoft Azure StorSimple には Web ベースのユーザー インターフ�
 
 StorSimple Manager サービスを使用すると、初期のセットアップや更新プログラムのインストールなど、システムのダウン タイムが必要なタスクを除き、すべての管理タスクを実行できます。
 
-詳細については、[StorSimple Manager サービスを使用した StorSimple デバイスの監視](storsimple-manager-service-administration.md)に関するページを参照してください。
+詳細については、[StorSimple Manager サービスを使用した StorSimple デバイスの監視](storsimple-manager-service-administration.md)に関するページをご覧ください。
 
 ## StorSimple Snapshot Manager
 
@@ -146,7 +148,7 @@ StorSimple Snapshot Manager は、ローカル データとクラウド デー�
 
 障害が発生した場合、または他の理由でデータを復元する必要がある場合、StorSimple Snapshot Manager は必要に応じて段階的に復元します。データの復元において、ファイルを復元するとき、機器を交換するとき、または操作を別のサイトに移行するときに、システム全体をシャットダウンする必要はありません。
 
-詳細については、[StorSimple Snapshot Manager](storsimple-what-is-snapshot-manager.md) に関するページを参照してください。
+詳細については、「[StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)」をご覧ください。
 
 ## SharePoint 用 StorSimple アダプター
 
@@ -167,7 +169,7 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | ------------------------------ | ---------------- |
 | アクセス制御レコード (ACR) | ボリュームに接続できるホストを決定する、Microsoft Azure StorSimple デバイス上のボリュームに関連付けられているレコード。決定は、StorSimple デバイスに接続している (ACR に含まれる) ホストの iSCSI 修飾名 (IQN) に基づいて行われます。|
 | AES-256 | クラウドとの間でやり取りされるデータを暗号化するための 256 ビットの Advanced Encryption Standard (AES) アルゴリズム。 |
-| アロケーション ユニット サイズ (AUS) | Windows ファイル システムのファイルを保持するために割り当てることができるディスク領域の最小サイズ。ファイルのサイズがクラスター サイズの偶数倍でない場合は、ファイルを保持するために余分な領域を使用する必要があり (最大でクラスター サイズの次の倍数)、領域の損失やハード ディスクの断片化につながります。<br>Azure StorSimple ボリュームに推奨される AUS は、重複除去アルゴリズムとの相性がよいため 64 KB です。|
+| アロケーション ユニット サイズ (AUS) | Windows ファイル システムのファイルを保持するために割り当てることができるディスク領域の最小サイズ。ファイルのサイズがクラスター サイズの偶数倍でない場合は、ファイルを保持するために余分な領域を使用する必要があり (最大でクラスター サイズの次の倍数)、領域の損失やハード ディスクの断片化につながります。<br>Azure StorSimple ボリュームに推奨される AUS は、重複除去アルゴリズムとの相性がよい 64 KB です。|
 | 自動ストレージ階層化 | 使用頻度の低いデータのクラウド内階層への自動的な移動と、集中ユーザー インターフェイスからの全ストレージの管理の有効化。|
 | バックアップ カタログ | バックアップのコレクション。通常は、使用されたアプリケーションのタイプによって関連付けられます。このコレクションは、StorSimple Manager サービス UI の [バックアップ カタログ] ページに表示されます。|
 | バックアップ カタログ ファイル | StorSimple Snapshot Manager のバックアップ データベースに現在格納されている利用可能なスナップショットの一覧を含むファイル。 |
@@ -186,7 +188,7 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | ダイナミック ディスク ミラーリング | ダイナミック ディスクへの論理ディスク ボリュームのレプリケーション。|
 | ダイナミック ディスク | 論理ディスク マネージャー (LDM) を使用して複数の物理ディスクにデータを格納して管理するディスク ボリューム形式。より多くの空き領域を提供するようにダイナミック ディスクを拡張できます。|
 | Extended Bunch of Disks (EBOD) エンクロージャ | 追加ストレージのための予備ハード ドライブ ディスクを格納する Microsoft Azure StorSimple デバイスのセカンダリ エンクロージャ。|
-| ファット プロビジョニング | 予想されるニーズ (通常は現在のニーズより多い) に基づいてストレージ容量が割り当てられる従来型のストレージ プロビジョニング。「*仮想プロビジョニング*」も参照してください。|
+| ファット プロビジョニング | 予想されるニーズ (通常は現在のニーズより多い) に基づいてストレージ容量が割り当てられる従来型のストレージ プロビジョニング。「*仮想プロビジョニング*」もご覧ください。|
 | ハード ディスク ドライブ (HDD) | 回転するプラッターを使用してデータを格納するドライブ。|
 | ハイブリッド クラウド ストレージ | ローカル リソースとクラウド ストレージを含むオフサイト リソースの両方を使用するストレージ アーキテクチャ。|
 | Internet Small Computer System Interface (iSCSI) | データ ストレージ装置や設備をリンクするためのインターネット プロトコル (IP) ベースのストレージ ネットワーク標準。|
@@ -209,7 +211,7 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | StorSimple Manager サービス | Azure StorSimple のオンプレミスのデバイスおよび仮想デバイスを管理できるようにする Microsoft Azure 管理ポータルの拡張機能。|
 | StorSimple Snapshot Manager | Microsoft Azure StorSimple でのバックアップおよび復元操作を管理するための Microsoft 管理コンソール (MMC) スナップイン。|
 | バックアップの作成 | ユーザーがボリュームの対話型バックアップを作成できるようにする機能。定義済みポリシーによる自動バックアップ作成に対して、手動でボリュームのバックアップを作成する代替手段です。|
-| 仮想プロビジョニング | 使用可能なストレージ スペースをストレージ システムで使用する効率を最適化する方法。仮想プロビジョニングでは、ストレージは任意の時点で各ユーザーが必要な最小容量に基づいて複数のユーザーに割り当てられます。「*ファット プロビジョニング*」も参照してください。|
+| 仮想プロビジョニング | 使用可能なストレージ スペースをストレージ システムで使用する効率を最適化する方法。仮想プロビジョニングでは、ストレージは任意の時点で各ユーザーが必要な最小容量に基づいて複数のユーザーに割り当てられます。「*ファット プロビジョニング*」もご覧ください。|
 | ボリューム | ドライブの形式で提供される論理ストレージ領域。StorSimple ボリュームは、iSCSI と StorSimple デバイスを使用して検出されるものなど、ホストによってマウントされるボリュームに対応します。|
  | ボリューム コンテナー | ボリュームのグループ化とそれらに適用される設定。StorSimple デバイスのすべてのボリュームは、ボリューム コンテナーにグループ化されます。ボリューム コンテナーの設定には、ストレージ アカウント、関連付けられている暗号化キーでクラウドに送信されるデータの暗号化設定、クラウド関連操作で消費される帯域幅が含まれます。|
 | ボリューム グループ | StorSimple Snapshot Manager では、バックアップ処理を容易にするために構成されているボリュームのコレクション。|
@@ -226,4 +228,4 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

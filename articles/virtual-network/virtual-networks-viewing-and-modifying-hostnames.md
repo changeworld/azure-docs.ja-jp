@@ -1,19 +1,19 @@
 <properties 
    pageTitle="ホスト名の表示と変更"
-   description="説明"
-   services="virtual-network"
-   documentationCenter="na"
-   authors="joaoma"
-   manager="jdial"
-   editor="tysonn" />
+	description="説明"
+	services="virtual-network"
+	documentationCenter="na"
+	authors="joaoma"
+	manager="jdial"
+	editor="tysonn"/>
 <tags 
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="05/28/2015"
-   ms.author="joaoma" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/25/2015"
+	ms.author="joaoma"/>
 
 # ホスト名の表示と変更
 
@@ -51,7 +51,7 @@ REST クライアントから次の手順を実行します。
 
 1. x-ms-version という名前のヘッダー エントリの値を 2013-11-01 に設定します。
 
-1. 次の形式で要求を送信します。https://management.core.windows.net/\<サブスクリプション ID>/services/hostedservices/<サービス名>?embed-detail=true
+1. 次の形式で要求を送信します。https://management.core.windows.net/<サブスクリプション ID>/services/hostedservices/<サービス名>?embed-detail=true
 
 1. 各 **RoleInstance** 要素の **HostName** 要素を検索します。
 
@@ -61,14 +61,14 @@ REST クライアントから次の手順を実行します。
 
 変更したサービス構成ファイルをアップロードすることにより、またはリモート デスクトップ セッションからコンピューターの名前を変更することにより、仮想マシンまたはロール インスタンスのホスト名を変更できます。
 
-## 関連項目
+## 次のステップ
 
-[VM とロール インスタンスの名前解決](https://msdn.microsoft.com/library/azure/jj156088.aspx)
+[VM とロール インスタンスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 [Azure サービス構成スキーマ (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
 [Azure 仮想ネットワークの構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
 
-[ネットワーク構成ファイルを使用した仮想ネットワークの構成](http://go.microsoft.com/fwlink/?LinkId=248094)
+[ネットワーク構成ファイルを使用した DNS 設定の指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

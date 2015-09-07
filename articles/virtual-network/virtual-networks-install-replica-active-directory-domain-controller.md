@@ -51,12 +51,12 @@
     ウィザードのページ | 指定する値
 	------------- | -------------
 	**仮想ネットワークの詳細** | <p>名前: 「WestUSVNet」などの仮想ネットワークの名前を入力します。</p><p>リージョン: 最寄りのリージョンを選択します。</p>
-	**DNS と VPN 接続** | <p>DNS サーバー: 1 つまたは複数の内部設置型 DNS サーバーの名前と IP アドレスを指定します。</p><p>接続: **[サイト間 VPN の構成]** を選択します。</p><p>ローカル ネットワーク: 新しいローカル ネットワークを指定します。</p><p>VPN ではなく ExpressRoute を使用している場合は、「[Exchange プロバイダーを通じて ExpressRoute 接続を構成する](https://msdn.microsoft.com/library/azure/dn606306.aspx)」をご覧ください。</p>
+	**DNS と VPN 接続** | <p>DNS サーバー: 1 つまたは複数の内部設置型 DNS サーバーの名前と IP アドレスを指定します。</p><p>接続: **[サイト間 VPN の構成]** を選択します。</p><p>ローカル ネットワーク: 新しいローカル ネットワークを指定します。</p><p>VPN ではなく ExpressRoute を使用している場合は、「[Exchange プロバイダーを通じて ExpressRoute 接続を構成する](../expressroute/expressroute-configuring-exps.md)」をご覧ください。</p>
 	**サイト間接続** | <p>名前: オンプレミス ネットワークの名前を入力します。</p><p>VPN デバイスの IP アドレス: 仮想ネットワークに接続するデバイスのパブリック IP アドレスを指定します。VPN デバイスは NAT の内側に配置することはできません。</p><p>アドレス: 内部設置型ネットワークのアドレスの範囲 (例: シナリオ図の 192.168.0.0/16) を指定します。</p>
 	**仮想ネットワーク アドレス空間** | <p>アドレス空間: Azure の仮想ネットワークで実行する VM のIP アドレスの範囲 (例: シナリオ図の 10.1.0.0/16) を指定します。このアドレス範囲を、内部設置型ネットワークのアドレスの範囲と重複させることはできません。</p><p>サブネット: アプリケーション サーバーのサブネットの名前とアドレス (例: Frontend、10.1.1.0/24) と、DC のサブネットの名前とアドレス (例: Backend、10.1.2.0/24) を指定します。</p><p>**[ゲートウェイ サブネットの追加]** をクリックします。</p>
 
-2. 次に、仮想ネットワーク ゲートウェイを構成して、セキュリティで保護されたサイト間 VPN 接続を作成します。方法については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](https://msdn.microsoft.com/library/azure/jj156210.aspx)」をご覧ください。
-3. 新しい仮想ネットワークと内部設置型 VPN デバイスの間に、サイト間 VPN 接続を作成します。方法については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](https://msdn.microsoft.com/library/azure/jj156210.aspx)」をご覧ください。
+2. 次に、仮想ネットワーク ゲートウェイを構成して、セキュリティで保護されたサイト間 VPN 接続を作成します。方法については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md)」をご覧ください。
+3. 新しい仮想ネットワークと内部設置型 VPN デバイスの間に、サイト間 VPN 接続を作成します。方法については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md)」をご覧ください。
 
 
 
@@ -86,7 +86,7 @@ VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続�
 
 ## 仮想ネットワークの DNS サーバーを再構成する
 
-1. Azure クラシック ポータルで、仮想ネットワークの名前をクリックし、次に **[構成]** タブをクリックして、[仮想ネットワークの DNS サーバーの IP アドレスを再構成](https://msdn.microsoft.com/library/azure/dn275925.aspx)し、内部設置型 DNS サーバーの IP アドレスではなく、レプリカ DC に割り当てられた静的 IP アドレスを使用します。
+1. Azure クラシック ポータルで、仮想ネットワークの名前をクリックし、次に **[構成]** タブをクリックして、[仮想ネットワークの DNS サーバーの IP アドレスを再構成](virtual-networks-manage-dns-in-vnet.md)し、内部設置型 DNS サーバーの IP アドレスではなく、レプリカ DC に割り当てられた静的 IP アドレスを使用します。
 
 2. 仮想ネットワークのすべてのレプリカ DC VM が仮想ネットワーク上の DNS サーバーを使用するように構成されていることを確認には、**[仮想マシン]** クリックし、VM ごとの [状態] 列をクリックして、**[再起動]** をクリックします。サインインする前に、VM で**実行**状態が表示されるまで待機します。
 
@@ -113,7 +113,7 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 -  [Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
 -  [Azure PowerShell を使用して既存のオンプレミス ハイパー-V のドメイン コント ローラーを Azure にアップロードする方法](http://support.microsoft.com/kb/2904015)
 -  [Azure の仮想ネットワークでの Active Directory フォレストのインストール](../active-directory-new-forest-virtual-machine.md)
--  [Azure Virtual Network](https://msdn.microsoft.com/library/azure/jj156007.aspx)
+-  [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)
 -  [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 -  [Microsoft Azure IT Pro IaaS: (05) 仮想ネットワークとクロスプレミス接続の作成](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
 -  [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
@@ -122,4 +122,4 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 <!--Image references-->
 [1]: ./media/virtual-networks-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

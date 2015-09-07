@@ -1,22 +1,20 @@
 <properties 
-	pageTitle="仮想マシンとコンテナーが Azure にもたらすメリット" 
-	description="仮想マシン、Docker および Linux コンテナーの概要を説明するとともに、それらのグループを Azure で使用するためのアプローチと、各アプローチのメリットについて説明します。また、どのアプローチがどのようなシナリオに適しているかについても説明します。" 
-	services="virtual-machines" 
-	documentationCenter="virtual-machines" 
-	authors="squillace" 
-	manager="timlt" 
-/>
+	pageTitle="仮想マシンとコンテナーが Azure にもたらすメリット"
+	description="仮想マシン、Docker および Linux コンテナーの概要を説明するとともに、それらのグループを Azure で使用するためのアプローチと、各アプローチのメリットについて説明します。また、どのアプローチがどのようなシナリオに適しているかについても説明します。"
+	services="virtual-machines"
+	documentationCenter="virtual-machines"
+	authors="squillace"
+	manager="timlt"/>
 	
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="infrastructure" 
-	ms.workload="infrastructure" 
-	ms.date="07/02/2015" 
-	ms.author="rasquill" 
-/>
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="infrastructure"
+	ms.workload="infrastructure"
+	ms.date="07/02/2015"
+	ms.author="rasquill"/>
 
 <!--The next line, with one pound sign at the beginning, is the page title-->
 # 仮想マシンとコンテナーが Azure にもたらすメリット
@@ -123,7 +121,7 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 
 ### Azure のリソース グループ テンプレート
 
-Azure では先ごろ、[Azure リソース管理](virtual-machines-azurerm-versus-azuresm.md) REST API と、この API を簡単に使用できるように更新された、PowerShell および Azure CLI ツールをリリースしました。[Azure リリース マネージャー テンプレート](https://msdn.microsoft.com/library/azure/dn835138.aspx)と Azure リソース管理 API、および下記のツールを使用すれば、アプリケーション トポロジ全体を効率的にデプロイ、変更、または再デプロイできます。
+Azure では先ごろ、[Azure リソース管理](virtual-machines-azurerm-versus-azuresm.md) REST API と、この API を簡単に使用できるように更新された、PowerShell および Azure CLI ツールをリリースしました。[Azure リリース マネージャー テンプレート](../resource-group-authoring-templates.md)と Azure リソース管理 API、および下記のツールを使用すれば、アプリケーション トポロジ全体を効率的にデプロイ、変更、または再デプロイできます。
 
 - [テンプレートを使用した Azure プレビュー ポータル](https://github.com/Azure/azure-quickstart-templates)&mdash;"DeployToAzure" ボタンを使用するなど
 - [Azure CLI](virtual-machines-deploy-rmtemplates-azure-cli.md)
@@ -236,4 +234,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

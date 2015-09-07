@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード" 
-	description="このドキュメントでは、Azure MFA Server を開始する方法と、古い phonefactor エージェントからアップグレードする方法について説明します。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	pageTitle="PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード"
+	description="このドキュメントでは、Azure MFA Server を開始する方法と、古い phonefactor エージェントからアップグレードする方法について説明します。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
+	editor="curtland"/>
 
 <tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/02/2015" 
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード
@@ -60,4 +60,4 @@ PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authenticati
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure AD Connect のカスタム インストール" 
-	description="このドキュメントでは、Azure AD Connect のカスタム インストール オプションについて説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="swadhwa" 
+	pageTitle="Azure AD Connect のカスタム インストール"
+	description="このドキュメントでは、Azure AD Connect のカスタム インストール オプションについて説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory"  
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/28/2015" 
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure AD Connect のカスタム インストール
@@ -83,9 +83,9 @@ sAMAccountName および MailNickName|このオプションは、ユーザーを
 
 - **ソース アンカー** -sourceAnchor 属性はユーザー オブジェクトの有効期間中に変更できない属性です。オンプレミスのユーザーと Azure AD のユーザーをリンクするプライマリ キーです。この属性は変更できないため、適切な属性を使用するように計画する必要があります。適切な属性として考えられるのは objectGUID です。この属性は、ユーザー アカウントをフォレスト/ドメイン間で移動しなければ、変更されません。フォレスト間でアカウントを移動するマルチ フォレスト環境では、employeeID を持つ属性など、別の属性を使用する必要があります。ユーザーが結婚したり割り当てを変更したりした場合に変更される可能性のある属性は、使用すべきではありません。@ 記号が含まれる属性は使用できないので、電子メールや userPrincipalName は使用できません。この属性では大文字小文字も区別されるため、フォレスト間でオブジェクトを移動する場合は、大文字と小文字を維持してください。バイナリ属性の値は base64 でエンコードされますが、他のタイプの属性はエンコードされていない状態が保たれます。フェデレーション シナリオと一部の Azure AD インターフェイスでは、この属性は immutableID とも呼ばれます。
 
-- **UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にログインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことを強くお勧めします。この属性がルーティング不可能で検証できない場合は、ログイン ID を保持する属性として、電子メールなどの別の属性を選択することができます。
+- **UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にログインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことを強くお勧めします。この属性がルーティング不可能で検証できない場合は、ログイン ID を保持する属性として、電子メールなどの別の属性を選択することができます。これを**代替 ID** といいます。代替 ID の属性値は、RFC822 標準に従う必要があります。代替 ID は、サインイン ソリューションとして、パスワード SSO とフェデレーション SSO の両方で使用できます。
 
->[AZURE.WARNING]代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、「[代替ログイン ID を構成する](https://technet.microsoft.com/library/dn659436.aspx.)」を参照してください。
+>[AZURE.WARNING]代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、[代替ログイン ID の構成](https://technet.microsoft.com/library/dn659436.aspx.)に関するページを参照してください。
 
 
 
@@ -103,15 +103,14 @@ sAMAccountName および MailNickName|このオプションは、ユーザーを
 
 この画面では、特定のシナリオのためにオプション機能を選択することができます。次に、個別の機能のそれぞれについて簡単な説明を示します。
 
-<center>![高速インストール](./media/active-directory-aadconnect-get-started-custom/of.png)</center>
+<center>![Express Installation](./media/active-directory-aadconnect-get-started-custom/optional.png)</center>
 
 
 オプション機能 | 説明
 -------------------    | ------------- | 
-Exchange ハイブリッド展開 |Exchange ハイブリッド展開機能によって、オンプレミスと Azure の両方で、Exchange メールボックスの共存が可能となります。そのためには、Azure AD から特定の属性のセットを、オンプレミスのディレクトリと同期します。
+Exchange ハイブリッドのデプロイ |Exchange ハイブリッドのデプロイ機能によって、オンプレミスと Azure の両方で、Exchange メールボックスの共存が可能となります。そのためには、Azure AD から特定の属性のセットを、オンプレミスのディレクトリと同期します。
 Azure AD アプリと属性フィルター|Azure AD アプリと属性フィルターを有効にして、ウィザードの後続のページで、同期する属性のセットを特定のセットに合わせることができます。このことを行うと、ウィザードで 2 つの追加の構成ページが開きます。  
-パスワードの書き戻し|パスワードの書き戻しを有効にすると、Azure AD で発信されるパスワードの変更が、オンプレミスのディレクトリに書き戻されます。
-ユーザーの書き戻し|ユーザーの書き戻しを有効にすると、Azure AD に作成されたユーザーが、オンプレミスのディレクトリに書き戻されます。このことを行うと、ウィザードで追加の構成ページが開きます。  
+パスワード ライトバック|パスワード ライトバックを有効にすると、Azure AD で発信されるパスワードの変更が、オンプレミスのディレクトリに書き戻されます。
 ディレクトリ拡張属性の同期|ディレクトリ拡張属性の同期を有効にすると、指定した属性が Azure AD に同期されます。このことを行うと、ウィザードで追加の構成ページが開きます。  
 
 既定の構成の変更、同期規則エディターと宣言型のプロビジョニングなど追加の構成オプションについては、「[Azure AD Connect の管理](active-directory-aadconnect-whats-next.md)」を参照してください。
@@ -137,17 +136,7 @@ Azure AD アプリと属性フィルター|Azure AD アプリと属性フィル�
 ![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/extension4.png)
 
 
-## ユーザーの書き戻し (プレビュー)
 
-> [AZURE.WARNING]現時点で DirSync または Azure AD Sync がアクティブになっている場合は、Azure AD Connect の書き戻し機能をアクティブにしないでください。
-
-ユーザーの書き戻しでは、Azure AD で作成されたユーザーを取得し (ポータル、グラフ、PowerShell、または他の方法で)、そのユーザーをオンプレミスの ADDS に書き戻すことができます。この機能を有効にするには、[オプション機能] ページで [ユーザーの書き戻し] を選択します。これらのユーザーを作成する場所が表示されます。既定の構成では、AD DS 内の 1 つの場所にすべてのユーザーが作成されます。
-
-![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/writeback2.png)
-
-ユーザーはランダムなパスワードで作成されるため、ユーザーが実際にログインできるようにするには、AD DS でパスワードをリセットする必要があります。
-
->[AZURE.NOTE]パスワードの同期とパスワードの書き戻しは、このプレビュー機能と互換性はありません。
 
 ## グループの書き戻し (プレビュー)
 
@@ -188,7 +177,7 @@ PowerShell コマンドレットを実行する前に、まずインポートす
 
 
 ## ステージング モード
-ステージング モードでは、新しい同期サーバーをセットアップする処理を既存のサーバーと並行して行うことができます。クラウド内の 1 つのディレクトリに接続する 1 つの同期サーバーのみがサポートされます。ただし、別のサーバー (実行中の 1 つの DirSync など) から移動する場合は、ステージング モードで Azure AD Connect を有効にすることができます。有効にすると、同期エンジンは通常の方法でデータをインポートして同期しますが、Azure AD には何もエクスポートしません。また、パスワードの同期とパスワードの書き戻しはオフになります。
+ステージング モードでは、新しい同期サーバーをセットアップする処理を既存のサーバーと並行して行うことができます。クラウド内の 1 つのディレクトリに接続する 1 つの同期サーバーのみがサポートされます。ただし、別のサーバー (実行中の 1 つの DirSync など) から移動する場合は、ステージング モードで Azure AD Connect を有効にすることができます。有効にすると、同期エンジンは通常の方法でデータをインポートして同期しますが、Azure AD には何もエクスポートしません。また、パスワードの同期とパスワード ライトバックはオフになります。
 
 ![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/stagingmode.png)
 
@@ -290,4 +279,4 @@ AD FS ログイン ページのイラストとロゴのイメージをカスタ�
 	
 	Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.png"} –Illustration @{path=”c:\Contoso\illustration.png”}
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Data Catalog データ カタログの概要"
-   description="Azure Data Catalog のシナリオと機能のエンド ツー エンドのチュートリアル"
-   documentationCenter=""
-   services="data-catalog"
-   authors="dvana"
-   manager="mblythe"
-   editor=""
-   tags=""/>
+	description="Azure Data Catalog のシナリオと機能のエンド ツー エンドのチュートリアルです。"
+	documentationCenter=""
+	services="data-catalog"
+	authors="dvana"
+	manager="mblythe"
+	editor=""
+	tags=""/>
 <tags
    ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="07/13/2015"
-   ms.author="derrickv"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="07/13/2015"
+	ms.author="derrickv"/>
 
 # Azure Data Catalog の概要
 
@@ -26,7 +26,7 @@
 
 -	**Azure サブスクリプション** - サブスクリプションがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)のページを参照してください。
 -	**Azure Active Directory** - Azure Data Catalog では、ID およびアクセス管理に [Azure Active Directory](http://azure.microsoft.com/services/active-directory/) を使用します。
--	**データ ソース** - Azure Data Catalog は、データ ソース検出のための機能を備えていますが、チュートリアルを進めるには、1 つまたは複数のデータ ソースへのアクセス権が必要です。このチュートリアルは、Adventure Works サンプル データベースを使用して作成されていますが、馴染みがあり、自分の役割に関連するデータを操作したいと考える場合は、任意のサポートされているデータ ソースを使用できます。
+-	**データ ソース** - Azure Data Catalog は、データ ソース検出のための機能を備えていますが、チュートリアルを進めるには、1 つまたは複数のデータ ソースへのアクセス権が必要です。このチュートリアルは、Adventure Works サンプル データベースを使用して作成されていますが、馴染みがあり、自分のロールに関連するデータを操作したいと考える場合は、任意のサポートされているデータ ソースを使用できます。
 
 ## 演習 1: Adventure Works サンプル データベースのインストール
 
@@ -62,7 +62,7 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
     ![register3][3]
 6.	[**サーバー名**] を入力し、[**接続**] をクリックします。
 7.	次のページで、データ ソースのメタデータを登録します。この例では、AdventureWorks Production 名前空間から **Product** オブジェクトを登録します。これを実行する方法を次に示します。
-    
+
     a.階層ツリーで、[**Production**] をクリックします。
 
     b.Ctrl キーを押しながら、[Product]、[ProductCategory]、[ProductDescription]、および [ProductPhoto] をクリックします。
@@ -76,7 +76,7 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
     d.**省略可能**: [**プレビューを含める**] ことができ、[**データ ソース エキスパートを追加**] することができます。
 
     e.[**タグの追加**] に、説明の photo を入力します。これにより、これらのデータ資産に検索タグが追加されます。タグは、ユーザーが登録されているデータ ソースを見つけるために役立つ優れた方法です。
- 
+
     f.[**登録**] をクリックします。Azure Data Catalog は、選択したオブジェクトを登録します。この演習では、Adventure Works から選択したオブジェクトが登録されます。
 
     ![register6][6]
@@ -93,7 +93,7 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 
 ### 次に、登録されているデータ資産を検出する方法を示します
 
-**Azure Data Catalog** には、簡単ながら、強力な検索構文を備えており、ユーザーが必要とするデータを返すクエリを簡単に構築できます。**Azure Data Catalog** の詳細については、検索構文のリファレンスを参照してください。
+**Azure Data Catalog** には、簡単ながら、強力な検索構文を備えており、ユーザーが必要とするデータを返すクエリを簡単に構築できます。**Azure Data Catalog** の詳細については、Search 構文のリファレンスを参照してください。
 
 **Azure Data Catalog** には次の検索オプションがあります。
 
@@ -115,9 +115,9 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 
 1.	**Azure Data Catalog** ポータルにログインします。
 2.	[**探索**] をクリックします。
-3.	[**検索**] ボックスに、**グループ化**クエリ「(tags:description OR tags:photo)」と入力します。 
+3.	[**検索**] ボックスに、**グループ化**クエリ「(tags:description OR tags:photo)」と入力します。
 4.	検索アイコンをクリックするか、Enter キーを押します。**Azure Data Catalog** によって、この検索クエリに対応するデータ資産が表示されます。
-    
+
     ![検索][8]
 
 この演習では、**Azure Data Catalog** ポータルを使用して、カタログに登録されているデータ資産を検出し、表示しました。
@@ -189,7 +189,7 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 
 この演習では、**Azure Data Catalog** の管理機能を使用して、データ資産の所有権を取得し、それらの資産を検出し、管理できるユーザーを制御します。
 
-注: この演習で説明している管理機能は、無料エディションではなく、Azure Data Catalog の Standard Edition でのみ使用できます。**Azure Data Catalog** では、データ資産の所有権を取得し、共同所有者をデータ資産に追加し、データ資産の可視性を設定できます。
+注: この演習で説明している管理機能は、Free エディションではなく、Azure Data Catalog の Standard Edition でのみ使用できます。**Azure Data Catalog** では、データ資産の所有権を取得し、共同所有者をデータ資産に追加し、データ資産の可視性を設定できます。
 
 ### 次に、データ資産の所有権を取得し、可視性を制限する方法を示します
 
@@ -222,4 +222,4 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 [11]: ./media/data-catalog-get-started/connect2.png
 [12]: ./media/data-catalog-get-started/ownership.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

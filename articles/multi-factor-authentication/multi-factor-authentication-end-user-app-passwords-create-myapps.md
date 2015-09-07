@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication のアプリ パスワードを Myapps ポータルで作成する" 
-	description="このページでは、Myapps ポータルで追加のアプリ パスワードを作成する方法を示します。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	pageTitle="Azure Multi-Factor Authentication のアプリ パスワードを Myapps ポータルで作成する"
+	description="このページでは、Myapps ポータルで追加のアプリ パスワードを作成する方法を示します。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenp"
+	editor="curtland"/>
 
 <tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/02/2015" 
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication のアプリ パスワードを myapps 365 ポータルで作成する
@@ -39,4 +39,4 @@ Office 365 で多要素認証を使用しておらず、Azure サブスクリプ
 <li>アプリ パスワードの名前を入力し、**[次へ]** をクリックします。</li>
 <li>アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。</li>
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

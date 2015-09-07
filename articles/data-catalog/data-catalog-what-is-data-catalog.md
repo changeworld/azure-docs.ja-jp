@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Azure Data Catalog のデータ カタログ"
-   description="Microsoft Azure Data Catalog は、完全に管理されたクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。Azure Data Catalog は、アナリストからデータ サイエンティスト、開発者まで、すべてのユーザーによるデータ ソースの登録、検出、理解、および使用を可能にする機能を備えています。"
-   services="data-catalog"
-   documentationCenter=""
-   authors="steelanddata"
-   manager="NA"
-   editor=""
-   tags=""/>
+   pageTitle="Azure Data Catalog - Data Catalog とは"
+	description="機能および対処するように設計されている問題など、Microsoft Azure Data Catalog の概要について説明します。Azure Data Catalog は、アナリストからデータ サイエンティスト、開発者まで、すべてのユーザーによるデータ ソースの登録、検出、理解、および使用を可能にする機能を備えています。"
+	services="data-catalog"
+	documentationCenter=""
+	authors="steelanddata"
+	manager="NA"
+	editor=""
+	tags=""/>
 <tags
    ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="08/19/2015"
-   ms.author="maroche"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="08/21/2015"
+	ms.author="maroche"/>
 
 # Azure Data Catalog とは何ですか
 
@@ -76,7 +76,7 @@ Microsoft **Azure Data Catalog** は、完全に管理されたクラウド サ�
 
 **Azure Data Catalog** のプレビュー期間中に、データ ソースと資産の種類は追加される予定です。
 
-> [AZURE.IMPORTANT]**Azure Data Catalog** にデータ ソースを登録しても、データ ソース登録ツールで [プレビューを含める] を選択しない限り、データ ソースのデータはコピーされません。登録によって、データ ソースのデータではなくメタデータがコピーされます。メタデータには、たとえばテーブルや他のデータ ソース オブジェクトの名前や、列などのデータ ソース属性の名前やデータ型などがあります。また、データ ソースの場所も含まれるので、ユーザーが **Azure Data Catalog** を使用してデータ ソースを検出すると、データ ソースに接続することができます。[プレビューを含める] を選択すると、データ ソース登録ツールによって少数のレコードが **Azure Data Catalog** にコピーされます。このレコードは、ユーザーが **Azure Data Catalog** ポータルでデータ ソースを検出したときに表示されます。
+> [AZURE.IMPORTANT]**Azure Data Catalog** にデータ ソースを登録しても、データ ソース登録ツールで [プレビューを含める] を選択しない限り、データ ソースのデータはコピーされません。登録によって、データ ソースのデータではなくメタデータがコピーされます。メタデータには、たとえばテーブルや他のデータ ソース オブジェクトの名前や、列などのデータ ソース属性の名前やデータ型などがあります。また、メタデータにはデータ ソースの場所も含まれるので、ユーザーが **Azure Data Catalog** を使用してデータ ソースを検出すると、データ ソースに接続することができます。[プレビューを含める] を選択すると、データ ソース登録ツールによって少数のレコードが **Azure Data Catalog** にコピーされます。このレコードは、ユーザーが **Azure Data Catalog** ポータルでデータ ソースを検出したときに表示されます。
 
 ## データ ソース メタデータの強化
 
@@ -122,4 +122,4 @@ Microsoft **Azure Data Catalog** は、完全に管理されたクラウド サ�
 
 > [AZURE.NOTE]Azure Data Catalog のプレビューでは、直接サポートされているのは Microsoft Excel と SQL Server Reporting Services レポート マネージャーのみです。これらは **[開く]** メニューで使用できます。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=August15_HO9-->

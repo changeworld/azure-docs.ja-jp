@@ -1,26 +1,26 @@
 <properties
-   pageTitle="リソースの複数のインスタンスの作成"
-   description="Azure リソース マネージャー テンプレートで copy 操作を使用して、リソースをデプロイする際に複数回反復処理する方法について説明します。"
-   services="azure-resource-manager"
-   documentationCenter="na"
-   authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   pageTitle="リソースの複数のインスタンスのデプロイ | Microsoft Azure"
+	description="Azure リソース マネージャー テンプレートで copy 操作と配列を使用して、リソースをデプロイする際に複数回反復処理する方法について説明します。"
+	services="azure-resource-manager"
+	documentationCenter="na"
+	authors="tfitzmac"
+	manager="wpickett"
+	editor=""/>
 
 <tags
    ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/14/2015"
-   ms.author="tomfitz"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/21/2015"
+	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでリソースの複数のインスタンスを作成する
 
 このトピックでは、Azure リソース マネージャー テンプレートで反復処理して、リソースの複数のインスタンスを作成する方法について説明します。
 
-## copy と copyIndex()
+## copy、copyIndex、length
 
 複数回作成するリソース内では、反復処理する回数を指定する **copy** オブジェクトを定義できます。copy は次の形式で指定します。
 
@@ -32,6 +32,13 @@
 次の concat 関数内に示すように、現在の反復値には、**copyIndex()** 関数でアクセスできます。
 
     [concat('examplecopy-', copyIndex())]
+
+値の配列から複数のリソースを作成する場合は、**length** 関数を使用して数を指定できます。length 関数のパラメーターとして、配列を指定します。
+
+    "copy": {
+        "name": "websitescopy",
+        "count": "[length(parameters('siteNames'))]"
+    }
 
 ## name でのインデックス値の使用
 
@@ -79,7 +86,7 @@ copy 操作では、増分するインデックス値に基づいた一意の名
 - examplecopy-Fabrikam
 - examplecopy-Coho
 
-この場合は、次のテンプレートを使用します。
+次のテンプレートを使用します。
 
     "parameters": { 
       "org": { 
@@ -89,11 +96,7 @@ copy 操作では、増分するインデックス値に基づいた一意の名
              "Fabrikam", 
              "Coho" 
           ] 
-      },
-      "count": { 
-         "type": "int", 
-         "defaultValue": 3 
-      } 
+      }
     }, 
     "resources": [ 
       { 
@@ -103,15 +106,15 @@ copy 操作では、増分するインデックス値に基づいた一意の名
           "apiVersion": "2014-06-01",
           "copy": { 
              "name": "websitescopy", 
-             "count": "[parameters('count')]" 
+             "count": "[length(parameters('org'))]" 
           }, 
           "properties": {} 
       } 
     ]
 
 ## 次のステップ
-- [Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)
-- [Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)
-- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)
+- テンプレートのセクションについては、「[Azure リソース マネージャーのテンプレートの作成](./resource-group-authoring-templates.md)」を参照してください。
+- テンプレートで使用できるすべての関数については、「[Azure リソース マネージャーのテンプレートの関数](./resource-group-template-functions.md)」を参照してください。
+- テンプレートをデプロイする方法については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

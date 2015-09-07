@@ -1,6 +1,6 @@
 <properties
-	pageTitle="通知ハブの使用 (Xamarin iOS アプリケーション)"
-	description="Azure Notification Hubs を使用して Xamarin iOS アプリケーションにプッシュ通知を送信する方法について説明します。"
+	pageTitle="Notification Hubs の使用 (Xamarin.iOS アプリケーション) | Microsoft Azure"
+	description="このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.iOS アプリケーションにプッシュ通知を送信する方法について学習します。"
 	services="notification-hubs"
 	documentationCenter="xamarin"
 	authors="ysxu"
@@ -16,19 +16,19 @@
 	ms.date="07/28/2015"
 	ms.author="yuaxu"/>
 
-# 通知ハブの使用
+# Notification Hubs の使用
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ##概要
 
-このトピックでは、Azure 通知ハブを使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple プッシュ通知サービス (APNs) を使用してプッシュ通知を受信する空の Xamarin.iOS アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
+このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。Apple プッシュ通知サービス (APNs) を使用してプッシュ通知を受信する空の Xamarin.iOS アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
 
-このチュートリアルでは、通知ハブを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。
+このチュートリアルでは、Notification Hubs を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。
 
 ##前提条件
 
-このチュートリアルの前提条件は次のとおりです。
+このチュートリアルには、次のものが必要です。
 
 + [XCode 6.0][Install Xcode]
 + iOS 7.0 (またはこれ以降のバージョン) に対応したデバイス
@@ -38,11 +38,11 @@
 
    >[AZURE.NOTE]プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、シミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
-このチュートリアルを完了することは、Xamarin.iOS アプリの他のすべての通知ハブ チュートリアルの前提条件です。
+このチュートリアルを完了することは、Xamarin.iOS アプリの他のすべての Notification Hubs チュートリアルの前提条件です。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)を参照してください。
+> [AZURE.IMPORTANT]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)を参照してください。
 
-Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service]」を参照してください。
+Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNs 機能のドキュメントについては、「[Apple Push Notification Service]」を参照してください。
 
 
 ##<a name="certificates"></a>証明書の署名要求ファイルを生成する
@@ -51,7 +51,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 1. Utilities フォルダーから [Keychain Access] ツールを実行します。
 
-2. **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
+2. **[Keychain Access]** をクリックし、**[証明書アシスタント]** を展開して、**[証明書機関に証明書を要求する]** をクリックします。
 
   	![][5]
 
@@ -59,23 +59,23 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
   	![][6]
 
-4. **[Save As]** に証明書署名要求 (CSR) ファイルの名前を入力し、**[Where]** で保存場所を選択して **[Save]** をクリックします。
+4. **[名前を付けて保存]** に CSR ファイルの名前を入力し、**[場所]** で保存場所を選択して **[保存]** をクリックします。
 
   	![][7]
 
-  	指定選択した場所に CSR ファイルが保存されます。既定の場所はデスクトップです。このファイル用に選択した場所を忘れないでください。
+  	これにより、選択した場所に CSR ファイルが保存されます。既定の場所は、デスクトップ上にあります。このファイル用に選択した場所を忘れないでください。
 
 次に、アプリケーションを Apple に登録し、プッシュ通知を有効にし、このエクスポートした CSR をアップロードしてプッシュ通知を作成します。
 
 ##<a name="register"></a>アプリをプッシュ通知に登録する
 
-モバイル サービスから iOS アプリケーションにプッシュ通知を送信できるようにするには、アプリケーションを Apple に登録し、プッシュ通知にも登録する必要があります。
+Mobile Services から iOS アプリケーションにプッシュ通知を送信できるようにするには、アプリケーションを Apple に登録し、プッシュ通知にも登録する必要があります。
 
-1. アプリをまだ登録していない場合は、Apple Developer センターで <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> に移動し、Apple ID でログインして、**[Identifiers]** をクリックし、**[App IDs]** をクリックします。最後に、**+** 記号をクリックして新しいアプリを登録します。
+1. アプリをまだ登録していない場合は、Apple Developer センターで <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> に移動し、Apple ID でサインインして、**[ID]** をクリックし、**[アプリ ID]** をクリックします。最後に、**+** 記号をクリックして新しいアプリを登録します。
 
    	![][105]
 
-2. **[説明]** にアプリの名前を入力し、**[バンドル ID]** に値を入力します。[アプリケーション サービス] セクションの [プッシュ通知] オプションをオンにして、**[続行]** をクリックします。
+2. **[説明]** にアプリの名前を入力し、**[バンドル ID]** に値を入力します。**[App Services]** セクションの **[プッシュ通知]** オプションをオンにして、**[続行]** をクリックします。
 
    	![][106]
 
@@ -108,11 +108,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
    	![][114]
 
-	これで、[Add iOS Certificate] アシスタントが表示されます。
+	これで、[iOS 証明書の追加] アシスタントが表示されます。
 
    	![][115]
 
-	> [AZURE.NOTE]このチュートリアルでは開発証明書を使用します。運用証明書の場合も同じ処理を行います。証明書をモバイル サービスにアップロードするときと同じ証明書タイプを設定してください。
+	> [AZURE.NOTE]このチュートリアルでは開発証明書を使用します。運用証明書を登録する場合も同じ処理を行います。証明書を Mobile Services にアップロードするときと同じ証明書タイプを設定してください。
 
 5. **[ファイルの選択]** をクリックして、最初の作業で CSR ファイルを保存した場所に移動し、**[生成]** をクリックします。
 
@@ -138,11 +138,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 	> [AZURE.NOTE]証明書の名前は異なることがありますが、名前の前に <strong>Apple Development iOS Push Notification Services:</strong> が付けられます。
 
-	後で、この証明書を使用して .p12 ファイルを生成し、それを通知ハブにアップロードして APNS によるプッシュ通知を有効にします。
+	後で、この証明書を使用して .p12 ファイルを生成し、それを通知ハブにアップロードして APNs によるプッシュ通知を有効にします。
 
 ##<a name="profile"></a>アプリケーションのプロビジョニング プロファイルを作成する
 
-1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS プロビジョニング ポータル</a>に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **+** ボタンをクリックして、新しいプロファイルを作成します。これで、**Add iOS Provisioning Profile** ウィザードが表示されます。
+1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **+** ボタンをクリックして、新しいプロファイルを作成します。これで、**[iOS プロビジョニング プロファイルの追加]** ウィザードが表示されます。
 
    	![][120]
 
@@ -158,7 +158,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
    	![][123]
 
-5. 次に、テストに使用する**デバイス**を選択し、**[続行]** をクリックします。
+5. テストに使用するデバイスを選択し、**[続行]** をクリックします。
 
    	![][124]
 
@@ -182,11 +182,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 これで、Xcode プロジェクトはコード署名のために新しいプロファイルを使用するようになります。次に、証明書を通知ハブにアップロードする必要があります。
 
-##<a name="configure-hub"></a>Notification Hub を構成する
+##<a name="configure-hub"></a>通知ハブを構成する
 
-1. [Azure 管理ポータル]にログオンし、画面の下部にある **[+新規]** をクリックします。
+1. [Azure ポータル]にサインインし、画面の下部にある **[+新規]** をクリックします。
 
-2. **[アプリケーション サービス]**、**[Service Bus]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
+2. **[App Services]**、**[Service Bus]**、**[Notification Hub]** の順にクリックし、**[簡易作成]** をクリックします。
 
    	![][27]
 
@@ -194,11 +194,11 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
    	![][28]
 
-4. 前の手順で作成した名前空間 (通常は "***通知ハブ名*-ns**") をクリックし、上部にある **[構成]** タブをクリックします。
+4. 前の手順で作成した名前空間 (通常は ***通知ハブ名*-ns**) をクリックし、上部にある **[構成]** タブをクリックします。
 
    	![][29]
 
-5. 上部にある **[通知ハブ]** タブをクリックし、前の手順で作成した通知ハブをクリックします。
+5. 上部にある **[Notification Hubs]** タブをクリックし、前の手順で作成した Notification Hubs をクリックします。
 
    	![][210]
 
@@ -210,17 +210,17 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
    	![][212]
 
-これで、通知ハブが APN と連動するように構成されました。接続文字列にアプリケーションを登録し、通知を送信できます。
+これで、通知ハブが APNs と連動するように構成されました。接続文字列にアプリケーションを登録し、通知を送信できます。
 
-##<a name="connecting-app"></a>Notification Hub にアプリを接続する
+##<a name="connecting-app"></a>Notification Hub にアプリケーションを接続する
 
 ### 新しいプロジェクトを作成する
 
-1. Xamarin Studio で、新しい iOS プロジェクトを作成し、**[統合 API > Single View Application]** テンプレートを選択します。
+1. Xamarin Studio で、新しい iOS プロジェクトを作成し、**[統合 API]**、**[単一ビュー アプリケーション]** テンプレートの順に選択します。
 
    	![][31]
 
-2. まず、Azure Messaging コンポーネントへの参照を追加します。[Solution] ビューで、プロジェクトの **[Components]** フォルダーを右クリックし、**[Get More Components]** を選択します。**Azure Messaging** コンポーネントを検索し、そのコンポーネントをプロジェクトに追加します。
+2. Azure Messaging コンポーネントへの参照を追加します。[ソリューション] ビューで、プロジェクトの **[コンポーネント]** フォルダーを右クリックし、**[他のコンポーネントを取得する]** を選択します。**Azure Messaging** コンポーネントを検索し、そのコンポーネントをプロジェクトに追加します。
 
 3. **AppDelegate.cs** で、次の using ステートメントを追加します。
 
@@ -232,7 +232,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 5. 次の変数を使用して **Constants.cs** クラスを作成します。
 
-        // Azure app specific connection string and hub path
+        // Azure app-specific connection string and hub path
         public const string ConnectionString = "<Azure connection string>";
         public const string NotificationHubPath = "<Azure hub path>";
 
@@ -290,10 +290,10 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
                 //Extract the alert text
                 // NOTE: If you're using the simple alert by just specifying
-                // "  aps:{alert:"alert msg here"}  " this will work fine.
+                // "  aps:{alert:"alert msg here"}  ", this will work fine.
                 // But if you're using a complex alert with Localization keys, etc.,
                 // your "alert" object from the aps dictionary will be another NSDictionary.
-                // Basically the json gets dumped right into a NSDictionary,
+                // Basically the JSON gets dumped right into a NSDictionary,
                 // so keep that in mind.
                 if (aps.ContainsKey(new NSString("alert")))
                     alert = (aps [new NSString("alert")] as NSString).ToString();
@@ -319,7 +319,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 ##<a name="send"></a>バックエンドから通知を送信する
 
-通知は、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を使用するどのバックエンドからも Notification Hubs を使用して送信できます。このチュートリアルでは、.NET コンソール アプリケーションと、ノード スクリプトを使用するモバイル サービスで通知を送信します。
+通知は、<a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を介してどのバックエンドからも Notification Hubs を使用して送信できます。このチュートリアルでは、.NET コンソール アプリケーションによる方法と、ノード スクリプトを介したモバイル サービスによる方法で、通知を送信します。
 
 .NET アプリケーションを使用して通知を送信するには
 
@@ -327,9 +327,9 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
    	![][213]
 
-2. <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して Azure Service Bus SDK への参照を追加します。Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。次に、コンソール ウィンドウで次のように入力します。
+2. <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して、Azure Service Bus SDK に参照を追加します。Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。次に、コンソール ウィンドウで次のように入力し、Enter キーを押します。
 
-        Install-Package WindowsAzure.ServiceBus and press Enter.
+        Install-Package WindowsAzure.ServiceBus
 
 2. Program.cs ファイルを開き、次の using ステートメントを追加します。
 
@@ -344,20 +344,20 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
             await hub.SendAppleNativeNotificationAsync(alert);
         }
 
-4. 次に、`Main` メソッドに次の行を追加します。
+4. `Main` メソッド内に次の行を追加します。
 
          SendNotificationAsync();
 		 Console.ReadLine();
 
-5. F5 キーを押してアプリケーションを実行します。デバイスでアラートを受信します。Wi-fi を使用している場合、接続が機能していることを確認します。
+5. F5 キーを押してアプリケーションを実行します。デバイスでアラートを受信します。Wi-Fi を使用する場合は、接続が機能していることを確認します。
 
 Apple の「[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]」に、使用できるすべてのペイロードが記載されています。
 
-モバイル サービスを使用して通知を送信するには、「[モバイル サービスの使用]」に従った後、次の手順を実行します。
+モバイル サービスを使用して通知を送信するには、「[Mobile Services の使用]」に従った後、次の手順を実行します。
 
-1. [Azure 管理ポータル]にログオンし、[モバイル サービス] をクリックします。
+1. [Azure ポータル]にサインインし、モバイル サービスを選択します。
 
-2. 上部にある **[スケジューラ]** タブを選択します。
+2. 上部にある **[Scheduler]** タブを選択します。
 
    	![][215]
 
@@ -391,7 +391,7 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 
 ## <a name="next-steps"> </a>次のステップ
 
-この簡単な例では、すべての iOS デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。通知ハブの使用方法の詳細については、「[Windows Azure 通知ハブの概要]」と「[方法: Windows Azure 通知ハブ (iOS アプリ)]」を参照してください。
+この簡単な例では、すべての iOS デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Microsoft Azure Notification Hubs の概要]」と「[方法: Microsoft Azure Notification Hubs (iOS アプリ)]」を参照してください。
 
 <!-- Anchors. -->
 [Generate the certificate signing request]: #certificates
@@ -461,15 +461,15 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[モバイル サービスの使用]: /develop/mobile/tutorials/get-started-xamarin-ios
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[Windows Azure 通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[方法: Windows Azure 通知ハブ (iOS アプリ)]: http://msdn.microsoft.com/library/jj927168.aspx
+[Mobile Services の使用]: /develop/mobile/tutorials/get-started-xamarin-ios
+[Azure ポータル]: https://manage.windowsazure.com/
+[Microsoft Azure Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[方法: Microsoft Azure Notification Hubs (iOS アプリ)]: http://msdn.microsoft.com/library/jj927168.aspx
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[通知ハブを使用したユーザーへのプッシュ通知]: /manage/services/notification-hubs/notify-users-aspnet
-[通知ハブを使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
+[Notification Hubs を使用したユーザーへのプッシュ通知]: /manage/services/notification-hubs/notify-users-aspnet
+[Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
@@ -478,6 +478,5 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin.iOS]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,21 +1,21 @@
 <properties
    pageTitle="Azure リソース マネージャーと PowerShell を使用してサイト間 VPN 接続で仮想ネットワークを作成する | Microsoft Azure"
-   description="Azure リソース マネージャーと PowerShell を使用して仮想ネットワークからオンプレミスの場所へのサイト間 VPN 接続を作成する"
-   services="vpn-gateway"
-   documentationCenter="na"
-   authors="cherylmc"
-   manager="carolz"
-   editor=""
-   tags="azure-resource-manager"/>
+	description="Azure リソース マネージャーと PowerShell を使用して仮想ネットワークからオンプレミスの場所へのサイト間 VPN 接続を作成する"
+	services="vpn-gateway"
+	documentationCenter="na"
+	authors="cherylmc"
+	manager="carolz"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
    ms.service="vpn-gateway"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/28/2015"
-   ms.author="cherylmc"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="08/21/2015"
+	ms.author="cherylmc"/>
 
 # Azure リソース マネージャーと PowerShell を使用してサイト間 VPN 接続で仮想ネットワークを作成する
 
@@ -58,7 +58,7 @@ Select-AzureSubscription を実行して、使用するサブスクリプショ�
 ## 仮想ネットワークとゲートウェイ サブネットを作成する
 
 - 仮想ネットワークとゲートウェイ サブネットが既にある場合は、「[ローカル サイトを追加する](#add-your-local-site)」に進むことができます。 
-- 仮想ネットワークがあり、VNet にゲートウェイ サブネットを追加する場合は、「[VNet にゲートウェイ サブネットを追加する](#gatewaysubnet)」を参照してください。
+- 仮想ネットワークがあり、VNet にゲートウェイ サブネットを追加する場合は、[VNet にゲートウェイ サブネットを追加する](#gatewaysubnet)を参照してください。
 
 ### 仮想ネットワークとゲートウェイ サブネットを作成するには
 
@@ -96,9 +96,26 @@ Select-AzureSubscription を実行して、使用するサブスクリプショ�
 - *GatewayIPAddress* は、オンプレミス VPN デバイスの IP アドレスです。VPN デバイスを NAT の内側に配置することはできません。 
 - *AddressPrefix* は、オンプレミス アドレス空間です。
 
-次の例を使用してローカル サイトを追加します。
+この例を使用すると、1 つのアドレス プレフィックスを含むローカル サイトを追加できます。
 
 		New-AzureLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
+
+複数のアドレス プレフィックスを含むローカル サイトを追加するには、この例を使用します。
+
+		New-AzureLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix @('10.0.0.0/24','20.0.0.0/24')
+
+
+既に作成したローカル サイトにアドレス プレフィックスを追加するには、次の例を使用します。
+
+		$local = Get-AzureLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
+		Set-AzureLocalNetworkGateway -LocalNetworkGateway $local -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
+
+
+ローカル サイトからアドレス プレフィックスを削除するには、次の例を使用します。不要になったプレフィックスは削除します。この例では、プレフィックス 20.0.0.0/24 (前の例に含まれる) が不要になったため、ローカル サイトを更新してそのプレフィックスを削除します。
+
+		local = Get-AzureLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
+		Set-AzureLocalNetworkGateway -LocalNetworkGateway $local -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
+
 
 ## VNet ゲートウェイのパブリック IP アドレスを要求する
 
@@ -123,14 +140,14 @@ Select-AzureSubscription を実行して、使用するサブスクリプショ�
 この手順では、仮想ネットワーク ゲートウェイを作成します。次の値を使用します。
 
 - ゲートウェイの種類は *Vpn* です。
-- VpnType には、RouteBased* (ドキュメントによっては動的ゲートウェイと呼ばれます) または *Policy Based* (ドキュメントによっては静的ゲートウェイと呼ばれます) を指定できます。VPN ゲートウェイの種類については、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md)」を参照してください。 	
+- VpnType には、RouteBased* (ドキュメントによっては動的ゲートウェイと呼ばれます) または *Policy Based* (ドキュメントによっては静的ゲートウェイと呼ばれます) を指定できます。VPN ゲートウェイの種類については、[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md)を参照してください。 	
 
 		New-AzureVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
 
 
 ## VPN デバイスの構成
 
-オンプレミス VPN デバイスを構成するには、この時点で仮想ネットワーク ゲートウェイのパブリック IP アドレスが必要です。具体的な構成方法については、お使いのデバイスの製造元の情報を参照してください。また、詳細については「[VPN デバイス](http://go.microsoft.com/fwlink/p/?linkid=615099)」を参照してください。
+オンプレミス VPN デバイスを構成するには、この時点で仮想ネットワーク ゲートウェイのパブリック IP アドレスが必要です。具体的な構成方法については、お使いのデバイスの製造元の情報を参照してください。また、詳細については[VPN デバイス](http://go.microsoft.com/fwlink/p/?linkid=615099)を参照してください。
 
 仮想ネットワーク ゲートウェイのパブリック IP アドレスを検索するには、次のサンプルを使用します。
 
@@ -150,6 +167,6 @@ Select-AzureSubscription を実行して、使用するサブスクリプショ�
 
 ## 次のステップ
 
-仮想ネットワークに仮想マシンを追加します。[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)
+仮想ネットワークに仮想マシンを追加します。[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

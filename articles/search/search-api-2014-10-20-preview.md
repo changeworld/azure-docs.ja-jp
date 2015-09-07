@@ -1,8 +1,8 @@
-<properties pageTitle="Azure Search サービス REST API バージョン 2014-10-20-Preview" description="Azure Search サービス REST API バージョン 2014-10-20-Preview" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor="" />
+<properties pageTitle="Azure Search サービス REST API バージョン 2014-10-20-Preview" description="Azure Search サービス REST API バージョン 2014-10-20-Preview" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor=""/>
 
-<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="07/22/2015" ms.author="heidist" />
+<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="08/25/2015" ms.author="heidist"/>
 
-# Azure Search サービス REST API バージョン 2014-10-20-Preview #
+#Azure Search サービス REST API バージョン 2014-10-20-Preview
 
 このドキュメントでは、Azure Search サービス REST API の **2014-10-20-Preview** プレリリース バージョンについて説明します。これは最初の Azure Search 公開プレビューの更新としてリリースされたものです。このバージョンはまもなく廃止されるため、一般公開版のリリースに関連付けられているバージョンを使用することを強くお勧めします。コード移行のガイダンスについては、「[プレビューから一般公開版への API バージョンの移行](search-transition-from-preview.md)」を参照してください。
 
@@ -12,7 +12,7 @@
 
 Azure Search REST API の一般的に利用できるバージョンのドキュメントについては、MSDN を参照してください。詳細については、「[Azure Search サービス REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx)」を参照してください。
 
-##サービス REST API について##
+##サービス REST API について
 
 Azure Search はクラウド ベースのサービスであり、カスタム検索アプリケーションの作成に使用できます。Azure Search には*検索サービス*と*インデックス*の概念があり、検索サービスには 1 つまたは複数のインデックスが含まれています。検索サービスは、完全修飾ドメイン名によって一意に識別されます (例: `mysearchservice.search.windows.net`)。API キーは、サービスのプロビジョニング時に生成され、Azure Search サービスへの要求を認証するために使用されます。
 
@@ -126,7 +126,7 @@ ________________________________________
       {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false},
       {"name": "baseRate", "type": "Edm.Double"},
       {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-	  {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, analyzer: "fr.lucene"},
+	  {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
       {"name": "hotelName", "type": "Edm.String"},
       {"name": "category", "type": "Edm.String"},
       {"name": "tags", "type": "Collection(Edm.String)"},
@@ -649,7 +649,7 @@ Azure Search は新しいサジェスター API に移行しています。バ�
         {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false},
         {"name": "baseRate", "type": "Edm.Double"},
         {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-	    {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, analyzer="fr.lucene"},
+	    {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer"="fr.lucene"},
         {"name": "hotelName", "type": "Edm.String"},
         {"name": "category", "type": "Edm.String"},
         {"name": "tags", "type": "Collection(Edm.String)"},
@@ -1455,4 +1455,4 @@ Suggestions 要求はターゲット ドキュメントの検索候補を示す�
 
     GET /indexes/hotels/docs/suggest?search=lux&$top=5&suggesterName=sg&api-version=2014-10-20-Preview
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Application Insights に関するトラブルシューティングと Q &amp; A" 
-	description="Visual Studio Application Insights について不明な点や問題点はありませんか? ここで解決してください。" 
-	services="application-insights" 
-    documentationCenter=".net"
-	authors="alancameronwills" 
+	pageTitle="Application Insights に関するトラブルシューティングと Q &amp; A"
+	description="Visual Studio Application Insights について不明な点や問題点はありませんか? ここで解決してください。"
+	services="application-insights"
+	documentationCenter=".net"
+	authors="alancameronwills"
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/22/2015" 
+	ms.service="application-insights"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2015"
 	ms.author="awills"/>
  
 # トラブルシューティングと Q & A - Application Insights for ASP.NET
@@ -217,9 +217,9 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 <tr><td>依存関係テレメトリ</td><td><a href="../app-insights-monitor-performance-live-website-now/">AI Status Monitor をサーバーにインストールする</a></td><td>データベースや、その他の外部コンポーネントの問題を診断する</td></tr>
 <tr><td>例外からスタック トレースを取得する</td><td><a href="../app-insights-search-diagnostic-logs/#exceptions">コード内に TrackException 呼び出しを挿入する</a> (自動で報告されるものもある)</td><td>例外を検出して診断する</td></tr>
 <tr><td>ログ トレースの検索</td><td><a href="../app-insights-search-diagnostic-logs/">ログ アダプターを追加する</a></td><td>例外、パフォーマンスの問題を診断する</td></tr>
-<tr><td>クライアントの利用状況の基本情報: ページ ビュー、セッション、...</td><td><a href="../app-insights-start-monitoring-app-health-usage/#webclient">Web ページの JavaScript の初期化子</a></td><td>利用状況分析</td></tr>
-<tr><td>クライアントのカスタム メトリック</td><td><a href="../app-insights-web-track-usage-custom-events-metrics/">Web ページでの呼び出しの追跡</a></td><td>ユーザー エクスペリエンスを向上させる</td></tr>
-<tr><td>サーバーのカスタム メトリック</td><td><a href="../app-insights-web-track-usage-custom-events-metrics/">サーバー コードでの呼び出しの追跡</a></td><td>ビジネス インテリジェンス</td></tr>
+<tr><td>クライアントの利用状況の基本情報: ページ ビュー、セッション、...</td><td><a href="../app-insights-javascript/">Web ページの JavaScript の初期化子</a></td><td>利用状況分析</td></tr>
+<tr><td>クライアントのカスタム メトリック</td><td><a href="../app-insights-api-custom-events-metrics/">Web ページでの呼び出しの追跡</a></td><td>ユーザー エクスペリエンスを向上させる</td></tr>
+<tr><td>サーバーのカスタム メトリック</td><td><a href="../app-insights-api-custom-events-metrics/">サーバー コードでの呼び出しの追跡</a></td><td>ビジネス インテリジェンス</td></tr>
 </table>
 
 Azure VM で Web サービスが実行されている場合は、そこでも[診断を取得][azurediagnostic]できます。
@@ -239,4 +239,4 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=August15_HO9-->

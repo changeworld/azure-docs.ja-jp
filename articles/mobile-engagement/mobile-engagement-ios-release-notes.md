@@ -1,11 +1,11 @@
 <properties
-	pageTitle="Azure モバイル エンゲージメント iOS SDK リリース ノート"
-	description="Azure モバイル エンゲージメント用 iOS SDK の最新の更新プログラムと手順"
+	pageTitle="Azure Mobile Engagement iOS SDK リリース ノート"
+	description="Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 	services="mobile-engagement"
 	documentationCenter="mobile"
 	authors="MehrdadMzfr"
 	manager="dwrede"
-	editor="" />
+	editor=""/>
 
 <tags
 	ms.service="mobile-engagement"
@@ -14,13 +14,18 @@
 	ms.devlang="objective-c"
 	ms.topic="article"
 	ms.date="08/05/2015"
-	ms.author="MehrdadMzfr" />
+	ms.author="MehrdadMzfr"/>
 
 #リリース ノート
+
+##3\.1.0 (2015 年 8 月 26 日)
+
+-   サードパーティ ライブラリと iOS 9 の互換性バグを修正。ポーリングの結果、アプリケーション情報、追加のデータの送信時にクラッシュを引き起こしていました。
 
 ##3\.0.0 (06/19/2015)
 
 -   Mobile Engagement では、サイレント プッシュ通知が使用されます。
+-   iOS 4.X のサポートが終了。このバージョンから、アプリケーションのデプロイ ターゲットは iOS 6 以降である必要があります。
 
 ##2\.2.0 (05/21/2015)
 
@@ -35,11 +40,11 @@
 
 ##2\.0.0 (02/17/2015)
 
--   Azure モバイル エンゲージメントの最初のリリース
+-   Azure Mobile Engagement の最初のリリース
 -   appId/sdkKey 構成は、接続文字列の構成で置き換えられます。
 -   任意の XMPP エンティティから任意の XMPP メッセージを送受信する API が削除されました。
 -   デバイス間でメッセージを送受信する API が削除されました。
 -   セキュリティの強化。
 -   SmartAd の追跡が削除されました。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

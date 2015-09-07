@@ -3,7 +3,7 @@
 	description="Python から Azure BLOB ストレージを使用して、BLOB をアップロード、一覧表示、ダウンロード、削除する方法について説明します。"
 	services="storage"
 	documentationCenter="python"
-	authors="huguesv"
+	authors="emgerner-msft"
 	manager="wpickett"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="05/11/2015"
-	ms.author="huvalo"/>
+	ms.date="08/25/2015"
+	ms.author="emgerner"/>
 
 # Python から Azure BLOB ストレージを使用する方法
 
@@ -22,7 +22,7 @@
 
 ## 概要
 
-この記事では、BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python で記述され、[Python Azure パッケージ][]を使用しています。紹介するシナリオは、BLOB のアップロード、一覧の取得、ダウンロード、および削除です。
+この記事では、BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python で記述され、[Python Azure Storage パッケージ][]を使用しています。紹介するシナリオは、BLOB のアップロード、一覧の取得、ダウンロード、および削除です。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -34,7 +34,7 @@
 
 **BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作できます。次のコードでは、**BlobService** オブジェクトを作成します。プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
 
-	from azure.storage import BlobService
+	from azure.storage.blob import BlobService
 
 次のコードは、ストレージ アカウントの名前とアカウント キーを使用して、**BlobService** オブジェクトを作成します。'myaccount' と 'mykey' の部分は、実際のアカウントとキーに置き換えてください。
 
@@ -112,5 +112,6 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
 [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure Storage チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
+[Python Azure Storage パッケージ]: https://pypi.python.org/pypi/azure-storage
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->

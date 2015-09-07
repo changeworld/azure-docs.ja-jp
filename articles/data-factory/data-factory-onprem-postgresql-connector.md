@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="PostgreSQL コネクタ - PostgreSQL からのデータの移動" 
-	description="PostgreSQL データベースからデータを移動できる Data Factory サービスの PostgreSQL コネクタについて学習する" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="PostgreSQL からデータを移動する | Azure Data Factory"
+	description="Azure Data Factory を使用して PostgreSQL Databases からデータを移動する方法を説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2015"
 	ms.author="spelluru"/>
 
-# PostgreSQL コネクタ - Azure Data Factory を使用した PostgreSQL からのデータの移動
+# Azure Data Factory を使用して PostgreSQL からデータを移動する
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、PostgreSQL と他のデータ ストアとの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
@@ -24,21 +24,21 @@ Data Factory のサービスでは、Data Management Gateway を使用したオ�
 
 **注:** Azure IaaS VM でホストされている場合でも、PostgreSQL への接続にゲートウェイを利用する必要があります。クラウドでホストされている PostgreSQL のインスタンスに接続しようとしている場合は、IaaS VM でゲートウェイ インスタンスをインストールすることもできます。
 
-データ ファクトリは、PostgreSQL から他のデータ ストアへのデータ移動をサポートしますが、他のデータ ストアから PostgreSQL へのデータ移動はサポートしません。
+Data Factory は、PostgreSQL から他のデータ ストアへのデータ移動をサポートしますが、他のデータ ストアから PostgreSQL へのデータ移動はサポートしません。
 
 ## インストール 
 
-Data Management Gateway で PostgreSQL データベースに接続するには、[PostgreSQL の Ngpsql データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=282716)を Data Management Gateway と同じシステムにインストールする必要があります。
+Data Management Gateway で PostgreSQL Databases に接続するには、[PostgreSQL の Ngpsql データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=282716)を Data Management Gateway と同じシステムにインストールする必要があります。
 
 ## サンプル: PostgreSQL から Azure BLOB にデータをコピーする
 
 下のサンプルで確認できる要素:
 
-1.	OnPremisesPostgreSql 型のリンクされたサービス。
-2.	AzureStorage 型のリンクされたサービス。
-3.	RelationalTable 型の入力データセット。
-4.	BlobSink 型の出力データセット。
-4.	RelationalSource と BlobSink を使用するコピー アクティビティを含むパイプライン。 
+1.	[OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#postgresql-linked-service-properties) 型のリンクされたサービス。
+2.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
+3.	[RelationalTable](data-factory-onprem-postgresql-connector.md#postgresql-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+4.	[RelationalSource](data-factory-onprem-postgresql-connector.md#postgresql-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。 
 
 このサンプルは PostgreSQL データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -78,7 +78,7 @@ Data Management Gateway で PostgreSQL データベースに接続するには�
 
 このサンプルでは、PostgreSQL で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestamp」という名前の列が含まれているものと想定しています。
 
-「“external”: true」を設定して externalData ポリシーを指定すると、このテーブルがデータ ファクトリに対して外部にあるテーブルで、データ ファクトリのアクティビティでは生成されていないことが Data Factory に通知されます。
+「“external”: true」を設定して externalData ポリシーを指定すると、このテーブルがData Factory に対して外部にあるテーブルで、Data Factory のアクティビティでは生成されていないことが Data Factory に通知されます。
 
 	{
 	    "name": "PostgreSqlDataSet",
@@ -218,10 +218,12 @@ type | type プロパティを **OnPremisesPostgreSql** に設定する必要が
 server | PostgreSQL サーバーの名前です。 | あり 
 database | PostgreSQL データベースの名前です。 | あり 
 schema | データベース内のスキーマの名前です。 | いいえ 
-authenticationType | PostgreSQL データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい 
+authenticationType | PostgreSQL データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | あり 
 username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ 
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ 
-gatewayName | Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 | はい 
+gatewayName | Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 | あり 
+
+オンプレミスの PostgreSQL データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#setting-credentials-and-security)」をご覧ください。
 
 ## PostgreSQL データセットの type プロパティ
 
@@ -231,7 +233,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-tableName | リンクされたサービスが参照する PostgreSQL データベース インスタンスのテーブルの名前です。 | はい 
+tableName | リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。 | はい 
 
 ## PostgreSQL のコピー アクティビティの type プロパティ
 
@@ -256,7 +258,7 @@ query | カスタム クエリを使用してデータを読み取ります。 |
 
 PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に対する次のマッピングが使用されます。
 
-PostgreSQL データベース型 |	PostgreSQL エイリアス | .NET Framework 型
+PostgreSQL Databases 型 |	PostgreSQL エイリアス | .NET Framework 型
 ------------------------ | -------------------- | ---------------------
 abstime | | Datetime
 bigint | int8 | Int64
@@ -304,4 +306,4 @@ serial | serial4 | Int32
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=August15_HO9-->
