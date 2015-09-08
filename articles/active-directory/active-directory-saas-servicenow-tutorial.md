@@ -3,7 +3,8 @@
 #チュートリアル: Azure Active Directory と ServiceNow の統合
 >[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=521880)をクリックしてください。
   
-このチュートリアルでは、Azure と ServiceNow の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と ServiceNow の統合について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   ServiceNow のテナント
@@ -213,4 +214,4 @@
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!----HONumber=August15_HO8-->
+<!------HONumber=August15_HO8-->

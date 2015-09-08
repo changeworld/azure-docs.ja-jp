@@ -29,11 +29,13 @@
 
 CNAME レコードと A レコードについて既に理解している場合は、 [説明を読まずに次に進みます](#add-a-cname-record-for-your-custom-domain)。
 
-> [AZURE.NOTE]より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! Azure Cloud Services または Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (SSL) のセキュリティ保護がすばやく行えます。
+> [AZURE.NOTE]
+> より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! Azure Cloud Services または Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (SSL) のセキュリティ保護がすばやく行えます。
 
 <p/>
 
-> [AZURE.NOTE]このタスクの手順は、Azure Cloud Services に適用されます。Websites については、「[Azure App Service Web アプリのカスタム ドメイン名の構成](../web-sites-custom-domain-name.md)」を参照してください。ストレージ アカウントについては、「[Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成](../storage-custom-domain-name.md)」を参照してください。
+> [AZURE.NOTE]
+> このタスクの手順は、Azure Cloud Services に適用されます。Websites については、「[Azure App Service Web アプリのカスタム ドメイン名の構成](../web-sites-custom-domain-name.md)」を参照してください。ストレージ アカウントについては、「[Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成](../storage-custom-domain-name.md)」を参照してください。
 
 
 ## CNAME レコードと A レコードについて
@@ -42,15 +44,17 @@ CNAME レコード (またはエイリアス レコード) および A レコー
 
 ### CNAME レコードまたはエイリアス レコード
 
-CNAME レコードは、*contoso.com* や **www.contoso.com** などの**特定の**ドメインを正規のドメイン名にマップします。この場合、正規のドメイン名は Azure ホステッド アプリケーションの **[myapp].cloudapp.net** ドメイン名です。作成すると、CNAME は **[myapp].cloudapp.net** のエイリアスを作成します。CNAME エントリは **[myapp].cloudapp.net** サービスの IP アドレスを自動的に解決するため、クラウド サービスの IP アドレスが変更されても、特別な対応をする必要はありません。
+CNAME レコードは、**contoso.com** や **www.contoso.com** などの*特定* のドメインを正規のドメイン名にマップします。この場合、正規のドメイン名は Azure ホステッド アプリケーションの **[myapp].cloudapp.net** ドメイン名です。作成すると、CNAME は **[myapp].cloudapp.net** のエイリアスを作成します。CNAME エントリは **[myapp].cloudapp.net** サービスの IP アドレスを自動的に解決するため、クラウド サービスの IP アドレスが変更されても、特別な対応をする必要はありません。
 
-> [AZURE.NOTE]いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「[the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)](http://en.wikipedia.org/wiki/CNAME_record)」、または「[IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)](http://tools.ietf.org/html/rfc1035)」を参照してください。
+> [AZURE.NOTE]
+> いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「[the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)](http://en.wikipedia.org/wiki/CNAME_record)」、または「[IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)](http://tools.ietf.org/html/rfc1035)」を参照してください。
 
 ### A レコード
 
-A レコードは、ドメイン (**contoso.com**、**www.contoso.com** など) または*ワイルドカード ドメイン* (***.contoso.com** など) を IP アドレスにマップします。Azure のクラウド サービスの場合は、サービスの仮想 IP です。CNAME レコードと比較したときの A レコードの主な利点は、エントリにワイルドカードを使用できる (***.contoso.com** など) ため、複数のサブドメイン (**mail.contoso.com**、**login.contoso.com**、**www.contso.com** など) の要求を処理できることです。
+A レコードは、ドメイン (**contoso.com**、**www.contoso.com** など) または*ワイルドカード ドメイン* (**\*.contoso.com** など) を IP アドレスにマップします。Azure のクラウド サービスの場合は、サービスの仮想 IP です。CNAME レコードと比較したときの A レコードの主な利点は、エントリにワイルドカードを使用できる (**\*.contoso.com** など) ため、複数のサブドメイン (**mail.contoso.com**、**login.contoso.com**、**www.contso.com** など) の要求を処理できることです。
 
-> [AZURE.NOTE]A レコードは静的 IP にマップされるため、変更をクラウド サービスの IP アドレスに自動的に解決することはできません。クラウド サービスによって使用される IP アドレスは、空のスロット (運用またはステージング) に初めてデプロイしたときに割り当てられます。 スロットのデプロイを削除すると、IP アドレスは Azure によって解放され、そのスロットへの今後のデプロイは新しい IP アドレスに与えられます。
+> [AZURE.NOTE]
+> A レコードは静的 IP にマップされるため、変更をクラウド サービスの IP アドレスに自動的に解決することはできません。クラウド サービスによって使用される IP アドレスは、空のスロット (運用またはステージング) に初めてデプロイしたときに割り当てられます。 スロットのデプロイを削除すると、IP アドレスは Azure によって解放され、そのスロットへの今後のデプロイは新しい IP アドレスに与えられます。
 >
 > 都合が良いのは、ステージング デプロイと運用デプロイとの間のスワッピングまたは既存のデプロイのインプレース アップグレードを実行する場合に、所定のデプロイ スロット (運用またはステージング) の IP アドレスが保持されることです。これらの操作の実行の詳細については、「[How to manage cloud services (クラウド サービスの管理方法)](cloud-services-how-to-manage.md)」を参照してください。
 
@@ -91,7 +95,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
 
 **www.contoso.com** の訪問者が本当のホスト (contoso.cloudapp.net) を識別することはないため、転送プロセスはエンド ユーザーから見えなくなります。
 
-> [AZURE.NOTE]上の例は、**www** サブドメインのトラフィックのみに該当します。CNAME レコードにはワイルドカードを使用できないため、各ドメインおよびサブドメインに 1 つの CNAME を作成する必要があります。サブドメイン (*.contoso.com など) からトラフィックを cloudapp.net アドレスに転送するには、DNS 設定の **URL リダイレクト** エントリまたは **URL 転送**エントリを構成するか、または A レコードを作成します。
+> [AZURE.NOTE]上の例は、**www** サブドメインのトラフィックのみに該当します。CNAME レコードにはワイルドカードを使用できないため、各ドメインおよびサブドメインに 1 つの CNAME を作成する必要があります。サブドメイン (\*.contoso.com など) からトラフィックを cloudapp.net アドレスに転送するには、DNS 設定の **URL リダイレクト** エントリまたは **URL 転送**エントリを構成するか、または A レコードを作成します。
 
 
 ## カスタム ドメインの A レコードの追加
@@ -120,7 +124,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 
 2.  ここで A レコードを選択または入力する場所を探します。一覧からレコードの種類を選択するか、詳細設定ページに進まなければならない場合があります。
 
-3. この A レコードを使用するドメインまたはサブドメインを選択または入力します。たとえば、**www.customdomain.com** のエイリアスを作成する場合は **www** を選択します。すべてのサブドメインのワイルドカード エントリを作成する場合は、「\_\_*\_\_」と入力します。これは、**mail.customdomain.com**、**login.customdomain.com**、**www.customdomain.com** などすべてのサブドメインを対象とします。
+3. この A レコードを使用するドメインまたはサブドメインを選択または入力します。たとえば、**www.customdomain.com** のエイリアスを作成する場合は **www** を選択します。すべてのサブドメインのワイルドカード エントリを作成する場合は、「__*__」と入力します。これは、**mail.customdomain.com**、**login.customdomain.com**、**www.customdomain.com** などすべてのサブドメインを対象とします。
 
     ルート ドメインに A レコードを作成する場合は、レジストラーの DNS ツールに ''**@**" シンボルとして示される場合があります。
 
@@ -133,9 +137,10 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 | @ | 137\.135.70.239 |
 
 
-この例では、ルート ドメインの A レコードを作成する方法を示します。すべてのサブドメインを対象とするワイルドカードを作成する場合は、サブドメインとして「'_*_ '」と入力します。
+この例では、ルート ドメインの A レコードを作成する方法を示します。すべてのサブドメインを対象とするワイルドカードを作成する場合は、サブドメインとして「_*_」と入力します。
 
->[AZURE.WARNING]Azure の IP アドレスは、既定では動的です。自分の IP アドレスが変更されないようにするために、[予約済み IP アドレス](..\virtual-network\virtual-networks-reserved-public-ip.md)を使用すると便利です。
+>[AZURE.WARNING]
+>Azure の IP アドレスは、既定では動的です。自分の IP アドレスが変更されないようにするために、[予約済み IP アドレス](..\virtual-network\virtual-networks-reserved-public-ip.md)を使用すると便利です。
 
 ## 次のステップ
 

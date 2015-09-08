@@ -151,7 +151,7 @@
 
 * [Azure モバイル アプリでのオフライン データ同期]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] (メモ: このビデオは Mobile Services に関するものですが、オフライン同期は Azure モバイル アプリでも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(メモ: このビデオは Mobile Services に関するものですが、オフライン同期は Azure モバイル アプリでも同様に機能します\)
 
 <!-- ##Summary
 

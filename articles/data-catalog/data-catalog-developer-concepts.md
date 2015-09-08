@@ -104,24 +104,86 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 ルート資産の型は、カタログに登録できるデータ資産のさまざまな種類を表す型です。
 
-<table><tr><td><b>資産の型</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>テーブル</td><td></td><td></td><td>テーブルは、表形式のデータを表します。これには、SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなどがあります。   </td></tr><tr><td>Measure</td><td></td><td></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>Measure</td><td>分割</td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td>メジャーの物理的なコンテナー。</td></tr><tr><td>KPI</td><td></td><td></td><td>この型は、Analysis Services の主要業績評価指標を表します。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td>時間ごとに KPI の値を評価する MDX 式。トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td>メジャーの物理的なコンテナー。</td></tr><tr><td>レポート</td><td></td><td></td><td>この型は、SQL Server Reporting Services のレポートを表します。 </td></tr><tr><td></td><td>CreatedBy</td><td>String</td><td></td></tr><tr><td></td><td>CreatedDate</td><td>String</td><td></td></tr></table>
+	<table>
+	<tr><td><b>アセットの型</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>テーブル</td><td></td><td></td><td>テーブルは、表形式のデータを表します。これには、SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなどがあります。   </td></tr><tr><td>Measure</td><td></td><td></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>Measure</td><td>分割</td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td>メジャーの物理的なコンテナー。</td></tr><tr><td>KPI</td><td></td><td></td><td>この型は、Analysis Services の主要業績評価指標を表します。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td>時間ごとに KPI の値を評価する MDX 式。トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td>メジャーの物理的なコンテナー。</td></tr><tr><td>レポート</td><td></td><td></td><td>この型は、SQL Server Reporting Services のレポートを表します。 </td></tr><tr><td></td><td>CreatedBy</td><td>String</td><td></td></tr><tr><td></td><td>CreatedDate</td><td>String</td><td></td></tr>
+	</table>
 
 ### 注釈の型
 
 注釈の型は、カタログ内で他の型に割り当てることのできるメタデータの種類を表します。
 
-<table><tr><td><b>注釈の型</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>説明</td><td></td><td></td><td>システムの各ユーザーは、独自の説明とタグを追加できます。そのユーザーだけが説明オブジェクトを編集できます (管理者および資産の所有者は、説明オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、資産ごとに説明の配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、資産に関する知識を提供した各ユーザーの説明)。</td></tr><tr><td></td><td>friendlyName</td><td>string</td><td>データ ソースから派生した名前の代わりに使用できるフレンドリ名。これは、表示と検索を行う場合に有用です。</td></tr><tr><td></td><td>tags</td><td>string[]</td><td>資産のタグの配列。</td></tr><tr><td></td><td>description</td><td>string</td><td>資産の簡単な説明 (2 ～ 3 行)。</td></tr><tr><td>スキーマ</td><td></td><td></td><td>スキーマは、データの構造を説明します。属性 (列、属性、フィールドなど) の名前と型、およびその他のメタデータを一覧表示します。この情報はすべて、データ ソースから派生します。通常、資産には 1 つのスキーマ項目があります。</td></tr><tr><td></td><td>columns</td><td>Column[]</td><td>列オブジェクトの配列。データ ソースから派生した情報を含む列を説明します。</td></tr><tr><td>SchemaDescription</td><td></td><td></td><td>スキーマで定義されている各属性の説明とタグ セットが含まれています。システムの各ユーザーは、独自の説明とタグを追加できます。そのユーザーだけが説明オブジェクトを編集できます (管理者および資産の所有者は、SchemaDescription オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、資産ごとに SchemaDescription オブジェクトの配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、属性に関する知識を提供した各ユーザーの説明)。SchemaAttributes はスキーマに疎結合されているため、同期しなくなる可能性があります。つまり、SchemaDescription は、スキーマに存在しない列を説明する場合や、最近追加された新しい列を参照できない場合があります。これらの同期を保つのは、ライターの責任です。データ ソースには、説明情報も含まれる場合があります。これは、ツールを実行するときに作成される追加の schemaDescription オブジェクトです。</td></tr><tr><td></td><td>columnDescriptions</td><td>ColumnDescription[]</td><td>スキーマ内の列を説明する ColumnDescriptions の配列です。</td></tr><tr><td>エキスパート</td><td></td><td></td><td>データ セット内でエキスパートと見なされるユーザーの一覧が含まれています。説明の一覧を表示すると、エキスパートの意見 (説明) が UX の一番上に表示されます。各ユーザーは、エキスパートの独自の一覧を指定できます。そのユーザーだけがエキスパート オブジェクトを編集できます (管理者および資産の所有者は、エキスパート オブジェクトを削除できますが、編集することはできません)。</td></tr><tr><td></td><td>experts</td><td>string[]</td><td>電子メール アドレスの配列。</td></tr><tr><td>更新</td><td></td><td></td><td>プレビューには、資産のデータの上位 20 行のスナップショットが含まれています。プレビューは、一部の資産の型に対してのみ意味を持ちます (テーブルに対しては意味を持ちますが、メジャーに対しては意味を持ちません)。</td></tr><tr><td></td><td>プレビュー</td><td>object[]</td><td>列を表すオブジェクトの配列。各オブジェクトには、列へのプロパティ マッピングが、行に対するその列の値と共に含まれます。</td></tr>
-<tr><td>AccessInstruction</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>mimeType</td><td>string</td><td>コンテンツの MIME の種類。</td></tr>
-<tr><td></td><td>コンテンツ</td><td>string</td><td>このデータ資産にアクセスする方法の手順。これには、URL、電子メール アドレス、一連の手順が考えられます。</td></tr>
+	<table>
+	<tr><td><b>注釈の型</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>説明</td><td></td><td></td><td>システムの各ユーザーは、独自の説明とタグを追加できます。そのユーザーだけが説明オブジェクトを編集できます (管理者およびアセットの所有者は、説明オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、アセットごとに説明の配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、アセットに関する知識を提供した各ユーザーの説明)。</td></tr><tr><td></td><td>friendlyName</td><td>string</td><td>データ ソースから派生した名前の代わりに使用できるフレンドリ名。これは、表示と検索を行う場合に有用です。</td></tr><tr><td></td><td>tags</td><td>string[]</td><td>アセットのタグの配列。</td></tr><tr><td></td><td>description</td><td>string</td><td>アセットの簡単な説明 (2 ～ 3 行)。</td></tr><tr><td>スキーマ</td><td></td><td></td><td>スキーマは、データの構造を説明します。属性 (列、属性、フィールドなど) の名前と型、およびその他のメタデータを一覧表示します。この情報はすべて、データ ソースから派生します。通常、アセットには 1 つのスキーマ項目があります。</td></tr><tr><td></td><td>columns</td><td>Column[]</td><td>列オブジェクトの配列。データ ソースから派生した情報を含む列を説明します。</td></tr><tr><td>SchemaDescription</td><td></td><td></td><td>スキーマで定義されている各属性の説明とタグ セットが含まれています。システムの各ユーザーは、独自の説明とタグを追加できます。そのユーザーだけが説明オブジェクトを編集できます (管理者およびアセットの所有者は、SchemaDescription オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、アセットごとに SchemaDescription オブジェクトの配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、属性に関する知識を提供した各ユーザーの説明)。SchemaAttributes はスキーマに疎結合されているため、同期しなくなる可能性があります。つまり、SchemaDescription は、スキーマに存在しない列を説明する場合や、最近追加された新しい列を参照できない場合があります。これらの同期を保つのは、ライターの責任です。データ ソースには、説明情報も含まれる場合があります。これは、ツールを実行するときに作成される追加の schemaDescription オブジェクトです。</td></tr><tr><td></td><td>columnDescriptions</td><td>ColumnDescription[]</td><td>スキーマ内の列を説明する ColumnDescriptions の配列です。</td></tr><tr><td>エキスパート</td><td></td><td></td><td>データ セット内でエキスパートと見なされるユーザーの一覧が含まれています。説明の一覧を表示すると、エキスパートの意見 (説明) が UX の一番上に表示されます。各ユーザーは、エキスパートの独自の一覧を指定できます。そのユーザーだけがエキスパート オブジェクトを編集できます (管理者およびアセットの所有者は、エキスパート オブジェクトを削除できますが、編集することはできません)。</td></tr><tr><td></td><td>experts</td><td>string[]</td><td>電子メール アドレスの配列。</td></tr><tr><td>更新</td><td></td><td></td><td>プレビューには、アセットのデータの上位 20 行のスナップショットが含まれています。プレビューは、一部のアセットの型に対してのみ意味を持ちます (テーブルに対しては意味を持ちますが、メジャーに対しては意味を持ちません)。</td></tr><tr><td></td><td>プレビュー</td><td>object[]</td><td>列を表すオブジェクトの配列。各オブジェクトには、列へのプロパティ マッピングが、行に対するその列の値と共に含まれます。</td></tr>
+	<tr><td>AccessInstruction</td><td></td><td></td><td></td></tr>
+	<tr><td></td><td>mimeType</td><td>string</td><td>コンテンツの MIME の種類。</td></tr>
+	<tr><td></td><td>コンテンツ</td><td>string</td><td>このデータ アセットにアクセスする方法の手順。これには、URL、電子メール アドレス、一連の手順が考えられます。</td></tr>
 
-</table>
+	</table>
 
 ### 共通の型
 
 共通の型は、プロパティの型として使用できますが、項目ではありません。
 
-<table><tr><td><b>共通の型</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr><tr><td></td><td>sourceType</td><td>string</td><td>SQL Server、Oracle データベースなど、データ ソースの種類を説明します。  </td></tr><tr><td></td><td>ObjectType</td><td>string</td><td>SQL Server のテーブルやビューなど、データ ソース内のオブジェクトの種類を説明します。</td></tr><tr><td></td><td>formatType</td><td>string</td><td>データの構造について説明します。現在の値は、構造化済みであるか、または構造化されていません。</td></tr><tr><td>SecurityPrincipal</td><td></td><td></td><td></td></tr><tr><td></td><td>upn</td><td>string</td><td>ユーザーの一意の電子メール アドレス。</td></tr><tr><td></td><td>firstName</td><td>string</td><td>ユーザーの名前 (表示用)。</td></tr><tr><td></td><td>lastName</td><td>string</td><td>ユーザーの姓 (表示用)。</td></tr><tr><td>分割</td><td></td><td></td><td></td></tr><tr><td></td><td>name</td><td>string</td><td>列または属性の名前。</td></tr><tr><td></td><td>type</td><td>string</td><td>列または属性のデータ型。使用可能な型は、資産のデータ ソースの種類によって異なります。型のサブセットのみがサポートされます。</td></tr><tr><td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>Precision</td><td>byte</td><td>列または属性の有効桁数。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>isNullable</td><td>Boolean</td><td>列が null 値を含むことができるかどうか。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>expression</td><td>string</td><td>値が計算列である場合、このフィールドには値を表す式が含まれています。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>defaultValue</td><td>オブジェクト</td><td>オブジェクトに対して insert ステートメントで指定されていない場合に挿入される既定値。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td>ColumnDescription</td><td></td><td></td><td></td></tr><tr><td></td><td>tags</td><td>string[]</td><td>列を説明するタグの配列。</td></tr><tr><td></td><td>description</td><td>string</td><td>列を説明する説明。</td></tr><tr><td></td><td>columnName</td><td>string</td><td>この情報が参照する列の名前。</td></tr>
+<table>
+	<tr>
+		<td><b>共通の型</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td>
+	</tr>
+	<tr>
+		<td>DataSourceInfo</td><td></td><td></td><td></td></tr><tr><td></td><td>sourceType</td><td>string</td><td>SQL Server、Oracle データベースなど、データ ソースの種類を説明します。  </td>
+	</tr>
+	<tr>
+		<td></td><td>ObjectType</td><td>string</td><td>SQL Server のテーブルやビューなど、データ ソース内のオブジェクトの種類を説明します。</td>
+	</tr>
+	<tr>
+		<td></td><td>formatType</td><td>string</td><td>データの構造について説明します。現在の値は、構造化済みであるか、または構造化されていません。</td>
+	</tr>
+	<tr>
+		<td>SecurityPrincipal</td><td></td><td></td><td></td>
+	</tr>
+	<tr>
+		<td></td><td>upn</td><td>string</td><td>ユーザーの一意の電子メール アドレス。</td>
+	</tr>
+	<tr>
+		<td></td><td>firstName</td><td>string</td><td>ユーザーの名前 (表示用)。</td>
+	</tr>
+	<tr>
+		<td></td><td>lastName</td><td>string</td><td>ユーザーの姓 (表示用)。</td>
+	</tr>
+	<tr>
+		<td>分割</td><td></td><td></td><td></td>
+	</tr>
+	<tr>
+		<td></td><td>name</td><td>string</td><td>列または属性の名前。</td>
+	</tr>
+	<tr>
+		<td></td><td>type</td><td>string</td><td>列または属性のデータ型。使用可能な型は、アセットのデータ ソースの種類によって異なります。型のサブセットのみがサポートされます。</td>
+	</tr>
+	<tr>
+		<td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。データ ソースから派生します。一部のソースの種類のみに適用されます。</td>
+	</tr>
+	<tr>
+		<td></td><td>Precision</td><td>byte</td><td>列または属性の有効桁数。データ ソースから派生します。一部のソースの種類のみに適用されます。</td>
+	</tr>
+	<tr>
+		<td></td><td>isNullable</td><td>Boolean</td><td>列が null 値を含むことができるかどうか。データ ソースから派生します。一部のソースの種類のみに適用されます。</td>
+	</tr>
+	<tr>
+		<td></td><td>expression</td><td>string</td><td>値が計算列である場合、このフィールドには値を表す式が含まれています。データ ソースから派生します。一部のソースの種類のみに適用されます。</td>
+	</tr>
+	<tr>
+		<td></td><td>defaultValue</td><td>オブジェクト</td><td>オブジェクトに対して insert ステートメントで指定されていない場合に挿入される既定値。データ ソースから派生します。一部のソースの種類のみに適用されます。</td>
+	</tr>
+	<tr>
+		<td>ColumnDescription</td><td></td><td></td><td></td>
+	</tr>
+	<tr>
+		<td></td><td>tags</td><td>string[]</td><td>列を説明するタグの配列。</td>
+	</tr>
+		<tr><td></td><td>description</td><td>string</td><td>列を説明する説明。</td>
+	</tr>
+	<tr>
+		<td></td><td>columnName</td><td>string</td><td>この情報が参照する列の名前。</td>
+	</tr>
 </table>
 
 ## ロールと承認
@@ -139,7 +201,9 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 
 **管理者**、**所有者**、**共同作成者** の 3 つのロールがあります。各ロールは、次の表に示すスコープと権限を持ちます。
 
-<table><tr><td><b>ロール</b></td><td><b>スコープ</b></td><td><b>権限</b></td></tr><tr><td>管理者</td><td>カタログ (カタログ内のすべての資産と注釈)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>所有者</td><td>各資産 (ルート項目とも呼ばれる)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>共同作成者</td><td>個別の各資産および注釈</td><td>Read Update Delete ViewRoles Note: all the rights are revoked if the Read right on the item is revoked from the Contributor</td></tr></table>
+<table>
+	<tr><td><b>ロール</b></td><td><b>スコープ</b></td><td><b>権限</b></td></tr><tr><td>管理者</td><td>カタログ (カタログ内のすべてのアセットと注釈)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>所有者</td><td>各アセット (ルート項目とも呼ばれる)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>共同作成者</td><td>個別の各アセットおよび注釈</td><td>Read Update Delete ViewRoles Note: 項目に対する共同作成者の読み取り権限が取り消されると、すべての権限が取り消されます</td></tr>
+</table>
 
 > [AZURE.NOTE]**Read**、**Update**、**Delete**、**ViewRoles** 権限はいずれの項目 (資産または注釈) にも適用されますが、**TakeOwnership**、**ChangeOwnership**、**ChangeVisibility**、**ViewPermissions** はルート資産のみに適用されます。
 >
@@ -231,4 +295,4 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept.png
 
-<!---HONumber=August15_HO9-->
+<!-----HONumber=August15_HO9-->

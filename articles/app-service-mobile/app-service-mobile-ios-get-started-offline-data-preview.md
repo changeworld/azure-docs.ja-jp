@@ -88,7 +88,7 @@ Azure Mobile Apps のオフライン データ同期機能を使用すると、�
 
     `pullWithQuery` に対する 2 番目のパラメーターは、*増分同期*に使用するクエリ ID です。増分同期では、前回の同期以降に変更されたレコードのみを、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `ms_updatedAt` と呼ばれます) を使用して取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。増分同期を解除するには、`nil` をクエリ ID として渡します。これは、プル操作のたびにすべてのレコードを取得するため、非効率になる場合があります。
 
-	<!--     >[AZURE.NOTE] To remove records from the device local store when they have been deleted in your mobile service database, you should enable [Soft Delete]. Otherwise, your app should periodically call `MSSyncTable.purgeWithQuery` to purge the local store.
+	<!--     >[AZURE.NOTE] モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除] を有効にする必要があります。 有効にしない場合は、アプリで定期的に {MSSyncTable.purgeWithQuery} を呼び出して、ローカル ストアを削除する必要があります。
  -->
 
 5. クラス `QSTodoService` では、メソッド `syncData` はデータ変更操作である `addItem` や `completeItem` の後に呼び出されます。また、`QSTodoListViewController.refresh` からも呼び出されるため、ユーザーが更新ジェスチャを実行するたびに最新のデータが取得されます。`QSTodoListViewController.init` は `refresh` を呼び出すため、アプリケーションは起動時に同期も実行します。
@@ -224,14 +224,14 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 
     増分同期を無効にする場合は、`nil` をクエリ ID として渡します。この場合、`pullWithQuery` への呼び出しごとにすべてのレコードが再取得されるため、場合によっては非効率となります。
 
-<!-- * To remove records from the device local store when they have been deleted in your mobile service database, you should enable [Soft Delete]. Otherwise, your app should periodically call `MSSyncTable.purgeWithQuery` to remove records from the local database, in case they have been deleted in the remote service.
+<!-- * モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除] を有効にする必要があります。 Otherwise, your app should periodically call `MSSyncTable.purgeWithQuery` to remove records from the local database, in case they have been deleted in the remote service.
  -->
 
 ## その他のリソース
 
 * [Azure モバイル アプリでのオフライン データ同期]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
 <!-- URLs. -->
 
@@ -249,4 +249,4 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
  
 
-<!---HONumber=August15_HO9-->
+<!-----HONumber=August15_HO9-->
