@@ -158,4 +158,4 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [csurl]: ./media/cloud-services-custom-domain-name/csurl.png
  
 
-<!----HONumber=August15_HO6-->
+<!-----HONumber=August15_HO6-->

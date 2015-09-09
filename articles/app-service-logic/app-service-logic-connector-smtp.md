@@ -81,8 +81,8 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 	重要度 | メールの重要度を入力します。[標準]、[低]、[高] のいずれかです。
 	添付ファイル | メールと共に送信される添付ファイルです。これには、次のフィールドが含まれます。 <ul><li>コンテンツ (文字列)</li><li> コンテンツ転送エンコード (列挙型) (“none”|”base64”)</li><li>コンテンツ タイプ (文字列)</li><li>コンテンツ ID (文字列)</li><li>ファイル名 (文字列)</li></ul>
 
-	![][5]
-	![][6]
+![][5]
+![][6]
 
 ## コネクタでできること
 コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
@@ -99,4 +99,4 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 [5]: ./media/app-service-logic-connector-smtp/img5.PNG
 [6]: ./media/app-service-logic-connector-smtp/img6.PNG
 
-<!-----HONumber=August15_HO9-->
+<!------HONumber=August15_HO9-->
