@@ -41,7 +41,7 @@ Edifact コネクタを使用するにはまず、AS2 コネクタ API アプリ
 - Azure Logic Apps フロー デザイナーを起動します。
 - 右側のウィンドウの [Edifact コネクタ] をクリックします。  
 ![トリガー設定][3]
-- [->] (右矢印) をクリックします。  
+-  -> をクリックします。  
 ![トリガー オプション][4]
 - Edifact コネクタでは 1 つのトリガーが表示されます。*[リリース バッチ]* を選択します。  
 ![バッチ入力のリリース][5]
@@ -52,7 +52,7 @@ Edifact コネクタを使用するにはまず、AS2 コネクタ API アプリ
 ### アクション
 - 右側のウィンドウの [Edifact コネクタ] をクリックします。  
 ![アクションの設定][7]
-- [->] (右矢印) をクリックします。  
+- -> (右矢印) をクリックします。  
 ![アクションの一覧][8]
 - Edifact コネクタは、多くのアクションをサポートしています。*[エンコード]* を選択します。  
 ![入力のエンコード][9]
@@ -95,4 +95,4 @@ Segment Terminator Suffix|文字列|セグメント終端記号のサフィッ�
 [9]: ./media/app-service-logic-connector-edifact/EncodeInput.PNG
 [10]: ./media/app-service-logic-connector-edifact/EncodeConfigured.PNG
 
-<!---HONumber=August15_HO9-->
+<!----HONumber=August15_HO9-->

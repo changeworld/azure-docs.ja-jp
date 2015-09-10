@@ -39,7 +39,7 @@ New Relic Standard は、Azure ユーザーであれば無料でご利用いた�
 Azure ユーザーは、New Relic エージェントのデプロイ時に、New Relic Pro の 2 週間の試用サブスクリプションをご利用になれます。
 
 Azure Marketplace を使用して New Relic にサインアップする
-
+--
 New Relic は、Azure の Web ロール、Worker ロール、および Azure App Service とシームレスに統合されます。
 
 Azure Marketplace から New Relic に直接サインアップするには、次の簡単な 4 つの手順を実行します。
@@ -179,4 +179,4 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 [custom]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrcustom.png
  
 
-<!---HONumber=August15_HO9-->
+<!----HONumber=August15_HO9-->
