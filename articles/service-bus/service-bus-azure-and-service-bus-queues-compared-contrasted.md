@@ -292,7 +292,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - Service Bus キューでは長いポーリングがサポートされているため、待機時間の短い配信が必要な状況でこのキューを使用すると、コスト効率が向上する可能性があります。
 
->[AZURE.NOTE]すべてのコストは、変更されることがあります。上記の表は、このドキュメントの作成時点の価格を反映しています。ここには、現在利用できるキャンペーン プランは含まれていません。Azure の最新の価格情報については、「[Azure の価格](http://azure.microsoft.com/pricing/)」ページをご覧ください。Service Bus の価格の詳細については、「Service Bus の価格((http://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
+>[AZURE.NOTE] すべてのコストは、変更されることがあります。上記の表は、このドキュメントの作成時点の価格を反映しています。ここには、現在利用できるキャンペーン プランは含まれていません。Azure の最新の価格情報については、「[Azure の価格](http://azure.microsoft.com/pricing/)」ページをご覧ください。Service Bus の価格の詳細については、「[Service Bus の価格](http://azure.microsoft.com/pricing/details/service-bus/)」 を参照してください。
 
 ## まとめ
 
@@ -315,4 +315,4 @@ Service Bus キューには高度な機能が数多く用意されているた�
 - [Azure Storage の課金について - 帯域幅、トランザクション、容量 (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
  
 
-<!---HONumber=August15_HO9-->
+<!----HONumber=August15_HO9-->

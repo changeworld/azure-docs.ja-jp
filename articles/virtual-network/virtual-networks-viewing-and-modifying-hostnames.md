@@ -55,7 +55,7 @@ REST クライアントから次の手順を実行します。
 
 1. 各 **RoleInstance** 要素の **HostName** 要素を検索します。
 
->[AZURE.WARNING]**InternalDnsSuffix** 要素を調べて、リモート デスクトップ セッションのコマンド プロンプトから ipconfig /all を実行して (Windows)、または SSH 端末から cat /etc/resolv.conf を実行して (Linux)、REST 呼び出しの応答からクラウド サービスの内部ドメイン サフィックスを表示することもできます。
+>[AZURE.WARNING] **InternalDnsSuffix** 要素を調べて、リモート デスクトップ セッションのコマンド プロンプトから ipconfig /all を実行して (Windows)、または SSH 端末から cat /etc/resolv.conf を実行して (Linux)、REST 呼び出しの応答からクラウド サービスの内部ドメイン サフィックスを表示することもできます。
 
 ## ホスト名の変更
 
@@ -67,8 +67,8 @@ REST クライアントから次の手順を実行します。
 
 [Azure サービス構成スキーマ (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
-[Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure 仮想ネットワークの構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
 
 [ネットワーク構成ファイルを使用した DNS 設定の指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 
-<!---HONumber=September15_HO1-->
+<!----HONumber=September15_HO1-->

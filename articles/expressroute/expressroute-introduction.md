@@ -110,4 +110,4 @@ Azure Storage、SQL Database、Websites などのサービスは、パブリッ�
 - サービス プロバイダーを検索します。[ExpressRoute のサービス プロバイダーと提供地域](expressroute-locations.md)に関するページをご覧ください。
 - ExpressRoute 接続を構成します。手順については、「[ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)」または「[Exchange プロバイダーを通じて ExpressRoute 接続を構成する](expressroute-configuring-exps.md)」をご覧ください。 
 
-<!----HONumber=August15_HO9-->
+<!-----HONumber=August15_HO9-->

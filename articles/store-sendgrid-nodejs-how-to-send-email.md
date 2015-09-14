@@ -188,4 +188,4 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [クラウドベースの電子メール サービス]: https://sendgrid.com/email-solutions
   [トランザクション電子メール配信]: https://sendgrid.com/transactional-email
 
-<!---HONumber=September15_HO1-->
+<!----HONumber=September15_HO1-->

@@ -133,7 +133,7 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
         namespaceManager.CreateQueue(qd);
     }
 
-> [AZURE.NOTE][`NamespaceManager`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) オブジェクトの [`QueueExists`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
+> [AZURE.NOTE] [`NamespaceManager`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) オブジェクトの [`QueueExists`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
 
 ## メッセージをキューに送信する方法
 
@@ -244,4 +244,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [Azure のサンプル]: https://code.msdn.microsoft.com/windowsazure/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [MSDN]: https://msdn.microsoft.com/library/azure/dn194201.aspx
 
-<!---HONumber=August15_HO9-->
+<!----HONumber=August15_HO9-->
