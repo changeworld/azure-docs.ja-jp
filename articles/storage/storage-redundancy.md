@@ -1,19 +1,21 @@
-<properties
-	pageTitle="Azure Storage のレプリケーション |Microsoft Azure"
-	description="Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされています。レプリケーション オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。" 
-	services="storage" 
-	documentationCenter=""
-	authors="tamram"
-	manager="adinah"
-	editor=""/>
 
-<tagsms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="tamram"/>
+<properties 
+  pageTitle="Azure Storage のレプリケーション | Microsoft Azure" 
+  description="Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされています。レプリケーション オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。" 
+  services="storage" 
+  documentationCenter="" 
+  authors="tamram" 
+  manager="adinah" 
+  editor=""/>
+
+<tags 
+  ms.service="storage" 
+  ms.workload="storage" 
+  ms.tgt_pltfrm="na" 
+  ms.devlang="na" 
+  ms.topic="article" 
+  ms.date="09/01/2015" 
+  ms.author="tamram"/>
 
 # Azure Storage のレプリケーション
 
