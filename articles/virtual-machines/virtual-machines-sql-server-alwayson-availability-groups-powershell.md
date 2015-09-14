@@ -5,7 +5,7 @@
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar" />
+	editor="monicar"/>
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="08/14/2015"
-	ms.author="jroth" />
+	ms.author="jroth"/>
 
 # Azure AlwaysOn 可用性グループの構成 (PowerShell)
 
@@ -43,7 +43,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 
 - オンプレミス ソリューションにおける AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」を参照してください。
 
-## Azure サブスクリプションへの接続と仮想ネットワークの作成
+## Azure サブスクリプションへの接続と Virtual Network の作成
 
 1. ローカル コンピューターの PowerShell ウィンドウで、Azure モジュールをインポートし、発行設定ファイルをコンピューターにダウンロードします。その後、ダウンロードした発行設定ファイルをインポートして、該当する Azure サブスクリプションに PowerShell セッションを接続します。
 
@@ -528,7 +528,7 @@ DC サーバーは、これで正常にプロビジョニングされました�
 		$svc2.Start(); 
 		$svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
 
-1. [Azure VM に AlwaysOn 可用性グループの WSFC クラスターを作成する](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)方法に関するページから **CreateAzureFailoverCluster.ps1** をローカルの作業ディレクトリにダウンロードします。このスクリプトを使用すると、必要最小限の WSFC クラスターを作成できます。WSFC と Azure ネットワークのやり取りに関する重要な情報については、[Azure の仮想マシンの SQL Server の高可用性と災害復旧](https://msdn.microsoft.com/ja-jp/library/azure/jj870962.aspx)に関するページを参照してください。
+1. [Azure VM に AlwaysOn 可用性グループの WSFC クラスターを作成する](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)方法に関するページから **CreateAzureFailoverCluster.ps1** をローカルの作業ディレクトリにダウンロードします。このスクリプトを使用すると、必要最小限の WSFC クラスターを作成できます。WSFC と Azure ネットワークのやり取りに関する重要な情報については、[Azure Virtual Machines の SQL Server の高可用性と災害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)に関するページを参照してください。
 
 1. 作業ディレクトリに移動し、ダウンロードしたスクリプトで WSFC クラスターを作成します。
 
@@ -623,4 +623,4 @@ DC サーバーは、これで正常にプロビジョニングされました�
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

@@ -1,44 +1,40 @@
 <properties 
-	pageTitle="SQL Azure からデータを処理する | Microsoft Azure" 
-	description="SQL Azure からのデータを処理する" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="fashah" 
-	manager="paulettm" 
-	editor="" />
+	pageTitle="SQL Azure からデータを処理する | Microsoft Azure"
+	description="SQL Azure からのデータを処理する"
+	services="machine-learning"
+	documentationCenter=""
+	authors="fashah"
+	manager="paulettm"
+	editor=""/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/29/2015" 
-	ms.author="fashah;garye" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
+	ms.author="fashah;garye"/>
 
 #<a name="heading">Azure の SQL Server Virtual Machine でデータを処理する</a>
 
-このドキュメントでは、Azure の SQL Server VM に格納されたデータに対するデータの探索と特徴の生成について説明します。これは、以下の方法で実行できます。
-
-1. [SQL の使用](#sql)
-2. [Python などのプログラミング言語の使用](#python) 
+このドキュメントでは、Azure の SQL Server VM に格納されたデータに対するデータの探索と特徴の生成について説明します。これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。
 
 
-**注**
->このドキュメントのサンプルの SQL ステートメントは、データが SQL Server に存在することを前提としています。存在しない場合は、クラウド データ サイエンス プロセス マップを参照して、SQL Server へデータを移動する方法を確認してください。
+> [AZURE.NOTE]このドキュメントのサンプルの SQL ステートメントは、データが SQL Server に存在することを前提としています。存在しない場合は、クラウド データ サイエンス プロセス マップを参照して、SQL Server へデータを移動する方法を確認してください。
 
-###<a name="SQL"></a>SQL の使用
+##<a name="SQL"></a>SQL の使用
 
 このセクションでは、SQL を使用した次のデータ処理タスクについて説明します。
 
 1. [データの探索](#sql-dataexploration)
 2. [特徴の生成](#sql-featuregen)
 
-####<a name="sql-dataexploration"></a>データの探索
+###<a name="sql-dataexploration"></a>データの探索
 SQL Server のデータ ストアの探索に使用できるいくつかのサンプル SQL スクリプトを次に示します。
 
-**注**
-> 実用的な例として、[NYC タクシー データセット](http://www.andresmh.com/nyctaxitrips/)を使用し、エンドツーエンドのチュートリアルの「[IPython Notebook と SQL Server を使用した NYC データの処理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)」というタイトルの IPNB を参照することができます。
+
+> [AZURE.NOTE]実用的な例として、[NYC タクシー データセット](http://www.andresmh.com/nyctaxitrips/)を使用し、エンドツーエンドのチュートリアルの「[IPython Notebook と SQL Server を使用した NYC データの処理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)」というタイトルの IPNB を参照することができます。
 
 1. 1 日ごとの所見の数を取得する
 
@@ -57,7 +53,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 	`select <column_name>, count(*) from <tablename> group by <column_name>`
 
 
-####<a name="sql-featuregen"></a>特徴の生成
+###<a name="sql-featuregen"></a>特徴の生成
 
 このセクションでは SQL を使用して特徴を生成する方法について説明します。
 
@@ -65,10 +61,10 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 2. [ビン分割特徴の生成](#sql-binningfeature)
 3. [1 つの列からの特徴の展開](#sql-featurerollout)
 
-**注**
->追加の特徴を生成すると、既存のテーブルに列として追加するか、追加の特徴と主キーを持つ新しいテーブルを作成して元のテーブルと結合することができます。
 
-####<a name="sql-countfeature"></a>カウント ベースの特徴の生成
+> [AZURE.NOTE]追加の特徴を生成すると、既存のテーブルに列として追加するか、追加の特徴と主キーを持つ新しいテーブルを作成して元のテーブルと結合することができます。
+
+###<a name="sql-countfeature"></a>カウント ベースの特徴の生成
 
 このドキュメントでは、カウント特徴を生成する 2 つの方法を示します。最初の方法は、条件付きの合計を使用します。2 番目の方法は、Where 句を使用します。これらを (主キーの列を使用することで) 元のテーブルと結合して、カウント特徴と元のデータを一緒にすることができます。
 
@@ -77,14 +73,14 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 	select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
 	where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
 
-####<a name="sql-binningfeature"></a>ビン分割特徴の生成
+###<a name="sql-binningfeature"></a>ビン分割特徴の生成
 
 次の例は、数値型の列をビン分割 (5 つの箱を使用) して、特徴として代わりに使用できる、ビン分割特徴を生成する方法を示しています。
 
 	`SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-####<a name="sql-featurerollout"></a>1 つの列からの特徴の展開
+###<a name="sql-featurerollout"></a>1 つの列からの特徴の展開
 
 このセクションでは、テーブル内の 1 つの列を展開して追加の特徴を生成する方法を示します。この例は、特徴を生成しようとするテーブルに、緯度や経度の列があることを前提としています。
 
@@ -117,18 +113,18 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 上記の位置ベースの特徴をさらに使用すると、前述した追加のカウント特徴を生成できます。
 
 
-**ヒント**
+> [AZURE.TIP]お好みのプログラム言語でレコードを挿入できます。書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。[こちらで pyodbc を使用した実行方法の例を確認してください。](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)
+ 
 
-> 1. お好みのプログラム言語でレコードを挿入できます。書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。[こちらで pyodbc を使用した実行方法の例を確認してください。](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python) 
-> 2. もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
+> [AZURE.TIP]もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
 
-####<a name="sql-aml"></a>Azure Machine Learning への接続
+###<a name="sql-aml"></a>Azure Machine Learning への接続
 
 新しく生成された特徴は、既存のテーブルに列として追加するか、新しいテーブルに格納して機械学習の元のテーブルと結合することができます。特徴を生成できます。作成済みであれば、次に示すように、Azure ML の[リーダー][reader] モジュールを使用してアクセスすることができます。
 
 ![Azure ML リーダー][1]
 
-###<a name="python"></a>Python などのプログラミング言語の使用
+##<a name="python"></a>Python などのプログラミング言語の使用
 
 データが SQL Server に存在する場合にデータを探索したり特徴を生成するために Python を使用することは、[ここ](machine-learning-data-science-process-data-blob.md)で説明されている Python を使用して Azure BLOB でデータを処理することと類似しています。データは、データベースから pandas データ フレームに読み込む必要があります。その後、さらに処理することができます。このセクションでは、データベースに接続して、データ フレームにデータを読み込むプロセスについて記載します。
 
@@ -145,7 +141,7 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 
 これで、トピック「[データ サイエンス環境で Azure BLOB データを処理する](machine-learning-data-science-process-data-blob.md)」で扱うとおりに Pandas データ フレームを操作できるようになりました。
 
-### 実行中の Azure データ サイエンスの例
+## 実行中の Azure データ サイエンスの例
 
 公開されているデータセットを使用した Azure のデータ サイエンス プロセスのエンドツーエンドのチュートリアルの例については、「[実行中の Azure データ サイエンス プロセス](machine-learning-data-science-process-sql-walkthrough.md)」をご覧ください。
 
@@ -156,4 +152,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

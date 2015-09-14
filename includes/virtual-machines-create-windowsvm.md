@@ -18,9 +18,9 @@
 
 	- **[クラウド サービス DNS 名]** は、仮想マシンへの接続に使用する URI の一部となるグルーバル DNS 名です。クラウド サービス名は Azure 上で一意な名前にする必要があるため、独自のクラウド サービス名を考えてください。クラウド サービスは、[複数の仮想マシン](../articles/cloud-services-connect-virtual-machine.md)を使用するシナリオで重要となります。
 
-	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** では、現在の場所に対応するリージョンを指定します。代わりに仮想ネットワークを指定することもできます。
+	- **[リージョン/アフィニティ グループ/Virtual Network]** では、現在の場所に対応するリージョンを指定します。代わりに仮想ネットワークを指定することもできます。
 
-	>[AZURE.NOTE]仮想マシンで仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する**必要があります**。仮想マシンの作成後に VM を仮想ネットワークに参加させることはできません。詳細については、「[仮想ネットワークの概要](virtual-networks-overview.md)」を参照してください。
+	>[AZURE.NOTE]仮想マシンで仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する**必要があります**。仮想マシンの作成後に VM を仮想ネットワークに参加させることはできません。詳細については、「[Virtual Network の概要](virtual-networks-overview.md)」を参照してください。
 	>
 	> エンドポイントの構成の詳細については、「[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines-set-up-endpoints.md)」を参照してください。
 
@@ -32,4 +32,4 @@
 
 	![Configure VM Agent and the endpoints of the virtual machine](./media/virtual-machines-create-WindowsVM/vmcreated.png)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

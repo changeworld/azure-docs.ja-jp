@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.date="08/28/2015"
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -140,13 +140,22 @@ TelemetryClient はスレッド セーフです。
 
 *JavaScript*
 
-    appInsights.trackEvent // or trackPageView, trackMetric, ...
+    appInsights.trackEvent
       ("WinGame",
          // String properties:
          {Game: currentGame.name, Difficulty: currentGame.difficulty},
          // Numeric metrics:
          {Score: currentGame.score, Opponents: currentGame.opponentCount}
          );
+
+    appInsights.trackPageView
+        ("page name", "http://fabrikam.com/pageurl.html",
+          // String properties:
+         {Game: currentGame.name, Difficulty: currentGame.difficulty},
+         // Numeric metrics:
+         {Score: currentGame.score, Opponents: currentGame.opponentCount}
+         );
+          
 
 *C#*
 
@@ -341,9 +350,10 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
     // At start of processing this request:
 
-    // Operation Id is attached to all telemetry and helps you identify
+    // Operation Id and Name are attached to all telemetry and help you identify
     // telemetry associated with one request:
     telemetry.Context.Operation.Id = Guid.NewGuid().ToString();
+    telemetry.Context.Operation.Name = requestName;
     
     var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
@@ -353,6 +363,8 @@ Web サービス モジュールが実行されていない状況で要求をシ
     telemetryClient.TrackRequest(requestName, DateTime.Now,
        stopwatch.Elapsed, 
        "200", true);  // Response code, success
+
+
 
 ## 例外を追跡する
 
@@ -369,7 +381,30 @@ Web サービス モジュールが実行されていない状況で要求をシ
        telemetry.TrackException(ex);
     }
 
-Windows モバイル アプリでは、SDK が未処理の例外をキャッチするので、記録する必要がありません。ASP.NET では、[自動的に例外をキャッチするコードを記述][exceptions]できます。
+*JavaScript*
+
+    try
+    {
+       ...
+    }
+    catch (ex)
+    {
+       appInsights.trackException(ex);
+    }
+
+SDK が多数の例外を自動的にキャッチするため、常に TrackException を明示的に呼び出す必要はありません。
+
+* ASP.NET: [例外をキャッチするコードを記述する](app-insights-asp-net-exceptions.md)
+* J2EE: [例外は自動的にキャッチされる](app-insights-java-get-started.md#exceptions-and-request-failures)
+* Windows アプリ: [クラッシュは自動的にキャッチされる](app-insights-windows-crashes.md)
+* JavaScript: 自動的にキャッチされる。自動コレクションを無効にする場合は、Web ページに挿入するコード スニペットに次の行を追加します。
+
+    ```
+    ({
+      instrumentationKey: "your key"
+      , disableExceptionTracking: true
+    })
+    ```
 
 
 ## トレースを追跡する 
@@ -407,7 +442,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
             }
 ```
 
-サーバー SDK には、[依存関係モジュール](app-insights-dependencies.md)が含まれることにご注意ください。このモジュールは、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡します。このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。この呼び出しは、自動追跡によってキャッチされない呼び出しを追跡する場合、またはエージェントをインストールしない場合に使用します。
+サーバー SDK には、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡する[依存関係モジュール](app-insights-dependencies.md)が含まれています。このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。この呼び出しは、自動追跡によってキャッチされない呼び出しを追跡する場合、またはエージェントをインストールしない場合に使用します。
 
 標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) を編集して `DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。
 
@@ -490,96 +525,10 @@ Web アプリでは、ユーザーは既定で Cookie により識別されま�
     // ...
 
 
-## <a name="default-properties"></a>コンテキストの初期化子 - すべてのテレメトリに既定のプロパティを設定する
-
-すべての新しい TelemetryClients が自動的にコンテキストを使用できるように、汎用の初期化子を設定できます。これには、Web サーバー要求追跡など、プラットフォーム固有のテレメトリ モジュールにより送信される標準の利用統計情報が含まれます。
-
-一般的な使用方法では、アプリケーションのさまざまなバージョンやコンポーネントからのテレメトリを識別します。ポータルでは、"アプリケーションのバージョン" プロパティによって結果にフィルターを適用し、グループ化することができます。
-
-**初期化子を定義する**
-
-
-*C#*
-
-```C#
-
-    using System;
-    using Microsoft.ApplicationInsights.Channel;
-    using Microsoft.ApplicationInsights.DataContracts;
-    using Microsoft.ApplicationInsights.Extensibility;
-
-    namespace MyNamespace
-    {
-      // Context initializer class
-      public class MyContextInitializer : IContextInitializer
-      {
-        public void Initialize (TelemetryContext context)
-        {
-            if (context == null) return;
-
-            context.Component.Version = "v2.1";
-        }
-      }
-    }
-```
-
-*Java*
-
-```Java
-
-    import com.microsoft.applicationinsights.extensibility.ContextInitializer;
-    import com.microsoft.applicationinsights.telemetry.TelemetryContext;
-
-    public class MyContextInitializer implements ContextInitializer {
-      @Override
-      public void initialize(TelemetryContext context) {
-        context.Component.Version = "2.1";
-      }
-    }
-```
-
-**初期化子を読み込む**
-
-ApplicationInsights.config で:
-
-    <ApplicationInsights>
-      <ContextInitializers>
-        <!-- Fully qualified type name, assembly name: -->
-        <Add Type="MyNamespace.MyContextInitializer, MyAssemblyName"/> 
-        ...
-      </ContextInitializers>
-    </ApplicationInsights>
-
-*または、*コード内で初期化子をインスタンス化することもできます。
-
-*C#*
-
-```C#
-
-    protected void Application_Start()
-    {
-        // ...
-        TelemetryConfiguration.Active.ContextInitializers
-        .Add(new MyContextInitializer());
-    }
-```
-
-*Java*
-
-```Java
-
-    // load the context initializer
-    TelemetryConfiguration.getActive().getContextInitializers().add(new MyContextInitializer());
-```
-
-
-### JavaScript Web クライアント
-
-JavaScript Web クライアントの場合、[テレメトリ初期化子を使用して、既定値を設定します](#js-initializer)。
 
 ## テレメトリの初期化子
 
-テレメトリの初期化子を使用して、標準のテレメトリ モジュールの動作を指定してオーバーライドできます。
+テレメトリ初期化子を使用して、すべてのテレメトリで送信されるグローバル プロパティを定義し、標準テレメトリ モジュールの選択された動作を上書きします。
 
 たとえば、Web 向けの Application Insights パッケージでは HTTP 要求に関するテレメトリが収集されます。既定では、応答コードが 400 以上の要求はすべて失敗としてフラグが設定されます。これに対して 400 を成功として処理する場合は、"成功" プロパティを設定するテレメトリ初期化子を指定できます。
 
@@ -700,7 +649,9 @@ ApplicationInsights.config で:
     </script>
 ```
 
-telemetryItem で使用できる非ユーザー設定プロパティの概要は、[データ モデル](app-insights-export-data-model.md/#lttelemetrytypegt)に関するページを参照してください。
+telemetryItem で使用できる非カスタムプロパティの概要については、[データ モデル](app-insights-export-data-model.md/#lttelemetrytypegt)に関するページを参照してください。
+
+任意の数の初期化子を追加できます。
 
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
@@ -774,7 +725,9 @@ Web ページで、スクリプトに一語一語コーディングするので�
 
 ## TelemetryContext
 
-TelemetryClient には、すべてのテレメトリ データとともに送信される値の数が含まれるコンテキスト プロパティがあります。通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。
+TelemetryClient には、すべてのテレメトリ データとともに送信される値の数が含まれるコンテキスト プロパティがあります。通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。次に例を示します。
+
+    telemetryClient.Context.Operation.Name = “MyOperationName”;
 
 いずれかの値を自分で設定した場合は、その値と標準の値が混同されないように、[ApplicationInsights.config][config] から関連する行を削除することを検討します。
 
@@ -784,11 +737,96 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 * **Location**は、デバイスの地理的な場所を識別します。
 * Web アプリケーションで **Operation** は、現在の HTTP 要求を示します。他の種類のアプリケーションでは、イベントをグループ化するために、これを設定できます。
  * **Id**: [診断検索] でイベントを調べるときに「関連項目」を見つけることができるように、さまざまなイベントを関連付けるために生成される値
- * **Name**: HTTP 要求の URL
+ * **名前**: 識別子。通常は HTTP 要求の URL。 
  * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプ ローラーでの計算から除外されます。
 * **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track* 呼び出しでオーバーライドできます。
 * **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
 * **User**: ユーザー情報。 
+
+
+## <a name="default-properties"></a>コンテキストの初期化子 - すべてのテレメトリに既定のプロパティを設定する
+
+すべての新しい TelemetryClients が自動的にコンテキストを使用できるように、汎用の初期化子を設定できます。これには、Web サーバー要求追跡など、プラットフォーム固有のテレメトリ モジュールにより送信される標準の利用統計情報が含まれます。
+
+一般的な使用方法では、アプリケーションのさまざまなバージョンやコンポーネントからのテレメトリを識別します。ポータルでは、"アプリケーションのバージョン" プロパティによって結果にフィルターを適用し、グループ化することができます。
+
+一般に、[コンテキスト初期化子ではなく、テレメトリ初期化子を使用することをお勧めします](http://apmtips.com/blog/2015/06/09/do-not-use-context-initializers/)。
+
+#### コンテキスト初期化子を定義する
+
+
+*C#*
+
+```C#
+
+    using System;
+    using Microsoft.ApplicationInsights.Channel;
+    using Microsoft.ApplicationInsights.DataContracts;
+    using Microsoft.ApplicationInsights.Extensibility;
+
+    namespace MyNamespace
+    {
+      // Context initializer class
+      public class MyContextInitializer : IContextInitializer
+      {
+        public void Initialize (TelemetryContext context)
+        {
+            if (context == null) return;
+
+            context.Component.Version = "v2.1";
+        }
+      }
+    }
+```
+
+*Java*
+
+```Java
+
+    import com.microsoft.applicationinsights.extensibility.ContextInitializer;
+    import com.microsoft.applicationinsights.telemetry.TelemetryContext;
+
+    public class MyContextInitializer implements ContextInitializer {
+      @Override
+      public void initialize(TelemetryContext context) {
+        context.Component.Version = "2.1";
+      }
+    }
+```
+
+#### コンテキスト初期化子を読み込む
+
+ApplicationInsights.config で:
+
+    <ApplicationInsights>
+      <ContextInitializers>
+        <!-- Fully qualified type name, assembly name: -->
+        <Add Type="MyNamespace.MyContextInitializer, MyAssemblyName"/> 
+        ...
+      </ContextInitializers>
+    </ApplicationInsights>
+
+*または、*コード内で初期化子をインスタンス化することもできます。
+
+*C#*
+
+```C#
+
+    protected void Application_Start()
+    {
+        // ...
+        TelemetryConfiguration.Active.ContextInitializers
+        .Add(new MyContextInitializer());
+    }
+```
+
+*Java*
+
+```Java
+
+    // load the context initializer
+    TelemetryConfiguration.getActive().getContextInitializers().add(new MyContextInitializer());
+```
 
 
 
@@ -865,4 +903,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

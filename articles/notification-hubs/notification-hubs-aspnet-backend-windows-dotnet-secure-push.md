@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure Notification Hubs の安全なプッシュ" 
-	description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" 
-	documentationCenter="windows" 
-	authors="wesmc7777" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="Azure Notification Hubs の安全なプッシュ"
+	description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""
 	services="notification-hubs"/>
 
-<tags 
-	ms.service="notification-hubs" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="windows" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="06/02/2015" 
+<tags
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="windows"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs の安全なプッシュ
@@ -75,7 +75,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 		using Windows.ApplicationModel.Background;
 
 4. Visual Studio の **[ファイル]** メニューで **[すべて保存]** をクリックします。
-		
+
 ## プッシュ バックグラウンド コンポーネントを作成する
 
 次の手順では、プッシュ バックグラウンド コンポーネントを作成します。
@@ -96,11 +96,11 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
         		public string Payload { get; set; }
         		public bool Read { get; set; }
     		}
-    
+
 		    public sealed class PushBackgroundTask : IBackgroundTask
     		{
         		private string GET_URL = "{back-end endpoint}/api/notifications/";
-		
+
         		async void IBackgroundTask.Run(IBackgroundTaskInstance taskInstance)
 		        {
         		    // Store the content received from the notification so it can be retrieved from the UI.
@@ -161,7 +161,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 	![][3]
 
 13. 引き続き **Package.appxmanifest** で、上部の **[宣言]** メニューをクリックします。**[使用可能な宣言]** ボックスで、**[バックグラウンド タスク]**、**[追加]** の順にクリックします。
- 
+
 14. **Package.appxmanifest** で、**[プロパティ]** の **[プッシュ通知]** チェック ボックスをオンにします。
 
 15. **Package.appxmanifest** で、**[アプリ設定]** の **[エントリ ポイント]** フィールドに「**PushBackgroundComponent.PushBackgroundTask**」と入力します。
@@ -185,6 +185,5 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

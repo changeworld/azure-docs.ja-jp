@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="06/08/2015"
+	ms.date="09/01/2015"
 	ms.author="tdykstra"/>
 
 # Azure Cloud Services と ASP.NET を使ってみる
@@ -399,7 +399,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 12. 左側のウィンドウで、**[更新プログラム]** を選択します。
 
-13. *Azure Storage* のパッケージを見つけます。このパッケージが一覧にない場合は、**[更新]** をクリックして、ストレージ クライアント ライブラリの最新バージョンを取得します。
+13. *WindowsAzure.Storage* のパッケージを見つけます。このパッケージが一覧にない場合は、**[更新]** をクリックして、ストレージ クライアント ライブラリの最新バージョンを取得します。
 
 	![Update SCL](./media/cloud-services-dotnet-get-started/updstg.png)
 
@@ -408,6 +408,8 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 14. 左側のウィンドウで、**[オンライン]** を選択します。
 
 16. *EntityFramework* NuGet パッケージを見つけて、3 つのプロジェクトすべてにインストールします。
+
+17. *Microsoft.WindowsAzure.ConfigurationManager* NuGet パッケージを見つけ、worker ロール プロジェクトにインストールします。
 
 ### プロジェクト参照の設定
 
@@ -799,7 +801,7 @@ Contoso Ads アプリケーションは、入門用のチュートリアルと�
 
 * [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。概念は Contoso Ads に似ていますが、より多くの機能とより現実的なコーディング手法が実装されています。
 * [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs (テーブル、キュー、BLOB を使用する Azure クラウド サービス多層アプリケーション)](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。Azure Storage のテーブル、BLOB、キューについて紹介します。[手順を紹介するチュートリアル シリーズ](../cloud-services-dotnet-multi-tier-app-storage-1-overview.md)が用意されています。
-* [Microsoft Azure のクラウド サービスの基礎](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。Microsoft Patterns and Practices グループから提供された、さまざまなベスト プラクティスを紹介する包括的なサンプルです。
+* [Windows Azure のクラウド サービスの基礎](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。Microsoft Patterns and Practices グループから提供された、さまざまなベスト プラクティスを紹介する包括的なサンプルです。
 
 クラウド向けの開発については、「[Azure を使用した実際のクラウド アプリケーションの作成](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)」をご覧ください。
 
@@ -811,4 +813,4 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [クラウド サービスの管理方法](cloud-services-how-to-manage.md)
 * [Azure ストレージ](/documentation/services/storage/)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="04/24/2015"
+	ms.date="08/31/2015"
 	ms.author="v-donntr"/>
 
 
@@ -24,7 +24,7 @@
 
 ## 概要
 
-このチュートリアルでは、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で Web アプリを作成する Azure SDK for Java アプリケーションを作成し、Web サイトにアプリケーションをデプロイする方法について説明します。次の 2 つの部分から構成されます。
+このチュートリアルでは、[Azure App Service][] で Web アプリを作成する Azure SDK for Java アプリケーションを作成し、Web サイトにアプリケーションをデプロイする方法について説明します。次の 2 つの部分から構成されます。
 
 - パート 1 では、Web アプリを作成する Java アプリケーションをビルドする方法を説明します。
 - パート 2 では、簡単な JSP の "Hello World" アプリケーションを作成する方法を説明し、FTP クライアントを使用して App Service にコードをデプロイします。
@@ -34,7 +34,7 @@
 
 ### ソフトウェアのインストール
 
-この記事の AzureWebDemo アプリケーション コードは、Azure Java SDK 0.7.0 を使用して記述されました。これは、[Web Platform Installer (WebPI)](http://go.microsoft.com/fwlink/?LinkID=252838) を使用してインストールできます。また、必ず最新バージョンの [Azure Toolkit for Eclipse](https://msdn.microsoft.com/library/azure/hh690946.aspx) を使用してください。SDK をインストールしたら、**Maven リポジトリ**で**インデックスの更新**を実行して、Eclipse プロジェクトの依存関係を更新します。次に、**[依存関係]** ウィンドウで、各パッケージの最新バージョンを再度追加します。**[ヘルプ] > [インストールの詳細]** の順にクリックして、Eclipse にインストールされているソフトウェアのバージョンを確認できます。少なくとも次のバージョンがインストールされている必要があります。
+この記事の AzureWebDemo アプリケーション コードは、Azure Java SDK 0.7.0 を使用して記述されました。これは、[Web Platform Installer (WebPI)][] を使用してインストールできます。また、必ず最新バージョンの [Azure Toolkit for Eclipse][] を使用してください。SDK をインストールしたら、**Maven リポジトリ**で**インデックスの更新**を実行して、Eclipse プロジェクトの依存関係を更新します。次に、**[依存関係]** ウィンドウで、各パッケージの最新バージョンを再度追加します。**[ヘルプ] > [インストールの詳細]** の順にクリックして、Eclipse にインストールされているソフトウェアのバージョンを確認できます。少なくとも次のバージョンがインストールされている必要があります。
 
 - Microsoft Azure Libraries for Java 0.7.0.20150309 のパッケージ
 - Eclipse IDE for Java EE Developers 4.4.2.20150219
@@ -47,7 +47,7 @@
 
 ### Azure で Active Directory (AD) を作成する
 
-Azure サブスクリプションでまだ Active Directory (AD) を持っていない場合は、Microsoft アカウントを使用して [Azure の旧ポータル](https://manage.windowsazure.com)にログインします。複数のサブスクリプションを持っている場合は、**[サブスクリプション]** をクリックし、このプロジェクトで使用するサブスクリプションの既定のディレクトリを選択します。**[適用]** をクリックしてそのサブスクリプション ビューに切り替えます。
+Azure サブスクリプションでまだ Active Directory (AD) を持っていない場合は、Microsoft アカウントを使用して [Azure の旧ポータル][]にログインします。複数のサブスクリプションを持っている場合は、**[サブスクリプション]** をクリックし、このプロジェクトで使用するサブスクリプションの既定のディレクトリを選択します。**[適用]** をクリックしてそのサブスクリプション ビューに切り替えます。
 
 1. 左側のメニューから **[Active Directory]** を選択します。**[新規] > [ディレクトリ] > [カスタム作成]** の順にクリックします。
 
@@ -59,14 +59,14 @@ Azure サブスクリプションでまだ Active Directory (AD) を持ってい
 
 5. **[国またはリージョン]** でロケールを選択します。
 
-AD の詳細については、「[Azure AD ディレクトリとは](http://technet.microsoft.com/library/jj573650.aspx)」をご覧ください。
+AD の詳細については、「[Azure AD ディレクトリとは][]」をご覧ください。
 
 
 ### Azure の管理証明書を作成する
 
 Azure SDK for Java は、管理証明書を使用して Azure サブスクリプションを認証します。これらは、クライアント アプリケーションの認証に使用する X.509 v3 証明書で、サービス管理 API を使用してサブスクリプション所有者に代わって動作し、サブスクリプションのリソースを管理します。
 
-この手順のコードは、自己署名証明書を使用して Azure を認証します。この手順では、証明書を作成し、事前に [Azure の旧ポータル](https://manage.windowsazure.com)にアップロードする必要があります。これには、次の手順が含まれます。
+この手順のコードは、自己署名証明書を使用して Azure を認証します。この手順では、証明書を作成し、事前に [Azure の旧ポータル][]にアップロードする必要があります。これには、次の手順が含まれます。
 
 - クライアント証明書を表す PFX ファイルを生成し、ローカルに保存します。
 - PFX ファイルから管理証明書 (CER ファイル) を生成します。
@@ -74,14 +74,14 @@ Azure SDK for Java は、管理証明書を使用して Azure サブスクリプ
 - PFX ファイルを JKS に変換します。Java はこの形式を使用して、証明書を使用して認証するためです。
 - アプリケーションの認証コードを記述します。これはローカルの JKS ファイルを参照します。
 
-この手順が完了すると、CER 証明書は Azure サブスクリプションに格納され、JKS 証明書はローカル ドライブに格納されます。管理証明書の詳細については、「[Azure の管理証明書の作成とアップロード](http://msdn.microsoft.com/library/azure/gg551722.aspx)」をご覧ください。
+この手順が完了すると、CER 証明書は Azure サブスクリプションに格納され、JKS 証明書はローカル ドライブに格納されます。管理証明書の詳細については、「[Azure の管理証明書の作成とアップロード][]」をご覧ください。
 
 
 #### 証明書を作成する
 
 自身の自己署名証明書を作成するには、オペレーティング システムでコマンド コンソールを開き、次のコマンドを実行します。
 
-> **注:** コマンドを実行するコンピューターに JDK がインストールされている必要があります。また、keytool へのパスは、JDK をインストールする場所によって異なります。詳細については、Java オンライン ドキュメントの「[Key and Certificate Management Tool (keytool) (キーと証明書管理ツール (keytool))](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/keytool.html)」をご覧ください。
+> **注:** コマンドを実行するコンピューターに JDK がインストールされている必要があります。また、keytool へのパスは、JDK をインストールする場所によって異なります。詳細については、Java オンライン ドキュメントの「[Key and Certificate Management Tool (keytool) (キーと証明書管理ツール (keytool))][]」をご覧ください。
 
 .pfx ファイルを作成するには:
 
@@ -105,7 +105,7 @@ Azure SDK for Java は、管理証明書を使用して Azure サブスクリプ
 - `<password>` は、証明書を保護する場合のパスワードです。6 文字以上の長さにする必要があります。パスワードを入力しなくても続行できますが、推奨しません。
 - `<dname>` は、エイリアスに関連付けられる X.500 識別名であり、自己署名証明書の発行者フィールドとサブジェクト フィールドとして使用されます。
 
-詳細については、「[Azure の管理証明書の作成とアップロード](http://msdn.microsoft.com/library/azure/gg551722.aspx)」をご覧ください。
+詳細については、「[Azure の管理証明書の作成とアップロード][]」をご覧ください。
 
 
 #### 証明書をアップロードする
@@ -157,7 +157,7 @@ Windows コマンド プロンプト (管理者として実行) で、証明書�
     
     この手順は、接続の速度に応じて数分かかる場合があります。インデックスを再構築するときに、**[中央]** の Maven リポジトリに Microsoft Azure パッケージが表示されます。
 
-6. **[依存関係]** で、**[追加]** をクリックします。**[Enter Group ID...]** に `azure-management` と入力します。基本管理と App Service Web アプリ管理用のパッケージを選択します。
+6. **[依存関係]** で、**[追加]** をクリックします。**[Enter Group ID...]** に `azure-management` と入力します。基本管理と App Service Web Apps 管理用のパッケージを選択します。
 
         com.microsoft.azure  azure-management
         com.microsoft.azure  azure-management-websites
@@ -237,7 +237,7 @@ Web アプリと Web スペースに次のパラメーター定義を追加し�
 - `<certificate-password>` は、JKS 証明書を作成したときに指定したパスワードです。
 - `webAppName` には任意の名前を選択できます。この手順では、`WebDemoWebApp` という名前を使用します。完全なドメイン名は、`webAppName` に `domainName` が追加されるため、この場合の完全なドメインは `webdemowebapp.azurewebsites.net` となります。
 - `domainName` は、上記のように指定する必要があります。
-- `webSpaceName` には、[WebSpaceNames](http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/models/WebSpaceNames.html) クラスで定義されたいずれかの値を使用する必要があります。
+- `webSpaceName` には、[WebSpaceNames][] クラスで定義されたいずれかの値を使用する必要があります。
 - `appServicePlanName` は、上記のように指定する必要があります。
 
 > **注:** このアプリケーションを実行するたびに、`webAppName` と `appServicePlanName` の値を変更 (または Azure ポータルで Web アプリを削除) してから、アプリケーションを再度実行する必要があります。そうしないと、Azure に同じリソースが既に存在しているため実行に失敗します。
@@ -245,7 +245,7 @@ Web アプリと Web スペースに次のパラメーター定義を追加し�
 
 #### Web 作成メソッドを定義する
 
-次に、Web アプリを作成するメソッドを定義します。このメソッド `createWebApp` は、Web アプリと Web スペースのパラメーターを指定します。これは、App Service Web アプリ管理クライアントの作成と構成も行い、[WebSiteManagementClient](http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/WebSiteManagementClient.html) オブジェクトで定義されます。この管理クライアントは、Web アプリ作成の鍵となります。アプリケーションがサービス管理 API を呼び出すことで Web アプリ (作成、更新、削除などの操作を実行する) を管理できる、RESTful Web サービスを提供します。
+次に、Web アプリを作成するメソッドを定義します。このメソッド `createWebApp` は、Web アプリと Web スペースのパラメーターを指定します。これは、App Service Web Apps 管理クライアントの作成と構成も行い、[WebSiteManagementClient][] オブジェクトで定義されます。この管理クライアントは、Web アプリ作成の鍵となります。アプリケーションがサービス管理 API を呼び出すことで Web アプリ (作成、更新、削除などの操作を実行する) を管理できる、RESTful Web サービスを提供します。
 
     private static void createWebApp() throws Exception {
 
@@ -456,7 +456,7 @@ FTP を使用した App Service Web アプリへのデプロイの詳細につ�
 
 FTP を使用して、新しく作成された Web アプリにアプリケーション ファイルをデプロイするには、接続情報を取得する必要があります。接続情報を取得するには、2 つの方法があります。1 つは、Web アプリの**ダッシュボード** ページにアクセスする方法、もう 1 つは、Web アプリの発行プロファイルをダウンロードする方法です。発行プロファイルは、FTP ホスト名やログオン資格情報などの情報を Azure App Service の Web アプリに提供する XML ファイルです。このユーザー名とパスワードを使用すると、この Web アプリだけでなく、Azure アカウントに関連付けられているすべてのサブスクリプション内の任意の Web アプリにデプロイできます。
 
-[Azure ポータル](https://portal.azure.com)で、Web アプリのブレードから FTP 接続情報を取得するには:
+[Azure ポータル][]で、Web アプリのブレードから FTP 接続情報を取得するには:
 
 1. **Essentials** で、**FTP ホスト名**を検索してコピーします。これは、`ftp://waws-prod-bay-NNN.ftp.azurewebsites.windows.net` のような URI です。
 
@@ -501,7 +501,7 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 
 #### Kudu を使用してアプリケーションを発行する
 
-アプリケーションを発行する 1 つの方法は、Azure に組み込まれている Kudu デバッグ コンソールを使用することです。Kudu は安定性があり、App Service Web アプリや Tomcat サーバーと一貫性があることが知られています。ブラウザーから次の形式の URL を参照して、Web アプリのコンソールにアクセスします。
+アプリケーションを発行する 1 つの方法は、Azure に組み込まれている Kudu デバッグ コンソールを使用することです。Kudu は安定性があり、App Service Web Apps や Tomcat サーバーと一貫性があることが知られています。ブラウザーから次の形式の URL を参照して、Web アプリのコンソールにアクセスします。
 
 `https://<webappname>.scm.azurewebsites.net/DebugConsole`
 
@@ -589,4 +589,15 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
   [10]: ./media/java-create-azure-website-using-java-sdk/kudu-console-jsphello-war-2.png
  
 
-<!---HONumber=August15_HO9-->
+[Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
+[Web Platform Installer (WebPI)]: http://go.microsoft.com/fwlink/?LinkID=252838
+[Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh690946.aspx
+[Azure の旧ポータル]: https://manage.windowsazure.com
+[Azure AD ディレクトリとは]: http://technet.microsoft.com/library/jj573650.aspx
+[Azure の管理証明書の作成とアップロード]: http://msdn.microsoft.com/library/azure/gg551722.aspx
+[Key and Certificate Management Tool (keytool) (キーと証明書管理ツール (keytool))]: http://docs.oracle.com/javase/6/docs/technotes/tools/windows/keytool.html
+[WebSiteManagementClient]: http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/WebSiteManagementClient.html
+[WebSpaceNames]: http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/models/WebSpaceNames.html
+[Azure ポータル]: https://portal.azure.com
+
+<!---HONumber=September15_HO1-->

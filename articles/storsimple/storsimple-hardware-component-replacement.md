@@ -1,31 +1,31 @@
 <properties 
    pageTitle="StorSimple のハードウェア コンポーネントの交換 | Microsoft Azure"
-   description="StorSimple デバイスの PCM、バッテリ、コントローラー モジュール、EBOD コントローラー、ディスク ドライブ、およびシャーシを安全に交換する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+	description="StorSimple デバイスの PCM、バッテリ、コントローラー モジュール、EBOD コントローラー、ディスク ドライブ、およびシャーシを安全に交換する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/05/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/31/2015"
+	ms.author="alkohli"/>
 
 # StorSimple のハードウェア コンポーネントの交換
 
 ## 概要
 
-ハードウェア コンポーネントの交換に関するチュートリアルでは、Microsoft Azure StorSimple デバイスのハードウェア コンポーネントと、それらのコンポーネントを取り外して交換するために必要な手順について説明します。これらのチュートリアルでは、どのコンポーネントが交換可能であり、どのように交換するかについて説明します。
+ハードウェア コンポーネントの交換に関するチュートリアルでは、Microsoft Azure StorSimple デバイスのハードウェア コンポーネントと、それらのコンポーネントを取り外して交換するために必要な手順について説明します。この記事は安全性アイコンについて説明し、詳細なチュートリアルへの参照情報や、交換可能なコンポーネントの一覧を掲載しています。
 
-StorSimple のコンポーネントを取り外して交換する前に、[安全性アイコンの表記規則](#safety-icon-conventions)とその他の[安全に関する注意事項](storsimple-safety.md)を必ず確認してください。
+>[AZURE.IMPORTANT]StorSimple のコンポーネントを取り外して交換する前に、[安全性アイコンの表記規則](#safety-icon-conventions)とその他の[安全に関する注意事項](storsimple-safety.md)を必ず確認してください。
  
 ### 安全性アイコンの表記規則
 
-次の表で、このガイドで使用される安全性アイコンについて説明します。デバイスのコンポーネントを取り外して交換する手順を進めるときに、これらの安全性アイコンに細心の注意を払ってください。
+次の表で、これらのチュートリアルで使用される安全性アイコンについて説明します。デバイスのコンポーネントを取り外して交換する手順を進めるときに、これらの安全性アイコンに細心の注意を払ってください。
 
 | アイコン | テキスト | 追加情報 |
 |:---- |:---- |:-----------|
@@ -41,7 +41,7 @@ StorSimple のコンポーネントを取り外して交換する前に、[安�
 
 ### 開始する前に
 
-デバイスと、このチュートリアルで使用される安全性アイコンについての情報をよく理解してください。完全な情報については、「[デバイスの安全性](storsimple-safety.md)」を参照してください。StorSimple デバイスに触る前に、「[安全性に関する注意事項](storsimple-safety.md#handling-precautions)」を必ず確認してください。
+デバイスと、このチュートリアルで使用される安全性アイコンについての情報をよく理解してください。詳細については、「[StorSimple デバイスを安全にインストールして操作する](storsimple-safety.md)」を参照してください。StorSimple デバイスに触る前に、「[安全性に関する注意事項](storsimple-safety.md#handling-precautions)」を必ず確認してください。
 
 コンポーネントを交換する前に、次の情報を考慮してください。
 
@@ -55,11 +55,11 @@ StorSimple のコンポーネントを取り外して交換する前に、[安�
 
 モジュールを交換するときは、**エンクロージャの後部に空のベイを絶対に残さないでください**。問題のある部分を取り外す前に、交換用モジュールまたは空のモジュールを用意してください。
 
-## デバイスのハードウェア コンポーネント
+## ハードウェア コンポーネントの交換手順
 
 Microsoft Azure StorSimple デバイスは、主エンクロージャまたは EBOD エンクロージャに収納されるさまざまなプラグイン モジュールで構成されています。8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。
 
-デバイスの主なハードウェア コンポーネントを次の表にまとめて示します。交換手順の欄に示されているリンクをクリックすると、関連付けられているチュートリアルに移動します。
+デバイスの主なハードウェア コンポーネントを次の表にまとめて示します。**交換手順**の欄に示されているリンクをクリックすると、関連付けられているチュートリアルに移動します。
 
 |コンポーネント|台数|プラグイン モジュール?|交換手順
 |:---------|:--------|:--------------|:---------------------|
@@ -67,7 +67,7 @@ Microsoft Azure StorSimple デバイスは、主エンクロージャまたは E
 |プライマリ コントローラー|2|あり| [StorSimple デバイスのコントローラー モジュールを交換する](storsimple-controller-replacement.md) |
 |764W 電源冷却モジュール (PCM)|2|あり| [StorSimple デバイスの電源冷却モジュールを交換する](storsimple-power-cooling-module-replacement.md) |
 |バックアップ バッテリ|2|あり| [StorSimple デバイスのバックアップ バッテリ モジュールを交換する](storsimple-battery-replacement.md) |
-|ディスク ドライブ|12|あり| [StorSimple デバイスのディスク ドライブを交換する](storsimple-disk-drive-replacement.md) |
+|ディスク ドライブ|12|はい| [StorSimple デバイスのディスク ドライブを交換する](storsimple-disk-drive-replacement.md) |
 
 **表 1** 主エンクロージャ内のハードウェア コンポーネント
 
@@ -142,4 +142,4 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 StorSimple のハードウェア コンポーネントを交換する前に、すべての[安全に関する情報](storsimple-safety.md)を確認します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

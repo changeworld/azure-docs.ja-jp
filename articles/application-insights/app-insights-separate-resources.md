@@ -1,21 +1,21 @@
 <properties 
-	pageTitle="新しい Application Insights リソースを作成します。" 
-	description="新しいアプリケーションをセットアップし、新しいインストルメンテーション キーを取得します。Application Insights は、ライブ アプリケーションのパフォーマンスと使用状況を監視します。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="alancameronwills" 
+	pageTitle="開発、テスト、および実稼働用に Application Insights リソースを分ける"
+	description="開発のさまざまな段階で、アプリケーションのパフォーマンスと使用状況を監視します。"
+	services="application-insights"
+	documentationCenter=""
+	authors="alancameronwills"
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/14/2015" 
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/02/2015"
 	ms.author="awills"/>
 
-# 新しい Application Insights リソースを作成します。
+# 開発、テスト、および実稼働用に Application Insights リソースを分ける
 
 
 アプリのデバッグ、テスト、実稼働の各バーションのテレメトリの混同を避けるために、各バージョンからデータを受け取るために個別の [Application Insights][start] リソースを作成します。
@@ -98,4 +98,4 @@ iKey は、アプリの Web ページや、[クイック スタート ブレー�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

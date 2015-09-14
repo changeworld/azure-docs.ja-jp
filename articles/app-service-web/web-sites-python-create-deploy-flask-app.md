@@ -1,22 +1,21 @@
 <properties 
-	pageTitle="Azure での Flask を使用した Web アプリの作成" 
-	description="Azure での Python Web アプリの実行について説明するチュートリアル。" 
-	services="app-service\web" 
-	documentationCenter="python" 
-	authors="huguesv" 
-	manager="wpickett" 
+	pageTitle="Azure での Flask を使用した Web アプリの作成"
+	description="Azure での Python Web アプリの実行について説明するチュートリアル。"
+	services="app-service\web"
+	documentationCenter="python"
+	tags="python"
+	authors="huguesv"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="python" 
-	ms.topic="article" 
-	ms.date="04/15/2015" 
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="python"
+	ms.topic="article"
+	ms.date="08/30/2015"
 	ms.author="huguesv"/>
-
-
 
 
 # Azure での Flask を使用した Web アプリの作成
@@ -35,7 +34,7 @@ Flask Web フレームワークを使用してアプリケーションを作成�
 - Python 2.7 または 3.4
 - setuptools、pip、virtualenv (Python 2.7 のみ)
 - Git
-- [Python Tools 2.1 for Visual Studio](optional)
+- [Python Tools for Visual Studio][] (PTVS) - 注: これはオプションです
 
 **注**: 現在、TFS 発行は Python プロジェクトではサポートされていません。
 
@@ -45,7 +44,7 @@ Python 2.7 または 3.4 (32 ビット) がインストールされていない�
 
 Git には、[Git for Windows] または [GitHub for Windows] をお勧めします。Visual Studio を使用する場合は、Git の統合のサポートを使用できます。
 
-さらに、[Python Tools 2.1 for Visual Studio] のインストールもお勧めします。これはオプションですが、無料版の Visual Studio Community 2013 または Visual Studio Express 2013 for Web を含む [Visual Studio] を使用すれば、Python IDE を有効に活用できます。
+さらに、[Python Tools 2.2 for Visual Studio] のインストールもお勧めします。これはオプションですが、無料版の Visual Studio Community 2013 または Visual Studio Express 2013 for Web を含む [Visual Studio] を使用すれば、Python IDE を有効に活用できます。
 
 ### Mac/Linux
 
@@ -89,7 +88,7 @@ Python と Git は既にインストールされていると思いますが、Py
     \FlaskWebProject.pyproj
     \FlaskWebProject.sln
 
-[Python Tools for Visual Studio](http://pytools.codeplex.com) で使用するプロジェクト ファイル。
+[Python Tools for Visual Studio] で使用するプロジェクト ファイル。
 
     \ptvs_virtualenv_proxy.py
 
@@ -161,7 +160,7 @@ F5 キーを押してデバッグを開始します。ローカルに実行さ�
 
 ![](./media/web-sites-python-create-deploy-flask-app/windows-browser-flask.png)
 
-ソースにブレークポイントを設定したり、ウォッチ ウィンドウを使用したりできます。各種機能の詳細については、[PTVS のドキュメント]を参照してください。
+ソースにブレークポイントを設定したり、ウォッチ ウィンドウを使用したりできます。各種機能の詳細については、[Python Tools for Visual Studio のドキュメント]を参照してください。
 
 ### 変更を加える
 
@@ -375,17 +374,17 @@ Flask と Python Tools for Visual Studio の詳細については、次のリン
 
 Azure テーブル ストレージと MongoDB の使用方法については、次のリンクをご覧ください。
 
-- [Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と MongoDB]
-- [Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ]
+- [Python Tools for Visual Studio を使用した Azure 上の Flask と MongoDB]
+- [Python Tools for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ]
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
 <!--Link references-->
-[Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と MongoDB]: web-sites-python-ptvs-flask-mongodb.md
-[Python Tools 2.1 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ]: web-sites-python-ptvs-flask-table-storage.md
+[Python Tools for Visual Studio を使用した Azure 上の Flask と MongoDB]: https://github.com/microsoft/ptvs/wiki/Flask-and-MongoDB-on-Azure
+[Python Tools for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ]: web-sites-python-ptvs-flask-table-storage.md
 
 <!--External Link references-->
 [Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?linkid=254281
@@ -394,11 +393,10 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 [Git for Windows]: http://msysgit.github.io/
 [GitHub for Windows]: https://windows.github.com/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
+[Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Visual Studio]: http://www.visualstudio.com/
-[PTVS のドキュメント]: http://pytools.codeplex.com/documentation
-[Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
+[Python Tools for Visual Studio のドキュメント]: http://aka.ms/ptvsdocs
 [Flask のドキュメント]: http://flask.pocoo.org/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure 通知ハブ" 
-	description="Azure でのプッシュ通知の使用方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" 
-	authors="wesmc7777" 
-	manager="dwrede" 
-	editor="" 
-	services="notification-hubs" 
+<properties
+	pageTitle="Azure 通知ハブ"
+	description="Azure でのプッシュ通知の使用方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""
+	services="notification-hubs"
 	documentationCenter=""/>
 
-<tags 
-	ms.service="notification-hubs" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="multiple" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="06/02/2015" 
+<tags
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="multiple"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="wesmc"/>
 
 
@@ -94,7 +94,7 @@ Notification Hubs は、複雑さを排除します。プッシュ通知の数�
 
 通知ハブはすぐに利用できるプッシュ通知インフラストラクチャであり、次のメリットがあります。
 
-- **複数のプラットフォーム。**   
+- **複数のプラットフォーム。**
 	+  すべての主要なモバイル プラットフォームをサポートします。通知ハブからプッシュ通知を送信できるのは、Windows ストア アプリケーション、iOS アプリケーション、Android アプリケーション、および Windows Phone アプリケーションです。
 
 
@@ -140,7 +140,7 @@ Notification Hubs の詳細については、次のトピックを参照して�
 プッシュ通知の関連する .NET マネージ API リファレンスについては、次を参照してください。
 
 + [Microsoft.WindowsAzure.Messaging.NotificationHub]
-+ [Microsoft.ServiceBus.Notifications] 
++ [Microsoft.ServiceBus.Notifications]
 
 
   [0]: ./media/notification-hubs-overview/registration-diagram.png
@@ -156,8 +156,5 @@ Notification Hubs の詳細については、次のトピックを参照して�
   [Xamarin.Android]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started
   [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
   [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
-  
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

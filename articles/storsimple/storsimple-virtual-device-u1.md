@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple 仮想デバイス | Microsoft Azure"
-	description="更新プログラム 1.0 を実行する StorSimple 仮想デバイスを作成、構成、展開、および管理する方法について説明します。"
+   pageTitle="StorSimple 仮想デバイス Update 1 | Microsoft Azure"
+	description="Microsoft Azure 仮想ネットワークで StorSimple 仮想デバイスを作成、デプロイ、管理する方法を説明します。(StorSimple Update 1 に適用されます。)"
 	services="storsimple"
 	documentationCenter=""
 	authors="alkohli"
@@ -12,10 +12,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="NA"
-	ms.date="08/21/2015"
+	ms.date="09/02/2015"
 	ms.author="alkohli"/>
 
-# StorSimple 仮想デバイス
+# Azure での StorSimple 仮想デバイスのデプロイと管理
 
 [AZURE.INCLUDE [storsimple-version-selector-sva](../../includes/storsimple-version-selector-sva.md)]
 
@@ -97,7 +97,7 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 作業を開始する前に、次の情報を確認してください。
 
 
-- アクセス資格情報のある Azure の管理ポータル アカウントを持っていること。
+- アクセス資格情報のある Microsoft Azure 管理ポータル アカウントを持っていること。
 
 - Azure ストレージ アカウントのアクセス資格情報。
 
@@ -383,4 +383,4 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 [バックアップ セットからの StorSimple ボリュームの復元](storsimple-restore-from-backup-set.md)方法について学習します。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

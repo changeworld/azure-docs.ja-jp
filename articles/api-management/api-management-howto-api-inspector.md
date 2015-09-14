@@ -1,26 +1,30 @@
 <properties 
-	pageTitle="Azure API Management で API Inspector を使用して呼び出しをトレースする方法" 
-	description="Azure API Management で API Inspector を使用して呼び出しをトレースする方法について説明します。" 
-	services="api-management" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="dwrede" 
+	pageTitle="Azure API Management で API Inspector を使用して呼び出しをトレースする方法"
+	description="Azure API Management で API Inspector を使用して呼び出しをトレースする方法について説明します。"
+	services="api-management"
+	documentationCenter=""
+	authors="steved0x"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="api-management" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.service="api-management"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/31/2015"
 	ms.author="sdanie"/>
 
 # Azure API Management で API Inspector を使用して呼び出しをトレースする方法
 
-API Management には、API のデバッグとトラブルシューティングに役立つ API Inspector ツールが用意されています。API Inspector は、アプリケーションからプログラムで使用することも、開発者ポータルから直接使用することもできます。このガイドでは、API Inspector の使い方を順をおって説明していきます。
+API Management には、API のデバッグとトラブルシューティングに役立つ API Inspector ツールが用意されています。API Inspector は、プログラムで使用することも、開発者ポータルから直接使用することもできます。
 
->[AZURE.NOTE]操作のトレースに加え、API Inspector は、[ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx)の評価もトレースします。デモについては、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky (クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」を 21:00 まで早送りしてご覧ください。
+操作のトレースに加え、API Inspector は、[ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx)の評価もトレースします。デモについては、「[Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」を 21:00 まで早送りしてご覧ください。
+
+このガイドでは、API Inspector の使い方を順をおって説明していきます。
+
+>[AZURE.NOTE]API Inspector のトレースは、API Management サービス インスタンスの[管理者](api-management-howto-create-groups.md)のみ利用できます。API Inspector のトレースは、サブスクリプション キーが必要な[保護された製品](api-management-howto-add-products.md)を呼び出した場合のみ返されます。
 
 ## <a name="trace-call"> </a> API Inspector を使用した呼び出しのトレース
 
@@ -226,7 +230,7 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 ## <a name="next-steps"> </a>次のステップ
 
 -	「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
--	ポリシー式のトレースについては、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky (クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」をご覧ください。デモを表示するには、21:00 まで早送りします。
+-	「[Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」でポリシー式のトレースのデモをご覧ください。デモを表示するには、21:00 まで早送りします。
 
 >[AZURE.VIDEO episode-177-more-api-management-features-with-vlad-vinogradsky]
 
@@ -257,4 +261,4 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

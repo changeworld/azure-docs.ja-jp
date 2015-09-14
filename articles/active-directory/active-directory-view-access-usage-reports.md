@@ -39,8 +39,8 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 |	------												|	-----																						|
 |	**異常アクティビティ レポート**
 |	[不明なソースからのサインイン](active-directory-reporting-sign-ins-from-unknown-sources.md) |	追跡されないサインインの試行を示す場合があります。 |
-|	[複数のエラー後のサインイン](active-directory-sign-ins-after-multiple-failures.md) |	ブルート フォース攻撃の成功を示す場合があります。 |
-|	[複数の地域からのサインイン](active-directory-sign-ins-from-multiple-geographies.md) |	複数のユーザーが同じアカウントでサインインしていることを示す場合があります。 |
+|	[複数のエラー後のサインイン](active-directory-reporting-sign-ins-after-multiple-failures.md) |	ブルート フォース攻撃の成功を示す場合があります。 |
+|	[複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md) |	複数のユーザーが同じアカウントでサインインしていることを示す場合があります。 |
 |	[不審なアクティビティのある IP アドレスからのサインイン](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md) |	持続的な侵入の試行後のサインインの成功を示す場合があります。 |
 |	[感染している可能性があるデバイスからのサインイン](active-directory-reporting-sign-ins-from-possibly-infected-devices.md) |	感染の疑いのあるデバイスからサインインしようとした可能性があります。 |
 |	[不規則なサインイン アクティビティ](active-directory-reporting-irregular-sign-in-activity.md) |	ユーザーのサインイン パターンに対して異常なイベントを示す場合があります。 |
@@ -76,7 +76,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 |	異常なサインイン アクティビティがあるユーザー | | |	✓ |
 |	資格情報が漏洩したユーザー | | |	✓ |
 |	**アクティビティ ログ**
-|	監査レポート | | |	✓ |
+|	監査レポート |	✓ | | |
 |	パスワード リセット アクティビティ | | |	✓ |
 |	パスワード リセット登録アクティビティ | | |	✓ |
 |	セルフ サービス グループ アクティビティ | | |	✓ |
@@ -100,7 +100,9 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 
 ## 異常アクティビティ レポート
-異常サインイン アクティビティ レポートには、フェデレーション プロバイダーに関係なく、Microsoft Azure 管理ポータル、Azure AD アクセスパネル、Office365、Sharepoint Online、Dynamics CRM Online、その他の Microsoft オンライン サービスに対する不審なサインイン アクティビティが含まれます。<p>次のレポートを利用できます。</p><ul> <li>[不明なソースからのサインイン](active-directory-reporting-sign-ins-from-unknown-sources.md) </li> <li>[複数回失敗した後のサインイン](active-directory-reporting-sign-ins-after-multiple-failures.md)</li> <li>[複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md)</li> <li>[不審なアクティビティが発生している IP アドレスからのサインイン](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)</li> <li>[不規則なサインイン アクティビティ](active-directory-reporting-irregular-sign-in-activity.md)</li> <li>[感染している可能性があるデバイスからのサインイン](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)</li> <li>[異常なサインイン アクティビティがあるユーザー](active-directory-reporting-users-with-anomalous-sign-in-activity.md)</li> <li>資格情報が漏洩したユーザー</li></ul>
+<p>異常サインイン アクティビティ レポートは、Office365、Microsoft Azure 管理ポータル、Azure AD アクセスパネル、Sharepoint Online、Dynamics CRM Online、その他の Microsoft オンライン サービスに対する不審なサインイン アクティビティにフラグを設定します。</p>
+<p>"複数のエラー後のサインイン" レポートを除くすべてのレポートでは、前述のサービスに対する不審な<i>フェデレーション</i> サインインにもフラグが設定されます。これはフェデレーション プロバイダーを問いません。</p>
+<p>次のレポートを利用できます。</p><ul> <li>[不明なソースからのサインイン](active-directory-reporting-sign-ins-from-unknown-sources.md)</li> <li>[複数のエラー後のサインイン](active-directory-reporting-sign-ins-after-multiple-failures.md)</li> <li>[複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md)</li> <li>[不審なアクティビティのある IP アドレスからのサインイン](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)</li> <li>[不規則なサインイン アクティビティ](active-directory-reporting-irregular-sign-in-activity.md)</li> <li>[感染している可能性があるデバイスからのサインイン](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)</li> <li>[異常なサインイン アクティビティがあるユーザー](active-directory-reporting-users-with-anomalous-sign-in-activity.md)</li> <li></li>資格情報が漏洩したユーザー</ul>
 
 
 
@@ -274,4 +276,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに会社のブランドを追加します。](active-directory-add-company-branding.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

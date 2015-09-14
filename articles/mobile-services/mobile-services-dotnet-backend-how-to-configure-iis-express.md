@@ -1,22 +1,22 @@
-<properties 
-	pageTitle="Mobile Service のローカル テストのための IIS Express の構成" 
-	description="テストのためにローカル モバイル サービス プロジェクトに接続できるように IIS Express を構成する方法について説明します。" 
-	authors="ggailey777" 
-	manager="dwrede" 
-	services="mobile-services" 
-	documentationCenter="" 
+<properties
+	pageTitle="Mobile Service のローカル テストのための IIS Express の構成"
+	description="テストのためにローカル モバイル サービス プロジェクトに接続できるように IIS Express を構成する方法について説明します。"
+	authors="ggailey777"
+	manager="dwrede"
+	services="mobile-services"
+	documentationCenter=""
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="05/20/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="glenga"/>
 
-# ローカル モバイル サービスへの接続を可能にするローカル Web サーバーの構成 
+# ローカル モバイル サービスへの接続を可能にするローカル Web サーバーの構成
 
 Azure モバイル サービスを利用すると、サポートされている .NET 言語の 1 つを使用して Visual Studio で独自のモバイル サービスを作成して、Azure に発行することができます。モバイル サービスで .NET バックエンドを使用する大きな利点の 1 つは、Azure に発行する前に、ローカル コンピューターまたは仮想マシン上でモバイル サービスの実行、テスト、デバッグが可能になることです。
 
@@ -24,6 +24,4 @@ Azure モバイル サービスを利用すると、サポートされている 
 
 [AZURE.INCLUDE [mobile-services-how-to-configure-iis-express](../../includes/mobile-services-how-to-configure-iis-express.md)]
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

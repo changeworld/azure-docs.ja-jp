@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="StorSimple Manager サービスのダッシュボードを使用する | Microsoft Azure"
-   description="サービス ダッシュ ボードについて説明すると共に、サービス ダッシュ ボードを使用して StorSimple ソリューションの状態を監視する方法を説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="SharS"
-   manager="carolz"
-   editor="" />
+   pageTitle="StorSimple Manager サービスのダッシュボード | Microsoft Azure"
+	description="StorSimple Manager サービス ダッシュ ボードについて説明すると共に、サービス ダッシュ ボードを使用して StorSimple ソリューションの状態を監視する方法を説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/17/2015"
-   ms.author="v-sharos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="09/02/2015"
+	ms.author="v-sharos"/>
 
 # StorSimple Manager サービスのダッシュボードを使用する
 
@@ -76,4 +76,4 @@ StorSimple Manager サービスのダッシュボード ページを使用して
 
 [StorSimple デバイスのトラブルシューティングを行う方法](storsimple-troubleshoot-operational-device.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

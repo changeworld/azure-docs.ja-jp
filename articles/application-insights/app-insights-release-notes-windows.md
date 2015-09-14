@@ -1,17 +1,17 @@
 <properties 
-	pageTitle="Application Insights のリリース ノート" 
-	description="最新の更新プログラム。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="alancameronwills" 
+	pageTitle="Windows 向けの Application Insights のリリース ノート"
+	description="最新の更新プログラム。"
+	services="application-insights"
+	documentationCenter=""
+	authors="alancameronwills"
 	manager="douge"/>
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/18/2015" 
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/18/2015"
 	ms.author="sergkanz"/>
  
 # Windows Phone と Windows ストア向けの Application Insights SDK のリリース ノート
@@ -77,4 +77,4 @@
 
 使用可能な以前のバージョンのリリース ノートはありません。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

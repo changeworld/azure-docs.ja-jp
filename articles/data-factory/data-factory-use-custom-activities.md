@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.date="08/28/2015"
 	ms.author="spelluru"/>
 
 # Azure Data Factory パイプラインでカスタム アクティビティを使用する
@@ -213,7 +213,9 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 10. プロジェクトをコンパイルします。メニューの **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
 11. **Windows エクスプローラー**を起動し、ビルドの種類に応じて、**bin\\debug** フォルダーまたは **bin\\release** フォルダーに移動します。
 12. <project folder>\\bin\\Debug フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、MyDotNetActivity.pdb ファイルを含めることもできます。 
-13. **MyDotNetActivity.zip** を BLOB として **customactvitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **StorageLinkedService** リンク サービスが使用する Azure BLOB ストレージ内にあります。BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。 
+13. **MyDotNetActivity.zip** を BLOB として **customactvitycontainer** にアップロードします。この BLOB コンテナーは、**ADFTutorialDataFactory** 内の **StorageLinkedService** リンク サービスが使用する Azure BLOB ストレージ内にあります。BLOB コンテナー **customactivitycontainer** が既に存在していなければ、作成します。
+
+> [AZURE.NOTE]この .NET アクティビティ プロジェクトを Visual Studio で Data Factory プロジェクトを含むソリューションに追加する場合は、最後の 2 つの手順 (zip ファイルの作成と Azure BLOB ストレージへの手動でのアップロード) を実行する必要はありません。Data Factory エンティティを Visual Studio を使用して発行すると、これらの手順は発行プロセスによって自動的に実行されます。Visual Studio を使用した Data Factory エンティティの作成と発行の詳細については、記事「[Visual Studio を使用した初めてのパイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md)」と記事「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started-using-vs.md)」を参照してください。
 
 
 ## 手順 2. パイプラインでカスタム アクティビティを使用する
@@ -256,7 +258,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	3. **Password** プロパティには、ユーザーのパスワードを入力します。 
 	4. **LinkedServiceName** プロパティには、「**StorageLinkedService**」と入力します。これは、入門チュートリアルで作成したリンク サービスです。 
 
-2. コマンド バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。
+2. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
 ### 出力テーブルの作成
 
@@ -410,7 +412,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		  }
 		}
 
-	> [AZURE.NOTE]**accountName** プロパティのバッチ アカウントの名前に "**.<リージョン名**" を追加します。例: "mybatchaccount.eastus"。もう 1 つの選択肢は、下のように batchUri エンドポイントを指定することです。
+	> [AZURE.NOTE]**accountName** プロパティのバッチ アカウントの名前に「**.<リージョン名**」を追加します。例: "mybatchaccount.eastus"。もう 1 つの選択肢は、下のように batchUri エンドポイントを指定することです。
 
 		accountName: "adfteam",
 		batchUri: "https://eastus.batch.azure.com",
@@ -465,4 +467,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
  
 
-<!-----HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

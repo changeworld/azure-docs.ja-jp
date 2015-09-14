@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Mobile Services 向け Android クライアント ライブラリの操作" 
-	description="Azure Mobile Services 向け Android クライアントを使用する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="android" 
-	authors="RickSaling" 
-	manager="dwrede" 
+<properties
+	pageTitle="Mobile Services 向け Android クライアント ライブラリの操作"
+	description="Azure Mobile Services 向け Android クライアントを使用する方法について説明します。"
+	services="mobile-services"
+	documentationCenter="android"
+	authors="RickSaling"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="java" 
-	ms.topic="article" 
-	ms.date="06/03/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="java"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="ricksal"/>
 
 
@@ -44,7 +44,7 @@ Mobile Services を初めて使用する場合は、クイックスタート チ
 		private String text;
 		private Boolean complete;
 	}
-	
+
 動的スキーマが有効な場合、挿入または更新の要求に含まれるオブジェクトに基づいて、Azure のモバイル サービスによって自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://go.microsoft.com/fwlink/p/?LinkId=296271)」を参照してください。
 
 ##<a name="create-client"></a>方法: Mobile Services クライアントを作成する
@@ -52,7 +52,7 @@ Mobile Services を初めて使用する場合は、クイックスタート チ
 
 		MobileServiceClient mClient = new MobileServiceClient(
 				"MobileServiceUrl", // Replace with the above Site URL
-				"AppKey", 			// replace with the Application Key 
+				"AppKey", 			// replace with the Application Key
 				this)
 
 前のコードの `MobileServiceUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Azure 管理ポータルで確認できます。モバイル サービスを選択し、*[ダッシュボード]* をクリックしてください。
@@ -130,7 +130,7 @@ Java は厳密に型指定された言語であるため、モバイル サー�
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    final MobileServiceList<ToDoItem> result = 
+                    final MobileServiceList<ToDoItem> result =
 						mToDoTable.where().field("complete").eq(false).execute().get();
 					for (ToDoItem item : result) {
                 		Log.i(TAG, "Read object with ID " + item.id);  
@@ -206,12 +206,12 @@ Java は厳密に型指定された言語であるため、モバイル サー�
 
 		mToDoTable.select("complete", "text").execute().get();
 
-	
+
 select 関数のパラメーターは、取得するテーブルの列の文字列名です。
 
 [**select**](http://go.microsoft.com/fwlink/p/?LinkId=290689) メソッドは、[**where**](http://go.microsoft.com/fwlink/p/?LinkId=296296) や [**orderBy**](http://go.microsoft.com/fwlink/p/?LinkId=296313) のようなメソッドがある場合はその後に記述する必要があります。このメソッドの後に [**top**](http://go.microsoft.com/fwlink/p/?LinkId=298731) のようなメソッドを記述することができます。
 
-### <a name="chaining"></a>方法: クエリ メソッドを連結する 
+### <a name="chaining"></a>方法: クエリ メソッドを連結する
 
 モバイル サービス テーブルの照会に使用されているメソッドは連結できます。これにより、並べ替えとページングが行われたフィルター処理された行の特定の列を選択するなど、さまざまな操作を行うことができます。複雑な論理フィルターを作成できます。
 
@@ -223,7 +223,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 						.and().startsWith("text", "PRI0")
 						.or().field("duration").gt(10)
 					.select("id", "complete", "text", "duration")
-					.orderBy(duration, QueryOrder.Ascending).top(20)				
+					.orderBy(duration, QueryOrder.Ascending).top(20)
 					.execute().get();
 
 メソッドを連結する場合の主な要件として、*where* メソッドと述語を最初に記述する必要があります。それ以降、アプリケーションのニーズに最も合う順番で後続のメソッドを呼び出すことができます。
@@ -238,12 +238,12 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 		ToDoItem mToDoItem = new ToDoItem();
 		mToDoItem.text = "Test Program";
 		mToDoItem.complete = false;
-		
+
  次に、次のコードを実行します。
 
 		// Insert the new item
 	    new AsyncTask<Void, Void, Void>() {
-	
+
 	        @Override
 	        protected Void doInBackground(Void... params) {
 	            try {
@@ -313,9 +313,9 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 	    if (mClient == null) {
 	        return;
 	    }
-	
+
 	    new AsyncTask<Void, Void, Void>() {
-	
+
 	        @Override
 	        protected Void doInBackground(Void... params) {
 	            try {
@@ -347,7 +347,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 
 		// Set the item as completed and update it in the table
 		item.setComplete(true);
-		
+
 		new AsyncTask<Void, Void, Void>() {
 
             @Override
@@ -461,7 +461,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 		item.addProperty("complete", false);
 
 次に、このオブジェクトを挿入します。[**insert**](http://go.microsoft.com/fwlink/p/?LinkId=298535) メソッドに渡されるコールバック関数は、[**TableJsonOperationCallback**](http://go.microsoft.com/fwlink/p/?LinkId=298532) クラスのインスタンスです。*insert* メソッドのパラメーターが JsonObject である点に注目してください。
-		 
+
         // Insert the new item
         new AsyncTask<Void, Void, Void>() {
 
@@ -492,7 +492,7 @@ select 関数のパラメーターは、取得するテーブルの列の文字�
 
 
 ID を使用してインスタンスを直接削除することもできます。
-		
+
 		 mToDoTable.delete(ID);
 
 
@@ -551,7 +551,7 @@ ID を使用してインスタンスを直接削除することもできます�
 これらの 2 つをアダプターによってバインドします。アダプターは、このコードでは *ArrayAdapter&lt;ToDoItem&gt;* クラスの拡張です。
 
 ### <a name="layout"></a>方法: レイアウトを定義する
- 
+
 レイアウトは、XML コードの複数のスニペットで定義されます。既存のレイアウトがあり、次のコードがサーバーのデータを設定する **ListView** を表すと想定します。
 
     <ListView
@@ -560,7 +560,7 @@ ID を使用してインスタンスを直接削除することもできます�
         android:layout_height="wrap_content"
         tools:listitem="@layout/row_list_to_do" >
     </ListView>
-	
+
 
 前のコードで、*listitem* 属性は、リスト内の個々の行のレイアウトの ID を指定します。次にそのコードを示します。チェック ボックスとそれに関連付けられたテキストを指定しています。これは、リスト内のそれぞれの項目に対して 1 回インスタンス化されます。より複雑なレイアウトでは、表示する追加フィールドを指定することもできます。このコードは、*row\_list\_to\_do.xml* ファイルに含まれています。
 
@@ -568,17 +568,17 @@ ID を使用してインスタンスを直接削除することもできます�
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-	    android:orientation="horizontal">		    
+	    android:orientation="horizontal">
 	    <CheckBox
 	        android:id="@+id/checkToDoItem"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/checkbox_text" />
 	</LinearLayout>
-		
+
 
 ### <a name="adapter"></a>方法: アダプターを定義する
-	
+
 このビューのデータ ソースは *ToDoItem* の配列であるため、*ArrayAdapter<ToDoItem>* クラスからアダプターをサブクラス化します。このサブクラスでは、*row\_list\_to\_do* レイアウトを使用してすべての *ToDoItem* のビューを生成します。
 
 コードでは、*ArrayAdapter&lt;E&gt;* クラスの拡張である次のクラスを定義します。
@@ -590,21 +590,21 @@ ID を使用してインスタンスを直接削除することもできます�
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
-	
+
 		final ToDoItem currentItem = getItem(position);
-	
+
 		if (row == null) {
 			LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
 			row = inflater.inflate(R.layout.row_list_to_do, parent, false);
 		}
-	
+
 		row.setTag(currentItem);
-	
+
 		final CheckBox checkBox = (CheckBox) row.findViewById(R.id.checkToDoItem);
 		checkBox.setText(currentItem.getText());
 		checkBox.setChecked(false);
 		checkBox.setEnabled(true);
-	
+
 		return row;
 	}
 
@@ -668,7 +668,7 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 - Microsoft アカウント
 - Facebook
 - Twitter
-- Google 
+- Google
 - Azure Active Directory
 
 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用して要求を変更することもできます。
@@ -690,24 +690,24 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 		import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
 
 2. アクティビティ クラスの **onCreate** メソッドで、`MobileServiceClient` オブジェクトを作成するコードの後に、次のコード行を追加します。`MobileServiceClient` オブジェクトへの参照は *mClient* であると想定しています。
-	
+
 	    // Login using the Google provider.
-	    
+
 		ListenableFuture<MobileServiceUser> mLogin = mClient.login(MobileServiceAuthenticationProvider.Google);
 
     	Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
     		@Override
     		public void onFailure(Throwable exc) {
     			createAndShowDialog((Exception) exc, "Error");
-    		}   		
+    		}
     		@Override
     		public void onSuccess(MobileServiceUser user) {
     			createAndShowDialog(String.format(
                         "You are now logged in - %1$2s",
                         user.getUserId()), "Success");
-    			createTable();	
+    			createTable();
     		}
-    	}); 
+    	});
 
     このコードでは、Google ログインを使用してユーザーを認証します。認証されたユーザーの ID を示すダイアログが表示されます。認証が成功しないと、次に進むことはできません。
 
@@ -732,38 +732,38 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 		}
 		else
 		{
-			    // Login using the Google provider.    
+			    // Login using the Google provider.
 				ListenableFuture<MobileServiceUser> mLogin = mClient.login(MobileServiceAuthenticationProvider.Google);
-		
+
 		    	Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
 		    		@Override
 		    		public void onFailure(Throwable exc) {
 		    			createAndShowDialog("You must log in. Login Required", "Error");
-		    		}   		
+		    		}
 		    		@Override
 		    		public void onSuccess(MobileServiceUser user) {
 		    			createAndShowDialog(String.format(
 		                        "You are now logged in - %1$2s",
 		                        user.getUserId()), "Success");
 		    			cacheUserToken(mClient.getCurrentUser());
-		    			createTable();	
+		    			createTable();
 		    		}
 		    	});		}
-	}	
+	}
 
 
 	private boolean LoadCache()
 	{
 		SharedPreferences prefs = getSharedPreferences("temp", Context.MODE_PRIVATE);
-		String tmp1 = prefs.getString("tmp1", "undefined"); 
+		String tmp1 = prefs.getString("tmp1", "undefined");
 		if (tmp1 == "undefined")
 			return false;
-		String tmp2 = prefs.getString("tmp2", "undefined"); 
+		String tmp2 = prefs.getString("tmp2", "undefined");
 		if (tmp2 == "undefined")
 			return false;
 		MobileServiceUser user = new MobileServiceUser(tmp1);
 		user.setAuthenticationToken(tmp2);
-		mClient.setCurrentUser(user);		
+		mClient.setCurrentUser(user);
 		return true;
 	}
 
@@ -793,7 +793,7 @@ Mobile Services クライアントの既定の動作は、さまざまな方法�
 
         @Override
         public ListenableFuture<ServiceFilterResponse> handleRequest(
-                	ServiceFilterRequest request, 
+                	ServiceFilterRequest request,
 					NextServiceFilterCallback next) {
 
             runOnUiThread(new Runnable() {
@@ -843,7 +843,7 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 
 	@com.google.gson.annotations.SerializedName("complete")
 	private boolean mComplete;
- 
+
 	@com.google.gson.annotations.SerializedName("duration")
 	private String mDuration;
 
@@ -873,12 +873,12 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 	            }
 	        })
 	        .setPrettyPrinting());
-	
+
 
 
 このコードは、モバイル サービス クライアント オブジェクトのすべてのメソッド呼び出しの前に実行する必要があります。
 
-### <a name="complex"></a>方法: オブジェクトまたは配列プロパティをテーブルに保存する 
+### <a name="complex"></a>方法: オブジェクトまたは配列プロパティをテーブルに保存する
 
 これまでのシリアル化のすべての例には、JSON およびモバイル サービス テーブルに簡単にシリアル化できるプリミティブ型 (整数、文字列など) が使用されていました。ここで、JSON やテーブルに自動的にシリアル化されない複合オブジェクトをクライアント型に追加する場合を想定します。たとえば、文字列の配列をクライアント オブジェクトに追加するとします。この段階で、シリアル化を行う方法と配列をモバイル サービス テーブルに格納する方法は自由に選ぶことができます。
 
@@ -926,6 +926,5 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 <!-- URLs. -->
 [Mobile Services を使い始める]: mobile-services-android-get-started.md
 [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

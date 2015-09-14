@@ -1,6 +1,6 @@
 <properties pageTitle="Node.js のバージョンの指定" description="Azure Websites と Cloud Services で使用される Node.js のバージョンを指定する方法を説明します。" services="" documentationCenter="nodejs" authors="MikeWasson" manager="wpickett" editor="mollybos"/>
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="02/19/2015" ms.author="mwasson"/>
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="08/31/2015" ms.author="mwasson"/>
 
 
 
@@ -36,13 +36,15 @@ Azure が提供する Node.js のバージョンは常に更新されます。�
 ##アプリケーションの設定で Websites のバージョンを指定する
 Web サイトでアプリケーションをホストしている場合は、環境変数 **WEBSITE\_NODE\_DEFAULT\_VERSION** を目的のバージョンに設定できます。
 
-##PowerShell でクラウド サービスのバージョンを指定する
+##PowerShell で Cloud Services のバージョンを指定する
 
 クラウド サービスでアプリケーションをホストしており、Windows Azure PowerShell を使用してアプリケーションを展開している場合は、PowerShell の **Set-AzureServiceProjectRole** コマンドレットを使用して既定の Node.js のバージョンをオーバーライドできます。次に例を示します。
 
-	Set-AzureServiceProjectRole WebRole1 node 0.8.4
+	Set-AzureServiceProjectRole WebRole1 Node 0.8.4
 
-また、**Get-AzureServiceProjectRoleRuntime** を使用して、クラウド サービスとしてホストされるアプリケーションで利用可能な Node.js のバージョンの一覧を取得できます。
+上記のステートメント内のパラメーターは大文字と小文字が区別されます。Node.js の正しいバージョンが選択されていることを検証できます。このためには、ロールの **package.json** の **engines** プロパティを確認します。
+
+また、**Get-AzureServiceProjectRoleRuntime** を使用して、クラウド サービスとしてホストされるアプリケーションで利用可能な Node.js のバージョンの一覧を取得できます。プロジェクトが依存している Node.js のバージョンは、この一覧でいつでも確認できます。
 
 ##Azure Websites でカスタム バージョンを使用する
 
@@ -93,4 +95,4 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
 [モジュールの使用方法]: nodejs-use-node-modules-azure-apps.md
 [Node.js Web サイトを構築、展開する方法]: web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

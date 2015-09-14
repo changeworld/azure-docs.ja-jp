@@ -1,13 +1,3 @@
-<properties pageTitle="手動バックアップの作成" description="手動のオンデマンド バックアップ ジョブを開始する方法について説明します。" services="storsimple" documentationCenter="NA" authors="SharS" manager="carolz" edito**r="" />
-<tags  
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/13/2015"
-   ms.author="v-sharos" />
-
 #### 手動でバックアップを作成するには
 
 1. **[デバイス]** ページで、**[バックアップ ポリシー]** タブに移動します。このタブには、バックアップするボリュームのポリシーを含むすべてのバックアップ ポリシーが表形式で表示されています。
@@ -16,13 +6,13 @@
 
 3. これらのオプションのいずれかを選択すると、確認を求めるメッセージが表示されます。**[はい]** をクリックします。
 
-    ![手動バックアップの作成 1](./media/storsimple-create-manual-backup/HCS_CreateManualBackup1-include.png)
+    ![手動バックアップの作成](./media/storsimple-create-manual-backup/HCS_CreateManualBackup1-include.png)
  
     これでスナップショットを作成するジョブが開始されます。ジョブが正常に作成されると、ページの下部に通知が表示されます。
 
 4. ジョブを監視するには、(ページの下部にある) 通知領域の **[ジョブの表示]** をクリックします。
 
-    ![手動バックアップの作成 2](./media/storsimple-create-manual-backup/HCS_CreateManualBackup2-include.png)
+    ![手動バックアップの監視](./media/storsimple-create-manual-backup/HCS_CreateManualBackup2-include.png)
 
 5. バックアップ ジョブが完了したら、**[バックアップ カタログ]** タブに移動します。
 
@@ -30,4 +20,4 @@
 
   カタログに表示されているバックアップ セットの一覧に、そのバックアップが表示されます。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

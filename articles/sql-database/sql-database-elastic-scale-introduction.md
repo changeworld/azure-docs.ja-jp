@@ -1,20 +1,20 @@
 <properties
     pageTitle="Azure SQL Database - Elastic Database ツール"
-    description="Elastic Database ツールを使用して、クラウド内のデータベース リソースを簡単に拡大します。"
-    services="sql-database"
-    documentationCenter=""
-    manager="jeffreyg"
-    authors="sidneyh"
-    editor=""/>
+	description="これらのツールを使用すると、Software as a Service (SaaS) の開発者は柔軟で拡張性の高いデータベースを簡単に作成できます。"
+	services="sql-database"
+	documentationCenter=""
+	manager="jeffreyg"
+	authors="ddove"
+	editor=""/>
 
 <tags
     ms.service="sql-database"
-    ms.workload="sql-database"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/03/2015"
-    ms.author="sidneyh"/>
+	ms.workload="sql-database"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/27/2015"
+	ms.author="sidneyh"/>
 
 # Elastic Database 機能の概要
 
@@ -29,12 +29,14 @@
 
 ![Elastic Database ツール][1]
 
+この図の印刷可能なバージョンについては、[Elastic Database 概要のダウンロード](http://aka.ms/axmybc) ページにアクセスしててください。
+
 この図では、データベースの色は、スキーマを表しています。同じ色のデータベースは、同じスキーマを共有します。
 
 1. **Azure SQL データベース**が、シャーディング アーキテクチャを使用して Azure でホストされています。 
 2. **Elastic Database クライアント ライブラリ**は、シャード セットの管理に使用します。
-3. 一部のデータベースは、**エラスティック データベース プール**に入っています (「[エラスティック データベースを利用して激増に対応する](sql-database-elastic-pool.md)」をご覧ください)。 
-4. **エラスティック データベース ジョブ**は、すべてのデータベースに対して T-SQL スクリプトを実行します。
+3. 一部のデータベースは、**Elastic Database プール**に入っています (「[Tame explosive growth with elastic databases (エラスティック データベースを利用して激増に対応する)](sql-database-elastic-pool.md)」をご覧ください)。 
+4. **Elastic Database ジョブ**は、すべてのデータベースに対して T-SQL スクリプトを実行します。
 5. 1 つのシャードから別のシャードにデータを移動するときには、**分割/マージ ツール**を使用します。
 6. **Elastic Database クエリ**では、シャード セット内のすべてのデータベースにまたがるクエリを記述することができます。
   
@@ -55,13 +57,13 @@
 
 水平方向のスケーリングとは、容量または全体のパフォーマンスを調整するためにデータベースを追加または削除することを意味します。“スケールアウト” とも呼ばれます。シャーディングは、水平方向のスケーリングを実装する一般的な手法で、同じ構造を持つデータベースのコレクションでデータがパーティション分割されます。
 
-垂直方向のスケーリングとは、個々のデータベースのパフォーマンス レベルを増減することを意味します。“スケールアップ” とも呼ばれます。
+垂直方向のスケーリングとは、個々のデータベースのパフォーマンス レベルを増減することを意味します。"スケールアップ" とも呼ばれます。
 
 ほとんどのクラウド規模のデータベース アプリケーションでは、この 2 つの手法を組み合わせて使用しています。たとえば、サービス アプリケーションとしてのソフトウェアでは、水平方向のスケーリングを使用して新しいエンド ユーザーをプロビジョニングし、垂直方向のスケーリングを使用して、各エンドユーザーのデータベースがワークロードで必要される条件に応じてリソースを拡大縮小できるようにします。
 
 * 水平方向のスケーリングは、[Elastic Database クライアント ライブラリ](sql-database-elastic-client-overview.md)を使用して管理します。
 
-* 垂直方向のスケーリングは、Azure PowerShell コマンドレットを使用してサービス レベルを変更するか、エラスティック データベース プールにデータベースを配置して実行します。
+* 垂直方向のスケーリングは、Azure PowerShell コマンドレットを使用してサービス レベルを変更するか、Elastic Database プールにデータベースを配置して実行します。
 
 ## シングルテナント パターンとマルチテナント パターン
 
@@ -91,7 +93,7 @@ SaaS アプリケーションを作成する場合は、見込顧客に試用版
 
 分割/マージ ツールを使用するには、正しく[セキュリティを構成](sql-database-elastic-scale-split-merge-security-configuration,md)する必要があります。
 
-エラスティック データベース プールの詳細を確認するには、「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照するか、[チュートリアル](sql-database-elastic-pool-portal.md)に従って新しいプールを作成してください。
+Elastic Database プールの詳細を確認するには、「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照するか、[チュートリアル](sql-database-elastic-pool-portal.md)に従って新しいプールを作成してください。
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -102,4 +104,4 @@ SaaS アプリケーションを作成する場合は、見込顧客に試用版
 [3]: ./media/sql-database-elastic-scale-introduction/overview.png
 [4]: ./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

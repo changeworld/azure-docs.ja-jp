@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="クイック スタート ガイド: Machine Learning Recommendations API | Microsoft Azure" 
-	description="Azure Machine Learning Recommendations - クイック スタート ガイド" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="jaymathe" 
-	manager="paulettm" 
+	pageTitle="クイック スタート ガイド: Machine Learning Recommendations API | Microsoft Azure"
+	description="Azure Machine Learning Recommendations - クイック スタート ガイド"
+	services="machine-learning"
+	documentationCenter=""
+	authors="jaymathe"
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/12/2015" 
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="luisca"/>
 
 # Machine Learning の Recommendations API のクイック スタート ガイド
@@ -40,9 +40,9 @@ Azure Machine Learning の Recommendations を使用するには、次の手順�
 
 * サブスクリプションごとのモデルの最大数は 10 です。
 * カタログが保持できる項目の最大数は 100,000 です。
-* 保持される使用状況ポイントの最大数は \~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
+* 保持される使用状況ポイントの最大数は ~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
 * POST で送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
-* 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は \~2TPS です。有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
+* 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は ~2TPS です。有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
 
 ##統合
 
@@ -55,7 +55,7 @@ Micosoft Azure Marketplace は、Basic または OAuth のいずれかの認証�
                
 	Where <creds> = ConvertToBase64(“AccountKey:” + yourAccountKey);  
 	
-Base 64 に変換 (c\#)
+Base 64 に変換 (c#)
 
 	var bytes = Encoding.UTF8.GetBytes(“AccountKey:” + yourAccountKey);
 	var creds = Convert.ToBase64String(bytes);
@@ -673,4 +673,4 @@ OData XML
 このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報と見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

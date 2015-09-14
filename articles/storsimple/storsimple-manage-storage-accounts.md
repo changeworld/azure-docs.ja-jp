@@ -1,21 +1,21 @@
 <properties 
    pageTitle="StorSimple ストレージ アカウントの管理 | Microsoft Azure"
-   description="[構成] ページを使用してストレージ アカウントを追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
+	description="StorSimple Manager の [構成] ページを使用してストレージ アカウントを追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/14/2015"
-   ms.author="v-sharos" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/27/2015"
+	ms.author="v-sharos"/>
 
-# StorSimple ストレージ アカウントの管理
+# StorSimple Manager サービスを使用してストレージ アカウントを管理する
 
 ## 概要
 
@@ -28,8 +28,6 @@
 このチュートリアルでは、**[構成]** ページを使用してストレージ アカウントを追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。
 
  ![[構成] ページ](./media/storsimple-manage-storage-accounts/HCS_ConfigureService.png)
-
-**図 1: StorSimple Manager サービスの構成ページ**
 
 ストレージ アカウントには、クラウド サービス プロバイダーを使用してストレージ アカウントにアクセスするためにデバイスで使用される資格情報が含まれます。Microsoft Azure ストレージ アカウントの場合、これらはアカウント名やプライマリ アクセス キーなどの資格情報です。
 
@@ -150,6 +148,6 @@ StorSimple Manager サービスにこの変更を認識させるには、StorSim
 
 ## 次のステップ
 
-[StorSimple のセキュリティの詳細](storsimple-security.md)
+[StorSimple のセキュリティ](storsimple-security.md)の詳細を確認します。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

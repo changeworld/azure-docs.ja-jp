@@ -1,21 +1,21 @@
 <properties 
    pageTitle="StorSimple バックアップ ポリシーの管理 | Microsoft Azure"
-   description="StorSimple Manager サービスを使用して、手動バックアップ、バックアップのスケジュールを作成して、バックアップの保持期間を管理する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor=""/>
+	description="StorSimple Manager サービスを使用して、手動バックアップ、バックアップのスケジュールを作成して、バックアップの保持期間を管理する方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/13/2015"
-   ms.author="v-sharos"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/27/2015"
+	ms.author="v-sharos"/>
 
-# StorSimple バックアップ ポリシーの管理
+# StorSimple Manager サービスを使用してバックアップ ポリシーを管理する
 
 ## 概要
 
@@ -84,4 +84,4 @@ StorSimple デバイスからバックアップ ポリシーを削除するに�
 
 [StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理](storsimple-snapshot-manager-manage-backup-jobs.md)について説明します。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

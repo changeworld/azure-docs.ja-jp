@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Stream Analytics の Power BI ダッシュ ボード | Microsoft Azure" 
-	description="リアルタイム ストリーミング Power BI ダッシュ ボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。" 
-	services="stream-analytics" 
-	documentationCenter="" 
-	authors="jeffstokes72" 
-	manager="paulettm" 
+	pageTitle="Stream Analytics の Power BI ダッシュ ボード | Microsoft Azure"
+	description="リアルタイム ストリーミング Power BI ダッシュ ボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。"
+	services="stream-analytics"
+	documentationCenter=""
+	authors="jeffstokes72"
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="stream-analytics" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="data-services" 
-	ms.date="08/03/2015" 
+	ms.service="stream-analytics"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-services"
+	ms.date="08/27/2015"
 	ms.author="jeffstok"/>
 	
 # Azure Stream Analytics & Power BI: ストリーミング データのリアルタイム分析に関するライブ ダッシュボード
@@ -77,20 +77,20 @@ Stream Analytics ジョブの一覧を表示するには、左側のウィンド
 
 1.  ページの上部にある **[出力]** をクリックしてから、**[出力の追加]** をクリックします。Power BI が出力オプションとして表示されます。
 
-![図 2][graphic2]
+    ![図 2][graphic2]
 
 2.  **[Power BI]** を選択してから、右のボタンをクリックします。
 3.  次のような画面が表示されます。
 
-![図 3][graphic3]
+    ![図 3][graphic3]
 
 4.  この手順では、Stream Analytics ジョブ出力用の会社または学校のアカウントを指定します。既に Power BI アカウントがある場合は、**[今すぐ承認]** を選択します。ない場合は、**[今すぐサインアップ]** を選択します。[Power BI のサインアップの詳細については、こちらのブログをご覧ください](http://blogs.technet.com/b/powerbisupport/archive/2015/02/06/power-bi-sign-up-walkthrough.aspx)。
 
-![図 11][graphic11]
+    ![図 11][graphic11]
 
 5.  次のような画面が表示されます。
 
-![図 4][graphic4]
+    ![図 4][graphic4]
 
 次に示すように値を入力します。
 
@@ -168,7 +168,6 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 そのため必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。データのプッシュが最大で 1 プッシュ/秒となり、クエリがスループット要件の範囲内に収まるようにするには、TumblingWindow または HoppingWindow の使用をお勧めします。また、次の式を使用して、現在のウィンドウに設定する値 (秒) を計算ができます。![式 1](./media/stream-analytics-power-bi-dashboard/equation1.png)
 
 たとえば – 1,000 台のデバイスで 1 秒ごとにデータを送信し、1,000,000 行/時に対応する Power BI の Pro SKU を使用しており、Power BI でデバイスごとの平均データを取得する場合、1 つのデバイスにつき最大 4 秒ごとに 1 回プッシュできます (下図)。
-![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)
 
 つまり、元のクエリが次のように変更されます。
 
@@ -185,10 +184,18 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
     	TUMBLINGWINDOW(ss,4),
     	dspl
 
+## 承認の更新
 
+Power BI 出力のあるすべてのジョブについて、90 日おきに認証トークンを手動で更新する必要があるという一時的な制限事項があります。また、ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要もあります。この問題の症状として、ジョブ出力が返されなかったり、操作ログで "ユーザーの認証エラー" が発生することが挙げられます。
+
+![図 12][graphic12]
+
+この問題を解決するには、実行中のジョブを停止し、Power BI 出力に移動します。[承認の更新] リンクをクリックし、データの損失を避けるため、"最後に停止した時刻" からジョブを再開します。
+
+![図 13][graphic13]
 
 ## 問い合わせ ##
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ ##
 
@@ -210,5 +217,7 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 [graphic9]: ./media/stream-analytics-power-bi-dashboard/9-stream-analytics-power-bi-dashboard.png
 [graphic10]: ./media/stream-analytics-power-bi-dashboard/10-stream-analytics-power-bi-dashboard.png
 [graphic11]: ./media/stream-analytics-power-bi-dashboard/11-stream-analytics-power-bi-dashboard.png
+[graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
+[graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -5,7 +5,7 @@
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar" />
+	editor="monicar"/>
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="08/12/2015"
-	ms.author="jroth" />
+	ms.author="jroth"/>
 
 # Azure AlwaysOn 可用性グループの構成 (GUI)
 
 このエンド ツー エンドのチュートリアルでは、Azure の仮想マシン上で実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。
 
->[AZURE.NOTE]Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、AlwaysOn 可用性グループに必要なものすべてが自動的に構成されます。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。PowerShell を使用するには、「[チュートリアル: Azure AlwaysOn 可用性グループ (PowerShell)](https://msdn.microsoft.com/library/azure/jj870963.aspx)」で同じシナリオのチュートリアルを参照してください。
+>[AZURE.NOTE]Microsoft Azure 管理ポータルでは、リスナーを含む AlwaysOn 可用性グループ用に新しいギャラリーが設定されています。これを使用すると、AlwaysOn 可用性グループに必要なものすべてが自動的に構成されます。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)に関する記事を参照してください。PowerShell を使用するには、「[チュートリアル: Azure AlwaysOn 可用性グループの構成 (PowerShell)](virtual-machines-sql-server-alwayson-availability-groups-powershell.md)」で同じシナリオのチュートリアルを参照してください。
 
 チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
@@ -67,7 +67,7 @@
 |---|---|
 |仮想ネットワークの詳細|**名前 = ContosoNET**<br/>**リージョン = 米国西部**|
 |DNS サーバーと VPN 接続|なし|
-|仮想ネットワーク アドレス空間|設定は、次のスクリーンショットを参照してください。![Create Virtual Network](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784620.png)|
+|Virtual Network アドレス空間|設定は、次のスクリーンショットを参照してください。![Create Virtual Network](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784620.png)|
 
 1. 次に、ドメイン コントローラー (DC) として使用する VM を作成します。次に示すように、もう一度 **[新規]** をクリックし、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
@@ -534,4 +534,4 @@
 
 Azure での SQL Server の使用に関するその他の情報は、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

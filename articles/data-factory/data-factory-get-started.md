@@ -1,6 +1,6 @@
 <properties
-	pageTitle="チュートリアル: Azure BLOB から Azure SQL にデータをコピーする"
-	description="このチュートリアルでは、BLOB から Azure SQL Database インスタンスにデータをコピーするサンプル データ パイプラインを作成する方法を示します。"
+	pageTitle="チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する"
+	description="このチュートリアルでは、Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure BLOB から Azure SQL Database にデータをコピーする方法を示します。"
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
@@ -12,7 +12,7 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
+	ms.topic="article"
 	ms.date="07/27/2015"
 	ms.author="spelluru"/>
 
@@ -74,7 +74,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 
 2. [Azure Storage エクスプローラー](https://azurestorageexplorer.codeplex.com/)などのツールを使用して **adftutorial** コンテナーを作成し、このコンテナーに **emp.txt** ファイルをアップロードします。
 
-    ![Azure Storage Explorer](./media/data-factory-get-started/getstarted-storage-explorer.png)
+    ![Azure ストレージ エクスプローラー](./media/data-factory-get-started/getstarted-storage-explorer.png)
 3. 次の SQL スクリプトを使用して、**emp** テーブルを Azure SQL Database に作成します。  
 
 
@@ -100,6 +100,9 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 - Visual Studio 2013 を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-get-started-using-vs.md)」というリンクをクリックします。
  
 
+## フィードバックの送信
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-get-started.md)でフィードバックをお寄せください。
+
 <!--Link references-->
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-preview-portal]: https://portal.azure.com/
@@ -110,4 +113,4 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database-get-started.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

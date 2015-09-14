@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Active Directory を使用して職場または学校の ID を作成する"
-   description="個人 ID から職場または学校の ID を作成して、リソース グループ テンプレートやロールベースのアクセスなどのさまざまな機能を使用する方法について説明します。"
-   services="virtual-machines"
-   documentationCenter=""
-   authors="squillace"
-   manager="timlt"
-   editor=""/>
+	description="個人 ID から職場または学校の ID を作成して、リソース グループ テンプレートやロールベースのアクセスなどのさまざまな機能を使用する方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="squillace"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure"
-   ms.date="05/05/2015"
-   ms.author="rasquill"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure"
+	ms.date="09/01/2015"
+	ms.author="rasquill"/>
 
 # Azure Active Directory を使用して職場または学校の ID を作成する
 
@@ -140,4 +140,4 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
     data:
     info:    group create command OK
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="StorSimple ボリュームの管理 | Microsoft Azure"
-	description="StorSimple ボリュームを追加、変更、監視する方法と、必要に応じて StorSimple ボリュームをオフラインにする方法について説明します。"
+	description="StorSimple ボリュームを追加、変更、監視、削除する方法と、必要に応じて StorSimple ボリュームをオフラインにする方法について説明します。"
 	services="storsimple"
 	documentationCenter="NA"
 	authors="SharS"
@@ -12,10 +12,10 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="TBD"
-	ms.date="08/21/2015"
+	ms.date="08/27/2015"
 	ms.author="v-sharos"/>
 
-# StorSimple ボリュームの管理
+# StorSimple Manager サービスを使用してボリュームを管理する
 
 ## 概要
 
@@ -65,7 +65,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 3. ページの下部にある **[追加]** をクリックします。ボリュームの追加ウィザードが起動されます。
 
-     ![ボリュームの追加](./media/storsimple-manage-volumes/HCS_AddVolume1M.png)
+     ![ボリュームの追加ウィザードの基本設定](./media/storsimple-manage-volumes/HCS_AddVolume1M.png)
 
 4. ボリュームの追加ウィザードの **[基本設定]** で、次の操作を行います。
 
@@ -74,7 +74,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
   3. **[使用法の種類]** ボックスの一覧で、ボリュームの使用法の種類を選択します。アクセス頻度の低いアーカイブ データを使用する場合は、**[アーカイブ ボリューム]** を選択します。それ以外の場合は、**[Tiered Volume (階層化されたボリューム)]** を選びます。(「階層化されたボリューム」は、以前は「プライマリ ボリューム」と呼ばれていました)。
   5. 矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes/HCS_ArrowIcon.png) をクリックして **[追加設定]** ページに移動します。
 
-     ![ボリュームの追加](./media/storsimple-manage-volumes/HCs_AddVolume2M.png)
+     ![ボリュームの追加ウィザードの追加設定](./media/storsimple-manage-volumes/HCs_AddVolume2M.png)
    
 5. **[追加設定]** で、新しいアクセス制御レコード (ACR) を追加します。
   
@@ -172,7 +172,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 5. ボリュームの変更ウィザードの **[基本設定]** で、**[監視]** ボックスの一覧の **[有効]** または **[無効]** を選択します。
 
-    ![ボリュームを監視する](./media/storsimple-manage-volumes/HCS_MonitorVolumeM.png)
+    ![ボリュームの基本設定を変更する](./media/storsimple-manage-volumes/HCS_MonitorVolumeM.png)
 
 ## 次のステップ
 
@@ -181,4 +181,4 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Active Directory 開発者ガイド | Microsoft Azure"
-   description="この記事は、Azure Active Directory の開発者向けリソースの包括的なガイドです。"
-   services="active-directory"
-   documentationCenter="dev-center-name"
-   authors="msmbaldwin"
-   manager="mbaldwin"
-   editor=""/>
+	description="この記事は、Azure Active Directory の開発者向けリソースの包括的なガイドです。"
+	services="active-directory"
+	documentationCenter="dev-center-name"
+	authors="msmbaldwin"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
    ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="08/12/2015"
-   ms.author="mbaldwin"/>
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.tgt_pltfrm="na"
+	ms.workload="identity"
+	ms.date="08/12/2015"
+	ms.author="mbaldwin"/>
 
 
 # Azure Active Directory 開発者ガイド
@@ -40,19 +40,24 @@ Build 2015 のカンファレンスで発表された Azure Active Directory の
 
 次のチュートリアルは複数のプラットフォームに対応しているため、Azure Active Directory を使用した開発をすぐに開始できます。前提条件として、[Azure Active Directory テナントを取得](active-directory-howto-tenant.md)する必要があります。
 
-### モバイルまたは PC のアプリケーションのクイック スタート ガイド
+### モバイル アプリケーションと PC アプリケーションのクイック スタート ガイド
 
 |[![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md)|[![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md)|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md)| [![Windows Phone](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsphone.md)|[![Windows ストア](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md)|[![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md)|[![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md)
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:
 |[iOS](active-directory-devquickstarts-ios.md)|[Android](active-directory-devquickstarts-android.md)|[.NET](active-directory-devquickstarts-dotnet.md)|[Windows Phone](active-directory-devquickstarts-windowsphone.md)|[Windows ストア](active-directory-devquickstarts-windowsstore.md)|[Xamarin](active-directory-devquickstarts-xamarin.md)|[Cordova](active-directory-devquickstarts-cordova.md)
 
 
-### Web アプリケーションまたは Web API のクイック スタート ガイド
+### Web アプリケーションと Web API のクイック スタート ガイド
 
 |[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapi-dotnet.md)|[![JavaScript](./media/active-directory-developers-guide/javascript.png)](active-directory-devquickstarts-angular.md)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-webapi-nodejs.md)
 |:--:|:--:|:--:|:--:
 |[.NET Web アプリ](active-directory-devquickstarts-webapp-dotnet.md)|[.NET Web API](active-directory-devquickstarts-webapi-dotnet.md)|[Javascript](active-directory-devquickstarts-angular.md)|[Node.JS](active-directory-devquickstarts-webapi-nodejs.md)
 
+### ディレクトリのクエリに関するクイック スタート ガイド
+
+| [![.NET](./media/active-directory-developers-guide/graph.png)](active-directory-graph-api-quickstart.md)|
+|:--:|
+|[Graph API](active-directory-graph-api-quickstart.md)|
 
 ## 方法
 
@@ -60,8 +65,8 @@ Build 2015 のカンファレンスで発表された Azure Active Directory の
 
 - [Azure Active Directory テナントを取得する方法](active-directory-howto-tenant.md)
 - [Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](active-directory-app-gallery-listing.md)
-- [アプリでの Office 365 API の使用](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
-- [販売者ダッシュボードに Office 365 用 Web アプリを送信する方法](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+- [Create an app with Office 365 APIs (Office 365 API を使用するアプリの作成)](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
+- [Submit Web apps for Office 365 to the Seller Dashboard (販売者ダッシュボードへの Office 365 用 Web アプリの送信)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 - [プレビュー: ユーザーが、個人カウント、および職場または学校のアカウントの両方でサインインできるアプリを構築する方法](active-directory-appmodel-v2-overview.md)
 
 
@@ -88,7 +93,7 @@ Build 2015 のカンファレンスで発表された Azure Active Directory の
 
 ### 認証プロトコル
 
-- [SAML Protocol Reference (SAML プロトコル リファレンス)](https://msdn.microsoft.com/library/azure/dn195591.aspx): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供することができます。
+- [SAML Protocol Reference (SAML プロトコル リファレンス)](https://msdn.microsoft.com/library/azure/dn195591.aspx): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できます。
 
 
 - [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx): OAuth 2.0 プロトコルを使用して、Azure Active Directory テナントの Web アプリケーションと Web API へのアクセスを承認できます。
@@ -128,4 +133,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

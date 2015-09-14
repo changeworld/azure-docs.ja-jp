@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="ホスト名の表示と変更"
-	description="説明"
+   pageTitle="ホスト名の表示と変更 | Microsoft Azure"
+	description="名前解決のため、Azure Virtual Machines のホスト名、および Web ロールと Worker ロールを表示、変更する方法"
 	services="virtual-network"
 	documentationCenter="na"
 	authors="joaoma"
@@ -47,7 +47,7 @@ Azure ポータルのサービスの **[構成]** ページから、デプロイ
 
 REST クライアントから次の手順を実行します。
 
-1. Azure ポータルに接続するためのクライアント証明書があることを確認します。クライアント証明書を取得するには、「How to: Download and Import Publish Settings and Subscription Information (方法: 発行の設定とサブスクリプション情報をダウンロードしてインポートする)」 (https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)) の手順に従ってください。
+1. Azure ポータルに接続するためのクライアント証明書があることを確認します。クライアント証明書を取得するには、「[How to: Download and Import Publish Settings and Subscription Information (方法: 発行の設定とサブスクリプション情報をダウンロードしてインポートする)](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)」 の手順に従ってください。
 
 1. x-ms-version という名前のヘッダー エントリの値を 2013-11-01 に設定します。
 
@@ -67,8 +67,8 @@ REST クライアントから次の手順を実行します。
 
 [Azure サービス構成スキーマ (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
-[Azure 仮想ネットワークの構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
 
 [ネットワーク構成ファイルを使用した DNS 設定の指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

@@ -1,28 +1,32 @@
 <properties
    pageTitle="Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する"
-   description="Azure RemoteApp を使用して、ユーザーと任意の Windows アプリを共有する方法について説明します。"
-   services="remoteapp"
-   documentationCenter=""
-   authors="lizap"
-   manager="mbaldwin"
-   editor=""/>
+	description="Azure RemoteApp を使用して、ユーザーと任意の Windows アプリを共有する方法について説明します。"
+	services="remoteapp"
+	documentationCenter=""
+	authors="lizap"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
    ms.service="remoteapp"
-   ms.devlang="na"
-   ms.topic="hero-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="compute"
-   ms.date="08/10/2015"
-   ms.author="elizapo"/>
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.tgt_pltfrm="na"
+	ms.workload="compute"
+	ms.date="09/02/2015"
+	ms.author="elizapo"/>
 
 # Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
 
-このチュートリアルでは、Windows アプリケーションを、どこでどんなデバイスを使っていても、今すぐ実行できるようにする方法を紹介します。Internet Explorer 6 であっても、10 年も昔に作成したカスタム アプリケーションであっても、Office アプリであっても、ユーザーは、それらの少数のアプリケーションのために特定のオペレーティング システム (Windows XP など) を使い続ける必要はもうありません。
+Azure RemoteApp を使用すると、Windows アプリケーションを、どこでどんなデバイスを使っていても、今すぐ実行できるようなります。Internet Explorer 6 であっても、10 年も昔に作成したカスタム アプリケーションであっても、Office アプリであっても、ユーザーは、それらの少数のアプリケーションのために特定のオペレーティング システム (Windows XP など) を使い続ける必要はもうありません。
 
 Azure RemoteApp を使用すれば、ユーザーも、自分の Android や Apple デバイスを使用して Windows (または Windows Phone) でするのと同じエクスペリエンスが得られます。これは、インターネット接続のあるどこからでもユーザーがアクセスできる Azure 上の Windows 仮想マシンに Windows アプリケーションがホストされることにより、実現されます。
 
-このチュートリアルでは、すべてのユーザーと Access を共有します。Access はデータベースです。せっかくのデータベースが役立つように、ユーザーが Access データ共有にアクセスできるようにするいくつかの手順を実行しましょう。
+これを行う方法の例をご確認ください。
+
+この記事では、すべてのユーザーと Access を共有します。ただし、実際には任意のアプリを使用できます。Windows Server 2012 R2 コンピューターにインストールできるアプリであれば、次の手順に従ってアプリを共有できます。アプリが動作することを確認するには、[アプリの要件](remoteapp-appreqs)に関するページを参照してください。
+
+Access はデータベースです。せっかくのデータベースが役立つように、ユーザーが Access データ共有にアクセスできるようにするいくつかの手順を実行しましょう。使用するアプリがデータベースではない場合や、ユーザーがファイル共有にアクセスできるようにする必要がない場合、このチュートリアルではこれらの手順をスキップできます。
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
@@ -31,12 +35,12 @@ Azure RemoteApp を使用すれば、ユーザーも、自分の Android や App
 
 コレクションの作成から始めましょう。コレクションは、アプリとユーザーのコンテナーとして機能します。各コレクションは、1 つのイメージに基づいており、独自に作成するか、サブスクリプションで提供されるものを使用することができます。このチュートリアルでは、共有しようとしているアプリを含む、Office 2013 試用版のイメージを使用します。
 
-1. Azure 管理ポータルの左側のナビゲーションで、Azure RemoteApp が表示されるまで下へスクロールします。そのページを開きます。
+1. Azure ポータルの左側のナビゲーション ツリーで、RemoteApp が表示されるまで下へスクロールします。そのページを開きます。
 2. **[RemoteApp コレクションを作成する]** をクリックします。
 3. **[簡易作成]** をクリックし、コレクションの名前を入力します。
 4. コレクションの作成に使用するリージョンを選択します。最適に利用するには、ユーザーがアプリにアクセスする場所と地理的に最も近いリージョンを選択します。一例として、このチュートリアルでは、ユーザーがワシントン州レドモンドにいるものと想定しましょう。最も近い Azure リージョンは **米国西部**です。
 5. 使用する課金プランを選択します。Basic 課金プランでは、1 つの大型 Azure VM に 16 人のユーザーが設定され、Standard 課金プランの場合は 10 人のユーザーが設定されます。一般的に、Basic プランはデータ エントリ型のワークフローに適しています。Office のような生産性アプリの場合は、Standard プランが適しています。
-6. 最後に、Office 2013 Professional のイメージを選択します。このイメージには、Office 2013 アプリが含まれています。  
+6. 最後に、Office 2013 Professional のイメージを選択します。このイメージには、Office 2013 アプリが含まれています。確認 - このイメージは、評価版のコレクションおよび POC にのみ有効です。このイメージは実稼働環境コレクションでは使用できません。
 7. ここで、**[RemoteApp コレクションの作成]** をクリックします。
 
 ![RemoteApp でのクラウド コレクションの作成](./media/remoteapp-anyapp/ra-anyappcreatecollection.png)
@@ -51,7 +55,6 @@ Azure RemoteApp を使用すれば、ユーザーも、自分の Android や App
 
 コレクションの作成時に、Azure RemoteApp のノードから移動している場合は、まず Azure ホーム ページから元の場所に戻ります。
 
-1. 左側のナビゲーションにある **[RemoteApp]** をクリックします。
 2. 作成しておいたコレクションをクリックし、追加のオプションにアクセスして、コレクションを構成します。
 ![新規の RemoteApp クラウド コレクション](./media/remoteapp-anyapp/ra-anyappcollection.png)
 3. **[発行]** タブの画面の下部にある **[発行]** をクリックしてから、**[スタート メニュー プログラムの発行]** をクリックします。
@@ -61,6 +64,7 @@ Azure RemoteApp を使用すれば、ユーザーも、自分の Android や App
 
 
 1. アプリの発行が完了したら、**[ユーザー アクセス]** タブに移動して、アプリにアクセスする必要があるユーザーを全員追加します。ユーザーのユーザー名 (電子メール アドレス) を入力して、**[保存]** をクリックします。
+
 ![RemoteApp へのユーザーの追加](./media/remoteapp-anyapp/ra-anyappaddusers.png)
 
 
@@ -87,7 +91,7 @@ Azure RemoteApp を使用すれば、ユーザーも、自分の Android や App
         $ctx=New-AzureStorageContext <account name> <account key>
     	$s = New-AzureStorageShare <share name> -Context $ctx
 
-	So for our share, these are the cmdlets we run:
+	このチュートリアルの共有で実行するコマンドレットは次のとおりです。
 
 	    $ctx=New-AzureStorageContext accessstorage <key>
     	$s = New-AzureStorageShare <share name> -Context $ctx
@@ -113,4 +117,4 @@ Azure RemoteApp を使用すれば、ユーザーも、自分の Android や App
 
 <!--Image references-->
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

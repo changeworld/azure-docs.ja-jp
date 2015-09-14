@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure の SQL Server 内のデータのサンプリング | Microsoft Azure" 
-	description="Azure の SQL Server のデータのサンプリング" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="fashah" 
-	manager="paulettm" 
-	editor="cgronlun" />
+	pageTitle="Azure の SQL Server 内のデータのサンプリング | Microsoft Azure"
+	description="Azure の SQL Server のデータのサンプリング"
+	services="machine-learning"
+	documentationCenter=""
+	authors="fashah"
+	manager="paulettm"
+	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/29/2015" 
-	ms.author="fashah;garye;bradsev" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
+	ms.author="fashah;garye;bradsev"/>
 
 #<a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
 
@@ -44,8 +44,7 @@
 	FROM <table_name> 
 	TABLESAMPLE (10 PERCENT)
 
-**注**
-> このサンプリングされたデータを新しいテーブルに格納すると、このデータから探索および特徴の生成を行えます。
+>[AZURE.NOTE]このサンプリングされたデータを新しいテーブルに格納すると、このデータから探索および特徴の生成を行えます。
 
 
 ###<a name="sql-aml"></a>Azure Machine Learning への接続
@@ -114,4 +113,4 @@ Advanced Analytics Process and Technology (ADAPT) とパブリック データ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

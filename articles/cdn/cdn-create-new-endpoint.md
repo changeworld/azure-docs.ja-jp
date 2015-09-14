@@ -1,19 +1,19 @@
 <properties 
-	 pageTitle="Azure の Content Delivery Network (CDN) を有効にする方法" 
-	 description="このトピックでは、Azure の Content Delivery Network (CDN) を有効にする方法を説明します。" 
-	 services="cdn" 
-	 documentationCenter="" 
-	 authors="zhangmanling" 
-	 manager="dwrede" 
-	 editor=""/>
+	 pageTitle="Azure の Content Delivery Network (CDN) を有効にする方法"
+	description="このトピックでは、Azure の Content Delivery Network (CDN) を有効にする方法を説明します。"
+	services="cdn"
+	documentationCenter=""
+	authors="zhangmanling"
+	manager="dwrede"
+	editor=""/>
 <tags 
-	 ms.service="cdn" 
-	 ms.workload="media" 
-	 ms.tgt_pltfrm="na" 
-	 ms.devlang="na" 
-	 ms.topic="article" 
-	 ms.date="06/03/2015" 
-	 ms.author="mazha"/>
+	 ms.service="cdn"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
+	ms.author="mazha"/>
 
 
 
@@ -54,4 +54,4 @@ Azure 管理ポータルを使用して送信元の CDN を有効にできます
 [customorigin]: ./media/cdn-create-new-endpoint/cdn-custom-origin.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

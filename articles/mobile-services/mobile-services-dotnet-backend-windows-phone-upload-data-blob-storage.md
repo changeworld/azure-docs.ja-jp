@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Mobile Services を使用したイメージの BLOB ストレージへのアップロード (Windows Phone) | Microsoft Azure" 
-	description="Mobile Services を使用して画像を Azure BLOB ストレージにアップロードする方法を説明します。" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	services="mobile-services,storage" 
-	manager="dwrede" 
+<properties
+	pageTitle="Mobile Services を使用したイメージの BLOB ストレージへのアップロード (Windows Phone) | Microsoft Azure"
+	description="Mobile Services を使用して画像を Azure BLOB ストレージにアップロードする方法を説明します。"
+	documentationCenter="windows"
+	authors="ggailey777"
+	services="mobile-services,storage"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="06/04/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="glenga"/>
 
 # モバイル サービスを使用した Azure ストレージへのイメージのアップロード
@@ -27,7 +27,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 
 このチュートリアルでは、Mobile Services により生成された SAS を使用して、写真を撮影して画像を Azure にアップロードする機能を、[GetStartedWithData サンプル アプリケーション プロジェクト](mobile-services-dotnet-backend-windows-phone-get-started-data.md)に追加します。
 
-##前提条件 
+##前提条件
 
 このチュートリアルには、次のものが必要です。
 
@@ -54,7 +54,7 @@ SAS を使用してアプリケーションから BLOB ストレージにイメ�
   	これにより、Azure のストレージ サービス用のクライアント ライブラリがプロジェクトに追加されます。
 
 [AZURE.INCLUDE [mobile-services-windows-phone-upload-to-blob-storage](../../includes/mobile-services-windows-phone-upload-to-blob-storage.md)]
- 
+
 <!-- Anchors. -->
 [Install the Storage Client library]: #install-storage-client
 [Update the client app to capture images]: #add-select-images
@@ -78,7 +78,4 @@ SAS を使用してアプリケーションから BLOB ストレージにイメ�
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [Windows Phone SDK 8.0]: http://www.microsoft.com/download/details.aspx?id=35471
 
-
- 
-
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="Service Fabric によって提供される既定の通信スタック"
-   description="この記事では、サービスとクライアントが通信するために Reliable Services のフレームワークによって提供される既定の通信スタックについて説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="BharatNarasimman"
-   manager="timlt"
-   editor=""/>
+	description="この記事では、サービスとクライアントが通信するために Reliable Services のフレームワークによって提供される既定の通信スタックについて説明します。"
+	services="service-fabric"
+	documentationCenter=".net"
+	authors="BharatNarasimman"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="required"
-   ms.date="04/13/2015"
-   ms.author="bharatn@microsoft.com"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="required"
+	ms.date="08/27/2015"
+	ms.author="bharatn@microsoft.com"/>
 
 # Reliable Services フレームワークによって提供される既定の通信スタック
 通信スタック (WebAPI、WCF など) の特定の実装に拘束されないサービス作成者向けに、このフレームワークでは、サービスとクライアント間の通信を設定するために使用できるクライアントとサービス側の通信部分を提供します。
@@ -107,4 +107,4 @@ Console.WriteLine("Greeting is {0}", message.Content);
 >[AZURE.NOTE]通信フレームワークは、サービスでスローされた例外のクライアントへの伝播を担当します。そのため、ServiceProxy を使用したクライアントでの例外処理ロジックでは、サービスがスローする可能性がある例外を直接処理できます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

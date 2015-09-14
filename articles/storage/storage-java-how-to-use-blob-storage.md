@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/03/2015"
+	ms.date="08/31/2015"
 	ms.author="robmcm"/>
 
 # Java から BLOB ストレージを使用する方法
@@ -253,12 +253,12 @@ BLOB を削除するには、BLOB の参照を取得し、**deleteIfExists** を
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先をご覧ください。
 
-- [Azure Storage SDK for Java]
-- [Azure ストレージ クライアント SDK リファレンス]
-- [Azure Storage REST API]
-- [Azure のストレージ チーム ブログ]
+- [Azure Storage SDK for Java][]
+- [Azure ストレージ クライアント SDK リファレンス][]
+- [Azure Storage REST API][]
+- [Azure のストレージ チーム ブログ][]
 
-[Azure SDK for Java]: http://azure.microsoft.com/develop/java/
+[Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android に関するページ]: https://github.com/azure/azure-storage-android
 [Azure Storage クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
@@ -266,4 +266,4 @@ BLOB を削除するには、BLOB の参照を取得し、**deleteIfExists** を
 [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

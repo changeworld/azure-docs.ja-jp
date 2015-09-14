@@ -1,20 +1,20 @@
 <properties
    pageTitle="Reliable Services API によって提供される WCF ベースの通信スタック"
-   description="この記事では、Reliable Service の API によって提供される WCF ベースの通信スタックについて説明します。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="BharatNarasimman"
-   manager="vipulm"
-   editor=""/>
+	description="この記事では、Reliable Service の API によって提供される WCF ベースの通信スタックについて説明します。"
+	services="service-fabric"
+	documentationCenter=".net"
+	authors="BharatNarasimman"
+	manager="vipulm"
+	editor=""/>
 
 <tags
    ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="required"
-   ms.date="04/13/2015"
-   ms.author="bharatn@microsoft.com"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="required"
+	ms.date="08/27/2015"
+	ms.author="bharatn@microsoft.com"/>
 
 # Reliable Services の WCF ベースの通信スタック
 Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを決定できます。[`CreateCommunicationListener`](../service-fabric-reliable-service-communication.md) メソッドから返される `ICommunicationListener` を介して、選択した通信スタックをプラグインできます。フレームワークでは、WCF ベースの通信を使用したいと考えるサービス作成者に、WCF ベースの通信スタックの実装を提供します。
@@ -114,4 +114,4 @@ var result = calculatorServicePartitionClient.InvokeWithRetryAsync(
 ```
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

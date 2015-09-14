@@ -1,19 +1,19 @@
 <properties
     pageTitle="Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法"
-    description="Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法について説明します。"
-	services="storage" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
-	editor="jimbe" />
+	description="Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法について説明します。"
+	services="storage"
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor="jimbe"/>
 
 <tags
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="06/03/2015" 
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="v-dedomi"/>
 
 #Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法
@@ -213,4 +213,4 @@ Hudson は、前のセクションで作成したテンプレートを使用し�
 
   
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア"
-   description="StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているトランシーバー、ケーブル、およびスイッチについて説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+   pageTitle="StorSimple 10 GbE のハードウェアのインターフェイス | Microsoft Azure"
+	description="StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされている小型フォーム ファクターのプラグ可能な (SFP) トランシーバー、ケーブル、およびスイッチについて説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/17/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/27/2015"
+	ms.author="alkohli"/>
 
 # StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア
 
@@ -112,4 +112,4 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 
 [StorSimple ハードウェア コンポーネントと状態の詳細](storsimple-monitor-hardware-status.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

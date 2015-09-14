@@ -3,9 +3,9 @@
 	description="次のチュートリアルに従って、Xamarin Android 開発用の Azure Mobile Apps を使用します"
 	services="app-service\mobile"
 	documentationCenter="xamarin"
-	authors="normesta"
+	authors="wesmc7777"
 	manager="dwrede"
-	editor="" />
+	editor=""/>
 
 <tags
 	ms.service="app-service-mobile"
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
 	ms.date="08/12/2015"
-	ms.author="normesta" />
+	ms.author="normesta"/>
 
 #Xamarin.Android アプリの作成
 
@@ -101,4 +101,4 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
  
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

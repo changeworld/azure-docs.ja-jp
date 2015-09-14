@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="08/25/2015"
+	ms.date="09/03/2015"
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の構成方法
@@ -54,6 +54,12 @@
 新しいキャッシュでは、SSL を使用しないアクセスが既定で無効になっています。非 SSL ポートを有効にするには、**[アクセス ポート]** ブレードをクリックし、**[いいえ]** をクリックします。
 
 ![Redis Cache Access Ports](./media/cache-configure/IC808316.png)
+
+## [価格レベル]
+
+キャッシュの価格レベルを表示または変更するには、**[価格レベル]** をクリックします。スケーリングの詳細については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」を参照してください。
+
+![Redis Cache 価格レベル](./media/cache-configure/pricing-tier.png)
 
 ## 診断
 
@@ -115,12 +121,22 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 |設定|既定値|説明|
 |---|---|---|
 |databases|16|既定のデータベースは DB 0 です。接続を使用して、接続ごとに異なるデータベースを選択できます。GetDataBase(dbid) の dbid は 0 ～ 15 の数値です。|
-|maxclients|10,000|これは、同時に接続が許可されているクライアントの最大数です。制限に達すると、Redis はすべての新しい接続を終了し、エラー 'max number of clients reached' を送信します。|
+|maxclients|料金レベルによって異なります<sup>1</sup>|これは、同時に接続が許可されているクライアントの最大数です。制限に達すると、Redis はすべての新しい接続を終了し、エラー 'max number of clients reached' を送信します。|
 |maxmemory-policy|volatile-lru|Maxmemory ポリシーは、maxmemory (キャッシュ作成時に選択したキャッシュのサイズ) に達したときに、Redis が削除する項目を選択する方法についての設定です。Azure Redis Cache の既定の設定は volatile-lru で、LRU アルゴリズムを使用して有効期限が設定されたキーを削除します。この設定は、プレビュー ポータルで構成できます。詳細については、「[maxmemory-policy と maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)」を参照してください。|
 |maxmemory-samples|3|LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、(メモリを節約するための) 近似アルゴリズムです。そのため、サンプル サイズも選択して確認できます。既定の Redis インスタンスの場合、キーを 3 つ確認し、直近の使用頻度が比較的低い ものを 1 つ選択します。|
 |lua-time-limit|5,000|Lua スクリプトの最大実行時間 (ミリ秒)。最大実行時間に達した場合は、Redis は、最大許容時間の後もスクリプトが実行中であることをログに記録し、クエリに対してエラーを知らせる応答を開始します。|
 |lua-event-limit|500|これは、スクリプト イベント キューの最大サイズです。|
 |client-output-buffer-limit normalclient-output-buffer-limit pubsub|0 0 032mb 8mb 60|このクライアントの出力バッファー制限を使用して、なんらかの理由 (一般的には、パブリッシャーがメッセージを作成するのと同じ速度で Pub/Sub クライアントがメッセージを利用できないという理由) により、サーバーから十分な速度でデータを読み込んでいないクライアントを強制的に切断することができます。詳細については、[http://redis.io/topics/clients](http://redis.io/topics/clients) を参照してください。|
+
+<sup>1</sup>`maxclients` は Azure Redis Cache の価格レベルによって異なります。
+
+-	C0 (250 MB) キャッシュ - 最大 256 接続
+-	C1 (1 GB) キャッシュ - 最大 1,000 接続
+-	C2 (2.5 GB) キャッシュ - 最大 2,000 接続
+-	C3 (6 GB) キャッシュ - 最大 5,000 接続
+-	C4 (13 GB) キャッシュ - 最大 10,000 接続
+-	C5 (26 GB) キャッシュ - 最大 15,000 接続
+-	C6 (53 GB) キャッシュ - 最大 20,000 接続
 
 ## Azure Redis Cache でサポートされない Redis コマンド
 
@@ -152,6 +168,6 @@ Redis コマンドの詳細については、[http://redis.io/commands](http://r
 Azure Redis Cache で無効な Redis コマンドの一覧については、前の「[Azure Redis Cache でサポートされない Redis コマンド](#redis-commands-not-supported-in-azure-redis-cache)」セクションを参照してください。Redis コマンドの詳細については、[http://redis.io/commands](http://redis.io/commands) を参照してください。
 
 ## 次のステップ
--	Redis コマンドの使用の詳細については、「[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)」を参照してください。
+-	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

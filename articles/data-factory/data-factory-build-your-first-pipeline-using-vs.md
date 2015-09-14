@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Data Factory を使用した初めてのパイプラインの作成"
-	description="このチュートリアルでは、Azure HDInsight を使用してデータを変換するサンプル データ パイプラインを、Visual Studio を使用して作成する方法を示します。"
+	pageTitle="Visual Studio を使用した初めての Azure Data Factory パイプラインの作成"
+	description="このチュートリアルでは、Visual Studio を使用して、サンプルの Azure Data Factory パイプラインを作成します。"
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
@@ -12,11 +12,11 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
+	ms.topic="article"
 	ms.date="08/18/2015"
 	ms.author="spelluru"/>
 
-# Azure Data Factory を使用した初めてのパイプラインの作成
+# Visual Studio を使用した初めての Azure Data Factory パイプラインの作成
 > [AZURE.SELECTOR]
 - [Tutorial Overview](data-factory-build-your-first-pipeline.md)
 - [Using Data Factory Editor](data-factory-build-your-first-pipeline-using-editor.md)
@@ -57,7 +57,7 @@
 5.	**[新しいデータ ファクトリ]** ブレードで **[作成]** をクリックします。
 6.	次のように、Azure プレビュー ポータルの**スタート画面**にデータ ファクトリを作成中であることが示されます。   
 
-	![データ ファクトリを作成中の状態](./media/data-factory-build-your-first-pipeline-using-vs/creating-data-factory-image.png)
+	![Data factory を作成中の状態](./media/data-factory-build-your-first-pipeline-using-vs/creating-data-factory-image.png)
 7. ご利用ありがとうございます。 これで、最初のデータ ファクトリが正常に作成されました。データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。 	
 
 	![Data Factory blade](./media/data-factory-build-your-first-pipeline-using-vs/data-factory-blade.png)
@@ -251,5 +251,7 @@ Azure プレビュー ポータルを使用して、このチュートリアル�
 ## 次のステップ
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-get-started.md)」をご覧ください。
   
+## フィードバックの送信
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-vs.md)でフィードバックをお寄せください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="07/08/2015"
+	ms.date="08/25/2015"
 	ms.author="heidist"/>
 
 # Azure Search で Chrome Postman を使用する方法 #
@@ -108,7 +108,7 @@ Postman を構成するのには、次の手順を実行します。
 
 REST API のドキュメントは、[MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) にあります。
 
-また、[ビデオとチュートリアルの一覧](https://msdn.microsoft.com/library/azure/dn818681.aspx)にもアクセスできます。
+また、[ビデオとチュートリアルの一覧](search-video-demo-tutorial-list.md)にもアクセスできます。
 
 <!-- Image References -->
 [1]: ./media/search-chrome-postman/full_postman_client.png
@@ -118,4 +118,4 @@ REST API のドキュメントは、[MSDN](https://msdn.microsoft.com/library/az
 [5]: ./media/search-chrome-postman/upload_documents.png
 [6]: ./media/search-chrome-postman/query.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

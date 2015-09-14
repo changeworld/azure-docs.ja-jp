@@ -105,6 +105,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         );
 
 8. **リンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
+
 	> [AZURE.NOTE]**ConnectionString** には、Azure ストレージ アカウントの**アカウント名**と**アカウント キー**を使用します。
 
         // create a linked service
@@ -117,7 +118,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                     Name = "LinkedService-AzureStorage",
                     Properties = new LinkedServiceProperties
                     (
-                        new AzureStorageLinkedService("DefaultEndpointsProtocol=https;AccountName=spestore;AccountKey=4VwviDOId32nYKABQy9NHsMG0vC/CXx9iuR02HJdGL+0kieqHqbT3ap+bM/c+aGnGoA7SqkwNFq90hqV1bmV0w==")
+                        new AzureStorageLinkedService("DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>")
                     )
                 }
             }
@@ -335,6 +336,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         Console.WriteLine("Getting run details of a data slice");
 
 		// give it a few minutes for the output slice to be ready
+        Console.WriteLine("\nGive it a few minutes for the output slice to be ready and press any key.");
         Console.ReadKey();
 
         var datasliceRunListResponse = client.DataSliceRuns.List(
@@ -392,4 +394,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Government Portal でのオンプレミスの StorSimple デバイスのデプロイ | Microsoft Azure"
-	description="Azure Government Portal で StorSimple Update 1 のデバイスとサービスをデプロイするための手順とベスト プラクティスです。"
+   pageTitle="Government Portal での StorSimple デバイスのデプロイ | Microsoft Azure"
+	description="Azure Government Portal で StorSimple Update 1 のデバイスとサービスをデプロイするための手順とベスト プラクティスを説明します。"
 	services="storsimple"
 	documentationCenter="NA"
 	authors="SharS"
@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="TBD"
-	ms.date="08/21/2015"
+	ms.date="09/02/2015"
 	ms.author="v-sharos"/>
 
 # Government Portal でのオンプレミスの StorSimple デバイスのデプロイ
@@ -277,4 +277,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="SQL Database のユーザー エラーの復旧" 
-   description="Azure SQL Database の特定時点に復元 (PITR) 機能を使用して、ユーザー エラー、偶発的なデータの破損、または削除済みデータベースを復旧する方法について説明します。" 
-   services="sql-database" 
-   documentationCenter="" 
-   authors="elfisher" 
-   manager="jeffreyg" 
-   editor="monicar"/>
+   pageTitle="SQL Database のユーザー エラーの復旧"
+	description="Azure SQL Database の特定時点に復元 (PITR) 機能を使用して、ユーザー エラー、偶発的なデータの破損、または削除済みデータベースを復旧する方法について説明します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="elfisher"
+	manager="jeffreyg"
+	editor="monicar"/>
 
 <tags
    ms.service="sql-database"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-management" 
-   ms.date="07/23/2015"
-   ms.author="elfish"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-management"
+	ms.date="07/23/2015"
+	ms.author="elfish"/>
 
 # ユーザー エラーからの Azure SQL Database の復旧
 
@@ -31,6 +31,8 @@ Azure SQL Database では、常に新しいデータベースに復元します�
 
 Basic データベースの保持期間は 7 日間、Standard データベースの保持期間は 14 日間、Premium データベースの保持期間は 35 日です。データベースの保持期間の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをお読みください。
 
+> [AZURE.NOTE]データベースを復元すると、新しいデータベースが作成されます。復元先サーバーに新しいデータベース用の十分な DTU 容量があることが重要です。このクォータの増加を要求する場合は、[サポートに連絡](http://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/)してください。
+
 ###Azure ポータル
 1. [Azure ポータル](https://portal.Azure.com)にログインします。
 2. 画面の左側にある **[参照]** をクリックし、**[SQL データベース]** を選択します。
@@ -43,7 +45,7 @@ Basic データベースの保持期間は 7 日間、Standard データベー�
 ###PowerShell
 PowerShell を使用して、プログラムでデータベースの復元を実行します。
 
-ポイントインタイム リストア (PITR) 機能を使用してデータベースを復元するには、[Start-AzureSqlDatabaseRestore](https://msdn.microsoft.com/library/dn720218.aspx?f=255&MSPPError=-2147217396) コマンドレットを使用します。手順の詳細については、[方法を示したビデオ](http://azure.microsoft.com/documentation/videos/restore-a-sql-database-using-point-in-time-restore-with-microsoft-azure-powershell/)をご覧ください。
+特定の時点にポイントインタイム リストア (PITR) 機能を使用してデータベースを復元するには、[Start-AzureSqlDatabaseRestore](https://msdn.microsoft.com/library/dn720218.aspx?f=255&MSPPError=-2147217396) コマンドレットを使用します。手順の詳細については、[方法を示したビデオ](http://azure.microsoft.com/documentation/videos/restore-a-sql-database-using-point-in-time-restore-with-microsoft-azure-powershell/)をご覧ください。
 
 		$Database = Get-AzureSqlDatabase -ServerName "YourServerName" –DatabaseName “YourDatabaseName”
 		$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceDatabase $Database –TargetDatabaseName “NewDatabaseName” –PointInTime “2015-01-01 06:00:00”
@@ -66,6 +68,8 @@ PowerShell を使用して、プログラムでデータベースの復元を実
 データベースが削除された場合、Azure SQL Database では、削除されたデータベースを削除された時点の状態に復元できます。Azure SQL Database では、データベースの保持期間にわたり、削除されたデータベースのバックアップを格納します。
 
 削除されたデータベースの保持期間は、データベースのサービス階層に基づく日数とデータベースが存在していた日数のどちらか短い方になります。データベースの保持期間の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをお読みください。
+
+> [AZURE.NOTE]データベースを復元すると、新しいデータベースが作成されます。復元先サーバーに新しいデータベース用の十分な DTU 容量があることが重要です。このクォータの増加を要求する場合は、[サポートに連絡](http://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/)してください。
 
 ###Azure ポータル
 1. [Azure ポータル](https://portal.Azure.com)にログインします。
@@ -109,4 +113,4 @@ PowerShell を使用して、プログラムでデータベースの復元を実
 復元が終了したら、[復旧データベースの最終処理](sql-database-recovered-finalize.md)に関するガイドに従って、復旧したデータベースを構成できます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,25 +1,23 @@
 <properties 
    pageTitle="StorSimple デバイスの CHAP の構成 | Microsoft Azure"
-   description="StorSimple デバイスにチャレンジ ハンドシェイク認証プロトコルを構成する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+	description="StorSimple デバイスにチャレンジ ハンドシェイク認証プロトコル (CHAP) を構成する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="TBD"
-   ms.date="08/11/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="TBD"
+	ms.date="09/01/2015"
+	ms.author="alkohli"/>
 
 # StorSimple デバイスの CHAP の構成
 
-このチュートリアルでは、StorSimple デバイスの CHAP を構成する方法について説明します。
-
-CHAP は、チャレンジ ハンドシェイク認証プロトコルを意味します。これは、サーバーがリモート クライアントの ID を検証する際に使用する認証スキームです。この検証は、共有パスワードまたはシークレットに基づいて行われます。
+このチュートリアルでは、StorSimple デバイスの CHAP を構成する方法について説明します。CHAP は、チャレンジ ハンドシェイク認証プロトコルを意味します。これは、サーバーがリモート クライアントの ID を検証する際に使用する認証スキームです。この検証は、共有パスワードまたはシークレットに基づいて行われます。
 
 CHAP には、単一方向 (一方向 CHAP) と双方向 (相互 CHAP) とがあります。一方向 CHAP は、ターゲットがイニシエーターを認証する際に使用されます。一方、相互 CHAP やリバース CHAP では、ターゲットがイニシエーターを認証した後、イニシエーターがターゲットを認証します。イニシエーターの認証は、ターゲットの認証なしに実装できますが、ターゲットの認証は、イニシエーターも実装されている場合にのみ実装できます。
 
@@ -59,7 +57,7 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
 
 2. **[iSCSI イニシエーターのプロパティ]** ウィンドウで、次の手順を実行します。
 													
-	1. **[探索]**タブをクリックします。
+	1. **[探索]** タブをクリックします。
 
 		![iSCSI イニシエーターのプロパティ](./media/storsimple-configure-chap/IC740944.png)
 
@@ -190,6 +188,6 @@ CHAP の構成が正しくない場合、**"認証エラー"** というエラ�
 
 ## 次のステップ
 
-[StorSimple のセキュリティ](storsimple-security.md)の詳細を確認してください。
+[StorSimple のセキュリティ](storsimple-security.md)の詳細を確認します。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

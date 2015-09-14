@@ -1,19 +1,19 @@
 <properties 
-	 pageTitle="カスタム ドメインにコンテンツ配信ネットワーク (CDN) コンテンツをマップする方法" 
-	 description="このトピックでは、CDN コンテンツをカスタム ドメインにマップする方法を示します。" 
-	 services="cdn" 
-	 documentationCenter="" 
-	 authors="zhangmanling" 
-	 manager="dwrede" 
-	 editor=""/>
+	 pageTitle="カスタム ドメインにコンテンツ配信ネットワーク (CDN) コンテンツをマップする方法"
+	description="このトピックでは、CDN コンテンツをカスタム ドメインにマップする方法を示します。"
+	services="cdn"
+	documentationCenter=""
+	authors="zhangmanling"
+	manager="dwrede"
+	editor=""/>
 <tags 
-	 ms.service="cdn" 
-	 ms.workload="media" 
-	 ms.tgt_pltfrm="na" 
-	 ms.devlang="na" 
-	 ms.topic="article" 
-	 ms.date="07/07/2015" 
-	 ms.author="mazha"/>
+	 ms.service="cdn"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
+	ms.author="mazha"/>
 
 #Content Delivery Network (CDN) エンドポイントにカスタム ドメインをマップする方法
 
@@ -90,4 +90,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

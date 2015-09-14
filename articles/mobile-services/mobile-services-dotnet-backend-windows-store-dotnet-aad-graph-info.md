@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure Active Directory Graph 情報へのアクセス (Windows ストア) | Microsoft Azure" 
-	description="Windows ストア アプリケーションで、Graph API を使用して Azure Active Directory の情報にアクセスする方法について説明します。" 
-	documentationCenter="windows" 
-	authors="wesmc7777" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="Azure Active Directory Graph 情報へのアクセス (Windows ストア) | Microsoft Azure"
+	description="Windows ストア アプリケーションで、Graph API を使用して Azure Active Directory の情報にアクセスする方法について説明します。"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-multiple" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="06/09/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="wesmc"/>
 
 # Azure Active Directory Graph 情報へのアクセス
@@ -34,7 +34,7 @@ Azure AD Graph API の詳細については、[Azure Active Directory Graph Team
 
 
 
-##前提条件 
+##前提条件
 
 このチュートリアルの前に、次の Mobile Services のチュートリアルを完了している必要があります。
 
@@ -84,7 +84,7 @@ Mobile Services でカスタム API をまったく使用したことがない�
 	        public String postalCode { get; set; }
 	        public String mail { get; set; }
 	        public String[] otherMails { get; set; }
-	
+
 	        public override string ToString()
 	        {
 	            return "displayName : " + displayName + "\n" +
@@ -206,7 +206,7 @@ Mobile Services でカスタム API をまったく使用したことがない�
         }
 
 9. 変更内容を保存して、構文エラーがないことを確認するためにサービスを構築します。
-10. モバイル サービス プロジェクトを Azure アカウントに発行します。 
+10. モバイル サービス プロジェクトを Azure アカウントに発行します。
 
 
 ## <a name="update-app"></a>GetUserInfo を使用するようにアプリケーションを更新する
@@ -214,7 +214,7 @@ Mobile Services でカスタム API をまったく使用したことがない�
 このセクションでは、カスタム API を呼び出し、AAD からユーザーに関する追加情報を返すように、チュートリアル「[アプリへの認証の追加]」で実装した `AuthenticateAsync` メソッドを更新します。
 
 [AZURE.INCLUDE [mobile-services-aad-graph-info-update-app](../../includes/mobile-services-aad-graph-info-update-app.md)]
-  
+
 
 
 ## <a name="test-app"></a>アプリケーションをテストする
@@ -253,6 +253,5 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [Azure Active Directory Graph Team Blog (Azure Active Directory Graph チームのブログ)]: http://go.microsoft.com/fwlink/?LinkId=510536
 [Get User]: http://msdn.microsoft.com/library/azure/dn151678.aspx
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac.md
- 
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

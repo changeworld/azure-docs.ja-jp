@@ -10,10 +10,10 @@
 <tags
 	ms.service="cloud-services"
 	ms.workload="tbd"
-	ms.tgt_pltfrm="na" 
+	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="hero-article"
-	ms.date="06/01/2015"
+	ms.date="08/31/2015"
 	ms.author="mwasson"/>
 
 
@@ -41,7 +41,7 @@
 > [AZURE.NOTE]このチュートリアルは、Windows 上の Azure PowerShell を使用します。
 
 - [Azure Powershell](../install-configure-powershell.md) のインストールおよび構成。
-- [Azure SDK for .NET 2.5](http://go.microsoft.com/fwlink/?linkid=518091) のダウンロードおよびインストール。インストールのセットアップ時に、次のいずれかを選択します。
+- [Azure SDK for .NET 2.7](http://www.microsoft.com/ja-JP/download/details.aspx?id=48178) のダウンロードとインストール。インストールのセットアップ時に、次のいずれかを選択します。
     - MicrosoftAzureAuthoringTools
     - MicrosoftAzureComputeEmulator
 
@@ -53,7 +53,8 @@
 
 1. **Azure PowerShell** を管理者として実行します。(**[スタート] メニュー**または**スタート画面**で、**Azure PowerShell** を検索します。)
 
-2.  次の PowerShell コマンドレットを入力してプロジェクトを作成します。
+2.  サブスクリプションに [PowerShell を接続します](powershell-install-configure.md#how-to-connect-to-your-subscription)。
+3.  次の PowerShell コマンドレットを入力してプロジェクトを作成します。
 
         New-AzureServiceProject helloworld
 
@@ -63,7 +64,7 @@
 
 	このコマンドレットによって作成されるファイルは、次のとおりです。
 
-	-   **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg** および **ServiceDefinition.csdef**: アプリケーションの発行に必要な Azure 固有のファイルです。詳細については、[Azure 対応のホストされるサービスの作成の概要][]に関するページを参照してください。
+	-   **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg** および **ServiceDefinition.csdef**: アプリケーションの発行に必要な Azure 固有のファイルです。詳細については、「[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)][]」を参照してください。
 
 	-   **deploymentSettings.json**: Azure PowerShell デプロイ コマンドレットによって使用されるローカル設定が格納されます。
 
@@ -78,7 +79,7 @@
 	> [AZURE.NOTE]ロール名を指定しない場合は、既定の名前が使用されます。名前は、`Add-AzureNodeWebRole MyRole` のように、最初のコマンドレットのパラメーターとして指定できます。
 
 
-Node.js アプリケーションは、**server.js** ファイルで定義され、このファイルは Web ロールのディレクトリにあります (既定では、**WebRole1**)。次にコードを示します。
+Node.js アプリは **server.js** ファイルで定義されます。このファイルは Web ロール用のディレクトリ (既定では **WebRole1**) に配置されます。次にコードを示します。
 
 	var http = require('http');
 	var port = process.env.port || 1337;
@@ -116,15 +117,16 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 
 ### アプリケーションの発行
 
-発行するには、**Publish-AzureServiceProject** コマンドレットを次のように実行します。
+発行するには、次のコマンドを実行します。
 
-    Publish-AzureServiceProject -ServiceName NodeHelloWorld -Location "East US" -Launch
+  	$ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))   
+	Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
 
-- **- ServiceName** は、このデプロイに使用する名前を指定します。必ず一意の名前を使用してください。一意でない場合は発行が失敗します。
+- **- ServiceName** は、このデプロイに使用する名前を指定します。必ず一意の名前を使用してください。一意でない場合は発行が失敗します。**Get-Date** コマンドは、名前を一意にする日付/時刻文字列を追加します。
 
 - **-Location** は、アプリケーションがホストされるデータ センターを指定します。使用可能なデータ センターの一覧を表示するには、**Get-azurelocation** コマンドレットを使用してください。
 
-- **-Launch** は、デプロイの完了後に、ブラウザー ウィンドウの起動とホストされるサービスへの移動を行います。
+- **-Launch** は、デプロイの完了後に、ブラウザー ウィンドウの起動とホステッド サービスへの移動を行います。
 
 発行が成功すると、次のような応答が表示されます。
 
@@ -145,7 +147,7 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 
 2.  **ストレージ アカウント**が存在しない場合は、新たに作成します。Azure ストレージ アカウントは、デプロイ中にアプリケーション パッケージを格納するために使用されます。デプロイが完了したら、ストレージ アカウントを削除してかまいません。
 
-3.  **クラウド サービス**が存在しない場合は、新たに作成します。**クラウド サービス**は、Azure にデプロイしたアプリケーションがホストされるコンテナーです。詳細については、[Azure 対応のホストされるサービスの作成の概要][]に関するページを参照してください。
+3.  **クラウド サービス**が存在しない場合は、新たに作成します。**クラウド サービス**は、Azure に展開したアプリケーションがホストされるコンテナーです。詳細については、「[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)][]」を参照してください。
 
 4.  デプロイ パッケージを Azure に発行します。
 
@@ -180,7 +182,7 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 [mkdir]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-6.png
 [nodejs.org]: http://nodejs.org/
 [A directory listing of the helloworld folder.]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-7.png
-[Azure 対応のホストされるサービスの作成の概要]: http://msdn.microsoft.com/library/windowsazure/jj155995.aspx
+[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: http://msdn.microsoft.com/library/windowsazure/jj155995.aspx
 [A directory listing of the WebRole1 folder]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-8.png
 [The menu displayed when right-clicking the Azure emulator from the task bar.]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-11.png
 [A browser window displaying http://www.windowsazure.com/ with the Free Trial link highlighted]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-12.png
@@ -192,4 +194,4 @@ Node.js アプリケーションは、**server.js** ファイルで定義され�
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

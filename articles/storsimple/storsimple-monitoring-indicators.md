@@ -1,21 +1,21 @@
 <properties 
-    pageTitle="StorSimple モニタリング インジケーター | Microsoft Azure" 
-    description="StorSimple デバイスの状態を監視するための LED とアラームについて説明します。"
-    services="storsimple"
-    documentationCenter="NA"
-    authors="SharS"
-    manager="adinah"
-    editor="" />
+    pageTitle="StorSimple モニタリング インジケーター | Microsoft Azure"
+	description="StorSimple デバイスの状態を監視するための発光ダイオード (LED) と可聴アラームについて説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
  <tags 
     ms.service="storsimple"
-    ms.devlang="NA"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"
-    ms.workload="TBD"
-    ms.date="08/14/2015"
-    ms.author="v-sharos" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/31/2015"
+	ms.author="v-sharos"/>
 
-# StorSimple モニタリング インジケーター   
+# StorSimple モニタリング インジケーターを使用してデバイスを管理する   
 
 ## 概要
 
@@ -33,9 +33,7 @@ StorSimple デバイスには、StorSimple デバイスの各モジュールお�
 
 前面パネルは*操作パネル* (*OPS パネル*) とも呼ばれ、システム内のすべてのモジュールの情報を集約した状態を表示します。StorSimple デバイスと EBOD エンクロージャの前面パネルはまったく同じです。次の図に前面パネルを示します。
 
-   ![][1]
-
-**図 1: デバイスのフロント パネル**
+   ![デバイスのフロント パネル][1]
  
 前面パネルには、次のインジケーターがあります。
 
@@ -72,10 +70,8 @@ StorSimple デバイスには、StorSimple デバイスの各モジュールお�
 
 StorSimple デバイスには、予備のバッテリを備えた 764W PCM モジュールが搭載されています。次の図に、デバイスの LED パネルを示します。
 
-   ![][2]
+   ![主エンクロージャの PCM LED][2]
 
-**図 2: 主エンクロージャの PCM LED**
- 
 LED の凡例:
 
 1. AC 電源障害
@@ -114,9 +110,7 @@ PCM の状態は、LED パネルに表示されます。デバイスの PCM LED 
 
 EBOD エンクロージャには、580W PCM が搭載されています。予備のバッテリはありません。EBOD エンクロージャの PCM パネルには、電源とファンに関してのみ、インジケーター LED があります。これらの LED を次の図に示します。
 
-   ![][3]
-
-**図 3: EBOD エンクロージャの PCM LED**
+   ![EBOD エンクロージャの PCM LED][3]
  
 次の表を参考にして、PCM の状態を判断してください。
 
@@ -138,10 +132,8 @@ StorSimple デバイスは、StorSimple デバイスのプライマリ コント
 ### プライマリ コントローラーの監視 LED
 次の図を参考にして、プライマリ コントローラーの LED を識別してください (位置を把握できるようにすべてのコンポーネントが示されています)。
 
-   ![][4]
+   ![LED の監視 - プライマリ コントローラー][4]
  
-**図 4: LED の監視 - プライマリ コントローラー**
-
 次の表を使用して、コントローラー モジュールが正常に動作しているかどうかを判断してください。
 
 ### コントローラー インジケーター LED  
@@ -162,10 +154,8 @@ StorSimple デバイスは、StorSimple デバイスのプライマリ コント
 
 各 6 Gb/秒 SAS EBOD コントローラーは、次の図に示すように、状態を示す LED を備えています。
 
-  ![][5]
+  ![LED の監視 - EBOD エンクロージャ][5]
 
-**図 5: LED の監視 - EBOD エンクロージャ**
- 
 次の表を使用して、EBOD コントローラー モジュールが正常に動作しているかどうかを判断してください。
 
 ### EBOD コントローラー モジュール インジケーター LED  
@@ -180,9 +170,7 @@ StorSimple デバイスには、主エンクロージャと EBOD エンクロー
 
 それぞれのディスク ドライブのドライブ状態は、各ドライブ キャリア モジュールの前面に取り付けられた緑色の LED とレッドアンバー色の LED で示されます。これらの LED を次の図に示します。
 
-  ![][6]
-
-**図 6: ディスク ドライブのLED**
+  ![ディスク ドライブの LED][6]
  
 次の表を参考にして、各ディスク ドライブの状態を判断してください。ディスク ドライブの状態は、前面パネルの全体の LED の状態に影響を及ぼします。
 
@@ -257,7 +245,7 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 
 ## 次のステップ
 
-[StorSimple ハードウェア コンポーネントと状態](storsimple-monitor-hardware-status.md)の詳細
+[StorSimple ハードウェア コンポーネントと状態](storsimple-monitor-hardware-status.md)の詳細を確認します。
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png
@@ -268,4 +256,4 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

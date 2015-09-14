@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="Azure Site Recovery: よく寄せられる質問" 
-	description="この記事では、Azure Site Recovery の使用に関してよく寄せられる質問について説明します。" 
-	services="site-recovery" 
+	pageTitle="Azure Site Recovery: よく寄せられる質問"
+	description="この記事では、Azure Site Recovery の使用に関してよく寄せられる質問について説明します。"
+	services="site-recovery"
 	documentationCenter=""
 	authors="csilauraa"
 	manager="jwhit"
@@ -11,9 +11,9 @@
 	ms.service="site-recovery"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.tgt_pltfrm="na" 
+	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="06/02/2015" 
+	ms.date="08/26/2015"
 	ms.author="lauraa"/>
 
 
@@ -42,6 +42,28 @@ ASR は ISO 27001:2005 の認証を受けており、HIPAA、DPA、および Fed
 
 はい。ASR ワークフローは、Rest API、PowerShell、または Azure SDK を使用して自動化できます。詳細については、「[Introducing PowerShell support for Azure Site Recovery (Azure Site Recovery 用の PowerShell サポート概要)](http://azure.microsoft.com/blog/2014/11/05/introducing-powershell-support-for-azure-site-recovery/)」というタイトルのブログ投稿を参照してください。
 
+### ASR ではレプリケーションが暗号化されますか。 
+*Hyper-V および VMM の保護シナリオ*では、オンプレミスと Azure間、およびオンプレミス間のレプリケーションで、転送中の暗号化がサポートされます。Azure への *Hyper-V および VMM の保護*によって、暗号化された状態での保存がサポートされます。詳細については、[この記事](https://azure.microsoft.com/blog/2014/09/02/azure-site-recovery-privacy-security-part1/)を参照してください。
+
+### レプリケーション/コピーの間隔を 15 分より長くすることはできますか。
+* **Hyper-V および VMM のシナリオ**: いいえ。ホスト ベースのレプリケーションを使用した、Hyper-V 仮想マシンのレプリケーションを構成できるのは、30 秒、5 分、および 15 分のみです。
+* **VMware/物理のシナリオ**: インゲスト ベースのレプリケーションには適用されません。テクノロジで継続的なデータ保護が使用されるためです。
+
+### ASR を使用して、レプリケーションから特定のディスクを除外することができますですか。
+これはサポートされていません。[Azure Site Recovery Feedback Forum - Exclude disk from replication (Azure Site Recovery フィードバック フォーラム - レプリケーションからディスクを除外する)](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6418801-exclude-disks-from-replication) を通じてフィードバックをお送りください。
+
+### ダイナミック ディスク ベースの仮想マシンをレプリケートできますか。
+*Hyper-V および VMM のシナリオ*では、ダイナミック ディスクをサポートしています。*VMware 仮想マシンまたは物理マシンのシナリオ*では、ダイナミック ディスクをサポートしていません。[Azure Site Recovery Feedback Forum (Azure Site Recovery フィードバック フォーラム)](http://feedback.azure.com/forums/256299-site-recovery) を通じてフィードバックをお送りください。
+
+### サポートされているストレージ アカウント タイプは何ですか。
+[標準的な geo 冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage)はサポートされています。[Premium Storage アカウント]((../storage/storage-premium-storage-preview-portal/) は、[VMware 仮想マシンまたは物理マシンのシナリオ](site-recovery-vmware-to-azure.md)でのみサポートされます。標準のローカル冗長ストレージのサポートは未対応です。[Support for locally redundant storage support (ローカル冗長ストレージをサポートするためのサポート)](http://feedback.azure.com/forums/256299-site-recovery/suggestions/7204469-local-redundant-type-azure-storage-support) を通じてフィードバックをお送りください。
+
+### 既存の復旧サイトから第 3 のサイトにレプリケーションを拡張することができますか。
+これはサポートされていません。[Azure Site Recovery Feedback Forum - Support for extending replication (Azure Site Recovery フィードバック フォーラム - レプリケーションの拡張のサポート)](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication) を通じてフィードバックをお送りください。
+
+### オフライン メカニズムを使用して、初期ディスクを Azure にシードできますか。
+これはサポートされていません。[Azure Site Recovery Feedback Forum - Support for offline replication (Azure Site Recovery フィードバック フォーラム - オフライン レプリケーションのサポート)](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from) を通じてフィードバックをお送りください。
+
 ## バージョンのサポート
 
 ### Windows Server ホストおよびクラスターのサポートされるバージョンはどれですか。
@@ -57,7 +79,7 @@ Hyper-V サイト間のレプリケーションと保護を有効にするため
 
 ### ASR は、第 2 世代のマシンをサポートしていますか。
 
-ASR は現在、Hyper-V から Azure への、第 2 世代仮想マシンのレプリケーションをサポートしています。ASR は、フェールオーバー中に第 2 世代から第 1 世代への変換を行います。フェールバック時に、マシンは第 1 世代に変換し直されます。現時点でのサポートの詳細については、[こちら](http://azure.microsoft.com/updates/azure-site-recovery-supports-gen-2-vm-protection-in-west-us-north-europe-and-japan-west/)を参照してください。
+はい。ASR は、Hyper-V から Azure への、第 2 世代仮想マシンのレプリケーションをサポートしています。ASR は、フェールオーバー中に第 2 世代から第 1 世代への変換を行います。フェールバック時に、マシンは第 1 世代に変換し直されます。詳細については、[こちら](http://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)を参照してください。
 
 
 ## サービス プロバイダー サイト間でのデプロイ 
@@ -128,6 +150,11 @@ Hyper-V サイトと Azure の間で ASR および Hyper-V レプリケーショ
 
 いいえ、この種のチェーン レプリケーションはサポートされていません
 
+### 2 つの VMM データ センター間の保護を構成するために証明書が必要ですか。
+
+いいえ。ASR で VMM クラウド間の保護を構成するときに、認証の種類を指定します。実際に利用できる Kerberos 環境を構成している場合を除き、HTTPS を選択してください。Azure Site Recovery は、HTTPS 認証に使用する証明書を自動的に構成します手動で構成する必要はありません。Kerberos を選択した場合は、ホスト サーバーの相互認証に Kerberos チケットが使用されます。既定では、Hyper-V ホスト サーバーの Windows ファイアウォールで、ポート 8083 (Kerberos 用) と 8084 (認証用) が開きます。この設定は、Windows Server 2012 R2 で実行されている Hyper-V ホスト サーバーだけに関連することに注意してください。
+
+
 
 ## SAN を使用した 2 つの VMM データセンター間でのデプロイ
 
@@ -139,6 +166,15 @@ Hyper-V サイトと Azure の間で ASR および Hyper-V レプリケーショ
 はい。配列に固有の SMI-S プロバイダーを使用して、SAN 配列を VMM で管理する必要があります。
 
 配列の種類に基づく、単一の VMM HA デプロイがサポートされます。ただし、推奨される構成は、個別の VMM サーバーを使用してサイトを管理することです。
+
+
+### サポート対象のストレージ アレイは何ですか。
+
+NetApp、EMC、および HP では、SMI-S プロバイダーを更新することで、Azure Site Recovery SAN レプリケーションのサポートに対応しました。詳細については、以下のリンクを参照してください。
+
+- [NetApp Clustered Data ONTAP 8.2](http://community.netapp.com/t5/Technology/NetApp-Unveils-Support-for-Microsoft-Azure-SAN-Replication-with-SMI-S-and/ba-p/94483)
+- [EMC VMAX シリーズ](https://thecoreblog.emc.com/high-end-storage/microsoft-azure-site-recovery-now-generally-available-vmax-srdf-integration-pack-ready-for-public-review/)    
+- [HP 3PAR](http://h20195.www2.hp.com/V2/GetDocument.aspx?docname=4AA5-7068ENW&cc=us&lc=en)
 
 
 ### 自社のストレージ管理について不明な場合はどうすればよいですか。
@@ -200,4 +236,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

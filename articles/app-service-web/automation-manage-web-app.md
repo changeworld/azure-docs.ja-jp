@@ -33,14 +33,14 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 
 ## Azure Automation を Azure Web App の管理に役立てる方法
 
-[Azure PowerShell ツール](https://msdn.microsoft.com/library/azure/jj156055.aspx)で利用可能な PowerShell コマンドレットを使用することにより、Azure Automation で Azure Web App を管理できます。Azure Automation には、このような Azure Web App PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべての Web App 管理タスクを実行できます。Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスおよびサード パーティ システム全体の複雑なタスクを自動化することもできます。
+[Azure PowerShell ツール](https://msdn.microsoft.com/library/azure/jj156055.aspx)で利用可能な PowerShell コマンドレットを使用することにより、Azure Automation で Azure Web App を管理できます。Azure Automation には、このような Azure Web App PowerShell コマンドレットがあらかじめ用意されており、サービス内ですべての Web App 管理タスクを実行できます。Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスとサード パーティ システム全体の複雑なタスクを自動化することもできます。
 
 
 ## 次のステップ
 
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure Web App を管理する方法について説明しました。Azure Automation の詳細については、これらのリンクをご覧ください。
 
-* [Azure Automation の使用](../automation-create-runbook-from-samples.md) (Azure Automation の作業開始のチュートリアル)
+* [Azure Automation の使用](../automation-intro.md) (Azure Automation の作業開始のチュートリアル)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

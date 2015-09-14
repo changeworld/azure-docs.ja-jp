@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="StorSimple Manager サービスを使用した StorSimple デバイスの管理"
-   description="Microsoft Azure 管理ポータルで StorSimple Manager サービスを使用して、StorSimple デバイスを管理します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="tysonn" />
+   pageTitle="StorSimple Manager サービス管理 | Microsoft Azure"
+	description="Microsoft Azure 管理ポータルで StorSimple Manager サービスを使用して、StorSimple デバイスを管理する方法を説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/13/2015"
-   ms.author="alkohli" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="09/01/2015"
+	ms.author="alkohli"/>
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの管理
 
@@ -104,9 +104,8 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 - [運用デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)
 - [StorSimple 監視インジケーター LED の使用](storsimple-monitoring-indicators.md)
 
-
 問題を解決できず、サービス要求の作成が必要な場合は、次のトピックを参照してください。
 
 -  [Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

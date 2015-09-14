@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Storage Analytics" 
-	description="BLOB、キュー、テーブル、およびファイル サービスの同時実行制御を管理する方法" 
-	services="storage" 
-	documentationCenter="" 
-	authors="tamram" 
-	manager="adinah" 
+<properties
+	pageTitle="Storage Analytics | Microsoft Azure"
+	description="BLOB、キュー、テーブル、およびファイル サービスの同時実行制御を管理する方法"
+	services="storage"
+	documentationCenter=""
+	authors="tamram"
+	manager="adinah"
 	editor=""/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="06/18/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/18/2015"
 	ms.author="tamram"/>
 
 # Storage Analytics
@@ -22,11 +22,11 @@
 
 Azure Storage Analytics では、ログが記録され、ストレージ アカウントのメトリック データを得ることができます。このデータを使用して、要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断を行うことができます。
 
-Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。Storage Analytics は、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)から有効にすることができます。詳細については、「[ストレージ アカウントの監視方法](http://www.azure.com/manage/services/storage/how-to-monitor-a-storage-account/)」をご覧ください。また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties](https://msdn.microsoft.com/library/hh452239.aspx)、[Get Queue Service Properties](https://msdn.microsoft.com/library/hh452243.aspx)、[Get Table Service Properties](https://msdn.microsoft.com/library/hh452238.aspx) の各操作を使用します。
+Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。これは、[Azure ポータル](https://manage.windowsazure.com/)から有効にできます。詳細については、「[ストレージ アカウントの監視方法](http://www.azure.com/manage/services/storage/how-to-monitor-a-storage-account/)」を参照してください。また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties](https://msdn.microsoft.com/library/hh452239.aspx)、[Get Queue Service Properties](https://msdn.microsoft.com/library/hh452243.aspx)、[Get Table Service Properties](https://msdn.microsoft.com/library/hh452238.aspx) の各操作を使用します。
 
 集計データは、既知の BLOB (ログの場合) と既知のテーブル (メトリックの場合) に格納されます。集計データには、BLOB サービスとテーブル サービスの API を使用してアクセスできます。
 
-ストレージ アカウントの合計の制限とは別に、Storage Analytics には、格納されたデータの量に関して 20 TB の制限があります。課金ポリシーとデータ保持ポリシーの詳細については、「[Storage Analytics と課金](https://msdn.microsoft.com/library/hh360997.aspx)」をご覧ください。ストレージ アカウントの上限の詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](https://msdn.microsoft.com/library/dn249410.aspx)」をご覧ください。
+ストレージ アカウントの合計の制限とは別に、Storage Analytics には、格納されたデータの量に関して 20 TB の制限があります。課金ポリシーとデータ保持ポリシーの詳細については、「[Storage Analytics と課金](https://msdn.microsoft.com/library/hh360997.aspx)」をご覧ください。ストレージ アカウントの制限の詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](https://msdn.microsoft.com/library/dn249410.aspx)」を参照してください。
 
 Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 
@@ -74,7 +74,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 ### ログの名前付け規則
 各ログは次の形式で出力されます。
 
-    <service-name>/YYYY/MM/DD/hhmm/<counter>.log 
+    <service-name>/YYYY/MM/DD/hhmm/<counter>.log
 
 次の表は、ログ名を構成する各属性の説明です。
 
@@ -85,16 +85,16 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 | MM | ログの 2 桁の日。例: 07 |
 | DD | ログの 2 桁の日。例: 07 |
 | hh | ログの開始時刻 (時) を示す 2 桁の数字 (24 時間制 UTC 形式)。例: 18 |
-| mm | ログの開始時刻 (分) を示す 2 桁の数字。[AZURE.NOTE]現在のバージョンの Storage Analytics ではこの値はサポートされず、常に 00 になります。 |
+| mm | ログの開始時刻 (分) を示す 2 桁の数字。現在のバージョンの Storage Analytics ではこの値はサポートされず、常に 00 になります。 |
 | <counter> | 1 時間おきにストレージ サービスに対して生成されるログ BLOB の数を示す 0 から始まる 6 桁のカウンター。このカウンターの初期値は 000000 です。例: 000001 |
 
 以上の例をすべて組み合わせたサンプルのログ名は、次のようになります。
 
     blob/2011/07/31/1800/000001.log
 
-このログにアクセスするための URI の例を次に示します。
+前のログにアクセスするための URI の例を次に示します。
 
-    https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log 
+    https://<accountname>.blob.core.windows.net/$logs/blob/2011/07/31/1800/000001.log
 
 ストレージ要求がログに記録されるとき、生成されるログの名前は、要求された操作が完了した時刻が基準となります。たとえば、GetBlob 要求が 2011 年 7 月 31 日の午後 6 時 30 分に完了した場合、書き込まれるログのプレフィックスは、`blob/2011/07/31/1800/` になります。
 
@@ -110,7 +110,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 
 以上の例を使用したサンプル メタデータを次に示します。
 
-- LogType=write 
+- LogType=write
 
 - StartTime=2011-07-31T18:21:46Z
 
@@ -126,7 +126,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 
 Storage Analytics では、ストレージ サービスに対する要求に関する集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。トランザクションに関しては、API 操作レベルとストレージ サービス レベルの両方でレポートされます。容量に関しては、ストレージ サービス レベルでレポートされます。メトリック データは、ストレージ サービスの使用状況の分析、ストレージ サービスに対する要求に関する問題の診断、サービスを使用するアプリケーションのパフォーマンスの向上に利用できます。
 
-Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。Storage Analytics は、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)から有効にすることができます。詳細については、「[ストレージ アカウントの監視方法](../how-to-monitor-a-storage-account.md)」をご覧ください。また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties、Get Queue Service Properties](https://msdn.microsoft.com/library/hh452239.aspx)、[Get Table Service Properties](https://msdn.microsoft.com/library/hh452238.aspx) の各操作を使用します。
+Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。これは、[Azure ポータル](https://manage.windowsazure.com/)から有効にできます。詳細については、「[ストレージ アカウントの監視方法](../how-to-monitor-a-storage-account.md)」を参照してください。また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties、Get Queue Service Properties](https://msdn.microsoft.com/library/hh452239.aspx)、[Get Table Service Properties](https://msdn.microsoft.com/library/hh452238.aspx) の各操作を使用します。
 
 ### トランザクション メトリック
 
@@ -150,7 +150,7 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 
 - **ObjectCount**: ストレージ アカウントの BLOB サービス内のコミット済みとコミット前のブロック BLOB またはページ BLOB の数。
 
-容量メトリックの詳細については、「Storage Analytics Metrics のテーブル スキーマ」をご覧ください。
+容量メトリックの詳細については、「[Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)」をご覧ください。
 
 ### メトリックの保存
 
@@ -159,11 +159,11 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 | メトリック レベル | テーブル名 | サポートされているバージョン |
 |------------------------------------	|-----------------------------------------------------------------------------------------------------------------------------	|----------------------------------------------------------------------------------------------------------------------------------------------	|
 | 時間単位のメトリック、1 次拠点 | $MetricsTransactionsBlob <br/>$MetricsTransactionsTable <br/> $MetricsTransactionsQueue | 2013-08-15 よりも前のバージョンのみ。これらの名前はまだサポートされていますが、下に示すテーブルを使用するように切り替えることをお勧めします。 |
-| 時間単位のメトリック、1 次拠点 | $MetricsHourPrimaryTransactionsBlob <br/>$MetricsHourPrimaryTransactionsTable <br/>$MetricsHourPrimaryTransactionsQueue | 2013-08-15 を含むすべてのバージョン |
-| 分単位のメトリック、1 次拠点 | $MetricsMinutePrimaryTransactionsBlob <br/>$MetricsMinutePrimaryTransactionsTable <br/>$MetricsMinutePrimaryTransactionsQueue | 2013-08-15 を含むすべてのバージョン |
+| 時間単位のメトリック、1 次拠点 | $MetricsHourPrimaryTransactionsBlob <br/>$MetricsHourPrimaryTransactionsTable <br/>$MetricsHourPrimaryTransactionsQueue | 2013-08-15 を含むすべてのバージョン。 |
+| 分単位のメトリック、1 次拠点 | $MetricsMinutePrimaryTransactionsBlob <br/>$MetricsMinutePrimaryTransactionsTable <br/>$MetricsMinutePrimaryTransactionsQueue | 2013-08-15 を含むすべてのバージョン。 |
 | 時間単位のメトリック、2 次拠点 | $MetricsHourSecondaryTransactionsBlob <br/>$MetricsHourSecondaryTransactionsTable <br/>$MetricsHourSecondaryTransactionsQueue | 2013-08-15 を含むすべてのバージョン。読み取りアクセスの地理冗長レプリケーションを有効にする必要があります。 |
 | 分単位のメトリック、2 次拠点 | $MetricsMinuteSecondaryTransactionsBlob <br/>$MetricsMinuteSecondaryTransactionsTable <br/>$MetricsMinuteSecondaryTransactionsQueue | 2013-08-15 を含むすべてのバージョン。読み取りアクセスの地理冗長レプリケーションを有効にする必要があります。 |
-| 容量 (BLOB サービスのみ) | $MetricsCapacityBlob | 2013-08-15 を含むすべてのバージョン |
+| 容量 (BLOB サービスのみ) | $MetricsCapacityBlob | 2013-08-15 を含むすべてのバージョン。 |
 
 
 これらのテーブルは、Storage Analytics がストレージ アカウントに対して有効化されたときに自動的に作成されます。これらのテーブルには、ストレージ アカウントの名前空間を介してアクセスします (例: `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`)。
@@ -193,17 +193,17 @@ Storage Analytics のデータで課金対象の要求を調べるときには�
 ## 次のステップ
 
 ### Storage Analytics の設定
-- [ストレージ アカウントの監視方法](../how-to-monitor-a-storage-account.md) 
+- [ストレージ アカウントの監視方法](../how-to-monitor-a-storage-account.md)
 - [Storage Analytics の有効化と構成](https://msdn.microsoft.com/library/hh360996.aspx)
 
 ### Storage Analytics Logging  
-- [Storage Analytics Logging について](https://msdn.microsoft.com/library/hh343262.aspx) 
-- [Storage Analytics のログの形式](https://msdn.microsoft.com/library/hh343259.aspx) 
-- [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoftcom/library/hh343260.aspx) 
+- [Storage Analytics Logging について](https://msdn.microsoft.com/library/hh343262.aspx)
+- [Storage Analytics のログの形式](https://msdn.microsoft.com/library/hh343259.aspx)
+- [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoftcom/library/hh343260.aspx)
 
 ### Storage Analytics Metrics
 - [Storage Analytics Metrics について](https://msdn.microsoft.com/library/hh343258.aspx)
-- [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx) 
+- [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)
 - [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

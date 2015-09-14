@@ -1,21 +1,21 @@
 <properties 
    pageTitle="StorSimple ジョブの表示と管理 | Microsoft Azure"
-   description="StorSimple Manager サービスの [ジョブ] ページと、最近のバックアップ ジョブ、現在のバックアップ ジョブ、スケジュールされたバックアップ ジョブを追跡する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="carolz"
-   editor=""/>
+	description="StorSimple Manager サービスの [ジョブ] ページと、最近のバックアップ ジョブ、現在のバックアップ ジョブ、スケジュールされたバックアップ ジョブを追跡する方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/13/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="09/01/2015"
+	ms.author="alkohli"/>
 
-# StorSimple ジョブの表示と管理
+# StorSimple Manager サービスを使用して StorSimple ジョブを表示および管理する
 
 ## 概要
 
@@ -89,4 +89,4 @@
 
 [StorSimple バックアップ ポリシーの管理方法の詳細を確認する](storsimple-manage-backup-policies.md)。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

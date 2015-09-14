@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする" 
-	description="Azure SQL Database の Web または Business データベースを新しい Azure SQL Database の Basic、Standard、および Premium サービス階層とパフォーマンス レベルにアップグレードします。" 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="stevestein" 
-	manager="jeffreyg" 
+	pageTitle="SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする"
+	description="Azure SQL Database の Web または Business データベースを新しい Azure SQL Database の Basic、Standard、および Premium サービス階層とパフォーマンス レベルにアップグレードします。"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jeffreyg"
 	editor=""/>
 
 <tags 
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="06/18/2015" 
-	ms.author="sstein" 
-	ms.workload="data-management" 
-	ms.topic="article" 
+	ms.date="06/18/2015"
+	ms.author="sstein"
+	ms.workload="data-management"
+	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
 
@@ -23,7 +23,7 @@ Azure SQL Web データベースと Business データベースは廃止され�
 
 「[Web and Business Database Migration Guidance Cookbook](http://download.microsoft.com/download/3/C/9/3C9FF3D8-E702-4F5D-A38C-5EFA1DBA73E6/Azure_SQL_Database_Migration_Cookbook.pdf)」をダウンロードしてください。
 
-> [AZURE.NOTE] [Pricing tier recommendations](sql-database-service-tier-advisor.md) Ｗeb および Business データベースのが使用できるようになりました。
+> [AZURE.NOTE] [Pricing tier recommendations]Ｗeb および Business データベースの (sql-database-service-tier-advisor.md) が使用できるようになりました。
 
 ## 概要
 
@@ -67,8 +67,7 @@ Basic、Standard、Premium のサービス階層はそれぞれ異なる機能�
 
 次の表では、新しいサービス階層の機能とパフォーマンス レベルをまとめて比較しています。
 
-![サービス階層の機能の比較][1]
-
+[AZURE.INCLUDE [SQL DB のサービス階層表](../../includes/sql-database-service-tiers-table.md)]
 
 **サービス階層とパフォーマンス レベルを比較するためのその他のリソース:**
 
@@ -95,9 +94,9 @@ Web と Business データベースには保証された DTU/リソース制限�
 
 管理ポータルを使用して DTU 使用割合の概要を表示し、システム ビューを使用して詳細を確認します。
 
-また、Azure SQL Database V12 ([一部のリージョンではプレビュー](sql-database-preview-whats-new.md#V12AzureSqlDbPreviewGaTable)) にサーバーをアップグレードする際に、新しい Azure 管理ポータルを使用して、Web または Business データベースの推奨されるサービス階層を表示することもできます。
+また、Azure SQL Database V12 ([一部のリージョンではプレビュー](sql-database-preview-whats-new.md#V12AzureSqlDbPreviewGaTable)) にサーバーをアップグレードする際に、新しい Microsoft Azure 管理ポータルを使用して、Web または Business データベースの推奨されるサービス階層を表示することもできます。
 
-### 新しい Azure 管理ポータルで推奨されるサービス階層を表示する方法
+### 新しい Microsoft Azure 管理ポータルで推奨されるサービス階層を表示する方法
 管理ポータルでは、Azure SQL Database V12 へのサーバーのアップグレード プロセス時に、Web または Business データベースに適したサービス階層が推奨されます。この推奨事項は、データベースのリソース消費の履歴分析に基づくものです。
 
 **新しい管理ポータル**
@@ -241,7 +240,7 @@ Web/Business と Basic、Standard、Premium サービス階層との違いをよ
 
 | 管理ツール | データベースのサービス階層とパフォーマンス レベルを変更します。|
 | :---| :---|
-| [Azure 管理ポータル](https://manage.windowsazure.com) | データベースのダッシュボード ページで **[スケール]** タブをクリックします。 |
+| [Microsoft Azure 管理ポータル](https://manage.windowsazure.com) | データベースのダッシュボード ページで **[スケール]** タブをクリックします。 |
 | [Azure PowerShell](http://msdn.microsoft.com/library/azure/dn546726.aspx) | [Set-AzureSqlDatabase](http://msdn.microsoft.com/library/azure/dn546732.aspx) コマンドレットを使用します。 |
 | [サービス管理 REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) | [Update Database](http://msdn.microsoft.com/library/dn505718.aspx) コマンドを使用します。|
 | [Transact-SQL](http://msdn.microsoft.com/library/bb510741.aspx) | [ALTER DATABASE (Transact-SQL)](http://msdn.microsoft.com/library/ms174269.aspx) ステートメントを使用します。 |
@@ -285,7 +284,7 @@ Web/Business データベースを新しい階層にアップグレードした�
 この DMV の使用方法の詳細については、追加の[ドキュメント](http://msdn.microsoft.com/library/dn800981.aspx)をご覧ください。「[Azure SQL データベース パフォーマンス ガイダンス](http://msdn.microsoft.com/library/azure/dn369873.aspx)」には、アプリケーションの監視と調整方法が記載されています。
 
 
-- **アラート:** アップグレードしたデータベースの DTU 消費が特定の高レベルに近づいた場合に通知を表示するには、Azure 管理ポータルで 'Alerts' を設定します。データベース アラートは、Azure 管理ポータルで、DTU、CPU、IO、ログといったさまざまなパフォーマンス指標に対して設定できます。 
+- **アラート:** アップグレードしたデータベースの DTU 消費が特定の高レベルに近づいた場合に通知を表示するには、Microsoft Azure 管理ポータルで 'Alerts' を設定します。データベース アラートは、Microsoft Azure 管理ポータルで、DTU、CPU、IO、ログといったさまざまなパフォーマンス指標に対して設定できます。 
 
 	たとえば、DTU の平均割合の値が 5 分間にわたって 75% を超過したような場合に、「DTU 割合」に関する電子メール アラートを送るように設定できます。アラート通知の構成方法の詳細については、「[方法: Azure でアラート通知を受け取り、アラート ルールを管理する](http://msdn.microsoft.com/library/azure/dn306638.aspx)」を参照してください。
 
@@ -303,11 +302,10 @@ Azure SQL データベース サービスでは利用統計データとツール
 
 
 <!--Image references-->
-[1]: ./media/sql-database-upgrade-new-service-tiers/service-tier-features.png
 [2]: ./media/sql-database-upgrade-new-service-tiers/portal-dtus.JPG
 [3]: ./media/sql-database-upgrade-new-service-tiers/web-business-noisy-neighbor.png
 [4]: ./media/sql-database-upgrade-new-service-tiers/resource_consumption.png
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

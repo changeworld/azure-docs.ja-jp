@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Java からテーブル ストレージを使用する方法 | Microsoft Azure" 
-	description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Java で記述されています。" 
-	services="storage" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
+	pageTitle="Java からテーブル ストレージを使用する方法 | Microsoft Azure"
+	description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Java で記述されています。"
+	services="storage"
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor="jimbe"/>
 
 <tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="06/03/2015" 
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="08/31/2015"
 	ms.author="robmcm"/>
 
 
@@ -547,12 +547,12 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
-- [Azure Storage SDK for Java]
-- [Azure ストレージ クライアント SDK リファレンス]
-- [Azure Storage REST API]
-- [Azure のストレージ チーム ブログ]
+- [Azure Storage SDK for Java][]
+- [Azure ストレージ クライアント SDK リファレンス][]
+- [Azure Storage REST API][]
+- [Azure のストレージ チーム ブログ][]
 
-[Azure SDK for Java]: http://azure.microsoft.com/develop/java/
+[Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android に関するページ]: https://github.com/azure/azure-storage-android
 [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
@@ -561,4 +561,4 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [ブログの記事]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="チュートリアル: Application Insights を使用して Microsoft Dynamics CRM を監視する" 
-	description="Application Insights を使用して Microsoft Dynamics CRM Online からテレメトリを取得します。設定、データの取得、視覚化、およびエクスポートをしてみましょう。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="mazharmicrosoft" 
+	pageTitle="チュートリアル: Application Insights を使用して Microsoft Dynamics CRM を監視する"
+	description="Application Insights を使用して Microsoft Dynamics CRM Online からテレメトリを取得します。設定、データの取得、視覚化、およびエクスポートをしてみましょう。"
+	services="application-insights"
+	documentationCenter=""
+	authors="mazharmicrosoft"
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2015"
 	ms.author="awills"/>
  
 # チュートリアル: Application Insights を使用して Microsoft Dynamics CRM Online のテレメトリを有効にする
@@ -64,7 +64,7 @@
 
     ![](./media/app-insights-sample-mscrm/09.png)
 
-    コードにはアプリケーション リソースを識別するインストルメンテーション キーが含まれています。
+    コードには Application Insights リソースを識別するインストルメンテーション キーが含まれています。
 
 5. 保存して発行します。
 
@@ -151,7 +151,7 @@
 
 ## Dynamics CRM ソリューションのサンプル
 
-[Dynamics CRM で実装されたサンプルのソリューションを示します](https://dynamicsandappinsights.codeplex.com/)
+[Dynamics CRM で実装されたサンプルのソリューションを示します](https://dynamicsandappinsights.codeplex.com/)。
 
 ## 詳細情報
 
@@ -161,4 +161,4 @@
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

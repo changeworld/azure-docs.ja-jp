@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Virtual Network 構成ファイルでの DNS 設定の指定"
-	description="説明"
+   pageTitle="Virtual Network 構成ファイルでの DNS 設定の指定 | Microsoft Azure"
+	description="仮想ネットワーク構成ファイルを使用して仮想ネットワークの DNS サーバーの設定を変更する方法"
 	services="virtual-network"
 	documentationCenter="na"
 	authors="joaoma"
@@ -49,8 +49,8 @@
 
 [ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)
 
-[Azure 仮想ネットワークの構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
 
 [Azure サービス構成スキーマ](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

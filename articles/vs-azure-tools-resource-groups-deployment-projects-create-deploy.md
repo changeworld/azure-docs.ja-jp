@@ -85,7 +85,7 @@ Azure リソース グループ プロジェクトをデプロイする場合は
 
     ![Deploy To Resource Group Dialog Box](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/IC796673.png)
 
-1. **[リソース グループ]** ボックスの一覧で、既存のリソース グループを選択するか、新しいリソース グループを作成します。リソース グループを作成するには、**[リソース グループ]** ボックスの一覧を表示し、**[<Create New...>]** を選択します。
+1. **[リソース グループ]** ボックスの一覧で、既存のリソース グループを選択するか、新しいリソース グループを作成します。リソース グループを作成するには、**[リソース グループ]** ボックスの一覧を開き、**[<Create New...>]** を選択します。
 
     **[リソース グループの作成]** ダイアログ ボックスが表示されます。
 
@@ -195,4 +195,4 @@ Azure SDK 2.5 で作成されたクラウド デプロイ プロジェクトを�
 
 Visual Studio で Azure リソース グループにリソースを追加する方法については、「[Azure リソース グループへのリソースの追加](https://msdn.microsoft.com/library/azure/mt125415.aspx)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

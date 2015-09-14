@@ -4,8 +4,8 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="hangzh-msft"
-	manager="paulettm" 
-	editor="cgronlun"  />
+	manager="paulettm"
+	editor="cgronlun"/>
 
 <tags
 	ms.service="machine-learning"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/29/2015"
-	ms.author="hangzh;bradsev" />
+	ms.date="09/01/2015"
+	ms.author="hangzh;bradsev"/>
 
 #<a name="heading"></a>Advanced Analytics Process and Technology で HDInsight Hadoop クラスターに Hive クエリを送信する 
 
 このドキュメントでは、Azure の HDInsight サービスが管理する Hadoop クラスターに Hive クエリを送信するさまざまな方法について説明します。このタスクは、Azure Machine Learning が提供する Advanced Analytics Process and Technology (ADAPT) の一部です。いくつかのデータを処理するタスク (データの探索および特徴の生成) について説明します。Azure の HDInsight Hadoop クラスターで Hive を使用してデータの探索や特徴の生成を行う方法を示す汎用の Hive クエリが取り上げられます。これらの Hive クエリでは、用意されている埋め込みの Hive のユーザー定義関数 (UDF) を使用します。
 
-<a href="http://chriswhong.com/open-data/foil_nyc_taxi/" target="_blank">NYC タクシー乗車データ</a> シナリオに固有のクエリの例も、<a href="https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts" target="_blank">Github リポジトリ</a>に用意されています。これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。
+[NYC タクシー乗車データ](http://chriswhong.com/open-data/foil_nyc_taxi/) シナリオに固有のクエリの例も、[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)に用意されています。これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。
 
 最後のセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターについて説明します。
 
@@ -226,14 +226,14 @@ Hive には、[datetime] フィールドを処理するための UDF のセッ�
     	select day(<datetime field>), month(<datetime field>)
 		from <databasename>.<tablename>;
 
-この Hive クエリは、*&\#60;datetime フィールド>* が既定の datetime 形式であることを前提としています。
+この Hive クエリは、*&#60;datetime フィールド>* が既定の datetime 形式であることを前提としています。
 
 [datetime] フィールドが既定の形式でない場合、まず [datetime] フィールドを Unix のタイムスタンプに変換してから、Unix のタイムスタンプを既定の形式の datetime 文字列に変換する必要があります。datetime が既定の形式の場合は、特徴を抽出するために組み込みの datetime ユーザー定義関数を適用することができます。
 
 		select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
 		from <databasename>.<tablename>;
 
-このクエリでは、*&\#60;datetime フィールド>* が *03/26/2015 12:04:39* のようなパターンであった場合、*'&\#60;datetime フィールドのパターン>'* は `'MM/dd/yyyy HH:mm:ss'` である必要があります。これをテストするために、ユーザーは次を実行できます。
+このクエリでは、*&#60;datetime フィールド>* が *03/26/2015 12:04:39* のようなパターンであった場合、*'&#60;datetime フィールドのパターン>'* は `'MM/dd/yyyy HH:mm:ss'` である必要があります。これをテストするために、ユーザーは次を実行できます。
 
 		select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
 		from hivesampletable limit 1;
@@ -319,4 +319,4 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 [15]: ./media/machine-learning-data-science-process-hive-tables/run-hive-queries-3.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

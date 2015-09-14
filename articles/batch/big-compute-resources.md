@@ -1,20 +1,20 @@
 <properties
    pageTitle="ビッグ コンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース | Microsoft Azure"
-   description="Azure で大規模並列、Batch、HPC ワークロードを実行するのに役立つテクニカル リソースの一覧を示します。"
-   services="batch, cloud-services, virtual-machines"
-   documentationCenter=""
-   authors="dlepow"
-   manager="timlt"
-   editor=""/>
+	description="Azure で大規模並列、Batch、HPC ワークロードを実行するのに役立つテクニカル リソースの一覧を示します。"
+	services="batch, cloud-services, virtual-machines"
+	documentationCenter=""
+	authors="dlepow"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="multiple"
-   ms.devlang="multiple"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="big-compute"
-   ms.date="07/28/2015"
-   ms.author="danlep"/>
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="big-compute"
+	ms.date="09/02/2015"
+	ms.author="danlep"/>
 
 # Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース
 これは、Azure で大規模並列、Batch、HPC ワークロードを実行するのに役立つテクニカル リソース ガイドです。既存の Batch または HPC ワークロードを Azure クラウドに拡張するか、新しい大規模なコンピューティング ソリューションを Azure サービスを使用して Azure に構築します。
@@ -50,7 +50,7 @@ Azure の大規模なコンピューティング オプションについて説�
 
 HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて構築された、Microsoft の無料の HPC ソリューションです。
 
-* [HPC Pack 2012 R2 Update 2 をダウンロードする](https://www.microsoft.com/ja-jp/download/details.aspx?id=47755)
+* [HPC Pack 2012 R2 Update 2 をダウンロードする](https://www.microsoft.com/ja-JP/download/details.aspx?id=47755)
 
 * [ドキュメント](https://technet.microsoft.com/library/jj899572.aspx)
 
@@ -68,11 +68,15 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
     * [カスタム コンピューティング ノード イメージを使用して HPC クラスターを作成する](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)
 
+    * [Linux コンピューティング ノードがある HPC クラスターを作成する](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)
+
     * [HPC Pack IaaS デプロイメント PowerShell スクリプト](https://www.microsoft.com/download/details.aspx?id=44949)
 
 * **Azure チュートリアル**
 
     * [チュートリアル: Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](../virtual-machines/virtual-machines-linux-cluster-hpcpack.md)
+
+    * [チュートリアル: Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](../virtual-machines/virtual-machines-linux-cluster-hpcpack-namd.md)
 
     * [チュートリアル: Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](../virtual-machines/virtual-machines-excel-cluster-hpcpack.md)
 
@@ -146,4 +150,4 @@ Azure では、Linux および Windows の HPC ワークロードを実行する
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](http://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](http://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](http://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

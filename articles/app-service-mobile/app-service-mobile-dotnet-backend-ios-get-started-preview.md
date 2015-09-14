@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Mobile Apps での iOS アプリの作成"
-	description="このチュートリアルでは、Objective-C または Swift で iOS 開発用の Azure Mobile App バックエンドを使用する方法を説明します。"
+	pageTitle="Azure App Service Mobile Apps で iOS アプリを作成する | Microsoft Azure"
+	description="このチュートリアルに従って、Objective-C または Swift で iOS を開発用するための Azure モバイル アプリ バックエンドの使用を開始します。"
 	services="app-service\mobile"
 	documentationCenter="ios"
 	authors="krisragh"
@@ -22,32 +22,32 @@
 
 ##概要
 
-このチュートリアルでは、Azure Mobile App バックエンドを使用してクラウド ベースのバックエンド サービスを iOS モバイル アプリに追加する方法を説明します。新しい Mobile App バックエンドと、アプリのデータを Azure に格納する簡単な _Todo list_ iOS アプリの両方を作成します。
+このチュートリアルでは、Azure モバイル アプリ バックエンドを使用してクラウド ベースのバックエンド サービスを iOS モバイル アプリに追加する方法を説明します。新しいモバイル アプリ バックエンドと、アプリのデータを Azure に格納する簡単な _Todo list_ iOS アプリの両方を作成します。
 
-iOS アプリの他のすべての Mobile Apps チュートリアルを行う前に、このチュートリアルを完了する必要があります。
+このチュートリアルは、Azure App Service での Mobile Apps 機能の使用に関する他のすべての iOS チュートリアルを実行する前に完了しておく必要があります。
 
 ##前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
- 
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+
 * [Visual Studio Community 2013] 以降のバージョン。
 
 * Mac with Xcode v7.0 以降のバージョン。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service を実際に使ってみるには、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751&appServiceName=mobile)に関するページにアクセスしてください。App Service で、有効期限付きのスターター Mobile App をすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751&appServiceName=mobile)」にアクセスしてください。有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## 新しい Azure Mobile App バックエンドの作成
+## 新しい Azure モバイル アプリ バックエンドを作成する
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service-preview](../../includes/app-service-mobile-dotnet-backend-create-new-service-preview.md)]
 
 ## サーバー プロジェクトのダウンロード
 
-1. お使いの PC で [Azure ポータル]にアクセスします。**[すべて参照]**、**[Mobile Apps]** の順にクリックし、作成した Mobile App バックエンドをクリックします。
- 
+1. お使いの PC で [Azure ポータル]にアクセスします。**[すべて参照]**、**[Mobile Apps]** の順にクリックし、作成したモバイル アプリ バックエンドをクリックします。
+
 2. Mobile App ブレードで **[設定]** をクリックし、**[Mobile App]** の下で **[クイック スタート]**、**[iOS (Objective-C)]** の順にクリックします。Swift を使用する場合は、**[クイック スタート]**、**[iOS (Swift)]** の順にクリックします。
- 
+
 3. **[サーバー プロジェクトをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。圧縮されたプロジェクト ファイルを PC に抽出し、Visual Studio でソリューションを開きます。
 
 ## Azure へのサーバー プロジェクトの発行
@@ -73,8 +73,8 @@ iOS アプリの他のすべての Mobile Apps チュートリアルを行う前
 [12]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-data-browse.png
 
 [Azure ポータル]: https://portal.azure.com/
-[XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
- 
+[Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
+
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure キュー ストレージと Visual Studio 接続済みサービスの概要"
+	pageTitle="Azure キュー ストレージと Visual Studio 接続済みサービスの概要 | Microsoft Azure"
 	description="Visual Studio の ASP.NET プロジェクトで Azure キュー ストレージの使用を開始する方法"
 	services="storage"
 	documentationCenter=""
@@ -27,15 +27,15 @@
 > - [Queues](vs-storage-aspnet-getting-started-queues.md)
 > - [Tables](vs-storage-aspnet-getting-started-tables.md)
 
-##概要
+## 概要
 
 この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して ASP.NET プロジェクトで Azure ストレージ アカウントを参照または作成した後に、Visual Studio で Azure キュー ストレージの使用を開始する方法について説明します。
 
-ストレージ アカウントで Azure キューを作成し、アクセスする方法について説明します。また、キュー メッセージの追加、変更、読み取り、削除などの基本的なキュー操作を実行する方法についても説明します。例は C# のコードで記述され、[Azure .NET 用ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)を利用しています。ASP.NET の詳細については、[ASP.NET](http://www.asp.net) に関するページを参照してください。
+ストレージ アカウントで Azure キューを作成し、アクセスする方法を紹介します。また、キュー メッセージの追加、変更、読み取り、削除などの基本的なキュー操作を実行する方法についても説明します。例は C# のコードで記述され、[Azure .NET 用ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)を利用しています。ASP.NET の詳細については、[ASP.NET](http://www.asp.net) に関するページを参照してください。
 
 Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。
 
-##コードでキューにアクセスする
+## コードでキューにアクセスする
 
 ASP.NET プロジェクトでキューにアクセスするには、Azure キュー ストレージにアクセスする C# ソース ファイルに、次の項目を含める必要があります。
 
@@ -52,7 +52,7 @@ ASP.NET プロジェクトでキューにアクセスするには、Azure キュ
 
 3. ストレージ アカウント内のキュー オブジェクトを参照する `CloudQueueClient` オブジェクトを取得します。
 
-	    // Create the queue client.
+	    // Create the queueclient.
     	CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
 4. 特定のキューを参照する `CloudQueue` オブジェクトを取得します。
@@ -61,16 +61,16 @@ ASP.NET プロジェクトでキューにアクセスするには、Azure キュ
 	    CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
 
-**注:** 上記のコードはすべて、以下の例に示すコードの前に使用してください。
+**注**: 上記のコードはすべて、以下の例に示すコードの前に使用してください。
 
-##コードでキューを作成する
+## コードでキューを作成する
 
 上記のコードの `CreateIfNotExists` に呼び出しを追加するだけで、コードで Azure キューが作成できます。
 
 	// Create the CloudQuecClient  if it does not exist
 	messageQueue.CreateIfNotExists();
 
-##メッセージをキューに追加する
+## メッセージをキューに追加する
 
 既存のキューにメッセージを挿入するには、新しい `CloudQueueMessage` オブジェクトを作成し、`AddMessage` メソッドを呼び出します。
 
@@ -84,7 +84,7 @@ ASP.NET プロジェクトでキューにアクセスするには、Azure キュ
 	CloudQueueMessage message = new CloudQueueMessage("Hello, World");
 	messageQueue.AddMessage(message);
 
-##キュー内のメッセージを読み取る
+## キュー内のメッセージを読み取る
 
 PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
@@ -93,7 +93,7 @@ PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッ
 	// Peek at the next message
     CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
 
-##キュー内のメッセージを読み取って削除する
+## キュー内のメッセージを読み取って削除する
 
 コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。1.GetMessage() を呼び出すと、キュー内の次のメッセージが取得されます。GetMessage() から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。2.キューからのメッセージの削除を完了するには、`DeleteMessage` を呼び出します。
 
@@ -175,9 +175,8 @@ PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッ
 
 
 
-##次のステップ
+## 次のステップ
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
-			
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

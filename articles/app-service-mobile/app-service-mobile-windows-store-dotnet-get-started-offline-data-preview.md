@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/22/2015"
+	ms.date="08/27/2015"
 	ms.author="wesmc"/>
 
 # Windows アプリのオフライン同期を有効にする
@@ -36,8 +36,6 @@
 * 「[Create a Windows app (Windows アプリの作成)][create a windows app]」の完了。
 * [Azure Mobile Services SQLite Store バージョン 2.0.0-beta][sqlite store nuget]
 * [SQLite for Windows 8.1](http://www.sqlite.org/downloads)
-
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 ## オフライン機能をサポートするようにクライアント アプリを更新する
 
@@ -77,12 +75,12 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
         using Microsoft.WindowsAzure.MobileServices.SQLiteStore;  // offline sync
         using Microsoft.WindowsAzure.MobileServices.Sync;         // offline sync
 
-6. MainPage.cs で、`todoTable` を `IMobileServiceTable` として初期化するコードの行にコメントを付けます。`todoTable` を `IMobileServiceSyncTable` として初期化するコードの行は、コメント解除します。
+6. MainPage.cs で、`todoTable` を `IMobileServiceTable` として初期化するコードの行をコメントにします。`todoTable` を `IMobileServiceSyncTable` として初期化するコードの行をコメント解除します。
 
         //private IMobileServiceTable<TodoItem> todoTable = App.MobileService.GetTable<TodoItem>();
         private IMobileServiceSyncTable<TodoItem> todoTable = App.MobileService.GetSyncTable<TodoItem>(); // offline sync
 
-7. MainPage.cs 内の `Offline sync` とマークされている部分で、`InitLocalStoreAsync` および `SyncAsync` メソッドをコメント解除します。メソッド `InitLocalStoreAsync` は、SQLite ストアを使用してクライアントの同期コンテキストを初期化します。Visual Studio では、コメントが付いた行をすべて選択して、**Ctrl** + **K** + **U** のショートカット キーでコメント解除できます。
+7. MainPage.cs 内の `Offline sync` とマークされている部分で、`InitLocalStoreAsync` および `SyncAsync` メソッドをコメント解除します。メソッド `InitLocalStoreAsync` は、SQLite ストアを使用してクライアントの同期コンテキストを初期化します。Visual Studio では、すべてのコメント行を選択して、**Ctrl** + **K** + **U** のショートカット キーでコメント解除できます。
 
 	`SyncAsync` では、プッシュ操作は `IMobileServicesSyncTable` の代わりに `MobileServiceClient.SyncContext` を実行することに注意してください。これは、コンテキストはクライアントがすべてのテーブルに対して行った変更を追跡するためです。これは、テーブル間にリレーションシップがある状況に対応することを目的としています。この動作については、「[Azure Mobile Apps でのオフライン データ同期]」を参照してください。
 
@@ -141,7 +139,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
             ButtonRefresh.IsEnabled = true;
         }
 
-10. `SyncAsync` メソッドに例外ハンドラーを追加します。オフラインの場合は、`MobileServicePushFailedException` がスローされ、`PushResult.Status == CancelledByNetworkError` が表示されます。
+10. `SyncAsync` メソッドに例外ハンドラーを追加します。オフラインの場合は、`MobileServicePushFailedException` が`PushResult.Status == CancelledByNetworkError` でスローされます。
 
         private async Task SyncAsync()
         {
@@ -172,7 +170,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
             }
         }
 
-    この `PullAsync` の例では、リモート `todoTable` ですべてのレコードを取得しますが、クエリを渡すことによりレコードをフィルター処理することも可能です。`PullAsync` の最初のパラメーターは増分同期に使用されるクエリ ID ですが、この同期では、`UpdatedAt` タイムスタンプを使用して最後の同期から変更があったレコードのみを取得します。クエリ ID は、クライアント アプリケーション内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。増分同期を解除するには、`null` をクエリ ID として渡します。これによってプル操作ごとにすべてのレコードを取得することになり、効率が悪くなる可能性があります。
+    この `PullAsync` の例では、リモート `todoTable` のすべてのレコードを取得しますが、クエリを渡すことによりレコードをフィルタリングすることも可能です。`PullAsync` の最初のパラメーターは増分同期に使用されるクエリ ID ですが、この同期では、`UpdatedAt` タイムスタンプを使用して最後の同期から変更があったレコードのみを取得します。クエリ ID は、クライアント アプリケーション内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。増分同期を解除するには、`null` をクエリ ID として渡します。これによってプル操作ごとにすべてのレコードを取得することになり、効率が悪くなる可能性があります。
 
     `MobileServicePushFailedException` はプッシュ操作とプル操作の両方で発生する場合があることに注意してください。リレーションシップを持つすべてのテーブルに一貫性があることを確認するために、プル操作で内部的にプッシュが実行されることから、この例外はプルで発生する可能性があります。
 
@@ -180,7 +178,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 ## <a name="update-sync"></a>クライアント アプリの同期の動作を更新する
 
-このセクションでは、クライアント アプリを変更して、Azure モバイル アプリのバックエンドへの接続を解除したオフラインのシナリオをシミュレートします。データ項目を追加すると、例外ハンドラーによって、`PushResult.Status == CancelledByNetworkError` という表示とともに、アプリがオフライン モードで実行されていることが通知されます。追加された項目はローカル ストアで保持されますが、再びオンラインになって Azure モバイル アプリのバックエンドにプッシュできるようになるまではモバイル アプリのバックエンドに同期されることはありません。
+このセクションでは、クライアント アプリを変更して、Azure モバイル アプリのバックエンドへの接続を解除したオフラインのシナリオをシミュレートします。データ項目を追加すると、例外ハンドラーによって、アプリがオフライン モードで実行されていることが `PushResult.Status == CancelledByNetworkError` で通知されます。追加された項目はローカル ストアで保持されますが、再びオンラインになって Azure モバイル アプリのバックエンドにプッシュできるようになるまではモバイル アプリのバックエンドに同期されることはありません。
 
 1. 共有プロジェクトで App.xaml.cs を編集します。**MobileServiceClient** の初期化をコメント アウトし、無効なモバイル アプリ URL を使用する次の行を追加します。
 
@@ -199,15 +197,15 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 5. (省略可能) Visual Studio を使用して、Azure SQL Database テーブルを表示し、バックエンドのデータベースのデータが変更されていないことを確認します。
 
-   Visual Studio で、**サーバー エクスプローラー**を開きます。**[Azure]**、**[SQL Databases]** を選択して、データベースに移動します。データベースを右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。これで SQL データベースのテーブルとその内容を参照できます。
+   Visual Studio で、**サーバー エクスプローラー**を開きます。**[Azure]**、**[SQL Databases]** の順に選択して、データベースに移動します。データベースを右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。これで SQL データベースのテーブルとその内容を参照できます。
 
 6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://your-mobile-app-backend-name.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。 
 
 ## <a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する
 
-ここでは、アプリケーションをモバイル アプリ バックエンドに再接続します。これは、アプリケーションがオフライン状態から、モバイル アプリ バックエンドとのオンライン状態に移行したことをシミュレートします。最初にアプリケーションを実行すると、`OnNavigatedTo` イベント ハンドラーが `InitLocalStoreAsync` を呼び出します。これが次に `SyncAsync` を呼び出し、ローカル ストアとバックエンドのデータベースを同期します。そのため、アプリはスタートアップ時に同期を試みることになります。
+ここでは、アプリケーションをモバイル アプリ バックエンドに再接続します。これは、アプリケーションがオフライン状態から、モバイル アプリ バックエンドとのオンライン状態に移行したことをシミュレートします。初めてアプリケーションを実行すると、`OnNavigatedTo` イベント ハンドラーが `InitLocalStoreAsync` を呼び出します。これが次に `SyncAsync` を呼び出し、ローカル ストアとバックエンドのデータベースを同期します。そのため、アプリはスタートアップ時に同期を試みることになります。
 
-1. 共有プロジェクトで App.xaml.cs を開きます。先の `MobileServiceClient` の初期化をコメント解除し、正しいモバイル アプリの URL とゲートウェイの URL を使用します。
+1. 共有プロジェクトで App.xaml.cs を開きます。`MobileServiceClient` の初期化をコメント解除し、正しいモバイル アプリ の URL とゲートウェイの URL を使用します。
 
 2. **F5** キーを押して、アプリケーションをリビルドして実行します。アプリは、プッシュとプルの操作によって、`OnNavigatedTo` イベント ハンドラーが実行されるとすぐに、ローカルでの変更と Azure Mobile Apps バックエンドを同期します。
 
@@ -215,7 +213,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 4. アプリケーションで、ローカル ストアで完了させる項目の横にあるチェック ボックスをクリックします。
 
-  `UpdateCheckedTodoItem` は `SyncAsync` を呼び出し、モバイル アプリのバックエンドでの各項目全体を同期させます。`SyncAsync` がプッシュとプルの両方を呼び出します。ただし、**クライアントが変更を行ったテーブルに対してプルを実行すると、クライアントの同期コンテキストへのプッシュが常に最初に自動的に実行される**ことに注意してください。これは、ローカル ストアのすべてのテーブルとリレーションシップの一貫性を確実に保つためです。そのため、ここでは `PushAsync` への呼び出しを削除できます。呼び出しはプルを実行すれば自動で行われるためです。この動作は、認識をしていない場合、予期せぬプッシュを引き起こすことがあります。この動作については、「[Azure Mobile Apps でのオフライン データ同期]」を参照してください。
+  `UpdateCheckedTodoItem` は `SyncAsync` を呼び出し、項目全体をモバイル アプリ バックエンドと同期します。`SyncAsync` はプッシュとプルの両方を呼び出します。ただし、**クライアントが変更を行ったテーブルに対してプルを実行すると、クライアントの同期コンテキストへのプッシュが常に最初に自動的に実行される**ことに注意してください。これは、ローカル ストアのすべてのテーブルとリレーションシップの一貫性を確実に保つためです。そのため、ここでは `PushAsync` への呼び出しを削除できます。呼び出しはプルを実行すれば自動で行われるためです。この動作は、認識をしていない場合、予期せぬプッシュを引き起こすことがあります。この動作については、「[Azure Mobile Apps でのオフライン データ同期]」を参照してください。
 
 
 ##概要
@@ -224,7 +222,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 モバイル サービスに対する通常の CRUD 操作は、まるでアプリケーションが接続されているかのように機能しますが、すべての操作はローカル ストアに対して実施されます。
 
-ローカル ストアをサーバーと同期する場合は、`IMobileServiceSyncTable.PullAsync` と `MobileServiceClient.SyncContext.PushAsync` の各メソッドを使用しました。
+ローカル ストアをサーバーと同期する場合は、`IMobileServiceSyncTable.PullAsync` メソッドと `MobileServiceClient.SyncContext.PushAsync` メソッドを使用しました。
 
 *  変更内容をサーバーにプッシュするために、`IMobileServiceSyncContext.PushAsync()` を呼び出しました。このメソッドは、すべてのテーブルに対して変更をプッシュするため、同期テーブルではなく `IMobileServicesSyncContext` のメンバーです。
 
@@ -251,7 +249,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 * [Azure モバイル アプリでのオフライン データ同期]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure モバイル アプリでも同様に機能します)
+* [Cloud Cover: Offline Sync in Azure Mobile Services (Cloud Cover: Azure Mobile Services でのオフライン同期)] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
 * [Azure Friday: Azure Mobile Services のオフライン対応アプリ]
 
@@ -281,4 +279,4 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Azure Mobile Services のオフライン対応アプリ]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Java Web プロジェクトで Application Insights を使う" 
-	description="Application Insights を使用して Java Web サイトのパフォーマンスと利用状況を監視します" 
-	services="application-insights" 
-    documentationCenter="java"
-	authors="alancameronwills" 
+<properties
+	pageTitle="Java Web プロジェクトで Application Insights を使う | Microsoft Azure"
+	description="Application Insights を使用して Java Web サイトのパフォーマンスと利用状況を監視します"
+	services="application-insights"
+	documentationCenter="java"
+	authors="alancameronwills"
 	manager="douge"/>
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="06/30/2015" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="06/30/2015"
 	ms.author="awills"/>
- 
+
 # Java Web プロジェクトで Application Insights を使う
 
 *Application Insights はプレビュー段階です。*
@@ -37,7 +37,7 @@
 
 ## 1\.Application Insights のインストルメンテーション キーを取得する
 
-1. [Microsoft Azure ポータル](https://portal.azure.com)にログインします
+1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
 2. 新しい Application Insights リソースを作成します。
 
     ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-get-started/01-create.png)
@@ -58,7 +58,7 @@
 
 #### Maven を使用している場合:
 
-プロジェクトが既に Maven を使用してビルドする設定になっている場合は、pom.xml ファイルに次のコード スニペットをマージします。
+プロジェクトが既に Maven を使用してビルドする設定になっている場合は、pom.xml ファイルに次のコードをマージします。
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
 
@@ -80,13 +80,12 @@
     </dependencies>
 
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `<version>1.0.n</version>`。[SDK リリース ノート](app-insights-release-notes-java.md)、または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)に最新バージョンがあります。
-* *新しい SDK に更新するには*
- * プロジェクトの依存関係を更新します。
+* *ビルド エラーかチェックサムの検証エラーが発生していますか。* 特定のバージョンを試してください (例: `<version>1.0.n</version>`)。[SDK リリース ノート](app-insights-release-notes-java.md)、または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)に最新バージョンがあります。
+* *新しい SDK に更新する必要がありますか?* プロジェクトの依存関係を更新します。
 
 #### Gradle を使用している場合:
 
-プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、build.gradle ファイルに次のコード スニペットをマージします。
+プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、build.gradle ファイルに次のコードをマージします。
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
 
@@ -99,7 +98,7 @@
       // or applicationinsights-core for bare API
     }
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `version:'1.0.n'`。*[SDK リリース ノート](app-insights-release-notes-java.md)に最新バージョンがあります。* 
+* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、 特定のバージョンを試してください:* `version:'1.0.n'`。*[SDK リリース ノート](app-insights-release-notes-java.md)に最新バージョンがあります。*
 * *新しい SDK に更新するには*
  * プロジェクトの依存関係を更新します。
 
@@ -107,7 +106,7 @@
 
 SDK を手動で追加する:
 
-1. [Application Insights SDK for Java](http://dl.windowsazure.com/lib/applicationinsights/javabin/sdk.zip) のダウンロード
+1. [Application Insights SDK for Java](http://dl.windowsazure.com/lib/applicationinsights/javabin/sdk.zip) をダウンロードします。
 2. zip ファイルからバイナリを抽出し、プロジェクトに追加します。
 
 ### 疑問がある場合...
@@ -115,17 +114,17 @@ SDK を手動で追加する:
 * *zip 内の `-core` コンポーネントと `-web` コンポーネントの関係について*
 
  * `applicationinsights-core` は最小限の API を提供します。これは常に必要です。
- * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。これは、このテレメトリを自動的に収集したくない場合 (独自のコードを記述する場合など) は省略できます。
+ * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。このテレメトリを自動的に収集しない場合、これは省略できます。たとえば、独自に記述する場合です。
 
 * *変更が発行されたときに SDK を更新するには*
- * 最新の [Application Insights SDK for Java](http://dl.windowsazure.com/lib/applicationinsights/javabin/sdk.zip) をダウンロードし、古いものと置き換えます。
+ * 最新の [Application Insights SDK for Java](http://dl.windowsazure.com/lib/applicationinsights/javabin/sdk.zip) をダウンロードして、古いものと置き換えます。
  * 変更は [SDK リリース ノート](app-insights-release-notes-java.md)に記載されます。
 
 
 
 ## 3\.Application Insights の xml ファイルを追加する
 
-ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されるようにします。次の XML をファイルにコピーします。
+ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。次の XML をファイルにコピーします。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
 
@@ -168,7 +167,7 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 
 最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします (単に最小限の API が必要な場合はこの手順を行う必要はありません)。
 
-プロジェクトの web.xml ファイルを見つけて開きます。アプリケーション フィルターが構成されている web-app ノードの下に次のコード スニペットをマージします。
+プロジェクトの web.xml ファイルを見つけて開きます。アプリケーション フィルターが構成されている web-app ノードの下に次のコードをマージします。
 
 最も正確な結果を得るためには、他のすべてのフィルターの前にこのフィルターをマップする必要があります。
 
@@ -226,16 +225,16 @@ Windows サーバーに次のものをインストールします。
 HTTP 要求データが概要ブレードに表示されます (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
 ![サンプル データ](./media/app-insights-java-get-started/5-results.png)
- 
+
 
 任意のグラフをクリックして、より詳細なメトリックを表示します。
 
 ![](./media/app-insights-java-get-started/6-barchart.png)
 
- 
+
 
 要求のプロパティを表示すると、その要求に関連付けられているテレメトリ イベント (要求や例外など) が表示されます。
- 
+
 ![](./media/app-insights-java-get-started/7-instance.png)
 
 
@@ -270,20 +269,20 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 ## パフォーマンス カウンター
 
-[サーバー] タイルをクリックすると、一連のパフォーマンス カウンターが表示されます。
+**[サーバー]** タイルをクリックすると、一連のパフォーマンス カウンターが表示されます。
 
 
 ![](./media/app-insights-java-get-started/11-perf-counters.png)
 
-### パフォーマンス カウンター コレクションのカスタマイズ
+### パフォーマンス カウンター コレクションをカスタマイズする
 
-パフォーマンス カウンターの標準セットのコレクションを無効にするには、ApplicationInsights.xml ファイルのルート ノードの下に次のスニペットを追加します。
+パフォーマンス カウンターの標準セットのコレクションを無効にするには、ApplicationInsights.xml ファイルのルート ノードの下に次のコードを追加します。
 
     <PerformanceCounters>
        <UseBuiltIn>False</UseBuiltIn>
     </PerformanceCounters>
 
-### 追加のパフォーマンス カウンターの収集
+### 追加のパフォーマンス カウンターを収集する
 
 収集する追加のパフォーマンス カウンターを指定できます。
 
@@ -306,7 +305,7 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 
 
-#### Windows パフォーマンス カウンター 
+#### Windows パフォーマンス カウンター
 
 それぞれの [Windows パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)は、(フィールドがクラスのメンバーであるのと同様に) カテゴリのメンバーです。カテゴリについては、グローバルに設定することも、数字または名前付きインスタンスを設定することもできます。
 
@@ -318,7 +317,7 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
     </PerformanceCounters>
 
 *	displayName - Application Insights ポータルに表示される名前。
-*	categoryName - このパフォーマンス カウンターが関連付けられているパフォーマンス カウンター カテゴリ (パフォーマンス オブジェクト)。
+*	categoryName - このパフォーマンス カウンターが関連付けられているパフォーマンス カウンターのカテゴリ (パフォーマンス オブジェクト)。
 *	counterName - パフォーマンス カウンターの名前。
 *	instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが 1 つ含まれている場合)。categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、`"__SELF__"` を指定します。
 
@@ -371,6 +370,4 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

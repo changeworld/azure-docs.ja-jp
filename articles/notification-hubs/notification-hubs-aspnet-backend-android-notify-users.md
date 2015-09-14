@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure Notification Hubs によるユーザーへの通知" 
-	description="Azure のユーザーにプッシュ通知を送信する方法について説明します。コード サンプルは Android 向けJava で記述されています。" 
-	documentationCenter="android" 
-	services="notification-hubs" 
-	authors="wesmc7777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Azure Notification Hubs によるユーザーへの通知"
+	description="Azure のユーザーにプッシュ通知を送信する方法について説明します。コード サンプルは Android 向けJava で記述されています。"
+	documentationCenter="android"
+	services="notification-hubs"
+	authors="wesmc7777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="notification-hubs" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="java" 
-	ms.topic="article" 
-	ms.date="05/31/2015" 
+<tags
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="java"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs によるユーザーへの通知
@@ -36,16 +36,16 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 1. 「[Getting Started with Notification Hubs (Android) (Notification Hubs (Android) の使用)](notification-hubs-android-get-started.md)」チュートリアルに従って、アプリケーションを作成、構成して GCM からプッシュ通知を受け取ります。
 
 2. **res/layout/activity\_main.xml** ファイルを開き、コンテンツの定義を次と置き換えます。
- 
+
     これでユーザーとしてログインするための新しい EditText コントロールが追加されます。また、送信する通知の一部となるユーザー名のタグのフィールドが追加されます。
-			
+
 		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
             android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
-        
+
         <EditText
             android:id="@+id/usernameText"
             android:layout_width="match_parent"
@@ -138,11 +138,11 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 	![][A1]
 
 4. `MainActivity` クラスと同じパッケージに **RegisterClient** という新しいクラスを作成します。新しいクラス ファイルに次のコードを使用します。
- 
+
 		import java.io.IOException;
         import java.io.UnsupportedEncodingException;
         import java.util.Set;
-        
+
         import org.apache.http.HttpResponse;
         import org.apache.http.HttpStatus;
         import org.apache.http.client.ClientProtocolException;
@@ -156,11 +156,11 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
         import org.json.JSONArray;
         import org.json.JSONException;
         import org.json.JSONObject;
-        
+
         import android.content.Context;
         import android.content.SharedPreferences;
         import android.util.Log;
-        
+
         public class RegisterClient {
             private static final String PREFS_NAME = "ANHSettings";
             private static final String REGID_SETTING_NAME = "ANHRegistrationId";
@@ -168,32 +168,32 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
             SharedPreferences settings;
             protected HttpClient httpClient;
             private String authorizationHeader;
-        
+
             public RegisterClient(Context context, String backendEnpoint) {
                 super();
                 this.settings = context.getSharedPreferences(PREFS_NAME, 0);
                 httpClient =  new DefaultHttpClient();
                 Backend_Endpoint = backendEnpoint + "/api/register";
             }
-        
+
             public String getAuthorizationHeader() {
                 return authorizationHeader;
             }
-        
+
             public void setAuthorizationHeader(String authorizationHeader) {
                 this.authorizationHeader = authorizationHeader;
             }
-        
+
             public void register(String handle, Set<String> tags) throws ClientProtocolException, IOException, JSONException {
                 String registrationId = retrieveRegistrationIdOrRequestNewOne(handle);
-        
+
                 JSONObject deviceInfo = new JSONObject();
                 deviceInfo.put("Platform", "gcm");
                 deviceInfo.put("Handle", handle);
                 deviceInfo.put("Tags", new JSONArray(tags));
-        
+
                 int statusCode = upsertRegistration(registrationId, deviceInfo);
-        
+
                 if (statusCode == HttpStatus.SC_OK) {
                     return;
                 } else if (statusCode == HttpStatus.SC_GONE){
@@ -209,7 +209,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
                     throw new RuntimeException("Error upserting registration");
                 }
             }
-        
+
             private int upsertRegistration(String registrationId, JSONObject deviceInfo)
                     throws UnsupportedEncodingException, IOException,
                     ClientProtocolException {
@@ -221,11 +221,11 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
                 int statusCode = response.getStatusLine().getStatusCode();
                 return statusCode;
             }
-        
+
             private String retrieveRegistrationIdOrRequestNewOne(String handle) throws ClientProtocolException, IOException {
                 if (settings.contains(REGID_SETTING_NAME))
                     return settings.getString(REGID_SETTING_NAME, null);
-        
+
                 HttpUriRequest request = new HttpPost(Backend_Endpoint+"?handle="+handle);
                 request.addHeader("Authorization", "Basic "+authorizationHeader);
                 HttpResponse response = httpClient.execute(request);
@@ -235,9 +235,9 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
                 }
                 String registrationId = EntityUtils.toString(response.getEntity());
                 registrationId = registrationId.substring(1, registrationId.length()-1);
-        
+
                 settings.edit().putString(REGID_SETTING_NAME, registrationId).commit();
-        
+
                 return registrationId;
             }
         }
@@ -251,20 +251,20 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 		private RegisterClient registerClient;
 	    private static final String BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
 
- 
+
 6. `MainActivity` クラスの `onCreate` メソッドで、`hub` フィールドの初期化と `registerWithNotificationHubs` メソッドへのコールを削除するか、コメント アウトします。その後 `RegisterClient` クラスのインスタンスを初期化するコードを追加します。メソッドには次の行が含まれています。
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-    
+
             MyHandler.mainActivity = this;
             NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
             gcm = GoogleCloudMessaging.getInstance(this);
-    
+
             //hub = new NotificationHub(HubName, HubListenConnectionString, this);
             //registerWithNotificationHubs();
-    
+
 	        registerClient = new RegisterClient(this, BACKEND_ENDPOINT);
 
             setContentView(R.layout.activity_main);
@@ -292,10 +292,10 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
         	Button sendPush = (Button) findViewById(R.id.sendbutton);
 	        sendPush.setEnabled(false);
 	    }
-	
+
 		public void login(View view) throws UnsupportedEncodingException {
 	    	this.registerClient.setAuthorizationHeader(getAuthorizationHeader());
-	    	
+
 	    	final Context context = this;
 	    	new AsyncTask<Object, Object, Object>() {
 				@Override
@@ -309,7 +309,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 					}
 					return null;
 				}
-	
+
 				protected void onPostExecute(Object result) {
                 	Button sendPush = (Button) findViewById(R.id.sendbutton);
 			        sendPush.setEnabled(true);
@@ -318,7 +318,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 				}
 			}.execute(null, null, null);
 	    }
-	    
+
 		private String getAuthorizationHeader() throws UnsupportedEncodingException {
 			EditText username = (EditText) findViewById(R.id.usernameText);
 	    	EditText password = (EditText) findViewById(R.id.passwordText);
@@ -344,20 +344,20 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
                 @Override
                 protected Object doInBackground(Object... params) {
                     try {
-    
+
                         String uri = BACKEND_ENDPOINT + "/api/notifications";
                         uri += "?pns=" + pns;
                         uri += "&to_tag=" + userTag;
-    
+
                         HttpPost request = new HttpPost(uri);
                         request.addHeader("Authorization", "Basic "+ getAuthorizationHeader());
                         request.setEntity(new StringEntity(message));
                         request.addHeader("Content-Type", "application/json");
-    
+
                         HttpResponse response = new DefaultHttpClient().execute(request);
-    
+
                         if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-                            DialogNotify("MainActivity - Error sending " + pns + " notification", 
+                            DialogNotify("MainActivity - Error sending " + pns + " notification",
 								response.getStatusLine().toString());
                             throw new RuntimeException("Error sending notification");
                         }
@@ -365,7 +365,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
                         DialogNotify("MainActivity - Failed to send " + pns + " notification ", e.getMessage());
                         return e;
                     }
-    
+
                     return null;
                 }
             }.execute(null, null, null);
@@ -386,15 +386,15 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
          */
         public void sendNotificationButtonOnClick(View v)
                 throws ClientProtocolException, IOException {
-    
+
             String nhMessageTag = ((EditText) findViewById(R.id.editTextNotificationMessageTag))
                     .getText().toString();
             String nhMessage = ((EditText) findViewById(R.id.editTextNotificationMessage))
                     .getText().toString();
-    
+
             // JSON String
             nhMessage = """ + nhMessage + """;
-    
+
             if (((ToggleButton)findViewById(R.id.toggleButtonWNS)).isChecked())
             {
                 sendPush("wns", nhMessageTag, nhMessage);
@@ -432,6 +432,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [A1]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users.png
 [A2]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users-enter-password.png
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

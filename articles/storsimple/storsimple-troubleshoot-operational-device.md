@@ -1,25 +1,25 @@
 <properties 
-   pageTitle="StorSimple 運用デバイスのトラブルシューティング | Microsoft Azure"
-   description="運用している StorSimple デバイスに発生するエラーを診断して修正する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
+   pageTitle="デプロイ済みの StorSimple デバイスのトラブルシューティング | Microsoft Azure"
+	description="デプロイし、現在運用している StorSimple デバイスに発生するエラーを診断して修正する方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/19/2015"
-   ms.author="v-sharos" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/31/2015"
+	ms.author="v-sharos"/>
 
 # StorSimple 運用デバイスのトラブルシューティング
 
 ## 概要
 
-この記事は、デプロイした StorSimple デバイスの運用開始後に発生する可能性のある構成の問題を解決するための有益なトラブルシューティング ガイダンスです。StorSimple の利用時に起こることがある問題の解決に役立つ、一般的な問題、考えられる原因、推奨手順について説明します。この情報は、StorSimple のオンプレミスの物理デバイスと StorSimple 仮想デバイスの両方に当てはまります。
+この記事は、デプロイした StorSimple デバイスの運用開始後に発生する可能性のある構成の問題を解決するための有益なトラブルシューティング ガイダンスです。Microsoft Azure StorSimple の利用時に起こることがある問題の解決に役立つ、一般的な問題、考えられる原因、推奨手順について説明します。この情報は、StorSimple のオンプレミスの物理デバイスと StorSimple 仮想デバイスの両方に当てはまります。
 
 この記事の最後には、Microsoft Azure StorSimple の操作中に発生する可能性のあるエラー コードの一覧と、エラーを解決するための手順が示されています。
 
@@ -64,7 +64,7 @@
 問題を解決できない場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
 
-[1]: https://technet.microsoft.com/ja-jp/%5Clibrary/Dn688135(v=WPS.630).aspx
-[2]: https://technet.microsoft.com/ja-jp/%5Clibrary/Dn715782(v=WPS.630).aspx
+[1]: https://technet.microsoft.com/ja-JP/%5Clibrary/Dn688135(v=WPS.630).aspx
+[2]: https://technet.microsoft.com/ja-JP/%5Clibrary/Dn715782(v=WPS.630).aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

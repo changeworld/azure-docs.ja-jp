@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-management"
-	ms.date="08/26/2015"
+	ms.date="09/02/2015"
 	ms.author="carlrab"/>
 
 # Azure SQL Database へのデータベースの移行
@@ -29,18 +29,18 @@ Azure SQL Database V12 は、SQL Server 2014 以降とのほぼ完全なエン�
 互換性のあるオンプレミスの SQL Server データベースを Azure SQL Database V12 に移行する方法は多数あります。
 
 - 小規模から中規模のデータベースの場合、接続に問題点 (接続なし、低帯域幅、タイムアウト) がなければ、互換性のある SQL Server 2005 以降のデータベースの移行は、SQL Server Management Studio の [データベースの Microsoft Azure Database へのデプロイ] ウィザードを実行するのと同じくらい簡単です。
-- 中規模から大規模のデータベースの場合や接続に問題点がある場合は、SQL Server Management Studio を使用して、データとスキーマを BACPAC ファイル (ローカルまたは Azure BLOB に保存される) にエクスポートしてから、Azure SQL インスタンスに BACPAC ファイルをインポートできます。Azure BLOB に BACPAC を保存する場合は、Azure ポータルから BACPAC ファイルをインポートすることもできます。  
+- 中規模から大規模のデータベースの場合や接続に問題点がある場合は、SQL Server Management Studio を使用して、データとスキーマを BACPAC ファイル (ローカルまたは Azure BLOB に保存される) にエクスポートしてから、Azure SQL インスタンスに BACPAC ファイルをインポートできます。Azure BLOB に BACPAC を保存する場合は、Azure ポータルから BACPAC ファイルをインポートすることもできます。BACPAC ファイルの詳細については、「[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)」を参照してください。
 - 大規模なデータベースの場合は、スキーマとデータを個別に移行することでパフォーマンスを最適化できます。SQL Server Management Studio または Visual Studio を使用してスキーマをデータベース プロジェクトに抽出し、スキーマをデプロイして Azure SQL Database を作成できます。BCP を使用してデータを抽出したら、BCP を使用して、並列ストリームを使用したデータを Azure SQL Database にインポートできます。大規模で複雑なデータベースの移行には、どの方法でも数時間かかる場合があります。
 
 ### 方法 1
 ******SQL Server Management Studio を使用した互換性のあるデータベースの移行***
 
-SQL Server Management Studio では、互換性のあるオンプレミスの SQL Server データベースを Azure SQL Database に移行する 2 つの方法を提供しています。[データベースの Microsoft Azure SQL Database へのデプロイ] ウィザードを使用するか、BACPAC ファイルにデータベースをエクスポートでき、その後それをインポートして新しい Azure SQL Database を作成できます。ウィザードは、Azure SQL Database V12 の互換性を検証し、スキーマとデータを BACPAC ファイルに抽出し、これを指定された Azure SQL Database インスタンスにインポートします。
+SQL Server Management Studio では、互換性のあるオンプレミスの SQL Server データベースを Azure SQL Database に移行する 2 つの方法を提供しています。[データベースの Microsoft Azure SQL Database へのデプロイ] ウィザードを使用するか、BACPAC ファイルにデータベースをエクスポートでき、その後それをインポートして新しい Azure SQL Database を作成できます。ウィザードは、Azure SQL Database V12 の互換性を検証し、スキーマとデータを BACPAC ファイルに抽出し、これを指定された Azure SQL Database インスタンスにインポートします。このオプションを使用するには、[SSMS の使用](sql-database-migrate-ssms.md)に関するページを参照してください。
 
 ### 方法 2
 ***Visual Studio を使用してオフラインでデータベース スキーマを更新し、SQL Server Management Studio でデプロイする***
 
-オンプレミスの SQL Server データベースに互換性がない場合や、互換性があるかどうかを判断する場合は、分析のために Visual Studio データベース プロジェクトにデータベース スキーマをインポートできます。分析するには、SQL Database V12 にプロジェクトのターゲット プラットフォームを指定し、プロジェクトを構築します。構築に成功した場合は、データベースには互換性があります。構築に失敗した場合は、Visual Studio 用の SQL Server Data Tools ("SSDT") でエラーを解決できます。プロジェクトが正常に構築されたら、これをソース データベースのコピーとして発行し、SSDT のデータ比較機能を使用して、ソース データベースから Azure SQL V12 互換のデータベースにデータをコピーできます。この更新されたデータベースは、方法 1 を使用して、Azure SQL Database にデプロイされます。スキーマのみの移行が必要な場合は、Visual Studio から Azure SQL Database に直接、発行することができます。この方法は移行ウィザードのみで処理できる変更よりも多数の変更を、データベース スキーマで行う必要がある場合に使用します。
+オンプレミスの SQL Server データベースに互換性がない場合や、互換性があるかどうかを判断する場合は、分析のために Visual Studio データベース プロジェクトにデータベース スキーマをインポートできます。分析するには、SQL Database V12 にプロジェクトのターゲット プラットフォームを指定し、プロジェクトを構築します。構築に成功した場合は、データベースには互換性があります。構築に失敗した場合は、Visual Studio 用の SQL Server Data Tools ("SSDT") でエラーを解決できます。プロジェクトが正常に構築されたら、これをソース データベースのコピーとして発行し、SSDT のデータ比較機能を使用して、ソース データベースから Azure SQL V12 互換のデータベースにデータをコピーできます。この更新されたデータベースは、方法 1 を使用して、Azure SQL Database にデプロイされます。スキーマのみの移行が必要な場合は、Visual Studio から Azure SQL Database に直接、発行することができます。この方法は移行ウィザードのみで処理できる変更よりも多数の変更を、データベース スキーマで行う必要がある場合に使用します。このオプションを使用するには、[Visual Studio の使用](sql-database-migrate-visualstudio-ssdt.md)に関するページを参照してください。
 
 ## 使用する方法を決定する
 - 変更することなくデータベースを移行することができると予想される場合は、迅速かつ簡単な方法 1 を使用してください。不明な場合は、方法 1 の説明に従って、データベースからスキーマのみの BACPAC をエクスポートして開始します。エラーなしで、エクスポートが成功した場合は、方法 1 を使用してそのデータとデータベースを移行することができます。  
@@ -72,4 +72,4 @@ Visual Studio の SQL Server ツールを使用して、スキーマ内の各オ
 | エラーがある場合、出力を変更するためのプロビジョニングはありません。送信元スキーマには互換性が必要です。 | Visual Studio の SSDT のすべての機能を使用できます。スキーマはオフラインで変更されます。 | アプリケーションの検証は Azure で行われます。変更することなく移行するには、スキーマを最小にする必要があります。 | データベースを Azure にデプロイする前に、SQL Server でアプリケーションの検証を実行できます。 |
 | 簡単に構成簡単に構成された 1 つまたは 2 つの処理手順。 | より複雑な複数の処理手順 (スキーマのデプロイのみの場合はより簡単)。 |
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

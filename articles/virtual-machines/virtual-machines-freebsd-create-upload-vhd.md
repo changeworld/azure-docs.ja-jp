@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="FreeBSD VHD の作成と Azure へのアップロード" 
-   description="FreeBSD オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します" 
-   services="virtual-machines" 
-   documentationCenter="" 
-   authors="KylieLiang" 
-   manager="timlt" 
-   editor=""/>
+   pageTitle="FreeBSD VHD の作成と Azure へのアップロード"
+	description="FreeBSD オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="KylieLiang"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services" 
-   ms.date="05/19/2015"
-   ms.author="kyliel"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-linux"
+	ms.workload="infrastructure-services"
+	ms.date="05/19/2015"
+	ms.author="kyliel"/>
 
 # FreeBSD VHD の作成と Azure へのアップロード 
 
@@ -23,7 +23,7 @@
 ##前提条件##
 この記事では、次の項目があることを前提としています。
 
-- **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure アカウントの作成に関するページ](../php-create-account.md)を参照してください。 
+- **Azure サブスクリプション** - お持ちでない場合でも、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。それ以外の場合は、[無料試用版のアカウントの作成](http://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。  
 
 - **Azure PowerShell ツール** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Azure のダウンロード ページ](http://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルはこちらで入手できます。[Azure のダウンロード](http://azure.microsoft.com/downloads/)のコマンドレットを使用して VHD をアップロードします。
 
@@ -100,9 +100,9 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 ## 手順 2. Azure にストレージ アカウントを作成する ##
 
-仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。Azure 管理ポータルを使用して、ストレージ アカウントを作成できます。
+仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。Microsoft Azure 管理ポータルを使用して、ストレージ アカウントを作成できます。
 
-1. Azure 管理ポータルにサインインします。
+1. Microsoft Azure 管理ポータルにサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
@@ -143,7 +143,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 .vhd ファイルをアップロードする前に、コンピューターと Azure のサブスクリプションの間にセキュリティで保護された接続を確立する必要があります。接続の確立には、Microsoft Azure Active Directory 方式または証明書方式を使用できます。
 
-<h3>Microsoft Azure AD 方式を使用する</h3>
+###Microsoft Azure AD 方式を使用する
 
 1. Azure PowerShell コンソールを開きます。
 
@@ -155,7 +155,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 3. Azure により資格情報が認証および保存され、ウィンドウが閉じます。
 
-<h3>証明書方式を使用する</h3>
+###証明書方式を使用する
 
 1. Azure PowerShell コンソールを開きます。 
 
@@ -193,7 +193,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
     **重要**: 現時点では OS の種類として Linux を使用してください。これは、現在の Azure PowerShell のバージョンでは、パラメーターとして “Linux” または “Windows” しか使用できないためです。
 
-2. ここまでの手順を完了すると、Azure 管理ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
+2. ここまでの手順を完了すると、Microsoft Azure 管理ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
 
     ![add image](./media/virtual-machines-freebsd-create-upload-vhd/addfreebsdimage.png)
 
@@ -206,4 +206,4 @@ FreeBSD オペレーティング システムがインストールされた仮�
 	![freebsd image in azure](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

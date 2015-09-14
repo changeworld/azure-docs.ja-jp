@@ -1,20 +1,20 @@
 <properties
    pageTitle="HDInsight で Storm を使用して Event Hubs のイベントを処理する | Microsoft Azure"
-   description="Visual Studio で HDInsight Tools for Visual Studio を使用して作成した C# Storm トポロジによって Event Hubs のデータを処理する方法について説明します。"
-   services="hdinsight,notification hubs"
-   documentationCenter=""
-   authors="Blackmist"
-   manager="paulettm"
-   editor="cgronlun"/>
+	description="Visual Studio で HDInsight Tools for Visual Studio を使用して作成した C# Storm トポロジによって Event Hubs のデータを処理する方法について説明します。"
+	services="hdinsight,notification hubs"
+	documentationCenter=""
+	authors="Blackmist"
+	manager="paulettm"
+	editor="cgronlun"/>
 
 <tags
    ms.service="hdinsight"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="big-data"
-   ms.date="07/24/2015"
-   ms.author="larryfr"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="09/02/2015"
+	ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)
 
@@ -237,14 +237,14 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
 Event Hubs のボルトは、Event Hub にルーティングされる単一の文字列値を予期しています。次の例では、JSON 文字列を生成するように既定の **Spout.cs** ファイルを変更します。
 
-1. **ソリューション エクスプローラー**で **EventHubWriter** プロジェクトを右クリックし、**[Nuget パッケージの管理]** を選択します。**Json.Net** パッケージを探し、それをソリューションに追加します。これにより、ボルトを使用して Event Hubs に送信される JSON データを簡単に作成できます。
-
-1. **Spout.cs** を開き、ファイルの先頭に次の行を追加します。
+1. **ソリューション エクスプローラー**で **Spout.cs** を開き、ファイルの先頭に次の行を追加します。
 
 		using Newtonsoft.Json;
 		using Newtonsoft.Json.Linq;
 
 	これにより、JSON データをより簡単に処理できます。
+    
+    > [AZURE.NOTE]JSON.NET パッケージが既にインストールされています。これは、C# Storm トポロジーに使用される SCP.NET フレームワークで必要です。
 
 3. 次のコードを見つけます。
 
@@ -420,9 +420,7 @@ Event Hubs のボルトは、Event Hub にルーティングされる単一の�
 
 ### ボルトの変更
 
-1. **ソリューション エクスプローラー**で **EventHubReader** プロジェクトを右クリックし、**[Nuget パッケージの管理]** を選択します。**Json.Net** パッケージを探し、それをソリューションに追加します。これにより、スパウトから受信した JSON データを簡単に処理できるようになります。また、テーブル ストレージに書き込みができるように、**WindowsAzure.Storage** パッケージを追加します。
-
-1. **Bolt.cs** を開き、ファイルの先頭に次の行を追加します。
+1. **ソリューション エクスプローラー**で **EventHubReader** プロジェクトを展開し、**Bolt.cs** ファイルを開きます。ファイルの先頭に次のコードを追加します。
 
 		using Newtonsoft.Json.Linq;
 		using Microsoft.WindowsAzure.Storage;
@@ -557,4 +555,4 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

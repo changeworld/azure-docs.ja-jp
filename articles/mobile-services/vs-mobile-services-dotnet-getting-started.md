@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="" 
-	description="Visual Studio .NET プロジェクトで Azure Mobile Services を使用する方法" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="patshea123" 
-	manager="douge" 
+<properties
+	pageTitle=""
+	description="Visual Studio .NET プロジェクトで Azure Mobile Services を使用する方法"
+	services="mobile-services"
+	documentationCenter=""
+	authors="patshea123"
+	manager="douge"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/22/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="vs-getting-started"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="patshea123"/>
 
 # Mobile Services の使用 (.NET プロジェクト)
@@ -47,22 +47,22 @@
 
 このコードは、**アプリケーション キーを持つユーザー**に対するアクセス許可がテーブルに設定されている場合に機能します。モバイル サービスの安全を確保するためにアクセス許可を変更する場合、ユーザー認証サポートを追加する必要があります。詳細については、[Mobile Services アプリへの認証の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md)を参照してください。
 
-#####テーブル項目を追加する 
+#####テーブル項目を追加する
 
 新しい項目をデータ テーブルに挿入します。
 
 	TodoItem todoItem = new TodoItem() { Text = "My first to do item", Complete = false };
 	await todoTable.InsertAsync(todoItem);
 
-#####テーブルの読み取りまたはクエリを実行する 
+#####テーブルの読み取りまたはクエリを実行する
 
 次のコードは、テーブルのすべての項目をクエリします。テーブルは、データの最初のページ (既定で 50 項目) しか返さないことに注意してください。オプション パラメーターを使用して、必要なページ サイズを渡すことができます。
 
     List<TodoItem> items;
     try
     {
-        // Query that returns all items.   
-        items = await todoTable.ToListAsync();             
+        // Query that returns all items.
+        items = await todoTable.ToListAsync();
     }
     catch (MobileServiceInvalidOperationException e)
     {
@@ -85,4 +85,4 @@
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

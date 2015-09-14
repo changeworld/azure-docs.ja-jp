@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="SQL Database の災害復旧" 
-   description="Azure SQL Database の geo レプリケーションと地理リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。" 
-   services="sql-database" 
-   documentationCenter="" 
-   authors="elfisher" 
-   manager="jeffreyg" 
-   editor="monicar"/>
+   pageTitle="SQL Database の災害復旧"
+	description="Azure SQL Database の geo レプリケーションと地理リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="elfisher"
+	manager="jeffreyg"
+	editor="monicar"/>
 
 <tags
    ms.service="sql-database"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-management" 
-   ms.date="07/14/2015"
-   ms.author="elfish"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-management"
+	ms.date="07/14/2015"
+	ms.author="elfish"/>
 
 # Azure SQL Database を障害から回復する
 
@@ -68,6 +68,8 @@ REST を使用して、プログラムでデータベースの復旧を実行し
 
 データベースの障害が発生した場合は、地理リストアを使用して、最新の地理冗長バックアップからデータベースを復旧できます。
 
+> [AZURE.NOTE]データベースを復旧すると、新しいデータベースが作成されます。復旧先サーバーに新しいデータベース用の十分な DTU 容量があることが重要です。このクォータの増加を要求する場合は、[サポートに連絡](http://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/)してください。
+
 ###Azure ポータル
 1. [Azure ポータル](https://portal.Azure.com)にログインします。
 2. 画面の左側にある、**[新規]** を選択し、次に **[データとストレージ]** を選択し、次に **[SQL Database]** を選択します。
@@ -101,4 +103,4 @@ REST を使用して、プログラムでデータベースの復旧を実行し
 データベースの復旧後に、「[Finalize a Recovered Database (復旧データベースの最終処理)](sql-database-recovered-finalize.md)」ガイドに従って、復旧したデータベースを構成することができます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

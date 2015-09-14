@@ -1,21 +1,21 @@
 <properties 
-   pageTitle="オンプレミスの StorSimple デバイスのデプロイ"
-	description="StorSimple Update 1 のデバイスとサービスをデプロイするための手順とベスト プラクティスです。"
+   pageTitle="StorSimple デバイス (Update 1) のデプロイ | Microsoft Azure"
+	description="StorSimple Update 1 のデバイスとサービスをデプロイするための手順とベスト プラクティスを説明します。"
 	services="storsimple"
 	documentationCenter="NA"
 	authors="alkohli"
-	manager="adinah"
-	editor="tysonn"/>
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
 	ms.devlang="NA"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="TBD"
-	ms.date="08/21/2015"
+	ms.date="09/02/2015"
 	ms.author="alkohli"/>
 
-# オンプレミスの StorSimple デバイスのデプロイ
+# オンプレミスの StorSimple デバイス (Update 1) のデプロイ
 
 [AZURE.INCLUDE [storsimple-version-selector](../../includes/storsimple-version-selector.md)]
 
@@ -287,4 +287,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 [StorSimple Manager サービス](storsimple-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
  
 
-<!------HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

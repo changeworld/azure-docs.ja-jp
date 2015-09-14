@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法" 
-	description="Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法について説明します。キューの作成と削除のほか、キュー メッセージの挿入、ピーク、取得、削除を行います。" 
-	services="app-service\web, storage" 
-	documentationCenter=".net" 
-	authors="tdykstra" 
-	manager="wpickett" 
+	pageTitle="Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法"
+	description="Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法について説明します。キューの作成と削除のほか、キュー メッセージの挿入、ピーク、取得、削除を行います。"
+	services="app-service\web, storage"
+	documentationCenter=".net"
+	authors="tdykstra"
+	manager="wpickett"
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/29/2015"
 	ms.author="tdykstra"/>
 
 # Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法
@@ -538,7 +538,12 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 
 プログラムがローカルまたはその他の環境で実行されているのではなく、Azure Web ジョブで実行されている場合は、コンソール出力はダッシュボードにのみ表示されます。
 
-[Dashboard の接続文字列を null に設定](#config)することでログを無効にできます。
+高スループットのシナリオ用にダッシュボード ログを無効にします。既定では、SDK はストレージにログを書き込みます。このアクティビティにより、多数のメッセージの処理時にパフォーマンスが低下する場合があります。ログを無効にするには、ダッシュボード接続文字列を、次の例に示すように null に設定します。
+
+		JobHostConfiguration config = new JobHostConfiguration();       
+		config.DashboardConnectionString = “”;        
+		JobHost host = new JobHost(config);
+		host.RunAndBlock();
 
 次の例では、ログを書き込むいくつかの方法を示しています。
 
@@ -581,4 +586,4 @@ Web ジョブのページ (特定の関数呼び出しのページではなく) 
 このガイドでは、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

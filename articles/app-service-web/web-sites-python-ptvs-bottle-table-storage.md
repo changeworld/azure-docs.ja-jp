@@ -1,25 +1,23 @@
 <properties 
-	pageTitle="Python Tools 2.1 for Visual Studio を使用した Azure 上の Bottle と Azure テーブル ストレージ" 
-	description="Python Tools for Visual Studio を使用して、 Azure テーブル ストレージにデータを保存する Bottle アプリケーションを作成し、Azure App Service Web Apps に Web アプリをデプロイする方法について説明します。" 
-	services="app-service\web" 
-	documentationCenter="python" 
-	authors="huguesv" 
-	manager="wpickett" 
+	pageTitle="Python Tools 2.2 for Visual Studio を使用した Azure 上の Bottle と Azure テーブル ストレージ"
+	description="Python Tools for Visual Studio を使用して、 Azure テーブル ストレージにデータを保存する Bottle アプリケーションを作成し、Azure App Service Web Apps に Web アプリをデプロイする方法について説明します。"
+	services="app-service\web"
+	documentationCenter="python"
+	authors="huguesv"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="python" 
-	ms.topic="article" 
-	ms.date="04/16/2015" 
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="python"
+	ms.topic="article"
+	ms.date="08/30/2015"
 	ms.author="huguesv"/>
 
 
-
-
-# Python Tools 2.1 for Visual Studio を使用した Azure 上の Bottle と Azure テーブル ストレージ 
+# Python Tools 2.2 for Visual Studio を使用した Azure 上の Bottle と Azure テーブル ストレージ 
 
 このチュートリアルでは、[Python Tools for Visual Studio] のサンプル テンプレートを使用して、単純な投票 Web アプリを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=GJXDGaEPy94)でもご覧いただけます。
 
@@ -31,10 +29,10 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 ## 前提条件
 
- - Visual Studio 2012 または 2013
- - [Python Tools 2.1 for Visual Studio]
- - [Python Tools 2.1 for Visual Studio サンプル VSIX]
- - [Azure SDK Tools for VS 2013] または [Azure SDK Tools for VS 2012]
+ - Visual Studio 2013 または 2015
+ - [Python Tools 2.2 for Visual Studio]
+ - [Python Tools 2.2 for Visual Studio サンプル VSIX]
+ - [Azure SDK Tools for VS 2013] または [Azure SDK Tools for VS 2015]
  - [Python 2.7 (32 ビット)] または [Python 3.4 (32 ビット)]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
@@ -160,7 +158,7 @@ Azure .NET SDK を使用すると、Web アプリを Azure App Service に簡単
 
   	<!-- ![Top Menu](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteTopMenu.png) -->
 
-1.  下方向へ **[アプリケーション設定]** セクションまでスクロールし、**プロジェクトを構成する**セクションで説明したように **REPOSITORY_NAME**、**STORAGE_NAME**、**STORAGE_KEY** の値を設定します。
+1.  下方向へ **[アプリケーション設定]** セクションまでスクロールし、**プロジェクトを構成する**セクションで説明したように **REPOSITORY\\_NAME**、**STORAGE\\_NAME**、**STORAGE\\_KEY** の値を設定します。
 
   	<!-- ![App Settings](./media/web-sites-python-ptvs-bottle-table-storage/PollsCommonWebSiteConfigureSettingsTableStorage.png) -->
 
@@ -202,19 +200,19 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
 [Azure ポータル]: https://portal.azure.com
 [Azure SDK for .NET]: http://azure.microsoft.com/downloads/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
-[Python Tools 2.1 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=517189
+[Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=624025
+[Python Tools 2.2 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=624025
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
-[Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
+[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
-[Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
+[Python Tools for Visual Studio のドキュメント]: http://aka.ms/ptvsdocs
 [Bottle のドキュメント]: http://bottlepy.org/docs/dev/index.html
-[Microsoft Azure でのリモート デバッグ]: http://pytools.codeplex.com/wikipage?title=Features%20Azure%20Remote%20Debugging
-[Web プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Web%20Project
-[クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
+[Microsoft Azure でのリモート デバッグ]: http://go.microsoft.com/fwlink/?LinkId=624026
+[Web プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624027
+[クラウド サービス プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624028
 [Azure ストレージ]: http://azure.microsoft.com/documentation/services/storage/
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -3,6 +3,7 @@
 	description="Azure App Service Web Apps での Python Web アプリの実行について説明したチュートリアルです。"
 	services="app-service\web"
 	documentationCenter="python"
+	tags="python"
 	authors="huguesv"
 	manager="wpickett"
 	editor=""/>
@@ -12,11 +13,9 @@
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
-	ms.topic="hero-article" 
-	ms.date="04/15/2015"
+	ms.topic="hero-article"
+	ms.date="08/30/2015"
 	ms.author="huguesv"/>
-
-
 
 
 # Azure での Django を使用した Web アプリの作成
@@ -36,7 +35,7 @@ Django Web フレームワークを使用してアプリケーションを作成
 - Python 2.7 または 3.4
 - setuptools、pip、virtualenv (Python 2.7 のみ)
 - Git
-- [Python Tools 2.1 for Visual Studio] - これはオプションです。
+- [Python Tools for Visual Studio][] (PTVS) - 注: これはオプションです
 
 **注**: 現在、TFS 発行は Python プロジェクトではサポートされていません。
 
@@ -46,7 +45,7 @@ Python 2.7 または 3.4 (32 ビット) がインストールされていない�
 
 Git には、[Git for Windows] または [GitHub for Windows] をお勧めします。Visual Studio を使用する場合は、Git の統合のサポートを使用できます。
 
-さらに、[Python Tools 2.1 for Visual Studio] のインストールもお勧めします。これはオプションですが、無料版の Visual Studio Community 2013 または Visual Studio Express 2013 for Web を含む [Visual Studio] を使用すれば、Python IDE を有効に活用できます。
+さらに、[Python Tools 2.2 for Visual Studio] のインストールもお勧めします。これはオプションですが、無料版の Visual Studio Community 2013 または Visual Studio Express 2013 for Web を含む [Visual Studio] を使用すれば、Python IDE を有効に活用できます。
 
 ### Mac/Linux
 
@@ -102,7 +101,7 @@ Python と Git は既にインストールされていると思いますが、Py
     \DjangoWebProject.pyproj
     \DjangoWebProject.sln
 
-[Python Tools for Visual Studio](http://pytools.codeplex.com) で使用するプロジェクト ファイル。
+[Python Tools for Visual Studio] で使用するプロジェクト ファイル。
 
     \ptvs_virtualenv_proxy.py
 
@@ -184,7 +183,7 @@ F5 キーを押してデバッグを開始します。ローカルに実行さ�
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-browser-django.png)
 
-ソースにブレークポイントを設定したり、ウォッチ ウィンドウを使用したりできます。各種機能の詳細については、[PTVS のドキュメント]を参照してください。
+ソースにブレークポイントを設定したり、ウォッチ ウィンドウを使用したりできます。各種機能の詳細については、[Python Tools for Visual Studio のドキュメント]を参照してください。
 
 ### 変更を加える
 
@@ -486,8 +485,8 @@ Django と Python Tools for Visual Studio の詳細については、次のリ�
 
 SQL Database と MySQL の詳細については、次のリンクをご覧ください。
 
-- [Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と SQL Database]
-- [Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と MySQL]
+- [Python Tools for Visual Studio を使用した Azure 上の Django と MySQL]
+- [Python Tools for Visual Studio を使用した Azure 上の Django と SQL Database]
 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -495,11 +494,10 @@ SQL Database と MySQL の詳細については、次のリンクをご覧くだ
 
 
 <!--Link references-->
-[Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と MySQL]: web-sites-python-ptvs-django-mysql.md
-[Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と SQL Database]: web-sites-python-ptvs-django-sql.md
+[Python Tools for Visual Studio を使用した Azure 上の Django と MySQL]: web-sites-python-ptvs-django-mysql.md
+[Python Tools for Visual Studio を使用した Azure 上の Django と SQL Database]: web-sites-python-ptvs-django-sql.md
 [SQL Database]: web-sites-python-ptvs-django-sql.md
 [MySQL]: web-sites-python-ptvs-django-mysql.md
-
 
 <!--External Link references-->
 [Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?linkid=254281
@@ -508,11 +506,9 @@ SQL Database と MySQL の詳細については、次のリンクをご覧くだ
 [Git for Windows]: http://msysgit.github.io/
 [GitHub for Windows]: https://windows.github.com/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
+[Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Visual Studio]: http://www.visualstudio.com/
-[PTVS のドキュメント]: http://pytools.codeplex.com/documentation
-[Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
+[Python Tools for Visual Studio のドキュメント]: http://aka.ms/ptvsdocs
 [Django のドキュメント]: https://www.djangoproject.com/
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

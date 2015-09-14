@@ -1,24 +1,26 @@
 
 <properties 
-    pageTitle="Azure RemoteApp で Office を使用する" 
-    description="Azure RemoteApp と Office を連携させる方法について説明します。" 
-    services="remoteapp" 
-    documentationCenter="" 
-    authors="lizap" 
-    manager="mbaldwin" />
+    pageTitle="Azure RemoteApp で Office を使用する"
+	description="Azure RemoteApp と Office を連携させる方法について説明します。"
+	services="remoteapp"
+	documentationCenter=""
+	authors="lizap"
+	manager="mbaldwin"/>
 
 <tags 
-    ms.service="remoteapp" 
-    ms.workload="compute" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/12/2015" 
-    ms.author="elizapo" />
+    ms.service="remoteapp"
+	ms.workload="compute"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/02/2015"
+	ms.author="elizapo"/>
 
 # Azure RemoteApp で Office を使用する
 
 Azure RemoteApp で Office アプリケーションをホストする場合、Office 365 ProPlus と Office 2013 Professional Plus 試用版の 2 つの選択肢があります。
+
+**これは、より新しい充実した記事に差し替わる予定です。 詳しくは、「[Azure RemoteApp で Office 365 サブスクリプションを使用する方法](remoteapp-officesubscription.md)」を参照してください。ここでは、Office 365 + Azure RemoteApp を使用する際に必要な情報を掲載しています。**
 
 ## Office 365 ProPlus 
 Office 365 ProPlus テンプレート イメージを使用して RemoteApp コレクションを作成することができます。このオプションでは、Office 365 サービスを RemoteApp に拡張することができます。既存のサブスクリプション プランが必要で、ユーザーはスタンドアロンまたは Office 365 ProPlus サービスを介したライセンスを取得している必要があります。
@@ -48,4 +50,4 @@ RemoteApp の 30 日間の無償試用期間中は、Office 2013 Professional Pl
 試用期間の終了後に実稼働モードに切り替えないと、RemoteApp コレクションは無効になります。データは保存されます - 設定とユーザーのデータはあと 90 日間保存されますので、サービスをアクティブ化してデータを失うことなく、実稼働モードに切り替えることができます。
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

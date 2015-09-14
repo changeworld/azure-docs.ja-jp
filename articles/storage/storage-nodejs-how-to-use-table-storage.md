@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Node.js から Table ストレージを使用する方法 | Microsoft Azure" 
-	description="Azure で Table ストレージ サービスを使用する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" 
-	services="storage" 
-	documentationCenter="nodejs" 
-	authors="MikeWasson" 
-	manager="wpickett" 
+	pageTitle="Node.js から Table ストレージを使用する方法 | Microsoft Azure"
+	description="Azure で Table ストレージ サービスを使用する方法について説明します。コード サンプルは Node.js API を使用して記述されています。"
+	services="storage"
+	documentationCenter="nodejs"
+	authors="MikeWasson"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="03/11/2015" 
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="nodejs"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="mwasson"/>
 
 
@@ -46,17 +46,18 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、アプリケーションを作成したフォルダーに移動します。
 
-2.  コマンド ウィンドウに「**npm install azure-storage**」と入力すると、次のような出力が生成されます。
+2.  コマンド ウィンドウに「**npm install azure-storage**」と入力します。このコマンドの出力は次の例のようになります。
 
-        azure-storage@0.1.0 node_modules\azure-storage
-		├── extend@1.2.1
-		├── xmlbuilder@0.4.3
-		├── mime@1.2.11
-		├── underscore@1.4.4
-		├── validator@3.1.0
-		├── node-uuid@1.4.1
-		├── xml2js@0.2.7 (sax@0.5.2)
-		└── request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
+		azure-storage@0.5.0 node_modules\azure-storage
+		+-- extend@1.2.1
+		+-- xmlbuilder@0.4.3
+		+-- mime@1.2.11
+		+-- node-uuid@1.4.3
+		+-- validator@3.22.2
+		+-- underscore@1.4.4
+		+-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
+		+-- xml2js@0.2.7 (sax@0.5.2)
+		+-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
 
 3.  手動で **ls** コマンドを実行して、**node\_modules** フォルダーが作成されたことを確認することもできます。このフォルダーに **azure-storage** パッケージがあります。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
 
@@ -148,7 +149,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 応答の例:
 
-	{ '.metadata': { etag: 'W/"datetime'2015-02-25T01%3A22%3A22.5Z'"' } }
+	{ '.metadata': { etag: 'W/"datetime\'2015-02-25T01%3A22%3A22.5Z\'"' } }
 
 > [AZURE.NOTE]既定では、**insertEntity** は、`response` 情報の一部として、挿入されたエンティティを返しません。このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、`result` の一部として返されるようにすると便利です。そのためには、次のように **echoContent** を有効にします。
 >
@@ -184,7 +185,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 >    
 > 3. 更新操作を実行します。アプリケーションの別のインスタンスなど、ETag 値を取得した後でエンティティが更新されている場合は、要求で指定された更新の条件が満たされていないことを示す `error` が返されます。
     
-**updateEntity** と **mergeEntity** では、更新されるエンティティが存在しない場合、更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insertOrReplaceEntity** または **insertOrMergeEntity** を使用する必要があります。
+**updateEntity** と **mergeEntity** では、更新されるエンティティが存在しない場合、更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insertOrReplaceEntity** または **insertOrMergeEntity** を使用します。
 
 成功した更新操作の `result` には、更新されたエンティティの **Etag** が含まれます。
 
@@ -275,9 +276,9 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-成功した場合は、`result.entries` にはクエリに一致するエンティティの配列が含まれます。クエリですべてのエンティティを返すことができなかった場合、`result.continuationToken` は *null* 以外になり、さらに結果を取得するために、これを **queryEntities** の 3 番目のパラメーターとして使用できます。最初のクエリでは、3 番目のパラメーターは *null* にする必要があります。
+成功した場合は、`result.entries` にはクエリに一致するエンティティの配列が含まれます。クエリですべてのエンティティを返すことができなかった場合、`result.continuationToken` は *null* 以外になり、さらに結果を取得するために、これを **queryEntities** の 3 番目のパラメーターとして使用できます。最初のクエリでは、3 番目のパラメーターに *null* を使用します。
 
-### エンティティ プロパティのサブセットを照会する方法
+### エンティティ プロパティのサブセットを照会する
 
 テーブルに対するクエリでは、ごくわずかのフィールドだけをエンティティから取得できます。この方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。**select** 句を使用して、返されるフィールドの名前を渡します。たとえば、次のクエリでは **description** フィールドと **dueDate** フィールドのみを返します。
 
@@ -286,7 +287,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  .top(5)
 	  .where('PartitionKey eq ?', 'hometasks');
 
-## エンティティを削除する方法
+## エンティティを削除する
 
 パーティション キーと行キーを使用してエンティティを削除できます。次の例では、**task1** オブジェクトに、削除するエンティティの **RowKey** と **PartitionKey** の値が格納されます。次に、このオブジェクトが **deleteEntity** メソッドに渡されます。
 
@@ -301,9 +302,9 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	  }
 	});
 
-> [AZURE.NOTE]項目を削除する場合は、項目が別のプロセスによって変更されていないことを確認するために ETag を使用することを検討してください。ETag の使用の詳細については、「[方法: エンティティを更新する][]」を参照してください。
+> [AZURE.NOTE]項目を削除する場合は、項目が別のプロセスによって変更されていないことを確認するために ETag を使用することを検討してください。ETag の使用の詳細については、「[エンティティを更新する](#update-an-entity)」を参照してください。
 
-## テーブルを削除する方法
+## テーブルを削除する
 
 次のコードは、ストレージ アカウントからテーブルを削除します。
 
@@ -315,9 +316,9 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 テーブルが存在するかどうかが不明な場合は、**deleteTableIfExists** を使用します。
 
-## 方法: 継続トークンを使用する
+## 継続トークンを使用する
 
-テーブルに対するクエリによって大量の結果が返される場合は、継続トークンを探す必要があります。クエリの対象となるデータは大量になる可能性があります。継続トークンが存在するときにわかるようにしていない場合はこの事実に気付かない可能性があります。
+テーブルに対するクエリによって大量の結果が返される場合は、継続トークンを探します。クエリの対象となるデータは大量になる可能性があります。継続トークンが存在するときにわかるようにしていない場合はこの事実に気付かない可能性があります。
 
 エンティティを照会したときに返される結果オブジェクトは、このようなトークンが存在する場合に `continuationToken` プロパティを設定します。クエリを実行するときにこれを使用して、後続のパーティションおよびテーブル エンティティに移動できます。
 
@@ -344,7 +345,7 @@ dc.table.queryEntities(tableName,
 
 GitHub の Azure Storage の Node.js のリポジトリには継続のサンプルも用意されています。`examples/samples/continuationsample.js` を検索してください。
 
-## 方法: 共有アクセス署名を操作する
+## 共有アクセス署名を操作する
 
 共有アクセス署名 (SAS) は、ストレージ アカウントの名前またはキーを指定せずにテーブルへの細密なアクセスを提供する安全な方法です。多くの場合、SAS は、モバイル アプリでのレコードの照会などデータへの限定的なアクセスのために使用されます。
 
@@ -449,4 +450,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Create and deploy a Node.js application to an Azure Web Site]: ../web-sites-nodejs-develop-deploy-mac.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,21 +1,21 @@
 <properties 
    pageTitle="StorSimple のハードウェア コンポーネントと状態 | Microsoft Azure"
-   description="StorSimple Manager サービスを使用して StorSimple デバイスのハードウェア コンポーネントを監視する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+	description="StorSimple Manager サービスを使用して StorSimple デバイスのハードウェア コンポーネントを監視する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/14/2015"
-   ms.author="alkohli" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="09/02/2015"
+	ms.author="alkohli"/>
 
-# StorSimple のハードウェア コンポーネントと状態
+# StorSimple Manager サービスを使用したハードウェア コンポーネントと状態の監視
 
 ## 概要
 
@@ -131,4 +131,4 @@
 
 デバイスの問題が解決しない場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

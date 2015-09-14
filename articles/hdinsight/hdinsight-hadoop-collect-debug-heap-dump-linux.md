@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/19/2015"
+	ms.date="09/02/2015"
 	ms.author="larryfr"/>
 
 
@@ -121,4 +121,4 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
 8. サービスが再開したら、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。これにより、Ambari はサービスのアラートの監視を再開します。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="06/03/2015"
+	ms.date="08/31/2015"
 	ms.author="robmcm"/>
 
 #Azure で MySQL データベースを作成する方法
@@ -23,4 +23,4 @@
 
 Azure での PHP による MySQL の使用方法を示すサンプルは、<https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql> から入手できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

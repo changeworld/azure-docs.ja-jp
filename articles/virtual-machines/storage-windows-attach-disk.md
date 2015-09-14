@@ -23,6 +23,12 @@
 
 > [AZURE.NOTE]仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成する場合は、オペレーティング システムをディスクの C ドライブにマップし、一時ディスクを D ドライブにマップします。**データの保存に D ドライブを使用しないでください。** 名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
 
+## ビデオ チュートリアル
+
+以下には、このチュートリアルのステップが記載されています。
+
+[AZURE.VIDEO attaching-a-data-disk-to-a-windows-vm]
+
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-windows-linux.md)]
 
 ## <a id="initializeinWS"></a>方法: Windows Server での新しいデータ ディスクの初期化
@@ -43,7 +49,7 @@
 
 	![ボリュームの初期化に成功](./media/storage-windows-attach-disk/newvolumecreated.png)
 
-> [AZURE.NOTE]仮想マシンのサイズによって、アタッチできるディスクの数が決まります。詳細については、「[Sizes for Virtual Machines (仮想マシンのサイズ)](virtual-machines-size-specs.md)」をご覧ください。
+> [AZURE.NOTE]仮想マシンのサイズによって、アタッチできるディスクの数が決まります。詳細については、「[Sizes for Virtual Machines (Virtual Machines のサイズ)](virtual-machines-size-specs.md)」を参照してください。
 
 ## その他のリソース
 
@@ -53,4 +59,4 @@
 
 [logon]: virtual-machines-log-on-windows-server.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

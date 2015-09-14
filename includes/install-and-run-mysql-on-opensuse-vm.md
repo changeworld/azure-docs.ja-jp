@@ -1,31 +1,35 @@
 
-1. 権限をエスカレートするには、次のように実行します。
+1. 権限をエスカレートするには、次のように入力します。
 
 		sudo -s
-	
+
 	パスワードを入力します。
 
-2. 次のコマンドを実行し、MySQL Community Server エディションをインストールします。
+2. MySQL Community Server エディションをインストールするには、次のように入力します。
 
 		# zypper install mysql-community-server
 
 	MySQL がダウンロードおよびインストールされるまで待ちます。
-3. システムの起動時に MySQL が開始するように設定するには、次のコマンドを実行します。
+
+3. 次回システム起動時に MySQL を起動するように設定するには、次のように入力します。
 
 		# insserv mysql
-4. これで、次のコマンドで MySQL デーモン (mysqld) を手動で開始できます。
+
+4. 次のコマンドで MySQL デーモン (mysqld) を手動で開始します。
 
 		# rcmysql start
 
-	MySQL デーモンの状態を確認するには、次を実行します。
+	MySQL デーモンの状態を確認するには、次のように入力します。
 
 		# rcmysql status
 
-	MySQL デーモンを停止する必要がある場合は、次を実行します。
+	MySQL デーモンを停止するには、次のように入力します。
 
 		# rcmysql stop
 
-5. 警告! インストール後、既定では MySQL ルート パスワードは空になっています。そこで、MySQL の保護に役立つスクリプト、**mysql\_secure\_installation** を実行することをお勧めします。**mysql\_secure\_installation** を実行すると、MySQL ルートパスワードの変更、匿名のユーザー アカウントの削除、リモート ルート ログインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。これらのオプションすべてに対して "はい" と答えて、ルート パスワードを変更することをお勧めします。次のコマンドを実行して、スクリプトを実行します。
+	> [AZURE.IMPORTANT]インストール後、既定では MySQL ルート パスワードは空になっています。MySQL の保護に役立つスクリプト、**mysql\_secure\_installation** を実行することをお勧めします。スクリプトを実行すると、MySQL ルート パスワードの変更、匿名のユーザー アカウントの削除、リモート ルート ログインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。これらのオプションすべてに対して "はい" と答えて、ルート パスワードを変更することをお勧めします。
+
+5. 次のように入力して、MySQL インストール スクリプトを実行します。
 
 		$ mysql_secure_installation
 
@@ -48,37 +52,33 @@
 
 	データベースのユーザー名とパスワードは、データベースに接続するスクリプトのみが使用します。データベース ユーザー アカウントは、システム上の実際のユーザー アカウントを表しているとは限りません。
 
-9. 別のコンピューターにログインするには、次のコマンドを実行します。
+9. 別のコンピューターからログインするには、次のように入力します。
 
 		mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
 
 	`ip-address` は、MySQL への接続元コンピューターの IP アドレスです。
-	
-10. MySQL データベース管理ユーティリティを終了するには、次のコマンドを実行します。
+
+10. MySQL データベース管理ユーティリティを終了するには、次のように入力します。
 
 		quit
 
-11. MySQL をインストールしたら、MySQL にリモートでアクセスできるように、エンドポイントを構成します。[Azure 管理ポータル][AzurePreviewPortal]にログインします。Azure ポータルで、**[Virtual Machines]**、新しい VM の名前、**[エンドポイント]** の順にクリックします。
+11. MySQL をインストールしたら、MySQL にリモートでアクセスできるように、エンドポイントを構成する必要があります。[Azure ポータル][AzurePortal]にログインします。**[仮想マシン]**、新しい仮想マシンの名前、**[エンドポイント]** の順にクリックします。
 
-	![Endpoints][Image7]
+12. ページの下部にある **[追加]** をクリックします。
 
-12. ページの下部にある **[追加]** をクリックします。 ![Endpoints][Image8]
+13. エンドポイントを追加します。名前に「MySQL」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** に「3306」を指定します。
 
-13. エンドポイントを追加します。名前に「MySQL」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** に「3306」を指定します。これにより、MySQL にリモートで接続することができます。![Endpoints][Image9]
-
-14. Azure の OpenSUSE 仮想マシンで実行されている MySQL にリモート接続するには、ローカル コンピューターで次のコマンドを実行します。
+14. お使いのコンピューターから仮想マシンにリモートで接続するには、次のように入力します。
 
 		mysql -u mysqluser -p -h <yourservicename>.cloudapp.net
 
-	たとえば、このチュートリアルで作成した仮想マシンを使用する場合、コマンドは次のようになります。
+	たとえば、このチュートリアルで作成した仮想マシンを使用する場合、次のコマンドを入力します。
 
 		mysql -u mysqluser -p -h testlinuxvm.cloudapp.net
 
-15. これで MySQL を適切に構成し、データベースと新しいユーザーを作成できました。MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参照してください。
-
 [MySQLDocs]: http://dev.mysql.com/doc/
-[AzurePreviewPortal]: http://manage.windowsazure.com
+[AzurePortal]: http://manage.windowsazure.com
 
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

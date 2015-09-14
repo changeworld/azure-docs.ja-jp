@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Power BI における Application Insights データに関するページをご覧ください。" 
-	description="Power BI を使用すると、アプリケーションのパフォーマンスと使用状況を監視できます。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="noamben" 
+	pageTitle="Power BI における Application Insights データに関するページをご覧ください。"
+	description="Power BI を使用すると、アプリケーションのパフォーマンスと使用状況を監視できます。"
+	services="application-insights"
+	documentationCenter=""
+	authors="noamben"
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="awills"/>
  
 # Application Insights データの Power BI ビュー
@@ -74,9 +74,17 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
     ![イベントの種類の選択](./media/app-insights-export-power-bi/080.png)
 
-ここで、しばらく待機し、ユーザーにアプリケーションを使用させます。テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](app-insights-metrics-explorer.md)に表示され、個々のイベントが[診断検索](app-insights-diagnostic-search.md)に表示されます。
+3. データを蓄積します。しばらく待機し、ユーザーにアプリケーションを使用してもらいます。テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](app-insights-metrics-explorer.md)に表示され、個々のイベントが[診断検索](app-insights-diagnostic-search.md)に表示されます。
 
-また、データはストレージにもエクスポートされます。
+    また、データはストレージにもエクスポートされます。
+
+4. エクスポートされたデータを検査します。Visual Studio で、**[表示]、[Cloud Explorer]** の順に選択します。[Azure]、[ストレージ] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+
+    ![](./media/app-insights-export-power-bi/04-data.png)
+
+    パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。
+
+イベントが JSON 形式で BLOB ファイルに書き込まれます。各ファイルに 1 つ以上のイベントが含まれる場合があります。このため、イベント データを読み取って必要なフィールドをフィルター処理します。データの処理に関して実行できることは多数ありますが、今日の計画は、Stream Analytics を使用してデータを Power BI に移動することです。
 
 ## Azure Stream Analytics インスタンスの作成
 
@@ -108,20 +116,21 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ![](./media/app-insights-export-power-bi/140.png)
 
+
 日付の書式は YYYY-MM-DD (ダッシュ付き) に設定してください。
 
-パスのプレフィックス パターンは、Stream Analytics がストレージ内の入力ファイルを検索する方法を指定します。連続エクスポートによるデータ格納方法と一致するようセットアップする必要があります。次のように設定します。
+パスのプレフィックス パターンは、Stream Analytics がストレージ内の入力ファイルを検索する場所を指定します。連続エクスポートによるデータ格納方法と一致するように設定する必要があります。次のように設定します。
 
-    webapplication27_100000000-0000-0000-0000-000000000000/PageViews/{date}/{time}
+    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 次の点に注意してください。
 
-* `webapplication27` は Application Insights リソースの名前です。 
-* `1000...` は Application Insights リソースのインストルメンテーション キーです。 
-* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べ、その他の使用可能な種類と[データのエクスポート モデル](app-insights-export-data-model.md)をご確認ください。
+* `webapplication27` は Application Insights リソースの名前です。**すべて小文字で指定します。**
+* `1234...` は Application Insights リソースのインストルメンテーション キーです。**ダッシュは省略します。** 
+* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べて、その他の使用可能な種類を確認します。[データのエクスポート モデルに関するページ](app-insights-export-data-model.md)を参照してください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
-Application Insights リソースの名前と iKey を取得するには、概要ページの [Essentials] を開くか、[設定] を開きます。
+> [AZURE.NOTE]ストレージを検査して、正しいパスを取得されることを確認してください。
 
 #### 初期セットアップの完了
 
@@ -194,7 +203,8 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 ## 関連項目
 
 * [連続エクスポート](app-insights-export-telemetry.md)
+* [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](app-insights-export-data-model.md)
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

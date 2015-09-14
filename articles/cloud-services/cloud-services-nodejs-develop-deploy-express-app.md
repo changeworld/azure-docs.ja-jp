@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Express を使用した Web アプリケーション (Node.js) | Microsoft Azure" 
-	description="クラウド サービスのチュートリアルを基に、Express モジュールの使用方法を示すチュートリアル。" 
-	services="cloud-services" 
-	documentationCenter="nodejs" 
-	authors="MikeWasson" 
-	manager="wpickett" 
+	pageTitle="Express を使用した Web アプリケーション (Node.js) | Microsoft Azure"
+	description="クラウド サービスのチュートリアルを基に、Express モジュールの使用方法を示すチュートリアル。"
+	services="cloud-services"
+	documentationCenter="nodejs"
+	authors="MikeWasson"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="02/25/2015" 
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="nodejs"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="mwasson"/>
 
 
@@ -43,9 +43,9 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
 
 		PS C:\node> New-AzureServiceProject expressapp
 		PS C:\Node\expressapp> Add-AzureNodeWebRole
-		PS C:\Node\expressapp> Set-AzureServiceProjectRole WebRole1 node 0.10.21
+		PS C:\Node\expressapp> Set-AzureServiceProjectRole WebRole1 Node 0.10.21
 
-	> [AZURE.NOTE]既定では、**Add-AzureNodeWebRole** は以前のバージョンの Node.js を使用します。上記の **Set-AzureServiceProjectRole** ステートメントは v0.10.21 のノードを使用するよう Azure に指示します。
+	> [AZURE.NOTE]既定では、**Add-AzureNodeWebRole** は以前のバージョンの Node.js を使用します。上記の **Set-AzureServiceProjectRole** ステートメントは v0.10.21 のノードを使用するよう Azure に指示します。パラメーターには大文字と小文字の区別があることに注意してください。Node.js の正しいバージョンが選択されていることを検証できます。このためには、**WebRole1\\package.json** の **engines** プロパティを確認します。
 
 ##Express のインストール
 
@@ -135,4 +135,4 @@ Azure PowerShell ウィンドウで、**Publish-AzureServiceProject** コマン�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

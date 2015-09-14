@@ -1,19 +1,19 @@
 <properties
    pageTitle="ExpressRoute の FAQ"
-   description="ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。"
-   documentationCenter="na"
-   services="expressroute"
-   authors="cherylmc"
-   manager="adinah"
-   editor="tysonn"/>
+	description="ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。"
+	documentationCenter="na"
+	services="expressroute"
+	authors="cherylmc"
+	manager="carolz"
+	editor=""/>
 <tags
    ms.service="expressroute"
-   ms.devlang="na"
-   ms.topic="article" 
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/28/2015"
-   ms.author="cherylmc"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="09/02/2015"
+	ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
 
@@ -31,7 +31,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 サービスの場所と提供状況については、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページを参照してください。
 
 ### ExpressRoute のパートナー通信会社のいずれとも契約していない場合は、どのようにして ExpressRoute を使用して Microsoft に接続できますか。
-地域の通信会社と地上イーサネット接続を選択して、Exchange プロバイダーの所在地のいずれかに接続します。この Exchange プロバイダーの所在地で Microsoft とピアリングできます。[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページの最後のセクションで、ご利用のネットワーク プロバイダーが Exchange の提供地域のいずれかに存在するかどうかを確認してください。存在すれば、Exchange プロバイダーを通じて ExpressRoute 回線を Azure に接続するように依頼できます。
+地域の通信会社と地上イーサネット接続を選択して、Exchange プロバイダーの所在地のいずれかに接続します。この Exchange プロバイダーの所在地で Microsoft とピアリングできます。「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」の最後のセクションで、ご利用のネットワーク プロバイダーが Exchange の提供地域のいずれかに存在するかどうかを確認してください。存在すれば、Exchange プロバイダーを通じて ExpressRoute 回線を Azure に接続するように依頼できます。
 
 ### ExpressRoute の料金はいくらですか。
 料金情報については、「[ExpressRoute 料金](http://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
@@ -48,25 +48,23 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 ### ExpressRoute ではサービス レベル アグリーメント (SLA) は提供されますか。
 詳細については、[ExpressRoute SLA](http://azure.microsoft.com/support/legal/sla/) に関するページを参照してください。
 
-## サポートされる Azure のサービス
+## サポートされているサービス
 ほとんどの Azure サービスが、ExpressRoute でサポートされます。
 
-仮想ネットワークにデプロイされている Virtual Machines と Cloud Services への接続は、プライベート ピアリング パス経由でサポートされます。
+- 仮想ネットワークにデプロイされている Virtual Machines と Cloud Services への接続は、プライベート ピアリング パス経由でサポートされます。
+- Azure Websites は、パブリック ピアリング パス経由でサポートされます。
+- その他のサービスには、パブリック ピアリング パス経由でアクセスできます。ただし、次のような例外があります。
 
-Azure Websites は、パブリック ピアリング パス経由でサポートされます。
+	**次のサービスはサポートされません。**
 
-その他のサービスには、パブリック ピアリング パス経由でアクセスできます。ただし、次のような例外があります。
-
-**以下のものはサポートされません。**
-
-- CDN
-- Visual Studio Online のロード テスト
-- Multi-Factor Authentication
+	- CDN
+	- Visual Studio Online のロード テスト
+	- Multi-Factor Authentication
 
 ## データおよび接続
 
 ### ExpressRoute を使用して転送できるデータの量に制限はありますか。
-データ転送量に対する制限はありません。帯域幅ごとの料金については、[料金の詳細](http://azure.microsoft.com/pricing/details/expressroute/)に関するページを参照してください。
+データ転送量に対する制限はありません。帯域幅ごとの料金については、「[ExpressRoute の価格](http://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
 
 ### ExpressRoute でサポートされる接続速度はどれくらいですか。
 サポートされる帯域幅:
@@ -91,7 +89,7 @@ Azure Websites は、パブリック ピアリング パス経由でサポート
 クロス接続の一方に障害が発生しても、接続が失われることはありません。ネットワークの負荷に対応できる冗長接続が用意されています。さらに、耐障害性を実現するために、複数の回線を別のピアリング場所に作成することもできます。
 
 ### このサービスを機能させるには、両方のリンクを構成する必要がありますか。
-ネットワーク サービス プロバイダー経由で接続している場合は、そのプロバイダーがお客様に代わって冗長リンクを構成します。Exchange プロバイダー経由で接続する場合は、お客様自身で両方のリンクを構成する必要があります。回線を冗長構成にしない場合は SLA が無効になります。
+ネットワーク サービス プロバイダー経由で接続している場合は、そのプロバイダーがお客様に代わって冗長リンクを構成します。既に EXP と同じ場所にいる場合は、EXP クラウド エクスチェンジ プラットフォームへの 2 本の LAN リンクを構成する必要があります。プライベート データセンターから単一の WAN リンク経由で EXP に接続する場合は、独自のルートの WAN リンクを EXP で終結させた後、EXP クラウド エクスチェンジ プラットフォームへの 2 本のリンクを構成する必要があります。
 
 ### 自社の VLAN を、ExpressRoute を使用して Azure に拡張することはできますか。
 いいえ。Azure へのレイヤー 2 接続の拡張はサポートされません。
@@ -111,8 +109,8 @@ Azure Websites は、パブリック ピアリング パス経由でサポート
 
 次のチュートリアルが役立ちます。
 
-- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)
-- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)
+- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)。
+- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)。
 - [ExpressRoute 用の仮想ネットワークとゲートウェイの構成](expressroute-configuring-vnet-gateway.md)
 
 ### 当社の ExpressRoute 回線に接続境界はありますか。
@@ -130,7 +128,7 @@ Azure Websites は、パブリック ピアリング パス経由でサポート
 いいえ。同じ ExpressRoute 回線に接続されているすべての仮想ネットワークは、同じルーティング ドメインに属しているため、ルーティングの観点から見た場合、互いに分離されていません。ルートの分離が必要な場合は、ExpressRoute 回線を別に作成する必要があります。
 
 ### 1 つの仮想ネットワークを複数の ExpressRoute 回線に接続できますか。
-はい。1 つの仮想ネットワークを最大 4 つの ExpressRoute 回線に接続できます。ただし、すべての ExpressRoute 回線が同じ大陸にある必要があります。回線の注文は、複数のサービス プロバイダー経由や複数の場所から行うことができます。
+はい。1 つの仮想ネットワークを最大 4 つの ExpressRoute 回線に接続できます。これらは、4 つの異なる場所で注文する必要があります。
 
 ### ExpressRoute 回線に接続された仮想ネットワークから、インターネットにアクセスできますか。
 はい。BGP セッションを介して既定ルート (0.0.0.0/0) またはインターネット ルート プレフィックスをアドバタイズしていなければ、ExpressRoute 回線に接続された仮想ネットワークからインターネットに接続できます。
@@ -160,6 +158,9 @@ BGP を介してアドバタイズされるプレフィックスは /29 以上 (
 
 ### BGP の上限を超えるとどうなりますか。
 BGP セッションが切断されます。プレフィックス数が上限未満になると、BGP セッションはリセットされます。
+
+### ExpressRoute BGP ホールド時間とは何ですか。 それは調整できますか。
+ホールド時間は 180 です。キープ アライブ メッセージは、60 秒ごとに送信されます。これらは Microsoft 側の固定設定であり、変更することはできません。
 
 ### 仮想ネットワークへの既定ルート (0.0.0.0/0) のアドバタイズ後に、Azure Virtual Network で実行する Windows をライセンス認証できません。どうしたらいいですか。
 次の手順を実行して、Azure にライセンス認証要求を認識させることができます。
@@ -221,7 +222,7 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 いいえ。必要な機能のみを選択することはできません。ExpressRoute Premium を有効にすると、すべての機能が有効になります。
 
 ### ExpressRoute Premium の料金はいくらですか。
-料金については、[料金の詳細](http://azure.microsoft.com/pricing/details/expressroute/)に関するページを参照してください。
+料金については、「[ExpressRoute の価格](http://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
 
 ### ExpressRoute Premium の料金は、標準の ExpressRoute 料金に追加して支払うのですか。
 はい。ExpressRoute Premium 料金は、ExpressRoute 回線の料金と接続プロバイダーに必要な料金に追加する形で適用されます。
@@ -234,25 +235,25 @@ ExpressRoute Premium を無効にするには、専用回線の更新用の API 
 
 ### Office 365 サービスに接続する ExpressRoute 回線はどのようにして作成しますか。
 
-1. [ExpressRoute の前提条件](expressroute-prerequisites.md)に関するページを参照して、要件を満たしていることを確認します。
+1. 「[ExpressRoute の前提条件](expressroute-prerequisites.md)」ページを参照して、要件を満たしていることを確認します。
 2. [ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関するページでサービス プロバイダーとサービスの場所の一覧を参照し、接続ニーズが満たされることを確認します。
-3. [Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/)に関するページを参照し、容量の要件を計画します。
+3. 「[Office 365 のネットワーク計画とパフォーマンスのチューニング](http://aka.ms/tune/)」を参照して、容量の要件を計画します。
 4. 以下のワークフローに示されている手順に従って、接続を設定します。
 
-	- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)
-	- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)
+	- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)。
+	- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)。
 
 ### 既存の ExpressRoute 回線で Office 365 サービスへの接続をサポートできますか。
 はい。既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。Office 365 サービスに接続するのに十分な容量があることを確認してください。[Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。
 
 次のチュートリアルが役立ちます。
 
-- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)
-- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)
+- [ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-nsps.md)。
+- [Exchange プロバイダーによる ExpressRoute 接続の構成](expressroute-configuring-exps.md)。
 
 ### ExpressRoute 接続経由でアクセスできる Office 365 のサービスはどれですか。
 
-**次の Office 365 サービスがサポートされています。**
+**次の Office 365 サービスがサポートされます。**
 
 - Exchange Online と Exchange Online Protection
 - SharePoint Online
@@ -286,4 +287,4 @@ NSP 経由と EXP 経由の両方で Office 365 サービスへの接続がサ�
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

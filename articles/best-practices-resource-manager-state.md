@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/15/2015"
+	ms.date="09/02/2015"
 	ms.author="mmercuri"/>
 
 # Azure リソース マネージャーのテンプレートでの状態の共有
 
-このトピックでは、Azure リソース マネージャー テンプレート内およびリンクされたテンプレート間で状態を管理し、共有する方法について説明します。
+このトピックでは、Azure リソース マネージャー テンプレート内およびリンクされたテンプレート間で状態を管理して共有するためのベスト プラクティスを示します。このトピックで使用するパラメーターと変数は、デプロイ要件を適切に整理するために定義できる種類のオブジェクトの例を示しています。これらの例から、使用環境で意味のあるプロパティ値を使用する独自のオブジェクトを実装できます。
 
 ## 複合オブジェクトを使用した、状態の共有
 
@@ -366,7 +366,7 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 
     "outputs": {
         "masterip": {
-            "value": "[reference(concat(variables('nicName'),0)).ipConfigurations[0].properties.privateIPAddress]",
+            "value": "[reference(concat(variables('nicName'),0)).ipConfigurations[0].privateIPAddress]",
             "type": "string"
          }
     }
@@ -381,4 +381,4 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 - [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
 - [Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

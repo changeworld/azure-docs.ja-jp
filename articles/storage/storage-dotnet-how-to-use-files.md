@@ -1,19 +1,19 @@
 <properties
 			pageTitle="PowerShell と .NET で Azure File ストレージを使用する方法 | Microsoft Azure"
-            description="Azure File ストレージを使用して、クラウド ファイル共有を作成し、ファイルの内容を管理する方法について説明します。File ストレージを使用することで、企業は SMB ファイル共有に依存するアプリケーションを Azure に移行できます。再起動時にファイル共有に再接続するためには、仮想マシンのストレージ アカウントの資格情報を保持してください。"
-            services="storage"
-            documentationCenter=".net"
-            authors="tamram"
-            manager="adinah"
-            editor="" />
+	description="Azure File ストレージを使用して、クラウド ファイル共有を作成し、ファイルの内容を管理する方法について説明します。File ストレージを使用することで、企業は SMB ファイル共有に依存するアプリケーションを Azure に移行できます。再起動時にファイル共有に再接続するためには、仮想マシンのストレージ アカウントの資格情報を保持してください。"
+	services="storage"
+	documentationCenter=".net"
+	authors="tamram"
+	manager="adinah"
+	editor=""/>
 
 <tags ms.service="storage"
-      ms.workload="storage"
-      ms.tgt_pltfrm="na"
-      ms.devlang="dotnet"
-      ms.topic="hero-article"
-      ms.date="08/04/2015"
-      ms.author="tamram" />
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="08/04/2015"
+	ms.author="tamram"/>
 
 # PowerShell と .NET で Azure File ストレージを使用する方法
 
@@ -41,7 +41,7 @@ Azure File サービスは、標準の SMB 2.1 プロトコルを使用して、
 
 ## Azure のストレージ アカウントの作成
 
-Azure File ストレージは現在プレビュー段階にあります。このプレビュー機能の利用を申し込むには、[Microsoft Azure プレビューのページ](/services/preview/)で、**Azure Files** の利用を申し込んでください。申し込みが承認されると、File ストレージ プレビューを利用できるようになったという通知が送られます。その後で、File ストレージにアクセスするストレージ アカウントを作成できます。
+Azure File ストレージは現在プレビュー段階にあります。このプレビュー機能の利用を申し込むには、[Azure プレビューのポータル](/services/preview/)で、**Azure Files** の利用を申し込んでください。申し込みが承認されると、File ストレージ プレビューを利用できるようになったという通知が送られます。その後で、File ストレージにアクセスするストレージ アカウントを作成できます。
 
 > [AZURE.NOTE]File ストレージは現在、新規のストレージ アカウントでのみ利用できます。File ストレージ アカウントへのアクセスがサブスクリプションに許可された後で、このガイドで使用する新規ストレージ アカウントを作成してください。
 >
@@ -49,7 +49,7 @@ Azure File ストレージは現在プレビュー段階にあります。この
 
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## PowerShell を使用したファイル共有の作成
+## PowerShell を使用したファイル共有の管理
 
 次に、Azure PowerShell を使用して、ファイル共有を作成します。作成されたファイル共有は、SMB 2.1 をサポートしている任意のファイル システムからマウントできます。
 
@@ -72,7 +72,7 @@ PowerShell の使用を準備するために、Azure PowerShell コマンドレ�
 
 ### 新しいファイル共有の作成
 
-次に、新しいファイル共有を作成します。この例では `logs` という名前を付けています。
+次に、`logs` という名前の新しいファイル共有を作成します。
 
 	# create a new share
 	$s = New-AzureStorageShare logs -Context $ctx
@@ -102,6 +102,16 @@ PowerShell の使用を準備するために、Azure PowerShell コマンドレ�
 	# list files in the new directory
 	Get-AzureStorageFile -Share $s -Path CustomLogs
 
+### ファイルのコピー
+
+Azure PowerShell のバージョン 0.9.7 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。次に、コマンドレットを使用してこれらのコピー操作を実行する方法を示します。
+
+	# copy a file to the new directory
+    Start-AzureStorageFileCopy -SrcShareName srcshare -SrcFilePath srcdir/hello.txt -DestShareName destshare -DestFilePath destdir/hellocopy.txt -Context $srcCtx -DestContext $destCtx
+    # copy a blob to a file directory
+    Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
+
+
 ## Windows を実行する Azure の仮想マシンからの共有のマウント
 
 Azure のファイル共有をマウントする方法を示すために、ここでは Windows を実行する Azure の仮想マシンを作成します。このマシンにリモート接続して、共有をマウントします。
@@ -127,7 +137,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 	example :
 	net use z: \\samples.file.core.windows.net\logs
 
-前の手順でストレージ アカウントの資格情報を適用したため、`net use` コマンドで資格情報を指定する必要はありません。資格情報をまだ適用していない場合は、例に示されているように、`net use` コマンドに渡されるパラメーターとして資格情報を指定してください。
+前の手順でストレージ アカウントの資格情報を適用したため、`net use` コマンドで資格情報を指定する必要はありません。資格情報をまだ適用していない場合は、次の例に示されているように、`net use` コマンドに渡されるパラメーターとして資格情報を指定してください。
 
     net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name> /u:<storage-account-name> <storage-account-key>
 
@@ -148,7 +158,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順にクリックした後、**[Windows]** をクリックし、Visual C# テンプレートの一覧から **[コンソール アプリケーション]** をクリックします。
+1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows]、[コンソール アプリケーション] (Visual C# テンプレートの一覧から)**をクリックします。
 2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
@@ -166,7 +176,7 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 	    </appSettings>
 	</configuration>
 
-> [AZURE.NOTE]最新バージョンの Azure ストレージ エミュレーターでは、File ストレージがサポートされません。接続文字列は、Azure Files プレビュー機能にアクセスできる、クラウド内の Azure ストレージ アカウントを対象とする必要があります。
+> [AZURE.NOTE]最新バージョンの Azure ストレージ エミュレーターでは、File ストレージがサポートされません。接続文字列は、File ストレージ プレビュー機能にアクセスできる、クラウド内の Azure ストレージ アカウントを対象とする必要があります。
 
 
 ### 名前空間宣言の追加
@@ -191,31 +201,31 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 
 次に、前に示したコードの後で、`Main()` メソッドに次のコードを追加し、接続文字列を取得します。このコードは、前の手順で作成したファイルへの参照を取得し、その内容をコンソール ウィンドウに出力します。
 
-	//Create a CloudFileClient object for credentialed access to File storage.
+	// Create a CloudFileClient object for credentialed access to File storage.
 	CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-	//Get a reference to the file share we created previously.
+	// Get a reference to the file share we created previously.
 	CloudFileShare share = fileClient.GetShareReference("logs");
 
-	//Ensure that the share exists.
+	// Ensure that the share exists.
 	if (share.Exists())
 	{
-	    //Get a reference to the root directory for the share.
+	    // Get a reference to the root directory for the share.
 	    CloudFileDirectory rootDir = share.GetRootDirectoryReference();
 
-	    //Get a reference to the directory we created previously.
+	    // Get a reference to the directory we created previously.
 	    CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
 
-	    //Ensure that the directory exists.
+	    // Ensure that the directory exists.
 	    if (sampleDir.Exists())
 	    {
-	        //Get a reference to the file we created previously.
+	        // Get a reference to the file we created previously.
 	        CloudFile file = sampleDir.GetFileReference("Log1.txt");
 
-	        //Ensure that the file exists.
+	        // Ensure that the file exists.
 	        if (file.Exists())
 	        {
-	            //Write the contents of the file to the console window.
+	            // Write the contents of the file to the console window.
 	            Console.WriteLine(file.DownloadTextAsync().Result);
 	        }
 	    }
@@ -231,30 +241,30 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
 
 次の例では、共有の現在の使用状況を確認する方法と、共有のクォータを設定する方法を示します。
 
-    //Parse the connection string for the storage account.
+    // Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    //Create a CloudFileClient object for credentialed access to File storage.
+    // Create a CloudFileClient object for credentialed access to File storage.
     CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-    //Get a reference to the file share we created previously.
+    // Get a reference to the file share we created previously.
     CloudFileShare share = fileClient.GetShareReference("logs");
 
-    //Ensure that the share exists.
+    // Ensure that the share exists.
     if (share.Exists())
     {
-        //Check current usage stats for the share.
-		//Note that the ShareStats object is part of the protocol layer for the File service.
+        // Check current usage stats for the share.
+		// Note that the ShareStats object is part of the protocol layer for the File service.
         Microsoft.WindowsAzure.Storage.File.Protocol.ShareStats stats = share.GetStats();
         Console.WriteLine("Current share usage: {0} GB", stats.Usage.ToString());
 
-        //Specify the maximum size of the share, in GB.
-        //This line sets the quota to be 10 GB greater than the current usage of the share.
+        // Specify the maximum size of the share, in GB.
+        // This line sets the quota to be 10 GB greater than the current usage of the share.
         share.Properties.Quota = 10 + stats.Usage;
         share.SetProperties();
 
-        //Now check the quota for the share. Call FetchAttributes() to populate the share's properties. 
+        // Now check the quota for the share. Call FetchAttributes() to populate the share's properties.
         share.FetchAttributes();
         Console.WriteLine("Current share quota: {0} GB", share.Properties.Quota);
     }
@@ -265,43 +275,43 @@ Azure ストレージ クライアント ライブラリのバージョン 5.x �
 
 次の例では、共有上に共有アクセス ポリシーを作成し、そのポリシーを使用して共有上のファイルの SAS に制約を指定します。
 
-    //Parse the connection string for the storage account.
+    // Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    //Create a CloudFileClient object for credentialed access to File storage.
+    // Create a CloudFileClient object for credentialed access to File storage.
     CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-    //Get a reference to the file share we created previously.
+    // Get a reference to the file share we created previously.
     CloudFileShare share = fileClient.GetShareReference("logs");
 
-    //Ensure that the share exists.
+    // Ensure that the share exists.
     if (share.Exists())
     {
         string policyName = "sampleSharePolicy" + DateTime.UtcNow.Ticks;
 
-        //Create a new shared access policy and define its constraints.
+        // Create a new shared access policy and define its constraints.
         SharedAccessFilePolicy sharedPolicy = new SharedAccessFilePolicy()
             {
                 SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
                 Permissions = SharedAccessFilePermissions.Read | SharedAccessFilePermissions.Write
             };
 
-        //Get existing permissions for the share.
+        // Get existing permissions for the share.
         FileSharePermissions permissions = share.GetPermissions();
 
-        //Add the shared access policy to the share's policies. Note that each policy must have a unique name.
+        // Add the shared access policy to the share's policies. Note that each policy must have a unique name.
         permissions.SharedAccessPolicies.Add(policyName, sharedPolicy);
         share.SetPermissions(permissions);
 
-        //Generate a SAS for a file in the share and associate this access policy with it.
+        // Generate a SAS for a file in the share and associate this access policy with it.
         CloudFileDirectory rootDir = share.GetRootDirectoryReference();
         CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
         CloudFile file = sampleDir.GetFileReference("Log1.txt");
         string sasToken = file.GetSharedAccessSignature(null, policyName);
         Uri fileSasUri = new Uri(file.StorageUri.PrimaryUri.ToString() + sasToken);
 
-        //Create a new CloudFile object from the SAS, and write some text to the file. 
+        // Create a new CloudFile object from the SAS, and write some text to the file.
         CloudFile fileSas = new CloudFile(fileSasUri);
         fileSas.UploadText("This write operation is authenticated via SAS.");
         Console.WriteLine(fileSas.DownloadText());
@@ -311,7 +321,7 @@ Azure ストレージ クライアント ライブラリのバージョン 5.x �
 
 ## ファイルのコピー
 
-Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。次に、プログラムを使用してこれらのコピー操作を実行する方法を示します。
+Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。次のセクションでは、プログラムを使用してこれらのコピー操作を実行する方法を示します。
 
 また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。AzCopy を使用したファイルのコピーの詳細については、「[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md#copy-files-in-azure-file-storage-with-azcopy-preview-version-only)」をご覧ください。
 
@@ -321,41 +331,41 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
 
 次の例では、同じ共有内の別のファイルに、ファイルをコピーします。このコピー操作では同じストレージ アカウント内のファイルがコピーされるため、共有キー認証を使用してコピーを実行できます。
 
-    //Parse the connection string for the storage account.
+    // Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    //Create a CloudFileClient object for credentialed access to File storage.
+    // Create a CloudFileClient object for credentialed access to File storage.
     CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-    //Get a reference to the file share we created previously.
+    // Get a reference to the file share we created previously.
     CloudFileShare share = fileClient.GetShareReference("logs");
 
-    //Ensure that the share exists.
+    // Ensure that the share exists.
     if (share.Exists())
     {
-        //Get a reference to the root directory for the share.
+        // Get a reference to the root directory for the share.
         CloudFileDirectory rootDir = share.GetRootDirectoryReference();
 
-        //Get a reference to the directory we created previously.
+        // Get a reference to the directory we created previously.
         CloudFileDirectory sampleDir = rootDir.GetDirectoryReference("CustomLogs");
 
-        //Ensure that the directory exists.
+        // Ensure that the directory exists.
         if (sampleDir.Exists())
         {
-            //Get a reference to the file we created previously.
+            // Get a reference to the file we created previously.
             CloudFile sourceFile = sampleDir.GetFileReference("Log1.txt");
 
-            //Ensure that the source file exists.
+            // Ensure that the source file exists.
             if (sourceFile.Exists())
             {
-                //Get a reference to the destination file.
+                // Get a reference to the destination file.
                 CloudFile destFile = sampleDir.GetFileReference("Log1Copy.txt");
 
-                //Start the copy operation.
+                // Start the copy operation.
                 destFile.StartCopy(sourceFile);
 
-                //Write the contents of the destination file to the console window.
+                // Write the contents of the destination file to the console window.
                 Console.WriteLine(destFile.DownloadText());
             }
         }
@@ -366,45 +376,45 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
 
 次の例では、ファイルを作成し、同じストレージ アカウント内の BLOB にそれをコピーします。この例では、ソース ファイルの SAS を作成します。サービスはこれを使用してコピー操作中にソース ファイルへのアクセスを認証します。
 
-    //Parse the connection string for the storage account.
+    // Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    //Create a CloudFileClient object for credentialed access to File storage.
+    // Create a CloudFileClient object for credentialed access to File storage.
     CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
-    //Create a new file share, if it does not already exist.
+    // Create a new file share, if it does not already exist.
     CloudFileShare share = fileClient.GetShareReference("sample-share");
     share.CreateIfNotExists();
 
-    //Create a new file in the root directory.
+    // Create a new file in the root directory.
     CloudFile sourceFile = share.GetRootDirectoryReference().GetFileReference("sample-file.txt");
     sourceFile.UploadText("A sample file in the root directory.");
 
-    //Get a reference to the blob to which the file will be copied.
+    // Get a reference to the blob to which the file will be copied.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
     container.CreateIfNotExists();
     CloudBlockBlob destBlob = container.GetBlockBlobReference("sample-blob.txt");
 
-    //Create a SAS for the file that's valid for 24 hours.
-    //Note that when you are copying a file to a blob, or a blob to a file, you must use a SAS
-    //to authenticate access to the source object, even if you are copying within the same 
-    //storage account.
+    // Create a SAS for the file that's valid for 24 hours.
+    // Note that when you are copying a file to a blob, or a blob to a file, you must use a SAS
+    // to authenticate access to the source object, even if you are copying within the same
+    // storage account.
     string fileSas = sourceFile.GetSharedAccessSignature(new SharedAccessFilePolicy()
     {
-        //Only read permissions are required for the source file.
+        // Only read permissions are required for the source file.
         Permissions = SharedAccessFilePermissions.Read,
         SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24)
     });
 
-    //Construct the URI to the source file, including the SAS token. 
+    // Construct the URI to the source file, including the SAS token.
     Uri fileSasUri = new Uri(sourceFile.StorageUri.PrimaryUri.ToString() + fileSas);
 
-    //Copy the file to the blob.
+    // Copy the file to the blob.
     destBlob.StartCopy(fileSasUri);
 
-    //Write the contents of the file to the console window.
+    // Write the contents of the file to the console window.
     Console.WriteLine("Source file contents: {0}", sourceFile.DownloadText());
     Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 
@@ -434,6 +444,5 @@ Azure File ストレージの詳細については、次のリンクを参照し
 
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

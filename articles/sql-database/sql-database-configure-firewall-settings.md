@@ -1,6 +1,6 @@
 <properties
-	pageTitle="ファイアウォール設定の構成方法 (Azure SQL Database)"
-	description="Azure SQL Database のファイアウォールの構成"
+	pageTitle="ファイアウォール設定の構成方法 | Microsoft Azure"
+	description="Azure SQL データベースにアクセスする IP アドレスのファイアウォールを構成します。"
 	services="sql-database"
 	documentationCenter=""
 	authors="BYHAM"
@@ -13,21 +13,21 @@
 	ms.workload="data-management"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="article" 
-	ms.date="06/22/2015"
+	ms.topic="article"
+	ms.date="09/02/2015"
 	ms.author="rickbyh"/>
 
 
-# ファイアウォール設定の構成方法 (Azure SQL Database)
+# 方法: ファイアウォール設定を構成する (SQL データベース)
 
  Microsoft Azure SQL Database では、サーバーとデータベースの接続許可に、ファイアウォール規則を使用します。データベースへのアクセスを選択的に許可するには、Azure SQL Database サーバーのマスター データベースまたはユーザー データベースに、サーバーレベルおよびデータベースレベルのファイアウォール設定を定義します。
 
-**重要** Azure のアプリケーションからデータベース サーバーに接続を許可するには、Azure の接続を有効にする必要があります。ファイアウォール規則と Azure からの接続を有効にする方法については、「[Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx)」を参照してください。
+**重要** Azure のアプリケーションからデータベース サーバーに接続を許可するには、Azure の接続を有効にする必要があります。ファイアウォール規則と Azure からの接続を有効にする方法については、「[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」を参照してください。
 
 
 ## サーバーレベルのファイアウォール規則
 
-サーバーレベルのファイアウォール規則は、Microsoft Azure の管理ポータル、Transact-SQL、Azure PowerShell、または REST API を使用して管理できます。
+サーバーレベルのファイアウォール規則は、Microsoft Azure 管理ポータル、Transact-SQL、Azure PowerShell、または REST API を使用して管理できます。
 
 ### 新しい Azure ポータルを介したサーバーレベルのファイアウォール規則の管理
 1. https://portal.azure.com にある Azure ポータルにアクセスし、Azure の管理者または共同作成者のアカウントでサインインします。
@@ -48,27 +48,33 @@
 ## 管理ポータルを使用したサーバーレベルのファイアウォール規則の管理 
 
 1. 管理ポータルで **[SQL Database]** をクリックします。すべてのデータベースと、対応するサーバーが表示されます。
-1. ページの上部にある **[サーバー]** をクリックします。
-2. ファイアウォール規則を管理するサーバーの横の矢印をクリックします。
-3. ページの上部にある **[構成]** をクリックします。
+2. ページの上部にある **[サーバー]** をクリックします。
+3. ファイアウォール規則を管理するサーバーの横の矢印をクリックします。
+4. ページの上部にある **[構成]** をクリックします。
 
 	*  現在のコンピューターを追加するには、[使用できる IP アドレスに追加します] をクリックします。
 	*  さらに IP アドレスを追加するには、規則名、開始および終了 IP アドレスを入力します。
 	*  既存の規則を変更するには、規則内の任意のフィールドをクリックし、変更します。
 	*  既存の規則を削除するには、行の最後に X が表示されるまで、規則上にポインターを置きます。[X] をクリックして、規則を削除します。
-8. ページ下部の **[保存]** をクリックし、変更内容を保存します。
+5. ページ下部の **[保存]** をクリックし、変更内容を保存します。
 
 ## Transact-SQL を使用したサーバーレベルのファイアウォール規則の管理
+
 1. 管理ポータルまたは SQL Server Management Studio を使用して、クエリ ウィンドウを起動します。
 2. マスター データベースに接続していることを確認します。
-3. サーバーレベルのファイアウォール規則は、クエリ ウィンドウから作成、更新、または削除することができます。
-4. サーバーレベルのファイアウォール規則を更新または作成するには、sp\_set\_firewall rule ストアド プロシージャを実行します。次の例では、サーバー Contoso の IP アドレス範囲を有効にします。
+3. サーバーレベルのファイアウォール規則は、クエリ ウィンドウから選択、作成、更新、または削除することができます。
+4. サーバーレベルのファイアウォール規則を更新または作成するには、sp\_set\_firewall rule ストアド プロシージャを実行します。次の例では、サーバー Contoso の IP アドレス範囲を有効にします。<br/>既に存在する規則の確認から始めます。
 
-		EXEC sp_set_firewall_rule @name = N'ContosoFirewallRule', @start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
+		SELECT * FROM sys.database_firewall_rules ORDER BY name;
+
+	次に、ファイアウォール規則を追加します。
+
+		EXECUTE sp_set_firewall_rule @name = N'ContosoFirewallRule',
+			@start_ip_address = '192.168.1.1', @end_ip_address = '192.168.1.10'
 
 	サーバーレベルのファイアウォール規則を削除するには、sp\_delete\_firewall\_rule ストアド プロシージャを実行します。次の例では、ContosoFirewallRule という名前の規則を削除します。
  
-		EXEC sp_delete_firewall_rule @name = N'ContosoFirewallRule'
+		EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
  
 ## Azure PowerShell を使用したサーバーレベルのファイアウォール規則の管理
 1. Azure PowerShell を起動します。
@@ -144,4 +150,4 @@
 [2]: ./media/sql-database-configure-firewall-settings/AzurePortalFirewallSettings.png
 <!--anchors-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

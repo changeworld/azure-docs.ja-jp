@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Azure が提供するコンピューティング ホスティング オプション" 
-	description="Azure コンピューティング ホスティング オプションおよびその動作に関する詳細情報: Virtual Machines、Web サイト、Cloud Services など。" 
+	pageTitle="Azure が提供するコンピューティング ホスティング オプション"
+	description="Azure コンピューティング ホスティング オプションおよびその動作に関する詳細情報: Virtual Machines、Web サイト、Cloud Services など。"
 	services="cloud-services,virtual-machines"
-	authors="Thraka" 
+	authors="Thraka"
 	documentationCenter=""
 	manager="timlt"/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/16/2015" 
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="adegeo;cephalin;kathydav"/>
 
 
@@ -78,4 +78,4 @@ As the figure illustrates, the Cloud Services VMs run in a separate cloud servic
 * [Cloud Service](services/cloud-services/) に関する詳細情報
 * [Virtual Machines](https://msdn.microsoft.com/library/azure/jj156143.aspx)に関する詳細情報 
 
-<!------HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

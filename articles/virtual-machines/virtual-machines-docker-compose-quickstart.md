@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure 仮想マシンでの Docker および Compose の概要"
-   description="Azure での Compose と Docker の操作の簡単な紹介"
-   services="virtual-machines"
-   documentationCenter=""
-   authors="dlepow"
-   manager="timlt"
-   editor=""/>
+	description="Azure での Compose と Docker の操作の簡単な紹介"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="dlepow"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="virtual-machines"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="vm-linux"
-   ms.workload="infrastructure-services"
-   ms.date="08/07/2015"
-   ms.author="danlep"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-linux"
+	ms.workload="infrastructure-services"
+	ms.date="08/07/2015"
+	ms.author="danlep"/>
 
 # Azure 仮想マシンでの Docker および Compose の概要
 
@@ -24,7 +24,7 @@ Docker とコンテナーの知識がない場合は、「[Docker high level whi
 
 ## 手順 1: Docker ホストとしての Linux VM のセットアップ
 
-Azure のさまざまな手順と Azure Markeplace で入手できるイメージを使用して、Linux VM を作成し、Docker ホストとしてセットアップできます。たとえば、Docker VM 拡張機能を使用して Ubuntu VM を作成する簡単な手順については、「[Using the Docker VM Extension from the Azure Command-Line Interface (Azure コマンド ライン インターフェイスでの Docker VM 拡張機能の使用)](virtual-machines-docker-with-xplat-cli)」をご覧ください。Docker VM 拡張機能を使用すると、VM が自動的に Docker ホストとしてセットアップされます。前述の記事の例では、サービス管理モードで [Mac、Linux、Windows 用の Azure コマンド ライン インターフェイス](xplat-cli.md) (Azure CLI) を使用して、VM を作成する方法を示しています。
+Azure のさまざまな手順と Azure Markeplace で入手できるイメージを使用して、Linux VM を作成し、Docker ホストとしてセットアップできます。たとえば、Docker VM 拡張機能を使用して Ubuntu VM を作成する簡単な手順については、「[Using the Docker VM Extension from the Azure Command-Line Interface (Azure コマンド ライン インターフェイスでの Docker VM 拡張機能の使用)](virtual-machines-docker-with-xplat-cli.md)」をご覧ください。Docker VM 拡張機能を使用すると、VM が自動的に Docker ホストとしてセットアップされます。前述の記事の例では、サービス管理モードで [Mac、Linux、Windows 用の Azure コマンド ライン インターフェイス](../xplat-cli.md) (Azure CLI) を使用して、VM を作成する方法を示しています。
 
 ## 手順 2: Compose のインストール
 
@@ -112,4 +112,4 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 
 [wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

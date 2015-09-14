@@ -19,7 +19,7 @@
 
 # Azure VM の SQL Server へのデータベースの移行
 
-オンプレミスの SQL Server ユーザー データベースを Azure VM の SQL Server に移行する方法は多数あります。この記事では、さまざまな方法について簡単に説明したうえで、さまざまなシナリオに最適な方法を紹介します。また、Microsoft Azure VM への SQL Server データベースのデプロイ ウィザードを使用する方法について順を追って説明するチュートリアルも含まれます。
+オンプレミスの SQL Server ユーザー データベースを Azure VM の SQL Server に移行する方法は多数あります。この記事では、さまざまな方法について簡単に説明したうえで、さまざまなシナリオに最適な方法を紹介します。また、**Microsoft Azure VM への SQL Server データベースのデプロイ** ウィザードを使用する方法について順を追って説明する[チュートリアル](#azure-vm-deployment-wizard-tutorial)も含まれます。
 
 ## 主な移行方法
 
@@ -32,7 +32,7 @@
 - オンプレミスの物理マシンを HYPER-V VHD に変換して Azure BLOB ストレージにアップロードし、アップロードしたその VHD を使用して、新しい VM としてデプロイする
 - Windows の Import/Export サービスを使用して、ハード ドライブを発送する
 
-> [AZURE.NOTE]オンプレミスで AlwaysOn がデプロイされている場合は、[Azure のレプリカ追加ウィザード](https://msdn.microsoft.com/library/dn463980.aspx)を使用して、Azure でレプリカを作成し、移行方法としてフェールオーバーすることもできます。
+> [AZURE.NOTE]オンプレミスで AlwaysOn がデプロイされている場合は、[Azure のレプリカ追加ウィザード](virtual-machines-sql-server-extend-on-premises-alwayson-availability-groups.md)を使用して、Azure でレプリカを作成し、移行方法としてフェールオーバーすることもできます。
 
 ## 移行方法の選択
 
@@ -55,11 +55,11 @@
 
 ## Azure VM のデプロイ ウィザードのチュートリアル
 
-Microsoft SQL Server Management Studio の "Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード" を使用して、SQL Server 2005、SQL Server 2008、SQL Server 2008 R2、SQL Server 2012、SQL Server 2014、または SQL Server 2016 のオンプレミスのユーザー データベース (最大 1 TB) を、Azure 仮想マシンの SQL Server 2014 または SQL Server 2016 に移行します。このウィザードを使用すると、ユーザー データベースが、既存の Azure 仮想マシン、または移行プロセス中にウィザードによって作成された SQL Server が含まれる Azure VM のいずれかに移行されます。データベースを新しいバージョンの SQL Server に移行すると、そのデータベースは、プロセス中に自動的にアップグレードされます。
+Microsoft SQL Server Management Studio の "**Microsoft Azure VM への SQL Server データベースのデプロイ** ウィザード" を使用して、SQL Server 2005、SQL Server 2008、SQL Server 2008 R2、SQL Server 2012、SQL Server 2014、または SQL Server 2016 のオンプレミスのユーザー データベース (最大 1 TB) を、Azure 仮想マシンの SQL Server 2014 または SQL Server 2016 に移行します。このウィザードを使用すると、ユーザー データベースが、既存の Azure 仮想マシン、または移行プロセス中にウィザードによって作成された SQL Server が含まれる Azure VM のいずれかに移行されます。データベースを新しいバージョンの SQL Server に移行すると、そのデータベースは、プロセス中に自動的にアップグレードされます。
 
 ### 最新の Microsoft Azure VM への SQL Server データベースのデプロイ ウィザードを入手する
 
-最新の Microsoft Azure VM への SQL Server データベースのデプロイ ウィザードを確実に入手するには、最新の Microsoft SQL Server Management Studio for SQL Server を使用します。このウィザードの最新バージョンには、Azure ポータルの最新の更新プログラムが組み込まれており、ギャラリーの最新の Azure VM イメージがサポートされます (以前のバージョンのウィザードは機能しないことがあります)。最新の Microsoft SQL Server Management Studio for SQL Server を入手するには、[これをダウンロード](http://go.microsoft.com/fwlink/?LinkId=616025)して、移行するデータベースとインターネットに接続されているクライアント コンピューターにインストールします。
+最新の **Microsoft Azure VM への SQL Server データベースのデプロイ** ウィザードを確実に入手するには、最新の Microsoft SQL Server Management Studio for SQL Server を使用します。このウィザードの最新バージョンには、Azure ポータルの最新の更新プログラムが組み込まれており、ギャラリーの最新の Azure VM イメージがサポートされます (以前のバージョンのウィザードは機能しないことがあります)。最新の Microsoft SQL Server Management Studio for SQL Server を入手するには、[これをダウンロード](http://go.microsoft.com/fwlink/?LinkId=616025)して、移行するデータベースとインターネットに接続されているクライアント コンピューターにインストールします。
 
 ### 既存の Azure 仮想マシンと SQL Server インスタンスを構成する (該当する場合)
 
@@ -161,4 +161,8 @@ SQL Server 2014 より前の SQL Server に移行する場合、またはバッ�
 
 ネットワーク経由のアップロードが実現不可能であるか、非常にコストがかかる場合には、[Windows の Import/Export サービス方法](../storage-import-export-service/)を使用して、ファイルの大量のデータを Azure BLOB ストレージに転送します。このサービスでは、そのデータを含む 1 台以上のハード ドライブを Azure データ センターに発送します。このデータ センターでデータがストレージ アカウントにアップロードされます。
 
-<!---HONumber=August15_HO9-->
+## 次のステップ
+
+Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
+
+<!---HONumber=September15_HO1-->

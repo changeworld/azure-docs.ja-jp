@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Data Factory を使用した初めてのパイプラインの作成"
-	description="このチュートリアルでは、Azure HDInsight を使用してデータを変換するサンプル データ パイプラインを、Data Factory エディターを使用して作成する方法を示します"
+	description="このチュートリアルでは、Azure HDInsight を使用してデータを変換するサンプル データ パイプラインを作成する方法を示します。"
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
@@ -12,7 +12,7 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article" 
+	ms.topic="get-started-article"
 	ms.date="07/27/2015"
 	ms.author="spelluru"/>
 
@@ -173,4 +173,7 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 - Azure PowerShell を使用してチュートリアルを実行するには、上部にある「[PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)」というリンクをクリックします。
 - Visual Studio を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)」というリンクをクリックします。 
 
-<!---HONumber=August15_HO7-->
+## フィードバックの送信
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline.md)でフィードバックをお寄せください。
+
+<!---HONumber=September15_HO1-->

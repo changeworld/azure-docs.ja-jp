@@ -1,12 +1,12 @@
 <properties
    pageTitle="Azure Backup - Azure Import/Export サービスを使用したオフライン バックアップまたは初期シード処理 | Microsoft Azure"
-   description="Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。"
-   services="backup"
-   documentationCenter=""
-   authors="aashishr"
-   manager="shreeshd"
-   editor=""/>
-<tags ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="07/14/2015" ms.author="aashishr"; "jimpark"/>
+	description="Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。"
+	services="backup"
+	documentationCenter=""
+	authors="aashishr"
+	manager="shreeshd"
+	editor=""/>
+<tags  ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="08/28/2015" ms.author="aashishr"; "jimpark"/>
 
 # Azure Backup でのオフライン バックアップのワークフロー
 
@@ -22,7 +22,7 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 2. ワークフローを開始する前に、Azure Backup 資格情報コンテナーが作成され、資格情報コンテナーの資格情報がダウンロードされ、Azure Backup エージェントが Windows Server、Windows クライアント、System Center Data Protection Manager (SCDPM) サーバーのいずれかにインストールされ、Azure Backup 資格情報コンテナーにコンピューターが登録されていることを確認します。
 3. データをバックアップするコンピューターで、[こちら](https://manage.windowsazure.com/publishsettings)から Azure 発行ファイル設定をダウンロードします。
 4. *ステージング場所*を準備します。これは、コンピューター上のネットワーク共有や追加ドライブにすることができます。ステージング場所には、初期コピーを保持するのに十分なディスク領域があることを確認します。たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (これより少ない領域が使用されます)。ステージング領域は '一時ストレージ' であり、このワークフロー中に一時的に使用されます。
-5. 外部 SATA ドライブ ライター、外部 3.5 インチ SATA ドライブ。Import/Export サービスで使用できるのは、3.5 インチ SATA II/III ハード ドライブだけです。4 TB を超えるハード ドライブは、サポートされていません。大部分のコンピューターには、SATA II/III ディスクを SATA II/III USB アダプターで外部接続できます。サービスでサポートされている最新のドライブについては、Azure Import/Export のドキュメントをご確認ください。
+5. 外部 SATA ドライブ ライター、外部 3.5 インチ SATA ドライブ。Import/Export サービスで使用できるのは、3.5 インチ SATA II/III ハード ドライブだけです。6 TB を超えるハード ドライブはサポートされていません。大部分のコンピューターには、SATA II/III ディスクを SATA II/III USB アダプターで外部接続できます。サービスでサポートされている最新のドライブについては、Azure Import/Export のドキュメントをご確認ください。
 6. SATA ドライブ ライターが接続されているコンピューターで BitLocker を有効にします。
 7. [こちら](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)から、SATA ドライブ ライターが接続されているコンピューターに Azure Import/Export ツールをダウンロードします。
 
@@ -108,4 +108,4 @@ Azure Backup と Azure Import/Export を使用すると、オフラインでデ�
 - Azure Import/Export ワークフローに関するご質問は、こちらの[記事](../storage-import-export-service.md)をご覧ください。
 - ワークフローに関するご質問は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションをご覧ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Azure ロード バランサーの概要 | Microsoft Azure"
-   description="Azure ロード バランサーの機能の概要、アーキテクチャ、実装。ロード バランサーの機能とクラウドの利用方法の理解に役に立つ"
-   services="load-balancer"
-   documentationCenter="na"
-   authors="joaoma"
-   manager="adinah"
-   editor="tysonn" />
+	description="Azure ロード バランサーの機能の概要、アーキテクチャ、実装。ロード バランサーの機能とクラウドの利用方法の理解に役に立つ"
+	services="load-balancer"
+	documentationCenter="na"
+	authors="joaoma"
+	manager="adinah"
+	editor="tysonn"/>
 <tags 
    ms.service="load-balancer"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="07/10/2015"
-   ms.author="joaoma" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="07/10/2015"
+	ms.author="joaoma"/>
 
 
 # ロード バランサーの概要 
@@ -21,7 +21,7 @@ Azure ロード バランサーは、アプリケーションに高可用性と�
  
 次のように構成できます。
 
-- 仮想マシンへの着信インターネット トラフィックを負荷分散します。詳細については、「[インターネットに接続する負荷分散](load-balancer-overview.md)」に関するページをご覧ください。
+- 仮想マシンへの着信インターネット トラフィックを負荷分散します。詳細については、「[インターネットに接続する負荷分散](load-balancer-internet-overview.md)」に関するページをご覧ください。
 - 仮想ネットワーク内の仮想マシン間、クラウド サービス内の仮想マシン間、クロスプレミスの仮想ネットワーク内のオンプレミスのコンピューターと仮想マシン間でトラフィックを負荷分散します。詳細については、「[内部負荷分散 (ILB)](load-balancer-internal-overview.md)」に関するページをご覧ください。
 - 	外部トラフィックを特定の仮想マシン インスタンスに転送します。
 
@@ -99,4 +99,4 @@ Azure ロード バランサーの構成は、UDP のFull cone NAT をサポー�
 [インターネットに接続するロード バランサーの開始](load-balancer-internet-getstarted.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -12,11 +12,11 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
-	ms.date="06/10/2015"
+	ms.topic="article"
+	ms.date="09/02/2015"
 	ms.author="stbaro"/>
 
-# DocumentDB スクリプト エクスプローラーを使用したストアド プロシージャ、トリガー、およびユーザー定義関数の表示
+# DocumentDB スクリプト エクスプローラーを使用してストアド プロシージャ、トリガー、ユーザー定義関数を表示、編集、作成する
 
 この記事では、DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) の表示を可能にする Azure プレビュー ポータル ツール、[Microsoft Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) スクリプト エクスプローラーの概要を説明します。DocumentDB サーバー側のプログラミングについて詳しくは、[こちら](documentdb-programming.md)をご覧ください。
 
@@ -63,13 +63,29 @@
 	![スクリプト エクスプローラーの [最新の情報に更新] コマンドのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerrefresh.png)
 
 
-## スクリプト エクスプローラーを使用したストアド プロシージャ、トリガー、およびユーザー定義関数の表示
+## スクリプト エクスプローラーを使用してストアド プロシージャ、トリガー、ユーザー定義関数を表示、編集、作成する
 
-スクリプト エクスプローラーを使うと、DocumentDB サーバー側のプログラミング アーティファクトを簡単に表示できます。
+スクリプト エクスプローラーを使用すると、DocumentDB サーバー側プログラミング アーティファクトに対する CRUD 操作を簡単に実行できます。
 
-- 表示したいコンテンツを含むスクリプトをクリックします。
+- スクリプトを作成するには、スクリプト エクスプローラーで適切な作成コマンドをクリックし、ID を指定し、スクリプトの内容を入力し、**[保存]** コマンドをクリックします。
+
+	![スクリプト エクスプローラーの作成オプションのスクリーンショット](./media/documentdb-view-scripts/scriptexplorercreatecommand.png)
+
+- トリガーを作成する場合は、トリガーの種類とトリガー操作を指定する必要があります。
+
+	![スクリプト エクスプローラーのトリガー作成オプションのスクリーンショット](./media/documentdb-view-scripts/scriptexplorercreatetrigger.png)
+
+- スクリプトを表示するには、関心のあるスクリプトをクリックします。
 
 	![スクリプト エクスプローラーのスクリプト表示エクスペリエンスのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerviewscript.png)
+
+- スクリプトを編集するには、目的の変更を行い、**[保存]** コマンドをクリックします。
+
+	![スクリプト エクスプローラーのスクリプト表示エクスペリエンスのスクリーンショット](./media/documentdb-view-scripts/scriptexplorereditscript.png)
+
+- スクリプトの保留中の変更を破棄するには、**[破棄]** コマンドをクリックします。
+
+	![スクリプト エクスプローラーの変更破棄エクスペリエンスのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerdiscardchanges.png)
 
 - スクリプト エクスプローラーで **[プロパティ]** をクリックすると、現在読み込まれているスクリプトのシステム プロパティを簡単に表示することもできます。
 
@@ -77,9 +93,17 @@
 
 	> [AZURE.NOTE]タイムスタンプ (\_ts) プロパティは内部ではエポック時間として表現されますが、スクリプト エクスプローラーでは、人間が読むことができる GMT 形式で値が表示されます。
 
+- スクリプトを削除するには、スクリプト エクスプ ローラーで削除するスクリプトを選択し、**[削除]** コマンドをクリックします。
+
+	![スクリプト エクスプローラーの削除コマンドのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerdeletescript1.png)
+
+- 削除アクションを **[はい]** をクリックして確認するか、**[いいえ]** をクリックして取り消します。
+
+	![スクリプト エクスプローラーの削除コマンドのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerdeletescript2.png)
+
 ## 次のステップ
 
 DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,27 +1,27 @@
 <properties 
-   pageTitle="StorSimple デバイスのデバイス モードの変更 | Microsoft Azure"
-   description="StorSimple デバイスのさまざまなモードについて説明し、デバイスのモードを変更する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+   pageTitle="StorSimple デバイスのモードを変更する | Microsoft Azure"
+	description="StorSimple デバイスのモードについて、また StorSimple 用 Windows PowerShell を使用してデバイスのモードを変更する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/12/2015"
-   ms.author="alkohli" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="09/01/2015"
+	ms.author="alkohli"/>
 
-# StorSimple デバイスのモード
+# StorSimple デバイスのデバイス モードの変更
 
 この記事では、StorSimple デバイスのさまざまな動作モードについて簡単に説明します。StorSimple デバイスの動作モードには、通常モード、メンテナンス モード、回復モードの 3 つがあります。
 
 この記事を読むと、次のことについて理解できます。
 
-- StorSimple デバイスのモード
+- StorSimple デバイスのモードとは
 - StorSimple デバイスの現在のモードを確認する方法
 - 通常モードからメンテナンス モードおよび*その逆の方向*に切り替える方法
 
@@ -54,12 +54,12 @@ StorSimple デバイスをメンテナンス モードに切り替えること�
 
 ## StorSimple デバイスのモードの確認
 
-デバイスのモードを確認するには、次の手順を実行します。
+#### デバイスの現在のモードを確認するには
 
 1. 「[PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)」の手順に従って、デバイスのシリアル コンソールにログオンします。
 2. デバイスのシリアル コンソール メニューでバナー メッセージを確認します。このメッセージでは、デバイスがメンテナンス モードと回復モードのどちらであるかを明示的に示します。システムのモードに関連する具体的な情報がメッセージに含まれていない場合、デバイスは通常モードで動作しています。
 
-## StorSimple デバイスのモードの変更 
+## StorSimple デバイスのモードを変更する 
 
 StorSimple デバイスを (通常モードから) メンテナンス モードにすると、メンテナンスを実行したり、メンテナンス モードの更新プログラムをインストールしたりできます。メンテナンス モードを開始または終了するには、次の手順を実行します。
 
@@ -97,4 +97,4 @@ StorSimple デバイスを (通常モードから) メンテナンス モード�
 
 StorSimple デバイスに[通常モードとメンテナンス モードの更新プログラムを適用](storsimple-update-device.md)する方法について説明します。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

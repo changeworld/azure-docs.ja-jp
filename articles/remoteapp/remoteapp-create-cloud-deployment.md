@@ -1,34 +1,36 @@
 <properties 
-	pageTitle="Azure RemoteApp のクラウド コレクションの作成方法" 
-	description="Azure クラウドにデータを保存する Azure RemoteApp のデプロイを作成する方法について説明します。" 
-	services="remoteapp" 
-	documentationCenter="" 
-	authors="lizap" 
-	manager="mbaldwin" 
+	pageTitle="Azure RemoteApp のクラウド コレクションの作成方法"
+	description="Azure クラウドにデータを保存する Azure RemoteApp のデプロイを作成する方法について説明します。"
+	services="remoteapp"
+	documentationCenter=""
+	authors="lizap"
+	manager="mbaldwin"
 	editor=""/>
 
 <tags 
-	ms.service="remoteapp" 
-	ms.workload="compute" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/12/2015" 
+	ms.service="remoteapp"
+	ms.workload="compute"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/02/2015"
 	ms.author="elizapo"/>
 
 # Azure RemoteApp のクラウド コレクションの作成方法
 
 Azure RemoteApp のコレクションには、次の 2 種類があります。
 
-- クラウド: Azure に完全に常駐し、Azure 管理ポータルの **[簡易作成]** オプションを使用して作成されます。  
-- ハイブリッド: オンプレミスのアクセス用の仮想ネットワークを含み、管理ポータルの **[VNET で作成]** オプションを使用して作成されます。
+- クラウド: Azure に完全に常駐します。クラウドにすべてのデータを保存するか (したがって、クラウドのみのコレクション)、コレクションを VNET に接続して、そこにデータを保存するかを選択できます。   
+- ハイブリッド: オンプレミス アクセス用の仮想ネットワークを含みます。これには、Azure AD およびオンプレミスの Active Directory 環境を使用する必要があります。
 
 このチュートリアルでは、クラウド コレクションを作成する手順について説明します。次の 4 つのステップがあります。
 
 1.	RemoteApp コレクションを作成する。
-2.	オプションでディレクトリの同期を構成する。RemoteApp では、オンプレミスの Active Directory のユーザー、連絡先、およびパスワードを Azure Active Directory テナントと同期するためにこの構成が必要となります。
+2.	オプションでディレクトリの同期を構成する。Azure AD と Active Directory を使用している場合、オンプレミスの Active Directory のユーザー、連絡先、およびパスワードを Azure AD テナントと同期する必要があります。
 5.	RemoteApp のアプリを発行する。
 6.	ユーザー アクセスを構成する。
+
+**注** *このトピックは、再作成中です。新しい UI を反映するように手順を更新しましたが、トピック全体は、まだ再公開できません。認証とコレクションのオプションをより簡単に理解するためのいくつかの新しい記事を執筆中です。したがって、お困りの場合、マイクロソフトはそれを把握し、より役立つ情報を一刻も早くお届けできるよう鋭意取り組んでいることをご承知おきください。よろしくお願いいたします。*
 
 **開始する前に**
 
@@ -37,11 +39,15 @@ Azure RemoteApp のコレクションには、次の 2 種類があります。
 - Azure RemoteApp に[サインアップ](http://azure.microsoft.com/services/remoteapp/)します。 
 - アクセス権を付与するユーザーに関する情報を集めます。この情報とは、ユーザーの Microsoft アカウントの情報または Active Directory の仕事用アカウントの情報です。
 - この手順は、サブスクリプションの一部として提供されたテンプレートのイメージを使用しようとしているか、使用するテンプレートのイメージが既にアップロード済みであることが前提となっています。別のテンプレート イメージをアップロードする必要がある場合は、[テンプレート イメージ] ページから実行できます。**[テンプレート イメージのアップロード]** をクリックして、ウィザードで表示される手順に従います。 
+- Office 365 ProPlus イメージを使用する必要がありますか。 [こちら](remoteapp-officesubscription.md)で詳細を確認できます。
 - カスタム アプリケーションまたは LOB プログラムが必要な場合は、 新しい[イメージ](remoteapp-imageoptions.md)を作成して、クラウド コレクションで使用します。
+- VNET に接続する必要があるかどうかを検討します。VNET への接続を選択する場合は、サイズのガイドラインを満たしていることと、RemoteApp に接続できることを確認します。
+- VNET を使用している場合は、ローカルの Active Directory ドメインに参加させるかどうかを決定します。
 
-## 手順 1. コレクションを作成する ##
+## 手順 1: クラウド コレクションの作成 - VNET あり/なし##
 
 
+**クラウドのみのコレクション**を作成するには、次の手順に従います。
 
 1. 管理ポータルで、[RemoteApp] ページに移動します。
 2. **[新規] > [簡易作成]** をクリックします。
@@ -58,10 +64,20 @@ Azure RemoteApp のコレクションには、次の 2 種類があります。
 
 RemoteApp コレクションが作成されたら、コレクションの名前をダブルクリックします。これにより、**[クイック スタート]** ページが表示されます。このページで、コレクションの構成を完了します。
 
+**クラウドおよび VNET のコレクション**を作成するには、次の手順に従います。
+
+1. 管理ポータルで、[RemoteApp] ページに移動します。
+2. **[新規]** > **[VNET で作成]** の順にクリックします。
+3. コレクションの名前を入力します。
+4. Standard または Basic から、使用するプランを選択します。
+5. 既に作成した VNET を選択します。その方法をご存じないでしょうか。 現在、その手順は[ハイブリッド](remoteapp-create-hybrid-deployment.md)に関するトピックに記載されています。
+6. コレクションをドメインに参加させるかどうかを決定します。参加させる場合、AD 接続を使用して、Azure AD と Active Directory 環境を統合する必要があります。これは、後述の**手順 2.** で説明します。
+6. **[RemoteApp コレクションの作成]** をクリックします。
+
 
 ## 手順 2. Active Directory ディレクトリの同期を構成する (省略可能) ##
 
-Active Directory を使用する場合、RemoteApp では、Azure Active Directory とオンプレミスの Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画の詳細については、「[Azure RemoteApp の Active Directory の構成](remoteapp-ad.md)」を参照してください。
+Active Directory を使用する場合、RemoteApp では、Azure Active Directory とオンプレミスの Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画の詳細については、「[Azure RemoteApp の Active Directory の構成](remoteapp-ad.md)」を参照してください。また、詳細について [AD 接続](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx)を直接参照することもできます。
 
 ## 手順 3. RemoteApp のアプリを発行する ##
 
@@ -93,4 +109,4 @@ RemoteApp コレクションには複数のアプリケーションを発行で�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

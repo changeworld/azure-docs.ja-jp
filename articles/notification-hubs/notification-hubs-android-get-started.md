@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="hero-article"
-	ms.date="05/27/2015"
+	ms.date="09/01/2015"
 	ms.author="wesmc"/>
 
 # Notification Hubs の使用
@@ -104,6 +104,7 @@
 		private NotificationHub hub;
     	private String HubName = "<Enter Your Hub Name>";
 		private String HubListenConnectionString = "<Your default listen connection string>";
+	    private static Boolean isVisible = false;
 
 
 	次の 3 つのプレースホルダーを必ず更新します。* **SENDER\_ID**: `SENDER_ID` を [Google Cloud Console](http://cloud.google.com/console) で作成したプロジェクトから取得したプロジェクト番号に設定します。* **HubListenConnectionString**: `HubListenConnectionString` をハブ用の **DefaultListenAccessSignature** 接続文字列に設定します。[Azure ポータル]のハブにある **[ダッシュボード]** タブの **[接続文字列の表示]** をクリックすると接続文字列をコピーできます。* **HubName**: ハブの Azure のページ上部に表示される通知ハブの名前 (完全な URL では**ありません**) を使用します。たとえば、`"myhub"` です。
@@ -139,6 +140,21 @@
     	}
 
 
+7. **DialogNotify** メソッドをアクティビティに追加して、アプリが実行され、表示されているときに通知を表示します。**onStart** や **onStop** をオーバーライドして、アクティビティがダイアログを表示するために認識されるかどうかを指定します。
+
+	    @Override
+	    protected void onStart() {
+	        super.onStart();
+	        isVisible = true;
+	    }
+	
+	    @Override
+	    protected void onStop() {
+	        super.onStop();
+	        isVisible = false;
+	    }
+
+
 		/**
 		  * A modal AlertDialog for displaying a message on the UI thread
 		  * when there's an exception or message to report.
@@ -148,6 +164,9 @@
 		  */
     	public void DialogNotify(final String title,final String message)
     	{
+	        if (isVisible == false)
+	            return;
+
         	final AlertDialog.Builder dlg;
         	dlg = new AlertDialog.Builder(this);
 
@@ -170,7 +189,7 @@
         	});
     	}
 
-7. Android には通知が表示されないため、独自の受信者を記述する必要があります。**AndroidManifest.xml** で、`<application>` 要素内に次の要素を追加します。
+8. Android には通知が表示されないため、独自の受信者を記述する必要があります。**AndroidManifest.xml** で、`<application>` 要素内に次の要素を追加します。
 
 	> [AZURE.NOTE]プレースホルダーは、パッケージ名に置き換えてください。
 
@@ -183,14 +202,14 @@
         </receiver>
 
 
-8. [プロジェクト] ビューで、**[アプリ]**、**[src]**、** [main]**、**[java]** と展開します。**[java]** のパッケージ フォルダーを右クリックして、**[新規]**、**[Java Class (Java クラス)]** と順にクリックします。
+9. [プロジェクト] ビューで、**[アプリ]**、**[src]**、** [main]**、**[java]** と展開します。**[java]** のパッケージ フォルダーを右クリックして、**[新規]**、**[Java Class (Java クラス)]** と順にクリックします。
 
 	![][6]
 
-9. 新しいクラスの **[名前]** フィールドに「**MyHandler**」と入力して **[OK]** とクリックします。
+10. 新しいクラスの **[名前]** フィールドに「**MyHandler**」と入力して **[OK]** をクリックします。
 
 
-10. **MyHandler.java** の先頭に、次の import ステートメントを追加します。
+11. **MyHandler.java** の先頭に、次の import ステートメントを追加します。
 
 		import android.app.NotificationManager;
 		import android.app.PendingIntent;
@@ -201,12 +220,12 @@
 		import com.microsoft.windowsazure.notifications.NotificationsHandler;
 
 
-11. 次のようにクラスの宣言を更新し、次のように `MyHandler` を `com.microsoft.windowsazure.notifications.NotificationsHandler` のサブクラスにします。
+12. 次のようにクラスの宣言を更新し、次のように `MyHandler` を `com.microsoft.windowsazure.notifications.NotificationsHandler` のサブクラスにします。
 
 		public class MyHandler extends NotificationsHandler {
 
 
-12. 次のコードを `MyHandler` クラスに追加します。
+13. 次のコードを `MyHandler` クラスに追加します。
 
 	このコードは `OnReceive` メソッドを上書きするため、ハンドラーが `AlertDialog` をポップアップ表示し、受信した通知を表示します。ハンドラーは `sendNotification()` メソッドを使用して Android の通知マネージャーにも通知を送信します。
 
@@ -245,7 +264,7 @@
 			mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 		}
 
-13. Android Studio のメニュー バーで、**[ビルド]**、**[Rebuild Project (プロジェクトのリビルド)]** の順にクリックし、エラーが検出されないことを確認します。
+14. Android Studio のメニュー バーで、**[Build]**、**[Rebuild Project]** の順にクリックし、エラーが検出されないことを確認します。
 
 ##通知を送信する
 
@@ -279,7 +298,7 @@
         android:layout_marginBottom="42dp"
         android:hint="@string/notification_message_hint" />
 
-2. Android Studio の [プロジェクト] ビューで**[アプリ]**、**[src]**、**[main]**、**[res]**、**[values]** の順に展開します。**strings.xml** ファイルを開き、新しい `Button` と `EditText` コントロールで参照される文字列の値を追加します。これらはファイルの一番下の `</resources>` のすぐ前に追加します。
+2. Android Studio の [Project] ビューで**[App]**、**[src]**、**[main]**、**[res]**、**[values]** の順に展開します。**strings.xml** ファイルを開き、新しい `Button` と `EditText` コントロールで参照される文字列の値を追加します。これらはファイルの一番下の `</resources>` のすぐ前に追加します。
 
         <string name="send_button">Send Notification</string>
         <string name="notification_message_hint">Enter notification message text</string>
@@ -304,7 +323,7 @@
 
 3. **MainActivity** ファイルで、`MainActivity` クラスの上に次のメンバーを追加します。
 
-	`HubName` にハブの名前を入力します。名前空間ではありません。たとえば、「myhub」にします。また、**DefaultFullSharedAccessSignature** 接続文字列を入力します。この接続文字列は[Azure ポータル]からコピーできます。通知ハブの **[ダッシュボード]** タブで **[接続文字列の表示]** をクリックします。
+	`HubName` にハブの名前を入力します。名前空間ではありません。たとえば、「myhub」にします。また、**DefaultFullSharedAccessSignature** 接続文字列を入力します。この接続文字列は [Azure ポータル]からコピーできます。通知ハブの **[ダッシュボード]** タブで **[接続文字列の表示]** をクリックします。
 
 	    private String HubEndpoint = null;
 	    private String HubSasKeyName = null;
@@ -469,7 +488,7 @@
 
 ##次のステップ
 
-この簡単な例では、すべての Android デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Windows Azure Notification Hubs の概要]」を参照してください。
+この簡単な例では、すべての Android デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Windows Azure 通知ハブの概要]」を参照してください。
 
 
 <!-- Images. -->
@@ -507,8 +526,9 @@
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
 [Azure ポータル]: https://manage.windowsazure.com/
-[Windows Azure Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Windows Azure 通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[通知ハブを使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-android-notify-users.md
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-android-notify-users.md
-[Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
+[通知ハブを使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

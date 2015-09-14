@@ -1,27 +1,27 @@
 <properties 
-	pageTitle="Microsoft Azure Storage のクライアント側暗号化の概要 | Microsoft Azure" 
-	description=".NET 用 Azure Storage クライアント ライブラリはクライアント側の暗号化と Azure Key Vault との統合に役立ちます。クライアント側の暗号化は Azure Storage アプリケーションのセキュリティを最大まで高めます。サービスがアクセス キーを認識できないためです。クライアント側の暗号化は BLOB、キュー、テーブルに利用できます。" 
-	services="storage" 
-	documentationCenter=".net" 
-	authors="tamram" 
-	manager="carolz" 
+	pageTitle="Microsoft Azure Storage | Microsoft Azure のクライアント側の暗号化"
+	description=".NET 用 Azure Storage クライアント ライブラリはクライアント側の暗号化と Azure Key Vault との統合を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。"
+	services="storage"
+	documentationCenter=".net"
+	authors="tamram"
+	manager="carolz"
 	editor=""/>
 
 <tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/21/2015"
 	ms.author="tamram"/>
 
 
-# Microsoft Azure Storage のクライアント側暗号化の概要
+# Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 
 ## 概要
 
-[.NET 用 Microsoft Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)には、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、ダウンロード中にデータを復号化する作業を支援する新しい機能が含まれています。また、このライブラリは Azure [Key Vault](http://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
+[.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](http://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
 
 ## エンベロープ手法による暗号化と復号化
 
@@ -242,4 +242,4 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 [.NET 用 Azure Storage クライアント ライブラリ NuGet パッケージ](http://www.nuget.org/packages/WindowsAzure.Storage/5.0.0)をダウンロードする。GitHub から [.NET 用 Azure Storage クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-net)をダウンロードする。Azure Key Vault NuGet の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。[Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)にアクセスする。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

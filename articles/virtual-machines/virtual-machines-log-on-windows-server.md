@@ -24,6 +24,8 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 ## ログオンする方法
 
+[AZURE.VIDEO logging-on-to-vm-running-windows-server-on-azure]
+
 [AZURE.INCLUDE [virtual-machines-log-on-win-server](../../includes/virtual-machines-log-on-win-server.md)]
 
 ## トラブルシューティングのヒント
@@ -36,4 +38,4 @@ Azure ポータルの **[接続]** ボタンを使用して、リモート デ�
 
 この操作を行っても問題が解決しない場合は、より広範なトラブルシューティングを行う必要があります。手順については、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)に関するページを参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

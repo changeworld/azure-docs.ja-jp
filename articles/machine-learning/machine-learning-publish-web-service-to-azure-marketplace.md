@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Marketplace に Machine Learning Web service を発行する | Microsoft Azure" 
-	description="Azure Marketplace に Azure Machine Learning Web サービスを発行する方法" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="LuisCabrer" 
-	manager="paulettm" 
+	pageTitle="Azure Marketplace に Machine Learning Web service を発行する | Microsoft Azure"
+	description="Azure Marketplace に Azure Machine Learning Web サービスを発行する方法"
+	services="machine-learning"
+	documentationCenter=""
+	authors="LuisCabrer"
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/12/2015" 
-	ms.author="luisca"/>
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
+	ms.author="bharaths"/>
 
 # Azure Marketplace への Azure Machine Learning Web サービスの発行 
 
@@ -109,4 +109,4 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 [odata]: ./media/machine-learning-publish-web-service-to-azure-marketplace/odata.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

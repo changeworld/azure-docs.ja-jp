@@ -12,8 +12,8 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="hero-article" 
-	ms.date="05/19/2015"
+	ms.topic="hero-article"
+	ms.date="09/03/2015"
 	ms.author="anhoh"/>
 
 #DocumentDB .NET SDK の使用  
@@ -34,11 +34,13 @@ DocumentDB は NoSQL ドキュメント データベースで、[多数の API �
 
 チュートリアルを最後まで実施する時間はないが、動作するソリューションは手に入れたい場合もあります。 心配はありません。[GitHub](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/get-started) で完全なソリューションを入手できます。手順については「[完全なソリューションの取得](#GetSolution)」を参照してください。
 
+チュートリアルを完了したら、トピックの最初または最後にある投票ボタンをクリックして、内容が役に立ったかどうかをお知らせください。トピックは常に更新されます。内容をより良くするためにお客様からのフィードバックをお待ちしています。フォローアップのためにマイクロソフトからご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
+
 ## 前提条件
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)をご覧ください。
+- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 - [Visual Studio 2013](http://www.visualstudio.com/) Update 4 以降。
 
 ## 手順 1: DocumentDB アカウントを作成する
@@ -454,6 +456,8 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 
 > [AZURE.NOTE]データベースを削除せずにアプリケーションを複数回実行すると、既に使用されている ID を指定して新しいデータベースを作成することによる問題が発生する場合があります。これを回避するには、同じ ID を持つデータベース、コレクション、ドキュメントが既に存在するかどうかを確認します。その方法については、[GitHub のページ](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/get-started)を参照してください。
 
+おつかれさまでした。 最初の DocumentDB アプリの作成が終わりました。
+
 ##<a id="GetSolution"></a>完全なソリューションを取得する
 この記事のすべてのサンプルを含む GetStarted ソリューションをビルドするには、以下が必要です。
 
@@ -463,6 +467,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、ソリューション エクスプローラーで **GetStarted** ソリューションを右クリックし、**[NuGet パッケージの復元を有効にする]** をクリックします。次に、「[DocumentDB アカウントへの接続](#Connect)」の説明に従って、App.config ファイルの EndpointUrl と AuthorizationKey の値を更新します。
 
 ## 次のステップ
+
 -   さらに複雑な ASP.NET MVC のサンプルが必要ですか。 「[DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)」を参照してください。
 -	[DocumentDB アカウントを監視する](documentdb-monitor-accounts.md)方法について学習します。
 -	[クエリのプレイ グラウンド](https://www.documentdb.com/sql/demo)でサンプル データセットに対してクエリを実行します。
@@ -475,4 +480,4 @@ Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、�
 [keys]: media/documentdb-get-started/keys.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

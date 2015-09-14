@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="KBDAzure"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -13,12 +14,12 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/07/2015"
+	ms.date="08/28/2015"
 	ms.author="kathydav"/>
 
 # Linux 仮想マシンのパスワードまたは SSH をリセットする方法 #
 
-パスワードを忘れた、Secure Shell (SSH) キーが正しくない、または SSH の構成に問題があるために Linux 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccessforLinux 拡張機能を使用してパスワード、SSH キーをリセットするか、SSH の構成の問題を解決します。
+パスワードを忘れた、Secure Shell (SSH) キーが正しくない、または SSH の構成に問題があるために Linux 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccessforLinux 拡張機能を使用してパスワード、SSH キーをリセットするか、SSH の構成の問題を解決します。この記事は、**クラシック** デプロイ モデルを使用して作成された仮想マシンを対象としています。
 
 ## Azure プレビュー ポータル
 
@@ -161,7 +162,7 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 
 > [AZURE.NOTE]$ で始まるコマンド ラインは、後で PowerShell コマンドで使用する PowerShell 変数を設定します。
 
-Azure 管理ポータルで仮想マシンを作成する場合は、次の追加のコマンドを実行します。
+Microsoft Azure 管理ポータルで仮想マシンを作成する場合は、次の追加のコマンドを実行します。
 
 	$vm.GetInstance().ProvisionGuestAgent = $true
 
@@ -261,6 +262,5 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 [Azure PowerShell のインストールと構成の方法]: ../install-configure-powershell.md
 [Azure VM 拡張機能とその機能]: http://msdn.microsoft.com/library/azure/dn606311.aspx
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

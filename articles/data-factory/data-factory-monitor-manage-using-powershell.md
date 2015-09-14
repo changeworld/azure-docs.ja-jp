@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="チュートリアル: Azure BLOB から Azure SQL にデータをコピーする" 
-	description="Azure PowerShell を使用して Azure Data Factory を作成し監視する方法について説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを Azure PowerShell で作成する"
+	description="このチュートリアルでは、Azure PowerShell を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/27/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/27/2015"
 	ms.author="spelluru"/>
 
 # チュートリアル: Azure PowerShell を使用した Data Factory の作成と監視
@@ -149,7 +149,7 @@
 				
 2. [Azure Storage エクスプローラー](https://azurestorageexplorer.codeplex.com/)などのツールを使用して **adftutorial** コンテナーを作成し、このコンテナーに **emp.txt** ファイルをアップロードします。
 
-    ![Azure Storage Explorer][image-data-factory-get-started-storage-explorer]
+    ![Azure ストレージ エクスプローラー][image-data-factory-get-started-storage-explorer]
 3. 次の SQL スクリプトを使用して、**emp** テーブルを Azure SQL Database に作成します。  
 
 
@@ -409,6 +409,9 @@
 
 Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス][cmdlet-reference]」を参照してください。
 
+## フィードバックの送信
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-monitor-manage-using-powershell.md)でフィードバックをお寄せください。
+
 
 [adf-tutorial]: data-factory-tutorial.md
 [use-custom-activities]: data-factory-use-custom-activities.md
@@ -429,4 +432,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [sql-management-studio]: ../sql-database-manage-azure-ssms.md#Step2
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

@@ -98,7 +98,7 @@ SQL Server でサポートされているエディションと機能の詳細に
 	
 	- **D**: ドライブは、主にページ ファイルに使用される一時ドライブです。**D**: ドライブは永続化されず、BLOB ストレージには保存されません。仮想マシンのサイズ変更などの管理タスクを行うと、**D**: ドライブはリセットされます。tempdb も含め、データベース ファイルには **D**: ドライブを使用しないことをお勧めします。
 
-	ディスクの作成と接続の詳細については、「[データ ディスクを Windows 仮想マシンに接続する方法](http://www.windowsazure.com/manage/windows/how-to-guides/attach-a-disk/)」をご覧ください。
+	ディスクの作成と接続の詳細については、「[データ ディスクを Windows 仮想マシンに接続する方法](storage-windows-attach-disk.md)」をご覧ください。
 
 - 使用する予定がないサービスは、停止またはアンインストールします。たとえば、仮想マシンを Reporting Services だけに使用する場合は、Analysis Services と SQL Server Integration Services を停止またはアンインストールします。次の図は、既定で開始されるサービスの例を示しています。
 
@@ -346,7 +346,7 @@ Microsoft Azure Virtual Machines でホストされているレポート サー�
 
 ### Analysis Services サーバーへのリモート アクセス
 
-Analysis Services サーバーでは、Windows 認証だけがサポートされています。SQL Server Management Studio や SQL Server Data Tools などのクライアント アプリケーションから Analysis Services にリモート アクセスするには、Azure Virtual Networking を使用して、仮想マシンをローカル ドメインに参加させる必要があります。詳細については、「[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」をご覧ください。
+Analysis Services サーバーでは、Windows 認証だけがサポートされています。SQL Server Management Studio や SQL Server Data Tools などのクライアント アプリケーションから Analysis Services にリモート アクセスするには、Azure Virtual Networking を使用して、仮想マシンをローカル ドメインに参加させる必要があります。詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」をご覧ください。
 
 Analysis Services の**既定のインスタンス**は、TCP ポート **2383** でリッスンします。仮想マシンのファイアウォールでポートを開きます。Analysis Services のクラスター化された名前付きインスタンスも、ポート **2383** でリッスンします。
 
@@ -427,4 +427,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

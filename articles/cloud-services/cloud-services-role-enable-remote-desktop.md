@@ -1,37 +1,104 @@
 <properties 
-pageTitle="Azure Cloud Services のロールにリモート デスクトップ接続をセットアップする" 
-description="Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法" 
-services="cloud-services" 
-documentationCenter="" 
-authors="Thraka" 
-manager="timlt" 
-editor=""/>
+pageTitle="Azure Cloud Services のロールでのリモート デスクトップ接続の有効化"
+	description="Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法"
+	services="cloud-services"
+	documentationCenter=""
+	authors="sbtron"
+	manager="timlt"
+	editor=""/>
 <tags 
-ms.service="cloud-services" 
-ms.workload="tbd" 
-ms.tgt_pltfrm="na" 
-ms.devlang="na" 
-ms.topic="article" 
-ms.date="07/06/2015" 
-ms.author="adegeo"/>
+ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/06/2015"
+	ms.author="saurabh"/>
 
-# Azure ロールのリモート デスクトップ接続をセットアップする
-アプリケーションを実行しているクラウド サービスの作成後は、そのアプリケーションのロール インスタンスにリモートでアクセスして、設定を構成したり、トラブルシューティングを実行できます。クラウド サービスがリモート デスクトップ用に構成されている必要があります。
+# Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
 
-* リモート デスクトップ認証を有効にするには、証明書が必要ですか。 証明書を[作成](cloud-services-certs-create.md)して、以下のように構成します。
-* クラウド サービス用のリモート デスクトップのセットアップが既にありますか。 クラウド サービスに[接続](#remote-into-role-instances)します。
+>[AZURE.SELECTOR]
+- [Azure Portal](cloud-services-role-enable-remote-desktop.md)
+- [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+- [Visual Studio](https://msdn.microsoft.com/library/gg443832.aspx)
 
-## Web ロールか Worker ロールのリモート デスクトップ接続をセットアップする
-Web ロールか Worker ロールのリモート デスクトップ接続を有効にするには、アプリケーションのサービス モデルでの接続をセットアップするか、インスタンスの実行後に Azure の管理ポータルを使用して接続を設定します。
 
-### サービス モデルでの接続をセットアップする
-**インポート**要素は、**RemoteAccess** モジュールと **RemoteForwarder** モジュールをサービス モデルにインポートサービス定義ファイルに追加する必要があります。Visual Studio を使用して Azure プロジェクトを作成する場合は、サービス モデルのファイルが作成されます。
+リモート デスクトップを使用して、Azure で実行されているロールのデスクトップにアクセスできます。リモート デスクトップ接続を使用すると、アプリケーションの実行中にそのアプリケーションの問題のトラブルシューティングや診断を行うことができます。
 
-このサービス モデルは、[ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) ファイルと [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) ファイルから構成されます。クラウド サービスのアプリケーションがデプロイメント用に準備されると、定義ファイルはロール バイナリとパッケージ化されます。ServiceConfiguration.cscfg ファイルは、アプリケーション パッケージを使用してデプロイされ、Azure は、アプリケーションの実行方法を決定するために使用します。
+サービス定義にリモート デスクトップ モジュールを含めることで開発時にロールのリモート デスクトップ接続を有効にするか、リモート デスクトップ拡張機能を使用してリモート デスクトップを有効にすることができます。アプリケーションのデプロイ後でもアプリケーションを再デプロイすることなくリモート デスクトップを有効にできるため、リモート デスクトップ拡張機能を使用する方法が推奨されます。
 
-プロジェクトの作成後に Visual Studio を使用して、[リモート デスクトップ接続を有効にすることができます](https://msdn.microsoft.com/library/gg443832.aspx)。
 
-接続の構成後は、サービス定義ファイルは、`<Imports>` 要素が追加された次の例のようになっている必要があります。
+## ポータルからリモート デスクトップを構成する
+ポータルでは、アプリケーションのデプロイ後でもリモート デスクトップを有効化できるように、リモート デスクトップ拡張機能の方法を使用します。クラウド サービスの **[構成]** ページでは、リモート デスクトップの有効化、仮想マシンへの接続に使用するローカル管理者アカウントや認証に使用する証明書の変更、および有効期限の設定を行うことができます。
+
+
+1. **[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックして、**[構成]** をクリックします。
+
+2. **[リモート]** をクリックします。
+    
+    ![クラウド サービス リモート](./media/cloud-services-role-enable-remote-desktop/CloudServices_Remote.png)
+    
+    > [AZURE.WARNING]初めてリモート デスクトップを有効にして [OK] (チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-how-to-create-deploy/#how-to-upload-a-certificate-for-a-cloud-service)して、このダイアログに戻ります。
+    
+
+3. **[ロール]** で、更新するロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。
+
+4. 必要に応じて次の変更を行います。
+    
+    - リモート デスクトップを有効にするには、**[リモート デスクトップを有効にする]** チェック ボックスをオンにします。リモート デスクトップを無効にするには、チェック ボックスをオフにします。
+    
+    - ロール インスタンスへのリモート デスクトップ接続で使用するアカウントを作成します。
+    
+    - 既存のアカウントのパスワードを更新します。
+    
+    - 認証に使用するために、アップロードした証明書を選択するか (**[証明書]** ページの **[アップロード]** を使用して証明書をアップロードします)、新しい証明書を作成します。
+    
+    - リモート デスクトップ構成の有効期限を変更します。
+
+5. 構成の更新が完了したら、**[OK]** (チェックマーク) をクリックします。
+
+
+## ロール インスタンスへのリモート接続
+ロールでリモート デスクトップが有効化されると、各種ツールを使用してロール インスタンスにリモート接続できるようになります。
+
+ポータルからロール インスタンスに接続するには:
+    
+  1.   **[インスタンス]** をクリックして、**[インスタンス]** ページを開きます。
+  2.   リモート デスクトップが構成されたロール インスタンスを選択します。
+  3.   **[接続]** をクリックし、指示に従ってデスクトップを開きます。 
+  4.   **[開く]**、**[接続]** の順にクリックして、リモート デスクトップ接続を開始します。 
+
+
+### Visual Studio を使用してロール インスタンスにリモート接続する
+
+Visual Studio のサーバー エクスプローラーで次の操作を行います。
+
+1. **Azure\\Cloud Services\\[クラウド サービス名]** ノードを展開します。
+2. **[ステージング]** か **[運用]** のいずれかを展開します。
+3. 個々のロールを展開します。
+4. ロール インスタンスの 1 つを右クリックして **[リモート デスクトップを使用して接続]** をクリックし、ユーザー名とパスワードを入力します。 
+
+![サーバー エクスプローラーとリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop/ServerExplorer_RemoteDesktop.png)
+
+
+### PowerShell を使用して、RDP ファイルを取得する
+[Get-azureremotedesktopfile](https://msdn.microsoft.com/library/azure/dn495261.aspx) コマンドレットを使用して RDP ファイルを取得できます。リモート デスクトップ接続で RDP ファイルを使用して、クラウド サービスにアクセスできます。
+
+### プログラムを使用して、サービス管理 REST API から RDP ファイルをダウンロードする
+[Download RDP File](https://msdn.microsoft.com/library/jj157183.aspx) REST 操作を使用して、RDP ファイルをダウンロードできます。
+
+
+
+## サービス定義ファイルでリモート デスクトップを構成するには
+
+この方法を使用すると、開発時にアプリケーションのリモート デスクトップを有効にすることができます。この方法では、サービス構成ファイルに暗号化パスワードを保存する必要があり、リモート デスクトップ構成を更新した場合はアプリケーションを再デプロイする必要があります。こうした欠点を回避するには、前述のリモート デスクトップ拡張機能ベースの方法を使用してください。
+
+サービス定義ファイルの方法では、Visual Studio を使用して[リモート デスクトップ接続を有効にできます](https://msdn.microsoft.com/library/gg443832.aspx)。次の手順では、リモート デスクトップを有効にするためにサービス モデル ファイルに加える必要のある変更について説明します。こうした変更は、発行時に Visual Studio で自動的に行われます。
+
+### サービス モデルでの接続をセットアップする 
+**Imports** 要素を使用して、[ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) ファイルに **RemoteAccess** モジュール と **RemoteForwarder** モジュールをインポートします。
+
+サービス定義ファイルは、`<Imports>` 要素が追加された次の例のようになっている必要があります。
 
 ```xml
 <ServiceDefinition name="<name-of-cloud-service>" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2013-03.2.0">
@@ -54,8 +121,7 @@ Web ロールか Worker ロールのリモート デスクトップ接続を有�
     </WebRole>
 </ServiceDefinition>
 ```
-
-サービス構成ファイルは、接続の設定時に指定した値の次の例のようになっている必要があります。`<ConfigurationSettings>` 要素と `<Certificates>` 要素に注意してください。
+[ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) ファイルは次の例のようになっている必要があります (`<ConfigurationSettings>` 要素と `<Certificates>` 要素に注意してください)。指定した証明書は、[クラウド サービスにアップロードする](cloud-services-how-to-create-deploy/#how-to-upload-a-certificate-for-a-cloud-service)必要があります。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -76,41 +142,9 @@ Web ロールか Worker ロールのリモート デスクトップ接続を有�
 </ServiceConfiguration>
 ```
 
-アプリケーションを[パッケージ化し](cloud-services-model-and-package.md#cspkg)、[発行](cloud-services-how-to-create-deploy-portal.md)したら、**[すべてのロールのリモート デスクトップを有効にする]** チェック ボックスをオンにします。[この](https://msdn.microsoft.com/library/ff683672.aspx)記事では、Visual Studio とクラウド サービスの使用に関連する一般的なタスクのリストを記載しています。
 
-### インスタンスを実行する接続をセットアップする
-クラウド サービスの [構成] ページで、リモート デスクトップ接続の設定を有効化したり、変更できます。詳細については、「[ロール インスタンスへのリモート アクセスを構成する](cloud-services-how-to-configure.md)」をご覧ください。
+## その他のリソース
 
+[クラウド サービスの構成方法](cloud-services-how-to-configure.md)
 
-
-
-## ロール インスタンスへのリモート接続
-Web ロールか Worker ロールのインスタンスにアクセスするには、リモート デスクトップ プロトコル (RDP) ファイルを使用する必要があります。管理ポータルからファイルをダウンロードするか、プログラムでファイルを取得できます。
-
-### 管理ポータルで RDP ファイルをダウンロードする
-
-次の手順を使用して、管理ポータルから RDP ファイルを取得し、ファイルを使用してリモート デスクトップ接続でインスタンスに接続します。
-
-1.  [インスタンス] ページで、インスタンスを選択し、コマンド バーの **[接続]** をクリックします。
-2.  **[保存]** をクリックして、ローカル コンピューターにリモート デスクトップ プロトコル ファイルを保存します。
-3.  **[リモート デスクトップ接続]** を開いて、**[オプションの表示]**、**[開く]** の順にクリックします。
-4.  RDP ファイルを保存した場所を参照し、ファイルを選択し、**[開く]**、**[接続]** の順にクリックします。手順に従って、接続を完了します。
-
-### PowerShell を使用して、RDP ファイルを取得する
-[Get-azureremotedesktopfile](https://msdn.microsoft.com/library/azure/dn495261.aspx) コマンドレットを使用して RDP ファイルを取得できます。
-
-### Visual Studio を使用して、RDP ファイルをダウンロードする
-Visual Studio でサーバー エクスプローラーを使用して、リモート デスクトップ接続を作成できます。
-
-1.  サーバー エクスプローラーで、**Azure\\Cloud services \\ [cloud service name]** ノードを展開します。
-2.  **[ステージング]** か **[運用]** のいずれかを展開します。
-3.  個々のロールを展開します。
-4.  ロール インスタンスの 1 つを右クリックして **[リモート デスクトップを使用して接続]** をクリックして、ユーザー名とパスワードを入力します。
-
-### プログラムを使用して、サービス管理 REST API から RDP ファイルをダウンロードする
-[RDP ファイルのダウンロード](https://msdn.microsoft.com/library/jj157183.aspx) REST 操作を 使用して RDP ファイルをダウンロードします。リモート デスクトップ接続で RDP ファイルを使用して、クラウド サービスにアクセスできます。
-
-## 次のステップ
-アプリケーションを[パッケージ化](cloud-services-model-and-package.md)するか、[アップロード (デプロイ)](cloud-services-how-to-create-deploy-portal.md) する必要があります。
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

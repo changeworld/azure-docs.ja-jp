@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/24/2015"
+	ms.date="09/01/2015"
 	ms.author="jroth"/>
 
 # Azure Virtual Machines における SQL Server の概要
@@ -27,26 +27,23 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 
 ### 1 つの VM での SQL Server インスタンスのデプロイ
 
-サブスクリプションにサインアップした後、Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Azure 管理ポータルで SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-provision-sql-server.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
-
-Azure Virtual Machines で SQL Server の一般的なワークロードを実行できます。SQL Server では、ギャラリーで提供されている、最適化された仮想マシン イメージをいくつか使用することができます。特定のワークロードについては、次を参照してください。
-
-- [Azure の仮想マシンでの SQL Server Business Intelligence](virtual-machines-sql-server-business-intelligence.md)
-- [SQL Server Data Warehousing and Transactional Workloads in Azure Virtual Machines (Azure の仮想マシンにおける SQL Server データ ウェアハウスおよびトランザクション ワークロード)](virtual-machines-sql-server-dw-and-oltp-workloads.md)
+サブスクリプションにサインアップした後、Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Microsoft Azure 管理ポータルで SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-provision-sql-server.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
 
 次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。
 
 |SQL Server のバージョン|オペレーティング システム|SQL Server のエディション|
 |---|---|---|
-|SQL Server 2008 R2 SP2|Windows Server 2008 R2|Enterprise、Standard、および Web|
-|SQL Server 2008 R2 SP3|Windows Server 2008 R2|Enterprise、Standard、および Web|
-|SQL Server 2012 SP2|Windows Server 2012|Enterprise、Standard、Web、OLTP (Enterprise)、および Data Warehouse (Enterprise)|
-|SQL Server 2012 SP2|Windows Server 2012 R2|Enterprise、Standard、Web、OLTP (Enterprise)、および Data Warehouse (Enterprise)|
-|SQL Server 2014|Windows Server 2012 R2|Enterprise、Standard、Web、OLTP (Enterprise)、および Data Warehouse (Enterprise)|
-|SQL Server 2014 SP1|Windows Server 2012 R2|Enterprise、Standard、Web、OLTP (Enterprise)、および Data Warehouse (Enterprise)|
+|SQL Server 2008 R2 SP2|Windows Server 2008 R2|Enterprise、Standard、Web|
+|SQL Server 2008 R2 SP3|Windows Server 2008 R2|Enterprise、Standard、Web|
+|SQL Server 2012 SP2|Windows Server 2012|Enterprise、Standard、Web|
+|SQL Server 2012 SP2|Windows Server 2012 R2|Enterprise、Standard、Web|
+|SQL Server 2014|Windows Server 2012 R2|Enterprise、Standard、Web|
+|SQL Server 2014 SP1|Windows Server 2012 R2|Enterprise、Standard、Web|
 |SQL Server 2016 CTP|Windows Server 2012 R2|評価|
 
-これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure の仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure の仮想マシンで SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure のコンピューティングおよびストレージ [コスト](http://azure.microsoft.com/pricing/details/virtual-machines) のみを支払います。
+>[AZURE.NOTE]データ ウェアハウスおよびトランザクション ワークロード用の仮想マシンのギャラリー イメージ (前に記載のない) は間もなく廃止され、ギャラリーから削除される予定です。前述の表に記載された標準のイメージを使用して、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」の推奨事項に従って、固有のワークロードのパフォーマンスを最適化してください。
+
+これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure の仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure の仮想マシンで SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure のコンピューティングおよびストレージ [コスト](http://azure.microsoft.com/pricing/details/virtual-machines)のみを支払います。
 
 これらのプロビジョニングと構成の初期段階での一般的なタスクは、次のとおりです。
 
@@ -66,6 +63,7 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 
 - [Azure AlwaysOn 可用性グループの構成 (GUI)](virtual-machines-sql-server-alwayson-availability-groups-gui.md)
 - [Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)
+- [Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ](virtual-machines-workload-template-sql-alwayson.md)
 - [オンプレミスの AlwaysOn 可用性グループの Azure への拡張](virtual-machines-sql-server-extend-on-premises-alwayson-availability-groups.md)
 
 その他の高可用性構成については、「[Azure の仮想マシン内の SQL Server の高可用性と災害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)」を参照してください。
@@ -110,7 +108,7 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 |Data Quality Services|インストール済み (SQL Server 2012 以降のみ)|
 |Master Data Services|インストール済み (SQL Server 2012 以降のみ)。[追加構成とコンポーネント](https://msdn.microsoft.com/library/ee633752.aspx)が必要です
 |PowerPivot for SharePoint|使用可能 (SQL Server 2012 以降のみ)追加構成とコンポーネントが必要です (SharePoint を含む)|
-|分散再生クライアント|使用可能 (SQL Server 2012 以降のみ)、ただし未インストール「[Running SQL Server setup from the platform-provided SQL Server image (プラットフォームによって提供される SQL Server イメージからの SQL Server セットアップの実行)](#running-sql-server-setup-from-the-platform-provided-sql-server-image)」をご覧ください|
+|分散再生クライアント|使用可能 (SQL Server 2012 以降のみ)、ただし未インストール「[Running SQL Server setup from the platform-provided SQL Server image (プラットフォームによって提供される SQL Server イメージからの SQL Server セットアップの実行)](#run-sql-server-setup-from-the-platform-provided-sql-server-image)」をご覧ください|
 |ツール|SQL Server Management Studio、SQL Server Configuration Manager、Business Intelligence Development Studio、SQL Server Setup、Client Tools Connectivity、Client Tools SDK、SQL Client Connectivity SDK や、データ層アプリケーション (DAC) などのアップグレードおよび移行ツール、バックアップ、リストア、アタッチ、および切断用ツールなど、すべてのツール|
 |SQL Server オンライン ブック|インストールされているが、ヘルプ ビューアーを使用して構成する必要があります|
 
@@ -128,9 +126,11 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 |既定の言語|英語|
 |データベース間での所有権の継承|オフ|
 
-[カスタマー エクスペイレンス向上プログラム (CEIP)](https://technet.microsoft.com/library/cc730757.aspx) が有効です。SQL Server エラーと使用状況レポート ユーティリティを使用して、CEIP を無効にすることができます。SQL Server エラーと使用状況レポート ユーティリティを起動するには、[スタート] メニューで [すべてのプログラム] をクリックし、[Microsoft SQL Server バージョン]、[構成ツール、]、[SQL Server エラーと使用状況レポート] の順にクリックします。CEIP を有効にした状態で SQL Server のインスタンスを使用しない場合は、独自の仮想マシン イメージを Azure にデプロイすることも検討できます。詳細については、「[Creating and Uploading a Virtual Hard Disk that Contains the Windows Server Operating System (Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード)](virtual-machines-create-upload-vhd-windows-server.md)」をご覧ください。
+### カスタマー エクスペリエンス向上プログラム (CEIP)
 
-### プラットフォームによって提供される SQL Server イメージからの SQL Server セットアップの実行
+[カスタマー エクスペリエンス向上プログラム (CEIP)](https://technet.microsoft.com/library/cc730757.aspx) が有効です。SQL Server エラーと使用状況レポート ユーティリティを使用して、CEIP を無効にすることができます。SQL Server エラーと使用状況レポート ユーティリティを起動するには、[スタート] メニューで [すべてのプログラム] をクリックし、[Microsoft SQL Server バージョン]、[構成ツール、]、[SQL Server エラーと使用状況レポート] の順にクリックします。CEIP を有効にした状態で SQL Server のインスタンスを使用しない場合は、独自の仮想マシン イメージを Azure にデプロイすることも検討できます。詳細については、「[Creating and Uploading a Virtual Hard Disk that Contains the Windows Server Operating System (Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード)](virtual-machines-create-upload-vhd-windows-server.md)」をご覧ください。
+
+## プラットフォームによって提供される SQL Server イメージからの SQL Server セットアップの実行
 
 プラットフォームによって提供される SQL Server イメージを使用して仮想マシンを作成する場合、仮想マシンの **C:\\SqlServer\_SQLMajorVersion.SQLMinorVersion\_Full** ディレクトリに保存されている SQL Server セットアップ メディアを使用できます。ディスク スペースに空きがある場合には、このディレクトリからセットアップを実行して、機能の追加や削除、新しいインスタンスの追加、またはインスタンスの修復などのセットアップ アクションを実行できます。
 
@@ -144,4 +144,4 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 - [Azure Virtual Machines](virtual-machines-about.md) 
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

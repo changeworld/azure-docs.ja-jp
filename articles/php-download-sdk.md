@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="03/20/2015"
+	ms.date="08/31/2015"
 	ms.author="tomfitz"/>
 
 #Azure SDK for PHP をダウンロードする
@@ -103,18 +103,10 @@ Azure PowerShell の使用方法については、「[Azure PowerShell の使用
 
 ##Azure CLI
 
-Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サービスをデプロイおよび管理するためのコマンド ライン ツールのセットです。オペレーティング システムに応じた、Azure CLI のインストール方法を次に示します。
-
-* **Mac**: [http://go.microsoft.com/fwlink/?LinkId=252249][mac-installer] から Azure SDK インストーラーをダウンロードします。ダウンロードした .pkg ファイルを開き、指示に従ってインストール手順を実行します。
-
-* **Linux**: 最新バージョンの [Node.js][nodejs-org] をインストールし (「[パッケージ マネージャーを使った Node.js のインストール][install-node-linux]」を参照)、次のコマンドを実行します。
-
-		npm install azure-cli -g
-
-	> [AZURE.NOTE]昇格した特権でコマンド `sudo npm install azure-cli -g` を実行することが必要になる場合があります。
+Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サービスをデプロイおよび管理するためのコマンド ライン ツールのセットです。Azure CLI のインストール方法については、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
 
 
-Azure CLI を使用する方法については、 [Mac、Linux、および Windows 用の Azure コマンド ライン インターフェイスの使用方法に関するページ][azure cli]を参照してください。
+
 
 [install-php]: http://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer
@@ -136,4 +128,4 @@ Azure CLI を使用する方法については、 [Mac、Linux、および Windo
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Web アプリケーションで Azure CDN からコンテンツを配信する" 
-	description="CDN からのコンテンツを使用して、Web アプリケーションのパフォーマンスを高める方法を説明するチュートリアル。" 
-	services="cdn" 
-	documentationCenter=".net" 
-	authors="cephalin" 
-	manager="wpickett" 
+	pageTitle="Web アプリケーションで Azure CDN からコンテンツを配信する"
+	description="CDN からのコンテンツを使用して、Web アプリケーションのパフォーマンスを高める方法を説明するチュートリアル。"
+	services="cdn"
+	documentationCenter=".net"
+	authors="cephalin"
+	manager="wpickett"
 	editor="jimbe"/>
 
 <tags 
-	ms.service="cdn" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="08/06/2015" 
+	ms.service="cdn"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="cephalin"/>
 
 # Web アプリケーションで Azure CDN からコンテンツを配信する #
@@ -271,4 +271,4 @@ Azure App Service Web Apps または Azure Cloud Services と統合しなくて�
 - [Azure 用 CDN の使用](cdn-how-to-use-cdn.md)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

@@ -1,23 +1,24 @@
 <properties 
    pageTitle="StorSimple デバイス コントローラーを管理する | Microsoft Azure"
-   description="StorSimple デバイス コントローラーの停止、再起動、シャットダウン、リセットの方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+	description="StorSimple デバイス コントローラーの停止、再起動、シャットダウン、リセットの方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/13/2015"
-   ms.author="alkohli" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="09/01/2015"
+	ms.author="alkohli"/>
 
 # StorSimple デバイス コントローラーを管理する
 
 ## 概要
+
 このチュートリアルでは、StorSimple デバイス コントローラーに対して実行できる各種の操作について説明します。StorSimple デバイスでは、ピア コントローラーがアクティブ/パッシブ構成で冗長化されています。特定の時点でアクティブなコントローラーは 1 台だけで、そのコントローラーがすべてのディスク操作とネットワーク操作を処理します。その他のコントローラーはパッシブ モードになります。アクティブなコントローラーに障害が発生すると、パッシブ コントローラーが自動的にアクティブになります。
 
 このチュートリアルでは、以下の手段を使ってデバイス コントローラーを管理するための手順を取り上げています。
@@ -221,4 +222,4 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 このチュートリアルで紹介した手順では解決できないような問題が StorSimple デバイス コントローラーで発生した場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

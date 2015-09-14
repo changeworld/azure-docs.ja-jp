@@ -6,7 +6,6 @@
 サブスクリプションあたりの[クラウド サービス](cloud-services-what-is.md)数|20|200
 サブスクリプションあたりの[ローカル ネットワーク](http://msdn.microsoft.com/library/jj157100.aspx)数|10|500
 サブスクリプションあたりの SQL Database サーバー数|6|150
-サーバーあたりの SQL Database 数|150|500
 サブスクリプションあたりの DNS サーバー数|9|100
 サブスクリプションあたりの予約済み IP 数|20|100
 サブスクリプションあたりの ExpressRoute 専用回線数|10|25
@@ -17,4 +16,4 @@
 
 <sup>1</sup>XS のインスタンスで、使用するコア数が 1 コアに満たなくても、コア制限を上限として 1 コアとカウントされます。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

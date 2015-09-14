@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="チュートリアル: Azure BLOB から Azure SQL にデータをコピーする" 
-	description="このチュートリアルでは、BLOB から Azure SQL Database インスタンスにデータをコピーするサンプル データ パイプラインを作成する方法を示します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する"
+	description="このチュートリアルでは、Visual Studio を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/27/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/27/2015"
 	ms.author="spelluru"/>
 
 # チュートリアル: Visual Studio を使用したデータ ファクトリの作成と監視
@@ -93,7 +93,7 @@
  
 3. **accountname** と **accountkey** を Azure ストレージ アカウントとそのキーで置き換えます。
 
-	![Azure ストレージのリンクされたサービス](./media/data-factory-get-started-using-vs/azure-storage-linked-service.png)
+	![Azure Storage のリンクされたサービス](./media/data-factory-get-started-using-vs/azure-storage-linked-service.png)
 
 4. **AzureStorageLinkedService1.json** ファイルを保存します。
 
@@ -250,4 +250,8 @@ Visual Studio の Azure Data Factory ツールを更新するには、次のよ�
 
 Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-get-started-using-editor.md/#MonitorDataSetsAndPipeline)に関する記事を参照してください。
 
-<!---HONumber=August15_HO6-->
+
+## フィードバックの送信
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-get-started-using-vs.md)でフィードバックをお寄せください。
+
+<!---HONumber=September15_HO1-->

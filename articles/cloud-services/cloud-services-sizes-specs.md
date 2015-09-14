@@ -1,19 +1,19 @@
 <properties 
- pageTitle="クラウド サービスのサイズ" 
- description="Azure のクラウド サービスの Web ロールと worker ロールのさまざまなサイズを一覧表示します。" 
- services="cloud-services" 
- documentationCenter="" 
- authors="Thraka" 
- manager="timlt" 
- editor=""/>
+ pageTitle="クラウド サービスのサイズ"
+	description="Azure のクラウド サービスの Web ロールと worker ロールのさまざまなサイズを一覧表示します。"
+	services="cloud-services"
+	documentationCenter=""
+	authors="Thraka"
+	manager="timlt"
+	editor=""/>
 <tags 
- ms.service="cloud-services" 
- ms.devlang="na" 
- ms.topic="article" 
- ms.tgt_pltfrm="na" 
- ms.workload="tbd"
- ms.date="06/04/2015" 
- ms.author="adegeo"/>
+ ms.service="cloud-services"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="tbd"
+	ms.date="09/01/2015"
+	ms.author="adegeo"/>
  
 # クラウド サービスのサイズ
 
@@ -76,4 +76,4 @@ Web ロール インスタンスのロール サイズを Small に設定する�
 
 [Azure のクラウド サービスのセットアップ](https://msdn.microsoft.com/library/hh124108)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

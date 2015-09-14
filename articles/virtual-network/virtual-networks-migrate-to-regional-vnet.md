@@ -1,27 +1,27 @@
 <properties 
    pageTitle="アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法"
-   description="アフィニティ グループから、リージョン VNet に移行する方法を学習します。"
-   services="virtual-network"
-   documentationCenter="na"
-   authors="telmosampaio"
-   manager="carolz"
-   editor="tysonn" />
+	description="アフィニティ グループから、リージョン VNet に移行する方法を学習します。"
+	services="virtual-network"
+	documentationCenter="na"
+	authors="telmosampaio"
+	manager="carolz"
+	editor="tysonn"/>
 <tags 
    ms.service="virtual-network"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="05/29/2015"
-   ms.author="telmos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="09/02/2015"
+	ms.author="telmos"/>
 
 # アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法
 
-アフィニティ グループを使用すると、同じアフィニティ グループ内で作成したリソースが、近距離にある複数サーバーによって物理的にホストされるため、これらのリソースがより迅速に通信できるようになります。これまでアフィニティ グループは、Virtual Network (VNet) を作成するための要件でした。当時は、VNet を管理するネットワーク マネージャー サービスが機能できたのは、一連の物理サーバーまたはスケール ユニット内のみでした。最近のアーキテクチャの改善により、ネットワーク管理のスコープがリージョンに拡大しました。
+アフィニティ グループを使用すると、同じアフィニティ グループ内で作成したリソースが、近距離にある複数サーバーによって物理的にホストされるため、これらのリソースはより迅速に通信できるようになります。これまでアフィニティ グループは、Virtual Network (VNet) を作成するための要件でした。当時は、VNet を管理するネットワーク マネージャー サービスが機能できたのは、一連の物理サーバーまたはスケール ユニット内のみでした。アーキテクチャの改善により、ネットワーク管理のスコープがリージョンに拡大しました。
 
 このようなアーキテクチャの機能強化により、アフィニティ グループは仮想ネットワークの推奨要件や必須要件ではなくなりました。VNet で使用されていたアフィニティ グループは、リージョンに置き換わりつつあります。リージョンに関連付けられている VNets は、リージョン VNet と呼ばれます。
 
-また、通常はアフィニティ グループを使用しないことが推奨されます。VNet の要件とは別に、以前はコンピューティングおよびストレージなどのリソースが互いに近くに配置されるよう、アフィニティ グループを使用することも重要でした。しかし、現在の Azure のネットワーク アーキテクチャでは、このような配置要件は必要なくなりました。アフィニティ グループを使用する必要のあるその他の特殊な場合については、[アフィニティ グループと VM](#Affinity-groups-and-VMs) を参照してください。
+また、通常はアフィニティ グループを使用しないことが推奨されます。VNet の要件とは別に、以前はコンピューティングおよびストレージなどのリソースが互いに近くに配置されるよう、アフィニティ グループを使用することも重要でした。しかし、現在の Azure のネットワーク アーキテクチャでは、このような配置要件は必要なくなりました。アフィニティ グループを使用する必要のあるその他の特殊な場合については、[アフィニティ グループと VM](#Affinity-groups-and-VMs)を参照してください。
 
 ## リージョン VNet の作成と移行
 
@@ -41,11 +41,13 @@
 	
 	ネットワーク構成ファイルの次の行を編集して、値を置き換えます。
 
-	**古い値 :** \<VirtualNetworkSitename=」VNetUSWest」 AffinityGroup=」VNetDemoAG」>
+	**古い値 :** <VirtualNetworkSitename=」VNetUSWest」 AffinityGroup=」VNetDemoAG」>
 
-	**新しい値 :** \<VirtualNetworkSitename=」VNetUSWest」 Location=」West US」>
+	**新しい値 :** <VirtualNetworkSitename=」VNetUSWest」 Location=」West US」>
 
 1. 変更を保存し、ネットワーク構成を Azure に[インポート](../virtual-networks-using-network-configuration-file/)します。
+
+>[AZURE.INFO]この移行では、サービスにダウンタイムは発生しません。
 
 ## アフィニティ グループと VM
 
@@ -64,4 +66,4 @@
 VM をデプロイすると、単一のスケール ユニットにデプロイされます。アフィニティ グループは、新しい VM のデプロイの際に利用できる一連の VM サイズを制限できますが、デプロイ済みの既存の VM は、VM がデプロイされているスケール ユニット内で使用できる VM サイズに既に制限されています。このため、アフィニティ グループから VM を削除しても影響はありません。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

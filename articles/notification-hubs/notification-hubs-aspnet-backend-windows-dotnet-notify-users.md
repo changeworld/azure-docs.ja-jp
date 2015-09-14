@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Azure Notification Hubs によるユーザーへの通知" 
-	description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" 
-	documentationCenter="windows" 
-	authors="wesmc7777" 
-	manager="dwrede" 
-	services="notification-hubs" 
+<properties
+	pageTitle="Azure Notification Hubs によるユーザーへの通知"
+	description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
+	services="notification-hubs"
 	editor=""/>
 
-<tags 
-	ms.service="notification-hubs" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/31/2015" 
+<tags
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs によるユーザーへの通知
@@ -28,7 +28,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 また、「[安全なプッシュ]」チュートリアルの前提条件でもあります。このチュートリアルの手順を完了した後は、このチュートリアルのコードにプッシュ通知を安全に送信するための変更を加える方法を示した「[安全なプッシュ]」チュートリアルに進むことができます。
 
 
-##前提条件 
+##前提条件
 
 このチュートリアルの前に、次の Mobile Services のチュートリアルを完了している必要があります。
 
@@ -100,7 +100,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
                     <TextBlock Grid.Row="2" Grid.ColumnSpan="3" Text="Password" FontSize="24" Margin="20,0,20,0" />
                     <PasswordBox Name="PasswordTextBox" Grid.Row="3" Grid.ColumnSpan="3" Margin="20,0,20,0"/>
 
-                    <Button Grid.Row="4" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    <Button Grid.Row="4" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"
                                 Content="1. Login and register" Click="LoginAndRegisterClick" Margin="0,0,0,20"/>
 
                     <ToggleButton Name="toggleWNS" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Content="WNS" IsChecked="True" />
@@ -137,11 +137,11 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 
 13. 次のコードを、**(Windows 8.1)** プロジェクトと **(Windows Phone 8.1)** プロジェクトの **MainPage.xaml.cs** 内の MainPage クラスに追加します。
- 
+
 	`PushClick` メソッドは、**[プッシュを送信する]** ボタン用のクリック ハンドラーです。それは、バックエンドを呼び出して、ユーザー名タグが `to_tag` パラメーターと一致するすべてのデバイスへの通知をトリガーします。通知メッセージは、要求本文で JSON コンテンツとして送信されます。
 
 	`LoginAndRegisterClick` メソッドは、**[ログインして登録]** ボタン用のクリック ハンドラーです。それは、基本認証トークンをローカル ストレージに保存し (これは認証スキームが使用する任意のトークンを表すことに注意してください)、その後で `RegisterClient` を使用して、バックエンドを使用する通知を登録します。
-	
+
 
         private async void PushClick(object sender, RoutedEventArgs e)
         {
@@ -227,7 +227,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 
 15. ソリューション エクスプローラーで、**共有**プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスに **RegisterClient.cs** という名前を付け、**[OK]** をクリックしてクラスを生成します。
-	
+
 	このクラスは、アプリ バックエンドに接続してプッシュ通知を登録するために必要な REST 呼び出しをラップします。「*アプリ バックエンドからの登録*」で説明しているとおり、Notification Hubs によって作成された [registrationIds](http://msdn.microsoft.com/library/dn743807.aspx) もローカルに格納されます。**[ログインして登録]** をクリックすると、ローカル ストレージに格納した認証トークンが使用されることに注意してください。
 
 
@@ -327,7 +327,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
         }
 
 18. すべての変更を保存します。
-		
+
 
 ## アプリケーションのテスト
 
@@ -341,17 +341,17 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
     ![][14]
 
 4. Windows Phone 8.1 インスタンスで、**[ユーザー名]** フィールドと **[パスワード]** フィールドの両方にユーザー名文字列を入力し、**[ログインして登録]** をクリックします。
-5. 次に、**[受信ユーザー タグ]** フィールドに、Windows 8.1 に登録されているユーザー名を入力します。通知メッセージを入力し、**[プッシュを送信する]** をクリックします。 
+5. 次に、**[受信ユーザー タグ]** フィールドに、Windows 8.1 に登録されているユーザー名を入力します。通知メッセージを入力し、**[プッシュを送信する]** をクリックします。
 
     ![][16]
 
 6. 一致するユーザー名タグが登録されているデバイスだけが通知メッセージを受信します。
-	
+
 	![][15]
- 
+
 ## 次のステップ
 
-* 対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。 
+* 対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。
 * 通知ハブの使用方法の詳細については、「[通知ハブの概要]」を参照してください。
 
 
@@ -373,4 +373,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [通知ハブを使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 [通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Python Machine Learning スクリプトの実行 |Microsoft Azure" 
-	description="Azure Machine Learning における Python スクリプトのサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。" 
+	pageTitle="Python Machine Learning スクリプトの実行 |Microsoft Azure"
+	description="Azure Machine Learning における Python スクリプトのサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。"
 	services="machine-learning"
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="paulettm" 
+	documentationCenter=""
+	authors="bradsev"
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/14/2015" 
-	ms.author="bradsev" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/30/2015"
+	ms.author="bradsev"/>
 
 
 # Azure Machine Learning Studio での Python Machine Learning スクリプトの実行
@@ -40,7 +40,7 @@ Azure Machine Learning Studio でのPython の主要なインターフェイス�
 [Python スクリプトの実行][execute-python-script]モジュールは、R アナログの [R スクリプトの実行][execute-r-script] モジュールと同様に、最大 3 つの入力を受け取り、最大 2 つの出力を生成します (後述)。実行される Python コードは、`azureml_main` という特別に指定されたエントリポイント関数としてパラメーター ボックスに入力されます。次にこのモジュールの実装に使用される主要な設計原則を示します。
 
 1.	*Python ユーザーにとって慣用的であること。* ほとんどの Python ユーザーは、モジュール内の関数としてコードを組み込むため、最上位レベルのモジュールに多くの実行可能ステートメントを置くことは比較的まれです。そのため、単なるステートメントのシーケンスとは対照的に、スクリプト ボックスにも特別に指定された Python 関数が入力されます。この関数で公開されるオブジェクトは、[Pandas](http://pandas.pydata.org/) データ フレームや [NumPy](http://www.numpy.org/) 配列などの標準的な Python ライブラリの型です。
-2.	*ローカルとクラウド間の実行が高品質であること。* Python コードの実行に使用されるバックエンドは、プラットフォーム間で広く使用されている科学的な Python ディストリビューション、[Anaconda](https://store.continuum.io/cshop/anaconda/) 2.1 に基づいています。最も一般的な Python パッケージが 200 個近く付属しています。そのため、データ サイエンティストは、自分のローカル Azure Machine Learning と互換性のある Anaconda 環境で、[IPython](http://ipython.org/) Notebook や [Python Tools for Visual Studio](http://pytools.codeplex.com/) などの既存の開発環境を使用してコードのデバッグや評価を行い、信頼性の高い Azure Machine Learning の実験の一部としてこれを実行できます。さらに、`azureml_main` エントリ ポイントは、vanilla Python 関数であり、Azure Machine Learning 固有のコードや SDK がインストールされていなくても作成できます。
+2.	*ローカルとクラウド間の実行が高品質であること。* Python コードの実行に使用されるバックエンドは、プラットフォーム間で広く使用されている科学的な Python ディストリビューション、[Anaconda](https://store.continuum.io/cshop/anaconda/) 2.1 に基づいています。最も一般的な Python パッケージが 200 個近く付属しています。そのため、データ サイエンティストは、自分のローカル Azure Machine Learning と互換性のある Anaconda 環境で、[IPython](http://ipython.org/) Notebook や [Python Tools for Visual Studio] などの既存の開発環境を使用してコードのデバッグや評価を行い、信頼性の高い Azure Machine Learning の実験の一部としてこれを実行できます。さらに、`azureml_main` エントリ ポイントは、vanilla Python 関数であり、Azure Machine Learning 固有のコードや SDK がインストールされていなくても作成できます。
 3.	*他のAzure Machine Learning モジュールとシームレスに構成できること。* [Python スクリプトの実行][execute-python-script]モジュールは、入力と出力として、標準の Azure Machine Learning データセットを受け取ります。基になるフレームワークは、透過的かつ効率的に Azure Machine Learning と Python のランタイムを埋めます (不足値などの特徴をサポート)。そのため、Python は既存の Azure Machine Learning ワークフロー (R や SQLite の呼び出しを含む) と組み合わせて使用できます。ユーザーは次のようなワークフローを予測できます。
   * データの前処理とクリーニングに Python と Pandas を使用する。 
   * データを SQL 変換にフィードし、フォームの特徴に複数のデータセットを結合する。 
@@ -168,6 +168,6 @@ Azure Machine Learning にインストールされている Anaconda 環境に�
 <!-- Module References -->
 [execute-python-script]: https://msdn.microsoft.com/library/azure/cdb56f95-7f4c-404d-bde7-5bb972e6f232/
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
- 
+[Python Tools for Visual Studio]: http://aka.ms/ptvs
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

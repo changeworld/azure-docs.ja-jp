@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="CDN - 国コード" 
-	description="国のフィルタリング機能では、国コードを使用して、セキュリティ保護されたディレクトリに対して要求を許可またはブロックする要求発信元の国を定義します。" 
-	services="cdn" 
-	documentationCenter=".NET" 
-	authors="juliako" 
-	manager="dwrede" 
+	pageTitle="CDN - 国コード"
+	description="国のフィルタリング機能では、国コードを使用して、セキュリティ保護されたディレクトリに対して要求を許可またはブロックする要求発信元の国を定義します。"
+	services="cdn"
+	documentationCenter=".NET"
+	authors="juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="cdn" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/08/2015" 
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="juliako"/>
 
 #国コード
@@ -27,7 +27,7 @@
 | AF | アフガニスタン | |
 | AL | アルバニア | |
 | DZ | アルジェリア | | 
-| AS | 米領サモア | | 
+| AS | アメリカ領サモア | | 
 | AD | アンドラ | |
 | AO | アンゴラ | |
 | AI | アンギラ | |
@@ -104,7 +104,7 @@
 | TF | フランス領南方・南極地域 | |
 | GA | ガボン | |
 | GM | ガンビア | |
-| GE | ジョージア | |
+| GE | グルジア | |
 | DE | ドイツ | |
 | GG | ガーンジー | |
 | GH | ガーナ | |
@@ -122,7 +122,7 @@
 | HM | ハード島とマクドナルド諸島 | |
 | VA | バチカン | |
 | HN | ホンジュラス | |
-| HK | 香港特別行政区 | |
+| HK | 香港 | |
 | HU | ハンガリー | |
 | IS | アイスランド | |
 | IM | マン島 | |
@@ -168,7 +168,7 @@
 | YT | マイヨット | |
 | MX | メキシコ | |
 | FM | ミクロネシア連邦 | |
-| MD | モルドバ共和国 | |
+| MD | モルドバ | |
 | MC | モナコ | |
 | MN | モンゴル | |
 | ME | モンテネグロ | |
@@ -193,7 +193,7 @@
 | OM | オマーン | |
 | PK | パキスタン | |
 | PW | パラオ | |
-| PS | パレスチナ自治政府 | |
+| PS | パレスチナ | |
 | PA | パナマ | |
 | PG | パプアニューギニア | |
 | PY | パラグアイ | |
@@ -268,4 +268,4 @@
 | ZM | ザンビア | |
 | ZW | ジンバブエ | |
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

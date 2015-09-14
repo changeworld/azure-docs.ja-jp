@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う"
-	description="この高度なチュートリアルは、ほぼの実際のシナリオについて説明し、Azure のデータのファクトリのサービスとデータの工場出荷時のエディターを使用してシナリオを実装します。"
+	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う (Azure ポータル)"
+	description="この高度なチュートリアルでは、現実に近いシナリオについて説明し、そのシナリオを Azure ポータルで Azure Data Factory サービスと Data Factory Editor を使用して実装します。"
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
@@ -418,6 +418,8 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [オンプレミス データ ソースの使用に関するチュートリアル][tutorial-onpremises]を実践して、マーケティング キャンペーンの有効性データをオンプレミスの SQL Server データベースにコピーするためのパイプラインを作成する方法を習得します。
 
+## フィードバックの送信
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-tutorial.md)でフィードバックをお寄せください。
 
 [monitor-manage-using-powershell]: data-factory-monitor-manage-using-powershell.md
 [use-custom-activities]: data-factory-use-custom-activities.md
@@ -526,4 +528,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial/DataFactoryCreateButton.png
 
-<!----HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

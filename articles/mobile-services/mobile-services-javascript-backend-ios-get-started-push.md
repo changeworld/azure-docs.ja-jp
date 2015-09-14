@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="05/28/2015"
+	ms.date="06/16/2015"
 	ms.author="krisragh"/>
 
 # iOS アプリと JavaScript バックエンドにプッシュ通知を追加する
@@ -117,6 +117,5 @@
 [Send broadcast notifications to subscribers]: ../notification-hubs-ios-send-breaking-news.md
 [Send template-based notifications to subscribers]: ../notification-hubs-ios-send-localized-breaking-news.md
 [Mobile Services Objective-C how-to conceptual reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

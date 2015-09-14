@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="StorSimple Manager サービスを使用した StorSimple デバイス構成の変更 | Microsoft Azure" 
-   description="StorSimple Manager サービスを使用して、デプロイ済みの StorSimple デバイスを再構成する方法について説明します。" 
-   services="storsimple" 
-   documentationCenter="NA" 
-   authors="SharS" 
-   manager="carolz" 
-   editor=""/>
+   pageTitle="StorSimple デバイスの構成の変更 |Microsoft Azure"
+	description="StorSimple Manager サービスを使用して、デプロイ済みの StorSimple デバイスを再構成する方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 
 <tags
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD" 
-   ms.date="07/30/2015"
-   ms.author="v-sharos@microsoft.com"/>
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/14/2015"
+	ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple Manager サービスを使用した StorSimple デバイス構成の変更
 
@@ -131,4 +131,4 @@ StorSimple 8000 シリーズ Update 1 では、DATA 0 のルーティング メ�
  
      
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

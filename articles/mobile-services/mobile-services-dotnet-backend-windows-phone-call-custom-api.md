@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Windows Phone アプリからのカスタム API の呼び出し - Mobile Services" 
-	description="カスタム API を定義し、Azure Mobile Services を使用する Windows Phone アプリケーションからそれを呼び出す方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Windows Phone アプリからのカスタム API の呼び出し - Mobile Services"
+	description="カスタム API を定義し、Azure Mobile Services を使用する Windows Phone アプリケーションからそれを呼び出す方法について説明します。"
+	services="mobile-services"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="06/04/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="glenga"/>
 
 # クライアントからのカスタム API 呼び出し
@@ -54,6 +54,5 @@
 <!-- URLs. -->
 [Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

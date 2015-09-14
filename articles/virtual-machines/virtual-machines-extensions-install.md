@@ -1,25 +1,25 @@
 <properties 
- pageTitle="仮想マシン拡張機能の管理 | Microsoft Azure" 
- description="拡張機能を追加、検索、更新、および削除する方法について説明します。" 
- services="virtual-machines" 
- documentationCenter="" 
- authors="squillace" 
- manager="timlt" 
- editor=""/>
+ pageTitle="仮想マシン拡張機能の管理 | Microsoft Azure"
+	description="拡張機能を追加、検索、更新、および削除する方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="squillace"
+	manager="timlt"
+	editor=""/>
 <tags 
- ms.service="virtual-machines" 
- ms.devlang="na" 
- ms.topic="article" 
- ms.tgt_pltfrm="vm-multiple" 
- ms.workload="infrastructure-services"
- ms.date="03/10/2015" 
- ms.author="rasquill"/>
+ ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-multiple"
+	ms.workload="infrastructure-services"
+	ms.date="08/25/2015"
+	ms.author="rasquill"/>
 #仮想マシン拡張機能の管理
 Azure の Windows 仮想マシンまたは Linux 仮想マシンのいずれかで VM 拡張機能を検索、追加、変更、削除する方法について説明します。
 
 ##VM 拡張機能の使用
 
-Azure VM 拡張機能は、Azure VM 上での他のプログラムの動作の支援 (たとえば、**WebDeployForVSDevTest** 拡張機能により Visual Studio は Azure VM に Web デプロイできるようになります)、または他のいくつかの動作をサポートするための VM の操作機能の提供 (たとえば、xplat-cli という PowerShell の VM アクセス拡張機能と REST クライアントを使用すると、Azure VM のリモート アクセス値をリセットまたは変更できます) を行う、動作や機能を実装します。
+Azure VM 拡張機能は、Azure VM 上での他のプログラムの動作の支援 (たとえば、**WebDeployForVSDevTest** 拡張機能により Visual Studio は Azure VM に Web デプロイできるようになります)、または他のいくつかの動作をサポートするための VM の操作機能の提供 (たとえば、Azure CLI という PowerShell の VM アクセス拡張機能と REST クライアントを使用すると、Azure VM のリモート アクセス値をリセットまたは変更できます) を行う、動作や機能を実装します。
 
 >[AZURE.IMPORTANT]サポートする機能別の拡張機能の完全な一覧については、「[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/dn606311.aspx)」を参照してください。各 VM 拡張機能は特定の機能をサポートするため、拡張機能を使用して実行可能なことと不可能なことはその拡張機能によって異なります。したがって、VM を変更する前に、使用する VM 拡張機能についてのドキュメントを必ず読んでください。VM 拡張機能の中には削除がサポートされていないものがあり、また別の拡張機能には VM の動作を根本から変更するように設定できるプロパティがあります。
 
@@ -38,7 +38,7 @@ Azure VM 拡張機能は、Azure VM 上での他のプログラムの動作の�
 Azure VM 拡張機能には次のものがあります (サポートする機能別の拡張機能の完全な一覧については、「[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/dn606311.aspx)」を参照してください)。 以下を使用して、拡張機能とその詳細情報を見つけることができます。
 
 -   PowerShell
--   Azure クロスプラットフォーム インターフェイス (xplat-cli)
+-   Azure クロスプラットフォーム インターフェイス (Azure CLI)
 -   サービス管理 REST API
 
 利用可能な拡張機能の情報を検索するには、[Azure PowerShell](https://msdn.microsoft.com/library/azure/dn495240.aspx) コマンドレットまたは[サービス管理REST API](https://msdn.microsoft.com/library/ee460799.aspx) を使用します。
@@ -78,13 +78,13 @@ Azure VM 拡張機能には次のものがあります (サポートする機能
         CompanyName                 :
 
 
-###Azure コマンド ライン インターフェイス (xplat-cli)
+###Azure コマンド ライン インターフェイス (Azure CLI)
 
-一部の拡張機能 (Docker VM 拡張機能など) には、構成を行いやすくする固有の xplat-cli コマンドがあります。また、以下のコマンドレットはすべての VM 拡張機能で動作します。
+一部の拡張機能 (Docker VM 拡張機能など) には、構成を行いやすくする固有の Azure CLI コマンドがあります。また、以下のコマンドレットはすべての VM 拡張機能で動作します。
 
 **azure vm extension list** コマンドを使用すると利用可能な拡張機能についての情報を取得することができ、**-json** オプションを付けると 1 つ以上の拡張機能について得られた情報をすべて表示することができます。拡張機能名を指定しない場合、このコマンドはすべての利用可能な拡張機能についての説明を JSON で返します。
 
-たとえば、次のコード例では xplat-cli の **azure vm extension list** コマンドを使用して **IaaSDiagnostics** 拡張機能に関する情報を一覧表示する方法を示しており、**-json** オプションを付けて完全な情報を返すようにしています。
+たとえば、次のコード例では Azure CLI の **azure vm extension list** コマンドを使用して **IaaSDiagnostics** 拡張機能に関する情報を一覧表示する方法を示しており、**-json** オプションを付けて完全な情報を返すようにしています。
 
 
     $ azure vm extension list -n IaaSDiagnostics --json
@@ -137,4 +137,4 @@ Azure PowerShell コマンドレットを使用するのが、最も簡単に拡
 
 >[AZURE.NOTE]拡張機能では、JSON で定義された構成も使用できます。これらの種類の拡張機能を使用する場合、**SampleConfig** 要素だけが使用されます。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

@@ -17,7 +17,7 @@
 	ms.author="juliako"/>
 
 
-#概要
+#Media Encoder Standard を使用して資産をエンコードする方法
 
 エンコード ジョブは Media Services で最も一般的な処理の 1 つです。エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。エンコードには、Media Services の組み込み Media Encoder を使用できます。Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。
 
@@ -120,4 +120,4 @@
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

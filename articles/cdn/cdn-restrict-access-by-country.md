@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="CDN - 国に応じてコンテンツへのアクセスを制限する" 
-	description="ユーザーがコンテンツを要求した場合、既定では、ユーザーが要求を行った場所に関係なく、コンテンツは提供されます。場合によっては、国によってコンテンツへのアクセスを制限することがあります。このトピックでは、**国のフィルタリング**機能を使用して、国別にアクセスを許可またはブロックするようにサービスを構成する方法について説明します。" 
-	services="cdn" 
-	documentationCenter=".NET" 
-	authors="juliako" 
-	manager="dwrede" 
+	pageTitle="CDN - 国に応じてコンテンツへのアクセスを制限する"
+	description="ユーザーがコンテンツを要求した場合、既定では、ユーザーが要求を行った場所に関係なく、コンテンツは提供されます。場合によっては、国によってコンテンツへのアクセスを制限することがあります。このトピックでは、**国のフィルタリング**機能を使用して、国別にアクセスを許可またはブロックするようにサービスを構成する方法について説明します。"
+	services="cdn"
+	documentationCenter=".NET"
+	authors="juliako"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="cdn" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/08/2015" 
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="juliako"/>
 
 #国に応じてコンテンツへのアクセスを制限する
@@ -65,4 +65,4 @@
 - 相対パスに関連付けられている国フィルタリング構成は、そのパスに再帰的に適用されます。
 - 同じ相対パスに適用できるルールは 1 つだけです (同じ相対パスを参照する複数の国フィルターを作成することはできません)。ただし、フォルダーには複数の国フィルターを適用できます。これは、国フィルターの再帰的な性質のためです。つまり、以前に構成されているフォルダーのサブフォルダーに、別の国フィルターを割り当てることができます。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

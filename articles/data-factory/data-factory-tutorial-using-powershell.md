@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う"
-	description="この高度なチュートリアルでは、実際に使用されているものに近いシナリオについて説明すると共に、Azure データ ファクトリ サービスを使用してそのシナリオを実装します。"
+	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う (Azure PowerShell)"
+	description="この高度なチュートリアルでは、現実に近いシナリオについて説明し、そのシナリオを Azure Data Factory サービスと Azure PowerShell を使用して実装します。"
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
@@ -558,4 +558,4 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial-using-powershell/DataFactoryCreateButton.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

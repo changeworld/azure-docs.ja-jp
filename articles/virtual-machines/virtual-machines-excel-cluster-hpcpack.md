@@ -1,19 +1,19 @@
 <properties
  pageTitle="HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する | Microsoft Azure"
- description="."
- services="virtual-machines"
- documentationCenter=""
- authors="dlepow"
- manager="timlt"
- editor=""/>
+	description="."
+	services="virtual-machines"
+	documentationCenter=""
+	authors="dlepow"
+	manager="timlt"
+	editor=""/>
 <tags
 ms.service="virtual-machines"
- ms.devlang="na"
- ms.topic="article"
- ms.tgt_pltfrm="vm-windows"
- ms.workload="big-compute"
- ms.date="08/18/2015"
- ms.author="danlep"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows"
+	ms.workload="big-compute"
+	ms.date="08/18/2015"
+	ms.author="danlep"/>
 
 # Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する
 
@@ -60,7 +60,7 @@ Azure クイックスタート テンプレートを使用すると、Azure プ�
     >
     >計算ノードの VM は、選択した計算ノード ファミリの最新のイメージから作成されます。汎用の最新の HPC Pack 2012 R2 Update 2 計算イメージの **ComputeNode** オプションを選択します。Microsoft Excel Professional Plus 2013 の評価版を含む最新の HPC Pack 計算ノード イメージの **ComputeNodeWithExcel** オプションを選択します。一般的な SOA セッション用または Excel UDF オフロード用にクラスターをデプロイする場合は、**ComputeNode** オプションを選択します (Excel はインストールされません)。
     >
-    >運用ワークロードに **ComputeNodeWithExcel** を使用する場合は、有効な Excel ライセンスを提供して計算ノードで Excel をアクティブ化する必要があります。そうしないと、Excel の評価版は 30 日後に有効期限が切れ、その時点から Excel ワークロードは実行できなくなります。
+    >運用ワークロードに **ComputeNodeWithExcel** を使用する場合は、有効な Excel ライセンスを提供して計算ノードで Excel をアクティブ化する必要があります。そうしないと、Excel の評価版は 30 日間の有効期限であり、Excel ブックを実行すると COMExeption (0x800AC472) で常に失敗します。このような場合は、ヘッド ノードにログオンして HPC Cluster Manager コンソールから “%ProgramFiles(x86)%\\Microsoft Office\\Office15\\OSPPREARM.exe” をすべての Excel 計算ノードで clusrun 実行し、さらにExcel の 30 日間の評価日数を再実装します。猶予期間の再実装の最大回数は 2 回なので、それを過ぎると有効な Excel ライセンスを実装する必要があります。
 
     c.サブスクリプションを選択します。
 
@@ -222,7 +222,7 @@ You have enabled REST API or web portal on HPC Pack head node. Please import the
 ```
 4.	[HPC Pack 2012 R2 Update 2 インストール](http://www.microsoft.com/download/details.aspx?id=47755)の完全版をダウンロードして HPC Pack クライアントをインストールするか、または [HPC Pack 2012 R2 Update 2 クライアント ユーティリティ](https://www.microsoft.com/download/details.aspx?id=47754)とコンピューターに適した Visual C++ 2010 再頒布可能パッケージをダウンロードしてインストールします ([x64](http://www.microsoft.com/download/details.aspx?id=14632)、[x86](https://www.microsoft.com/download/details.aspx?id=5555))。
 
-5.	この例では、[ここ](https://www.microsoft.com/ja-jp/download/details.aspx?id=2939)からダウンロードできる ConvertiblePricing\_Complete.xlsb という名前のサンプル Excel ブックを使用します。
+5.	この例では、[ここ](https://www.microsoft.com/ja-JP/download/details.aspx?id=2939)からダウンロードできる ConvertiblePricing\_Complete.xlsb という名前のサンプル Excel ブックを使用します。
 
 6.	Excel ブックを D:\\Excel\\Run などの作業フォルダーにコピーします。
 
@@ -259,7 +259,7 @@ You have enabled REST API or web portal on HPC Pack head node. Please import the
 
 Excel の UDF を実行するには、前記の手順 1 ～ 3 に従ってクライアント コンピューターを設定します。Excel UDF の場合、Excel アプリケーションが計算ノードにインストールされている必要はないので、手順 1 では、Excel を含む計算ノード イメージではなく、通常の計算ノード イメージを選択できます。
 
->[AZURE.NOTE]Excel 2010 および 2013 クラスター コネクタのダイアログ ボックスには 34 文字の制限があります。完全なクラスター名が長い場合は (例: hpcexcelhn01.southeastasia.cloudapp.azure.com)、ダイアログ ボックスに収まらず、UDF を実行できません。これを回避するには、IaaS デプロイメント スクリプトを使用して、短い名前でクラスターをデプロイします (例: hpcexcelhn01.cloudapp.net)。この問題は、SOA Session API の今後のバージョンで修正されます。
+>[AZURE.NOTE]Excel 2010 および 2013 クラスター コネクタのダイアログ ボックスには 34 文字の制限があります。完全なクラスター名が長い場合は (例: hpcexcelhn01.southeastasia.cloudapp.azure.com)、ダイアログ ボックスに収まりません。回避策は、クライアント マシンの SOA Session API に Update 2 QFE KB3085833 ([ここ](http://www.microsoft.com/ja-JP/download/details.aspx?id=48725)よりダウンロード) を適用し、*CCP\_IAASHN* などのマシン全体の変数に、長いクラスター名の値を設定し、*%CCP\_IAASHN%* をダイアログ ボックスにクラスター ヘッドのノード名として入力します。
 
 クラスターが正常にデプロイされた後、引き続き以下の手順に従って、サンプルの組み込み Excel UDF を実行します。Excel UDF をカスタマイズした場合は、[リソース](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)を参考にして、XLL を作成し、IaaS クラスターにそれをデプロイしてください。
 
@@ -376,4 +376,4 @@ SOA クライアント アプリケーションでは、IaaS クラスターの�
 [endpoint]: ./media/virtual-machines-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-excel-cluster-hpcpack/udf.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

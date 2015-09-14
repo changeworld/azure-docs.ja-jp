@@ -13,20 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="02/05/2015"
+	ms.date="08/31/2015"
 	ms.author="huvalo"/>
-
-
-
 
 # Python と SDK のインストール
 
-Python は、Windows でのセットアップが容易であり、Mac および Linux ではプレインストールされています。このガイドでは、インストール方法と Azure で使用するためのコンピューターの準備について説明します。以下の説明が記載されています。
-
-* Python Azure SDK の機能
-* 使用する Python とそのバージョン
-* Windows でのインストール
-* Mac と Linux でのインストール
+Python は、Windows でのセットアップが容易であり、Mac および Linux ではプレインストールされています。このガイドでは、インストール方法と Azure で使用するためのコンピューターの準備について説明します。
 
 ## Python Azure SDK の機能
 
@@ -43,7 +35,7 @@ Azure SDK for Python には、Azure 向けの Python アプリケーションを
 * IronPython - .Net/CLR 上で実行する Python インタープリター
 * Jython - JVM 上で実行する Python インタープリター
 
-このリリースでは、Python Azure SDK と Web サイトや Cloud Services などの Azure サービス向けの **CPython** のみをテストしサポートします。Version 2.7 または 3.4 をお勧めします。
+このリリースでは、Python Azure SDK と Websites や Cloud Services などの Azure サービス向けの **CPython** のみをテストしサポートします。Version 2.7 または 3.4 をお勧めします。
 
 ## Python を入手するには
 
@@ -55,25 +47,47 @@ CPython はいくつかの方法で入手できます。
 
 特定のニーズがない限り、以下に説明するように、最初の 2 つの入手方法をお勧めします。
 
-## Windows でのインストール
+## Windows、Linux、および MacOS (クライアント ライブラリのみ) でのインストール
 
-Windows では、Web プラットフォーム インストーラーを使用して、インストールを合理化できます。これらには、[www.python.org][] にある CPython などがあります。
+既に Python をインストールしている場合は、pip を使用して、既存の Python 2.7 または Python 3.3 以降の環境ですべてのクライアント ライブラリのバンドルをインストールできます。これにより、[Python Package Index][] (PyPI) からパッケージがダウンロードされます。
+
+Linux および MacOS で `sudo` コマンドを使用する必要がある場合があります。`sudo pip install azure`
+
+	pip install azure
+
+バージョン 1.0.0 以降では、ライブラリは複数のパッケージに分割されています。このため、必要なパッケージまたはバンドルのみをインストールできます。
+
+Azure Storage ランタイム クライアント ライブラリをインストールするには、次の手順に従います。
+
+	pip install azure-storage
+
+Azure Service Bus ランタイム クライアント ライブラリをインストールするには、次の手順に従います。
+
+	pip install azure-servicebus
+
+Azure リソース マネージャー (ARM) クライアント ライブラリをインストールするには、次の手順に従います。
+
+	pip install azure-mgmt
+
+Azure サービス管理 (ARM) クライアント ライブラリをインストールするには、次の手順に従います。
+
+	pip install azure-servicemanagement-legacy
+
+
+## Windows (Python、Azure エミュレーター、クライアント ライブラリ) でのインストール
+
+Web プラットフォーム インストーラーを使用して、インストールを合理化できます。これらには、[www.python.org][] にある CPython などがあります。
 
 * [Microsoft Azure SDK for Python 2.7][]
 * [Microsoft Azure SDK for Python 3.4][]
 
 **注:** Windows Server では、WebPI インストーラーをダウンロードするため、IE ESC 設定の構成が必要になる場合があります。設定するには、[スタート]、[管理ツール]、[サーバー マネージャー]、[ローカル サーバー] の順にクリックしてから、[**IE セキュリティ強化の構成**] をクリックし、[オフ] に設定します。
 
-
 ### Python 2.7
 
 WebPI インストーラーには、Python Azure アプリケーション開発に必要なものがすべて用意されています。
 
 ![how-to-install-python-webpi-27-1](./media/python-how-to-install/how-to-install-python-webpi-27-1.png)
-
-完了すると、インストールの選択内容を確認する次の画面が表示されます。
-
-![how-to-install-python-webpi-27-2](./media/python-how-to-install/how-to-install-python-webpi-27-2.png)
 
 インストールの完了後、プロンプトで「`python`」と入力し、インストールが問題なく実行されたことを確認します。インストールの方法によっては、"path" 変数を (正しいバージョンの) Python が検索されるように設定する必要があります。
 
@@ -90,10 +104,6 @@ WebPI インストーラーには、Python Azure アプリケーション開発�
 
 ![how-to-install-python-webpi-34-1](./media/python-how-to-install/how-to-install-python-webpi-34-1.png)
 
-完了すると、インストールの選択内容を確認する次の画面が表示されます。
-
-![how-to-install-python-webpi-34-2](./media/python-how-to-install/how-to-install-python-webpi-34-2.png)
-
 インストールの完了後、プロンプトで「python」と入力し、インストールが問題なく実行されたことを確認します。インストールの方法によっては、"path" 変数を (正しいバージョンの) Python が検索されるように設定する必要があります。
 
 ![how-to-install-python-win-run-34](./media/python-how-to-install/how-to-install-python-win-run-34.png)
@@ -102,25 +112,7 @@ WebPI インストーラーには、Python Azure アプリケーション開発�
 
 		C:\Python34\Lib\site-packages\azure
 
-
-### その他のパッケージの入手
-
-「[Python Package Index][] (Python パッケージ インデックス) (PyPI)」では、Python ライブラリから豊富なリソースを選べます。ディストリビューションをインストールすると、Web 開発から技術計算にいたるさまざまなシナリオのうち、興味のある多くのシナリオを実施することができます。
-
-
-### Python Tools for Visual Studio
-
-[Python Tools for Visual Studio][] (PTVS) は Microsoft が提供する無料の OSS プラグインで、VS を本格的な Python IDE として使用することができます。
-
-![how-to-install-python-ptvs](./media/python-how-to-install/how-to-install-python-ptvs.png)
-
-PTVS の使用はオプションですが、使用することをお勧めします。この PTVS によって、Python と Web のプロジェクト/ソリューション サポート、デバッグ、プロファイル、対話型ウィンドウ、テンプレートの編集、Intellisense を利用できるためです。
-
-PTVS では、[Cloud Services][]と [Web サイト][]へのデプロイをサポートしており、Microsoft Azure へのデプロイも容易になります。
-
-PTVS は、既存の Visual Studio 2010、2012、または 2013 インストールに対応しています。ダウンロードなどの詳細については、「[CodePlex の Python Tools for Visual Studio][]」をご覧ください。
-
-## Windows でのアンインストール
+### Windows でのアンインストール
 
 **Azure SDK for Python** WebPI 製品は、一般的な意味でのアプリケーションではありません。実際には、これは 32 ビット版 Python 2.7/3.4、Python 用 Azure クライアント ライブラリなどの各製品のコレクションです。これらの製品がまとめてバンドルされています。このため、このコレクション自体には、従来のアンインストーラーがありません。インストールされるプログラムを個別に Windows のコントロール パネルから削除する必要があります。
 
@@ -130,29 +122,22 @@ PTVS は、既存の Visual Studio 2010、2012、または 2013 インストー�
 
 次に、WebPI を再実行します。
 
-## Linux と MacOS でのインストール
+## その他のパッケージの入手
 
-ほとんどの場合、Python は開発コンピューターにすでにインストールされています。次のように入力することで、確認できます。
+「[Python Package Index][] (Python パッケージ インデックス) (PyPI)」では、Python ライブラリから豊富なリソースを選べます。ディストリビューションをインストールすると、Web 開発から技術計算にいたるさまざまなシナリオのうち、興味のある多くのシナリオを実施することができます。
 
-![how-to-install-python-linux-run](./media/python-how-to-install/how-to-install-python-linux-run.png)
 
-ここでは、Azure で実行されているこの Ubuntu Server 14.04 LTS VM に CPython 2.7.6 がインストールされていることがわかります。アップグレードが必要な場合は、OS によって推奨されるパッケージ アップグレードの手順に従います。
+## Python Tools for Visual Studio
 
-Python Azure クライアント ライブラリをインストールするには、**pip** を使用して、**PyPI** からクライアント ライブラリを取得します。
+[Python Tools for Visual Studio][] (PTVS) は Microsoft が提供する無料の OSS プラグインで、VS を本格的な Python IDE として使用することができます。
 
-**pip** がインストールされていない場合は、次のコマンドでインストールしてください。
+![how-to-install-python-ptvs](./media/python-how-to-install/how-to-install-python-ptvs.png)
 
-	curl https://bootstrap.pypa.io/get-pip.py | sudo python
+PTVS の使用はオプションですが、使用することをお勧めします。この PTVS によって、Python と Web のプロジェクト/ソリューション サポート、デバッグ、プロファイル、対話型ウィンドウ、テンプレートの編集、Intellisense を利用できるためです。
 
-前のコマンドでは、ルート パスワードが要求されます (パスワードは非表示)。パスワードを入力して Enter キーを押します。
+PTVS では、[Cloud Services][]と [Websites][] へのデプロイをサポートしており、Microsoft Azure へのデプロイも容易になります。
 
-次に、`pip` コマンドを使用して Python Azure クライアント ライブラリをインストールします。
-
-	sudo pip install azure
-
-これで、**site-packages** にインストールされたクライアント ライブラリを確認できます。MacOS では次のように表示されます。
-
-![how-to-install-python-mac-site](./media/python-how-to-install/how-to-install-python-mac-site.png)
+PTVS は、既存の Visual Studio 2013 または 2015 インストールに対応しています。ダウンロードなどの詳細については、[Python Tools for Visual Studio] に関するページをご覧ください。
 
 ## Linux や MacOS 向けの Python Azure
 
@@ -172,7 +157,7 @@ Linux 仮想マシンのセットアップの詳細については、「[Linux �
 
 Git のデプロイを使って Python Web アプリケーションを開発できます。また、どのオペレーティング システムからでも Azure Web サイトを公開できます。ご利用のリポジトリを Azure にプッシュする場合、自動的に仮想環境が作られ、pip によって必要なパッケージがインストールされます。
 
-Azure Websites を開発して公開する詳細については、「[Creating Websites with Django (Django を使った Web サイトの作成)][]」、「[Creating Websites with Bottle (Bottle を使った Web サイトの作成)][]」、「[Flask を使った Web サイトの作成][]」をご覧ください。さまざまな WSGI 互換フレームワークの使用についての一般的な情報は、「[Azure Websites での Python の構成][]」をご覧ください。
+Azure Websites を開発して公開する詳細については、「[Creating Websites with Django (Django を使った Websites の作成)][]」、「[Creating Websites with Bottle (Bottle を使った Websites の作成)][]」、「[Flask を使った Websites の作成][]」をご覧ください。さまざまな WSGI 互換フレームワークの使用についての一般的な情報は、「[Azure Websites での Python の構成][]」をご覧ください。
 
 
 ## その他のソフトウェアとリソース:
@@ -185,7 +170,7 @@ Azure Websites を開発して公開する詳細については、「[Creating W
 * [Django Project - A mature web framework/CMS][] (Django Project - 進化した Web フレームワーク/CMS)
 * [IPython - an advanced REPL/Notebook for Python][] (IPython - 高度な Python 用 REPL/Notebook)
 * [Azure での IPython Notebook][]
-* [Python Tools for Visual Studio on CodePlex][] (CodePlex の Python Tools for Visual Studio)
+* [Python Tools for Visual Studio on GitHub][] に関するページ
 
 
 [Continuum Analytics Python Distribution]: http://continuum.io
@@ -202,22 +187,21 @@ Azure Websites を開発して公開する詳細については、「[Creating W
 [IPython]: http://ipython.org
 [Azure での IPython Notebook]: virtual-machines-python-ipython-notebook.md
 [Cloud Services]: cloud-services-python-ptvs.md
-[Web サイト]: web-sites-python-ptvs-django-mysql.md
+[Websites]: web-sites-python-ptvs-django-mysql.md
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools for Visual Studio on CodePlex]: http://pytools.codeplex.com
-[CodePlex の Python Tools for Visual Studio]: http://pytools.codeplex.com
+[Python Tools for Visual Studio on GitHub]: https://github.com/microsoft/ptvs
 [Python Package Index]: http://pypi.python.org/pypi
-[Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281&clcid=0x409
-[Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990&clcid=0x409
+[Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281
+[Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990
 [Setting up a Linux VM via the Azure portal]: create-and-configure-opensuse-vm-in-portal.md
 [How to use the Azure Command-Line Interface]: crossplat-cmd-tools.md
 [Linux を実行する仮想マシンの作成]: virtual-machines-linux-tutorial.md
-[Creating Websites with Django (Django を使った Web サイトの作成)]: web-sites-python-create-deploy-django-app.md
-[Creating Websites with Bottle (Bottle を使った Web サイトの作成)]: web-sites-python-create-deploy-bottle-app.md
-[Flask を使った Web サイトの作成]: web-sites-python-create-deploy-flask-app.md
+[Creating Websites with Django (Django を使った Websites の作成)]: web-sites-python-create-deploy-django-app.md
+[Creating Websites with Bottle (Bottle を使った Websites の作成)]: web-sites-python-create-deploy-bottle-app.md
+[Flask を使った Websites の作成]: web-sites-python-create-deploy-flask-app.md
 [Azure Websites での Python の構成]: web-sites-python-configure.md
 [テーブル ストレージ]: storage-python-how-to-use-table-storage.md
 [キュー ストレージ]: storage-python-how-to-use-queue-storage.md
 [BLOB ストレージ]: storage-python-how-to-use-blob-storage.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

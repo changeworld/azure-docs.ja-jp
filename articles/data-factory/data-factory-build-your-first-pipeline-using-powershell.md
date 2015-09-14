@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Data Factory を使用した初めてのパイプラインの作成 | Microsoft Azure"
-	description="このチュートリアルでは、Azure HDInsight および Azure PowerShell を使用してデータを変換するサンプル データ パイプラインの作成方法を示します"
+	pageTitle="Azure PowerShell を使用した初めての Azure Data Factory パイプラインの作成"
+	description="このチュートリアルでは、Azure PowerShell を使用して、サンプルの Azure Data Factory パイプラインを作成します。"
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
@@ -263,4 +263,7 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 ## 次のステップ
 この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](./data-factory-get-started.md)」をご覧ください。
 
-<!---HONumber=August15_HO8-->
+## フィードバックの送信
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-powershell.md)でフィードバックをお寄せください。
+
+<!---HONumber=September15_HO1-->

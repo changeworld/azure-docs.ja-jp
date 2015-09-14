@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Marketplace での Machine Learning のアプリケーション例 | Microsoft Azure" 
-	description="Azure Machine Learning Marketplace アプリの例を通じて、Machine Learning サービスを Azure Marketplace に公開し、料金を支払っているサブスクライバーがアプリで使用できるようにする方法を示します。" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="LuisCabrer" 
-	manager="paulettm" 
+	pageTitle="Azure Marketplace での Machine Learning のアプリケーション例 | Microsoft Azure"
+	description="Azure Machine Learning Marketplace アプリの例を通じて、Machine Learning サービスを Azure Marketplace に公開し、料金を支払っているサブスクライバーがアプリで使用できるようにする方法を示します。"
+	services="machine-learning"
+	documentationCenter=""
+	authors="LuisCabrer"
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/05/2015" 
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="luisca"/>
 
 # Azure Marketplace での Machine Learning のアプリ
@@ -57,6 +57,10 @@ Azure Machine Learning を使用して、データ サイエンティストは�
 [ドキュメント](machine-learning-apps-text-analytics.md)
 
  
- 
+ ##Customer Churn Prediction## Customer Churn Prediction は、Azure Machine Learning で構築される顧客離れ分析サービスです。このサービスは、顧客 (プレーヤー、サブスクライバー、ユーザーなど) がどのようなときに企業との関係やサービスの解約を望むかを予測することを目的としています。企業との関係を辞める可能性の高い顧客を予測できるため、企業は、顧客との交渉の機会を高め、解約の可能性を削減することができます。
 
-<!---HONumber=August15_HO6-->
+[データ マーケットのリンク](https://datamarket.azure.com/dataset/amla/customer-churn-prediction)
+
+[ドキュメント](https://churn.cloudapp.net/documentation)
+
+<!---HONumber=September15_HO1-->

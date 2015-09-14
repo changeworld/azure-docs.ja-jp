@@ -1,17 +1,17 @@
 <properties 
-	pageTitle="Application Insights のリリース ノート" 
-	description="最新の更新プログラム。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="alancameronwills" 
+	pageTitle="Application Insights for Java のリリース ノート"
+	description="最新の更新プログラム。"
+	services="application-insights"
+	documentationCenter=""
+	authors="alancameronwills"
 	manager="douge"/>
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/18/2015" 
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/18/2015"
 	ms.author="awills"/>
  
 # Java 向けの Application Insights SDK のリリース ノート
@@ -37,6 +37,14 @@
  
 新旧の ApplicationInsights.xml を比較します。表示される変更の多くは、モジュールの追加や削除が原因です。以前のカスタマイズをもう一度設定します。
 
+## バージョン 1.0.1
+- Java エージェントは、次の項目に関する依存関係情報の収集をサポートします。
+	- HttpClient、OkHttp、RestTemplate (Spring) 経由で行われた HTTP 呼び出し。
+	- Jedis クライアント経由で行われた Redis への呼び出し。構成可能なしきい値が渡される場合、SDK は呼び出しの引数もフェッチします。
+	- Oracle DB クライアントと Apache Derby DB クライアントを使用して行われた JDBC 呼び出し。
+	- 準備されたステートメントに対する ‘executeBatch’ クエリ タイプのサポート。SDK はステートメントをバッチ番号付きで表示します。
+	- JDBC クライアントをサポートするクエリ プランの提供 (MySql、PostgreSql)。クエリ プランは構成できるしきい値が交差した場合のみフェッチされます。
+
 ## バージョン 1.0.0
 - CollectD 用の Application Insights ライター プラグインのサポートを追加しました。
 - Application Insights Java エージェントのサポートを追加しました。
@@ -60,4 +68,4 @@
 - 報告された項目に ```SyntheticSource``` プロパティを追加し、利用統計情報項目に合成のタグを付けることができます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

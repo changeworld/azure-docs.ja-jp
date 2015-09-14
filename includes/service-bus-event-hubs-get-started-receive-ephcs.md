@@ -4,7 +4,7 @@
 
 [EventProcessorHost] を使用するには [Azure ストレージ アカウント]が必要です。
 
-1. [Azure 管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[Data Services]**、**[Storage]**、**[簡易作成]** の順にクリックし、ストレージ アカウントの名前を入力します。目的のリージョンを選択し、**[ストレージ アカウントの作成]** をクリックします。
 
@@ -28,7 +28,7 @@
 
     ![][13]
 
-	これによって、<a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost">Azure Service Bus Event Hub - EventProcessorHost NuGet パッケージ</a>への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
+	これによって、[Azure Service Bus Event Hub - EventProcessorHost NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost)への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
 
 7. **[Receiver]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスの名前として「**SimpleEventProcessor**」と入力し、**[OK]** をクリックしてクラスを作成します。
 
@@ -112,12 +112,12 @@
 > [AZURE.NOTE]このチュートリアルでは、[EventProcessorHost] の単一のインスタンスを使用します。スループットを向上させるには、[EventProcessorHost] の複数のインスタンスを実行することをお勧めします (「[イベント処理のスケール アウトのサンプル]」をご覧ください)。このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。複数の受信側でぞれぞれ*すべて*のイベントを処理する場合、**ConsumerGroup** 概念を使用する必要があります。さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて [EventProcessorHost] インスタンスの名前を指定するのに便利です。これらのトピックの詳細については、「[Event Hubs の概要]」と「[Event Hubs のプログラミング ガイド]」のトピックをご覧ください。
 
 <!-- Links -->
-[Event Hubs の概要]: http://azure.microsoft.com/documentation/articles/event-hubs-overview/
+[Event Hubs の概要]: event-hubs-overview.md
 [イベント処理のスケールアウトのサンプル]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
-[Azure ストレージ アカウント]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/
+[Azure ストレージ アカウント]: storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-[Azure 管理ポータル]: http://manage.windowsazure.com
+[Azure ポータル]: http://manage.windowsazure.com
 
 <!-- Images -->
 
@@ -126,8 +126,8 @@
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-[Event Hubs のプログラミング ガイド]: http://azure.microsoft.com/documentation/articles/event-hubs-programming-guide/
+[Event Hubs のプログラミング ガイド]: event-hubs-programming-guide.md
 [Async Await in Console Apps]: http://blogs.msdn.com/b/pfxteam/archive/2012/01/20/10259049.aspx
 [AsyncPump.cs]: http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-components-postattachments/00-10-25-90-49/AsyncPump_2E00_cs
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

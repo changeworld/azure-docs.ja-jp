@@ -1,25 +1,25 @@
 <properties 
-	pageTitle="Advanced Analytics Process and Technology の活用: SQL Server を使用する | Microsoft Azure" 
-	description="Advanced Analytics Process and Technology の活用"  
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="msolhab" 
-	manager="paulettm" 
-	editor="cgronlun" />
+	pageTitle="Advanced Analytics Process and Technology の活用: SQL Server を使用する | Microsoft Azure"
+	description="Advanced Analytics Process and Technology の活用"
+	services="machine-learning"
+	documentationCenter=""
+	authors="msolhab"
+	manager="paulettm"
+	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/29/2015" 
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="mohabib;fashah;bradsev"/>
 
                 
 # Advanced Analytics Process and Technology の活用: SQL Server を使用する
 
-このチュートリアルでは、エンドツーエンドの Azure の Advanced Analytics Process and Technology (ADAPT) に従って、公開されている使用可能なデータセットの [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットを使用してモデルを作成し、デプロイします。
+このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) を使ってモデルのビルドとデプロイを行う方法を説明します。Advanced Analytics Process and Technology (ADAPT) ガイドに従って操作できます。
 
 
 ## <a name="dataset"></a>NYC タクシー乗車データセットの説明
@@ -370,7 +370,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
-![プロット \#1][1]
+![プロット #1][1]
 
 #### 視覚化: 配布プロットの例
 
@@ -380,7 +380,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
     df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
     df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
 
-![プロット \#2][2]
+![プロット #2][2]
 
 #### 視覚化: 棒と線のプロット
 
@@ -395,11 +395,11 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
-![プロット \#3][3]
+![プロット #3][3]
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
-![プロット \#4][4]
+![プロット #4][4]
 
 #### 視覚化: 散布図の例
 
@@ -407,13 +407,13 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
-![プロット \#6][6]
+![プロット #6][6]
 
 同様に、**rate\_code** と **trip\_distance** のリレーションシップを確認できます。
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
-![プロット \#8][8]
+![プロット #8][8]
 
 ### SQL でのデータのサブサンプリング
 
@@ -715,4 +715,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple Manager サービスを使用した StorSimple デバイスの監視 | Microsoft Azure"
+   pageTitle="StorSimple デバイスを監視する | Microsoft Azure"
 	description="StorSimple Manager サービスを使用して I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンスを監視する方法について説明します。"
 	services="storsimple"
 	documentationCenter="NA"
@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="TBD"
-	ms.date="08/25/2015"
+	ms.date="09/02/2015"
 	ms.author="alkohli"/>
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの監視 
@@ -93,4 +93,4 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 
 [StorSimple Manager サービスのデバイス ダッシュボードを使用する方法の詳細](storsimple-device-dashboard.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

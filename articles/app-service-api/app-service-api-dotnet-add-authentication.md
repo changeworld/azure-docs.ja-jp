@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure API アプリの保護" 
-	description="Visual Studio を使用して Azure API アプリを保護する方法について説明します。" 
-	services="app-service\api" 
-	documentationCenter=".net" 
-	authors="tdykstra" 
-	manager="wpickett" 
+	pageTitle="Azure API アプリの保護"
+	description="Visual Studio を使用して Azure API アプリを保護する方法について説明します。"
+	services="app-service\api"
+	documentationCenter=".net"
+	authors="tdykstra"
+	manager="wpickett"
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-api" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="dotnet" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/05/2015" 
+	ms.service="app-service-api"
+	ms.workload="web"
+	ms.tgt_pltfrm="dotnet"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/05/2015"
 	ms.author="tdykstra"/>
 
 # API アプリの保護: Azure Active Directory またはソーシャル プロバイダーの認証の追加
@@ -51,7 +51,7 @@ API アプリにパブリックにアクセスできることを確認する最�
 
 3. **[API アプリ]** ブレードで、API アプリを呼び出すブラウザーのウィンドウを開くための **URL** をクリックします。
 
-	![API App blade](./media/app-service-api-dotnet-add-authentication/chooseapiappurl.png)
+	![API App ブレード](./media/app-service-api-dotnet-add-authentication/chooseapiappurl.png)
 
 2. ブラウザーのアドレス バーに表示されている URL に `/api/contacts/get/` を追加します。
 
@@ -229,7 +229,11 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 	* "twitter"
 	* "facebook" 
 
-2. *ContactsController.cs* ファイルで、`Get` メソッドのコードを次のコードで置き換えます。
+3. *ContactsController.cs* ファイルの先頭に `using` ステートメントを追加します。
+
+		using Microsoft.Azure.AppService.ApiApps.Service;
+
+2. `Get` メソッドのコードを次のコードに置き換えます。
 
 		var runtime = Runtime.FromAppSettings(Request);
 		var user = runtime.CurrentUser;
@@ -268,4 +272,4 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

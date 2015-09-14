@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="StorSimple デバイスのフェールオーバーと障害復旧 | Microsoft Azure"
-   description="StorSimple デバイスを、そのデバイス自体、別の物理デバイス、または別の仮想デバイスにフェールオーバーする方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="adinah"
-   editor="" />
+   pageTitle="StorSimple のフェールオーバーと障害復旧 | Microsoft Azure"
+	description="StorSimple デバイスを、そのデバイス自体、別の物理デバイス、または別の仮想デバイスにフェールオーバーする方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="adinah"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/12/2015"
-   ms.author="alkohli" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/28/2015"
+	ms.author="alkohli"/>
 
 # StorSimple デバイスのフェールオーバーと障害復旧
 
@@ -145,4 +145,4 @@
 StorSimple Manager サービスを使用してデバイスを管理する方法の詳細については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

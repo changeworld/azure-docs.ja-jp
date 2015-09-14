@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Python Tools 2.1 for Visual Studio による Python Web ロールと Python worker ロール"
+	pageTitle="Python Tools 2.2 for Visual Studio による Python Web ロールと Python worker ロール | Microsoft Azure"
 	description="Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要"
 	services=""
 	documentationCenter="python"
@@ -12,46 +12,46 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
-	ms.topic="hero-article" 
-	ms.date="02/09/2015"
+	ms.topic="hero-article"
+	ms.date="08/30/2015"
 	ms.author="huvalo"/>
 
 
 
 
-# Python Tools 2.1 for Visual Studio による Python Web ロールと Python worker ロール
+# Python Tools 2.2 for Visual Studio による Python Web ロールと Python worker ロール
 
-このガイドでは、[Python Tools for Visual Studio][] で Python Web ロールと Python worker ロールを扱う方法について概説します。
+この記事では、[Python Tools for Visual Studio][] で Python Web ロールと Python worker ロールを扱う方法について概説します。
 
 ## 前提条件
 
- - Visual Studio 2012 または 2013
- - [Python Tools 2.1 for Visual Studio][]
- - [Azure SDK Tools for VS 2013][] または [Azure SDK Tools for VS 2012][]
+ - Visual Studio 2013 または 2015
+ - [Python Tools 2.2 for Visual Studio][] (PTVS)
+ - [Azure SDK Tools for VS 2013][] または [Azure SDK Tools for VS 2015][]
  - [Python 2.7 (32 ビット)][] または [Python 3.4 (32 ビット)][]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## Python Web ロールと Python worker ロールについて
 
-Azure にはアプリケーションを実行するためのコンピューティング モデルとして、[Azure Websites][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、および [Azure Cloud Services][execution model-cloud services] の 3 種類があります。これら 3 つのモデルはすべて、Python をサポートしています。クラウド サービスには、Web ロールとワーカー ロールが含まれ、*サービスとしてのプラットフォーム (PaaS)* を提供します。クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
+Azure にはアプリケーションを実行するためのコンピューティング モデルとして、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] の 3 種類があります。これら 3 つのモデルはすべて、Python をサポートしています。クラウド サービスには、Web ロールとワーカー ロールが含まれ、*サービスとしてのプラットフォーム (PaaS)* を提供します。クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
 
 詳細については、「[What is a Cloud Service? (クラウド サービスとは)]」を参照してください。
 
-> [AZURE.NOTE]**単純な Web サイトを構築する場合** 実現するシナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、軽量の Azure の Web サイトを使用することを検討してください。Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。Azure Websites の開発に関する記事については、<a href="/develop/python/">Python デベロッパー センター</a>を参照してください。<br />
+> [AZURE.NOTE]*単純な Web サイトを構築する場合* シナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、Azure App Service の軽量の Web Apps 機能を使用することを検討してください。Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。Azure App Service の Web Apps 機能の開発に関する記事については、<a href="/develop/python/">Python デベロッパー センター</a>を参照してください。<br />
 
 
 ## プロジェクトの作成
 
-Visual Studio で、**[新しいプロジェクト]** ダイアログの **[Python]** から **[Azure クラウド サービス]** を選択します。
+Visual Studio で、**[新しいプロジェクト]** ダイアログ ボックスの **[Python]** から **[Azure クラウド サービス]** を選択します。
 
 ![[新しいプロジェクト] ダイアログ](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
-Azure クラウド サービス ウィザードでは、新規作成の対象として Web ロールまたは worker ロールを選択できます。
+Azure クラウド サービス ウィザードでは、新しい Web ロールまたは worker ロールを作成できます。
 
 ![Azure Cloud Service Dialog](./media/cloud-services-python-ptvs/new-service-wizard.png)
 
-worker ロール テンプレートには、Azure ストレージ アカウントまたは Service Bus に接続するためのスケルトン コードが含まれています。
+worker ロール テンプレートには、Azure ストレージ アカウントまたは Azure Service Bus に接続するための定型コードが含まれています。
 
 ![Cloud Service Solution](./media/cloud-services-python-ptvs/worker.png)
 
@@ -99,11 +99,11 @@ Web ロールまたは worker ロールをデバッグするには、対象と�
 
 ## 次のステップ
 
-Python Tools for Visual Studio で Web ロールまたは worker ロールを扱う方法について、さらに詳しい情報については、次の PTVS 関連ドキュメントを参照してください。
+Python Tools for Visual Studio で Web ロールまたは worker ロールを扱う方法の詳細については、次の PTVS 関連ドキュメントを参照してください。
 
 - [クラウド サービス プロジェクト][]
 
-Web ロールまたは worker ロールから、Azure Storage、Service Bus などの Azure サービスを使用する方法の詳細については、次のガイドを参照してください。
+Web ロールまたは worker ロールから Azure Storage や Service Bus などの Azure サービスを使用する方法の詳細については、次の記事を参照してください。
 
 - [BLOB サービス][]
 - [テーブル サービス][]
@@ -130,13 +130,12 @@ Web ロールまたは worker ロールから、Azure Storage、Service Bus な�
 <!--External Link references-->
 
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools for Visual Studio Documentation]: http://pytools.codeplex.com/documentation
-[クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
-
-[Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
+[Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
+[クラウド サービス プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624028
+[Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
-[Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
+[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

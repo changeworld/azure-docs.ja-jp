@@ -1,21 +1,21 @@
 <properties 
    pageTitle="StorSimple デバイスの MPIO の構成 | Microsoft Azure"
-   description="Windows Server 2012 R2 を実行するホストに接続されている、StorSimple デバイスの MPIO を構成します"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+	description="Windows Server 2012 R2 を実行するホストに接続されている、StorSimple デバイスのマルチパス I/O (MPIO) を構成する方法を説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/11/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/31/2015"
+	ms.author="alkohli"/>
 
-# StorSimple デバイスの MPIO の構成
+# StorSimple デバイスのマルチパス IO の構成
 
 Microsoft では、フォールト トレランスと可用性に優れた SAN を構成するために、Windows Server でマルチパス I/O (MPIO) 機能をサポートしています。MPIO では、アダプター、ケーブル、スイッチなどの冗長な物理パス コンポーネントを使用して、サーバーとストレージ デバイスの間に論理パスを作成します。コンポーネントのエラーによって論理パスに障害が発生した場合は、マルチパス ロジックで I/O の代替パスが使用され、アプリケーションから引き続きデータにアクセスできるようにします。さらに構成によっては、これらのパスの間で負荷を分散することで、パフォーマンスの向上にも貢献します。詳細については、「[MPIO の概要](https://technet.microsoft.com/library/cc725907.aspx "MPIO の概要と機能")」を参照してください。
 
@@ -173,4 +173,4 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 [StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-modify-device-config.md)の詳細を確認する。
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

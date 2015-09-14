@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Azure のクラウド サービスは必要なコンピューティング オプションでしょうか。" 
-	description="Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Cloud Services、Virtual Machines" 
+	pageTitle="Azure のクラウド サービスは必要なコンピューティング オプションでしょうか。"
+	description="Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Cloud Services、Virtual Machines"
 	services="cloud-services"
-    documentationCenter=""
-	authors="Thraka" 
+	documentationCenter=""
+	authors="Thraka"
 	manager="timlt"/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="adegeo"/>
 
 # 選択するクラウド サービス
@@ -36,4 +36,4 @@ Azure にはアプリケーションを実行するための複数のホステ�
 [仮想マシン]: ../virtual-machines-choose-me.md
 [Cloud Services]: #tellmecs
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

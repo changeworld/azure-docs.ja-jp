@@ -1,24 +1,24 @@
 <properties 
-	pageTitle="Ports beyond 1433 for ADO.NET 4.5, ODBC 11, and SQL Database V12 (ADO.NET 4.5、ODBC 11、SQL Database V12 における 1433 以外のポート) | Microsoft Azure"
+	pageTitle="Ports beyond 1433 for ADO.NET 4.5, and SQL Database V12 (ADO.NET 4.5、SQL Database V12 における 1433 以外のポート) | Microsoft Azure"
 	description="Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。"
 	services="sql-database"
 	documentationCenter=""
 	authors="MightyPen"
 	manager="jeffreyg"
-	editor="" />
+	editor=""/>
 
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/06/2015" 
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="genemi"/>
 
 
-# Ports beyond 1433 for ADO.NET 4.5, ODBC 11, and SQL Database V12 (ADO.NET 4.5、ODBC 11、SQL Database V12 における 1433 以外のポート)
+# Ports beyond 1433 for ADO.NET 4.5, and SQL Database V12 (ADO.NET 4.5、SQL Database V12 における 1433 以外のポート)
 
 
 このトピックでは、Azure SQL Database V12 によってもたらされる ADO.NET 4.5 以降のバージョンを使用するクライアントの接続動作の変化について説明します。
@@ -78,7 +78,7 @@ Azure クラウド境界内でクライアントを実行している場合、�
 ## プロキシ ルートに含まれる暗黙的な再試行ロジック
 
 
-実稼働環境では、Azure SQL Database V11 または V12 に接続するクライアントのコード内に再試行ロジックを実装することをお勧めします。これはカスタム コードや、Enterprise Library などの API を利用するコードにできます。
+運用環境では、Azure SQL Database V11 または V12 に接続するクライアントのコード内に再試行ロジックを実装することをお勧めします。これはカスタム コードや、Enterprise Library などの API を利用するコードにできます。
 
 
 このトピックの冒頭で説明したプロキシ ルートは、再試行ロジックの疑問に関連します。
@@ -122,13 +122,17 @@ Azure クラウド境界内でクライアントを実行している場合、�
 
 - [SQL Database V12 の新機能](sql-database-v12-whats-new.md)
 
-- 再試行ロジックの考慮事項: [「V12 でのゲートウェイによる再試行ロジックの提供停止について」セクションの「SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン」トピック](sql-database-connect-central-recommendations.md#gatewaynoretry)
+
+- [SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md)
+
 
 - ADO.NET 4.6 は、2015 年 7 月 20 日にリリースされました。.NET チームのブログのお知らせは[こちら](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)からご利用になれます。
+
 
 - ADO.NET 4.5 は、2012 年 8 月 15 日にリリースされました。.NET チームのブログのお知らせは[こちら](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)からご利用になれます。
  - ADO.NET 4.5.1 についてのブログの投稿は、[こちら](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx)からご利用になれます。
 
+
 - [TDS プロトコルのバージョンの一覧](http://www.freetds.org/userguide/tdshistory.htm)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

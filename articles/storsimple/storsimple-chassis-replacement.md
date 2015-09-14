@@ -1,25 +1,25 @@
 <properties 
    pageTitle="StorSimple デバイスのシャーシを交換する | Microsoft Azure"
-   description="StorSimple プライマリ デバイスまたは EBOD エンクロージャのシャーシを取り外して交換する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+	description="StorSimple プライマリ デバイスまたは EBOD エンクロージャのシャーシを取り外して交換する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/05/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/31/2015"
+	ms.author="alkohli"/>
 
 # StorSimple デバイスのシャーシを交換する
 
 ## 概要
 
-このチュートリアルでは、StorSimple デバイスのシャーシを取り外して交換する方法について説明します。8100 モデルはシングル エンクロージャ デバイス (1 つのシャーシ) で、8600 はデュアル エンクロージャ デバイス (2 つのシャーシ) です。8600 モデルの場合は、デバイスで故障する可能性があるシャーシが 2 つあります。主エンクロージャのシャーシまたは EBOD エンクロージャのシャーシです。
+このチュートリアルでは、StorSimple デバイスのシャーシを取り外して交換する方法について説明します。StorSimple 8100 モデルはシングル エンクロージャ デバイス (1 つのシャーシ) で、8600 はデュアル エンクロージャ デバイス (2 つのシャーシ) です。8600 モデルの場合は、デバイスで故障する可能性があるシャーシが 2 つあります。主エンクロージャのシャーシまたは EBOD エンクロージャのシャーシです。
 
 どちらの場合も、マイクロソフトから出荷される交換用のシャーシは空です。電源および冷却モジュール (PCM)、コントローラー モジュール、ソリッド ステート ディスク ドライブ (SSD)、ハード ディスク ドライブ (HDD)、または EBOD モジュールは付属していません。
 
@@ -63,4 +63,4 @@
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

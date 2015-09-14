@@ -3,7 +3,7 @@
 	description="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を送信する方法について説明します"
 	services="app-service\mobile"
 	documentationCenter="xamarin"
-	authors="normesta"
+	authors="wesmc7777"
 	manager="dwrede"
 	editor=""/>
 
@@ -210,4 +210,4 @@
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

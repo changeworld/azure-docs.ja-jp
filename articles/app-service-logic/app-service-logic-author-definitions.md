@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="ロジック アプリの定義の作成" 
-	description="ロジック アプリの JSON 定義を記述する方法について説明します。" 
-	authors="stepsic-microsoft-com" 
-	manager="dwrede" 
-	editor="" 
-	services="app-service\logic" 
+	pageTitle="ロジック アプリの定義の作成"
+	description="ロジック アプリの JSON 定義を記述する方法について説明します。"
+	authors="stepsic-microsoft-com"
+	manager="dwrede"
+	editor=""
+	services="app-service\logic"
 	documentationCenter=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2015"
+	ms.date="06/16/2015"
 	ms.author="stepsic"/>
 	
 #ロジック アプリの定義の作成
@@ -99,7 +99,7 @@
         "destinationMap": {
             "defaultValue": {
                 "science": "http://www.nasa.gov",
-                "microsoft": "https://www.microsoft.com/ja-jp/default.aspx",
+                "microsoft": "https://www.microsoft.com/ja-JP/default.aspx",
                 "google": "https://www.google.com",
                 "robots": "https://en.wikipedia.org/wiki/Robot",
                 "NSA": "https://www.nsa.gov/"
@@ -234,7 +234,7 @@ Logic Apps は、多くの場合、離散されているほど管理が簡単に
 }
 ```
 
-MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/en-US/library/azure/dn948511.aspx)に関するページを参照してください。
+MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/ja-JP/library/azure/dn948511.aspx)に関するページを参照してください。
 
 >[AZURE.NOTE]ロジック アプリ デザイナーでは、ロジック アプリの種類のアクションがサポートされていないため、定義を手動で編集する必要があります。
 
@@ -250,7 +250,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
     "parameters": {
         "dataFeeds": {
             "defaultValue": [
-                "https://www.microsoft.com/ja-jp/default.aspx",
+                "https://www.microsoft.com/ja-JP/default.aspx",
                 "https://gibberish.gibberish/"
             ],
             "type": "Array"
@@ -306,7 +306,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
     "parameters": {
         "dataFeeds": {
             "defaultValue": [
-                "https://www.microsoft.com/ja-jp/default.aspx",
+                "https://www.microsoft.com/ja-JP/default.aspx",
                 "https://office.live.com/start/default.aspx"
             ],
             "type": "Array"
@@ -688,4 +688,4 @@ Content-type: application/json
 
 それぞれの環境で、`connection` パラメーターに異なる値を指定できます。ロジック アプリの作成と管理用に用意したすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/dn948513.aspx)を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

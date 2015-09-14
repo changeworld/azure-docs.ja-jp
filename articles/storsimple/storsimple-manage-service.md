@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple Manager サービスを展開する | Microsoft Azure"
-   description="管理ポータルで StorSimple Manager サービスを作成および削除する方法、さらにサービス登録キーを管理する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="SharS"
-   manager="carolz"
-   editor="" />
+	description="管理ポータルで StorSimple Manager サービスを作成および削除する方法、さらにサービス登録キーを管理する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/18/2015"
-   ms.author="v-sharos" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="09/02/2015"
+	ms.author="v-sharos"/>
 
 # StorSimple Manager サービスを展開する
 
@@ -113,4 +113,4 @@ StorSimple デバイスを展開する場合は、**[簡易作成]** オプシ�
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

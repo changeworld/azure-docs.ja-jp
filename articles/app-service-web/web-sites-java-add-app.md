@@ -1,24 +1,24 @@
 <properties 
-	pageTitle="Azure App Service Web Apps への Java アプリケーションの追加" 
-	description="このチュートリアルでは、Java を使用するように設定された Azure App Service Web Apps のインスタンスに、ページやアプリケーションを追加する方法について説明します。" 
-	services="app-service\web" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
+	pageTitle="Azure App Service Web Apps への Java アプリケーションの追加"
+	description="このチュートリアルでは、Java を使用するように設定された Azure App Service Web Apps のインスタンスに、ページやアプリケーションを追加する方法について説明します。"
+	services="app-service\web"
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="06/03/2015" 
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="08/31/2015"
 	ms.author="robmcm"/>
 
 # Azure App Service Web Apps への Java アプリケーションの追加
 
-「[Azure App Service での Java Web アプリの作成](web-sites-java-get-started.md)」の説明にあるように、Java Web アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で初期設定した後、WAR を **webapps** フォルダーに配置してアプリケーションをアップロードすることができます。
+「[Azure App Service での Java Web アプリの作成](web-sites-java-get-started.md)」の説明にあるように、Java Web アプリを [Azure App Service][] で初期設定した後、WAR を **webapps** フォルダーに配置してアプリケーションをアップロードすることができます。
 
 **webapps** フォルダーへのナビゲーション パスは Web アプリのインスタンス設定方法によって異なります。
 
@@ -32,7 +32,8 @@ WAR ファイルを **webapps** フォルダーにアップロードすると、
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
- 
- 
 
-<!---HONumber=August15_HO6-->
+<!-- External Links -->
+[Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
+
+<!---HONumber=September15_HO1-->

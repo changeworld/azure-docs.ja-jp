@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="R で構築された Machine Learning Web サービスの例 | Microsoft Azure" 
-	description="R コードと Machine Learning を使用して作成され、Microsoft Azure Marketplace に発行された便利な Web サービスの例を参照できます。" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="jaymathe" 
-	manager="paulettm" 
+	pageTitle="R で構築された Machine Learning Web サービスの例 | Microsoft Azure"
+	description="R コードと Machine Learning を使用して作成され、Microsoft Azure Marketplace に発行された便利な Web サービスの例を参照できます。"
+	services="machine-learning"
+	documentationCenter=""
+	authors="jaymathe"
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/02/2015"
 	ms.author="jaymathe"/>
 
 
@@ -73,4 +73,4 @@ Web サービスの使用や Marketplace への発行に関するよく寄せら
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

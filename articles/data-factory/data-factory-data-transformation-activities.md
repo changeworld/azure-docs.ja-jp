@@ -17,6 +17,8 @@
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した変換と分析
+
+## 概要
 Azure Data Factory の変換アクティビティにより、未加工のデータを変換して処理することで、予測や把握が容易になります。変換アクティビティは、Azure HDInsight クラスターや Azure Batch などのコンピューティング環境で実行されます。Azure Data Factory は、次の変換アクティビティをサポートしています。これらのアクティビティは、個別または他のアクティビティと連結した状態で[パイプライン](data-factory-create-pipelines.md)に追加できます。
 
 
@@ -33,8 +35,11 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 変換アクティビティを定義するときには、コンピューティング環境のリンクされたサービスを作成したうえで、そのサービスを使用する必要があります。Data Factory でサポートされているコンピューティング環境は 2 種類あります。
 
 1. **オンデマンド**: この場合、コンピューティング環境は Data Factory で完全に管理されます。環境はデータを処理するためのジョブが送信される前に Data Factory サービスにより自動的に作成され、ジョブの完了時に削除されます。ユーザーは、ジョブの実行、クラスターの管理、ブートストラップ アクションなどについて、オンデマンドのコンピューティング環境の詳細設定を構成および制御できます。 
-2. **Bring Your Own**: この場合、Data Factory のリンクされたサービスとして、独自のコンピューティング環境 (HDInsight クラスターなど) を登録できます。このコンピューティング環境はユーザーが自分で管理することになります。Data Factory サービスは、アクティビティを実行にこの環境を使用します。 
+2. **独自の環境を使用する**: この場合、Data Factory のリンクされたサービスとして、独自のコンピューティング環境 (HDInsight クラスターなど) を登録できます。このコンピューティング環境はユーザーが自分で管理することになります。Data Factory サービスは、アクティビティを実行にこの環境を使用します。 
 
-Data Factory でサポートされている Compute がリンクされたサービスについては、[Compute がリンクされたサービス](data-factory-compute-linked-services.md)に関する記事を参照してください。
+Data Factory でサポートされているコンピューティングにリンクされたサービスの詳細については、記事「[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+## フィードバックの送信
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-data-transformation-activities.md)でフィードバックをお寄せください。
+
+<!---HONumber=September15_HO1-->

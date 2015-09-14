@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="04/28/2015"
+	ms.date="09/01/2015"
 	ms.author="mwasson"/>
 
 
@@ -86,7 +86,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 		sudo npm install express-generator@4.2.0 -g
 
-    出力は次のようになります。
+    出力は次の例のようになります。
 
 		express-generator@4.2.0 /usr/local/lib/node_modules/express-generator
 		├── mkdirp@0.3.5
@@ -98,7 +98,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
         express
 
-	このコマンドの出力は次のように表示されます。
+	このコマンドの出力は次の例のようになります。
 
 		   create : .
 		   create : ./package.json
@@ -134,7 +134,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
     npm install
 
-このコマンドの出力は次のように表示されます。
+このコマンドの出力は次の例のようになります。
 
 	debug@0.7.4 node_modules\debug
 
@@ -151,7 +151,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 **--save** フラグにより、これらのモジュールのエントリが **package.json** ファイルに追加されます。
 
-このコマンドの出力は次のように表示されます。
+このコマンドの出力は次の例のようになります。
 
 	async@0.9.0 node_modules\async
 
@@ -466,16 +466,17 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 3. Web ブラウザーを開き、http://127.0.0.1:3000 にアクセスします。
 
-次のような Web ページが表示されます。
+	次の例のような Web ページが表示されます。
 
-![空のタスク一覧が表示されている Web ページ][node-table-finished]
+	![空のタスク一覧が表示されている Web ページ][node-table-finished]
 
-To Do リストの新しい項目を作成するには、名前とカテゴリを入力し、**[Add Item]** をクリックします。タスクを完了としてマークするには、**[Complete]** をクリックし、**[Update Tasks]** をクリックします。
+4. To Do リストの新しい項目を作成するには、名前とカテゴリを入力し、**[Add Item]** をクリックします。
 
-![タスク一覧の新しいアイテムの画像][node-table-list-items]
+6. タスクを完了としてマークするには、**[Complete]** をクリックし、**[Update Tasks]** をクリックします。
+
+	![タスク一覧の新しいアイテムの画像][node-table-list-items]
 
 アプリケーションがローカルで実行されていても、データは Azure Table サービスに保存されています。
-
 
 ## Azure へのアプリケーションのデプロイ
 
@@ -485,7 +486,7 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 >
 > これが初めて作成した Web アプリの場合、Azure ポータルを使用してこのアプリケーションをデプロイする必要があります。
 
-作業を始めるには、コマンド ラインで次のコマンドを入力して、[Azure コマンド ライン インターフェイス]をインストールします。
+作業を始めるには、コマンド ラインで次のコマンドを入力して、[Azure CLI] をインストールします。
 
 	npm install azure-cli -g
 
@@ -519,9 +520,7 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 
 	Web アプリの名前と場所の入力を求められます。一意の名前を指定し、Azure Storage アカウントと同じ地理的な場所を選択します。
 
-	`--git` パラメーターにより、Azure にこの Web アプリの Git リポジトリが作成されます。何も存在しない場合は、現在のディレクトリで Git リポジトリが初期化され、アプリケーションを Azure に発行する際に使用する "azure" という名前の [Git リモート]が追加されます。最後に、**web.config** ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために Azure で使用される設定が含まれます。
-
-	> [AZURE.NOTE]ディレクトリに Git リポジトリが既に含まれている場合、ディレクトリは再初期化されません。`--git` パラメーターを省略した場合でも、ディレクトリに Git リポジトリが含まれていれば、"azure" リモートが作成されます。
+	`--git` パラメーターにより、Azure にこの Web アプリの Git リポジトリが作成されます。何も存在しない場合は、現在のディレクトリで Git リポジトリが初期化され、アプリケーションを Azure に発行する際に使用する "azure" という名前の [Git リモート]が追加されます。最後に、**web.config** ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために Azure で使用される設定が含まれます。`--git` パラメーターを省略した場合でも、ディレクトリに Git リポジトリが含まれていれば、"azure" リモートが作成されます。
 
 	このコマンドが完了すると、次のような出力が表示されます。**Website created at** で始まる行には、Web アプリの URL が含まれています。
 
@@ -582,7 +581,7 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 
 		git push azure master
 
-	**master** をターゲット分岐として使用します。デプロイの最後に、次のようなステートメントが表示されます。
+	**master** をターゲット分岐として使用します。デプロイの最後に、次の例のようなステートメントが表示されます。
 
 		To https://username@tabletasklist.azurewebsites.net/TableTasklist.git
  		 * [new branch]      master -> master
@@ -596,11 +595,11 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 
 ## その他のリソース
 
-[Azure コマンド ライン インターフェイス]
+[Azure CLI]
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Azure ポータルから Azure プレビュー ポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
 
 [Azure App Service での Node.js Web アプリの構築とデプロイ]: web-sites-nodejs-develop-deploy-mac.md
 [Continuous deployment using GIT in Azure App Service]: web-sites-publish-source-control.md
@@ -642,4 +641,4 @@ To Do リストの新しい項目を作成するには、名前とカテゴリ�
 [Create and deploy a Node.js application to an Azure Web Site]: web-sites-nodejs-develop-deploy-mac.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-catalog"
-	ms.date="08/21/2015"
+	ms.date="08/25/2015"
 	ms.author="maroche"/>
 
 # Azure Data Catalog のよく寄せられる質問
@@ -69,6 +69,8 @@ Standard Edition の Azure Data Catalog は、最大 100,000 の登録済みの�
 - Oracle Database ビュー
 - Azure Storage BLOB
 - Azure Storage ディレクトリ
+- HDFS ファイル
+- HDSF ディレクトリ
 
 ## Q: 別のデータ ソースのサポートを要求するにはどうすればよいですか。
 
@@ -160,4 +162,4 @@ A: カタログに既に登録されているデータ資産のメタデータ�
 
 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。そこで寄せられている質問に、ここでの方法が見つかります。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

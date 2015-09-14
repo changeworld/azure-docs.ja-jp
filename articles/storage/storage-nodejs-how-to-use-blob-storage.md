@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Node.js から BLOB ストレージを使用する方法 | Microsoft Azure" 
-	description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。サンプルは Node.js で記述されています。" 
-	services="storage" 
-	documentationCenter="nodejs" 
-	authors="MikeWasson" 
-	manager="wpickett" 
+<properties
+	pageTitle="Node.js から BLOB ストレージを使用する方法 | Microsoft Azure"
+	description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。サンプルは Node.js で記述されています。"
+	services="storage"
+	documentationCenter="nodejs"
+	authors="MikeWasson"
+	manager="wpickett"
 	editor=""/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="05/11/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="nodejs"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="mwasson"/>
 
 
@@ -24,7 +24,7 @@
 
 ## 概要
 
-このガイドでは、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Node.js API を使用して記述されています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。
+この記事では、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Node.js API を使用して記述されています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -42,17 +42,18 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
-2.  コマンド ウィンドウに「**npm install azure-storage**」と入力すると、次のような出力が生成されます。
+2.  コマンド ウィンドウに **npm install azure-storage** と入力するとコマンドの出力は次のコード例に似ています。
 
-        azure-storage@0.1.0 node_modules\azure-storage
-		├── extend@1.2.1
-		├── xmlbuilder@0.4.3
-		├── mime@1.2.11
-		├── underscore@1.4.4
-		├── validator@3.1.0
-		├── node-uuid@1.4.1
-		├── xml2js@0.2.7 (sax@0.5.2)
-		└── request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
+		azure-storage@0.5.0 node_modules\azure-storage
+		+-- extend@1.2.1
+		+-- xmlbuilder@0.4.3
+		+-- mime@1.2.11
+		+-- node-uuid@1.4.3
+		+-- validator@3.22.2
+		+-- underscore@1.4.4
+		+-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
+		+-- xml2js@0.2.7 (sax@0.5.2)
+		+-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
 
 3.  手動で **ls** コマンドを実行して、**node\_modules** フォルダーが作成されたことを確認することもできます。このフォルダーで **azure-storage** パッケージを検索します。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
 
@@ -64,11 +65,11 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 ## Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 `AZURE_STORAGE_ACCOUNT` と `AZURE_STORAGE_ACCESS_KEY`、または `AZURE_STORAGE_CONNECTION_STRING` を読み取ります。これらの環境変数が設定されていない場合は、**createBlobService** を呼び出すときにアカウント情報を指定する必要があります。
+Azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 `AZURE_STORAGE_ACCOUNT` と `AZURE_STORAGE_ACCESS_KEY`、または `AZURE_STORAGE_CONNECTION_STRING` を読み取ります。これらの環境変数が設定されていない場合は、**createBlobService** を呼び出すときにアカウント情報を指定する必要があります。
 
 Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリケーション]」を参照してください。
 
-## 方法: コンテナーを作成する
+## コンテナーを作成する
 
 **BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作できます。次のコードでは、**BlobService** オブジェクトを作成します。**server.js** ファイルの先頭付近に次の内容を追加します。
 
@@ -78,27 +79,27 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 [AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-新しいコンテナーを作成するには、**createContainerIfNotExists** を使用します。次の例では、'mycontainer' という名前の新しいコンテナーが作成されます。
+新しいコンテナーを作成するには、**createContainerIfNotExists** を使用します。次のコード例では、'mycontainer' という名前の新しいコンテナーが作成されます。
 
 	blobSvc.createContainerIfNotExists('mycontainer', function(error, result, response){
       if(!error){
-        // Container exists and allows 
-        // anonymous read access to blob 
+        // Container exists and allows
+        // anonymous read access to blob
         // content and metadata within this container
       }
 	});
 
-コンテナーが作成されると、`result` は true になります。コンテナーが既に存在する場合は、`result` は false になります。`response` には、コンテナーの [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) 情報を含む、操作に関する情報が含まれます。
+コンテナーが新規に作成された場合は、`result` は true です。コンテナーが既に存在する場合は、`result` は false になります。`response` には、コンテナーの [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) 情報を含む、操作に関する情報が含まれます。
 
 ### コンテナーのセキュリティ
 
 既定では、新しいコンテナーはプライベートであり、匿名でアクセスすることはできません。コンテナーを公開して匿名でアクセスできるようにするには、コンテナーのアクセス レベルを **blob** または **container** に設定します。
 
-* **blob** - BLOB の内容およびこのコンテナー内のメタデータへの匿名の読み取りは許可されますが、1 つのコンテナー内の全 BLOB のリストなど、コンテナーのメタデータに対する匿名読み取りは許可されません。 
+* **blob** - BLOB の内容およびこのコンテナー内のメタデータへの匿名の読み取りは許可されますが、1 つのコンテナー内の全 BLOB のリストなど、コンテナーのメタデータに対する匿名読み取りは許可されません。
 
 * **container** - コンテナーのメタデータに加えて、BLOB の内容とメタデータに対する匿名読み取りが許可されます。
 
-次の例では、アクセス レベルを **blob** に設定する方法を示します。
+次のコード例では、アクセス レベルを **blob** に設定する方法を示します。
 
     blobSvc.createContainerIfNotExists('mycontainer', {publicAccessLevel : 'blob'}, function(error, result, response){
       if(!error){
@@ -106,7 +107,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
       }
 	});
 
-代わりに、**setContainerAcl** を使用してアクセス レベルを指定することによって、コンテナーのアクセス レベルを変更できます。次の例では、アクセス レベルを container に変更します。
+代わりに、**setContainerAcl** を使用してアクセス レベルを指定することによって、コンテナーのアクセス レベルを変更できます。次のコード例では、アクセス レベルを container に変更します。
 
     blobSvc.setContainerAcl('mycontainer', null /* signedIdentifiers */, 'container' /* publicAccessLevel*/, function(error, result, response){
 	  if(!error){
@@ -118,7 +119,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 ### フィルター
 
-オプションのフィルター操作は、**BlobService** を使用して行われる操作に適用できます。フィルター操作には、ログ、自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
+オプションのフィルター操作は、**BlobService** を使用して行われる操作に適用できます。フィルター操作には、ログや自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
 
 		function handle (requestOptions, next)
 
@@ -133,7 +134,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 	var retryOperations = new azure.ExponentialRetryPolicyFilter();
 	var blobSvc = azure.createBlobService().withFilter(retryOperations);
 
-## 方法: コンテナーに BLOB をアップロードする
+## コンテナーに BLOB をアップロードする
 
 BLOB はブロック ベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
@@ -149,7 +150,7 @@ BLOB はブロック ベースまたはページ ベースのいずれにもで�
 
 * **createWriteStreamToBlockBlob** - ブロック blob への書き込みストリームを提供します。
 
-次の例では、**test.txt** ファイルの内容を **myblob** にアップロードします。
+次のコード例では、**test.txt** ファイルの内容を **myblob** にアップロードします。
 
 	blobSvc.createBlockBlobFromLocalFile('mycontainer', 'myblob', 'test.txt', function(error, result, response){
 	  if(!error){
@@ -173,7 +174,7 @@ BLOB はブロック ベースまたはページ ベースのいずれにもで�
 
 * **createWriteStreamToNewPageBlob** - 新しい BLOB を作成してから、この BLOB に書き込むストリームを提供します。
 
-次の例では、**test.txt** ファイルの内容を **mypageblob** にアップロードします。
+次のコード例では、**test.txt** ファイルの内容を **mypageblob** にアップロードします。
 
 	blobSvc.createPageBlobFromLocalFile('mycontainer', 'mypageblob', 'test.txt', function(error, result, response){
 	  if(!error){
@@ -183,19 +184,20 @@ BLOB はブロック ベースまたはページ ベースのいずれにもで�
 
 > [AZURE.NOTE]ページ blob は、512 バイトの "ページ" で構成されています。512 の倍数でないサイズのデータをアップロードするとエラーになる場合があります。
 
-## 方法: コンテナー内の BLOB を一覧表示する
+## コンテナー内の BLOB を一覧表示する
 
 コンテナー内の BLOB を一覧表示するには、**listBlobsSegmented** メソッドを使用します。特定のプレフィックスと共に BLOB を返す必要がある場合は、**listBlobsSegmentedWithPrefix** を使用します。
 
     blobSvc.listBlobsSegmented('mycontainer', null, function(error, result, response){
       if(!error){
-        // result contains the entries
+        // result.entries contains the entries
+        // If not all blobs were returned, result.continuationToken has the continuation token.
 	  }
 	});
 
 `result` には `entries` コレクションが含まれます。これは、各 BLOB を記述するオブジェクトの配列です。すべての BLOB を返すことができない場合は、`result` は、`continuationToken` も提供します。これは、追加のエントリを取得するための 2 つ目のパラメーターとして使用できます。
 
-## 方法: BLOB をダウンロードする
+## BLOB をダウンロードする
 
 BLOB からデータをダウンロードするには、以下のメソッドを使用します。
 
@@ -207,7 +209,7 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 
 * **createReadStream** - BLOB から読み取るためのストリームを提供します。
 
-次の例は、**getBlobToStream** を使用して **myblob** BLOB の内容をダウンロードし、ストリームを使用して **output.txt** ファイルに格納する方法を示しています。
+次のコード例は、**getBlobToStream** を使用して **myblob** BLOB の内容をダウンロードし、ストリームを使用して **output.txt** ファイルに格納する方法を示しています。
 
     var fs = require('fs');
 	blobSvc.getBlobToStream('mycontainer', 'myblob', fs.createWriteStream('output.txt'), function(error, result, response){
@@ -218,9 +220,9 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 
 `result` には、**ETag** 情報など、BLOB に関する情報が含まれます。
 
-## 方法: BLOB を削除する
+## BLOB を削除する
 
-最後に、BLOB を削除するには、**deleteBlob** を呼び出します。次の例では、**myblob** という名前の BLOB を削除します。
+最後に、BLOB を削除するには、**deleteBlob** を呼び出します。次のコード例では、**myblob** という名前の BLOB を削除します。
 
     blobSvc.deleteBlob(containerName, 'myblob', function(error, response){
 	  if(!error){
@@ -228,7 +230,7 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 	  }
 	});
 
-## 方法: 同時アクセス
+## 同時アクセス
 
 複数のクライアントまたは複数のプロセス インスタンスからの BLOB への同時アクセスをサポートするには、**ETag** または**占有**を使用します。
 
@@ -238,9 +240,9 @@ BLOB からデータをダウンロードするには、以下のメソッドを
 
 ### ETag
 
-ETag は、複数のクライアントまたはインスタンスからの BLOB への同時書き込みを許可する必要がある場合に使用する必要があります。ETag を使用すると、最初の読み取りまたは作成以降にコンテナーまたは BLOB が変更されているかどうかを確認できることから、別のクライアントまたはプロセスによってコミットされた変更の上書きを回避できます。
+ETag は、複数のクライアントまたはインスタンスからの BLOB への同時書き込みを許可する必要がある場合に使用してください。ETag を使用すると、最初の読み取りまたは作成以降にコンテナーまたは BLOB が変更されているかどうかを確認できることから、別のクライアントまたはプロセスによってコミットされた変更の上書きを回避できます。
 
-ETag の条件は、オプションの `options.accessConditions` パラメーターを使用して設定できます。次の例では、BLOB が既に存在し、`etagToMatch` によって ETag 値が含まれる場合に、**test.txt** ファイルのみをアップロードします。
+ETag の条件は、オプションの `options.accessConditions` パラメーターを使用して設定できます。次のコード例では、BLOB が既に存在し、`etagToMatch` によって ETag 値が含まれる場合に、**test.txt** ファイルのみをアップロードします。
 
 	blobSvc.createBlockBlobFromLocalFile('mycontainer', 'myblob', 'test.txt', { accessConditions: { 'if-match': etagToMatch} }, function(error, result, response){
       if(!error){
@@ -258,7 +260,7 @@ ETag の条件は、オプションの `options.accessConditions` パラメー�
 
 ### 占有
 
-占有を取得する BLOB またはコンテナーを指定して **acquireLease** メソッドを使用すると、新しい占有を取得できます。たとえば、以下では **myblob** での占有を取得します。
+占有を取得する BLOB またはコンテナーを指定して **acquireLease** メソッドを使用すると、新しい占有を取得できます。たとえば、以下のコードでは **myblob** での占有を取得します。
 
 	blobSvc.acquireLease('mycontainer', 'myblob', function(error, result, response){
 	  if(!error) {
@@ -272,21 +274,21 @@ ETag の条件は、オプションの `options.accessConditions` パラメー�
 
 占有を削除するには、**releaseLease** を使用します。占有を中断するものの、元の期間が期限切れになるまでは新しい占有が取得されないようにするには、**breakLease** を使用します。
 
-## 方法: 共有アクセス署名を操作する
+## 共有アクセス署名を操作する
 
 共有アクセス署名 (SAS) は、ストレージ アカウント名やキーを指定せずに BLOB やコンテナーへのきめ細やかで安全なアクセスを提供する方法です。SAS は、モバイル アプリからの BLOB へのアクセスを許可する場合など、データへの制限されたアクセスを提供する場合によく使用されます。
 
 > [AZURE.NOTE]BLOB への匿名のアクセスも許可できるものの、SAS ではより制御されたアクセスを提供することができます。SAS は生成の必要があるためです。
 
-クラウドベースのサービスなどの信頼されたアプリケーションは、**BlobService** の **generateSharedAccessSignature** を使用して SAS を生成し、信頼されていないか、部分的に信頼されたアプリケーションにこれを提供します。たとえば、モバイル アプリなどです。SAS は、SAS が有効である期間の開始日と終了日のほか、SAS の保有者に付与されたアクセス レベルを示したポリシーを使用して生成されます。
+クラウドベースのサービスなどの信頼されたアプリケーションは、**BlobService** の **generateSharedAccessSignature** を使用して SAS を生成し、信頼されていないか、モバイル アプリなどの部分的に信頼されたアプリケーションにこれを提供します。SAS は、SAS が有効である期間の開始日と終了日のほか、SAS の保有者に付与されたアクセス レベルを示したポリシーを使用して生成されます。
 
-次の例では、SAS の保有者による **myblob** BLOB に対する読み取り操作を許可する新しい共有アクセス ポリシーを生成します。このポリシーは作成後 100 分が経過すると期限切れになります。
+次のコード例では、SAS の保有者による **myblob** BLOB に対する読み取り操作を許可する新しい共有アクセス ポリシーを生成します。このポリシーは作成後 100 分が経過すると期限切れになります。
 
 	var startDate = new Date();
 	var expiryDate = new Date(startDate);
 	expiryDate.setMinutes(startDate.getMinutes() + 100);
 	startDate.setMinutes(startDate.getMinutes() - 100);
-	    
+
 	var sharedAccessPolicy = {
 	  AccessPolicy: {
 	    Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
@@ -294,7 +296,7 @@ ETag の条件は、オプションの `options.accessConditions` パラメー�
 	    Expiry: expiryDate
 	  },
 	};
-	
+
 	var blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', 'myblob', sharedAccessPolicy);
 	var host = blobSvc.host;
 
@@ -315,7 +317,7 @@ SAS の保有者がコンテナーにアクセスするときに必要なホス�
 
 SAS のアクセス ポリシーを設定するために、アクセス制御リスト (ACL) も使用できます。複数のクライアントにコンテナーへのアクセスを許可し、各クライアントに異なるアクセス ポリシーを提供する場合に便利です。
 
-ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。次の例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
+ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。次のコード例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
 
 	var sharedAccessPolicy = [
 	  {
@@ -336,7 +338,7 @@ ACL は、アクセス ポリシーの配列と、各ポリシーに関連付け
 	  }
 	];
 
-次の例では、**mycontainer** の現在の ACL を取得してから、**setBlobAcl** を使用して新しいポリシーを追加しています。この手法で以下を実行できます。
+次のコード例では、**mycontainer** の現在の ACL を取得してから、**setBlobAcl** を使用して新しいポリシーを追加しています。この手法で以下を実行できます。
 
 	blobSvc.getBlobAcl('mycontainer', function(error, result, response) {
       if(!error){
@@ -350,7 +352,7 @@ ACL は、アクセス ポリシーの配列と、各ポリシーに関連付け
 	  }
 	});
 
-ACL を設定した後で、ポリシーの ID に基づいて SAS を作成できます。次の例では、"user2" 用に新しい SAS を作成しています。
+ACL を設定した後で、ポリシーの ID に基づいて SAS を作成できます。次のコード例では、"user2" 用に新しい SAS を作成しています。
 
 	blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 
@@ -359,7 +361,7 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
 -   [Azure Storage SDK for Node の API リファレンス][]を参照してください。
--   MSDN リファレンスの [Azure のデータの格納とアクセス][]に関するページを参照してください。
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][]
 -   [Azure Storage チームのブログ][]
 -   GitHub の [Azure Storage SDK for Node][] リポジトリ
 
@@ -374,6 +376,5 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure Storage チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

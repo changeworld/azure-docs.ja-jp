@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Application Insights からのテレメトリの連続エクスポート" 
-	description="診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="alancameronwills" 
+	pageTitle="Application Insights からのテレメトリの連続エクスポート"
+	description="診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。"
+	services="application-insights"
+	documentationCenter=""
+	authors="alancameronwills"
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/13/2015" 
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/31/2015"
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
@@ -40,6 +40,7 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 エクスポートが作成されると、処理が開始されます (エクスポートを作成した後に到着したデータのみが取得されます)。
 
+BLOB でデータが表示されるまで、約 1 時間の遅延が発生する可能性があります。
 
 後でイベントの種類を変更する場合は、単にエクスポートを編集します。
 
@@ -59,20 +60,23 @@ Application Insights ポータルのアプリケーションの概要ブレー�
 
 他の計算メトリックは含まれません。たとえば、平均 CPU 使用率はエクスポートされませんが、平均の計算に使用された未加工のテレメトリはエクスポートされます。
 
+データには、セットアップ済みのすべての[利用可能な Web テスト](app-insights-monitor-web-app-availability.md)の結果も含まれます。
+
 ## <a name="get"></a> データの確認
 
-[サーバー エクスプローラー](http://msdn.microsoft.com/library/azure/ff683677.aspx)などのツールを使用して Blob ストアを開くと、Blob ファイルのセットを含むコンテナーが表示されます。各ファイルの URI は、"アプリケーション ID/テレメトリの種類/日付/時刻" です。
+Visual Studio で Azure ストレージを検査するには、**[表示]**、**[Cloud Explorer]** の順に開きます (このメニュー コマンドがない場合は、Azure SDK をインストールする必要があります。**[新しいプロジェクト]** ダイアログを開き、[Visual C#]、[クラウド]、**[Microsoft Azure SDK for .NET の取得]** の順に開きます)。
+
+BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナーが表示されます。各ファイルの URI は、Application Insights のリソース名、そのインストルメンテーション キー、テレメトリの種類/日付/時刻から派生します (リソース名はすべて小文字になり、インストルメンテーション キーのダッシュは省略されます)。
 
 ![適切なツールで Blob ストアを調べます](./media/app-insights-export-telemetry/04-data.png)
 
 日付と時刻は UTC 形式で表され、テレメトリが生成された時間ではなく、ストアに格納された日時を示します。そのため、データをダウンロードするコードを記述する場合は、直線的にデータ内を移動できます。
 
 
-
 ## <a name="format"></a> データ形式
 
 * それぞれの Blob は、"\\n" で区切られた複数の行を含むテキスト ファイルです。
-* それぞれの行は、書式設定されていない JSON ドキュメントです。内容を確認する場合は、Notepad++ のようなビューアーに JSON プラグインを組み合わせることができます。
+* それぞれの行は、書式設定されていない JSON ドキュメントです。詳細を確認する場合は、Visual Studio でファイルを開き、[編集]、[詳細]、[フォーマット ファイル] の順に選択します。
 
 ![適切なツールでテレメトリを表示します](./media/app-insights-export-telemetry/06-json.png)
 
@@ -198,4 +202,4 @@ Blob ストレージからデータベースにデータを移動する 2 つの
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="08/21/2015"
+	ms.date="08/28/2015"
 	ms.author="larryfr"/>
 
 # HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する
@@ -65,7 +65,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
     CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
-    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
 前の例では、HiveQL ステートメントは次のアクションを実行します。
 
@@ -74,6 +74,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 * **ROW FORMAT**: Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
 * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを示します。データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。
 * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
+* **INPUT\_\_FILE\_\_NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
 
 > [AZURE.NOTE]基盤となるデータを外部ソースで更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作で更新する場合に、常に Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
 >
@@ -84,7 +85,7 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 	CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
 	STORED AS ORC;
 	INSERT OVERWRITE TABLE errorLogs
-	SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
+	SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
 
 これらのステートメントは次のアクションを実行します。
 
@@ -96,11 +97,15 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 
 ##<a id="usetez"></a>パフォーマンスを改善するための Apache Tez の使用方法
 
-[Apache Tez](http://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。HDInsight の最新リリースでは、Hive は Tez 上での実行がサポートされます。この機能は、現在、既定では無効のため、有効にする必要があります。Tez を活用するために、Hive クエリに次の値を設定する必要があります。
+[Apache Tez](http://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。HDInsight の最新リリースでは、Hive は Tez 上での実行がサポートされます。
+
+Tez は Windows ベースの HDInsight クラスターに対して現在既定でオフになっているため、有効にする必要があります。Tez を活用するために、Hive クエリに次の値を設定する必要があります。
 
 	set hive.execution.engine=tez;
 
 これは、クエリの先頭に配置することで、クエリ単位で送信できます。また、クラスターの作成時に構成値を設定することで、この機能が既定で有効になるようにクラスターを設定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
+
+Linux ベースの HDInsight クラスターでは、Tez は既定でオンになっています。
 
 [「Hive on Tez」設計ドキュメント](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)には、実装の選択肢および構成の調整に関する詳細がいくつか記載されています。
 
@@ -115,7 +120,6 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 | [Curl](hdinsight-hadoop-use-hive-curl.md) | &nbsp; | ✔ | Linux または Windows | Linux、Unix、Mac OS X、または Windows |
 | [クエリ コンソール](hdinsight-hadoop-use-hive-query-console.md) | &nbsp; | ✔ | Windows | ブラウザー ベース |
 | [HDInsight Tools for Visual Studio](hdinsight-hadoop-use-hive-visual-studio.md) | &nbsp; | ✔ | Linux または Windows | Windows |
-| [.NET SDK for Hadoop](hdinsight-hadoop-use-pig-dotnet-sdk.md) | &nbsp; | ✔ | Linux または Windows | Windows (現時点) |
 | [Windows PowerShell](hdinsight-hadoop-use-hive-powershell.md) | &nbsp; | ✔ | Linux または Windows | Windows |
 | [リモート デスクトップ](hdinsight-hadoop-use-hive-remote-desktop.md) | ✔ | ✔ | Windows | Windows |
 
@@ -128,7 +132,7 @@ SQL Server Integration Services (SSIS) を利用して Hive ジョブを実行�
 - [Azure サブスクリプション接続マネージャー][connectionmanager]
 
 
-Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
+Azure Feature Pack for SSIS の詳細は[こちら][ssispack]にあります。
 
 
 ##<a id="nextsteps"></a>次のステップ
@@ -138,7 +142,7 @@ Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
 
 - [HDInsight へのデータのアップロード][hdinsight-upload-data]
 - [HDInsight での Pig の使用][hdinsight-use-pig]
-- [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
+- [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
 
 [check]: ./media/hdinsight-use-hive/hdi.checkmark.png
 
@@ -179,4 +183,4 @@ Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

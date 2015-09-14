@@ -1,21 +1,21 @@
 <properties 
    pageTitle="StorSimple 帯域幅テンプレートを管理する | Microsoft Azure"
-   description="帯域幅の消費量を制御するのに使用できる StorSimple 帯域幅テンプレートを管理する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+	description="帯域幅の消費量を制御するのに使用できる StorSimple 帯域幅テンプレートを管理する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/13/2015"
-   ms.author="alkohli" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="09/01/2015"
+	ms.author="alkohli"/>
 
-# StorSimple 帯域幅テンプレートを管理する
+# StorSimple Manager サービスを使用して StorSimple 帯域幅テンプレートを管理する
 
 ## 概要
 
@@ -54,7 +54,7 @@
 
 #### 帯域幅テンプレートを追加するには
 
-1. **[帯域幅テンプレートの追加/編集]** をクリックします。
+1. StorSimple Manager サービスの **[構成]** ページで、**[帯域幅テンプレートの追加/編集]** をクリックします。
 
 2. **[帯域幅テンプレートの追加/編集]** ダイアログ ボックスで次の操作を行います。
 
@@ -102,7 +102,7 @@
 
 #### 帯域幅テンプレートを削除するには
 
-1. サービスの帯域幅テンプレートの表形式のリストで、削除するテンプレートを選択します。削除アイコン (x) が選択したテンプレートの右端に表示されます。**[x]** アイコンをクリックしてテンプレートを削除します。
+1. サービスの帯域幅テンプレートの表形式のリストで、削除するテンプレートを選択します。削除アイコン (**[x]**) が選択したテンプレートの右端に表示されます。**[x]** アイコンをクリックしてテンプレートを削除します。
 
 2. 確認を求められます。**[OK]** をクリックして続行します。
 
@@ -176,4 +176,4 @@ StorSimple デバイスに関する次のベスト プラクティスに従っ�
 
 [StorSimple コンポーネント](storsimple-components.md)の詳細
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

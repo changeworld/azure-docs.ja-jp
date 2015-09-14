@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイスにリモート接続する | Microsoft Azure"
-   description="Windows PowerShell リモート処理と、HTTP または HTTPS を使用して、StorSimple デバイスにリモート接続する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+	description="リモート管理用にデバイスを構成する方法と、HTTP または HTTPS を介して StorSimple 用 Windows PowerShell に接続する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/14/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/28/2015"
+	ms.author="alkohli"/>
 
 # StorSimple デバイスにリモート接続する
 
@@ -81,7 +81,7 @@ Azure ポータルで、次の手順に従って、HTTP 経由でのリモート
 
 5. **RemoteManagementMode** フィールドに **HttpsAndHttpEnabled** が表示されていることを確認します。次の図に、PuTTY の設定を示します。
 
-     ![シリアル HTTP と HTTPS の有効化](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
+     ![シリアル HTTPS と HTTP の有効化](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
 
 ### リモート接続用のクライアントを準備する
 
@@ -116,7 +116,7 @@ Azure ポータルで、次の手順に従って、HTTP 経由でのリモート
 
      この時点で、デバイスに対するアクティブなリモート Windows PowerShell セッションが確立されます。
 
-    ![HTTP を使用した PS リモート処理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTP.png)
+    ![HTTP を使用した PowerShell リモート処理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTP.png)
 
 ## HTTPS 経由の接続
 
@@ -264,10 +264,10 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 
 6. 数分間待機する必要があります。その後、HTTPS 経由の SSL でデバイスに接続されます。デバイスに接続されたことを示すメッセージが表示されます。
 
-    ![HTTPS と SSL を使用した PS リモート処理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
+    ![HTTPS と SSL を使用した PowerShell リモート処理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
 ## 次のステップ
 
 [Windows PowerShell を使用して StorSimple デバイスを管理する方法の詳細](storsimple-windows-powershell-administration.md)。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

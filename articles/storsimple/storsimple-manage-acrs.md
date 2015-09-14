@@ -1,21 +1,21 @@
 <properties 
    pageTitle="StorSimple でのアクセス制御レコードの管理 | Microsoft Azure"
-   description="ACR (アクセス制御レコード) を使用して、StorSimple デバイス上のボリュームに接続できるホストを判別する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="tysonn" />
+	description="ACR (アクセス制御レコード) を使用して、StorSimple デバイス上のボリュームに接続できるホストを判別する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="08/13/2015"
-   ms.author="alkohli" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="09/01/2015"
+	ms.author="alkohli"/>
 
-# StorSimple でのアクセス制御レコードの管理
+# StorSimple Manager サービスを使用してアクセス制御レコードを管理する
 
 ## 概要
 
@@ -34,7 +34,7 @@ ACR (アクセス制御レコード) を使用すると、StorSimple デバイ�
 
 ## アクセス制御レコードの追加
 
-ACR を追加するには、管理ポータルの **[構成]** ページを使用します。通常は、1 つの ACR を 1 つのボリュームに関連付けます。
+StorSimple Manager サービスの **[構成]** ページを使用して ACR を追加します。通常は、1 つの ACR を 1 つのボリュームに関連付けます。
 
 次のステップを実行して、ACR を追加します。
 
@@ -94,4 +94,4 @@ ACR を削除するには、管理ポータルの **[構成]** ページを使�
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

@@ -1,19 +1,19 @@
 <properties
-	pageTitle="VMM と Hyper-V サイト保護の監視とトラブルシューティング ガイド" 
-	description="Azure Site Recovery は、オンプレミスのサーバーに配置されている仮想マシンの Azure またはセカンダリ データセンターへのレプリケーション、フェールオーバー、および復旧を調整します。この記事を利用し、VMM または Hyper-V サイト保護を監視し、トラブルシューティングします。" 
-	services="site-recovery" 
-	documentationCenter="" 
-	authors="anbacker" 
-	manager="mkjain" 
+	pageTitle="VMM と Hyper-V サイト保護の監視とトラブルシューティング ガイド"
+	description="Azure Site Recovery は、オンプレミスのサーバーに配置されている仮想マシンの Azure またはセカンダリ データセンターへのレプリケーション、フェールオーバー、および復旧を調整します。この記事を利用し、VMM または Hyper-V サイト保護を監視し、トラブルシューティングします。"
+	services="site-recovery"
+	documentationCenter=""
+	authors="anbacker"
+	manager="mkjain"
 	editor=""/>
 
 <tags 
-	ms.service="site-recovery" 
+	ms.service="site-recovery"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.workload="storage-backup-recovery" 
-	ms.date="08/13/2015" 
+	ms.workload="storage-backup-recovery"
+	ms.date="09/01/2015"
 	ms.author="anbacker"/>
 	
 # VMware、VMM、Hyper-V、および物理サイトの監視とトラブルシューティング
@@ -35,13 +35,13 @@
 
 ### オンプレミスと Azure の間のレプリケーションのための VMM サイトのデプロイ
 
-オンプレミスと Azure の間で DR を設定するとき、Azure Site Recovery プロバイダーをダウンロードして VMM サーバーにインストールし、Azure Recovery Services エージェントを各 Hyper-V ホストにインストールする必要があります。
+オンプレミスと Azure の間で DR を設定するとき、Azure Site Recovery プロバイダーをダウンロードして VMM サーバーにインストールし、Azure Recovery Services エージェントを各 Hyper-V ホストにインストールする必要があります。詳細については、「[サイトと Azure 間の保護について](./site-recovery-understanding-site-to-azure-protection.md)」を参照してください。
 
 ![オンプレミスと Azure の間のレプリケーションのための VMM サイトのデプロイ](media/site-recovery-monitoring-and-troubleshooting/image2.png)
 
 ### オンプレミスと Azure の間のレプリケーションのための Hyper-V サイトのデプロイ
 
-これは VMM のデプロイの場合と同じです。プロバイダーとエージェントが Hyper-V ホスト自体にインストールされるという点だけ異なります。
+これは VMM のデプロイの場合と同じです。プロバイダーとエージェントが Hyper-V ホスト自体にインストールされるという点のみが異なります。詳細については、「[サイトと Azure 間の保護について](./site-recovery-understanding-site-to-azure-protection.md)」を参照してください。
 
 ## 構成、保護、復旧操作の監視
 
@@ -75,7 +75,7 @@ ASR は Azure ポータルを利用し、それぞれの保護対象を集中/�
 
 ![仮想マシンのレプリケーション正常性の監視](media/site-recovery-monitoring-and-troubleshooting/image9.png)
 
-上の例では、仮想マシンの正常性が「重大」です。下の「エラー詳細」ボタンをクリックすると、エラーを確認できます。「考えられる原因」と「推奨」に基づいて問題を解決します。この例では、仮想マシンを再同期する必要があります。その作業はポータルで実行できます。[再同期] ボタンをクリックしてください。
+上の例では、仮想マシンの正常性が「重大」です。下の「エラー詳細」ボタンをクリックすると、エラーを確認できます。"考えられる原因" に基づき、前述の "推奨" によって問題を解決します。
 
 ![仮想マシンのレプリケーション正常性の監視](media/site-recovery-monitoring-and-troubleshooting/image10.png)
 
@@ -83,7 +83,7 @@ ASR は Azure ポータルを利用し、それぞれの保護対象を集中/�
 
 注: アクティブな操作が進行中であるか、失敗した場合、先に述べたように [ジョブ] ビューに移動し、そのジョブ固有のエラーを確認します。
 
-## イベント ビューアー
+## イベント ログ
 
 | シナリオ | イベント ソース |
 |-------------------------	|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
@@ -101,6 +101,10 @@ ASR は Azure ポータルを利用し、それぞれの保護対象を集中/�
 
 ![オンプレミスの Hyper-V に関する問題のトラブルシューティング](media/site-recovery-monitoring-and-troubleshooting/image13.png)
 
+仮想マシンのレプリケーションが一時停止した場合、右クリックして *[レプリケーション]* > *[レプリケーションの再開]*の順に選択してください。![オンプレミスの Hyper-V に関する問題のトラブルシューティング](media/site-recovery-monitoring-and-troubleshooting/image19.png)
+
+仮想マシンで新しい Hyper-V ホスト (クラスター内またはスタンドアロン マシン内に ASR を使用して構成したもの) を移行する場合、仮想マシンのレプリケーションが影響を受けることはありません。新しい Hyper-V ホストが、すべての前提条件を満たし、ASR を使用して構成されていることを確認します。
+
 ### Hyper-V レプリケーションのログ記録のオプション
 
 Hyper-V レプリカに関連するすべてのイベントは **Applications and Services Logs\\Microsoft\\Windows** にある Hyper-V-VMMS\\Admin ログに記録されます。また、Hyper-V-VMMS の分析ログを有効にすることができます。このログを有効にするには、最初にイベント ビューアーに 分析ログとデバッグ ログを表示する必要があります。イベント ビューアーを開き、**[表示] メニュー**で、**[分析ログとデバッグ ログを表示する]** をクリックします。
@@ -117,23 +121,19 @@ Hyper-V レプリカに関連するすべてのイベントは **Applications an
 
 収集された情報を表示するには、最初にログを無効にしてトレース セッションを停止し、イベント ビューアーでログを保存し、再び開きます。あるいは、必要に応じて他のツールで変換します。
 
-
-## HYPER-V 仮想マシンの保護および回復のライフ サイクルについて
-
-![HYPER-V の仮想マシンの保護と回復のライフ サイクルについて](media/site-recovery-monitoring-and-troubleshooting/image17.png)
-
-
 ## Microsoft サポートを得る
 
 ### ログ コレクション
 
 VMM サイト保護については、「[ASR Log Collection using Support Diagnostics Platform (SDP) Tool](http://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx)」を参照し、必要なログを収集してください。
 
-Hyper-V Branch Office と SMB サイト保護については、[ツール](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab)をダウンロードして Hyper-V で実行し、ログを収集してください。
+Hyper-V サイト保護については、[ツール](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab)をダウンロードして Hyper-V ホストで実行し、ログを収集してください。
 
 VMware/Physical シナリオについては、「[Azure Site Recovery Log Collection for VMware and Physical site protection](http://social.technet.microsoft.com/wiki/contents/articles/30677.azure-site-recovery-log-collection-for-vmware-and-physical-site-protection.aspx)」を参照し、必要なログを収集してください。
 
-SDP ツールはローカルのログ ファイルを収集します。これは **%LocalAppData%\\ElevatedDiagnostics** にある無作為に名前が付けられたサブフォルダーにもあります。
+ツールはローカルのログを収集します。これは **%LocalAppData%\\ElevatedDiagnostics** にある無作為に名前が付けられたサブフォルダーにあります。
+
+![Hyper-V サイト保護で表示される手順のサンプル。](media/site-recovery-monitoring-and-troubleshooting/animate01.gif)
 
 ### サポート チケットを開く
 
@@ -141,86 +141,51 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 
 ## KB 記事
 
--   [Azure にフェイル オーバーまたは移行されている保護された仮想マシンの
-    > ドライブ文字を保持する方法](http://support.microsoft.com/kb/3031135)
+-   [How to preserve the drive letter for protected virtual machines that are failed over or migrated to Azure (Azure にフェールオーバーまたは移行されている、保護された仮想マシンのドライブ文字を保持する方法)](http://support.microsoft.com/kb/3031135)
+-   [How to manage on-premises to Azure protection network bandwidth usage (オンプレミスと Azure 間の保護ネットワークの帯域幅使用量を管理する方法 )](https://support.microsoft.com/kb/3056159)
+-   [ASR: "The cluster resource could not be found" error when you try to enable protection for a virtual machine (ASR: 仮想マシンの保護を有効にしようとしたときの "クラスター リソースは見つかりませんでした" エラー)](http://support.microsoft.com/kb/3010979)
+-   [Understand & Troubleshoot Hyper-V Replica Guide (Hyper-V レプリカを理解してトラブルシューティングするためのガイド)](http://www.microsoft.com/en-in/download/details.aspx?id=29016) 
 
--   [Azure Recovery Services のトラブルシューティング方法
-    > ](http://support.microsoft.com/kb/3005185)
-
--   [Hyper-V サイト保護で Azure Site Recovery のデバッグ ログを有効にする方法
-    > ](http://support.microsoft.com/kb/3033922)
-
--   [ASR: 仮想マシンの保護を有効にしようとすると、「The cluster resource could not be found (クラスター リソースが見つかりませんでした)」エラーが発生する
-    > ](http://support.microsoft.com/kb/3010979)
-    
--   [Hyper-V レプリカを理解し、トラブルシューティングする
-    > ガイド](http://www.microsoft.com/en-in/download/details.aspx?id=29016)
-	
-	
-	
 ## ASR の一般的なエラーとその解決策
 
 遭遇する可能性のある一般的なエラーとその解決策を次に示します。それぞれのエラーについては、個別の WIKI ページに記載されています。
 
 ### セットアップ
-
 -   [内部エラーにより、VMM サーバーを登録できない。エラーの詳細については、Site Recovery ポータルのジョブ ビューを参照してください。サーバーを登録するには、もう一度セットアップを実行します。](http://social.technet.microsoft.com/wiki/contents/articles/25570.the-vmm-server-cannot-be-registered-due-to-an-internal-error-please-refer-to-the-jobs-view-in-the-site-recovery-portal-for-more-details-on-the-error-run-setup-again-to-register-the-server.aspx)
-
 -   [Hyper-V Recovery Manager コンテナーへの接続を確立できない。プロキシ設定を確認するか、後でもう一度実行してください。](http://social.technet.microsoft.com/wiki/contents/articles/25571.a-connection-cant-be-established-to-the-hyper-v-recovery-manager-vault-verify-the-proxy-settings-or-try-again-later.aspx)
 
 ### 構成
 -   [保護グループを作成できない: サーバーの一覧を取得中にエラーが発生する。](http://blogs.technet.com/b/somaning/archive/2015/08/12/unable-to-create-the-protection-group-in-azure-site-recovery-portal.aspx)
-
 -   [Hyper-V ホスト クラスターに少なくとも 1 つの静的なネットワーク アダプターが含まれているか、DHCP を使用するように接続されたアダプターが構成されていない。](http://social.technet.microsoft.com/wiki/contents/articles/25498.hyper-v-host-cluster-contains-at-least-one-static-network-adapter-or-no-connected-adapters-are-configured-to-use-dhcp.aspx)
-
 -   [操作を完了するための、VMM のアクセス許可がない](http://social.technet.microsoft.com/wiki/contents/articles/31110.vmm-does-not-have-permissions-to-complete-an-action.aspx)
+-   [保護を構成するときに、サブスクリプション内のストレージ アカウントを選択できない](http://social.technet.microsoft.com/wiki/contents/articles/32027.can-t-select-the-storage-account-within-the-subscription-while-configuring-protection.aspx)
 
 ### 保護
-
--   [エージェントがホスト コンピューターにインストールされていないため、保護の有効化が失敗する](http://social.technet.microsoft.com/wiki/contents/articles/31105.enable-protection-failed-since-agent-not-installed-on-host-machine.aspx)
-
--   [コンピューティング リソースが少ないため、レプリカ仮想マシンに適したホストが見つからない](http://social.technet.microsoft.com/wiki/contents/articles/25501.a-suitable-host-for-the-replica-virtual-machine-can-t-be-found-due-to-low-compute-resources.aspx)
-
--   [論理ネットワークに接続されていないため、レプリカ仮想マシンに適したホストが見つからない](http://social.technet.microsoft.com/wiki/contents/articles/25502.a-suitable-host-for-the-replica-virtual-machine-can-t-be-found-due-to-no-logical-network-attached.aspx)
-
--   [レプリカのホスト コンピューターに接続できない。接続を確立できない](http://social.technet.microsoft.com/wiki/contents/articles/31106.cannot-connect-to-the-replica-host-machine-connection-could-not-be-established.aspx)
+- [エージェントがホスト コンピューターにインストールされていないため、保護の有効化が失敗する](http://social.technet.microsoft.com/wiki/contents/articles/31105.enable-protection-failed-since-agent-not-installed-on-host-machine.aspx)
+- [コンピューティング リソースが少ないため、レプリカ仮想マシンに適したホストが見つからない](http://social.technet.microsoft.com/wiki/contents/articles/25501.a-suitable-host-for-the-replica-virtual-machine-can-t-be-found-due-to-low-compute-resources.aspx)
+- [論理ネットワークに接続されていないため、レプリカ仮想マシンに適したホストが見つからない](http://social.technet.microsoft.com/wiki/contents/articles/25502.a-suitable-host-for-the-replica-virtual-machine-can-t-be-found-due-to-no-logical-network-attached.aspx)
+- [レプリカのホスト コンピューターに接続できない。接続を確立できない](http://social.technet.microsoft.com/wiki/contents/articles/31106.cannot-connect-to-the-replica-host-machine-connection-could-not-be-established.aspx)
+- [ライブ マイグレーション エラー 23848 - 仮想マシンはタイプ "ライブ" を使用して移動します。これにより、仮想マシンの回復保護の状態が壊れる可能性があります。](http://social.technet.microsoft.com/wiki/contents/articles/32021.live-migration-error-23848-the-virtual-machine-is-going-to-be-moved-using-type-live-this-could-break-the-recovery-protection-status-of-the-virtual-machine.aspx)
 
 ### 復旧
-
--   VMM が、ホストの操作を完了できません。
-
+- VMM が、ホストの操作を完了できません。
     -   [仮想マシンの選択した復旧ポイントにフェールオーバーする。一般的なアクセス拒否エラー。](http://social.technet.microsoft.com/wiki/contents/articles/25504.fail-over-to-the-selected-recovery-point-for-virtual-machine-general-access-denied-error.aspx)
-
     -   [Hyper-V が仮想マシンの選択した回復ポイントへのフェールオーバーに失敗した。 操作が中止された。最新の復旧ポイントを実行してください。(0x80004004)](http://social.technet.microsoft.com/wiki/contents/articles/25503.hyper-v-failed-to-fail-over-to-the-selected-recovery-point-for-virtual-machine-operation-aborted-try-a-more-recent-recovery-point-0x80004004.aspx)
-
     -   サーバーとの接続を確立できない (0x00002EFD)
-
         -   [Hyper-V で仮想マシンのレプリケーションの反転を有効にできない。](http://social.technet.microsoft.com/wiki/contents/articles/25505.a-connection-with-the-server-could-not-be-established-0x00002efd-hyper-v-failed-to-enable-reverse-replication-for-virtual-machine.aspx)
-
         -   [Hyper-V で仮想マシンのレプリケーションを有効にできない](http://social.technet.microsoft.com/wiki/contents/articles/25506.a-connection-with-the-server-could-not-be-established-0x00002efd-hyper-v-failed-to-enable-replication-for-virtual-machine-virtual-machine.aspx)
-
     -   [仮想マシンのフェールオーバーをコミットできない](http://social.technet.microsoft.com/wiki/contents/articles/25508.could-not-commit-failover-for-virtual-machine.aspx)
-
 -   [計画フェールオーバーの準備ができていない仮想マシンが、復旧計画に含まれている](http://social.technet.microsoft.com/wiki/contents/articles/25509.the-recovery-plan-contains-virtual-machines-which-are-not-ready-for-planned-failover.aspx)
-
 -   [仮想マシンの計画フェールオーバーの準備ができていない](http://social.technet.microsoft.com/wiki/contents/articles/25507.the-virtual-machine-isn-t-ready-for-planned-failover.aspx)
-
 -   [仮想マシンが実行されていなく、電源が入っていない](http://social.technet.microsoft.com/wiki/contents/articles/25510.virtual-machine-is-not-running-and-is-not-powered-off.aspx)
-
--   [帯域外操作が仮想マシンで発生し、 ](http://social.technet.microsoft.com/wiki/contents/articles/25507.the-virtual-machine-isn-t-ready-for-planned-failover.aspx)フェールオーバーのコミットに失敗した
-
+-   [帯域外操作が仮想マシンで発生し、フェールオーバーのコミットに失敗した](http://social.technet.microsoft.com/wiki/contents/articles/25507.the-virtual-machine-isn-t-ready-for-planned-failover.aspx)
 -   テスト フェールオーバー
-
     -   [テスト フェールオーバーが進行中であるため、フェールオーバーを開始できない](http://social.technet.microsoft.com/wiki/contents/articles/31111.failover-could-not-be-initiated-since-test-failover-is-in-progress.aspx)
 
-
 ### 構成サーバー、プロセス サーバー、マスター ターゲット
-
-構成サーバー (CS)、プロセス サーバー (PS)、マスター ターゲット (MT)
-
--   [PS/CS が VM としてホストされている ESXi ホストが、Purple Screen of Death の画面を表示して失敗する。](http://social.technet.microsoft.com/wiki/contents/articles/31107.vmware-esxi-host-experiences-a-purple-screen-of-death.aspx)
+構成サーバー (CS)、プロセス サーバー (PS)、マスター Target (MT) - [PS/CS が VM としてホストされている ESXi ホストが、Purple Screen of Death の画面を表示して失敗する。](http://social.technet.microsoft.com/wiki/contents/articles/31107.vmware-esxi-host-experiences-a-purple-screen-of-death.aspx)
 
 ### リモート デスクトップのフェールオーバー後のトラブルシューティング
-多くのお客様が、Azure でフェールオーバー後の VM への接続について、問題に直面しています。トラブルシューティングのドキュメントを使用して、VM に RDP でアクセスしてください。[ドキュメントのリンク](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
+-   多くのお客様が、Azure でフェールオーバー後の VM への接続について、問題に直面しています。[VM への RDP 接続におけるトラブルシューティングに関するドキュメントを使用してください。](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

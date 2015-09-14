@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Web ロールとワーカー ロールを作成する"
+	pageTitle="PHP の Web ロールと Worker ロール | Microsoft Azure"
 	description="Azure クラウド サービスで PHP Web ロールおよび worker ロールを作成し、PHP ランタイムを構成するためのガイド。"
 	services=""
 	documentationCenter="php"
@@ -12,8 +12,8 @@
 	ms.workload="tbd"
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
-	ms.topic="hero-article"
-	ms.date="06/09/2015"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="tomfitz"/>
 
 #PHP Web ロールとワーカー ロールを作成する方法
@@ -23,13 +23,13 @@
 このガイドでは、Windows 開発環境で PHP Web ロールまたはワーカー ロールを作成する方法を示します。使用可能な "ビルトイン" バージョンから特定バージョンの PHP を選択し、PHP 構成を変更して、拡張機能を有効にする方法と、Azure に展開する方法についても示します。また、指定した PHP ランタイムを (カスタムの構成および拡張機能と共に) 使用できるように Web ロールまたはワーカー ロールを構成する方法についても説明します。
 
 ## PHP Web ロールとワーカー ロールについて
-Azure にはアプリケーションを実行するためのコンピューティング モデルとして、[Azure Web サイト][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] の 3 種類があります。これら 3 つのモデルはすべて、PHP をサポートしています。クラウド サービスには、Web ロールとワーカー ロールが含まれ、*サービスとしてのプラットフォーム (PaaS)* を提供します。クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
+Azure にはアプリケーションを実行するためのコンピューティング モデルとして、Azure App Service、Azure Virtual Machines、および Azure Cloud Services の 3 種類があります。これら 3 つのモデルはすべて、PHP をサポートしています。クラウド サービスには、Web ロールとワーカー ロールが含まれ、*サービスとしてのプラットフォーム (PaaS)* を提供します。クラウド サービス内で、Web ロールは、フロントエンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。ワーカー ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
 
-詳細については、「[What is a Cloud Service? (クラウド サービスとは)]」を参照してください。
+これらのオプションの詳細については、「[Azure が提供するコンピューティング ホスティング オプション](./cloud-services/fundamentals-application-models.md)」を参照してください。
 
 ## Azure SDK for PHP をダウンロードする
 
-[Azure SDK for PHP] は、いくつかのコンポーネントで構成されています。この記事では、そのうち Azure PowerShell と Azure エミュレーターの 2 つを使用します。これら 2 つのコンポーネントをインストールするには、Microsoft Web プラットフォーム インストーラーを使用します。[ここをクリックしてインストールしてください][install ps and emulators]。
+[Azure SDK for PHP] は、いくつかのコンポーネントで構成されています。この記事では、そのうち Azure PowerShell と Azure エミュレーターの 2 つを使用します。これら 2 つのコンポーネントは、Microsoft Web Platform Installer を使用してインストールできます。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」を参照してください。
 
 ## 方法: クラウド サービス プロジェクトを作成する
 
@@ -99,7 +99,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 指定した PHP ランタイムが使用されるように Web ロールを構成するには、次の操作を行います。
 
-1. 前の「[方法: クラウド サービス プロジェクトを作成する](#how-to-create-a-cloud-services-project)」セクションおよび「[方法: PHP Web ロールまたは worker ロールを追加する](#how-to-add-php-web-or-worker-roles)」セクションの説明に従い、Azure サービス プロジェクトを作成して、PHP Web ロールを追加します。
+1. 前のトピックの説明に従って、Azure Service プロジェクトを追加し、PHP Web ロールを追加します。
 2. Web ロールのルート ディレクトリにある `bin` フォルダー内に `php` フォルダーを作成し、この `php` フォルダーに PHP ランタイム (すべてのバイナリ、構成ファイル、サブフォルダーなど) を追加します。
 3. (省略可能) PHP ランタイムに [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers] が使用されている場合は、Web ロールを構成して、プロビジョニング時に [SQL Server Native Client 2012][sql native client] がインストールされるように指定する必要があります。これを行うには、Web ロールのルート ディレクトリにある `bin` フォルダーに、`sqlncli.msi` インストーラーを追加します。このインストーラーは次のリンクからダウンロードできます: [sqlncli.msi x64 インストーラー]。次のステップで説明するスタートアップ スクリプトでは、ロールのプロビジョニング時にインストーラーが自動的に実行されます。PHP ランタイムに Microsoft Drivers for PHP for SQL Server が使用されていない場合は、次のステップで示すスクリプトから、この行を削除できます。
 
@@ -133,7 +133,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 指定した PHP ランタイムが使用されるように worker ロールを構成するには、次の操作を行います。
 
-1. 前の「[方法: クラウド サービス プロジェクトを作成する](#how-to-create-a-cloud-services-project)」セクションおよび「[方法: PHP Web ロールまたは worker ロールを追加する](#how-to-add-php-web-or-worker-roles)」セクションの説明に従い、Azure サービス プロジェクトを作成して、PHP worker ロールを追加します。
+1. 前のトピックの説明に従って、Azure Service プロジェクトを追加し、PHP Web ロールを追加します。
 2. worker ロールのルート ディレクトリに `php` フォルダーを作成し、この `php` フォルダーに PHP ランタイム (すべてのバイナリ、構成ファイル、サブフォルダーなど) を追加します。
 3. (省略可能) PHP ランタイムに [Microsoft Drivers for PHP for SQL Server][sqlsrv drivers] が使用されている場合は、worker ロールを構成して、プロビジョニング時に [SQL Server Native Client 2012][sql native client] がインストールされるように指定する必要があります。これを行うには、worker ロールのルート ディレクトリに、`sqlncli.msi` インストーラーを追加します。このインストーラーは次のリンクからダウンロードできます: [sqlncli.msi x64 インストーラー]。次のステップで説明するスタートアップ スクリプトでは、ロールのプロビジョニング時にインストーラーが自動的に実行されます。PHP ランタイムに Microsoft Drivers for PHP for SQL Server が使用されていない場合は、次のステップで示すスクリプトから、この行を削除できます。
 
@@ -172,7 +172,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 ## 方法: コンピューティング エミュレーターとストレージ エミュレーターでアプリケーションを実行する
 
-Azure コンピューティング エミュレーターとストレージ エミュレーターでは、Azure アプリケーションをクラウドにデプロイする前にテストできるローカル環境が提供されます。ただし、エミュレーターと Azure 環境では、いくつか相違点があります。詳細については、「[コンピューティング エミュレーターと Windows Azure との違い](http://msdn.microsoft.com/library/windowsazure/gg432960.aspx)」および「[ストレージ エミュレーターと Windows Azure ストレージ サービスとの違い](http://msdn.microsoft.com/library/windowsazure/gg433135.aspx)」を参照してください。
+Azure エミュレーターは、Azure アプリケーションをクラウドにデプロイする前にテストできるローカル環境を提供します。ただし、エミュレーターと Azure 環境では、いくつか相違点があります。詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](./storage/storage-use-emulator.md)」を参照してください。
 
 コンピューティング エミュレーターを使用するには、ローカルで PHP をインストールしておく必要があります。コンピューティング エミュレーターでは、アプリケーションを実行するために、ローカルの PHP インストールが使用されます。
 
@@ -195,21 +195,15 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 
 ## 方法: アプリケーションを発行する
 
-アプリケーションを発行するには、まず **Import-PublishSettingsFile** コマンドレットを使用して発行設定をインポートする必要があります。次に **Publish-AzureServiceProject** コマンドレットを使用して、アプリケーションを発行できます。これらのコマンドレットの使用方法については、[発行の設定をインポートする方法]および[Azure にクラウド サービスを展開する方法]に関するページを参照してください。
+アプリケーションを発行するには、まず **Import-PublishSettingsFile** コマンドレットを使用して発行設定をインポートする必要があります。次に [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) コマンドレットを使用して、アプリケーションを発行できます。サインインの詳細については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
-[execution model-web sites]: /develop/net/fundamentals/compute/#WebSites
-[execution model-vms]: /develop/net/fundamentals/compute/#VMachine
-[execution model-cloud services]: /develop/net/fundamentals/compute/#CloudServices
 [Azure SDK for PHP]: /develop/php/common-tasks/download-php-sdk/
-[install ps and emulators]: http://go.microsoft.com/fwlink/?LinkId=253447&clcid=0x409
-[What is a Cloud Service? (クラウド サービスとは)]: /manage/services/cloud-services/what-is-a-cloud-service/
+[install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
 [サービス定義ファイル (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
 [サービス構成ファイル (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: http://www.iis.net/
 [sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 インストーラー]: http://go.microsoft.com/fwlink/?LinkID=239648
-[発行の設定をインポートする方法]: /develop/php/how-to-guides/powershell-cmdlets/#ImportPubSettings
-[Azure にクラウド サービスを展開する方法]: /develop/php/how-to-guides/powershell-cmdlets/#Deploy
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

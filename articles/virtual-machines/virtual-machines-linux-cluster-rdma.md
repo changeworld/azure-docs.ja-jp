@@ -103,7 +103,7 @@ VM のプロビジョニングの完了後、VM の外部 IP アドレス (ま�
 
 >[AZURE.IMPORTANT]現時点では、カーネルの更新プログラムを適用しないことをお勧めします。適用した場合、Linux RDMA ドライバーに関連する問題が発生する可能性があります。
 
-**Intel MPI** - Intel MPI Library 5.0 ランタイムを [Intel.com のサイト](https://software.intel.com/ja-jp/intel-mpi-library/)からダウンロードしてインストールします。Intel に登録した後、確認の電子メールに含まれる、関連 Web ページへのリンクをクリックし、適切なバージョンの Intel MPI (.tgz ファイル) のダウンロード リンクをコピーします。
+**Intel MPI** - Intel MPI Library 5.0 ランタイムを [Intel.com のサイト](https://software.intel.com/ja-JP/intel-mpi-library/)からダウンロードしてインストールします。Intel に登録した後、確認の電子メールに含まれる、関連 Web ページへのリンクをクリックし、適切なバージョンの Intel MPI (.tgz ファイル) のダウンロード リンクをコピーします。
 
 次のようなコマンドを実行して、Intel MPI を VM にインストールします。
 
@@ -190,7 +190,7 @@ azure vm capture -t <vm-name> <image-name>
 ### Select a region where A8 and A9 VMs are available, such as West US
 ### See Azure Pricing pages for prices and availability of A8 and A9 VMs
 
-azure network vnet create -l "West US" -e 10.32.0.0 <network-name>
+azure network vnet create -l "West US" -e 10.32.0.0 -i 16 <network-name>
 
 ### Create a cloud service. All the A8 and A9 instances need to be in the same cloud service for Linux RDMA to work across InfiniBand.
 ### Note: The current maximum number of VMs in a cloud service is 50. If you need to provision more than 50 VMs in the same cloud service in your cluster, contact Azure Support.
@@ -208,7 +208,7 @@ portnumber=101
 ### In this cluster there will be 8 size A9 nodes, named cluster11 to cluster18. Specify your captured image in <image-name>.
 
 for (( i=11; i<19; i++ )); do
-        azure vm create -g <username> -p <password> -c <cloud-service-name> -z A9 -n $vmname$i -e $portnumber$i <image-name>
+        azure vm create -g <username> -p <password> -c <cloud-service-name> -z A9 -n $vmname$i -e $portnumber$i -w <network-name> -b Subnet-1 <image-name>
 done
 
 ### Save this script and run it at the CLI prompt to provision your cluster
@@ -337,6 +337,6 @@ private ip address2:16
 
 * Linux クラスター上で、Linux MPI アプリケーションのデプロイと実行を試します。
 
-* Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/ja-jp/articles/intel-mpi-library-documentation/)を参照してください。
+* Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/ja-JP/articles/intel-mpi-library-documentation/)を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

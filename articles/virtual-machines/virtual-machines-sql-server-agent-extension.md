@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="SQL Server IaaS Agent 拡張機能" 
-	description="SQL Server エージェント拡張機能について説明します。この拡張機能を使用すると、Azure のクラウドで SQL Server を実行している仮想マシンは、自動機能を使用できるようになります。また、エージェントがまだ自動的にインストールされていない場合のインストール方法についても説明します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="jeffgoll" 
+	pageTitle="SQL Server IaaS Agent 拡張機能"
+	description="SQL Server エージェント拡張機能について説明します。この拡張機能を使用すると、Azure のクラウドで SQL Server を実行している仮想マシンは、自動機能を使用できるようになります。また、エージェントがまだ自動的にインストールされていない場合のインストール方法についても説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="jeffgoll"
 	manager="jeffreyg"
 	editor=""/>
 
@@ -12,7 +12,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
-	ms.workload="infrastructure-services" 
+	ms.workload="infrastructure-services"
 	ms.date="06/17/2015"
 	ms.author="jeffreyg"/>
 
@@ -33,8 +33,8 @@ VM で拡張機能を使用するための要件:
  
 ## 拡張機能で使用できるサービス
 
-- **SQL の自動化されたバックアップ**: このサービスで、VM 内の SQL Server の既定インスタンスについて、すべてのデータベースのバックアップが自動的にスケジュールされます。このサービスの詳細については、「[Azure Virtual Machines における SQL Server の自動化されたバックアップ](https://msdn.microsoft.com/library/azure/dn906091.aspx)」を参照してください。
-- **SQL 自動修正プログラム適用**: このサービスを使用すると、VM の更新プログラムを実行できるメンテナンス期間を構成できるので、ワークロードのピーク時の更新プログラムを回避できます。このサービスの詳細については、「[Azure Virtual Machines における SQL Server の自動化された修正プログラムの適用](https://msdn.microsoft.com/library/azure/dn961166.aspx)」を参照してください。
+- **SQL の自動化されたバックアップ**: このサービスで、VM 内の SQL Server の既定インスタンスについて、すべてのデータベースのバックアップが自動的にスケジュールされます。このサービスの詳細については、「[Azure Virtual Machines における SQL Server の自動化されたバックアップ](virtual-machines-sql-server-automated-backup.md)」を参照してください。
+- **SQL 自動修正プログラム適用**: このサービスを使用すると、VM の更新プログラムを実行できるメンテナンス期間を構成できるので、ワークロードのピーク時の更新プログラムを回避できます。このサービスの詳細については、「[Azure Virtual Machines における SQL Server の自動化された修正プログラムの適用](virtual-machines-sql-server-automated-patching.md)」を参照してください。
 
 ## Powershell を使用した拡張機能の追加
 [Azure プレビュー ポータル](https://portal.azure.com/)を使用して SQL Server VM をプロビジョニングすると、拡張機能は自動的にインストールされます。[Azure 管理ポータル](https://manage.windowsazure.com)で SQL Server VM をプロビジョニングした場合、または SQL ライセンスを持っている VM の場合、次の Azure PowerShell コマンドレットを使用して、既存の VM にこの拡張機能を追加できます。
@@ -74,4 +74,4 @@ VM からこの拡張機能を削除する場合は、次の Azure Powershell �
 ### 構文
 Remove-AzureVMSqlServerExtension -VM <IPersistentVM> [<CommonParameters>]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

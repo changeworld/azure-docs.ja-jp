@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="クラウド サービスの構成方法 | Microsoft Azure" 
-	description="Azure のクラウド サービスの構成方法について説明します。クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。" 
-	services="cloud-services" 
-	documentationCenter="" 
-	authors="Thraka" 
-	manager="timlt" 
+	pageTitle="クラウド サービスの構成方法 | Microsoft Azure"
+	description="Azure のクラウド サービスの構成方法について説明します。クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。"
+	services="cloud-services"
+	documentationCenter=""
+	authors="Thraka"
+	manager="timlt"
 	editor=""/>
 
 <tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
 	ms.date="06/29/2015"
 	ms.author="adegeo"/>
 
@@ -85,8 +85,8 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 ## ロール インスタンスへのリモート アクセスの構成
 
-**Azure プレビュー ポータル**を使用して、リモート アクセスを構成することはできません。この設定を変更するには、[非プレビュー ポータル](http://manage.windowsazure.com/)を使用する必要があります。詳細については、[ここ](cloud-services-how-to-configure.md#configure-remote-access-to-role-instances)を参照してください。
+**Azure プレビュー ポータル**を使用して、リモート アクセスを構成することはできません。この設定を変更するには、[非プレビュー ポータル](http://manage.windowsazure.com/)を使用する必要があります。詳細については、[ここ](cloud-services-role-enable-remote-desktop.md)を参照してください。
 			
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

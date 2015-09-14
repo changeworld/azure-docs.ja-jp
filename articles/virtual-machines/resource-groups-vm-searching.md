@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="command-line-interface"
 	ms.workload="infrastructure"
-	ms.date="05/29/2015"
+	ms.date="08/25/2015"
 	ms.author="rasquill"/>
 
 # Windows PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択
@@ -240,4 +240,4 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

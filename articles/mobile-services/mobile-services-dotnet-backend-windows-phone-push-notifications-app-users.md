@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="認証されたユーザーへのプッシュ通知の送信" 
-	description="特定の場所にプッシュ通知を送信する方法について説明します。" 
-	services="mobile-services,notification-hubs" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="認証されたユーザーへのプッシュ通知の送信"
+	description="特定の場所にプッシュ通知を送信する方法について説明します。"
+	services="mobile-services,notification-hubs"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="06/04/2015" 
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="glenga"/>
 
 # 認証されたユーザーへのプッシュ通知の送信
@@ -24,7 +24,7 @@
 
 このチュートリアルが対象とするのは、Windows Phone 8.0 および Windows Phone 8.1 Silverlight のアプリケーションです。Windows Phone 8.1 ストアのアプリケーションについては、[このトピックの Windows ストア版](mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md)を参照してください。
 
-##前提条件 
+##前提条件
 
 このチュートリアルの前に、次の Mobile Services のチュートリアルを完了している必要があります。
 
@@ -59,6 +59,5 @@
 [アプリケーションにプッシュ通知を追加する]: mobile-services-dotnet-backend-windows-phone-get-started-push.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

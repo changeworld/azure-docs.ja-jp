@@ -1,35 +1,35 @@
 <properties 
-   pageTitle="Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する | Microsoft Azure"
-   description="Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+   pageTitle="PowerShell for StorSimple デバイス管理 | Microsoft Azure"
+	description="Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/19/2015"
-   ms.author="alkohli@microsoft.com" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/28/2015"
+	ms.author="alkohli@microsoft.com"/>
 
 # Windows PowerShell for StorSimple を使用してデバイスを管理する
 
 ## 概要
+
 Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイスを管理するために使用できるコマンドライン インターフェイスです。名前が示すように、これは制約付き実行空間に組み込まれている Windows PowerShell ベースのコマンド ライン インターフェイスです。コマンド ラインを使用するユーザーの観点から見ると、制約付き実行空間は、Windows PowerShell の制限付きバージョンとして表示されます。このインターフェイスは、Windows PowerShell の基本機能の一部を維持するとともに、Microsoft Azure StorSimple デバイスの管理に適合するように調整された専用のコマンドレットを持っています。
 
-この記事では、Windows PowerShell for StorSimple の機能について説明します。説明には、このインターフェイスへの接方法と、このインターフェイスを使用して実行できるワークフローの詳細な手順を示すリンクが含まれています。ワークフローには、デバイスの登録方法、デバイスでのネットワーク インターフェイスの構成方法、デバイスをメンテナンス モードにする必要がある更新プログラムのインストール方法、デバイスの状態の変更方法、および発生する可能性がある問題のトラブルシューティングの実行方法があります。
+この記事では、Windows PowerShell for StorSimple の機能について説明します。説明には、このインターフェイスへの接続方法と、このインターフェイスを使用して実行できるワークフローや詳細な手順を示すリンクが含まれています。ワークフローには、デバイスの登録方法、デバイスでのネットワーク インターフェイスの構成方法、デバイスをメンテナンス モードにする必要がある更新プログラムのインストール方法、デバイスの状態の変更方法、および発生する可能性がある問題のトラブルシューティングの実行方法があります。
 
 この記事を読むと、次のことができるようになります。
 
+- Windows PowerShell for StorSimple を使用して StorSimple デバイスに接続する。
 
-- Windows PowerShell for StorSimple を使用して StorSimple デバイスに接続する
+- Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する。
 
-- Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する
-
-- Windows PowerShell for StorSimple のヘルプを取得する
+- Windows PowerShell for StorSimple のヘルプを取得する。
 
 >[AZURE.NOTE]
 
@@ -95,7 +95,7 @@ Windows PowerShell for StorSimple に接続するには、[PuTTY をダウンロ
  	|---|---|
  	|Backspace key|Control-? (127)|
 	|Home and End keys|Standard|
-	|Function keys and keypad|ESC[n\~|
+	|Function keys and keypad|ESC[n~|
 	|Initial state of cursor keys|Normal|
 	|Initial state of numeric keypad|Normal|
 	|Enable extra keyboard features|Control-Alt is different from AltGr|
@@ -149,7 +149,7 @@ Windows PowerShell for StorSimple に接続する方法を決定するときは�
 
 #### Windows PowerShell for StorSimple のワークフロー
 
-|目的の操作...|実行する手順.|
+|目的の操作|実行する手順|
 |---|---|
 |デバイスを登録する|[Windows PowerShell for StorSimple を使用してデバイスを構成して登録する](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |
 |Web プロキシの </br>Web プロキシ表示設定を構成する|[ StorSimple デバイスの Web プロキシを構成する](storsimple-configure-web-proxy.md)|
@@ -197,4 +197,4 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 ## 次のステップ
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「[StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

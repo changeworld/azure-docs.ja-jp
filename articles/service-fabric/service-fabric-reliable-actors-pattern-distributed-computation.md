@@ -1,20 +1,20 @@
 <properties
    pageTitle="高信頼アクターの分散計算パターン"
-   description="Service Fabric 高信頼アクターは並列非同期メッセージングに最適であり、分散状態の管理や並列計算が容易になります。"
-   services="service-fabric"
-   documentationCenter=".net"
-   authors="jessebenson"
-   manager="timlt"
-   editor=""/>
+	description="Service Fabric 高信頼アクターは並列非同期メッセージングに最適であり、分散状態の管理や並列計算が容易になります。"
+	services="service-fabric"
+	documentationCenter=".net"
+	authors="jessebenson"
+	manager="timlt"
+	editor=""/>
 
 <tags
    ms.service="service-fabric"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="NA"
-   ms.date="08/05/2015"
-   ms.author="claudioc"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="NA"
+	ms.date="08/05/2015"
+	ms.author="claudioc"/>
 
 # 高信頼アクターの設計パターン: 分散計算
 これは、Service Fabric 高信頼アクターで実際の顧客が驚くほど短時間で安易に金融計算を行う状況を監視する (つまり、リスク計算のためにモンテカルロ シミュレーションを行う) ためにも必要です。
@@ -82,7 +82,7 @@ public class PooledTask : Actor, IPooledTask
                 pi.InCircle++;
         }
 
-        var agg = ActorProxy.Create<IAggregator>(0);
+        var agg = ActorProxy.Create<IAggregator>(ActorId.NewId());
         return agg.AggregateAsync(pi);
     }
 }
@@ -203,4 +203,4 @@ public class Finaliser : Actor<FinalizerState>, IFinaliser
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-pattern-distributed-computation/distributed-computation-1.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

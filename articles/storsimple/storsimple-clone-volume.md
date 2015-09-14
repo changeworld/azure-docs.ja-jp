@@ -1,29 +1,27 @@
 <properties
    pageTitle="StorSimple ボリュームの複製 | Microsoft Azure"
-   description="異なる複製の種類と、それらをどのような場合に使用するかについて説明します。また、バックアップ セットを使用して個々のボリュームを複製する方法についても説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="adinah"
-   editor="tysonn" />
+	description="異なる複製の種類と、それらをどのような場合に使用するかについて説明します。また、バックアップ セットを使用して個々のボリュームを複製する方法についても説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/11/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/27/2015"
+	ms.author="alkohli"/>
 
-# StorSimple ボリュームの複製
+# StorSimple Manager サービスを使用してボリュームを複製する
 
 ## 概要
 
-**[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
+StorSimple Manager サービスの **[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
-  ![バックアップ カタログ](./media/storsimple-clone-volume/HCS_BackupCatalog.png)
-
-**図 1: バックアップ カタログ**
+  ![[バックアップ カタログ] ページ](./media/storsimple-clone-volume/HCS_BackupCatalog.png)
 
 このチュートリアルでは、バックアップ セットを使用して個々のボリュームを複製する方法について説明します。また、*一時的な*複製と*永続的な*複製の違いについても説明します。
 
@@ -37,7 +35,7 @@
 
 2. バックアップ セットを展開して、関連付けられているボリュームを表示します。バックアップ セットからボリュームをクリックして選択します。
 
-     ![複製](./media/storsimple-clone-volume/HCS_Clone.png)
+     ![ボリュームを複製する](./media/storsimple-clone-volume/HCS_Clone.png)
 
 3. **[複製]** をクリックして、選択したボリュームの複製を開始します。
 
@@ -91,4 +89,4 @@
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

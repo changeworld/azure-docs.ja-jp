@@ -56,6 +56,6 @@ Azure はいくつかの業界規制および標準に準拠しているため�
 
 パフォーマンスに関するベスト プラクティスにも関心がある場合は、[Azure Virtual Machines での SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)を参照してください。
 
-Azure VM での SQL Server の実行に関するその他のトピックについては、[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)を参照してください。
+Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

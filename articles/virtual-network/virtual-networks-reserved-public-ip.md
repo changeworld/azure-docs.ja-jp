@@ -119,4 +119,4 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

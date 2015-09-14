@@ -1,21 +1,21 @@
 <properties 
-   pageTitle="デバイスの Web プロキシを構成する | Microsoft Azure"
-   description="StorSimple 用 Windows PowerShell を使用して StorSimple デバイス用に Web プロキシを構成する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+   pageTitle="StorSimple デバイスの Web プロキシを設定する | Microsoft Azure"
+	description="StorSimple 用 Windows PowerShell を使用して StorSimple デバイス用に Web プロキシを構成する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="07/29/2015"
-   ms.author="alkohli" />
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/31/2015"
+	ms.author="alkohli"/>
 
-# デバイスの Web プロキシの構成
+# StorSimple デバイスの Web プロキシを構成する
 
 ## 概要
 
@@ -148,4 +148,4 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 ## 次のステップ
 デバイスのデプロイまたは Web プロキシ設定の構成中に問題が発生した場合は、[StorSimple デバイスのデプロイのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページを参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

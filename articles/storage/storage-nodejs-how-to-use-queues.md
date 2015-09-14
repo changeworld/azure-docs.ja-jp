@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Node.js から Queue ストレージを使用する方法 | Microsoft Azure" 
-	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。サンプルは Node.js で記述されています。" 
-	services="storage" 
-	documentationCenter="nodejs" 
-	authors="MikeWasson" 
-	manager="wpickett" 
+	pageTitle="Node.js から Queue ストレージを使用する方法 | Microsoft Azure"
+	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。サンプルは Node.js で記述されています。"
+	services="storage"
+	documentationCenter="nodejs"
+	authors="MikeWasson"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="03/11/2015" 
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="nodejs"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="mwasson"/>
 
 
@@ -41,17 +41,18 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
-2.  コマンド ウィンドウに「**npm install azure-storage**」と入力すると、次のような出力が生成されます。
+2.  コマンド ウィンドウに「**npm install azure-storage**」と入力します。このコマンドの出力は次の例のようになります。
 
-        azure-storage@0.1.0 node_modules\azure-storage
-		├── extend@1.2.1
-		├── xmlbuilder@0.4.3
-		├── mime@1.2.11
-		├── underscore@1.4.4
-		├── validator@3.1.0
-		├── node-uuid@1.4.1
-		├── xml2js@0.2.7 (sax@0.5.2)
-		└── request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
+		azure-storage@0.5.0 node_modules\azure-storage
+		+-- extend@1.2.1
+		+-- xmlbuilder@0.4.3
+		+-- mime@1.2.11
+		+-- node-uuid@1.4.3
+		+-- validator@3.22.2
+		+-- underscore@1.4.4
+		+-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
+		+-- xml2js@0.2.7 (sax@0.5.2)
+		+-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
 
 3.  手動で **ls** コマンドを実行して、**node\_modules** フォルダーが作成されたことを確認することもできます。このフォルダーに **azure-storage** パッケージがあります。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
 
@@ -116,7 +117,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 	queueSvc.peekMessages('myqueue', function(error, result, response){
 	  if(!error){
-		// Messages peeked
+		// Message text is in messages[0].messagetext
 	  }
 	});
 
@@ -132,11 +133,11 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 2. メッセージを削除する。
 
-メッセージをデキューするには、**getMessage** を使用します。これによりメッセージはキューで参照できなくなるため、他のクライアントが処理できます。アプリケーションでメッセージが処理されたら、**deleteMessage** を呼び出してキューからこのメッセージを削除します。次に、メッセージを取得してから削除する例を示します。
+メッセージをデキューするには、**getMessage** を使用します。これによりメッセージはキューで参照できなくなるため、他のクライアントがこれを処理することもできません。アプリケーションでメッセージが処理されたら、**deleteMessage** を呼び出してキューからこのメッセージを削除します。次に、メッセージを取得してから削除する例を示します。
 
 	queueSvc.getMessages('myqueue', function(error, result, response){
       if(!error){
-	    // message dequed
+	    // Message text is in messages[0].messagetext
         var message = result[0];
         queueSvc.deleteMessage('myqueue', message.messageid, message.popreceipt, function(error, response){
 	      if(!error){
@@ -148,7 +149,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 > [AZURE.NOTE]既定では、メッセージが非表示になるのは 30 秒間のみで、それ以降は他のクライアントから参照できます。**getMessages** で `options.visibilityTimeout` を使用すれば、別の値を指定できます。
 
-> [AZURE.NOTE]キューにメッセージがないときに <b>getMessages</b> を使用した場合、エラーは返されませんが、メッセージも返されません。
+> [AZURE.NOTE]キューにメッセージがないときに **getMessages** を使用した場合、エラーは返されませんが、メッセージも返されません。
 
 ## 方法: キューに配置されたメッセージの内容を変更する
 
@@ -332,4 +333,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
  [WebMatrix による Web サイトの作成とデプロイ]: ../web-sites-nodejs-use-webmatrix.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

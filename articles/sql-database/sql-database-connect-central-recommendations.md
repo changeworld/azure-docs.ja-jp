@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/05/2015"
+	ms.date="09/02/2015"
 	ms.author="genemi"/>
 
 
@@ -28,7 +28,7 @@
 
 
 - 「[プログラムによる Azure SQL Database への接続のガイドライン](http://msdn.microsoft.com/library/azure/ee336282.aspx)」 - 以下の話題が含まれています。
- - [ポートとファイアウォール](https://azure.microsoft.com/ja-JP/documentation/articles/sql-database-configure-firewall-settings/)
+ - [ポートとファイアウォール](sql-database-configure-firewall-settings.md/)
  - Connection strings
 - 「[Azure SQL Database のリソース管理](https://msdn.microsoft.com/library/azure/dn338083.aspx)」 - 以下の話題が含まれています。
  - リソース ガバナンス
@@ -36,16 +36,34 @@
  - 調整
 
 
-
-
 ## 認証における推奨事項
 
 
 - Azure SQL Database で使用できない Windows 認証ではなく、Azure SQL Database 認証を使用します。
 - 既定の*マスター* データベースではなく、特定のデータベースを明示的に指定してください。
-- [包含データベース](http://msdn.microsoft.com/library/ff929071.aspx)でユーザーを指定して接続します。
- - このアプローチでは、マスター データベースにログインする必要がなく、パフォーマンスと拡張性が向上します。
- - Transact-SQL の** USE myDatabaseName; **ステートメントを SQL Database に対して使用することはできません。
+ - Transact-SQL の **USE myDatabaseName;** ステートメントを SQL Database に対して使用して別のデータベースに切り替えることはできません。
+
+
+### 包含ユーザー
+
+
+SQL Database へのユーザー追加には、以下の選択肢があります。
+
+- **マスター**データベースに*ログイン*とパスワードを追加し、それから同じサーバーの 1 つ以上の他のデータベースに対応する*ユーザー*を追加する。
+
+- 1 つ以上のデータベースに*包含ユーザー*とパスワードを追加し、**マスター**へのいかなる*ログイン*にもリンクしないようにする。
+
+
+包含ユーザーのアプローチには以下のような長所と短所があります。
+
+- 長所は、データベースのすべてのユーザーが包含ユーザーである場合、データベースを 1 つの Azure SQL Database サーバーから他の Azure SQL Database サーバーに簡単に移動できることです。
+
+- 短所は、日常的な管理がより難解になることです。次に例を示します。
+ - 1 つのログインを削除するよりも、複数の包含ユーザーを削除するほうがより難しくなります。
+ - 複数のデータベースにおいて包含ユーザーである作業者は、より多くのパスワードの記憶や更新が必要となります。
+
+
+詳細情報は、[包含データベース](http://msdn.microsoft.com/library/ff929071.aspx)を参照してください。
 
 
 ## 接続における推奨事項
@@ -53,73 +71,75 @@
 
 - クライアント接続ロジックの中で、タイムアウトが 30 秒になるように既定値をオーバーライドします。
  - 既定では 15 秒ですが、インターネットに依存する接続の場合、それでは短すぎます。
-- [Azure SQL Database ファイアウォール](http://msdn.microsoft.com/library/ee621782.aspx)で、ポート 1433 の TCP 発信が許可されていることを確認してください。
- - [ファイアウォール](http://msdn.microsoft.com/library/azure/ee621782.aspx)の設定値は、SQL Database サーバーについて、あるいは個々のデータベースについて構成することができます。
-- [接続プール](http://msdn.microsoft.com/library/8xx3tyca.aspx)を使用している場合、プログラムで接続をアクティブに使用しておらず、再使用の準備をしている時間は、接続を閉じてください。
- - プログラムがその接続を別の操作のために休止せずに即座に再使用するというのでない限り、以下のパターンが推奨されています。<br/><br/>接続を開きます。<br/>その接続を使用して操作を 1 つ実行します。<br/>接続を閉じます。<br/><br/>
-- 接続ロジックでは、一時エラーの場合にのみ、再試行ロジックを使用します。SQL Database を使用する場合、接続を開いたりクエリを発行したりする試行は、さまざまな理由で失敗する可能性があります。
- - 失敗が持続する場合、理由として考えられるのは、接続文字列の形式が間違っていることです。
- - 失敗の 1 つの一時的理由として考えられるのは、Azure SQL Database システムで負荷全体のバランス調整が必要であるということです。一時的理由はやがて解消されるため、プログラムでは再試行をする必要があります。
- - クエリを再試行する場合、まず接続を閉じた後、別の接続を開きます。
+
+
+- [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)で、ポート 1433 の TCP 発信が許可されていることを確認してください。
+ - ファィアウォールの設定値は、SQL Database サーバーについて、あるいは個々のデータベースについて構成することができます。
+
+
+- *一時的エラー*を処理するには、Azure SQL Database と対話するクライアントのプログラムに[*再試行*ロジック](#TransientFaultsAndRetryLogicGm)を追加してください。
+
+
+### 接続プール
+
+
+[接続プール](http://msdn.microsoft.com/library/8xx3tyca.aspx)を使用している場合、プログラムで接続をアクティブに使用しておらず、再使用の準備をしていない時間は、接続を閉じてください。
+
+プログラムがその接続を別の操作のために休止せずに即座に再使用するというのでない限り、以下のパターンが推奨されています。
+
+- 接続を開きます。
+- 接続を通じて操作を 1 つ実行します。
+- 接続を閉じます。
+
+
+#### プール使用時の例外スロー
+
+
+接続プールを有効にしているときに、タイムアウト エラーあるいはその他のログイン エラーが起きると、例外がスローされます。それ以降の接続の試行は次の 5 秒は失敗しますが、これを*ブロック期間*と呼びます。
+
+アプリケーションがブロック期間に接続を試みた場合、最初の例外が再びスローされます。ブロック期間が終わると、それ以降の失敗によって新しいブロック期間が開始され、そのブロック期間は前回のブロック期間の 2 倍の長さの時間続きます。
+
+ブロック期間の最大期間は 60 秒です。
 
 
 ### V12 の 1433 以外のポート
 
 
-Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。詳細については、<br/>「[Ports beyond 1433 for ADO.NET 4.5, ODBC 11, and SQL Database V12 (ADO.NET 4.5、ODBC 11、SQL Database V12 における 1433 以外のポート)](sql-database-develop-direct-route-ports-adonet-v12.md)」をご覧ください。
+Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。詳細については、「<br/> [ADO.NET 4.5 および SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 
 
 次のセクションでは、再試行のロジックと一時的なエラーの処理についてさらに説明します。
 
 
+
+<a name="TransientFaultsAndRetryLogicGm" id="TransientFaultsAndRetryLogicGm"></a>
+
+&nbsp;
+
 ## 一時的なエラーと再試行のロジック
 
 
-Azure とその SQL Database サービスなどのクラウド サービスには、ワークロードの分散とリソースの管理の課題が無限にあります。同じコンピューターからサービスを提供している 2 つのデータベースの処理量が非常に多く、同時に発生している場合、管理システムが能力が余っているリソースに片方のデータベースのワークロードを移行する必要があることを検出する場合があります。
+Azure システムには、SQL Database サービス内で負荷の大きいワークロードが生じた場合に、サーバーを動的に再構成する機能があります。
+
+ただし、再構成をすることでクライアントのプログラム側では SQL Database への接続が失われます。このエラーを*一時障害*と呼びます。
+
+クライアント プログラムは再試行までの間、6 ～ 60 秒待機した後に、接続の再確立を試みることができます。クライアント側に再試行ロジックを提供する必要があります。
+
+再試行ロジックについて示すコード サンプルについては、「[SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
 
 
-移行時には、データベースが一時的に使用できなくなることがあります。これによって新しい接続がブロックされたり、クライアント プログラムが接続を失ったりする場合があります。しかしリソースの移行は一時的なものなので、数分または数秒で自動的に解決される場合があります。移行が完了したら、クライアント プログラムでその接続を再確立して、作業を再開することができます。クライアント プログラムの回避できないエラーよりは、処理が一時停止する方が望ましい状態です。
+### 一時障害のエラー番号
 
 
-SQL Database でエラーが発生した場合、[SqlException](https://msdn.microsoft.com/library/system.data.sqlclient.sqlexception.aspx) がスローされます。`SqlException` の **Number** プロパティには、数値のエラー コードが含まれています。一時的なエラーのエラー コードである場合、プログラムで呼び出しを再試行してください。
+SQL Database でエラーが発生した場合、[SqlException](http://msdn.microsoft.com/library/system.data.sqlclient.sqlexception.aspx) がスローされます。**SqlException** の **Number** プロパティには、数値のエラー コードが含まれています。一時的なエラーのエラー コードである場合、プログラムで呼び出しを再試行してください。
 
 
-- [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
+- [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md#bkmk_connection_errors)
  - このメッセージの **Transient Errors, Connection-Loss Errors** セクションには、自動再試行が必ず実行される一時エラーのリストが示されています。
  - たとえば、「<br/>*サーバー 'theserver' 上のデータベース 'mydatabase' は現在使用できません。*」などのような番号 40613 のエラーが発生した場合、再試行されます。
 
 
-一時的な *エラー*は、一時的な *フォールト*とも呼ばれています。このトピックでは、これらの 2 つの語を同義で扱っています。
-
-
-一時的または一時的でない接続エラーが発生した場合、次を参照してください。
-
-
-- [Azure SQL Database との接続の問題のトラブルシューティング](http://support.microsoft.com/kb/2980233/)
-
-
-再試行ロジックを示すコード サンプルに関するトピックへのリンクについては、次をご覧ください。
-
-
-- [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
-
-
-<a id="gatewaynoretry" name="gatewaynoretry">&nbsp;</a>
-
-
-## ミドルウェアのプロキシと再試行ロジック
-
-
-V11 と ADO.NET 4.5 クライアントの間を仲介するミドルウェアは、再試行ロジックで一時的な障害の一部のみを適切に処理します。2 度目の試行でプロキシが無事に接続する場合、クライアント プログラムでは最初の試行に失敗したことを認識しません。
-
-
-V12 プロキシではさらに小規模な一時的な障害のみを処理します。また別の V12 のケースでは、速度を上げるためプロキシは使用せずにN SQL Database に直接接続します。クライアントの ADO.NET 4.5 プログラムにおいて、Azure SQL Database V12 はこうした変更により Microsoft SQL Server のようになります。
-
-
-再試行ロジックを実施するコード サンプルについては、<br/>「[SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
-
-
-> [AZURE.TIP]実稼働環境では、Azure SQL Database V11 または V12 に接続するクライアントのコード内に再試行ロジックを実装することをお勧めします。これはカスタム コードや、Enterprise Library. などの API を利用するコードにできます。
+詳細については、次を参照してください「[Azure SQL Database 開発: 操作方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)」、「[Azure SQL Database への接続に関する問題のトラブルシューティング](http://support.microsoft.com/kb/2980233/)」
 
 
 ## テクノロジ
@@ -131,15 +151,10 @@ V12 プロキシではさらに小規模な一時的な障害のみを処理し�
 Windows、Linux、および Mac OS X で実行するクライアントに使用できるさまざまなコード サンプルがあります。
 
 
-**一般的なサンプル:** PHP、Python、Node.js、および .NET CSharp などのさまざまなプログラミング言語のコード サンプルがあります。また、Windows、Linux、および Mac OS X 上で実行されるクライアント用のサンプルもあります。
-
-
-- [SQL Database のクライアント クイック スタート コード サンプル](sql-database-develop-quick-start-client-code-samples.md)
-- [Azure SQL Database 開発作業の方法に関するトピック](http://msdn.microsoft.com/library/azure/ee621787.aspx)
+**一般的なサンプル:** PHP、Python、Node.js、および .NET CSharp などのさまざまなプログラミング言語の[コード サンプル](sql-database-develop-quick-start-client-code-samples.md)があります。また、Windows、Linux、および Mac OS X 上で実行されるクライアント用のサンプルもあります。
 
 
 **Elastic Scale:** Elastic Scale データベースへの接続に関する詳細については、次を参照してください。
-
 
 - [Azure SQL データベース Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 - [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
@@ -147,15 +162,6 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
 **ドライバー ライブラリ:** 推奨バージョンを含む接続ドライバー ライブラリの詳細については、次を参照してください。
 
-
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
-
-## 関連項目
-
-
-- [Create your first Azure SQL Database (最初の Azure SQL Database を作成する)](sql-database-get-started.md)
-
- 
-
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

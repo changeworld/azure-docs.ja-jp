@@ -1,24 +1,24 @@
 <properties 
-	pageTitle="Azure へのカスタム Java Web アプリのアップロード" 
-	description="このチュートリアルでは、カスタム Java Web アプリを App Service Web Apps にアップロードする方法を示します。" 
-	services="app-service\web" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
+	pageTitle="Azure へのカスタム Java Web アプリのアップロード"
+	description="このチュートリアルでは、カスタム Java Web アプリを App Service Web Apps にアップロードする方法を示します。"
+	services="app-service\web"
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="06/03/2015" 
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="08/31/2015"
 	ms.author="robmcm"/>
 
 # Azure へのカスタム Java Web アプリのアップロード
 
-このトピックでは、カスタム Java Web アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps にアップロードする方法について説明します。Java Web サイトまたは Web アプリに適用される情報や、特定のアプリケーションを有効にする例も取り上げています。
+このトピックでは、カスタム Java Web アプリを [Azure App Service] Web Apps にアップロードする方法について説明します。Java Web サイトまたは Web アプリに適用される情報や、特定のアプリケーションを有効にする例も取り上げています。
 
 Azure には、Azure プレビュー ポータルの構成 UI や Azure Marketplace を使用して Java Web アプリを作成するための手段が用意されています。詳細については、「[Azure App Service での Java Web アプリの作成](web-sites-java-get-started.md)」を参照してください。このチュートリアルは、ポータル構成 UI や Azure Marketplace を使用しないシナリオを対象にしています。
 
@@ -46,11 +46,10 @@ web.config ファイルで必要に応じて環境変数を設定できます。
     arguments="start"
     
     processPath="%JAVA_HOME\bin\java.exe"
-    arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP\_PLATFORM\_PORT% -Djetty.base=&quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115&quot; -jar &quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar&quot;"
+    arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP\_PLATFORM\_PORT% -Djetty.base=";%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115"; -jar ";%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar";"
 
 
 **processPath** - HTTP 要求のリッスン プロセスを起動する実行可能ファイルまたはスクリプトへのパス。
-
 
 次に例を示します。
 
@@ -84,7 +83,7 @@ Java ベースの Web アプリは、インターネット インフォメーシ
 次のアプリケーションの web.config ファイルとアプリケーション構成は、App Service Web Apps で Java アプリケーションを有効にする方法を示す例として挙げています。
 
 ### Tomcat
-App Service Web Apps には 2 種類の Tomcat インスタンスが用意されていますが、独自のインスタンスをアップロードすることもできます。次に示しているのは、個別の JVM に Tomcat をインストールする例です。
+App Service Web Apps には 2 種類の Tomcat インスタンスが用意されていますが、独自のインスタンスをアップロードすることもできます。次に示しているのは、個別の Java 仮想マシン (JVM) に Tomcat をインストールする例です。
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<configuration>
@@ -125,7 +124,7 @@ Tomcat の場合と同様、Jetty の独自のインスタンスをアップロ�
 	      <add name="httppPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified" />
 	    </handlers>
 	    <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" 
-	         arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP_PLATFORM_PORT% -Djetty.base=&quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115&quot; -jar &quot;%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar&quot;"
+	         arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP_PLATFORM_PORT% -Djetty.base=";%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115"; -jar ";%HOME%\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar";"
 	        startupTimeLimit="20"
 		  startupRetryCount="10"
 		  stdoutLogEnabled="true">
@@ -235,5 +234,7 @@ Liferay の詳細については、[http://www.liferay.com](http://www.liferay.c
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
  
  
+<!-- External Links -->
+[Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

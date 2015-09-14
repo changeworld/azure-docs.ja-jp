@@ -41,7 +41,7 @@ Premium Storage を使用するにはいくつかの前提条件があります�
 
 ### マシンのサイズ
 
-Premium Storage を使用するには、DS シリーズ仮想マシン (VM) を使用する必要があります。クラウド サービスで DS シリーズ マシンを使用していない場合、既存の VM を削除し、アタッチされたディスクを保持し、新しいクラウド サービスを作成してから、DS* ロール サイズとして VM を再作成する必要があります。仮想マシンのサイズの詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
+Premium Storage を使用するには、DS シリーズ仮想マシン (VM) を使用する必要があります。クラウド サービスで DS シリーズ マシンを使用していない場合、既存の VM を削除し、アタッチされたディスクを保持し、新しいクラウド サービスを作成してから、DS* ロール サイズとして VM を再作成する必要があります。仮想マシンのサイズの詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines-size-specs.md)」を参照してください。
 
 ### Cloud Services
 
@@ -141,11 +141,11 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 ### VM ストレージの帯域幅と VHD ストレージのスループット 
 
-ストレージのパフォーマンスは、指定されている DS* VM のサイズと VHD のサイズによって決まります。VM により、アタッチできる VHD の数と、サポートする最大帯域幅 (MB/秒) は異なります。具体的な帯域幅については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
+ストレージのパフォーマンスは、指定されている DS* VM のサイズと VHD のサイズによって決まります。VM により、アタッチできる VHD の数と、サポートする最大帯域幅 (MB/秒) は異なります。具体的な帯域幅については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines-size-specs.md)」を参照してください。
 
-ディスク サイズを大きくすると IOPS が向上します。移行パスについて考えるときはこれを検討する必要があります。詳細については、[IOPS とディスク タイプの表](../storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-jping-premium-storage)を参照してください。
+ディスク サイズを大きくすると IOPS が向上します。移行パスについて考えるときはこれを検討する必要があります。詳細については、[IOPS とディスク タイプの表](../storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-JPing-premium-storage)を参照してください。
 
-最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。たとえば、Standard_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
+最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。たとえば、Standard\_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
 
 ## 新しいデプロイ
 
@@ -674,7 +674,7 @@ SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポ�
 
     Set-ClusterQuorum -NodeMajority  
 
-クラスター クォーラムの管理と構成の詳細については、「[Configure and Manage the Quorum in a Windows Server 2012 Failover Cluster (Windows Server 2012 フェールオーバー クラスターでのクォーラムの構成と管理)](https://technet.microsoft.com/ja-jp/library/jj612870.aspx)」を参照してください。
+クラスター クォーラムの管理と構成の詳細については、「[Configure and Manage the Quorum in a Windows Server 2012 Failover Cluster (Windows Server 2012 フェールオーバー クラスターでのクォーラムの構成と管理)](https://technet.microsoft.com/ja-JP/library/jj612870.aspx)」を参照してください。
 
 #### 手順 6. 既存のエンドポイントと ACL を抽出する
     #GET Endpoint info
@@ -1143,4 +1143,4 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [25]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_15.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,20 +1,20 @@
 
-<properties 
-	pageTitle="認証されたユーザーへのプッシュ通知の送信" 
-	description="特定の場所にプッシュ通知を送信する方法について説明します。" 
-	services="mobile-services, notification-hubs" 
-	documentationCenter="android" 
-	authors="wesmc7777" 
-	manager="dwrede" 
+<properties
+	pageTitle="認証されたユーザーへのプッシュ通知の送信"
+	description="特定の場所にプッシュ通知を送信する方法について説明します。"
+	services="mobile-services, notification-hubs"
+	documentationCenter="android"
+	authors="wesmc7777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="java" 
-	ms.topic="article" 
-	ms.date="06/03/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="java"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="wesmc"/>
 
 
@@ -28,7 +28,7 @@
 
 このチュートリアルが対象とするのは、Android アプリケーションです。
 
-##前提条件 
+##前提条件
 
 このチュートリアルの前に、次の Mobile Services のチュートリアルを完了している必要があります。
 
@@ -46,21 +46,21 @@
 <pre><code>function insert(item, user, request) {
 
     // Define a payload for the Google Cloud Messaging toast notification.
-    var payload = 
+    var payload =
         '{"data":{"message" : "Hello from Mobile Services! An Item was inserted"}}';
 
     // Get the ID of the logged-in user.
-    var userId = user.userId;		
+    var userId = user.userId;
 
     request.execute({
         success: function() {
-            // If the insert succeeds, send a notification to all devices 
+            // If the insert succeeds, send a notification to all devices
             // registered to the logged-in user as a tag.
             push.gcm.send(userId, payload, {
                 success: function(pushResponse) {
                     console.log("Sent push with " + userId + " tag:", pushResponse, payload);
 	    			request.respond();
-                    },             
+                    },
                     error: function (pushResponse) {
                             console.log("Error Sending push:", pushResponse);
 	    				request.respond(500, { error: pushResponse });
@@ -94,8 +94,7 @@ In the next tutorial, [Service-side authorization of Mobile Services users](mobi
 [Get started with push notifications]: mobile-services-javascript-backend-android-get-started-push.md
 [プッシュ通知の使用]: mobile-services-javascript-backend-android-get-started-push.md
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure Management Portal]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

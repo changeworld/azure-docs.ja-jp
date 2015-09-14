@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Pusher を使用したリアルタイム アプリケーションの構築 (iOS) - モバイル サービス" 
-	description="Pusher を使用して iOS 上の Azure Media Services アプリケーションに通知を送信する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="ios" 
-	authors="lindydonna" 
-	manager="dwrede" 
+<properties
+	pageTitle="Pusher を使用したリアルタイム アプリケーションの構築 (iOS) - モバイル サービス"
+	description="Pusher を使用して iOS 上の Azure Media Services アプリケーションに通知を送信する方法について説明します。"
+	services="mobile-services"
+	documentationCenter="ios"
+	authors="lindydonna"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="ios" 
-	ms.devlang="objective-c" 
-	ms.topic="article" 
-	ms.date="06/05/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="donnam"/>
 
 
@@ -439,6 +439,5 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

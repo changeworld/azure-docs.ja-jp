@@ -13,24 +13,27 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="09/02/2015"
 	ms.author="elizapo"/>
 
 # Azure RemoteApp のハイブリッド コレクションの作成方法
 
 RemoteApp のコレクションには、次の 2 種類があります:
 
-- クラウド: Azure に完全に常駐し、Azure 管理ポータルの **[簡易作成]** オプションを使用して作成されます。  
-- ハイブリッド: オンプレミスのアクセス用の仮想ネットワークを含み、管理ポータルの **[VNET で作成]** オプションを使用して作成されます。
+- クラウド: Azure に完全に常駐します。クラウドにすべてのデータを保存するか (したがって、クラウドのみのコレクション)、コレクションを VNET に接続して、そこにデータを保存するかを選択できます。   
+- ハイブリッド: オンプレミス アクセス用の仮想ネットワークを含みます。これには、Azure AD およびオンプレミスの Active Directory 環境を使用する必要があります。
+
+
+**注** *このトピックは、再作成中です。認証とコレクションのオプションをより簡単に理解するためのいくつかの新しい記事を執筆中です。したがって、お困りの場合、マイクロソフトはそれを把握し、一刻も早くより役立つ情報をお届けできるよう鋭意取り組んでいることをご承知おきください。よろしくお願いいたします。*
 
 このチュートリアルでは、ハイブリッド コレクションを作成する手順について説明します。次の 8 つの手順があります。
 
 1.	コレクションに使用する[イメージ](remoteapp-imageoptions.md)を決定する。これには、カスタム イメージを作成するか、サブスクリプションに含まれているいずれかの Microsoft イメージを使用します。
 2. 仮想ネットワークをセットアップする。
 2.	RemoteApp コレクションを作成する。
-2.	コレクションを仮想ネットワークに関連付ける。
+2.	コレクションをローカル ドメインに参加させます。
 3.	テンプレート イメージをコレクションに追加する。
-4.	ディレクトリ同期を構成する。RemoteApp を使用するには、次のいずれかの方法で Azure Active Directory と統合する必要があります。1) パスワード同期オプションを使用して Azure Active Directory 同期を構成する。2) パスワード同期オプションを使用しないで Azure Active Directory 同期を構成する。ただし、この場合は AD FS にフェデレーションされたドメインを使用する。「[Azure RemoteApp の Active Directory の構成](remoteapp-ad.md)」を参照してください。
+4.	ディレクトリ同期を構成する。RemoteApp を使用するには、次のいずれかの方法で Azure Active Directory と統合する必要があります。1) パスワード同期オプションを使用して Azure Active Directory 同期を構成する。2) パスワード同期オプションを使用しないで Azure Active Directory 同期を構成する。ただし、この場合は AD FS にフェデレーションされたドメインを使用する。「[Configuring Active Directory for Azure RemoteApp (RemoteApp 用に Active Directory を構成する)](remoteapp-ad.md)」を参照してください。
 5.	RemoteApp のアプリを発行する。
 6.	ユーザー アクセスを構成する。
 
@@ -42,8 +45,9 @@ RemoteApp のコレクションには、次の 2 種類があります:
 - RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
 - オンプレミスのネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
 - [Azure PowerShell](../install-configure-powershell.md) モジュールをインストールします。
-- アクセス権を付与するユーザーに関する情報を集めます。ユーザーごとに Azure Active Directory のユーザー プリンシパル名 (たとえば、name@contoso.com) が必要です。
+- アクセス権を付与するユーザーに関する情報を集めます。ユーザーごとに Azure Active Directory のユーザー プリンシパル名 (たとえば、name@contoso.com) が必要です。Azure AD と Active Directory 間で UPN が一致していることを確認します。
 - テンプレート イメージを選択します。RemoteApp テンプレート イメージには、ユーザーに発行するアプリケーションとプログラムが含まれます。詳細については、[RemoteApp イメージのオプション](remoteapp-imageoptions.md)に関するページを参照してください。 
+- Office 365 ProPlus イメージを使用する必要がありますか。 [こちら](remoteapp-officesubscription.md)で詳細を確認できます。
 - [RemoteApp を使用するために Active Directory を構成します](remoteapp-ad.md)。
 
 
@@ -51,9 +55,11 @@ RemoteApp のコレクションには、次の 2 種類があります:
 ## 手順 1. 仮想ネットワークをセットアップする
 既存の Azure 仮想ネットワークを使用するハイブリッド RemoteApp コレクションをデプロイすることも、新しい仮想ネットワークを作成することもできます。ユーザーは仮想ネットワークを利用することで、ローカル ネットワーク上のデータに RemoteApp リモート リソースを介してアクセスします。Azure 仮想ネットワークを使用すると、コレクションは、他の Azure サービスおよびその仮想ネットワークにデプロイされている仮想マシンへの直接ネットワーク アクセスが可能になります。
 
+VNET を作成する前に、[VNET サイズ](remoteapp-vnetsizing.md)に関する情報を確認してください。
+
 ### Azure VNET を作成して Active Directory のデプロイに参加させる
 
-まず[仮想ネットワーク](../virtual-network/virtual-networks-create-vnet.md)の作成から開始します。これは Azure 管理ポータルの **[ネットワーク]** タブで実行します。仮想ネットワークを、Azure Active Directory テナントと同期している Active Directory デプロイに接続する必要があります。
+まず[仮想ネットワーク](../virtual-network/virtual-networks-create-vnet.md)の作成から開始します。これは Microsoft Azure 管理ポータルの **[ネットワーク]** タブで実行します。仮想ネットワークを、Azure Active Directory テナントと同期している Active Directory デプロイに接続する必要があります。
 
 詳細については、「[管理ポータルでの仮想ネットワークの設定について](../virtual-network/virtual-networks-settings.md)」を参照してください。
 
@@ -72,21 +78,21 @@ RemoteApp コレクションを作成する前に、新しい仮想ネットワ�
 
 
 
-1. [Azure 管理ポータル](http://manage.windowsazure.com)で、[RemoteApp] ページに移動します。
+1. [Azure ポータル](http://manage.windowsazure.com)で、[RemoteApp] ページに移動します。
 2. **[新規] > [VNET で作成]** の順にクリックします。
 3. コレクションの名前を入力します。
 4. Standard または Basic から、使用するプランを選択します。
+5. ドロップダウン リストから VNET を選択し、サブネットを選択します。
+6. それがドメインに参加するよう選択します。
 5. **[RemoteApp コレクションの作成]** をクリックします。
 
 RemoteApp コレクションが作成されたら、コレクションの名前をダブルクリックします。これにより、**[クイック スタート]** ページが表示されます。このページで、コレクションの構成を完了します。
 
-## 手順 3. コレクションを仮想ネットワークに関連付ける ##
+## 手順 3. コレクションをローカル ドメインに関連付ける ##
 
  
-1. **[クイック スタート]** ページで、**[仮想ネットワークとの関連付け]** をクリックします。
-2. ドロップダウン リストから、使用する仮想ネットワークを選択します。
-3. 使用するリージョンを選択して、フィールドに正しいサブスクリプションが表示されていることを確認します。 
-5. **[クイック スタート]** ページに戻り、**[ローカル ドメインに参加]**　をクリックします。RemoteApp サービス アカウントをローカル Active Directory ドメインに追加します。追加するには、ドメイン名、組織単位、サービス アカウントのユーザー名とパスワードが必要になります。 
+1. **[クイック スタート]** ページで、**[ローカル ドメインに参加]** をクリックします。
+2. RemoteApp サービス アカウントをローカル Active Directory ドメインに追加します。追加するには、ドメイン名、組織単位、サービス アカウントのユーザー名とパスワードが必要になります。 
 
 	これは、「[Azure RemoteApp の Active Directory を構成する](remoteapp-ad.md)」の手順に従った場合に収集される情報です。
 
@@ -103,7 +109,11 @@ RemoteApp テンプレート イメージにはユーザーと共有するプロ
 
 ## 手順 5. Active Directory ディレクトリの同期を構成する ##
 
-RemoteApp を使用するには、次のいずれかの方法で Azure Active Directory と統合する必要があります。1) パスワード同期オプションを使用して Azure Active Directory 同期を構成する。2) パスワード同期オプションを使用しないで Azure Active Directory 同期を構成する。ただし、この場合は AD FS にフェデレーションされたドメインを使用する。計画に関する情報、および詳しい手順については、「[ディレクトリ同期のロードマップ](http://msdn.microsoft.com//library/azure/hh967642.aspx)」を参照してください。
+RemoteApp を使用するには、次のいずれかの方法で Azure Active Directory と統合する必要があります。1) パスワード同期オプションを使用して Azure Active Directory 同期を構成する。2) パスワード同期オプションを使用しないで Azure Active Directory 同期を構成する。ただし、この場合は AD FS にフェデレーションされたドメインを使用する。
+
+[AD Connect](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx) に関するページを参照してください。この記事では、4 つの手順でディレクトリ統合を設定する方法を説明します。
+
+計画に関する情報、および詳しい手順については、「[ディレクトリ同期のロードマップ](http://msdn.microsoft.com//library/azure/hh967642.aspx)」を参照してください。
 
 ## 手順 6. RemoteApp アプリケーションを発行する ##
 
@@ -136,4 +146,4 @@ RemoteApp コレクションには複数のアプリケーションを発行で�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

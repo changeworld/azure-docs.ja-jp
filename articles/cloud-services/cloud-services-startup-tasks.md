@@ -29,7 +29,7 @@ ms.service="cloud-services"
 
 スタートアップ タスクに情報を渡すには環境変数を使用し、スタートアップ タスクから情報を受け取るにはローカル ストレージを使用します。たとえば、環境変数を使用してインストールするプログラムへのパスを指定でき、ファイルをローカル ストレージに書き込んでおいて後からロールで読み取ることができます。
 
-スタートアップ タスクでは、**TEMP** 環境変数によって指定されているディレクトリに情報およびエラーのログを記録できます。スタートアップ タスクがクラウドで実行すると、**TEMP** 環境変数は *C:\\Resources\\temp\[GUID].[ロール名]\\RoleTemp* ディレクトリに解決されます。
+スタートアップ タスクでは、**TEMP** 環境変数によって指定されているディレクトリに情報およびエラーのログを記録できます。スタートアップ タスクがクラウドで実行すると、**TEMP** 環境変数は *C:\\Resources\\temp\\[GUID].[ロール名]\\RoleTemp* ディレクトリに解決されます。
 
 再起動と再起動の間に、スタートアップ タスクを何回でも実行できます。たとえば、スタートアップ タスクはロールのリサイクルのたびに実行され、ロールのリサイクルには再起動が含まれない場合があります。複数回実行されても問題がないように、スタートアップ タスクを作成する必要があります。
 
@@ -68,9 +68,9 @@ Azure でのロールのスタートアップ手順を次に示します。
 ```xml
 <Startup>
     <Task commandLine="Startup.cmd" executionContext="limited" taskType="simple" >
-    <Environment>
-        <Variable name="MyVersionNumber" value="1.0.0.0" />
-    </Environment>
+        <Environment>
+            <Variable name="MyVersionNumber" value="1.0.0.0" />
+        </Environment>
     </Task>
 </Startup>
 ```
@@ -132,24 +132,24 @@ RoleEnvironment クラスに基づく環境変数では、[Variable] 要素の *
 ```xml
 <Startup>
     <Task commandLine="Startup.cmd" executionContext="limited" taskType="simple">
-    <Environment>
-
-        <!-- Create the environment variable that informs the startup task whether it is running
-            in the Compute Emulator or in the cloud. "%ComputeEmulatorRunning%"=="true" when
-            running in the Compute Emulator, "%ComputeEmulatorRunning%"=="false" when running
-            in the cloud. -->
-
-        <Variable name="ComputeEmulatorRunning">
-            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
-        </Variable>
-
-    </Environment>
+        <Environment>
+    
+            <!-- Create the environment variable that informs the startup task whether it is running
+                in the Compute Emulator or in the cloud. "%ComputeEmulatorRunning%"=="true" when
+                running in the Compute Emulator, "%ComputeEmulatorRunning%"=="false" when running
+                in the cloud. -->
+    
+            <Variable name="ComputeEmulatorRunning">
+                <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+            </Variable>
+    
+        </Environment>
     </Task>
 </Startup>
 ```
 
 ## 次のステップ
-クラウド サービスでいくつかの[一般的なスタートアップ タスク](cloud-services-common-startup-tasks.md)を実行する方法を学習します。
+Cloud Service で[一般的なスタートアップ タスク](cloud-services-startup-tasks-common.md)を実行する方法を学習します。
 
 クラウド サービスを[パッケージ化](cloud-services-model-and-package.md)します。
 
@@ -163,4 +163,4 @@ RoleEnvironment クラスに基づく環境変数では、[Variable] 要素の *
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

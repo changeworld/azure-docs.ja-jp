@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="データ移動アクティビティ" 
-	description="Data Factory パイプラインでデータを移動するために使用できる Data Factory のエンティティについて説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
+	pageTitle="データ移動アクティビティ"
+	description="Data Factory パイプラインでデータを移動するために使用できる Data Factory のエンティティについて説明します。"
+	services="data-factory"
+	documentationCenter=""
+	authors="spelluru"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.service="data-factory"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/29/2015"
 	ms.author="spelluru"/>
 
 # データ移動アクティビティ
@@ -93,4 +93,8 @@ Data Gateway には次の機能が備わっています。
 
 コピー アクティビティの場合、**typeProperties** セクションはソースとシンクの種類によって異なります。上に示した各データ ストア固有のページで、データ ストアの種類に固有のこれらのプロパティが説明されています。
 
-<!---HONumber=August15_HO7-->
+
+## フィードバックの送信
+この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-data-movement-activities.md)でフィードバックをお寄せください。
+
+<!---HONumber=September15_HO1-->

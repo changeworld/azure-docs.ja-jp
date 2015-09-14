@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="msolhab"
 	manager="paulettm"
-	editor="cgronlun"  />
+	editor="cgronlun"/>
 
 <tags
 	ms.service="machine-learning"
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/29/2015"
-	ms.author="mohabib;xibingao;bradsev" />
+	ms.date="09/01/2015"
+	ms.author="mohabib;xibingao;bradsev"/>
 
 # 高度な分析のために Azure 仮想マシンを IPython Notebook サーバーとしてセットアップする
 
@@ -77,13 +77,13 @@ Azure で仮想マシンを作成するプロセスを始める前に、プロ�
 メッセージが表示されたら、IPython Notebook のパスワードと、マシン管理者のパスワードを入力します。これにより、IPython Notebook をマシン上のサービスとして実行させることができます。
 
 ## <a name="access"></a>手順 4: Web ブラウザーから IPython Notebook にアクセスする
-IPython Notebook サーバーにアクセスするには、Web ブラウザーを開き、URL テキスト ボックスに「*https://&#60;virtual マシンの DNS 名>:&\#60;パブリック ポート番号>*」と入力します。ここでは、*&\#60;パブリック ポート番号>* として、IPython Notebook エンドポイントの追加時に指定したポート番号を入力してください。
+IPython Notebook サーバーにアクセスするには、Web ブラウザーを開き、URL テキスト ボックスに「*https://&#60;virtual マシンの DNS 名>:&#60;パブリック ポート番号>*」と入力します。ここでは、*&#60;パブリック ポート番号>* として、IPython Notebook エンドポイントの追加時に指定したポート番号を入力してください。
 
-*&\#60;仮想マシンの DNS 名>* は、Microsoft Azure 管理ポータルで確認できます。管理ポータルにログインしたら、**[仮想マシン]** をクリックし、作成済みのマシンを選択して **[ダッシュボード]** を選択すると、DNS 名が次のように表示されます。
+*&#60;仮想マシンの DNS 名>* は、Microsoft Azure 管理ポータルで確認できます。管理ポータルにログインしたら、**[仮想マシン]** をクリックし、作成済みのマシンを選択して **[ダッシュボード]** を選択すると、DNS 名が次のように表示されます。
 
 ![Create workspace][19]
 
-次の図のように、_この Web サイトのセキュリティ証明書には問題があります_ (Internet Explorer) や_この接続ではプライバシーが保護されません_ (Chrome) という警告が表示されます。Internet Explorer の場合は **[このサイトの閲覧を続行する (推奨されません)]**、Chrome の場合は **[詳細設定]** の **[&\#60;*DNS 名*> にアクセスする (安全ではありません)]** をクリックして続行します。次に、既に指定したパスワードを入力して IPython Notebook にアクセスします。
+次の図のように、_この Web サイトのセキュリティ証明書には問題があります_ (Internet Explorer) や_この接続ではプライバシーが保護されません_ (Chrome) という警告が表示されます。Internet Explorer の場合は **[このサイトの閲覧を続行する (推奨されません)]**、Chrome の場合は **[詳細設定]** の **[&#60;*DNS 名*> にアクセスする (安全ではありません)]** をクリックして続行します。次に、既に指定したパスワードを入力して IPython Notebook にアクセスします。
 
 Internet Explorer: ![Create workspace][20]
 
@@ -143,4 +143,4 @@ Advanced Analytics Process and Technology における次のステップは、�
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

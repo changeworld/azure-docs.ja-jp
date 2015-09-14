@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Notification Hubs の使用"
-	description="Azure Notification Hubs を使用してプッシュ通知を行う方法について説明します。"
+	pageTitle="Azure Notification Hubs の使用 | Microsoft Azure"
+	description="このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について学習します。"
 	services="notification-hubs"
 	documentationCenter="ios"
 	authors="wesmc7777"
@@ -12,43 +12,43 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
-	ms.topic="hero-article" 
-	ms.date="05/27/2015"
+	ms.topic="hero-article"
+	ms.date="09/02/2015"
 	ms.author="wesmc"/>
 
-# 通知ハブの使用
+# Notification Hubs の使用
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ##概要
 
-このトピックでは、Azure 通知ハブを使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple プッシュ通知サービス (APN) を使用してプッシュ通知を受信する空の iOS アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。
+このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。Apple プッシュ通知サービス (APNs) を使用してプッシュ通知を受信する空の iOS アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。
 
-このチュートリアルでは、通知ハブを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。
+このチュートリアルでは、Notification Hubs を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。
 
 ##前提条件
 
-このチュートリアルの前提条件は次のとおりです。
+このチュートリアルには、次のものが必要です。
 
-+ [モバイル サービス iOS SDK]
++ [Mobile Services iOS SDK]
 + [XCode 6][Install Xcode]
 + iOS 8 (またはこれ以降のバージョン) に対応したデバイス
 + iOS Developer Program メンバーシップ
 
-   >[AZURE.NOTE]プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、シミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
+   >[AZURE.NOTE]プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、iOS シミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
-このチュートリアルを完了することは、iOS アプリケーションの他のすべての通知ハブ チュートリアルの前提条件です。
+このチュートリアルを完了することは、iOS アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started)を参照してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started)を参照してください。
 
-[AZURE.INCLUDE [通知ハブ による Apple プッシュ通知の有効化](../../includes/notification-hubs-enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [Notification Hubs による Apple プッシュ通知の有効化](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 ##通知ハブを構成する
 
-このセクションは、作成したプッシュ証明書を使用して、新しい通知ハブを作成して構成する方法について説明します。既に作成した通知ハブを使用する場合は、2 ～ 5 の手順を省略できます。
+このセクションでは、作成したプッシュ証明書を使用して、新しい通知ハブを作成して構成する方法について説明します。既に作成した通知ハブを使用する場合は、手順 2. ～ 5. を省略できます。
 
 
-1. キーチェーン アクセス で、**[証明書]** カテゴリで作成した新しいプッシュ証明書を右クリックします。**[エクスポート]** をクリックし、ファイルに名前を付けて、**[.p12]** 形式を選択します。次に、**[保存]** をクリックします。
+1. Keychain Access の **[証明書]** カテゴリで、作成した新しいプッシュ証明書を右クリックします。**[書き出す]** をクリックし、ファイルに名前を付けて、**.p12** 形式を選択します。次に、**[保存]** をクリックします。
 
     ![][1]
 
@@ -56,9 +56,9 @@
 
 	>[AZURE.NOTE]このチュートリアルでは QuickStart.p12 ファイルを作成します。ファイル名と場所は同じである必要はありません。
 
-2. [Azure 管理ポータル]にログオンし、画面の下部にある **[+新規]** をクリックします。
+2. [Azure ポータル]にサインインし、画面の下部にある **[+新規]** をクリックします。
 
-3. **[アプリケーション サービス]**、**[Service Bus]**、**[通知ハブ]**、**[簡易作成]** の順にクリックします。
+3. **[App Services]**、**[Service Bus]**、**[通知ハブ]** の順にクリックし、**[簡易作成]** をクリックします。
 
    	![][2]
 
@@ -66,7 +66,7 @@
 
    	![][3]
 
-5. 前の手順で作成した名前空間 (通常は ***通知ハブ名*-ns**)をクリックしてダッシュボードを開きます。
+5. 前の手順で作成した名前空間 (通常は ***通知ハブ名*-ns**) をクリックしてそのダッシュボードを開きます。
 
    	![][4]
 
@@ -74,7 +74,7 @@
 
    	![][5]
 
-7. 上部にある **[構成]** タブをクリックし、Apple 通知設定の **[アップロード]** ボタンをクリックして、証明書の拇印をアップロードします。次に、前にエクスポートした **.p12** 証明書と、証明書のパスワードを選択します。**[運用]** プッシュ サービス (ストアからアプリケーションを購入したユーザーにプッシュ通知を送信する場合) と **[サンドボックス]** (開発時) プッシュ サービスのどちらを使用するかを選択してください。
+7. 上部にある **[構成]** タブをクリックし、Apple 通知設定の **[アップロード]** ボタンをクリックして、証明書の拇印をアップロードします。次に、前にエクスポートした **.p12** 証明書と、その証明書のパスワードを選択します。**[運用]** プッシュ サービス (ストアからアプリケーションを購入したユーザーにプッシュ通知を送信する場合) と **[サンドボックス]** (開発時) プッシュ サービスのどちらを使用するかを選択してください。
 
    	![][6]
 
@@ -82,25 +82,25 @@
 
    	![][7]
 
-これで、通知ハブが APNS と連動するように構成されました。接続文字列にアプリケーションを登録し、通知を送信できます。
+これで、通知ハブが APNs と連動するように構成されました。接続文字列にアプリケーションを登録し、通知を送信できます。
 
 ##通知ハブにアプリケーションを接続する
 
-1. XCode で、新しい iOS プロジェクトを作成し、**[単一枠ビュー アプリケーション]** テンプレートを選択します。
+1. Xcode で、新しい iOS プロジェクトを作成し、**[Single View Application]** テンプレートを選択します。
 
    	![][8]
 
-2. 新しいプロジェクトにオプションを設定する際には、以前に Apple Development ポータルで設定したバンドル ID で使用した同じ**製品名**と**組織 ID** を使用してください。
+2. 新しいプロジェクトのオプションを設定する際には、以前に Apple Developer ポータルでバンドル ID を設定したときと同じ**製品名**と**組織 ID** を使用してください。
 
 	![][11]
 
-3. **[Target]** でプロジェクト名をクリックし、**[Build Settings]** タブをクリックして **[Code Signing Identity]** を展開し、**[Debug]** で**コード署名 ID** を選択します。**[Levels]** を **[Basic]** から **[All]** に切り替え、**[Provisioning Profile]** を以前に作成したプロビジョニング プロファイルにします。
+3. **[Target]** でプロジェクト名をクリックし、**[Build Settings]** タブをクリックして **[Code Signing Identity]** を展開し、**[Debug]** でコード署名 ID を選択します。**[Levels]** を **[Basic]** から **[All]** に切り替え、**[Provisioning Profile]** に、以前作成したプロビジョニング プロファイルを設定します。
 
-	XCode で作成した新しいプロビジョニング プロファイルが表示されない場合は、メニュー バーで **[XCode]** をクリックして **[Preference]**、**[Account]** タブ、**[View Details]** ボタンの順にクリックし、署名 ID をクリックして右下隅にある更新ボタンをクリックし、署名 ID のプロファイルを更新してみてください。
+	Xcode で作成した新しいプロビジョニング プロファイルが表示されない場合は、署名 ID のプロファイルを更新してみてください。メニュー バーの **[XCode]** をクリックし、**[Preference]**、**[Account]** タブ、**[View Details]** ボタンの順にクリックします。次に、署名 ID をクリックし、右下隅にある更新ボタンをクリックします。
 
    	![][9]
 
-4. [Mobile Services iOS SDK] の**バージョン 1.2.4** をダウンロードしてファイルを解凍します。XCode でプロジェクトを右クリックして **[Add Files to]** オプションをクリックし、XCode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。**[Copy items if needed]** を選択し、**[Add]** をクリックします。
+4. [Mobile Services iOS SDK] のバージョン 1.2.4 をダウンロードしてファイルを解凍します。Xcode でプロジェクトを右クリックして **[Add Files to]** オプションをクリックし、Xcode プロジェクトに **WindowsAzureMessaging.framework** フォルダーを追加します。**[Copy items if needed]** を選択し、**[Add]** をクリックします。
 
    	![][10]
 
@@ -108,7 +108,7 @@
 
          #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
 
-6. AppDelegate.m ファイルで、iOS のバージョンに基づいて `didFinishLaunchingWithOptions` メソッド内に次のコードを追加します。このコードにより、APNS にデバイス ハンドルが登録されます。
+6. AppDelegate.m ファイルで、iOS のバージョンに基づいて `didFinishLaunchingWithOptions` メソッド内に次のコードを追加します。このコードにより、APNs にデバイス ハンドルが登録されます。
 
 	iOS 8 の場合:
 
@@ -123,7 +123,7 @@
          [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 
 
-7. 同じファイルに次のメソッドを追加し、文字列リテラルのプレース ホルダーを *ハブ名* と前に記載した *DefaultListenSharedAccessSignature* で置き換えます。このコードは通知ハブにデバイス トークンを指定し、通知ハブが通知を送信できるようにします。
+7. 同じファイルに次のメソッドを追加し、文字列リテラルのプレースホルダーを*ハブ名*と前に記載した *DefaultListenSharedAccessSignature* に置き換えます。このコードでは、通知ハブが通知を送信できるように、通知ハブにデバイス トークンを指定します。
 
 	    - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
 		    SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<Enter your listen connection string>"
@@ -147,7 +147,7 @@
 		}
 
 
-8. 同じファイルで次のメソッドを追加し、アプリケーションがアクティブのときに通知を受信した場合に **UIAlert** を表示するようにします。
+8. 同じファイルで次のメソッドを追加し、アプリケーションがアクティブのときに通知を受信した場合に **UIAlert** が表示されるようにします。
 
 
         - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
@@ -155,12 +155,12 @@
 		    [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
 		}
 
-8. お使いのデバイスにアプリケーションを構築して実行し、エラーがないことを確認します。
+8. お使いのデバイスでアプリケーションをビルドして実行し、エラーがないことを確認します。
 
-## 通知の送信方法
+## 通知を送信する
 
 
-以下の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure ポータルで通知を送信し、アプリケーションで通知の受信テストを行うことができます。
+次の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure ポータルで通知を送信することで、アプリケーションで通知の受信テストを行うことができます。![][30]
 
 ![][30]
 
@@ -168,11 +168,11 @@
 
 ![][31]
 
-1. XCode で Main.storyboard を開き、次の UI コンポーネントをオブジェクト ライブラリから追加してユーザーがアプリでプッシュ通知を送信できるようにします。
+1. Xcode で Main.storyboard を開き、次の UI コンポーネントをオブジェクト ライブラリから追加してユーザーがアプリでプッシュ通知を送信できるようにします。
 
-	- ラベル テキストなしの [Label]。これは、通知の送信エラーのレポートに使用されます。**[Lines]** プロパティを **0** に設定して、左右の余白とビューの上部の制約を受けてサイズが自動で設定されるようにします。
-	- **[Placeholder]** が **[Enter Notification Message]** に設定された [Text] フィールド。次に示すように、ラベルのすぐ下のフィールドを制限します。ビュー コントローラーをアウトレット デリゲートに設定します。
-	- **[Send Notification]** というタイトルのボタンをテキスト フィールドのすぐ下と水平方向の中央に制限します。
+	- ラベル テキストなしのラベル。これは、通知の送信時にエラーをレポートするために使用されます。**[Lines]** プロパティを **0** に設定して、左右の余白とビューの上部の制約を受けてサイズが自動で設定されるようにします。
+	- **[Placeholder]** が **[Enter Notification Message]** に設定されたテキスト フィールド。次に示すように、ラベルのすぐ下のフィールドを制限します。ビュー コントローラーをアウトレット デリゲートに設定します。
+	- テキスト フィールドのすぐ下で水平方向の中央に制約された **[Send Notification]** というタイトルのボタン。
 
 	ビューは次のようになります。
 
@@ -189,7 +189,7 @@
 		#define HUBNAME @"<Enter the name of your hub>"
 
 
-3. ビューに接続されたラベルとテキストのフィールドにアウトレットを追加し、`interface` の定義を更新して `UITextFieldDelegate` と `NSXMLParserDelegate` をサポートします。以下に示す 3 つのプロパティ宣言を追加し、REST API の呼び出しと応答の解析をサポートします。
+3. ビューに関連付けられたラベルとテキスト フィールドにアウトレットを追加し、`UITextFieldDelegate` と `NSXMLParserDelegate` をサポートするように `interface` の定義を更新します。以下に示す 3 つのプロパティ宣言を追加し、REST API の呼び出しと応答の解析をサポートします。
 
 	ViewController.h ファイルは次のようになります。
 
@@ -205,7 +205,7 @@
 			NSXMLParser *xmlParser;
 		}
 
-		// Make sure these outlets are connected to your UI by ctrl+dragging.
+		// Make sure these outlets are connected to your UI by ctrl+dragging
 		@property (weak, nonatomic) IBOutlet UITextField *notificationMessage;
 		@property (weak, nonatomic) IBOutlet UILabel *sendResults;
 
@@ -215,7 +215,7 @@
 		@end
 
 
-4. ViewController.m を開き、次のコードを追加して *DefaultFullSharedAccessSignature* 接続文字列を解析します。[REST API リファレンス](http://msdn.microsoft.com/library/azure/dn495627.aspx) で説明したように、解析されたこの情報は*認証*要求ヘッダーの SAS トークンの生成に使用されます。
+4. ViewController.m を開き、次のコードを追加して *DefaultFullSharedAccessSignature* 接続文字列を解析します。[REST API リファレンス](http://msdn.microsoft.com/library/azure/dn495627.aspx)で説明したように、解析されたこの情報は **Authorization** 要求ヘッダーの SaS トークンの生成に使用されます。
 
 		NSString *HubEndpoint;
 		NSString *HubSasKeyName;
@@ -277,7 +277,7 @@
 
 
 
-6. ViewController.m で、[REST API リファレンス](http://msdn.microsoft.com/library/azure/dn495627.aspx)で説明したように次のコードを追加して、*認証*ヘッダーに指定する SAS 認証トークンを生成します。
+6. ViewController.m で、[REST API リファレンス](http://msdn.microsoft.com/library/azure/dn495627.aspx)で説明したように、次のコードを追加して、**Authorization** ヘッダーに指定する SaS 認証トークンを生成します。
 
 		-(NSString*) generateSasToken:(NSString*)uri
 		{
@@ -306,7 +306,7 @@
 				NSData *rawHmac = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
 				signature = [self CF_URLEncodedString:[rawHmac base64EncodedStringWithOptions:0]];
 
-				// construct authorization token string
+				// Construct authorization token string
 				token = [NSString stringWithFormat:@"SharedAccessSignature sr=%@&sig=%@&se=%qu&skn=%@",
 					targetUri, signature, expires, HubSasKeyName];
 			}
@@ -326,7 +326,7 @@
 		}
 
 
-7. **[Send Notification]** ボタンから ViewController.m に **Ctrl キーを押しながらドラッグ**し、次のコードを使用して REST API 呼び出しを実行する**タッチ ダウン** イベントのアクションを追加します。
+7. Ctrl キーを押しながら **[Send Notification]** ボタンから ViewController.m にドラッグし、次のコードを使用して REST API 呼び出しを実行する **Touch Down** イベントのアクションを追加します。
 
 		- (IBAction)SendNotificationMessage:(id)sender
 		{
@@ -344,19 +344,19 @@
 		    NSString *json = [NSString stringWithFormat:@"{"aps":{"alert":"%@"}}",
 								self.notificationMessage.text];
 
-			// Construct the messages REST endpoint
+			// Construct the message's REST endpoint
 			NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
 												HUBNAME, API_VERSION]];
 
-			// Generated the token to be used in the authorization header.
+			// Generate the token to be used in the authorization header
 			NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
 
-			//Create the request to add the APNS notification message to the hub
+			//Create the request to add the APNs notification message to the hub
 			NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 			[request setHTTPMethod:@"POST"];
 			[request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 
-			// Signify apple notification format
+			// Signify Apple notification format
 			[request setValue:@"apple" forHTTPHeaderField:@"ServiceBusNotification-Format"];
 
 			//Authenticate the notification message POST request with the SaS token
@@ -385,7 +385,7 @@
 		}
 
 
-8. ViewController.m で、テキスト フィールドのキーボードを閉じる動作をサポートする次のデリゲート メソッドを追加します。テキスト フィールドからインターフェイス デザイナーのビュー コントローラー アイコンに **Ctrl キーを押しながらドラッグ**して、ビュー コントローラーをアウトレット デリゲートに設定します。
+8. ViewController.m で、テキスト フィールドのキーボードを閉じる動作をサポートする次のデリゲート メソッドを追加します。Ctrl キーを押しながらテキスト フィールドからインターフェイス デザイナーの View Controller アイコンにドラッグし、ビュー コントローラーをアウトレット デリゲートとして設定します。
 
 		//===[ Implement UITextFieldDelegate methods ]===
 
@@ -396,7 +396,7 @@
 		}
 
 
-9. ViewController.m で、`NSXMLParser` を使用して応答の解析をサポートする次のデリゲート メソッドを追加します。
+9. ViewController.m で、`NSXMLParser` を使用した応答の解析をサポートする次のデリゲート メソッドを追加します。
 
 		//===[ Implement NSXMLParserDelegate methods ]===
 
@@ -443,9 +443,9 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 
 
 
-##アプリケーションのテスト
+##アプリケーションをテストする
 
-iOS でのプッシュ通知をテストするには、デバイスにアプリケーションをデプロイする必要があります。iOS シミュレーターを使用して Apple のプッシュ通知を送信することはできません。
+iOS でプッシュ通知をテストするには、デバイスにアプリケーションをデプロイする必要があります。iOS シミュレーターを使用して Apple のプッシュ通知を送信することはできません。
 
 1. アプリケーションを実行して登録が成功したことを確認したら、**[OK]** を押します。
 
@@ -455,7 +455,7 @@ iOS でのプッシュ通知をテストするには、デバイスにアプリ�
 
 	![][34]
 
-3. 通知を受け取るように登録しているすべてのデバイスに通知が送信されます。
+3. 通知を受信するように登録されているすべてのデバイスに通知が送信されます。
 
 	![][35]
 
@@ -464,7 +464,7 @@ iOS でのプッシュ通知をテストするには、デバイスにアプリ�
 
 ##次のステップ
 
-この簡単な例では、すべての iOS デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。通知ハブの使用方法の詳細については、「[Windows Azure 通知ハブの概要]」を参照してください。
+この簡単な例では、すべての iOS デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、[Notification Hubs を使用したユーザーへのプッシュ通知]に関するチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、[Notification Hubs の概要]に関するページを参照してください。
 
 
 
@@ -494,22 +494,20 @@ iOS でのプッシュ通知をテストするには、デバイスにアプリ�
 
 <!-- URLs. -->
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
-[モバイル サービス iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[Windows Azure 通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Azure ポータル]: https://manage.windowsazure.com/
+[Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[Mobile Services でのプッシュ通知の使用]: ../mobile-services-javascript-backend-ios-get-started-push.md
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-ios-notify-users.md
-[通知ハブを使用したニュース速報の送信]: notification-hubs-ios-send-breaking-news.md
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-ios-send-breaking-news.md
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
- 
 
-<!----HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

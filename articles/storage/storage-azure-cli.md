@@ -1,25 +1,25 @@
 <properties
     pageTitle="Azure Storage での Azure CLI の使用 | Microsoft Azure"
-    description="Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。"
-    services="storage"
-    documentationCenter="na"
-    authors="tamram"
-    manager="jdial"/>
+	description="Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。"
+	services="storage"
+	documentationCenter="na"
+	authors="tamram"
+	manager="jdial"/>
 
 <tags
     ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article" 
-    ms.date="05/27/2015"
-    ms.author="chungli;jiyang;yaxia;tamram"/>
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
+	ms.author="chungli;jiyang;yaxia;tamram"/>
 
 # Azure Storage での Azure CLI の使用
 
 ## 概要
 
-Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。豊富なデータ アクセス機能だけでなく、Azure 管理ポータルにあるのと同じ機能の多くを提供します。
+Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。豊富なデータ アクセス機能だけでなく、Microsoft Azure 管理ポータルにあるのと同じ機能の多くを提供します。
 
 このガイドでは、[Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli.md) を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。このガイドを使用する前に、最新の Azure CLI をダウンロードしてインストールするか、最新の Azure CLI にアップグレードすることをお勧めします。
 
@@ -80,9 +80,9 @@ Azure サブスクリプションの詳細については、「[アカウント�
 
     - **<container_name>** スクリプトの所定の名前を使用するか、コンテナーの新しい名前を入力します。
 
-    - **<image_to_upload>** ローカル コンピューター上の画像へのパス ("\~/images/HelloWorld.png" など) を入力します。
+    - **<image_to_upload>** ローカル コンピューター上の画像へのパス ("~/images/HelloWorld.png" など) を入力します。
 
-    - **<destination_folder>** Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパス (“\~/downloadImages” など) を入力します。
+    - **<destination_folder>** Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパス (“~/downloadImages” など) を入力します。
 
 7. vim で必要な変数を更新したら、"Esc キー、: キー、wq! キー" というキーの組み合わせを使用してスクリプトを保存します。
 
@@ -189,7 +189,7 @@ Azure File 共有は、Azure 内の SMB 2.1 ファイル共有です。ディレ
 
 ### ディレクトリにローカル ファイルをアップロードする
 
-次の例では、**\~/temp/samplefile.txt** から **myDir** ディレクトリにファイルをアップロードします。ファイル パスを編集して、ローカル マシン上の有効なファイルを指定してください。
+次の例では、**~/temp/samplefile.txt** から **myDir** ディレクトリにファイルをアップロードします。ファイル パスを編集して、ローカル マシン上の有効なファイルを指定してください。
 
         azure storage file upload '~/temp/samplefile.txt' myshare myDir
 
@@ -203,6 +203,16 @@ Azure File 共有は、Azure 内の SMB 2.1 ファイル共有です。ディレ
 
 一覧表示操作では、ディレクトリ名を省略できます。省略した場合は、共有のルート ディレクトリの内容が一覧表示されます。
 
+### ファイルのコピー
+
+Azure CLI のバージョン 0.9.8 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。次に、CLI コマンドを使用してこれらのコピー操作を実行する方法を示します。ファイルを新しいディレクトリにコピーするには、次の操作を実行します。
+
+	azure storage file copy start --source-share srcshare --source-path srcdir/hello.txt --dest-share destshare --dest-path destdir/hellocopy.txt --connection-string $srcConnectionString --dest-connection-string $destConnectionString
+	
+BLOB をファイル ディレクトリにコピーするには、次の操作を実行します。
+
+	azure storage file copy start --source-container srcctn --source-blob hello2.txt --dest-share hello --dest-path hellodir/hello2copy.txt --connection-string $srcConnectionString --dest-connection-string $destConnectionString
+
 ## 次のステップ
 
 Azure Storage の詳細についての関連記事とリソースがあります。
@@ -214,4 +224,4 @@ Azure Storage の詳細についての関連記事とリソースがあります
 [Image1]: ./media/storage-azure-cli/azure_command.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

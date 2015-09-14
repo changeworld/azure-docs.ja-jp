@@ -1,21 +1,21 @@
 <properties
  pageTitle="HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け"
- description="HDInsight で Storm と HBase を使用して、別々の時間に到着するイベントを関連付ける方法について説明します。"
- services="hdinsight"
- documentationCenter=""
- authors="Blackmist"
- manager="paulettm"
- editor="cgronlun"
+	description="HDInsight で Storm と HBase を使用して、別々の時間に到着するイベントを関連付ける方法について説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="Blackmist"
+	manager="paulettm"
+	editor="cgronlun"
 	tags="azure-portal"/>
 
 <tags
  ms.service="hdinsight"
- ms.devlang="dotnet"
- ms.topic="article"
- ms.tgt_pltfrm="na"
- ms.workload="big-data"
- ms.date="06/05/2015"
- ms.author="larryfr"/>
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-data"
+	ms.date="09/02/2015"
+	ms.author="larryfr"/>
 
 # HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け
 
@@ -198,4 +198,4 @@ START イベントと同じ方法で END イベントを検索できます。た
 Storm の例の詳細については、「[HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

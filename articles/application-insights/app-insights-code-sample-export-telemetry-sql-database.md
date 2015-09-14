@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="コード サンプル: worker ロールを使用した Application Insights から SQL へのエクスポート" 
-	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="mazharmicrosoft" 
+	pageTitle="コード サンプル: worker ロールを使用した Application Insights から SQL へのエクスポート"
+	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。"
+	services="application-insights"
+	documentationCenter=""
+	authors="mazharmicrosoft"
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2015"
 	ms.author="awills"/>
  
 # コード サンプル: worker ロールを使用した Application Insights から SQL へのエクスポート
@@ -79,14 +79,17 @@
 
     ![イベントの種類の選択](./media/app-insights-code-sample-export-telemetry-sql-database/085-types.png)
 
-ここで、しばらく待機し、ユーザーにアプリケーションを使用させます。テレメトリが開始し、統計グラフが[メトリックス エクスプローラー][metrics]に表示され、個々のイベントが[診断検索][diagnostic]に表示されます。
+3. データを蓄積します。しばらく待機し、ユーザーにアプリケーションを使用してもらいます。テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](app-insights-metrics-explorer.md)に表示され、個々のイベントが[診断検索](app-insights-diagnostic-search.md)に表示されます。
 
-また、データがストレージにエクスポートされます。そこで内容を検査できます。たとえば、Visual Studio にはストレージ ブラウザーがあります。
+    また、データはストレージにもエクスポートされます。
 
+4. エクスポートされたデータを検査します。Visual Studio で、**[表示]、[Cloud Explorer]** の順に選択します。[Azure]、[ストレージ] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
 
-![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/app-insights-code-sample-export-telemetry-sql-database/087-explorer.png)
+    ![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/app-insights-code-sample-export-telemetry-sql-database/087-explorer.png)
 
-イベントが JSON 形式で BLOB ファイルに書き込まれます。各ファイルに 1 つ以上のイベントが含まれる場合があります。したがって、イベント データを読み取って必要なフィールドをフィルター処理するコードを記述します。データの処理に関して行えることはありますが、今日の計画は、データを SQL データベースに移動するコードを記述することです。それにより、興味深い多くのクエリを実行しやすくなります。
+    パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。
+
+イベントが JSON 形式で BLOB ファイルに書き込まれます。各ファイルに 1 つ以上のイベントが含まれる場合があります。このため、イベント データを読み取って必要なフィールドをフィルター処理します。データの処理に関して行えることはありますが、今日の計画は、データを SQL データベースに移動するコードを記述することです。それにより、興味深い多くのクエリを実行しやすくなります。
 
 ## Azure SQL Database の作成
 
@@ -105,16 +108,16 @@
 
 エクスポートした BLOB で JSON を解析するための[いくつかのコード](https://sesitai.codeplex.com/)を記述し、データベースにレコードを作成することができるようになりました。エクスポート ストアとデータベースはどちらも Azure にあるため、コードを Azure worker ロールで実行します。
 
-このコードでは、JSON に存在するすべてのプロパティを自動的に抽出します。プロパティの説明については、「[データのエクスポート モデル](app-insights-export-data-model.md)」を参照してください。
+このコードでは、JSON に存在するすべてのプロパティを自動的に抽出します。プロパティの説明については、[データのエクスポート モデルに関するページ](app-insights-export-data-model.md)を参照してください。
 
 
 #### worker ロール プロジェクトの作成
 
 Visual Studio で、worker ロールの新しいプロジェクトを作成します。
 
-![[新しいプロジェクト]、[Visual C\#]、[クラウド]、[Azure Cloud Service]](./media/app-insights-code-sample-export-telemetry-sql-database/110-cloud.png)
+![[新しいプロジェクト]、[Visual C#]、[クラウド]、[Azure Cloud Service]](./media/app-insights-code-sample-export-telemetry-sql-database/110-cloud.png)
 
-![[新しいクラウド サービス] ダイアログで、[Visual C\#]、[worker ロール] の順に選択します](./media/app-insights-code-sample-export-telemetry-sql-database/120-worker.png)
+![[新しいクラウド サービス] ダイアログで、[Visual C#]、[worker ロール] の順に選択します](./media/app-insights-code-sample-export-telemetry-sql-database/120-worker.png)
 
 
 #### ストレージ アカウントへの接続
@@ -134,11 +137,11 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
 ソリューション エクスプローラーで worker ロール プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。それらのパッケージを検索してインストールします。
 
  * EntityFramework 6.1.2 以降 - これを使用して、BLOB の JSON の内容に基づいて DB テーブル スキーマをその場で生成します。
- * JsonFx - JSON を C#クラスのプロパティにフラット化するためにこれを使用します。
+ * JsonFx - JSON を C# クラスのプロパティにフラット化するためにこれを使用します。
 
-このツールを使用して、単一の JSON ドキュメントから C#クラスを生成します。これにはわずかな変更が必要になります。たとえば、JSON 配列を DB テーブル (たとえば、 urlData\_port) の単一列の C#プロパティにフラット化するなどです。
+このツールを使用して、単一の JSON ドキュメントから C# クラスを生成します。これにはわずかな変更が必要になります。たとえば、JSON 配列を DB テーブル (たとえば、 urlData\_port) の単一列の C# プロパティにフラット化するなどです。
 
- * [JSON C#クラス ジェネレーター](http://jsonclassgenerator.codeplex.com/)
+ * [JSON C# クラス ジェネレーター](http://jsonclassgenerator.codeplex.com/)
 
 ## コード 
 
@@ -319,7 +322,7 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
     	    }
         }
 
-#### JSON ドキュメントを C#クラスのテレメトリ オブジェクト プロパティにキャストする
+#### JSON ドキュメントを C# クラスのテレメトリ オブジェクト プロパティにキャストする
 
      public object GetObject(IDictionary<string, object> d)
         {
@@ -515,7 +518,7 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
     GO
 
 
-この例を動作させてみるには、完全な作業コードを[ダウンロード](https://sesitai.codeplex.com/)し、`app.config` の設定を変更し、worker ロールを Azure に発行します。
+この例の動作を確認するには、完全に動くコードを[ダウンロード](https://sesitai.codeplex.com/)し、`app.config` の設定を変更し、worker ロールを Azure に発行します。
 
 
 ## 関連記事:
@@ -536,4 +539,4 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

@@ -4,8 +4,8 @@
 	services="machine-learning,hdinsight"
 	documentationCenter=""
 	authors="hangzh-msft"
-	manager="paulettm" 
-	editor="cgronlun"  />
+	manager="paulettm"
+	editor="cgronlun"/>
 
 <tags
 	ms.service="machine-learning"
@@ -13,14 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/29/2015"
-	ms.author="hangzh;bradsev" />
+	ms.date="09/01/2015"
+	ms.author="hangzh;bradsev"/>
 
 # Azure HDInsight Hive テーブル内のデータのサンプリング
 
 分析しようとしているデータセットが大規模な場合、通常、ダウンサンプリングして、より小さく、しかし典型的なものにして、管理できるサイズにデータを縮小することは賢明なことです。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Azure Machine Learning の Advanced Analytics Process and Technology (ADAPT) におけるその役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
-この記事では、Hive クエリを使用して Azure HDInsight Hive テーブルのデータをダウンサンプリングする方法を説明します。一般的に使用されている 3 つのサンプリング方法である、一様ランダム サンプリング、グループごとのランダム サンプリング、階層サンプリングについて説明します。
+この記事では、Hive クエリを使用して Azure HDInsight Hive テーブルのデータをダウンサンプリングする方法を説明します。一般的に使用されている 3 つのサンプリング方法である、
+
+* 一様ランダム サンプリング 
+* グループごとのランダム サンプリング 
+* 階層サンプリング
 
 Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン コンソールから Hive クエリを送信する必要があります。そのためには、Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。Hadoop コマンド ライン コンソールで Hive クエリを送信する手順については、「[Hive クエリを送信する方法](machine-learning-data-science-process-hive-tables.md#submit)」をご覧ください。
 
@@ -95,4 +99,4 @@ Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン 
 Hive で使用できるより高度なサンプリング方法については、「[LanguageManual Sampling (LanguageManual のサンプリング)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)」をご覧ください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

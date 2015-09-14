@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Hudson で Azure BLOB サービスを使用する方法 | Microsoft Azure" 
-	description="Hudson で Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。" 
-	services="storage" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
+	pageTitle="Hudson で Azure BLOB サービスを使用する方法 | Microsoft Azure"
+	description="Hudson で Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。"
+	services="storage"
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor="jimbe"/>
 
 <tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="06/03/2015" 
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="robmcm"/>
 
 #Hudson 継続的インテグレーション ソリューションでの Azure ストレージの使用
@@ -168,4 +168,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

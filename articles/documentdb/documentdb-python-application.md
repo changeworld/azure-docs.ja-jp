@@ -1,20 +1,20 @@
 <properties
     pageTitle="DocumentDB を使用した Python Flask Web アプリケーションの構築 | Microsoft Azure"
-    description="DocumentDB を使用してデータを格納し、Azure にホストされた Python および Flask (MVC) Web アプリケーションからそのデータにアクセスする方法について説明します。"
-    services="documentdb"
-    documentationCenter="python"
-    authors="ryancrawcour"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	description="DocumentDB を使用してデータを格納し、Azure にホストされた Python および Flask (MVC) Web アプリケーションからそのデータにアクセスする方法について説明します。"
+	services="documentdb"
+	documentationCenter="python"
+	authors="ryancrawcour"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
     ms.service="documentdb"
-    ms.workload="data-management"
-    ms.tgt_pltfrm="na"
-    ms.devlang="python"
-    ms.topic="hero-article"
-    ms.date="07/07/2015"
-    ms.author="ryancraw"/>
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="python"
+	ms.topic="hero-article"
+	ms.date="09/03/2015"
+	ms.author="ryancraw"/>
 
 # DocumentDB を使用した Python Flask (MVC) Web アプリケーションの構築
 
@@ -277,7 +277,7 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
 
 1. プロジェクト [tutorial] を右クリックし、**config.py** ファイルを追加します。この構成ファイルは、Flask のフォームで必要になります。これを使用して秘密キーを指定することもできます。このチュートリアルではこのキーは不要です。
 
-2. 次のコードを config.py に追加します。**DOCUMENTDB\\\_HOST** および **DOCUMENTDB\\\_KEY** の値を変更します。
+2. 次のコードを config.py に追加します。**DOCUMENTDB\\_HOST** および **DOCUMENTDB\\_KEY** の値を変更します。
 
     	CSRF_ENABLED = True
     	SECRET_KEY = 'you-will-never-guess'
@@ -338,6 +338,8 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
 
 ご利用ありがとうございます。 ここでは初めての方を対象に、Azure DocumentDB を使用して Python アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
 
+このチュートリアルはお役に立てましたか。トピックの最初または最後にある投票ボタンをクリックして、内容が役に立ったかどうかをお知らせください。トピックは常に更新されます。内容をより良くするためにお客様からのフィードバックをお待ちしています。フォローアップのためにマイクロソフトからご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
+
 アプリケーションに機能を追加する場合は、[DocumentDB Python SDK](https://pypi.python.org/pypi/pydocumentdb) から入手できる API を参考にしてください。
 
   [Flask のチュートリアルについては、ここをクリックしてください]: http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
@@ -349,4 +351,4 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

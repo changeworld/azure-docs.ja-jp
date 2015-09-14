@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Machine Learning の Recommendations API の一般的な操作 | Microsoft Azure" 
-	description="Azure ML Recommendation サンプル アプリケーション" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="jaymathe" 
-	manager="paulettm" 
+	pageTitle="Machine Learning の Recommendations API の一般的な操作 | Microsoft Azure"
+	description="Azure ML Recommendation サンプル アプリケーション"
+	services="machine-learning"
+	documentationCenter=""
+	authors="jaymathe"
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/15/2015" 
-	ms.author="luiscabrer"/>
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
+	ms.author="luisca"/>
 
 
 # Machine Learning の Recommendations API の一般的な操作
@@ -89,4 +89,4 @@ API の詳細については、Microsoft Azure Marketplace のドキュメント
 サンプル アプリケーションは、運用環境での実行を意図していません。カタログに提供されたデータはごく小さく、意味のある推奨モデルとはなりませんが、デモの目的でのみ提供されています。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

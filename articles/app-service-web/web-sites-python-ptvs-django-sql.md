@@ -1,26 +1,26 @@
 <properties 
-	pageTitle="Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と SQL Database" 
-	description="Python Tools for Visual Studio を使用して、SQL database インスタンスにデータを保存する Django Web アプリを作成し、Azure App Service Web Apps にデプロイする方法について説明します。" 
-	services="app-service\web" 
+	pageTitle="Python Tools 2.2 for Visual Studio を使用した Azure 上の Django と SQL Database"
+	description="Python Tools for Visual Studio を使用して、SQL database インスタンスにデータを保存する Django Web アプリを作成し、Azure App Service Web Apps にデプロイする方法について説明します。"
+	services="app-service\web"
 	tags="python"
-	documentationCenter="python" 
-	authors="huguesv" 
-	manager="wpickett" 
+	documentationCenter="python"
+	authors="huguesv"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="python" 
-	ms.topic="article" 
-	ms.date="04/16/2015" 
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="python"
+	ms.topic="article"
+	ms.date="08/30/2015"
 	ms.author="huguesv"/>
 
 
 
 
-# Python Tools 2.1 for Visual Studio を使用した Azure 上の Django と SQL Database 
+# Python Tools 2.2 for Visual Studio を使用した Azure 上の Django と SQL Database 
 
 このチュートリアルでは、[Python Tools for Visual Studio] のサンプル テンプレートを使用して、単純な投票 Web アプリを作成します。このチュートリアルは、[ビデオ](https://www.youtube.com/watch?v=ZwcoGcIeHF4)でもご覧いただけます。
 
@@ -30,10 +30,10 @@ Bottle、Flask、Django の各 Web フレームワークと、MongoDB、Azure �
 
 ## 前提条件
 
- - Visual Studio 2012 または 2013
- - [Python Tools 2.1 for Visual Studio]
- - [Python Tools 2.1 for Visual Studio サンプル VSIX]
- - [Azure SDK Tools for VS 2013] または [Azure SDK Tools for VS 2012]
+ - Visual Studio 2013 または 2015
+ - [Python Tools 2.2 for Visual Studio]
+ - [Python Tools 2.2 for Visual Studio サンプル VSIX]
+ - [Azure SDK Tools for VS 2013] または [Azure SDK Tools for VS 2015]
  - [Python 2.7 (32 ビット)]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
@@ -197,7 +197,7 @@ Python Tools for Visual Studio、Django および SQL Database の詳細につ�
 - [SQL Database]
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
@@ -208,17 +208,16 @@ Python Tools for Visual Studio、Django および SQL Database の詳細につ�
 <!--External Link references-->
 [Azure ポータル]: https://portal.azure.com
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
-[Python Tools 2.1 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkId=517189
+[Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
+[Python Tools 2.2 for Visual Studio サンプル VSIX]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
-[Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
+[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190
-[Python Tools for Visual Studio のドキュメント]: http://pytools.codeplex.com/documentation
-[Microsoft Azure でのリモート デバッグ]: http://pytools.codeplex.com/wikipage?title=Features%20Azure%20Remote%20Debugging
-[Web プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Web%20Project
-[クラウド サービス プロジェクト]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
+[Python Tools for Visual Studio のドキュメント]: http://aka.ms/ptvsdocs
+[Microsoft Azure でのリモート デバッグ]: http://go.microsoft.com/fwlink/?LinkId=624026
+[Web プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624027
+[クラウド サービス プロジェクト]: http://go.microsoft.com/fwlink/?LinkId=624028
 [Django のドキュメント]: https://www.djangoproject.com/
 [SQL Database]: /documentation/services/sql-database/
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

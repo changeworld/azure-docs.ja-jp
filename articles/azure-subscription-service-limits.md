@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/09/2015"
+	ms.date="08/29/2015"
 	ms.author="jroth"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -22,9 +22,9 @@
 
 本書では、Microsoft Azure での最も一般的な制限について具体的に説明しています。現時点では、すべての Azure サービスを網羅していませんのでご了承ください。今後、Azure Platform 全体を広くカバーするように制限を展開し、更新していく予定です。
 
-> [AZURE.NOTE] 「**既定の制限**」を超える制限の引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。以下の表の「**上限**」の値を超える制限の引き上げはできません。「**上限**」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
+> [AZURE.NOTE]「**既定の制限**」を超える制限の引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。以下の表の「**上限**」の値を超える制限の引き上げはできません。「**上限**」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
 
-### 制限と Azure リソース マネージャー
+## 制限と Azure リソース マネージャー
 
 複数の Azure リソースを 1 つの Azure リソース グループに結合できるようになりました。リソース グループを使用するとき、グローバルになった制限が Azure リソース マネージャーによりリージョン レベルでの管理対象になります。Azure リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](resource-group-portal.md)に関するページを参照してください。
 
@@ -34,184 +34,212 @@
 <!-- --> 
 結果として、1 つのリージョンのワークロードに対してどのくらいの Azure リソース グループのクォータが必要かを決め、デプロイメントを検討している各リージョンにその分量をリクエストするだけなので便利です。特定のリージョンの現在のクォータを判断する方法について詳しくは、[デプロイメントの問題のトラブルシューティング](resource-group-deploy-debug.md##authentication-subscription-role-and-quota-issues)に関するページを参照してください。
 
-## サブスクリプションの制限
+- [Active Directory](#active-directory-limits)
+- [API Management](#api-management-limits)
+- [App Service](#app-service-limits)
+- [Application Insights](#application-insights-limits)
+- [Azure Redis Cache](#azure-redis-cache-limits)
+- [Azure RemoteApp](#azure-remoteapp-limits)
+- [Backup](#backup-limits)
+- [Batch  
+](#batch-limits)
+- [CDN](#cdn-limits)
+- [Cloud Services](#cloud-services-limits)
+- [Data Factory](#data-factory-limits)
+- [DocumentDB](#documentdb-limits)
+- [Key Vault](#key-vault-limits)
+- [Media Services](#media-services-limits)
+- [Mobile Engagement](#mobile-engagement-limits)
+- [Mobile Services](#mobile-services-limits)
+- [Multi-Factor Authentication](#multi-factor-authentication)
+- [ネットワーク](#networking-limits)
+- [Notification Hub Service](#notification-hub-service-limits)
+- [Operational Insights](#operational-insights-limits)
+- [リソース グループ](#resource-group-limits)
+- [Scheduler](#scheduler-limits)
+- [Search](#search-limits)
+- [Service Bus](#service-bus-limits)
+- [Site Recovery](#site-recovery-limits)
+- [SQL Database](#sql-database-limits)
+- [ストレージ](#storage-limits)
+- [StorSimple System](#storsimple-system-limits)
+- [Stream Analytics](#stream-analytics-limits)
+- [サブスクリプション](#subscription-limits)
+- [仮想マシン](#virtual-machines-limits)
 
+
+### サブスクリプションの制限
+#### サブスクリプションの制限
 [AZURE.INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
-### サブスクリプションの制限 - Azure リソース マネージャー
+#### サブスクリプションの制限 - Azure リソース マネージャー
 
 次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。これらの制限については、前の表を参照してください。
 
 [AZURE.INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
 
-## リソース グループの制限
+### リソース グループの制限
 
 [AZURE.INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
 
-## 仮想マシンの制限
-
+### Virtual Machines の制限
+#### 仮想マシンの制限
 [AZURE.INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 
-### 仮想マシンの制限 - Azure リソース マネージャー
+#### Virtual Machines の制限 - Azure リソース マネージャー
 
 次の制限は、Azure リソース マネージャーと Azure リソース グループの使用時に適用されます。Azure リソース マネージャーで変更されていない制限はこの一覧に含まれません。これらの制限については、前の表を参照してください。
 
 [AZURE.INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
 
-## ネットワークの制限
-
+### ネットワークの制限
+#### ネットワークの制限
 [AZURE.INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
-### Traffic Manager の制限
+#### Traffic Manager の制限
 
 [AZURE.INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
 
-### DNS の制限
+#### DNS の制限
 
 [AZURE.INCLUDE [dns-limits](../includes/dns-limits.md)]
 
-## ストレージの制限
+### Storage の制限
 
-### Standard Storage の制限
+#### Standard Storage の制限
 
 [AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
 ストレージ アカウントの上限の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md)」を参照してください。
 
 
-### Premium Storage の制限
+#### Premium Storage の制限
 
 [AZURE.INCLUDE [azure-storage-limits-premium-storage](../includes/azure-storage-limits-premium-storage.md)]
 
 
-### ストレージの制限 - Azure リソース マネージャー
+#### Storage の制限 - Azure リソース マネージャー
 
 [AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
 
-## Cloud Services の制限
+### Cloud Services の制限
 
 [AZURE.INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 
-## App Service の制限 - Web Apps、Mobile Apps、API Apps、Logic Apps
+### App Service の制限
+次の App Service の制限には、Web Apps、Mobile Apps、API Apps、および Logic Apps の制限が含まれます。
 
 [AZURE.INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
-## スケジューラの制限
+### Scheduler の制限
 
 [AZURE.INCLUDE [scheduler-limits-table](../includes/scheduler-limits-table.md)]
 
-## Batch の制限
+### Batch の制限
 
 [AZURE.INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
 
-## DocumentDB の制限
+### DocumentDB の制限
 
 [AZURE.INCLUDE [azure-documentdb-limits](../includes/azure-documentdb-limits.md)]
 
 
-## モバイル エンゲージメントの制限
+### モバイル エンゲージメントの制限
 
 [AZURE.INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
 
 
-## Search の制限
+### Search の制限
 
 [AZURE.INCLUDE [azure-search-limits](../includes/azure-search-limits.md)]
 
 Azure Search の制限に関する詳細については、「[制限および制約](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
 
-## SQL Database の制限
-
-[AZURE.INCLUDE [azure-sql-database-limits](../includes/azure-sql-database-limits.md)]
-
-SQL Database の制限に関する詳細については、次のトピックを参照してください。
-
- - [Azure SQL Database のサービス階層 (エディション)](http://msdn.microsoft.com/library/azure/dn741340.aspx)
- - [Azure SQL Database のサービス階層とパフォーマンス レベル](http://msdn.microsoft.com/library/azure/dn741336.aspx)
- - [Database Throughput Unit (DTU) Quotas (データベース スループット ユニット (DTU) のクォータ)](http://msdn.microsoft.com/library/azure/ee336245.aspx#DTUs)
- - [SQL Database Resource Limits (SQL Database リソースの制限)](sql-database/sql-database-resource-limits.md)
-
-## Media Services の制限
+### Media Services の制限
 
 [AZURE.INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
 
-## CDN の制限
+### CDN の制限
 
 [AZURE.INCLUDE [cdn-limits](../includes/cdn-limits.md)]
 
-## Mobile Services の制限
+### Mobile Services の制限
 
 [AZURE.INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
 
-## Notification Hubs サービスの制限
+### Notification Hubs サービスの制限
 
 [AZURE.INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
 
 
-## Service Bus の制限
+### Service Bus の制限
 
 [AZURE.INCLUDE [azure-servicebus-limits](../includes/service-bus-quotas-table.md)]
 
-## Data Factory の制限
+### Data Factory の制限
 
 [AZURE.INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]
 
 
-## Stream Analytics の制限
+### Stream Analytics の制限
 
 [AZURE.INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
 
-## Active Directory の制限
+### Active Directory の制限
 
 [AZURE.INCLUDE [AAD-service-limits](../includes/active-directory-service-limits-include.md)]
 
 
-## Azure RemoteApp の制限
+### Azure RemoteApp の制限
 
 [AZURE.INCLUDE [azure-remoteapp-limits](../includes/azure-remoteapp-limits.md)]
 
-## StorSimple システムの制限
+### StorSimple システムの制限
 
 [AZURE.INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
 
-## Operational Insights の制限
+### Operational Insights の制限
 
 [AZURE.INCLUDE [operational-insights-limits](../includes/operational-insights-limits.md)]
 
-## Backup の制限
+### Backup の制限
 
 [AZURE.INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
 
-## Site Recovery の制限
+### Site Recovery の制限
 
 [AZURE.INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]
 
-## Application Insights の制限
+### Application Insights の制限
 
 [AZURE.INCLUDE [application-insights-limits](../includes/application-insights-limits.md)]
 
-## API Management の制限
+### API Management の制限
 
 [AZURE.INCLUDE [api-management-service-limits](../includes/api-management-service-limits.md)]
 
-## Azure Redis Cache の制限
+### Azure Redis Cache の制限
 
 [AZURE.INCLUDE [redis-cache-service-limits](../includes/redis-cache-service-limits.md)]
 
-## Key Vault の制限
+### Key Vault の制限
 
 [AZURE.INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-## Multi-Factor Authentication
+### Multi-Factor Authentication
 [AZURE.INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
+
+### SQL Database の制限
+
+SQL Database の制限については、[ SQL Database リソースの制限に関するページ](sql-database/sql-database-resource-limits.md)を参照してください。
 
 ## 関連項目
 
@@ -219,4 +247,4 @@ SQL Database の制限に関する詳細については、次のトピックを�
 
 [Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

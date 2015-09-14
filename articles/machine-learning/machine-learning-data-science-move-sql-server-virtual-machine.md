@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Virtual Machine 上の SQL Server にデータを移動する| Azure" 
-	description="フラット ファイルまたはオンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動する" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="msolhab" 
-	manager="paulettm" 
-	editor="cgronlun" />
+	pageTitle="Azure Virtual Machine 上の SQL Server にデータを移動する| Azure"
+	description="フラット ファイルまたはオンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動します。"
+	services="machine-learning"
+	documentationCenter=""
+	authors="msolhab"
+	manager="paulettm"
+	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/10/2015" 
-	ms.author="fashah;mohabib;bradsev" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
+	ms.author="fashah;mohabib;bradsev"/>
 
 # Azure Virtual Machine 上の SQL Server にデータを移動する
 
@@ -40,16 +40,17 @@ Machine Learning 用に Azure SQL データベースにデータを移動する�
 <tr>
   <td><b>オンプレミスの SQL Server</b></td>
   <td>
-    1.<a href="#export-flat-file">フラット ファイルへのエクスポート</a><br>
-    2.<a href="#sql-migration">SQL Database 移行ウィザード</a> <br>    
-    3.<a href="#sql-backup">データベースのバックアップと復元</a> <br>
+    1.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード</a><br>
+    2.<a href="#export-flat-file">フラット ファイルへのエクスポート</a><br>
+    3.<a href="#sql-migration">SQL Database 移行ウィザード</a> <br>    
+    4.<a href="#sql-backup">データベースのバックアップと復元</a> <br>
   </td>
 </tr>
 </table>
 
 このドキュメントでは、SQL Server Management Studio または Visual Studio のデータベース エクスプローラーから SQL コマンドが実行されることを想定していることに注意してください。
 
-> [AZURE.TIP]別の方法として、[Azure Data Factory](https://azure.microsoft.com/ja-jp/services/data-factory/) を使用して、データを Azure の SQL Server VM に移動するパイプラインの作成とスケジュール設定を実行できます。詳細については、「[Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)](../data-factory/data-factory-copy-activity.md)」を参照してください。
+> [AZURE.TIP]別の方法として、[Azure Data Factory](https://azure.microsoft.com/ja-JP/services/data-factory/) を使用して、データを Azure の SQL Server VM に移動するパイプラインの作成とスケジュール設定を実行できます。詳細については、「[Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)](../data-factory/data-factory-copy-activity.md)」を参照してください。
 
 
 ## <a name="prereqs"></a>前提条件
@@ -173,13 +174,18 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 
 ## <a name="sqlonprem_to_sqlonazurevm"></a>オンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動する
 
-データは、オンプレミスの SQL Server から次のように移動できます。
+次の移行方法を使用することもできます。
 
-1. [フラット ファイルへのエクスポート](#export-flat-file) 
-2. [SQL Database 移行ウィザード](#sql-migration)
-3. [データベースのバックアップと復元](#sql-backup)
+1. [Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード](#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard)
+2. [フラット ファイルへのエクスポート](#export-flat-file) 
+3. [SQL Database 移行ウィザード](#sql-migration)
+4. [データベースのバックアップと復元](#sql-backup)
 
 それぞれの方法について以下で説明します。
+
+### Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード
+
+**Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード**は、オンプレミスの SQL Server インスタンスから Azure VM の SQL Server にデータを簡単に移行するためのお勧めの方法です。詳しい手順や、その他の代替策の詳細については、「[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-migrate-onpremises-database.md)」を参照してください。
 
 ### <a name="export-flat-file"></a>フラット ファイルへのエクスポート
 
@@ -221,10 +227,13 @@ SQL Server は以下のものをサポートします。
 
 ![SQL Server インポート ツール][1]
 
+## リソース
+
+[Azure VM の SQL Server へのデータベースの移行](../virtual-machines/virtual-machines-migrate-onpremises-database.md)
+
+[Azure Virtual Machines における SQL Server の概要](../virtual-machines/virtual-machines-sql-server-infrastructure-services.md)
 
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
- 
-
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

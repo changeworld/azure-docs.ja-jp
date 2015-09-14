@@ -12,13 +12,13 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
-	ms.topic="get-started-article" 
+	ms.topic="get-started-article"
 	ms.date="06/19/2015"
 	ms.author="mahender"/>
 
 # SaaS API へのモバイル アプリの接続
 
-このチュートリアルでは、エンタープライズのサービスとしてのソフトウェア (SaaS) ソリューションにモバイル アプリを接続します。「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]」のアプリを更新し、新しい TodoItem が追加されたときに必ず SharePoint Online で Word 文書が作成されるようにします。
+このチュートリアルでは、エンタープライズのサービスとしてのソフトウェア (SaaS) ソリューションにモバイル アプリを接続します。「Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証」からアプリを更新し、新しい TodoItem が追加されたときに必ず SharePoint Online で Word 文書が作成されるようにします。
 
 このチュートリアルには、次のものが必要です。
 
@@ -35,11 +35,11 @@
 
     ![][1]
 
-これで、SharePoint アクセス トークンが App Service に発行されるように AAD を構成しました。
+これで、SharePoint アクセス トークンが App Service に発行されるように Azure AD を構成しました。
 
 ## <a name="store-credentials"></a>モバイル アプリに SharePoint 情報を追加する
 
-SharePoint への呼び出しを作成するには、モバイル アプリが通信する必要があるエンドポイントを指定する必要があります。また、App Service の ID も証明できるようにする必要があります。これは、クライアント ID とクライアント シークレットのペアを使用して実行します。AAD ログインのセットアップの間に、既に App Service のクライアント ID を取得し、保存しています。これらは、機密性の高い資格情報であるため、コードではプレーンテキストで保存しないでください。代わりに、これらの値をモバイル アプリ コードのサイトのアプリケーション設定として設定できます。
+SharePoint への呼び出しを作成するには、モバイル アプリが通信する必要があるエンドポイントを指定する必要があります。また、App Service の ID も証明できるようにする必要があります。これは、クライアント ID とクライアント シークレットのペアを使用して実行します。AAD ログインのセットアップの間に、既に App Service のクライアント ID を取得し、保存しています。これらは、機密性の高い資格情報であるため、コードではプレーン テキストで保存しないでください。代わりに、これらの値をモバイル アプリ コードのサイトのアプリケーション設定として設定します。
 
 1. テナントの [AAD アプリケーション] タブに戻り、App Service の Web アプリケーションを選択します。
 
@@ -57,7 +57,7 @@ ApiServices.Settings を使用すると、コード内でこれらの値をも�
 
 ## <a name="obtain-token"></a>アクセス トークンを取得し、SharePoint API を呼び出す
 
-SharePoint にアクセスするには、SharePoint を対象ユーザーとする特別なアクセス トークンが必要です。このトークンを取得するには、App Service の ID とユーザーに発行されたトークンを使用して AAD にコールバックする必要があります。
+SharePoint にアクセスするには、SharePoint を対象ユーザーとする特別なアクセス トークンが必要です。このトークンを取得するには、App Service の ID とユーザーに発行されたトークンを使用して Azure AD にコールバックする必要があります。
 
 1. Visual Studio でモバイル アプリ コードのプロジェクトを開きます。
 
@@ -182,9 +182,8 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 
 [Preview Azure Management Portal]: https://portal.azure.com/
 [Active Directory]: https://manage.windowsazure.com/
-[SharePoint Online]: http://office.microsoft.com/ja-jp/sharepoint/
+[SharePoint Online]: http://office.microsoft.com/ja-JP/sharepoint/
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: app-service-mobile-dotnet-backend-ios-aad-sso-preview.md
 [Mobile Apps .NET Backend App Service Extension]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.AppService/
- 
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

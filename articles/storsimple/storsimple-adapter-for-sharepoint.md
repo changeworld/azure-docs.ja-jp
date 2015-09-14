@@ -1,21 +1,21 @@
 <properties 
    pageTitle="SharePoint 用 StorSimple アダプター | Microsoft Azure"
-   description="SharePoint サーバー ファームに SharePoint 用 StorSimple アダプターをインストールする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
+	description="SharePoint サーバー ファームに SharePoint 用 StorSimple アダプターをインストールして構成する方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/11/2015"
-   ms.author="v-sharos" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/27/2015"
+	ms.author="v-sharos"/>
 
-# SharePoint 用 StorSimple アダプター
+# SharePoint 用 StorSimple アダプターをインストールして構成する
 
 ## 概要
 
@@ -238,6 +238,6 @@ SharePoint サイトからオブジェクトを削除しても、RBS ストア �
 [3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
 [4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/ja-jp/library/ff943565.aspx
+[8]: https://technet.microsoft.com/ja-JP/library/ff943565.aspx
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

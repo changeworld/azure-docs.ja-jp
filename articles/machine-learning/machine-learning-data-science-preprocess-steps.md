@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="bradsev"
 	manager="paulettm"
-	editor="cgronlun" />
+	editor="cgronlun"/>
 
 <tags
 	ms.service="machine-learning"
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/29/2015"
-	ms.author="msolhab;bradsev" />
+	ms.date="09/01/2015"
+	ms.author="msolhab;bradsev"/>
 
 
 # 機械学習用のデータの準備
@@ -104,4 +104,4 @@ Azure Machine Learning は、形式の整った表形式のデータを取り込
 >_Data Mining: Concepts and Techniques_、第 3 版、Morgan Kaufmann 発行、2011 年、Jiawei Han、Micheline Kamber、Jian Pei 共著
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

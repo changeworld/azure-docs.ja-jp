@@ -62,11 +62,15 @@ From the command-line, change directories to your root folder if not already the
 - `npm install bunyan`
 - `npm install assert-plus`
 - `npm install passport`
+- `npm install webfinger`
+- `npm install body-parser`
+- `npm install express-session`
+- `npm install cookie-parser`
 
-- In addition, we've included a special `passport-azure-ad` for our Preview in the skeleton of the quickstart. You'll need to install the pre-requisites in there as well.
+- In addition, we've use `passport-azure-ad` for our Preview in the skeleton of the quickstart. 
 
-- `cd /lib/passport-azure-ad`
-- `npm install`
+- `npm install passport-azure-ad`
+
 
 This will install the libraries that passport-azure-ad depend on.
 
@@ -76,21 +80,21 @@ Here, we'll configure the Express middleware to use the OpenID Connect authentic
 -	To begin, open the `config.js` file in the root of the project, and enter your app's configuration values in the `exports.creds` section.
     -	The `clientID:` is the **Application Id** assigned to your app in the registration portal.
     -	The `returnURL` is the **Redirect URI** you entered in the portal.
-    - The `clientSecret` is the secret you generated in the portal
-    - The `realm` is the **Redirect URI** you entered in the portal without the route. (example: http//localhost:3000)
-    - The `issuer` is where you append the **Application Id** after, as an example: https://sts.windows.net/96702724-991f-4576-bc90-be9862749ac5/
+    - The `clientSecret` is the secret you generated in the portal.
 
-- Next open `app.js` file in the root of the proejct and add the follwing call to invoke the `OIDStrategy` strategy that comes with `passport-azure-ad`
+- Next open `app.js` file in the root of the proejct and add the follwing call to invoke the `OIDCStrategy` strategy that comes with `passport-azure-ad`
 
 
 ```JavaScript
-var OIDCStrategy = require('passport-azure-ad').OIDCStrategy; ```
+var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
+
+// ログを追加します var log = bunyan.createLogger({ name: 'Microsoft OIDC Example Web Application' }); ```
 
 - その後、今参照した戦略を使用してログイン要求を処理します。
 
 ```JavaScript
 // Use the OIDCStrategy within Passport. (Section 2) 
-
+// 
 //   Strategies in passport require a `validate` function, which accept
 //   credentials (in this case, an OpenID identifier), and invoke a callback
 //   with a user object.
@@ -101,21 +105,23 @@ passport.use(new OIDCStrategy({
     clientSecret: config.creds.clientSecret,
     oidcIssuer: config.creds.issuer,
     identityMetadata: config.creds.identityMetadata,
-    skipUserProfile: true // doesn't fetch user profile
+    responseType: config.creds.responseType,
+    responseMode: config.creds.responseMode,
+    skipUserProfile: config.creds.skipUserProfile
+    //scope: config.creds.scope
   },
-  function(iss, sub, email, claims, profile, accessToken, refreshToken, done) {
-    log.info('We received claims of: ', claims);
-    log.info('Example: Email address we received was: ', claims.preferred_username);
+  function(iss, sub, profile, accessToken, refreshToken, done) {
+    log.info('Example: Email address we received was: ', profile.email);
     // asynchronous verification, for effect...
     process.nextTick(function () {
-      findByEmail(claims.preferred_username, function(err, user) {
+      findByEmail(profile.email, function(err, user) {
         if (err) {
           return done(err);
         }
         if (!user) {
           // "Auto-registration"
-          users.push(claims);
-          return done(null, claims);
+          users.push(profile);
+          return done(null, profile);
         }
         return done(null, user);
       });
@@ -138,7 +144,7 @@ Passport は、すべての戦略ライターが従うすべての戦略 (Twitte
 //   this will be as simple as storing the user ID when serializing, and finding
 //   the user by ID when deserializing.
 passport.serializeUser(function(user, done) {
-  done(null, user.preferred_username);
+  done(null, user.email);
 });
 
 passport.deserializeUser(function(id, done) {
@@ -153,7 +159,8 @@ var users = [];
 var findByEmail = function(email, fn) {
   for (var i = 0, len = users.length; i < len; i++) {
     var user = users[i];
-    if (user.preferred_username === email) {
+    log.info('we are using user: ', user);
+    if (user.email === email) {
       return fn(null, user);
     }
   }
@@ -193,15 +200,16 @@ app.configure(function() {
 
 ```JavaScript
 
-// Our POST routes (Section 3)
+// Our Auth routes (Section 3)
 
-// POST /auth/openid
+// GET /auth/openid
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in OpenID authentication will involve redirecting
 //   the user to their OpenID provider.  After authenticating, the OpenID
 //   provider will redirect the user back to this application at
 //   /auth/openid/return
-app.post('/auth/openid',
+
+app.get('/auth/openid',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
     log.info('Authenitcation was called in the Sample');
@@ -216,21 +224,29 @@ app.post('/auth/openid',
 app.get('/auth/openid/return',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
-    log.info('We received a return from AzureAD.');
+    
     res.redirect('/');
   });
 
-app.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
+// POST /auth/openid/return
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  If authentication fails, the user will be redirected back to the
+//   login page.  Otherwise, the primary route function function will be called,
+//   which, in this example, will redirect the user to the home page.
+
+app.post('/auth/openid/return',
+  passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
+  function(req, res) {
+    
+    res.redirect('/');
+  });
 ```
 
 ## 4\.Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
 
-OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するように、アプリが適切に構成されました。認証メッセージの作成、Azure AD からのトークンの検証、ユーザー セッションの維持とった細かな処理は、すべて `passport-azure-ad` が行います。残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
+OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するように、アプリが適切に構成されました。認証メッセージの作成、Azure AD からのトークンの検証、ユーザー セッションの維持といった細かな処理は、すべて `passport-azure-ad` が行います。残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
 
-- まず、既定の login メソッド、account メソッド、および logout メソッドを `app.js` ファイルに追加します。
+- まず、既定のメソッド、login メソッド、account メソッド、および logout メソッドを `app.js` ファイルに追加します。
 
 ```JavaScript
 
@@ -244,7 +260,7 @@ app.get('/account', ensureAuthenticated, function(req, res){
   res.render('account', { user: req.user });
 });
 
-app.get('/login', 
+app.get('/login',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
     log.info('Login was called in the Sample');
@@ -270,6 +286,7 @@ app.get('/logout', function(req, res){
 ```JavaScript
 
 // Simple route middleware to ensure user is authenticated. (Section 4)
+
 //   Use this route middleware on any resource that needs to be protected.  If
 //   the request is authenticated (typically via a persistent login session),
 //   the request will proceed.  Otherwise, the user will be redirected to the
@@ -278,6 +295,7 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
 }
+
 ```
 
 - 最後に、`app.js` でサーバーそのものを実際に作成します。
@@ -296,6 +314,7 @@ app.listen(3000);
 - ルート ディレクトリの下に `/routes/index.js` ルートを作成します。
 
 ```JavaScript
+
 /*
  * GET home page.
  */
@@ -308,6 +327,7 @@ exports.index = function(req, res){
 - ルート ディレクトリの下に `/routes/user.js` ルートを作成します。
 
 ```JavaScript
+
 /*
  * GET users listing.
  */
@@ -326,7 +346,7 @@ exports.list = function(req, res){
 	<h2>Welcome! Please log in.</h2>
 	<a href="/login">Log In</a>
 <% } else { %>
-	<h2>Hello, <%= user.name %>.</h2>
+	<h2>Hello, <%= user.displayName %>.</h2>
 	<a href="/account">Account Info</a></br>
 	<a href="/logout">Log Out</a>
 <% } %>
@@ -339,15 +359,21 @@ exports.list = function(req, res){
 	<h2>Welcome! Please log in.</h2>
 	<a href="/login">Log In</a>
 <% } else { %>
-<p>displayName: <%= user.name %></p>
-<p>Profile ID: <%= user.sub %></p>
+<p>displayName: <%= user.displayName %></p>
+<p>givenName: <%= user.name.givenName %></p>
+<p>familyName: <%= user.name.familyName %></p>
+<p>UPN: <%= user._json.upn %></p>
+<p>Profile ID: <%= user.id %></p>
+<p>Full Claimes</p>
+<%- JSON.stringify(user) %>
+<p></p>
 <a href="/logout">Log Out</a>
 <% } %>
 ```
 
 - 最後に、レイアウトを追加して、見やすくします。ルート ディレクトリの下に '/views/layout.ejs' ビューを作成します。
 
-```JavaScript
+```HTML
 
 <!DOCTYPE html>
 <html>
@@ -391,4 +417,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 その他のリソースについては、次を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

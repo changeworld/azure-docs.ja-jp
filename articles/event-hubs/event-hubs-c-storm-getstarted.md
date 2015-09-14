@@ -12,8 +12,8 @@
 	ms.workload="core"
 	ms.tgt_pltfrm="c"
 	ms.devlang="java"
-	ms.topic="article" 
-	ms.date="07/21/2015"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="sethm"/>
 
 # Event Hubs の使用
@@ -38,7 +38,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 ## Event Hub を作成する
 
-1. [Microsoft Azure 管理ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure ポータル]にログオンし、画面の下部にある **[新規]** をクリックします。
 
 2. **[App Services]**、**[Service Bus]**、**[イベント ハブ]**、**[簡易作成]** の順にクリックします。
 
@@ -80,7 +80,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 	![][23]
 
-> [AZURE.NOTE]このチュートリアルでは、Storm をローカル モードで開発目的にのみ使用します。Storm の開発とパターンの詳細については、「[HDInsight Storm の概要]」と、[Apache Storm] の公式ドキュメントを参照してください。
+> [AZURE.NOTE]このチュートリアルでは、Storm をローカル モードで開発目的にのみ使用します。Storm のデプロイとパターンの詳細については、「[HDInsight Storm の概要]」と、[Apache Storm] の公式ドキュメントを参照してください。
 
 ## 次のステップ
 
@@ -101,7 +101,7 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [23]: ./media/event-hubs-c-storm-getstarted/receive-storm3.png
 
 <!-- Links -->
-[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure ポータル]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
 
@@ -111,4 +111,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

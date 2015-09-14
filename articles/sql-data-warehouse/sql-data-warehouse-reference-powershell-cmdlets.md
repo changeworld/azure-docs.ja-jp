@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-services"
-	ms.date="06/29/2015"
-	ms.author="sidneyh;barbkess"/>
+	ms.date="08/28/2015"
+	ms.author="twounder;sidneyh;barbkess"/>
 
 # Azure Data Warehouse コマンドレットと REST API の概要
 
@@ -27,8 +27,8 @@ SQL Data Warehouse は、Azure PowerShell コマンドレットまたは REST AP
 ## Azure PowerShell コマンドレットの取得と実行
 
 1. Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。 
-2. 2. モジュールを実行するには、スタート ウィンドウに「**Microsoft Azure PowerShell**」と入力します。
-3. コンピューターにアカウントをまだ追加していない場合は、次のコマンドレットを実行します (詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure/)」を参照してください)。
+2. モジュールを実行するには、スタート ウィンドウに「**Microsoft Azure PowerShell**」と入力します。
+3. コンピューターにアカウントをまだ追加していない場合は、次のコマンドレットを実行します (詳細については、「[Azure PowerShell のインストールおよび構成方法]()」を参照してください)。
 
 		Add-AzureAccount
 3. 次のコマンドレットを使用してモードを切り替えます。
@@ -101,6 +101,7 @@ RestorePointCreationDate |バックアップのスナップショット時間 (r
 
 <!--Article references-->
 [SQL Data Warehouse のリファレンス概要]: sql-data-warehouse-overview-reference.md
+[How to install and configure Azure PowerShell]: powershell-install-configure.md
 
 <!--MSDN references-->
 
@@ -110,4 +111,4 @@ RestorePointCreationDate |バックアップのスナップショット時間 (r
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="チュートリアル: Application Insights から SQL Database へのテレメトリのエクスポート" 
-	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。" 
-	services="application-insights" 
-    documentationCenter=""
-	authors="noamben" 
+	pageTitle="チュートリアル: Application Insights から SQL Database へのテレメトリのエクスポート"
+	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。"
+	services="application-insights"
+	documentationCenter=""
+	authors="noamben"
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/13/2015" 
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/31/2015"
 	ms.author="awills"/>
  
 # チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
@@ -92,12 +92,16 @@
 
     ![イベントの種類の選択](./media/app-insights-code-sample-export-sql-stream-analytics/085-types.png)
 
-ここで、しばらく待機し、ユーザーにアプリケーションを使用させます。テレメトリが開始し、統計グラフが[メトリックス エクスプローラー][metrics]に表示され、個々のイベントが[診断検索][diagnostic]に表示されます。
 
-また、データがストレージにエクスポートされます。そこで内容を検査できます。たとえば、Visual Studio にはストレージ ブラウザーがあります。
+3. データを蓄積します。しばらく待機し、ユーザーにアプリケーションを使用してもらいます。テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](app-insights-metrics-explorer.md)に表示され、個々のイベントが[診断検索](app-insights-diagnostic-search.md)に表示されます。
 
+    また、データはストレージにもエクスポートされます。
 
-![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
+4. エクスポートされたデータを検査します。Visual Studio で、**[表示]、[Cloud Explorer]** の順に選択します。[Azure]、[ストレージ] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+
+    ![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
+
+    パス名の共通部分を書き留めます。共通部分はアプリケーションの名前とインストルメンテーション キーから派生します。
 
 イベントが JSON 形式で BLOB ファイルに書き込まれます。各ファイルに 1 つ以上のイベントが含まれる場合があります。このため、イベント データを読み取って必要なフィールドをフィルター処理します。データの処理に関して行えることはありますが、今日の計画は、Stream Analytics を使用してデータを SQL database に移動することです。それにより、興味深い多くのクエリを実行しやすくなります。
 
@@ -161,7 +165,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/34-create-table.png)
 
-このサンプルでは、ページ ビューからデータを使用します。使用可能なその他のデータを確認するには、JSON 出力を検査して、[データのエクスポート モデル](app-insights-export-data-model.md)を確認してください。
+このサンプルでは、ページ ビューからデータを使用します。使用可能なその他のデータを確認するには、JSON 出力を検査し、[データのエクスポート モデルに関するページ](app-insights-export-data-model.md)を確認してください。
 
 ## Azure Stream Analytics インスタンスの作成
 
@@ -194,15 +198,15 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 日付の書式は YYYY-MM-DD (ダッシュ付き) に設定してください。
 
-パスのプレフィックス パターンは、Stream Analytics がストレージ内の入力ファイルを検索する方法を指定します。連続エクスポートによるデータ格納方法と一致するようセットアップする必要があります。次のように設定します。
+パスのプレフィックス パターンは、Stream Analytics がストレージ内の入力ファイルを検索する方法を指定します。連続エクスポートによるデータ格納方法と一致するように設定する必要があります。次のように設定します。
 
-    webapplication27_100000000-0000-0000-0000-000000000000/PageViews/{date}/{time}
+    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 次の点に注意してください。
 
-* `webapplication27` は Application Insights リソースの名前です。 
-* `1000...` は Application Insights リソースのインストルメンテーション キーです。 
-* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べ、その他の使用可能な種類と[データのエクスポート モデル](app-insights-export-data-model.md)をご確認ください。
+* `webapplication27` は Application Insights リソースの名前です。**すべて小文字で指定します。** 
+* `1234...` は Application Insights リソースのインストルメンテーション キーです。**ダッシュは削除します。** 
+* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べて、その他の使用可能な種類を確認します。[データのエクスポート モデルに関するページ](app-insights-export-data-model.md)を参照してください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
 Application Insights リソースの名前と iKey を取得するには、概要ページの [Essentials] を開くか、[設定] を開きます。
@@ -259,7 +263,7 @@ Application Insights リソースの名前と iKey を取得するには、概�
 
 ```
 
-最初のいくつかのプロパティはページ ビュー データに固有のプロパティです。他のテレメトリの種類のエクスポートにはそれぞれ異なるプロパティがあります。
+最初のいくつかのプロパティはページ ビュー データに固有のプロパティです。他のテレメトリの種類のエクスポートにはそれぞれ異なるプロパティがあります。[プロパティの型と値の詳細なデータ モデル リファレンス](app-insights-export-data-model.md)を参照してください。
 
 ## データベースへの出力のセットアップ
 
@@ -294,6 +298,7 @@ SQL データベースを指定します。
 ## 関連記事:
 
 * [worker ロールを使用して SQL にエクスポートする](app-insights-code-sample-export-telemetry-sql-database.md)
+* [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](app-insights-export-data-model.md)
 * [Application Insights での連続エクスポート](app-insights-export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
@@ -307,4 +312,4 @@ SQL データベースを指定します。
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

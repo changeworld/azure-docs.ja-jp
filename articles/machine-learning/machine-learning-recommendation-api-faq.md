@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Machine Learning Recommendations API の設定と使用 | Microsoft Azure" 
-	description="Azure Machine Learning で作成された Microsoft Recommendations API の FAQ" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="jaymathe" 
-	manager="paulettm" 
+	pageTitle="Machine Learning Recommendations API の設定と使用 | Microsoft Azure"
+	description="Azure Machine Learning で作成された Microsoft Recommendations API の FAQ"
+	services="machine-learning"
+	documentationCenter=""
+	authors="jaymathe"
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/19/2015" 
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="luisca"/>
 
 #Machine Learning Recommendations API の設定と使用に関する FAQ
@@ -130,4 +130,4 @@ API ドキュメントは、「[Azure Machine Learning Recommendations - クイ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

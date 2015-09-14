@@ -1,33 +1,33 @@
 <properties 
-	pageTitle="Azure Blob ストレージとの間のデータの移動 | Microsoft Azure" 
-	description="Azure Blob ストレージとの間のデータの移動" 
-	services="machine-learning,storage" 
-	documentationCenter="" 
-	authors="msolhab" 
-	manager="paulettm" 
-	editor="cgronlun" />
+	pageTitle="Azure Blob ストレージとの間のデータの移動 | Microsoft Azure"
+	description="Azure Blob ストレージとの間のデータの移動"
+	services="machine-learning,storage"
+	documentationCenter=""
+	authors="msolhab"
+	manager="paulettm"
+	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/29/2015" 
-	ms.author="sunliangms;sachouks;mohabib;bradsev" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
+	ms.author="sunliangms;sachouks;mohabib;bradsev"/>
 
 # Azure Blob ストレージとの間のデータの移動
 
-高度な分析プロセスで使用されるさまざまなデータ サイエンス ワークフローで必要なリソースを確認するには、記事「[Azure Machine Learning での Advanced Analytics Process and Technology (ADAPT) のためのシナリオ](../machine-learning-data-science-plan-sample-scenarios.md)」が役立ちます。Azure Blob ストレージとの間でデータを移動する必要がある場合、次の方法のいずれかを使用します。
+このトピックでは、Azure Blob ストレージからデータを移動する 3 つの方法について説明します。
 
 - [Azure ストレージ エクスプローラーの使用](#explorer)
 - [AzCopy コマンド ライン ユーティリティの使用](#AzCopy)
 - [Python での Azure SDK の使用](#PythonSDK)
 
+最適な方法は、シナリオによって異なります。高度な分析プロセスで使用されるさまざまなデータ サイエンス ワークフローで必要なリソースを確認するには、記事「[Azure Machine Learning での Advanced Analytics Process and Technology (ADAPT) のためのシナリオ](../machine-learning-data-science-plan-sample-scenarios.md)」が役立ちます。
 
-> [AZURE.TIP]別の方法として、[Azure Data Factory](https://azure.microsoft.com/ja-jp/services/data-factory/) を使用して、Azure BLOB ストレージからデータをダウンロードして公開済みの Azure Machine Learning Web サービスに渡し、予測分析の結果を受け取ってストレージにアップロードするパイプラインを作成してスケジュールできます。詳細については、「[Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する](../data-factory/data-factory-create-predictive-pipelines.md)」を参照してください。
+> [AZURE.TIP]別の方法として、[Azure Data Factory](https://azure.microsoft.com/ja-JP/services/data-factory/) を使用して、Azure BLOB ストレージからデータをダウンロードして公開済みの Azure Machine Learning Web サービスに渡し、予測分析の結果を受け取ってストレージにアップロードするパイプラインを作成してスケジュールできます。詳細については、「[Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する](../data-factory/data-factory-create-predictive-pipelines.md)」を参照してください。
 
-<para></para>
 
 > [AZURE.NOTE]Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB Service](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
@@ -181,4 +181,4 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 [3]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img3.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Mobile Services .NET バックエンドによる既存の SQL データベースを使用するサービスの作成 | Microsoft Azure" 
-	description="既存のクラウドまたはオンプレミス SQL データベースと .NET ベースのモバイル サービスを使用する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="Mobile Services .NET バックエンドによる既存の SQL データベースを使用するサービスの作成 | Microsoft Azure"
+	description="既存のクラウドまたはオンプレミス SQL データベースと .NET ベースのモバイル サービスを使用する方法について説明します。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="ggailey777"
+	manager="dwrede"
 	editor="mollybos"/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="05/20/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="glenga"/>
 
 
@@ -39,7 +39,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
             {
                 [Key]
                 public int CustomerId { get; set; }
-                
+
                 public string Name { get; set; }
 
                 public virtual ICollection<Order> Orders { get; set; }
@@ -48,7 +48,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
         }
 
 3. **Order.cs** ファイルを **Models** フォルダーに作成して、次の実装を使用します。
-    
+
         using System.ComponentModel.DataAnnotations;
 
         namespace ShoppingService.Models
@@ -65,7 +65,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
                 public bool Completed { get; set; }
 
                 public int CustomerId { get; set; }
-              
+
                 public virtual Customer Customer { get; set; }
 
             }
@@ -144,7 +144,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
     **Customer** リレーションシップ プロパティが、**Customer** の名前と、クライアントでリレーションシップを手動でモデル化するために使用できる **MobileCustomerId** プロパティに置き換えられます。ここでは、**CustomerId** プロパティを無視できます。これは、後で使用されるだけです。
 
 3. **EntityData** 基本クラスにシステム プロパティが追加されて、DTO にモデルの型よりも多くのプロパティがあることが確認できます。これらのプロパティを保存する場所が必要なのは明らかなため、元のデータベースにいくつかの列を追加します。これによりデータベースが変更されますが、変更は単なる追加 (スキーマへの新しい列の追加) であるため既存のアプリケーションを損なうことはありません。これを実行するには、次のステートメントを **Customer.cs** と **Order.cs** の先頭に追加します。
-    
+
         using System.ComponentModel.DataAnnotations.Schema;
         using Microsoft.WindowsAzure.Mobile.Service.Tables;
         using System.ComponentModel.DataAnnotations;
@@ -174,7 +174,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
         public byte[] Version { get; set; }
 
 4. 先ほど追加したシステム プロパティには、データベースの操作で透過的に発生する組み込みの動作 (作成日時/更新日時の自動更新など) がいくつか備わっています。これらの動作を有効にするには、**ExistingContext.cs** を変更する必要があります。ファイルの先頭に、次を追加します。
-    
+
         using System.Data.Entity.ModelConfiguration.Conventions;
         using Microsoft.WindowsAzure.Mobile.Service.Tables;
         using System.Linq;
@@ -188,7 +188,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
                     "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
 
             base.OnModelCreating(modelBuilder);
-        } 
+        }
 
 5. ここで、いくつかのサンプル データをデータベースに入力します。ファイル **WebApiConfig.cs** を開きます。新しい [**IDatabaseInitializer**](http://msdn.microsoft.com/library/gg696323.aspx) を作成し、以下のように **Register** メソッド内で構成します。
 
@@ -227,11 +227,11 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
                     List<Customer> customers = new List<Customer>
                     {
-                        new Customer { CustomerId = 1, Name = "John", Orders = new Collection<Order> { 
+                        new Customer { CustomerId = 1, Name = "John", Orders = new Collection<Order> {
                             orders[0]}, Id = Guid.NewGuid().ToString()},
-                        new Customer { CustomerId = 2, Name = "Paul", Orders = new Collection<Order> { 
+                        new Customer { CustomerId = 2, Name = "Paul", Orders = new Collection<Order> {
                             orders[1]}, Id = Guid.NewGuid().ToString()},
-                        new Customer { CustomerId = 3, Name = "Ringo", Orders = new Collection<Order> { 
+                        new Customer { CustomerId = 3, Name = "Ringo", Orders = new Collection<Order> {
                             orders[2]}, Id = Guid.NewGuid().ToString()},
                     };
 
@@ -318,7 +318,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
                 {
                     return (T)(object)GetKey(mobileCustomerId, this.context.Customers, this.Request);
                 }
-                
+
                 public override SingleResult<MobileCustomer> Lookup(string mobileCustomerId)
                 {
                     int customerId = GetKey<int>(mobileCustomerId);
@@ -605,7 +605,7 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
             public DateTimeOffset? UpdatedAt { get; set; }
 
             public bool Deleted { get; set; }
-            
+
             [Version]
             public string Version { get; set; }
 
@@ -615,4 +615,4 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
 次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。詳細については、[既存のアプケーションへの Mobile Services の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md#update-the-app-to-use-the-mobile-service)を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

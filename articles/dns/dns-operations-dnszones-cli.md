@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="08/02/2015"
+	ms.date="09/02/2015"
 	ms.author="joaoma"/>
 
 # DNS ゾーンの管理方法
@@ -26,9 +26,9 @@
 
 ## 新しい DNS ゾーンの作成
 
-ドメインをホストする新しい DNS ゾーンを作成するには、`azure network dns-zone create` を使用します。
+ドメインをホストする新しい DNS ゾーンを作成するには、`azure network dns zone create` を使用します。
 
-		Azure network dns-zone create -n contoso.com -g myresourcegroup -t "project=demo";"env=test"
+		Azure network dns zone create -n contoso.com -g myresourcegroup -t "project=demo";"env=test"
 
 この操作は、Azure DNS に新しい DNS ゾーンを作成します。必要に応じて、Azure リソース マネージャーのタグの配列を指定することができます。詳細については、「[Etag とタグ](dns-getstarted-create-dnszone.md#Etags-and-tags)」を参照してください。
 
@@ -38,33 +38,33 @@
 
 ## DNS ゾーンの取得
 
-DNS ゾーンを取得するには、`azure network dns-zone show` を使用します。
+DNS ゾーンを取得するには、`azure network dns zone show` を使用します。
 
-	azure network dns-zone show myresourcegroup contoso.com
+	azure network dns zone show myresourcegroup contoso.com
 
 この操作は、DNS ゾーンとその ID、レコード セットの数、タグを返します。
 
 
 ## DNS ゾーンの一覧表示
 
-リソース グループ内の DNS ゾーンを取得するには、`azure network dns-zone list` を使用します。
+リソース グループ内の DNS ゾーンを取得するには、`azure network dns zone list` を使用します。
 
-	azure network dns-zone list myresourcegroup
+	azure network dns zone list myresourcegroup
 
 
 ## DNS ゾーンの更新
 
-DNS ゾーンのリソースへの変更は、`azure network dns-zone set` を使用して行うことができます。これによって、ゾーン内の DNS レコード セットが更新されることはありません (「[DNS レコードの管理方法](dns-operations-recordsets.md)」を参照)。この操作は、ゾーンのリソース自体のプロパティを更新するためだけに使用します。現時点では、この操作は、ゾーンのリソースの Azure リソース マネージャーの "タグ" に限定されています。詳細については、「[Etag とタグ](dns-getstarted-create-dnszone.md#Etags-and-tags)」を参照してください。
+DNS ゾーンのリソースへの変更は、`azure network dns zone set` を使用して行うことができます。これによって、ゾーン内の DNS レコード セットが更新されることはありません (「[DNS レコードの管理方法](dns-operations-recordsets.md)」を参照)。この操作は、ゾーンのリソース自体のプロパティを更新するためだけに使用します。現時点では、この操作は、ゾーンのリソースの Azure リソース マネージャーの "タグ" に限定されています。詳細については、「[Etag とタグ](dns-getstarted-create-dnszone.md#Etags-and-tags)」を参照してください。
 
-	azure network dns-zone set myresourcegroup contoso.com -t prod=value2
+	azure network dns zone set myresourcegroup contoso.com -t prod=value2
 
 ## DNS ゾーンの削除
 
-DNS ゾーンは、`azure network dns-zone delete` を使用して削除できます。
+DNS ゾーンは、`azure network dns zone delete` を使用して削除できます。
  
 Azure DNS の DNS ゾーンを削除する前に、ゾーンの作成時に自動的にゾーンのルートに作成された NS レコードと SOA レコードを除くすべてのレコード セットを削除する必要があります。
 
-	azure network dns-zone delete myresourcegroup contoso.com 
+	azure network dns zone delete myresourcegroup contoso.com 
 
 この操作では、オプションの "-q" スイッチが使用されます。これにより、DNS ゾーンを削除するかどうかの確認メッセージは表示されなくなります。
 
@@ -76,4 +76,4 @@ Azure DNS の DNS ゾーンを削除する前に、ゾーンの作成時に自�
 
 [.NET SDK を使用した操作の自動化](dns-sdk.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

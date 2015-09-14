@@ -1,31 +1,29 @@
 <properties 
    pageTitle="StorSimple バックアップ カタログの管理 | Microsoft Azure"
-   description="StorSimple Manager サービスを使用して、ボリュームのバックアップ セットを管理する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
+	description="StorSimple Manager サービスの [バックアップ カタログ] ページを使用して、ボリュームのバックアップ セットを一覧表示、選択、および削除する方法を説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/13/2015"
-   ms.author="v-sharos" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="09/01/2015"
+	ms.author="v-sharos"/>
 
-# StorSimple バックアップ カタログの管理
+# StorSimple Manager サービスを使用してバックアップ カタログを管理する
 
 ## 概要
 
-**[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
+StorSimple Manager サービスの **[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
 このチュートリアルでは、バックアップ セットを一覧表示、選択、削除する方法について説明します。バックアップからデバイスを復元する方法については、「[Restore your device from a backup set (バックアップ セットからデバイスを復元する)](storsimple-restore-from-backup-set.md)」をご覧ください。ボリュームを複製する方法については、「[￼StorSimple ボリュームの複製￼](storsimple-clone-volume.md)」をご覧ください。
 
 ![バックアップ カタログ](./media/storsimple-manage-backup-catalog/HCS_BackupCatalog.png)
-
-**図 1: バックアップ カタログ**
 
 **[バックアップ カタログ]** ページには、バックアップ セットの選択を絞り込むことができるクエリが用意されています。次のパラメーターに基づいて、取得するバックアップ セットをフィルター選択できます。
 
@@ -117,4 +115,4 @@
 
 [バックアップ カタログ] ページを使用して[バックアップ セットからデバイスを復元する](storsimple-restore-from-backup-set.md)方法について説明します。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

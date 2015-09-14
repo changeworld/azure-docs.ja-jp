@@ -1,6 +1,6 @@
 <properties
-   pageTitle="StorSimple 仮想デバイス | Microsoft Azure"
-	description="StorSimple 仮想デバイスを作成、構成、デプロイ、および管理する方法について説明します。"
+   pageTitle="Azure での StorSimple 仮想デバイス | Microsoft Azure"
+	description="Microsoft Azure 仮想ネットワークで StorSimple 仮想デバイスを作成、デプロイ、管理する方法を説明します。(StorSimple バージョン .3 およびそれ以前に適用されます。)"
 	services="storsimple"
 	documentationCenter=""
 	authors="alkohli"
@@ -12,18 +12,16 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="NA"
-	ms.date="08/21/2015"
+	ms.date="09/02/2015"
 	ms.author="alkohli"/>
 
-# StorSimple 仮想デバイス
+# Azure での StorSimple 仮想デバイスのデプロイと管理
 
 [AZURE.INCLUDE [storsimple-version-selector-sva](../../includes/storsimple-version-selector-sva.md)]
 
 ## 概要
 
 StorSimple 仮想デバイスは、Microsoft Azure StorSimple ソリューションに付属する追加的な機能です。StorSimple 仮想デバイスは Microsoft Azure の仮想ネットワーク内の仮想マシン上で動作します。この仮想マシンを使用して、ホストからデータをバックアップしたり、複製したりできます。この記事の次のトピックでは、StorSimple 仮想デバイスの概要のほか、構成方法や使用方法についてわかりやすく説明しています。
-
-
 
 - 仮想デバイスと物理デバイスの違い
 
@@ -129,7 +127,7 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 	1. **[名前]** – 仮想デバイスの一意の名前。
 
-	2. **[仮想ネットワーク]** – この仮想デバイスで使用する仮想ネットワークの名前。
+	2. **[Virtual Network]** – この仮想デバイスで使用する仮想ネットワークの名前。
 
 	3. **[サブネット]** – 仮想デバイスで使用する仮想ネットワーク上のサブネット。
 
@@ -386,4 +384,4 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 仮想デバイスを管理するには、[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md#administer-storsimple-device-using-storsimple-manager-service)に関するページでワークフローの詳細な一覧をご覧ください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=September15_HO1-->

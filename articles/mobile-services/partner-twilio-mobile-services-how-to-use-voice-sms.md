@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="音声および SMS 機能での Twilio の使用 | Microsoft Azure" 
-	description="Azure Mobile Services で Twilio API を使用して一般的なタスクを実行する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="devinrader" 
-	manager="twilio" 
+<properties
+	pageTitle="音声および SMS 機能での Twilio の使用 | Microsoft Azure"
+	description="Azure Mobile Services で Twilio API を使用して一般的なタスクを実行する方法について説明します。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="devinrader"
+	manager="twilio"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="04/24/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="devinrader"/>
 
 
@@ -84,7 +84,7 @@ Twilio は、Node.js ライブラリを提供します。このライブラリ�
 2. モバイル サービスのソース管理を設定した後、ローカル コンピューターでリポジトリを開き、`\services` サブフォルダーに移動して package.json ファイルをテキスト エディターで開き、**dependencies** オブジェクトに次のフィールドを追加します。
 
 		"twilio": "~1.7.0"
- 
+
 3. Twilio パッケージの参照を **dependencies** オブジェクトに追加すると、package.json ファイルは次のようになります。
 
 		{
@@ -96,7 +96,7 @@ Twilio は、Node.js ライブラリを提供します。このライブラリ�
 		    "node": ">= 0.8.19"
 		  },
 		  "dependencies": {
-			"twilio": "~1.7.0" 
+			"twilio": "~1.7.0"
 		  },
 		  "devDependencies": {},
 		  "scripts": {},
@@ -105,12 +105,12 @@ Twilio は、Node.js ライブラリを提供します。このライブラリ�
 		  "keywords":[]
 		}
 
-	>[AZURE.NOTE]Twilio の dependency は、`"twilio": "~1.7.0"` のように (\~) が追加されます。caret (^) を用いた参照はサポートされていません。
+	>[AZURE.NOTE]Twilio の dependency は、`"twilio": "~1.7.0"` のように (~) が追加されます。caret (^) を用いた参照はサポートされていません。
 
 4. このファイルへの更新をコミットし、更新をモバイル サービスにプッシュします。
 
 	この package.json ファイルへの更新によって、モバイル サービスが再起動します。
-	
+
 これでモバイル サービスは Twilio パッケージのインストールと読み込みを行うので、Twilio ライブラリを参照し、カスタム API やテーブル スクリプトで使用することができます。
 
 ## <a id="howto_make_call"></a>方法: 発信通話する
@@ -123,12 +123,12 @@ Twilio は、Node.js ライブラリを提供します。このライブラリ�
         var client = new twilio.RestClient('[ACCOUNT_SID]', 'AUTH_TOKEN');
 
         client.makeCall({
-            to:'+16515556677', 
+            to:'+16515556677',
             from: '+14506667788',
-            url: 'http://www.example.com/twiml.php' 
+            url: 'http://www.example.com/twiml.php'
 
         }, function(err, responseData) {
-            console.log(responseData.from); 
+            console.log(responseData.from);
             response.send(200, '');
         });
     };
@@ -145,13 +145,13 @@ Twilio は、Node.js ライブラリを提供します。このライブラリ�
     exports.post = function(request, response) {
 
         var client = new twilio.RestClient('[ACCOUNT_SID]', 'AUTH_TOKEN');
- 
+
         client.sendSms({
             to:'[]',
             from:'[]',
             body:'ahoy hoy! Testing Twilio and node.js'
         }, function(error, message) {
-    
+
             // The "error" variable will contain error information, if any.
             // If the request was successful, this value will be "false"
             if (!error) {
@@ -188,7 +188,7 @@ Twilio から提供される URL を使用する代わりに、HTTP 応答を返
 TwiML の詳細については、[https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml) を参照してください。
 
 TwiML 応答を提供する方法をセットアップしたら、次のコード サンプルで示すように、その URL を **client.makeCall** メソッドに渡すことができます。
-    
+
     var twilio = require('twilio');
 
     exports.post = function(request, response) {
@@ -196,9 +196,9 @@ TwiML 応答を提供する方法をセットアップしたら、次のコー�
         var client = new twilio.RestClient('[ACCOUNT_SID]', 'AUTH_TOKEN');
 
         client.makeCall({
-            to:'+16515556677', 
+            to:'+16515556677',
             from: '+14506667788',
-            url: 'http://<your_mobile_service>.azure-mobile.net/api/makeCall' 
+            url: 'http://<your_mobile_service>.azure-mobile.net/api/makeCall'
 
         }, function(err, responseData) {
 
@@ -228,6 +228,5 @@ TwiML 応答を提供する方法をセットアップしたら、次のコー�
 [azure_twilio_howto_ruby]: /develop/ruby/how-to-guides/twilio-voice-and-sms-service/
 [azure_twilio_howto_python]: /develop/python/how-to-guides/twilio-voice-and-sms-service/
 [azure_twilio_howto_php]: /develop/php/how-to-guides/twilio-voice-and-sms-service/
- 
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

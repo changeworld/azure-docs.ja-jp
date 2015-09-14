@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Microsoft Azure DocumentDB の概要 - 無料試用版 | Microsoft Azure" 
-	description="Azure DocumentDB (NoSQL ドキュメント データベース) とは何か、また、それがクラウド アプリケーションやモバイル アプリケーションにどのような価値をもたらすかについて説明します。Azure DocumentDB におけるデータの管理や、アプリケーション開発における Azure DocumentDB の活用方法について説明します。" 
-	services="documentdb" 
-	authors="mimig1" 
-	manager="jhubbard" 
-	editor="monicar" 
+	pageTitle="Microsoft Azure DocumentDB の概要 - 無料試用版 | Microsoft Azure"
+	description="Azure DocumentDB (NoSQL ドキュメント データベース) とは何か、また、それがクラウド アプリケーションやモバイル アプリケーションにどのような価値をもたらすかについて説明します。Azure DocumentDB におけるデータの管理や、アプリケーション開発における Azure DocumentDB の活用方法について説明します。"
+	services="documentdb"
+	authors="mimig1"
+	manager="jhubbard"
+	editor="monicar"
 	documentationCenter=""/>
 
 <tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/13/2015" 
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="mimig"/>
 
 # Microsoft Azure DocumentDB の概要
@@ -103,12 +103,11 @@ Azure アカウントをお持ちでない場合は、
 
 - [Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。これは 30 日間使用でき、すべての Azure サービスを試すには 200 ドルかかります。 
 - MSDN サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。 
-- または、クレジット カードを使用せずに 30 日間無料 DocumentDB を試してみる場合は、件名行を "Documentation Introduction, Azure Trial" として askdocdb@microsoft.com に電子メールをお送りください。提供が継続している間はプロモーション コードで対応させていただきます。
 
-次に、詳細を確認する準備ができたら、[ラーニング パス](http://azure.microsoft.com/documentation/learning-paths/documentdb/)のページにアクセスして、使用できるすべてのラーニング リソースを移動しながら確認します。
+詳細を確認する準備ができたら、[ラーニング パス](http://azure.microsoft.com/documentation/learning-paths/documentdb/)のページにアクセスして、使用できるすべてのラーニング リソースを移動しながら確認します。
 
 
 [1]: ./media/documentdb-introduction/resources1.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

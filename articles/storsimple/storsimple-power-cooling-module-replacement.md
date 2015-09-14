@@ -1,27 +1,25 @@
 <properties 
-   pageTitle="StorSimple デバイスの電源冷却モジュールを交換する | Microsoft Azure"
-   description="StorSimple デバイスの電源冷却モジュール (PCM) を取り外して交換する方法について説明します。"
-   services="storsimple"
-   documentationCenter=""
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
+   pageTitle="StorSimple デバイスの PCM を交換する | Microsoft Azure"
+	description="StorSimple デバイスの電源冷却モジュール (PCM) を取り外して交換する方法について説明します。"
+	services="storsimple"
+	documentationCenter=""
+	authors="alkohli"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/05/2015"
-   ms.author="alkohli" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/31/2015"
+	ms.author="alkohli"/>
 
 # StorSimple デバイスの電源冷却モジュールを交換する
 
 ## 概要
 
-Microsoft Azure StorSimple デバイスの電源冷却モジュール (PCM) は、主エンクロージャと EBOD エンクロージャを通して制御される電源と冷却ファンで構成されます。
-
-各エンクロージャで認定されている PCM のモデルは 1 つだけあります。主エンクロージャでは 764 W PCM が、EBOD エンクロージャでは 580 W PCM が認定されています。主エンクロージャと EBOD エンクロージャの PCM は異なりますが、交換手順は同じです。
+Microsoft Azure StorSimple デバイスの電源冷却モジュール (PCM) は、主エンクロージャと EBOD エンクロージャを通して制御される電源と冷却ファンで構成されます。各エンクロージャで認定されている PCM のモデルは 1 つだけあります。主エンクロージャでは 764 W PCM が、EBOD エンクロージャでは 580 W PCM が認定されています。主エンクロージャと EBOD エンクロージャの PCM は異なりますが、交換手順は同じです。
 
 このチュートリアルでは、次の方法について説明します。
 
@@ -56,7 +54,7 @@ PCM を交換する前に、次の重要な問題に注意してください。
 
      - PCM 1 の電源で障害が発生している場合は、**PCM 1 の電源**の状態が赤色になります。
 
-     - PCM 1 のファンに障害が発生した場合は、**PCM 0 の冷却装置 0**または **PCM 0 冷却装置 1** の状態が赤色になります。
+     - PCM 1 のファンに障害が発生した場合は、**PCM 0 の冷却装置 0** または **PCM 0 冷却装置 1** の状態が赤色になります。
 
 2. 主エンクロージャの背面で障害が発生した PCM を探します。8600 モデルを稼働させている場合は、フロント パネルの LED ディスプレイに表示されるシステム ユニット識別番号を見て、主エンクロージャを識別します。主エンクロージャに表示される既定のユニット ID は **00** であり、EBOD エンクロージャに表示される既定のユニット ID は **01** です。次の図と表で、LED ディスプレイのフロント パネルについて説明します。
 
@@ -154,4 +152,4 @@ StorSimple デバイスに PCM を取り付けるには次の手順に従いま�
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

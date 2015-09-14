@@ -1,18 +1,18 @@
-<properties 
-        pageTitle="Azure Active Directory シングル サインオンで iOS アプリのユーザーを認証する" 
-        description="Active Directory 認証ライブラリを使用した iOS アプリケーションへのユーザーのログイン方法について説明します。" 
-        documentationCenter="Mobile" 
-        authors="mattchenderson" 
-        services="app-service\mobile" 
-        manager="dwrede" />
+<properties
+        pageTitle="Azure Active Directory シングル サインオンで iOS アプリのユーザーを認証する"
+	description="Active Directory 認証ライブラリを使用した iOS アプリケーションへのユーザーのログイン方法について説明します。"
+	documentationCenter="Mobile"
+	authors="mattchenderson"
+	services="app-service\mobile"
+	manager="dwrede"/>
 
-<tags ms.service="app-service"
-ms.workload="mobile"
-ms.tgt_pltfrm="mobile-ios" 
-ms.devlang="objective-c" 
-ms.topic="article" 
-ms.date="05/19/2015" 
-ms.author="mahender" />
+<tags ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="05/19/2015"
+	ms.author="mahender"/>
 
 # iOS アプリに Azure Active Directory シングル サインオンを追加する
 
@@ -123,4 +123,4 @@ ADAL を使用してユーザーを認証できるようにするには、Azure 
  [Mobile Apps の使用]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
  [Add authentication to your app (アプリケーションに認証を追加する)]: app-service-mobile-dotnet-backend-ios-get-started-users-preview.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

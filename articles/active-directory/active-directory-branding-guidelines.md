@@ -1,20 +1,20 @@
 <properties
    pageTitle="アプリケーションのブランド化ガイドライン"
-   description="Azure Active Directory の開発者向けリソースの包括的なガイド"
-   services="active-directory"
-   documentationCenter="dev-center-name"
-   authors="msmbaldwin"
-   manager="mbaldwin"
-   editor=""/>
+	description="Azure Active Directory の開発者向けリソースの包括的なガイド"
+	services="active-directory"
+	documentationCenter="dev-center-name"
+	authors="msmbaldwin"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
    ms.service="active-directory"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="identity"
-   ms.date="07/30/2015"
-   ms.author="mbaldwin"/>
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="identity"
+	ms.date="08/25/2015"
+	ms.author="mbaldwin"/>
 
 
 # アプリケーションのブランド化ガイドライン
@@ -53,12 +53,12 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 ## アプリケーションの取得の表示に関するガイダンス
 
-"アプリケーションの入手" リンクでは、ユーザーを Azure AD のアクセス権の付与 (承認) ページにリダイレクトする必要があります。これにより、組織の管理者は、Microsoft がホストする組織のデータへのアクセス権をアプリケーションに付与できます。アクセス権を要求する方法の詳細については、「[アプリケーションの追加、更新、および削除](https://msdn.microsoft.com/library/azure/dn132599.aspx)」をご覧ください。
+"アプリケーションの入手" リンクでは、ユーザーを Azure AD のアクセス権の付与 (承認) ページにリダイレクトする必要があります。これにより、組織の管理者は、Microsoft がホストする組織のデータへのアクセス権をアプリケーションに付与できます。アクセス権の要求方法の詳細については、記事「[Azure Active Directory とアプリケーションの統合](active-directory-integrating-applications.md)」を参照してください。
 
 管理者は、アプリケーションに同意したら、ユーザーの Office 365 アプリ起動ツール (ワッフルおよび [https://portal.office.com/myapps](https://portal.office.com/myapps) からアクセス可能) にアプリケーションを追加することを選択できます。この機能を公表する場合は、"このアプリケーションを組織に追加" のような言葉を使って、次のようなボタンを表示できます。
 
 ![アプリケーションの種類とシナリオ](./media/active-directory-branding-guidelines/add-to-my-org.png)
-  
+
 ただし、ボタンに頼るのではなく、説明文を作成することをお勧めします。次に例を示します。
 > 「Office 365 や Microsoft の他のビジネス サービスを既にお使いの場合は、組織のデータへのアクセス権を <your_app_name> に簡単に付与できます。これにより、ユーザーは既存の職場アカウントを使用して <your_app_name> にアクセスできるようになります。」
 
@@ -66,9 +66,9 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 ## サインインの表示に関するガイダンス
 アプリケーションでは、Azure AD との統合に使用するプロトコルに対応するサインイン エンドポイントにユーザーをリダイレクトするサインイン ボタンを表示する必要があります。次のセクションでは、ボタンの外観について詳しく説明します。
 
-### ピクトグラムと "職場または学校アカウント" 
+### ピクトグラムと "職場または学校アカウント"
 これは、Microsoft のロゴと一般的な "職場または学校" という言葉を関連付けたものであり、アプリケーションがサポートするさまざまな ID プロバイダーの中で Azure AD を一意に表します。"職場または学校アカウント" と表記できるだけのスペースがない場合は、これを短縮して "職場アカウント" にしてもかまいません。
- 
+
 ![アプリケーションの種類とシナリオ](./media/active-directory-branding-guidelines/work-or-school-account.png)
 
 ![アプリケーションの種類とシナリオ](./media/active-directory-branding-guidelines/work-account.png)
@@ -76,7 +76,7 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 エンド ユーザーがこのボタンを使用できるかどうかがわかるように、次のような説明を追加することもできます。
 
 ![アプリケーションの種類とシナリオ](./media/active-directory-branding-guidelines/work-account-with-explaination.png)
- 
+
 ## ブランド化に関する注意事項
 Azure AD によるサインインを表すために、"職場または学校アカウント" は Microsoft のロゴと組み合わせて使用してください。スペースを重視する場合は、"職場アカウント" を使用してもかまいませんが、"企業アカウント"、"ビジネス アカウント"、"会社アカウント" などの他の言葉は使用しないでください。
 
@@ -94,6 +94,4 @@ Azure または Active Directory のブランドをエンド ユーザーに表�
 
 アプリケーションが Azure AD と Microsoft アカウントの両方をサポートしている場合、アプリケーションに 2 つのサインイン ボタンを用意する必要があります。Microsoft は、1 回の統合で Microsoft の個人アカウントと職場アカウントの両方をサポートできるようにするための更新プログラムに積極的に取り組んでいます。これが利用可能になれば、アプリケーションに 1 つの "Microsoft によるサインイン" ボタンを表示できるようになります。
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=September15_HO1-->

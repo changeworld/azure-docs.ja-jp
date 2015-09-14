@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Machine Learning Recommendations API ドキュメント | Microsoft Azure" 
-	description="推奨エンジンにおける Azure Machine Learning Recommendations API ドキュメントは Microsoft Azure Marketplace で入手できます。" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="AharonGumnik" 
-	manager="paulettm" 
+	pageTitle="Machine Learning Recommendations API ドキュメント | Microsoft Azure"
+	description="推奨エンジンにおける Azure Machine Learning Recommendations API ドキュメントは Microsoft Azure Marketplace で入手できます。"
+	services="machine-learning"
+	documentationCenter=""
+	authors="AharonGumnik"
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/10/2015" 
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2015"
 	ms.author="LuisCa"/>
 
 #Azure Machine Learning Recommendations API のドキュメント
@@ -57,9 +57,9 @@ Azure Machine Learning の Recommendations API は、10 個の倫理グループ
 
 - サブスクリプションごとのモデルの最大数は 10 です。
 - カタログが保持できる項目の最大数は 100,000 です。
-- 保持される使用状況ポイントの最大数は \~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
+- 保持される使用状況ポイントの最大数は ~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
 - POST で送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
-- 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は \~2TPS です。有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
+- 無効な推奨モデルのビルドの 1 秒あたりのトランザクションの数は ~2TPS です。有効な推奨モデルのビルドは、最大で 20TPS を保持できます。
 
 ##4\.API の概要
 
@@ -1586,7 +1586,7 @@ OData XML
 
 | HTTP メソッド | URI |
 |:--------|:--------|
-|GET |`<rootURI>/GetModelFeatures?modelId=%27<modelId>%27&samplingSize=%27<samplingSize>%27&rankBuildId=%27<rankBuildId>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/GetModelFeatures?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27&samplingSize=10%27&rankBuildId=%271000551%27&apiVersion=%271.0%27`
+|GET |`<rootURI>/GetModelFeatures?modelId=%27<modelId>%27&samplingSize=%27<samplingSize>%27&rankBuildId=<rankBuildId>&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/GetModelFeatures?modelId=%271c1110f8-7d9f-4c64-a807-4c9c5329993a%27&samplingSize=10%27&rankBuildId=1000551&apiVersion=%271.0%27`
 
 | パラメーター名 |	有効な値 |
 |:--------			|:--------			|
@@ -2861,4 +2861,4 @@ HTTP ステータス コード: 200
 このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> © 2015 Microsoft.All rights reserved.
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=September15_HO1-->

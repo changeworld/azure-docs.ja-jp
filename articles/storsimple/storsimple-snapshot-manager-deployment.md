@@ -1,21 +1,21 @@
 <properties 
    pageTitle="StorSimple Snapshot Manager のデプロイ | Microsoft Azure"
-   description="StorSimple Snapshot Manager をダウンロードしてインストールする方法を説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
+	description="StorSimple Snapshot Manager、MMC スナップインをダウンロードしてインストールし、StorSimple データ保護およびバックアップ機能を管理する方法を説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/17/2015"
-   ms.author="v-sharos" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="08/27/2015"
+	ms.author="v-sharos"/>
 
-# StorSimple Snapshot Manager のデプロイ
+# StorSimple Snapshot Manager MMC スナップインのデプロイ
 
 ## 概要
 
@@ -49,7 +49,7 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
     - Windows Server 2012
     - Windows Server 2012 R2
  
-    > [AZURE.NOTE]StorSimple 仮想デバイスの場合、ホストは Microsoft Azure Virtual Machine である必要があります。
+    >[AZURE.NOTE]StorSimple 仮想デバイスの場合、ホストは Microsoft Azure Virtual Machine である必要があります。
 
 3. すべての Microsoft Azure StorSimple 構成要件を満たしていることを確認します。詳細については、「[デプロイメントの前提条件](storsimple-deployment-walkthrough.md#deployment-prerequisites)」を確認してください。
 
@@ -95,7 +95,7 @@ StorSimple Snapshot Manager をインストールするには、以下の手順�
 
 3. **[圧縮 (ZIP 形式) フォルダーの展開]** ウィンドウの **[展開先の選択とファイルの展開]** ボックスに、ファイルの展開先にするパスを入力するか、参照して指定します。
 
-      >[AZURE.IMPORTANT]StorSimple Snapshot Manager は C: ドライブにインストールする必要があります。
+       >[AZURE.IMPORTANT]StorSimple Snapshot Manager は C: ドライブにインストールする必要があります。
  
 4. **[完了時に展開されたファイルを表示する]** チェック ボックスを選択し、**[抽出]** をクリックします。
 
@@ -255,4 +255,4 @@ StorSimple Snapshot Manager の詳細については、「[StorSimple Snapshot M
 
 StorSimple Snapshot Manager ユーザー インターフェイスの詳細については、「[StorSimple Snapshot Manager のユーザー インターフェイス](storsimple-use-snapshot-manager.md)」をご覧ください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

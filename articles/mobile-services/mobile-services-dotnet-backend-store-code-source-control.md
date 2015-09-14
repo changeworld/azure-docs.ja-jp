@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="ソース管理へのプロジェクトのコードの格納 | Microsoft Azure" 
-	description=".NET バックエンド プロジェクトをコンピューターのローカル Git リポジトリに格納し、リポジトリから発行する方法について説明します。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="ソース管理へのプロジェクトのコードの格納 | Microsoft Azure"
+	description=".NET バックエンド プロジェクトをコンピューターのローカル Git リポジトリに格納し、リポジトリから発行する方法について説明します。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="multiple" 
-	ms.topic="article" 
-	ms.date="05/20/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="06/16/2015"
 	ms.author="glenga"/>
 
 # ソース管理にプロジェクトのコードを格納する
@@ -32,7 +32,7 @@
 
 ##<a name="clone-repo"></a>Git をインストールし、ローカル リポジトリを作成する
 
-1. ローカル コンピューターに Git をインストールします。 
+1. ローカル コンピューターに Git をインストールします。
 
 	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
 
@@ -67,11 +67,11 @@
 2. Packages.config ファイルを残して、すべての NuGet パッケージ フォルダーを削除します。
 
 	モバイル サービスは、packages.confign ファイルに基づいて、NuGet パッケージを自動的に復元します。また、.gitignore ファイルを定義してパッケージのディレクトリが追加されないようにすることもできます。
- 
+
 3. Git コマンド プロンプトで次のコマンドを入力し、新しいスクリプト ファイルの追跡を開始します。
 
 		$ git add .
-	
+
 4. 次のコマンドを入力し、変更をコミットします。
 
 		$ git commit -m "adding the .NET backend service project"
@@ -79,7 +79,7 @@
 5. 変更をリモート リポジトリにアップロードするには、次のコマンドを入力し、資格情報を提供します。
 
 		$ git push origin master
-	
+
 	モバイル サービスにプロジェクトが配置され、パッケージが追加され、サービスの再起動することを示す一連のコマンドが表示されます。
 
 6. .NET バックエンドのモバイル サービスでの URL を参照すると、次が表示されます。
@@ -102,6 +102,5 @@
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [Call a custom API from the client]: mobile-services-dotnet-backend-ios-call-custom-api.md
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
- 
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->

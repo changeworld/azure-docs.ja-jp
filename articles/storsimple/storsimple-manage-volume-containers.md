@@ -1,21 +1,21 @@
 <properties 
    pageTitle="StorSimple ボリューム コンテナーの管理 | Microsoft Azure"
-   description="StorSimple Manager サービスの [ボリューム コンテナー] ページを使用して、ボリューム コンテナーを追加、変更、または削除する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
+	description="StorSimple Manager サービスの [ボリューム コンテナー] ページを使用して、ボリューム コンテナーを追加、変更、または削除する方法について説明します。"
+	services="storsimple"
+	documentationCenter="NA"
+	authors="SharS"
+	manager="carolz"
+	editor=""/>
 <tags 
    ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/14/2015"
-   ms.author="v-sharos" />
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="TBD"
+	ms.date="09/02/2015"
+	ms.author="v-sharos"/>
 
-# StorSimple ボリューム コンテナーの管理
+# StorSimple Manager サービスを使用して StorSimple ボリューム コンテナーを管理する
 
 ## 概要
 
@@ -66,4 +66,4 @@ Microsoft Azure StorSimple デバイスのボリューム コンテナーには�
 詳細については、「[StorSimple ボリュームの管理](storsimple-manage-volumes.md)」を参照してください。
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=September15_HO1-->
