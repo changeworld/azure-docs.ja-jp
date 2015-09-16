@@ -1,7 +1,7 @@
 1.	オンラインの [Microsoft Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
 2.	ジャンプバーで **[新規]**、**[データ + ストレージ]**、**[DocumentDB]** の順にクリックします。 
 
-	![[作成] ブレードの [新規] ボタンと [データ + ストレージ] 、および [データ + ストレージ] ブレードの Azure DocumentDB が強調表示された Azure プレビュー ポータルのスクリーン ショット][1]   
+	![Azure プレビュー ポータルのスクリーン ショット][1]   
 
 	<!-- Alternatively, from the Startboard, you can browse the Azure Marketplace, select **Data + storage**, choose **DocumentDB**, and then click **Create**.  -->
 
@@ -49,4 +49,4 @@
 [Next steps]: #NextSteps
 [documentdb-manage]: ../articles/documentdb/documentdb-manage.md
 
-<!---HONumber=August15_HO6-->
+<!----HONumber=August15_HO6-->
