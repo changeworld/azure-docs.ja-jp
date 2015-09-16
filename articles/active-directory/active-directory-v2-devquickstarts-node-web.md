@@ -43,16 +43,16 @@
 
 The completed application is provided at the end of this tutorial as well.
 
-## 1. Register an App
-Create a new app at [apps.dev.microsoft.com](https://apps.dev.microsoft.com), or follow these [detailed steps](active-directory-v2-app-registration.md).  Make sure to:
+## 1. アプリを登録します
+[apps.dev.microsoft.com](https://apps.dev.microsoft.com)で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います.  次のことを確認します
 
-- Copy down the **Application Id** assigned to your app, you'll need it soon.
-- Add the **Web** platform for your app.
-- Enter the correct **Redirect URI**. The redirect URI indicates to Azure AD where authentication responses should be directed - the default for this tutorial is `http://localhost:3000/auth/openid/return`.
+- アプリに割り当てられた**アプリケーション ID** を書き留めます。これは、後ですぐ必要になります。
+- アプリの **Web** プラットフォームを追加します。
+- 適切な**リダイレクト URI** を入力します。 は、認証の応答が送られる Azure AD を示します。このチュートリアルの既定値は `http://localhost:3000/auth/openid/return` です。
 
-## 2. Add pre-requisities to your directory
+## 2. ディレクトリに前提条件を追加する
 
-From the command-line, change directories to your root folder if not already there and run the following commands:
+コマンド ラインから、ディレクトリをルート フォルダーに移動し (まだルート フォルダーでない場合)、次のコマンドを実行します。
 
 - `npm install express`
 - `npm install ejs`
@@ -417,4 +417,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 その他のリソースについては、次を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=September15_HO1-->
+<!----HONumber=September15_HO1-->

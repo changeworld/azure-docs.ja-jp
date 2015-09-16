@@ -166,7 +166,7 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 
 **管理者**、**所有者**、**共同作成者** の 3 つのロールがあります。各ロールは、次の表に示すスコープと権限を持ちます。
 
-<table><tr><td><b>ロール</b></td><td><b>スコープ</b></td><td><b>権限</b></td></tr><tr><td>管理者</td><td>カタログ (カタログ内のすべての資産と注釈)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>所有者</td><td>各資産 (ルート項目とも呼ばれる)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>共同作成者</td><td>個別の各資産および注釈</td><td>Read Update Delete ViewRoles Note: all the rights are revoked if the Read right on the item is revoked from the Contributor</td></tr></table>
+<table><tr><td><b>ロール</b></td><td><b>スコープ</b></td><td><b>権限</b></td></tr><tr><td>管理者</td><td>カタログ (カタログ内のすべての資産と注釈)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>所有者</td><td>各資産 (ルート項目とも呼ばれる)</td><td>Read Delete ViewRoles ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>共同作成者</td><td>個別の各資産および注釈</td><td>Read Update Delete ViewRoles Note: 項目に対する共同作成者の読み取り権限が取り消されると、すべての権限が取り消されます</td></tr></table>
 
 > [AZURE.NOTE]**Read**、**Update**、**Delete**、**ViewRoles** 権限はいずれの項目 (資産または注釈) にも適用されますが、**TakeOwnership**、**ChangeOwnership**、**ChangeVisibility**、**ViewPermissions** はルート資産のみに適用されます。
 >
@@ -182,15 +182,15 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 
 ## REST API
 
-**PUT** および **POST** の "項目の表示" 要求を使用して、ロールおよびアクセス許可を制御することができます。項目のペイロードに加えて、**\_\_roles** と **\_\_permissions** の 2 つのシステム プロパティを指定できます。
+**PUT** および **POST** の "項目の表示" 要求を使用して、ロールおよびアクセス許可を制御することができます。項目のペイロードに加えて、**__roles** と **__permissions** の 2 つのシステム プロパティを指定できます。
 
 > [AZURE.NOTE]
 >
-> **__**\_\_permissions** は、ルート項目のみに適用されます。
+> **__permissions** は、ルート項目のみに適用されます。
 >
 > **所有者**ロールは、ルート項目のみに適用されます。
 >
-> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。項目がすべてのユーザーによって更新される必要がある場合、**共同作成者**は、項目が最初に公開されたときに **\_\_roles** プロパティで特別なセキュリティ プリンシパル <Everyone> に設定する必要があります (次の例を参照)。**共同作成者**は変更することができず、項目の有効期間中同じままになります (つまり、**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。**共同作成者**の明示的な設定に対してサポートされている唯一の値は、<Everyone> です。つまり、**共同作成者**には、項目または <Everyone> を作成したユーザーのみを指定できます。
+> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。項目がすべてのユーザーによって更新される必要がある場合、**共同作成者**は、項目が最初に公開されたときに **__roles** プロパティで特別なセキュリティ プリンシパル <Everyone> に設定する必要があります (次の例を参照)。**共同作成者**は変更することができず、項目の有効期間中同じままになります (つまり、**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。**共同作成者**の明示的な設定に対してサポートされている唯一の値は、<Everyone> です。つまり、**共同作成者**には、項目または <Everyone> を作成したユーザーのみを指定できます。
 
 ###例
 **項目を公開する場合は、共同作成者を <Everyone> に設定します。** 特別なセキュリティ プリンシパル <Everyone> の objectId は「00000000-0000-0000-0000-000000000201」です。**POST** https://123154bb...6aad6370ee14.datacatalog.azure.com/default/views/tables/?api-version=2015-07.1.0-Preview **本文**
@@ -258,4 +258,4 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
 
-<!---HONumber=September15_HO1-->
+<!----HONumber=September15_HO1-->

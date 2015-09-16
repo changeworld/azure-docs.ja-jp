@@ -63,4 +63,4 @@ Azure AD に対する認証を使用してこのシナリオを実証するコ�
 
 [Azure Active Directory のコード例](active-directory-code-samples.md)
 
-<!---HONumber=August15_HO8-->
+<!----HONumber=August15_HO8-->
