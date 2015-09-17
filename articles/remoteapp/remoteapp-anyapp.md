@@ -83,7 +83,6 @@ Access はデータベースです。せっかくのデータベースが役立�
 3. ここで、Azure [ストレージ アカウント](../storage-create-storage-account.md)を作成する必要があります。サンプルには「accessstorage」という名前が付いています。わかりやすい名前を 1 つ選んでください (「accessstorage」 という名前は 1 つしか使えないため)。
 ![Azure ストレージ アカウント](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
 4. 次に、ダッシュボードに戻り、ストレージ (エンドポイントの場所) へのパスを取得します。しばらくの間使用するので、このパスをどこかにコピーしておいてください。
-
 ![ストレージ アカウント パス](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
 5.ストレージ アカウントが作成されたら、次は、プライマリ アクセス キーが必要になります。**[アクセス キーの管理]** をクリックして、プライマリ アクセス キーをコピーします。
 6.ここで、ストレージ アカウントのコンテキストを設定し、Access 用の新しいファイル共有を作成します。管理者特権の Windows PowerShell ウィンドウで、次のコマンドレットを実行します。
@@ -117,4 +116,4 @@ Access はデータベースです。せっかくのデータベースが役立�
 
 <!--Image references-->
 
-<!---HONumber=September15_HO1-->
+<!----HONumber=September15_HO1-->
