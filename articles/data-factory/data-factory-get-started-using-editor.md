@@ -98,7 +98,7 @@
 
 	![Editr Azure SQL Settings][image-editor-azure-sql-settings]
 
-2. **servername**、**databasename**、****username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+2. **servername**、**databasename**、**username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
 3. ツール バーの **[デプロイ]** をクリックして、AzureSqlLinkedService を作成してデプロイします。 
    
 
@@ -328,7 +328,7 @@
 	-  **Set-AzureDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
-	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+	一覧のタイトルをクリックするか、**... (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
@@ -346,7 +346,7 @@
 	![table blade][image-data-factory-get-started-table-blade]
  
 7. 現在の時刻までのデータ スライスが既に生成されており、**[準備完了]** になっています。下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
-8. **[...] (省略記号)** をクリックし、すべてのスライスを表示します。
+8. **... (省略記号)** をクリックし、すべてのスライスを表示します。
 
 	![data slices blade][image-data-factory-get-started-dataslices-blade]
 
@@ -377,7 +377,8 @@
 4.	**パイプライン**を作成します。パイプラインは、入力を処理し、出力を生成する 1 つ以上のアクティビティで構成されます。パイプラインの **開始**時間と**終了**時間を指定して、パイプラインの有効期間を設定します。有効期間は、データ スライスが生成される期間を定義します。 
 
 
-サポートされているアクティビティの一覧については、トピック「[パイプラインとアクティビティ][msdn-activities]」を参照してください。サポートされているリンクされたサービスの一覧については、MSDN ライブラリのトピック「[リンクされたサービス][msdn-linkedservices]」を参照してください。
+サポートされているアクティビティの一覧については、トピック「[パイプラインとアクティビティ][msdn-activities]」を参照してください。
+サポートされているリンクされたサービスの一覧については、MSDN ライブラリのトピック「[リンクされたサービス][msdn-linkedservices]」を参照してください。
  
 Azure PowerShell を使用してこのチュートリアルの内容を実行する方法については、「[Azure PowerShell を使用した Azure Data Factory の監視と管理][monitor-manage-using-powershell]」を参照してください。
 
@@ -501,4 +502,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!----HONumber=September15_HO1-->
+<!------HONumber=September15_HO1-->

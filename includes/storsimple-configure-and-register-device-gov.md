@@ -78,7 +78,10 @@
 
      `Get-HcsSystem`
 
-    次のバージョンが表示されます。- HcsSoftwareVersion: 6.3.9600.17491 - CisAgentVersion: 1.0.9037.0 - MdsAgentVersion: 26.0.4696.1433
+    次のバージョンが表示されます。
+    - HcsSoftwareVersion: 6.3.9600.17491
+    - CisAgentVersion: 1.0.9037.0
+    - MdsAgentVersion: 26.0.4696.1433
  
 9. 次のコマンドレットを実行して、ファームウェアの更新が正しく適用されたことを確認します。
 
@@ -133,4 +136,4 @@
      
         
 
-<!----HONumber=August15_HO6-->
+<!------HONumber=August15_HO6-->

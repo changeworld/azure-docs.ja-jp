@@ -188,10 +188,15 @@ MSI のセットアップでは、ゲートウェイ コンピューターに対
 7.	**[資格情報]** ブレードで、**[ここをクリックして資格情報を設定する]** をクリックします。
 8.	**[資格情報の設定]** ダイアログ ボックスで、次の手順を実行します。
 
-	![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png) 1.Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。2.**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。3.**[パスワード]** の設定に、ユーザーのパスワードを入力します。4.**[OK]** をクリックしてダイアログ ボックスを閉じます。 
+	![[資格情報の設定] ダイアログ](./media/data-factory-move-data-between-onprem-and-cloud/setting-credentials-dialog.png)
+	1.	Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。
+	2.	**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。
+	3.	**[パスワード]** の設定に、ユーザーのパスワードを入力します。
+	4.	**[OK]** をクリックしてダイアログ ボックスを閉じます。 
 4. **[OK]** をクリックして **[資格情報]** ブレードを閉じます。 
 5. **[新しいデータ ストア]** ブレードで、**[OK]** をクリックします。 	
-6. [リンクされたサービス] ブレードで **SqlServerLinkedService** のステータスが [オンライン] に設定されていることを確認します。![SQL Server のリンクされているサービスの状態](./media/data-factory-move-data-between-onprem-and-cloud/sql-server-linked-service-status.png)
+6. [リンクされたサービス] ブレードで **SqlServerLinkedService** のステータスが [オンライン] に設定されていることを確認します。
+	![SQL Server のリンクされているサービスの状態](./media/data-factory-move-data-between-onprem-and-cloud/sql-server-linked-service-status.png)
 
 資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](#setting-credentials-and-security)」をご覧ください。
 
@@ -562,4 +567,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-move-data-between-onprem-and-cloud.md)でフィードバックをお寄せください。
 
-<!---HONumber=September15_HO1-->
+<!----HONumber=September15_HO1-->
