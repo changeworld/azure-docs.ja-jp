@@ -222,10 +222,10 @@ Service Bus トピックに送信されたメッセージは、**BrokeredMessage
 
 ## 次のステップ
 
-これで、Service Bus キューの基本を学習できました。詳細については、MSDN のトピック「[Service Bus のキュー、トピック、サブスクリプション][]」をご覧ください。
+これで、Service Bus キューの基本を学習できました。詳細については、[Service Bus のキュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
 
   [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
-  [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/ja-jp/library/azure/hh694271.aspx
+  [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/ja-JP/library/azure/hh694271.aspx
   [What are Service Bus Topics and Subscriptions?]: #what-are-service-bus-topics
   [Create a Service Namespace]: #create-a-service-namespace
   [Obtain the Default Management Credentials for the Namespace]: #obtain-default-credentials
@@ -244,7 +244,7 @@ Service Bus トピックに送信されたメッセージは、**BrokeredMessage
   [Namespace List screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-05.png
   [Properties Pane screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-06.png
   [Default Key screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-07.png
-  [Service Bus のキュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/hh367516.aspx
+  [Service Bus のキュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

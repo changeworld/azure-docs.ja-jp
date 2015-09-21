@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Notification Hubs の使用 | Microsoft Azure"
+	pageTitle="Azure Notification Hubs の使用 (iOS アプリ) | Microsoft Azure"
 	description="このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について学習します。"
 	services="notification-hubs"
 	documentationCenter="ios"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="09/02/2015"
+	ms.date="09/03/2015"
 	ms.author="wesmc"/>
 
-# Notification Hubs の使用
+# Notification Hubs の使用 (iOS アプリ)
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -161,8 +161,6 @@
 
 
 次の画面に示すように、通知ハブの [デバッグ] タブを使用して、Azure ポータルで通知を送信することで、アプリケーションで通知の受信テストを行うことができます。![][30]
-
-![][30]
 
 [AZURE.INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
@@ -510,4 +508,4 @@ iOS でプッシュ通知をテストするには、デバイスにアプリケ�
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

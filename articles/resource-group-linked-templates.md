@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure リソース マネージャーでのリンクされたテンプレートの使用"
-	description="Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。"
-	services="azure-resource-manager"
-	documentationCenter="na"
-	authors="tfitzmac"
-	manager="wpickett"
-	editor=""/>
+   description="Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。"
+   services="azure-resource-manager"
+   documentationCenter="na"
+   authors="tfitzmac"
+   manager="wpickett"
+   editor=""/>
 
 <tags
    ms.service="azure-resource-manager"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="09/02/2015"
-	ms.author="tomfitz"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/04/2015"
+   ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのリンクされたテンプレートの使用
 
@@ -44,7 +44,7 @@
       } 
     ] 
 
-リソース マネージャーはリンクされたテンプレートにアクセスできる必要があります。これは、リンクされたテンプレートにローカル ファイルを指定できないことを意味します。**http** または **https** のいずれかを含む値のみを指定できます。オプションの 1 つとして、ストレージ アカウントにリンク先のテンプレートを配置し、次に示すように、その項目の URI を使用します。
+リソース マネージャー サービスはリンクされたテンプレートにアクセスできる必要があります。このため、リンクされたテンプレートには、ローカル ファイルまたはローカル ネットワーク上でのみ使用できるファイルは指定できません。**http** または **https** のいずれかを含む値のみを指定できます。オプションの 1 つとして、ストレージ アカウントにリンク先のテンプレートを配置し、次に示すように、その項目の URI を使用します。
 
     "templateLink": {
         "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
@@ -110,4 +110,4 @@
 - [テンプレートの作成](./resource-group-authoring-templates.md)
 - [テンプレートのデプロイ](azure-portal/resource-group-template-deploy.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

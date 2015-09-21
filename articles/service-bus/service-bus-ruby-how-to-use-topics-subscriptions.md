@@ -213,9 +213,9 @@ Service Bus トピックでは、最大 256 MB までのメッセージをサポ
 
 これで、Service Bus トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   MSDN リファレンスの [Service Bus のキュー、トピック、サブスクリプション](http://msdn.microsoft.com/library/windowsazure/hh367516.aspx)
--   [SqlFilter](http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx) の API リファレンス
+-   [キュー、トピック、およびサブスクリプションに関するページ](service-bus-queues-topics-subscriptions.md)を参照してください。
+-   [SqlFilter](http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx) の API のリファレンス
 -	GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

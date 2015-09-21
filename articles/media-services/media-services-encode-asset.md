@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure オンデマンド メディア エンコーダーの概要と比較"
-	description="このトピックでは、Azure オンデマンド メディア エンコーダーの概要と比較を提供します。"
-	services="media-services"
-	documentationCenter=""
-	authors="juliako"
-	manager="dwrede"
+	pageTitle="Azure オンデマンド メディア エンコーダーの概要と比較" 
+	description="このトピックでは、Azure オンデマンド メディア エンコーダーの概要と比較を提供します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/07/2015"  
 	ms.author="juliako"/>
 
 #Azure オンデマンド メディア エンコーダーの概要と比較
@@ -238,6 +238,14 @@ MPEG Layer 2|いいえ|いいえ|あり
 MP3 (MPEG-1 Audio Layer 3)|いいえ|いいえ|あり
 Windows Media オーディオ|いいえ|あり|あり
 
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
 ##関連記事:
 
 - [クォータと制限](media-services-quotas-and-limitations.md)
@@ -246,4 +254,4 @@ Windows Media オーディオ|いいえ|あり|あり
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

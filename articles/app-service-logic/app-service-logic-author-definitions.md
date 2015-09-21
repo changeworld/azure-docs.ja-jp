@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="ロジック アプリの定義の作成"
-	description="ロジック アプリの JSON 定義を記述する方法について説明します。"
-	authors="stepsic-microsoft-com"
-	manager="dwrede"
-	editor=""
-	services="app-service\logic"
+	pageTitle="ロジック アプリの定義の作成" 
+	description="ロジック アプリの JSON 定義を記述する方法について説明します。" 
+	authors="stepsic-microsoft-com" 
+	manager="dwrede" 
+	editor="" 
+	services="app-service\logic" 
 	documentationCenter=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/08/2015"
 	ms.author="stepsic"/>
 	
 #ロジック アプリの定義の作成
@@ -686,6 +686,41 @@ Content-type: application/json
 }
 ``` 
 
-それぞれの環境で、`connection` パラメーターに異なる値を指定できます。ロジック アプリの作成と管理用に用意したすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/dn948513.aspx)を参照してください。
+それぞれの環境で、`connection` パラメーターに異なる値を指定できます。
 
-<!---HONumber=September15_HO1-->
+## 条件が満たされるまでステップを実行する
+
+API を呼び出しているときに、特定の応答を待ってから処理を行う必要のある場合があります。たとえば、他のユーザーがファイルをディレクトリにアップロードするのを待ってからそのファイルの処理する場合を考えます。これは、次のように *do-until* を使用して実行できます。
+
+```
+{
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2014-12-01-preview/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {},
+    "actions": {
+        "http0": {
+            "type": "Http",
+            "inputs": {
+                "method": "GET",
+                "uri": "http://mydomain/listfiles"
+            },
+            "until": {
+                "limit": {
+                    "timeout": "PT10M"
+                },
+                "conditions": [
+                    {
+                        "expression": "@greater(length(action().outputs.body),0)"
+                    }
+                ]
+            }
+        }
+    },
+    "outputs": {}
+}
+```
+
+ロジック アプリの作成と管理用に用意したすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/dn948513.aspx)を参照してください。
+
+<!---HONumber=Sept15_HO2-->

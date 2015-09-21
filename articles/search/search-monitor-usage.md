@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required" 
-   ms.date="07/08/2015"
+   ms.date="09/08/2015"
    ms.author="heidist"/>
 
 # Azure Search サービスでの使用状況と統計の監視
@@ -45,7 +45,7 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 
 ## 次のステップ
 
-「[制限および制約](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照して、既存の容量が不十分である場合は、必要とされるパーティションとレプリカの組み合わせについて判断します。
+「[制限および制約](search-limits-quotas-capacity.md)」を参照して、既存の容量が不十分である場合は、必要とされるパーティションとレプリカの組み合わせについて判断します。
 
 サービス管理の詳細については、「[Microsoft Azure で検索サービスを管理する](search-manage.md)」を参照してください。
 
@@ -57,4 +57,4 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

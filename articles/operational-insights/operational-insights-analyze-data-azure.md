@@ -47,7 +47,7 @@ Operational Insights のエージェントは [Azure ポータル](https://manag
 
 ![オペレーション インサイトの [サーバー] ページの画像](./media/operational-insights-analyze-data-azure/servers.png)
 
- >[AZURE.NOTE]Operational Insights にエージェントが自動的にインストールされるには、[Azure VM エージェント](https://msdn.microsoft.com/library/azure/dn832621.aspx)がインストールされている必要があります。
+ >[AZURE.NOTE]Operational Insights にエージェントが自動的にインストールされるには、[Azure VM エージェント](https://msdn.microsoft.com/library/azure/dn832621.aspx)がインストールされている必要があります。Azure リソース マネージャーの仮想マシンがある場合、一覧には表示されないため、PowerShell を使用するか ARM テンプレートを作成して、エージェントをインストールする必要があります。
 
 
 
@@ -56,6 +56,8 @@ Operational Insights のエージェントは [Azure ポータル](https://manag
 スクリプトで Azure 仮想マシンに変更を加える場合は、PowerShell を使用して、Microsoft Monitoring Agent を有効にできます。
 
 Microsoft Monitoring Agent は [Azure 仮想マシンの拡張機能](https://msdn.microsoft.com/library/azure/dn832621.aspx)で、次の例のように PowerShell を使用して管理できます。
+
+"従来の" Azure 仮想マシンの場合は、次の PowerShell を使用します。
 
 ```powershell
 Add-AzureAccount
@@ -66,6 +68,24 @@ $hostedService="enter hosted service here"
 
 $vm = Get-AzureVM –ServiceName $hostedService
 Set-AzureVMExtension -VM $vm -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionName 'MicrosoftMonitoringAgent' -Version '1.*' -PublicConfiguration "{'workspaceId':  '$workspaceId'}" -PrivateConfiguration "{'workspaceKey': '$workspaceKey' }" | Update-AzureVM -Verbose
+```
+Azure リソース マネージャーの仮想マシンの場合は、次の PowerShell を使用します。
+
+```powershell
+Add-AzureAccount
+Switch-AzureMode -Name AzureResourceManager
+
+$workspaceId="enter workspace here"
+$workspaceKey="enter workspace key here"
+
+$resourcegroup = "enter resource group"
+$resourcename = "enter resource group"
+
+$vm = Get-AzureVM -ResourceGroupName $resourcegroup -Name $resourcename
+$location = $vm.Location
+
+Set-AzureVMExtension -ResourceGroupName $resourcegroup -VMName $resourcename -Name 'MicrosoftMonitoringAgent' -Publisher 'Microsoft.EnterpriseCloud.Monitoring' -ExtensionType 'MicrosoftMonitoringAgent' -TypeHandlerVersion '1.0' -Location $location -SettingString "{'workspaceId':  '$workspaceId'}" -ProtectedSettingString "{'workspaceKey': '$workspaceKey' }"
+
 ```
 
 PowerShell を使用して構成する場合は、ワークスペース ID とプライマリ キーを指定する必要があります。ワークスペース ID とプライマリ キーは、Operational Insights ポータルにある、**[設定]** ページで見つけることができます。
@@ -89,14 +109,14 @@ Azure 診断では、次の種類のテレメトリを収集できます。
 
 データ ソース|説明
  ---|---
-IIS Logs|IIS Web サイトに関する情報。
+IIS ログ|IIS Web サイトに関する情報。
 Azure 診断インフラストラクチャ ログ|診断自体に関する情報。
 IIS の失敗した要求ログ |IIS サイトまたはアプリケーションへの失敗した要求に関する情報。
 Windows イベント ログ|Windows イベント ログ システムに送信された情報。
 パフォーマンス カウンター|オペレーティング システムとカスタム パフォーマンス カウンター
 クラッシュ ダンプ|アプリケーションがクラッシュした場合のプロセスの状態に関する情報。
 カスタム エラー ログ|アプリケーションまたはサービスで作成されたログ。
-NET EventSource|.NET [EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx) を使用してコードで生成されたイベント
+NET EventSource|.NET [EventSource クラス] を使用してコードで作成されたイベント (https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx)
 マニフェスト ベースの ETW|すべてのプロセスで生成された ETW イベント
 Syslog|Syslog または Rsyslog デーモンに送信されるイベント
 
@@ -249,4 +269,4 @@ Azure PowerShell を使用すると、Azure Storage に書き込むイベント�
 
 [プロキシとファイアウォール設定の構成 (省略可能)](../operational-insights-proxy-filewall.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

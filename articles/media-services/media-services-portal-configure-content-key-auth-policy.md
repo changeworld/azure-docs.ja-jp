@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015" 
 	ms.author="juliako"/>
 
 
@@ -84,6 +84,15 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
 **[ポリシー xml のインポート]** ボタンをクリックして、[ここ](https://msdn.microsoft.com/library/azure/dn783459.aspx)で定義された XML スキーマに準拠した別の XML を指定します。
 
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
 ##次のステップ
 コンテンツ キーの認証ポリシーを構成したので、「[方法: Microsoft Azure 管理ポータルを使用した暗号化の有効化](../media-services-manage-content#encrypt/)」トピックに移動します。
 
@@ -93,4 +102,4 @@ Media Services では、**Secure Token Service** は提供されません。ト�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

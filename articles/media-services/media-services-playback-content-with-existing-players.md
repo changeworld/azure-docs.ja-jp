@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="09/07/2015"
 	ms.author="juliako"/>
 
 
@@ -78,7 +78,15 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 ##ビデオ プレーヤーの開発
 
 独自のプレーヤーの開発方法については、「[ビデオ プレーヤーの開発](media-services-develop-video-players.md)」を参照してください。
+
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
  
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

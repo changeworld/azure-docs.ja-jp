@@ -1,6 +1,8 @@
 <properties
+	title="Elastic database Split-Merge tool tutorial"
 	pageTitle="エラスティック データベース Split-Merge ツールに関するチュートリアル | Microsoft Azure"
 	description="エラスティック データベース ツールによる分割とマージ"
+	metaKeywords="elastic database tools, split and merge, Azure SQL Database sharding, elastic scale, splitting and merging elastic databases"
 	services="sql-database" documentationCenter=""  
 	manager="jeffreyg"
 	authors="sidneyh"/>
@@ -100,12 +102,12 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
 
 ### サービス構成ファイルの更新
 
-上記でコピーした証明書のサムプリントを、次の設定で、サムプリントと属性値に貼り付けます。Web ロール:
+上記でコピーした証明書のサムプリントを、次の設定で、サムプリントと属性値に貼り付けます。ワーカー ロール:
 
     <Setting name="DataEncryptionPrimaryCertificateThumbprint" value="" />
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
 
-ワーカー ロール:
+Web ロール:
 
     <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
     <Setting name="AllowedClientCertificateThumbprints" value="" />
@@ -332,4 +334,4 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure RemoteApp コレクションの更新"
+   pageTitle="Azure RemoteApp コレクションの更新 | Microsoft Azure"
    description="Azure RemoteApp コレクションの更新方法を説明します。"
    services="remoteapp"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="compute"
-   ms.date="08/12/2015"
+   ms.date="09/03/2015"
    ms.author="elizapo"/>
 
 # Azure RemoteApp コレクションの更新
@@ -25,7 +25,7 @@
 では、どのようにして、コレクションを更新するのでしょうか。 その方法は、以下のようなわかりやすいものになっています。
 
 1. コレクションで使用したイメージを更新します。必要となる任意のパッチまたは更新を適用し、新しい名前を付けて保存します。
-2. RemoteApp にそのイメージを[アップロード](remoteapp-uploadimage.md)または[インポート](remoteapp-image-on-azurevm)します。
+2. RemoteApp にそのイメージを[アップロード](remoteapp-uploadimage.md)または[インポート](remoteapp-image-on-azurevm.md)します。
 3. [コレクション] ページで **[更新]** をクリックします。
 4. **[テンプレート イメージ]** リストから新しいイメージを選択します。
 4. ここは、注意が必要な手順です。コレクション内のアプリを使用中のユーザーを処理する方法を決定する必要があります。選択肢には次の 2 つがあります。
@@ -36,4 +36,4 @@
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

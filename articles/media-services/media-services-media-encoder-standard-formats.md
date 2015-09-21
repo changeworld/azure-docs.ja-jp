@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Media Encoder Standard の形式とコーデック"
-	description="このトピックでは、Azure Media Encoder Standard の形式とコーデックの概要を示します。"
-	services="media-services"
-	documentationCenter=""
-	authors="juliako"
-	manager="dwrede"
+	pageTitle="Media Encoder Standard の形式とコーデック" 
+	description="このトピックでは、Azure Media Encoder Standard の形式とコーデックの概要を示します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/03/2015"
 	ms.author="juliako"/>
 
 #Media Encoder Standard の形式とコーデック
@@ -29,10 +29,10 @@
 (H.264 および AAC コーデックでの) FLV (.flv) |あり 
 MXF (.mxf) |あり 
 GXF (.gxf) |あり 
-MPEG2-PS、MPEG2-TS、3GP (.ts、.ps、.3gp) |あり 
+MPEG2-PS、MPEG2-TS、3GP (.ts、.ps、.3gp、.3gpp、.mpg) |あり 
 Windows Media Video (WMV)/ASF (.wmv、.asf) |あり 
 AVI (非圧縮 8-bit/10-bit) (.avi)|あり 
-MP4/ISMV (.ismv)|あり 
+MP4 (.mp4、.m4a、.m4v)/ISMV (.isma、.ismv)|あり 
 [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |あり 
 Matroska/WebM (.mkv) |あり 
 WAVE/WAV (.wav) |あり 
@@ -81,8 +81,16 @@ Dolby® Digital Plus (E-AC3) |いいえ
 
 ファイル形式|ビデオ コーデック|オーディオ コーデック
 ---|---|---
-MP4 (*.mp4)<br/><br/>(マルチビットレートの MP4 コンテナーを含む) |H.264 (High、Main、Baseline Profile)|AAC-LC、HE-AAC v1、HE-AAC v2 
+MP4 <br/><br/>(マルチビットレートの MP4 コンテナーを含む) |H.264 (High、Main、Baseline Profile)|AAC-LC、HE-AAC v1、HE-AAC v2 
 MPEG2-TS |H.264 (High、Main、Baseline Profile)|AAC-LC、HE-AAC v1、HE-AAC v2 
+
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 ##関連項目
 
@@ -90,4 +98,4 @@ MPEG2-TS |H.264 (High、Main、Baseline Profile)|AAC-LC、HE-AAC v1、HE-AAC v2
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

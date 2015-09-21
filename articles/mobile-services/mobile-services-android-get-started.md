@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Android アプリ用 Azure Mobile Services の使用"
-	description="次のチュートリアルに従って、Android 開発用の Azure Mobile Services を使用します。"
+	pageTitle="Android アプリ用 Azure Mobile Services の使用 (JavaScript バックエンド)"
+	description="次のチュートリアルに従って、Android 開発用の Azure Mobile Services を使用します (JavaScript バックエンド)。"
 	services="mobile-services"
 	documentationCenter="android"
 	authors="RickSaling"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/04/2015"
 	ms.author="ricksal"/>
 
-# Mobile Services の使用
+# Android 用 Mobile Services の使用 (JavaScript バックエンド)
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
@@ -117,4 +117,4 @@
 
 [Management Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

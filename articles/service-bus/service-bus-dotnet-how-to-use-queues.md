@@ -1,20 +1,20 @@
 <properties
     pageTitle="Service Bus キューの使用方法 (.NET) | Microsoft Azure"
-	description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは .NET API を使用して C# で記述されています。"
-	services="service-bus"
-	documentationCenter=".net"
-	authors="sethmanheim"
-	manager="timlt"
-	editor=""/>
+    description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは .NET API を使用して C# で記述されています。"
+    services="service-bus"
+    documentationCenter=".net"
+    authors="sethmanheim"
+    manager="timlt"
+    editor=""/>
 
 <tags
     ms.service="service-bus"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="get-started-article"
-	ms.date="07/02/2015"
-	ms.author="sethm"/>
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="get-started-article"
+    ms.date="07/02/2015"
+    ms.author="sethm"/>
 
 # Azure Service Bus キューの使用方法
 
@@ -133,7 +133,7 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
         namespaceManager.CreateQueue(qd);
     }
 
-> [AZURE.NOTE] [`NamespaceManager`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) オブジェクトの [`QueueExists`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
+> [AZURE.NOTE][`NamespaceManager`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) オブジェクトの [`QueueExists`](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
 
 ## メッセージをキューに送信する方法
 
@@ -223,9 +223,9 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   「MSDN 概要: [キュー、トピック、サブスクリプション][]」を参照してください。
+-   [キュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
 -   Service Bus キューとの間でメッセージを送受信する実用アプリケーションの作成: [Service Bus が仲介するメッセージングに関する .NET チュートリアル]。
--   Service Bus のサンプル: [Azure のサンプル][]からダウンロードするか、[MSDN][] で概要を参照してください。
+-   Service Bus のサンプル: [Azure のサンプル][]からダウンロードするか、[概要に関するページ][]を参照してください。
 
   [What are Service Bus Queues]: #what-queues
   [Create a Service Namespace]: #create-namespace
@@ -239,9 +239,9 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [How to: Handle Application Crashes and Unreadable Messages]: #handle-crashes
   [Azure portal]: http://manage.windowsazure.com
   [7]: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
-  [キュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/azure/hh367516.aspx
+  [キュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
   [Service Bus が仲介するメッセージングに関する .NET チュートリアル]: http://msdn.microsoft.com/library/azure/hh367512.aspx
   [Azure のサンプル]: https://code.msdn.microsoft.com/windowsazure/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
-  [MSDN]: https://msdn.microsoft.com/library/azure/dn194201.aspx
+  [概要に関するページ]: service-bus-samples.md
 
-<!----HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

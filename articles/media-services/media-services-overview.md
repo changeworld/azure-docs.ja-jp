@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Media Services の概要と一般的なシナリオ"
-	description="このトピックでは、Azure Media Services の概要を説明します。"
-	services="media-services"
-	documentationCenter=""
-	authors="Juliako"
-	manager="dwrede"
+	pageTitle="Azure Media Services の概要と一般的なシナリオ" 
+	description="このトピックでは、Azure Media Services の概要を説明します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="Juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/20/2015"
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/07/2015"
 	ms.author="juliako"/>
 
 #Azure Media Services の概要と一般的なシナリオ
@@ -36,6 +36,14 @@ Media Services ソリューションを構築するために、以下を使用�
 - 既存のツール: [Microsoft Azure 管理ポータル](http://manage.windowsazure.com/) または [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer)。
 
 
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
 ##前提条件
 
 Azure Media Services を使用するには、次が必要です。
@@ -44,7 +52,7 @@ Azure Media Services を使用するには、次が必要です。
 2. Azure Media Services アカウントを作成します。Azure Media Services アカウントを作成するには、Windows Azure 管理ポータル、.NET、REST API を使用します。詳細については、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 3. (省略可能) 開発環境をセットアップします。開発環境の .NET または REST API を選択します。詳細については、「[環境を設定する](media-services-dotnet-how-to-use.md)」を参照してください。 
 
-	また、プログラミングによる[接続](media-services-dotnet-connect_programmatically.md)方法についても学習できます。
+	また、プログラミングによる[接続](media-services-dotnet-connect_programmatically.md)方法についても確認してください
 4. (推奨) 1 つまたは複数のスケール単位を割り当てます。実稼働環境でのアプリケーションの 1 つ以上のスケール単位を割り当てることをお勧めします。詳細については、「[ストリーミング エンドポイントの管理](media-services-manage-origins.md)」を参照してください。
 
 ##概念
@@ -71,7 +79,7 @@ Azure Media Services を使用するには、次が必要です。
 	
 1. 資産配信ポリシーを構成します (動的パッケージで使用)。
 	
-	資産がストレージで暗号化されている場合は、資産配信ポリシーを構成する**必要があります**。
+	アセットがストレージで暗号化されている場合は、アセット配信ポリシーを構成する**必要があります**。
 
 1. OnDemand ロケーターを作成して資産を発行します。
 
@@ -186,7 +194,7 @@ Media Services では、Azure CDN との統合をサポートしています。A
 
 ##Media Services アカウントのスケーリング
 
-**Media Services** は、アカウントのプロビジョニングに使用する **[ストリーミング予約ユニット]** と **[エンコード予約ユニット]** の数を指定することで規模を設定できます。
+**Media Services** は、アカウントのプロビジョニングに使用する **[ストリーミング占有ユニット]** と **[エンコード占有ユニット]** の数を指定することで規模を設定できます。
 
 ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。各ストレージ アカウントの上限は 500 TB です。既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。
 
@@ -211,8 +219,6 @@ Media Services では、Azure CDN との統合をサポートしています。A
 
 	詳細については、「[サービス レベル アグリーメント](http://azure.microsoft.com/support/legal/sla/)」参照してください。
 
-
-
 <!-- Images -->
 [overview]: ./media/media-services-overview/media-services-overview.png
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
@@ -220,4 +226,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

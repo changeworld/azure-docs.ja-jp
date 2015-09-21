@@ -146,10 +146,10 @@ azure モジュールは、Azure Service Bus 名前空間に接続するため�
 
 これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   MSDN リファレンスの [Service Bus のキュー、トピック、サブスクリプション](http://msdn.microsoft.com/library/windowsazure/hh367516.aspx)
+-   [キュー、トピック、およびサブスクリプション](service-bus-queues-topics-subscriptions.md)の概要
 -   GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-この記事で説明されている Azure Service Bus キューと、「[Service Bus キューの使用方法](/develop/ruby/how-to-guides/queue-service/)」で説明されている Azure Service Bus キューの比較については、「[Azure Queues and Azure Service Bus Queues - Compared and Contrasted (Azure キューと Azure Service Bus キューの比較)](http://msdn.microsoft.com/library/windowsazure/hh767287.aspx)」を参照してください。
+この記事で説明されている Azure サービス バス キューと、「[サービス バス キューの使用方法](/develop/ruby/how-to-guides/queue-service/)」で説明されている Azure サービス バス キューの比較については、「[Azure Queues and Azure Service Bus Queues - Compared and Contrasted (Azure キューと Azure サービス バス キューの比較)](service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

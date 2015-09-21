@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="09/07/2015" 
 	ms.author="juliako"/>
 
 #Azure Media Services の Fragmented MP4 ライブ インジェスト仕様
@@ -196,6 +196,15 @@ Microsoft Azure Media Services 用 ISO Fragmented MP4 ベースのライブ イ�
 3. 個別のサーバー (エンコーダー) のインスタンスを使用して、(1) と (2) の手順に従い冗長ストリームをエンコードし、送信します。 
 
 
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
+
 [image1]: ./media/media-services-fmp4-live-ingest-overview/media-services-image1.png
 [image2]: ./media/media-services-fmp4-live-ingest-overview/media-services-image2.png
 [image3]: ./media/media-services-fmp4-live-ingest-overview/media-services-image3.png
@@ -206,4 +215,4 @@ Microsoft Azure Media Services 用 ISO Fragmented MP4 ベースのライブ イ�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

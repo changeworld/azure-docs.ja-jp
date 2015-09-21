@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Mobile Services と Azure Active Directory でのロール ベースのアクセス制御 (Windows ストア) | Microsoft Azure" 
-	description="Windows ストア アプリケーションで Azure Active Directory ロールに基づいてアクセスを制御する方法について説明します。" 
+	pageTitle="JavaScript および Azure Active Directory を使用した Mobile Services でのロール ベースのアクセス制御 (Windows ストア) | Microsoft Azure" 
+	description="JavaScript バックエンドで Mobile Service を使用して、Windows ストア アプリケーションで Azure Active Directory ロールに基づいてアクセスを制御する方法について説明します。" 
 	documentationCenter="windows" 
 	authors="wesmc7777" 
 	manager="dwrede" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/15/2015" 
+	ms.date="09/03/2015" 
 	ms.author="wesmc"/>
 
-# Mobile Services と Azure Active Directory でのロール ベースのアクセス制御
+# .NET および Azure Active Directory を使用した Mobile Services でのロール ベースのアクセス制御
 
 [AZURE.INCLUDE [mobile-services-selector-rbac](../../includes/mobile-services-selector-rbac.md)]
 
@@ -24,10 +24,10 @@
 
 ロール ベースのアクセス制御 (RBAC) は、ユーザーが保持できるロールにアクセス許可を割り当てる機能であり、特定のクラスのユーザーが実行できることとできないことの境界線を明確に定義します。このチュートリアルでは、Azure Mobile Services に基本的な RBAC を追加する方法について説明します。
 
-このチュートリアルでは、ロール ベースのアクセス制御について示しながら、Azure Active Directory (AAD) で定義された Sales グループに対する各ユーザーのメンバーシップを確認します。アクセスの確認は、モバイル サービス バックエンドで Azure Active Directory 用の [Graph API] を使用し、JavaScript で行います。Sales ロールに属するユーザーのみが、データの照会を許可されます。
+このチュートリアルでは、ロール ベースのアクセス制御について示しながら、Azure Active Directory (AAD) で定義された Sales グループに対する各ユーザーのメンバーシップを確認します。アクセスの確認は、Mobille Service バックエンドで Azure Active Directory 用の [Graph API] を使用し、JavaScript で行います。Sales ロールに属するユーザーのみが、データの照会を許可されます。
 
 
->[AZURE.NOTE]このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[Mobile Services アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、チュートリアル「[Mobile Services アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
+>[AZURE.NOTE] このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、チュートリアル「[Mobile Services アプリへの認証の追加]」を完了しておく必要があります。このチュートリアルでは、チュートリアル「[Mobile Services アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
 
 ##前提条件
 
@@ -66,7 +66,7 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 1. モバイル サービスのローカル リポジトリの *./service/shared/* ディレクトリに *rbac.js* という名前の新しいスクリプト ファイルを作成します。
 2. `getAADToken` 関数を定義するファイルの先頭に次のスクリプトを追加します。*tenant\_domain*、統合アプリケーションの *client id*、およびアプリケーションの *key* を与えることで、この関数はディレクトリ情報の読み取りに使用する Graph アクセス トークンを提供します。
 
-    >[AZURE.NOTE]アクセス確認のたびに新しいトークンを作成するのではなく、トークンをキャッシュする必要があります。その後、「[Windows Azure AD Graph のエラー コード]」に記載されているとおり、トークンの使用を試みたときに 401 Authentication\_ExpiredToken 応答が返された場合は、キャッシュを更新します。これは、次に示すコードでは簡略化のために省かれていますが、Active Directory に対して余分なネットワーク トラフィックを軽減する効果があります。
+    >[AZURE.NOTE] アクセス確認のたびに新しいトークンを作成するのではなく、トークンをキャッシュする必要があります。その後、「[Windows Azure AD Graph のエラー コード]」に記載されているとおり、トークンの使用を試みたときに 401 Authentication\_ExpiredToken 応答が返された場合は、キャッシュを更新します。これは、次に示すコードでは簡略化のために省かれていますが、Active Directory に対して余分なネットワーク トラフィックを軽減する効果があります。
 
         var appSettings = require('mobileservice-config').appSettings;
         var tenant_domain = appSettings.AAD_TENANT_DOMAIN;
@@ -95,7 +95,7 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 
 3. 次のコードを *rbac.js* に追加して `getGroupId` 関数を定義します。この関数は、アクセス トークンを使用して、フィルターで使用されたグループ名に基づいてグループ ID を取得します。
  
-    >[AZURE.NOTE]このコードは、Active Directory グループを名前で検索します。多くの場合、モバイル サービス アプリケーションの設定としてグループ ID を格納し、そのグループ ID を使用する方が適切な場合があります。これは、グループ名は変更される場合がありますが、ID は同じままであるためです。ただし、グループ名が変更されると、通常、少なくともロールのスコープに変更が生じるため、モバイル サービスのコードも更新が必要になる場合があります。
+    >[AZURE.NOTE] このコードは、Active Directory グループを名前で検索します。多くの場合、モバイル サービス アプリケーションの設定としてグループ ID を格納し、そのグループ ID を使用する方が適切な場合があります。これは、グループ名は変更される場合がありますが、ID は同じままであるためです。ただし、グループ名が変更されると、通常、少なくともロールのスコープに変更が生じるため、モバイル サービスのコードも更新が必要になる場合があります。
 
         function getGroupId(groupname, accessToken, callback) {
             var req = require("request");
@@ -285,4 +285,4 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 [IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
 [Azure Active Directory Graph 情報へのアクセス]: mobile-services-javascript-backend-windows-store-dotnet-aad-graph-info.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

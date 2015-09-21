@@ -198,7 +198,7 @@ Service Bus キューに送信されたメッセージ (および Service Bus �
 
 ## 次のステップ
 
-これで、Service Bus キューの基本を学習できました。詳細については、MSDN のトピック「[Service Bus のキュー、トピックおよびサブスクリプション][]」を参照してください。
+これで、Service Bus キューの基本を学習できました。詳細については、[キュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
 
 [Service Bus Queue Diagram]: ../../../DevCenter/Java/Media/SvcBusQueues_01_FlowDiagram.jpg
 [Azure Management Portal]: http://manage.windowsazure.com/
@@ -208,9 +208,9 @@ Service Bus キューに送信されたメッセージ (および Service Bus �
 [Namespace List screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_05_NamespaceList.jpg
 [Properties Pane screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_06_PropertiesPane.jpg
 [Default Key screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_07_DefaultKey.jpg
-[Service Bus のキュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/library/azure/hh367516.aspx
+[キュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
 [require_once]: http://php.net/require_once
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

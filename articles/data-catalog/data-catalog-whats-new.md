@@ -1,24 +1,34 @@
 <properties
    pageTitle="Azure Data Catalog の新機能"
-	description="Azure Data Catalog プレビューの新機能の概要です。"
-	services="data-catalog"
-	documentationCenter=""
-	authors="steelanddata"
-	manager="NA"
-	editor=""
-	tags=""/>
+   description="Azure Data Catalog プレビューの新機能の概要です。"
+   services="data-catalog"
+   documentationCenter=""
+   authors="steelanddata"
+   manager="NA"
+   editor=""
+   tags=""/>
 <tags
    ms.service="data-catalog"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-catalog"
-	ms.date="08/28/2015"
-	ms.author="maroche"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-catalog"
+   ms.date="09/04/2015"
+   ms.author="maroche"/>
 
 # Azure Data Catalog の新機能
 
 定期的に **Azure Data Catalog** の更新がリリースされます。すべてのリリースにユーザー向けの新機能が含まれているわけではなく、一部のリリースはバックエンド サービス機能向けです。ここでは、**Azure Data Catalog** サービスに追加されたユーザー向けの新機能について説明します。
+
+## 2015 年 9 月 4 日の週のリリースの新機能
+
+2015 年 9 月 4 日の週の時点で、**Azure Data Catalog** には次の機能が追加されています。
+
+- 不明なデータ ソースを手動で登録できるようになりました。データ ソース登録ツールで明示的にサポートされていないデータ ソースに注釈を付け、検出できるように、**Azure Data Catalog** ポータルを利用し、データ ソースを手動で入力できます。
+- SQL Server データベースをコンテナーとして登録し、検出できるようになりました。SQL Server のテーブルとビューを登録するとき、**Azure Data Catalog** はテーブルとビューに加え、データベースも登録します。データベースは **Azure Data Catalog** ポータルを利用して検出し、注釈を付けることができます。カタログのコンテンツを検索し、フィルター処理するだけでなく、データベースのコンテンツを検索し、フィルター処理することもできます。
+
+
+> [AZURE.NOTE]2015 年 9 月 4 日以前に登録された SQL Server のテーブルとビューについては、データベース エントリをカタログに追加する前に、データ ソース登録ツールで再登録する必要があります。データ ソースを再登録しても、**Azure Data Catalog** ポータルを利用して追加した注釈に影響を与えることはありません。
 
 ## 2015 年 8 月 28 日の週のリリースの新機能
 
@@ -37,4 +47,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するとき、**Azure Data Catalog** は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB ストレージ データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Notification Hubs の使用 | Microsoft Azure"
+	pageTitle="Azure Notification Hubs の使用 (Kindle アプリ) | Microsoft Azure"
 	description="このチュートリアルでは、Azure Notification Hubs を使用して Kindle アプリケーションにプッシュ通知を送信する方法について学習します。"
 	services="notification-hubs"
 	documentationCenter=""
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-kindle"
 	ms.devlang="Java"
 	ms.topic="hero-article"
-	ms.date="06/16/2015"
+	ms.date="09/03/2015"
 	ms.author="wesmc"/>
 
-# Notification Hubs の使用
+# Notification Hubs の使用 (Kindle アプリ)
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -281,4 +281,4 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

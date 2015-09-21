@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/11/2015"
+	ms.date="09/07/2015"  
 	ms.author="juliako"/>
 
 
@@ -45,7 +45,7 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
 
 	![Media Services の簡易作成](./media/media-services-create-account/wams-QuickCreate.png)
 
-2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
+2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 ～ 24 文字です。
 
 3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンのみが表示されます。
 
@@ -67,6 +67,13 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
 
 	さらに、Azure Media Services SDK を使用して、ビデオのアップロード、エンコード、および発行を実行するコードを表示することもできます。**[コードを記述]** にあるリンクをクリックして、コードをコピーし、それをアプリケーションで使用できます。
 
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
 ## 次のステップ
 
 - [.NET SDK を使用してビデオ オン デマンド (VoD) を配信する](media-services-dotnet-get-started.md)
@@ -85,4 +92,4 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
 
   [Azure ポータル]: http://manage.windowsazure.com/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

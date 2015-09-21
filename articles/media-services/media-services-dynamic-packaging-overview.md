@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015"  
+	ms.date="09/07/2015" 
 	ms.author="juliako"/>
 
 
@@ -95,6 +95,16 @@ Media Services Encoder でエンコードされていないアダプティブ �
 動的パッケージでは、次のソース ファイルの形式はサポートされません。
 
 - Dolby Digital Plus の MP4 ファイル。
-- Dolby Digital Plus のスムーズ ファイル。 
+- Dolby Digital Plus のスムーズ ファイル。
 
-<!---HONumber=August15_HO7-->
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+ 
+
+<!---HONumber=Sept15_HO2-->

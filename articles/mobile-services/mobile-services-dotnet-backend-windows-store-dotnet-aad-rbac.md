@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Mobile Services と Azure Active Directory でのロール ベースのアクセス制御 (Windows ストア) | Microsoft Azure"
-	description="Windows ストア アプリケーションで Azure Active Directory ロールに基づいてアクセスを制御する方法について説明します。"
+	pageTitle=".NET および Azure Active Directory を使用した Mobile Services でのロール ベースのアクセス制御 (Windows ストア) | Microsoft Azure"
+	description=".NET バックエンドで Mobile Service を使用して、Windows ストア アプリケーションで Azure Active Directory ロールに基づいてアクセスを制御する方法について説明します。"
 	documentationCenter="windows"
 	authors="wesmc7777"
 	manager="dwrede"
@@ -8,15 +8,15 @@
 	services="mobile-services"/>
 
 <tags
-	ms.service="mobile-services"
+	ms.service="mobile-services" 
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/03/2015"
 	ms.author="wesmc"/>
 
-# Mobile Services と Azure Active Directory でのロール ベースのアクセス制御
+# JavaScript および Azure Active Directory を使用した Mobile Services でのロール ベースのアクセス制御
 
 [AZURE.INCLUDE [mobile-services-selector-rbac](../../includes/mobile-services-selector-rbac.md)]
 
@@ -56,7 +56,7 @@
 
 
 
-##モバイル サービスにカスタム承認属性を作成する 
+##モバイル サービスにカスタム承認属性を作成する
 
 このセクションでは、モバイル サービスの操作でアクセス確認を実行するときに使用できる、新しいカスタム承認属性を作成します。この属性は、渡されたロール名に基づいて Active Directory グループを検索します。その後、そのグループのメンバーシップに基づいてアクセス確認を行います。
 
@@ -128,13 +128,13 @@
 
             public AadRoles Role { get; private set; }
 
-            // Generate a local dictionary for the role group ids configured as 
+            // Generate a local dictionary for the role group ids configured as
             // Mobile Service app settings
             private void InitGroupIds()
             {
             }
 
-            // Use ADAL and the authentication app settings from the Mobile Service to 
+            // Use ADAL and the authentication app settings from the Mobile Service to
             // get an AAD access token
             private string GetAADToken()
             {
@@ -253,7 +253,7 @@
 
             services = new ApiServices(actionContext.ControllerContext.Configuration);
 
-            // Check whether we are running in a mode where local host access is allowed 
+            // Check whether we are running in a mode where local host access is allowed
             // through without authentication.
             if (!this.isInitialized)
             {
@@ -385,7 +385,6 @@
 [アプリへの認証の追加]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md
 [How to Register with the Azure Active Directory]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure Management Portal]: https://manage.windowsazure.com/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
 [Directory Sync Scenarios]: http://msdn.microsoft.com/library/azure/jj573653.aspx
 [Store Server Scripts]: mobile-services-store-scripts-source-control.md
 [アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
@@ -394,4 +393,4 @@
 [Azure Active Directory Graph 情報へのアクセス]: mobile-services-dotnet-backend-windows-store-dotnet-aad-graph-info.md
 [Azure AD Authentication Library for .NET]: https://msdn.microsoft.com/library/azure/jj573266.aspx
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

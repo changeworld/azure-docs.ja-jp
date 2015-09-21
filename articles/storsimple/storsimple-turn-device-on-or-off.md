@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/19/2015"
+   ms.date="09/04/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスのオンとオフ 
@@ -241,4 +241,4 @@ Windows PowerShell for StorSimple には、デバイスのシリアル コンソ
 
 StorSimple デバイスの電源を入れるときまたはシャットダウンするときに問題が発生した場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

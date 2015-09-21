@@ -396,7 +396,7 @@ Azure Search .NET SDK が `Hotel` のようなユーザー定義クラスのイ�
 
 ## 次のステップ ##
 
-- [ビデオおよび他のサンプルとチュートリアル](https://msdn.microsoft.com/library/azure/dn818681.aspx)によって、知識を深めてください。
+- [ビデオおよび他のサンプルとチュートリアル](search-video-demo-tutorial-list.md)によって、知識を深めてください。
 - このバージョンの Azure Search SDK の機能については、「[Azure Search の概要](https://msdn.microsoft.com/library/azure/dn798933.aspx)」を参照してください。
 - [名前付け規則](https://msdn.microsoft.com/library/azure/dn857353.aspx)で、さまざまなオブジェクトに名前を付けるときの規則を学習してください。
 - Azure Search で[サポートされるデータ型](https://msdn.microsoft.com/library/azure/dn798938.aspx)を確認してください。
@@ -625,4 +625,4 @@ Hotel.cs:
     }
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

@@ -451,7 +451,7 @@
 * 
     クライアント側のアプリのロケールです。テレメトリ項目で明示的に指定しない場合、ユーザー エージェントのフィールドの処理により指定されます。 
 
-    *例*<br/> ru<br/>ja-jp<br/>de-DE<br/>unknown
+    *例*<br/> ru<br/>ja-JP<br/>de-DE<br/>unknown
 
 **machineName**
 
@@ -680,6 +680,18 @@
 * 
     アプリ内でアカウントを定義する一意の識別子。これは、開発者が指定します。 
 
+### カスタム メトリック
+
+    context.custom.metrics.<metric-name>
+
+      double value
+      double count
+      double min
+      double max
+      double stdDev
+      double sampledValue
+      double sum
+
 
 ## remotedependency
 
@@ -707,7 +719,7 @@
 * 
     リモートの依存関係の名前 
 
-    *派生:* &lt;telemetryType.name&gt; に標準化します
+    *派生:* &lt;telemetryType.name&gt; に標準化します。
 
 **remoteDependencyType**
 
@@ -857,7 +869,7 @@
 * 
     この sessionMetric テレメトリ項目が表すバウンス セッションの数。バウンス セッションとは、1 つのビューのテレメトリ項目に基づいて作成されるセッションです。 
 
-    *派生:* sessionMetric.viewCount + sessionMetric.requestCount = 1, then 1 else 0
+    *派生:* sessionMetric.viewCount + sessionMetric.requestCount = 1 の場合は 1、それ以外は 0 になります。
 
 **pageCount**
 
@@ -1009,7 +1021,7 @@
 * 
     ホストのクエリ parms を除く参照元の URL の一部です。ルート URI です。この値は、セグメント化/集計に使用できます。 
 
-    *派生:* URL の変換については付録をご覧ください
+    *派生:* URL の変換については付録をご覧ください。
 
 **referrerData.hashTag**
 
@@ -1017,7 +1029,7 @@
 * 
     参照元の URL のハッシュタグのテキスト 
 
-    *派生:* URL の変換については付録をご覧ください
+    *派生:* URL の変換については付録をご覧ください。
 
 **referrerData.host**
 
@@ -1025,7 +1037,7 @@
 * 
     参照元の URL のホスト。URL がローカル URI の場合、空で表されます。 
 
-    *派生:* URL の変換については付録をご覧ください
+    *派生:* URL の変換については付録をご覧ください。
 
 **referrerData.port**
 
@@ -1033,7 +1045,7 @@
 * 
     完全な URL で表される場合、参照元の URL のポートです。それ以外の場合は、空になります。 
 
-    *派生:* URL の変換については付録をご覧ください
+    *派生:* URL の変換については付録をご覧ください。
 
 **referrerData.protocol**
 
@@ -1041,7 +1053,7 @@
 * 
     参照元の URL のプロトコル (HTTP、FTP など) 
 
-    *派生:* URL の変換については付録をご覧ください
+    *派生:* URL の変換については付録をご覧ください。
 
     *例*<br/> http<br/>https
 
@@ -1051,7 +1063,7 @@
 * 
     参照元の URL のクエリ パラメーター名の配列 
 
-    *派生:* URL の変換については付録をご覧ください
+    *派生:* URL の変換については付録をご覧ください。
 
 **referrerData.queryParameters.value**
 
@@ -1059,7 +1071,7 @@
 * 
     referringData URL から解析されたクエリ パラメーターの値の配列 
 
-    *派生:* URL の変換については付録をご覧ください
+    *派生:* URL の変換については付録をご覧ください。
 
 
 
@@ -1069,4 +1081,4 @@
 * [連続エクスポート](app-insights-export-telemetry.md)
 * [コード サンプル](app-insights-export-telemetry.md#code-samples)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

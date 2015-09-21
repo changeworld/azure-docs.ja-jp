@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="チュートリアル: Application Insights から SQL Database へのテレメトリのエクスポート"
-	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。"
-	services="application-insights"
-	documentationCenter=""
-	authors="noamben"
+	pageTitle="チュートリアル: Application Insights から SQL Database へのテレメトリのエクスポート" 
+	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。" 
+	services="application-insights" 
+    documentationCenter=""
+	authors="noamben" 
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/31/2015" 
 	ms.author="awills"/>
  
 # チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
@@ -97,7 +97,7 @@
 
     また、データはストレージにもエクスポートされます。
 
-4. エクスポートされたデータを検査します。Visual Studio で、**[表示]、[Cloud Explorer]** の順に選択します。[Azure]、[ストレージ] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+4. エクスポートされたデータを、ポータルまたは Visual Studio で調べます。ポータルの場合は、**[参照]**、ストレージ アカウント、**[コンテナー]**の順に選択します。Visual Studio の場合は、**[表示]、[Cloud Explorer]** の順に選択し、[Azure]、[ストレージ] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
 
     ![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
 
@@ -165,7 +165,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/34-create-table.png)
 
-このサンプルでは、ページ ビューからデータを使用します。使用可能なその他のデータを確認するには、JSON 出力を検査し、[データのエクスポート モデルに関するページ](app-insights-export-data-model.md)を確認してください。
+このサンプルでは、ページ ビューからデータを使用します。使用可能なその他のデータを確認するには、JSON 出力を検査し、「[Application Insights エクスポート データ モデル](app-insights-export-data-model.md)」を参照してください。
 
 ## Azure Stream Analytics インスタンスの作成
 
@@ -196,7 +196,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/47-sa-wizard3.png)
 
-日付の書式は YYYY-MM-DD (ダッシュ付き) に設定してください。
+日付の書式は **YYYY-MM-DD** (**ダッシュ**付き) に設定してください。
 
 パスのプレフィックス パターンは、Stream Analytics がストレージ内の入力ファイルを検索する方法を指定します。連続エクスポートによるデータ格納方法と一致するように設定する必要があります。次のように設定します。
 
@@ -206,7 +206,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 * `webapplication27` は Application Insights リソースの名前です。**すべて小文字で指定します。** 
 * `1234...` は Application Insights リソースのインストルメンテーション キーです。**ダッシュは削除します。** 
-* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べて、その他の使用可能な種類を確認します。[データのエクスポート モデルに関するページ](app-insights-export-data-model.md)を参照してください。
+* `PageViews` は分析するデータの種類です。使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。エクスポートされたデータを調べて、その他の使用可能な種類を確認します。「[Application Insights エクスポート データ モデル](app-insights-export-data-model.md)」を参照してください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
 Application Insights リソースの名前と iKey を取得するには、概要ページの [Essentials] を開くか、[設定] を開きます。
@@ -218,6 +218,8 @@ Application Insights リソースの名前と iKey を取得するには、概�
 ![[確認]をクリックしてウィザードをして閉じます](./media/app-insights-code-sample-export-sql-stream-analytics/48-sa-wizard4.png)
 
 ウィザードを閉じ、セットアップが完了するまで待機します。
+
+>[AZURE.TIP]入力パスが正しく設定されていることを確認するには、Sample 関数を使用します。失敗した場合: 選択したサンプルの時間範囲でストレージにデータがあることを確認します。入力定義を編集し、ストレージ アカウント、パスのプレフィックス、日付形式が正しく設定されていることを確認します。
 
 ## クエリの設定
 
@@ -263,7 +265,7 @@ Application Insights リソースの名前と iKey を取得するには、概�
 
 ```
 
-最初のいくつかのプロパティはページ ビュー データに固有のプロパティです。他のテレメトリの種類のエクスポートにはそれぞれ異なるプロパティがあります。[プロパティの型と値の詳細なデータ モデル リファレンス](app-insights-export-data-model.md)を参照してください。
+最初のいくつかのプロパティはページ ビュー データに固有のプロパティです。他のテレメトリの種類のエクスポートにはそれぞれ異なるプロパティがあります。[プロパティの種類と値についての詳細なデータ モデル リファレンス](app-insights-export-data-model.md)を参照してください。
 
 ## データベースへの出力のセットアップ
 
@@ -312,4 +314,4 @@ SQL データベースを指定します。
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

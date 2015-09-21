@@ -1,20 +1,20 @@
 <properties
     pageTitle="Azure SQL Database - Elastic Database ツール"
-	description="これらのツールを使用すると、Software as a Service (SaaS) の開発者は柔軟で拡張性の高いデータベースを簡単に作成できます。"
-	services="sql-database"
-	documentationCenter=""
-	manager="jeffreyg"
-	authors="ddove"
-	editor=""/>
+    description="これらのツールを使用すると、Software as a Service (SaaS) の開発者は柔軟で拡張性の高いデータベースを簡単に作成できます。"
+    services="sql-database"
+    documentationCenter=""
+    manager="jeffreyg"
+    authors="ddove"
+    editor=""/>
 
 <tags
     ms.service="sql-database"
-	ms.workload="sql-database"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/27/2015"
-	ms.author="sidneyh"/>
+    ms.workload="sql-database"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/27/2015"
+    ms.author="sidneyh"/>
 
 # Elastic Database 機能の概要
 
@@ -97,6 +97,10 @@ Elastic Database プールの詳細を確認するには、「[エラスティ�
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
+### フィードバックをお寄せください。
+改善点はありませんか。 このトピックでの機能の説明はわかりやすかったでしょうか。 それとも、わかりにくい所があったでしょうか。 投票ボタンを使用して、不満点 (または満足した点) についてお聞かせください。マイクロソフトからご連絡を差し上げて問題がなければ、フィードバックに電子メールをご記入ください。
+
+
 <!--Anchors-->
 <!--Image references-->
 [1]: ./media/sql-database-elastic-scale-introduction/tools.png
@@ -104,4 +108,4 @@ Elastic Database プールの詳細を確認するには、「[エラスティ�
 [3]: ./media/sql-database-elastic-scale-introduction/overview.png
 [4]: ./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

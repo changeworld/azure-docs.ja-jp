@@ -1,36 +1,30 @@
 <properties
    pageTitle="Azure Data Catalog リリース ノート"
-	description="Azure Data Catalog の 2015 年 8 月 28 日パブリック プレビュー リリースのリリース ノート"
-	services="data-catalog"
-	documentationCenter=""
-	authors="steelanddata"
-	manager="NA"
-	editor=""
-	tags=""/>
+   description="Azure Data Catalog の 2015 年 8 月 28 日パブリック プレビュー リリースのリリース ノート"
+   services="data-catalog"
+   documentationCenter=""
+   authors="steelanddata"
+   manager="NA"
+   editor=""
+   tags=""/>
 <tags
    ms.service="data-catalog"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-catalog"
-	ms.date="08/28/2015"
-	ms.author="maroche"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-catalog"
+   ms.date="09/04/2015"
+   ms.author="maroche"/>
 
 # Azure Data Catalog リリース ノート
 
-## Azure Data Catalog の 2015 年 8 月 28 日リリースのリリース ノート
+## Azure Data Catalog の 2015 年 9 月 4 日リリースのノート
 
-### 登録されたデータセットの一部でデータ プロファイルが不足する
+### 登録されたデータ アセットの一部でデータ プロファイルが不足する場合がある
 
-データ ソース登録ツールでデータ プロファイル オプションを使用してデータ ソースを登録すると、次に該当する場合は、データ プロファイル情報が登録されないことがあります。
+データ ソース登録ツールでデータ プロファイル オプションを使用してデータ ソースを登録するときに、登録する Oracle のテーブルとビューの列名にマルチバイト文字が含まれる場合は、データ プロファイル情報が登録されないことがあります。
 
-* Azure SQL Database テーブル
-* 同じ名前の複数のオブジェクトが複数のスキーマ内に存在する SQL Server のテーブルとビュー
-* 列名が 118 文字を上回る SQL Server のテーブルとビュー
-* 列名が 20 文字を上回る Oracle のテーブルとビュー
-* 列名にスペースまたはマルチバイト文字が含まれる Oracle のテーブルとビュー
-
-これらの制限は 8 月 28 日付けのリリースでの既知の問題であり、Azure Data Catalog の今後の更新で対応される予定です。
+これらの制限は 9 月 4 日付けのリリースでの既知の問題であり、Azure Data Catalog の今後の更新で対応される予定です。
 
 ## Azure Data Catalog の 2015 年 7 月 13 日リリースのノート
 
@@ -63,13 +57,13 @@ Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開�
 
 この問題の動作には 2 つの可能性のある原因があります。
 
-**原因 1: Active Directory フェデレーション サービス構成** データ ソース登録ツールは、フォーム認証を使用して、Active Directory に対してユーザー ログオンを検証します。ログオンを成功させるには、Active Directory 管理者によって、グローバル認証ポリシーでフォーム認証が有効にされている必要があります。
+**原因 1: Active Directory Federation Services の構成**。データ ソース登録ツールは、フォーム認証を使用して、Active Directory に対するユーザー ログオンを検証します。ログオンを成功させるには、Active Directory 管理者によって、グローバル認証ポリシーでフォーム認証が有効にされている必要があります。
 
 特定の状況で、ユーザーが企業ネットワーク上にいる場合のみ、またはユーザーが企業ネットワークの外部から接続している場合のみ、このエラー動作が発生することがあります。グローバル認証ポリシーでは、イントラネット接続とエクストラネット接続で個別に認証方法を有効にすることができます。ログオン エラーは、ユーザーの接続元のネットワークで、フォーム認証が有効にされていない場合に発生する可能性があります。
 
 詳細については、「[WIA をサポートしないデバイスのイントラネット フォーム ベースの認証の構成](https://technet.microsoft.com/library/dn727110.aspx)」を参照してください。
 
-**原因 2: ネットワーク プロキシ構成** 企業ネットワークでプロキシ サーバーを使用している場合、登録ツールが、プロキシ経由で Azure Active Directory に接続できないことがあります。ユーザーは、ツールの構成ファイルを編集し、このセクションをファイルに追加して、登録ツールが確実に接続できるようにします。
+**原因 2: ネットワーク プロキシの構成**。企業ネットワークでプロキシ サーバーを使用している場合、登録ツールが、プロキシ経由で Azure Active Directory に接続できないことがあります。ユーザーは、ツールの構成ファイルを編集し、このセクションをファイルに追加して、登録ツールが確実に接続できるようにします。
 
 
 	  <system.net>
@@ -83,4 +77,4 @@ Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開�
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple デバイスのデプロイメントのトラブルシューティング | Microsoft Azure"
+   pageTitle="StorSimple のデプロイのトラブルシューティング | Microsoft Azure"
    description="StorSimple を初めてデプロイするときに発生するエラーを診断し、修正する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/18/2015"
+   ms.date="09/04/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスのデプロイメントのトラブルシューティング
@@ -575,4 +575,4 @@ StorSimple デバイスで Update 1 を実行している場合は、DATA 0 の�
 [1]: https://technet.microsoft.com/library/dd379547(v=ws.10).aspx
 [2]: https://technet.microsoft.com/library/dd392266(v=ws.10).aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

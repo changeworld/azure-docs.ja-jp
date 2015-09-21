@@ -147,15 +147,15 @@ SAS キーの名前と値は、Azure 管理ポータルの接続情報で確認�
 
 ## 次のステップ
 
-これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+これで、Service Bus トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   MSDN リファレンスの [Service Bus のキュー、トピック、サブスクリプション][]
+-   [キュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
 -   [SqlFilter.SqlExpression][] のリファレンス
 
 [Azure Management Portal]: http://manage.windowsazure.com
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
-[Service Bus のキュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/azure/hh367516.aspx
+[キュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

@@ -1,3 +1,20 @@
+<properties 
+   pageTitle="デバイスを構成して登録する"
+   description="StorSimple 用 Windows PowerShell を使用して、Update 1 が実行されているデバイスを構成して登録する方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="adinah"
+   editor="tysonn" />
+<tags 
+   ms.service="storsimple"
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/08/2015"
+   ms.author="alkohli" />
+
 
 ### デバイスを構成して登録するには
 
@@ -25,11 +42,11 @@
    - ゲートウェイ
    - プライマリ DNS サーバーの IP アドレス
     
-		プロセスの各ステップの後に、システムによってネットワーク設定が検証されます。
+		Note that the system is validating network settings after each step in the process.
    
       >[AZURE.NOTE]サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"Data 0 へのネットワーク接続を確認してください" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
 
-8. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、**Web プロキシを使用する場合は、ここでのみ構成できることに注意してください**。詳細については、「[デバイスの Web プロキシの構成](https://msdn.microsoft.com/library/azure/dn764937.aspx)」を参照してください。
+8. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、**Web プロキシを使用する場合は、ここでのみ構成できることに注意してください**。詳細については、「[デバイスの Web プロキシの構成](../articles/storsimple/storsimple-configure-web-proxy.md)」を参照してください。
 
 9. デバイスのプライマリ NTP サーバーを構成します。デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。このトラフィックが許可されない場合は、内部の NTP サーバーを指定します。
  
@@ -58,10 +75,12 @@
    
     	![StorSimple Devices page](./media/storsimple-configure-and-register-device-u1/HCS_DevicesPageM_U1-include.png) 
   
-        デバイスの状態が **"オフライン"** の場合は、デバイスがオンラインになるまで数分待ちます。 
+        If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
       
-        数分たってもデバイスがまだオフラインの場合、ファイアウォールのネットワークが [StorSimple デバイスのネットワーク要件](https://msdn.microsoft.com/library/dn772371.aspx) で記述されているとおりに構成されているかを確認する必要があります。HTTP 1.1 がサポートされていない場合、ポート 9354 が、送信の通信に対してオープンになっていることを確認します。このポートは、StorSimple Manager サービスおよび StorSimple デバイス間での通信に使用されます。
+        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in the [network requirements for your StorSimple device](../articles/storsimple/storsimple-system-requirements.md). 
+
+		If you do not have HTTP 1.1 support, check port 9354 to make sure that it is open for outbound communication. This port is used for communication between the StorSimple Manager service and your StorSimple device.
      
        
 
-<!-----HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

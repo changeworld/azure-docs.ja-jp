@@ -1,6 +1,7 @@
 <properties
 	pageTitle="Machine Learning Studio での簡単な実験の作成 | Microsoft Azure"
 	description="機械学習に初めて取り組む方のためのチュートリアルです。Azure Machine Learning Studio で線形回帰モデルをトレーニングし、テストする単純な実験を作成する方法について説明しています。"
+	keywords="experiment,linear regression,machine learning algorithms,machine learning tutorial,predictive modeling techniques"
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="07/09/2015"
+	ms.date="09/09/2015"
 	ms.author="garye"/>
 
 #Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する
@@ -197,11 +198,11 @@ Machine Learning Studio には、多数のサンプル データセットが含�
 
 [runhistory]: machine-learning-manage-experiment-iterations.md
 
-作成したモデルが期待どおりであれば、Web サービスとして発行し、新しいデータを使用した自動車価格の予測に使用できます。詳細については、「[Azure Machine Learning Web サービスを発行する][publish]」をご覧ください。
+作成したモデルが期待どおりであれば、Web サービスとしてデプロイし、新しいデータを使用した自動車価格の予測に使用できます。詳細については、「[Azure Machine Learning Web サービスをデプロイする][publish]」をご覧ください。
 
 [publish]: machine-learning-publish-a-machine-learning-web-service.md
 
-予測モデリング手法によってモデルの作成、トレーニング、スコア付け、公開を行う方法を解説した詳しいチュートリアルについては、「[Azure Machine Learning を使用した予測ソリューションの開発][walkthrough]」をご覧ください。
+予測モデリング手法によってモデルの作成、トレーニング、スコア付け、開発を行う方法を解説した詳しいチュートリアルについては、「[Azure Machine Learning を使用した予測ソリューションの開発][walkthrough]」をご覧ください。
 
 [walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
@@ -231,4 +232,4 @@ Machine Learning Studio には、多数のサンプル データセットが含�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="" 
-	description="Azure Active Directory (Web API プロジェクト) ウィザードの使用開始に関する情報" 
-	services="active-directory" 
+	pageTitle="Azure Active Directory と Visual Studio 接続済みサービスの概要 (Web API プロジェクト) | Microsoft Azure" 
+	description="Visual Studio 接続済みサービスを使用して Azure Active Directory を接続または作成した後に、Web API プロジェクトで Azure AD の使用を開始する方法について説明します。" 
+    services="active-directory"
 	documentationCenter="" 
 	authors="patshea123" 
 	manager="douge" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/22/2015" 
+	ms.date="09/03/2015" 
 	ms.author="patshea123"/>
 
-# Azure Active Directory の使用 (Web API プロジェクト)
+# Azure Active Directory と Visual Studio 接続済みサービスの概要 (Web API プロジェクト)
 
 > [AZURE.SELECTOR]
 > - [Getting Started](vs-active-directory-webapi-getting-started.md)
@@ -29,4 +29,4 @@
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

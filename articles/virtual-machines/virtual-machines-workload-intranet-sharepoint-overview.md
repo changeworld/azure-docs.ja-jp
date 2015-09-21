@@ -19,7 +19,7 @@
 
 # Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ
 
-このトピックには、Azure サービス管理にイントラネットのみの SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループをデプロイするための詳細な手順へのリンクが含まれます。ファームには次のコンピューターが含まれます。
+このトピックには、従来のデプロイ モデルを使用して、イントラネットのみの SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループをデプロイするための詳細な手順へのリンクが含まれます。ファームには次のコンピューターが含まれます。
 
 - 2 台の SharePoint Web サーバー
 - 2 台の SharePoint アプリケーション サーバー
@@ -55,9 +55,11 @@
 
 SharePoint と SQL Server AlwaysOn 可用性グループの追加情報については、[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)を参照してください。
 
+> [AZURE.NOTE]Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview およびその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[Test the SharePoint Server 2016 IT Preview in Azure](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」 (Azure での SharePoint Server 2016 IT Preview のテスト) を参照してください。
+
 ## 次のステップ
 
-このワークロードの構成を開始するには、[フェーズ 1: Azure を構成する](virtual-machines-workload-intranet-sharepoint-phase1.md)に進んでください。
+このワークロードの構成を開始するには、「[フェーズ 1: Azure を構成する](virtual-machines-workload-intranet-sharepoint-phase1.md)」に進んでください。
 
 
 ## その他のリソース
@@ -72,4 +74,4 @@ SharePoint と SQL Server AlwaysOn 可用性グループの追加情報につい
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

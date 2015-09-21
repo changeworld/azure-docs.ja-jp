@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-html" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="05/01/2015" 
+	ms.date="09/09/2015" 
 	ms.author="glenga"/>
 
 
@@ -33,7 +33,7 @@ Mobile Services クライアントに参照を追加する方法は、アプリ 
 
 - Web ベースのアプリケーションの場合、HTML ファイルを開き、次のコードをページのスクリプト参照に追加します。
 
-        <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.5.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js"></script>
 
 - JavaScript/HTML で記述された Windows ストア アプリでは、プロジェクトに **WindowsAzure.MobileServices.WinJS** NuGet パッケージを追加します。
 
@@ -46,7 +46,7 @@ Mobile Services クライアントに参照を追加する方法は、アプリ 
 
 プレースホルダーの `AppUrl` と `AppKey` を、モバイル サービスのアプリケーション URL とアプリケーション キーでそれぞれ置き換える必要があります。モバイル サービスのアプリケーション URL とアプリケーション キーを取得する方法については、「[既存のアプリケーションへの Mobile Services の追加](mobile-services-html-get-started-data.md)」チュートリアルを参照してください。
 
->[AZURE.IMPORTANT]アプリケーション キーは、モバイル サービスに対するランダムな要求をフィルターで除外するためのものであり、アプリケーションと共に配布されます。このキーは暗号化されないため、セキュリティで保護されていると見なすことはできません。モバイル サービスのデータへのアクセスを完全に保護するには、アクセスを許可する前にユーザーを認証する必要があります。詳細については、「[方法: ユーザーを認証する](#caching)」を参照してください。
+>[AZURE.IMPORTANT]アプリケーション キーは、モバイル サービスに対するランダムな要求をフィルターで除外するためのものであり、アプリケーションと共に配布されます。このキーは暗号化されないため、セキュリティで保護されていると見なすことはできません。モバイル サービスのデータへのアクセスを完全に保護するには、アクセスを許可する前にユーザーを認証する必要があります。詳細については、「[方法: ユーザーを認証する](#authentication)」を参照してください。
 
 ##<a name="querying"></a>方法: モバイル サービスのデータを照会する
 
@@ -385,7 +385,7 @@ Windows ストア アプリでは、クエリの結果を使用して、[ListVie
  
 より現実的な例と **invokeApi** についてのより完全な説明については、「[Azure Mobile Services クライアント SDK のカスタム API](http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx)」を参照してください。
 
-##<a name="caching"></a>方法: ユーザーを認証する
+##<a name="authentication"></a>方法: ユーザーを認証する
 
 モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル [「モバイル サービスでの認証の使用」] を参照してください。
 
@@ -412,7 +412,7 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 
 この場合、モバイル サービスは、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[login] 関数は、完了すると、**userId** フィールドのユーザー ID と **authenticationToken** フィールドのモバイル サービス認証トークンの両方を公開する JSON オブジェクト (**user**) を返します。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「認証トークンをキャッシュする」を参照してください。
 
-> [AZURE.NOTE]**Windows ストア アプリ** Windows ストア アプリケーションのユーザーの認証に Microsoft アカウント ログイン プロバイダーを使用する場合は、アプリケーション パッケージも Mobile Services に登録する必要があります。Windows ストア アプリケーションのパッケージ情報をモバイル サービスに登録すると、クライアントはシングル サインオン サービス エクスペリエンスを実現するために Microsoft アカウント ログイン資格情報を再利用できます。この操作を行わない場合、login メソッドが呼び出されるたびに、Microsoft アカウント ログイン ユーザーにログイン プロンプトが表示されます。Windows ストア アプリケーション パッケージの登録方法の詳細については、「[Windows ストア アプリケーション パッケージを Microsoft 認証に登録する](/develop/mobile/how-to-guides/register-windows-store-app-package/%20target="_blank")」を参照してください。パッケージ情報がモバイル サービスに登録された後、資格情報を再利用するには、<em>useSingleSignOn</em> パラメーターに値 **true** を指定して [login](http://go.microsoft.com/fwlink/p/?LinkId=322050%20target="_blank") メソッドを呼び出します。
+> [AZURE.NOTE]**Windows ストア アプリ** Windows ストア アプリケーションのユーザーの認証に Microsoft アカウント ログイン プロバイダーを使用する場合は、アプリケーション パッケージも Mobile Services に登録する必要があります。Windows ストア アプリケーションのパッケージ情報をモバイル サービスに登録すると、クライアントはシングル サインオン サービス エクスペリエンスを実現するために Microsoft アカウント ログイン資格情報を再利用できます。この操作を行わない場合、login メソッドが呼び出されるたびに、Microsoft アカウント ログイン ユーザーにログイン プロンプトが表示されます。Windows ストア アプリケーション パッケージの登録方法の詳細については、「[Windows ストア アプリケーション パッケージを Microsoft 認証に登録する](/develop/mobile/how-to-guides/register-windows-store-app-package/%20target="_blank")」を参照してください。パッケージ情報がモバイル サービスに登録された後、資格情報を再利用するには、[useSingleSignOn](http://go.microsoft.com/fwlink/p/?LinkId=322050%20target="_blank") パラメーターに値 **true** を指定して *login* メソッドを呼び出します。
 
 ###クライアント フロー
 アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のためにモバイル サービスに提供することもできます。このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
@@ -580,7 +580,7 @@ promise はいくつかの異なる方法で使用することができます。
 [How to: Insert data into a mobile service]: #inserting
 [How to: Modify data in a mobile service]: #modifying
 [How to: Delete data in a mobile service]: #deleting
-[How to: Authenticate users]: #caching
+[How to: Authenticate users]: #authentication
 [How to: Handle errors]: #errors
 [How to: Use promises]: #promises
 [How to: Customize request headers]: #customizing
@@ -608,4 +608,4 @@ promise はいくつかの異なる方法で使用することができます。
 [クライアントからのカスタム API 呼び出し]: mobile-services-html-call-custom-api.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

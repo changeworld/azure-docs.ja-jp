@@ -5,16 +5,20 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 2. 次に示すように、**Switch-AzureMode** コマンドレットを実行して、リソース マネージャー モードに切り替えます。
 
-	Switch-AzureMode AzureResourceManager
+		Switch-AzureMode AzureResourceManager
 
-	警告: Switch-AzureMode コマンドレットは廃止予定で、今後のリリースで削除される予定です。
+	上記のコマンドで想定される出力を次に示します。
+
+		WARNING: The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.
 
 	>[AZURE.WARNING]Switch-AzureMode コマンドレットは間もなく廃止予定です。これらが廃止された場合は、すべてのリソース マネージャー コマンドレットの名前が変更されます。
 
-3. 必要に応じて **New-AzureResourceGroup** コマンドレットを実行して、新しいリソース グループを作成します。次のコマンドを実行すると、*TestRG* というリソース グループが *Central US* Azure リージョンに作成されます。リソース グループの詳細については、[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)を参照してください。
+3. 必要に応じて **New-AzureResourceGroup** コマンドレットを実行して、新しいリソース グループを作成します。次のコマンドを実行すると、*TestRG* というリソース グループが *Central US* Azure リージョンに作成されます。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)」を参照してください。
 
 		New-AzureResourceGroup -Name TestRG -Location centralus
 		
+	上記のコマンドで想定される出力を次に示します。
+
 		ResourceGroupName : TestRG
 		Location          : centralus
 		ProvisioningState : Succeeded
@@ -29,7 +33,8 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 
 		New-AzureResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
 			-TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
-		
+			
+	上記のコマンドで想定される出力を次に示します。
 		
 		DeploymentName    : TestVNetDeployment
 		ResourceGroupName : TestRG
@@ -55,6 +60,7 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 
 		Get-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
 		
+	上記のコマンドで想定される出力を次に示します。
 		
 		Name              : TestVNet
 		ResourceGroupName : TestRG
@@ -95,4 +101,4 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		                      }
 		                    ]
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

@@ -1,34 +1,35 @@
-<properties 
-	pageTitle="Azure Machine Learning FAQ | Microsoft Azure" 
-	description="Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="pablissima" 
-	manager="paulettm" 
+<properties
+	pageTitle="Azure Machine Learning FAQ | Microsoft Azure"
+	description="Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。"
+	keywords="machine learning introduction,predictive modeling,what is machine learning"
+	services="machine-learning"
+	documentationCenter=""
+	authors="pablissima"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/18/2015" 
+<tags
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/09/2015"
 	ms.author="paulettm"/>
 
 #Azure Machine Learning に関してよく寄せられる質問 (FAQ): 課金、機能、制限、サポート
 
 この FAQ では、Web サービスを使用して予測モデリングとソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についての疑問に答えます。サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
- 
+
 ##一般的な質問
 
 **Azure Machine Learning とは**
- 
+
 Azure Machine Learning は、クラウドで予測分析ソリューションを作成、テスト、操作、管理するための、十分に管理されたサービスです。ブラウザーさえあれば、サインアップ、データのアップロード、機械学習の実験をすぐに始めることができます。ドラッグ アンド ドロップによる予測モデリング、モジュールの大きなパレット、開始用テンプレートのライブラリによって、一般的な機械学習のタスクがシンプルになり、作業時間が短縮されます。詳細については、「[Azure Machine Learning サービスの概要](/services/machine-learning/)」に関するページをご覧ください。機械学習の重要な用語や概念など基本事項については、[Azure Machine Learning の概要](machine-learning-what-is-machine-learning.md)に関するページを参照してください。
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
- 
+
 **Machine Learning Studio とは**
 
 Machine Learning Studio は、Web ブラウザーからアクセスできるワークベンチ環境です。Machine Learning Studio は、視覚的な構成のインターフェイスを持つモジュールのパレットをホストし、実験の形式でエンド ツー エンドのデータ技術ワークフローを容易に構築できます。
@@ -54,7 +55,7 @@ Machine Learning API サービスでは、Machine Learning Studio に組み込�
 
 ## Machine Learning Studio に関する質問
 
-###実験の作成	
+###実験の作成
 **実験グラフ用のバージョン管理や Git 統合はありますか。**
 
 いいえ、実験を行うたびにグラフのバージョンが保存されるため、他のユーザーが変更することはできません。
@@ -92,8 +93,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **Amazon S3 からデータを読み取ることはできますか。**
 
-少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。
-<!--
+少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。<!--
 <SEE CLOUD DS PROCESS>
 -->
 
@@ -101,7 +101,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 イメージの入力機能については、「[イメージ リーダー][image-reader]」をご覧ください。
 
-###モジュール 
+###モジュール
 
 **探しているアルゴリズム、データ ソース、データ形式、データ変換操作が Azure ML Studio で見つかりません。どうすればいいでしょうか。**
 
@@ -110,14 +110,14 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **既存のコードを ML Studio に取り込むことはできますか。**
 
-はい。ML Studio に既存の R コードを取り込み、それを Azure Machine Learning で提供される学習ツールと同じ実験で実行し、Azure Machine Learning 経由で Web サービスとして発行することができます。「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」をご覧ください。
+はい。ML Studio に既存の R コードを取り込み、それを Azure Machine Learning で提供される学習ツールと同じ実験で実行し、Azure Machine Learning 経由で Web サービスとしてデプロイすることができます。「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」をご覧ください。
 
 **[PMML](http://en.wikipedia.org/wiki/Predictive_Model_Markup_Language) などを使用してモデルを定義することはできますか。**
 
 いいえ。サポートされていません。ただし、カスタムの R と Python コードを使用してモジュールを定義できます。
 
 
-###データ処理 
+###データ処理
 **実験内で対話的にデータを視覚化する (R の視覚化以上) 機能はありますか。**
 
 モジュールの出力をクリックすると、データを視覚化し、統計情報を取得できます。
@@ -157,7 +157,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 
 現在、新しいカスタム モジュールは R でのみ作成できます。
 
-###R モジュール 
+###R モジュール
 **Machine Learning Studio で使用できるのはどの R パッケージですか。**
 
 Machine Learning Studio は、現在、400 を超える R パッケージをサポートしています。サポートされるパッケージは常に増加しています。サポートされる R パッケージの一覧を取得する方法については、「[R を使用した実験の拡張](machine-learning-extend-your-experiment-with-r.md)」をご覧ださい。必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム](http://go.microsoft.com/fwlink/?LinkId=404231)でパッケージの名前を指定してください。
@@ -170,7 +170,7 @@ Machine Learning Studio は、現在、400 を超える R パッケージをサ�
 
 いいえ。Studio には R 用の REPL 環境はありません。
 
-###Python モジュール 
+###Python モジュール
 
 **カスタム Python モジュールを構築することはできますか。**
 
@@ -197,11 +197,11 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。詳細�
 ###最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、
 **バッチ実行サービスと要求応答サービスとして予測モデルを実行するのはいつがいいですか。**
 
-要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスで、実験環境で作成、発行されたステートレスなモデルへのインターフェイスを提供するために使用されます。バッチ実行サービス (BES) は、データ レコードのバッチに対して非同期でスコアを付けるためのサービスです。BES への入力は、RRS で使用されるデータ入力と似ています。主な違いは、BES が、BLOB サービス、Azure の Table サービス、Azure SQL Database、HDInsight (Hive Query)、HTTP ソースなどのさまざまなソースからレコードのブロックを読み取ることです。詳細については、「[How to consume Machine Learning web services (Machine Learning Web サービスを使用する方法)](machine-learning-consume-web-services.md)」をご覧ください。
+要求応答サービス (RRS) は、待ち時間が短く、拡張性の高い Web サービスで、実験環境で作成、デプロイされたステートレスなモデルへのインターフェイスを提供するために使用されます。バッチ実行サービス (BES) は、データ レコードのバッチに対して非同期でスコアを付けるためのサービスです。BES への入力は、RRS で使用されるデータ入力と似ています。主な違いは、BES が、BLOB サービス、Azure の Table サービス、Azure SQL Database、HDInsight (Hive Query)、HTTP ソースなどのさまざまなソースからレコードのブロックを読み取ることです。詳細については、「[How to consume Machine Learning web services (Machine Learning Web サービスを使用する方法)](machine-learning-consume-web-services.md)」をご覧ください。
 
 **Web サービスにデプロイされたモデルはどのように更新できますか。**
 
-既にデプロイされたサービスの予測モデルの更新は、トレーニング済みのモデルの作成および保存に使用される実験の変更および再実行と同じくらい簡単です。新しいバージョンのトレーニング済みのモデルが使用できるようになると、ML Studio はステージング環境の Web サービスを更新するかどうかをたずねます。ステージング環境の Web サービスに更新が適用された後に、同じ更新を運用環境の Web サービスにも適用できるようになります。デプロイされた Web サービスを更新する方法の詳細については、「[Machine Learning Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
+既にデプロイされたサービスの予測モデルの更新は、トレーニング済みのモデルの作成および保存に使用される実験の変更および再実行と同じくらい簡単です。新しいバージョンのトレーニング済みのモデルが使用できるようになると、ML Studio はステージング環境の Web サービスを更新するかどうかをたずねます。ステージング環境の Web サービスに更新が適用された後に、同じ更新を運用環境の Web サービスにも適用できるようになります。デプロイされた Web サービスを更新する方法の詳細については、「[Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
 Retraining API を使用することもできます。サンプル コードは[こちら](https://azuremlretrain.codeplex.com/)で入手できます。
 
@@ -213,11 +213,11 @@ Retraining API を使用することもできます。サンプル コードは[
 **RRS/BES の出力を確認できまる場所はありますか。**
 
 RRS の場合は通常、Web サービスの応答に結果が表示されます。BLOB に書き込むこともできます。BES の場合、既定では BLOB に出力が書き込まれます。また、ライター モジュールを使用してデータベースやテーブルに出力を書き込むこともできます。
- 
- ****Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
- 
 
-##拡張性 
+ ****Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
+
+
+##拡張性
 
 **Web サービスのスケーラビリティはどれくらいですか。**
 
@@ -259,30 +259,30 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 番号
 
-##セキュリティと可用性 
+##セキュリティと可用性
 
 **既定で運用環境にデプロイされている Web サービスの http エンドポイントにはだれがアクセスできますか。 エンドポイントへのアクセスはどのようにして制限できますか。**
 
-Web サービスが発行された後に、そのサービスに対して既定のエンドポイントが作成されます。既定のエンドポイントは実稼働環境にデプロイされ、API キーを使用して呼び出すことができます。追加のエンドポイントは、独自のキーを使用して Azure ポータルから、または Web Service Management API を使用してプログラムで追加することができます。運用環境およびステージング環境で Web サービスを呼び出すには、アクセス キーが必要です。詳細については、「[Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
+Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。既定のエンドポイントは実稼働環境にデプロイされ、API キーを使用して呼び出すことができます。追加のエンドポイントは、独自のキーを使用して Azure ポータルから、または Web Service Management API を使用してプログラムで追加することができます。運用環境およびステージング環境で Web サービスを呼び出すには、アクセス キーが必要です。詳細については、「[Machine Learning Web サービスへの接続](machine-learning-connect-to-azure-machine-learning-web-service.md)」をご覧ください。
 
 
 **ストレージ アカウントが見つからない場合はどうなりますか。**
 
 Machine Learning Studio は、ワークフローを実行する際に中間データを保存する、ユーザーが指定した Azure ストレージ アカウントに依存しています。このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供されます。ワークスペースの作成後にストレージ アカウントが削除され、見つけることができない場合は、ワークスペースが機能しなくなり、そのワークスペースのすべての実験が失敗します。
- 
+
 誤ってストレージ アカウントを削除した場合に回復する唯一の方法は、削除されたストレージ アカウンと同じリージョンに同じ名前のストレージ アカウントを再作成することです。その後、アクセス キーを再同期してください。
- 
+
 
 **ストレージ アカウントのアクセス キーの同期が失われてしまった場合はどうなりますか。** Machine Learning Studio は、ワークフローを実行する際に中間データを保存する、ユーザーが指定した Azure ストレージ アカウントに依存しています。このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供され、アクセス キーは、そのワークスペースに関連付けられます。ワークスペースの作成後にアクセス キーが変更され、ワークスペースがストレージ アカウントにアクセスできない場合は、ワークスペースが機能しなくなり、そのワークスペースのすべての実験が失敗します。
 
 ストレージ アカウントのアクセス キーを変更した場合は、Azure ポータルのワークスペースの設定でアクセス キーを再同期をご確認ください。
 
 
-##Azure Marketplace 
+##Azure Marketplace
 
 「[Machine Learning Marketplace でのアプリの公開と使用に関する FAQ](machine-learning-marketplace-faq.md)」をご覧ください
 
-##サポートとトレーニング 
+##サポートとトレーニング
 
 **どこで Azure ML のトレーニングを受講できますか。**
 
@@ -306,6 +306,5 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
- 
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

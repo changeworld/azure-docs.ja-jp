@@ -1,19 +1,19 @@
 <properties 
-pageTitle="Azure Cloud Services でのスタートアップ タスクの実行 | Microsoft Azure"
-	description="スタートアップ タスクを使用すると、アプリ用にクラウド サービス環境を準備できます。スタートアップ タスクの動作のしくみおよびそれらを作成する方法について説明します"
-	services="cloud-services"
-	documentationCenter=""
-	authors="Thraka"
-	manager="timlt"
-	editor=""/>
+pageTitle="Azure Cloud Services でのスタートアップ タスクの実行 | Microsoft Azure" 
+description="スタートアップ タスクを使用すると、アプリ用にクラウド サービス環境を準備できます。スタートアップ タスクの動作のしくみおよびそれらを作成する方法について説明します" 
+services="cloud-services" 
+documentationCenter="" 
+authors="Thraka" 
+manager="timlt" 
+editor=""/>
 <tags 
-ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/11/2015"
-	ms.author="adegeo"/>
+ms.service="cloud-services" 
+ms.workload="tbd" 
+ms.tgt_pltfrm="na" 
+ms.devlang="na" 
+ms.topic="article" 
+ms.date="09/08/2015" 
+ms.author="adegeo"/>
 
 
 
@@ -163,4 +163,4 @@ Cloud Service で[一般的なスタートアップ タスク](cloud-services-st
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

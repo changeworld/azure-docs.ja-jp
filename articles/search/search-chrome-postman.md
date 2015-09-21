@@ -6,7 +6,7 @@
 	authors="HeidiSteen"
 	manager="mblythe"
 	editor=""
-	tags="azure-portal"/>
+    tags="azure-portal"/>
 
 <tags
 	ms.service="search"
@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="08/25/2015"
+	ms.date="09/08/2015"
 	ms.author="heidist"/>
 
 # Azure Search で Chrome Postman を使用する方法 #
@@ -118,4 +118,4 @@ REST API のドキュメントは、[MSDN](https://msdn.microsoft.com/library/az
 [5]: ./media/search-chrome-postman/upload_documents.png
 [6]: ./media/search-chrome-postman/query.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

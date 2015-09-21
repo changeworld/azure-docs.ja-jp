@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="07/08/2015" 
+	ms.date="09/08/2015" 
 	ms.author="heidist"/>
 
 # Azure Search 用のプロトタイプ アプリケーションを構築する
@@ -80,7 +80,7 @@ Azure テーブル ストレージなど、JSON をネイティブに使用す�
 
 独自のデータを JSON ファイルに変換できる場合は、既存のファイルを独自のデータで上書きし、アプリケーションを実行してインデックスの作成と読み込みを行うことができます。データを複数のファイルに分散すると、一括アップロード操作を試すことができます。
 
-データを読み込むためのその他のアプローチとして、インデクサーの使用が挙げられます (Azure DocumentDB データ ソースまたは Azure SQL Database データ ソースが必要)。データを読み込む別の方法を示すサンプル コードは、MSDN の [Azure Search のビデオとチュートリアルのリスト](https://msdn.microsoft.com/library/azure/dn818681.aspx)のページにあります。
+データを読み込むためのその他のアプローチとして、インデクサーの使用が挙げられます (Azure DocumentDB データ ソースまたは Azure SQL Database データ ソースが必要)。データを読み込む別の方法を示すサンプル コードは、MSDN の [Azure Search のビデオとチュートリアルのリスト](search-video-demo-tutorial-list.md)のページにあります。
 
 ### クエリを編集する
 
@@ -133,4 +133,4 @@ Azure テーブル ストレージなど、JSON をネイティブに使用す�
 [1]: ./media/search-build-prototype/azsearch-datafiles.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

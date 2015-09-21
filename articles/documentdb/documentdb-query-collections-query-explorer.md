@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
-	ms.date="06/10/2015" 
+	ms.date="09/08/2015" 
 	ms.author="stbaro"/>
 
 # クエリ エクスプローラーを使用した、DocumentDB コレクションに対する SQL クエリの作成、編集、実行 #
@@ -78,4 +78,4 @@
 - クエリ エクスプローラーでサポートされている DocumentDB SQL の文法の詳細については、[ここ](documentdb-sql-query.md)をクリックしてください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

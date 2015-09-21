@@ -91,11 +91,11 @@ SAS キーの名前と値は、Azure ポータル接続情報に含まれてい�
 
 これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
--   MSDN リファレンスの [Service Bus のキュー、トピック、サブスクリプション][]
+-   [キュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
 
 [Azure Management Portal]: http://manage.windowsazure.com
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
-[Service Bus のキュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/azure/hh367516.aspx
+[キュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

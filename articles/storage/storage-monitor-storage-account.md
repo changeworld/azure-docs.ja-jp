@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2015"
+	ms.date="09/03/2015"
 	ms.author="tamram"/>
 
 # Azure ポータルでのストレージ アカウントの監視
@@ -157,4 +157,4 @@
 
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について](http://msdn.microsoft.com/library/azure/hh343262.aspx)」を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

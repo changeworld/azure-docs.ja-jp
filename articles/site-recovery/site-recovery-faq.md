@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="Azure Site Recovery: よく寄せられる質問"
-	description="この記事では、Azure Site Recovery の使用に関してよく寄せられる質問について説明します。"
-	services="site-recovery"
+	pageTitle="Azure Site Recovery: よく寄せられる質問" 
+	description="この記事では、Azure Site Recovery の使用に関してよく寄せられる質問について説明します。" 
+	services="site-recovery" 
 	documentationCenter=""
 	authors="csilauraa"
 	manager="jwhit"
@@ -11,9 +11,9 @@
 	ms.service="site-recovery"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="na" 
 	ms.workload="storage-backup-recovery"
-	ms.date="08/26/2015"
+	ms.date="08/26/2015" 
 	ms.author="lauraa"/>
 
 
@@ -63,6 +63,17 @@ ASR は ISO 27001:2005 の認証を受けており、HIPAA、DPA、および Fed
 
 ### オフライン メカニズムを使用して、初期ディスクを Azure にシードできますか。
 これはサポートされていません。[Azure Site Recovery Feedback Forum - Support for offline replication (Azure Site Recovery フィードバック フォーラム - オフライン レプリケーションのサポート)](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from) を通じてフィードバックをお送りください。
+
+### Hyper-v をソースとして使用する場合、レプリケーション トラフィックに割り当てられた帯域幅を調整できますか。
+- レプリケーションを 2 つのオンプレミス サイト間で行っている場合は、Windows QoS を使用して調整を行うことができます。サンプル スクリプトを次に示します。 
+
+    	New-NetQosPolicy -Name ASRReplication -IPDstPortMatchCondition 8084 -ThrottleRate (2048*1024)
+    	gpupdate.exe /force
+
+- レプリケーションを Azure に対して行っている場合は、次の PowerShell コマンドレットのサンプルを使用して構成することができます。
+
+    	Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "18:00:00" -WorkHourBandwidth (512*1024) -NonWorkHourBandwidth (2048*1024)
+
 
 ## バージョンのサポート
 
@@ -236,4 +247,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

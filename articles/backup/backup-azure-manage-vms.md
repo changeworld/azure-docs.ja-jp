@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="Azure Backup -仮想マシンの管理"
+	pageTitle="Azure Backup - 仮想マシンの管理 | Microsoft Azure"
 	description="Azure 仮想マシンを管理する方法について説明します。"
 	services="backup"
 	documentationCenter=""
@@ -8,35 +8,36 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/17/2015" ms.author="aashishr"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/09/2015" ms.author="aashishr"; "jimpark"/>
 
 # 仮想マシンの管理
 
-
 ## 保護された仮想マシンを管理する
+
+以下では、保護された仮想マシンを管理する方法を説明します。
 
 1. 仮想マシンのバックアップ設定を表示して管理するには、**[保護された項目]** タブをクリックします。
 
-  - 保護された項目の名前をクリックすると、**[バックアップの詳細]** タブに前回のバックアップに関する情報が表示されます。
+2. 保護された項目の名前をクリックすると、**[バックアップの詳細]** タブに前回のバックアップに関する情報が表示されます。
 
-        ![Virtual machine backup](./media/backup-azure-manage-vms/backup-vmdetails.png)
+    ![Virtual machine backup](./media/backup-azure-manage-vms/backup-vmdetails.png)
 
-2. 仮想マシンのバックアップ ポリシー設定を表示して管理するには、**[ポリシー]** タブをクリックします。
+3. 仮想マシンのバックアップ ポリシー設定を表示して管理するには、**[ポリシー]** タブをクリックします。
 
-  - **[バックアップ ポリシー]** タブに既存のポリシーが表示されます。必要に応じて変更できます。新しいポリシーを作成する必要がある場合は、**[ポリシー]** ページの **[作成]** をクリックします。ポリシーを削除する場合は、そのポリシーにどの仮想マシンも関連付けられていないことをご確認ください。
+    **[バックアップ ポリシー]** タブに既存のポリシーが表示されます。必要に応じて変更できます。新しいポリシーを作成する必要がある場合は、**[ポリシー]** ページの **[作成]** をクリックします。ポリシーを削除する場合は、そのポリシーにどの仮想マシンも関連付けられていないことをご確認ください。
 
-        ![Virtual machine policy](./media/backup-azure-manage-vms/backup-vmpolicy.png)
+    ![Virtual machine policy](./media/backup-azure-manage-vms/backup-vmpolicy.png)
 
-3. 仮想マシンの動作や状態に関する詳細情報は、**[ジョブ]** ページから取得できます。一覧内のジョブをクリックして詳細情報を表示するか、特定の仮想マシンのジョブをフィルターします。
+4. 仮想マシンの動作や状態に関する詳細情報は、**[ジョブ]** ページから取得できます。一覧内のジョブをクリックして詳細情報を表示するか、特定の仮想マシンのジョブをフィルターします。
 
     ![ジョブ](./media/backup-azure-manage-vms/backup-job.png)
 
 ## オンデマンドでの仮想マシンのバックアップ
-保護のためのバックアップを構成した後で、仮想マシンのオンデマンド バックアップを作成できます。仮想マシンの最初のバックアップが保留中の場合、オンデマンド バックアップを実行すると、仮想マシンの完全なコピーが Azure Backup 資格情報コンテナーに作成されます。最初のバックアップが完了している場合、オンデマンド バックアップを実行すると、前のバックアップから変更された部分のみが Azure Backup 資格情報コンテナーに送られます。
+仮想マシンに保護が構成されていれば、その仮想マシンについてオンデマンド バックアップを作成できます。仮想マシンの最初のバックアップが保留中の場合、オンデマンド バックアップを実行すると、仮想マシンの完全なコピーが Azure のバックアップ コンテナーに作成されます。最初のバックアップが完了している場合、オンデマンド バックアップを実行すると、前のバックアップから変更された部分のみが Azure のバックアップ コンテナーに送られます。
 
 仮想マシンのオンデマンド バックアップを作成するには:
 
-1. **[保護された項目]** ページを開き、**[種類]** として **[Azure 仮想マシン]** を選択し (まだ選択していない場合)、**[選択]** ボタンをクリックします。
+1. **[保護された項目]** ページを開き、**[タイプ]** として **[Azure 仮想マシン]** を選択し (まだ選択していない場合)、**[選択]** ボタンをクリックします。
 
     ![VM Type](./media/backup-azure-manage-vms/vm-type.png)
 
@@ -59,14 +60,14 @@
 ## 仮想マシンの保護を停止する
 次の方法を使って、仮想マシンの以後のバックアップを停止することができます。
 
-- 仮想マシンに関連付けられているバックアップ データを Azure Backup 資格情報コンテナー内に保持する
+- 仮想マシンに関連付けられているバックアップ データを Azure のバックアップ コンテナー内に保持する
 - 仮想マシンに関連付けられているバックアップ データを削除する
 
-最初の方法を選択した場合、バックアップ データを使用して仮想マシンを復元できます。このような仮想マシンの詳しい料金については、[ここ](http://azure.microsoft.com/pricing/details/backup/)をクリックしてください。
+仮想マシンに関連付けられているバックアップ データを保持する方法を選択した場合、バックアップ データを使用して仮想マシンを復元できます。このような仮想マシンの詳しい価格については、[ここ](http://azure.microsoft.com/pricing/details/backup/)をクリックしてください。
 
-バーチャル マシンに対する保護を停止するには:
+仮想マシンに対する保護を停止するには:
 
-1. **[保護された項目]** ページを開き、フィルターの種類として **[Azure 仮想マシン]** を選択し (まだ選択していない場合)、**[選択]** ボタンをクリックします。
+1. **[保護された項目]** ページを開き、フィルターのタイプとして **[Azure 仮想マシン]** を選択し (まだ選択していない場合)、**[選択]** ボタンをクリックします。
 
     ![VM Type](./media/backup-azure-manage-vms/vm-type.png)
 
@@ -74,7 +75,7 @@
 
     ![Stop protection](./media/backup-azure-manage-vms/stop-protection.png)
 
-3. 既定では、仮想マシンに関連付けられているバックアップ データは削除されません。
+3. 既定では、Azure Backup では、仮想マシンに関連付けられているバックアップ データは削除されません。
 
     ![Confirm stop protection](./media/backup-azure-manage-vms/confirm-stop-protection.png)
 
@@ -92,20 +93,20 @@
 
     ![Stopped protection](./media/backup-azure-manage-vms/protection-stopped-status.png)
 
-    **[関連付けられたバックアップ データを削除する]** オプションをオンにした場合、仮想マシンが **[保護された項目]** ページに表示されなくなります。
+    **[関連付けられたバックアップ データを削除します]** オプションをオンにした場合、仮想マシンが **[保護された項目]** ページに表示されなくなります。
 
 ## 仮想マシンの再保護
-**[保護を停止]** で **[関連付けられたバックアップ データを削除する]** をオフにしていた場合、登録済みの仮想マシンのバックアップと同様の手順に従って、仮想マシンを再び保護することができます。再保護された仮想マシンは、保護の停止前に保持されていたバックアップ データと、再保護された後に作成された回復ポイントを持つことになります。
+**[保護を停止]** で **[関連付けられたバックアップ データを削除します]** をオフにしていた場合、登録済みの仮想マシンのバックアップと同様の手順に従って、仮想マシンを再び保護することができます。再保護された仮想マシンは、保護の停止前に保持されていたバックアップ データと、再保護された後に作成された回復ポイントを持つことになります。
 
 再保護の後、**[保護を停止]** より前の回復ポイントがある場合は、仮想マシンの保護の状態が **[保護済み]** に変わります。
 
-  ![Reprotected VM](./media/backup-azure-manage-vms/reprotected-status.png)
+    ![Reprotected VM](./media/backup-azure-manage-vms/reprotected-status.png)
 
 >[AZURE.NOTE]仮想マシンを再保護する場合は、最初に仮想マシンを保護するために使用いたポリシー以外のポリシーを選択できます。
 
 ## 仮想マシンを登録解除する
 
-バックアップ資格情報コンテナーから仮想マシンを削除する場合
+バックアップ コンテナーから仮想マシンを削除する場合
 
 1. ページの下部にある **[登録解除]** をクリックします。
 
@@ -121,9 +122,9 @@
 - "保護を停止" ジョブ中
 - 仮想マシンで "保護を停止" ジョブが完了した後
 
-**[バックアップの停止]** ジョブが正常に完了した後で、"保護停止" 状態になっている仮想マシンのバックアップ データを削除するには:
+**[バックアップの停止]** ジョブが正常に完了した後で、*[保護停止]* 状態になっている仮想マシンのバックアップ データを削除するには、次の操作を行います。
 
-1. **[保護された項目]** ページを開き、種類として **[Azure 仮想マシン]** を選択し、**[選択]** ボタンをクリックします。
+1. **[保護された項目]** ページを開き、*[タイプ]* として **[Azure 仮想マシン]** を選択し、**[選択]** ボタンをクリックします。
 
     ![VM Type](./media/backup-azure-manage-vms/vm-type.png)
 
@@ -145,11 +146,103 @@
 
     ジョブが完了すると、仮想マシンに対応するエントリが **[保護された項目]** ページから削除されます。
 
-
-###ダッシュボード
-
+## ダッシュボード
 **ダッシュボード** ページでは、Azure 仮想マシン、ストレージ、過去 24 時間以内に関連付けられたジョブに関する情報を確認できます。バックアップの状態と関連付けられているバックアップ エラーを表示できます。
 
-  ![ダッシュボード](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
+    ![Dashboard](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
 
-<!---HONumber=August15_HO6-->
+## 監査操作
+Azure Backup では、顧客がトリガーしたバックアップ操作の "操作ログ" を確認できます。この機能を使えば、バックアップ コンテナーで行われた管理操作を正確に把握することができます。操作ログは、バックアップ操作の事後分析や監査を行うのに役立ちます。
+
+操作ログには、次の操作が記録されます。
+
+- Register
+- 登録解除
+- 保護の構成
+- バックアップ ([今すぐバックアップ] で行うオンデマンド バックアップとスケジュールされたバックアップの両方)
+- 復元
+- Stop protection
+- バックアップ データの削除
+- Add policy
+- ポリシーの削除
+- ポリシーの更新
+- ジョブの取り消し
+
+バックアップ コンテナーに対応する操作ログを表示するには、次の操作を行います。
+
+1. Azure ポータルの **[管理サービス]** に移動し、**[操作ログ]** タブをクリックします。
+
+    ![Operation Logs](./media/backup-azure-manage-vms/ops-logs.png)
+
+2. フィルターで *[タイプ]* として **[Backup]** を選択し、*[サービス名]* にバックアップ コンテナー名を指定したうえで、**[送信]** をクリックします。
+
+    ![Operation Logs Filter](./media/backup-azure-manage-vms/ops-logs-filter.png)
+
+3. 操作ログで、任意の操作を選択し、**[詳細]** をクリックすると、選択した操作に対応する詳細が表示されます。
+
+    ![Operation Logs-Fetching details](./media/backup-azure-manage-vms/ops-logs-details.png)
+
+    **詳細ウィザード**には、トリガーされた操作、ジョブ ID、この操作がトリガーされたリソース、および操作開始時間に関する情報が表示されます。
+
+    ![操作の詳細](./media/backup-azure-manage-vms/ops-logs-details-window.png)
+
+## アラート通知
+ポータルで、ジョブのカスタム アラート通知を取得できます。この通知は、操作ログのイベントに PowerShell ベースのアラート ルールを定義することによって取得できます。
+
+イベント ベースのアラートは、Azure リソース モードで動作します。Azure リソース モードに切り替えるには、管理者特権のコマンド モードで次のコマンドレットを実行します。
+
+```
+PS C:\> Switch-AzureMode AzureResourceManager
+```
+
+バックアップが失敗した場合にアラートを発行するカスタム通知を定義する場合、コマンドのサンプルは次のようになります。
+
+```
+PS C:\> Add-AlertRule -Operator GreaterThanOrEqual -Threshold 1 -ResourceId '/subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/microsoft.backupbvtd2/BackupVault/trinadhVault' -EventName Backup  -EventSource Administrative -Level Error -OperationName 'Microsoft.Backup/backupVault/Backup' -ResourceProvider Microsoft.Backup -Status Failed  -SubStatus Failed -RuleType Event -Location eastus -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -Name Backup-Failed -Description 'Backup failed for one of the VMs in vault trinadhkVault' -CustomEmails 'contoso@microsoft.com' -SendToServiceOwners
+```
+
+**ResourceId**: 前のセクションで説明した操作ログのポップアップから取得できます。具体的には、操作の詳細を示したポップアップ ウィンドウに表示される ResourceUri が、このコマンドレットに指定する ResourceId となります。
+
+**EventName**: IaaS VM バックアップに関するアラートの場合、サポートされる値は、Register、Unregister、ConfigureProtection、Backup、Restore、StopProtection、DeleteBackupData、CreateProtectionPolicy、DeleteProtectionPolicy、UpdateProtectionPolicy です。
+
+**Level**: サポートされる値は、Informational、Error です。操作が失敗した場合のアラートには Error を使用し、ジョブが成功した場合のアラートには Informational を使用します。
+
+**OperationName**: これは、"Microsoft.Backup/backupvault/<EventName>" の形式で指定します。EventName には上で説明した値を指定します。
+
+**Status**: サポートされる値は、Started、Succeeded、および Failed です。Status に Succeeded を指定する場合、Level には Informational を指定することをお勧めします。
+
+**SubStatus**: バックアップ操作の Status と同じです。
+
+**RuleType**: イベント ベースのバックアップ アラートであるため、*Event* のままにします。
+
+**ResourceGroup**: 操作がトリガーされるリソースの ResourceGroup です。これは、ResourceId の値から取得できます。ResourceId 値の */resourceGroups/* と */providers/* フィールドの間にある値が ResourceGroup の値です。
+
+**Name**: アラート ルールの名前を指定します。
+
+**Description**: アラート ルールの説明を指定します。
+
+**CustomEmails**: アラート通知を送信するカスタム電子メール アドレスを指定します。
+
+**SendToServiceOwners**: このオプションを指定すると、サブスクリプションの管理者と共同管理者全員にアラート通知を送信します。
+
+アラートの電子メール サンプルは、次のようになります。
+
+ヘッダーのサンプル:
+
+![Alert Header](./media/backup-azure-manage-vms/alert-header.png)
+
+アラートの電子メールの本文のサンプル:
+
+![Alert Body](./media/backup-azure-manage-vms/alert-body.png)
+
+### アラートに関する制限事項
+イベント ベースのアラートには、次の制限事項が適用されます。
+
+1. アラートは、バックアップ コンテナー内のすべての仮想マシン上でトリガーされます。バックアップ コンテナー内の特定の仮想マシンのセットのアラートを取得するようにカスタマイズすることはできません。
+2. アラートは、次のアラート期間にアラートの条件に一致するイベントがトリガーされなかった場合、自動解決されます。アラートのトリガー期間を設定するには、Add-AlertRule コマンドレットで、*WindowSize* パラメーターを使用します。
+
+## 次のステップ
+
+- [Azure VM の復元](backup-azure-restore-vms.md)
+
+<!---HONumber=Sept15_HO2-->

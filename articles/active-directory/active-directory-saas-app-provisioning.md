@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/14/2015"
+   ms.date="09/08/2015"
    ms.author="liviodlc"/>
 
 #Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、Se
 **以下に、この機能を使用して行うことができる例をいくつか示します。**
 
 - 新しいユーザーがチームに参加するときに、適切な SaaS アプリで新しいアカウントを自動的に作成できます。
-- ユーザーがチームを離れるときは、SaaS アプリからアカウントが自動的に削除されます。
+- ユーザーがチームを離れなければならないときに、SaaS アプリのアカウントを自動で非アクティブ化できます。
 - SaaS アプリの ID は、ディレクトリの変更に基づいて最新の状態に保たれることが保証されます。
 - ユーザー以外のオブジェクト (グループなど) をサポートする SaaS アプリにプロビジョニングします。
 
@@ -108,4 +108,4 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

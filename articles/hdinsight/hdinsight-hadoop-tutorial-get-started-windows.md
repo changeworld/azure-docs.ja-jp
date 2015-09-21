@@ -1,6 +1,7 @@
 <properties
    pageTitle="Hadoop のチュートリアル: Windows での Hadoop の使用 | Microsoft Azure"
    description="HDInsight での Hadoop の使用Windows での Hadoop クラスターのプロビジョニング、データに対する Hive クエリの実行、Excel での出力の分析を行う方法について説明します。"
+   keywords="hadoop tutorial,hadoop on windows,hadoop cluster,learn hadoop, hive query"
    services="hdinsight"
    documentationCenter=""
    authors="nitinme"
@@ -14,7 +15,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/07/2015"
+   ms.date="09/03/2015"
    ms.author="nitinme"/>
 
 
@@ -90,7 +91,7 @@ Azure の HDInsight を一般に利用可能にすると共に、Microsoft は H
 	
 	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。または、**[新規作成]** をクリックして、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
 	
-	- **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+	- **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
 	
 	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
 	
@@ -144,10 +145,11 @@ HDInsight クラスターがプロビジョニングされたら、サンプル�
 
 **クラスター ダッシュボードから Hive ジョブを実行するには**
 
-1. [Azure ポータル][azure-management-portal]にサインインします。
-2. 左側ウィンドウの **[HDINSIGHT]** をクリックします。前のセクションで作成したクラスターなど、作成したクラスターが一覧表示されます。
-3. Hive ジョブの実行に使用するクラスターの名前をクリックし、ページの下部にある **[クエリ コンソール]** をクリックします。
-4. 別のブラウザー タブで Web ページが開きます。Hadoop ユーザー アカウントとパスワードを入力します。既定のユーザー名は **admin** で、パスワードはプロビジョニング処理中に入力したパスワードです。ダッシュボードは、次のようになります。
+1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。
+2. **[すべて参照]**、**[HDInsight クラスター]** の順にクリックして、前のセクションで作成したクラスターを含むクラスターの一覧を表示します。
+3. Hive ジョブの実行に使用するクラスターの名前をクリックし、ブレードの上部にある **[ダッシュボード]** をクリックします。
+4. 別のブラウザー タブで Web ページが開きます。Hadoop ユーザー アカウントとパスワードを入力します。既定のユーザー名は **admin** で、パスワードはプロビジョニング処理中に入力したパスワードです。
+5. ダッシュボードの **[Hive エディター]** タブをクリックします。次の Web ページが開きます。
 
 	![Hive Editor tab in the HDInsight cluster dashboard.][img-hdi-dashboard]
 
@@ -280,4 +282,4 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

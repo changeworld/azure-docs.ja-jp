@@ -3,7 +3,7 @@
 	description="Azure App Service の App Service プランのしくみと、それが管理機能にもたらすメリットについて説明します。" 
 	services="app-service" 
 	documentationCenter="" 
-	authors="cephalin" 
+	authors="btardif" 
 	manager="wpickett" 
 	editor=""/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
+	ms.date="09/07/2015" 
 	ms.author="byvinyal"/>
 
 #Azure App Service プランの詳細な概要#
@@ -50,17 +50,11 @@ App Service プランは 1 つのリソース グループに複数割り当て�
 
 空の App Service プランを作成することはできません。ただし、アプリの作成時には新しいプランを明示的に作成できます。
 
-これを [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で実行するには、**[新規]** をクリックし、**[Web + モバイル]** を選択して、**[Web Apps]**、**[Mobile Apps]**、**[Logic Apps]**、または **[API Apps]** を選択します。その後、新しいアプリのための App Service プランを選択または作成できます。
- 
-![App Service プランの FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview01.png)
+これを [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で実行するには、**[新規]** をクリックし、**[Web + モバイル]** を選択して、**[Web Apps]**、**[Mobile Apps]**、**[Logic Apps]**、または **[API Apps]** を選択します。![][createWebApp]
 
-##App Service プランにアプリを割り当てる
-
-アプリは、その作成プロセス中に、既存のプランに割り当てることができます。
-
-これを [Azure ポータル](http://portal.azure.com)で実行するには、**[新規]** をクリックし、**[Web + モバイル]** を選択して、**[Web Apps]**、**[Mobile Apps]**、**[Logic Apps]**、または **[API Apps]** を選択します。その後、新しいアプリのための App Service プランを選択または作成できます。**[既存のプランを選択]** をクリックすると、既存のプランの一覧が表示されるので、そこから選択ができます。
-
-![App Service プランの FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview02.png)
+その後、新しいアプリのための App Service プランを選択または作成できます。
+  
+ ![][createASP]
  
 ## アプリを別の App Service プランに移動する
 
@@ -70,7 +64,7 @@ App Service プランは 1 つのリソース グループに複数割り当て�
  
 すると、[App Service プラン] ブレードが表示されます。この時点で、既存のプランを選択するか、新しいプランを作成できます。地理的に異なる場所に属しているプランは灰色表示され、選択できません。
 
-![App Service プランの FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview03.png)
+![][change]
 
 各プランに価格レベルが割り当てられている点に注目してください。 **Free** レベルから **Standard** レベルにサイトを移動すると、**Standard** レベルのすべての機能とリソースをアプリで活用できるようになります。
 
@@ -84,7 +78,7 @@ App Service プランは 1 つのリソース グループに複数割り当て�
 
 以下の画像には、**[App Service プラン]** ブレードと **[価格レベル]** ブレードが表示されています。**[App Service プラン]** の **[価格レベル]** 部分をクリックすると、**[価格レベル]** ブレードが展開表示され、プランの価格レベルとインスタンス サイズを変更できます。
  
-![App Service プランの FAQ](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview04.png)
+ ![][pricingtier]
 
 ##概要
 
@@ -93,7 +87,15 @@ App Service プランは、アプリ間で共有できる一連の機能と容�
 ## 変更内容
 
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
+* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
+ 
+ 
+ <!-- Images. -->
+[pricingtier]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/appserviceplan-pricingtier.png
+[assign]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/assing-appserviceplan.png
+[change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
+[createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png
+[createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

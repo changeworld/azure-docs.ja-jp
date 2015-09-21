@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/08/2015"
+   ms.date="09/04/2015"
    ms.author="telmos" />
 
 # PowerShell を使用してアクセス制御リスト (ACL) のエンドポイントを管理する方法
@@ -97,4 +97,4 @@ ACL PowerShell コマンドレットの完全な一覧を取得するには、�
 
 [仮想マシンとの通信をセットアップする方法](http://go.microsoft.com/fwlink/?LinkId=303938)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

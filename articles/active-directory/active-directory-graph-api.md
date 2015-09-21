@@ -1,21 +1,23 @@
 <properties
    pageTitle="Azure Active Directory Graph API"
-	description="REST API エンドポイントを介して Azure AD にプログラムでアクセスできる Graph API の概要およびクイック スタート ガイドです。"
-	services="active-directory"
-	documentationCenter=""
-	authors="msmbaldwin"
-	manager="mbaldwin"
-	editor="mbaldwin"/>
+   description="REST API エンドポイントを介して Azure AD にプログラムでアクセスできる Graph API の概要およびクイック スタート ガイドです。"
+   services="active-directory"
+   documentationCenter=""
+   authors="msmbaldwin"
+   manager="mbaldwin"
+   editor="mbaldwin" />
 <tags
    ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="08/25/2015"
-	ms.author="mbaldwin"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="09/08/2015"
+   ms.author="mbaldwin" />
 
 # Azure Active Directory Graph API
+
+> *[対話型の Graph API リファレンス ドキュメント](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)を表示する*
 
 Azure Active Directory Graph API を使用すると、REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。たとえば、Graph API では、ユーザー オブジェクトへの次のような一般的な操作がサポートされています。
 
@@ -31,7 +33,7 @@ Azure Active Directory Graph API を使用すると、REST API エンドポイ�
 
 ユーザー オブジェクトに加えて、グループやアプリケーションなどのその他のオブジェクトに対しても同様の操作を実行できます。ディレクトリ上で Graph API を呼び出すには、アプリケーションを Azure AD に登録し、ディレクトリへのアクセスを許可するように構成する必要があります。通常、これは、ユーザーまたは管理者の同意フローによって実現されます。
 
-Azure Active Directory Graph API の使用を開始するには、[Graph API のクイック スタート ガイド](active-directory-graph-api-quickstart.md)を参照してください。
+Azure Active Directory Graph API の使用を開始するには、「[Graph API クイック スタート ガイド](active-directory-graph-api-quickstart.md)」または「[対話型の Graph API リファレンス ドキュメント](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」を参照してください。
 
 
 ## 特徴
@@ -64,4 +66,4 @@ Graph API により、多くのアプリケーション シナリオを実現で
 
 [Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

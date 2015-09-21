@@ -23,6 +23,7 @@
 
 Script Action により、クラスターの作成時のみ、スクリプトを実行してクラスターをカスタマイズできます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ][hdinsight-cluster-customize]」に関するページをご覧ください。
 
+> [AZURE.NOTE]このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。Linux ベースのクラスターでの R の操作については、「[HDInsight Hadoop クラスターに R をインストールして使用する (Linux)](hdinsight-hadoop-r-scripts-linux.md)」を参照してください。
 
 ## R とは
 
@@ -36,7 +37,7 @@ HDInsight クラスターで R をインストールする[サンプル スク�
 
 > [AZURE.NOTE]サンプル スクリプトは、HDInsight クラスター バージョン 3.1 で導入されました。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
 
-1. HDInsight クラスターをプレビュー ポータルからプロビジョニングする場合は、**[オプションの構成]** をクリックし、**[スクリプト アクション]** をクリックします。
+1. HDInsight クラスターをプレビュー ポータルからプロビジョニングする場合は、**[オプションの構成]**、**[スクリプト アクション]** の順にクリックします。
 2. **[スクリプト アクション]** ページで、次の値を入力します。
 
 	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-r-scripts/hdi-r-script-action.png "Script Action を使ってクラスターをカスタマイズする")
@@ -283,4 +284,4 @@ Azure PowerShell コンソールを開き、プロジェクトを保存した場
 [hdinsight-cluster-customize]: ../hdinsight-hadoop-customize-cluster
 [hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

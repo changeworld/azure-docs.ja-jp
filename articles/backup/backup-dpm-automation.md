@@ -3,18 +3,18 @@
 	description="PowerShell を使用して、Data Protection Manager (DPM) 用に Microsoft Azure Backup をデプロイおよび管理する手順の説明"
 	services="backup"
 	documentationCenter=""
-	authors="SamirMehta"
+	authors="AnuragMehrotra"
 	manager="jwhit"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/18/2015" ms.author="jimpark"; "aashishr"; "sammehta"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/04/2015" ms.author="jimpark"; "aashishr"; "sammehta"; "anuragm"/>
 
 
-# Azure PowerShell を使用して Data Protection Manager (DPM) サーバー用に Microsoft Azure Backup をデプロイおよび管理する手順
-この記事では、Azure PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
+# PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
+この記事では、PowerShell を使用して、DPM サーバー上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
-## Azure PowerShell 環境のセットアップ
-Azure PowerShell を使用して Data Protection Manager から Azure へのバックアップを管理する前に、Azure PowerShell に正しい環境があることを確認してください。Azure PowerShell セッションの開始時に、必ず次のコマンドレットを実行して適切なモジュールをインポートし、DPM コマンドレットを適切に参照できるようにしてください。
+## PowerShell 環境のセットアップ
+PowerShell を使用して Data Protection Manager から Azure へのバックアップを管理する前に、PowerShell に正しい環境があることを確認してください。PowerShell セッションの開始時に、必ず次のコマンドレットを実行して適切なモジュールをインポートし、DPM コマンドレットを適切に参照できるようにしてください。
 
 ```
 PS C:\> & "C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin\DpmCliInitScript.ps1"
@@ -45,7 +45,7 @@ PS C:\> $backupvault = New-AzureBackupVault –ResourceGroupName “test-rg” �
 ### DPM サーバーへの Microsoft Azure Backup エージェントのインストール
 Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)またはバックアップ コンテナーの [ダッシュボード] ページから入手することができます。インストーラーを、*C:\\Downloads* などの、簡単にアクセスできる場所に保存します。
 
-エージェントをインストールするには、**DPM サーバー**の管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
+エージェントをインストールするには、**DPM サーバー**の管理者特権の PowerShell コンソールで、次のコマンドを実行します。
 
 ```
 PS C:\> MARSAgentInstaller.exe /q
@@ -206,10 +206,11 @@ PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 この手順を、選択したすべてのデータソースが保護グループに追加されるまで必要なだけ繰り返します。1 つのデータソースで開始して、保護グループを作成するためのワークフローを完了し、後で保護グループにさらにデータソースを追加することもできます。
 
 ### データ保護方法の選択
-データソースが保護グループに追加されたら、次の手順は、[Set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) コマンドレットを使用した保護方法の指定です。この例では、保護グループをローカル ディスクとクラウド バックアップ用にセットアップします。
+データソースが保護グループに追加されたら、次の手順は、[Set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) コマンドレットを使用した保護方法の指定です。この例では、保護グループをローカル ディスクとクラウド バックアップ用にセットアップします。また、[Add-DPMChildDatasource](https://technet.microsoft.com/ja-JP/library/hh881732.aspx) コマンドレットに -Online フラグを付けて、保護対象のデータソースをクラウドに指定する必要があります。
 
 ```
 PS C:\> Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
+PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 ```
 
 ### 保有期間の範囲設定
@@ -301,4 +302,4 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 ## 次のステップ
 Azure DPM Backup の詳細については、「[Azure DPM Backup の概要](backup-azure-dpm-introduction.md)」を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

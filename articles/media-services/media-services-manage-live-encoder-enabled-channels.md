@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する"
-	description="このトピックでは、オンプレミスのエンコーダーからシングル ビットレートのライブ ストリームを受信し、その後に Media Services でアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。"
-	services="media-services"
-	documentationCenter=""
-	authors="Juliako"
-	manager="dwrede"
+	pageTitle="Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する" 
+	description="このトピックでは、オンプレミスのエンコーダーからシングル ビットレートのライブ ストリームを受信し、その後に Media Services でアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="Juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="ne"
-	ms.topic="article"
-	ms.date="08/20/2015"
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="ne" 
+	ms.topic="article" 
+	ms.date="09/07/2015"
 	ms.author="juliako"/>
 
 #Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する (プレビュー)
@@ -419,6 +419,14 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 - [.NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 - [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
 ##関連トピック
 
 [Azure Media Services を使用してライブ ストリーミング イベントを配信する](media-services-live-streaming-workflow.md)
@@ -430,4 +438,4 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

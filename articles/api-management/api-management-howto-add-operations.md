@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2015" 
+	ms.date="09/10/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API に操作を追加する方法
@@ -164,4 +164,4 @@ API Management ポータルで目的の API を選択し、**[操作]** タブ�
 [成果物を作成して発行する方法]: api-management-howto-add-products.md
 [Azure API Management で操作の結果をキャッシュする方法]: api-management-howto-cache.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

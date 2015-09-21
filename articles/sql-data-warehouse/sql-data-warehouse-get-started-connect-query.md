@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/23/2015"
+   ms.date="09/09/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
    
 # 作業開始: SQL Data Warehouse への接続
@@ -188,4 +188,4 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 [サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-load-samples.md
 [コードを開発したり]: ./articles/sql-data-warehouse-overview-develop/
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

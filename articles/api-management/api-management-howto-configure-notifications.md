@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2015" 
+	ms.date="09/10/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で通知と電子メール テンプレートを構成する方法
@@ -114,4 +114,4 @@ API Management インスタンスの電子メール テンプレートを表示�
 [API Management インスタンスの作成]: api-management-get-started.md
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="二項分布スイート | Microsoft Azure"
-	description="二項分布スイート"
-	services="machine-learning"
-	documentationCenter=""
-	authors="jaymathe"
-	manager="paulettm"
+	pageTitle="二項分布スイート | Microsoft Azure" 
+	description="二項分布スイート" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="ireiter" 
+	manager="paulettm" 
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/02/2015"
-	ms.author="jaymathe"/>
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/02/2015" 
+	ms.author="ireiter"/>
 
 
 #二項分布スイート
@@ -290,4 +290,4 @@ Web サービスの使用や、Azure Marketplace への発行に関するよく�
 [6]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_6.png
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

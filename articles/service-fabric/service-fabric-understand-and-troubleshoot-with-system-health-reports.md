@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/16/2015"
+   ms.date="09/03/2015"
    ms.author="oanapl"/>
 
 # トラブルシューティングのためのシステム正常性レポートの使用
@@ -530,4 +530,4 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure サブスクリプションの譲渡 | Microsoft Azure"
-	description="Azure サブスクリプションを別のユーザーに譲渡する方法と、そのプロセスに関してよく寄せられる質問 (FAQ)"
-	services="billing"
-	documentationCenter=""
-	authors="curtand"
-	manager="msmStevenPo"
-	editor=""/>
+   description="Azure サブスクリプションを別のユーザーに譲渡する方法と、そのプロセスに関してよく寄せられる質問 (FAQ)"
+   services="billing"
+   documentationCenter=""
+   authors="curtand"
+   manager="msmStevenPo"
+   editor=""/>
 
 <tags
    ms.service="billing"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="billing"
-	ms.date="08/19/2015"
-	ms.author="curtand;ruchic"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="billing"
+   ms.date="08/19/2015"
+   ms.author="curtand;ruchic"/>
 
 # Azure サブスクリプションの譲渡
 
@@ -78,9 +78,9 @@
 
     譲渡元は、譲渡が完了した時点までに報告されたすべての使用量に対して支払う責任があります。譲渡先は、譲渡した時点以降に報告された使用量に対して責任を負います。譲渡する前に発生したにもかかわらず、譲渡後に報告される使用量もあります。これは、譲渡先の請求書に含まれます。
 
--   **譲渡先は、使用履歴と課金履歴にアクセスできますか。**
+-   **譲渡先は、使用履歴と請求履歴にアクセスできますか。**
 
-    現時点では、譲渡先に示される情報は、最後の請求書の金額 (最初の請求書が生成される前にサブスクリプションが譲渡された場合は現在の残高) のみです。使用履歴と課金履歴の他の部分は、サブスクリプションと共に譲渡されることはありません。
+    現時点では、譲渡先に示される情報は、最後の請求書の金額 (最初の請求書が生成される前にサブスクリプションが譲渡された場合は現在の残高) のみです。使用履歴と請求履歴の他の部分は、サブスクリプションと共に譲渡されることはありません。
 
 -   **譲渡時にプランを変更できますか。**
 
@@ -92,6 +92,17 @@
 
 -   **譲渡先で別の支払いメカニズムを使用できますか。**
 
-    はい。実際には、このメカニズムを使用して、サブスクリプションの支払方法を請求書からクレジット カードに変更することができます。所有する別のアカウントに譲渡して、サブスクリプションの受け取り時にクレジット カードを入力するだけです。これには制限があり、この場合、サブスクリプションの課金履歴は 2 つのアカウントに分かれます。ただし、[サポートに問い合わせ](http://go.microsoft.com/fwlink/?LinkID=619338)なくても実行できるという利点があります。
+    はい。実際には、このメカニズムを使用して、サブスクリプションの支払方法を請求書からクレジット カードに変更することができます。所有する別のアカウントに譲渡して、サブスクリプションの受け取り時にクレジット カードを入力するだけです。これには制限があり、この場合、サブスクリプションの請求履歴は 2 つのアカウントに分かれます。ただし、[サポートに問い合わせ](http://go.microsoft.com/fwlink/?LinkID=619338)なくても実行できるという利点があります。
 
-<!---HONumber=September15_HO1-->
+## サブスクリプションの所有権を受け取った後の次のステップ
+
+1. アカウント管理者になったら、サービス管理者と共同管理者を見直して更新します。管理者の管理は、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で [設定] に移動して実行します。[詳細情報](http://go.microsoft.com/fwlink/?LinkID=533293) 
+2. サブスクリプションとサービスに対して、ロール ベースのアクセス制御 (RBAC) を使用することもできます。[Azure プレビュー ポータル](https://portal.azure.com)に関するページおよび「[Microsoft Azure ポータルでのロールベースのアクセス制御](http://go.microsoft.com/fwlink/?LinkID=544802)」を参照してください。
+3. このサブスクリプションのサービスに関連付けられている資格情報を更新します。チェックの内容は次のとおりです 
+    -   サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。詳細については、「[Azure の管理証明書の作成とアップロード](https://msdn.microsoft.com/library/azure/gg551722.aspx)」をご覧ください。
+    -	Storage などのサービス用のアクセス キー。詳細については、「[ストレージのアクセス キーを表示、コピー、および再生成する](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+    -	Azure Virtual Machines などのサービス用のリモート アクセス資格情報
+4. このサブスクリプション用の課金アラートを、[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で更新します。[詳細情報](http://go.microsoft.com/fwlink/?LinkID=533292)
+5. 	パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。この操作は [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で実行できます。
+
+<!---HONumber=Sept15_HO2-->

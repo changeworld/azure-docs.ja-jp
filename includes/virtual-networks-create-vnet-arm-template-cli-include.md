@@ -7,11 +7,16 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 
 		azure config mode arm
 
+	上記のコマンドで想定される出力を次に示します。
+
 		info:    New mode is arm
 
-3. 必要に応じて、次のように **azure group create** を実行して、新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。リソース グループの詳細については、[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)を参照してください。
+3. 必要に応じて、次のように **azure group create** で新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)」を参照してください。
 
 		azure group create -n TestRG -l centralus
+
+	上記のコマンドで想定される出力を次に示します。
+
 		info:    Executing command group create
 		+ Getting resource group TestRG
 		+ Creating resource group TestRG
@@ -24,12 +29,14 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		data:
 		info:    group create command OK
 
-	- **-n (または --name)**。新しいリソース グループの名前です。ここでは、*TestRG*です。
+	- **-n (または --name)**。新しいリソース グループの名前です。ここでは、*TestRG* です。
 	- **-l (または --location)**。新しいリソース グループが作成される Azure リージョンです。ここでは、*centralus* です。
 
 4. **azure group deployment create** コマンドレットを実行し、上記でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい VNet をデプロイします。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
 		azure group deployment create -g TestRG -n TestVNetDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
+
+	上記のコマンドで想定される出力を次に示します。
 
 		info:    Executing command group deployment create
 		+ Initializing template configurations and parameters
@@ -54,13 +61,15 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		data:    subnet2Name    String  BackEnd
 		info:    group deployment create command OK
 
-	- **-g (または --resource-group)**。新しい VNet の作成場所となるリソース グループの名前です。
+	- **-g (または --resource-group)**.新しい VNet の作成場所となるリソース グループの名前です。
 	- **-f (または --template-file)**。ARM テンプレート ファイルへのパスです。
 	- **-e (または--parameters-file)**。ARM パラメーター ファイルへのパスです。
 
 5. 次に示すように、**azure network vnet show** コマンドを実行して新しい VNet のプロパティを表示します。
 
 		azure network vnet show -g TestRG -n TestVNet
+
+	上記のコマンドで想定される出力を次に示します。
 
 		info:    Executing command network vnet show
 		+ Looking up virtual network "TestVNet"
@@ -80,4 +89,4 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		data:
 		info:    network vnet show command OK
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

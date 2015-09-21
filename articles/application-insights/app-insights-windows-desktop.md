@@ -12,10 +12,10 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/19/2015" 
+	ms.date="09/07/2015" 
 	ms.author="awills"/>
 
-# Windows デスクトップ アプリ、サービス、ワーカー ロールに対する Application Insights
+# Windows デスクトップ アプリ、サービス、worker ロールに対する Application Insights
 
 *Application Insights はプレビュー段階です。*
 
@@ -23,7 +23,9 @@
 
 Application Insights を使用すると、デプロイしたアプリケーションの使用状況とパフォーマンスを監視できます。
 
-デスクトップ アプリ、バックグラウンド サービス、ワーカー ロールなどの Windows アプリケーションはすべて、Application Insights のコア SDK を使用して、Application Insights にテレメトリを送信します。コア SDK は API を提供するだけです。つまり、Web またはデバイス SDKと違い、データを自動で集めるモジュールを含まないため、コードを記述して、自身のテレメトリを送信する必要があります。
+デスクトップ アプリ、バックグラウンド サービス、worker ロールなどの Windows アプリケーションはすべて、Application Insights のコア SDK を使用して、Application Insights にテレメトリを送信します。クラス ライブラリ プロジェクトに Application Insights SDK を追加することもできます。
+
+コア SDK は API を提供するだけです。つまり、Web またはデバイス SDKと違い、データを自動で集めるモジュールを含まないため、コードを記述して、自身のテレメトリを送信する必要があります。パフォーマンス カウンター コレクターなど、他のパッケージの一部は、デスクトップ アプリでも機能します。
 
 
 ## <a name="add"></a>Application Insights リソースの作成
@@ -46,25 +48,27 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
     ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-windows-desktop/03-nuget.png)
 
-2. Application Insights Core API パッケージをインストールします。
+2. Application Insights コア API パッケージ: Microsoft.ApplicationInsights をインストールします。
 
     ![Search for "Application Insights"](./media/app-insights-windows-desktop/04-core-nuget.png)
 
-    Performance Counter や、ログ キャプチャ パッケージなどの他のパッケージをインストールすれば、それらの機能を使えます。
+    *他のパッケージを使用することができますか。*
 
-3. InstrumentationKey を、たとえば main() などのコードに設定します。
+    はい、モジュールを使用する場合は、パフォーマンス カウンターや依存関係コレクターのパッケージなど他のパッケージをインストールできます。Microsoft.ApplicationInsights.Web には、このようなパッケージがいくつか含まれています。[ログまたはトレースのコレクター パッケージ](app-insights-asp-net-trace-logs.md)を使用する場合は、Web サーバー パッケージで開始します。
 
-    `TelemetryConfiguration.Active.InstrumentationKey = "your key";`
+    (ただし、Microsoft.ApplicationInsights.Windows は使用しないでください。これは、Windows ストア アプリ向けです。)
 
-*ApplicationInsights.config が存在しないのはどうしてですか。*
+3. InstrumentationKey を設定します。
 
-* .config ファイルは Core API パッケージではインストールされません。これはテレメトリ コレクターの構成のみに使用されます。そのため、独自のコードを記述してインストルメンテーション キーを設定し、テレメトリを送信します。
-* 他のパッケージを一つでもインストールしたら、.config ファイルができます。コードの記述による設定をしないで、インストルメンテーション キーを .config ファイルに挿入できます。
+    * コア API パッケージ Microsoft.ApplicationInsights のみをインストールする場合は、コードにキーを設定する必要があります。たとえば、main() で次のように設定します。 
 
-*別の NuGet パッケージを使用できますか。*
+     `TelemetryConfiguration.Active.InstrumentationKey = "`*your key*`";`
 
-* はい。Web サーバー パッケージ (Microsoft.ApplicationInsights.Web) を使用すると、Performance Counter などのさまざまなコレクション モジュール用のコレクターをインストールできます。これによりインストルメンテーション キーが配置される場所に .config ファイルがインストールされます。[ApplicationInsights.config を使用して](app-insights-configuration-with-applicationinsights-config.md)、HTTP 要求コレクターなどの必要のないモジュールを無効にできます。 
-* [ログまたはトレースのコレクター パッケージ](app-insights-asp-net-trace-logs.md)を使用する場合は、Web サーバー パッケージで開始します。 
+    * その他のパッケージの 1 つをインストールした場合は、コードを使用してキーを設定するか、ApplicationInsights.config 内でキーを設定します。
+ 
+     `<InstrumentationKey>`*your key*`</InstrumentationKey>`
+
+
 
 ## <a name="telemetry"></a>テレメトリの呼び出しの挿入
 
@@ -108,14 +112,12 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
 テレメトリを送信するには、[Application Insights API][api] のいずれかを使用します。Windows デスクトップ アプリケーションでは、テレメトリが自動的に送信されることはありません。通常は次のものを使用します。
 
-* フォーム、ページ、またはタブの切り替えには TrackPageView(pageName)。
-* その他のユーザーの操作には TrackEvent(eventName)。
-* 特定のイベントに関連付けられていないメトリックの標準レポートをバックグラウンド タスクで送信するには TrackMetric(name, value)。
-* [診断ログの記録][diagnostic]には TrackTrace(logEvent)。
-* Catch 句では TrackException(exception)。
-
-
-アプリケーションを閉じる前に必ずすべてのテレメトリが送信されるようにするには、`TelemetryClient.Flush()` を使用してください。通常は、テレメトリは一定の間隔でバッチ処理され、送信されます。(コア API だけを使用している場合にのみフラッシュが推奨されます。Web およびデバイス SDK ではこの動作が自動的に実装されます。)
+* `TrackPageView(pageName)` は、フォーム、ページ、またはタブを切り替えるために使用する。
+* `TrackEvent(eventName)` は、他のユーザー アクションに使用する。
+* `TrackMetric(name, value)` は、特定のイベントにアタッチされていないメトリックスの定期的なレポートを送信する場合にバックグラウンド タスクで使用する。
+* `TrackTrace(logEvent)` は、[診断ログ][diagnostic]に使用する。
+* `TrackException(exception)` は catch 句に使用する。
+* `Flush()` は、アプリを終了する前にすべてのテレメトリを確実に送信するために使用する。これは、コア API (Microsoft.ApplicationInsights) を使用する場合に限られます。Web およびデバイス SDK ではこの動作が自動的に実装されます (インターネットが常に利用できるとは限らないコンテキストでアプリが実行される場合は、[永続化チャネル](#persistence-channel)に関するページも参照してください。)
 
 
 #### コンテキストの初期化子
@@ -160,12 +162,114 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 Azure ポータルで、アプリケーションのブレードに戻ります。
 
-[診断検索] に最初のイベントが表示されます。
+[[診断検索]](app-insights-diagnostic-search.md) に最初のイベントが表示されます。
 
 大量のデータが予想される場合は、数秒後に [最新の情報に更新] をクリックします。
 
-TrackMetric、または TrackEvent の測定値パラメーターを使用した場合は、[メトリックス エクスプローラー][metrics]を開き、フィルター ブレードを開くと、メトリックが表示されます。
+TrackMetric、または TrackEvent の測定値パラメーターを使用した場合は、[メトリックス エクスプローラー][metrics]を開き、[フィルター] ブレードを開きます。メトリックが表示されますが、パイプラインを通過するのに時間がかかることがあるため、場合によっては [フィルター] ブレードを閉じてしばらく待ってから更新する必要があります。
 
+
+
+## 永続化チャネル 
+
+インターネットが常に利用できるとは限らない状況または速度が遅い状況でアプリが実行される場合は、既定のメモリ内チャネルの代わりに永続化チャネルの使用を検討してください。
+
+既定のメモリ内チャネルでは、アプリが終了するまでに送信されなかったテレメトリは失われます。`Flush()` を使用してバッファーに残ったデータの送信を試行できますが、インターネット接続がなければタイムアウトになり、シャットダウン時にアプリが遅延します。
+
+これに対し、永続化チャネルでは、テレメトリはファイル内でバッファー処理されてからポータルに送信されます。`Flush()` によってデータは確実にファイルに格納されます。アプリが終了するまでに送信されなかったデータはファイル内に保持されます。アプリを再起動したときにインターネット接続がある場合、そのデータは送信されます。接続が利用可能になるまでは、データは、必要である期間だけファイル内に蓄積されます。
+
+### 永続化チャネルを使用するには
+
+1. NuGet パッケージ [Microsoft.ApplicationInsights.PersistenceChannel](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PersistenceChannel) をインポートします。
+2. アプリの適切な初期化の場所に、このコードを含めます。
+ 
+    ```C# 
+
+      using Microsoft.ApplicationInsights.Channel;
+      using Microsoft.ApplicationInsights.Extensibility;
+      ...
+
+      // Set up 
+      TelemetryConfiguration.Active.InstrumentationKey = "YOUR INSTRUMENTATION KEY";
+ 
+      TelemetryConfiguration.Active.TelemetryChannel = new PersistenceChannel();
+    
+    ``` 
+3. アプリを終了する前に `telemetryClient.Flush()` を使用して、確実にデータがポータルに送信されるか、ファイルに保存されるようにします。
+
+ 
+永続化チャネルは、アプリケーションで作成されるイベントの数が比較的少なく、接続の信頼性が低いことの多いデバイス シナリオに対して最適化されています。このチャネルは、イベントを最初にディスクに書き込んで確実に保存してから、送信を試行します。
+
+#### 例
+
+未処理の例外を監視するとします。`UnhandledException` イベントをサブスクライブします。コールバックで Flush の呼び出しを含めると、テレメトリが確実に保持されます。
+ 
+```C# 
+
+AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException; 
+ 
+... 
+ 
+private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) 
+{ 
+    ExceptionTelemetry excTelemetry = new ExceptionTelemetry((Exception)e.ExceptionObject); 
+    excTelemetry.SeverityLevel = SeverityLevel.Critical; 
+    excTelemetry.HandledAt = ExceptionHandledAt.Unhandled; 
+ 
+    telemetryClient.TrackException(excTelemetry); 
+ 
+    telemetryClient.Flush(); 
+} 
+
+``` 
+
+アプリをシャットダウンすると、`%LocalAppData%\Microsoft\ApplicationInsights` にファイルが作成され、圧縮されたイベントが格納されます。
+ 
+このアプリケーションを次回起動したときに、チャネルがこのファイルを取得し、可能な場合はテレメトリを Application Insights に配信します。
+
+#### テストの例
+
+```C#
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Send data from the last time the app ran
+            System.Threading.Thread.Sleep(5 * 1000);
+
+            // Set up persistence channel
+
+            TelemetryConfiguration.Active.InstrumentationKey = "YOUR KEY";
+            TelemetryConfiguration.Active.TelemetryChannel = new PersistenceChannel();
+
+            // Send some data
+
+            var telemetry = new TelemetryClient();
+
+            for (var i = 0; i < 100; i++)
+            {
+                var e1 = new Microsoft.ApplicationInsights.DataContracts.EventTelemetry("persistenceTest");
+                e1.Properties["i"] = "" + i;
+                telemetry.TrackEvent(e1);
+            }
+
+            // Make sure it's persisted before we close
+            telemetry.Flush();
+        }
+    }
+}
+
+```
+
+
+永続化チャネルのコードは、[github](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/master/src/TelemetryChannels/PersistenceChannel) にあります。
 
 
 ## <a name="usage"></a>次のステップ
@@ -190,4 +294,4 @@ TrackMetric、または TrackEvent の測定値パラメーターを使用した
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

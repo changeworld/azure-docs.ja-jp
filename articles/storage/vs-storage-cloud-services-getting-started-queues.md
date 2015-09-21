@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Cloud Service プロジェクト)" 
-	description="Visual Studio Cloud Services プロジェクトで Azure キュー ストレージの使用を開始する方法" 
+    pageTitle="キュー ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス) | Microsoft Azure"
+	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio のクラウド サービス プロジェクトで Azure キュー ストレージの使用を開始する方法について説明します。"
 	services="storage" 
 	documentationCenter="" 
 	authors="patshea123" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="09/03/2015" 
 	ms.author="patshea123"/>
 
 # Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Cloud Services プロジェクト)
@@ -27,7 +27,7 @@
 > - [Queues](vs-storage-cloud-services-getting-started-queues.md)
 > - [Tables](vs-storage-cloud-services-getting-started-tables.md)
 
-##概要
+## 概要
 
 この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Cloud Services プロジェクトで Azure ストレージ アカウントを作成または参照した後に、Visual Studio で Azure キュー ストレージの使用を開始する方法について説明します。
 
@@ -44,7 +44,7 @@
 Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。
 
 
-##コードでキューにアクセスする
+## コードでキューにアクセスする
 
 Visual Studio Cloud Services プロジェクトでキューにアクセスするには、Azure キュー ストレージにアクセスする C# ソース ファイルに、次の項目を含める必要があります。
 
@@ -72,7 +72,7 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
 **注:** 上記のコードはすべて、以下の例に示すコードの前に使用してください。
 
-##コードでキューを作成する
+## コードでキューを作成する
 
 コードでキューが作成するには、**CreateIfNotExists** に呼び出しを追加します。
 
@@ -82,7 +82,7 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 	// Create the CloudQueue if it does not exist
 	messageQueue.CreateIfNotExists();
 
-##メッセージをキューに追加する
+## メッセージをキューに追加する
 
 既存のキューにメッセージを挿入するには、新しい **CloudQueueMessage** オブジェクトを作成し、**AddMessage** メソッドを呼び出します。
 
@@ -97,7 +97,7 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 	CloudQueueMessage message = new CloudQueueMessage("Hello, World");
 	messageQueue.AddMessage(message);
 
-##キュー内のメッセージを読み取る
+## キュー内のメッセージを読み取る
 
 **PeekMessage** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
@@ -107,7 +107,7 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 	// Peek at the next message
     CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
 
-##キュー内のメッセージを読み取って削除する
+## キュー内のメッセージを読み取って削除する
 
 コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。
 
@@ -128,7 +128,7 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 	await messageQueue.DeleteMessage(retrievedMessage);
 
 
-## キュー メッセージの処理や削除における追加オプションを活用する
+## オプションを追加してキュー メッセージを処理および削除する
 
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
 
@@ -197,9 +197,9 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
     // Delete the queue.
     messageQueue.Delete();
 
-##次のステップ
+## 次のステップ
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 			
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

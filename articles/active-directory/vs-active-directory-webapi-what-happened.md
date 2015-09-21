@@ -1,11 +1,4 @@
-<properties
-	pageTitle=""
-	description="Azure Active Directory ウィザード実行後に Visual Studio プロジェクトの何が変更されるかについて説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="patshea123"
-	manager="douge"
-	editor="tglee"/>
+<properties pageTitle="Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス) |Microsoft Azure " description="Visual Studio を使用して Azure AD に接続する MVC プロジェクト Web API の変更点について説明します services="active-directory" services="active-directory" documentationCenter="" authors="patshea123" manager="douge" editor="tglee"/>
 
 <tags
 	ms.service="active-directory"
@@ -13,10 +6,10 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/22/2015"
+	ms.date="09/03/2015"
 	ms.author="patshea"/>
 
-# プロジェクトの変更点
+# Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
 
 > [AZURE.SELECTOR]
 > - [Getting Started](vs-active-directory-webapi-getting-started.md)
@@ -64,7 +57,7 @@
     		<add key="ida:ClientId" value="ClientId from the new Azure AD App" />
     		<add key="ida:Tenant" value="Your selected Azure AD Tenant" />
     		<add key="ida:Audience" value="The App ID Uri from the wizard" />
-	</appSettings>` 
+	</appSettings>`
 ```
 
 ###Azure AD アプリが作成された
@@ -108,7 +101,7 @@ NuGet パッケージのリファレンスが削除されるほか、ファイ�
 ```
 	`<appSettings>
 	    <add key="ida:Password" value="Your Azure AD App's new password" />
-	</appSettings>` 
+	</appSettings>`
 ```
 
 ###Azure Active Directory アプリが更新された
@@ -116,4 +109,4 @@ Azure Active Directory アプリが更新され、*[ディレクトリ データ
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

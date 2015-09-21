@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/16/2015"
+   ms.date="09/03/2015"
    ms.author="oanapl"/>
 
 # Service Fabric の正常性レポートの確認方法
@@ -174,7 +174,7 @@ HealthEvents            : None
 次のコマンドレットは、カスタム アプリケーション ポリシーでクラスターの正常性を取得します。結果はフィルター処理され、エラーまたは警告状態のアプリケーションとノードのみを取得します。すべて正常であったため、結果としてノードは返されません。アプリケーションのフィルターが考慮されるのは fabric:/WordCount に対してのみです。カスタム ポリシーでは fabric:/WordCount アプリケーションに対する警告をエラーと認識するため、アプリケーションとノードはエラーとして評価されます。
 
 ```powershell
-PS C:\> $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
+PS c:> $appHealthPolicy = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicy
 $appHealthPolicy.ConsiderWarningAsError = $true
 $appHealthPolicyMap = New-Object -TypeName System.Fabric.Health.ApplicationHealthPolicyMap
 $appUri1 = New-Object -TypeName System.Uri -ArgumentList "fabric:/WordCount"
@@ -326,7 +326,7 @@ ApplicationHealth applicationHealth = fabricClient.HealthManager.GetApplicationH
 次のコマンドレットは、fabric:/WordCount アプリケーションの正常性を返します。
 
 ```powershell
-PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount
+PS c:> Get-ServiceFabricApplicationHealth fabric:/WordCount
 
 ApplicationName                 : fabric:/WordCount
 AggregatedHealthState           : Warning
@@ -836,4 +836,4 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

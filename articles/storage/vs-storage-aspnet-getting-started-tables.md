@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure テーブル ストレージと Visual Studio 接続済みサービスの概要 | Microsoft Azure"
-	description="Visual Studio の ASP.NET プロジェクトで Azure テーブル ストレージの使用を開始する方法"
+	pageTitle="テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET) | Microsoft Azure"
+	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure Table ストレージの使用を開始する方法について説明します。"
 	services="storage"
 	documentationCenter=""
 	authors="patshea123"
@@ -13,11 +13,10 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.date="09/03/2015"
 	ms.author="patshea123"/>
 
-# Azure テーブル ストレージと Visual Studio 接続済みサービスの概要
-
+# テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET)
 > [AZURE.SELECTOR]
 > - [Getting Started](vs-storage-aspnet-getting-started-tables.md)
 > - [What Happened](vs-storage-aspnet-what-happened.md)
@@ -35,33 +34,33 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 ## コードでテーブルにアクセスする
 
-1. C# ファイル冒頭の名前空間宣言に、次の `using` ステートメントが含まれていることを確認してください。
+1. C# ファイル冒頭の名前空間宣言に、次の **using** ステートメントが含まれていることを確認します。
 
 		 using Microsoft.Azure;
 		 using Microsoft.WindowsAzure.Storage;
 		 using Microsoft.WindowsAzure.Storage.Auth;
 		 using Microsoft.WindowsAzure.Storage.Table;
 
-2. ストレージ アカウント情報を表す `CloudStorageAccount` オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
+2. ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
 
 		 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 		   CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
 
     **注** - 上記のコードはすべて、以下の例に示すコードの前に使用してください。
 
-3. ストレージ アカウント内のテーブル オブジェクトを参照する `CloudTableClient` オブジェクトを取得します。
+3. ストレージ アカウント内のテーブル オブジェクトを参照する **CloudTableClient** オブジェクトを取得します。
 
 	    // Create the table client.
     	CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-4. 特定のテーブルとエンティティを参照する `CloudTable` 参照オブジェクトを取得します。
+4. 特定のテーブルとエンティティを参照する **CloudTable** 参照オブジェクトを取得します。
 
     	// Get a reference to a table named "peopleTable"
 	    CloudTable table = tableClient.GetTableReference("peopleTable");
 
 ## コードでテーブルを作成する
 
-前のコードへの `CreateIfNotExistsAsync()` に呼び出しを追加するだけで、Azure テーブルが作成できます。
+Azure テーブルは、前のコードに **CreateIfNotExistsAsync()** への呼び出しを追加するだけで作成できます。
 
 	// Create the CloudTable if it does not exist
 	await table.CreateIfNotExistsAsync();
@@ -69,7 +68,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 ## エンティティのバッチを挿入する
 
-1 回の書き込み操作で複数のエンティティをテーブルに挿入できます。次のコード例は、2 つのエンティティ オブジェクト ("Jeff Smith" と "Ben Smith") を作成し、Insert メソッドを使用して `TableBatchOperation` オブジェクトにそれらのエンティティ オブジェクトを追加し、`CloudTable.ExecuteBatchAsync` を呼び出して操作を開始します。
+1 回の書き込み操作で複数のエンティティをテーブルに挿入できます。次のコード例は、2 つのエンティティ オブジェクト ("Jeff Smith" と "Ben Smith") を作成し、Insert メソッドを使用して **TableBatchOperation** オブジェクトにそれらのエンティティ オブジェクトを追加した後、**CloudTable.ExecuteBatchAsync** を呼び出して操作を開始します。
 
 	// Get a reference to a CloudTable object named 'peopleTable' as described in "Access a table in code"
 
@@ -94,7 +93,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 	await peopleTable.ExecuteBatchAsync(batchOperation);
 
 ## パーティション内のすべてのエンティティを取得する
-テーブルに対してパーティション内のすべてのエンティティを照会する場合は、`TableQuery` オブジェクトを使用します。次のコード例は、'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。この例は、クエリ結果の各エンティティのフィールドをコンソールに出力します。
+テーブルに対してパーティション内のすべてのエンティティを照会する場合は、**TableQuery** オブジェクトを使用します。次のコード例は、'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。この例は、クエリ結果の各エンティティのフィールドをコンソールに出力します。
 
 	// Get a reference to a CloudTable object named 'peopleTable' as described in "Access a table in code"
 
@@ -120,7 +119,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 
 ## 単一のエンティティを取得する
-単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、`TableOperation` オブジェクトを使用して、"Ben Smith" という名前のユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、`TableResult.Result` の戻り値は `CustomerEntity` オブジェクトです。クエリでパーティション キーと行キーの両方を指定することが、テーブル サービスから単一のエンティティを取得するための最速の方法です。
+単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**TableOperation** オブジェクトを使用して、"Ben Smith" という名前のユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、**TableResult.Result** の戻り値は **CustomerEntity** オブジェクトです。クエリでパーティション キーと行キーの両方を指定することが、テーブル サービスから単一のエンティティを取得するための最速の方法です。
 
         // Get a reference to a CloudTable object named 'peopleTable' as described in "Access a table in code"
 
@@ -168,4 +167,4 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 [AZURE.INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

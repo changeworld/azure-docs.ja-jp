@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="カスタムのイベントとメトリックのための Application Insights API"
-	description="デバイスまたはデスクトップ アプリケーション、Web ページまたはサービスに数行のコードを追加し、使用状況を追跡し、問題を診断します。"
+	pageTitle="カスタムのイベントとメトリックのための Application Insights API" 
+	description="デバイスまたはデスクトップ アプリケーション、Web ページまたはサービスに数行のコードを追加し、使用状況を追跡し、問題を診断します。" 
 	services="application-insights"
-	documentationCenter=""
-	authors="alancameronwills"
+    documentationCenter="" 
+	authors="alancameronwills" 
 	manager="douge"/>
  
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="08/28/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="08/28/2015" 
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -82,9 +82,9 @@ TelemetryClient はスレッド セーフです。
 
 ## イベントを追跡する
 
-イベントは[メトリックス エクスプローラー][metrics]に総数として表示できます。[診断検索][diagnostic]の個別出現回数を表示することもできます。
+Application Insights では、*カスタム イベント*はデータ ポイントであり、[メトリックス エクスプローラー][metrics]に集計カウントとして表示することも、[診断検索][diagnostic]で個々の出現として表示することもできます (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
 
-イベントをコードに挿入し、特定の機能を使用する頻度、特定の目標を達成する頻度、特定の選択を行う頻度を数えます。
+ユーザーが特定の機能を使用する頻度、特定の目標を達成する頻度、または特定の種類の間違いを起こす頻度を数えるには、TrackEvent をコードに挿入します。
 
 たとえば、ゲーム アプリで、ユーザーが勝利したときにイベントを送信します。
 
@@ -105,14 +105,12 @@ TelemetryClient はスレッド セーフです。
 
     telemetry.trackEvent("WinGame");
 
-
-[概要] ブレードでカスタム イベントのタイルをクリックします。
+ここでは、"WinGame"は、Application Insights ポータルに表示される名前です。[概要] ブレードでカスタム イベントのタイルをクリックします。
 
 ![portal.azure.com でアプリケーション リソースを参照する](./media/app-insights-api-custom-events-metrics/01-custom.png)
 
-クリックし、概要グラフと詳細一覧を表示します。
 
-最も重要なイベントの相対的寄与率を確認するには、グラフを選択し、イベント名でグループ化します。
+グラフはイベント名でグループ化されるため、最も重要なイベントの相対的寄与率を確認できます。これを制御するには、グラフを選択し、グループ化コントロールを使用します。
 
 ![グラフを選択し、グループ化を設定する](./media/app-insights-api-custom-events-metrics/02-segment.png)
 
@@ -199,11 +197,11 @@ TelemetryClient はスレッド セーフです。
 
 > [AZURE.NOTE]プロパティで個人を特定できる情報を記録しないように注意します。
 
-**メトリックを使用した場合**、メトリック エクスプローラーを開き、カスタム グループからメトリックを選択します。
+**メトリックを使用した場合**、メトリックス エクスプローラーを開き、カスタム グループからメトリックを選択します。
 
 ![メトリック エクスプローラーを開き、グラフを選択し、メトリックを選択する](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
-*メトリックが表示されない場合、選択ブレードを閉じ、しばらく待ってから [更新] をクリックします。*
+*メトリックが表示されない場合、またはカスタムの見出しがない場合は、選択ブレードを閉じて後でやり直してください。パイプラインを介したメトリックの集計が終了するまで 1 時間かかる場合があります。*
 
 **プロパティとメトリックを使用した場合**、プロパティ別にメトリックを分割します。
 
@@ -903,4 +901,4 @@ ApplicationInsights.config で:
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

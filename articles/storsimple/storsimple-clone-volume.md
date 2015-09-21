@@ -1,19 +1,19 @@
 <properties
    pageTitle="StorSimple ボリュームの複製 | Microsoft Azure"
-	description="異なる複製の種類と、それらをどのような場合に使用するかについて説明します。また、バックアップ セットを使用して個々のボリュームを複製する方法についても説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="異なる複製の種類と、それらをどのような場合に使用するかについて説明します。また、バックアップ セットを使用して個々のボリュームを複製する方法についても説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/27/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="08/27/2015"
+   ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用してボリュームを複製する
 
@@ -29,7 +29,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
 複製は、ローカル スナップショットまたはクラウド スナップショットを使用して、同じデバイスや別のデバイスに作成できるほか、仮想マシンに作成することもできます。
 
-## ボリュームを複製するには
+#### ボリュームを複製するには
 
 1. StorSimple Manager サービスのページで、**[バックアップ カタログ]** タブをクリックし、バックアップ セットを選択します。
 
@@ -89,4 +89,4 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

@@ -12,11 +12,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/08/2015"
+   ms.date="09/02/2015"
    ms.author="telmos" />
 
 # Virtual Network (VNet) のプロパティの管理方法
-VNet の設定を表示および変更するには、管理ポータルを使用します。
+VNet の設定を表示および変更するには、Azure ポータルを使用します。
 
 ## VNet 設定の表示
 
@@ -100,4 +100,4 @@ VNet の設定を表示および変更するには、管理ポータルを使用
 
 [Virtual Network (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

@@ -140,7 +140,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
     | 属性 | 型 |
     |----------- |   ------    |
-    | id | Integer 64 |
+    | id | String |
     | key | String |
     | keyType | Integer 64 |
     | テーブル | String |
@@ -159,8 +159,8 @@ Core Data オフライン ストアを使用するときは、データ モデ�
     | 完了 | Boolean | Todo 項目フィールド |
     | テキスト | String | Todo 項目フィールド |
     | ms\_createdAt | 日付 | (省略可能) \_\_createdAt システム プロパティにマップ | 
-	| ms\_updatedAt | Date | (省略可能) \_\_updatedAt システム プロパティにマップ | 
-	| ms\_version | String | (省略可能) 競合の検出に使用され、\_\_version にマップ |
+    | ms\_updatedAt | Date | (省略可能) \_\_updatedAt システム プロパティにマップ | 
+    | ms\_version | String | (省略可能) 競合の検出に使用され、\_\_version にマップ |
 
 
 ## <a name="setup-sync"></a>アプリケーションの同期動作を変更する
@@ -231,7 +231,7 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 
 * [Azure モバイル アプリでのオフライン データ同期]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
 <!-- URLs. -->
 
@@ -249,4 +249,4 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
  
 
-<!-----HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

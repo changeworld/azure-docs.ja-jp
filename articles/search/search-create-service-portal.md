@@ -84,7 +84,7 @@ Microsoft Azure Search は、検索機能をカスタム アプリケーショ�
 
 追加のレプリカおよびパーティションは、検索単位で課金されます。リソースの追加に応じて、特定のリソース構成に必要な検索単位の合計数がページに表示されます。
 
-「[料金の詳細](http://go.microsoft.com/fwlink/p/?LinkID=509792)」をチェックして、単位あたりの課金情報を確認できます。パーティションとレプリカをどのように構成するかについては、「[制限および制約](http://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+「[料金の詳細](http://go.microsoft.com/fwlink/p/?LinkID=509792)」をチェックして、単位あたりの課金情報を確認できます。パーティションとレプリカをどのように構成するかについては、「[制限および制約](search-limits-quotas-capacity.md)」を参照してください。
 
 <a id="sub-4"></a>
 ##サービス操作をテストする
@@ -120,4 +120,4 @@ Search 構成の最後の手順では、サービスがクライアント アプ
 [2]: ./media/search-create-service-portal/create-search-portal-2.PNG
 [3]: ./media/search-create-service-portal/create-search-portal-3.PNG
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

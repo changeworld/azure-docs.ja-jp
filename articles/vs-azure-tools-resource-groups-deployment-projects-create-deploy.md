@@ -1,25 +1,25 @@
 <properties 
    pageTitle="Azure リソース グループ デプロイ プロジェクトの作成とデプロイ"
-	description="Azure リソース グループ デプロイ プロジェクトの作成とデプロイ"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tlee"/>
+   description="Azure リソース グループ デプロイ プロジェクトの作成とデプロイ"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tlee" />
 <tags 
    ms.service="azure-resource-manager"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/24/2015"
-	ms.author="kempb"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/24/2015"
+   ms.author="kempb" />
 
 # Azure リソース グループ デプロイ プロジェクトの作成とデプロイ
 
 **Azure リソース グループ** デプロイ プロジェクト テンプレートは、Azure SDK 2.6 がインストールされている場合に Visual Studio で使用できます。Azure リソース グループ プロジェクトを使用すると、関連する複数の Azure リソースをグループ化し、1 回のデプロイ操作で発行することができます。Azure リソース グループ プロジェクトでは、**Azure リソース マネージャー**と呼ばれるテクノロジを使用して作業を行います。**Azure リソース マネージャー**は、Azure リソース グループを定義できる REST API サービスです。Azure リソース グループには、通常は一緒に使用され、同じようなライフサイクルを持つ複数の Azure リソースが含まれます。リソース グループを使用すると、個々のリソースごとに異なる関数を呼び出すのではなく、単一の関数呼び出しでグループ内のすべてのリソースを操作できます。Azure リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](./azure-portal/azure-preview-portal-using-resource-groups/)に関するページを参照してください。
 
-Azure リソース グループ プロジェクトには、リソース グループにデプロイされる要素を定義する Azure リソース マネージャー JSON テンプレートが含まれています。詳細については、「[Azure リソース マネージャー テンプレートの言語](https://msdn.microsoft.com/library/azure/dn835138.aspx)」を参照してください。
+Azure リソース グループ プロジェクトには、リソース グループにデプロイされる要素を定義する Azure リソース マネージャー JSON テンプレートが含まれています。詳細については、「[Azure リソース マネージャー テンプレートの言語](resource-group-authoring-templates.md)」を参照してください。
 
 Azure リソース マネージャーには、使用可能なさまざまなリソース プロバイダーが用意されています。これらを使用すると、Ubuntu Server や Windows Server 2012 R2 などのリソースをデプロイすることができます。このトピックでは、**Web Apps** リソースを使用します。これにより、基本的な空の Web サイトが Azure にデプロイされます。
 
@@ -85,7 +85,7 @@ Azure リソース グループ プロジェクトをデプロイする場合は
 
     ![Deploy To Resource Group Dialog Box](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/IC796673.png)
 
-1. **[リソース グループ]** ボックスの一覧で、既存のリソース グループを選択するか、新しいリソース グループを作成します。リソース グループを作成するには、**[リソース グループ]** ボックスの一覧を開き、**[<Create New...>]** を選択します。
+1. **[リソース グループ]** ボックスの一覧で、既存のリソース グループを選択するか、新しいリソース グループを作成します。リソース グループを作成するには、**[リソース グループ]** ボックスの一覧を表示し、**[<Create New...>]** を選択します。
 
     **[リソース グループの作成]** ダイアログ ボックスが表示されます。
 
@@ -195,4 +195,4 @@ Azure SDK 2.5 で作成されたクラウド デプロイ プロジェクトを�
 
 Visual Studio で Azure リソース グループにリソースを追加する方法については、「[Azure リソース グループへのリソースの追加](https://msdn.microsoft.com/library/azure/mt125415.aspx)」を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

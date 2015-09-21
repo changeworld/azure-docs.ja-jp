@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Access Control の使用方法 (.NET) | Microsoft Azure" 
-	description="このガイドでは、ユーザーが Web アプリケーションにアクセスしようとするときに、それらのユーザーを認証するために Azure アプリケーションで Access Control Service (ACS) を使用する方法について説明します。" 
-	services="active-directory" 
-	documentationCenter=".net" 
-	authors="msmbaldwin" 
-	manager="mbaldwin" 
+<properties
+	pageTitle="Access Control の使用方法 (.NET) | Microsoft Azure"
+	description="このガイドでは、ユーザーが Web アプリケーションにアクセスしようとするときに、それらのユーザーを認証するために Azure アプリケーションで Access Control Service (ACS) を使用する方法について説明します。"
+	services="active-directory"
+	documentationCenter=".net"
+	authors="msmbaldwin"
+	manager="mbaldwin"
 	editor=""/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/20/2015" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="09/02/2015" 
 	ms.author="mbaldwin"/>
 
 
@@ -78,7 +78,7 @@ ACS はクレームベース ID のプリンシパルに基づいており、こ
 このガイドのタスクを完了するには、次のものが必要です。
 
 -	Azure サブスクリプション
--	Microsoft Visual Studio 2012 
+-	Microsoft Visual Studio 2012
 -	Identity and Access Tool for Visual Studio 2012 (ダウンロードするには、[Identity and Access Tool のダウンロード ページ][]を参照)
 
 
@@ -87,7 +87,7 @@ ACS はクレームベース ID のプリンシパルに基づいており、こ
 Azure で Active Directory Access Control を使用するには、Access Control 名前空間を作成します。名前空間では、アプリケーション内で ACS リソースのアドレスを指定するための一意のスコープが提供されます。
 
 1.  [Azure 管理ポータル][] (https://manage.WindowsAzure.com)) にログインします。
-    
+
 2.  **[Active Directory]** をクリックします。
 
 	![][1]
@@ -124,7 +124,7 @@ Azure で Active Directory Access Control を使用するには、Access Control
             if (!String.IsNullOrEmpty(User.Identity.Name))
             {
                 name = User.Identity.Name;
-            }    
+            }
             <text>
             Hello, @Html.ActionLink(name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
                     @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
@@ -238,19 +238,19 @@ Azure で Active Directory Access Control を使用するには、Access Control
         <table>
             <tr>
                 <td>
-                    IsAuthenticated: 
+                    IsAuthenticated:
                 </td>
                 <td>
-                    @ViewBag.ClaimsIdentity.IsAuthenticated 
+                    @ViewBag.ClaimsIdentity.IsAuthenticated
                 </td>
             </tr>
             <tr>
                 <td>
-                    Name: 
-                </td>        
+                    Name:
+                </td>
                 <td>
                     @ViewBag.ClaimsIdentity.Name
-                </td>        
+                </td>
             </tr>
         </table>
         <h3>Claims from ClaimsIdentity</h3>
@@ -349,7 +349,7 @@ ACS 管理ポータルを使用して、MvcACS アプリケーションの認証
 ## 参照トピック
 
 ACS と統合された Web アプリケーションを作成できました。ただし、まだ始まりにすぎません。 このシナリオを展開することができます。
- 
+
 たとえば、この RP に他の ID プロバイダーを追加したり、Active Directory ドメイン サービスなどのエンタープライズ ディレクトリに登録されたユーザーが Web アプリケーションにログオンできるようにしたりすることができます。
 
 アプリケーション ビジネス ロジックで処理するためにアプリケーションに送信されるクレームを決定する規則を、名前空間に追加することもできます。
@@ -401,6 +401,5 @@ ACS と統合された Web アプリケーションを作成できました。�
   [18]: ./media/active-directory-dotnet-how-to-use-access-control/acsManagementService.png
   [19]: ./media/active-directory-dotnet-how-to-use-access-control/acsShowKey.png
   [20]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace2.png
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

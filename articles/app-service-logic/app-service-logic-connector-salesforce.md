@@ -1,20 +1,20 @@
 <properties
    pageTitle="Logic Apps での Salesforce コネクタの使用 | Microsoft Azure App Service"
-	description="Salesforce コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-	services="app-service\logic"
-	documentationCenter=".net,nodejs,java"
-	authors="anuragdalmia"
-	manager="dwrede"
-	editor=""/>
+   description="Salesforce コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="anuragdalmia"
+   manager="dwrede"
+   editor=""/>
 
 <tags
    ms.service="app-service-logic"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="integration"
-	ms.date="08/23/2015"
-	ms.author="sameerch"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="integration"
+   ms.date="08/23/2015"
+   ms.author="sameerch"/>
 
 
 # Salesforce コネクタの使用開始とロジック アプリへの追加
@@ -104,4 +104,4 @@ Salesforce にアカウントを作成し、このアカウントの請求先住
 [14]: ./media/app-service-logic-connector-salesforce/14_Update_Account_Address.png
 [15]: ./media/app-service-logic-connector-salesforce/15_Create_new_salesforce_connector.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

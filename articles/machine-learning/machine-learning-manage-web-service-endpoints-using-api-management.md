@@ -1,6 +1,7 @@
 <properties
 	pageTitle=" API Management を使用した AzureML Web サービスの管理方法について説明します | Microsoft Azure"
 	description="API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。"
+	keywords="machine learning,api management"
 	services="machine-learning"
 	documentationCenter=""
 	authors="roalexan"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/09/2015"
 	ms.author="roalexan" />
 
 
@@ -37,7 +38,7 @@ AzureML は、高度な分析ソリューションを簡単に構築、デプロ
 
 * Azure アカウント。Azure アカウントを持っていない場合は、[ここ](http://azure.microsoft.com/pricing/free-trial/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
 * AzureML アカウント。AzureML アカウントを持っていない場合は、[ここ](https://studio.azureml.net/)をクリックして、無料試用版用アカウントの作成方法の詳細についてご覧ください。
-* Web サービスとして発行される AzureML 実験用のワークスペース、サービス、api\_key。[ここ](machine-learning/machine-learning-create-experiment.md)をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。[ここ](machine-learning/machine-learning-publish-a-machine-learning-web-service.md)をクリックして、Web サービスとして AzureML 実験を発行する方法の詳細についてご覧ください。また、シンプルな AzureML 実験を作成してテストし、Web サービスとして発行する方法については付録 A をご覧ください。
+* Web サービスとしてデプロイされる AzureML 実験用のワークスペース、サービス、api\_key。[ここ](machine-learning/machine-learning-create-experiment.md)をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。[ここ](machine-learning/machine-learning-publish-a-machine-learning-web-service.md)をクリックして、Web サービスとして AzureML 実験をデプロイする方法の詳細についてご覧ください。また、シンプルな AzureML 実験を作成してテストし、Web サービスとしてデプロイする方法については付録 A をご覧ください。
 
 ##API Management インスタンスの作成
 
@@ -147,7 +148,7 @@ RRS 操作の追加の場合とよく似ているため、BES 操作のスクリ
 
 ###実験の作成
 
-シンプルな AzureML 実験を作成し、Web サービスとして発行する手順を次に示します。Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。次に例を示します。
+シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。次に例を示します。
 
 テキスト | ハッシュされたテキスト
 --- | ---
@@ -383,4 +384,4 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 	return
 	invokeBatchExecutionService()
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure 管理ポータルを使用して Azure Media Services でメディア コンテンツを管理する方法"
-	description="Azure Media Services でメディア コンテンツを管理する方法について説明します。ここで取り上げる内容は、アップロード、インデックスの作成、エンコード、暗号化、および発行についてです。"
-	services="media-services"
-	documentationCenter=""
-	authors="Juliako"
-	manager="dwrede"
+	pageTitle="Azure 管理ポータルを使用して Azure Media Services でメディア コンテンツを管理する方法" 
+	description="Azure Media Services でメディア コンテンツを管理する方法について説明します。ここで取り上げる内容は、アップロード、インデックスの作成、エンコード、暗号化、および発行についてです。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="Juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/23/2015"
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/07/2015"
 	ms.author="juliako"/>
 
 
@@ -206,6 +206,14 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 - **Media Services コンテンツ プレーヤー**を既定のストリーミング エンドポイントから再生します。既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します([Azure Media Services プレーヤーなど](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
  
 
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
 ![AMSPlayer][AMSPlayer]
 
 <!-- Images -->
@@ -221,4 +229,4 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-manage-content/media-services-portal-player.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

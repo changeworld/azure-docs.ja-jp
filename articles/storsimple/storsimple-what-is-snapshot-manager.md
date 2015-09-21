@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/13/2015"
+   ms.date="09/04/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager について
@@ -148,4 +148,4 @@ StorSimple Snapshot Manager を使用して、今後予定されているバッ�
 
 [StorSimple Snapshot Manager のダウンロード](https://www.microsoft.com/download/details.aspx?id=44220)。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

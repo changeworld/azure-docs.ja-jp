@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure DNS の概要 | Microsoft Azure"
-	description="Azure DNS の DNS ゾーンを作成する方法について説明します。これは、DNS ドメインのホストを開始するために最初の DNS ゾーンを作成する手順です。"
-	services="dns"
-	documentationCenter="na"
-	authors="joaoma"
-	manager="adinah"
-	editor=""/>
+   description="Azure DNS の DNS ゾーンを作成する方法について説明します。これは、DNS ドメインのホストを開始するために最初の DNS ゾーンを作成する手順です。"
+   services="dns"
+   documentationCenter="na"
+   authors="joaoma"
+   manager="adinah"
+   editor=""/>
 
 <tags
    ms.service="dns"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="09/02/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/02/2015"
+   ms.author="joaoma"/>
 
 # Azure DNS の概要
 
@@ -30,9 +30,11 @@
 Azure PowerShell を使用して Azure DNS を管理するには、次の手順を完了しておく必要があります。
 
 ### 手順 1.
- Azure DNS では、Azure リソース マネージャー (ARM) を使用します。ARM コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。<BR><BR>
+Azure DNS では、Azure リソース マネージャー (ARM) を使用します。ARM コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。<BR><BR>
 
 		PS C:\> Switch-AzureMode -Name AzureResourceManager
+
+「Switch-AzureMode コマンドレットは廃止予定で、今後のリリースで削除される予定です。」という警告が表示される場合がありますが、 これは無視してかまいません。
 
 ### 手順 2.
  Azure アカウントにログインします。<BR><BR>
@@ -153,4 +155,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

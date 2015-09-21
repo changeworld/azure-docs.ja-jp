@@ -14,7 +14,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="07/08/2015" 
+	ms.date="09/08/2015" 
 	ms.author="heidist"/>
 
 # Microsoft Azure で検索サービスを管理する
@@ -36,7 +36,7 @@ Azure Search は、カスタムの検索アプリケーションで使用でき�
 
 容量を考慮して計画し、課金の影響を理解するには、以下のリンクをお勧めします。
 
-+	[制限および制約 (Azure Search)](http://msdn.microsoft.com/library/dn798934.aspx)
++	[制限および制約 (Azure Search)](search-limits-quotas-capacity.md)
 +	[Pricing Details (料金の詳細)](http://go.microsoft.com/fwlink/p/?LinkdID=509792)
 
 サインアップする準備ができたら「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」をご覧ください。
@@ -100,7 +100,7 @@ API キーを取得または再生成するには、サービス ダッシュボ
 
 サービス ダッシュボードの [使用] セクションで、パーティション リソース レベルが自分のアプリケーションに適しているかどうかをすばやく決定できます。
 
-Search Service API を使用して、ドキュメントとインデックスの数を取得できます。料金レベルに基づいて、これらの数に関連付けられたハードウェアの制限があります。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](http://msdn.microsoft.com/library/dn798934.aspx)」を参照してください。
+Search Service API を使用して、ドキュメントとインデックスの数を取得できます。料金レベルに基づいて、これらの数に関連付けられたハードウェアの制限があります。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](search-limits-quotas-capacity.md)」を参照してください。
 
 +	[インデックス統計の取得](http://msdn.microsoft.com/library/dn798942.aspx)
 +	[ドキュメントのカウント](http://msdn.microsoft.com/library/dn798924.aspx)
@@ -193,4 +193,4 @@ Azure Search の観点から、ロールベースのアクセス制御は次の�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

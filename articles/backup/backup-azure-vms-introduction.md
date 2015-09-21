@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 仮想マシンのバックアップの概要"
+	pageTitle="Azure 仮想マシンのバックアップの概要 | Microsoft Azure"
 	description="Azure Backup サービスを使用した Azure 仮想マシンのバックアップの概要"
 	services="backup"
 	documentationCenter=""
@@ -7,16 +7,9 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/09/2015" ms.author="trinadhk";"aashishr";"jimpark"/>
 
-# Azure 仮想マシンのバックアップ - 概要
+# Azure 仮想マシンのバックアップ
 
 このセクションでは、Azure 仮想マシンを保護する Microsoft Azure Backup の使用方法の概要を示します。この記事では、次の項目について説明します。
 
@@ -96,23 +89,25 @@ Azure 仮想マシンのバックアップを開始するにはまずバック�
 
 6. 資格情報コンテナーが正常に作成されたことを示すメッセージが表示され、[復旧サービス] ページに [アクティブ] と表示されます。コンテナーを作成したら、適切なストレージの冗長オプションが選択されていることを確認してください。詳細については、「[setting the storage redundancy option in the backup vault (バックアップ資格情報コンテナーのストレージ冗長オプションの設定)](../backup-azure-backup-create-vault.md#storage-redundancy-options)」をご覧ください。![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-introduction/backup_vaultslist.png)
 
-7. バックアップ資格情報コンテナーをクリックして、**[クイック スタート]** ページに進むと、Azure 仮想マシンのバックアップ手順が表示されます。![ダッシュ ボード ページの仮想マシンのバックアップ手順](./media/backup-azure-vms-introduction/vmbackup-instructions.png)
+7. バックアップ資格情報コンテナーをクリックして、**[クイック スタート]** ページに進むと、Azure 仮想マシンのバックアップ手順が表示されます。![ダッシュボード ページの仮想マシンのバックアップ手順](./media/backup-azure-vms-introduction/vmbackup-instructions.png)
 
 
 ### 2\.VM エージェント
-Azure 仮想マシンのバックアップを開始する前に、Azure VM エージェントが仮想マシンに正しくインストールされていることをご確認ください。仮想マシンをバックアップするために、Azure Backup サービスは VM エージェントの拡張機能をインストールします。VM エージェントは仮想マシンを作成する際のオプション コンポーネントであるため、仮想マシンをプロビジョニングする前に、VM エージェントのチェック ボックスがオンになっていることを確認する必要があります。
+Azure 仮想マシンのバックアップを開始する前に、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください。仮想マシンをバックアップするために、Azure Backup サービスは VM エージェントの拡張機能をインストールします。VM エージェントは仮想マシンを作成する際のオプション コンポーネントであるため、仮想マシンをプロビジョニングする前に、VM エージェントのチェック ボックスがオンになっていることを確認する必要があります。
 
 詳細については、「[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)」と「[インストール方法](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」に関するページをご覧ください。
 
 ## 制限事項
 
-- IaaS (V2) 仮想マシンのバックアップはサポートされません。
+- Azure リソース マネージャーに基づく (別名 IaaS V2) 仮想マシンのバックアップはサポートされません。
 - 16 台以上のデータ ディスクを搭載した仮想マシンのバックアップはサポートされません。
 - Premium Storage を使用した仮想マシンのバックアップはサポートされません。
+- 予約済み IP が複数ある仮想マシンのバックアップはサポートされません。
+- 予約済み IP はあるがエンドポイントが定義されていない仮想マシンのバックアップはサポートされません。
 - 複数のNIC を使用した仮想マシンのバックアップ、または負荷分散の構成の仮想マシンのバックアップはサポートされません。
 - 復元中に既存の仮想マシンを置き換えることはサポートされません。まず既存の仮想マシンに関連付けられているディスクを削除し、次にバックアップからデータを復元します。
 - リージョン間のバックアップと復元はサポートされません。
-- リージョンの選択でサポートされるのは、Azure Backup サービスを使用した仮想マシンのバックアップのみです。「[リージョン別のサービス](http://azure.microsoft.com/regions/#services)」の一覧をご確認ください。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
+- Azure Backup サービスを使用した仮想マシンのバックアップは、Azure のすべてのパブリック リージョンでサポートされます。サポートされるリージョンについては、「[リージョン別のサービス](http://azure.microsoft.com/regions/#services)」を参照ください。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
 - オペレーティング システムのバージョンの選択でサポートされるのは、Azure Backup サービスを使用した仮想マシンのバックアップのみです。
   - **Linux**: Azure で動作保証済みのディストリビューションの一覧は、[こちら](../virtual-machines-linux-endorsed-distributions.md)でご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
   - **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
@@ -124,9 +119,7 @@ Azure 仮想マシンのバックアップを開始する前に、Azure VM エ�
 仮想マシンのバックアップを開始するには、次をご覧ください。
 
 - [仮想マシンをバックアップする](backup-azure-vms.md)
-
 - [仮想マシンの復元](backup-azure-restore-vms.md)
-
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

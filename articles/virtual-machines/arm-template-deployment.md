@@ -1,4 +1,4 @@
-<properties pageTitle="テンプレートを使用した Azure リソースのデプロイ" description="Azure リソース管理ライブラリで利用可能ないくつかのクライアントを使用して、仮想マシン、仮想ネットワーク、ストレージ アカウントをデプロイする方法について説明します。" services="virtual-machines,virtual-networks,storage" documentationCenter="" authors="davidmu1" manager="timlt" editor="tysonn" tags="azure-resource-manager"/>
+<properties pageTitle="テンプレートを使用した Azure リソースのデプロイ" description="Azure リソース管理ライブラリで利用可能ないくつかのクライアントを使用して、仮想マシン、仮想ネットワーク、ストレージ アカウントをデプロイする方法について説明します。" services="virtual-machines,virtual-networks,storage" documentationCenter="" authors="davidmu1" manager="timlt" editor="tysonn" tags="azure-resource-manager/>
 
 <tags
 	ms.service="azure-resource-manager"
@@ -19,7 +19,7 @@
 
 - [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 - [Azure ストレージ アカウント](../storage-create-storage-account.md)
-- [Windows Management Framework 3.0](http://www.microsoft.com/ja-jp/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/ja-jp/download/details.aspx?id=40855)
+- [Windows Management Framework 3.0](http://www.microsoft.com/ja-JP/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/ja-JP/download/details.aspx?id=40855)
 - [Azure PowerShell](../powershell-install-configure.md)
 
 これらの手順を実行するには約 30 分かかります。
@@ -294,7 +294,7 @@ Azure リソース マネージャー テンプレートによって、リソー
           }
         }
 
-    >[AZURE.NOTE]イメージの vhd 名はイメージ ギャラリーで定期的に変更されるので、仮想マシンをデプロイするには現在のイメージ名を取得する必要があります。「[Windows PowerShell を使用してイメージを管理する](https://msdn.microsoft.com/library/azure/dn790330.aspx)」でその方法を参照し、{source-image-name} を使用する vhd ファイルの名前に置き換えます。たとえば、"a699494373c04fc0bc8f2bb1389d6106\_\_Windows-Server-2012-R2-201412.01-en.us-127GB.vhd" などです。{subscription-id} を、サブスクリプションの ID に置き換えます。
+    >[AZURE.NOTE]イメージの vhd 名はイメージ ギャラリーで定期的に変更されるので、仮想マシンをデプロイするには現在のイメージ名を取得する必要があります。これを行うには、「[仮想マシンのイメージについて](https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-images/)」を参照し、{source-image-name} を、使用する vhd ファイルの名前に置き換えます。たとえば、"a699494373c04fc0bc8f2bb1389d6106\_\_Windows-Server-2012-R2-201412.01-en.us-127GB.vhd" などです。{subscription-id} を、サブスクリプションの ID に置き換えます。
 
 
 4.	作成したパラメーター ファイルを保存します。
@@ -443,4 +443,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/arm-template-deployment/crpportal.png)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

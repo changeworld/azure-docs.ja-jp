@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="StorSimple 8000 シリーズ Update 0.3 リリース ノート - 2015 年 2 月 | Microsoft Azure"
-    description="StorSimple の 2015 年 2 月リリースにおける新機能、問題、回避策について説明します。"
+    pageTitle="StorSimple 8000 Update 0.3 リリース ノート | Microsoft Azure"
+    description="Microsoft Azure StorSimple の 2015 年 2 月リリース (Update 0.3) における新機能と修正点、未解決の問題、利用可能な回避策について説明します。"
     services="storsimple"
     documentationCenter="NA"
     authors="SharS"
@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="08/19/2015"
+    ms.date="09/04/2015"
     ms.author="v-sharos" />
 
 # StorSimple 8000 シリーズ Update 0.3 リリース ノート - 2015 年 2 月
@@ -86,4 +86,4 @@ StorSimple デバイスを更新する前に、次の前提条件が満たされ
 このリリースには、仮想デバイス用の更新プログラムは含まれていません。この更新プログラムを適用しても、仮想デバイスのソフトウェア バージョンは変更されません。
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

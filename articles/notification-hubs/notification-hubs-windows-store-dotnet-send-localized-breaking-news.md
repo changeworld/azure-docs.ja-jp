@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Notification Hubs ローカライズ ニュース速報のチュートリアル"
-	description="Azure Service Bus Notification Hubs を使用して、ローカライズしたニュース速報通知を送信する方法を説明します。"
+	description="ローカライズ ニュース速報通知を Azure Notification Hubs を使用して送信する方法について説明します。"
 	services="notification-hubs"
 	documentationCenter="windows"
 	authors="wesmc7777"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/18/2015" 
+	ms.date="09/08/2015" 
 	ms.author="wesmc"/>
 
 # 通知ハブを使用したローカライズ ニュース速報の送信
@@ -232,4 +232,4 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [方法: Windows Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/jj927172.aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

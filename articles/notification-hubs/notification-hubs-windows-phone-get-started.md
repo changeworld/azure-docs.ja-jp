@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Notification Hubs の使用 | Microsoft Azure"
+	pageTitle="Azure Notification Hubs の使用 (Windows Phone) | Microsoft Azure"
 	description="このチュートリアルでは、Azure Notification Hubs を使用して Windows Phone 8 または Windows Phone 8.1 Silverlight アプリケーションにプッシュ通知を送信する方法について説明します。"
 	services="notification-hubs"
 	documentationCenter="windows"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-windows-phone"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="06/16/2015"
+	ms.date="09/08/2015"
 	ms.author="wesmc"/>
 
-# Notification Hubs の使用
+# Notification Hubs の使用 (Windows Phone)
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -137,17 +137,17 @@
 
 4. 右クリックし、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
-	これにより、パッケージ マネージャー コンソールが開きます。
+	これで、パッケージ マネージャー コンソールが表示されます。
 
-6. コンソール ウィンドウで、**[既定のプロジェクト]** を新しいコンソール アプリケーション プロジェクトに設定し、次に、コンソール ウィンドウで次のコマンドを実行します。
+5.  [パッケージ マネージャー コンソール] ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウから次のコマンドを実行します。
 
-        Install-Package WindowsAzure.ServiceBus
+        Install-Package Microsoft.Azure.NotificationHubs
 
-	これにより、<a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して Azure Service Bus SDK に参照を追加します。
+	これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
 
-5. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
+6. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
 
-        using Microsoft.ServiceBus.Notifications;
+        using Microsoft.Azure.NotificationHubs;
 
 6. **Program** クラスで、次のメソッドを追加します。
 
@@ -215,4 +215,4 @@ MSDN の[トースト カタログ]および[タイル カタログ]に関する
 [タイル カタログ]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
 [Notification Hub - WP Silverlight tutorial]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

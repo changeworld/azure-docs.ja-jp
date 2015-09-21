@@ -12,6 +12,5 @@
 - [(Xamarin.Android | .NET)](../articles/mobile-services-dotnet-backend-xamarin-android-get-started-users.md)
 - [(Xamarin.Android | Javascript)](../articles/partner-xamarin-mobile-services-android-get-started-users.md)
 - [(HTML | Javascript)](../articles/mobile-services-html-get-started-users.md)
-- [(Appcelerator | Javascript)](../articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-users.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure VM の拡張機能を使用したテンプレートの作成 |Microsoft Azure"
-	description="拡張機能を使用したテンプレートの作成ついて詳しく説明します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="kundanap"
-	manager="timlt"
-	editor=""/>
+   description="拡張機能を使用したテンプレートの作成ついて詳しく説明します。"
+   services="virtual-machines"
+   documentationCenter=""
+   authors="kundanap"
+   manager="timlt"
+   editor=""/>
 
 <tags
    ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="09/01/2015"
-	ms.author="kundanap"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/01/2015"
+   ms.author="kundanap"/>
 
 # VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成
 
@@ -22,10 +22,10 @@
 
 Azure リソース マネージャー テンプレートでは、リソース間の依存関係を定義することで、JSON 言語で Azure IaaS インフラストラクチャを宣言によって指定できます。Azure リソース マネージャー テンプレートの概要については、次の記事をご覧ください。
 
-<a href="https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-overview/" target="_blank">リソース グループの概要</a><br/><a href="https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli/" target="_blank">Azure CLI を使用したテンプレートのデプロイ</a><br/><a href="https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/" target="_blank">Azure Powershell を使用したテンプレートのデプロイ</a>
+[リソース グループの概要](../resource-group-overview.md)
 
 ## VM 拡張機能のサンプル テンプレート スニペット
-拡張機能をデプロイするためのテンプレート スニペットは次のようになります。
+VM 拡張機能を Azure リソース マネージャーのテンプレートの一部としてデプロイするには、テンプレートで拡張機能の構成を宣言で指定する必要があります。拡張機能の構成の指定形式を次に示します。
 
       {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -43,6 +43,11 @@ Azure リソース マネージャー テンプレートでは、リソース間
       }
       }
       }
+
+上記からわかるように、拡張機能テンプレートには次の 2 つの主要な部分があります。
+
+1. 拡張機能の名前、発行元、およびバージョン。
+2. 拡張機能の構成。
 
 ## 任意の拡張機能の発行元、種類、typeHandlerVersion の識別
 
@@ -68,14 +73,16 @@ Azure CLI では、次の Azure PowerShell コマンドレットを実行しま�
 
 拡張機能のテンプレートを作成する次の手順では、構成パラメーターを指定するための形式を特定します。それぞれの拡張機能では、独自のパラメーター セットがサポートされています。
 
-Windows 拡張機能のいくつかのサンプル構成を確認するには、[Windows 拡張機能のサンプル](virtual-machines-extensions-configuration-samples-windows.md)に関するドキュメントをクリックします。
+Windows 拡張機能のサンプル構成については、[Windows 拡張機能のサンプル](virtual-machines-extensions-configuration-samples-windows.md)に関するドキュメントをクリックして参照してください。
 
-Linux 拡張機能のいくつかのサンプル構成を確認するには、[Linux 拡張機能のサンプル](virtual-machines-extensions-configuration-samples-linux.md)に関するドキュメントをクリックします。
+Linux 拡張機能のサンプル構成については、[Linux 拡張機能のサンプル](virtual-machines-extensions-configuration-samples-linux.md)に関するドキュメントをクリックして参照してください。
 
 VM の拡張機能を使用して完成したテンプレートを取得するには、次の VM テンプレートを参照してください。
 
-<a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/" target="_blank">Linux VM のカスタム スクリプト拡張機能</a></br><a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">Windows VM のカスタム スクリプト拡張機能</a>
+[Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
+
+[Linux VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
 テンプレートを作成したら、Azure CLI または Azure Powershell を使用してそのテンプレートをデプロイできます。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

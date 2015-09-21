@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager での MMC メニュー操作の使用 |Microsoft Azure"
-   description="StorSimple Snapshot Manager で Microsoft 管理コンソール (MMC) のメニュー操作を使用する方法について説明します。"
+   pageTitle="StorSimple Snapshot Manager の MMC メニュー操作 | Microsoft Azure"
+   description="StorSimple Snapshot Manager で、Microsoft 管理コンソール (MMC) の標準のメニュー操作を使用する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/17/2015"
+   ms.date="09/04/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager での MMC メニュー操作の使用
@@ -127,4 +127,4 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
 
 [StorSimple Snapshot Manager のユーザー インターフェイスの詳細](storsimple-use-snapshot-manager.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="StorSimple 8000 シリーズ Update 0.2 リリース ノート - 2015 年 1 月 | Microsoft Azure"
-    description="Microsoft Azure StorSimple の 2015 年 1 月リリースにおける新機能、問題、回避策について説明します。"
+    pageTitle="StorSimple 8000 Update 0.2 リリース ノート | Microsoft Azure"
+    description="Microsoft Azure StorSimple の 2015 年 1 月リリース (Update 0.2) における新機能と修正点、未解決の問題、利用可能な回避策について説明します。"
     services="storsimple"
     documentationCenter="NA"
     authors="SharS"
@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="08/19/2015"
+    ms.date="09/04/2015"
     ms.author="v-sharos" />
 
 
@@ -78,4 +78,4 @@
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

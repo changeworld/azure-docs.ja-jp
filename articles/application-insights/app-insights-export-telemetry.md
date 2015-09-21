@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Application Insights からのテレメトリの連続エクスポート"
-	description="診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。"
-	services="application-insights"
-	documentationCenter=""
-	authors="alancameronwills"
+	pageTitle="Application Insights からのテレメトリの連続エクスポート" 
+	description="診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。" 
+	services="application-insights" 
+    documentationCenter=""
+	authors="alancameronwills" 
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/31/2015" 
 	ms.author="awills"/>
  
 # Application Insights からのテレメトリのエクスポート
@@ -63,6 +63,8 @@ BLOB でデータが表示されるまで、約 1 時間の遅延が発生する
 データには、セットアップ済みのすべての[利用可能な Web テスト](app-insights-monitor-web-app-availability.md)の結果も含まれます。
 
 ## <a name="get"></a> データの確認
+
+ポータルでストレージを直接検査することができます。**[参照]** をクリックしてストレージ アカウントを選択し、**[コンテナー]** を開きます。
 
 Visual Studio で Azure ストレージを検査するには、**[表示]**、**[Cloud Explorer]** の順に開きます (このメニュー コマンドがない場合は、Azure SDK をインストールする必要があります。**[新しいプロジェクト]** ダイアログを開き、[Visual C#]、[クラウド]、**[Microsoft Azure SDK for .NET の取得]** の順に開きます)。
 
@@ -202,4 +204,4 @@ Blob ストレージからデータベースにデータを移動する 2 つの
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

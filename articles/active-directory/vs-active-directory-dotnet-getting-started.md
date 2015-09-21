@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Active Directory の使用 (.NET プロジェクト)" 
-	description="Visual Studio で Azure Active Directory の使用を開始する方法" 
+	pageTitle="Azure Active Directory と Visual Studio 接続済みサービスの概要 (MVC プロジェクト)" 
+	description="Visual Studio 接続済みサービスを使用して Azure Active Directory を接続または作成した後に、MVC プロジェクトで Azure AD の使用を開始する方法について説明します。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="patshea123" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/22/2015" 
+	ms.date="09/03/2015" 
 	ms.author="patshea"/>
 
-# Azure Active Directory の使用 (.NET プロジェクト)
+# Azure Active Directory と Visual Studio 接続済みサービスの概要 (MVC プロジェクト)
 
 > [AZURE.SELECTOR]
 > - [Getting Started](vs-active-directory-dotnet-getting-started.md)
@@ -77,4 +77,4 @@
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

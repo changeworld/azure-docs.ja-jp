@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Notification Hubs の使用 | Microsoft Azure"
+	pageTitle="Azure Notification Hubs の使用 (Chrome アプリ) | Microsoft Azure"
 	description="このチュートリアルでは、Azure Notification Hubs を使用して Chrome アプリケーションにプッシュ通知を送信する方法について学習します。"
 	services="notification-hubs"
 	documentationCenter=""
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-chrome"
 	ms.devlang="JavaScript"
 	ms.topic="hero-article"
-	ms.date="06/16/2015"
+	ms.date="09/03/2015"
 	ms.author="wesmc"/>
 
-# Notification Hubs の使用
+# Notification Hubs の使用 (Chrome アプリ)
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -380,8 +380,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 	- *client* は、HTTP POST 要求の発行のために使用する *XMLHttpRequest* のインスタンスです。*Authorization* ヘッダーは sasToken を使用して更新します。この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
 
 
-8. 最後に、フォルダーについて次のビューが表示されます。
-   	![][21]
+最後に、フォルダーについて次のビューが表示されます。![][21]
 
 ###Chrome アプリケーションのセットアップとテスト
 
@@ -496,4 +495,4 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 [Azure Notification Hubs によるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [Azure Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

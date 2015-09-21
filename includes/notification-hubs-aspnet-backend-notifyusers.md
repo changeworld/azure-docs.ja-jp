@@ -109,18 +109,18 @@
 
 ## WebAPI バックエンドを使用して通知を登録する
 
-このセクションでは、Notification Hubs のクライアント ライブラリ (Azure Service Bus クライアント ライブラリ) を使用して、通知用にユーザーとデバイスを登録する要求を処理する新しいコントローラーを WebAPI バックエンドに追加します。コントローラーでは、`AuthenticationTestHandler` で認証され、HttpContext に添付されたユーザーにユーザー タグを追加します。タグは、文字列の形式 `"username:<actual username>"` になります。
+このセクションでは、Notification Hubs のクライアント ライブラリを使用して、通知用にユーザーとデバイスを登録する要求を処理する新しいコントローラーを WebAPI バックエンドに追加します。コントローラーでは、`AuthenticationTestHandler` で認証され、HttpContext に添付されたユーザーにユーザー タグを追加します。タグは、文字列の形式 `"username:<actual username>"` になります。
 
 
  
 
 1. ソリューション エクスプローラーで **AppBackend** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. 左側で、**[オンライン]** をクリックし、**[検索]** ボックスで「**servicebus**」を検索します。
+2. 左側で、**[オンライン]** をクリックし、**[検索]** ボックスで「**Microsoft.Azure.NotificationHubs**」を検索します。
 
-3. 結果の一覧で、**[Microsoft Azure Service Bus]** をクリックしてから、**[インストール]** をクリックします。インストールが完了したら、NuGet パッケージ マネージャーのウィンドウを閉じます。
+3. 結果の一覧で、**[Microsoft Azure Notification Hubs Service Management Library]** をクリックし、**[インストール]** をクリックします。インストールが完了したら、NuGet パッケージ マネージャーのウィンドウを閉じます。
 
-	![][B14]
+	これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
 
 4. 送信される、セキュリティで保護された別の通知を表す新しいクラス ファイルを作成します。完全な実装では、通知はデータベースに格納されます。わかりやすくするために、このチュートリアルではメモリに格納します。ソリューション エクスプローラーで、**Models** フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。新しいクラスに「**Notifications.cs**」という名前を付け、**[追加]** をクリックして、クラスを生成します。
 
@@ -128,7 +128,7 @@
 
 5. Notifications.cs で、ファイルの先頭に次の `using` ステートメントを追加します。
 
-        using Microsoft.ServiceBus.Notifications;
+        using Microsoft.Azure.NotificationHubs;
 
 6. 次に、`Notifications` クラス定義を以下に置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure 管理ポータル](http://manage.windowsazure.com)で確認できます) に置き換えてください。
 
@@ -269,7 +269,7 @@
 
 ## WebAPI バックエンドから通知を送信する
 
-このセクションでは、ASP.NET WebAPI バックエンドの Azure Service Bus クライアント ライブラリを使用して、ユーザー名タグに基づく通知を送信する手段をクライアント デバイスに提供する新しいコントローラーを追加します。
+このセクションでは、ASP.NET WebAPI バックエンドの Azure Notification Hubs サービス管理ライブラリを使用して、ユーザー名タグに基づく通知を送信する手段をクライアント デバイスに提供する新しいコントローラーを追加します。
 
 
 1. **NotificationsController** という名前の新しいコントローラーを別に作成します。前のセクションで **RegisterController** を作成したときと同じ方法で作成します。
@@ -359,4 +359,4 @@
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

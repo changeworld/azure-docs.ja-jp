@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="手順 1: Machine Learning ワークスペースの作成 | Microsoft Azure" 
-	description="予測ソリューションの開発に関するチュートリアルの中の、保存されているパブリック データを Azure Machine Learning Studio ワークスペースを設定する方法の 1 番目の手順です。" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="garyericson" 
-	manager="paulettm" 
+<properties
+	pageTitle="手順 1: Machine Learning ワークスペースの作成 | Microsoft Azure"
+	description="予測ソリューションの開発に関するチュートリアルの中の、保存されているパブリック データを Azure Machine Learning Studio ワークスペースを設定する方法の 1 番目の手順です。"
+	services="machine-learning"
+	documentationCenter=""
+	authors="garyericson"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/10/2015" 
+<tags
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2015"
 	ms.author="garye"/>
 
 
@@ -26,7 +26,7 @@
 2.	[既存のデータをアップロードする](machine-learning-walkthrough-2-upload-data.md)
 3.	[新しい実験を作成する](machine-learning-walkthrough-3-create-new-experiment.md)
 4.	[モデルをトレーニングして評価する](machine-learning-walkthrough-4-train-and-evaluate-models.md)
-5.	[Web サービスを発行する](machine-learning-walkthrough-5-publish-web-service.md)
+5.	[Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)
 6.	[Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
 
 ----------
@@ -54,6 +54,5 @@ Machine Learning ワークスペースが作成されると、**機械学習**�
 **次: [既存のデータをアップロードする](machine-learning-walkthrough-2-upload-data.md)**
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

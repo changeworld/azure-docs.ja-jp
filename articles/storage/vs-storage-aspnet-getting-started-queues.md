@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure キュー ストレージと Visual Studio 接続済みサービスの概要 | Microsoft Azure"
-	description="Visual Studio の ASP.NET プロジェクトで Azure キュー ストレージの使用を開始する方法"
+	pageTitle="キュー ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET) | Microsoft Azure"
+	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure Queue ストレージの使用を開始する方法について説明します。"
 	services="storage"
 	documentationCenter=""
 	authors="patshea123"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.date="09/03/2015"
 	ms.author="patshea123"/>
 
 # Azure キュー ストレージと Visual Studio 接続済みサービスの概要
@@ -39,23 +39,23 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
 
 ASP.NET プロジェクトでキューにアクセスするには、Azure キュー ストレージにアクセスする C# ソース ファイルに、次の項目を含める必要があります。
 
-1. C# ファイル冒頭の名前空間宣言に、次の `using` ステートメントが含まれていることを確認してください。
+1. C# ファイル冒頭の名前空間宣言に、次の **using** ステートメントが含まれていることを確認します。
 
 		using Microsoft.Framework.Configuration;
 		using Microsoft.WindowsAzure.Storage;
 		using Microsoft.WindowsAzure.Storage.Queue;
 
-2. ストレージ アカウント情報を表す `CloudStorageAccount` オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
+2. ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
 
 		 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 		   CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
 
-3. ストレージ アカウント内のキュー オブジェクトを参照する `CloudQueueClient` オブジェクトを取得します。
+3. ストレージ アカウント内のキュー オブジェクトを参照する **CloudQueueClient** オブジェクトを取得します。
 
 	    // Create the queueclient.
     	CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-4. 特定のキューを参照する `CloudQueue` オブジェクトを取得します。
+4. 特定のキューを参照する **CloudQueue** オブジェクトを取得します。
 
     	// Get a reference to a queue named "messageQueue"
 	    CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
@@ -65,16 +65,16 @@ ASP.NET プロジェクトでキューにアクセスするには、Azure キュ
 
 ## コードでキューを作成する
 
-上記のコードの `CreateIfNotExists` に呼び出しを追加するだけで、コードで Azure キューが作成できます。
+**CreateIfNotExists** への呼び出しを上記のコードに追加するだけで、コード内に Azure キューが作成されます。
 
 	// Create the CloudQuecClient  if it does not exist
 	messageQueue.CreateIfNotExists();
 
 ## メッセージをキューに追加する
 
-既存のキューにメッセージを挿入するには、新しい `CloudQueueMessage` オブジェクトを作成し、`AddMessage` メソッドを呼び出します。
+既存のキューにメッセージを挿入するには、新しい **CloudQueueMessage** オブジェクトを作成した後、**AddMessage** メソッドを呼び出します。
 
-`CloudQueueMessage` オブジェクトは、文字列 (UTF-8 形式) か、バイト配列から作成できます。
+**CloudQueueMessage** オブジェクトは、文字列 (UTF-8 形式) またはバイト配列から作成できます。
 
 次の例では、'Hello, World' というメッセージを挿入します。
 
@@ -95,9 +95,9 @@ PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッ
 
 ## キュー内のメッセージを読み取って削除する
 
-コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。1.GetMessage() を呼び出すと、キュー内の次のメッセージが取得されます。GetMessage() から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。2.キューからのメッセージの削除を完了するには、`DeleteMessage` を呼び出します。
+コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。1.GetMessage() を呼び出すと、キュー内の次のメッセージが取得されます。GetMessage() から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。2.**DeleteMessage** を呼び出して、キューからのメッセージの削除を終了します。
 
-このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。次のコードでは、メッセージが処理された直後に `DeleteMessage` を呼び出します。
+このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。次のコードでは、メッセージが処理された直後に **DeleteMessage** を呼び出しています。
 
 	// Get a reference to the CloudQueue object named 'messageQueue' as described in "Access a queue in code"
 
@@ -112,7 +112,7 @@ PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッ
 
 ## 追加オプションを利用してメッセージをデキューする
 
-キューからのメッセージの取得をカスタマイズする方法は 2 つあります。1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。次のコード例では、`GetMessages` メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。その後、`foreach` ループを使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを 5 分に設定します。この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、`GetMessages` の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。次のコード例では、**GetMessages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。その後、**foreach** ループを使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを 5 分に設定します。この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、**GetMessages** の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
 
     // Get a reference to the CloudQueue object named 'messageQueue' as described in "Access a queue in code"
 
@@ -130,7 +130,7 @@ PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッ
 
 ## キューの長さを取得する
 
-キュー内のメッセージの概数を取得できます。`FetchAttributes` メソッドは、メッセージ数などのキューの属性を取得するようにキュー サービスに要求します。`ApproximateMethodCount` プロパティは、キュー サービスを呼び出さずに、`FetchAttributes` メソッドによって取得された最後の値を返します。
+キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するようにキュー サービスに要求します。**ApproximateMethodCount** プロパティは、キュー サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
 
     // Get a reference to the CloudQueue object named 'messageQueue' as described in "Access a queue in code"
 
@@ -166,7 +166,7 @@ PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッ
 
 ## キューを削除する
 
-キューやキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの `Delete` メソッドを呼び出します。
+キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **Delete** メソッドを呼び出します。
 
     // Get a reference to the CloudQueue object named 'messageQueue' as described in "Access a queue in code"
 
@@ -179,4 +179,4 @@ PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッ
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

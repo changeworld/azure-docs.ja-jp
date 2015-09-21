@@ -1,19 +1,19 @@
 <properties 
    pageTitle="仮想ネットワーク (VNet) で使用される DNS サーバーの管理"
-	description="仮想ネットワーク (VNet) の DNS サーバーを追加および削除する方法について説明します。"
-	services="virtual-network"
-	documentationCenter="na"
-	authors="telmosampaio"
-	manager="carolz"
-	editor="tysonn"/>
+   description="仮想ネットワーク (VNet) の DNS サーバーを追加および削除する方法について説明します。"
+   services="virtual-network"
+   documentationCenter="na"
+   authors="telmosampaio"
+   manager="carolz"
+   editor="tysonn" />
 <tags 
    ms.service="virtual-network"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="06/08/2015"
-	ms.author="telmos"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/04/2015"
+   ms.author="telmos" />
 
 # 仮想ネットワーク (VNet) で使用される DNS サーバーの管理
 
@@ -65,4 +65,4 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 
 [仮想ネットワーク (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

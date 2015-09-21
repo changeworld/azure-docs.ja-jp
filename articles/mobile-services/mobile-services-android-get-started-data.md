@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="データの使用 (Android) | Microsoft Azure" 
-	description="モバイル サービスを使用して Android アプリでデータを活用する方法について説明します。" 
+	pageTitle="Android のデータの使用 (JavaScript バックエンド) | Microsoft Azure" 
+	description="Mobile Services を使用して、Android アプリのデータを活用する方法について説明します (JavaScript バックエンド)。" 
 	services="mobile-services" 
 	documentationCenter="android" 
 	authors="RickSaling" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="08/18/2015" 
+	ms.date="09/04/2015" 
 	ms.author="ricksal"/>
 
-# 既存の Android アプリケーションへの Mobile Services の追加
+# 既存の Android アプリへの Mobile Services の追加 (JavaScript バックエンド)
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-data](../../includes/mobile-services-selector-get-started-data.md)]
 
@@ -35,7 +35,7 @@
 </div>
 
 
-<p>このチュートリアルでは Azure Mobile Services における Android アプリケーションからのデータの保存と取得方法についての詳細を分かりやすく説明します。したがって、Mobile Services のクイック スタート チュートリアルで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/ja-jp/develop/mobile/tutorials/get-started-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
+<p>このチュートリアルでは Azure Mobile Services における Android アプリケーションからのデータの保存と取得方法についての詳細を分かりやすく説明します。したがって、Mobile Services のクイック スタート チュートリアルで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/ja-JP/develop/mobile/tutorials/get-started-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
 
 ## 前提条件
 
@@ -156,4 +156,4 @@ Azure Mobile Services Android SDK の前のバージョンで使用されてい�
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

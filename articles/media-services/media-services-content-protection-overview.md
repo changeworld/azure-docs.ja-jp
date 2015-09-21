@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015" 
 	ms.author="juliako"/>
 
 #コンテンツ保護の概要
@@ -81,11 +81,11 @@ Media Services には PlayReady ライセンスを提供するサービスが用
 
 1. 高品質な中間ファイルをアセットに取り出します。ストレージ暗号化オプションをアセットに適用します。
 2. ストリーミング エンドポイントを構成します。
-1. アダプティブ ビットレート MP4 セットにエンコードします。ストレージ暗号化オプションを出力アセットに適用します。
-1. 再生中に動的に暗号化するアセットの、暗号化コンテンツ キーを作成します。
+1. アダプティブ ビットレート MP4 セットにエンコードします。ストレージ暗号化オプションを出力資産に適用します。
+1. 再生中に動的に暗号化する資産の、暗号化コンテンツ キーを作成します。
 2. コンテンツ キー承認ポリシーを構成します。
-1. アセット配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
-1. OnDemand ロケーターを作成してアセットを発行します。
+1. 資産配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
+1. OnDemand ロケーターを作成して資産を発行します。
 1. 公開済みコンテンツをストリーミングします。
 
 ###Media Service キーとライセンス配信サービスを自分の暗号化とストリーミング サービスで使用する
@@ -124,6 +124,15 @@ Media Services には PlayReady ライセンスを提供するサービスが用
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
 
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
+
 ##関連リンク
 
 [Announcing PlayReady as a service and AES dynamic encryption with Azure Media Services (Azure Media Services でのサービスと AES 動的暗号化としての PlayReady の発表)](http://mingfeiy.com/playready)
@@ -141,4 +150,4 @@ Media Services には PlayReady ライセンスを提供するサービスが用
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

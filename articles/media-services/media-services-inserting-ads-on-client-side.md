@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/17/2015"  
+	ms.date="09/07/2015" 
 	ms.author="juliako"/>
 
 
@@ -219,7 +219,7 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
 1. 時間 – hh:mm:ss または hh:mm:ss.mmm 形式。ここで、.mmm はミリ秒です。この属性の値は、ビデオの時系列の先頭から広告の中断の先頭までの時間を指定します。
 1. パーセント – n% 形式。ここで、n は広告再生前に再生するビデオの時系列のパーセントです。
 1. 開始/終了 – ビデオを表示する前または後に広告を表示することを指定します。
-1. 位置 – 広告の中断のタイミングが不明なとき (ライブ ストリーミングなど) に、広告の中断の順序を指定します。各広告の中断の順序は、\#n 形式で指定されます。n は整数 1 以上です。1 は、広告を最初のチャンスに再生することを意味し、2 は広告を 2 番目のチャンスに再生することを意味し、それ以降も同様です。
+1. 位置 – 広告の中断のタイミングが不明なとき (ライブ ストリーミングなど) に、広告の中断の順序を指定します。各広告の中断の順序は、#n 形式で指定されます。n は整数 1 以上です。1 は、広告を最初のチャンスに再生することを意味し、2 は広告を 2 番目のチャンスに再生することを意味し、それ以降も同様です。
 
 <**AdBreak**> 要素内には、<**AdSource**> 要素を 1 つ配置できます。<**AdSource**> 要素には、次の属性が含まれています。
 
@@ -796,9 +796,18 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
 	{
 	    [self logFrameworkError];
 	}
+
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
  
 ##関連項目
 
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

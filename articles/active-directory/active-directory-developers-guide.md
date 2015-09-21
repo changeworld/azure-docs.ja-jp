@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Active Directory 開発者ガイド | Microsoft Azure"
-	description="この記事は、Azure Active Directory の開発者向けリソースの包括的なガイドです。"
-	services="active-directory"
-	documentationCenter="dev-center-name"
-	authors="msmbaldwin"
-	manager="mbaldwin"
-	editor=""/>
+   description="この記事は、Azure Active Directory の開発者向けリソースの包括的なガイドです。"
+   services="active-directory"
+   documentationCenter="dev-center-name"
+   authors="msmbaldwin"
+   manager="mbaldwin"
+   editor=""/>
 
 <tags
    ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="08/12/2015"
-	ms.author="mbaldwin"/>
+   ms.devlang="na"
+   ms.topic="hero-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="09/02/2015"
+   ms.author="mbaldwin"/>
 
 
 # Azure Active Directory 開発者ガイド
@@ -27,7 +27,7 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 1. [Active Directory の認証シナリオ](active-directory-authentication-scenarios.md): Azure Active Directory の簡素化された認証を利用して、アプリケーションにサインオン機能を組み込む方法を説明します。
 
-1. [Azure AD Graph API](https://msdn.microsoft.com/library/azure/hh974476.aspx)： Azure Active Directory Graph API を使用して、REST API エンドポイント経由でプログラムによって Azure Active Directory にアクセスする方法を説明します。
+1. [Azure Active Directory Graph API](active-directory-graph-api.md)： Azure Active Directory Graph API を使用して、REST API エンドポイント経由でプログラムによって Azure Active Directory にアクセスする方法を説明します。
 
 1. [Azure Active Directory とアプリケーションの統合](active-directory-integrating-applications.md): アプリケーションの登録と、マルチテナント アプリケーションのブランド化ガイドラインについて説明します。
 
@@ -47,11 +47,17 @@ Build 2015 のカンファレンスで発表された Azure Active Directory の
 |[iOS](active-directory-devquickstarts-ios.md)|[Android](active-directory-devquickstarts-android.md)|[.NET](active-directory-devquickstarts-dotnet.md)|[Windows Phone](active-directory-devquickstarts-windowsphone.md)|[Windows ストア](active-directory-devquickstarts-windowsstore.md)|[Xamarin](active-directory-devquickstarts-xamarin.md)|[Cordova](active-directory-devquickstarts-cordova.md)
 
 
-### Web アプリケーションと Web API のクイック スタート ガイド
+### Web アプリケーション クイック スタート ガイド
 
-|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapi-dotnet.md)|[![JavaScript](./media/active-directory-developers-guide/javascript.png)](active-directory-devquickstarts-angular.md)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-webapi-nodejs.md)
-|:--:|:--:|:--:|:--:
-|[.NET Web アプリ](active-directory-devquickstarts-webapp-dotnet.md)|[.NET Web API](active-directory-devquickstarts-webapi-dotnet.md)|[Javascript](active-directory-devquickstarts-angular.md)|[Node.JS](active-directory-devquickstarts-webapi-nodejs.md)
+|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![JavaScript](./media/active-directory-developers-guide/javascript.png)](active-directory-devquickstarts-angular.md)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs)
+|:--:|:--:|:--:|
+|[.NET](active-directory-devquickstarts-webapp-dotnet.md)|[Javascript](active-directory-devquickstarts-angular.md)|[Node.JS](active-directory-devquickstarts-openidconnect-nodejs)
+
+### Web API クイック スタート ガイド
+
+|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapi-dotnet.md)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-webapi-nodejs.md)
+|:--:|:--:|
+|[.NET](active-directory-devquickstarts-webapi-dotnet.md)|[Node.JS](active-directory-devquickstarts-webapi-nodejs.md)
 
 ### ディレクトリのクエリに関するクイック スタート ガイド
 
@@ -75,7 +81,7 @@ Build 2015 のカンファレンスで発表された Azure Active Directory の
 以下の記事は、REST と認証ライブラリ API、プロトコル、エラー、コード サンプル、エンドポイントの基礎的なリファレンスです。
 
 ###  サポート
-- [Tagged questions (タグ付けされた質問)](http://stackoverflow.com/questions/tagged/azure-active-directory): [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) タグと [adal](http://stackoverflow.com/questions/tagged/adal) タグを検索すると、スタック オーバーフローについての Azure Active Directory 関連のソリューションが見つかります。
+- [タグ付けされた質問に関するページ](http://stackoverflow.com/questions/tagged/azure-active-directory): Stack Overflow で [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) タグと [adal](http://stackoverflow.com/questions/tagged/adal) タグを検索すると、Azure Active Directory 関連のソリューションが見つかります。
 
 ### コード
 
@@ -86,7 +92,7 @@ Build 2015 のカンファレンスで発表された Azure Active Directory の
 
 ### Graph API
 
-- [Azure AD Graph API](https://msdn.microsoft.com/library/azure/hh974476.aspx): Azure Active Directory Graph API の REST リファレンスです。[対話方式で Graph API リファレンスを表示します](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)。
+- [Graph API リファレンス](https://msdn.microsoft.com/library/azure/hh974476.aspx): Azure Active Directory Graph API の REST リファレンスです。[対話型の Graph API リファレンスを表示します](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)。
 
 - [Graph API Permission Scopes (Graph API のアクセス許可スコープ)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/graph-api-permission-scopes): OAuth 2.0 のアクセス許可スコープは、アプリケーションに付与されている、テナント内のディレクトリ データに対するアクセス権を制御するために使用されます。
 
@@ -133,4 +139,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

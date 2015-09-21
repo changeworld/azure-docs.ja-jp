@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Service Bus キューの使用方法 (Node.js) | Microsoft Azure"
-	description="Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。"
-	services="service-bus"
-	documentationCenter="nodejs"
-	authors="MikeWasson"
-	manager="wpickett"
+	pageTitle="Service Bus キューの使用方法 (Node.js) | Microsoft Azure" 
+	description="Node.js アプリから Azure の Service Bus キューを使用する方法を学習します。" 
+	services="service-bus" 
+	documentationCenter="nodejs" 
+	authors="MikeWasson" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="service-bus"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="nodejs"
-	ms.topic="article"
-	ms.date="07/06/2015"
+	ms.service="service-bus" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="07/06/2015" 
 	ms.author="mwasson"/>
 
 # Service Bus キューの使用方法
@@ -165,8 +165,8 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   MSDN リファレンスの [Service Bus のキュー、トピック、サブスクリプション][]
--   GitHub の [Azure SDK for Node] リポジトリ
+-   [キュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
+-   GitHub の [Azure SDK for Node][] リポジトリ
 
   [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
   [次のステップ]: #next-steps
@@ -183,10 +183,10 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [Azure Management Portal]: http://manage.windowsazure.com
   
   [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-  [Service Bus のキュー、トピック、サブスクリプション]: http://msdn.microsoft.com/library/azure/hh367516.aspx
+  [キュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
   [ストレージを使用する Node.js クラウド サービスに関するトピック]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
   [Azure テーブル サービスを使用する Node.js Web アプリケーション]: ../storage/storage-nodejs-how-to-use-table-storage.md
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

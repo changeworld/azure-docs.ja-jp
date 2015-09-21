@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager を使用したバックアップ カタログの管理 | Microsoft Azure"
+   pageTitle="StorSimple Snapshot Manager のバックアップ カタログ | Microsoft Azure"
    description="StorSimple Snapshot Manager MMC スナップインを使用して、バックアップ カタログを表示および管理する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/17/2015"
+   ms.date="09/04/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したバックアップ カタログの管理
@@ -207,4 +207,4 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 
 [StorSimple Snapshot Manager のタスクとワークフローの詳細](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows)。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

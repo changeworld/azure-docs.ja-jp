@@ -1,7 +1,7 @@
 
 <properties 
-  pageTitle="ストレージ リソースのプロパティとメタデータの設定と取得 | Microsoft Azure" 
-  description="Azure Storage リソースのプロパティとメタデータを設定し、取得する方法について説明します。" 
+  pageTitle="Azure Storage のオブジェクトのプロパティおよびメタデータの設定と取得 | Microsoft Azure" 
+  description="Azure Storage のオブジェクトにカスタム メタデータを格納して、システムのプロパティを設定、取得します。" 
   services="storage" 
   documentationCenter="" 
   authors="tamram" 
@@ -14,7 +14,7 @@
   ms.tgt_pltfrm="na" 
   ms.devlang="na" 
   ms.topic="article" 
-  ms.date="08/04/2015" 
+  ms.date="09/03/2015" 
   ms.author="tamram"/>
 
 
@@ -106,4 +106,4 @@ BLOB でプロパティを設定するには、プロパティ値を指定して
 - [.NET 用の BLOB ストレージの概要](storage-dotnet-how-to-use-blobs.md)  
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

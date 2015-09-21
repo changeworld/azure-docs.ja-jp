@@ -1,24 +1,30 @@
 <properties
    pageTitle="Azure VM 拡張機能のサンプル構成 | Microsoft Azure"
-	description="拡張機能を使用したテンプレート作成のサンプル構成"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="kundanap"
-	manager="timlt"
-	editor=""/>
+   description="拡張機能を使用したテンプレート作成のサンプル構成"
+   services="virtual-machines"
+   documentationCenter=""
+   authors="kundanap"
+   manager="timlt"
+   editor=""/>
 
 <tags
    ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="09/01/2015"
-	ms.author="kundanap"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/01/2015"
+   ms.author="kundanap"/>
 
 # Azure Windows VM 拡張機能の構成サンプル
 
-この記事には、Azure IaaS Windows VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが用意されています。これらの拡張機能の詳細については、<a href="https://msdn.microsoft.com/ja-JP/library/azure/dn606311.aspx" target="_blank">こちら</a>をクリックしてください。
+この記事には、Azure IaaS Windows VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが用意されています。
+
+これらの拡張機能の詳細については、「[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/azure/dn606311.aspx)」を参照してください。
+
+拡張機能テンプレートの作成の詳細については、「[拡張機能テンプレートの作成](virtual-machines-extensions-authoring-templates.md)」を参照してください。
+
+この記事では、一部の Windows 拡張機能について、予測される構成値の一覧を示します。
 
 ## VM 拡張機能のサンプル テンプレート スニペット
 拡張機能をデプロイするためのテンプレート スニペットは次のようになります。
@@ -268,6 +274,29 @@
             }
           }
 
+### Azure 診断
+
+Azure 診断拡張機能の概要については、[こちら](https://msdn.microsoft.com/library/azure/dn782207.aspx/)をクリックしてください。
+
+          {
+            "publisher": "Microsoft.Azure.Diagnostics",
+            "type": "IaaSDiagnostics",
+            "typeHandlerVersion": "1.4",
+            "settings": {
+              "xmlCfg": "[base64(variables('wadcfgx'))]",
+              "storageAccount": "[parameters('diagnosticsStorageAccount')]"
+            },
+            "protectedSettings": {
+            "storageAccountName": "[parameters('diagnosticsStorageAccount')]",
+            "storageAccountKey": "[listkeys(variables('accountid'), '2015-05-01-preview').key1]",
+            "storageAccountEndPoint": "https://core.windows.net"
+          }
+          }
+
 上記の例では、バージョン番号を最新のバージョン番号に置き換えます。
 
-<!---HONumber=September15_HO1-->
+カスタム スクリプト拡張機能を使用した完全な VM テンプレートの例については、次を参照してください。
+
+[Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
+
+<!---HONumber=Sept15_HO2-->

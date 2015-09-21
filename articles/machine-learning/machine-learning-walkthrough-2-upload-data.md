@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="手順 2: Machine Learning の実験にデータをアップロードする | Microsoft Azure" 
-	description="予測ソリューションの開発に関するチュートリアルの中の、保存されているパブリック データを Azure Machine Learning Studio にアップロードするステップの 2 番目の手順です。" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="garyericson" 
-	manager="paulettm" 
+<properties
+	pageTitle="手順 2: Machine Learning の実験にデータをアップロードする | Microsoft Azure"
+	description="予測ソリューションの開発に関するチュートリアルの中の、保存されているパブリック データを Azure Machine Learning Studio にアップロードするステップの 2 番目の手順です。"
+	services="machine-learning"
+	documentationCenter=""
+	authors="garyericson"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/10/2015" 
+<tags
+	ms.service="machine-learning"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2015" 
 	ms.author="garye"/>
 
 
@@ -26,7 +26,7 @@
 2.	**既存のデータをアップロードする**
 3.	[新しい実験を作成する](machine-learning-walkthrough-3-create-new-experiment.md)
 4.	[モデルをトレーニングして評価する](machine-learning-walkthrough-4-train-and-evaluate-models.md)
-5.	[Web サービスを発行する](machine-learning-walkthrough-5-publish-web-service.md)
+5.	[Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)
 6.	[Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
 
 ----------
@@ -70,7 +70,7 @@ UCI の Web サイトでは、財務情報、信用貸付の履歴、雇用状�
 
 ![データセットのアップロード][1]
 
- 
+
 これにより、データが、実験で使用できるデータセット モジュールにアップロードされます。
 
 さまざまな種類のデータを実験にインポートする方法の詳細については、「[Azure Machine Learning Studio への学習データのインポート](machine-learning-import-data.md)」をご覧ください。
@@ -78,6 +78,5 @@ UCI の Web サイトでは、財務情報、信用貸付の履歴、雇用状�
 **次: [新しい実験を作成する](machine-learning-walkthrough-3-create-new-experiment.md)**
 
 [1]: ./media/machine-learning-walkthrough-2-upload-data/upload1.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

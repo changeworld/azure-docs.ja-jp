@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2015" 
+	ms.date="09/08/2015" 
 	ms.author="stepsic"/>
 
 # アラート通知の受信
@@ -39,6 +39,8 @@
 5. **[メトリック]** を選択する場合は、メトリックの条件としきい値を選択します。これは、Azure がアラート アクティビティの監視とプロットに使用する期間です。![条件としきい値](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
 
 6. **[イベント]** を選択することもできます。この場合は、特定のイベントが発生すると通知を受け取ります。![イベント](./media/insights-receive-alert-notifications/Insights_Events.png)
+    
+>[AZURE.NOTE]現時点では、[イベント] は Web アプリでのみサポートされています。
 
 7. 最後に、担当の管理者にメール通知を送信できます。
 
@@ -63,4 +65,4 @@
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

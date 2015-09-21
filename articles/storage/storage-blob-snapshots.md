@@ -1,6 +1,6 @@
-<properties 
-	pageTitle="BLOB のスナップショットの作成"
-	description="Azure ストレージ BLOB のスナップショットを作成する方法について"
+<properties
+	pageTitle="BLOB のスナップショットの作成 | Microsoft Azure"
+	description="Azure Storage BLOB のスナップショットを作成するためのガイド"
 	services="storage"
 	documentationCenter=""
 	authors="tamram"
@@ -8,12 +8,12 @@
 	editor=""/>
 
 <tags 
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="tamram"/>
 
 # BLOB のスナップショットの作成
@@ -30,7 +30,7 @@ BLOB のスナップショットを作成すると、BLOB のシステム プロ
 
 ベース BLOB に関連付けられているリースはスナップショットにコピーされません。スナップショットはリースを取得することはできません。
 
-## スナップショットのコピー 
+## スナップショットのコピー
 
 BLOB やスナップショットに関連するコピー操作は次のルールに従います。
 
@@ -42,33 +42,33 @@ BLOB やスナップショットに関連するコピー操作は次のルール
 
 - ブロック BLOB のスナップショットを作成する場合、BLOB のコミットされたブロック リストもスナップショットにコピーされます。コミット前のブロックはコピーされません。
 
-## アクセス条件の指定 
+## アクセス条件の指定
 
-アクセス条件を指定することで、その条件を満たしている場合にのみスナップショットを作成できます。アクセス条件を指定するには、AccessCondition プロパティを使用します。指定した条件を満たしていない場合、スナップショットは作成されず、BLOB サービスはステータス コード HTTPStatusCode.PreconditionFailed を返します。
+アクセス条件を指定することで、その条件を満たしている場合にのみスナップショットを作成できます。アクセス条件を指定するには、**AccessCondition** プロパティを使用します。指定した条件を満たしていない場合、スナップショットは作成されず、BLOB サービスはステータス コード HTTPStatusCode.PreconditionFailed を返します。
 
-## スナップショットの削除 
+## スナップショットの削除
 
 スナップショットを持つ BLOB は、スナップショットが削除されてからでないと、削除できません。スナップショットは個別に削除できます。また、コピー元 BLOB を削除するとき、ストレージ サービスを利用することですべてのスナップショットを削除できます。スナップショットを持つ BLOB を削除しようとすると、エラーが返されます。
 
-## Premium Storage のスナップショット
+## Azure Premium Storage のスナップショット
 Premium Storage でスナップショットを使うには次のルールに従います。
 
 - Premium Storage アカウントにおけるページ BLOB あたりのスナップショットの数は 100 が上限です。上限を超えると、スナップショット BLOB の操作でエラー コード 409 (**SnapshotCountExceeded**) が返されます。
 
-- Premium Storage アカウントの ページ BLOB のスナップショットは 10 分ごとに作成されます。この頻度を超えると、スナップショット BLOB の操作でエラー コード 409 (**SnaphotOperationRateExceeded**) が返されます。
+- Premium Storage アカウントのページ BLOB のスナップショットは 10 分ごとに作成されます。この頻度を超えると、スナップショット BLOB の操作でエラー コード 409 (**SnaphotOperationRateExceeded**) が返されます。
 
-- Premium Storage アカウントの ページ BLOB スナップショットの読み取りは、Get Blob 経由ではサポートされていません。Premium Storage アカウントのスナップショットで Get Blob を呼び出すと、エラー コード 400 (**InvalidOperation**) が返されます。ただし、スナップショットに対する Get Blob プロパティや Get Blob メタデータのコールはサポートされています。
+- Premium Storage アカウントのページ BLOB スナップショットの読み取りは、Get Blob 経由ではサポートされていません。Premium Storage アカウントのスナップショットで Get Blob を呼び出すと、エラー コード 400 (**InvalidOperation**) が返されます。ただし、スナップショットに対する Get Blob プロパティや Get Blob メタデータのコールはサポートされています。
 
-- スナップショットを読み込むには、Copy Blob を操作してアカウントの別のページ BLOB にスナップショットをコピーします。すでにスナップショットがある BLOB にはスナップショットをコピーできません。コピー先の BLOB にスナップショットがある場合は、Copy Blob ではエラー コード 409 (**SnapshotsPresent**) が返されます。
+- スナップショットを読み込むには、Copy Blob を操作してアカウントの別のページ BLOB にスナップショットをコピーします。すでにスナップショットがある BLOB にはスナップショットをコピーできません。コピー先の BLOB にスナップショットがある場合、Copy Blob 操作でエラー コード 409 (**SnapshotsPresent**) が返されます。
 
-## スナップショットに絶対 URI を返す 
+## スナップショットに絶対 URI を返す
 
 この C# コードの例は、新しいスナップショットを作成し、プライマリの場所の絶対 URI を書き込みます。
 
     //Create the blob service client object.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-    
+
     //Get a reference to a container.
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
     container.CreateIfNotExists();
@@ -93,7 +93,7 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 - ブロック BLOB 内のブロックを置き換えた場合、以後そのブロックは一意のブロックとして課金されます。そのブロックに割り当てられているブロック ID とデータが、スナップショット側と同じであっても変わりません。ブロックが再度コミットされると、そのブロックはスナップショット内の対応するブロックから分化し、そのデータに対する料金が発生します。これは、ページ BLOB 内のページを、まったく同じデータで更新した場合にも当てはまります。
 
-- UploadFile、UploadText、UploadStream、UploadByteArray のいずれかのメソッドを呼び出してブロック BLOB を置き換えると、その BLOB 内のすべてのブロックが置き換えられます。その BLOB に関連付けられているスナップショットがある場合、ベース BLOB とスナップショット内のすべてのブロックが分化し、両方の BLOB のすべてのブロックが課金対象となります。これは、ベース BLOB 内のデータとスナップショット内のデータとがまったく同一であっても変わりません。
+- **UploadFile**、**UploadText**、**UploadStream**、**UploadByteArray** のいずれかのメソッドを呼び出してブロック BLOB を置き換えると、その BLOB 内のすべてのブロックが置き換えられます。その BLOB に関連付けられているスナップショットがある場合、ベース BLOB とスナップショット内のすべてのブロックが分化し、両方の BLOB のすべてのブロックが課金対象となります。これは、ベース BLOB 内のデータとスナップショット内のデータとがまったく同一であっても変わりません。
 
 - 2 つのブロックに格納されているデータが同一であるかどうかを判断する方法は、Azure BLOB サービスには用意されていません。アップロードされてコミットされたブロックは、同じデータや同じブロック ID がある場合でも、それぞれが一意のものとして扱われます。料金は一意のブロックに対して発生するため、スナップショットがある BLOB を更新すると、一意のブロックが増え、追加料金が発生することを考慮することが重要です。
 
@@ -101,7 +101,7 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 > - まったく同じデータで更新する場合も含め、BLOB を更新するときは必ずその BLOB に関連付けられているスナップショットを削除してから作成し直すようにします (アプリケーションの設計上、スナップショットを維持しなければならない場合を除く)。BLOB のスナップショットを削除してから作成し直すことにより、BLOB とスナップショットの分化を確実に防ぐことができます。
 
-> - BLOB のスナップショットを維持する場合は、UploadFile、UploadText、UploadStream、UploadByteArray を呼び出して BLOB を更新することは避けてください。これらのメソッドを実行すると、BLOB 内のすべてのブロックが置き換えられます。代わりに、PutBlock メソッドと PutBlockList メソッドを使用して、最小数のブロックのみを更新するようにしてください。
+> - BLOB のスナップショットを維持する場合は、**UploadFile**、**UploadText**、**UploadStream**、**UploadByteArray** を呼び出して BLOB を更新することは避けてください。これらのメソッドを実行すると、BLOB 内のすべてのブロックが置き換えられます。代わりに、**PutBlock** メソッドと **PutBlockList** メソッドを使用して、最小数のブロックのみを更新するようにしてください。
 
 
 ### スナップショットの課金シナリオ
@@ -109,20 +109,20 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 ブロック BLOB とそのスナップショットについて料金が発生するしくみを次のシナリオで説明します。
 
-シナリオ 1 は、スナップショットが作成されてからベース BLOB は更新されていません。したがって、料金の発生対象は、一意のブロックである 1、2、3 のみです。
+シナリオ 1 では、スナップショットが作成されてからベース BLOB は更新されていません。したがって、料金の発生対象は、一意のブロックである 1、2、3 のみです。
 
 ![Azure Storage のリソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-1.png)
 
-シナリオ 2 は、ベース BLOB が更新されています。スナップショットは更新されていません。更新されたのはブロック 3 です。格納されているデータと ID が同じでも、スナップショット内のブロック 3 とは異なります。このため、4 ブロック分の料金がアカウントに課金されます。
+シナリオ 2 では、ベース BLOB は更新されていますが、スナップショットは更新されていません。更新されたのはブロック 3 です。格納されているデータと ID が同じでも、スナップショット内のブロック 3 とは異なります。このため、4 ブロック分の料金がアカウントに課金されます。
 
 ![Azure Storage のリソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-2.png)
 
-シナリオ 3 は、ベース BLOB が更新されています。スナップショットは更新されていません。ベース BLOB のブロック 3 がブロック 4 に置き換わっていますが、スナップショット側はブロック 3 のままです。このため、4 ブロック分の料金がアカウントに課金されます。
- 
+シナリオ 3 では、ベース BLOB は更新されていますが、スナップショットは更新されていません。ベース BLOB のブロック 3 がブロック 4 に置き換わっていますが、スナップショット側はブロック 3 のままです。このため、4 ブロック分の料金がアカウントに課金されます。
+
 ![Azure Storage のリソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-3.png)
 
-シナリオ 4 では、ベース BLOB が完全に更新されており、元のブロックは 1 つも含まれていません。このため、8 つある一意のブロックすべてについての料金がアカウントに課金されます。このシナリオは、UploadFile、UploadText、UploadFromStream、UploadByteArray などの更新メソッド (これらのメソッドは BLOB の内容をすべて置き換えるため) を使用した場合に発生する可能性があります。
+シナリオ 4 では、ベース BLOB が完全に更新されており、元のブロックは 1 つも含まれていません。このため、8 つある一意のブロックすべてについての料金がアカウントに課金されます。このシナリオは、**UploadFile**、**UploadText**、**UploadFromStream**、**UploadByteArray** などの更新メソッド (これらのメソッドは BLOB の内容をすべて置き換えるため) を使用した場合に発生する可能性があります。
 
 ![Azure Storage のリソース](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure 入門 | Microsoft Azure"
-	description="Microsoft Azure を使うのは初めてですか。 提供されるサービスの基本的な概要を、便利な使用例を使って説明します。"
-	services=" "
-	documentationCenter=".net"
-	authors="Rboucher"
+	pageTitle="Azure 入門 | Microsoft Azure" 
+	description="Microsoft Azure を使うのは初めてですか。 提供されるサービスの基本的な概要を、便利な使用例を使って説明します。" 
+	services=" " 
+	documentationCenter=".net" 
+	authors="Rboucher" 
 	manager="jwhit"
 	editor=""/>
 
 <tags 
-	ms.service="multiple"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/30/2015"
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="06/30/2015"  
 	ms.author="robb"/>
 
 # Microsoft Azure の概要
@@ -399,11 +399,11 @@ Notification Hubs は、いずれのバックエンドでも動作するよう�
 
 ### Site Recovery
  
-Azure Site Recovery (以前の Hyper-V Recovery Manager) は、サイト間での Hyper-V イメージのレプリケーションと回復を調整することで、重要なアプリケーションを保護するために役立ちます。専用のセカンダリ サイトやホスト側サイトにバックアップすることもできれば、Azure を使用して専用のセカンダリの場所を構築し管理する費用と複雑さを回避することもできます。Azure はデータと通信を暗号化するため、保存データの暗号化を有効にするオプションもあります。
+Azure Site Recovery (以前の Hyper-V Recovery Manager) は、サイト間でのレプリケーションと回復を調整することで、重要なアプリケーションの保護を支援します。Site Recovery は、hyper-v、VMWare、または SAN に基づいてアプリケーションを保護する機能を、セカンダリ サイト、ホスト側のサイト、または Azure に提供することで、独自のセカンダリの場所を構築したり管理したりするための費用と複雑さを回避できるようにします。Azure はデータと通信を暗号化するため、保存データの暗号化を有効にするオプションもあります。
 
 サービスの正常性を継続的に監視し、プライマリ データセンターでのサイトが機能停止した際に秩序立てて自動的にサービスを回復できるよう支援します。また、調整された形式で Virtual Machines を導入することで、複雑な多層のワークロードの場合でも、サービスの迅速な復元を可能にします。
 
-Site Recovery は、Hyper-V Replica、System Center、SQL Server AlwaysOn などの既存のテクノロジと連携動作します。
+Site Recovery は、Hyper-V Replica、System Center、SQL Server AlwaysOn などの既存のテクノロジと連携動作します。詳細については、「[Azure Site Recovery の概要](site-recovery/site-recovery-overview.md)」を参照してください。
 
 ### Azure Backup
 ![Azure Backup](./media/fundamentals-introduction-to-azure/AzureBackupIntroNew.png)
@@ -612,4 +612,4 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

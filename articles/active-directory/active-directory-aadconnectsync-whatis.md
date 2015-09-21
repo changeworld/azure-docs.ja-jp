@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/27/2015"
+	ms.date="09/08/2015"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -34,6 +34,7 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 - パスワード同期の詳細については、「[パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md)」をご覧ください。
 - Azure AD Connect Sync のユーザーと連絡先の詳細については、「[ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md)」をご覧ください。
 - 既定の構成を変更する場合は、「[既定の構成を変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)」をご覧ください。
+- 同期サーバーの操作方法の詳細については、「[操作タスクおよび考慮事項](active-directory-aadconnectsync-operations.md)」をご覧ください。
 - Azure AD に同期される属性の詳細については、「[Azure Active Directory に同期される属性](active-directory-aadconnectsync-attributes-synchronized.md)」をご覧ください。
 - 宣言型のプロビジョニングの詳細については、「[宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
 - 宣言型のプロビジョニング関数については、「[関数参照](active-directory-aadconnectsync-functions-reference.md)」をご覧ください。
@@ -48,4 +49,4 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 
 <!--Image references-->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

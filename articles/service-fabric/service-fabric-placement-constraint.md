@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="03/17/2015"
+   ms.date="09/03/2015"
    ms.author="abhic"/>
 
 # 配置の制約の概要
@@ -39,4 +39,4 @@ NodeProperty - ユーザーまたはシステムによって定義される、�
 詳細については、[アプリケーション シナリオ](../service-fabric-application-scenarios)に関するページを参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

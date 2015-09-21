@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/14/2015" 
+	ms.date="09/09/2015" 
 	ms.author="awills"/>
  
 # Java Web アプリでの依存関係、例外、および実行時間の監視
@@ -21,7 +21,11 @@
 
 [Java Web アプリを Application Insights でインストルメント化][java]した場合、Java エージェントを使用して、コードを変更することなく、詳細な分析を行うことができます。
 
-* **リモートの依存関係:** [JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/) ドライバー (MySQL、SQL Server、PostgreSQL、SQLite など) を通じてアプリケーションで行われた呼び出しに関するデータ。
+
+* **依存関係:** アプリケーションが他のコンポーネントに対して行った呼び出しについてのデータであり、次のものを含みます。
+ * **REST 呼び出し**: HttpClient、OkHttp、および RestTemplate (Spring) 経由で行われた呼び出しです。
+ * **Redis 呼び出し**: Jedis クライアント経由で行われた呼び出しです。呼び出しにかかる時間が 10 秒を超えた場合、エージェントは呼び出し引数も取得します。
+ * **[JDBC 呼び出し](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**: MySQL、SQL Server、PostgreSQL、SQLite、Oracle DB、または Apache Derby DB の "executeBatch" 呼び出しがサポートされます。MySQL と PostgreSQL で呼び出しにかかる時間が 10 秒を超えた場合、エージェントはクエリ プランをレポートします。 
 * **例外の検出:** コードで処理される例外に関するデータ。
 * **メソッドの実行時間:** 特定のメソッドの実行にかかる時間に関するデータ。
 
@@ -54,7 +58,14 @@ xml ファイルの内容を設定します。次の例を編集して、必要�
       <Instrumentation>
         
         <!-- Collect remote dependency data -->
-        <BuiltIn enabled="true"/>
+        <BuiltIn enabled="true">
+           <!-- Disable Redis or alter threshold call duration above which arguments will be sent.
+               Defaults: enabled, 10000 ms -->
+           <Jedis enabled="true" thresholdInMS="1000"/>
+           
+           <!-- Set SQL query duration above which query plan will be reported (MySQL, PostgreSQL). Default is 10000 ms. -->
+           <MaxStatementQueryLimitInMS>1000</MaxStatementQueryLimitInMS>
+        </BuiltIn>
 
         <!-- Collect data about caught exceptions 
              and method execution times -->
@@ -87,7 +98,9 @@ Application Insights リソースで、集計されたリモートの依存関�
 
 依存関係、例外、メソッドのレポートの個々のインスタンスを検索するには、[[検索]][diagnostic] を開きます。
 
-[依存関係の問題の診断の詳細](app-insights-dependencies.md#diagnosis)について参照してください。
+「[依存関係の問題の診断](app-insights-dependencies.md#diagnosis)」を参照してください。
+
+
 
 ## 疑問がある場合 問題が発生した場合
 
@@ -109,4 +122,4 @@ Application Insights リソースで、集計されたリモートの依存関�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

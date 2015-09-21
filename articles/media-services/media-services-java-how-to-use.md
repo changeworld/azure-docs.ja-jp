@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/27/2015" 
+	ms.date="09/07/2015" 
 	ms.author="robmcm"/>
 
 #方法: Java で Media Services を使用する
@@ -350,6 +350,16 @@
 
     mediaService.action(Job.cancel(jobId));
 
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
+
 ##その他のリソース
 
 メディア サービスに関する Javadoc ドキュメントについては、[Azure Libraries for Java のドキュメント][]を参照してください。
@@ -362,4 +372,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

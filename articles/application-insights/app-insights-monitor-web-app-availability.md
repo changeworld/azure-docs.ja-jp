@@ -2,7 +2,7 @@
 	pageTitle="Web サイトの可用性と応答性の監視 | Microsoft Azure"
 	description="Application Insights で Web テストを設定します。Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。"
 	services="application-insights"
-	documentationCenter=""
+    documentationCenter=""
 	authors="alancameronwills"
 	manager="douge"/>
 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/08/2015"
+	ms.date="09/08/2015"
 	ms.author="awills"/>
 
 # Web サイトの可用性と応答性の監視
@@ -218,7 +218,7 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 * *Web テストからコードを呼び出すことはできますか。*
 
-    いいえ。テストの手順は、.webtest ファイルに含まれている必要があります。
+    いいえ。テストの手順は、.webtest ファイルに含まれている必要があります。役に立つさまざまなプラグインがあります。
 
 ## <a name="video"></a>ビデオ
 
@@ -240,4 +240,4 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-get-started.md
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

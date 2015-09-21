@@ -14,13 +14,29 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/30/2015"
+	ms.date="09/09/2015"
 	ms.author="nitinme"/>
 
 
 # Azure HDInsight の Hadoop コンポーネントのリリース ノート
 
-## HDInsight の 2015 年 7 月 31 日リリース ##
+## HDInsight の 2015 年 9 月 9 日リリース
+
+今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+* HDInsight 2.1.10.675.1768697 (HDP 1.3.12.0-01795 - 変更なし)
+* HDInsight 3.0.6.675.1768697 (HDP 2.0.13.0-2117 - 変更なし)
+* HDInsight 3.1.4.675.1768697 (HDP 2.1.15.0-2334 - 変更なし)
+* HDInsight 3.2.6.675.1768697 (HDP 2.2.6.1-0012 - 変更なし)
+* SDK 1.5.8
+
+このリリースには、次の更新プログラムが含まれています。
+
+| タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
+|-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
+| すべての HDInsight クラスターの HDInsight のバージョンの更新 | このリリースでは、HDInsight のバージョンが更新されています | サービス | すべて| 該当なし |
+
+## HDInsight の 2015 年 7 月 31 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -37,7 +53,7 @@
 | Spark クラスター ノードの再イメージ化ワークフローの修正 | 再イメージ化後に Spark クラスター ノードが復元できないバグを修正しました | サービス | Spark| 該当なし |
 
 
-## HDInsight の 2015 年 7 月 31 日リリース ##
+## HDInsight の 2015 年 7 月 31 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -54,7 +70,7 @@
 | すべての HDInsight クラスターの HDInsight のバージョンの更新 | このリリースでは、HDInsight のバージョンが更新されています | サービス | すべて| 該当なし |
 
 
-## HDInsight の 2015 年 7 月 7 日リリース ##
+## HDInsight の 2015 年 7 月 7 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -72,7 +88,7 @@
 | HDInsight 3.2 クラスターの更新された HDP バージョン | このリリースでは、HDInsight 3.2 は HDP 2.2.6.1-0012 をデプロイします | サービス | すべて | 該当なし |
 
 
-## HDInsight の 2015 年 06 月 26 日リリース ノート ##
+## HDInsight の 2015 年 06 月 26 日リリース ノート
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -105,7 +121,7 @@
 
 </table>
 
-## HDInsight の 2015 年 06 月 18 日リリース ##
+## HDInsight の 2015 年 06 月 18 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -162,7 +178,7 @@
 
 </table>
 
-## HDInsight の 2015 年 06 月 4 日リリース ##
+## HDInsight の 2015 年 06 月 4 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -195,7 +211,7 @@
 
 </table>
 
-## HDInsight の 2015 年 06 月 1 日リリース ##
+## HDInsight の 2015 年 06 月 1 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -228,7 +244,7 @@
 
 </table>
 
-## HDInsight の 2015 年 5 月 27 日リリース ##
+## HDInsight の 2015 年 5 月 27 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -274,7 +290,7 @@
 
 </table>
 
-## HDInsight の 2015 年 5 月 20 日リリース ##
+## HDInsight の 2015 年 5 月 20 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -313,7 +329,7 @@
 </tr>
 </table>
 
-## HDInsight の 2015 年 4 月 27 日リリース ##
+## HDInsight の 2015 年 4 月 27 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -352,7 +368,7 @@
 </tr>
 </table>
 
-## HDInsight の 2015 年 4 月 14 日リリース ##
+## HDInsight の 2015 年 4 月 14 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -384,7 +400,7 @@
 </tr>
 </table>
 
-## HDInsight の 2015 年 4 月 6 日リリース ##
+## HDInsight の 2015 年 4 月 6 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -433,7 +449,7 @@
 </table>
 <br>
 
-## HDInsight の 2015 年 4 月 1 日リリース ##
+## HDInsight の 2015 年 4 月 1 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -538,7 +554,7 @@
 </table>
 <br>
 
-## HDInsight の 2015 年 3 月 3 日リリース ##
+## HDInsight の 2015 年 3 月 3 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -573,7 +589,7 @@
 </table>
 <br>
 
-## HDInsight の 2015 年 2 月 18 日リリース ##
+## HDInsight の 2015 年 2 月 18 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -662,7 +678,7 @@
 </table>
 <br>
 
-## HDInsight の 2015 年 2 月 6 日リリース ##
+## HDInsight の 2015 年 2 月 6 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -716,7 +732,7 @@
 </table>
 <br>
 
-## HDInsight の 2015 年 1 月 29 日リリース ##
+## HDInsight の 2015 年 1 月 29 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -751,7 +767,7 @@
 </table>
 <br>
 
-## HDInsight の 2015 年 1 月 5 日リリース ##
+## HDInsight の 2015 年 1 月 5 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -797,7 +813,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 </table>
 <br>
 
-## HDInsight の 2014 年 12 月 23 日リリース ##
+## HDInsight の 2014 年 12 月 23 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -830,7 +846,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 </table>
 <br>
 
-## HDInsight の 2014 年 12 月 18 日リリース ##
+## HDInsight の 2014 年 12 月 18 日リリース
 
 このリリースでは、コンポーネントに対して以下の更新を実施しています。
 
@@ -855,7 +871,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 </table>
 <br>
 
-## HDInsight の 2014 年 12 月 5 日リリース ##
+## HDInsight の 2014 年 12 月 5 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -911,7 +927,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 <br>
 
 
-## HDInsight の 2014 年 11 月 25 日リリース ##
+## HDInsight の 2014 年 11 月 25 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -957,7 +973,7 @@ Apache Mahout は、Apache Hadoop の機械学習ライブラリです。Mahout 
 </table>
 <br>
 
-## HDInsight の 2014 年 11 月 14 日リリース ##
+## HDInsight の 2014 年 11 月 14 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -1015,7 +1031,7 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 
 
-## HDInsight の 2014 年 11 月 7 日リリース ##
+## HDInsight の 2014 年 11 月 7 日リリース
 
 今回のリリースがデプロイされている HDInsight クラスターのバージョン番号は、以下のとおりです。
 
@@ -1062,12 +1078,12 @@ Web ログやセンサー データの分析など、基本的なシナリオを
 
 **注**: ポータルにバージョン番号の全体が表示されなかったバグと、SDK または Windows PowerShell によって返されるバージョン番号が全部でなかったバグについても、今回のリリースで修正しました。
 
-## 2014 年 10 月 15 日リリース ##
+## 2014 年 10 月 15 日リリース
 
 この修正プログラムのリリースでは、Templeton のヘビー ユーザーに影響を与えた Templeton のメモリ リークを修正しました。場合によっては、要求の実行に十分なメモリがないために、Templeton を何回も実行したユーザーに 500 エラー コードとしてエラーが表示されることがあります。Templeton サービスを再起動すると、この問題を回避できます。この問題は修正されています。
 
 
-## 2014 年 10 月 7 日リリース ##
+## 2014 年 10 月 7 日リリース
 
 * Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host\_name* フィールドがホスト名だけではなくノードの完全修飾ドメイン名 (FQDN) を返します。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワークに HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
@@ -1087,13 +1103,13 @@ Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスタ�
 
 
 
-## HDInsight 3.1 の 2014 年 9 月 12 日リリース##
+## HDInsight 3.1 の 2014 年 9 月 12 日リリース
 
 * このリリースは、Hortonworks Data Platform (HDP) 2.1.5 に基づくものです。このリリースで修正されたバグの一覧については、Hortonworks のサイトで「[Fixed in this Release (このリリースでの修正点)](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html)」ページをご覧ください。
 * Pig ライブラリ フォルダーで、ファイル "avro-mapred-1.7.4.jar" が "avro-mapred-1.7.4-hadoop2.jar" に変更されています。 これらのファイルの内容には、重要でない小さなバグ修正が含まれます。ファイルの名前が変更されたときにファイルが壊れるのを避けるため、JAR ファイルの名前と直接依存関係を持たないことをお勧めします。
 
 
-## 2014 年 8 月 21 日リリース ##
+## 2014 年 8 月 21 日リリース
 
 * 以下の WebHCat 構成 (HIVE-7155) を追加しました。この構成は Templeton コントローラーのジョブに対し、既定のメモリ上限を 1 GB に設定します (前の既定値は 512 MB)。
 
@@ -1111,14 +1127,14 @@ Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスタ�
 	* zookeeper2
 * HBase のバージョン サポート マトリックスが更新されました。運用環境の HBase ワークロードでサポートされるのは、HDInsight バージョン 3.1 (HBase バージョン 0.98) のみです。プレビューで利用可能だったバージョン 3.0 は、今後はサポートされなくなります。
 
-## 2014 年 8 月 15 日より前に作成されたクラスターに関する留意事項 ##
+## 2014 年 8 月 15 日より前に作成されたクラスターに関する留意事項
 
 Azure PowerShell または HDInsight SDK とクラスター間でのバージョンの相違のために、Azure PowerShell または HDInsight SDK のエラー メッセージ "Cluster <clustername> is not configured for HTTP services access" または操作によっては、"Cannot connect to cluster" が表示される場合があります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。Azure PowerShell または HDInsight SDK の以前のバージョンでは、この機能が正しく解釈されません。その結果、ジョブの送信の操作で失敗します。HDInsight SDK API または Azure PowerShell コマンドレットを使用して Use-AzureHDInsightCluster や Invoke-AzureHDInsightHiveJob などのジョブを送信する場合、これらの操作は上に示したエラー メッセージで失敗する可能性があります。
 
 これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。最新の HDInsight SDK へは [NuGet][nuget-link] からアクセスできます。[Microsoft Web Platform インストーラー][webpi-link]から Azure PowerShell ツールにアクセスできます。
 
 
-## 2014 年 7 月 28 日リリース ##
+## 2014 年 7 月 28 日リリース
 
 * **このリ―ジョン利用可能な HDInsight**: HDInsight の地理的なプレゼンスを以下の 3 つのリージョンに拡張しています。HDInsight の顧客は、これらのリージョンでクラスターを作成できます。
 	* 東アジア
@@ -1132,7 +1148,7 @@ Azure PowerShell または HDInsight SDK とクラスター間でのバージョ
 
 </table><br>
 
-## 2014 年 6 月 24 日リリース ##
+## 2014 年 6 月 24 日リリース
 
 このリリースには、以下のように、HDInsight サービスの拡張機能が含まれています。
 
@@ -1143,7 +1159,7 @@ Azure PowerShell または HDInsight SDK とクラスター間でのバージョ
 
 HBase を使用すると、大規模なデータセットを処理する対話的な Web サイトから、何百万ものエンド ポイントからのセンサーのデータやテレメトリ データを格納するサービスまで、さまざまなリアルタイムのワークロードを HDInsight で構築できます。次の手順としては Hadoop ジョブでこれらのワークロードのデータを分析しますが、これは Azure PowerShell や Hive クラスター ダッシュボードを使用した HDInsight で実現可能です。
 
-### Apache Mahout が HDInsight 3.1 にプレインストール ###
+### Apache Mahout が HDInsight 3.1 にプレインストール
 
  HDInsight 3.1 Hadoop クラスターに [Mahout](http://hortonworks.com/hadoop/mahout/) がプレインストールされています。そのため、他のクラスター構成を追加することなく、Mahout ジョブを実行できます。たとえば、リモート デスクトップ プロトコル (RDP) を使用して Hadoop クラスターにリモート接続したり、以下のように、追加の手順なしで Hello world Mahout コマンドを実行したりできます。
 
@@ -1154,7 +1170,7 @@ HBase を使用すると、大規模なデータセットを処理する対話�
 この手順の詳しい説明については、Apache Mahout Web サイトのドキュメント「[Breiman Example (Breiman の例)](https://mahout.apache.org/users/classification/breiman-example.html)」をご覧ください。
 
 
-### HDInsight 3.1 で Hive クエリに Tez を使用可能 ###
+### HDInsight 3.1 で Hive クエリに Tez を使用可能
 
 HDInsight 3.1 で Hive 0.13 が利用可能になり、Tez を使用してクエリを実行できます。これを活用してパフォーマンスを大幅に向上できます。既定では、Hive クエリでの Tez の使用は有効ではありません。これを使用するにはオプトインが必要です。以下のコード スニペットを実行すると Tez を有効にできます。
 
@@ -1289,11 +1305,11 @@ HDInsight 2.x (HDP1.x) と HDInsight 3.x (HDP2.x) との間で以下のバージ
 * 0\.8.0.RELEASE']
 
 
-###ドライバー
+### ドライバー
 SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight によって内部的に使用され、外部の操作では使用されません。Open Database Connectivity (ODBC) を使用して HDInsight に接続する場合は、Microsoft Hive ODBC ドライバーを使用してください。詳細については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続](../hdinsight-connect-excel-hive-odbc-driver.md)」をご覧ください。
 
 
-### バグの修正 ###
+### バグの修正
 
 このリリースでは、以下のバージョンの HDInsight でいくつかのバグが修正されました。
 
@@ -1302,7 +1318,7 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 * HDInsight 3.1 (HDP 2.1)
 
 
-## Hortonworks リリース ノート ##
+## Hortonworks リリース ノート
 
 各バージョンの HDInsight クラスターで使用される Hortonworks Data Platforms (HDP) のリリース ノートは、以下の場所から利用可能です。
 
@@ -1332,4 +1348,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015"  
+	ms.date="09/07/2015" 
 	ms.author="juliako"/>
 
 
@@ -56,11 +56,20 @@ Microsoft Azure Media Encryptor|PlayReady Protection を使用してメディア
 	    return processor;
 	}
 
-##次のステップ
-これで、プロセッサ インスタンスの取得方法を学習できました。次は、[資産をエンコードする方法][]に関するトピックに進み、Azure Media Encoder を使用して資産をエンコードする方法を学習します。
 
-[資産をエンコードする方法]: media-services-encode-asset.md
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
+##次のステップ
+これで、プロセッサ インスタンスの取得方法を学習できました。次は、[アセットをエンコードする方法][]に関するトピックに進み、Azure メディア エンコーダーを使用してアセットをエンコードする方法を学習します。
+
+[アセットをエンコードする方法]: media-services-encode-asset.md
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/library/jj129582.aspx
 [Media Services にプログラムから接続する方法]: ../media-services-set-up-computer/
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

@@ -1,10 +1,10 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager を使用したボリューム グループの作成と管理 | Microsoft Azure"
+   pageTitle="StorSimple Snapshot Manager のボリューム グループ | Microsoft Azure"
    description="StorSimple Snapshot Manager MMC スナップインを使用して、ボリューム グループを作成および管理する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="adinah"
+   manager="carolz"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/09/2015"
+   ms.date="09/04/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したボリューム グループの作成と管理
@@ -142,4 +142,4 @@
 
 [StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理](storsimple-snapshot-manager-manage-backup-policies.md)。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

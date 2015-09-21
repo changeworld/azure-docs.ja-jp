@@ -1,19 +1,19 @@
 <properties
    pageTitle="StorSimple ボリュームの管理 | Microsoft Azure"
-	description="StorSimple ボリュームを追加、変更、監視、削除する方法と、必要に応じて StorSimple ボリュームをオフラインにする方法について説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple ボリュームを追加、変更、監視、削除する方法と、必要に応じて StorSimple ボリュームをオフラインにする方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="SharS"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/27/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/09/2015"
+   ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用してボリュームを管理する
 
@@ -88,8 +88,7 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 ボリュームを拡張する必要がある場合やボリュームにアクセスするホストを変更する必要がある場合は、ボリュームを変更します。
 
-> [AZURE.IMPORTANT]デバイス上のボリューム サイズを変更した場合、ホスト上のボリュームのサイズも変更する必要があります。ホスト上のボリュームを変更する手順については、ホスト オペレーティング システムの説明を参照してください。
-
+> [AZURE.IMPORTANT]デバイス上のボリューム サイズを変更した場合、ホスト上のボリュームのサイズも変更する必要があります。ここで説明されているホスト側の手順は、Windows Server 2012 (2012R2) 向けです。Linux などの他のホスト オぺレーティング システムでは、手続きが異なります。別のオペレーティング システムで稼働しているホスト上のボリュームを変更する場合は、お使いのホスト オペレーティング システムの指示を参照してください。
 
 ### ボリュームを変更するには
 
@@ -113,7 +112,14 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
  
     > [AZURE.NOTE]ボリュームの**既定のバックアップを有効にする**オプションは変更できません。
 
-6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png) をクリックして変更を保存します。
+6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png) をクリックして変更を保存します。ボリュームを更新中であることを示すメッセージがポータルに表示されます。ボリュームが正常に更新されると、成功メッセージが表示されます。
+
+7. ボリュームを拡張する場合は、Windows ホスト コンピューターで次の手順を実行します。
+
+   1. **[コンピューターの管理]**、**[ディスクの管理]** の順に移動します。
+   2. **[ディスクの管理]** を右クリックし、**[ディスクの再スキャン]** を選択します。
+   3. ディスクの一覧で、更新したボリュームを選択して右クリックし、**[ボリュームの拡張]** を選択します。ボリューム拡張ウィザードが起動します。**[次へ]** をクリックします。
+   4. 既定の値を使用してウィザードを完了します。ウィザードが終了すると、サイズが増えたボリュームが表示されます。
 
 ## ボリュームをオフラインにする
 
@@ -176,9 +182,11 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 ## 次のステップ
 
+[StorSimple ボリュームを拡張する](http://azure.microsoft.com/documentation/videos/expand-a-storsimple-volume)方法を示すビデオを視聴します。
+
 [StorSimple ボリュームを複製する](storsimple-clone-volume.md)方法について説明します。
 
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

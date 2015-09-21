@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure AD Connect のカスタム インストール"
-	description="このドキュメントでは、Azure AD Connect のカスタム インストール オプションについて説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="billmath"
-	manager="stevenpo"
+	pageTitle="Azure AD Connect のカスタム インストール" 
+	description="このドキュメントでは、Azure AD Connect のカスタム インストール オプションについて説明します。" 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="billmath" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.service="active-directory"  
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/24/2015" 
 	ms.author="billmath"/>
 
 # Azure AD Connect のカスタム インストール
@@ -184,17 +184,6 @@ PowerShell コマンドレットを実行する前に、まずインポートす
 
 ステージング モード中は、同期エンジンに必要な変更を加え、エクスポートされる内容を確認することができます。構成が適切な状態になったら、インストール ウィザードをもう一度実行し、ステージング モードを無効にします。ステージング モードを無効にすると、データを Azure AD にエクスポートできるようになります。1 つのサーバーのみをアクティブにしてエクスポートするために、このとき他のサーバーは無効にしてください。
 
-### 誤って削除されないように保護する
-Azure AD Connect のインストール中は、誤った削除操作を防止する機能が既定で有効になり、500 個を超える削除を行うエクスポートを許可しないように構成されます。この 500 という値は既定値で、変更できます。この機能が有効なときに、削除の数が多すぎる場合は、エクスポートは続行されず、次のような電子メールが送信されます。
-
-![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/email.png)
-
-
-このメールの受信を予想していなかった場合は、調査し、修正のアクションを実行します。
-
-この保護を一時的に無効にし、これらの削除を行うには、Disable-ADSyncExportDeletionThreshold を実行します。
-
-再度保護を有効にする場合、または既定のしきい値の設定を変更するには、Enable-ADSyncExportDeletionThreshold を実行します。
 
 
 ## AD FS とのフェデレーションの構成
@@ -279,4 +268,4 @@ AD FS ログイン ページのイラストとロゴのイメージをカスタ�
 	
 	Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.png"} –Illustration @{path=”c:\Contoso\illustration.png”}
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

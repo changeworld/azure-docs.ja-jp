@@ -38,7 +38,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
     ```
 
-3. 新しいコマンド プロンプトを開いて ARMClient をインストールし、次のコマンドを実行します。
+2. 次のコマンドを実行して ARMClient エージェントをインストールします。
 
     ```
     choco install armclient
@@ -66,7 +66,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 2. Operations Management Suite のワークスペースを取得します。次に例を示します。
 
     ```
-    armclient get /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces?api-version=2014-10-10
+    armclient get /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces?api-version=2015-03-20
     ```
 
     取得の呼び出しが成功すると、サブスクリプションに関連付けられているすべてのワークスペースが出力されます。次に例を示します。
@@ -90,12 +90,12 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 3. 検索変数を作成します。次に例を示します。
 
     ```
-    $mySearch = "{ 'top':150, 'query':'Error'}”;
+    $mySearch = "{ 'top':150, 'query':'Error'}";
     ```
 4. 新しい検索変数を使用して検索します。次に例を示します。
 
     ```
-    armclient post /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{WORKSPACE NAME}/search?api-version=2014-10-10 $mySearch
+    armclient post /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{WORKSPACE NAME}/search?api-version=2015-03-20 $mySearch
     ```
 
 ## 検索 API リファレンスの例
@@ -106,7 +106,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 **サンプル URL:**
 
 ```
-	/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/search?api-version=2014-10-10
+	/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/search?api-version=2015-03-20
 ```
 
 **要求:**
@@ -123,7 +123,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 	  "start":"2015-02-04T21:03:29.231Z",
 	  "end":"2015-02-11T21:03:29.231Z"
 	}
-	armclient post /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/search?api-version=2014-10-10 $searchParametersJson
+	armclient post /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/search?api-version=2015-03-20 $searchParametersJson
 ```
 次のテーブルは、使用可能なプロパティについて説明しています。
 
@@ -194,17 +194,17 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 **保存された検索の内容を要求:**
 
 ```
-	armclient post /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/search/{SearchId}?api-version=2014-10-10
+	armclient post /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/search/{SearchId}?api-version=2015-03-20
 ```
 
->[AZURE.NOTE]検索によって「Pending」状態が返される場合、この API を使用して更新後の結果をポーリングできます。検索の結果は 6 分後にキャッシュから削除され、Http Gone が返されます。最初の検索要求によって「Successful」状態がすぐに返された場合、結果はキャッシュに追加されず、クエリを実行してもこの API で Http Gone は返されません。Http 200 の結果の内容は最初の検索要求と同じ形式で、値のみが更新されます。
+>[AZURE.NOTE] 検索によって「Pending」状態が返される場合、この API を使用して更新後の結果をポーリングできます。検索の結果は 6 分後にキャッシュから削除され、Http Gone が返されます。最初の検索要求によって「Successful」状態がすぐに返された場合、結果はキャッシュに追加されず、クエリを実行してもこの API で Http Gone は返されません。Http 200 の結果の内容は最初の検索要求と同じ形式で、値のみが更新されます。
 
 ### 保存された検索 - REST のみ
 
 **保存された検索の一覧を要求:**
 
 ```
-	armclient get /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/savedSearches?api-version=2014-10-10
+	armclient get /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/savedSearches?api-version=2015-03-20
 ```
 
 サポートされるメソッド: GET PUT DELETE
@@ -228,7 +228,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 **要求:**
 
 ```
-	armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisIsMyId?api-version=2014-10-10
+	armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisIsMyId?api-version=2015-03-20
 ```
 
 ### 保存された検索の更新
@@ -236,8 +236,8 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
  **要求:**
 
 ```
-	$savedSearchParametersJson = "{'etag': 'W/`"datetime'2015-04-16T23%3A35%3A35.3182423Z'`"', 'properties': { 'Category': 'myCategory', 'DisplayName':'myDisplayName', 'Query':'* | measure Count() by Source', 'Version':'1'  }"
-	armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisIsMyId?api-version=2014-10-10 $savedSearchParametersJson
+	$savedSearchParametersJson = "{'etag': 'W/`"datetime\'2015-04-16T23%3A35%3A35.3182423Z\'`"', 'properties': { 'Category': 'myCategory', 'DisplayName':'myDisplayName', 'Query':'* | measure Count() by Source', 'Version':'1'  }"
+	armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/savedSearches/thisIsMyId?api-version=2015-03-20 $savedSearchParametersJson
 ```
 
 ### メタデータ - JSON のみ
@@ -247,7 +247,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 **フィールドの要求:**
 
 ```
-	armclient get /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/schema?api-version=2014-10-10
+	armclient get /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/schema?api-version=2015-03-20
 ```
 
 **応答:**
@@ -300,7 +300,8 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 
 “highlight” パラメーターを使用して、マーカーのセットを応答に含めるよう検索サブシステムに要求できます。
 
-これらのマーカーは、検索クエリで指定した語句に一致して強調表示されるテキストの開始と終了を示します。強調表示される語句を囲むために検索で使用される開始マーカーと終了マーカーを指定できます。
+これらのマーカーは、検索クエリで指定した語句に一致して強調表示されるテキストの開始と終了を示します。
+強調表示される語句を囲むために検索で使用される開始マーカーと終了マーカーを指定できます。
 
 **検索クエリの例**
 
@@ -316,7 +317,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 	  "start":"2015-02-04T21:03:29.231Z",
 	  "end":"2015-02-11T21:03:29.231Z"
 	}
-	armclient post /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/search?api-version=2014-10-10 $searchParametersJson
+	armclient post /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace ID}/search?api-version=2015-03-20 $searchParametersJson
 ```
 
 **サンプル結果:**
@@ -345,4 +346,4 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 
 上記の結果にはプレフィックスおよび追加されたエラー メッセージが含まれています。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

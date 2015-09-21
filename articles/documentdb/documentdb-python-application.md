@@ -1,20 +1,20 @@
 <properties
     pageTitle="DocumentDB を使用した Python Flask Web アプリケーションの構築 | Microsoft Azure"
-	description="DocumentDB を使用してデータを格納し、Azure にホストされた Python および Flask (MVC) Web アプリケーションからそのデータにアクセスする方法について説明します。"
-	services="documentdb"
-	documentationCenter="python"
-	authors="ryancrawcour"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    description="DocumentDB を使用してデータを格納し、Azure にホストされた Python および Flask (MVC) Web アプリケーションからそのデータにアクセスする方法について説明します。"
+    services="documentdb"
+    documentationCenter="python"
+    authors="ryancrawcour"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
     ms.service="documentdb"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="python"
-	ms.topic="hero-article"
-	ms.date="09/03/2015"
-	ms.author="ryancraw"/>
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="python"
+    ms.topic="hero-article"
+    ms.date="09/03/2015"
+    ms.author="ryancraw"/>
 
 # DocumentDB を使用した Python Flask (MVC) Web アプリケーションの構築
 
@@ -338,7 +338,7 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
 
 ご利用ありがとうございます。 ここでは初めての方を対象に、Azure DocumentDB を使用して Python アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
 
-このチュートリアルはお役に立てましたか。トピックの最初または最後にある投票ボタンをクリックして、内容が役に立ったかどうかをお知らせください。トピックは常に更新されます。内容をより良くするためにお客様からのフィードバックをお待ちしています。フォローアップのためにマイクロソフトからご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
+マイクロソフトでは、このトピックをお客様からのフィードバックに基づいて頻繁に更新、改善しています。チュートリアルを終了したら、このページの上部と下部にある投票ボタンを使用し、希望される改善内容についてのフィードバックをお寄せください。マイクロソフトから直接ご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
 
 アプリケーションに機能を追加する場合は、[DocumentDB Python SDK](https://pypi.python.org/pypi/pydocumentdb) から入手できる API を参考にしてください。
 
@@ -351,4 +351,4 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

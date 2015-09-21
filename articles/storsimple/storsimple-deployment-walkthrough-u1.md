@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイス (Update 1) のデプロイ | Microsoft Azure"
-	description="StorSimple Update 1 のデバイスとサービスをデプロイするための手順とベスト プラクティスを説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple Update 1 のデバイスとサービスをデプロイするための手順とベスト プラクティスを説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="09/02/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/08/2015"
+   ms.author="alkohli" />
 
 # オンプレミスの StorSimple デバイス (Update 1) のデプロイ
 
@@ -202,7 +202,7 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 
 > - Windows Server ホストでの MPIO と iSCSI のインストールと構成の手順については、「[StorSimple デバイスの MPIO の構成](storsimple-configure-mpio-windows-server.md)」をご覧ください。このページには、StorSimple ボリュームのマウント、初期化、フォーマットを実行する手順も記載されています。
 
-> - Linux ホストでの MPIO と iSCSI のインストールと構成の手順については、「[StorSimple Linux ホストの MPIO の構成](storsimple-configure-mpio-linux.md)」をご覧ください。
+> - Linux ホストでの MPIO と iSCSI のインストールと構成の手順については、「[StorSimple Linux ホストの MPIO の構成](storsimple-configure-mpio-on-linux.md)」をご覧ください。
 
 MPIO を構成しない場合は、次の手順に従い、Windows Server ホストに StorSimple ボリュームをマウント、初期化、フォーマットします。
 
@@ -241,7 +241,7 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 デバイスの更新には、数時間かかることがあります。次の手順に従い、更新プログラムをスキャンしてデバイスに適用します。
 <!-- > can take 1-4 hours-->
 
-<!-- > [AZURE.NOTE] ゲートウェイを DATA 0 以外のネットワーク インターフェイスで構成している場合は、更新プログラムをインストールする前に、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にする必要があります。 **[デバイス]、[構成]** の順に移動し、DATA 2 と DATA 3 のインターフェイスを無効にします。デバイスの更新後に、これらのインターフェイスをもう一度有効にする必要があります。-->
+<!-- > [AZURE.NOTE] If you have a gateway configured on a network interface other than Data 0, you will need to disable Data 2 and Data 3 network interfaces before installing the update. Go to **Devices > Configure** and disable Data 2 and Data 3 interfaces. You should re-enable these interfaces after the device is updated.-->
 
 #### デバイスを更新するには
 
@@ -255,7 +255,7 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 4.	デバイスが正常に更新された後、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にしていた場合は有効にします。
 
-<!-- 更新プログラムをインストールする前に、DATA 2 および DATA 3 を無効にするように要求されることがあります。-->
+<!-- In step 2, you may be requested to disable Data 2 and Data 3 prior to installing the updates. You must disable these network interfaces or the updates may fail.-->
 
 ## Windows Server ホストの IQN を取得する
 
@@ -273,7 +273,7 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 マルチパス I/O (MPIO) はオプションの機能であり、Windows サーバーに既定ではインストールされていません。サーバー マネージャーを使用して、機能としてインストールする必要があります。MPIO のインストール手順については、[StorSimple デバイスの MPIO の構成](storsimple-configure-mpio-windows-server.md)に関するページを参照してください。
 
-Linux ホストに接続されている StorSimple デバイスの MPIO のインストール手順については、「[Linux ホストの MPIO の構成](storsimple-configure-mpio-linux.md)」をご覧ください。
+Linux ホストに接続されている StorSimple デバイスの MPIO のインストール手順については、「[Linux ホストの MPIO の構成](storsimple-configure-mpio-on-linux.md)」をご覧ください。
 
 
 > [AZURE.NOTE]StorSimple 仮想デバイスでは、MPIO がサポートされていません。
@@ -287,4 +287,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 [StorSimple Manager サービス](storsimple-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
  
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

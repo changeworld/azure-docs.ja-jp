@@ -2,7 +2,7 @@
 	pageTitle="Application Insights SDK を追加して ASP.NET アプリを監視する | Microsoft Azure"
 	description="内部設置型または Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。"
 	services="application-insights"
-	documentationCenter=".net"
+    documentationCenter=".net"
 	authors="alancameronwills"
 	manager="douge"/>
 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/05/2015"
+	ms.date="09/09/2015"
 	ms.author="awills"/>
 
 
@@ -108,11 +108,6 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 任意のグラフをクリックして、より詳細なメトリックを表示します。[メトリックの詳細についてはこちらをご覧ください。][perf]
 
-ここで、アプリケーションをデプロイし、データ累積を確認します。
-
-
-デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。アプリケーションをデプロイすると、データ累積速度は遅くなります。
-
 #### データが表示されない場合
 
 * [[検索]][diagnostic] タイルを開き、個々のイベントを表示します。
@@ -120,17 +115,26 @@ Visual Studio で、送信されたイベント数が表示されます。
 * 数秒待機してから **[最新の情報に更新]** をクリックします。グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
 * [トラブルシューティング][qna]に関するページを参照します。
 
+## アプリケーションの発行
+
+ここで、アプリケーションを IIS または Azure にデプロイし、データ累積を確認します。
+
+デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。アプリケーションをデプロイすると、データ累積速度は遅くなります。
+
+
 #### ビルド サーバーで問題が発生した場合
 
 [このトラブルシューティング項目](app-insights-troubleshoot-faq.md#NuGetBuild)を参照してください。
 
-## 5\.依存関係の追跡を追加する
+## 5\.依存関係の追跡およびパフォーマンス カウンターの追加
 
 SDK によるデータへのアクセスでは、若干のサポートが必要です。具体的には、アプリからデータベース、REST API、またその他の外部コンポーネントへの呼び出しを自動的に測定するには、次の追加のステップが必要です。依存関係のメトリックは、パフォーマンスに関する問題の診断に非常に役立つ場合があります。
 
+以下の手順では、CPU、メモリ、ネットワーク占有率などの[パフォーマンス カウンターのレポート](app-insights-web-monitor-performance.md#system-performance-counters)も有効化します。
+
 #### アプリが IIS サーバーで実行される場合
 
-管理者権限でサーバーにサインインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします。
+管理者権限でサーバーにサインインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします
 
 (Status Monitor は、SDK で構築されていない[既に実行中のアプリをインストルメント化](app-insights-monitor-performance-live-website-now.md)するためにも使用できます。)
 
@@ -138,9 +142,13 @@ SDK によるデータへのアクセスでは、若干のサポートが必要�
 
 Azure の Web アプリのコントロール パネルで、Application Insights 拡張機能を追加します。
 
-![Web アプリ、ツール、パフォーマンスの監視、追加、Application Insights で](./media/app-insights-start-monitoring-app-health-usage/05-extend.png)
+![Web アプリで、[設定]、[拡張機能]、[追加]、[Application Insights] の順に選択する](./media/app-insights-start-monitoring-app-health-usage/05-extend.png)
 
-(この拡張機能は、SDK で構築されたアプリのみをサポートします。Status Monitor とは異なり、既存のアプリはインストルメント化できません。)
+(この拡張機能は、SDK で構築され Azure に発行されたアプリのみをサポートします。Status Monitor とは異なり、既存のアプリはインストルメント化できません。)
+
+#### Azure Cloud Services プロジェクトの場合
+
+[スクリプトを Web ロールとworker ロールに追加します。](app-insights-cloudservices.md)
 
 ## 6\.クライアント側の監視を追加します。
 
@@ -152,7 +160,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 アプリが Web ページに表示される場合は、JavaScript のスニペットをすべてのページに追加します。コードは次に示す Application Insights のリソースから取得できます。
 
-![In your web app, open Quick Start and click 'Get code to monitor my web pages'](./media/app-insights-start-monitoring-app-health-usage/02-monitor-web-page.png)
+![Web アプリでクイック スタートを開き、[Web ページを監視するコードを取得する] をクリックする](./media/app-insights-start-monitoring-app-health-usage/02-monitor-web-page.png)
 
 コードにはアプリケーション リソースを識別するインストルメンテーション キーが含まれています。
 
@@ -240,4 +248,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-get-started.md
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

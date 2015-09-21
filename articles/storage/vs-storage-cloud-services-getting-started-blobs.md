@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 | Microsoft Azure"
-	description="Visual Studio のクラウド サービス プロジェクトで Azure BLOB ストレージの使用を開始する方法"
+	pageTitle="BLOB ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス) | Microsoft Azure"
+	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio のクラウド サービス プロジェクトで Azure BLOB ストレージの使用を開始する方法について説明します。"
 	services="storage"
 	documentationCenter=""
 	authors="patshea123"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.date="09/03/2015"
 	ms.author="patshea123"/>
 
-# Azure BLOB ストレージと Visual Studio 接続済みサービスの概要
+# Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス プロジェクト)
 
 > [AZURE.SELECTOR]
 > - [Getting started](vs-storage-cloud-services-getting-started-blobs.md)
@@ -52,17 +52,17 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
 
-2. ストレージ アカウント情報を表す `CloudStorageAccount` オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
+2. ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
 
         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("<storage account name>_AzureStorageConnectionString"));
 
-3. ストレージ アカウント内の既存のコンテナーを参照する `CloudBlobClient` オブジェクトを取得します。
+3. ストレージ アカウント内の既存のコンテナーを参照する **CloudBlobClient** オブジェクトを取得します。
 
 		// Create a blob client.
 		CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-4. 特定の BLOB コンテナーを参照する `CloudBlobContainer` オブジェクトを取得します。
+4. 特定の BLOB コンテナーを参照する **CloudBlobContainer** オブジェクトを取得します。
 
         // Get a reference to a container named “mycontainer.”
         CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
@@ -73,7 +73,7 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
 
 > [AZURE.NOTE]ASP.NET で Azure Storage への呼び出しを実行する API の一部は非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次の例のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
-ストレージ アカウントでコンテナーを作成するには、次のコードのように、`CreateIfNotExistsAsync` へ呼び出しを追加するだけです。
+ストレージ アカウント内にコンテナーを作成するために必要な作業は、次のコードのように、**CreateIfNotExistsAsync** へ呼び出しを追加することだけです。
 
 	// Get a reference to a CloudBlobContainer with the variable name 'container'
     // as described in the "Access blob containers in code" section.
@@ -96,7 +96,7 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
 
 Azure Storage では、ブロック BLOB とページ BLOB がサポートされています。ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
-ファイルをブロック blob にアップロードするには、コンテナーの参照を取得し、それを使用してブロック blob の参照を取得します。BLOB の参照を取得したら、`UploadFromStream` メソッドを呼び出すことによって、データの任意のストリームを BLOB にアップロードできます。この操作により、BLOB がまだ存在しない場合は作成され、存在する場合は上書きされます。次の例は、BLOB をコンテナーにアップロードする方法を示しています。この例では、既にコンテナーが作成されていることを前提としています。
+ファイルをブロック blob にアップロードするには、コンテナーの参照を取得し、それを使用してブロック blob の参照を取得します。BLOB の参照を取得したら、**UploadFromStream** メソッドを呼び出すことによって、データの任意のストリームを BLOB にアップロードできます。この操作により、BLOB がまだ存在しない場合は作成され、存在する場合は上書きされます。次の例は、BLOB をコンテナーにアップロードする方法を示しています。この例では、既にコンテナーが作成されていることを前提としています。
 
 	// Get a reference to a CloudBlobContainer with the variable name 'container' as described in
     // the "Access blob containers in code" section.
@@ -112,7 +112,7 @@ Azure Storage では、ブロック BLOB とページ BLOB がサポートされ
 
 ## コンテナー内の BLOB を一覧表示する
 
-コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、コンテナーの `ListBlobs` メソッドを使用して、その中の BLOB やディレクトリを取得します。返された `IListBlobItem` の豊富なプロパティとメソッドのセットにアクセスするには、`CloudBlockBlob`、`CloudPageBlob`、または `CloudBlobDirectory` オブジェクトにキャストする必要があります。型がわからない場合は、型チェックを使うとどれにキャストすればよいかがわかります。次のコードは、`photos` コンテナー内の各アイテムの URI を取得して出力する方法を示しています。
+コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、コンテナーの **ListBlobs** メソッドを使用して、その中の BLOB やディレクトリを取得できます。返される **IListBlobItem** のプロパティやメソッドにアクセスするには、**CloudBlockBlob**、**CloudPageBlob**、**CloudBlobDirectory** のいずれかのオブジェクトにキャストする必要があります。型がわからない場合は、型チェックを使うとどれにキャストすればよいかがわかります。次のコードは、**photos** コンテナー内の各アイテムの URI を取得して出力する方法を示しています。
 
 	// Get a reference to a CloudBlobContainer with the variable name 'container' as described in
     // the "Access blob containers in code" section.
@@ -141,7 +141,7 @@ Azure Storage では、ブロック BLOB とページ BLOB がサポートされ
 		}
 	}
 
-前のコード例からわかるように、BLOB サービスにはコンテナー内のディレクトリの概念も含まれています。これは、BLOB をよりフォルダーに近い構造で整理できるようにするためです。たとえば、`photos` という名前のコンテナーに次の一連のブロック BLOB があったとします。
+前のコード例からわかるように、BLOB サービスにはコンテナー内のディレクトリの概念も含まれています。これは、BLOB をよりフォルダーに近い構造で整理できるようにするためです。たとえば、**photos** というコンテナーに次のブロック BLOB があるとします。
 
 	photo1.jpg
 	2010/architecture/description.txt
@@ -152,14 +152,14 @@ Azure Storage では、ブロック BLOB とページ BLOB がサポートされ
 	2011/architecture/description.txt
 	2011/photo7.jpg
 
-コンテナーの `ListBlobs` を呼び出すと (前の例を参照)、返されるコレクションには最上位レベルにあるディレクトリと BLOB を表す `CloudBlobDirectory` オブジェクトと `CloudBlockBlob` オブジェクトが含まれています。結果の出力は次のようになります。
+コンテナーの **ListBlobs** を呼び出すと (前の例を参照)、返されるコレクションには最上位レベルにあるディレクトリと BLOB を表す **CloudBlobDirectory** オブジェクトと **CloudBlockBlob** オブジェクトが含まれます。結果の出力は次のようになります。
 
 	Directory: https://<accountname>.blob.core.windows.net/photos/2010/
 	Directory: https://<accountname>.blob.core.windows.net/photos/2011/
 	Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
 
-必要に応じて、`ListBlobs` メソッドの`UseFlatBlobListing` パラメーターを `true` に設定することもできます。これにより、ディレクトリに関係なく、すべての BLOB が `CloudBlockBlob` として返されるようになります。次に、`ListBlobs` の呼び出しを示します。
+必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に設定することもできます。これで、ディレクトリに関係なく、すべての BLOB が **￼CloudBlockBlob￼￼** として返されるようになります。次に、**ListBlobs** の呼び出しを示します。
 
     // Loop over items within the container and output the length and URI.
 	foreach (IListBlobItem item in container.ListBlobs(null, true))
@@ -182,7 +182,7 @@ Azure Storage では、ブロック BLOB とページ BLOB がサポートされ
 
 ## BLOB をダウンロードする
 
-BLOB をダウンロードするには、まず BLOB の参照を取得し、次に `DownloadToStream` メソッドを呼び出します。次の例では、`DownloadToStream` メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
+BLOB をダウンロードするには、まず BLOB の参照を取得し、次に **DownloadToStream** メソッドを呼び出します。次の例は、**DownloadToStream** メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
 
 	// Get a reference to a CloudBlobContainer with the variable name 'container' as described in
     // the "Access blob containers in code" section.
@@ -196,7 +196,7 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
         blockBlob.DownloadToStream(fileStream);
     }
 
-`DownloadToStream` メソッドを使用して BLOB の内容をテキスト文字列としてダウンロードすることもできます。
+**DownloadToStream** メソッドを使用して BLOB の内容をテキスト文字列としてダウンロードすることもできます。
 
 	// Get a reference to a CloudBlobContainer with the variable name 'container' as described in
     // the "Access blob containers in code" section.
@@ -213,7 +213,7 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
 
 ## BLOB を削除する
 
-BLOB を削除するには、まず BLOB の参照を取得し、次に `Delete` メソッドを呼び出します。
+BLOB を削除するには、まず、BLOB の参照を取得し、次に **Delete** メソッドを呼び出します。
 
 	// Get a reference to a CloudBlobContainer with the variable name 'container' as described in
     // the "Access blob containers in code" section.
@@ -229,9 +229,9 @@ BLOB を削除するには、まず BLOB の参照を取得し、次に `Delete`
 
 多数の BLOB を一覧表示する場合や、1 回の一覧表示操作で返される結果の数を制御する場合には、BLOB の一覧を結果のページで表示できます。この例は、大きな結果のセットを返すために待機している間に実行がブロックされないように、結果をページで非同期に返す方法を示しています。
 
-この例では、BLOB をフラットな一覧で表示しますが、`ListBlobsSegmentedAsync` メソッドの `useFlatBlobListing` パラメーターを `false` に設定することによって、階層化された一覧で表示することもできます。
+この例では、BLOB をフラットな一覧で表示しますが、**ListBlobsSegmentedAsync** メソッドの **useFlatBlobListing** パラメーターを **false** に設定することで、階層化された一覧で表示することもできます。
 
-サンプル メソッドは非同期メソッドを呼び出すため、その先頭を `async` キーワードにする必要があり、`Task` オブジェクトを返す必要があります。`ListBlobsSegmentedAsync` メソッドに指定された await キーワードは、一覧表示タスクが完了するまで、サンプル メソッドの実行を中断します。
+サンプル メソッドは非同期メソッドを呼び出すため、先頭に **async** キーワードを付ける必要があり、また、**Task** オブジェクトを返す必要があります。**ListBlobsSegmentedAsync** メソッドに対して指定された await キーワードは、一覧表示タスクが完了するまで、サンプル メソッドの実行を中断します。
 
     async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
     {
@@ -266,4 +266,4 @@ BLOB を削除するには、まず BLOB の参照を取得し、次に `Delete`
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

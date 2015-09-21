@@ -13,15 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/26/2015"
+   ms.date="09/09/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse での動的 SQL
-SQL Data Warehouse のアプリケーション コードを開発する際に、柔軟性、ジェネリック、モジュール型のソリューションを提供するための動的 SQL を使用しなければならない場合があります。しかし、SQL Data Warehouse は、この時点で blob データ型をサポートしていません。これにより、blob 型には varchar (max) と nvarchar (max) の両方の型が含まれるので、文字列のサイズが制限される場合があります。実行する必要がある動的 SQL コードに大量の文字列を構築する際に、使用しているアプリケーション コードにこれらの型を使用していることがあります。
+SQL Data Warehouse のアプリケーション コードを開発する際に、柔軟性が高く汎用的なモジュール ソリューションを提供するための動的 SQL を使用する必要のある場合があります。現時点では、SQL Data Warehouse は BLOB データ型をサポートしていません。これにより、blob 型には varchar (max) と nvarchar (max) の両方の型が含まれるので、文字列のサイズが制限される場合があります。大量の文字列を構築するときにアプリケーション コードでこれらの型を使用した場合、コードをチャンクに分割し、代わりに EXEC ステートメントを使用する必要があります。
 
-このような状況では、代わりにコードをチャンクに分割して、EXEC ステートメントを使用する必要があります。
-
-簡単な例は、以下のとおりです。
+単純な例を次に示します。
 
 ```
 DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
@@ -31,7 +29,7 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-文字列がそれほど長くない場合は、通常どおり [sp\_executesql][] を使用することができます。
+文字列が短い場合は、通常どおり [sp\_executesql][] を使用することができます。
 
 
 ## 次のステップ
@@ -43,8 +41,8 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[sp\_executesql]: https://msdn.microsoft.com/ja-jp/library/ms188001.aspx
+[sp\_executesql]: https://msdn.microsoft.com/ja-JP/library/ms188001.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

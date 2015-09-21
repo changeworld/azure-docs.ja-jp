@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/14/2015"
+	ms.date="09/08/2015"
 	ms.author="mandia"/>
 
 
@@ -103,4 +103,4 @@ Port | 必要である理由
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

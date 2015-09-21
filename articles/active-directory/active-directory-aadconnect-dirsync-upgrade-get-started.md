@@ -1,20 +1,20 @@
-<properties 
+<properties
    pageTitle="Microsoft Azure AD Connect - Windows Azure AD 同期ツール (DirSync) からのアップグレード"
-	description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Windows Azure AD 同期 ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="shoatman"
-	manager="terrylanfear"
-	editor="billmath"/>
+   description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Windows Azure AD 同期 ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。"
+   services="active-directory"
+   documentationCenter=""
+   authors="shoatman"
+   manager="terrylanfear"
+   editor="billmath"/>
 
-<tags 
+<tags
    ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/26/2015"
-	ms.author="shoatman"/>
+   ms.workload="identity"
+   ms.tgt_pltfrm="na"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.date="09/02/2015" 
+   ms.author="shoatman"/>
 
 # Azure Active Directory Connect に Windows Azure Active Directory 同期 (DirSync) をアップグレードします。
 
@@ -143,7 +143,7 @@ Azure AD Connects と、次の UI が表示されます。
 
 ![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/advancedsettings.png)
 
-7. [次へ] をクリックします。 
+7. [次へ] をクリックします。
 8. [構成の準備完了] ページで [構成が完了したらすぐに同期プロセスを開始する] チェック ボックスをオンのままにします。[AZURE.NOTE]Windows Server Active Directory と Azure Active Directory の間で同期が開始されますが、変更は Azure AD にエクスポートされません。一度にアクティブにし変更をエクスポートできる同期ツールは 1 つだけです。
 9. [インストール] をクリックします。
 
@@ -204,6 +204,5 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 * [Azure AD Connect の次のトピック](active-directory-aadconnect-whats-next.md)
 * [詳細情報](active-directory-aadconnect-learn-more.md)
 * [MSDN の Azure AD Connect](active-directory-aadconnect.md)
- 
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

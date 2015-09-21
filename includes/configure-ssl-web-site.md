@@ -13,7 +13,7 @@ Secure Socket Layer (SSL) 暗号化を使用する HTTPS を使用して、Web �
 
 ##<a name="bkmk_domainname"></a>カスタム ドメインの SSL を有効にする
 
-**contoso.com** のようなカスタム ドメインの HTTPS を有効にするには、まず、ドメイン名レジストラーにカスタム ドメイン名を登録する必要があります。Web アプリのドメイン名の構成方法の詳細については、[Azure Web サイトのカスタム ドメイン名の構成](/ja-jp/develop/net/common-tasks/custom-dns-web-site/)に関するページを参照してください。カスタム ドメイン名を登録し、そのカスタム名に応答するように Web アプリを構成した後、そのドメインに対応する SSL 証明書を要求する必要があります。
+**contoso.com** のようなカスタム ドメインの HTTPS を有効にするには、まず、ドメイン名レジストラーにカスタム ドメイン名を登録する必要があります。Web アプリのドメイン名の構成方法の詳細については、[Azure Web サイトのカスタム ドメイン名の構成](/ja-JP/develop/net/common-tasks/custom-dns-web-site/)に関するページを参照してください。カスタム ドメイン名を登録し、そのカスタム名に応答するように Web アプリを構成した後、そのドメインに対応する SSL 証明書を要求する必要があります。
 
 > [AZURE.NOTE]カスタム ドメイン名の HTTPS を有効にするには、Web アプリを **Standard** モードで構成する必要があります。現在 Free モードまたは Shared モードを使用している場合、このモードで構成を行うと追加料金が発生する場合があります。Shared モードと **Standard** モードの料金の詳細については、[料金の詳細][pricing]に関するページを参照してください。
 
@@ -61,7 +61,6 @@ Certreq.exe は、証明書の要求を作成するための Windows ユーテ�
 		MachineKeySet = True
 		ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
 		ProviderType = 12
-		RequestType = CMC
 
 		[EnhancedKeyUsageExtension]
 		OID=1.3.6.1.5.5.7.3.1
@@ -100,7 +99,7 @@ Certreq.exe は、証明書の要求を作成するための Windows ユーテ�
 
 	![秘密キーをエクスポートします][certwiz1]
 
-10. **[個人情報の交換 - PKCS \#12]**、**[証明書チェーン内にすべての証明書を含める]**、および **[すべての拡張プロパティをエクスポートする]** を選択します。**[次へ]** をクリックします。
+10. **[個人情報の交換 - PKCS #12]**、**[証明書チェーン内にすべての証明書を含める]**、および **[すべての拡張プロパティをエクスポートする]** を選択します。**[次へ]** をクリックします。
 
 	![すべての証明書と拡張プロパティを含める][certwiz2]
 
@@ -546,4 +545,4 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

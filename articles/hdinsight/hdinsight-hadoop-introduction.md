@@ -1,6 +1,7 @@
 <properties
 	pageTitle="HDInsight での Hadoop とは: クラウドのビッグ データ分析 | Microsoft Azure"
 	description="HDInsight のクラウドでの Hadoop コンポーネントの紹介です。HDInsight が Hadoop クラスターを使用してビッグ データを管理、分析、レポート生成する方法について説明します。"
+	keywords="big data,big data analysis,hadoop,introduction to hadoop,what is hadoop"
 	services="hdinsight"
 	documentationCenter=""
 	authors="cjgronlund"
@@ -13,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/27/2015"
+   ms.date="09/03/2015"
    ms.author="cgronlun"/>
 
 
@@ -58,9 +59,9 @@ Azure HDInsight は、**Linux** または **Windows** を基盤 OS として使�
 
 
 
-### Hadoop、HBase、Storm、およびカスタマイズしたクラスター
+### Hadoop、HBase、Storm、Spark、およびカスタマイズしたクラスター
 
-HDInsight には、Hadoop、HBase、または Storm というクラスター構成が用意されています。あるいは、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">スクリプト アクションを使用してクラスターをカスタマイズ</a>することもできます。
+HDInsight には、Hadoop、HBase、Storm、および Spark 用のクラスター構成が用意されています。あるいは、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">スクリプト アクションを使用してクラスターをカスタマイズ</a>することもできます。
 
 * **Hadoop** ("クエリ" ワークロード): [HDFS](#HDFS) を使用した信頼できるデータ ストレージと、データの処理および分析を同時に行うシンプルな [MapReduce](#mapreduce) プログラミング モデルを利用できます。
 
@@ -68,6 +69,7 @@ HDInsight には、Hadoop、HBase、または Storm というクラスター構�
 
 * **<a  target="_blank" href="https://storm.incubator.apache.org/">Apache Storm</a>** ("ストリーム" ワークロード) は、大量のデータ ストリームを高速処理するための分散型リアルタイム計算システムです。Storm は、HDInsight で管理されるクラスターとして提供されます。「[HDInsight (Hadoop) での Storm と HBase を使ったセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)」を参照してください。
 
+* **<a  target="_blank" href="http://spark.apache.org/">Apache Spark</a>**: ビッグデータ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。「[Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)」をご覧ください。
 
 ## Hadoop コンポーネントとは
 
@@ -246,4 +248,4 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 [zookeeper]: http://zookeeper.apache.org/
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

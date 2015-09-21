@@ -13,10 +13,18 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="08/20/2015" 
+	ms.date="09/08/2015" 
 	ms.author="jeffstok"/>
 
 #Microsoft Stream Analytics リリース ノート
+
+## Stream Analytics の 2015 年 9 月 10 日付けリリースに関するノート ##
+
+このリリースには、次の更新プログラムが含まれています。
+
+タイトル|説明
+---|---
+PowerBI グループのサポート|他の PowerBI ユーザーとデータを共有できるようにするために、Stream Analytics ジョブで PowerBI アカウント内のグループに書き込むことができるようになりました。
 
 ## Stream Analytics の 2015 年 8 月 20 日付けリリースに関するノート ##
 
@@ -34,7 +42,7 @@ Last 関数の追加 |Stream Analytics ジョブで [Last](http://msdn.microsoft
 
 タイトル|説明
 ---|---
-Azure ID から切り離された Power BI の組織 ID|この機能により、任意の Azure アカウント種類 (Live ID または組織 ID) で ASA ジョブの [Power BI 出力](stream-analytics-power-bi-dashboard.md)が可能です。さらに、Azure アカウントに対して 1 つの組織 ID を使用し、Power BI 出力の承認に対して別の ID を使用できます。
+Azure ID から切り離された Power BI の組織 ID|この機能により、任意の種類の Azure アカウント (Live ID または組織 ID) で ASA ジョブの [Power BI 出力](stream-analytics-power-bi-dashboard.md)が可能になりました。さらに、Azure アカウントに対して 1 つの組織 ID を使用し、Power BI 出力の承認に対して別の ID を使用できます。
 Service Bus キューの出力のサポート|[Service Bus キュー](stream-analytics-connect-data-event-outputs.md#service-bus-queues)の出力を、Stream Analytics ジョブで使用できるようになりました。
 Service Bus トピックの出力のサポート|[Service Bus トピック](stream-analytics-connect-data-event-outputs.md#service-bus-topics)の出力を、Stream Analytics ジョブで使用できるようになりました。
 
@@ -73,7 +81,7 @@ SQL Database イベントのボリューム制限|出力ターゲットとして
 PowerBI データセットにはテーブルを 1 つしか含めることができない|PowerBI では、特定のデータセット内で複数のテーブルがサポートされていません。
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
@@ -84,4 +92,4 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

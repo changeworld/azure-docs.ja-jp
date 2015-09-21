@@ -1,47 +1,47 @@
-<properties 
-	pageTitle="Machine Learning Web サービスを発行する | Microsoft Azure" 
-	description="C# または Python を使用して、Azure Machine Learning Web サービスに承認キーを利用して接続します。" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="garyericson" 
-	manager="paulettm" 
+<properties
+	pageTitle="Machine Learning Web サービスを発行する | Microsoft Azure"
+	description="C# または Python を使用して、Azure Machine Learning Web サービスに承認キーを利用して接続します。"
+	services="machine-learning"
+	documentationCenter=""
+	authors="garyericson"
+	manager="paulettm"
 	editor="cgronlun" />
 
-<tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/17/2015" 
+<tags
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/09/2015" 
 	ms.author="derrickv" />
 
 
-# Azure Machine Learning Web サービスに接続する 
-開発者が体験する Azure Machine Learning は、入力データから予測をリアルタイムまたはバッチ モードで作成する Web サービス API です。Azure Machine Learning Studio を使用して予測を作成し、Azure Machine Learning Web サービスを発行します。
+# Azure Machine Learning Web サービスに接続する
+開発者が体験する Azure Machine Learning は、入力データから予測をリアルタイムまたはバッチ モードで作成する Web サービス API です。Azure Machine Learning Studio を使用して予測を作成し、Azure Machine Learning Web サービスをデプロイします。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Studio を使用して Azure Machine Learning Web サービスを作成して発行する方法の詳細については、次をご覧ください。
+Studio を使用して Azure Machine Learning Web サービスを作成してデプロイする方法の詳細については、次をご覧ください。
 
-- [Machine Learning Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)
+- [Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
 - [ML Studio を使ってみる](http://azure.microsoft.com/documentation/videos/getting-started-with-ml-studio/)
 - [Azure Machine Learning のプレビュー](https://studio.azureml.net/)
 - [Machine Learning ドキュメント センター](http://azure.microsoft.com/documentation/services/machine-learning/)
 
 ## Azure Machine Learning Web サービス ##
 
-Azure Machine Learning (ML) Web サービスを使用して、外部のアプリケーションが ML のワークフローのスコア付けモデルとリアルタイムで通信します。ML Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。ML Web サービスの呼び出しを実行するために、予測発行時に作成される API キーを渡します。ML Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
+Azure Machine Learning (ML) Web サービスを使用して、外部のアプリケーションが ML のワークフローのスコア付けモデルとリアルタイムで通信します。ML Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。ML Web サービスの呼び出しを実行するために、予測のデプロイ時に作成される API キーを渡します。ML Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
 
 Azure Machine Learning には、2 種類のサービスがあります。
 
-- 要求応答サービス (RRS) – 待ち時間が短く拡張性の高い、ML Studio から作成および発行されたステートレスなモデルへのインターフェイスを提供するサービス。
+- 要求応答サービス (RRS) – 待ち時間が短く拡張性の高い、ML Studio から作成およびデプロイされるステートレスなモデルへのインターフェイスを提供するサービス。
 - バッチ実行サービス (BES) – データ レコードのバッチをスコア付けする非同期のサービス。
 
-Azure Machine Learning Web サービスの詳細については、「[Machine Learning Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
+Azure Machine Learning Web サービスの詳細については、「[Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
 ## Azure Machine Learning の承認キーを取得する ##
-Web サービスの API キーを ML Web サービスから取得します。Microsoft Azure Machine Learning Studio または Azure 管理ポータルから取得できます。
+Web サービスの API キーを ML Web サービスから取得します。Microsoft Azure Machine Learning Studio または Microsoft Azure 管理ポータルから取得できます。
 ### Microsoft Azure Machine Learning Studio ###
 1. Microsoft Azure Machine Learning Studio で、左側の **[Web サービス]** をクリックします。
 2. Web サービスをクリックします。**[ダッシュボード]** タブに [API キー] があります。
@@ -59,7 +59,7 @@ Web サービスの API キーを ML Web サービスから取得します。Mic
 HTTP 要求と応答をサポートする任意のプログラミング言語を使用して、Azure Machine Learning Web サービスに接続することができます。Azure ML Web サービス ヘルプ ページから、C#、Python、および R の例を表示できます。
 
 ### Azure ML Web サービス API のヘルプ ページを表示するには ###
-Azure ML API ヘルプ ページは、Web サービスを発行するときに作成されます。「[Azure Machine Learning チュートリアル - Web サービスを発行する](machine-learning-walkthrough-5-publish-web-service.md)」を参照してください。
+Azure ML API ヘルプ ページは、Web サービスをデプロイするときに作成されます。「[Azure Machine Learning チュートリアル - Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)」を参照してください。
 
 
 **Azure ML API のヘルプ ページを表示するには、**Microsoft Azure Machine Learning Studio で次のようにします。
@@ -89,7 +89,7 @@ ML Web サービスに接続するには、**Microsoft.AspNet.WebApi.Client** Nu
 
 1. Azure ML サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験を発行します。
 2. Web サービスからのキーを持つ apiKey を割り当てます。Azure の ML 承認キーを取得する方法を参照してください。
-3. 要求の URI を含む serviceUri を割り当てます。 
+3. 要求の URI を含む serviceUri を割り当てます。
 
 
 ### Python サンプル ###
@@ -103,7 +103,4 @@ Azure ML Web サービスに接続するには、ScoreData を渡す **urllib2**
 2. Web サービスからのキーを持つ apiKey を割り当てます。Azure の ML 承認キーを取得する方法を参照してください。
 3. 要求の URI を含む serviceUri を割り当てます。要求の URI を取得する方法を参照してください。
 
-	
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

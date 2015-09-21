@@ -27,7 +27,7 @@
 
 このチュートリアルのビデオを見る場合は、下のクリップでこのチュートリアルと同じ手順が表示されます。
 
-> [AZURE.VIDEO build-offline-apps-azure-mobile-services]
+> [AZURE.VIDEO build-offline-apps-with-mobile-services]
 
 このチュートリアルでは、オフラインの同期で発生する競合の処理をサポートするアプリケーション用に、ユニバーサル Windows C# ソリューションをダウンロードします。モバイル サービスとアプリケーションを統合します。次に、Windows ストア 8.1 と Windows Phone 8.1 のクライアントを実行して同期の競合を生成して、これを解決します。
 
@@ -164,4 +164,4 @@ Mobile Services でオフライン機能を使用するためには、ローカ�
 [Todo オフラインのモバイル サービスのサンプル]: http://go.microsoft.com/fwlink/?LinkId=512866
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

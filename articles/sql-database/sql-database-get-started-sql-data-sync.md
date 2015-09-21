@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/04/2015"
+	ms.date="09/08/2015"
 	ms.author="spelluru"/>
 
 
@@ -202,4 +202,4 @@ SQL データベースと SQL データ同期の詳細については、以下�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

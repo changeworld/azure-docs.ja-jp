@@ -1,5 +1,5 @@
 <properties
-   pageTitle="共有アクセス署名の概要"
+   pageTitle="共有アクセス署名の概要 | Microsoft Azure"
    description="共有アクセス署名とは何か、その動作方法、およびノード、PHP、および C# での使用方法。"
    services="service-bus,event-hubs"
    documentationCenter="na"
@@ -12,8 +12,8 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="tbd"
-   ms.date="07/24/2015"
+   ms.workload="na"
+   ms.date="09/04/2015"
    ms.author="darosa"/>
 
 # Shared Access Signature
@@ -24,7 +24,7 @@
 
 共有アクセス署名は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。SAS は、すべての Service Bus サービスによって使用される非常に強力なメカニズムです。実際の使用では、SAS には*共有アクセス ポリシー*と*共有アクセス署名* (多くの場合*トークン*と呼ばれます) という 2 つのコンポーネントがあります。
 
-Service Bus での共有アクセス署名に関する詳細については、「[Service Bus での共有アクセス署名認証](https://msdn.microsoft.com/library/azure/dn170477.aspx)」を参照してください。
+Service Bus での共有アクセス署名に関する詳細については、「[Service Bus での共有アクセス署名認証](service-bus-shared-access-signature-authentication.md)」を参照してください。
 
 ## 共有アクセス ポリシー
 
@@ -251,6 +251,8 @@ AMQP メッセージは、プロパティが多数あり、簡単なメッセー
 
 これらの SAS トークンで実行できる処理の詳細については、[Service Bus REST API リファレンス](https://msdn.microsoft.com/library/azure/hh780717.aspx)を参照してください。
 
-SAS の詳細については、MSDN の [Service Bus 認証](https://msdn.microsoft.com/library/azure/dn155925.aspx)ノードを参照してください。[Damir のブログ](http://developers.de/blogs/damir_dobric/archive/2013/10/17/how-to-create-shared-access-signature-for-service-bus.aspx)に、C# および Java スクリプトでの SAS に関する例が他にも紹介されています。
+Service Bus 認証の詳細については、「[Service Bus の認証と承認](service-bus-authentication-and-authorization.md)」を参照してください。
 
-<!---HONumber=August15_HO7-->
+[こちらのブログ記事](http://developers.de/blogs/damir_dobric/archive/2013/10/17/how-to-create-shared-access-signature-for-service-bus.aspx)では、C# および JavaScript での SAS に関するさまざまな例を紹介しています。
+
+<!---HONumber=Sept15_HO2-->

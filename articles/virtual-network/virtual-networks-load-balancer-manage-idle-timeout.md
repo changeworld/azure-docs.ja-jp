@@ -1,20 +1,22 @@
 <properties 
-   authors="danielceckert"
-	documentationCenter="dev-center-name"
-	editor=""
-	manager="jefco"
-	pageTitle="管理: ロード バランサーのアイドル タイムアウト"
-	description="Azure ロード バランサーのアイドル タイムアウトの管理機能"
-	services="virtual-network"/>
+   authors="danielceckert" 
+   documentationCenter="dev-center-name" 
+   editor=""
+   manager="jefco" 
+   pageTitle="管理: ロード バランサーのアイドル タイムアウト" 
+   description="Azure ロード バランサーのアイドル タイムアウトの管理機能" 
+   services="virtual-network" 
+   />
 
 <tags
    ms.author="danecke"
-	ms.date="05/27/2015"
-	ms.devlang="na"
-	ms.service="virtual-network"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"/>
+   ms.date="09/01/2015"
+   ms.devlang="na"
+   ms.service="virtual-network"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   />
    
 # 仮想ネットワークの管理: ロード バランサーの TCP アイドル タイムアウト
 
@@ -150,4 +152,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
     </LoadBalancedEndpointList>
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

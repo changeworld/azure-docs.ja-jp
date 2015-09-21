@@ -1,10 +1,10 @@
 <properties 
 	pageTitle="Application Insights を使用したアプリケーションの状態と利用状況の監視" 
-	description="Application Insights の使用を開始します。内部設置型または Microsoft Azure アプリケーションの使用状況、可用性、パフォーマンスを分析します。" 
+	description="Application Insights の使用を開始します。オンプレミスの、または Microsoft Azure アプリケーションの使用状況、可用性、パフォーマンスを分析します。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="keboyd"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/02/2015" 
+	ms.date="09/08/2015" 
 	ms.author="awills"/>
  
 # Web アプリケーションのパフォーマンスを監視する
@@ -22,23 +22,26 @@
 
 アプリケーションが正常に実行されていること、および障害がすぐに検出されることを確認します。[Application Insights][start] はパフォーマンス上の問題や例外を通知し、問題の原因を把握して診断するのに役立ちます。
 
-Application Insights が監視できるのは、オンプレミス、仮想マシン、および Microsoft Azure Websites でホストされる、ASP.NET Web アプリケーションおよび WCF サービスです。
+Application Insights は、Java と ASP.NET の Web アプリケーションとサービス、WCF サービスの両方を監視できます。それらは、オンプレミスで、仮想マシン上で、または Microsoft Azure Web サイトとしてホストできます。
+
+クライアント側で、Application Insights は、Web ページと、iOS、Android、Windows ストア アプリを含むさまざまなデバイスからテレメトリを取得できます。
 
 
 ## <a name="setup"></a>パフォーマンス モニターの設定
 
 プロジェクトに Application Insights を追加していない場合 (つまり、ApplicationInsights.config がない場合)、以下のいずれかの方法で開始します。
 
-* [Visual Studio のプロジェクトに Application Insights を追加する][greenbrown] - 推奨されている方法です。パッシブなパフォーマンス モニターに加え、診断ログを挿入したり、利用状況を追跡したりできます。
-* [ライブ Websites のパフォーマンスを監視する][redfield] - この場合、アプリケーション プロジェクトを更新したり、Web サイトを再デプロイしたりする必要はありません。
-* [Microsoft Azure の Web サイトの場合](../insights-how-to-customize-monitoring.md)、Web サイトの監視レンズで既にメトリックを確認できるようになっています。 
-
-これらの方法のいずれかを使用して、Application Insights の概要ブレードでデータをすばやく確認できます。
+* [ASP.NET Web アプリ](app-insights-asp-net.md)
+* [J2EE Web アプリ](app-insights-java-get-started.md)
 
 
-## <a name="view"></a>メトリックの確認
+## <a name="view"></a>パフォーマンス メトリックの監視
 
-タイルをクリックして、詳細を表示したり、より長い期間の結果を表示したりします。たとえば、[要求] タイルをクリックして、次の時間範囲を選択します。
+[Azure ポータル](https://portal.azure.com)で、アプリケーション用に設定した Application Insights リソースを参照します。概要ブレードに、基本的なパフォーマンス データが表示されます。
+
+
+
+詳細を表示したり、より長い期間の結果を表示したりするには、グラフをクリックします。たとえば、[要求] タイルをクリックして、次の時間範囲を選択します。
 
 
 ![クリックしてより多くのデータを表示し、時間範囲を選択する](./media/app-insights-web-monitor-performance/appinsights-48metrics.png)
@@ -116,7 +119,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
     <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCollector.PerformanceCollectorModule, Microsoft.ApplicationInsights.Extensibility.PerfCollector">
       <Counters>
         <Add PerformanceCounter="\Objects\Processes"/>
-        <Add PerformanceCounter="\Sales(electronics)#Items Sold" ReportAs="Item sales"/>
+        <Add PerformanceCounter="\Sales(electronics)# Items Sold" ReportAs="Item sales"/>
       </Counters>
     </Add>
 
@@ -131,7 +134,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
     var perfCollector = new PerformanceCollectorModule();
     perfCollector.Counters = new List<CustomPerformanceCounterCollectionRquest>();
     perfCollector.Counters.Add(new CustomPerformanceCounterCollectionRquest(
-      @"\Sales(electronics)#Items Sold", "Items sold"));
+      @"\Sales(electronics)# Items Sold", "Items sold"));
     perfCollector.Initialize(TelemetryConfiguration.Active);
     TelemetryConfiguration.Active.TelemetryModules.Add(perfCollector);
 
@@ -183,4 +186,4 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

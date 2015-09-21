@@ -1,20 +1,21 @@
 <properties
     pageTitle="Microsoft Azure Machine Learning とは | Microsoft Azure"
-	description="ソリューションを作成、操作、収益化する際に使用するクラウド テクノロジーである完全に管理された Machine Learning のサービスの基本的な概念について説明します。"
+    description="ソリューションを作成、操作、収益化する際に使用するクラウド テクノロジーである完全に管理された Machine Learning のサービスの基本的な概念について説明します。"
+	keywords="what is machine learning,cloud technology,predictive,what is predictive analytics,operationalize"
 	services="machine-learning"
-	documentationCenter=""
-	authors="cjgronlund"
-	manager="neerajkh"
-	editor="cgronlun"/>
+    documentationCenter=""
+    authors="cjgronlund"
+    manager="neerajkh"
+    editor="cgronlun"/>
 
 <tags
     ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/02/2015"
-	ms.author="cgronlun;tedway;olgali"/>
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/09/2015"
+    ms.author="cgronlun;tedway;olgali"/>
 
 
 # Microsoft Azure での機械学習の概要
@@ -29,7 +30,7 @@
 
 Azure Machine Learning は、クラウド ベースの強力な予測分析サービスであり、分析ソリューションとして予測モデルを迅速に作成し、デプロイします。
 
-Azure Machine Learning ではをモデルの予測分析ツールを提供するだけでなく、予測モデルをすぐに使用できる Web サービスとして発行するために使用できる完全に管理されたサービスを提供します。また、クラウドで予測分析の完全なソリューションを作成するためのツールを提供します。予測モデルを迅速に作成、テストし、運用を実現して管理します。ハードウェアを購入したり、仮想マシンを手動で管理したりする必要はありません。
+Azure Machine Learning ではをモデルの予測分析ツールを提供するだけでなく、予測モデルをすぐに使用できる Web サービスとしてデプロイするために使用できる完全に管理されたサービスを提供します。また、クラウドで予測分析の完全なソリューションを作成するためのツールを提供します。予測モデルを迅速に作成、テストし、運用を実現して管理します。ハードウェアを購入したり、仮想マシンを手動で管理したりする必要はありません。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -59,7 +60,7 @@ Azure Machine Learning には、大規模のアルゴリズム ライブラリ�
 * 推奨事項、テキスト分析、異常検出などすぐに使用できる Web サービスを [Microsoft Azure Marketplace](https://datamarket.azure.com/browse?query=machine+learning) から購入します。
 
 * 予測分析モデルの運用を実現します。
-    * [Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)
+    * [Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)
     * [API を通じてモデルをトレーニング/再トレーニングする](machine-learning-retrain-models-programmatically.md)
     * [Web サービスのエンドポイントを管理する](machine-learning-create-endpoint.md)
     * [Web サービスを拡張する](machine-learning-scaling-endpoints.md)
@@ -115,4 +116,4 @@ Azure Machine Learning では、モデルはトレーニング データを処�
 <!-- Module References -->
 [learning-with-counts]: https://msdn.microsoft.com/library/azure/81c457af-f5c0-4b2d-922c-fdef2274413c/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

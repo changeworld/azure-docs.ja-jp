@@ -12,7 +12,7 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="hero-article"
+	ms.topic="hero-article" 
 	ms.date="09/03/2015"
 	ms.author="anhoh"/>
 
@@ -34,7 +34,7 @@ DocumentDB は NoSQL ドキュメント データベースで、[多数の API �
 
 チュートリアルを最後まで実施する時間はないが、動作するソリューションは手に入れたい場合もあります。 心配はありません。[GitHub](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/get-started) で完全なソリューションを入手できます。手順については「[完全なソリューションの取得](#GetSolution)」を参照してください。
 
-チュートリアルを完了したら、トピックの最初または最後にある投票ボタンをクリックして、内容が役に立ったかどうかをお知らせください。トピックは常に更新されます。内容をより良くするためにお客様からのフィードバックをお待ちしています。フォローアップのためにマイクロソフトからご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
+マイクロソフトでは、このトピックをお客様からのフィードバックに基づいて頻繁に更新、改善しています。チュートリアルを終了したら、このページの上部と下部にある投票ボタンを使用し、希望される改善内容についてのフィードバックをお寄せください。マイクロソフトから直接ご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
 
 ## 前提条件
 
@@ -480,4 +480,4 @@ Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、�
 [keys]: media/documentdb-get-started/keys.png
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

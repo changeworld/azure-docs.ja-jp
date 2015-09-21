@@ -1,4 +1,4 @@
-<properties 
+<properties
 	pageTitle="Script Action を使った HDInsight クラスターのカスタマイズ | Microsoft Azure"
 	description="Script Action を使って HDInsight クラスターをカスタマイズする方法について説明します。"
 	services="hdinsight"
@@ -8,7 +8,7 @@
 	editor="cgronlun"
 	tags="azure-portal"/>
 
-<tags 
+<tags
 	ms.service="hdinsight"
 	ms.workload="big-data"
 	ms.tgt_pltfrm="na"
@@ -21,7 +21,7 @@
 
 HDInsight は、カスタム スクリプトを呼び出す **Script Action** という構成オプションを提供します。Script Action はプロビジョニング処理中にクラスター上で実行されるカスタマイズを定義します。これらのスクリプトを使用して、クラスター上に追加のソフトウェアをインストールしたり、クラスター上のアプリケーションの構成を変更したりできます。
 
-> [AZURE.NOTE]この記事の情報は、Linux ベースの HDInsight クラスターに固有のものです。この記事の Windows ベースのクラスターに固有のバージョンについては、[スクリプト アクションを使った HDInsight クラスターのカスタマイズ (Windows)](hdinsight-hadoop-customize-cluster-linux.md) に関するページを参照してください。
+> [AZURE.NOTE]この記事の情報は、Linux ベースの HDInsight クラスターに固有のものです。この記事の Windows ベースのクラスターに固有のバージョンについては、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする (Windows)](hdinsight-hadoop-customize-cluster.md)」を参照してください。
 
 ## クラスターのプロビジョニング処理での Script Action
 
@@ -53,12 +53,12 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 ##Azure プレビュー ポータルからスクリプト アクションを使用する
 
-1. [カスタム オプションを使用したクラスターのプロビジョニング](hdinsight-provision-clusters.md#portal)に関するページの説明に従って、クラスターのプロビジョニングを開始します。 
+1. [カスタム オプションを使用したクラスターのプロビジョニング](hdinsight-provision-clusters.md#portal)に関するページの説明に従って、クラスターのプロビジョニングを開始します。
 
 2. __[オプションの構成]__ の **[スクリプト アクション]** ブレードで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
 	![Use Script Action to customize a cluster](./media/hdinsight-hadoop-customize-cluster-linux/HDI.CreateCluster.8.png "Script Action を使ってクラスターをカスタマイズする")
-	
+
 	| プロパティ | 値 |
 	| -------- | ----- |
 	| 名前 | スクリプト アクションの名前を指定します。 |
@@ -76,8 +76,8 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 ### 開始する前に
 
-* コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。 
-* ARM テンプレートを作成する方法の手順については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。 
+* コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。
+* ARM テンプレートを作成する方法の手順については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 * リソース マネージャーで Azure PowerShell を使用したことがない場合は、「[Azure リソース マネージャーでの Azure PowerShell の使用](powershell-azure-resource-manager)」を参照してください。
 
 ### スクリプト アクションを使用してクラスターをプロビジョニングする
@@ -113,7 +113,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		        "clusterStorageAccountName": {
 		            "type": "string"
 		        },
-		        "clusterStorageAccountResourceGroup": { 
+		        "clusterStorageAccountResourceGroup": {
 		            "type": "string"
 		        },
 		        "clusterStorageType": {
@@ -165,7 +165,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		                "osType": "Linux",
 		                "clusterDefinition": {
 		                    "kind": "hadoop",
-		
+
 		                    "configurations": {
 		                        "gateway": {
 		                            "restAuthCredential.isEnabled": true,
@@ -240,14 +240,14 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		}
 
 
-	
+
 2. Azure PowerShell を起動し、Azure アカウントにログインします。資格情報を提供すると、コマンドがアカウントの情報を返します。
 
 		Add-AzureAccount
-	
+
 		Id                             Type       ...
-		--                             ----    
-		someone@example.com            User       ...   
+		--                             ----
+		someone@example.com            User       ...
 
 3. 複数のサブスクリプションがある場合、デプロイに使用するサブスクリプション ID を提供します。
 
@@ -287,7 +287,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		  ProvisioningState : Succeeded
 		  Timestamp         : 8/17/2015 7:00:27 PM
 		  Mode              : Incremental
-		  ... 
+		  ...
 
 8. デプロイに失敗した場合は、次のコマンドレットを使用してエラーに関する情報を取得できます。
 
@@ -314,7 +314,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		$location = "<MicrosoftDataCenter>"				# Location of the HDInsight cluster. It must be in the same data center as the storage account.
 		$clusterNodes = <ClusterSizeInNumbers>			# The number of nodes in the HDInsight cluster.
 		$version = "<HDInsightClusterVersion>"          # HDInsight version, for example "3.1"
-	
+
 2. クラスター内のノードや使用する既定のストレージなどの構成値を指定します。
 
 		# SPECIFY THE CONFIGURATION OPTIONS
@@ -323,7 +323,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		$config.DefaultStorageAccount.StorageAccountName="$storageAccountName.blob.core.windows.net"
 		$config.DefaultStorageAccount.StorageAccountKey=$storageAccountKey
 		$config.DefaultStorageAccount.StorageContainerName=$containerName
-	
+
 3. **Add-AzureHDInsightScriptAction** コマンドレットを使用してスクリプトを呼び出します。次の例では、クラスターに R をインストールするスクリプトを使用します。
 
 		# INVOKE THE SCRIPT USING THE SCRIPT ACTION
@@ -339,10 +339,10 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 	| ClusterRoleCollection | カスタマイズ スクリプトが実行されるノードを指定します。有効な値は **HeadNode** (ヘッド ノードにインストールする場合)、**WorkerNode** (すべてのデータ ノードにインストールする場合)、**ZookeeperNode** (zookeeper ノードにインストールする場合) です。いずれかまたはすべての値を使用できます。 |
 	| パラメーター | スクリプトで必要なパラメーター。 |
 	| Uri | 実行されるスクリプトへの URI を指定します。 |
-	
+
 4. 最後にクラスターをプロビジョニングします。
-	
-		New-AzureHDInsightCluster -Config $config -Name $clusterName -Location $location -Version $version 
+
+		New-AzureHDInsightCluster -Config $config -Name $clusterName -Location $location -Version $version
 
 入力を求められたら、クラスターの資格情報を入力します。クラスターが作成されるまでに数分かかる場合があります。
 
@@ -361,7 +361,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
 
 3. **[新しいプロジェクト]** で、次の値を入力するか、選択します。
-	
+
 	| プロパティ | 値 |
 	| -------- | ----- |
 	| カテゴリ | テンプレート/Visual C#/Windows |
@@ -386,9 +386,9 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 		using Microsoft.WindowsAzure.Management.HDInsight;
 		using Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning;
 		using Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging;
-	
+
 9. **Main()** 関数に次のコードを貼り付けた後、変数の値を指定します。
-		
+
         var clusterName = args[0];
 
         // PROVIDE VALUES FOR THE VARIABLES
@@ -401,7 +401,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
         string password = "<HDInsightUserPassword>";
         int clustersize = <NumberOfNodesInTheCluster>;
 
-        // PROVIDE THE CERTIFICATE THUMBPRINT TO RETRIEVE THE CERTIFICATE FROM THE CERTIFICATE STORE 
+        // PROVIDE THE CERTIFICATE THUMBPRINT TO RETRIEVE THE CERTIFICATE FROM THE CERTIFICATE STORE
         X509Store store = new X509Store();
         store.Open(OpenFlags.ReadOnly);
         X509Certificate2 cert = store.Certificates.Cast<X509Certificate2>().First(item => item.Thumbprint == thumbprint);
@@ -423,7 +423,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
             Password = password,
             ClusterSizeInNodes = clustersize,
             Version = "3.1"
-        };        
+        };
 
 10. **Main()** 関数に次のコードを追加します。このコードによりスクリプト アクションが呼び出されます。この例では、クラスターに R をインストールするスクリプトが呼び出されます。
 
@@ -484,11 +484,11 @@ Ambari の Web UI を使用すると、クラスターのプロビジョニン�
 1. ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスします。CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
 
 	プロンプトが表示されたら、クラスターの管理者アカウント名 (admin) とパスワードを入力します。Web フォームで管理者の資格情報の再入力が必要な場合があります。
-	
+
 2. ページ上部のバーから __[OPS]__ エントリを選択します。これにより、Ambari を使用してクラスターで実行される、現在と過去の操作の一覧が表示されます。
 
 	![Ambari web UI bar with ops selected](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
-	
+
 3. __Operations__ 列で __run\_customscriptaction__ を含むエントリを探します。これらは、スクリプト アクションの実行時に作成されます。
 
 	![Screenshot of operations](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
@@ -508,6 +508,5 @@ Ambari の Web UI を使用すると、クラスターのプロビジョニン�
 
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター プロビジョニング時の段階"
- 
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

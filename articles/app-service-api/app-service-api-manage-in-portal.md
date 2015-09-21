@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="API アプリの管理"
-	description="Azure ポータルと Visual Studio のサーバー エクスプローラーを使用して Azure App Service API アプリを管理する方法について説明します。"
-	services="app-service\api"
-	documentationCenter=""
-	authors="tdykstra"
-	manager="wpickett"
+	pageTitle="API アプリの管理" 
+	description="Azure ポータルと Visual Studio のサーバー エクスプローラーを使用して Azure App Service API アプリを管理する方法について説明します。" 
+	services="app-service\api" 
+	documentationCenter="" 
+	authors="tdykstra" 
+	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-api"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
+	ms.service="app-service-api" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/17/2015"
+	ms.topic="article" 
+	ms.date="09/08/2015" 
 	ms.author="tdykstra"/>
 
 # Azure App Service の API アプリの管理
@@ -134,4 +134,4 @@ Visual Studio の**サーバー エクスプローラー**には、リモート 
 
 コマンド ラインを使用して API アプリを管理する方法については、この記事の左側 (幅の広いブラウザー ウィンドウの場合) または上部 (幅の狭いブラウザー ウィンドウの場合) に表示されているメニューの **[自動化]** セクションの記事を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

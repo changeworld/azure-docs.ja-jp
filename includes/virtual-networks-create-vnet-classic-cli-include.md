@@ -3,17 +3,19 @@
 Azure CLI を使用すると、Windows、Linux、または OSX を実行している任意のコンピューターのコマンド プロンプトから Azure のリソースを管理することができます。Azure CLI を使用して VNet を作成するには、次の手順に従います。
 
 1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli.md)を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
-2. 次に示すように、**azure network vnet create** コマンドを実行し、 VNet とサブネットを作成します。CLI コマンドの出力を確認します。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
+2. 次に示すように、**azure network vnet create** コマンドを実行し、 VNet とサブネットを作成します。CLI コマンドの出力が表示されます。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
 			azure network vnet create --vnet TestVNet -e 192.168.0.0 -i 16 -n FrontEnd -p 192.168.1.0 -r 24 -l "Central US"
 	
+	上記のコマンドで想定される出力を次に示します。
+
 			info:    Executing command network vnet create
 			+ Looking up network configuration
 			+ Looking up locations
 			+ Setting network configuration
 			info:    network vnet create command OK
 
-	- **--vnet**。作成する VNet の名前です。ここでは、 *TestVNet* です。
+	- **--vnet**。作成する VNet の名前です。ここでは、*TestVNet* です。
 	- **-e (または --address-space)**。VNet のアドレス空間です。ここでは、*192.168.0.0* です。
 	- **-i (または -cidr)**。CIDR 形式のネットワーク マスクです。ここでは、*16* です。
 	- **-n (または --subnet-name**)。最初のサブネットの名前です。ここでは、*FrontEnd* です。
@@ -25,6 +27,8 @@ Azure CLI を使用すると、Windows、Linux、または OSX を実行して�
 
 			azure network vnet subnet create -t TestVNet -n BackEnd -a 192.168.2.0/24
 	
+	上記のコマンドで想定される出力を次に示します。
+
 			info:    Executing command network vnet subnet create
 			+ Looking up network configuration
 			+ Creating subnet "BackEnd"
@@ -43,6 +47,8 @@ Azure CLI を使用すると、Windows、Linux、または OSX を実行して�
 
 			azure network vnet show
 
+	上記のコマンドで想定される出力を次に示します。
+
 			info:    Executing command network vnet show
 			Virtual network name: TestVNet
 			+ Looking up the virtual network sites
@@ -59,4 +65,4 @@ Azure CLI を使用すると、Windows、Linux、または OSX を実行して�
 			data:
 			info:    network vnet show command OK
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

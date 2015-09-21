@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015" 
 	ms.author="juliako"/>
 
 #タスク プリセットのカスタマイズによるエンコード タスクの操作 
@@ -505,8 +505,16 @@ Media Services Encoder は、一連のビデオの結合をサポートします
 		// Launch the job. 
 		job.Submit();
 
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
 ##関連項目
 
 [Azure メディア エンコーダーの XML スキーマ](https://msdn.microsoft.com/library/azure/dn584702.aspx)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

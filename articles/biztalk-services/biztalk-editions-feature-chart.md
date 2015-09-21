@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/23/2015"
+	ms.date="09/08/2015"
 	ms.author="mandia"/>
 
 
@@ -256,4 +256,4 @@ Azure BizTalk Services を Azure ポータルで作成するには、[BizTalk Se
 - [BizTalk Services: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
 - [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

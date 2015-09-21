@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="オンプレミス ID と Azure Active Directory の統合"
-	description="これは、Azure AD Connect の内容と使用する理由を説明するページです。"
-	services="active-directory"
-	documentationCenter=""
-	authors="billmath"
-	manager="stevenpo"
+	pageTitle="オンプレミス ID と Azure Active Directory の統合" 
+	description="これは、Azure AD Connect の内容と使用する理由を説明するページです。" 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="billmath" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/24/2015"
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="get-started-article" 
+	ms.date="09/09/2015" 
 	ms.author="billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
@@ -102,7 +102,7 @@ Azure Active Directory Connect は 3 つの主要な部分で構成されます�
 - 統合する Azure AD テナントの Azure AD 全体管理者アカウント
 - Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。このサーバーをドメイン コントローラーやメンバー サーバーにすることができます。
 - AD スキーマのバージョンとフォレスト レベルは、Windows Server 2003 以降である必要があります。ドメイン コント ローラーは、スキーマとフォレスト レベルの要件を満たしていれば、任意のバージョンを実行できます。
-- Active Directory フェデレーション サービスをデプロイする場合、AD FS をインストールするサーバーは、Windows Server 2012 以降である必要があります。
+- Active Directory フェデレーション サービスをデプロイする場合、AD FS をインストールするサーバーは、Windows Server 2012 R2 以降である必要があります。
 - Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされ、サービスのサービス アカウントがローカル コンピューターに作成されます。SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。
 - さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール プロセスを、さまざまなバージョンの SQL Server に指定する必要があります。Azure AD Connect では、SQL Server 2008 (SP4) から SQL Server 2014 まで、すべてのエディションの Microsoft SQL Server がサポートされています。
 - ローカルの Active Directory のエンタープライズ管理者アカウント
@@ -273,4 +273,4 @@ Azure AD Connect の操作に関するその他のドキュメントについて
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

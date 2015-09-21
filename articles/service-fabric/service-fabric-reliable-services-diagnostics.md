@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/20/2015"
+   ms.date="09/03/2015"
    ms.author="alanwar"/>
 
 # ステートフル Reliable Services の診断機能
@@ -46,4 +46,4 @@ StatefulRunAsyncFailure は、サービスの RunAsync() タスクが例外を�
 
 StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求に 4 秒より長くかかるたびに出力されます。サービスが、取り消しの完了に時間がかかる場合、サービスが別のノードで速やかに再開される機能に影響し、サービスの全体の可用性に影響を与える可能性があります。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

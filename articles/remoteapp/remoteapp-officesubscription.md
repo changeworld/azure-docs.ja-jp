@@ -1,20 +1,20 @@
 
 <properties 
-    pageTitle="Azure RemoteApp で Office 365 サブスクリプションを使用する方法"
+    pageTitle="Azure RemoteApp で Office 365 サブスクリプションを使用する方法 | Microsoft Azure"
 	description="Azure RemoteApp で Office 365 サブスクリプションを使用して Office アプリを共有する方法を説明します。"
 	services="remoteapp"
-	documentationCenter=""
-	authors="lizap"
-	manager="mbaldwin"/>
+	documentationCenter="" 
+	authors="lizap" 
+	manager="mbaldwin" />
 
 <tags 
-    ms.service="remoteapp"
-	ms.workload="compute"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/02/2015"
-	ms.author="elizapo"/>
+    ms.service="remoteapp" 
+    ms.workload="compute" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/09/2015" 
+    ms.author="elizapo" />
 
 
 
@@ -36,6 +36,8 @@ Office 365 ProPlus を含む Office 365 プランについては、 「[それ�
 
 Office 365 ProPlus の各ユーザー ライセンスでは、1 人のユーザーが最大 5 台のコンピューターとタブレットおよび携帯電話で Office アプリケーションをアクティブ化できます。デバイスで Office を非アクティブ化するまで、各アクティブ化はユーザーに登録されています(ユーザーは、[Office 365 ポータル](https://portal.office365.com/)で自分のデバイスを管理できます)。
 
+Azure RemoteApp では、1 人のユーザーが、自覚なしで同じ日に複数台のコンピューターにログインできます。これは、サービスがクラウドのリソースを自動的に管理してスケーリングするためであり、ユーザーは共有するアプリとプログラムだけを認識します。このシナリオでは、Office 365 ProPlus は、コンピューターのアクティブ化モードの共有を提供します。つまり、ユーザーはリソースにアクセスするためにライセンス管理を行う必要がなく、個々のコンピューターは 5 台というアクティブ化制限の対象としてカウントされることがなくなります。
+
 管理者が Office 365 ProPlus ライセンスをユーザーに割り当てると、ユーザーは個人のデバイスで、および Azure RemoteApp コレクションから、Office を使用できます。
 
 ## Office 365 と Azure RemoteApp ではどの Office アプリケーションを使用できますか?
@@ -44,7 +46,7 @@ Office 365 ProPlus サブスクリプションを使用すると、Office 2013 �
 
 ## Visio Pro または Project Pro はどうですか?
 
-RemoteApp サブスクリプションに含まれる Office 365 ProPlus のイメージには、Visio Pro と Project Pro の両方が含まれます。ただし、Office 365 ProPlus サブスクリプションを使用してこれらのプログラムをアクティブ化することはできません。それぞれに専用のライセンスがあります。[Office 365 ポータル](https://portal.office365.com/)でアクティブ化できます。
+RemoteApp サブスクリプションに含まれる Office 365 ProPlus のイメージには、Visio Pro と Project Pro の両方が含まれます。ただし、Office 365 ProPlus サブスクリプションを使用してこれらのプログラムをアクティブ化することはできません。それぞれに専用のライセンスがあります。それらは [Office 365 ポータル](https://portal.office365.com/)でアクティブ化できます。
 
 これらのプログラムを使用しない場合は、ライセンスを取得する必要はありません。使用するプログラムだけをアクティブ化し、他はスキップしてください。イメージにはまだ表示されますが、それらを使用することはできません。
 
@@ -52,7 +54,7 @@ RemoteApp サブスクリプションに含まれる Office 365 ProPlus のイ�
 
 Office 365 ライセンスの詳細がわかったら、Azure RemoteApp で使ってみてください。とても簡単です。
 
-Azure RemoteApp コレクションを作成するときに、**Office 365 ProPlus (サブスクリプションが必要)** のイメージを使用します。
+Azure RemoteApp コレクションを作成するときは、**[Office 365 ProPlus (サブスクリプションが必要)]** イメージを使用します。
 
 ![Azure RemoteApp イメージと Office 365 Pro Plus](./media/remoteapp-officesubscription/remoteapp-officeimage.png)
 
@@ -65,11 +67,11 @@ Office 365 ProPlus を含むコレクションのカスタム イメージを作
 
 ### Azure ギャラリー イメージを使用する
 
-コレクションに Office 365 ProPlus をデプロイする最も簡単な方法は、Azure RemoteApp サブスクリプションに含まれる [Azure ギャラリー イメージのいずれかで開始する](remoteapp-image-on-azurevm.md)ことです。**Office 365 ProPlus がプレインストールされている Windows Server リモート デスクトップ セッション ホスト** イメージを必ず選択します。次に、そのイメージに必要な他のアプリをインストールすれば、準備完了です。
+コレクションに Office 365 ProPlus をデプロイする最も簡単な方法は、Azure RemoteApp サブスクリプションに含まれる [Azure ギャラリー イメージのいずれかで開始する](remoteapp-image-on-azurevm.md)ことです。**[Office 365 ProPlus がプレインストールされている Windows Server リモート デスクトップ セッション ホスト]** イメージを必ず選択します。次に、そのイメージに必要な他のアプリをインストールすれば、準備完了です。
 
 ### カスタム イメージを使用する
 
-いつでもカスタム イメージを作成できます。[Azure VM](remoteapp-image-on-azurevm.md) を作成するか、または[ローカルにイメージを作成](remoteapp-create-custom-image.md)してそれを Azure にアップロードします。どちらの場合も、共有コンピューター アクティブ化ノードを使用して Office 365 ProPlus をインストールしてください。[Office 展開ツール](http://blogs.technet.com/b/odsupport/archive/2014/07/11/using-the-office-deployment-tool.aspx)を使用し、インストールの[手順](https://technet.microsoft.com/library/Dn782858.aspx)に従います。
+いつでもカスタム イメージを作成できます。[Azure VM](remoteapp-image-on-azurevm.md) を作成するか、[ローカルにイメージを作成](remoteapp-create-custom-image.md)してそれを Azure にアップロードします。どちらの場合も、共有コンピューター アクティブ化ノードを使用して Office 365 ProPlus をインストールしてください。[Office 展開ツール](http://blogs.technet.com/b/odsupport/archive/2014/07/11/using-the-office-deployment-tool.aspx)を使用し、インストールの[手順](https://technet.microsoft.com/library/Dn782858.aspx)に従います。
 
 ### カスタム イメージで Office 365 ProPlus の自動更新を無効にする - 重要
 
@@ -115,4 +117,4 @@ Office 展開ツールを使用した更新の詳細については以下をご�
 - [Office 展開ツールを使用して Office 365 ProPlus を展開および更新する](https://channel9.msdn.com/Events/Ignite/2015/BRK3168) (ビデオ)
 - [Office 365 ProPlus の更新設定を構成する](https://technet.microsoft.com/library/dn761708.aspx)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

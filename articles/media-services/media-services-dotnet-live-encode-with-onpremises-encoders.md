@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="オンプレミス エンコーダーでライブ エンコードを実行する方法"
-	description="このトピックでは、オンプレミス エンコーダーでライブ エンコードを実行する方法について紹介します。"
-	services="media-services"
-	documentationCenter=""
-	authors="juliako"
-	manager="dwrede"
+	pageTitle="オンプレミス エンコーダーでライブ エンコードを実行する方法" 
+	description="このトピックでは、オンプレミス エンコーダーでライブ エンコードを実行する方法について紹介します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/07/2015"  
 	ms.author="juliako"/>
 
 #オンプレミス エンコーダーでライブ エンコードを実行する方法
@@ -375,4 +375,12 @@
 		    }
 		}
 
-<!---HONumber=August15_HO9-->
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+<!---HONumber=Sept15_HO2-->

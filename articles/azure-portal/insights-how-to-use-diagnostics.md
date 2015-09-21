@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/28/2015" 
+	ms.date="09/08/2015" 
 	ms.author="stepsic"/>
 
 # 監視と診断の有効化
@@ -71,4 +71,4 @@ Azure の診断、監視、およびメトリック データは、選択した�
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

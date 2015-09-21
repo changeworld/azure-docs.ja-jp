@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Script Action を使用して Hadoop クラスターに Spark をインストールする | Microsoft Azure" 
-	description="Spark を使用して HDInsight クラスターをカスタマイズする方法について説明します。Spark をインストールするスクリプトを使用するために、Script Action の構成オプションを使用します。" 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="nitinme" 
-	manager="paulettm" 
+<properties
+	pageTitle="Script Action を使用して Hadoop クラスターに Spark をインストールする | Microsoft Azure"
+	description="Spark を使用して HDInsight クラスターをカスタマイズする方法について説明します。Spark をインストールするスクリプトを使用するために、Script Action の構成オプションを使用します。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="nitinme"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/11/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/11/2015"
 	ms.author="nitinme"/>
 
 # HDInsight Hadoop クラスターで Spark をインストールして使用する
@@ -22,8 +22,9 @@
 
 このトピックでは、Script Action を使用して、Spark をインストールする方法を学習します。Spark をインストールした後で、HDInsight クラスターで Spark クエリを実行する方法も学習します。
 
-> [AZURE.NOTE]HDInsight は、Spark を最上位のクラスターの種類として提供するようになりました。つまり、Hadoop クラスターを変更しなくても、Spark クラスターを直接プロビジョニングすることができます。Spark クラスターの種類を使用して、Spark バージョン 1.3.1 の HDInsight バージョン 3.2 クラスターを取得します。詳細については、「[HDInsight での Apache Spark 入門](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)」を参照してください。
-
+> [AZURE.IMPORTANT]HDInsight は、Spark を Windows ベースのクラスターに対する最上位のクラスターの種類として提供するようになりました。つまり、Hadoop クラスターを変更しなくても、Spark クラスターを直接プロビジョニングすることができます。Spark クラスターの種類を使用して、Spark バージョン 1.3.1 の HDInsight バージョン 3.2 クラスターを取得します。詳細については、「[HDInsight での Apache Spark 入門](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)」を参照してください。
+>
+> クラスターのカスタマイズ使用した Linux ベースのクラスターでの Spark の操作については、「[Install Spark on Linux-based HDInsight clusters](hdinsight-hadoop-spark-install-linux.md)」 (Linux ベースの HDInsight クラスターへの Spark のインストール) を参照してください。
 
 ## <a name="whatis"></a>Spark とは
 
@@ -37,8 +38,8 @@ Spark を使用して、従来のディスク ベースのデータ処理を実�
 
 このトピックでは、Script Action のカスタム スクリプトを使用して、HDInsight クラスターに Spark をインストールします。このスクリプトではプロビジョニングする HDInsight クラスターのバージョンによって Spark 1.2.0 か Spark 1.0.2 をインストールできます。
 
-- **HDInsight 3.2** クラスターをプロビジョニング中にスクリプトを使用する場合、**Spark 1.2.0** をインストールします。
-- **HDInsight 3.1** クラスターをプロビジョニング中にスクリプトを使用する場合、**Spark 1.0.2** をインストールします。 
+- **HDInsight 3.2** クラスターをプロジョニング中にスクリプトを使用する場合、**Spark 1.2.0** をインストールします。
+- **HDInsight 3.1** クラスターをプロジョニング中にスクリプトを使用する場合、**Spark 1.0.2** をインストールします。
 
 このスクリプトを変更するか、独自のスクリプトを作成してその他の Spark バージョンをインストールできます。
 
@@ -58,7 +59,7 @@ HDInsight クラスターに Spark をインストールするためのサンプ
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
 	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-spark-install/HDI.CustomProvision.Page6.png "Script Action を使ってクラスターをカスタマイズする")
-	
+
 	<table border='1'>
 	<tr><th>プロパティ</th><th>値</th></tr>
 	<tr><td>名前</td>
@@ -77,7 +78,7 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Spark �
 Spark は Scala、Python、および Java で API を提供します。対話型の Spark シェルを使用して Spark クエリを実行することもできます。このセクションでは、さまざまな方法を使用して、Spark を操作する方法の概要を説明します。
 
 - [Spark シェルを使用して、対話型のクエリを実行する](#sparkshell)
-- [Spark シェルを使用して、Spark SQL のクエリを実行する](#sparksql) 
+- [Spark シェルを使用して、Spark SQL のクエリを実行する](#sparksql)
 - [スタンドアロンの Scala プログラムを使用する](#standalone)
 
 ###<a name="sparkshell"></a>Spark シェルを使用して、対話型のクエリを実行する
@@ -105,7 +106,7 @@ Spark は Scala、Python、および Java で API を提供します。対話型
 6. 出力は次のようになります。
 
 	![HDInsight クラスターで Scala 対話型シェルを実行したときの出力](./media/hdinsight-hadoop-spark-install/hdi-scala-interactive.png)
-		
+
 
 7. :q を入力して、Scala プロンプトを終了します。
 
@@ -166,7 +167,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 		import org.apache.spark.SparkContext
 		import org.apache.spark.SparkContext._
 		import org.apache.spark.SparkConf
-		
+
 		object SimpleApp {
 		  def main(args: Array[String]) {
 		    val logFile = "/example/data/gutenberg/davinci.txt"			//Location of the sample data file on Azure Blob storage
@@ -189,18 +190,18 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
 
 		name := "SimpleApp"
-	
+
 		version := "1.0"
-	
+
 		scalaVersion := "2.10.4"
-	
+
 		libraryDependencies += "org.apache.spark" %% "spark-core" % "1.2.0"
 
 
 
 	>[AZURE.NOTE]必ずファイル内に空の行を保持してください。
 
-	
+
 3. **SimpleScalaApp** フォルダーの下にディレクトリ構造 **\\src\\main\\scala** を作成し、前に作成した Scala プログラム (**SimpleApp.scala**) を \\src\\main\\scala フォルダーの下に貼り付けます。
 4. コマンド プロンプトを開き、SimpleScalaApp ディレクトリに移動して、次のコマンドを入力します。
 
@@ -243,7 +244,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 		$location = "<MicrosoftDataCenter>"				# Location of the HDInsight cluster. It must be in the same data center as the Storage account.
 		$clusterNodes = <ClusterSizeInNumbers>			# Number of nodes in the HDInsight cluster
 		$version = "<HDInsightClusterVersion>"          # For example, "3.2"
-	
+
 2. クラスター内のノードや使用する既定のストレージなどの構成値を指定します。
 
 		# Specify the configuration options
@@ -252,7 +253,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 		$config.DefaultStorageAccount.StorageAccountName="$storageAccountName.blob.core.windows.net"
 		$config.DefaultStorageAccount.StorageAccountKey=$storageAccountKey
 		$config.DefaultStorageAccount.StorageContainerName=$containerName
-	
+
 3. **Add-AzureHDInsightScriptAction** コマンドレットを使用して、スクリプト アクションをクラスター構成に追加します。その後、クラスターの作成時に、このスクリプト アクションが実行されます。
 
 		# Add a script action to the cluster configuration
@@ -281,11 +282,11 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 <td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">スクリプトで必要なパラメーター。このトピックで使用するサンプル スクリプトでは、パラメーターは必要ありません。そのため、このパラメーターは上記のスニペットに含まれません。
 </td></tr>
 </table>
-	
+
 4. 最後に、Spark がインストールされているカスタマイズされたクラスターのプロビジョニングを開始します。
-	
+
 		# Start provisioning a cluster with Spark installed
-		New-AzureHDInsightCluster -Config $config -Name $clusterName -Location $location -Version $version 
+		New-AzureHDInsightCluster -Config $config -Name $clusterName -Location $location -Version $version
 
 入力を求められたら、クラスターの資格情報を入力します。クラスターが作成されるまでに数分かかる場合があります。
 
@@ -304,7 +305,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 公開されている最新の SDK を [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
 
-**自己署名証明書を作成するには**
+**自己署名証明書を取得するには**
 
 自己署名証明書を作成し、それをコンピューターにインストールして、さらに、Azure サブスクリプションにアップロードします。手順については、「[Create a self-signed certificate (自己署名証明書の作成)](http://go.microsoft.com/fwlink/?LinkId=511138)」を参照してください。
 
@@ -316,7 +317,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
 
 3. **[新しいプロジェクト]** で、次の値を入力するか、選択します。
-	
+
 	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
 <tr>
 <th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">プロパティ</th>
@@ -350,9 +351,9 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 		using Microsoft.WindowsAzure.Management.HDInsight;
 		using Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning;
 		using Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging;
-	
+
 9. 次のコードをコピーして Main() 関数に貼り付けた後、変数の値を指定します。
-		
+
         var clusterName = args[0];
 
         // Provide values for the variables
@@ -365,7 +366,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
         string password = "<HDInsightUserPassword>";
         int clustersize = <NumberOfNodesInTheCluster>;
 
-        // Provide the certificate thumbprint to retrieve the certificate from the certificate store 
+        // Provide the certificate thumbprint to retrieve the certificate from the certificate store
         X509Store store = new X509Store();
         store.Open(OpenFlags.ReadOnly);
         X509Certificate2 cert = store.Certificates.Cast<X509Certificate2>().First(item => item.Thumbprint == thumbprint);
@@ -374,7 +375,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
         HDInsightCertificateCredential creds = new HDInsightCertificateCredential(new Guid(subscriptionId), cert);
         var client = HDInsightClient.Connect(creds);
 		client.IgnoreSslErrors = true;
-        
+
         // Provide the cluster information
 		var clusterInfo = new ClusterCreateParameters()
         {
@@ -387,7 +388,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
             Password = password,
             ClusterSizeInNodes = clustersize,
             Version = "3.2"
-        };        
+        };
 
 10. [ScriptAction](http://msdn.microsoft.com/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx) クラスを使用して、Spark をインストールするカスタム スクリプトを呼び出すために、次のコードを Main() 関数に追加します。
 
@@ -427,6 +428,5 @@ Azure PowerShell コンソールを開き、Visual Studio プロジェクトを�
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [powershell-install-configure]: ../install-configure-powershell.md
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

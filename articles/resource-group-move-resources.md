@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="新しいリソース グループへのリソースの移動"
-	description="Azure PowerShell または REST API を使用して、リソースを Azure リソース マネージャーの新しいリソース グループに移動します。"
-	services="azure-resource-manager"
-	documentationCenter=""
-	authors="tfitzmac"
-	manager="wpickett"
+	pageTitle="新しいリソース グループへのリソースの移動" 
+	description="Azure PowerShell または REST API を使用して、リソースを Azure リソース マネージャーの新しいリソース グループに移動します。" 
+	services="azure-resource-manager" 
+	documentationCenter="" 
+	authors="tfitzmac" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="azure-resource-manager"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/20/2015"
+	ms.service="azure-resource-manager" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/08/2015" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -39,12 +39,13 @@
 
 - API Management
 - Azure Search
+- Azure Web Apps (いくつかの [制限](app-service-web/app-service-move-resources.md)が適用されます)
 - Data Factory
 - Key Vault
 - Mobile Engagement
 - Operational Insights
 - Redis Cache
-- Azure Web Apps (いくつかの [制限](app-service-web/app-service-move-resources.md)が適用されます)
+- SQL Database
 
 新しいリソース グループへの移動をサポートし、新しいサブスクリプションへの移動はサポートしないサービスは、次のとおりです。
 
@@ -98,7 +99,7 @@ Web アプリを使用している場合、App Service プランのみを移動�
 ## 次のステップ
 - [リソース マネージャーでの Azure PowerShell の使用](./powershell-azure-resource-manager.md)
 - [リソース マネージャーでの Azure クロスプラットフォーム CLI の使用](./virtual-machines/xplat-cli-azure-resource-manager.md)
-- [Azure ポータルを使用した Azure リソースの管理](azure-portal/resource-group-portal.md)
+- [Using the Azure Preview Portal to manage your Azure resources (Azure プレビュー ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
 - [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

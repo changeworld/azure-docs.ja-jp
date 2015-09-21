@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure BLOB ストレージと Visual Studio の接続サービスの概要"
-	description="Visual Studio の ASP.NET プロジェクトで Azure BLOB ストレージの使用を開始する方法"
+	pageTitle="BLOB ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET) | Microsoft Azure"
+	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure BLOB ストレージの使用を開始する方法について説明します。"
 	services="storage"
 	documentationCenter=""
 	authors="patshea123"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.date="09/03/2015"
 	ms.author="patshea123"/>
 
-# Azure BLOB ストレージと Visual Studio の接続サービスの概要
+# BLOB ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET)
 
 > [AZURE.SELECTOR]
 > - [Getting started](vs-storage-aspnet-getting-started-blobs.md)
@@ -31,7 +31,7 @@
 
 この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログ ボックスを使用して ASP.NET app で Azure ストレージ アカウントを参照または作成した後に、Azure BLOB ストレージの使用を開始する方法について説明します。この記事では、BLOB コンテナーの作成のほか、BLOB のアップロード、一覧表示、ダウンロード、および削除などの一般的なタスクの実施方法について述べます。サンプルは C# で記述され、[.NET 用 Azure ストレージ クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)を使用しています。
 
- - Azure テーブル ストレージの使用についてのより一般的な情報については、「[.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)」を参照してください。 
+ - Azure テーブル ストレージの使用についてのより一般的な情報については、「[.NET から BLOB ストレージを使用する方法](storage-dotnet-how-to-use-blobs.md)」を参照してください。
  - ASP.NET の詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。
 
 
@@ -42,7 +42,7 @@ Azure BLOB ストレージは、大量の非構造化データを格納して HT
 
 
 
-##コードで BLOB コンテナーにアクセスする
+## コードで BLOB コンテナーにアクセスする
 
 ASP.NET プロジェクトでプログラムを使用して BLOB にアクセスするには、次の項目を追加する必要があります (存在していない場合)。
 
@@ -54,14 +54,14 @@ ASP.NET プロジェクトでプログラムを使用して BLOB にアクセス
 		using Microsoft.WindowsAzure.Storage.Blob;
 
 
-2. ストレージ アカウント情報を表す `CloudStorageAccount` オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
+2. ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
 
 		CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 		   CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
 
     > [AZURE.NOTE]このコードはすべて、以下のセクションのコードの前に使用してください。
 
-3. ストレージ アカウント内の既存のコンテナーを参照する `CloudBlobClient` オブジェクトを取得します。
+3. ストレージ アカウント内の既存のコンテナーを参照する **CloudBlobClient** オブジェクトを取得します。
 
 		// Create a blob client.
 		CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
@@ -74,7 +74,7 @@ ASP.NET プロジェクトでプログラムを使用して BLOB にアクセス
 
 ## コードで BLOB コンテナーを作成する
 
-`CloudBlobClient` オブジェクトを使用して、ストレージ アカウント内にコンテナーを作成することもできます。必要な作業は、次の例に示すように、上記のコードに対して、`CreateIfNotExistsAsync` への呼び出しを追加するだけです。
+**CloudBlobClient** を使用して、ストレージ アカウントでコンテナーを作成することもできます。必要な作業は、次の例に示すように、**CreateIfNotExistsAsync** への呼び出しを上記のコードに追加することだけです。
 
     // If “mycontainer” doesn’t exist, create it.
     await container.CreateIfNotExistsAsync();
@@ -83,7 +83,7 @@ ASP.NET プロジェクトでプログラムを使用して BLOB にアクセス
 
 Azure BLOB ストレージでは、ブロック BLOB とページ BLOB がサポートされています。ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
-ファイルをブロック blob にアップロードするには、コンテナーの参照を取得し、それを使用してブロック blob の参照を取得します。BLOB の参照を取得したら、`UploadFromStream` メソッドを呼び出すことによって、データの任意のストリームを BLOB にアップロードできます。この操作により、BLOB がまだ存在しない場合は作成され、存在する場合は上書きされます。次の例は、BLOB をコンテナーにアップロードする方法を示しています。この例では、既にコンテナーが作成されていることを前提としています。
+ファイルをブロック blob にアップロードするには、コンテナーの参照を取得し、それを使用してブロック blob の参照を取得します。BLOB の参照を取得したら、**UploadFromStream** メソッドを呼び出すことによって、データの任意のストリームを BLOB にアップロードできます。この操作により、BLOB がまだ存在しない場合は作成され、存在する場合は上書きされます。次の例は、BLOB をコンテナーにアップロードする方法を示しています。この例では、既にコンテナーが作成されていることを前提としています。
 
     // Get a CloudBlobContainer named 'container' as described in "Access blob containers in code."
 
@@ -95,7 +95,7 @@ Azure BLOB ストレージでは、ブロック BLOB とページ BLOB がサポ
 
 ## コンテナー内の BLOB を一覧表示する
 
-コンテナーの BLOB を一覧表示するには、`ListBlobs` メソッドを使用して、その中の BLOB やディレクトリを取得できます。返された `IListBlobItem` の豊富なプロパティとメソッドのセットにアクセスするには、`CloudBlockBlob`、`CloudPageBlob`、または `CloudBlobDirectory` オブジェクトにキャストする必要があります。型がわからない場合は、型チェックを使うとどれにキャストすればよいかがわかります。次のコードは、`photos` コンテナー内の各アイテムの URI を取得して出力する方法を示しています。
+コンテナーの BLOB を一覧表示するには、**ListBlobs** メソッドを使用して、その中の BLOB やディレクトリを取得します。返される **IListBlobItem** のプロパティやメソッドにアクセスするには、**CloudBlockBlob**、**CloudPageBlob**、**CloudBlobDirectory** のいずれかのオブジェクトにキャストする必要があります。型がわからない場合は、型チェックを使うとどれにキャストすればよいかがわかります。次のコードは、**photos** コンテナー内の各アイテムの URI を取得して出力する方法を示しています。
 
     // Get a CloudBlobContainer named 'container' as described in "Access blob containers in code."
 
@@ -124,7 +124,7 @@ Azure BLOB ストレージでは、ブロック BLOB とページ BLOB がサポ
 		}
 	}
 
-前の例からわかるように、BLOB サービスにはコンテナー内のディレクトリの概念もあります。これは、BLOB をよりフォルダーに近い構造で整理できるようにするためです。たとえば、`photos` という名前のコンテナーに次の一連のブロック BLOB があったとします。
+前の例からわかるように、BLOB サービスにはコンテナー内のディレクトリの概念もあります。これは、BLOB をよりフォルダーに近い構造で整理できるようにするためです。たとえば、**photos** というコンテナーに次のブロック BLOB があるとします。
 
 	photo1.jpg
 	2010/architecture/description.txt
@@ -135,14 +135,14 @@ Azure BLOB ストレージでは、ブロック BLOB とページ BLOB がサポ
 	2011/architecture/description.txt
 	2011/photo7.jpg
 
-"photos" コンテナーの `ListBlobs` を呼び出すと (上の例を参照)、返されるコレクションには最上位レベルにあるディレクトリおよび BLOB を表す `CloudBlobDirectory` および `CloudBlockBlob` オブジェクトが含まれています。次の例は、結果として得られる出力を示します。
+'photos' コンテナーに対して **ListBlobs** を呼び出すと (上の例を参照)、返されるコレクションには最上位レベルにあるディレクトリと BLOB を表す **CloudBlobDirectory** や **CloudBlockBlob** オブジェクトが含まれます。次の例は、結果として得られる出力を示します。
 
 	Directory: https://<accountname>.blob.core.windows.net/photos/2010/
 	Directory: https://<accountname>.blob.core.windows.net/photos/2011/
 	Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
 
-必要に応じて、`ListBlobs` メソッドの`UseFlatBlobListing` パラメーターを `true` に設定することもできます。そうすると、ディレクトリに関係なく、すべての BLOB が `CloudBlockBlob` として返されるようになります。次の例では、`ListBlobs` への呼び出しを示しています。
+必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に設定することもできます。これで、ディレクトリに関係なく、すべての BLOB が **￼CloudBlockBlob￼￼** として返されるようになります。次の例では、**ListBlobs** への呼び出しを示しています。
 
     // Loop over items within the container and output the length and URI.
 	foreach (IListBlobItem item in container.ListBlobs(null, true))
@@ -165,7 +165,7 @@ Azure BLOB ストレージでは、ブロック BLOB とページ BLOB がサポ
 
 ## BLOB をダウンロードする
 
-BLOB をダウンロードするには、`DownloadToStream` メソッドを使用します。次の例は、`DownloadToStream` メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
+BLOB をダウンロードするには、**DownloadToStream** メソッドを使用します。次の例は、**DownloadToStream** メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
 
     // Get a CloudBlobContainer named 'container' as described in "Access blob containers in code"
 
@@ -178,7 +178,7 @@ BLOB をダウンロードするには、`DownloadToStream` メソッドを使�
         blockBlob.DownloadToStream(fileStream);
     }
 
-`DownloadToStream` メソッドを使用して BLOB の内容をテキスト文字列としてダウンロードすることもできます。
+**DownloadToStream** メソッドを使用して BLOB の内容をテキスト文字列としてダウンロードすることもできます。
 
     // Get a CloudBlobContainer named 'container' as described in "Access blob containers in code"
 
@@ -194,7 +194,7 @@ BLOB をダウンロードするには、`DownloadToStream` メソッドを使�
 
 ## BLOB を削除する
 
-BLOB を削除するには、`Delete` メソッドを使用します。
+BLOB を削除するには、**Delete** メソッドを使用します。
 
     // Get a CloudBlobContainer named 'container' as described in "Access blob containers in code"
 
@@ -209,9 +209,9 @@ BLOB を削除するには、`Delete` メソッドを使用します。
 
 多数の BLOB を一覧表示する場合や、1 回の一覧表示操作で返される結果の数を制御する場合には、BLOB の一覧を結果のページで表示できます。下記の例は、大きな結果のセットを返すために待機している間に実行がブロックされないように、結果をページで非同期に返す方法を示しています。
 
-この例は、BLOB をフラットな一覧で表示しますが、`ListBlobsSegmentedAsync` メソッドの `useFlatBlobListing` パラメーターを `false` に設定することによって、階層化された一覧で表示することもできます。
+この例では、BLOB をフラットな一覧で表示しますが、**ListBlobsSegmentedAsync** メソッドの **useFlatBlobListing** パラメーターを **false** に設定することで、階層化された一覧で表示することもできます。
 
-サンプル メソッドは非同期メソッドを呼び出すため、その先頭を `async` キーワードにする必要があり、`Task` オブジェクトを返す必要があります。`ListBlobsSegmentedAsync` メソッドに対して指定された await キーワードは、一覧表示タスクが完了するまで、サンプル メソッドの実行を中断します。
+サンプル メソッドは非同期メソッドを呼び出すため、先頭に **async** キーワードを付ける必要があり、また、**Task** オブジェクトを返す必要があります。**ListBlobsSegmentedAsync** メソッドに対して指定された await キーワードは、一覧表示タスクが完了するまで、サンプル メソッドの実行を中断します。
 
     async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
     {
@@ -246,4 +246,4 @@ BLOB を削除するには、`Delete` メソッドを使用します。
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

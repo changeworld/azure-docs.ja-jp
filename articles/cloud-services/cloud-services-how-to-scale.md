@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="クラウド サービスのスケールの設定方法 | Microsoft Azure" 
-	description="Azure でクラウド サービスおよびリンク済みリソースの規模を設定する方法について説明します。" 
+	pageTitle="クラウド サービスの自動スケールの構成 | Microsoft Azure" 
+	description="ポータルを使用して、クラウド サービスおよび Azure のリンク済みリソースの自動スケール ルールを構成する方法について説明します。" 
 	services="cloud-services" 
 	documentationCenter="" 
 	authors="Thraka" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2015"
+	ms.date="09/08/2015"
 	ms.author="adegeo"/>
 
 
 
 
 
-# アプリケーションの規模の設定方法
+# アプリケーションの規模の自動設定方法
 
 Azure 管理ポータルの [スケール] ページで、アプリケーションの規模を手動で設定するか、パラメーターを指定して自動的に規模を設定することができます。Web ロール、worker ロール、または仮想マシンを実行しているアプリケーションの規模を設定できます。Web ロールまたは worker ロールのインスタンスを実行しているアプリケーションの規模を設定するには、ロール インスタンスを追加または削除してワーク ロードを調整します。
 
@@ -227,4 +227,4 @@ Azure 管理ポータルの [スケール] ページで、アプリケーショ�
 [scale_schedule]: ./media/cloud-services-how-to-scale/CloudServices_SetUpSchedule.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

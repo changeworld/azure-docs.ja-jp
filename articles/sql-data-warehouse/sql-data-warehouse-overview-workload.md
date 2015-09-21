@@ -1,20 +1,20 @@
 <properties
    pageTitle="データ ウェアハウスのワークロード"
-	description="SQL Data Warehouse の柔軟性により、Data Warehouse ユニット (DWU) のスライディング スケールを使用してコンピューティング機能を拡大、縮小、または一時停止できます。この記事では、データ ウェアハウスのメトリックと、それらが DWU とどのように関連するのかを説明します。"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="barbkess"
-	manager="jhubbard"
-	editor=""/>
+   description="SQL Data Warehouse の柔軟性により、Data Warehouse ユニット (DWU) のスライディング スケールを使用してコンピューティング機能を拡大、縮小、または一時停止できます。この記事では、データ ウェアハウスのメトリックと、それらが DWU とどのように関連するのかを説明します。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="barbkess"
+   manager="jhubbard"
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-services"
-	ms.date="05/23/2015"
-	ms.author="barbkess;JRJ@BigBangData.co.uk"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="09/04/2015"
+   ms.author="barbkess;twounder;JRJ@BigBangData.co.uk"/>
 
 # データ ウェアハウスのワークロード
 データ ウェアハウスのワークロードは、データ ウェアハウスに対して発生するすべての操作を指します。データ ウェアハウスのワークロードには、ウェアハウスへのデータの読み込み、データ ウェアハウスでの分析の実行とレポート作成、データ ウェアハウスでのデータの管理、およびデータ ウェアハウスからのデータのエクスポートというプロセス全体が含まれます。これらのコンポーネントの深度や幅は、多くの場合データ ウェアハウスの成熟度レベルと比例します。
@@ -37,7 +37,7 @@
 
 - 従来から、この読み込みプロセスは、ETL (抽出 (Extract)、変換 (Transform)、および読み込み (Load)) と呼ばれています。通常、データはデータ ウェアハウス内の他のデータと整合するように変換される必要があります。以前は、企業は専用の ETL サーバーを使用して変換を実行していました。現在はこのように高速で膨大な量の並列処理機能を使用して、最初に SQL Data Warehouse にデータを読み込んでから、変換を実行できるようになりました。このプロセスは ELT (抽出 (Extract)、読み込み (Load)、および変換 (Transform)) と呼ばれ、データ ウェアハウス ワークロードの新しい標準になりつつあります。
 
-> [AZURE 注記] SQL Server CTP2 を使用して、OLTP テーブルでリアルタイムの分析を実行できるようになりました。これによってデータ ウェアハウスでデータを保存および分析する必要がなくなったというわけではありませんが、リアルタイムで分析を実行できるようになりました。
+> [AZURE.NOTE]SQL Server CTP2 を使用して、OLTP テーブルでリアルタイムの分析を実行できるようになりました。これによってデータ ウェアハウスでデータを保存および分析する必要がなくなったというわけではありませんが、リアルタイムで分析を実行できるようになりました。
  
 ### レポート作成と分析のクエリ
 レポート作成と分析のクエリは条件の数に基づいて小規模、中規模、および大規模に分類されることはよくありますが、通常は時間に基づいています。ほとんどのデータ ウェアハウスには、高速で実行されるクエリと長時間実行されるクエリが混合されたワークロードがあります。いずれの場合でも、この混合状況を判別して、その頻度 (時間単位、日単位、月末、四半期末など) を判別することが重要です。混合されたクエリ ワークロードと同時実行性が組み合わされることで、データ ウェアハウスに対する適切な容量計画を行うことができることを理解する必要があります。
@@ -66,10 +66,10 @@
 <!--Image references-->
 
 <!--Article references-->
-[開発の概要]: sql-data-warehouse-overview-development.md
+[開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
 
 <!--Other web references-->
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

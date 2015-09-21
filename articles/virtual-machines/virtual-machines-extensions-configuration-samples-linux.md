@@ -1,24 +1,30 @@
 <properties
    pageTitle="Azure VM 拡張機能のサンプル構成 | Microsoft Azure"
-	description="拡張機能を使用したテンプレート作成のサンプル構成"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="kundanap"
-	manager="timlt"
-	editor=""/>
+   description="拡張機能を使用したテンプレート作成のサンプル構成"
+   services="virtual-machines"
+   documentationCenter=""
+   authors="kundanap"
+   manager="timlt"
+   editor=""/>
 
 <tags
    ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="09/01/2015"
-	ms.author="kundanap"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/01/2015"
+   ms.author="kundanap"/>
 
 # Azure Linux VM 拡張機能の構成のサンプル
 
-この記事には、Azure IaaS Linux VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが記載されています。これらの拡張機能の詳細については、<a href="https://msdn.microsoft.com/ja-JP/library/azure/dn606311.aspx" target="_blank">こちら</a>をクリックしてください。
+この記事には、Azure IaaS Linux VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが記載されています。
+
+これらの拡張機能の詳細については、「[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/azure/dn606311.aspx)」を参照してください。
+
+拡張機能テンプレートの作成の詳細については、「[拡張機能テンプレートの作成](virtual-machines-extensions-authoring-templates.md)」を参照してください。
+
+この記事では、一部の Linux 拡張機能について、予測される構成値の一覧を示します。
 
 ## VM 拡張機能のサンプル テンプレート スニペット
 拡張機能をデプロイするためのテンプレート スニペットは次のようになります。
@@ -91,7 +97,7 @@
         }
 
 ### VM Access 拡張機能 (パスワード リセット)
-更新されたスキーマについては、<a href="https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess" target="_blank">こちら</a>のリンクを参照してください。
+更新版のスキーマについては、[VMAccessForLinux のドキュメント](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess)を参照してください。
 
         {
           "publisher": "Microsoft.OSTCExtensions",
@@ -107,7 +113,7 @@
         }
 
 ### OS の修正プログラム
-更新されたスキーマについては、<a href="https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching" target="_blank">こちら</a>のリンクを参照してください。
+更新版のスキーマについては、[OSPatching のドキュメント](https://github.com/Azure/azure-linux-extensions/tree/master/OSPatching)を参照してください。
 
         {
         "publisher": "Microsoft.OSTCExtensions",
@@ -132,7 +138,7 @@
         }
 
 ### Docker 拡張機能
-更新されたスキーマについては、<a href="https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema" target="_blank">こちら</a>のリンクを参照してください。
+更新版のスキーマについては、[Docker 拡張機能のドキュメント](https://github.com/Azure/azure-docker-extension/blob/master/README.md#1-configuration-schema)を参照してください。
 
         {
           "publisher": "Microsoft.Azure.Extensions ",
@@ -155,6 +161,29 @@
             }
             }
         }
+
+        ### Linux Diagnostics Extension
+        {
+        "storageAccountName": "storage account to receive data",
+        "storageAccountKey": "key of the account",
+        "perfCfg": [
+        {
+            "query": "SELECT PercentAvailableMemory, AvailableMemory, UsedMemory ,PercentUsedSwap FROM SCX_MemoryStatisticalInformation",
+            "table": "LinuxMemory"
+        }
+        ],
+        "fileCfg": [
+        {
+            "file": "/var/log/mysql.err",
+            "table": "mysqlerr"
+        }
+        ]
+        }
+
 上記の例では、バージョン番号を最新のバージョン番号に置き換えます。
 
-<!---HONumber=September15_HO1-->
+拡張機能を使用して Linux VM を作成するための完全な VM テンプレートについては、次を参照してください。
+
+[Linux VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
+
+<!---HONumber=Sept15_HO2-->

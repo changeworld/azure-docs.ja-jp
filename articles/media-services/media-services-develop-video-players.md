@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015" 
 	ms.author="juliako"/>
 
 
@@ -23,9 +23,6 @@
 
 Azure Media Services には、ほとんどのプラットフォーム (iOS デバイス、Android デバイス、Windows、Windows Phone、Xbox、セットトップ ボックスなど) 向けのリッチで動的なクライアント再生アプリケーションの作成に必要なツールが用意されています。このトピックでは、Azure Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できる SDK とプレーヤー フレームワークへのリンクもご紹介します。
 
-##既存のプレーヤーを使用してコンテンツを再生する
-
-詳細については、[既存のプレーヤーを使用したコンテンツの再生](media-services-playback-content-with-existing-players.md)に関するトピックをご覧ください
 
 ##Azure Media Player
 
@@ -69,6 +66,15 @@ Azure Media Services では、Windows メディア プラットフォームの�
 
 ライブ ストリーミング ビデオでのクローズド キャプションと広告のサポートの詳細については、「[サポートされる字幕と広告挿入の標準](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad)」をご覧ください。
 
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
 ##関連項目
 
 [DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み](media-services-embed-mpeg-dash-in-html5.md)
@@ -76,4 +82,4 @@ Azure Media Services では、Windows メディア プラットフォームの�
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

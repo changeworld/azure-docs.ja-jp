@@ -1,6 +1,7 @@
 <properties
 	pageTitle="HDInsight Tools for Visual Studio を使用する方法 | Microsoft Azure"
 	description="Visual Studio Hadoop Tools for HDInsight をインストールして、Hadoop クラスターに接続し、Hive クエリを実行する方法について説明します。"
+	keywords="hadoop tools,hive query,visual studio"
 	services="HDInsight"
 	documentationCenter=""
 	tags="azure-portal"
@@ -14,17 +15,14 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="07/28/2015"
+	ms.date="09/03/2015"
 	ms.author="jgao"/>
 
 # HDInsight Tools for Visual Studio を使用して Hive クエリを実行する
 
 HDInsight Tools for Visual Studio を使用して HDInsight クラスターに接続し、Hive クエリを送信する方法について説明します。HDInsight の使用に関する詳細については、「[HDInsight での Hadoop 入門][hdinsight.introduction]」と「[HDInsight の概要][hdinsight.get.started]」をご覧ください。Storm クラスターへの接続に関する詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する][hdinsight.storm.visual.studio.tools]」をご覧ください。
 
->[AZURE.NOTE]最新のリリースでは、Hive エディターのサポート、Hive スクリプトのローカルでの検証、YARN ログへのアクセスといった一部の新機能が追加されました。
-
-
-## 前提条件
+**前提条件**
 
 このチュートリアルを完了して、Visual Studio で Hadoop ツールを使用するには、次が必要になります。
 
@@ -160,7 +158,7 @@ Hive クエリを作成して実行するには次の 2 つの方法がありま
 
 **Hive ソリューションを作成し、実行するには**
 
-1. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
+1. **[ファイル]** メニューの **[新規作成]** をポイントし、**[プロジェクト]** をクリックします。
 2. 左側のウィンドウから **[HDInsight]** を選択し、中央のウィンドウで **[Hive アプリケーション]** を選択して、プロパティを入力し、**[OK]** をクリックしします。
 
 	![Hadoop ツール: HDinsight Visual Studio ツール新しい Hive プロジェクト][11]
@@ -176,18 +174,20 @@ Hive ジョブのジョブ クエリ、ジョブ出力、ジョブのログ、Ya
 **Hive ジョブの表示**
 
 1. **サーバー エクスプローラー**から、**[Azure]**、**[HDInsight]** の順に展開します。
-2. HDInsight クラスターを右クリックし、**[Hive ジョブの表示]** をクリックします。クラスター上で実行した Hive ジョブの一覧が表示されます。
+2. HDInsight クラスターを右クリックし、**[ジョブの表示]** をクリックします。クラスター上で実行した Hive ジョブの一覧が表示されます。
 3. ジョブの一覧でジョブをクリックして選択し、**[Hive ジョブの概要]** ウィンドウを使用して **[ジョブ クエリ]**、**[ジョブ出力]**、**[ジョブのログ]**、または **[Yarn ログ]** を開きます。
 
 	![Hadoop ツール: HDinsight Visual Studio ツールで新しい Hive ジョブを表示する][12]
 
 ### Tez Hive ジョブのパフォーマンス グラフ
 
-HDInsight Tools for Visual Studio は Tez 実行エンジンで実行された Hive ジョブのパフォーマンス グラフの表示をサポートしています。Tez を有効にする方法については、「[HDInsight での Hive の使用][hdinsight.hive]」を参照してください。Visual Studio で Hive ジョブを送信した後、ジョブが完了すると、Visual Studio にグラフが表示されます。最新のジョブの状態を取得するには、**更新**ボタンをクリックする必要があります。
+HDInsight Tools for Visual Studio は Tez 実行エンジンで実行された Hive ジョブのパフォーマンス グラフの表示をサポートしています。Tez を有効にする方法については、[HDInsight での Hive の使用][hdinsight.hive]に関するページを参照してください。Visual Studio で Hive ジョブを送信した後、ジョブが完了すると、Visual Studio にグラフが表示されます。最新のジョブの状態を取得するには、**[更新]**ボタンをクリックする必要があります。
 
 > [AZURE.NOTE]この機能はバージョン 3.2.4.593 以上の HDInsight クラスターでのみ使用でき、完了したジョブでのみ有効です。これは、Windows ベースと Linux ベースの両方のクラスターで機能します。
 
 ![hadoop hive tez パフォーマンス グラフ](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.hive.tez.performance.graph.png)
+
+Hive クエリを理解しやすくするために、今回のリリースでツールに Hive 演算子表示機能が追加されました。ジョブ グラフの頂点をダブルクリックするだけで、頂点内のすべての演算子を表示できます。特定の演算子の上にマウス ポインターを置きことで、その演算子の詳細を表示することもできます。
 
 ## Pig のスクリプトを実行する
 
@@ -236,4 +236,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

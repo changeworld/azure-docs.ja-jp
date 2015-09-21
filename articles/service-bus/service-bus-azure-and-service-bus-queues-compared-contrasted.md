@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Azure キューと Service Bus キューの比較"
-	description="Azure によって提供される 2 種類のキューの相違点と共通点について説明します。"
-	services="service-bus"
-	documentationCenter="na"
-	authors="sethmanheim"
-	manager="timlt"
-	editor="tysonn"/>
+   description="Azure によって提供される 2 種類のキューの相違点と共通点について説明します。"
+   services="service-bus"
+   documentationCenter="na"
+   authors="sethmanheim"
+   manager="timlt"
+   editor="tysonn" />
 <tags 
    ms.service="service-bus"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="tbd"
-	ms.date="08/25/2015"
-	ms.author="sethm"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="tbd"
+   ms.date="09/09/2015"
+   ms.author="sethm" />
 
 # Azure キューと Service Bus キューの比較
 
@@ -257,7 +257,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 |比較条件|Azure キュー|Service Bus キュー|
 |---|---|---|
 |認証|**対称キー**|**対称キー**|
-|アクセス制御モデル|SAS トークンを介した委任アクセス。|ACS を介した RBAC|
+|セキュリティ モデル|SAS トークンを介した委任アクセス。|SAS|
 |ID プロバイダー フェデレーション|**いいえ**|**はい**|
 
 ### 追加情報
@@ -265,10 +265,6 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 - どちらのキュー テクノロジでも、すべての要求を認証する必要があります。匿名アクセスを使用するパブリック キューはサポートされていません。SAS を使用すると、書き込み専用 SAS、読み取り専用 SAS、フルアクセス SAS を発行することで、このシナリオに対応できます。
 
 - Azure キューによって提供される認証方式では対称キーが使用されます。対称キーとは、SHA-256 アルゴリズムを使用してコンピューティングされ、**Base64 **文字列としてエンコードされるハッシュ ベースのメッセージ認証コード (HMAC) です。各プロトコルの詳細情報については、「[Authenticating Access to Your Storage Account (ストレージ アカウントへのアクセスの認証)](https://msdn.microsoft.com/library/hh225339.aspx)」をご覧ください。Service Bus キューでは、対称キーを使用する類似のモデルをサポートします。詳細については、「[Service Bus での共有アクセス署名認証](https://msdn.microsoft.com/library/dn170477.aspx)」をご覧ください。
-
-- Service Bus によってサポートされる Microsoft Azure Active Directory Access Control (Access Control Service または ACS) は、3 種類のロール **Admin**、**Sender**、**Receiver** を提供します。Receiver は現時点では Azure キューに対してサポートされていません。
-
-- Service Bus では ACS の統合がサポートされているため、Active Directory (ADFS を使用) および一般的な Web ID プロバイダーとのフェデレーションが可能です。
 
 ## コスト
 
@@ -292,7 +288,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - Service Bus キューでは長いポーリングがサポートされているため、待機時間の短い配信が必要な状況でこのキューを使用すると、コスト効率が向上する可能性があります。
 
->[AZURE.NOTE] すべてのコストは、変更されることがあります。上記の表は、このドキュメントの作成時点の価格を反映しています。ここには、現在利用できるキャンペーン プランは含まれていません。Azure の最新の価格情報については、「[Azure の価格](http://azure.microsoft.com/pricing/)」ページをご覧ください。Service Bus の価格の詳細については、「[Service Bus の価格](http://azure.microsoft.com/pricing/details/service-bus/)」 を参照してください。
+>[AZURE.NOTE]すべてのコストは、変更されることがあります。上記の表は、このドキュメントの作成時点の価格を反映しています。ここには、現在利用できるキャンペーン プランは含まれていません。Azure の最新の料金情報については、「[Azure の料金](http://azure.microsoft.com/pricing/)」ページをご覧ください。Service Bus の料金の詳細については、「[Service Bus 料金]((http://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
 ## まとめ
 
@@ -315,4 +311,4 @@ Service Bus キューには高度な機能が数多く用意されているた�
 - [Azure Storage の課金について - 帯域幅、トランザクション、容量 (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
  
 
-<!----HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

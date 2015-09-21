@@ -1,20 +1,20 @@
 <properties
-   pageTitle="Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する"
-	description="Azure RemoteApp を使用して、ユーザーと任意の Windows アプリを共有する方法について説明します。"
-	services="remoteapp"
-	documentationCenter=""
-	authors="lizap"
-	manager="mbaldwin"
-	editor=""/>
+   pageTitle="Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する | Microsoft Azure"
+   description="Azure RemoteApp を使用して、ユーザーと任意の Windows アプリを共有する方法について説明します。"
+   services="remoteapp"
+   documentationCenter=""
+   authors="lizap"
+   manager="mbaldwin"
+   editor=""/>
 
 <tags
    ms.service="remoteapp"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.tgt_pltfrm="na"
-	ms.workload="compute"
-	ms.date="09/02/2015"
-	ms.author="elizapo"/>
+   ms.devlang="na"
+   ms.topic="hero-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="compute"
+   ms.date="09/02/2015"
+   ms.author="elizapo"/>
 
 # Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
 
@@ -55,6 +55,7 @@ Access はデータベースです。せっかくのデータベースが役立�
 
 コレクションの作成時に、Azure RemoteApp のノードから移動している場合は、まず Azure ホーム ページから元の場所に戻ります。
 
+1. 左側のナビゲーションにある **[RemoteApp]** をクリックします。
 2. 作成しておいたコレクションをクリックし、追加のオプションにアクセスして、コレクションを構成します。
 ![新規の RemoteApp クラウド コレクション](./media/remoteapp-anyapp/ra-anyappcollection.png)
 3. **[発行]** タブの画面の下部にある **[発行]** をクリックしてから、**[スタート メニュー プログラムの発行]** をクリックします。
@@ -83,9 +84,10 @@ Access はデータベースです。せっかくのデータベースが役立�
 3. ここで、Azure [ストレージ アカウント](../storage-create-storage-account.md)を作成する必要があります。サンプルには「accessstorage」という名前が付いています。わかりやすい名前を 1 つ選んでください (「accessstorage」 という名前は 1 つしか使えないため)。
 ![Azure ストレージ アカウント](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
 4. 次に、ダッシュボードに戻り、ストレージ (エンドポイントの場所) へのパスを取得します。しばらくの間使用するので、このパスをどこかにコピーしておいてください。
+
 ![ストレージ アカウント パス](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
-5. ストレージ アカウントが作成されたら、次は、プライマリ アクセス キーが必要になります。**[アクセス キーの管理]** をクリックして、プライマリ アクセス キーをコピーします。
-6. ここで、ストレージ アカウントのコンテキストを設定し、Access 用の新しいファイル共有を作成します。管理者特権の Windows PowerShell ウィンドウで、次のコマンドレットを実行します。
+5.ストレージ アカウントが作成されたら、次は、プライマリ アクセス キーが必要になります。**[アクセス キーの管理]** をクリックして、プライマリ アクセス キーをコピーします。
+6.ここで、ストレージ アカウントのコンテキストを設定し、Access 用の新しいファイル共有を作成します。管理者特権の Windows PowerShell ウィンドウで、次のコマンドレットを実行します。
 
         $ctx=New-AzureStorageContext <account name> <account key>
     	$s = New-AzureStorageShare <share name> -Context $ctx
@@ -116,4 +118,4 @@ Access はデータベースです。せっかくのデータベースが役立�
 
 <!--Image references-->
 
-<!-----HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

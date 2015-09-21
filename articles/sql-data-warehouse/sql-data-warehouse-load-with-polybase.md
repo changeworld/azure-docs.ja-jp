@@ -1,20 +1,20 @@
 <properties
    pageTitle="SQL Data Warehouse の PolyBase チュートリアル | Microsoft Azure"
-	description="データ ウェアハウジングのシナリオに沿って、PolyBase の概要と、その使用方法を学習します。"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="barbkess"
-	manager="jhubbard"
-	editor="jrowlandjones"/>
+   description="データ ウェアハウジングのシナリオに沿って、PolyBase の概要と、その使用方法を学習します。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="barbkess"
+   manager="jhubbard"
+   editor="jrowlandjones"/>
 
 <tags
    ms.service="sql-data-warehouse"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-services"
-	ms.date="05/09/2015"
-	ms.author="sahajs;barbkess"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="09/02/2015"
+   ms.author="sahajs;barbkess"/>
 
 
 # PolyBase を使用したデータのロード
@@ -137,6 +137,8 @@ DROP EXTERNAL FILE FORMAT text_file_format
 
 LOCATION オプションで、データ ソースのルートからデータまでのパスが指定されます。この例では、データは 'wasbs://mycontainer@ test.blob.core.windows.net/path/Demo/' にあります。同じテーブルのすべてのファイルは、Azure BLOB の同じ論理フォルダーの下にある必要があります。
 
+必要に応じて、PolyBase が外部データ ソースから受信したダーティ レコードをどのように処理するかを決定する拒否オプション (REJECT\_TYPE、REJECT\_VALUE、REJECT\_SAMPLE\_VALUE) も指定できます。
+
 ```
 -- Creating external table pointing to file stored in Azure Storage
 CREATE EXTERNAL TABLE [ext].[CarSensor_Data] 
@@ -170,11 +172,11 @@ DROP EXTERNAL TABLE [ext].[CarSensor_Data]
 ;
 ```
 
-> [AZURE.NOTE]外部テーブルの削除では `DROP EXTERNAL TABLE` を使用する必要があります。`DROP TABLE` は使用**できません**。
+> [AZURE.NOTE]外部テーブルを削除するときは `DROP EXTERNAL TABLE` を使用する必要があります。`DROP TABLE` は**使用できません**。
 
-リファレンス トピック: [DROP EXTERNAL TABLE (Transact-SQL)][]。
+リファレンス トピック: [DROP EXTERNAL TABLE (Transact-SQL)][].
 
-外部テーブルは `sys.tables`、また特に `sys.external_tables` カタログ ビューに表示できることにも注意してください。
+外部テーブルは両方の `sys.tables`で表示できること、より具体的には `sys.external_tables` カタログ ビューに表示できることにも注意してください。
 
 ## ストレージ キーの交換
 
@@ -197,21 +199,17 @@ Azure ストレージ アカウント キーの交換は、次のシンプルな
 ## Azure BLOB ストレージ データのクエリ
 外部テーブルに対するクエリでは、リレーショナル テーブルであるかのように、単にテーブル名が使用されます。
 
-これは、SQL Data Warehouse に格納されている保険顧客データを、Azure Storage BLOB に格納されている自動車センサー データと結びつけるアドホック クエリです。結果として、他のドライバーよりも運転速度が速いドライバーが表示されます。
 
 ```
--- Join SQL Data Warehouse relational data with Azure storage data. 
-SELECT 
-      [Insured_Customers].[FirstName]
-,     [Insured_Customers].[LastName]
-,     [Insured_Customers].[YearlyIncome]
-,     [CarSensor_Data].[Speed]
-FROM  [dbo].[Insured_Customers] 
-JOIN  [ext].[CarSensor_Data]         ON [Insured_Customers].[CustomerKey] = [CarSensor_Data].[CustomerKey]
-WHERE [CarSensor_Data].[Speed] > 60 
-ORDER BY [CarSensor_Data].[Speed] DESC
+
+-- Query Azure storage resident data via external table. 
+SELECT * FROM [ext].[CarSensor_Data]
 ;
+
 ```
+
+> [AZURE.NOTE]外部テーブルに対するクエリが、*"クエリは中止されました。外部ソースの読み取り中に最大拒否しきい値に達しました"* というエラーで失敗する場合があります。これは、外部データに*ダーティ*なレコードが含まれていることを示します。データ レコードは、列の実際のデータの種類/数値が外部テーブルの列定義と一致しない場合、またはデータが指定された外部ファイルの形式に従っていない場合に「ダーティ」であるとみなされます。これを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。外部データ レコードのサブセットがダーティである場合は、CREATE EXTERNAL TABLE DDL の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
+
 
 ## Azure BLOB ストレージからのデータのロード
 この例では、Azure BLOB ストレージから SQL Data Warehouse データベースにデータをロードします。
@@ -327,4 +325,4 @@ $write.Dispose()
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189450.aspx
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

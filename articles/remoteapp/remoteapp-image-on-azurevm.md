@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="Azure VM に基づく Azure RemoteApp イメージの作成"
+    pageTitle="Azure VM に基づく Azure RemoteApp イメージの作成 | Microsoft Azure"
     description="Azure 仮想マシンを使用することで Azure RemoteApp のイメージを作成する方法について説明します。" 
     services="remoteapp" 
     documentationCenter="" 
@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="08/12/2015" 
+    ms.date="09/02/2015" 
     ms.author="elizapo" />
 
 
@@ -27,7 +27,7 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 
 次の手順を使用して、Azure VM に基づくイメージを作成します。
 
-1. Azure 仮想マシンを作成します。Azure 仮想マシン イメージ ギャラリーの "Windows Server Remote Desktop Session Host" イメージを使用できます。このイメージは、Azure RemoteApp テンプレート イメージのすべての要件を満たしています。 
+1. Azure 仮想マシンを作成します。Azure 仮想マシン イメージ ギャラリーの “Windows Server Remote Desktop Session Host” イメージまたは "Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus" イメージを使用できます。このイメージは、Azure RemoteApp テンプレート イメージのすべての要件を満たしています。 
 
 	詳細については、[Windows を実行する VM の作成](virtual-machines-windows-tutorial.md)に関するページを参照してください。
 
@@ -35,7 +35,7 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 
 	詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)」を参照してください。
 
-3. Windows Server リモート デスクトップ セッション ホストのイメージを使用している場合は、VM が RemoteApp の前提条件を満たしていることを確認するための検証スクリプトが含まれています。スクリプトを実行するには、デスクトップ上にある **ValidateRemoteAppImage** をダブルクリックします。次の手順に進む前に、スクリプトによって報告されたエラーはすべて修正します。
+3. いずれかの Windows Server リモート デスクトップ セッション ホストのイメージを使用している場合は、VM が RemoteApp の前提条件を満たしていることを確認するための検証スクリプトが含まれています。スクリプトを実行するには、デスクトップ上にある **ValidateRemoteAppImage** をダブルクリックします。次の手順に進む前に、スクリプトによって報告されたエラーはすべて修正します。
 
 4. SYSPREP は、イメージを一般化してキャプチャします。手順については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](../virtual-machines-capture-image-windows-server.md)に関するページを参照してください。
 
@@ -59,4 +59,4 @@ Azure VM に基づく独自のイメージを作成するには、イメージ�
 これで、ニーズに応じて新しいコレクション ([クラウド](remoteapp-create-cloud-deployment.md) コレクションか[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションのいずれか) を作成する準備ができました。
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

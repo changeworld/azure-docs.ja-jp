@@ -5,7 +5,7 @@
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar"/>
+	editor="monicar" />
 
 
 <tags
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
 	ms.date="08/28/2015"
-	ms.author="jroth"/>
+	ms.author="jroth" />
 
 
 # Azure SQL Database のリソース制限
@@ -49,7 +49,7 @@ Basic、Standard、および Premium サービス プランの設計目標の 1 
 
 [AZURE.INCLUDE [SQL DB のサービス プランの表](../../includes/sql-database-service-tiers-table.md)]
 
-## データベース プロビジョニングのクォータ
+## サーバーごとの DTU クォータ
 
 Azure SQL Database では、論理サーバーごとの DTU クォータが現在 2000 DTU となっています。このクォータは、論理サーバーでホストできる DTU を表し、サーバー上の各データベースのパフォーマンス レベルにおける DTU の合計に基づいています。たとえば、5 つの Basic データベース (最大 5 x 5 DTU)、2 つの Standard S1 データベース (最大 2 x 20 DTU)、3 つの Premium P1 データベース (最大 3 X 100 DTU) があるサーバーは、2000 DTU クォータのうち 365 DTU を使用します。
 
@@ -63,4 +63,4 @@ Azure SQL Database では、論理サーバーごとの DTU クォータが現�
 
 [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="コネクタと BizTalk API Apps とは"
-	description="API Apps、コネクタ、および BizTalk API Apps について説明します。"
-	services="app-service\logic"
-	documentationCenter=""
-	authors="MandiOhlinger"
-	manager="dwrede"
+	pageTitle="コネクタと BizTalk API Apps とは" 
+	description="API Apps、コネクタ、および BizTalk API Apps について説明します。" 
+	services="app-service\logic" 
+	documentationCenter="" 
+	authors="MandiOhlinger" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-logic"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.service="app-service-logic" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/08/2015" 
 	ms.author="mandia"/>
 
 # コネクタと BizTalk API Apps とは
@@ -48,4 +48,4 @@ Premium コネクタによって、企業と SAP、Oracle、DB2、Informix、Web
 Standard コネクタ、BizTalk EAI、Premium コネクタなどの各カテゴリに含まれるコネクタと API Apps の完全な一覧については、[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)を参照してください。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

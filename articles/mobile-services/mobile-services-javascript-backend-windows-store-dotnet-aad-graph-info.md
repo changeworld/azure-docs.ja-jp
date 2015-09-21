@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Active Directory Graph 情報へのアクセス (Windows ストア) | Microsoft Azure" 
-	description="Windows ストア アプリケーションで、Graph API を使用して Azure Active Directory の情報にアクセスする方法について説明します。" 
+	pageTitle="JavaScript バックエンドで Mobile Service を使用した Azure Active Directory Graph 情報へのアクセス (Windows ストア) | Microsoft Azure" 
+	description="JavaScript バックエンド Mobile Service で、Graph API を使用して Azure Active Directory の情報にアクセスする方法について説明します。" 
 	documentationCenter="windows" 
 	authors="wesmc7777" 
 	manager="dwrede" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/18/2015" 
+	ms.date="09/03/2015" 
 	ms.author="wesmc"/>
 
-# Azure Active Directory Graph 情報へのアクセス
+# JavaScript バックエンドでモバイル サービスを使用した Azure Active Directory Graph 情報へのアクセス
 
 
 [AZURE.INCLUDE [mobile-services-selector-aad-graph](../../includes/mobile-services-selector-aad-graph.md)]
@@ -181,4 +181,4 @@ Mobile Services でカスタム API をまったく使用したことがない�
 [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: mobile-services-javascript-backend-windows-store-dotnet-aad-rbac.md
 [Azure Active Directory Graph Team Blog (Azure Active Directory Graph チームのブログ)]: http://go.microsoft.com/fwlink/?LinkId=510536
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

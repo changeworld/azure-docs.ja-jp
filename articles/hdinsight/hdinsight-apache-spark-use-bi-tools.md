@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/31/2015" 
+	ms.date="09/03/2015" 
 	ms.author="nitinme"/>
 
 
@@ -31,7 +31,7 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 
 - Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - Apache Spark クラスター。手順については、「[Azure HDInsight での Apache Spark クラスターのプロビジョニング](hdinsight-apache-spark-provision-clusters.md)」をご覧ください。
-- Microsoft Spark ODBC ドライバーがインストールされたコンピューター。ドライバーは[ここ](http://go.microsoft.com/fwlink/?LinkId=616229)からインストールできます。
+- Microsoft Spark ODBC ドライバー (HDInsight の Spark で Tableau を使用するために必要) がインストールされたコンピューター。ドライバーは[ここ](http://go.microsoft.com/fwlink/?LinkId=616229)からインストールできます。
 - [Power BI](http://www.powerbi.com/) や [Tableau Desktop](http://www.tableau.com/products/desktop) などの BI ツール。Power BI の無料プレビュー サブスクリプションは [http://www.powerbi.com/](http://www.powerbi.com/) から入手できます。
 
 ##<a name="hivetable"></a>生データを Hive テーブルとして保存する
@@ -208,4 +208,4 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

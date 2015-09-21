@@ -35,7 +35,7 @@ Microsoft Azure Active Directory の多くの無料機能セットが基にな�
 Active Directory Basic エディションは Azure Active Directory の有料プランであり、以下の機能が含まれます。
 
 - **企業のブランド化** - エンド ユーザー エクスペリエンスをよりよくするために、会社のロゴや配色パターンを組織のサインインおよびアクセス パネル ページに追加できます。ロゴを追加した後は、異なる言語およびロケール用にローカライズ版のロゴを追加することもできます。詳細については、「[サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)」を参照してください。
-- **グループ ベースのアプリケーション アクセス** - グループを使用してユーザーをプロビジョニングし、何千もの SaaS アプリケーションにユーザー アクセスを一括して割り当てます。これらのグループは、クラウド内でのみ作成することも、オンプレミスの Active Directory から同期化されている既存のグループを利用することもできます。詳細については、「[Assign access for a group to a SaaS application in Azure AD (Azure AD で SaaS アプリケーションへのアクセスをグループに割り当てる)](https://msdn.microsoft.com/library/azure/dn621141.aspx)」を参照してください。
+- **グループ ベースのアプリケーション アクセス** - グループを使用してユーザーをプロビジョニングし、何千もの SaaS アプリケーションにユーザー アクセスを一括して割り当てます。これらのグループは、クラウド内でのみ作成することも、オンプレミスの Active Directory から同期化されている既存のグループを利用することもできます。詳細については、「[Assign access for a group to a SaaS application in Azure AD (Azure AD で SaaS アプリケーションへのアクセスをグループに割り当てる)](active-directory-accessmanagement-group-saasapps.md)」を参照してください。
 - **セルフ サービスのパスワード リセット** - Azure では、ディレクトリ管理者は常にパスワードをリセットできます。Azure Active Directory Basic では、ディレクトリ内のすべてのユーザーは Office 365 と同じサインイン エクスペリエンスを使用してパスワードをリセットできるので、ユーザーがパスワードを忘れてヘルプデスクに問い合わせることが減ります。詳細については、「[Azure AD でのパスワード管理](https://msdn.microsoft.com/library/azure/dn510386.aspx)」を参照してください。
 - **99.9% のエンタープライズ SLA** - Azure Active Directory Basic サービスでは 99.9% 以上の可用性が保証されます。
 - [**Azure Active Directory アプリケーション プロキシ**](https://msdn.microsoft.com/library/azure/dn768214.aspx) - Azure Active Directory を使用してクラウドから SharePoint や Exchange/OWA などのオンプレミス アプリケーションに安全にアクセスできます。
@@ -122,4 +122,4 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

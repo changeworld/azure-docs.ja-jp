@@ -318,7 +318,7 @@ Azure Search には、検索演算子の動作を制御できる構成可能な 
 
 これらのすべてのタスクを実行するのには、サービスにインデックスを作成および入力する Azure サブスクリプションが必要です。無料評価版にサインアップする方法の詳細については、[https://azure.microsoft.com/pricing/free-trial](https://azure.microsoft.com/pricing/free-trial/) を参照してください。
 
-Azure Search に関する詳細については、[http://azure.microsoft.com](http://azure.microsoft.com) の[ドキュメント ページ](http://azure.microsoft.com/documentation/services/search/)を参照するか、Azure Search の機能を検証する[サンプルおよびビデオ](https://msdn.microsoft.com/library/dn818681.aspx)をご希望の数参照してください。
+Azure Search に関する詳細については、[http://azure.microsoft.com](http://azure.microsoft.com) の[ドキュメント ページ](http://azure.microsoft.com/documentation/services/search/)を参照するか、Azure Search の機能を検証する[サンプルおよびビデオ](search-video-demo-tutorial-list.md)をご希望の数参照してください。
 
 <a name="Schema"></a>
 ##スキーマについて
@@ -529,4 +529,4 @@ Azure Search に関する詳細については、[http://azure.microsoft.com](ht
 [13]: ./media/search-tryappservice/AzSearch-TryAppService-Schema.png
 [14]: ./media/search-tryappservice/AzSearch-TryAppService-HitHighlight.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

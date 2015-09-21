@@ -2,7 +2,7 @@
 	pageTitle="Application Insights: 言語とプラットフォーム | Microsoft Azure"
 	description="Application Insights で使用できる言語とプラットフォーム"
 	services="application-insights"
-	documentationCenter=""
+    documentationCenter=""
 	authors="alancameronwills"
 	manager="douge"/>
 
@@ -48,6 +48,7 @@
 + [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
 + [Microsoft CRM](app-insights-sample-mscrm.md)
 + [Node.JS](https://www.npmjs.com/package/applicationinsights)
++ [Orchard](https://orchardazureappinsights.codeplex.com) 
 + [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 + [SharePoint](app-insights-sharepoint.md)
 + [Windows ストア C#|VB](app-insights-windows-get-started.md)
@@ -61,7 +62,7 @@
 
 +	[Log4Net、NLog、または System.Diagnostics.Trace](app-insights-diagnostic-search.md)
 +	[Java、Log4J、または Logback](app-insights-java-trace-logs.md)
-+   [セマンティック ログ](https://github.com/fidmor89/SLAB_AppInsights) &#151; [セマンティック ログ アプリケーション ブロック](https://msdn.microsoft.com/library/dn440729.aspx)と連携
++   [セマンティック ログ](https://github.com/fidmor89/SLAB_AppInsights)&#151; [セマンティック ログ アプリケーション ブロック](https://msdn.microsoft.com/library/dn440729.aspx)と連携
 +   [クラウド ベースのロード テスト](http://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 
 ## <a name="projects"></a> 独自の SDK をビルドする
@@ -77,4 +78,4 @@
 
 <!--Link references-->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

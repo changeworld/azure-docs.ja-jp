@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/18/2015" 
+	ms.date="09/03/2015" 
 	ms.author="tamram"/>
 
 
@@ -117,4 +117,4 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 -   <a href="http://msdn.microsoft.com/library/azure/gg680307.aspx">CDN コンテンツをカスタム ドメインにマッピングする方法</a>
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

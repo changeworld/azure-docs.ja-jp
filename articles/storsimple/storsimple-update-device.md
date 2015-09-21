@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/19/2015"
+   ms.date="09/04/2015"
    ms.author="v-sharos" />
 
-# StorSimple デバイスの更新
+# StorSimple 8000 シリーズ デバイスの更新
 
 ## 概要
 
@@ -119,4 +119,4 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 [Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します](storsimple-windows-powershell-administration.md)。
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

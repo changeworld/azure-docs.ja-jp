@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Media Encoder の形式とコーデック"
-	description="このトピックでは、Azure Media Encoder の形式とコーデックの概要を示します。"
-	services="media-services"
-	documentationCenter=""
-	authors="juliako"
-	manager="dwrede"
+	pageTitle="Azure Media Encoder の形式とコーデック" 
+	description="このトピックでは、Azure Media Encoder の形式とコーデックの概要を示します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/30/2015"
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/05/2015" 
 	ms.author="juliako"/>
 
 #Azure Media Encoder の形式とコーデック
@@ -21,7 +21,7 @@
 このドキュメントでは、Azure Media Encoder で使用できる一般的な入力および出力ファイルの形式とコーデックの一覧を示しています。
 
 
-##入力ビデオ ファイル形式 (コンテナー)
+##入力ファイル形式 (コンテナー)
  
 ファイル形式 (ファイル拡張子)|サポートされています
 ---|---
@@ -33,32 +33,25 @@ Audio-Video Interleaved (AVI) (.avi) |あり
 DVD トランスポート ストリーム (TS) ファイル (.ts) |あり
 DVD ビデオ オブジェクト (VOB) ファイル (.vob) |あり
 Expression Encoder Screen Capture Codec ファイル (.xesc) |あり
-MP4 (.mp4) |あり
+MP4 (.mp4、.m4a、.m4v)/ISMV (.isma、.ismv) |あり
 MPEG-1 System Stream (.mpeg, .mpg) |あり
 MPEG-2 ビデオ ファイル (.m2v) |あり
-スムーズ ストリーミング ファイル形式 (PIFF 1.3) (.ismv) |あり
 Windows Media Video (WMV) (.wmv) |あり
+AC-3 (Dolby Digital) オーディオ (.ac3)|あり
+Audio Interchange File Format (AIFF) (.aiff)|あり
+Broadcast Wave Format(.bwf)|あり
+MP3 (MPEG-1 Audio Layer 3)(.mp3)|あり
+MPEG-4 オーディオ ブック (.m4b)|あり
+WAVE ファイル (.wav)|あり
+Windows Media オーディオ (.wma)|あり
 Adobe® Flash® F4V |いいえ		
 MXF/SMPTE 377M |制限あり 
 GXF |いいえ		 
 [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|いいえ
 Matroska/WebM |いいえ
 
+
 一部の非圧縮形式がサポートされます。詳細については、「[サポートされている非圧縮ビデオ形式](#uncompressed)」をご覧ください。
-
-##入力オーディオ ファイル形式
-
-ファイル形式 (ファイル拡張子)|サポートされています
----|---
-AC-3 (Dolby Digital) オーディオ (.ac3)|あり
-Audio Interchange File Format (AIFF) (.aiff)|あり
-Broadcast Wave Format(.bwf)|あり
-MP3 (MPEG-1 Audio Layer 3)(.mp3)|あり
-MP4 オーディオ (.m4A)|あり
-MPEG-4 オーディオ ブック (.m4b)|あり
-WAVE ファイル (.wav)|あり
-Windows Media オーディオ (.wma)|あり
-
 
 ##入力ビデオ コーデック
 
@@ -141,4 +134,12 @@ YUV 211 形式データ|パックされた YUV 形式。2 番目ごとのピク�
 Cirrus Logic Jr YUV 411 形式|Y、U、および V サンプルあたり 8 ビット未満の Cirrus Logic Jr YUV 411 形式です。各ピクセルの Y サンプル、各行の水平の 4 番目ごとのピクセルの U および V サンプル。各垂直線がサンプリングされます。
 Indeo で生成した YVU9 形式|最後のフレームとの違いに関する追加情報を持つ、Indeo で生成した YVU9 形式です。1 ピクセルあたり 9.5 ビットですが、9 ビットとして報告されます。
 
-<!---HONumber=September15_HO1-->
+
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+<!---HONumber=Sept15_HO2-->

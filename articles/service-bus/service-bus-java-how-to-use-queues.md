@@ -172,10 +172,10 @@ Service Bus キューに送信されたメッセージ (および Service Bus �
 
 ## 次のステップ
 
-これで、Service Bus キューの基本を学習できました。詳細については、MSDN のトピック「[Service Bus のキュー、トピックおよびサブスクリプション][]」を参照してください。
+これで、Service Bus キューの基本を学習できました。詳細については、[キュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
 
   [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
-  [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/ja-jp/library/azure/hh694271.aspx
+  [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/ja-JP/library/azure/hh694271.aspx
   [What are Service Bus Queues?]: #what-are-service-bus-queues
   [Create a Service Namespace]: #create-a-service-namespace
   [Obtain the Default Management Credentials for the Namespace]: #obtain-default-credentials
@@ -186,7 +186,7 @@ Service Bus キューに送信されたメッセージ (および Service Bus �
   [How to: Handle Application Crashes and Unreadable Messages]: #bkmk_HowToHandleAppCrashes
   [Next Steps]: #bkmk_NextSteps
   [Azure Management Portal]: http://manage.windowsazure.com/
-  [Service Bus のキュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/library/windowsazure/hh367516.aspx
+  [キュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

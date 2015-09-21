@@ -3,7 +3,7 @@
    description="ソリューション開発のための Azure SQL Data Warehouse への SQL コードの移行に関するヒント"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="jrowlandjones"
+   authors="lodipalm"
    manager="barbkess"
    editor=""/>
 
@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/25/2015"
+   ms.date="09/09/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse への SQL コードの移行
 
-コードが SQL Data Warehouse と必ず準拠するようにするには、多くの場合、コード ベースに変更を加える必要があります。一部の SQL Data Warehouse 機能では分散環境で直接機能するように設計されているため、大幅にパフォーマンスを向上できます。ただし、パフォーマンスと拡張性を維持するには、一部の機能が使用できなくなる場合もあります。
+コードが SQL Data Warehouse と必ず準拠するようにするには、多くの場合、コード ベースに変更を加える必要があります。一部の SQL Data Warehouse 機能は分散環境で直接機能するように設計されているため、大幅にパフォーマンスを向上できます。ただし、パフォーマンスと拡張性を維持するには、一部の機能が使用できなくなる場合もあります。
 
 ## Transact-SQL コードの変更点
 
-Azure SQL Data Warehouse でサポートされていない主な機能を次に示します。掲載されたリンクをクリックすると、サポートされていない機能に対する解決策が表示されます。
+Azure SQL Data Warehouse でサポートされていない主な機能を次の表に示します。リンクをクリックすると、サポートされていない機能に対する解決策が表示されます。
 
 - [更新での ANSI の JOIN][]
 - [削除での ANSI の JOIN][]
@@ -114,4 +114,4 @@ AND     request_id IN
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

@@ -76,7 +76,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 |	異常なサインイン アクティビティがあるユーザー | | |	✓ |
 |	資格情報が漏洩したユーザー | | |	✓ |
 |	**アクティビティ ログ**
-|	監査レポート |	✓ | | |
+|	監査レポート |	✓ |	✓ |	✓ |
 |	パスワード リセット アクティビティ | | |	✓ |
 |	パスワード リセット登録アクティビティ | | |	✓ |
 |	セルフ サービス グループ アクティビティ | | |	✓ |
@@ -276,4 +276,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに会社のブランドを追加します。](active-directory-add-company-branding.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

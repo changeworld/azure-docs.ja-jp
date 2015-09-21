@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Ports beyond 1433 for ADO.NET 4.5, and SQL Database V12 (ADO.NET 4.5、SQL Database V12 における 1433 以外のポート) | Microsoft Azure"
-	description="Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。"
+	pageTitle="SQL Database における 1433 以外のポート | Microsoft Azure"
+	description="ADO.NET から Azure SQL Database V12 へのクライアント接続では、プロキシを使用せずに、データベースと直接やり取りする場合があります。1433 以外のポートが重要になります。"
 	services="sql-database"
 	documentationCenter=""
 	authors="MightyPen"
 	manager="jeffreyg"
-	editor=""/>
+	editor="" />
 
 
 <tags 
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="sql-database" 
+	ms.workload="data-management" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/04/2015" 
 	ms.author="genemi"/>
 
 
@@ -62,37 +62,17 @@ Azure クラウド境界内でクライアントを実行している場合、�
 
 
 1. ADO.NET 4.5 (またはそれ以降) は、Azure クラウドと簡単なやり取りを開始し、動的に指定されたポート番号を受信します。
- - 動的に特定されるポート番号は、11000 から 11999 の範囲になります。
+ - 動的に特定されるポート番号は、11000 から 11999 または 14000 から 14999 の範囲になります。
 
 2. ADO.NET は次に、ミドルウェアによって仲介することなく、SQL Database サーバーと直接接続します。
 
 3. クエリは、データベースに直接送信され、その結果もクライアントに直接返されます。
 
 
-11000 から 11999 のポート範囲が Azure クライアント コンピューター上で使用可能なまま残され、SQL Database V12 と ADO.NET 4.5 クライアントのやり取りに使用できることを確認します。
+11000 から 11999 および 14000 から 14999 のポート範囲が Azure クライアント コンピューター上で使用可能なまま残され、SQL Database V12 と ADO.NET 4.5 クライアントのやり取りに使用できることを確認します。
 
 - 具体的には、対象の範囲のポートが他のすべての送信ブロッカーの影響を受けないようにします。
 - Azure VM 上の Windows ファイアウォールがポート設定を制御します。
-
-
-## プロキシ ルートに含まれる暗黙的な再試行ロジック
-
-
-運用環境では、Azure SQL Database V11 または V12 に接続するクライアントのコード内に再試行ロジックを実装することをお勧めします。これはカスタム コードや、Enterprise Library などの API を利用するコードにできます。
-
-
-このトピックの冒頭で説明したプロキシ ルートは、再試行ロジックの疑問に関連します。
-
-
-- V11 では、プロキシとして動作するミドルウェア モジュールは、いくつかの一時障害を適切に処理する比較的軽い再試行ロジックも提供します。
-
-- V12 では、プロキシが再試行ロジックを提供することはありません。
-
-
-どちらのシナリオでも、クライアントが独自のコードで再試行ロジックを実装することをお勧めします。再試行ロジックを提供しない最新のプロキシでは、クライアントでの再試行ロジックの必要性は間違いなく上がります。
-
-
-再試行ロジックを実施するコード サンプルについては、「[Client quick-start code samples to SQL Database (SQL Database に対するクライアントのクイック スタート コード サンプル)](sql-database-develop-quick-start-client-code-samples.md)」をご覧ください。
 
 
 ## バージョンの明確化
@@ -114,16 +94,10 @@ Azure クラウド境界内でクライアントを実行している場合、�
 このトピックでは、SQL Database V11 と V12 でのクライアント接続の差異について説明します。
 
 
-*注:* Transact-SQL ステートメントは`SELECT @@version;`、'11 ' または '12' から始まる値を返します。この数値は、SQL Database のバージョン名 (V11 と V12) と一致します。
+*注:* Transact-SQL ステートメント `SELECT @@version;` は、'11.' または '12.' から始まる値を返します。この数値は、SQL Database のバージョン名 (V11 と V12) と一致します。
 
 
 ## 関連リンク
-
-
-- [SQL Database V12 の新機能](sql-database-v12-whats-new.md)
-
-
-- [SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md)
 
 
 - ADO.NET 4.6 は、2015 年 7 月 20 日にリリースされました。.NET チームのブログのお知らせは[こちら](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)からご利用になれます。
@@ -135,4 +109,7 @@ Azure クラウド境界内でクライアントを実行している場合、�
 
 - [TDS プロトコルのバージョンの一覧](http://www.freetds.org/userguide/tdshistory.htm)
 
-<!---HONumber=September15_HO1-->
+
+- [SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md)
+
+<!---HONumber=Sept15_HO2-->

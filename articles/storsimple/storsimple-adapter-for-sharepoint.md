@@ -1,19 +1,19 @@
 <properties 
    pageTitle="SharePoint 用 StorSimple アダプター | Microsoft Azure"
-	description="SharePoint サーバー ファームに SharePoint 用 StorSimple アダプターをインストールして構成する方法について説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   description="SharePoint サーバー ファームに SharePoint 用 StorSimple アダプターをインストールして構成または削除する方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="SharS"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/27/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/03/2015"
+   ms.author="v-sharos" />
 
 # SharePoint 用 StorSimple アダプターをインストールして構成する
 
@@ -55,7 +55,7 @@ BLOB コンテンツをファイル システムに移動すると、さらに�
 
 ### 容量とパフォーマンスに関する制限事項
 
-SharePoint ソリューションで RBS を使用することを検討する前に、SharePoint Server 2010 と SharePoint Server 2013 でテストされたパフォーマンスと容量に関する制限事項と、その制限事項と許容可能なパフォーマンスとの関連について注意する必要があります。詳細については、「ソフトウェアの境界と制限 (SharePoint 2013)」を参照してください。
+SharePoint ソリューションで RBS を使用することを検討する前に、SharePoint Server 2010 と SharePoint Server 2013 でテストされたパフォーマンスと容量に関する制限事項と、その制限事項と許容可能なパフォーマンスとの関連について注意する必要があります。詳細については、「[ソフトウェアの境界と制限 (SharePoint 2013)](https://technet.microsoft.com/library/cc262787.aspx)」を参照してください。
 
 RBS を構成する前に、次の点を確認してください。
 
@@ -226,7 +226,75 @@ SharePoint サイトからオブジェクトを削除しても、RBS ストア �
 >
 >- アップグレード/再インストールが完了したら、コンテンツ データベースに対して RBS を有効にする必要があります。詳細については、「[RBS の構成](#configure-rbs)」を参照してください。
 >
->- 大量のデータベース (200 以上) がある SharePoint ファームに対して RBS を構成している場合、**[SharePoint サーバーの全体管理]** ページがタイムアウトする可能性があります。その場合は、ページを更新します。ページを更新しても構成プロセスに影響はありません。
+>- 大量のデータベース (200 を超える) がある SharePoint ファームに対して RBS を構成している場合、**[SharePoint サーバーの全体管理]** ページがタイムアウトする可能性があります。その場合は、ページを更新します。ページを更新しても構成プロセスに影響はありません。
+
+[AZURE.INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]
+ 
+## SharePoint 用 StorSimple アダプターの削除
+
+次の手順では、BLOB を SQL Server のコンテンツ データベースに戻した後、SharePoint 用 StorSimple アダプター をアンインストールする方法について説明します。
+
+>[AZURE.IMPORTANT]アダプター ソフトウェアをアンインストールする前に、BLOB をコンテンツ データベースに戻す必要があります。
+
+### 開始する前に 
+
+データを SQL Server コンテンツ データベースに戻してアダプター削除プロセスを開始する前に、以下の情報を収集してください。
+
+- RBS が有効になっているすべてのデータベースの名前
+- 構成されている BLOB ストアの UNC パス
+
+### BLOB をコンテンツ データベースに戻す
+
+SharePoint 用 StorSimple アダプター ソフトウェアをアンインストールする前に、外部化されていたすべての BLOB を、再度 SQL Server コンテンツ データベースに移行する必要があります。すべての BLOB をコンテンツ データベースに戻す前に SharePoint 用 StorSimple アダプターをアンインストールしようとすると、次の警告メッセージが表示されます。
+
+![警告メッセージ](./media/storsimple-adapter-for-sharepoint/sasp1.png)
+ 
+####BLOB をコンテンツ データベースに戻すには 
+
+1. 外部化された各オブジェクトをダウンロードします。
+
+2. **[SharePoint サーバーの全体管理]** ページを開き、**[システム設定]** を参照します。
+
+3. **[Azure StorSimple]** の **[StorSimple アダプターの構成]** をクリックします。
+
+4. **[StorSimple アダプターの構成]** ページで、外部 BLOB ストレージから削除する各コンテンツ データベースの下にある **[無効化]** をクリックします。
+
+5. SharePoint からオブジェクトを削除し、再度アップロードします。
+
+または、SharePoint に用意されている Microsoft ` RBS Migrate()` PowerShell コマンドレットを使用することもできます。詳細については、「[コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx)」を参照してください。
+
+BLOB をコンテンツ データベースに戻したら、次の手順の「[アダプターのアンインストール](#uninstall-the-adapter)」に進みます。
+
+### アダプターのアンインストール
+
+BLOB を SQL Server コンテンツ データベースに戻したら、次のいずれかのオプションを使用して、SharePoint 用 StorSimple アダプターをアンインストールします。
+
+#### インストール プログラムを使用してアダプターをアンインストールするには 
+
+1. 管理者特権を持つアカウントを使用して、Web フロント エンド (WFE) サーバーにログオンします。
+2. SharePoint 用 StorSimple アダプター インストーラーをダブルクリックします。セットアップ ウィザードが起動します。
+
+![セットアップ ウィザード](./media/storsimple-adapter-for-sharepoint/sasp2.png)
+
+3. **[次へ]** をクリックします。次のページが表示されます。
+
+![セットアップ ウィザードの削除ページ](./media/storsimple-adapter-for-sharepoint/sasp3.png)
+
+4. **[削除]** をクリックして削除プロセスを選択します。次のページが表示されます。
+
+![セットアップ ウィザードの確認ページ](./media/storsimple-adapter-for-sharepoint/sasp4.png)
+
+5. **[削除]** をクリックして削除を確定します。次の進行状況ページが表示されます。
+
+![セットアップ ウィザードの進行状況ページ](./media/storsimple-adapter-for-sharepoint/sasp5.png)
+
+6. 削除が完了すると、完了ページが表示されます。**[完了]** をクリックしてセットアップ ウィザードを閉じます。
+
+#### コントロール パネルを使用してアダプターをアンインストールするには 
+
+1. コントロール パネルを開き、**[プログラムと機能]** をクリックします。
+
+2. **[SharePoint 用 StorSimple アダプター]** を選択してから、**[アンインストール]** をクリックします。
 
 ## 次のステップ
 
@@ -240,4 +308,4 @@ SharePoint サイトからオブジェクトを削除しても、RBS ストア �
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/ja-JP/library/ff943565.aspx
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

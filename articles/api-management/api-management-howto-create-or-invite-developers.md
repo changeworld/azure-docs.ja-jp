@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2015" 
+	ms.date="09/10/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management でユーザー アカウントを管理する方法
@@ -26,7 +26,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 ![パブリッシャー ポータル][api-management-management-console]
 
-左側の **[API Management]** メニューの **[開発者]** をクリックし、**[ユーザーの追加]** をクリックします。
+左側の **[API Management]** メニューの **[ユーザー]** をクリックし、**[ユーザーの追加]** をクリックします。
 
 ![Create developer][api-management-create-developer]
 
@@ -42,7 +42,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 ## <a name="invite-developer"> </a>開発者の招待
 
-開発者を招待するには、左側の **[API Management]** メニューの **[開発者]** をクリックし、**[ユーザーの招待]** をクリックします。
+開発者を招待するには、左側の **[API Management]** メニューの **[ユーザー]** をクリックし、**[ユーザーの招待]** をクリックします。
 
 ![Invite developer][api-management-invite-developer]
 
@@ -50,7 +50,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 ![Invite developer][api-management-invite-developer-window]
 
-確認メッセージが表示されます。ただし、新しく招待した開発者は、招待が受け入れられるまで一覧に表示されません。
+確認メッセージが表示されます。ただし、新しく招待した開発者は、招待を受け入れるまで一覧に表示されません。
 
 ![Invite confirmation][api-management-invite-developer-confirmation]
 
@@ -91,4 +91,4 @@ API Management では、開発者は、API Management を使用して公開さ�
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 [電子メール テンプレートの構成]: api-management-howto-configure-notifications.md#email-templates
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

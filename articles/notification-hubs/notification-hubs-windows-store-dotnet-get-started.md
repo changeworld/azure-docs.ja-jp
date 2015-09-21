@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Notification Hubs の使用 | Microsoft Azure"
+	pageTitle="Azure Notification Hubs の使用 (Windows ストア アプリ) | Microsoft Azure"
 	description="このチュートリアルでは、Azure Notification Hubs を使用して Windows ストアまたは Windows Phone 8.1 アプリケーション (Silverlight 以外) にプッシュ通知する方法について学習します。"
 	services="notification-hubs"
 	documentationCenter="windows"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="08/24/2015"
+	ms.date="09/03/2015"
 	ms.author="wesmc"/>
 
-# Notification Hubs の使用
+# Notification Hubs の使用 (Windows ストア アプリ)
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -264,4 +264,4 @@ MSDN の [トースト カタログ]、[タイル カタログ]、[バッジの�
 [タイル カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
 [バッジの概要]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

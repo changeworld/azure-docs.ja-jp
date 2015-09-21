@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure リソース マネージャーのテンプレートの作成"
-	description="宣言型 JSON 構文を使用して Azure にアプリケーションをデプロイする Azure リソース マネージャーのテンプレートを作成します。"
-	services="azure-resource-manager"
-	documentationCenter="na"
-	authors="tfitzmac"
-	manager="wpickett"
-	editor=""/>
+   description="宣言型 JSON 構文を使用して Azure にアプリケーションをデプロイする Azure リソース マネージャーのテンプレートを作成します。"
+   services="azure-resource-manager"
+   documentationCenter="na"
+   authors="tfitzmac"
+   manager="wpickett"
+   editor=""/>
 
 <tags
    ms.service="azure-resource-manager"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/20/2015"
-	ms.author="tomfitz"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/20/2015"
+   ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの作成
 
@@ -128,6 +128,7 @@ Azure アプリケーションでは、通常、目的を達成するために�
 - object または secureObject - 有効な JSON オブジェクト
 - array - 有効な JSON 配列
 
+パラメーターを省略可能に指定するには、defaultValue を空の文字列に設定します。
 
 >[AZURE.NOTE]すべてのパスワード、キー、およびその他のシークレットでは、**secureString** 型を使用する必要があります。SecureString 型を持つテンプレート パラメーターをリソース デプロイの後に読み取ることはできません。
 
@@ -424,6 +425,6 @@ For more information, see the [resourceId function](../resource-group-template-f
 - テンプレート内から使用できる関数の詳細については、「[Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)」を参照してください。
 - 作成したテンプレートをデプロイする方法を確認するには、[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)に関する記事を参照してください。
 - アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
-- 使用可能なスキーマを確認するには、[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)に関するページを参照してください。
+- 使用可能なスキーマを確認するには、[Azure リソース マネージャーのスキーマに関するページ](https://github.com/Azure/azure-resource-manager-schemas)を参照してください。
 
-<!----HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

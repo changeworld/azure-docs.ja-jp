@@ -1,19 +1,19 @@
-<properties 
+<properties
  pageTitle="仮想マシンの拡張機能とその機能について | Microsoft Azure"
-	description="仮想マシン拡張機能の多くについて、接続や基本的な管理など、提供または改善される内容ごとにまとめて説明します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="squillace"
-	manager="timlt"
-	editor=""/>
-<tags 
+ description="仮想マシン拡張機能の多くについて、接続や基本的な管理など、提供または改善される内容ごとにまとめて説明します。"
+ services="virtual-machines"
+ documentationCenter=""
+ authors="squillace"
+ manager="timlt"
+ editor=""/>
+<tags
  ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-multiple"
-	ms.workload="infrastructure-services"
-	ms.date="08/25/2015"
-	ms.author="rasquill"/>
+ ms.devlang="na"
+ ms.topic="article"
+ ms.tgt_pltfrm="vm-multiple"
+ ms.workload="infrastructure-services"
+ ms.date="09/03/2015"
+ ms.author="rasquill"/>
 #仮想マシンの拡張機能とその機能について
 Microsoft Azure では、Microsoft 製およびサード パーティ プロバイダー製の両方の VM 拡張機能を提供しています。これらの機能によって、Azure Virtual Machines の生産性を向上させるのに役立つセキュリティ、ランタイム、デバッグ、管理などの機能が有効化されます。このトピックでは、使用に合わせて Windows 仮想マシンおよび Linux 仮想マシンの両方に対して Azure VM 拡張機能により提供される各種機能について説明し、それぞれについてのドキュメントを示します。
 
@@ -94,6 +94,6 @@ VM 拡張機能では、パスワードのリセットや RDP の構成などの
 |VM 拡張機能の名前|機能の説明|詳細情報|
 |---|---|---|
 |**BGInfo**|RDP の使用時に、有用なサーバー情報を統合した図をデスクトップに表示します。|[BGInfo 拡張機能](https://msdn.microsoft.com/library/dn606289.aspx)|
-|**HpcVmDrivers**|VM が Azure リモート ダイレクト メモリ アクセス (RDMA) ネットワークにアクセスできるように、サイズが A8 または A9 の仮想マシンに以下のネットワーク ドライバをインストール、構成、管理します。|[HpcVmDrivers 拡張機能](https://msdn.microsoft.com/library/dn690126.aspx)
+|**HpcVmDrivers**|Windows Server 2012 R2 または Windows Server 2012 を実行しているサイズが A8 または A9 の VM で、リモート ダイレクト メモリ アクセス (RDMA) ネットワーク デバイスのドライバーのインストール、構成、管理を行います。クラスター化された A8 または A9 の VM で、並列 MPI アプリケーション の実行中に RDMA ネットワークを使用できるようになります。|[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-a8-a9-a10-a11-specs.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

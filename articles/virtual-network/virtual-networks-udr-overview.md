@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/09/2015"
+   ms.date="09/04/2015"
    ms.author="telmos" />
 
 # ユーザー定義のルートと IP 転送
@@ -90,4 +90,4 @@ Azure で VM の IP 転送を有効にする方法については、「[Azure �
 - [ルートを作成](../virtual-networks-udr-how-to#How-to-manage-routes)してサブネットと関連付ける方法を説明します。
 - 仮想アプライアンスを実行する VM の [IP 転送を有効にする](../virtual-networks-udr-how-to#How-to-Manage-IP-Forwarding)方法を説明します。 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

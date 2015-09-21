@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Power BI における Application Insights データに関するページをご覧ください。"
-	description="Power BI を使用すると、アプリケーションのパフォーマンスと使用状況を監視できます。"
-	services="application-insights"
-	documentationCenter=""
-	authors="noamben"
+	pageTitle="Power BI における Application Insights データに関するページをご覧ください。" 
+	description="Power BI を使用すると、アプリケーションのパフォーマンスと使用状況を監視できます。" 
+	services="application-insights" 
+    documentationCenter=""
+	authors="noamben" 
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/08/2015" 
 	ms.author="awills"/>
  
 # Application Insights データの Power BI ビュー
@@ -24,6 +24,9 @@
 この記事では、Application Insights からデータをエクスポートして、Stream Analytics を使用して Power BI にデータを移動する方法について説明します。[Stream Analytics](http://azure.microsoft.com/services/stream-analytics/) はアダプターとして使用する Azure サービスです。
 
 ![Application Insights の使用状況データの Power BI ビュー サンプル](./media/app-insights-export-power-bi/020.png)
+
+
+> [AZURE.NOTE]Stream Analytics から Power BI にデータを送信するには、職場または学校のアカウント (MSDN 組織アカウント) が必要です。
 
 ## ビデオ
 
@@ -49,11 +52,11 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 3. ストレージ アクセス キーのコピー
 
-    これは、ストリーム分析サービスへの入力のセットアップのためにすぐに必要になります。
+    これは、Stream Analytics サービスへの入力のセットアップのためにすぐに必要になります。
 
     ![ストレージで、[設定]、[キー] の順に開き、プライマリ アクセス キーのコピーを取ります](./media/app-insights-export-power-bi/045.png)
 
-## Azure ストレージへの連続エクスポートの開始
+## Azure Storage への連続エクスポートの開始
 
 [連続エクスポート](app-insights-export-telemetry.md)は、Application Insights から Azure のストレージにデータを移動します。
 
@@ -78,7 +81,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
     また、データはストレージにもエクスポートされます。
 
-4. エクスポートされたデータを検査します。Visual Studio で、**[表示]、[Cloud Explorer]** の順に選択します。[Azure]、[ストレージ] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+4. エクスポートされたデータを検査します。Visual Studio で、**[表示]、[Cloud Explorer]** の順に選択します。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
 
     ![](./media/app-insights-export-power-bi/04-data.png)
 
@@ -140,13 +143,15 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ウィザードを閉じ、セットアップが完了するまで待機します。
 
+> [AZURE.TIP]サンプルのコマンドを使用し、データをダウンロードします。クエリをデバッグするために、それをテスト サンプルとして保存します。
+
 ## 出力の設定
 
 では、ジョブを選択し、出力を設定しましょう。
 
 ![新しいチャネルを選択して、[出力]、[追加]、[Power BI] をクリックします。](./media/app-insights-export-power-bi/160.png)
 
-Stream Analytics による Power BI リソースへのアクセスを承認し、出力、およびターゲットの Power BI データセットとテーブルの名前を作成します。
+**作業または学校のアカウント**を指定し、Power BI リソースにアクセスする許可を Stream Analytics に与えます。次に、出力に名前を付け、ターゲット Power BI データセットと表に名前を付けます。
 
 ![3 つの名前を作成します。](./media/app-insights-export-power-bi/170.png)
 
@@ -155,6 +160,11 @@ Stream Analytics による Power BI リソースへのアクセスを承認し�
 クエリでは、入力から出力への変換を制御します。
 
 ![ジョブを選択し、[クエリ] をクリックします。以下のサンプルを貼り付けます。](./media/app-insights-export-power-bi/180.png)
+
+
+テスト機能を使用し、出力が正しいことを確認します。入力ページから取得したサンプル データを指定します。
+
+#### イベントの数を表示するためのクエリ
 
 このクエリを貼り付けます。
 
@@ -173,7 +183,29 @@ Stream Analytics による Power BI リソースへのアクセスを承認し�
 
 * export-input は、ストリーム入力に付けたエイリアスです。
 * pbi-output は、定義した出力エイリアスです。
-* イベントの名前は JSON 配列にネストされているため、GetElements を使用します。Select でイベント名と、期間内にその名前を持つインスタンスの個数を取得します。Group By 句では、1 分という期間内に要素をグループ化します。
+* イベントの名前は JSON 配列にネストされているため、[OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx) を使用します。Select でイベント名と、期間内にその名前を持つインスタンスの個数を取得します。[Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) 句では、1 分という期間内に要素をグループ化します。
+
+
+#### メトリックの値を表示するためのクエリ
+
+
+```SQL
+
+    SELECT
+      A.context.data.eventtime,
+      avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
+    INTO
+      [pbi-output]
+    FROM
+      [export-input] A
+    OUTER APPLY GetElements(A.context.custom.metrics) as flat
+    GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
+
+``` 
+
+* このクエリはメトリック製品利用統計情報をドリルダウンし、イベント時刻とメトリック値を取得します。メトリック値は配列内に置かれます。そのため、OUTER APPLY GetElements パターンを使用し、行を抽出します。「myMetric」がこのケースのメトリックの名前になります。 
+
+
 
 ## ジョブを実行する
 
@@ -185,7 +217,7 @@ Stream Analytics による Power BI リソースへのアクセスを承認し�
 
 ## Power BI で結果を確認します。
 
-Power BI を開き、Stream Analytics ジョブの出力として定義したデータセットとテーブルを選択します。
+職場または学校のアカウントで Power BI を開き、Stream Analytics ジョブの出力として定義したデータセットとテーブルを選択します。
 
 ![Power BI で、データセットとフィールドを選択します。](./media/app-insights-export-power-bi/200.png)
 
@@ -207,4 +239,4 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

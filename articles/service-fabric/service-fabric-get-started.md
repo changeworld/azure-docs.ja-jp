@@ -13,13 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/24/2015"
+   ms.date="09/10/2015"
    ms.author="seanmck"/>
 
 # Service Fabric 開発環境の設定
  この記事では、ランタイム、SDK、ツールのインストール、およびローカル クラスターの設定など、[Service Fabric][1] アプリのビルド開始に必要な事柄すべてを説明します。
 
- >[AZURE.NOTE]次の手順は、新しい PC を設定するためのものです。PC に以前のバージョンの Service Fabric がインストールされている場合は、[開発環境を更新する手順](service-fabric-update-your-development-environment.md)に従ってください。
+ >[AZURE.NOTE]次の手順は、新しい PC を設定するためのものです。PC に以前のバージョンの Service Fabric がインストールされている場合は、[開発環境の更新手順](service-fabric-update-your-development-environment.md)に従ってください。
 
 ## 前提条件
 ### サポートされるオペレーティング システムのバージョン
@@ -51,8 +51,9 @@ Service Fabric のコンポーネントは、Web Platform Installer によって
 
 Service Fabric は、ローカル開発クラスターの作成、および Visual Studio からのアプリケーションのデプロイに、Windows PowerShell スクリプトを使用します。既定では、Windows はこれらのスクリプトの実行をブロックします。これらを有効にするには、PowerShell 実行ポリシーを変更する必要があります。管理者として PowerShell を開き、次のコマンドを入力します。
 
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
-
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
+```
 
 ## ローカル クラスターをインストールして開始します。
 ローカル クラスターは、最終的に 1 台の開発用コンピューター上で稼働中に使用する複数のコンピューターのトポロジを表わしています。ローカル クラスターをセットアップするには次の手順に従います。
@@ -60,9 +61,17 @@ Service Fabric は、ローカル開発クラスターの作成、および Visu
 
 1. その他のすべての PowerShell ウィンドウを閉じて、管理者として新しいウィンドウを起動します。
 
-2. `cd "$env:ProgramW6432\Microsoft SDKs\Service Fabric\ClusterSetup"` を使用してクラスター セットアップ ディレクトリに移動します。
+2. クラスター セットアップ ディレクトリに移動します。
 
-3. `.\DevClusterSetup.ps1` を実行します。
+    ```powershell
+    cd "$env:ProgramW6432\Microsoft SDKs\Service Fabric\ClusterSetup"
+    ```
+    
+3. 実行
+
+    ```powershell
+    .\DevClusterSetup.ps1
+    ```
 
 すぐにノード情報と、クラスターが正常に作成されたことを示す出力が表示されます。Service Fabric ホスト サービスとネーム サービスの起動中に警告が表示されることがあります。これは正常なことであり、すぐにクラスターに関する基本的な情報が表示されます。
 
@@ -72,7 +81,11 @@ Service Fabric は、ローカル開発クラスターの作成、および Visu
 
 SDK に付属している Service Fabric エクスプローラー ツールを使用して、クラスターが正常に作成されたことを確認できます。
 
-1. `. "$env:ProgramW6432\Microsoft SDKs\Service Fabric\Tools\ServiceFabricExplorer\ServiceFabricExplorer.exe"` を実行して Service Fabric Explorer を起動します。
+1. 次のコマンドを実行して、Service Fabric Explorer を起動します。 
+
+    ```powershell
+    . "$env:ProgramW6432\Microsoft SDKs\Service Fabric\Tools\ServiceFabricExplorer\ServiceFabricExplorer.exe"
+    ```
 
 2. 左上隅の [Onebox/ローカル クラスター] ノードを展開します。
 
@@ -93,4 +106,4 @@ SDK に付属している Service Fabric エクスプローラー ツールを�
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

@@ -5,14 +5,15 @@
  documentationCenter=""
  authors="dlepow"
  manager="timlt"
- editor=""/>
+ editor=""
+ tags="azure-resource-manager, azure-service-management"/>
 <tags
 ms.service="virtual-machines"
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="infrastructure-services"
- ms.date="07/22/2015"
+ ms.date="09/02/2015"
  ms.author="danlep"/>
 
 # A8、A9、A10、A11 コンピューティング集中型インスタンスについて
@@ -53,17 +54,17 @@ A8 および A9 インスタンスは 2 個のネットワーク アダプター
 32 Gbps バックエンド、RDMA 対応 | 1 つのクラウド サービスまたは可用性セット内のインスタンス間での低待機時間、高スループットのアプリケーション通信を可能にします。MPI トラフィック専用に予約されます。
 
 
->[AZURE.IMPORTANT]IaaS で Linux を実行する A8 および A9 VM では、現在、RDMA ネットワークへのアクセスは、SUSE Linux Enterprise Server 12 (SLES 12) で Azure Linux RDMA および Intel MPI Library 5.0 を使用するアプリケーションを通じてのみ有効です。IaaS または PaaS で Windows Server を実行するA8 および A9 インスタンスでは、RDMA ネットワークへのアクセスは現在、Microsoft Network Direct インターフェイスを使用するアプリケーションを通じてのみ実行できます。その他の要件については、この記事の「[RDMA ネットワークへのアクセス](#access-the-rdma-network)」を参照してください。
+>[AZURE.IMPORTANT]Linux を実行する A8 および A9 VM では、現在、RDMA ネットワークへのアクセスは、SUSE Linux Enterprise Server 12 (SLES 12) で Azure Linux RDMA および Intel MPI Library 5 を使用するアプリケーションを通じてのみ有効です。Windows Server を実行するA8 および A9 インスタンスでは、RDMA ネットワークへのアクセスは現在、Microsoft Network Direct インターフェイスを使用するアプリケーションを通じてのみ実行できます。その他の要件については、この記事の「[RDMA ネットワークへのアクセス](#access-the-rdma-network)」を参照してください。
 
 A10 および A11 インスタンスは、Azure サービスおよびインターネットに接続する 10 Gbps イーサネット ネットワーク アダプターを 1 個備えています。
 
 ## Azure サブスクリプションに関する考慮事項
 
-* **Azure アカウント** – 少数のコンピューティング集中型インスタンスより多数のインスタンスをデプロイする場合は、従量課金のサブスクリプションまたは他の購入オプションを検討してください。MSDN サブスクリプションを使用することもできます。「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。[Azure 無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
+* **Azure アカウント** – 少数のコンピューティング集中型インスタンスより多数のインスタンスをデプロイする場合は、従量課金のサブスクリプションまたは他の購入オプションを検討してください。MSDN サブスクリプションを使用することもできます。「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。[Azure 無料試用版版](http://azure.microsoft.com/pricing/free-trial/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
 
 * **コア クォータ** – Azure サブスクリプションのコア クォータを、既定値の 20 コアから増やすことが必要な場合があります。8 コアまたは 16 コア インスタンスの多くのシナリオでは不十分です。初期テストの場合、100 コアへのクォータ増量を要求することを検討してください。そのためには、「[Azure の制限と増設について](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)」に従って無償サポート チケットを開きます。
 
->[AZURE.NOTE]Azure のクォータは容量保証ではなくクレジット制限です。使用したコアに対してのみ課金されます。
+    >[AZURE.NOTE]Azure のクォータは容量保証ではなくクレジット制限です。使用したコアに対してのみ課金されます。
 
 * **アフィニティ グループ** – 現在、アフィニティ グループは、ほとんどの新しいデプロイに推奨されていません。ただし、A8 ～ A11 以外のサイズのインスタンスを含むアフィニティ グループを使用している場合、A8 ～ A11 インスタンスに対しては使用できなくなります (その逆も同様)。
 
@@ -75,7 +76,7 @@ A10 および A11 インスタンスは、Azure サービスおよびインタ�
 
 ### HPC Pack および Linux を使用する場合の考慮事項
 
-[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) は、Windows 向け Microsoft の無料の HPC クラスターおよびジョブ管理ソリューションです。HPC Pack 2012 R2 Update 2 以降、HPC Pack ではいくつかの Linux ディストリビューションを Azure VM にデプロイされ、Windows Server ヘッド ノードで管理される計算ノードで実行できるようになりました。HPC Pack の最新版では、Azure で RDMA ネットワークにアクセスする MPI アプリケーションを実行できる Linux ベースのクラスターをデプロイできます。詳細については、[HPC Pack に関するドキュメント](http://go.microsoft.com/fwlink/?LinkId=617894)を参照してください。
+[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) は、Windows 向け Microsoft の無料の HPC クラスターおよびジョブ管理ソリューションです。HPC Pack 2012 R2 Update 2 以降、HPC Pack ではいくつかの Linux ディストリビューションを Azure VM にデプロイされ、Windows Server ヘッド ノードで管理されるコンピューティング ノードで実行できるようになりました。HPC Pack の最新版では、Azure で RDMA ネットワークにアクセスする MPI アプリケーションを実行できる Linux ベースのクラスターをデプロイできます。詳細については、「[チュートリアル: Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-cluster-hpcpack.md)」を参照してください。
 
 ### HPC Pack および Windows を使用する場合の考慮事項
 
@@ -87,31 +88,31 @@ Windows Server で HPC Pack を使用する IaaS および PaaS シナリオで�
 
 ### Linux A8 および A9 VM からのアクセス
 
-単一のクラウド サービスまたは可用性セット内では、Linux RDMA ドライバーを使用してインスタンス間の通信を行う MPI アプリケーションが実行されていれば、A8 および A9 インスタンスは Azure の RDMA ネットワークにアクセスできます。現時点では、[Intel MPI Library 5.0](https://software.intel.com/ja-jp/intel-mpi-library/) では Azure Linux RDMA のみがサポートされています。
+単一のクラウド サービスまたは可用性セット内では、Linux RDMA ドライバーを使用してインスタンス間の通信を行う MPI アプリケーションが実行されていれば、A8 および A9 インスタンスは Azure の RDMA ネットワークにアクセスできます。現時点では、[Intel MPI Library 5](https://software.intel.com/ja-JP/intel-mpi-library/) では Azure Linux RDMA のみがサポートされています。
 
 >[AZURE.NOTE]現在、Azure Linux RDMA ドライバーは、ドライバー拡張機能を介したインストールでは使用できません。これを使用する唯一の方法は、Azure Marketplace の RDMA 対応 SLES 12 イメージを使用することです。
 
-以下の表に、Linux MPI アプリケーションが計算ノード (IaaS) のクラスターの RDMA ネットワークにアクセスするための前提条件を記載します。デプロイメントのオプションと構成手順については、[「MPI アプリケーションを実行するように Linux RDMA クラスターを設定する」](virtual-machines-linux-cluster-rdma.md)を参照してください。
+以下の表に、Linux MPI アプリケーションがコンピューティング ノード (IaaS) のクラスターの RDMA ネットワークにアクセスするための前提条件を記載します。デプロイメントのオプションと構成手順については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)」を参照してください。
 
 前提条件 | 仮想マシン (IaaS)
 ------------ | -------------
 オペレーティング システム | Azure Marketplace から入手した SLES 12 HPC イメージ
-MPI | Intel MPI Library 5.0
+MPI | Intel MPI Library 5
 
 ### Windows A8 および A9 インスタンスからのアクセス
 
 単一のクラウド サービスまたは可用性セット内では、Microsoft Network Direct インターフェイスを使用してインスタンス間の通信を行う MPI アプリケーションが実行されていれば、A8 および A9 インスタンスは Azure の RDMA ネットワークにアクセスできます。A10 および A11 インスタンスには、RDMA ネットワークへのアクセスは含まれません。
 
-A8 または A9 インスタンスの仮想マシン (IaaS) およびクラウド サービス (PaaS) デプロイ内の RDMA ネットワークにアクセスするための MPI アプリケーションの要件を、次の表に示します。標準的なデプロイ シナリオについては、「[A8/A9 コンピューティング集中型インスタンス: HPC Pack 使用クイック スタート](https://msdn.microsoft.com/library/azure/dn594431.aspx)」を参照してください。
+A8 または A9 インスタンスの仮想マシン (IaaS) およびクラウド サービス (PaaS) デプロイメント内の RDMA ネットワークにアクセスするための MPI アプリケーションの要件を、次の表に示します。標準的なデプロイメント シナリオについては、「[A8/A9 コンピューティング集中型インスタンス: HPC Pack 使用クイック スタート](https://msdn.microsoft.com/library/azure/dn594431.aspx)」を参照してください。
 
 
-前提条件 | 仮想マシン (IaaS) | クラウド サービス (PaaS)
+前提条件 | 仮想マシン (IaaS) | Cloud Services (PaaS)
 ---------- | ------------ | -------------
 オペレーティング システム | Windows Server 2012 R2 または Windows Server 2012 | Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 ゲスト OS ファミリ
-MPI | MS-MPI 2012 R2 以降 (スタンドアロンまたは HPC Pack 2012 R2 以降によってインストール済み)<br/><br/>Intel MPI Library 5.0 | MS-MPI 2012 R2 以降 (HPC Pack 2012 R2 以降によってインストール済み)<br/><br/>Intel MPI Library 5.0
+MPI | MS-MPI 2012 R2 以降 (スタンドアロンまたは HPC Pack 2012 R2 以降によってインストール済み)<br/><br/>Intel MPI Library 5 | MS-MPI 2012 R2 以降 (HPC Pack 2012 R2 以降によってインストール済み)<br/><br/>Intel MPI Library 5
 
 
->[AZURE.NOTE]IaaS シナリオの場合、[HpcVmDrivers 拡張機能](https://msdn.microsoft.com/library/azure/dn690126.aspx)を VM に追加して RDMA 接続に必要な Windows ドライバーをインストールする必要があります。
+>[AZURE.NOTE]IaaS シナリオの場合、HpcVmDrivers 拡張機能を VM に追加して RDMA 接続に必要な Windows ネットワーク デバイス ドライバーをインストールする必要があります。デプロイメントの方法によって、サイズ A8 または A9 の VM への HpcVmDrivers 拡張機能の追加は、自動的に行われることも、手動で行う必要があることもあります。拡張機能の追加については、「[仮想マシン拡張機能の管理](virtual-machines-extensions-install.md)」を参照してください。
 
 
 ## その他の注意事項
@@ -126,8 +127,8 @@ MPI | MS-MPI 2012 R2 以降 (スタンドアロンまたは HPC Pack 2012 R2 以
 
 ## 次のステップ
 
-* A8、A9、A10、および A11 インスタンスの可用性と料金の詳細については、「[仮想マシンの料金](http://azure.microsoft.com/pricing/details/virtual-machines/)」および「[クラウド サービスの料金](http://azure.microsoft.com/pricing/details/cloud-services/)」を参照してください。
+* A8、A9、A10、および A11 インスタンスの可用性と料金の詳細については、「[Virtual Machines の料金](http://azure.microsoft.com/pricing/details/virtual-machines/)」および「[Cloud Services の料金](http://azure.microsoft.com/pricing/details/cloud-services/)」を参照してください。
 * A8 および A9 インスタンスを使用して Linux ベースのクラスターをデプロイし、Azure RDMA ネットワークにアクセスするように構成する方法については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)」を参照してください。
 * Windows 上の HPC Pack での A8 および A9 インスタンスのデプロイと使用については、「[A8/A9 コンピューティング集中型インスタンス: HPC Pack 使用クイック スタート](https://msdn.microsoft.com/library/azure/dn594431.aspx)」および「[A8 および A9 インスタンス上での MPI アプリケーションの実行](https://msdn.microsoft.com/library/azure/dn592104.aspx)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

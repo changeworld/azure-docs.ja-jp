@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="09/04/2015" 
 	ms.author="raymondl;garye"/>
 
 #Azure Machine Learning Web サービスのパラメーターの使用
@@ -22,7 +22,7 @@ Azure Machine Learning Web サービスは、変更可能なパラメーター�
 
 一般的な例として、発行された Web サービスのユーザーが、Web サービスにアクセスしたときに別のデータ ソースを指定できるように[リーダー][reader] モジュールを設定する場合があります。または、別の宛先を指定できるように[ライター][writer] モジュールを構成します。その他の例としては、[特徴ハッシュ][feature-hashing] モジュールのビット数の変更や、[フィルターに基づく特徴の選択][filter-based-feature-selection]モジュールにおける目的の特徴の数の変更があります。
 
-Web サービスのパラメーターを定義して、1 つまたは複数のモジュール パラメーターに関連付け、必須かオプションかを指定することができます。Web サービスのユーザーは、サービスにアクセスするときにこれらのパラメーターの値を指定でき、モジュールの操作は実行時に変更されます。
+Web サービスのパラメーターを設定し、実験の 1 つまたは複数のモジュール パラメーターに関連付けて、必須か任意かを指定することができます。Web サービスのユーザーは、Web サービスの呼び出し時にこれらのパラメーターの値を指定できます。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -91,4 +91,4 @@ Machine Learning Web サービスへのアクセスの詳細については、[�
 [writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

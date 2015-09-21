@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/22/2015"
+   ms.date="09/09/2015"
    ms.author="lodipalm"/>
 
 # SQL Data Warehouse での Power BI の使用
@@ -51,17 +51,15 @@ SQL Data Warehouse と Power BI の間を移動する最も簡単な方法は、
 ## パラメーターの値の検索
 Azure ポータルでは、サーバーの完全修飾名とデータベース名を検索できます。現時点で Azure プレビュー ポータルに表示されるは、SQL Data Warehouse のみであることに注意してください。
 
-## 次のステップ
-統合の概要については、「[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)][]」をご覧ください。開発に関するその他のヒントについては、「[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop/
-[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: ./sql-data-warehouse-overview-integration/
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop/
+[SQL Data Warehouse integration overview]: ./sql-data-warehouse-overview-integration/
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

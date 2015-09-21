@@ -1,0 +1,100 @@
+<properties 
+	pageTitle="参照データの使用 | Microsoft Azure" 
+	description="入力ストリームとして参照データを使用する" 
+	keywords="big data analytics,cloud service,internet of things,managed service,stream processing,streaming analytics,streaming data"
+	services="stream-analytics" 
+	documentationCenter="" 
+	authors="jeffstokes72" 
+	manager="paulettm" 
+	editor="cgronlun"/>
+
+<tags 
+	ms.service="stream-analytics" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="data-services" 
+	ms.date="09/09/2015" 
+	ms.author="jeffstok"/>
+
+# 入力としての参照データの使用
+
+参照データは、静的または本来はあまり変更されない有限のデータ セットです。参照の実行やデータ ストリームとの相互の関連付けに使用されます。Azure Stream Analytics のジョブで参照データを使用するには、一般的にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。Stream Analytics は参照データのストレージ層として Azure BLOB ストレージを使用し、Azure Data Factory を使用して参照データを Azure BLOB ストレージに変換、コピー、またはその両方を実行して、[任意の数のクラウド ベースとオンプレミスのデータ ストア](./articles/data-factory-data-movement-activities.md)から、参照データとして使用することができます。
+
+## 参照データの構成
+
+参照データを構成するには、まず、タイプが参照データの入力を作成する必要があります。次の表では、参照データ入力とその説明を作成するときに指定する必要がある各プロパティについて説明します。
+
+<table>
+<tbody>
+<tr>
+<td>プロパティ名</td>
+<td>説明</td>
+</tr>
+<tr>
+<td>入力のエイリアス</td>
+<td>この入力を参照するジョブ クエリで使用されるわかりやすい名前。</td>
+</tr>
+<tr>
+<td>ストレージ アカウント</td>
+<td>BLOB ファイルが配置されるストレージ アカウントの名前。Stream Analytics のジョブと同じサブスクリプションにある場合は、ドロップ ダウンから選択することができます。</td>
+</tr>
+<tr>
+<td>ストレージ アカウント キー</td>
+<td>ストレージ アカウントに関連付けられている秘密キー。ストレージ アカウントが Stream Analytics のジョブと同じサブスクリプションにある場合は、自動的に設定されます。</td>
+</tr>
+<tr>
+<td>ストレージ コンテナー</td>
+<td>コンテナーにより、Microsoft Azure BLOB サービスに格納される BLOB が論理的にグループ化されます。BLOB を BLOB サービスにアップロードするとき、その BLOB のコンテナーを指定する必要があります。</td>
+</tr>
+<tr>
+<td>パス プレフィックスのパターン [省略可能]</td>
+<td>指定されたコンテナー内に BLOB を配置するために使用されるファイル パス。このパス内に、次の 2 つの変数のいずれかまたは両方のインスタンスを指定できます。<BR>{date}、{time}<BR>例 1: products/{date}/{time}/product-list.csv<BR>例 2: products/{date}/product-list.csv
+</tr>
+<tr>
+<td>日付形式 [省略可能]</td>
+<td>指定したパス パターン内で {date} を使用した場合は、サポートされている形式のドロップ ダウンから、ファイルを編成する日付形式を選択できます。例: YYYY/MM/DD</td>
+</tr>
+<tr>
+<td>時刻形式 [省略可能]</td>
+<td>指定したパス パターン内で {time} を使用した場合は、サポートされている形式のドロップ ダウンから、ファイルを編成する時刻形式を選択できます。例: HH</td>
+</tr>
+<tr>
+<td>イベントのシリアル化の形式</td>
+<td>クエリを予想どおりに動作させるには、入ってくるデータ ストリームに使用しているシリアル化形式が Stream Analytics で認識される必要があります。参照データの場合、サポートされている形式は CSV と JSON です。</td>
+</tr>
+<tr>
+<td>エンコード</td>
+<td>現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。</td>
+</tr>
+</tbody>
+</table>
+
+## スケジュールに従った参照データの生成
+
+参照データが変更頻度の低いデータセットである場合、参照データの更新をサポートするには、{date} および {time} トークンを使用する入力構成でパス パターンを指定します。Stream Analytics はこのパス パターンに基づいて、更新された参照データ定義を取得します。たとえば、日付形式が "YYYY-MM-DD" で、時刻形式が "HH:mm" の ````"/sample/{date}/{time}/products.csv"```` は、更新された BLOB ````"/sample/2015-04-16/17:30/products.csv"```` を UTC タイム ゾーンの 2015 年 4 月 16 日の午後 5:30 に回収するように Stream Analytics に通知します。
+
+> [AZURE.NOTE]現在、Stream Analytics のジョブは、コンピューター時間が BLOB の名前でエンコードされた時刻と一致する場合にのみ、BLOB の更新を検索します。たとえば、ジョブは、/sample/2015-04-16/17:30/products.csv を、2015 年 4 月 16 日 UTC タイム ゾーンの午後 5 時 30 分と午後 5 時 30 分 59.9 秒の間に検索します。マシン クロックが 5:31PM になると、/sample/2015-04-16/17:30/products.csv の検索は停止され、/sample/2015-04-16/17:31/products.csv の検索が開始されます。以前の参照データ BLOB が考慮される唯一の時間は、ジョブが開始される時点です。この時点で、ジョブは、指定されたジョブ開始時刻より前に生成された最新の BLOB を探します。これは、ジョブの開始時に空ではない参照データ セットが必ず存在するようにするために実行されます。それが見つからない場合、ジョブは失敗し、診断通知がユーザーに表示されます。
+
+[Azure Data Factory](http://azure.microsoft.com/documentation/services/data-factory/) を使用して Stream Analytics で必要な更新された BLOB を作成するタスクを調整し、参照データ定義を更新することができます。Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。Data Factory は、[クラウド ベースとオンプレミスの多数のデータ ストアへの接続](./articles/data-factory-data-movement-activities.md)、および指定された定期的なスケジュールに基づく簡単なデータの移動をサポートします。事前に定義されたスケジュールで更新される Stream Analytics の参照データを生成するために Data Factory パイプラインを設定する方法の詳細とステップ バイ ステップのガイダンスについては、この [GitHub のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)を確認してください。
+
+## 問い合わせ
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+
+## 次のステップ
+モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。このサービスの詳細については、以下の情報をご覧ください。
+
+- [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+- [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
+- [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+- [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+
+<!--Link references-->
+[stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
+[stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
+[stream.analytics.introduction]: stream-analytics-introduction.md
+[stream.analytics.get.started]: stream-analytics-get-started.md
+[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+
+<!---HONumber=Sept15_HO2-->

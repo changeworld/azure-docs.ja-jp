@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/14/2015" 
+	ms.date="09/09/2015" 
 	ms.author="awills"/>
 
 
@@ -154,11 +154,13 @@ SDK クライアントをサーバーの SDK と同じインストルメンテ�
 
 
 
-## 依存関係の追跡を追加する
+## 依存関係の追跡およびシステム パフォーマンス カウンターの追加
 
 [依存関係のメトリック](app-insights-dependencies.md)は、パフォーマンスに関する問題の診断に非常に役立つ場合があります。これらは、アプリからデータベース、REST Api、およびその他の外部のコンポーネントへの呼び出しを測定します。
 
 ![](./media/app-insights-asp-net/04-dependencies.png)
+
+以下の手順では、CPU、メモリ、ネットワーク占有率などの[パフォーマンス カウンターのレポート](app-insights-web-monitor-performance.md#system-performance-counters)も有効化します。
 
 #### アプリが IIS サーバーで実行される場合
 
@@ -173,6 +175,10 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 ![Web アプリで、[設定]、[拡張機能]、[追加]、[Application Insights] の順に選択する](./media/app-insights-asp-net/05-extend.png)
 
 (この拡張機能は、SDK で構築されたアプリのみをサポートします。Status Monitor とは異なり、既存のアプリはインストルメント化できません。)
+
+#### Azure Cloud Services ロールを監視するには
+
+[手動で Status Monitor を追加する方法](app-insights-cloudservices.md)があります。
 
 ## 可用性 Web テスト
 
@@ -220,4 +226,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

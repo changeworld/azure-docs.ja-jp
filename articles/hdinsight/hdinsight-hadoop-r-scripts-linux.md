@@ -1,4 +1,4 @@
-<properties 
+<properties
 	pageTitle="HDInsight で R を使用してクラスターをカスタマイズする | Microsoft Azure"
 	description="R をインストールして使用し、Hadoop クラスターをカスタマイズする方法について説明します。"
 	services="hdinsight"
@@ -7,7 +7,7 @@
 	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
+<tags
 	ms.service="hdinsight"
 	ms.workload="big-data"
 	ms.tgt_pltfrm="na"
@@ -84,11 +84,11 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 1. SSH を使用して HDInsight クラスターに接続します。
 
 		ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
-		
-	HDInsight での SSH の使用方法の詳細については、以下を参照してください。
-	
+
+	HDInsight での SSH の使用方法の詳細については、以下の記事を参照してください。
+
 	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-	
+
 	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 2. `username@headnode1:~$` プロンプトで次のコマンドを入力し、R の対話型セッションを開始します。
@@ -100,24 +100,24 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 		library(rmr2)
 		ints = to.dfs(1:100)
 		calc = mapreduce(input = ints, map = function(k, v) cbind(v, 2*v))
-		
+
 
 	最初の行では、RHadoop ライブラリの rmr2 を呼び出しています。これは、MapReduce 操作で使用します。
-	
+
 	2 行目では、1 ～ 100 の値を生成し、`to.dfs` を使用して Hadoop ファイル システムに格納しています。
-	
+
 	3 行目では、rmr2 で提供される機能を使用して MapReduce プロセスを作成し、処理を開始しています。処理が始まると、複数の行がスクロール表示されます。
-	
+
 4. 次に、以下のコードを使用して、MapReduce 出力の格納先になっていた一時パスを確認します。
 
 		print(calc())
-		
+
 	この結果は、`/tmp/file5f615d870ad2` のようになります。実際の出力を表示するには、次のコマンドを使用します。
-	
+
 		print(from.dfs(calc))
-	
+
 	出力は次のようになります。
-	
+
 		[1,]  1 2
 		[2,]  2 4
 		.
@@ -126,7 +126,7 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 		[98,]  98 196
 		[99,]  99 198
 		[100,] 100 200
-		
+
 5. R を終了するには、次のように入力します。
 
 		q()
@@ -148,6 +148,5 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 [hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
- 
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

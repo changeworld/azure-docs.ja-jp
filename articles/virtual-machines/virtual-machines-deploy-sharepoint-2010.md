@@ -26,13 +26,13 @@ Azure Virtual Machines は複数のワークロードをサポートしますが
 
 Azure の仮想マシンを活用すると、ハードウェアを用意する必要性が減少するため、高い事前コストや複雑な処理に対処するのではなく、規模に応じてインフラストラクチャを構築し管理することに目を向けることができます。つまり、従来のデプロイのように日単位や週単位ではなく、時間単位で技術革新、実験、反復作業ができるようになります。
 
-> [AZURE.NOTE]Azure に SharePoint 2013 をデプロイする方法の詳細については、「[Azure インフラストラクチャ サービスでの SharePoint 2013 の計画](https://msdn.microsoft.com/library/dn275958.aspx)」および [Azure インフラストラクチャ サービスでホストされている SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)に関するページを参照してください。
+> [AZURE.NOTE]Azure に SharePoint 2013 をデプロイする方法の詳細については、「[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)」と「[Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)」を参照してください。
 
 ## Azure 仮想マシン上の SharePoint Server
 
 SharePoint 2010 は、Azure の仮想マシンにデプロイしても、ほとんどのワークロードを柔軟にサポートします。Azure の仮想マシンは、FIS (SharePoint Server for Internet Sites) シナリオおよび開発シナリオに最も適しています。中核的な SharePoint ワークロードもサポートされています。クラウド インフラストラクチャの仮想化オプションを利用しながら独自の SharePoint 2010 実装を管理してコントロールする場合は、Azure の仮想マシンがデプロイ先として最適です。
 
-Azure の仮想マシンはクラウドでホストされ管理されます。柔軟にデプロイでき、ハードウェア調達に伴う設備投資が減るために、コストが削減されます。インフラストラクチャの俊敏性が向上するため、SharePoint Server を数日や数週間ではなく、数時間でデプロイできます。Azure の仮想マシンでは、"従量課金制" モデルを使ってクラウドに SharePoint ワークロードをデプロイすることもできます。SharePoint のワークロードの増大にあわせて、インフラストラクチャを急速に拡張できます。コンピューティングのニーズが減少した場合は、使用しなくなったリソースを返却し、使用する分についてのみ料金を支払うことができます。
+Azure Virtual Machines はクラウドでホストされ管理されます。柔軟にデプロイでき、ハードウェア調達に伴う設備投資が減るために、コストが削減されます。インフラストラクチャの俊敏性が向上するため、SharePoint Server を数日や数週間ではなく、数時間でデプロイできます。Azure の仮想マシンでは、"従量課金制" モデルを使ってクラウドに SharePoint ワークロードをデプロイすることもできます。SharePoint のワークロードの増大にあわせて、インフラストラクチャを急速に拡張できます。コンピューティングのニーズが減少した場合は、使用しなくなったリソースを返却し、使用する分についてのみ料金を支払うことができます。
 
 ### IT の焦点の推移
 
@@ -58,19 +58,23 @@ Azure の仮想マシンでは、開発者は目的の言語またはランタ�
 
 Azure のイメージ ライブラリには、利用できる構成済みの仮想マシンが一覧表示されています。ユーザーは、SharePoint Server、SQL Server、Windows Server などの ISO/VHD をイメージ ライブラリに発行できます。仮想マシンの作成を単純にするために、作成された基本イメージはライブラリに発行されます。正規ユーザーはこのイメージを使用して目的の仮想マシンを生成できます。詳細については、[Azure プレビュー ポータルで Windows を実行する仮想マシンを作成する方法](virtual-machines-windows-tutorial.md)に関するページを参照してください。図 1 は、Azure ポータルを使用して仮想マシンを作成する基本的な手順を示しています。
 
+![azure-sharepoint-wp-13](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-2.png)
+
 **図 1: 仮想マシンの作成手順の概要**
 
 ユーザーは Azure 管理ポータルに sysprep 済みイメージをアップロードすることもできます。詳細については、「[Windows Server VHD の作成と Azure へのアップロード](virtual-machines-create-upload-vhd-windows-server.md)」を参照してください。図 2 は、イメージをアップロードして VM を作成する基本的な手順を示しています。
 
 Azure ポータルでは、SysPrep ツールが既に実行されている場所にイメージをアップロードできます。詳細については、「[Windows Server VHD の作成と Azure へのアップロード](virtual-machines-create-upload-vhd-windows-server.md)」を参照してください。図 2 は、イメージをアップロードして仮想マシンを作成する基本的な手順を示しています。
 
+![azure-sharepoint-wp-13](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-3.png)
+
 **図 2: イメージのアップロード手順の概要**
 
 ## Azure への SharePoint 2010 のデプロイ 
 
-SharePoint 2010 を Azure にデプロイするには、次の手順に従います。
+次の手順に従うことで、従来のデプロイ モデルを使用して SharePoint 2010 を Azure にデプロイできます。
 
-1. Azure サブスクリプション アカウントを使用して [Azure 管理ポータル](http://manage.windowsazure.com/)にサインインします。Azure アカウントを持っていない場合は、[Azure の無料試用版にサインアップしてください](http://azure.microsoft.com/pricing/free-trial/)。
+1. Azure サブスクリプション アカウントを使用して [Microsoft Azure 管理ポータル](http://manage.windowsazure.com/)にサインインします。Azure アカウントを持っていない場合は、[Azure の無料試用版にサインアップしてください](http://azure.microsoft.com/pricing/free-trial/)。
 2. 基本オペレーティング システムの仮想マシンを作成するには、Azure ポータルで、**[新規]、[コンピューティング]、[仮想マシン]、[ギャラリーから]** の順にクリックします。
 3. **[イメージの選択]** ダイアログ ボックスが表示されます。**[Windows Server 2008 R2 SP1]** プラットフォーム イメージをクリックし、右矢印をクリックします。
 4. **[仮想マシンの構成]** ダイアログ ボックスが表示されます。次の情報を指定します。
@@ -106,9 +110,9 @@ SharePoint 2010 を Azure にデプロイするには、次の手順に従いま
 手順 2.基本オペレーティング システムの別の仮想マシンを作成して (上記の手順 1. ～ 6. を参照)、SharePoint Server をプロビジョニングします。この仮想マシン上に SharePoint Server を構築するには、次のいずれかのオプションを選択します。
 
 - SharePoint GUI を使用してプロビジョニングします。
-	- SharePoint ファームを作成してプロビジョニングするには、[Microsoft SharePoint Server ファームの作成に関するページ](http://technet.microsoft.com/library/ee805948.aspx#CreateConfigure)を参照してください。
-	- ファームに Web またはアプリケーション サーバーを追加するには、「[Add a web or application server to the farm (Web サーバーまたはアプリケーション サーバーをファームに追加する)](http://technet.microsoft.com/library/cc261752.aspx)」を参照してください。
-	- データベース サーバーを既存のファームに追加するには、「[SharePoint 2013 の既存のファームにデータベース サーバーを追加する](http://technet.microsoft.com/library/cc262781)」を参照してください。
+	- SharePoint ファームを作成してプロビジョニングするには、「[ファームを作成して構成する](http://technet.microsoft.com/library/ee805948.aspx#CreateConfigure)」を参照してください。
+	- ファームに Web またはアプリケーション サーバーを追加するには、「[SharePoint 2013 で Web サーバーまたはアプリケーション サーバーをファームに追加する](http://technet.microsoft.com/library/cc261752.aspx)」を参照してください。
+	- データベース サーバーを既存のファームに追加するには、「[既存のファームにデータベース サーバーを追加する](http://technet.microsoft.com/library/cc262781)」を参照してください。
 	- SharePoint ファームで SQL Server 2012 を使用するには、アプリケーションをインストールした後、サーバーの構成はしないで、SharePoint Server 2010 の Service Pack 1 をダウンロードしてインストールする必要があります。詳細については、「[SharePoint Server 2010 Service Pack 1](http://www.microsoft.com/download/details.aspx?id=26623)」を参照してください。
 	- SQL Server の BI 機能を活用するには、SharePoint Server をスタンドアロン サーバーではなくサーバー ファームとしてインストールすることをお勧めします。詳細については、「[SQL Server 2012 のビジネス インテリジェンス機能のインストール](http://technet.microsoft.com/library/hh231681.aspx)」を参照してください。
 
@@ -144,11 +148,13 @@ SharePoint の構成を確認するために、SharePoint Server にサインイ
 
 図 3 は、Azure 仮想マシンの SharePoint 開発環境とテスト環境を示しています。このデプロイを構築するには、まず、アプリケーション開発に使用しているオンプレミスの環境と同じ SharePoint 開発環境およびテスト環境を使用します。次に、テストと開発のためにアプリケーションを Azure 仮想マシンにアップロードしてデプロイします。アプリケーションをオンプレミスの環境に戻すことを決めた場合は、アプリケーションを修正しなくても戻すことができます。
 
+![azure-sharepoint-wp-13](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-11.png)
+
 **図 3: Azure の仮想マシンの SharePoint 開発環境とテスト環境**
 
 SharePoint 開発環境とテスト環境を Azure に実装するには、次の手順に従います。
 
-1. プロビジョニング: まず、Azure の仮想ネットワークを使用してオンプレミスのシステムおよび Azure との VPN 接続をプロビジョニングします (ここでは Active Directory を使用していないため、VPN トンネルが必要です)。 詳細については、「[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。次に、Azure ポータルで、イメージ ギャラリーにあるストック イメージを使用して、新しい仮想マシンをプロビジョニングします。
+1. プロビジョニング: まず、Azure Virtual Network を使用してオンプレミスのシステムおよび Azure との VPN 接続をプロビジョニングします (ここでは Active Directory を使用していないため、VPN トンネルが必要です)。 詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。次に、Azure ポータルで、イメージ ギャラリーにあるストック イメージを使用して、新しい仮想マシンをプロビジョニングします。
 	- オンプレミスの SharePoint 開発およびテスト仮想マシンを Azure のストレージ アカウントにアップロードして、その仮想マシンをイメージ ライブラリから参照して必要な環境を構築することができます。
 	- Windows Server 2008 R2 SP1 イメージの代わりに SQL Server 2012 イメージを使用できます。詳細については、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」をご覧ください。
 
@@ -178,7 +184,7 @@ SharePoint 開発環境とテスト環境を Azure に実装するには、次�
 
 Azure インフラストラクチャの仮想マシンは、SQL Server や SharePoint Server など他の Microsoft 製品でも動作することが検証されサポートされています。Azure および SharePoint Server は連携して利用すると一段と便利です。どちらも、最適な体験を提供できるように徹底的に統合、サポート、テストされています。どちらも SharePoint アプリケーションと Azure インフラストラクチャのサポートが一元化されています。
 
-このシナリオでは、余分なトラフィックをサポートするために SharePoint Server にフロントエンドの Web サーバーを追加する必要があります。追加するサーバーは、ユーザー認証とアクセス制御をサポートするために、セキュリティの強化、および、Active Directory Domain Services ドメイン コントローラーが必要です。図 4 に、このシナリオのレイアウトを示します。
+このシナリオでは、余分なトラフィックをサポートするために SharePoint Server にフロントエンドの Web サーバーを追加する必要があります。追加するサーバーは、ユーザー認証とアクセス制御をサポートするために、セキュリティの強化、および Active Directory Domain Services ドメイン コントローラーが必要です。図 4 に、このシナリオのレイアウトを示します。
 
 ![azure-sharepoint-wp-12](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-12.png)
 
@@ -186,7 +192,7 @@ Azure インフラストラクチャの仮想マシンは、SQL Server や Share
 
 公開された SharePoint ファームを Azure に実装するには、次の手順に従います。
 
-1. Active Directory のデプロイ: Active Directory を Azure の仮想マシンにデプロイするときに必要な基本的要件は、オンプレミスの仮想マシン (そしてある程度は物理マシン) にデプロイするときと同様です。ただし同一ではありません。この違いの詳細、指針、その他の考慮事項については、「[Azure の仮想マシンでの Active Directory のデプロイ ガイドライン](http://msdn.microsoft.com/library/jj156090)」を参照してください。Azure で Active Directory をデプロイするには、以下の手順を実行します。
+1. Active Directory のデプロイ: Active Directory を Azure の仮想マシンにデプロイするときに必要な基本的要件は、オンプレミスの仮想マシン (そしてある程度は物理マシン) にデプロイするときと同様です。ただし同一ではありません。この違いの詳細、指針、その他の考慮事項については、「[Azure Virtual Machines での Active Directory のデプロイ ガイドライン](http://msdn.microsoft.com/library/jj156090)」を参照してください。Azure で Active Directory をデプロイするには、以下の手順を実行します。
 	- 仮想マシンを特定のサブネットに割り当てることのできる仮想ネットワークを定義して作成します。
 	- Azure ポータルを使用して、Azure の新しい仮想マシンにドメイン コントローラーを作成してデプロイします。Windows PowerShell スクリプトを参照し、Azure Virtual Machines と Azure Virtual Network を使用して、クラウドにスタンドアロン ドメインをデプロイすることもできます。Azure Virtual Network 上の仮想マシンに新しい Active Directory フォレストを作成する方法の詳細については、「[Azure での新しい Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)」を参照してください。
 2. 仮想マシンのプロビジョニング: Azure ポータルで、イメージ ギャラリーにあるストック イメージを使用して、新しい仮想マシンをプロビジョニングします。
@@ -203,7 +209,7 @@ Azure インフラストラクチャの仮想マシンは、SQL Server や Share
 
 このシナリオでは、Azure の仮想マシンを使用して基幹業務系の BI アプリケーションをホストする方法について説明します。SharePoint ファームの Azure の仮想マシンにデプロイして、アプリケーション サーバー仮想マシンの BI コンポーネント (SSRS や Excel Services など) をスケールアウトできます。クラウドでリソース集約的なコンポーネントを拡張することで、特殊なワークロードをもっと簡単にうまくサポートできるようになります。小規模から超大規模まで、SQL Server インスタンスのサイズを簡単に変更できるため、Azure の仮想マシンの SQL Server はパフォーマンスが向上します。これがシステムのエラスティック性となり、直近のワークロード要件に基づいて BI インスタンスを動的にプロビジョニング (拡大) したりプロビジョニングを解除 (縮小) したりできるようになります。
 
-既存の BI アプリケーションを Azure に移行すると拡張性が向上します。SQL Server Analysis Services (SSAS)、SQL Server Reporting Service (SSRS)、および SharePoint Server の機能活用すると、スケールアップまたはスケールダウンできる強力な BI およびレポート アプリケーションおよびダッシュボードを作成できます。このようなアプリケーションとダッシュボードは、オンプレミスのデータおよびアプリケーションとさらに安全に統合することもできます。Azure では、ISO 27001 のサポートとデータセンターのコンプライアンスが保証されています。詳細については、[Azure のトラスト センター](http://azure.microsoft.com/support/trust-center/compliance/)を参照してください。
+既存の BI アプリケーションを Azure に移行すると拡張性が向上します。SQL Server Analysis Services (SSAS)、SQL Server Reporting Service (SSRS)、および SharePoint Server の機能活用すると、スケールアップまたはスケールダウンできる強力な BI およびレポート アプリケーションおよびダッシュボードを作成できます。このようなアプリケーションとダッシュボードは、オンプレミスのデータおよびアプリケーションとさらに安全に統合することもできます。Azure では、ISO 27001 のサポートとデータセンターのコンプライアンスが保証されています。詳細については、「[Microsoft Azure セキュリティ センター: コンプライアンス](http://azure.microsoft.com/support/trust-center/compliance/)」を参照してください。
 
 BI コンポーネントのデプロイをスケールアウトするには、PowerPivot、Power View、Excel Services、PerformancePoint Services のようなサービスを実行する新しいアプリケーション サーバーをインストールする必要があります。または、SSAS や SSRS のような SQL Server BI インスタンスを既存のファームに追加して、追加のクエリ処理をサポートする必要があります。サーバーは、SharePoint 2010 Server または SQL Server がインストールされた新しい Azure 仮想マシンとして追加できます。その後、そのサーバーに BI コンポーネントをインストールし、デプロイして構成できます (図 5)。
 
@@ -214,7 +220,7 @@ BI コンポーネントのデプロイをスケールアウトするには、Po
 Azure で BI 環境をスケールアウトするには、次の手順に従います。
 
 1. プロビジョニング:
-	- Azure Virtual Network を使用してオンプレミスのシステムおよび Azure との VPN 接続をプロビジョニングします詳細については、「[仮想ネットワークの概要](http://msdn.microsoft.com/library/jj156007.aspx)」を参照してください。
+	- Azure Virtual Network を使用してオンプレミスのシステムおよび Azure との VPN 接続をプロビジョニングします詳細については、「[Virtual Network の概要](http://msdn.microsoft.com/library/jj156007.aspx)」を参照してください。
 	- Azure ポータルで、イメージ ギャラリーにあるストック イメージを使用して、新しい仮想マシンをプロビジョニングします。SharePoint Server または SQL Server の BI ワークロード イメージをイメージ ライブラリにアップロードすると、権限のあるユーザーがその BI コンポーネント仮想マシンを選択してスケール アウトした環境を構築できます。
 2. インストール: 
 	- SharePoint Server または SQL Server の BI コンポーネントの構築済みイメージがない場合は、リモート デスクトップ接続を使用して、SharePoint Server および SQL Server を仮想マシンにインストールします。
@@ -253,7 +259,7 @@ Azure の仮想マシンを使用すると、経済的で高度なセキュリ�
 	- 仮想マシンで SQL Server を構成します。詳細については、「[SysPrep を使用した SQL Server 2014 のインストール](http://msdn.microsoft.com/library/ee210664.aspx)」を参照してください。
 	- 新しく作成した Active Directory ドメインに仮想マシンを結合します。
 3. マルチサーバー SharePoint ファームのデプロイ:
-	- 仮想ネットワークを作成します。詳細については、「[仮想ネットワークの概要](http://msdn.microsoft.com/library/jj156007.aspx)」を参照してください。
+	- 仮想ネットワークを作成します。詳細については、「[Virtual Network の概要](http://msdn.microsoft.com/library/jj156007.aspx)」を参照してください。
 	- SharePoint 仮想マシンのデプロイ時には、プロビジョニング時にローカル Active Directory ボックスの DNS アドレスが使用できるように、SharePoint Server のサブネットを指定する必要があります。
 	- Azure ポータルを使用して、仮想マシンを作成します。
 	- SharePoint Server をこの仮想マシンにインストールして、再利用可能なイメージを生成します。SharePoint Server のインストールの詳細については、「[Windows PowerShell を使用して SharePoint Server 2010 をインストールする](http://technet.microsoft.com/library/cc262839.aspx)」または [CodePlex の AutoSPInstaller](http://autospinstaller.codeplex.com/) のページを参照してください。
@@ -271,12 +277,12 @@ SharePoint Server を Azure の仮想マシンに正常にデプロイするに�
 
 ## その他のリソース
 
-[Azure 仮想マシン上の SharePoint Server](http://msdn.microsoft.com/library/dn275955.aspx)
-
 [Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
 [Azure インフラストラクチャ サービスのワークロード: イントラネット SharePoint ファーム](virtual-machines-workload-intranet-sharepoint-farm)
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=August15_HO9-->
+[SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)
+
+<!---HONumber=Sept15_HO2-->

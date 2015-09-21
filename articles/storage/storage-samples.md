@@ -1,19 +1,19 @@
-<properties 
+<properties
    pageTitle="Azure Storage のサンプル | Microsoft Azure"
-	description="Azure Storage のサンプルを表示、ダウンロード、実行できます。.NET、Java、Node.js、C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。"
-	services="storage"
-	documentationCenter="na"
-	authors="tamram"
-	manager="na"
-	editor="na"/>
-<tags 
+   description="Azure Storage のサンプルを表示、ダウンロード、実行できます。.NET、Java、Node.js、C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。"
+   services="storage"
+   documentationCenter="na"
+   authors="tamram"
+   manager="na"
+   editor="na" />
+<tags
    ms.service="storage"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="storage"
-	ms.date="09/01/2015"
-	ms.author="tamram"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="storage"
+   ms.date="09/01/2015"
+   ms.author="tamram" />
 
 # Azure Storage のサンプル
 
@@ -22,7 +22,7 @@
 
 ## .NET のサンプル
 
-.NET のサンプルを調べるには、NuGet から [.NET ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)をダウンロードします。.NET ストレージ クライアント ライブラリは、[Azure SDK for .NET](http://azure.microsoft.com/downloads/) のページにも用意されています。
+.NET のサンプルを調べるには、NuGet から [.NET ストレージ クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)をダウンロードします。.NET ストレージ クライアント ライブラリは、[Azure SDK for .NET のページ](http://azure.microsoft.com/downloads/)にも用意されています。
 
 * [5 分で始める、Azure の BLOB、テーブル、キューの使用](storage-getting-started-guide.md)
 * [Azure Storage での同時実行制御の管理 - サンプル アプリケーション](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)
@@ -47,7 +47,7 @@ Node.js のサンプルを調べるには、[Node.js ストレージ クライ�
 * [BLOB のアップロードとダウンロード](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/blobuploaddownloadsample.js)
 * [継続トークン](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js)
 * [再試行ポリシー](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/retrypolicysample.js)
-* [Shared Access Signature](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
+* [共有アクセス署名](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
 * [スナップショット](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
 * [テーブル クエリ](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
 
@@ -79,6 +79,6 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 ### C++ のリソース
 
 - [C++ ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-cpp)
-- [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/) 
+- [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

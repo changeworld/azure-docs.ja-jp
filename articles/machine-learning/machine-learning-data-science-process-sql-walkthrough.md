@@ -1,22 +1,23 @@
-<properties 
+<properties
 	pageTitle="Advanced Analytics Process and Technology の活用: SQL Server を使用する | Microsoft Azure"
-	description="Advanced Analytics Process and Technology の活用"
+	description="Advanced Analytics Process and Technology の活用"  
 	services="machine-learning"
+	solutions=""
 	documentationCenter=""
 	authors="msolhab"
 	manager="paulettm"
-	editor="cgronlun"/>
+	editor="cgronlun" />
 
-<tags 
+<tags
 	ms.service="machine-learning"
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.date="09/09/2015" 
 	ms.author="mohabib;fashah;bradsev"/>
 
-                
+
 # Advanced Analytics Process and Technology の活用: SQL Server を使用する
 
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) を使ってモデルのビルドとデプロイを行う方法を説明します。Advanced Analytics Process and Technology (ADAPT) ガイドに従って操作できます。
@@ -53,7 +54,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 1. 二項分類: 乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
 
 2. 多クラス分類: 乗車で支払われたチップの範囲を予測します。*tip\_amount* を次の 5 つの箱つまりクラスに分割します。
-	
+
 		Class 0 : tip_amount = $0
 		Class 1 : tip_amount > $0 and tip_amount <= $5
 		Class 2 : tip_amount > $5 and tip_amount <= $10
@@ -126,7 +127,7 @@ _Partitioned テーブルと Views_ を使用すると、大量のデータを S
 	- 左側の **[ページの選択]** リストから、**[データベース設定]** を選択します。
 
 	- **[データベースの既定の場所]** が選択した**データ ディスク**の場所になっているか確認し、なっていなければ変更します。この場所は、既定の位置設定で作成した場合に新しいデータベースが存在する場所です。
-	
+
 		![SQL Database 既定値][15]
 
 5. 新しいデータベースとファイルグループのセットを作成してパーティション分割されたテーブルを保持するには、サンプルのスクリプト **create\_db\_default.sql** を開きます。スクリプトは、既定のデータの場所に **TaxiNYC** という名前の新しいデータベースと 12 のファイルグループを作成します。各ファイルグループは、1 か月分の trip\_data と trip\_fare data を保持します。必要な場合は、データベース名を変更します。スクリプトを実行するには、**[!Execute]** をクリックします。
@@ -173,7 +174,7 @@ _Partitioned テーブルと Views_ を使用すると、大量のデータを S
 
 Azure Machine Learning に進む準備ができれば、次のいずれかを実行できます。
 
-1. 最終的な SQL クエリを保存してデータをサンプリングし、クエリをコピーして直接 Azure Machine Learning の[リーダー][reader] モジュールに貼り付けます。または、 
+1. 最終的な SQL クエリを保存してデータをサンプリングし、クエリをコピーして直接 Azure Machine Learning の[リーダー][reader] モジュールに貼り付けます。または、
 2. 作成するモデルに使用する予定のサンプリングおよびエンジニアリング済みのデータを新しいデータベースのテーブルに保持し、Azure Machine Learning の[リーダー][reader] モジュールでその新しいテーブルを使用します。
 
 このセクションでは、最終的なクエリを保存してから、データの抽出とサンプリングを実行します。2 番目の方法は、「[IPython Notebook でのデータの探索と特徴エンジニアリング](#ipnb)」セクションで説明しています。
@@ -184,7 +185,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 	SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')
 
 	-- Report number of columns in table nyctaxi_trip
-	SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip' 
+	SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
 
 #### 探索: medallion (タクシー番号) ごとの乗車回数の分布
 
@@ -232,12 +233,12 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 この例では、特定の期間中に (または、1 年間をカバーする場合はデータセット全体で) チップの範囲の分布を計算します。これは、後で多クラス分類のモデリングに使用されるラベル クラスの分布です。
 
 	SELECT tip_class, COUNT(*) AS tip_freq FROM (
-		SELECT CASE 
+		SELECT CASE
 			WHEN (tip_amount = 0) THEN 0
 			WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
 			WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
 			WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
-			ELSE 4 
+			ELSE 4
 		END AS tip_class
 	FROM nyctaxi_fare
 	WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
@@ -247,7 +248,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 
 この例では、pickup (乗車) と drop-off (降車) の経度と緯度を、SQL geography ポイントに変換し、SQL geography ポイントの差を使用して乗車距離を計算し、比較するためにランダムな結果のサンプルを返します。この例では、前述したデータ品質評価のクエリを使用して、結果を有効な座標のみに限定します。
 
-	SELECT 
+	SELECT
 	pickup_location=geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326)
 	,dropoff_location=geography::STPointFromText('POINT(' + dropoff_longitude + ' ' + dropoff_latitude + ')', 4326)
 	,trip_distance
@@ -290,7 +291,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 
 - メモリ内のデータ フレームに、データの小さなサンプルを読み込みます。
 - サンプリングされたデータを使用して、視覚化と探索を行います。
-- サンプリングされたデータを使用して、特徴エンジニアリングの実験を行います。 
+- サンプリングされたデータを使用して、特徴エンジニアリングの実験を行います。
 - 大規模なデータの探索、データの操作、および特徴エンジニアリングの場合は、Python を使用して Azure VM の SQL Server データベースに対して直接 SQL クエリを実行します。
 - Azure Machine Learning のモデルの構築に使用するサンプルのサイズを決定します。
 
@@ -319,45 +320,45 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 #### テーブル nyctaxi\_trip の行数と列数を報告する
 
     nrows = pd.read_sql('''
-		SELECT SUM(rows) FROM sys.partitions 
+		SELECT SUM(rows) FROM sys.partitions
 		WHERE object_id = OBJECT_ID('nyctaxi_trip')
 	''', conn)
-    
+
 	print 'Total number of rows = %d' % nrows.iloc[0,0]
-    
+
     ncols = pd.read_sql('''
-		SELECT COUNT(*) FROM information_schema.columns 
+		SELECT COUNT(*) FROM information_schema.columns
 		WHERE table_name = ('nyctaxi_trip')
 	''', conn)
-    
+
 	print 'Total number of columns = %d' % ncols.iloc[0,0]
 
 - 行数の合計 = 173179759  
 - 列数の合計 = 14
-    
+
 #### SQL Server データベースから小規模なサンプルのデータを読み込む
 
     t0 = time.time()
-    
+
 	query = '''
-		SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, 
-			f.tolls_amount, f.total_amount, f.tip_amount 
-		FROM nyctaxi_trip t, nyctaxi_fare f 
+		SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax,
+			f.tolls_amount, f.total_amount, f.tip_amount
+		FROM nyctaxi_trip t, nyctaxi_fare f
 		TABLESAMPLE (0.05 PERCENT)
-		WHERE t.medallion = f.medallion 
-		AND   t.hack_license = f.hack_license 
+		WHERE t.medallion = f.medallion
+		AND   t.hack_license = f.hack_license
 		AND   t.pickup_datetime = f.pickup_datetime
 	'''
 
     df1 = pd.read_sql(query, conn)
-    
+
     t1 = time.time()
     print 'Time to read the sample table is %f seconds' % (t1-t0)
-    
+
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
 サンプル テーブルの読み込みにかかる時間は 6.492000 秒です。取得される列と行の数= (84952, 21)
-    
+
 #### 説明的な統計情報
 
 サンプリングされたデータを探索する準備ができました。最初に **trip\_distance** (またはその他のフィールド) の説明的な統計を確認します。
@@ -426,14 +427,14 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 このセクションでは、テーブルの **nyctaxi\_trip** と **nyctaxi\_fare** を結合し、1% のランダム サンプルを抽出して、「**nyctaxi\_one\_percent**」という名前の新しいテーブルにサンプリングされたデータを保持します。
 
     cursor = conn.cursor()
-    
+
     drop_table_if_exists = '''
         IF OBJECT_ID('nyctaxi_one_percent', 'U') IS NOT NULL DROP TABLE nyctaxi_one_percent
     '''
-    
+
     nyctaxi_one_percent_insert = '''
         SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, f.total_amount, f.tip_amount
-		INTO nyctaxi_one_percent 
+		INTO nyctaxi_one_percent
 		FROM nyctaxi_trip t, nyctaxi_fare f
 		TABLESAMPLE (1 PERCENT)
 		WHERE t.medallion = f.medallion
@@ -441,11 +442,11 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 		AND   t.pickup_datetime = f.pickup_datetime
 		AND   pickup_longitude <> '0' AND dropoff_longitude <> '0'
     '''
-    
+
     cursor.execute(drop_table_if_exists)
     cursor.execute(nyctaxi_one_percent_insert)
     cursor.commit()
-    
+
 ### IPython Notebook での SQL クエリを使用したデータの探索
 
 このセクションでは、上記で作成した新しいテーブルに保持されている 1% のサンプリングされたデータを使用して、データの分布を探索します。元のテーブルを使用して、オプションで探索のサンプルを制限する **TABLESAMPLE** を使用し、または **pickup\_datetime** パーティションを使用して結果を指定した期間に限定することでも、同様の探索が行えることに注意してください。これは、「[SQL サーバーでのデータの探索と特徴エンジニアリング](#dbexplore)」セクションで説明しています。
@@ -453,8 +454,8 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 #### 探索: 1 日ごとの乗車の分布
 
     query = '''
-		SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c 
-		FROM nyctaxi_one_percent 
+		SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
+		FROM nyctaxi_one_percent
 		GROUP BY CONVERT(date, dropoff_datetime)
 	'''
 
@@ -463,11 +464,11 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 #### 探索: medallion (タクシー番号) ごとの乗車回数の分布
 
     query = '''
-		SELECT medallion,count(*) AS c 
-		FROM nyctaxi_one_percent 
+		SELECT medallion,count(*) AS c
+		FROM nyctaxi_one_percent
 		GROUP BY medallion
 	'''
-    
+
 	pd.read_sql(query,conn)
 
 ### IPython Notebook での SQL クエリを使用した特徴の生成
@@ -484,13 +485,13 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 		nyctaxi_one_percent_add_col = '''
 			ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
 		'''
-		
+
 		cursor.execute(nyctaxi_one_percent_add_col)
 		cursor.commit()
-    
+
     	nyctaxi_one_percent_update_col = '''
-        	UPDATE nyctaxi_one_percent 
-            SET 
+        	UPDATE nyctaxi_one_percent
+            SET
                tipped = CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END,
                tip_class = CASE WHEN (tip_amount = 0) THEN 0
                                 WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
@@ -515,22 +516,22 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
     cursor.commit()
 
     nyctaxi_one_percent_update_col = '''
-		WITH B AS 
+		WITH B AS
 		(
-			SELECT medallion, hack_license, 
+			SELECT medallion, hack_license,
 				SUM(CASE WHEN vendor_id = 'cmt' THEN 1 ELSE 0 END) AS cmt_count,
 				SUM(CASE WHEN vendor_id = 'vts' THEN 1 ELSE 0 END) AS vts_count
-			FROM nyctaxi_one_percent 
+			FROM nyctaxi_one_percent
 			GROUP BY medallion, hack_license
-		) 
-    
-		UPDATE nyctaxi_one_percent 
+		)
+
+		UPDATE nyctaxi_one_percent
 		SET nyctaxi_one_percent.cmt_count = B.cmt_count,
 			nyctaxi_one_percent.vts_count = B.vts_count
-		FROM nyctaxi_one_percent A INNER JOIN B 
+		FROM nyctaxi_one_percent A INNER JOIN B
 		ON A.medallion = B.medallion AND A.hack_license = B.hack_license
 	'''
-    
+
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
@@ -546,20 +547,20 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
     cursor.commit()
 
     nyctaxi_one_percent_update_col = '''
-		WITH B(medallion,hack_license,pickup_datetime,trip_time_in_secs, BinNumber ) AS 
+		WITH B(medallion,hack_license,pickup_datetime,trip_time_in_secs, BinNumber ) AS
 		(
-			SELECT medallion,hack_license,pickup_datetime,trip_time_in_secs, 
+			SELECT medallion,hack_license,pickup_datetime,trip_time_in_secs,
 			NTILE(5) OVER (ORDER BY trip_time_in_secs) AS BinNumber from nyctaxi_one_percent
 		)
-    
-		UPDATE nyctaxi_one_percent 
+
+		UPDATE nyctaxi_one_percent
 		SET trip_time_bin = B.BinNumber
-		FROM nyctaxi_one_percent A INNER JOIN B 
+		FROM nyctaxi_one_percent A INNER JOIN B
 		ON A.medallion = B.medallion
 		AND A.hack_license = B.hack_license
 		AND A.pickup_datetime = B.pickup_datetime
 	'''
-    
+
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
@@ -568,7 +569,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 この例では、[緯度] フィールドや [経度] フィールドの 10 進数表記を、国、都市、町、ブロックなどの異なる粒度に細分化します。新しい geo フィールドは実際の場所にマップされていないことに注意してください。Geocode の場所のマッピングの詳細については、「[Bing マップの REST サービス](https://msdn.microsoft.com/library/ff701710.aspx)」を参照してください。
 
     nyctaxi_one_percent_insert_col = '''
-		ALTER TABLE nyctaxi_one_percent 
+		ALTER TABLE nyctaxi_one_percent
 		ADD l1 varchar(6), l2 varchar(3), l3 varchar(3), l4 varchar(3),
 			l5 varchar(3), l6 varchar(3), l7 varchar(3)
 	'''
@@ -578,13 +579,13 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
     nyctaxi_one_percent_update_col = '''
 		UPDATE nyctaxi_one_percent
-		SET l1=round(pickup_longitude,0) 
+		SET l1=round(pickup_longitude,0)
 			, l2 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 1 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),1,1) ELSE '0' END     
 			, l3 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 2 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),2,1) ELSE '0' END     
 			, l4 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 3 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),3,1) ELSE '0' END     
 			, l5 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 4 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),4,1) ELSE '0' END     
 			, l6 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 5 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),5,1) ELSE '0' END     
-			, l7 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 6 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),6,1) ELSE '0' END 
+			, l7 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 6 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),6,1) ELSE '0' END
 	'''
 
     cursor.execute(nyctaxi_one_percent_update_col)
@@ -655,12 +656,12 @@ SQL Server データベースから直接データを読み取る、二項分類
 
 ## <a name="mldeploy"></a>Azure Machine Learning にモデルを配置する
 
-モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。Azure ML Web サービスの発行の詳細については、「[Azure Machine Learning Web サービスを発行する](machine-learning-publish-a-machine-learning-web-service.md)」を参照してください。
+モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。Azure ML Web サービスのデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」を参照してください。
 
 新しい Web サービスをデプロイするには以下のことを実行する必要があります。
 
 1. スコア付け実験の作成。
-2. Web サービスの発行。
+2. Web サービスのデプロイ。
 
 **終了した**トレーニング実験からスコア付け実験を作成するには、下部の操作バーにある **[スコア付け実験の作成]** をクリックしてください。
 
@@ -674,11 +675,11 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 
 スコア付け実験が作成されたら、それを確認し、必要に応じて調整します。一般的な調整は、入力データセットまたはクエリを、ラベル フィールドを除外した入力データセットまたはクエリに置き換えることです。これらはサービスが呼び出されると使用できなくなるためです。入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。出力ポートでは、一般的に、すべての入力フィールドを除外し、[プロジェクト列][project-columns]モジュールを使用して、出力の**スコアリングしたラベル**と**スコアリングした確率**のみを含めます。
 
-サンプルのスコア付け実験を次の図に示します。発行できる状態になったら、下部の操作バーにある **[Web サービスの発行]** ボタンをクリックします。
+サンプルのスコア付け実験を次の図に示します。デプロイできる状態になったら、下部の操作バーにある **[Web サービスの発行]** ボタンをクリックします。
 
 ![Azure ML 発行][11]
 
-要点をまとめると、このチュートリアルでは、Azure のデータ サイエンス環境を作成し、データの取得からモデルのトレーニング、Azure Machine Learning Web サービスの発行までを通して、大規模な公開されているデータセットを操作しました。
+要点をまとめると、このチュートリアルでは、Azure のデータ サイエンス環境を作成し、データの取得からモデルのトレーニング、Azure Machine Learning Web サービスのデプロイまでを通して、大規模な公開されているデータセットを操作しました。
 
 ### ライセンス情報
 
@@ -713,6 +714,5 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [metadata-editor]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
- 
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

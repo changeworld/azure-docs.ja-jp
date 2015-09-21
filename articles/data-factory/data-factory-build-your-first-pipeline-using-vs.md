@@ -12,7 +12,7 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
+	ms.topic="article" 
 	ms.date="08/18/2015"
 	ms.author="spelluru"/>
 
@@ -26,51 +26,18 @@
 
 この記事では、Visual Studio を使用して最初のパイプラインを作成する方法を学習します。このチュートリアルの手順は次のとおりです。
 
-1.	データ ファクトリを作成する
-2.	リンクされたサービス (データ ストア、計算) とデータセットを作成する
-3.	パイプラインを作成する
+2.	リンクされたサービス (データ ストア、計算) を作成する。
+3.	データセットを作成する。
+3.	パイプラインを作成する。
+4.	Data Factory を作成し、リンクされたサービス、データセット、パイプラインをデプロイする。 
 
 この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、記事「[Azure Data Factory サービスの概要](data-factory-introduction.md)」を参照してください。
-
-## 手順 1: データ ファクトリを作成する
-
-1.	[Azure プレビュー ポータル](http://portal.azure.com/)にログインした後、次の操作を行います。
-	1.	左下隅の **[新規]** をクリックします。 
-	2.	**[作成]** ブレードの **[データ分析]** をクリックします。
-	3.	**[データ分析]** ブレードの **[Data Factory]** をクリックします。
-
-		![[作成] ブレード](./media/data-factory-build-your-first-pipeline-using-vs/create-blade.png)
-
-2.	**[新しいデータ ファクトリ]** ブレードで、[名前] フィールドに「**DataFactoryMyFirstPipeline**」と入力します。
-
-	![New data factory blade](./media/data-factory-build-your-first-pipeline-using-vs/new-data-factory-blade.png)
-
-	> [AZURE.IMPORTANT] Azure Data Factory の名前はグローバルで一意となります。ファクトリを作成するには、データ ファクトリの名前の先頭にあなたの名前を付ける必要があります。 
-3.	リソース グループを作成していない場合は、リソース グループを作成する必要があります。これを行うには、次の手順を実行します。
-	1.	**[リソース グループ名]** をクリックします。
-	2.	**[リソース グループ]** ブレードで、**[新規リソース グループの作成]** を選択します。
-	3.	**[リソース グループの作成]** ブレードで、**[名前]** フィールドに「**ADF**」と入力します。
-	4.	**[OK]** をクリックします。
-	
-		![Create resource group](./media/data-factory-build-your-first-pipeline-using-vs/create-resource-group.png)
-4.	リソース グループを選択した後、データ ファクトリを作成する正しいサブスクリプションを使用していることを確認します。
-5.	**[新しいデータ ファクトリ]** ブレードで **[作成]** をクリックします。
-6.	次のように、Azure プレビュー ポータルの**スタート画面**にデータ ファクトリを作成中であることが示されます。   
-
-	![Data factory を作成中の状態](./media/data-factory-build-your-first-pipeline-using-vs/creating-data-factory-image.png)
-7. ご利用ありがとうございます。 これで、最初のデータ ファクトリが正常に作成されました。データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。 	
-
-	![Data Factory blade](./media/data-factory-build-your-first-pipeline-using-vs/data-factory-blade.png)
-
-以降の手順では、このチュートリアルで使用するリンクされたサービス、データセット、およびパイプラインを作成する方法を説明します。
 
 ## チュートリアル: Visual Studio を使用して Data Factory のエンティティを作成してデプロイする 
 
 ### 前提条件
 
-コンピューターに:
-- Visual Studio 2013
-- がインストールされており、Azure SDK for Visual Studio 2013 がダウンロードされている必要があります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
+コンピューターに Visual Studio 2013 がインストールされており、Azure SDK for Visual Studio 2013 がダウンロードされている必要があります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
 
 
 ### Visual Studio プロジェクトの作成 
@@ -111,11 +78,13 @@
 		{
 		  "name": "HDInsightOnDemandLinkedService",
 		  "properties": {
-	        "type": "HDInsightOnDemandLinkedService",
-            "version": "3.1",
-	        "clusterSize": 1,
-	        "timeToLive": "00:05:00",
-	        "linkedServiceName": "AzureStorageLinkedService1"
+		    "type": "HDInsightOnDemand",
+		    "typeProperties": {
+		      "version": "3.1",
+		      "clusterSize": 1,
+		      "timeToLive": "00:05:00",
+		      "linkedServiceName": "AzureStorageLinkedService1"
+		    }
 		  }
 		}
 	
@@ -139,22 +108,22 @@
 3. エディターに表示されている **JSON** を次のスニペットに置き換えます。この JSON スニペットでは、**AzureBlobOutput** という名前のデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定します。さらに、結果を **data** という名前の BLOB コンテナーおよび **partitioneddata** という名前のフォルダーに格納することを指定します。**availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
 	
 		{
-		    "name": "AzureBlobOutput",
-		    "properties": {
-		        "location": {
-		            "type": "AzureBlobLocation",
-		            "folderPath": "data/partitioneddata",
-		            "format": {
-		                "type": "TextFormat",
-		                "columnDelimiter": ","
-		            },
-		            "linkedServiceName": "AzureStorageLinkedService1"
-		        },
-		        "availability": {
-		            "frequency": "Month",
-		            "interval": 1
-		        }
+		  "name": "AzureBlobOutput",
+		  "properties": {
+		    "type": "AzureBlob",
+		    "linkedServiceName": "AzureStorageLinkedService1",
+		    "typeProperties": {
+		      "folderPath": "data/partitioneddata",
+		      "format": {
+		        "type": "TextFormat",
+		        "columnDelimiter": ","
+		      }
+		    },
+		    "availability": {
+		      "frequency": "Month",
+		      "interval": 1
 		    }
+		  }
 		}
 
 4. **AzureBlobLocation1.json** ファイルを保存します。
@@ -165,38 +134,43 @@
 
 1. **ソリューション エクスプローラー** の **[パイプライン]** を右クリックし、**[追加]** をポイントし、**[新しい項目]** をクリックします。 
 2. 一覧から **[Hive 変換パイプライン]** を選択し、**[追加]** をクリックします。 
-3. **JSON** を次のスニペットに置き換え、**storageaccountname** をストレージ アカウントの名前に置き換えます。
+3. **JSON** を次のスニペットに置き換えます。
+
+	> [AZURE.IMPORTANT]**storageaccountname** は、ストレージ アカウントの名前に置き換えます。
 
 		{
-		    "name": "MyFirstPipeline",
-		    "properties": {
+		  "name": "MyFirstPipeline",
+		  "properties": {
 		    "description": "My first Azure Data Factory pipeline",
 		    "activities": [
 		      {
-		            "type": "HDInsightActivity",
-		            "transformation": {
-		                    "scriptPath": "script/partitionweblogs.hql",
-		                    "scriptLinkedService": "AzureStorageLinkedService1",
-		                    "type": "Hive",
-		                    "extendedProperties": {
-		                        "partitionedtable": "wasb://data@<storageaccountname>.blob.core.windows.net/partitioneddata"
-		                    }
-		                },
-		                "outputs": [   {  "name": "AzureBlobOutput"    }   ],
-		                "policy": {  
-		                    "concurrency": 1,
-		                    "retry": 3
-		                },
-		                "name": "RunSampleHiveActivity",
-		                "linkedServiceName": "HDInsightOnDemandLinkedService"
-		            }
+		        "type": "HDInsightHive",
+		        "typeProperties": {
+		          "scriptPath": "script/partitionweblogs.hql",
+		          "scriptLinkedService": "AzureStorageLinkedService1",
+		          "defines": {
+		            "partitionedtable": "wasb://data@<storageaccountname>.blob.core.windows.net/partitioneddata"
+		          }
+		        },
+		        "outputs": [
+		          {
+		            "name": "AzureBlobOutput"
+		          }
 		        ],
-		        "start": "2014-01-01",
-		        "end": "2014-01-02"
-		    }
+		        "policy": {
+		          "concurrency": 1,
+		          "retry": 3
+		        },
+		        "name": "RunSampleHiveActivity",
+		        "linkedServiceName": "HDInsightOnDemandLinkedService"
+		      }
+		    ],
+		    "start": "2014-01-01",
+		    "end": "2014-01-02"
+		  }
 		}
- 
-	この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
+
+ 	この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
 	
 	Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、**AzureStorageLinkedService1** という名前) および **script** という名前のコンテナーに格納されます。
 
@@ -209,31 +183,38 @@
 
 ### 依存関係として partitionweblogs.hql を追加する 
 
-1. **[ソリューション エクスプローラー]** ウィンドウで [依存関係] を右クリックし、**[追加]** をポイントし、**[既存の項目]** をクリックします。  
+1. **[ソリューション エクスプローラー]** ウィンドウで **[依存関係]** を右クリックし、**[追加]** をポイントし、**[既存の項目]** をクリックします。  
 2. **C:\\ADFGettingStarted** に移動し、**partitionweblogs.hql** ファイルを選択し、**[追加]** をクリックします。 
 
 次の手順でソリューションを公開すると、BLOB ストレージのスクリプト コンテナーに HQL ファイルがアップロードされます。
 
 ### Data Factory エンティティの発行/デプロイ
-  
-1. 有効になっていない場合は、ツールバー領域で、**[Data Factory]** を右クリックして Data Factory ツールバーを有効にします。 
-19. **[Data Factory toolbar]** で、**ドロップダウン ボックス**をクリックし、Azure サブスクリプション内に、すべてのデータ ファクトリを表示します。**[Visual Studio にサインイン]** ダイアログ ボックスが表示された場合。 
-	20. データ ファクトリを作成する Azure サブスクリプションに関連付けられている**電子メール アカウント**を入力し、**パスワード**を入力し、**[サインイン]** をクリックします。
-	21. サイン インが成功すると、Azure サブスクリプション内のすべてのデータ ファクトリが表示されます。このチュートリアルでは、新しいデータ ファクトリを作成します。       
-22. ドロップダウン リストの **[DataFactoryMyFirstPipeline]** を選択し、**[発行]** ボタンをクリックして、リンクされたサービス、データセット、パイプラインをデプロイ/発行します。    
 
-	![[発行] ボタン](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
+18. ソリューション エクスプローラーでプロジェクトを右クリックし、**[発行]** をクリックします。 
+19. **[Microsoft アカウントの新規登録]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、**[サインイン]** をクリックします。
+20. 次のダイアログ ボックスが表示されます。
 
-23. 上の図に示されている **[Data Factory Task List]** ウィンドウで発行のステータスを確認する必要があります。発行が成功したことを確認します。
+	![[発行] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
 
+21. Data Factory の構成ページで、次の操作を行います。
+	1. **[Data Factory の新規作成]** オプションを選択します。
+	2. **[名前]** に「**FirstPipelineUsingVS**」と入力します。
+	3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。 
+	4. 作成する Data Factory の **[ソース グループ]** を選択します。 
+	5. Data Factory の **[リージョン]** を選択します。 
+	6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。(**[次へ]** ボタンが無効になっている場合、**TAB** を押して [名前] フィールドの外に移動します。) 
+23. **[項目の公開]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。     
+24. 概要を確認し、**[次へ]** をクリックし、デプロイメント プロセスを開始し、**[デプロイメント ステータス]** を表示します。
+25. **[デプロイメント ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。 
+ 
 
 ## サーバー エクスプローラーを使用して Data Factory のエンティティを確認する
 
 1. **Visual Studio** のメニューで **[ビュー]** をクリックし、**[サーバー エクスプローラー]** をクリックします。
-2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory Task List]** ウィンドウで、この操作のステータスが確認できます。
+2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力して **[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory タスク リスト]** ウィンドウで、この操作のステータスを確認できます。
 
 	![Server Explorer](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
-3. [Data Factory] を右クリックし、**[Export Data Factory to New Project]** を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
+3. データ ファクトリを右クリックし、**[Data Factory を新しいプロジェクトにエクスポートする]** を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
 
 	![データ ファクトリのエクスポート](./media/data-factory-build-your-first-pipeline-using-vs/export-data-factory-menu.png)
 
@@ -241,11 +222,11 @@
 
 Visual Studio の Azure Data Factory ツールを更新するには、次のように行います。
 
-1. メニューで**[ツール]** をクリックし、**[拡張機能と更新プログラム]** を選択します。
+1. メニューで **[ツール]** をクリックし、**[拡張機能と更新プログラム]** を選択します。
 2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
 3. **[Visual Studio の Azure Data Factory ツール]** を選択して、**[更新]** をクリックします。このエントリが表示されない場合は、ツールは既に最新バージョンです。 
 
-Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については「[データセットとパイプラインを監視する](data-factory-monitor-manage-pipelines.md)」をご覧ください。
+Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関する記事を参照してください。
  
 
 ## 次のステップ
@@ -254,4 +235,4 @@ Azure プレビュー ポータルを使用して、このチュートリアル�
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-vs.md)でフィードバックをお寄せください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

@@ -98,7 +98,7 @@ Microsoft Azure Search は、検索機能をカスタム アプリケーショ�
 
 追加のレプリカおよびパーティションは、検索単位で課金されます。リソースの追加に応じて、特定のリソース構成に必要な検索単位の合計数がページに表示されます。
 
-「[料金の詳細](http://go.microsoft.com/fwlink/p/?LinkID=509792)」をチェックして、単位あたりの課金情報を確認できます。パーティションとレプリカをどのように構成するかについては、「[制限および制約](http://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+「[料金の詳細](http://go.microsoft.com/fwlink/p/?LinkID=509792)」をチェックして、単位あたりの課金情報を確認できます。パーティションとレプリカをどのように構成するかについては、「[制限および制約](search-limits-quotas-capacity.md)」を参照してください。
 
  ![][15]
 
@@ -334,7 +334,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 - [Azure Search とは](search-what-is-azure-search.md)
 
-- [Azure Search REST API](http://msdn.microsoft.com/library/dn798935.aspx)
+- [Azure Search サービス REST API](http://msdn.microsoft.com/library/dn798935.aspx)
 
 - [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)
 
@@ -378,4 +378,4 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [Create your first azure search solution]: search-create-first-solution.md
 [Create a geospatial search app using Azure Search]: search-create-geospatial.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

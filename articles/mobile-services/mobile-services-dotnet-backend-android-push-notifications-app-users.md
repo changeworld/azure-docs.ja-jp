@@ -1,6 +1,6 @@
 <properties
-	pageTitle="認証されたユーザーへのプッシュ通知の送信"
-	description="特定の場所にプッシュ通知を送信する方法について説明します。"
+	pageTitle="Android アプリの認証されたユーザーへのプッシュ通知の送信 (.NET バックエンド)"
+	description="Android アプリの特定の認証済みユーザーに対して、.NET バックエンドでモバイル サービスを使用してプッシュ通知を送信する方法について説明します。"
 	services="mobile-services,notification-hubs"
 	documentationCenter="android"
 	authors="wesmc7777"
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="notification-hubs"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/03/2015" 
 	ms.author="wesmc"/>
 
-# 認証されたユーザーへのプッシュ通知の送信
+# Android アプリの認証されたユーザーへのプッシュ通知の送信
 
 [AZURE.INCLUDE [mobile-services-selector-push-users](../../includes/mobile-services-selector-push-users.md)]
 
@@ -25,7 +25,7 @@
 このトピックでは、登録されたデバイスの認証されたユーザーにプッシュ通知を送信する方法を説明します。前の[プッシュ通知][Get started with push notifications]のチュートリアルとは違い、このチュートリアルでは、プッシュ通知のためにクライアントを通知ハブに登録するには、ユーザーの認証が必要になるようにモバイル サービスを変更します。また、登録を変更して、割り当てられたユーザー ID に基づいてタグが追加されるようにします。最後に、サーバー コードを更新して、すべての登録に対してではなく、認証されたユーザーにのみ通知が送信されるようにします。
 
 
-このチュートリアルが対象とするのは、Android アプリケーションです。
+このチュートリアルの対象は、.NET バックエンドで Mobile Service を使用する Android アプリです。
 
 ##前提条件
 
@@ -63,4 +63,4 @@ In the next tutorial, [Service-side authorization of Mobile Services users](mobi
 [Azure Management Portal]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

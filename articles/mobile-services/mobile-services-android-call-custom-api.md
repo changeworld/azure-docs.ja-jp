@@ -1,6 +1,7 @@
 <properties
-	pageTitle="Android クライアントからのカスタム API 呼び出し | Microsoft Azure"
-	description="カスタム API を定義し、Azure Mobile Services を使用する Android アプリからそれを呼び出す方法について説明します。"
+	writer="ricksal"
+	pageTitle="Android クライアントからのカスタム API 呼び出し (JavaScript バックエンド) | Microsoft Azure"
+	description="カスタム API を定義し、Azure Mobile Services を使用する Android アプリからそれを呼び出す方法について説明します (JavaScript バックエンド) 。"
 	services="mobile-services"
 	documentationCenter="android"
 	authors="RickSaling"
@@ -13,10 +14,10 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/03/2015"
 	ms.author="ricksal"/>
 
-# クライアントからのカスタム API 呼び出し
+# Android クライアントからのカスタム API 呼び出し (JavaScript バックエンド)
 
 [AZURE.INCLUDE [mobile-services-selector-call-custom-api](../../includes/mobile-services-selector-call-custom-api.md)]
 
@@ -68,4 +69,4 @@
 
 [ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

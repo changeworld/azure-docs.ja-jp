@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/08/2015" 
+	ms.date="09/08/2015" 
 	ms.author="tdykstra"/>
 
 # Web ジョブ SDK で Azure BLOB ストレージを使用する方法
@@ -232,4 +232,4 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 このガイドでは、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure Web ジョブ および Web ジョブ SDK の使用方法の詳細については、「[Azure Web ジョブの推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

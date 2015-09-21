@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="06/11/2015" 
+ms.date="09/08/2015" 
 ms.author="adegeo"/>
 
 # .NET で Web またはワーカー ロールのライフサイクルをカスタマイズする
@@ -80,4 +80,4 @@ Web ロールの初期化とシャットダウン シーケンスを管理する
 ## 次のステップ
 [クラウド サービス パッケージを作成する方法](cloud-services-model-and-package.md)について説明します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

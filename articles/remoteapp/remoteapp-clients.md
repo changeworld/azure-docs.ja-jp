@@ -1,6 +1,6 @@
 
 <properties
-    pageTitle="アプリにアクセスする"
+    pageTitle="任意のデバイスからのアプリへのアクセス | Microsoft Azure"
     description="Azure RemoteApp にサポートされているクライアントとアプリへのアクセス方法について説明します。"
     services="remoteapp"
 	documentationCenter=""
@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="08/12/2015"
+    ms.date="09/09/2015"
     ms.author="elizapo" />
 
 
@@ -41,10 +41,11 @@ Azure RemoteApp の優れた点の 1 つは、どのデバイスからでもア�
 
  シン クライアントはどうでしょうか。 次の Windows Embedded のシン クライアントはサポートされています。
 
- - Windows Embedded Standard 7 with Service Pack 1
- - Windows Embedded POSReady7
- - Windows Embedded Thin PC
- - Windows Embedded 8.1 Industry
+- Windows Embedded Standard 7
+- Windows Embedded 8 Standard
+- Windows Embedded 8.1 Industry Pro
+- Windows 10 IoT Enterprise
+
 
 ## クライアントのダウンロード
 
@@ -207,4 +208,4 @@ Windows Phone 8.1 ストアから、Microsoft リモート デスクトップ �
 	![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/WinPhone8.png)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

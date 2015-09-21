@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="データ移動アクティビティ"
-	description="Data Factory パイプラインでデータを移動するために使用できる Data Factory のエンティティについて説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="データ移動アクティビティ" 
+	description="Data Factory パイプラインでデータを移動するために使用できる Data Factory のエンティティについて説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/29/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/29/2015" 
 	ms.author="spelluru"/>
 
 # データ移動アクティビティ
@@ -86,7 +86,7 @@ Data Gateway には次の機能が備わっています。
 それぞれのデータ ストアのコネクタの記事で、データ ストアに関する特定のネイティブ型システムと .NET のマッピングを検索できます。これらのマッピングを使用して、コピー アクティビティの間に適切な変換が実行されるように、テーブル作成時に適切な型を決定できます。
 
 ### 異なるファイル形式の使用
-ファイル ベースのソースの場合、コピー アクティビティは、バイナリ、テキスト、Avro 形式などのさまざまなファイル形式をサポートします。
+ファイル ベースのソースの場合、コピー アクティビティは、バイナリ、テキスト、Avro 形式などのさまざまなファイル形式をサポートします。コピー アクティビティを使用すると、ある形式を別の形式に変換できます(例: テキスト (CSV) から Avro)。
 
 ### コピー アクティビティのプロパティ
 名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。
@@ -97,4 +97,4 @@ Data Gateway には次の機能が備わっています。
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-data-movement-activities.md)でフィードバックをお寄せください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO2-->

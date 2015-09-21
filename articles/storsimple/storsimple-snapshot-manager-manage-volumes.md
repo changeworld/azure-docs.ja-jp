@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager を使用したボリュームの表示と管理 | Microsoft Azure"
+   pageTitle="StorSimple Snapshot Manager とボリューム | Microsoft Azure"
    description="StorSimple Snapshot Manager MMC スナップインを使用して、ボリュームを表示および管理する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/17/2015"
+   ms.date="09/04/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したボリュームの表示と管理
@@ -270,4 +270,4 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

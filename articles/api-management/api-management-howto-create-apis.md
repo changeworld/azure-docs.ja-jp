@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2015" 
+	ms.date="09/10/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API を作成する方法
@@ -98,4 +98,4 @@ API を作成し、設定を構成した後は、操作を API に追加しま�
 [Azure API Management で相互証明書認証を使用してバックエンド サービスを保護する方法]: api-management-howto-mutual-certificates.md
 [Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法]: api-management-howto-oauth2.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="07/06/2015"
+	ms.date="09/03/2015"
 	ms.author="bwren"/>
 
 # Azure Automation とは
@@ -58,11 +58,11 @@ Azure Automation や独自の Runbook の作成方法の詳細を確認できる
 
 - ここは、**Azure Automation ライブラリ**です。このライブラリの記事では、Azure Automation の構成や管理、また独自の Runbook の作成に関する完全なドキュメントが提供されます。
 - [Azure PowerShell コマンドレット](http://msdn.microsoft.com/library/jj156055.aspx)では、Windows PowerShell を使用した Azure の操作の自動化に関する情報が提供されます。Runbook ではこれらのコマンドレットを使用して Azure リソースを操作します。
-- [Azure Automation ブログ](http://azure.microsoft.com/blog/tag/azure-automation)には、マイクロソフトからの Azure Automation に関する最新の情報が掲載されています。このブログをサブスクライブすると、Azure Automation チームによる最新の情報を把握できます。
+- [管理ブログ](http://azure.microsoft.com/blog/topics/management)では、Azure Automation およびその他の Microsoft の管理テクノロジに関する最新情報を提供しています。このブログをサブスクライブすると、Azure Automation チームによる最新の情報を把握できます。
 - [Automation フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=390561)では Azure Automation に関する質問を投稿でき、マイクロソフトや Automation コミュニティから回答を取得できます。
 
 ## フィードバックを提供できますか。
 
 **フィードバックをお待ちしています。** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO2-->

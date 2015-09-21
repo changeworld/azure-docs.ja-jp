@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager を使用した StorSimple デバイスの接続と管理 | Microsoft Azure"
+   pageTitle="StorSimple Snapshot Manager を使用したデバイス管理 | Microsoft Azure"
    description="StorSimple Snapshot Manager MMC スナップインを使用して、StorSimple デバイスを接続および管理する方法について説明します。"
    services="storsimple"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/18/2015"
+   ms.date="09/04/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用した StorSimple デバイスの接続と管理
@@ -262,4 +262,4 @@ StorSimple device に障害が発生し、スタンバイ (フェールオーバ
 
 [StorSimple Snapshot Manager を使用したボリュームの表示と管理](storsimple-snapshot-manager-manage-volumes.md)。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO2-->

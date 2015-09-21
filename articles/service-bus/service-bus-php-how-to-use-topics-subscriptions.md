@@ -306,7 +306,7 @@ Service Bus トピックの管理操作は **ServiceBusRestProxy** クラスを�
 
 ## 次のステップ
 
-これで、Service Bus キューの基本を学習できました。詳細については、MSDN のトピック「[Service Bus のキュー、トピックおよびサブスクリプション][]」を参照してください。
+これで、Service Bus キューの基本を学習できました。詳細については、[キュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
 
 [What are Service Bus Topics and Subscriptions?]: #bkmk_WhatAreSvcBusTopics
 [Create a Service Namespace]: #bkmk_CreateSvcNamespace
@@ -326,10 +326,10 @@ Service Bus トピックの管理操作は **ServiceBusRestProxy** クラスを�
 [Namespace List screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-05.png
 [Properties Pane screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-06.png
 [Default Key screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-07.png
-[Service Bus のキュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/library/azure/hh367516.aspx
+[キュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
 [Available Namespaces screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_04_SvcBusNode_AvailNamespaces.jpg
 [sqlfilter]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [require-once]: http://php.net/require_once
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Azure Automation DSC の概要"
-	description="Azure Automation Desired State Configuration (DSC) の概要、その利用規約、および既知の問題"
-	services="automation"
-	documentationCenter="dev-center-name"
-	authors="coreyp-at-msft"
-	manager="stevenka"
-	editor="tysonn"/>
+   pageTitle="Azure Automation DSC の概要" 
+   description="Azure Automation Desired State Configuration (DSC) の概要、その利用規約、および既知の問題" 
+   services="automation" 
+   documentationCenter="dev-center-name" 
+   authors="coreyp-at-msft" 
+   manager="stevenka" 
+   editor="tysonn"/>
 
 <tags
    ms.service="automation"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="powershell"
-	ms.workload="TBD"
-	ms.date="08/18/2015"
-	ms.author="coreyp"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="powershell"
+   ms.workload="TBD" 
+   ms.date="09/04/2015"
+   ms.author="coreyp"/>
 
 # Azure Automation DSC の概要 #
 
@@ -193,6 +193,12 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 -	`Get-AzureAutomationDscCompilationJobOutput`
 -	`Start-AzureAutomationDscCompilationJob`
 
+
+##Azure Automation DSC のライフサイクル##
+空のオートメーション アカウントから適切に構成されたノードの管理対象セットを作成するには、構成を定義し、定義した構成をノード構成に変更して、ノードを Azure Automation DSC とこれらのノード構成にオンボードする一連のプロセスを行います。次の図に、Azure Automation DSC のライフサイクルを示します。
+
+![alt text](./media/automation-dsc-overview/DSCLifecycle.png)
+
 ##認識されている既知の問題##
 
 - Azure Automation DSC はプレビュー段階であるため、この機能を初めて使用する際には、Azure PowerShell コマンドレットまたは Azure プレビュー ポータルを使用してサインアップする必要があります。次の 2 つのコマンドレットを呼び出すことでサインアップできます。
@@ -226,4 +232,4 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - Azure Automation DSC にオンボードされた DSC ノードは、最初、マップされている DSC ノード構成に実際には適合していない場合であっても、「適合」状態を示します。ノードが初めてのプルを実行して、最初の DSC レポートを Azure Automation DSC に送信した後、ノードの状態は正しくなります。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->

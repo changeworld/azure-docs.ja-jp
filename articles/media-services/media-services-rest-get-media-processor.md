@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="09/07/2015" 
 	ms.author="juliako"/>
 
 
@@ -33,11 +33,11 @@
 メディア プロセッサ名|説明|詳細情報
 ---|---|---
 Azure Media Encoder|Azure Media Encoder を使用してエンコード タスクを実行できます。|[Azure Media Encoder](media-services-encode-asset.md#azure_media_encoder)
-Media Encoder Standard|Media Encoder Standard を使用してエンコード タスクを実行できます。|[Azure Media Encoder](media-services-encode-asset.md#media_encoder_standard)
-Media Encoder Premium ワークフロー|Media Encoder Premium ワークフローを使用してエンコード タスクを実行できます。|[Media Encoder Premium ワークフロー](media-services-encode-asset.md#media_encoder_premium_wokrflow)
+メディア エンコーダー スタンダード|Media Encoder Standard を使用してエンコード タスクを実行できます。|[Azure Media Encoder](media-services-encode-asset.md#media_encoder_standard)
+メディア エンコーダー プレミアム ワークフロー|メディア エンコーダー プレミアム ワークフローを使用してエンコード タスクを実行できます。|[メディア エンコーダー プレミアム ワークフロー](media-services-encode-asset.md#media_encoder_premium_wokrflow)
 Azure Media Indexer| メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックの生成を可能にします。|[Azure Media Indexer によるメディア ファイルのインデックス作成](media-services-index-content.md)
 Azure Media Hyperlapse (プレビュー)|ビデオ安定化を使用して、ビデオの "凸凹" を取り除いて滑らかにすることができます。コンテンツをすばやく使用可能なクリップにすることもできます。|		[Azure Media Hyperlapse](http://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)</a>
-ストレージの暗号化| ストレージ暗号化を使用して暗号化されたメディア資産を復号化できます。|該当なし
+Storage Decryption| ストレージ暗号化を使用して暗号化されたメディア資産を復号化できます。|該当なし
 Microsoft Azure Media Packager|メディア資産を .mp4 からスムーズ ストリーミング形式に変換できます。また、スムーズ ストリーミングから Apple HTTP ライブ ストリーミング (HLS) 形式にメディア資産を変換できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973635.aspx)
 Microsoft Azure Media Encryptor|PlayReady Protection を使用してメディア資産を暗号化できます。|[Azure Media Packager 用のタスク プリセット文字列](http://msdn.microsoft.com/library/hh973610.aspx)
 
@@ -85,11 +85,20 @@ Microsoft Azure Media Encryptor|PlayReady Protection を使用してメディア
 	{"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#MediaProcessors","value":[{"Id":"nb:mpid:UUID:1b1da727-93ae-4e46-a8a1-268828765609","Description":"Azure Media Encoder","Name":"Azure Media Encoder","Sku":"","Vendor":"Microsoft","Version":"4.4"}]}
 
 
-##次のステップ
-これで、プロセッサ インスタンスの取得方法を学習できました。次は、[資産をエンコードする方法][]に関するトピックに進み、Azure Media Encoder を使用して資産をエンコードする方法を学習します。
 
-[資産をエンコードする方法]: media-services-rest-encode-asset.md
+##Media Services のラーニング パス
+
+AMS のラーニング パスについては、以下を参照してください。
+
+- [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
+##次のステップ
+これで、プロセッサ インスタンスの取得方法を学習できました。次は、[アセットをエンコードする方法][]に関するトピックに進み、Azure メディア エンコーダーを使用してアセットをエンコードする方法を学習します。
+
+[アセットをエンコードする方法]: media-services-rest-encode-asset.md
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/library/jj129582.aspx
 [How to: Connect to Media Services Programmatically]: ../media-services-rest-connect_programmatically/
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO2-->

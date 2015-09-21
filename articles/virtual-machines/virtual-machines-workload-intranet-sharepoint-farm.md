@@ -33,6 +33,8 @@ Azure インフラストラクチャ サービスでイントラネット ShareP
 
 次の手順は、Azure でホストされている開発/テスト イントラネット SharePoint ファームのセットアップです。
 
+> [AZURE.NOTE]Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview およびその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[Test the SharePoint Server 2016 IT Preview in Azure](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」 (Azure での SharePoint Server 2016 IT Preview のテスト) を参照してください。
+
 ## Azure でホストされている開発/テスト イントラネット SharePoint ファームを作成する
 
 Azure でホストされている SharePoint の開発/テスト環境を作成するには、2 つの選択肢があります。
@@ -124,4 +126,4 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO2-->
