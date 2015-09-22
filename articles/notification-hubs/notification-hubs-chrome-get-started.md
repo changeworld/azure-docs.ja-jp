@@ -374,7 +374,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 	- *registerWithGCM* は、Chrome アプリ インスタンスを登録するために、GCM に対して *chrome.gcm.register* を呼び出す最初のボタン クリック ハンドラーです。 
 	- *registerCallback* は、上記の GCM 登録の呼び出しから戻った時点で呼び出されるコールバック関数です。 
 	- *registerWithNH* は、Notification Hubs に登録する 2 番目のボタン クリック ハンドラーです。また、ユーザーが指定した *hubName* と *connectionString* を取得して、Notification Hubs 登録の REST API 呼び出しを作成します。 
-	- *splitConnectionString* と *generateSaSToken* は、すべての REST API 呼び出しで送信する必要のある SaS トークン作成の JavaScript 実装です。これについての詳細は、http://msdn.microsoft.com/library/dn495627.aspx を参照してください。 
+	- *splitConnectionString* と *generateSaSToken* は、すべての REST API 呼び出しで送信する必要のある SaS トークン作成の JavaScript 実装です。これについての詳細は、[共通概念](http://msdn.microsoft.com/library/dn495627.aspx) を参照してください。 
 	- *sendNHRegistrationRequest* は、HTTP REST 呼び出しを実行する関数です。 
 	- *registrationPayload* は、登録 xml ペイロードを定義します。これについての詳細は、「[登録の作成]」を参照してください。このペイロードでは、GCM から受信した ID を使用して登録 ID を更新します。
 	- *client* は、HTTP POST 要求の発行のために使用する *XMLHttpRequest* のインスタンスです。*Authorization* ヘッダーは sasToken を使用して更新します。この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
@@ -496,4 +496,4 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 [Azure Notification Hubs によるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [Azure Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 
-<!----HONumber=Sept15_HO2-->
+<!-----HONumber=Sept15_HO2-->
