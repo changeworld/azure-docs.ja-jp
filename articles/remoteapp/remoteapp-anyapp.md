@@ -92,7 +92,7 @@ Access はデータベースです。せっかくのデータベースが役立�
         $ctx=New-AzureStorageContext <account name> <account key>
     	$s = New-AzureStorageShare <share name> -Context $ctx
 
- このチュートリアルの共有で実行するコマンドレットは次のとおりです。
+	このチュートリアルの共有で実行するコマンドレットは次のとおりです。
 
 	    $ctx=New-AzureStorageContext accessstorage <key>
     	$s = New-AzureStorageShare <share name> -Context $ctx
@@ -118,4 +118,4 @@ Access はデータベースです。せっかくのデータベースが役立�
 
 <!--Image references-->
 
-<!----HONumber=Sept15_HO2-->
+<!-----HONumber=Sept15_HO2-->

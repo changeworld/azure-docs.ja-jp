@@ -67,10 +67,10 @@
 
 3.  **[アプリケーション URL の構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
-    -   **[Central Desktop サインイン URL]** ボックスに、Central Desktop テナント の URL を入力します (例: **http://contoso.centraldesktop.com*)。
-    -   [Central Desktop 応答 URL] ボックスに、Central Desktop AssertionConsumerService URL を入力します (例: https://contoso.centraldesktop.com/saml2-assertion.php)。
+    -   **[Central Desktop サインイン URL]** ボックスに、Central Desktop テナント の URL を入力します (例: *http://contoso.centraldesktop.com*)。
+    -   [Central Desktop 応答 URL] ボックスに、Central Desktop AssertionConsumerService URL を入力します (例: *https://contoso.centraldesktop.com/saml2-assertion.php*)。
 
-    >[AZURE.NOTE]この値は、Central Desktop のメタデータから取得できます (例: **http://contoso.centraldesktop.com*)。
+    >[AZURE.NOTE]この値は、Central Desktop のメタデータから取得できます (例: *http://contoso.centraldesktop.com*)。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-central-desktop-tutorial/IC769561.png "アプリケーション URL の構成")
 
@@ -154,4 +154,4 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=Sept15_HO2-->
+<!----HONumber=Sept15_HO2-->
