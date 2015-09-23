@@ -20,7 +20,7 @@
 
 Azure RemoteApp を使用すると、Windows アプリケーションを、どこでどんなデバイスを使っていても、今すぐ実行できるようなります。Internet Explorer 6 であっても、10 年も昔に作成したカスタム アプリケーションであっても、Office アプリであっても、ユーザーは、それらの少数のアプリケーションのために特定のオペレーティング システム (Windows XP など) を使い続ける必要はもうありません。
 
-Azure RemoteApp を使用すれば、ユーザーも、自分の Android や Apple デバイスを使用して Windows (または Windows Phone) でするのと同じエクスペリエンスが得られます。これは、インターネット接続のあるどこからでもユーザーがアクセスできる Azure 上の Windows 仮想マシンに Windows アプリケーションがホストされることにより、実現されます。
+Azure RemoteApp を使用すれば、ユーザーも、自分の Android や Apple デバイスを使用して Windows (または Windows Phone) でするのと同じエクスペリエンスが得られます。これは、インターネット接続のあるどこからでもユーザーがアクセスできる Azure 上の Windows 仮想マシンに Windows アプリケーションがホストされることにより、実現されます。 
 
 これを行う方法の例をご確認ください。
 
@@ -55,7 +55,6 @@ Access はデータベースです。せっかくのデータベースが役立�
 
 コレクションの作成時に、Azure RemoteApp のノードから移動している場合は、まず Azure ホーム ページから元の場所に戻ります。
 
-1. 左側のナビゲーションにある **[RemoteApp]** をクリックします。
 2. 作成しておいたコレクションをクリックし、追加のオプションにアクセスして、コレクションを構成します。
 ![新規の RemoteApp クラウド コレクション](./media/remoteapp-anyapp/ra-anyappcollection.png)
 3. **[発行]** タブの画面の下部にある **[発行]** をクリックしてから、**[スタート メニュー プログラムの発行]** をクリックします。
@@ -84,10 +83,9 @@ Access はデータベースです。せっかくのデータベースが役立�
 3. ここで、Azure [ストレージ アカウント](../storage-create-storage-account.md)を作成する必要があります。サンプルには「accessstorage」という名前が付いています。わかりやすい名前を 1 つ選んでください (「accessstorage」 という名前は 1 つしか使えないため)。
 ![Azure ストレージ アカウント](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
 4. 次に、ダッシュボードに戻り、ストレージ (エンドポイントの場所) へのパスを取得します。しばらくの間使用するので、このパスをどこかにコピーしておいてください。
-
 ![ストレージ アカウント パス](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
-5.ストレージ アカウントが作成されたら、次は、プライマリ アクセス キーが必要になります。**[アクセス キーの管理]** をクリックして、プライマリ アクセス キーをコピーします。
-6.ここで、ストレージ アカウントのコンテキストを設定し、Access 用の新しいファイル共有を作成します。管理者特権の Windows PowerShell ウィンドウで、次のコマンドレットを実行します。
+5. ストレージ アカウントが作成されたら、次は、プライマリ アクセス キーが必要になります。**[アクセス キーの管理]** をクリックして、プライマリ アクセス キーをコピーします。
+6. ここで、ストレージ アカウントのコンテキストを設定し、Access 用の新しいファイル共有を作成します。管理者特権の Windows PowerShell ウィンドウで、次のコマンドレットを実行します。
 
         $ctx=New-AzureStorageContext <account name> <account key>
     	$s = New-AzureStorageShare <share name> -Context $ctx
@@ -106,8 +104,10 @@ Access はデータベースです。せっかくのデータベースが役立�
 		net use z: \<accountname>.file.core.windows.net<share name> /u:<user name> <account key>
 
 	**/persistent** パラメーターを yes に設定した場合は、マップされたドライブがセッション間で保持されます。
-1. 次に、RemoteApp から、ファイル エクスプローラーのアプリを起動します。共有アプリで使用する任意の Access ファイルを、ファイル共有にコピーします。![Azure 共有への Access ファイルの追加](./media/remoteapp-anyapp/ra-anyappuseraccess.png)
-1. 最後に、Access を起動し、共有したデータベースを開きます。クラウドで実行されている Access のデータが表示されるはずです。![クラウドから実行する実際の Access データベース](./media/remoteapp-anyapp/ra-anyapprunningaccess.png)
+1. 次に、RemoteApp から、ファイル エクスプローラーのアプリを起動します。共有アプリで使用する任意の Access ファイルを、ファイル共有にコピーします。
+![Azure 共有への Access ファイルの追加](./media/remoteapp-anyapp/ra-anyappuseraccess.png)
+1. 最後に、Access を起動し、共有したデータベースを開きます。クラウドで実行されている Access のデータが表示されるはずです。
+![クラウドから実行する実際の Access データベース](./media/remoteapp-anyapp/ra-anyapprunningaccess.png)
 
 これで、どんなデバイスであっても、RemoteApp クライアントをインストールしておけば Access を使用できます。
 
@@ -117,5 +117,6 @@ Access はデータベースです。せっかくのデータベースが役立�
 コレクションの作成方法を習得できたので、[Office 365 を使用するコレクション](remoteapp-tutorial-o365anywhere.md)を作成してみてください。あるいは、ローカル ネットワークにアクセスする[ハイブリッド コレクション](remoteapp-create-hybrid-deployment.md)を作成することもできます。
 
 <!--Image references-->
+ 
 
-<!-----HONumber=Sept15_HO2-->
+<!------HONumber=Sept15_HO2-->
