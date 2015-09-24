@@ -78,9 +78,9 @@ Access はデータベースです。せっかくのデータベースが役立�
 管理者として行う最初の部分です。次に、ユーザーが行ういくつかの手順があります。
 
 1. まず、コマンド ライン インターフェイス (cmd.exe) を発行します。 **[公開]** タブで **[cmd]** を選択し、次に **[発行 > パスを使用してプログラムを発行]** をクリックします。
-2. アプリの名前、およびパスを入力します。ここでは、名前には「File Explorer」、パスには「%SYSTEMDRIVE%\\windows\\explorer.exe」を使用します。
+2. アプリの名前、およびパスを入力します。ここでは、名前には「File Explorer」、パスには「%SYSTEMDRIVE%\windows\\explorer.exe」を使用します。
 ![cmd.exe のファイルの発行](./media/remoteapp-anyapp/ra-publishcmd.png)
-3. ここで、Azure [ストレージ アカウント](../storage-create-storage-account.md)を作成する必要があります。サンプルには「accessstorage」という名前が付いています。わかりやすい名前を 1 つ選んでください (「accessstorage」 という名前は 1 つしか使えないため)。
+3. ここで、Azure [ストレージ アカウント](../storage-create-storage-account.md) を作成する必要があります。サンプルには「accessstorage」という名前が付いています。わかりやすい名前を 1 つ選んでください (「accessstorage」 という名前は 1 つしか使えないため)。
 ![Azure ストレージ アカウント](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
 4. 次に、ダッシュボードに戻り、ストレージ (エンドポイントの場所) へのパスを取得します。しばらくの間使用するので、このパスをどこかにコピーしておいてください。
 ![ストレージ アカウント パス](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
@@ -119,4 +119,4 @@ Access はデータベースです。せっかくのデータベースが役立�
 <!--Image references-->
  
 
-<!------HONumber=Sept15_HO2-->
+<!-------HONumber=Sept15_HO2-->
