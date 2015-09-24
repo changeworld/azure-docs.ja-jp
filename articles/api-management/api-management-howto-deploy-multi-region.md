@@ -40,7 +40,7 @@ API Management サービス インスタンスの Azure ポータルで **[ス�
 
 ![リージョンの追加][api-management-add-region]
 
-リージョンを選択したら、[ユニット] ボックスの一覧から新しいリージョンのユニット数を選択します。
+リージョンを選択したら、**[ユニット\]** ボックスの一覧から新しいリージョンのユニット数を選択します。
 
 ![ユニットの指定][api-management-select-units]
 
@@ -75,4 +75,4 @@ API Management サービス インスタンスの Azure ポータルで **[ス�
 [ユニット]: http://azure.microsoft.com/pricing/details/api-management/
 [Premium]: http://azure.microsoft.com/pricing/details/api-management/
 
-<!---HONumber=Sept15_HO2-->
+<!----HONumber=Sept15_HO2-->
