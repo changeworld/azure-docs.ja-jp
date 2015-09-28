@@ -1,23 +1,23 @@
-<properties 
+<properties
    pageTitle="Azure のコマンド ライン ビルド"
-	description="Azure のコマンド ライン ビルド"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tlee"/>
-<tags 
+   description="Azure のコマンド ライン ビルド"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tlee" />
+<tags
    ms.service="multiple"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/24/2015"
-	ms.author="kempb"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/24/2015"
+   ms.author="kempb" />
 
 # Azure のコマンド ライン ビルド
 
-##概要
+## 概要
 
 コマンド プロンプトで MSBuild を実行すると、Azure のデプロイ用パッケージを作成できます。一部のビルド プロセスを自動化するだけでなく、デバッグ、ステージング、および運用向けのビルドを構成、定義できます。
 
@@ -62,4 +62,4 @@ MSBuild を使用して Azure パッケージを作成するには、ソフト�
 
 パッケージは、ビルド後に Azure にデプロイできます。このプロセスについて説明するチュートリアルについては、Azure の Web サイトを参照してください。このプロセスを自動化する方法については、「[Azure でのクラウド サービスの継続的な配信](../cloud-services/cloud-services-dotnet-continuous-delivery)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 | Microsoft Azure"
+	pageTitle="アプリ モデル v2.0 のスコープ、アクセス許可、および同意 | Microsoft Azure"
 	description="スコープ、アクセス許可、同意など、Azure AD v2.0 アプリ モデルでの承認の説明。"
 	services="active-directory"
 	documentationCenter=""
@@ -116,4 +116,4 @@ OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細に
 
 更新トークンの取得方法と使用方法の詳細については、「[アプリ モデル v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)」を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

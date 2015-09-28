@@ -146,7 +146,9 @@ Visual Studio 用の Service Fabric ツールは、ローカル マシンでの�
 
 ## 次のステップ
 
-[Service Fabric 高信頼アクターの概要](service-fabric-reliable-actors-introduction.md)[アクター API のリファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)[サンプル コード](https://github.com/Azure/servicefabric-samples)
+- [Service Fabric 高信頼アクターの概要](service-fabric-reliable-actors-introduction.md)
+- [アクター API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+- [コード サンプル](https://github.com/Azure/servicefabric-samples)
 
 
 <!--Image references-->
@@ -156,4 +158,4 @@ Visual Studio 用の Service Fabric ツールは、ローカル マシンでの�
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

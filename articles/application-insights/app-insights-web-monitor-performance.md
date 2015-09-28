@@ -32,7 +32,10 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 プロジェクトに Application Insights を追加していない場合 (つまり、ApplicationInsights.config がない場合)、以下のいずれかの方法で開始します。
 
 * [ASP.NET Web アプリ](app-insights-asp-net.md)
+ * [例外の監視を追加する](app-insights-asp-net-exceptions.md)
+ * [依存関係の監視を追加する](app-insights-monitor-performance-live-website-now.md)
 * [J2EE Web アプリ](app-insights-java-get-started.md)
+ * [依存関係の監視を追加する](app-insights-java-agent.md)
 
 
 ## <a name="view"></a>パフォーマンス メトリックの監視
@@ -138,7 +141,12 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
     perfCollector.Initialize(TelemetryConfiguration.Active);
     TelemetryConfiguration.Active.TelemetryModules.Add(perfCollector);
 
+### 例外の数
 
+*例外レートと例外のメトリックの違いは何ですか*
+
+* *例外レート*はシステム パフォーマンス カウンターです。CLR ではスローされた処理済みおよび未処理の例外をすべてカウントし、特定のサンプリング時間間隔での合計をその時間間隔の長さで除算します。Application Insights SDK では、この結果を収集し、ポータルに送信します。
+* *例外* は、グラフのサンプリング時間間隔中にポータルが受信した TrackException レポートの数です。これには、コード内で TrackException 呼び出しが記述されている処理済みの例外のみが含まれ、[未処理の例外](app-insights-asp-net-exceptions.md)はいずれも含められません。 
 
 ## アラートの設定
 
@@ -186,4 +194,4 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

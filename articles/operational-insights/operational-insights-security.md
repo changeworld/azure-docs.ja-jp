@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/22/2015"
+	ms.date="09/10/2015"
 	ms.author="banders"/>
 
 # Operational Insights のセキュリティ
@@ -107,4 +107,4 @@ OMS サービスによって生データは処理され、集計処理された�
 
 以前に設定したアカウントを使用して、OMS にサインインできます。OMS と OMS サービスの間のすべてのトラフィックは、セキュリティで保護された HTTPS チャネルを介して送信されます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple Manager サービス管理 | Microsoft Azure"
-	description="Microsoft Azure 管理ポータルで StorSimple Manager サービスを使用して、StorSimple デバイスを管理する方法を説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="Microsoft Azure 管理ポータルで StorSimple Manager サービスを使用して、StorSimple デバイスを管理する方法を説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="09/01/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/11/2015"
+   ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの管理
 
@@ -89,7 +89,7 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |デバイスの設定を変更する</br>時刻の設定を変更する</br>DNS.md 設定を変更する</br>ネットワーク インターフェイスを構成する|StorSimple Manager サービス → [デバイス] → [構成]|[StorSimple デバイスのデバイス構成を変更する](storsimple-modify-device-config.md)|
 |Web プロキシ設定を表示する|StorSimple Manager サービス → [デバイス] → [構成]|[デバイスの Web プロキシを構成する](storsimple-configure-web-proxy.md)|
 |デバイス管理者のパスワードを変更する</br>StorSimple Snapshot Manager のパスワードを変更する|StorSimple Manager サービス → [デバイス] → [構成]|[StorSimple のパスワードを変更する](storsimple-change-passwords.md)|
-|リモート管理の構成|StorSimple Manager サービス → [デバイス] → [構成]|[StorSimple デバイスにリモート接続する](https://msdn.microsoft.com/library/azure/dn772393.aspx)|
+|リモート管理の構成|StorSimple Manager サービス → [デバイス] → [構成]|[StorSimple デバイスにリモート接続する](storsimple-remote-connect.md)|
 |アラート設定を構成する|StorSimple Manager サービス → [デバイス] → [構成]|[StorSimple アラートを表示および管理する](storsimple-manage-alerts.md)|
 |StorSimple デバイスの CHAP を構成する|StorSimple Manager サービス → [デバイス] → [構成]|[StorSimple デバイスの CHAP を構成する](storsimple-configure-chap.md)|
 |バックアップ ポリシーを追加する</br>スケジュールを追加または変更する</br>バックアップ ポリシーを削除する</br>手動バックアップを実行する</br>複数のボリュームとスケジュールを含むカスタム バックアップ ポリシーを作成する|StorSimple Manager サービス → [デバイス] → [バックアップ ポリシー]|[バックアップ ポリシーを管理する](storsimple-manage-backup-policies.md)|
@@ -97,6 +97,10 @@ StorSimple Manager サービス UI のナビゲーション階層を次の表に
 |StorSimple のハードウェア コンポーネントについて学習する</br>ハードウェアの状態を監視する</br>(これらはオンプレミスのデバイスのみに適用されます)|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[ハードウェア コンポーネントを監視する](storsimple-monitor-hardware-status.md)|
 |サポート パッケージを作成する|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[サポート パッケージを作成および管理する](storsimple-create-manage-support-package.md)|
 |Install software updates|StorSimple Manager サービス → [デバイス] → [メンテナンス]|[デバイスを更新する](storsimple-update-device.md)|
+
+![ビデオ](./media/storsimple-manager-service-administration/Video_icon.png) **ビデオ**
+
+StorSimple Manager サービスのユーザー インターフェイスのチュートリアル ビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-manager-service-overview/)を参照してください。
 
 ##次のステップ
 StorSimple デバイスの日常的な操作または StorSimple デバイスのハードウェア コンポーネントのいずれかで問題が発生した場合は、次のトピックを参照してください。
@@ -108,4 +112,4 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 
 -  [Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

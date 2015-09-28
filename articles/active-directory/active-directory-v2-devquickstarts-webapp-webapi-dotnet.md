@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 | Microsoft Azure"
+	pageTitle="アプリ モデル v2.0 .NET Web アプリ | Microsoft Azure"
 	description="サインインに Microsoft の個人および職場/学校アカウントを使用する Web サービスを呼び出す .NET MVC Web アプリを構築する方法。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -13,13 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="09/11/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: .NET Web アプリから Web API を呼び出す
 
-> [AZURE.NOTE]
-	この情報は、v2.0 エンドポイントのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+> [AZURE.NOTE]この情報は、v2.0 エンドポイントのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
 
 v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/学校アカウントの両方に対応した Web アプリと Web API に認証をすばやく追加できます。ここでは、次のような機能を備えた MVC Web アプリを構築します。
 
@@ -42,11 +41,11 @@ To-Do List Web API をクライアントから呼び出す基本的な手順は�
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet.git```
 
-または、[完成したアプリを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/complete.zip)するか、完成したアプリを複製することもできます:
+Alternatively, you can [download the completed app as a .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/complete.zip) or clone the completed app:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet.git```
 
-## 1.アプリを登録します
+## 1\.アプリを登録します
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** を書き留めます。これは、後ですぐ必要になります。
@@ -55,7 +54,7 @@ To-Do List Web API をクライアントから呼び出す基本的な手順は�
 - 適切な**リダイレクト URI** を入力します。リダイレクト URI は、認証の応答が送られる Azure AD を示します。このチュートリアルの既定値は `https://localhost:44326/` です。
 
 
-## 2.OpenID Connect を使用してユーザーのサインイン処理を行います
+## 2\.OpenID Connect を使用してユーザーのサインイン処理を行います
 ここでは、[OpenID Connect 認証プロトコル](active-directory-v2-protocols.md#openid-connect-sign-in-flow)を使用するように、OWIN ミドルウェアを構成します。OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
 -	最初に、`TodoList-WebApp` プロジェクトのルートにある `web.config` ファイルを開いて、アプリの構成値を `<appSettings>` セクションで入力します。
@@ -114,22 +113,19 @@ public void ConfigureAuth(IAppBuilder app)
 ...
 ```
 
-## 3.ADAL を使用して、ユーザーがサインインしたときにアクセス トークンを取得します
+## 3\.ADAL を使用して、ユーザーがサインインしたときにアクセス トークンを取得します
 `AuthorizationCodeReceived` 通知で、[OpenID Connect と共に OAuth 2.0](active-directory-v2-protocols.md#openid-connect-with-oauth-code-flow) を使用して、To-Do List サービスへのアクセス トークンに authorization\_code を使います。ADAL を使用すると、これを簡単に行えるようになります。
 
 - まず、ADAL のプレビュー バージョンをインストールします。
 
 ```PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoList-WebApp -IncludePrerelease```
-- ADAL 用の `App_Start\Startup.Auth.cs` ファイルにもう 1 つの `using` ステートメントを追加します。
-- 次に、新しいメソッドとして `OnAuthorizationCodeReceived` イベント ハンドラーを追加します。このハンドラーは、ADAL を使用して To Do リスト API へのアクセス トークンを取得し、それを後で使用できるように ADAL のトークン キャッシュに格納します:
+- And add another `using` statement to the `App_Start\Startup.Auth.cs` file for ADAL.
+- Now add a new method, the `OnAuthorizationCodeReceived` event handler.  This handler will use ADAL to acquire an access token to the To-Do List API, and will store the token in ADAL's token cache for later:
 
 ```C#
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
 {
-		string userObjectId = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
-		string tenantID = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
-		string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenantID, string.Empty);
-		ClientCredential cred = new ClientCredential(clientId, clientSecret);
+ string userObjectId = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value; string tenantID = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value; string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenantID, string.Empty); ClientCredential cred = new ClientCredential(clientId, clientSecret);
 
 		// Here you ask for a token using the web app's clientId as the scope, since the web app and service share the same clientId.
 		var authContext = new Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext(authority, new NaiveSessionCache(userObjectId));
@@ -143,7 +139,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 <!-- TODO: Token Cache article -->
 
 
-## 4.To-Do List Web API を呼び出す
+## 4\.To-Do List Web API を呼び出す
 次に、手順 3. で取得した access\_token を実際に使用します。Web アプリの `Controllers\TodoListController.cs` ファイルを開きます。このファイルは、To-Do List API に対するすべての CRUD 要求を実行します。
 
 - ここで再度 ADAL を使用して、ADAL キャッシュから access\_tokens を取得できます。最初に、ADAL の `using` ステートメントをこのファイルに追加します。
@@ -203,8 +199,6 @@ catch (AdalException ee)
 
 ## 次のステップ
 
-その他のリソースについては、以下を参照してください。 
- - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md)
- - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
+その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!-----HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

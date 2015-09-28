@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="08/05/2015"
+    ms.date="09/10/2015"
     ms.author="banders"/>
 
 # ワークスペースの設定と設定の管理
@@ -184,7 +184,7 @@ IIS ログの収集は、以下がインストールされたコンピュータ�
 
 ## ワークスペースを有料データ プランにアップグレードする
 
-Operational Insights のワークスペース データ プランには、**無料**、**標準**、**プレミアム**の 3 つの種類があります。*無料* プランの場合は、500 MB のデータの上限に達した可能性があります。この制限を超えるデータを収集するには、ワークスペースを「**従量課金制プラン**」にアップグレードする必要があります。いつでもプランの種類を変更できます。オペレーション インサイトの料金の詳細については、「[料金の詳細](http://azure.microsoft.com/pricing/operational-insights/)」をご覧ください。
+Operational Insights のワークスペース データ プランには、**無料**、**標準**、**プレミアム**の 3 つの種類があります。*無料* プランの場合は、500 MB のデータの上限に達した可能性があります。この制限を超えるデータを収集するには、ワークスペースを「**従量課金制プラン**」にアップグレードする必要があります。いつでもプランの種類を変更できます。オペレーション インサイトの料金の詳細については、「[料金の詳細](https://azure.microsoft.com/ja-JP/pricing/details/operational-insights/)」をご覧ください。
 
 >[AZURE.IMPORTANT]ワークスペース プランは、Azure サブスクリプションに*リンク*されている場合にのみ変更できます。Azure でワークスペースを作成した場合や、*既に*ワークスペースをリンクしている場合は、このメッセージを無視してください。[opinsights.azure.com](http://opinsights.azure.com) でワークスペースを作成した場合は、[既存のワークスペースを Azure サブスクリプションへリンクする](#link-an-existing-workspace-to-an-Azure-subscription)の手順に従う必要があります。
 
@@ -253,4 +253,4 @@ Azure 管理ポータルで、アップグレードするオペレーション �
 - [Azure Operational Insights における IIS ログ形式の要件](http://blogs.technet.com/b/momteam/archive/2014/09/19/iis-log-format-requirements-in-system-center-advisor.aspx)
 - 他のデータ ソースや他の種類のログも実装して欲しいという要望がコミュニティから寄せられています。それらについては、[フィードバック フォーラム](http://feedback.azure.com/forums/267889-azure-operational-insights/category/88086-log-management-and-log-collection-policy)をご覧ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

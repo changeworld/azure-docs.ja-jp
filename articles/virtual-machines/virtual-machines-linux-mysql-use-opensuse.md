@@ -3,7 +3,7 @@
 	description="Azure の仮想マシンに MySQL をインストールする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/31/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 # Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
 
@@ -38,4 +38,4 @@ MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参�
 [MySQL]: http://www.mysql.com
 [AzurePortal]: http://manage.windowsazure.com
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/04/2015" 
+	ms.date="09/15/2015" 
 	ms.author="genemi"/>
 
 
@@ -72,7 +72,9 @@ Azure クラウド境界内でクライアントを実行している場合、�
 11000 から 11999 および 14000 から 14999 のポート範囲が Azure クライアント コンピューター上で使用可能なまま残され、SQL Database V12 と ADO.NET 4.5 クライアントのやり取りに使用できることを確認します。
 
 - 具体的には、対象の範囲のポートが他のすべての送信ブロッカーの影響を受けないようにします。
-- Azure VM 上の Windows ファイアウォールがポート設定を制御します。
+
+- Azure VM では、**高度なセキュリティを備えた Windows ファイアウォール**がポート設定を制御します。
+ - [ファイアウォールのユーザー インターフェイス](http://msdn.microsoft.com/library/cc646023.aspx)を利用し、**TCP** プロトコルと「**11000-11999**」のような構文のポート範囲を指定するルールを追加できます。
 
 
 ## バージョンの明確化
@@ -112,4 +114,4 @@ Azure クラウド境界内でクライアントを実行している場合、�
 
 - [SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

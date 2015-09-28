@@ -1,20 +1,22 @@
-<properties 
-	pageTitle="Azure 上の仮想マシンはわたしにぴったりのコンピューティング オプションですか。" 
-	description="Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Cloud Services、Virtual Machines" 
+<properties
+	pageTitle="Azure 上の仮想マシンはわたしにぴったりのコンピューティング オプションですか。"
+	description="Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Cloud Services、Virtual Machines"
+	headerExpose=""
+	footerExpose=""
 	services="virtual-machines"
-	authors="KBDAzure" 
+	authors="cynthn"
 	documentationCenter=""
 	manager="timlt"
 	tags=azure-resource-manager, azure-service-management/>
 
-<tags 
-	ms.service="multiple" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/19/2015" 
-	ms.author="kathydav"/>
+<tags
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/19/2015"
+	ms.author="cynthn"/>
 
 # Azure の仮想マシンを選択する必要がありますか。
 
@@ -29,4 +31,4 @@ Azure にはアプリケーションを実行するための複数のホステ�
 [Virtual Machines]: #tellmevm
 [Cloud Services]: cloud-services-choose-me.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

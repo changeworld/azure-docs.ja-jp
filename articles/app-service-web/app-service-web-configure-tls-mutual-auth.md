@@ -5,21 +5,23 @@
 	documentationCenter="" 
 	authors="naziml" 
 	manager="wpickett" 
-	editor=""/>
+	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.date="09/15/2015" 
 	ms.author="naziml"/>
 
 # Web アプリの TLS 相互認証を構成する方法
 
 ## 概要 ##
 さまざまな種類の認証を有効にすることで、Azure Web アプリへのアクセスを制限できます。これを行う 1 つの方法は、要求が TLS と SSL を経由するときに、クライアント証明書を使用して認証することです。このメカニズムは、TLS 相互認証またはクライアント証明書認証と呼ばれます。この記事では、Web アプリをクライアント証明書認証を使用するように設定する方法について詳しく説明します。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## Web アプリのクライアント証明書認証を構成する ##
 Web アプリを、クライアント証明書を要求するように設定するには、Web アプリ用の clientCertEnabled サイト設定を追加し、true に設定する必要があります。現時点では、この設定は、ポータルでの管理エクスペリエンスを通して実行することはできません。これを実現するには REST API を使用する必要があります。
@@ -177,4 +179,4 @@ Web アプリをクライアント証明書認証を使用するように構成�
         }
     }
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

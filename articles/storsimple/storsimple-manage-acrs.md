@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple でのアクセス制御レコードの管理 | Microsoft Azure"
-	description="ACR (アクセス制御レコード) を使用して、StorSimple デバイス上のボリュームに接続できるホストを判別する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="ACR (アクセス制御レコード) を使用して、StorSimple デバイス上のボリュームに接続できるホストを判別する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="09/01/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/15/2015"
+   ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用してアクセス制御レコードを管理する
 
@@ -90,8 +90,8 @@ ACR を削除するには、管理ポータルの **[構成]** ページを使�
 
 ## 次のステップ
 
-詳細については、「[StorSimple ボリュームの管理](storsimple-manage-volumes.md)」を参照してください。
-
+- [StorSimple ボリュームの管理の詳細](storsimple-manage-volumes.md)
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

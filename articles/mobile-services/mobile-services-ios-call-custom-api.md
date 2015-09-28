@@ -1,9 +1,10 @@
 <properties
-	pageTitle="iOS クライアントからカスタム API を呼び出す方法"
+	pageTitle="iOS クライアントからカスタム API を呼び出す方法 (JavaScript バックエンド)"
 	description="カスタム API を定義し、Azure Mobile Services を使用する iOS アプリからそれを呼び出す方法について説明します。"
 	services="mobile-services"
 	documentationCenter="ios"
 	authors="krisragh"
+	writer="krisragh"
 	manager="dwrede"
 	editor=""/>
 
@@ -55,4 +56,4 @@
 [Get started with push notifications]: ../mobile-services-ios-get-started-push.md
 [ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

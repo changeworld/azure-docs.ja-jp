@@ -17,6 +17,7 @@
    ms.author="dkershaw;bryanla"/>
 
 # Azure Active Directory のアプリケーション マニフェストについて
+
 Azure Active Directory (AD) と統合するアプリケーションは、Azure AD テナントに登録され、アプリケーションの永続的な ID 構成を提供する必要があります。この構成は実行時に参照されるため、アプリケーションが Azure AD を介して認証と承認を外部委託および仲介するシナリオが可能になります。Azure AD のアプリケーション モデルの詳細については、「[アプリケーションの追加、更新、および削除][ADD-UPD-RMV-APP]」を参照してください。
 
 ## アプリケーションの ID 構成の更新
@@ -35,7 +36,7 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 - Web API によって公開されているアクセス許可のスコープ (oauth2Permissions) を宣言する。oauth2Permissions 委任アクセス許可スコープを使用してユーザーの偽装を実装する方法については、「[Azure Active Directory とアプリケーションの統合][INTEGRATING-APPLICATIONS-AAD]」の「他のアプリケーションへの Web API の公開」を参照してください。既に説明したように、すべてのアプリケーション エンティティ プロパティについては、[OAuth2Permission][APPLICATION-ENTITY-OAUTH2-PERMISSION] 型の oauth2Permissions を含む Graph API の[エンティティおよび複合型のリファレンス][APPLICATION-ENTITY]記事にドキュメント化されています。
 - アプリによって公開されるアプリケーション ロール (appRoles) を宣言する。実装例については、[Azure AD を使用したクラウド アプリケーションでのロール ベースのアクセス制御][RBAC-CLOUD-APPS-AZUREAD]に関する記事を参照してください。
 - 既知のクライアント アプリケーションを宣言する。
-- サインインしているユーザーのグループ メンバーシップ要求を発行するように Azure AD に要求する。注: さらに、ユーザーのディレクトリ ロール メンバーシップに関する要求を発行するように構成することもできます。実装例については、[AD グループを使用したクラウド アプリケーションでの承認][AAD-GROUPS-FOR-AUTHORIZATION]に関する記事を参照してください。
+- サインインしているユーザーのグループ メンバーシップ要求を発行するように Azure AD にリクエストする。注: さらに、ユーザーのディレクトリ ロール メンバーシップに関する要求を発行するように構成することもできます。実装例については、[AD グループを使用したクラウド アプリケーションでの承認][AAD-GROUPS-FOR-AUTHORIZATION]に関する記事を参照してください。
 - アプリケーションが (埋め込み JavaScript Web ページまたは Single Page Application (SPA) 用に) OAuth 2.0 の暗黙的な許可フローをサポートするように設定する。
 - X509 証明書の秘密キーとしての使用を可能にする。実装例については、[Office 365 を使ったサービスおよびデーモン アプリの構築][O365-SERVICE-DAEMON-APPS]に関する記事を参照してください。 
 
@@ -94,14 +95,14 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 
 <!--article references -->
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
-[ADD-UPD-RMV-APP]: https://msdn.microsoft.com/library/azure/dn132599.aspx
+[ADD-UPD-RMV-APP]: active-directory-integrating-applications.md
 [APPLICATION-ENTITY]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#ApplicationEntity
 [APPLICATION-ENTITY-OAUTH2-PERMISSION]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionType
 [AZURE-PORTAL]: https://manage.windowsazure.com
-[GRAPH-API]: https://msdn.microsoft.com/library/azure/hh974476.aspx
+[GRAPH-API]: active-directory-graph-api.md
 [INTEGRATING-APPLICATIONS-AAD]: https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/
 [O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

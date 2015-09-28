@@ -19,11 +19,11 @@
 
 # Azure SQL Database におけるデータベースとログインの管理
 
-Microsoft Azure SQL Database では、サービスをサインアップすると、プロビジョニング処理が実行され、Azure SQL データベース サーバー、**master** という名前のデータベース、ログインが作成されます。このログインは Azure SQL Database サーバーのサーバーレベル プリンシパルとなります。このログインは、オンプレミスの SQL Server インスタンスにおけるサーバーレベル プリンシパル (**sa**) に似ています。
+Microsoft Azure SQL Database では、サービスをサインアップすると、プロビジョニング処理が実行され、Azure SQL Database サーバー、**master** という名前のデータベース、ログインが作成されます。このログインは Azure SQL Database サーバーのサーバーレベル プリンシパルとなります。このログインは、オンプレミスの SQL Server インスタンスにおけるサーバーレベル プリンシパル (**sa**) に似ています。
 
 Azure SQL Database サーバーレベル プリンシパル アカウントには、サーバーレベルとデータベースレベルのセキュリティをすべて管理する権限が常にあります。このトピックでは、SQL Database でサーバーレベル プリンシパルなどのアカウントを使用してログインとデータベースを管理する方法について説明します。
 
-> [AZURE.IMPORTANT]SQL Database V12 では、ユーザーは包含データベース ユーザーを使用して、データベースを認証できます。包含データベース ユーザーはログインする必要がありません。そのため、データベースは軽量になりますが、データベースへのアクセスを制御するサーバーレベルのプリンシパルの機能が減ります。包含データベース ユーザーを有効にすると、セキュリティに重大な影響があります。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」、「[包含データベース](https://technet.microsoft.com/library/ff929071.aspx)」、「[CREATE USER (Transact-SQL)](https://technet.microsoft.com/library/ms173463.aspx)」を参照してください。
+> [AZURE.IMPORTANT]SQL Database V12 では、ユーザーは包含データベース ユーザーを使用して、データベースを認証できます。包含データベース ユーザーはログインする必要がありません。そのため、データベースは軽量になりますが、データベースへのアクセスを制御するサーバーレベルのプリンシパルの機能が減ります。包含データベース ユーザーを有効にすると、セキュリティに重大な影響があります。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」、「[包含データベース](https://technet.microsoft.com/library/ff929071.aspx)」、「[CREATE USER (Transact-SQL)](https://technet.microsoft.com/library/ms173463.aspx)」、「[Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」を参照してください。
 
 ## SQL Database のセキュリティ管理の概要
 
@@ -32,6 +32,7 @@ SQL Database におけるセキュリティ管理は、オンプレミスの SQL
 | 相違点 | オンプレミスの SQL Server | Azure SQL Database |
 |------------------------------------------------|-----------------------------------------------------------------------------|--------------------------------------------------|
 | サーバーレベル セキュリティを管理する場所 | SQL Server Management Studio のオブジェクト エクスプローラーの **[セキュリティ]** フォルダー | **master** データベースと Azure ポータル経由 |
+| Windows 認証 | Active Directory ID | Azure Active Directory ID |
 | ログインの作成に使用するサーバーレベル セキュリティ ロール | **securityadmin** 固定サーバー ロール | **master** データベースの **loginmanager** データベース ロール |
 | ログインを管理するためのコマンド | CREATE LOGIN、ALTER LOGIN、DROP LOGIN | CREATE LOGIN、ALTER LOGIN、DROP LOGIN (一部のパラメーターが制限されます。また、**master** データベースに接続する必要があります)。 |
 | すべてのログインの表示 | sys.server\_principals | sys.sql\_logins (**master** データベースに接続する必要があります)。|
@@ -43,7 +44,7 @@ SQL Database におけるセキュリティ管理は、オンプレミスの SQL
 
 Azure SQL Database サーバーは、データベースのグループを定義する抽象的なものです。Azure SQL Database サーバーに関連付けられているデータベースは、マイクロソフトのデータ センターに置かれた別々の物理コンピューターの中に存在している可能性があります。そのすべてに対してサーバーレベル管理を実行するには、**master** という名前の 1 つのデータベースを使用します。
 
-**master** データベースでは、ログインと、どのログインにデータベースや他のログインを作成するためのアクセス許可があるかが記録されます。ログインまたはデータベースの作成 (CREATE)、変更 (ALTER)、削除 (DROP) を実行する際は、常に **master** データベースに接続する必要があります。**master** データベースには、ログインの表示に使用できる ``sys.sql_logins`` ビューと、データベースの表示に使用できる ``sys.databases`` ビューも用意されています。
+**master** データベースでは、ログインと、どのログインにデータベースや他のログインを作成するためのアクセス許可があるかが追跡されます。ログインまたはデータベースの作成 (CREATE)、変更 (ALTER)、削除 (DROP) を実行する際は、常に **master** データベースに接続する必要があります。**master** データベースには、ログインの表示に使用できる ``sys.sql_logins`` ビューと、データベースの表示に使用できる ``sys.databases`` ビューも用意されています。
 
 > [AZURE.NOTE]``USE`` コマンドによるデータベースの切り替えはサポートされていません。ターゲット データベースに対して直接接続を確立します。
 
@@ -60,6 +61,8 @@ CREATE USER user1 WITH password='<Strong_Password>';
 > [AZURE.NOTE]包含データベース ユーザーを作成する際は、強力なパスワードを使用する必要があります。詳細については、「[強力なパスワード](https://msdn.microsoft.com/library/ms161962.aspx)」を参照してください。
 
 **ALTER ANY USER** 権限を持つユーザーは、追加の包含データベース ユーザーを作成できます。
+
+SQL Database V12 のプレビュー機能では、包含データベース ユーザーとして Azure Active Directory ID をサポートしています。詳細については、「[Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」を参照してください。
 
 SQL Database では、包含データベース ユーザーを使用することをお勧めします。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 
@@ -96,7 +99,12 @@ Azure SQL Database の **dbmanager** データベース ロールは、オンプ
 
 ### SQL Database のサーバーレベル ロールを割り当てる方法
 
-ログインと、それに関連付けられた (データベースまたは他のログインを作成可能な) ユーザーを作成するには、次の手順に従います。1.サーバーレベル プリンシパル ログイン (プロビジョニング処理で作成されたもの) の資格情報、または **loginmanager** データベース ロールの既存のメンバーの資格情報を使用して **master** データベースに接続します。2.``CREATE LOGIN`` コマンドを使用して、ログインを作成します。詳細については、「[CREATE LOGIN (Transact-SQL)](https://msdn.microsoft.com/library/ms189751.aspx)」を参照してください。3.``CREATE USER`` コマンドを使用して、作成したログインの新しいユーザーを master データベースに作成します。詳細については、「[CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。4.ストアド プロシージャ ``sp_addrolememeber`` を使用して、新しいユーザーを **dbmanager** データベース ロール、loginmanager データベース ロールのどちらか、またはその両方に追加します。
+データベースや他のログインを作成できるログインや関連するユーザーを作成するには、次の手順に従います。
+
+1. サーバーレベル プリンシパル ログイン (プロビジョニング処理で作成されたもの) の資格情報、または **loginmanager** データベース ロールの既存のメンバーの資格情報を使用して **master** データベースに接続します。
+2. ``CREATE LOGIN`` コマンドを使用して、ログインを作成します。詳細については、「[CREATE LOGIN (Transact-SQL)](https://msdn.microsoft.com/library/ms189751.aspx)」を参照してください。
+3. ``CREATE USER`` コマンドを使用して、作成したログインの新しいユーザーを master データベースに作成します。詳細については、「[CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
+4. ストアド プロシージャ ``sp_addrolememeber`` を使用して、新しいユーザーを **dbmanager** データベース ロール、loginmanager データベース ロールのどちらか、またはその両方に追加します。
 
 次のコード例は、ログイン (**login1**) と対応するデータベース ユーザー (**login1User**) を作成する方法を示しています。このユーザーは、**master** データベースへの接続中に、データベースまたは他のログインを作成することができます。
 
@@ -159,6 +167,6 @@ SELECT * FROM sys.databases;
 
 ## 関連項目
 
-[Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md)
+[Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md) [Azure Active Directory Authentication の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

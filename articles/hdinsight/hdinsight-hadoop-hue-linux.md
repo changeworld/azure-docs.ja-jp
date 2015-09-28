@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="HDInsight Linux クラスターの Hadoop で Hue を使用する | Microsoft Azure"
-	description="HDInsight Linux の Hadoop クラスターに Hue をインストールし、使用する方法について説明します。"
-	services="hdinsight"
-	documentationCenter=""
-	authors="nitinme"
-	manager="paulettm"
+	pageTitle="HDInsight Linux クラスターの Hadoop で Hue を使用する | Microsoft Azure" 
+	description="HDInsight Linux の Hadoop クラスターに Hue をインストールし、使用する方法について説明します。" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="nitinme" 
+	manager="paulettm" 
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="hdinsight"
-	ms.workload="big-data"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/21/2015"
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/11/2015" 
 	ms.author="nitinme"/>
 
 # HDInsight Hadoop クラスターに Hue をインストールして使用する
@@ -38,21 +38,23 @@ HDInsight クラスターに Hue をインストールするには、[https://hd
 
 > [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
-1. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-provision-linux-clusters.md#portal)」に記載されている手順を使用してクラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
+1. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)」に記載されている手順を使用してクラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
+
+	> [AZURE.NOTE]HDInsight クラスターに Hue をインストールするには、A4 (8 コア、14 GB メモリ) 以上のヘッドノード サイズが推奨されます。
 
 2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
 	* __[名前]__: スクリプト アクションの表示名を入力します。
-	* __[スクリプト URI]__: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh
+	* __スクリプト URI__: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/install-hue-uber-v01.sh
 	* __[ヘッド]__: このオプションをオンにします。
 	* __[ワーカー]__: 空白のままにします。
 	* __[ZOOKEEPER]__: 空白のままにします。
-	* __[パラメーター]__: このスクリプトはパラメーターとしてクラスターの管理者パスワードを要求します。パスワードは一重引用符で指定します。
+	* __[パラメーター]__: このスクリプトはパラメーターとして**クラスターの管理者パスワード**を要求します。これはクラスターのプロビジョニング時に指定したパスワードです。パスワードは一重引用符で指定する必要があります。
 
 
-3. 下部にある **[スクリプト アクション]** で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** ボタンを使用し、オプションの構成情報を保存します。
+3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
-4. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-provision-linux-clusters.md#portal)」の説明に従ってクラスターのプロビジョニングを続行します。
+4. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)」の説明に従ってクラスターのプロビジョニングを続行します。
 
 ## HDInsight クラスターで Hue を使用する
 
@@ -131,4 +133,4 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

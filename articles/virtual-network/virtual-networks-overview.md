@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure 仮想ネットワーク (VNet) の概要"
+   pageTitle="Azure Virtual Network (VNet) の概要"
    description="Azure 仮想ネットワーク (VNet) について"
    services="virtual-network"
    documentationCenter="na"
@@ -12,10 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/05/2015"
+   ms.date="09/14/2015"
    ms.author="telmos" />
 
-# 仮想ネットワークの概要
+# Virtual Network の概要
 
 Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。Azure ネットワーク設定を制御して、アドレス ブロックの DHCP、DNS 設定、セキュリティ ポリシー、ルーティングを定義できます。また、VNet をさらにサブネットに分割し、物理マシンと仮想マシンをオンプレミスのデータセンターにデプロイできるのと同じように、Azure IaaS Virtual Machines (VM) と PaaS ロール インスタンスもデプロイできます。基本的には、独自の IP アドレス ブロックを取り込んで、ネットワークを Azure に拡張できます。
 
@@ -85,7 +85,7 @@ NSG を作成すると、ネットワーク インターフェイス (NIC)、VM�
 
 ## 次のステップ
 
-- サブネットと [VNet を作成する](../virtual-networks-create-a-vnet.md)。
+- サブネットと [VNet を作成する](../virtual-networks-create-vnet-arm-pportal.md)。
 - [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines-windows-tutorial.md)。
 - [NSG](../virtual-networks-nsg.md) について。
 - [ロード バランサー](../load-balancer-overview.md)の概要。
@@ -93,4 +93,4 @@ NSG を作成すると、ネットワーク インターフェイス (NIC)、VM�
 - [予約済み IP の概要](../virtual-networks-reserved-public-ip.md)
 - [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)の概要。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

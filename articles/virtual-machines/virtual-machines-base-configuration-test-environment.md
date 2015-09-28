@@ -11,13 +11,15 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows"
+	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/07/2015"
 	ms.author="josephd"/>
 
 # 基本構成テスト環境
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-base-configuration-test-environment-resource-manager.md)を使用してリソースを作成することもできます。
 
 この記事では、サービスマネージメントで作成された仮想マシンコンピューターを使用し、Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
 
@@ -49,25 +51,20 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 3.	APP1 を構成する。
 4.	CLIENT1 を構成する。
 
-まだ Azure アカウントがない場合は、[こちら](http://azure.microsoft.com/pricing/free-trial/)から無料評価版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+まだ Azure アカウントがない場合は、[こちら](http://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
-> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料評価版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines 料金](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 料金計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
-
-[AZURE.INCLUDE [service-management-pointer-to-resource-manager](../../includes/service-management-pointer-to-resource-manager.md)]
-
-- [Azure リソース マネージャーでの基本構成テスト環境](virtual-machines-base-configuration-test-environment-resource-manager.md)
-
+> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines 料金](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 料金計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
 
 ## フェーズ 1: 仮想ネットワークを作成する
 
 まず、基本構成の Corpnet サブネットをホストすることになる TestLab という仮想ネットワークを作成します。
 
-1.	Azure 管理ポータルのタスク バーで、**[新規]、[ネットワーク サービス]、[仮想ネットワーク]、[カスタム作成]** の順にクリックします。
-2.	[仮想ネットワークの詳細] ページの**[名前]** に「**TestLab**」と入力します。
+1.	Microsoft Azure 管理ポータルのタスク バーで、**[新規]、[Network Service]、[Virtual Network]、[カスタム作成]** の順にクリックします。
+2.	[Virtual Network の詳細] ページの**[名前]** に「**TestLab**」と入力します。
 3.	**[場所]** から適切なリージョンを選択します。
 4.	次へ進む矢印をクリックします。
 5.	[DNS サーバーおよび VPN 接続] ページで、**[DNS サーバー]** の **[名前の選択または入力]** に「**DC1**」と入力し、**[IP アドレス]** に「**10.0.0.4**」と入力して、次へ進む矢印をクリックします。
-6.	[仮想ネットワーク アドレス空間] ページの **[サブネット]** で **[Subnet-1]** をクリックし、名前を「**Corpnet**」に置き換えます。
+6.	[Virtual Network アドレス空間] ページの **[サブネット]** で **[Subnet-1]** をクリックし、名前を「**Corpnet**」に置き換えます。
 7.	Corpnet サブネットの **[CIDR (アドレス数)]** 列で、**[/24 (256)]** をクリックします。
 8.	[完了] アイコンをクリックします。仮想ネットワークが作成されるまで待ってから、次に進みます。
 
@@ -129,7 +126,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 
 続けて、DC1 仮想マシンに接続します。
 
-1.	Azure の管理ポータルの左側のウィンドウで **[Virtual Machines]** をクリックし、DC1 仮想マシンの **[状態]** 列で **[開始済み]** をクリックします。  
+1.	Microsoft Azure 管理ポータルの左側のウィンドウで **[Virtual Machines]** をクリックし、DC1 仮想マシンの **[状態]** 列で **[開始済み]** をクリックします。  
 2.	タスク バーで、**[接続]** をクリックします。
 3.	DC1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -158,7 +155,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 
 DC1 を再起動した後、DC1 の仮想マシンに再接続します。
 
-1.	Azure の管理ポータルの [Virtual Machines] ページで、DC1 仮想マシンの **[状態]** 列の **[実行中]** をクリックします。
+1.	Microsoft Azure 管理ポータルの [Virtual Machines] ページで、DC1 仮想マシンの **[状態]** 列の **[実行中]** をクリックします。
 2.	タスク バーで、**[接続]** をクリックします。
 3.	DC1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -244,7 +241,7 @@ CLIENT1 は、Contoso イントラネット上の標準的なノート PC、タ�
 4.	スタート画面で、**[Internet Explorer]** をクリックして、**[OK]** をクリックします。
 5.	アドレス バーに「****http://app1.corp.contoso.com/**」と入力し、Enter キーを押します。APP1 の既定のインターネット インフォメーション サービス Web ページが表示されます。
 6.	デスクトップのタスク バーからエクスプローラー アイコンをクリックします。
-7.	アドレス バーに「**\\\\app1\\Files**」と入力し、Enter キーを押します。
+7.	アドレス バーに「**\\\app1\\Files**」と入力し、Enter キーを押します。
 8.	フォルダー ウィンドウに、Files 共有フォルダー内容が表示されます。
 9.	**[Files]** 共有フォルダー ウィンドウで、**Example.txt** ファイルをダブルクリックします。Example.txt ファイルの内容が表示されます。
 10.	**[example.txt - メモ帳]** ウィンドウと **[Files]** 共有フォルダー ウィンドウを閉じます。
@@ -289,4 +286,4 @@ Azure PowerShell で順に仮想マシンを起動するには、クラウド �
 	Start-AzureVM -ServiceName $serviceName -Name "APP1"
 	Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

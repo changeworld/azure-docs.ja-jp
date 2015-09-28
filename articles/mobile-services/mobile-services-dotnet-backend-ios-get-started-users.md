@@ -1,5 +1,5 @@
 <properties
-	pageTitle="既存の Azure Mobile Services アプリへの認証の追加 (iOS) | Microsoft Azure"
+	pageTitle="既存の Azure Mobile Services アプリへの認証の追加 (iOS) | .NET バックエンド | Microsoft Azure"
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて iOS アプリのユーザーを認証する方法について説明します。"
 	services="mobile-services"
 	documentationCenter="ios"
@@ -65,4 +65,4 @@ Xcode で、プロジェクトを開きます。**[実行]** をクリックし�
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

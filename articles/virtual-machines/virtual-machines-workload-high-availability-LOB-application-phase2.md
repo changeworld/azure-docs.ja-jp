@@ -1,25 +1,27 @@
 <properties 
-	pageTitle="基幹業務アプリケーションのフェーズ 2 | Microsoft Azure"
-	description="2 つの Active Directory のレプリカ ドメイン コント ローラーを作成および構成します。"
+	pageTitle="基幹業務アプリケーションのフェーズ 2 | Microsoft Azure" 
+	description="2 つの Active Directory のレプリカ ドメイン コント ローラーを作成および構成します。" 
 	documentationCenter=""
-	services="virtual-machines"
-	authors="JoeDavies-MSFT"
-	manager="timlt"
+	services="virtual-machines" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="Windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/11/2015" 
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 2: ドメイン コントローラーを構成する
 
-高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、オンプレミス ネットワークへの接続で認証トラフィックを送信するのではなく、Web リソースに対するクライアントの Web 要求を Azure 仮想ネットワーク内でローカルに認証できるように、Azure 仮想ネットワークで 2 つのレプリカ ドメイン コントローラーを構成します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
+
+高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、オンプレミス ネットワークへの接続で認証トラフィックを送信するのではなく、Web リソースに対するクライアントの Web 要求を Azure Virtual Network 内でローカルに認証できるように、Azure Virtual Network で 2 つのレプリカ ドメイン コントローラーを構成します。
 
 [フェーズ 3](virtual-machines-workload-high-availability-LOB-application-phase3.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)」をご覧ください。
 
@@ -109,6 +111,8 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 	$vm=Set-AzureVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
 	New-AzureVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
+> [AZURE.NOTE]これらの仮想マシンはイントラネット アプリケーション用であるため、パブリック IP アドレスや DNS ドメイン名ラベルは割り当てられず、インターネットに公開されません。ただし、これは Azure プレビュー ポータルから接続できないことも意味します。仮想マシンのプロパティを表示する際に、**[接続]** ボタンは使用できません。プライベート IP アドレスまたはイントラネット DNS 名を使用して仮想マシンに接続する場合は、リモート デスクトップ接続のアクセサリまたは別のリモート デスクトップ ツールを使用します。
+
 ## 最初のドメイン コントローラーの構成
 
 好みのリモート デスクトップ クライアントを使用し、最初のドメイン コントローラー仮想マシンへのリモート デスクトップ接続を作成します。仮想マシンのイントラネット DNS 名またはコンピューター名と、ローカル管理者アカウントの資格情報を使用します。
@@ -117,7 +121,7 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 
 ### <a id="datadisk"></a>空のディスクを初期化するには
 
-1.	サーバー マネージャーの左側のウィンドウで、**[ファイル サービスと記憶域サービス]** をクリックし、**[ディスク]** をクリックします。
+1.	サーバー マネージャーの左ウィンドウで、**[ファイル サービスと記憶域サービス]** をクリックし、**[ディスク]** をクリックします。
 2.	コンテンツ ウィンドウで、**[ディスク]** グループの (**[パーティション]** が **[不明]** に設定されている) **[ディスク 2]** をクリックします。
 3.	**[タスク]** をクリックし、**[ボリューム]** をクリックします。
 4.	新しいボリューム ウィザードの [開始する前に] ページで **[次へ]** をクリックします。
@@ -133,7 +137,7 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 ### <a id="testconn"></a>接続をテストするには
 
 1.	デスクトップで Windows PowerShell プロンプトを開きます。
-2.	組織のネットワーク上のリソースの名前と IP アドレスに対して **ping** コマンドを実行します。
+2.	**ping** コマンドを使用して、組織のネットワーク上のリソースの名前と IP アドレスを ping します。
 
 この手順により、DNS 名前解決が正しく機能していること (オンプレミス DNS サーバーで仮想マシンが正しく構成されていること) と、クロスプレミス仮想ネットワーク間でパケットを送受信できることが確認されます。この基本テストに失敗した場合は、IT 部門に連絡し、DNS 名前解決とパケット配信の問題のトラブルシューティングを行ってください。
 
@@ -161,13 +165,13 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 
 次に、DNS サーバーとして使用する 2 つの新しいドメイン コントローラーの IP アドレスが仮想マシンに割り当てられるように、仮想ネットワークの DNS サーバーを更新する必要があります。この手順では、表 V (仮想ネットワーク設定) および表 M (仮想マシン) の値を使用します。
 
-1.	[Azure プレビュー ポータル](https://portal.azure.com/)の左ウィンドウで、**[すべて参照] > [仮想ネットワーク]** をクリックし、仮想ネットワークの名前 (表 V - 項目 1 - "値" 列) をクリックします。
+1.	[Azure プレビュー ポータル](https://portal.azure.com/)の左ウィンドウで、**[すべて参照]、[Virtual Network]** の順にクリックしてから、仮想ネットワークの名前 (表 V - 項目 1 - "値" 列) をクリックします。
 2.	仮想ネットワークのウィンドウで、**[すべての設定]** をクリックします。
 3.	**[設定]** ウィンドウで、**[DNS サーバー]** をクリックします。
 4.	**[DNS サーバー]** ウィンドウで、次を入力します。
 	- **プライマリ DNS サーバー**: 表 V - 項目 6 - "値" 列
 	- **セカンダリ DNS サーバー**: 表 V - 項目 7 - "値" 列
-5.	Azure プレビュー ポータルの左ウィンドウで、**[すべて参照] > [仮想マシン]** をクリックします。
+5.	Azure プレビュー ポータルの左ウィンドウで、**[すべて参照]、[仮想マシン]** の順にクリックします。
 6.	**[仮想マシン]** ウィンドウで、最初のドメイン コントローラーの名前 (表 M – 項目 1 - "仮想マシン名" 列) をクリックします。
 7.	仮想マシンのウィンドウで、**[再起動]** をクリックします。
 8.	最初のドメイン コントローラーが起動したら、**[仮想マシン]** ウィンドウで、2 番目のドメイン コントローラーの名前 (表 M – 項目 2 - "仮想マシン名" 列) をクリックします。
@@ -206,4 +210,4 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

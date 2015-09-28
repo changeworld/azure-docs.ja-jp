@@ -8,21 +8,23 @@
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/03/2015" 
+	ms.date="09/16/2015" 
 	ms.author="cephalin"/>
 
 # Azure App Service での Web アプリの復元
 
-この記事では、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) のバックアップ機能を使用して以前にバックアップした Web アプリを復元する方法について説明します。詳細については、「[App Service Web アプリのバックアップ](web-sites-backup.md)」を参照してください。
+この記事では、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) のバックアップ機能を使用して以前にバックアップした Web アプリを復元する方法について説明します。詳細については、「[App Service Web Apps のバックアップ](web-sites-backup.md)」を参照してください。
 
-Web アプリの復元機能では、Web アプリをオンデマンドで以前の状態に戻したり、元の Web アプリのバックアップに基づいて新しい Web アプリを作成することができます。最新バージョンと並列で実行する新しい Web アプリを作成すると、A/B テストを実施する場合に役立ちます。
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-Web アプリの復元機能 ([Azure プレビュー ポータル](http://portal.azure.com)の **[バックアップ]** ブレードで使用可能) は、Standard モードと Premium モードでのみ使用できます。アプリを Standard モードまたは Premium モードに拡張する方法については、「[Azure App Service での Web アプリの拡張](web-sites-scale.md)」を参照してください。プレミアム モードでは、日次バックアップの実行回数を標準モードよりも多く設定できます。
+Web Apps の復元機能では、Web アプリをオンデマンドで以前の状態に戻したり、元の Web アプリのバックアップに基づいて新しい Web アプリを作成することができます。最新バージョンと並列で実行する新しい Web アプリを作成すると、A/B テストを実施する場合に役立ちます。
+
+Web Apps の復元機能 ([Azure プレビュー ポータル](http://portal.azure.com)の **[バックアップ]** ブレードで使用可能) は、Standard モードと Premium モードでのみ使用できます。アプリを Standard モードまたは Premium モードに拡張する方法については、「[Azure App Service での Web アプリの拡張](web-sites-scale.md)」を参照してください。プレミアム モードでは、日次バックアップの実行回数を標準モードよりも多く設定できます。
 
 <a name="PreviousBackup"></a>
 ## 以前に作成したバックアップから Web アプリを復元するには
@@ -96,4 +98,4 @@ Web アプリの復元機能 ([Azure プレビュー ポータル](http://portal
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
  
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

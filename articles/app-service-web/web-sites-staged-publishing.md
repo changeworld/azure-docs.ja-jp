@@ -4,16 +4,17 @@
 	services="app-service\web"
 	documentationCenter=""
 	authors="cephalin"
+	writer="cephalin"
 	manager="wpickett"
 	editor="mollybos"/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/03/2015"
+	ms.date="09/16/2015"
 	ms.author="cephalin"/>
 
 # Azure App Service の Web アプリのステージング環境を設定する
@@ -33,9 +34,10 @@
 
 - スケーリングは
 
-- リンク済みリソースの管理は運用サイト スロットでのみサポートされています。
+- リンク済みリソースの管理は運用サイト スロットでのみサポートされています。[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用している場合のみ、非運用スロットを異なる App Service プラン モードに変更することで、この運用スロットに対する影響を回避することができます。なお、2 つのスロットをスワップする前には、非運用スロットと運用スロットを再度同じモードにする必要があります。
 
-	> [AZURE.NOTE][Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用している場合のみ、非運用スロットを異なる App Service プラン モードに変更することで、この運用スロットに対する影響を回避することができます。なお、2 つのスロットをスワップする前には、非運用スロットと運用スロットを再度同じモードにする必要があります。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 <a name="Add"></a>
 ## Web アプリにデプロイ スロットを追加する ##
@@ -59,7 +61,7 @@
 
 	![構成元][MultipleConfigurationSources]
 
-5. **[デプロイ スロット]** ブレードで、デプロイ スロットをクリックしてスロットのブレードを開くと、他の Web アプリと同様、一連のメトリックと構成が表示されます。現在表示しているデプロイ スロットが、**your-web-app-name-deployment-slot-name** という形式でブレードの上部に表示されます。
+5. **[デプロイメント スロット]** ブレードで、デプロイメント スロットをクリックしてスロットのブレードを開くと、他の Web アプリと同様、一連のメトリックと構成が表示されます。現在表示しているデプロイメント スロットが、**your-web-app-name-deployment-slot-name** という形式でブレードの上部に表示されます。
 
 	![デプロイ スロットのタイトル][StagingTitle]
 
@@ -259,4 +261,4 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

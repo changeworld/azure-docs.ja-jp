@@ -5,15 +5,15 @@
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="mo	nicar"/>
+	editor="monicar" />
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/24/2015"
-	ms.author="jroth"/>
+	ms.date="09/16/2015"
+	ms.author="jroth" />
 
 # Azure での AlwaysOn 可用性グループの外部リスナーの構成
 
@@ -35,13 +35,11 @@
 
 - ハイブリッド環境でのリスナーを作成する場合、オンプレミスのネットワークは、Azure 仮想ネットワークを使用したサイト間 VPN への接続に加えて、パブリック インターネットへの接続が必要です。Azure のサブネットでは、可用性グループ リスナーは個々 のクラウド サービスのパブリック IP アドレスによってのみ到達可能です。
 
->[AZURE.NOTE]このチュートリアルでは、PowerShell を使用した、Azure のレプリカが含まれる可用性グループのリスナーの作成を中心に説明します。SSMS または TRANSACT-SQL を使用してリスナーを構成する方法の詳細については、「[Create or Configure an Availability Group Listener (可用性グループ リスナーの作成または構成)](https://msdn.microsoft.com/library/hh213080.aspx)」をご覧ください。
-
 ## リスナーのアクセシビリティを決定する
 
 [AZURE.INCLUDE [ag-listener-accessibility](../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-この記事では、**外部負荷分散**を使用するリスナーの作成を中心に説明します。プライベートな仮想ネットワークにあるリスナーが必要な場合は、この記事の、[ILB を使用するリスナー](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)を設定するための手順を説明するバージョンを参照してください
+この記事では、**外部負荷分散**を使用するリスナーの作成を中心に説明します。仮想ネットワーク専用のリスナーが必要な場合は、この記事の、[ILB を使用するリスナー](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)を設定するための手順を説明するバージョンを参照してください。
 
 ## Direct Server Return を使用して負荷分散 VM エンドポイントを作成する
 
@@ -116,12 +114,12 @@
 
 	sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-呼び出し元はインターネット経由で windows 認証を使用できないため、前の例とは異なり SQL 認証を使用する必要があります。詳細については、「[AlwaysOn Availability Group in Azure VM: Client Connectivity Scenarios (Azure VM での AlwaysOn 可用性グループ: クライアント接続のシナリオ)](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)」を参照してください。SQL 認証を使用する場合は、両方のレプリカで必ず同じログインを作成します。可用性グループのログインに関するトラブルシューティングの詳細については、「[How to map logins or use contained SQL database user to connect to other replicas and map to availability databases (ログインをマップするか、または 包含 SQL データベース ユーザーを使用して他のレプリカに接続し、可用性データベースにマップする方法)](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)」を参照してください。
+呼び出し元はインターネット経由で windows 認証を使用できないため、前の例とは異なり SQL 認証を使用する必要があります。詳細については、「[AlwaysOn Availability Group in Azure VM: Client Connectivity Scenarios (Azure VM での AlwaysOn 可用性グループ: クライアント接続のシナリオ)](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)」を参照してください。SQL 認証を使用する場合は、両方のレプリカで必ず同じログインを作成します。可用性グループのログインに関するトラブルシューティングの詳細については、「[How to map logins or use contained SQL database user to connect to other replicas and map to availability databases (ログインをマップするか、または包含 SQL データベース ユーザーを使用して他のレプリカに接続し、可用性データベースにマップする方法)](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)」を参照してください。
 
-AlwaysOn レプリカが異なるサブネットにある場合、クライアントの接続文字列で **MultisubnetFailover=True** を指定する必要があります。これにより、別のサブネット内のレプリカへのパラレル接続が試行されます。このシナリオには、AlwaysOn 可用性グループのリージョンを越えたデプロイが含まれていることに注意してください。
+AlwaysOn レプリカが異なるサブネットにある場合、クライアントは接続文字列で **MultisubnetFailover=True** を指定する必要があります。これにより、別のサブネット内のレプリカへのパラレル接続が試行されます。このシナリオには、AlwaysOn 可用性グループのリージョンを越えたデプロイが含まれていることに注意してください。
 
 ## 次のステップ
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

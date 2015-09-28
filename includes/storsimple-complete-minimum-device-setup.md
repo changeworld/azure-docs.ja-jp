@@ -1,3 +1,4 @@
+<!--author=alkohli last changed: 9/17/15-->
 
 #### StorSimple の最小デバイス セットアップを完了するには
 
@@ -5,7 +6,7 @@
 
 	![オンライン デバイスの [デバイス] ページ](./media/storsimple-complete-minimum-device-setup/HCS_DevicesPageM-include.png)
 
-2. クイック スタート アイコン ![[クイック スタート] アイコン](./media/storsimple-complete-minimum-device-setup/HCS_QuickStartIcon-include.png) をクリックし、デバイスのクイック スタート ページにアクセスします。**[デバイス セットアップを完了する]** をクリックし、**[デバイスの構成]** ウィザードを起動します。
+2. クイック スタート アイコン ![[クイック スタート] アイコン](./media/storsimple-complete-minimum-device-setup/HCS_QuickStartIcon-include.png) をクリックし、デバイスのクイック スタート ページにアクセスします。**[デバイス セットアップを完了する]** をクリックして、**デバイスの構成**ウィザードを起動します。
 
 	![デバイスの [クイック スタート] ページ](./media/storsimple-complete-minimum-device-setup/Device_Quick_Start_page_1M.png)
 
@@ -33,4 +34,8 @@
 
  >[AZURE.NOTE]**[構成]** ページにアクセスすれば、その他すべてのデバイス設定をいつでも変更できます。
 
-<!---HONumber=August15_HO7-->
+![ビデオ](./media/storsimple-complete-minimum-device-setup/Video_icon.png) **ビデオ**
+
+最小限のデバイス設定を完了する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/)を参照してください。
+
+<!---HONumber=Sept15_HO3-->

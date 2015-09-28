@@ -1,23 +1,23 @@
-<properties 
+<properties
    pageTitle="Visual Studio からのクラウド サービスの発行に必要なサービスの設定"
-	description="クラウド サービスとストレージ アカウント サービスを設定し、Azure アプリケーションを構成する手順を説明します。"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tglee"/>
-<tags 
+   description="クラウド サービスとストレージ アカウント サービスを設定し、Azure アプリケーションを構成する手順を説明します。"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tglee" />
+<tags
    ms.service="multiple"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="multiple"
-	ms.date="08/13/2015"
-	ms.author="kempb"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="multiple"
+   ms.date="09/08/2015"
+   ms.author="kempb" />
 
 # Visual Studio からのクラウド サービスの発行に必要なサービスの設定
 
-##概要
+## 概要
 
 クラウド サービス プロジェクトを発行可能にするには、次のサービスを設定する必要があります。
 
@@ -80,7 +80,7 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
     - リージョンまたはアフィニティ グループ (米国西部や東アジアなど)。
     - geo 冗長など、ストレージ アカウントで使用するレプリケーションの種類。
 
-1. 完了したら、**[作成]** をクリックします。新しいストレージ アカウントがサーバー エクスプローラーの **[Storage]** の一覧に表示されます。
+1. 終了したら **[作成]** を選択します。[サーバー エクスプローラー] の **[ストレージ]** 一覧に新しいストレージ アカウントが表示されます。
 
 ### Azure 管理ポータルを使用して、ストレージ アカウントを作成するには
 
@@ -143,7 +143,7 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
     1. サービスがストレージ アカウントにアクセスする方法を決定するには、次のオプションのいずれかを選択する必要があります。
         - **[HTTP の使用]**。これは、標準的なオプションです。たとえば、「`http://<account name>.blob.core.windows.net`」のように入力します。
         - **[HTTPS の使用]**。これは、セキュリティで保護された接続に使用します。たとえば、「`https://<accountname>.blob.core.windows.net`」のように入力します。
-        - **[カスタム エンドポイントの指定]**。これは、3 つのサービスそれぞれに対してエンドポイントを指定するときに使用します。このオプションを選択すると、特定のサービスのフィールドにエンドポイントを入力できます。 
+        - **[カスタム エンドポイントの指定]**。これは、3 つのサービスそれぞれに対してエンドポイントを指定するときに使用します。このオプションを選択すると、特定のサービスのフィールドにエンドポイントを入力できます。
 
         >[AZURE.NOTE]カスタム エンドポイントを作成する場合は、より複雑な接続文字列を作成できます。この文字列形式を使用する場合は、ストレージ アカウント用に BLOB サービスに登録したカスタム ドメイン名を含むストレージ サービス　エンドポイントを指定できます。また、共有アクセス署名を介して単一コンテナーの BLOB リソースにのみアクセスを許可できます。カスタム エンドポイントの作成方法の詳細については、「[Azure Storage の接続文字列を構成する](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/)」を参照してください。
 
@@ -153,4 +153,4 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
 
 [Visual Studio から Azure クラウド サービスへの発行](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

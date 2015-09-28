@@ -1,3 +1,5 @@
+<!--author=alkohli last changed: 9/17/15-->
+
 
 #### デバイスを構成して登録するには
 
@@ -30,7 +32,7 @@
    
       >[AZURE.NOTE]サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"デバイスの準備ができていません" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
 
-8. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、**Web プロキシを使用する場合は、ここでのみ構成できることに注意してください**。詳細については、「[デバイスの Web プロキシの構成](https://msdn.microsoft.com/library/azure/dn764937.aspx)」を参照してください。この手順で問題が発生した場合、トラブルシューティング ガイダンスの「[Web プロキシ構成中のエラー](storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings)」を参照してください。
+8. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、**Web プロキシを使用する場合は、ここでのみ構成できることに注意してください**。詳細については、「[デバイスの Web プロキシの構成](storsimple-configure-web-proxy.md)」を参照してください。この手順で問題が発生した場合、トラブルシューティング ガイダンスの「[Web プロキシ構成中のエラー](storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings)」を参照してください。
  
 
       >[AZURE.NOTE]Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。このコマンドを発行する前に適用されたすべての設定は保持されます。
@@ -70,4 +72,8 @@
 
 デバイスを登録したが、オンラインにならない場合、`Test-HcsmConnection -Verbose` を実行し、ネットワーク接続の正常な状態を確認できます。このコマンドレットの詳しい利用については、「[Test-HcsmConnection のコマンドレット リファレンス](https://technet.microsoft.com/library/dn715782.aspx)」を参照してください。
 
-<!---HONumber=August15_HO7-->
+![ビデオ](./media/storsimple-configure-and-register-device/Video_icon.png) **ビデオ**
+
+StorSimple 用 Windows PowerShell でデバイスを構成および登録する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/)を参照してください。
+
+<!---HONumber=Sept15_HO3-->

@@ -8,12 +8,12 @@
 	editor=""/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="07/03/2015"
+	ms.date="09/16/2015"
 	ms.author="cephalin"/>
 
 
@@ -23,9 +23,11 @@ Web アプリの開発における課題の 1 つが、セキュリティで保�
 
 > [AZURE.NOTE]Web ベースのアプリケーションにおけるセキュリティ上の考慮事項に関する詳細な説明は、このドキュメントの対象範囲外です。Web アプリケーションをセキュリティで保護するためのさらなるガイダンスを得るための出発点として、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」、特に [top 10 プロジェクト](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)のページを参照してください。OWASP メンバーによって判別された、Web アプリケーションにおける重要なセキュリティ リスクの現在のトップ 10 が記載されています。
 
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+
 ##<a name="https"></a>保護された通信
 
-Web アプリ用に作成された ****.azurewebsites.net** ドメイン名を使用している場合は、SSL 証明書がすべての ****.azurewebsites.net** ドメイン名に提供されているため、すぐに HTTPS を使用できます。サイトで[カスタム ドメイン名](web-sites-custom-domain-name.md)を使用している場合は、SSL 証明書をアップロードし、カスタム ドメインに対して [HTTPS を有効](web-sites-configure-ssl-certificate.md)にすることができます。
+Web アプリ用に作成された ****.azurewebsites.net** ドメイン名を使用する場合は、SSL 証明書がすべての ****.azurewebsites.net** ドメイン名に提供されているため、すぐに HTTPS を使用できます。サイトで[カスタム ドメイン名](web-sites-custom-domain-name.md)を使用している場合は、SSL 証明書をアップロードし、カスタム ドメインに対して [HTTPS を有効](web-sites-configure-ssl-certificate.md)にすることができます。
 
 ##<a name="develop"></a>保護された開発
 
@@ -45,7 +47,7 @@ Web アプリ用に作成された ****.azurewebsites.net** ドメイン名を�
 
 発行設定または発行プロファイルを使用するユーティリティを使用している場合は、発行設定または発行プロファイルを含むファイルをユーティリティにインポートし、その後、そのファイルを**削除**します。ファイルを保持する必要がある場合、たとえば、プロジェクトに携わる他のユーザーと共有するには、アクセス許可が限定された**暗号化**されたディレクトリなど、セキュリティで保護された場所にファイルを保存します。
 
-さらに、インポートされた資格情報が保護されていることを確認する必要があります。たとえば、**Azure PowerShell** と **Azure コマンドライン インターフェイス (Azure CLI)** はどちらも、インポートされた情報を**ホーム ディレクトリ** (Linux または OS X システムでは *\~*、Windows システムでは */users/yourusername*) に保存します。 希望する場合は、さらにセキュリティを強化するために、オペレーティング システムに対応した暗号化ツールを使用してこれらの場所を**暗号化**できます。
+さらに、インポートされた資格情報が保護されていることを確認する必要があります。たとえば、**Azure PowerShell** と **Azure コマンドライン インターフェイス (Azure CLI)** はどちらも、インポートされた情報を**ホーム ディレクトリ** (Linux または OS X システムでは *~*、Windows システムでは */users/yourusername*) に保存します。 希望する場合は、さらにセキュリティを強化するために、オペレーティング システムに対応した暗号化ツールを使用してこれらの場所を**暗号化**できます。
 
 ### 構成設定と接続文字列
 接続文字列、認証資格情報、およびその他の機密情報は構成ファイルに保存するのが一般的な方法です。残念ながら、これらのファイルは Web サイト上で公開される場合やパブリック リポジトリにチェックインされる場合があり、結果としてこの情報が危険にさらされる可能性があります。
@@ -62,8 +64,8 @@ Azure は、**FTPS** を介して Web アプリのファイル システムへ�
 
 1. [Azure プレビュー ポータル](http://portal.azure.com)を開きます。
 2. **[すべて参照]** を選択します。
-3. **[参照]** ブレードで、**[Web アプリ]** を選択します。
-4. **[Web アプリ]** ブレードで、目的の Web アプリを選択します。
+3. **[参照]** ブレードで、**[Web Apps]** を選択します。
+4. **[Web Apps]** ブレードで、目的の Web アプリを選択します。
 5. Web アプリのブレードで、**[すべての設定]** を選択します。
 6. **[設定]**ブレードで、[**[プロパティ]** を選択します。
 7. **[設定]** ブレードに、FTP リンクと FTPS リンクが表示されます。 
@@ -86,4 +88,4 @@ Web アプリの **web.config** または **applicationhost.config** ファイ�
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

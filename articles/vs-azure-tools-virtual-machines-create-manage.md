@@ -1,19 +1,19 @@
-<properties 
+<properties
    pageTitle="Visual Studio での Azure Virtual Machines の作成と管理"
-	description="Visual Studio での Azure Virtual Machines の作成と管理"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tlee"/>
-<tags 
+   description="Visual Studio での Azure Virtual Machines の作成と管理"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tlee" />
+<tags
    ms.service="virtual-machines"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/24/2015"
-	ms.author="kempb"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/24/2015"
+   ms.author="kempb" />
 
 # Visual Studio での Azure Virtual Machines の作成と管理
 
@@ -54,7 +54,7 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
     仮想マシン イメージ名をクリックすると、ページの右側にイメージに関する情報が表示されます。
 
     >[AZURE.NOTE]**[公開イメージ]** または **[MSDN イメージ]** の一覧は読み取り専用なので、仮想マシン イメージを追加することはできません。作成した仮想マシンはすべて **[プライベート イメージ]** の一覧に追加されます。
-    
+
     >Visual Studio レベルのサブスクリプションを持つ MSDN サブスクライバーの場合、Visual Studio と他のいくつかのイメージを含む事前に構築された Azure 仮想マシンを作成できます。詳細については、[Visual Studio でのイメージを使用した仮想マシン作成、MSDN サブスクライバー向け Visual Studio 2013 ギャラリー イメージ](http://visualstudio2013msdngalleryimage.azurewebsites.net)、[MSDN サブスクリプション](https://www.visualstudio.com/products/msdn-subscriptions-vs)の各ページを参照してください。
 
 1. **[仮想マシンの基本設定]** ページにマシン名を入力し、サイズ、ユーザー名、パスワードなど、仮想マシンの仕様を追加します。終了したら **[次へ]** をクリックします。
@@ -65,13 +65,13 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
 1. Visual Studio で作成した仮想マシンの場合、クラウド サービスが必要です。**[クラウド サービス設定]** ページで、仮想マシン用のクラウド サービスを選択します。まだクラウド サービスを持っていないか、新規作成する場合は、ドロップダウン リストの **[<新規作成>]** をクリックします。また、ストレージ アカウントも必要となるため、**[ストレージ アカウント]** ボックスの一覧からストレージ アカウントを選択します (または新しいストレージ アカウントを作成します)。詳細については、「[Microsoft Azure Storage の概要](./storage/storage-introduction/)」を参照してください。
 
-1. 仮想ネットワーク (省略可能) を指定する場合、[仮想ネットワーク] ボックスと [サブネット] ボックスの一覧から選択します。
+1. 仮想ネットワーク (省略可能) を指定する場合、[Virtual Network] ボックスと [サブネット] ボックスの一覧から選択します。
 
     仮想マシンが可用性セットのメンバーである場合、その仮想マシンは別の障害ドメインにデプロイされます。詳細については、[Azure Virtual Network](http://www.windowsazure.com/services/virtual-network/) のページを参照してください。
 
 1. 仮想マシンを可用性セットに登録する場合 (こちらも省略可能)、**[可用性セットの指定]** チェック ボックスをオンにし、ドロップダウン ボックスで可用性セットを選択します。終了したら **[次へ]** をクリックします。
 
-    可用性セットに仮想マシンを追加しておくと、ネットワークの障害時やローカル ハード ディスクの障害時、予定されたシステム停止時にもアプリケーションを使用できます。[Microsoft Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=253103)を使用して、仮想ネットワーク、サブネット、可用性セットを作成する必要があります。詳細については、「[仮想マシンの可用性管理](http://www.windowsazure.com/documentation/articles/manage-availability-virtual-machines/)」を参照してください。
+    可用性セットに仮想マシンを追加しておくと、ネットワークの障害時やローカル ハード ディスクの障害時、予定されたシステム停止時にもアプリケーションを使用できます。[Microsoft Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=253103)を使用して、仮想ネットワーク、サブネット、可用性セットを作成する必要があります。詳細については、「[Virtual Machines の可用性管理](http://www.windowsazure.com/documentation/articles/manage-availability-virtual-machines/)」を参照してください。
 
 1. **[エンドポイント]** ページで、仮想マシンのユーザーに公開するパブリック エンドポイントを指定します。たとえば、既定で有効になるリモート デスクトップ エンドポイントと PowerShell エンドポイントに加えて、HTTP (ポート 80) を有効にすることができます。エンドポイントを追加するには、**[ポート名]** ボックスの一覧からいずれかを選択し、**[追加]** をクリックします。エンドポイントを削除するには、エンドポイント リストの名前の横にある赤色の **[X]** を選択します。
 
@@ -87,12 +87,11 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
     ![Virtual machine activity log - in progress.](./media/vs-azure-tools-virtual-machines-create-manage/IC744138.png)
 
-    仮想マシン情報のみを表示するには、**[Azure のアクティビティ ログ]** で **[仮想マシン]** タブを選択します。
+    仮想マシン情報のみを表示するには、**[Azure のアクティビティ ログ]** で **[Virtual Machines]** タブを選択します。
 
     ![Virtual machine activity log - completed.](./media/vs-azure-tools-virtual-machines-create-manage/IC744139.png)
 
-    操作が正常に完了すると、サーバー エクスプローラーの **[仮想マシン]** ノードに新しい仮想マシンが表示されます。**[リモート デスクトップを使用して接続]** ショートカットをクリックしてログインすることができます。
-
+    操作が正常に完了すると、サーバー エクスプローラーの **[Virtual Machines]** ノードに新しい仮想マシンが表示されます。**[リモート デスクトップを使用して接続]** ショートカットをクリックしてログインすることができます。
 
     ![Virtual machine appearing in Server Explorer.](./media/vs-azure-tools-virtual-machines-create-manage/IC744140.png)
 
@@ -145,7 +144,7 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
     Sysprep は、仮想マシンの Windows からシステム固有のデータを削除して、他の仮想マシンで利用できるテンプレートを作成することを主な目的としたツールです。詳細については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](http://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/)に関するページを参照してください。
 
 1. キャプチャの設定が完了したら、**[キャプチャ]** をクリックしてチェックポイントを作成します。
- 
+
     Azure でチェックポイントが作成される間、**[Azure のアクティビティ ログ]** に操作の進行状況が表示されます。
 
     ![Capturing a virtual machine checkpoint](./media/vs-azure-tools-virtual-machines-create-manage/IC744144.png)
@@ -162,7 +161,7 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
 ### チェックポイントを削除するには
 
-1. [Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=253103)に移動します。
+1. [Microsoft Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=253103)に移動します。
 
 1. 仮想マシンの構成ページの上部にある **[イメージ]** タブを選択します。
 
@@ -174,12 +173,8 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
 1. ショートカット メニューで **[シャットダウン]** コマンドをクリックするか、**[構成]** をクリックして仮想マシンの構成ページを表示してから **[シャットダウン]** をクリックします。
 
-## 関連項目
+## 次のステップ
 
-[仮想マシン](https://msdn.microsoft.com/library/azure/)
+仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](virtual-machines-windows-tutorial.md)」を参照してください。
 
-[サーバー エクスプローラーから Azure の仮想マシンへのアクセス](https://msdn.microsoft.com/library/azure/jj131259.aspx)
-
-[Azure Tools for Microsoft Visual Studio](https://msdn.microsoft.com/library/azure/ee405484.aspx)
-
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

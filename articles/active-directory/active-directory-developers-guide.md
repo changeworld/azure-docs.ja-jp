@@ -10,7 +10,7 @@
 <tags
    ms.service="active-directory"
    ms.devlang="na"
-   ms.topic="hero-article"
+   ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
    ms.date="09/02/2015"
@@ -23,17 +23,15 @@
 Identity Management As A Service (IDMaaS) プラットフォームとして Azure Active Directory を使用することにより、開発者は ID 管理をアプリケーションに効果的に統合することができます。次の記事では、Azure Active Directory の実装と重要な機能の概要について説明しています。これらの記事を順番に読むことをお勧めします。実作業に取りかかる準備ができている場合は、「[使用の開始](#getting-started)」に進んでください。
 
 
-1. [Azure Active Directory との統合](active-directory-how-to-integrate.md): Azure Active Directory との統合が、セキュリティで保護されたサインインと承認に最適なソリューションである理由を説明します。
+1. [Azure Active Directory 統合のメリット](active-directory-how-to-integrate.md): Azure Active Directory との統合が、セキュリティで保護されたサインインと承認に最適なソリューションである理由を説明します。
 
 1. [Active Directory の認証シナリオ](active-directory-authentication-scenarios.md): Azure Active Directory の簡素化された認証を利用して、アプリケーションにサインオン機能を組み込む方法を説明します。
 
+1. [アプリケーションと Azure Active Directory の統合](active-directory-integrating-applications.md): Azure Active Directory にアプリケーションを追加し、それを更新および削除する方法と、統合されたアプリのブランド化のガイドラインについて説明します。
+
 1. [Azure Active Directory Graph API](active-directory-graph-api.md)： Azure Active Directory Graph API を使用して、REST API エンドポイント経由でプログラムによって Azure Active Directory にアクセスする方法を説明します。
 
-1. [Azure Active Directory とアプリケーションの統合](active-directory-integrating-applications.md): アプリケーションの登録と、マルチテナント アプリケーションのブランド化ガイドラインについて説明します。
-
 1. [Azure Active Directory の認証ライブラリ](active-directory-authentication-libraries.md): Azure 認証ライブラリを使用して、ユーザーを認証し、アクセス トークンを取得する処理を簡単に組み込む方法を説明します。
-
-Build 2015 のカンファレンスで発表された Azure Active Directory の概要を参照するには、後述の「[ビデオ](#videos)」をご覧ください。
 
 
 ## 使用の開始
@@ -45,7 +43,6 @@ Build 2015 のカンファレンスで発表された Azure Active Directory の
 |[![iOS](./media/active-directory-developers-guide/ios.png)](active-directory-devquickstarts-ios.md)|[![Android](./media/active-directory-developers-guide/android.png)](active-directory-devquickstarts-android.md)|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-dotnet.md)| [![Windows Phone](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsphone.md)|[![Windows ストア](./media/active-directory-developers-guide/windows.png)](active-directory-devquickstarts-windowsstore.md)|[![Xamarin](./media/active-directory-developers-guide/xamarin.png)](active-directory-devquickstarts-xamarin.md)|[![Cordova](./media/active-directory-developers-guide/cordova.png)](active-directory-devquickstarts-cordova.md)
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:
 |[iOS](active-directory-devquickstarts-ios.md)|[Android](active-directory-devquickstarts-android.md)|[.NET](active-directory-devquickstarts-dotnet.md)|[Windows Phone](active-directory-devquickstarts-windowsphone.md)|[Windows ストア](active-directory-devquickstarts-windowsstore.md)|[Xamarin](active-directory-devquickstarts-xamarin.md)|[Cordova](active-directory-devquickstarts-cordova.md)
-
 
 ### Web アプリケーション クイック スタート ガイド
 
@@ -69,12 +66,13 @@ Build 2015 のカンファレンスで発表された Azure Active Directory の
 
 次の記事では、Azure Active Directory を使用して特定のタスクを実行する方法について説明しています。
 
-- [Azure Active Directory テナントを取得する方法](active-directory-howto-tenant.md)
-- [Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](active-directory-app-gallery-listing.md)
+- [Azure Active Directory テナントを取得する](active-directory-howto-tenant.md)
+- [Azure Active Directory アプリケーション ギャラリーでアプリケーションを一覧表示する](active-directory-app-gallery-listing.md)
+- [Azure Active Directory のアプリケーション マニフェストについて理解する](active-directory-application-manifest.md)
 - [Create an app with Office 365 APIs (Office 365 API を使用するアプリの作成)](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
 - [Submit Web apps for Office 365 to the Seller Dashboard (販売者ダッシュボードへの Office 365 用 Web アプリの送信)](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 - [プレビュー: ユーザーが、個人カウント、および職場または学校のアカウントの両方でサインインできるアプリを構築する方法](active-directory-appmodel-v2-overview.md)
-
+- [プレビュー: コンシューマーをサインアップおよびサインインさせるアプリケーションを作成する方法](active-directory-b2c-overview.md)
 
 ## リファレンス
 
@@ -99,7 +97,7 @@ Build 2015 のカンファレンスで発表された Azure Active Directory の
 
 ### 認証プロトコル
 
-- [SAML Protocol Reference (SAML プロトコル リファレンス)](https://msdn.microsoft.com/library/azure/dn195591.aspx): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できます。
+- [SAML 2.0 プロトコル リファレンス](https://msdn.microsoft.com/library/azure/dn195591.aspx): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できます。
 
 
 - [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx): OAuth 2.0 プロトコルを使用して、Azure Active Directory テナントの Web アプリケーションと Web API へのアクセスを承認できます。
@@ -119,8 +117,8 @@ Build 2015 のカンファレンスで発表された Azure Active Directory の
 Azure Active Directory を使用したアプリケーションの開発に関する次の概要プレゼンテーションには、エンジニアリング チームで実務に携わっている話し手が登場します。プレゼンテーションでは、IDMaaS、認証、ID フェデレーション、シングル サインオンなどの基本的なトピックを取り上げています。
 
 - **[Azure Active Directory: モダン アプリケーション向けのサービスとしての ID 管理](http://azure.microsoft.com/documentation/videos/build-2015-azure-active-directory-identity-management-as-a-service-for-modern-applications)**
-- **[Azure Active Directory を使用したモダン Web アプリケーションの開発](http://azure.microsoft.com/documentation/videos/build-2015-develop-modern-web-applications-with-azure-active-directory)**
-- **[Azure Active Directory を使用したモダン ネイティブ アプリケーションの開発](http://azure.microsoft.com/documentation/videos/build-2015-develop-modern-native-applications-with-azure-active-directory)**
+- **[Azure Active Directory を使ったモダン Web アプリケーションの開発](http://azure.microsoft.com/documentation/videos/build-2015-develop-modern-web-applications-with-azure-active-directory)**
+- **[Azure Active Directory を使ったモダン ネイティブ Web アプリケーションの開発](http://azure.microsoft.com/documentation/videos/build-2015-develop-modern-native-applications-with-azure-active-directory)**
 
 ### Azure Friday
 [Azure Friday](http://azure.microsoft.com/documentation/videos/azure-friday/) は、金曜日ごとに定期的に配信される 1 対 1 の対話形式のビデオ シリーズで、Azure のさまざまなトピックに関する専門家への短いインタビュー (10 ～ 15 分) で構成されています。ページにあるサービス フィルター機能を使用すると、すべての Azure Active Directory ビデオを視聴することができます。
@@ -139,4 +137,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

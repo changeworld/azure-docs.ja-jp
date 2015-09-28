@@ -1,23 +1,23 @@
 <properties 
    pageTitle="ネットワーク セキュリティ グループ (NSG)"
-	description="ネットワーク セキュリティ グループ (NSG) の詳細"
-	services="virtual-network"
-	documentationCenter="na"
-	authors="telmosampaio"
-	manager="carolz"
-	editor="tysonn"/>
+   description="ネットワーク セキュリティ グループ (NSG) の詳細"
+   services="virtual-network"
+   documentationCenter="na"
+   authors="telmosampaio"
+   manager="carolz"
+   editor="tysonn" />
 <tags 
    ms.service="virtual-network"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/13/2015"
-	ms.author="telmos"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/13/2015"
+   ms.author="telmos" />
 
 # ネットワーク セキュリティ グループ (NSG) について
 
-NSG を使用して、仮想ネットワーク内で 1 つまたは複数の仮想マシン (VM) のインスタンスに対するトラフィックを制御できます。ネットワーク セキュリティ グループは、サブスクリプションに関連付けられている最上位オブジェクトです。NSG には、VM インスタンスへのトラフィックを許可または拒否するアクセス制御ルールが含まれています。NSG のルールは、いつでも変更でき、変更は関連付けられているすべてのインスタンスに適用されます。NSG を使用するには、リージョン (場所) に関連付けられている VNet が必要です。
+NSG を使用して、仮想ネットワーク内で 1 つまたは複数の仮想マシン (VM) のインスタンスに対するトラフィックを制御できます。NSG には、トラフィックの方向、プロトコル、ソース アドレスとポート、および送信先アドレスとポートに基づいて、トラフィックを許可または拒否するアクセス制御ルールが含まれています。NSG のルールは、いつでも変更でき、変更は関連付けられているすべてのインスタンスに適用されます。NSG を使用するには、地域 VNet が必要です。
 
 >[AZURE.WARNING]NSG は、アフィニティ グループに関連付けられている Vnet に対応していません。地域 VNet がない場合にエンドポイントへのトラフィックを制御するには、[ネットワーク アクセス制御リスト (ACL)](./virtual-networks-acl.md)を参照してください。[VNet を地域 VNet に移行する](./virtual-networks-migrate-to-regional-vnet.md)こともできます。
 
@@ -108,7 +108,7 @@ NSG ルールは、明示的です。NSG ルールで指定されていない限
 
 ### ICMP トラフィック
 
-現在の NSG のルールは、プロトコル 'TCP' または 'UDP' のみを許可します。'ICMP' 専用のタグはありません。ただし、ICMP トラフィックは、VNet 内で任意のポートおよびプロトコル間のトラフィックを許可する受信 VNet ルールを通じて、既定で仮想ネットワーク内で許可されます。
+現在の NSG のルールは、プロトコル 'TCP' または 'UDP' のみを許可します。'ICMP' 専用のタグはありません。ただし、ICMP トラフィックは、VNet 内で任意のポートおよびプロトコル間のトラフィックを許可する受信 VNet ルールを通じて、既定で Virtual Network 内で許可されます。
 
 ## NSG の関連付け
 
@@ -249,4 +249,4 @@ VM や PaaS ロールなどのオブジェクトを、インターネット ア�
 
 	Get-Command *azurenetworksecuritygroup*
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="rkarlin"
-	manager="terrylan"
+	manager="msStevenPo"
 	editor=""/>
 
 <tags
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2015"
+	ms.date="09/09/2015"
 	ms.author="rkarlin"/>
 
 
 # Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
-> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](https://msdn.microsoft.com/library/azure/dn532272.aspx)」をご覧ください。
+> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-edition.md)」をご覧ください。
 
 Microsoft Azure AD アプリケーション プロキシを有効にすると、プライベート ネットワークの外部のユーザーからアクセスできるように、アプリケーションを発行できます。
 
@@ -79,4 +79,4 @@ Azure Active Directory アプリケーション プロキシを使用してア�
 
 * [Kerberos の制約付き委任について](http://technet.microsoft.com/library/cc995228.aspx)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

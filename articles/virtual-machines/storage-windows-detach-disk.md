@@ -3,7 +3,7 @@
 	description="Azure の仮想マシンからディスクを切断する方法について説明します。"
 	services="virtual-machines, storage"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/14/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 
 
@@ -29,4 +29,4 @@
 
 [データ ディスクを Windows 仮想マシンに接続する方法](storage-windows-attach-disk.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

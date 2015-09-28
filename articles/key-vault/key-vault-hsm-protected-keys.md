@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="07/22/2015"
+	ms.date="09/11/2015"
 	ms.author="cabailey"/>
 #Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
@@ -105,6 +105,7 @@ Microsoft ダウンロード センターにアクセスし、ご自分のリー
 |ヨーロッパ|KeyVault-BYOK-Tools-Europe.zip|881DCA798305B8408C06BAE7B3EFBC1E9EA6113A8D6EC443464F3744896F32C3|
 |アジア|KeyVault-BYOK-Tools-AsiaPacific.zip|0C76967B3AC76687E4EA47EB96174EE6B25AB24E3114E28A90D9B93A2E6ABF6E|
 |ラテン アメリカ|KeyVault-BYOK-Tools-LatinAmerica.zip|B38015990D4D1E522B8367FF78E78E0234BF9592663470426088C44C3CAAAF48|
+|日本|KeyVault-BYOK-Tools-Japan.zip|DB512CD9472FDE2FD610522847DF05E4D7CD49A296EE4A2DD74D43626624A113|
 
 ダウンロードした BYOK ツールセットの整合性を検証するには、Azure PowerShell セッションから、[Get FileHash](https://technet.microsoft.com/library/dn520872.aspx) コマンドレットを使用します。
 
@@ -306,4 +307,4 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault の概要](key-vault-get-started.md)のチュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure SQL Database へのデータベースの移行"
-	description="Microsoft Azure SQL Database、データベースのデプロイ、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード"
-	services="sql-database"
-	documentationCenter=""
-	authors="carlrabeler"
-	manager="jeffreyg"
-	editor=""/>
+   description="Microsoft Azure SQL Database、データベースのデプロイ、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード"
+   services="sql-database"
+   documentationCenter=""
+   authors="carlrabeler"
+   manager="jeffreyg"
+   editor=""/>
 
 <tags
    ms.service="sql-database"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-management"
-	ms.date="09/02/2015"
-	ms.author="carlrab"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-management"
+   ms.date="09/02/2015"
+   ms.author="carlrab"/>
 
 # Azure SQL Database へのデータベースの移行
 
@@ -49,7 +49,7 @@ SQL Server Management Studio では、互換性のあるオンプレミスの SQ
 ## 移行ツール
 使用されるツールには、SQL Server Management Studio (SSMS)、Visual Studio (VS、SSDT) の SQL Server ツール、Azure ポータルが含まれます。
 
-> 以前のバージョンは、Azure SQL Database V12 と互換性がないため、クライアント ツールの最新バージョンをインストールしてください。
+> [AZURE.IMPORTANT]以前のバージョンは、Azure SQL Database V12 と互換性がないため、クライアント ツールの最新バージョンをインストールしてください。
 
 ### SQL Server Management Studio (SSMS)
 SSMS を使用して、互換性のあるデータベースを Azure SQL Database に直接デプロイすることもできますし、BACPAC としてデータベースの論理バックアップをエクスポートし、その後、SSMS を使用してインポートし、新しい Azure SQLDatabase を作成することもできます。
@@ -72,4 +72,4 @@ Visual Studio の SQL Server ツールを使用して、スキーマ内の各オ
 | エラーがある場合、出力を変更するためのプロビジョニングはありません。送信元スキーマには互換性が必要です。 | Visual Studio の SSDT のすべての機能を使用できます。スキーマはオフラインで変更されます。 | アプリケーションの検証は Azure で行われます。変更することなく移行するには、スキーマを最小にする必要があります。 | データベースを Azure にデプロイする前に、SQL Server でアプリケーションの検証を実行できます。 |
 | 簡単に構成簡単に構成された 1 つまたは 2 つの処理手順。 | より複雑な複数の処理手順 (スキーマのデプロイのみの場合はより簡単)。 |
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="Logic Apps での SMTP コネクタの使用 | Microsoft Azure App Service"
-	description="SMTP コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-	services="app-service\logic"
-	documentationCenter=".net,nodejs,java"
-	authors="anuragdalmia"
-	manager="dwrede"
-	editor=""/>
+   description="SMTP コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="anuragdalmia"
+   manager="dwrede"
+   editor=""/>
 
 <tags
    ms.service="app-service-logic"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="integration"
-	ms.date="08/23/2015"
-	ms.author="andalmia"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="integration"
+   ms.date="08/23/2015"
+   ms.author="andalmia"/>
 
 
 # SMTP コネクタの使用開始とロジック アプリへの追加
@@ -53,6 +53,8 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 	SSL を有効にする | いいえ | *true* を入力すると、セキュリティで保護された SSL/TLS チャネルで SMTP を使用します。
 
 6. **[作成]** を選択します。
+
+> [AZURE.IMPORTANT]SMTP サーバーによっては、このコネクタの動作方法によって問題が発生する場合があります (SendGrid および Gmail)。SendGrid から電子メールを送信する場合は、[GitHub リポジトリ](https://github.com/logicappsio/SendGridAPI)のカスタム API を使用して SendGrid API と直接やり取りすることができます。
 
 ## ロジック アプリで SMTP コネクタを使用する
 コネクタが作成されたら、ロジック アプリのアクションとして SMTP コネクタを使用できます。これを行うには、次の手順を実行します。
@@ -99,4 +101,4 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 [5]: ./media/app-service-logic-connector-smtp/img5.PNG
 [6]: ./media/app-service-logic-connector-smtp/img6.PNG
 
-<!------HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

@@ -5,15 +5,15 @@
 	documentationCenter=".net"
 	authors="cephalin"
 	manager="wpickett"
-	editor=""/>
+	editor="jimbe"/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/02/2015"
+	ms.date="09/16/2015"
 	ms.author="cephalin"/>
 
 # Azure App Service の Web アプリの診断ログの有効化
@@ -22,7 +22,9 @@
 
 Azure では、組み込みの診断機能により、[App Service Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)のデバッグを容易に行うことができます。この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
-> [AZURE.NOTE]この記事では、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
+この記事では、[Azure プレビュー ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="whatisdiag"></a>Web サーバーの診断とアプリケーション診断
 
@@ -82,7 +84,7 @@ Web アプリケーション ファイル システムに保存された診断�
 
 * **アプリケーション ログ**: /LogFiles/Application/。このフォルダーには、アプリケーション ログによって生成された情報を含む 1 つ以上のテキスト ファイルが格納されます。
 
-* **失敗した要求トレース**: /LogFiles/W3SVC\#\#\#\#\#\#\#\#\#/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
+* **失敗した要求トレース**: /LogFiles/W3SVC#########/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 
 * **詳細なエラー ログ**: /LogFiles/DetailedErrors/。このフォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。
 
@@ -118,7 +120,7 @@ Azure コマンド ライン インターフェイスを使用してログ フ�
 
 ## Application Insights でログを表示する方法
 
-Visual Studio の Application Insights には、ログをフィルターおよび検索したり、要求やその他のイベントにログを関連付けたりするためのツールが用意されています。
+Visual Studio Application Insights には、ログをフィルターおよび検索したり、要求やその他のイベントにログを関連付けたりするためのツールが用意されています。
 
 1. Application Insights SDK を Visual Studio のプロジェクトに追加します。
  * ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。Application Insights リソースの作成などの手順が示されます。[詳細情報](../application-insights/app-insights-start-monitoring-app-health-usage.md)
@@ -236,7 +238,7 @@ BLOB に格納されるデータは次のようになります。
 
 ### 失敗した要求トレース
 
-失敗した要求トレースは __fr\#\#\#\#\#\#.xml__ という名前の XML ファイルに保存されます。ログに記録された情報を見やすくするには、__freb.xsl__ という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。たとえば、次のように表示されます。
+失敗した要求トレースは __fr######.xml__ という名前の XML ファイルに保存されます。ログに記録された情報を見やすくするには、__freb.xsl__ という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。たとえば、次のように表示されます。
 
 ![失敗した要求をブラウザーで表示したところ](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
@@ -252,7 +254,7 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 
 ##<a name="nextsteps"></a>次のステップ
 
-- [Web アプリを監視する方法](/ja-jp/manage/services/web-sites/how-to-monitor-websites/)
+- [Web Apps を監視する方法](/ja-JP/manage/services/web-sites/how-to-monitor-websites/)
 - [Visual Studio での Azure の Web Apps のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)
 - [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
@@ -263,4 +265,4 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

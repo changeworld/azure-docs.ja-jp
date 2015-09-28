@@ -3,7 +3,7 @@
 	description="Azure プレビュー ポータルまたは Linux 用の VMAccess 拡張機能を使用して、パスワードと SSH キーのリセット、SSH の構成のリセット、および Linux ユーザーの削除を実行する方法"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/28/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 # Linux 仮想マシンのパスワードまたは SSH をリセットする方法 #
 
@@ -263,4 +263,4 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 [Azure VM 拡張機能とその機能]: http://msdn.microsoft.com/library/azure/dn606311.aspx
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

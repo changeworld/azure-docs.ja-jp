@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイスの非アクティブ化と削除 |Microsoft Azure"
-	description="StorSimple デバイスを非アクティブ化して削除することによって、サービスからこれを削除する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple デバイスを非アクティブ化して削除することによって、サービスからこれを削除する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="SharS"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="09/01/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/14/2015"
+   ms.author="v-sharos" />
 
 # StorSimple デバイスの非アクティブ化と削除
 
@@ -87,8 +87,10 @@ StorSimple 仮想デバイスでは、非アクティブ化により、プロビ
 デバイスが削除されるまで数分かかる場合があります。
 
 ## 次のステップ
-非アクティブ化されたデバイスを出荷時の既定値に復元するには、「[デバイスの出荷時設定へのリセット](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
+- 非アクティブ化されたデバイスを出荷時の既定値に復元するには、「[デバイスの出荷時設定へのリセット](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
 
-技術的な詳細については、[Microsoft サポートに問い合わせ](storsimple-contact-microsoft-support.md)てください。
+- 技術的な詳細については、[Microsoft サポートに問い合わせ](storsimple-contact-microsoft-support.md)てください。
 
-<!---HONumber=September15_HO1-->
+- StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
+
+<!---HONumber=Sept15_HO3-->

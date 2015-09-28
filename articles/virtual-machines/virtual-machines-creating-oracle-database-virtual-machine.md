@@ -1,7 +1,5 @@
-<properties title="Creating an Oracle Database virtual machine in Azure" pageTitle="Azure での Oracle Database 仮想マシンの作成" description="例として Microsoft Azure で Oracle 仮想マシンを作成し、続いてその上に Oracle データベースを作成します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
-
-<tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz"/>
-
+<properties pageTitle="Azure での Oracle Database 仮想マシンの作成" description="例として Microsoft Azure で Oracle 仮想マシンを作成し、続いてその上に Oracle データベースを作成します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 #Azure での Oracle Database 仮想マシンの作成
 次の例は、Windows Server 2012 で実行しているマイクロソフト提供の Oracle Database のイメージに基づいて、Azure で仮想マシン (VM) を作成する方法を示しています。次の 2 つの手順が含まれます。最初に VM を作成し、VM 内に Oracle Database を作成します。この例で示されているのは Oracle Database バージョン 12c ですが、手順はバージョン 11g とほぼ同じです。
 
@@ -9,7 +7,7 @@
 
 1.	[Azure ポータル](https://ms.portal.azure.com/)にログインします。
 
-2.	**[Marketplace]**、**[コンピューティング]** をクリックし、続いて検索ボックスに**「Oracle」**と入力します。
+2.	**[Marketplace]**、**[Compute]** をクリックし、続いて検索ボックスに**「Oracle」**と入力します。
 
 3.	使用できる Oracle Database のイメージを 1 つ選択します **(バージョン 11g、バージョン 12c、Standard Edition、Enterprise Edition、または基本的なオプションまたは高度なオプションのバンドルのいずれか)**。 選択したイメージに関する情報 (最小の推奨サイズなど) を確認し、**[次へ]** をクリックします。
 
@@ -21,7 +19,7 @@
 
 7.	**[価格レベル]** を選択。既定では推奨される価格レベルが表示されます。すべての構成オプションを見るには、右上の **[すべて表示]** をクリックします。
 
-8.	必要に応じて [[オプションの構成]](https://msdn.microsoft.com/library/azure/dn763935.aspx) を設定します。このとき、次に注意してください。
+8.	必要に応じてオプションの構成を設定します。このとき、次に注意してください。
 
 	a.VM 名で新しいストレージ アカウントを作成するには、**[ストレージ アカウント]** をそのままにします。
 
@@ -35,14 +33,14 @@
 
 11. **[場所]** を選択します。
 
-12. **[作成]** をクリックすると、VM を作成するプロセスが開始します。VM の状態が **[実行中]** になったら、次の手順に進みます。
+12. **[作成]** をクリックすると、VM を作成するプロセスが開始されます。VM の状態が **[実行中]** になったら、次の手順に進みます。
 
 
 ##Azure で Oracle Database VM を使ってデータベースを作成するには
 
 1.	[Azure ポータル](https://ms.portal.azure.com/)にログインします。
 
-2.	**[仮想マシン]** をクリックします。
+2.	**[Virtual Machines]** をクリックします。
 
 3.	ログインする VM の名前をクリックします。
 
@@ -72,7 +70,7 @@
 
 		![](media/virtual-machines-creating-oracle-database-virtual-machine/image5.png)
 
-	b.**手順 2:** **[グローバル データベース名]** の値を入力します。**[管理パスワード]** の値を入力し、確定します。このパスワードは、Oracle データベースの**システム** ユーザー用のものです。**[コンテナー データベースとして作成]** をクリアします。**[次へ]** をクリックします。
+	b.**手順 2:** **[グローバル データベース名]** の値を入力します。**[管理パスワード]** の値を入力し、確定します。このパスワードは、Oracle データベースの**システム** ユーザー用のものです。**[コンテナー データベースとして作成]** をオフにします。**[次へ]** をクリックします。
 
 		![](media/virtual-machines-creating-oracle-database-virtual-machine/image6.png)
 
@@ -122,7 +120,7 @@
 
 3.	**[規則の種類]** で、**[ポート]** を選択して **[次へ]** をクリックします。
 
-4.	**[プロトコルとポート]** では、**[TCP]** を選択し、**[特定のローカル ポート]** を選択して、ポートに「**1521**」と入力し、続いて **[次へ]** をクリックします。
+4.	**[プロトコルとポート]** では、**[TCP]** を選択し、**[特定のローカル ポート]** を選択し、ポートに**「1521」**と入力し、続いて **[次へ]** をクリックします。
 
 5.	**[接続を許可する]** を選択し、**[次へ]** をクリックします。
 
@@ -136,7 +134,7 @@
 
 2.	**[参照]** をクリックします。
 
-3.  **[仮想マシン]** をクリックします。
+3.  **[Virtual Machines]** をクリックします。
 
 4.	仮想マシンを選択します。
 
@@ -161,7 +159,7 @@
 ##Oracle Database Enterprise Manager のリモート アクセスを有効にする
 Oracle Database Enterprise Manager のリモート アクセスを有効にする場合は、ファイアウォールでポート 5500 を開き、Azure ポータルで 5500 に対して仮想マシンのエンドポイントを作成します (ポート 1521 を開き、1521 に対してエンドポイントを作成する上記手順を使用)。続いて、Oracle Enterprise Manager をリモート コンピューターから実行するには、ブラウザーを開いて `http://<<unique_domain_name>>:5500/em` の形式の URL にアクセスします。
 
-> [AZURE.NOTE]*<<unique\_domain\_name>>* の値を確認するには、[Azure ポータル](https://ms.portal.azure.com/)内で **[仮想マシン]** をクリックし、続いて Oracle Database を実行するために使用している仮想マシンを選択します。
+> [AZURE.NOTE]*<<unique\_domain\_name>>* の値を確認するには、[Azure ポータル](https://ms.portal.azure.com/)内で **[Virtual Machines]** をクリックし、続いて Oracle Database を実行するために使用している仮想マシンを選択します。
 
 ##基本的なオプションと高度なオプションのバンドルを構成する
 **Oracle Database と基本的なオプション** または**Oracle Database と高度なオプションのバンドル** を選択した場合、次の手順で Oracle のインストールにアドオン機能を構成します。Windows でこれらを設定する手順については、Oracle のマニュアルを参照してください。個々のコンポーネントのニーズ次第で構成は大きく変わります。
@@ -183,4 +181,4 @@ Oracle Database Enterprise Manager のリモート アクセスを有効にす�
 
 -	[Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

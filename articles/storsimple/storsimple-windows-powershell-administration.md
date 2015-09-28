@@ -1,19 +1,19 @@
 <properties 
    pageTitle="PowerShell for StorSimple デバイス管理 | Microsoft Azure"
-	description="Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/28/2015"
-	ms.author="alkohli@microsoft.com"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="08/28/2015"
+   ms.author="alkohli@microsoft.com" />
 
 # Windows PowerShell for StorSimple を使用してデバイスを管理する
 
@@ -66,7 +66,7 @@ Windows PowerShell for StorSimple に接続するには、[PuTTY をダウンロ
 
 次の設定から選択できます。
 
-1. **Log in with full access**。このオプションでは、(適切な資格情報を使用して) ローカル コント ローラーの **SSAdminConsole** に接続できます (ローカル コント ローラーとは、StorSimple デバイスのシリアル コンソール経由でアクセス中のコントローラーのことです)。 このオプションは、デバイスの問題をトラブルシューティングするために無制限実行空間にアクセスすること (サポート セッション) を Microsoft サポートに許可するために使用することもできます。オプション 1 を使用してログオンした後、特定のコマンドレットを実行することで、無制限実行空間へのアクセスを Microsoft サポート エンジニアに許可できます。詳細については、「[サポート セッションを開始する](storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)」を参照してください。このオプションは、ローカル コントローラーの実行空間に接続します。
+1. **Log in with full access**。このオプションでは、(適切な資格情報を使用して) ローカル コント ローラーの **SSAdminConsole** に接続できます (ローカル コント ローラーとは、StorSimple デバイスのシリアル コンソール経由でアクセス中のコントローラーのことです)。 このオプションは、デバイスの問題をトラブルシューティングするために無制限実行空間にアクセスすること (サポート セッション) を Microsoft サポートに許可するために使用することもできます。オプション 1 を使用してログオンした後、特定のコマンドレットを実行することで、無制限実行空間へのアクセスを Microsoft サポート エンジニアに許可できます。詳細については、「[サポート セッションを開始する](storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)」を参照してください。
 
 1. **Log in to peer controller with full access**。このオプションはオプション １ と同じですが、接続先が異なり、ピア コントローラーの **SSAdminConsole** 実行空間に接続できます (適切な資格情報を使用します)。StorSimple デバイスはアクティブ/パッシブ構成された 2 つのコントローラーを持つ可用性の高いデバイスであるため、ピア コントローラーとは、シリアル コンソールからアクセス中のデバイスのもう一方のコントローラーを指します。オプション 1 と同じように、このオプションも、ピア コントローラーの無制限実行空間にアクセスすることを Microsoft サポートに許可するために使用できます。
 
@@ -123,7 +123,7 @@ Windows PowerShell for StorSimple に接続するには、[PuTTY をダウンロ
 ## Windows PowerShell for StorSimple を使用して StorSimple にリモート接続する
 Windows PowerShell リモート処理を使用して StorSimple デバイスに接続できます。この方法で接続すると、メニューは表示されません (メニューは、デバイスのシリアル コンソールを使用して接続する場合のみ表示されます)。 Windows PowerShell リモート処理を使用して、特定の実行空間に接続します。表示言語を指定することもできます。
 
-表示言語は、シリアル コンソール メニューの [Change Language] オプションを使用して設定する言語とは無関係です。リモート PowerShell は、何も指定されていない場合は、接続元のデバイスのロケールを自動的に選択します。
+表示言語は、シリアル コンソール メニューの **[Change Language]** オプションを使用して設定する言語とは無関係です。リモート PowerShell は、何も指定されていない場合は、接続元のデバイスのロケールを自動的に選択します。
 
 >[AZURE.NOTE]Microsoft Azure 仮想ホストと StorSimple 仮想デバイスを操作する場合は、Windows PowerShell リモート処理と仮想ホストを使用して、仮想デバイスに接続できます。Windows PowerShell セッションからの情報を保存するホスト上に共有場所を設定している場合、Everyone プリンシパルには認証ユーザーのみが含まれることに注意してください。そのため、Everyone によって共有へのアクセスを許可するように設定しているときに、資格情報を指定せずに接続した場合、認証されていない Anonymous プリンシパルが使用され、エラーが表示されます。この問題を解決するには、共有ホストで Guest アカウントを有効にし、Guest アカウントに共有へへのフル アクセス許可を与えるか、Windows PowerShell コマンドレットを有効な資格情報を使用して指定する必要があります。
 
@@ -152,7 +152,7 @@ Windows PowerShell for StorSimple に接続する方法を決定するときは�
 |目的の操作 ...|実行する手順 .|
 |---|---|
 |デバイスを登録する|[Windows PowerShell for StorSimple を使用してデバイスを構成して登録する](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |
-|Web プロキシの </br>Web プロキシ表示設定を構成する|[ StorSimple デバイスの Web プロキシを構成する](storsimple-configure-web-proxy.md)|
+|Web プロキシの </br>Web プロキシ表示設定を構成する|[StorSimple デバイスの Web プロキシを構成する](storsimple-configure-web-proxy.md)|
 |デバイスの DATA 0 ネットワーク インターフェイス設定を変更する|[StorSimple デバイスの DATA 0 ネットワーク インターフェイスを変更する](storsimple-modify-data-0.md)|
 |コントローラーを停止する</br>コントローラーを再起動またはシャットダウンする</br>デバイスをシャット ダウンする</br>デバイスを工場出荷時の既定の設定にリセットする|[デバイス コントローラーを管理する](storsimple-manage-device-controller.md)|
 |メンテナンス モードで更新プログラムと修正プログラムをインストールする|[デバイスを更新する](storsimple-update-device.md)|
@@ -185,7 +185,7 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 
 1. Windows PowerShell を **[管理者として実行]**オプションを指定して起動します。
 
-1. コマンド プロンプトに、「`Update-Help`」と入力します。
+1. コマンド プロンプトに `Update-Help` を入力します。
 
 1. 更新されたヘルプ ファイルがインストールされます。
 
@@ -197,4 +197,4 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 ## 次のステップ
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「[StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

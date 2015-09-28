@@ -3,7 +3,7 @@
 	description="Windows 仮想マシンを作成するさまざまな方法を紹介し、手順へのリンクを提供します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager,azure-service-management"/>
@@ -14,8 +14,8 @@
 	ms.topic="index-page"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure-services"
-	ms.date="07/15/2015"
-	ms.author="kathydav"/>
+	ms.date="09/15/2015"
+	ms.author="cynthn"/>
 
 # Windows 仮想マシンを作成するさまざまな方法
 
@@ -67,8 +67,6 @@ Azure PowerShell については、「[Use Azure PowerShell to create and precon
 [データ ディスクの接続][]
 
 ## その他のリソース
-[Azure 仮想マシンの構成設定について][]
-
 [基本構成テスト環境][]
 
 [Azure ハイブリッド クラウド テスト環境][]
@@ -97,10 +95,8 @@ Azure PowerShell については、「[Use Azure PowerShell to create and precon
 
 [データ ディスクの接続]: storage-windows-attach-disk.md
 
-[Azure 仮想マシンの構成設定について]: http://msdn.microsoft.com/library/azure/dn763935.aspx
-
 [基本構成テスト環境]: virtual-machines-base-configuration-test-environment.md
 
 [Azure ハイブリッド クラウド テスト環境]: virtual-machines-hybrid-cloud-test-environments.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

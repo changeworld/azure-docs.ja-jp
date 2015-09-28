@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/18/2015" 
+	ms.date="09/15/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management で相互証明書認証を使用してバックエンド サービスを保護する方法
@@ -141,4 +141,4 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

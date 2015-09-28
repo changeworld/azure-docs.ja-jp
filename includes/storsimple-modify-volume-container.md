@@ -1,3 +1,4 @@
+<!--author=SharS last changed: 9/16/15-->
 
 #### ボリューム コンテナーを変更するには
 
@@ -25,4 +26,4 @@
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

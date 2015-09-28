@@ -1,19 +1,19 @@
 <properties 
-   pageTitle="ネットワーク リソース プロバイダー"
-	description="ネットワーク リソース プロバイダー"
-	services="virtual-network"
-	documentationCenter="na"
-	authors="telmosampaio"
-	manager="adinah"
-	editor="tysonn"/>
+   pageTitle="ネットワーク リソース プロバイダーの概要 | Microsoft Azure"
+   description="Azure リソース マネージャーのネットワーク リソース プロバイダーについて説明します。"
+   services="virtual-network"
+   documentationCenter="na"
+   authors="telmosampaio"
+   manager="adinah"
+   editor="tysonn" />
 <tags 
    ms.service="virtual-network"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/23/2015"
-	ms.author="telmos"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/14/2015"
+   ms.author="telmos" />
 
 # ネットワーク リソース プロバイダー
 今日のビジネスの成功を支えるニーズとは、大規模なネットワーク対応アプリケーションを俊敏、柔軟、安全、かつ反復可能な方法でビルドおよび管理する能力です。Azure リソース マネージャー (ARM) では、リソース グループ内の 1 つのリソース コレクションとして、このようなアプリケーションを作成することができます。このようなリソースは、ARM の下でさまざまなリソース プロバイダーを介して管理されています。
@@ -359,17 +359,17 @@ Azure DNS のキー プロパティは次のとおりです。
 
 ## テンプレートの使用
 
-テンプレートから Azure にサービスをデプロイするには、PowerShell、AzureCLI を使用するか、または GitHub からクリック操作によって展開します。GitHub でテンプレートからサービスをデプロイするには、次の手順を実行します。
+テンプレートから Azure にサービスをデプロイするには、PowerShell、AzureCLI を使用するか、または GitHub からクリック操作によってデプロイします。GitHub でテンプレートからサービスをデプロイするには、次の手順を実行します。
 
 1. GitHub で template3 ファイルを開きます。たとえば、[2 つのサブネットを含む仮想ネットワーク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network) を開きます。
-2. **[Azure に展開]** をクリックし、資格情報を使用して Azure ポータルにサインインします。
+2. **[Azure にデプロイ]** をクリックし、資格情報を使用して Azure ポータルにサインインします。
 3. テンプレートを確認し、**[保存]** をクリックします。
 4. **[パラメーターの編集]** をクリックし、VNET およびサブネットの場所 (*[米国西部]* など) を選択します。
 5. 必要に応じて、**ADDRESSPREFIX** および **SUBNETPREFIX** パラメーターを変更し、**[OK]** をクリックします。
 6. **[リソース グループの選択]** をクリックし、VNET とサブネットの追加先となるリソース グループをクリックします。あるいは、**[新規作成]** をクリックして、新しいリソース グループを作成することもできます。
-3. **[作成]** をクリックします。**[テンプレートの展開をプロビジョニング中]** というタイルが表示されます。展開が完了すると、画面の表示は以下のようになります。
+3. **[作成]** をクリックします。**[テンプレートのデプロイメントをプロビジョニング中]** というタイルが表示されます。デプロイメントが完了すると、画面の表示は以下のようになります。
 
-![サンプル テンプレートの展開](./media/resource-groups-networking/Figure6.png)
+![サンプル テンプレートのデプロイメント](./media/resource-groups-networking/Figure6.png)
 
 
 ## 関連項目
@@ -390,6 +390,6 @@ Azure DNS のキー プロパティは次のとおりです。
 
 [Azure リソース マネージャーでのタグの使用](https://msdn.microsoft.com/library/azure/dn848368.aspx)
 
-[テンプレートの展開](https://msdn.microsoft.com/library/azure/dn790549.aspx)
+[テンプレートのデプロイメント](https://msdn.microsoft.com/library/azure/dn790549.aspx)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/18/2015"
+	ms.date="08/18/2015" 
 	ms.author="glenga"/>
 
 # Azure モバイル サービス向け .NET クライアントを使用する方法
@@ -56,7 +56,7 @@
 		"AppKey"
 	);
 
-前のコードの `AppUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Azure 管理ポータルで確認できます。モバイル サービスを選択し、[ダッシュボード] をクリックしてください。
+前のコードの `AppUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Microsoft Azure 管理ポータルで確認できます。モバイル サービスを選択し、[ダッシュボード] をクリックしてください。
 
 >[AZURE.IMPORTANT]アプリケーション キーは、モバイル サービスに対するランダムな要求をフィルターで除外するためのものであり、アプリケーションと共に配布されます。このキーは暗号化されないため、セキュリティで保護されていると見なすことはできません。モバイル サービスのデータへのアクセスを完全に保護するには、アクセスを許可する前にユーザーを認証する必要があります。詳細については、「[方法: ユーザーを認証する](#authentication)」を参照してください。
 
@@ -276,7 +276,7 @@ Mobile Services は、テーブルの **ID** 列で一意のカスタム文字�
 
 ##<a name="#custom-api"></a>方法: カスタム API の呼び出し
 
-カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。モバイル サービスでカスタム API を作成する方法を含む完全な例については、「[クライアントからのカスタム API 呼び出し]」を参照してください。
+カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。モバイル サービスでカスタム API を作成する方法の例については、「[カスタム API を定義する方法](mobile-services-dotnet-backend-define-custom-api.md)」を参照してください。
 
 クライアントで [InvokeApiAsync] メソッド オーバーロードの 1 つを呼び出して、カスタム API を呼び出します。たとえば、次のコード行はモバイル サービスで **completeAll** API に POST 要求を送信します。
 
@@ -442,7 +442,7 @@ _サーバー フロー_と_クライアント フロー_という 2 つの認�
 ###サーバー フロー
 Mobile Services によって Windows ストア アプリまたは Windows Phone アプリの認証プロセスが管理されるようにするには、アプリケーションを ID プロバイダーに登録する必要があります。その後、モバイル サービス内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。詳細については、チュートリアル「[アプリへの認証の追加]」を参照してください。
 
-ID プロバイダーを登録したら、[MobileServiceAuthenticationProvider] にプロバイダーの値を指定して [LoginAsync メソッド]を呼び出します。たとえば、次のコードは、Facebook を使用してサーバー フローのログインを開始します。
+ID プロバイダーを登録したら、[MobileServiceAuthenticationProvider] にプロバイダーの値を指定して [LoginAsync メソッド]を呼び出します。たとえば、次のコードは、Facebook を使用してサーバー フローのサインインを開始します。
 
 	private MobileServiceUser user;
 	private async System.Threading.Tasks.Task Authenticate()
@@ -470,13 +470,13 @@ ID プロバイダーを登録したら、[MobileServiceAuthenticationProvider] 
 
 Facebook 以外の ID プロバイダーを使用している場合は、上の [MobileServiceAuthenticationProvider] の値をプロバイダーに対応する値に変更してください。
 
-この場合、モバイル サービスは、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[LoginAsync メソッド]は [MobileServiceUser] を返します。これによって、認証されたユーザーの [userId] と、JSON Web トークン (JWT) としての [MobileServiceAuthenticationToken] が提供されます。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「[認証トークンをキャッシュする]」を参照してください。
-
-> [AZURE.NOTE]**Windows ストア アプリ** Windows ストア アプリケーションのユーザーの認証に Microsoft アカウント ログイン プロバイダーを使用する場合は、アプリケーション パッケージも Mobile Services に登録する必要があります。Windows ストア アプリケーションのパッケージ情報をモバイル サービスに登録すると、クライアントはシングル サインオン サービス エクスペリエンスを実現するために Microsoft アカウント ログイン資格情報を再利用できます。この操作を行わない場合、login メソッドが呼び出されるたびに、Microsoft アカウント ログイン ユーザーにログイン プロンプトが表示されます。Windows ストア アプリケーション パッケージの登録方法の詳細については、「[Windows ストア アプリケーション パッケージを Microsoft 認証に登録する](/develop/mobile/how-to-guides/register-windows-store-app-package/%20target="_blank")」を参照してください。パッケージ情報がモバイル サービスに登録された後、資格情報を再利用するには、[useSingleSignOn](http://go.microsoft.com/fwlink/p/?LinkId=311594%20target="_blank") パラメーターに値 **true** を指定して _LoginAsync_ メソッドを呼び出します。
+この場合、モバイル サービスは、選択されたプロバイダーのサインイン ページを表示し、ID プロバイダーでのサインインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[LoginAsync メソッド]は [MobileServiceUser] を返します。これによって、認証されたユーザーの [userId] と、JSON Web トークン (JWT) としての [MobileServiceAuthenticationToken] が提供されます。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「[認証トークンをキャッシュする]」を参照してください。
 
 ###クライアント フロー
 
 アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のためにモバイル サービスに提供することもできます。このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
+
+####Facebook や Google から取得したトークンを利用したシングル サインイン
 
 最も単純な形式では、この Facebook や Google のスニペットに示すようにクライアント フローを使用できます。
 
@@ -511,13 +511,60 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 		}
 	}
 
-Microsoft アカウントを使用する場合は、次の方法でログインします。
 
-	// Replace authentication_token_value with actual value of your Microsoft authentication token obtained through the Live SDK
-	user = await client
-		.LoginWithMicrosoftAccountAsync(authentication_token_value);
+####Microsoft アカウントと Live SDK を利用したシングル サインイン
 
-Microsoft アカウントを使用してシングル サインイン エクスペリエンスを提供する方法の例については、シングル サインインによるアプリケーションの認証に関するチュートリアル ([Windows ストア](/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/)/[Windows Phone](/develop/mobile/tutorials/single-sign-on-wp8/)) を参照してください。
+ユーザーを認証できるようにするには、Microsoft アカウント デベロッパー センターでアプリケーションを登録する必要があります。この登録をモバイル サービスと接続する必要があります。「[Microsoft アカウント ログインを使用するためのアプリケーションの登録](mobile-services-how-to-register-microsoft-authentication.md)」の手順を完了し、Microsoft アカウント登録を作成し、それをモバイル サービスに接続します。アプリのバージョンが Windows ストア と Windows Phone の両方の場合、Windows ストア バージョンを最初に登録します。
+
+次のコードでは Live SDK を使用して認証し、返されたトークンを利用してモバイル サービスにサインインします。
+
+	private LiveConnectSession session;
+ 	//private static string clientId = "<microsoft-account-client-id>";
+    private async System.Threading.Tasks.Task AuthenticateAsync()
+    {
+
+        // Get the URL the mobile service.
+        var serviceUrl = App.MobileService.ApplicationUri.AbsoluteUri;
+
+        // Create the authentication client for Windows Store using the mobile service URL.
+        LiveAuthClient liveIdClient = new LiveAuthClient(serviceUrl);
+        //// Create the authentication client for Windows Phone using the client ID of the registration.
+        //LiveAuthClient liveIdClient = new LiveAuthClient(clientId);
+
+        while (session == null)
+        {
+            // Request the authentication token from the Live authentication service.
+			// The wl.basic scope is requested.
+            LiveLoginResult result = await liveIdClient.LoginAsync(new string[] { "wl.basic" });
+            if (result.Status == LiveConnectSessionStatus.Connected)
+            {
+                session = result.Session;
+
+                // Get information about the logged-in user.
+                LiveConnectClient client = new LiveConnectClient(session);
+                LiveOperationResult meResult = await client.GetAsync("me");
+
+                // Use the Microsoft account auth token to sign in to Mobile Services.
+                MobileServiceUser loginResult = await App.MobileService
+                    .LoginWithMicrosoftAccountAsync(result.Session.AuthenticationToken);
+
+                // Display a personalized sign-in greeting.
+                string title = string.Format("Welcome {0}!", meResult.Result["first_name"]);
+                var message = string.Format("You are now logged in - {0}", loginResult.UserId);
+                var dialog = new MessageDialog(message, title);
+                dialog.Commands.Add(new UICommand("OK"));
+                await dialog.ShowAsync();
+            }
+            else
+            {
+                session = null;
+                var dialog = new MessageDialog("You must log in.", "Login Required");
+                dialog.Commands.Add(new UICommand("OK"));
+                await dialog.ShowAsync();
+            }
+        }
+    }
+
 
 ###<a name="caching"></a>認証トークンをキャッシュする
 場合によっては、最初のユーザー認証の後の login メソッドの呼び出しを避けることができます。そのためには、Windows ストア アプリ用の [PasswordVault] を使用して、ユーザーが初めてログインするときに使用した現在のユーザー ID をキャッシュし、それ以降はユーザー ID がキャッシュに保存されているかどうかをチェックします。キャッシュが空の場合は、ユーザーにログイン プロセスを実行してもらう必要があります。
@@ -697,7 +744,7 @@ Mobile Services クライアント ライブラリは、Json.NET を使用して
 [Take]: http://msdn.microsoft.com/library/windowsazure/dn250574.aspx
 [Fiddler]: http://www.telerik.com/fiddler
 [Azure モバイル サービス クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
-[クライアントからのカスタム API 呼び出し]: mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api.md
+[Call a custom API from the client]: mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api.md
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

@@ -3,7 +3,7 @@
    description="これらの手順とガイドラインに従って、SQL Data Warehouse をプロビジョニングします。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="jrowlandjones"
+   authors="lodipalm"
    manager="barbkess"
    editor=""/>
 
@@ -24,10 +24,10 @@
 2. 新しい論理サーバーを構成する
 3. 外部クライアント アクセスを有効にするための Azure ファイアウォール規則を設定する
 
-## Azure 無料評価版 ##
-次のタスクを実行する Azure のサブスクリプションが必要になります。Azure サブスクリプションにアクセスできない場合は、まず、これを解決する必要があります。
+## Azure 無料試用版 ##
+次のタスクを完了するには、Azure サブスクリプションと、SQL Data Warehouse プレビューに対する承認が必要です。Azure サブスクリプションにアクセスできない場合は、まず、これを解決する必要があります。
 
-[無料評価版][]を使用して、SQL Data Warehouse を含む Azure のすべてのサービスを試すことができます。
+[無料試用版][]を使用して、SQL Data Warehouse を含む Azure のすべてのサービスを試すことができます。
 
 
 ## Azure ポータルにログインする ##
@@ -40,13 +40,13 @@
 
 まず、Azure ポータルで SQL Data Warehouse サービスを特定する必要があります。
 
-Azure ポータルの左下隅には新しいボタンがあります。Azure では新しいサービスを作成するときは、最初にこのボタンを使用します。
+Azure ポータルの左上隅には [新規] ボタンがあります。Azure では新しいサービスを作成するときは、最初にこのボタンを使用します。
 
-- 新しいボタンをクリックします。
+- [新規] ボタンをクリックします。
 
 ### データ + ストレージ
 
-新しいボタンをクリックすると、Azure 内のすべてのサービス カテゴリが開きます。SQL Data Warehouse は "データ + ストレージ" カテゴリに含まれます。
+[新規] ボタンをクリックすると、すべての Azure サービス カテゴリが開きます。SQL Data Warehouse は "データ + ストレージ" カテゴリに含まれます。
 
 - **[データ + ストレージ]** をクリックしてドリル ダウンし、Azure で提供されるこのカテゴリのサービスを表示します。
 
@@ -54,7 +54,12 @@ Azure ポータルの左下隅には新しいボタンがあります。Azure �
 
 Azure では、データおよびストレージ エンジンが多数提供されていることがわかりますが、ただし、この概要ガイドで扱うのは SQL Data Warehouse です。
 
-- そこで、**SQL Data Warehouse** を選択します。
+- そこで、**SQL Data Warehouse** を選択します。 
+
+##プレビューへの参加
+セットアップ プロセスを始める前に、プレビュー プログラムに参加する必要があります。プレビューへのサインアップをクリックして送信します。送信が承認されると、電子メールで通知されます。
+
+承認を受信したら、次の手順に進むことができます。注: 承認処理には数日かかる場合があります。
 
 ## SQL Data Warehouse を構成する
 
@@ -164,7 +169,7 @@ Azure ファイアウォールを構成するのが初めての場合は、次�
 [サンプル データ]: ./sql-data-warehouse-get-started-load-samples.md
 
 <!--External links-->
-[無料評価版]: https://azure.microsoft.com/ja-JP/pricing/free-trial/
+[無料試用版]: https://azure.microsoft.com/ja-JP/pricing/free-trial/
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

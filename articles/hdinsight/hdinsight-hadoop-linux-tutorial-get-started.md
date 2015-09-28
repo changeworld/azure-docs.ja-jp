@@ -75,7 +75,11 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	![クラスターの資格情報の指定](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.3.png "クラスターの資格情報の指定")
 
-	HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
+    > [AZURE.NOTE]SSH はコマンドラインで HDInsight にリモート アクセスするために使用されます。ここで使用するユーザー名とパスワードまたは公開キーは、SSH でクラスターに接続するときに使用されます。また、SSH ユーザー名は一意にする必要があります。この名前により、すべての HDInsight クラスター ノードでユーザー アカウントが作成されます。次はクラスターのサービスのために予約されている名前の一部であり、SSH ユーザー名として使用できません。
+    >
+    > root、hdiuser、storm、hbase、ubuntu、zookeeper、hdfs、yarn、mapred、hbase、hive、oozie、falcon、sqoop、admin、tez、hcat、hdinsight-zookeeper
+
+	HDInsight での SSH の使用方法の詳細については、次のドキュメントをご覧ください。
 
 	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
@@ -91,7 +95,7 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。または、**[新規作成]** をクリックして、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
 
-	- **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+	- **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
 
 	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
 
@@ -252,7 +256,7 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 
 	* クラスターでホストされる URL (Ambari や WebHCat など)
 	* Hadoop ファイルの場所とローカル ファイル システムの例
-	* 既定のデータ ストアとして、HDFS ではなく Azure ストレージ (WASB) を使用する
+	* 既定のデータ ストアとして、HDFS ではなく Azure Storage (WASB) を使用する
 
 - Hive、Pig、MapReduce の詳細については、次のトピックを参照してください。
 
@@ -260,7 +264,7 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 	- [HDInsight での Hive の使用][hdinsight-use-hive]
 	- [HDInsight での Pig の使用][hdinsight-use-pig]
 
-- HDInsight クラスターで使用される Azure のストレージを操作する方法の詳細については、次のトピックを参照してください。
+- HDInsight クラスターで使用される Azure Storage を操作する方法の詳細については、次のトピックを参照してください。
 
 	- [HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)
 	- [HDInsight へのデータのアップロード][hdinsight-upload-data]
@@ -288,4 +292,4 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

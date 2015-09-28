@@ -1,5 +1,3 @@
-# Azure App Service での GIT による継続的なデプロイ
-
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、BitBucket、CodePlex、Dropbox、Git、GitHub、Mercurial、TFS など、ソース コード管理やリポジトリ ツールから Web Apps への継続的なデプロイをサポートしています。これらのツールを使用すると、アプリケーションのコンテンツとコードをメンテナンスすることができ、必要なときに変更を Azure Web アプリにすばやく簡単にプッシュできます。
 
 この記事では、Git を使用してローカル コンピューターから Web Apps に直接発行する方法について説明します (Azure では、この発行方法は**ローカル Git** と呼ばれます)。また、BitBucket、CodePlex、Dropbox、GitHub、Mercurial などのリポジトリ サイトからの継続的なデプロイを有効にする方法についても説明します。継続的な展開に TFS を使用する方法の詳細については、「[Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]」を参照してください。
@@ -300,4 +298,4 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
 [Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="09/10/2015"
    ms.author="banders" />
 
 # Operations Manager とオペレーション インサイトの連携に関する考慮事項
@@ -215,4 +215,4 @@ Open a PowerShell window and run the following script after you’ve updated it 
 
 さまざまな地理的な場所にあるサーバーからのデータを分析する場合は、場所ごとに 1 つの管理グループを設けることを検討してください。エージェントから管理グループへのデータ転送のパフォーマンスを向上させることができます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

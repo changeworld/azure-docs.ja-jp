@@ -233,6 +233,12 @@ NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 
 削除操作を行う場合は、少なくとも `id` 属性を設定する必要があります。
 
+##<a name="#custom-api"></a>方法: カスタム API の呼び出し
+
+カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。モバイル サービスでカスタム API を作成する方法の例については、「[カスタム API を定義する方法](mobile-services-dotnet-backend-define-custom-api.md)」を参照してください。
+
+[AZURE.INCLUDE [mobile-services-ios-call-custom-api](../../includes/mobile-services-ios-call-custom-api.md)]
+
 
 ##<a name="authentication"></a>方法: ユーザーを認証する
 
@@ -327,4 +333,4 @@ Azure Mobile Services は、次の 2 つの認証ワークフローをサポー�
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [競合ハンドラー]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

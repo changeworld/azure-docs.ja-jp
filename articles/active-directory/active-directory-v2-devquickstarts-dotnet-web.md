@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 | Microsoft Azure"
+	pageTitle="アプリ モデル v2.0 .NET Web アプリ | Microsoft Azure"
 	description="サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する .NET MVC Web アプリを構築する方法を説明します。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="09/11/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: .NET MVC Web アプリへのサインインの追加
@@ -49,11 +49,11 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 ## 2. OWIN 認証パイプラインを使用するようにアプリをセットアップする
 ここでは、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。  OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
--		最初に、 プロジェクトのルートにある `web.config` ファイルを開いて、アプリの構成値を `<appSettings>` セクションで入力します。
+-	最初に、 プロジェクトのルートにある `web.config` ファイルを開いて、アプリの構成値を `<appSettings>` セクションで入力します。
     -	`ida:ClientId`は、登録ポータル内のアプリに割り当てられる **アプリケーション ID** です。
     -	`ida:RedirectUri`は、ポータルで入力した**リダイレクト URI** です。
 
--	次に、パッケージ マネージャー コンソールを使用して、プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
+-    次に、パッケージ マネージャー コンソールを使用して、プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
 
 ```
 PM> Install-Package Microsoft.Owin.Security.OpenIdConnect 
@@ -168,9 +168,9 @@ else
 ```
 
 ## 4\.ユーザー情報を表示する
-OpenID Connect を使用してユーザーの認証処理を実行すると、v2.0 エンドポイントは id\_token をアプリに返します。id\_token には、"[クレーム](active-directory-v2-tokens.md#id_tokens)"、またはユーザーに関する "アサーション" を含みます。これらのクレームを使用して、アプリを個人向けにカスタマイズすることができます。
+OpenID Connect を使用してユーザーの認証処理を実行すると、v2.0 エンドポイントは id\_token をアプリに返します。id\_token には、"[要求](active-directory-v2-tokens.md#id_tokens)"、またはユーザーに関する "アサーション" を含みます。これらの要求を使用して、アプリを個人向けにカスタマイズすることができます。
 
-- `Controllers\HomeController.cs` ファイルを開きます。`ClaimsPrincipal.Current` セキュリティ プリンシパル オブジェクトを介して、コントローラー内のユーザー クレームにアクセスできます。
+- `Controllers\HomeController.cs` ファイルを開きます。`ClaimsPrincipal.Current` セキュリティ プリンシパル オブジェクトを介して、コントローラー内のユーザーの要求にアクセスできます。
 
 ```C#
 [Authorize]
@@ -208,4 +208,4 @@ public ActionResult About()
 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

@@ -1,23 +1,26 @@
 <properties 
-	pageTitle="基幹業務アプリケーションのフェーズ 1 | Microsoft Azure"
-	description="仮想ネットワークおよびその他の Azure インフラストラクチャ要素を作成します。"
+	pageTitle="基幹業務アプリケーションのフェーズ 1 | Microsoft Azure" 
+	description="仮想ネットワークおよびその他の Azure インフラストラクチャ要素を作成します。" 
 	documentationCenter=""
-	services="virtual-machines"
-	authors="JoeDavies-MSFT"
-	manager="timlt"
-	editor=""/>
+	services="virtual-machines" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="Windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/11/2015" 
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 1: Azure を構成する
-
+ 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
+ 
 イントラネット専用の高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、Azure のネットワークおよびストレージ インフラストラクチャを構築します。[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)」をご覧ください。
 
 Azure を次の基本的なネットワーク コンポーネントでプロビジョニングする必要があります。
@@ -49,7 +52,7 @@ Azure コンポーネントの構成を開始する前に、次の表を作成�
 このソリューションのサブネットに関する表 S に記入します。
 
 - 最初のサブネットでは、Azure ゲートウェイ サブネットに対して 29 ビットのアドレス空間 (プレフィックスの長さが /29) を指定します。
-- 2 番目のサブネットでは、表示名、仮想ネットワーク アドレス空間に基づく 1 つの IP アドレス空間、および用途の説明を指定します。 
+- 2 番目のサブネットでは、表示名、Virtual Network アドレス空間に基づく 1 つの IP アドレス空間、および用途の説明を指定します。 
 
 IT 部門と相談して、仮想ネットワーク アドレス空間からこれらのアドレス空間を決定します。両方のアドレス空間は、ネットワーク プレフィックス形式とも呼ばれるクラスレス ドメイン間ルーティング (CIDR) 形式である必要があります。たとえば、10.24.64.0/20 のような形式です。
 
@@ -87,7 +90,7 @@ IT 部門と相談して、仮想ネットワーク アドレス空間からこ�
 
 	Get-Module azure | format-table version
 
-最新バージョンの Azure PowerShell をインストールする必要がある場合は、**[コントロール パネル] の [プログラムと機能]** を使用して、現在のバージョンを削除します。次に、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。Azure PowerShell プロンプトを開きます。
+最新バージョンの Azure PowerShell をインストールする必要がある場合は、**[コントロール パネル] の [プログラムと機能]** を使用して、現在のバージョンを削除します。次に、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」の手順を使用して、ローカル コンピューターに Azure PowerShell をインストールします。Azure PowerShell プロンプトを開きます。
 
 まず以下のコマンドで、適切な Azure サブスクリプションを選択します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
@@ -155,7 +158,7 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 	$saName="<Table ST – Item 2 - Storage account name column>"
 	New-AzureStorageAccount -Name $saName -ResourceGroupName $rgName –Type Standard_LRS -Location $locName
 
-次に、基幹業務アプリケーションをホストする Azure 仮想ネットワークを作成します。
+次に、基幹業務アプリケーションをホストする Azure Virtual Network 作成します。
 
 	$rgName="<name of your new resource group>"
 	$locName="<Azure location of the new resource group>"
@@ -234,7 +237,7 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 
 ## 次のステップ
 
-このワークロードを引き続き構成するには、[フェーズ 2: ドメイン コントローラーの構成](virtual-machines-workload-high-availability-LOB-application-phase2.md)に進んでください。
+このワークロードを引き続き構成するには、「[フェーズ 2: ドメイン コントローラーの構成](virtual-machines-workload-high-availability-LOB-application-phase2.md)」に進んでください。
 
 ## その他のリソース
 
@@ -248,4 +251,4 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

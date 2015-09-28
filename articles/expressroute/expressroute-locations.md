@@ -1,19 +1,19 @@
 <properties
    pageTitle="ExpressRoute の場所 | Microsoft Azure"
-	description="この記事では、サービスが提供されている場所と Azure リージョンに接続する方法の詳細について説明します。"
-	services="expressroute"
-	documentationCenter="na"
-	authors="cherylmc"
-	manager="carolz"
-	editor="tysonn"/>
+   description="この記事では、サービスが提供されている場所と Azure リージョンに接続する方法の詳細について説明します。"
+   services="expressroute"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="carolz"
+   editor="tysonn" />
 <tags
    ms.service="expressroute"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/06/2015"
-	ms.author="cherylmc"/>
+   ms.devlang="na"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/06/2015"
+   ms.author="cherylmc" />
 
 # Azure ExpressRoute パートナーとピアリングの場所
 この記事の表では、ExpressRoute 接続プロバイダー (EXP と NSP)、ExpressRoute の地理的範囲、ExpressRoute でサポートされる Microsoft クラウド サービス、ExpressRoute システム インテグレーター (SI) に関する情報を提供します。
@@ -77,7 +77,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | サポートされています | サポートされていません | シンガポール |
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | サポートされています | 近日対応予定 | アムステルダム、チェンナイ+、香港、ロンドン、ムンバイ+、シンガポール |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | サポートされています | サポートされていません | メルボルン+、シドニー |
-| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされていません | ロンドン、香港、シリコン バレー、ワシントン DC |
+| **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | 近日対応予定 | ロンドン、香港、シリコン バレー、ワシントン DC |
 
  **+** は近日対応予定を表します
 
@@ -115,4 +115,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute 接続を構成する必要がある場合は、[EXP 接続の構成](expressroute-configuring-exps.md)または [NSP 接続の構成](expressroute-configuring-nsps.md)に関するページを参照してください。
 - 同じ仮想ネットワークに対してサイト間 VPN 接続と ExpressRoute の両方を構成する必要がある場合は、「[Configure ExpressRoute and Site-to-Site VPN connections that coexist (共存する ExpressRoute とサイト間 VPN の接続の構成)](expressroute-coexist.md)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="xrdp でリモート デスクトップを使用して Microsoft Azure Linux VM を接続する"
+	pageTitle="リモート デスクトップを使用して Microsoft Azure Linux VM を接続する。"
 	description="Microsoft Azure Linux VM でリモート デスクトップをインストールして構成する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.date="09/14/2015"
 	ms.author="mingzhan"/>
 
 
-#xrdp でリモート デスクトップを使用して Microsoft Azure Linux VM を接続する
+#リモート デスクトップを使用して Microsoft Azure Linux VM を接続する
 
 ##概要
 
-RDP (リモート デスクトップ プロトコル) は、Windows の専用プロトコルですが、RDP を使用して Linux VM をリモート接続するにはどうすればよいでしょうか。
+RDP (リモート デスクトップ プロトコル) は、Windows の専用プロトコルですが、RDP を使用して Linux VM (仮想マシン) をリモート接続するにはどうすればよいでしょうか。
 
-このガイドを読めば、その答えがわかります。 RDP は、Microsoft Azure Linux VM (仮想マシン) に xrdp をインストールして構成するのに役立ちます。また、これには Windows コンピューターからリモート デスクトップを使用して接続できます。
+このガイドを読めば、その答えがわかります。 RDP は、Microsoft Azure Linux VM に xrdp をインストールして構成するのに役立ちます。また、これには Windows コンピューターからリモート デスクトップを使用して接続できます。このガイドでは、例として Ubuntu または OpenSUSE を実行する Linux VM を使用します。
 
 xrdp はオープン ソースの RDP サーバーで、これを使用すると、Windows コンピューターからリモート デスクトップを使用して Linux サーバーに接続できます。このパフォーマンスは、VNC (Virtual Network Computing) よりも優れています。VNC には "JPEG" 品質と動作が遅いという欠点があるのに対し、RDP は高速かつ明瞭です。
  
@@ -45,11 +45,7 @@ VM にエンドポイントを設定する方法がわからない場合は、[�
 
 Putty を使用して Linux VM に接続し、`Gnome Desktop` をインストールします。
 
-Red Hat ファミリの Linux の場合は、次のコマンドを使用します。
-
-	#sudo yum install gnome* "xorg*" -y
-
-Debian と Ubuntu の場合は、次のコマンドを使用します。
+Ubuntu の場合は、次のコマンドを使用します。
 
 	#sudo apt-get update
 	#sudo apt-get install ubuntu-desktop
@@ -57,20 +53,13 @@ Debian と Ubuntu の場合は、次のコマンドを使用します。
 
 OpenSUSE の場合は、次のコマンドを使用します。
 
-	#sudo zypper -y install gnome-session
-
+	#sudo zypper install gnome-session
 
 ##xrdp をインストールする
 
-Red Hat ファミリの Linux の場合は、`yum` を使用して xrdp パッケージをインストールするために、まず Linux VM に EPEL リポジトリを追加する必要があります。
-
-	#sudo rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-	#sudo yum -y install xrdp tigervnc-server tigervnc-server-module xterm
-
-Debian と Ubuntu Linux の場合は、次のコマンドを使用します。
+Ubuntu の場合は、次のコマンドを使用します。
 
 	#sudo apt-get install xrdp
-
 
 OpenSUSE の場合は、次のコマンドを使用します。
 
@@ -82,28 +71,16 @@ OpenSUSE の場合は、次のコマンドを使用します。
 
 ##xrdp を開始して起動時に xdrp サービスを設定する
 
-Red Hat ファミリの Linux の場合は、次のコマンドを使用します。
-
-	#sudo service xrdp start
-	#sudo chkconfig xrdp on
-
-
 OpenSUSE の場合は、次のコマンドを使用します。
 
 	#sudo systemctl start xrdp
 	#sudo systemctl enable xrdp
- 
 
-##Red Hat ファミリの Linux を使用している場合に iptables を無効にする 
-
-次のコマンドを使用します。
-
-	#sudo service iptables stop
-
+Ubuntu の場合は、インストール後の自動起動時に xrdp が開始され、有効になります。
 
 ##Ubuntu 12.04LTS 以降のバージョンの Ubuntu を使用している場合に xfce を使用する
 
-現在の xrop では Ubuntu 12.04LTS 以降のバージョンの Ubuntu から Gnome デスクトップへの接続がサポートされていないため、代わりに `xfce` のデスクトップを使用します。
+現在の xrdp では Ubuntu 12.04LTS 以降のバージョンの Ubuntu から Gnome デスクトップへの接続がサポートされていないため、代わりに `xfce` のデスクトップを使用します。
 
 `xfce` をインストールするには、次のコマンドを使用します。
 
@@ -125,7 +102,7 @@ xrdp サービスを再起動するには、次のコマンドを使用します
 
 
 ##Windows コンピューターから Linux VM を接続する
-Windows コンピューターでリモート デスクトップ クライアントを起動し、Linux VM の DNS 名を入力するか、Azure ポータルで VM の`Dashboard`に移動して [`Connect`] をクリックすると、次のようなログイン ウィンドウが表示されます。
+Windows コンピューターでリモート デスクトップ クライアントを起動し、Linux VM の DNS 名を入力するか、Azure ポータルで VM の`Dashboard`に移動して [`Connect`] をクリックすると、Linux VM に接続され、次のようなログイン ウィンドウが表示されます。
 
 ![image](./media/virtual-machines-linux-remote-desktop/no2.png)
 
@@ -141,4 +118,4 @@ xrdp の使用の詳細については、[こちら](http://www.xrdp.org/)を参
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

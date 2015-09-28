@@ -3,7 +3,7 @@
 	description="Azure 上で仮想マシンとの通信を許可するようにポータルでエンドポイントをセットアップする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/28/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 #仮想マシンに対してエンドポイントを設定する方法
 
@@ -96,4 +96,4 @@ Azure PowerShell コマンドレットを使用してこれを設定するには
 
 [Azure インフラストラクチャ サービスの負荷分散](virtual-machines-load-balance.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

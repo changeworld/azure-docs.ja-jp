@@ -1,23 +1,23 @@
-<properties 
+<properties
    pageTitle="テーブル デザイナー用のフィルター文字列の作成"
-	description="テーブル デザイナー用のフィルター文字列の作成"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tlee"/>
-<tags 
+   description="テーブル デザイナー用のフィルター文字列の作成"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tlee" />
+<tags
    ms.service="storage"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/24/2015"
-	ms.author="kempb"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/24/2015"
+   ms.author="kempb" />
 
 # テーブル デザイナー用のフィルター文字列の作成
 
-##概要
+## 概要
 
 Visual Studio **テーブル デザイナー**に表示される Azure テーブルのデータをフィルター処理するには、フィルター文字列を作成してフィルター フィールドに入力します。フィルター文字列の構文は、WCF Data Services で定義されており、SQL の WHERE 句に似ています。ただし、文字列は HTTP 要求を介して Table サービスに送信されます。必要なエンコード処理は**テーブル デザイナー**で自動的に行われます。したがって、目的のプロパティ値を条件としてフィルター処理するときに必要なことは、フィルター フィールドにプロパティ名、比較演算子、条件値、ブール演算子を入力するだけです (ブール演算子は省略可能)。ストレージ サービスの REST API ([リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=400447)を参照) でテーブルを照会するための URL を作成する場合とは異なり、$filter クエリ オプションを含める必要はありません。
 
@@ -55,11 +55,9 @@ WCF Data Services は、[Open Data Protocol](http://go.microsoft.com/fwlink/p/?L
 
     PartitionKey eq 'Partition1' and RowKey eq '00001'
 
-
 各フィルター式をかっこで囲むことができます。ただし、これは必須ではありません。
 
     (PartitionKey eq 'Partition1') and (RowKey eq '00001')
-
 
 ワイルドカードによるクエリは、Table サービスでも、テーブル デザイナーでもサポートされていません。ただし、目的のプレフィックスに対して比較演算子を使用することで、プレフィックス一致を実行できます。次の例は、文字 'A' で始まる LastName プロパティを持つエンティティを返します。
 
@@ -72,7 +70,6 @@ WCF Data Services は、[Open Data Protocol](http://go.microsoft.com/fwlink/p/?L
 次の例は、値が 30 より大きい Age プロパティを持つすべてのエンティティを返します。
 
     Age gt 30
-
 
 次の例は、値が 100.25 以下の AmountDue プロパティを持つすべてのエンティティを返します。
 
@@ -88,18 +85,18 @@ WCF Data Services は、[Open Data Protocol](http://go.microsoft.com/fwlink/p/?L
 
 このフィルター式は、論理演算子なしで記述することもできます。次の例でも、Table サービスは IsActive が **true** であるすべてのエンティティを返します。
 
-[コピー](javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode\_3d6a191e-f389-447a-bbbb-ef8b163bc645');)
+    IsActive
 
 IsActive が false であるすべてのエンティティを返すには、not 演算子を使用します。
 
-    IsActive
+    not IsActive
 
 ## DateTime プロパティのフィルター処理
 
-DateTime 値を条件としてフィルター処理を行うには、**datetime** キーワードに続けて、単一引用符で囲んだ日付/時刻の定数を指定します。日付/時刻の定数は、結合 UTC 形式にする必要があります。詳細については、[DateTime プロパティ値の書式設定](http://go.microsoft.com/fwlink/p/?LinkId=400449)に関するページを参照してください。
+DateTime 値を条件としてフィルター処理を行うには、**datetime** キーワードに続けて、単一引用符で囲んだ日付/時刻の定数を指定します。日付/時刻の定数は、結合 UTC 形式にする必要があります。詳細については、「[DateTime プロパティ値の書式設定](http://go.microsoft.com/fwlink/p/?LinkId=400449)」を参照してください。
 
 次の例は、CustomerSince プロパティが 2008 年 7 月 10 日と等しいエンティティを返します。
 
     CustomerSince eq datetime'2008-07-10T00:00:00Z'
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

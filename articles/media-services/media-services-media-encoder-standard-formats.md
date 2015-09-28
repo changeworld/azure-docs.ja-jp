@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/03/2015"
+	ms.date="09/16/2015"
 	ms.author="juliako"/>
 
 #Media Encoder Standard の形式とコーデック
@@ -36,7 +36,20 @@ MP4 (.mp4、.m4a、.m4v)/ISMV (.isma、.ismv)|あり
 [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |あり 
 Matroska/WebM (.mkv) |あり 
 WAVE/WAV (.wav) |あり 
+QuickTime (.mov) |あり
  
+###入力コンテナーのオーディオ形式 
+
+Media Encoder Standard の入力コンテナーは次のオーディオ形式に対応しています。
+
+- オーディオ トラックにインターリーブ ステレオまたは 5.1 サンプルが含まれる MXF、GXF、QuickTime ファイル。
+
+または
+
+- オーディオが個別 PCM トラックとして送信されるが、(ステレオまたは 5.1 への) チャネル マッピングをファイル メタデータから推測できる MXF、GXF、QuickTime ファイル。
+
+明示的/ユーザー指定のチャネル マッピングが近い将来にサポートされる予定です。
+
 
 ##入力ビデオ コーデック
 
@@ -53,6 +66,13 @@ Canopus HQ/HQX |いいえ
 MPEG-4 Part 2 |あり 
 [Theora](https://en.wikipedia.org/wiki/Theora) |あり 
 YUV420 非圧縮または中間 |あり
+Apple ProRes 422 |あり
+Apple ProRes 422 LT |あり
+Apple ProRes 422 HQ |あり
+Apple ProRes プロキシ|あり
+Apple ProRes 4444 |あり
+Apple ProRes 4444 XQ |あり
+
 
 
 ##入力オーディオ コーデック
@@ -98,4 +118,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

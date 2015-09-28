@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="ExpressRoute を操作するためのネットワーク構成の詳細"
-	description="App Service 環境を ExpressRoute 回線に接続された Virtual Networks 内で実行するためのネットワーク構成の詳細です。"
-	services="app-service\web"
-	documentationCenter=""
-	authors="stefsch"
-	manager="nirma"
+	pageTitle="ExpressRoute を操作するためのネットワーク構成の詳細" 
+	description="App Service 環境を ExpressRoute 回線に接続された Virtual Networks 内で実行するためのネットワーク構成の詳細です。" 
+	services="app-service\web" 
+	documentationCenter="" 
+	authors="stefsch" 
+	manager="nirma" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/30/2015"
+	ms.service="app-service" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/11/2015" 
 	ms.author="stefsch"/>
 
 # ExpressRoute を使用した App Service 環境のネットワーク構成の詳細 
@@ -21,15 +21,20 @@
 ## 概要 ##
 顧客は、[Azure ExpressRoute][ExpressRoute] 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。この[仮想ネットワーク][virtualnetwork] インフラストラクチャのサブネットの中に App Service 環境を作成できます。App Service 環境で実行されるアプリは、ExpressRoute 接続でのみアクセスできる、バックエンド リソースに対する安全な接続を確立できます。
 
+**注:** "v2"仮想ネットワーク内で App Service 環境を作成することはできません。App Service 環境は現在、クラシック "v1" 仮想ネットワークでしかサポートされていません。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+
 ## 必要なネットワーク接続 ##
 ExpressRoute に接続された仮想ネットワークでは最初は満たされていない場合がある App Service 環境のネットワーク接続要件があります。
 
 App Service 環境が正常に機能するには、次のすべてを満たす必要があります。
 
 
--  App Service 環境と同じリージョンに配置されている Azure Storage リソースと SQL DB リソースの両方に対する発信ネットワーク接続。このネットワーク パスは、社内のプロキシを通過することはできません。それを行うと、発信ネットワーク トラフィックの有効な NAT アドレスが変更される可能性があるためです。Azure Storage エンドポイントと SQL DB エンドポイント向けの App Service 環境の発信ネットワーク トラフィックの NAT アドレスを変更すると、接続エラーが発生します。
+-  Azure Storage ワールドワイドに対する発信ネットワーク接続と、App Service 環境と同じリージョンに配置されている SQL DB リソースに対する接続。このネットワーク パスは、社内のプロキシを通過することはできません。それを行うと、発信ネットワーク トラフィックの有効な NAT アドレスが変更される可能性があるためです。Azure Storage エンドポイントと SQL DB エンドポイント向けの App Service 環境の発信ネットワーク トラフィックの NAT アドレスを変更すると、接続エラーが発生します。
 -  仮想ネットワークの DNS 構成は、Azure が管理する次のドメイン内のエンドポイントを解決できる必要があります。**.file.core.windows.net*、**.blob.core.windows.net*、**.database.windows.net*。
 -  仮想ネットワークの DNS 構成は、App Service 環境の作成時だけではなく、App Service 環境の再構成とスケーリングの変更を行っている間も、安定を維持する必要があります。   
+-  VPN ゲートウェイの他端にカスタム DNS サーバーが存在する場合、その DNS サーバーは到達可能、かつ使用可能である必要があります。 
 -  この[記事][requiredports]の説明に従って、App Service 環境の必要なポートへの着信ネットワーク アクセスを許可する必要があります。
 
 DNS 要件は、仮想ネットワークの有効な DNS 構成を保証することによって満たすことができます。
@@ -37,7 +42,7 @@ DNS 要件は、仮想ネットワークの有効な DNS 構成を保証する�
 着信ネットワーク アクセスの要件は、この[記事][requiredports]の説明に従って、必要なアクセスを許可する[ネットワーク セキュリティ グループ][NetworkSecurityGroups]を App Service 環境のサブネットに対して構成することによって満たすことができます。
 
 ## App Service 環境の発信ネットワーク接続を有効にする##
-既定では、新しく作成された ExpressRoute 回線は、発信インターネット接続を許可する既定のルートをアドバタイズします。この構成によって、App Service環境は、他の Azure エンドポイントに接続できます。
+既定では、新しく作成された ExpressRoute 回線は、発信インターネット接続を許可する既定のルートをアドバタイズします。この構成によって、App Service 環境は、他の Azure エンドポイントに接続できます。
 
 ただし、顧客の一般的な構成では、発信インターネット トラフィックを強制的に顧客のプロキシ/ファイアウォール インフラストラクチャにフローさせる独自の既定のルートを定義しています。このトラフィック フローでは、発信トラフィックはオンプレミスでブロックされるか、Azure エンドポイントではもはや有効ではない、認識できないアドレス セットに NAT 処理されるため、App Service 環境では接続は必ず切断されます。
 
@@ -79,7 +84,7 @@ DNS 要件は、仮想ネットワークの有効な DNS 構成を保証する�
 
 Azure で使用される包括的な最新の CIDR 範囲の一覧については、すべての範囲を含む Xml ファイルを [Microsoft ダウンロード センター][DownloadCenterAddressRanges]からダウンロードできます。
 
-**注:** 今後、CIDR の略語 0.0.0.0/0 を *AddressPrefix* パラメーターで使用可能になる予定です。この略語は、"すべてのインターネット アドレス" に相当します。現時点では、開発者は、App Service 環境がデプロイされるリージョンで使用される可能性があるすべての Azure のアドレス範囲をカバーする、CIDR 範囲の幅広いセットを使用する必要があります。
+**注:** 今後、CIDR の略語 0.0.0.0/0 を *AddressPrefix* パラメーターで使用可能になる予定です。この略語は、"すべてのインターネット アドレス" に相当します。現時点では、開発者は、対象となり得るすべての Azure のアドレス範囲をカバーする、CIDR 範囲の幅広いセットを使用する必要があります。
 
 **手順 3: App Service 環境が含まれるサブネットにルート テーブルを関連付ける**
 
@@ -96,7 +101,7 @@ Azure で使用される包括的な最新の CIDR 範囲の一覧について�
 - Azure エンドポイントへの発信トラフィックが ExpressRoute 回線をフローしていない。
 - Azure エンドポイントの DNS ルックアップが正しく解決されている。 
 
-上記の手順を確認した後、App Service 環境の作成に進むことができます。
+上記の手順を確認したら、仮想マシンを削除して、App Service 環境の作成に進むことができます。
 
 ## 使用の開始
 
@@ -121,4 +126,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

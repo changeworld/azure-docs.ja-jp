@@ -3,7 +3,7 @@
    description="リソース バランサーで使用するサービス記述の構成の概要"
    services="service-fabric"
    documentationCenter=".net"
-   authors="GaugeField"
+   authors="masnider"
    manager="timlt"
    editor=""/>
 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/03/2015"
+   ms.date="09/15/2015"
    ms.author="masnider"/>
 
 # サービス記述の概要
@@ -202,7 +202,9 @@ Task t = fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
    </StatefulService>
  </ServiceTemplates>
 ```
-このコード例はアプリケーション マニフェストによる DefaultServices の定義を示します。``` xml
+このコード例はアプリケーション マニフェストによる DefaultServices の定義を示します。
+
+``` xml
 <DefaultServices>
   <Service Name="QueueServiceInstance">
     <StatefulService MinReplicaSetSize="3" ServiceTypeName="QueueService" TargetReplicaSetSize="3">
@@ -229,4 +231,4 @@ Task t = fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 [Image3]: media/service-fabric-resource-balancer-service-description/MW.png
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

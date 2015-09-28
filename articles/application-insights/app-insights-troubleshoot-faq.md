@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Application Insights に関するトラブルシューティングと Q &amp; A"
-	description="Visual Studio Application Insights について不明な点や問題点はありませんか? ここで解決してください。"
-	services="application-insights"
-	documentationCenter=".net"
-	authors="alancameronwills"
+	pageTitle="Application Insights に関するトラブルシューティングと Q &amp; A" 
+	description="Visual Studio Application Insights について不明な点や問題点はありませんか? ここで解決してください。" 
+	services="application-insights" 
+    documentationCenter=".net"
+	authors="alancameronwills" 
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.service="application-insights" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/09/2015" 
 	ms.author="awills"/>
  
 # トラブルシューティングと Q & A - Application Insights for ASP.NET
@@ -27,7 +27,7 @@
 * Microsoft Azure に登録するには、クレジット カード データを登録する必要がありますが、他の有料の Azure のサービスを使用するか、明示的に有料レベルにアップグレードしない限り、料金は発生しません。
 * アプリが無料プランの月間クォータより多くのデータを送信すると、ログの記録を停止します。このような場合は、料金の支払いを開始するか、月末にクォータがリセットされるまでお待ちください。
 * 基本的な使用とセッション データは、クォータの対象になりません。
-* Premium の機能を無償で使用できる、30 日間の無料評価版もあります。
+* Premium の機能を無償で使用できる、30 日間の無料試用版もあります。
 * 各アプリケーション リソースには、個別のクォータがあり、それぞれに個別に価格レベルを設定します。
 
 #### 料金を払うと何ができますか。
@@ -136,6 +136,9 @@ NuGet パッケージを 0.17 以降に更新した後に上記のエラーが�
 + [更新] ボタンをクリックします。ブレードは周期的に自動で更新されますが、手動でも更新できます。時間範囲が広いと、更新間隔は長くなります。
 + Microsoft Azure のスタート ボードで、サービス状態マップを確認してください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
 + [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)も参照してください。
+
+#### サーバーにアプリケーションを発行したのでデータがない
+
 + ファイアウォールでは、dc.services.visualstudio.com と f5.services.visualstudio.com への発信トラフィック用に TCP ポート 80 と 443 を開く必要がある場合があります。
 + プロキシを使用して社内ネットワークの外に送信しなければならない場合は、Web.config に [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) を設定します。
 + Windows Server 2008: 更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217) をインストールしていることを確認します。
@@ -148,7 +151,7 @@ NuGet パッケージを 0.17 以降に更新した後に上記のエラーが�
 
 #### <a name="q08"></a>Application Insights を使ってイントラネット Web サーバーを監視できますか?
 
-はい。サーバーがデータをパブリック インターネットに送信できる場合は健全性と利用状況を監視できます。
+はい。サーバーがデータをパブリック インターネットに送信できる場合は健全性と利用状況を監視できます。ファイアウォールで、dc.services.visualstudio.com と f5.services.visualstudio.com にトラフィックを送るために TCP ポート 80 と 443 を開く必要があります。
 
 ただし、サービスに対して Web テストを実行する場合は、パブリック インターネットからポート 80 でサービスにアクセスできる必要があります。
 
@@ -159,9 +162,11 @@ dc.services.visualstudio.com への https POST 呼び出しを中継できるプ
 #### データが表示されていたのに停止しました。
 
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
-* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」を参照してください。
+* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
+## Status Monitor が機能しない
 
+「[Status Monitor のトラブルシューティング](app-insights-monitor-performance-live-website-now.md#troubleshooting)」を参照してください。最も頻繁に問題になるのは、ファイアウォールのポートです。
 
 ## ポータル
 
@@ -228,6 +233,10 @@ Azure VM で Web サービスが実行されている場合は、そこでも[�
 
 Application Insights リソースを作成するために [PowerShell スクリプトを書き込みます](app-insights-powershell-script-create-resource.md)。
 
+## その他の回答
+
+* [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
+
 
 <!--Link references-->
 
@@ -239,4 +248,4 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

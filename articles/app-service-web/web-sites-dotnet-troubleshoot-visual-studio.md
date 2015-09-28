@@ -5,22 +5,24 @@
 	documentationCenter=".net" 
 	authors="tdykstra" 
 	manager="wpickett" 
-	editor=""/>
+	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/08/2015" 
+	ms.date="09/16/2015" 
 	ms.author="tdykstra"/>
 
 # Visual Studio を使用した Azure App Service のトラブルシューティング
 
 ## 概要
 
-Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で実行されている Web アプリを[デバッグ モード](http://www.visualstudio.com/ja-jp/get-started/debug-your-app-vs.aspx)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
+Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で実行されている Web アプリを[デバッグ モード](http://www.visualstudio.com/ja-JP/get-started/debug-your-app-vs.aspx)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 学習内容:
 
@@ -55,9 +57,9 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
 
 	Visual Studio から Azure リソースへの接続の詳細については、「[アカウント、サブスクリプション、管理ロールの管理](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)」を参照してください。
 
-2. **サーバー エクスプローラー**で **[Azure]** を展開し、**[Web Apps]** を展開します。
+2. **サーバー エクスプローラー**で **[Azure]** を展開し、**[App Service]** を展開します。
 
-3. 「[Azure と ASP.NET を使用する][GetStarted]」で作成した Web アプリのノードを右クリックし、**[設定の表示]** をクリックします。
+3. 「[Azure と ASP.NET を使用する][GetStarted]」で作成した Web アプリを含むリソース グループを展開し、Web アプリ ノードを右クリックして、**[設定の表示]** をクリックします。
 
 	![サーバー エクスプローラーの [設定の表示]](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -69,7 +71,7 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
    
 	このウィンドウの [アプリケーション設定] ボックスと [接続文字列] ボックスについては、[Azure Web Apps: アプリケーション文字列と接続文字列の動作](http://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx)に関するページを参照してください。
 
-	このウィンドウでは実行できない Web アプリ管理タスクを行う場合は、**[すべての Web アプリ設定]** をクリックすると、ブラウザー ウィンドウが開いて管理ポータルにアクセスできます。詳細については、「[Web アプリの構成方法](/ja-jp/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig)」を参照してください。
+	このウィンドウでは実行できない Web アプリ管理タスクを行う場合は、**[管理ポータルで開く]** をクリックし、ブラウザー ウィンドウを開いて管理ポータルにアクセスできます。詳細については、「[Web Apps の構成方法](/ja-JP/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig)」を参照してください。
 
 ## <a name="remoteview"></a>サーバー エクスプローラーでの Web アプリ ファイルへのアクセス
 
@@ -146,15 +148,15 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 4. デプロイが完了し、ブラウザーが起動して Web アプリケーションの Azure URL が表示されたら、ブラウザーを閉じます。
 
-5. Visual Studio 2013 のみ: **サーバー エクスプローラー**で **[Azure]**、**[Web Apps]** の順に展開し、Web アプリを右クリックして **[デバッガーの接続]** をクリックします。
+5. Visual Studio 2013 の場合: **サーバー エクスプローラー**で、Web アプリを右クリックしてから **[デバッガーの接続]** をクリックします。
 
 	![デバッガーの接続](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
 	ブラウザーが自動的に起動し、Azure で実行されているホーム ページが表示されます。デバッグに必要な設定を Azure がサーバーに対して行う間、20 秒ほどの待ち時間が生じることがあります。この待ち時間が生じるのは、Web アプリケーションでのデバッグ モードの初回実行時に限られます。以後 48 時間は、デバッグを再度実行しても、待ち時間は生じません。
 
-6. Visual Studio 2012 Update 4 の場合:<a id="vs2012"></a>
+6. Visual Studio 2012 Update 4 以降の場合:<a id="vs2012"></a>
 
-	* Azure 管理ポータルで、Web アプリケの **[設定] > [アプリケーション設定]** に移動し、下へスクロールして **[デバッグ]** セクションを表示します。
+	* Microsoft Azure 管理ポータルで、Web アプリケの **[設定] > [アプリケーション設定]** に移動し、下へスクロールして **[デバッグ]** セクションを表示します。
 
 	* **[リモート デバッグ]** を **[オン]** に設定し、**[リモート デバッグに使用する Visual Studio のバージョン]** を **[2012]** に設定します。
 
@@ -192,7 +194,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 ## <a name="remotedebugwj"></a> Web ジョブのリモート デバッグ
 
-このセクションでは、「[Azure Web ジョブ SDK の使用](websites-dotnet-webjobs-sdk.md)」で作成したプロジェクトと Web アプリを使用してリモートでデバッグする方法を示します。このセクションで紹介する機能は、Visual Studio 2013 Update 4 でのみ使用できます。リモート デバッグは、継続的な Web ジョブでのみ動作します。スケジュールされたオンデマンドの Web ジョブでは、デバッグはサポートされていません。
+このセクションでは、「[Azure Web ジョブ SDK の使用](websites-dotnet-webjobs-sdk.md)」で作成したプロジェクトと Web アプリを使用してリモートでデバッグする方法を示します。このセクションで示す機能は、Visual Studio 2013 Update 4 以降でのみ使用できます。リモート デバッグは、継続的な Web ジョブでのみ動作します。スケジュールされたオンデマンドの Web ジョブでは、デバッグはサポートされていません。
 
 1. 「[Azure Web ジョブ SDK の使用][GetStartedWJ]」で作成した Web プロジェクトを開きます。
 
@@ -208,9 +210,9 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 3. **[設定]** タブをクリックして **[構成]** を **[デバッグ]** に変更し、**[発行]** をクリックします。
 
-	Visual Studio によって Web プロジェクトと Web ジョブ プロジェクトが配置され、ブラウザーで Web アプリケーションの Azure URL が表示されます。
+	Visual Studio によって Web プロジェクトと Web ジョブ プロジェクトがデプロイされ、ブラウザーで Web アプリケーションの Azure URL が表示されます。
 
-5. **サーバー エクスプローラー**で、**[Azure]**、**[Web Apps]**、使用中の Web アプリ、**[Web ジョブ]**、**[継続]** の順に展開し、**[ContosoAdsWebJob]** を右クリックします。
+5. **サーバー エクスプローラー**で、**[Azure]、[App Service]、[使用するリソース グループ]、[使用する Web アプリ]、[Web ジョブ]、[継続]** の順に展開し、**[ContosoAdsWebJob]** を右クリックします。
 
 7. **[デバッガーの接続]** をクリックします。
 
@@ -567,9 +569,9 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
     <!-- todo:screenshot of new portal if the VS page link goes to new portal -->![ログの構成](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
 
-	自分の Web アプリの管理ポータルの **[構成]** タブが開きます。この画面にアクセスするために、**[Web Apps]** タブをクリックして該当する Web アプリをクリックし、**[構成]** タブをクリックすることもできます。
+	Web アプリの Azure ポータルの **[構成]** タブが開きます。
 
-2. 管理ポータルの **[構成]** タブで、下へスクロールしてアプリケーション診断セクションを表示し、**[アプリケーション ログ記録 (ストレージ)]** を **[オン]** に変更します。
+2. ポータルの **[構成]** タブで、下へスクロールしてアプリケーション診断セクションを表示し、**[アプリケーション ログ記録 (テーブル ストレージ)]** を **[オン]** に変更します。
 
 3. **[ログ レベル]** を **[情報]** に変更します。
 
@@ -583,7 +585,7 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 6. **[アプリケーション診断用のテーブル ストレージの管理]** ボックスのチェック マークをクリックしてこのボックスを閉じます。
 
-6. 管理ポータルの **[構成]** タブで、**[保存]** をクリックします。
+6. ポータルの **[構成]** タブで、**[保存]** をクリックします。
 
 7. アプリケーションの Web アプリを表示するブラウザー ウィンドウで、**[ホーム]**、**[バージョン情報]**、**[連絡先]** の順にクリックします。
 
@@ -635,15 +637,13 @@ Azure の Web アプリでは、同じ失敗した要求トレース機能が使
 
 2. Visual Studio で、**[Azure Web アプリ]** ウィンドウの **[構成]** タブにある **[管理ポータルで開く]** をクリックします。
 
-3. Web アプリの管理ポータル ブレードで、**[すべての設定] > [デプロイ資格情報]** をクリックし、次に **[デプロイ資格情報のリセット]** をクリックします。
-
-4. 新しいユーザー名とパスワードを入力します。
+3. Web アプリの Azure プレビュー ポータル ブレードで、**[設定]、[デプロイ資格情報]** の順にクリックし、新しいユーザー名とパスワードを入力します。
 
 	![新しい FTP ユーザー名とパスワード](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
-5. 管理ポータルの **[ダッシュボード]** タブで F5 キーを押してページを最新の情報に更新し、下へスクロールして **[デプロイ / FTP ユーザー]** を表示します。ユーザー名に、プレフィックスとして Web アプリケーション名が付加されていることに注目してください。**ログインする際は、ここに表示されている完全なユーザー名とその Web アプリ名プレフィックスを使用する必要があります。**
+	****ログインする際は、完全なユーザー名とその Web アプリ名プレフィックスを使用する必要があります。たとえば、ユーザー名として「myid」と入力し、サイトが "myexample" の場合、"myexample\\myid" としてログインします。
 
-5. 新しいブラウザー ウィンドウで、**[FTP ホスト名]** (Web アプリの管理ポータル ページの **[ダッシュボード]** タブ) に表示されている URL に移動します。**[FTP ホスト名]** は、**[概要]** セクションの **[デプロイ / FTP ユーザー]** の近くに表示されます。
+5. 新しいブラウザー ウィンドウで、Web アプリの **[Web アプリ]** ポータル ブレードの **[FTP ホスト名]** または **[FTPS ホスト名]** に表示されている URL に移動します。
 
 6. 先ほど作成した FTP 資格情報を使用してログインします (ユーザー名の Web アプリケーション名プレフィックスを含めること)。
 
@@ -685,7 +685,7 @@ Azure の Web アプリケーションで作成されたログは Visual Studio 
 Azure App Service の Web アプリのトラブルシューティングの詳細については、以下のリソースを参照してください。
 
 * [Web アプリを監視する方法](/manage/services/web-sites/how-to-monitor-websites/)
-* [Investigating Memory Leaks in Azure Web Apps with Visual Studio 2013 (Visual Studio 2013 を使用した Azure の Web アプリでのメモリ リークの調査)](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。マネージされるメモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
+* [Visual Studio 2013 を使用した Azure の Web Apps でのメモリ リークの調査](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。マネージされるメモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
 * [Azure web apps online tools you should know about (知っておくべき Azure Web アプリのオンライン ツール)](/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。Amit Apple によるブログの投稿です。
 
 具体的なトラブルシューティングについての質問は、次のいずれかのフォーラムで投稿してください。
@@ -753,14 +753,12 @@ Web サーバーのログの分析の詳細については、次のリソース�
 
 Web アプリではなく Azure Cloud Services をデバッグする場合は、「[クラウド サービスのデバッグ](http://msdn.microsoft.com/library/windowsazure/ee405479.aspx)」を参照してください。
 
->[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
-
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Azure ポータルから Azure プレビュー ポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
 
 [GetStarted]: web-sites-dotnet-get-started.md
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

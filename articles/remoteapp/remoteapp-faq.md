@@ -27,7 +27,7 @@ Azure RemoteApp について次のような質問が寄せられています。�
 
 ## サポートされる構成 ##
 
-- **サービスの制限とは何ですか。** Azure RemoteApp の既定の設定とサービスの制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](.\azure-subscription-service-limits.md)」をご覧ください。他に質問がある場合は、お知らせください。
+- **サービスの制限とは何ですか。** Azure RemoteApp の既定の設定とサービスの制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)」をご覧ください。他に質問がある場合は、お知らせください。
 - **必要なユーザー数は、どの程度でしょうか。** 少なくとも 20 ユーザーが必要です。明確にするために繰り返しますと、最低ユーザー数は 20 となっています。つまり、20 ユーザー分の代金が課金されることになります。 
 - **カスタム基幹業務 (LOB) アプリケーションはサポートされていますか。** はい。Azure RemoteApp でカスタム アプリケーションを使用するには、[カスタム テンプレート イメージ](remoteapp-create-custom-image.md)を作成し、RemoteApp コレクションにアップロードします。
 - **自社のカスタム LOB アプリケーションは、Azure RemoteApp で動作しますか。** この質問の回答を見つけ出す最善の方法は、テストすることです。[アプリケーションの互換性要件](http://www.microsoft.com/download/details.aspx?id=18704)を確認し、[RD 互換性センター](http://www.rdcompatibility.com/compatibility/default.aspx)で提供される内容をチェックします。
@@ -56,7 +56,7 @@ Azure RemoteApp について次のような質問が寄せられています。�
 
 ##サポートとフィードバック
 
-- **このサービスは無料で試すことができますか。** はい。30 日間、無料で試すことができます。試行期間が終了すると、(運用環境で使用可能な) 有料アカウントに切り替えるか、サービスの使用を終了することができます。[manage.windowsazure.com](http://manage.windowsazure.com) にアクセスして無料試用版を開始し、RemoteApp の新しいインスタンスを作成してみてください。無料試用版では、2 つの RemoteApp インスタンスを作成でき、インスタンスあたり 10 ユーザーをサポートできます。 試行期間は、30 日であることに注意してください。
+- **このサービスは無料で試すことができますか。** はい。30 日間無料で使用できます。試行期間が終了すると、(運用環境で使用可能な) 有料アカウントに切り替えるか、サービスの使用を終了することができます。[manage.windowsazure.com](http://manage.windowsazure.com) にアクセスして無料試用版を開始し、RemoteApp の新しいインスタンスを作成してみてください。無料試用版では、2 つの RemoteApp インスタンスを作成でき、インスタンスあたり 10 ユーザーをサポートできます。 試行期間は、30 日であることに注意してください。
 - **RemoteApp のサポート プランについてはどうですか。** 課金およびサブスクリプション管理が、無料でサポートされます。テクニカル サポートが [Azure のサービス プラン](../../../support/plans/)を通して提供されます。[Azure のディスカッション フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=AzureRemoteApp)を通して、無料のコミュニティ サポートも得ることができます。 
 - **RemoteApp の料金についてはどうですか。** 「[Azure RemoteApp の料金体系について](../../../pricing/details/remoteapp/)」を参照してください。
 - **フィードバックを発行する方法を教えてください。** 「[フィードバック フォーラム](http://feedback.azure.com/forums/247748-azure-remoteapp)」にアクセスしてください。
@@ -82,4 +82,4 @@ Azure RemoteApp について次のような質問が寄せられています。�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

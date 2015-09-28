@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Data Catalog データ カタログの概要"
-	description="Azure Data Catalog のシナリオと機能のエンド ツー エンドのチュートリアルです。"
-	documentationCenter=""
-	services="data-catalog"
-	authors="dvana"
-	manager="mblythe"
-	editor=""
-	tags=""/>
+   description="Azure Data Catalog のシナリオと機能のエンド ツー エンドのチュートリアルです。"
+   documentationCenter=""
+   services="data-catalog"
+   authors="dvana"
+   manager="mblythe"
+   editor=""
+   tags=""/>
 <tags
    ms.service="data-catalog"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-catalog"
-	ms.date="07/13/2015"
-	ms.author="derrickv"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-catalog"
+   ms.date="09/11/2015"
+   ms.author="derrickv"/>
 
 # Azure Data Catalog の概要
 
@@ -148,7 +148,16 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 
 同僚に、先述の「**登録されているデータ ソースへの注釈の設定**」の演習を繰り返すように求めます。同僚が ProductPhoto など、データ資産に説明を追加すると、複数の注釈が表示されます。
 
-この演習では、Azure Data Catalog のメタデータのクラウドソーシングのための機能について学習しました。カタログ ユーザーは検出したデータ資産に注釈を設定できます。演習: データソースへの接続 この演習では、**Azure Data Catalog** ポータルで、Microsoft Excel を使用して、データ ソースに接続します。
+
+![クラウドソース][13]
+
+この演習では、Azure Data Catalog のメタデータのクラウドソーシングのための機能について学習しました。カタログ ユーザーは検出したデータ資産に注釈を設定できます。
+
+
+## 演習 6: データ ソースへの接続
+
+この演習では、**Azure Data Catalog** ポータルで、Microsoft Excel を使用して、データ ソースに接続します。
+
 
 > [AZURE.NOTE]**Azure Data Catalog** は、ユーザーに実際のデータ ソースへのアクセス権を付与するのではなく、単にユーザーがそれらを検出し、理解しやすくするだけであることに注意することが重要です。ユーザーがデータ ソースに接続すると、選択したクライアント アプリケーションが、ユーザーの Windows 資格情報を使用するか、または必要に応じて、ユーザーに資格情報の入力を求めます。ユーザーに以前にデータ ソースへのアクセス権が付与されていない場合、データ ソースに接続する前に、アクセス権を付与される必要があります。
 
@@ -168,7 +177,7 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 
 この演習では、Azure Data Catalog を使用して検出されたデータ ソースに接続しました。**Azure Data Catalog** ポータルでは、ユーザーがその [**開く**] メニューに統合されたクライアント アプリケーションを使用して、直接接続することも、選択した任意のアプリケーションを使用し、資産のメタデータに含まれる接続の場所情報を使用して、接続することもできます。
 
-## 演習 6: データ ソースのメタデータの削除
+## 演習 7: データ ソースのメタデータの削除
 
 この演習では、**Azure Data Catalog** ポータルを使用して、登録されているデータ資産からプレビュー データを削除し、カタログからデータ資産を削除します。
 
@@ -185,7 +194,7 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 
 この演習では、登録されているデータ資産をカタログから削除しました。
 
-## 演習 7: 登録されているデータ ソースの管理
+## 演習 8: 登録されているデータ ソースの管理
 
 この演習では、**Azure Data Catalog** の管理機能を使用して、データ資産の所有権を取得し、それらの資産を検出し、管理できるユーザーを制御します。
 
@@ -221,5 +230,6 @@ Adventure Works OLTP データベースは、製造、販売、および購入�
 [10]: ./media/data-catalog-get-started/connect1.png
 [11]: ./media/data-catalog-get-started/connect2.png
 [12]: ./media/data-catalog-get-started/ownership.png
+[13]: ./media/data-catalog-get-started/crowdsource.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

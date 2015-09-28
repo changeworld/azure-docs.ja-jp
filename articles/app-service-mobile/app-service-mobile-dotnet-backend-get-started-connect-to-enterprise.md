@@ -18,7 +18,7 @@
 
 # SaaS API へのモバイル アプリの接続
 
-このチュートリアルでは、エンタープライズのサービスとしてのソフトウェア (SaaS) ソリューションにモバイル アプリを接続します。「Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証」からアプリを更新し、新しい TodoItem が追加されたときに必ず SharePoint Online で Word 文書が作成されるようにします。
+このチュートリアルでは、エンタープライズのサービスとしてのソフトウェア (SaaS) ソリューションにモバイル アプリを接続します。「[Azure Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]」からアプリを更新し、新しい TodoItem が追加されたときに必ず SharePoint Online で Word 文書が作成されるようにします。
 
 このチュートリアルには、次のものが必要です。
 
@@ -26,10 +26,12 @@
 * 有効な [SharePoint Online] サブスクリプション
 * 「[Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]」チュートリアルの完了。SharePoint サブスクリプションによって提供されるテナントを使用する必要があります。
 
+[AZURE.INCLUDE [app-service-mobile-to-web-and-api](../../includes/app-service-mobile-to-web-and-api.md)]
+
 ## <a name="configure-permissions"></a>SharePoint への委任アクセスのためにアプリケーションを構成する
 既定では、AAD から受け取るトークンは、アクセス許可が制限されています。サードパーティのリソースまたは SharePoint Online などの SaaS アプリケーションにアクセスするには、明示的にアクセスを許可する必要があります。
 
-1. **Azure 管理ポータル**の [[Active Directory]] セクションに移動し、テナントを選択します。App Service 用に作成した Web アプリケーションに移動します。
+1. **Microsoft Azure 管理ポータル**の [[Active Directory]] セクションに移動し、テナントを選択します。App Service 用に作成した Web アプリケーションに移動します。
 
 2. **[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションまでページを下へスクロールします。**[Office 365 SharePoint Online]** を選択し、**[ユーザーのファイルを編集または削除]** 委任アクセス許可を付与します。その後、**[保存]** をクリックします。
 
@@ -182,8 +184,8 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 
 [Preview Azure Management Portal]: https://portal.azure.com/
 [Active Directory]: https://manage.windowsazure.com/
-[SharePoint Online]: http://office.microsoft.com/ja-JP/sharepoint/
+[SharePoint Online]: http://office.microsoft.com/ja-jp/sharepoint/
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: app-service-mobile-dotnet-backend-ios-aad-sso-preview.md
 [Mobile Apps .NET Backend App Service Extension]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.AppService/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

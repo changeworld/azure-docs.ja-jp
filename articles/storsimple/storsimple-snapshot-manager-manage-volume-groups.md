@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/04/2015"
+   ms.date="09/15/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したボリューム グループの作成と管理
@@ -48,9 +48,9 @@
 名前 | **[名前]** 列には、ボリューム グループの名前が含まれます。
 アプリケーション | **[アプリケーション]** 列は、Windows ホスト上で現在インストールされ、実行されている VSS ライターの数を示します。
 オン | **[オン]** 列には、ボリューム グループに含まれているボリュームの数が表示されます。ゼロ (0) は、ボリューム グループ内のボリュームに関連付けられたアプリケーションが存在しないことを示します。
-インポート済み | **[インポート済み]** 列には、インポートされたボリュームの数が表示されます。**True** に設定されている場合、この列はボリューム グループが Microsoft Azure の管理ポータルからインポートされ、StorSimple Snapshot Manager では作成されなかったことを示します。
+インポート済み | **[インポート済み]** 列には、インポートされたボリュームの数が表示されます。**True** に設定されている場合、この列はボリューム グループが Microsoft Azure 管理ポータルからインポートされ、StorSimple Snapshot Manager では作成されなかったことを示します。
  
->[AZURE.NOTE]StorSimple Snapshot Manager ボリューム グループも Microsoft Azure の管理ポータルの **[バックアップ ポリシー]** タブに表示されます。
+>[AZURE.NOTE]StorSimple Snapshot Manager ボリューム グループも Microsoft Azure 管理ポータルの **[バックアップ ポリシー]** タブに表示されます。
  
 ## ボリューム グループの作成
 
@@ -140,6 +140,7 @@
 
 ## 次のステップ
 
-[StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理](storsimple-snapshot-manager-manage-backup-policies.md)。
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
+- [StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理方法](storsimple-snapshot-manager-manage-backup-policies.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

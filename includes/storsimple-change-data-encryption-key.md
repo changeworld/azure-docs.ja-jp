@@ -1,3 +1,4 @@
+<!--author=SharS last changed: 9/17/15-->
 
 ### 手順 1. 管理ポータルでサービス データ暗号化キーを変更できるようにデバイスを承認する
 
@@ -73,4 +74,4 @@ StorSimple Manager サービスに登録されているデバイスが複数あ�
 
 3. 「[手順 2. StorSimple 用 Windows PowerShell を使用してサービス データ暗号化キーの変更を開始する](#to-initiate-the-service-data-encryption-key-change)」で取得したサービス データ暗号化キーを指定します。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

@@ -255,6 +255,5 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
 [Azure AD による Node.JS Web API のセキュリティ保護 >>](active-directory-devquickstarts-webapi-nodejs.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

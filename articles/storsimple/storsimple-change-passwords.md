@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="StorSimple パスワードを変更する | Microsoft Azure"
-	description="StorSimple Manager サービスを使用して、StorSimple Snapshot Manager のパスワードとデバイス管理者のパスワードを変更する方法について説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   pageTitle="StorSimple パスワードを変更する | Microsoft Azure" 
+   description="StorSimple Manager サービスを使用して、StorSimple Snapshot Manager のパスワードとデバイス管理者のパスワードを変更する方法について説明します。" 
+   services="storsimple" 
+   documentationCenter="NA" 
+   authors="SharS" 
+   manager="carolz" 
+   editor=""/>
 
 <tags
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/31/2015"
-	ms.author="v-sharos@microsoft.com"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD" 
+   ms.date="09/15/2015"
+   ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple Manager サービスを使用した StorSimple のパスワードの変更
 
@@ -62,8 +62,10 @@ Windows PowerShell インターフェイスを使用して StorSimple デバイ�
 
 ## 次のステップ
 
-[StorSimple のセキュリティの詳細を確認する](storsimple-security.md)。
+- [StorSimple のセキュリティの詳細](storsimple-security.md)
 
-[デバイスの構成を変更する方法について確認する](storsimple-modify-device-config.md)。
+- [デバイスの構成を変更する方法の詳細](storsimple-modify-device-config.md)
 
-<!---HONumber=September15_HO1-->
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
+
+<!---HONumber=Sept15_HO3-->

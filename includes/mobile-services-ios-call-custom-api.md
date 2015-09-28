@@ -1,5 +1,5 @@
 
-## <a name="update-app"></a> iOS アプリからのカスタム API 呼び出し
+### iOS アプリからのカスタム API 呼び出し
 
 iOS クライアントからカスタム API を呼び出すには、`MSClient invokeAPI` メソッドを使用します。このメソッドには 2 種類あり、1 つは JSON 形式のリクエスト向け、もう 1 つはあらゆるデータ型向けです。
 
@@ -34,4 +34,4 @@ iOS クライアントからカスタム API を呼び出すには、`MSClient i
 	     completion:completion ];
 		
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

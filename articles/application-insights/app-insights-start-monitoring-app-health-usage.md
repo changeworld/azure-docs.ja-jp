@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Application Insights SDK を追加して ASP.NET アプリを監視する | Microsoft Azure"
-	description="内部設置型または Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。"
+	description="オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。"
 	services="application-insights"
     documentationCenter=".net"
 	authors="alancameronwills"
@@ -121,6 +121,13 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。アプリケーションをデプロイすると、データ累積速度は遅くなります。
 
+#### サーバーに発行した後でデータはありませんか。
+
+サーバーのファイアウォールで発信トラフィック用のこれらのポートを開きます。
+
++ `dc.services.visualstudio.com:443`
++ `f5.services.visualstudio.com:443`
+
 
 #### ビルド サーバーで問題が発生した場合
 
@@ -130,13 +137,13 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 SDK によるデータへのアクセスでは、若干のサポートが必要です。具体的には、アプリからデータベース、REST API、またその他の外部コンポーネントへの呼び出しを自動的に測定するには、次の追加のステップが必要です。依存関係のメトリックは、パフォーマンスに関する問題の診断に非常に役立つ場合があります。
 
-以下の手順では、CPU、メモリ、ネットワーク占有率などの[パフォーマンス カウンターのレポート](app-insights-web-monitor-performance.md#system-performance-counters)も有効化します。
-
 #### アプリが IIS サーバーで実行される場合
 
-管理者権限でサーバーにサインインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします
+管理者権限でサーバーにサインインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします。
 
-(Status Monitor は、SDK で構築されていない[既に実行中のアプリをインストルメント化](app-insights-monitor-performance-live-website-now.md)するためにも使用できます。)
+[ファイアウォールで追加の送信ポートを開く](app-insights-monitor-performance-live-website-now.md#troubleshooting)ことが必要な場合があります。
+
+以下の手順では、CPU、メモリ、ネットワーク占有率などの[パフォーマンス カウンターのレポート](app-insights-web-monitor-performance.md#system-performance-counters)も有効化します。
 
 #### アプリが Azure の Web アプリの場合
 
@@ -248,4 +255,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-get-started.md
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Mobile Service のローカル テストのための IIS Express の構成"
+	pageTitle="Mobile Service のローカル テストのための IIS Express の構成 | Azure Mobile Services"
 	description="テストのためにローカル モバイル サービス プロジェクトに接続できるように IIS Express を構成する方法について説明します。"
 	authors="ggailey777"
 	manager="dwrede"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/16/2015"
 	ms.author="glenga"/>
 
 # ローカル モバイル サービスへの接続を可能にするローカル Web サーバーの構成
@@ -24,4 +24,4 @@ Azure モバイル サービスを利用すると、サポートされている 
 
 [AZURE.INCLUDE [mobile-services-how-to-configure-iis-express](../../includes/mobile-services-how-to-configure-iis-express.md)]
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

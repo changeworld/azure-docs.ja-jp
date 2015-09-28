@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/10/2015" 
+	ms.date="09/15/2015" 
 	ms.author="genemi"/>
 
 
@@ -41,8 +41,8 @@ SQL Database V12 の主要な目的は、Microsoft SQL Server 2014 との互換�
 
 
 - [共通言語ランタイム (CLR) アセンブリ](http://msdn.microsoft.com/library/ms189524.aspx)
-- [ウィンドウ関数](https://msdn.microsoft.com/library/bb934097.aspx)と [OVER](http://msdn.microsoft.com/library/ms189461.aspx) 
-- [XML インデックス](https://msdn.microsoft.com/library/bb934097.aspx)と[選択的 XML インデックス](http://msdn.microsoft.com/library/jj670104.aspx)
+- [ウィンドウ関数](http://msdn.microsoft.com/library/bb934097.aspx)と [OVER](http://msdn.microsoft.com/library/ms189461.aspx) 
+- [XML インデックス](http://msdn.microsoft.com/library/bb934097.aspx)と[選択的 XML インデックス](http://msdn.microsoft.com/library/jj670104.aspx)
 - [変更の追跡](http://msdn.microsoft.com/library/bb933875.aspx)
 - [SELECT...INTO](http://msdn.microsoft.com/library/ms188029.aspx)
 - [フルテキスト検索](http://msdn.microsoft.com/library/ms142571.aspx)
@@ -59,7 +59,19 @@ V12 では、すべての Premium パフォーマンス レベルに割り当て
 
 - メモリ内[列ストア インデックス](http://msdn.microsoft.com/library/gg492153.aspx)のサポート
 - [行によるテーブル パーティション](http://msdn.microsoft.com/library/ms187802.aspx)と、関連する [TRUNCATE TABLE](http://msdn.microsoft.com/library/ms177570.aspx) の機能強化。
-- パフォーマンスの監視と調整に役立つ動的管理ビュー [(DMV)](http://msdn.microsoft.com/library/ms188754.aspx) と拡張イベント [(XEvent)](https://msdn.microsoft.com/library/bb630282.aspx) の利用。
+- パフォーマンスの監視と調整に役立つ動的管理ビュー [(DMV)](http://msdn.microsoft.com/library/ms188754.aspx) の利用。
+
+
+### 信頼性の高いパフォーマンス
+
+
+クライアントが Azure 仮想マシン (VM) で実行されるとき、クライアント プログラムが SQL Database V12 に接続する場合、VM で次のポート範囲を開く必要があります。
+
+- 11000 ～ 11999
+- 14000 ～ 14999
+
+
+SQL Database V12 のポートの詳細については、[こちら](sql-database-develop-direct-route-ports-adonet-v12.md)を参照してください。これらのポートは、SQL Database V12 のパフォーマンスの強化に必要です。
 
 
 ## クラウド SaaS ベンダーのサポートの充実
@@ -83,6 +95,8 @@ V12 でのみ、新しい Standard パフォーマンス レベルの S3 と、[
 - [包含データベース](http://msdn.microsoft.com/library/azure/ff394108.aspx)
 - GRANT、DENY、REVOKE を使用して管理される[アプリケーション ロール](http://msdn.microsoft.com/library/ms190998.aspx)
 - [透過的なデータ暗号化](http://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx) (TDE)
+- [Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
+ - SQL Database は、Azure Active Directory の認証をサポートするようになりました。この認証は、Azure Active Directory (Azure AD) の ID を使用して SQL Database に接続するメカニズムです。Azure Active Directory の認証では、データベース ユーザーと他の Microsoft サービスの ID を一元管理できます。
 
 
 ## 復旧が必要なときのビジネス継続性の向上
@@ -98,7 +112,7 @@ V12 では、目標復旧時点 (PRO) と推定復旧時間 (ERT) が大幅に�
 | アクティブ geo レプリケーション | • RPO は 5 分未満。<br/>• ERT は 1 時間未満。 | • RPO は 5 秒未満。<br/>• ERT は 30 秒未満。 |
 
 
-詳細については、[SQL Database のビジネス継続性](https://msdn.microsoft.com/library/azure/hh852669.aspx)に関するページを参照してください。
+詳細については、[SQL Database のビジネス継続性](http://msdn.microsoft.com/library/azure/hh852669.aspx)に関するページを参照してください。
 
 
 ## 今すぐアップグレードすることをお勧めするその他の理由
@@ -139,12 +153,12 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 まだ V12 で実行していない場合は、[SQL Database V12 へのインプレース アップグレード](sql-database-v12-upgrade.md)の手順に従って、論理サーバーをアップグレードできます。
 
 
-## <a name="V12AzureSqlDbPreviewGaTable"></a> 一般公開地域
+## <a name="V12AzureSqlDbPreviewGaTable"></a> 一般公開リージョン
 
 
 - 2015 年 7 月 31 日までにすべてのリージョンが完全一般公開 (GA) に昇格しました。
 - V12 は 2014 年 12 月にリリースされましたが、プレビューの段階でした。
 
-[Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+[Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

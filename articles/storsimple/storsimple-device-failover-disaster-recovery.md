@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple のフェールオーバーと障害復旧 | Microsoft Azure"
-	description="StorSimple デバイスを、そのデバイス自体、別の物理デバイス、または別の仮想デバイスにフェールオーバーする方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="adinah"
-	editor=""/>
+   description="StorSimple デバイスを、そのデバイス自体、別の物理デバイス、または別の仮想デバイスにフェールオーバーする方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/28/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/14/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスのフェールオーバーと障害復旧
 
@@ -121,7 +121,7 @@
 	
 	>[AZURE.NOTE]**物理デバイスで Update 1 を実行している場合、Update 1 を実行している仮想デバイスのみにフェールオーバーできます。ターゲットの仮想デバイスで、古いソフトウェアのバージョンを実行する場合、ターゲット デバイスのソフトウェアを更新する必要がある旨のエラーが表示されます。**
 
-1. 最後に、**[フェールオーバーの確認]** ですべてのフェールオーバー設定を見直します。チェック マーク アイコン ![Check icon](./media/storsimple-device-failover-disaster-recovery/IC740895.png) をクリックします。
+1. 最後に、**[フェールオーバーの確認]** ですべてのフェールオーバー設定を見直します。チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-device-failover-disaster-recovery/IC740895.png) をクリックします。
 
 1. フェールオーバーが完了したら、**[デバイス]** ページに移動します。
 													
@@ -129,11 +129,16 @@
 	
 	b.**[ボリューム コンテナー]** ページに移動します。すべてのボリューム コンテナーと古いデバイスのボリュームの一覧が表示されます。
 
+![ビデオ](./media/storsimple-device-failover-disaster-recovery/Video_icon.png) **ビデオ**
+
+フェールオーバーした物理デバイスをクラウドの仮想デバイスに復元する方法について説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-and-disaster-recovery/)を参照してください。
+
 ## ビジネス継続性障害復旧 (BCDR)
 
 ビジネス継続性障害復旧 (BCDR) シナリオは、Azure データセンター全体が機能を停止したときに発生します。このような状況が発生すると、StorSimple Manager サービスと関連する StorSimple デバイスに影響が及ぶ可能性があります。
 
 障害が発生する直前に登録された StorSimple デバイスがある場合は、これらの StorSimple デバイスを工場出荷時の設定に戻すことが必要になることがあります。障害の発生後、StorSimple デバイスはオフラインとして表示されます。このポータルから StorSimple デバイスを削除した後、設定を工場出荷時の設定に戻し、再度登録する必要があります。
+
 
 ## 次のステップ
 
@@ -142,7 +147,7 @@
 - [StorSimple デバイスの非アクティブ化](storsimple-deactivate-and-delete-device.md#deactivate-a-device)
 - [StorSimple デバイスの削除](storsimple-deactivate-and-delete-device.md#delete-a-device)
 
-StorSimple Manager サービスを使用してデバイスを管理する方法の詳細については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
+StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

@@ -1,3 +1,4 @@
+<!--author=alkohli last changed: 9/17/15-->
 
 #### StorSimple サービス登録キーを取得するには
 
@@ -17,6 +18,8 @@
 
 > [AZURE.NOTE]StorSimple Manager サービスに登録する必要があるすべてのデバイスの登録に、サービス登録キーを使用します。
 
- 
+![ビデオ](./media/storsimple-get-service-registration-key/Video_icon.png) **ビデオ**
 
-<!---HONumber=August15_HO8-->
+サービス登録キーの取得方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/get-the-service-registration-key/)を参照してください。
+
+<!---HONumber=Sept15_HO3-->

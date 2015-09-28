@@ -1,11 +1,11 @@
 <properties 
-	pageTitle="Azure AlwaysOn 可用性グループの構成 (PowerShell)"
+	pageTitle="Azure VM での AlwaysOn 可用性グループの構成 (PowerShell)"
 	description="PowerShell を使用して Azure AlwaysOn 可用性グループを作成します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar"/>
+	editor="monicar" />
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
@@ -13,9 +13,9 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="08/14/2015"
-	ms.author="jroth"/>
+	ms.author="jroth" />
 
-# Azure AlwaysOn 可用性グループの構成 (PowerShell)
+# Azure VM での AlwaysOn 可用性グループの構成 (PowerShell)
 
 >[AZURE.NOTE]GUI ベースの同じシナリオのチュートリアルについては、「[Azure AlwaysOn 可用性グループの構成 (GUI)](virtual-machines-sql-server-alwayson-availability-groups-gui.md)」を参照してください。
 
@@ -623,4 +623,4 @@ DC サーバーは、これで正常にプロビジョニングされました�
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

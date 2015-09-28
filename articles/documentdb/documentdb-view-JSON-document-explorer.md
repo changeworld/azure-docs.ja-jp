@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="06/10/2015"
+	ms.date="09/09/2015"
 	ms.author="stbaro"/>
 
 # DocumentDB Document Explorer を使用した JSON ドキュメントの表示、編集、作成、およびアップロード #
@@ -26,7 +26,7 @@
 -	Web ブラウザーを使用して DocumentDB ドキュメントのシステム プロパティを簡単に表示するにはどうすればよいか。
 -	Web ブラウザーを使用して DocumentDB へのドキュメントの一括インジェストを簡単に実行するにはどうすればよいか。
 
-##<a id="Launch"></a>Document Explorer の起動と操作##
+##<a id="Launch"></a>Document Explorer の起動##
 
 Document Explorer は、DocumentDB アカウント、データベース、およびコレクションのブレードのいずれからも起動することができます。
 
@@ -44,35 +44,6 @@ Document Explorer は、DocumentDB アカウント、データベース、およ
 
 	![Document Explorer のスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorerinitial.png)
 
-3. 既定では、Document Explorer は選択されたコレクション内の最初の最大 100 個 (作成日が早いもの順) のドキュメントを読み込みます。Document Explorer ブレードの下部にある **[さらに読み込む]** オプションをクリックすることで、(100 個単位で) 別のドキュメントを読み込むことができます。既定の動作を変更するには、Document Explorer ブレードの上部にある [設定] コマンドをクリックします。
-
-	![Document Explorer 設定ブレードのスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorersettings.png)
-
-
-4. 設定ブレードでは、ページごとに返す項目数を調整したり、WHERE 句を指定して Document Explorer グリッドで一致するドキュメントを読み込んだりすることができます。DocumentDB SQL 文法の詳細については、[こちら](documentdb-sql-query.md)をご覧ください。
-
-	![Document Explorer 設定ブレードのスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorersettings2.png)
-
-	> [AZURE.NOTE]Document Explorer 設定を変更したら、**[最新の除法に更新]** コマンドをクリックして、新しい設定を適用する必要があります。設定は、現在のブラウザー セッションでのみ維持されます。
-	
-5. **[データベース]** ボックスと **[コレクション]** ボックスを使用すると、Document Explorer を閉じて再度起動することなく、現在表示されているドキュメントが含まれるコレクションを簡単に変更できます。
-
-5. Document Explorer では、現在読み込まれているドキュメントのセットを ID プロパティでフィルター処理することもできます。その方法は、フィルター ボックスに入力するだけです。
-
-	![フィルターが強調表示された Document Explorer のスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorerfilter.png)
-
-	Document Explorer の一覧の結果は、指定された条件に基づいてフィルター処理されます。
-
-	![フィルターの結果が表示された Document Explorer のスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorerfilterresults.png)
-
-
-	> [AZURE.IMPORTANT]Document Explorer のフィルター機能では、現在読み込まれているドキュメントのみがフィルター処理されます。現在選択されているコレクションに対してクエリが実行されることはありません。
-
-6. Document Explorer に読み込まれたドキュメントの一覧を更新するには、ブレードの上部にある **[更新]** をクリックするだけです。
-
-	![Document Explorer の [最新の情報に更新] コマンドのスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorerrefresh.png)
-
-
 ##<a id="Create"></a>Document Explorer を使用したドキュメントの表示、作成、および編集##
 
 Document Explorer では、ドキュメントを簡単に作成、編集、および削除することができます。
@@ -87,7 +58,7 @@ Document Explorer では、ドキュメントを簡単に作成、編集、お�
 
 	> [AZURE.NOTE]"ID" プロパティを指定していない場合は、Document Explorer によって自動的に ID プロパティが追加され、ID 値として GUID が生成されます。
 
-- JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure テーブル ストレージ、またはその他の DocumentDB コレクションのデータが既にある場合は、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用して、データをすばやくインポートできます。
+- JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure テーブル ストレージ、Amazon DynamoDB、HBase、またはその他の DocumentDB コレクションのデータが既にある場合は、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用して、データをすばやくインポートできます。
 
 - 既存のドキュメントを編集するには、Document Explorer でそのドキュメントを選択し、自由に編集して **[保存]** をクリックするだけです。
 
@@ -115,6 +86,38 @@ Document Explorer では、ドキュメントを簡単に作成、編集、お�
 
 	> [AZURE.NOTE]タイムスタンプ (\_ts) プロパティは内部ではエポック時間として表現されますが、Document Explorer では、人間が読むことができる GMT 形式で値が表示されます。
 
+##<a id="Navigate"></a>Document Explorer のナビゲーション オプションと高度な設定##
+
+Document Explorer はさまざまなナビゲーション オプションと高度な設定を備えています。
+
+1. 既定では、Document Explorer は選択されたコレクション内の最初の最大 100 個 (作成日が早いもの順) のドキュメントを読み込みます。Document Explorer ブレードの下部にある **[さらに読み込む]** オプションをクリックすることで、(100 個単位で) 別のドキュメントを読み込むことができます。既定の動作を変更するには、Document Explorer ブレードの上部にある [設定] コマンドをクリックします。
+
+	![Document Explorer 設定ブレードのスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorersettings.png)
+
+
+2. 設定ブレードでは、ページごとに返す項目数を調整したり、WHERE 句を指定して Document Explorer グリッドで一致するドキュメントを読み込んだりすることができます。DocumentDB SQL 文法の詳細については、[こちら](documentdb-sql-query.md)をご覧ください。
+
+	![Document Explorer 設定ブレードのスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorersettings2.png)
+
+	> [AZURE.NOTE]Document Explorer 設定を変更したら、**[最新の除法に更新]** コマンドをクリックして、新しい設定を適用する必要があります。設定は、現在のブラウザー セッションでのみ維持されます。
+	
+3. **[データベース]** ボックスと **[コレクション]** ボックスを使用すると、Document Explorer を閉じて再度起動することなく、現在表示されているドキュメントが含まれるコレクションを簡単に変更できます。
+
+4. Document Explorer では、現在読み込まれているドキュメントのセットを ID プロパティでフィルター処理することもできます。その方法は、フィルター ボックスに入力するだけです。
+
+	![フィルターが強調表示された Document Explorer のスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorerfilter.png)
+
+	Document Explorer の一覧の結果は、指定された条件に基づいてフィルター処理されます。
+
+	![フィルターの結果が表示された Document Explorer のスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorerfilterresults.png)
+
+
+	> [AZURE.IMPORTANT]Document Explorer のフィルター機能では、現在読み込まれているドキュメントのみがフィルター処理されます。現在選択されているコレクションに対してクエリが実行されることはありません。
+
+5. Document Explorer に読み込まれたドキュメントの一覧を更新するには、ブレードの上部にある **[更新]** をクリックするだけです。
+
+	![Document Explorer の [最新の情報に更新] コマンドのスクリーンショット](./media/documentdb-view-JSON-document-explorer/documentexplorerrefresh.png)
+
 ##<a id="BulkAdd"></a>Document Explorer を使用したドキュメントの一括追加##
 
 Document Explorer では、1 つまたは複数の既存の JSON ドキュメントの一括インジェストをサポートしています。
@@ -137,7 +140,8 @@ Document Explorer では、1 つまたは複数の既存の JSON ドキュメン
 
 ##<a name="NextSteps"></a>次のステップ
 
-DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
+- DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
+
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

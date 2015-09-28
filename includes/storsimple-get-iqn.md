@@ -1,3 +1,4 @@
+<!--author=SharS last changed: 9/17/15-->
 
 #### Windows ホストの IQN を取得するには
 
@@ -9,4 +10,4 @@
 
 3. この文字列を保存します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

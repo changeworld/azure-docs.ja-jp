@@ -44,7 +44,7 @@ HDInsight を使用すると、さまざまなクラスターの種類を、異�
 
 [ZooKeeper](http://zookeeper.apache.org/) ノード (ZK) を追加して、ヘッド ノードのリーダー選定に使用すると、ワーカー ノードとゲートウェイ (GW) は、アクティブ ヘッド ノード (ヘッド ノード 0) が非アクティブになったときに 2 つ目のヘッド ノード (ヘッド ノード 1) にフェールオーバーするタイミングを認識できます。
 
-![HDInsight の Hadoop 実装における信頼性の高いヘッド ノード図。](http://i.imgur.com/jrUmrH4.png)
+![HDInsight の Hadoop 実装における信頼性の高いヘッド ノード図。](./media/hdinsight-high-availability/hadoop.high.availability.architecture.diagram.png)
 
 
 
@@ -98,4 +98,4 @@ SDK でも、同じような方法を使用します。SDK を使用したクラ
 - [RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)
 - [HDInsight .NET SDK の使用](hdinsight-provision-clusters.md#sdk)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

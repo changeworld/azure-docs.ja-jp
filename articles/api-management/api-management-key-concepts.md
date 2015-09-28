@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/19/2015" 
+	ms.date="09/15/2015" 
 	ms.author="sdanie"/>
 
 #API Management とは
@@ -114,4 +114,4 @@ API Management の全ポリシー一覧については、「[Policy reference (�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

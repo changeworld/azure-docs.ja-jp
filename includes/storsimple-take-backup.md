@@ -1,3 +1,4 @@
+<!--author=alkohli last changed: 9/17/15-->
 
 ### バックアップを作成するには
 
@@ -24,4 +25,8 @@
 
 デバイスの構成が完了しました。
 
-<!---HONumber=August15_HO6-->
+![ビデオ](./media/storsimple-take-backup/Video_icon.png) **ビデオ**
+
+StorSimple のバックアップ方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/take-a-storsimple-backup/)を参照してください。
+
+<!---HONumber=Sept15_HO3-->

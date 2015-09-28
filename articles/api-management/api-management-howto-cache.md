@@ -1,5 +1,5 @@
 <properties
-	pageTitle="キャッシュを追加して Azure API Management のパフォーマンスを向上させる"
+	pageTitle="キャッシュを追加して Azure API Management のパフォーマンスを向上させる | Microsoft Azure"
 	description="API Management のサービスの呼び出しで、遅延、帯域幅の消費、Web サービスの負荷を改善させる方法について説明します。"
 	services="api-management"
 	documentationCenter=""
@@ -12,7 +12,7 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article" 
+	ms.topic="get-started-article"
 	ms.date="08/05/2015"
 	ms.author="sdanie"/>
 
@@ -22,10 +22,9 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 このガイドでは、API の応答のキャッシュを追加して、サンプルの Echo API 操作のポリシーを構成する方法を示します。その後は、開発者ポータルで操作を呼び出してキャッシュの動作を確認することができます。
 
-
 ## 前提条件
 
-このガイドの手順を実行するには、API Management サービスのインスタンスに API と成果物を構成しておく必要があります。まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の使用][]に関するチュートリアルの [API Management サービス インスタンスの作成][]に関するセクションを参照してください。
+このガイドの手順を実行するには、API Management サービスのインスタンスに API と成果物を構成しておく必要があります。まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
 
 ## <a name="configure-caching"> </a>キャッシュ用の操作の構成
 
@@ -41,11 +40,11 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 ![Echo API][api-management-echo-api]
 
-**[操作]** タブを選択します。**[操作]** ボックスの一覧の **[GET Resource (cached)]** 操作をクリックします。
+**[操作]** タブをクリックし、**[操作]** ボックスの一覧の **[GET Resource (cached)]** 操作をクリックします。
 
 ![Echo API operations][api-management-echo-api-operations]
 
-**[キャッシュ]** タブを選択して、この操作のキャッシュ設定を表示します。
+**[キャッシュ]** タブをクリックして、この操作のキャッシュ設定を表示します。
 
 ![Caching tab][api-management-caching-tab]
 
@@ -63,7 +62,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 **[キャッシュ]** タブで操作に対してキャッシュ設定を構成すると、操作に対してキャッシュ ポリシーが追加されます。これらのポリシーは、ポリシー エディターで表示および編集できます。
 
-左側の **[API Management]** メニューの **[ポリシー]** をクリックし、**[操作]** ボックスの一覧の **[Echo API / GET Resource (cached)]** を選択します。
+左側の **[API Management]** メニューの **[ポリシー]** をクリックし、**[操作]** ドロップダウン リストの **[Echo API / GET Resource (cached)]** を選択します。
 
 ![Policy scope operation][api-management-operation-dropdown]
 
@@ -88,7 +87,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 		</outbound>
 	</policies>
 
->ポリシー エディターでキャッシュ ポリシーに加えた変更は、操作の **[キャッシュ]** タブに反映されます (また、その逆の操作を行った場合も同様に変更が反映されます)。
+>[AZURE.NOTE]ポリシー エディターでキャッシュ ポリシーに加えた変更は、操作の **[キャッシュ]** タブに反映されます (また、その逆の操作を行った場合も同様に変更が反映されます)。
 
 ## <a name="test-operation"> </a>操作の呼び出しとキャッシュのテスト
 
@@ -112,7 +111,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 **[param1]** と **[param2]** については既定値のままにしておきます。
 
-**[サブスクリプション キー]** ボックスの一覧で目的のキーを選択します。アカウントのサブスクリプションが 1 つしかない場合は自動的にそのサブスクリプションが選択されます。
+**[サブスクリプション キー]** ドロップダウン リストで目的のキーを選択します。アカウントのサブスクリプションが 1 つしかない場合は自動的にそのサブスクリプションが選択されます。
 
 **[要求ヘッダー]** ボックスに「**sampleheader:value1**」と入力します。
 
@@ -148,17 +147,18 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
+[API Management インスタンスの作成]: api-management-get-started.md
 [Azure API Management の使用]: api-management-get-started.md
 [Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
 
-[キャッシュ ポリシー]: https://msdn.microsoft.com/library/azure/dn894081.aspx
-[Azure API Management ポリシー リファレンス]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+[Azure API Management ポリシー リファレンス]: https://msdn.microsoft.com/library/azure/dn894081.aspx
+[キャッシュ ポリシー]: https://msdn.microsoft.com/library/azure/dn894086.aspx
 
-[API Management サービス インスタンスの作成]: api-management-get-started.md#create-service-instance
+[Azure API Management の使用]: api-management-get-started.md#create-service-instance
 
 [Configure an operation for caching]: #configure-caching
 [Review the caching policies]: #caching-policies
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

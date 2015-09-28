@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Redis キャッシュのプロビジョニング" 
+	pageTitle="Redis Cache のプロビジョニング" 
 	description="Azure リソース マネージャー テンプレートを使用し、Redis Cache をデプロイします。" 
 	services="redis-cache" 
 	documentationCenter="" 
@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2015" 
+	ms.date="09/15/2015" 
 	ms.author="tomfitz"/>
 
 # テンプレートを使用して Redis Cache を作成する
 
-このトピックでは、Azure Redis Cache をデプロイする Azure リソース マネージャーのテンプレートを作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+このトピックでは、Azure Redis Cache をデプロイする Azure リソース マネージャーのテンプレートを作成する方法について説明します。キャッシュを既存のストレージ アカウントで使用することで、診断データを保持することができます。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+
+現時点では、診断設定は、サブスクリプションの同じリージョン内のすべてのキャッシュで共有されます。領域内の 1 つのキャッシュを更新すると、領域内の他のすべてのキャッシュに反映されます。
 
 テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
@@ -26,11 +28,11 @@
 
 ## デプロイ対象
 
-このテンプレートでは、Azure Redis Cache をデプロイします。
+このテンプレートでは、診断データ用に既存のストレージ アカウントを使用する Azure Redis Cache をデプロイします。
 
-展開を自動的に実行するには、次のボタンをクリックします。
+デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
-[![Azure への展開](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## パラメーター
 
@@ -48,6 +50,34 @@ Redis Cache の場所。最適なパフォーマンスのために、アプリ�
       "type": "string"
     }
 
+### diagnosticsStorageAccountName
+
+診断用に使用する既存のストレージ アカウントの名前。
+
+    "diagnosticsStorageAccountName": {
+      "type": "string"
+    }
+
+### enableNonSslPort
+
+非 SSL ポート経由のアクセスを許可するかどうかを示すブール値です。
+
+    "enableNonSslPort": {
+      "type": "bool"
+    }
+
+### diagnosticsStatus
+
+診断が有効かどうかを示す値です。ON または OFF を使用します。
+
+    "diagnosticsStatus": {
+      "type": "string",
+      "defaultValue": "ON",
+      "allowedValues": [
+            "ON",
+            "OFF"
+        ]
+    }
     
 ## デプロイ対象のリソース
 
@@ -56,23 +86,36 @@ Redis Cache の場所。最適なパフォーマンスのために、アプリ�
 Azure Redis Cache を作成します。
 
     {
-      "apiVersion": "2014-04-01-preview",
+      "apiVersion": "2015-08-01",
       "name": "[parameters('redisCacheName')]",
       "type": "Microsoft.Cache/Redis",
       "location": "[parameters('redisCacheLocation')]",
       "properties": {
-        "sku": {
-          "name": "[parameters('redisCacheSKU')]",
-          "family": "[parameters('redisCacheFamily')]",
-          "capacity": "[parameters('redisCacheCapacity')]"
-        },
+        "enableNonSslPort": "[parameters('enableNonSslPort')]",
         "redisVersion": "[parameters('redisCacheVersion')]",
-        "enableNonSslPort": true
-      }
+        "sku": {
+          "capacity": "[parameters('redisCacheCapacity')]",
+          "family": "[parameters('redisCacheFamily')]",
+          "name": "[parameters('redisCacheSKU')]"
+        }
+      },
+        "resources": [
+          {
+            "apiVersion": "2014-04-01",
+            "type": "diagnosticSettings",
+            "name": "service", 
+            "location": "[parameters('redisCacheLocation')]",
+            "dependsOn": [
+              "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
+            ],
+            "properties": {
+              "status": "[parameters('diagnosticsStatus')]",
+              "storageAccountName": "[parameters('diagnosticsStorageAccountName')]",
+              "retention": "30"
+            }
+          }
+        ]
     }
-     
-
-
 
 ## デプロイを実行するコマンド
 
@@ -86,4 +129,4 @@ Azure Redis Cache を作成します。
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

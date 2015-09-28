@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Active Directory との統合方法"
-	description="Azure Active Directory との統合に関する利点とリソースについてのガイドです。"
-	services="active-directory"
-	documentationCenter="dev-center-name"
-	authors="msmbaldwin"
-	manager="mbaldwin"
-	editor=""/>
+   description="Azure Active Directory との統合に関する利点とリソースについてのガイドです。"
+   services="active-directory"
+   documentationCenter="dev-center-name"
+   authors="msmbaldwin"
+   manager="mbaldwin"
+   editor=""/>
 
 <tags
    ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="08/25/2015"
-	ms.author="mbaldwin"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="08/25/2015"
+   ms.author="mbaldwin"/>
 
 # Azure Active Directory との統合
 
@@ -34,9 +34,9 @@ Azure Active Directory は、クラウド アプリケーションに関する�
 
 ### ユーザーの参照、ユーザーのプロビジョニングの管理、およびアプリケーションへのアクセスの制御
 
-**ディレクトリのユーザーを参照します。** 他のユーザーを招待したりアクセスを許可するときは、Graph API を使用して組織内のユーザーを検索して参照できます。電子メール アドレスを入力する必要はありません。ユーザーは、組織の詳細な階層の表示も含めて、使い慣れたアドレス帳スタイルのインターフェイスを使用して参照できます。[Graph API](https://msdn.microsoft.com/library/azure/hh974476.aspx) に関する詳細を参照してください。
+**ディレクトリのユーザーを参照します。** 他のユーザーを招待したりアクセスを許可するときは、Graph API を使用して組織内のユーザーを検索して参照できます。電子メール アドレスを入力する必要はありません。ユーザーは、組織の詳細な階層の表示も含めて、使い慣れたアドレス帳スタイルのインターフェイスを使用して参照できます。[Graph API](active-directory-graph-api.md) に関する詳細を参照してください。
 
-**顧客が既に管理している Active Directory のグループと配布リストを再利用します。** Azure AD には、顧客が電子メールの配布やアクセスの管理に既に使用しているグループが含まれます。Graph API を使用して、これらのグループを再利用できます。顧客がアプリケーションで別のグループ セットを作成して管理する必要はありません。グループの情報は、サインイン トークンでアプリケーションにも送信できます。[Graph API](https://msdn.microsoft.com/library/azure/hh974476.aspx) に関する詳細を参照してください。
+**顧客が既に管理している Active Directory のグループと配布リストを再利用します。** Azure AD には、顧客が電子メールの配布やアクセスの管理に既に使用しているグループが含まれます。Graph API を使用して、これらのグループを再利用できます。顧客がアプリケーションで別のグループ セットを作成して管理する必要はありません。グループの情報は、サインイン トークンでアプリケーションにも送信できます。[Graph API](active-directory-graph-api.md) に関する詳細を参照してください。
 
 **Azure AD を使用して、アプリケーションにアクセスできるユーザーを制御します。** Azure AD の管理者およびアプリケーション所有者は、特定のユーザーおよびグループにアプリケーションへのアクセスを割り当てることができます。Graph API を使用すると、このリストを読み取ったり、リストを使用してアプリケーション内のリソースやアクセスのプロビジョニングとプロビジョニング解除を制御したりできます。
 
@@ -72,7 +72,7 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 **異常なサインインの検出。** Azure AD は 1 日に 10 億以上のサインインを処理しながら、機械学習アルゴリズムを使用して疑わしいアクティビティを検出し、可能性のある問題を IT 管理者に通知します。Azure AD のサインインをサポートすることにより、アプリケーションでこの保護を利用できます。[Azure Active Directory アクセス レポート](active-directory-view-access-usage-reports.md)の表示に関する詳細を参照してください。
 
-**条件付きアクセス。** 多要素認証に加えて、管理者はアプリケーションにサインインするユーザーに特定の条件を満たすことを要求できます。設定可能な条件としては、クライアント デバイスの IP アドレスの範囲、指定したグループにおけるメンバーシップ、アクセスに使用されるデバイスの状態などがあります。[Azure Active Directory の条件付きアクセス](https://msdn.microsoft.com/library/azure/dn906873.aspx)に関する詳細を参照してください。
+**条件付きアクセス。** 多要素認証に加えて、管理者はアプリケーションにサインインするユーザーに特定の条件を満たすことを要求できます。設定可能な条件としては、クライアント デバイスの IP アドレスの範囲、指定したグループにおけるメンバーシップ、アクセスに使用されるデバイスの状態などがあります。[Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)に関する詳細を参照してください。
 
 ### 簡単な開発
 
@@ -90,4 +90,4 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 [Azure AD を使用したユーザーのサインイン](active-directory-authentication-scenarios.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

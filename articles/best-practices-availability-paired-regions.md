@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/07/2015"
+    ms.date="09/16/2015"
     ms.author="robb"/>
 
 # Azure リージョン ペアによる可用性の向上
@@ -84,4 +84,4 @@ Azure は、世界中の複数の geo で動作します。Azure の geo とは�
 
 ![9Orange](./media/best-practices-availability-paired-regions/9Orange.png) **データ常駐** – リージョンは、税および法の執行を目的としたデータ常駐要件を満たすために、ペアとして同じ geo に常駐しています (ブラジル南部を除く)。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

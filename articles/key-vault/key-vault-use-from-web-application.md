@@ -6,7 +6,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.date="09/16/2015" 
 	ms.author="adhurwit"/>
 
 # Web アプリケーションからの Azure Key Vault の使用 #
@@ -152,6 +152,11 @@ Azure AD アプリケーションを認証する別の方法は、クライア�
 	PS C:\> $adapp = New-AzureADApplication -DisplayName "KVWebApp" -HomePage "http://kvwebapp" -IdentifierUris "http://kvwebapp" -KeyValue $credValue -KeyType "AsymmetricX509Cert" -KeyUsage "Verify" -StartDate $now -EndDate $yearfromnow
 	
 	PS C:\> $sp = New-AzureADServicePrincipal -ApplicationId $adapp.ApplicationId
+	
+	PS C:\> Set-AzureKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName $sp.ServicePrincipalName -PermissionsToKeys all -ResourceGroupName 'contosorg'
+	
+	# get the thumbprint to use in your app settings
+	PS C:\>$x509.Thumbprint
 
 これらのコマンドを実行すると、Azure AD でアプリケーションを確認できます。最初にアプリケーションが表示されない場合は、"自社で使用するアプリケーション" ではなく "自社が所有するアプリケーション" で検索します。
 
@@ -238,4 +243,4 @@ Web アプリに証明書を追加する方法の詳細については、[Azure 
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

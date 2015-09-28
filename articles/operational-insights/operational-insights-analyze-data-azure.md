@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/05/2015"
+   ms.date="09/10/2015"
    ms.author="banders"/>
 # Microsoft Azure でサーバーからデータを分析する
 
@@ -269,4 +269,4 @@ Azure PowerShell を使用すると、Azure Storage に書き込むイベント�
 
 [プロキシとファイアウォール設定の構成 (省略可能)](../operational-insights-proxy-filewall.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

@@ -1,6 +1,6 @@
 
 <properties
-    pageTitle="Azure RemoteApp で使用する Azure VNET の検証"
+    pageTitle="Azure RemoteApp で使用する Azure VNET の検証 | Microsoft Azure"
     description="Azure VNET を Azure RemoteApp で使用する準備が整っていることを確認する方法を説明します。"
     services="remoteapp"
     documentationCenter=""
@@ -33,8 +33,9 @@ Azure VNET を検証するには、次の手順を行います。
 
 エンド ツー エンドのハイブリッド コレクションのワークフローの詳細については、次の記事を参照してください。
 
+- [Azure RemoteApp の仮想ネットワークを計画する方法](remoteapp-planvpn.md)
 - [RemoteApp のハイブリッド デプロイの作成方法](remoteapp-create-hybrid-deployment.md)
-- [Azure RemoteApp コレクションの Azure 仮想ネットワークへのデプロイ方法 (ExpressRoute のサポートを利用)](http://blogs.msdn.com/b/rds/archive/2015/04/23/deploy-azure-remoteapp-collection-to-your-azure-virtual-network-with-support-for-expressroute.aspx)
+- [Azure RemoteApp コレクションの Azure Virtual Network へのデプロイ方法 (ExpressRoute のサポートを利用)](http://blogs.msdn.com/b/rds/archive/2015/04/23/deploy-azure-remoteapp-collection-to-your-azure-virtual-network-with-support-for-expressroute.aspx)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

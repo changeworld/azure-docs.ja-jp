@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple バックアップ カタログの管理 | Microsoft Azure"
-	description="StorSimple Manager サービスの [バックアップ カタログ] ページを使用して、ボリュームのバックアップ セットを一覧表示、選択、および削除する方法を説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple Manager サービスの [バックアップ カタログ] ページを使用して、ボリュームのバックアップ セットを一覧表示、選択、および削除する方法を説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="SharS"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="09/01/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/14/2015"
+   ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用してバックアップ カタログを管理する
 
@@ -113,6 +113,8 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
 ## 次のステップ
 
-[バックアップ カタログ] ページを使用して[バックアップ セットからデバイスを復元する](storsimple-restore-from-backup-set.md)方法について説明します。
+- [[バックアップ カタログ] ページを使用してバックアップ セットからデバイスを復元する方法](storsimple-restore-from-backup-set.md)。
 
-<!---HONumber=September15_HO1-->
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
+
+<!---HONumber=Sept15_HO3-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/27/2015"
+   ms.date="09/15/2015"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用してボリュームを複製する
@@ -80,14 +80,20 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
 1 年前の PowerPoint プレゼンテーション ファイルを回復する場合を考えます。IT 管理者はその期間の特定のバックアップを識別し、ボリュームをフィルター処理します。次に管理者はボリュームを複製し、ユーザーが探している特定のファイルを見つけ、ユーザーに提供します。このシナリオでは、一時的な複製を使用します。
  
+![ビデオ](./media/storsimple-clone-volume/Video_icon.png) **ビデオ**
+
+StorSimple の複製機能と復元機能を使用して、削除されたファイルを回復する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/)を参照してください。
+
 ### 永続的な複製による運用環境でのテスト
 
 運用環境でテストのバグを確認する場合を考えます。運用環境でボリュームの複製を作成します。パフォーマンスを向上させるために、この複製のクラウド スナップショットの作成が必要です。複製されたボリュームは独立しており、パフォーマンスの高速化につながります。このシナリオでは、永続的な複製を使用します。
 
-## 次のステップ
-[バックアップ セットからの StorSimple ボリュームの復元](storsimple-restore-from-backup-set.md)方法について理解します。
 
+## 次のステップ
+- [バックアップ セットからの StorSimple ボリュームの復元方法](storsimple-restore-from-backup-set.md)
+
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
  
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="SQL Database V12 へのアップグレードの計画と準備をする"
+	pageTitle="SQL Database V12 へのアップグレードを計画する | Microsoft Azure"
 	description="Azure SQL Database V12 へのアップグレードに関連する準備作業と制限について説明します。"
 	services="sql-database"
 	documentationCenter=""
@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/15/2015"
+	ms.date="09/16/2015"
 	ms.author="genemi"/>
 
 
 # SQL Database V12 へのアップグレードの計画と準備をする
 
 
-このトピックでは、Azure SQL Database を V11 から V12 ([一部の地域ではプレビュー](sql-database-v12-whats-new.md#V12AzureSqlDbPreviewGaTable)) にアップグレードするために必要な、計画と準備について説明します。
+このトピックでは、Azure SQL Database をバージョン V11 から V12 にアップグレードするために必要な、計画と準備について説明します。
 
 
 新しい [Azure プレビュー ポータル](http://portal.azure.com/)を使用して、V12 へのアップグレードをサポートできます。
@@ -107,6 +107,18 @@ V11 Azure SQL Database が Web または Business データベースのいずれ
 アップグレードが完了したら、データベースを構成して、Geo レプリケーションを再度使用できます。
 
 
+### Azure VM 上のクライアント
+
+
+クライアントが Azure 仮想マシン (VM) で実行されるとき、クライアント プログラムが SQL Database V12 に接続する場合、VM で次のポート範囲を開く必要があります。
+
+- 11000 ～ 11999
+- 14000 ～ 14999
+
+
+SQL Database V12 のポートの詳細については、[こちら](sql-database-develop-direct-route-ports-adonet-v12.md)を参照してください。これらのポートは、SQL Database V12 のパフォーマンスの強化に必要です。
+
+
 ##<a id="limitations"></a>V12 へのアップグレード中とアップグレード後の制限事項
 
 
@@ -138,7 +150,7 @@ Visual Studio 2013 (VS2013) で Azure SQL Database に接続することをお�
 - オンラインまたはオフラインでのデータベースの開発。
 
 
-代わりに、VS2013 の無償ですべての機能を備えたバージョンである [Visual Studio Community 2013](https://www.visualstudio.com/ja-jp/news/vs2013-community-vs.aspx/) で接続することもできます。
+代わりに、VS2013 の無償ですべての機能を備えたバージョンである [Visual Studio Community 2013](https://www.visualstudio.com/ja-JP/news/vs2013-community-vs.aspx/) で接続することもできます。
 
 
 以前の Azure ポータルでは、データベース ページで **[Visual Studio で開く]** をクリックしてコンピューター上で VS2013 を起動し、Azure SQL Database に接続できます。
@@ -166,7 +178,7 @@ V11 データベースは、V12 へのアップグレード中も、引き続き
 | :--- | :--- |
 | V11 に戻すことはできない | 置き換えによるアップグレードの後は、元に戻したり取り消したりすることはできません。 |
 | Web または Business 階層 | アップグレードを開始すると、新しい V12 データベースでは Web や Business サービス階層を認識したり、受け付けたりできなくなります。 |
-| Azure ポータルの価格レベル カードに記載されていない 50% 割引 | プレビュー期間中は、最新の Azure SQL Database プレビュー更新プログラム (V12) に登録したデータベースに対する 50% のプレビュー割引* があります。プレビュー ポータルのサービス価格レベル ブレードに割引が表示されていない場合でも、割引は強制的に適用されます。<br/><br/> 50% 割引は、すべての地理的リージョンで **2015 年 3 月 31 日**まで有効です。この期日にすべてのリージョンで期限切れになります。割引は、一般公開 (GA) 状態が発表されていないリージョンでも有効です。<br/><br/>(* 最新の Azure SQL Database 更新プログラム V12 機能の使用は、ライセンス契約 (例: Enterprise Agreement、Microsoft Azure 契約、マイクロソフト オンライン サブスクリプション契約) に定められたプレビューの規定に従うものとします。また、[Microsoft Azure プレビューの追加使用条件](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)が適用される場合があります。プレビュー期間中は、このプレビューに登録したすべてのデータベースに対して、Microsoft (または該当する場合は販売店) による課金が行われます。料金は一般公開 (GA) 段階の半額となっており、50% のプレビュー割引で提供しています。プレビュー期間とそれに伴うプレビュー料金割引が終了する 30 日前に、Microsoft からメールによる通知をお送りします。) |
+
 
 
 ### V12 へのアップグレード*後*のエクスポートとインポート
@@ -244,4 +256,4 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 [Subheading 1]: #subheading-1
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

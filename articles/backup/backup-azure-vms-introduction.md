@@ -3,7 +3,7 @@
 	description="Azure Backup サービスを使用した Azure 仮想マシンのバックアップの概要"
 	services="backup"
 	documentationCenter=""
-	authors="aashishr"
+	authors="trinadhk"
 	manager="shreeshd"
 	editor=""/>
 
@@ -122,4 +122,4 @@ Azure 仮想マシンのバックアップを開始する前に、Azure VM エ�
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

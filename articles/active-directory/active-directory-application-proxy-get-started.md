@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="rkarlin"
-	manager="terrylan"
+	manager="msStevenPo"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2015"
+	ms.date="09/09/2015"
 	ms.author="rkarlin"/>
 
 # オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法
@@ -46,14 +46,14 @@ Azure AD Basic または Azure AD Premium サブスクリプションに加え�
 アプリケーション プロキシを使ってできることは他にもたくさんあります。
 
 
-- [独自のドメイン名でアプリケーションを発行する](https://msdn.microsoft.com/library/azure/mt210927.aspx)
-- [シングル サインオンを有効にする](https://msdn.microsoft.com/library/azure/dn879065.aspx)
-- [要求に対応するアプリケーションを利用する](https://msdn.microsoft.com/library/azure/mt210926.aspx)
-- [条件付きアクセスを有効にする](https://msdn.microsoft.com/library/azure/dn931796.aspx)
+- [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
+- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
+- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
+- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 
 
 ### アプリケーション プロキシに関するその他の情報
-- [オンライン ヘルプ](https://msdn.microsoft.com/library/azure/dn768219.aspx)
+- [オンライン ヘルプ](active-directory-application-proxy-enable.md)
 - [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
 - [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
@@ -61,4 +61,4 @@ Azure AD Basic または Azure AD Premium サブスクリプションに加え�
 * [Azure への組織としてのサインアップ](../sign-up-organization.md)
 * [Azure ID](../fundamentals-identity.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

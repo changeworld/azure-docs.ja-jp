@@ -2,24 +2,27 @@
 	pageTitle="Azure App Service と、それが既存の Azure サービスに与える影響" 
 	description="新しい Azure App Service とその機能が Azure の既存のサービスにどのように影響するかを説明します。" 
 	authors="yochayk" 
+	writer="yochayk" 
 	editor="yochayk" 
 	manager="nirma" 
 	services="app-service\web" 
 	documentationCenter=""/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/24/2015" 
+	ms.date="09/15/2015" 
 	ms.author="yochayk"/>
 
 
 # Azure App Service と既存の Azure サービス
 
 この記事では、複数の Azure サービスを新しい統合型サービスの [Azure App Service](http://azure.microsoft.com/services/app-service/) に統合するための変更の一環である、既存の Azure サービスへの変更について概要を説明します。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 概要 
 
@@ -77,7 +80,7 @@ App Service では、[Websites](http://azure.microsoft.com/services/websites/)�
 <p><li><a href="http://azure.microsoft.com/services/app-service/logic/">Logic Apps の詳細についてはこちら</a>をご覧ください。</p></td>
 </tr>
 <tr class="odd">
-<td align="left">Azure BizTalk サービス</td>
+<td align="left">Azure BizTalk Services</td>
 <td align="left">BizTalk API Apps</td>
 <td align="left">
 <li><p>BizTalk Services はスタンドアロン サービスとして引き続き利用でき、現在も完全なサポートが受けられます。</p>
@@ -90,4 +93,4 @@ App Service では、[Websites](http://azure.microsoft.com/services/websites/)�
 詳細については、「[App Service のドキュメント](http://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

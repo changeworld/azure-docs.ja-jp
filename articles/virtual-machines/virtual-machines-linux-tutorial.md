@@ -303,9 +303,6 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 
 - [Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする](virtual-machines-linux-script-lamp.md)
 
-- [Azure VM 構成設定について](http://msdn.microsoft.com/library/azure/dn763935.aspx)
-
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

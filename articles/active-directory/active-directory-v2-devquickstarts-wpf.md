@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 | Microsoft Azure"
+	pageTitle="アプリ モデル v2.0 .NET ネイティブ アプリ | Microsoft Azure"
 	description="サインインに個人の Microsoft アカウントと職場/学校アカウントの両方を使用する .NET ネイティブ アプリを構築する方法を説明します。"
 	services="active-directory"
 	documentationCenter=""
@@ -10,10 +10,10 @@
 <tags
 	ms.service="active-directory"
 	ms.workload="identity"
-	ms.tgt_pltfrm="na"
+  ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="09/11/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: Windows デスクトップ アプリへのサインインの追加
@@ -50,7 +50,7 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 ## 2. ADAL のインストールと構成
 マイクロソフトへのアプリの登録が完了したら、ADAL をインストールし、自分の ID 関連コードを記述できます。ADAL が v2.0 エンドポイントと通信できるようにするには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
 
--	最初に、パッケージ マネージャー コンソールを使用して、ADAL を TodoListClient プロジェクトに追加します。
+-    最初に、パッケージ マネージャー コンソールを使用して、ADAL を TodoListClient プロジェクトに追加します。
 
 ```
 PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoListClient -IncludePrerelease 
@@ -247,4 +247,4 @@ ADAL では、個人用アカウントと職場アカウントの両方を使用
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!------HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

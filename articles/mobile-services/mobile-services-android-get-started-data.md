@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="09/04/2015" 
+	ms.date="09/16/2015" 
 	ms.author="ricksal"/>
 
 # 既存の Android アプリへの Mobile Services の追加 (JavaScript バックエンド)
@@ -156,4 +156,4 @@ Azure Mobile Services Android SDK の前のバージョンで使用されてい�
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

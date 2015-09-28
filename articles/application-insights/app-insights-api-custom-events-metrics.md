@@ -74,10 +74,9 @@ TelemetryClient のインスタンスの作成 (Web ページの JavaScript を�
 
     private TelemetryClient telemetry = new TelemetryClient();
 
-Web アプリケーションの要求ごとに、あるいは他のアプリケーションのセッションごとに、`TelemetryClient` のインスタンスを 1 つ使用することをお勧めします。`TelemetryClient.Context.User.Id` などのプロパティを設定し、ユーザーとセッションを追跡できます。この情報はインスタンスから送信されたすべてのイベントに関連付けられます。
-
 TelemetryClient はスレッド セーフです。
 
+アプリのモジュールごとに `TelemetryClient` のインスタンスを使用することをお勧めします。たとえば、`TelemetryClient` は、着信 http 要求をレポートするために Web サービス内に 1 つ使用され、ビジネス ロジック イベントを報告するためにミドルウェア クラス内にもう 1 つ使用される場合があります。`TelemetryClient.Context.User.Id` などのプロパティを設定してユーザーとセッションを追跡したり、`TelemetryClient.Context.Device.Id` を設定してコンピューターを識別したりできます。この情報はインスタンスから送信されたすべてのイベントに関連付けられます。
 
 
 ## イベントを追跡する
@@ -197,7 +196,7 @@ Application Insights では、*カスタム イベント*はデータ ポイン�
 
 > [AZURE.NOTE]プロパティで個人を特定できる情報を記録しないように注意します。
 
-**メトリックを使用した場合**、メトリックス エクスプローラーを開き、カスタム グループからメトリックを選択します。
+**メトリックを使用した場合**、メトリック エクスプ ローラーを開き、カスタム グループからメトリックを選択します。
 
 ![メトリック エクスプローラーを開き、グラフを選択し、メトリックを選択する](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
 
@@ -739,7 +738,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
  * **SyntheticSource**: null 値または空ではない場合、この文字列は、要求元がロボットまたは Web テストとして識別されたことを示します。既定で、これはメトリックス エクスプ ローラーでの計算から除外されます。
 * **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。個々 の Track* 呼び出しでオーバーライドできます。
 * **Session** は、ユーザーのセッションを識別します。Id は、生成される値に設定されます。これは、ユーザーがしばらくの間アクティブ化されていない場合に、変更されます。
-* **User**: ユーザー情報。 
+* **ユーザー**: ユーザー情報。 
 
 
 ## <a name="default-properties"></a>コンテキストの初期化子 - すべてのテレメトリに既定のプロパティを設定する
@@ -901,4 +900,4 @@ ApplicationInsights.config で:
 
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

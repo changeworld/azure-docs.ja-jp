@@ -1,23 +1,25 @@
 <properties 
-	pageTitle="基幹業務アプリケーションのデプロイ | Microsoft Azure"
-	description="Azure では、Web ベースの高可用な基幹業務アプリケーションと SQL Server AlwaysOn 可用性グループを 5 つのフェーズでデプロイできます。"
+	pageTitle="基幹業務アプリケーションのデプロイ | Microsoft Azure" 
+	description="Azure では、Web ベースの高可用な基幹業務アプリケーションと SQL Server AlwaysOn 可用性グループを 5 つのフェーズでデプロイできます。" 
 	documentationCenter=""
-	services="virtual-machines"
-	authors="JoeDavies-MSFT"
-	manager="timlt"
+	services="virtual-machines" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="Windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/11/2015" 
 	ms.author="josephd"/>
 
 # Azure での高可用な基幹業務アプリケーションのデプロイ
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
 
 この記事には、Azure インフラストラクチャ サービスに、高可用なイントラネット専用のWeb ベース基幹業務アプリケーションと SQL Server AlwaysOn 可用性グループをデプロイするための詳細な手順へのリンクが含まれます。アプリケーションは、次のコンピューターでホストされます。
 
@@ -35,12 +37,12 @@
 この構成を次のフェーズでデプロイします。
 
 - [フェーズ 1: Azure を構成する](virtual-machines-workload-high-availability-LOB-application-phase1.md)。ストレージ アカウント、可用性セット、およびクロスプレミス仮想ネットワークを作成します。
-- [フェーズ2: ドメイン コントローラーを構成する](virtual-machines-workload-high-availability-LOB-application-phase2.md)。レプリカ Active Directory ドメイン サービス (AD DS) ドメイン コントローラーを作成して構成します。
+- [フェーズ 2: ドメイン コントローラーを構成する](virtual-machines-workload-high-availability-LOB-application-phase2.md)。レプリカ Active Directory ドメイン サービス (AD DS) ドメイン コントローラーを作成して構成します。
 - [フェーズ 3: SQL Server インフラストラクチャを構成する](virtual-machines-workload-high-availability-LOB-application-phase3.md)。SQL Server を実行する仮想マシンを作成して構成し、クラスターを作成して、SQL Server AlwaysOn 可用性グループを有効にします。
 - [フェーズ 4: Web サーバーを構成する](virtual-machines-workload-high-availability-LOB-application-phase4.md)。Web サーバー仮想マシンを 2 つ作成して構成します。
 - [フェーズ 5: アプリケーション データベースを SQL Server AlwaysOn 可用性グループに追加する](virtual-machines-workload-high-availability-LOB-application-phase5.md)。基幹業務アプリケーションのデータベースを準備し、SQL Server AlwaysOn 可用性グループに追加します。
 
-このデプロイは、[基幹アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)が付属し、最新の推奨事項が組み込まれるように設計されています。
+このデプロイメントは、[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)が付属し、最新の推奨事項が組み込まれるように設計されています。
 
 これは、規範となる、定義済みのアーキテクチャです。次の点に注意してください。
 
@@ -66,4 +68,4 @@ Azure の IT ワークロードの設計に関する詳細については、「[
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

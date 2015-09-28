@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Mobile Services での繰り返し発生するジョブのスケジュール" 
-	description="Azure Mobile Services Scheduler を使用して、モバイル アプリケーション用のジョブをスケジュールします。" 
+	pageTitle=".NET バックエンド モバイル サービスのバックエンド タスクのスケジュール | Microsoft Azure"
+	description="Azure Mobile Services のスケジューラを使用し、日程に基づいて実行される .NET バックエンド ジョブを定義します。"
 	services="mobile-services" 
 	documentationCenter="" 
 	authors="ggailey777" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="07/21/2015" 
+	ms.date="09/14/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services での繰り返し発生するジョブのスケジュール 
 
-> [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(Any | .NET)](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
-- [(Any | Javascript)](mobile-services-schedule-recurring-tasks.md)
+> [AZURE.SELECTOR]
+- [.NET backend](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
+- [Javascript backend](mobile-services-schedule-recurring-tasks.md)
  
 このトピックでは、管理ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
@@ -100,7 +100,7 @@
 
 1. ScheduledJobs フォルダーを展開し、SampleJob.cs プロジェクト ファイルを開きます。
 
-	**ScheduledJob** から継承されたこのクラスは、スケジュール可能なジョブを表し、そのジョブは Azure の管理ポータルで定期的なスケジュールで、またはオンデマンドで実行されます。
+	**ScheduledJob** から継承されたこのクラスは、スケジュール可能なジョブを表し、そのジョブは Microsoft Azure の管理ポータルで定期的なスケジュールで、またはオンデマンドで実行されます。
 
 2. SampleJob.cs の内容を次のコードに置き換えます。
  
@@ -213,7 +213,7 @@
 		    }
 		}
 
-	上記のコードで、文字列 _todolistService_ と _todolistContext_ を、ダウンロードしたプロジェクトの名前空間と DbContext (それぞれ *mobile&\#95;service&\#95;name*Service と *mobile&\#95;service&\#95;name*Context) に置き換える必要があります。
+	上記のコードで、文字列 _todolistService_ と _todolistContext_ を、ダウンロードしたプロジェクトの名前空間と DbContext (それぞれ *mobile&#95;service&#95;name*Service と *mobile&#95;service&#95;name*Context) に置き換える必要があります。
    	
 	上記のコードで、**ExecuteAsync** オーバーライド メソッドは保存された資格情報を使用して Twitter のクエリ API を呼び出し、`#mobileservices` というハッシュタグを含む最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
@@ -241,17 +241,17 @@
 
 ##<a name="register-job"></a>サービスを発行して新しいジョブを登録する 
 
-このジョブを **スケジューラ** タブ内に登録する必要があります。その結果、定義したスケジュールに従って、Mobile Services がこのジョブを実行できるようになります。
+このジョブを **Scheduler** タブ内に登録する必要があります。その結果、定義したスケジュールに従って、Mobile Services がこのジョブを実行できるようになります。
 
 3. モバイル サービス プロジェクトを Azure に対して再発行します。 
 
-4. [Azure の管理ポータル]で、[モバイル サービス] をクリックして、アプリケーションをクリックします。
+4. [Microsoft Azure 管理ポータル]で、[モバイル サービス] をクリックして、アプリケーションをクリックします。
 
-2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。
+2. **[Scheduler]** タブをクリックし、**[作成]** をクリックします。
 
     >[AZURE.NOTE]モバイル サービスを<em> Free </em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
 
-3. [スケジューラ] ダイアログ ボックスで、**[ジョブ名]** に「_Sample_」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。
+3. [Scheduler] ダイアログ ボックスで、**[ジョブ名]** に「_Sample_」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。
    
    	![][4]
 
@@ -263,7 +263,7 @@
 
 	>[AZURE.NOTE]引き続き POST 要求を使用して、スケジュールされたジョブを開始することができます。ただし、認証の既定はユーザーを対象にしており、要求のヘッダーにアプリケーション キーを含める必要があることを意味します。
 
-4. (省略可能) [Azure の管理ポータル]で、モバイル サービスに関連付けられたデータベースの [管理] をクリックします。
+4. (省略可能) [Microsoft Azure 管理ポータル]で、モバイル サービスに関連付けられたデータベースの [管理] をクリックします。
 
     ![][6]
 
@@ -294,10 +294,10 @@
 [9]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/mobile-service-try-this-out.png
 
 <!-- URLs. -->
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
 [Register your apps for Twitter login with Mobile Services]: mobile-services-how-to-register-twitter-authentication.md
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 [LINQ to Twitter の CodePlex プロジェクトに関するページ]: http://linqtotwitter.codeplex.com/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

@@ -5,15 +5,15 @@
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar"/>
+	editor="monicar" />
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/11/2015"
-	ms.author="jroth"/>
+	ms.date="09/16/2015"
+	ms.author="jroth" />
 
 # Azure での AlwaysOn 可用性グループの ILB リスナーの構成
 
@@ -35,13 +35,11 @@ Azure での ILB を使用した可用性グループ リスナーに関する�
 
 - 可用性グループリスナーは、クラウド サービスごとに 1 つのみサポートされます。これは、リスナーがクラウド サービスの VIP アドレスまたは内部ロード バランサーの VIP アドレスのいずれかを使用するように構成されているためです。Azure は、特定のクラウド サービスで複数の VIP アドレスの作成をサポートするようになりましたが、この制限は引き続き有効であることに注意してください。
 
->[AZURE.NOTE]このチュートリアルでは、PowerShell を使用した、Azure のレプリカが含まれる可用性グループのリスナーの作成を中心に説明します。SSMS または TRANSACT-SQL を使用してリスナーを構成する方法の詳細については、「[Create or Configure an Availability Group Listener (可用性グループ リスナーの作成または構成)](https://msdn.microsoft.com/library/hh213080.aspx)」をご覧ください。
-
 ## リスナーのアクセシビリティを決定する
 
 [AZURE.INCLUDE [ag-listener-accessibility](../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-この記事では、**内部ロード バランサー (ILB)** を使用するリスナーの作成を中心に説明します。パブリック/外部リスナーが必要な場合は、この記事の、[外部リスナー](virtual-machines-sql-server-configure-public-alwayson-availability-group-listener.md)を設定するための手順を説明するバージョンを参照してください、
+この記事では、**内部ロード バランサー (ILB)** を使用するリスナーの作成を中心に説明します。パブリック/外部リスナーが必要な場合は、この記事の、[外部リスナー](virtual-machines-sql-server-configure-public-alwayson-availability-group-listener.md)を設定するための手順を説明するバージョンを参照してください。
 
 ## Direct Server Return を使用して負荷分散 VM エンドポイントを作成する
 
@@ -55,7 +53,7 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 1. レプリカをホストする VM が含まれるサブネットの**サブネット**名をメモします。これは、スクリプトの **$SubnetName** パラメーターで使用します。
 
-1. レプリカをホストする VM が含まれるサブネットの **VirtualNetworkSite** 名と開始する **AddressPrefix** をメモします。両方の値を **Test-AzureStaticVNetIP** コマンドに渡し、**AvailableAddresses** を確認することによって、使用可能な IP アドレスを探します。たとえば、VNet の名前が *MyVNet* であり、サブネット アドレスの範囲が *172.16.0.128* から始まる場合、次のコマンドを実行すると、使用可能なアドレスのリストが表示されます。
+1. 次に、レプリカをホストする VM が含まれるサブネットの **VirtualNetworkSite** 名と開始する **AddressPrefix** をメモします。両方の値を **Test-AzureStaticVNetIP** コマンドに渡し、**AvailableAddresses** を確認することによって、使用可能な IP アドレスを探します。たとえば、VNet の名前が *MyVNet* であり、サブネット アドレスの範囲が *172.16.0.128* から始まる場合、次のコマンドを実行すると、使用可能なアドレスのリストが表示されます。
 
 		(Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
 
@@ -135,4 +133,4 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

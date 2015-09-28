@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="08/18/2015"
+   ms.date="09/15/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager のユーザー インターフェイス
@@ -425,7 +425,7 @@ StorSimple Snapshot Manager のユーザー インターフェイス内の移動
 | Esc | メニューを閉じたり、ページをキャンセルして閉じたりするには、Esc キーを押します。|
 | F1 | 現在アクティブなウィンドウのヘルプ トピックを表示するには、F1 キーを押します。|
 | F5 | ノードを更新するには、F5 キーを押します。 |
-| キーを押して | **スコープ** ウィンドウから**結果**ウィンドウに移動するには、F6 キーを押します。|
+| F6 | **スコープ** ウィンドウから**結果**ウィンドウに移動するには、F6 キーを押します。|
 | F10 | メニュー バーに移動するには、F10 キーを押します。 |
 | 左方向キー | メニュー バー オプションの前のオプションに水平方向に移動するには、左方向キーを使用します。メニュー バーの前の項目に移動すると、前の項目の操作 (またはコンテキスト) メニューが表示されます。 |
 | 右方向キー | メニュー バー オプションの次のオプションに水平方向に移動するには、右方向キーを使用します。メニュー バーの次の項目に移動すると、新しい項目の操作 (またはコンテキスト) メニューが表示されます。
@@ -538,6 +538,7 @@ StorSimple Snapshot Manager のユーザー インターフェイス内の移動
  
 ## 次のステップ
 
-[StorSimple Snapshot Manager を使用して、デバイスを接続および管理する方法について説明します](storsimple-snapshot-manager-manage-devices.md)。
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
+- [StorSimple Snapshot Manager を使用して、デバイスを接続および管理する方法](storsimple-snapshot-manager-manage-devices.md)について説明します。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

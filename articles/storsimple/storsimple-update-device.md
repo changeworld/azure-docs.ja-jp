@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/04/2015"
+   ms.date="09/15/2015"
    ms.author="v-sharos" />
 
 # StorSimple 8000 シリーズ デバイスの更新
 
 ## 概要
 
-StorSimple の更新プログラムの機能を使用すると、StorSimple デバイスを簡単に最新の状態に保つことができます。更新プログラムの種類に応じて、Microsoft Azure の管理ポータルまたは Windows PowerShell インターフェイスを使用して、デバイスに更新プログラムを適用できます。このチュートリアルでは、更新プログラムの種類とそれぞれのインストール方法について説明します。
+StorSimple の更新プログラムの機能を使用すると、StorSimple デバイスを簡単に最新の状態に保つことができます。更新プログラムの種類に応じて、Microsoft Azure 管理ポータルまたは Windows PowerShell インターフェイスを使用して、デバイスに更新プログラムを適用できます。このチュートリアルでは、更新プログラムの種類とそれぞれのインストール方法について説明します。
 
 次の 2 種類のデバイス更新プログラムを適用することができます。
 
@@ -116,7 +116,7 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 
 ## 次のステップ
 
-[Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する方法について説明します](storsimple-windows-powershell-administration.md)。
- 
+- [StorSimple 用 Windows PowerShell を使用した StorSimple デバイスの管理の詳細](storsimple-windows-powershell-administration.md)
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

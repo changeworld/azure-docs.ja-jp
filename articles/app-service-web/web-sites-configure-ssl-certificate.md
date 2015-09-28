@@ -8,16 +8,20 @@
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/02/2015" 
+	ms.date="09/16/2015" 
 	ms.author="cephalin"/>
 
+
+#アプリに対する HTTPS を Azure App Service で有効にする
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 [AZURE.INCLUDE [configure-ssl-web-site](../../includes/configure-ssl-web-site.md)]
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

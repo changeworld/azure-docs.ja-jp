@@ -1,19 +1,19 @@
 <properties
    pageTitle="Azure での StorSimple 仮想デバイス | Microsoft Azure"
-	description="Microsoft Azure 仮想ネットワークで StorSimple 仮想デバイスを作成、デプロイ、管理する方法を説明します。(StorSimple バージョン .3 およびそれ以前に適用されます。)"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="Microsoft Azure 仮想ネットワークで StorSimple 仮想デバイスを作成、デプロイ、管理する方法を説明します。(StorSimple バージョン .3 およびそれ以前に適用されます。)"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="hero-article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="09/02/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="hero-article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="09/16/2015"
+   ms.author="alkohli" />
 
 # Azure での StorSimple 仮想デバイスのデプロイと管理
 
@@ -74,7 +74,7 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 
 >[AZURE.IMPORTANT]**仮想デバイスで使用する予定のクラウド ストレージ アカウントと同じリージョンに仮想ネットワークが存在することを確認してください。**
 
-- 仮想デバイスによって公開されたボリュームを使用できる [Azure 仮想マシン](../virtual-machines/virtual-machines-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。
+- 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。
 	- Windows または Linux の VM が実行され、iSCSI イニシエーター ソフトウェアがインストールされていること。
 	- 仮想デバイスと同じ仮想ネットワークで実行されていること。
 	- 仮想デバイスの内部 IP アドレスで仮想デバイスの iSCSI ターゲットに接続できること。
@@ -114,8 +114,6 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 仮想ネットワークを作成して StorSimple Manager サービスを構成し、そのサービスに物理 StorSimple デバイスを登録した後、次の手順に従って StorSimple 仮想デバイスを作成することができます。
 
 StorSimple 仮想デバイスを作成するには、次の手順を実行します。
-
-
 
 1.  Azure ポータルで **StorSimple Manager** サービスに移動します。
 
@@ -219,7 +217,6 @@ HTTP または HTTPS で接続するよう選択できます。セキュリテ�
 
 StorSimple 仮想デバイスのリモート管理を構成するには、次の手順を実行します。
 
-
 1. 仮想デバイスの **[デバイス] > [構成]** に移動します。
 
 2. 下へスクロールして **[リモート管理]** セクションに移動します。
@@ -232,6 +229,9 @@ StorSimple 仮想デバイスのリモート管理を構成するには、次の
 
 6. ページの下部にある **[保存]** をクリックします。
 
+![ビデオ](./media/storsimple-virtual-device/Video_icon.png) **ビデオ**
+
+クラウドに仮想 StorSimple デバイスを作成する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-a-storsimple-virtual-device/)を参照してください。
 
 ## StorSimple 仮想デバイスの作業
 
@@ -345,7 +345,7 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 - 仮想デバイスにフェールオーバーするすべてのボリューム コンテナーに前の手順を繰り返します。
 
-- **[デバイス]** ページで、フェールオーバーするデバイスを選択し、**[フェールオーバー]** をクリックして、**[デバイス フェールオーバー]** ウィザードを開きます。
+- **[デバイス]** ページで、フェールオーバーするデバイスを選択し、**[フェールオーバー]** をクリックして、[デバイス フェールオーバー] ウィザードを開きます。
 
 - **[フェールオーバーするボリューム コンテナーを選択する]** で、フェールオーバーするボリューム コンテナーを選択します。ボリューム コンテナーがこの一覧に表示されるには、ボリューム コンテナーにクラウド スナップショットが含まれていて、オフラインである必要があります。表示されるはずのボリューム コンテナーが表示されない場合、ウィザードをキャンセルし、ボリューム コンテナーがオフラインになっていることを確認します。
 
@@ -353,15 +353,19 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 - **[フェールオーバーの確認]** ページですべてのフェールオーバー設定を見直します。すべての設定が正しければ、チェック マーク アイコンをクリックします。
 
-フェールオーバー プロセスが開始されます。フェールオーバーが完了したら、[デバイス] ページに進み、フェールオーバー プロセスのターゲットとして使用した仮想デバイスを選択します。[ボリューム コンテナー] ページに移動します。すべてのボリューム コンテナーと古いデバイスのボリュームが表示されます。
+フェールオーバー プロセスが開始されます。フェールオーバーが完了したら、**[デバイス]** ページに進み、フェールオーバー プロセスのターゲットとして使用した仮想デバイスを選択します。[ボリューム コンテナー] ページに移動します。すべてのボリューム コンテナーと古いデバイスのボリュームが表示されます。
 
 >[AZURE.NOTE]仮想デバイスでサポートされるストレージの量は 30 TB (テラバイト) です。
+
+![ビデオ](./media/storsimple-virtual-device/Video_icon.png) **ビデオ**
+
+フェールオーバーした物理デバイスをクラウドの仮想デバイスに復元する方法について説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-and-disaster-recovery/)を参照してください。
 
 ## 仮想デバイスのシャットダウンまたは削除
 
 以前構成して使っていた StorSimple 仮想デバイスのコンピューティング料金の発生を止めるには、仮想デバイスをシャットダウンします。仮想デバイスをシャットダウンしても、ストレージ内のオペレーティング システムやデータ ディスクは削除されません。この操作によって、サブスクリプションの料金は発生しなくなりますが、OS とデータ ディスクのストレージの料金は継続して発生します。
 
-仮想デバイスを削除またはシャットダウンすると、StorSimple Manager サービスの [デバイス] ページには **[オフライン]** として表示されます。仮想デバイスによって作成されたバックアップも一緒に削除する場合は、デバイスとして非アクティブにするか、削除するかを選択できます。詳細については、[デバイスの非アクティブ化](storsimple-deactivate-and-delete-device.md#deactivate-a-device)をご覧ください。
+仮想デバイスを削除またはシャットダウンすると、StorSimple Manager サービスの [デバイス] ページには **[オフライン]** として表示されます。仮想デバイスによって作成されたバックアップも一緒に削除する場合は、デバイスとして非アクティブにするか、削除するかを選択できます。詳細については、「[デバイスの非アクティブ化](storsimple-deactivate-and-delete-device.md#deactivate-a-device)」を参照してください。
 
 ### StorSimple 仮想デバイスをシャットダウンするには
 
@@ -382,6 +386,6 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 ## 次のステップ
 
-仮想デバイスを管理するには、[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md#administer-storsimple-device-using-storsimple-manager-service)に関するページでワークフローの詳細な一覧をご覧ください。
+仮想デバイスを管理するには、[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md#administer-storsimple-device-using-storsimple-manager-service)に関するページでワークフローの詳細な一覧を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple ストレージ アカウントの管理 | Microsoft Azure"
-	description="StorSimple Manager の [構成] ページを使用してストレージ アカウントを追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple Manager の [構成] ページを使用してストレージ アカウントを追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="SharS"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/27/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/15/2015"
+   ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用してストレージ アカウントを管理する
 
@@ -148,6 +148,7 @@ StorSimple Manager サービスにこの変更を認識させるには、StorSim
 
 ## 次のステップ
 
-[StorSimple のセキュリティ](storsimple-security.md)の詳細を確認します。
+- [StorSimple のセキュリティの詳細](storsimple-security.md)
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

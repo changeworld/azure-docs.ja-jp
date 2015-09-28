@@ -1,11 +1,12 @@
 <properties
-	pageTitle="リソース マネージャー テンプレートと PowerShell を使用した Azure 仮想マシンのデプロイと管理"
-	description="リソース マネージャー テンプレートと PowerShell を使用して、Azure 仮想マシンの最も一般的な構成セットを簡単にデプロイし、管理します。"
+	pageTitle="リソース マネージャーと PowerShell を使用した Azure VM の管理 |Microsoft Azure"
+	description="Azure リソース マネージャー テンプレートと PowerShell を使用して仮想マシンを管理します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="davidmu1"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -13,24 +14,28 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.date="09/10/2015"
 	ms.author="davidmu"/>
 
-# Azure リソース マネージャー テンプレートと PowerShell を使用した仮想マシンのデプロイと管理
+# Azure リソース マネージャーと PowerShell を使用した仮想マシンの管理
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](virtual-machines-windows-tutorial.md)
-- [Azure portal](virtual-machines-windows-tutorial-classic-portal.md)
-- [PowerShell: Resource Manager deployment](virtual-machines-deploy-rmtemplates-powershell.md)
-- [PowerShell: Classic deployment](virtual-machines-ps-create-preconfigure-windows-vms.md)
+- [Portal](virtual-machines-windows-tutorial.md)
+- [PowerShell](virtual-machines-deploy-rmtemplates-powershell.md)
 
-この記事では、Azure リソース マネージャー テンプレートと PowerShell を使用し、Azure 仮想マシンのデプロイと管理に関する一般的なタスクを自動化する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」および「[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)」を参照してください。
+Azure PowerShell とリソース マネージャー テンプレートを使用すると、Microsoft Azure でリソースを管理する際に高い処理能力と柔軟性が得られます。この記事にあるタスクを使用すると、仮想マシンのリソースを作成して管理できます。
 
-- [Windows 仮想マシンのデプロイ](#windowsvm)
-- [カスタム仮想マシン イメージの作成](#customvm)
-- [仮想ネットワークと外部ロード バランサーを使用するマルチ VM アプリケーションのデプロイ](#multivm)
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの管理について説明します。また、[従来のデプロイ モデル](virtual-machines-windows-tutorial-classic-portal.md)を使用してリソースを管理することもできます。
+
+次のタスクでは、リソース マネージャー テンプレートと PowerShell を使用します。
+
+- [仮想マシンの作成](#windowsvm)
+- [専用ディスクを使用した仮想マシンの作成](#customvm)
+- [外部ロード バランサーを使用した仮想ネットワーク内での複数の仮想マシンの作成](#multivm)
+
+次のタスクでは、PowerShell のみを使用します。
+
 - [リソース グループの削除](#removerg)
-- [仮想マシンへのサインイン](#logon)
 - [仮想マシンに関する情報の表示](#displayvm)
 - [仮想マシンの起動](#start)
 - [仮想マシンの停止](#stop)
@@ -41,241 +46,54 @@
 
 [AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
-## Azure リソース テンプレートおよびリソース グループについて
 
-Microsoft Azure にデプロイされて実行されるアプリケーションの大部分は、異なる種類のクラウド リソースの組み合わせ (1 つ以上の仮想マシンやストレージ アカウント、SQL データベース、仮想ネットワークなど) から構築されます。Azure リソース マネージャー テンプレートによって、リソースや関連する構成およびデプロイ パラメーターの JSON 記述を使用して、これらのさまざまなリソースをまとめてデプロイし、管理することが可能になります。
 
-JSON ベースのリソース テンプレートを定義してから実行し、PowerShell コマンドを実行することで、定義したリソースを Azure にデプロイすることができます。これらのコマンドは、PowerShell コマンド シェルで個別に実行することも、その他のオートメーション ロジックを含むスクリプトに統合することもできます。
+## Azure リソース マネージャー テンプレートとリソース グループ
 
-Azure リソース マネージャー テンプレートを使用して作成するリソースは、新規または既存の Azure リソース グループにデプロイされます。*Azure リソース グループ*では、デプロイした複数のリソースを論理グループとしてまとめて管理できます。これによって、グループやアプリケーションのライフ サイクル全体を管理できるようになるほか、以下の操作を可能にする管理 API が提供されます。
+この記事にあるいくつかのタスクでは、Azure リソース マネージャー テンプレートと Powershell を使用して、Azure 仮想マシンのデプロイと管理を自動的に行う方法について説明します。
 
-- グループ内のすべてのリソースを一度に停止、開始、または削除する。
-- ロールベースの Access Control (RBAC) ルールを適用し、リソースへのセキュリティ アクセス許可をロック ダウンする。
-- 操作を監査する。
-- 追跡機能を向上させるために追加のメタデータでリソースのタグ付けを行う。
+Microsoft Azure で実行されているほとんどのアプリケーションは、異なる種類のクラウド リソースの組み合わせ (1 つ以上の仮想マシンとストレージ アカウント、SQL データベース、仮想ネットワークなど) から構築されます。Azure リソース マネージャー テンプレートにより、リソースと関連する構成およびデプロイ パラメーターの JSON 記述を使用して、これらのさまざまなリソースをまとめて管理できるようになります。
 
-Azure リソース マネージャーの詳細については、[こちら](virtual-machines-azurerm-versus-azuresm.md)を参照してください。テンプレートの作成に興味がある場合は、[Azure リソース マネージャー テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
+JSON ベースのリソース テンプレートを定義すると、PowerShell コマンドでそのテンプレートを使用して、定義したリソースを Azure にデプロイできます。これらのコマンドは、PowerShell コマンド シェルで個別に実行することも、その他のオートメーション ロジックを含むスクリプトに統合することもできます。
 
-## <a id="windowsvm"></a>タスク: Windows 仮想マシンのデプロイ
+Azure リソース マネージャー テンプレートを使用して作成するリソースは、新規または既存の *Azure リソース グループ*にデプロイされます。リソース グループでは、デプロイした複数のリソースを論理グループとしてまとめて管理できます。つまり、グループやアプリケーションのライフサイクル全体を管理できます。
 
-リソース マネージャー テンプレートと Azure PowerShell を使用して、新しい Azure 仮想マシンをデプロイするには、このセクションの手順に従います。このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに単一の仮想マシンを作成します。
+テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+
+### リソース グループの作成
+
+リソースを作成するタスクでは、既存のリソース グループがない場合は必要となります。
+
+次のコマンドで、*resource group name* を新しいリソース グループの名前に置き換え、*Azure location* を、リソースを配置する Azure データセンターの場所に置き換えた後、このコマンドを実行します。
+
+	New-AzureResourceGroup -Name "resource group name" -Location "Azure location"
+
+## <a id="windowsvm"></a>タスク: 仮想マシンの作成
+
+このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[米国西部での簡単な Windows VM のデプロイ](https://azure.microsoft.com/documentation/templates/101-simple-windows-vm/)に関するページを参照してください。
 
 ![](./media/virtual-machines-deploy-rmtemplates-powershell/windowsvm.png)
 
-Azure PowerShell で、GitHub テンプレート リポジトリ内のリソース マネージャー テンプレートを使用して Windows 仮想マシンを作成するには、以下の手順に従います。
+次のコマンドで、*deployment name* をそのデプロイに使用する名前に置き換え、*resource group name* を既存のリソース グループの名前に置き換えた後、このコマンドを実行します。
 
-### 手順 1. テンプレートの JSON ファイルを確認する
+	New-AzureResourceGroupDeployment -Name "deployment name" -ResourceGroupName "resource group name" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
 
-テンプレートの JSON ファイルの内容を次に示します。
+次に例を示します。
 
-	{
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "newStorageAccountName": {
-            "type": "string",
-            "metadata": {
-                "Description": "Unique DNS name for the storage account where the virtual machine's disks will be placed."
-            }
-        },
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-               "Description": "User name for the virtual machine."
-            }
-        },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "Description": "Password for the virtual machine."
-            }
-        },
-        "dnsNameForPublicIP": {
-            "type": "string",
-            "metadata": {
-                  "Description": "Unique DNS name for the public IP used to access the virtual machine."
-            }
-        },
-        "windowsOSVersion": {
-            "type": "string",
-            "defaultValue": "2012-R2-Datacenter",
-            "allowedValues": [
-                "2008-R2-SP1",
-                "2012-Datacenter",
-                "2012-R2-Datacenter",
-                "Windows-Server-Technical-Preview"
-            ],
-            "metadata": {
-                "Description": "The Windows version for the virtual machine. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter, Windows-Server-Technical-Preview."
-            }
-        }
-    },
-    "variables": {
-        "location": "West US",
-        "imagePublisher": "MicrosoftWindowsServer",
-        "imageOffer": "WindowsServer",
-        "OSDiskName": "osdiskforwindowssimple",
-        "nicName": "myVMNic",
-        "addressPrefix": "10.0.0.0/16",
-        "subnetName": "Subnet",
-        "subnetPrefix": "10.0.0.0/24",
-        "storageAccountType": "Standard_LRS",
-        "publicIPAddressName": "myPublicIP",
-        "publicIPAddressType": "Dynamic",
-        "vmStorageAccountContainerName": "vhds",
-        "vmName": "MyWindowsVM",
-        "vmSize": "Standard_D1",
-        "virtualNetworkName": "MyVNET",
-        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
-        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[parameters('newStorageAccountName')]",
-            "apiVersion": "2015-05-01-preview",
-            "location": "[variables('location')]",
-            "properties": {
-                "accountType": "[variables('storageAccountType')]"
-            }
-        },
-        {
-            "apiVersion": "2015-05-01-preview",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "[variables('publicIPAddressName')]",
-            "location": "[variables('location')]",
-            "properties": {
-                "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
-                "dnsSettings": {
-                    "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
-                }
-            }
-        },
-        {
-            "apiVersion": "2015-05-01-preview",
-            "type": "Microsoft.Network/virtualNetworks",
-            "name": "[variables('virtualNetworkName')]",
-            "location": "[variables('location')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[variables('addressPrefix')]"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "[variables('subnetName')]",
-                        "properties": {
-                            "addressPrefix": "[variables('subnetPrefix')]"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "apiVersion": "2015-05-01-preview",
-            "type": "Microsoft.Network/networkInterfaces",
-            "name": "[variables('nicName')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-                "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
-            ],
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
-                            },
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "apiVersion": "2015-05-01-preview",
-            "type": "Microsoft.Compute/virtualMachines",
-            "name": "[variables('vmName')]",
-            "location": "[variables('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
-                "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-            ],
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[variables('vmSize')]"
-                },
-                "osProfile": {
-                    "computername": "[variables('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
-                },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "[variables('imagePublisher')]",
-                        "offer": "[variables('imageOffer')]",
-                        "sku" : "[parameters('windowsOSVersion')]",
-                        "version":"latest"
-                    },
-                   "osDisk" : {
-                        "name": "osdisk",
-                        "vhd": {
-                            "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
-                        },
-                        "caching": "ReadWrite",
-                        "createOption": "FromImage"
-                    }
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
-                        }
-                    ]
-                }
-            }
-        }
-    ]
-	}
+	New-AzureResourceGroupDeployment -Name "TestDeployment" -ResourceGroupName "TestRG" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
 
-
-### 手順 2. テンプレートで仮想マシンを作成する
-
-Azure のデプロイ名、リソース グループ名、Azure データ センターの場所を入力し、次のコマンドを実行します。
-
-	$deployName="<deployment name>"
-	$RGName="<resource group name>"
-	$locName="<Azure location, such as West US>"
-	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
-	New-AzureResourceGroup -Name $RGName -Location $locName
-	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
-
-**New-AzureResourceGroupDeployment** コマンドを実行すると、JSON ファイルの "parameters" セクションのパラメーター値を指定するよう求められます。必要なパラメーター値をすべて指定している場合、コマンドによってリソース グループと仮想マシンが作成されます。
-
-たとえば次のようになります。
-
-	$deployName="TestDeployment"
-	$RGName="TestRG"
-	$locname="West US"
-	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
-	New-AzureResourceGroup -Name $RGName -Location $locName
-	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
-
-次のような結果が表示されます。
+JSON ファイルの **parameters** セクションのパラメーター値を指定するよう求められます。
 
 	cmdlet New-AzureResourceGroupDeployment at command pipeline position 1
 	Supply values for the following parameters:
 	(Type !? for Help.)
-	newStorageAccountName: newsaacct
+	newStorageAccountName: saacct
 	adminUsername: WinAdmin1
 	adminPassword: *********
 	dnsNameForPublicIP: contoso
+
+次のような結果が返されます。
+
 	VERBOSE: 10:56:59 AM - Template is valid.
 	VERBOSE: 10:56:59 AM - Create template deployment 'TestDeployment'.
 	VERBOSE: 10:57:08 AM - Resource Microsoft.Network/virtualNetworks 'MyVNET' provisioning status is succeeded
@@ -297,7 +115,7 @@ Azure のデプロイ名、リソース グループ名、Azure データ セン
 	Parameters        :
                     	Name             Type                       Value
 	                    ===============  =========================  ==========
-	                    newStorageAccountName  String                     newsaacct
+	                    newStorageAccountName  String                     saacct
 	                    adminUsername    String                     WinAdmin1
 	                    adminPassword    SecureString
 	                    dnsNameForPublicIP  String                     contoso9875
@@ -305,123 +123,23 @@ Azure のデプロイ名、リソース グループ名、Azure データ セン
 
 	Outputs           :
 
-これで、新しいリソース グループに MyWindowsVM という名前の新しい Windows 仮想マシンが作成されました。
+このタスクが実行されているビデオを参照する場合は、次をご覧ください。
 
-## <a id="customvm"></a>タスク: カスタム仮想マシン イメージの作成
+[AZURE.VIDEO deploy-a-windows-virtual-machine-with-azure-resource-manager-templates-and-powershell]
 
-Azure PowerShell を使用し、リソース マネージャー テンプレートで Azure に カスタム仮想マシン イメージを作成するには、このセクションの手順に従います。このテンプレートは、指定した仮想ハード ディスク (VHD) から単一の仮想マシンを作成します。
+## <a id="customvm"></a>タスク: 専用ディスクを使用した仮想マシンの作成
 
-### 手順 1. テンプレートの JSON ファイルを確認する
+このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[専用 VHD ディスクからの VM の作成](https://azure.microsoft.com/documentation/templates/201-vm-from-specialized-vhd/)に関するページを参照してください。
 
-テンプレートの JSON ファイルの内容を次に示します。
+次のコマンドで、*deployment name* をそのデプロイに使用する名前に置き換え、*resource group name* を既存のリソース グループの名前に置き換えた後、このコマンドを実行します。
 
-	{
-	    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
-	    "contentVersion": "1.0.0.0",
-	    "parameters": {
-	        "osDiskVhdUri": {
-	            "type": "string",
-	            "metadata": {
-	                "Description": "Uri of the existing VHD"
-	            }
-	        },
-	        "osType": {
-	            "type": "string",
-	            "allowedValues": [
-	                "windows",
-	                "linux"
-	            ],
-	            "metadata": {
-	                "Description": "Type of OS on the existing vhd"
-	            }
-	        },
-	        "location": {
-	            "type": "String",
-	            "defaultValue": "West US",
-	            "metadata": {
-	                "Description": "Location to create the VM in"
-	            }
-	        },
-	        "vmSize": {
-	            "type": "string",
-	            "defaultValue": "Standard_A2",
-	            "metadata": {
-	                "Description": "Size of the VM"
-	            }
-	        },
-	        "vmName": {
-	            "type": "string",
-	            "defaultValue": "myVM",
-	            "metadata": {
-	                "Description": "Name of the VM"
-	            }
-	        },
-	        "nicName": {
-	            "type": "string",
-	            "defaultValue": "myNIC",
-	            "metadata": {
-	                "Description": "NIC to attach the new VM to"
-	            }
-	        }
-	    },
-	    "resources": [{
-	        "apiVersion": "2014-12-01-preview",
-	        "type": "Microsoft.Compute/virtualMachines",
-	        "name": "[parameters('vmName')]",
-	        "location": "[parameters('location')]",
-	        "properties": {
-	            "hardwareProfile": {
-	                "vmSize": "[parameters('vmSize')]"
-	            },
-	            "storageProfile": {
-	                "osDisk": {
-	                    "name": "[concat(parameters('vmName'),'-osDisk')]",
-	                    "osType": "[parameters('osType')]",
-	                    "caching": "ReadWrite",
-	                    "vhd": {
-	                        "uri": "[parameters('osDiskVhdUri')]"
-	                    }
-	                }
-	            },
-	            "networkProfile": {
-	                "networkInterfaces": [{
-	                    "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
-	                }]
-	            }
-	        }
-	    }]
-	}
+	New-AzureResourceGroupDeployment -Name "deployment name" -ResourceGroupName "resource group name" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json"
 
-### 手順 2. VHD を取得する
+次に例を示します。
 
-Windows ベースの仮想マシンについては、「[Windows Server VHD の作成と Azure へのアップロード](virtual-machines-create-upload-vhd-windows-server.md)」を参照してください。
+	New-AzureResourceGroupDeployment -Name "TestDeployment" -ResourceGroupName "TestRG" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json"
 
-Linux ベースの仮想マシンについては、[Azure 上での Linux VHD の作成とアップロード](virtual-machines-linux-create-upload-vhd.md)に関するページを参照してください。
-
-### 手順 3. テンプレートで仮想マシンを作成する
-
-VHD に基づく新しい仮想マシンを作成するには、"< >" 内の要素を特定の情報に置き換え、次のコマンドを実行します。
-
-	$deployName="<deployment name>"
-	$RGName="<resource group name>"
-	$locName="<Azure location, such as West US>"
-	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json"
-	New-AzureResourceGroup -Name $RGName -Location $locName
-	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
-
-JSON ファイルの "parameters" セクションのパラメーター値を指定するよう求められます。パラメーター値をすべて指定している場合、Azure リソース マネージャーによってリソース グループと仮想マシンが作成されます。
-
-たとえば次のようになります。
-
-	$deployName="TestDeployment"
-	$RGName="TestRG"
-	$locname="West US"
-	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json"
-	New-AzureResourceGroup -Name $RGName -Location $locName
-	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
-
-
-次の種類の情報が表示されます。
+JSON ファイルの **parameters** セクションのパラメーター値を指定するよう求められます。
 
 	cmdlet New-AzureResourceGroup at command pipeline position 1
 	Supply values for the following parameters:
@@ -432,350 +150,23 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
 	vmSize: Standard_A3
 	...
 
-## <a id="multivm"></a>タスク: 仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
+> [AZURE.NOTE]上記の例では、saacct ストレージ アカウントに存在する vhd ファイルが使用されています。ディスクの名前は、テンプレートのパラメーターとして指定されていました。
 
-Azure PowerShell を使用し、リソース マネージャー テンプレートから仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、以下のセクションの手順に従います。このテンプレートは、新しいクラウド サービスで、1 つのサブネットを持つ新しい仮想ネットワークに 2 つの仮想マシンを作成し、それらを TCP ポート 80 への受信トラフィック用に、外部の負荷分散されたセットへ追加します。
+このタスクが実行されているビデオを参照する場合は、次をご覧ください。
+
+[AZURE.VIDEO create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell]
+
+## <a id="multivm"></a>タスク: 外部ロード バランサーを使用した仮想ネットワーク内での複数の仮想マシンの作成
+
+このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[専用 VHD ディスクからの VM の作成](https://azure.microsoft.com/documentation/templates/201-2-vms-loadbalancer-lbrules/)に関するページを参照してください。
 
 ![](./media/virtual-machines-deploy-rmtemplates-powershell/multivmextlb.png)
 
-Azure PowerShell コマンドを使用して、GitHub テンプレート リポジトリのリソース マネージャー テンプレートから仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、次の手順に従います。
+次のコマンドで、*deployment name* をそのデプロイに使用する名前に置き換え、*resource group name* を既存のリソース グループの名前に置き換えた後、このコマンドを実行します。
 
-### 手順 1. テンプレートの JSON ファイルを確認する
+	New-AzureResourceGroupDeployment -Name "deployment name" -ResourceGroupName "resource group name" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json"
 
-テンプレートの JSON ファイルの内容を次に示します。
-
-	{
-	"$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
-	    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "region": {
-            "type": "string"
-        },
-        "storageAccountName": {
-            "type": "string",
-            "defaultValue": "uniqueStorageAccountName"
-        },
-        "adminUsername": {
-            "type": "string"
-        },
-        "adminPassword": {
-            "type": "securestring"
-        },
-        "dnsNameforLBIP": {
-            "type": "string",
-            "defaultValue": "uniqueDnsNameforLBIP"
-        },
-        "backendPort": {
-            "type": "int",
-            "defaultValue": 3389
-        },
-        "vmNamePrefix": {
-            "type": "string",
-            "defaultValue": "myVM"
-        },
-        "vmSourceImageName": {
-            "type": "string",
-            "defaultValue": "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201412.01-en.us-127GB.vhd"
-        },
-        "lbName": {
-            "type": "string",
-            "defaultValue": "myLB"
-        },
-        "nicNamePrefix": {
-            "type": "string",
-            "defaultValue": "nic"
-        },
-        "publicIPAddressName": {
-            "type": "string",
-            "defaultValue": "myPublicIP"
-        },
-        "vnetName": {
-            "type": "string",
-            "defaultValue": "myVNET"
-        },
-        "vmSize": {
-            "type": "string",
-            "defaultValue": "Standard_A1",
-            "allowedValues": [
-                "Standard_A0",
-                "Standard_A1",
-                "Standard_A2",
-                "Standard_A3",
-                "Standard_A4"
-            ]
-        }
-    },
-    "variables": {
-        "storageAccountType": "Standard_LRS",
-        "vmStorageAccountContainerName": "vhds",
-        "availabilitySetName": "myAvSet",
-        "addressPrefix": "10.0.0.0/16",
-        "subnetName": "Subnet-1",
-        "subnetPrefix": "10.0.0.0/24",
-        "publicIPAddressType": "Dynamic",
-        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('vnetName'))]",
-        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables ('subnetName'))]",
-        "publicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]",
-        "lbID": "[resourceId('Microsoft.Network/loadBalancers',parameters('lbName'))]",
-        "numberOfInstances": 2,
-        "nicId1": "[resourceId('Microsoft.Network/networkInterfaces',concat(parameters('nicNamePrefix'), 0))]",
-        "nicId2": "[resourceId('Microsoft.Network/networkInterfaces',concat(parameters('nicNamePrefix'), 1))]",
-        "frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/LBFE')]",
-        "backEndIPConfigID1": "[concat(variables('nicId1'),'/ipConfigurations/ipconfig1')]",
-        "backEndIPConfigID2": "[concat(variables('nicId2'),'/ipConfigurations/ipconfig1')]",
-        "sourceImageName": "[concat('/', subscription().subscriptionId,'/services/images/',parameters('vmSourceImageName'))]",
-        "lbPoolID": "[concat(variables('lbID'),'/backendAddressPools/LBBE')]",
-        "lbProbeID": "[concat(variables('lbID'),'/probes/tcpProbe')]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[parameters('storageAccountName')]",
-            "apiVersion": "2014-12-01-preview",
-            "location": "[parameters('region')]",
-            "properties": {
-                "accountType": "[variables('storageAccountType')]"
-            }
-        },
-        {
-            "type": "Microsoft.Compute/availabilitySets",
-            "name": "[variables('availabilitySetName')]",
-            "apiVersion": "2014-12-01-preview",
-            "location": "[parameters('region')]",
-            "properties": {}
-        },
-        {
-            "apiVersion": "2014-12-01-preview",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "[parameters('publicIPAddressName')]",
-            "location": "[parameters('region')]",
-            "properties": {
-                "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
-                "dnsSettings": {
-                    "domainNameLabel": "[parameters('dnsNameforLBIP')]"
-                }
-            }
-        },
-        {
-            "apiVersion": "2014-12-01-preview",
-            "type": "Microsoft.Network/virtualNetworks",
-            "name": "[parameters('vnetName')]",
-            "location": "[parameters('region')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[variables('addressPrefix')]"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "[variables('subnetName')]",
-                        "properties": {
-                            "addressPrefix": "[variables('subnetPrefix')]"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "apiVersion": "2014-12-01-preview",
-            "type": "Microsoft.Network/networkInterfaces",
-            "name": "[concat(parameters('nicNamePrefix'), copyindex())]",
-            "location": "[parameters('region')]",
-            "copy": {
-                "name": "nicLoop",
-                "count": "[variables('numberOfInstances')]"
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]"
-            ],
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "apiVersion": "2014-12-01-preview",
-            "name": "[parameters('lbName')]",
-            "type": "Microsoft.Network/loadBalancers",
-            "location": "[parameters('region')]",
-            "dependsOn": [
-                "nicLoop",
-                "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPAddressName'))]"
-            ],
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "LBFE",
-                        "properties": {
-                            "publicIPAddress": {
-                                "id": "[variables('publicIPAddressID')]"
-                            }
-                        }
-                    }
-                ],
-                "backendAddressPools": [
-                    {
-                        "name": "LBBE",
-                        "properties": {
-                            "backendIPConfigurations": [
-                                {
-                                    "id": "[variables('backEndIPConfigID1')]"
-                                },
-                                {
-                                    "id": "[variables('backEndIPConfigID2')]"
-                                }
-                            ]
-                        }
-                    }
-                ],
-                "inboundNatRules": [
-                    {
-                        "name": "RDP-VM1",
-                        "properties": {
-                            "frontendIPConfigurations": [
-                                {
-                                    "id": "[variables('frontEndIPConfigID')]"
-                                }
-                            ],
-                            "backendIPConfiguration": {
-                                "id": "[variables('backEndIPConfigID1')]"
-                            },
-                            "protocol": "tcp",
-                            "frontendPort": 50001,
-                            "backendPort": 3389,
-                            "enableFloatingIP": false
-                        }
-                    },
-                    {
-                        "name": "RDP-VM2",
-                        "properties": {
-                            "frontendIPConfigurations": [
-                                {
-                                    "id": "[variables('frontEndIPConfigID')]"
-                                }
-                            ],
-                            "backendIPConfiguration": {
-                                "id": "[variables('backEndIPConfigID2')]"
-                            },
-                            "protocol": "tcp",
-                            "frontendPort": 50002,
-                            "backendPort": 3389,
-                            "enableFloatingIP": false
-                        }
-                    }
-                ],
-                "loadBalancingRules": [
-                    {
-                        "name": "LBRule",
-                        "properties": {
-                            "frontendIPConfigurations": [
-                                {
-                                    "id": "[variables('frontEndIPConfigID')]"
-                                }
-                            ],
-                            "backendAddressPool": {
-                                "id": "[variables('lbPoolID')]"
-                            },
-                            "protocol": "tcp",
-                            "frontendPort": 80,
-                            "backendPort": 80,
-                            "enableFloatingIP": false,
-                            "idleTimeoutInMinutes": 5,
-                            "probe": {
-                                "id": "[variables('lbProbeID')]"
-                            }
-                        }
-                    }
-                ],
-                "probes": [
-                    {
-                        "name": "tcpProbe",
-                        "properties": {
-                            "protocol": "tcp",
-                            "port": 80,
-                            "intervalInSeconds": "5",
-                            "numberOfProbes": "2"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "apiVersion": "2014-12-01-preview",
-            "type": "Microsoft.Compute/virtualMachines",
-            "name": "[concat(parameters('vmNamePrefix'), copyindex())]",
-            "copy": {
-                "name": "virtualMachineLoop",
-                "count": "[variables('numberOfInstances')]"
-            },
-            "location": "[parameters('region')]",
-            "dependsOn": [
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-                "[concat('Microsoft.Network/networkInterfaces/', parameters('nicNamePrefix'), copyindex())]",
-                "[concat('Microsoft.Compute/availabilitySets/', variables('availabilitySetName'))]"
-            ],
-            "properties": {
-                "availabilitySet": {
-                    "id": "[resourceId('Microsoft.Compute/availabilitySets',variables('availabilitySetName'))]"
-                },
-                "hardwareProfile": {
-                    "vmSize": "[parameters('vmSize')]"
-                },
-                "osProfile": {
-                    "computername": "[concat(parameters('vmNamePrefix'), copyIndex())]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
-                },
-                "storageProfile": {
-                    "sourceImage": {
-                        "id": "[variables('sourceImageName')]"
-                    },
-                    "destinationVhdsContainer": "[concat('http://',parameters('storageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/')]"
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(parameters('nicNamePrefix'),copyindex()))]"
-                        }
-                    ]
-                }
-            }
-        }
-    ]
-	}
-
-
-### 手順 2. テンプレートでデプロイを作成する
-
-Azure のデプロイ名、リソース グループ名、Azure の場所を入力し、次のコマンドを実行します。
-
-	$deployName="<deployment name>"
-	$RGName="<resource group name>"
-	$locName="<Azure location, such as West US>"
-	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json"
-	New-AzureResourceGroup -Name $RGName -Location $locName
-	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
-
-**New-AzureResourceGroupDeployment** コマンドを実行すると、JSON ファイルのパラメーター値を指定するよう求められます。パラメーター値をすべて指定している場合、コマンドによってリソース グループとデプロイが作成されます。
-
-	$deployName="TestDeployment"
-	$RGName="TestRG"
-	$locname="West US"
-	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json"
-	New-AzureResourceGroup -Name $RGName -Location $locName
-	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
-
-次のような結果が表示されます。
+JSON ファイルの **parameters** セクションのパラメーター値を指定するよう求められます。
 
 	cmdlet New-AzureResourceGroup at command pipeline position 1
 	Supply values for the following parameters:
@@ -788,36 +179,42 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 	vmNamePrefix: WEBFARM
 	...
 
+このタスクが実行されているビデオを参照する場合は、次をご覧ください。
+
+[AZURE.VIDEO deploy-multi-vm-app-with-a-virtual-network-and-load-balancer-in-azure-resource-manager]
+
 ## <a id="removerg"></a>タスク: リソース グループの削除
 
-作成したリソース グループは、いずれも **Remove-AzureResourceGroup** コマンドで削除できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
+次のコマンドの *resource group name* を、削除するリソース グループの名前に置き換えた後、このコマンドを実行します。
 
-	Remove-AzureResourceGroup  -Name "<resource group name>"
+	Remove-AzureResourceGroup  -Name "resource group name"
 
-次のような情報が表示されます。
+> [AZURE.NOTE]**-Force** パラメーターを使用して確認プロンプトをスキップできます。
+
+-Force パラメーターを使用していない場合は、次のように確認が求められます。
 
 	Confirm
 	Are you sure you want to remove resource group 'BuildRG'
 	[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
 
-## <a id="logon"></a>タスク: Windows 仮想マシンへのサインイン
+このタスクが実行されているビデオを参照する場合は、次をご覧ください。
 
-詳細な手順については、「[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)」を参照してください。
+[AZURE.VIDEO removing-a-resource-group-in-azure]
 
 ## <a id="displayvm"></a>タスク: 仮想マシンに関する情報の表示
 
-**Get-AzureVM** コマンドを使用して、仮想マシンに関する情報を表示することができます。このコマンドは、仮想マシンの状態を更新するために他のさまざまなコマンドレットを使用して操作できる仮想マシン オブジェクトを返します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前に置き換え、*VM name* を仮想マシンの名前に置き換えた後、このコマンドを実行します。
 
-	Get-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
+	Get-AzureVM -ResourceGroupName "resource group name" -Name "VM name"
 
-次のように、仮想マシンに関する情報が表示されます。
+次のような結果が返されます。
 
 	AvailabilitySetReference : null
 	Extensions               : []
 	HardwareProfile          : {
 	                             "VirtualMachineSize": "Standard_D1"
 	                           }
-	Id                       : /subscriptions/fd92919d-eeca-4f5b-840a-e45c6770d92e/resourceGroups/BuildRG/providers/Microso
+	Id                       : /subscriptions/{subscription-id}/resourceGroups/BuildRG/providers/Microso
 	                           ft.Compute/virtualMachines/MyWindowsVM
 	InstanceView             : null
 	Location                 : westus
@@ -826,7 +223,7 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 	                             "NetworkInterfaces": [
 	                               {
 	                                 "Primary": null,
-	                                 "ReferenceUri": "/subscriptions/fd92919d-eeca-4f5b-840a-e45c6770d92e/resourceGroups/Bu
+	                                 "ReferenceUri": "/subscriptions/{subscription-id}/resourceGroups/Bu
 	                           ildRG/providers/Microsoft.Network/networkInterfaces/myVMNic"
 	                               }
 	                             ]
@@ -863,7 +260,7 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 	                               "Name": "osdisk",
 	                               "SourceImage": null,
 	                               "VirtualHardDisk": {
-	                                 "Uri": "http://buildsaacct.blob.core.windows.net/vhds/osdiskforwindowssimple.vhd"
+	                                 "Uri": "http://saacct.blob.core.windows.net/vhds/osdiskforwindowssimple.vhd"
 	                               }
 	                             },
 	                             "SourceImage": null
@@ -871,14 +268,17 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 	Tags                     : {}
 	Type                     : Microsoft.Compute/virtualMachines
 
+このタスクが実行されているビデオを参照する場合は、次をご覧ください。
+
+[AZURE.VIDEO displaying-information-about-a-virtual-machine-in-microsoft-azure-with-powershell]
 
 ## <a id="start"></a>タスク: 仮想マシンの起動
 
-仮想マシンの起動には、**Start-AzureVM** コマンドを使用できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前に置き換え、*VM name* を仮想マシンの名前に置き換えた後、このコマンドを実行します。
 
-	Start-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
+	Start-AzureVM -ResourceGroupName "resource group name" -Name "VM name"
 
-次のような情報が表示されます。
+次のような結果が返されます。
 
 	EndTime             : 4/28/2015 11:11:41 AM -07:00
 	Error               :
@@ -889,18 +289,23 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 	RequestId           : aac41de1-b85d-4429-9a3d-040b922d2e6d
 	StatusCode          : OK
 
+このタスクが実行されているビデオを参照する場合は、次をご覧ください。
+
+[AZURE.VIDEO start-stop-restart-and-delete-vms-in-microsoft-azure-with-powershell]
+
 ## <a id="stop"></a>タスク: 仮想マシンの停止
 
-仮想マシンの停止には、**Stop-AzureVM** コマンドを使用できます。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前に置き換え、*VM name* を仮想マシンの名前に置き換えた後、このコマンドを実行します。
 
-	Stop-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
+	Stop-AzureVM -ResourceGroupName "resource group name" -Name "VM name"
 
-次のような情報が表示されます。
+次のように確認が求められます。
 
 	Virtual machine stopping operation
 	This cmdlet will stop the specified virtual machine. Do you want to continue?
 	[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
 
+次のような結果が返されます。
 
 	EndTime             : 4/28/2015 11:09:08 AM -07:00
 	Error               :
@@ -911,13 +316,17 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 	RequestId           : 5cc9ddba-0643-4b5e-82b6-287b321394ee
 	StatusCode          : OK
 
+このタスクが実行されているビデオを参照する場合は、次をご覧ください。
+
+[AZURE.VIDEO start-stop-restart-and-delete-vms-in-microsoft-azure-with-powershell]
+
 ## <a id="restart"></a>タスク: 仮想マシンの再起動
 
-仮想マシンの再起動には、**Restart-AzureVM** コマンドを使用できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
+次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前に置き換え、*VM name* を仮想マシンの名前に置き換えた後、このコマンドを実行します。
 
-	Restart-AzureVM -ResourceGroupName "<resource group name>" -Name "<VM name>"
+	Restart-AzureVM -ResourceGroupName "resource group name" -Name "VM name"
 
-次のような情報が表示されます。
+次のような結果が返されます。
 
 	EndTime             : 4/28/2015 11:16:26 AM -07:00
 	Error               :
@@ -928,18 +337,25 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 	RequestId           : 7dac33e3-0164-4a08-be33-96205284cb0b
 	StatusCode          : OK
 
+このタスクが実行されているビデオを参照する場合は、次をご覧ください。
+
+[AZURE.VIDEO start-stop-restart-and-delete-vms-in-microsoft-azure-with-powershell]
+
 ## <a id="delete"></a>タスク: 仮想マシンの削除
 
-仮想マシンの削除には、**Remove-AzureVM** コマンドを使用できます。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。**-Force** パラメーターを使用して確認プロンプトをスキップできます。
+次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前に置き換え、*VM name* を仮想マシンの名前に置き換えた後、このコマンドを実行します。
 
-	Remove-AzureVM -ResourceGroupName "<resource group name>" –Name "<VM name>"
+	Remove-AzureVM -ResourceGroupName "resource group name" –Name "VM name"
 
-次のような情報が表示されます。
+> [AZURE.NOTE]**-Force** パラメーターを使用して確認プロンプトをスキップできます。
+
+-Force パラメーターを使用していない場合は、次のように確認が求められます。
 
 	Virtual machine removal operation
 	This cmdlet will remove the specified virtual machine. Do you want to continue?
 	[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
 
+次のような結果が返されます。
 
 	EndTime             : 4/28/2015 11:21:55 AM -07:00
 	Error               :
@@ -950,16 +366,17 @@ Azure のデプロイ名、リソース グループ名、Azure の場所を入�
 	RequestId           : 6a30d2e0-63ca-43cf-975b-058631e048e7
 	StatusCode          : OK
 
-## その他のリソース
+このタスクが実行されているビデオを参照する場合は、次をご覧ください。
 
-[Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
+[AZURE.VIDEO start-stop-restart-and-delete-vms-in-microsoft-azure-with-powershell]
+
+## その他のリソース
+[Azure のクイック スタート テンプレート](http://azure.microsoft.com/documentation/templates/)と[アプリケーション フレームワーク](virtual-machines-app-frameworks.md)
+
+[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
 
 [Azure リソース マネージャーの概要](resource-group-overview.md)
 
-[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-azure-cli.md)
-
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-[Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
-
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

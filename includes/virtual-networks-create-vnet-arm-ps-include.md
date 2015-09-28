@@ -7,7 +7,7 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 
 		Switch-AzureMode AzureResourceManager
 	
-	上記のコマンドで想定される出力を次に示します。
+	予想される出力:
 
 		WARNING: The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.
 
@@ -17,7 +17,7 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 
 		New-AzureResourceGroup -Name TestRG -Location centralus
 
-	上記のコマンドで想定される出力を次に示します。
+	予想される出力:
 	
 		ResourceGroupName : TestRG
 		Location          : centralus
@@ -35,7 +35,7 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		New-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet `
 			-AddressPrefix 192.168.0.0/16 -Location centralus	
 		
-	上記のコマンドで想定される出力を次に示します。
+	予想される出力:
 
 		Name              : TestVNet
 		ResourceGroupName : TestRG
@@ -66,7 +66,7 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		Add-AzureVirtualNetworkSubnetConfig -Name FrontEnd `
 			-VirtualNetwork $vnet -AddressPrefix 192.168.1.0/24
 		
-	上記のコマンドで想定される出力を次に示します。
+	予想される出力:
 
 		Name              : TestVNet
 		ResourceGroupName : TestRG
@@ -106,7 +106,7 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 
 		Set-AzureVirtualNetwork -VirtualNetwork $vnet	
 		
-	上記のコマンドで想定される出力を次に示します。
+	予想される出力:
 
 		Name              : TestVNet
 		ResourceGroupName : TestRG
@@ -147,4 +147,4 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		                      }
 		                    ]
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

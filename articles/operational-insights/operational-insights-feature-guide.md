@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/06/2015"
+	ms.date="09/10/2015"
 	ms.author="banders"/>
 
 # Operational Insights 機能ガイド
@@ -47,7 +47,7 @@ Operational Insights では、次の機能を使用して、マシン データ�
 	- [Operational Insights にコンピューターを直接接続する](operational-insights-direct-agent.md)
 	- [Microsoft Azure でサーバーのデータを分析する](operational-insights-analyze-data-azure.md)
 - **上記のすべてをモバイル アプリケーションを使用して出先で実行します。**
-	- Windows Phone アプリケーションの詳細については、[Operational Insights モバイル アプリ](http://www.windowsphone.com/ja-jp/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865)に関するページを参照してください。
+	- Windows Phone アプリケーションの詳細については、[Operational Insights モバイル アプリ](http://www.windowsphone.com/ja-JP/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865)に関するページを参照してください。
 
 ## オペレーション インサイト環境
 
@@ -72,4 +72,4 @@ Operations Manager サービスとしてオペレーションインサイト ソ
 ### Operational Insights を利用できる地域
 Microsoft Azure Operational Insights は米国内でホストされています。Operational Insights の言語は英語ですが、サービスは英語圏以外の多数の市場で使用できます。詳細については、「[世界各国/地域でのご利用の可否](http://go.microsoft.com/fwlink/?LinkId=229842)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

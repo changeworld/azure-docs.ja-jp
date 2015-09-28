@@ -1,30 +1,31 @@
 <properties 
-	pageTitle="DocumentDB に関してよく寄せられる質問 | Microsoft Azure"
-	description="NoSQL ドキュメント データベース サービスである Azure DocumentDB に関してよく寄せられる質問に対する回答を示します。"
-	services="documentdb"
-	authors="mimig1"
-	manager="jhubbard"
-	editor="monicar"
+	pageTitle="DocumentDB データベース質問 - よく寄せられる質問 | Microsoft Azure" 
+	description="Azure DocumentDB Nosql ドキュメント データベース サービスに関してよく寄せられる質問に対する回答を示します。容量、パフォーマンス レベル、およびスケーリングに関するデータベース質問に回答します。" 
+	keywords="Database questions, frequently asked questions, documentdb, azure, Microsoft azure"
+	services="documentdb" 
+	authors="mimig1" 
+	manager="jhubbard" 
+	editor="monicar" 
 	documentationCenter=""/>
 
 <tags 
-	ms.service="documentdb"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="mimig"/>
 
 
 #DocumentDB に関してよく寄せられる質問
 
-## Microsoft Azure DocumentDB の基礎
+## Microsoft Azure DocumentDB の基礎に関するデータベース質問
 
 ### Microsoft Azure DocumentDB とは 
 Microsoft Azure DocumentDB は、スケーラブルな NoSQL ドキュメントのサービスとしてのデータベースです。Microsoft Azure の機能と能力に支えられた管理プラットフォームによって、スキーマフリーのデータに高度なクエリを実行することができ、構成可能な信頼性の高いパフォーマンスの提供、および迅速な開発が可能となります。DocumentDB は、予測可能なスループット、遅延時間の短縮、およびスキーマフリー データ モデルが重要な要件となる、Web アプリケーションやモバイル アプリケーションに適したソリューションです。DocumentDB では、ネイティブ JSON データ モデルでスキーマの柔軟性と豊富なインデックス作成機能が提供され、統合 JavaScript でマルチドキュメント トランザクションがサポートされます。
   
-このサービスのデプロイと使用の手順については、[DocumentDB ドキュメント ページ](http://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
+データベース質問および回答の詳細と、このサービスのデプロイおよび使用の手順については、[DocumentDB ドキュメント ページ](http://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
 
 ### DocumentDB はどのような種類のデータベースですか?
 DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント指向のデータベースです。DocumentDB では、高度な DocumentDB [SQL クエリ文法](documentdb-sql-query.md)で照会できる入れ子になった自立的データ構造がサポートされます。DocumentDB では、[ストアド プロシージャ、トリガー、およびユーザー定義関数](documentdb-programming.md)を使用して、サーバー側 JavaScript のトランザクション処理を高いパフォーマンスで実行できます。また、開発者によって調整可能な一貫性レベルを、関連付けられた[パフォーマンス レベル](documentdb-performance-levels.md)と共にサポートします。
@@ -75,7 +76,7 @@ Microsoft Azure DocumentDB は、[Azure プレビュー ポータル][azure-port
 ### どのようにしてユーザーおよびアクセス許可を設定しますか?
 [DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して、ユーザーおよびアクセス許可を作成できます。
 
-## Microsoft Azure DocumentDB に対する開発
+## Microsoft Azure DocumentDB に対する開発についてのデータベース質問
 
 ### どのようにして DocumentDB に対する開発を開始しますか?
 .NET、Python、Node.js、JavaScript、および Java では、[SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を利用できます。開発者は、[RESTful HTTP API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を利用して、さまざまなプラットフォームと言語で DocumentDB リソースを操作することもできます。
@@ -111,4 +112,4 @@ DocumentDB にドキュメントを一括挿入するには 3 つの方法があ
 [query]: documentdb-sql-query.md
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

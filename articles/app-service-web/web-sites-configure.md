@@ -1,25 +1,27 @@
 <properties 
-	pageTitle="Azure App Service での Web アプリの構成"
-	description="Azure App Service での Web アプリの構成方法"
-	services="app-service\web"
-	documentationCenter=""
-	authors="erikre"
-	manager="wpickett"
-	editor="mollybos"/>
+	pageTitle="Azure App Service での Web アプリの構成" 
+	description="Azure App Service での Web アプリの構成方法" 
+	services="app-service\web" 
+	documentationCenter="" 
+	authors="erikre" 
+	manager="wpickett" 
+	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.service="app-service" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/16/2015" 
 	ms.author="erikre"/>
 
 
 # Azure App Service での Web アプリの構成 #
 
 このトピックでは、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)で Web アプリを構成する方法について説明します。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## アプリケーションの設定
 
@@ -148,10 +150,10 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 
 ドメイン名を表示するには、**[すべての設定]** > **[カスタム ドメインと SSL]** をクリックします。
 
-### 展開
+### デプロイメント
 
 - 継続的なデプロイを設定します。「[Azure App Service での Git を使用した Web アプリのデプロイ](web-sites-publish-source-control.md)」を参照してください。
-- 展開スロット:[Azure App Service での Web アプリのステージング環境へのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
+- デプロイメント スロット:[Azure App Service での Web アプリのステージング環境へのデプロイ](web-sites-staged-publishing.md)に関するページをご覧ください。
 
 デプロイ スロットを表示するには、**[すべて設定]** > **[デプロイ スロット]** をクリックします。
 
@@ -176,4 +178,4 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

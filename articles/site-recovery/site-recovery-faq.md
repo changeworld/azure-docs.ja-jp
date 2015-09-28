@@ -56,7 +56,7 @@ ASR は ISO 27001:2005 の認証を受けており、HIPAA、DPA、および Fed
 *Hyper-V および VMM のシナリオ*では、ダイナミック ディスクをサポートしています。*VMware 仮想マシンまたは物理マシンのシナリオ*では、ダイナミック ディスクをサポートしていません。[Azure Site Recovery Feedback Forum (Azure Site Recovery フィードバック フォーラム)](http://feedback.azure.com/forums/256299-site-recovery) を通じてフィードバックをお送りください。
 
 ### サポートされているストレージ アカウント タイプは何ですか。
-[標準的な geo 冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage)はサポートされています。[Premium Storage アカウント]((../storage/storage-premium-storage-preview-portal/) は、[VMware 仮想マシンまたは物理マシンのシナリオ](site-recovery-vmware-to-azure.md)でのみサポートされます。標準のローカル冗長ストレージのサポートは未対応です。[Support for locally redundant storage support (ローカル冗長ストレージをサポートするためのサポート)](http://feedback.azure.com/forums/256299-site-recovery/suggestions/7204469-local-redundant-type-azure-storage-support) を通じてフィードバックをお送りください。
+[標準的な地理冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage)はサポートされています。[Premium Storage アカウント]((../storage/storage-premium-storage-preview-portal/) は、[VMware 仮想マシンまたは物理マシンのシナリオ](site-recovery-vmware-to-azure.md)でのみサポートされます。標準のローカル冗長ストレージのサポートは未対応です。[Support for locally redundant storage support (ローカル冗長ストレージをサポートするためのサポート)](http://feedback.azure.com/forums/256299-site-recovery/suggestions/7204469-local-redundant-type-azure-storage-support) を通じてフィードバックをお送りください。
 
 ### 既存の復旧サイトから第 3 のサイトにレプリケーションを拡張することができますか。
 これはサポートされていません。[Azure Site Recovery Feedback Forum - Support for extending replication (Azure Site Recovery フィードバック フォーラム - レプリケーションの拡張のサポート)](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication) を通じてフィードバックをお送りください。
@@ -82,7 +82,7 @@ Hyper-V サイト間のレプリケーションと保護を有効にするため
 
 
 ### Hyper-V ゲスト オペレーティング システムとしては、どのバージョンがサポートされますか。
-サポートされるゲスト オペレーティング システムの最新のリストが、「[仮想マシンとゲスト オペレーティング システムについて](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)」というタイトルのトピックで提供されています。
+サポートされるゲスト オペレーティング システムの最新のリストが、「[Virtual Machines とゲスト オペレーティング システムについて](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)」というタイトルのトピックで提供されています。
 
 ### Hyper-V がクライアント オペレーティング システムで実行されている場合、仮想マシンの保護を構成できますか。
 
@@ -108,7 +108,7 @@ Hyper-V サイト間のレプリケーションと保護を有効にするため
 DR 用にサービス プロバイダー独自のサイトを使用する場合、アプリケーション データが Azure に送信されることはありません。データは、サービス プロバイダーのサイト間で直接暗号化およびレプリケートされます。Azure を DR サイトとして使用する場合、アプリケーション データは Azure に送信されます。保管されているデータおよび転送中のデータは、暗号化された状態に維持されます。また、VPN、ExpressRoute、またはパブリック インターネットを使用して、Azure との接続を確立することもできます。
 
 ### Azure を DR サイトとして使用する場合、仮想マシンを Azure で常時実行する必要がありますか。
-いいえ、ASR はファーストクラスのパブリック クラウド DRaaS ソリューションとして設計されています。データは、geo 冗長 Azure ストレージ アカウントに独自のサブスクリプションでレプリケートされます。DR の訓練または実際のフェールオーバーを実行すると、ASR は自動的に仮想マシンをお客様のサブスクリプションで作成します。
+いいえ、ASR はファーストクラスのパブリック クラウド DRaaS ソリューションとして設計されています。データは、地理冗長 Azure ストレージ アカウントに独自のサブスクリプションでレプリケートされます。DR の訓練または実際のフェールオーバーを実行すると、ASR は自動的に仮想マシンをお客様のサブスクリプションで作成します。
 
 ### Azure を DR サイトとして選択した場合、テナントレベルでの分離を確立できますか。
 はい。
@@ -127,7 +127,7 @@ Azure パック、クラウド プラットフォーム システム、および
 いいえ、必須ではありません。ASR はパブリック インターネット経由でも同様に動作します。ただし、サイト間 VPN を構成している場合、フェールオーバーした仮想マシンに以前と同じ方法でアクセスできます。Azure を災害復旧サイトとして有効にする場合のネットワークに関する注意事項の詳細については、「[Networking Infrastructure Setup for Microsoft Azure as a Disaster Recovery Site (災害復旧サイトとしての Microsoft Azure 用のネットワーク インフラストラクチャの設定)](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)」ブログを参照してください。
 
 ### ASR 保護の料金に追加料金が発生することがありますか。
-安定した状態では、変更が Geo 冗長 Azure ストレージにレプリケートされ、Azure IaaS 仮想マシンの料金は何も支払う必要はありません (すばらしいメリット)。Azure へのフェールオーバーを実行すると、ASR により、Azure IaaS 仮想マシンが自動的に作成されます。その後、Azure で消費したコンピューティング リソースについて、料金が請求されます。
+安定した状態では、変更が地理冗長 Azure Storage にレプリケートされ、Azure IaaS 仮想マシンの料金は何も支払う必要はありません (すばらしいメリット)。Azure へのフェールオーバーを実行すると、ASR により、Azure IaaS 仮想マシンが自動的に作成されます。その後、Azure で消費したコンピューティング リソースについて、料金が請求されます。
 
 ### ブランチ オフィスに VMM がインストールされていません。ブランチ オフィスのワークロードの保護を Azure に対して有効にできますか。 これを行うために ASR を使用する主要なメリットは何ですか。
 はい、Hyper-V ホストで動作する、SCVMM によって管理されていない仮想マシンを、ASR を使用して保護できます。
@@ -153,7 +153,7 @@ ASR を使用して、すべてのブランチ オフィスの障害復旧ニー
 Hyper-V サイトと Azure の間で ASR および Hyper-V レプリケーションを使用している場合は、Windows Server 2012 および Windows Server 2012 R2 を使用できます。
 
 ### ゲスト オペレーティング システムとしては、どのバージョンがサポートされますか。
-サポートされるゲスト オペレーティング システムの最新のリストが、「[仮想マシンとゲスト オペレーティング システムについて](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)」というタイトルの記事で提供されています。
+サポートされるゲスト オペレーティング システムの最新のリストが、「[Virtual Machines とゲスト オペレーティング システムについて](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)」というタイトルの記事で提供されています。
 
 ## 2 つの VMM データセンター間でのデプロイ
 
@@ -199,6 +199,15 @@ NetApp、EMC、および HP では、SMI-S プロバイダーを更新するこ�
 
 
 また、アレイは、更新された SMI-S プロバイダーを使用して SCVMM によって検出される必要もあります。このプロバイダーは、お使いのストレージのベンダーにより提供されます。
+
+## VMware と Azure の間でのデプロイ
+
+### VMware VM のクローンを作成しています。クローンを作成した VM を Azure に置いて保護できますか。
+保護されている VM のクローンは作成できません。クローンを作成した VM にモバイル サービスがインストールされていない限り、クローンを作成した VMware VM を Azure に置いて保護できます。重複エントリを回避するために、モバイル サービスをインストールする前に VM のクローンを作成できます。両方の VM の GUID が同じ場合、複製に影響が出るためです。
+
+### プロセス サーバー VM のクローンを作成できますか。
+いいえ。プロセス サーバーのクローンは作成できません。プロセス サーバーがデプロイされるとき、独自の ID が作成されます。クローンを作成すると、2 つのプロセス サーバーで GUID が同じになり、既存の複製に影響が出ます。
+
 
 ## 物理サーバーと Azure の間でのデプロイ
 
@@ -247,4 +256,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

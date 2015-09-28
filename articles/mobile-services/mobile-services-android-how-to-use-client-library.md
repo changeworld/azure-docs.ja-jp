@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/11/2015" 
 	ms.author="ricksal"/>
 
 
@@ -55,7 +55,7 @@ Mobile Services を初めて使用する場合は、クイックスタート チ
 				"AppKey", 			// replace with the Application Key
 				this)
 
-前のコードの `MobileServiceUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Azure 管理ポータルで確認できます。モバイル サービスを選択し、*[ダッシュボード]* をクリックしてください。
+前のコードの `MobileServiceUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーで順に置き換えます。どちらも Microsoft Azure 管理ポータルで確認できます。モバイル サービスを選択し、*[ダッシュボード]* をクリックしてください。
 
 ##<a name="instantiating"></a>方法: テーブル参照を作成する
 
@@ -649,6 +649,12 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 
 *ToDoItem* テーブルを変更したときにその結果を表示するには、その都度アダプターを呼び出す必要があります。変更はレコード単位で加えられるため、操作の対象はコレクションではなく行になります。項目を挿入する場合は、アダプターの *add* メソッドを呼び出します。項目を削除する場合は、*remove* メソッドを呼び出します。
 
+##<a name="#custom-api"></a>方法: カスタム API の呼び出し
+
+カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。モバイル サービスでカスタム API を作成する方法の例については、「[カスタム API を定義する方法](mobile-services-dotnet-backend-define-custom-api.md)」を参照してください。
+
+[AZURE.INCLUDE [mobile-services-android-call-custom-api](../../includes/mobile-services-android-call-custom-api.md)]
+
 
 ##<a name="authentication"></a>方法: ユーザーを認証する
 
@@ -673,7 +679,7 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 
 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用して要求を変更することもできます。
 
-これらの最初の 2 つのタスクは、[Azure 管理ポータル](https://manage.windowsazure.com/)を使用して実行します。詳細については、「[認証の使用](http://go.microsoft.com/fwlink/p/?LinkId=296316)」を参照してください。
+これらの最初の 2 つのタスクは、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)を使用して実行します。詳細については、「[認証の使用](http://go.microsoft.com/fwlink/p/?LinkId=296316)」を参照してください。
 
 ### <a name="caching"></a>方法: アプリケーションに認証コードを追加する
 
@@ -927,4 +933,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Mobile Services を使い始める]: mobile-services-android-get-started.md
 [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

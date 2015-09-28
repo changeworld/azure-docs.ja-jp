@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/04/2015"
+   ms.date="09/15/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したバックアップ カタログの管理
@@ -205,6 +205,7 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 
 ## 次のステップ
 
-[StorSimple Snapshot Manager のタスクとワークフローの詳細](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows)。
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
+- [StorSimple Snapshot Manager のタスクとワークフローの詳細](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

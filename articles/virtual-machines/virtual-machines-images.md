@@ -3,7 +3,7 @@
 	description="Azure で仮想マシンのイメージを使用する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor="tysonn"
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/13/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 # 仮想マシンのイメージについて
 
@@ -57,4 +57,4 @@ Azure サブスクリプションに使用できるイメージの管理には�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

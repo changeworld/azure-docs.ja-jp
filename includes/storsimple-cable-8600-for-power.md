@@ -1,3 +1,5 @@
+<!--author=alkohli last changed: 9/16/15-->
+
 
 #### デバイスの電源ケーブル接続方法
 
@@ -41,4 +43,4 @@
     |8|EBOD エンクロージャ|
     |9|PDU|
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

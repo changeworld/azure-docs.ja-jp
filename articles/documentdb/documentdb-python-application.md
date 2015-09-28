@@ -1,6 +1,7 @@
 <properties
-    pageTitle="DocumentDB を使用した Python Flask Web アプリケーションの構築 | Microsoft Azure"
-    description="DocumentDB を使用してデータを格納し、Azure にホストされた Python および Flask (MVC) Web アプリケーションからそのデータにアクセスする方法について説明します。"
+    pageTitle="DocumentDB による Python Flask Web アプリケーション開発 | Microsoft Azure"
+    description="DocumentDB を使用してデータを格納し、Azure にホストされた Python Flask Web アプリケーションからそのデータにアクセスする方法をデータベース チュートリアルで確認します。アプリケーション開発ソリューションを探します。" 
+	keywords="Application development, database tutorial, python flask, python web application, python web development, documentdb, azure, Microsoft azure"
     services="documentdb"
     documentationCenter="python"
     authors="ryancrawcour"
@@ -16,13 +17,13 @@
     ms.date="09/03/2015"
     ms.author="ryancraw"/>
 
-# DocumentDB を使用した Python Flask (MVC) Web アプリケーションの構築
+# DocumentDB による Python Flask Web アプリケーション開発
 
-このドキュメントでは、Azure DocumentDB を効果的に活用して、JSON ドキュメントの保存とクエリを行う方法を紹介します。チュートリアルとして、Azure DocumentDB を使用して投票の Web アプリケーションを構築する方法を取り上げます。
+このドキュメントでは、Azure DocumentDB を効果的に活用して、JSON ドキュメントの保存とクエリを行う方法を紹介します。エンドツーエンドの Python Web アプリケーション チュートリアルとして、Azure DocumentDB を使用して投票の Web アプリケーションを構築する方法を採り上げます。
 
 このチュートリアルでは、Azure に用意されている DocumentDB サービスを使用して、Azure にホストされている Python Web アプリケーションからデータを保存する方法や、データにアクセスする方法を説明します。Python と Azure Websites の使用経験がある読者を想定しています。
 
-このチュートリアルの内容:
+このデータベース チュートリアルの内容:
 
 1. DocumentDB アカウントを作成してプロビジョニングする
 2. Python MVC アプリケーションを作成する
@@ -31,10 +32,10 @@
 
 このチュートリアルの手順を実行すると、アンケートに回答する単純な投票アプリケーションを作成できます。
 
-![このチュートリアルで作成された、todo リスト Web アプリケーションのスクリーン ショット](./media/documentdb-python-application/image1.png)
+![このデータベース チュートリアルで作成された、ToDo リスト Web アプリケーションのスクリーン ショット](./media/documentdb-python-application/image1.png)
 
 
-## 前提条件
+## データベース チュートリアルの前提条件
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
@@ -58,18 +59,18 @@
 
 1. Visual Studio を開いてから、**[ファイル]**、**[新しいプロジェクト]**、**[Python]**、**[Flask Web プロジェクト]** の順にクリックして、**tutorial** という名前の新しいプロジェクトを作成します。
 
-	Flask は、Python で Web アプリケーションをより迅速に作成するのに役立つ Web フレームワークです。[Flask のチュートリアルについては、ここをクリックしてください][]。
+	Python Flask は、Python で Web アプリケーションを短時間で作成するための Web アプリケーション開発フレームワークです。[Flask のチュートリアルについては、ここをクリックしてください][]。
 
-	![Vidual Studio の [新しいプロジェクト] ウィンドウのスクリーン ショット。左側で [Python] が強調表示され、中央で [Flask Web プロジェクト] が選択され、[名前] ボックスに tutorial という名前が入力されている](./media/documentdb-python-application/image9.png)
+	![Visual Studio の [新しいプロジェクト] ウィンドウのスクリーン ショット。左側で [Python] が強調表示され、中央で [Python Flask Web プロジェクト] が選択され、[名前] ボックスに tutorial という名前が入力されている](./media/documentdb-python-application/image9.png)
 
 2. 外部パッケージをインストールするかどうかをたずねるメッセージが表示されます。**[仮想環境にインストールする]** をクリックします。現時点では PyDocumentDB は Python 3.x をサポートしていないため、必ず Python 2.7 をベースの環境として使用してください。これで、プロジェクトに必要な Python 仮想環境が設定されます。
 
-	![[tutorial - Python Tools for Visual Studio] ウィンドウのスクリーン ショット](./media/documentdb-python-application/image10.png)
+	![[database tutorial - Python Tools for Visual Studio] ウィンドウのスクリーン ショット](./media/documentdb-python-application/image10.png)
 
 
 ## 手順 3: Python Flask Web アプリケーションを変更する
 
-### プロジェクトへの Flask パッケージの追加
+### プロジェクトへの Python Flask パッケージの追加
 
 プロジェクトを設定した後は、プロジェクトに必要な特定の Flask パッケージ (DocumentDB 用の Python パッケージ pydocumentdb など) を追加する必要があります。
 
@@ -100,7 +101,7 @@
 
 - **F5** キーを押して Web サイトを起動します。Flask 開発サーバーが起動され、Web ブラウザーが開きます。次のページが表示されます。
 
-	![ブラウザーに表示される空の Flask プロジェクト](./media/documentdb-python-application/image12.png)
+	![空の Python Flask Web 開発プロジェクトがブラウザーで表示されます](./media/documentdb-python-application/image12.png)
 
 ### データベース、コレクション、およびドキュメント定義の作成
 
@@ -301,7 +302,7 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
 	![Visual Studio ソリューション エクスプローラーのウィンドウのスクリーンショット](./media/documentdb-python-application/image15.png)
 
 
-## 手順 4: ローカルでアプリケーションを実行する
+## 手順 4: ローカルで Web アプリケーションを実行する
 
 1. Visual Studio で F5 キーを押すか、**[実行]** ボタンをクリックすると、次のような画面が表示されます。
 
@@ -309,7 +310,7 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
 
 2. **[投票データベースの作成/クリア]** をクリックして、データベースを生成します。
 
-	![Web アプリケーションの [Create Page] ページのスクリーン ショット](./media/documentdb-python-application/image17.png)
+	![Web アプリケーションの [Create Page] ページのスクリーン ショット - 開発詳細](./media/documentdb-python-application/image17.png)
 
 3. 次に、**[投票]** をクリックし、回答を選択します。
 
@@ -320,7 +321,7 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
 	![投票結果のページが表示されているスクリーン ショット](./media/documentdb-python-application/image19.png)
 
 
-## 手順 5: Azure Websites にアプリケーションをデプロイする
+## 手順 5: Web アプリケーションを Azure Websites にデプロイする
 
 以上で、DocumentDB と連携するアプリケーションが完成しました。今度は、このアプリケーションを Azure Websites にデプロイします。
 
@@ -336,11 +337,11 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
 
 ## 次のステップ
 
-ご利用ありがとうございます。 ここでは初めての方を対象に、Azure DocumentDB を使用して Python アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
+ご利用ありがとうございます。 ここでは初めての方を対象に、Azure DocumentDB を使用して Python Web アプリケーションを作成し、Azure Web サイトに発行する方法を説明しました。
 
 マイクロソフトでは、このトピックをお客様からのフィードバックに基づいて頻繁に更新、改善しています。チュートリアルを終了したら、このページの上部と下部にある投票ボタンを使用し、希望される改善内容についてのフィードバックをお寄せください。マイクロソフトから直接ご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
 
-アプリケーションに機能を追加する場合は、[DocumentDB Python SDK](https://pypi.python.org/pypi/pydocumentdb) から入手できる API を参考にしてください。
+Web アプリケーションに機能を追加する場合は、[DocumentDB Python SDK](https://pypi.python.org/pypi/pydocumentdb) から入手できる API を参考にしてください。
 
   [Flask のチュートリアルについては、ここをクリックしてください]: http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
   [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
@@ -351,4 +352,4 @@ templates フォルダーの下に、create.html、results.html、vote.html の�
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

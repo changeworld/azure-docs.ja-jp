@@ -1,27 +1,29 @@
 <properties 
-	pageTitle="Azure の基幹業務アプリケーション | Microsoft Azure"
-	description="Azure の基幹業務アプリケーションの価値を説明し、テスト環境の設定および高可用性構成のデプロイを実行します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="JoeDavies-MSFT"
-	manager="timlt"
+	pageTitle="Azure の基幹業務アプリケーション | Microsoft Azure" 
+	description="Azure の基幹業務アプリケーションの価値を説明し、テスト環境の設定および高可用性構成のデプロイを実行します。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="Windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/11/2015" 
 	ms.author="josephd"/>
 
 # Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
+
 Microsoft Azure で、最初または次の、Web ベースでイントラネット専用の基幹業務アプリケーションを設定し、簡単に構成できる機能と、新機能を追加するためにアプリケーションを迅速に拡張する機能を活用します。
  
-Azure インフラストラクチャ サービスの仮想マシンと仮想ネットワークを使用すると、組織のユーザーがアクセス可能な基幹業務アプリケーションをすばやくデプロイし、実行できるようになります。たとえば、次のようにセットアップできます。
+Azure インフラストラクチャ サービスの Virtual Machines と Virtual Network を使用すると、組織のユーザーがアクセス可能な基幹業務アプリケーションをすばやくデプロイし、実行できるようになります。たとえば、次のようにセットアップできます。
 
 ![](./media/virtual-machines-workload-high-availability-LOB-application/workload-lobapp-phase4.png)
  
@@ -103,4 +105,4 @@ Azure での高可用な基幹業務アプリケーションの基本的で代�
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

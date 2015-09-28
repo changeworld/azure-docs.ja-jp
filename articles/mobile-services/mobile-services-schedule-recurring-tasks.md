@@ -1,6 +1,6 @@
 <properties
-	pageTitle="スケジューラによるバックエンド タスクのスケジュール | Microsoft Azure"
-	description="Azure Mobile Services Scheduler を使用して、モバイル アプリケーション用のジョブをスケジュールします。"
+	pageTitle="JavaScript バックエンド モバイル サービスのバックエンド タスクのスケジュール | Microsoft Azure"
+	description="Azure Mobile Services のスケジューラを使用し、日程に基づいて実行される JavaScript バックエンド ジョブを定義します。"
 	services="mobile-services"
 	documentationCenter=""
 	authors="ggailey777"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/14/2015"
 	ms.author="glenga"/>
 
 # Mobile Services での繰り返し発生するジョブのスケジュール
 
-> [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(Any | .NET)](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
-- [(Any | Javascript)](mobile-services-schedule-recurring-tasks.md)
+> [AZURE.SELECTOR]
+- [.NET backend](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
+- [Javascript backend](mobile-services-schedule-recurring-tasks.md)
 
 このトピックでは、管理ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
@@ -46,11 +46,11 @@
 
 次に、Twitter にアクセスしてツイート データを新しい Updates テーブルに格納するための、スケジュールされたジョブを作成します。
 
-2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。
+2. **[Scheduler]** タブをクリックし、**[作成]** をクリックします。
 
     >[AZURE.NOTE]モバイル サービスを<em> Free </em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
 
-3. [スケジューラ] ダイアログ ボックスで、_[ジョブ名]_ に「**getUpdates**」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。
+3. [Scheduler] ダイアログ ボックスで、_[ジョブ名]_ に「**getUpdates**」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。
 
    	これにより、**getUpdates** という名前の新しいジョブが作成されます。
 
@@ -140,7 +140,7 @@
 
 7. [戻る] ボタンをクリックし、**[データ]**、**Updates** テーブル、**[参照]** の順にクリックして、Twitter データがテーブルに挿入されたことを確認します。
 
-8. [戻る] ボタン、**[スケジューラ]** の順にクリックし、**getUpdates** を選択して、**[有効化]** をクリックします。
+8. [戻る] ボタン、**[Scheduler]** の順にクリックし、**getUpdates** を選択して、**[有効化]** をクリックします。
 
    	これにより、指定されたスケジュール (ここでは 1 時間ごと) でジョブが実行されるようになります。
 
@@ -166,4 +166,4 @@
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

@@ -114,12 +114,12 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 - Privileged Identity Management: Privileged Identity Management では、サービス レベル アグリーメントと法令遵守の要件を満たすために監視が強化されています。
 - アプリケーションのセルフ サービス要求: 管理者が SaaS アプリの一覧をユーザーに提供して、ユーザーはその一覧から使用するアプリを選択できます。アプリケーションは、すぐに使用できる場合も、承認後に使用できる場合もあります。
 - Azure Reporting API: Azure Active Directory のすべてのセキュリティ レポートのデータは、他の監視ツールや SIEM ツールで使用できます。
+- [Azure Active Directory B2C](http://azure.microsoft.com/services/active-directory-b2c/): 新しい包括的で大規模なクラウド ベースのコンシューマー ディレクトリおよび ID/アクセス管理サービスであり、コンシューマーとの直接的な結びつきを望むビジネス ニーズの拡大に対応するように設計されています。
 
-
-## 参照トピック
+## 次の手順
 
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

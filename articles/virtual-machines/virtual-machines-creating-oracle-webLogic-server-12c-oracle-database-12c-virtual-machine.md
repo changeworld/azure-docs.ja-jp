@@ -1,4 +1,4 @@
-<properties title="Creating an Oracle WebLogic Server 12c and Oracle Database 12c virtual machine in Azure" pageTitle="Azure での Oracle WebLogic Server 12c および Oracle Database 12c の仮想マシンの作成" description="Windows Server 2012 で実行中の Oracle WebLogic Server 12c および Oracle Database 12c のイメージを Microsoft Azure で作成する例の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
+<properties pageTitle="Azure での Oracle WebLogic Server 12c および Oracle Database 12c の仮想マシンの作成" description="Windows Server 2012 で実行中の Oracle WebLogic Server 12c および Oracle Database 12c のイメージを Microsoft Azure で作成する例の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
 <tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
 
 #Azure での Oracle WebLogic Server 12c および Oracle Database 12c の仮想マシンの作成
@@ -21,7 +21,7 @@
 
 7.	**[価格レベル]** を選択。既定では推奨される価格レベルが表示されます。すべての構成オプションを表示するには、右上の **[すべて表示]** をクリックします。
 
-8. 必要に応じて、オプションの構成を設定します ([「About Azure virtual machine configuration settingsAzure (Azure 仮想マシンの構成設定について)」](https://msdn.microsoft.com/library/azure/dn763935.aspx)を参照してください)。次の考慮事項に従います。
+8. 必要に応じて、オプションの構成を設定します。次の考慮事項に従います。
 
 	a.仮想マシン名で新しいストレージ アカウントを作成するには、**[ストレージ アカウント]** をそのままにします。
 
@@ -29,7 +29,7 @@
 
 	c.この時点ではエンドポイントを追加しないでください。
 
-9.	リソース グループを選択または作成します。詳細については、[「Azure プレビュー ポータルを使用した Azure リソースの管理」](resource-group-portal.md)を参照してください。
+9.	リソース グループを選択または作成します。詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
 
 10. **[サブスクリプション]** を選択します。
 
@@ -38,10 +38,10 @@
 
 ##この仮想マシンでホストされているデータベースを作成するには
 
-**「Azure で Oracle Database 12c 仮想マシンを使ってデータベースを作成するには」**のセクションで始まる[『Create an Oracle Database 12c virtual machine in Azure (Azure での Oracle Database 12c 仮想マシンの作成)』](virtual-machines-creating-oracle-database-virtual-machine.md)の手順に従います。
+「[Azure での Oracle Database 12c 仮想マシンの作成](virtual-machines-creating-oracle-database-virtual-machine.md)」の「**Azure で Oracle Database 12c VM を使ってデータベースを作成するには**」セクションの手順に従ってください。
 
 ##この仮想マシンでホストされている Oracle WebLogic Server 12c を構成するには
-**「Azure で Oracle WebLogic Server 12c 仮想マシンを構成するには」**のセクションで始まる[『Create an Oracle WebLogic Server 12c virtual machine in Azure (Azure での Oracle WebLogic Server 12c 仮想マシンの作成)』](virtual-machines-creating-oracle-webLogic-server-12c-virtual-machine.md)の手順に従います。WebLogic Server クラスターを設定する場合、[『Create an Oracle WebLogic Server 12c cluster in Azure (Azure での Oracle WebLogic Server 12c クラスターの作成)』](virtual-machines-creating-oracle-webLogic-server-12c-cluster.md)も参照してください。
+「[Azure での Oracle WebLogic Server 12c 仮想マシンの作成](virtual-machines-creating-oracle-webLogic-server-12c-virtual-machine.md)」の「**Azure で Oracle WebLogic Server 12c 仮想マシンを構成するには**」セクションの手順に従ってください。WebLogic Server クラスターを設定する場合は、[Azure での WebLogic Server 12c の作成](virtual-machines-creating-oracle-webLogic-server-12c-cluster.md)のページも参照してください。
 
 ##その他のリソース
 [Oracle 仮想マシンのイメージに関するその他の考慮事項](miscellaneous-considerations-for-oracle-virtual-machine-images-new-article.md)
@@ -54,4 +54,4 @@
 
 [Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

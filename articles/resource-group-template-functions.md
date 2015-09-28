@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure リソース マネージャーのテンプレートの関数"
-	description="値の取得、文字列の書式設定、およびデプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
-	services="azure-resource-manager"
-	documentationCenter="na"
-	authors="tfitzmac"
-	manager="wpickett"
-	editor=""/>
+   description="値の取得、文字列の書式設定、およびデプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
+   services="azure-resource-manager"
+   documentationCenter="na"
+   authors="tfitzmac"
+   manager="wpickett"
+   editor=""/>
 
 <tags
    ms.service="azure-resource-manager"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/21/2015"
-	ms.author="tomfitz"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/14/2015"
+   ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
 
@@ -108,6 +108,25 @@
 | operand1 | あり | 割られる数。
 | operand2 | あり | 割る数。ゼロ (0) 以外にする必要があります。
 
+## int
+
+**int(valueToConvert)**
+
+指定された値を整数に変換します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| valueToConvert | あり | 整数に変換する値。値の種類は文字列か整数になります。
+
+次の例では、ユーザー指定のパラメーター値を整数に変換します。
+
+    "parameters": {
+        "appId": { "type": "string" }
+    },
+    "variables": { 
+        "intValue": "[int(parameters('appId'))]"
+    }
+
 ## length
 
 **length(array)**
@@ -129,7 +148,7 @@
 
     "outputs": { 
       "exampleOutput": { 
-        "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]", 
+        "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-05-01-preview')]", 
         "type" : "object" 
       } 
     } 
@@ -206,9 +225,9 @@
        }
     ]
 
-## provider
+## プロバイダー
 
-**provider (providerNamespace, [resourceType])**
+**providers (providerNamespace, [resourceType])**
 
 リソース プロバイダーとサポートされているそのリソースの種類に関する情報を返します。種類が指定されない場合は、サポートされているすべての種類が返されます。
 
@@ -384,6 +403,25 @@
         "stringPieces": "[split(parameters('inputString'), ',')]"
     }
 
+## string
+
+**string(valueToConvert)**
+
+指定された値を文字列に変換します。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| valueToConvert | あり | 文字列に変換する値。値の種類はブール値、整数、文字列のいずれかになります。
+
+次の例では、ユーザー指定のパラメーター値を文字列に変換します。
+
+    "parameters": {
+        "appId": { "type": "int" }
+    },
+    "variables": { 
+        "stringValue": "[string(parameters('appId'))]"
+    }
+
 ## sub
 
 **sub(operand1, operand2)**
@@ -470,6 +508,6 @@
 - Azure リソース マネージャー テンプレートのセクションの説明については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - 複数のテンプレートをマージするには、[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 - ある種類のリソースの作成時に指定した回数を繰り返すには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
-- 作成したテンプレートをデプロイする方法を確認するには、[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)に関する記事を参照してください。
+- 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

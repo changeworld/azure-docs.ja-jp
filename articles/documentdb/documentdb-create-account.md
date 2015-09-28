@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="データベース アカウントの作成 - 無料評価版 | Microsoft Azure" 
-	description="JSON の管理された NoSQL ドキュメント データベースである Azure DocumentDB 用のオンライン サービス ポータルを使用して、データベース アカウントを作成する方法について説明します。無料評価版を今すぐ入手してください。"
+	pageTitle="データベース アカウントの作成 - 無料試用版 | Microsoft Azure" 
+	description="JSON の管理された NoSQL ドキュメント データベースである Azure DocumentDB 用のオンライン データベース クリエーターを使用して、データベース アカウントを作成する方法について説明します。無料試用版を今すぐ入手してください。"
+	keywords="Free trial, online database creator, create a database, create database, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter="" 
 	authors="mimig1" 
@@ -45,4 +46,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

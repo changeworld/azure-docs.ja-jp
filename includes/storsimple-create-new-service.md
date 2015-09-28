@@ -1,19 +1,4 @@
-<properties 
-   pageTitle="新しい StorSimple Manager サービスを作成する"
-   description="StorSimple Manager サービスの新しいインスタンスを作成する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/18/2015"
-   ms.author="v-sharos" />
+<!--author=alkohli last changed: 9/17/15-->
 
 
 #### 新しいサービスを作成するには
@@ -39,4 +24,8 @@
  
    ![サービスの作成](./media/storsimple-create-new-service/HCS_StorSimpleManagerServicePage-include.png)
 
-<!---HONumber=August15_HO8-->
+![ビデオ](./media/storsimple-create-new-service/Video_icon.png) **ビデオ**
+
+新しい StorSimple Manager サービスを作成する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/)を参照してください。
+
+<!---HONumber=Sept15_HO3-->

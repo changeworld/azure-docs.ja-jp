@@ -3,7 +3,7 @@
 	description="Windows Server オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成して Azure にアップロードする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor="tysonn"
 	tags="azure-service-management"/>
@@ -14,39 +14,28 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2015"
-	ms.author="kathydav"/>
-
+	ms.date="09/10/2015"
+	ms.author="cynthn"/>
 
 # Windows Server VHD の作成と Azure へのアップロード#
 
-この記事では、イメージを使用してそのイメージを基にした仮想マシンを作成するための、オペレーティング システムの仮想ハード ディスク (VHD) をアップロードする方法について説明します。ディスクの詳細については、「[仮想マシン用のディスクと VHD について](virtual-machines-disks-vhds.md)」を参照してください。
-
-> [AZURE.NOTE]イメージに基づいて仮想マシンを作成する場合は、その仮想マシンで実行する予定のアプリケーションに合わせてオペレーティング システムの設定をカスタマイズできます。この構成はその仮想マシン用に保存され、イメージには影響しません。
+この記事では、イメージを使用してそのイメージを基にした仮想マシンを作成するための、オペレーティング システムの仮想ハード ディスク (VHD) をアップロードする方法について説明します。ディスクの詳細については、「[Virtual Machines 用のディスクと VHD について](virtual-machines-disks-vhds.md)」を参照してください。
 
 ## 前提条件##
 
-この記事では、次の項目があることを前提としています。
+この記事では、以下のことを前提としています。
 
 1. **Azure サブスクリプション** - お持ちでない方は、[無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。[MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。
 
 2. **Microsoft Azure PowerShell** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Microsoft Azure のダウンロード ページ](http://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルは[こちら](../powershell-install-configure.md)で入手できます。[Add-AzureVHD](http://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを使用して VHD をアップロードします。
 
-3. **.vhd ファイルに格納された、サポートされている Windows オペレーティング システム** - サポートされている Windows Server オペレーティング システムを仮想ハード ディスクにインストールした。.vhd ファイルを作成するツールはいくつかあります。Hyper-V などの仮想化ソリューションを使用して仮想マシンを作成し、オペレーティング システムをインストールできます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」をご覧ください。
+3. **.vhd ファイルに格納され、仮想マシンに接続されている、される Windows オペレーティング システム** - .vhd ファイルを作成するツールはいくつかあります。たとえば、Hyper-V を使用して仮想マシンを作成し、オペレーティング システムにインストールすることができます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。オペレーティング システムの詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](http://go.microsoft.com/fwlink/p/?LinkId=393550)」を参照してください。
 
-> [AZURE.NOTE]VHDX 形式は、Microsoft Azure ではサポートされていません。Hyper-V マネージャーまたは [Convert-VHD コマンドレット](http://technet.microsoft.com/library/hh848454.aspx)を使用して、ディスクを VHD 形式に変換できます。変換についてのチュートリアルは、[こちら](http://blogs.msdn.com/b/virtual_pc_guy/archive/2012/10/03/using-powershell-to-convert-a-vhd-to-a-vhdx.aspx)をご覧ください。
+> [AZURE.IMPORTANT]VHDX 形式は、Microsoft Azure ではサポートされていません。Hyper-V マネージャーまたは [Convert-VHD コマンドレット](http://technet.microsoft.com/library/hh848454.aspx)を使用して、ディスクを VHD 形式に変換できます。詳細については、この[ブログの投稿](http://blogs.msdn.com/b/virtual_pc_guy/archive/2012/10/03/using-powershell-to-convert-a-vhd-to-a-vhdx.aspx)を参照してください。
 
- 次の Windows Server のバージョンがサポートされています。
+## 手順 1: VHD を準備する ##
 
-OS|SKU|Service Pack|アーキテクチャ
----|---|---|---
-Windows Server 2012 R2|すべてのエディション|該当なし|x64
-Windows Server 2012|すべてのエディション|該当なし|x64
-Windows Server 2008 R2|すべてのエディション|SP1|x64
-
-## 手順 1. アップロードするイメージを準備する ##
-
-イメージを Azure にアップロードする前に、Sysprep コマンドを使用してイメージを一般化する必要があります。Sysprep の詳細については、「[Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+VHD を Azure にアップロードする前に、Sysprep ツールを使用して一般化する必要があります。一般化によって、VHD をイメージとして使用できるように準備します。Sysprep の詳細については、「[Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 オペレーティング システムがインストールされている仮想マシンから、次の手順を実行します。
 
@@ -66,27 +55,29 @@ Windows Server 2008 R2|すべてのエディション|SP1|x64
 
 6.  **[OK]** をクリックします。
 
-## 手順 2. Azure にストレージ アカウントを作成する ##
+## 手順 2: Azure ストレージ アカウントを作成する、またはアカウントの情報を取得する##
 
-仮想マシンを作成するために Azure で使用できる .vhd ファイルをアップロードするには、Azure のストレージ アカウントが必要です。ストレージ アカウントは、Azure ポータルを使用して作成できます。
+.vhd ファイルをアップロードする場所を用意するために、Azure のストレージ アカウントが必要です。この手順では、アカウントを作成する方法と、既存のアカウントから必要な情報を取得する方法について説明します。
+
+### オプション 1: ストレージ アカウントを作成する
 
 1. [ポータル](http://manage.windowsazure.com)にサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
-3. **[Data Services]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
+3. **[Data Services]**、**[Storage]**、**[簡易作成]** の順にクリックします。
 
 	![ストレージ アカウントの簡易作成](./media/virtual-machines-create-upload-vhd-windows-server/Storage-quick-create.png)
 
 4. 次のようにフィールドを指定します。
 
- - **[URL]** で、ストレージ アカウントの URL で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
+ - **[URL]** で、ストレージ アカウントの URL で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、サブスクリプションの BLOB、キュー、テーブル リソースへのアクセスに使用する URL のホスト名になります。
  - ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。アフィニティ グループを使用すると、クラウド サービスとストレージを同じデータセンターに配置できます。
- - ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの geo レプリケーションを管理する方法の詳細については、[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)に関するページを参照してください。
+ - ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。詳細については、「[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)」を参照してください。
 
       ![ストレージ アカウントの詳細の入力](./media/virtual-machines-create-upload-vhd-windows-server/Storage-create-account.png)
 
-5. **[ストレージ アカウントの作成]** をクリックします。作成したアカウントが **[ストレージ]** に表示されます。
+5. **[ストレージ アカウントの作成]** をクリックします。作成したアカウントが **[Storage]** に表示されます。
 
 	![ストレージ アカウントの作成に成功](./media/virtual-machines-create-upload-vhd-windows-server/Storagenewaccount.png)
 
@@ -104,25 +95,33 @@ Windows Server 2008 R2|すべてのエディション|SP1|x64
 
 	> [AZURE.NOTE]既定では、コンテナーはプライベートであり、アカウント所有者のみがアクセスできます。コンテナー内の BLOB にはパブリック読み取りアクセスを許可し、コンテナーのプロパティやメタデータにはアクセスを許可しない場合は、**[パブリック BLOB]** オプションを使用します。コンテナーと BLOB に完全パブリック読み取りアクセスを許可するには、**[パブリック コンテナー]** オプションを使用します。
 
-## 手順 3. Microsoft Azure への接続を準備する ##
+### オプション 2: ストレージ アカウントの情報を取得する
+
+1.	[ポータル](http://manage.windowsazure.com)にサインインします。
+
+2.	ナビゲーション ウィンドウで **[Storage]** をクリックします。
+
+3.	ストレージ アカウントの名前をクリックし、**[ダッシュボード]** をクリックします。
+
+4.	ダッシュボードの **[サービス]** で、BLOB の URL にマウスを移動し、クリップボード アイコンをクリックして URL をコピーし、貼り付けて保存します。この URL は、VHD をアップロードするコマンドを構築するときに使用します。
+
+## 手順 3: Azure PowerShell からサブスクリプションに接続する
 
 .vhd ファイルをアップロードする前に、コンピューターと Azure のサブスクリプションの間にセキュリティで保護された接続を確立する必要があります。接続の確立には、Microsoft Azure Active Directory 方式または証明書方式を使用できます。
 
-> [AZURE.TIP]Azure PowerShell を使用するには、[Microsoft Azure PowerShell のインストールおよび構成の方法](../install-configure-powershell.md)に関するページを参照してください。全般的な情報については、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」をご覧ください。
+> [AZURE.TIP]Azure PowerShell を使用するには、[Microsoft Azure PowerShell のインストールおよび構成の方法](../install-configure-powershell.md)に関するページを参照してください。全般的な情報については、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」を参照してください。
 
-### Microsoft Azure AD 方式を使用する
+### オプション 1: Microsoft Azure AD を使用する
 
 1. Azure PowerShell コンソールを開きます。
 
 2. 次のコマンドを入力します: `Add-AzureAccount`
 
-	このコマンドによりサインイン ウィンドウが開きますので、職場や学校のアカウントを使用してサインインできます。
+3.	サインイン ウィンドウで、職場または学校のアカウントのユーザー名とパスワードを入力します。
 
-	![PowerShell ウィンドウ](./media/virtual-machines-create-upload-vhd-windows-server/add_azureaccount.png)
+4. Azure により資格情報が認証および保存され、ウィンドウが閉じます。
 
-3. Azure により資格情報が認証および保存され、ウィンドウが閉じます。
-
-### 証明書方式を使用する
+### オプション 2: 証明書を使用する
 
 1. Azure PowerShell コンソールを開きます。
 
@@ -140,57 +139,51 @@ Windows Server 2008 R2|すべてのエディション|SP1|x64
 
 ## ステップ 4: .vhd ファイルをアップロードする
 
-.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** は手順 2 で作成したストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するためにポータルに表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。
+.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。
 
-1. 前の手順で使用した Azure PowerShell ウィンドウで、次のように入力します。
+1. 前の手順で使用した Azure PowerShell ウィンドウで、次のようにコマンドを入力します。
 
 	`Add-AzureVhd -Destination "<BlobStorageURL>/<YourImagesFolder>/<VHDName>.vhd" -LocalFilePath <PathToVHDFile>`
 
+	各値の説明: - **BlobStorageURL** は、ストレージ アカウントの URL です。- **YourImagesFolder** は、イメージを格納する BLOB ストレージ内のコンテナーです。- **VHDName** は、ポータルに表示する仮想ハード ディスクを特定するための名前です。- **PathToVHDFile** は、.vhd ファイルの完全なパスと名前です。
+
 	![PowerShell Add-AzureVHD](./media/virtual-machines-create-upload-vhd-windows-server/powershell_upload_vhd.png)
 
-	Add-AzureVhd コマンドレットの詳細については、[Add-AzureVhd に関するページ](http://msdn.microsoft.com/library/dn495173.aspx)を参照してください。
+Add-AzureVhd コマンドレットの詳細については、[Add-AzureVhd に関するページ](http://msdn.microsoft.com/library/dn495173.aspx)を参照してください。
 
-## 手順 5. カスタム イメージの一覧にイメージを追加する ##
+## 手順 5: カスタム イメージの一覧にイメージを追加する
 
-.vhd をアップロードしたら、サブスクリプションに関連付けられたカスタム イメージの一覧に、その .vhd をイメージとして追加します。
+> [AZURE.TIP]ポータルではなく Azure PowerShell を使用してイメージを追加するには、**Add-AzureVMImage** コマンドレットを使用します。次に例を示します。
 
-1. ポータルで、**[すべてのアイテム]** の **[仮想マシン]** をクリックします。
+>	`Add-AzureVMImage -ImageName <ImageName> -MediaLocation <VHDLocation> -OS <OSType>`
 
-2. [仮想マシン] で、**[イメージ]** をクリックします。
+1. ポータルで、**[すべてのアイテム]** の **[Virtual Machines]** をクリックします。
+
+2. [Virtual Machines] で、**[イメージ]** をクリックします。
 
 3. **[イメージの作成]** をクリックします。
 
 	![PowerShell Add-AzureVHD](./media/virtual-machines-create-upload-vhd-windows-server/Create_Image.png)
 
-4. **[VHD からのイメージの作成]** で、以下の手順を実行します。
+4. **[VHD からイメージを作成する]** ウィンドウで、以下の手順を実行します。
 
 	- **名前**を指定します。
 
 	- **説明**を指定します。
 
-	- **[VHD の URL]** を指定するには、フォルダー ボタンをクリックして、次のウィンドウを開きます。
+	- **[VHD の URL]** で、フォルダー ボタンをクリックして **[クラウド ストレージの参照]** ウィンドウを開きます。.vhd ファイルを選択し、**[開く]** をクリックします。
 
     ![VHD の選択](./media/virtual-machines-create-upload-vhd-windows-server/Select_VHD.png)
 
-	- VHD があるストレージ アカウントを選択し、**[開く]** をクリックします。これにより、**[VHD からのイメージの作成]** ウィンドウに戻ります。
-
-	- **[VHD からイメージを作成する]** ウィンドウに戻った後、オペレーティング システム ファミリでご使用のオペレーティング システムを選択します。
-
-	- **[この VHD に関連付けられた仮想マシンで Sysprep を実行しました]** をクリックして、手順 1. でオペレーティング システムを一般化したことを確認し、**[OK]** をクリックします。
+5.	**[VHD からイメージを作成する]** ウィンドウの **[オペレーティング システム ファミリ]** でご使用のオペレーティング システムを選択します。**[この VHD に関連付けられた仮想マシンで Sysprep を実行しました]** をクリックして、オペレーティング システムを一般化したことを確認し、**[OK]** をクリックします。
 
     ![イメージの追加](./media/virtual-machines-create-upload-vhd-windows-server/Create_Image_From_VHD.png)
-
-5. **オプション:** ポータルの代わりに **Add-AzureVMImage** コマンドレットを使用して、VHD をイメージとして追加できます。Azure PowerShell コンソールで、次のように入力します。
-
-	`Add-AzureVMImage -ImageName <Your Image's Name> -MediaLocation <location of the VHD> -OS <Type of the OS on the VHD>`
-
-	![PowerShell Add-AzureVMImage](./media/virtual-machines-create-upload-vhd-windows-server/add_azureimage_powershell.png)
 
 6. ここまでの手順を完了すると、**[イメージ]** タブを選択したときに、新しいイメージが一覧に表示されます。
 
 	![カスタム イメージ](./media/virtual-machines-create-upload-vhd-windows-server/vm_custom_image.png)
 
-	これで、仮想マシンを作成する際に **[マイ イメージ]** で新しいイメージが使用可能になりました。手順については、[Windows を実行するカスタム仮想マシンの作成方法](virtual-machines-windows-create-custom.md)に関するページを参照してください。
+	これで、仮想マシンを作成する際に **[マイ イメージ]** で新しいイメージが使用可能になりました。手順については、「[Windows を実行するカスタム仮想マシンを作成する方法](virtual-machines-windows-create-custom.md)」を参照してください。
 
 	![カスタム イメージからの VM の作成](./media/virtual-machines-create-upload-vhd-windows-server/create_vm_custom_image.png)
 
@@ -198,11 +191,11 @@ Windows Server 2008 R2|すべてのエディション|SP1|x64
 
 ## 次のステップ ##
 
-仮想マシンを作成したら、SQL Server 仮想マシンを作成してみてください。手順については、「[Microsoft Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」をご覧ください。
+仮想マシンを作成したら、SQL Server 仮想マシンを作成してみてください。手順については、「[Microsoft Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
 
 [Step 1: Prepare the image to be uploaded]: #prepimage
 [Step 2: Create a storage account in Azure]: #createstorage
 [Step 3: Prepare the connection to Azure]: #prepAzure
 [Step 4: Upload the .vhd file]: #upload
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

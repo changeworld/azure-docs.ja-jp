@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2015"
+   ms.date="09/10/2015"
    ms.author="banders" />
 
 # オペレーション インサイトのセキュリティと監査データを確認する
@@ -100,4 +100,4 @@ Windows のコンピューティング環境を使用すると、セキュリテ
 
 ローカル ポリシーの設定に加え、AppLocker を使用して監査データを収集すると、オペレーション インサイトがデータを収集し、データを表示できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

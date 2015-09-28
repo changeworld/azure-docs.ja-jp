@@ -1,3 +1,5 @@
+<!--author=SharS last changed: 9/17/15-->
+
 #### ボリュームを作成するには
 
 1. デバイスの **[クイック スタート]** ページで、**[ボリュームの追加]** をクリックします。ボリュームの追加ウィザードが開始されます。
@@ -21,4 +23,8 @@
 
 4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-create-volume/HCS_CheckIcon-include.png) をクリックします。指定された設定でボリュームが作成されます。
 
-<!---HONumber=August15_HO9-->
+![ビデオ](./media/storsimple-create-volume/Video_icon.png) **ビデオ**
+
+StorSimple ボリュームの作成方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/)を参照してください。
+
+<!---HONumber=Sept15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Machine Learning Recommendations API ドキュメント | Microsoft Azure"
-	description="推奨エンジンにおける Azure Machine Learning Recommendations API ドキュメントは Microsoft Azure Marketplace で入手できます。"
-	services="machine-learning"
-	documentationCenter=""
-	authors="AharonGumnik"
-	manager="paulettm"
+	pageTitle="Machine Learning Recommendations API ドキュメント | Microsoft Azure" 
+	description="推奨エンジンにおける Azure Machine Learning Recommendations API ドキュメントは Microsoft Azure Marketplace で入手できます。" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="AharonGumnik" 
+	manager="paulettm" 
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/14/2015" 
 	ms.author="LuisCa"/>
 
 #Azure Machine Learning Recommendations API のドキュメント
@@ -352,7 +352,7 @@ HTTP 状態コード: 200
 | MaxUserLength | ユーザーごとの別個の項目の最大数。 |
 | MinItemLength | 項目ごとの別個のユーザーの最大数。 |
 | MinUserLength | ユーザーごとの別個の項目の最小数。 |
-| RawNumberOfItems | モデル化できない項目を排除する前の項目数。 |
+| RawNumberOfItems | 使用状況ファイルのアイテムの数。 |
 | RawNumberOfUsers | 排除する前の使用状況ポイントの数。 |
 | RawNumberOfRecords | 排除する前の使用状況ポイントの数。 |
 | SamplingNumberOfItems | 該当なし |
@@ -848,6 +848,7 @@ OData XML
 | HTTP メソッド | URI |
 |:--------|:--------|
 |POST |`<rootURI>/AddRule?apiVersion=%271.0%27`|
+|ヘッダー |`"Content-Type", "text/xml"`|
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
@@ -945,6 +946,7 @@ HTTP 状態コード: 200
 | HTTP メソッド | URI |
 |:--------|:--------|
 |POST |`<rootURI>/ImportCatalogFile?modelId=%27<modelId>%27&filename=%27<fileName>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/ImportCatalogFile?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&filename=%27catalog10_small.txt%27&apiVersion=%271.0%27`|
+|ヘッダー |`"Content-Type", "text/xml"`|
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
@@ -1189,6 +1191,7 @@ OData XML
 | HTTP メソッド | URI |
 |:--------|:--------|
 |POST |`<rootURI>/AddUsageEvent?apiVersion=%271.0%27`|
+|ヘッダー |`"Content-Type", "text/xml"`|
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
@@ -1736,6 +1739,7 @@ FBT (よく一緒に購入されている品目) のビルドは「控えめな�
 | HTTP メソッド | URI |
 |:--------|:--------|
 |POST |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&apiVersion=%271.0%27`|
+|ヘッダー |`"Content-Type", "text/xml"` (送信の場合、要求本文)|
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
@@ -1809,6 +1813,7 @@ OData XML
 | HTTP メソッド | URI |
 |:--------|:--------|
 |POST |`<rootURI>/BuildModel?modelId=%27<modelId>%27&userDescription=%27<description>%27&buildType=%27<buildType>%27&apiVersion=%271.0%27`<br><br>例:<br>`<rootURI>/BuildModel?modelId=%27a658c626-2baa-43a7-ac98-f6ee26120a12%27&userDescription=%27First%20build%27&buildType=%27Ranking%27&apiVersion=%271.0%27`|
+|ヘッダー |`"Content-Type", "text/xml"` (送信の場合、要求本文)|
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
@@ -2861,4 +2866,4 @@ HTTP ステータス コード: 200
 このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> © 2015 Microsoft.All rights reserved.
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

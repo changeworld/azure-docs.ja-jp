@@ -1,24 +1,38 @@
 <properties 
-   pageTitle="Azure ゲスト OS に適用される更新プログラムの一覧 | Microsoft Azure"
-	description="ゲスト OS リリースに適用される更新プログラムの一覧"
-	services="cloud-services"
-	documentationCenter="na"
-	authors="yuemlu"
-	manager="markkie"
-	editor=""/>
+   pageTitle="Azure ゲスト OS に適用される更新プログラムの一覧 | Microsoft Azure" 
+   description="ゲスト OS リリースに適用される更新プログラムの一覧" 
+   services="cloud-services" 
+   documentationCenter="na" 
+   authors="yuemlu" 
+   manager="markkie" 
+   editor=""/>
 
 <tags
    ms.service="cloud-services"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="tbd"
-	ms.date="08/24/2015"
-	ms.author="yuemlu"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="tbd" 
+   ms.date="09/14/2015"
+   ms.author="yuemlu"/>
 
 # Azure ゲスト OS 
 
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## 9 月のゲスト OS
+
+| セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS15 093 | [3088903] | Internet Explorer 用の累積的なセキュリティ更新プログラム | 4\.24, 3.31, 2.43 | 2015 年 9 月 8 日 |
+| MS15-094 | [3089548] | Internet Explorer 用の累積的なセキュリティ更新プログラム | 4\.24, 3.31, 2.43 | 2015 年 9 月 8 日 |
+| MS15-096 | [3072595] | Active Directory サービスの脆弱性により、サービスの拒否が起こる | 4\.24, 3.31, 2.43 | 2015 年 9 月 8 日 |
+| MS15-097 | [3089656] | Microsoft グラフィックス コンポーネントの脆弱性により、特権が昇格される | 4\.24, 3.31, 2.43 | 2015 年 9 月 8 日 |
+| MS15-098 | [3089669] | Windows Journal の脆弱性により、リモートでコードが実行される | 4\.24, 3.31, 2.43 | 2015 年 9 月 8 日 |
+| MS15-101 | [3089662] | .NET Framework の脆弱性により、特権が昇格される | 4\.24, 3.31, 2.43 | 2015 年 9 月 8 日 |
+| MS15-102 | [3089657] | Windows タスク管理の脆弱性により、特権が昇格される | 4\.24, 3.31, 2.43 | 2015 年 9 月 8 日 |
+| MS15-105 | [3091287] | Windows Hyper-V の脆弱性により、セキュリティ機能のバイパスが起こる | 4\.24 | 2015 年 9 月 8 日 |
+
 
 ## 8 月のゲスト OS
 
@@ -157,6 +171,16 @@
 | 該当なし | [2999802][2999802] | 点線ではなく実線が Windows で印刷される | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 | 該当なし | [2896881][2896881] | Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 
+
+[3088903]: http://support.microsoft.com/kb/3088903
+[3089548]: http://support.microsoft.com/kb/3089548
+[3072595]: http://support.microsoft.com/kb/3072595
+[3089656]: http://support.microsoft.com/kb/3089656
+[3089669]: http://support.microsoft.com/kb/3089669
+[3089657]: http://support.microsoft.com/kb/3089657
+[3091287]: http://support.microsoft.com/kb/3091287
+[3089662]: http://support.microsoft.com/kb/3089662
+
 [3082442]: http://support.microsoft.com/kb/3082442
 [3078662]: http://support.microsoft.com/kb/3078662
 [3080348]: http://support.microsoft.com/kb/3080348
@@ -184,7 +208,7 @@
 
 [MS15-034]: https://technet.microsoft.com/library/security/MS15-034
 
-[3042553]: https://support.microsoft.com/ja-jp/kb/3042553/
+[3042553]: https://support.microsoft.com/ja-JP/kb/3042553/
 
 [3034682]: http://support.microsoft.com/kb/3034682
 [3036220]: http://support.microsoft.com/kb/3036220
@@ -264,4 +288,4 @@
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

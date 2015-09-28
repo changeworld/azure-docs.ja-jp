@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple サポート パッケージの作成 | Microsoft Azure"
-	description="StorSimple デバイスのサポート パッケージを作成、暗号化解除、編集する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple デバイスのサポート パッケージを作成、暗号化解除、編集する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/31/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/15/2015"
+   ms.author="alkohli" />
 
 
 # StorSimple サポート パッケージを作成および管理する
@@ -196,6 +196,7 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 
 ## 次のステップ
 
-[サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)方法について説明します。
+- [サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする方法](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting) 
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

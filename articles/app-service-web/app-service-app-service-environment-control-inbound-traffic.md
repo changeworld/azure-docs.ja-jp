@@ -1,31 +1,33 @@
 <properties 
-	pageTitle="App Service 環境への受信トラフィックを制御する方法"
-	description="App Service 環境への受信トラフィックを制御するネットワーク セキュリティ ルールを構成する方法について説明します。"
-	services="app-service\web"
-	documentationCenter=""
-	authors="ccompy"
-	manager="wpickett"
+	pageTitle="App Service 環境への受信トラフィックを制御する方法" 
+	description="App Service 環境への受信トラフィックを制御するネットワーク セキュリティ ルールを構成する方法について説明します。" 
+	services="app-service\web" 
+	documentationCenter="" 
+	authors="ccompy" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/30/2015"
-	ms.author="stefsh"/>
+	ms.service="app-service" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/11/2015" 
+	ms.author="stefsch"/>
 
 # App Service 環境への受信トラフィックを制御する方法
 
 ## 概要 ##
-App Service 環境は、常に、地域[仮想ネットワーク][virtualnetwork]のサブネット内に作成されます。App Service 環境の作成時に、新しい地域仮想ネットワークと新しいサブネットを定義できます。または、既存の地域仮想ネットワークと既存のサブネットに App Service 環境を作成することもできます。App Service 環境の作成方法の詳細については、[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]に関するページを参照してください。
+App Service 環境は常に地域クラシック "v1" [仮想ネットワーク][virtualnetwork]のサブネット内に作成されます。新しい地域クラシック "v1" の仮想ネットワークと新しいサブネットは、App Service 環境を作成するときに定義できます。あるいは、既存の地域クラシック "v1" の仮想ネットワークと既存のサブネット内に App Service 環境を作成することもできます。App Service 環境の作成方法の詳細については、[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]に関するページを参照してください。
 
 App Service 環境は常にサブネット内で作成する必要があります。これは、HTTP トラフィックと HTTPS トラフィックが特定のアップストリーム IP アドレスのみから受け取られるように、アップストリーム デバイスおよびサービスの背後で受信トラフィックをロックダウンするために使用できるネットワーク境界がサブネットによって提供されるためです。
 
 サブネット上の受信および送信ネットワーク トラフィックは、[ネットワーク セキュリティ グループ][NetworkSecurityGroups]を使用して制御されます。受信トラフィックを制御するには、ネットワーク セキュリティ グループにネットワーク セキュリティ ルールを作成してから、そのネットワーク セキュリティ グループを App Service 環境が含まれるサブネットに割り当てる必要があります。
 
 ネットワーク セキュリティ グループがサブネットに割り当てられると、App Service 環境におけるアプリへの受信トラフィックは、ネットワーク セキュリティ グループで定義された許可ルールと拒否ルールに基づいて許可またはブロックされます。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## App Service 環境で使用されるネットワーク ポート ##
 ネットワーク セキュリティ グループで受信ネットワーク トラフィックをロックダウンする前に、App Service 環境で使用される必須およびオプションのネットワーク ポートのセットを把握しておくことが重要です。誤っていくつかのポートへのトラフィックを遮断すると、App Service 環境の機能が失われることがあります。
@@ -43,14 +45,16 @@ App Service 環境で使用されるポートの一覧を次に示します。
 - 4020: Visual Studio 2015 でのリモート デバッグに使用されます。機能が使用されていない場合は、このポートを安全にブロックできます。
 
 ## 発信接続と DNS の要件 ##
-App Service 環境を適切に機能させるには、Azure Storage だけでなく、同じ Azure リージョン内の SQL Database への発信アクセスも必要であることに注意してください。仮想ネットワーク内で発信インターネット アクセスがブロックされている場合、App Service 環境はこれらの Azure エンドポイントにアクセスすることはできません。
+App Service 環境を適切に機能させるには、Azure Storage ワールドワイドだけでなく、同じ Azure リージョン内の SQL Database への発信アクセスも必要であることに注意してください。仮想ネットワーク内で発信インターネット アクセスがブロックされている場合、App Service 環境はこれらの Azure エンドポイントにアクセスすることはできません。
 
 顧客の仮想ネットワーク内にカスタム DNS サーバーが構成されていることもあります。App Service 環境は、*.database.windows.net、*.file.core.windows.net、および *.blob.core.windows.net の Azure エンドポイントを解決できる必要があります。
 
-また、App Service 環境を作成する前に、vnet 上のカスタム DNS サーバーをセットアップしておくことをお勧めします。App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。
+また、App Service 環境を作成する前に、vnet 上のカスタム DNS サーバーをセットアップしておくことをお勧めします。App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。同様に、VPN ゲートウェイの他端にカスタム DNS サーバーが存在していて、その DNS サーバーが到達不能または使用できない場合、App Service 環境の作成プロセスも失敗します。
 
 ## ネットワーク セキュリティ グループの作成 ##
 ネットワーク セキュリティ グループの動作の詳細については、次の[情報][NetworkSecurityGroups]を参照してください。ネットワーク セキュリティ グループの構成と App Service 環境を含むサブネットへの適用に重点を置いて、ネットワーク セキュリティ グループの特徴を以下で詳しく説明します。
+
+**注:** ネットワーク セキュリティ グループを構成するには、以下に示す Powershell コマンドレットを使用するしかありません。新しいポータル (portal.azure.com) を使用してネットワーク セキュリティ グループをグラフィカルに構成することはできません。新しいポータルでグラフィカルに構成できるのは、"v2"仮想ネットワークに関連付けられた NSG に限られています。ただし、App Service 環境は現在のところ、クラシック "v1" 仮想ネットワークでしか機能しません。したがって、"v1" 仮想ネットワークに関連付けられたネットワーク セキュリティ グループを構成するには、Powershell コマンドレットを使用する必要があります。
 
 ネットワーク セキュリティ グループは、最初に、サブスクリプションに関連付けられたスタンドアロン エンティティとして作成されます。ネットワーク セキュリティ グループは Azure リージョン内に作成されるため、ネットワーク セキュリティ グループが App Service 環境と同じリージョンに作成されるようにします。
 
@@ -106,7 +110,7 @@ Visual Studio でのリモート デバッグが使用されている場合、�
 ## 明示的な IP SSL に関する特別な考慮事項 ##
 アプリが App Service 環境の既定の IP アドレスではなく明示的な IP アドレスで構成されている場合、HTTP と HTTPS の両方のトラフィックは、ポート 80 と 443 以外の別のポート セットを経由してサブネットにフローされます。
 
-App Service 環境の初期プレビュー期間中は、IP SSL で使用される特定のポートを判別することはできません。ただし、この情報がポータル、コマンド ライン ツール、および REST API を通じて公開された後は、開発者はこれらのポートを経由するトラフィックも制御するネットワーク セキュリティ グループを構成できます。
+各 IP SSL アドレスで使用されている個々のポート ペアを見つけるには、App Service 環境のユーザー インターフェイス ブレードから [すべての設定]、[IP アドレス] の順にクリックします。[IP アドレス] ブレードには、App Service 環境に対して明示的に構成されているすべての IP SSL アドレスを示すテーブルと共に、各 IP SSL アドレスに関連付けられた HTTP および HTTPS トラフィックをルーティングするのに使用される特殊なポート ペアが表示されます。ネットワーク セキュリティ グループの規則を構成する際に、DestinationPortRange パラメーターで使用する必要があるのはこのポート ペアです。
 
 ## 使用の開始
 
@@ -130,4 +134,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 <!-- IMAGES -->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

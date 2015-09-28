@@ -1,3 +1,4 @@
+<!--author=alkohli last changed: 9/16/15-->
 
 #### 電源ケーブル接続を行うには
 
@@ -23,4 +24,4 @@
 
 4. システムの電源を入れるには、両方の PCM の電源スイッチを ON の位置に切り替えます。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

@@ -23,6 +23,8 @@
 
 このチュートリアルでは、サービスでプロビジョニングされた既定の Azure SQL Database の代わりに、ローカルのオンプレミスの SQL Server データベースを使用するように Mobile App の .NET バックエンドを変更する方法について説明します。
 
+[AZURE.INCLUDE [app-service-mobile-to-web-and-api](../../includes/app-service-mobile-to-web-and-api.md)]
+
 ## 前提条件 ##
 
 このチュートリアルを完了するには、次のものが必要です。
@@ -65,7 +67,7 @@
 
 これで、クラウド ハイブリッド接続インフラストラクチャの重要な部分が完了しました。次に、対応するオンプレミスの部分を作成します。
 
-## 内部設置型の Hybrid Connection Manager をインストールして接続を完了する
+## オンプレミスの Hybrid Connection Manager をインストールして接続を完了する
 
 [AZURE.INCLUDE [app-service-hybrid-connections-manager-install](../../includes/app-service-hybrid-connections-manager-install.md)]
 
@@ -125,7 +127,7 @@
 
 最後に、Mobile App バックエンドを Azure に発行し、ハイブリッド接続を使用してオンプレミスのデータベースにデータを格納することを検証します。
 
-3. Visual Studio でプロジェクトを右クリックし、**[発行]**、**[Web の発行]**、**[Microsoft Azure Web サイト]** の順にクリックします。
+3. Visual Studio でプロジェクトを右クリックし、**[発行]**、**[Web の発行]**、**[Microsoft Azure Websites]** の順にクリックします。
 
 	Visual Studio の代わりに、[Git を使用してバックエンドを発行する](mobile-services-dotnet-backend-store-code-source-control.md)こともできます。
 
@@ -162,4 +164,4 @@
 [Azure Management Portal]: http://go.microsoft.com/fwlink/p/?linkid=213885
 [Get started with Mobile Services]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

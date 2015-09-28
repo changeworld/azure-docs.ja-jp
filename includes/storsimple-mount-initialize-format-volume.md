@@ -1,3 +1,4 @@
+<!--author=SharS last changed: 9/17/15-->
 
 #### ボリュームをマウント、初期化、フォーマットするには
 
@@ -27,7 +28,11 @@
   3. 64 KB アロケーション ユニット サイズを指定します。このアロケーション ユニット サイズは、StorSimple ソリューションで使用されている重複除去アルゴリズムに適しています。
   4. クイック フォーマットを実行します。
 
+![ビデオ](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **ビデオ**
+
+StorSimple ボリュームのマウント、初期化、およびフォーマットの方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/)を参照してください。
+
 <!--Link references-->
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/05/2015"
+   ms.date="09/15/2015"
    ms.author="v-sharos" />
 
 
@@ -108,7 +108,8 @@
 
 ## 次のステップ
 
-[StorSimple Snapshot Manager を使用したバックアップ カタログの管理](storsimple-snapshot-manager-manage-backup-catalog.md)
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
+- [StorSimple Snapshot Manager を使用したバックアップ カタログの管理方法](storsimple-snapshot-manager-manage-backup-catalog.md)
 
 
 
@@ -129,4 +130,4 @@
 
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

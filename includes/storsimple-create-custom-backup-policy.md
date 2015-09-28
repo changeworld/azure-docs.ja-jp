@@ -1,3 +1,7 @@
+
+<!--author=SharS last changed: 9/15/15-->
+
+
 #### カスタム バックアップ ポリシーを作成するには
 
 1. **[デバイス]** ページで **[バックアップ ポリシー]** をクリックし、**[追加]** をクリックします。
@@ -38,4 +42,4 @@
 
     ![Custom backup policy](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure App Service で Azure CDN を使用する"
-	description="統合 Azure CDN エンドポイントからのコンテンツを提供する Web アプリを Azure App Service にデプロイする方法について説明するチュートリアル"
-	services="app-service\web"
-	documentationCenter=".net"
-	authors="cephalin"
-	manager="wpickett"
+	pageTitle="Azure App Service で Azure CDN を使用する" 
+	description="統合 Azure CDN エンドポイントからのコンテンツを提供する Web アプリを Azure App Service にデプロイする方法について説明するチュートリアル" 
+	services="app-service\web" 
+	documentationCenter=".net" 
+	authors="cephalin" 
+	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="06/25/2015"
+	ms.service="app-service" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/16/2015" 
 	ms.author="cephalin"/>
 
 
@@ -21,12 +21,14 @@
 
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) は、[Azure CDN](/services/cdn/) との統合が可能で、顧客の近くにあるサーバー ノードから Web アプリのコンテンツをグローバルに配信することにより、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) が備えるグローバル スケーリング機能を向上させることができます (現在のノードの場所を示す最新のリストについては、[こちら](http://msdn.microsoft.com/library/azure/gg680302.aspx)を参照してください)。静的な画像を配信するシナリオでは、この統合により、Azure App Service Web Apps のパフォーマンスが飛躍的に向上し、Web アプリのユーザー エクスペリエンスが世界中で大幅に改善します。
 
-Web アプリと Azure CDN の統合には、次の利点があります。
+Web App と Azure CDN の統合には、次の利点があります。
 
 - コンテンツのデプロイメント (画像、スクリプト、およびスタイルシート) を、Web アプリの[継続的なデプロイメント](web-sites-publish-source-control.md) プロセスの一部として統合
 - Azure App Service の Web アプリの NuGet パッケージ (たとえば、jQuery バージョン、Bootstrap バージョン) を簡単にアップグレードできる 
 - Web アプリケーションと CDN によって配信されるコンテンツを同じ Visual Studio インターフェイスから管理
 - ASP.NET のバンドルと縮小を Azure CDN と統合できる。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 学習内容 ##
 
@@ -43,7 +45,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 > + [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
 > + [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 >
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 統合された CDN エンドポイントで Azure に Web アプリをデプロイする ##
 
@@ -560,8 +562,8 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 - [Azure 用 CDN の使用](../cdn-how-to-use-cdn.md)
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
-* 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!-----HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

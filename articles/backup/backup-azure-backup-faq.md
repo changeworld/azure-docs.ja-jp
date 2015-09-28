@@ -1,13 +1,13 @@
 <properties
    pageTitle="Azure Backup の FAQ | Microsoft Azure"
-	description="Azure Backup サービスに関してよく寄せられる質問"
-	services="backup"
-	documentationCenter=""
-	authors="Jim-Parker"
-	manager="shreeshd"
-	editor=""/>
+   description="Azure Backup サービスに関してよく寄せられる質問"
+   services="backup"
+   documentationCenter=""
+   authors="Jim-Parker"
+   manager="shreeshd"
+   editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/26/2015" ms.author="giridham"; "arunak"; "jimpark"; "aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/26/2015" ms.author="trinadhk";"giridham"; "arunak"; "jimpark"; "aashishr"/>
 
 # Azure Backup - FAQ
 Azure Backup に関する一般的な質問を次に示します。Azure Backup に関して他に不明な点がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)にアクセスして、質問を投稿してください。コミュニティのメンバーから回答を得ることができます。よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -40,7 +40,7 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 **Q6.資格情報コンテナーを課金エンティティと見なす必要がありますか。** <br/> A6.各資格情報コンテナーの詳細な課金内容を取得することはできますが、Azure サブスクリプションを課金エンティティと見なすことを強くお勧めします。すべてのサービで一貫性があると、管理が簡単です。
 
-**Q7.各資格情報コンテナーに登録できるサーバーやマシンの数に制限はありますか。** <br/> A7.はい。資格情報コンテナーにつき最大 50 のコンピューターを登録できます。さらにコンピューターを登録する必要がある場合は、新しい資格情報コンテナーを作成してください。
+**Q7.各資格情報コンテナーに登録できるサーバーやマシンの数に制限はありますか。** <br/> A7.はい。資格情報コンテナーにつき最大 50 のコンピューターを登録できます。Azure IaaS の仮想マシンの場合、コンテナーあたりの VM の上限は 100 です。さらにコンピューターを登録する必要がある場合は、新しい資格情報コンテナーを作成してください。
 
 **Q8.Windows サーバーとクライアントまたは SCDPM サーバーからバックアップできるデータの量に制限はありますか。** <br/> A8.番号
 
@@ -114,7 +114,7 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 |Microsoft Exchange|バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計|
 |BMR/システム状態|バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー|
 
-**Q2.1 日にバックアップをスケジュールできる回数に制限はありますか?**<br/> A2.はい。Azure Backup では、Windows サーバー / クライアントで 1 日に 3 回、SCDPM で 1 日に 2 回のバックアップ コピーが可能です。
+**Q2.1 日にバックアップをスケジュールできる回数に制限はありますか?**<br/> A2.はい。Azure Backup では、Windows Server/Client で 1 日に 3 回、SCDPM で 1 日に 2 回、IaaS VM で 1 日 1 回のバックアップ コピーが可能です。
 
 **Q3.DPM と Azure Backup (Windows Server 上で DPM なし) のバックアップ スケジュール設定ポリシーには違いがありますか?** <br/> A3.はい。DPM を使用すると、毎日、毎週、毎月、毎年単位でスケジュールを指定できますが、Windows Server (DPM なし) で指定できるのは、毎日、毎週単位のみです。
 
@@ -132,13 +132,9 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 **Q9.それぞれの回復ポイントが完全なポイントと同じ場合は、すべての課金対象のバックアップ ストレージに影響する可能性がありますか?**<br/> A9.通常、長期的な保有期間ポイント製品は、完全なポイントとしてバックアップ データを格納します。これらは非効率的なストレージですが、簡単かつ迅速に復元されます。増分コピーは効率的なストレージですが、復旧時間に影響するデータのチェーンを復元する必要があります。Azure Backup の独自のストレージ アーキテクチャを使用すると、高速に復元するためにデータの格納を最適化し、ストレージ コストを低く抑えることで、両方の長所を生かすことができます。この方法では、(受信と送信の) 帯域幅が効率的に使用され、ストレージが最小限に抑えられ、回復にかかる時間も抑えられます。
 
-**Q10.作成できる回復ポイント数に制限はありますか?**<br/> A10.2015 年 4 月時点で、最大 366 の回復ポイントを設定できます。任意の順列を使用しても 366 未満の数値になります。たとえば、下の画像の保有期間ポイントは 354 になります。<br/>
+**Q10.作成できる回復ポイント数に制限はありますか?**<br/> A10.いいえ。回復ポイントでの制限はなくなりました。必要な数だけ回復ポイントを作成することができます。
 
-![保有期間の画面](./media/backup-azure-backup-faq/RetentionScreen1.png)
-
-**Q11.マイクロソフトが 366 よりも制限を拡張する場合は、エージェントのアップグレードや初期バックアップの再シードを行う必要がありますか?** <br/> A11.いいえ。このサービスで変更を行う場合は、各ソーシャル メディア (ブログ、Azure アナウンス、ポータルなど) を通じてお知らせします。必要に応じて、保持ポリシーのみを変更する必要があります。
-
-**Q12.バックアップで転送されたデータの量が、バックアップしたデータの量と一致しないのはなぜですか?**<br/> A12.バックアップされるすべてのデータは、転送前に圧縮され、暗号化されます。バックアップされるデータの種類によっては、30 ～ 40% 圧縮されることが期待できます。
+**Q11.バックアップで転送されたデータの量が、バックアップしたデータの量と一致しないのはなぜですか?**<br/> A11バックアップされるすべてのデータは、転送前に圧縮され、暗号化されます。バックアップされるデータの種類によっては、30 ～ 40% 圧縮されることが期待できます。
 
 ## 復旧
 **Q1.Azure にバックアップされたデータでは、いくつの回復を実行できますか。**<br/> A1.Azure Backup からの回復の数に制限はありません。
@@ -169,8 +165,8 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 	| レジストリ パス | レジストリ キー | 値 |
 	| ------ | ------- | ------ |
-	| HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows Azure Backup\\Config | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
-	| HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows Azure Backup\\Config\\CloudBackupProvider | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
+	| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
+	| `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` | ScratchLocation | <i>新しいキャッシュ フォルダーの場所</i> |
 
 
 + 管理者特権のコマンド プロンプトで次のコマンドを実行して OBEngine を開始します。
@@ -179,4 +175,4 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 バックアップが新しいキャッシュ場所で正常に動作したら、元のキャッシュ フォルダーを削除できます。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

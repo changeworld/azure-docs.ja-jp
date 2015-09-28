@@ -1,19 +1,4 @@
-<properties 
-   pageTitle="ボリューム コンテナーを作成する"
-   description="StorSimple デバイスにボリューム コンテナーを作成する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="09/08/2015"
-   ms.author="v-sharos" />
+<!--author=SharS last changed: 9/17/15-->
 
 #### ボリューム コンテナーを作成するには
 
@@ -31,4 +16,8 @@
 
   新しく作成されたボリューム コンテナーが、**[ボリューム コンテナー]** ページの一覧に表示されます。
 
-<!---HONumber=Sept15_HO2-->
+![ビデオ](./media/storsimple-create-volume-container/Video_icon.png) **ビデオ**
+
+StorSimple ソリューションでボリューム コンテナーを作成する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/)を参照してください。
+
+<!---HONumber=Sept15_HO3-->

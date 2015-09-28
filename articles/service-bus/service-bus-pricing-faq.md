@@ -21,18 +21,18 @@
 
 >[AZURE.NOTE]Event Hubs の価格体系については、「[Event Hubs の可用性とサポートに関する FAQ](event-hubs-availability-and-support-faq.md)」で説明しています。詳細については、「[Event Hubs の価格](http://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
-- [Service Bus の課金方法を教えてください](#How-do-you-charge-for-Service-Bus?)
-- [Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#What-usage-of-Service-Bus-is-subject-to-data-transfer?-What-is-not?)
-- [Service Bus の "リレー" について具体的に教えてください](#What-exactly-is-a-Service-Bus-"relay"?)
-- [リレー時間のメーターはどのようにして計算されますか](#How-is-the-Relay-Hours-meter-calculated?)
-- [特定のリレーに複数のリスナーを接続した場合はどうなりますか](#What-if-I-have-more-than-one-listener-connected-to-a-given-relay?)
-- [リレーの場合、メッセージ数のメーターはどのようにして計算されますか](#How-is-the-Messages-meter-calculated-for-relays?)
-- [Service Bus ではストレージに対して課金されますか](#Does-Service-Bus-charge-for-storage?)
-- [Service Bus に使用量クォータはありますか](#Does-Service-Bus-have-any-usage-quotas?)
+- [Service Bus の課金方法を教えてください](#how-do-you-charge-for-service-bus)
+- [Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not)
+- [Service Bus の "リレー" について具体的に教えてください](#what-exactly-is-a-service-bus-quotrelayquot)
+- [リレー時間のメーターはどのようにして計算されますか](#how-is-the-relay-hours-meter-calculated)
+- [特定のリレーに複数のリスナーを接続した場合はどうなりますか](#what-if-i-have-more-than-one-listener-connected-to-a-given-relay)
+- [リレーの場合、メッセージ数のメーターはどのようにして計算されますか](#how-is-the-messages-meter-calculated-for-relays)
+- [Service Bus ではストレージに対して課金されますか](#does-service-bus-charge-for-storage)
+- [Service Bus に使用量クォータはありますか](#does-service-bus-have-any-usage-quotas)
 
 ## Service Bus の課金方法を教えてください
 
-Service Bus の価格の詳細については、「[Service Bus の料金と課金](https://msdn.microsoft.com/library/dn831889.aspx)」および [Service Bus の価格の詳細](http://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。詳細については、以下の「[Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#What-usage-of-Service-Bus-is-subject-to-data-transfer?-What-is-not?)」を参照してください。
+Service Bus の価格の詳細については、「[Service Bus の料金と課金](https://msdn.microsoft.com/library/dn831889.aspx)」および [Service Bus の価格の詳細](http://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。詳細については、以下の「[Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください](#what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not)」を参照してください。
 
 ## Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください
 
@@ -114,4 +114,4 @@ Service Bus メッセージングの詳細については、次のトピック�
 - [Azure Service Bus アーキテクチャの概要](fundamentals-service-bus-hybrid-solutions.md)
 - [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

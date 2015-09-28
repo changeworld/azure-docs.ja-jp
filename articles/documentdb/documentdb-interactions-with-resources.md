@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="DocumentDB リソースの RESTful な操作 | Microsoft Azure" 
-	description="HTTP 動詞を使用して Microsoft Azure DocumentDB リソースの RESTful な操作を行う方法について説明します。" 
+	description="この RESTful Web サービス チュートリアルで HTTP メソッドを確認してください。HTTP 動詞を使用して Microsoft Azure DocumentDB リソースの RESTful な操作を行う方法について説明します。"
+	keywords="http methods, restful services tutorial, restful web services tutorial, http verbs, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	authors="h0n" 
 	manager="jhubbard" 
@@ -16,11 +17,11 @@
 	ms.date="08/03/2015" 
 	ms.author="h0n"/>
 
-# DocumentDB リソースの RESTful な操作 
+# RESTful Web サービス チュートリアル: DocumentDB リソースの RESTful な操作 
 
 DocumentDB では、HTTP メソッドを使用して、DocumentDB リソースの作成、読み取り、置換、取得、および削除を行うことができます。
 
-この記事を読むと、次の質問の答えを見つけることができます。
+この RESTful Web サービス チュートリアルを読むと、次の質問に回答できるようになります。
 
 - 標準の HTTP メソッドでどのように DocumentDB リソースを操作するか。
 - POST を使用してどのように新しいリソースを作成するか。
@@ -39,13 +40,13 @@ DocumentDB リソースでサポートされる HTTP 動詞とその標準的な
 
 >[AZURE.NOTE]将来的には、PATCH による選択的更新機能を追加する予定です。
 
-下の図に示したように、POST の発行対象はフィード リソースに限られ、また、PUT と DELETE の発行対象はアイテム リソースに限られます。GET と HEAD は、フィード リソースとアイテム リソースのどちらに対しても発行することができます。
+下の HTTP 動詞に関する図に示したように、POST の発行対象はフィード リソースに限られ、また、PUT と DELETE の発行対象はアイテム リソースに限られます。GET と HEAD は、フィード リソースとアイテム リソースのどちらに対しても発行することができます。
 
-![][1]
+![この RESTful Web サービス チュートリアルにおける HTTP 動詞の概要][1]
 
 **標準の HTTP メソッドを使用した対話モデル**
 
-## POST を使用した新しいリソースの作成 
+## POST HTTP メソッドを使用した新しいリソースの作成 
 対話モデルに関する理解を深めるために、新しいリソースの作成 (INSERT) を例に考えてみましょう。新しいリソースを作成するためには、そのリソースの従属先コンテナー フィードの URI に対し、HTTP POST 要求を発行する必要があります。要求本文に、作成するリソースの表現を含めます。この要求に必要なプロパティは、リソースの id だけです。
 
 例として、新規のデータベースを作成するためには (id プロパティに一意の名前を設定することで) /dbs に対してデータベース リソースを POST します。同様に、新しいコレクションを作成するためには */dbs/\_rid/colls/* へコレクション リソースを POST するという具合です。応答には、完全にコミットされたリソースが、システムによって生成されたプロパティと共に格納されます。たとえば、返されたリソースの *\_self* リンクを使用すれば、他のリソースにナビゲートすることができます。ここで、単純な HTTP ベースの対話モデルの例を挙げます。クライアントは、以下のような HTTP 要求を発行することで、アカウント内に新しいデータベースを作成することができます。
@@ -74,7 +75,7 @@ The DocumentDB service responds with a successful response and a status code ind
 	}
 ```
   
-## POST を使用したストアド プロシージャの登録
+## POST HTTP メソッドを使用したストアド プロシージャの登録
 リソースの作成と実行の例をもう 1 つ紹介します。すべて JavaScript で記述されている簡単な "HelloWorld" ストアド プロシージャを考えてみましょう。
 
 ```
@@ -125,7 +126,7 @@ DocumentDB サービスは、さまざまな情報を含んだ応答とストア
 	}
 ```
 
-## POST を使用したストアド プロシージャの実行
+## POST HTTP メソッドを使用したストアド プロシージャの実行
 上の例のストアド プロシージャを実行するには、下図のようにストアド プロシージャ リソースの URI (/dbs/UoEi5w==/colls/UoEi5w+upwA=/sprocs/UoEi5w+upwABAAAAAAAAgA==/) に対して POST を発行する必要があります。
 
 	POST https://fabrikam.documents.azure.com/dbs/UoEi5w==/colls/UoEi5w+upwA=/sprocs/UoEi5w+upwABAAAAAAAAgA== HTTP/1.1
@@ -136,7 +137,7 @@ DocumentDB サービスから、次のような応答が返されます。
 	
 	"Hello World"
 
-新しいリソースの作成とストアド プロシージャの実行だけでなく、SQL クエリの発行にも、POST 動詞が使用されます。SQL クエリの実行例を示したのが、以下のコードです。
+新しいリソースの作成とストアド プロシージャの実行だけでなく、SQL クエリの発行にも、POST HTTP 動詞が使用されます。SQL クエリの実行例を示したのが、以下のコードです。
 
 	POST https://fabrikam.documents.azure.com/dbs/UoEi5w==/colls/UoEi5w+upwA=/docs HTTP/1.1
 	...
@@ -162,7 +163,7 @@ DocumentDB サービスから、次のような応答が返されます。
 ```
 
 
-## PUT、GET、および DELETE の使用
+## PUT、GET、および DELETE HTTP 動詞の使用
 リソースの置き換えと読み取りはそれぞれ、リソースの *\_self* リンクに対し、PUT 動詞 (と適切な要求本文) と GET 動詞を発行することによって行います。同様に、リソースを削除するときは、その *\_self* リンクに対して DELETE 動詞を発行します。DocumentDB のリソース モデルでは、リソースが階層状に編成されていることから、連鎖削除が必然的にサポートされます。連鎖削除においては、上位のリソースを削除すると、それに従属するリソースが削除されます。従属リソースは、その上位のリソースとは別のノードに分散している場合があるため、削除されるまでに時間差が生じることがあります。ガベージ コレクションの働きに関係なく、リソースを削除するとすぐにクォータが解放され、利用できる状態になります。参照整合性はシステムによって維持されます。たとえば、削除 (または置換) されたデータベースにコレクションを挿入したり、存在しないコレクション内のドキュメントを照会したりすることはできません。
  
 リソースのフィードに対して GET を発行した場合やコレクションを照会した場合、膨大な数のアイテムが結果として得られる可能性があります。それらすべてのアイテムを 1 回のラウンドトリップ (要求と応答のやり取り) で返し、利用することは、サーバーにとっても、クライアントにとっても現実的ではありません。この問題に対処するために、DocumentDB では、大きなフィードをクライアントがページ単位で読み込めるようになっています。クライアントは、[x-ms-continuation] という応答ヘッダーをカーソルとして使用し、後続のページにナビゲートすることができます。
@@ -204,4 +205,4 @@ REST API を使用してリソースを操作する方法については、「[A
 [1]: ./media/documentdb-interactions-with-resources/interactions-with-resources2.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

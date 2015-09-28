@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple アラートの表示と管理 | Microsoft Azure"
-	description="StorSimple アラートの状態と重大度、アラート通知の構成方法、および StorSimple Manager サービスを使用してアラートを管理する方法について説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple アラートの状態と重大度、アラート通知の構成方法、および StorSimple Manager サービスを使用してアラートを管理する方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="SharS"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="09/01/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/15/2015"
+   ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用して StorSimple アラートを表示および管理する
 
@@ -231,6 +231,7 @@ StorSimple Manager サービスのダッシュボードでは、アラートが�
 
 ## 次のステップ
 
-[StorSimple エラーの詳細情報](storsimple-troubleshoot-operational-device.md)
+- [StorSimple エラーの詳細](storsimple-troubleshoot-operational-device.md)
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

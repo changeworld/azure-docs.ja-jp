@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure RemoteApp のクラウド コレクションの作成方法"
-	description="Azure クラウドにデータを保存する Azure RemoteApp のデプロイを作成する方法について説明します。"
-	services="remoteapp"
-	documentationCenter=""
-	authors="lizap"
-	manager="mbaldwin"
+	pageTitle="Azure RemoteApp のクラウド コレクションの作成方法 | Microsoft Azure" 
+	description="Azure クラウドにデータを保存する Azure RemoteApp のデプロイを作成する方法について説明します。" 
+	services="remoteapp" 
+	documentationCenter="" 
+	authors="lizap" 
+	manager="mbaldwin" 
 	editor=""/>
 
 <tags 
-	ms.service="remoteapp"
-	ms.workload="compute"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/02/2015"
+	ms.service="remoteapp" 
+	ms.workload="compute" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/11/2015" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp のクラウド コレクションの作成方法
@@ -41,7 +41,7 @@ Azure RemoteApp のコレクションには、次の 2 種類があります。
 - この手順は、サブスクリプションの一部として提供されたテンプレートのイメージを使用しようとしているか、使用するテンプレートのイメージが既にアップロード済みであることが前提となっています。別のテンプレート イメージをアップロードする必要がある場合は、[テンプレート イメージ] ページから実行できます。**[テンプレート イメージのアップロード]** をクリックして、ウィザードで表示される手順に従います。 
 - Office 365 ProPlus イメージを使用する必要がありますか。 [こちら](remoteapp-officesubscription.md)で詳細を確認できます。
 - カスタム アプリケーションまたは LOB プログラムが必要な場合は、 新しい[イメージ](remoteapp-imageoptions.md)を作成して、クラウド コレクションで使用します。
-- VNET に接続する必要があるかどうかを検討します。VNET への接続を選択する場合は、サイズのガイドラインを満たしていることと、RemoteApp に接続できることを確認します。
+- VNET に接続する必要があるかどうかを検討します。VNET への接続を選択する場合は、[サイズのガイドライン](remoteapp-vnetsizing.md)を満たしていることと、[RemoteApp に接続できること](remoteapp-vnet.md)を確認します。詳細については、[VNET 計画に関する記事](remoteapp-planvpn.md)を確認してください。
 - VNET を使用している場合は、ローカルの Active Directory ドメインに参加させるかどうかを決定します。
 
 ## 手順 1: クラウド コレクションの作成 - VNET あり/なし##
@@ -109,4 +109,4 @@ RemoteApp コレクションには複数のアプリケーションを発行で�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

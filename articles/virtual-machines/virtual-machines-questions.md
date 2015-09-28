@@ -3,7 +3,7 @@
 	description="Azure 仮想マシンについて特に多く寄せられる質問への回答を示します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/17/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 # Azure Virtual Machines FAQ (Azure 仮想マシンの FAQ)
 
@@ -148,4 +148,4 @@ VM が実行中または停止状態のときには料金が発生しますが�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

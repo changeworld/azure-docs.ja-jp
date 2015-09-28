@@ -3,18 +3,11 @@
 	description="Azure 仮想マシンのバックアップと復元のトラブルシューティングに関する情報が記載されています。"
 	services="backup"
 	documentationCenter=""
-	authors="aashishr"
+	authors="trinadhk"
 	manager="shreeshd"
 	editor=""/>
 
-<tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/14/2015" ms.author="trinadhk";"aashishr"/>
 
 
 # エラーのトラブルシューティング
@@ -30,7 +23,6 @@
 ## Register
 | バックアップ操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
-| Register | Azure VM ロールは拡張機能をインストールできる状態ではありません - VM が実行中状態であるかどうかを確認してください。Azure Recovery Services 拡張機能を利用するには VM が実行中である必要があります。 | 仮想マシンを起動し、実行中状態になった後で登録操作をやり直してください。|
 | Register | 仮想マシンに接続されたデータ ディスクの数がサポートされている上限を超えています - この仮想マシンのデータ ディスクをいくつか切断してから、操作をやり直してください。Azure Backup では、バックアップ用に Azure の仮想マシンに接続できるデータ ディスクは 16 個までです。 | なし |
 | Register | Microsoft Azure Backup で内部エラーが発生しました。しばらくしてから操作をやり直してください。引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 | 次のいずれかの構成がサポートされていないことが原因で、このエラーが発生する場合があります。<ol><li>Premium LRS <li>マルチ NIC <li>ロード バランサー</ol> |
 | Register | エージェントのインストール処理がタイムアウトしたため、登録できませんでした | 仮想マシンの OS のバージョンがサポート対象かどうかを確認します。 |
@@ -64,7 +56,7 @@
 | 操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
 | ジョブの取り消し | このジョブの種類では取り消しがサポートされていません - ジョブが完了するまでお待ちください。 | なし |
-| ジョブの取り消し | ジョブが取り消しできる状態にありません - ジョブが完了するまでお待ちください。<br>または<br> 選択したジョブは取り消しできる状態にありません - ジョブが完了するまでお待ちください。| ジョブはほぼ完了しています。ジョブが完了するまでお待ちください。 |
+| ジョブの取り消し | ジョブが取り消しできる状態にありません - ジョブが完了するまでお待ちください。<br>または<br> 選択したジョブは取り消しできる状態にありません。ジョブが完了するまでお待ちください。| ジョブはほぼ完了しています。ジョブが完了するまでお待ちください。 |
 | ジョブの取り消し | 進行中ではないためジョブを取り消すことができません - 取り消しがサポートされているのは、進行中のジョブだけです。進行中のジョブの取り消しを試してください。 | これは一時的な状態が原因で発生しています。しばらく待ってから取り消し操作をやり直してください。 |
 | ジョブの取り消し | ジョブを取り消すことができませんでした - ジョブが終了するまでお待ちください。 | なし |
 
@@ -100,15 +92,26 @@ Windows VM の場合:
 - [エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。インストールを実行するには、管理者特権が必要です。
 - [VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。
 
+Linux VM の場合:
+
+- github から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent)をインストールします。 
+- [VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。
+
 
 ### VM エージェントの更新
-VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。ただし、VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。
+Windows VM の場合:
+
+- VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。ただし、VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。
+
+Linux VM の場合:
+
+- [Linux VM エージェントの更新](../virtual-machines-linux-update-agent.md)に関する手順に従ってください。 
 
 
 ### VM エージェントのインストールの検証
 Windows VM 上で VM エージェントのバージョンを確認する方法:
 
-1. Azure 仮想マシンにログオンし、フォルダー *C:\\WindowsAzure\\Packages* に移動します。WaAppAgent.exe ファイルを探します。
+1. Azure Virtual Machine にログオンし、フォルダー *C:\\WindowsAzure\\Packages* に移動します。WaAppAgent.exe ファイルを探します。
 2. このファイルを右クリックして、**[プロパティ]** をクリックした後、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。
 
 ## ネットワーク
@@ -125,4 +128,4 @@ Backup 拡張機能は、他の拡張機能と同様に、パブリックなイ�
 1. ホワイトリストに登録する [Azure データセンター IP](https://msdn.microsoft.com/library/azure/dn175718.aspx) の一覧を取得します。
 2. [New-NetRoute](https://technet.microsoft.com/library/hh826148.aspx) コマンドレットを使用して、IP アドレスのブロックを解除します。管理者特権の PowerShell ウィンドウ (管理者として実行) で、Azure VM 内でこのコマンドレットを実行します。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

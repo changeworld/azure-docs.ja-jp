@@ -2,23 +2,26 @@
 	pageTitle="Azure App Service の Web アプリの高度な構成と拡張機能"
 	description="XML ドキュメント変換 (XDT) の宣言を使用して、Azure App Service の Web アプリ内の ApplicationHost.config ファイルを変換し、プライベート拡張機能を追加してカスタムの管理操作を有効にします。"
 	authors="cephalin"
+	writer="cephalin"
 	editor="mollybos"
 	manager="wpickett"
 	services="app-service\web"
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2015"
+	ms.date="09/16/2015"
 	ms.author="cephalin"/>
 
 # Azure App Service の Web アプリの高度な構成と拡張機能
 
 [XML ドキュメント変換](http://msdn.microsoft.com/library/dd465326.aspx) (XDT) の宣言を使用して、Azure App Service の Web アプリ内の [ApplicationHost.config](http://www.iis.net/learn/get-started/planning-your-iis-architecture/introduction-to-applicationhostconfig) ファイルを変換することができます。また、XDT 宣言を使用して、プライベート拡張機能を追加し、カスタム Web アプリ管理アクションを有効にすることもできます。この記事には、Web インターフェイスを使用して PHP 設定の管理を有効にする、サンプルの PHP Manager Web アプリ拡張機能が含まれています。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ##<a id="transform"></a>ApplicationHost.config を使用した高度な構成
 App Service プラットフォームにより、Web アプリ構成の柔軟性と制御を実現できます。IIS の標準的な ApplicationHost.config 構成ファイルは、App Service 内で直接編集することはできませんが、プラットフォームは XML ドキュメント変換 (XDT) に基づく宣言型の ApplicationHost.config 変換モデルをサポートします。
@@ -52,11 +55,11 @@ PHP 5.4 を使用する Web アプリに新しいカスタム環境変数を追�
 
 ###<a id="overview"></a> プライベート Web アプリ拡張の概要
 
-App Service では、管理操作の機能拡張ポイントとして Web アプリ拡張機能を使用できます。実際、Web アプリ プラットフォームの一部の機能は、事前インストールされた拡張機能として実装されています。事前インストールされたプラットフォーム拡張機能を変更することはできませんが、独自アプリでプライベート拡張機能を作成および構成することができます。この機能も、XDT 宣言に依存します。プライベート Web アプリ拡張機能を作成するための主要な手順を次に示します。
+App Service では、管理操作の機能拡張ポイントとして Web アプリ拡張機能を使用できます。実際、App Service プラットフォームの一部の機能は、事前インストールされた拡張機能として実装されています。事前インストールされたプラットフォーム拡張機能を変更することはできませんが、独自アプリでプライベート拡張機能を作成および構成することができます。この機能も、XDT 宣言に依存します。プライベート Web アプリ拡張機能を作成するための主要な手順を次に示します。
 
 1. Web アプリ拡張機能の**コンテンツ**: App Serviceでサポートされる任意の Web アプリを作成します
 2. Web アプリ拡張機能の**宣言**: ApplicationHost.xdt ファイルを作成します
-3. Web アプリ拡張機能の**デプロイ**: `root` の下の SiteExtensions フォルダーにコンテンツを配置します
+3. Web アプリ拡張機能の**デプロイメント**: `root` の下の SiteExtensions フォルダーにコンテンツを配置します
 
 Web アプリに対する内部リンクは、ApplicationHost.xdt ファイル内で指定したアプリケーション パスを基準とする相対パスを指す必要があります。ApplicationHost.xdt ファイルに対してどのような変更を加えた場合でも、Web アプリのリサイクル、つまり停止と再起動が必要です。
 
@@ -179,4 +182,4 @@ HTTPS が使用され、".scm" が含まれていることを除き、開発す�
 [TransformSiteSolEx]: ./media/web-sites-transform-extend/TransformSiteSolEx.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

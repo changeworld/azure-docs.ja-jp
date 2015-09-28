@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL Database の代わりに Table ストレージを使用するサービスの作成 | Microsoft Azure" 
+	pageTitle="テーブル ストレージを使用する .NET バックエンド モバイル サービスの作成 | Azure Mobile Services" 
 	description=".NET バックエンド モバイル サービスに Azure テーブル ストレージを使用する方法について学習します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="06/09/2015" 
+	ms.date="09/14/2015" 
 	ms.author="glenga"/>
 
-# SQL Database の代わりにテーブル ストレージを使用する .NET バックエンド モバイル サービスの作成
+# テーブル ストレージを使用する .NET バックエンド モバイル サービスの作成
 
 このトピックでは、.NET バックエンド モバイル サービスで非リレーショナル データ ストアを使用する方法を説明します。このチュートリアルでは、既定の Azure SQL Database のデータ ストアではなく Azure テーブル ストレージが使用されるように、Azure Mobile Services のクイック スタート プロジェクトを変更します。
 
@@ -36,7 +36,7 @@
 
 3. まだストレージ アカウントを作成していない場合には、[Azure ストレージ アカウントについて](../storage-create-storage-account.md)を参照してください。
 
-4. 管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
+4. 管理ポータルで、**[Storage]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
 5. **ストレージ アカウント名**と**アクセス キー**をメモします。
  
@@ -158,4 +158,4 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

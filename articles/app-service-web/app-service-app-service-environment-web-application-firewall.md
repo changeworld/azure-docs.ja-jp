@@ -5,21 +5,23 @@
 	documentationCenter="" 
 	authors="naziml" 
 	manager="wpickett" 
-	editor=""/>
+	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/02/2015" 
+	ms.date="09/15/2015" 
 	ms.author="naziml"/>
 
 # App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 
 ## 概要 ##
 [Azure Marketplace](http://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) で入手できる [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) などの Web アプリケーション ファイアウォールは、着信 Web トラフィックを検査して、block SQL 注入、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS などの攻撃をブロックすることによって、Web アプリケーションを保護します。さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査します。App Service 環境が提供する分離と追加スケーリングと組み合わせることで、悪意のある要求と大量のトラフィックに対処する必要がある、ビジネスに不可欠な Web アプリケーションをホストする理想的な環境が用意されます。
+
+\+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## セットアップ ##
 このドキュメントでは、複数の負荷分散されたBarracuda WAF インスタンスの背後に App Service 環境を構成して、WAF からのトラフィックのみが App Service 環境に到着でき、DMZ からアクセスできないようにします。さらに、Azure Traffic Manager を Barracuda WAF インスタンスの前に配置して、Azure のデータセンターとリージョン全体で負荷が分散されるようにします。このセットアップの高レベルの図は次のようになります。
@@ -97,4 +99,4 @@ SourceAddressPrefix を、WAF のクラウド サービスの仮想 IP アドレ
 [ConfigureTrafficManager]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureTrafficManager.png
 [WebsiteTranslations]: ./media/app-service-app-service-environment-web-application-firewall/WebsiteTranslations.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

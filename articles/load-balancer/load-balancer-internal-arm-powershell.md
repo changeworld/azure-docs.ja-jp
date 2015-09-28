@@ -88,16 +88,16 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 上記の例では、「NRP RG」という名前のリソース グループと「West US」という名前の場所を作成しました。
 
-## 仮想ネットワークと、フロント エンド IP プールのパブリック IP アドレスの作成
+## Virtual Network と、フロント エンド IP プールのパブリック IP アドレスの作成
 
 
 ### 手順 1.
 
-仮想ネットワークを作成します。
+仮想ネットワークのサブネットを作成し、変数 $backendSubnet に割り当てます。
 
 	$backendSubnet = New-AzureVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
 
-仮想ネットワークのサブネットを作成し、変数 $backendSubnet に割り当てます。
+仮想ネットワークを作成します。
 
 	$vnet= New-AzurevirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
 
@@ -111,7 +111,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 ### 手順 1. 
 
-受信ネットワーク トラフィックのエンドポイントとなる、サブネット 10.0.2.0/24 のプライベート IP アドレス 10.0.2.6 を使用して、フロントエンド IP プールを作成します。
+受信ネットワーク トラフィックのエンドポイントとなる、サブネット 10.0.2.0/24 のプライベート IP アドレス 10.0.2.5 を使用して、フロントエンド IP プールを作成します。
 
 	$frontendIP = New-AzureLoadBalancerFrontendIpConfig -Name LB-Frontend -PrivateIpAddress 10.0.2.5 -SubnetId $backendSubnet.Id
 
@@ -245,4 +245,4 @@ PS C:\> $backendnic1
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

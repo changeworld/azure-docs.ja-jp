@@ -1,19 +1,19 @@
-<properties 
-                pageTitle="Azure Active Directory とは" 
-                description="Azure Active Directory を使用すると、既存の内部設置型 ID をクラウドに拡張し、または Azure AD 統合アプリケーションを開発することができます。" 
-                services="active-directory" 
-                documentationCenter="" 
-                authors="markusvi" 
-                manager="swadhwa" 
+<properties
+                pageTitle="Azure Active Directory とは"
+                description="Azure Active Directory を使用すると、既存の内部設置型 ID をクラウドに拡張し、または Azure AD 統合アプリケーションを開発することができます。"
+                services="active-directory"
+                documentationCenter=""
+                authors="markusvi"
+                manager="swadhwa"
                 editor=""/>
 
-<tags 
-                ms.service="active-directory" 
-                ms.workload="identity" 
-                ms.tgt_pltfrm="na" 
-                ms.devlang="na" 
-                ms.topic="article" 
-                ms.date="08/10/2015" 
+<tags
+                ms.service="active-directory"
+                ms.workload="identity"
+                ms.tgt_pltfrm="na"
+                ms.devlang="na"
+                ms.topic="article"
+                ms.date="08/10/2015"
                 ms.author="markusvi"/>
 
 
@@ -56,7 +56,7 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
 
 -	クラウド サービスをすばやく採用し、Azure AD の完全に自動化された SaaS アプリのアクセス管理機能とプロビジョニング サービス機能により、従業員やパートナーが簡単にシングル サインオンできるようにします。
 -	従業員は、使いたいデバイスでの作業が必要な場所であれば、どこからでも卓越したクラウド アプリやサービス、セルフサービス機能にアクセスできます。
--	企業のソーシャル メディア アカウントに対する従業員とベンダーのアクセスを簡単かつ安全に管理します。 
+-	企業のソーシャル メディア アカウントに対する従業員とベンダーのアクセスを簡単かつ安全に管理します。
 -	Azure AD の多要素認証と条件付きアクセスにより、アプリケーションのセキュリティを強化します。
 -	一貫したセルフサービスのアプリケーション アクセスの管理を実装することで、経営者は IT コストとオーバーヘッドを削減しながら機動性を強化できます。
 -	セキュリティのレポート作成と監視により、アプリケーションの使用状況を監視し、高度な脅威からビジネスを保護します。
@@ -73,7 +73,7 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
  - Azure AD の概要に関するページで、Azure AD テナントをすばやく稼働させるためのヒントとテクニックをお読みください。
 -	開発者の場合:
  - Azure Active Directory の「[開発者向けガイド](https://msdn.microsoft.com/library/azure/ff800682.aspx)」を参照してください。<need link>
- - [試用版の開始](https://azure.microsoft.com/trial/get-started-active-directory/) – 30 日の無料試用版に今すぐサインアップして、Azure AD とアプリの統合を開始してください。 
+ - [試用版の開始](https://azure.microsoft.com/trial/get-started-active-directory/) – 30 日の無料試用版に今すぐサインアップして、Azure AD とアプリの統合を開始してください。
 
 
 
@@ -104,4 +104,4 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
 
 - [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

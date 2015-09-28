@@ -1,5 +1,5 @@
 <properties
-	pageTitle="既存の Azure Mobile Services アプリへの認証の追加 (iOS) | Microsoft Azure"
+	pageTitle="既存の Azure Mobile Services アプリへの認証の追加 (iOS) | JavaScript バックエンド | Microsoft Azure"
 	description="Mobile Services を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて iOS アプリのユーザーを認証する方法について説明します。"
 	services="mobile-services"
 	documentationCenter="ios"
@@ -85,4 +85,4 @@
 
 [Azure Management Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

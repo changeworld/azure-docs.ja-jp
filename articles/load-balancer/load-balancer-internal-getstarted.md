@@ -1,43 +1,41 @@
 <properties
-   pageTitle="内部ロード バランサーの概要 |Microsoft Azure"
-	description="内部ロード バランサーの構成と仮想マシンとクラウド デプロイメントでの実装方法"
-	services="load-balancer"
-	documentationCenter="na"
-	authors="joaoma"
-	manager="adinah"
-	editor="tysonn"/>
+   pageTitle="内部ロード バランサーの概要 | Microsoft Azure"
+   description="内部ロード バランサーの構成と仮想マシンおよびクラウド デプロイでの実装方法。"
+   services="load-balancer"
+   documentationCenter="na"
+   authors="joaoma"
+   manager="adinah"
+   editor="tysonn" />
 <tags
    ms.service="load-balancer"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="09/01/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/01/2015"
+   ms.author="joaoma" />
 
 # 内部ロード バランサーの構成の開始
 
 > [AZURE.SELECTOR]
 - [Azure Classic steps](load-balancer-internal-getstarted.md)
-- [Resource Manager Powershell steps](load-balancer-internal-arm-powershell.md)
+- [Resource Manager PowerShell steps](load-balancer-internal-arm-powershell.md)
 
-Azure 内部負荷分散 (ILB) は、リージョン スコープを持つクラウド サービスまたは仮想ネットワーク内にある仮想マシン間に負荷分散を提供します。リージョン スコープを持つ仮想ネットワークの使用と構成については、Azure ブログの「[Regional Virtual Networks (リージョン仮想ネットワーク)](virtual-networks-migrate-to-regional-vnet.md)」をご覧ください。アフィニティ グループに構成されている既存の仮想ネットワークは ILB を使用できません。
+Azure 内部負荷分散 (ILB) は、クラウド サービス内またはリージョン スコープを持つ仮想ネットワーク内にある仮想マシン間で負荷を分散します。リージョン スコープを持つ仮想ネットワークの使用と構成については、[リージョンの仮想ネットワーク](virtual-networks-migrate-to-regional-vnet.md)に関するページを参照してください。アフィニティ グループに構成されている既存の仮想ネットワークは ILB を使用できません。
 
-
-
-## 仮想マシンへの内部負荷分散セットの作成
+## 仮想マシンの内部負荷分散セットを作成するには
 
 Azure 内部負荷分散セットと、そのトラフィックを送信するサーバーを作成するには、次の操作を実行する必要があります。
 
-1. 負荷分散セットのサーバー間で負荷分散される着信トラフィックのエンドポイントとなる ILB インスタンスを作成します。
+1. 負荷分散セットのサーバー間で負荷分散される着信トラフィックのエンドポイントとなる内部負荷分散のインスタンスを作成します。
 
 1. 着信トラフィックを受信する仮想マシンに対応するエンドポイントを追加します。
 
-1. ILB インスタンスの仮想 IP アドレス (VIP) にトラフィックを送信するように負荷分散されたトラフィックを送信するサーバーを構成します。
+1. 内部負荷分散インスタンスの仮想 IP (VIP) アドレスにトラフィックを送信するように負荷分散されたトラフィックを送信するサーバーを構成します。
 
-### 手順 1. ILB インスタンスを作成する
+### 手順 1. 内部負荷分散インスタンスを作成する
 
-既存のクラウド サービスまたは地域仮想ネットワークでデプロイされたクラウド サービスでは、次の Windows PowerShell コマンドを使用して ILB インスタンスを作成できます。
+既存のクラウド サービス、またはリージョンの仮想ネットワークでデプロイされたクラウド サービスでは、次の Windows PowerShell コマンドを使用して内部負荷分散インスタンスを作成できます。
 
 	$svc="<Cloud Service Name>"
 	$ilb="<Name of your ILB instance>"
@@ -56,9 +54,9 @@ Azure 内部負荷分散セットと、そのトラフィックを送信する�
 	Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb –SubnetName $subnet –StaticVNetIPAddress $IP
 
 
-### 手順 2. ILB インスタンスにエンドポイントを追加する
+### 手順 2. 内部負荷分散インスタンスにエンドポイントを追加する
 
-既存の仮想マシンでは、次のコマンドを使用して ILB インスタンスにエンドポイントを追加できます。
+既存の仮想マシンでは、次のコマンドを使用して内部負荷分散インスタンスにエンドポイントを追加できます。
 
 	$svc="<Cloud service name>"
 	$vmname="<Name of the VM>"
@@ -87,11 +85,11 @@ Azure 内部負荷分散セットと、そのトラフィックを送信する�
 	Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 
 
-### 手順 3. 新しい ILB エンドポイントにトラフィックを送信するようにサーバーを構成する
+### 手順 3. 新しい内部負荷分散エンドポイントにトラフィックを送信するようにサーバーを構成する
 
-トラフィックを負荷分散し、ILB インスタンスの新しい IP アドレス (VIP) を使用するようにサーバーを構成する必要があります。このアドレスは、ILB インスタンスがリッスンしているアドレスです。多くの場合は、ILB インスタンスの VIP に対して、単に DNS レコードを追加または変更する必要があります。
+トラフィックを負荷分散し、内部負荷分散インスタンスの新しい IP アドレス (VIP) を使用するようにサーバーを構成する必要があります。このアドレスは、内部負荷分散インスタンスがリッスンしているアドレスです。多くの場合、必要な操作は、内部負荷分散インスタンスの VIP の DNS レコードの追加または変更のみです。
 
-ILB インスタンスの作成時に IP アドレスを指定した場合は、既に VIP があります。それ以外の場合は、次のコマンドから VIP を確認できます。
+内部負荷分散インスタンスの作成時に IP アドレスを指定した場合は、既に VIP があります。それ以外の場合は、次のコマンドから VIP を確認できます。
 
 	$svc="<Cloud Service Name>"
 	Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
@@ -106,7 +104,7 @@ ILB インスタンスの作成時に IP アドレスを指定した場合は、
 
 Get-azureinternalloadbalancer コマンドの表示から IP アドレスをメモし、サーバーまたは DNS レコードに必要な変更を加えて、トラフィックが VIP に送信されることを確認します。
 
->[AZURE.NOTE]Microsoft Azure Platform は、さまざまな管理シナリオに静的でパブリックにルーティング可能な IPv4 アドレスを使用します。IP アドレスは 168.63.129.16 です。この IP アドレスはファイアウォールによってブロックされないように設定しておく必要があります。ブロックされると、予期しない動作を引き起こす可能性があります。Azure ILB については、この IP アドレスはロード バランサーからの監視プローブによって使用され、負荷が分散されたセットでの VM の正常性状態が判別されます。ネットワーク セキュリティ グループが、内部で負荷が分散されたセットで Azure Virtual Machines へのトラフィックを制限するために使用されている場合、または Virtual Network のサブネットに適用されている場合、168.63.129.16 からのトラフィックを許可するネットワーク セキュリティ ルールが追加されていることを確認します。
+>[AZURE.NOTE]Microsoft Azure Platform は、さまざまな管理シナリオに静的でパブリックにルーティング可能な IPv4 アドレスを使用します。IP アドレスは 168.63.129.16 です。この IP アドレスはファイアウォールによってブロックされないように設定しておく必要があります。ブロックされると、予期しない動作が発生する可能性があるためです。Azure 内部負荷分散については、この IP アドレスはロード バランサーからの監視プローブによって使用され、負荷分散セットでの仮想マシンの正常性状態が判別されます。ネットワーク セキュリティ グループが、内部負荷分散セットで Azure の仮想マシンへのトラフィックを制限するために使用されている場合、または仮想ネットワーク サブネットに適用されている場合、168.63.129.16 からのトラフィックを許可するネットワーク セキュリティの規則が追加されていることを確認します。
 
 
 
@@ -128,9 +126,9 @@ Contoso Corporation は、インターネットに接続された Web サーバ�
 
 - 3 つの既存のデータベース サーバーの名前は、PARTNER-SQL-1、PARTNER-SQL-2、PARTNER-SQL-3 です。
 
-- Web 層の Web サーバーは、partner-sql.external.contoso.com というDNS 名でデータベース層のデータベース サーバーに接続します。
+- Web 層の Web サーバーは、partner-sql.external.contoso.com という DNS 名でデータベース層のデータベース サーバーに接続します。
 
-次のコマンドは、PARTNER-DBTIER という名前の新しい ILB インスタンスを構成し、3 つのデータベース サーバーに対応する仮想マシンにエンドポイントを追加します。
+次のコマンドは、PARTNER-DBTIER という名前の新しい内部負荷分散インスタンスを構成し、3 つのデータベース サーバーに対応する仮想マシンにエンドポイントを追加します。
 
 	$svc="Contoso-PartnerSite"
 	$ilb="PARTNER-DBTIER"
@@ -152,7 +150,7 @@ Contoso Corporation は、インターネットに接続された Web サーバ�
 	$vmname="PARTNER-SQL-3"
 	Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -LbSetName $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 
-次に、Contoso は、次のコマンドを使用して PARTNER-DBTIER ILB インスタンスの VIP を判断しました。
+次に、Contoso は、次のコマンドを使用して内部負荷分散の PARTNER-DBTIER インスタンスの VIP を判断しました。
 
 	Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
 
@@ -172,11 +170,11 @@ Contoso Corporation は、Azure の Web サーバー セットで基幹業務 (L
 
 - LOB サーバーが配置されているサブネットの名前は、LOB-LEGAL です。Contoso は内部ロード バランサーの VIP アドレスとして 198.168.99.145 を選択しています。
 
-- 3 つの既存の LOB サーバーの名前は、legal-1、legal-2、LEGAL-3 です。
+- 3 つの既存の LOB サーバーの名前は、LEGAL-1、LEGAL-2、LEGAL-3 です。
 
-- イントラネット Web クライアントは、legalnet.corp.contoso.com という DNS 名を使用して接続します。
+- イントラネット Web クライアントは、legalnet.corp.contoso.com という DNS 名を使用して LOB サーバーに接続します。
 
-次のコマンドは、LEGAL-ILB という名前の ILB インスタンスを構成し、3 つの LOB サーバーに対応する仮想マシンにエンドポイントを追加します。
+次のコマンドは、LEGAL-ILB という名前の内部負荷分散インスタンスを構成し、3 つの LOB サーバーに対応する仮想マシンにエンドポイントを追加します。
 
 
 	$svc="Contoso-Legal"
@@ -204,9 +202,9 @@ Contoso Corporation は、Azure の Web サーバー セットで基幹業務 (L
 
 次に、Contoso は 198.168.99.145 を使用するように legalnet.corp.contoso.com という名前の DNS A レコードを構成しました。
 
-## 仮想マシンを ILB に追加する
+## 内部負荷分散に仮想マシンを追加する
 
-作成された ILB インスタンスに仮想マシンを追加するには、new-azureinternalloadbalancerconfig コマンドレットと New-azurevmconfig コマンドレットを使用できます。
+作成された内部負荷分散インスタンスに仮想マシンを追加するには、New-AzureInternalLoadBalancerConfig コマンドレットと New-AzureVMConfig コマンドレットを使用できます。
 
 たとえば次のようになります。
 
@@ -223,18 +221,18 @@ Contoso Corporation は、Azure の Web サーバー セットで基幹業務 (L
 	$images = Get-AzureVMImage
 	New-AzureVMConfig -Name $vmname -InstanceSize Small -ImageName $images[50].ImageName | Add-AzureProvisioningConfig -Windows -AdminUsername $adminuser -Password $adminpw | New-AzureVM -ServiceName $svc -InternalLoadBalancerConfig $myilbconfig -Location $regionname –VNetName $vnet
 
-## クラウド サービスへの ILB の構成
+## クラウド サービスの内部負荷分散を構成するには
 
 
-ILB は仮想マシンとクラウド サービスの両方でサポートされています。地域仮想ネットワークの外部にあるクラウド サービスで作成された ILB エンドポイントは、そのクラウド サービス内でのみアクセスできます。
+内部負荷分散は、仮想マシンとクラウド サービスの両方でサポートされています。リージョンの仮想ネットワークの外部にあるクラウド サービスで作成された内部負荷分散エンドポイントは、そのクラウド サービス内でのみアクセスできます。
 
-次の例に示すように、ILB 構成は、クラウド サービスの最初のデプロイメントの作成時に設定する必要があります。
+次の例に示すように、内部負荷分散の構成は、クラウド サービスでの最初のデプロイの作成時に設定する必要があります。
 
->[AZURE.IMPORTANT]以下の手順の前提条件は、クラウド デプロイメントのために仮想ネットワークを作成しておくことです。ILB を作成するには仮想ネットワークの名前とサブネットの名前が必要です。
+>[AZURE.IMPORTANT]以下の手順の前提条件は、クラウド デプロイのために仮想ネットワークを作成しておくことです。内部負荷分散を作成するには仮想ネットワーク名とサブネット名が必要です。
 
 ### 手順 1.
 
-Visual Studio でクラウド デプロイメントのサービス構成ファイル (.cscfg) を開き、次のセクションを追加して、ネットワーク構成の最後の "`</Role>`" 項目の下に ILB を作成します。
+Visual Studio でクラウド デプロイのサービス構成ファイル (.cscfg) を開き、ネットワーク構成の最後の "`</Role>`" 項目の下に、内部負荷分散を作成するための次のセクションを追加します。
 
 
 
@@ -246,9 +244,9 @@ Visual Studio でクラウド デプロイメントのサービス構成ファ�
 	    </LoadBalancer>
 	  </LoadBalancers>
 	</NetworkConfiguration>
- 
 
-ネットワーク構成ファイルの値を追加し、どのように見えるか確認しましょう。この例では、「test\_vnet」という名前のサブネットを「test\_subnet」という名前のサブネット 10.0.0.0/24 と静的 IP 10.0.0.4 で作成したと仮定します。ロード バランサーの名前は「testLB」になります。
+
+ネットワーク構成ファイルの値を追加し、どのようになるか確認しましょう。この例では、「test\_vnet」という名前のサブネットを「test\_subnet」という名前のサブネット 10.0.0.0/24 と静的 IP 10.0.0.4 で作成したと仮定します。ロード バランサーの名前は「testLB」になります。
 
 	<NetworkConfiguration>
 	  <LoadBalancers>
@@ -263,7 +261,7 @@ Visual Studio でクラウド デプロイメントのサービス構成ファ�
 ### 手順 2.
 
 
-サービス定義 (.csdef) ファイルを変更し、ILB にエンドポイントを追加します。ロール インスタンスが作成された直後に、サービス定義ファイルによりそのロール インスタンスが ILB に追加されます。
+サービス定義 (.csdef) ファイルを変更し、内部負荷分散にエンドポイントを追加します。ロール インスタンスが作成された直後に、サービス定義ファイルによりそのロール インスタンスが内部負荷分散に追加されます。
 
 
 	<WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -272,7 +270,7 @@ Visual Studio でクラウド デプロイメントのサービス構成ファ�
 	  </Endpoints>
 	</WorkerRole>
 
-上記の例と同じ値を利用してサービス定義ファイルに値を追加してみましょう。
+前の例と同じ値を利用してサービス定義ファイルに値を追加してみましょう。
 
 	<WorkerRole name=WorkerRole1" vmsize="A7" enableNativeCodeExecution="[true|false]">
 	  <Endpoints>
@@ -280,12 +278,12 @@ Visual Studio でクラウド デプロイメントのサービス構成ファ�
 	  </Endpoints>
 	</WorkerRole>
 
-ネットワーク トラフィックの負荷は testLB ロード バランサーで分散されます。受信要求にはポート 80 が使用されます。worker ロール インスタンスへの送信もポート 80 で行われます。
+ネットワーク トラフィックの負荷は testLB ロード バランサーを使用して分散されます。受信要求にはポート 80 が使用されます。worker ロール インスタンスへの送信もポート 80 で行われます。
 
 
-## ILB 構成の削除
+## 内部負荷分散の構成を削除する
 
-ILB インスタンスからエンドポイントとして仮想マシンを削除するには、次のコマンドを使用します。
+内部負荷分散インスタンスからエンドポイントとして仮想マシンを削除するには、次のコマンドを使用します。
 
 	$svc="<Cloud service name>"
 	$vmname="<Name of the VM>"
@@ -301,7 +299,7 @@ ILB インスタンスからエンドポイントとして仮想マシンを削�
 	$epname="SQL1"
 	Get-AzureVM -ServiceName $svc -Name $vmname | Remove-AzureEndpoint -Name $epname | Update-AzureVM
 
-クラウド サービスから ILB インスタンスを削除するには、次のコマンドを使用します。
+クラウド サービスから内部負荷分散インスタンスを削除するには、次のコマンドを使用します。
 
 	$svc="<Cloud service name>"
 	Remove-AzureInternalLoadBalancer -ServiceName $svc
@@ -315,10 +313,10 @@ ILB インスタンスからエンドポイントとして仮想マシンを削�
 
 
 
-## ILB コマンドレットに関する追加情報
+## 内部負荷分散のコマンドレットに関する追加情報
 
 
-ILB コマンドレットに関する追加情報を取得するには、Azure Windows PowerShell プロンプトで、次のコマンドを実行します。
+内部負荷分散のコマンドレットに関する追加情報を取得するには、Windows PowerShell プロンプトで、次のコマンドを実行します。
 
 - Get-help New-AzureInternalLoadBalancerConfig -full
 
@@ -333,6 +331,5 @@ ILB コマンドレットに関する追加情報を取得するには、Azure W
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
- 
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

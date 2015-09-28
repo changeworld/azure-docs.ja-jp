@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Windows ストア アプリ向け Mobile Services の使用 | Microsoft Azure"
-	description="このチュートリアルでは、C# または JavaScript で Windows ストア用の開発を行う場合に Azure Mobile Services を使用する方法を示します。"
+	pageTitle="Windows ストア JavaScript アプリケーション用 Mobile Services の使用 | Azure Mobile Services"
+	description="このチュートリアルでは、JavaScript で Windows ストア用の開発を行う場合に Azure Mobile Services を使用する方法を示します。"
 	services="mobile-services"
 	documentationCenter="windows"
 	authors="ggailey777"
@@ -13,33 +13,29 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/16/2015"
 	ms.author="glenga"/>
 
-# <a name="getting-started"> </a>Mobile Services の使用
+# Mobile Services の使用
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
-このチュートリアルでは、Azure Mobile Services を使用してユニバーサル Windows アプリにクラウドベースのバックエンド サービスを追加する方法を示します。
+このチュートリアルでは、Azure のモバイル サービスを使用して Windows ストア JavaScript アプリにクラウドベースのバックエンド サービスを追加する方法を示します。
 
-このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。Visual Studio を使用してサポートされる .NET 言語でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「.NET バックエンド バージョン」を参照してください。
-
-[AZURE.INCLUDE [mobile-services-windows-universal-get-started](../../includes/mobile-services-windows-universal-get-started.md)]
+このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。Visual Studio を使用してサポートされる .NET 言語でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[.NET バックエンド バージョン](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md)」を参照してください。
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-store-javascript-get-started%2F)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-store-javascript-get-started%2F)を参照してください。
 * [Visual Studio 2013 Express for Windows]
 
 ## 新しいモバイル サービスを作成する
 
 [AZURE.INCLUDE [mobile-services-create-new-service](../../includes/mobile-services-create-new-service.md)]
 
-## 新しいユニバーサル Windows アプリを作成する
+## 新しい Windows ストア アプリを作成する
 
-モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいユニバーサル Windows アプリを作成するか、既存の Windows ストアまたは Windows Phone アプリ プロジェクトを変更してモバイル サービスに接続することができます。
-
-ここでは、モバイル サービスに接続された新しいユニバーサル Windows アプリを作成します。
+モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、モバイル サービスに接続する新しい Windows ストア 8.1 JavaScript アプリを作成できます。
 
 1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
@@ -47,10 +43,6 @@
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Windows]** を選択し、**[新しい Windows ストア アプリを作成する]** を展開します。
 
    	![](./media/mobile-services-javascript-backend-windows-store-javascript-get-started/mobile-portal-quickstart.png)
-
-   	これにより、モバイル サービスに接続された Windows ストア アプリを作成するための簡単な 3 つの手順が表示されます。
-
-  	![](./media/mobile-services-javascript-backend-windows-store-javascript-get-started/mobile-quickstart-steps.png)
 
 3. まだインストールしていない場合は、[Visual Studio 2013][Visual Studio 2013 Express for Windows] をダウンロードし、ローカル コンピューターまたは仮想マシンにインストールします。
 
@@ -62,18 +54,23 @@
 
 ## Windows アプリケーションを実行する
 
-[AZURE.INCLUDE [mobile-services-javascript-backend-run-app](../../includes/mobile-services-javascript-backend-run-app.md)]
+このチュートリアルの最後に、新しいアプリケーションをビルドして実行します。
+
+1. 圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開して、Visual Studio でソリューション ファイルを開きます。
+
+2. **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
+
+3. アプリケーションで、*[Insert a TodoItem]* ボックスに意味のあるテキスト (たとえば、「**チュートリアルの完了**」) を入力し、**[Save]** をクリックします。
+
+   	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目はモバイル サービスによって返され、データはアプリケーションの 2 番目の列に表示されます。
+
+4. (オプション) アプリを再実行し、アプリケーションの起動後に前の手順で保存したデータがモバイル サービスから読み込まれる点に注目してください。
+ 
+4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
+
+   	これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
 >[AZURE.NOTE]モバイル サービスにアクセスして default.js ファイルにあるデータを照会および挿入するコードを確認できます。
-
-## 次のステップ
-クイック スタートはこれで完了です。Mobile Services で重要になるこれ以外の作業については、以下のトピックを参照してください。
-
-* [Add authentication to your app (アプリケーションに認証を追加する)][Get started with authentication]<br/> ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
-
-* [アプリケーションにプッシュ通知を追加する][Get started with push notifications] <br/>アプリにごく基本的なプッシュ通知を送信する方法について説明します。
-
-ユニバーサル Windows アプリの詳細については、「[Supporting multiple device platforms from a single mobile service (単一のモバイル サービスから複数のデバイス プラットフォームをサポートする)](mobile-services-how-to-use-multiple-clients-single-service.md#shared-vs)」を参照してください。
 
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started
@@ -91,4 +88,4 @@
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Management Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

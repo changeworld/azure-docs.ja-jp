@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2015"
+   ms.date="09/10/2015"
    ms.author="banders" />
 
 # Operational Insights のプロキシとファイアウォール設定の構成
@@ -174,4 +174,4 @@ Operations Manager エージェントが Operational Insights サービスと通
 3. **HTTP** から始まるすべてのカウンターを追加します。![add counters](./media/operational-insights-proxy-firewall/sendingdata1.png)
 4. Operations Manager の構成が適切であれば、Operational Insights と構成済みのログ収集ポリシーで追加した、管理パックに基づく Health Service Management カウンターのイベントやその他のデータ アイテムにおけるアクティビティが表示されます。![Performance Monitor showing activity](./media/operational-insights-proxy-firewall/sendingdata2.png)
 
-<!----HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

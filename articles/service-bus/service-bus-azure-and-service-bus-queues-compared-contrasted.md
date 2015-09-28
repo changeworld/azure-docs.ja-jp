@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="09/09/2015"
+   ms.date="09/11/2015"
    ms.author="sethm" />
 
 # Azure キューと Service Bus キューの比較
@@ -272,7 +272,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 |比較条件|Azure キュー|Service Bus キュー|
 |---|---|---|
-|キュー トランザクションのコスト|**$0.0005**<br/><br/>(10,000 トランザクションあたり)|**Basic レベル**: **$0.05**<br/><br/>(100 万回の処理あたり)|
+|キュー トランザクションのコスト|**$0.0036**<br/><br/>(100,000 トランザクションあたり)|**Basic レベル**: **$0.05**<br/><br/>(100 万回の処理あたり)|
 |課金可能な操作|**すべて**|**送信/受信のみ**<br/><br/>(他の操作には料金はかかりません)|
 |アイドル状態のトランザクション|**課金対象**<br/><br/>(空のキューに対するクエリは課金可能なトランザクションと見なされます)|**課金対象**<br/><br/>(空のキューに対する受信は課金可能なメッセージと見なされます)|
 |ストレージ コスト|**$0.07**<br/><br/>(GB/月あたり)|**$0.00**|
@@ -288,7 +288,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - Service Bus キューでは長いポーリングがサポートされているため、待機時間の短い配信が必要な状況でこのキューを使用すると、コスト効率が向上する可能性があります。
 
->[AZURE.NOTE]すべてのコストは、変更されることがあります。上記の表は、このドキュメントの作成時点の価格を反映しています。ここには、現在利用できるキャンペーン プランは含まれていません。Azure の最新の料金情報については、「[Azure の料金](http://azure.microsoft.com/pricing/)」ページをご覧ください。Service Bus の料金の詳細については、「[Service Bus 料金]((http://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
+>[AZURE.NOTE]すべてのコストは、変更されることがあります。上記の表は、このドキュメントの作成時点の価格を反映しています。ここには、現在利用できるキャンペーン プランは含まれていません。Azure の最新の料金情報については、「[Azure の料金](http://azure.microsoft.com/pricing/)」ページをご覧ください。Service Bus の料金の詳細については、「[Service Bus 料金](http://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
 ## まとめ
 
@@ -311,4 +311,4 @@ Service Bus キューには高度な機能が数多く用意されているた�
 - [Azure Storage の課金について - 帯域幅、トランザクション、容量 (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

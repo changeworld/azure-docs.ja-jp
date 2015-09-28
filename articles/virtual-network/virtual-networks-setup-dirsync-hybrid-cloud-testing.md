@@ -1,23 +1,25 @@
 <properties 
-	pageTitle="Office 365 DirSync のテスト環境 | Microsoft Azure"
-	description="IT プロまたは開発テストのための、ハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) サーバーの構成方法について説明します。"
-	services="virtual-network"
-	documentationCenter=""
-	authors="JoeDavies-MSFT"
-	manager="timlt"
+	pageTitle="Office 365 DirSync のテスト環境 | Microsoft Azure" 
+	description="IT プロまたは開発テストのための、ハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) サーバーの構成方法について説明します。" 
+	services="virtual-network" 
+	documentationCenter="" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
 	editor=""
 	tags="azure-service-management"/>
 
 <tags 
-	ms.service="virtual-network"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/08/2015"
+	ms.service="virtual-network" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="Windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/10/2015" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの Office 365 ディレクトリ同期 (DirSync) の設定
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 このトピックでは、Microsoft Azure にホストされているパスワードの同期を使用して Office 365 ディレクトリ同期 (DirSync) をテストするためのハイブリッド クラウド環境を作成する手順全体を説明します。完成すると次のような構成になります。
 
@@ -56,7 +58,7 @@ Azure サブスクリプションを持っていない場合は、[Azure の無�
 
 ## フェーズ 2: Office 365 FastTrack 試用版を構成する
 
-Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と Microsoft アカウントが必要です。会社名には、Microsoft のサンプル コンテンツで使用される仮の会社の会社名 Contoso のバリエーションを使用することをお勧めします。ただしこの会社名の使用は必須ではありません。
+Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と Microsoft アカウントが必要です。会社名には、Microsoft のサンプル コンテンツで使用される仮の会社の会社名 Contoso のバリエーションを使用することをお勧めします。ただし、この会社名の使用は必須ではありません。
 
 次に、新しい Microsoft アカウントにサインアップします。****http://outlook.com** に移動し、user123@outlook.com のような電子メール アドレスを使用してアカウントを作成します。このアカウントで Office 365 FastTrack 試用版にサインアップすることになります。
 
@@ -82,17 +84,17 @@ Office 365 FastTrack 試用版を使用し始めるには、仮の会社名と M
 まず、ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、DS1 用に Azure 仮想マシンを作成します。これらのコマンドを実行する前に、変数の値を入力し、< and > の文字を削除します。
 
 	$ServiceName="<The cloud service name for your TestVNET virtual network>"
-	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for DS1."
-	$cred2=Get-Credential –UserName "CORP\User1" –Message "Now type the password for the CORP\User1 account."
+	$cred1=Get-Credential â€“Message "Type the name and password of the local administrator account for DS1."
+	$cred2=Get-Credential â€“UserName "CORP\User1" â€“Message "Now type the password for the CORP\User1 account."
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name DS1 -InstanceSize Medium -ImageName $image
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain "CORP" -DomainUserName "User1" -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain "corp.contoso.com"
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
-	New-AzureVM –ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
+	New-AzureVM â€“ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
 次に、DS1 仮想マシンに接続します。
 
-1.	Azure 管理ポータルの仮想マシンのページの DS1 の仮想マシンの [状態] 列で、**[実行中]** をクリックします。
+1.	Microsoft Azure 管理ポータルの仮想マシンのページの DS1 の仮想マシンの [状態] 列で、**[実行中]** をクリックします。
 2.	タスク バーで、**[接続]** をクリックします。 
 3.	DS1.rdp を開くように求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -114,7 +116,7 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 
 次に、DS1 にディレクトリ同期をインストールします。
 
-1.	Internet Explorer を実行し、アドレス バーに「****http://go.microsoft.com/fwlink/?LinkID=278924**」と入力した後、Enter キーを押します。dirsync.exe を実行するように求められたら、**[保存]** の横にある矢印をクリックしてから、**[名前を付けて保存]**、**[保存]** の順にクリックして、ファイルをダウンロード フォルダーに保存します。ツールのインストールの詳細については、[「ディレクトリ同期ツールをインストールまたはアップグレードする」](http://technet.microsoft.com/library/jj151800)をご覧ください。
+1.	Internet Explorer を実行し、アドレス バーに「****http://go.microsoft.com/fwlink/?LinkID=278924**」と入力してから、Enter キーを押します。dirsync.exe を実行するように求められたら、**[保存]** の横にある矢印をクリックしてから、**[名前を付けて保存]**、**[保存]** の順にクリックして、ファイルをダウンロード フォルダーに保存します。ツールのインストールの詳細については、「[ディレクトリ同期ツールをインストールまたはアップグレードする](http://technet.microsoft.com/library/jj151800)」をご覧ください。
 2.	**ダウンロード** フォルダーを開き、**dirsync** ファイルを右クリックして、**[管理者として実行]** をクリックします。
 3.	Active Directory 同期のセットアップ ウィザードの [ようこそ] ページで、**[次へ]** をクリックします。 
 4.	[ライセンス条項] ページで、**[同意する]** をクリックしてから、**[次へ]** をクリックします。
@@ -197,4 +199,4 @@ CLIENT1 の **[Active Directory 同期のセットアップと管理]** ペー�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

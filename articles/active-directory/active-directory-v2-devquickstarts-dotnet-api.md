@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 | Microsoft Azure"
+	pageTitle="アプリ モデル v2.0 &gt;Net Web API| Microsoft Azure"
 	description="個人の Microsoft アカウントと職場/学校アカウントの両方からトークンを受け付ける .NET MVC Web API を構築する方法を説明します。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="09/11/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: MVC Web API をセキュリティで保護する
@@ -116,7 +116,7 @@ public class TodoListController : ApiController
 {
 ```
 
-- 承認呼び出し元が `TodoListController` API の 1 つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内のクレームにアクセスできるようにします。  
+- 承認呼び出し元が `TodoListController` API の 1 つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内の要求にアクセスできるようにします。  
 
 ```C#
 public IEnumerable<TodoItem> Get()
@@ -156,4 +156,4 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

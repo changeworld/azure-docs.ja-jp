@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 | Microsoft Azure"
+	pageTitle="アプリ モデル v2.0 のアプリの種類 | Microsoft Azure"
 	description="Azure AD アプリ モデル v2.0 パブリック プレビューでサポートされているアプリの種類とシナリオ。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="09/11/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 のプレビュー: アプリの種類
@@ -72,7 +72,7 @@ Web サーバー アプリにおけるサインイン認証フローは、主に
 
 v2.0 エンドポイントから受け取った公開署名キーを使用した id\_token の検証は、ユーザーの ID を確認し、後続のページ要求でユーザーを識別するために使用できるセッション Cookie を設定するうえで十分です。
 
-このシナリオを実際に確認するには、「[作業の開始](active-directory-appmodel-v2-overview.md#getting-started)」セクションのいずれかの Web アプリ サインイン コード サンプルを試してください。
+このシナリオを実際に確認するには、「[使用の開始](active-directory-appmodel-v2-overview.md#getting-started)」セクションのいずれかの Web アプリ サインイン コード サンプルを試してください。
 
 Web サーバー アプリは、単純なサインインを実行するだけでなく、REST API をはじめとする他の Web サービスにアクセスすることが必要な場合もあります。この場合、Web サーバー アプリは、OpenID Connect と OAuth 2.0 を組み合わせたフローに関与できます。その際使用されるのが[OAuth 2.0 承認コード フロー](active-directory-v2-protocols.md#oauth2-authorization-code-flow)です。このシナリオは、以下の [Web API のセクション](#web-apis)と、[WebApp-WebAPI の使用の開始に関するトピック](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)で取り上げています。
 
@@ -125,4 +125,4 @@ v2.0 アプリ モデルによって保護された Web API から、同じよ�
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant ([On-Behalf-Of フロー](active-directory-v2-protocols.md#oauth2-on-behalf-of-flow)) を使用してサポートできます。しかし現時点では v2.0 アプリ モデル プレビューに On-Behalf-Of フローが実装されていません。一般提供版 Azure AD サービスにおけるこのフローの動作については、[GitHub の On-Behalf-Of コード サンプル](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/08/2015"
+   ms.date="09/17/2015"
    ms.author="alkohli" />
 
 # オンプレミスの StorSimple デバイス (Update 1) のデプロイ
@@ -238,8 +238,8 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 ## 更新プログラムをスキャンして適用する
 
-デバイスの更新には、数時間かかることがあります。次の手順に従い、更新プログラムをスキャンしてデバイスに適用します。
-<!-- > can take 1-4 hours-->
+デバイスの更新には、数時間かかることがあります。次の手順を実行して、更新プログラムをスキャンしてデバイスに適用します。
+<!--can take 1-4 hours-->
 
 <!-- > [AZURE.NOTE] ゲートウェイを DATA 0 以外のネットワーク インターフェイスで構成している場合は、更新プログラムをインストールする前に、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にする必要があります。 **[デバイス]、[構成]** の順に移動し、DATA 2 と DATA 3 のインターフェイスを無効にします。デバイスの更新後に、これらのインターフェイスをもう一度有効にする必要があります。-->
 
@@ -287,4 +287,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 [StorSimple Manager サービス](storsimple-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
  
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

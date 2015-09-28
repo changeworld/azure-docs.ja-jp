@@ -8,12 +8,12 @@
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/26/2015" 
+	ms.date="09/16/2015" 
 	ms.author="tdykstra"/>
 
 # Web ジョブでバックグラウンド タスクを実行する
@@ -25,6 +25,8 @@
 この記事では、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Web ジョブをデプロイする方法について説明します。Visual Studio または継続的な配信プロセスを使用したデプロイ方法については、[Azure WebJobs の Web Apps へのデプロイ方法](websites-dotnet-deploy-webjobs.md)に関するページをご覧ください。
 
 Azure の Web ジョブ SDK は多くの Web ジョブのプログラミング タスクを簡略化しています。詳細については、「[Azure Web ジョブ SDK とは](websites-dotnet-webjobs-sdk.md)」をご覧ください。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="acceptablefiles"></a>スクリプトやプログラムで許容可能なファイルの種類
 
@@ -82,7 +84,7 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 	
 	![スケジュールに従って実行する新しいジョブ][NewScheduledJob]
 	
-2. **[スケジューラのリージョン]** ボックスの一覧で、ジョブに応じたリージョンを選択し、ダイアログ ボックスの右下にある右矢印をクリックして、次の画面に進みます。
+2. **[Scheduler のリージョン]** ボックスの一覧で、ジョブに応じたリージョンを選択し、ダイアログ ボックスの右下にある右矢印をクリックして、次の画面に進みます。
 
 3. **[ジョブの作成]** ダイアログ ボックスの **[繰り返し]** ボックスで、繰り返しの種類として **[一度だけのジョブ]** または **[定期的なジョブ]** を選択します。
 	
@@ -120,21 +122,21 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 	
 	![ジョブの一覧][WebJobsListWithSeveralJobs]
 	
-### <a name="Scheduler"></a>スケジュールされたジョブと Azure スケジューラ
+### <a name="Scheduler"></a>スケジュールされたジョブと Azure Scheduler
 
-スケジュールされたジョブは、[以前のポータル](http://manage.windowsazure.com)の Azure スケジューラ ページでさらに構成できます。
+スケジュールされたジョブは、[以前のポータル](http://manage.windowsazure.com)の Azure Scheduler ページでさらに構成できます。
 
-1.	[Web ジョブ] ページで、ジョブの **[スケジュール]** リンクをクリックして Azure スケジューラ ポータル ページに移動します。 
+1.	[Web ジョブ] ページで、ジョブの **[スケジュール]** リンクをクリックして Azure Scheduler ポータル ページに移動します。 
 	
-	![Azure スケジューラへのリンク][LinkToScheduler]
+	![Azure Scheduler へのリンク][LinkToScheduler]
 	
-2. スケジューラ ページで、ジョブをクリックします。
+2. Scheduler ページで、ジョブをクリックします。
 	
-	![スケジューラ ポータル ページ上のジョブ][SchedulerPortal]
+	![Scheduler ポータル ページ上のジョブ][SchedulerPortal]
 	
 3. **[ジョブの操作]** ページが開き、ここでジョブをさらに構成できます。
 	
-	![スケジューラの [ジョブの操作] ページ][JobActionPageInScheduler]
+	![Scheduler の [ジョブの操作] ページ][JobActionPageInScheduler]
 	
 ## <a name="ViewJobHistory"></a>ジョブ履歴の表示
 
@@ -209,4 +211,4 @@ Azure 管理ポータルには、スケジュールされた Web ジョブを作
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

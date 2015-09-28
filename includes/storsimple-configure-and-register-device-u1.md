@@ -1,19 +1,4 @@
-<properties 
-   pageTitle="デバイスを構成して登録する"
-   description="StorSimple 用 Windows PowerShell を使用して、Update 1 が実行されているデバイスを構成して登録する方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="09/08/2015"
-   ms.author="alkohli" />
+<!--author=alkohli last changed: 9/17/15-->
 
 
 ### デバイスを構成して登録するには
@@ -42,7 +27,7 @@
    - ゲートウェイ
    - プライマリ DNS サーバーの IP アドレス
     
-		Note that the system is validating network settings after each step in the process.
+		処理の各手順の後に、システムによってネットワーク設定が検証されることに注意してください。
    
       >[AZURE.NOTE]サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"Data 0 へのネットワーク接続を確認してください" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
 
@@ -83,4 +68,4 @@
      
        
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

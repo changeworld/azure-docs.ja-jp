@@ -1,5 +1,5 @@
 <properties
-	pageTitle="ソース管理へのプロジェクトのコードの格納 | Microsoft Azure"
+	pageTitle="ソース管理への .NET バックエンド プロジェクト コードの保存 | Azure Mobile Services"
 	description=".NET バックエンド プロジェクトをコンピューターのローカル Git リポジトリに格納し、リポジトリから発行する方法について説明します。"
 	services="mobile-services"
 	documentationCenter=""
@@ -10,17 +10,17 @@
 <tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/15/2015"
 	ms.author="glenga"/>
 
-# ソース管理にプロジェクトのコードを格納する
+# ソース管理へのモバイル サービス プロジェクト コードの保存
 
-> [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(Any | .NET)](mobile-services-dotnet-backend-store-code-source-control.md)
-- [(Any | Javascript)](mobile-services-store-scripts-source-control.md)
+> [AZURE.SELECTOR]
+- [.NET backend](mobile-services-dotnet-backend-store-code-source-control.md)
+- [Javascript backend](mobile-services-store-scripts-source-control.md)
 
 このトピックでは、.NET バックエンド サービス プロジェクトの格納に Azure のモバイル サービスによって提供される、ソース管理を使用する方法を説明します。実稼働環境のモバイル サービスに、ローカルの Git リポジトリからアップロードすることで、プロジェクトをパブリッシュできます。
 
@@ -32,7 +32,7 @@
 
 ##<a name="clone-repo"></a>Git をインストールし、ローカル リポジトリを作成する
 
-1. ローカル コンピューターに Git をインストールします。
+1. ローカル コンピューターに Git をインストールします。 
 
 	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
 
@@ -80,7 +80,7 @@
 
 		$ git push origin master
 
-	モバイル サービスにプロジェクトが配置され、パッケージが追加され、サービスの再起動することを示す一連のコマンドが表示されます。
+	モバイル サービスにプロジェクトがデプロイされ、パッケージが追加され、サービスの再起動することを示す一連のコマンドが表示されます。
 
 6. .NET バックエンドのモバイル サービスでの URL を参照すると、次が表示されます。
 
@@ -103,4 +103,4 @@
 [Call a custom API from the client]: mobile-services-dotnet-backend-ios-call-custom-api.md
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

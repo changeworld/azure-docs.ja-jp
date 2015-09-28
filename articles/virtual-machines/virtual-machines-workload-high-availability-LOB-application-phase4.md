@@ -1,23 +1,25 @@
 <properties 
-	pageTitle="基幹業務アプリケーションのフェーズ 4 | Microsoft Azure"
-	description="Web サーバーを作成し、基幹業務アプリケーションを Web サーバーにロードします。"
+	pageTitle="基幹業務アプリケーションのフェーズ 4 | Microsoft Azure" 
+	description="Web サーバーを作成し、基幹業務アプリケーションを Web サーバーにロードします。" 
 	documentationCenter=""
-	services="virtual-machines"
-	authors="JoeDavies-MSFT"
-	manager="timlt"
+	services="virtual-machines" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="Windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/11/2015" 
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 4: Web サーバーを構成する
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
 
 高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、Web サーバーを構築して基幹業務アプリケーションをロードします。
 
@@ -27,14 +29,14 @@
 
 ASP.NET アプリケーション、または Windows Server 2012 R2 のインターネット インフォメーション サービス (IIS) 8 でホストできる古いアプリケーションをデプロイできる、2 つの Web サーバー仮想マシンがあります。
 
-最初に、基幹業務アプリケーションへのクライアント トラフィックが、Azure によって 2 つの Web サーバーに均等に配分されるように、内部ロード バランサーを構成します。この場合、名前とサブネットのアドレス空間 (Azure 仮想ネットワークに割り当てたアドレス空間) から割り当てられた独自の IP アドレスで構成される内部負荷分散インスタンスを指定する必要があります。内部ロード バランサー用に選択した IP アドレスが使用できるかどうかを確認するには、Azure PowerShell プロンプトで次のコマンドを使用します。< and > の文字を削除して、各変数の値を指定します。
+最初に、基幹業務アプリケーションへのクライアント トラフィックが、Azure によって 2 つの Web サーバーに均等に配分されるように、内部ロード バランサーを構成します。この場合、名前とサブネットのアドレス空間 (Azure 仮想ネットワークに割り当てたアドレス空間) から割り当てられた独自の IP アドレスで構成される内部負荷分散インスタンスを指定する必要があります。内部ロード バランサー用に選択した IP アドレスが使用できるかどうかを確認するには、Azure PowerShell プロンプトで次のコマンドを使用します。変数の値を指定して、< and > の文字を削除します。
 
 	Switch-AzureMode AzureServiceManagement
 	$vnet="<Table V – Item 1 – Value column>"
 	$testIP="<a chosen IP address from the subnet address space, Table S - Item 2 – Subnet address space column>"
 	Test-AzureStaticVNetIP –VNetName $vnet –IPAddress $testIP
 
-Test-AzureStaticVNetIP コマンドで表示される **IsAvailable** フィールドが **True** の場合は、その IP アドレスを使用できます。
+Test-AzureStaticVNetIP コマンドに表示される **IsAvailable** フィールドが **True** の場合は、その IP アドレスを使用できます。
 
 次のコマンドを実行して、リソース マネージャー モードの PowerShell に戻します。
 
@@ -66,7 +68,7 @@ Test-AzureStaticVNetIP コマンドで表示される **IsAvailable** フィー�
 - 表 ST (ストレージ アカウント)
 - 表 A (可用性セット)
 
-表 M は[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) で、V、S、ST、Aの各表は[フェーズ 1](virtual-machines-workload-high-availability-LOB-application-phase1.md) で定義したものです。
+表 M は[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) で、V、S、ST、A の各表は[フェーズ 1](virtual-machines-workload-high-availability-LOB-application-phase1.md) で定義したものです。
 
 適切な値をすべて指定したら、Azure PowerShell プロンプトでそのブロックを実行します。
 
@@ -116,6 +118,8 @@ Test-AzureStaticVNetIP コマンドで表示される **IsAvailable** フィー�
 	$vm=Set-AzureVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
 	New-AzureVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
+> [AZURE.NOTE]これらの仮想マシンはイントラネット アプリケーション用であるため、パブリック IP アドレスや DNS ドメイン名ラベルは割り当てられず、インターネットに公開されません。ただし、これは Azure プレビュー ポータルから接続できないことも意味します。仮想マシンのプロパティを表示する際に、**[接続]** ボタンは使用できません。
+
 好みのリモート デスクトップ クライアントを使用し、Web サーバー仮想マシンのそれぞれへのリモート デスクトップ接続を作成します。仮想マシンのイントラネット DNS 名またはコンピューター名と、ローカル管理者アカウントの資格情報を使用します。
 
 次に、Windows PowerShell プロンプトで次のコマンドを実行し、各 Web サーバー仮想マシンを適切な Active Directory ドメインに参加させます。
@@ -154,7 +158,7 @@ Test-AzureStaticVNetIP コマンドで表示される **IsAvailable** フィー�
 
 ## 次のステップ
 
-このワークロードを引き続き構成するには、「[フェーズ 5: 可用性グループを作成してアプリケーション データベースを追加する](virtual-machines-workload-high-availability-LOB-application-phase5.md)」に進んでください。
+このワークロードを引き続き構成する場合は、「[フェーズ 5: 可用性グループを作成してアプリケーション データベースを追加する](virtual-machines-workload-high-availability-LOB-application-phase5.md)」に進んでください。
 
 ## その他のリソース
 
@@ -168,4 +172,4 @@ Test-AzureStaticVNetIP コマンドで表示される **IsAvailable** フィー�
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

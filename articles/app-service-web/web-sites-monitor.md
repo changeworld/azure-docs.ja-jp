@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure App Service の Web アプリの監視"
-	description="Azure App Service の Web アプリを管理ポータルを使用して監視する方法を説明します。"
+	pageTitle="Azure App Service の Web Apps の監視"
+	description="Azure App Service の Web Apps を管理ポータルを使用して監視する方法を説明します。"
 	services="app-service\web"
 	documentationCenter=""
 	authors="cephalin"
@@ -8,17 +8,19 @@
 	editor="mollybos"/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/02/2015"
+	ms.date="09/16/2015"
 	ms.author="cephalin"/>
 
-#<a name="howtomonitor"></a>Azure App Service での Web アプリの監視
+#<a name="howtomonitor"></a>Azure App Service での Web Apps の監視
 
 [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) には、Standard および Premium の App Service プランを対象に、[監視] 管理ページで監視を行う機能があります。以下に示すように、[監視] 管理ページでは、Web アプリのパフォーマンス統計を確認できます。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ##<a name="websitemetrics"></a>方法: Web アプリのメトリックを追加する
 
@@ -109,7 +111,7 @@ Azure のストレージ アカウントの詳細については、「[ストレ
 
 - [**Web サーバーのログ記録**] - Web サーバーのログ記録を有効にして、W3C 拡張ログ ファイル形式で Web アプリのログを保存します。Web サーバーのログ記録では、Web アプリが受け取ったすべての要求を記録します。記録される情報は、クライアントの IP アドレス、要求された URI、応答の HTTP 状態コード、クライアントのユーザー エージェント文字列などです。これらのログは、Azure のストレージ アカウントまたはファイル システムに保存できます。
 
- Web サーバーのログを Azure のストレージ アカウントに保存するには、**[ストレージ]**、**[ストレージの管理]** の順に選択し、ログを保存するストレージ アカウントと Azure BLOB コンテナーを指定します。Azure のストレージ アカウントの詳細については、「[ストレージ アカウントの管理方法](/manage/services/storage/how-to-manage-a-storage-account/)」を参照してください。
+ Web サーバーのログを Azure のストレージ アカウントに保存するには、**[Storage]**、**[ストレージの管理]** の順に選択し、ログを保存するストレージ アカウントと Azure BLOB コンテナーを指定します。Azure のストレージ アカウントの詳細については、「[ストレージ アカウントの管理方法](/manage/services/storage/how-to-manage-a-storage-account/)」を参照してください。
 
    Web サーバーのログをファイル システムに保存するには、**[ファイル システム]** を選択します。**[クォータ]** ボックスに、ログ ファイルに割り当てる最大ディスク容量を設定できるようになります。指定可能な最小容量は 25 MB、最大容量は 100 MB。既定のサイズは 35 MB です。
 
@@ -277,4 +279,4 @@ Web アプリのエンドポイントの監視の詳細については、次の�
 [vmsizes]: http://go.microsoft.com/fwlink/?LinkID=309169
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

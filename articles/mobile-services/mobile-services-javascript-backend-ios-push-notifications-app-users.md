@@ -1,5 +1,5 @@
 <properties
-	pageTitle="認証されたユーザーへのプッシュ通知の送信"
+	pageTitle="iOS の認証されたユーザーへのプッシュ通知の送信 (JavaScript バックエンド)"
 	description="特定のユーザーにプッシュ通知を送信する方法について説明します。"
 	services="mobile-services,notification-hubs"
 	documentationCenter="ios"
@@ -74,4 +74,4 @@ function insert(item, user, request) {
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-ios-how-to-use-client-library.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

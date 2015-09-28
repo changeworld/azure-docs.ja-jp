@@ -3,7 +3,7 @@
 	description="Azure PowerShell を使用して、Windows とリソース マネージャー ベースの仮想マシンを Azure に作成し、事前構成する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/22/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 # リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する
 
@@ -389,4 +389,4 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="09/10/2015"
    ms.author="banders" />
 
 # オペレーション インサイト アカウントを作成し、サインインする
@@ -40,4 +40,4 @@ Microsoft アカウント (以前は "Windows Live ID" と呼ばれていまし�
 
 - [ワークスペースの設定および構成](operational-insights-setup-workspace.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

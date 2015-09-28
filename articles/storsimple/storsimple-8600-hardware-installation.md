@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple 8600 デバイスの取り付け | Microsoft Azure"
-	description="ソフトウェアのデプロイと構成の前に、StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブルの接続をする方法について説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="ソフトウェアのデプロイと構成の前に、StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブルの接続をする方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/06/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/16/2015"
+   ms.author="alkohli" />
 
 # StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブル接続
 
@@ -196,7 +196,7 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 - 付属のシリアル ケーブル
 - PC に適切なドライバーがインストールされているシリアル USB コンバーター (必要に応じて)
 - 10 GbE ネットワーク インターフェイスで使用する付属の単一 QSFP-SFP+ アダプター
-- [StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces/) 
+- [StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md) 
 
 ### SAS ケーブル接続と電源ケーブル接続
 
@@ -289,4 +289,4 @@ H、I | ホスト (ファイル サーバーなど)
 これで[オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough.md)準備ができました。
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

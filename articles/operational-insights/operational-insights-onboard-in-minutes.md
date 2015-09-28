@@ -1,20 +1,20 @@
 <properties
     pageTitle="Operational Insights を数分で理解する | Microsoft Azure"
-	description="数分で Azure Operational Insights を設定する方法"
-	services="operational-insights"
-	documentationCenter=""
-	authors="bandersmsft"
-	manager="jwhit"
-	editor=""/>
+    description="数分で Azure Operational Insights を設定する方法"
+    services="operational-insights"
+    documentationCenter=""
+    authors="bandersmsft"
+    manager="jwhit"
+    editor=""/>
 
 <tags
     ms.service="operational-insights"
-	ms.workload="operational-insights"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="08/27/2015"
-	ms.author="banders"/>
+    ms.workload="operational-insights"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="09/10/2015"
+    ms.author="banders"/>
 
 # Azure Operational Insights を数分で理解する
 
@@ -101,4 +101,4 @@ Operations Management Suite では、Azure Cloud Services の診断を有効に�
 - [検索](operational-insights-search.md)について理解します。
 - カスタム検索結果を保存および表示するために[ダッシュボード](operational-insights-use-dashboards.md)を使用します。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

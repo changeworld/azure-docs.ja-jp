@@ -6,15 +6,15 @@
 	authors="HeidiSteen"
 	manager="mblythe"
 	editor=""
-	tags="azure-portal"/>
+    tags="azure-portal"/>
 
 <tags
 	ms.service="search"
 	ms.devlang="NA"
 	ms.workload="search"
-	ms.topic="article"
+	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="08/19/2015"
+	ms.date="09/16/2015"
 	ms.author="heidist"/>
 
 #Azure Search: チュートリアル、ビデオ デモ、サンプル
@@ -23,7 +23,7 @@
 
 ##デモ サイト
 
-[**Azure Search のニューヨーク市 (NYC) ジョブ ポータルのデモ**](http://aka.ms/azjobsdemo)は、NYC Open Data 構想のデータを使用して Azure Search の機能を示す ASP.NET Web サイトです。
+[**Azure Search のニューヨーク市 (NYC) ジョブ ポータルのデモ**](http://aka.ms/azjobsdemo)は、NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。
 
 [**App Service + Azure Search を試す**](search-tryappservice.md)は、オンラインで変更してさまざまな検索機能を試すことのできるデータ、機能 Web アプリケーション、ソース コードを掲載した、Azure Search の無料のセッションです (1 時間)。
 
@@ -40,7 +40,7 @@
 [Deep Dive (Azure Search の詳細)](http://channel9.msdn.com/events/TechEd/Europe/2014/DBI-B410)|TechEd Europe から Pablo Castro が提示する 1 時間 15 分のプレゼンテーションです。
 [8 分の概要](http://channel9.msdn.com/events/Visual-Studio/Connect-event-2014/421)|Connect Visual Studio イベントからの短いプレゼンテーションです (提供者: Liam Cavanagh、所要時間: 8 分 58 秒)。
 [Introduction to Azure Search (Azure Search の概要)](http://go.microsoft.com/fwlink/?LinkId=511340)|Azure Search のアーキテクチャと機能について説明するビデオ記録です (提供者: Liam Cavanagh、所要時間: 22 分)。
-[Cloud Cover: チャンネル 9 のエピソード 152](http://channel9.msdn.com/Shows/Cloud%20Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh)|機能、Fiddler による通常のクエリや地理空間クエリの実行、またそれにより返される結果の理解に関するより深い議論を記録したビデオです (提供者: Liam Cavanagh、所要時間: 25 分)。
+[Cloud Cover: チャネル 9 のエピソード 152](http://channel9.msdn.com/Shows/Cloud%20Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh)|機能、Fiddler による通常のクエリや地理空間クエリの実行、またそれにより返される結果の理解に関するより深い議論を記録したビデオです (提供者: Liam Cavanagh、所要時間: 25 分)。
 [Data Exposed: Azure Search の検索候補機能](https://channel9.msdn.com/Shows/Data-Exposed/DataExposedAzureSearchSuggestions)|検索候補機能 (ユーザーが用語を入力するときに、可能性のある検索用語を表示する、先行入力またはオート コンプリート クエリとも呼ばれます) のビデオ記録です (提供者: Liam Cavanagh、所要時間: 15 分)。Azure Search では、あいまい一致は検索候補を通じて実装されます。
 [Data Exposed: GeoSpatial Data and Azure Search (地理空間データと Azure Search)](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data)|地理空間検索シナリオに関するビデオ記録です (提供者: Liam Cavanagh、所要時間: 18 分)
 [Data Exposed: SQL Server To Azure Search Synchronization (SQL Server と Azure Search の同期)](http://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-to-Azure-Search-Synchronization)|Azure Search によりデータベース トランザクションを同期する方法に関するビデオ記録です (提供者: Liam Cavanagh、所要時間: 16 分)。
@@ -64,7 +64,16 @@
 
 ##コード サンプル
 
-[****https://github.com/AzureSearch**](https://github.com/AzureSearch) は Azure Search 開発チームが作成したコード サンプルを含む Azure Search の GitHub リポジトリです。リボジトリを参照してその内容を確認できます。または、次のリンクをクリックして、特定のサンプルに直接移動できます。
+[****https://github.com/liamca/AzureSearchDemos**](https://github.com/liamca/AzureSearchDemos) は Liam Cavanagh が作成したコード サンプルを含む GitHub リポジトリです。このリポジトリには次のサンプルがあります。
+
+- [AdventureWorksWP8]() は Windows Phone アプリです。
+- [AzSearchAutoScaleWeb](https://github.com/liamca/AzureSearchDemos/tree/master/AzSearchAutoScaleWeb) 
+- [BabyNameJS](https://github.com/liamca/AzureSearchDemos/tree/master/BabyNamesJS) はチュートリアルでデータを提供する index.html ファイルです。
+- [DotNetSample](https://github.com/liamca/AzureSearchDemos/tree/master/DotNetSample)は Azure Search 用の ASP.NET MVC アプリケーションです。
+- [NYCJobs.NET](https://github.com/liamca/AzureSearchDemos/tree/master/NYCJobs.NET) は NYCJobs ライブ デモ サイト用のソース コードを提供します。
+- [推奨事項](https://github.com/liamca/AzureSearchDemos/tree/master/Recommendations)では、Active Data Factory、SQL Database、BLOB ストレージ、HDInsight を利用し、製品が同時に購入される頻度に基づき、製品推奨事項を実装します。
+
+[****https://github.com/AzureSearch**](https://github.com/AzureSearch) は Azure Search 開発チームが作成したコード サンプルを含む Azure Search のもう 1 つの GitHub リポジトリです。リボジトリを参照してその内容を確認できます。または、次のリンクをクリックして、特定のサンプルに直接移動できます。
 
 - [**JavaIndexerDemo**](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo)
 - [**NodeJSIndexerDemo**](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo)
@@ -81,4 +90,4 @@ CodePlex で、最新バージョンと関連のあるパブリック プレビ�
 - [**SQL Server と Azure Search の同期サンプル**](http://sqlserver2azuresearch.codeplex.com/) は、埋め込み型のローカルのデータベースから SQL Server の行セットを読み込む Windows コンソール アプリケーションです。
 - [**スコアリング プロファイルのデモ**](https://azuresearchscoringprofiles.codeplex.com/) は、検索結果をチューニングするために必要なスコアリング プロファイル を定義し、実行し、更新する Windows コンソール アプリケーションです。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

@@ -83,7 +83,7 @@ CREATE EXTERNAL DATA SOURCE azure_storage
 WITH
 (
     TYPE = HADOOP
-,   LOCATION ='wasbs://mycontainer@ test.blob.core.windows.net/path'
+,   LOCATION ='wasbs://mycontainer@test.blob.core.windows.net'
 ,   CREDENTIAL = ASBSecret
 )
 ;
@@ -125,7 +125,7 @@ PolyBase は、区切り文字、Hive RCFILE、および HIVE ORC 形式の圧�
 外部ファイル形式を削除する構文は次のとおりです。
 
 ```
--- Dropping external file format...
+-- Dropping external file format
 DROP EXTERNAL FILE FORMAT text_file_format
 ;
 ```
@@ -325,4 +325,4 @@ $write.Dispose()
 [CREATE CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189522.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/ja-JP/library/ms189450.aspx
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築 | Microsoft Azure" 
+	pageTitle="DocumentDB を使用した ASP.NET MVC Web アプリケーションの開発 | Microsoft Azure" 
 	description="DocumentDB を .NET と共に使用して To Do リスト Web アプリケーションを作成する方法について説明します。データは Azure Websites にホストされた ASP.NET MVC Web アプリケーションに格納してアクセスします。" 
+	keywords="Github, visual studio, web application development, application development, database tutorial, mvc applications, json data, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter=".net" 
 	authors="ryancrawcour" 
@@ -17,7 +18,7 @@
 	ms.date="07/24/2015" 
 	ms.author="ryancraw"/>
 
-#<a name="_Toc395809351"></a>DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築
+#<a name="_Toc395809351"></a>DocumentDB を使用した ASP.NET MVC Web アプリケーションの開発
 
 この記事では、Azure DocumentDB を効果的に活用して、JSON ドキュメントの保存とクエリを行う方法を取り上げます。ToDo リストの Web アプリケーションを Azure DocumentDB を使って構築するエンド ツー エンドの手順を紹介しています。対象となるタスクは、JSON ドキュメントとして Azure DocumentDB に保存するものとします。
 
@@ -27,7 +28,7 @@
 
 > [AZURE.TIP]このチュートリアルでは、ASP.NET MVC と Azure Websites の使用経験がある読者を想定しています。ASP.NET や[前提条件となるツール](#_Toc395637760)を初めて扱う方は、完全な [todo](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/todo) チュートリアル プロジェクトを [GitHub](https://github.com/Azure/azure-documentdb-net) からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 
-## <a name="_Toc395637760"></a>前提条件
+## <a name="_Toc395637760"></a>このデータベース チュートリアルの前提条件
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
@@ -64,7 +65,7 @@
 
   	**[新しい ASP.NET プロジェクト]** ダイアログ ボックスが表示されます。
 
-  	![MVC テンプレートが強調表示され、[クラウドでのホスト] ボックスがオンになっている、[新しい ASP.NET プロジェクト] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image11.png)
+  	![MVC アプリケーション テンプレートが強調表示され、[クラウドでのホスト] ボックスがオンになっている、[新しい ASP.NET プロジェクト] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image11.png)
 
 5. テンプレート ウィンドウで、**[MVC]** を選択します。
 
@@ -84,13 +85,13 @@
 
 	読者の皆さんは、ASP.NET の "Hello World" アプリケーションで体験済みだと思いますので、プロジェクトをローカルに実行する手順は省略します。早速このプロジェクトに DocumentDB を追加して、アプリケーションを構築しましょう。
 
-## <a name="_Toc395637767"></a>手順 3: DocumentDB をプロジェクトに追加する
+## <a name="_Toc395637767"></a>手順 3: DocumentDB を Web アプリケーション プロジェクトに追加する
 
 このソリューションに必要な ASP.NET MVC のほとんどの構成要素がそろったので、このチュートリアルの本来の目的である Web アプリケーションへの Azure DocumentDB の追加に移ります。
 
 1. DocumentDB .NET SDK は、NuGet パッケージの形式で配布されています。Visual Studio で NuGet パッケージを取得するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして表示される Visual Studio の NuGet パッケージ マネージャーを使用します。
 
-  	![[NuGet パッケージの管理] が強調表示されている、ソリューション エクスプローラーでのプロジェクトの右クリック オプションのスクリーン ショット](./media/documentdb-dotnet-application/image21.png)
+  	![[NuGet パッケージの管理] が強調表示されている、ソリューション エクスプローラーでの Web アプリケーション プロジェクトの右クリック オプションのスクリーン ショット](./media/documentdb-dotnet-application/image21.png)
 
     **[NuGet パッケージの管理]** ダイアログ ボックスが表示されます。
 
@@ -106,7 +107,7 @@
 
 3. パッケージがインストールされると、次のように、Microsoft.Azure.Documents.Client と Newtonsoft.Json の 2 つの新しい参照が Visual Studio ソリューションに追加されます。
 
-  	![ソリューション エクスプローラーでプロジェクトに追加された 2 つの参照のスクリーン ショット](./media/documentdb-dotnet-application/image22.png)
+  	![ソリューション エクスプローラーで JSON データ プロジェクトに追加された 2 つの参照のスクリーン ショット](./media/documentdb-dotnet-application/image22.png)
 
 
 ##<a name="_Toc395637763"></a>手順 4: ASP.NET MVC アプリケーションをセットアップする
@@ -118,7 +119,7 @@
 - [ビューを追加します](#_Toc395637766)。
 
 
-### <a name="_Toc395637764"></a>モデルを追加する
+### <a name="_Toc395637764"></a>JSON データ モデルを追加する
 
 最初に作成するのは、MVC の "**M**" (モデル) です。
 
@@ -178,7 +179,7 @@
 
 	ファイルが作成されると、Visual Studio ソリューションに新しい ItemController.cs ファイルが追加され、**ソリューション エクスプローラー**に次のように表示されます。前に作成した新しい Item.cs ファイルも表示されます。
 
-	![新しい ItemController.cs ファイルと Item.cs ファイルが強調表示されているソリューション エクスプローラーのスクリーン ショット](./media/documentdb-dotnet-application/image16.png)
+	![Visual Studio ソリューションのスクリーン ショット - 新しい ItemController.cs ファイルと Item.cs ファイルが強調表示されているソリューション エクスプローラー](./media/documentdb-dotnet-application/image16.png)
 
 	ItemController.cs は閉じてもかまいません。後でまた使用します。
 
@@ -195,14 +196,14 @@
 
 1. **ソリューション エクスプローラー**で、**Views** フォルダーを展開します。先ほど **ItemController** を追加したときに Visual Studio によって作成された空の **Item** フォルダーを右クリックし、**[追加]** をクリックします。次に、**[ビュー]** をクリックします。
 
-	![[ビューの追加] コマンドが強調表示された状態の Item フォルダーが示されているソリューション エクスプローラーのスクリーン ショット](./media/documentdb-dotnet-application/image17.png)
+	![[ビューの追加] コマンドが強調表示された状態の、Visual Studio で作成された Item フォルダーが示されているソリューション エクスプローラーのスクリーン ショット](./media/documentdb-dotnet-application/image17.png)
 
 2. **[ビューの追加]** ダイアログ ボックスで、次の操作を行います。
 	- **[ビュー名]** ボックスに、「***Index***」と入力します。
 	- **[テンプレート]** ボックスで、***[一覧]*** を選択します。
 	- **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
 	- **[データ コンテキスト クラス]** ボックスは空のままにします。 
-	- レイアウト ページ ボックスに、「***\~/Views/Shared/\_Layout.cshtml***」と入力します。
+	- レイアウト ページ ボックスに、「***~/Views/Shared/\_Layout.cshtml***」と入力します。
 	
 	![[ビューの追加] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image18.png)
 
@@ -219,7 +220,7 @@
     - **[テンプレート]** ボックスで、***[作成]*** を選択します。
     - **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
     - **[データ コンテキスト クラス]** ボックスは空のままにします。
-    - レイアウト ページ ボックスに、「***\~/Views/Shared/\_Layout.cshtml***」と入力します。
+    - レイアウト ページ ボックスに、「***~/Views/Shared/\_Layout.cshtml***」と入力します。
     - **[追加]** をクリックします。
 
 #### <a name="_Toc395888515"></a>項目を編集するためのビューを追加する
@@ -233,7 +234,7 @@
     - **[テンプレート]** ボックスで、***[編集]*** を選択します。
     - **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
     - **[データ コンテキスト クラス]** ボックスは空のままにします。 
-    - レイアウト ページ ボックスに、「***\~/Views/Shared/\_Layout.cshtml***」と入力します。
+    - レイアウト ページ ボックスに、「***~/Views/Shared/\_Layout.cshtml***」と入力します。
     - **[追加]** をクリックします。
 
 この作業が済んだら、Visual Studio に表示されている cshtml ドキュメントをすべて閉じてください。これらのビューは後で使用します。
@@ -248,7 +249,7 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 - [項目の追加](#_Toc395637771)。
 - [項目の編集](#_Toc395637772)。
 
-### <a name="_Toc395637770"></a>未完了項目の一覧表示
+### <a name="_Toc395637770"></a>Web アプリケーションの未完了項目の一覧表示
 
 最初に、DocumentDB に接続して使用するためのすべてのロジックを含むクラスを追加します。このチュートリアルでは、このすべてのロジックを DocumentDBRepository という名前のリポジトリ クラスにカプセル化します。
 
@@ -451,7 +452,7 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 
 このプロジェクトをビルドして実行すると、次のように表示されます。
 
-![このチュートリアルで作成された、todo リスト Web アプリケーションのスクリーン ショット](./media/documentdb-dotnet-application/image23.png)
+![このデータベース チュートリアルで作成された、ToDo リスト Web アプリケーションのスクリーン ショット](./media/documentdb-dotnet-application/image23.png)
 
 ### <a name="_Toc395637771"></a>項目の追加
 
@@ -578,7 +579,7 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 1. Visual Studio で F5 キーを押して、デバッグ モードでアプリケーションをビルドします。すると、アプリケーションがビルドされてブラウザーが起動し、先ほど見た空のグリッド ページが表示されます。
 
-	![このチュートリアルで作成された、todo リスト Web アプリケーションのスクリーン ショット](./media/documentdb-dotnet-application/image24.png)
+	![このデータベース チュートリアルで作成された、ToDo リスト Web アプリケーションのスクリーン ショット](./media/documentdb-dotnet-application/image24.png)
 
 	この段階でエラーが発生する場合は、自分のコードと [GitHub][] の todo チュートリアルとを比較してください。
 
@@ -608,7 +609,7 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 2. すべての設定は、資格情報に従って自動的に構成されます。実際、Web サイトは既に、Azure の **[作成先 URL]** (下図参照) に作成されており、後は **[発行]** をクリックするだけです。
 
-    ![[Web の発行] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image29.png)
+    ![Visual Studio の [Web の発行] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image29.png)
 
 数秒すると、Web アプリケーションの発行が完了し、ブラウザーが起動されます。作成したアプリケーションが Azure で実行されているようすが確認できます。
 
@@ -658,4 +659,4 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

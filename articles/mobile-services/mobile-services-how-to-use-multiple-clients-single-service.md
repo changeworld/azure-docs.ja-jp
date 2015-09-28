@@ -1,18 +1,18 @@
 <properties
-	pageTitle="1 つのモバイル サービス バックエンドで複数のクライアントを使用する方法 | Microsoft Azure"
-	description="Windows ストアや Windows Phone など、さまざまなモバイル プラットフォームを対象とする複数のクライアント アプリから単一の Mobile Services バックエンドを使用する方法について説明します。"
+	pageTitle="1 つのモバイル サービス バックエンドで複数のクライアントを使用する方法 | Azure Mobile Services"
+	description="さまざまなモバイル プラットフォームを対象とする複数のクライアント アプリから単一の Mobile Services バックエンドを使用する方法について説明します。"
 	services="mobile-services"
 	documentationCenter=""
 	authors="ggailey777"
 	manager="dwrede"
 	editor="mollybos"/>
 <tags
-	ms.service="mobile-services"
+	ms.service="mobile-services" 
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/16/2015"
 	ms.author="glenga"/>
 
 # シングル モバイル サービスから複数のデバイス プラットフォームをサポートする
@@ -21,24 +21,20 @@
 
 ##<a id="push"></a>クロスプラットフォーム プッシュ通知
 
-モバイル サービスでは、すべての主要デバイス プラットフォームのクライアント アプリへのプッシュ通知の送信に Azure 通信ハブを使用しています。通知ハブによって提供される一貫性のある統一されたインフラストラクチャで、デバイスの登録を作成、管理したり、クロスプラットフォーム プッシュ通知を送信したりできます。通知ハブでは、次のプラットフォーム固有の通知サービスを使用してプッシュ通知の送信をサポートしています。
+モバイル サービスでは、すべての主要デバイス プラットフォームのクライアント アプリへのプッシュ通知の送信に Azure 通信ハブを使用しています。Notification Hubs によって提供される一貫性のある統一されたインフラストラクチャで、デバイスの登録を作成、管理したり、クロスプラットフォーム プッシュ通知を送信したりできます。Notification Hubs では、次のプラットフォーム固有の通知サービスを使用してプッシュ通知の送信をサポートしています。
 
 + iOS アプリ向け Apple Push Notification Service (APNS)
 + Android アプリ向け Google Cloud Messaging (GCM) サービス
 + Windows ストア、Windows Phone 8.1 ストア、ユニバーサル Windows アプリ向け Windows Notification Service (WNS)
 + Windows Phone Silverlight アプリ向け Microsoft Push Notification Service (MPNS)
 
->[AZURE.NOTE]Notification Hubs では、WNS を使用した Windows Phone Silverlight 8.1 アプリへのプッシュ通知の送信は現在サポートしていません。Silverlight、Windows Phone 8.0 および 7.0 アプリへの通知の送信には MPNS を使用する必要があります。
+詳細については、「[Azure Notification Hubs]」を参照してください。
 
-詳細については、「[Azure 通知ハブ]」を参照してください。
-
-クライアントの登録は、プラットフォーム固有のモバイル サービス クライアント ライブラリで register 関数か、モバイル サービス REST API を使用して作成されます。通知ハブでは次の 2 種類のデバイス登録をサポートします。
+クライアントの登録は、プラットフォーム固有のモバイル サービス クライアント ライブラリで register 関数か、モバイル サービス REST API を使用して作成されます。Notification Hubs では次の 2 種類のデバイス登録をサポートします。
 
 + **ネイティブ登録**<br/>ネイティブ登録はプラットフォーム固有のプッシュ通知サービスに合わせて調整されます。ネイティブ登録を使用して登録したデバイスに通知を送信する場合、モバイル サービスでプラットフォーム固有の API を呼び出す必要があります。複数のプラットフォーム上のデバイスに通知を送信するには、複数のプラットフォーム固有の呼び出しが必要になります。
 
-+ **テンプレート登録**<br/>通知ハブではプラットフォーム固有のテンプレート登録もサポートします。テンプレート登録を使用すると、1 回の API 呼び出しを使用して登録したデバイス上で稼働するアプリに通知を送信できます。詳細については、「[ユーザーへのクロスプラットフォーム通知の送信]」を参照してください。
-
->[AZURE.NOTE]デバイスの登録がされていないネイティブ デバイス プラットフォームにメッセージの送信を試みると、エラーが発生します。このエラーはテンプレート通知を送信する場合には発生しません。
++ **テンプレート登録**<br/>Notification Hubs ではプラットフォーム固有のテンプレート登録もサポートします。テンプレート登録を使用すると、1 回の API 呼び出しを使用して登録したデバイス上で稼働するアプリに通知を送信できます。詳細については、「[ユーザーへのクロスプラットフォーム通知の送信]」を参照してください。
 
 次のセクションのテーブルはクライアント固有のチュートリアルにリンクしており、.NET と JavaScript バックエンド両方のモバイル サービスからプッシュ通知を実装する方法を示しています。
 
@@ -147,44 +143,10 @@ JavaScript バックエンド モバイル サービスでは、次のテーブ�
 
 + [**Xamarin**](https://go.microsoft.com/fwLink/p/?LinkID=330242)<br/>Xamarin では、iOS および Android デバイス向けに完全なネイティブ UIとすべてのデバイス リソースへのアクセスを持つ、完全にネイティブなアプリを作成できます。Xamarin アプリは Objective-C と Java ではなく、 C# でコード化されています。これにより、.NET 開発者は iOS と Android にアプリを発行し、Windows プロジェクトからのコードを共有できます。Xamarin では iOS と Android デバイスの両方に C# コードから完全にネイティブの操作環境を提供します。これにより、Windows アプリからのモバイル サービス コードを iOS や Android デバイスで再利用できるようになります。詳細については、以下の「[Xamarin 開発](#xamarin)」を参照してください。
 
-	Xamarin アプリは、Xamarin Studio または Visual Studio 2013 を使用して構築できます。詳細については、「[Visual Studioにおけるクロスプラットフォーム開発](http://msdn.microsoft.com/library/dn771552.aspx)」を参照してください。
-
-
-##<a id="shared-vs"></a>Visual Studio プロジェクトにおける共有とコードの再利用
-
-モバイル サービスには .NET クライアント ライブラリが含まれています。これはすべての Windows プラットフォームの開発をサポートする .NET Framework ポータブル クラス ライブラリ (PCL) です。詳細については、「[モバイル サービスで .NET を使用する方法]」を参照してください。これにより、複数の C# プロジェクトにおいてデータ アクセスや認証などの同じモバイル サービス コードを簡単に再利用できます。
-
-プロジェクト間で C# コードを共有し、再利用する上での一般的なアプローチの 1 つは、Model-View-ViewModel (MVVM) パターンを実装し、複数のプラットフォームでアセンブリを共有することです。Visual Studio のポータブル クラス ライブラリ プロジェクトでモデル クラスとビュー モデル クラスを実装し、各種プラットフォーム用にカスタマイズされたビューを作成することができます。プラットフォーム間の共通モデル コードでは、(例として) モバイル サービスなどのソースからプラットフォームに依存しない方法でデータを取得できます。MSDN ライブラリでは、<a href="http://msdn.microsoft.com/library/gg597391(v=vs.110)">概要と例</a>、<a href="http://msdn.microsoft.com/library/gg597392(v=vs.110)">API の相違点</a>の説明、<a href="http://msdn.microsoft.com/library/hh563947(v=vs.110)">ポータブル クラス ライブラリを使用した MVVM パターンの実装</a>の例、その他の<a href="http://msdn.microsoft.com/library/windowsphone/develop/jj714086(v=vs.105).aspx">規範的なガイダンス</a>、およびポータブル クラス ライブラリ プロジェクトでの<a href="http://msdn.microsoft.com/library/hh871422(v=vs.110)">リソースの管理</a>に関する情報が提供されています。
-
-この一般的なガイダンスのほか、Visual Studio ではモバイル サービス コードを複数のクライアント アプリ プロジェクトで再利用するための特別機能を提供します。この機能については以下のセクションで説明します。Visual Studio 2013 を使用してクロスプラットフォーム アプリを構築するための一般情報については、「[Visual Studioにおけるクロスプラットフォーム開発](http://msdn.microsoft.com/library/dn771552.aspx)」を参照してください。
-
-### ユニバーサル Windows アプリ
-
-Visual Studio 2013 Update 2 ではユニバーサル Windows アプリ プロジェクトのサポートが追加されました。ユニバーサル アプリは Windows ストア8.1 および Windows Phone Store 8.1 アプリ プロジェクトの両方に、共有コード プロジェクトとともに含まれるソリューションです。この種のプロジェクトでは、共有コードは Windows ストア と Windows Phone プロジェクトの両方の一部として処理されます。詳細については、「[すべての Windows デバイスでユニバーサル Windows アプリを構築する]」を参照してください。ユニバーサル Windows アプリは C#/XAML と JavaScript/HTML の両方で書き込むことができます。
-
-既定では、[Azureの管理ポータル]の [モバイル サービス クイックスタート] タブで開始用の TodoList サンプル アプリのユニバーサル Windows アプリ バージョンが生成されます。ダウンロードするプロジェクトのバージョンは C#/XAML または C#/XAML のいずれかから選択できます。詳細については、「[モバイル サービスの使用](../mobile-services-windows-store-get-started.md)」を参照してください。
-
->[AZURE.NOTE]ポータルからのクイックスタート アプリ プロジェクトの C# バージョンは、MainPage.xaml.cs コード ビハインド ページを共有しますが、ビュー モデルは使用しません。C# のユニバーサル アプリ プロジェクトとして MVVM を使用する TodoList アプリの例は、「[MVVM を使用した Azure モバイル サービスのユニバーサル Windows アプリ プロジェクト]」を参照してください。
-
-###<a id="xamarin"></a>Xamarin 開発
-
-Visual Studio と C# 開発経験を活用し、Xamarin と Visual Studio または Xamarin Studio を使用して iOS および Android 向けのアプリを開発できます。Xamarin では .NET Framework のクロスプラットフォーム実装を使用するため、C# コードで iOS および Android アプリを開発できます。Xamarin を使用すると、モバイル サービス NET クライアント ライブラリを使用した プロジェクトから既存のコードを活用してモバイル サービスにアクセスできます。詳細については、「[Visual Studioにおけるクロスプラットフォーム開発](http://msdn.microsoft.com/library/dn771552.aspx)」を参照してください。
-
-モバイル サービスを使用する Xamarin アプリの構築を開始するには、Xamarin クイックスタート チュートリアル ([iOS](mobile-services-ios-get-started.md) / [Android](mobile-services-android-get-started.md)) を参照してください。
-
-
-### Windows ストアおよび Windows Phone Silverlight アプリ
-
-Windows Phone 8.1 では、以前の Silverlight ベースの XAML を使用してアプリを開発するか、ユニバーサル Windows アプリの開発ができる Windows ランタイム ベースの XAML を使用することができます。Windows Phone 8.1 Silverlight アプリおよび Windows Phone ストア 8.1 アプリの詳細については、「[Windows Phone 8 開発者の次の手順]」を参照してください。
-
-モバイル サービス .NET クライアント ライブラリでは、Windows Phone ストア 8.1 および Windows Phone Silverlight 8.1 アプリの両方をサポートします。Windows ランタイムと Windows Phone Silverlight アプリは同じプロジェクトから構築できないため、上述したように PCL や MVVM などのコード再利用計画の使用を考慮する必要があります。
-
->[AZURE.NOTE]Windows ランタイムと Windows Phone Silverlight の両方のアプリで Microsoft アカウントを使用したシングル サインオン クライアント認証を利用するには、まず Windows ストア ダッシュボードで Windows ランタイム アプリを登録する必要があります。Windows Phone 用に Live Connect 登録を作成した後は、Windows ストア用に登録を作成できないためです。この方法の詳細については、「**Live Connect シングル サインオンによる Windows ストア アプリケーションの認証**」([Windows ストア][SSO Windows Store]/[Windows Phone][SSO Windows Phone]) を参照してください。
-
 
 <!-- URLs -->
-[Azureの管理ポータル]: https://manage.windowsazure.com
-[Azure 通知ハブ]: /develop/net/how-to-guides/service-bus-notification-hubs/
+[Azure Management portal]: https://manage.windowsazure.com
+[Azure Notification Hubs]: /develop/net/how-to-guides/service-bus-notification-hubs/
 [SSO Windows Store]: /develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
 [SSO Windows Phone]: /develop/mobile/tutorials/single-sign-on-wp8/
 [Tutorials and resources]: /develop/mobile/resources/
@@ -196,7 +158,7 @@ Windows Phone 8.1 では、以前の Silverlight ベースの XAML を使用し�
 [Get started with push iOS]: /develop/mobile/tutorials/get-started-with-push-ios/
 [Get started with push Android]: /develop/mobile/tutorials/get-started-with-push-android/
 [Dynamic schema]: http://msdn.microsoft.com/library/windowsazure/jj193175.aspx
-[モバイル サービスで .NET を使用する方法]: documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
+[How to use a .NET client with Mobile Services]: documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
 [send]: http://msdn.microsoft.com/library/windowsazure/jj554217.aspx
 [TemplatePushMessage]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.templatepushmessage.aspx
 [PhoneGap]: mobile-services-javascript-backend-phonegap-get-started.md
@@ -205,8 +167,8 @@ Windows Phone 8.1 では、以前の Silverlight ベースの XAML を使用し�
 [SendAsync]: http://msdn.microsoft.com/library/microsoft.windowsazure.mobile.service.notifications.pushclient.sendasync.aspx
 [ApiServices.Push]: http://msdn.microsoft.com/library/microsoft.windowsazure.mobile.service.notifications.pushclient.sendasync.aspx
 [IPushMessage]: http://msdn.microsoft.com/library/microsoft.windowsazure.mobile.service.notifications.pushclient.sendasync.aspx
-[Windows Phone 8 開発者の次の手順]: http://msdn.microsoft.com/library/windows/apps/dn655121(v=vs.105).aspx
-[すべての Windows デバイスでユニバーサル Windows アプリを構築する]: http://go.microsoft.com/fwlink/p/?LinkId=509905
-[MVVM を使用した Azure モバイル サービスのユニバーサル Windows アプリ プロジェクト]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
+[What's next for Windows Phone 8 developers]: http://msdn.microsoft.com/library/windows/apps/dn655121(v=vs.105).aspx
+[Building universal Windows apps for all Windows devices]: http://go.microsoft.com/fwlink/p/?LinkId=509905
+[Universal Windows app project for Azure Mobile Services using MVVM]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

@@ -3,7 +3,7 @@
 	description="Windows Server を実行する Azure 仮想マシン (VM) のイメージをキャプチャする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor="tysonn"
 	tags="azure-service-management"/>
@@ -15,13 +15,13 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/16/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 #イメージとして使用する Windows 仮想マシンのキャプチャ方法#
 
 ここでは、Windows を実行する Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。このイメージには、オペレーティング システム ディスクと、仮想マシンに接続されているすべてのデータ ディスクが含まれます。ネットワーク構成は含まれないため、テンプレートを使用する他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
 
-Azure では、イメージは **[マイ イメージ]** に格納されます。この場所は、アップロードしたイメージが格納される場所と同じです。イメージの詳細については、[「Azure での仮想マシン イメージについて」][]を参照してください。
+Azure では、イメージは **[マイ イメージ]** に格納されます。この場所は、アップロードしたイメージが格納される場所と同じです。イメージの詳細については、「[仮想マシン イメージについて](virtual-machines-images.md)」を参照してください。
 
 ##開始する前に##
 
@@ -52,7 +52,7 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 
 7.	Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、Azure ポータルの仮想マシンの状態が **[停止済み]** に変わります。
 
-8.	Azure ポータル で **[仮想マシン]** をクリックし、キャプチャする仮想マシンを選択します。
+8.	Azure ポータル で **[Virtual Machines]** をクリックし、キャプチャする仮想マシンを選択します。
 
 9.	コマンド バーで、**[取り込み]** をクリックします。
 
@@ -71,8 +71,6 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 ##次のステップ##
 イメージを使用して仮想マシンを作成する準備ができました。これを行うには、**[ギャラリーから]** メニュー項目を使用して先ほど作成したイメージを選択し、仮想マシンを作成します。手順については、「[Windows を実行するカスタム仮想マシンの作成][]」を参照してください。
 
-
-[「Azure での仮想マシン イメージについて」]: http://msdn.microsoft.com/library/azure/dn790290.aspx
 [Windows を実行するカスタム仮想マシンの作成]: virtual-machines-windows-create-custom.md
 [データ ディスクを仮想マシンに接続する方法]: storage-windows-attach-disk.md
 [Windows Server が実行されている仮想マシンにサインインする方法]: virtual-machines-log-on-windows-server.md
@@ -85,4 +83,4 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 [Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
 [Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

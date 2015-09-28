@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple 帯域幅テンプレートを管理する | Microsoft Azure"
-	description="帯域幅の消費量を制御するのに使用できる StorSimple 帯域幅テンプレートを管理する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="帯域幅の消費量を制御するのに使用できる StorSimple 帯域幅テンプレートを管理する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="09/01/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/15/2015"
+   ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用して StorSimple 帯域幅テンプレートを管理する
 
@@ -170,10 +170,11 @@ StorSimple デバイスに関する次のベスト プラクティスに従っ�
 
 - デバイスに帯域幅テンプレートを構成し、1 日の異なる時間にデバイスごとにネットワーク スループットを可変調整できるようにします。これらの帯域幅テンプレートをバックアップ スケジュールと併用すると、オフピーク時間帯のクラウド運用に追加ネットワーク帯域幅を効果的に利用できます。
 
-- 展開のサイズおよび必要な目標復旧時間 (RTO) に基づいて、特定の展開に必要な実際の帯域幅を計算します。
+- デプロイのサイズおよび必要な目標復旧時間 (RTO) に基づいて、特定のデプロイメントに必要な実際の帯域幅を計算します。
 
 ## 次のステップ
 
-[StorSimple コンポーネント](storsimple-components.md)の詳細
+- [StorSimple コンポーネントの詳細](storsimple-components.md) 
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

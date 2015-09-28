@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイス コントローラーを管理する | Microsoft Azure"
-	description="StorSimple デバイス コントローラーの停止、再起動、シャットダウン、リセットの方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple デバイス コントローラーの停止、再起動、シャットダウン、リセットの方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="09/01/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/15/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイス コントローラーを管理する
 
@@ -220,6 +220,8 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 ## 次のステップ
 
-このチュートリアルで紹介した手順では解決できないような問題が StorSimple デバイス コントローラーで発生した場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
+- このチュートリアルで紹介した手順では解決できないような問題が StorSimple デバイス コントローラーで発生した場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
-<!---HONumber=September15_HO1-->
+- StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
+
+<!---HONumber=Sept15_HO3-->

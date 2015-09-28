@@ -274,19 +274,19 @@ BLOB を SQL Server コンテンツ データベースに戻したら、次の�
 1. 管理者特権を持つアカウントを使用して、Web フロント エンド (WFE) サーバーにログオンします。
 2. SharePoint 用 StorSimple アダプター インストーラーをダブルクリックします。セットアップ ウィザードが起動します。
 
-![セットアップ ウィザード](./media/storsimple-adapter-for-sharepoint/sasp2.png)
+    ![セットアップ ウィザード](./media/storsimple-adapter-for-sharepoint/sasp2.png)
 
 3. **[次へ]** をクリックします。次のページが表示されます。
 
-![セットアップ ウィザードの削除ページ](./media/storsimple-adapter-for-sharepoint/sasp3.png)
+    ![セットアップ ウィザードの削除ページ](./media/storsimple-adapter-for-sharepoint/sasp3.png)
 
 4. **[削除]** をクリックして削除プロセスを選択します。次のページが表示されます。
 
-![セットアップ ウィザードの確認ページ](./media/storsimple-adapter-for-sharepoint/sasp4.png)
+    ![セットアップ ウィザードの確認ページ](./media/storsimple-adapter-for-sharepoint/sasp4.png)
 
 5. **[削除]** をクリックして削除を確定します。次の進行状況ページが表示されます。
 
-![セットアップ ウィザードの進行状況ページ](./media/storsimple-adapter-for-sharepoint/sasp5.png)
+    ![セットアップ ウィザードの進行状況ページ](./media/storsimple-adapter-for-sharepoint/sasp5.png)
 
 6. 削除が完了すると、完了ページが表示されます。**[完了]** をクリックしてセットアップ ウィザードを閉じます。
 
@@ -298,7 +298,7 @@ BLOB を SQL Server コンテンツ データベースに戻したら、次の�
 
 ## 次のステップ
 
-[StorSimple の詳細情報](storsimple-overview.md)
+[StorSimple の詳細](storsimple-overview.md)
 
 <!--Reference links-->
 [1]: https://www.microsoft.com/download/details.aspx?id=44073
@@ -308,4 +308,4 @@ BLOB を SQL Server コンテンツ データベースに戻したら、次の�
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/ja-JP/library/ff943565.aspx
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

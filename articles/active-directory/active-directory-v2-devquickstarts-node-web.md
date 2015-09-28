@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 | Microsoft Azure"
+	pageTitle="アプリ モデル v2.0 Node.js Web アプリ | Microsoft Azure"
 	description="サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Node JS Web アプリを構築する方法を説明します。"
 	services="active-directory"
 	documentationCenter="nodejs"
@@ -10,10 +10,10 @@
 <tags
 	ms.service="active-directory"
 	ms.workload="identity"
-	ms.tgt_pltfrm="na"
+  ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.date="09/11/2015"
 	ms.author="brandwe"/>
 
 # アプリ モデル v2.0 プレビュー: NodeJS Web アプリへのサインインを追加する
@@ -67,7 +67,7 @@ The completed application is provided at the end of this tutorial as well.
 - `npm install express-session`
 - `npm install cookie-parser`
 
-- In addition, we've use `passport-azure-ad` for our Preview in the skeleton of the quickstart. 
+- In addition, we've use `passport-azure-ad` for our Preview in the skeleton of the quickstart.
 
 - `npm install passport-azure-ad`
 
@@ -93,8 +93,8 @@ var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 - その後、今参照した戦略を使用してログイン要求を処理します。
 
 ```JavaScript
-// Use the OIDCStrategy within Passport. (Section 2) 
-// 
+// Use the OIDCStrategy within Passport. (Section 2)
+//
 //   Strategies in passport require a `validate` function, which accept
 //   credentials (in this case, an OpenID identifier), and invoke a callback
 //   with a user object.
@@ -224,7 +224,7 @@ app.get('/auth/openid',
 app.get('/auth/openid/return',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
-    
+
     res.redirect('/');
   });
 
@@ -237,7 +237,7 @@ app.get('/auth/openid/return',
 app.post('/auth/openid/return',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
-    
+
     res.redirect('/');
   });
 ```
@@ -383,13 +383,13 @@ exports.list = function(req, res){
 	<body>
 		<% if (!user) { %>
 			<p>
-			<a href="/">Home</a> | 
+			<a href="/">Home</a> |
 			<a href="/login">Log In</a>
 			</p>
 		<% } else { %>
 			<p>
-			<a href="/">Home</a> | 
-			<a href="/account">Account</a> | 
+			<a href="/">Home</a> |
+			<a href="/account">Account</a> |
 			<a href="/logout">Log Out</a>
 			</p>
 		<% } %>
@@ -407,7 +407,7 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 ##次のステップ
 
-参照用の完全な例 (構成値を除く) が、[.zip としてこちらで提供されています](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip)。または、GitHub から複製できます。
+参照用の完全なサンプル (構成値を除く) が、[.zip としてこちらで提供されています](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip)。または、GitHub から複製できます:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
@@ -417,4 +417,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 その他のリソースについては、次を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

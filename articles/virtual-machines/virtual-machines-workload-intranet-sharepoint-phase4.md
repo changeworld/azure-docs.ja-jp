@@ -11,13 +11,15 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows-sharepoint"
+	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/22/2015"
 	ms.author="josephd"/>
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 4: SharePoint サーバーの構成
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、SharePoint ファームのアプリケーション層と Web 層を構築し、SharePoint 構成ウィザードを使用してファームを作成します。
 
@@ -96,7 +98,7 @@ Azure PowerShell コマンドの次のブロックを使用して、4 つの Sha
 
 	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName $vnetName
 
-「[リモート デスクトップ接続を使用した仮想マシンへのログオン](virtual-machines-workload-intranet-sharepoint-phase2.md#logon)」の手順を 4 回 (SharePoint サーバーごとに 1 回) 実行し、 [Domain]\\sp\_farm\_db アカウントの資格情報を使用してログオンします。これらの資格情報は、「[フェーズ 2: ドメイン コント ローラーの構成](virtual-machines-workload-intranet-sharepoint-phase2.md)」で作成しました。
+「[リモート デスクトップ接続を使用した仮想マシンへのログオン](virtual-machines-workload-intranet-sharepoint-phase2.md#logon)」の手順を 4 回 (SharePoint サーバーごとに 1 回) 実行し、[Domain]\\sp\_farm\_db アカウントの資格情報を使用してログオンします。これらの資格情報は、「[フェーズ 2: ドメイン コント ローラーを構成する](virtual-machines-workload-intranet-sharepoint-phase2.md)」で作成しました。
 
 「[接続をテストするには](virtual-machines-workload-intranet-sharepoint-phase2.md#testconn)」の手順を 4 回 (SharePoint サーバーごとに 1 回) 実行して、組織のネットワーク上の場所への接続をテストします。
 
@@ -110,7 +112,7 @@ Azure PowerShell コマンドの次のブロックを使用して、4 つの Sha
 4.	**[サーバー ファームへの接続]** ページで、**[新しいサーバー ファームの作成]** をクリックし、**[次へ]** をクリックします。
 5.	**[構成データベースの設定]** ページで、次の操作を行います。
  - **[データベース サーバー]** に、プライマリ データベース サーバーの名前を入力します。
- - **[ユーザー名]**に、「[Domain]**\\sp\_farm\_db** (「[フェーズ 2: ドメイン コントローラーの構成](virtual-machines-workload-intranet-sharepoint-phase2.md)」で作成)」と入力します。sp\_farm\_db アカウントには、データベース サーバーに対する sysadmin 権限があります。
+ - **[ユーザー名]** に、「[Domain]**\\sp\_farm\_db** (「[フェーズ 2: ドメイン コントローラーを構成する](virtual-machines-workload-intranet-sharepoint-phase2.md)」で作成)」と入力します。sp\_farm\_db アカウントには、データベース サーバーに対する sysadmin 権限があります。
  - **[パスワード]** に、sp\_farm\_db アカウントのパスワードを入力します。
 6.	**[次へ]** をクリックします。
 7.	**[ファームのセキュリティ設定の指定]** ページで、パスフレーズを 2 回入力します。後で参照できるように、パスフレーズを記録して、安全な場所に保管しておきます。**[次へ]** をクリックします。
@@ -177,7 +179,7 @@ SharePoint ファームへのクライアント トラフィックが 2 つの�
 
 ## 次のステップ
 
-このワークロードを引き続き構成するには、「[フェーズ 5: 可用性グループの作成と SharePoint データベースの追加](virtual-machines-workload-intranet-sharepoint-phase5.md)」に進んでください。
+このワークロードを引き続き構成するには、「[フェーズ 5: 可用性グループを作成して SharePoint データベースを追加する](virtual-machines-workload-intranet-sharepoint-phase5.md)」に進んでください。
 
 ## その他のリソース
 
@@ -193,4 +195,4 @@ SharePoint ファームへのクライアント トラフィックが 2 つの�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

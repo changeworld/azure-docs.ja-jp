@@ -2,9 +2,9 @@
 	pageTitle="実行中の Web サイトのパフォーマンスの問題の診断 | Microsoft Azure"
 	description="Web サイトを再デプロイせずにそのパフォーマンスを監視します。依存関係のテレメトリを取得するには、スタンドアロンで使用するか、Application Insights SDK と併用します。"
 	services="application-insights"
-	documentationCenter=".net"
+    documentationCenter=".net"
 	authors="alancameronwills"
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags
 	ms.service="application-insights"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/27/2015"
+	ms.date="09/10/2015"
 	ms.author="awills"/>
 
 
@@ -55,6 +55,8 @@ Application Insights を IIS Web アプリケーションに適用するには�
 4. インストール ウィザードで、Microsoft Azure にサインインします。
 
     ![Microsoft アカウントの資格情報で Azure にサインインする](./media/app-insights-monitor-performance-live-website-now/appinsights-035-signin.png)
+
+    *接続エラーでしょうか 「[トラブルシューティング](#troubleshooting)」を参照してください。*
 
 5. 監視するインストール済みの Web アプリケーションまたは Web サイトを選択し、Application Insights ポータルで結果を表示するときに使用するリソースを構成します。
 
@@ -114,6 +116,32 @@ HTTP、SQL、AZUREBLOB というラベルの付いたグラフには、依存関
 特定の例外 (過去 7 日間) をドリルダウンし、スタック トレースとコンテキスト データを取得できます。
 
 
+## トラブルシューティング
+
+### 接続エラー
+
+Status Monitor が動作するように、サーバーのファイアウォールでいくつかの送信ポートを開く必要があります。
+
++ テレメトリ - 次のものは常に必要です。
+ +	`dc.services.visualstudio.com:80`
+ +	`f5.services.visualstudio.com:80`
+ +	`dc.services.visualstudio.com:443`
+ +	`f5.services.visualstudio.com:443`
+ +	`dc.services.vsallin.net:443`
++ 構成 - 変更を加える場合にのみ必要です。
+ -	`management.core.windows.net:443`
+ -	`management.azure.com:443`
+ -	`login.windows.net:443`
+ -	`login.microsoftonline.com:443`
+ -	`secure.aadcdn.microsoftonline-p.com:443`
+ -	`auth.gfx.ms:443`
+ -	`login.live.com:443`
++ インストール
+ +	`packages.nuget.org:443`
+ +	`appinsightsstatusmonitor.blob.core.windows.net:80`
+
+この一覧は時々変更される場合があります。
+
 ### テレメトリが見つかりませんか?
 
   * サイトを使用してデータを生成します。
@@ -123,7 +151,7 @@ HTTP、SQL、AZUREBLOB というラベルの付いたグラフには、依存関
 
   ![](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
 
-  * サーバーのファイアウォールで、ポート 443 を介した dc.services.visualstudio.com への発信トラフィックが許可されていることを確認します。
+  * ファイアウォールで、上に一覧したポートを介した送信トラフィックが許可されていることを確認します。
   * サーバーに「権限が不十分」であるという内容のメッセージが表示される場合、次を実行してください。
     * IIS マネージャーで、アプリケーション プールを選択し、**[詳細設定]** を開きます。**[プロセス モデル]** に表示されている ID をメモします。
     * コンピューターの管理コントロール パネルで、この ID をパフォーマンス モニター ユーザー グループに追加します。
@@ -168,4 +196,4 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

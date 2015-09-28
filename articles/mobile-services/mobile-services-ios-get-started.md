@@ -1,5 +1,5 @@
 <properties
-	pageTitle="iOS アプリ用 Azure Mobile Services の使用"
+	pageTitle="iOS アプリ用 Azure Mobile Services の使用 | JavaScript バックエンド"
 	description="次のチュートリアルに従って、iOS 開発用の Azure Mobile Services を使用します。"
 	services="mobile-services"
 	documentationCenter="ios"
@@ -24,7 +24,7 @@
 
 このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。.NET でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの [.NET バックエンド バージョン]をご覧ください。
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](http://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F%20 target=”\_blank”) を参照してください。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 評価版にサインアップして、[無料 Mobile Services を入手できます。このサービスは評価終了後も使用できます](http://azure.microsoft.com/pricing/details/mobile-services/)。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F%20 target=”\_blank”) を参照してください。
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
@@ -88,4 +88,4 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [.NET バックエンド バージョン]: mobile-services-dotnet-backend-ios-get-started.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

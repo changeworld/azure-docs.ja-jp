@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/09/2015"
+	ms.date="09/09/2015"
 	ms.author="rkarlin"/>
 
 # 条件付きアクセスの使用
-> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](https://msdn.microsoft.com/library/azure/dn532272.aspx)」をご覧ください。
+> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 これで、アプリケーション プロキシを使用して発行されたアプリケーションへのユーザーとグループのアクセスに条件付きアクセスを許可するアクセス規則を有効にできます。これにより、次のことができます。- アプリケーションごとに Multi-Factor Authentication を要求する - ユーザーが作業中でないときのみ Multi-Factor Authentication を要求する - 作業中でないときにアプリケーションにアクセスした場合は、ユーザーのアクセスをブロックする
 
@@ -32,7 +32,7 @@
 ![](http://i.imgur.com/rv28onQ.png)
 
 ## アプリケーションごとの Multi-Factor Authentication の構成
-1. Azure 管理ポータルに管理者としてサインインします。
+1. Microsoft Azure 管理ポータルに管理者としてサインインします。
 2. Active Directory に移動し、アプリケーション プロキシを有効にするディレクトリを選択します。
 3. **[アプリケーション]** をクリックし、 下へスクロールして **[アクセス規則]** セクションを表示します。アクセス規則セクションは、フェデレーション認証を使用するアプリケーション プロキシを使用して発行されたアプリケーションに対してのみ表示されます。
 4. **[アクセス規則を有効にする]** を選択して、**[オン]** にすると、規則が有効になります。
@@ -44,10 +44,10 @@
 
 
 ## フェデレーション サービスの MFA の構成
-フェデレーション テナントでは、Multi-Factor Authentication (MFA) が、Azure Active Directory またはオンプレミスの AD FS サーバーによって実行される場合があります。既定では、MFA は Azure Active Directory によってホストされているページで実行されます。オンプレミスの MFA を構成するには、Windows PowerShell を実行し、–SupportsMFA プロパティを使用して、Azure AD モジュールを設定します。次の例は、[Set-MsolDomainFederationSettings コマンドレット](https://msdn.microsoft.com/library/azure/dn194088.aspx) (contoso.com のテナント: `Set-MsolDomainFederationSettings -DomainName contoso.com -SupportsMFA $true `) を使用して、オンプレミスの MFA を有効にする方法を示しています。Multi-Factor Authentication を実行するには、このフラグを設定するだけでなく、フェデレーション テナントの AD FS インスタンスを構成する必要があります。[オンプレミスの Microsoft Azure Multi-Factor Authentication のデプロイ](http://technet.microsoft.com/library/dn280946.aspx)の手順に従ってください。
+フェデレーション テナントでは、Multi-Factor Authentication (MFA) が、Azure Active Directory またはオンプレミスの AD FS サーバーによって実行される場合があります。既定では、MFA は Azure Active Directory によってホストされているページで実行されます。オンプレミスの MFA を構成するには、Windows PowerShell を実行し、–SupportsMFA プロパティを使用して、Azure AD モジュールを設定します。次の例は、[Set-MsolDomainFederationSettings コマンドレット](https://msdn.microsoft.com/library/azure/dn194088.aspx) (contoso.com のテナント: `Set-MsolDomainFederationSettings -DomainName contoso.com -SupportsMFA $true `) を使用して、オンプレミスの MFA を有効にする方法を示しています。Multi-Factor Authentication を実行するには、このフラグを設定するだけでなく、フェデレーション テナントの AD FS インスタンスを構成する必要があります。[オンプレミスの Microsoft Azure Multi-Factor Authentication のデプロイ](..multi-factor-authentication-get-started-server.md)の手順に従ってください。
 ## その他のリソース
 
 * [Azure への組織としてのサインアップ](..sign-up-organization.md)
 * [Azure ID](..fundamentals-identity.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

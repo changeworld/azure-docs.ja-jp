@@ -148,9 +148,18 @@ SDK クライアントをサーバーの SDK と同じインストルメンテ�
 
 (Application Insights を追加するために) アプリをまだ発行していない場合は、今すぐ発行してください。ユーザーがアプリを使用するに連れてグラフのデータが増えます。
 
+
+#### サーバーに発行した後でデータはありませんか。
+
+サーバーのファイアウォールで発信トラフィック用のこれらのポートを開きます。
+
++ `dc.services.visualstudio.com:443`
++ `f5.services.visualstudio.com:443`
+
 ### 開発、テスト、およびリリース用に別のリソースを用意します。
 
 主なアプリケーションでは、デバッグ環境、テスト環境、および運用環境からのテレメトリ データ[別のリソース](app-insights-separate-resources.md)に送信することをお勧めします。
+
 
 
 
@@ -166,7 +175,7 @@ SDK クライアントをサーバーの SDK と同じインストルメンテ�
 
 管理者権限でサーバーにログインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします。
 
-(Status Monitor は、SDK で構築されていない[既に実行中のアプリをインストルメント化](app-insights-monitor-performance-live-website-now.md)するためにも使用できます。)
+[サーバーのファイアウォールで他にも開いているポートがある](app-insights-monitor-performance-live-website-now.md#troubleshooting)ことを確認する必要があります。
 
 #### アプリが Azure の Web アプリの場合
 
@@ -226,4 +235,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

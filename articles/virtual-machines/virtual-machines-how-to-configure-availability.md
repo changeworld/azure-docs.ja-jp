@@ -3,7 +3,7 @@
 	description="Azure ポータルと Azure PowerShell コマンドを使用して新規または既存の仮想マシン対する可用性セットを Azure で構成する手順について説明します"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,9 +15,9 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/10/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
-#仮想マシンの可用性セットを構成する方法#
+# 仮想マシンの可用性セットを構成する方法
 
 可用性セットは、メンテナンス時などのシステム停止時に仮想マシンを利用するのに役立ちます。同じように構成された 2 つ以上の仮想マシンを同じ可用性セットに割り当てることによって、仮想マシンが実行するアプリケーションやサービスの可用性を維持するために必要な冗長性が実現されます。この機能の詳細については、「[仮想マシンの可用性管理][]」を参照してください。
 
@@ -95,9 +95,9 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 
 >[AZURE.NOTE]可用性セットに仮想マシンを追加する手順を完了するには、仮想マシンの再起動が必要になる場合があります。
 
-##その他のリソース
+## その他のリソース
 
-[Azure 仮想マシンの構成設定について]
+[サービス管理での仮想マシンの操作に関する記事]
 
 <!-- LINKS -->
 [オプション 1: 仮想マシンと可用性セットを同時に作成する]: #createset
@@ -107,6 +107,6 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 [仮想マシンの可用性管理]: virtual-machines-manage-availability.md
 [Windows を実行する仮想マシンの作成]: virtual-machines-windows-tutorial.md
 [仮想ネットワークの概要]: virtual-networks-overview.md
-[Azure 仮想マシンの構成設定について]: http://msdn.microsoft.com/library/azure/dn763935.aspx
+[サービス管理での仮想マシンの操作に関する記事]: virtual-machines-service-management-articles.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

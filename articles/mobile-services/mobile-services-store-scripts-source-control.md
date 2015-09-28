@@ -1,5 +1,5 @@
 <properties
-	pageTitle="ソース管理へのプロジェクトのコードの格納 | Microsoft Azure"
+	pageTitle="ソース管理への JavaScript バックエンド プロジェクト コードの保存 | Azure Mobile Services"
 	description="コンピューターのローカル Git リポジトリにサーバー スクリプト ファイルとモジュールを格納する方法について説明します。"
 	services="mobile-services"
 	documentationCenter=""
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="08/18/2015" 
+	ms.date="09/15/2015" 
 	ms.author="ggailey777"/>
 
-# ソース管理にプロジェクトのコードを格納する
+# ソース管理へのモバイル サービス プロジェクト コードの保存
 
-> [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(Any | .NET)](mobile-services-dotnet-backend-store-code-source-control.md)
-- [(Any | Javascript)](mobile-services-store-scripts-source-control.md)
+> [AZURE.SELECTOR]
+- [.NET backend](mobile-services-dotnet-backend-store-code-source-control.md)
+- [Javascript backend](mobile-services-store-scripts-source-control.md)
 
 このトピックでは、Azure Mobile Services で提供されているソース管理を使用してサーバー スクリプトを保存する方法を示します。スクリプトとその他の JavaScript バンクエンド コード ファイルは、ローカル Git リポジトリから運用モバイル サービスに昇格させることができます。さらに、複数のスクリプトで必要になる場合がある共有コードを定義する方法と、package.json ファイルを使用して Node.js モジュールをモバイル サービスに追加する方法も説明します。
 
@@ -93,7 +93,8 @@
 
 	コミットがモバイル サービスにデプロイされることを示す一連のコマンドが表示されるはずです。
 
-6. 管理ポータルに戻って、[**データ**] タブ、**TodoItem** テーブル、[**スクリプト**] の順にクリックし、[**挿入**] 操作を選択します。7.表示された挿入操作のスクリプトが、直前にリポジトリにアップロードした JavaScript コードと同じであることを確認します。
+6. 管理ポータルに戻って、[**データ**] タブ、**TodoItem** テーブル、[**スクリプト**] の順にクリックし、[**挿入**] 操作を選択します。
+7. 表示された挿入操作のスクリプトが、直前にリポジトリにアップロードした JavaScript コードと同じであることを確認します。
 
 ##<a name="use-npm"></a>サーバー スクリプトで共有コードと Node.js モジュールを活用する
 
@@ -157,4 +158,4 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [Modules (モジュール)]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

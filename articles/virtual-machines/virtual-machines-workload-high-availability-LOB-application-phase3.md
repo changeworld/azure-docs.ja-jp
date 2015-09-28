@@ -1,29 +1,31 @@
 <properties 
-	pageTitle="基幹業務アプリケーションのフェーズ 3 | Microsoft Azure"
-	description="コンピューターと SQL Server クラスターを作成し、可用性グループを有効にします。"
+	pageTitle="基幹業務アプリケーションのフェーズ 3 | Microsoft Azure" 
+	description="コンピューターと SQL Server クラスターを作成し、可用性グループを有効にします。" 
 	documentationCenter=""
-	services="virtual-machines"
-	authors="JoeDavies-MSFT"
-	manager="timlt"
+	services="virtual-machines" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.service="virtual-machines" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="Windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/11/2015" 
 	ms.author="josephd"/>
 
 # 基幹業務アプリケーションのワークロード フェーズ 3: SQL Server インフラストラクチャを構成する
 
-高可用な基幹業務アプリケーションと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、SQL Server を実行する 2 台のコンピューターとクラスター マジョリティ ノード コンピューターを構成し、Windows Server クラスターに統合します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
+
+高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイするこのフェーズでは、SQL Server を実行する 2 台のコンピューターとクラスター マジョリティ ノード コンピューターを構成し、Windows Server クラスターに統合します。
 
 [フェーズ 4](virtual-machines-workload-high-availability-LOB-application-phase4.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での高可用な基幹業務アプリケーションのデプロイ](virtual-machines-workload-high-availability-LOB-application-overview.md)」をご覧ください。
 
-> [AZURE.NOTE]次の手順では、Azure イメージ ギャラリーの SQL Server イメージを使用するため、SQL Server のライセンスを使用するための継続的な費用が発生します。Azure で仮想マシンを作成し、独自の SQL Server のライセンスをインストールすることもできますが、その手順はここでは説明しません。
+> [AZURE.NOTE]次の手順では、Azure イメージ ギャラリーの SQL Server イメージを使用するため、SQL Server のライセンスを使用するための継続的な費用が発生します。Azure で仮想マシンを作成し、独自の SQL Server のライセンスをインストールすることもできますが、Azure 仮想マシンを含む、仮想マシンで SQL Server のライセンスを使用するには、ソフトウェア アシュアランスおよびライセンス モビリティが必要になります。仮想マシンでの SQL Server のインストールの詳細については、「[SQL Server 2014 のインストール](https://msdn.microsoft.com/library/bb500469.aspx)」を参照してください。
 
 ## Azure での SQL Server クラスターの仮想マシンの作成
 
@@ -37,7 +39,7 @@ PowerShell コマンドの次のブロックを使用して、3 つのサーバ�
 - 表 ST (ストレージ アカウント)
 - 表 A (可用性セット)
 
-表 M は[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) で、V、S、ST、Aの各表は[フェーズ 1](virtual-machines-workload-high-availability-LOB-application-phase1.md) で定義したものです。
+表 M は[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) で、V、S、ST、A の各表は[フェーズ 1](virtual-machines-workload-high-availability-LOB-application-phase1.md) で定義したものです。
 
 適切な値をすべて指定したら、Azure PowerShell プロンプトでそのブロックを実行します。
 
@@ -112,9 +114,11 @@ PowerShell コマンドの次のブロックを使用して、3 つのサーバ�
 	$vm=Set-AzureVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
 	New-AzureVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
+> [AZURE.NOTE]これらの仮想マシンはイントラネット アプリケーション用であるため、パブリック IP アドレスや DNS ドメイン名ラベルは割り当てられず、インターネットに公開されません。ただし、これは Azure プレビュー ポータルから接続できないことも意味します。仮想マシンのプロパティを表示する際に、**[接続]** ボタンは使用できません。プライベート IP アドレスまたはイントラネット DNS 名を使用して仮想マシンに接続する場合は、リモート デスクトップ接続のアクセサリまたは別のリモート デスクトップ ツールを使用します。
+
 ## SQL Server を実行するコンピューターの構成
 
-SQL Server を実行する仮想マシンのそれぞれについて、好みのリモート デスクトップ クライアントを使用し、最初のドメイン コントローラー仮想マシンへのリモート デスクトップ接続を作成します。仮想マシンのイントラネット DNS 名またはコンピューター名と、ローカル管理者アカウントの資格情報を使用します。
+SQL Server を実行する仮想マシンのそれぞれについて、好みのリモート デスクトップ クライアントを使用して、リモート デスクトップ接続を作成します。仮想マシンのイントラネット DNS 名またはコンピューター名と、ローカル管理者アカウントの資格情報を使用します。
 
 Windows PowerShell プロンプトで次のコマンドを実行し、SQL Server を実行する各仮想マシンを適切な AD DS ドメインに参加させます。
 
@@ -213,7 +217,7 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 2.	スタート画面で「**フェールオーバー**」と入力し、**[フェールオーバー クラスター マネージャー]** をクリックします。
 3.	左ウィンドウで、**[フェールオーバー クラスター マネージャー]** を右クリックし、**[クラスターの作成]** をクリックします。
 4.	**[開始する前に]** ページで **[次へ]** をクリックします。
-5.	**[サーバーの選択]** ページで、プライマリ SQL Server マシンの名前を入力して **[追加]** をクリックし、**[次へ]** をクリックします。
+5.	**[サーバーの選択]** ページで、プライマリ SQL Server コンピューターの名前を入力して **[追加]** をクリックし、**[次へ]** をクリックします。
 6.	**[検証の警告]** ページで、**[いいえ、このクラスターに Microsoft のサポートは必要ありませんので、検証テストを実行しません。[次へ] をクリックして、クラスターの作成を続行します。]** をクリックし、**[次へ]** をクリックします。
 7.	**[クラスター管理用のアクセス ポイント]** ページで、**[クラスター名]** ボックスにクラスターの名前を入力し、**[次へ]** をクリックします。
 8.	**[確認]** ページで、**[次へ]** をクリックしてクラスターの作成を開始します。 
@@ -227,7 +231,7 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 16.	クラスターの IP アドレスを削除するには、**[IP アドレス]** を右クリックして **[削除]** をクリックし、メッセージが表示されたら **[はい]** をクリックします。クラスター リソースは、IP アドレス リソースに依存しているため、オンラインにすることはできなくなります。ただし、可用性グループは、適切に機能するために、クラスター名と IP アドレスのどちらにも依存しません。そのため、クラスター名をオフラインのままにしておくことができます。
 17.	残りのノードをクラスターに追加するには、左ウィンドウでクラスター名をクリックし、**[ノードの追加]** をクリックします。
 18.	**[開始する前に]** ページで **[次へ]** をクリックします。 
-19.	**[サーバーの選択]** ページで名前を入力し、**[追加]** をクリックして、セカンダリ SQL サーバーとクラスター マジョリティ ノードをクラスターに追加します。2 台のコンピューターを追加したら、**[次へ]** をクリックします。コンピューターを追加できず、"リモート レジストリは実行されていません" というエラー メッセージが表示された場合は、次の操作を行います。コンピューターにログオンし、サービス スナップイン (services.msc) を開いて、リモート レジストリを有効にします。詳細については、「[リモート レジストリ サービスに接続できない](http://technet.microsoft.com/library/bb266998.aspx)」をご覧ください。 
+19.	**[サーバーの選択]** ページで名前を入力し、**[追加]** をクリックして、セカンダリ SQL Server とクラスター マジョリティ ノードの両方をクラスターに追加します。2 台のコンピューターを追加したら、**[次へ]** をクリックします。コンピューターを追加できず、"リモート レジストリは実行されていません" というエラー メッセージが表示された場合は、次の操作を行います。コンピューターにログオンし、サービス スナップイン (services.msc) を開いて、リモート レジストリを有効にします。詳細については、「[リモート レジストリ サービスに接続できない](http://technet.microsoft.com/library/bb266998.aspx)」をご覧ください。 
 20.	**[検証の警告]** ページで、**[いいえ、このクラスターに Microsoft のサポートは必要ありませんので、検証テストを実行しません。[次へ] をクリックして、クラスターの作成を続行します。]** をクリックし、**[次へ]** をクリックします。 
 21.	**[確認]** ページで **[次へ]** をクリックします。
 22.	**[概要]** ページで **[完了]** をクリックします。
@@ -235,7 +239,7 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 
 ## AlwaysOn 可用性グループの有効化
 
-次に、SQL Server 構成マネージャーを使用して、AlwaysOn 可用性グループを有効にします。SQL Server の可用性グループは、Azure 可用性セットとは異なります。可用性グループには、可用性が高く回復可能なデータベースが含まれます。Azure 可用性セットでは、さまざまな障害ドメインに仮想マシンを割り当てます。障害ドメインの詳細については、「[仮想マシンの可用性管理](virtual-machines-manage-availability.md)」をご覧ください。
+次に、SQL Server 構成マネージャーを使用して、AlwaysOn 可用性グループを有効にします。SQL Server の可用性グループは、Azure 可用性セットとは異なります。可用性グループには、可用性が高く回復可能なデータベースが含まれます。Azure 可用性セットでは、さまざまな障害ドメインに仮想マシンを割り当てます。障害ドメインの詳細については、「[Virtual Machines の可用性管理](virtual-machines-manage-availability.md)」をご覧ください。
 
 SQL Server の AlwaysOn 可用性グループを有効にするには、次の手順に従います。
 
@@ -254,7 +258,7 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 ## 次のステップ
 
-このワークロードを引き続き構成するには、[フェーズ 4: Web サーバーを構成する](virtual-machines-workload-high-availability-LOB-application-phase4.md)に進んでください。
+このワークロードを引き続き構成する場合は、「[フェーズ 4: Web サーバーを構成する](virtual-machines-workload-high-availability-LOB-application-phase4.md)」に進んでください。
 
 ## その他のリソース
 
@@ -268,4 +272,4 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

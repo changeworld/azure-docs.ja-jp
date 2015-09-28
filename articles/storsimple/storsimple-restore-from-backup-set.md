@@ -1,19 +1,19 @@
 <properties 
    pageTitle="バックアップからの StorSimple ボリュームの復元 | Microsoft Azure"
-	description="StorSimple Manager サービスの [バックアップ カタログ] ページを使用してバックアップ セットから StorSimple ボリュームを復元する方法について説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple Manager サービスの [バックアップ カタログ] ページを使用してバックアップ セットから StorSimple ボリュームを復元する方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="SharS"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/28/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/15/2015"
+   ms.author="v-sharos" />
 
 # バックアップ セットからの StorSimple ボリュームの復元
 
@@ -78,8 +78,14 @@
 
 8. 復元操作が完了した後、ボリュームの内容がバックアップからのボリュームで置き換えられていることを確認できます。
 
+![ビデオ](./media/storsimple-restore-from-backup-set/Video_icon.png) **ビデオ**
+
+StorSimple の複製機能と復元機能を使用して、削除されたファイルを回復する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/)を参照してください。
+
 ## 次のステップ
 
-[StorSimple ボリュームを管理する](storsimple-manage-volumes.md)方法について説明します。
+- [StorSimple ボリュームを管理する](storsimple-manage-volumes.md)方法について説明します。
 
-<!---HONumber=September15_HO1-->
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
+
+<!---HONumber=Sept15_HO3-->

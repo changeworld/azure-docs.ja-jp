@@ -1,38 +1,42 @@
 <properties 
-	pageTitle="App Service 環境からバックエンド リソースへの安全な接続"
-	description="App Service 環境からバックエンド リソースに安全に接続する方法について説明します。"
-	services="app-service\web"
-	documentationCenter=""
-	authors="ccompy"
-	manager="wpickett"
+	pageTitle="App Service 環境からバックエンド リソースへの安全な接続" 
+	description="App Service 環境からバックエンド リソースに安全に接続する方法について説明します。" 
+	services="app-service\web" 
+	documentationCenter="" 
+	authors="ccompy" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/30/2015"
-	ms.author="stefsh"/>
+	ms.service="app-service" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/11/2015" 
+	ms.author="stefsch"/>
 
 # App Service 環境からバックエンド リソースへの安全な接続 #
 
 ## 概要 ##
-App Service 環境は常に地域内の[仮想ネットワーク][virtualnetwork]のサブネットに作成されるため、仮想ネットワーク経由でのみ、App Service 環境から他のバックエンド リソースへの送信接続を行うことができます。
+App Service 環境は常に地域クラシック "v1" [仮想ネットワーク][virtualnetwork]のサブネットに作成されるため、仮想ネットワーク経由でのみ、App Service 環境から他のバックエンド リソースへの送信接続を行うことができます。
+
+**注:** "v2"仮想ネットワーク内で App Service 環境を作成することはできません。
 
 たとえば、ポート 1433 がロックされている仮想マシンのクラスターで実行されている SQL Server がある場合があります。このエンドポイントは、同じ仮想ネットワークの他のリソースからのアクセスを許可する目的のみで使用されることがあります。
 
-別の例として、機密性の高いエンドポイントが内部設置型で実行されていて、[サイト対サイト][SiteToSite]の接続または [Azure ExpressRoute][ExpressRoute] 接続を使用して Azure に接続している場合があります。その結果、サイト対サイトまたは ExpressRoute トンネルに接続されている仮想ネットワーク内のリソースのみが内部設置型のエンドポイントにアクセスできるようになります。
+別の例として、機密性の高いエンドポイントがオンプレミスで実行されていて、[サイト対サイト][SiteToSite]の接続または [Azure ExpressRoute][ExpressRoute] 接続を使用して Azure に接続している場合があります。その結果、サイト対サイトまたは ExpressRoute トンネルに接続されている仮想ネットワーク内のリソースのみがオンプレミスのエンドポイントにアクセスできるようになります。
 
 これらのすべてのシナリオで、App Service 環境で実行中のアプリが、さまざまなサーバーとリソースに安全に接続できます。App Service 環境で実行されているアプリから同じ仮想ネットワーク内の (または同じ仮想ネットワークに接続されている) プライベート エンドポイントへの送信トラフィックは、仮想ネットワーク経由でのみ行われます。プライベート エンドポイントへの送信トラフィックがパブリック インターネット経由で送信されることはありません。
 
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+
 ## 発信接続と DNS の要件 ##
-App Service 環境を適切に機能させるには、Azure Storage だけでなく、同じ Azure リージョン内の SQL Database への発信アクセスも必要であることに注意してください。仮想ネットワーク内で発信インターネット アクセスがブロックされている場合、App Service 環境はこれらの Azure エンドポイントにアクセスすることはできません。
+App Service 環境を適切に機能させるには、Azure Storage ワールドワイドへの発信アクセスだけでなく、同じ Azure リージョン内の SQL Database への接続も必要であることに注意してください。仮想ネットワーク内で発信インターネット アクセスがブロックされている場合、App Service 環境はこれらの Azure エンドポイントにアクセスすることはできません。
 
 顧客の仮想ネットワーク内にカスタム DNS サーバーが構成されていることもあります。App Service 環境は、*.database.windows.net、*.file.core.windows.net、および *.blob.core.windows.net の Azure エンドポイントを解決できる必要があります。
 
-また、App Service 環境を作成する前に、仮想ネットワーク上のカスタム DNS サーバーをセットアップしておくことをお勧めします。App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。
+また、App Service 環境を作成する前に、仮想ネットワーク上のカスタム DNS サーバーをセットアップしておくことをお勧めします。App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。VPN ゲートウェイの他端にカスタム DNS サーバーが存在していて、その DNS サーバーが到達不能または使用できない場合、App Service 環境の作成プロセスも失敗します。
 
 ## SQL Server への接続
 SQL Server の構成には一般的に、ポート 1433 でリッスンしているエンドポイントがあります。
@@ -110,4 +114,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

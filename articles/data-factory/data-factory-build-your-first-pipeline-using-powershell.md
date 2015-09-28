@@ -103,7 +103,7 @@
 		    "typeProperties": {
 		      "version": "3.1",
 		      "clusterSize": 1,
-		      "timeToLive": "00:05:00",
+		      "timeToLive": "00:30:00",
 		      "jobsContainer": "adfjobs",
 		      "linkedServiceName": "StorageLinkedService"
 		    }
@@ -266,4 +266,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-powershell.md)でフィードバックをお寄せください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

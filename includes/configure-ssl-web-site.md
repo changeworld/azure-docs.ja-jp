@@ -1,13 +1,12 @@
-#Web アプリに対する HTTPS を Azure App Service で有効にする
+
+Secure Socket Layer (SSL) 暗号化を使用する HTTPS を使用して、Web アプリとブラウザー間の通信をセキュリティで保護することができます。これは、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法であり、サイトの訪問者に対し、アプリに対するトランザクションが安全であることを保証します。この記事では、Azure App Service で Web アプリに対する HTTPS を構成する方法について説明します。この記事では、クライアント証明書の認証については扱っていません。それにについては、「[Web Apps 用に TLS 相互認証を構成する方法](../articles/app-service-web/app-service-web-configure-tls-mutual-auth.md)」(英語) を参照してください。
 
 > [AZURE.NOTE]
 > より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! カスタム ドメイン名の関連付けと、Azure Cloud Services または [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) との通信の保護 (SSL) をすばやく行えます。
 
-Secure Socket Layer (SSL) 暗号化を使用する HTTPS を使用して、Web アプリとブラウザー間の通信をセキュリティで保護することができます。これは、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法であり、サイトの訪問者に対し、アプリに対するトランザクションが安全であることを保証します。この記事では、Azure App Service で Web アプリに対する HTTPS を構成する方法について説明します。この記事では、クライアント証明書の認証については扱っていません。それにについては、「[How To Configure TLS Mutual Authentication for Web Apps (Web アプリ用に TLS 相互認証を構成する方法)](../articles/app-service-web/app-service-web-configure-tls-mutual-auth.md)」(英語) を参照してください。
-
 ##<a name="bkmk_azurewebsites"></a>*.azurewebsites.net ドメインの HTTPS
 
-カスタム ドメイン名を使用する計画がなく、Azure によって Web アプリに割り当てられた *.azurewebsites.net ドメイン (たとえば、contoso.azurewebsites.net) を使用する計画がある場合は、Microsoft の証明書によって HTTPS が既にサイトで有効に設定されています。アプリにアクセスするには、****https://mywebsite.azurewebsites.net** を使用できます。ただし、*.azurewebsites.net はワイルドカード ドメインです。すべての[ワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)は一様に、独自の証明書を持つカスタム ドメインを使用する場合ほど安全ではありません。
+カスタム ドメイン名を使用する計画がなく、Azure によって Web アプリに割り当てられた *.azurewebsites.net ドメイン (たとえば、contoso.azurewebsites.net) を使用する計画がある場合は、Microsoft の証明書によって HTTPS が既にサイトで有効に設定されています。アプリにアクセスするには、****https://mywebsite.azurewebsites.net** を使用できます。ただし、*.azurewebsites.net はワイルドカード ドメインです。[すべてのワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)は一様に、独自の証明書を持つカスタム ドメインを使用する場合ほど安全ではありません。
 
 このドキュメントの残りの部分では、カスタム ドメイン (**contoso.com**、**www.contoso.com**、***.contoso.com** など) の HTTPS を有効にする方法について詳しく説明します。
 
@@ -406,7 +405,7 @@ Visual Studio がインストールされている Windows システムからテ
 
 このセクションの手順を実行する前に、Web アプリにカスタム ドメイン名が関連付けられている必要があります。詳細については、[Web アプリのカスタム ドメイン名の構成][customdomain]に関するページを参照してください。
 
-1.	ブラウザーで、[Azure 管理ポータル](https://portal.azure.com)を開きます。
+1.	ブラウザーで、[Microsoft Azure 管理ポータル](https://portal.azure.com)を開きます。
 2.	ページの左側にある **[参照]** オプションをクリックします。
 3.	**[Web Apps]** ブレードをクリックします。
 4.	Web アプリの名前をクリックします。
@@ -513,7 +512,7 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 - [Azure Web Sites でロックを解除された構成オプション](http://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
 - [診断ログの有効化](../article/app-service-web/web-sites-enable-diagnostic-log.md)
 - [Web サイトの構成](../article/app-service-web/web-sites-configure.md)
-- [Azure 管理ポータル](https://manage.windowsazure.com)
+- [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -545,4 +544,4 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

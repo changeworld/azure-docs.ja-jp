@@ -4,7 +4,7 @@
 
 # 管理 API: バージョン 2014-07-31-Preview
 
-このドキュメントでは、Azure Search 管理 REST API の **2014-07-31-Preview** バージョンについて説明します。これは MSDN で一般公開バージョンの [Azure Search 管理 REST API 2015-02-28](https://msdn.microsoft.com/library/dn832684.aspx) に取って代わられています。 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+このドキュメントでは、Azure Search 管理 REST API の **2014-07-31-Preview** バージョンについて説明します。その後、これより新しいバージョンで置き換えられています。最新版については、MSDN で「[Azure Search 管理 REST API 2015-08-19](https://msdn.microsoft.com/library/dn832684.aspx)」を参照してください。 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 ## サービス管理操作
 
@@ -14,7 +14,7 @@ Azure Search 管理 REST API により、管理者はポータルから使用で
 - `api-keys` を作成、変更、または取得して、検索データ操作の認証に使用される管理キーへの定期的な変更を自動化する。
 - クエリのボリュームまたはストレージ要件の変更に対応して Azure Search サービスのスケールを調整する。
 
-サービスをプログラムで完全に管理するには、管理 REST API と、「[Azure リソース マネージャー REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790568.aspx)」で説明されている一般的な API の 2 つの API が必要です。リソース マネージャー API はサブスクリプション データのクエリや地理的場所の一覧表示など、サービス固有ではない一般的な目的の操作で使用されます。サブスクリプションで Azure Search サービスを作成および管理するには、HTTP 要求にリソース マネージャーのエンドポイント、サブスクリプション ID、プロバイダー (この場合は Azure Search)、Search サービス固有の操作が含まれるようにします。
+サービスをプログラムで完全に管理するには、Azure Search の管理 REST API と、「[Azure リソース マネージャー REST API リファレンス](https://msdn.microsoft.com/library/azure/dn790568.aspx)」で説明されている一般的な API の 2 つの API が必要です。リソース マネージャー API はサブスクリプション データのクエリや地理的場所の一覧表示など、サービス固有ではない一般的な目的の操作で使用されます。サブスクリプションで Azure Search サービスを作成および管理するには、HTTP 要求にリソース マネージャーのエンドポイント、サブスクリプション ID、プロバイダー (この場合は Azure Search)、Search サービス固有の操作が含まれるようにします。
 
 「[Azure Search 管理 REST API の使用](http://go.microsoft.com/fwlink/p/?linkID=516968)」は、アプリケーションの構成とサービス管理操作を示すサンプル コードのチュートリアルです。このサンプル アプリケーションでは、Azure リソース マネージャー API と Azure Search 用のサービス管理 API の両方に要求が発行されており、両方の API を使用するさまざまな構成要素をまとめて 1 つのアプリケーションを作成する方法が示されています。
 
@@ -26,9 +26,9 @@ Azure Search 管理 REST API により、管理者はポータルから使用で
 
 ### バージョン
 
-Azure Search 管理 REST API の現在のバージョンは `api-version=2014-07-31-Preview` です。これは、この API の唯一のバージョンです。
+`api-version=2014-07-31-Preview` は Azure Search のパブリック プレビューで導入されました。リリース間の変更点については、「[Azure Search の新機能](search-latest-updates.md)」を参照してください。
 
-### 認証とアクセス制御
+### 認証と Access Control
 
 Azure Search 管理 REST API は、Azure リソース マネージャーの拡張機能であり、その依存関係を共有します。そのため、Azure Search のサービス管理にとって、Active Directory は必須となります。クライアント コードからのすべての管理要求は、リソース マネージャーに到達する前に、Azure Active Directory を使用して、認証される必要があります。
 
@@ -815,4 +815,4 @@ api-key、特に管理者キーは、必ず機密データとして扱ってく�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

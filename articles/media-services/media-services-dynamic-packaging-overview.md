@@ -1,23 +1,23 @@
-<properties 
-	pageTitle="動的パッケージの概要" 
-	description="このトピックでは、動的パッケージの概要について説明します。" 
-	authors="Juliako" 
-	manager="dwrede" 
-	editor="" 
-	services="media-services" 
+<properties
+	pageTitle="動的パッケージの概要"
+	description="このトピックでは、動的パッケージの概要について説明します。"
+	authors="Juliako"
+	manager="dwrede"
+	editor=""
+	services="media-services"
 	documentationCenter=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/07/2015" 
+<tags
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/07/2015"
 	ms.author="juliako"/>
 
 
-#動的パッケージ 
+#動的パッケージ
 
 ##概要
 
@@ -38,14 +38,14 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 
 ##一般的なシナリオ
 
-1. 入力ファイル (中間ファイル) をアセットにアップロードします。たとえば、H.264、MP4、または WMV などです (サポートされている形式の一覧については、「Media Services Encoder でサポートされる形式の一覧」を参照)。
- 
+1. 入力ファイル (中間ファイル) をアセットにアップロードします。たとえば、H.264、MP4、または WMV などです (サポートされている形式の一覧については、「[Media Services Encoder でサポートされる形式の一覧](media-services-azure-media-encoder-formats)」を参照)。
+
 1. Mezzanine ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードします。
- 
+
 1. オンデマンド ロケーターを作成することによって、アダプティブ ビットレート MP4 セットを含むアセットを発行します。
- 
+
 1. コンテンツにアクセスしてストリーミングするストリーミング URL を構築します。
- 
+
 >[AZURE.NOTE]すべての MP4 ファイルの形式が動的パッケージによってサポートされているわけではありません。詳細については、「[動的パッケージでサポートされていない形式](media-services-dynamic-packaging-overview.md#unsupported_formats)」を参照してください。
 
 ##動的ストリーミング用のアセットの準備
@@ -60,12 +60,12 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 アセットをアップロードしてエンコードする方法については、次の記事を参照してください。
 
 
-**Azure の管理ポータル**、**.NET**、または **REST API** を使用して、ファイルをアップロードします。
+**Microsoft Azure の管理ポータル**、**.NET**、または **REST API** を使用して、ファイルをアップロードします。
 
 [AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
 
-**Azure の管理ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
- 
+**Microsoft Azure の管理ポータル**、**.NET**、または **REST API** を使用して、**Azure Media Encoder** でエンコードします。
+
 [AZURE.INCLUDE [media-services-selector-encode](../../includes/media-services-selector-encode.md)]
 
 
@@ -85,7 +85,7 @@ Media Services Encoder でエンコードされていないアダプティブ �
 
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-**Azure の管理ポータル**または **.NET** を使用してアセットを公開します (ロケータを作成して)。
+**Microsoft Azure の管理ポータル**または **.NET** を使用してアセットを公開します (ロケータを作成して)。
 
 [AZURE.INCLUDE [media-services-selector-publish](../../includes/media-services-selector-publish.md)]
 
@@ -105,6 +105,4 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
- 
-
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

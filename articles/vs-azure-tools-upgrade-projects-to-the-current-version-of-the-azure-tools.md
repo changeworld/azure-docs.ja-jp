@@ -1,23 +1,23 @@
-<properties 
+<properties
    pageTitle="現行バージョンの Azure Tools にプロジェクトをアップグレードする方法"
-	description="Visual Studio の Azure プロジェクトを現行バージョンの Azure Tools にアップグレードする方法について説明します。"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tglee"/>
-<tags 
+   description="Visual Studio の Azure プロジェクトを現行バージョンの Azure Tools にアップグレードする方法について説明します。"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tglee" />
+<tags
    ms.service="multiple"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="multiple"
-	ms.date="08/13/2015"
-	ms.author="kempb"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="multiple"
+   ms.date="08/13/2015"
+   ms.author="kempb" />
 
 # 現行バージョンの Azure Tools for Visual Studio にプロジェクトをアップグレードする方法
 
-##概要
+## 概要
 
 現行 (1.6 より後の) バージョン の Azure Tools をインストールすると、バージョン 1.6 (2011 年 11 月) より前の Azure Tools を使用して作成されたプロジェクトはすべて、プロジェクトを開いた際に自動的にアップグレードされます。バージョン 1.6 (2011 年 11 月) を使用してプロジェクトを作成し、まだそのバージョンがインストールされている場合は、バージョンの低い方でプロジェクトを開けば、アップグレードするかどうかの判断を先延ばしすることができます。
 
@@ -55,4 +55,4 @@
 
 [Azure Tools リリース履歴](http://go.microsoft.com/fwlink/p/?LinkId=623548)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

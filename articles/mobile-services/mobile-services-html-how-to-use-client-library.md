@@ -16,7 +16,6 @@
 	ms.date="09/09/2015" 
 	ms.author="glenga"/>
 
-
 # Azure モバイル サービス向け HTML/JavaScript クライアントを使用する方法
 
 [AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
@@ -50,7 +49,7 @@ Mobile Services クライアントに参照を追加する方法は、アプリ 
 
 ##<a name="querying"></a>方法: モバイル サービスのデータを照会する
 
-SQL データベース テーブルのデータにアクセスまたは変更するすべてのコードは、`MobileServiceTable` オブジェクトに対して関数を呼び出します。`MobileServiceClient` のインスタンスに対して `getTable()` 関数を呼び出して、テーブルへの参照を取得します。
+SQL Database テーブルのデータにアクセスまたは変更するすべてのコードは、`MobileServiceTable` オブジェクトに対して関数を呼び出します。`MobileServiceClient` のインスタンスに対して `getTable()` 関数を呼び出して、テーブルへの参照を取得します。
 
     var todoItemTable = client.getTable('todoitem');
 
@@ -367,7 +366,7 @@ Windows ストア アプリでは、クエリの結果を使用して、[ListVie
 
 ##<a name="#custom-api"></a>方法: カスタム API の呼び出し
 
-カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。モバイル サービスでカスタム API を作成する方法を含む完全な例については、「[クライアントからのカスタム API 呼び出し]」を参照してください。
+カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。モバイル サービスでカスタム API を作成する方法の例については、「[カスタム API を定義する方法](mobile-services-dotnet-backend-define-custom-api.md)」を参照してください。
 
 **MobileServiceClient** で [invokeApi](https://github.com/Azure/azure-mobile-services/blob/master/sdk/Javascript/src/MobileServiceClient.js#L337) メソッドを呼び出すことによって、クライアントからカスタム API を呼び出します。たとえば、次のコード行はモバイル サービスで **completeAll** API に POST 要求を送信します。
 
@@ -605,7 +604,7 @@ promise はいくつかの異なる方法で使用することができます。
 [Live Connect シングル サインオンによる Windows ストア アプリの認証]: mobile-services-windows-store-javascript-single-sign-on.md
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData システム クエリ オプション リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
-[クライアントからのカスタム API 呼び出し]: mobile-services-html-call-custom-api.md
+[Call a custom API from the client]: mobile-services-html-call-custom-api.md
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

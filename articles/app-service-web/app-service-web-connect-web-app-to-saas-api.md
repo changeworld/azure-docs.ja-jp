@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Azure App Service の API アプリに Web アプリを接続する" 
-   description="このチュートリアルでは、Azure App Service でホストされる ASP.NET Web アプリから API アプリを使用する方法について示します。" 
-   services="app-service\web" 
-   documentationCenter=".net" 
-   authors="syntaxc4" 
-   manager="yochayk" 
-   editor="jimbe"/>
+	pageTitle="Azure App Service の API アプリに Web アプリを接続する" 
+	description="このチュートリアルでは、Azure App Service でホストされる ASP.NET Web アプリから API アプリを使用する方法について示します。" 
+	services="app-service\web" 
+	documentationCenter=".net" 
+	authors="syntaxc4" 
+	manager="yochayk" 
+	editor="jimbe"/>
 
 <tags
-   ms.service="app-service-web"
-   ms.devlang="dotnet"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="web" 
-   ms.date="03/24/2015"
-   ms.author="cfowler"/>
+	ms.service="app-service"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="web" 
+	ms.date="09/15/2015"
+	ms.author="cfowler"/>
 
 # Azure App Service の API アプリに Web アプリを接続する
 
@@ -70,20 +70,20 @@
 	![HomeController.cs コードの更新](./media/app-service-web-connect-web-app-to-saas-api/5-Write-Code-Which-Leverages-Swagger-Generated-Code.png)
 
 1. 連絡先の動的リストを反映するよう、以下のコードで `Contact` ビューを更新します。
-	<pre>// Add to the very top of the view file
-	@model IList&lt;MyContactsList.Web.Models.Contact&gt;
-	
-	// Replace the default email addresses with the following
-    &lt;h3&gt;Public Contacts&lt;/h3&gt;
-    &lt;ul&gt;
-        @foreach (var contact in Model)
-        {
-            &lt;li&gt;&lt;a href=&quot;mailto:@contact.EmailAddress&quot;&gt;@contact.Name &amp;lt;@contact.EmailAddress&amp;gt;&lt;/a&gt;&lt;/li&gt;
-        }
-    &lt;/ul&gt; 
+	<pre>// ビュー ファイルの最上部に追加
+@model IList&lt;MyContactsList.Web.Models.Contact>
+
+// 既定の電子メール アドレスを以下で置換
+&lt;h3>Public Contacts&lt;/h3>
+&lt;ul>
+    @foreach (var contact in Model)
+    {
+        &lt;li>&lt;a href="mailto:@contact.EmailAddress">@contact.Name &amp;lt;@contact.EmailAddress&amp;gt;&lt;/a>&lt;/li>
+    }
+&lt;/ul> 
 	</pre>
 
-	![Contact.cshtml Code Updates](./media/app-service-web-connect-web-app-to-saas-api/6-Update-View-To-Reflect-Changes.png)
+	![Contact.cshtml コードの更新](./media/app-service-web-connect-web-app-to-saas-api/6-Update-View-To-Reflect-Changes.png)
 
 ## App Service の Web Apps に Web アプリケーションをデプロイする
 
@@ -96,4 +96,4 @@
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!-----HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

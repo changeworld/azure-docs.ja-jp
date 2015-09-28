@@ -3,7 +3,7 @@
 	description="Linux ベースの Azure 仮想マシンを作成と事前構成するための Azure PowerShell の使用方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/09/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 # Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する
 
@@ -260,4 +260,4 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

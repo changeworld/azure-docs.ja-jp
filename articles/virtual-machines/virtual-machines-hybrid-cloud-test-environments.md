@@ -11,17 +11,17 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows"
+	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/09/2015"
+	ms.topic="index-page"
+	ms.date="09/16/2015"
 	ms.author="josephd"/>
 
 # Azure ハイブリッド クラウド テスト環境
 
-開発/テスト環境または概念実証のハイブリッド クラウド テスト環境向けに、ローカルのインターネット接続といずれかのパブリック IP アドレスを使用して、実用的なクロスプレミス Azure Virtual Network (VNet) を段階的に設定します。設定が完了したら、アプリケーションの開発とテストの実行や、簡略化された IT ワークロードでの実験ができます。また、サイト間の仮想プライベート ネットワーク (VPN) 接続のパフォーマンスをインターネット上の場所を基準に測定することができます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
-> [AZURE.NOTE]これらの記事では、サービス管理で仮想マシン、仮想ネットワーク、およびその他のリソースを作成します。
+開発/テスト環境または概念実証のハイブリッド クラウド テスト環境向けに、ローカルのインターネット接続といずれかのパブリック IP アドレスを使用して、実用的なクロスプレミス Azure Virtual Network (VNet) を段階的に設定します。設定が完了したら、アプリケーションの開発とテストの実行や、簡略化された IT ワークロードでの実験ができます。また、サイト間の仮想プライベート ネットワーク (VPN) 接続のパフォーマンスをインターネット上の場所を基準に測定することができます。
 
 ## ハイブリッド クラウドの基本構成
 
@@ -52,10 +52,10 @@
 
 [Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
-[基幹業務アプリケーション アーキテクチャの 3 次元設計図の PDF](http://download.microsoft.com/download/2/C/8/2C8EB75F-AC45-4A79-8A63-C1800C098792/MS_Arch_LOB_App_3D_pdf.pdf)
+[Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-LOB-application.md)
 
 [Microsoft Azure での Office 365 ディレクトリ同期 (DirSync) のデプロイ](https://technet.microsoft.com/library/dn635310.aspx)
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

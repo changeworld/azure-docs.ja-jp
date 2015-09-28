@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Memcache プロトコルを経由して Azure App Service の Web アプリを Redis Cache に接続する | Microsoft Azure"
+	pageTitle="Memcache プロトコルを経由して Azure App Service の Web アプリを Redis Cache に接続する | Microsoft Azure"
 	description="Memcache プロトコルを使用して Azure App Service の Web アプリを Redis Cache に接続する"
 	services="app-service\web"
 	documentationCenter="php"
@@ -8,12 +8,12 @@
 	editor="riande"/>
 
 <tags
-   ms.service="app-service-web"
+	ms.service="app-service"
 	ms.devlang="php"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="windows"
 	ms.workload="web"
-	ms.date="06/30/2015"
+	ms.date="09/16/2015"
 	ms.author="cfowler"/>
 
 # Memcache プロトコルを経由して Azure App Service の Web アプリを Redis Cache に接続する
@@ -21,6 +21,8 @@
 この記事では、[Memcache][13] プロトコルを使用して [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の WordPress Web アプリを [Azure Redis Cache][12] に接続する方法について説明します。メモリ内のキャッシュに Memcached サーバーを使用する Web アプリがすでにある場合、Azure App Service に移行して、アプリケーション コードへの変更がほとんど、もしくはまったくない状態で Microsoft Azure でファースト パーティーのキャッシュ ソリューションが使用できます。さらに、.NET、PHP、Node.js、Java、Python などの一般的なアプリケーション フレームワークを使用しながら、既存の Memcache の知識を利用してメモリ内のキャッシュ用に Azure Redis Cache を使い、Azure App Service で拡張性の高い分散型アプリを作成できます。
 
 App Service Web Apps により、Web Apps の Memcache shim でこのアプリケーション シナリオが有効になります。Memcache shim はローカルの Memcached サーバーで、Azure Redis Cache への呼び出しをキャッシュする Memcache プロキシの役割を果たします。これにより、Memcache プロトコルを使用して通信するアプリでは Redis Cache を使用してデータをキャッシュできるようになります。この Memcache shim はプロトコル レベルで動作するので、Memcache プロトコルを使用して通信する限り、あらゆるアプリケーションやアプリケーション フレームワークで使用できます。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 前提条件
 
@@ -31,7 +33,7 @@ Web Apps の Memcache shim は、Memcache プロトコルを使用して通信�
 * [Azure Redis Cache Service のインスタンスをプロビジョニングする][1]
 * [Azure でスケーラブルな WordPress サイトをデプロイする][0]
 
-スケーラブルな WordPress サイトを展開して、Redis Cache インスタンスをプロビジョニングしたら、Azure App Service Web Apps で Memcache shim を有効にできるようになります。
+スケーラブルな WordPress サイトをデプロイして、Redis Cache インスタンスをプロビジョニングしたら、Azure App Service Web Apps で Memcache shim を有効にできるようになります。
 
 ## Web Apps の Memcache shim を有効にする
 
@@ -73,7 +75,7 @@ Memcache shim を構成するためには 3 つのアプリ設定を作成する
 
 ### php\_memcache 拡張機能のダウンロード
 
-[PECL][6] にアクセスします。キャッシュ カテゴリで [[memcache]][7] をクリックします。[Downloads] 列で [DLL] のリンクをクリックします。
+[PECL][6] を参照します。キャッシュ カテゴリで [[memcache]][7] をクリックします。[Downloads] 列で [DLL] のリンクをクリックします。
 
 ![PHP PECL の Website](./media/web-sites-connect-to-redis-using-memcache-protocol/7-php-pecl-website.png)
 
@@ -96,7 +98,7 @@ Web Apps で有効な PHP バージョンの 非スレッド セーフ (NTS) x86
 
 > [AZURE.NOTE][Memcached Object Cache プラグイン](https://wordpress.org/plugins/memcached/)を WordPress.org からダウンロードすることもできます。
 
-WordPress プラグインのページで **[Add New]** ボタンをクリックします。
+WordPress プラグインのページで、**[新規追加]** をクリックします。
 
 ![WordPress プラグインのページ](./media/web-sites-connect-to-redis-using-memcache-protocol/10-wordpress-plugin.png)
 
@@ -104,7 +106,7 @@ WordPress プラグインのページで **[Add New]** ボタンをクリック�
 
 ![WordPress の Add New プラグイン](./media/web-sites-connect-to-redis-using-memcache-protocol/11-wordpress-add-new-plugin.png)
 
-一覧から **[Memcached Object Cache]** を選択し、**[Install Now]** をクリックします。
+一覧で **[Memcached Object Cache]** を見つけ、**[今すぐインストール]** をクリックします。
 
 ![WordPress の Install Memcache プラグイン](./media/web-sites-connect-to-redis-using-memcache-protocol/12-wordpress-install-memcache-plugin.png)
 
@@ -112,7 +114,7 @@ WordPress プラグインのページで **[Add New]** ボタンをクリック�
 
 >[AZURE.NOTE]ブログ記事の「[Web Apps でサイト拡張機能を有効にする方法][8]」の手順に従って Visual Studio Online をインストールします。
 
-`wp-config.php` ファイルで、ファイルの最後にある編集の終了を示すコメントの上に次のコードを追加します。
+`wp-config.php` ファイルで、ファイルの最後にある編集の終了コメントの上に次のコードを追加します。
 
 ```php
 $memcached_servers = array(
@@ -177,7 +179,7 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、[Azure App Service と既存の Azure Services への影響](http://go.microsoft.com/fwlink/?LinkId=529714)に関するページをご覧ください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
@@ -196,4 +198,4 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 [12]: /services/cache/
 [13]: http://memcached.org
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

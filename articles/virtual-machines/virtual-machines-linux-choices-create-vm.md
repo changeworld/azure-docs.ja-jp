@@ -65,7 +65,6 @@ Azure PowerShell の場合は、「[Azure PowerShell を使用して Linux ベ�
 [データ ディスクの接続][]
 
 ## その他のリソース
-[Azure VM 構成設定について][]
 
 [基本構成テスト環境][]
 
@@ -96,11 +95,10 @@ Azure PowerShell の場合は、「[Azure PowerShell を使用して Linux ベ�
 
 [データ ディスクの接続]: virtual-machines-linux-how-to-attach-disk.md
 
-[Azure VM 構成設定について]: http://msdn.microsoft.com/library/azure/dn763935.aspx
 [基本構成テスト環境]: virtual-machines-base-configuration-test-environment.md
 [Azure ハイブリッド クラウド テスト環境]: virtual-machines-hybrid-cloud-test-environments.md
 
 [Linux を実行する仮想マシンの作成]: virtual-machines-linux-tutorial.md
 [カスタム仮想マシンの作成]: virtual-machines-create-custom.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

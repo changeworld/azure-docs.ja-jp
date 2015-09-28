@@ -3,7 +3,7 @@
 	description="Windows Server 2012 R2 を実行する Azure 仮想マシンを作成し、そこで MySQL データベースのインストールと構成を行います。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor="tysonn"
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/10/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 
 # Azure で Windows Server 2012 R2 を実行する仮想マシンへの MySQL のインストール
@@ -128,4 +128,4 @@ Azure 仮想マシンで実行する MySQL Server サービスへのリモート
 
 MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

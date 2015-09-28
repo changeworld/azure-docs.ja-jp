@@ -5,15 +5,15 @@
 	documentationCenter=""
 	authors="cephalin"
 	manager="wpickett"
-	editor=""/>
+	editor="jimbe"/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/08/2015"
+	ms.date="09/15/2015"
 	ms.author="cephalin"/>
 
 
@@ -23,12 +23,14 @@
 
 高度に分離されたマイクロサービスで構成される拡張性の高いアプリケーションのプロビジョニングとデプロイを成功させるには、再現性と予測性が非常に重要です。[Azure App Service](/services/app-service/) を使用して、Web アプリ、モバイル アプリ、API アプリ、およびロジック アプリを含むマイクロサービスを作成できます。[Azure リソース マネージャー ](../resource-group-overview.md)を使用して、すべてのマイクロサービスを、データベースやソース管理設定などのリソースの依存関係と共に 1 つのユニットとして管理できます。さらに、このようなアプリケーションを、JSON テンプレートと単純な PowerShell スクリプトを使用してデプロイすることもできます。
 
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+
 ## 学習内容 ##
 
 このチュートリアルでは、次のものを含むアプリケーションをデプロイします。
 
 -	2 つの Web アプリケーション (つまり 2 つのマイクロサービス)
--	バックエンド SQL データベース
+-	バックエンド SQL Database
 -	アプリ設定、接続文字列、ソース管理
 -	Application Insights、アラート、自動スケールの設定
 
@@ -303,4 +305,4 @@ DevOps では、反復性と予測可能性が、マイクロサービスで構�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

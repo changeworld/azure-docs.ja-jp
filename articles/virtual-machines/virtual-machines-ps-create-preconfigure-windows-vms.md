@@ -3,7 +3,7 @@
 	description="Azure PowerShell を使用して、Windows ベースの Azure 仮想マシンを作成と事前構成する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="06/10/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 # Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する
 
@@ -271,4 +271,4 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 [リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

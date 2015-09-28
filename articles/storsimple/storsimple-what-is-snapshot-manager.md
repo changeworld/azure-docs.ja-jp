@@ -4,7 +4,7 @@
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
-   manager="adinah"
+   manager="carolz"
    editor="" />
 <tags 
    ms.service="storsimple"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/04/2015"
+   ms.date="09/15/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager について
@@ -36,7 +36,7 @@ StorSimple Snapshot Manager は、ローカルとクラウドのデータにつ�
 
 StorSimple Snapshot Manager では、ボリュームをマウントし、(通常はアプリケーションごとに) それらをボリューム グループとして構成します。StorSimple Snapshot Manager では、これらのボリューム グループを使用して、アプリケーション整合性のあるバックアップ コピーを生成します ("アプリケーション整合性" とは、関連するすべてのファイルとデータベースが同期されており、特定の時点におけるアプリケーションの正確な状態が反映されていることをいいます)。
 
-StorSimple Snapshot Manager のバックアップの形式は増分スナップショットであり、前回のバックアップ以降の変更部分だけがキャプチャされます。そのため、バックアップに必要なストレージが減り、バックアップの作成と復元を短時間で実行できます。StorSimple Snapshot Manager では、スナップショットでキャプチャされるデータのアプリケーション整合性を確保するために、Windows ボリューム シャドウ コピー サービス (VSS) を使用します (詳細については、「Windows ボリューム シャドウ コピー サービスとの統合」をご覧ください)。 StorSimple Snapshot Manager では、バックアップ スケジュールを作成することも、必要に応じて即時バックアップを作成することもできます。バックアップからデータを復元する必要がある場合は、ローカル スナップショットまたはクラウド スナップショットのカタログから選択できます。Azure StorSimple は、必要なときに必要なデータだけを復元するので、復元操作の実行中にデータの可用性が長時間損なわれることはありません。
+StorSimple Snapshot Manager のバックアップの形式は増分スナップショットであり、前回のバックアップ以降の変更部分だけがキャプチャされます。そのため、バックアップに必要なストレージが減り、バックアップの作成と復元を短時間で実行できます。StorSimple Snapshot Manager では、スナップショットでキャプチャされるデータのアプリケーション整合性を確保するために、Windows ボリューム シャドウ コピー サービス (VSS) を使用します (詳細については、「Windows ボリューム シャドウ コピー サービスとの統合」をご覧ください)。 StorSimple Snapshot Manager では、バックアップ スケジュールを作成することも、必要に応じて即時バックアップを作成することもできます。バックアップからデータを復元する必要がある場合は、StorSimple Snapshot Manager を使用してローカル スナップショットまたはクラウド スナップショットのカタログから選択できます。Azure StorSimple は、必要なときに必要なデータだけを復元するので、復元操作の実行中にデータの可用性が長時間損なわれることはありません。
 
 ![StorSimple Snapshot Manager のアーキテクチャ](./media/storsimple-what-is-snapshot-manager/HCS_SSM_Overview.png)
 
@@ -144,8 +144,8 @@ StorSimple Snapshot Manager を使用して、今後予定されているバッ�
 
 ## 次のステップ
 
-[StorSimple Snapshot Manager のタスクとワークフローの詳細](storsimple-snapshot-manager-admin.md)
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
 
-[StorSimple Snapshot Manager のダウンロード](https://www.microsoft.com/download/details.aspx?id=44220)。
+- [StorSimple Snapshot Manager のダウンロード](https://www.microsoft.com/download/details.aspx?id=44220)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

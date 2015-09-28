@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure App Service Web アプリでの PHP の構成方法"
+	pageTitle="Azure App Service Web Apps での PHP の構成方法"
 	description="Azure App Service の Web Apps 用に既定の PHP インストールを構成する方法、またはカスタム PHP インストールを追加する方法を説明します。"
 	services="app-service\web"
 	documentationCenter="php"
@@ -8,19 +8,21 @@
 	editor=""/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="06/24/2015"
+	ms.date="09/16/2015"
 	ms.author="tomfitz"/>
 
-#Azure App Service Web アプリでの PHP の構成方法
+#Azure App Service Web Apps での PHP の構成方法
 
 ## はじめに
 
-このガイドでは、ビルトインの PHP ランタイムを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の Web Apps で構成する方法、カスタムの PHP ランタイムを提供する方法、および拡張機能を有効にする方法を示します。App Service を使用するには、[無料評価版]にサインアップしてください。このガイドを最大限に活用するには、まず App Service で PHP Web アプリを作成する必要があります。
+このガイドでは、ビルトインの PHP ランタイムを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の Web Apps で構成する方法、カスタムの PHP ランタイムを提供する方法、および拡張機能を有効にする方法を示します。App Service を使用するには、[無料試用版]にサインアップしてください。このガイドを最大限に活用するには、まず App Service で PHP Web アプリを作成する必要があります。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 方法: ビルトインの PHP バージョンを変更する
 既定では、App Service Web アプリを作成すると PHP 5.4 がインストールされ、直ちに使用できる状態になります。使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、[phpinfo()] 関数を呼び出すスクリプトをデプロイします。
@@ -154,10 +156,10 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
-[無料評価版]: https://www.windowsazure.com/pricing/free-trial/
+[無料試用版]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: http://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
 [php.ini ディレクティブの一覧]: http://www.php.net/manual/en/ini.list.php
@@ -176,4 +178,4 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

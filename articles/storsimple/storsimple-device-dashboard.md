@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple Manager デバイスのダッシュボードを使用する | Microsoft Azure"
-	description="StorSimple Manager サービスのデバイス ダッシュボードについて説明します。また、このダッシュボードを使用して、ストレージ メトリックおよび接続されているイニシエーターを表示し、シリアル番号と IQN を検索する方法についても説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple Manager サービスのデバイス ダッシュボードについて説明します。また、このダッシュボードを使用して、ストレージ メトリックおよび接続されているイニシエーターを表示し、シリアル番号と IQN を検索する方法についても説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="09/01/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/15/2015"
+   ms.author="alkohli" />
 
 # StorSimple Manager デバイス ダッシュボードを使用する
 
@@ -97,6 +97,7 @@ StorSimple デバイスでチャレンジ ハンドシェイク認証プロト�
 
 ## 次のステップ
 
-[StorSimple Manager サービスのダッシュボードの詳細を確認する](storsimple-service-dashboard.md)。
+- [StorSimple Manager サービスのダッシュボードの詳細](storsimple-service-dashboard.md)
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="09/10/2015"
    ms.author="banders" />
 
 # オペレーション インサイトにサポートされる構成
@@ -29,13 +29,13 @@
 関連付けられているサービスとしてオペレーション インサイトを使用するには、次の前提条件が必要です。
 
 
-- System Center 2012 SP1 Operations Manager と オペレーション インサイトの統合には、[Operational Insights Connector for Operations Manager](https://www.microsoft.com/ja-jp/download/details.aspx?id=38199) に含まれている更新された管理パックが必要です。[Operational Insights Connector for Operations Manager](https://www.microsoft.com/ja-jp/download/details.aspx?id=38199) から管理パックをダウンロードして、インストールできます。
+- System Center 2012 SP1 Operations Manager と オペレーション インサイトの統合には、[Operational Insights Connector for Operations Manager](https://www.microsoft.com/ja-JP/download/details.aspx?id=38199) に含まれている更新された管理パックが必要です。[Operational Insights Connector for Operations Manager](https://www.microsoft.com/ja-JP/download/details.aspx?id=38199) から管理パックをダウンロードして、インストールできます。
 
 - System Center 2012 sp 1: Operations Manager 更新プログラム ロールアップ 6、ただし、更新プログラム ロールアップ 7 をお勧めします。この更新プログラムは、オペレーション インサイトが関連付けられているサービスのシナリオとして、管理サーバー、エージェント、オペレーション コンソールに適用されている必要があります。
 
 - System Center 2012 sp 2: Operations Manager 更新プログラム ロールアップ 2、ただし、更新プログラム ロールアップ 3 をお勧めします。この更新プログラムは、オペレーション インサイトが関連付けられているサービスのシナリオとして、管理サーバー、エージェント、オペレーション コンソールに適用されている必要があります。
 
-- 容量管理データを表示するには、Operations Manager と Virtual Machine Manager (VMM) との接続を有効にする必要があります。システムの接続の詳細については、「[VMM を Operations Manager と接続する方法](https://technet.microsoft.com/ja-jp/library/hh882396.aspx)」をご覧ください。
+- 容量管理データを表示するには、Operations Manager と Virtual Machine Manager (VMM) との接続を有効にする必要があります。システムの接続の詳細については、「[VMM を Operations Manager と接続する方法](https://technet.microsoft.com/ja-JP/library/hh882396.aspx)」をご覧ください。
 
 インストールと構成の手順の詳細については、「[オペレーション インサイトのアラートの表示](http://go.microsoft.com/fwlink/?LinkID=293793)」をご覧ください。
 
@@ -48,11 +48,11 @@ Operations Manager エージェントは、さまざまなコンピューター�
 
 ### Operations Manager に必要なソフトウェア
 
-容量管理データを表示するには、Operations Manager と VMM との接続を有効にする必要があります。システムの接続の詳細については、「[VMM を Operations Manager と接続する方法](https://technet.microsoft.com/ja-jp/library/hh882396.aspx)」をご覧ください。
+容量管理データを表示するには、Operations Manager と VMM との接続を有効にする必要があります。システムの接続の詳細については、「[VMM を Operations Manager と接続する方法](https://technet.microsoft.com/ja-JP/library/hh882396.aspx)」をご覧ください。
 
 ## オペレーション インサイトに直接接続されているエージェント
 
-サービスに直接接続するために使用するエージェントは、Microsoft Monitoring Agent です。システム要件の一覧は、[Microsoft ダウンロード センター](https://www.microsoft.com/ja-jp/download/details.aspx?id=40316&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True) ページに表示されています。
+サービスに直接接続するために使用するエージェントは、Microsoft Monitoring Agent です。システム要件の一覧は、[Microsoft ダウンロード センター](https://www.microsoft.com/ja-JP/download/details.aspx?id=40316&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True) ページに表示されています。
 
 ## ブラウザー
 
@@ -100,4 +100,4 @@ SQL Server では、分析用に次の 32 ビットと 64 ビット エディシ
 
 また、WOW64 実装で実行する場合は、SQL Server の32 ビット エディションがサポートされています。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

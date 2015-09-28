@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="PowerShell を使用した Azure SQL Database リソースの管理" 
+	pageTitle="PowerShell を使用した Azure SQL Database の管理" 
 	description="PowerShell を使用した Azure SQL Database の管理。" 
 	services="sql-database" 
 	documentationCenter="" 
@@ -13,11 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/28/2015" 
+	ms.date="09/11/2015" 
 	ms.author="vinsonyu"/>
 
-# PowerShell を使用した Azure SQL Database リソースの管理
+# PowerShell を使用した Azure SQL Database の管理
 
+
+> [AZURE.SELECTOR]
+- [Azure Preview Portal](sql-database-manage-portal.md)
+- [SSMS](sql-database-manage-azure-ssms.md)
+- [PowerShell](sql-database-command-line-tools.md)
 
 このトピックでは、Azure リソース マネージャー コマンドレットを使用した、多数の Azure SQL Database タスクを実行する PowerShell コマンドを紹介します。
 
@@ -119,7 +124,7 @@ SQL Database は、[Remove-AzureSqlDatabase](https://msdn.microsoft.com/library/
 これらの Azure SQL リソースまたは同様のリソースを再作成する場合は、次のことができます。
 
 - これを PowerShell スクリプト ファイル (*.ps1) として保存します
-- Azure 管理ポータルの [オートメーション] セクションに、これを Azure の Automation Runbook として保存する。 
+- Microsoft Azure 管理ポータルの [オートメーション] セクションに、これを Azure の Automation Runbook として保存する。 
 
 ## 次のステップ
 
@@ -137,4 +142,4 @@ SQL Database は、[Remove-AzureSqlDatabase](https://msdn.microsoft.com/library/
 - [Azure SQL Database サービス管理コマンドレット](https://msdn.microsoft.com/library/dn546726.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

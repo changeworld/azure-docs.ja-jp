@@ -12,8 +12,8 @@
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="07/27/2015"
+	ms.topic="get-started-article" 
+	ms.date="09/10/2015"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した初めてのパイプラインの作成
@@ -64,12 +64,10 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 
 1. メモ帳を起動し、次のテキストを貼り付け、**partitionweblogs.hql** という名前でハード ドライブの C:\\adfgettingstarted フォルダーに保存します。この Hive スクリプトは、2 つの外部テーブル **WebLogsRaw** と **WebLogsPartitioned** を作成します。
 
-	> [AZURE.IMPORTANT]最後の行の **storageaccountname** は、実際のストレージ アカウントの名前に置き換えます。
-
 		set hive.exec.dynamic.partition.mode=nonstrict;
-
+		
 		DROP TABLE IF EXISTS WebLogsRaw; 
-		CREATE EXTERNAL TABLE WebLogsRaw (
+		CREATE TABLE WebLogsRaw (
 		  date  date,
 		  time  string,
 		  ssitename string,
@@ -91,8 +89,9 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 		)
 		ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 		LINES TERMINATED BY '\n' 
-		LOCATION '/HdiSamples/WebsiteLogSampleData/SampleLog/'
 		tblproperties ("skip.header.line.count"="2");
+		
+		LOAD DATA INPATH '/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log' OVERWRITE INTO TABLE WebLogsRaw;
 		
 		DROP TABLE IF EXISTS WebLogsPartitioned ; 
 		create external table WebLogsPartitioned (  
@@ -119,7 +118,7 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 		ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
 		STORED AS TEXTFILE 
 		LOCATION '${hiveconf:partitionedtable}';
-
+		
 		INSERT INTO TABLE WebLogsPartitioned  PARTITION( year , month) 
 		SELECT
 		  date,
@@ -143,8 +142,7 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 		  year(date),
 		  month(date)
 		FROM WebLogsRaw
-
-	 
+	
  
 2. チュートリアル用に Azure Storage を準備するには:
 	1. [最新バージョンの **AzCopy**](http://aka.ms/downloadazcopy) または[最新のプレビュー バージョン](http://aka.ms/downloadazcopypr)をダウンロードします。ユーティリティを使用する手順については、[AzCopy を使用する方法](../storage/storage-use-azcopy.md)に関する記事を参照してください。
@@ -153,7 +151,7 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 			set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
 	
 
-	3. c:\\adfgettingstarted フォルダーに移動し、次のコマンドを実行して Hive .HQL ファイルをストレージ アカウントにアップロードします。**<StorageAccountName>** はストレージ アカウントの名前に、**<Storage Key>** はストレージ アカウント キーに置き換えます。
+	3. c:\\adfgettingstarted フォルダーに移動し、次のコマンドを実行して Hive .HQL ファイルをストレージ アカウントにアップロードします。**StorageAccountName** はストレージ アカウントの名前に、**Storage Key** はストレージ アカウント キーに置き換えます。
 
 			AzCopy /Source:. /Dest:https://<StorageAccountName>.blob.core.windows.net/script /DestKey:<Storage Key>
 	4. ファイルが正常にアップロードされると、AzCopy から次の出力が表示されます。
@@ -174,6 +172,6 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 - Visual Studio を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)」というリンクをクリックします。 
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline.md)でフィードバックをお寄せください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

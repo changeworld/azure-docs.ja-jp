@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/13/2015" 
+	ms.date="09/09/2015" 
 	ms.author="awills"/>
  
 # Eclipse で Java 用に Application Insights を使う
@@ -27,7 +27,7 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 必要なものは次のとおりです。
 
 * Oracle JRE 1.6 以降。
-* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
+* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料試用版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
 * [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/) Indigo 以降。
 * Windows 7 以降または Windows Server 2008 以降。
 
@@ -116,6 +116,104 @@ HTML ファイルの先頭にコード スニペットを挿入します。
 
 [クライアント側のテレメトリの設定方法の詳細についてはこちら。][usage]
 
+## アプリケーションの発行
+
+次に、サーバーにアプリを発行してユーザーがアプリを使用できるようにし、ポータルに表示されるテレメトリを監視します。
+
+* アプリケーションがこれらのポートにテレメトリを送信できるようにファイアウォールが設定されていることを確認します。
+
+ * dc.services.visualstudio.com:443
+ * dc.services.visualstudio.com:80
+ * f5.services.visualstudio.com:443
+ * f5.services.visualstudio.com:80
+
+
+* Windows サーバーに次のものをインストールします。
+
+ * [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
+
+    (これにより、パフォーマンス カウンターが有効になります。)
+
+## 例外と要求エラー
+
+未処理の例外は、自動的に収集されます。
+
+![](./media/app-insights-java-get-started/21-exceptions.png)
+
+その他の例外に関するデータを収集するには 2 つのオプションがあります。
+
+* [TrackException への呼び出しをコードに挿入](app-insights-api-custom-events-metrics.md#track-exception)します。 
+* [Java エージェントをサーバーにインストール](app-insights-java-agent.md)します。監視するメソッドを指定します。
+
+
+## メソッドの呼び出しと外部依存関係の監視
+
+[Java エージェントをインストール](app-insights-java-agent.md)して、JDBC を通じて指定された内部メソッドと実行された呼び出しをタイミング データと共にログに記録します。
+
+
+## パフォーマンス カウンター
+
+**[サーバー]** タイルをクリックすると、一連のパフォーマンス カウンターが表示されます。
+
+
+![](./media/app-insights-java-get-started/11-perf-counters.png)
+
+### パフォーマンス カウンター コレクションをカスタマイズする
+
+パフォーマンス カウンターの標準セットのコレクションを無効にするには、ApplicationInsights.xml ファイルのルート ノードの下に次のコードを追加します。
+
+    <PerformanceCounters>
+       <UseBuiltIn>False</UseBuiltIn>
+    </PerformanceCounters>
+
+### 追加のパフォーマンス カウンターを収集する
+
+収集する追加のパフォーマンス カウンターを指定できます。
+
+#### JMX カウンター (Java 仮想マシンによって公開されます)
+
+    <PerformanceCounters>
+      <Jmx>
+        <Add objectName="java.lang:type=ClassLoading" attribute="TotalLoadedClassCount" displayName="Loaded Class Count"/>
+        <Add objectName="java.lang:type=Memory" attribute="HeapMemoryUsage.used" displayName="Heap Memory Usage-used" type="composite"/>
+      </Jmx>
+    </PerformanceCounters>
+
+*	`displayName` - Application Insights ポータルに表示される名前。
+*	`objectName` - JMX オブジェクトの名前。
+*	`attribute` - 取得する JMX オブジェクト名の属性
+*	`type` (オプション) - JMX オブジェクトの属性の型。
+ *	既定値: int、long などの単純型。
+ *	`composite`: パフォーマンス カウンター データは、"Attribute.Data" 形式です。
+ *	`tabular`: パフォーマンス カウンター データは、テーブル行形式です。
+
+
+
+#### Windows パフォーマンス カウンター
+
+それぞれの [Windows パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)は、(フィールドがクラスのメンバーであるのと同様に) カテゴリのメンバーです。カテゴリについては、グローバルに設定することも、数字または名前付きインスタンスを設定することもできます。
+
+    <PerformanceCounters>
+      <Windows>
+        <Add displayName="Process User Time" categoryName="Process" counterName="%User Time" instanceName="__SELF__" />
+        <Add displayName="Bytes Printed per Second" categoryName="Print Queue" counterName="Bytes Printed/sec" instanceName="Fax" />
+      </Windows>
+    </PerformanceCounters>
+
+*	displayName - Application Insights ポータルに表示される名前。
+*	categoryName - このパフォーマンス カウンターが関連付けられているパフォーマンス カウンターのカテゴリ (パフォーマンス オブジェクト)。
+*	counterName - パフォーマンス カウンターの名前。
+*	instanceName - パフォーマンス カウンター カテゴリ インスタンスの名前、または空の文字列 ("") (カテゴリにインスタンスが 1 つ含まれている場合)。categoryName が Process であり、アプリが実行されている現在の JVM プロセスからパフォーマンス カウンターを収集する場合は、`"__SELF__"` を指定します。
+
+パフォーマンス カウンターは、[メトリックス エクスプローラー][metrics]でカスタム メトリックとして表示されます。
+
+![](./media/app-insights-java-get-started/12-custom-perfs.png)
+
+
+### Unix パフォーマンス カウンター
+
+* [Application Insights プラグインを使用して collectd をインストール](app-insights-java-collectd.md)し、さまざまな種類のシステムとネットワークに関するデータを取得します。
+
 ## 可用性 Web テスト
 
 Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。セットアップするには、概要ブレードの空の Web テスト グラフをクリックし、パブリック URL を入力します。
@@ -169,4 +267,4 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

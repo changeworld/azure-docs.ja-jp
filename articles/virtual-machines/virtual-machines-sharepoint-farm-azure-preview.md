@@ -11,13 +11,15 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows-sharepoint"
+	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/07/2015"
 	ms.author="josephd"/>
 
 # SharePoint Server Farm
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 Microsoft Azure プレビュー ポータルは、SharePoint Server Farm を使用して、事前構成された SharePoint Server 2013 ファームを作成します。これにより、開発またはテストの環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
 
@@ -35,13 +37,13 @@ Microsoft Azure プレビュー ポータルは、SharePoint Server Farm を使�
 
 この両ファームの構成の詳細については、「[SharePoint Server ファームの構成の詳細](virtual-machines-sharepoint-farm-config-azure-preview.md)」を参照してください。
 
-> [AZURE.NOTE]Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview およびその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[Test the SharePoint Server 2016 IT Preview in Azure](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」 (Azure での SharePoint Server 2016 IT Preview のテスト) を参照してください。
+> [AZURE.NOTE]Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
 
 ## 構成の手順
 
 SharePoint Server Farm のテンプレートを使用して SharePoint ファームを作成するには、以下の手順を実行します。
 
-1. [Microsoft Azure プレビュー ポータル](https://portal.azure.com/)で、**[新規]**、**[コンピューティング]**、**[SharePoint Server Farm]** の順にクリックします。**SharePoint Server Farm** が表示されない場合、**[新規]**、**[コンピューティング]**、**[Marketplace]** の順にクリックして、**[コンピューティングを検索]** に「**SharePoint**」と入力してから、**[SharePoint Server Farm]** をクリックします。**[SharePoint Server Farm]** ウィンドウで、**[作成]** をクリックします。
+1. [Microsoft Azure プレビュー ポータル](https://portal.azure.com/)で、**[新規]**、**[Compute]**、**[SharePoint Server Farm]** の順にクリックします。**SharePoint Server Farm** が表示されない場合、**[新規]**、**[Compute]**、**[Marketplace]** の順にクリックして、**[Computeを検索]** に「**SharePoint**」と入力してから、**[SharePoint Server Farm]** をクリックします。**[SharePoint Server Farm]** ウィンドウで、**[作成]** をクリックします。
 2. **[SharePoint ファームの作成]** ウィンドウにリソース グループの名前を入力します。
 3. ファームの各仮想マシンのローカル管理者アカウントのユーザー名とパスワードを入力します。推測されにくい名前とパスワードを選んで登録し、安全な場所に保管します。
 4. 高可用性ファームを希望する場合は、**[高可用性を有効にする]** をクリックします。
@@ -85,7 +87,7 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 
 ## Azure リソース マネージャー
 
-Azure プレビュー ポータルの SharePoint Server Farm 機能により、従来のデプロイ モデルを使用して仮想マシンが作成されます。リソース マネージャーのデプロイ モデルを使用して SharePoint Server 2013 ファームを作成するには、「[Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ](virtual-machines-workload-template-sharepoint.md)」を参照してください。
+Azure プレビュー ポータルの SharePoint Server Farm 機能により、従来のデプロイ モデルを使用して仮想マシンが作成されます。リソース マネージャーのデプロイメント モデルを使用して SharePoint Server 2013 ファームを作成する場合は、「[Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ](virtual-machines-workload-template-sharepoint.md)」を参照してください。
 
 ## その他のリソース
 
@@ -97,4 +99,4 @@ Azure プレビュー ポータルの SharePoint Server Farm 機能により、�
 
 [Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

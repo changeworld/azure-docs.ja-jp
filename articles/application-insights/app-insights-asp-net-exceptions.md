@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/11/2015" 
+	ms.date="09/10/2015" 
 	ms.author="awills"/>
  
 # Application Insights を利用し、ASP.NET アプリの障害と例外を診断する  
@@ -50,7 +50,7 @@ ASP.NET アプリを監視するには、アプリケーションに [Applicatio
 
 *依存関係*は、アプリケーションが通常は REST API またはデータベースの接続を介して呼び出すサービスです。[Application Insights Status Monitor][redfield] はさまざまな依存関係呼び出しを自動的に監視し、呼び出し期間と成功または失敗を測定します。
 
-依存関係データを取得するには、IIS サーバーに [Status Monitor をインストールする][redfield]か、アプリが Azure Web App の場合、[Application Insights Extension][azure] を使用する必要があります。これを実行できます。
+依存関係データを取得するには、IIS サーバーに [Status Monitor をインストールする][redfield]か、アプリが Azure Web App の場合、[Application Insights Extension][azure] を使用する必要があります。
 
 依存関係の呼び出し失敗は [障害] ブレードに一覧表示されます。要求詳細と例外詳細の [関連項目] の下にもあります。
 
@@ -426,7 +426,15 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
 [サンプル](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
+## 例外パフォーマンス カウンター
 
+[Status Monitor][redfield] がサーバー上にインストールされている場合は、.NET によって測定された例外レートに関するグラフを取得できます。これには、処理済みの .NET 例外と未処理の .NET 例外の両方が含まれます。
+
+メトリック エクスプ ローラー ブレードを開き、新しいグラフを追加します。パフォーマンス カウンターの下に一覧表示された中から **[例外レート]** を選択します。
+
+.NET フレームワークでは、特定の時間間隔で例外数をカウントし、それを時間間隔の長さで割り算することで、例外レートを算出します。
+
+この値は、TrackException レポートをカウントすることにより、Application Insights ポータルで算出される「例外」数とは異なります。サンプリングの時間間隔が異なります。さらに、SDK では、すべての処理済みの例外と未処理の例外について TrackException レポートを送信するわけではありません。
 
 <!--Link references-->
 
@@ -441,4 +449,4 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="09/08/2015" 
+	ms.date="09/16/2015" 
 	ms.author="jeffstok"/>
 
 #Microsoft Stream Analytics リリース ノート
@@ -24,7 +24,7 @@
 
 タイトル|説明
 ---|---
-PowerBI グループのサポート|他の PowerBI ユーザーとデータを共有できるようにするために、Stream Analytics ジョブで PowerBI アカウント内のグループに書き込むことができるようになりました。
+PowerBI グループのサポート|他の PowerBI ユーザーとデータを共有できるようにするために、Stream Analytics ジョブで PowerBI アカウント内の [PowerBI グループ](stream-analytics-define-outputs.md#power-bi)に書き込むことができるようになりました。
 
 ## Stream Analytics の 2015 年 8 月 20 日付けリリースに関するノート ##
 
@@ -88,8 +88,8 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 - [Azure Stream Analytics の使用](../stream.analytics.get.started.md)
 - [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-- [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+- [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+- [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

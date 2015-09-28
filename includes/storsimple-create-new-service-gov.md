@@ -1,3 +1,5 @@
+<!--author=SharS last changed: 9/17/15-->
+
 
 #### 新しいサービスを作成するには
 
@@ -18,4 +20,4 @@
  
        ![サービスの作成](./media/storsimple-create-new-service-gov/HCS_StorSimpleManagerServicePage-gov-include.png)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

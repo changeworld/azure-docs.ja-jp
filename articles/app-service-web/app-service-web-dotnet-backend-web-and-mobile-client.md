@@ -8,16 +8,16 @@
 	editor=""/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="mobile"
 	ms.tgt_pltfrm="NA"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="08/18/2015"
+	ms.date="09/15/2015"
 	ms.author="donnam"/>
 
 # Azure App Service でモバイルおよび Web クライアントを使用してアプリを作成する
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-web-and-mobile](../../includes/app-service-mobile-dotnet-backend-web-and-mobile.md)]
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="DocumentDB を使用した Node.js Web アプリケーションの作成 | Microsoft Azure" 
-	description="Microsoft Azure DocumentDB を使用して、Azure Websites にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。" 
+	pageTitle="Node.js について学習する - DocumentDB Node.js チュートリアル | Microsoft Azure" 
+	description="Node.js について学習する このチュートリアルでは、Microsoft Azure DocumentDB を使用して、Azure Websites にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。" 
+	keywords="Application development, database tutorial, learn node.js, node.js tutorial, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter="nodejs" 
 	authors="ryancrawcour" 
@@ -18,26 +19,26 @@
 
 # <a name="_Toc395783175"></a>DocumentDB を使用した Node.js Web アプリケーションの作成
 
-このチュートリアルでは、Azure DocumentDB サービスを使用して、Azure Websites にホストされた Node.js Express アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。
+この Node.js チュートリアルでは、Azure DocumentDB サービスを使用して、Azure Websites にホストされた Node.js Express アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。
 
-まずは、次のビデオを視聴することをお勧めします。このビデオでは、Azure DocumentDB データベース アカウントをプロビジョニングし、JSON ドキュメントを Node.js アプリケーションに格納する方法を紹介しています。
+まずは、次のビデオを視聴することをお勧めします。このビデオでは、Azure DocumentDB データベース アカウントをプロビジョニングし、JSON ドキュメントを Node.js アプリケーションに格納する方法を学習できます。
 
 > [AZURE.VIDEO azure-demo-getting-started-with-azure-documentdb-on-nodejs-in-linux]
 
-その後でこの記事に戻ると、次の質問の答えを見つけることができます。
+その後でこのs Node.js チュートリアルに戻ると、次の質問の答えを見つけることができます。
 
 - Documentdb npm モジュールを使って DocumentDB を操作する方法
 - Web アプリケーションを Azure Websites にデプロイする方法
 
-このチュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーションを作成します。対象となるタスクは、JSON ドキュメントとして Azure DocumentDB に保存するものとします。
+このデータベース チュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーションを作成します。対象となるタスクは、JSON ドキュメントとして Azure DocumentDB に保存するものとします。
 
-![このチュートリアルで作成した、My Todo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image1.png)
+![この Node.js チュートリアルで作成した、My Todo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image1.png)
 
 チュートリアルを最後まで実施する時間がなく、GitHub から完成済みのソリューションを入手することが必要な場合もあります。 その場合は、[こちら](https://github.com/Azure/azure-documentdb-node/tree/master/tutorial/todo)から入手してください。
 
 ## <a name="_Toc395783176"></a>前提条件
 
-> [AZURE.TIP]このチュートリアルは、Node.js と Azure Websites の使用経験がある読者を対象としています。
+> [AZURE.TIP]このs Node.js チュートリアルは、Node.js と Azure Websites の使用経験がある読者を対象としています。
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
@@ -54,9 +55,9 @@
 
 [AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
-## <a name="_Toc395783178"></a>手順 2: 新しい Node.js アプリケーションの作成
+## <a name="_Toc395783178"></a>手順 2: 新しい Node.js アプリケーションを作成する
 
-それでは、[Express](http://expressjs.com/) フレームワークを使用して、基本的な Hello World Node.js プロジェクトを作成しましょう。
+それでは、[Express](http://expressjs.com/) フレームワークを使用して、基本的な Hello World Node.js プロジェクトを作成する方法を学習しましょう。
 
 1. お使いのターミナルを開きます。
 
@@ -75,7 +76,7 @@
 
 5. ブラウザーで [http://localhost:3000](http://localhost:3000) に移動すると、新しいアプリケーションを表示できます。
 
-	![ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image12.png)
+	![Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image12.png)
 
 ## <a name="_Toc395783179"></a>手順 3: 追加モジュールのインストール
 
@@ -535,7 +536,7 @@
 
 4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、**[Update tasks]** をクリックします。
 
-## <a name="_Toc395783182"></a>手順 7: Azure Websites へのアプリケーションのデプロイ
+## <a name="_Toc395783182"></a>手順 7: Azure Websites へのアプリケーション開発プロジェクトのデプロイ
 
 1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。手順については、[こちら](../web-sites-publish-source-control-git.md#step4)で確認できます。
 
@@ -559,4 +560,4 @@
   [Git]: http://git-scm.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

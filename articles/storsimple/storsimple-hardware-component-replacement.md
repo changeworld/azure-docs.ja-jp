@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple のハードウェア コンポーネントの交換 | Microsoft Azure"
-	description="StorSimple デバイスの PCM、バッテリ、コントローラー モジュール、EBOD コントローラー、ディスク ドライブ、およびシャーシを安全に交換する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple デバイスの PCM、バッテリ、コントローラー モジュール、EBOD コントローラー、ディスク ドライブ、およびシャーシを安全に交換する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/31/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="08/31/2015"
+   ms.author="alkohli" />
 
 # StorSimple のハードウェア コンポーネントの交換
 
@@ -142,4 +142,4 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 StorSimple のハードウェア コンポーネントを交換する前に、すべての[安全に関する情報](storsimple-safety.md)を確認します。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

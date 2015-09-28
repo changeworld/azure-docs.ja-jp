@@ -5,20 +5,22 @@
 	documentationCenter=""
 	authors="ccompy"
 	manager="stefsch"
-	editor=""/>
+	editor="jimbe"/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="04/27/2015"
+	ms.date="09/15/2015"
 	ms.author="ccompy"/>
 
 # App Service 環境内で Web アプリを作成する方法 #
 
 Web アプリの作成方法は、App Service 環境 (ASE) においてもほぼ同じです。App Service 環境の機能に慣れていない場合は、[App Service 環境の概要](app-service-app-service-environment-intro.md)に関するページにあるドキュメントを参照してください。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ASE で Web アプリを作成するには、最初に ASE を作成する必要があります。ASE を作成する方法の詳細については、「[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。
 
@@ -91,4 +93,4 @@ Web アプリと ASP を作成した後はこれをスケールアップする�
 [HowtoConfigureASE]: http://azure.microsoft.com/documentation/articles/app-service-web-configure-an-app-service-environment
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

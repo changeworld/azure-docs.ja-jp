@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="DocumentDB SQL を使用したクエリ | Microsoft Azure" 
-	description="NoSQL ドキュメント データベース サービスである DocumentDB は、階層型の JSON ドキュメントに対し、SQL に似た文法を使用することによって行うクエリをサポートしています。明確なスキーマが不要であり、セカンダリ インデックスを作成する必要もありません。" 
+	pageTitle="DocumentDB データベースの SQL クエリ – SQL クエリの実行 | Microsoft Azure" 
+	description="DocumentDB が階層 JSON ドキュメントの SQL クエリをサポートし、自動でインデックスを作成する方法について説明します。スキーマから完全に解放された SQL クエリ データベース環境について学習します。" 
+	keywords="Query database, sql queries, sql query, structured query language, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter="" 
 	authors="arramac" 
@@ -16,7 +17,7 @@
 	ms.date="08/13/2015" 
 	ms.author="mimig"/>
 
-# DocumentDB のクエリ
+# DocumentDB 内の SQL クエリ
 Microsoft Azure DocumentDB は、階層型の JSON ドキュメントに対する、SQL (Structured Query Language) を使ったドキュメント クエリをサポートしています。DocumentDB は完全にスキーマフリーです。データベース エンジン内で JSON データ モデルを直接処理することで、明示的なスキーマやセカンダリ インデックスの作成を必要とせずに、JSON ドキュメントの自動インデックス作成を実現しています。
 
 マイクロソフトは、以下の 2 点を目標に DocumentDB 向けのクエリ言語を設計しました。
@@ -30,9 +31,9 @@ Microsoft Azure DocumentDB は、階層型の JSON ドキュメントに対す�
 
 > [AZURE.VIDEO dataexposedqueryingdocumentdb]
 
-次に、この記事に戻り、いくつかの簡単な JSON ドキュメントおよびクエリについて理解していきます。
+次に、この記事に戻り、いくつかの簡単な JSON ドキュメントと SQL コマンドについて理解していきます。
 
-## 使用の開始
+## DocumentDB での構造化照会言語 (SQL) コマンドの概要
 DocumentDB SQL の動作を確認するため、最初にシンプルな JSON ドキュメントを見てみましょう。その後このドキュメントに対して実施するシンプルなクエリについて説明します。これら 2 つの JSON ドキュメントは、2 つの家族に関するドキュメントです。DocumentDB では、スキーマやセカンダリ インデックスを明示的に作成する必要がありません。必要なことは、JSON ドキュメントを DocumentDB コレクションに挿入した後、クエリを実行するだけです。以下は、Andersen 一家に関するシンプルな JSON ドキュメントです。両親、子供 (および子供のペット)、住所、登録に関する情報が記載されています。ドキュメントには、文字列、数値、ブール値、配列、入れ子になったプロパティがあります。
 
 **ドキュメント**
@@ -157,7 +158,7 @@ DocumentDB SQL の重要な項目について理解するため、このデー�
 これまでの例からわかる、DocumentDB クエリ言語の注目すべき特性を以下に示します。
  
 -	JSON 値を利用する DocumentDB SQL は、行と列ではなくツリー形式のエンティティを処理します。つまり、この言語では `Node1.Node2.Node3…..Nodem` のように任意の深さのツリーのノードを参照できます。これは、リレーショナル SQL が `<table>.<column>` という 2 項目参照を実行するのと同様です。   
--	この言語ではスキーマのないデータを扱います。このため、型システムを動的にバインドする必要があります。同じ式でも、ドキュメントが異なれば異なる型が導出される場合があります。このようなクエリ結果は有効な JSON 値ですが、固定スキーマの場合でも有効とは限りません。  
+-	構造化照会言語ではスキーマのないデータを扱います。このため、型システムを動的にバインドする必要があります。同じ式でも、ドキュメントが異なれば異なる型が導出される場合があります。このようなクエリ結果は有効な JSON 値ですが、固定スキーマの場合でも有効とは限りません。  
 -	DocumentDB は厳密な JSON ドキュメントだけをサポートします。つまり、型システムおよび式は、JSON 型のみを扱うように制限されます。詳細については、[JSON の仕様に関するページ](http://www.json.org/)を参照してください。  
 -	DocumentDB コレクションは、スキーマフリーの JSON ドキュメントのコンテナーです。コレクションにあるドキュメント内およびドキュメント間のデータ エンティティの関係はコンテインメントによって暗黙的にキャプチャされます。プライマリ キーと外部キーの関係ではキャプチャされません。これは、この記事で後述するドキュメント間結合の点で注意すべき要素です。
 
@@ -182,7 +183,7 @@ DocumentDB SQL の文法について詳しく説明する前に、DocumentDB の
 コレクションのインデックス作成ポリシーの構成方法については、MSDN の [DocumentDB のサンプル](https://github.com/Azure/azure-documentdb-net)を参照してください。以降は、DocumentDB SQL の文法の詳細を説明していきます。
 
 
-## DocumentDB クエリの基礎
+## DocumentDB SQL クエリの基礎
 すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。通常は、各クエリで FROM 句のソースが列挙されます。次に WHERE 句のフィルターがソースに適用され、JSON ドキュメントのサブセットが取得されます。最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。
     
     SELECT <select_list> 
@@ -296,7 +297,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句�
 	WHERE c.grade >= 5     -- matching grades == 5
 
 
-単項演算子 (+、-、\~、および NOT) もサポートされています。これらはクエリの内側で次の例のように使用することができます。
+単項演算子 (+、-、~、および NOT) もサポートされています。これらはクエリの内側で次の例のように使用することができます。
 
 	SELECT *
 	FROM Families.children[0] c
@@ -704,7 +705,7 @@ ANSI SQL 同様、クエリ実行にオプションで Order By 句を含める�
 	  }
 	]
 	
-## 高度な概念
+## 高度な SQL クエリ データベースの概念
 ### 反復
 DocumentDB SQL の **IN** キーワードによる新しいコンストラクトを追加することで、JSON 配列に対する反復がサポートされています。反復のサポートは FROM ソースが提供します。まず、以下の例から始めます。
 
@@ -964,7 +965,7 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 
 これで、この UDF をプロジェクション内のクエリで使用できるようになりました。UDF をクエリ内から呼び出すときは、大文字と小文字が区別されるプレフィックス "udf." で修飾する必要があります。
 
->[AZURE.NOTE]2015 年 3 月 17 日以前では、SELECT REGEX\_MATCH() のような、"udf." プレフィックスのない UDF 呼び出しがサポートされていました。この呼び出しパターンは廃止されました。
+>[AZURE.NOTE]2015 年 3 月 17 日以前では、SELECT REGEX\_MATCH() のような、"udf." プレフィックスのない UDF 呼び出しが DocumentDB でサポートされていました。この呼び出しパターンは廃止されました。
 
 **クエリ**
 
@@ -1055,7 +1056,7 @@ JSON データベースという特性を持つ DocumentDB は、JavaScript 演�
 
 DocumentDB SQL は JavaScript とは異なり暗黙的な変換を実行しません。たとえば、`SELECT * FROM Person p WHERE p.Age = 21` のようなクエリは、値が 21 の Age プロパティを含むドキュメントに一致します。Age プロパティが文字列の "21" に一致するようなドキュメントや、 "021"、"21.0"、"0021"、"00021" などの無限のバリエーションに一致するドキュメントは対象外となります。これは、(演算子 == などに基づいて) 文字列の値が暗黙的に数値にキャストされる JavaScript とは異なります。インデックスの効率的な一致のために、DocumentDB SQL ではこのような選択が避けられないものとなっています。
 
-## パラメーター化された SQL
+## パラメーター化された SQL クエリ
 DocumentDB では、使い慣れた @ 表記で表されたパラメーターを使用するクエリがサポートされます。パラメーター化された SQL により、ユーザーの入力を堅牢に処理し、流用して、SQL インジェクションによってデータが誤って開示されるリスクを回避することができます。
 
 たとえば、パラメーターとして姓と住所 (都道府県) を使用するクエリを記述し、ユーザーの入力に基づいて、姓と住所 (都道府県) にさまざまな値を指定して実行できます。
@@ -1487,7 +1488,7 @@ LINQ は、計算処理をオブジェクトのストリームに対するクエ
 
 DocumentDB を使用した LINQ クエリ サポートのアーキテクチャは以下の図のようになります。開発者は DocumentDB クライアントを使用して **IQueryable** オブジェクトを作成できます。このオブジェクトが DocumentDB クエリ プロバイダーを直接照会することで、LINQ クエリが DocumentDB クエリに変換されます。次にクエリが DocumentDB サーバーに渡されることで、結果セットが JSON 形式で取得されます。返された結果は、クライアント側で .NET オブジェクトのストリームに逆シリアル化されます。
 
-![][1]
+![DocumentDB を使用した LINQ クエリ サポートのアーキテクチャ][1]
  
 
 
@@ -1603,7 +1604,7 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 		new { first = 1, second = 2 }; //an anonymous type with 2 fields              
 		new int[] { 3, child.grade, 5 };
 
-### クエリ演算子
+### SQL クエリ演算子
 標準 LINQ クエリ演算子が DocumentDB クエリに変換される方法を以下のいくつかの例で示します。
 
 #### Select 演算子
@@ -1692,7 +1693,7 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 	AND f.children[0].grade < 3
 
 
-### 複合クエリ
+### 複合 SQL クエリ
 上記の演算子を組み合わせることで、より強力なクエリを作成できます。DocumentDB は入れ子になったコレクションをサポートするため、連結による複合も入れ子による複合も可能です。
 
 #### 連結 
@@ -1797,8 +1798,8 @@ DocumentDB クエリ プロバイダーは、LINQ クエリから DocumentDB SQL
 	WHERE c.familyName = f.parents[0].familyName
 
 
-## クエリの実行
-DocumentDB が公開するリソースには、HTTP/HTTPS 要求機能を持つ任意の言語から REST API を呼び出すことでアクセスできます。さらに、.NET、Node.js、JavaScript、Python など、いくつかの主要な言語のプログラミング ライブラリも用意されています。REST API と各種のライブラリはすべて SQL 経由のクエリをサポートしています。.NET SDK は SQL に加えて LINQ クエリをサポートしています。
+## SQL クエリの実行
+DocumentDB が公開するリソースには、HTTP/HTTPS 要求機能を持つ任意の言語から REST API を呼び出すことでアクセスできます。さらに、.NET、Node.js、JavaScript、Python など、いくつかの主要な言語のプログラミング ライブラリも DocumentDB に用意されています。REST API と各種のライブラリはすべて SQL 経由のクエリをサポートしています。.NET SDK は SQL に加えて LINQ クエリをサポートしています。
 
 以下の例では、クエリを作成して DocumentDB データベース アカウントに送信する方法について説明します。
 
@@ -2088,4 +2089,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

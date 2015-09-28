@@ -1,3 +1,5 @@
+<!--author=SharS last changed: 9/17/15-->
+
 
 #### StorSimple サービス登録キーを取得するには
 
@@ -19,4 +21,4 @@
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

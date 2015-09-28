@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイスの CHAP の構成 | Microsoft Azure"
-	description="StorSimple デバイスにチャレンジ ハンドシェイク認証プロトコル (CHAP) を構成する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple デバイスにチャレンジ ハンドシェイク認証プロトコル (CHAP) を構成する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="TBD"
-	ms.date="09/01/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="TBD"
+   ms.date="09/15/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスの CHAP の構成
 
@@ -188,6 +188,7 @@ CHAP の構成が正しくない場合、**"認証エラー"** というエラ�
 
 ## 次のステップ
 
-[StorSimple のセキュリティ](storsimple-security.md)の詳細を確認します。
+- [StorSimple のセキュリティの詳細](storsimple-security.md)
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

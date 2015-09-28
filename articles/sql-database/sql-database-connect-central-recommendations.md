@@ -1,24 +1,24 @@
 <properties 
-	pageTitle="SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン"
-	description="ADO.NET および PHP などのテクノロジから Azure SQL Database に接続するクライアント プログラムのリンクおよび推奨事項のまとめが示されている開始ポイントのトピックです。"
-	services="sql-database"
-	documentationCenter=""
-	authors="MightyPen"
-	manager="jeffreyg"
+	pageTitle="SQL Database への接続: ベスト プラクティス | Microsoft Azure" 
+	description="ADO.NET や PHP などのテクノロジから Azure SQL Database に接続するクライアント プログラムのリンクとベスト プラクティスの推奨事項を集めた、開始点となるトピック。" 
+	services="sql-database" 
+	documentationCenter="" 
+	authors="MightyPen" 
+	manager="jeffreyg" 
 	editor=""/>
 
 
 <tags 
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/02/2015"
+	ms.service="sql-database" 
+	ms.workload="data-management" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/15/2015" 
 	ms.author="genemi"/>
 
 
-# SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン
+# SQL Database への接続: ベスト プラクティスと設計のガイドライン
 
 
 このトピックは、Azure SQL Database にクライアント接続を開始するときにお勧めします。ここには、SQL Database に接続して対話的に作業するためのさまざまなテクノロジのコード サンプルへのリンクがあります。これらのテクノロジは、Enterprise Library、JDBC、PHP を含め、その他にもいくつかあります。提供される情報は、SQL Database への接続に使用する特定のテクノロジとは関係なく適用されます。
@@ -75,6 +75,9 @@ SQL Database へのユーザー追加には、以下の選択肢があります�
 
 - [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)で、ポート 1433 の TCP 発信が許可されていることを確認してください。
  - ファィアウォールの設定値は、SQL Database サーバーについて、あるいは個々のデータベースについて構成することができます。
+
+
+- クライアントが Azure 仮想マシン (VM) で実行されるとき、クライアント プログラムが SQL Database V12 に接続する場合、VM でポート範囲の 11000-11999 と 14000-14999 を開く必要があります。詳細については、[ここ](sql-database-develop-direct-route-ports-adonet-v12.md)をクリックしてください。
 
 
 - *一時的エラー*を処理するには、Azure SQL Database と対話するクライアントのプログラムに[*再試行*ロジック](#TransientFaultsAndRetryLogicGm)を追加してください。
@@ -156,7 +159,7 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
 **Elastic Scale:** Elastic Scale データベースへの接続に関する詳細については、次を参照してください。
 
-- [Azure SQL データベース Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
+- [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 - [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
 
 
@@ -164,4 +167,4 @@ Windows、Linux、および Mac OS X で実行するクライアントに使用�
 
 - [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

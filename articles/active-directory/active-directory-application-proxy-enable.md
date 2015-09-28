@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="rkarlin"
-	manager="terrylan"
+	manager="msStevenPo"
 	editor=""/>
 
 <tags
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2015"
+	ms.date="09/09/2015"
 	ms.author="rkarlin"/>
 
 # Azure AD アプリケーション プロキシの有効化
-> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](https://msdn.microsoft.com/library/azure/dn532272.aspx)」をご覧ください。
+> [AZURE.NOTE]アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 Microsoft Azure AD アプリケーション プロキシを使用すると、SharePoint サイト、Outlook Web Access、IIS ベースのアプリなどのアプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供できます。従業員は、自宅から自分のデバイスでアプリケーションにログインし、このクラウド ベースのプロキシを使用して認証を行うことができます。
 
@@ -45,7 +45,7 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 
 
 ##手順 1: Azure AD でのアプリケーション プロキシの有効化
-1. Azure 管理ポータルに管理者としてサインインします。
+1. Microsoft Azure 管理ポータルに管理者としてサインインします。
 2. Active Directory に移動し、アプリケーション プロキシを有効にするディレクトリを選択します。
 3. [構成] をクリックし、下へスクロールして [アプリケーション プロキシ] を表示し、[このディレクトリに対してアプリケーション プロキシ サービスを有効にする] を [有効] に切り替えます。
 
@@ -56,7 +56,7 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 1. 用意したサーバーで AADApplicationProxyConnectorInstaller.exe を実行します (「アプリケーション プロキシの前提条件」を参照してください)。
 2. ウィザードの指示に従ってインストールします。
 3. インストール時に、コネクタをアクティブなアプリケーション プロキシ アカウントに登録するよう求められます。
-<p>Azure AD グローバル管理者の資格情報を指定します。
+<p>Azure AD グローバル管理者の資格情報を指定します。 
 - コネクタを登録する管理者が、アプリケーション プロキシ サービスを有効にしたディレクトリに存在することを確認します。たとえば、テナント ドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他のいずれかのエイリアスであることが必要です。また、Azure AD テナントのグローバル管理者である必要があります。グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なることがあります。
 - Azure AD コネクタをインストールするサーバーで [IE セキュリティ強化の構成] を [オン] に設定している場合、登録画面がブロックされることがあります。その場合は、エラー メッセージに示された指示に従って、アクセスを許可します。Internet Explorer のセキュリティ強化がオフであることを確認してください。
 - コネクタの登録が成功しなかった場合は、「アプリケーション プロキシのトラブルシューティング」を参照してください。
@@ -72,5 +72,6 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 
 * [Azure への組織としてのサインアップ](..sign-up-organization.md)
 * [Azure ID](..fundamentals-identity.md)
+* [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

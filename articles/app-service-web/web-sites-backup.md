@@ -5,15 +5,15 @@
 	documentationCenter="" 
 	authors="cephalin" 
 	manager="wpickett" 
-	editor="mollybos"/>
+	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/03/2015" 
+	ms.date="09/16/2015" 
 	ms.author="cephalin"/>
 
 # Azure App Service での Web アプリのバックアップ
@@ -22,6 +22,8 @@
 [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) のバックアップと復元の機能により、Web アプリのバックアップを手動または自動で簡単に作成できます。Web アプリを以前の状態に復元するか、または元のアプリのいずれかのバックアップに基づいて、新しい Web アプリを作成できます。
 
 Azure Web アプリをバックアップから復元する方法については、[Web アプリの復元](web-sites-restore.md)に関するページをご覧ください。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 <a name="whatsbackedup"></a>
 ## バックアップ対象 
@@ -186,7 +188,7 @@ Web アプリのデータベースのバックアップは、.zip ファイル�
 ## 次のステップ
 Web アプリをバックアップから復元する方法については、「[Azure App Service での Web アプリの復元](web-sites-restore.md)」をご覧ください。
 
-Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト](/pricing/free-trial/)」を参照してください。
+Azure を利用し始めるには、「[Microsoft Azure の無料試用版サイト](/pricing/free-trial/)」を参照してください。
 
 
 <a name="moreaboutstorage"></a>
@@ -220,4 +222,4 @@ Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイ
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

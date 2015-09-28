@@ -1,6 +1,7 @@
 <properties 
-	pageTitle="DocumentDB アカウントの管理 | Microsoft Azure" 
-	description="DocumentDB アカウントの管理方法について説明します。" 
+	pageTitle="Azure プレビュー ポータルを使用して DocumentDB アカウントを管理する | Microsoft Azure" 
+	description="Azure プレビュー ポータルを使用して DocumentDB アカウントを管理する方法Azure プレビュー ポータルを使用してアカウントを表示、コピー、削除、およびアカウントにアクセスする方法について説明したガイドを紹介します。" 
+	keywords="Azure preview portal, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter="" 
 	authors="stephbaron" 
@@ -16,26 +17,26 @@
 	ms.date="07/28/2015" 
 	ms.author="stbaro"/>
 
-#DocumentDB アカウントの管理方法
+# Azure プレビュー ポータルで DocumentDB アカウントを管理する方法
 
-キー、一貫性の設定、およびアカウントの削除方法について説明します。
+Azure プレビュー ポータルで、キーおよび一貫性の設定を操作する方法と、アカウントを削除する方法について説明します。
 
 ## <a id="keys"></a>アクセス キーを表示、コピー、および再生成する
 DocumentDB アカウントを作成すると、2 つのマスター アクセス キーが生成され、DocumentDB アカウントにアクセスする際の認証に使用できます。2 つのアクセス キーが提供されるので、DocumentDB アカウントを中断することなくキーを再生成できます。
 
 [Microsoft Azure プレビュー ポータル](https://portal.azure.com/)で、**[DocumentDB アカウント]** ブレードの **[キー]** パーツにアクセスし、DocumentDB アカウントにアクセスするときに使用するアクセス キーの表示、コピー、再生成を行います。
 
-![](media/documentdb-manage-account/keys.png)
+![Azure プレビュー ポータルのスクリーン ショット、[キー] ブレード](media/documentdb-manage-account/keys.png)
 
-### アクセス キーを表示、およびコピーする
+### Azure プレビュー ポータルでアクセス キーを表示およびコピーする
 
-1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
+1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
 
-2.      **[概要]** レンズで、**[キー]** をクリックします。
+2.      **[概要]** レンズで、**[キー]** をクリックします。
 
-3.      **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。
+3.      **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。
 
-  ![](./media/documentdb-manage-account/image004.jpg)
+  ![Azure プレビュー ポータルの [キー] ブレードでアクセス キーを表示およびコピーする](./media/documentdb-manage-account/image004.jpg)
 
 ### アクセス キーを再生成する
 
@@ -45,17 +46,17 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 
 DocumentDB アカウントを使用するアプリケーションまたはクラウド サービスがある場合、キーを再生成すると、キーを切り替えない限り接続が失われます。次の手順は、キーの切り替えに含まれるプロセスの概要を示します。
 
-1.      DocumentDB アカウントのセカンダリ アクセス キーを参照するように、アプリケーション コードのアクセス キーを更新します。
+1.      DocumentDB アカウントのセカンダリ アクセス キーを参照するように、アプリケーション コードのアクセス キーを更新します。
 
-2.      DocumentDB アカウントのプライマリ アクセス キーを再生成します。[Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
+2.      DocumentDB アカウントのプライマリ アクセス キーを再生成します。[Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
 
-3.      [概要] レンズで、**[キー]** をクリックします。
+3.      [概要] レンズで、**[キー]** をクリックします。
 
-4.      **[キー]** ブレードで、**[プライマリの再生成]** コマンドをクリックしてから **[OK]** をクリックして、新しいキーを再生成することを確認します。
+4.      **[キー]** ブレードで、**[プライマリの再生成]** コマンドをクリックしてから **[OK]** をクリックして、新しいキーを再生成することを確認します。
 
-5.      (再生成してから約 5 分後に) 新しいキーが使用できることを確認したら、新しいプライマリ アクセス キーを参照するようにアプリケーション コードのアクセス キーを更新します。
+5.      (再生成してから約 5 分後に) 新しいキーが使用できることを確認したら、新しいプライマリ アクセス キーを参照するようにアプリケーション コードのアクセス キーを更新します。
 
-6.      セカンダリ アクセス キーを再生成します。
+6.      セカンダリ アクセス キーを再生成します。
 
 *新しく生成されたキーを使用して DocumentDB アカウントにアクセスできるようになるまで、数分かかることがあります。*
 
@@ -74,34 +75,34 @@ DocumentDB では、確かな見通しに基づいて整合性、可用性、待
 
 ### DocumentDB アカウントの既定の整合性を指定するには
 
-1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
+1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。 
 
-2.      **[構成]** レンズで、**[既定の整合性]** をクリックします。
+2.      **[構成]** レンズで、**[既定の整合性]** をクリックします。
 
-3.      **[既定の整合性]** ブレードで、DocumentDB アカウントに設定する既定の整合性レベルを選択します。
+3.      **[既定の整合性]** ブレードで、DocumentDB アカウントに設定する既定の整合性レベルを選択します。
 
-![](./media/documentdb-manage-account/image005.png)
+![既定の整合性セッション](./media/documentdb-manage-account/image005.png)
 
-![](./media/documentdb-manage-account/image006.png)
+![制限付きの既定の整合性](./media/documentdb-manage-account/image006.png)
 
-4.      **[保存]** をクリックします。
+4.      **[保存]** をクリックします。
 
-5.      Azure プレビュー ポータルの通知ハブで、操作の進行状況を監視できます。
+5.      Azure プレビュー ポータルの通知ハブで、操作の進行状況を監視できます。
 
 *DocumentDB アカウントの既定の整合性に加えた変更が有効になるまで、数分かかることがあります。*
 
-## <a id="delete"></a>DocumentDB アカウントを削除する
-使用しなくなった DocumentDB アカウントを削除するには、**[DocumentDB アカウント]** ブレードの **[削除]** コマンドを使用します。
+## <a id="delete"></a>Azure プレビュー ポータルで DocumentDB アカウントを削除する方法
+使用しなくなった DocumentDB アカウントを Azure プレビュー ポータルで削除するには、**[DocumentDB アカウント]** ブレードの **[削除]** コマンドを使用します。
 
-![](./media/documentdb-manage-account/image009.png)
+![Azure プレビュー ポータルで DocumentDB アカウントを削除する方法](./media/documentdb-manage-account/image009.png)
 
-1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、削除する DocumentDB アカウントにアクセスします。 
+1.      [Azure プレビュー ポータル](https://portal.azure.com/)で、削除する DocumentDB アカウントにアクセスします。 
 
-2.      **[DocumentDB アカウント]** ブレードで、**[削除]** コマンドをクリックします。
+2.      **[DocumentDB アカウント]** ブレードで、**[削除]** コマンドをクリックします。
 
-3.      確認ブレードで、DocumentDB アカウント名を入力して、そのアカウントを削除することを確認します。
+3.      確認ブレードで、DocumentDB アカウント名を入力して、そのアカウントを削除することを確認します。
 
-4.      確認ブレードの **[削除]** ボタンをクリックします。
+4.      確認ブレードの **[削除]** ボタンをクリックします。
 
 ## <a id="next"></a>次のステップ
 
@@ -112,4 +113,4 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
  
  
 
-<!----HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

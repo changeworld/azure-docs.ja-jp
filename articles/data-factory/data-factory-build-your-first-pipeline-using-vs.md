@@ -37,7 +37,9 @@
 
 ### 前提条件
 
-コンピューターに Visual Studio 2013 がインストールされており、Azure SDK for Visual Studio 2013 がダウンロードされている必要があります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
+コンピューターに:
+- Visual Studio 2013
+- がインストールされており、Azure SDK for Visual Studio 2013 がダウンロードされている必要があります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
 
 
 ### Visual Studio プロジェクトの作成 
@@ -82,7 +84,7 @@
 		    "typeProperties": {
 		      "version": "3.1",
 		      "clusterSize": 1,
-		      "timeToLive": "00:05:00",
+		      "timeToLive": "00:30:00",
 		      "linkedServiceName": "AzureStorageLinkedService1"
 		    }
 		  }
@@ -235,4 +237,4 @@ Azure プレビュー ポータルを使用して、このチュートリアル�
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-vs.md)でフィードバックをお寄せください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

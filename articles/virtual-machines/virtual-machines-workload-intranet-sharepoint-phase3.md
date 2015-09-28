@@ -11,7 +11,7 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows-sharepoint"
+	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/21/2015"
@@ -19,9 +19,13 @@
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 3: SQL Server インフラストラクチャの構成
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、サービス管理で 2 台の SQL Server コンピューターとクラスター マジョリティ ノード コンピューターを作成および構成し、Windows Server クラスターに統合します。
 
 [フェーズ 4](virtual-machines-workload-intranet-sharepoint-phase4.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Deploying SharePoint with SQL Server AlwaysOn Availability Groups in Azure (Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ)](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
+
+> [AZURE.NOTE]次の手順では、Azure イメージ ギャラリーの SQL Server イメージを使用するため、SQL Server のライセンスを使用するための継続的な費用が発生します。Azure で仮想マシンを作成し、独自の SQL Server のライセンスをインストールすることもできますが、Azure 仮想マシンを含む、仮想マシンで SQL Server のライセンスを使用するには、ソフトウェア アシュアランスおよびライセンス モビリティが必要になります。仮想マシンでの SQL Server のインストールの詳細については、「[SQL Server 2014 のインストール](https://msdn.microsoft.com/library/bb500469.aspx)」を参照してください。
 
 ## Azure での SQL Server クラスターの仮想マシンの作成
 
@@ -193,7 +197,7 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 
 ## AlwaysOn 可用性グループの有効化
 
-次に、SQL Server 構成マネージャーを使用して、AlwaysOn 可用性グループを有効にします。SQL Server の可用性グループは、Azure 可用性セットとは異なります。可用性グループには、可用性が高く回復可能なデータベースが含まれます。Azure 可用性セットでは、さまざまな障害ドメインに仮想マシンを割り当てます。障害ドメインの詳細については、「[仮想マシンの可用性管理](virtual-machines-manage-availability.md)」をご覧ください。
+次に、SQL Server 構成マネージャーを使用して、AlwaysOn 可用性グループを有効にします。SQL Server の可用性グループは、Azure 可用性セットとは異なります。可用性グループには、可用性が高く回復可能なデータベースが含まれます。Azure 可用性セットでは、さまざまな障害ドメインに仮想マシンを割り当てます。障害ドメインの詳細については、「[Virtual Machines の可用性管理](virtual-machines-manage-availability.md)」をご覧ください。
 
 SQL Server の AlwaysOn 可用性グループを有効にするには、次の手順に従います。
 
@@ -228,4 +232,4 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

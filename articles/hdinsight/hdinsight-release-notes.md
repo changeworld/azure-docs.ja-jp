@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/09/2015"
+	ms.date="09/15/2015"
 	ms.author="nitinme"/>
 
 
@@ -1153,9 +1153,7 @@ Azure PowerShell または HDInsight SDK とクラスター間でのバージョ
 このリリースには、以下のように、HDInsight サービスの拡張機能が含まれています。
 
 * **HDP 2.1 が使用可能**: HDP 2.1 が含まれる HDInsight 3.1 が一般に使用可能となり、新しいクラスターの既定のバージョンになりました。
-* **HBase - Azure ポータルの改良**: HBase クラスターがプレビューで使用可能になりました。ポータルで 3 回クリックするだけで HBase クラスターが作成できます。
-
-![](http://i.imgur.com/cmOl5fM.png)
+* **HBase - Azure ポータルの改良**: HBase クラスターがプレビューで使用可能になりました。ポータルで数回クリックするだけで HBase クラスターが作成できます。 
 
 HBase を使用すると、大規模なデータセットを処理する対話的な Web サイトから、何百万ものエンド ポイントからのセンサーのデータやテレメトリ データを格納するサービスまで、さまざまなリアルタイムのワークロードを HDInsight で構築できます。次の手順としては Hadoop ジョブでこれらのワークロードのデータを分析しますが、これは Azure PowerShell や Hive クラスター ダッシュボードを使用した HDInsight で実現可能です。
 
@@ -1348,4 +1346,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

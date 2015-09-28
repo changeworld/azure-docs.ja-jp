@@ -10,7 +10,7 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows-sharepoint"
+	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/07/2015"
@@ -18,6 +18,8 @@
 
 
 # SharePoint サーバー ファームの構成の詳細
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 SharePoint サーバー ファームは、事前構成された SharePoint Server 2013 ファームを自動で作成する Azure プレビュー ポータルの機能です。ファームの構成には次の 2 種類があります。
 
@@ -129,7 +131,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 
 ## Azure リソース マネージャー
 
-Azure プレビュー ポータルの SharePoint サーバー ファーム機能は、サービス管理内で仮想マシンを作成します。Azure リソース マネージャーで SharePoint Server 2013 ファームを作成するには、「[Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ](virtual-machines-workload-template-sharepoint.md)」を参照してください。
+Azure プレビュー ポータルの SharePoint サーバー ファーム機能は、サービス管理内で仮想マシンを作成します。Azure リソース マネージャーで SharePoint Server 2013 ファームを作成する場合は、「[Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ](virtual-machines-workload-template-sharepoint.md)」を参照してください。
 
 ## その他のリソース
 
@@ -139,4 +141,4 @@ Azure プレビュー ポータルの SharePoint サーバー ファーム機能
 
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

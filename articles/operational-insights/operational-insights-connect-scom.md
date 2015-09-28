@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/06/2015"
+   ms.date="09/10/2015"
    ms.author="lauracr"/>
 
 # System Center Operations Manager からオペレーション インサイトに接続する
@@ -46,4 +46,4 @@ Operations Manager を使用して、次のワークロードのいずれかを�
 
 [プロキシとファイアウォール設定の構成 (省略可能)](operational-insights-proxy-firewall.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

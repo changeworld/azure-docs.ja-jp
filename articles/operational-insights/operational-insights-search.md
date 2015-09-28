@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="07/21/2015"
+   ms.date="09/10/2015"
    ms.author="banders" />
 
 # Operational Insights でデータを検索する
@@ -451,7 +451,7 @@ Type=PerfHourly  CounterName="% Processor Time"  InstanceName="_Total" | Measure
 
 Microsoft System Center の Operations Manager に慣れている場合、Where コマンドは管理パック用語と考えることができます。上記の例をルールであるとみなすと、クエリの最初の部分はデータ ソースになり、Where コマンドは条件の検出にあたります。
 
-クエリは、**[マイ ダッシュボード]** のタイルとして、コンピューターの CPU が過剰に使用されたときに確認するためのある種のモニターとして使用できます。ダッシュボードの詳細については、「[Operational Insights ダッシュボード](operational-insights-use-dashboards)」を参照してください。ダッシュボードは、モバイル アプリで作成して使用することもできます。詳細については、「[Azure Operational Insights モバイル アプリ](http://www.windowsphone.com/ja-jp/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865)」を参照してください。次の図の下部にある 2 つのタイルに、モニターが一覧と数値で表示されていることがわかります。基本的には、数値はゼロであり、一覧は空であることが望まれます。そうでない場合は、アラート状態であることを示しています。必要に応じて、どのコンピューターに負荷がかかっているかを調べることができます。
+クエリは、**[マイ ダッシュボード]** のタイルとして、コンピューターの CPU が過剰に使用されたときに確認するためのある種のモニターとして使用できます。ダッシュボードの詳細については、「[Operational Insights ダッシュボード](operational-insights-use-dashboards)」を参照してください。ダッシュボードは、モバイル アプリで作成して使用することもできます。詳細については、「[Azure Operational Insights モバイル アプリ](http://www.windowsphone.com/ja-JP/store/app/operational-insights/4823b935-83ce-466c-82bb-bd0a3f58d865)」を参照してください。次の図の下部にある 2 つのタイルに、モニターが一覧と数値で表示されていることがわかります。基本的には、数値はゼロであり、一覧は空であることが望まれます。そうでない場合は、アラート状態であることを示しています。必要に応じて、どのコンピューターに負荷がかかっているかを調べることができます。
 
 ![モバイル ダッシュボード](./media/operational-insights-search/search-mobile.png)
 
@@ -615,7 +615,7 @@ Operational Insights のタイムライン グラフ/タイムセレクターは
 次の表は、サポートされる日付/時刻の単位を一覧表示しています。
 
 日付と時刻の単位|説明
----|--- 
+---|---
 YEAR、YEARS|現在の年に丸めるか、指定された年数分オフセットします。
 MONTH、MONTHS|現在の月に丸めるか、指定された月数分オフセットします。
 DAY、DAYS、DATE|現在の日に丸めるか、指定された日数分オフセットします。
@@ -2049,4 +2049,4 @@ PerfHourly を ObjectId によってグループ化し、平均 (avg) を計算�
 ## その他のリソース
 Stefan Roth が、使いやすい検索チート シートを作成しています。詳しくは彼の[ブログ](http://stefanroth.net/2014/11/05/microsoft-azure-operational-insights-search-data-explorer-cheat-sheet/)を参照してください。チート シートをダウンロードできます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

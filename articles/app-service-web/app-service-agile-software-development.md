@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure App Service を使用したアジャイル ソフトウェア開発"
 	description="アジャイル ソフトウェア開発をサポートする方法で Azure App Service を使用して拡張性の高い複雑なアプリケーションを開発する方法について説明します。"
-	services="app-service\web"
+	services="app-service\web,app-service\api,app-service\mobile"
 	documentationCenter=""
 	authors="cephalin"
 	manager="wpickett"
@@ -32,6 +32,8 @@
 | - 運用環境のクローン内でテストを実行する | Azure リソース マネージャー テンプレートを使用して、テストを迅速かつ予想どおりに実行するための (アプリの設定、接続文字列テンプレート、スケーリングなどを含む) Azure 運用環境のクローンを作成できます。|
 | - 最新のビルドの結果を容易に表示する | リポジトリから Azure への継続的デプロイは、新しいコードを、変更をコミットしたすぐ後でライブ アプリケーションでテストできることを意味します。 |
 | - メイン ブランチに毎日コミットする<br>- デプロイを自動化する | 実稼働アプリケーションとリポジトリのメイン ブランチとの継続的インテグレーションによって、すべてのコミット/マージを運用環境のメイン ブランチに自動的にデプロイします。 |
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 学習内容 ##
 
@@ -174,7 +176,7 @@ ProdAndStage.json テンプレート ファイルと Dev.json テンプレート
 
 		git checkout Dev
 
-2.	[ブートストラップ](http://getbootstrap.com/components/) リストを使用するようにコードを変更することで、アプリの UI レイヤーに簡単な変更を加えます。*&lt;repository\_root>*\\src\\MultiChannelToDo.Web\\app\\index.cshtml を開き、次の図で強調表示されているように変更します。
+2.	[ブートストラップ](http://getbootstrap.com/components/) リストを使用するようにコードを変更することで、アプリの UI レイヤーに簡単な変更を加えます。*&lt;repository\_root>*\\src\\MultiChannelToDo.Web\\index.cshtml を開き、次の図で強調表示されているように変更します。
 
 	![](./media/app-service-agile-software-development/commit-1-changes.png)
 
@@ -266,7 +268,7 @@ Git Shell で、次のコマンドを実行します。
 
 ## その他のリソース ##
 
--	[Azure で複雑なアプリケーションを予測どおりに展開する](app-service-deploy-complex-application-predictably.md)
+-	[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
 -	[Agile Development in Practice: Tips and Tricks for Modernized Development Cycle (アジャイル開発の実践: 最新の開発サイクルのためのヒント)](http://channel9.msdn.com/Events/Ignite/2015/BRK3707)
 -	[Advanced deployment strategies for Azure Web Apps using Resource Manager templates (Resource Manager テンプレートを使用した Azure Web Apps 向けの高度なデプロイ戦略)](http://channel9.msdn.com/Events/Build/2015/2-620)
 -	[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
@@ -279,4 +281,4 @@ Git Shell で、次のコマンドを実行します。
 -	[Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

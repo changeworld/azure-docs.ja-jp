@@ -11,13 +11,15 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows"
+	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/23/2015"
 	ms.author="josephd"/>
 
 # Azure リソース マネージャーでの基本構成テスト環境
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。また、[クラシック デプロイメント モデル](virtual-machines-base-configuration-test-environment.md)を使用してリソースを作成することもできます。
 
 この記事では、リソース マネージャーで作成された仮想マシンコンピューターを使用し、Microsoft Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
 
@@ -48,20 +50,15 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 3.	APP1 を構成する。
 4.	CLIENT1 を構成する。
 
-まだ Azure アカウントがない場合は、[こちら](http://azure.microsoft.com/pricing/free-trial/)から無料評価版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+まだ Azure アカウントがない場合は、[こちら](http://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
-> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料評価版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines 料金](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 料金計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
-
-[AZURE.INCLUDE [resource-manager-pointer-to-service-management](../../includes/resource-manager-pointer-to-service-management.md)]
-
-- [基本構成テスト環境](virtual-machines-base-configuration-test-environment.md)
-
+> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines 料金](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 料金計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
 
 ## フェーズ 1: 仮想ネットワークを作成する
 
 最初に、必要であれば、「[Azure PowerShell のインストールと構成方法](../install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。Azure PowerShell プロンプトを開きます。
 
-次に、以下のコマンドで、適切な Azure サブスクリプションを選択します。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
+次に、以下のコマンドで、適切な Azure サブスクリプションを選択します。引用符内のすべての文字 (< and > を含む) を正しい名前に置き換えます。
 
 	$subscr="<Subscription name>"
 	Select-AzureSubscription -SubscriptionName $subscr –Current
@@ -291,7 +288,7 @@ CLIENT1 が再起動した後、CORP\\User1 のアカウント名とパスワー
 4.	スタート画面で、**[Internet Explorer]** をクリックして、**[OK]** をクリックします。
 5.	アドレス バーに「****http://app1.corp.contoso.com/**」と入力し、Enter キーを押します。APP1 の既定のインターネット インフォメーション サービス Web ページが表示されます。
 6.	デスクトップのタスク バーからエクスプローラー アイコンをクリックします。
-7.	アドレス バーに「**\\\\app1\\Files**」と入力し、Enter キーを押します。
+7.	アドレス バーに「**\\\app1\\Files**」と入力し、Enter キーを押します。
 8.	フォルダー ウィンドウに、Files 共有フォルダー内容が表示されます。
 9.	**[Files]** 共有フォルダー ウィンドウで、**Example.txt** ファイルをダブルクリックします。Example.txt ファイルの内容が表示されます。
 10.	**[example.txt - メモ帳]** ウィンドウと **[Files]** 共有フォルダー ウィンドウを閉じます。
@@ -336,4 +333,4 @@ Azure PowerShell で仮想マシンを順番に起動するには、リソース
 	Start-AzureVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

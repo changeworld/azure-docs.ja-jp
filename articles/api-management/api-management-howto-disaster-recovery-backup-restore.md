@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.date="09/15/2015" 
 	ms.author="sdanie"/>
 
 # Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法
@@ -28,7 +28,7 @@ API Management サービスがホストされているリージョンに影響�
 
 ## Azure リソース マネージャーの要求の認証
 
->[AZURE.IMPORTANT]バックアップと復元用の REST API では、Azure リソース マネージャーが使用されます。API Management のエンティティ管理には REST API 以外の認証メカニズムも用意されています。このセクションの手順では、Azure リソース マネージャーの要求を認証する方法について説明します。詳細については、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/dn790557.aspx)」を参照してください。
+>[AZURE.IMPORTANT]バックアップと復元用の REST API では、Azure リソース マネージャーが使用されます。API Management のエンティティ管理には REST API 以外の認証メカニズムも用意されています。このセクションの手順では、Azure リソース マネージャーの要求を認証する方法について説明します。詳細については、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」を参照してください。
 
 Azure リソース マネージャーを使用してリソースに実行するすべてのタスクは、Azure Active Directory で以下の手順に従って認証する必要があります。
 
@@ -189,4 +189,4 @@ API Management サービスをバックアップするには、次の HTTP 要�
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

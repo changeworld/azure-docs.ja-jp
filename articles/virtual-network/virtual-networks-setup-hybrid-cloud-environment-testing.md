@@ -1,23 +1,25 @@
 <properties 
-	pageTitle="ハイブリッド クラウドのテスト環境 | Microsoft Azure"
-	description="シンプル化されたオンプレミス ネットワークを含む、IT プロまたは開発のテスト用のハイブリッド クラウド環境を作成する方法について説明します。"
-	services="virtual-network"
-	documentationCenter=""
-	authors="JoeDavies-MSFT"
-	manager="timlt"
+	pageTitle="ハイブリッド クラウドのテスト環境 | Microsoft Azure" 
+	description="シンプル化されたオンプレミス ネットワークを含む、IT プロまたは開発のテスト用のハイブリッド クラウド環境を作成する方法について説明します。" 
+	services="virtual-network" 
+	documentationCenter="" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
 	editor=""
 	tags="azure-service-management"/>
 
 <tags 
-	ms.service="virtual-network"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/08/2015"
+	ms.service="virtual-network" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="Windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/10/2015" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウド環境の設定
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 このトピックでは、Microsoft Azure でテスト用のハイブリッド クラウド環境を作成する手順について説明します。完成すると次のような構成になります。
 
@@ -57,8 +59,8 @@ Azure サブスクリプションをまだ取得していない場合は、[Azur
 
 	New-ADReplicationSite -Name "TestLab" 
 	New-ADReplicationSite -Name "TestVNET"
-	New-ADReplicationSubnet –Name "10.0.0.0/8" –Site "TestLab"
-	New-ADReplicationSubnet –Name "192.168.0.0/16" –Site "TestVNET
+	New-ADReplicationSubnet “Name "10.0.0.0/8" “Site "TestLab"
+	New-ADReplicationSubnet “Name "192.168.0.0/16" “Site "TestVNET
 
 現在の構成は次のようになります。
 
@@ -85,15 +87,15 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
 	$publicIPpreflength=<Prefix length of your public IP address>
 	[IPAddress]$publicDG="<Your ISP default gateway>"
 	[IPAddress]$publicDNS="<Your ISP DNS server(s)>"
-	Rename-NetAdapter –Name $corpnetAdapterName –NewName Corpnet
-	Rename-NetAdapter –Name $internetAdapterName –NewName Internet
-	New-NetIPAddress -InterfaceAlias "Internet" -IPAddress $publicIP -PrefixLength $publicIPpreflength –DefaultGateway $publicDG
+	Rename-NetAdapter -Name $corpnetAdapterName -NewName Corpnet
+	Rename-NetAdapter -Name $internetAdapterName -NewName Internet
+	New-NetIPAddress -InterfaceAlias "Internet" -IPAddress $publicIP -PrefixLength $publicIPpreflength “DefaultGateway $publicDG
 	Set-DnsClientServerAddress -InterfaceAlias Internet -ServerAddresses $publicDNS
 	New-NetIPAddress -InterfaceAlias "Corpnet" -IPAddress 10.0.0.2 -AddressFamily IPv4 -PrefixLength 24
 	Set-DnsClientServerAddress -InterfaceAlias "Corpnet" -ServerAddresses 10.0.0.1
 	Set-DnsClient -InterfaceAlias "Corpnet" -ConnectionSpecificSuffix corp.contoso.com
-	New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
-	New-NetFirewallRule –DisplayName “Allow ICMPv4-Out” –Protocol ICMPv4 –Direction Outbound
+	New-NetFirewallRule -DisplayName "Allow ICMPv4-Input" -Protocol ICMPv4
+	New-NetFirewallRule -DisplayName "Allow ICMPv4-Output" -Protocol ICMPv4 -Direction Outbound
 	Disable-NetAdapterBinding -Name "Internet" -ComponentID ms_msclient
 	Disable-NetAdapterBinding -Name "Internet" -ComponentID ms_server
 	ping dc1.corp.contoso.com
@@ -104,12 +106,12 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
 
 ![](./media/virtual-networks-setup-hybrid-cloud-environment-testing/CreateHybridCloudVNet_2.png)
 
-## フェーズ 3: クロスプレミスの Azure 仮想ネットワークを作成する
+## フェーズ 3: クロスプレミスの Azure Virtual Network を作成する
 
-まず、Azure サブスクリプションの資格情報を使用して [Azure 管理ポータル](https://manage.windowsazure.com/)にログオンし、TestVNET という名前の仮想ネットワークを作成します。
+まず、Azure サブスクリプションの資格情報を使用して [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)にログオンし、TestVNET という名前の仮想ネットワークを作成します。
 
-1.	Azure 管理ポータルのタスク バーで、**[新規]、[ネットワーク サービス]、[仮想ネットワーク]、[カスタム作成]** の順にクリックします。
-2.	[仮想ネットワークの詳細] ページで、**[名前]** に「**TestVNET**」と入力します。
+1.	Microsoft Azure 管理ポータルのタスク バーで、**[新規]、[Network Service]、[Virtual Network]、[カスタム作成]** の順にクリックします。
+2.	[Virtual Network の詳細] ページで、**[名前]** に「**TestVNET**」と入力します。
 3.	**[場所]** で、現在の場所に該当するデータセンターを選択します。
 4.	次へ進む矢印をクリックします。
 5.	[DNS サーバーおよび VPN 接続] ページの **[DNS サーバー]** で、**[名前の選択または入力]** に「**DC1**」、**[IP アドレス]** に「**10.0.0.1**」と入力し、**[サイト間 VPN の構成]** を選択します。
@@ -120,7 +122,7 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
 	- **[VPN デバイスの IP アドレス]** に、RRAS1 のインターネット用インターフェイスに割り当てられたパブリック IP アドレスを入力します。
 	- **[アドレス空間]** の **[開始 IP]** 列に、「**10.0.0.0**」と入力します。**[CIDR (アドレス数)]** で、**[/8]** を選択し、**[アドレス空間の追加]** をクリックします。
 9.	次へ進む矢印をクリックします。
-10.	[仮想ネットワーク アドレス空間] ページで、次の内容を構成します。
+10.	[Virtual Network アドレス空間] ページで、次の内容を構成します。
 	- **[アドレス空間]** の **[開始 IP]** で、**[192.168.0.0]** を選択します。
 	- **[サブネット]** で、**[Subnet-1]** をクリックし、名前を「**TestSubnet**」に変更します。 
 	- TestSubnet の **[CIDR (アドレス数)]** 列で、**[/24 (256)]** をクリックします。
@@ -129,7 +131,7 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
 
 次に、「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします
 
-次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、"TestVNET-*UniqueSequence*" という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに TestVNET-Tailspin という名前を付けることができます。
+次に、TestVNET 仮想ネットワークの新しいクラウド サービスを作成します。一意の名前を選ぶ必要があります。たとえば、*TestVNET-UniqueSequence* という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに TestVNET-Tailspin という名前を付けることができます。
 
 名前が一意かどうかは、ローカル コンピューターで次の Azure PowerShell コマンドを使用することで確認できます。
 
@@ -157,7 +159,7 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
 
 まず、仮想ネットワーク ゲートウェイを作成します。
 
-1.	ローカル コンピューターで Azure 管理ポータルから左側のウィンドウの **[ネットワーク]** をクリックし、TestVNET の **[状態]** 列が **[作成済み]** に設定されていることを確認します。
+1.	ローカル コンピューターで Microsoft Azure 管理ポータルから左側のウィンドウの **[ネットワーク]** をクリックし、TestVNET の **[状態]** 列が **[作成済み]** に設定されていることを確認します。
 2.	**[TestVNET]** をクリックします。[ダッシュボード] ページに、**"ゲートウェイが作成されていません"** という状態が表示されます。
 3.	タスク バーで **[ゲートウェイの作成]** をクリックし、**[動的ルーティング]** をクリックします。確認を求めるメッセージが表示されたら、**[はい]** をクリックします。ゲートウェイが作成され、ゲートウェイの状態が **"接続中"** に変わるまで待ちます。この処理には数分かかります。
 4.	[ダッシュボード] ページで、**[ゲートウェイ IP アドレス]** の値をメモします。これは、TestVNET 仮想ネットワーク用の Azure VPN ゲートウェイのパブリック IP アドレスです。この IP アドレスは、RRAS1 を構成する際に必要になります。
@@ -180,7 +182,7 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
 	New-ItemProperty -Path HKLM:\System\CurrentControlSet\Services\RemoteAccess\Parameters\IKEV2 -Name SkipConfigPayload -PropertyType DWord -Value 1
 	Restart-Service RemoteAccess
 
-次に、ローカル コンピューターで Azure 管理ポータルにアクセスし、TestVNET 仮想ネットワークの状態が **"接続中"** と表示されるまで待ちます。
+次に、ローカル コンピューターで Microsoft Azure 管理ポータルにアクセスし、TestVNET 仮想ネットワークの状態が **"接続中"** と表示されるまで待ちます。
 
 続いて、インターネット上の場所への変換されたトラフィックをサポートするように RRAS1 を構成します。RRAS1 で:
 
@@ -197,14 +199,14 @@ RRAS1 で管理者レベルの Windows PowerShell コマンド プロンプト�
  
 DC1 で管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
 
-	New-NetRoute –DestinationPrefix "0.0.0.0/0" –InterfaceAlias "Ethernet" –NextHop 10.0.0.2
-	Set-DhcpServerv4OptionValue –Router 10.0.0.2
+	New-NetRoute -DestinationPrefix "0.0.0.0/0" -InterfaceAlias "Ethernet" -NextHop 10.0.0.2
+	Set-DhcpServerv4OptionValue -Router 10.0.0.2
 
 インターフェイスの名前が "イーサネット" でない場合は、**Get-NetAdapter** コマンドを使用して、インターフェイスの名前を特定してください。
 
 APP1 で管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
 
-	New-NetRoute –DestinationPrefix "0.0.0.0/0" –InterfaceAlias "Ethernet" –NextHop 10.0.0.2
+	New-NetRoute -DestinationPrefix "0.0.0.0/0" -InterfaceAlias "Ethernet" -NextHop 10.0.0.2
 
 CLIENT1 で管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
 
@@ -223,23 +225,23 @@ CLIENT1 で管理者レベルの Windows PowerShell コマンド プロンプト
 	$ServiceName="<Your cloud service name from Phase 3>"
 	$image = Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name DC2 -InstanceSize Medium -ImageName $image
-	$cred=Get-Credential –Message "Type the name and password of the local administrator account for DC2."
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for DC2."
 	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password 
 	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $LocalAdminName -Password $LocalAdminPW	
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
 	$vm1 | Set-AzureStaticVNetIP -IPAddress 192.168.0.4
-	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 20 -DiskLabel ADFiles –LUN 0 -HostCaching None
-	New-AzureVM –ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
+	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 20 -DiskLabel ADFiles -LUN 0 -HostCaching None
+	New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
 
 次に、新しい DC2 仮想マシンにログオンします。
 
-1.	Azure 管理ポータルの左側のウィンドウで、**[仮想マシン]** をクリックし、DC2 の **[状態]** 列で **[実行中]** をクリックします。
+1.	Microsoft Azure 管理ポータルの左側のウィンドウで、**[Virtual Machines]** をクリックし、DC2 の **[状態]** 列で **[実行中]** をクリックします。
 2.	タスク バーで、**[接続]** をクリックします。 
 3.	DC2.rdp を開くよう求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
 5.	資格情報の入力を求められたら、次の情報を使用します。
-	- 名前: **DC2**[ローカル管理者アカウントの名前]
+	- 名前: **DC2\**[ローカル管理者アカウントの名前]
 	- パスワード: [ローカル管理者アカウントのパスワード]
 6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
 
@@ -272,12 +274,12 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 これで TestVNET 仮想ネットワーク独自の DNS サーバー (DC2) が設定されたので、この DNS サーバーを使用するように TestVNET 仮想ネットワークを構成する必要があります。
 
-1.	Azure 管理ポータルの左側のウィンドウで、**[ネットワーク]** をクリックし、**[TestVNET]** をクリックします。
+1.	Microsoft Azure 管理ポータルの左側のウィンドウで、**[ネットワーク]** をクリックし、**[TestVNET]** をクリックします。
 2.	**[構成]** をクリックします。
 3.	**[DNS サーバー]** で、**10.0.0.1** のエントリを削除します。
 4.	**[DNS サーバー]** で、名前が **DC2** で、IP アドレスが **192.168.0.4** のエントリを追加します。 
 5.	下部にあるコマンド バーで、**[保存]** をクリックします。
-6.	Azure 管理ポータルの左側のウィンドウで、**[仮想マシン]** をクリックし、DC2 の横の **[状態]** 列をクリックします。
+6.	Microsoft Azure 管理ポータルの左側のウィンドウで、**[Virtual Machines]** をクリックし、DC2 の横の **[状態]** 列をクリックします。
 7.	コマンド バーで **[再起動]** をクリックします。DC2 が再起動するのを待ちます。
 
 
@@ -308,12 +310,12 @@ CORP\\User1 のパスワードとディレクトリ サービス復元モード 
 
 Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンとして実装されており、継続的な費用が発生します。詳細については、[Virtual Network 料金](http://azure.microsoft.com/pricing/details/virtual-network/)に関するページを参照してください。VPN ゲートウェイの費用を最小限に抑えるためには、テスト環境を作成し、できる限り迅速に必要なテストとデモンストレーションを行うか、次の手順でゲートウェイを削除します。
 
-1.	ローカル コンピューターで Azure 管理ポータルから左側のウィンドウの **[ネットワーク]**、**[TestVNET]**、**[ダッシュボード]** の順にクリックします。
+1.	ローカル コンピューターで Microsoft Azure 管理ポータルから左側のウィンドウの **[ネットワーク]**、**[TestVNET]**、**[ダッシュボード]** の順にクリックします。
 2.	タスク バーで **[ゲートウェイの削除]** をクリックします。確認を求めるメッセージが表示されたら、**[はい]** をクリックします。ゲートウェイが削除され、ゲートウェイの状態が **[ゲートウェイは作成されませんでした]** に変わるまで待ちます。
 
 ゲートウェイを削除した後で、このテスト環境を復元する場合は、まず新しいゲートウェイを作成する必要があります。
 
-1.	ローカル コンピューターで Azure 管理ポータルから左側のウィンドウの **[ネットワーク]** をクリックし、**[TestVNET]** をクリックします。[ダッシュボード] ページに、**"ゲートウェイは作成されませんでした"** という状態が表示されます。
+1.	ローカル コンピューターで Microsoft Azure 管理ポータルから左側のウィンドウの **[ネットワーク]** をクリックし、**[TestVNET]** をクリックします。[ダッシュボード] ページに、**"ゲートウェイは作成されませんでした"** という状態が表示されます。
 2.	タスク バーで **[ゲートウェイの作成]** をクリックし、**[動的ルーティング]** をクリックします。確認を求めるメッセージが表示されたら、**[はい]** をクリックします。ゲートウェイが作成され、ゲートウェイの状態が **"接続中"** に変わるまで待ちます。この処理には数分かかります。
 3.	[ダッシュボード] ページで、**[ゲートウェイ IP アドレス]** の値をメモします。これは、TestVNET 仮想ネットワーク用の Azure VPN ゲートウェイの新しいパブリック IP アドレスです。この IP アドレスは、RRAS1 を再構成する際に必要になります。
 4.	タスク バーで、**[キーの管理]** をクリックし、キーの横にあるコピー アイコンをクリックして、クリップボードにコピーします。このキーの値をドキュメントに貼り付けて保存します。このキー値は、RRAS1 を再構成する際に必要になります。 
@@ -323,7 +325,7 @@ Azure VPN ゲートウェイは、2 台 1 組みの Azure の仮想マシンと�
 	$PresharedKey="<Key value>"
 	Set-VpnS2SInterface -Name S2StoTestVNET -Destination "<IP address of the Azure VPN gateway>" -SharedSecret $PresharedKey
 
-次に、ローカル コンピューターで Azure 管理ポータルにアクセスし、TestVNET 仮想ネットワークの状態が [接続中] と表示されるまで待ちます。
+次に、ローカル コンピューターで Microsoft Azure 管理ポータルにアクセスし、TestVNET 仮想ネットワークの状態が [接続中] と表示されるまで待ちます。
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

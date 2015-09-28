@@ -1,5 +1,5 @@
 <properties
-	pageTitle="アプリ モデル v2.0 | Microsoft Azure"
+	pageTitle="アプリ モデル v2.0 の概要 | Microsoft Azure"
 	description="Microsoft アカウントと Azure Active Directory の両方でサインインできるアプリケーション構築を紹介します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="09/11/2015"
 	ms.author="dastrock"/>
 
 # アプリ モデル v2.0 プレビュー: Microsoft アカウント ユーザーおよび Azure AD ユーザーによる単一アプリでのサインイン
@@ -29,7 +29,7 @@
 v2.0 のアプリ モデルはプレビュー期間中です。プレビュー期間中は、新しいアプリ モデルに関する皆様のフィードバックや感想をお聞かせください。フィードバックに基づいて、サービス向上のために、大幅な変更を加える場合があります。この期間中は、v2.0 のアプリ モデルで実稼働アプリケーションをリリースしないようにしてください。
 <!-- TODO: Get approval on how it looks  -->
 
-## 作業の開始
+## 使用の開始
 v2.0 のアプリ モデルを使用して、ご自分のアプリケーションを稼働する方法は 2 つあります。[OAuth 2.0](active-directory-v2-protocols.md#oauth2-authorization-code-flow) または [Open ID Connect](active-directory-v2-protocols.md#openid-connect-sign-in-flow) を使用して、プロトコル メッセージを直接送信することができます。または、Microsoft のライブラリを使用することもできます。次の中からお好みのプラットフォームを選択して、作業を開始してください。
 <!-- TODO: Finalize this table  -->
 
@@ -57,4 +57,4 @@ v2.0 のアプリ モデルを使用して、ご自分のアプリケーショ�
 - [v2 Endpoint FAQs](active-directory-v2-faq.md)
 -->
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

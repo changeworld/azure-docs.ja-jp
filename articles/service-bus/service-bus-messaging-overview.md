@@ -50,9 +50,10 @@ Service Bus の仲介型メッセージング インフラストラクチャの�
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
 - [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
-- [Azure Service Bus アーキテクチャの概要](service-bus-fundamentals-hybrid-solutions.md)
+- [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
+- [Service Bus のアーキテクチャ](service-bus-architecture.md)
 - [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
 - [How to use Service Bus Topics (Service Bus トピックの利用方法)](service-bus-dotnet-how-to-use-topics-subscriptions.md)
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

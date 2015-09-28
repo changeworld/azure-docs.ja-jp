@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="StorSimple デバイスの構成の変更 |Microsoft Azure"
-	description="StorSimple Manager サービスを使用して、デプロイ済みの StorSimple デバイスを再構成する方法について説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   pageTitle="StorSimple デバイスの構成の変更 |Microsoft Azure" 
+   description="StorSimple Manager サービスを使用して、デプロイ済みの StorSimple デバイスを再構成する方法について説明します。" 
+   services="storsimple" 
+   documentationCenter="NA" 
+   authors="SharS" 
+   manager="carolz" 
+   editor=""/>
 
 <tags
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/14/2015"
-	ms.author="v-sharos@microsoft.com"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD" 
+   ms.date="09/15/2015"
+   ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple Manager サービスを使用した StorSimple デバイス構成の変更
 
@@ -83,7 +83,7 @@ StorSimple 8000 シリーズ Update 1 では、DATA 0 のルーティング メ�
 
 - **速度** - ユーザーが設定可能なパラメーターではありません。DATA 0、DATA 1、DATA 4、DATA 5 は常に 1 GbE インターフェイスですが、DATA 2 と DATA 3 は 10 GbE インターフェイスです。
 
-     >[AZURE.NOTE] 速度と二重化は常に自動ネゴシエーションが行われます。 Jumbo Frame はサポートされません。
+     >[AZURE.NOTE]速度と二重通信形式は常に自動的にネゴシエートされます。Jumbo Frame はサポートされません。
  
 - **インターフェイスの状態** - インターフェイスは有効または無効にできます。有効にすると、デバイスがそのインターフェイスを使用しようとします。ネットワークに接続され使用されているインターフェイスだけを有効にすることをお勧めします。使用していないインターフェイスはすべて無効にします。
 
@@ -124,8 +124,9 @@ StorSimple 8000 シリーズ Update 1 では、DATA 0 のルーティング メ�
 
 ## 次のステップ
 
-[StorSimple デバイスの MPIO の構成](storsimple-configure-mpio-windows-server.md)。
- 
+- [StorSimple デバイスの MPIO の構成方法](storsimple-configure-mpio-windows-server.md)。
+
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
      
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

@@ -3,7 +3,7 @@
 	description="Azure ポータルで Windows 仮想マシンを作成します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/11/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 # Windows を実行する仮想マシンを Azure ポータルで作成する
 
@@ -52,8 +52,4 @@
 
 - データを格納するディスクを接続します。空のディスクと、データが含まれているディスクのどちらも接続できます。手順については、[データ ディスクの接続に関するチュートリアル](storage-windows-attach-disk.md)をご覧ください。
 
-## その他のリソース
-
-仮想マシン用に構成できる内容とそのタイミングについては、「[Azure VM 構成設定について](http://msdn.microsoft.com/library/azure/dn763935.aspx)」を参照してください。
-
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

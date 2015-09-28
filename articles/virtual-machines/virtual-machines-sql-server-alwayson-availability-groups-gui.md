@@ -1,11 +1,11 @@
 <properties 
-	pageTitle="Azure AlwaysOn 可用性グループの構成 (GUI)"
-	description="Azure 仮想マシンで AlwaysOn 可用性グループを作成します。このチュートリアルでは、スクリプトではなく、主にユーザー インターフェイスとツールを使用します。"
+	pageTitle="Azure VM での AlwaysOn 可用性グループの構成 (GUI)"
+	description="Azure Virtual Machines で AlwaysOn 可用性グループを作成します。このチュートリアルでは、スクリプトではなく、主にユーザー インターフェイスとツールを使用します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar"/>
+	editor="monicar" />
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
@@ -13,9 +13,9 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="08/12/2015"
-	ms.author="jroth"/>
+	ms.author="jroth" />
 
-# Azure AlwaysOn 可用性グループの構成 (GUI)
+# Azure VM での AlwaysOn 可用性グループの構成 (GUI)
 
 このエンド ツー エンドのチュートリアルでは、Azure の仮想マシン上で実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。
 
@@ -49,7 +49,7 @@
 
 >[AZURE.NOTE]SharePoint での SQL Server AlwaysOn 可用性グループの使用に興味がある場合は、「[SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」を参照してください。
 
-## 仮想ネットワークとドメイン コントローラー サーバーの作成
+## Virtual Network とドメイン コントローラー サーバーの作成
 
 最初に新しい Azure 試用版アカウントを作成します。アカウントのセットアップが完了したら、Azure ポータルのホーム画面が表示されます。
 
@@ -57,7 +57,7 @@
 
 	![Click New in the Portal](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665511.gif)
 
-1. 次に示すように、**[Network Services]**、**[仮想ネットワーク]**、**[カスタム作成]** の順にクリックします。
+1. 次に示すように、**[Network Services]**、**[Virtual Network]**、**[カスタム作成]** の順にクリックします。
 
 	![Create Virtual Network](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC665512.gif)
 
@@ -65,7 +65,7 @@
 
 	|ページ|設定|
 |---|---|
-|仮想ネットワークの詳細|**名前 = ContosoNET**<br/>**リージョン = 米国西部**|
+|Virtual Network の詳細|**名前 = ContosoNET**<br/>**リージョン = 米国西部**|
 |DNS サーバーと VPN 接続|なし|
 |Virtual Network アドレス空間|設定は、次のスクリーンショットを参照してください。![Create Virtual Network](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC784620.png)|
 
@@ -128,7 +128,7 @@
 
 	|ページ|設定|
 |---|---|
-|配置構成|**新しいフォレストを追加する** = 選択<br/>**ルート ドメイン名** = corp.contoso.com|
+|デプロイ構成|**新しいフォレストを追加する** = 選択<br/>**ルート ドメイン名** = corp.contoso.com|
 |ドメイン コントローラー オプション|**パスワード** = Contoso!000<br/>**パスワードの確認入力** = Contoso!000|
 
 1. **[次へ]** をクリックして、ウィザード内の他のページを進めます。**[前提条件のチェック]** ページで、"**すべての前提条件のチェックに合格しました**" というメッセージが表示されることを確認します。関連する警告メッセージを確認する必要がありますが、インストールは続行できます。
@@ -534,4 +534,4 @@
 
 Azure での SQL Server の使用に関するその他の情報は、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

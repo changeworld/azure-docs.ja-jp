@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple 仮想デバイス Update 1 | Microsoft Azure"
-	description="Microsoft Azure 仮想ネットワークで StorSimple 仮想デバイスを作成、デプロイ、管理する方法を説明します。(StorSimple Update 1 に適用されます。)"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="Microsoft Azure 仮想ネットワークで StorSimple 仮想デバイスを作成、デプロイ、管理する方法を説明します。(StorSimple Update 1 に適用されます。)"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="09/02/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="09/16/2015"
+   ms.author="alkohli" />
 
 # Azure での StorSimple 仮想デバイスのデプロイと管理
 
@@ -76,7 +76,7 @@ StorSimple 仮想デバイスを使用する場合、セキュリティに関す
 
 >[AZURE.IMPORTANT]**仮想デバイスで使用する予定のクラウド ストレージ アカウントと同じリージョンに仮想ネットワークが存在することを確認してください。**
 
-- 仮想デバイスによって公開されたボリュームを使用できる [Azure 仮想マシン](../virtual-machines/virtual-machines-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。 							
+- 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。 							
 	- Windows または Linux の VM が実行され、iSCSI イニシエーター ソフトウェアがインストールされていること
 	- 仮想デバイスと同じ仮想ネットワークで実行されていること
 	- 仮想デバイスの内部 IP アドレスで仮想デバイスの iSCSI ターゲットに接続できること
@@ -122,27 +122,28 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 2. **[デバイス]** ページに移動します。**[デバイス]** ページ下部の **[仮想デバイスの作成]** をクリックします。
 
-3. **[仮想デバイスの作成] ダイアログ ボックス**で、次のように指定します。
+3. **[仮想デバイスの作成]** ダイアログ ボックスで、次のように詳細を指定します。
+
+     ![StorSimple create virtual device](./media/storsimple-virtual-device-u1/StorSimple_CreateVirtualDevice1.png)
 
 	1. **[名前]** – 仮想デバイスの一意の名前。
-
 
 	2. **[バージョン]** -仮想デバイスのバージョンを選択します。このサービスに更新プログラム 1 (またはそれ以降) の物理デバイスしか登録されていない場合、このオプションは表示されません。このフィールドが表示されるのは、更新プログラム 1 を適用する前のソフトウェアの物理デバイスと更新プログラム 1 の物理デバイスの組み合わせが、このサービスに登録されている場合に限定されます。フェールオーバーまたは複製元として有効な物理デバイスは仮想デバイスのバージョンによって決まるので、適切なバージョンの仮想デバイスを作成することが重要です。選択肢:
 
 	   - バージョン更新プログラム 0.3。GA リリースまたは更新プログラム 0.1 ～ 0.3 を備えた物理デバイスからのフェールオーバーまたは DR を行う場合。 
 	   - バージョン更新プログラム 1。更新プログラム 1 (またはそれ以降) を備えた物理デバイスからのフェールオーバーまたは複製を行う場合。 
-
  
-	3. **[仮想ネットワーク]** – この仮想デバイスで使用する仮想ネットワークの名前。
+	3. **[Virtual Network]** – この仮想デバイスで使用する仮想ネットワークの名前。
 
 	4. **[サブネット]** – 仮想デバイスで使用する仮想ネットワーク上のサブネット。
 
 	5. **[仮想デバイスの作成に使用するストレージ アカウント]** – プロビジョニング中に仮想デバイスのイメージを保持する目的で使用されるストレージ アカウント。このストレージ アカウントは、仮想デバイスおよび仮想ネットワークと同じリージョンに存在する必要があります。物理デバイスまたは仮想デバイスのデータ保管にこのストレージ アカウントを使用することは避けてください。既定では、この目的に使用する新しいストレージ アカウントが作成されます。ただし、この用途に適したストレージ アカウントが既にあることがわかっている場合は、一覧からそのアカウントを選択してください。
-	
 
     >[AZURE.NOTE]仮想デバイスは Azure ストレージ アカウントでのみ使用できます。StorSimple 仮想デバイスの場合、Amazon、HP、OpenStack など (物理デバイスの場合はサポートされます) の他のクラウド サービス プロバイダーはサポートされていません。
 	
-4. 仮想デバイスに格納するデータがマイクロソフトのデータセンターでホストされることに同意する旨のチェック ボックスをオンにします。物理デバイスのみを使用する場合は、暗号化キーがご利用のデバイスに保管されるため、マイクロソフトが暗号化を解除することはできません。仮想デバイスを使用する場合、暗号化キーと復号化キーの両方が Microsoft Azure に保管されます。詳細については、「[仮想デバイスを使用するためのセキュリティに関する考慮事項](#security-considerations-for-using-a-virtual-device)」を参照してください。
+4. 仮想デバイスに格納するデータがマイクロソフトのデータセンターでホストされることに同意する旨のチェック ボックスをオンにします。物理デバイスのみを使用する場合は、暗号化キーがご利用のデバイスに保管されるため、マイクロソフトが暗号化を解除することはできません。![StorSimple virtual device creating stage](./media/storsimple-virtual-device-u1/StorSimple_VirtualDeviceCreating1M.png)
+
+    仮想デバイスを使用する場合、暗号化キーと復号化キーの両方が Microsoft Azure に保管されます。詳細については、「[仮想デバイスを使用するためのセキュリティに関する考慮事項](#security-considerations-for-using-a-virtual-device)」を参照してください。
 
 ### 仮想デバイスの構成と登録
 
@@ -150,16 +151,24 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。
 
-
 1. [デバイス] ページで、先ほど作成した **StorSimple 仮想デバイス**を選択します。 
 
 2. **[デバイスのセットアップの完了]** をクリックします。デバイスの構成ウィザードが起動します。
+
+    ![StorSimple complete device setup in Devices page](./media/storsimple-virtual-device-u1/StorSimple_CompleteDeviceSetupSVA1M.png)
 
 3. 所定の場所に **[サービス データ暗号化キー]** を入力します。
 
 4. 指定された長さおよび設定の Snapshot Manager のパスワードとデバイス管理者パスワードを入力します。
 
 5. チェック マークをクリックして、仮想デバイスの初期構成と登録を完了します。
+
+    ![StorSimple virtual device settings](./media/storsimple-virtual-device-u1/StorSimple_VirtualDeviceSettings1.png)
+
+構成と登録が完了したら、デバイスがオンラインになります。デバイスがオンラインになるまでに数分かかる場合があります。
+
+![StorSimple virtual device online stage](./media/storsimple-virtual-device-u1/StorSimple_VirtualDeviceOnline1M.png)
+
 
 ### デバイスの構成設定の変更
 
@@ -361,7 +370,7 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 以前構成して使っていた StorSimple 仮想デバイスのコンピューティング料金の発生を止めるには、仮想デバイスをシャットダウンします。仮想デバイスをシャットダウンしても、ストレージ内のオペレーティング システムやデータ ディスクは削除されません。この操作によって、サブスクリプションの料金は発生しなくなりますが、OS とデータ ディスクのストレージの料金は継続して発生します。
 
-仮想デバイスを削除またはシャットダウンすると、StorSimple Manager サービスの [デバイス] ページには **[オフライン]** として表示されます。仮想デバイスによって作成されたバックアップも一緒に削除する場合は、デバイスとして非アクティブにするか、削除するかを選択できます。詳細については、[デバイスの非アクティブ化](storsimple-deactivate-and-delete-device.md#deactivate-a-device)をご覧ください。
+仮想デバイスを削除またはシャットダウンすると、StorSimple Manager サービスの [デバイス] ページには **[オフライン]** として表示されます。仮想デバイスによって作成されたバックアップも一緒に削除する場合は、デバイスとして非アクティブにするか、削除するかを選択できます。詳細については、「[デバイスの非アクティブ化](storsimple-deactivate-and-delete-device.md#deactivate-a-device)」を参照してください。
 
 ### StorSimple 仮想デバイスをシャットダウンするには
 
@@ -381,6 +390,6 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 ## 次のステップ
 
-[バックアップ セットからの StorSimple ボリュームの復元](storsimple-restore-from-backup-set.md)方法について学習します。
+[バックアップ セットからの StorSimple ボリュームの復元方法](storsimple-restore-from-backup-set.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

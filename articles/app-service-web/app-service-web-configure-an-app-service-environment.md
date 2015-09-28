@@ -1,38 +1,40 @@
 <properties 
-	pageTitle="App Service 環境の構成方法"
-	description="App Service 環境の構成、管理、および監視"
-	services="app-service\web"
-	documentationCenter=""
-	authors="ccompy"
-	manager="stefsch"
+	pageTitle="App Service 環境の構成方法" 
+	description="App Service 環境の構成、管理、および監視" 
+	services="app-service\web" 
+	documentationCenter="" 
+	authors="ccompy" 
+	manager="stefsch" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="04/27/2015"
+	ms.service="app-service" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/11/2015" 
 	ms.author="ccompy"/>
 
 # App Service 環境の構成 #
 
 ## 概要 ##
 
-App Service 環境は、プレビュー段階で提供されている新しい Premium レベルの機能です。これには、新しいスケーリングおよびネットワーク アクセス機能が用意されています。この新しいスケール機能では、VNET に Azure App Service のインスタンスを配置することができます。App Service 環境 (ASE) の機能に慣れていない場合は、「App Service 環境の概要」(app-service-app-service-environment-intro.md) を参照してください。ASE を作成する方法の詳細については、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)のドキュメントを参照してください。
+App Service 環境は、プレビュー段階で提供されている新しい Premium レベルの機能です。これには、新しいスケーリングおよびネットワーク アクセス機能が用意されています。この新しいスケール機能では、VNET に Azure App Service のインスタンスを配置することができます。App Service 環境 (ASE) の機能に慣れていない場合は、[App Service 環境の概要](app-service-app-service-environment-intro.md) を参照してください。ASE を作成する方法の詳細については、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)のドキュメントを参照してください。
 
 大まかに言えば、App Service 環境は次に挙げるいくつかの主要なコンポーネントで構成されます。
 
 - Azure App 環境ホステッド サービスで実行中のコンピューティング リソース
 - ストレージ
 - データベース
-- 1 つ以上のサブネットを持つ Virtual Network
+- 1 つ以上のサブネットを持つクラシック "v1" Virtual Network
 - Azure App 環境のホストされるサービスが実行されるサブネット
 
 App Service 環境の管理と監視を行うには、Azure プレビュー ポータルで [参照]、[App Service 環境] の順にクリックして、管理と監視用の UI にアクセスします。最初のリリースにはシステムの管理に必要な機能が含まれていますが、今後数週間で、機能を追加して改善していく予定です。
 
 ![][1]
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## Monitoring ##
 
@@ -90,8 +92,8 @@ App Service 環境の管理と監視を行うには、Azure プレビュー ポ�
 
 [Virtual Network][virtualnetwork] とサブネットはすべてがユーザーの制御下にあります。App Service 環境には少数のネットワーク要件がありますが、残りの部分はユーザーが制御します。ASE の要件を次に示します。
 
-- 512 個以上のアドレスを持つ VNET
-- 256 個以上のアドレスを持つサブネット 
+- 512 個以上のアドレスを持つクラシック "v1" VNET
+- 8 個以上のアドレスを持つサブネット 
 - VNET は地域 VNET であることが必要  
  
 VNET の管理は、通常の Virtual Network UI によって行われます。
@@ -131,4 +133,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="07/21/2015"
+   ms.date="09/10/2015"
    ms.author="banders" />
 
 
@@ -31,8 +31,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 
 ### ARMClient を使用するには
 
-1. [Chocolatey](https://chocolatey.org/) をインストールします。これは、Windows のオープン ソースのマシン パッケージ マネージャーです。
-2. 管理者として PowerShell ウィンドウを開き、次のコマンドを実行します。
+1. [Chocolatey](https://chocolatey.org/) をインストールします。これは、Windows のオープン ソースのマシン パッケージ マネージャーです。管理者としてコマンド プロンプト ウィンドウを開き、次のコマンドを実行します。
 
     ```
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
@@ -197,7 +196,7 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 	armclient post /subscriptions/{SubId}/resourceGroups/{ResourceGroupId}/providers/Microsoft.OperationalInsights/workspaces/{WorkspaceName}/search/{SearchId}?api-version=2015-03-20
 ```
 
->[AZURE.NOTE] 検索によって「Pending」状態が返される場合、この API を使用して更新後の結果をポーリングできます。検索の結果は 6 分後にキャッシュから削除され、Http Gone が返されます。最初の検索要求によって「Successful」状態がすぐに返された場合、結果はキャッシュに追加されず、クエリを実行してもこの API で Http Gone は返されません。Http 200 の結果の内容は最初の検索要求と同じ形式で、値のみが更新されます。
+>[AZURE.NOTE]検索によって「Pending」状態が返される場合、この API を使用して更新後の結果をポーリングできます。検索の結果は 6 分後にキャッシュから削除され、Http Gone が返されます。最初の検索要求によって「Successful」状態がすぐに返された場合、結果はキャッシュに追加されず、クエリを実行してもこの API で Http Gone は返されません。Http 200 の結果の内容は最初の検索要求と同じ形式で、値のみが更新されます。
 
 ### 保存された検索 - REST のみ
 
@@ -346,4 +345,4 @@ Azure リソース マネージャーは [.NET のライブラリ](https://msdn.
 
 上記の結果にはプレフィックスおよび追加されたエラー メッセージが含まれています。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する - Azure Mobile Services" 
-	description="ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する方法について説明します。" 
+	pageTitle="ハイブリッド接続を使用して .NET バックエンド モバイル サービスからオンプレミスの SQL Server に接続する | Azure Mobile Services" 
+	description="Azure ハイブリッド接続を使用して .NET バックエンド モバイル サービスからオンプレミスの SQL Server に接続する方法について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
 	authors="ggailey777" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="06/16/2015" 
+	ms.date="09/15/2015" 
 	ms.author="glenga"/>
 
   
@@ -27,7 +27,7 @@
 
 このチュートリアルを完了するには、次のものが必要です。
 
-- **既存の .NET バックエンド モバイル サービス** <br/>[Mobile Services の使用]チュートリアルに従がって、新しい .NET バックエンド モバイル サービスを [Azure 管理ポータル]から作成およびダウンロードします。
+- **既存の .NET バックエンド モバイル サービス** <br/>[Mobile Services の使用]チュートリアルに従がって、新しい .NET バックエンド モバイル サービスを [Microsoft Azure 管理ポータル]から作成およびダウンロードします。
 
 [AZURE.INCLUDE [hybrid-connections-prerequisites](../../includes/hybrid-connections-prerequisites.md)]
 
@@ -131,6 +131,7 @@
 
 <!-- Links -->
 [Azure 管理ポータル]: http://manage.windowsazure.com
+[Microsoft Azure 管理ポータル]: http://manage.windowsazure.com
 [Mobile Services の使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

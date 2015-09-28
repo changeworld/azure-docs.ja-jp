@@ -13,11 +13,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/07/2015" 
+	ms.date="09/11/2015" 
 	ms.author="jeffreyg"/>
 
 
 # SQL Server Management Studio を使用した Azure SQL Database の管理 
+
+
+> [AZURE.SELECTOR]
+- [Azure Preview Portal](sql-database-manage-portal.md)
+- [SSMS](sql-database-manage-azure-ssms.md)
+- [PowerShell](sql-database-command-line-tools.md)
 
 SQL Server Management Studio (SSMS) を使用して Azure SQL Database の論理サーバーとデータベースを管理できます。このトピックでは、SSMS を使用した一般的なタスクの手順について説明します。始める前に、Azure SQL Database 論理サーバーとデータベースが既にある必要があります。作業を開始するには、まず「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」に目を通します。
 
@@ -186,4 +192,4 @@ SQL データベースでは、個々のデータベースを監視するのに�
  
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

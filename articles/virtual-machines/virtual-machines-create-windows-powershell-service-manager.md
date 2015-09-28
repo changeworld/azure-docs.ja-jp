@@ -3,7 +3,7 @@
 	description="Azure PowerShell を使用してサービス管理で新しい Windows ベースの仮想マシンを素早く作成し、管理機能を実行します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/09/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 # Azure PowerShell を使用したサービス管理での Windows ベース仮想マシンの作成と管理
 
@@ -209,4 +209,4 @@ BLOB ストレージにある既存の .vhd ファイルからデータ ディ�
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

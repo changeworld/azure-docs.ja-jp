@@ -1,6 +1,6 @@
 <properties
-   pageTitle="オペレーション インサイトでの問題のトラブルシューティング"
-   description="オペレーション インサイトでの問題のトラブルシューティングについて説明します"
+   pageTitle="Operational Insights での問題のトラブルシューティング"
+   description="Operational Insights での問題のトラブルシューティングについて説明します"
    services="operational-insights"
    documentationCenter=""
    authors="bandersmsft"
@@ -12,56 +12,114 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/02/2015"
+   ms.date="09/10/2015"
    ms.author="banders" />
 
-#オペレーション インサイトでの問題のトラブルシューティング
+# Operational Insights での問題のトラブルシューティング
 
 [AZURE.INCLUDE [operational-insights-note-moms](../../includes/operational-insights-note-moms.md)]
 
-以降のセクションの情報は、問題のトラブルシューティングにお役立てください。該当する問題がこの記事に見つからない場合は、[オペレーション インサイト チームのブログ](http://blogs.technet.com/b/momteam/archive/2014/05/29/advisor-error-3000-unable-to-register-to-the-advisor-service-amp-onboarding-troubleshooting-steps.aspx)で探してください。
+以降のセクションの情報は、問題のトラブルシューティングにお役立てください。該当する問題がこの記事に見つからない場合は、[Operational Insights チームのブログ](http://blogs.technet.com/b/momteam/archive/2014/05/29/advisor-error-3000-unable-to-register-to-the-advisor-service-amp-onboarding-troubleshooting-steps.aspx)で探してください。
 
-## オペレーション インサイトの接続に関する問題の診断
+## SQL 評価のアクセス許可問題の解決
+Operations Management Suite (OMS) は Microsoft Monitoring Agent 管理グループと Operations Manager 管理グループを利用してデータを回収し、OMS サービスに送信します。SQL Server など、特定のワークロードでは、ドメイン アカウントなど、セキュリティ状況が異なる場合、データを回収するためにワークロード固有の特権が必要となります。Microsoft Monitoring Agent が System Center Operations Manager 経由で接続されるとき、データ回収でアクセス許可問題が発生するようであれば、実行アカウントを構成し、資格情報を指定する必要があります。
 
-Microsoft Azure オペレーション インサイトは、クラウドとの間でデータをやり取りすることが前提となっているため、接続の問題は致命的です。以下の情報を参考に接続の問題を把握し、解決してください。
+SQL Server 管理パックを既に使用している場合、その Windows アカウントを実行アカウントとして使用する必要があります。
+
+### オペレーション コンソールで SQL の実行アカウントを構成するには
+
+1. Operations Manager でオペレーション コンソールを開き、**[管理]** をクリックします。
+
+2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、**[Microsoft System Center Advisor の実行プロファイル]** を開きます。
+
+3. **[実行アカウント]** ページの **[追加]** をクリックします。
+
+4. SQL Server に必要な資格情報を含んだ Windows 実行アカウントを選択するか、**[新規]** をクリックして新たに作成します。
+
+    >[AZURE.NOTE]実行アカウントの種類は Windows であることが必要です。さらに、SQL Server インスタンスをホストするすべての Windows Server 上のローカルの Administrators グループに、その実行アカウントが属している必要があります。
+
+5. **[保存]** をクリックします。
+
+6. 次の T-SQL サンプルに変更を加えて、各 SQL Server インスタンスで実行します。実行アカウントで SQL の評価を行うために必要な最低限の権限が付与されます。ただし、実行アカウントが既に SQL Server インスタンスの sysadmin サーバー ロールに属している場合、この作業は不要です。
+
+```
+---
+    -- Replace <UserName> with the actual user name being used as Run As Account.
+    USE master
+
+    -- Create login for the user, comment this line if login is already created.
+    CREATE LOGIN [<UserName>] FROM WINDOWS
+
+    -- Grant permissions to user.
+    GRANT VIEW SERVER STATE TO [<UserName>]
+    GRANT VIEW ANY DEFINITION TO [<UserName>]
+    GRANT VIEW ANY DATABASE TO [<UserName>]
+
+    -- Add database user for all the databases on SQL Server Instance, this is required for connecting to individual databases.
+    -- NOTE: This command must be run anytime new databases are added to SQL Server instances.
+    EXEC sp_msforeachdb N'USE [?]; CREATE USER [<UserName>] FOR LOGIN [<UserName>];'
+
+```
+
+### To configure the SQL Run As account using Windows PowerShell
+Alternatively, you can use the following PowerShell script to set the SQL Run As account. Open a PowerShell window and run the following script after you’ve updated it with your information:
+
+```
+
+    import-module OperationsManager
+    New-SCOMManagementGroupConnection "<your management group name>"
+     
+    $profile = Get-SCOMRunAsProfile -DisplayName "Operational Insights SQL Assessment Run As Profile"
+    $account = Get-SCOMrunAsAccount | Where-Object {$_.Name -eq "<your run as account name>"}
+    Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
+```
+After the PowerShell Script finishes executing, perform the T-SQL commands provided above.
+
+## Diagnose connection issues for Operational Insights
+
+Because Microsoft Azure Operational Insights relies on data that is moved to and from the cloud, connection issues can be crippling. Use the following information to understand and solve your connection issues.
 
 
-**エラー メッセージ:** インターネット接続が確認されましたが、オペレーション インサイト サービスへの接続を確立できませんでした。後でもう一度やり直してください。
+**Error message:** The Internet connectivity was verified, but connection to Operational Insights service could not be established. Please try again later.
 
-**考えられる原因:** - オペレーション インサイト サービスがメンテナンス中です。オペレーション インサイトのメンテナンスが終了するまでお待ちください。- ご使用のネットワークによって、オペレーション インサイトがブロックされています。ネットワーク管理者に問い合わせてオペレーション インサイトへのアクセスをリクエストするか、別のサーバーをゲートウェイとして使用してください。
+**Possible causes:**
+- The Operational Insights service is under maintenance. Wait until the Operational Insights maintenance is done.
+- Your network has blocked Operational Insights. Contact your network administrator and request access to Operational Insights, or use another server as your gateway.
 
-**エラー メッセージ:** インターネット接続を確立できませんでした。プロキシの設定を確認してください。
+**Error message:** Internet connection could not be established. Please check your proxy settings.
 
-**考えられる原因:** このサーバーはインターネットに接続されていません。インターネット接続の状態を確認し、サーバーをインターネットに接続してください。- プロキシ設定が正しくありません。プロキシの設定と変更の方法については、[プロキシとファイアウォール設定の構成](operational-insights-proxy-firewall.md)に関するページを参照してください。- プロキシ サーバーは認証が必要です。プロキシ サーバーを使用するように Operations Manager を構成する方法については、[プロキシとファイアウォール設定の構成](operational-insights-proxy-firewall.md)に関するページを参照してください。
+**Possible causes:**
+- This server is not connected to the Internet. Check the Internet connectivity status, and connect the server to the Internet.
+- The proxy setting is not correct. See [Configure proxy and firewall settings](operational-insights-proxy-firewall.md) for information about how to set or change your proxy settings.
+- The proxy server requires authentication. See [Configure proxy and firewall settings](operational-insights-proxy-firewall.md) to learn about how to configure Operations Manager to use a proxy server.
 
 
-## SQL Server 検出のトラブルシューティング
+## Troubleshoot SQL Server discovery
 
-Microsoft SQL Server 2008 R2 を実行している場合に、Operations Manager エージェントがデプロイされているにもかかわらず、このサーバーのアラートが表示されないときは、検出の問題が発生している可能性があります。
+If you are running Microsoft SQL Server 2008 R2, and despite deploying the Operations Manager agent, you do not see alerts for this server, you might have a discovery issue.
 
-それが問題の根本原因であるかどうかを確認するには、次の 2 点をチェックしてください。
+To confirm if this is the source of your trouble, check for the following two issues:
 
-- Operations Manager のイベント ログで、イベント ID 4001 が表示される。このイベントは、無効なクラスが存在することを示しています。
+- In the Operations Manager event log, you see Event ID 4001. This event indicates that there is an invalid class.
 
-- SQL Server 構成マネージャーで、SQL Server のサービスを表示したとき、“リモート プロシージャ コールに失敗しました。[0x0800706be]” というエラー メッセージが表示されます。
+- In SQL Server Configuration Manager, when you view SQL Server Services, you see the error message, “The remote procedure call failed. [0x0800706be]”
 
-両方の問題に該当する場合は、SQL Server 2008 R2 Service Pack 2 をインストールする必要があります。このサービス パックをダウンロードするには、Microsoft ダウンロード センターの [SQL Server 2008 R2 Service Pack 2](http://go.microsoft.com/fwlink/?LinkId=271310) を参照してください。
+If both issues are true, you need to install SQL Server 2008 R2 Service Pack 2. To download this service pack, see [SQL Server 2008 R2 Service Pack 2](http://go.microsoft.com/fwlink/?LinkId=271310) in the Microsoft Download Center.
 
-サービス パックのインストール後 24 時間以内に、対象サーバーに関して、オペレーション インサイトのデータが表示されるようになります。
+After you install the service pack, you should see Operational Insights data for the server within 24 hours.
 
-## オペレーション インサイトへの、エージェントまたは Operations Manager のデータ フローのトラブルシューティング
+## Troubleshoot agents or Operations Manager data flow to Operational Insights
 
-次の一連の手順は、Azure オペレーション インサイトにデータをレポートするよう構成された、直接接続のエージェントまたは Operations Manager デプロイメントのトラブルシューティングに役立つガイドです。
+The following set of procedures is meant as a guide to help you troubleshoot your directly-connected agents or Operations Manager deployments configured to report data to Azure Operational Insights.
 
-### 手順 1: Operations Manager 環境に正しい管理パックがダウンロードされているかどうかを検証する
->[AZURE.NOTE]直接エージェントのみを使用している場合、この手順をスキップして次の手順に進むことができます。
+### Procedure 1: Validate if the right Management Packs get downloaded to your Operations Manager Environment
+>[AZURE.NOTE] If you only use Direct Agent, you can skip to the next procedure.
 
-オペレーション インサイト ポータルからどのソリューション (以前はインテリジェンス パックと呼ばれていた) を有効にしたかによって、表示される管理パックの数が異なります。管理パックの名前から、"Advisor" または "Intelligence" というキーワードを検索します。OpsMgr PowerShell を使用して、次のように管理パックを調べることができます。
+Depending on which solutions (previously called intelligence packs) you have enabled from the OpInsights Portal will you see more or less of these MPs. Search for keyword ‘Advisor’ or ‘Intelligence’ in their name.
+You can check for these MPs using OpsMgr PowerShell:
 
 ```Powershell
-Get-SCOMManagementPack | where {$_.DisplayName -match 'Advisor'} | Select Name,Sealed,Version
-Get-SCOMManagementPack | where {$_.Name -match 'IntelligencePacks'} | Select Name,Sealed,Version
-```
+Get-SCOMManagementPack | where {$\_.DisplayName -match 'Advisor'} | Select Name,Sealed,Version Get-SCOMManagementPack | where {$\_.Name -match 'IntelligencePacks'} | Select Name,Sealed,Version ```
 
 >[AZURE.NOTE]容量ソリューションのトラブルシューティングを行う場合、‘capacity’ を含む名前の管理パックが*いくつあるか* 確認してください。同じ管理パック バンドルに含まれる管理パックで、同じ表示名を持つ (ただし内部 ID は異なる) ものが 2 つあります。この 2 つの管理パックのうち 1 つがインポートされていない場合 (VMM 依存関係の不足による場合が多い)、もう 1 つの管理パックはインポートされず、インポート操作の再試行も行われません。
 
@@ -145,4 +203,4 @@ DNS 名前解決に失敗しました。サーバーが、データの送信先�
 
 このページには、ソリューションごとに分類されたサービスへのデータ送信量に関する情報の測定機能も備えています (これには、ログ検索インデックスではなく課金システムが使用され、2 ～ 3 時間おきに更新されます)。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

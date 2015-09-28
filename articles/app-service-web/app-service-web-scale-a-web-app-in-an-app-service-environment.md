@@ -5,20 +5,22 @@
 	documentationCenter="" 
 	authors="ccompy" 
 	manager="stefsch" 
-	editor=""/>
+	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2015" 
+	ms.date="09/16/2015" 
 	ms.author="ccompy"/>
 
 # App Service 環境内での Web アプリのスケーリング #
 
 大まかに言うと、App Service 環境は基本的に Azure App Service の VNET への個人的なデプロイメントであり、サブスクリプションでのみ管理できます。App Service 環境は VNET 内に配置されるため、新しいネットワーク機能を提供し、さらに Azure App Service 環境で通常提供されるレベル以上の拡張性を提供します。App Service 環境 (ASE) の詳細については、[App Service 環境の概要][WhatisASE]に関するページを参照してください。App Service 環境を作成する方法や App Service 環境に Web アプリを作成する方法の詳細については、[App Service 環境の作成方法][HowtoCreateASE]に関するページと [App Service 環境での Web アプリの作成方法][CreateWebappinASE]に関するページを参照してください。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 通常、Web アプリのスケール属性を変更する場合は、App Service プランのレベルで変更が加えられることに注意してください。App Service プランのスケーリングや App Service 環境外部の App Service プランの詳細については、[Azure App Service での Web アプリのスケーリング][ScaleWebapp]に関するページおよび [App Service プランの詳細][Appserviceplans]に関するページを参照してください。
 
@@ -84,4 +86,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

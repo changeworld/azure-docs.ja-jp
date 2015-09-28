@@ -1,30 +1,34 @@
 <properties 
-	pageTitle="App Service 環境の概要"
-	description="すべてのアプリを実行するためのセキュリティで保護され VNet に参加している専用のスケール ユニットを提供する、App Service 環境の機能について説明します。"
-	services="app-service\web"
-	documentationCenter=""
-	authors="ccompy"
-	manager="wpickett"
+	pageTitle="App Service 環境の概要" 
+	description="すべてのアプリを実行するためのセキュリティで保護され VNet に参加している専用のスケール ユニットを提供する、App Service 環境の機能について説明します。" 
+	services="app-service\web" 
+	documentationCenter="" 
+	authors="ccompy" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/31/2015"
-	ms.author="stefsh"/>
+	ms.service="app-service" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/11/2015" 
+	ms.author="stefsch"/>
 
 # App Service 環境の概要
 
 ## 概要 ##
 App Service 環境は、すべてのアプリを安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium][PremiumTier] サービス プラン オプションです。これには、拡張されたスケーリング オプションと共に [Web Apps][WebApps]、[Mobile Apps][MobileApps]、[API Apps][APIApps]、[Logic Apps][LogicApps] が含まれています。
 
-App Service 環境のコンピューティング リソースは、お使いのアプリを実行するためだけに使用されます。App Service 環境は常に地域仮想ネットワーク内に作成されるため、アプリにはネットワーク分離用の新しいオプションが用意されます。さらに、App Service 環境は追加のスケーリング オプションをサポートしており、アプリの実行に最大 50 個のコンピューティング リソースを使用できます。App Service 環境の外部では、アプリをホストするコンピューティング リソースは 20 個に制限されています。
+App Service 環境のコンピューティング リソースは、お使いのアプリを実行するためだけに使用されます。App Service 環境は常に地域クラシック "v1" 仮想ネットワーク内に作成されるため、アプリにはネットワーク分離用の新しいオプションが用意されます。さらに、App Service 環境は追加のスケーリング オプションをサポートしており、アプリの実行に最大 50 個のコンピューティング リソースを使用できます。App Service 環境の外部では、アプリをホストするコンピューティング リソースは 20 個に制限されています。
 
-## 仮想ネットワークのサポート ##
-App Service 環境は、既存の地域仮想ネットワーク内でも、新しい地域仮想ネットワーム内でも作成できます ([仮想ネットワークの詳細][MoreInfoOnVirtualNetworks])。App Service 環境は常に地域仮想ネットワーク (もっと正確に言えば、地域仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+
+## Virtual Network のサポート ##
+App Service 環境は、既存の地域クラシック "v1" 仮想ネットワーク内でも、新しい地域クラシック "v1" 仮想ネットワーム内でも作成できます ([仮想ネットワークの詳細][MoreInfoOnVirtualNetworks])。App Service 環境は常に地域仮想ネットワーク (もっと正確に言えば、地域仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。
+
+**注:** "v2"仮想ネットワーク内で App Service 環境を作成することはできません。
 
 [ネットワーク セキュリティ グループ][NetworkSecurityGroups]を使用して、受信ネットワーク通信を、App Service 環境が存在するサブネットに制限できます。これによって、Web アプリケーション ファイアウォールやネットワーク SaaS プロバイダーなど、アップストリーム デバイスおよびサービスの背後でアプリを実行できます。
 
@@ -52,7 +56,7 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 
 App Service 環境のネットワーク アーキテクチャの概要は、「[ネットワーク アーキテクチャの概要][NetworkArchitectureOverview]」を参照してください。
 
-App Service 環境で ExpressRoute を使用する際の詳細については、以下の「[Express Route と App Service 環境][NetworkConfigDetailsForExpressRoute]」を参照してください。
+App Service 環境で ExpressRoute を使用する際の詳細については、以下の「[Express Route と App Service Environment][NetworkConfigDetailsForExpressRoute]」を参照してください。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -79,4 +83,4 @@ App Service 環境で ExpressRoute を使用する際の詳細については、
 
 <!-- IMAGES -->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.date="09/11/2015"
 	ms.author="luisca"/>
 
 
@@ -135,7 +135,9 @@ API は、入力テキストの要点を示す文字列のリストを返しま�
 		 {"Score":0.7767222,"Id":"2"},
 		 {"Score":0.8988889,"Id":"3"}
 		],  
-		"Errors":[] 
+		"Errors":[
+		   {"Id": "4", Message:"Record cannot be null/empty"}
+		]
 	}
 
 
@@ -191,7 +193,9 @@ API は、入力テキストの要点を示す文字列のリストを返しま�
 		   {"KeyPhrases":["amazing build conference","interesting talks"],"Id":"2"},
 		   {"KeyPhrases":["hours","traffic","airport"],"Id":"3" }
 		],
-		"Errors":[ ]
+		"Errors":[
+		   {"Id": "4", Message:"Record cannot be null/empty"}
+		]
 	}
 
 ---
@@ -201,4 +205,4 @@ API は、入力テキストの要点を示す文字列のリストを返しま�
 システムに入力される ID は、システムから返された ID です。Web サービスは、ID が一意であることを確認しません。一意であることを確認するのは呼び出し元の役割です。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

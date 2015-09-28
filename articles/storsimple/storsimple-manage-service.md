@@ -1,21 +1,21 @@
 <properties 
-   pageTitle="StorSimple Manager サービスを展開する | Microsoft Azure"
-	description="管理ポータルで StorSimple Manager サービスを作成および削除する方法、さらにサービス登録キーを管理する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   pageTitle="StorSimple Manager サービスをデプロイする | Microsoft Azure"
+   description="管理ポータルで StorSimple Manager サービスを作成および削除する方法、さらにサービス登録キーを管理する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="SharS"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="09/02/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/14/2015"
+   ms.author="v-sharos" />
 
-# StorSimple Manager サービスを展開する
+# StorSimple Manager サービスをデプロイする
 
 ## 概要
 
@@ -27,7 +27,7 @@ StorSimple Manager のランディング ページには、StorSimple ストレ�
 
 - **[状態]** – サービスの状態。**アクティブ**、**作成中**、または**オンライン**のいずれか。
 
-- **[場所]** – StorSimple デバイスが展開される地理的な場所。
+- **[場所]** – StorSimple デバイスがデプロイされる地理的な場所。
 
 - **[サブスクリプション]** – サービスに関連付けられている課金サブスクリプション。
 
@@ -42,7 +42,7 @@ StorSimple Manager のランディング ページには、StorSimple ストレ�
 
 ## サービスの作成
 
-StorSimple デバイスを展開する場合は、**[簡易作成]** オプションを使用して、StorSimple Manager サービスを作成します。サービスを作成する上で必要なものは次のとおりです。
+StorSimple デバイスをデプロイする場合は、**[簡易作成]** オプションを使用して、StorSimple Manager サービスを作成します。サービスを作成する上で必要なものは次のとおりです。
 
 - エンタープライズ契約によるサブスクリプション
 - アクティブな Microsoft Azure ストレージ アカウント
@@ -50,7 +50,7 @@ StorSimple デバイスを展開する場合は、**[簡易作成]** オプシ�
 
 サービスの作成時に既定のストレージ アカウントを生成することもできます。
 
-単一のサービスで複数のデバイスを管理できます。ただし、1 つのデバイスを複数のサービスに割り当てることはできません。大企業は、そのようなサービス インスタンスを複数持つことで、さまざまなサブスクリプション、組織、展開の場所に対応することができます。
+単一のサービスで複数のデバイスを管理できます。ただし、1 つのデバイスを複数のサービスに割り当てることはできません。大企業は、そのようなサービス インスタンスを複数持つことで、さまざまなサブスクリプション、組織、デプロイの場所に対応することができます。
 
 サービスを作成するには、次の手順を実行します。
 
@@ -107,10 +107,12 @@ StorSimple デバイスを展開する場合は、**[簡易作成]** オプシ�
 
 ## 次のステップ
 
-[StorSimple デプロイのプロセス](storsimple-deployment-walkthrough.md)に関する詳細をご覧ください。
+- [StorSimple デプロイのプロセスの詳細](storsimple-deployment-walkthrough.md)
 
-[StorSimple ストレージ アカウントの管理](storsimple-manage-storage-accounts.md)に関する詳細をご覧ください。
+- [StorSimple ストレージ アカウントの管理の詳細](storsimple-manage-storage-accounts.md)
+
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

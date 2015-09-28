@@ -5,27 +5,26 @@
 	documentationCenter=""
 	authors="erikre"
 	manager="wpickett"
-	editor=""/>
+	editor="jimbe"/>
 
 <tags
-	ms.service="app-service-web"
+	ms.service="app-service"
 	ms.workload="web"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/18/2015"
+	ms.date="09/16/2015"
 	ms.author="erikre"/>
 
 # Azure App Service でのカスタム ドメイン名の構成 (GoDaddy から直接購入した場合)
 
 [AZURE.INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
+[AZURE.INCLUDE [intro](../../includes/custom-dns-web-site-intro.md)]
+
+Azure App Service Web Apps からドメインを購入した場合は、「<a href="/documentation/articles/custom-dns-web-site-buydomains-web-app" title="Web Apps" class="current">Web アプリ用のドメインの購入</a>」の記事の最後の手順をご覧ください。
 
 [AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
-
-> [AZURE.NOTE]Azure App Service Web Apps からドメインを購入した場合は、「<a href="/documentation/articles/custom-dns-web-site-buydomains-web-app" title="Web Apps" class="current">Web アプリ用のドメインの購入</a>」の記事の最後の手順をご覧ください。
-
-[AZURE.INCLUDE [intro](../../includes/custom-dns-web-site-intro.md)]
 
 この記事では、[Go Daddy](https://godaddy.com) から直接購入したカスタム ドメイン名を [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) で使用する手順を示します。
 
@@ -35,7 +34,6 @@
 ##DNS レコードについて
 
 [AZURE.INCLUDE [understandingdns](../../includes/custom-dns-web-site-understanding-dns-raw.md)]
-
 
 <a name="bkmk_configurecname"></a>
 ## カスタム ドメインの DNS レコードの追加
@@ -89,4 +87,4 @@
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

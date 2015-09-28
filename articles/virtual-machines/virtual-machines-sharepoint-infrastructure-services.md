@@ -11,7 +11,7 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows-sharepoint"
+	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="index-page"
 	ms.date="09/08/2015"
@@ -19,13 +19,15 @@
 
 # Azure インフラストラクチャ サービスでホストされる SharePoint ファーム
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルまたはクラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 Microsoft Azure インフラストラクチャ サービスで、最初または次の開発/テスト環境または運用環境の SharePoint ファームを設定します。ここでは、簡単に構成できる機能と、新機能を追加したり主要な機能を最適化するためにファームを迅速に拡張する機能を活用することができます。
 
 > [AZURE.NOTE]Microsoft は SharePoint Server 2016 IT Preview をリリースしています。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
 
 ## 基本的な SharePoint 開発/テスト ファーム
 
-従来のデプロイ モデルを使用して作成された仮想マシンでは、Azure プレビュー ポータルの [SharePoint Server ファーム](virtual-machines-sharepoint-farm-azure-preview.md)機能を使用して、インターネットに接続した SharePoint Web サイト用の基本的な開発/テスト ファームを作成します。
+クラシック デプロイメント モデルを使用して作成された仮想マシンでは、Azure プレビュー ポータルの [SharePoint Server ファーム](virtual-machines-sharepoint-farm-azure-preview.md)機能を使用して、インターネットに接続した SharePoint Web サイト用の基本的な開発/テスト ファームを作成します。
 
 自動作成されるこの環境は、クラウド専用の Azure Virtual Network 内のドメイン コントローラー、SQL Server、および SharePoint サーバーの 3 つのサーバーで構成されています。
 
@@ -47,7 +49,7 @@ Microsoft Azure インフラストラクチャ サービスで、最初または
 
 ## 高可用性イントラネット SharePoint 運用ファーム
 
-[SQL Server の AlwaysOn 可用性グループを備えた SharePoint 2013 を Azure にデプロイ](virtual-machines-workload-intranet-sharepoint-overview.md)することで、運用環境で利用できる、高可用性のイントラネット SharePoint Server 2013 ファームを Azure で構築できます。
+[Azure で SharePoint 2013 と SQL Server AlwaysOn 可用性グループ](virtual-machines-workload-intranet-sharepoint-overview.md)をデプロイすることで、運用環境で利用できる、高可用性のイントラネット SharePoint Server 2013 ファームを Azure で構築できます。
 
 この構成では、従来の仮想マシンを使用します。
 
@@ -65,4 +67,4 @@ Azure における SharePoint の詳細と構成については、次のリソ�
 
 - [Microsoft Azure での Office 365 ディレクトリ同期 (DirSync) のデプロイ](https://technet.microsoft.com/library/dn635310.aspx)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

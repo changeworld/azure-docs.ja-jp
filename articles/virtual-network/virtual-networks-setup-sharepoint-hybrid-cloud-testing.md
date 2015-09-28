@@ -1,24 +1,25 @@
 <properties 
-	pageTitle="SharePoint 2013 ファームのテスト環境 | Microsoft Azure"
-	description="開発または IT プロのテスト用のハイブリッド クラウド環境で 2 層の SharePoint 2013 イントラネット ファームを作成する方法について説明します。"
-	services="virtual-network"
-	documentationCenter=""
-	authors="JoeDavies-MSFT"
-	manager="timlt"
+	pageTitle="SharePoint 2013 ファームのテスト環境 | Microsoft Azure" 
+	description="開発または IT プロのテスト用のハイブリッド クラウド環境で 2 層の SharePoint 2013 イントラネット ファームを作成する方法について説明します。" 
+	services="virtual-network" 
+	documentationCenter="" 
+	authors="JoeDavies-MSFT" 
+	manager="timlt" 
 	editor=""
 	tags="azure-service-management"/>
 
 <tags 
-	ms.service="virtual-network"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/08/2015"
+	ms.service="virtual-network" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="Windows" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/10/2015" 
 	ms.author="josephd"/>
 
-
 # テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 このトピックでは、Microsoft Azure でホストされる SharePoint イントラネット ファームをテストするためにハイブリッド クラウド環境を作成する手順について説明します。完成すると次のような構成になります。
 
@@ -56,9 +57,9 @@ Azure サブスクリプションを持っていない場合は、[Azure の無�
  
 ## フェーズ 2: SQL Server コンピューター (SQL1) を構成する
 
-DC2 コンピューターが起動されていない場合は、Azure 管理ポータルから起動します。
+DC2 コンピューターが起動されていない場合は、Microsoft Azure 管理ポータルから起動します。
 
-まず、CORP\User1 の資格情報を使用して DC2 へのリモート デスクトップ接続を作成します。
+まず、CORP\\User1 の資格情報を使用して DC2 へのリモート デスクトップ接続を作成します。
 
 次に、SharePoint ファーム管理者アカウントを作成します。DC2 で管理者レベルの Windows PowerShell プロンプトを開き、次のコマンドを実行します。
 
@@ -71,19 +72,19 @@ SPFarmAdmin アカウント パスワードを指定するよう求められた�
 
 	$storageacct="<Name of the storage account for your TestVNET virtual network>"
 	$ServiceName="<The cloud service name for your TestVNET virtual network>"
-	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for SQL1."
-	$cred2=Get-Credential –UserName "CORP\User1" –Message "Now type the password for the CORP\User1 account."
-	Set-AzureStorageAccount –StorageAccountName $storageacct
+	$cred1=Get-Credential -Message "Type the name and password of the local administrator account for SQL1."
+	$cred2=Get-Credential -UserName "CORP\User1" -Message "Now type the password for the CORP\User1 account."
+	Set-AzureStorageAccount -StorageAccountName $storageacct
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "SQL Server 2014 RTM Standard on Windows Server 2012 R2" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name SQL1 -InstanceSize Large -ImageName $image
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain "CORP" -DomainUserName "User1" -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain "corp.contoso.com"
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
-	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 100 -DiskLabel SQLFiles –LUN 0 -HostCaching None
-	New-AzureVM –ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
+	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 100 -DiskLabel SQLFiles -LUN 0 -HostCaching None
+	New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
 次に、*ローカル管理者アカウントを使用して*新しい SQL1 仮想マシンに接続します。
 
-1.	Azure 管理ポータルの左側のウィンドウで **[仮想マシン]** をクリックし、SQL1 の [状態] 列で **[実行中]** をクリックします。
+1.	Microsoft Azure 管理ポータルの左側のウィンドウで **[仮想マシン]** をクリックし、SQL1 の [状態] 列で **[実行中]** をクリックします。
 2.	タスク バーで、**[接続]** をクリックします。 
 3.	SQL1.rdp を開くよう求められたら、**[開く]** をクリックします。
 4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
@@ -94,7 +95,7 @@ SPFarmAdmin アカウント パスワードを指定するよう求められた�
 
 続いて、基本的な接続テストと SQL Server のトラフィックを許可するように Windows ファイアウォールの規則を構成します。SQL1 で管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
 
-	New-NetFirewallRule -DisplayName "SQL Server" -Direction Inbound –Protocol TCP –LocalPort 1433,1434,5022 -Action allow 
+	New-NetFirewallRule -DisplayName "SQL Server" -Direction Inbound -Protocol TCP -LocalPort 1433,1434,5022 -Action allow 
 	Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
 	ping dc1.corp.contoso.com
 
@@ -150,13 +151,13 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
 まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトで次のコマンドを使用して、SP1 用に Azure 仮想マシンを作成します。
 
 	$ServiceName="<The cloud service name for your TestVNET virtual network>"
-	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for SP1."
-	$cred2=Get-Credential –UserName "CORP\User1" –Message "Now type the password for the CORP\User1 account."
+	$cred1=Get-Credential -Message "Type the name and password of the local administrator account for SP1."
+	$cred2=Get-Credential -UserName "CORP\User1" -Message "Now type the password for the CORP\User1 account."
 	$image= Get-AzureVMImage | where { $_.Label -eq "SharePoint Server 2013 Trial" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name SP1 -InstanceSize Large -ImageName $image
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain "CORP" -DomainUserName "User1" -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain "corp.contoso.com"
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
-	New-AzureVM –ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
+	New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
 次に、CORP\User1 の資格情報を使用して、SP1 仮想マシンに接続します。
 
@@ -178,7 +179,7 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 7.	[SharePoint サーバーの全体管理 Web アプリケーションの構成] ページで、**[次へ]** をクリックします。
 8.	[SharePoint 製品構成ウィザードの終了] ページで、**[次へ]** をクリックします。SharePoint 製品構成ウィザードは、完了するまで数分かかる場合があります。
 9.	[構成成功] ページで **[完了]** をクリックします。完了後、Internet Explorer を起動すると、[ファーム構成の初期設定ウィザード] というタブが表示されます。
-10.	**[SharePoint の品質向上にご協力ください]** ダイアログ ボックスで、**[参加しない]**、**[OK]** を順にクリックします。
+10.	**[SharePoint の品質向上にご協力ください]** ダイアログ ボックスで、**[参加しない]** をクリックしてから **[OK]** をクリックします。
 11.	**[SharePoint ファームの構成方法を指定してください。]** で **[ウィザードの開始]** をクリックします。
 12.	[SharePoint ファームの構成] ページの **[サービス アカウント]** で、**[既存の管理アカウントを使用する]** をクリックします。
 13.	**[サービス]** で、**[State Service]** の横にあるチェック ボックス以外のすべてのチェック ボックスをオフにし、**[次へ]** をクリックします。完了するまで、[ただいま処理中です] ページがしばらく表示されることがあります。
@@ -212,4 +213,4 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 [Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
  
 
-<!----HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

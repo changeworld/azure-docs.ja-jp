@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイスの Web プロキシを設定する | Microsoft Azure"
-	description="StorSimple 用 Windows PowerShell を使用して StorSimple デバイス用に Web プロキシを構成する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple 用 Windows PowerShell を使用して StorSimple デバイス用に Web プロキシを構成する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/31/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/15/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスの Web プロキシを構成する
 
@@ -146,6 +146,9 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 > - Web プロキシの設定に関連するエラーは、StorSimple Manager サービスの管理ポータルには表示されません。構成が完了した後で Web プロキシに問題がある場合、管理ポータルではデバイスの状態が **"オフライン"** になります。
 
 ## 次のステップ
-デバイスのデプロイまたは Web プロキシ設定の構成中に問題が発生した場合は、[StorSimple デバイスのデプロイのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページを参照してください。
 
-<!---HONumber=September15_HO1-->
+- デバイスのデプロイまたは Web プロキシ設定の構成中に問題が発生した場合は、[StorSimple デバイスのデプロイのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページを参照してください。
+
+- StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
+
+<!---HONumber=Sept15_HO3-->

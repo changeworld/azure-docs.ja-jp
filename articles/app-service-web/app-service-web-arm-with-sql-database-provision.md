@@ -5,15 +5,15 @@
 	documentationCenter="" 
 	authors="tfitzmac" 
 	manager="wpickett" 
-	editor=""/>
+	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web" 
+	ms.service="app-service" 
 	ms.workload="web" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/11/2015" 
+	ms.date="09/15/2015" 
 	ms.author="tomfitz"/>
 
 # Web アプリと SQL Database をプロビジョニングする
@@ -25,6 +25,8 @@
 アプリのデプロイの詳細については、「[Deploy a complex application predictably in Azure (Azure で複雑なアプリケーションを予測どおりにデプロイする)](app-service-deploy-complex-application-predictably.md)」を参照してください。
 
 完全なテンプレートについては、「[Web App With SQL Database template (SQL Database を使用する Web アプリ用のテンプレート)](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json)」を参照してください。
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## デプロイ対象
 
@@ -450,4 +452,4 @@
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="node.js と信頼性の高いアクター | Microsoft Azure"
-	description="信頼性の高いアクターを使用し、Azure Service Fabric プラットフォームの上で実行される node.js express アプリケーションを構築する方法についてのチュートリアル。"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="clca"
-	manager="timlt"
-	editor=""/>
+   description="信頼性の高いアクターを使用し、Azure Service Fabric プラットフォームの上で実行される node.js express アプリケーションを構築する方法についてのチュートリアル。"
+   services="service-fabric"
+   documentationCenter="nodejs"
+   authors="clca"
+   manager="timlt"
+   editor=""/>
 
 <tags
    ms.service="service-fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/17/2015"
-	ms.author="claudioc"/>
+   ms.devlang="nodejs"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/17/2015"
+   ms.author="claudioc"/>
 
 
 # node.js と信頼性の高いアクター: 優先順位の高い組み合わせ
@@ -224,4 +224,4 @@ public class Startup
 [9]: ./media/service-fabric-node-and-reliable-actors-app/application-project-reference.PNG
 [10]: ./media/service-fabric-node-and-reliable-actors-app/solution-deploy.PNG
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->

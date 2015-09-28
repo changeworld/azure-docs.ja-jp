@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.date="09/16/2015" 
 	ms.author="sdanie"/>
 
 
@@ -128,4 +128,4 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO3-->

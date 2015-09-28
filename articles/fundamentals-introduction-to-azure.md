@@ -132,7 +132,6 @@ Azure には、リレーショナル ストレージのために SQL Database �
 
 しかし、SQL Database は、クラウド内の単なる DBMS ではなく、PaaS サービスです。データとそれにアクセスするユーザーはお客様が管理しますが、ハードウェア インフラストラクチャの管理、データベースとオペレーティング システム ソフトウェアの自動更新などの単純な管理作業は SQL Database が行います。また、SQL Database は、高可用性、自動バックアップ、特定の時点に復元する機能も備え、複数の地理的なリージョンにコピーを複製できます。
 
-さらに、少額で、下位に専用サーバーを設けることができる Premium オプションもあります。Standard オプションでは、データベースは共有ハードウェア上で実行され、特にサーバーがビジーな場合は、データベース クエリを調整できます。
 
 **SQL Database のシナリオ**
 
@@ -612,4 +611,4 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

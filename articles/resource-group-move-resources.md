@@ -38,6 +38,7 @@
 現在、新しいリソース グループへの移動と新しいサブスクリプションへの移動の両方をサポートするサービスは、次のとおりです。
 
 - API Management
+- Azure DocumentDB
 - Azure Search
 - Azure Web Apps (いくつかの [制限](app-service-web/app-service-move-resources.md)が適用されます)
 - Data Factory
@@ -102,4 +103,4 @@ Web アプリを使用している場合、App Service プランのみを移動�
 - [Using the Azure Preview Portal to manage your Azure resources (Azure プレビュー ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
 - [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

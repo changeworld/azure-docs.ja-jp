@@ -2,7 +2,7 @@
 	pageTitle="Java Web プロジェクトで Application Insights を使う | Microsoft Azure"
 	description="Application Insights を使用して Java Web サイトのパフォーマンスと利用状況を監視します"
 	services="application-insights"
-	documentationCenter="java"
+    documentationCenter="java"
 	authors="alancameronwills"
 	manager="douge"/>
 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/30/2015"
+	ms.date="09/09/2015"
 	ms.author="awills"/>
 
 # Java Web プロジェクトで Application Insights を使う
@@ -30,7 +30,7 @@
 必要なものは次のとおりです。
 
 * Oracle JRE 1.6 以降、または Zulu JRE 1.6 以降
-* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料評価版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
+* [Microsoft Azure](http://azure.microsoft.com/) のサブスクリプション([無料試用版](http://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
 
 *既にライブの Web アプリがある場合、代替手順に従って [Web サーバーで実行時に SDK を追加](app-insights-java-live.md)することができます。これによってコードのリビルドを回避できますが、ユーザーの利用状況を追跡するためにコードを記述することができなくなります。*
 
@@ -206,19 +206,13 @@ Application Insights パッケージを含めるように次の要素を編集�
 
 (既定のスタックにインターセプターが定義されている場合は、単にインターセプターをそのスタックに追加できます)。
 
-## 5\.サーバーにインストールします。
 
-Windows サーバーに次のものをインストールします。
 
-* [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
-
-(これにより、パフォーマンス カウンターが有効になります。)
-
-## 6\.アプリケーションを実行する
+## 5\.アプリケーションを実行する
 
 開発用コンピューターでデバッグ モードで実行するか、サーバーに発行します。
 
-## 7\.Application Insights でのテレメトリを表示する
+## 6\.Application Insights でのテレメトリを表示する
 
 [Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
@@ -250,15 +244,34 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 これにより、要求数や要求の平均実行時間など、要求の意味のある集計を行うことができます。
 
+
+## 5\.サーバーへのアプリのインストール
+
+次に、サーバーにアプリを発行してユーザーがアプリを使用できるようにし、ポータルに表示されるテレメトリを監視します。
+
+* アプリケーションがこれらのポートにテレメトリを送信できるようにファイアウォールが設定されていることを確認します。
+
+ * dc.services.visualstudio.com:443
+ * dc.services.visualstudio.com:80
+ * f5.services.visualstudio.com:443
+ * f5.services.visualstudio.com:80
+
+
+* Windows サーバーに次のものをインストールします。
+
+ * [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
+
+    (これにより、パフォーマンス カウンターが有効になります。)
+
 ## 例外と要求エラー
 
-未処理の例外は、次のように収集されます。
+未処理の例外は、自動的に収集されます。
 
 ![](./media/app-insights-java-get-started/21-exceptions.png)
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
-* [TrackException への呼び出しをコードに挿入][apiexceptions]します。
+* [TrackException への呼び出しをコードに挿入][apiexceptions]します。 
 * [Java エージェントをサーバーにインストール](app-insights-java-agent.md)します。監視するメソッドを指定します。
 
 
@@ -349,6 +362,17 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 * 問題の診断に役立つ情報を得るには、[イベントおよびログを検索][diagnostic]します。
 
 
+## 可用性 Web テスト
+
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。セットアップするには、概要ブレードの空の Web テスト グラフをクリックし、パブリック URL を入力します。
+
+応答時間のグラフが表示されます。また、サイトがダウンしている場合はメールによる通知を受け取ります。
+
+![Web テストの例](./media/app-insights-java-eclipse/appinsights-10webtestresult.png)
+
+[可用性 Web テストの詳細についてはこちら。][availability]
+
+
 
 
 
@@ -370,4 +394,4 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

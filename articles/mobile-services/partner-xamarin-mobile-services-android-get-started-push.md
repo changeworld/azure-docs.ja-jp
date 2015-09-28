@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/19/2015" 
+	ms.date="09/16/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services アプリへのプッシュ通知の追加
@@ -86,4 +86,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

@@ -1,22 +1,22 @@
-<properties 
-	pageTitle="ストレージの監視、診断、およびトラブルシューティング | Microsoft Azure" 
-	description="ストレージ分析、クライアント側ログ、他のサード パーティのツールなどの機能を使用して、Azure Storage 関連の問題を特定、診断、およびトラブルシューティングします。" 
-	services="storage" 
-	documentationCenter="" 
-	authors="dominicbetts" 
-	manager="adinah" 
+<properties
+	pageTitle="Storage の監視、診断、およびトラブルシューティング | Microsoft Azure"
+	description="ストレージ分析、クライアント側ログ、他のサード パーティのツールなどの機能を使用して、Azure Storage 関連の問題を特定、診断、およびトラブルシューティングします。"
+	services="storage"
+	documentationCenter=""
+	authors="dominicbetts"
+	manager="adinah"
 	editor=""/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/03/2015" 
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/03/2015"
 	ms.author="v-dobett"/>
 
-# Microsoft Azure Storage の監視、診断、およびトラブルシューティング 
+# Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 
 クラウド環境でホストされる分散型アプリケーションの問題の診断およびトラブルシューティングは、従来の環境よりも複雑になる可能性があります。アプリケーションは、PaaS や IaaS インフラストラクチャ、オンプレミス、モバイル デバイス、これらを組み合わせたものにデプロイできます。一般に、アプリケーションのネットワーク トラフィックは公衆ネットワークと専用ネットワークを経由する可能性があり、アプリケーションでは、Microsoft Azure Storage のテーブル、BLOB、キュー、ファイルのほか、リレーショナル データベースやドキュメント データベースといった他のデータ ストアなどの複数のストレージ技術を使用している可能性があります。
 
@@ -180,7 +180,7 @@ Azure ポータルでは、ストレージ アカウントの **[監視]** ペ�
 
 ### <a name="service-health-issues"></a>サービス正常性の問題
 
-一般に、サービス正常性の問題は制御不能です。Azure ポータルに、Storage サービスを含む Azure サービスに現在発生している問題に関する情報が提供されます。ストレージ アカウントの作成時に読み取りアクセス geo 冗長ストレージを選択していた場合は、プライマリ ロケーションのデータが使用できなくなったときに、アプリケーションはセカンダリ ロケーションの読み取り専用コピーに一時的に切り替えることができます。そのためには、アプリケーションが、プライマリとセカンダリのストレージ ロケーションの間で切り替えを実行し、制限された機能モードで読み取り専用データを使用して動作できる必要があります。Azure ストレージ クライアント ライブラリを使用して、プライマリ ストレージから読み取れなくなった場合にセカンダリ ストレージから読み取れるようにする再試行ポリシーを定義できます。また、アプリケーションは、セカンダリ ロケーションのデータが実際に一貫性のあるデータかどうかを認識できる必要もあります。詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx" target="_blank">Azure Storage の冗長オプションおよび読み取りアクセス geo 冗長ストレージ</a>に関するブログ記事を参照してください。
+一般に、サービス正常性の問題は制御不能です。Azure ポータルに、Storage サービスを含む Azure サービスに現在発生している問題に関する情報が提供されます。ストレージ アカウントの作成時に読み取りアクセス地理冗長ストレージを選択していた場合は、プライマリ ロケーションのデータが使用できなくなったときに、アプリケーションはセカンダリ ロケーションの読み取り専用コピーに一時的に切り替えることができます。そのためには、アプリケーションが、プライマリとセカンダリのストレージ ロケーションの間で切り替えを実行し、制限された機能モードで読み取り専用データを使用して動作できる必要があります。Azure ストレージ クライアント ライブラリを使用して、プライマリ ストレージから読み取れなくなった場合にセカンダリ ストレージから読み取れるようにする再試行ポリシーを定義できます。また、アプリケーションは、セカンダリ ロケーションのデータが実際に一貫性のあるデータかどうかを認識できる必要もあります。詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx" target="_blank">Azure Storage の冗長オプションおよび読み取りアクセス geo 冗長ストレージ</a>に関するブログ記事を参照してください。
 
 ### <a name="performance-issues"></a>パフォーマンスの問題
 
@@ -226,12 +226,12 @@ Storage Client Library for .NET では、アプリケーションで実行され
 - Microsoft Message Analyzer は、Netmon の後継となる Microsoft のツールです。ネットワーク パケット データをキャプチャできるほか、他のツールでキャプチャされたログ データを表示および分析できます。詳細については、「[付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ]」を参照してください。
 - クライアント マシンが Azure Storage サービスにネットワーク経由で接続できることを確認するための基本的な接続テストを実行する目的で、クライアント側で標準的な **ping** ツールを使用することはできません。しかし、**tcping** ツールを使用して接続を確認することはできます。**Tcping** は、<a href="http://www.elifulkerson.com/projects/tcping.php" target="_blank">http://www.elifulkerson.com/projects/tcping.php</a> からダウンロードできます。
 
-多くの場合、問題の診断にはストレージ ログおよびストレージ クライアント ライブラリのログ データで十分ですが、状況によっては、これらのネットワーク ログ ツールを使用して取得できる詳細な情報が必要になります。たとえば、Fiddler を使用して HTTP および HTTPS メッセージを表示し、Storage サービスとの間で送受信されたヘッダーおよびペイロード データを確認して、クライアント アプリケーションがどのようにストレージ操作を再試行したのかを調べることができます。Wireshark などのパケット レベルで動作するプロトコル アナライザーを使用して TCP データを表示し、失われたパケットや接続問題をトラブルシューティングすることができます。Message Analyzer は HTTP 層と TCP 層の両方で動作可能です。
+多くの場合、問題の診断には ストレージ ログおよび ストレージ クライアント ライブラリのログ データで十分ですが、状況によっては、これらのネットワーク ログ ツールを使用して取得できる詳細な情報が必要になります。たとえば、Fiddler を使用して HTTP および HTTPS メッセージを表示し、Storage サービスとの間で送受信されたヘッダーおよびペイロード データを確認して、クライアント アプリケーションがどのようにストレージ操作を再試行したのかを調べることができます。Wireshark などのパケット レベルで動作するプロトコル アナライザーを使用して TCP データを表示し、失われたパケットや接続問題をトラブルシューティングすることができます。Message Analyzer は HTTP 層と TCP 層の両方で動作可能です。
 
 ## <a name="end-to-end-tracing"></a>エンド ツー エンド トレース
 
 各種ログ ファイルを使用したエンド ツー エンド トレースは、潜在的な問題を調査するための有用な手法です。メトリック データからの日時情報を使用すると、問題のトラブルシューティングに役立つ詳細な情報についてログ ファイルを調べるときにどこから開始するとよいかが分かります。
-	
+
 ### <a name="correlating-log-data"></a>ログ データの関連付け
 
 クライアント アプリケーション、ネットワーク トレース、およびサーバー側ストレージ ログからのログを表示する際、各種ログ ファイルの要求を相関付ける機能が重要になります。ログ ファイルには、相関 ID として役立つ多数の各種フィールドが含まれます。クライアント要求 ID は、各種ログのエントリを相関付けるために使用する最も役立つフィールドです。ただし、サーバー要求 ID またはタイムスタンプのどちらかを使用すると役立つ場合もあります。以下のシナリオは、こうしたオプションの詳細を示しています。
@@ -264,7 +264,7 @@ Storage サービスにより、サーバー要求 ID が自動生成されま�
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Create an Operation Context that includes custom ClientRequestId string based on constants defined within the application along with a Guid. 
+    // Create an Operation Context that includes custom ClientRequestId string based on constants defined within the application along with a Guid.
     OperationContext oc = new OperationContext();
     oc.ClientRequestID = String.Format("{0} {1} {2} {3}", HOSTNAME, APPNAME, USERID, Guid.NewGuid().ToString());
 
@@ -281,11 +281,11 @@ Storage サービスにより、サーバー要求 ID が自動生成されま�
     }
     catch (StorageException storageException)
     {
-        Console.WriteLine("Storage exception {0} occurred", storageException.Message); 
+        Console.WriteLine("Storage exception {0} occurred", storageException.Message);
         // Multiple results may exist due to client side retry logic - each retried operation will have a unique ServiceRequestId
         foreach (var result in oc.RequestResults)
         {
-                Console.WriteLine("HttpStatus: {0}, ServiceRequestId {1}", result.HttpStatusCode, result.ServiceRequestID); 
+                Console.WriteLine("HttpStatus: {0}, ServiceRequestId {1}", result.HttpStatusCode, result.ServiceRequestID);
         }
     }
 
@@ -403,7 +403,7 @@ BLOB ダウンロード要求の **AverageServerLatency** が高い場合、Stor
 
 また **AverageServerLatency** 値が高いという症状は、テーブルやクエリがうまく設計されていないために、スキャン操作が生じたり、前後にアンチ パターンが存在したりする場合に起こり得ます。詳しくは、『[メトリックが PercentThrottlingError の増加を示す]』を参照してください。
 
-> [AZURE.NOTE]注意すべき他の問題を含む包括的なチェック リストは、『拡張可能でパフォーマンスの高いストレージ ベースのアプリケーションを設計するためのチェック リスト』に記されています。
+> [AZURE.NOTE]注意が必要な他の問題を含む総合的なチェック リストについては、[拡張可能でパフォーマンスの高い Storage ベースのアプリケーションを設計するためのチェックリスト](storage-performance-checklist.md)のページを参照してください。
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>キューのメッセージ配信で予期しない遅延が発生する
 
@@ -429,7 +429,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>PercentThrottlingError の一時的増加
 
-アプリケーションにおいてアクティビティ量が多い時期と一致して **PercentThrottlingError** 値が急増している場合、クライアントの再試行に備えて、指数 (非線形) バックオフ戦略を実装する必要があります。それにより、パーティションにおける即座の負荷が減少し、アプリケーションがトラフィックの急増を平滑化するのに役立ちます。Storage クライアント ライブラリを使用して再試行ポリシーを実装する方法の詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.retrypolicies.aspx" target="_blank">Microsoft.WindowsAzure.Storage.RetryPolicies Namespace</a>」を参照してください。
+アプリケーションにおいてアクティビティ量が多い時期と一致して **PercentThrottlingError** 値が急増している場合、クライアントの再試行に備えて、指数 (非線形) バックオフ戦略を実装する必要があります。それにより、パーティションにおける即座の負荷が減少し、アプリケーションがトラフィックの急増を平滑化するのに役立ちます。ストレージ クライアント ライブラリを使用して再試行ポリシーを実装する方法の詳細については、MSDN の「<a href="http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.retrypolicies.aspx" target="_blank">Microsoft.WindowsAzure.Storage.RetryPolicies Namespace</a>」を参照してください。
 
 > [AZURE.NOTE]アプリケーションのアクティビティ量が多い時期と一致せずに、**PercentThrottlingError** 値が急増することもあります。この原因として可能性が高いのは、Storage サービスが負荷分散を改善するためにパーティションを移動している場合です。
 
@@ -448,7 +448,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 メトリックが、いずれかの Storage サービスの **PercentTimeoutError** が増加していることを示しています。同時に、クライアントは、ストレージ操作により「500 操作タイムアウト」HTTP ステータス メッセージを大量に受け取ります。
 
 > [AZURE.NOTE]パーティションを新しいサーバーに移動するときに、Storage サービスの負荷分散要求としてタイムアウト エラーが一時的に表示される場合もあります。
- 
+
 **PercentTimeoutError** メトリックは、**ClientTimeoutError**、**AnonymousClientTimeoutError**、**SASClientTimeoutError**、**ServerTimeoutError**、**AnonymousServerTimeoutError**、**SASServerTimeoutError** の各メトリックを統合したメトリックです。
 
 サーバー タイムアウトは、サーバー上のエラーが原因で生じます。クライアント タイムアウトは、サーバー上の操作がクライアントによって指定されたタイムアウトを超えたことが原因です。たとえば、ストレージ クライアント ライブラリを使用するクライアントは、**QueueRequestOptions** クラスの **ServerTimeout** プロパティを使用して操作のタイムアウトを設定できます。
@@ -473,7 +473,7 @@ Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|応答を待機してい�
 Microsoft.WindowsAzure.Storage|警告|2|85d077ab -…|応答の待機中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。
 Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|応答を受け取りました。Status code = 403, Request ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 = , ETag = .
 Microsoft.WindowsAzure.Storage|警告|2|85d077ab -…|操作中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。
-Microsoft.WindowsAzure.Storage|情報|3 |85d077ab -…|操作を再試行する必要があるかどうかを検査しています。再試行回数 = 0、HTTP 状態コード = 403、例外 = リモート サーバーがエラー「(403) 許可されていません」を返しました。 
+Microsoft.WindowsAzure.Storage|情報|3 |85d077ab -…|操作を再試行する必要があるかどうかを検査しています。再試行回数 = 0、HTTP 状態コード = 403、例外 = リモート サーバーがエラー「(403) 許可されていません」を返しました。
 Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|次の場所が、場所モードに基づいてプライマリに設定されています。
 Microsoft.WindowsAzure.Storage|エラー|1|85d077ab -…|再試行ポリシーは再試行を許可しませんでした。リモート サーバーがエラー「(403) 許可されていません」を返して、失敗しました。
 
@@ -481,7 +481,7 @@ Microsoft.WindowsAzure.Storage|エラー|1|85d077ab -…|再試行ポリシー�
 
 - 一般に、クライアントがすぐに使用できるように SAS を作成する場合には開始時刻は設定しないでください。現行時間を使用して SAS を生成するホストと、Storage サービスのクロックに小さな差異が存在すると、有効になっていない SAS を Storage サービスが受け取る可能性があります。
 - SAS に非常に短い有効期限は設定しないでください。やはり、SAS を生成するホストと Storage サービス間のクロックに小さい差異があると、予想されていたよりも明らかに早く SAS の有効期限が切れる恐れがあります。
-- SAS キーのバージョン パラメーター (例: **sv=2012-02-12**) が、使用しているストレージ クライアント ライブラリのバージョンと一致するようにします。必ず、最新バージョンのストレージ クライアント ライブラリを使用してください。SAS トークンのバージョン管理およびクライアント ライブラリ バージョンの依存関係の詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx" target="_blank"></a>に関するページを参照してください。 
+- SAS キーのバージョン パラメーター (例: **sv=2012-02-12**) が、使用しているストレージ クライアント ライブラリのバージョンと一致するようにします。必ず、最新バージョンのストレージ クライアント ライブラリを使用してください。SAS トークンのバージョン管理およびクライアント ライブラリ バージョンの依存関係の詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx" target="_blank">Microsoft Azure Storage の新機能</a>に関するページを参照してください。
 - ストレージ アクセス キーを再生成すると (Azure ポータルのストレージ アカウントの任意のページで **[アクセス キーの管理]** をクリックします)、既存の SAS トークンが無効になる可能性があります。この状況は、SAS トークンを生成する際にクライアント アプリケーションがキャッシュする有効期限を長く設定していると問題となることがあります。
 
 SAS トークンを生成するためのストレージ クライアント ライブラリを使用すると、有効なトークンの作成が容易です。ただし、Storage REST API を使用し、手動で SAS トークンを構成している場合、MSDN の「<a href="http://msdn.microsoft.com/library/azure/ee395415.aspx" target="_blank">共有アクセス署名を使用したアクセスの委任</a>」を注意深くお読みください。
@@ -792,7 +792,7 @@ Microsoft Message Analyzer を使用すると、Fiddler と同様の方法で HT
 Microsoft Message Analyzer を使用した HTTP および HTTPS トラフィックの Web トレース セッションを構成するには、Microsoft Message Analyzer アプリケーションを実行し、[**File**] メニューで [**Capture/Trace**] をクリックします。使用可能なトレース シナリオのリストで、[**Web Proxy**] を選択します。[**Trace Scenario Configuration**] パネルの [**HostnameFilter**] テキストボックスに、ストレージ エンドポイントの名前を入力します (これらの名前は Azure ポータルで調べられます)。たとえば、Azure ストレージ アカウントの名前が **contosodata** である場合は、[**HostnameFilter**] テキストボックスに以下を追加する必要があります。
 
     contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
-    
+
 > [AZURE.NOTE]空白文字でホスト名を区切ります。
 
 トレース データの収集を開始する準備ができたら、[**Start With**] ボタンをクリックします。
@@ -911,6 +911,5 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 [8]: ./media/storage-monitoring-diagnosing-troubleshooting/wireshark-screenshot-3.png
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
- 
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

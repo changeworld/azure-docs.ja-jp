@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple のハードウェア コンポーネントと状態 | Microsoft Azure"
-	description="StorSimple Manager サービスを使用して StorSimple デバイスのハードウェア コンポーネントを監視する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple Manager サービスを使用して StorSimple デバイスのハードウェア コンポーネントを監視する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="09/02/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/15/2015"
+   ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用したハードウェア コンポーネントと状態の監視
 
@@ -125,10 +125,12 @@
 |デバイス コントローラーへの接続|I/O|物理|Controller|いいえ|EBOD I/O モジュールとデバイス コントローラー間の接続の状態を示します。|
 
 ## 次のステップ
-機能低下または障害の状態のデバイス コンポーネントのトラブルシューティングが必要な場合は、「[StorSimple モニタリング インジケーター](storsimple-monitoring-indicators.md)」をご覧ください。
+- StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
+ 
+- 機能低下または障害の状態のデバイス コンポーネントのトラブルシューティングが必要な場合は、「[StorSimple モニタリング インジケーター](storsimple-monitoring-indicators.md)」をご覧ください。
 
-障害が発生したハードウェア コンポーネントを交換するには、「[StorSimple のハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」をご覧ください。
+- 障害が発生したハードウェア コンポーネントを交換するには、「[StorSimple のハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」をご覧ください。
 
-デバイスの問題が解決しない場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
+- デバイスの問題が解決しない場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

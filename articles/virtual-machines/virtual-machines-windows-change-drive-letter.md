@@ -3,7 +3,8 @@
 	description="Azure の Windows ベースの VM で一時ディスクを再マップする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn
+"
 	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
@@ -15,7 +16,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/27/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 #Windows 一時ディスクのドライブ文字を変更する方法
 
@@ -65,4 +66,4 @@ D ドライブの既存のデータ ディスクを使用する場合は、そ�
 
 [Storage]: ../storage-whatis-account.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO3-->

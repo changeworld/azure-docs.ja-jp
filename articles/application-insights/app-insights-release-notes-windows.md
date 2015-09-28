@@ -1,17 +1,17 @@
 <properties 
-	pageTitle="Windows 向けの Application Insights のリリース ノート"
-	description="最新の更新プログラム。"
-	services="application-insights"
-	documentationCenter=""
-	authors="alancameronwills"
+	pageTitle="Windows 向けの Application Insights のリリース ノート" 
+	description="最新の更新プログラム。" 
+	services="application-insights" 
+    documentationCenter=""
+	authors="alancameronwills" 
 	manager="douge"/>
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/18/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="06/18/2015" 
 	ms.author="sergkanz"/>
  
 # Windows Phone と Windows ストア向けの Application Insights SDK のリリース ノート
@@ -31,6 +31,23 @@
 * インストール済みの Application Insights パッケージを選択し、[アップグレード] を選択します。
 * 新旧のバージョンの ApplicationInsights.config を比較します。旧バージョンに対して行ったカスタマイズをもう一度マージします。
 * ソリューションをリビルドします。
+
+## バージョン 1.2
+
+### Windows App SDK
+
+- アプリが再度開かれた後に永続化したテレメトリが送信されるのを阻止していた FileNotFound 例外を修正します。
+
+### コア SDK
+
+- [github](http://github.com/microsoft/ApplicationInsights-dotnet) から出荷された Application Insights SDK の最初のバージョン
+
+## バージョン 1.1
+
+### コア SDK
+
+- SDK では、アプリケーションからの依存関係の呼び出しに関する情報を含む新しいテレメトリ タイプ ```DependencyTelemetry``` が導入されました。
+- 新しいメソッド ```TelemetryClient.TrackDependency``` では、アプリケーションからの依存関係の呼び出しに関する情報を送信することができます。
 
 ## バージョン 1.0.0
 
@@ -77,4 +94,4 @@
 
 使用可能な以前のバージョンのリリース ノートはありません。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO3-->

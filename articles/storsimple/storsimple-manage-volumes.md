@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/09/2015"
+   ms.date="09/15/2015"
    ms.author="v-sharos" />
 
 # StorSimple Manager サービスを使用してボリュームを管理する
@@ -88,7 +88,10 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
 ボリュームを拡張する必要がある場合やボリュームにアクセスするホストを変更する必要がある場合は、ボリュームを変更します。
 
-> [AZURE.IMPORTANT]デバイス上のボリューム サイズを変更した場合、ホスト上のボリュームのサイズも変更する必要があります。ここで説明されているホスト側の手順は、Windows Server 2012 (2012R2) 向けです。Linux などの他のホスト オぺレーティング システムでは、手続きが異なります。別のオペレーティング システムで稼働しているホスト上のボリュームを変更する場合は、お使いのホスト オペレーティング システムの指示を参照してください。
+> [AZURE.IMPORTANT]
+>
+> - デバイス上のボリューム サイズを変更した場合、ホスト上のボリュームのサイズも変更する必要があります。 
+> - ここで説明されているホスト側の手順は、Windows Server 2012 (2012R2) 向けです。Linux などの他のホスト オぺレーティング システムでは、手続きが異なります。別のオペレーティング システムで稼働しているホスト上のボリュームを変更する場合は、お使いのホスト オペレーティング システムの指示を参照してください。 
 
 ### ボリュームを変更するには
 
@@ -120,6 +123,10 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
    2. **[ディスクの管理]** を右クリックし、**[ディスクの再スキャン]** を選択します。
    3. ディスクの一覧で、更新したボリュームを選択して右クリックし、**[ボリュームの拡張]** を選択します。ボリューム拡張ウィザードが起動します。**[次へ]** をクリックします。
    4. 既定の値を使用してウィザードを完了します。ウィザードが終了すると、サイズが増えたボリュームが表示されます。
+
+![ビデオ](./media/storsimple-manage-volumes/Video_icon.png) **ビデオ**
+
+ボリュームを展開する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/expand-a-storsimple-volume)を参照してください。
 
 ## ボリュームをオフラインにする
 
@@ -180,13 +187,12 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 
     ![ボリュームの基本設定を変更する](./media/storsimple-manage-volumes/HCS_MonitorVolumeM.png)
 
+
 ## 次のステップ
 
-[StorSimple ボリュームを拡張する](http://azure.microsoft.com/documentation/videos/expand-a-storsimple-volume)方法を示すビデオを視聴します。
-
-[StorSimple ボリュームを複製する](storsimple-clone-volume.md)方法について説明します。
-
+- [StorSimple ボリュームを複製する](storsimple-clone-volume.md)方法について説明します。
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

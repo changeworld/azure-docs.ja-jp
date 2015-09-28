@@ -3,7 +3,7 @@
 	description="Windows を実行する Azure 仮想マシンを、Azure プレビュー ポータルの Azure Marketplace を利用して作成する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="hero-article"
 	ms.date="08/14/2015"
-	ms.author="kathydav"/>
+	ms.author="cynthn"/>
 
 # Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する#
 
@@ -107,4 +107,4 @@
 * Azure PowerShell と Azure CLI を使用して、[仮想マシンのイメージの検索と選択](resource-groups-vm-searching.md)を行います。
 * [Azure リソース マネージャー](virtual-machines-how-to-automate-azure-resource-manager.md)と [Azure リソース マネージャー テンプレート](http://azure.microsoft.com/documentation/templates/)を使用して、仮想マシンとワークロードのデプロイと管理を自動化します。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO3-->

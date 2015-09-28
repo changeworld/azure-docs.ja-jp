@@ -11,7 +11,7 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows-sharepoint"
+	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/11/2015"
@@ -19,13 +19,15 @@
 
 # Azure インフラストラクチャ サービスのワークロード: イントラネット SharePoint ファーム
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 Microsoft Azure で、最初または次の SharePoint ファームを設定し、簡単に構成できる機能と、新機能を追加したり主要な機能を最適化したりするためにファームを迅速に拡張する機能を活用します。多くの SharePoint ファームは、標準、高可用の 3 層構成から、分散キャッシュや検索などのパフォーマンスや個別の役割に合わせて、数十以上のサーバーを含むファームへと成長します。
 
 Azure インフラストラクチャ サービスの仮想マシンと仮想ネットワークの機能を使用すると、オンプレミス ネットワークに透過的に接続された SharePoint ファームをすばやくデプロイし、実行できるようになります。セットアップできるネットワークの例を次に示します。
 
 ![](./media/virtual-machines-workload-intranet-sharepoint-farm/workload-spsqlao.png)
 
-Azure 仮想ネットワークは、すべての名前とトラフィック ルーティングを修正したオンプレミス ネットワークの拡張なので、ユーザーはオンプレミス データセンターにあるネットワークと同様にアクセスできます。
+Azure Virtual Network は、すべての名前とトラフィック ルーティングを修正したオンプレミス ネットワークの拡張なので、ユーザーはオンプレミス データセンターにあるネットワークと同様にアクセスできます。
 
 この構成では、新しい Azure 仮想マシンを追加することで、SharePoint ファームを簡単に拡張できます。この場合は、ハードウェアとメンテナンス両方の継続的なコストは、独自のデータセンターで同等のファームを実行するよりも低くなります。
 
@@ -33,7 +35,7 @@ Azure インフラストラクチャ サービスでイントラネット ShareP
 
 次の手順は、Azure でホストされている開発/テスト イントラネット SharePoint ファームのセットアップです。
 
-> [AZURE.NOTE]Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview およびその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[Test the SharePoint Server 2016 IT Preview in Azure](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」 (Azure での SharePoint Server 2016 IT Preview のテスト) を参照してください。
+> [AZURE.NOTE]Microsoft は、SharePoint Server 2016 IT Preview をリリースしました。SharePoint Server 2016 IT Preview とその前提条件があらかじめインストールされた Azure 仮想マシン ギャラリー イメージを使用すると、このプレビュー版を簡単にインストールしてテストすることができます。詳細については、「[SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)」を参照してください。
 
 ## Azure でホストされている開発/テスト イントラネット SharePoint ファームを作成する
 
@@ -58,7 +60,7 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 次の手順では、Azure で高可用イントラネット SharePoint ファームを作成します。
 
-## Azure でホストされているイントラネット SharePoint ファームを展開する
+## Azure でホストされているイントラネット SharePoint ファームをデプロイする
 
 機能的で高可用なイントラネット SharePoint ファームの基本的で代表的な構成は、次の例のようになります。
 
@@ -126,4 +128,4 @@ Azure でホストされている SharePoint の開発/テスト環境を作成�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO3-->

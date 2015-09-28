@@ -1,19 +1,19 @@
-<properties 
+<properties
    pageTitle="Publish-WebApplicationWebSite (Windows PowerShell スクリプト)"
-	description="Web プロジェクトを Azure Web サイトに発行する方法について説明します。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tglee"/>
-<tags 
+   description="Web プロジェクトを Azure Web サイトに発行する方法について説明します。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tglee" />
+<tags
    ms.service="multiple"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="multiple"
-	ms.date="08/13/2015"
-	ms.author="kempb"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="multiple"
+   ms.date="08/13/2015"
+   ms.author="kempb" />
 
 # Publish-WebApplicationWebSite (Windows PowerShell スクリプト)
 
@@ -22,13 +22,13 @@
 Web プロジェクトを Azure Web サイトに発行します。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。
 
 	Publish-WebApplicationWebSite
-	–Configuration <configuration> 
+	–Configuration <configuration>
 	-SubscriptionName <subscriptionName>
 	-WebDeployPackage <packageName>
 	-DatabaseServerPassword @{Name = "name"; Password = "password"}
 	-SendHostMessagesToOutput
 	-Verbose
-	
+
 
 ## 構成
 
@@ -68,14 +68,14 @@ Web サイトに発行する Web デプロイ パッケージへのパス。Visu
 |既定値|なし|
 |パイプライン入力を許可する|false|
 |ワイルドカード文字を許可する|false|
-	
+
 ## DatabaseServerPassword
 
 Azure の SQL データベースのユーザー名およびパスワード。
 
 |パラメーター|既定値|
-|別名|なし|
 |---|---|
+|別名|なし|
 |必須|false|
 |位置|named|
 |既定値|なし|
@@ -129,4 +129,4 @@ JSON 構成ファイルは、デプロイ対象を変更するように編集で
 
 [Publish-WebApplicationVM (Windows PowerShell スクリプト)](https://msdn.microsoft.com/library/azure/dn689112.aspx)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO3-->
