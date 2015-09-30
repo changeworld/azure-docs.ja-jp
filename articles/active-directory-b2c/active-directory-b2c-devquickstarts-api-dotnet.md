@@ -213,8 +213,10 @@ public IEnumerable<Models.Task> Get()
 
 ## 8\.ポリシーの編集
 
-Azure AD B2C を使用して API をセキュリティで保護したので、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。<!--add **identity providers**
-to the policies, allowing you users to sign into the Task Client using social accounts.  You can also -->ポリシー内の**アプリケーション要求**を操作し、Web API で利用できるユーザー情報を変更することができます。その他の要求を追加した場合、その要求は、既に説明したように .NET MVC Web API の `ClaimsPrincipal` オブジェクト内で利用できます。
+Azure AD B2C を使用して API をセキュリティで保護したので、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。ポリシー内の**アプリケーション要求**を操作し、Web API で利用できるユーザー情報を変更することができます。その他の要求を追加した場合、その要求は、既に説明したように .NET MVC Web API の `ClaimsPrincipal` オブジェクト内で利用できます。
+<!--add **identity providers**
+to the policies, allowing you users to sign into the Task Client using social accounts.  You can also 
+-->
 
 <!--
 
@@ -228,4 +230,4 @@ You can now move onto more advanced B2C topics.  You may want to try:
 
 -->
 
-<!---HONumber=Sept15_HO3-->
+<!----HONumber=Sept15_HO3-->
