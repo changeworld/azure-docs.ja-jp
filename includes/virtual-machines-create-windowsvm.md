@@ -32,4 +32,4 @@
 
 	![Configure VM Agent and the endpoints of the virtual machine](./media/virtual-machines-create-WindowsVM/vmcreated.png)
 
-<!---HONumber=September15_HO1-->
+<!----HONumber=Sept15_HO1-->
