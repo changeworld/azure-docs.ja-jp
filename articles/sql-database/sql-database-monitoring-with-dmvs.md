@@ -42,7 +42,8 @@ In an instance of on-premises SQL Server, dynamic management views return server
 The following query returns the size of your database (in megabytes):
 
 ```
--- データベースのサイズを計算します。SELECT SUM(reserved\_page\_count)*8.0/1024 FROM sys.dm\_db\_partition\_stats; GO ```
+-- データベースのサイズを計算します。SELECT SUM(reserved_page_count)*8.0/1024 FROM sys.dm_db_partition_stats; GO
+```
 
 次のクエリは、データベース内の個々のオブジェクトのサイズ (MB 単位) を返します。
 
@@ -57,7 +58,7 @@ GO
 
 ## 接続の監視
 
-[sys.dm\_exec\_connections](https://msdn.microsoft.com/library/ms181509.aspx) ビューを使用すると、特定の Azure SQL Database サーバーに対して確立している接続に関する情報と、各接続の詳細を取得できます。また、[sys.dm\_exec\_sessions](https://msdn.microsoft.com/library/ms176013.aspx) ビューは、すべてのアクティブなユーザー接続と内部タスクに関する情報を取得する際に役立ちます。次のクエリは、現在の接続に関する情報を取得します。
+[sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) ビューを使用すると、特定の Azure SQL Database サーバーに対して確立している接続に関する情報と、各接続の詳細を取得できます。また、[sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) ビューは、すべてのアクティブなユーザー接続と内部タスクに関する情報を取得する際に役立ちます。次のクエリは、現在の接続に関する情報を取得します。
 
 ```
 SELECT 
@@ -72,7 +73,7 @@ JOIN sys.dm_exec_sessions AS s
 WHERE c.session_id = @@SPID;
 ```
 
-> [AZURE.NOTE]**sys.dm\_exec\_requests** と **sys.dm\_exec\_sessions views** を実行したときに、ユーザーがデータベースに対して **VIEW DATABASE STATE** アクセス許可を持っている場合、データベースで実行中のすべてのセッションがユーザーに表示されます。アクセス許可がない場合は、現在のセッションのみが表示されます。
+> [AZURE.NOTE]**sys.dm_exec_requests** と **sys.dm_exec_sessions views** を実行したときに、ユーザーがデータベースに対して **VIEW DATABASE STATE** アクセス許可を持っている場合、データベースで実行中のすべてのセッションがユーザーに表示されます。アクセス許可がない場合は、現在のセッションのみが表示されます。
 
 ## クエリのパフォーマンスの監視
 
@@ -101,11 +102,11 @@ ORDER BY 2 DESC;
 
 ### クエリのブロックの監視
 
-クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。sys.dm\_tran\_locks ビューを使用すると、Azure SQL Database で現在ロックされているアクティビティに関する情報を取得できます。コード例については、SQL Server オンライン ブックの「[sys.dm\_tran\_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx)」を参照してください。
+クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。sys.dm\_tran\_locks ビューを使用すると、Azure SQL Database で現在ロックされているアクティビティに関する情報を取得できます。コード例については、SQL Server オンライン ブックの「[sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx)」を参照してください。
 
 ### クエリ プランの監視
 
-クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。次の例では、[sys.dm\_exec\_query\_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、CPU の累積使用量が最も多いクエリを特定します。
+クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。次の例では、[sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、CPU の累積使用量が最も多いクエリを特定します。
 
 ```
 SELECT 
@@ -131,4 +132,4 @@ ORDER BY highest_cpu_queries.total_worker_time DESC;
 
 [SQL Database の概要](sql-database-technical-overview.md)
 
-<!---HONumber=Sept15_HO3-->
+<!----HONumber=Sept15_HO3-->
