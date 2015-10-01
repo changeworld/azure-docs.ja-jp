@@ -41,7 +41,7 @@
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-The completed application is provided at the end of this tutorial as well.
+完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
 ## 1. アプリを登録します
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com)で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います.  次のことを確認します
@@ -72,23 +72,24 @@ The completed application is provided at the end of this tutorial as well.
 - `npm install passport-azure-ad`
 
 
-This will install the libraries that passport-azure-ad depend on.
+これにより、passport-azure-ad が依存するライブラリがインストールされます。
 
-## 3. Set up your app to use the passport-node-js strategy
-Here, we'll configure the Express middleware to use the OpenID Connect authentication protocol.  Passport will be used to issue sign-in and sign-out requests, manage the user's session, and get information about the user, amongst other things.
+## 3. passport-node-js 戦略を使用するようにアプリを設定する
+ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。 Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
--	To begin, open the `config.js` file in the root of the project, and enter your app's configuration values in the `exports.creds` section.
-    -	The `clientID:` is the **Application Id** assigned to your app in the registration portal.
-    -	The `returnURL` is the **Redirect URI** you entered in the portal.
-    - The `clientSecret` is the secret you generated in the portal.
+-	最初に、プロジェクトのルートにある `config.js` ファイルを開き、`exports.creds` セクションにアプリの構成値を入力します。
+    -	`clientID:` は、登録ポータル内のアプリに割り当てられる **アプリケーション ID** です。
+    -	`returnURL` は、ポータルで入力した**リダイレクト URI** です。
+    - `clientSecret` は、ポータルで生成したシークレットです。
 
-- Next open `app.js` file in the root of the proejct and add the follwing call to invoke the `OIDCStrategy` strategy that comes with `passport-azure-ad`
+- 次に、プロジェクトのルートにある `app.js` ファイルを開き、次の呼び出しを追加して、`passport-azure-ad` に付属する `OIDCStrategy` 戦略を呼び出します。
 
 
 ```JavaScript
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
-// ログを追加します var log = bunyan.createLogger({ name: 'Microsoft OIDC Example Web Application' }); ```
+// ログを追加します var log = bunyan.createLogger({ name: 'Microsoft OIDC Example Web Application' }); 
+```
 
 - その後、今参照した戦略を使用してログイン要求を処理します。
 
@@ -417,4 +418,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 その他のリソースについては、次を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Sept15_HO3-->
+<!----HONumber=Sept15_HO3-->
