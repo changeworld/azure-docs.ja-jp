@@ -88,7 +88,10 @@
 ```JavaScript
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
-// ログを追加します var log = bunyan.createLogger({ name: 'Microsoft OIDC Example Web Application' }); 
+// ログを追加します 
+var log = bunyan.createLogger({ 
+	name: 'Microsoft OIDC Example Web Application' 
+}); 
 ```
 
 - その後、今参照した戦略を使用してログイン要求を処理します。
@@ -418,4 +421,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 その他のリソースについては、次を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!----HONumber=Sept15_HO3-->
+<!-----HONumber=Sept15_HO3-->
