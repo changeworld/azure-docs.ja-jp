@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/08/2015" 
+	ms.date="09/23/2015" 
 	ms.author="awills"/>
  
 # Application Insights データの Power BI ビュー
@@ -42,17 +42,17 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 連続エクスポートでは、常に Azure のストレージ アカウントにデータが出力されるため、まずストレージを作成する必要があります。
 
-1. [Azure ポータル](https://portal.azure.com)で、サブスクリプションのストレージ アカウントを作成します。
+1. [Azure ポータル](https://portal.azure.com)で、サブスクリプションの "クラシック" ストレージ アカウントを作成します。
 
     ![Azure ポータルで、[新規]、[データ]、[Storage] の順に選択します](./media/app-insights-export-power-bi/030.png)
 
 2. コンテナーを作成する
 
-    ![新しいストレージで、[コンテナー] を選択し、[追加] を選択します](./media/app-insights-export-power-bi/040.png)
+    ![新しいストレージで、[コンテナー] を選択し、[コンテナー] タイルをクリックし、[追加] を選択します](./media/app-insights-export-power-bi/040.png)
 
 3. ストレージ アクセス キーのコピー
 
-    これは、Stream Analytics サービスへの入力のセットアップのためにすぐに必要になります。
+    これは、ストリーム分析サービスへの入力のセットアップのためにすぐに必要になります。
 
     ![ストレージで、[設定]、[キー] の順に開き、プライマリ アクセス キーのコピーを取ります](./media/app-insights-export-power-bi/045.png)
 
@@ -239,4 +239,4 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

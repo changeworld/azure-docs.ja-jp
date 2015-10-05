@@ -163,10 +163,11 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## 次のステップ
 
-これで、Service Bus キューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+詳細については、次のリソースを参照してください。
 
--   [キュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
+-   [サービス バス キュー、トピック、およびサブスクリプション][]
 -   GitHub の [Azure SDK for Node][] リポジトリ
+-   [Node.js デベロッパー センター](/develop/nodejs/)
 
   [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
   [次のステップ]: #next-steps
@@ -183,10 +184,10 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [Azure Management Portal]: http://manage.windowsazure.com
   
   [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-  [キュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
+  [サービス バス キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md
   [ストレージを使用する Node.js クラウド サービスに関するトピック]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
   [Azure テーブル サービスを使用する Node.js Web アプリケーション]: ../storage/storage-nodejs-how-to-use-table-storage.md
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

@@ -1,31 +1,31 @@
 <properties 
-	pageTitle="クラウド サービスの構成方法 | Microsoft Azure"
-	description="Azure のクラウド サービスの構成方法について説明します。クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。"
-	services="cloud-services"
-	documentationCenter=""
-	authors="Thraka"
-	manager="timlt"
+	pageTitle="クラウド サービスの構成方法 | Microsoft Azure" 
+	description="Azure のクラウド サービスの構成方法について説明します。クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。" 
+	services="cloud-services" 
+	documentationCenter="" 
+	authors="Thraka" 
+	manager="timlt" 
 	editor=""/>
 
 <tags 
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/29/2015"
+	ms.service="cloud-services" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/22/2015"
 	ms.author="adegeo"/>
 
 
 
 
-# クラウド サービスの構成方法
+# Cloud Services の構成方法
 
 > [AZURE.SELECTOR]
 - [Azure Portal](cloud-services-how-to-configure.md)
 - [Azure Preview Portal](cloud-services-how-to-configure-portal.md)
 
-クラウド サービスで最もよく使用される設定は Azure 管理ポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
+クラウド サービスで最もよく使用される設定は Microsoft Azure 管理ポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
 Microsoft Azure 管理ポータルでは、[Azure Cloud Services でのロールに対するリモート デスクトップ接続を有効にする](cloud-services-role-enable-remote-desktop.md)こともできます。
 
@@ -45,7 +45,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
     
     >**[設定]** - サービス構成ファイル (.cscfg) の *ConfigurationSettings* 要素で指定された各種構成設定値を変更します。
     >
-    >**[証明書]** - ロールの SSL 暗号化で使用されている証明書のサムプリントを変更します。証明書を変更するには、まず、**[証明書]** ページで新しい証明書をアップロードする必要があります。次に、ロール設定に表示される証明書文字列のサムプリントを更新します。
+    >**[証明書]** - ロールの SSL 暗号化で使用されている証明書の拇印を変更します。証明書を変更するには、まず、**[証明書]** ページで新しい証明書をアップロードする必要があります。次に、ロール設定に表示される証明書文字列のサムプリントを更新します。
 
 4. **[オペレーティング システム]** で、ロール インスタンスのオペレーティング システム ファミリまたはバージョンを変更することも、**[自動]** を選択して、現在のオペレーティング システム バージョンの自動更新を有効にすることもできます。オペレーティング システムの設定は、Web ロールと Worker ロールには適用されますが、Virtual Machines は影響を受けません。
 
@@ -78,8 +78,12 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
     4. **[OK]** (チェックマーク) をクリックします。
 
 
-## その他のリソース
+## 次のステップ
 
-[Enable Remote Desktop Connection for a Role in Azure Cloud Services (Azure Cloud Services でのロールに対するリモート デスクトップ接続を有効にする)](cloud-services-role-enable-remote-desktop.md)
+* 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy.md)
+* [カスタム ドメイン名を構成する](cloud-services-custom-domain-name.md)
+* [クラウド サービスを管理する](cloud-services-how-to-manage.md)
+* [Enable Remote Desktop Connection for a Role in Azure Cloud Services (Azure Cloud Services でのロールに対するリモート デスクトップ接続を有効にする)](cloud-services-role-enable-remote-desktop.md)
+* [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

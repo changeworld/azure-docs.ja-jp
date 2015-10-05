@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="09/22/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: 制限事項および制約事項
@@ -26,13 +26,9 @@ Azure Active Directory (AD) B2C の機能の中には、プレビューではサ
 
 [Azure AD B2C ディレクトリの作成](active-directory-b2c-get-started)の間に発生する可能性のある既知の問題があります。詳細については、この[記事](active-directory-b2c-support-create-directory.md)を確認してください。
 
-## ローカル アカウントのサインイン ページでのブランド化に関する問題
+## 確認電子メール ページおよびセルフサービス パスワード リセット ページでのブランド表示の問題
 
-ローカル アカウントのサインイン ページの既定テンプレートには、"Microsoft Azure" ブランド要素が含まれています。現在、この問題の解決に積極的に取り組んでいます。[会社のブランド化機能](./active-directory/active-directory-add-company-branding.md)を使用して、このページのブランド化を変更できます。
-
-## ローカル アカウントでのサインアウトに関する問題
-
-現在、ローカル アカウントでのサインアウトは機能しません。現在、この問題の解決に積極的に取り組んでいます。回避策として、ブラウザーを閉じ、Cookie をクリアします。
+既定の確認電子メール ページおよびセルフサービス パスワード リセット ページには、"Microsoft" や "Azure" などのブランド表示要素が含まれます。将来的にはこれらは削除されます。これらのページのブランド表示は、[会社ブランド化機能](./active-directory/active-directory-add-company-branding.md)を使用して変更できます。そうすれば、これらのブランド表示要素は表示されなくなります。
 
 ## 実稼働アプリケーションのサポート
 
@@ -82,4 +78,4 @@ B2C 機能には、Azure プレビュー ポータルからアクセスできま
 
 Azure ポータルで Azure AD B2C ディレクトリを削除することはできません。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle=""
+	pageTitle="Visual Studio .NET モバイル サービス プロジェクトの概要 (接続済みサービス) | Microsoft Azure"
 	description="Visual Studio .NET プロジェクトで Azure Mobile Services を使用する方法"
 	services="mobile-services"
 	documentationCenter=""
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/16/2015"
-	ms.author="patshea123"/>
+	ms.date="09/17/2015" 
+	ms.author="patshea"/>
 
 # Mobile Services の使用 (.NET プロジェクト)
 
@@ -85,4 +85,4 @@
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure へのカスタム Java Web アプリのアップロード"
-	description="このチュートリアルでは、カスタム Java Web アプリを App Service Web Apps にアップロードする方法を示します。"
-	services="app-service\web"
-	documentationCenter="java"
-	authors="rmcmurray"
-	manager="wpickett"
+	pageTitle="Azure へのカスタム Java Web アプリのアップロード" 
+	description="このチュートリアルでは、カスタム Java Web アプリを Azure App Service Web Apps にアップロードする方法を示します。" 
+	services="app-service\web" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="08/31/2015" 
 	ms.author="robmcm"/>
 
 # Azure へのカスタム Java Web アプリのアップロード
@@ -76,7 +76,7 @@ web.config ファイルで必要に応じて環境変数を設定できます。
 
 ## デプロイ
 
-Java ベースの Web アプリは、インターネット インフォメーション サービス (IIS) ベースの Web アプリケーションの場合とほぼ同じ手段を使用して、簡単にデプロイできます。FTP、Git、Kudu はすべて、Web アプリ用の統合 SCM 機能と同様に、展開メカニズムとしてサポートされています。WebDeploy はプロトコルとして機能しますが、Java は Visual Studio で開発されていないため、WebDeploy は Java Web アプリの展開には向いていません。
+Java ベースの Web アプリは、インターネット インフォメーション サービス (IIS) ベースの Web アプリケーションの場合とほぼ同じ手段を使用して、簡単にデプロイできます。FTP、Git、Kudu はすべて、Web アプリ用の統合 SCM 機能と同様に、デプロイ メカニズムとしてサポートされています。WebDeploy はプロトコルとして機能しますが、Java は Visual Studio で開発されていないため、WebDeploy は Java Web アプリのデプロイには向いていません。
 
 ## アプリケーションの構成例
 
@@ -106,7 +106,7 @@ App Service Web Apps には 2 種類の Tomcat インスタンスが用意され
 Tomcat 側で、行う必要のあるいくつかの構成変更があります。server.xml では次のように設定する必要があります。
 
 -	シャットダウン ポート = -1
--	HTTP コネクタ ポート = {port.http}
+-	HTTP コネクタ ポート = ${port.http}
 -	HTTP コネクタ アドレス = "127.0.0.1"
 -	HTTPS と AJP のコネクタをコメントアウト
 -	IPv4 の設定は catalina.properties ファイルでも可能で、`java.net.preferIPv4Stack=true` を追加できます。
@@ -227,7 +227,11 @@ tomcat-7.0.40 フォルダーと同じディレクトリ レベルで、**web.co
 
 これらの変更を行ったら、Liferay を実行する Web アプリを再び開始し、http://yourwebapp を開きます。Liferay ポータルは Web アプリのルートから利用できます。
 
+## 次のステップ
+
 Liferay の詳細については、[http://www.liferay.com](http://www.liferay.com) を参照してください。
+
+Java の詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -237,4 +241,4 @@ Liferay の詳細については、[http://www.liferay.com](http://www.liferay.c
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/09/2015"
+   ms.date="09/23/2015"
    ms.author="lodipalm"/>
 
 # SQL Data Warehouse での Azure Data Factory の使用
@@ -30,8 +30,6 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 + IaaS 上の SQL Server
 
 データのコピー アクティビティの設定方法については、「[Copy data with Azure Data Factory (Azure Data Factory を使用してデータをコピーする)][]」を参照してください。
-
-> [AZURE.NOTE]現時点では、Azure Data Factory を使用して、SQL Data Warehouse の Null 非許容の列にデータを転送することはできません。
 
 ## ストアド プロシージャ
  Azure Data Factory を使用すると、データ転送のスケジュールを設定できますが、それと同様に、ストアド プロシージャの実行を調整する際に使用することもできます。これにより、さらに複雑なパイプラインを作成でき、SQL Data Warehouse の演算性能を利用する Azure Data Factory の機能も拡張されます。
@@ -51,6 +49,6 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 
 <!--Other Web references-->
 [Azure Data Factory のドキュメント]: https://azure.microsoft.com/documentation/services/data-factory/
-[Copy data with Azure Data Factory (Azure Data Factory を使用してデータをコピーする)]: https://azure.microsoft.com/ja-JP/documentation/articles/data-factory-data-movement-activities/
+[Copy data with Azure Data Factory (Azure Data Factory を使用してデータをコピーする)]: https://azure.microsoft.com/JA-JP/documentation/articles/data-factory-data-movement-activities/
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

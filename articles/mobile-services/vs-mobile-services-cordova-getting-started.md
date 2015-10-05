@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="" 
-	description="Cordova プロジェクトで Azure Mobile Services を使用する際の最初の手順について説明します。" 
+	pageTitle="Cordova モバイル サービス プロジェクトの概要 (Visual Studio 接続済みサービス)" 
+	description="Visual Studio 接続済みサービスを使用して Azure Mobile Services に Cordova プロジェクトを接続した後の最初の手順について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
 	authors="patshea123" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="08/12/2015" 
+	ms.date="09/17/2015" 
 	ms.author="patshea"/>
 
 # Mobile Services の使用 (Cordova プロジェクト)
@@ -94,4 +94,4 @@ where メソッドを使用してクエリを変更できます。次の例で�
 
 [モバイル サービスの詳細を確認する](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

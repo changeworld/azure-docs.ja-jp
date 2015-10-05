@@ -1,34 +1,37 @@
 <properties
-	pageTitle="Linux を実行する Microsoft Azure Virtual Machines への PostgreSQL のインストールと構成 | Microsoft Azure"
+	pageTitle="PostgreSQL を Linux VM にセットアップする | Microsoft Azure"
 	description="Azure の Linux 仮想マシンに PostgreSQL をインストールして構成する方法を説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="SuperScottz"
 	manager="timlt"
 	editor=""
-	tags=""/>
+ 	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.tgt_pltfrm="linux"
+	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
 	ms.date="08/10/2015"
 	ms.author="mingzhan"/>
 
 
-#Azure での PostgreSQL のインストールと構成
+# Azure での PostgreSQL のインストールと構成
 
 PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース データベースです。PostgreSQL には、完全な ACID 準拠、信頼性の高いトランザクション処理、複数バージョンの同時実行制御など、エンタープライズ対応の機能が含まれます。また、ANSI SQL や SQL/MED などの標準をサポートします (Oracle、MySQL、MongoDB、その他多くの外部データ ラッパーを含みます).12 を超える手続き型言語、GIN および GIST のインデックス、空間データ、および JSON またはキーと値に基づくアプリケーションに対する NoSQL に似た複数の機能などのサポートにより、高度な拡張を行えます。
 
 この記事では、Linux を実行している Azure Virtual Machine に PostgreSQL をインストールして構成する方法を説明します。
 
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用したリソースの作成について説明します。
+
+## PostgreSQL のインストール
+
 > [AZURE.NOTE]このチュートリアルを実行するには、Linux を実行する Azure Virtual Machines が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て Linux VM を作成およびセットアップしてください。
 
 この例では、PostgreSQL ポートとしてポート 1999 を使用します。
-
-## PostgreSQL のインストール
 
 PuTTY を使用して作成した Linux VM に接続します。Azure Linux VM を初めて使用する場合は、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」を参照し、PuTTY を使用して Linux VM に接続する方法を確認してください。
 
@@ -93,7 +96,7 @@ PuTTY を使用して作成した Linux VM に接続します。Azure Linux VM �
    >[AZURE.NOTE]セキュリティ上の理由から、PostgreSQL ではデータベースの初期化、開始、またはシャットダウンに root 以外のユーザーを使用します。
 
 
-4. *bash\_profile* ファイルを編集し、次のコマンドを入力します。以下の行を *bash\_profile* ファイルの最後に追加します。
+4. 次のコマンドを入力して、*bash\_profile* ファイルを編集します。以下の行を *bash\_profile* ファイルの最後に追加します。
 
 		cat >> ~/.bash_profile <<EOF
 		export PGPORT=1999
@@ -249,6 +252,6 @@ Postgres データベースを作成します。
 
 
 ##PostgreSQL の詳細情報
-PostgreSQL を Azure Linux VM にインストールする作業が完了したため、Azure でそれを使用できるようになりました。PostgreSQL についてさらに学習するには、[PostgreSQL のWeb サイト](http://www.postgresql.org/)にアクセスしてください。
+PostgreSQL を Azure Linux VM にインストールする作業が完了したため、Azure でそれを使用できるようになりました。PostgreSQL についてさらに学習するには、[PostgreSQL の Web サイト](http://www.postgresql.org/)にアクセスしてください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

@@ -11,7 +11,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/18/2015" 
+	ms.date="09/18/2015" 
 	ms.author="sergkanz"/>
  
 # Windows Phone と Windows ストア向けの Application Insights SDK のリリース ノート
@@ -94,4 +94,4 @@
 
 使用可能な以前のバージョンのリリース ノートはありません。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

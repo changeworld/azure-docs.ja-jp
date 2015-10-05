@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure 上での Linux VHD の作成とアップロード"
-	description="Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。"
+	pageTitle="Linux VHD の作成とアップロード | Microsoft Azure"
+	description="Linux オペレーティング システムを格納したクラシック デプロイ モデルを使用して Azure 仮想ハード ディスク (VHD) を作成してアップロードします。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -19,11 +19,13 @@
 
 # Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用した VHD のアップロードについて説明します。
+
 ここでは、仮想ハードディスク (VHD) を作成およびアップロードし、それをイメージとして活用して Azuere 内で仮想マシンを作成する方法を示します。そのイメージに基づいて複数の仮想マシンを作成できるよう、オペレーティング システムを準備する方法についても説明します。この記事では、クラシック デプロイ モデルを使用して作成された仮想マシンを参照していることに注意してください。
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
-Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vhd ファイル) で保存されます。詳細については、「[ディスクおよびイメージの管理](https://msdn.microsoft.com/library/azure/jj672979.aspx)」を参照してください。
+Azure の仮想マシンでは、仮想マシンの作成時に選択したイメージに基づいてオペレーティング システムが実行されます。イメージはストレージ アカウント内に VHD 形式 (.vid ファイル) で保存されます。詳細については、「[ディスクおよびイメージの管理](https://msdn.microsoft.com/library/azure/jj672979.aspx)」を参照してください。
 
 仮想マシンを作成するときに、実行するアプリケーションに合わせてオペレーティング システムの一部の設定をカスタマイズすることができます。手順については、「[カスタム仮想マシンの作成方法](virtual-machines-create-custom.md)」を参照してください。
 
@@ -159,4 +161,4 @@ VHD ファイルをアップロードするストレージ アカウントが必
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

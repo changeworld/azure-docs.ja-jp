@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/07/2015"
+   ms.date="09/22/2015"
    ms.author="joliang"/>
 
-# SQL Data Warehouse ソリューション パートナー #
+# SQL Data Warehouse ソリューション パートナー
 
 エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。この記事では、SQL Data Warehouse 向けのソリューションを提供するパートナー企業の一覧を示します。
 
@@ -46,6 +46,7 @@
 | ![Yellowfin][21] |**Yellowfin**<br>Yellowfin は、BARC の「The BI Survey」においてアドホック レポート作成とダッシュボードの一流ベンダーとして評価されているクラウド BI ベンダーです。Azure SQL Data Warehouse に接続すると、受賞歴のあるコラボレーション BI 機能とロケーション インテリジェンス機能を備えた美しいレポートとダッシュボードが作成されて共有できるようになります。 | [詳細][yellowfin_more] |
 
 ## 次のステップ
+
 SQL Data Warehouse との統合の詳細については、「[Build integrated solutions with SQL Data Warehouse (SQL Data Warehouse との統合ソリューションの構築)][]」を参照してください。
 
 
@@ -100,4 +101,4 @@ SQL Data Warehouse との統合の詳細については、「[Build integrated s
 [targit_more]: http://www.targit.com/en/
 [yellowfin_more]: http://www.yellowfinbi.com/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

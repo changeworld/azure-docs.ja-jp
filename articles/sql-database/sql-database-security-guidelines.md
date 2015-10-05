@@ -1,21 +1,21 @@
 <properties
    pageTitle="Azure SQL Database のセキュリティのガイドラインと制限事項 | Microsoft Azure"
-	description="Microsoft Azure SQL Database のガイドラインとセキュリティに関連する制限事項について説明します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="BYHAM"
-	manager="jeffreyg"
-	editor=""
-	tags=""/>
+   description="Microsoft Azure SQL Database のガイドラインとセキュリティに関連する制限事項について説明します。"
+   services="sql-database"
+   documentationCenter=""
+   authors="BYHAM"
+   manager="jeffreyg"
+   editor=""
+   tags=""/>
 
 <tags
    ms.service="sql-database"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="data-management"
-	ms.date="08/20/2015"
-	ms.author="rickbyh"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="data-management"
+   ms.date="08/20/2015"
+   ms.author="rickbyh"/>
 
 # Azure SQL Database のセキュリティのガイドラインと制限事項
 
@@ -25,7 +25,7 @@
 
 Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用できます。コンピューターから SQL Database にアクセスするには、ファイアウォールで TCP ポート 1433 での TCP 通信の発信を許可する必要があります。接続処理の一部として、Azure 仮想マシンからの接続はワーカー ロールごとに異なる別の IP アドレスとポートにリダイレクトされます。ポート番号の範囲は、11000 ～ 11999 です。
 
-最初に Azure SQL Database サーバーに接続する前に、[Azure ポータル](https://portal.azure.com)または [Azure Platform Management Portal](https://manage.windowsazure.com/microsoft.onmicrosoft.com#Workspaces/All/dashboard) を使用して、Azure SQL Database ファイアウォールを構成する必要があります。コンピューターまたは Azure から Azure SQL Database サーバーへの接続試行を有効にする、サーバーレベルのファイアウォール設定を作成する必要があります。また、Azure SQL Database サーバー内の特定のデータベースへのアクセスを制御する場合は、それぞれのデータベースに対するデータベースレベルのファイアウォール ルールを作成します。詳細については、「[Azure SQL データベース ファイアウォール](sql-database-firewall-configure.md)」を参照してください。
+最初に Azure SQL Database サーバーに接続する前に、[Azure ポータル](https://portal.azure.com)または [Azure Platform Management Portal](https://manage.windowsazure.com/microsoft.onmicrosoft.com#Workspaces/All/dashboard) を使用して、Azure SQL Database ファイアウォールを構成する必要があります。コンピューターまたは Azure から Azure SQL Database サーバーへの接続試行を有効にする、サーバーレベルのファイアウォール設定を作成する必要があります。また、Azure SQL Database サーバー内の特定のデータベースへのアクセスを制御する場合は、それぞれのデータベースに対するデータベースレベルのファイアウォール ルールを作成します。詳細については、「[Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)」を参照してください。
 
 ## 接続の暗号化と証明書の検証
 
@@ -45,7 +45,7 @@ SQLCMD は SQL Server 2008 以降で SQL Database をサポートしています
 
 ## 認証
 
-SQL Database では、SQL Server 認証のみがサポートされます。Windows 認証 (統合セキュリティ) はサポートされません。ユーザーは SQL データベースに接続するたびに、資格情報 (ログイン名とパスワード) を入力する必要があります。SQL Server 認証の詳細については、SQL Server オンライン ブックの「[認証モードの選択](https://msdn.microsoft.com/library/ms144284.aspx)」をご覧ください。
+Active Directory 認証 (統合セキュリティ) は、SQL Database V12 のプレビューで使用できます。詳細については、「[Azure Active Directory 認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」を参照してください。プレビューを使用しない場合、ユーザーは SQL Database に接続するたびに、資格情報 (ログイン名とパスワード) を入力する必要があります。SQL Server 認証の詳細については、SQL Server オンライン ブックの「[認証モードの選択](https://msdn.microsoft.com/library/ms144284.aspx)」を参照してください。
 
 [SQL Database V12](sql-database-v12-whats-new.md) では、ユーザーは包含データベース ユーザーを使用して、データベースを認証できます。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」、「[CREATE USER (Transact-SQL)](https://technet.microsoft.com/library/ms173463.aspx)」、「[包含データベース](https://technet.microsoft.com/library/ff929071.aspx)」をご覧ください。
 
@@ -96,9 +96,9 @@ GO
 
 Azure SQL Database アプリケーションのセキュリティの脅威に対する脆弱性を低くするには、以下の点を考慮します。
 
-- 常に最新の更新プログラムを使用します。SQL Database に接続するときには、セキュリティの脆弱性を防ぐために、常に最新バージョンのツールとライブラリを使用します。サポートされているツールとライブラリの詳細については、「[Azure SQL Database の一般的なガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ee336245.aspx)」をご覧ください。
+- 常に最新の更新プログラムを使用します。SQL Database に接続するときには、セキュリティの脆弱性を防ぐために、常に最新バージョンのツールとライブラリを使用します。サポートされているツールとライブラリの詳細については、「[Azure SQL Database の一般的なガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ee336245.aspx)」を参照してください。
 - TCP ポート 1433 で受信接続をブロックします。アプリケーションが SQL Database と通信するために必要なのは、TCP ポート 1433 での発信接続のみです。そのコンピューターの他のアプリケーションも受信通信を必要としない場合は、ファイアウォールが TCP ポート 1433 の受信接続のブロックを続けることを確認してください。
-- インジェクションの脆弱性を防ぎます。アプリケーションに SQL インジェクションの脆弱性がないようにするには、可能な限りパラメーター化クエリを使用します。また、コードを徹底的に見直し、アプリケーションを配置する前に侵入テストを実行します。
+- インジェクションの脆弱性を防ぎます。アプリケーションに SQL インジェクションの脆弱性がないようにするには、可能な限りパラメーター化クエリを使用します。また、コードを徹底的に見直し、アプリケーションをデプロイする前に侵入テストを実行します。
 
 
 ## 関連項目
@@ -111,4 +111,4 @@ Azure SQL Database アプリケーションのセキュリティの脅威に対�
 
 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

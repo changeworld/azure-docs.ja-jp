@@ -1,11 +1,12 @@
 <properties
-	pageTitle="リモート デスクトップを使用して Microsoft Azure Linux VM を接続する。"
-	description="Microsoft Azure Linux VM でリモート デスクトップをインストールして構成する方法について説明します。"
+	pageTitle="リモート デスクトップを Linux VM にアタッチする | Microsoft Azure"
+	description="リモート デスクトップをインストールして、Microsoft Azure Linux VM に接続するように構成する方法を説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="SuperScottz"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -17,16 +18,18 @@
 	ms.author="mingzhan"/>
 
 
-#リモート デスクトップを使用して Microsoft Azure Linux VM を接続する
+#リモート デスクトップを使用して Microsoft Azure Linux VM に接続する
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの管理について説明します。
 
 ##概要
 
-RDP (リモート デスクトップ プロトコル) は、Windows の専用プロトコルですが、RDP を使用して Linux VM (仮想マシン) をリモート接続するにはどうすればよいでしょうか。
+RDP (リモート デスクトップ プロトコル) は、Windows の専用プロトコルです。RDP を使用して Linux VM (仮想マシン) をリモート接続するにはどうすればよいでしょうか。
 
 このガイドを読めば、その答えがわかります。 RDP は、Microsoft Azure Linux VM に xrdp をインストールして構成するのに役立ちます。また、これには Windows コンピューターからリモート デスクトップを使用して接続できます。このガイドでは、例として Ubuntu または OpenSUSE を実行する Linux VM を使用します。
 
 xrdp はオープン ソースの RDP サーバーで、これを使用すると、Windows コンピューターからリモート デスクトップを使用して Linux サーバーに接続できます。このパフォーマンスは、VNC (Virtual Network Computing) よりも優れています。VNC には "JPEG" 品質と動作が遅いという欠点があるのに対し、RDP は高速かつ明瞭です。
- 
+
 
 > [AZURE.NOTE]Linux を実行している既存の Microsoft Azure VM が必要です。Linux VM を作成してセットアップするには、[Azure Linux VM のチュートリアル](virtual-machines-linux-tutorial.md)を参照してください。
 
@@ -87,14 +90,14 @@ Ubuntu の場合は、インストール後の自動起動時に xrdp が開始�
     #sudo apt-get install xubuntu-desktop
 
 `xfce` を有効にするには、次のコマンドを使用します。
-    
+
     #echo xfce4-session >~/.xsession
 
 構成ファイル `/etc/xrdp/startwm.sh` を編集するには、次のコマンドを使用します。
 
     #sudo vi /etc/xrdp/startwm.sh   
 
-`/etc/X11/Xsession` 行の前に `xfce4-session` 行を追加します。
+行 `/etc/X11/Xsession` の前に行 `xfce4-session` を追加します。
 
 xrdp サービスを再起動するには、次のコマンドを使用します。
 
@@ -112,10 +115,4 @@ Linux VM の `user` と `password` を使用してログインすると、Micros
 ##次へ
 xrdp の使用の詳細については、[こちら](http://www.xrdp.org/)を参照してください。
 
-
-
-
-
- 
-
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイスのモードを変更する | Microsoft Azure"
-	description="StorSimple デバイスのモードについて、また StorSimple 用 Windows PowerShell を使用してデバイスのモードを変更する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple デバイスのモードについて、また StorSimple 用 Windows PowerShell を使用してデバイスのモードを変更する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="09/01/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/17/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスのデバイス モードの変更
 
@@ -97,4 +97,4 @@ StorSimple デバイスを (通常モードから) メンテナンス モード�
 
 StorSimple デバイスに[通常モードとメンテナンス モードの更新プログラムを適用](storsimple-update-device.md)する方法について説明します。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Virtual Machines についてのよく寄せられる質問"
-	description="Azure 仮想マシンについて特に多く寄せられる質問への回答を示します。"
+	pageTitle="VM に関してよく寄せられる質問 | Microsoft Azure"
+	description="クラシック デプロイ モデルで作成された Azure Virtual Machines についてよく寄せられる質問への回答を示します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,9 +17,11 @@
 	ms.date="07/17/2015"
 	ms.author="cynthn"/>
 
-# Azure Virtual Machines FAQ (Azure 仮想マシンの FAQ)
+# クラシック デプロイ モデルで作成された Azure Virtual Machines についてよく寄せられる質問
 
-この記事は、Azure VM のサポート チームや、フォーラム、ニュースグループ、およびその他の記事内のコメントに基づいて、Azure 仮想マシンに関するユーザーからの一般的な質問に回答するものです。基本的な情報については、まず「[仮想マシンについて](virtual-machines-about.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルで作成されたリソースに関する質問に回答します。
+
+この記事は、Azure VM のサポート チームや、フォーラム、ニュースグループ、およびその他の記事内のコメントに基づいて、クラシック デプロイ モデルで作成された Azure Virtual Machines に関するユーザーからの一般的な質問に回答するものです。基本的な情報については、まず「[仮想マシンについて](virtual-machines-about.md)」を参照してください。
 
 ## Azure VM では何を実行できますか。
 
@@ -55,7 +57,7 @@ Azure では、VHD 形式の仮想ハード ディスク (固定型) をサポ�
 
 - Azure では、仮想マシンにアクセスするためのコンソールが提供されません。
 - ほとんどの[サイズ](virtual-machines-size-specs.md)の Azure VM では、仮想ネットワーク アダプターが 1 つしかないため、外部 IP アドレスも 1 つしか使用できません。(A8 サイズと A9 サイズでは、インスタンス間でのアプリケーション通信に 2 つ目のネットワーク アダプターが使用される場合があります。)
-- Azure Vm では、第 2 世代の HYPER-V VM の機能はサポートされていません。これらの機能の詳細については、[「Virtual Machine Specifications for Hyper-V (Hyper-V の仮想マシンの仕様)」](http://technet.microsoft.com/library/dn592184.aspx)を参照してください。
+- Azure Vm では、第 2 世代の HYPER-V VM の機能はサポートされていません。これらの機能の詳細については、「[Virtual Machine Specifications for Hyper-V (Hyper-V の仮想マシンの仕様)](http://technet.microsoft.com/library/dn592184.aspx)」を参照してください。
 
 ## これらの仮想マシンで、既存のオンプレミス ネットワーク インフラストラクチャを使用することはできますですか。
 
@@ -72,9 +74,9 @@ Windows 仮想マシンまたは Linux VM 用の Secure Shell (SSH) に対する
 
 リモート デスクトップまたは SSH について問題が発生する場合は、[VMAccess](http://go.microsoft.com/fwlink/p/?LinkId=396856) 拡張機能をインストールして使用し、問題を修正してください。Windows VM の場合は、次のオプションもあります。
 
-- Azure プレビュー ポータルで VM を検索し、コマンド バーで **[リモート アクセスのリセット]** をクリックする。
+- Microsoft Azure プレビュー ポータルで VM を検索し、コマンド バーで **[リモート アクセスのリセット]** をクリックする。
 - [「Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング」](virtual-machines-troubleshoot-remote-desktop-connections.md)を参照する。
-- Windows PowerShell リモート処理を使用して VM に接続するか、その他のリソースに対する追加のエンドポイントを作成して VM に接続する。詳細については、[「仮想マシンに対してエンドポイントを設定する方法」](virtual-machines-set-up-endpoints.md)を参照してください。
+- Windows PowerShell リモート処理を使用して VM に接続するか、その他のリソースに対する追加のエンドポイントを作成して VM に接続する。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)」を参照してください。
 
 Hyper-V に慣れている場合は、仮想マシン接続と同様のツールを検討されるかもしれませんが、Azure では、仮想マシンへのコンソール アクセスがサポートされていないため、類似のツールは提供されていません。
 
@@ -91,7 +93,7 @@ Windows 仮想マシンでは、ページ ファイルを移動してドライ�
 アップグレードという言葉は一般に、オペレーティング システムを現在のハードウェアのままで新しいリリースに移行することを指します。Azure VM の場合、新しいリリースに移行するプロセスは Windows や Linux の場合と異なります。
 
 - Linux VM の場合、配布には適切なパッケージ管理ツールと手順を使用してください。
-- Windows 仮想マシンの場合は、Windows Server 移行ツールを使用します。ゲスト OS が Azure 上に存在する状態でアップグレードを行うことは避けてください。仮想マシンへのアクセスが失われる恐れがあるため、この操作はサポートされていません。アップグレード中に問題が発生すると、リモート デスクトップ セッションを開始できなくなり、問題のトラブルシューティングができなくなる可能性があります。ツールとプロセスの詳細については、「[Windows Server への役割と機能の移行](http://go.microsoft.com/fwlink/p/?LinkId=396940)」を参照してください。 Windows Server 2012 R2 へのアップグレードに関する詳細は、[「Windows Server 2012 R2 のアップグレード オプション」](https://technet.microsoft.com/library/dn303416.aspx)を参照してください。
+- Windows 仮想マシンの場合は、Windows Server 移行ツールを使用します。ゲスト OS が Azure 上に存在する状態でアップグレードを行うことは避けてください。仮想マシンへのアクセスが失われる恐れがあるため、この操作はサポートされていません。アップグレード中に問題が発生すると、リモート デスクトップ セッションを開始できなくなり、問題のトラブルシューティングができなくなる可能性があります。ツールとプロセスの詳細については、「[Windows Server への役割と機能の移行](http://go.microsoft.com/fwlink/p/?LinkId=396940)」を参照してください。 Windows Server 2012 R2 へのアップグレードに関する詳細は、「[Windows Server 2012 R2 のアップグレード オプション](https://technet.microsoft.com/library/dn303416.aspx)」を参照してください。
 
 ## 仮想マシンでの既定のユーザー名とパスワードを教えてください。
 
@@ -132,13 +134,13 @@ VM が実行中または停止状態のときには料金が発生しますが�
 
 ## Azure では、メンテナンスのために VM が再起動されることはありますか。
 
-通常、VM の起動、停止、および再起動はユーザーが必要に応じて行います。(詳細については、「 [Azure VM の起動、停止、再起動について](https://msdn.microsoft.com/library/azure/dn763934.aspx)」を参照してください。)Azure では、Azure データ センターでの定期的な計画メンテナンス更新の一環として、VM が再起動されることがあります。また、VM に影響する重大なハードウェア問題が Azure で検出された場合には、計画外のメンテナンス イベントが発生する場合もあります。計画外イベントの場合、Azure は VM を正常な状態のホストへと自動的に移行し、VM を再起動します。
+通常、VM の起動、停止、および再起動はユーザーが必要に応じて行います。Azure では、Azure データ センターでの定期的な計画メンテナンス更新の一環として、VM が再起動されることがあります。また、VM に影響する重大なハードウェア問題が Azure で検出された場合には、計画外のメンテナンス イベントが発生する場合もあります。計画外イベントの場合、Azure は VM を正常な状態のホストへと自動的に移行し、VM を再起動します。
 
 スタンドアロン VM (可用性セットに含まれない VM) については、計画メンテナンスの 1 週間前までに Azure からサブスクリプションのサービス管理者に電子メールが送られ、更新中に VM が再起動される可能性がある旨が通知されます。その場合、VM 上で実行されているアプリケーションにダウンタイムが発生する可能性があります。
 
 計画メンテナンスのために再起動が発生した場合、利用者は Azure ポータルまたは Azure PowerShell を使用して再起動のログを確認できます。詳細については、「[Viewing VM Reboot Logs (VM の再起動ログの確認)](http://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)」を参照してください。
 
-冗長性を確保する必要がある場合は、同様に構成された VM を同じ可用性セット内に 2 つ以上配置してください。そうすることで、計画メンテナンスや計画外メンテナンスの際にも、最低 1 つの VM を利用できるようになります。Azure では、この構成について一定レベルの VM 可用性を保証しています。詳細については、[「仮想マシンの可用性管理」](virtual-machines-manage-availability.md)を参照してください。
+冗長性を確保する必要がある場合は、同様に構成された VM を同じ可用性セット内に 2 つ以上配置してください。そうすることで、計画メンテナンスや計画外メンテナンスの際にも、最低 1 つの VM を利用できるようになります。Azure では、この構成について一定レベルの VM 可用性を保証しています。詳細については、「[仮想マシンの可用性管理](virtual-machines-manage-availability.md)」を参照してください。
 
 ## その他のリソース
 
@@ -148,4 +150,4 @@ VM が実行中または停止状態のときには料金が発生しますが�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

@@ -1,33 +1,26 @@
 <properties
    pageTitle="Azure Search サービス REST API バージョン 2015-02-28-Preview | Microsoft Azure"
-	description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、自然言語アナライザーや moreLikeThis 検索などの試験的機能が含まれています。"
-	services="search"
-	documentationCenter="na"
-	authors="HeidiSteen"
-	manager="mblythe"
-	editor=""/>
+   description="Azure Search サービス REST API バージョン 2015-02-28-Preview には、自然言語アナライザーや moreLikeThis 検索などの試験的機能が含まれています。"
+   services="search"
+   documentationCenter="na"
+   authors="HeidiSteen"
+   manager="mblythe"
+   editor=""/>
 
 <tags
    ms.service="search"
-	ms.devlang="rest-api"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="search"
-	ms.date="08/25/2015"
-	ms.author="heidist"/>
+   ms.devlang="rest-api"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="search"
+   ms.date="09/22/2015"
+   ms.author="heidist"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
 
 この記事は、`api-version=2015-02-28-Preview` のリファレンス ドキュメントです。このプレビューは、以下の試験的機能を提供することによって、現在一般公開されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx) を拡張するものです。
 
-- マイクロソフトの[自然言語プロセッサ](#LanguageSupport) (Office および Bing で使用されるのと同じもの) は、クエリ結果の優れた精度とより多くの言語を提供します。
 - `moreLikeThis` は [Search 操作](#SearchDocs)で使用されるクエリ パラメーターであり、別の特定のドキュメントに関連する他のドキュメントを探します。
-- [Search](#SearchDocs) と [Suggestions](#Suggestions) API の両方で GET 構文の代替として POST 構文を使用できます。URL 全体の長さが 8 KB を超える場合に便利です。
-
-`2015-02-28-Preview` のいくつかの追加機能は、別のドキュメントに記載されています。学習した内容は次のとおりです。
-
-- [スコアリング プロファイル](search-api-scoring-profiles-2015-02-28-preview.md)
-- [インデクサー](search-api-indexers-2015-02-28-preview.md)
 
 Azure Search サービスは複数のバージョンで使用できます。詳細については、「[Azure Search サービスのバージョン](http://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
@@ -136,7 +129,7 @@ HTTP POST または PUT 要求を使用して、Azure Search サービス内に�
 
 インデックスを作成すると、検索操作で格納および使用されるドキュメントの構造が決まります。インデックスを設定するのは、別の操作です。この手順では、[インデクサー](https://msdn.microsoft.com/library/azure/mt183328.aspx) (サポートされるデータ ソースに使用できます) または[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)操作を使用できます。ドキュメントが POST されると、逆インデックスが生成されます。
 
-**注**: 許可されるインデックスの最大数は価格レベルによって異なります。Free サービスの場合、最大 3 個のインデックスが許可されます。Standard サービスでは、Search サービスごとに 50 個のインデックスが許可されます。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](http://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+**注**: 許可されるインデックスの最大数は価格レベルによって異なります。Free サービスの場合、最大 3 個のインデックスが許可されます。Standard サービスでは、Search サービスごとに 50 個のインデックスが許可されます。詳細については、「[サービスの制限](search-limits-quota-capacity.md)」を参照してください。
 
 **要求**
 
@@ -154,7 +147,7 @@ HTTPS はすべてのサービス要求に必要です。**Create Index** 要求
 - `api-key`: 必須。`api-key` は、
 - Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**Create Index** 要求の `api-key` ヘッダーには (クエリ キーではなく) 管理者キーを設定する必要があります。
 
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` は、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、Azure ポータルのサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Azure Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 <a name="RequestData"></a> **要求本文の構文**
 
@@ -633,7 +626,7 @@ Azure Search は、さまざまな言語をサポートしています。各言�
         {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false},
         {"name": "baseRate", "type": "Edm.Double"},
         {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-	    {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer"="fr.lucene"},
+	    {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, analyzer="fr.lucene"},
         {"name": "hotelName", "type": "Edm.String"},
         {"name": "category", "type": "Edm.String"},
         {"name": "tags", "type": "Collection(Edm.String)"},
@@ -1163,9 +1156,9 @@ URL エンコードは、上記のクエリ パラメーターにのみ推奨さ
 
 また、URL エンコードは、GET を使用して REST API を直接呼び出すときにのみ必要です。POST を使用して **Search** を呼び出す場合や、URL のエンコーディングを処理する [.NET クライアント ライブラリ](https://msdn.microsoft.com/library/dn951165.aspx)を使用する場合は、URL エンコードする必要はありません。
 
-<a name="SearchQueryParameters"></a>**クエリ パラメーター**
+<a name="SearchQueryParameters"></a> **クエリ パラメーター**
 
-**Search**は、クエリ条件を提供して検索の動作も指定するいくつかのパラメーターを受け取ります。これらのパラメーターは、GET を介して **Search** を呼び出すときは URL クエリ文字列に指定します。POST を介して **Search** を呼び出すときは要求本文に JSON プロパティとして指定します。いくつかのパラメーターの構文は、GET および POST の間で多少異なります。その違いは、以下で随時説明しています。
+**Search** は、クエリ条件を提供して検索の動作も指定するいくつかのパラメーターを受け取ります。これらのパラメーターは、GET を介して **Search** を呼び出すときは URL クエリ文字列に指定します。POST を介して **Search** を呼び出すときは要求本文に JSON プロパティとして指定します。いくつかのパラメーターの構文は、GET および POST の間で多少異なります。その違いは、以下で随時説明しています。
 
 `search=[string]` (省略可能) - 検索するテキスト。`searchFields` を指定しないと、既定ですべての `searchable` フィールドが検索されます。`searchable` フィールドを検索するときは、検索テキスト自体がトークン化されるので、複数の語句を空白で区切ることができます (例: `search=hello world`)。任意の語句と一致させるには、`*` を使用します (これはブール型フィルターのクエリに便利です)。このパラメーターを省略することは、`*` に設定するのと同じ効果を持ちます。検索構文の詳細については、[簡単なクエリ構文](https://msdn.microsoft.com/library/dn798920.aspx)に関するページを参照してください。
 
@@ -1729,4 +1722,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

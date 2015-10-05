@@ -1,11 +1,12 @@
 <properties
-	pageTitle="IPython Notebook | Microsoft Azure"
-	description="Linux または Windows の仮想マシン (VM) を使用して Azure 上に IPython Notebook をデプロイする方法について説明するチュートリアルです。"
-	services="virtual-machines"
+	pageTitle="IPython Notebook を作成する | Microsoft Azure"
+	description="Azure でクラシック デプロイ モデルを使用して作成した Linux または Windows の仮想マシンに IPython Notebook をデプロイする方法について説明します。"
+	services="virtua-lmachines"
 	documentationCenter="python"
 	authors="huguesv"
 	manager="wpickett"
-	editor=""/>
+	editor=""
+	tags=“azure-service-management,azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -16,8 +17,9 @@
 	ms.date="05/20/2015"
 	ms.author="huvalo"/>
 
-
 # Azure での IPython Notebook
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルで作成された仮想マシンに Notebook をデプロイする方法を説明します。
 
 [IPython プロジェクト](http://ipython.org)には、科学技術計算用ツールのコレクションが用意されています。このコレクションには、強力な対話型のシェル、高いパフォーマンスを実現する使いやすい並列ライブラリ、IPython Notebook と呼ばれる Web ベースの環境が含まれています。この Notebook よって、コードの実行とリアルタイムなコンピューティング ドキュメントの作成を統合した、対話型コンピューティング向けの作業環境が実現されます。作成されるノートブック ファイルには、任意のテキスト、数式、入力コード、結果、グラフィックス、ビデオ、その他の種類のメディアなど、最新の Web ブラウザーで表示できるデータを含めることができます。
 
@@ -25,7 +27,7 @@ Python を初めて利用し、対話形式の環境で楽しく Python を学�
 
 ![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-notebook-spectral.png)
 
-この記事では、Linux または Windows の仮想マシン (VM) を使用して Microsoft Azure 上に IPython Notebook をデプロイする方法について説明します。Azure で IPython Notebook を使用すると、Web 経由でアクセスできるインターフェイスを拡張性の高いコンピューティング リソースに提供できます。これにより、Python とその多くのライブラリが持つ機能をすべて利用できます。すべてのインストールはクラウド内で完了しているため、ユーザーは最新の Web ブラウザーでローカルに構成しなくても、これらのリソースにアクセスできます。
+この記事では、Linux または Windows の仮想マシン (VM) を使用して Microsoft Azure 上に IPython Notebook をデプロイする方法について説明します。Azure で IPython Notebook を使用すると、Web 経由でアクセスできるインターフェイスをスケーラブルなコンピューティング リソースに提供できます。これにより、Python とその多くのライブラリが持つ機能をすべて利用できます。すべてのインストールはクラウド内で完了しているため、ユーザーは最新の Web ブラウザーでローカルに構成しなくても、これらのリソースにアクセスできます。
 
 [AZURE.INCLUDE [create-account-and-vms-note](../../includes/create-account-and-vms-note.md)]
 
@@ -43,7 +45,7 @@ Python を初めて利用し、対話形式の環境で楽しく Python を学�
 
 ## IPython Notebook 用のエンドポイントの作成
 
-この手順は Linux と Windows の両方の VM に適用されます。後で IPython を構成して notebook サーバーをポート 9999 で実行します。このポートを公開するには、Azure 管理ポータルでエンドポイントを作成する必要があります。このエンドポイントは Azure ファイアウォールでポートを開き、パブリック ポート (HTTPS、443) を VM のプライベート ポート (9999) にマップします。
+この手順は Linux と Windows の両方の VM に適用されます。後で IPython を構成して notebook サーバーをポート 9999 で実行します。このポートを公開するには、Microsoft Azure 管理ポータルでエンドポイントを作成する必要があります。このエンドポイントは Azure ファイアウォールでポートを開き、パブリック ポート (HTTPS、443) を VM のプライベート ポート (9999) にマップします。
 
 エンドポイントを作成するには、VM ダッシュボードに移動し、**[エンドポイント]**、**[エンドポイントの追加]** の順にクリックして、新しいエンドポイント (この例では `ipython_nb`) を作成します。プロトコルに **TCP** を選択し、パブリック ポートには **443**、プライベート ポートには **9999** を指定します。
 
@@ -270,4 +272,4 @@ IPython の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 [Python 2.7]: http://www.python.org/download
 [OpenSSL]: http://slproweb.com/products/Win32OpenSSL.html
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

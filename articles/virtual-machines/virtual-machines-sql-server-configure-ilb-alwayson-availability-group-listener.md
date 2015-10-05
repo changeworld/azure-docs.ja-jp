@@ -1,11 +1,12 @@
 <properties 
-	pageTitle="Azure での AlwaysOn 可用性グループの ILB リスナーの構成"
-	description="このチュートリアルでは、内部ロード バランサー (ILB) を使用して Azure で AlwaysOn 可用性グループ リスナーを作成する手順について説明します。"
+	pageTitle="AlwaysOn 可用性グループの ILB リスナーを構成する | Microsoft Azure"
+	description="このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、内部ロード バランサー (ILB) を使用して Azure で AlwaysOn 可用性グループ リスナーを作成します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar" />
+	editor="monicar" 
+	tags="azure-service-management"/>
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
@@ -24,6 +25,8 @@
 ## 概要
 
 このトピックでは、**内部ロード バランサー (ILB)** を使用して AlwaysOn 可用性グループのリスナーを構成する方法について説明します。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 可用性グループには、オンプレミスのみ、Azure のみ、またはオンプレミスと Azure の両方にまたがるハイブリッド構成のレプリカを含めることができます。Azure レプリカは、同じリージョン内に配置することも、複数の仮想ネットワーク (VNet) を使用して複数のリージョンに配置することもできます。後述の手順では、既に[可用性グループは構成している](virtual-machines-sql-server-alwayson-availability-groups-gui.md)ものの、リスナーは構成していないと仮定しています。
 
@@ -79,7 +82,7 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 1. 変数の設定後、スクリプトを、テキスト エディターからそれを実行する Azure の PowerShell セッションにコピーします。プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
 
->[AZURE.NOTE]現時点において、Microsoft Azure 管理ポータルでは内部ロード バランサーをサポートしていないため、ポータルには ILB とエンドポイントのどちらも表示されません。ただし、エンドポイントで Load Balancer が実行されている場合は、**Get-AzureEndpoint** によって内部 IP アドレスが返されます。それ以外の場合、Null が返されます。
+>[AZURE.NOTE]現時点において、Microsoft Azure 管理ポータルでは内部ロード バランサーをサポートしていないため、ポータルには ILB とエンドポイントのどちらも表示されません。ただし、エンドポイントでロード バランサーが実行されている場合は、**Get-AzureEndpoint** によって内部 IP アドレスが返されます。それ以外の場合、Null が返されます。
 
 ## KB2854082 がインストールされていることを確認する (必要に応じて)
 
@@ -133,4 +136,4 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

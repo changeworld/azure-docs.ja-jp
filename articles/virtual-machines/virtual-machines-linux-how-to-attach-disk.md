@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure 上で Linux を実行する仮想マシンへのディスクの接続"
-	description="データ ディスクを Azure 仮想マシンに接続し、初期化して、使用できる状態にする方法について説明します。"
+	pageTitle="ディスクを Linux VM にアタッチする | Microsoft Azure"
+	description="データ ディスクを Azure で実行する Linux 仮想マシンに接続し、初期化して、使用できる状態にする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -18,6 +18,8 @@
 	ms.author="dkshir"/>
 
 # データ ディスクを Linux 仮想マシンに接続する方法
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したディスクの接続について説明します。
 
 空のディスクと、データが含まれているディスクのどちらも接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。この記事では、クラシック デプロイ モデルを使用して作成した仮想マシンを参照します。
 
@@ -171,4 +173,4 @@
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-how-to-log-on.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

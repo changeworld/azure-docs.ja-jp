@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure AD 参加の使用シナリオとデプロイに関する考慮事項 | Microsoft Azure" 
-	description="管理者がエンド ユーザー (従業員、学生、他のユーザー) のために Azure AD 参加を設定する方法を説明するトピック。" 
+	description="Azure AD に参加するために利用できるさまざまなデプロイ シナリオを示して説明します。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="femila" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/02/2015" 
+	ms.date="09/21/2015" 
 	ms.author="femila"/>
 
 # Azure AD 参加の使用シナリオとデプロイに関する考慮事項 
@@ -82,7 +82,7 @@
 
 
 ## 追加情報
-* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
+* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure クラウド サービス内の仮想マシンへの接続"
-	description="Azure クラウド サービスへの仮想マシンの接続方法について説明します。"
+	pageTitle="クラウド サービスで仮想マシンを接続する | Microsoft Azure"
+	description="仮想マシンを Azure クラウド サービスに接続します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -18,8 +18,10 @@
 	ms.author="cynthn"/>
 
 
-# 仮想マシンを仮想ネットワークまたはクラウド サービスと接続する方法
+# 仮想ネットワークまたはクラウド サービスで構成されるクラシック デプロイ モデルで作成された仮想マシンに接続します。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルでのリソースの管理について説明します。
 
 [AZURE.INCLUDE [howto-connect-vm-cloud-service](../../includes/howto-connect-vm-cloud-service.md)]
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

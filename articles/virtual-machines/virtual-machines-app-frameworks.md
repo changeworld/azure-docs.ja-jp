@@ -1,11 +1,12 @@
 <properties
-   pageTitle="アプリケーション フレームワーク"
+   pageTitle="アプリケーション フレームワーク | Microsoft Azure"
    description="Azure リソース マネージャー (ARM) でテンプレートを使用して、一般的なアプリケーション フレームワークを作成する方法について説明します。例として、LAMP スタック、SharePoint、SQL Server などがあります。"
    services="virtual-machines"
    documentationCenter="virtual-machines"
    authors="squillace"
    manager="timlt"
-   editor=""/>
+   editor=""
+   tags="azure-resource-manager" />
 
 <tags
    ms.service="virtual-machines"
@@ -20,9 +21,11 @@
 
 仮想マシンは、テンプレートを使ってすばやく作成できます。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。
+
 | テンプレート | 説明 | テンプレートを見る | 今すぐデプロイする |
 |:---|:---|:---:|:---:|
-| *n* 個の VM をすばやくデプロイする | この Microsoft が作成したテンプレートは、(新しい仮想ネットワークおよびストレージ アカウントと共に) 最大 *n* 個の新しい VM をデプロイします。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/resource-loop-vms-vnet-aset/) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresource-loop-vms-vnet-aset%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
+| *n* 個の VM をすばやくデプロイする | この Microsoft が作成したテンプレートは、最大 *n* 個の新しい VM を (新しい仮想ネットワークおよびストレージ アカウントと共に) デプロイします。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/resource-loop-vms-vnet-aset/) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresource-loop-vms-vnet-aset%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Active Directory フォレストと Active Directory ドメイン | このテンプレートは、(新しい仮想ネットワーク、ストレージ アカウント、ロード バランサーと共に) 新しい VM を 2 つ デプロイし、Active Directory フォレストと Active Directory ドメインを新たに作成します。各 VM は、新しいドメインの DC として作成され、可用性セットに配置されます。また、各 VM には、負荷分散パブリック IP アドレスが割り当てられた RDP エンドポイントが追加されます。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Apache Web サーバー | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して Apache Web サーバーをデプロイします。Ubuntu VM を作成し、Apache2 をインストールして、単純な HTML ファイルを作成します。| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/apache2-on-ubuntu-vm) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapache2-on-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 | Couchbase クラスター | このテンプレートは、Couchbase クラスターを Ubuntu 仮想マシンにデプロイします。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/couchbase-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcouchbase-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
@@ -49,4 +52,4 @@
 
 [Azure リソース マネージャー](../resource-group-template-deploy.md)の詳細を確認します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

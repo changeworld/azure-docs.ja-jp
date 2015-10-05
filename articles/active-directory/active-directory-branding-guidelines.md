@@ -1,20 +1,20 @@
 <properties
-   pageTitle="アプリケーションのブランド化ガイドライン"
-	description="Azure Active Directory の開発者向けリソースの包括的なガイド"
-	services="active-directory"
-	documentationCenter="dev-center-name"
-	authors="msmbaldwin"
-	manager="mbaldwin"
-	editor=""/>
+   pageTitle="アプリケーションのブランド化ガイドライン | Microsoft Azure"
+   description="Azure Active Directory の開発者向けリソースの包括的なガイド"
+   services="active-directory"
+   documentationCenter="dev-center-name"
+   authors="msmbaldwin"
+   manager="mbaldwin"
+   editor=""/>
 
 <tags
    ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="08/25/2015"
-	ms.author="mbaldwin"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="09/17/2015"
+   ms.author="mbaldwin"/>
 
 
 # アプリケーションのブランド化ガイドライン
@@ -94,4 +94,4 @@ Azure または Active Directory のブランドをエンド ユーザーに表�
 
 アプリケーションが Azure AD と Microsoft アカウントの両方をサポートしている場合、アプリケーションに 2 つのサインイン ボタンを用意する必要があります。Microsoft は、1 回の統合で Microsoft の個人アカウントと職場アカウントの両方をサポートできるようにするための更新プログラムに積極的に取り組んでいます。これが利用可能になれば、アプリケーションに 1 つの "Microsoft によるサインイン" ボタンを表示できるようになります。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

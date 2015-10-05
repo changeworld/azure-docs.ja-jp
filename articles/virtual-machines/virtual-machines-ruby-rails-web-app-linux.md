@@ -1,19 +1,20 @@
-<properties 
-	pageTitle="Linux VM を使用した Azure での Ruby on Rails Web アプリケーション" 
-	description="Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをホストします。" 
-	services="virtual-machines" 
-	documentationCenter="ruby" 
-	authors="MikeWasson" 
-	manager="wpickett" 
-	editor=""/>
+<properties
+	pageTitle="Linux VM で Ruby on Rails Web サイトをホストする | Microsoft Azure"
+	description="Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをセットアップしてホストします。"
+	services="virtual-machines"
+	documentationCenter="ruby"
+	authors="MikeWasson"
+	manager="wpickett"
+	editor=""
+	tags="azure-service-management"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="vm-linux" 
-	ms.devlang="ruby" 
-	ms.topic="article" 
-	ms.date="06/09/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="web"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="ruby"
+	ms.topic="article"
+	ms.date="06/09/2015"
 	ms.author="mwasson"/>
 
 
@@ -26,15 +27,17 @@
 
 このチュートリアルは、Ubuntu Server 14.04 LTS を使用して検証されました。他の Linux ディストリビューションを使用する場合は、Rails のインストール手順が異なる場合があります。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの作成について説明します。
+
 ## Azure VM の作成
 
 最初に、Linux イメージを使用して Azure VM を作成します。
 
-VM を作成するには、Azure 管理ポータルまたは Azure コマンド ライン インターフェイス (CLI) を使用できます。
+VM を作成するには、Microsoft Azure 管理ポータルまたは Azure コマンド ライン インターフェイス (CLI) を使用できます。
 
-### Azure 管理ポータル
+### Microsoft Azure 管理ポータル
 
-1. [Azure 管理ポータル](http://manage.windowsazure.com)にサインインします。
+1. [Microsoft Azure 管理ポータル](http://manage.windowsazure.com)にサインインします。
 2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[簡易作成]** の順にクリックします。Linux イメージを選択します。
 3. パスワードを入力します。
 
@@ -50,8 +53,8 @@ VM がプロビジョニングされたら、次のコマンドを実行して S
 
 ## Ruby on Rails のインストール
 
-1. SSH を使用して VM に接続します。 
-	
+1. SSH を使用して VM に接続します。
+
 2. SSH セッションから、次のコマンドを使用して VM に Ruby をインストールします。
 
 		sudo apt-get update -y
@@ -93,7 +96,7 @@ SSH を使用してログインしている状態で、次のコマンドを実�
 
 ## エンドポイントの追加
 
-1. [Azure 管理ポータル][management-portal]に移動し、目的の VM を選択します。
+1. [Microsoft Azure 管理ポータル][management-portal]に移動し、目的の VM を選択します。
 
 	![仮想マシンの一覧][vmlist]
 
@@ -138,7 +141,7 @@ Ruby アプリケーションから Azure のサービスを使用する方法�
 
 * [テーブルを使用してキー/値のペアを保存する][tables]
 
-* [コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する][cdn-howto]
+* [Content Delivery Network を使用して高帯域幅コンテンツを配信する][cdn-howto]
 
 
 
@@ -170,6 +173,5 @@ Ruby アプリケーションから Azure のサービスを使用する方法�
 [new-endpoint]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint.png
 
 [new-endpoint1]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint1.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

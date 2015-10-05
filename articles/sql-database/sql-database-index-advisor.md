@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Azure SQL Database Index Advisor" 
-   description="既存の Axure SQL Database のワークロードを実行するために最も適したインデックスを簡単に作成することができる推奨インデックスを提供します。" 
+   description="Azure SQL Database Index Advisor は、現在のクエリのパフォーマンスを向上できる、既存の SQL Database に向けた新しいインデックスを推奨します。" 
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="06/30/2015"
+   ms.date="09/22/2015"
    ms.author="sstein"/>
 
 # SQL Database Index Advisor
@@ -22,12 +22,12 @@ Azure SQL Database Index Advisor は、現在のクエリのパフォーマン�
 
 SQL Database サービスは、SQL Database の過去のリソース配分状況を分析することで、インデックスのパフォーマンスを評価し、データベースの一般的なワークロードを実行するのに最も適したインデックスをお勧めします。
 
-Index Advisor は、インデックスを作成する上での推奨事項を提供することで、インデックスをより一層管理しやすくします。V12 サーバーについては、Index Advisor は [Azure ポータル](https://portal.azure.com/)内で数回クリックするだけで、インデックスを作成および検証することもできます。インデックスを作成した後、SQL Database サービスは、データベースのワークロードのパフォーマンスを分析し、新しいインデックスの影響に関する詳細情報を提供します。分析により、推奨されるインデックスがパフォーマンスを低下させると判断された場合、インデックスが自動的に元の状態に戻されます。
+Index Advisor は、インデックスを作成する上での推奨事項を提供することで、インデックスをより一層管理しやすくします。V12 サーバーについては、Index Advisor は [Azure プレビュー ポータル](https://portal.azure.com/)内で数回クリックするだけで、インデックスを作成および検証することもできます。インデックスを作成した後、SQL Database サービスは、データベースのワークロードのパフォーマンスを分析し、新しいインデックスの影響に関する詳細情報を提供します。分析により、推奨されるインデックスがパフォーマンスを低下させると判断された場合、インデックスが自動的に元の状態に戻されます。
 
 Index Advisor では、データベースのパフォーマンスを調整する時間を短縮することができます。
 
 
-> [AZURE.NOTE]Index Advisor は現在プレビュー段階にあるため、[Azure ポータル](https://portal.azure.com/)でのみ使用できます。
+> [AZURE.NOTE]Index Advisor は現在プレビュー段階にあるため、[Azure プレビュー ポータル](https://portal.azure.com/)でのみ使用できます。
 
 
 ## プレビューの考慮事項
@@ -57,11 +57,11 @@ Index Advisor は使いやすいツールです。データベースのインデ
 
 ## 推奨インデックスの確認
 
-Index Advisor は、[Azure ポータル](https://portal.azure.com/)のデータベース ブレードに推奨インデックスの一覧を表示します。選択したデータベースのテーブルごとに上位に選ばれたお勧め候補が表示されます。これらは、新しいインデックスを作成することでパフォーマンスが向上する可能性があります。
+Index Advisor は、[Azure プレビュー ポータル](https://portal.azure.com/)のデータベース ブレードに推奨インデックスの一覧を表示します。選択したデータベースのテーブルごとに上位に選ばれたお勧め候補が表示されます。これらは、新しいインデックスを作成することでパフォーマンスが向上する可能性があります。
 
 ### 現在使用可能な推奨インデックスの確認方法 :
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
 2. 左側のメニューの **[参照]** をクリックします。
 3. **[参照]** ブレードで、**[SQL データベース]** をクリックします。
 4. **[SQL データベース]** ブレードで、推奨インデックスを確認するデータベースをクリックします。
@@ -171,4 +171,4 @@ Index Advisor で作成したインデックスを削除できます。
 [3]: ./media/sql-database-index-advisor/recommended-indexes.png
 [4]: ./media/sql-database-index-advisor/index-operations.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

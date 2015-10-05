@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/02/2015"
+   ms.date="09/22/2015"
    ms.author="sahajs;twounder"/>
 
 # SQL Data Warehouse での Azure Stream Analytics の使用
@@ -36,51 +36,56 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 ## ジョブの出力の指定: Azure SQL Data Warehouse データベース
 
 ### 手順 1.
+
 Stream Analytics ジョブで、ページ上部の **[出力]** をクリックし、**[出力の追加]** をクリックします。
 
 ### 手順 2.
-SQL Databaseを選択し、[次へ] をクリックします。 ![][Add Output]
+
+SQL Database を選択し、[次へ] をクリックします。
+
+![][add-output]
 
 ### 手順 3.
 次の値を次のページに入力します。
 
 - *出力のエイリアス*: このジョブの出力のフレンドリ名を入力します。
-- *サブスクリプション*
+- *サブスクリプション*:
 	- SQL Data Warehouse データベースが Stream Analytics ジョブと同じサブスクリプション内に存在する場合は、[現在のサブスクリプションの SQL データベースを使用] を選択します。
 	- データベースが別のサブスクリプション内にある場合は、[別のサブスクリプションの SQL データベースを使用] を選択します。
 - *データベース*: 宛先データベースの名前を指定します。
 - *サーバー名*: 指定したばかりのデータベース用のサーバー名を指定します。Azure ポータルを使用すると、これを見つけることができます。
 
-![][Server Name]
+![][server-name]
 
 - *ユーザー名*: データベースの書き込みアクセス許可を持つアカウントのユーザー名を指定します。
 - *パスワード*: 指定したユーザー アカウントのパスワードを入力します。
 - *テーブル*: データベース内の対象テーブルの名前を指定します。
 
-![][Add Database]
+![][add-database]
 
 ### 手順 4.
+
 チェック ボタンをクリックして、このジョブ出力を追加し、Stream Analytics がデータベースに適切に接続できることを確認します。
 
-![][Test Connection]
+![][test-connection]
 
 データベースへの接続が成功すると、ポータルの下部に通知が表示されます。下部にある [接続のテスト] をクリックすると、データベースへの接続をテストできます。
 
-
-
-
 ## 次のステップ
+
 統合の概要については、「[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)][]」をご覧ください。
 
 開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][]に関するページをご覧ください。
 
 <!--Image references-->
-[Add Output]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/add-output.png
-[Server Name]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/dw-server-name.png
-[Add Database]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/add-database.png
-[Test Connection]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/test-connection.png
+
+[add-output]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/add-output.png
+[server-name]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/dw-server-name.png
+[add-database]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/add-database.png
+[test-connection]: ./media/sql-data-warehouse-integrate-azure-stream-analytics/test-connection.png
 
 <!--Article references-->
+
 [Azure Stream Analytics の概要]: stream-analytics-introductiond.md
 [Azure Stream Analytics の使用]: stream-analytics-get-started.md
 [SQL Data Warehouse の開発の概要]: sql-data-warehouse-overview-develop.md
@@ -91,4 +96,4 @@ SQL Databaseを選択し、[次へ] をクリックします。 ![][Add Output]
 <!--Other Web references-->
 [Azure Stream Analytics documentation]: http://azure.microsoft.com/documentation/services/stream-analytics/
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

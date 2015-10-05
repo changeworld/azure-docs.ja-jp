@@ -58,7 +58,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 &response_mode=query
 &scope=
 https%3A%2F%2Foutlook.office.com%2Fmail.read%20
-https%3A%2F%2Fgraph.windows.net%2Fmail.send
+https%3A%2F%2Foutlook.office.com%2Fmail.send
 &state=12345
 ```
 
@@ -116,4 +116,4 @@ OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細に
 
 更新トークンの取得方法と使用方法の詳細については、「[アプリ モデル v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

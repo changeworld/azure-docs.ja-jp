@@ -13,7 +13,7 @@ ms.devlang="java"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="07/06/2015"
+ms.date="09/23/2015"
 ms.author="larryfr"/>
 
 #HDInsight 上の Apache Storm を使用した Azure Event Hubs からの車両センサー データの処理
@@ -58,4 +58,4 @@ Storm トポロジでは、次のコンポーネントが使用されます。
 
 Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

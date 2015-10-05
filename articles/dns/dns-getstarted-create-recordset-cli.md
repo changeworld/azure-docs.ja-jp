@@ -1,23 +1,23 @@
 <properties
-   pageTitle="DNS ゾーンのレコード セットとレコードの作成 | Microsoft Azure"
-	description="Azure DNS のホスト レコードを作成する方法。PowerShell または CLI を使用したレコード セットとレコードの設定"
-	services="dns"
-	documentationCenter="na"
-	authors="joaoma"
-	manager="Adinah"
-	editor=""/>
+   pageTitle="CLI を使用して DNS ゾーンのレコード セットとレコードを作成する | Microsoft Azure"
+   description="Azure DNS のホスト レコードを作成する方法。CLI を使用したレコード セットとレコードの設定"
+   services="dns"
+   documentationCenter="na"
+   authors="joaoma"
+   manager="Adinah"
+   editor=""/>
 
 <tags
    ms.service="dns"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="09/02/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/22/2015"
+   ms.author="joaoma"/>
 
 
-# DNS レコードの作成
+# CLI を使用して DNS レコードを作成する
 
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-getstarted-create-recordset-cli.md)
@@ -52,14 +52,14 @@ Time-to-Live (TTL) は、各レコードが再度照会されるまでクライ�
 
 
 
-## CLI を使用したレコード セットとレコードの作成
+## レコード セットとレコードの作成 
 
 次の例では、レコード セットとレコードの作成方法を示します。使用する DNS レコードの種類は "A" です。他の種類のレコードについては、「[DNS レコードの管理方法](dns-operations-recordsets-cli.md)」を参照してください。
 
 
 ### 手順 1.
 
-CLI を使用してレコード セットを作成します。
+レコード セットを作成します。
 
 	Usage: network dns record-set create <resource-group> <dns-zone-name> <name> <type> <ttl>
 
@@ -122,4 +122,4 @@ nslookup や他の DNS ツールを使用して、新しいレコード セッ�
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

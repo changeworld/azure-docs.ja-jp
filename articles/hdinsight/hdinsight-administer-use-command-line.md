@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/08/2015"
+	ms.date="09/17/2015"
 	ms.author="jgao"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) を使用した HDInsight での Hadoop クラスターの管理
@@ -160,4 +160,4 @@ Azure プレビュー ポータルを使用して情報を取得する方法の�
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

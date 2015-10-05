@@ -1,24 +1,24 @@
-<properties 
+<properties
    pageTitle="Emulator Express を使用したローカル コンピューターでのクラウド サービス実行とデバッグ | Microsoft Azure"
-	description="Emulator Express を使用したローカル コンピューターでのクラウド サービス実行とデバッグ"
-	services="visual-studio-online"
-	documentationCenter="n/a"
-	authors="patshea123"
-	manager="douge"
-	editor="tlee"/>
-<tags 
+   description="Emulator Express を使用したローカル コンピューターでのクラウド サービス実行とデバッグ"
+   services="visual-studio-online"
+   documentationCenter="n/a"
+   authors="patshea123"
+   manager="douge"
+   editor="tlee" />
+<tags
    ms.service="visual-studio-online"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="multiple"
-	ms.workload="na"
-	ms.date="08/14/2015"
-	ms.author="patshea"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="multiple"
+   ms.workload="na"
+   ms.date="08/14/2015"
+   ms.author="patshea" />
 
 
 # Emulator Express を使用したローカル コンピューターでのクラウド サービス実行とデバッグ
 
-Emulator Express を使用することにより、管理者として Visual Studio を実行せずに、クラウド サービスをテストおよびデバッグできます。クラウド サービスの要件に応じて、Emulator Express または完全なエミュレーターのどちらを使用するかをプロジェクト設定で指定できます。完全なエミュレーターの詳細については、「[コンピューティング エミュレーターでの Azure アプリケーションの実行](https://msdn.microsoft.com/library/azure/hh403990.aspx)」を参照してください。Emulator Express は Azure SDK 2.1 で最初に付属し、Azure SDK 2.3 以降は既定のエミュレーターになりました。
+Emulator Express を使用することにより、管理者として Visual Studio を実行せずに、クラウド サービスをテストおよびデバッグできます。クラウド サービスの要件に応じて、Emulator Express または完全なエミュレーターのどちらを使用するかをプロジェクト設定で指定できます。完全なエミュレーターの詳細については、「[コンピューティング エミュレーターでの Azure アプリケーションの実行](../storage/storage-use-emulator.md)」を参照してください。Emulator Express は Azure SDK 2.1 で最初に付属し、Azure SDK 2.3 以降は既定のエミュレーターになりました。
 
 ## Visual Studio IDE での Emulator Express の使用
 
@@ -52,6 +52,6 @@ Emulator Express を使用する前に、いくつかの制限事項に注意す
 
 ## 次のステップ
 
-[クラウド サービスのデバッグ](https://msdn.microsoft.com/library/azure/ee405479.aspx)
+[Cloud Services のデバッグ](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

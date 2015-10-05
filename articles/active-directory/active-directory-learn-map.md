@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="terrylan"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2015"
+	ms.date="09/21/2015"
 	ms.author="curtand"/>
 
 # Azure AD の詳細情報
 
-###このトピックに関するその他の記事
+### このトピックに関するその他の記事
 [Azure AD とは](active-directory-whatis.md)<br> [どのよう動作しますか。](active-directory-works.md)<br> [開始](active-directory-get-started.md)<br> [次のステップ](active-directory-next-steps.md)<br> [詳細](active-directory-learn-map.md)
 
 Azure サブスクリプションは既にあります。Azure AD はそれとどのように関連しますか。 [サブスクリプションをディレクトリに関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
@@ -36,6 +36,5 @@ Azure Active Directory サービスに関する使用上の制約およびその
 
 * [Azure への組織としてのサインアップ](sign-up-organization.md)
 * [Azure ID](fundamentals-identity.md)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="3 台のサーバーから成る SharePoint ファーム リソース マネージャーのテンプレート"
+	pageTitle="3 台のサーバーから成る SharePoint ファームの ARM テンプレート |Microsoft Azure"
 	description="3 台のサーバーから成る SharePoint ファームの Azure リソース マネージャーのテンプレートの構造に関する段階的な説明です。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -10,13 +10,15 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.workload="infrastructure-services"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ms.tgt_pltfrm="vm-windows-sharepoint"
+	ms.workload="infrastructure-services"                                                                             ms.tgt_pltfrm="vm-windows-sharepoint"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/28/2015"
 	ms.author="davidmu"/>
 
 # 3 台のサーバーから成る SharePoint ファーム リソース マネージャーのテンプレート
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
 
 このトピックでは、3 台のサーバーから成る SharePoint ファームの azuredeploy.json テンプレート ファイルの構造について段階的に説明します。[こちら](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sharepoint-three-vm/azuredeploy.json)からブラウザーでこのテンプレートの内容を見ることができます。
 
@@ -364,7 +366,7 @@ JSON ファイルの **"resources"** セクションのサブセクションの�
 1.	デプロイに必要な Azure インフラストラクチャの各種要素を作成します。これには、共通の要素 (ストレージ アカウント、仮想ネットワーク)、階層に固有の要素 (可用性セット)、仮想マシン固有の要素 (パブリック IP アドレス、可用性セット、ネットワーク インターフェイス、ロード バランサー インスタンス) があります。
 2.	アプリケーションの階層 (認証、データベース、Web など) ごとにサーバーを作成および構成します。このとき、共通の要素 (ストレージ アカウント、仮想ネットワーク)、階層に固有の要素 (可用性セット)、仮想マシン固有の要素 (パブリック IP アドレス、ネットワーク インターフェイス、ロード バランサー インスタンス) を使用します。
 
-詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」をご覧ください。
+詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
 
 ## その他のリソース
 
@@ -374,4 +376,4 @@ JSON ファイルの **"resources"** セクションのサブセクションの�
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

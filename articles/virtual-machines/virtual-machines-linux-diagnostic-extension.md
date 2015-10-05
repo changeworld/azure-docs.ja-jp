@@ -1,22 +1,22 @@
 
 <properties
-		pageTitle="Linux の診断拡張機能を使用して Linux VM のパフォーマンスと診断データを監視する | Microsoft Azure"
-	description="Linux の診断拡張機能を使用して Linux VM のパフォーマンスと診断データを監視する方法を説明します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="NingKuang"
-	manager="timlt"
-	editor=""
-	tags=""/>
+		pageTitle="VM 拡張機能による Linux VM の監視 |Microsoft Azure"
+		description="Linux の診断拡張機能を使用して Azure 内の Linux VM のパフォーマンスと診断データを監視する方法を説明します。"
+		services="virtual-machines"
+		documentationCenter=""
+  		authors="NingKuang"
+		manager="timlt"
+		editor=""
+  		tags="azure-service-management"/>
 
 <tags
 		ms.service="virtual-machines"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/20/2015"
-	ms.author="Ning"/>
+		ms.workload="infrastructure-services"
+		ms.tgt_pltfrm="vm-linux"
+		ms.devlang="na"
+		ms.topic="article"
+		ms.date="07/20/2015"
+		ms.author="Ning"/>
 
 
 # Linux の診断拡張機能を使用した Linux VM のパフォーマンスと診断データの監視
@@ -34,6 +34,8 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 - システム、セキュリティ、アプリケーション ログを含む、すべての Linux Rsyslog ログ。
 - この[ドキュメント](https://scx.codeplex.com/wikipage?title=xplatproviders")で指定されているすべてのシステム データ。
 - ユーザーが指定したログ ファイル。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの管理について説明します。
 
 ## 拡張機能を有効にする方法
 拡張機能は、[Azure ポータル](https://ms.portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
@@ -141,4 +143,4 @@ Rsyslog データは既定で常に収集されます。
 - バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
 - バージョン 2.0 の場合、最初にスクリプトを使用して Linux 診断拡張機能を有効にすると、 Azure ポータルからはデータを表示できません。最初にポータルから拡張機能を有効にした場合は、スクリプトも正常に機能します。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="仮想マシンのイメージについて"
+	pageTitle="仮想マシンのイメージについて | Microsoft Azure"
 	description="Azure で仮想マシンのイメージを使用する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -11,7 +11,7 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/13/2015"
@@ -57,4 +57,4 @@ Azure サブスクリプションに使用できるイメージの管理には�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

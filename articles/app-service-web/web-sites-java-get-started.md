@@ -17,6 +17,14 @@
 
 # Azure App Service での Java Web アプリの作成
 
+> [AZURE.SELECTOR]
+- [.Net](web-sites-dotnet-get-started.md)
+- [Node.js](web-sites-nodejs-develop-deploy-mac.md)
+- [Java](web-sites-java-get-started.md)
+- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
+- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
+- [Python](web-sites-python-ptvs-django-mysql.md)
+
 このチュートリアルでは、Azure Marketplace または [Azure App Service の Web Apps 機能][]の構成 UI を利用して、Java を使って Web アプリを Microsoft Azure に作成する方法を示します。
 
 これらの手法のいずれも使用しない場合、たとえば、アプリケーション コンテナーをカスタマイズする場合は、「[Azure へのカスタム Java Web アプリのアップロード](web-sites-java-custom-upload.md)」を参照してください。
@@ -81,6 +89,8 @@ Azure Marketplace から Jetty を使用して構築した Web アプリは次�
 
 この時点で、Java アプリケーション サーバーは Azure で Java Web アプリとして動作しています。独自のアプリケーションや Web ページを追加するには、「[Java Web アプリへのアプリケーションまたは Web ページの追加](web-sites-java-add-app.md)」を参照してください。
 
+詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
+
 ## 変更内容
 
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス][]」を参照してください。
@@ -94,4 +104,4 @@ Azure Marketplace から Jetty を使用して構築した Web アプリは次�
 [Azure App Service と既存の Azure サービス]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Azure ポータル内の移動に関するリファレンス]: http://go.microsoft.com/fwlink/?LinkId=529715
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

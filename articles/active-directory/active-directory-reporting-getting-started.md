@@ -1,10 +1,10 @@
 <properties
    pageTitle="Azure AD レポート: 概要"
-   description="Azure AD レポート: 概要"
+   description="Azure Active Directory レポートで使用可能なさまざまなレポートが一覧表示します。"
    services="active-directory"
    documentationCenter=""
    authors="curtand"
-   manager="mbaldwin"
+   manager="stevenpo"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/30/2015"
+   ms.date="09/21/2015"
    ms.author="curtand;kenhoff"/>
 
 # Azure AD レポートの概要
@@ -36,7 +36,7 @@ Azure Active Directory には、ディレクトリに関するセキュリティ
 
 - アプリケーションの使用状況: 概要
 - アプリケーションの使用状況: 詳細
-- アプリケーション ダッシュ ボード
+- アプリケーション ダッシュボード
 - アカウント プロビジョニング エラー
 - 個々のユーザー デバイス
 - 個々のユーザー アクティビティ
@@ -156,4 +156,4 @@ Azure AD プラットフォームによって処理される認証およびサ�
 
 > [AZURE.TIP]Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

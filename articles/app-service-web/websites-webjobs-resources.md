@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/08/2015" 
+	ms.date="09/22/2015" 
 	ms.author="tdykstra"/>
 
 # Azure WebJobs のドキュメント リソース
@@ -107,7 +107,7 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 ##<a name="additionalsdk"></a>その他の Web ジョブ SDK のリソース
 
 * [Web ジョブ SDK のソース コード](https://github.com/Azure/azure-webjobs-sdk)
-* [[BlobTrigger] が動作する方法](http://blogs.msdn.com/b/jmstall/archive/2014/04/17/how-does-blobinput-work.aspx) 
+* [BlobTrigger] が動作する方法](http://blogs.msdn.com/b/jmstall/archive/2014/04/17/how-does-blobinput-work.aspx) 
 * [Azure Web ジョブ SDK での高度なバインド](http://victorhurdugaci.com/advanced-bindings-with-the-windows-azure-web-jobs-sdk/)
 * [Web ジョブ SDK を使用した、FREB のファイルの Azure Storage へのアップロード](http://thenextdoorgeek.com/post/WAWS-WebJob-to-upload-FREB-files-to-Azure-Storage-using-the-WebJobs-SDK)
 * [Azure がホストする Web ジョブのログに関するメリットが得られる、Azure 外部での Azure Web ジョブのホスティング](http://bypassion.dk/?p=510)
@@ -142,4 +142,4 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

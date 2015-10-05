@@ -1,11 +1,11 @@
 
 <properties
 	pageTitle="属性を使用した高度なルールの作成| Microsoft Azure"
-	description="セキュリティ グループの管理方法とそれらのグループを使用してリソースへのアクセスを管理する方法を上級者向けに説明しています。"
+	description="サポートされる式のルールの演算子とパラメーターを含むグループの高度な規則を作成する方法。"
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="swadhwa"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.date="09/21/2015" 
 	ms.author="femila"/>
 
 
 # 属性を使用した高度なルールの作成
-Azure 管理ポータルでは高度なルールを臨機応変に設定し、グループのメンバーシップを動的に管理することができます。
+Microsoft Azure 管理ポータルでは高度なルールを臨機応変に設定し、グループのメンバーシップを動的に管理することができます。
 
-**高度なルールを作成するには** Azure 管理ポータルのグループの **[構成]** タブで、**[高度なルール]** オプション ボタンをオンにし、用意されているテキスト ボックスに目的のルールを入力します。高度なルールの作成には、以下の情報を使用できます。
+**高度なルールを作成するには** Microsoft Azure 管理ポータルのグループの **[構成]** タブで、**[高度なルール]** オプション ボタンをオンにし、用意されているテキスト ボックスに目的のルールを入力します。高度なルールの作成には、以下の情報を使用できます。
 
 ## 高度なルール本体の作成
 グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す 2 項演算式です。その 3 つの構成要素を次に示します。
@@ -124,7 +124,7 @@ Azure 管理ポータルでは高度なルールを臨機応変に設定し、�
 | passwordPolicies | なし DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration、DisableStrongPassword | (user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName | 任意の文字列値または $null。 | (user.physicalDeliveryOfficeName -eq "value") |
 | postalCode | 任意の文字列値または $null。 | (user.postalCode -eq "value") |
-| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "en-US") |
+| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "ja-JP") |
 | sipProxyAddress | 任意の文字列値または $null。 | (user.sipProxyAddress -eq "value") |
 | state | 任意の文字列値または $null。 | (user.state -eq "value") |
 | streetAddress | 任意の文字列値または $null。 | (user.streetAddress -eq "value") |
@@ -168,4 +168,4 @@ Azure 管理ポータルでは高度なルールを臨機応変に設定し、�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

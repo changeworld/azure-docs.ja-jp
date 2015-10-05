@@ -1,11 +1,12 @@
 <properties 
-	pageTitle="Azure 上の Linux 仮想マシンでの root 権限の使用" 
+	pageTitle="Linux 仮想マシンでの root 権限の使用 | Microsoft Azure" 
 	description="Azure 上の Linux 仮想マシンで root 権限を使用する方法について説明します。" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="szarkos" 
 	manager="timlt" 
-	editor=""/>
+	editor=""
+	tags="azure-service-management,azure-resource-manager" />
 
 <tags 
 	ms.service="virtual-machines" 
@@ -17,15 +18,13 @@
 	ms.author="szark"/>
 
 
-
-
 # Azure 上の Linux 仮想マシンでの root 権限の使用
 
 既定では、`root` ユーザーは Azure 上の Linux 仮想マシンで無効になっています。ユーザーは `sudo` コマンドを使用して、昇格された特権でコマンドを実行できます。ただし、システムがプロビジョニングされている方法によって操作が異なります。
 
 1. **SSH キーとパスワードまたはパスワードのみ**: 仮想マシンが証明書 (`.CER` ファイル)、SSH キーとパスワード、またはユーザー名とパスワードだけでプロビジョニングされた場合。この場合は、コマンドを実行する前に `sudo` からユーザーのパスワードの入力が求められます。
 
-2. **SSH キーのみ**: 仮想マシンが証明書 (`.cer` ファイルまたは `.pem` ファイル) または SSH キーでプロビジョニングされ、パスワードがない場合。この場合は、コマンドを実行する前に `sudo` からユーザーのパスワードの入力は**求められません**。
+2. **SSH キーのみ**: 仮想マシンが証明書 (`.cer`、`.pem`、または `.pub` ファイル) または SSH キーでプロビジョニングされ、パスワードがない場合。この場合は、コマンドを実行する前に `sudo` からユーザーのパスワードの入力は**求められません**。
 
 
 ## SSH キーとパスワード、またはパスワードのみ
@@ -54,4 +53,4 @@ SSH キー認証を使用して Linux 仮想マシンにログオンし、`sudo`
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

@@ -1,8 +1,8 @@
 <properties
-   pageTitle="Azure ポータルのキーボード ショートカット"
+   pageTitle="Azure ポータルのキーボード ショートカット | Microsoft Azure"
    description="この記事では、Azure ポータル全体で使用できる最新のキーボード ショートカットの一覧を紹介します。個々のサービスで専用のキーボード ショートカットが特別に用意されている場合もあります。"
    services="cloud-services"
-   documentationCenter="dev-center-name"
+   documentationCenter=""
    authors="curtand"
    manager="msStevenPo"
    editor=""/>
@@ -50,4 +50,4 @@
 
 次のサイトで Azure ポータルの詳細を確認しましょう: http://azure.microsoft.com
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

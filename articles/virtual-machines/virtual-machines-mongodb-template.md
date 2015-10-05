@@ -1,22 +1,25 @@
 <properties
-  pageTitle="Azure リソース マネージャー テンプレートを使用して Ubuntu 上に MongoDB クラスターを作成する"
-	description="Azure リソース マネージャー テンプレートを使用して Azure PowerShell または Azure CLI により Ubuntu 上に MongoDB クラスターを作成する"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="karthmut"
-	manager="timlt"
-	editor="tysonn"/>
+  pageTitle="Ubuntu 上に MongoDB クラスターを作成する | Microsoft Azure"
+  description="Azure リソース マネージャー テンプレートを使用して Azure PowerShell または Azure CLI により Ubuntu 上に MongoDB クラスターを作成する"
+  services="virtual-machines"
+  documentationCenter=""
+  authors="scoriani"
+  manager="timlt"
+  editor="tysonn"
+  tags="azure-resource-manager"/>
 
 <tags
   ms.service="virtual-machines"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="04/29/2015"
-	ms.author="karthmut"/>
+  ms.workload="multiple"
+  ms.tgt_pltfrm="vm-windows"
+  ms.devlang="na"
+  ms.topic="article"
+  ms.date="04/29/2015"
+  ms.author="scoriani"/>
 
 # Azure リソース マネージャー テンプレートを使用して Ubuntu 上に MongoDB クラスターを作成する
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
 
 MongoDB は、高いパフォーマンス、高い可用性、自動的なスケーリングを提供するオープン ソースのドキュメント データベースです。MongoDB は、組み込まれているレプリケーション機能を利用して、スタンドアロン データベースとして、またはクラスター内にインストールできます。場合によっては、レプリケーションを使用して読み取り能力を増やすことができます。クライアントには、読み取り操作と書き込み操作を異なるサーバーに送る機能があります。また、異なるデータ センターにコピーを保持して、分散アプリケーションのデータの局所性と可用性を向上させることもできます。MongoDB でのレプリケーションは、冗長性も提供し、データの可用性を向上させます。レプリケーションによって異なるデータベース サーバー上にデータの複数のコピーを置くことにより、1 台のサーバーが失われてもデータベースを保護できます。レプリケーションにより、ハードウェアの障害やサービスの中断から回復することもできます。データのコピーを増やして、障害回復専用、レポート専用、バックアップ専用などにできます。
 
@@ -582,7 +585,7 @@ resources セクションではアクションの大部分が発生します。�
 
 特に、このデプロイメントには次のリンク済みテンプレートが使用されます。
 
--	**shared-resource.json**: デプロイ全体で共有されるすべてのリソースの定義を格納します。たとえば、VM の OS ディスクおよび仮想ネットワークの格納に使用されるストレージ アカウントです。
+-	**shared-resource.json**: デプロイメント全体で共有されるすべてのリソースの定義を格納します。たとえば、VM の OS ディスクおよび仮想ネットワークの格納に使用されるストレージ アカウントです。
 -	**jumpbox-resources.json**: 有効にすると、Jumpbox VM に関連するすべてのリソースをデプロイします。このVM は、パブリック ネットワークから MongoDB クラスターにアクセスするために使用できるパブリック IP アドレスを持っています。
 -	**arbiter-resources.json**: 有効にすると、このテンプレートは MongoDB クラスターにアービター メンバーをデプロイします。アービターはデータを含みませんが、プライマリ選択を管理するためにレプリカ セットに偶数個のノードが含まれるときに使用されます。
 -	**member-resources-Dx.json**: MongoDB ノードを効果的にデプロイするリソース テンプレートを指定します。特定のファイルは、選択されている T シャツのサイズの定義に基づきます。各ファイルは、各ノードのアタッチされているディスクの数だけが異なります。
@@ -646,7 +649,7 @@ DEPLOY DATA MEMBERS (並列) => DEPLOY LAST DATA MEMBER => (省略可能) DEPLOY
 
 注意が必要な重要な概念は、どのようにすれば単一の種類のリソースの複数のコピーをデプロイできるか、また、各インスタンスが必要な設定に対して一意の値を設定できるかということです。この概念は、*リソース ループ*と呼ばれています。
 
-前の例では、パラメーター (クラスターにデプロイするノードの数) を使用して変数 (“numberOfMembers”) が設定され、それが **“copy”** 要素に渡されて子デプロイメントの数 (ループ) がトリガーされます。各デプロイメントは、クラスター内の各メンバーに対するテンプレートのインスタンス化になります。インスタンスごとに一意の値が必要なすべての設定を設定できるように、**copyindex()** 関数を使用して、特定のリソース ループ作成における現在のインデックスを示す数値を取得できます。
+前の例では、パラメーター (クラスターにデプロイするノードの数) を使用して変数 ("numberOfMembers") が設定され、それが **"copy"** 要素に渡されて子デプロイメントの数 (ループ) がトリガーされます。各デプロイメントは、クラスター内の各メンバーに対するテンプレートのインスタンス化になります。インスタンスごとに一意の値が必要なすべての設定を設定できるように、**copyindex()** 関数を使用して、特定のリソース ループ作成における現在のインデックスを示す数値を取得できます。
 
 リソース作成におけるもう 1 つの重要な概念は、**dependsOn** JSON 配列からわかるように、リソース間の依存関係と優先順位を指定できる点です。この特定のテンプレートでは、各ノードをデプロイするには、その前に**共有リソース**のデプロイが成功している必要があります。
 
@@ -690,4 +693,4 @@ vm-disk-utils-0.1.sh は、azure-quickstart-tempates GitHub リポジトリ内�
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

@@ -18,23 +18,19 @@
 
 # Azure Marketplace で Docker をすばやく開始する方法
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 [Docker] を最もすばやく使用する方法は、Azure Marketplace に移動し、[Canonical] と [MSOpenTech] により作成された **Ubuntu Server の Docker** イメージ テンプレートを使用して VM を作成するものです。これにより Ubuntu Server VM が作成され、[Docker VM 拡張機能](virtual-machines-docker-vm-extension.md)のインストールが、**最新の** Docker Engine のインストールと、Azure での実行が完了した状態で自動的に行われます。
 
 すぐに SSH で VM を接続し、そのまま直接 Docker で作業を始められます。
 
 > [AZURE.NOTE]Azure Marketplace テンプレートで作成された VM は、リモートの Docker クライアントによる管理目的の Docker リモート API をホストしません。リモートでこの VM の Docker ホストの管理を有効にするには、[HTTPS による Docker の実行](https://docs.docker.com/articles/https/)に関するページを参照するか、「[Azure ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)」または「[Azure CLI での Docker VM 拡張機能の使用](virtual-machines-docker-with-xplat-cli.md)」の手順に従ってください。高度な設定をする場合は、GitHub で [Windows Docker クライアント](https://github.com/ahmetalpbalkan/Docker.DotNet)を構築することもできます ([nuget](https://www.nuget.org/packages/Docker.DotNet/) での取得も可能です)。
 
-このトピックの内容:
-
-- [ポータルへのログオン]
-- [Canonical と MSOpenTech の Docker イメージを使用した VM の作成]
-- [SSH による接続と簡単な設定]
-
-## <a id='logon'>ポータルへのログオン</a>
+## ポータルへのログオン
 
 この作業は Azure アカウントさえあれば、問題ありません。[アカウントがない場合も簡単に取得できます](http://azure.microsoft.com/pricing/free-trial/)。
 
-## <a id='createvm'>Canonical と MSOpenTech の Docker イメージを使用した VM の作成</a>
+## Canonical と MSOpenTech の Docker イメージを使用した VM の作成
 
 1. ログオンしたら、左下にある **[新規]** をクリックして新しい VM イメージを作成します。すぐにバナーに適切なイメージが表示されます。
 
@@ -52,7 +48,7 @@
 
 > ![Docker image running in portal](./media/virtual-machines-docker-ubuntu-quickstart/DockerUbuntuRunning.png)
 
-## <a id='havingfun'>SSH による接続と簡単な設定</a>
+## SSH による接続と簡単な設定
 
 次は楽しい作業です。SSH ですぐに VM に接続できます。
 
@@ -68,9 +64,9 @@ Docker コマンドの発行を開始しますが、この Azure VM では既定
 [Docker] の使用を開始してください。
 
 <!--Anchors-->
-[ポータルへのログオン]: #logon
-[Canonical と MSOpenTech の Docker イメージを使用した VM の作成]: #createvm
-[SSH による接続と簡単な設定]: #havingfun
+[Log on to the Portal]: #logon
+[Create a VM with the Docker Image from Canonical and MSOpenTech]: #createvm
+[Connect with SSH and Have Fun]: #havingfun
 [Next steps]: #next-steps
 
 
@@ -81,4 +77,4 @@ Docker コマンドの発行を開始しますが、この Azure VM では既定
 [MSOpenTech]: http://msopentech.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

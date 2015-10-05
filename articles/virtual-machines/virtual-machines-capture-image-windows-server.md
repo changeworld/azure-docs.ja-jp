@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Windows Server を実行する仮想マシンのイメージのキャプチャ"
-	description="Windows Server を実行する Azure 仮想マシン (VM) のイメージをキャプチャする方法について説明します。"
+	pageTitle="Windows 仮想マシンのイメージをキャプチャする | Microsoft Azure"
+	description="クラシック デプロイ モデルを使用して作成された Windows 仮想マシンのイメージをキャプチャする"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,7 +17,9 @@
 	ms.date="07/16/2015"
 	ms.author="cynthn"/>
 
-#イメージとして使用する Windows 仮想マシンのキャプチャ方法#
+#クラシック デプロイ モデルを使用して作成された Windows 仮想マシンのイメージをキャプチャする
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 ここでは、Windows を実行する Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。このイメージには、オペレーティング システム ディスクと、仮想マシンに接続されているすべてのデータ ディスクが含まれます。ネットワーク構成は含まれないため、テンプレートを使用する他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
 
@@ -30,7 +32,7 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 - [Windows を実行するカスタム仮想マシンの作成][]
 - [データ ディスクを仮想マシンに接続する方法][]
 
-> [AZURE.WARNING]このプロセスではキャプチャ後に元の仮想マシンを削除するため、仮想マシンのバックアップは目的としていません。バックアップ方法の 1 つに Azure Backup があります。これは、特定の地域でプレビューとして提供されています。詳細については、「[Azure 仮想マシンのバックアップ](../backup/backup-azure-vms.md)」を参照してください。その他のソリューションは認定パートナーから利用できます。利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
+> [AZURE.WARNING]このプロセスではキャプチャ後に元の仮想マシンを削除するため、仮想マシンのバックアップは目的としていません。バックアップ方法の 1 つに Azure Backup があります。これは、特定の地域でプレビューとして提供されています。詳細については、「[Back up Azure virtual machines (Azure 仮想マシンのバックアップ)](../backup/backup-azure-vms.md)」を参照してください。その他のソリューションは認定パートナーから利用できます。利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
 
 ##仮想マシンをキャプチャする##
 
@@ -52,7 +54,7 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 
 7.	Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、Azure ポータルの仮想マシンの状態が **[停止済み]** に変わります。
 
-8.	Azure ポータル で **[Virtual Machines]** をクリックし、キャプチャする仮想マシンを選択します。
+8.	Azure ポータルで **[Virtual Machines]** をクリックし、キャプチャする仮想マシンを選択します。
 
 9.	コマンド バーで、**[取り込み]** をクリックします。
 
@@ -83,4 +85,4 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 [Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
 [Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

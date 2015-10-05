@@ -1,11 +1,12 @@
 <properties
-	pageTitle="仮想マシンの可用性管理 | Virtual Machines"
+	pageTitle="VM の可用性管理 | Microsoft Azure"
 	description="複数の仮想マシンを使って Azure アプリケーションの高い可用性を確保する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="kenazk"
 	manager="timlt"
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -16,7 +17,7 @@
 	ms.date="07/23/2015"
 	ms.author="kenazk"/>
 
-#仮想マシンの可用性管理
+# 仮想マシンの可用性管理
 
 ## 計画済み、または計画外メンテナンスについて理解する
 仮想マシンの可用性に影響を与える可能性のある Microsoft Azure プラットフォーム イベントには、計画的なメンテナンスと計画外のメンテナンスの 2 種類があります。
@@ -69,4 +70,4 @@ Azure ロード バランサーと可用性セットを結合することで、�
 [可用性セット内の仮想マシンが 1 つのみにならないようにする]: #avoid-single-instance-virtual-machines-in-availability-sets
 [仮想マシンの可用性セットを構成する方法]: virtual-machines-how-to-configure-availability.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

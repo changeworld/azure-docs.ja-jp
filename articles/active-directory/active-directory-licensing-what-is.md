@@ -1,20 +1,20 @@
 <properties
    pageTitle="Microsoft Azure Active Directory ライセンスとは | Microsoft Azure"
-	description="Office 365、Microsoft Intune、Azure Active Directory Premium と Basic エディションを含む、Microsoft Azure AD のライセンス、しくみ、使用方法、ベスト プラクティスの説明"
-	services="active-directory"
-	documentationCenter=""
-	authors="curtand"
-	manager="swadhwa"
-	editor=""/>
+   description="Office 365、Microsoft Intune、Azure Active Directory Premium と Basic エディションを含む、Microsoft Azure AD のライセンス、しくみ、使用方法、ベスト プラクティスの説明"
+   services="active-directory"
+   documentationCenter=""
+   authors="curtand"
+   manager="stevenpo"
+   editor=""/>
 
 <tags
    ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="07/16/2015"
-	ms.author="curtand"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="09/21/2015"
+   ms.author="curtand"/>
 
 # Microsoft Azure Active Directory ライセンスとは
 
@@ -131,4 +131,4 @@ Azure AD Premium の一部の機能を構成し、使用する準備ができま
 - [Azure Multi-Factor Authentication](multi-factor-authentication.md)
 - [Azure AD Premium ライセンスの直接購入](http://aka.ms/buyaadp)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

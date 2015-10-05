@@ -1,27 +1,38 @@
 <properties
    pageTitle="Application Gateway の作成、起動、または削除 | Microsoft Azure"
-	description="このページでは、Azure Application Gateway を作成、構成、起動、および削除する方法について説明します。"
-	documentationCenter="na"
-	services="application-gateway"
-	authors="joaoma"
-	manager="jdial"
-	editor="tysonn"/>
+   description="このページでは、Azure Application Gateway を作成、構成、起動、および削除する方法について説明します。"
+   documentationCenter="na"
+   services="application-gateway"
+   authors="joaoma"
+   manager="jdial"
+   editor="tysonn"/>
 <tags
    ms.service="application-gateway"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="07/29/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="hero-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/21/2015"
+   ms.author="joaoma"/>
 
 # Application Gateway の作成、起動、または削除
 
-このリリースでは、PowerShell または REST API の呼び出しを使用して Application Gateway を作成できます。Azure ポータルおよび CLI のサポートは、今後のリリースで提供されます。この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
+Application Gateway はロード バランサーの第 7 層です。クラウドでもオンプレミスでも、フェールオーバーと、異なるサーバー間のパフォーマンス ルーティング HTTP 要求を提供します。Application Gateway は、HTTP 負荷分散、クッキー ベースのセッション アフィニティ、SSL オフロードなどのアプリケーション配信機能を備えています。
 
 > [AZURE.SELECTOR]
-- [Azure classic steps](application-gateway-create-gateway.md)
-- [Resource Manager Powershell steps](application-gateway-create-gateway-arm.md)
+- [Azure Classic Powershell steps](application-gateway-create-gateway.md)
+- [Azure Resource Manager Powershell steps](application-gateway-create-gateway-arm.md)
+- [Azure Resource Manager template steps](application-gateway-create-gateway-arm-template.md)
+
+
+<BR>
+
+この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
+
+
+>[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイ モデルと従来のデプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure クラシックのデプロイメントを使用した Application Gateway の作成について説明します。リソース マネージャー バージョンを使用するには、[リソース マネージャーを使用した Application Gateway のデプロイメントの作成](application-gateway-create-gateway-arm.md)に進んでください。
+
+
 
 
 
@@ -342,7 +353,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 
 `Get-AzureApplicationGateway` コマンドレットを使用してゲートウェイの状態を確認します。前の手順で *Start-AzureApplicationGateway* が成功した場合、State は *Running* になり、Vip と DnsName に有効な値が入力されます。
 
-次の例は、起動に成功し、`http://<generated-dns-name>.cloudapp.net` 宛のトラフィックを受け入れる準備が完了している実行中の Application Gateway を示します。
+次のサンプルは、起動に成功し、実行中で、`http://<generated-dns-name>.cloudapp.net` 方向のトラフィックを受け入れる準備が完了している Application Gateway を示します。
 
 	PS C:\> Get-AzureApplicationGateway AppGwTest
 
@@ -367,7 +378,7 @@ Application Gateway の削除
 2. `Remove-AzureApplicationGateway` コマンドレットを使用してゲートウェイを削除します。
 3. `Get-AzureApplicationGateway` コマンドレットを使用して削除されたゲートウェイを確認します。
 
-この例の最初の行は `Stop-AzureApplicationGateway` コマンドレットを示し、その後に出力が続きます。
+このサンプルの最初の行は `Stop-AzureApplicationGateway` コマンドレットを示し、その後に出力が続きます。
 
 	PS C:\> Stop-AzureApplicationGateway AppGwTest
 
@@ -377,7 +388,7 @@ Application Gateway の削除
 	----       ----------------     ------------                             ----
 	Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 
-Application Gateway が停止済み状態になったら、`Remove-AzureApplicationGateway` コマンドレットを使用してサービスを削除します。
+Application Gateway が Stopped 状態になったら、`Remove-AzureApplicationGateway` コマンドレットを使用してサービスを削除します。
 
 
 	PS C:\> Remove-AzureApplicationGateway AppGwTest
@@ -402,11 +413,11 @@ Application Gateway が停止済み状態になったら、`Remove-AzureApplicat
 
 SSL オフロードを構成する場合は、「[SSL オフロードの Application Gateway の構成](application-gateway-ssl.md)」を参照してください。
 
-ILB とともに使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートの作成](application-gateway-ilb.md)」を参照してください。
+ILB とともに使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用した Application Gateway の作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

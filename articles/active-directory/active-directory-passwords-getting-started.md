@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/08/2015" 
+	ms.date="09/18/2015" 
 	ms.author="asteen"/>
 
 # パスワード管理の概要
@@ -341,6 +341,4 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 [030]: ./media/active-directory-passwords-getting-started/030.jpg "Image_030.jpg"
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 
- 
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

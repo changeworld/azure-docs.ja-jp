@@ -60,17 +60,17 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 
 | プロパティ | 説明 |
 |------------------------------|--------------------------------------------------------------------|
-| System.EventProcessedUtcTime | Stream Analytics によってイベントが処理された日時。 |
-| System.EventEnqueuedUtcTime | Event Hubs でイベントを受信した日時。 |
-| System.PartitionId | 入力アダプターの 0 から始まるパーティション ID |
+| EventProcessedUtcTime | Stream Analytics によってイベントが処理された日時。 |
+| EventEnqueuedUtcTime | Event Hubs でイベントを受信した日時。 |
+| PartitionId | 入力アダプターの 0 から始まるパーティション ID |
 
 たとえば、次のようにクエリを記述することができます。
 
 
     SELECT
-    	System. EventProcessedUtcTime,
-    	System. EventEnqueuedUtcTime,
-    	System.PartitionId
+    	EventProcessedUtcTime,
+    	EventEnqueuedUtcTime,
+    	PartitionId
     FROM Input
 
 ## BLOB ストレージ データ ストリーム入力の作成
@@ -136,23 +136,23 @@ Stream Analytics の BLOB ストレージ イベントの既定のタイムス�
 
 | プロパティ | 説明 |
 |--------------------------------|--------------------------------------------------------------------|
-| System.BlobName | イベントに起因する入力 BLOB の名前。 |
-| System.EventProcessedUtcTime | Stream Analytics によってイベントが処理された日時。 |
-| System.BlobLastModifiedUtcTime | BLOB が最後に変更された日時 |
-| System.PartitionId | 入力アダプターの 0 から始まるパーティション ID |
+| BlobName | イベントに起因する入力 BLOB の名前。 |
+| EventProcessedUtcTime | Stream Analytics によってイベントが処理された日時。 |
+| BlobLastModifiedUtcTime | BLOB が最後に変更された日時 |
+| PartitionId | 入力アダプターの 0 から始まるパーティション ID |
 
 たとえば、次のようにクエリを記述することができます。
 
 
     SELECT
-    	System.BlobName,
-    	System.EventProcessedUtcTime,
-    	System.BlobLastModifiedUtcTime
+    	BlobName,
+    	EventProcessedUtcTime,
+    	BlobLastModifiedUtcTime
     FROM Input
 
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/JA-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。このサービスの詳細については、以下の情報をご覧ください。
@@ -170,4 +170,4 @@ Stream Analytics の BLOB ストレージ イベントの既定のタイムス�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

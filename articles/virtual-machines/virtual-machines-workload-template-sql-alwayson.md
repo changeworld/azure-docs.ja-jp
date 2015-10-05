@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ | Microsoft Azure"
+	pageTitle="Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn | Microsoft Azure"
 	description="リソース マネージャーのテンプレートと、Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して、SQL Server AlwaysOn をサポートする 5 つのサーバーを簡単にデプロイします。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -19,6 +19,8 @@
 
 # Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
+
 この記事の手順を使用すると、Azure リソース マネージャーのテンプレートを使用して SQL Server AlwaysOn をデプロイできます。このテンプレートでは、新しい仮想ネットワークの 2 つの異なるサブネット上に 5 つの仮想マシンが作成されます。
 
 ![](./media/virtual-machines-workload-template-sql-alwayson/five-server-sqlao.png)
@@ -27,7 +29,7 @@
 
 ## Azure プレビュー ポータル
 
-Azure リソース マネージャー テンプレートと Azure プレビュー ポータルを使用してこのワークロードをデプロイするには、[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsql-server-2014-alwayson-dsc%2Fazuredeploy.json)をクリックします。
+Azure リソース マネージャー テンプレートや Azure プレビュー ポータルを使用してこのワークロードをデプロイするには、[ここ](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsql-server-2014-alwayson-dsc%2Fazuredeploy.json)をクリックします。
 
 ![](./media/virtual-machines-workload-template-sql-alwayson/azure-portal-template.png)
 
@@ -77,7 +79,7 @@ Azure リソース マネージャー テンプレートと Azure プレビュ�
 
 	azure group create <group name> <location>
 
-次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイメントの名前を指定します。
+次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイの名前を指定します。
 
 	azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sql-server-2014-alwayson-dsc/azuredeploy.json <group name> <deployment name>
 
@@ -105,4 +107,4 @@ Azure リソース マネージャー テンプレートと Azure プレビュ�
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

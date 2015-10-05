@@ -1,24 +1,27 @@
-<properties 
-	pageTitle="Microsoft Azure で Linux 仮想マシンに Tomcat7 を設定する方法" 
-	description="Linux を実行する Azure の仮想マシン (VM) を使用して Microsoft Azure で Tomcat7 を設定する方法について説明します。" 
-	services="virtual-machines" 
-	documentationCenter="" 
-	authors="NingKuang" 
-	manager="timlt" 
-	editor="tysonn"/>
+<properties
+	pageTitle="Apache Tomcat を Linux VM にセットアップする | Microsoft Azure"
+	description="Linux を実行する Azure の仮想マシン (VM) を使用して Apache Tomcat7 をセットアップする方法について説明します。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="NingKuang"
+	manager="timlt"
+	editor=""
+	tags="azure-service-management"/>
 
-<tags 
-	ms.service="virtual-machines" 
-	ms.workload="infrastructure-services" 
-	ms.tgt_pltfrm="vm-linux" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/21/2015" 
+<tags
+	ms.service="virtual-machines"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/21/2015"
 	ms.author="ningk"/>
 
-#Microsoft Azure で Linux 仮想マシンに Tomcat7 を設定する方法 
+#Microsoft Azure で Linux 仮想マシンに Tomcat7 を設定する方法
 
 Apache Tomcat (または単に Tomcat、以前は Jakarta Tomcat) は Apache Software Foundation (ASF) によって開発されたオープン ソース Web サーバーであり、サーブレット コンテナーです。Tomcat は、Sun Microsystems の Java Servlet および JavaServer Pages (JSP) 仕様を実装し、純粋な Java HTTP Web サーバー環境を提供して Java コードを実行します。最も単純な構成では Tomcat は単一のオペレーティング システムのプロセスで実行されます。このプロセスは、Java 仮想マシン (JVM) を実行します。ブラウザーからの Tomcat に対するすべての HTTP 要求は、Tomcat プロセスで個別のスレッドとして処理されます。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 このガイドでは、Linux イメージ上に Tomcat7 をインストールして Microsoft Azure にデプロイすることができます。
 
@@ -46,20 +49,20 @@ SSH はシステム管理者にとって重要なツールです。ただし、�
 
 次の手順に従って、SSH 認証のキーを生成します。
 
-1.	次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 
+1.	次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2.	PUTTYGEN.EXE を実行します。
 3.	**[生成]** をクリックしてキーを生成します。処理中にウィンドウの空白の領域にマウスを移動すると、ランダム性を高めることができます。![][1]
 4.	生成処理が終わると、生成されたキーが表示されます。次に例を示します。![][2]
 5.	**[キー]** の公開キーを選択してコピーし、publicKey.pem という名前のファイルに保存します。保存された公開キーの形式は使用する公開キーの形式と異なるため、**[公開キーの保存]** をクリックしないでください。
-6.	**[秘密キーの保存]** をクリックし、privateKey.ppk という名前のファイルに保存します。 
+6.	**[秘密キーの保存]** をクリックし、privateKey.ppk という名前のファイルに保存します。
 
 ###手順 2. Azure プレビュー ポータルでイメージを作成する
 [Azure プレビュー ポータル](https://portal.azure.com/)で、タスク バーの **[新規]** をクリックし、ニーズに合った Linux イメージを選択してイメージを作成します。次の例では、Ubuntu 14.04 イメージを使用します。![][3]
- 
+
 **[ホスト名]** に、ユーザーとインターネット クライアントがこの仮想マシンにアクセスするのに使用する URL の名前を指定します。DNS 名の最後の部分 (tomcatdemo など) を定義すると、Azure は URL を tomcatdemo.cloudapp.net として生成します。
 
 **[SSH 認証キー]** に、**publicKey.pem** ファイルのキーの値をコピーします。このファイルには、puttygen によって生成された公開キーが含まれています。![][4]
-  
+
 必要に応じて、他の設定を構成し、[作成] をクリックします。
 
 ##フェーズ 2: Tomcat7 の仮想マシンを準備する
@@ -70,15 +73,15 @@ Azure のエンドポイントはプロトコル (TCP または UDP) の他に�
 TCP ポート 8080 は、tomcat がリッスンする既定のポート番号です。このポートを Azure エンドポイントで開くと、ユーザーやその他のインターネット クライアントが tomcat のページにアクセスできるようになります。
 
 1.	Azure プレビュー ポータルで、**[参照]**、**[仮想マシン]** の順にクリックし、作成した仮想マシンをクリックします。![][5]
-2.	仮想マシンにエンドポイントを追加するには、**[エンドポイント]** ボックスをクリックします。![][6] 
+2.	仮想マシンにエンドポイントを追加するには、**[エンドポイント]** ボックスをクリックします。![][6]
 3.	**[追加]** をクリックします。  
 	1.	**エンドポイント**では、[エンドポイント] にエンドポイントの名前を入力し、**[パブリック ポート]** に「80」を入力します。  
-	  
+
 		80 に設定している場合は、tomcat に接続するための URL にポート番号を含める必要はありません。たとえば、「http://tomcatdemo.cloudapp.net」のように入力します。
 
 		81 などの別の値に設定した場合は、tomcat にアクセスするための URL にポート番号を追加する必要があります。たとえば、「http://tomcatdemo.cloudapp.net:81/」のように入力します。
 	2.	プライベート ポートに「8080」を入力します。既定では、tomcat は TCP ポート 8080 でリッスンします。tomcat の既定のリッスン ポートを変更した場合は、tomcat のリッスン ポートと同じになるように [プライベート ポート] を更新する必要があります。![][7]
- 
+
 4.	**[OK]** をクリックして、仮想マシンにエンドポイントを追加します。
 
 
@@ -89,13 +92,13 @@ SSH ツールを選択すると、仮想マシンに接続できます。この�
 最初に、Azure プレビュー ポータルから仮想マシンの DNS 名を取得します。**[参照]**、**[仮想マシン]**、仮想マシン名、**[プロパティ]** の順にクリックし、**[プロパティ]** タイルの**ドメイン名**を調べます。
 
 **[SSH]** フィールドから、SSH 接続のポート番号を取得します。たとえば次のようになります。![][8]
- 
+
 [ここ](http://www.putty.org/)から Putty をダウンロードします
 
 ダウンロード後、実行可能ファイル PUTTY.EXE をクリックします。仮想マシンのプロパティから取得したホスト名とポート番号を使用して、基本オプションを構成します。たとえば次のようになります。![][9]
- 
+
 左側のウィンドウで、**[接続]**、**[SSH]**、**[認証]** の順にクリックし、**[参照]** をクリックして **privateKey.ppk** ファイルの場所を指定します。このファイルには、「フェーズ 1: イメージを作成する」で puttygen によって生成された秘密キーが含まれています。たとえば次のようになります。![][10]
- 
+
 **[開く]** をクリックします。メッセージ ボックスによるアラートが表示される場合があります。DNS 名とポート番号を正しく構成してある場合は、**[はい]** をクリックします。![][11]
 
 
@@ -179,7 +182,7 @@ Tomcat7 サーバーはインストールすると、自動的に開始されま
 
 Tomcat7 を停止するには:
 
-	sudo /etc/init.d/tomcat7 stop 
+	sudo /etc/init.d/tomcat7 stop
 
 Tomcat7 の状態を表示するには:
 
@@ -205,7 +208,7 @@ Tomcat サービスを再起動するには:
 ブラウザーを開き、「**http://<your tomcat server DNS name>/manager/html**」という URL を入力します。たとえば、この記事では、URL は http://tomcatexample.cloudapp.net/manager/html です。
 
 接続後は、次のように表示されます。![][18]
- 
+
 ##一般的な問題
 
 ###Tomcat や Moodle を使用してインターネットから仮想マシンにアクセスできない。
@@ -213,7 +216,7 @@ Tomcat サービスを再起動するには:
 -	**症状:** Tomcat は実行されているが、ブラウザーに Tomcat の既定のページが表示されない。
 -	**考えられる根本原因**   
 	1.	tomcat のリッスン ポートが、仮想マシンの tomcat トラフィック用のエンドポイントのプライベート ポートと異なっている。  
-	
+
 		パブリック ポートとプライベート ポートのエンドポイント設定を確認し、プライベート ポートが tomcat のリッスン ポートと同じになっていることを確認します。仮想マシンのエンドポイントを構成する手順については、「フェーズ 1: イメージを作成する」を参照してください。
 
 		tomcat のリッスン ポートを確認するには、/etc/httpd/conf/httpd.conf (Red Hat リリース) または /etc/tomcat7/server.xml (Debian リリース) を開きます。既定では、tomcat のリッスン ポートは 8080 です。たとえば次のようになります。
@@ -237,9 +240,9 @@ Tomcat サービスを再起動するには:
 
 -	**解決策:**
 	1. tomcat のリッスン ポートが、仮想マシンのトラフィック用のエンドポイントのプライベート ポートと異なっている場合は、tomcat のリッスン ポートと同じになるように、プライベート ポートを変更する必要があります。   
-	
+
 	2.	問題の原因がファイアウォールや iptables の場合は、/etc/sysconfig/iptables に次の行を追加します。
-	
+
 			-A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 			-A INPUT -p tcp -m tcp --dport 443 -j ACCEPT  
 
@@ -301,6 +304,5 @@ Tomcat サービスを再起動するには:
 [16]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-16.png
 [17]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-17.png
 [18]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-18.png
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

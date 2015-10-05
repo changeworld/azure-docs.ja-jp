@@ -1,11 +1,12 @@
 <properties
-   pageTitle="Azure CLI を使用して Azure 仮想マシンを作成する方法 |Microsoft Azure"
+   pageTitle="Azure CLI を使用して Azure VM を作成する方法 |Microsoft Azure"
    description="このトピックでは、任意のプラットフォームに Azure CLI をインストールする方法、Azure CLI を使って Azure アカウントに接続する方法、Azure CLI で仮想マシンを作成する方法について説明します。"
    services="virtual-machines"
-   documentationCenter="virtual-machines"
+   documentationCenter=""
    authors="dlepow"
    manager="timlt"
-   editor="tysonn"/>
+   editor="tysonn"
+   tags="azure-service-management"/>
 
 <tags
    ms.service="virtual-machines"
@@ -17,6 +18,9 @@
    ms.author="danlep"/>
 
 # Azure Command-Line Interface (Azure CLI) を使用して VM を作成する
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-deploy-rmtemplates-azure-cli.md)を使用してリソースを作成することもできます。
+
 Azure CLI は、任意のプラットフォームから Azure インフラストラクチャを管理する優れた方法です。
 
 Azure CLI をインストールして Azure サブスクリプションを持つことで、いたずらに仮想マシンを作成せずに済みます。手順を追って見ていきましょう。Azure アカウントをお持ちでない場合は、[無料版を取得してください](http://azure.microsoft.com/pricing/free-trial/)。
@@ -43,7 +47,7 @@ Azure CLI のインストールを個人の Azure アカウント、仕事用ア
 
     ここで、イメージを選択して `show` コマンドを使ってプロパティを詳細に表示できます。
 
-        azure vm image show b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-ja-jp-30GB
+        azure vm image show b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-ja-JP-30GB
 
 2. 仮想マシンのイメージを選択したら、`vm create` コマンドを使ってイメージを作成します。このコマンドには多くのオプションがあります。`help` コマンドを使用して一覧表示できます。
 
@@ -53,13 +57,13 @@ Azure CLI のインストールを個人の Azure アカウント、仕事用ア
 
     認証を行うには、パスワードを指定するか (コマンドラインまたは対話形式で)、証明書を使用します。パスワードの場合、8 文字以上で、大文字小文字の両方と、特殊文字 (!@#$%^&+= など) を少なくとも 1 文字含む必要があります。コマンドラインで使う場合、引用符やエスケープの特殊文字でパスワードを囲む方法も良いでしょう。
 
-    location を選択するには、`vm location list` コマンドを使って地域を指定できます。
+    location を選択するには、`vm location list` コマンドを使ってリージョンを指定できます。
 
   選択する DNS 名は固有である必要があります (`dnsname.cloudapp.net` にマッピングされます)。コマンドラインで別にマシン名を指定していなければ、マシン名と同じになります。
 
     The Linux example below creates a VM in West US, opens the default SSH port 22 (the -e argument), and creates a user called `myadminuser`:
 
-        azure vm create -e -l "West US"  my-new-cli-vm b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-ja-jp-30GB "myadminuser" "myAdm1n@passwd"
+        azure vm create -e -l "West US"  my-new-cli-vm b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-ja-JP-30GB "myadminuser" "myAdm1n@passwd"
 
 ## 次のステップ
 
@@ -74,4 +78,4 @@ Azure CLI を使って Azure インフラストラクチャを管理する多く
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

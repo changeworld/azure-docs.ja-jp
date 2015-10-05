@@ -21,7 +21,6 @@
 
 - [アプリケーションのライフ サイクル](service-fabric-application-lifecycle.md)
 - [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
-- [ステートフル サービスのセキュリティで保護されたレプリケーション トラフィック](service-fabric-replication-security.md)
 
 ## パッケージ化、デプロイ、およびアプリケーションの削除
 次のトピックでは、Service Fabric アプリケーション モデルと、アプリケーションをパッケージ化してデプロイする方法について説明しています。
@@ -41,13 +40,12 @@
 - [高度なトピック](service-fabric-application-upgrade-advanced.md)
 - [アプリケーション アップグレードの障害のトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
 - [アプリケーション アップグレードのチュートリアル](service-fabric-application-upgrade-tutorial.md)
-- [Service Fabric アプリケーションのアップグレード: データのシリアル化](service-fabric-application-upgrade-data-serialization.md) 
+- [Service Fabric アプリケーションのアップグレード: データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
 
 ## アプリケーション サービスのスケーリングおよびパーティション分割
 次の記事では、スケーリングとパーティション分割について説明しています。
 
 - [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 - [Service Fabric アプリケーションのスケーリング](service-fabric-concepts-scalability.md)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

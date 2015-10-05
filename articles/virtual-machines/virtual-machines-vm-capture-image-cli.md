@@ -3,7 +3,7 @@
 	description="Linux を実行する Azure の仮想マシン (VM) のイメージをキャプチャする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="karthmut"
+	authors="madhana"
 	manager="timlt"
 	editor="tysonn"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="02/20/2015"
-	ms.author="karthmut"/>
+	ms.author="madhana"/>
 
 
 
@@ -162,4 +162,4 @@ Azure ではこのテンプレートをイメージとして扱い、イメー�
 [データ ディスクを仮想マシンに接続する方法]: storage-windows-attach-disk.md
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

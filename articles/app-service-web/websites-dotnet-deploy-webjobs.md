@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="06/29/2015" 
+	ms.date="09/22/2015" 
 	ms.author="tdykstra"/>
 
 # Visual Studio を使用して Web ジョブを展開する
@@ -200,4 +200,4 @@ Web ジョブ プロジェクトがそれ自身でデプロイされるように
 * Azure ポータルから Azure プレビュー ポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

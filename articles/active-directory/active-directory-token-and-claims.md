@@ -1,5 +1,5 @@
  <properties
-   pageTitle="サポートされているトークンとクレームの種類"
+   pageTitle="サポートされているトークンとクレームの種類 | Microsoft Azure"
    description="Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド"
    documentationCenter="dev-center-name"
    authors="msmbaldwin"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="08/12/2015"
+   ms.date="09/17/2015"
    ms.author="mbaldwin"/>
 
 # サポートされているトークンとクレームの種類
@@ -139,7 +139,7 @@ JWT トークンでは、IssuedAt 値は iat クレームに表示されます�
 
 ### 発行者
 
-発行者クレームは、トークンと Azure AD ディレクトリ テナントを構築して返すセキュリティ トークン サービス (STS) を識別します。Azure AD が返すトークンでは、発行者は sts.windows.net です。発行者クレーム値の GUID は、Azure AD ディレクトリのテナント ID です。テナント ID は、変更不可で信頼性の高いディレクトリの識別子です。
+発行者クレームは、トークンと Azure AD ディレクトリ テナントを構築して返す Security Token Service (STS) を識別します。Azure AD が返すトークンでは、発行者は sts.windows.net です。発行者クレーム値の GUID は、Azure AD ディレクトリのテナント ID です。テナント ID は、変更不可で信頼性の高いディレクトリの識別子です。
 
 SAML トークンでは、発行者クレームは Issuer 要素に表示されます。
 
@@ -201,7 +201,7 @@ JWT トークンでは、トークンのスコープは scp クレームで指�
 
     "scp": "user_impersonation"
 
-### サブジェクト
+### [件名]
 
 トークンのサブジェクトは、トークンが情報 (アプリケーションのユーザーなど) をアサートするためのプリンシパルです。この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。
 
@@ -412,4 +412,4 @@ JWT トークンでは、ユーザー プリンシパル名は upn クレーム�
 
 [Azure Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

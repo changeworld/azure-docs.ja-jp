@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure BLOB との間でのデータの移動 | Azure Data Factory"
-	description="Azure Data Factory を使用して Azure BLOB ストレージに、または Azure BLOB ストレージからデータを移動する方法を説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="Azure BLOB との間でのデータの移動 | Azure Data Factory" 
+	description="Azure Data Factory を使用して Azure BLOB ストレージに、または Azure BLOB ストレージからデータを移動する方法を説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/26/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure BLOB との間でのデータの移動
@@ -471,7 +471,8 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- | 
 | treatEmptyAsNull | null と空の文字列を NULL 値として処理するかどうかを指定します。 | TRUE<br/>FALSE | いいえ |
-| skipHeaderLineCount | スキップする必要のある行数を指定します。入力データセットで **TextFormat** を利用しているときにのみ該当できます。 | 0 から最大値までの整数。 | いいえ | 
+| skipHeaderLineCount | スキップする必要がある行数を指定します。入力データセットで **TextFormat** を利用しているときにのみ該当できます。 | 0 から最大値までの整数。 | いいえ | 
+| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 | True (既定値)、False | いいえ | 
 
 
 **BlobSink** の **typeProperties** セクションでは次のプロパティがサポートされます。
@@ -479,6 +480,8 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
 | blobWriterAddHeader | 列定義のヘッダーを追加するかどうかを指定します。 | TRUE<br/>FALSE (既定値) | いいえ |
+| copyBehavior | ソースが BlobSource または FileSystem である場合のコピー動作を定義します。 | <p>CopyBehavior プロパティには 3 つの値があります。</p><ul><li>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</li><li>。**FlattenHierarchy:** ソース フォルダーのすべてのファイルはターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。</li><li>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル名/BLOB 名を指定した場合、マージ後のファイルの名前は指定した名前になります。それ以外は自動生成されたファイル名になります。</li></ul> | いいえ |
+
 
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
@@ -490,6 +493,6 @@ Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュ�
 
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-azure-blob-connector.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-azure-blob-connector.md)でフィードバックをお寄せください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/31/2015" 
+	ms.date="09/23/2015" 
 	ms.author="awills"/>
  
 # チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
@@ -59,13 +59,13 @@
 
 連続エクスポートでは、常に Azure のストレージ アカウントにデータが出力されるため、まずストレージを作成する必要があります。
 
-1. [Azure ポータル][portal]で、サブスクリプションのストレージ アカウントを作成します。
+1. [Azure ポータル][portal]で、サブスクリプションの "クラシック" ストレージ アカウントを作成します。
 
-    ![Azure ポータルで、[新規]、[データ]、[Storage] の順に選択します](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
+    ![Azure ポータルで、[新規]、[データ]、[ストレージ] の順に選択します[クラシック] を選択し、[作成] をクリックします。ストレージの名前を指定します。](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
 
 2. コンテナーを作成する
 
-    ![新しいストレージで、[コンテナー] を選択し、[追加] を選択します](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
+    ![新しいストレージで、[コンテナー] を選択し、[コンテナー] タイルをクリックし、[追加] を選択します](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
 
 3. ストレージ アクセス キーのコピー
 
@@ -314,4 +314,4 @@ SQL データベースを指定します。
 
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

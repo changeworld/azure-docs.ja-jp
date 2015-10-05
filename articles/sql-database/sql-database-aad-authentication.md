@@ -204,7 +204,7 @@ Remove-AzureSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" 
 Azure AD の ID を使用して Azure SQL Database に接続するアプリケーションまたはユーザーが存在するすべてのクライアント コンピューターには、次のソフトウェアをインストールする必要があります。
 
 - [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) から入手できる .NET framework 4.6 以降。
-- SQL Server 用の Azure Active Directory 認証ライブラリ (**ADALSQL.DLL**)。ダウンロード センターの「[Microsoft SQL Server 用の Microsoft Active Directory 認証ライブラリ](http://www.microsoft.com/download/details.aspx?id=48742)」で複数の言語 (x 89 と amd64 の両方) が提供されています。
+- SQL Server 用の Azure Active Directory 認証ライブラリ (**ADALSQL.DLL**)。ダウンロード センターの「[Microsoft SQL Server 用の Microsoft Active Directory 認証ライブラリ](http://www.microsoft.com/download/details.aspx?id=48742)」から複数の言語 (x86 と amd64 の両方) を入手できます。
 
 ### ツール
 
@@ -252,7 +252,7 @@ Azure AD ベースの包含データベース ユーザー (データベース�
 	FROM EXTERNAL PROVIDER;
 
 
-*Azure\_AD\_principal\_name* には、Azure AD ユーザーのユーザー プリンシパル名か、Azure AD のグループまたはアプリケーションの表示名を指定できます。
+*Azure\_AD\_principal\_name* には、Azure AD ユーザーのユーザー プリンシパル名または Azure AD のグループの表示名を指定できます。
 
 **例:** Azure AD のフェデレーション ドメインまたは管理対象ドメインのユーザーを表す包含データベース ユーザーを作成するには、次のようにします。
 
@@ -268,7 +268,7 @@ Azure Active Directory の ID に基づく包含データベース ユーザー�
 
 データベース ユーザーを作成すると、そのユーザーは **CONNECT** アクセス許可が付与されるため、**PUBLIC** ロールのメンバーとしてそのデータベースに接続できます。最初にこのユーザーが利用できるアクセス許可は、**PUBLIC** ロールに付与されているアクセス許可か、またはそのユーザーが属している Windows グループに付与されているアクセス許可のみです。Azure AD ベースの包含データベース ユーザーをプロビジョニングすると、他の種類のユーザーにアクセス許可を付与する場合と同様に、そのユーザーに追加のアクセス許可を付与できます。通常は、データベース ロールにアクセス許可を付与し、そのロールにユーザーを追加します。詳細については、[データベース エンジンのアクセス許可の基本知識](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)に関するページを参照してください。特殊な SQL Database ロールの詳細については、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」を参照してください。管理対象ドメインにインポートされるフェデレーション ドメイン ユーザーは、管理対象ドメインの ID を使用する必要があります。
 
-> [AZURE.NOTE]データベースのメタデータでは、Azure AD ユーザーはタイプ E (EXTERNAL\_USER)、グループまたはアプリケーションはタイプ X (EXTERNAL\_GROUPS) でマークされます。詳細については、「[sys.database\_principals](https://msdn.microsoft.com/library/ms187328.aspx)」を参照してください。
+> [AZURE.NOTE]データベースのメタデータでは、Azure AD ユーザーはタイプ E (EXTERNAL\_USER) 、グループはタイプ X (EXTERNAL\_GROUPS) でマークされます。詳細については、「[sys.database\_principals](https://msdn.microsoft.com/library/ms187328.aspx)」を参照してください。
 
 
 ## 7\.Azure Active Directory の ID を使用してデータベースに接続する
@@ -310,6 +310,7 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [CREATE USER (Transact-SQL)](http://msdn.microsoft.com/library/ms173463.aspx)
 
 <!--Image references-->
+
 [1]: ./media/sql-database-aad-authentication/1aad-auth-diagram.png
 [2]: ./media/sql-database-aad-authentication/2subscription-relationship.png
 [3]: ./media/sql-database-aad-authentication/3admin-structure.png
@@ -320,6 +321,5 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [8]: ./media/sql-database-aad-authentication/8choose-ad.png
 [9]: ./media/sql-database-aad-authentication/9ad-settings.png
 [10]: ./media/sql-database-aad-authentication/10choose-admin.png
-<!--anchors-->
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

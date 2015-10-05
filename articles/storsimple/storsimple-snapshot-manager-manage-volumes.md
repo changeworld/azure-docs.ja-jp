@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/15/2015"
+   ms.date="09/21/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したボリュームの表示と管理
@@ -24,8 +24,6 @@ StorSimple Snapshot Manager の **[ボリューム]** ノード (**スコープ*
 サポートされるボリュームの詳細については、「[各種ボリュームのサポート](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types)」をご覧ください。
 
 ![結果ウィンドウのボリューム リスト](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Volume_node.png)
-
-**図 1: StorSimple Snapshot Manager の [ボリューム] ノード**
 
 **[ボリューム]** ノードでは、StorSimple Snapshot Manager がボリュームを検出した後に、それらのボリュームの再スキャンや削除を実行することもできます。
 
@@ -53,7 +51,7 @@ Azure StorSimple ボリュームをマウントし、初期化してフォーマ
 
     - **[ファイル名を指定して実行]** ボックスに「Diskmgmt.msc」と入力します。
 
-    - サーバー マネージャーを起動し、**[Storage]** ノードを展開して、**[ディスクの管理]** を選択します。
+    - サーバー マネージャーを起動し、**[ストレージ]** ノードを展開して、**[ディスクの管理]** を選択します。
 
     - **[管理ツール]** を起動し、**[コンピューターの管理]** ノードを展開して、**[ディスクの管理]** を選択します。
 
@@ -211,7 +209,7 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 
    - **[ファイル名を指定して実行]** ボックスを開き、「**Diskmgmt.msc**」と入力して、Enter キーを押します。
 
-   - サーバー マネージャーを起動し、**[Storage]** ノードを展開して、**[ディスクの管理]** を選択します。
+   - サーバー マネージャーを起動し、**[ストレージ]** ノードを展開して、**[ディスクの管理]** を選択します。
 
    - **[管理ツール]** を起動し、**[コンピューターの管理]** ノードを展開して、**[ディスクの管理]** を選択します。
 
@@ -235,7 +233,7 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 
     ![ダイナミック ディスク変換メッセージ](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png)
 
-10. ディスクの管理で、Disk 1 と Disk 2 がダイナミック ミラー ボリュームとして表示されていることを確認します([状態] 列には **[動的]** と表示されている必要があり、容量バーの色はミラー化されたボリュームを示す赤に変更する必要があります)。
+10. ディスクの管理で、Disk 1 と Disk 2 がダイナミック ミラー ボリュームとして表示されていることを確認します([状態] 列に **[動的]** と表示され、容量バーの色がミラー化されたボリュームを示す赤に変わっている必要があります)。
 
     ![ディスクの管理でミラー化されたダイナミック ディスク](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png)
  
@@ -271,4 +269,4 @@ StorSimple Snapshot Manager に接続されているボリュームを再スキ�
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

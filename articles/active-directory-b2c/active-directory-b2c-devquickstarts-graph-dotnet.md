@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.date="09/22/2015"
 	ms.author="dastrock"/>
 
 
@@ -343,4 +343,4 @@ B2C ディレクトリ内に定義されたカスタム属性は、B2CGraphClien
 
 Graph API を使用した B2C ディレクトリに対する操作に関して、ご質問やご要望がある場合は、いつでもご遠慮なくお知らせください。 記事に対するコメントや GitHub リポジトリのコード例の問題をお寄せください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

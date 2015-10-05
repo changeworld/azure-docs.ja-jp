@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Express を使用した Web アプリケーション (Node.js) | Microsoft Azure"
-	description="クラウド サービスのチュートリアルを基に、Express モジュールの使用方法を示すチュートリアル。"
-	services="cloud-services"
-	documentationCenter="nodejs"
-	authors="MikeWasson"
-	manager="wpickett"
+	pageTitle="Express を使用した Web アプリケーション (Node.js) | Microsoft Azure" 
+	description="クラウド サービスのチュートリアルを基に、Express モジュールの使用方法を示すチュートリアル。" 
+	services="cloud-services" 
+	documentationCenter="nodejs" 
+	authors="MikeWasson" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="nodejs"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="cloud-services" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="mwasson"/>
 
 
@@ -128,6 +128,9 @@ Azure PowerShell ウィンドウで、**Publish-AzureServiceProject** コマン�
 
 ![Express ページを表示している Web ブラウザー。URL は、ページが Azure でホストされていることを示している。](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
+## 次のステップ
+
+詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
   [Node.js Web Application]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
   [Express]: http://expressjs.com/
@@ -135,4 +138,4 @@ Azure PowerShell ウィンドウで、**Publish-AzureServiceProject** コマン�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

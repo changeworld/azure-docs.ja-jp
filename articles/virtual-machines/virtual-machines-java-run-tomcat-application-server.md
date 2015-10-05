@@ -1,11 +1,12 @@
 <properties
 	pageTitle="仮想マシンで Tomcat を実行する | Microsoft Azure"
-	description="Windows 仮想マシンを作成し、Apache Tomcat アプリケーション サーバーを実行できるように仮想マシンを構成する方法について説明します。"
+	description="このチュートリアルでは、クラシック デプロイメント モデルで作成されたリソースを使用して、Windows 仮想マシンを作成して Apache Tomcat アプリケーション サーバーを実行するように構成する方法を説明します。"
 	services="virtual-machines"
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor="jimbe"
+    tags="azure-service-management" />
 
 <tags
 	ms.service="virtual-machines"
@@ -16,7 +17,9 @@
 	ms.date="06/03/2015"
 	ms.author="robmcm"/>
 
-# Java アプリケーション サーバーを仮想マシンで実行する方法
+# クラシック デプロイメントモデルで作成された仮想マシンに Java アプリケーション サーバーをインストールする方法
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 Azure では、仮想マシンを使用してサーバー機能を実現することができます。たとえば、Apache Tomcat などの Java アプリケーション サーバーをホストできるように、Azure で実行する仮想マシンを構成することができます。このガイドを完了すると、Azure で実行する仮想マシンを作成して、Java アプリケーション サーバーを実行するように構成する方法を理解できます。
 
@@ -114,7 +117,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
 
 ## アプリケーションのライフサイクルについて
 * 独自の Web アプリケーション アーカイブ (WAR) を作成し、**webapps** フォルダーに追加することもできます。たとえば、Java Service Page (JSP) で基本的な動的 Web プロジェクトを作成して WAR ファイルとしてエクスポートし、仮想マシン上の Apache Tomcat **webapps** フォルダーに WAR をコピーして、ブラウザーで実行することができます。
-* 既定では、Tomcat サービスがインストールされると、手動で開始する設定が適用されます。この設定は、サービス スナップインを使用して、自動的に開始する設定に変更することができます。サービス スナップインを起動するには、**Windows の [スタート]**、**[管理ツール]**、**[サービス]** の順にクリックします。**Apache Tomcat** サービスをダブルクリックして、**[スタートアップの種類]** を **[自動]** に設定します。
+* 既定では、Tomcat サービスがインストールされると、手動で開始する設定が適用されます。この設定は、サービス スナップインを使用して、自動的に開始する設定に変更することができます。サービス スナップインを起動するには、**Windows の [スタート]**、**[管理ツール]**、**[サービス]** の順にクリックします。**Apache Tomcat** サービスをダブルクリックしてして、**[スタートアップの種類]** を **[自動]** に設定します。
 
     ![サービスが自動的に起動するように設定する][service_automatic_startup]
 
@@ -142,4 +145,4 @@ Java アプリケーションに含めることができる他のサービス (A
 [NewRuleName]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

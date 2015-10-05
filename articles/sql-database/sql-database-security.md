@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services" 
-   ms.date="07/14/2015"
+   ms.date="09/22/2015"
    ms.author="thmullan;jackr"/>
 
 
@@ -34,19 +34,28 @@
 
 ## 認証
 
-認証とは、データベースへの接続時に ID を証明する方法のことです。現在 SQL Database では、ユーザー名とパスワードによる SQL 認証をサポートしています。
+認証とは、データベースへの接続時に ID を証明する方法のことです。SQL Database は、2 種類の認証をサポートしています。
 
-データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを認証できます。
+ - **SQL 認証**。ユーザー名とパスワードを使用します。
+ - **Azure Active Directory 認証**。Azure Active Directory が管理する ID を使用します。管理および統合されたドメインの場合にサポートされます。
 
-ただし、アプリケーションで別のアカウントを使用して認証することをお勧めします。この方法により、アプリケーションに付与されるアクセス許可を制限し、アプリケーション コードが SQL インジェクション攻撃に対して脆弱な場合に、悪意のあるアクティビティのリスクを軽減できます。[包含データベース ユーザー](https://msdn.microsoft.com/library/ff929188)を作成する方法をお勧めします。この方法により、ユーザー名とパスワードを使用して、アプリケーションから単一のデータベースに直接認証できます。サーバー管理ログインでユーザー データベースに接続しているときに次の T-SQL を実行すると、包含データベース ユーザーを作成できます。
+データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを認証できます。 Azure Active Directory 認証を使用する場合は、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。Azure AD 管理者を作成して Azure Active Directory 認証を使用する方法のチュートリアルについては、「[Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」を参照してください。
+
+ベスト プラクティスとしては、アプリケーションで別のアカウントを使用して認証することをお勧めします。この方法により、アプリケーションに付与されるアクセス許可を制限し、アプリケーション コードが SQL インジェクション攻撃に対して脆弱な場合に、悪意のあるアクティビティのリスクを軽減できます。[包含データベース ユーザー](https://msdn.microsoft.com/library/ff929188)を作成する方法をお勧めします。この方法により、アプリケーションから単一のデータベースに直接認証できます。サーバー管理者権限のログインでユーザー データベースに接続しているときに、次の T-SQL コマンドを実行することで、SQL 認証を使用する包含データベース ユーザーを作成できます。
 
 ```
-CREATE USER ApplicationUser WITH PASSWORD = 'strong_password';
+CREATE USER ApplicationUser WITH PASSWORD = 'strong_password'; -- SQL Authentication
 ```
 
-アプリケーションの接続文字列では、サーバー管理ログインではなく、このユーザー名とパスワードを指定してデータベースに接続します。
+Azure AD 管理者を作成した場合、Azure AD 管理者権限でユーザー データベースに接続しているときに、次の T-SQL コマンドを実行することで、Azure Active Directory 認証を使用する包含データベース ユーザーを作成できます。
 
-SQL Database の認証の詳細については、[Azure SQL Database におけるデータベースとログインの管理](https://msdn.microsoft.com/library/ee336235)に関するページを参照してください。
+```
+CREATE USER [Azure_AD_principal_name | Azure_AD_group_display_name] FROM EXTERNAL PROVIDER; -- Azure Active Directory Authentication
+```
+
+いずれの場合でも、アプリケーションの接続文字列では、サーバー管理者のログインではなく、このユーザー資格情報を指定してデータベースに接続します。
+
+SQL Database の認証の詳細については、[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)に関するページを参照してください。
 
 
 ## 承認
@@ -91,11 +100,11 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 ## 監査
 
-データベースの監査イベントと追跡イベントは、規制遵守の維持や、疑わしいアクティビティの特定に役立ちます。SQL Database の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。また SQL Database の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」を参照してください。
+データベースの監査イベントと追跡イベントは、規制遵守の維持や、疑わしいアクティビティの特定に役立ちます。SQL Database の監査により、Azure ストレージ アカウントの監査ログにデータベースのイベントを記録できます。また SQL Database の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」を参照してください。
 
 ## コンプライアンス
 
 アプリケーションがさまざまなセキュリティ コンプライアンスの要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。詳細については、「[Microsoft Azure のトラスト センター](http://azure.microsoft.com/support/trust-center/)」を参照してください。ここから最新の[SQL Database コンプライアンス証明書](http://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

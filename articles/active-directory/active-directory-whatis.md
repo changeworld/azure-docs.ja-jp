@@ -1,6 +1,6 @@
 <properties
                 pageTitle="Azure Active Directory とは"
-                description="Azure Active Directory を使用すると、既存の内部設置型 ID をクラウドに拡張し、または Azure AD 統合アプリケーションを開発することができます。"
+                description="Azure Active Directory を使用すると、既存のオンプレミスの ID をクラウドに拡張し、または Azure AD 統合アプリケーションを開発することができます。"
                 services="active-directory"
                 documentationCenter=""
                 authors="markusvi"
@@ -72,7 +72,7 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
  - [実際に使ってみる](https://azure.microsoft.com/trial/get-started-active-directory/) - 30 日の無料試用版に今すぐサインアップすると、このリンクを使用して、初めてのクラウド ソリューションも 5 分以内にデプロイできます。
  - Azure AD の概要に関するページで、Azure AD テナントをすばやく稼働させるためのヒントとテクニックをお読みください。
 -	開発者の場合:
- - Azure Active Directory の「[開発者向けガイド](https://msdn.microsoft.com/library/azure/ff800682.aspx)」を参照してください。<need link>
+ - 「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。 
  - [試用版の開始](https://azure.microsoft.com/trial/get-started-active-directory/) – 30 日の無料試用版に今すぐサインアップして、Azure AD とアプリの統合を開始してください。
 
 
@@ -104,4 +104,4 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
 
 - [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

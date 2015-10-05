@@ -271,7 +271,7 @@ Application Insights では、MVC アプリケーションの HTTP 要求の形�
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
-* [TrackException への呼び出しをコードに挿入][apiexceptions]します。 
+* [trackException() への呼び出しをコードに挿入][apiexceptions]します。 
 * [Java エージェントをサーバーにインストール](app-insights-java-agent.md)します。監視するメソッドを指定します。
 
 
@@ -381,7 +381,9 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 
 [Java のトラブルシューティング](app-insights-java-troubleshoot.md)
 
+## 次のステップ
 
+詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
 <!--Link references-->
 
@@ -394,4 +396,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

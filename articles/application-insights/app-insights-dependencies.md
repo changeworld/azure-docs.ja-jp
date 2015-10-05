@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.date="09/17/2015" 
 	ms.author="awills"/>
  
 # Application Insights での依存関係に関する問題の診断
@@ -48,7 +48,7 @@
 プラットフォーム | インストール
 ---|---
 IIS サーバー | [Status Monitor](app-insights-monitor-performance-live-website-now.md)
-Azure Web アプリ | [Application Insights Extension](../insights-perf-analytics.md)
+Azure Web アプリ | [Application Insights Extension](../azure-portal/insights-perf-analytics.md)
 Java Web サーバー | [Java Web アプリ](app-insights-java-agent.md)
 
 IIS サーバー用の Status Monitor では、Application Insights SDK を使用してソース プロジェクトをリビルドする必要はありません。
@@ -129,4 +129,4 @@ IIS サーバー用の Status Monitor では、Application Insights SDK を使�
 
 <!--Link references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

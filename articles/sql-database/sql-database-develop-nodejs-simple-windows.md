@@ -220,5 +220,8 @@
 	});
 
  
+## 次のステップ
 
-<!---HONumber=August15_HO6-->
+詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+
+<!---HONumber=Sept15_HO4-->

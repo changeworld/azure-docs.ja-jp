@@ -320,7 +320,7 @@ error=access_denied
 
 v2.0 アプリ モデルには、OpenID Connect メタデータ エンドポイントがあって、アプリは、このエンドポイントを使用することで、v2.0 アプリ モデルに関する情報を実行時にフェッチすることができます。この情報には、エンドポイント、トークンの内容、トークンの署名キーが含まれます。メタデータ エンドポイントは、以下の場所に JSON ドキュメントを格納しています。
 
-`https://login.microsoftonline.com/common/v2.0/.well-known/configuration`
+`https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`
 
 この構成ドキュメントのプロパティの 1 つに `jwks_uri` があります。v2.0 アプリ モデルでは、この値が次のようになります。
 
@@ -475,4 +475,4 @@ On Behalf Of フロー (JWT ベアラー資格情報付与) は、[OAuth 2.0 Ext
 
 このフローは現在、v2.0 アプリ モデル プレビューではサポートされていません。一般提供版の Azure AD サービスにおける動作については、[こちらの Azure AD コード サンプル](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

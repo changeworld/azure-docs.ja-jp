@@ -1,22 +1,24 @@
-<properties 
-pageTitle="Oracle 仮想マシンのイメージに関するその他の考慮事項"
-	description="Azure へ Oracle 仮想マシンを導入する前に、その他の考慮事項について説明します。"
-	services="virtual-machines"
-	documentationCenter=""
-	manager=""
-	authors="bbenz"
-	tags=""/>
+<properties
+pageTitle="Oracle VM イメージを使用するうえでの考慮事項 | Microsoft Azure"
+description="デプロイする前に、Azure の Windows Server 上の Oracle VM でサポートされた考慮事項と制限事項を確認してください。"
+services="virtual-machines"
+documentationCenter=""
+manager=""
+authors="bbenz"
+tags="azure-service-management"/>
 
 <tags
 ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="06/22/2015"
-	ms.author="bbenz"/>
+ms.devlang="na"
+ms.topic="article"
+ms.tgt_pltfrm="vm-windows"
+ms.workload="infrastructure-services"
+ms.date="06/22/2015"
+ms.author="bbenz" />
 
 #Oracle 仮想マシンのイメージに関するその他の考慮事項
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 この記事では、オペレーティング システムとして Windows Server を利用し、Microsoft 提供の Oracle ソフトウェア イメージに基づく Oracle 仮想マシンを Azure で実行することに関する考慮事項について説明します。
 
 -  Oracle データベース仮想マシン イメージ
@@ -44,7 +46,7 @@ Azure は各仮想マシンに内部 IP アドレスを割り当てます。仮�
 
 - **Oracle ASM のみを使用する場合**は、書き込み操作のパフォーマンスは上がりますが、Windows Server 2012 の記憶域プールを利用する手法と比較して読み取り操作の IOPS が下がります。次の図は理論的にこの組み合わせを示したものです。![](media/virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images/image2.png)
 
-- **Oracle ASM と Windows Server 2012 の記憶域プールを比較する**と、データベースが主に読み取り操作を実行する場合に、または読み取り操作のパフォーマンスを書き込み操作のパフォーマンスより重視する場合に、読み取り操作 IOPS パフォーマンスが上がります。Windows Server 2012 オペレーティング システムに基づくイメージが必要です。記憶域プールに関する詳細は、「[スタンドアローンサーバーへの記憶域スペースの展開](http://technet.microsoft.com/library/jj822938.aspx)」をご覧ください。この配置の場合、接続ディスクの 2 つの等しいサブセットが最初に 2 つの記憶域プール ボリュームの物理ディスクとしてまとめて「ストライプ化」され、そのボリュームが ASM ディスク グループに追加されます。次の図は理論的にこの配置を示したものです。
+- **Oracle ASM と Windows Server 2012 の記憶域プールを比較する**と、データベースが主に読み取り操作を実行する場合に、または読み取り操作のパフォーマンスを書き込み操作のパフォーマンスより重視する場合に、読み取り操作 IOPS パフォーマンスが上がります。Windows Server 2012 オペレーティング システムに基づくイメージが必要です。記憶域プールに関する詳細は、「[スタンドアロン サーバーに記憶域スペースを展開する](http://technet.microsoft.com/library/jj822938.aspx)」をご覧ください。この配置の場合、接続ディスクの 2 つの等しいサブセットが最初に 2 つの記憶域プール ボリュームの物理ディスクとしてまとめて「ストライプ化」され、そのボリュームが ASM ディスク グループに追加されます。次の図は理論的にこの配置を示したものです。
 
 	![](media/virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images/image3.png)
 
@@ -54,15 +56,15 @@ Azure は各仮想マシンに内部 IP アドレスを割り当てます。仮�
 
 Azure 仮想マシンで Oracle データベースを使用する場合、いかなるダウンタイムも回避するために高可用性と障害復旧ソリューションを実装する責任があります。また、ご自身のデータやアプリケーションをバックアップする責任も負うことになります。
 
-Azure の Oracle Database Enterprise Edition (RAC なし) では、[Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性と障害復旧を実現できます。両方の仮想マシンを同じ[クラウド サービス](cloud-services-connect-virtual-machine.md)と同じ[仮想ネットワーク](http://azure.microsoft.com/documentation/services/virtual-network/) に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。さらに、Azure が仮想マシンを個別のフォールト ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ[可用性セット](manage-availability-virtual-machines.md)に配置することを推奨します。同じクラウド サービス上にある仮想マシンのみを、同じ可用性セットに含めることができます。それぞれの仮想マシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。
+Azure の Oracle Database Enterprise Edition (RAC なし) では、[Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性と障害復旧を実現できます。両方の仮想マシンを同じ[クラウド サービス](cloud-services-connect-virtual-machine.md)と同じ[仮想ネットワーク](http://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。さらに、Azure が仮想マシンを個別のフォールト ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ[可用性セット](manage-availability-virtual-machines.md)に配置することを推奨します。同じクラウド サービス上にある仮想マシンのみを、同じ可用性セットに含めることができます。それぞれの仮想マシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。
 
-Oracle Data Guard では、1 つの仮想マシンにプライマリ データベース、別の仮想マシンにセカンダリ データベース (待機)、そしてその間に一方向のレプリケーションセットを配置することで高可用性を実現できます。データベースのコピーへのアクセスを結果として読み込みます。Oracle GoldenGate では、2 つのデータベース間に双方向レプリケーションを構成することができます。これらのツールを使用してデータベース用に高可用性ソリューションを設定する方法については、Oracle のウェブサイトにある [Active Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) および [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) 文書を参照してください。データベースのコピーに読み込み/書き込みアクセスをする必要がある場合は、[Oracle Active Data Guard](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html) もご利用いただけます。
+Oracle Data Guard では、1 つの仮想マシンにプライマリ データベース、別の仮想マシンにセカンダリ データベース (待機)、そしてその間に一方向のレプリケーションセットを配置することで高可用性を実現できます。データベースのコピーへのアクセスを結果として読み込みます。Oracle GoldenGate では、2 つのデータベース間に双方向レプリケーションを構成することができます。これらのツールを使用してデータベース用に高可用性ソリューションを設定する方法については、Oracle の Web サイトにある [Active Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) および [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) 文書を参照してください。データベースのコピーに読み込み/書き込みアクセスをする必要がある場合は、[Oracle Active Data Guard](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html) もご利用いただけます。
 
 ##Oracle WebLogic Server 仮想マシン イメージ
 
 -  **クラスタリングは Enterprise エディションでのみサポートされています。** WebLogic Server (具体的には、Windows Server をオペレーティング システムとするイメージ) の Microsoft ライセンス イメージを使用している場合は、WebLogic Server の Enterprise エディションを使用している場合にのみ、WebLogic クラスタリングを使用するライセンスが付与されます。WebLogic Server Standard Edition の場合、クラスタリングを使用しないでください。
 
--  **接続タイムアウト:** アプリケーションが別の Azure のクラウド サービス (データベース層のサービスなど) のパブリックエンドポイントへの接続に依存している場合、4 分間の無活動の後 Azure はこれらの開いている接続を閉じることがあります。無活動時間がこの上限を超えると、接続が無効になるため、接続プールに依存している機能やアプリケーションに影響が及ぼされることがあります。アプリケーションに影響がある場合は、接続プール上の「キープアライブ」 ロジックの有効化を検討してください。
+-  **接続タイムアウト:** アプリケーションが別の Azure のクラウド サービス (データベース層のサービスなど) のパブリック エンドポイントへの接続に依存している場合、4 分間の無活動の後 Azure はこれらの開いている接続を閉じることがあります。無活動時間がこの上限を超えると、接続が無効になるため、接続プールに依存している機能やアプリケーションに影響が及ぼされることがあります。アプリケーションに影響がある場合は、接続プール上の「キープアライブ」 ロジックの有効化を検討してください。
 
 	エンドポイントが Azure クラウド サービス デプロイの*内部*になる場合 (WebLogic 仮想マシンと*同じ*クラウド サービス内にあるスタンドアロンのデータベース仮想マシンなど)、接続は直接的であり、Azure ロード バランサーに依存しません。そのため、接続タイムアウトの対象にはなりません。
 
@@ -103,4 +105,4 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 ##その他のリソース
 [Azure 用の Oracle 仮想マシンのイメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

@@ -61,6 +61,9 @@ Could this instead be a #tempPerson table, so that the Java code sample could be
 このコード サンプルは、接続文字列を使用して`Connection`オブジェクトを作成します。[Azure プレビュー ポータル](http://portal.azure.com/)を使用して、接続文字列を検索することができます、接続文字列の検索の詳細については、「[Create your first Azure SQL Database (最初の Azure SQL Database を作成する)](sql-database-get-started.md)」をご覧ください。
 
 
+> [AZURE.NOTE]JTDS JDBC ドライバーを使用している場合は、接続文字列の URL に "ssl=require" を追加し、JVM の次のオプションを設定する必要があります。"-Djsse.enableCBCProtection=false"。この JVM オプションはセキュリティの脆弱性を修正するプログラムを無効にするため、このオプションを設定する前に、どのようなリスクがあるかを必ず理解しておいてください。
+
+
 ## Java サンプル コード
 
 
@@ -223,6 +226,8 @@ Java サンプル コードの全体について説明します。後続のセ�
 			+ resultSet.getString(3));
 	}
 
- 
+## 次のステップ
 
-<!---HONumber=August15_HO6-->
+詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
+
+<!---HONumber=Sept15_HO4-->

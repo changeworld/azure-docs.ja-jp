@@ -28,8 +28,8 @@
 ## <a name="cloudservice"></a>クラウド サービス用にリモート デバッグを有効にする
 
 1. 「[Azure のコマンド ライン ビルド](http://msdn.microsoft.com/library/hh535755.aspx)」の説明に従って、ビルド エージェントで Azure の初期環境を設定します。
-2. リモート デバッグ ランタイム (msvsmon.exe) がパッケージに必要であるため、[Remote Tools for Visual Studio 2015 RC](http://www.microsoft.com/download/details.aspx?id=46874) (Visual Studio 2013 を使用している場合は [Remote Tools for Visual Studio 2013 Update 5 RC](https://www.microsoft.com/ja-jp/download/details.aspx?id=46870)) をインストールします。代替方法として、Visual Studio がインストールされているシステムからリモート デバッグ バイナリをコピーすることもできます。
-3. 「[Azure のサービス証明書を作成する](http://msdn.microsoft.com/library/azure/gg432987.aspx)」の説明に従って、証明書を作成します。.pfx および RDP 証明書のサムプリントを保持し、その証明書をターゲット クラウド サービスにアップロードします。
+2. リモート デバッグ ランタイム (msvsmon.exe) がパッケージに必要であるため、[Remote Tools for Visual Studio 2015 RC](http://www.microsoft.com/download/details.aspx?id=46874) (Visual Studio 2013 を使用している場合は [Remote Tools for Visual Studio 2013 Update 5 RC](https://www.microsoft.com/JA-JP/download/details.aspx?id=46870)) をインストールします。代替方法として、Visual Studio がインストールされているシステムからリモート デバッグ バイナリをコピーすることもできます。
+3. 「[Azure のサービス証明書を作成する](cloud-services-certs-create.md)」の説明に従って、証明書を作成します。.pfx および RDP 証明書のサムプリントを保持し、その証明書をターゲット クラウド サービスにアップロードします。
 4. MSBuild コマンド ラインで次のオプションを使用し、リモート デバッグを有効にしてビルドおよびパッケージ化します(山かっこの項目については、システムおよびプロジェクト ファイルの実際のパスに置き換えてください。)
 
 		msbuild /TARGET:PUBLISH /PROPERTY:Configuration=Debug;EnableRemoteDebugger=true;VSX64RemoteDebuggerPath="<remote tools path>";RemoteDebuggerConnectorCertificateThumbprint="<thumbprint of the certificate added to the cloud service>";RemoteDebuggerConnectorVersion="2.6" "<path to your VS solution file>"
@@ -43,7 +43,7 @@
 
 1. Azure 仮想マシンを作成します。「[Create a Virtual Machine Running Windows Server (Windows Server を実行する仮想マシンの作成)](../virtual-machines-windows-tutorial.md)」または「[Creating Azure Virtual Machines in Visual Studio (Visual Studio で Azure 仮想マシンを作成する)](http://msdn.microsoft.com/library/azure/dn569263.aspx)」を参照してください。
 2. [Azure ポータル ページ](http://go.microsoft.com/fwlink/p/?LinkID=269851)で、仮想マシン ダッシュボードを表示し、仮想マシンの "RDP 証明書のサムプリント" を確認します。これは、拡張機能構成の `ServerThumbprint` の値に使用されます。
-3. 「[Azure のサービス証明書を作成する](http://msdn.microsoft.com/library/azure/gg432987.aspx)」の説明に従って、クライアント証明書を作成します (.pfx および RDP 証明書サムプリントを保持)。
+3. 「[Azure のサービス証明書を作成する](cloud-services-certs-create.md)」の説明に従って、クライアント証明書を作成します (.pfx および RDP 証明書サムプリントを保持)。
 4. Microsoft ダウンロード センターから [Azure Powershell](http://go.microsoft.com/?linkid=9811175&clcid=0x409) (Version 0.7.4 以降) をインストールします。
 5. 次のスクリプトを実行して RemoteDebug 拡張機能を有効にします。パスおよび個人用データを自分自身のサブスクリプション名、サービス名、サムプリントなどで置き換えます。(注: このスクリプトは Visual Studio 2015 RC 用に構成されています。Visual Studio 2013 を使用する場合は、ReferenceName と ExtensionName に対して "RemoteDebugVS2013" を使用します。)
 
@@ -95,4 +95,4 @@
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

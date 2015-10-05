@@ -1,22 +1,22 @@
 <properties
-   pageTitle="Azure DNS の概要 | Microsoft Azure"
-	description="Azure DNS の DNS ゾーンを作成し、PowerShell または CLI を使用して DNS ドメインのホストを開始する手順について説明します。"
-	services="dns"
-	documentationCenter="na"
-	authors="joaoma"
-	manager="adinah"
-	editor=""/>
+   pageTitle="CLI で Azure DNS の使用を開始する | Microsoft Azure"
+   description="DNS ドメインのホストを開始するために CLI を使用して Azure DNS の DNS ゾーンを作成する手順について説明します。"
+   services="dns"
+   documentationCenter="na"
+   authors="joaoma"
+   manager="adinah"
+   editor=""/>
 
 <tags
    ms.service="dns"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="09/02/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="hero-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/22/2015"
+   ms.author="joaoma"/>
 
-# Azure DNS の概要
+# CLI で Azure DNS の使用を開始する
 
 
 
@@ -173,4 +173,4 @@ DNS ゾーンは、`azure network dns zone create` コマンドを使用して�
 
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset-cli.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones-cli.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets-cli.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="09/22/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: FAQ
@@ -105,4 +105,4 @@ Azure AD B2C に関する[このサポート トピック](active-directory-b2c-
 
 現在の[プレビューの制限事項および制約事項](active-directory-b2c-limitations.md)を確認することもできます。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

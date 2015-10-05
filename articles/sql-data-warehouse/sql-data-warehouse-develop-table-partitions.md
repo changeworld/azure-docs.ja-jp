@@ -1,20 +1,20 @@
 <properties
    pageTitle="SQL Data Warehouse のテーブル パーティション | Microsoft Azure"
-	description="ソリューション開発のための Azure SQL Data Warehouse でのテーブル パーティションの使用に関するヒント。"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="jrowlandjones"
-	manager="barbkess"
-	editor=""/>
+   description="ソリューション開発のための Azure SQL Data Warehouse でのテーブル パーティションの使用に関するヒント。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="jrowlandjones"
+   manager="barbkess"
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-services"
-	ms.date="06/22/2015"
-	ms.author="JRJ@BigBangData.co.uk;barbkess"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="09/22/2015"
+   ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse のテーブル パーティション
 
@@ -326,4 +326,4 @@ SQL Data Warehouse にデータベース スキーマを正常に移行したら
 
 <!-- Other web references -->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

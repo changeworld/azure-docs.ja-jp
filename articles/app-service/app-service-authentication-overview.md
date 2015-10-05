@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/30/2015" 
+	ms.date="09/22/2015" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での API Apps と Mobile Apps の認証
@@ -208,10 +208,10 @@ Azure の [ASP.NET Identity](http://www.asp.net/identity) や [Thinktecture](htt
 * [iOS アプリに認証を追加する](../app-service-mobile/app-service-mobile-dotnet-backend-ios-get-started-users-preview.md)
 * [Xamarin.iOS アプリに認証を追加する](../app-service-mobile/app-service-mobile-dotnet-backend-xamarin-ios-get-started-users-preview.md)
 * [Xamarin.Android アプリに認証を追加する](../app-service-mobile/app-service-mobile-dotnet-backend-xamarin-android-get-started-users-preview.md)
-* [Windows アプリに認証を追加する](../app-service-mobile/app-service-mobile-dotnet-backend-windows-store-get-started-users-preview.md)
+* [Windows アプリに認証を追加する](../app-service-mobile/app-service-mobile-dotnet-backend-windows-store-dotnet-get-started-users-preview.md)
 
 ### <a id="maobo"></a>セキュリティで保護されたリソースへの Mobile Apps の代理呼び出し
 
 * [アクセス トークンを取得し、Mobile Apps の SharePoint API を呼び出す](../app-service-mobile/app-service-mobile-dotnet-backend-get-started-connect-to-enterprise.md#obtain-token)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

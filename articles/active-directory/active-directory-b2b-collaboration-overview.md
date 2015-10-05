@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Active Directory の企業間 (B2B) コラボレーション"
-   description="Azure Active Directory の B2B コラボレーションは、パートナーが会社のアプリケーションにアクセスできるようにします。"
+   description="Azure Active Directory の B2B コラボレーションは、ビジネス パートナーが会社のアプリケーションにアクセスできるようにします。パートナーの各ユーザーは、1 つの Azure AD アカウントによって表されます。"
    services="active-directory"
    documentationCenter=""
    authors="curtand"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/16/2015"
+   ms.date="09/17/2015"
    ms.author="curtand"/>
 
 # Azure Active Directory の B2B コラボレーション
@@ -48,18 +48,18 @@ B2B コラボレーションのしくみについては、[このビデオ](http
 
 ## CSV ファイルの形式
 
-CSV ファイルの形式は次のとおりです。
+CSV ファイルの形式は次のとおりです。1 つまたは複数のオプションを指定しない場合でも、必要なすべてのコンマを追加してください。
 
-**Email:** 招待されるユーザーの電子メール アドレス。<br/> **DisplayName:** 招待されるユーザーの表示名 (通常は名前と姓)。<br/> **InviteAppID:** 電子メールの招待および受け入れページをブランド化するために使用するアプリケーションの ID。<br/> **InviteReplyURL:** 招待が受け入れられた後に招待されたユーザーを誘導する URL。これは、会社に固有の URL である必要があります (たとえば、[*contoso.my.salesforce.com*](http://contoso.my.salesforce.com/))。<br/> **InviteAppResources:** アプリケーションがユーザーを割り当てることができる AppID。AppID は、`Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId`<br/> を呼び出すことによって取得されます。**InviteGroupResources:** ユーザーを追加するグループの ObjectID。ObjectID は、`Get-MsolGroup | fl DisplayName, ObjectId`<br/> を呼び出すことによって取得されます。**InviteContactUsUrl:** 招待されたユーザーが組織に問い合わせることができるように電子メール招待状に含める "問い合わせ先" の URL。<br/>
+**Email:** 招待されるユーザーの電子メール アドレス。<br/> **DisplayName:** 招待されるユーザーの表示名 (通常は名前と姓)。<br/> **InviteAppID:** 電子メールの招待および受け入れページをブランド化するために使用するアプリケーションの ID。<br/> **InviteReplyURL:** 招待が受け入れられた後に招待されたユーザーを誘導する URL。これは、会社に固有の URL である必要があります (例: [*contoso.my.salesforce.com*](http://contoso.my.salesforce.com/))。この省略可能なフィールドが指定されない場合は、招待会社のアクセス パネルの URL が生成されます (この URL は `https://account.activedirectory.windowsazure.com/applications/default.aspx?tenantId=<TenantID>` の形式です)。<br/> **InviteAppResources**: アプリケーションがユーザーを割り当てることができる AppID。AppID は、`Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId`<br/> を呼び出すことによって取得されます。**InviteGroupResources:** ユーザーを追加するグループの ObjectID。ObjectID は、`Get-MsolGroup | fl DisplayName, ObjectId`<br/> を呼び出すことによって取得されます。**InviteContactUsUrl:** 招待されたユーザーが組織に問い合わせることができるように電子メール招待状に含める "問い合わせ先" の URL。<br/>
 
 ## サンプル CSV ファイル
 サンプル CSV ファイルを次に示します。このサンプル CSV は、用途に合わせて変更できます。任意の名前を付けてファイルに保存します。このとき、ファイル名拡張子には、必ず ".csv" を使用してください。
 
 ```
 Email,DisplayName,InviteAppID,InviteReplyUrl,InviteAppResources,InviteGroupResources,InviteContactUsUrl
-wharp@contoso.com,Walter Harp,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/<br/>
-jsmith@contoso.com,Jeff Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/<br/>
+wharp@contoso.com,Walter Harp,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
+jsmith@contoso.com,Jeff Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
 bsmith@contoso.com,Ben Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
 ```
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

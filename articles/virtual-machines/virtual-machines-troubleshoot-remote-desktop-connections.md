@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Remote Desktop で Azure 仮想マシンに接続できない | Microsoft Azure"
+	pageTitle="Windows VM のリモート デスクトップ接続のトラブルシューティング |Microsoft Azure"
 	description="Windows を実行する Azure 仮想マシンへの Remote Desktop (RDP) 接続のトラブルシューティングを行います。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -19,13 +19,15 @@
 
 # Windows を実行する Azure 仮想マシンへの Remote Desktop 接続に関するトラブルシューティング
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルまたはリソース マネージャーのデプロイメント モデルを使用して作成された仮想マシンのトラブルシューティングについて説明します。
+
 Windows を実行する Azure 仮想マシンに対する Remote Desktop (RDP) は、さまざまな理由で失敗する可能性があります。この記事は、原因を特定して修正するために役立ちます。
 
 > [AZURE.NOTE]この記事は、Windows を実行する Azure 仮想マシンにのみ適用されます。Linux を実行する Azure 仮想マシンに対する接続のトラブルシューティングを行う場合は、[この記事](virtual-machines-troubleshoot-ssh-connections.md)を参照してください。
 
 ## Azure カスタマー サポートへの問い合わせ
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
 
 または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](http://azure.microsoft.com/support/faq/)」を参照してください。
 
@@ -38,9 +40,9 @@ Windows を実行する Azure 仮想マシンに対する Remote Desktop (RDP) �
 
 ![リモート アクセスのリセット](./media/virtual-machines-troubleshoot-remote-desktop-connections/Portal-RDP-Reset-Windows.png)
 
-- [仮想マシンを再起動します](https://msdn.microsoft.com/library/azure/dn763934.aspx)。
+- [仮想マシンを再起動します。](https://msdn.microsoft.com/library/azure/dn763934.aspx)
 
-- [仮想マシンのサイズを変更します](https://msdn.microsoft.com/library/dn168976.aspx)。
+- [仮想マシンのサイズを変更します。](https://msdn.microsoft.com/library/dn168976.aspx)
 
 
 ## Windows の Azure IaaS 診断パッケージを実行する
@@ -59,18 +61,18 @@ Azure IaaS 診断パッケージを実行できなかった、または役に立
 
 Azure 仮想マシンに Remote Desktop 接続しようとしたときに発生する可能性がある一般的なエラーは次のとおりです。
 
-1. [ emote Desktop 接続エラー: ライセンスを提供する Remote Desktop ライセンス サーバーがないため、リモート セッションが切断されました。](#rdplicense)。
+1. [Remote Desktop 接続エラー: ライセンスを提供する Remote Desktop ライセンス サーバーがないため、リモート セッションが切断されました](#rdplicense)。
 
-2. [Remote Desktop 接続エラー: Remote Desktop は、コンピューター "name" を見つけることができません。](#rdpname)
+2. [Remote Desktop 接続エラー: Remote Desktop は、コンピューター "name" を見つけることができません](#rdpname)。
 
 3. [Remote Desktop 接続エラー: 認証エラーが発生しました。ローカル セキュリティ機関にアクセスできません。](#rdpauth)
 
-4. [Windows セキュリティ エラー: 資格情報が正しくありません。](#wincred)
+4. [Windows セキュリティ エラー: 資格情報が正しくありません](#wincred)。
 
-5. [Remote Desktop 接続エラー: このコンピューターはリモート コンピューターに接続できません。](#rdpconnect)
+5. [Remote Desktop 接続エラー: このコンピューターはリモート コンピューターに接続できません](#rdpconnect)。
 
 <a id="rdplicense"></a>
-### Remote Desktop 接続エラー: ライセンスを提供する Remote Desktop ライセンス サーバーがないため、リモート セッションが切断されました。。
+### Remote Desktop 接続エラー: ライセンスを提供する Remote Desktop ライセンス サーバーがないため、リモート セッションが切断されました。
 
 原因: リモート デスクトップ サーバー ロールの 120 日間のライセンス有効期限が切れているため、ライセンスをインストールする必要がある。
 
@@ -110,7 +112,7 @@ Azure 仮想マシンに Remote Desktop 接続しようとしたときに発生�
 
 - ユーザー アカウントが仮想マシンにとってローカルの場合は、仮想マシン名のスペルが正しいことを確認します。
 - ユーザー アカウントが Active Directory ドメイン アカウントの場合は、ドメイン名のスペルを確認します。
-- ユーザー アカウントが Active Directory ドメイン アカウントであり、ドメイン名のスペルが正しい場合は、ドメイン コント ローラーがそのドメインで利用可能であることを確認します。この問題は、Azure 仮想ネットワークにドメイン コント ローラーを含まれていて、ドメイン コント ローラー コンピューターが起動されていない場合によく発生します。回避策として、ドメイン アカウントではなく、ローカル管理者アカウントを使用できます。
+- ユーザー アカウントが Active Directory ドメイン アカウントであり、ドメイン名のスペルが正しい場合は、ドメイン コント ローラーがそのドメインで利用可能であることを確認します。この問題は、Azure Virtual Network にドメイン コント ローラーを含まれていて、ドメイン コント ローラー コンピューターが起動されていない場合によく発生します。回避策として、ドメイン アカウントではなく、ローカル管理者アカウントを使用できます。
 
 <a id="wincred"></a>
 ### Windows セキュリティ エラー: 資格情報が正しくありません。
@@ -135,12 +137,12 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 すべての Windows コンピューターには Remote Desktop ユーザーのローカル グループがあり、このグループには、リモートでログオンできるアカウントとグループが含まれます。ローカルの Administrators グループのメンバーもアクセスできますが、これらのアカウントは Remote Desktop ユーザーのローカル グループのメンバーとしてリストされません。ドメインに参加しているマシンの場合、ローカルの Administrators グループにはドメインのドメイン管理者も含まれます。
 
-接続するために使用しているアカウントに、Remote Desktop ログオン権限があることを確認してください。回避策として、ドメイン管理者アカウントまたはローカル管理者アカウントを使用して Remote Desktop で接続した後、コンピュータの管理スナップイン (**[システム ツール] > [ローカル ユーザーとグループ] > [グループ] > [リモート デスクトップ ユーザー]**) を使用して、必要なアカウントをリモート デスクトップ ユーザーのローカル グループに追加します。
+接続するために使用しているアカウントに、Remote Desktop ログオン権限があることを確認してください。回避策として、ドメイン管理者アカウントまたはローカル管理者アカウントを使用して Remote Desktop で接続した後、コンピューターの管理スナップイン (**[システム ツール] > [ローカル ユーザーとグループ] > [グループ] > [リモート デスクトップ ユーザー]**) を使用して、必要なアカウントをリモート デスクトップ ユーザーのローカル グループに追加します。
 
 
 ## 詳細なトラブルシューティング
 
-上記のエラーが発生していないにもかかわらず、Remote Desktop を介して仮想マシンに接続できない場合は、[この記事](virtual-machines-rdp-detailed-troubleshoot.md)で他の原因を見つけてください
+上記のエラーが発生していないにもかかわらず、Remote Desktop を介して仮想マシンに接続できない場合は、[この記事](virtual-machines-rdp-detailed-troubleshoot.md)で他の原因を見つけてください。
 
 
 ## その他のリソース
@@ -155,4 +157,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

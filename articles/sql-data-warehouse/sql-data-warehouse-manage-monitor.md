@@ -1,44 +1,30 @@
 <properties
    pageTitle="DMV を利用してワークロードを監視する | Microsoft Azure"
-	description="DMV を利用してワークロードを監視するについて説明します。"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="sahaj08"
-	manager="barbkess"
-	editor=""/>
+   description="DMV を利用してワークロードを監視するについて説明します。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="sahaj08"
+   manager="barbkess"
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-services"
-	ms.date="08/06/2015"
-	ms.author="sahajs"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="09/22/2015"
+   ms.author="sahajs"/>
 
 # DMV を利用してワークロードを監視する
 
-この記事では、動的管理ビュー (DMV) を使用し、Azure SQL データ ウェアハウスでワークロードを監視し、クエリの実行を調査する方法について説明します。
-
-
-
-
-## アクセス許可
-
-SQL Data Warehouseで、動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。**VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。**VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、次のクエリを実行します。
-
-```
-
-GRANT VIEW DATABASE STATE TO database_user;
-
-```
-
+この記事では、動的管理ビュー (DMV) を使用し、Azure SQL Data Warehouse でワークロードを監視し、クエリの実行を調査する方法について説明します。
 
 
 
 ## 接続を監視する
 
-*sys.dm\_pdw\_nodes\_exec\_connections* ビューを利用し、Azure SQL Data Warehouse データベースに確立された接続に関する情報を取得できます。また、*sys.dm\_exec\_sessions* ビューは、アクティブなすべてのユーザー接続に関する情報を取得する際に役立ちます。
+*sys.dm\_pdw\_nodes\_exec\_connections* ビューを使用して、Azure SQL Data Warehouse データベースに対して確立された接続に関する情報を取得できます。また、*sys.dm\_exec\_sessions* ビューは、すべてのアクティブなユーザー接続に関する情報を取得する際に役立ちます。
 
 ```
 
@@ -186,7 +172,7 @@ WHERE request_id = 'QID33209' AND step_index = 2;
 ```
 
 - *total\_elapsed\_time* 列で、特定の配布で他の配布よりデータ移動に大幅に時間がかかっていないか確認します。 
-- 実行時間の長い配布に対して、*rows\_processed* 列で、その配布から移動された行の数が他の配布の場合より大幅に大きいか確認します。これはクエリにデータ傾斜があることを表示されます。
+- 実行時間の長い配布に対して、*rows\_processed* 列で、その配布から移動された行の数が他の配布より大幅に大きいか確認します。これはクエリにデータ傾斜があることを表示されます。
 
 
 
@@ -207,14 +193,14 @@ DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
 
 
 ## 次のステップ
-SQL Data Warehouse の管理に関するヒントについては、「[管理概要][]」をご覧ください。
+SQL Data Warehouse の管理に関するヒントについては、「[SQL Data Warehouse の管理ツール][]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[管理概要]: sql-data-warehouse-overview-manage.md
+[SQL Data Warehouse の管理ツール]: sql-data-warehouse-overview-manage.md
 [テーブル設計]: sql-data-warehouse-develop-table-design.md
 
 <!--MSDN references-->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

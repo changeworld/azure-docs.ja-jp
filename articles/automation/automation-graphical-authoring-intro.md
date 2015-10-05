@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/10/2015"
+   ms.date="09/04/2015"
    ms.author="bwren" />
 
 # Azure Automation でのグラフィカル作成
@@ -48,7 +48,7 @@ Azure プレビュー ポータルでグラフィカル Runbook を作成また�
 | セクション | 説明 |
 |:---|:---|
 | コマンドレット | Runbook で使用できるすべてのコマンドレットが含まれています。コマンドレットはモジュールごとに整理されます。オートメーション アカウントにインストールしたモジュールをすべて使用できます。 |
-| Runbook | タグ別に整理されたオートメーション アカウントに Runbook が含まれています。Runbook には複数のタグを含めることができるため、複数のタグの下に一覧表示される場合があります。これらの Runbook をキャンバスに追加して、子 Runbook として使用することができます。現在編集中の Runbook は表示されますが、それ自体を呼び出すことはできないため、キャンバスには追加できません。
+| Runbooks | タグ別に整理されたオートメーション アカウントに Runbook が含まれています。Runbook には複数のタグを含めることができるため、複数のタグの下に一覧表示される場合があります。これらの Runbook をキャンバスに追加して、子 Runbook として使用することができます。現在編集中の Runbook は表示されますが、それ自体を呼び出すことはできないため、キャンバスには追加できません。
 | 資産 | Runbook で使用できるオートメーション アカウントに[オートメーション資産](http://msdn.microsoft.com/library/dn939988.aspx)が含まれています。Runbook に資産を追加すると、選択した資産を取得するワークフロー アクティビティが追加されます。変数資産の場合は、変数を取得するアクティビティを追加するか、変数を設定するアクティビティを追加するかを選択できます。
 | Runbook コントロール | 現在の Runbook で使用できる Runbook コントロール アクティビティが含まれています。*接合点*では複数の入力を受け取り、ワークフローを続行する前にすべてが完了するまで待機します。*ワークフロー スクリプト*は、1 つ以上の行の PowerShell ワークフロー コードを実行します。カスタム コードや、他のアクティビティでは実現できない機能のためにこのアクティビティを使用できます。|
 
@@ -61,6 +61,17 @@ Azure プレビュー ポータルでグラフィカル Runbook を作成また�
 グラフィカル エディターが初めて起動された場合、テスト コントロールは表示されません。対話形式で[グラフィカル Runbook をテスト](#graphical-runbook-procedures)する際に開きます。
 
 ## グラフィカル Runbook の手順 
+
+### グラフィカル Runbook のエクスポートとインポート
+
+グラフィカル Runbook は、発行済みのバージョンのみエクスポートできます。Runbook がまだ発行されていない場合、**[発行済み分のエクスポート]** ボタンは無効になります。**[発行済み分のエクスポート]** ボタンをクリックすると、Runbook がローカル コンピューターにダウンロードされます。ファイル名は、Runbook の名前に *graphrunbook* 拡張子が付いたものになります。
+
+![発行済み分のエクスポート](media/automation-graphical-authoring-intro/runbook-export.png)
+
+グラフィカル Runbook ファイルを追加するときに、**[インポート]** オプションを選択して、Runbook をインポートできます。インポートするファイルを選択したときは、同じ**名前**を保持するか、新しい名前を指定できます。
+
+![Runbook のインポート](media/automation-graphical-authoring-intro/runbook-import.png)
+
 
 ### グラフィカル Runbook のテスト
 
@@ -277,7 +288,7 @@ Runbook の入力パラメーターには、Runbook ツールバーの [**入力
 ## 関連記事:
 
 - [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
-- [オートメーションの資産](http://msdn.microsoft.com/library/azure/dn939988.aspx)
+- [Automation 資産](http://msdn.microsoft.com/library/azure/dn939988.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

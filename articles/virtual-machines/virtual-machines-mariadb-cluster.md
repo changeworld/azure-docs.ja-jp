@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="sabbour"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -18,7 +19,9 @@
 
 # MariaDB (MySQL) クラスター - Azure チュートリアル
 
-<p>ここでは、[MariaDB] (https://mariadb.org/en/about/) のマルチマスター [Galera] (http://galeracluster.com/products/) クラスターを作成します。これを Azure の仮想マシン上の高可用性環境で稼動することで、MySQL の堅牢でスケーラブル、かつ信頼性の高い代替製品として実行するためです。</p>
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したMariaDB クラスターの作成について説明します。
+
+ここでは、[MariaDB](https://mariadb.org/en/about/) のマルチマスター [Galera](http://galeracluster.com/products/) クラスターを作成します。これを Azure の仮想マシン上の高可用性環境で稼働することで、MySQL の堅牢でスケーラブル、かつ信頼性の高い代替製品として実行するためです。
 
 ## アーキテクチャの概要
 
@@ -43,7 +46,7 @@
 
 		azure account affinity-group create mariadbcluster --location "North Europe" --label "MariaDB Cluster"
 
-2. 仮想ネットワークの作成
+2. Virtual Network の作成
 
 		azure network vnet create --address-space 10.0.0.0 --cidr 8 --subnet-name mariadb --subnet-start-ip 10.0.0.0 --subnet-cidr 24 --affinity-group mariadbcluster mariadbvnet
 
@@ -368,6 +371,5 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 [Azure Linux VM 上で MySQL のパフォーマンスを最適化とテストする方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-optimize-mysql-perf/
 [Azure CLI ツールの issue #1268]: https://github.com/Azure/azure-xplat-cli/issues/1268
 [Linux 上で MySQL をクラスター化する別の方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

@@ -1,17 +1,17 @@
 <properties
-	pageTitle="Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法"
-	description="Azure プレビュー ポータルまたは PowerShell コマンドを使用して、Windows 仮想マシンのローカル管理者パスワードまたはリモート デスクトップ サービスをすばやくリセットします。"
+	pageTitle="Windows VM でパスワードまたはリモート デスクトップをリセットする |Microsoft Azure"
+	description="リソース マネージャーのデプロイ モデルで作成された Windows VM で管理者のパスワードまたはリモート デスクトップ サービスをリセットします。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
 	manager="timlt"
 	editor=""
-	tags="azure-service-management"/>
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/21/2015"
@@ -19,9 +19,9 @@
 
 # Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法
 
-パスワードを忘れたか、リモート デスクトップ サービスの構成に問題があるために Windows 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccess 拡張機能を使用してローカル管理者パスワードをリセットするか、リモート デスクトップ サービスの構成をリセットします。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイ モデルを使用して作成した仮想マシンについて説明します。
 
-> [AZURE.NOTE]この記事は、Azure リソース マネージャーで作成された仮想マシンには適用されません。
+パスワードを忘れたか、リモート デスクトップ サービスの構成に問題があるために Windows 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccess 拡張機能を使用してローカル管理者パスワードをリセットするか、リモート デスクトップ サービスの構成をリセットします。
 
 ## プレビュー ポータル
 
@@ -97,12 +97,12 @@ VMAccess 拡張機能によって仮想マシンで次の 2 つのコマンド�
 
 このコマンドを実行してもリモート デスクトップのアクセスに関する問題が解決しない場合は、[Azure IaaS (Windows) 診断パッケージ](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)を実行してください。
 
-1.	診断パッケージで、[**Microsoft Azure IaaS (Windows) 診断パッケージ**] をクリックして、新しい診断セッションを作成します。
+1.	診断パッケージで、**[Microsoft Azure IaaS (Windows) 診断パッケージ]** をクリックして、新しい診断セッションを作成します。
 2.	[**Azure VM で発生している問題**] ページで、[**Azure VM との RDP 接続 (再起動が必要)**] の問題を選択します。
 
-詳細については、「[Microsoft Azure IaaS (Windows) 診断パッケージについてのナレッジベース](http://support.microsoft.com/kb/2976864)」の記事を参照してください。
+詳細については、「[Microsoft Azure IaaS (Windows) の診断パッケージ](http://support.microsoft.com/kb/2976864)」ナレッジベース記事を参照してください。
 
-Azure IaaS (Windows) 診断パッケージを実行できないか、実行しても問題が解決しない場合は、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)に関するページを参照してください。
+Azure IaaS (Windows) 診断パッケージを実行できないか、実行しても問題が解決しない場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」を参照してください。
 
 
 ## その他のリソース
@@ -113,4 +113,4 @@ Azure IaaS (Windows) 診断パッケージを実行できないか、実行し�
 
 [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

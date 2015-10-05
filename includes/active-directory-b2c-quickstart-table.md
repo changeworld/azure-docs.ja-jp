@@ -5,6 +5,6 @@
 | サインアップおよびサインインを Windows ユニバーサル アプリに追加する (近日対応予定) | [サインアップおよびサインインを Node JS Web アプリに追加する](active-directory-b2c-devquickstarts-web-node.md) | [OpenID Connect を使用する Web Apps](active-directory-b2c-reference-oidc.md) |
 | サインアップおよびサインインを Windows デスクトップ アプリに追加する (近日対応予定) | [.NET Web API をセキュリティで保護する](active-directory-b2c-devquickstarts-api-dotnet.md) | OpenID Connect を使用する単一ページ アプリ (近日対応予定)
 | | [NodeJS Web API をセキュリティで保護する](active-directory-b2c-devquickstarts-api-node.md) | サーバー側デーモン (近日対応予定) |
-| | [.NET Web アプリから Web API を呼び出す](active-directory-b2c-web-api-dotnet.md) | サーバー側デーモン (近日対応予定) |
+| | [.NET Web アプリから Web API を呼び出す](active-directory-b2c-devquickstarts-web-api-dotnet.md) | サーバー側デーモン (近日対応予定) |
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

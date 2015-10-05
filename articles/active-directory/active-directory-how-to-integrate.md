@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Active Directory との統合方法"
+   pageTitle="Azure Active Directory と統合する方法 | Microsoft Azure"
    description="Azure Active Directory との統合に関する利点とリソースについてのガイドです。"
    services="active-directory"
    documentationCenter="dev-center-name"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="08/25/2015"
+   ms.date="09/17/2015"
    ms.author="mbaldwin"/>
 
 # Azure Active Directory との統合
@@ -40,7 +40,7 @@ Azure Active Directory は、クラウド アプリケーションに関する�
 
 **Azure AD を使用して、アプリケーションにアクセスできるユーザーを制御します。** Azure AD の管理者およびアプリケーション所有者は、特定のユーザーおよびグループにアプリケーションへのアクセスを割り当てることができます。Graph API を使用すると、このリストを読み取ったり、リストを使用してアプリケーション内のリソースやアクセスのプロビジョニングとプロビジョニング解除を制御したりできます。
 
-**ロール ベースのアクセス制御に Azure AD を使用します。** 管理者とアプリケーション所有者は、アプリケーションを Azure AD に登録するときに定義したロールに、ユーザーやグループを割り当てることができます。ロール情報はサインイン トークンでアプリケーションに送信され、Graph API を使用して読み取ることができます。[承認への Azure AD の使用](http://blogs.technet.com/b/ad/archive/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles.aspx)に関する詳細を参照してください。
+**ロール ベースの Access Control に Azure AD を使用します。** 管理者とアプリケーション所有者は、アプリケーションを Azure AD に登録するときに定義したロールに、ユーザーやグループを割り当てることができます。ロール情報はサインイン トークンでアプリケーションに送信され、Graph API を使用して読み取ることができます。[承認への Azure AD の使用](http://blogs.technet.com/b/ad/archive/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles.aspx)に関する詳細を参照してください。
 
 ### ユーザーのプロファイル、予定表、電子メール、連絡先、ファイル、その他へのアクセスの取得
 
@@ -48,7 +48,7 @@ Azure Active Directory は、クラウド アプリケーションに関する�
 
 ### Azure および Office 365 マーケットプレースのアプリケーションの宣伝
 
-**既に Azure AD を使用している数百万の組織にアプリケーションを宣伝します。** マーケットプレースを検索および参照しているユーザーは既にクラウド サービスを使用しており、クラウド サービスの顧客として認定されています。[Azure マーケットプレース](http://azure.microsoft.com/marketplace/partner-program/)のアプリケーションの宣伝に関する詳細を参照してください。
+**既に Azure AD を使用している数百万の組織にアプリケーションを宣伝します。** マーケットプレースを検索および参照しているユーザーは既にクラウド サービスを使用しており、クラウド サービスの顧客として認定されています。[Azure Marketplace](http://azure.microsoft.com/marketplace/partner-program/) のアプリケーションの宣伝に関する詳細を参照してください。
 
 **ユーザーがアプリケーションにサインアップすると、アプリケーションは Azure AD アクセス パネルと Office 365 アプリケーション ランチャーに表示されるようになります。** ユーザーは後で迅速かつ簡単にアプリケーションに戻ることができ、ユーザーの結びつきが強くなります。[Azure AD アクセス パネル](active-directory-saas-access-panel-introduction.md)に関する詳細を参照してください。
 
@@ -68,7 +68,7 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 ### 高度なセキュリティ機能
 
-**多要素認証。** Azure AD は、ネイティブな多要素認証機能を提供します。IT 管理者はアプリケーションへのアクセスに多要素認証を要求でき、このサポートを自分でコーディングする必要はありません。[多要素認証](http://azure.microsoft.com/documentation/services/multi-factor-authentication/)に関する詳細を参照してください。
+**多要素認証。** Azure AD は、ネイティブな多要素認証機能を提供します。IT 管理者はアプリケーションへのアクセスに多要素認証を要求でき、このサポートを自分でコーディングする必要はありません。[Multi-Factor Authentication](http://azure.microsoft.com/documentation/services/multi-factor-authentication/) に関する詳細を参照してください。
 
 **異常なサインインの検出。** Azure AD は 1 日に 10 億以上のサインインを処理しながら、機械学習アルゴリズムを使用して疑わしいアクティビティを検出し、可能性のある問題を IT 管理者に通知します。Azure AD のサインインをサポートすることにより、アプリケーションでこの保護を利用できます。[Azure Active Directory アクセス レポート](active-directory-view-access-usage-reports.md)の表示に関する詳細を参照してください。
 
@@ -90,4 +90,4 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 [Azure AD を使用したユーザーのサインイン](active-directory-authentication-scenarios.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

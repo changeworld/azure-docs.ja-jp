@@ -12,13 +12,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/18/2015"
+   ms.date="09/17/2015"
    ms.author="bwren" />
 
 
 # Orchestrator から Azure Automation へ移行する
 
-Azure Automation の Runbook は Windows PowerShell ワークフローに基づいていますが、[System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいています。Azure Automation のグラフィカル Runbook の外観は Orchestrator Runbook と似ていて、PowerShell コマンドレット、子 Runbook、および資産を表す活動が含まれています。
+Azure Automation の Runbook は Windows PowerShell ワークフローに基づいていますが、[System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいています。Azure Automation での[グラフィカル Runbook](automation-runbook-types#graphical-runbooks) の外観は Orchestrator Runbook に似ており、アクティビティは PowerShell コマンドレット、子 Runbook、およびアセットで表されます。
 
 [System Center Orchestrator Migration Toolkit](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) には、Runbook を Orchestrator から Azure Automation に変換するために役立つツールが含まれています。Runbook 自体を変換するだけでなく、Windows PowerShell コマンドレットとモジュールを統合するために使用する、活動が含まれる統合パックも変換する必要があります。
 
@@ -30,7 +30,7 @@ Orchestrator Runbook を Azure Automation に変換するための基本的な�
 3.  [統合パック コンバーター](#integration-pack-converter)を使用してカスタムとサード パーティ製の統合パックを変換し、Azure Automation にインストールします。
 4.  手動で、Orchestrator 内のグローバル アセットを Azure Automation に再作成します。この移行を実行する自動化された方式はありません。
 5.  [Runbook コンバーター](#runbook-converter-coming-soon) (近日対応予定) を使用して Orchestrator Runbook を変換し、Azure Automation にインストールします。
-6.  ローカル データセンターで、変換後の Runbook を実行するように[ハイブリッド Runbook Worker](#hybrid-runbook-worker) を構成します。
+6.  ローカル データセンターで、変換後の Runbook を実行するように [Hybrid Runbook Worker](#hybrid-runbook-worker) を構成します。
 
 ## Service Management Automation
 
@@ -38,7 +38,7 @@ Orchestrator Runbook を Azure Automation に変換するための基本的な�
 
 ## ハイブリッド Runbook Worker
 
-Orchestrator の Runbook はデータベース サーバー上に格納され、Runbook サーバーで実行されます。どちらのサーバーもローカル データセンター上にあります。Azure Automation の Runbook は Azure Cloud に格納され、[ハイブリッド Runbook Worker](automation-hybrid-runbook-worker.md) を使用してローカル データセンターで実行できます。これが、Orchestrator から変換された Runbook を実行する通常の方法です。これらの Runbook はローカル サーバー上で実行されるように設計されているためです。
+Orchestrator の Runbook はデータベース サーバー上に格納され、Runbook サーバーで実行されます。どちらのサーバーもローカル データセンター上にあります。Azure Automation の Runbook は Azure Cloud に格納され、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) を使用してローカル データセンターで実行できます。これが、Orchestrator から変換された Runbook を実行する通常の方法です。これらの Runbook はローカル サーバー上で実行されるように設計されているためです。
 
 ## 統合パック コンバーター
 
@@ -71,14 +71,14 @@ Microsoft は、System Center のコンポーネントと他の製品を自動�
 
 ## Runbook コンバーター (近日対応予定)
 
-このツールは、Orchestrator Runbook を、Azure Automation にインポート可能なグラフィカル Runbook に変換します。このツールの詳細については、使用可能になった段階でこちらでお知らせします。
+このツールは、Orchestrator Runbook を、Azure Automations にインポートできる[グラフィカル Runbook](automation-runbook-types.md#graph-runbooks) に変換します。このツールの詳細については、使用可能になった段階でこちらでお知らせします。
 
 ## 関連記事:
 
 - [System Center 2012 - Orchestrator](http://technet.microsoft.com/library/hh237242.aspx)
 - [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)
-- [ハイブリッド Runbook Worker](automation-hybrid-runbook-worker.md)
+- [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)
 - [Orchestrator 標準活動](http://technet.microsoft.com/library/hh403832.aspx)
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

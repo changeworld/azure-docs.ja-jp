@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/02/2015"
+	ms.date="09/22/2015"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成 (プレビュー)
@@ -30,6 +30,14 @@ Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの 1 つです�
 ##前提条件
 
 * HDInsight クラスターでの Linux ベースの Hadoop作成の詳細については、「[HDInsight での Linux ベースの Hadoop の使用][getstarted]」に関するページを参照してください。
+
+##Mahout のバージョン
+
+HDInsight クラスターに含まれる Mahout のバージョンについては、「[HDInsight のバージョンと Hadoop コンポーネント](hdinsight-component-versioning.md)」を参照してください。
+
+> [AZURE.WARNING]Mahout の別のバージョンを HDInsight クラスターにアップロードできますが、全面的にサポートされるのは HDInsight クラスターに用意されているコンポーネントだけであり、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
+>
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[MSDN の HDInsight フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
 
 ##<a name="recommendations"></a>リコメンデーションについて
 
@@ -256,4 +264,4 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

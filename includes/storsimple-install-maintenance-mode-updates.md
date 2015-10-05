@@ -1,19 +1,4 @@
-<properties
-   pageTitle="メンテナンス モードの更新プログラムのインストール"
-   description="StorSimple 用 Windows PowerShell を使用してメンテナンス モードの更新プログラムをインストールする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="alkohli"
-   manager="carolz"
-   editor="" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/18/2015"
-   ms.author="alkohli" />
+<!--author=SharS last changed: 9/17/15-->
 
 #### StorSimple 用 Windows PowerShell を使用してメンテナンス モードの更新プログラムをインストールするには
 
@@ -41,4 +26,4 @@
 
 8. 両方のコントローラーが更新されたら、メンテナンス モードを終了します。手順については、「[手順 4: メンテナンス モードを終了する](storsimple-update-device.md#step4)」を参照してください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

@@ -16,13 +16,13 @@
     ms.date="07/29/2015"
     ms.author="sidneyh"/>
 
-# Elastic Database クライアント ライブラリの概要
+# エラスティック データベース クライアント ライブラリの概要
 
-**Elastic Database クライアント ライブラリ**では、Microsoft Azure でホストされている何百、何千もの Azure SQL データベースを使用してシャード化したアプリケーションを構築することができます。このような設計は一般に、シングル テナント アーキテクチャを備えた SaaS (サービスとしてのソフトウェア) アプリケーションで使用されます (シングル テナント アーキテクチャとは、各テナントにデータベースが 1 つプロビジョニングされるアーキテクチャを指します)。そのようなアプリケーションの構築と管理が、このライブラリの目標です。Elastic Database クライアント ライブラリは .NET フレームワーク ライブラリであり、[Visual Studio](sql-database-elastic-scale-add-references-visual-studio.md) と [Nuget](http://go.microsoft.com/?linkid=9862605) を使用してどのアプリケーションにもインストールできます。クライアント ライブラリは Elastic Database ツールの一部で、具体的には [Elastic Database 機能](sql-database-elastic-scale-introduction.md) になります。
+**エラスティック データベース クライアント ライブラリ**では、Microsoft Azure でホストされている何百、何千もの Azure SQL データベースを使用してシャード化したアプリケーションを構築することができます。このような設計は一般に、シングル テナント アーキテクチャを備えた SaaS (サービスとしてのソフトウェア) アプリケーションで使用されます (シングル テナント アーキテクチャとは、各テナントにデータベースが 1 つプロビジョニングされるアーキテクチャを指します)。そのようなアプリケーションの構築と管理が、このライブラリの目標です。Elastic Database クライアント ライブラリは .NET フレームワーク ライブラリであり、[Visual Studio](sql-database-elastic-scale-add-references-visual-studio.md) と [Nuget](http://go.microsoft.com/?linkid=9862605) を使用してどのアプリケーションにもインストールできます。クライアント ライブラリはエラスティック データベース ツールの一部で、具体的には[エラスティック データベース機能](sql-database-elastic-scale-introduction.md)になります。
 
 ## クライアントの機能
 
-*シャーディング* (詳細は下記) を使用したスケールアウト アプリケーションの開発、スケーリング、管理では、開発者と管理者の双方に課題が存在します。クライアント ライブラリを使えば、両者の作業負荷の軽減につなげることができます。次の図は、Elastic Database クライアント ライブラリでサポートされている主な機能の概略です。図は多くのデータベースが存在する環境を示しており、各データベースはシャードに対応しています。この例では、範囲マップを使用して、多数の顧客が同じデータベースに格納されていますが、顧客ごとのデータベース (テナント) がある場合も同様です。ツールで次の機能を利用することで、シャード化された Azure SQL Database アプリケーションを簡単に開発できるようになります。
+*シャーディング* (詳細は下記) を使用したスケールアウト アプリケーションの開発、スケーリング、管理では、開発者と管理者の双方に課題が存在します。クライアント ライブラリを使えば、両者の作業負荷の軽減につなげることができます。次の図は、エラスティック データベース クライアント ライブラリでサポートされている主な機能の概略です。図は多くのデータベースが存在する環境を示しており、各データベースはシャードに対応しています。この例では、範囲マップを使用して、多数の顧客が同じデータベースに格納されていますが、顧客ごとのデータベース (テナント) がある場合も同様です。ツールで次の機能を利用することで、シャード化された Azure SQL Database アプリケーションを簡単に開発できるようになります。
 
 ここに使用されている用語の定義については、「[エラスティック データベース ツールの用語集](sql-database-elastic-scale-glossary.md)」を参照してください。
 
@@ -40,9 +40,11 @@
 
 [サンプル アプリ](sql-database-elastic-scale-get-started.md)でクライアントの機能をお試しください。
 
-ライブラリをインストールする場合は、[Elastic Database クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)のページをご利用ください。
+ライブラリをインストールする場合は、[エラスティック データベース クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)のページをご利用ください。
 
 分割/マージ ツールの使用法の詳細については、[分割/マージ ツールの概要](sql-database-elastic-scale-overview-split-and-merge.md)に関するページをご覧ください。
+
+[エラスティック データベース クライアント ライブラリはオープン ソース化されました](http://azure.microsoft.com/blog/elastic-database-client-library-is-now-open-sourced/)
 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
@@ -51,4 +53,4 @@
 <!--Image references-->
 [1]: ./media/sql-database-elastic-database-client-library/glossary.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

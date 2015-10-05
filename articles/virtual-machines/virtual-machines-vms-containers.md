@@ -1,23 +1,28 @@
 <properties 
-	pageTitle="仮想マシンとコンテナーが Azure にもたらすメリット"
-	description="仮想マシン、Docker および Linux コンテナーの概要を説明するとともに、それらのグループを Azure で使用するためのアプローチと、各アプローチのメリットについて説明します。また、どのアプローチがどのようなシナリオに適しているかについても説明します。"
-	services="virtual-machines"
-	documentationCenter="virtual-machines"
-	authors="squillace"
-	manager="timlt"/>
+	pageTitle="仮想マシンとコンテナー | Microsoft Azure" 
+	description="仮想マシン、Docker、および Linux コンテナーの概要を説明するとともに、それらのグループを Azure で使用するための方法と、各方法のメリットについて説明します。また、どの方法がどのようなシナリオに適しているかについても説明します。" 
+	services="virtual-machines" 
+	documentationCenter="virtual-machines" 
+	authors="squillace" 
+	manager="timlt"
+	tags="azure-resource-manager,azure-service-management" 
+/>
 	
 
 <tags 
-	ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="infrastructure"
-	ms.workload="infrastructure"
-	ms.date="07/02/2015"
-	ms.author="rasquill"/>
+	ms.service="virtual-machines" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="infrastructure" 
+	ms.workload="infrastructure" 
+	ms.date="07/02/2015" 
+	ms.author="rasquill" 
+/>
 
 <!--The next line, with one pound sign at the beginning, is the page title-->
 # 仮想マシンとコンテナーが Azure にもたらすメリット
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 Azure は、物理コンピューター ハードウェアをエミュレートした仮想マシンを利用して、ソフトウェア デプロイメントの移動を迅速化し、物理ハードウェアよりも格段に効率的なリソース統合を可能にするすばらしいクラウド ソリューションです。この数年間、[Docker](https://www.docker.com) のコンテナー アプローチと Docker エコシステムが業界に大きな影響を与えたこともあり、Linux のコンテナー テクノロジは分散型ソフトウェアの開発や管理のあり方を大きく変えています。コンテナー内のアプリケーション コードは、ホストの Azure VM からだけでなく、同じ VM 上にあるその他のコンテナーからも分離されるため、Azure VM がもたらす開発やデプロイメントのアジリティをアプリケーション レベルでさらに高めることにつながります。
 
@@ -57,7 +62,7 @@ Azure は、物理コンピューター ハードウェアをエミュレート�
 
 ## コンテナーのメリット
 
-さまざまなメリットが期待できますが、[Azure クラウド サービス](http://azure.microsoft.com/services/cloud-services/)や[Azure Service Fabric](service-fabric-overview.md) のように、単一サービスや[マイクロサービス]指向の分散アプリケーションを効果的に作成できるのが第一のメリットです。これにより、大規模で結合性の強いコンポーネントではなく、より小規模な構成パーツによってアプリケーションを設計することができます。
+さまざまなメリットが期待できますが、[Azure Cloud Services](http://azure.microsoft.com/services/cloud-services/) や [Azure Service Fabric](service-fabric-overview.md) のように、単一サービスや[マイクロサービス]指向の分散アプリケーションを効果的に作成できるのが第一のメリットです。これにより、大規模で結合性の強いコンポーネントではなく、より小規模な構成パーツによってアプリケーションを設計することができます。
 
 これは、必要な場所に必要なタイミングで VM をレンタルできる、Azure のようなパブリック クラウド環境においては特に有効です。分離性を確保し、デプロイメントを迅速化し、便利なオーケストレーション ツールを活用できるだけでなく、アプリケーション インフラストラクチャをより効率的に管理することができます。
 
@@ -234,4 +239,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

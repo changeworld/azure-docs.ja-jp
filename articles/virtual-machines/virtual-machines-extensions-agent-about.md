@@ -12,7 +12,7 @@ ms.service="virtual-machines"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="infrastructure-services"
- ms.date="03/10/2015"
+ ms.date="09/22/2015"
  ms.author="rasquill"/>
  
 #仮想マシンのエージェントおよび拡張機能について
@@ -62,4 +62,4 @@ VM エージェントは、次のような状況で有効化されます。
 
 これらのタスクの詳細については、「[仮想マシン拡張機能の管理](virtual-machines-extensions-install.md)」を参照してください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

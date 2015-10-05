@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure SQL エラスティック データベース プールのリファレンス"
-	description="このリファレンスでは、エラスティック データベース プールの記事やプログラミング情報のリンクと詳細が提供されています。"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jeffreyg"
+	pageTitle="Azure SQL エラスティック データベース プールのリファレンス" 
+	description="このリファレンスでは、エラスティック データベース プールの記事やプログラミング情報のリンクと詳細が提供されています。" 
+	services="sql-database" 
+	documentationCenter="" 
+	authors="stevestein" 
+	manager="jeffreyg" 
 	editor=""/>
 
 <tags 
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="08/25/2015"
-	ms.author="sstein"
-	ms.workload="data-management"
-	ms.topic="article"
+	ms.date="09/23/2015" 
+	ms.author="sstein" 
+	ms.workload="data-management" 
+	ms.topic="article" 
 	ms.tgt_pltfrm="NA"/>
 
 
@@ -153,13 +153,13 @@ Azure SQL Database V12 サーバーは、リソース グループにありま�
 
 | [PowerShell コマンドレット](https://msdn.microsoft.com/library/mt163521.aspx) | [REST API のコマンド](https://msdn.microsoft.com/library/mt163571.aspx) |
 | :-- | :-- |
-| [New-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125987.aspx) | [エラスティック データベース プールの作成](https://msdn.microsoft.com/library/mt163596.aspx) |
-| [Set-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125994.aspx) | [Set Performance Settings of an Elastic Database Pool](https://msdn.microsoft.com/library/mt163641.aspx) |
-| [Remove-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125830.aspx) | [Delete an elastic database pool](https://msdn.microsoft.com/library/mt163672.aspx) |
-| [Get-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt126017.aspx) | [Gets elastic database pools and their property values](https://msdn.microsoft.com/ja-JP/library/mt163646.aspx) |
-| [Get-AzureSqlElasticPoolActivity](https://msdn.microsoft.com/library/mt125837.aspx) | [Get Status of Elastic Database Pool Operations](https://msdn.microsoft.com/library/mt163669.aspx) |
-| [Get-AzureSqlElasticPoolDatabase](https://msdn.microsoft.com/library/mt125960.aspx) | [Get Databases in an Elastic Database Pool](https://msdn.microsoft.com/library/mt163646.aspx) |
-| [Get-AzureSqlElasticPoolDatabaseActivity](https://msdn.microsoft.com/library/mt125973.aspx) | [Gets the status of moving databases in and out of a pool](https://msdn.microsoft.com/library/mt163669.aspx) |
+| [New-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125987.aspx) | [エラスティック データベース プールを作成します](https://msdn.microsoft.com/library/mt163596.aspx) |
+| [Set-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125994.aspx) | [エラスティック データベース プールのパフォーマンス設定を設定します](https://msdn.microsoft.com/library/mt163641.aspx) |
+| [Remove-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125830.aspx) | [エラスティック データベース プールを削除します](https://msdn.microsoft.com/library/mt163672.aspx) |
+| [Get-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt126017.aspx) | [エラスティック データベース プールとそのプロパティ値を取得します](https://msdn.microsoft.com/ja-JP/library/mt163646.aspx) |
+| [Get-AzureSqlElasticPoolActivity](https://msdn.microsoft.com/library/mt125837.aspx) | [エラスティック データベース プールの操作の状態を取得します](https://msdn.microsoft.com/library/mt163669.aspx) |
+| [Get-AzureSqlElasticPoolDatabase](https://msdn.microsoft.com/library/mt125960.aspx) | [エラスティック データベース プールのデータベースを取得します](https://msdn.microsoft.com/library/mt163646.aspx) |
+| [Get-AzureSqlElasticPoolDatabaseActivity](https://msdn.microsoft.com/library/mt125973.aspx) | [プールへ、またはプールからのデータベースの移動の状態を取得します](https://msdn.microsoft.com/library/mt163669.aspx) |
 
 ## Transact-SQL
 
@@ -177,13 +177,12 @@ TRANSACT-SQL を使用して、次のエラスティック データベース管
 エラスティック データベース プールは、次の特性ごとに課金されます。
 
 - エラスティック プールは、プールにデータベースがない場合でも、その作成時に課金されます。 
-- エラスティック プールは 1 時間ごとに課金されます。これは、スタンドアロン データベースのパフォーマンス レベルと同じ使用状況測定の頻度です。 
+- エラスティック プールは 1 時間ごとに課金されます。これは、シングル データベースのパフォーマンス レベルと同じ使用状況測定の頻度です。 
 - エラスティック プールが新しい eDTU 量にサイズ変更されると、サイズ変更操作が完了するまでは新しい eDTU 量に応じた課金はされません。これは、スタンドアロン データベースのパフォーマンス レベルを変更する場合と同様のパターンに従っています。 
 
 
-- エラスティック プールの価格は、プールの eDTU 数と、プール内のデータベース数に基づきます。
-エラスティック プールの価格は、内部のエラスティック データベースの使用率とは関係ありません。
-- 価格は、(プール eDTU 数) x (eDTU あたりの単価) + (データベース数) x (データベースあたりの単価) で計算されます。
+- エラスティック プールの価格は、プールの eDTU 数に基づきます。エラスティック プールの価格は、内部のエラスティック データベースの使用率とは関係ありません。
+- 価格は、(プールの eDTU 数) x (eDTU あたりの単価) で計算されます。
 
 エラスティック プールの eDTU 単価は、同じサービス階層のスタンドアロン データベースの DTU 単価よりも高くなります。詳細については、「[SQL Database 料金](http://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
@@ -199,17 +198,5 @@ TRANSACT-SQL を使用して、次のエラスティック データベース管
 | 40859 | EX_USER | エラスティック プールでは、サービス階層 '%ls' はサポートされていません。 | エラスティック プールのサービス階層 | 指定されたサービス階層は、エラスティック プールのプロビジョニングにはサポートされていません。 | 正しいエディションを指定するか、既定のサービス階層を使用する場合はサービス階層を空のままにしてください。 |
 | 40860 | EX_USER | エラスティック プール '%ls' とサービス目標 '%ls' の組み合わせが正しくありません。 | エラスティック プール名、サービス レベル目標名 | エラスティック プールとサービス目標は、サービス目標が 'ElasticPool' に指定されている場合にのみ同時に指定できます。 | エラスティック プールとサービス目標の適切な組み合わせを指定してください。 |
 | 40861 | EX_USER | データベースのエディション '%.*ls' は、エラスティック プールのサービス階層 ('%.*ls') と同じである必要があります。 | データベースのエディション、エラスティック プールのサービス階層 | データベースのエディションの大文字と小文字が、エラスティック プールのサービス階層と異なります。 | エラスティック プールのサービス階層と異なるデータベース エディションを指定しないでください。データベースのエディションを指定する必要がないことにご注意ください。 |
-| 40862 | EX_USER | エラスティック プールのサービス目標が指定されている場合は、エラスティック プール名を指定する必要があります。 | なし | エラスティック プールのサービス目標は、エラスティック プールを一意に識別することはできません。 | エラスティック プールのサービス目標を使用する場合は、エラスティック プール名を指定してください。 |
-| 40864 | EX_USER | エラスティック プールの DTU は、サービス階層 '%.*ls' に対して (%d) DTU 以上である必要があります。 | エラスティック プールの DTU、エラスティック プールのサービス階層 | 最小値を下回るエラスティック プールの DTU を設定しようとしています。 | エラスティック プールの DTU を最小値以上に設定し直してください。 |
-| 40865 | EX_USER | エラスティック プールの DTU は、サービス階層 '%.*ls' に対して (%d) DTU を超えることはできません。 | エラスティック プールの DTU、エラスティック プールのサービス階層 | エラスティック プールの DTU を最大値を超える値に設定しようとしています。 | エラスティック プールの DTU を最大値を超えないように設定し直してください。 |
-| 40867 | EX_USER | データベースあたりの DTU の最大値は、サービス階層 '%.*ls' に対して少なくとも (%d) である必要があります。 | データベースあたりの DTU の最大値、エラスティック プールのサービス階層 | サポートされている制限を下回るデータベースあたりの DTU 最大値を設定しようとしています。 | 目的の設定をサポートするエラスティック プールのサービス階層を使用することをご検討ください。 |
-| 40868 | EX_USER | データベースあたりの DTU の最大値は、サービス階層 '%.*ls' に対して (%d) を超えることはできません。 | データベースあたりの DTU 最大値、エラスティック プールのサービス階層 | サポートされている制限を超えるデータベースあたりの DTU 最大値を設定しようとしています。 | 目的の設定をサポートするエラスティック プールのサービス階層を使用することをご検討ください。 |
-| 40870 | EX_USER | データベースあたりの DTU 最小値は、サービス階層 '%.*ls' に対して (%d) を超えることはできません。 | データベースあたりの DTU 最小値、エラスティック プールのサービス階層 | サポートされている制限を超えるデータベースあたりの DTU 最小値を設定しようとしています。 | 目的の設定をサポートするエラスティック プールのサービス階層を使用することをご検討ください。 |
-| 40873 | EX_USER | データベース数 (%d) と データベースあたりの DTU の最小値 (%d) は、エラスティック プールの DTU (%d) を超えることはできません。 | エラスティック プール内のデータベース数、データベースあたりの DTU 最小値、エラスティック プールの DTU | エラスティック プールの DTU を超えるエラスティック プール内のデータベースあたりの DTU 最小値を指定しようとしています。 | エラスティック プールの DTU を増やす、データベースあたりの DTU 最小値を減らす、エラスティック プール内のデータベース数を減らすことをご検討ください。 |
-| 40877 | EX_USER | データベースが含まれていない場合を除いて、エラスティック プールを削除できません。 | なし | エラスティック プールに、1 つ以上のデータベースが含まれているため、削除できません。 | エラスティック プールからデータベースを削除して、エラスティック プールを削除してください。 |
-| 40881 | EX_USER | エラスティック プール '%.*ls' のデータベース数が上限に達しました。エラスティック プールのデータベース数上限は、(%d) DTU を含むエラスティック プールの場合、(%d) を超えることはできません。 | エラスティック プール名、エラスティック プールのデータベース数上限、リソース プールの DTU | エラスティック プールのデータベース数が上限に達したときに、データベースを作成またはエラスティック プールにデータベースを追加しようとしています。 | 可能であれば、エラスティック プールの DTU を増やして、データベースの上限を上げることを検討するか、エラスティック プールからデータベースを削除してください。 |
-| 40889 | EX_USER | エラスティック プール '%.*ls' の DTU または記憶域の上限を下げることはできません。下げると、データベースに十分な記憶域スペースを提供できなくなるためです。 | エラスティック プールの名前。 | 記憶域の使用率を下回るエラスティック プールの記憶域の上限を下げようとしています。 | エラスティック プール内の個々のデータベースの記憶域使用率を減らすことを検討するか、その DTU または記憶域の上限を下げるためにプールからデータベースを削除してください。 |
-| 40891 | EX_USER | データベースあたりの DTU 最小値 (%d) は、データベースあたりの DTU 最大値 (%d) を超えることはできません。 | データベースあたりの DTU 最小値、データベースあたりの DTU 最大値 | データベースあたりの DTU 最大値を超えるデータベースあたりの DTU 最小値を設定しようとしています。 | データベースあたりの DTU の最小値がデータベースあたりの DTU 最大値を超えていないことをご確認ください。 |
-| TBD | EX_USER | エラスティック プール内の個々のデータベースの記憶域サイズは、サービス階層のエラスティック プール '%.*ls' で許容される最大サイズを超えることはできません。 | エラスティック プールのサービス階層 | データベースの最大サイズが、エラスティック プールのサービス階層によって許可されている最大サイズを超えています。 | データベースの最大サイズを、エラスティック プールのサービス階層によって許可されている最大サイズの制限内に設定してください。 |
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

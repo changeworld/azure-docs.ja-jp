@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Azure SQL Database の価格レベルの提案" 
-   description="Azure ポータルで価格レベルを変更するとき、価格レベルの提案により、既存の Azure SQL Database のワークロードを実行するのに最適なレベルが提案されます。" 
+   description="Azure ポータルで価格レベルを変更するとき、価格レベルの提案により、既存の Azure SQL Database のワークロードを実行するのに最適なレベルが提案されます。価格レベルは、SQL Database のサービス レベルとパフォーマンス レベルを説明します。" 
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
@@ -13,19 +13,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="06/30/2015"
+   ms.date="09/22/2015"
    ms.author="sstein"/>
 
 # SQL Database の価格レベルの提案
 
- Azure ポータルで価格レベルを変更するとき、価格レベルの提案により、既存の Azure SQL Database のワークロードを実行するのに最適なレベルが提案されます。
+ 既存の Azure SQL Database のワークロードを実行するのに最適な価格レベルとパフォーマンス レベルを提案する価格レベルの提案が用意されています。
 
-> [AZURE.NOTE]価格レベルの提案は、Web データベースと Business データベースのみが対象で、[Azure ポータル](https://portal.azure.com/)でのみ利用できます。
+> [AZURE.NOTE]価格レベルの提案は、Web データベース、ビジネス データベース、およびエラスティック データベース プールのみを対象として、[Azure プレビュー ポータル](https://portal.azure.com/)でのみ利用できます。
+
+
+価格レベルの提案は、次のタスクの実行中に取得します。
+
+- [SQL Database のサービス階層とパフォーマンス レベル (価格レベル) を変更する](sql-database-scale-up.md)
+- [Azure SQL サーバーを V12 にアップグレードする](sql-database-v12-upgrade.md)
+- [エラスティック データベース プールの作成](sql-database-elastic-pool.md#elastic-database-pool-pricing-tier-recommendations)
 
 
 ## 概要
 
-Azure では、SQL Database の過去のリソースの使用状況を評価して、現在のパフォーマンス要件と機能要件が分析されます。また、最小限許容可能なサービス階層については、データベースのサイズと有効になっている[ビジネス継続性](https://msdn.microsoft.com/library/azure/hh852669.aspx)に基づいて判断されます。
+SQL Database サービスでは、SQL Database の過去のリソースの使用状況を評価して、現在のパフォーマンス要件と機能要件が分析されます。また、最小限許容可能なサービス階層については、データベースのサイズと有効になっている[ビジネス継続性](https://msdn.microsoft.com/library/azure/hh852669.aspx)に基づいて判断されます。
 
 この情報を分析することにより、データベースの一般的なワークロードを実行し、現在の機能セットを維持するために最適なサービス階層とパフォーマンス レベルが提案されます。
 
@@ -45,9 +52,9 @@ Azure では、SQL Database の過去のリソースの使用状況を評価し�
 
 ## 価格レベルの提案を受ける
 
-価格レベルの提案を受けるには、既存の Web または Business データベースを選択し、**[価格レベル]** タイルをクリックします。
+価格レベルの提案を受けるには、既存の Web または Business データベースを選択し、**[価格レベル]** タイルをクリックします。(価格レベルの提案は、[SQL サーバーを V12 にアップグレードする](sql-database-v12-upgrade.md)ときにも利用できます)。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
 2. 左側のメニューの **[参照]** をクリックします。
 3. **[参照]** ブレードで、**[SQL データベース]** をクリックします。
 4. **[SQL データベース]** ブレードで、サービスを使って分析するデータベースをクリックします。
@@ -90,4 +97,4 @@ Azure では、SQL Database の過去のリソースの使用状況を評価し�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

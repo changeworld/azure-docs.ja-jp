@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="python"
     ms.topic="hero-article"
-    ms.date="09/03/2015"
+    ms.date="09/21/2015"
     ms.author="ryancraw"/>
 
 # DocumentDB による Python Flask Web アプリケーション開発
@@ -352,4 +352,4 @@ Web アプリケーションに機能を追加する場合は、[DocumentDB Pyth
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

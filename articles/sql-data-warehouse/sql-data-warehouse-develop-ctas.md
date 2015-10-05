@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/26/2015"
+   ms.date="09/22/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS)
@@ -359,8 +359,8 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[CTAS]: https://msdnstage.redmond.corp.microsoft.com/ja-jp/library/mt204041.aspx
+[CTAS]: https://msdn.microsoft.com/JA-JP/library/mt204041.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

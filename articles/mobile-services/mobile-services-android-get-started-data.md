@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Android のデータの使用 (JavaScript バックエンド) | Microsoft Azure" 
-	description="Mobile Services を使用して、Android アプリのデータを活用する方法について説明します (JavaScript バックエンド)。" 
-	services="mobile-services" 
-	documentationCenter="android" 
-	authors="RickSaling" 
-	manager="dwrede" 
+<properties
+	pageTitle="Android のデータの使用 (JavaScript バックエンド) | Microsoft Azure"
+	description="Mobile Services を使用して、Android アプリのデータを活用する方法について説明します (JavaScript バックエンド)。"
+	services="mobile-services"
+	documentationCenter="android"
+	authors="RickSaling"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="java" 
-	ms.topic="article" 
-	ms.date="09/16/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="java"
+	ms.topic="article"
+	ms.date="09/23/2015"
 	ms.author="ricksal"/>
 
 # 既存の Android アプリへの Mobile Services の追加 (JavaScript バックエンド)
@@ -35,7 +35,7 @@
 </div>
 
 
-<p>このチュートリアルでは Azure Mobile Services における Android アプリケーションからのデータの保存と取得方法についての詳細を分かりやすく説明します。したがって、Mobile Services のクイック スタート チュートリアルで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/ja-JP/develop/mobile/tutorials/get-started-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
+<p>このチュートリアルでは Azure Mobile Services における Android アプリケーションからのデータの保存と取得方法についての詳細を分かりやすく説明します。したがって、Mobile Services のクイック スタート チュートリアルで完了している手順の多くについても説明します。Mobile Services を初めて使用する場合は、最初にチュートリアル「<a href="/ja-JP/develop/mobile/tutorials/get-started-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
 
 ## 前提条件
 
@@ -46,6 +46,10 @@
 
 - [Azure Mobile Services Android SDK]
 - Android SDK を含む <a  href="https://developer.android.com/sdk/index.html" target="_blank">Android Studio 統合開発環境￼</a>、Android 4.2 以降のバージョン。ダウンロードした GetStartedWithData プロジェクトを実行するには、Android 4.2 以降のバージョンが必要です。ただし、Mobile Services SDK は、Android 2.2 以降で動作します。
+
+## サンプル コード
+
+完成したソース コードを表示するには、<a href="https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithData/AndroidStudio">ここ</a>に移動します。
 
 ## GetStartedWithData プロジェクトをダウンロードする
 
@@ -72,7 +76,7 @@
 
 ## 新しいモバイル サービスに対するアプリケーションのテスト
 
-バック エンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、Android エミュレーターまたは Android フォンを使用して、モバイル サービスに対してアプリケーションをテストします。
+バック エンド ストレージの Mobile Services を使用するようにアプリケーションを更新した後は、Android エミュレーターまたは Android フォンを使用して、Mobile Services に対してアプリケーションをテストします。
 
 1. **[Run]** メニューの **[Run App]** をクリックして、プロジェクトを開始します。
 
@@ -87,25 +91,18 @@
 4. **[データ]** タブをクリックし、**[参照]** をクリックします。
 
    	![][9]
-  
-   	**TodoItem** テーブルに、モバイル サービスによって生成されたいくつかの値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
+
+   	**TodoItem** テーブルに、Mobile Services によって生成されたいくつかの値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
 これで、Android 向けの**データの使用**に関するチュートリアルは終了です。
 
 ## トラブルシューティング
 
-###Android SDK バージョンの検証
+### Android SDK バージョンの検証
 
 [AZURE.INCLUDE [SDK の確認](../../includes/mobile-services-verify-android-sdk-version.md)]
 
 
-## 古いコードのバージョン
-
-このチュートリアルの Eclipse バージョンを確認する場合は、「[Eclipse を使用したデータの使用](mobile-services-android-get-started-data-ec.md)」をご覧ください。
-
-Eclipse プロジェクトのソース コードの完全バージョンは<a href="https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithData/Android">こちら</a>で確認できます。
-
-Azure Mobile Services Android SDK の前のバージョンで使用されていたサンプル ファイルを入手する場合は、[こちら](http://go.microsoft.com/fwlink/p/?LinkID=282122)から入手できます。
 
 ## 次のステップ
 
@@ -113,7 +110,7 @@ Azure Mobile Services Android SDK の前のバージョンで使用されてい�
 
 次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更] <br/>Mobile Services でサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
+* [サーバー スクリプトを使用した Mobile Services のデータの検証および変更] <br/>Mobile Services でサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
 * [ページングを使用したモバイル サービス クエリの改善] <br/>クエリ内でページングを使用して、1 回の要求で渡されるデータの量を制御する方法について説明します。
 
@@ -141,11 +138,10 @@ Azure Mobile Services Android SDK の前のバージョンで使用されてい�
 
 
 <!-- URLs. -->
-[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+[サーバー スクリプトを使用した Mobile Services のデータの検証および変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
 [ページングを使用したモバイル サービス クエリの改善]: /develop/mobile/tutorials/add-paging-to-data-android
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-android
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-android
-[Get started with data (Eclipse)]: /documentation/articles/mobile-services-android-get-started-data-EC/
 [認証の使用]: /develop/mobile/tutorials/get-started-with-users-android
 [プッシュ通知の使用]: /develop/mobile/tutorials/get-started-with-push-android
 
@@ -154,6 +150,5 @@ Azure Mobile Services Android SDK の前のバージョンで使用されてい�
 [Azure Mobile Services Android SDK]: http://aka.ms/Iajk6q
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkID=282122
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
- 
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

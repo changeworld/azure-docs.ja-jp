@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Azure 上で Linux を実行する仮想マシンの作成"
-	description="Azure のイメージを使用して、Linux を実行する Azure 仮想マシン (VM) を作成する方法について説明します。"
+	pageTitle="Linux を実行する仮想マシンの作成 | Microsoft Azure"
+	description="Azure のイメージや Azure コマンドライン インターフェイスを使用して、Linux を実行する Azure 仮想マシン (VM) を作成する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
 	manager="timlt"
 	editor="tysonn"
-	tags="azure-resource-management" />
+	tags="azure-resource-manager" />
 
 <tags
 	ms.service="virtual-machines"
@@ -37,9 +37,9 @@
 
 まず、[Azure CLI をインストール](../xplat-cli-install.md)します。
 
-インストールが完了したら、「`azure config mode arm`」と入力して、リソース管理モードになっているかどうかを確認します。
+インストールが完了したら、「`azure config mode arm`」と入力して、リソース マネージャー モードになっているかどうかを確認します。
 
-さらに、「`azure login`」と入力して画面の指示に従って、職場または学校の ID でログインします。
+さらに、「`azure login`」と入力して画面の指示に従って、[職場または学校の ID でログイン](../xplat-cli-connect.md#use-the-log-in-method)します。
 
 > [AZURE.NOTE]ログイン時にエラーが発生した場合は、[個人用の Microsoft アカウントから職場または学校の ID を作成する](resource-group-create-work-id-from-personal.md)ことが必要になる可能性があります。
 
@@ -305,4 +305,4 @@ Azure 上の Linux の詳細については、次の内容を参照してくだ�
 
 - [Azure の Linux 用 Docker 仮想マシン拡張機能](virtual-machines-docker-vm-extension.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

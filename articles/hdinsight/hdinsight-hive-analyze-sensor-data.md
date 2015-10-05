@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/24/2015" 
+	ms.date="09/23/2015" 
 	ms.author="larryfr"/>
 
 #HDInsight の Hadoop で Hive クエリ コンソールを使用したセンサー データの分析
@@ -38,7 +38,7 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
 
 * Microsoft Excel 2013
 
-	> [AZURE.NOTE]Microsoft Excel は、[Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=ja-jp&rs=ja-jp&ad=US) を使用したデータ視覚化のために使用します。
+	> [AZURE.NOTE]Microsoft Excel は、[Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=JA-JP&rs=JA-JP&ad=US) を使用したデータ視覚化のために使用します。
 
 * [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/download/details.aspx?id=40886)
 
@@ -54,4 +54,4 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
 
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

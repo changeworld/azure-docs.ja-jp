@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/09/2015" 
+	ms.date="09/23/2015" 
 	ms.author="awills"/>
 
 
@@ -156,10 +156,23 @@ SDK クライアントをサーバーの SDK と同じインストルメンテ�
 + `dc.services.visualstudio.com:443`
 + `f5.services.visualstudio.com:443`
 
-### 開発、テスト、およびリリース用に別のリソースを用意します。
 
-主なアプリケーションでは、デバッグ環境、テスト環境、および運用環境からのテレメトリ データ[別のリソース](app-insights-separate-resources.md)に送信することをお勧めします。
+## 開発、テスト、およびリリース
 
+重要なアプリケーションでは、異なるスタンプ (デバッグ、テスト、および運用のためのビルド) からのテレメトリ データを[別々のリソース](app-insights-separate-resources.md)に送信することをお勧めします。
+
+## アプリケーションのバージョンを追跡する
+
+ビルド プロセスで `buildinfo.config` が生成されていることを確認します。.csproj ファイルに、次のコードを追加します。
+
+```XML
+
+    <PropertyGroup>
+      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+    </PropertyGroup> 
+```
+
+ビルド情報がある場合、Application Insights Web モジュールは、**アプリケーションのバージョン**をプロパティとしてテレメトリのすべての項目に自動的に追加します。これにより、[診断の検索][diagnostic]を実行するとき、または[メトリックを調べる][metrics]ときに、バージョンによってフィルター処理できます。
 
 
 
@@ -187,7 +200,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 #### Azure Cloud Services ロールを監視するには
 
-[手動で Status Monitor を追加する方法](app-insights-cloudservices.md)があります。
+[ステータス モニターを手動でを追加する方法](app-insights-cloudservices.md)があります。
 
 ## 可用性 Web テスト
 
@@ -235,4 +248,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

@@ -1,11 +1,13 @@
 <properties
- pageTitle="仮想マシンの拡張機能とその機能について | Microsoft Azure"
- description="仮想マシン拡張機能の多くについて、接続や基本的な管理など、提供または改善される内容ごとにまとめて説明します。"
+ pageTitle="仮想マシンの拡張機能とその機能 | Microsoft Azure"
+ description="Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。"
  services="virtual-machines"
  documentationCenter=""
  authors="squillace"
  manager="timlt"
- editor=""/>
+ editor=""
+ tags="azure-service-management,azure-resource-manager"/>
+
 <tags
  ms.service="virtual-machines"
  ms.devlang="na"
@@ -15,7 +17,10 @@
  ms.date="09/03/2015"
  ms.author="rasquill"/>
 #仮想マシンの拡張機能とその機能について
-Microsoft Azure では、Microsoft 製およびサード パーティ プロバイダー製の両方の VM 拡張機能を提供しています。これらの機能によって、Azure Virtual Machines の生産性を向上させるのに役立つセキュリティ、ランタイム、デバッグ、管理などの機能が有効化されます。このトピックでは、使用に合わせて Windows 仮想マシンおよび Linux 仮想マシンの両方に対して Azure VM 拡張機能により提供される各種機能について説明し、それぞれについてのドキュメントを示します。
+Microsoft Azure では、Microsoft 製およびサード パーティ プロバイダー製の両方の VM 拡張機能を提供しています。これらの機能によって、Azure Virtual Machines の生産性を向上させるのに役立つセキュリティ、ランタイム、デバッグ、管理などの機能が有効化されます。このトピックでは、使用に合わせて Windows 仮想マシンおよび Linux Virtual Machines の両方に対して Azure VM 拡張機能により提供される各種機能について説明し、それぞれについてのドキュメントを示します。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルまたはクラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 
 VM エージェントの詳細とエージェントによる VM 拡張機能のサポート動作については、「[VM エージェントと VM 拡張機能の概要](https://msdn.microsoft.com/library/dn832621.aspx)」を参照してください。
 
@@ -96,4 +101,4 @@ VM 拡張機能では、パスワードのリセットや RDP の構成などの
 |**BGInfo**|RDP の使用時に、有用なサーバー情報を統合した図をデスクトップに表示します。|[BGInfo 拡張機能](https://msdn.microsoft.com/library/dn606289.aspx)|
 |**HpcVmDrivers**|Windows Server 2012 R2 または Windows Server 2012 を実行しているサイズが A8 または A9 の VM で、リモート ダイレクト メモリ アクセス (RDMA) ネットワーク デバイスのドライバーのインストール、構成、管理を行います。クラスター化された A8 または A9 の VM で、並列 MPI アプリケーション の実行中に RDMA ネットワークを使用できるようになります。|[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-a8-a9-a10-a11-specs.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

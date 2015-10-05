@@ -1,5 +1,5 @@
 <properties
-   pageTitle="アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト"
+   pageTitle="アプリケーション オブジェクトとサービス プリンシパル オブジェクト | Microsoft Azure"
    description="Azure Active Directory におけるアプリケーション オブジェクトと ServicePrincipal オブジェクトのリレーションシップについての説明"
    documentationCenter="dev-center-name"
    authors="msmbaldwin"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/08/2015"
+   ms.date="09/17/2015"
    ms.author="mbaldwin"/>
 
 
@@ -85,4 +85,4 @@ Microsoft Azure 管理ポータルにアプリを登録するときに、次の 
 
 ##
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

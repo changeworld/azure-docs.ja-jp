@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Azure リソース管理での、Mac、Linux、Windows 用 Azure CLI の使用 | Microsoft Azure"
-	description="Azure CLI の ARM モードを使用し、Mac、Linux、および Windows 用の Azure CLI で Azure のリソースを管理する方法について説明します。"
+	pageTitle="リソース マネージャーで Azure CLI を使用する | Microsoft Azure"
+	description="リソース マネージャー デプロイ モードで Mac、Linux、および Windows 用の Azure CLI を使用して Azure のリソースを管理する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dlepow"
 	manager="timlt"
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-resource-mangaer"/>
 
 <tags
 	ms.service="multiple"
@@ -16,7 +17,10 @@
 	ms.date="06/09/2015"
 	ms.author="danlep"/>
 
-# Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用
+# Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。リソースは、[クラシック デプロイ モデル](virtual-machines-command-line-tools.md)でも作成できます。
+
 
 このトピックでは、**ARM** モードで Azure コマンド ライン インターフェイス (Azure CLI) を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。Azure SDK のさまざまなライブラリや、PowerShell、Azure ポータルを使用しても同じタスクを実行できます。
 
@@ -24,7 +28,7 @@ Azure リソース管理を使用することにより、リソースのグル�
 
 ## 命令型のアプローチと宣言型のアプローチ
 
-[サービス管理モード (**asm**)](../virtual-machines-command-line-tools.md) の場合と同じように、**ARM** モードの Azure CLI では、コマンド ラインで強制的にリソースを作成するコマンドが提供されます。たとえば、「`azure group create <groupname> <location>`」と入力すると、Azure はリソース グループを作成する要求を受け、「`azure group deployment create <resourcegroup> <deploymentname>`」と入力すると、Azure は任意の数のアイテムのデプロイメントを作成しグループに配置する指示を受けます。リソースの種類ごとに命令型のコマンドがあるため、これらを連携させることで非常に複雑なデプロイメントを作成できます。
+[サービス管理モード (**asm**)](../virtual-machines-command-line-tools.md) の場合と同じように、**arm** モードの Azure CLI では、コマンド ラインで強制的にリソースを作成するコマンドが提供されます。たとえば、「`azure group create <groupname> <location>`」と入力すると、Azure はリソース グループを作成する要求を受け、「`azure group deployment create <resourcegroup> <deploymentname>`」と入力すると、Azure は任意の数のアイテムのデプロイメントを作成しグループに配置する指示を受けます。リソースの種類ごとに命令型のコマンドがあるため、これらを連携させることで非常に複雑なデプロイメントを作成できます。
 
 ただし、リソース グループを説明するリソース グループ _テンプレート_を使用する宣言型のアプローチは、これよりはるかに強力で、(ほとんど) どんな目的であれ、また (ほとんど) 任意の数のリソースの複雑なデプロイメントを自動化することができます。テンプレートを使用する場合、命令型のコマンドはデプロイの指示のみです。テンプレート、リソース、およびリソース グループの一般的な概要については、「[Azure リソース グループの概要](resource-groups-overview)」を参照してください。
 
@@ -1735,6 +1739,5 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-offers [options] <location> <publisher>
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

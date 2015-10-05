@@ -1,19 +1,4 @@
-<properties
-   pageTitle="メンテナンス モードの修正プログラムのインストール"
-   description="StorSimple 用 Windows PowerShell を使用してメンテナンス モードの修正プログラムをインストールする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="08/19/2015"
-   ms.author="v-sharos" />
+<!--author=SharS last changed: 9/17/15-->
 
 #### StorSimple 用 Windows PowerShell を使用してメンテナンス モードの修正プログラムをインストールするには
 
@@ -33,4 +18,4 @@
 
 6. 修正プログラムが適用されたら、メンテナンス モードを終了します。手順については、「[手順 4: メンテナンス モードを終了する](storsimple-update-device.md#step4)」を参照してください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

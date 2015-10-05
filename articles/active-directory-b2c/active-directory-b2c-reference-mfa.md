@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="09/22/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: コンシューマー向けアプリケーションで Multi-factor Authentication を有効にする
@@ -53,4 +53,4 @@ Multi-Factor Authentication の手順が実行される前に、コンシュー�
 
 コンシューマーがソーシャルまたはローカル アカウントを使用してサインインするとき、検証済みの電話番号がコンシューマー アカウントに関連付けられている場合は、コンシューマーはその確認を求められます。電話番号が関連付けられていない場合は、コンシューマーは電話番号を指定して確認するよう求められます。検証が成功した場合、後で使用できるように電話番号がコンシューマー アカウントに関連付けられます。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

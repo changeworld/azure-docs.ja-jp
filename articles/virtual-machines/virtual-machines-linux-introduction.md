@@ -5,7 +5,8 @@
 	documentationCenter="python"
 	authors="szarkos"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -15,13 +16,16 @@
 	ms.topic="article"
 	ms.date="06/11/2015"
 	ms.author="szark"/>
+
 #Azure での Linux 入門
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 このトピックでは、Azure クラウドで Linux 仮想マシンを使用するさまざまな局面について概説します。Linux 仮想マシンのデプロイは、ギャラリー内に存在するイメージを使用する際に簡単に使用できるプロセスです。
 
 ## 認証: ユーザー名、パスワード、SSH 鍵。
 
-Azure 管理ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワードまたは SSH 公開キーの入力が求められます。Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、root など、既に仮想マシン内に存在するシステム アカウント (UID <100) の名前は許可されない、という制約があります。
+Microsoft Azure 管理ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワードまたは SSH 公開キーの入力が求められます。Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、root など、既に仮想マシン内に存在するシステム アカウント (UID <100) の名前は許可されない、という制約があります。
 
 
  - 詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)」を参照してください。
@@ -94,6 +98,5 @@ Linux では通常、リソース ディスクは Azure Linux エージェント
 Linux では、データ ディスクはカーネルによって `/dev/sdc` という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。ディスクの接続については、チュートリアル「[データ ディスクを Linux 仮想マシンに接続する方法](virtual-machines-linux-how-to-attach-disk.md)」で詳しく説明しています。
 
  - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
- 
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

@@ -1,11 +1,12 @@
 <properties 
-	pageTitle="Mac で Django を使用した Python Web アプリケーション | Microsoft Azure" 
-	description="Linux 仮想マシンを使用して Azure で Django ベースの Web サイトをホストする方法について説明するチュートリアルです。" 
+	pageTitle="Linux で Django を使用した Python Web アプリケーション | Microsoft Azure" 
+	description="Linux 仮想マシンを使用して Azure で Django ベースの Web アプリケーションをホストする方法について説明します。" 
 	services="virtual-machines" 
 	documentationCenter="python" 
 	authors="huguesv" 
 	manager="wpickett" 
-	editor=""/>
+	editor=""
+	tags=“azure-service-management"/>
 
 <tags 
 	ms.service="virtual-machines" 
@@ -15,16 +16,16 @@
 	ms.topic="article" 
 	ms.date="05/20/2015" 
 	ms.author="huvalo"/>
-
-
-
-
-
-# Django Hello World Web アプリケーション (mac-linux)
+	
+# Linux VM での Django Hello World Web アプリケーション
 
 > [AZURE.SELECTOR]
-- [Windows](web-app-with-django.md)
-- [Mac/Linux](django-hello-world-(maclinux).md)
+- [Windows](virtual-machines-python-django-web-app-windows-server.md)
+- [Mac/Linux](virtual-machines-python-django-web-app-linux.md)
+
+<br>
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 このチュートリアルでは、Linux 仮想マシンを使用して Microsoft Azure で Django ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウドで動作する Django ベースのアプリケーションが完成します。
 
@@ -131,4 +132,4 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 [portal-vm]: /manage/linux/tutorials/virtual-machine-from-gallery/
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

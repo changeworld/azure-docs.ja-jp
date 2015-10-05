@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="クラウド サービスの管理方法 | Microsoft Azure" 
-	description="Azure プレビュー ポータルでクラウド サービスを管理する方法について説明します。" 
+	pageTitle="クラウド サービスを管理する (プレビュー ポータル) | Microsoft Azure" 
+	description="Azure プレビュー ポータルでクラウド サービスを管理する方法について説明します。これらの例では、Azure プレビュー ポータルを使用します。" 
 	services="cloud-services" 
 	documentationCenter="" 
 	authors="Thraka" 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/01/2015"
+	ms.date="09/22/2015"
 	ms.author="adegeo"/>
 
 
-# クラウド サービスの管理方法
+# Cloud Services の管理方法
 
 > [AZURE.SELECTOR]
 - [Azure Portal](cloud-services-how-to-manage.md)
@@ -64,11 +64,11 @@ Azure プレビュー ポータルの **[Cloud Services]** 領域では、サー
 
 2. ブレードで、**[スワップ]** ボタンをクリックします。
 
-    ![クラウド サービスのスワップ](./media/cloud-services-how-to-manage-portal/swap-button.png)
+    ![Cloud Services のスワップ](./media/cloud-services-how-to-manage-portal/swap-button.png)
 
 3. 次のような確認ダイアログが表示されます。
 
-	![クラウド サービスのスワップ](./media/cloud-services-how-to-manage-portal/swap-prompt.png)
+	![Cloud Services のスワップ](./media/cloud-services-how-to-manage-portal/swap-prompt.png)
 
 4. デプロイメント情報を確認した後、**[OK]** をクリックしてデプロイメントをスワップします。
 
@@ -92,11 +92,11 @@ Azure プレビュー ポータルでは、現在の Azure ポータルとは異
 
 2. ブレードで、**[削除] **ボタンをクリックします。
 
-    ![クラウド サービスのスワップ](./media/cloud-services-how-to-manage-portal/delete-button.png)
+    ![Cloud Services のスワップ](./media/cloud-services-how-to-manage-portal/delete-button.png)
 
 3. クラウド サービス全体を削除するには、**[クラウド サービスとそのデプロイ]** をオンにするか、または **[運用環境のデプロイ]** と **[ステージング環境のデプロイ]** のいずれかを選択します。
 
-    ![クラウド サービスのスワップ](./media/cloud-services-how-to-manage-portal/delete-blade.png)
+    ![Cloud Services のスワップ](./media/cloud-services-how-to-manage-portal/delete-blade.png)
 
 4. 下部にある **[削除] **ボタンをクリックします。
 
@@ -106,4 +106,11 @@ Azure プレビュー ポータルでは、現在の Azure ポータルとは異
 
 [Azure プレビュー ポータル]: https://portal.azure.com
 
-<!---HONumber=August15_HO7-->
+## 次のステップ
+
+* [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)
+* 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
+* [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
+* [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
+
+<!---HONumber=Sept15_HO4-->

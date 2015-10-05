@@ -1,19 +1,19 @@
-<properties 
+<properties
    pageTitle="複数のサービス構成を使用した Azure プロジェクトの構成"
-	description="複数のサービス構成を使用した Azure プロジェクトの構成"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tlee"/>
-<tags 
+   description="複数のサービス構成を使用した Azure プロジェクトの構成"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tlee" />
+<tags
    ms.service="multiple"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/24/2015"
-	ms.author="kempb"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/24/2015"
+   ms.author="kempb" />
 
 # Azure プロジェクトの構成
 
@@ -85,7 +85,7 @@ worker ロールは、任意の数の HTTP、HTTPS、TCP エンドポイント�
 
 ## [ローカル ストレージ] ページ
 
-**[ローカル ストレージ]** プロパティ ページを使用して、ロール用に 1 つ以上のローカル ストレージ リソースを予約できます。ローカル ストレージ リソースは、ロールのインスタンスが実行されている Azure 仮想マシンのファイル システム内の予約されたディレクトリです。ローカル ストレージ リソースの操作方法の詳細については、「[ローカル ストレージ リソースを構成する](https://msdn.microsoft.com/library/azure/ee758708.aspx)」を参照してください。
+**[ローカル ストレージ]** プロパティ ページを使用して、ロール用に 1 つ以上のローカル ストレージ リソースを予約できます。ローカル ストレージ リソースは、ロールのインスタンスが実行されている Azure 仮想マシンのファイル システム内の予約されたディレクトリです。ローカル ストレージ リソースの操作方法の詳細については、「[ローカル ストレージ リソースを構成する](../cloud-services/cloud-services-configure-local-storage-resources.md)」を参照してください。
 
 ## [証明書] ページ
 
@@ -114,4 +114,4 @@ Azure クラウド サービス プロジェクト全体に適用される設定
 
 [Azure Tools for Microsoft Visual Studio](https://msdn.microsoft.com/library/azure/ee405484.aspx)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

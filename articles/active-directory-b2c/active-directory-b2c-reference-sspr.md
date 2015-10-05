@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="09/22/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: コンシューマー向けにセルフサービス パスワードのリセットをセットアップする
@@ -36,4 +36,4 @@
 
 > [AZURE.NOTE]セルフサービス パスワード リセット ページは、[会社のブランド機能](active-directory-add-company-branding.md)を使用してカスタマイズできます。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

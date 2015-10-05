@@ -15,7 +15,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="09/03/2015"
+	ms.date="09/21/2015"
 	ms.author="jgao"/>
 
 # HDInsight Tools for Visual Studio を使用して Hive クエリを実行する
@@ -35,7 +35,6 @@ HDInsight Tools for Visual Studio を使用して HDInsight クラスターに�
 
 	- Windows 8.1、Windows 8、Windows 7
 	- 下記のいずれかのバージョンの Visual Studio
-		- Visual Studio 2012 Professional/Premium/Ultimate の[アップデート 4](http://www.microsoft.com/download/details.aspx?id=39305)
 		- Visual Studio 2013 Community/Professional/Premium/Ultimate の[アップデート 4](https://www.microsoft.com/download/details.aspx?id=44921)
 		- Visual Studio 2015 (Community/Enterprise)
 
@@ -44,12 +43,14 @@ HDInsight Tools for Visual Studio を使用して HDInsight クラスターに�
 
 ## HDInsight Tools for Visual Studio をインストールする
 
-HDInsight Tools for Visual Studio は、Microsoft Azure SDK for .NET バージョン 2.5.1 以降に付属しています。[Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386) でインストールできます。お使いの Visual Studio バージョンに対応するものを選択する必要があります。また、この Hadoop ツールでは、32 ビットと 64 ビットの両方の Microsoft Hive ODBC ドライバーもインストールされます。
+HDInsight Tools for Visual Studio と Microsoft Hive ODBC ドライバーは、Microsoft Azure SDK for .NET バージョン 2.5.1 以降に付属しています。または、[Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386) を使用してインストールすることもできます。お使いの Visual Studio バージョンに対応するものを選択する必要があります。Visual Studio がインストールされていない場合は、[Web Platform Installer](http://go.microsoft.com/fwlink/?LinkId=255386) または次のリンクを使用して、最新の Visual Studio Community と Azure SDK をインストールできます。
+
+- [Visual Studio Community 2015 と Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2015CommunityAzurePack.appids) 
+- [Visual Studio Community 2013 と Microsoft Azure SDK](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VS2013CommunityAzurePack.appids) 
+- [Microsoft Azure SDK for .NET (VS 2015)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids) 
+- [Microsoft Azure SDK for .NET (VS 2013)](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2013AzurePack.appids) 
 
 ![Hadoop ツール: HDinsight Tools for Visual Studio Web Platform installer][1]
-
-
->[AZURE.NOTE]Visual Studio 2015 または 2012 を使用していて、Azure SDK 2.5 をインストールしている場合は、最新バージョンをインストールする前に以前のバージョンを手動で削除する必要があります。Visual Studio 2013 では、即時更新をサポートしています。
 
 ## Azure サブスクリプションに接続する
 HDInsight Tools for Visual Studio を使用して、HDInsight クラスターへの接続、いくつかの基本的な管理操作の実行、Hive クエリの実行が可能です。
@@ -65,7 +66,7 @@ HDInsight Tools for Visual Studio を使用して、HDInsight クラスターへ
 2.	**[ビュー]** メニューで、**[サーバー エクスプローラー]** をクリックして、サーバー エクスプローラー ウィンドウを開きます。
 3.	**[Azure]** を展開して、**[HDInsight]** を展開します。
 
-	>[AZURE.NOTE]**[HDInsight タスク一覧]** ウィンドウが開きます。ウィンドウが表示されない場合は、**[ビュー]** メニューで **[その他のウィンドウ]** をクリックし、次に **[HDInsight タスク一覧]** ウィンドウをクリックして開くことができます。  
+	>[AZURE.NOTE]**[HDInsight タスク一覧]** ウィンドウが開きます。ウィンドウが表示されない場合は、**[ビュー]** メニューで **[その他のウィンドウ]** をクリックし、次に **[HDInsight タスク一覧ウィンドウ]** をクリックします。  
 4.	Azure サブスクリプションの資格情報を入力し、**[サインイン]** をクリックします。この操作は、このワークステーションで、まだ一度も Visual Studio から Azure サブスクリプションに接続していない場合にのみ必要です。
 5.	サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。クラスターが 1 つもない場合は、Azure プレビュー ポータル、Azure PowerShell、HDInsight SDK を使用してプロビジョニングできます。詳細については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。
 
@@ -148,7 +149,7 @@ Hive クエリを作成して実行するには次の 2 つの方法がありま
 
 	![HDinsight Hadoop の Hive クエリ][9]
 
-	ジョブを送信した後で、**[Hive ジョブの概要]** ウィンドウを確認できます。
+	ジョブを送信すると、**[Hive ジョブの概要]** ウィンドウが表示されます。
 
 	![HDInsight Hadoop の Hive クエリの概要][8]
 5. **[更新]** ボタンを使用して、ジョブのステータスが **[完了]** に変更されるまで、ステータスを更新します。
@@ -236,4 +237,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

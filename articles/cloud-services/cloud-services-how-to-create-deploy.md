@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2015"
+	ms.date="09/22/2015"
 	ms.author="adegeo"/>
 
 
@@ -146,5 +146,11 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 [TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796&clcid=0x409
  
+## 次のステップ
 
-<!---HONumber=August15_HO7-->
+* [クラウド サービスの一般的な構成](cloud-services-how-to-configure.md)
+* [カスタム ドメイン名を構成する](cloud-services-custom-domain-name.md)
+* [クラウド サービスを管理する](cloud-services-how-to-manage.md)
+* [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
+
+<!---HONumber=Sept15_HO4-->

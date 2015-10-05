@@ -1,11 +1,12 @@
 <properties 
-	pageTitle="SSH を使用した Azure の Linux 仮想マシンへの接続" 
+	pageTitle="SSH を使用した Linux 仮想マシンへの接続 | Microsoft Azure" 
 	description="Azure 上の Linux 仮想マシンで SSH キーを生成して使用する方法について説明します。" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="szarkos" 
 	manager="timlt" 
-	editor=""/>
+	editor=""
+	tags="azure-service-management,azure-resource-manager" />
 
 <tags 
 	ms.service="virtual-machines" 
@@ -18,7 +19,9 @@
 
 #Azure 上の Linux における SSH の使用方法
 
-Azure の管理ポータルの現在のバージョンのみが、X509 証明書にカプセル化された SSH 公開キーを受領します。次に示している、Azure で SSH キーを生成および使用する手順に従ってください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+
+Microsoft Azure 管理ポータルの現在のバージョンのみが、X509 証明書にカプセル化された SSH 公開キーを受領します。次に示している、Azure で SSH キーを生成および使用する手順に従ってください。
 
 ## Linux で Azure 互換のキーを生成する ##
 
@@ -133,7 +136,7 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 
 ## Putty 用の PPK を作成する ##
 
-1. 次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. 次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
 2. Puttygen は、以前作成された秘密キー (`myPrivateKey.key`) を読み取ることができない可能性があります。それを Puttygen で認識できる RSA 秘密キーに変換するには、次のコマンドを使用してください。
 
@@ -163,7 +166,7 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 
 ## Putty を使用して Linux 仮想マシンに接続する ##
 
-1.	次の場所から putty をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1.	次の場所から putty をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2.	putty.exe を実行します。
 3.	ホスト名として、管理ポータルの IP を入力します。
 
@@ -176,4 +179,4 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

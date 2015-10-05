@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="最初の実行エクスペリエンスでの Azure AD を使用する新しいデバイスの設定 | Microsoft Azure" 
-	description="最初の実行エクスペリエンスで Azure AD 参加を設定する方法を説明するトピック。" 
+	pageTitle="Microsoft Passport の概要と、この新しい証明書ベースの認証の詳細。| Microsoft Azure" 
+	description="最初の実行エクスペリエンス中に Azure AD への参加を設定する方法について説明するトピックです。" 
 	services="active-directory" 
 	documentationCenter="" 
 	authors="femila" 
-	manager="swadhwa" 
+	manager="stevenpo" 
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/02/2015" 
+	ms.date="09/21/2015" 
 	ms.author="femila"/>
 
 # Microsoft Passport 経由でのパスワードを使用しない ID の認証
@@ -66,7 +66,7 @@ Microsoft Passport による認証のライフサイクル![](./media/active-dir
 
 ## 追加情報
 
-* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
+* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

@@ -19,14 +19,22 @@
 
 #Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
 
+> [AZURE.SELECTOR]
+- [.Net](web-sites-dotnet-get-started.md)
+- [Node.js](web-sites-nodejs-develop-deploy-mac.md)
+- [Java](web-sites-java-get-started.md)
+- [PHP - Git](web-sites-php-mysql-deploy-use-git.md)
+- [PHP - FTP](web-sites-php-mysql-deploy-use-ftp.md)
+- [Python](web-sites-python-ptvs-django-mysql.md)
+
 このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、Web サーバー、および [Git][install-git] を使用します。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
 
 学習内容:
 
-* [Azure](http://go.microsoft.com/fwlink/?LinkId=529715) ポータルを使用して Web アプリと MySQL データベースを作成する方法。[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
+* [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)を使用して Web アプリと MySQL データベースを作成する方法。[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます
 * Git を使用して Azure にアプリケーションを発行および再発行する方法。
 
-このチュートリアルでは、登録用の単純な Web アプリを PHP で作成します。アプリケーションは、Web アプリでホストされます。完成したアプリケーションのスクリーンショットは次のようになります。
+このチュートリアルでは、登録用の単純な Web アプリを PHP で作成します。アプリケーションは、Web Apps でホストされます。完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![Azure の PHP Web サイト][running-app]
 
@@ -45,7 +53,7 @@ Web アプリと MySQL データベースを作成するには、次のステッ
 
 3. **[Web + モバイル]**、**[Azure Marketplace]** の順にクリックします。
 
-4. **[Web Apps]** をクリックし、**[Web app + MySQL]** をクリックします。**[作成]** をクリックします。
+4. **[Web Apps]** をクリックし、**[Web アプリと MySQL]** をクリックします。**[作成]** をクリックします。
 
 4. リソース グループの有効な名前を入力します。
 
@@ -93,7 +101,7 @@ Web Apps で実行されている MySQL データベースに接続するには�
 
 ##アプリケーションの作成とローカル テスト
 
-Web アプリを作成したので、アプリケーションをローカルで作成し、それをテストした後に展開することができます。
+Web アプリを作成したので、アプリケーションをローカルで作成し、それをテストした後にデプロイすることができます。
 
 Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は MySQL データベースに保存されます。アプリケーションを構成するファイルは 1 つです (下にあるコードをコピーし、貼り付けて使用できます)。
 
@@ -207,7 +215,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 ##アプリケーションの発行
 
-アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Web アプリに発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
+アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Web Apps に発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
 
 > [AZURE.NOTE]これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後でポータルに示された手順と同じです。
 
@@ -288,4 +296,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

@@ -1,23 +1,18 @@
-<properties title="List of Oracle virtual machine images"
-pageTitle="Oracle 仮想マシン イメージの一覧"
-description="Azure ギャラリーで Oracle イメージの一覧を取得し、いずれかに基づく Oracle 仮想マシンを作成する方法を参照します。"
-services="virtual-machines"
-documentationCenter=""
-authors="bbenz"
-manager=""
-editor=""
-tags=""/>
+<properties" pageTitle="title="Oracle VM イメージの一覧 | Microsoft Azure" description="Azure Gallery の Oracle イメージの一覧を取得し、それに基づいて Oracle 仮想マシンを作成する方法を習得します。" services="virtual-machines" documentationCenter="" authors="bbenz" manager="" editor="" tags="azure-service-management, azure-resource-manager"/>
 
 <tags
 ms.service="virtual-machines"
 ms.devlang="na"
 ms.topic="article"
-ms.tgt_pltfrm="na"
+ms.tgt_pltfrm="vm-multiple"
 ms.workload="infrastructure-services"
 ms.date="06/22/2015"
 ms.author="bbenz" />
 
 #Oracle 仮想マシン イメージの一覧
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用したリソースの作成について説明します。
+
 Oracle イメージに基づく Virtual Machines を作成するには、[Azure ポータル](https://ms.portal.azure.com/)にサインインして **[Marketplace]** をクリック後、**[Compute]** をクリックし、検索ボックスに「**Oracle**」と入力します。イメージを選択し、手順に従って Microsoft Azure でイメージを設定します。[Azure ポータル](https://ms.portal.azure.com/)では、Microsoft による Oracle イメージは Windows で、Oracle による Oracle イメージは Oracle Linux で実行されることに注意してください。
 
 ![](media/virtual-machines-oracle-list-oracle-virtual-machine-images/image1.png)
@@ -67,4 +62,4 @@ Azure の Oracle Linux 上で実行される、事前に構成された利用可
 
 [Oracle 仮想マシン イメージ - 他の考慮事項](#miscellaneous-considerations-for-oracle-virtual-machine-images-new-article)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

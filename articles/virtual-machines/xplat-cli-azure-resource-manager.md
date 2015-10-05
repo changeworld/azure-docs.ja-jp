@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure リソース管理での、Mac、Linux、Windows 用 Microsoft Azure CLI の使用 | Microsoft Azure"
+	pageTitle="Mac、Linux、Windows 用の CLI | Microsoft Azure"
 	description="Azure リソース マネージャーでの、Mac、Linux、Windows 用 Microsoft Azure CLI の使用"
 	editor="tysonn"
 	manager="timlt"
@@ -13,12 +13,14 @@
 
 > [AZURE.SELECTOR]
 - [Azure PowerShell](../powershell-azure-resource-manager.md)
-- [Azure CLI](xplat-cli-azure-resource-manager.md)
 
+<br>
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの管理について説明します。
 
 この記事では、Azure リソース マネージャー モードを使用し、Mac、Linux、Windows 用 Azure CLI を使用して、Azure VM を作成、管理、削除する方法について説明します。
 
->[AZURE.NOTE]コマンドラインで Azure リソース作成し、管理するには、Azure アカウントが必要 ([無料評価版はこちら](http://azure.microsoft.com/pricing/free-trial/)) です。[Azure CLI をインストールして](../xplat-cli-install.md)、[ログオンし、アカウントに関連付けられている Azure のリソースを使用する必要があります](../xplat-cli-connect.md)。これらの操作を完了した場合は、使用する準備が整いました。
+>[AZURE.NOTE]コマンドラインで Azure リソース作成し、管理するには、Azure アカウントが必要 ([無料試用版はこちら](http://azure.microsoft.com/pricing/free-trial/)) です。[Azure CLI をインストールして](../xplat-cli-install.md)、[ログオンし、アカウントに関連付けられている Azure のリソースを使用する必要があります](../xplat-cli-connect.md)。これらの操作を完了した場合は、使用する準備が整いました。
 
 ## Azure リソース
 
@@ -104,7 +106,7 @@ Azure リソース マネージャー モードで仮想マシンを作成する
 
 >[AZURE.NOTE]オプションですが、NIC を 使用する IP にバインドして、後でこの NIC を使用して、作成された仮想マシンに SSH 接続するために、パブリック IP 名をパラメーターとして **network nic create** に渡すことは非常に重要です。
 
-**network** コマンドの詳細については、コマンド ラインのヘルプか、 「[Azure リソース管理での Azure CLI の使用](azure-cli-arm-commands.md)」をご覧ください。
+**network** コマンドの詳細については、コマンドラインのヘルプか、「[Azure リソース管理での Azure CLI の使用](azure-cli-arm-commands.md)」をご覧ください。
 
 #### オペレーティング システム イメージの検索
 
@@ -339,4 +341,4 @@ Azure CLI は既定の VM サイズで仮想マシンを作成します。また
 [clisetup]: ../xplat-cli.md
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

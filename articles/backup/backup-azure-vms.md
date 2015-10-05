@@ -7,7 +7,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="hero-article" ms.date="09/14/2015" ms.author="trinadhk"; "aashishr"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="hero-article" ms.date="09/24/2015" ms.author="trinadhk"; "aashishr"; "jimpark"/>
 
 
 # Azure 仮想マシンのバックアップ
@@ -136,7 +136,7 @@ Azure Backup サービスによって、初回バックアップ操作用にバ�
 
 ![[ダッシュボード] ページのバックアップの状態](./media/backup-azure-vms/dashboard-protectedvms.png)
 
->[AZURE.NOTE]ダッシュ ボード内の値は、24 時間に 1 度更新されます。
+>[AZURE.NOTE]ダッシュボード内の値は、24 時間に 1 度更新されます。
 
 ### 長期的な保持
 保有ポリシーは、バックアップを格納する必要がある期間を指定します。顧客は、すべてのバックアップ ポイントに "均一の保持期間" を指定するのではなく、バックアップが作成された時期に基づいて別の保持ポリシーを指定できます。たとえば、各四半期の最後に実行されるバックアップ ポイントは、監査のために長期間保持する必要がありますが、毎日実行されるバックアップ ポイント (運用上の復旧ポイントとして機能する) は、90 日間保持する必要があります。
@@ -194,7 +194,7 @@ Azure で VM にバックアップする場合、オンプレミスにデプロ�
 VM のバックアップには、データの読み取りやコピーに多くの時間が費やされますが、他にも合計時間に影響を与える操作があります。
 
 1. [バックアップ拡張機能のインストールまたは更新](backup-azure-vms.md#offline-vms)に費やされる時間。
-2. キューの待機時間。サービスは複数の顧客のバックアップを処理するため、バックアップ操作は直ちに開始されない場合があります。VM の平均待機時間は 15 ～ 30 分です。
+2. キューの待機時間。バックアップ サービスは複数の顧客のバックアップを処理するため、バックアップ操作は直ちに開始されない場合があります。負荷のピーク時には、処理するバックアップ数に応じて、待機時間が最大 8 時間まで延長される可能性があります。ただし、毎日のバックアップ ポリシーでは、VM バックアップの合計時間は 24 時間未満になります。
 
 ## エラーのトラブルシューティング
 仮想マシンのバックアップ時に発生するエラーを回避する方法の一覧については、
@@ -207,4 +207,4 @@ Azure Backup の概要については、次のトピックを参照してくだ�
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

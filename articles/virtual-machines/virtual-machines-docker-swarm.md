@@ -14,10 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="05/24/2015"
+   ms.date="09/22/2015"
    ms.author="rasquill"/>
 
 # Docker Swarm を使用する方法
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 このトピックでは、[Docker](https://www.docker.com/) を [Swarm](https://github.com/docker/swarm) で使用して、Azure で Swarm 管理のクラスターを作成するとても簡単な方法について説明します。ここでは Azure で 4 つの仮想マシンが作成されます。1 つは Swarm マネージャーとして動作し、その他の 3 つは Docker ホストのクラスターの一部として機能します。終了すれば、Swarm を使ってクラスターを確認し、クラスター上で Docker を使用できるようになります。また、このトピックの Azure CLI 呼び出しではサービス管理 (asm) モードを使用します。
 
@@ -134,4 +135,4 @@ Swarm でお試しください。詳細については、[https://github.com/doc
 [docker-machine-azure]: virtual-machines-docker-machine.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

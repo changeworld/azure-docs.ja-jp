@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/09/2015"
+   ms.date="09/22/2015"
    ms.author="lodipalm"/>
 
 #SQL Data Warehouse と他のサービスの併用
@@ -71,4 +71,4 @@ Azure Stream Analytics は、Azure Event Hub で生成されたイベント デ�
 
 <!--Other Web references-->
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

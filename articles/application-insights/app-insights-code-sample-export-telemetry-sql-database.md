@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="コード サンプル: worker ロールを使用した Application Insights から SQL へのエクスポート"
-	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。"
-	services="application-insights"
-	documentationCenter=""
-	authors="mazharmicrosoft"
+	pageTitle="コード サンプル: worker ロールを使用した Application Insights から SQL へのエクスポート" 
+	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。" 
+	services="application-insights" 
+    documentationCenter=""
+	authors="mazharmicrosoft" 
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/23/2015" 
 	ms.author="awills"/>
  
 # コード サンプル: worker ロールを使用した Application Insights から SQL へのエクスポート
@@ -51,13 +51,13 @@
 
 ## Azure でのストレージの作成
 
-1. [Azure ポータル][portal]で、サブスクリプションのストレージ アカウントを作成します。
+1. [Azure ポータル][portal]で、サブスクリプションの "クラシック" ストレージ アカウントを作成します。
 
     ![Azure ポータルで、[新規]、[データ]、[Storage] の順に選択します](./media/app-insights-code-sample-export-telemetry-sql-database/040-store.png)
 
 2. コンテナーを作成する
 
-    ![新しいストレージで、[コンテナー] を選択し、[追加] を選択します](./media/app-insights-code-sample-export-telemetry-sql-database/050-container.png)
+    ![新しいストレージで、[コンテナー] を選択し、[コンテナー] タイルをクリックし、[追加] を選択します](./media/app-insights-code-sample-export-telemetry-sql-database/050-container.png)
 
 
 ## Azure ストレージへの連続エクスポートの開始
@@ -539,4 +539,4 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

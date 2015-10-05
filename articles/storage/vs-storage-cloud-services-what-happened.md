@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/03/2015"
-	ms.author="patshea123"/>
+	ms.author="patshea"/>
 
 # クラウド サービス プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
 
@@ -43,4 +43,4 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 - **ServiceConfiguration.Cloud.cscfg**
 - **ServiceConfiguration.Local.cscfg**
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

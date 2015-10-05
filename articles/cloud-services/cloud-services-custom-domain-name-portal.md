@@ -1,6 +1,6 @@
 <properties
-	pageTitle="クラウド サービスのカスタム ドメイン名の構成"
-	description="DNS 設定を構成して、カスタム ドメインで Azure のアプリケーションやデータを公開する方法について説明します。"
+	pageTitle="Cloud Services のカスタム ドメイン名を構成する (プレビュー ポータル) | Microsoft Azure"
+	description="DNS 設定を構成して、カスタム ドメインで Azure のアプリケーションやデータをインターネットに公開する方法について説明します。これらの例では、Azure プレビュー ポータルを使用します。"
 	services="cloud-services"
 	documentationCenter=".net"
 	authors="Thraka"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/29/2015"
+	ms.date="09/22/2015"
 	ms.author="adegeo"/>
 
 # Azure クラウド サービスのカスタム ドメイン名の構成
@@ -22,7 +22,7 @@
 - [Azure Portal](cloud-services-custom-domain-name.md)
 - [Azure Preview Portal](cloud-services-custom-domain-name-portal.md)
 
-クラウド サービスを作成するときに、Azure は **cloudapp.net** のサブドメインにそのアプリを割り当てます。たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは http://*contoso*.cloudapp.net のような URL でアプリケーションにアクセスできます。また Azure によって仮想 IP アドレスも割り当てられます。
+クラウド サービスを作成するときに、Azure は **cloudapp.net** のサブドメインにそのアプリを割り当てます。たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは http://contoso.cloudapp.net のような URL でアプリケーションにアクセスできます。また Azure によって仮想 IP アドレスも割り当てられます。
 
 ただし、**contoso.com** のような独自のドメイン名を使用してアプリケーションを公開することもできます。この記事では、クラウド サービス Web ロールのカスタム ドメイン名を予約または構成する方法について説明します
 
@@ -141,8 +141,11 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 
 ## 次のステップ
 
--   [クラウド サービスの管理方法](cloud-services-how-to-manage.md)
--   [CDN コンテンツをカスタム ドメインにマッピングする方法](http://msdn.microsoft.com/library/windowsazure/gg680307.aspx)
+* [Cloud Services の管理方法](cloud-services-how-to-manage.md)
+* [CDN コンテンツをカスタム ドメインにマッピングする方法](cdn-map-content-to-custom-domain.md)
+* [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)
+* 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
+* [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
 
 [Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname
@@ -154,4 +157,4 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
  
 
-<!-------HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

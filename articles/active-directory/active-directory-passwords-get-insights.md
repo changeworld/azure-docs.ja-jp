@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="Get Insights: Azure AD のパスワード管理レポート | Microsoft Azure" 
-	description="この記事では、レポートを使用して、組織内のパスワード管理操作を把握する方法について説明します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
+<properties
+	pageTitle="Get Insights: Azure AD のパスワード管理レポート | Microsoft Azure"
+	description="この記事では、レポートを使用して、組織内のパスワード管理操作を把握する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="kbrint"
 	editor="billmath"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/08/2015" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/18/2015" 
 	ms.author="asteen"/>
 
 # パスワード管理レポートで運用情報を把握する方法
@@ -106,14 +106,14 @@
 ### [詳細] 列で許可される値
 パスワード リセット アクティビティ レポートを使用している場合に、想定される結果の種類の一覧を以下に示します。
 
-詳細 | 結果の種類 
+詳細 | 結果の種類
 ----|----
 ユーザーは、電子メールの確認オプションの完了後に中止しました。 | Abandoned
-ユーザーは、モバイル SMS の確認オプションの完了後に中止しました。|Abandoned 
-ユーザーは、音声通話の確認オプションの完了後に中止しました。 | Abandoned 
+ユーザーは、モバイル SMS の確認オプションの完了後に中止しました。|Abandoned
+ユーザーは、音声通話の確認オプションの完了後に中止しました。 | Abandoned
 ユーザーは、会社音声通話の確認オプションの完了後に中止しました。 | Abandoned
-ユーザーは、秘密の質問オプションの完了後に中止しました。|Abandoned 
-ユーザーは、ユーザー ID の入力後に中止しました。| Abandoned 
+ユーザーは、秘密の質問オプションの完了後に中止しました。|Abandoned
+ユーザーは、ユーザー ID の入力後に中止しました。| Abandoned
 ユーザーは、電子メールの確認オプションの開始後に中止しました。|Abandoned
 ユーザーは、モバイル SMS の確認オプションの開始後に中止しました。|Abandoned
 ユーザーは、音声通話の確認オプションの開始後に中止しました。|Abandoned
@@ -141,7 +141,7 @@
 オンプレミス パスワード リセット サービスに接続できませんでした。同期コンピューターのイベント ログを確認してください。|Failed
 ユーザーのオンプレミスのパスワードのリセット中に問題が発生しました。同期コンピューターのイベント ログを確認してください。 | Failed
 このユーザーは、パスワード リセット ユーザー グループのメンバーではありません。この問題を解決するには、このグループに、ユーザーを追加します。|Failed
-パスワード リセットが、このテナントですべて無効になっています。これを解決するには、[ここ](http://aka.ms/ssprtroubleshoot)を参照してください。 | Failed 
+パスワード リセットが、このテナントですべて無効になっています。これを解決するには、[ここ](http://aka.ms/ssprtroubleshoot)を参照してください。 | Failed
 ユーザーが、正常にパスワードをリセットしました。|Succeeded
 
 **その他のリソース**
@@ -162,6 +162,5 @@
 [001]: ./media/active-directory-passwords-get-insights/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

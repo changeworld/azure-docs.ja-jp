@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する"
-	description="Linux ベースの Azure 仮想マシンを作成と事前構成するための Azure PowerShell の使用方法について説明します。"
+	pageTitle="Azure PowerShell を使用した Linux VM の作成 | Microsoft Azure"
+	description="Azure PowerShell を使用して Linux VM を作成および事前構成する方法を説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -11,19 +11,23 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/09/2015"
 	ms.author="cynthn"/>
 
-# Azure PowerShell を使用して Linux ベースの仮想マシンを作成と事前構成する
+# Azure PowerShell を使用して Linux 仮想マシンを作成および事前構成する
 
 > [AZURE.SELECTOR]
 - [Azure CLI](virtual-machines-linux-tutorial.md)
 - [PowerShell](virtual-machines-ps-create-preconfigure-linux-vms.md)
 
-以下の手順では、一連の Azure PowerShell コマンドのカスタマイズ方法を示します。これらのコマンドは構成ブロック手法を使用することにより、Linux ベースの Azure 仮想マシンを作成および事前構成します。このプロセスを使用すると、新しい Linux ベースの仮想マシンにコマンド セットを迅速に作成することができるため、既存のデプロイメントを拡張できます。また、複数のコマンド セットを作成してカスタム開発やテスト、IT プロの環境をすばやく構築できます。
+<br>
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
+次の手順では、一連の Azure PowerShell コマンドを使用して、従来の管理モデルで Linux 仮想マシンを作成および事前構成する方法を示します。このプロセスを使用すると、新しい Linux ベースの仮想マシンにコマンド セットを迅速に作成することができるため、既存のデプロイメントを拡張できます。また、複数のコマンド セットを作成してカスタム開発やテスト、IT プロの環境をすばやく構築できます。
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、Azure PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。Azure PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
@@ -158,7 +162,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
 - このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Azure ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する
+- Microsoft Azure ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する
 
 ## <a id="examples"></a>例
 
@@ -260,4 +264,4 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

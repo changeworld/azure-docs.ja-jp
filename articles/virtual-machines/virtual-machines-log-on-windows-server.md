@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Windows Server が実行されている仮想マシンへのログオン"
-	description="Azure ポータルを使用して Windows Server が実行されている仮想マシンにログオンする方法について説明します。"
+	pageTitle="VM へのログオン | Microsoft Azure"
+	description="ポータルを使用して、クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにログオンします。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -18,7 +18,9 @@
 	ms.author="cynthn"/>
 
 
-# Windows Server が実行されている仮想マシンにログオンする方法#
+# クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにログオンする
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルでのリソースの管理について説明します。
 
 Azure プレビュー ポータルの **[接続]** ボタンを使用して、リモート デスクトップ セッションを開始します。まず仮想マシンに接続してからログインします。
 
@@ -32,7 +34,7 @@ Linux VM に接続する場合は、 「[Linux を実行する仮想マシンに
 
 1. まだサインインしていない場合は、[Azure ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. **[Virtual Machines]** をクリックし、適切な仮想マシンを選択します。
+2. **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。
 
 3. コマンド バーで、**[接続]** をクリックします。
 
@@ -51,4 +53,4 @@ Linux VM に接続する場合は、 「[Linux を実行する仮想マシンに
 
 これらのトピックで解決できない場合、または必要な情報が掲載されていない場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」を参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure PowerShell を使用してサービス管理で Windows 仮想マシンを作成および管理する"
-	description="Azure PowerShell を使用してサービス管理で新しい Windows ベースの仮想マシンを素早く作成し、管理機能を実行します。"
+	pageTitle="Azure PowerShell を使用した Windows VM の作成と管理 | Microsoft Azure"
+	description="従来のデプロイ モデルを使用して Azure PowerShell で Windows 仮想マシンを作成および管理する"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,13 +17,13 @@
 	ms.date="07/09/2015"
 	ms.author="cynthn"/>
 
-# Azure PowerShell を使用したサービス管理での Windows ベース仮想マシンの作成と管理
+# Azure PowerShell を使用した Windows 仮想マシンの作成と管理
 
-このトピックでは、Azure PowerShell を使用して、サービス管理で Windows ベースの Azure 仮想マシンを作成および管理する方法について説明します。
+この記事では、Azure PowerShell を使用して、Windows ベースの仮想マシンを作成および管理する方法について説明します。
 
-[AZURE.INCLUDE [service-management-pointer-to-resource-manager](../../includes/service-management-pointer-to-resource-manager.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用した Windows VM の作成について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-deploy-rmtemplates-powershell.md)を使用して Windows VM を作成することもできます。
 
-- [Azure リソース マネージャー テンプレートと PowerShell を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
+
 
 ## Azure PowerShell の設定
 
@@ -207,6 +207,6 @@ BLOB ストレージにある既存の .vhd ファイルからデータ ディ�
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
+[Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

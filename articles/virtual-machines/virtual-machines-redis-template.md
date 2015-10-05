@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="timwieman"
 	manager="timlt"
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -17,6 +18,8 @@
 	ms.author="twieman"/>
 
 # リソース マネージャー テンプレートを使用した Redis クラスター
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用した Redis クラスターの作成について説明します。
 
 Redis は、オープンソースのキー/値キャッシュおよびストアです。キー/値ストアのキーには、文字列、ハッシュ、リスト、セット、ソート済みセットなどのデータ構造を格納できます。Redis は、このようなデータ型に対する一連のアトミック操作をサポートしています。Redis バージョン 3.0 のリリースでは、最新の安定バージョンの Redis で Redis クラスターを使用できるようになりました。Redis クラスターは Redis の分散実装であり、データは複数の Redis ノード間で自動的に共有されて、ノードのサブセットにエラーが発生しても動作を続けることができます。
 
@@ -666,4 +669,4 @@ node-resources.json は、メインの azuredeploy.json ファイルから呼び
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

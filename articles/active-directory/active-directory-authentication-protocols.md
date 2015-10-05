@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Active Directory の認証プロトコル"
+   pageTitle="Azure Active Directory 認証プロトコル | Microsoft Azure"
    description="Azure Active Directory (AD) でサポートされる認証プロトコルの概要"
    documentationCenter="dev-center-name"
    authors="msmbaldwin"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/02/2015"
+   ms.date="09/17/2015"
    ms.author="mbaldwin"/>
 
 # Azure Active Directory の認証プロトコル
@@ -55,4 +55,4 @@ Azure Active Directory (Azure AD) では、最も広く使用されている認�
 
 [Active Directory のコード例](active-directory-code-samples.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

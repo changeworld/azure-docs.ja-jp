@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="07/22/2015"
+	ms.date="09/22/2015"
 	ms.author="cabailey"/>
 
 # Azure Key Vault の概要 #
@@ -179,7 +179,7 @@ Azure Active Directory にアプリケーションを登録するには:
 
 
 	Set-AzureKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
-	
+
 その同じアプリケーションを認証し、資格情報コンテナーのシークレットの読み取りを許可する場合、次を実行します。
 
 
@@ -242,6 +242,6 @@ Web アプリケーションでの Azure Key Vault の使用方法に関する�
 
 Azure Key Vault の Windows PowerShell コマンドレットの一覧については、「[Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](https://msdn.microsoft.com/library/azure/dn868052.aspx)」をご覧ください。
 
-プログラミング リファレンスについては、MSDN の Microsoft Azure ドキュメント ライブラリにある「[Key Vault](https://msdn.microsoft.com/library/azure/dn903625.aspx)」をご覧ください。
+プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure で Windows を実行するカスタム仮想マシンの作成"
+	pageTitle="Windows を実行するカスタム仮想マシンを作成する | Microsoft Azure"
 	description="Azure で Windows を実行するカスタム仮想マシンを作成する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -20,6 +20,8 @@
 
 #Azure で Windows を実行するカスタム仮想マシンの作成
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 *カスタム*仮想マシンとは、**[ギャラリーから]** オプションで作成する仮想マシンのことです。**[簡易作成]** オプションよりも構成の選択肢が多いことから、このように呼びます。選択できるオプションは次のとおりです。
 
 - 仮想ネットワークへ仮想マシンを接続する
@@ -34,4 +36,4 @@
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

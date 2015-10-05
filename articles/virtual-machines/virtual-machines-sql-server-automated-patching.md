@@ -1,12 +1,13 @@
-<properties 
-   pageTitle="Azure Virtual Machines での SQL Server の自動修正"
+<properties
+   pageTitle="VM での SQL Server の自動修正 |Microsoft Azure"
    description="Azure で実行されている SQL Server 仮想マシンの自動修正機能について説明します。"
    services="virtual-machines"
    documentationCenter="na"
    authors="rothja"
    manager="jeffreyg"
-   editor="monicar" />
-<tags 
+   editor="monicar"
+   tags="azure-resource-manager" />
+<tags
    ms.service="virtual-machines"
    ms.devlang="na"
    ms.topic="article"
@@ -16,6 +17,8 @@
    ms.author="jroth" />
 
 # Azure Virtual Machines での SQL Server の自動修正
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの管理について説明します。
 
 自動修正では、SQL Server 2012 または 2014 を実行している Azure 仮想マシンのメンテナンス期間が設定されます。このメンテナンス期間にのみ、自動更新プログラムをインストールできます。これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。これは SQL Server IaaS エージェントに依存します。
 
@@ -40,7 +43,7 @@ PowerShell を使用して自動修正を構成することもできます。
 次の例では、PowerShell を使用して、既存の SQL Server VM で自動修正を構成しています。**New-AzureVMSqlServerAutoPatchingConfig** コマンドは、自動更新の新しいメンテナンス期間を構成します。
 
     $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
-    
+
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoPatchingSettings $aps | Update-AzureVM
 
 この例に基づいて、対象の Azure VM への実際の影響を次の表に示します。
@@ -88,4 +91,4 @@ Azure の SQL Server VM の関連機能については、「[Azure 仮想マシ�
 
 [Azure Virtual Machines で SQL Server を実行するための他のリソース](virtual-machines-sql-server-infrastructure-services.md)を確認します。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

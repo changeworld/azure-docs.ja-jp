@@ -1,11 +1,12 @@
 <properties 
-	pageTitle="Azure の仮想マシンでの SQL Server Business Intelligence"
-	description="このトピックでは、Azure Virtual Machines (VM) 上で実行されている SQL Server で使用できる Business Intelligence (BI) 機能について説明します。"
+	pageTitle="SQL Server Business Intelligence | Microsoft Azure"
+	description="このトピックでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、Azure Virtual Machines (VM) 上で実行されている SQL Server で使用できる Business Intelligence (BI) 機能について説明します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar"/>
+	editor="monicar" 
+	tags="azure-service-management"/>
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
@@ -13,9 +14,11 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="08/19/2015"
-	ms.author="jroth"/>
+	ms.author="jroth" />
 
-# Azure の仮想マシンでの SQL Server Business Intelligence
+# Azure Virtual Machines での SQL Server Business Intelligence
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの使用について説明します。
  
 Microsoft Azure 仮想マシン ギャラリーには、SQL Server インストールを含むイメージが用意されています。ギャラリー イメージでサポートされている SQL Server のエディションは、オンプレミスのコンピューターにも仮想マシンにもインストールできるインストール ファイルです。このトピックでは、イメージにインストールされている SQL Server Business Intelligence (BI) 機能の概要と、仮想マシンのプロビジョニング後に必要な構成手順について説明します。また、BI 機能用にサポートされているデプロイメント トポロジとベスト プラクティスについても説明します。
 
@@ -80,7 +83,7 @@ SQL Server でサポートされているエディションと機能の詳細に
 |**Analysis Services 表形式**|いいえ|SQL Server 2012 および 2014 のイメージでサポートされていますが、既定ではインストールされていません。Analysis Services の別のインスタンスをインストールします。このトピックの「SQL Server のその他のサービスと機能のインストール」をご覧ください。|
 |**Analysis Services Power Pivot for SharePoint**|いいえ|Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。<sup>1</sup>|
 
-<sup>1</sup> SharePoint と Azure 仮想マシンの追加情報については、「[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)」および「[SharePoint Deployment on Microsoft Azure Virtual Machines (Microsoft Azure Virtual Machines の SharePoint デプロイメント)](https://www.microsoft.com/download/details.aspx?id=34598)」をご覧ください。
+<sup>1</sup> SharePoint と Azure Virtual Machines の追加情報については、「[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)」および「[Microsoft Azure Virtual Machines の SharePoint デプロイ](https://www.microsoft.com/download/details.aspx?id=34598)」をご覧ください。
 
 ![PowerShell](./media/virtual-machines-sql-server-business-intelligence/IC660119.gif) 次の PowerShell コマンドを実行して、サービス名に "SQL" が含まれたインストール済みサービスのリストを取得します。
 
@@ -96,7 +99,7 @@ SQL Server でサポートされているエディションと機能の詳細に
 
 	- 既定の **C**: ドライブのドライブ キャッシュ ポリシーは、データ操作に最適でありません。
 	
-	- **D**: ドライブは、主にページ ファイルに使用される一時ドライブです。**D**: ドライブは永続化されず、BLOB ストレージには保存されません。仮想マシンのサイズ変更などの管理タスクを行うと、**D**: ドライブはリセットされます。tempdb も含め、データベース ファイルには **D**: ドライブを使用しないことをお勧めします。
+	- **D**: ドライブは、主にページ ファイルに使用される一時ドライブです。**D**: ドライブは永続化されず、BLOB ストレージには保存されません。仮想マシンのサイズ変更などの管理タスクを行うと、**D**: ドライブはリセットされます。tempdb も含め、データベース ファイルには** D**: ドライブを使用**しない**ことをお勧めします。
 
 	ディスクの作成と接続の詳細については、「[データ ディスクを Windows 仮想マシンに接続する方法](storage-windows-attach-disk.md)」をご覧ください。
 
@@ -152,11 +155,11 @@ SQL Server の仮想マシン ギャラリー イメージには、Reporting Ser
 
 ### 仮想マシンへの接続と Reporting Services 構成マネージャーの起動
 
-Azure Virtual Machines に接続するための 2 つの一般的なワークフローがあります。
+Azure 仮想マシンに接続するための 2 つの一般的なワークフローがあります。
 
 - で接続するには、仮想マシンの名前をクリックし、**[接続]** をクリックします。リモート デスクトップ接続が開き、コンピューター名が自動的に設定されます。
 
-	![Azure Virtual Machines に接続](./media/virtual-machines-sql-server-business-intelligence/IC650112.gif)
+	![Azure 仮想マシンに接続](./media/virtual-machines-sql-server-business-intelligence/IC650112.gif)
 
 - Windows リモート デスクトップ接続を使用して、仮想マシンに接続します。リモート デスクトップのユーザー インターフェイスで、次の手順を実行します。
 
@@ -166,7 +169,7 @@ Azure Virtual Machines に接続するための 2 つの一般的なワークフ
 		
 		Myservice.cloudapp.net:63133
 		
-		詳細については、「[What is a cloud service? (クラウド サービスとは)](http://www.windowsazure.com/manage/services/cloud-services/what-is-a-cloud-service/)」をご覧ください。
+		詳細については、「[What is a Cloud Service? (クラウド サービスとは)](http://www.windowsazure.com/manage/services/cloud-services/what-is-a-cloud-service/)」を参照してください。
 
 **Reporting Services 構成マネージャーを起動します。**
 
@@ -212,7 +215,7 @@ Azure Virtual Machines に接続するための 2 つの一般的なワークフ
 
 1. **[適用]** をクリックして、既定値を構成します。
 
-1. **[レポート サーバー Web サービスの URL]** を確認します。既定の TCP ポートが 80 であり、URL に含まれていることを確認します。後の手順で、このポートの Microsoft Azure Virtual Machine エンドポイントを作成します。
+1. **[レポート サーバー Web サービスの URL]** を確認します。既定の TCP ポートが 80 であり、URL に含まれていることを確認します。後の手順で、このポートの Microsoft Azure 仮想マシン エンドポイントを作成します。
 
 1. **[結果]** ウィンドウで、操作が正常に完了したことを確認します。
 
@@ -264,15 +267,15 @@ Azure Virtual Machines に接続するための 2 つの一般的なワークフ
 
 1. 仮想マシンのファイアウォールでポート 80 を開きます。
 
-1. URL 内のサーバー名として Azure Virtual Machines の **DNS 名**を使用して、レポート マネージャーを参照します。次に例を示します。
+1. URL 内のサーバー名として Azure 仮想マシンの **DNS 名**を使用して、レポート マネージャーを参照します。次に例を示します。
 
 	**レポート マネージャー**: http://uebi.cloudapp.net/reportserver **レポート サーバー**: http://uebi.cloudapp.net/reports
 
 	[レポート サーバー アクセスに対するファイアウォールの構成](https://technet.microsoft.com/library/bb934283.aspx)
 
-### レポートを作成して Azure Virtual Machines に発行するには
+### レポートを作成して Azure 仮想マシンに発行するには
 
-Microsoft Azure Virtual Machines でホストされているレポート サーバーに、オンプレミスのコンピューターから既存のレポートを発行する際に使用できるオプションの一部を次に示します。
+Microsoft Azure 仮想マシンでホストされているレポート サーバーに、オンプレミスのコンピューターから既存のレポートを発行する際に使用できるオプションの一部を次に示します。
 
 - **レポート ビルダー**: 仮想マシンには、ClickOnce バージョンの Microsoft SQL Server レポート ビルダーが含まれています。仮想マシンでレポート ビルダーを初めて起動するときは、次の手順を実行します。
 											
@@ -312,7 +315,7 @@ Microsoft Azure Virtual Machines でホストされているレポート サー�
 
 >[AZURE.NOTE]SQL Server セットアップを初めて実行すると、さらに多くのセットアップ ファイルがダウンロードされ、仮想マシンの再起動と SQL Server セットアップの再起動が必要になる場合があります。
 >
->Microsoft Azure Virtual Machines から選択したイメージを何度もカスタマイズする必要がある場合は、独自の SQL Server イメージを作成することを検討してください。SQL Server 2012 SP1 CU2 で、Analysis Services SysPrep 機能が有効になりました。詳細については、「[SysPrep を使用した SQL Server のインストールに関する注意点](https://msdn.microsoft.com/library/ee210754.aspx)」をご覧ください。
+>Microsoft Azure 仮想マシンから選択したイメージを何度もカスタマイズする必要がある場合は、独自の SQL Server イメージを作成することを検討してください。SQL Server 2012 SP1 CU2 で、Analysis Services SysPrep 機能が有効になりました。詳細については、「[SysPrep を使用した SQL Server のインストールに関する注意点](https://msdn.microsoft.com/library/ee210754.aspx)」をご覧ください。
 
 ### Analysis Services 表形式モードをインストールするには
 
@@ -366,7 +369,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 ## 仮想マシン エンドポイントとファイアウォール ポート
 
-ここでは、作成する Microsoft Azure Virtual Machines エンドポイントと、仮想マシンのファイアウォールで開くポートの概要を説明します。次の表は、エンドポイントの作成対象の **TCP** ポートと、仮想マシンのファイアウォールで開くポートを示しています。
+ここでは、作成する Microsoft Azure 仮想マシン エンドポイントと、仮想マシンのファイアウォールで開くポートの概要を説明します。次の表は、エンドポイントの作成対象の **TCP** ポートと、仮想マシンのファイアウォールで開くポートを示しています。
 
 - VM を 1 つだけ使用し、次の 2 つの条件に該当する場合は、VM エンドポイントを作成する必要はありません。また、VM 上のファイアウォールでポートを開く必要もありません。
 
@@ -401,11 +404,11 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 ## リソース
 
-- Azure Virtual Machines 環境で使用される、マイクロソフト サーバー ソフトウェアのサポート ポリシーを確認します。BitLocker、フェールオーバー クラスタリング、ネットワーク負荷分散などの機能のサポートについては、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](http://support.microsoft.com/kb/2721672)」をご覧ください。
+- Azure 仮想マシン環境で使用される、マイクロソフト サーバー ソフトウェアのサポート ポリシーを確認します。BitLocker、フェールオーバー クラスタリング、ネットワーク負荷分散などの機能のサポートについては、「[Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](http://support.microsoft.com/kb/2721672)」をご覧ください。
 
 - [Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)
 
-- [仮想マシン](http://azure.microsoft.com/documentation/services/virtual-machines/)
+- [Virtual Machines](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 - [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)
 
@@ -427,4 +430,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

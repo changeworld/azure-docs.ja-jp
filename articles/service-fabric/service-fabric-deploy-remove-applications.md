@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/03/2015"
+   ms.date="09/23/2015"
    ms.author="alexwun"/>
 
 # アプリケーションをデプロイする
@@ -226,4 +226,4 @@ PS D:\temp>
 [11]: service-fabric-application-upgrade.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure AD を使用する次のステップ"
-	description="Azure AD を使用する高度なタスクについて説明します。"
+	pageTitle="Azure Active Directory を使用する次のステップ"
+	description="Azure Active Directory を使用したパスワードの管理、ユーザーの管理、グループの管理、条件付きアクセスなどの高度なタスク"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="terrylan"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2015"
+	ms.date="09/21/2015"
 	ms.author="curtand"/>
 
 # Azure AD を使用する次のステップ
 
 
-###このトピックに関するその他の記事
+### このトピックに関するその他の記事
 [Azure AD とは](active-directory-whatis.md)<br> [どのよう動作しますか。](active-directory-works.md)<br> [開始](active-directory-get-started.md)<br> [次のステップ](active-directory-next-steps.md)<br> [詳細](active-directory-learn-map.md)
 
 ## Azure AD でユーザーを管理する
@@ -41,4 +41,4 @@ Azure AD のデバイス登録は、ユーザーのサインイン時にデバ�
 * [Azure ID](fundamentals-identity.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

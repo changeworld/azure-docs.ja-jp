@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/09/2015"
+   ms.date="09/22/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # 作業開始: SQL Data Warehouse のプロビジョニング #
@@ -161,6 +161,8 @@ Azure ファイアウォールを構成するのが初めての場合は、次�
 1. データ ウェアハウスへの[接続とクエリ][]です。
 2. [サンプル データ]を読み込みます。
 
+	> [AZURE.NOTE]記事の改善にご協力ください。「この記事は役に立ちましたか?」という質問に「いいえ」を選択した場合は、不足しているものやどうすれば記事を改善できるかについてのご提案をお願いいたします。ご協力ありがとうございます。
+
 <!--Image references-->
 
 
@@ -172,4 +174,4 @@ Azure ファイアウォールを構成するのが初めての場合は、次�
 [無料試用版]: https://azure.microsoft.com/ja-JP/pricing/free-trial/
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

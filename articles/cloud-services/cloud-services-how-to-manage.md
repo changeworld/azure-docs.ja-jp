@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/01/2015"
+	ms.date="09/22/2015"
 	ms.author="adegeo"/>
 
 
 
 
 
-# クラウド サービスの管理方法
+# Cloud Services の管理方法
 
 > [AZURE.SELECTOR]
 - [Azure Portal](cloud-services-how-to-manage.md)
@@ -71,7 +71,7 @@ Azure ポータルの **[Cloud Services]** 領域では、サービス ロール
 
 	次のような確認ダイアログが表示されます。
 
-	![クラウド サービスのスワップ](./media/cloud-services-how-to-manage/CloudServices_Swap.png)
+	![Cloud Services のスワップ](./media/cloud-services-how-to-manage/CloudServices_Swap.png)
 
 4. デプロイメント情報を確認した後、**[はい]** をクリックしてデプロイメントをスワップします。
 
@@ -89,7 +89,7 @@ Azure ポータルの **[Cloud Services]** 領域では、サービス ロール
 
 この意味でリソースの "リンク" を行ってもアプリケーションはリソースに接続されません。**[リンク]** を使用して新しいデータベースを作成した場合、アプリケーション コードに接続文字列を追加して、クラウド サービスをアップグレードする必要があります。また、リンクされたストレージ アカウントのリソースをアプリケーションで使用している場合も、接続文字列を追加する必要があります。
 
-以下の手順では、新しい SQL データベース サーバーにデプロイされた新しい SQL Database インスタンスをクラウド サービスにリンクする方法を説明しています。
+以下の手順では、新しい SQL Database サーバーにデプロイされた新しい SQL Database インスタンスをクラウド サービスにリンクする方法を説明しています。
 
 ### クラウド サービスに SQL Database インスタンスをリンクするには
 
@@ -117,7 +117,7 @@ Azure ポータルの **[Cloud Services]** 領域では、サービス ロール
 
 	![リンクの進捗状況](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkProgress.png)
 
-	リンク操作が完了すると、リンクされたリソースの状態をクラウド サービスのダッシュボードで監視できます。リンクされた SQL データベースの規模設定の詳細については、「[クラウド サービスおよびリンクされたリソースの規模の設定方法](cloud-services-how-to-scale.md)」を参照してください。
+	リンク操作が完了すると、リンクされたリソースの状態をクラウド サービスのダッシュボードで監視できます。リンクされた SQL Database の規模設定の詳細については、「[クラウド サービスおよびリンクされたリソースの規模の設定方法](cloud-services-how-to-scale.md)」を参照してください。
 
 ### リンク済みリソースのリンクを解除するには
 
@@ -127,7 +127,7 @@ Azure ポータルの **[Cloud Services]** 領域では、サービス ロール
 
 3. **[リンクの解除]** をクリックします。次に、確認ダイアログで **[はい]** をクリックします。
 
-	SQL データベースのリンクを解除しても、データベースまたはデータベースに対するアプリケーションの接続は影響を受けません。引き続き、管理ポータルの **[SQL Database]** 領域でデータベースを管理できます。
+	SQL Database のリンクを解除しても、データベースまたはデータベースに対するアプリケーションの接続は影響を受けません。引き続き、管理ポータルの **[SQL Database]** 領域でデータベースを管理できます。
 
 
 
@@ -156,6 +156,12 @@ Azure ポータルの **[Cloud Services]** 領域では、サービス ロール
 
 > [AZURE.NOTE]Azure でクラウド サービスに詳細監視が構成されている場合、クラウド サービスを削除しても、ストレージ アカウントから監視データは削除されません。データは手作業で削除する必要があります。メトリック テーブルのある場所については、「<a href="http://azure.microsoft.com/documentation/articles/cloud-services-how-to-monitor/">クラウド サービスの監視方法</a>」の「方法: 管理ポータル外で詳細監視データにアクセス」を参照してください。
 
- 
 
-<!---HONumber=August15_HO7-->
+## 次のステップ
+
+ * [クラウド サービスの一般的な構成](cloud-services-how-to-configure.md)
+* 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy.md)
+* [カスタム ドメイン名を構成する](cloud-services-custom-domain-name.md)
+* [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
+
+<!---HONumber=Sept15_HO4-->

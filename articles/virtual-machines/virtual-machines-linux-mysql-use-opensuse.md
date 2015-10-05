@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール"
+	pageTitle="Microsoft Azure の OpenSUSE Linux VM に MySQL をインストールする"
 	description="Azure の仮想マシンに MySQL をインストールする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -38,4 +38,4 @@ MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参�
 [MySQL]: http://www.mysql.com
 [AzurePortal]: http://manage.windowsazure.com
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

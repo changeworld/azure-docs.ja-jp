@@ -24,7 +24,7 @@
 
 ## 概要
 
-この記事では、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Node.js API を使用して記述されています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。
+この記事では、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Node.js API を使用して記述されています。紹介するシナリオには、アップロード、一覧表示、ダウンロード、および blob を削除する方法が含まれます。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -32,7 +32,7 @@
 
 ## Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js Cloud Service] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
+Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][Node.js Cloud Service]」、「[Node.js クラウド サービス]」 (Windows PowerShell の使用)、または「WebMatrix を使用した Web アプリ」を参照してください。
 
 ## アプリケーションのストレージへのアクセスの構成
 
@@ -42,7 +42,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
-2.  コマンド ウィンドウに **npm install azure-storage** と入力するとコマンドの出力は次のコード例に似ています。
+2.  コマンド ウィンドウに「**npm install azure-storage**」と入力します。コマンドの出力は次のコード例に似ています。
 
 		azure-storage@0.5.0 node_modules\azure-storage
 		+-- extend@1.2.1
@@ -67,7 +67,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 Azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 `AZURE_STORAGE_ACCOUNT` と `AZURE_STORAGE_ACCESS_KEY`、または `AZURE_STORAGE_CONNECTION_STRING` を読み取ります。これらの環境変数が設定されていない場合は、**createBlobService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリケーション]」を参照してください。
+Azure Web サイトの Azure ポータルで環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーション]に関するトピックを参照してください。
 
 ## コンテナーを作成する
 
@@ -75,11 +75,11 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
     var blobSvc = azure.createBlobService();
 
-> [AZURE.NOTE]**createBlobServiceAnonymous** を使用してホスト アドレスを指定すると、BLOB に匿名でアクセスできます。たとえば、「`var blobSvc = azure.createBlobServiceAnonymous('https://myblob.blob.core.windows.net/');`」のように入力します。
+> [AZURE.NOTE]**createBlobServiceAnonymous** を使用してホスト アドレスを指定すると、BLOB に匿名でアクセスできます。たとえば、`var blobSvc = azure.createBlobServiceAnonymous('https://myblob.blob.core.windows.net/');` を使用します。
 
 [AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-新しいコンテナーを作成するには、**createContainerIfNotExists** を使用します。次のコード例では、'mycontainer' という名前の新しいコンテナーが作成されます。
+新しいコンテナーを作成するには、**createContainerIfNotExists** を使用します。次のコード例では、'mycontainer' という名前の新しいコンテナーを作成します。
 
 	blobSvc.createContainerIfNotExists('mycontainer', function(error, result, response){
       if(!error){
@@ -89,7 +89,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
       }
 	});
 
-コンテナーが新規に作成された場合は、`result` は true です。コンテナーが既に存在する場合は、`result` は false になります。`response` には、コンテナーの [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) 情報を含む、操作に関する情報が含まれます。
+コンテナーが新規に作成された場合、`result` は true です。コンテナーが既に存在する場合は、`result` は false になります。`response` には、コンテナーの [ETag](http://en.wikipedia.org/wiki/HTTP_ETag) 情報を含む、操作に関する情報が含まれます。
 
 ### コンテナーのセキュリティ
 
@@ -136,7 +136,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 ## コンテナーに BLOB をアップロードする
 
-BLOB はブロック ベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
+BLOB はブロックベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
 ### ブロック blob
 
@@ -250,7 +250,7 @@ ETag の条件は、オプションの `options.accessConditions` パラメー�
 	  }
 	});
 
-通常、ETag を使用する場合には、以下のパターンがあります。
+ETag を使用している場合、一般的なパターンは次のとおりです。
 
 1. 作成、一覧表示、取得の操作の結果として ETag を取得する。
 
@@ -278,11 +278,11 @@ ETag の条件は、オプションの `options.accessConditions` パラメー�
 
 共有アクセス署名 (SAS) は、ストレージ アカウント名やキーを指定せずに BLOB やコンテナーへのきめ細やかで安全なアクセスを提供する方法です。SAS は、モバイル アプリからの BLOB へのアクセスを許可する場合など、データへの制限されたアクセスを提供する場合によく使用されます。
 
-> [AZURE.NOTE]BLOB への匿名のアクセスも許可できるものの、SAS ではより制御されたアクセスを提供することができます。SAS は生成の必要があるためです。
+> [AZURE.NOTE]BLOB への匿名のアクセスも許可できるものの、共有アクセス署名ではより制御されたアクセスを提供することができます。SAS は生成の必要があるためです。
 
-クラウドベースのサービスなどの信頼されたアプリケーションは、**BlobService** の **generateSharedAccessSignature** を使用して SAS を生成し、信頼されていないか、モバイル アプリなどの部分的に信頼されたアプリケーションにこれを提供します。SAS は、SAS が有効である期間の開始日と終了日のほか、SAS の保有者に付与されたアクセス レベルを示したポリシーを使用して生成されます。
+クラウドベースのサービスなどの信頼されたアプリケーションは、**BlobService** の **generateSharedAccessSignature** を使用して共有アクセス署名を生成し、信頼されていないか、モバイル アプリなどの部分的に信頼されたアプリケーションにこれを提供します。共有アクセス署名は、ポリシーを使用して作成されます。共有アクセス署名には、有効期間の開始日と終了日、共有アクセス署名フォルダーに付与されているアクセス レベルが記述されています。
 
-次のコード例では、SAS の保有者による **myblob** BLOB に対する読み取り操作を許可する新しい共有アクセス ポリシーを生成します。このポリシーは作成後 100 分が経過すると期限切れになります。
+次のコード例では、共有アクセス署名の保有者による **myblob** BLOB に対する読み取り操作を許可する新しい共有アクセス ポリシーを生成します。このポリシーは作成後 100 分が経過すると期限切れになります。
 
 	var startDate = new Date();
 	var expiryDate = new Date(startDate);
@@ -300,9 +300,9 @@ ETag の条件は、オプションの `options.accessConditions` パラメー�
 	var blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', 'myblob', sharedAccessPolicy);
 	var host = blobSvc.host;
 
-SAS の保有者がコンテナーにアクセスするときに必要なホスト情報も提供する必要があることに注意してください。
+共有アクセス署名の保有者がコンテナーにアクセスするときに必要なホスト情報も提供する必要があることに注意してください。
 
-その後、クライアント アプリケーションは、この SAS と **BlobServiceWithSAS** を使用して BLOB に対する操作を実行します。次の例では、**myblob** に関する情報を取得します。
+その後、クライアント アプリケーションは、この共有アクセス署名と **BlobServiceWithSAS** を使用して BLOB に対する操作を実行します。次の例では、**myblob** に関する情報を取得します。
 
 	var sharedBlobSvc = azure.createBlobServiceWithSas(host, blobSAS);
 	sharedBlobSvc.getBlobProperties('mycontainer', 'myblob', function (error, result, response) {
@@ -311,7 +311,7 @@ SAS の保有者がコンテナーにアクセスするときに必要なホス�
 	  }
 	});
 
-生成された SAS が持つ権限は読み取りアクセスのみのため、BLOB を変更しようとした場合は、エラーが返されます。
+共有アクセス署名は読み取り専用アクセスで生成されるので、BLOB を変更しようとすると、エラーが返されます。
 
 ### アクセス制御リスト
 
@@ -352,29 +352,30 @@ ACL は、アクセス ポリシーの配列と、各ポリシーに関連付け
 	  }
 	});
 
-ACL を設定した後で、ポリシーの ID に基づいて SAS を作成できます。次のコード例では、"user2" 用に新しい SAS を作成しています。
+ACL を設定したら、ポリシーの ID に基づいて共有アクセス署名を作成できます。次のコード例では、'user2' の新しい共有アクセス署名を作成します。
 
 	blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 
 ## 次のステップ
 
-これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
+詳細については、次のリソースを参照してください。
 
--   [Azure Storage SDK for Node の API リファレンス][]を参照してください。
+-   [Azure Storage SDK for Node の API リファレンス][]
 -   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure Storage チームのブログ][]
+-   [Azure Storage チーム ブログ][]
 -   GitHub の [Azure Storage SDK for Node][] リポジトリ
+-   [Node.js デベロッパー センター](/develop/nodejs/)
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
-[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /develop/nodejs/tutorials/create-a-website-(mac)/
+[Create and deploy a Node.js application to an Azure Web Site]: /develop/nodejs/tutorials/create-a-website-(mac)/
 [Node.js Cloud Service with Storage]: ../storage-nodejs-use-table-storage-cloud-service-app.md
-[Azure Table サービスを使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
-[WebMatrix による Web サイトの作成とデプロイ]: ../web-sites-nodejs-use-webmatrix.md
-[using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
-[Azure Management Portal]: http://manage.windowsazure.com
+[ストレージを使用する Node.js Web アプリケーション]: ../storage-nodejs-use-table-storage-web-site.md
+[Node.js クラウド サービス]: ../web-sites-nodejs-use-webmatrix.md
+[Using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
+[Azure portal]: http://manage.windowsazure.com
 [Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
 [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-[Azure Storage チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

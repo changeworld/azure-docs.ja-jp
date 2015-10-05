@@ -1,9 +1,26 @@
-<properties title="Configuring Oracle Data Guard for Azure" pageTitle="Azure 用の Oracle データ保護の構成" description="高可用性と障害復旧のために Oracle Data Guar を Azure 仮想マシンにセットアップし実装するチュートリアルの手順" services="virtual-machines" authors="bbenz" documentationCenter=""/>
-<tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
+<properties
+	pageTitle="仮想マシンで Oracle Data Guard を構成する |Microsoft Azure"
+	description="高可用性と障害復旧のために Oracle Data Guard を Azure 仮想マシンにセットアップして実装するチュートリアルの手順。"
+	services="virtual-machines"
+	authors="bbenz"
+	documentationCenter=""
+	tags="azure-service-management"/>
+<tags
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows"
+	ms.workload="infrastructure-services"
+	ms.date="06/22/2015"
+	ms.author="bbenz" />
+
 #Azure 用の Oracle データ保護の構成
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用して作成されたリソースの管理について説明します。
+
 このチュートリアルでは、高可用性と障害復旧のための Azure 仮想マシン環境に Oracle Data Guard をセットアップ、実装する方法について説明します。このチュートリアルでは、RAC 以外の Oracle データベースの 1 ウェイレプリケーションの方法について説明します。
 
-Oracle Data Guard は Oracle データベースのデータの保護および災害復旧をサポートします。シンプルで高パフォーマンスな、障害回復、データの保護、および Oracle データベース全体の高可用性のすぐに使えるソリューションです。
+Oracle Data Guard は Oracle データベースのデータの保護および障害復旧をサポートします。シンプルで高パフォーマンスな、障害回復、データの保護、および Oracle データベース全体の高可用性のすぐに使えるソリューションです。
 
 このチュートリアルでは、Oracle データベースの高可用性と障害復旧の概念に関する理論的かつ実用的な知識があることを前提としています。詳細については[Oracle の web サイト](http://www.oracle.com/technetwork/database/features/availability/index.html) と [Oracle のデータ保護の概念と管理に関するガイド](http://docs.oracle.com/cd/E11882_01/server.112/e17022/create_ps.htm)を参照してください。
 
@@ -11,7 +28,7 @@ Oracle Data Guard は Oracle データベースのデータの保護および災
 
 - 「[Oracle 仮想マシン イメージ - 他の考慮事項](virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images.md)」に関するトピックの「高可用性と障害復旧」セクションを既に確認していること。Azure では、スタンドアロンの Oracle Database インスタンスをサポートしていますが、Oracle Real Application Cluster (Oracle RAC) をサポートしていないことに注意してください。
 
-- 同じプラットフォームで提供される Windows Server 上の Oracle Enterprise Edition のイメージを使用して、Azure に 2 つの仮想マシン (VM) を作成している。詳細については、「[Creating an Oracle Database 12c Virtual Machine in Azure (Azure での Oracle Database 12c 仮想マシンの作成)](virtual-machines-creating-oracle-webLogic-server-12c-virtual-machine.md)」と「[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)」をご覧ください仮想マシンが永続的なプライベート IP アドレスを介して相互にアクセスできるように、[同じクラウド サービス](virtual-machines-load-balance.md)にあり、同じ[仮想ネットワーク](azure.microsoft.com/documentation/services/virtual-network/)にあることを確認します。さらに、VM を同じ[可用性セット](virtual-machines-manage-availability.md)に配置することにより、Azure は個別のフォールト ドメインとアップグレード ドメインに配置できるようになります。Oracle Data Guard は Oracle Database Enterprise Edition でのみ使用可能となっていますのでご注意ください。それぞれのマシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。プラットフォームが提供する VM サイズの最新情報については、[「Azure の仮想マシンおよびクラウド サービスのサイズ」](http://msdn.microsoft.com/library/dn197896.aspx)を参照してください。VM に追加のディスク ボリュームが必要な場合は、追加のディスクをアタッチすることができます。詳細については、「[How to Attach a Data Disk to a Virtual Machine(データディスクを仮想マシンに追加する方法)](storage-windows-attach-disk.md)」を参照してください。
+- 同じプラットフォームで提供される Windows Server 上の Oracle Enterprise Edition のイメージを使用して、Azure に 2 つの仮想マシン (VM) を作成している。詳細については、「[Creating an Oracle Database 12c Virtual Machine in Azure (Azure での Oracle Database 12c 仮想マシンの作成)](virtual-machines-creating-oracle-webLogic-server-12c-virtual-machine.md)」と「[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)」をご覧ください仮想マシンが永続的なプライベート IP アドレスを介して相互にアクセスできるように、[同じクラウド サービス](virtual-machines-load-balance.md)にあり、同じ [Virtual Network](azure.microsoft.com/documentation/services/virtual-network/) にあることを確認します。さらに、VM を同じ[可用性セット](virtual-machines-manage-availability.md)に配置することにより、Azure は個別のフォールト ドメインとアップグレード ドメインに配置できるようになります。Oracle Data Guard は Oracle Database Enterprise Edition でのみ使用可能となっていますのでご注意ください。それぞれのマシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。プラットフォームが提供する VM サイズの最新情報については、[「Azure の仮想マシンおよびクラウド サービスのサイズ」](http://msdn.microsoft.com/library/dn197896.aspx)を参照してください。VM に追加のディスク ボリュームが必要な場合は、追加のディスクをアタッチすることができます。詳細については、「[How to Attach a Data Disk to a Virtual Machine(データディスクを仮想マシンに追加する方法)](storage-windows-attach-disk.md)」を参照してください。
 
 - Azure ポータルでは、仮想マシンの名前は、プライマリ VM が「Machine1」として、スタンバイ VM が「Machine2」として設定されています。
 
@@ -73,21 +90,21 @@ Oracle データベースおよび Oracle Data Guard の今後のリリースで
 ##物理スタンバイ データベース環境の展開
 ### 1\.プライマリ データベースの作成
 
-- プライマリ仮想マシンでプライマリでデータベース"TEST"を作成詳細は、「Oracle データベースの作成と構成」を参照してください。
+- プライマリ仮想マシンでプライマリ データベース "TEST" を作成詳細は、「Oracle データベースの作成と構成」を参照してください。
 - SQL で SYSDBA ロールを持つsql では、SYS ユーザーとしてデータベースに接続 * さらにコマンド プロンプトおよびデータベースの名前を表示するには、次のステートメントを実行します。
 
 		SQL> select name from v$database;
-		
+
 		The result will display like the following:
-		
+
 		NAME
 		---------
 		TEST
 - 次に、dba\_data\_files システム ビューからデータベース ファイルの名前をクエリします。
 
-		SQL> select file_name from dba_data_files; 
-		FILE_NAME 
-		------------------------------------------------------------------------------- 
+		SQL> select file_name from dba_data_files;
+		FILE_NAME
+		-------------------------------------------------------------------------------
 		C:\ <YourLocalFolder>\TEST\USERS01.DBF
 		C:\ <YourLocalFolder>\TEST\UNDOTBS01.DBF
 		C:\ <YourLocalFolder>\TEST\SYSAUX01.DBF
@@ -142,8 +159,8 @@ Machine1 の SQL*PLUS コマンド プロンプトで次のステートメント
 	3         ONLINE  C:<YourLocalFolder>\TEST\REDO03.LOG               NO
 	2         ONLINE  C:<YourLocalFolder>\TEST\REDO02.LOG               NO
 	1         ONLINE  C:<YourLocalFolder>\TEST\REDO01.LOG               NO
-	Next, query the v$log system view, displays log file information from the control file. 
-	SQL> select bytes from v$log; 
+	Next, query the v$log system view, displays log file information from the control file.
+	SQL> select bytes from v$log;
 	BYTES
 	----------
 	52428800
@@ -182,7 +199,7 @@ Machine1 の SQL*PLUS コマンド プロンプトで次のステートメント
 まず、sysdba としてログインします。Windows のコマンド プロンプトで次を実行します。
 
 	sqlplus /nolog
-	
+
 	connect / as sysdba
 
 次に SQL*Plus コマンド プロンプトでデータベースをシャット ダウンします。
@@ -205,13 +222,13 @@ Machine1 の SQL*PLUS コマンド プロンプトで次のステートメント
 
 次に、以下を実行します。
 
-	SQL> alter database archivelog; 
+	SQL> alter database archivelog;
 	Database altered.
 
 次に、Alter database ステートメントをオープンクローズで実行、データベースを通常の使用に使用できるようにします。
 
 	SQL> alter database open;
-	
+
 	Database altered.
 
 #### プライマリ データベースの初期化パラメーターの設定
@@ -224,16 +241,16 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	File created.
 
 次に、スタンバイのパラメーターを追加するには pfile を編集する必要があります。そのためには %Oracle\_home%\\database の場所で INITTEST.ORA ファイルを開きます。次に、INITTEST.ora ファイルに次のステートメントを追加します。INIT.ORA ファイルの命名規則は INIT<YourDatabaseName>.ORA です。
-	
-	db_name='TEST' 
-	db_unique_name='TEST' 
+
+	db_name='TEST'
+	db_unique_name='TEST'
 	LOG_ARCHIVE_CONFIG='DG_CONFIG=(TEST,TEST_STBY)'
 	LOG_ARCHIVE_DEST_1= 'LOCATION=C:\OracleDatabase\archive   VALID_FOR=(ALL_LOGFILES,ALL_ROLES) DB_UNIQUE_NAME=TEST'
 	LOG_ARCHIVE_DEST_2= 'SERVICE=TEST_STBY LGWR ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=TEST_STBY'
 	LOG_ARCHIVE_DEST_STATE_1=ENABLE
-	LOG_ARCHIVE_DEST_STATE_2=ENABLE 
-	REMOTE_LOGIN_PASSWORDFILE=EXCLUSIVE 
-	LOG_ARCHIVE_FORMAT=%t_%s_%r.arc 
+	LOG_ARCHIVE_DEST_STATE_2=ENABLE
+	REMOTE_LOGIN_PASSWORDFILE=EXCLUSIVE
+	LOG_ARCHIVE_FORMAT=%t_%s_%r.arc
 	LOG_ARCHIVE_MAX_PROCESSES=30
 	# Standby role parameters --------------------------------------------------------------------
 	fal_server=TEST_STBY
@@ -251,11 +268,11 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 最初に、データベースをシャット ダウンします:
 
 	SQL> shutdown immediate;
-	
+
 	Database closed.
-	
+
 	Database dismounted.
-	
+
 	ORACLE instance shut down.
 
 次に、スタートアップ マウント コマンドを次のように実行します。
@@ -277,7 +294,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 次に、データベースをシャット ダウンします:
 
 	SQL> shutdown immediate;
-	
+
 	ORA-01507: database not mounted
 
 次に、インスタンスを起動するスタートアップ コマンドを使用します。
@@ -322,18 +339,18 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 ### 1\.スタンバイ データベースの初期化パラメーターのファイルを準備
 
 このセクションでは、初期化パラメーターのファイルのスタンバイ データベースを準備する方法を示します。これには、まず INITTEST.ORA を Machine 1 から Machine2 へ手動でコピーします。両方のマシンの %ORACLE\_HOME%\\database フォルダで、INITTEST.ORA ファイルが表示されている必要があります。次に、スタンバイ ロールを以下のように設定するには、Machine2 で INITTEST.ora ファイルを変更します。
-	
+
 	db_name='TEST'
 	db_unique_name='TEST_STBY'
 	db_create_file_dest='c:\OracleDatabase\oradata\test_stby’
 	db_file_name_convert=’TEST’,’TEST_STBY’
 	log_file_name_convert='TEST','TEST_STBY'
-	
-	
+
+
 	job_queue_processes=10
 	LOG_ARCHIVE_CONFIG='DG_CONFIG=(TEST,TEST_STBY)'
 	LOG_ARCHIVE_DEST_1='LOCATION=c:\OracleDatabase\TEST_STBY\archives VALID_FOR=(ALL_LOGFILES,ALL_ROLES) DB_UNIQUE_NAME=’TEST'
-	LOG_ARCHIVE_DEST_2='SERVICE=TEST LGWR ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) 
+	LOG_ARCHIVE_DEST_2='SERVICE=TEST LGWR ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE)
 	LOG_ARCHIVE_DEST_STATE_1='ENABLE'
 	LOG_ARCHIVE_DEST_STATE_2='ENABLE'
 	LOG_ARCHIVE_FORMAT='%t_%s_%r.arc'
@@ -359,9 +376,9 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 リモート デスクトップから Machine1 へ、および以下で指定した listener.ora ファイルを編集します。listener.ora ファイルを編集するときには、常にかっこひらきと閉じかっこが同じ列に並んでいることを確認します。listener.ora ファイルは c:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\NETWORK\\ADMIN\\ に見つけることができます。
 
 	# listener.ora Network Configuration File: C:\OracleDatabase\product\11.2.0\dbhome_1\network\admin\listener.ora
-	
+
 	# Generated by Oracle configuration tools.
-	
+
 	SID_LIST_LISTENER =
 	  (SID_LIST =
 	    (SID_DESC =
@@ -371,7 +388,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	      (ENVS = "EXTPROC_DLLS=ONLY:C:\OracleDatabase\product\11.2.0\dbhome_1\bin\oraclr11.dll")
 	    )
 	  )
-	
+
 	LISTENER =
 	  (DESCRIPTION_LIST =
 	    (DESCRIPTION =
@@ -381,9 +398,9 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	  )
 
 次に、リモートデスクトップから Machine2 へおよび次のように listener.ora ファイルを編集します: # listener.ora Network Configuration File: C:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\network\\admin\\listener.ora
-	
+
 	# Generated by Oracle configuration tools.
-	
+
 	SID_LIST_LISTENER =
 	  (SID_LIST =
 	    (SID_DESC =
@@ -393,7 +410,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	      (ENVS = "EXTPROC_DLLS=ONLY:C:\OracleDatabase\product\11.2.0\dbhome_1\bin\oraclr11.dll")
 	    )
 	  )
-	
+
 	LISTENER =
 	  (DESCRIPTION_LIST =
 	    (DESCRIPTION =
@@ -416,7 +433,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	      (SERVICE_NAME = test)
 	    )
 	  )
-	
+
 	TEST_STBY =
 	  (DESCRIPTION =
 	    (ADDRESS_LIST =
@@ -428,7 +445,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	  )
 
 リモート デスクトップから Machine 2 へ、および次のように tnsnames.ora ファイルを編集します:
-	
+
 	TEST =
 	  (DESCRIPTION =
 	    (ADDRESS_LIST =
@@ -438,7 +455,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	      (SERVICE_NAME = test)
 	    )
 	  )
-	
+
 	TEST_STBY =
 	  (DESCRIPTION =
 	    (ADDRESS_LIST =
@@ -455,7 +472,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 プライマリおよびスタンバイの両方の仮想マシンで、新しい Windows のコマンド プロンプトを開き、次のステートメントを実行します。
 
 	C:\Users\DBAdmin>tnsping test
-	
+
 	TNS Ping Utility for 64-bit Windows: Version 11.2.0.1.0 - Production on 14-NOV-2013 06:29:08
 	Copyright (c) 1997, 2010, Oracle.  All rights reserved.
 	Used parameter files:
@@ -464,10 +481,10 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	Attempting to contact (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = MACHINE1)(PORT = 1521))) (CONNECT_DATA = (SER
 	VICE_NAME = test)))
 	OK (0 msec)
-	
+
 
 	C:\Users\DBAdmin>tnsping test_stby
-	
+
 	TNS Ping Utility for 64-bit Windows: Version 11.2.0.1.0 - Production on 14-NOV-2013 06:29:16
 	Copyright (c) 1997, 2010, Oracle.  All rights reserved.
 	Used parameter files:
@@ -493,10 +510,10 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 データベースを開始します:
 
 	SQL>shutdown immediate;
-	
+
 	SQL>startup nomount
 	ORACLE instance started.
-	
+
 	Total System Global Area  747417600 bytes
 	Fixed Size                  2179496 bytes
 	Variable Size             473960024 bytes
@@ -507,12 +524,12 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 ##RMAN を使用して、データベースのクローンとスタンバイ データベースを作成
 Recovery Manager ユーティリティ (RMAN) を使用して、物理スタンバイ データベースを作成するために、プライマリ データベースの任意のバックアップ コピーを取ることができます。
 
-リモートデスクトップからスタンバイ仮想マシン (MACHINE2) へ、および TARGET (プライマリデータベース、 Machine1) および AUXILLARY (スタンバイデータベース, Machine2) インスタンスの両方に完全な接続ストリングを指定することで RMAN ユーティリティを実行します。
+リモートデスクトップからスタンバイ仮想マシン (MACHINE2) へ、および TARGET (プライマリデータベース、 Machine1) および AUXILLARY (スタンバイデータベース, Machine2) インスタンスの両方に完全な接続文字列を指定することで RMAN ユーティリティを実行します。
 
 >[AZURE.IMPORTANT]スタンバイ サーバーマシンにはデータベースがまだないため、オペレーティング システムの認証は使用しないでください。
 
 	C:\> RMAN TARGET sys/password@test AUXILIARY sys/password@test_STBY
-	
+
 	RMAN>DUPLICATE TARGET DATABASE
 	  FOR STANDBY
 	  FROM ACTIVE DATABASE
@@ -532,7 +549,7 @@ SQL * Plus コマンド プロンプトを開き、次のように、スタン�
 
 **READ ONLY**モードでプライマリ データベースを開いた時、アーカイブ ログ配布は続行されます。ただし、管理されている回復プロセスは停止されます。これにより、管理されている回復プロセスが再開されるまで、スタンバイデータベースはどんどん古くなっていきます。この期間中には、レポート目的でスタンバイ データベースにアクセスできますが、データには最新の変更が反映されない場合があります。
 
-一般的には、万一プライマリデータベースに不具合が発生した場合に、データをスタンバイデータベースで最新に保つため、スタンバイ データベースは**マウント**モードで保持することが推奨されます。ただし、アプリケーションの要件によっては、スタンバイデータベースは**READ ONLY**モードでレポート目的で保持できます。次の手順では、SQL*Plus を使用して、読み取り専用モードでの Data Guard を有効にする方法を示します:
+一般的には、万一プライマリ データベースに不具合が発生した場合に、データをスタンバイ データベースで最新に保つため、スタンバイ データベースは**マウント** モードで保持することが推奨されます。ただし、アプリケーションの要件によっては、スタンバイデータベースは**READ ONLY**モードでレポート目的で保持できます。次の手順では、SQL*Plus を使用して、読み取り専用モードでの Data Guard を有効にする方法を示します:
 
 	SHUTDOWN IMMEDIATE;
 	STARTUP MOUNT;
@@ -545,15 +562,15 @@ SQL * Plus コマンド プロンプトを開き、次のように、スタン�
 SQL * Plus コマンド プロンプト ウィンドウを開き、スタンバイ仮想マシン（machine 2）アーカイブされた redo ログを確認します。
 
 	SQL> show parameters db_unique_name;
-	
+
 	NAME                                TYPE       VALUE
 	------------------------------------ ----------- ------------------------------
 	db_unique_name                      string     TEST_STBY
-	
+
 	SQL> SELECT NAME FROM V$DATABASE
-	
+
 	SQL> SELECT SEQUENCE#, FIRST_TIME, NEXT_TIME, APPLIED FROM V$ARCHIVED_LOG ORDER BY SEQUENCE#;
-	
+
 	SEQUENCE# FIRST_TIM NEXT_TIM APPLIED
 	----------------  ---------------  --------------- ------------
 	45                    23-FEB-14   23-FEB-14   YES
@@ -565,9 +582,9 @@ SQL * Plus コマンド プロンプト ウィンドウを開き、スタンバ�
 
 SQL * Plus コマンド プロンプト ウィンドウを開き、プライマリマシン (Machine1) でログファイルを切り替えます。
 
-	SQL> alter system switch logfile; 
+	SQL> alter system switch logfile;
 	System altered.
-	
+
 	SQL> archive log list
 	Database log mode              Archive Mode
 	Automatic archival             Enabled
@@ -579,14 +596,14 @@ SQL * Plus コマンド プロンプト ウィンドウを開き、プライマ�
 アーカイブ済みの redo ログ、スタンバイ仮想マシンで (マシン 2) を確認します。
 
 	SQL> SELECT SEQUENCE#, FIRST_TIME, NEXT_TIME, APPLIED FROM V$ARCHIVED_LOG ORDER BY SEQUENCE#;
-	
+
 	SEQUENCE# FIRST_TIM NEXT_TIM APPLIED
 	----------------  ---------------  --------------- ------------
 	45                    23-FEB-14   23-FEB-14   YES
 	46                    23-FEB-14   23-FEB-14   YES
 	47                    23-FEB-14   23-FEB-14   YES
 	48                    23-FEB-14   23-FEB-14   YES
-	
+
 	49                    23-FEB-14   23-FEB-14   YES
 	50                    23-FEB-14   23-FEB-14   IN-MEMORY
 
@@ -605,6 +622,6 @@ SQL * Plus コマンド プロンプト ウィンドウを開き、プライマ�
 プライマリ データベースと、スタンバイ データベースでフラッシュバックデータベースを有効にすることをお勧めします。フェールオーバーが発生した場合、プライマリ データベースはフェールオーバーの前にフラッシュバックされ、スタンバイ データベースにすばやく変換されます。
 
 ##その他のリソース
-[Oracle Virtual Machine images for Azure (Azure の Oracle 仮想マシン イメージ)](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
+[Azure の Oracle 仮想マシン イメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

@@ -13,8 +13,9 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/09/2015"
+   ms.date="09/22/2015"
    ms.author="barbkess;twounder;JRJ@BigBangData.co.uk;"/>
+
 
 # Azure SQL Data Warehouse の概要
 
@@ -78,4 +79,4 @@ SQL Data Warehouse は数秒で簡単にデプロイできます。このサー�
 
 <!--Other Web references-->
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

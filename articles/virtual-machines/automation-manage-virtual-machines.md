@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Automation を使用した Azure 仮想マシンの管理"
+	pageTitle="Azure Automation を使用した VM の管理| Microsoft Azure"
 	description="Azure Automation サービスを使用して大規模に Azure 仮想マシンを管理する方法について説明します。"
 	services="virtual-machines, automation"
 	documentationCenter=""
@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/20/2015"
+	ms.date="08/11/2015"
 	ms.author="jolevy"/>
 
 
 
-#Azure Automation を使用した Azure 仮想マシンの管理
+#Azure Automation を使用した Azure Virtual Machines の管理
 
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure 仮想マシンの管理を簡略化する方法について紹介します。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 ## Azure Automation とは
 
@@ -42,4 +44,4 @@ Virtual Machines は、[Azure PowerShell](https://msdn.microsoft.com/library/azu
 
 [Azure Automation の使用](../automation-create-runbook-from-samples.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

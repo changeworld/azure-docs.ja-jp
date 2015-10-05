@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="StorSimple のシステム要件 | Microsoft Azure"
-	description="Azure StorSimple ソリューションでのソフトウェア、高可用性、およびネットワークの要件およびベスト プラクティスについて説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   pageTitle="StorSimple のシステム要件 | Microsoft Azure" 
+   description="Azure StorSimple ソリューションでのソフトウェア、高可用性、およびネットワークの要件およびベスト プラクティスについて説明します。" 
+   services="storsimple" 
+   documentationCenter="NA" 
+   authors="alkohli" 
+   manager="carolz" 
+   editor=""/>
 
 <tags
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/26/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD" 
+   ms.date="09/21/2015"
+   ms.author="alkohli"/>
 
 # StorSimple ソフトウェア、高可用性、ネットワークの要件
 
@@ -154,7 +154,8 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 | UDP 123 (NTP) | アウト | WAN | 場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
 | TCP 9354 | アウト | WAN | 場合によっては、メモを参照してください。 |送信ポートは、デバイスと通信するために StorSimple Manager サービスによって使用されます。このポートは、現在のネットワークが HTTP 1.1 を使用したインターネット接続をサポートしていない場合 (たとえば、HTTP 1.0 ベースのプロキシ サーバーを使用している場合)、必須です。<br> プロキシ サーバー経由で接続する場合の詳細については、[サービス バス要件](https://msdn.microsoft.com/library/azure/ee706729.aspx)に関するページを参照してください。 |
 | 3260 (iSCSI) | [ | LAN | いいえ | このポートは、iSCSI を介してデータにアクセスするために使用されます。|
-| 5985 | [ | LAN | いいえ | 受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によってを使用されます。<br>このポートは、HTTP または HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 5985 | [ | LAN | いいえ | 受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によってを使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 5986 | [ | LAN | いいえ | このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
@@ -189,9 +190,9 @@ StorSimple ソリューションの最適なパフォーマンスを得るため
 ## 次のステップ
 
 - [StorSimple システムの制限の詳細](storsimple-limits.md)
-- [StorSimple ソリューションのデプロイする方法](storsimple-deployment-walkthrough.md)
+- [StorSimple ソリューションをデプロイする方法](storsimple-deployment-walkthrough.md)
  
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

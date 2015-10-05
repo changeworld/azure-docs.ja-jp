@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="REST API を使用してメディア・サービス アカウントにファイルをアップロードする" 
-	description="アセットを作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。" 
+	pageTitle="REST API を使用して Media Services アカウントにファイルをアップロードする" 
+	description="資産を作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -13,28 +13,31 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+	ms.date="09/20/2015"
 	ms.author="juliako"/>
 
 
-#REST API を使用してメディア・サービス アカウントにファイルをアップロードする
+#REST API を使用して Media Services アカウントにファイルをアップロードする
 
 [AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
  
 
-Media Services で、デジタル ファイルをアセットにアップロードします。[Asset](https://msdn.microsoft.com/library/azure/hh974277.aspx) エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルをアセットにアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
+Media Services で、デジタル ファイルを資産にアップロードします。[Asset](https://msdn.microsoft.com/library/azure/hh974277.aspx) エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
 
 
 >[AZURE.NOTE]Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
 
-アセットの取り込みの基本的なワークフローは、次のセクションに分けられます。
+資産をアップロードする基本的なワークフローは、次のセクションに分けられます。
 
-- アセットを作成する
-- アセットを暗号化する (オプション)
+- 資産を作成する
+- 資産を暗号化する (オプション)
 - ファイルを BLOB ストレージにアップロードする
 
+AMS では、資産を一括でアップロードすることもできます。詳細については、[こちらの](media-services-rest-upload-files.md#upload_in_bulk)セクションを参照してください。
 
-##アセットを作成する
+##資産をアップロードする
+
+###資産を作成する
 
 >[AZURE.NOTE]Media Services REST API を使用する場合は、次のことに考慮します。
 >
@@ -42,24 +45,24 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 
 >https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。「[Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect_programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。
  
-アセットは、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。REST API でアセットを作成するには、Media Services に POST 要求を送信し、要求本文に、アセットに関するプロパティ情報を配置する必要があります。
+資産は、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。REST API で資産を作成するには、Media Services に POST 要求を送信し、要求本文に、資産に関するプロパティ情報を配置する必要があります。
 
-アセットを作成するときに指定できるプロパティの 1 つは **Options** です。**Options** は、アセットの作成に使用できる暗号化オプションを説明する列挙値です。有効な値は、以下の一覧の値のいずれかです。値の組み合わせではありません。
+資産を作成するときに指定できるプロパティの 1 つは **Options** です。**Options** は、資産の作成に使用できる暗号化オプションを説明する列挙値です。有効な値は、以下の一覧の値のいずれかです。値の組み合わせではありません。
 
 - **None** = **0**: 暗号化は使用されません。これが既定値です。このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。 
 
 - **StorageEncrypted** = **1**: AES-256 ビット暗号化で暗号化してファイルをアップロードおよび格納する場合に指定します。
 
-	アセットがストレージで暗号化されている場合は、アセット配信ポリシーを構成する必要があります。詳細については、「[アセット配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
+	資産がストレージで暗号化されている場合は、資産配信ポリシーを構成する必要があります。詳細については、「[資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
 
 - **CommonEncryptionProtected** = **2**: 共通の暗号化方式 (PlayReady など) で保護されているファイルをアップロードする場合に指定します。
 
 - **EnvelopeEncryptionProtected** = **4**: AES で暗号化された HLS ファイルをアップロードする場合はこのオプションを使用します。この場合ファイルは、Transform Manager によってあらかじめエンコードされて暗号化されている必要があります。
 
->[AZURE.NOTE]アセットに暗号化を使用する場合は、**ContentKey** を作成し、トピック「[ContentKey を作成する方法](media-services-rest-create-contentkey.md)」で説明されているようにアセットにリンクする必要があります。ファイルをアセットにアップロードした後、**AssetFile** エンティティの暗号化プロパティを **Asset** 暗号化中に取得した値に更新する必要があります。**MERGE** HTTP 要求を使用して実行します。
+>[AZURE.NOTE]資産に暗号化を使用する場合は、**ContentKey** を作成し、トピック「[ContentKey を作成する方法](media-services-rest-create-contentkey.md)」で説明されているように資産にリンクする必要があります。ファイルを資産にアップロードした後、**AssetFile** エンティティの暗号化プロパティを **Asset** 暗号化中に取得した値に更新する必要があります。**MERGE** HTTP 要求を使用して実行します。
 
 
-次の例では、アセットを作成する方法を示します。
+次の例では、資産を作成する方法を示します。
 
 **HTTP 要求**
 
@@ -106,9 +109,9 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 	   "StorageAccountName":"storagetestaccount001"
 	}
 	
-##AssetFile を作成する
+###AssetFile を作成する
 
-[AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。アセット ファイルは、常にアセットに関連付けられており、アセットには 1 つまたは複数のアセット　ファイルが含まれている可能性があります。アセット　ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
+[AssetFile](http://msdn.microsoft.com/library/azure/hh974275.aspx) エンティティは、BLOB コンテナーに格納されているビデオまたはオーディオ ファイルを表します。資産ファイルは、常に資産に関連付けられており、資産には 1 つまたは複数の資産ファイルが含まれている可能性があります。資産ファイル オブジェクトが blob コンテナー内のデジタル ファイルに関連付けられていないと、Media Services のエンコーダー タスクは失敗します。
 
 **AssetFile** インスタンスと実際のメディア ファイルは次の 2 つの異なるオブジェクトであることに注意してください。AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
@@ -171,7 +174,7 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 	}
 
 
-## 書き込みのアクセス許可を持つ AccessPolicy を作成する 
+### 書き込みのアクセス許可を持つ AccessPolicy を作成する 
 
 すべてのファイルを blob ストレージにアップロードする前に、資産に書き込むためのアクセス ポリシーの権限を設定します。そのためには、AccessPolicies エンティティ セットへの HTTP 要求を投稿します。作成時に DurationInMinutes 値を定義します。定義していないと、500 Internal Server エラー メッセージが返されます。AccessPolicies　の詳細については、[AccessPolicy](http://msdn.microsoft.com/library/azure/hh974297.aspx) をご覧ください。
 
@@ -218,7 +221,7 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 	   "Permissions":2
 	}
 
-##アップロード URL を取得する
+###アップロード URL を取得する
 
 実際のアップロード URL を受信するには、SAS Locator　を作成します。Locator は、資産内のファイルにアクセスするクライアントの開始時刻と接続エンドポイントの種類を定義します。特定の AccessPolicy と Asset ペアに対して複数の　Locator　エンティティを作成して、別のクライアントの要求およびニーズを処理できます。これらの各 Locator は、AccessPolicy の StartTime 値と DurationInMinutes 値を使用して、URL を使用できる時間の長さを決定します。詳細については、「[Locator](http://msdn.microsoft.com/library/azure/hh974308.aspx)」をご覧ください。
 
@@ -286,7 +289,7 @@ SAS URL には次の形式があります。
 	   "Name":null
 	}
 
-## Blob ストレージ コンテナーにファイルをアップロードする
+### Blob ストレージ コンテナーにファイルをアップロードする
 	
 AccessPolicy と Locator を設定すると、実際のファイルは、Azure Storage REST API を使用して Azure Blob ストレージ コンテナーにアップロードされます。ページにアップロードするか、blob をブロックできます。
 
@@ -295,7 +298,7 @@ AccessPolicy と Locator を設定すると、実際のファイルは、Azure S
 Azure ストレージ BLOB の使用の詳細については、[BLOB サービス REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx) をご覧ください。
 
 
-## AssetFile を更新する 
+### AssetFile を更新する 
 
 ファイルをアップロードしたので、FileAsset サイズ (およびその他) の情報を更新します。次に例を示します。
 	
@@ -322,7 +325,7 @@ Azure ストレージ BLOB の使用の詳細については、[BLOB サービ�
 
 成功した場合は、「HTTP/1.1 204 No Content」が返されます。
 
-## Locator と AccessPolicy　を削除します。 
+### Locator と AccessPolicy　を削除します。 
 
 **HTTP 要求**
 
@@ -362,6 +365,146 @@ Azure ストレージ BLOB の使用の詳細については、[BLOB サービ�
 	HTTP/1.1 204 No Content 
 	...
 
+##<a id="upload_in_bulk"></a>資産を一括でアップロードする
+
+###IngestManifest を作成する
+
+IngestManifest は、資産、資産 ファイル、および静的情報のセット用のコンテナーで、このセットの一括取り込みの進行状況を把握するのに使用できす。
+
+
+**HTTP 要求**
+
+	POST https:// media.windows.net/API/IngestManifests HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
+	Host: media.windows.net
+	Content-Length: 36
+	Expect: 100-continue
+	
+	{ "Name" : "ExampleManifestREST" }
+
+###資産を作成する
+
+IngestManifestAsset を作成する前に、一括取り込みで完成する資産を作成する必要があります。資産は、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。REST API の資産を作成するには、Microsoft Azure Media Services に HTTP POST 要求を送信し、要求本文に、資産に関する任意のプロパティ情報を配置します。この例では、要求本文に含まれる StorageEncrption(1) を使用して資産が作成されています。
+
+**HTTP 応答**
+
+	POST https://media.windows.net/API/Assets HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
+	Host: media.windows.net
+	Content-Length: 55
+	Expect: 100-continue
+	
+	{ "Name" : "ExampleManifestREST_Asset", "Options" : 1 }
+
+###IngestManifestAssets を作成する
+
+IngestManifestAssets は一括取り込みで使用される IngestManifest 内の Asset を示します。これでは、基本的に資産をマニフェストにリンクします。Azure Media Services は、IngestManifestAsset に関連付けられている IngestManifestFiles コレクションに基づいて、内部でファイルのアップロードを監視します。これらのファイルがアップロードされると、資産が完成します。新しい IngestManifestAsset は、HTTP POST 要求を使用して作成できます。要求本文に、一括取り込みのために IngestManifestAsset がリンクをする必要のある IngestManifest ID と Asset ID を含めます。
+
+**HTTP 応答**
+
+	POST https://media.windows.net/API/IngestManifestAssets HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
+	Host: media.windows.net
+	Content-Length: 152
+	Expect: 100-continue
+	{ "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "Asset" : { "Id" : "nb:cid:UUID:b757929a-5a57-430b-b33e-c05c6cbef02e"}}
+
+###(省略可能) 暗号化に使用する ContentKey を作成する
+
+資産で暗号化を使用する場合、資産の IngestManifestFiles を作成する前に暗号化に使用する ContentKey を作成する必要があります。この場合は、次のプロパティを要求本文に含めます。
+ 
+要求本文のプロパティ | 説明 ID |"nb:kid:UUID:<NEW GUID>" 形式を使用して生成する ContentKey ID です。ContentKeyType | 整数によるこのコンテンツ キーの種類です。ストレージの暗号化には、値 1 を渡します。EncryptedContentKey | 256 ビット (32 バイト) の値の新しいコンテンツ キー値を作成します。このキーは、GetProtectionKeyId および GetProtectionKey メソッド用に HTTP GET 要求を実行して Microsoft Azure Media Services から取得する、ストレージ暗号化 X.509 証明書を使用して暗号化します。ProtectionKeyId | コンテンツ キーの暗号化に使用したストレージ暗号化 X.509 証明書の保護キー ID です。ProtectionKeyType |コンテンツ キーの暗号化に使用した保護キーの暗号化の種類です。例では、この値には StorageEncryption(1) を使用しています。Checksum | コンテンツ キー用に MD5 で計算されたチェックサムです。コンテンツ ID をコンテンツ キーで暗号化してコンピューティングします。コード例では、チェックサムの計算方法を示しています。
+
+
+**HTTP 応答**
+	
+	POST https://media.windows.net/api/ContentKeys HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
+	Host: media.windows.net
+	Content-Length: 572
+	Expect: 100-continue
+	
+	{"Id" : "nb:kid:UUID:316d14d4-b603-4d90-b8db-0fede8aa48f8", "ContentKeyType" : 1, "EncryptedContentKey" : "Y4NPej7heOFa2vsd8ZEOcjjpu/qOq3RJ6GRfxa8CCwtAM83d6J2mKOeQFUmMyVXUSsBCCOdufmieTKi+hOUtNAbyNM4lY4AXI537b9GaY8oSeje0NGU8+QCOuf7jGdRac5B9uIk7WwD76RAJnqyep6U/OdvQV4RLvvZ9w7nO4bY8RHaUaLxC2u4aIRRaZtLu5rm8GKBPy87OzQVXNgnLM01I8s3Z4wJ3i7jXqkknDy4VkIyLBSQvIvUzxYHeNdMVWDmS+jPN9ScVmolUwGzH1A23td8UWFHOjTjXHLjNm5Yq+7MIOoaxeMlKPYXRFKofRY8Qh5o5tqvycSAJ9KUqfg==", "ProtectionKeyId" : "7D9BB04D9D0A4A24800CADBFEF232689E048F69C", "ProtectionKeyType" : 1, "Checksum" : "TfXtjCIlq1Y=" }
+
+### ContentKey を資産にリンクする
+
+ContentKey は、HTTP POST 要求を送信することによって 1 つ以上の資産に関連付けます。次では、ID を使用して、ContentKey の例と資産の例をリンクする要求の例を示します。
+
+**HTTP 応答**
+	
+	POST https://media.windows.net/API/Assets('nb:cid:UUID:b3023475-09b4-4647-9d6d-6fc242822e68')/$links/ContentKeys HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
+	Host: media.windows.net
+	Content-Length: 113
+	Expect: 100-continue
+	
+	{ "uri": "https://media.windows.net/api/ContentKeys('nb%3Akid%3AUUID%3A32e6efaf-5fba-4538-b115-9d1cefe43510')"}
+
+###各資産の IngestManifestFiles を作成する
+
+IngestManifestFile とは、資産の一括取り込みの一環としてアップロードされる実際のビデオまたはオーディオ BLOB オブジェクトです。暗号化関連のプロパティは、資産で暗号化オプションを使用しない限り不要です。このセクションの例では、StorageEncryption を使用する IngestManifestFile を作成済みの資産用に作成する方法を示します。
+
+
+**HTTP 応答**
+
+	POST https://media.windows.net/API/IngestManifestFiles HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
+	Host: media.windows.net
+	Content-Length: 367
+	Expect: 100-continue
+	
+	{ "Name" : "REST_Example_File.wmv", "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "ParentIngestManifestAssetId" : "nb:maid:UUID:beed8531-9a03-9043-b1d8-6a6d1044cdda", "IsEncrypted" : "true", "EncryptionScheme" : "StorageEncryption", "EncryptionVersion" : "1.0", "EncryptionKeyId" : "nb:kid:UUID:32e6efaf-5fba-4538-b115-9d1cefe43510" }
+	
+###Blob ストレージにファイルをアップロードする
+
+資産ファイルを BLOB ストレージ コンテナーの URI にアップロードする機能のある任意の高速クライアント アプリケーションを使用できます。これは、IngestManifest の BlobStorageUriForUpload プロパティから提供します。有名な高速アップロードサービスには、[Aspera On Demand for Azure アプリケーション](http://go.microsoft.com/fwlink/?LinkId=272001)などがあります。
+
+###一括取り込みの進捗状況を監視する
+
+IngestManifest の Statistics プロパティをポーリングすることによって、IngestManifest の一括取り込み操作の進行状況を監視できます。このプロパティは複合型の [IngestManifestStatistics](https://msdn.microsoft.com/library/azure/jj853027.aspx) です。Statistics プロパティをポーリングするには、IngestManifest ID を渡して、HTTP GET 要求を送信します。
+ 
+
+**HTTP 応答**
+
+	GET https://media.windows.net/API/IngestManifests('nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048') HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=070500D0-F35C-4A5A-9249-485BBF4EC70B&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1334275521&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=GxdBb%2fmEyN7iHdNxbawawHRftLhPFFqxX1JZckuv3hY%3d
+	Host: media.windows.net
+
 
 ##Media Services のラーニング パス
 
@@ -375,4 +518,4 @@ AMS のラーニング パスについては、以下を参照してください
 [How to Get a Media Processor]: media-services-get-media-processor.md
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

@@ -1,8 +1,7 @@
 <properties 
-	pageTitle="エラスティック データベース ジョブの概要" 
-	description="エラスティック データベース ジョブ サービスの説明" 
-	services="sql-database" 
-	documentationCenter=""  
+	pageTitle="PowerShell を使用してエラスティック データベース ジョブを作成して管理する" 
+	description="Azure SQL Database プールを管理するために使用するPowerShell" 
+	services="sql-database" documentationCenter=""  
 	manager="jeffreyg" 
 	authors="ddove"/>
 
@@ -12,7 +11,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="09/17/2015" 
 	ms.author="ddove; sidneyh" />
 
 # PowerShell を使用した SQL Database のエラスティック データベース ジョブの作成と管理 (プレビュー)
@@ -674,4 +673,4 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

@@ -1,30 +1,35 @@
 <properties 
-	pageTitle="チュートリアル: クラウド専用仮想ネットワークの作成"
-	description="このチュートリアルでは、サンプルのクラウド専用 Azure Virtual Network を作成する方法について説明します。"
-	services="virtual-machines, virtual-network"
-	documentationCenter=""
-	authors="cherylmc"
-	manager="adinah"
-	editor=""/>
+	pageTitle="クラウド専用仮想ネットワークを作成する | Microsoft Azure" 
+	description="このチュートリアルでは、サンプルのクラウド専用 Azure Virtual Network を作成する方法について説明します。" 
+	services="virtual-machines, virtual-network" 
+	documentationCenter="" 
+	authors="cherylmc" 
+	manager="adinah" 
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-network"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2015"
+	ms.service="virtual-network" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/17/2015" 
 	ms.author="cherylmc"/>
 
-# チュートリアル: Azure でのクラウド専用仮想ネットワークの作成
+# チュートリアル: Azure でのクラウド専用 Virtual Network の作成
 
-このチュートリアルでは、Azure 管理ポータルで 2 つのサブセットを含むクラウド専用 Azure Virtual Network のサンプルを作成する手順について説明します。作成された仮想ネットワークは次のようになります。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。
+
+
+このチュートリアルでは、Microsoft Azure 管理ポータルで 2 つのサブセットを含むクラウド専用 Azure Virtual Network のサンプルを作成する手順について説明します。作成された仮想ネットワークは次のようになります。
 
 ![createvnet](./media/create-virtual-network/createVNet_06_VNetExample.png)
 
 たとえば、FrontEndSubnet は Web サーバーに使用でき、BackEndSubnet は SQL Server またはドメイン コントローラーに使用できます。
 
-このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。目的は、構成の手順を実行して、読者が仮想ネットワークの作成に必要な手順を習得できるようにすることです。特定の構成で機能するクラウド専用の仮想ネットワークを作成するには、「[管理ポータルでのクラウド専用仮想ネットワークの構成](../virtual-network/virtual-networks-create-vnet.md)」を参照してください。仮想ネットワークのデザイン シナリオや詳細情報については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
+このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。目的は、構成の手順を実行して、読者が仮想ネットワークの作成に必要な手順を習得できるようにすることです。特定の構成で機能するクラウド専用の仮想ネットワークを作成するには、「[管理ポータルでのクラウド専用仮想ネットワークの構成](../virtual-network/virtual-networks-create-vnet.md)」を参照してください。Virtual Network のデザイン シナリオや詳細情報については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
 
 > [AZURE.NOTE]このチュートリアルでは、仮想ネットワークを組織のネットワークに接続するクロスプレミス構成を作成する手順については説明しません。クロスプレミス接続とサイト間 VPN 接続 (社内の Active Directory または SharePoint への接続) が可能な仮想ネットワークの作成手順を説明するチュートリアルについては、[サイト間クロスプレミス接続用の仮想ネットワークの作成に関するチュートリアル](../virtual-network/virtual-networks-create-site-to-site-cross-premises-connectivity.md)を参照してください。
@@ -38,7 +43,7 @@
 
 *  少なくとも 1 つの Azure サブスクリプションが有効でアクティブな Microsoft アカウント。Azure サブスクリプションを持っていない場合は、[Azure の無料試用版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別料金: MSDN、MPN、Bizspark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をご覧ください。
 
-##  このチュートリアル用の仮想ネットワークの作成
+##  このチュートリアル用の Virtual Network の作成
 
 このサンプルのクラウド専用仮想ネットワークを作成するには、以下の手順を実行します。
 
@@ -57,7 +62,7 @@
 
 	![][Image2]
 
-4. 右下にある次へ進む矢印をクリックします。このページの設定の詳細については、「[管理ポータルでの仮想ネットワークの設定について](http://go.microsoft.com/fwlink/p/?linkid=248092&clcid=0x409)」を参照してください。
+4. 右下にある次へ進む矢印をクリックします。このページの設定の詳細については、「[管理ポータルでの Virtual Network の設定について](http://go.microsoft.com/fwlink/p/?linkid=248092&clcid=0x409)」を参照してください。
 
 5. **[DNS サーバーおよび VPN 接続]** ページで、右下にある次へ進む矢印をクリックします。Azure はインターネットベースの Azure DNS サーバーを新しい仮想マシンに割り当てます。この仮想マシンはインターネット リソースへのアクセスを許可する、この仮想ネットワークに追加されます。このページの設定の詳細については、「[管理ポータルでの仮想ネットワークの設定について](http://go.microsoft.com/fwlink/p/?linkid=248092&clcid=0x409)」の「[DNS サーバーおよび VPN 接続] ページ」を参照してください。
 	
@@ -75,7 +80,7 @@
 - FrontEndSubnet: 10.0.2.0/24
 - BackEndSubnet: 10.0.1.0/24
 
- このページの設定の詳細については、「[管理ポータルでの仮想ネットワークの設定について](http://go.microsoft.com/fwlink/p/?linkid=248092&clcid=0x409)」の「[仮想ネットワーク アドレス空間]ページ」を参照してください。
+ このページの設定の詳細については、「[管理ポータルでの Virtual Network の設定について](http://go.microsoft.com/fwlink/p/?linkid=248092&clcid=0x409)」の「[仮想ネットワーク アドレス空間]ページ」を参照してください。
 
 
 7. ページの右下にあるチェックマークをクリックすると、仮想ネットワークの作成が開始されます。仮想ネットワークが作成されると、Azure 管理ポータルの **[ネットワーク]** ページの [状態] に **[作成済み]** と表示されます。  
@@ -94,7 +99,7 @@ Azure インフラストラクチャ サービスについてさらに学習す�
 
 仮想ネットワークのデザイン シナリオや詳細情報については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-仮想ネットワーク構成のその他の手順と設定については、[Azure Virtual Network の構成タスク](http://go.microsoft.com/fwlink/p/?linkid=296652&clcid=0x409)に関するページを参照してください。
+Virtual Network 構成のその他の手順と設定については、[Azure Virtual Network の構成タスク](http://go.microsoft.com/fwlink/p/?linkid=296652&clcid=0x409)に関するページを参照してください。
 
 
 ## 関連項目
@@ -118,4 +123,4 @@ Azure インフラストラクチャ サービスについてさらに学習す�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

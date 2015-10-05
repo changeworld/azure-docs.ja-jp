@@ -1,21 +1,21 @@
 <properties
    pageTitle="リソース マネージャーとサービス管理 (従来) のデプロイ モード |Azure"
-	description="リソース マネージャーと従来のデプロイ モデルの違いについて説明します。"
-	services="virtual-network"
-	documentationCenter=""
-	authors="telmosampaio"
-	manager="carolz"
-	editor=""
-	tags="azure-resource-manager,azure-service-management"/>
+   description="リソース マネージャーと従来のデプロイ モデルの違いについて説明します。"
+   services="virtual-network"
+   documentationCenter=""
+   authors="telmosampaio"
+   manager="carolz"
+   editor=""
+   tags="azure-resource-manager,azure-service-management"/>
 
 <tags
    ms.service="virtual-network"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/14/2015"
-	ms.author="telmos"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/14/2015"
+   ms.author="telmos"/>
 
 # Azure デプロイ モデル
 
@@ -36,7 +36,7 @@ Azure Platform は移行中です。Azure を初めて使用する場合も、�
 - 使用する Azure Platform の機能は、これら 2 つのモデル間で異なります。たとえば、リソース マネージャーのデプロイ モデル (またはリソース マネージャーのみ) を使用して作成されたリソースは、[Azure リソース マネージャーのテンプレート](resource-group-overview.md/#template-deployment)を使用して作成できますが、従来のデプロイ モデルで作成されたリソースは、Azure リソース マネージャーのテンプレートを使用して作成できません。
 - 個々の Azure リソースの機能や動作は、2 つのモデル間で異なる場合もあれば、どちらか 1 つのモデルにのみ存在する場合もあります。たとえば、従来のデプロイ モデルで作成された仮想マシン間でのトラフィックの負荷分散は*暗黙的*に行われます。これは、仮想マシンが Azure クラウド サービスのメンバーであり、負荷がクラウド サービス内の仮想マシン間で自動的に分散されるためです。リソース マネージャーを使用して作成された仮想マシンは、クラウド サービスのメンバーではないため、複数の仮想マシン間でトラフィックの負荷を分散するには、別の Azure Load Balancer リソースを*明示的に*作成する必要があります。  
 - Azure リソースを作成、構成、管理する方法は、これら 2 つのモデル間で異なります。
-- 一方のデプロイ モデルを使用して作成されたリソースは、もう一方のデプロイ モデルを使用して作成したリソースと同時に使用できるとは限りません。たとえば、一方のデプロイ モデルを使用して作成された Azure 仮想マシンは、同じデプロイ モデルを使用して作成された Azure 仮想ネットワークのみに接続できます。    
+- 一方のデプロイ モデルを使用して作成されたリソースは、もう一方のデプロイ モデルを使用して作成したリソースと同時に使用できるとは限りません。たとえば、一方のデプロイ モデルを使用して作成された Azure 仮想マシンは、同じデプロイ モデルを使用して作成された Azure Virtual Network のみに接続できます。    
 
 各デプロイ モデルの基になるのは、各リソースのアプリケーション プログラミング インターフェイス (API) です。リソース マネージャーのデプロイ モデルの場合は[リソース マネージャー API](https://msdn.microsoft.com/library/azure/dn948464.aspx)、従来のデプロイ モデルの場合は[サービス管理 API](https://msdn.microsoft.com/library/azure/ee460799.aspx) があります。開発者は、これらの API と*直接*対話するコードを記述できます。
 
@@ -65,7 +65,7 @@ CLI を使用して、Windows、OS X、または Linux コンピューターか�
 ## 次のステップ
 
 - [リソース マネージャー](/resource-group-overview.md)の詳細情報を確認する
-- [テンプレートの設計](/best-practices-resource-manager-design-templates/md)方法を理解する
-- [ベスト プラクティス](best-practices-resource-manager-examples.md)を使用する
+- [テンプレートの設計](/best-practices-resource-manager-design-templates.md)方法を理解する
+- [ベスト プラクティス](/best-practices-resource-manager-examples.md)を使用する
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

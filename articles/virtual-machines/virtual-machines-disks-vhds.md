@@ -1,5 +1,5 @@
 <properties
-	pageTitle="仮想マシン用のディスクと VHD について"
+	pageTitle="ディスクと VHD について |Microsoft Azure"
 	description="Azure での仮想マシン用のディスクと VHD の基本について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -17,7 +17,9 @@
 	ms.date="06/30/2015"
 	ms.author="cynthn"/>
 
-# 仮想マシン用のディスクと VHD について
+# Azure 仮想マシン用のディスクと VHD について
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルおよびクラシック デプロイメント モデルを使用して作成されたリソースについて説明します。
 
 ユーザーが仮想マシンを作成する場合、Azure でのすべての仮想マシンは少なくとも 2 つのディスクで構成されます。1 つはオペレーティング システム ディスクであり、もう 1 つはリソース ディスクとも呼ばれる一時的なローカル ディスクです。オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は実際に仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。仮想マシンではデータ ディスクも保持することができ、これらも VHD として格納されます。
 
@@ -39,7 +41,7 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 
 ## VHD について
 
-Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。(Premium Storage は特定の地域で使用できます。) ページ BLOB の詳細については、「[「ブロック BLOB およびページ BLOB について](https://msdn.microsoft.com/library/ee691964.aspx)」をご覧ください。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage-premium-storage-preview-portal.md)」をご覧ください。
+Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。(Premium Storage は特定の地域で使用できます。) ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](https://msdn.microsoft.com/library/ee691964.aspx)」をご覧ください。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage-premium-storage-preview-portal.md)」をご覧ください。
 
 Azure 以外では、仮想ハード ディスクには VHD フォーマットまたは VHDX フォーマットを使用でき、固定、動的拡張、差分にも対応しています。Azure は VHD フォーマットの固定ディスクをサポートしています。固定フォーマットの場合、ファイル内で論理ディスクがリニアにレイアウトされるため、ディスク オフセット X は BLOB オフセット X に格納されます。BLOB 末尾の小さなフッターに、VHD のプロパティが記述されます。固定フォーマットの場合、ほとんどのディスクに大きな未使用の範囲が含まれるため、容量が無駄になることがよくあります。しかし、Azure では .vhd ファイルをスパース フォーマットで格納するため、固定ディスクのメリットと動的ディスクのメリットを同時に享受できます。詳細については、「[仮想ハード ディスクの概要](https://technet.microsoft.com/library/dd979539.aspx)」をご覧ください。
 
@@ -65,4 +67,4 @@ Windows 仮想マシン
 -  [Windows 仮想マシンをキャプチャする](virtual-machines-capture-image-windows-server.md)
 -  [ディスクを取り外す](storage-windows-detach-disk.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

@@ -13,12 +13,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="08/12/2015"
+	ms.date="09/21/2015"
 	ms.author="curtand"/>
 
 # Azure AD サービスの制限と制約
 
- Microsoft Azure サービスの制限すべてをご覧になりたい場合は、「[Azure サブスクリプションとサービスの制限、クォータ、および制約](azure-subscription-service-limits.md)」を参照してください。
+Microsoft Azure サービスの制限すべてをご覧になりたい場合は、「[Azure サブスクリプションとサービスの制限、クォータ、および制約](azure-subscription-service-limits.md)」を参照してください。
 
 [AZURE.INCLUDE [AAD-service-limits](../../includes/active-directory-service-limits-include.md)]
 
@@ -27,4 +27,4 @@
 - [Azure サブスクリプションを Azure AD に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 - [Azure AD の用語](active-directory-terminology.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

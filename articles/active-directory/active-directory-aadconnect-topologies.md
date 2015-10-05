@@ -162,4 +162,4 @@ Azure AD のディレクトリは、分離するように設計されていま�
 ## 次のステップ
 これらのシナリオのために Azure AD Connect をインストールする方法については、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」を参照してください。Azure AD Connect Sync の構成の詳細については、「[Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)」を参照してください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

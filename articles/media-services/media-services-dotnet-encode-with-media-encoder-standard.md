@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"    
+	ms.date="09/20/2015"    
 	ms.author="juliako"/>
 
 
@@ -23,11 +23,9 @@
 
 このトピックでは、.NET を使用し、Media Encoder Standard で資産をエンコードする方法について紹介します。Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
->[AZURE.NOTE]現行リリースのメディア プロセッサーでは、XML または JSON 文字列全体をエンコーディング プリセットとして渡す必要があります。「H264 Multiple Bitrate 720p」のような名前付き文字列は間もなく行われるサービスの更新で利用できるようになります。
-
 中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する 必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
 
-出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。詳細については、「[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)」をご覧ください。
+出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。詳細については、「[アセット配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)」をご覧ください。
 
 ##例
 
@@ -35,7 +33,7 @@
 
 - エンコード ジョブを作成します。
 - Media Encoder Standard エンコーダーの参照を取得します。
-- [ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)に表示されるプリセットの 1 つからプリセット XML を読み込みます。
+- "H264 Multiple Bitrate 720p" プリセットを使用するように指定します。すべてのプリセットは、[こちら](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で確認できます。また、これらのプリセットが従う必要があるスキーマを、[こちらのトピック](https://msdn.microsoft.com/library/mt269962.aspx)で確認できます。
 - 1 つのエンコード タスクをジョブに追加します。 
 - エンコードする入力資産を指定します。
 - エンコードされた資産が含まれる出力資産を作成します。
@@ -50,13 +48,12 @@
 		    // processor to use for the specific task.
 		    IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 		
-		    // Load the XML (or JSON) from the local file
-		    string configuration = File.ReadAllText(pathToLocalPresetFile);
-		
-		    // Create a task
-		    ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
+
+		    // Create a task with the encoding details, using a string preset.
+		    // In this case "H264 Multiple Bitrate 720p" preset is used.
+		    ITask task = job.Tasks.AddNew("My encoding task",
 		        processor,
-		        configuration,
+		        "H264 Multiple Bitrate 720p",
 		        TaskOptions.None);
 		
 		    // Specify the input asset to be encoded.
@@ -126,6 +123,6 @@ AMS のラーニング パスについては、以下を参照してください
 
 ##関連項目 
 
-[Media Services Encoding の概要](media-services-encode-asset.md)
+[Media Encoder Standard と .NET を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md) [Media Services でのエンコーディングの概要](media-services-encode-asset.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

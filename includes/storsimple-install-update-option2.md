@@ -1,19 +1,4 @@
-<properties 
-   pageTitle="方法 2: Microsoft Azure 管理ポータルを使用して Update 1.2 を適用する"
-   description="管理ポータルを使用して、StorSimple 8000 シリーズの Update 1.2 をインストールする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="09/08/2015"
-   ms.author="v-sharos" />
+<!--author=SharS last changed: 9/17/15-->
 
 #### Microsoft Azure 管理ポータルから Update 1.2 をインストールするには
 
@@ -27,4 +12,4 @@
 
 7. これで、[管理ポータルを使用して Update 1.2 をインストールする](#use-the-management-portal-to-install-update-1)ことができます。この手順の手順 3. 以降の指示に従います。すべての更新プログラムをインストールした後で、無効にしたネットワーク インターフェイスを再び有効にできます。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

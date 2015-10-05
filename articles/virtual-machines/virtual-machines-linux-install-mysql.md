@@ -1,11 +1,12 @@
 <properties
-	pageTitle="MySQL を Azure でインストールする方法"
-	description="Azure 上の Linux 仮想マシン (VM) に MySQL スタックをインストールする方法について説明します。Ubuntu または RedHat ファミリ OS 上でインストールできます。"
+	pageTitle="MySQL を Linux VM にセットアップする | Microsoft Azure"
+	description="Azure 上の Linux 仮想マシン (Ubuntu または RedHat ファミリ OS) に MySQL スタックをインストールする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="SuperScottz"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -22,13 +23,16 @@
 
 この記事では、Linux を実行している Azure 仮想マシンに MySQL をインストールして構成する方法を説明します。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用したリソースの作成について説明します。
 
-> [AZURE.NOTE]このチュートリアルを実行するには、Linux を実行する Microsoft Azure Virtual Machine が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て、VM 名を`mysqlnode`、ユーザー名を `azureuser` として、Linux VM を作成およびセットアップしてください。
-
-(この例では、MySQL ポートとしてポート 3306 を使用します。)
 
 
 ##仮想マシンに MySQL をインストールする
+
+> [AZURE.NOTE]このチュートリアルを実行するには、Linux を実行する Microsoft Azure Virtual Machine が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-tutorial.md)を見て、VM 名を`mysqlnode`、ユーザー名を `azureuser` として、Linux VM を作成およびセットアップしてください。
+
+この例では、MySQL ポートとしてポート 3306 を使用します。
+
 putty を使用して作成した Linux VM に接続します。初めて Azure Linux VM を使用する場合、putty を使用して Linux VM に接続する方法については、[こちら](virtual-machines-linux-use-ssh-key.md)を参照してください。
 
 この記事では、例として MySQL5.6 のインストールにパッケージのリポジトリを使用します。実際、MySQL5.6 は、MySQL5.5 よりもパフォーマンスが向上しています。詳細情報は[こちら](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/)です。
@@ -37,7 +41,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 ###Ubuntu で MySQL 5.6 をインストールする方法
 ここでは、Azure の Ubuntu Linux VM を使用します。
 
-- 手順 1. MySQL Server 5.6 をインストールし、ユーザー `root` に切り替える 
+- 手順 1. MySQL Server 5.6 をインストールし、ユーザー `root` に切り替える
 
             #[azureuser@mysqlnode:~]sudo su -
 
@@ -50,11 +54,11 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
     ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p1.png)
 
-    
+
     確認のため、もう一度パスワードを入力します。
 
     ![image](./media/virtual-machines-linux-install-mysql/virtual-machines-linux-install-mysql-p2.png)
- 
+
 - 手順 2. MySQL サーバー にログインする
 
     MySQL サーバー のインストールが完了したら、MySQL サービスが自動的に開始されます。MySQL サーバーには、ユーザー `root` としてログインできます。以下のコマンドを使用してログインし、パスワードを入力します。
@@ -82,18 +86,18 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
 ###Cent OS、Oracle Linux など、Red Hat OS ファミリに MySQL をインストールする方法
 ここでは CentOS または Oracle Linux と Linux VM を使用します。
- 
-- 手順 1. MySQL Yum リポジトリ スイッチを追加して、ユーザー `root` に切り替える 
+
+- 手順 1. MySQL Yum リポジトリ スイッチを追加して、ユーザー `root` に切り替える
 
             #[azureuser@mysqlnode:~]sudo su -
 
     MySQL リリース パッケージをダウンロードして、インストールします。
 
-            #[root@mysqlnode ~]# wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm 
-            #[root@mysqlnode ~]# yum localinstall -y mysql-community-release-el6-5.noarch.rpm 
+            #[root@mysqlnode ~]# wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+            #[root@mysqlnode ~]# yum localinstall -y mysql-community-release-el6-5.noarch.rpm
 
 - 手順 2. MySQL リポジトリを有効にして MySQL5.6 パッケージをダウンロードするため、以下のファイルを編集する
- 
+
             #[root@mysqlnode ~]# vim /etc/yum.repos.d/mysql-community.repo
 
     このファイルの各値を以下のように更新します。
@@ -113,14 +117,14 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
 - 手順 3. MySQL リポジトリから Install MySQL を使用して MySQL をインストールする
 
-           #[root@mysqlnode ~]#yum install mysql-community-server 
+           #[root@mysqlnode ~]#yum install mysql-community-server
 
     MySQL RPM パッケージとすべての関連するパッケージがインストールされます。
 
 - 手順 4. MySQL サービスの実行を管理する
 
     (a) MySQL サーバーのサービスの状態を確認する
-   
+
            #[root@mysqlnode ~]#service mysqld status
 
     (b) MySQL Server の既定のポートが実行されているかどうかを確認する
@@ -180,6 +184,6 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
            #[root@mysqlnode ~]# insserv mysql
 
 ###次の手順
-MySQL の使用法などの情報は [こちら](https://www.mysql.com/)です。
+MySQL の使用法などの情報は[こちら](https://www.mysql.com/)です。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

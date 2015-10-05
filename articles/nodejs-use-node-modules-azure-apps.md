@@ -68,6 +68,8 @@ Azure Websites では、すべてのネイティブ モジュールはサポー�
 
 ここでは、Azure で Node.js モジュールを使う方法について説明しました。次は、[Node.js のバージョンを指定する方法]、[Node.js を使って Web サイトを構築およびデプロイする方法]、[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法]について、それぞれのトピックをご覧ください。
 
+詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+
 [Node.js のバージョンを指定する方法]: nodejs-specify-node-version-azure-apps.md
 [Mac および Linux で Azure コマンド ライン インターフェイスを使う方法]: xplat-cli.md
 [Node.js を使って Web サイトを構築およびデプロイする方法]: web-sites-nodejs-develop-deploy-mac.md
@@ -76,4 +78,4 @@ Azure Websites では、すべてのネイティブ モジュールはサポー�
 [Build and deploy a Node.js application to an Azure Cloud Service]: cloud-services-nodejs-develop-deploy-app.md
 [Custom Website Deployment Scripts with Kudu (Kudu でのカスタム Web サイト デプロイメント スクリプト)]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

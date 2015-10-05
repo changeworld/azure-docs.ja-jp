@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="" 
+	pageTitle="Visual Studio 接続済みサービスを使用して Mobile Services を JavaScript アプリに追加したときの影響" 
 	description="Visual Studio の Azure Mobile Services プロジェクトの変更点について説明します。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -16,7 +16,7 @@
 	ms.date="07/02/2015" 
 	ms.author="patshea"/>
 
-# プロジェクトの変更点
+# 接続済みサービスを使用して Mobile Services を追加したときの Visual Studio Azure JavaScript プロジェクトへの影響
 
 > [AZURE.SELECTOR]
 > - [Getting Started](vs-mobile-services-javascript-getting-started.md)
@@ -46,4 +46,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

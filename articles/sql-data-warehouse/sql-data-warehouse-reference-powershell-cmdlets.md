@@ -1,20 +1,20 @@
 <properties
    pageTitle="SQL Data Warehouse でのコマンドレットの概要"
-	description="PowerShell コマンドレットを使用した SQL Data Warehouse の一時停止と再開"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="sidneyh"
-	manager="jhubbard"
-	editor=""/>
+   description="PowerShell コマンドレットを使用した SQL Data Warehouse の一時停止と再開"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="sidneyh"
+   manager="jhubbard"
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-services"
-	ms.date="08/28/2015"
-	ms.author="twounder;sidneyh;barbkess"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="09/22/2015"
+   ms.author="twounder;sidneyh;barbkess"/>
 
 # Azure Data Warehouse コマンドレットと REST API の概要
 
@@ -111,4 +111,4 @@ RestorePointCreationDate |バックアップのスナップショット時間 (r
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

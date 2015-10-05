@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/29/2015"
+	ms.date="09/22/2015"
 	ms.author="tdykstra"/>
 
 # Azure App Service に .NET Web ジョブを作成する
@@ -828,4 +828,4 @@ https://{webappname}.scm.azurewebsites.net/azurejobs/#/functions
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * Azure ポータルから Azure プレビュー ポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
-<!-----HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

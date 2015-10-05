@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用 | Microsoft Azure"
-	description="Azure CLI の asm モードを使用し、Mac、Linux、および Windows 用のコマンド ライン ツールで Azure を管理する方法について説明します。"
+	pageTitle="サービス管理で Azure CLI を使用する | Microsoft Azure"
+	description="クラシック (サービス管理) デプロイ モードの Azure CLI で Mac、Linux、Windows 用のコマンド ライン ツールを使用する方法について説明します。"
 	services="virtual-machines, mobile-services, cloud-services"
 	documentationCenter=""
 	authors="dlepow"
@@ -18,6 +18,8 @@
 	ms.author="danlep"/>
 
 # Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-deploy-rmtemplates-azure-cli.md)を使用してリソースを作成することもできます。
 
 このトピックでは、**asm** モードで Azure CLI を使用し、Mac、Linux、および Windows コンピューターのコマンド ライン上でサービスを作成、管理、削除する方法について説明します。これらの機能は、.NET、Node.JS、および PHP 向けの Azure SDK と共にインストールされる Windows PowerShell サービス管理コマンドレットに備わっている機能と似ています。
 
@@ -65,7 +67,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	warn:   Remember to delete it now that it has been imported.
 	info:   Account publish settings imported successfully
 
-> [AZURE.NOTE]publishsettings ファイルには、複数のサブスクリプションの詳細 (サブスクリプション名と ID) を含めることができます。publishsettings ファイルをインポートすると、最初のサブスクリプションが既定の説明として使用されます。別のサブスクリプションを使用するには、次のコマンドを実行します。<code>\~$ azure config set subscription &lt;other-subscription-id&gt;</code>
+> [AZURE.NOTE]publishsettings ファイルには、複数のサブスクリプションの詳細 (サブスクリプション名と ID) を含めることができます。publishsettings ファイルをインポートすると、最初のサブスクリプションが既定の説明として使用されます。別のサブスクリプションを使用するには、次のコマンドを実行します。<code>~$ azure config set subscription &lt;other-subscription-id&gt;</code>
 
 **account clear [options]**
 
@@ -196,7 +198,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 vm create コマンドは、Azure ポータルと同様、特定の運用デプロイ環境上にのみ仮想マシンを作成します。クラウド サービスのステージング デプロイ環境に仮想マシンを作成するオプションはありません。サブスクリプションに既存の Azure ストレージ アカウントが含まれていない場合、このコマンドは Azure ストレージ アカウントを作成します。
 
-\--location パラメーターで場所を指定するか、--affinity-group パラメーターでアフィニティ グループを指定します。どちらも指定しない場合は、有効な場所の一覧から 1 つを選択するように求められます。
+--location パラメーターで場所を指定するか、--affinity-group パラメーターでアフィニティ グループを指定します。どちらも指定しない場合は、有効な場所の一覧から 1 つを選択するように求められます。
 
 パスワードは、8 文字以上 123 以下で指定し、仮想マシンで使用しているオペレーティング システムに適用されているパスワードの複雑さの要件を満たす必要があります。
 
@@ -208,7 +210,7 @@ Windows 仮想マシンでは、エンドポイントとしてポート 3389 を
 
 **-c, --connect** ホスティング サービスで作成済みのデプロイ内に仮想マシンを作成します。このオプションに -vmname を使用しなかった場合には、新しい仮想マシンの名前が自動的に生成されます。<br /> **-n、--vm-name** 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しない場合、新しい仮想マシンの名前は &lt;service-name>&lt;id> の形式で生成されます。この &lt;id> はサービス内の既存の仮想マシンの数に 1 を足した数です。たとえば、このコマンドで既存の仮想マシンが 1 つだけのホスティング サービス MyService に新しい仮想マシンを追加すると、MyService2 という名前になります。<br /> **-u、--blob-url** 仮想マシン システム ディスクの作成場所となる、ターゲット BLOB ストレージの URL を指定します。<br /> **-z、--vm-size** 仮想マシンのサイズを指定します。有効な値を次に示します。"ExtraSmall"、"Small"、"Medium"、"Large"、"ExtraLarge"、"A5"、"A6"、"A7"、"A8"、"A9"、"A10"、"A11"、"Basic\_A0"、"Basic\_A1"、"Basic\_A2"、"Basic\_A3"、"Basic\_A4"、"Standard\_D1"、"Standard\_D2"、"Standard\_D3"、"Standard\_D4"、"Standard\_D11"、"Standard\_D12"、"Standard\_D13"、"Standard\_D14"、"Standard\_DS1"、"Standard\_DS2"、"Standard\_DS3"、"Standard\_DS4"、"Standard\_DS11"、"Standard\_DS12"、"Standard\_DS13"、"Standard\_DS14"、"Standard\_G1"、"Standard\_G2"、"Standard\_G3"、"Standard\_G4"、"Standard\_G55"。既定値は "Small" です。<br /> **-r** Windows 仮想マシンに RDP 接続を追加します。<br /> **-e、--ssh** Windows 仮想マシンに SSH 接続を追加します。<br /> **-t、--ssh-cert** SSH 証明書を指定します。<br /> **-s** サブスクリプション。<br /> **-o、--community** 指定されるイメージはコミュニティ イメージです。<br /> **-w** 仮想ネットワーク名。<br/> **-l、--location** 場所を指定します ("North Central US" など)。<br /> **-a、--affinity-group** アフィニティ グループを指定します。<br /> **-w、--virtual-network-name** 新しい仮想マシンの追加先の仮想ネットワークを指定します。仮想ネットワークは、Azure ポータルから設定および管理できます。<br /> **-b、--subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
 
-この例では、MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-ja-jp-30GB が、プラットフォームによって提供されるイメージです。オペレーティング システムのイメージの詳細については、「vm image list」を参照してください。
+この例では、MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-ja-JP-30GB が、プラットフォームによって提供されるイメージです。オペレーティング システムのイメージの詳細については、「vm image list」を参照してください。
 
 	~$ azure vm create my-vm-name MSFT__Windows-Server-2008-R2-SP1.11-29-2011 username --location "West US" -r
 	info:   Executing command vm create
@@ -420,15 +422,15 @@ info:   vm shutdown command OK
 	~$ azure vm image list
 	data:   Name                                                                   Category   OS
 	data:   ---------------------------------------------------------------------  ---------  -------
-	data:   CANONICAL__Canonical-Ubuntu-12-04-20120519-2012-05-19-ja-jp-30GB.vhd   Canonical  Linux
+	data:   CANONICAL__Canonical-Ubuntu-12-04-20120519-2012-05-19-ja-JP-30GB.vhd   Canonical  Linux
 	data:   MSFT__Windows-Server-2008-R2-SP1.11-29-2011                            Microsoft  Windows
 	data:   MSFT__Windows-Server-2008-R2-SP1-with-SQL-Server-2012-Eval.11-29-2011  Microsoft  Windows
-	data:   MSFT__Windows-Server-8-Beta.ja-jp.30GB.2012-03-22                      Microsoft  Windows
+	data:   MSFT__Windows-Server-8-Beta.ja-JP.30GB.2012-03-22                      Microsoft  Windows
 	data:   MSFT__Windows-Server-8-Beta.2-17-2012                                  Microsoft  Windows
-	data:   MSFT__Windows-Server-2008-R2-SP1.ja-jp.30GB.2012-3-22                  Microsoft  Windows
-	data:   OpenLogic__OpenLogic-CentOS-62-20120509-ja-jp-30GB.vhd                 OpenLogic  Linux
-	data:   SUSE__SUSE-Linux-Enterprise-Server-11SP2-20120521-ja-jp-30GB.vhd       SUSE       Linux
-	data:   SUSE__OpenSUSE64121-03192012-ja-jp-15GB.vhd                            SUSE       Linux
+	data:   MSFT__Windows-Server-2008-R2-SP1.ja-JP.30GB.2012-3-22                  Microsoft  Windows
+	data:   OpenLogic__OpenLogic-CentOS-62-20120509-ja-JP-30GB.vhd                 OpenLogic  Linux
+	data:   SUSE__SUSE-Linux-Enterprise-Server-11SP2-20120521-ja-JP-30GB.vhd       SUSE       Linux
+	data:   SUSE__OpenSUSE64121-03192012-ja-JP-15GB.vhd                            SUSE       Linux
 	data:   WIN2K8-R2-WINRM                                                        User       Windows
 	info:   vm image list command OK
 
@@ -499,7 +501,7 @@ azure vm disk detach コマンドでデータ ディスクを切断する場合�
 	data:   LogicalDiskSizeInGB "30"
 	data:   MediaLink "http://mystorageaccount.blob.core.azure-preview.com/vhd-store/mycentos-cb39b8223b01f95c.vhd"
 	data:   Name "mycentos-mycentos-0-20120524070008"
-	data:   SourceImageName "OpenLogic__OpenLogic-CentOS-62-20120509-ja-jp-30GB.vhd"
+	data:   SourceImageName "OpenLogic__OpenLogic-CentOS-62-20120509-ja-JP-30GB.vhd"
 	info:   vm disk show command OK
 
 **vm disk list [options] [vm-name]**
@@ -787,7 +789,7 @@ Azure の Web アプリは、URI でアクセスできる Web 構成です。Web
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-****-q または **￼--quiet￼**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
+****-q または **--quiet**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
 
 
 **site start [options] [name]**
@@ -1119,7 +1121,7 @@ Azure の Web アプリは、URI でアクセスできる Web 構成です。Web
 
 ## Azure Mobile Services の管理用コマンド
 
-Azure Mobile Services は、アプリケーションのバックエンド機能を有効にする Azure サービスのセットです。モバイル サービスのコマンドは以下のように分類されます。
+Azure Mobile Services は、アプリケーションのバックエンド機能を有効にする Azure サービスのセットです。Mobile Services のコマンドは以下のように分類されます。
 
 + [モバイル サービス インスタンスの管理用コマンド](#Mobile_Services)
 + [モバイル サービス構成の管理用コマンド](#Mobile_Configuration)
@@ -1128,7 +1130,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 + [スケジュールされたジョブの管理用コマンド](#Mobile_Jobs)
 + [モバイル サービスのスケール用コマンド](#Mobile_Scale)
 
-以下のオプションはほとんどのモバイル サービス用のコマンドで使用できます。
+以下のオプションはほとんどの Mobile Services 用のコマンドで使用できます。
 
 + **-h** または **--help**: 出力の使用法を表示します。
 + **-s `<id>`** または **--subscription `<id>`**: `<id>` で指定された特定のサブスクリプションを使用します。
@@ -1139,7 +1141,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 **mobile locations [options]**
 
-このコマンドは、モバイル サービスがサポートする場所の一覧を表示します。
+このコマンドは、Mobile Services がサポートする場所の一覧を表示します。
 
 	~$ azure mobile locations
 	info:    Executing command mobile locations
@@ -1444,7 +1446,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ### <a name="Mobile_Scripts"></a>スクリプトの管理用コマンド
 
-このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[モバイル サービスのサーバー スクリプトの操作に関するページ](../mobile-services/mobile-services-how-to-use-server-scripts.md)を参照してください。
+このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[Mobile Services のサーバー スクリプトの操作に関するページ](../mobile-services/mobile-services-how-to-use-server-scripts.md)を参照してください。
 
 **mobile script list [options] [servicename]**
 
@@ -1740,7 +1742,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 	info:   Setting 'defaultStorageAccount' to value 'myname'
 	info:   Changes saved.
 
-## サービス バスの管理用コマンド
+## Service Bus の管理用コマンド
 
 これらのコマンドを使用して、Service Bus アカウントを管理します。
 
@@ -2038,9 +2040,9 @@ Service Bus 名前空間が有効で利用可能であることを確認しま�
 + **-c** または **--connection-string** &lt;connectionString>: ストレージ接続文字列。
 + **--debug**: デバッグでストレージ コマンドを実行します。
 
-## SQL データベースの管理用コマンド
+## SQL Database の管理用コマンド
 
-これらのコマンドを使用して、Azure SQL データベースを管理します。
+これらのコマンドを使用して、Azure SQL Database を管理します。
 
 ###SQL サーバーの管理用コマンド
 
@@ -2091,9 +2093,9 @@ Service Bus 名前空間が有効で利用可能であることを確認しま�
 	+ Removing SQL Server
 	info:    sql server delete command OK
 
-###SQL データベースの管理用コマンド
+###SQL Database の管理用コマンド
 
-以下のコマンドを使用して、SQL データベースを管理します。
+以下のコマンドを使用して、SQL Database を管理します。
 
 **sql db create [options] &lt;serverName> &lt;databaseName> &lt;administratorPassword>**
 
@@ -2242,7 +2244,7 @@ SQL Server の新しいファイアウォール ルールを作成します。
 
 **network vnet create [options] &lt;location>**
 
-新しい仮想ネットワークを作成します。
+新しい Virtual Network を作成します。
 
 	~$ azure network vnet create vnet1 --location "West US" -v
 	info:    Executing command network vnet create
@@ -2263,7 +2265,7 @@ SQL Server の新しいファイアウォール ルールを作成します。
 
 **network vnet show &lt;name>**
 
-仮想ネットワークの詳細を表示します。
+Virtual Network の詳細を表示します。
 
 	~$ azure network vnet show vnet1
 	info:    Executing command network vnet show
@@ -2295,7 +2297,7 @@ SQL Server の新しいファイアウォール ルールを作成します。
 
 **network vnet delete &lt;name>**
 
-指定された仮想ネットワークを削除します。
+指定された Virtual Network を削除します。
 
 	~$ azure network vnet delete opentechvn1
 	info:    Executing command network vnet delete
@@ -2346,4 +2348,4 @@ SQL Server の新しいファイアウォール ルールを作成します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

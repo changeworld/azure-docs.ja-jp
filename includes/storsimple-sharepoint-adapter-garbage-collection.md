@@ -1,3 +1,4 @@
+<!--author=SharS last changed: 9/17/15-->
 
 ここでは、次の操作を行います。
 
@@ -21,7 +22,7 @@
 
 5. 暗号化が解除された web.config ファイルで、**<connectionStrings>** ノードの下に、SQL Server インスタンスの接続文字列とコンテンツ データベース名を追加します。次の例を参照してください。
 
-    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
+    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=";Remote Blob Storage Maintainer for WSS_Content";" providerName="System.Data.SqlClient" />`
 
 6. `aspnet_regiis –pef connectionStrings` を使用して、web.config ファイルを再び暗号化します。
 
@@ -63,4 +64,4 @@
 
 2. Web フロントエンド サーバーの **[サーバーの全体管理]** で、目的のコンテンツ データベースの **[Web アプリケーションの全般設定]** を編集して、ごみ箱を再び有効にします。そのためには、**[サーバーの全体管理]**、**[アプリケーション管理]**、**[Web アプリケーション (Web アプリケーションの管理)]**、**[SharePoint - 80]**、**[アプリケーションの全般設定]** の順にクリックします。[ごみ箱の状態] を **[オン]** に設定します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

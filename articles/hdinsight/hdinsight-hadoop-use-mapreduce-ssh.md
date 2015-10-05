@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/06/2015"
+   ms.date="09/23/2015"
    ms.author="larryfr"/>
 
 # SSH による HDInsight での MapReduce と Hadoop の使用
@@ -49,7 +49,7 @@ HDInsight での SSH の使用に関する詳細については、「[Linux、Un
 
 ###PuTTY (Windows クライアント)
 
-Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/\~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
+Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
 
 PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
@@ -76,7 +76,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 	ここでは、**\_SUCCESS** と **part-r-00000** の 2 つのファイルが表示されます。**part-r-00000** ファイルには、このジョブの出力が含まれています。
 
-	> [AZURE.NOTE]一部の MapReduce ジョブでは、複数の **part-r-\#\#\#\#\#** ファイルに結果が分割される場合があります。このとき、ファイルの順番を特定するには \#\#\#\#\# サフィックスを使用します。
+	> [AZURE.NOTE]一部の MapReduce ジョブでは、複数の **part-r-#####** ファイルに結果が分割される場合があります。このとき、ファイルの順番を特定するには ##### サフィックスを使用します。
 
 4. 出力を表示するには、次のコマンドを使用します。
 
@@ -108,4 +108,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

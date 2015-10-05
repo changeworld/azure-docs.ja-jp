@@ -1,33 +1,36 @@
 <properties 
-   pageTitle="Azure の仮想マシンにおける SQL Server の高可用性と障害復旧"
-	description="Azure Virtual Machines で実行されている SQL Server に対するさまざまな種類の HADR 戦略について説明します。"
-	services="virtual-machines"
-	documentationCenter="na"
-	authors="rothja"
-	manager="jeffreyg"
-	editor="monicar"/>
+   pageTitle="SQL Server の高可用性と災害復旧 | Microsoft Azure"
+   description="このチュートリアルでは、クラシック デプロイメント モデルで作成されたリソースを使用して、Azure Virtual Machines で実行されている SQL Server の HADR 戦略のさまざまな種類について説明します。"
+   services="virtual-machines"
+   documentationCenter="na"
+   authors="rothja"
+   manager="jeffreyg"
+   editor="monicar" 
+   tags="azure-service-management"/>
 <tags 
    ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-windows-sql-server"
-	ms.workload="infrastructure-services"
-	ms.date="08/17/2015"
-	ms.author="jroth"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="vm-windows-sql-server"
+   ms.workload="infrastructure-services"
+   ms.date="08/17/2015"
+   ms.author="jroth" />
 
-# Azure の仮想マシンにおける SQL Server の高可用性と障害復旧
+# Azure Virtual Machines における SQL Server の高可用性と障害復旧
 
 ## 概要
 
 Microsoft Azure 仮想マシン (VM) と SQL Server を使用すると、高可用性と障害復旧 (HADR) データベース ソリューションのコストを削減できます。ほとんどの SQL Server HADR ソリューションでは、Azure のみのソリューションとしても、ハイブリッドのソリューションとしても、Azure 仮想マシンがサポートされています。Azure のみのソリューションでは、HADR システム全体が Azure で実行されます。ハイブリッド構成では、ソリューションの一部が Azure で実行され、その他の部分が組織内のオンプレミスで実行されます。Azure 環境は柔軟性が高いので、SQL Server データベース システムの予算や HADR 要件に応じて、部分的に、または完全に Azure に移動できます。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 ## HADR ソリューションの必要性
 
-サービス レベル アグリーメント (SLA) が必要とする HADR 機能をデータベース システムが備えていることを確認するのは、管理者の責任です。Azure には、クラウド サービスのサービス復旧、仮想マシンの障害復旧検出などの高可用性メカニズムが用意されていますが、それだけで必要な SLA が満たされていることが保証されるわけではありません。これらのメカニズムは VM の高可用性を保護しますが、VM 内で実行される SQL Server の高可用性は保護されません。VM がオンラインで正常であっても、SQL Server インスタンスで障害が発生する可能性があります。さらに、Azure の高可用性メカニズムがあっても、ソフトウェアまたはハードウェアの障害からの回復やオペレーティング システムのアップグレードなどのイベントのために、VM のダウンタイムが生じます。
+サービス レベル アグリーメント (SLA) が必要とする HADR 機能をデータベース システムが備えていることを確認するのは、管理者の責任です。Azure には、クラウド サービスのサービス復旧、Virtual Machines の障害復旧検出などの高可用性メカニズムが用意されていますが、それだけで必要な SLA が満たされていることが保証されるわけではありません。これらのメカニズムは VM の高可用性を保護しますが、VM 内で実行される SQL Server の高可用性は保護されません。VM がオンラインで正常であっても、SQL Server インスタンスで障害が発生する可能性があります。さらに、Azure の高可用性メカニズムがあっても、ソフトウェアまたはハードウェアの障害からの回復やオペレーティング システムのアップグレードなどのイベントのために、VM のダウンタイムが生じます。
 
-また、Azure の geo 冗長ストレージ (GRS) は、geo レプリケーションと呼ばれる機能によって実装されており、データベースにとって適切な障害復旧ソリューションにはならない場合があります。geo レプリケーションでは、データを非同期的に送信するため、障害が発生すると、最新の更新が失われる場合があります。geo レプリケーションの制限事項の詳細については、「[geo レプリケーションのサポート](#geo-replication-support)」セクションを参照してください。
+また、Azure の geo 冗長ストレージ (GRS) は、geo レプリケーションと呼ばれる機能によって実装されており、データベースにとって適切な障害復旧ソリューションにはならない場合があります。geo レプリケーションでは、データを非同期的に送信するため、障害が発生すると、最新の更新が失われる場合があります。geo レプリケーションの制限事項の詳細については、「[別々のディスクのデータとログ ファイルでサポートされていない geo レプリケーション](#geo-replication-support)」セクションを参照してください。
 
-## HADR デプロイ アーキテクチャ
+## HADR デプロイメント アーキテクチャ
 
 Azure でサポートされている SQL Server HADR テクノロジは、次のとおりです。
 
@@ -36,7 +39,7 @@ Azure でサポートされている SQL Server HADR テクノロジは、次の
 - [ログ配布](https://technet.microsoft.com/library/ms187103.aspx)
 - [Azure BLOB ストレージ サービスを使用したバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)
 
-高可用性と障害復旧の両方の機能を持つ SQL Server ソリューションを実装するために、テクノロジを組み合わせることができます。使用するテクノロジによっては、ハイブリッド デプロイメントで VPN トンネルと Azure 仮想ネットワークが必要になる場合があります。以下の各セクションで、デプロイメント アーキテクチャのいくつかの例を示します。
+高可用性と障害復旧の両方の機能を持つ SQL Server ソリューションを実装するために、テクノロジを組み合わせることができます。使用するテクノロジによっては、ハイブリッド デプロイメントで VPN トンネルと Azure Virtual Network が必要になる場合があります。以下の各セクションで、デプロイメント アーキテクチャのいくつかの例を示します。
 
 ## Azure のみ: 高可用性ソリューション
 
@@ -55,7 +58,7 @@ Azure 内の SQL Server データベースの障害回復ソリューション�
 |---|---|
 |**AlwaysOn 可用性グループ**|可用性レプリカが、障害復旧のために、Azure VM の複数のデータセンターで実行されます。この複数のリージョンにわたるソリューションでは、完全なサイトの機能停止の場合にも保護できます。<br/> ![AlwaysOn 可用性グループ](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_dr_alwayson.png)<br/>リージョン内で、すべてのレプリカが同じクラウド サービスおよび同じ VNet 内にある必要があります。各リージョンは個別の VNet を持つため、これらのソリューションには VNet と VNet 間の接続が必要です。詳細については、「[管理ポータルでのサイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)」を参照してください。|
 |**データベース ミラーリング**|プリンシパルとミラーとサーバーが、障害復旧のために、異なるデータセンターで実行されます。Active Directory ドメインは、複数のデータセンターにまたがって機能できないため、サーバー証明書を使用してデプロイする必要があります。<br/>![データベース ミラーリング](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_dr_dbmirroring.gif)|
-|**Azure BLOB ストレージ サービスを使用したバックアップと復元**|実稼働データベースが、障害復旧のために、別のデータセンターの BLOB ストレージに直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_dr_backup_restore.gif)<br/>。詳細については、「[Azure 仮想マシン内の SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。|
+|**Azure BLOB ストレージ サービスを使用したバックアップと復元**|実稼働データベースが、障害復旧のために、別のデータセンターの BLOB ストレージに直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/azure_only_dr_backup_restore.gif)<br/>詳細については、「[Azure Virtual Machines 内の SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。|
 
 ## ハイブリッド IT: 障害復旧ソリューション
 
@@ -64,9 +67,9 @@ Azure 内の SQL Server データベースの障害回復ソリューション�
 |テクノロジ|サンプル アーキテクチャ|
 |---|---|
 |**AlwaysOn 可用性グループ**|クロスサイト障害復旧のために、いくつかの可用性レプリカが Azure VM で実行され、その他のレプリカがオンプレミスで実行されます。実稼働サイトは、オンプレミスに置くことも、Azure データセンターに置くこともできます。<br/>![AlwaysOn 可用性グループ](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_alwayson.gif)<br/>すべての可用性レプリカは同じ WSFC クラスターにある必要があるため、WSFC クラスターは両方のネットワークにまたがっている必要があります (マルチサブネット WSFC クラスター)。この構成には、Azure とオンプレミス ネットワーク間の VPN 接続が必要です。<br/><br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。<br/><br/>既存の AlwaysOn 可用性グループに Azure レプリカを追加するには、SSMS のレプリカの追加ウィザードを使用することができます。詳細については、チュートリアルの「Azure への AlwaysOn 可用性グループの拡張」を参照してください。|
-|**データベース ミラーリング**|サーバー証明書を使用するクロスサイト障害復旧のために、1 つのパートナーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。パートナーは、同じ Active Directory ドメイン内にある必要がなく、VPN 接続も必要ありません。<br/>![データベース ミラーリング](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_dbmirroring.gif)<br/>もう 1 つのデータベース ミラーリング シナリオとして、クロスサイト障害復旧のために、1 つのパートナーを Azure VM で実行し、もう 1 つを同じ Active Directory ドメイン内のオンプレミスで実行するという形式があります。[Azure 仮想ネットワークとオンプレミス ネットワーク間の VPN 接続](../vpn-gateway/vpn-gateway-site-to-site-create.md)が必要です。<br/><br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。|
-|**ログ配布**|クロスサイト障害復旧のために、1 つのサーバーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。ログ配布は Windows ファイル共有に依存しているため、Azure 仮想ネットワークとオンプレミス ネットワーク間の VPN 接続が必要です。<br/>![ログ配布](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_log_shipping.gif)<br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。|
-|**Azure BLOB ストレージ サービスを使用したバックアップと復元**|オンプレミスの実稼働データベースが、障害復旧のために、Azure BLOB ストレージに直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_backup_restore.gif)<br/>。詳細については、「[Azure 仮想マシン内の SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。|
+|**データベース ミラーリング**|サーバー証明書を使用するクロスサイト障害復旧のために、1 つのパートナーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。パートナーは、同じ Active Directory ドメイン内にある必要がなく、VPN 接続も必要ありません。<br/>![データベース ミラーリング](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_dbmirroring.gif)<br/>もう 1 つのデータベース ミラーリング シナリオとして、クロスサイト障害復旧のために、1 つのパートナーを Azure VM で実行し、もう 1 つを同じ Active Directory ドメイン内のオンプレミスで実行するという形式があります。[Azure Virtual Network とオンプレミス ネットワーク間の VPN 接続](../vpn-gateway/vpn-gateway-site-to-site-create.md)が必要です。<br/><br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。|
+|**ログ配布**|クロスサイト障害復旧のために、1 つのサーバーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。ログ配布は Windows ファイル共有に依存しているため、Azure Virtual Network とオンプレミス ネットワーク間の VPN 接続が必要です。<br/>![ログ配布](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_log_shipping.gif)<br/>データベースの障害復旧を成功させるには、障害復旧サイトにレプリカ ドメイン コントローラーもインストールする必要があります。|
+|**Azure BLOB ストレージ サービスを使用したバックアップと復元**|オンプレミスの実稼働データベースが、障害復旧のために、Azure BLOB ストレージに直接バックアップされます。<br/>![バックアップと復元](./media/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions/hybrid_dr_backup_restore.gif)<br/>詳細については、「[Azure Virtual Machines 内の SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」を参照してください。|
 
 ## Azure での SQL Server HADR の重要な考慮事項
 
@@ -74,7 +77,7 @@ Azure の VM、ストレージ、およびネットワークには、オンプ�
 
 ### 可用性セットでの高可用性ノード
 
-Azure の可用性セットを使用すると、高可用性ノードを別個の障害ドメイン (FD) と更新ドメイン (UD) に配置できます。Azure VM を同じ可用性セットに配置するには、同じクラウド サービスにデプロイする必要があります。同じクラウド サービス上にあるノードのみが同じ可用性セットに属することができます。詳細については、「[仮想マシンの可用性管理](virtual-machines-manage-availability.md)」を参照してください。
+Azure の可用性セットを使用すると、高可用性ノードを別個の障害ドメイン (FD) と更新ドメイン (UD) に配置できます。Azure VM を同じ可用性セットに配置するには、同じクラウド サービスにデプロイする必要があります。同じクラウド サービス上にあるノードのみが同じ可用性セットに属することができます。詳細については、「[Virtual Machines の可用性管理](virtual-machines-manage-availability.md)」を参照してください。
 
 ### Azure ネットワークでの WSFC クラスターの動作
 
@@ -132,7 +135,7 @@ Azure ディスク内の geo レプリケーションでは、同じデータベ
 
 ## 次のステップ
 
-Azure 仮想マシンと SQL Server を作成する必要がある場合は、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
+Azure 仮想マシンと SQL Server を作成する必要がある場合は、「[Azure での SQL Server Virtual Machine のプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
 
 Azure VM で実行されている SQL Server のパフォーマンスを最大限まで高めるには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」のガイダンスをご覧ください。
 
@@ -143,4 +146,4 @@ Azure VM での SQL Server の実行に関するその他のトピックにつ�
 - [Azure での新しい Active Directory フォレストのインストール](../active-directory/active-directory-new-forest-virtual-machine.md)
 - [Azure VM での AlwaysOn 可用性グループの WSFC クラスターの作成](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

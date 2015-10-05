@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="ベスト プラクティス: Azure AD Password Management | Microsoft Azure" 
-	description="Azure Active Directory での Password Management のデプロイと使用のベスト プラクティス、サンプル エンド ユーザー マニュアル、およびトレーニング ガイドです。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
+<properties
+	pageTitle="ベスト プラクティス: Azure AD Password Management | Microsoft Azure"
+	description="Azure Active Directory での Password Management のデプロイと使用のベスト プラクティス、サンプル エンド ユーザー マニュアル、およびトレーニング ガイドです。"
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="kbrint"
 	editor="billmath"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/08/2015" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/18/2015" 
 	ms.author="asteen"/>
 
 # Password Management のデプロイとユーザー トレーニング
@@ -98,12 +98,12 @@ AAD Connect または Windows PowerShell を使用して設定できるプロパ
 1.	[Azure 管理ポータル](https://manage.windowsazure.com)の **[Active Directory 拡張機能]** で、ディレクトリに移動します。
 2.	**[ユーザー]** タブをクリックします。
 3.	対象のユーザーを一覧から選択します。
-4.	最初のタブに、パスワードのリセットを有効にするためのプロパティとして使用できる **[連絡用メール アドレス]** が表示されます。 
+4.	最初のタブに、パスワードのリセットを有効にするためのプロパティとして使用できる **[連絡用メール アドレス]** が表示されます。
 
     ![][005]
 
 5.	**[勤務先の情報]** タブをクリックします。
-6.	ページに、**[会社電話]**、**[携帯電話]**、**[認証用電話]**、および **[認証用メール]** が表示されます。これらのプロパティを設定して、ユーザーがパスワードをリセットできるようにすることも可能です。 
+6.	ページに、**[会社電話]**、**[携帯電話]**、**[認証用電話]**、および **[認証用メール]** が表示されます。これらのプロパティを設定して、ユーザーがパスワードをリセットできるようにすることも可能です。
 
     ![][006]
 
@@ -136,6 +136,5 @@ AAD Connect または Windows PowerShell を使用して設定できるプロパ
 [004]: ./media/active-directory-passwords-best-practices/004.jpg "Image_004.jpg"
 [005]: ./media/active-directory-passwords-best-practices/005.jpg "Image_005.jpg"
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

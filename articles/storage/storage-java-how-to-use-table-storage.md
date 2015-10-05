@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Java からテーブル ストレージを使用する方法 | Microsoft Azure"
-	description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Java で記述されています。"
-	services="storage"
-	documentationCenter="java"
-	authors="rmcmurray"
-	manager="wpickett"
+	pageTitle="Java からテーブル ストレージを使用する方法 | Microsoft Azure" 
+	description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Java で記述されています。" 
+	services="storage" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="08/31/2015" 
 	ms.author="robmcm"/>
 
 
@@ -23,7 +23,7 @@
 
 ## 概要
 
-このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**、**変更**、および**削除**の各シナリオについて説明します。テーブルの詳細については、「[次のステップ](#NextSteps)」のセクションを参照してください。
+このガイドでは、Azure Table ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**、**変更**、および**削除**の各シナリオについて説明します。テーブルの詳細については、「[次のステップ](#NextSteps)」のセクションを参照してください。
 
 注: SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android に関するページ][]を参照してください。
 
@@ -335,7 +335,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 ## 方法: 単一のエンティティを取得する
 
-単一の特定のエンティティを取得するクエリを記述することができます。次のコードでは、**TableOperation.retrieve** を呼び出し、パーティション キーと行キーのパラメーターを使用して、顧客 "Jeff Smith" を指定しています。同じ操作は **TableQuery** を作成してフィルターを使用することでも可能です。この取得操作が実行されると、1 つのコレクションではなく、1 つのエンティティのみ返されます。**getResultAsType** メソッドは、結果を設定先の型である **CustomerEntity** オブジェクト型にキャストします。この型がクエリに指定した型と互換性がない場合は、例外がスローされます。パーティション キーおよび行キーが正確に一致するエンティティがない場合は、null 値が返されます。クエリでパーティション キーと行キーの両方を指定することが、テーブル サービスから単一のエンティティを取得するための最速の方法です。
+単一の特定のエンティティを取得するクエリを記述することができます。次のコードでは、**TableOperation.retrieve** を呼び出し、パーティション キーと行キーのパラメーターを使用して、顧客 "Jeff Smith" を指定しています。同じ操作は **TableQuery** を作成してフィルターを使用することでも可能です。この取得操作が実行されると、1 つのコレクションではなく、1 つのエンティティのみ返されます。**getResultAsType** メソッドは、結果を設定先の型である **CustomerEntity** オブジェクト型にキャストします。この型がクエリに指定した型と互換性がない場合は、例外がスローされます。パーティション キーおよび行キーが正確に一致するエンティティがない場合は、null 値が返されます。クエリでパーティション キーと行キーの両方を指定することが、Table サービスから単一のエンティティを取得するための最速の方法です。
 
     try
     {
@@ -550,15 +550,18 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 - [Azure Storage SDK for Java][]
 - [Azure ストレージ クライアント SDK リファレンス][]
 - [Azure Storage REST API][]
-- [Azure のストレージ チーム ブログ][]
+- [Azure Storage チーム ブログ][]
+
+詳細については、[Java デベロッパー センター](/develop/java/)も参照してください。
+
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android に関するページ]: https://github.com/azure/azure-storage-android
 [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-[Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [ブログの記事]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

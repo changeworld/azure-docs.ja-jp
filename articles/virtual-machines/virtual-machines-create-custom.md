@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure でのカスタム仮想マシンの作成"
-	description="Azure 上でのカスタム仮想マシンの作成方法について説明します。"
+	pageTitle="カスタム仮想マシンを作成する | Microsoft Azure"
+	description="クラシック デプロイ モデルを使用して Azure ポータルからカスタム仮想マシンを作成する方法。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -11,13 +11,17 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/11/2015"
 	ms.author="cynthn"/>
 
 #カスタム仮想マシンを作成する方法
+
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 
 *カスタム*仮想マシンとは、**[ギャラリーから]** オプションで作成する仮想マシンのことです。**[簡易作成]** オプションよりも構成の選択肢が多いことから、このように呼びます。選択できるオプションは次のとおりです。
 
@@ -31,4 +35,4 @@
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

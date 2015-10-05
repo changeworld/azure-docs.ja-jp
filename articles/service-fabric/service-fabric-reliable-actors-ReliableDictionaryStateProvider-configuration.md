@@ -1,20 +1,20 @@
 <properties
    pageTitle="Service Fabric の信頼性の高いアクター 'ReliableDictionaryActorStateProvider' の構成の概要"
-	description="Service Fabric の 'ReliableDictionaryActorStateProvider' という型のステートフル アクターの構成について"
-	services="Service-Fabric"
-	documentationCenter=".net"
-	authors="sumukhs"
-	manager="anuragg"
-	editor=""/>
+   description="Service Fabric の 'ReliableDictionaryActorStateProvider' という型のステートフル アクターの構成について"
+   services="Service-Fabric"
+   documentationCenter=".net"
+   authors="sumukhs"
+   manager="anuragg"
+   editor=""/>
 
 <tags
    ms.service="Service-Fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/26/2015"
-	ms.author="sumukhs"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/26/2015"
+   ms.author="sumukhs"/>
 
 # 信頼性の高いアクターの構成 - ReliableDictionaryActorStateProvider
 ReliableDictionaryActorStateProvider の既定の構成は、対象の指定されたアクターの "Config" フォルダーの下にある Visual Studio パッケージ ルートで生成された "settings.xml" ファイルを変更することで変更できます。
@@ -27,8 +27,6 @@ Service Fabric ランタイムは "settings.xml" ファイルで定義済みの�
 レプリケーション時に使用される通信チャネルをセキュリティ保護する場合は、レプリケーターのセキュリティ構成を使用します。これは、サービスは互いのレプリケーション トラフィックを表示できないため、高可用性データもセキュリティ保護されることを意味します。既定では、空のセキュリティ構成セクションでレプリケーション セキュリティは有効になりません。
 ### セクション名
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
-### 構成名
-「[レプリケーションのセキュリティ](../service-fabric/service-fabric-replication-security.md)」を参照してください。
 
 ## レプリケーター構成
 状態をローカルにレプリケートして永続化することでアクターの状態プロバイダーの状態の信頼性を高める必要があるレプリケーターを構成する場合は、レプリケーター構成を使用します。既定の構成は Visual Studio テンプレートによって生成され、これで十分なはずです。このセクションでは、レプリケーターのチューニングに使用できる追加の構成について説明します。
@@ -86,6 +84,5 @@ OptimizeForLocalSSD 設定は状態情報を専用ログ ファイルにステ�
 MaxRecordSizeInKB は、レプリケーターがログ ファイルに書き込むことのできるレコードの最大サイズを定義します。ほとんどすべてのケースで、最適なレコードのサイズは既定の 1,024 KB ですが、サービスで大きなデータ項目を状態情報に含めようとしている場合、この値を増やさなければならない場合があります。小さいレコードは小さいレコードに必要な領域しか使用しないため、MaxRecordSizeInKB を 1024 より小さくしてもほとんど効果はありません。これを変更する必要があるのは、まれなケースだけであると予想されます。
 
 SharedLogId と SharedLogPath の設定は、常に一緒に使用して、サービスがノードの既定の共有ログとは別の共有ログを使用できるようにします。最適な効率を得るため、できるだけ多くのサービスで同じ共有ログを指定してください。共有ログ ファイルは、ヘッドの移動の競合が減るように、共有ログ ファイル専用に使用されるディスクに配置する必要があります。これを変更する必要があるのは、まれなケースだけであると予想されます。
- 
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

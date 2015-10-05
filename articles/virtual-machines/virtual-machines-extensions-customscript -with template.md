@@ -1,26 +1,29 @@
 <properties
-   pageTitle="Azure リソース マネージャー テンプレートでのカスタム スクリプト拡張機能の使用"
-	description="ARM テンプレートでカスタム スクリプトを使用して、Azure 仮想マシンの構成タスクを自動化します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="kundanap"
-	manager="timlt"
-	editor=""/>
+   pageTitle="テンプレートを使用した VM のカスタム スクリプト | Microsoft Azure"
+   description="カスタム スクリプト拡張機能とリソース マネージャー テンプレートを使用して Windows および Linux Azure VM 構成タスクを自動化する"
+   services="virtual-machines"
+   documentationCenter=""
+   authors="kundanap"
+   manager="timlt"
+   editor=""
+   tags="azure-resource-manager"/>
 
 <tags
    ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="07/01/2015"
-	ms.author="kundanap"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="vm-multiple"
+   ms.workload="infrastructure-services"
+   ms.date="07/01/2015"
+   ms.author="kundanap"/>
 
 # Azure リソース マネージャー テンプレートでのカスタム スクリプト拡張機能の使用
 
 この記事では、Linux VM または Windows VM のブートストラップ ワークロード用に、カスタム スクリプト拡張機能を使用して Azure リソース マネージャー テンプレートを作成する方法の概要を説明します。
 
-カスタム スクリプト拡張機能の概要については、<a href="https://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-extensions-customscript/" target="_blank">こちらの記事</a>をご覧ください。
+カスタム スクリプト拡張機能の概要については、[こちらの記事](virtual-machines-extensions-customscript.md)をご覧ください。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。リソースは、[クラシック デプロイ モデル](virtual-machines-extensions-customscript.md)でも作成できます。
 
 カスタム スクリプト拡張機能は、導入以来、Windows VM と Linux VM でワークロードを構成するために広く使用されてきました。Azure リソース マネージャー テンプレートの導入により、VM をプロビジョニングするだけでなく、VM でワークロードも構成する単一のテンプレートを作成できるようになりました。
 
@@ -28,7 +31,7 @@
 
 Azure リソース マネージャー テンプレートでは、リソース間の依存関係を定義することで、JSON 言語で Azure IaaS インフラストラクチャを宣言によって指定できます。Azure リソース マネージャー テンプレートの概要については、次の記事をご覧ください。
 
-<a href="https://azure.microsoft.com/ja-jp/documentation/articles/resource-group-overview/" target="_blank">リソース グループの概要</a><br/><a href="https://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli/" target="_blank">Azure CLI を使用したテンプレートのデプロイ</a><br/><a href="https://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/" target="_blank">Azure Powershell を使用したテンプレートのデプロイ</a>
+<a href="https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-overview/" target="_blank">リソース グループの概要</a><br/><a href="https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli/" target="_blank">Azure CLI を使用したテンプレートのデプロイ</a><br/><a href="https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/" target="_blank">Azure Powershell を使用したテンプレートのデプロイ</a>
 
 ### カスタム スクリプト拡張機能を実行する前提条件
 
@@ -97,4 +100,4 @@ Azure リソース マネージャー テンプレートでは、リソース間
 
 <a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/" target="_blank">Linux VM のカスタム スクリプト拡張機能</a></br><a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">Windows VM のカスタム スクリプト拡張機能</a>
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

@@ -130,7 +130,7 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 
 ## 次のステップ
 
-詳細については、「[Azure DNS の概要](../dns/dns-getstarted-create-dnszone)」と「[Azure DNS へのドメインの委任](../dns/dns-domain-delegation)」をご覧ください。
+詳細については、「[Azure DNS の概要](../dns/dns-getstarted-create-dnszone.md)」と「[Azure DNS へのドメインの委任](../dns/dns-domain-delegation.md)」をご覧ください。
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -147,4 +147,4 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

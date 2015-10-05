@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="クラウド サービス向けの SSL の構成 | Microsoft Azure" 
-	description="Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。" 
+	pageTitle="クラウド サービス向けの SSL を構成する (プレビュー ポータル) | Microsoft Azure" 
+	description="Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。これらの例では、Azure プレビュー ポータルを使用します。" 
 	services="cloud-services" 
 	documentationCenter=".net" 
 	authors="Thraka" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/28/2015"
+	ms.date="09/22/2015"
 	ms.author="adegeo"/>
 
 
@@ -43,7 +43,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 -   証明書は秘密キーを含む必要があります。
 -   証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
--   証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。たとえば、カスタム ドメイン名が **contoso.com** である場合は、**\*.contoso.com** または **www.contoso.com** の証明書を CA に要求します。
+-   証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。たとえば、カスタム ドメイン名が **contoso.com** である場合は、****.contoso.com** または **www.contoso.com** の証明書を CA に要求します。
 -   証明書では、2048 ビット以上の暗号化を使用する必要があります。
 
 テスト目的で、自己署名証明書を[作成して](cloud-services-certs-create.md)使用できます。自己署名証明書は CA を通じて認証されないため、cloudapp.net ドメインを Web サイト URL として使用できます。たとえば、下のタスクでは自己署名証明書を使用しますが、証明書で使用される共通名 (CN) は **sslexample.cloudapp.net** です。
@@ -155,4 +155,11 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
 
 [Azure Portal]: http://portal.azure.com/
 
-<!----HONumber=August15_HO7-->
+## 次のステップ
+
+* [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)
+* 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
+* [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
+* [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
+
+<!---HONumber=Sept15_HO4-->

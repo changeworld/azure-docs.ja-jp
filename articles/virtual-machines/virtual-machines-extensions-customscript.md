@@ -1,27 +1,30 @@
 <properties
-   pageTitle="Windows でのカスタムのスクリプト拡張機能 | Microsoft Azure"
-	description="Windows でカスタムのスクリプト拡張機能を使って Azure の仮想マシンの構成タスクを自動化します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="kundanap"
-	manager="timlt"
-	editor=""/>
+   pageTitle="Windows VM でのカスタムのスクリプト拡張機能 | Microsoft Azure"
+   description="カスタム スクリプト拡張機能を使って Azure VM 構成タスクを自動化し、リモート Windows VM でPowerShell スクリプトを実行する"
+   services="virtual-machines"
+   documentationCenter=""
+   authors="kundanap"
+   manager="timlt"
+   editor=""
+   tags="azure-service-management"/>
 
 <tags
    ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/06/2015"
-	ms.author="kundanap"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="vm-windows"
+   ms.workload="infrastructure-services"
+   ms.date="08/06/2015"
+   ms.author="kundanap"/>
 
-# Windows でのカスタムのスクリプト拡張機能
+# Windows 仮想マシンでのカスタムのスクリプト拡張機能
 
-この記事では Azure PowerShell コマンドレットで Windows でカスタムのスクリプト拡張機能を使用する概要について説明します。
+この記事では、Azure PowerShell コマンドレットを使って Windows VM でカスタムのスクリプト拡張機能を使用する概要について説明します。
 
+Microsoft や信頼された第三者の発行元によってビルドされた仮想マシン (VM) の拡張機能を使って、VM の機能を拡張します。VM 拡張機能の概要については、「[Azure VM 拡張機能と機能](virtual-machines-extensions-features.md)」をご覧ください。
 
-Microsoft や信頼された第三者の発行元によってビルドされた仮想マシン (VM) の拡張機能を使って、VM の機能を拡張します。VM 拡張機能の概要については、「<a href="https://msdn.microsoft.com/library/azure/dn606311.aspx" target="_blank">Azure VM 拡張機能と機能</a>」をご覧ください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-extensions-customscript%20-with%20template.md)を使用してリソースを作成することもできます。
+
 
 ## カスタム スクリプト拡張機能の概要
 
@@ -88,4 +91,4 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 <!--Image references-->
 [5]: ./media/virtual-machines-extensions-customscript/addcse.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

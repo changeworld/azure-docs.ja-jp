@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Microsoft Azure を使用した LAMP スタックの作成方法"
+	pageTitle="Azure を使用した LAMP スタックの作成 | Microsoft Azure"
 	description="Linux を実行する Azure の仮想マシン (VM) を使用して、Microsoft Azure で LAMP スタックを設定する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="NingKuang"
 	manager="timlt"
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-service-management,azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -20,6 +21,8 @@
 
 "LAMP" スタックはオープン ソースのソフトウェアのグループであり、通常はまとめてインストールすることで、サーバーが動的な Web サイトや Web アプリケーションをホストできるようになります。この用語は、Apache Web サーバーを使用した Linux オペレーティング システムを表す頭字語です。サイト データは MySQL データベースに格納され、動的なコンテンツは PHP が処理します。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用したリソースの作成について説明します。
+
 このガイドでは、Linux イメージにインストールした LAMP スタックを取得して、Microsoft Azure にデプロイします。
 
 学習内容:
@@ -32,7 +35,7 @@
 
 このトピックに加え、既に仮想マシンをインストールしていており、別の Linux ディストリビューションへの LAMP スタックのインストールの基本について知りたい場合は、「[Azure 上の Linux 仮想マシンへの LAMP スタックのインストール](virtual-machines-linux-install-lamp-stack.md)」を参照してください。
 
-Azure Marketplace から事前構成済みの LAMP イメージをデプロイすることもできます。次の 10 分間のビデオは、Azure Marketplace から構築済みの LAMP イメージをデプロイする方法を紹介しています (Azure VM 上の LAMP スタック (https://channel9.msdn.com/Shows/Azure-Friday/LAMP-stack-on-Azure-VMs-with-Guy-Bowerman))。
+Azure Marketplace から事前構成済みの LAMP イメージをデプロイすることもできます。次の 10 分間のビデオは、Azure Marketplace から構築済みの LAMP イメージをデプロイする方法を紹介しています (Azure VM 上の LAMP スタック) (https://channel9.msdn.com/Shows/Azure-Friday/LAMP-stack-on-Azure-VMs-with-Guy-Bowerman))。
 
 ##フェーズ 1: イメージを作成する
 このフェーズでは、Azure の Linux イメージを使用して仮想マシンを作成します。
@@ -42,7 +45,7 @@ SSH はシステム管理者にとって重要なツールです。しかし、�
 
 SSH 認証キーを生成するには、次の手順に従います。
 
--	次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/)
+-	[http://www.chiark.greenend.org.uk/~sgtatham/](http://www.chiark.greenend.org.uk/~sgtatham/)putty/download.html から puttygen をダウンロードしてインストールします。
 -	puttygen.exe を実行します。
 -	**[生成]** をクリックしてキーを生成します。処理中にウィンドウの空白の領域にマウスを移動すると、ランダム性を高めることができます。![][1]
 -	生成処理が終わると、生成されたキーが表示されます。次に例を示します。![][2]
@@ -85,8 +88,8 @@ Azure ポータルで、**[参照]、[仮想マシン]** の順にクリック�
 エンドポイントを構成します。
 
 1.	**[エンドポイント]** にエンドポイントの名前を入力します。
-2.	**[パブリック ポート]** に「80」と入力します。Apache の既定のリッスン ポートを変更している場合は、Apache のリッスン ポートと同じになるように [プライベート ポート] を更新する必要があります。
-3.	**[パブリック ポート]** に「80」と入力します。既定では、HTTP トラフィックはポート 80 を使用します。80 に設定している場合は、Apache Web サービスに接続するための URL にポート番号を含める必要はありません。たとえば、「http://lampdemo.cloudapp.net」のように入力します。Apache のリッスン ポートを 81 などの別の値に設定している場合は、Apache Web サービスにアクセスするための URL にポート番号を追加する必要があります。(例: http://lampdemo.cloudapp.net:81/)。
+2.	**[パブリック ポート]** に 80 と入力します。Apache の既定のリッスン ポートを変更している場合は、Apache のリッスン ポートと同じになるように [プライベート ポート] を更新する必要があります。
+3.	**[パブリック ポート]** に 80 と入力します。既定では、HTTP トラフィックはポート 80 を使用します。80 に設定している場合は、Apache Web サービスに接続するための URL にポート番号を含める必要はありません。たとえば、「http://lampdemo.cloudapp.net」のように入力します。Apache のリッスン ポートを 81 などの別の値に設定している場合は、Apache Web サービスにアクセスするための URL にポート番号を追加する必要があります。(例: http://lampdemo.cloudapp.net:81/)。
 
 ![][7]
 
@@ -98,7 +101,7 @@ Azure ポータルで、**[参照]、[仮想マシン]** の順にクリック�
 ###手順 2. 作成したイメージに接続する
 SSH ツールを選択すると、新しい仮想マシンに接続できます。この例では、Putty を使用します。
 
-最初に、Azure ポータルから仮想マシンの DNS 名を取得します。**[参照]、[仮想マシン]**、仮想マシン名、**[プロパティ]** の順にクリックし、**[プロパティ]** タイルの "**ドメイン名**" フィールドを調べます。
+最初に、Azure ポータルから仮想マシンの DNS 名を取得します。**[参照] -> [仮想マシン] ->** 仮想マシン名** -> [プロパティ]** の順にクリックし、**[プロパティ]** タイルの **[ドメイン名]** フィールドを調べます。
 
 **[SSH]** フィールドから、SSH 接続のポート番号を取得します。たとえば次のようになります。
 
@@ -141,6 +144,7 @@ Apache をインストールするには、ターミナルを開いて次のコ�
 インストールが終わったら、次のコマンドを使用して Apache を起動します。
 
 	sudo service httpd start
+
 ####Apache のテスト
 Apache が正常にインストールされたかどうかを確認するには、Apache サーバーの DNS 名を参照します (この記事のサンプル URL の場合は、http://lampdemo.cloudapp.net/))。ページには「It works! (成功です)」と表示されます。![][14]
 
@@ -450,6 +454,5 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 [16]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-16.png
 [17]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-17.png
 [18]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-18.jpg
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

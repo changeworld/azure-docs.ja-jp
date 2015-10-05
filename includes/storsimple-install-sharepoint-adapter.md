@@ -1,3 +1,4 @@
+<!--author=SharS last changed: 9/17/15-->
 
 #### SharePoint 用 StorSimple アダプターをインストールするには
 
@@ -25,4 +26,4 @@
 
 8. 次の [RBS の構成](#configure-rbs)手順に進みます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

@@ -1,11 +1,13 @@
 <properties 
-	pageTitle="Azure での SQL Server 仮想マシンの作成 (PowerShell)"
+	pageTitle="PowerShell での SQL Server Virtual Machine の作成 | Microsoft Azure"
 	description="SQL Server 仮想マシン ギャラリー のイメージを使用して Azure VM を作成するための手順と PowerShell スクリプトを提供します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar"/>
+	editor="monicar" 
+	tags="azure-service-management"
+	 />
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
@@ -13,7 +15,7 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="08/26/2015"
-	ms.author="jroth"/>
+	ms.author="jroth" />
 
 # Azure での SQL Server 仮想マシンの作成 (PowerShell)
 
@@ -25,11 +27,11 @@
 
 この記事では、PowerShell コマンドレットを使用して、Azure で SQL Server 仮想マシンを作成する手順を説明します。
 
->[AZURE.NOTE]この記事は、Service Management で作成された仮想マシンを対象にしており、トピック「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」に記載されているより一般的な手順に基づく、SQL Server 固有の拡張です。Service Management ではなく、PowerShell でリソース マネージャーを使用して SQL Server 仮想マシンを作成する場合は、トピック「[リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)」にあるリソース マネージャー VM に関する一般的な説明をご覧ください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。PowerShell でリソース マネージャーを使用して SQL Server 仮想マシンを作成する場合は、トピック「[リソース マネージャーと Azure PowerShell を使用して Windows Virtual Machine を作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md)」にあるリソース マネージャー VM に関する一般的な説明をご覧ください。
 
 ## PowerShell のインストールと構成
 
-1. Azure アカウントを持っていない場合は、[Azure の無料評価版サイト](https://azure.microsoft.com/ja-JP/pricing/free-trial/)にアクセスしてください。 
+1. Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](https://azure.microsoft.com/ja-JP/pricing/free-trial/)にアクセスしてください。 
  
 2. [最新の Azure PowerShell コマンドレットをインストールします](../powershell-install-configure.md/#how-to-install-azure-powershell)。
 
@@ -76,7 +78,7 @@ SQL Server の仮想マシンは、特定の Azure リージョンに存在す�
 
 		Get-AzureVMImage | where { $_.ImageFamily -like "SQL*" } | select ImageFamily -Unique | Sort-Object -Property ImageFamily
 
-1. 仮想マシン イメージのファミリが見つかったら、そのファミリにパブリッシュされたイメージが複数ある可能性があります。次のスクリプトを使用して、選択したイメージ ファミリについてパブリッシュされた最新の仮想マシン イメージ名を見つけます (**SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2** など)。
+1. 仮想マシン イメージのファミリが見つかったら、そのファミリに発行されたイメージが複数ある可能性があります。次のスクリプトを使用して、選択したイメージ ファミリについて発行された最新の仮想マシン イメージ名を見つけます (**SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2** など)。
 
 		$family="<ImageFamily value>"
 		$image=Get-AzureVMImage | where { $_.ImageFamily -eq $family } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
@@ -93,7 +95,7 @@ SQL Server の仮想マシンは、特定の Azure リージョンに存在す�
 		$svcname = "<cloud service name>"
 		New-AzureService -ServiceName $svcname -Label $svcname -Location $dcLocation
 
-2. 仮想マシンの名前とサイズを指定します。仮想マシンのサイズの詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines-size-specs.md)」を参照してください。
+2. 仮想マシンの名前とサイズを指定します。仮想マシンのサイズの詳細については、「[Azure の Virtual Machines のサイズ](virtual-machines-size-specs.md)」を参照してください。
 
 		$vmname="<machine name>"
 		$vmsize="<Specify a valid machine size>" # see the link to virtual machine sizes
@@ -108,7 +110,7 @@ SQL Server の仮想マシンは、特定の Azure リージョンに存在す�
 
 		New-AzureVM –ServiceName $svcname -VMs $vm1
 
->[AZURE.NOTE]詳細な説明と構成オプションについては、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」の「**コマンド セットの構築**」セクションをご覧ください。
+>[AZURE.NOTE]詳細な説明と構成オプションについては、「[Azure PowerShell を使用して Windows ベースの Virtual Machines を作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」の「**コマンド セットの構築**」セクションをご覧ください。
 
 ## PowerShell サンプル スクリプト
 
@@ -163,12 +165,12 @@ SQL Server の仮想マシンは、特定の Azure リージョンに存在す�
 
 ## 次のステップ
 
-[仮想マシンのドキュメント](virtual-machines-ps-create-preconfigure-windows-vms.md)で PowerShell を使用して仮想マシンをプロビジョニングするための追加説明を確認できます。SQL Server および Premium Storage に関連するその他のスクリプトについては、「[仮想マシン上での Azure Premium Storage と SQL Server の使用](virtual-machines-sql-server-use-premium-storage.md)」をご覧ください。
+[仮想マシンのドキュメント](virtual-machines-ps-create-preconfigure-windows-vms.md)で PowerShell を使用して仮想マシンをプロビジョニングするための追加説明を確認できます。SQL Server および Premium Storage に関連するその他のスクリプトについては、「[Virtual Machines 上での Azure Premium Storage と SQL Server の使用](virtual-machines-sql-server-use-premium-storage.md)」をご覧ください。
 
 多くの場合、次の手順はこの新しい SQL Server VM にデータベースを移行することです。データベース移行方法については、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)」をご覧ください。
 
-これらの手順を Azure 管理ポータルから実行する方法についても興味がある場合は、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」をご覧ください。
+これらの手順を Microsoft Azure 管理ポータルから実行する方法についても興味がある場合は、「[Azure での SQL Server Virtual Machine のプロビジョニング](virtual-machines-provision-sql-server.md)」をご覧ください。
 
-これらのリソースのほかに、[Azure Virtual Machines における SQL Serverに関連するその他のトピック](virtual-machines-sql-server-infrastructure-services.md)もご覧になることをお勧めします。
+これらのリソースの他に、[Azure Virtual Machines における SQL Server に関連するその他のトピック](virtual-machines-sql-server-infrastructure-services.md)もご覧になることをお勧めします。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

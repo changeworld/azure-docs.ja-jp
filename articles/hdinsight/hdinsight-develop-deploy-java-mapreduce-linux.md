@@ -270,6 +270,8 @@ Java と JDK をインストールするときに、次のような環境変数�
 - [HDInsight での Pig の使用][hdinsight-use-pig]
 - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
+詳細については、[Java デベロッパー センター](/develop/java/)も参照してください。
+
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -298,4 +300,4 @@ Java と JDK をインストールするときに、次のような環境変数�
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

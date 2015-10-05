@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/05/2015" 
+	ms.date="09/21/2015" 
 	ms.author="raynew"/>
 
 # SAN を使用したオンプレミスの VMM サイト間での保護の設定
@@ -172,7 +172,7 @@ VMM コンソールで SAN を追加し、分類します。
 1. [管理ポータル](https://portal.azure.com)にサインインします。
 
 
-2. **[Data Services]**、**[復旧サービス]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
+2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
 
 
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
@@ -198,48 +198,71 @@ VMM コンソールで SAN を追加し、分類します。
 
 	![登録キー](./media/site-recovery-vmm-san/SRSAN_QuickStartRegKey.png)
 
-3. **[VMM サーバーの準備]** で、**[登録キーの生成]** ファイルをクリックします。キーは生成後 5 日間有効です。保護する VMM サーバーでコンソールを実行していない場合は、VMM サーバーがアクセスできる安全な場所にファイルをダウンロードします。たとえば、共有にダウンロードします。以下の点に注意してください。
+4. *[クイック スタート]* ページの **[VMM サーバーの準備]** で、*[VMM サーバーへのインストール用の Microsoft Azure Site Recovery プロバイダーのダウンロード]* をクリックして、最新バージョンのプロバイダー インストール ファイルを取得します。
 
-- プロバイダーを初めてインストールする場合は、クラスターのアクティブ ノードにインストールし、インストールが終了したら、VMM サーバーを Azure Site Recovery 資格情報コンテナーに登録します。次に、プロバイダーをクラスターの他のノードにインストールします。
-- プロバイダーのバージョンをアップグレードする場合は、クラスター内のすべてのノードでプロバイダーのインストールを実行します。
+2. ソース VMM サーバーでこのファイルを実行します。プロバイダーを初めてインストールするときに、VMM がクラスターにデプロイされている場合は、プロバイダーをアクティブなノードにインストールします。インストールが終了したら、VMM サーバーをコンテナーに登録します。次に、プロバイダーを他のノードにインストールします。プロバイダーをアップグレードする場合は、すべてのノードでアップグレードする必要があります。これは、すべてのノードで同じバージョンのプロバイダーを実行する必要があるためです。
 
-4. **[VMM サーバーへのインストール用の Microsoft Azure Site Recovery Provider のダウンロード]** をクリックして、最新バージョンのプロバイダー インストール ファイルを取得します。
-5. ソースとターゲットの VMM サーバーでこのファイルを実行して、Azure Site Recovery Provider セットアップ ウィザードを開きます。
-6. **[前提条件の確認]** で、VMM サービスの停止を選択して、プロバイダーのセットアップを開始します。VMM サービスは停止し、セットアップの終了時に自動的に再起動します。VMM クラスターにインストールする場合は、クラスター ロールを停止する必要があります。
 
-	![前提条件](./media/site-recovery-vmm-san/SRSAN_ProviderPrereq.png)
+3. インストーラーによっていくつかの**前提条件チェック**が実行され、プロバイダーのセットアップを開始するために VMM サービスを停止するアクセス許可が要求されます。セットアップが完了すると、VMM サービスは自動的に再起動されます。VMM クラスターにインストールしている場合は、クラスター ロールを停止するよう求められます。
 
-5. **[Microsoft Update]** で、アップデートの内容を設定できます。この設定を行うことで、設定した Microsoft Update のポリシーに従って、プロバイダーの有効な更新がインストールされます。
+4. **[Microsoft Update]** で、アップデートの内容を設定できます。この設定を行うことで、設定した Microsoft Update のポリシーに従って、プロバイダーの有効な更新がインストールされます。
 
-プロバイダーのインストール後は、セットアップを続行し、サーバーをコンテナーに登録します。
+	![Microsoft 更新プログラム](./media/site-recovery-vmm-san/VMMASRInstallMUScreen.png)
 
-6. [インターネット接続] ページで、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。プロキシを使用しない、VMM サーバー上に構成された既定のプロキシを使用する、カスタム プロキシ サーバーを使用する、のいずれかを選択できます。以下の点に注意してください。
 
-	- カスタム プロキシ サーバーを使用する場合は、プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。
-	- 次の URL に VMM サーバーからアクセスできるようにする必要があります。
-		- **.hypervrecoverymanager.windowsazure.com
-- **.accesscontrol.windows.net
-- **.backup.windowsazure.com
-- **.blob.core.windows.net
-- **.store.core.windows.net
-- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。 
-	
-	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。
-	- VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
-	- インターネット接続を確認するためにテストが実行されます。プロキシのエラーは、VMM コンソールに表示されます。
+1.  インストール場所は、**<SystemDrive>\\Program Files\\Microsoft System Center 2012 R2\\Virtual Machine Manager\\bin** に設定されています。[インストール] ボタンをクリックすると、プロバイダーのインストールが開始されます。![InstallLocation](./media/site-recovery-vmm-san/VMMASRInstallLocationScreen.png)
 
-	![インターネット設定](./media/site-recovery-vmm-san/SRSAN_ProviderProxy.png)
 
-7. **[登録キー]** で、Azure Site Recovery からダウンロードして VMM サーバーにコピーした登録キーを選択します。
-8. **[サーバー名]** に、コンテナーで VMM サーバーを識別する表示名を入力します。
 
-	![サーバー登録](./media/site-recovery-vmm-san/SRSAN_ProviderRegKeyServerName.png)
+1. プロバイダーのインストール後は、[登録] ボタンをクリックしてサーバーをコンテナーに登録します。![InstallComplete](./media/site-recovery-vmm-san/VMMASRInstallComplete.png)
 
-9. **[初期クラウド メタデータ]** 同期で、VMM サーバー上のすべてのクラウドのメタデータをコンテナーと同期するかどうか選択します。この操作は、各サーバーで 1 回のみ実行する必要があります。すべてのクラウドを同期したくない場合は、この設定をオフのままにして、VMM コンソールのクラウドのプロパティで各クラウドを個別に同期できます。**[データの暗号化]** オプションは、このシナリオには関係ありません。
+5. **[インターネット接続]** で、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。*[既定のシステム プロキシ設定を使用]* を選択して、サーバー上に構成されている既定のインターネット接続設定を使用します。
 
-	![サーバー登録](./media/site-recovery-vmm-san/SRSAN_ProviderSyncEncrypt.png)
+	![インターネット設定](./media/site-recovery-vmm-san/VMMASRRegisterProxyDetailsScreen.png) - カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシの設定を構成すると、プロキシの接続を確認するためのテストが実行されます。- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合は、プロキシのアドレスやポートなど、プロキシの詳細を入力する必要があります。- 次の URL は、VMM サーバーと、Hyper-V ホストからアクセスできる必要があります。 - *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net - *.backup.windowsazure.com - *.blob.core.windows.net - *.store.core.windows.net - 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」と HTTPS (443) プロトコルで説明されている IP アドレスを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
-11. 次のページで、**[登録]** をクリックしてプロセスを完了します。登録後、VMM サーバーのメタデータが Azure Site Recovery によって取得されます。サーバーは、資格情報コンテナーの **[サーバー]** ページの <b>[リソース]</b> タブに表示されます。インストール後、VMM コンソールでプロバイダーの設定を変更します。
+	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
+
+6. **[登録キー]** で、Azure Site Recovery からダウンロードして VMM サーバーにコピーした登録キーを選択します。
+7. **[コンテナー名]** で、サーバーが登録されるコンテナーの名前を確認します。*[次へ]* をクリックします。
+
+
+	![サーバー登録](./media/site-recovery-vmm-san/VMMASRRegisterVaultCreds.png)
+
+9. この設定は VMM から Azure へのシナリオにのみ使用されます。VMM から VMM へのみのユーザーの場合は、この画面を無視できます。
+
+	![サーバー登録](./media/site-recovery-vmm-san/VMMASRRegisterEncryptionScreen.png)
+
+8. **[サーバー名]** に、コンテナーで VMM サーバーを識別する表示名を入力します。クラスター構成で、VMM クラスターのロール名を指定します。
+
+8. **[初期クラウド メタデータ]** 同期で、VMM サーバー上のすべてのクラウドのメタデータをコンテナーと同期するかどうか選択します。この操作は、各サーバーで 1 回のみ実行する必要があります。すべてのクラウドを同期したくない場合は、この設定をオフのままにして、VMM コンソールのクラウドのプロパティで各クラウドを個別に同期できます。![サーバー登録](./media/site-recovery-vmm-san/VMMASRRegisterFriendlyName.png)
+
+
+8. *[次へ]* をクリックしてプロセスを完了します。登録後に、VMM サーバーからのメタデータが、Azure Site Recovery によって取得されます。サーバーは、コンテナーの **[サーバー]** ページの *[VMM サーバー]* タブに表示されます。
+
+>[AZURE.NOTE]Azure Site Recovery プロバイダーは、次のコマンド ラインを使用してインストールすることもできます。このメソッドを使用すると、Windows Server 2012 R2 の Server CORE にプロバイダーをインストールできます。
+>
+>1. プロバイダーのインストール ファイルと登録キーを C:\\ASR などのフォルダーにダウンロードします。
+>2. System Center Virtual Machine Manager サービスを停止します。
+>3. **管理者**特権でコマンド プロンプトから次のコマンドを実行して、プロバイダーのインストーラーを抽出します。 
+>
+    	C:\Windows\System32> CD C:\ASR
+    	C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
+>4. 次のコマンドを実行して、プロバイダーをインストールします。
+>
+		C:\ASR> setupdr.exe /i
+>5. 次のコマンドを実行して、プロバイダーを登録します。
+>
+    	CD C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin
+    	C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>         
+ ####コマンド ラインのインストール パラメーター一覧####
+>
+ - **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。  
+ - **/Friendlyname**: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。
+ - **/EncryptionEnabled**: 省略可能。VMM から Azure へのシナリオで、Azure にある仮想マシンの暗号化が必要な場合にのみ使用する必要があります。拡張子が **.pfx** のファイル名を指定してください。
+ - **/proxyAddress**: 省略可能。プロキシ サーバーのアドレスを指定します。
+ - **/proxyport**: 省略可能。プロキシ サーバーのポートを指定します。
+ - **/proxyUsername**: 省略可能。プロキシのユーザー名を指定します (認証が必要なプロキシの場合)。
+ - **/proxyPassword**: 省略可能。プロキシ サーバーの認証に使用するパスワードを指定します (認証が必要なプロキシの場合)。 
 
 
 ## 手順 4: 記憶域配列と記憶域プールのマッピング
@@ -361,4 +384,4 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 	
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

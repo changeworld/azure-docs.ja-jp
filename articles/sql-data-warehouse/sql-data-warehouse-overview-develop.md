@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Data Warehouse のソリューションの開発 | Microsoft Azure"
-   description="Azure SQL Data Warehouse を使用したソリューションを作成するための開発手法とベスト プラクティス。"
+   pageTitle="SQL Data Warehouse の設計に関する設計上の決定とコーディング技法 | Microsoft Azure"
+   description="SQL Data Warehouse に関する開発コンセプト、設計上の決定、推奨事項、およびコーディング技法。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/25/2015"
+   ms.date="09/22/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
-# SQL Data Warehouse のソリューションの開発
+# SQL Data Warehouse の設計上の決定と コーディング技法
 
-SQL Data Warehouse に関する開発の原則、ベスト プラクティス、およびコーディング技法をより深く理解するために、開発に関する記事に目を通してください。
+SQL Data Warehouse に関する主要な設計上の決定、推奨事項、およびコーディング技法をより深く理解するために、開発に関する次の記事に目を通してください。
 
-## 主要な概念
+## 主要な設計上の決定
 次の記事には、SQL Data Warehouse を使用した分散データ ウェアハウスの開発を理解するのに必要ないくつかの主な概念と設計上の決定事項が概説されています。
 
 - [接続][]
@@ -33,8 +33,8 @@ SQL Data Warehouse に関する開発の原則、ベスト プラクティス、
 - [CTAS][]
 - [統計][]
 
-## 開発手法
-これらの記事には、SQL Data Warehouse を使用してソリューションを開発するための特定のコーディング手法、ヒント、およびベスト プラクティスが概説されています。
+## 開発における推奨事項とコーディング技法
+次の記事には、SQL Data Warehouse を開発するための具体的なコーディング技法、ヒント、および推奨事項が概説されています。
 
 - [ストアド プロシージャ][]
 - [ラベル][]
@@ -79,4 +79,4 @@ SQL Data Warehouse に関する開発の原則、ベスト プラクティス、
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

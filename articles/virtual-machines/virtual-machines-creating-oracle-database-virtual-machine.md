@@ -1,6 +1,24 @@
-<properties pageTitle="Azure での Oracle Database 仮想マシンの作成" description="例として Microsoft Azure で Oracle 仮想マシンを作成し、続いてその上に Oracle データベースを作成します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
-<tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
-#Azure での Oracle Database 仮想マシンの作成
+<properties 
+	pageTitle="Azure ポータルで Oracle データベース VM を作成する |Microsoft Azure" 
+	description="従来のデプロイメント モデルと Azure プレビュー ポータルで、Oracle Database を使用して仮想マシンを作成する方法について説明します。" 
+	services="virtual-machines" 
+	authors="bbenz" 
+	documentationCenter=""
+	tags="azure-service-management"/>
+	
+<tags 
+	ms.service="virtual-machines" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="Windows" 
+	ms.workload="infrastructure-services" 
+	ms.date="06/22/2015" 
+	ms.author="bbenz" />
+	
+#Azure で Oracle Database 仮想マシンを作成する
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 次の例は、Windows Server 2012 で実行しているマイクロソフト提供の Oracle Database のイメージに基づいて、Azure で仮想マシン (VM) を作成する方法を示しています。次の 2 つの手順が含まれます。最初に VM を作成し、VM 内に Oracle Database を作成します。この例で示されているのは Oracle Database バージョン 12c ですが、手順はバージョン 11g とほぼ同じです。
 
 ##Azure で Oracle Database VM を作成するには
@@ -50,39 +68,39 @@
 
 6.	**ORACLE\_HOSTNAME** という環境変数を作成します。この値は VM のコンピューター名に設定します。環境変数は次の手順で作成できます。
 
-	a.	Windows で **[スタート]** をクリックし、「**コントロール パネル**」と入力して、**コントロール パネル** アイコンをクリックし、続いて **[システムとセキュリティ]**、**[システム]**、**[システムの詳細設定]** の順にクリックします。
+	a.Windows で **[スタート]** をクリックし、「**コントロール パネル**」と入力して、**コントロール パネル** アイコンをクリックし、続いて **[システムとセキュリティ]**、**[システム]**、**[システムの詳細設定]** の順にクリックします。
 
-	b.	**[詳細設定]** タブをクリックし、続いて **[環境変数]**をクリックします。
+	b.**[詳細設定]** タブをクリックし、続いて **[環境変数]**をクリックします。
 
-	c.	**[システム環境変数]** セクションの **[新規]** をクリックして変数を作成します。
+	c.**[システム環境変数]** セクションの **[新規]** をクリックして変数を作成します。
 
-	d.	**[新しいシステム変数]** ダイアログ ボックスで、変数名に**「ORACLE\_HOSTNAME」**を入力し、変数値に VM のコンピューター名を入力します。コンピューター名を確認するには、コマンド プロンプトを開き **SET COMPUTERNAME** を実行します (このコマンドの出力にコンピューター名が含まれます)。
+	d.**[新しいシステム変数]** ダイアログ ボックスで、変数名に**「ORACLE\_HOSTNAME」**を入力し、変数値に VM のコンピューター名を入力します。コンピューター名を確認するには、コマンド プロンプトを開き **SET COMPUTERNAME** を実行します (このコマンドの出力にコンピューター名が含まれます)。
 
-	e.	**[OK]** クリックすると、新しい環境変数が保存され **[新しいシステム変数]** ダイアログ ボックスが閉じます。
+	e.**[OK]** クリックすると、新しい環境変数が保存され **[新しいシステム変数]** ダイアログ ボックスが閉じます。
 
-	f.	コントロール パネルで開かれた他のダイアログ ボックスを閉じます。
+	f.コントロール パネルで開かれた他のダイアログ ボックスを閉じます。
 
 7.	Windows で **[スタート]** をクリックし、続いて「**Database Configuration Assistant**」と入力します。**Database Configuration Assistant** アイコンをクリックします。
 
 8.	**Database Configuration Assistant** ウィザード内で、ダイアログ ボックスの各手順で必要な値を指定します。
 
-	a.	**手順 1:** **[データベースを作成する]**、**[次へ]** の順にクリックします。
+	a.**手順 1:** **[データベースを作成する]**、**[次へ]** の順にクリックします。
 
 		![](media/virtual-machines-creating-oracle-database-virtual-machine/image5.png)
 
-	b. **手順 2:** **[グローバル データベース名]** の値を入力します。**[管理パスワード]** の値を入力し、確定します。このパスワードは、Oracle データベースの**システム** ユーザー用のものです。**[コンテナー データベースとして作成]** をオフにします。**[次へ]** をクリックします。
+	b.**手順 2:** **[グローバル データベース名]** の値を入力します。**[管理パスワード]** の値を入力し、確定します。このパスワードは、Oracle データベースの**システム** ユーザー用のものです。**[コンテナー データベースとして作成]** をオフにします。**[次へ]** をクリックします。
 
 		![](media/virtual-machines-creating-oracle-database-virtual-machine/image6.png)
 
-	c. **手順 3:** 前提条件の確認が自動的に始まり、**手順 4** に進みます。
+	c.**手順 3:** 前提条件の確認が自動的に始まり、**手順 4** に進みます。
 
-	d. **手順 4:** **[データベースの作成 – 概要]** オプションを確認し、続いて **[完了]** をクリックします。
+	d.**手順 4:** **[データベースの作成 – 概要]** オプションを確認し、続いて **[完了]** をクリックします。
 
 		![](media/virtual-machines-creating-oracle-database-virtual-machine/image7.png)
 	e.**手順 5:** **進行状況ページ**にデータベース作成の状態が表示されます。
 
 		![](media/virtual-machines-creating-oracle-database-virtual-machine/image8.png)
-	f. データベースを作成すると、**[パスワード管理]** ダイアログ ボックスを使えるようになります。必要に応じてパスワード設定を変更し、続いてダイアログ ボックスが閉じて **[Database Configuration Assistant]** ウィザードを終了します。
+	f.データベースを作成すると、**[パスワード管理]** ダイアログ ボックスを使えるようになります。必要に応じてパスワード設定を変更し、続いてダイアログ ボックスが閉じて **[Database Configuration Assistant]** ウィザードを終了します。
 
 ##データベースがインストールされていることを確認するには
 
@@ -110,7 +128,7 @@
 
 		**lsnrctl start**
 
-> [AZURE.NOTE] **lsnrctl status** を実行すると、リスナーの状態を確認できます。リスナーを停止するには、**lsnrctl stop** を実行します。
+> [AZURE.NOTE]**lsnrctl status** を実行すると、リスナーの状態を確認できます。リスナーを停止するには、**lsnrctl stop** を実行します。
 
 ### 仮想マシンのファイアウォールでポート 1521 を開く
 
@@ -146,11 +164,11 @@
 
 8.	エンドポイントの名前を指定します。
 
-	a. プロトコルに **TCP** を使用します。
+	a.プロトコルに **TCP** を使用します。
 
-	b. パブリック ポートに **1521** を使用します。
+	b.パブリック ポートに **1521** を使用します。
 
-	c. プライベート ポートに **1521** を使用します。
+	c.プライベート ポートに **1521** を使用します。
 
 9.	残りのオプションはそのままにします。
 
@@ -159,7 +177,7 @@
 ##Oracle Database Enterprise Manager のリモート アクセスを有効にする
 Oracle Database Enterprise Manager のリモート アクセスを有効にする場合は、ファイアウォールでポート 5500 を開き、Azure ポータルで 5500 に対して仮想マシンのエンドポイントを作成します (ポート 1521 を開き、1521 に対してエンドポイントを作成する上記手順を使用)。続いて、Oracle Enterprise Manager をリモート コンピューターから実行するには、ブラウザーを開いて `http://<<unique_domain_name>>:5500/em` の形式の URL にアクセスします。
 
-> [AZURE.NOTE] *\<\<unique\_domain\_name\>\>* の値を確認するには、[Azure ポータル](https://ms.portal.azure.com/)内で **[Virtual Machines]** をクリックし、続いて Oracle Database を実行するために使用している仮想マシンを選択します。
+> [AZURE.NOTE]*<<unique\_domain\_name>>* の値を確認するには、[Azure ポータル](https://ms.portal.azure.com/)内で **[Virtual Machines]** をクリックし、続いて Oracle Database を実行するために使用している仮想マシンを選択します。
 
 ##基本的なオプションと高度なオプションのバンドルを構成する
 **Oracle Database と基本的なオプション** または**Oracle Database と高度なオプションのバンドル** を選択した場合、次の手順で Oracle のインストールにアドオン機能を構成します。Windows でこれらを設定する手順については、Oracle のマニュアルを参照してください。個々のコンポーネントのニーズ次第で構成は大きく変わります。
@@ -181,4 +199,4 @@ Oracle Database Enterprise Manager のリモート アクセスを有効にす�
 
 -	[Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!-----HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

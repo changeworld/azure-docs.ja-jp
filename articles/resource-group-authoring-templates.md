@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/20/2015"
+   ms.date="09/18/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの作成
@@ -241,6 +241,8 @@ resources セクションでは、デプロイまたは更新されるリソー�
 
 リソース名が一意でない場合は、**resourceId** ヘルパー関数 (後で説明) を使用すると、リソースの一意識別子を取得できます。
 
+**properties** 要素の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値とまったく同じです。デプロイするリソースの REST API 操作については、「[Azure リファレンス](https://msdn.microsoft.com/library/azure/mt420159.aspx)」を参照してください。
+
 次の例では、**Microsoft.Web/serverfarms** リソースと、入れ子になった **Extensions** リソースを含む **Microsoft.Web/sites** リソースを示しています。
 
     "resources": [
@@ -329,9 +331,9 @@ resources セクションでは、デプロイまたは更新されるリソー�
 ただし、シナリオによっては、より高度なタスクが必要になる場合があります。  
 
 
-2 つのテンプレートをマージしたり、親テンプレート内で子テンプレートを使用したりすることが必要な場合があります。詳細については、[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
+2 つのテンプレートをマージしたり、親テンプレート内で子テンプレートを使用したりすることが必要な場合があります。詳細については、「[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。
 
-ある種類のリソースの作成時に指定した回数を繰り返すには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
 別のリソース グループ内に存在するリソースの使用が必要になる場合があります。  
 これは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。  
@@ -422,9 +424,9 @@ For more information, see the [resourceId function](../resource-group-template-f
     }
 
 ## 次のステップ
-- テンプレート内から使用できる関数の詳細については、「[Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)」を参照してください。
-- 作成したテンプレートをデプロイする方法を確認するには、[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)に関する記事を参照してください。
+- テンプレート内から使用できる関数の詳細については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
+- 作成したテンプレートをデプロイする方法を確認するには、「[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
 - アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
-- 使用可能なスキーマを確認するには、[Azure リソース マネージャーのスキーマに関するページ](https://github.com/Azure/azure-resource-manager-schemas)を参照してください。
+- 使用可能なスキーマを確認するには、[Azure Resource Manager のスキーマに関するページ](https://github.com/Azure/azure-resource-manager-schemas)を参照してください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

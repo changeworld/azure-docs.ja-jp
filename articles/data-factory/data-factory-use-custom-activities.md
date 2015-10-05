@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Data Factory パイプラインでカスタム アクティビティを使用する"
-	description="カスタム アクティビティを作成して Azure データ ファクトリ パイプラインで使用する方法について説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="Azure Data Factory パイプラインでカスタム アクティビティを使用する" 
+	description="カスタム アクティビティを作成して Azure データ ファクトリ パイプラインで使用する方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/28/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/22/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory パイプラインでカスタム アクティビティを使用する
@@ -53,7 +53,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
 4. Azure Storage NuGet パッケージをプロジェクトにインポートします。
 
-		Install-Package Azure.Storage
+		Install-Package Azure.Storage -Version 4.3.0 
 
 5. 次の **using** ステートメントをプロジェクト内のソース ファイルに追加します。
 
@@ -228,7 +228,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 ### カスタム アクティビティの実行に使用する HDInsight クラスター用のリンク サービスの作成
 Azure Data Factory サービスはオンデマンド クラスターの作成をサポートしており、このクラスターを使用して入力データの処理と出力データの生成を行います。また、独自のクラスターを使って同じ処理を行うことも可能です。オンデマンド HDInsight クラスターを使用する場合は、スライスごとにクラスターが作成されます。一方、独自の HDInsight クラスターを使用する場合、そのクラスターはすぐにスライスを処理できる状態にあります。そのため、オンデマンド クラスターを使用すると、独自のクラスターを使用するよりデータの出力が遅いと感じる場合があります。
 
-> [AZURE.NOTE]実行時に、.NET アクティビティのインスタンスは HDInsight クラスターの 1 つのワーカー ノードでのみ実行されます。複数のノードで実行されるように拡張することはできません。.NET アクティビティの複数のインスタンスは、HDInsight クラスターの別々のノードで並列に実行できます。
+> [AZURE.NOTE]実行時に、.NET アクティビティのインスタンスは HDInsight クラスターの 1 つの worker ノードでのみ実行されます。複数のノードで実行されるように拡張することはできません。.NET アクティビティの複数のインスタンスは、HDInsight クラスターの別々のノードで並列に実行できます。
 
 「[Azure Data Factory を使ってみる][adfgetstarted]」のチュートリアルに加えて「[Data Factory で Pig と Hive を使用する][hivewalkthrough]」のチュートリアルも終えている場合は、このリンク サービスの作成を省略し、既に ADFTutorialDataFactory 内にあるリンク サービスを使用できます。
 
@@ -244,7 +244,18 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	4. **version** プロパティには、使用する HDInsight のバージョンを指定します。このプロパティを除外した場合は、最新バージョンが使用されます。  
 	5. **linkedServiceName** には、入門チュートリアルで作成した **StorageLinkedService** を指定します。 
 
-		{ "name": "HDInsightOnDemandLinkedService", "properties": { "type": "HDInsightOnDemand", "typeProperties": { "clusterSize": "1", "timeToLive": "00:05:00", "version": "3.1", "linkedServiceName": "StorageLinkedService" } } }
+			{
+			  "name": "HDInsightOnDemandLinkedService",
+			  "properties": {
+			    "type": "HDInsightOnDemand",
+			    "typeProperties": {
+			      "clusterSize": "1",
+			      "timeToLive": "00:05:00",
+			      "version": "3.1",
+			      "linkedServiceName": "StorageLinkedService"
+			    }
+			  }
+			}
 
 2. コマンド バーの **[デプロイ]** をクリックして、リンクされたサービスをデプロイします。
    
@@ -405,6 +416,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		    "type": "AzureBatch",
 		    "typeProperties": {
 		      "accountName": "<Azure Batch account name>",
+			  "batchUri": "https://<region>.batch.azure.com",
 		      "accessKey": "<Azure Batch account key>",
 		      "poolName": "<Azure Batch pool name>",
 		      "linkedServiceName": "<Specify associated storage linked service reference here>"
@@ -412,11 +424,10 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 		  }
 		}
 
-	> [AZURE.NOTE]**accountName** プロパティのバッチ アカウントの名前に「**.<リージョン名**」を追加します。例: "mybatchaccount.eastus"。もう 1 つの選択肢は、下のように batchUri エンドポイントを指定することです。
+	> [AZURE.IMPORTANT]**[Azure Batch アカウント] ブレード**の **URL** は、accountname.region.batch.azure.com です。JSON の **batchUri** プロパティでは、この URL から **"accountname" を削除**し、**accountName** JSON プロパティの**accountname** を必要があります。
+	  
+	**poolName** プロパティでは、プール名の代わりにプール ID を指定することもできます。
 
-		accountName: "adfteam",
-		batchUri: "https://eastus.batch.azure.com",
- 
 	これらのプロパティについては、[Azure Batch リンク サービスに関する MSDN のトピック](https://msdn.microsoft.com/library/mt163609.aspx)をご覧ください。
 
 2.  Data Factory エディターで、チュートリアルで作成したパイプラインの JSON 定義を開き、**HDInsightLinkedService** を **AzureBatchLinkedService** に置き換えます。
@@ -467,4 +478,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure 上で Linux を実行するカスタム仮想マシンの作成"
-	description="Azure 上で Linux を実行するカスタム仮想マシンを作成する方法について説明します。"
+	pageTitle="Linux VM の作成 | Microsoft Azure"
+	description="Linux オペレーティング システムを実行するクラシック デプロイ モデルを使用してカスタム仮想マシンを作成する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -19,6 +19,8 @@
 
 # Azure 上で Linux を実行するカスタム仮想マシンを作成する方法
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-linux-tutorial.md)を使用してリソースを作成することもできます。
+
 このトピックでは、Azure CLI でクラシック デプロイ モデルを使用して*カスタム*仮想マシンを作成する方法について説明します。Azure の**イメージ**にある Linux イメージを使用します。Azure CLI では、次のような構成を選択できます。
 
 - 仮想ネットワークと VM との接続
@@ -29,7 +31,7 @@
 > [AZURE.IMPORTANT]仮想マシンが仮想ネットワークを使用して、ホスト名を使用した直接接続またはクロスプレミス接続の設定ができるには、仮想マシンの作成時に必ず仮想ネットワークを指定する必要があります。仮想マシンが仮想ネットワークに接続するように設定できるのは、仮想マシンの作成時に限られています。仮想ネットワークの詳細については、「[仮想ネットワークの概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 
 <p/>
-[AZURE.INCLUDE [service-management-pointer-to-resource-manager](../../includes/service-management-pointer-to-resource-manager.md)]
+
 
 - [Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)
 
@@ -38,4 +40,4 @@
 
 [AZURE.INCLUDE [virtual-machines-create-LinuxVM](../../includes/virtual-machines-create-linuxvm.md)]
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

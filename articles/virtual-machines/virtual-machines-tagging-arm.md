@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure で仮想マシンにタグを付ける方法"
-   description="Azure で仮想マシンをタグ付ける方法"
+   pageTitle="VM にタグ付けする方法 |Microsoft Azure"
+   description="この記事では、リソース マネージャーのデプロイメント モデルを使用して作成した Azure Virtual Machine のタグ付けについて説明します。"
    services="virtual-machines"
    documentationCenter=""
    authors="mmccrory"
@@ -19,15 +19,17 @@
 
 # Azure で仮想マシンにタグを付ける方法
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用して作成した仮想マシンのタグ付けについて説明します。
+
 この記事では、Azure リソース マネージャーでAzure で仮想マシンにタグを付けるさまざまな方法について説明します。タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。現在、Azure では、1 つのリソースまたはリソース グループにつき最大 15 個のタグを付けることができます。タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。タグは、Azure リソース マネージャー経由で作成されたリソースでのみサポートされます。
 
 ## テンプレートを使用して仮想マシンにタグを付ける
 
-まず、テンプレートを使用してタグを付けてみましょう。[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)では、Compute (仮想マシン)、Storage (ストレージ アカウント)、 をコンピューティング、ストレージ (ストレージ アカウント)、および Network (パブリック IP アドレス、仮想ネットワーク、およびネットワーク インターフェイス) というリソースにタグを設定します。
+まず、テンプレートを使用してタグを付けてみましょう。[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)では、Compute (Virtual Machine)、Storage (ストレージ アカウント)、および Network (パブリック IP アドレス、Virtual Network、およびネットワーク インターフェイス) というリソースにタグを設定します。
 
 [テンプレート リンク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-tags-vm)から **[Azure へのデプロイ]** ボタンをクリックします。[Azure プレビュー ポータル](http://portal.azure.com/)が開きます。ポータルにはこのテンプレートをデプロイできます。
 
-![タグを使用した単純なデプロイ](./media/virtual-machines-tagging-arm/deploy-to-azure-tags.png)
+![タグを使用した単純なデプロイメント](./media/virtual-machines-tagging-arm/deploy-to-azure-tags.png)
 
 このテンプレートには、*Department*、*Application*、および *Created By* というタグが含まれています。別のタグ名を使いたい場合は、テンプレートにタグを追加したり、タグを編集したりすることができます。
 
@@ -68,9 +70,9 @@
 
 ## PowerShell を使用したタグ付け
 
-PowerShell でタグの作成、追加、および削除を行うには、まず [Azure リソース マネージャーで PowerShell 環境][]を設定する必要があります。設定を完了したら、PowerShell で Compute、Network、および Storage リソースを作成するとき、またはリソースを作成した後にタグを追加できます。この記事では、仮想マシンで設定したタグを表示または編集する方法を中心に説明します。
+PowerShell でタグの作成、追加、および削除を行うには、まず [Azure リソース マネージャーで PowerShell 環境][]を設定する必要があります。設定を完了したら、PowerShell で Compute、Network、および Storage リソースを作成するとき、またはリソースを作成した後にタグを追加できます。この記事では、Virtual Machines で設定したタグを表示または編集する方法を中心に説明します。
 
-まず `Get-AzureVM` コマンドレットで仮想マシンを表示します。
+まず `Get-AzureVM` コマンドレットで Virtual Machine を表示します。
 
         PS C:\> Get-AzureVM -ResourceGroupName "MyResourceGroup" -Name "MyWindowsVM"
 
@@ -83,7 +85,7 @@ PowerShell でタグの作成、追加、および削除を行うには、まず
                 "Environment": "Production"
                }
 
-PowerShell でタグを追加する場合、`Set-AzureResource`コマンドを使用できます。PowerShell でタグを更新すると、タグ全体が更新されます。そのため、既にタグが設定されているリソースに 1 つのタグを追加する場合、リソースに設定するすべてのタグを含める必要があります。次に、PowerShell コマンドレットでリソースにタグを追加する例を示します。
+PowerShell でタグを追加する場合、`Set-AzureResource` コマンドを使用できます。PowerShell でタグを更新すると、タグ全体が更新されます。そのため、既にタグが設定されているリソースに 1 つのタグを追加する場合、リソースに設定するすべてのタグを含める必要があります。次に、PowerShell コマンドレットでリソースにタグを追加する例を示します。
 
 この最初のコマンドレットでは、`Get-AzureResource` および `Tags` 関数を使用して、*MyWindowsVM* に追加されているすべてのタグを *tags* 変数に設定します。
 
@@ -138,7 +140,7 @@ Azure CLI で既に作成されているリソースにも、タグを付ける�
 
         azure vm show -g MyResourceGroup -n MyVM
 
-PowerShell とは異なり、既にタグが含まれているリソースにタグを追加する場合、`azure vm set`コマンドを使用する前にすべてのタグ (既存のタグと新しいタグ) を指定する必要はありません。代わりに、このコマンドを使用すると、リソースにタグが付加されます。Azure CLI を使用して新しい VM タグを追加するには、タグ パラメーター **-t** を指定して `azure vm set`コマンドを実行できます。
+PowerShell とは異なり、既にタグが含まれているリソースにタグを追加する場合、`azure vm set` コマンドを使用する前にすべてのタグ (既存のタグと新しいタグ) を指定する必要はありません。代わりに、このコマンドを使用すると、リソースにタグが付加されます。Azure CLI を使用して新しい VM タグを追加するには、タグ パラメーター **-t** を指定して `azure vm set` コマンドを実行できます。
 
         azure vm set -g MyResourceGroup -n MyVM –t myNewTagName1=myNewTagValue1;myNewTagName2=myNewTagValue2
 
@@ -180,11 +182,11 @@ Azure リソース マネージャーで Compute、Network、および Storage �
 
 
 [Azure リソース マネージャーで PowerShell 環境]: ../powershell-azure-resource-manager.md
-[Azure リソース コマンドレット]: https://msdn.microsoft.com/ja-jp/library/azure/dn757692.aspx
+[Azure リソース コマンドレット]: https://msdn.microsoft.com/ja-JP/library/azure/dn757692.aspx
 [Azure CLI 環境]: ./xplat-cli-azure-resource-manager.md
 [Azure リソース マネージャーの概要]: ../resource-group-overview.md
 [タグを使用した Azure リソースの整理]: ../resource-group-using-tags.md
 [Microsoft Azure の課金内容の確認]: ../billing-understand-your-bill.md
 [Microsoft Azure リソースの消費を把握する]: ../billing-usage-rate-card-overview.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

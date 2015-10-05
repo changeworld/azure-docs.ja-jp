@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="09/18/2015" 
 	ms.author="juliako"/>
 
 #REST API を使用してビデオ オン デマンド (VoD) の配信を開始する 
@@ -1210,4 +1210,4 @@ AMS のラーニング パスについては、以下を参照してください
 
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

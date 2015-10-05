@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/03/2015"
-	ms.author="patshea123"/>
+	ms.author="patshea"/>
 
 # MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
 
@@ -171,4 +171,4 @@ Azure Active Directory アプリが更新され、*ディレクトリ データ�
 
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

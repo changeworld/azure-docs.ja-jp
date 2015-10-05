@@ -7,7 +7,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/18/2015" ms.author="aashishr"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/21/2015" ms.author="aashishr"; "jimpark"/>
 
 
 # PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
@@ -28,8 +28,8 @@ PowerShell を使用して次のセットアップおよび登録タスクを自
 **New-AzureBackupVault** コマンドレットを使用して、新しいバックアップ コンテナーを作成できます。バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
 ```
-PS C:\> New-AzureResourceGroup –Name “test-rg” –Region “West US”
-PS C:\> $backupvault = New-AzureBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GRS
+PS C:\> New-AzureResourceGroup –Name “test-rg” –Location “West US”
+PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GRS
 ```
 
 **Get-AzureBackupVault** コマンドレットを使用して、特定のサブスクリプション内のすべてのバックアップ コンテナーの一覧を取得できます。
@@ -38,7 +38,7 @@ PS C:\> $backupvault = New-AzureBackupVault –ResourceGroupName “test-rg” �
 ### Microsoft Azure Backup エージェントのインストール
 Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。最新バージョンのインストーラーは、[Microsoft ダウンロード センター](http://aka.ms/azurebackup_agent)またはバックアップ コンテナーの [ダッシュボード] ページから入手することができます。インストーラーを、*C:\\Downloads* などの、簡単にアクセスできる場所に保存します。
 
-エージェントをインストールするには、管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
+エージェントをインストールするには、管理者特権の PowerShell コンソールで、次のコマンドを実行します。
 
 ```
 PS C:\> MARSAgentInstaller.exe /q
@@ -84,7 +84,7 @@ Microsoft Azure Backup サービスへの登録を実行する前に、[前提�
 
 ```
 PS C:\> $credspath = "C:"
-PS C:\> $credsfilename = Get-AzureBackupVaultCredentials -Vault $backupvault -TargetLocation $credspath
+PS C:\> $credsfilename = Get-AzureRMBackupVaultCredentials -Vault $backupvault -TargetLocation $credspath
 PS C:\> $credsfilename
 f5303a0b-fae4-4cdb-b44d-0e4c032dde26_backuprg_backuprn_2015-08-11--06-22-35.VaultCredentials
 ```
@@ -542,7 +542,7 @@ PS C:\> .\MARSAgentInstaller.exe /d /q
 ただし、Azure に格納されたデータは、設定した保有ポリシーに基づいて維持されます。古いポイントの期限は自動的に切れます。
 
 ## リモート管理
-Microsoft Azure Backup エージェント、ポリシー、およびデータ ソースに関する管理はすべて、Azure PowerShell を使ってリモートで実行できます。リモートで管理されるコンピューターは、適切に準備されている必要があります。
+Microsoft Azure Backup エージェント、ポリシー、およびデータ ソースに関する管理はすべて、PowerShell を使ってリモートで実行できます。リモートで管理されるコンピューターは、適切に準備されている必要があります。
 
 既定では、WinRM サービスは手動で開始されるように設定されています。スタートアップの種類は*自動*に設定する必要があります。これにより、サービスが開始されます。WinRM サービスが実行していることを確認するには、Status プロパティの値が *[実行中]* になっていることを確認します。
 
@@ -554,7 +554,7 @@ Status   Name               DisplayName
 Running  winrm              Windows Remote Management (WS-Manag...
 ```
 
-リモート処理用に Azure PowerShell を構成します。
+リモート処理用に PowerShell を構成します。
 
 ```
 PS C:\> Enable-PSRemoting -force
@@ -583,4 +583,4 @@ Azure Backup for Windows Server/Client の詳細については、以下を参�
 - [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 - [Windows Server のバックアップ](backup-azure-backup-windows-server.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

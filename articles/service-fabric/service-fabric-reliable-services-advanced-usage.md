@@ -1,20 +1,20 @@
 <properties
    pageTitle="Reliable Service プログラミング モデルの詳細な使用方法"
-	description="サービスの柔軟性を高めるための Service Fabric の Reliable Services プログラミング モデルの詳細な使用方法について説明します。"
-	services="Service-Fabric"
-	documentationCenter=".net"
-	authors="jessebenson"
-	manager="timlt"
-	editor="masnider"/>
+   description="サービスの柔軟性を高めるための Service Fabric の Reliable Services プログラミング モデルの詳細な使用方法について説明します。"
+   services="Service-Fabric"
+   documentationCenter=".net"
+   authors="jessebenson"
+   manager="timlt"
+   editor="masnider"/>
 
 <tags
    ms.service="Service-Fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/26/2015"
-	ms.author="jesseb"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/26/2015"
+   ms.author="jesseb"/>
 
 # Reliable Services プログラミング モデルの詳細な使用方法
 Service Fabric を使用すると、信頼性の高いステートレス サービスとステートフル サービスを簡単に作成および管理できます。このガイドでは、サービスの制御と柔軟性を高めるための Reliable Services プログラミング モデルの詳細な使用方法について説明します。このガイドをお読みになる前に、[Reliable Services プログラミング モデル](service-fabric-reliable-services-introduction.md)について理解しておいてください。
@@ -59,7 +59,4 @@ Service Fabric に関する詳細なトピックについては、次の記事�
 
 - [配置の制約の概要](service-fabric-placement-constraint.md)
 
-- [Azure Service Fabric のステートフル サービスのレプリケーション トラフィックのセキュリティ保護](service-fabric-replication-security.md)
- 
-
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

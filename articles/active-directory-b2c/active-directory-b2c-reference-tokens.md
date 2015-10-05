@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/04/2015"
+	ms.date="09/22/2015"
 	ms.author="dastrock"/>
 
 # Azure AD B2C Preview: トークン リファレンス
@@ -155,4 +155,4 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/o
 | 更新トークン | 最大 14 日 | 1 つの更新トークンは、最大 14 日間有効です。ただし、更新トークンはさまざまな理由でいつでも無効になる可能性があるので、アプリでは、失敗するまで、または新しい更新トークンに置き換えるまで、更新トークンの使用を続行する必要がありますに。更新トークンは、ユーザーが自分の資格情報を入力してから 90 日経過した場合も無効になります。 |
 | 承認コード | 5 分 | 承認コードは有効期間が意図的に短くされており、受け取ったらすぐに access\_token、id\_token、refresh\_token に利用する必要があります。 |
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

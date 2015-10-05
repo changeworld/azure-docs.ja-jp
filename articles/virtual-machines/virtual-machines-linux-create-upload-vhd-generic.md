@@ -1,11 +1,12 @@
-<properties 
+<properties
 	pageTitle="Azure 上での Linux VHD の作成とアップロード"
 	description="Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="szarkos"
 	manager="timlt"
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -16,8 +17,9 @@
 	ms.date="05/15/2015"
 	ms.author="szarkos"/>
 
-
 # <a id="nonendorsed"> </a>動作保証外のディストリビューションに関する情報 #
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 **重要**: Azure プラットフォームの SLA は、[動作保証済みディストリビューション](virtual-machines-../linux-endorsed-distributions.md)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
@@ -189,4 +191,4 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
 - その後、仮想マシンをシャットダウンし、Azure に VHD をアップロードする必要があります。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

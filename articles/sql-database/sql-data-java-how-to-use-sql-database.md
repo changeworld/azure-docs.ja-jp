@@ -3,7 +3,7 @@
 	description="Java コードから Azure SQL Database を使用する方法について説明します。" 
 	services="sql-database" 
 	documentationCenter="java" 
-	authors="rmcmurray" 
+	authors="MightyPen" 
 	manager="jeffreyg" 
 	editor="jimbe"/>
 
@@ -13,38 +13,38 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="06/03/2015" 
-	ms.author="robmcm"/>
+	ms.date="09/22/2015" 
+	ms.author="genemi"/>
 
-# Java での Azure SQL データベースの使用方法
+# Java での Azure SQL Database の使用方法
 
-次の手順では、Java で Azure SQL データベースを使用する方法を示しています。わかりやすく説明するために、コマンド ラインの例を示していますが、これと類似した手順を、内部設置型のホステッド Web アプリケーションや、Azure 内またはその他の実行環境内の Web アプリケーションにも適用することができます。このガイドでは、[Azure 管理ポータル](https://windows.azure.com)からのサーバーとデータベースの作成を取り上げます。
+次の手順では、Java で Azure SQL Database を使用する方法を示しています。わかりやすく説明するために、コマンド ラインの例を示していますが、これと類似した手順を、オンプレミスのホステッド Web アプリケーションや、Azure 内またはその他の実行環境内の Web アプリケーションにも適用することができます。このガイドでは、[Microsoft Azure 管理ポータル](https://windows.azure.com)からのサーバーとデータベースの作成を取り上げます。
 
-## Azure SQL データベースとは
+## Azure SQL Database とは
 
-Azure SQL データベースは、Azure 用のリレーショナル データベース管理システムを提供し、SQL Server テクノロジを基盤としています。SQL データベース インスタンスを使用すると、リレーショナル データベース ソリューションを簡単に準備してクラウドにデプロイすることができ、分散したデータ センターを活用して、組み込みのデータ保護と自己復旧機能のメリットによるエンタープライズ クラスの可用性、拡張性、およびセキュリティを確保できます。
+Azure SQL Database は、Azure 用のリレーショナル データベース管理システムを提供し、SQL Server テクノロジを基盤としています。SQL Database インスタンスを使用すると、リレーショナル データベース ソリューションを簡単に準備してクラウドにデプロイすることができ、分散したデータ センターを活用して、組み込みのデータ保護と自己復旧機能のメリットによるエンタープライズ クラスの可用性、拡張性、およびセキュリティを確保できます。
 
 
 
 ## 概念
-Azure SQL データベースは SQL Server テクノロジに基づいているため、Java から SQL データベースへのアクセスは Java から SQL Server へのアクセスに非常に似ています。アプリケーションをローカルで開発した後 (SQL Server を使用)、接続文字列を変更するだけで SQL データベースに接続できます。SQL Server JDBC ドライバーをアプリケーションに使用できます。ただし、SQL データベースと SQL Server のいくつかの違いがアプリケーションに影響する場合があります。詳細については、「[ガイドラインと制限事項 (SQL データベース)](http://msdn.microsoft.com/library/windowsazure/ff394102.aspx)」を参照してください。
+Azure SQL Database は SQL Server テクノロジに基づいているため、Java から SQL Database へのアクセスは Java から SQL Server へのアクセスに非常に似ています。アプリケーションをローカルで開発した後 (SQL Server を使用)、接続文字列を変更するだけで SQL Database に接続できます。SQL Server JDBC ドライバーをアプリケーションに使用できます。ただし、SQL Database と SQL Server のいくつかの違いがアプリケーションに影響する場合があります。詳細については、「[ガイドラインと制限事項 (SQL データベース)](http://msdn.microsoft.com/library/windowsazure/ff394102.aspx)」を参照してください。
 
-SQL データベースに関するその他のリソースについては、「[次のステップ][]」を参照してください。
+SQL Database に関するその他のリソースについては、「[次のステップ][]」を参照してください。
 
 ## 前提条件
 
-次の前提条件は Java で SQL データベースを使用する場合に必要になります。
+次の前提条件は Java で SQL Database を使用する場合に必要になります。
 
 * A Java Developer Kit (JDK) v 1.6 以降。
 * Azure サブスクリプション <http://www.microsoft.com/windowsazure/offers/> から入手できます。
 * Eclipse を使用している場合は、Eclipse IDE for Java EE Developers Indigo 以降が必要です。<http://www.eclipse.org/downloads/> からダウンロードできます。また、Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) も必要です。このプラグインのインストール時には Microsoft JDBC Driver 4.0 for SQL Server がインストール済みであることを確認してください。詳細については、「[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)」を参照してください。
 * Eclipse を使用していない場合は、Microsoft JDBC Driver 4.0 for SQL Server が必要です。これは、<http://www.microsoft.com/download/details.aspx?id=11774> からダウンロードできます。
 
-## Azure SQL データベースの作成
+## Azure SQL Database の作成
 
-Java コードで Azure SQL データベースを使用するには、Azure SQL データベース サーバーの作成が必要になります。
+Java コードで Azure SQL Database を使用するには、Azure SQL Database サーバーの作成が必要になります。
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2. **[新規]** をクリックします。
 
     ![新しい SQL データベースの作成][create_new]
@@ -65,9 +65,9 @@ Java コードで Azure SQL データベースを使用するには、Azure SQL 
 
 8. 完了ボタンをクリックします。
 
-## SQL データベースの接続文字列の決定
+## SQL Database の接続文字列の決定
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com)にログインします。
+1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 2. **[SQL データベース]** をクリックします。
 3. 使用するデータベースをクリックします。
 4. **[接続文字列の表示]** をクリックします。
@@ -76,7 +76,7 @@ Java コードで Azure SQL データベースを使用するには、Azure SQL 
     ![JDBC 接続文字列の決定][get_jdbc_connection_string]
 
 6. 強調表示した **JDBC** 接続文字列の内容を右クリックし、**[コピー]** をクリックします。
-7. これで、この値をコード ファイルに貼り付けて、次の形式の接続文字列を作成できるようになりました。*your\_server* (2 か所) を、前の手順でコピーしたテキストに置き換え、*your\_password* を、SQL データベース アカウントの作成時に指定したパスワードの値に置き換えます(さらに、**gettingstarted** と **MySQLAdmin** を使用しない場合は、**database=** と **user=** に設定された値もそれぞれ置き換える)。 
+7. これで、この値をコード ファイルに貼り付けて、次の形式の接続文字列を作成できるようになりました。*your\_server* (2 か所) を、前の手順でコピーしたテキストに置き換え、*your\_password* を、SQL Database アカウントの作成時に指定したパスワードの値に置き換えます(さらに、**gettingstarted** と **MySQLAdmin** を使用しない場合は、**database=** と **user=** に設定された値もそれぞれ置き換える)。 
 
     String connectionString = "jdbc:sqlserver://*your_server*.database.windows.net:1433" + ";" + "database=gettingstarted" + ";" + "user=MySQLAdmin@*your\_server*" + ";" + "password=*your\_password*" + ";" + "encrypt=true" + ";" + "hostNameInCertificate=*.int.mscds.com" + ";" + "loginTimeout=30";
 
@@ -96,7 +96,7 @@ Java コードで Azure SQL データベースを使用するには、Azure SQL 
 
 8. 完了ボタンをクリックします。これで、指定した IP アドレスはデータベース サーバーへのアクセスが許可されます。
 
-## Java で Azure SQL データベースを使用するには
+## Java で Azure SQL Database を使用するには
 
 1. Java プロジェクトを作成します。このチュートリアルでは、**HelloSQLAzure** という名前にします。
 2. **HelloSQLAzure.java** という名前の Java クラス ファイルをプロジェクトに追加します。
@@ -117,7 +117,7 @@ Java コードで Azure SQL データベースを使用するには、Azure SQL 
         import java.sql.*;
         import com.microsoft.sqlserver.jdbc.*;
 
-5. 接続文字列を指定します。たとえば次のようになります。前の手順と同様に、*your\_server* (2 か所)、*your\_user*、*your\_password* を、SQL データベース サーバーに該当する値に置き換えます。
+5. 接続文字列を指定します。たとえば次のようになります。前の手順と同様に、*your\_server* (2 か所)、*your\_user*、*your\_password* を、SQL Database サーバーに該当する値に置き換えます。
 
         String connectionString =
         	"jdbc:sqlserver://your_server.database.windows.net:1433" + ";" +  
@@ -125,13 +125,13 @@ Java コードで Azure SQL データベースを使用するには、Azure SQL 
         		"user=your_user@your_server" + ";" +  
         		"password=your_password";
 
-これで、SQL データベース サーバーと通信するコードを追加する準備ができました。
+これで、SQL Database サーバーと通信するコードを追加する準備ができました。
 
-## コードからの Azure SQL データベースとの通信
+## コードからの Azure SQL Database との通信
 
 このトピックの残りでは、次の処理を実行する例を示します。
 
-1. SQL データベース サーバーに接続する。
+1. SQL Database サーバーに接続する。
 2. SQL ステートメントを定義する。たとえば、テーブルの作成や削除、行の挿入/選択/挿入/削除などのためです。
 3. SQL ステートメントを実行する。**executeUpdate** または **executeQuery** の呼び出しを使用します。
 4. クエリの結果を表示する (該当する場合)。
@@ -676,9 +676,9 @@ WHERE 句は、行数の取得、行の更新、行の削除にも使用でき�
 	}
 	// Exception handling and resource closing not shown...
 
-## Azure 展開内での Java からの SQL データベースの使用
+## Azure デプロイ内での Java からの SQL Database の使用
 
-Azure 展開内の Java で SQL データベースを使用するには、前に示したように Microsoft JDBC Driver 4.0 for SQL Server をライブラリとしてクラス パスに追加する操作に加え、パッケージ化して展開に追加する必要があります。
+Azure デプロイ内の Java で SQL Database を使用するには、前に示したように Microsoft JDBC Driver 4.0 for SQL Server をライブラリとしてクラス パスに追加する操作に加え、パッケージ化してデプロイメントに追加する必要があります。
 
 
 **Eclipse を使用している場合の Microsoft JDBC Driver 4.0 SQL Server のパッケージ化**
@@ -696,7 +696,9 @@ Azure 展開内の Java で SQL データベースを使用するには、前に
 
 ## 次のステップ
 
-Microsoft JDBC Driver for SQL Server の詳細については、「[JDBC ドライバーの概要](http://msdn.microsoft.com/library/ms378749.aspx)」を参照してください。SQL データベースの詳細については、「[Windows Azure SQL データベースの概要](http://msdn.microsoft.com/library/windowsazure/ee336241.aspx)」を参照してください。
+Microsoft JDBC Driver for SQL Server の詳細については、「[JDBC ドライバーの概要](http://msdn.microsoft.com/library/ms378749.aspx)」を参照してください。SQL Database の詳細については、「[Windows Azure SQL データベースの概要](http://msdn.microsoft.com/library/windowsazure/ee336241.aspx)」を参照してください。
+
+詳細については、[Java デベロッパー センター](/develop/java/)も参照してください。
 
 [Concepts]: #concepts
 [Prerequisites]: #prerequisites
@@ -726,4 +728,4 @@ Microsoft JDBC Driver for SQL Server の詳細については、「[JDBC ドラ�
 [allowed_ips_dialog]: ./media/sql-data-java-how-to-use-sql-database/WA_Allowed_IPs.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

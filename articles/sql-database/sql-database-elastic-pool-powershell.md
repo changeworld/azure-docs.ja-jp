@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="PowerShell を使用したSQL Database のエラスティック データベース プールの作成と管理"
-	description="PowerShell を使用した SQL Database のエラスティック データベースの作成と管理"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jeffreyg"
-	editor=""/>
+   pageTitle="PowerShell を使用したSQL Database のエラスティック データベース プールの作成と管理" 
+   description="PowerShell を使用した SQL Database のエラスティック データベースの作成と管理" 
+   services="sql-database" 
+   documentationCenter="" 
+   authors="stevestein" 
+   manager="jeffreyg" 
+   editor=""/>
 
 <tags
    ms.service="sql-database"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="powershell"
-	ms.workload="data-management"
-	ms.date="08/25/2015"
-	ms.author="adamkr; sstein"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="powershell"
+   ms.workload="data-management" 
+   ms.date="09/23/2015"
+   ms.author="adamkr; sstein"/>
 
 # PowerShell を使用したSQL Database のエラスティック データベース プールの作成と管理
 
@@ -240,4 +240,4 @@ CSV ファイルにエクスポートします。
 
 API とエラーの詳細を含む弾力性データベースと弾力性データベース プールの詳細については、「[弾力性データベースのリファレンス](sql-database-elastic-pool-reference.md)」をご覧ください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

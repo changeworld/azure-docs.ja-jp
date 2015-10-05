@@ -1,19 +1,19 @@
 <properties
-	pageTitle="Azure サブスクリプションを Azure AD に関連付ける方法"
+	pageTitle="Azure サブスクリプションを Azure AD に関連付ける方法 | Microsoft Azure"
 	description="Microsoft Azure へのサインイン、および Azure サブスクリプションと Azure AD の間の関係などの関連する問題につて説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
 	manager="stevenpo"
-	editor="LisaToft"/>
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.workload="infrastructure-services"
+	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/14/2015"
+	ms.date="09/21/2015"
 	ms.author="curtand"/>
 
 # Azure サブスクリプションを Azure AD に関連付ける方法
@@ -32,9 +32,9 @@ ID が作成されて Microsoft アカウント システムに格納されま�
 
 最初、Azure には Microsoft アカウント ユーザーのみがアクセスできましたが、現在では*両方の*システムのユーザーがアクセスできます。これは、すべての Azure プロパティが認証のために Azure AD を信頼し、Azure AD が組織のユーザーを認証し、Azure AD が Microsoft アカウント コンシューマー ID システムを信頼してコンシューマー ユーザーを認証するフェデレーション関係を作成することによって実現されました。その結果、Azure AD は「ゲスト」 Microsoft アカウントだけでなく「ネイティブ」 Azure AD アカウントも認証できます。
 
-たとえば、Microsoft アカウントを使用するユーザーは Azure 管理ポータルにサインインします。
+たとえば、Microsoft アカウントを使用するユーザーは Microsoft Azure 管理ポータルにサインインします。
 
-> [AZURE.NOTE]Azure 管理ポータルにサインインするには、msmith@hotmail.com に Azure へのサブスクリプションが必要です。アカウントは、サービス管理者またはサブスクリプションの共同管理者のいずれかである必要があります。
+> [AZURE.NOTE]Microsoft Azure 管理ポータルにサインインするには、msmith@hotmail.com に Azure へのサブスクリプションが必要です。アカウントは、サービス管理者またはサブスクリプションの共同管理者のいずれかである必要があります。
 
 ![][1]
 
@@ -46,7 +46,7 @@ ID が作成されて Microsoft アカウント システムに格納されま�
 
 このサブスクリプションとディレクトリの間の信頼関係は、サブスクリプションと Azure 内の他のすべてのリソース (Web サイト、データベースなど) の間の関係と異なります。後者は、サブスクリプションの子リソースにより近いものです。サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられたこれらの他のリソースへのアクセスも停止します。一方、ディレクトリは Azure 内に残っており、別のサブスクリプションをそのディレクトリと関連付けて、ディレクトリ ユーザーの管理を継続できます。
 
-同様に、サブスクリプションに表示される Azure AD 拡張機能は、Azure 管理ポータルの他の拡張機能のように機能しません。管理ポータルの他の拡張機能の有効範囲は Azure サブスクリプションです。AD 拡張機能に表示されるものは、サブスクリプションに応じて変わりません。サインインしているユーザーに基づくディレクトリだけが表示されます。
+同様に、サブスクリプションに表示される Azure AD 拡張機能は、Microsoft Azure 管理ポータルの他の拡張機能のように機能しません。管理ポータルの他の拡張機能の有効範囲は Azure サブスクリプションです。AD 拡張機能に表示されるものは、サブスクリプションに応じて変わりません。サインインしているユーザーに基づくディレクトリだけが表示されます。
 
 すべてのユーザーにはそのユーザーを認証する 1 つのホーム ディレクトリがありますが、ユーザーは他のディレクトリのゲストになることもできます。AD 拡張機能では、ユーザー アカウントがメンバーであるすべてのディレクトリが表示されます。アカウントがメンバーではないディレクトリは表示されません。ディレクトリは、Azure AD の職場または学校アカウントに対して、または Microsoft アカウント ユーザーに対して (Azure AD は Microsoft アカウント システムとフェデレーションされているため)、トークンを発行できます。
 
@@ -67,7 +67,7 @@ Azure AD には、ディレクトリおよび ID 関連の機能を管理する�
 
 1 人のユーザーが両方のロールになることができますが、これは必須ではありません。ユーザーをディレクトリ グローバル管理者ロールに割り当てることはできますが、Azure サブスクリプションのサービス管理者または共同管理者として割り当てることはできません。サブスクリプションの管理者にならなければ、このユーザーは管理ポータルにサインインできません。ただし、そのユーザーは Azure AD PowerShell や Office 365 管理センターなどの他のツールを使用して、ディレクトリ管理タスクを実行できます。
 
-### 現在のユーザー アカウントでディレクトリを管理できない理由
+## 現在のユーザー アカウントでディレクトリを管理できない理由
 
 ユーザーが Azure サブスクリプションにサインアップする前に職場または学校アカウントを使用して管理ポータルにサインインしようとする場合があります。そのような場合、ユーザーはそのアカウントにはサブスクリプションがないというメッセージを受け取ります。メッセージには、無料評価版サブスクリプションを開始するためのリンクが含まれます。
 
@@ -124,4 +124,4 @@ Azure にサインアップする前に Office 365 にサインアップした�
 [2]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_OrgAccountSubscription.png
 [3]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_SignInDisambiguation.PNG
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

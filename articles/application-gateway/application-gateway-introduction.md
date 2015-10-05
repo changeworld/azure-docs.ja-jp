@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Application Gateway の概要 | Microsoft Azure"
-	description="このページは、ゲートウェイのサイズ、HTTP の負荷分散、cookie ベースのセッション アフィニティ、SSL オフロードを含む、Application Gateway サービスのレイヤー 7 負荷分散の概要について説明します。"
-	documentationCenter="na"
-	services="application-gateway"
-	authors="joaoma"
-	manager="jdial"
-	editor="tysonn"/>
+   description="このページは、ゲートウェイのサイズ、HTTP の負荷分散、cookie ベースのセッション アフィニティ、SSL オフロードを含む、Application Gateway サービスのレイヤー 7 負荷分散の概要について説明します。"
+   documentationCenter="na"
+   services="application-gateway"
+   authors="joaoma"
+   manager="jdial"
+   editor="tysonn"/>
 <tags 
    ms.service="application-gateway"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/23/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="article" 
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services" 
+   ms.date="08/23/2015"
+   ms.author="joaoma"/>
 
 # Application Gateway とは
 
@@ -36,7 +36,10 @@ Azure では、トランスポート レベル (TCP/UDP) で機能する Azure �
 
 Application Gateway は、仮想マシン、クラウド サービス、Web アプリ、外部 IP アドレスのいずれであるかに関わらず、その構成に基づいて HTTP トラフィックをルーティングします。
 
-次の図に、Application Gateway のトラフィックの流れを示します。![Application Gateway2](./media/application-gateway-introduction/appgateway2.png)
+次の図に、Application Gateway のトラフィックの流れを示します。
+
+ 
+![Application Gateway2](./media/application-gateway-introduction/appgateway2.png)
 
 HTTP レイヤー 7 の負荷分散は、次の場合に役立ちます。
 
@@ -57,8 +60,8 @@ REST API や PowerShell コマンドレットを使用して、アプリケー�
 
 ## 次のステップ
 
-アプリケーション ゲートウェイを作成します。「[アプリケーション ゲートウェイの作成](application-gateway-create-gateway.md)」を参照してください。
+Application Gateway を作成します。「[アプリケーション ゲートウェイの作成](application-gateway-create-gateway.md)」を参照してください。
 
 SSL オフロードを構成します。「[SSL オフロードのアプリケーション ゲートウェイの構成](application-gateway-ssl.md)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure リソース マネージャーのテンプレートを使用した Ubuntu への WordPress サーバーのデプロイ"
+	pageTitle="ARM テンプレートを使用した Ubuntu での WordPress |Microsoft Azure"
 	description="リソース マネージャーのテンプレートと Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して、Ubuntu 上で実行する 1 台の WordPress サーバーを簡単にデプロイします。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -11,13 +11,15 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="06/29/2015"
 	ms.author="davidmu"/>
 
 # Azure リソース マネージャーのテンプレートを使用した Ubuntu への WordPress サーバーのデプロイ
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
 
 この記事の手順では、リソース マネージャーのテンプレートを使用して、Ubuntu 上で実行する WordPress サーバーをデプロイします。このテンプレートは、新しい仮想ネットワークに単一の仮想マシンを作成します。
 
@@ -77,7 +79,7 @@
 
 	azure group create <group name> <location>
 
-次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイメントの名前を指定します。
+次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイの名前を指定します。
 
 	azure group deployment create --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/wordpress-single-vm-ubuntu/azuredeploy.json <group name> <deployment name>
 
@@ -104,4 +106,4 @@
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

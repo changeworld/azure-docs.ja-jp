@@ -1,12 +1,12 @@
-<properties title="Deploying Your Own Private Docker Registry on Azure"
-  pageTitle="Azure への独自のプライベート Docker Registry のデプロイ"
+<properties 
+  pageTitle="Azure への独自のプライベート Docker Registry のデプロイ | Microsoft Azure"
   description="Docker Registry を使用して Azure BLOB ストレージ サービスでコンテナー イメージをホストする方法について説明します。"
   services="virtual-machines"
   documentationCenter="virtual-machines"
   authors="ahmetalpbalkan"
   editor="squillace"
   manager="" 
-  tags="" />
+  tags="azure-service-management,azure-resource-manager" />
 
 <tags
   ms.service="virtual-machines"
@@ -18,6 +18,9 @@
   ms.author="ahmetb" />
 
 # Azure への独自のプライベート Docker Registry のデプロイ
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事は、リソース マネージャーのデプロイメント モデルまたはクラシック デプロイメント モデルを使用して作成した VM に適用されます。
+
 
 このドキュメントでは、Docker プライベート レジストリの概要、および Azure BLOB ストレージを使用して Microsoft Azure の Docker プライベート レジストリに Docker Registry 2.0 コンテナー イメージをデプロイする方法について説明します。
 
@@ -92,4 +95,4 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 [registry-config]: http://docs.docker.com/registry/configuration/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

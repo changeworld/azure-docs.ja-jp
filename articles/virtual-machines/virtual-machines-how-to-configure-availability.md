@@ -1,6 +1,6 @@
 <properties
-	pageTitle="仮想マシンの可用性セットを構成する方法"
-	description="Azure ポータルと Azure PowerShell コマンドを使用して新規または既存の仮想マシン対する可用性セットを Azure で構成する手順について説明します"
+	pageTitle="VM の可用性セットを構成する | Microsoft Azure"
+	description="Azure ポータルと Azure PowerShell を使用して新規または既存の仮想マシンに対する可用性セットをクラシック デプロイメント モデルで構成します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,7 +17,9 @@
 	ms.date="08/10/2015"
 	ms.author="cynthn"/>
 
-# 仮想マシンの可用性セットを構成する方法
+# クラシック デプロイメント モデルに仮想マシンの可用性セットを構成する方法
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 可用性セットは、メンテナンス時などのシステム停止時に仮想マシンを利用するのに役立ちます。同じように構成された 2 つ以上の仮想マシンを同じ可用性セットに割り当てることによって、仮想マシンが実行するアプリケーションやサービスの可用性を維持するために必要な冗長性が実現されます。この機能の詳細については、「[仮想マシンの可用性管理][]」を参照してください。
 
@@ -109,4 +111,4 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 [仮想ネットワークの概要]: virtual-networks-overview.md
 [サービス管理での仮想マシンの操作に関する記事]: virtual-machines-service-management-articles.md
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

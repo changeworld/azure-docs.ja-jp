@@ -1,11 +1,12 @@
 <properties
-   pageTitle="Azure における 3 ノード Deis クラスターの展開"
+   pageTitle="3 ノード Deis クラスターのデプロイ | Microsoft Azure"
    description="Azure 上で3 ノード Devis クラスターを展開"
    services="virtual-machines"
    documentationCenter=""
    authors="HaishiBai"
    manager="larar"
-   editor=""/>
+   editor=""
+   tags="azure-resource-manager"/>
 
 <tags
    ms.service="virtual-machines"
@@ -16,13 +17,15 @@
    ms.date="06/24/2015"
    ms.author="hbai"/>
 
-# 3 ノード Deis クラスターの展開
+# 3 ノード Deis クラスターのデプロイ
 
-この記事では Azure での[Deis](http://deis.io/) クラスターのプロビジョニングをについて説明します。必要な証明書の作成から新しくプロビジョニングされたクラスタ上にサンプルの **Go** アプリケーション を展開・スケーリングする手順まで、すべての手順を網羅しています。
+この記事では Azure での[Deis](http://deis.io/) クラスターのプロビジョニングをについて説明します。必要な証明書の作成から新しくプロビジョニングされたクラスタ上にサンプルの **Go** アプリケーション をデプロイ・スケーリングする手順まで、すべての手順を網羅しています。
 
-次の図は、展開済みシステムのアーキテクチャを示します。システム管理者は**deis** と **deisctl**などの Deis ツールを使ってクラスタを管理します。接続は、クラスター上のメンバーノードの 1 つに、接続を転送をする。Azure ロード バランサーを介して確立されます。同様に Load Balancer を使用してアプリケーションをクライアントがアクセスに展開されます。この場合は、Load Balancer は Deis ルーターメッシュへトラフィックを転送します。さらに、クラスターでホストされている、対応する Docker コンテナーへのトラフィックをルートします。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。
 
-  ![配展開済みの Desis クラスターのアーキテクチャ図](media/virtual-machines-deis-cluster/architecture-overview.png)
+次の図は、デプロイ済みシステムのアーキテクチャを示します。システム管理者は**deis** と **deisctl**などの Deis ツールを使ってクラスタを管理します。接続は、クラスター上のメンバーノードの 1 つに、接続を転送をする。Azure ロード バランサーを介して確立されます。同様に Load Balancer を使用してアプリケーションをクライアントがアクセスにデプロイされます。この場合は、Load Balancer は Deis ルーターメッシュへトラフィックを転送します。さらに、クラスターでホストされている、対応する Docker コンテナーへのトラフィックをルートします。
+
+  ![デプロイ済みの Desis クラスターのアーキテクチャ図](media/virtual-machines-deis-cluster/architecture-overview.png)
 
 次の手順を実行するため、以下の項目が必要となります。
 
@@ -74,7 +77,7 @@
 
 8. **newStorageAccountName** パラメータを修正します。これは、VM OS ディスクのストレージ アカウントです。このアカウントの名前はグローバルに一意です。
 
-9. **publicDomainName** パラメータを修正します。これが Load Balancer のパブリック IP に関連付けられている DNS 名の一部になります。最後の FQDN は_ [このパラメーターの値]_._[region]_ cloudapp.azure.co の形式になります。たとえば、deishbai32 として名前を指定して、リソース グループが米国西部地域に展開されている場合、Load Balancer の最終的な FQDN は deishbai32.westus.cloudapp.azure.com となります。
+9. **publicDomainName** パラメータを修正します。これが Load Balancer のパブリック IP に関連付けられている DNS 名の一部になります。最後の FQDN は _[このパラメーターの値]_._[region]_ cloudapp.azure.com の形式になります。たとえば、deishbai32 として名前を指定して、リソース グループが米国西部地域にデプロイされている場合、Load Balancer の最終的な FQDN は deishbai32.westus.cloudapp.azure.com となります。
 
 10. パラメーター ファイルを保存します。Azure PowerShell を使用してプロビジョニングするには、次の手順を実行します。
 
@@ -113,7 +116,7 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 
 ![Load Balancer 上の NAT ルール](media/virtual-machines-deis-cluster/nat-rules.png)
 
-> [AZURE.NOTE]現在、テンプレートは 3 ノード クラスタのみをサポートしています。これは、ループ構文をサポートしていない Azure Resource Manager テンプレート NAT ルール定義の制限によるものです。
+> [AZURE.NOTE]現在、テンプレートは 3 ノード クラスタのみをサポートしています。これは、ループ構文をサポートしていない Azure リソース マネージャー テンプレート NAT ルール定義の制限によるものです。
 
 ## Deis プラットフォームのインストールと開始
 
@@ -158,11 +161,11 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
     deis-store-volume.service       9c79bbdd.../10.0.0.5    loaded  active          running
     deis-store-volume.service       ebe3005e.../10.0.0.6    loaded  active          running
 
-ご利用ありがとうございます。 これで Azure で Deis クラスターを実行することができました。 次に、サンプルの Go アプリケーションを展開してみましょう。クラスタはどう動作するでしょうか。
+ご利用ありがとうございます。 これで Azure で Deis クラスターを実行することができました。 次に、サンプルの Go アプリケーションをデプロイしてみましょう。クラスタはどう動作するでしょうか。
 
-## Hello World アプリケーションを展開、スケールします。
+## Hello World アプリケーションをデプロイ、スケールします。
 
-次の手順は、"Hello World" の Go アプリケーションをクラスタに展開する方法を示します。この手順は[Deis ドキュメンテーション](http://docs.deis.io/en/latest/using_deis/using-dockerfiles/#using-dockerfiles)に基づいています。
+次の手順は、"Hello World" の Go アプリケーションをクラスタにデプロイする方法を示します。この手順は[Deis ドキュメンテーション](http://docs.deis.io/en/latest/using_deis/using-dockerfiles/#using-dockerfiles)に基づいています。
 
 1. ルーティングメッシュを適切に機能させるには、Load Balancer のパブリック IP アドレスをポイントするドメインのワイルドカード A レコードを作成する必要があります。次のスクリーン ショットは、GoDaddy のサンプル ドメイン登録用の A レコードです。
 
@@ -197,7 +200,7 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
         deis create
         git push deis master
 <p />
-8. git プッシュが Docker イメージを構築し展開するようトリガーします。これには数分かかります。私の経験では、場合によっては手順 10 (プライベート リポジトリにイメージをプッシュ) でハングアップする場合があります。この場合、プロセスを停止して、`deis apps:destroy –a <application name>` を使用してアプリケーションを削除し、もう一度やり直してください。 `deis apps:list` を使用してアプリケーションの名前を確認できます。すべての動作が確認されたら、コマンドの出力の最後に、次のようなものが表示されます。
+8. git プッシュが Docker イメージを構築しデプロイするようトリガーします。これには数分かかります。私の経験では、場合によっては手順 10 (プライベート リポジトリにイメージをプッシュ) でハングアップする場合があります。この場合、プロセスを停止して、`deis apps:destroy –a <application name>` を使用してアプリケーションを削除し、もう一度やり直してください。 `deis apps:list` を使用してアプリケーションの名前を確認できます。すべての動作が確認されたら、コマンドの出力の最後に、次のようなものが表示されます。
 
         -----> Launching...
                done, lambda-underdog:v2 deployed to Deis
@@ -219,7 +222,7 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 
         deis scale cmd=3
 <p />
-11. 必要に応じて、deis 情報を使用して、アプリケーションの詳細を確認します。次の出力は、私のアプリケーション展開です:
+11. 必要に応じて、deis 情報を使用して、アプリケーションの詳細を確認します。次の出力は、私のアプリケーション デプロイです:
 
         deis info
         === lambda-underdog Application
@@ -246,7 +249,7 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 
 ## 次のステップ
 
-この記事ではAzure リソース マネージャーテンプレートを使用して Azure 上に新しい Deis プロビジョニングするすべての手順を説明 しました。このテンプレートは、接続ツールの冗長性と展開アプリケーションの付加バランスをサポートします。このテンプレートにより、メンバー ノードでのパブリック IP の使用を回避します。これにより貴重なパブリック IP のリソースを保存し、アプリケーションのホストに安全な環境を提供します。詳細については、次の記事を参照してください。
+この記事ではAzure リソース マネージャーテンプレートを使用して Azure 上に新しい Deis プロビジョニングするすべての手順を説明 しました。このテンプレートは、接続ツールの冗長性とデプロイ アプリケーションの付加バランスをサポートします。このテンプレートにより、メンバー ノードでのパブリック IP の使用を回避します。これにより貴重なパブリック IP のリソースを保存し、アプリケーションのホストに安全な環境を提供します。詳細については、次の記事を参照してください。
 
 [Azure リソース マネージャーの概要][resource-group-overview] [Azure CLI の使用方法][azure-command-line-tools] [Asure リソース マネージャーでの Azure PowerShell の使用方法][powershell-azure-resource-manager]
 
@@ -254,4 +257,4 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 [resource-group-overview]: ../resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

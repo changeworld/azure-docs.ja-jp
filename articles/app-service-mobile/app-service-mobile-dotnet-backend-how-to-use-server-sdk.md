@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="09/18/2015"
 	ms.author="glenga"/>
 
-# Azure モバイル アプリ用 .NET バックエンド サーバー SDK の操作
+# Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
 
-このトピックでは、Azure App Service Mobile Apps の主要なシナリオで .NET バックエンド サーバー SDK を使用する方法について説明します。Azure モバイル アプリ SDK を使用すると、ASP.NET アプリケーションからモバイル クライアントを操作することができます。
+このトピックでは、Azure App Service Mobile Apps の主要なシナリオで .NET バックエンド サーバー SDK を使用する方法について説明します。Azure Mobile Apps SDK を使用すると、ASP.NET アプリケーションからモバイル クライアントを操作することができます。
 
 ## 方法: SDK をダウンロードして初期化する
 
@@ -30,10 +30,25 @@ SDK をインストールするには、Visual Studio でサーバー プロジ�
 
 ###サーバー プロジェクトの初期化
 
-.NET バックエンド サーバー プロジェクトは、**WebApiConfig** クラスの **Register** メソッドで初期化します。このメソッドは、通常、App\_Start フォルダーにあります。サーバー プロジェクトの初期化には、サービスの構成オプションを表す **HttpConfiguration** を使用します。次の例では、機能を追加せずにサーバー プロジェクトを初期化します。
+.NET バックエンド サーバー プロジェクトは、他の ASP.NET プロジェクトと同じように、OWIN スタートアップ クラスを組み込むことによって初期化します。Visual Studio でこのクラスを追加するには、サーバー プロジェクトを右クリックして、**[追加]**、**[新しい項目]**、**[Web]**、**[全般]**、**[OWIN スタートアップ クラス]** の順に選択します。
 
-    new MobileAppConfiguration()
-        .ApplyTo(config);
+これにより、次の属性を持つクラスが生成されます。
+
+    [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
+
+OWIN スタートアップ クラスの `Configuration()` メソッドで、サービスの構成オプションを表す **HttpConfiguration** オブジェクトを使用してサーバー プロジェクトをセットアップします。次の例では、機能を追加せずにサーバー プロジェクトを初期化します。
+
+	// in OWIN startup class
+	public void Configuration(IAppBuilder app)
+	{
+	    HttpConfiguration config = new HttpConfiguration();
+	   
+	    new MobileAppConfiguration()
+	        // no added features
+	        .ApplyTo(config);  
+	    
+	    app.UseWebApi(config);
+	}
 
 個別の機能を有効化するには、**ApplyTo** を呼び出す前に、**MobileAppConfiguration** オブジェクトに対して拡張機能メソッドを呼び出す必要があります。たとえば、次のコードでは、初期化中にすべての API コントローラーに既定のルートを追加します。
 
@@ -41,7 +56,20 @@ SDK をインストールするには、Visual Studio でサーバー プロジ�
 	    .MapApiControllers()
 	    .ApplyTo(config);
 
-機能拡張メソッドの多くは、含めることが可能な追加の NuGet パッケージから入手できます。これらについては以下のセクションで説明します。
+機能拡張メソッドの多くは、含めることが可能な追加の NuGet パッケージから入手できます。これらについては以下のセクションで説明します。Azure ポータルからのサーバーのクイックスタートは **UseDefaultConfiguration()** を呼び出します。これは次のセットアップと同等です。
+    
+		new MobileAppConfiguration()
+			.AddMobileAppHomeController()             // from the Home package
+			.MapApiControllers()
+			.AddTables(                               // from the Tables package
+				new MobileAppTableConfiguration()
+					.MapTableControllers()
+					.AddEntityFramework()             // from the Entity package
+				)
+			.AddPushNotifications()                   // from the Notifications package
+			.MapLegacyCrossDomainController()         // from the CrossDomain package
+			.ApplyTo(config);
+
 
 ### SDK 拡張機能
 
@@ -65,7 +93,7 @@ SDK をインストールするには、Visual Studio でサーバー プロジ�
 
 カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。カスタム API コントローラー
 
-1. Visual Studio で、Controllers フォルダーを右クリックして **[追加]** > **[コントローラー]** の順にクリックし、**[Web API 2 コントローラー - 空]** を選択して **[追加]** をクリックします。
+1. Visual Studio で、Controllers フォルダーを右クリックして、**[追加]**、**[コントローラー]** の順にクリックし、**[Web API 2 コントローラー - 空]** を選択して **[追加]** をクリックします。
 
 2. **コントローラー名** (`CustomController` など) を指定して **[追加]** をクリックします。これで、**ApiController** を継承する **CustomController** クラスが新規作成されます。
 
@@ -81,13 +109,13 @@ SDK をインストールするには、Visual Studio でサーバー プロジ�
 		      //...
 		}
 
-4. App\_Startup フォルダーを参照して WebApiConfig.cs プロジェクト ファイルを開き、次の例に従って **MapApiControllers** 拡張機能メソッドの呼び出しを追加します。
+4. 次の例に示すように、App\_Start/Startup.MobileApp.cs ファイルに **MapApiControllers** 拡張メソッドの呼び出しを追加します。
 
 		new MobileAppConfiguration()
 		    .MapApiControllers()
 		    .ApplyTo(config);
-
-	すべての機能を初期化する **UseDefaultConfiguration** を呼び出す場合は、**MapApiControllers** を呼び出す必要はないことに注意してください。
+    
+	代わりにすべての機能を初期化する **UseDefaultConfiguration** を呼び出す場合は、**MapApiControllers** を呼び出す必要はないことに注意してください。
 
 クライアントは **MobileAppControllerAttribute** が適用されていないコントローラーにもアクセスできますが、こうしたコントローラーはモバイル アプリ クライアント SDK を使用するクライアントには適切に使用されません。
 
@@ -111,26 +139,19 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 
 ## 方法: サーバー プロジェクトに認証を追加する
 
-**MobileAppConfiguration** オブジェクトを拡張して OWIN ミドルウェアを構成すると、サーバー プロジェクトに認証を追加することができます。[Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、**UseDefaultConfiguration** 拡張機能メソッドを呼び出している場合は、手順 4 に進むことができます。
+**MobileAppConfiguration** オブジェクトを拡張して OWIN ミドルウェアを構成すると、サーバー プロジェクトに認証を追加することができます。[Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、**UseDefaultConfiguration** 拡張機能メソッドを呼び出している場合は、手順 3 に進むことができます。
 
 1. Visual Studio で、[Microsoft.Azure.Mobile.Server.Authentication] パッケージをインストールします。 
 
-2. App\_Startup フォルダーを参照して WebApiConfig.cs プロジェクト ファイルを開き、次に示すように初期化中に **AddAppServiceAuthentication** 拡張機能メソッドへの呼び出しを追加します。
-
-		new MobileAppConfiguration()
-			// other features...
-			.AddAppServiceAuthentication()
-			.ApplyTo(config);
-
-3. Startup.cs プロジェクト ファイルで、**Configuration** メソッドの先頭に次のコード行を追加します。
+2. Startup.cs プロジェクト ファイルで、**Configuration** メソッドの先頭に次のコード行を追加します。
 
 		app.UseMobileAppAuthentication(config);
 
 	これにより、関連付けられた App Service ゲートウェイで発行されたトークンを Azure モバイル アプリが検証できるようにする、OWIN ミドルウェア コンポーネントが追加されます。
 
-4. 認証が必要なすべてのコントローラーまたはメソッドに `[Authorize]` 属性を追加します。これで、ユーザーはエンドポイントや特定の API にアクセスするときに認証を受ける必要があるようになりました。
+3. 認証が必要なすべてのコントローラーまたはメソッドに `[Authorize]` 属性を追加します。これで、ユーザーはエンドポイントや特定の API にアクセスするときに認証を受ける必要があるようになりました。
 
-Mobile Apps バックエンドに認証クライアントを追加する方法については、「[アプリへの認証の追加](app-service-mobile-dotnet-backend-ios-get-started-users-preview.md)」を参照してください。
+Mobile Apps バックエンドに認証クライアントを追加する方法については、「[Azure Mobile Apps を使用した iOS の認証](app-service-mobile-dotnet-backend-ios-get-started-users-preview.md)」を参照してください。
 
 ## 方法: サーバー プロジェクトにプロジェクトを追加する
 
@@ -140,7 +161,7 @@ Mobile Apps バックエンドに認証クライアントを追加する方法�
  
 3. 上記の手順を繰り返して、Notification Hubs クライアント ライブラリが含まれる `Microsoft.Azure.NotificationHubs` パッケージをインストールします。
 
-2. App\_Startup フォルダーを参照して WebApiConfig.cs プロジェクト ファイルを開き、次に示すように初期化中に **AddPushNotifications** 拡張機能メソッドへの呼び出しを追加します。
+2. App\_Start/Startup.MobileApp.cs で、次に示すように、初期化中に **AddPushNotifications** 拡張機能メソッドの呼び出しを追加します。
 
 		new MobileAppConfiguration()
 			// other features...
@@ -158,7 +179,7 @@ Mobile Apps バックエンドに認証クライアントを追加する方法�
 
         // Get the settings for the server project.
         HttpConfiguration config = this.Configuration;
-        ServiceSettingsDictionary settings = 
+        MobileAppSettingsDictionary settings = 
             config.GetMobileAppSettingsProvider().GetMobileAppSettings();
         
         // Get the Notification Hubs credentials for the Mobile App.
@@ -170,7 +191,7 @@ Mobile Apps バックエンドに認証クライアントを追加する方法�
         NotificationHubClient hub = NotificationHubClient
         .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
-これで、Notification Hubs クライアントを使用して、登録済みデバイスにプッシュ通知を送信できるようになりました。詳細については、「[アプリケーションにプッシュ通知を追加する](app-service-mobile-dotnet-backend-ios-get-started-push-preview.md)」を参照してください。Notification Hubs で実行可能なすべての操作については、「[Notification Hubs の概要](../notification-hubs/notification-hubs-overview.md)」を参照してください。
+これで、Notification Hubs クライアントを使用して、登録済みデバイスにプッシュ通知を送信できるようになりました。詳細については、「[iOS アプリへのプッシュ通知の追加](app-service-mobile-dotnet-backend-ios-get-started-push-preview.md)」を参照してください。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](../notification-hubs/notification-hubs-overview.md)」を参照してください。
 
 ## 方法: サーバー プロジェクトの発行
 
@@ -184,4 +205,4 @@ Mobile Apps バックエンドに認証クライアントを追加する方法�
 [Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

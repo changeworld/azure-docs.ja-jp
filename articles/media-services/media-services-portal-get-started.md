@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ne"
 	ms.topic="get-started-article"
-	ms.date="09/05/2015"
+	ms.date="09/18/2015"
 	ms.author="juliako"/>
 
 
@@ -254,4 +254,4 @@ AMS のラーニング パスについては、以下を参照してください
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

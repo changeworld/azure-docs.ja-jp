@@ -1,4 +1,12 @@
-<properties pageTitle="テンプレートを使用した Azure リソースのデプロイ" description="Azure リソース管理ライブラリで利用可能ないくつかのクライアントを使用して、仮想マシン、仮想ネットワーク、ストレージ アカウントをデプロイする方法について説明します。" services="virtual-machines,virtual-networks,storage" documentationCenter="" authors="davidmu1" manager="timlt" editor="tysonn" tags="azure-resource-manager/>
+<properties
+	pageTitle="テンプレートを使用して Azure リソースをデプロイする | Microsoft Azure"
+	description="Azure リソース管理ライブラリで利用可能ないくつかのクライアントを使用して、仮想マシン、仮想ネットワーク、ストレージ アカウントをデプロイする方法を学習します。"
+	services="virtual-machines,virtual-networks,storage"
+	documentationCenter=""
+	authors="davidmu1"
+	manager="timlt"
+	editor="tysonn"
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="azure-resource-manager"
@@ -10,6 +18,8 @@
 	ms.author="davidmu"/>
 
 # .NET ライブラリとテンプレートを使用した Azure リソースのデプロイ
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。
 
 リソース グループとテンプレートを使用すると、アプリケーションをサポートするすべてのリソースをまとめて管理できます。このチュートリアルでは、Azure リソース管理ライブラリで利用可能なクライアントの一部を使用する方法と、仮想マシン、仮想ネットワーク、ストレージ アカウントをデプロイするためのテンプレートを作成する方法を示します。
 
@@ -443,4 +453,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/arm-template-deployment/crpportal.png)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

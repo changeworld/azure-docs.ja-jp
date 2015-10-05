@@ -256,7 +256,9 @@ BLOB を削除するには、BLOB の参照を取得し、**deleteIfExists** を
 - [Azure Storage SDK for Java][]
 - [Azure ストレージ クライアント SDK リファレンス][]
 - [Azure Storage REST API][]
-- [Azure のストレージ チーム ブログ][]
+- [Azure Storage チーム ブログ][]
+
+詳細については、[Java デベロッパー センター](/develop/java/)も参照してください。
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
@@ -264,6 +266,6 @@ BLOB を削除するには、BLOB の参照を取得し、**deleteIfExists** を
 [Azure Storage クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
 [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
-[Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

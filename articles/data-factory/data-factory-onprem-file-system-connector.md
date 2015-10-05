@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="ファイル システムとの間でデータを移動する | Azure Data Factory"
-	description="Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する方法を説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="ファイル システムとの間でデータを移動する | Azure Data Factory" 
+	description="Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する方法を説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/22/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する
@@ -561,7 +561,18 @@ quoteChar ではなく escapeChar を使用するには、quoteChar の行を次
 
 ## ファイル共有のコピー アクティビティの type プロパティ
 
-**FileSystemSource** と **FileSystemSink** は、この時点ではどのプロパティもサポートしていません。
+**FileSystemSource** では次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 使用できる値 | 必須 |
+| -------- | ----------- | -------------- | -------- |
+| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 | True、False (既定値)| いいえ | 
+
+**FileSystemSink** では次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 使用できる値 | 必須 |
+| -------- | ----------- | -------------- | -------- |
+| copyBehavior | ソースが BlobSource または FileSystem である場合のコピー動作を定義します。 | <p>CopyBehavior プロパティには 3 つの値があります。</p><ul><li>**PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。つまり、ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。</li><li>。**FlattenHierarchy:** 、ソース フォルダーのすべてのファイルはターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルの名前は自動的に生成されます。</li><li>**MergeFiles:** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル名/BLOB 名を指定した場合、マージされたファイルの名前は指定した名前になります。それ以外は自動生成されたファイル名になります。</li></ul> | いいえ |
+
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
@@ -576,4 +587,4 @@ quoteChar ではなく escapeChar を使用するには、quoteChar の行を次
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

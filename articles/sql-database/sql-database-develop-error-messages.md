@@ -5,16 +5,16 @@
 	documentationCenter=""
 	authors="MightyPen"
 	manager="jeffreyg"
-	editor=""/>
+	editor="" />
 
 
 <tags 
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/21/2015"
+	ms.service="sql-database" 
+	ms.workload="data-management" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/22/2015" 
 	ms.author="genemi"/>
 
 
@@ -61,8 +61,8 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 |40501|20|サービスは現在ビジー状態です。10 秒後に要求を再試行してください。インシデント ID: %ls。コード: %d。<br/><br/>*注:* このエラーの詳細および解決方法については、次のページを参照してください。<br/>• [Azure SQL Database の調整](http://msdn.microsoft.com/library/azure/dn338079.aspx)
 |40613|17|サーバー '%.&#x2a;ls' のデータベース '%.&#x2a;ls' は現在使用できません。後で接続を再試行してください。問題が解決しない場合は、'%.&#x2a;ls' のセッション トレース ID を控えてカスタマー サポートに問い合わせてください。|
 |49918|16|要求を処理できません。要求を処理するためのリソースが不足しています。<br/><br/>サービスは現在ビジー状態です。後で要求を再試行してください。 |
-|49919|16|要求を処理、作成、更新できません。サブスクリプション "%ld" に対して実行中の作成または更新の操作が多すぎます。<br/><br/>サービスは、サブスクリプションまたはサーバーに対する複数の作成要求または更新要求の処理でビジー状態です。現在、要求はリソースの最適化のためにブロックされています。保留中の操作に対してクエリ [sys.dm\_operation\_stats](https://msdn.microsoft.com/library/dn270022.aspx) を実行します。保留中の作成要求または更新要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 |
-|49920|16|要求を処理できません。サブスクリプション "%ld" に対して実行中の操作が多すぎます。<br/><br/>サービスは、このサブスクリプションに対する複数の要求の処理でビジー状態です。現在、要求はリソースの最適化のためにブロックされています。操作の統計に対してクエリ [sys.dm\_operation\_stats](https://msdn.microsoft.com/library/dn270022.aspx) を実行します。保留中の要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 |
+|49919|16|要求を処理、作成、更新できません。サブスクリプション "%ld" に対して実行中の作成または更新の操作が多すぎます。<br/><br/>サービスは、サブスクリプションまたはサーバーに対する複数の作成要求または更新要求の処理でビジー状態です。現在、要求はリソースの最適化のためにブロックされています。クエリ [sys.dm\_operation\_stats](https://msdn.microsoft.com/library/dn270022.aspx) を実行して保留中の操作を確認します。保留中の作成要求または更新要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 |
+|49920|16|要求を処理できません。サブスクリプション "%ld" に対して実行中の操作が多すぎます。<br/><br/>サービスは、このサブスクリプションに対する複数の要求の処理でビジー状態です。現在、要求はリソースの最適化のためにブロックされています。[sys.dm\_operation\_stats](https://msdn.microsoft.com/library/dn270022.aspx) を実行して操作の状態を確認します。保留中の要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 |
 
 **注:** フェデレーション エラーである 10053 と 10054 も再試行ロジックに含めることを検討してください。
 
@@ -242,4 +242,4 @@ Dx 4cff491e-9359-4454-bd7c-fb72c4c452ca
 - [Azure SQL Database の一般的なガイドラインと制限事項](http://msdn.microsoft.com/library/azure/ee336245.aspx)
 - [リソース管理](http://msdn.microsoft.com/library/azure/dn338083.aspx)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

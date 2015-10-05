@@ -1,6 +1,7 @@
-<properties 
-	pageTitle="最新の エラスティック データベース クライアント ライブラリへのアップグレード" 
-	description="PowerShell と C# を使用したアップグレード手順" 
+<properties
+	
+	pageTitle="Upgrade to the latest elastic database client library" 
+	description="Upgrade apps and libraries using Nuget" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
@@ -12,31 +13,33 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/17/2015" 
+	ms.date="09/22/2015" 
 	ms.author="sidneyh" />
 
 # 最新の エラスティック データベース クライアント ライブラリへのアップグレード
 
 エラスティック データベース クライアント ライブラリの新しいバージョンが [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) と Visual Studio の NuGetPackage マネージャーのインターフェイスから利用できるようになりました。アップグレードにはバグ修正が含まれており、クライアント ライブラリの新機能をサポートします。
 
+新しいライブラリを使用してアプリケーションを再構築し、新しい機能をサポートするために、Azure SQL Database に格納されている既存のシャード マップ マネージャーのメタデータを変更します。
+
+これらの手順を実行することで、メタデータ オブジェクトの更新時に古いバージョンのクライアント ライブラリが環境内に存在しないようにします。つまり、古いバージョンのメタデータ オブジェクトはアップグレード後は作成されなくなります。
+
 ## アップグレードの手順
 
-アップグレードでは、新しいライブラリを使用してアプリケーションを再構築し、新しい機能をサポートするために、Azure SQL データベースに格納されている既存のシャード マップ マネージャーのメタデータを変更する必要があります。
-
-次のシーケンスに従って、アプリケーション、シャード マップ マネージャーのデータベース、各シャードにおけるローカルのシャード マップ マネージャーのメタデータをアップグレードします。この順序でアップグレードの手順を実行することで、メタデータ オブジェクトが更新される場合に古いバージョンのクライアント ライブラリが環境内に存在しないようにします。つまりアップグレード後には古いバージョンのメタデータ オブジェクトは作成されません。
-
-**1.アプリケーションをアップグレードします。** Visual Studio で、最新のクライアント ライブラリのバージョンをダウンロードして、ライブラリを使用する開発プロジェクトのすべてに参照させます。その後、再構築して展開します。
+**1.アプリケーションをアップグレードします。** Visual Studio で、最新のクライアント ライブラリのバージョンをダウンロードして、ライブラリを使用する開発プロジェクトのすべてに参照させます。その後、再構築してデプロイします。
 
  * Visual Studio ソリューションで **[ツール]**、**[NuGet パッケージ マネージャー]**、**[ソリューション用 NuGet パッケージの管理]** の順に選択します。 
- * 左側のパネルで **[更新]** を選択してから、ウィンドウに表示されるパッケージ **Azure SQL データベース Elastic Scale クライアント ライブラリ**の **[更新]** ボタンを選択します。![Nuget パッケージのアップグレード][1]
+ * (Visual Studio 2013) 左側のパネルで **[更新]** を選択し、ウィンドウに表示される**Azure SQL Database Elastic Scale Client Library** パッケージの **[更新]** ボタンを選択します。
+ * (Visual Studio 2015) [フィルター] ボックスで **[アップグレード可能]** を選択します。アップグレードするパッケージを選択し、**[アップグレード]** ボタンをクリックします。
+	
  
- * 構築して展開します。
+ * 構築してデプロイします。
 
 **2.スクリプトをアップグレードします。** シャードの管理に **PowerShell** スクリプトを使用している場合は、[新しいライブラリ バージョンをダウンロード](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)して、スクリプトを実行するディレクトリにコピーします。
 
-**3.Split-Merge サービスをアップグレードします。** エラスティック データベース 分割/マージ ツールを使用してシャード化されたデータを再編成する場合は、[最新バージョンのツールをダウンロードして展開](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)します。サービスの詳しいアップグレード手順については、[こちら](sql-database-elastic-scale-overview-split-and-merge.md)をご覧ください。
+**3.Split-Merge サービスをアップグレードします。** エラスティック データベース 分割/マージ ツールを使用してシャード化されたデータを再編成する場合は、[最新バージョンのツールをダウンロードしてデプロイ](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)します。サービスの詳しいアップグレード手順については、[こちら](sql-database-elastic-scale-overview-split-and-merge.md)をご覧ください。
 
-**4.シャード マップ マネージャーのデータベースをアップグレードします。**Azure SQL データベースでシャード マップをサポートするメタデータをアップグレードします。これは、PowerShell か C# を使用して実行できます。次に両方の方法について説明します。
+**4.シャード マップ マネージャーのデータベースをアップグレードします。**Azure SQL Database でシャード マップをサポートするメタデータをアップグレードします。これは、PowerShell か C# を使用して実行できます。次に両方の方法について説明します。
 
 ***オプション 1: PowerShell を使用してメタデータをアップグレードする***
 
@@ -80,7 +83,7 @@
 
 * 新しい ShardMap.OpenConnectionForKeyAsync メソッドのデータ依存型ルーティングに非同期サポートが追加されました。 
 * パブリックの KeyType プロパティが ShardMap に追加されました。 
-* データベースの復元サポートの改善とシャード用の災害復旧のシナリオが追加されました。 
+* データベースの復元サポートの改善とシャード用の障害復旧のシナリオが追加されました。 
 
 **バージョン 0.7 – 2014 年 10 月**
 
@@ -94,4 +97,4 @@
 [1]: ./media/sql-database-elastic-scale-upgrade-client-library/nuget-upgrade.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

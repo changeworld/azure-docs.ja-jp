@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/24/2015"
+   ms.date="09/23/2015"
    ms.author="larryfr"/>
 
 #Ambari を使用した HDInsight クラスターの管理 (プレビュー)
@@ -69,7 +69,7 @@ Ambari Web UI は、**https://&lt;clustername>.azurehdinsight.net** で作成し
 
 * **[Alerts]** - 情報、警告、重要なアラートのログ。
 
-* **[Admin]** - インストールされたまたはクラスターに追加できるソフトウェア スタック/サービス、サービス アカウント情報、Kerberos セキュリティ。
+* **[Admin]** - クラスターにインストールされたソフトウェア スタック/サービス、サービス アカウント情報、Kerberos セキュリティ。
 
 * **[admin] ボタン** - Ambari の管理、ユーザー設定、ログアウトを行います。
 
@@ -191,27 +191,12 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 ###<a id="service"></a>サービス
 
-**[Dashboard]** または **[Services]** ページでサービスの一覧の下部にある **[Actions]** ボタンを使用して新しいサービスを追加、またはすべてのサービスを停止し、開始します。
+**[Dashboard]** または **[Services]** ページでサービスの一覧の下部にある **[Actions]** ボタンを使用して、すべてのサービスを停止し、開始します。
 
 ![service actions](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
 
-サービスを追加するための一般的な手順は次のとおりです。
+> [AZURE.WARNING]このメニューには __[サービスの追加]__ が表示されますが、これを使用してサービスをHDInsight クラスターに追加しないでください。新しいサービスは、クラスターのプロビジョニング中にスクリプト アクションを使用して追加する必要があります。スクリプト アクションの使用の詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
-1. **[Dashboard]** または **[Services]** ページで **[Actions]** ボタンを使用して、[**Add Service]** を選択します。
-
-2. **Add Service Wizard** で追加するサービスを選択し、**[Next]** をクリックします。
-
-	![サービスの追加](./media/hdinsight-hadoop-manage-ambari/add-service.png)
-
-3. ウィザードを続行し、サービスの構成情報を指定します。構成要件の詳細については、追加するサービスのマニュアルを参照してください。
-
-4. **[Review]** ページから、構成情報を**印刷**したり、サービスをクラスターに**デプロイ**したりすることができます。
-
-5. サービスがデプロイされると、**[Install]、[Start]、[Test]** ページにサービスのインストールとテストの進行状況が表示されます。**ステータス**が緑色に変わったら、**[Next]** を選択します。
-
-	![インストール、起動、テスト ページの画像](./media/hdinsight-hadoop-manage-ambari/install-start-test.png)
-
-6. **[Summary]** ページに、インストール プロセスの要約と実行する操作 (ある場合) が表示されます (他のサービスの再起動など)。**[Complete]** を選択してウィザードを終了します。
 
 **[Actions]** ボタンではすべてのサービスを再起動できますが、特定のサービスを開始、停止、または再起動する必要がある場合があります。個々のサービスで操作を実行するには、次の手順に従います。
 
@@ -247,8 +232,8 @@ Ambari Web は基になる REST API に依存します。この REST API を活�
 
 * **[IP Addresses]** - クラスター内のホストに返されるアドレスには、クラスターが Azure の仮想ネットワークのメンバーでない限り、クラスター外部からはアクセスできません。仮想ネットワークの他のメンバーは IP アドレスにアクセスできますが、ネットワーク外部からはアクセスできません。
 
-* **[Some functionality is not enabled]** - HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターのホストの追加や削除など)。Linux ベースの HDInsight のプレビューでは、その他の機能を完全に実装できない場合があります。
+* **[Some functionality is not enabled]** - HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターに対するホストの追加または削除、新規サービスの追加など)。Linux ベースの HDInsight のプレビューでは、その他の機能を完全に実装できない場合があります。
 
 REST API の完全なリファレンスについては、「[Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

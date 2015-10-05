@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="08/11/2015"
+   ms.date="09/22/2015"
    ms.author="mbaldwin" />
 
 # Azure Key Vault 開発者ガイド
@@ -55,11 +55,11 @@ Azure Key Vault のキーとシークレットは、次の記事の説明に従�
 
 - [PowerShell を使用した Key Vault の作成と管理](key-vault-get-started.md)
 - [CLI を使用した Key Vault の管理](key-vault-manage-with-cli.md)
-- [Azure Key Vault の HSM 保護キーを生成し、転送する方法](https://msdn.microsoft.com/library/azure/dn903624.aspx)
+- [Azure Key Vault の HSM 保護キーを生成し、転送する方法](key-vault-hsm-protected-keys.md)
 - [キーとシークレットについて](https://msdn.microsoft.com/library/azure/dn903623.aspx)
 
 ## 関連項目
 
 - [Azure Key Vault のコード サンプル](http://www.microsoft.com/download/details.aspx?id=45343)
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

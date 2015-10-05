@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Visual Studio を使用して Web プロジェクト用の仮想マシンを作成する"
+	pageTitle="Visual Studio を使用して Web プロジェクト用の VM を作成する | Microsoft Azure"
 	description="Web サイト用の仮想マシンを作成します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -68,4 +68,4 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 [4]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/CreateVM_SolutionExplorer.png
 [5]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/VS_Create_VM_Connect.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

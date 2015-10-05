@@ -160,4 +160,4 @@ catch (Exception e)
 
 このトピックではキューの基本を説明しました。次に、「[Service Bus のトピックとサブスクリプションを使用するアプリケーションを作成する](service-bus-create-topics-subscriptions.md)」で Service Bus の仲介型メッセージングのパブリッシュ/サブスクライブ機能の使用を学習してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

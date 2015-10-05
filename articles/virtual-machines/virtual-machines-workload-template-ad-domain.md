@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure リソース マネージャーのテンプレートを使用した、可用性の高い Active Directory ドメイン サービスのドメインのデプロイ"
+	pageTitle="高可用性の Active Directory ドメイン サービス ARM テンプレート | Microsoft Azure"
 	description="リソース マネージャー テンプレートと、Azure プレビュー ポータル、Azure PowerShell、または Azure CLI を使用して Active Directory ドメイン サービスのドメイン コントローラーとして機能する 2 つのサーバーをすばやくデプロイする"
 	services="virtual-machines"
 	documentationCenter=""
@@ -19,6 +19,8 @@
 
 
 # Azure リソース マネージャーのテンプレートを使用した、可用性の高い Active Directory ドメイン サービスのドメインのデプロイ
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
 
 この記事の手順に従って、リソース マネージャー テンプレートを使用して可用性の高い Active Directory ドメインをデプロイできます。このテンプレートにより、同一サブネット上の新しい仮想ネットワークに 2 つの仮想マシンを作成します。
 
@@ -78,7 +80,7 @@
 
 	azure group create <group name> <location>
 
-次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイメントの名前を指定します。
+次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイの名前を指定します。
 
 	azure group deployment create --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/active-directory-new-domain-ha-2-dc/azuredeploy.json <group name> <deployment name>
 
@@ -106,4 +108,4 @@
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

@@ -1,11 +1,12 @@
 <properties
 	pageTitle="Django を使用した Python Web アプリケーション | Microsoft Azure"
-	description="Windows Server 2012 R2 Datacenter 仮想マシンを使用して Azure で Django ベースの Web サイトをホストする方法について説明するチュートリアルです。"
+	description="このチュートリアルでは、従来のデプロイ モデルで Windows Server 2012 R2 Datacenter 仮想マシンを使用して Azure で Django ベースの Web サイトをホストする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter="python"
 	authors="huguesv"
 	manager="wpickett"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 
 <tags 
@@ -18,11 +19,15 @@
 	ms.author="huvalo"/>
 
 
+# Windows Server VM での Django Hello World Web アプリケーション
 
+> [AZURE.SELECTOR]
+- [Windows](virtual-machines-python-django-web-app-windows-server.md)
+- [Mac/Linux](virtual-machines-python-django-web-app-linux.md)
 
-# Django Hello World Web アプリケーション
+<br>
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/develop/python/tutorials/web-app-with-django/" title="Windows" class="current">Windows</a><a href="/develop/python/tutorials/django-hello-world-(maclinux)/" title="MacLinux">Mac/Linux</a></div>
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 このチュートリアルでは、Windows Server 仮想マシンを使用して Microsoft Azure で Django ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウド内で動作する Django ベースのアプリケーションが完成します。
 
@@ -56,7 +61,7 @@
 
 **注:** Internet Explorer を使ってダウンロードするには、IE ESC 設定の構成が必要になる場合があります。具体的には、[スタート]、[管理ツール]、[サーバー マネージャー]、[ローカル サーバー] の順にクリックしてから、**[IE セキュリティ強化の構成]** をクリックし、[オフ] に設定します。
 
-1. [python.org][] から最新の Python (2.7 または 3.4) をインストールします。
+1. [python.org][] から最新の Python 2.7 または 3.4 をインストールします。
 1. pip を使用して wfastcgi パッケージおよび django パッケージをインストールします。
 
     Python 2.7 の場合、以下のコマンドを使用します。
@@ -125,7 +130,7 @@
 
         c:\python34\scripts\wfastcgi-enable
 
-1. *C:\\inetpub\\wwwroot\\helloworld* で web.config ファイルを作成します。`scriptProcessor` 属性の値は、前の手順の出力と一致させる必要があります。wfastcgi の設定の詳細については、pypi の [wfastcgi][] に関するページを参照してください。
+1. *C:\\inetpub\\wwwroot\\helloworld* に web.config ファイルを作成します。`scriptProcessor` 属性の値は、前の手順の出力と一致させる必要があります。wfastcgi の設定の詳細については、pypi の [wfastcgi に関するページ][]を参照してください。
 
     Python 2.7:
 
@@ -176,6 +181,6 @@
 
 [Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
 [python.org]: https://www.python.org/downloads/
-[wfastcgi]: https://pypi.python.org/pypi/wfastcgi
+[wfastcgi に関するページ]: https://pypi.python.org/pypi/wfastcgi
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

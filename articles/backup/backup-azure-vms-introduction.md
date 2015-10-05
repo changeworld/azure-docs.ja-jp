@@ -7,7 +7,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/09/2015" ms.author="trinadhk";"aashishr";"jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/24/2015" ms.author="trinadhk";"aashishr";"jimpark"/>
 
 # Azure 仮想マシンのバックアップ
 
@@ -41,7 +41,7 @@ Azure 仮想マシンの詳細については、「[Virtual Machine のドキュ
 - アプリケーション整合性のあるバックアップにより、回復されたデータが一貫性のある状態から開始されることを保証します。
 - 仮想マシンのバックアップに関連するダウンタイムがありません。
 - Windows や Linux の仮想マシンをバックアップできます。
-- 回復ポイントを Azure Backup コンテナーに簡単に復元できます。
+- 回復ポイントを Azure Backup 資格情報コンテナーに簡単に復元できます。
 - 古い回復ポイントの自動排除とガベージ コレクションを実行します。
 
 ## Azure 仮想マシンのバックアップの動作
@@ -111,7 +111,7 @@ Azure 仮想マシンのバックアップを開始する前に、Azure VM エ�
 - オペレーティング システムのバージョンの選択でサポートされるのは、Azure Backup サービスを使用した仮想マシンのバックアップのみです。
   - **Linux**: Azure で動作保証済みのディストリビューションの一覧は、[こちら](../virtual-machines-linux-endorsed-distributions.md)でご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
   - **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
-- マルチ DC 構成の一部であるドメイン コント ローラー仮想マシンの復元は、PowerShell を通じてのみサポートされます。詳細については、「[restoring a multi-DC domain controller (マルチ DC ドメイン コントローラーの復元)](backup-azure-restore-vms.md#multiple-dcs)」を参照してください。
+- マルチ DC 構成の一部であるドメイン コント ローラー仮想マシンの復元は、PowerShell を通じてのみサポートされます。詳細については、「[ドメイン コントローラー の VM の復元](backup-azure-restore-vms.md#restoring-domain-controller-vms)」を参照してください。
 
 確認したい機能が含まれている場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
@@ -122,4 +122,4 @@ Azure 仮想マシンのバックアップを開始する前に、Azure VM エ�
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

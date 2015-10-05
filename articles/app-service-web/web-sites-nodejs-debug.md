@@ -19,7 +19,7 @@
 
 # Azure App Service で Node.js Web アプリをデバッグする方法
 
-Azure では、ビルトインの診断機能により、Azure の App Service Web Apps でホストされる Node.js アプリケーションのデバッグが支援されます。Azure でホストされる Node.js アプリケーションのデバッグに役立つ、組み込みの診断機能を提供する [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリです。この記事では、stdout と stderr のログ記録を有効にし、エラー情報をブラウザーに表示する方法と、ログ ファイルをダウンロードして表示する方法について説明します。
+Azure では、ビルトインの診断機能により、Azure の App Service Web Apps でホストされる Node.js アプリケーションのデバッグが支援されます。Azure でホストされる Node.js アプリケーションのデバッグに役立つ、組み込みの診断機能を提供する [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps です。この記事では、stdout と stderr のログ記録を有効にし、エラー情報をブラウザーに表示する方法と、ログ ファイルをダウンロードして表示する方法について説明します。
 
 Azure でホストされる Node.js アプリケーションの診断は、[IISNode] によって提供されます。この記事では、診断情報を集めるための最も一般的な設定について説明しますが、IISNode を操作するための完全なリファレンスを提供してはいません。IISNode の操作の詳細については、GitHub の [IISNode Readme] を参照してください。
 
@@ -110,6 +110,8 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 
 アプリケーションの Node.js バージョンの指定については、「[Azure アプリケーションでの Node.js のバージョンの指定]」を参照してください。
 
+詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
@@ -125,4 +127,4 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

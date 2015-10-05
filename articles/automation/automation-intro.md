@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="09/03/2015"
+	ms.date="09/17/2015"
 	ms.author="bwren"/>
 
 # Azure Automation とは
@@ -33,7 +33,7 @@ Runbook は、Azure Automation で自動化されたプロセスを実行する�
 
 ## Runbook が自動化できるものは何ですか。
 
-Azure Automation の Runbook は PowerShell Workflow に基づいているので、PowerShell でできることであれば何でも実行できます。アプリケーションまたはサービスに API がある場合、Runbook はそれを操作できます。それに対する PowerShell モジュールがある場合は、そのモジュールを Azure Automation に読み込み、コマンドレットを Runbook に組み込むことができます。Azure Automation の Runbook は、Azure クラウド内で実行するので、クラウド内のすべてのリソースや、クラウドからアクセスできる外部のリソースにアクセスできます。[ハイブリッド Runbook Worker](automation-hybrid-runbook-worker.md) を使用すると、Runbook はローカル データ センターで実行してローカル リソースを管理できます。
+Azure Automation での Runbook は、Windows PowerShell または Windows PowerShell Workflow に基づいているため、PowerShell で実行できることはすべて実行できます。アプリケーションまたはサービスに API がある場合、Runbook はそれを操作できます。それに対する PowerShell モジュールがある場合は、そのモジュールを Azure Automation に読み込み、コマンドレットを Runbook に組み込むことができます。Azure Automation の Runbook は、Azure クラウド内で実行するので、クラウド内のすべてのリソースや、クラウドからアクセスできる外部のリソースにアクセスできます。[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) を使用すると、Runbook はローカル データ センターで実行してローカル リソースを管理できます。
 
 
 ## Runbook はどこで入手するのでしょうか。
@@ -43,12 +43,12 @@ Azure Automation の Runbook は PowerShell Workflow に基づいているので
 
 ## 独自の Runbook はどうすれば作成できますか
 
-最初から[独自の Runbook を作成する](http://msdn.microsoft.com/library/azure/dn643637.aspx)ことも、[Runbook Gallery](http://msdn.microsoft.com/library/azure/dn781422.aspx) の Runbook を独自の要件に合わせて修正することもできます。PowerShell のコードを直接操作する方がよい場合は、Azure ポータルまたはオフラインで[テキスト エディターを使用して Runbook を編集する](http://msdn.microsoft.com/library/azure/dn879137.aspx)ことができます。基になっているコードは見ずに Runbook を編集したい場合は、Azure プレビュー ポータルの[グラフィカル エディター](automation-graphical-authoring-intro.md)を使用できます。
+最初から[独自の Runbook を作成する](http://msdn.microsoft.com/library/azure/dn643637.aspx)ことも、[Runbook Gallery](http://msdn.microsoft.com/library/azure/dn781422.aspx) の Runbook を独自の要件に合わせて修正することもできます。要件と PowerShell の経験に基づいて選択できる 3 つの [Runbook の種類](automation-runbook-types.md)があります。PowerShell コードを直接操作する場合は、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell Workflow Runbook](automation-runbook-types.md#powershell-workflow-runbooks) をオフラインでまたは Azure ポータルで[テキスト エディターを使用](http://msdn.microsoft.com/library/azure/dn879137.aspx)して編集できます。コードを見ないで Runbook を編集する場合は、Azure プレビュー ポータルで[グラフィカル エディター](automation-graphical-authoring-intro.md)を使用して、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) を作成できます。
 
 
 ## Azure Automation と他のオートメーション ツールを関連付けるにはどうすればよいですか。
 
-[Service Management Automation (SMA)](http://technet.microsoft.com/library/dn469260.aspx) は、プライベート クラウドでの管理タスクを自動化するためのものです。[Windows Azure Pack](http://www.microsoft.com/server-cloud/products/windows-azure-pack/default.aspx) のコンポーネントとしてデータ センターにローカルにインストールされます。SMA と Azure Automation は Windows PowerShell Workflow に基づく同じ Runbook 形式を使用しますが、SMA は[グラフィカルな Runbook](automation-graphical-authoring-intro.md) をサポートしません。
+[Service Management Automation (SMA)](http://technet.microsoft.com/library/dn469260.aspx) は、プライベート クラウドでの管理タスクを自動化するためのものです。[Windows Azure Pack](http://www.microsoft.com/server-cloud/products/windows-azure-pack/default.aspx) のコンポーネントとしてデータ センターにローカルにインストールされます。SMA と Azure Automation では Windows PowerShell と Windows PowerShell Workflow と同じ Runbook 形式を使用しますが、SMA では[グラフィカル Runbook](automation-graphical-authoring-intro.md) はサポートされません。
 
 [System Center 2012 Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) はオンプレミスのリソースを自動化するためのものです。Azure Automation および Service Management Automation とは異なる形式の Runbook を使用し、スクリプトを作成する必要なしに Runbook を作成するためのグラフィカル インターフェイスを備えています。その Runbook は、Orchestrator 用に特に作成された統合パックのアクティビティで構成されます。
 
@@ -65,4 +65,4 @@ Azure Automation や独自の Runbook の作成方法の詳細を確認できる
 
 **フィードバックをお待ちしています。** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Azure 仮想マシンの SQL Server へのデータベースの移行"
+	pageTitle="VM の SQL Server へのデータベースの移行 | Mirosoft Azure"
 	description="オンプレミスのユーザー データベースを Azure 仮想マシンの SQL Server に移行する方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="carlrabeler"
 	manager="jeffreyg"
-	editor=""/>
-
+	editor=""
+	tags="azure-service-management" />
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
@@ -19,7 +19,9 @@
 
 # Azure VM の SQL Server へのデータベースの移行
 
-オンプレミスの SQL Server ユーザー データベースを Azure VM の SQL Server に移行する方法は多数あります。この記事では、さまざまな方法について簡単に説明したうえで、さまざまなシナリオに最適な方法を紹介します。また、**Microsoft Azure VM への SQL Server データベースのデプロイ** ウィザードを使用する方法について順を追って説明する[チュートリアル](#azure-vm-deployment-wizard-tutorial)も含まれます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
+オンプレミスの SQL Server ユーザー データベースを Azure VM の SQL Server に移行する方法は多数あります。この記事では、さまざまな方法について簡単に説明したうえで、さまざまなシナリオに最適な方法を紹介します。また、**Microsoft Azure VM への SQL Server データベースのデプロイ** ウィザードを使用する方法について順を追って説明する[チュートリアル](#azure-vm-deployment-wizard-tutorial)も含まれています。
 
 ## 主な移行方法
 
@@ -165,4 +167,4 @@ SQL Server 2014 より前の SQL Server に移行する場合、またはバッ�
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

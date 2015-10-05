@@ -18,7 +18,8 @@
 	ms.author="danlep"/>
 
 # サービス管理での仮想マシンの操作に関する記事
-以下に示すのは、Azure サービス管理での仮想マシンの操作に関する資料の一覧です。新規のデプロイメントについては、Azure リソース マネージャー ベースの仮想マシンとその他のリソースを使用することをお勧めします。リソース マネージャーを使用する利点の詳細については、「[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルでのリソースの管理について説明します。
 
 ## 作業開始
 
@@ -150,4 +151,4 @@
 
 [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

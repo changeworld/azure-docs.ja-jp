@@ -1,24 +1,28 @@
 <properties
-   pageTitle="Azure Active Directory を使用して職場または学校の ID を作成する"
-	description="個人 ID から職場または学校の ID を作成して、リソース グループ テンプレートやロールベースのアクセスなどのさまざまな機能を使用する方法について説明します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="squillace"
-	manager="timlt"
-	editor=""/>
+   pageTitle="AAD の職場または学校の ID を作成する |Microsoft Azure"
+   description="Resource Manager デプロイ モデルとクラシック デプロイ モデルで使用する Azure Active Directory の職場または学校の ID を作成する方法について説明します。"
+   services="virtual-machines"
+   documentationCenter=""
+   authors="squillace"
+   manager="timlt"
+   editor=""
+   tags="azure-service-management,azure-resource-manager"/>
 
 <tags
    ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure"
-	ms.date="09/01/2015"
-	ms.author="rasquill"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure"
+   ms.date="09/01/2015"
+   ms.author="rasquill"/>
 
 # Azure Active Directory を使用して職場または学校の ID を作成する
 
 MSDN Azure クレジットを活用するために、個人の Azure アカウントを作成した場合や、個人の MSDN サブスクリプションがあり、Azure アカウントを作成した場合、*Microsoft アカウント* ID を使用して作成しています。Azure の優れた機能の中でも[リソース グループ テンプレート](../resource-group-overview.md)はその一例ですが、作業にあたって職場または学校のアカウント (Azure Active Directory で管理される ID) が必要です。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、Resource Manager デプロイ モデルとクラシック デプロイ モデルの両方で必要となる AAD ID の作成ついて説明します。
+
 
 個人の Azure アカウントを持つことで得られるメリットの 1 つは、既定の Azure Active Directory ドメインが付属することです。これを使用して職場や学校のアカウントを新規に作成し、アカウントを要求する Azure 機能で利用できます。
 
@@ -140,4 +144,4 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
     data:
     info:    group create command OK
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

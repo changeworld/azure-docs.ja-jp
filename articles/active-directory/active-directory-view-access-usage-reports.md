@@ -1,26 +1,26 @@
 <properties
-	pageTitle="アクセスおよび使用状況レポートを表示します。"
-	description="アクセスおよび使用状況レポートを使用して、組織のディレクトリの整合性とセキュリティを把握する方法を説明するトピック。"
+	pageTitle="アクセスおよび使用状況レポートを表示する | Microsoft Azure"
+	description="アクセスおよび使用状況レポートを使用して組織のディレクトリの整合性とセキュリティを把握する方法を説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="kenhoff"
-	manager="TerryLan"
-	editor="LisaToft"/>
+	manager="stevenpo"
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.workload="infrastructure-services"
+	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/24/2015"
-	ms.author="kenhoff;Justinha"/>
+	ms.date="09/21/2015"
+	ms.author="kenhoff;Justinha;curtand"/>
 
 # アクセスおよび使用状況レポートを表示します。
 
 Azure Active Directory のアクセスおよび使用状況レポートを使用すると、組織のディレクトリの整合性とセキュリティを表示できます。ディレクトリ管理者は、この情報を使用して、リスクを軽減するために適切に計画できるように、セキュリティ上のリスクがある箇所をより適切に確認できます。
 
-レポートは、Azure 管理ポータルで、次の方法で分類されます。
+レポートは、Microsoft Azure 管理ポータルで、次の方法で分類されます。
 
 - 異常レポート: 異常と考えられるサインイン イベントが含まれます。この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
 - 統合アプリケーション レポート – 組織内のクラウド アプリケーションの使用状況を明らかにします。Azure Active Directory は、何千ものクラウド アプリケーションとの統合を提供します。
@@ -90,12 +90,6 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 |	最もアクティブな RMS ユーザー | | |	RMS のみ |
 |	RMS デバイスの利用状況 | | |	RMS のみ |
 |	RMS 対応アプリケーションの利用状況 | | |	RMS のみ |
-
-
-
-
-
-
 
 
 
@@ -174,11 +168,11 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | どの程度、特定の SaaS アプリケーションが使用されているかを表示するときに、このレポートを使用します。このレポートは、アクセス パネルでユーザーがアプリケーションをクリックした回数の合計に基づきます。 | [ディレクトリ] > [レポート] タブ |
 
-### アプリケーション ダッシュ ボード
+### アプリケーション ダッシュボード
 
 | 説明 | レポートの場所 |
 | :-------------     | :-------        |
-| このレポートは、選択した間隔で、組織内のユーザーによるアプリケーションへの累計サインインを示します。ダッシュボード ページ上のグラフは、そのアプリケーションのすべての使用状況の傾向を把握するために役立ちます。 | [ディレクトリ] > [アプリケーション] > [ダッシュ ボード] タブ |
+| このレポートは、選択した間隔で、組織内のユーザーによるアプリケーションへの累計サインインを示します。ダッシュボード ページ上のグラフは、そのアプリケーションのすべての使用状況の傾向を把握するために役立ちます。 | [ディレクトリ] > [アプリケーション] > [ダッシュボード] タブ |
 
 ## エラー レポート
 
@@ -219,7 +213,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | イベントの種類 | 表示の有無 |
 | ----------------------								| ---------		|
 | [アクセス パネル](http://myapps.microsoft.com/)へのサインイン | あり |
-| [Azure 管理ポータル](https://manage.windowsazure.com/)へのサインイン | あり |
+| [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)へのサインイン | あり |
 | Microsoft Azure [ポータル](http://portal.azure.com/)へのサインイン | あり |
 | [Office 365 ポータル](http://portal.office.com/)へのサインイン | あり |
 | Outlook などのネイティブのアプリケーションへのサインイン (次の例外を参照してください) | あり |
@@ -249,7 +243,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 ## レポートの閲覧またはダウンロード:
 
-1. Azure 管理ポータルで、**[Active Directory]** をクリックし、組織のディレクトリの名前をクリックし、**[レポート]** をクリックします。
+1. Microsoft Azure 管理ポータルで、**[Active Directory]** をクリックし、組織のディレクトリの名前をクリックし、**[レポート]** をクリックします。
 2. [レポート] ページで、閲覧またはダウンロードするレポート をクリックします。
 
     > [AZURE.NOTE]Azure Active Directory のレポート機能を初めて使用した場合は、内容を選択するためのメッセージが表示されます。同意する場合は、チェック マーク アイコンをクリックして続行します。
@@ -274,6 +268,6 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 ## 次の手順
 
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
-- [サインイン ページとアクセス パネル ページに会社のブランドを追加します。](active-directory-add-company-branding.md)
+- [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

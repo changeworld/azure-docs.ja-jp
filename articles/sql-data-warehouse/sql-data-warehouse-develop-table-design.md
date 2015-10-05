@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/09/2015"
+   ms.date="09/22/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse でのテーブル デザイン #
@@ -123,8 +123,8 @@ OR  y.[is_user_defined] = 1
 
 SQL Data Warehouse でのデータ分散には、次の 2 つの選択肢があります。
 
-1. 1 つの列の値のハッシュに基づいてデータを分散させる
-2. 均等でありながらランダムにデータを分散させる  
+1. 均等でありながらランダムにデータを分散させる 
+2. 1 つの列の値のハッシュに基づいてデータを分散させる
 
 データ分散はテーブル レベルで決定されます。テーブルはすべて分散されます。SQL Data Warehouse データベースのテーブルごとに、分散を割り当てます。
 
@@ -306,4 +306,4 @@ SQL Data Warehouse では、次の機能は使用またはサポートされま�
 
 <!--Other Web references-->
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

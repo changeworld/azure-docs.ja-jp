@@ -34,7 +34,7 @@
 
 ![この Node.js チュートリアルで作成した、My Todo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image1.png)
 
-チュートリアルを最後まで実施する時間がなく、GitHub から完成済みのソリューションを入手することが必要な場合もあります。 その場合は、[こちら](https://github.com/Azure/azure-documentdb-node/tree/master/tutorial/todo)から入手してください。
+チュートリアルを最後まで実施する時間はないが、完成済みのソリューションが必要な場合は、 [GitHub][] から完全なサンプル ソリューションを入手できます。
 
 ## <a name="_Toc395783176"></a>前提条件
 
@@ -554,10 +554,13 @@
 
 ご利用ありがとうございます。 ここでは初めての方を対象に、Azure DocumentDB を使用した Node.js Express Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
 
-アプリケーションの完全なソース コードは[こちら](https://github.com/Azure/azure-documentdb-node/tree/master/tutorial/todo)からダウンロードできます。ぜひご参考ください。
+アプリケーションの完全なソース コードを[GitHub][] からダウンロードできます。
 
-  [Node.js]: http://nodejs.org/
-  [Git]: http://git-scm.com/
+詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+
+[Node.js]: http://nodejs.org/
+[Git]: http://git-scm.com/
+[Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

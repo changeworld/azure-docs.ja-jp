@@ -1,4 +1,4 @@
-<properties 
+<properties
 	pageTitle="Mobile Services を使用したイメージの BLOB ストレージへのアップロード (Android) | Mobile Services"
 	description="Mobile Services を使用してイメージを Azure Storage にアップロードし、そのイメージに Android アプリからアクセスする方法を説明します。"
 	services="mobile-services"
@@ -7,13 +7,13 @@
 	manager="dwrede"
 	editor=""/>
 
-<tags 
+<tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="09/02/2015"
+	ms.date="09/18/2015"
 	ms.author="ricksal"/>
 
 # Android デバイスから Azure Storage へのイメージのアップロード
@@ -22,7 +22,7 @@
 
 このトピックでは、Android 向け Azure Mobile Services アプリで Azure Storage にイメージをアップロードできるようにする方法について説明します。
 
-Mobile Services では、SQL データベースを使用してデータを保存します。ただし、Azure Storage にバイナリ ラージ オブジェクト (BLOB) データを格納する方が効率的です。このチュートリアルでは、Mobile Services クイック スタート アプリで Android のカメラを使って写真を撮り、その画像を Azure Storage にアップロードできるようにします。
+Mobile Services では、SQL Database を使用してデータを保存します。ただし、Azure Storage にバイナリ ラージ オブジェクト (BLOB) データを格納する方が効率的です。このチュートリアルでは、Mobile Services クイック スタート アプリで Android のカメラを使って写真を撮り、その画像を Azure Storage にアップロードできるようにします。
 
 
 ## はじめにやるべきこと
@@ -47,7 +47,8 @@ SAS とは
 
 Azure Storage サービスにデータをアップロードするために必要な資格情報をクライアント アプリ内に保存するのは安全ではありません。代わりに、これらの資格情報をモバイル サービスに保存し、それらを使用して、新しいイメージをアップロードするためのアクセス許可を付与する SAS (Shared Access Signature) を生成します。SAS は有効期間が 5 分間の資格情報で、Mobile Services によってクライアント アプリに安全に返されます。アプリケーションは、この一時的な資格情報を使用してイメージをアップロードします。詳細については、[Shared Access Signature の第 1 部である SAS モデル](storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。
 
->[AZURE.NOTE] [Here](https://github.com/Azure/mobile-services-samples/tree/master/UploadImages)から、このアプリの完成したクライアント ソース コードを入手できます。
+## サンプル コード
+[ここ](https://github.com/Azure/mobile-services-samples/tree/master/UploadImages)に、このアプリの完成したクライアント ソース コードがあります。このコードを実行するには、このチュートリアルの Mobile Services バックエンドの部分を完了する必要があります。
 
 ## 管理ポータルで登録されている挿入スクリプトを更新する
 
@@ -130,7 +131,7 @@ Azure Storage サービスにデータをアップロードするために必要
 	    static final int REQUEST_TAKE_PHOTO = 1;
 	    public Uri mPhotoFileUri = null;
 	    public File mPhotoFile = null;
-		
+
 	    public void takePicture(View view) {
 	        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 	        // Ensure that there's a camera activity to handle the intent
@@ -161,14 +162,14 @@ Azure Storage サービスにデータをアップロードするために必要
 	     */
 	    @com.google.gson.annotations.SerializedName("imageUri")
 	    private String mImageUri;
-	
+
 	    /**
 	     * Returns the item ImageUri
 	     */
 	    public String getImageUri() {
 	        return mImageUri;
 	    }
-	
+
 	    /**
 	     * Sets the item ImageUri
 	     *
@@ -178,20 +179,20 @@ Azure Storage サービスにデータをアップロードするために必要
 	    public final void setImageUri(String ImageUri) {
 	        mImageUri = ImageUri;
 	    }
-	
+
 	    /**
 	     * ContainerName - like a directory, holds blobs
 	     */
 	    @com.google.gson.annotations.SerializedName("containerName")
 	    private String mContainerName;
-	
+
 	    /**
 	     * Returns the item ContainerName
 	     */
 	    public String getContainerName() {
 	        return mContainerName;
 	    }
-	
+
 	    /**
 	     * Sets the item ContainerName
 	     *
@@ -201,20 +202,20 @@ Azure Storage サービスにデータをアップロードするために必要
 	    public final void setContainerName(String ContainerName) {
 	        mContainerName = ContainerName;
 	    }
-	
+
 	    /**
 	     *  ResourceName
 	     */
 	    @com.google.gson.annotations.SerializedName("resourceName")
 	    private String mResourceName;
-	
+
 	    /**
 	     * Returns the item ResourceName
 	     */
 	    public String getResourceName() {
 	        return mResourceName;
 	    }
-	
+
 	    /**
 	     * Sets the item ResourceName
 	     *
@@ -224,20 +225,20 @@ Azure Storage サービスにデータをアップロードするために必要
 	    public final void setResourceName(String ResourceName) {
 	        mResourceName = ResourceName;
 	    }
-	
+
 	    /**
 	     *  SasQueryString - permission to write to storage
 	     */
 	    @com.google.gson.annotations.SerializedName("sasQueryString")
 	    private String mSasQueryString;
-	
+
 	    /**
 	     * Returns the item SasQueryString
 	     */
 	    public String getSasQueryString() {
 	        return mSasQueryString;
 	    }
-	
+
 	    /**
 	     * Sets the item SasQueryString
 	     *
@@ -297,19 +298,19 @@ Azure Storage サービスにデータをアップロードするために必要
 	        if (mClient == null) {
 	            return;
 	        }
-	
+
 	        // Create a new item
 	        final ToDoItem item = new ToDoItem();
-	
+
 	        item.setText(mTextNewToDo.getText().toString());
 	        item.setComplete(false);
 	        item.setContainerName("todoitemimages");
-	
+
 	        // Use a unigue GUID to avoid collisions.
 	        UUID uuid = UUID.randomUUID();
 	        String uuidInString = uuid.toString();
 	        item.setResourceName(uuidInString);
-	
+
 	        // Send the item to be inserted. When blob properties are set this
 	        // generates an SAS in the response.
 	        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
@@ -317,23 +318,23 @@ Azure Storage サービスにデータをアップロードするために必要
 	            protected Void doInBackground(Void... params) {
 	                try {
 		                    final ToDoItem entity = addItemInTable(item);
-		
+
 		                    // If we have a returned SAS, then upload the blob.
 		                    if (entity.getSasQueryString() != null) {
-		
+
 	                       // Get the URI generated that contains the SAS
 	                        // and extract the storage credentials.
-	                        StorageCredentials cred = 
+	                        StorageCredentials cred =
 								new StorageCredentialsSharedAccessSignature(entity.getSasQueryString());
 	                        URI imageUri = new URI(entity.getImageUri());
-	
+
 	                        // Upload the new image as a BLOB from a stream.
 	                        CloudBlockBlob blobFromSASCredential =
 	                                new CloudBlockBlob(imageUri, cred);
-	
+
 	                        blobFromSASCredential.uploadFromFile(mPhotoFileUri.getPath());
   	                    }
-	
+
 	                    runOnUiThread(new Runnable() {
 	                        @Override
 	                        public void run() {
@@ -348,17 +349,17 @@ Azure Storage サービスにデータをアップロードするために必要
 	                return null;
 	            }
 	        };
-	
+
 	        runAsyncTask(task);
-	
+
 	        mTextNewToDo.setText("");
 	    }
-	
+
 
 このコードは、新しい TodoItem を挿入する要求をモバイル サービスに送信します。応答には、ローカル ストレージから Azure Storage の BLOB にイメージをアップロードするために使用される SAS が含まれます。
 
 
-## イメージのアップロードをテストする 
+## イメージのアップロードをテストする
 
 1. Android Studio で、**[Run]** を押します。ダイアログ ボックスで、使用するデバイスを選択します。
 
@@ -380,7 +381,7 @@ Azure Storage サービスにデータをアップロードするために必要
 モバイル サービスを Blob サービスと統合することによりイメージを安全にアップロードできました。他のバックエンド サービスおよび統合のトピックを参照してください。
 
 + [SendGrid を使用した Mobile Services からの電子メールの送信]
- 
+
   SendGrid 電子メール サービスを使用して、モバイル サービスに電子メール機能を追加する方法について説明します。このトピックでは、サーバー側スクリプトを追加し、SendGrid を使用して電子メールを送信する方法を示します。
 
 + [Mobile Services でのバックエンド ジョブの計画]
@@ -390,12 +391,12 @@ Azure Storage サービスにデータをアップロードするために必要
 + [Mobile Services のサーバー スクリプト リファレンス]
 
   サーバー側のタスクを実行するサーバー スクリプトの使用および他の Azure コンポーネントおよび外部リソースとの統合に関するトピックを参照してください。
- 
+
 + [Mobile Services .NET の使用方法の概念リファレンス]
 
   .NET で Mobile Services を使用する方法について説明します
-  
- 
+
+
 <!-- Anchors. -->
 [Install the Storage Client library]: #install-storage-client
 [Update the client app to capture images]: #add-select-images
@@ -420,6 +421,5 @@ Azure Storage サービスにデータをアップロードするために必要
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
 [Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
- 
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/09/2015"
+	ms.date="09/23/2015"
 	ms.author="awills"/>
 
 
@@ -133,13 +133,28 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 [このトラブルシューティング項目](app-insights-troubleshoot-faq.md#NuGetBuild)を参照してください。
 
+
+## アプリケーションのバージョンを追跡する
+
+ビルド プロセスで `buildinfo.config` が生成されていることを確認します。.csproj ファイルに、次のコードを追加します。
+
+```XML
+
+    <PropertyGroup>
+      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+    </PropertyGroup> 
+```
+
+ビルド情報がある場合、Application Insights Web モジュールは、**アプリケーションのバージョン**をプロパティとしてテレメトリのすべての項目に自動的に追加します。これにより、[診断の検索][diagnostic]を実行するとき、または[メトリックを調べる][metrics]ときに、バージョンによってフィルター処理できます。
+
+
 ## 5\.依存関係の追跡およびパフォーマンス カウンターの追加
 
 SDK によるデータへのアクセスでは、若干のサポートが必要です。具体的には、アプリからデータベース、REST API、またその他の外部コンポーネントへの呼び出しを自動的に測定するには、次の追加のステップが必要です。依存関係のメトリックは、パフォーマンスに関する問題の診断に非常に役立つ場合があります。
 
 #### アプリが IIS サーバーで実行される場合
 
-管理者権限でサーバーにサインインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします。
+管理者権限でサーバーにログインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします。
 
 [ファイアウォールで追加の送信ポートを開く](app-insights-monitor-performance-live-website-now.md#troubleshooting)ことが必要な場合があります。
 
@@ -156,6 +171,8 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 #### Azure Cloud Services プロジェクトの場合
 
 [スクリプトを Web ロールとworker ロールに追加します。](app-insights-cloudservices.md)
+
+
 
 ## 6\.クライアント側の監視を追加します。
 
@@ -192,11 +209,11 @@ SDK クライアントをサーバーの SDK と同じインストルメンテ�
 
 この記事の冒頭では、Application Insights のリソースの作成と SDK のインストールを手動で実行する方法を示しました。その手順を構成する 2 つの部分を理解しておくことは良いことであると信じています。ただし、ASP.NET アプリ (とその他の多くのアプリ) には、もっとすばやく実行できる自動化された方法があります。
 
-[Visual Studio](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) (2013 Update 3 またはそれ以降) と [Microsoft Azure](http://azure.com) のアカウントが必要です。
+[Visual Studio](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) (2013 Update 3 以上) と、[Microsoft Azure](http://azure.com) のアカウントが必要です。
 
 #### 新しいプロジェクトの場合
 
-Visual Studio に新しいプロジェクトを作成するとき、**[Application Insights の追加]** が選択されていることを確認してください。
+Visual Studio で新しいジョブを作成するときは、**[Application Insights の追加]** が選択されていることを確認します。
 
 
 ![ASP.NET プロジェクトを作成する](./media/app-insights-start-monitoring-app-health-usage/appinsights-01-vsnewp1.png)
@@ -207,7 +224,7 @@ Visual Studio によって、Application Insights にリソースが作成され
 
 #### 既存のプロジェクトの場合
 
-ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights の追加]** を選択します。
+ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights の追加] ** を選択します。
 
 ![[Application Insights の追加] を選択する](./media/app-insights-start-monitoring-app-health-usage/appinsights-03-addExisting.png)
 
@@ -255,4 +272,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-get-started.md
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

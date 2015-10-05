@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure の仮想マシンについて"
+	pageTitle="Azure 仮想マシンについて |Microsoft Azure"
 	description="Azure の仮想マシンの基本について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -17,7 +17,9 @@
 	ms.date="07/14/2015"
 	ms.author="cynthn"/>
 
-#Azure の仮想マシンについて
+#両方のデプロイ モデルで作成される Azure 仮想マシンについて
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルとクラシック デプロイ モデルを使用して作成されるリソースについて説明します。
 
 Azure Virtual Machines は、Azure が提供するオンデマンドでスケーラブルなコンピューティング リソースのひとつです。通常、コンピューティング環境のよりよい管理を必要とする場合には、さまざまなオプションの中でも仮想マシンを選択します。
 
@@ -41,7 +43,7 @@ Azure Virtual Machines は、Azure が提供するオンデマンドでスケー
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-Azure Virtual Machines について習得を始めたばかりであれば、[よく寄せられる質問](virtual-machines-questions.md)も合わせてご覧ください。
+Azure 仮想マシンについて習得を始めたばかりであれば、[よく寄せられる質問](virtual-machines-questions.md)も合わせてご覧ください。
 
 
 <!--links-->
@@ -49,4 +51,4 @@ Azure Virtual Machines について習得を始めたばかりであれば、[�
 [Virtual Machines]: #tellmevm
 [Cloud Services]: cloud-services-choose-me.md
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Mac、Linux、および Windows への Azure CLI のインストール"
+	pageTitle="Azure コマンド ライン インターフェイスのインストール | Microsoft Azure"
 	description="Mac、Linux、および Windows に Azure CLI をインストールして Azure サービスの利用を開始する"
-	editor="tysonn"
+	editor=""
 	manager="timlt"
 	documentationCenter=""
 	authors="dlepow"
-	services=""/>
+	services=""
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
 	ms.service="multiple"
@@ -13,16 +14,18 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2015"
+	ms.date="09/18/2015"
 	ms.author="danlep"/>
 
 # Azure CLI のインストール
 
-このドキュメントでは、Azure コマンド ライン インターフェイス (Azure CLI) をインストールする方法について説明します。Azure CLI には、Microsoft Azure 上のリソースを管理するための一連のオープン ソースのシェル ベース コマンドが用意されています。
+この記事では、Azure コマンド ライン インターフェイス (Azure CLI) をインストールする方法について説明します。Azure CLI には、Microsoft Azure 上のリソースを作成および管理するための一連のオープン ソースのシェル ベース コマンドが用意されています。
 
-> [AZURE.NOTE]Azure CLI を既にインストールしている場合は、それを Azure リソースに接続してください。詳細については、「[方法: Azure サブスクリプションに接続する](xplat-cli-connect.md#configure)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルまたはクラシック デプロイメント モデルを使用したリソースの作成および管理について説明します。
 
 Azure CLI は JavaScript で記述されており、[Node.js](https://nodejs.org) が必要です。[Azure SDK for Node](https://github.com/azure/azure-sdk-for-node) を使用して実装されており、Apache 2.0 ライセンスに基づいてリリースされています。プロジェクトのリポジトリは [https://github.com/azure/azure-xplat-cli](https://github.com/azure/azure-xplat-cli) にあります。
+
+> [AZURE.NOTE]Azure CLI を既にインストールしている場合は、それを Azure リソースに接続してください。詳細については、「[方法: Azure サブスクリプションに接続する](xplat-cli-connect.md#configure)」を参照してください。
 
 <a id="install"></a>
 ## 方法: Azure CLI をインストールする
@@ -33,7 +36,7 @@ Azure CLI をインストールする方法はいくつかあります。
 2. Node.js と npm をインストールした後で **npm install** コマンドを実行する
 3. Docker コンテナーとして Azure CLI を実行する
 
-Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。
+Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプトなど) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。
 
 ## インストーラーの使用
 
@@ -46,7 +49,7 @@ Azure CLI をインストールすると、コマンド ライン インター�
 * [Linux インストーラー][linux-installer]
 
 
-## Node.js と npm を使用したインストール
+## Node.js と npm のインストールと使用
 
 Node.js が既にシステムにインストールされている場合、次のコマンドを使用して Azure CLI をインストールします。
 
@@ -94,7 +97,7 @@ node.js と npm を Windows および OS X にインストールするには、[
 
 	npm install -g azure-cli
 
-Azure CLI をインストールすると、コマンド ライン ユーザー インターフェイスから **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。インストールの最後に、次のような情報が表示されます。
+インストールの最後に、次のような情報が表示されます。
 
 	azure-cli@0.8.0 ..\node_modules\azure-cli
 	|-- easy-table@0.0.1
@@ -114,7 +117,7 @@ Azure CLI をインストールすると、コマンド ライン ユーザー �
 	|-- kuduscript@0.1.2 (commander@1.1.1, streamline@0.4.11)
 	|-- azure@0.7.13 (dateformat@1.0.2-1.2.3, envconf@0.0.4, mpns@2.0.1, mime@1.2.10, validator@1.4.0, xml2js@0.2.8, wns@0.5.3, request@2.25.0)
 
->[AZURE.NOTE]Linux システムでは、[ソース](http://go.microsoft.com/fwlink/?linkid=253472&clcid=0x409)から構築することで Azure CLI をインストールすることもできます。ソースからの構築の詳細については、アーカイブにある INSTALL ファイルを参照してください。
+>[AZURE.NOTE]Linux システムでは、[ソース](http://go.microsoft.com/fwlink/?linkid=253472)から構築することで Azure CLI をインストールすることもできます。ソースからの構築の詳細については、アーカイブにある INSTALL ファイルを参照してください。
 
 ## Docker コンテナーの使用
 
@@ -124,8 +127,10 @@ Docker ホストで、次のコマンドを実行します。```
 
 ## Azure CLI コマンドの実行
 
-Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、cmd.exe など) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。たとえば、Windows で help コマンドを実行するには、管理者特権でコマンド プロンプト (cmd.exe) を起動します。```
-	C:\> azure help
+Azure CLI をインストールすると、コマンドライン ユーザー インターフェイス (Bash、Terminal、Command プロンプトなど) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。たとえば、Windows で help コマンドを実行するには、コマンド ウィンドウを起動して、次のように入力します。
+
+```
+	c:> azure help
 ```
 
 これで準備が整いました。 [Azure CLI から Azure サブスクリプションに接続](xplat-cli-connect.md)することで、**azure** コマンドの使用を開始できます。
@@ -134,16 +139,13 @@ Azure CLI をインストールすると、コマンド ライン インター�
 <a id="additional-resources"></a>
 ## その他のリソース
 
-* [Azure CLI でのサービス管理 (ASM モード) コマンドの使用][cliasm]に関するページ
+* [Azure CLI でのリソース管理コマンドの使用][cliarm]
 
-* [Azure CLI でのリソース管理 (ARM モード) コマンドの使用][cliarm]に関するページ
+* [Azure CLI でのサービス管理 (クラシック) コマンドの使用][cliasm]
 
-* Azure CLI の詳細、ソース コードのダウンロード、問題の報告、プロジェクトへの協力については、[GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli) のページを参照してください。
+* Azure CLI の詳細、ソース コードのダウンロード、問題のレポート、プロジェクトへの協力については、[GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli) のページを参照してください。
 
 * Azure CLI、または Azure を利用していて問題が発生した場合は、[Azure のフォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home)をご覧ください。
-
-* Azure の詳細については、[http://azure.microsoft.com/](http://azure.microsoft.com) を参照してください。
-
 
 
 
@@ -153,4 +155,4 @@ Azure CLI をインストールすると、コマンド ライン インター�
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: virtual-machines/xplat-cli-azure-resource-manager.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

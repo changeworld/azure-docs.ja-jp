@@ -1,57 +1,181 @@
 <properties
-   pageTitle="Azure でのリソース グループのデプロイのトラブルシューティング"
-	description="Azure でリソースをデプロイする際の一般的な問題について説明するとともに、Azure ポータルと、Mac、Linux、Windows 用 Azure コマンド ライン インターフェイス (Azure CLI)、 PowerShell を使用してデプロイを確認し、問題を検出する方法を示しています。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="squillace"
-	manager="timlt"
-	editor=""/>
+   pageTitle="リソース グループのデプロイのトラブルシューティング | Microsoft Azure"
+   description="リソース マネージャーのデプロイ モデルを使用して作成したリソースのデプロイ時の一般的な問題、およびこれらの問題を検出および修正する方法について説明します。"
+   services="azure-resource-manager,virtual-machines"
+   documentationCenter=""
+   authors="squillace"
+   manager="timlt"
+   editor=""/>
 
 <tags
-   ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="command-line-interface"
-	ms.workload="infrastructure"
-	ms.date="08/26/2015"
-	ms.author="rasquill"/>
+   ms.service="azure-resource-manager"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="vm-multiple"
+   ms.workload="infrastructure"
+   ms.date="09/18/2015"
+   ms.author="rasquill"/>
 
 # Azure でのリソース グループのデプロイのトラブルシューティング
 
-デプロイの失敗には、さまざま原因が考えられます。デプロイ エラーを防ぐため、いくつかの点を事前にチェックすることをお勧めします。このドキュメントでは、単純なミスの防止、テンプレート ファイルのダウンロードや、デプロイ ログの確認を行うためのツールと操作について説明します。また、エラーに関してデプロイメントのログを確認するときに考慮する主な領域についても説明します。
+デプロイ中に問題を発生した場合、その原因を究明する必要があります。リソース マネージャーでは、発生した問題とその原因を 2 通りの方法で発見できます。リソース グループの特定のデプロイに関する情報を取得するには、デプロイ コマンドを使用します。または、リソース グループに対して実行されたすべての操作に関する情報を取得するには、監査ログを使用します。この情報を使用すると、問題を解決して、ソリューションの稼働を再開できます。
 
-## Azure とやり取りする便利なツール
-コマンドラインから Azure リソースを使用する場合に、作業に役立つツールがあります。Azure リソース グループのテンプレートは JSON ドキュメントで、Azure リソース マネージャー API は JSON を受信して返します。このため、JSON 解析ツールは、リソースに関する情報を参照したり、テンプレートとテンプレートのパラメーター ファイルを設計し、操作する際に最初に使用するツールの 1 つになります。
+このトピックでは、デプロイのトラブルシューティングを行うための、デプロイ コマンドの使用に重点を置いて説明します。リソースに対するすべての操作を追跡するための監査ログを使用する方法の詳細については、「[リソース マネージャーの監査操作](../resource-group-audit.md)」を参照してください。
 
-### Mac、Linux、Windows の各ツール
-Mac、Linux、Windows 用の Azure CLI を使用する場合、標準のダウンロード ツール (**[curl](http://curl.haxx.se/)** と **[wget](https://www.gnu.org/software/wget/)** または **[Resty](https://github.com/beders/Resty)** など)、JSON ユーティリティ (**[jq](http://stedolan.github.io/jq/download/)**、**[jsawk](https://github.com/micha/jsawk)** など)や、JSON を適切に処理する言語ライブラリを既に使い慣れていることと思います(これらのツールの多くには、[wget](http://gnuwin32.sourceforge.net/packages/wget.htm) などの Windows 用のポートもあります。実際、Linux とその他のオープン ソース ソフトウェア ツールを Windows でも実行させるいくつかの方法があります)。
+このトピックでは、Azure PowerShell、Azure CLI および REST API を使用してのトラブルシューティング情報を取得する方法を示します。プレビュー ポータルを使用してデプロイをトラブルシューティングする方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](../azure-portal/resource-group-portal.md)」を参照してください。
 
-このトピックには、**jq** とともに使用して、正確な情報をより効率的に取得する Azure CLI コマンドが含まれています。Azure リソースの使用状況を理解するには、使い慣れているツールセットを選択する必要があります。
+ユーザーに表示される一般的なエラーの対処方法もこのトピックで説明しています。
 
-### Windows PowerShell
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイ モデルを使用して作成したリソース グループのトラブルシューティングについて説明します。クラシック デプロイ モデルを使用してリソース グループを作成することはできません。
 
-Windows PowerShell には、同じ手順を実行するいくつかの基本的なコマンドがあります。
 
-- **[Invoke-WebRequest](https://technet.microsoft.com/library/hh849901%28v=wps.640%29)** コマンドレットを使用すると、リソース グループ テンプレートやパラメーターの JSON ファイルなどのファイルをダウンロードできます。
-- **[ConvertFrom-Json](https://technet.microsoft.com/library/hh849898%28v=wps.640%29.aspx)** コマンドレットを使用すると、JSON 文字列を、JSON 文字列の各フィールドにプロパティを持つカスタム オブジェクト ([PSCustomObject](https://msdn.microsoft.com/library/windows/desktop/system.management.automation.pscustomobject%28v=vs.85%29.aspx)) に変換できます。
+## PowerShell でのトラブルシューティング
 
-## Mac、Linux、および Windows 用の Azure CLI でエラーを回避する
+**Get-azureresourcegroupdeployment** コマンドを使用すると、デプロイ全体の状態を取得できます。以下の例では、デプロイは失敗しています。
 
-Azure CLI には、エラーを防止し、またエラー発生時には不具合を検出する複数のコマンドがあります。
+    PS C:\> Get-AzureResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
 
-- **azure location list**。このコマンドでは、Virtual Machines のプロバイダーなどの各種リソースをサポートする場所を取得します。リソースの場所を入力する前に、このコマンドを使用して、その場所がリソースの種類をサポートしていることを確認します。
+    DeploymentName    : ExampleDeployment
+    ResourceGroupName : ExampleGroup
+    ProvisioningState : Failed
+    Timestamp         : 8/27/2015 8:03:34 PM
+    Mode              : Incremental
+    TemplateLink      :
+    Parameters        :
+                    Name             Type                       Value
+                    ===============  =========================  ==========
+                    siteName         String                     ExampleSite
+                    hostingPlanName  String                     ExamplePlan
+                    siteLocation     String                     West US
+                    sku              String                     Free
+                    workerSize       String                     0
 
-    場所の一覧は長くなることがあり、多数のプロバイダーがあるため、ツールを使用して、まだ使用可能でない場所を使用する前に、プロバイダーと場所を確認します。次のスクリプトでは、**jq** を使用して、Azure Virtual Machines のリソース プロバイダーが使用可能な場所を探索します。
+    Outputs           :
 
-        azure location list --json | jq '.[] | select(.name == "Microsoft.Compute/virtualMachines")'
-        {
-          "name": "Microsoft.Compute/virtualMachines",
-          "location": "East US,West US,West Europe,East Asia,Southeast Asia,North Europe"
-        }
+通常、各デプロイは、それぞれの操作がデプロイ処理の 1 手順を示す、複数の操作で構成されています。デプロイの問題を検出するには、通常デプロイ操作に関する詳細を確認する必要があります。操作の状態は、**Get AzureResourceGroupDeploymentOperation** で確認できます。
 
-- **azure group template validate <resource group>**。このコマンドでは、テンプレートとテンプレート パラメーターを使用する前に検証します。カスタム テンプレートまたはギャラリー テンプレートと、使用するテンプレート パラメーター値を入力します。
+    PS C:\> Get-AzureResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup
+    Id                        OperationId          Properties         
+    -----------               ----------           -------------
+    /subscriptions/xxxxx...   347A111792B648D8     @{ProvisioningState=Failed; Timestam...
+    /subscriptions/xxxxx...   699776735EFC3D15     @{ProvisioningState=Succeeded; Times...
 
-    次の例では、テンプレートと、必要なパラメーターを検証する方法を示します。Azure CLI が、必要なパラメーター値を要求します。
+ここではデプロイの 2 つの操作が示されています。1 つのプロビジョニングの状態は Failed になっており他は Succeeded になっています。
+
+状態のメッセージは、次のコマンドを使用して取得できます。
+
+    PS C:\> (Get-AzureResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties.StatusMessage
+
+    Code       : Conflict
+    Message    : Website with given name mysite already exists.
+    Target     :
+    Details    : {@{Message=Website with given name mysite already exists.}, @{Code=Conflict}, @{ErrorEntity=}}
+    Innererror :
+
+## Azure CLI を使用したトラブルシューティング
+
+**azure group deployment show** コマンドを使用すると、デプロイの全体の状態を取得できます。以下の例では、デプロイは失敗しています。
+
+    azure group deployment show ExampleGroup ExampleDeployment
+
+    info:    Executing command group deployment show
+    + Getting deployments
+    data:    DeploymentName     : ExampleDeployment
+    data:    ResourceGroupName  : ExampleGroup
+    data:    ProvisioningState  : Failed
+    data:    Timestamp          : 2015-08-27T20:03:34.9178576Z
+    data:    Mode               : Incremental
+    data:    Name             Type    Value
+    data:    ---------------  ------  ------------
+    data:    siteName         String  ExampleSite
+    data:    hostingPlanName  String  ExamplePlan
+    data:    siteLocation     String  West US
+    data:    sku              String  Free
+    data:    workerSize       String  0
+    info:    group deployment show command OK
+
+
+デプロイメントが失敗した理由の詳細は、監査ログで調べることができます。監査ログを表示するには、**azure group log show** コマンドを実行します。**--last-deployment** オプションを含めると、最新のデプロイのログのみを取得できます。
+
+    azure group log show ExampleGroup --last-deployment
+
+**azure group log show** コマンドは多数の情報を返します。通常、トラブルシューティングを行う場合は、失敗した操作に重点的に取り組みます。次のスクリプトは **--json** オプションと **jq** を使用して、デプロイ エラーのログを検索します。**jq** などのツールについて学習するには、「[Azure とやり取りする便利なツール](#useful-tools-to-interact-with-azure)」を参照してください。
+
+    azure group log show ExampleGroup --json | jq '.[] | select(.status.value == "Failed")'
+
+    {
+      "claims": {
+        "aud": "https://management.core.windows.net/",
+        "iss": "https://sts.windows.net/<guid>/",
+        "iat": "1442510510",
+        "nbf": "1442510510",
+        "exp": "1442514410",
+        "ver": "1.0",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "<guid>",
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "<guid>",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress": "someone@example.com",
+        "puid": "XXXXXXXXXXXXXXXX",
+        "http://schemas.microsoft.com/identity/claims/identityprovider": "example.com",
+
+        "altsecid": "1:example.com:XXXXXXXXXXX",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "<hash string>",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "Tom",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "FitzMacken",
+        "name": "Tom FitzMacken",
+        "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
+        "groups": "<guid>",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "example.com#someone@example.com",
+        "wids": "<guid>",
+        "appid": "<guid>",
+        "appidacr": "0",
+        "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+        "http://schemas.microsoft.com/claims/authnclassreference": "1",
+        "ipaddr": "000.000.000.000"
+      },
+      "properties": {
+        "statusCode": "Conflict",
+        "statusMessage": "{"Code":"Conflict","Message":"Website with given name mysite already exists.","Target":null,"Details":[{"Message":"Website with given name 
+          mysite already exists."},{"Code":"Conflict"},{"ErrorEntity":{"Code":"Conflict","Message":"Website with given name mysite already exists.","ExtendedCode":
+          "54001","MessageTemplate":"Website with given name {0} already exists.","Parameters":["mysite"],"InnerErrors":null}}],"Innererror":null}"
+      },
+    ...
+
+json の **properties** には失敗した操作の情報が含まれます。
+
+**--verbose** および **-vv** オプションを使用すると、ログからさらに詳細を得られます。操作の進行手順を `stdout` に表示するには、**--verbose** を使用してください。要求の完全な履歴については、**-vv** オプションを使用してください。多くの場合、メッセージはエラーの原因に関する重要な手掛かりを提供します。
+
+## REST API を使用したトラブルシューティング
+
+リソース マネージャーの REST API は、デプロイに関する情報、デプロイの操作、特定の操作の詳細に関する情報を取得するための URI を提供します。これらのコマンドの完全な説明については、次を参照してください。
+
+- [テンプレートのデプロイに関する情報の取得](https://msdn.microsoft.com/library/azure/dn790565.aspx)
+- [すべてのテンプレート デプロイ操作の一覧を取得する](https://msdn.microsoft.com/library/azure/dn790518.aspx)
+- [テンプレート デプロイ操作に関する情報の取得](https://msdn.microsoft.com/library/azure/dn790519.aspx)
+
+
+## 期限切れの資格情報の更新
+
+Azure の資格情報が期限切れの場合や Azure アカウントにサインインしていない場合、デプロイは失敗します。セッションが長時間開かれている場合、資格情報の期限が切れる場合があります。資格情報は、次のオプションを使用して更新できます。
+
+- PowerShell では、**Add-AzureAccount** コマンドレットを使用します。発行設定ファイルの資格情報は、AzureResourceManager モジュールのコマンドレットには十分ではありません。
+- Azure CLI では、**azure login** を使用します。認証エラーのヘルプを表示する場合は、[Azure CLI が正しく構成されている](../xplat-cli-connect.md)ことを確認してください。
+
+## テンプレートおよびパラメーターの形式のチェック
+
+テンプレートまたはパラメーター ファイルの形式が不正な場合、デプロイは失敗します。デプロイを実行する前に、テンプレートとパラメーターの有効性をテストできます。
+
+### PowerShell
+
+PowerShell では、**Test-AzureResourceGroupTemplate** を使用します。
+
+    PS C:\> Test-AzureResourceGroupTemplate -ResourceGroupName ExampleGroup -TemplateFile c:\Azure\Templates\azuredeploy.json -TemplateParameterFile c:\Azure\Templates\azuredeploy.parameters.json
+    VERBOSE: 12:55:32 PM - Template is valid.
+
+### Azure CLI
+
+Azure CLI では、**azure group template validate <resource group>** を使用します。
+
+次の例では、テンプレートと、必要なパラメーターを検証する方法を示します。Azure CLI が、必要なパラメーター値を要求します。
 
         azure group template validate \
         > --template-uri "https://contoso.com/templates/azuredeploy.json" \
@@ -64,146 +188,54 @@ Azure CLI には、エラーを防止し、またエラー発生時には不具�
         + Validating the template
         info:    group template validate command OK
 
-## Azure CLI を使用してデプロイメントの問題を修正する情報を取得する
+### REST API
 
-- **azure group log show <resource group>**: このコマンドは、リソース グループの各デプロイメントのログのエントリを取得します。問題が生じた場合は、デプロイ ログを調べることにから開始します。
+REST API の場合は、「[テンプレートのデプロイの検証](https://msdn.microsoft.com/library/azure/dn790547.aspx)」を参照してください。
 
-        info:    Executing command group log show
-        info:    Getting group logs
-        data:    ----------
-        data:    EventId:              <guid>
-        data:    Authorization:
-        data:                          action: Microsoft.Network/networkInterfaces/write
-        data:                          role:   Subscription Admin
-        data:                          scope:  /subscriptions/xxxxxxxxxxx/resourcegroups/templates/
-                                               providers/Microsoft.Network/
-                                               networkInterfaces/myNic
-        data:    ResourceUri:          /subscriptions/xxxxxxxxxxxx/resourcegroups/templates/providers/
-                                       Microsoft.Network/networkInterfaces/myNic
-        data:    SubscriptionId:       <guid>
-        data:    EventTimestamp (UTC): Wed Apr 22 2015 05:53:31 GMT+0000 (UTC)
-        data:    OperationName:        Microsoft.Network/networkInterfaces/write
-        data:    OperationId:          <guid>
-        data:    Status:               Started
-        data:    SubStatus:
-        data:    Caller:
-        data:    CorrelationId:        <guid>
-        data:    Description:
-        data:    HttpRequest:          clientRequestId: <guid>
-                                       clientIpAddress: 000.000.00.000
-                                       method:          PUT
+## リソースをサポートする場所の確認
 
-        data:    Level:                Informational
-        data:    ResourceGroup:        templates
-        data:    ResourceProvider:     Microsoft.Network
-        data:    EventSource:          Microsoft Resources
-        data:    Properties:           requestbody: {"location":"West US","properties
-                                       ":{"ipConfigurations":[{"
-                                       name":"ipconfig1","properties":{"
-                                       privateIPAllocationMethod
+リソースの場所を指定するには、リソースをサポートする場所のいずれかを使用する必要があります。リソースの場所を入力する前に、次のいずれかのコマンドを使用して、その場所がリソースの種類をサポートしていることを確認します。
 
-                                       ":"Dynamic","publicIPAddress":{"id":"/
-                                       subscriptions/
-                                       <guid>/
-                                       resourceGroups/
-                                       templates/providers/Microsoft.Network/
-                                       publicIPAddresses/
-                                       myPublicIP"},"subnet":{"idThe AzureResourceManager module includes cmdlets that ":"/subscriptions/
-                                       <guid>/resourceGroups/templates/
-                                       providers/
-                                       Microsoft.Network/virtualNetworks/myVNET/subnets/
-                                       Subnet-1
-                                       "}}}]}}
+### PowerShell
 
-**--last-deployment** オプションを使用して、最新のデプロイのログのみを取得します。次のスクリプトは **--json** オプションと **jq** を使用して、デプロイ エラーのログを検索します。
+PowerShell の場合、**Get-AzureLocation** コマンドを使用すると、すべてのリソースおよび場所が一覧表示されます。
 
-        azure group log show templates --json | jq '.[] | select(.status.value == "Failed")'
+    PS C:\> Get-AzureLocation
 
-        {
-          "claims": {
-            "aud": "https://management.core.windows.net/",
-            "iss": "https://sts.windows.net/<guid>/",
-            "iat": "1429678549",
-            "nbf": "1429678549",
-            "exp": "1429682449",
-            "ver": "1.0",
-            "http://schemas.microsoft.com/identity/claims/tenantid": "<guid>",
-            "http://schemas.microsoft.com/identity/claims/objectidentifier": "<guid>",
-            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "ahmet@contoso.onmicrosoft.com",
-            "puid": "XXXXXXXXXXXXXX",
-            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "<hash string>",
-            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "ahmet",
-            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "",
-            "name": "Friendly Name",
-            "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
-            "groups": "<guid>",
-            "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "ahmet@contoso.onmicrosoft.com",
-            "appid": "<guid>",
-            "appidacr": "0",
-            "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
-            "http://schemas.microsoft.com/claims/authnclassreference": "1"
-          },
-          "properties": {},
-          "authorization": {
-            "action": "Microsoft.Resources/subscriptions/resourcegroups/deployments/write",
-            "role": "Subscription Admin",
-            "scope": "/subscriptions/<guid>/resourcegroups/templates/deployments/basic-vm-version-0.1"
-          },
-          "eventChannels": "Operation",
-          "eventDataId": "<guid>",
-          "correlationId": "<guid>",
-          "eventName": {
-            "value": "EndRequest",
-            "localizedValue": "End request"
-          },
-          "eventSource": {
-            "value": "Microsoft.Resources",
-            "localizedValue": "Microsoft Resources"
-          },
-          "level": "Error",
-          "resourceGroupName": "templates",
-          "resourceProviderName": {
-            "value": "Microsoft.Resources",
-            "localizedValue": "Microsoft Resources"
-          },
-          "resourceUri": "/subscriptions/<guid>/resourcegroups/templates/deployments/basic-vm-version-0.1",
-          "operationId": "<guid>",
-          "operationName": {
-            "value": "Microsoft.Resources/subscriptions/resourcegroups/deployments/write",
-            "localizedValue": "Update deployment"
-          },
-          "status": {
-            "value": "Failed",
-            "localizedValue": "Failed"
-          },
-          "subStatus": {},
-          "eventTimestamp": "2015-04-22T05:53:40.8150293Z",
-          "submissionTimestamp": "2015-04-22T05:54:00.6728843Z",10037FFE8E80BB65
-          "subscriptionId": "<guid>"
-        }
+    Name                                    Locations                               LocationsString
+    ----                                    ---------                               ---------------
+    ResourceGroup                           {East Asia, South East Asia, East US... East Asia, South East Asia, East US,...
+    Microsoft.ApiManagement/service         {Central US, East US, East US 2, Nor... Central US, East US, East US 2, Nort...
+    Microsoft.AppService/apiapps            {East US, West US, South Central US,... East US, West US, South Central US, ...
+    ...
 
+リソースの特定の種類を指定するには、次を使用します。
 
-- **--verbose および -vv オプション**: **--verbose** オプションを使用すると、モードを verbose に設定して、`stdout` の操作手順を表示します。**--verbose** が可能にする手順を含む完全な要求の履歴を表示するには、**-vv** オプションを使用します。多くの場合、メッセージはエラーの原因に関する重要な手掛かりを提供します。
+    PS C:\> Get-AzureLocation | Where-Object Name -eq "Microsoft.Compute/virtualMachines" | Format-Table Name, LocationsString -Wrap
 
-- **Azure の資格情報が設定されていないか、期限が切れています**: Azure CLI セッションで資格情報を更新するには、「`azure login`」と入力します。認証エラーのヘルプを表示する場合は、[Azure CLI が正しく構成されている](../xplat-cli-connect.md)ことを確認してください。
+    Name                                                        LocationsString
+    ----                                                        ---------------
+    Microsoft.Compute/virtualMachines                           East US, East US 2, West US, Central US, South Central US,
+                                                                North Europe, West Europe, East Asia, Southeast Asia,
+                                                                Japan East, Japan West
 
-## Windows PowerShell でエラーを回避する
+### Azure CLI
 
-AzureResourceManager モジュールにはエラーを防止するためのコマンドレットが含まれています。
+Azure CLI の場合は、**azure location list** を使用します。場所の一覧は長くなることがあり、多数のプロバイダーがあるため、ツールを使用して、まだ使用可能でない場所を使用する前に、プロバイダーと場所を確認します。次のスクリプトでは、**jq** を使用して、Azure Virtual Machines のリソース プロバイダーが使用可能な場所を探索します。
 
+    azure location list --json | jq '.[] | select(.name == "Microsoft.Compute/virtualMachines")'
+    {
+      "name": "Microsoft.Compute/virtualMachines",
+      "location": "East US,East US 2,West US,Central US,South Central US,North Europe,West Europe,East Asia,Southeast Asia,Japan East,Japan West"
+    }
 
-- **Get-AzureLocation**: このコマンドレットは、各種のリソースをサポートする場所を取得します。リソースの場所を入力する前に、このコマンドレットを使用してその場所がリソースの種類をサポートしていることを確認します。
+### REST API
+        
+REST API の場合、「[リソース プロバイダーの情報の取得](https://msdn.microsoft.com/library/azure/dn790534.aspx)」を参照してください。
 
+## 一意のリソース名の作成
 
-- **Test-AzureResourceGroupTemplate**: テンプレートとテンプレート パラメーターを使用する前にテストします。カスタム テンプレートまたはギャラリー テンプレートと、使用するテンプレート パラメーター値を入力します。このコマンドレットは、テンプレートが内部的に一貫性があるかどうか、およびパラメーター値セットがテンプレートと一致するかどうかをテストします。
-
-## Windows PowerShell でデプロイメントの問題を修正するための情報を取得する
-
-- **Get-AzureResourceGroupLog**: このコマンドレットは、リソース グループの各デプロイのログのエントリを取得します。問題が生じた場合は、デプロイ ログを調べることにから開始します。
-
-- **Verbose および Debug**: AzureResourceManager モジュールのこのコマンドレットは、実際の作業を行う REST API を呼び出します。API が返すメッセージを表示するには、$DebugPreference 変数を "Continue" に設定して、コマンドで Verbose 共通パラメーターを使用します。多くの場合、メッセージはエラーの原因に関する重要な手掛かりを提供します。
-
-- **Azure の資格情報が設定されていないか、期限が切れています**: Windows PowerShell セッションの資格情報を更新するには、**Add-AzureAccount** コマンドレットを使用します。発行設定ファイルの資格情報は、AzureResourceManager モジュールのコマンドレットには十分ではありません。
+一部のリソース (特にストレージ アカウント、データベース サーバー、Web サイト) には、Azure 全体で一意となるリソース名を指定する必要があります。現時点では、名前が一意であることをテストする方法はありません。他の組織が使用する可能性がない名前付け規則を使用することをお勧めします。
 
 ## 認証、サブスクリプション、ロール、クォータの問題
 
@@ -231,34 +263,29 @@ AzureResourceManager モジュールにはエラーを防止するためのコ�
 
 このような場合はポータルに移動し、ファイルをデプロイするリージョンのクォータを増加させるように、サポートに問題を報告してください。
 
-> [AZURE.NOTE] リソース グループの場合、クォータはサブスクリプション全体ではなく個々 のリージョンに対するものであることに注意してください。米国西部に 30 のコアをデプロイする必要がある場合は、米国西部に 30 のリソース マネージャーのコアを要求する必要があります。アクセスできるリージョンのいずれかで 30 のコアをデプロイする必要がある場合は、すべてのリージョンで 30 のリソース　マネージャー コアを要求する必要があります。
-<!-- -->
-コアについて具体的に把握するには、たとえば、次のコマンドを使用して適切なクォータ量を要求すべきリージョンを確認できます。このコマンドは、**jq** にパイプ出力して json 解析を行います。
-<!-- -->
-        azure provider show Microsoft.Compute --json | jq '.resourceTypes[] | select(.name == "virtualMachines") | { name,apiVersions, locations}'
-        {
-          "name": "virtualMachines",
-          "apiVersions": [
-            "2015-05-01-preview",
-            "2014-12-01-preview"
-          ],
-          "locations": [
-            "East US",
-            "West US",
-            "West Europe",
-            "East Asia",
-            "Southeast Asia"
-          ]
-        }
+> [AZURE.NOTE]リソース グループの場合、クォータはサブスクリプション全体ではなく個々 のリージョンに対するものであることに注意してください。米国西部に 30 のコアをデプロイする必要がある場合は、米国西部に 30 のリソース マネージャーのコアを要求する必要があります。アクセスできるリージョンのいずれかで 30 のコアをデプロイする必要がある場合は、すべてのリージョンで 30 のリソース　マネージャー コアを要求する必要があります。<!-- --> コアについて具体的に把握するには、たとえば、次のコマンドを使用して適切なクォータ量を要求すべきリージョンを確認できます。このコマンドは、**jq** にパイプ出力して json 解析を行います。 <!-- --> azure provider show Microsoft.Compute --json | jq '.resourceTypes | select(.name == "virtualMachines") | { name,apiVersions, locations}' { "name": "virtualMachines", "apiVersions": [ "2015-05-01-preview", "2014-12-01-preview" ], "locations": [ "East US", "West US", "West Europe", "East Asia", "Southeast Asia" ] }
 
 
-## Azure CLI および PowerShell のモードの問題
-
-サービス管理 API を使用して、またはポータルを使用してデプロイされた Azure のリソースが、リソース マネージャー API または Azure ポータルを使用して表示されないという経験をお持ちかもしれません。リソースを、作成に使用したのと同じリソース マネージャー API またはポータルを使用して管理することが重要です。リソースが表示されなくなった場合は、他の管理 API またはポータルで使用できるかどうかを確認します。
-
-## Azure リソース プロバイダーの登録に関する問題
+## リソース プロバイダーの登録の確認
 
 リソースは、リソース プロバイダーによって管理され、特定のプロバイダーを使用できるようアカウントやサブスクリプションが有効になっている場合があります。プロバイダーを使用できるようになったら、使用登録もする必要があります。ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。
+
+### PowerShell
+
+リソース プロバイダーと登録状態の一覧を取得するには、**Get-AzureProvider** を使用します。
+
+    PS C:\> Get-AzureProvider
+
+    ProviderNamespace                       RegistrationState                       ResourceTypes
+    -----------------                       -----------------                       -------------
+    Microsoft.AppService                    Registered                              {apiapps, appIdentities, gateways, d...
+    Microsoft.Batch                         Registered                              {batchAccounts}
+    microsoft.cache                         Registered                              {Redis, checkNameAvailability, opera...
+    ...
+
+プロバイダーを登録するには、**Register-AzureProvider** を使用します。
+
+### Azure CLI
 
 Azure CLI を使用してプロバイダーが登録されているかどうかを確認するには、`azure provider list` コマンドを使用します (切り捨てられた出力の例を次に示します)。
 
@@ -307,8 +334,14 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
           "registrationState": "Registered"
         }
 
-
 プロバイダーが登録を必要としている場合は、`azure provider register <namespace>` コマンドを使用します。ここで、*namespace* の値は、上記の一覧から取得します。
+
+### REST API
+
+登録の状態を取得するには、「[リソース プロバイダーの情報の取得](https://msdn.microsoft.com/library/azure/dn790534.aspx)」を参照してください。
+
+プロバイダーを登録するには、「[リソース プロバイダーへのサブスクリプションの登録](https://msdn.microsoft.com/library/azure/dn790548.aspx)」を参照してください。
+
 
 ## カスタム テンプレートでいつデプロイが成功したかを確認する
 
@@ -318,76 +351,21 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 
 ただし、(たとえば [CustomScriptExtension](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用して) カスタム テンプレートにカスタム スクリプトを作成することで、Azure がデプロイの成功を報告できないようにすることができます。CustomScriptExtension は、デプロイメント全体がシステム規模で準備ができていることを監視し、ユーザーがデプロイ全体と対話できる場合のみ「成功」を返す方法を認識しています。拡張機能が最後に実行されるようにしたい場合は、テンプレートで **dependsOn** プロパティを使用します。例は[こちら](https://msdn.microsoft.com/library/azure/dn790564.aspx)で確認できます。
 
-## テンプレートのマージ
+## Azure とやり取りする便利なツール
+コマンドラインから Azure リソースを使用する場合に、作業に役立つツールがあります。Azure リソース グループのテンプレートは JSON ドキュメントで、Azure リソース マネージャー API は JSON を受信して返します。このため、JSON 解析ツールは、リソースに関する情報を参照したり、テンプレートとテンプレートのパラメーター ファイルを設計し、操作する際に最初に使用するツールの 1 つになります。
 
-2 つのテンプレートのマージや、親テンプレートからの子テンプレートの開始が必要になる場合があります。これは、子テンプレートをデプロイするマスター テンプレート内のデプロイメント リソースを使用して実現できます。
+### Mac、Linux、Windows の各ツール
+Mac、Linux、Windows 用の Azure CLI を使用する場合、標準のダウンロード ツール (**[curl](http://curl.haxx.se/)** と **[wget](https://www.gnu.org/software/wget/)** または **[Resty](https://github.com/beders/Resty)** など)、JSON ユーティリティ (**[jq](http://stedolan.github.io/jq/download/)**、**[jsawk](https://github.com/micha/jsawk)** など)や、JSON を適切に処理する言語ライブラリを既に使い慣れていることと思います(これらのツールの多くには、[wget](http://gnuwin32.sourceforge.net/packages/wget.htm) などの Windows 用のポートもあります。実際、Linux とその他のオープン ソース ソフトウェア ツールを Windows でも実行させるいくつかの方法があります)。
 
+このトピックには、**jq** とともに使用して、正確な情報をより効率的に取得する Azure CLI コマンドが含まれています。Azure リソースの使用状況を理解するには、使い慣れているツールセットを選択する必要があります。
 
-    {
-            "name": "instance01",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2015-01-01",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "https://mystore.blob.windows.net/azurermtemplates/my-child-template.json",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "storageAccountName": { "value": "[variables('stgAcctName1')]" },
-                    "adminUsername": { "value": "[parameters('adminUsername')]" },
-                    "adminPassword": { "value": "[parameters('adminPassword')]" }
-                }
-            }
-    }
+### PowerShell
 
+PowerShell には、同じ手順を実行するいくつかの基本的なコマンドがあります。
 
-## リソース グループを超える
+- **[Invoke-WebRequest](https://technet.microsoft.com/library/hh849901%28v=wps.640%29)** コマンドレットを使用すると、リソース グループ テンプレートやパラメーターの JSON ファイルなどのファイルをダウンロードできます。
+- **[ConvertFrom-Json](https://technet.microsoft.com/library/hh849898%28v=wps.640%29.aspx)** コマンドレットを使用すると、JSON 文字列を、JSON 文字列の各フィールドにプロパティを持つカスタム オブジェクト ([PSCustomObject](https://msdn.microsoft.com/library/windows/desktop/system.management.automation.pscustomobject%28v=vs.85%29.aspx)) に変換できます。
 
-テンプレートがデプロイされている現在のリソース グループの外からリソースを使用する必要があることがよくあります。この動作の最も一般的なケースは、代替のリソース グループで、ストレージ アカウントや仮想ネットワークを使用する場合です。これは、仮想マシンが含まれているリソース グループを削除しても、複数のリソース グループで使用される VHD BLOB または VNet が削除されないようにするためによく行われる操作です。次の例は、外部のリソース グループのリソースを使用する方法を示しています。
-
-
-    {
-      "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-          "virtualNetworkName": {
-              "type": "string"
-          },
-          "virtualNetworkResourceGroup": {
-              "type": "string"
-          },
-          "subnet1Name": {
-              "type": "string"
-          },
-          "nicName": {
-              "type": "string"
-          }
-      },
-      "variables": {
-          "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-          "subnet1Ref": "[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]"
-      },
-      "resources": [
-      {
-          "apiVersion": "2015-05-01-preview",
-          "type": "Microsoft.Network/networkInterfaces",
-          "name": "[parameters('nicName')]",
-          "location": "[parameters('location')]",
-          "properties": {
-              "ipConfigurations": [{
-                  "name": "ipconfig1",
-                  "properties": {
-                      "privateIPAllocationMethod": "Dynamic",
-                      "subnet": {
-                          "id": "[variables('subnet1Ref')]"
-                      }
-                  }
-              }]
-           }
-      }]
-
-    }
 
 ## 次のステップ
 
@@ -397,4 +375,4 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

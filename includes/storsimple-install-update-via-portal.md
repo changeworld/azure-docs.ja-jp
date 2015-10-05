@@ -1,19 +1,4 @@
-<properties 
-   pageTitle="Microsoft Azure 管理ポータルから Update 1.2 をインストールする"
-   description="管理ポータルを使用して、StorSimple 8000 シリーズの Update 1.2 をインストールする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="09/08/2015"
-   ms.author="v-sharos" />
+<!--author=SharS last changed: 9/17/15-->
 
 #### 管理ポータルから Update 1.2 をインストールするには
 
@@ -80,4 +65,4 @@
 
 > [AZURE.NOTE]場合によっては、メンテナンス モードの更新プログラムを使用できることを示すメッセージが、そのプログラムのデバイスへの適用が正常に終了した後も、最大 24 時間表示されることがあります。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

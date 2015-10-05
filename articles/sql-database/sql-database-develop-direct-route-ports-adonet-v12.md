@@ -114,4 +114,10 @@ Azure クラウド境界内でクライアントを実行している場合、�
 
 - [SQL Database への接続: リンク、ベスト プラクティスと設計のガイドライン](sql-database-connect-central-recommendations.md)
 
-<!---HONumber=Sept15_HO3-->
+
+- [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)
+
+
+- [方法: ファイアウォール設定を構成する (SQL データベース)](sql-database-configure-firewall-settings.md)
+
+<!---HONumber=Sept15_HO4-->

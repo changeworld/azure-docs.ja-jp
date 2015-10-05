@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure App Service で .NET クライアントから API アプリ使用する"
-	description="App Service SDK を使用して .NET クライアントから API アプリを使用する方法について説明します。"
-	services="app-service\api"
-	documentationCenter=".net"
-	authors="tdykstra"
-	manager="wpickett"
+	pageTitle="Azure App Service で .NET クライアントから API アプリ使用する" 
+	description="App Service SDK を使用して .NET クライアントから API アプリを使用する方法について説明します。" 
+	services="app-service\api" 
+	documentationCenter=".net" 
+	authors="tdykstra" 
+	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-api"
-	ms.workload="web"
-	ms.tgt_pltfrm="dotnet"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/30/2015"
+	ms.service="app-service-api" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="dotnet" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/22/2015" 
 	ms.author="tdykstra"/>
 
 # Azure App Service で .NET クライアントから API アプリ使用する 
@@ -205,4 +205,4 @@ API アプリを呼び出すには、次の例のように、クライアント 
 API アプリで認証を使用する方法については、「[Azure App Service での API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)」を参照してください。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

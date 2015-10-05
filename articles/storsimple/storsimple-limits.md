@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple のシステム制限 | Microsoft Azure"
-	description="StorSimple コンポーネントおよび接続のシステム制限および推奨サイズについて説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="alkohli"
-	manager="adinah"
-	editor=""/>
+   description="StorSimple コンポーネントおよび接続のシステム制限および推奨サイズについて説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="adinah"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="09/01/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/17/2015"
+   ms.author="alkohli" />
 
 # StorSimple システムの制限
 
@@ -27,4 +27,4 @@ StorSimple は、データセンターのスケーラブルかつフレキシブ
 
 [StorSimple のシステム要件](storsimple-system-requirements.md)を確認します。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

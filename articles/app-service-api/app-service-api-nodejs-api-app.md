@@ -4,8 +4,8 @@
 	services="app-service\api"
 	documentationCenter="nodejs"
 	authors="pkefal"
-	manager=""
-	editor=""/>
+  manager="" 
+  editor=""/>
 
 <tags
 	ms.service="app-service-api"
@@ -17,6 +17,12 @@
 	ms.author="pakefali"/>
 
 # Azure App Service での Node.js API アプリの構築とデプロイ
+
+> [AZURE.SELECTOR]
+- [.NET - Visual Studio 2015](app-service-dotnet-create-api-app.md)
+- [.NET - Visual Studio Code](app-service-create-aspnet-api-app-using-vscode.md)
+- [Node.js](app-service-api-nodejs-api-app.md)
+- [Java](app-service-api-java-api-app.md)
 
 このチュートリアルでは、[Node.js](http://nodejs.org) アプリケーションを作成し、[Git](http://git-scm.com) を使用して Azure App Service API Apps にデプロイする方法について説明します。このチュートリアルの手順は、Node を実行できる任意のオペレーティング システムで使用できます。
 
@@ -50,7 +56,7 @@
 
 	**[スタート画面に追加]** チェック ボックスをオンのままにしておいた場合、API アプリの作成後にこの API アプリ用のブレードがポータルで自動的に表示されます。チェック ボックスをオフにした場合、ポータルのホーム ページで **[通知]** をクリックして API アプリの作成状態を確認し、通知をクリックして新しい API アプリのブレードに移動します。
 
-7. **[設定]**、**[アプリケーションの設定]** の順にクリックします。
+7. **[設定]**、[**アプリケーションの設定]** の順にクリックします。
 
 9. アクセス レベルを **[パブリック (匿名)]** に設定します。
 
@@ -243,4 +249,4 @@ API アプリ バックエンドを使用する Node.js Web アプリケーシ�
 [sample-api-app-page]: ./media/app-service-api-nodejs-api-app/sample-api-app-page.png
 [browse-api-app-page]: ./media/app-service-api-nodejs-api-app/browse-api-app-page.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

@@ -1,22 +1,22 @@
 <properties 
-   pageTitle="DNS ゾーンに対する操作 | Microsoft Azure"
-	description="Azure Powershell コマンドレットまたは CLI を使用して DNS ゾーンを管理できます。Azure DNS の DNS ゾーンを更新、削除、および作成する方法"
-	services="dns"
-	documentationCenter="na"
-	authors="joaoma"
-	manager="Adinah"
-	editor=""/>
+   pageTitle="CLI を使用した DNS ゾーンに対する操作 | Microsoft Azure" 
+   description="Azure CLI を使用して DNS ゾーンを管理できます。Azure DNS の DNS ゾーンを更新、削除、および作成する方法" 
+   services="dns" 
+   documentationCenter="na" 
+   authors="joaoma" 
+   manager="Adinah" 
+   editor=""/>
 
 <tags
    ms.service="dns"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="09/02/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services" 
+   ms.date="09/02/2015"
+   ms.author="joaoma"/>
 
-# DNS ゾーンの管理方法
+# CLI を使用して DNS ゾーンを管理する方法
 
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-operations-dnszones-cli.md)
@@ -76,4 +76,4 @@ Azure DNS の DNS ゾーンを削除する前に、ゾーンの作成時に自�
 
 [.NET SDK を使用した操作の自動化](dns-sdk.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

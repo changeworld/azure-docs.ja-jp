@@ -1,23 +1,25 @@
 <properties 
-	pageTitle="Data Factory - Data Factory および Machine Learning を使用して予測パイプラインを作成する | Microsoft Azure"
-	description="Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="Data Factory - Data Factory および Machine Learning を使用して予測パイプラインを作成する | Microsoft Azure" 
+	description="Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/04/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する 
 ## 概要
+
+> [AZURE.NOTE]この記事で説明されているバッチ スコアリング アクティビティより柔軟性のある新しい Machine Learning Batch 実行アクティビティについては、「[Azure Machine Learning Batch 実行アクティビティを使用して予測パイプラインを作成する](data-factory-azure-ml-batch-execution-activity.md)」とう記事を参照してください。
 
 Azure Data Factory を使用すると、公開された [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。これにより、Azure Data Factory を使用してデータの移動と処理を調整し、Azure Machine Learning を使用してバッチ スコアリングを実行できます。これを実現するのには、以下を行う必要があります。
 
@@ -198,7 +200,7 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning]
 
 	"typeProperties": {
     	"webServiceParameters": {
-    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \'{0:yyyy-MM-dd HH:mm:ss}\'', Time.AddHours(WindowStart, 0))"
+    	   "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"
     	}
   	}
  
@@ -228,7 +230,7 @@ Azure SQL リーダーと同様、Azure SQL ライターにも、Web サービ�
 
 | 出力/入力 | 入力は Azure SQL | 入力は Azure BLOB |
 | ------------ | ------------------ | ------------------- |
-| 出力は Azure SQL | <p>Data Factory サービスは、入力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio の Web サービス パラメーターではこれらの既定の名前を使用する必要があります</p><p>。Azure ML モデルの Azure SQL リーダーと Azure SQL ライターが上記の同じ Web サービス パラメーターを共有する場合は問題ありません。Azure SQL リーダーと Azure SQL ライターが同じ Web サービス パラメーターを共有しない場合、たとえば、Azure SQL ライターが異なるパラメーター名 (Database server name1、Database name1、Server user account name1、Server user account password1 のように末尾に "1" が付加された名前) を使用する場合は、アクティビティ JSON の webServiceParameters セクションを使用して、これらの出力 Web サービス パラメーターの値を渡す必要があります。</p><p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。</p> | <p>Data Factory サービスは、出力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があります。</p><p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。<p>入力 BLOB は、入力の場所として使用されます。</p> |
+| 出力は Azure SQL | <p>Data Factory サービスは、入力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio の Web サービス パラメーターではこれらの既定の名前を使用する必要があることに注意してください。</p><p>Azure ML モデルの Azure SQL リーダーと Azure SQL ライターが上記の同じ Web サービス パラメーターを共有する場合は問題ありません。Azure SQL リーダーと Azure SQL ライターが同じ Web サービス パラメーターを共有しない場合、たとえば、Azure SQL ライターが異なるパラメーター名 (Database server name1、Database name1、Server user account name1、Server user account password1 のように末尾に "1" が付加された名前) を使用する場合は、アクティビティ JSON の webServiceParameters セクションを使用して、これらの出力 Web サービス パラメーターの値を渡す必要があります。</p><p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。</p> | <p>Data Factory サービスは、出力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があることに注意してください。</p><p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡すことができます。<p>入力 BLOB は、入力の場所として使用されます。</p> |
 |出力は Azure BLOB | Data Factory サービスは、入力のリンクされたサービスからの接続文字列情報を使用して、"Database server name"、"Database name"、"Server user account name"、"Server user account password" の名前で Web サービス パラメーターを生成します。Azure ML Studio では、Web サービス パラメーターにこれらの既定の名前を使用する必要があります。 | <p>他の Web サービス パラメーターについても、アクティビティ JSON の webServiceParameters セクションを使用して値を渡す必要があります。</p><p>BLOB は、入力の場所と出力の場所として使用されます。</p> |
     
 
@@ -238,7 +240,7 @@ Azure SQL リーダーと同様、Azure SQL ライターにも、Web サービ�
 
 #### ソースとしての Azure BLOB
 
-Azure Machine Learning の実験でリーダー モジュールを使用する場合は、入力として Azure BLOB を指定できます。Azure BLOB ストレージ内のファイルは、HDInsight で実行する Pig および Hive スクリプトによって生成される出力ファイル (例: 000000\_0) でもかまいません。リーダー モジュールを使用すると、次に示すように、ファイルを含むコンテナー/フォルダーを指し示すようにリーダー モジュールの **Path to container, directory or blob** プロパティを構成することによって、(拡張子がない) ファイルを読み取ることができます。アスタリスク (つまり *) は、**コンテナー/フォルダー内のすべてのファイル (つまり、data/aggregateddata/year=2014/month-6/*)** が実験の一部として読み取られることを指定します。
+Azure Machine Learning の実験でリーダー モジュールを使用する場合は、入力として Azure BLOB を指定できます。Azure BLOB ストレージ内のファイルは、HDInsight で実行する Pig および Hive スクリプトによって生成される出力ファイル (例: 000000\_0) でもかまいません。リーダー モジュールを使用すると、次に示すように、ファイルを含むコンテナー/フォルダーを指し示すようにリーダー モジュールの **Path to container, directory or blob** プロパティを構成することによって、(拡張子がない) ファイルを読み取ることができます。アスタリスク (つまり、*) は、**コンテナー/フォルダー内のすべてのファイル (つまり、data/aggregateddata/year=2014/month-6/*)** が実験の一部として読み取られることを指定します。
 
 ![Azure BLOB のプロパティ](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -313,4 +315,4 @@ Azure Machine Learning の実験でリーダー モジュールを使用する�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

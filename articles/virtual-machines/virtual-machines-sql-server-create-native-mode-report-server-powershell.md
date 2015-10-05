@@ -1,11 +1,12 @@
 <properties 
-	pageTitle="ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する"
+	pageTitle="ネイティブ モードのレポート サーバーを実行する VM を PowerShell を使用して作成する | Microsoft Azure"
 	description="このトピックでは、Azure Virtual Machine で SQL Server Reporting Services ネイティブ モードのレポート サーバーをデプロイおよび構成する手順について説明します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar"/>
+	editor="monicar" 
+	tags="azure-service-management"/>
 <tags 
 	ms.service="virtual-machines"
 	ms.devlang="na"
@@ -13,9 +14,11 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="08/19/2015"
-	ms.author="jroth"/>
+	ms.author="jroth" />
 
 # ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 このトピックでは、Azure Virtual Machine で SQL Server Reporting Services ネイティブ モードのレポート サーバーをデプロイおよび構成する手順について説明します。このドキュメントの手順では、仮想マシンを手動で作成する手順と、VM で Reporting Services を構成する Windows PowerShell スクリプトを組み合わせて使用しています。構成スクリプトでは、HTTP または HTTPS のファイアウォール ポートを開きます。
 
@@ -27,9 +30,9 @@
 
 - **Azure サブスクリプション**: Azure サブスクリプションで使用できるコアの数を確認します。推奨 VM サイズである **A3** で作成する場合は、使用可能なコアが **4 個**必要です。VM サイズとして **A2** を使用する場合は、使用可能なコアが **2** 個必要です。
 	
-	- サブスクリプションのコアの上限を確認するには、Azure管理ポータルの左側のウィンドウで [設定] をクリックし、上部のメニューの [使用状況] をクリックします。
+	- サブスクリプションのコアの上限を確認するには、Microsoft Azure管理ポータルの左側のウィンドウで [設定] をクリックし、上部のメニューの [使用状況] をクリックします。
 	
-	- コア クォータを増やすには、[Azure サポート](http://azure.microsoft.com/support/options/)にお問い合わせください。VM サイズについては、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」をご覧ください。
+	- コア クォータを増やすには、[Azure サポート](http://azure.microsoft.com/support/options/)にお問い合わせください。VM サイズについては、「[Azure の Virtual Machine のサイズ](virtual-machines-size-specs.md)」をご覧ください。
 
 - **Windows PowerShell スクリプト**: このトピックは、Windows PowerShell の使用方法に関する基本的な知識があることを前提としています。Windows PowerShell の使用方法の詳細については、次のトピックをご覧ください。
 
@@ -39,9 +42,9 @@
 
 ## 手順 1: Azure Virtual Machine をプロビジョニングする
 
-1. [Azure 管理ポータル](https://manage.windowsazure.com)に移動します。
+1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)に移動します。
 
-1. 左側のウィンドウで、**[仮想マシン]** をクリックします。
+1. 左側のウィンドウで、**[Virtual Machines]** をクリックします。
 
 	![Microsoft Azure Virtual Machines](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC660124.gif)
 
@@ -57,13 +60,13 @@
 
 	![次へ](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC692021.gif)
 
-	Reporting Services のデータ ドリブン サブスクリプション機能が必要な場合は、**[SQL Server 2014 RTM Enterprise – Windows Server 2012 R2]** を選択します。SQL Server の各エディションと機能のサポートの詳細については、「[SQL Server 2014 の各エディションがサポートする機能](https://msdn.microsoft.com/library/cc645993.aspx#Reporting)」をご覧ください。
+	Reporting Services のデータ ドリブン サブスクリプション機能が必要な場合は、**[SQL Server 2014 RTM Enterprise – Windows Server 2012 R2]** を選択します。SQL Server の各エディションと機能のサポートの詳細については、「[SQL Server 2012 の各エディションがサポートする機能](https://msdn.microsoft.com/library/cc645993.aspx#Reporting)」をご覧ください。
 
 1. **[仮想マシンの構成]** ページで、以下のフィールドを編集します。
 									
 	- **バージョンのリリース日**が複数存在する場合は、最新バージョンを選択します。
 	
-	- **[仮想マシン名]**: このマシン名は、次の構成ページで既定のクラウド サービス DNS 名としても使用されます。DNS 名は、Azure サービス全体で一意であることが必要です。VM の用途を示すコンピューター名で VM を構成するよう考慮してください (例: ssrsnativecloud)。
+	- **[Virtual Machine の名前]**: このマシン名は、次の構成ページで既定のクラウド サービス DNS 名としても使用されます。DNS 名は、Azure サービス全体で一意であることが必要です。VM の用途を示すコンピューター名で VM を構成するよう考慮してください (例: ssrsnativecloud)。
 	
 	- **[階層]**: Standard
 	
@@ -81,7 +84,7 @@
 	
 	- **[クラウド サービス DNS 名]**: VM に関連付けられるクラウド サービスのパブリック DNS 名です。既定の名前は、VM 名として入力した名前です。このトピックの後の手順で信頼済み SSL 証明書を作成する場合、この DNS 名が証明書の **[発行先]** の値に使用されます。
 	
-	- **[リージョン/アフィニティ グループ/仮想ネットワーク]**: エンド ユーザーに最も近いリージョンを選択します。
+	- **[リージョン/アフィニティ グループ/Virtual Network]**: エンド ユーザーに最も近いリージョンを選択します。
 	
 	- **[ストレージ アカウント]**: 自動的に生成されたストレージ アカウントを使用します。
 	
@@ -91,7 +94,7 @@
 
 		- **[HTTP]**: 既定のパブリック ポートとプライベート ポートは **80** です。80 以外のプライベート ポートを使用する場合は、HTTP スクリプトの **$HTTPport = 80** を変更します。
 
-		- **[HTTPS]**: 既定のパブリック ポートとプライベート ポートは **443** です。セキュリティのベスト プラクティスとして、プライベート ポートを変更し、そのプライベート ポートを使用するようにファイアウォールとレポート サーバーを構成することをお勧めします。エンドポイントの詳細については、「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)」をご覧ください。443 以外のポートを使用する場合は、HTTPS スクリプトの **$HTTPsport = 443** パラメーターを変更します。
+		- **[HTTPS]**: 既定のパブリック ポートとプライベート ポートは **443** です。セキュリティのベスト プラクティスとして、プライベート ポートを変更し、そのプライベート ポートを使用するようにファイアウォールとレポート サーバーを構成することをお勧めします。エンドポイントの詳細については、「[Virtual Machine に対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)」をご覧ください。443 以外のポートを使用する場合は、HTTPS スクリプトの **$HTTPsport = 443** パラメーターを変更します。
 	
 	- [次へ] ![次へ](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC692021.gif) をクリックします。
 
@@ -139,7 +142,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
 
 1. ローカル VM 上の証明書のルート CA を信頼するには、証明書を**信頼されたルート証明機関**に追加する必要があります。必要な手順の概要を次に示します。CA を信頼する方法の詳しい手順については、「[Install a Server Certificate (サーバー証明書のインストール)](https://technet.microsoft.com/library/cc740068)」をご覧ください。
 
-	1. Azure 管理ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
+	1. Microsoft Azure 管理ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
 	
 		![Azure Virtual Machines に接続](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC650112.gif)VM の作成時に構成したユーザー VM 名、ユーザー名、パスワードを使用します。
 	
@@ -181,7 +184,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
 
 - 構成マネージャーを使用してレポート サーバーを構成する
 
-詳しい手順については、「[仮想マシンへの接続と Reporting Services 構成マネージャーの起動](virtual-machines-sql-server-business-intelligence.md#connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager)」をご覧ください。
+詳しい手順については、「[Virtual Machine への接続と Reporting Services 構成マネージャーの起動](virtual-machines-sql-server-business-intelligence.md#connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager)」をご覧ください。
 
 **認証に関する注意:** Windows 認証が推奨される認証方法であり、Reporting Services の既定の認証方法です。VM 上で構成されているユーザーだけが Reporting Services にアクセスでき、Reporting Services ロールに割り当てられます。
 
@@ -189,7 +192,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
 
 Windows PowerShell スクリプトを使用してレポート サーバーを構成するには、次の手順を実行します。この構成には、HTTPS ではなく HTTP が含まれます。
 
-1. Azure 管理ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
+1. Microsoft Azure 管理ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
 
 	![Azure Virtual Machines に接続](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC650112.gif)VM の作成時に構成したユーザー VM 名、ユーザー名、パスワードを使用します。
 
@@ -330,7 +333,7 @@ Windows PowerShell スクリプトを使用してレポート サーバーを構
 
 Windows PowerShell を使用してレポート サーバーを構成するには、次の手順を実行します。この構成には、HTTP ではなく HTTPS が含まれます。
 
-1. Azure 管理ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
+1. Microsoft Azure 管理ポータルで VM を選択し、[接続] をクリックします。ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
 
 	![Azure Virtual Machines に接続](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC650112.gif)VM の作成時に構成したユーザー VM 名、ユーザー名、パスワードを使用します。
 
@@ -553,11 +556,11 @@ Windows PowerShell を使用してレポート サーバーを構成するには
 
 レポート サーバーを構成する際に PowerShell スクリプトを実行しない場合は、このセクションの手順に従い、Reporting Services ネイティブ モード構成マネージャーを使用してレポート サーバーを構成します。
 
-1. Azure 管理ポータルで VM を選択し、[接続] をクリックします。VM の作成時に構成したユーザー名とパスワードを使用します。
+1. Microsoft Azure 管理ポータルで VM を選択し、[接続] をクリックします。VM の作成時に構成したユーザー名とパスワードを使用します。
 
 	![Azure Virtual Machines に接続](./media/virtual-machines-sql-server-create-native-mode-report-server-powershell/IC650112.gif)
 
-1. Windows Update を実行し、VM に更新プログラムをインストールします。VM の再起動が必要な場合は、VM を再起動し、Azure 管理ポータルから VM に再接続します。
+1. Windows Update を実行し、VM に更新プログラムをインストールします。VM の再起動が必要な場合は、VM を再起動し、Microsoft Azure 管理ポータルから VM に再接続します。
 
 1. VM の [スタート] メニューで「**Reporting Services**」と入力し、**Reporting Services 構成マネージャー**を開きます。
 
@@ -569,7 +572,7 @@ Windows PowerShell を使用してレポート サーバーを構成するには
 
 	1. **[SSL 証明書]** で、使用する証明書を選択します。たとえば、[VM 名].cloudapp.net を選択します。証明書が表示されない場合、VM に証明書をインストールして信頼する方法については、「**手順 2: サーバー証明書を作成する**」をご覧ください。
 	
-	1. **[SSL ポート]** で443 を選択します。VM で別のプライベート ポートを使用して HTTPS プライベート エンドポイントを構成した場合は、ここでその値を使用します。
+	1. **[SSL ポート]** で 443 を選択します。VM で別のプライベート ポートを使用して HTTPS プライベート エンドポイントを構成した場合は、ここでその値を使用します。
 	
 	1. **[適用]** をクリックし、処理が完了するまで待ちます。
 
@@ -629,7 +632,7 @@ HTTPS のプライベート ポートを 443 以外で構成した場合は、�
 
 		http://localhost/Reports
 
-- ローカル コンピューターから、VM 上の**リモート** レポート マネージャーを参照します。必要に応じて、次の例の DNS 名を更新します。パスワードの入力を求められたら、VM をプロビジョニングしたときに作成した管理者資格情報を使用します。ユーザー名は、[ドメイン]\[ユーザー名] の形式で指定します。ドメインは VM のコンピューター名です。たとえば、「ssrsnativecloud\\testuser」のように指定します。HTTP**S** を使用していない場合は、URL の **s** を削除します。VM で追加のユーザーを作成する方法については、次のセクションをご覧ください。
+- ローカル コンピューターから、VM 上の**リモート** レポート マネージャーを参照します。必要に応じて、次の例の DNS 名を更新します。パスワードの入力を求められたら、VM をプロビジョニングしたときに作成した管理者資格情報を使用します。ユーザー名は、[ドメイン]\\[ユーザー名] の形式で指定します。ドメインは VM のコンピューター名です。たとえば、「ssrsnativecloud\\testuser」のように指定します。HTTP**S** を使用していない場合は、URL の **s** を削除します。VM で追加のユーザーを作成する方法については、次のセクションをご覧ください。
 
 		https://ssrsnativecloud.cloudapp.net/Reports
 
@@ -651,7 +654,7 @@ HTTPS のプライベート ポートを 443 以外で構成した場合は、�
 
 Microsoft Azure Virtual Machines でホストされているレポート サーバーに、オンプレミスのコンピューターから既存のレポートを発行する際に使用できるオプションの一部を次に示します。
 
-- **RS.exe スクリプト**: RS.exe スクリプトを使用して、既存のレポート サーバーから Microsoft Azure Virtual Machines にレポート アイテムをコピーします。詳細については、「[レポート サーバー間でコンテンツを移行するサンプル Reporting Services rs.exe スクリプト](https://msdn.microsoft.com/library/dn531017.aspx)」の「ネイティブ モードからネイティブ モード (Windows Azure 仮想マシン)」をご覧ください。
+- **RS.exe スクリプト**: RS.exe スクリプトを使用して、既存のレポート サーバーから Microsoft Azure Virtual Machine にレポート アイテムをコピーします。詳細については、「[レポート サーバー間でコンテンツを移行するサンプル Reporting Services rs.exe スクリプト](https://msdn.microsoft.com/library/dn531017.aspx)」の「ネイティブ モードからネイティブ モード (Microsoft Azure Virtual Machine)」をご覧ください。
 
 - **レポート ビルダー**: 仮想マシンには、ClickOnce バージョンの Microsoft SQL Server レポート ビルダーが含まれています。仮想マシンでレポート ビルダーを初めて起動するときは、次の手順を実行します。
 
@@ -679,7 +682,7 @@ Microsoft Azure Virtual Machines でホストされているレポート サー�
 
 ## VM を使用していない場合にコストを最小限に抑える
 
->[AZURE.NOTE]Azure Virtual Machines を使用していないときに料金を最小限に抑えるには、Azure 管理ポータルから VM をシャットダウンします。VM の内部で Windows の電源オプションを使用して VM をシャットダウンしても、VM に対して同じ金額が課金されます。料金を削減するには、Azure 管理ポータルで VM をシャットダウンする必要があります。VM が不要になった場合は、ストレージ料金がかからないように、VM および関連する .vhd ファイルを必ず削除してください。詳細については、「[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines)」の「FAQ」をご覧ください。
+>[AZURE.NOTE]Azure Virtual Machines を使用していないときに料金を最小限に抑えるには、Microsoft Azure 管理ポータルから VM をシャットダウンします。VM の内部で Windows の電源オプションを使用して VM をシャットダウンしても、VM に対して同じ金額が課金されます。料金を削減するには、Microsoft Azure 管理ポータルで VM をシャットダウンする必要があります。VM が不要になった場合は、ストレージ料金がかからないように、VM および関連する .vhd ファイルを必ず削除してください。詳細については、「[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines)」の「FAQ」をご覧ください。
 
 ## 詳細情報
 
@@ -701,4 +704,4 @@ Microsoft Azure Virtual Machines でホストされているレポート サー�
 
 [Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

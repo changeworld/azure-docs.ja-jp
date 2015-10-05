@@ -1,18 +1,18 @@
-<properties 
-    pageTitle="Azure でのクラウド サービス モデルと パッケージ" 
-    description="Azure でのクラウド サービス モデル (.csdef、.cscfg) と パッケージ (.cspkg) について説明します。" 
-    services="cloud-services" 
-    documentationCenter="" 
-    authors="Thraka" 
-    manager="timlt" 
+<properties
+    pageTitle="Azure でのクラウド サービス モデルと パッケージ"
+    description="Azure でのクラウド サービス モデル (.csdef、.cscfg) と パッケージ (.cspkg) について説明します。"
+    services="cloud-services"
+    documentationCenter=""
+    authors="Thraka"
+    manager="timlt"
     editor=""/>
-<tags 
-    ms.service="cloud-services" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/06/2015" 
+<tags
+    ms.service="cloud-services"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/06/2015"
     ms.author="adegeo"/>
 
 # クラウド サービス モデルとそのパッケージ化について
@@ -24,7 +24,7 @@ Azure でクラウド サービスが実行されている場合は、**ServiceC
 
 * [ServiceDefinition.csdef](#csdef) ファイルと[ServiceConfig.cscfg](#cscfg) ファイルの詳細について教えてください。
 * それについては知っているので、構成可能な[例をいくつか](#next-steps)紹介してください。
-* [ServicePackage.cspkg](#cspkg) を作成する必要があります。 
+* [ServicePackage.cspkg](#cspkg) を作成する必要があります。
 * Visual Studio を使用しているのですが...
     * [[新しいクラウド サービスの作成]][vs_create]
     * [既存のクラウド サービスの再構成][vs_reconfigure]
@@ -253,7 +253,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 <!--
 * [Configure Sizes for Cloud Services](!!!!!https://msdn.microsoft.com/library/azure/ee814754.aspx)  
-* [Configure Local Storage Resources](!!!!!https://msdn.microsoft.com/library/azure/ee758708.aspx)
+* [Configure Local Storage Resources](!!!!!https://azure.microsoft.com/documentation/articles/cloud-services-configure-local-storage-resources/)
 -->
 
 * [クラウド サービスのインスタンスのリモート デスクトップのセットアップ][remotedesktop]
@@ -269,9 +269,9 @@ Visual Studio を使用しているのですが...
 
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop.md
-[vs_remote]: https://msdn.microsoft.com/ja-jp/library/gg443832.aspx
-[vs_deploy]: https://msdn.microsoft.com/ja-jp/library/ee460772.aspx
+[vs_remote]: https://msdn.microsoft.com/ja-JP/library/gg443832.aspx
+[vs_deploy]: https://msdn.microsoft.com/ja-JP/library/ee460772.aspx
 [vs_reconfigure]: https://msdn.microsoft.com/library/ee405486.aspx
-[vs_create]: https://msdn.microsoft.com/ja-jp/library/ee405487.aspx
+[vs_create]: https://msdn.microsoft.com/ja-JP/library/ee405487.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

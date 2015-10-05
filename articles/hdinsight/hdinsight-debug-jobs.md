@@ -1,5 +1,5 @@
 <properties
-	pageTitle="HDInsight での Hadoop のデバッグ: エラー メッセージ | Microsoft Azure"
+	pageTitle="HDInsight で Hadoop のデバッグをする: ログの表示とエラーメッセージの解釈 | Microsoft Azure"
 	description="PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。"
 	services="hdinsight"
 	tags="azure-portal"
@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/28/2015"
+	ms.date="09/22/2015"
 	ms.author="jgao"/>
 
-# HDInsight で Hadoop のデバッグをする: エラーメッセージの解釈
+# HDInsight で Hadoop のデバッグをする: ログの表示とエラーメッセージの解釈
 
 このトピックで取り上げるエラー メッセージは、Azure HDInsight で Hadoop のユーザーが Azure PowerShell を使用してサービスを管理する際に発生する可能性のあるエラー状況を理解するのに役立ちます。また、エラーから回復する手順も示されています。
 
@@ -25,12 +25,40 @@
 
 ![HDInsight プレビュー ポータルのエラー メッセージ][image-hdi-debugging-error-messages-portal]
 
-Azure PowerShell またはプレビュー ポータルで発生する可能性のあるエラーは、「[HDInsight エラー](#hdinsight-error-messages)」セクションに名前のアルファベット順に列挙されています。各エラーは、「[エラーの説明と対応策](#discription-mitigation-errors)」セクションの項目にリンクされ、以下のエラーの情報が示されています。
+エラーが Azure HDInsight に固有となる状況では、そのエラーが何であるかを理解すると役に立つことがあります。さまざまなエラー コードとその修正方法を理解するには、「[HDInsight のエラー コード](#hdi-error-codes)」を参照してください。状況によっては、Hadoop ログ自体にアクセスします。それは Azure プレビュー ポータルから直接実行できます。
+
+## クラスターの状態とジョブ ログの表示
+
+* **Hadoop UI にアクセスします**。Azure プレビュー ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。
+
+	![クラスター ダッシュボードの起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard.png)
+  
+	入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[Hadoop UI]** をクリックします。
+
+	![Hadoop UI の起動](./media/hdinsight-debug-jobs/hdi-debug-launch-dashboard-hadoop-ui.png)
+
+* **Yarn UI にアクセスします**。Azure プレビュー ポータルから、HDInsight クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[YARN UI]** をクリックします。
+
+	YARN UI では、次の操作を実行できます。
+
+	* **クラスターの状態を取得します**。左側のウィンドウから、**[Cluster]** を展開し、**[About]** をクリックします。割り当て済みメモリの合計、使用済みコア、クラスター リソース マネージャーの状態、クラスター バージョンなど、クラスターの状態に関する詳細が表示されます。
+
+		![クラスター ダッシュボードの起動](./media/hdinsight-debug-jobs/hdi-debug-yarn-cluster-state.png)
+
+	* **ノードの状態を取得します**。左側のウィンドウから、**[Cluster]** を展開し、**[Nodes]** をクリックします。ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
+
+	* **ジョブの状態を監視します**。左側のウィンドウから、**[Cluster]** を展開し、**[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、**[Applications]** の下にある該当リンクをクリックします。さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
+
+* **HBase UI にアクセスします**。Azure プレビュー ポータルから、HDInsight HBase クラスター名をクリックし、クラスター ブレードを開きます。クラスター ブレードから、**[ダッシュボード]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。クエリ コンソールが開いたら、**[HBase UI]** をクリックします。
+
+## <a id="hdi-error-codes"></a>HDInsight のエラー コード
+
+Azure PowerShell またはプレビュー ポータルでユーザーが遭遇する可能性のあるエラーを以下に名前のアルファベット順で示します。エラーは「[エラーの説明と対応策](#discription-mitigation-errors)」セクションのエントリにリンクしており、このセクションでエラーに関する次の情報が与えられます。
 
 - **説明**: ユーザーに表示されるエラー メッセージ
 - **対応策**: エラーから回復するために使用できる手順
 
-###HDInsight のエラー コード
+
 
 - [AtleastOneSqlMetastoreMustBeProvided](#AtleastOneSqlMetastoreMustBeProvided)
 - [AzureRegionNotSupported](#AzureRegionNotSupported)
@@ -84,7 +112,7 @@ Azure PowerShell またはプレビュー ポータルで発生する可能性�
 
 
 ### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
-- **説明**: Hive メタストアと Oozie メタストアにカスタム設定を使用するために、1 つ以上のコンポーネントに Azure SQL データベースの詳細を指定してください。
+- **説明**: Hive メタストアと Oozie メタストアにカスタム設定を使用するために、1 つ以上のコンポーネントに Azure SQL Database の詳細を指定してください。
 - **対応策**: 有効な SQL Azure メタストアを指定して要求し直す必要があります。  
 
 ### <a id="AzureRegionNotSupported"></a>AzureRegionNotSupported
@@ -157,7 +185,7 @@ Azure PowerShell またはプレビュー ポータルで発生する可能性�
 - **対応策**: 要求をやり直してください。
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-- **説明**: ホステッド サービス *nameOfYourHostedService* には、既に運用環境が展開されています。ホステッド サービスに運用環境のデプロイを含めることはできません。別のクラスター名を使用して要求を再試行してください。
+- **説明**: ホステッド サービス *nameOfYourHostedService* には、既に運用環境がデプロイメントされています。ホステッド サービスに運用環境のデプロイを含めることはできません。別のクラスター名を使用して要求を再試行してください。
 - **対応策**: 別のクラスター名を使用して要求をやり直します。
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
@@ -165,7 +193,7 @@ Azure PowerShell またはプレビュー ポータルで発生する可能性�
 - **対応策**: クラスターがエラー状態である場合は、クラスターを削除し、やり直します。
 
 ### <a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment
-- **説明**: ホステッド サービス *nameOfYourHostedService* には、関連付けられた展開がありません。  
+- **説明**: ホステッド サービス *nameOfYourHostedService* には、関連付けられたデプロイメントがありません。  
 - **対応策**: クラスターがエラー状態である場合は、クラスターを削除し、やり直します。
 
 ### <a id="InsufficientResourcesCores"></a>InsufficientResourcesCores
@@ -181,7 +209,7 @@ Azure PowerShell またはプレビュー ポータルで発生する可能性�
 - **対応策**: 要求をやり直してください。
 
 ### <a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation
-- **説明**: Azure ストレージの場所 *dataRegionName* が有効な場所ではありません。リージョンが正しいことを確認し、要求を再試行してください。
+- **説明**: Azure Storage の場所 *dataRegionName* が有効な場所ではありません。リージョンが正しいことを確認し、要求を再試行してください。
 - **対応策**: HDInsight をサポートするストレージの場所を選択し、クラスターが併置されていることを確認して、操作をやり直します。
 
 ### <a id="InvalidNodeSizeForDataNode"></a>InvalidNodeSizeForDataNode
@@ -272,4 +300,4 @@ Azure PowerShell またはプレビュー ポータルで発生する可能性�
 
 [image-hdi-debugging-error-messages-portal]: ./media/hdinsight-debug-jobs/hdi-debug-errormessages-portal.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

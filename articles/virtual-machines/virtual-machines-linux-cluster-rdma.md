@@ -1,38 +1,41 @@
 <properties
- pageTitle="MPI アプリケーションを実行するように Linux RDMA クラスターを設定する |Microsoft Azure"
-	description="RDMA を使用して MPI アプリケーションを実行する、 サイズ A8 または A9 VM の Linux クラスターを作成する方法について説明します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="dlepow"
-	manager="timlt"
-	editor=""/>
+ pageTitle="MPI アプリケーションを実行するための Linux RDMA クラスター |Microsoft Azure"
+ description="RDMA を使用して MPI アプリケーションを実行する、サイズ A8 または A9 の VM の Linux クラスターを作成します。"
+ services="virtual-machines"
+ documentationCenter=""
+ authors="dlepow"
+ manager="timlt"
+ editor=""
+ tags="azure-service-management"/>
 <tags
 ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-linux"
-	ms.workload="infrastructure-services"
-	ms.date="07/17/2015"
-	ms.author="danlep"/>
+ ms.devlang="na"
+ ms.topic="article"
+ ms.tgt_pltfrm="vm-linux"
+ ms.workload="infrastructure-services"
+ ms.date="09/21/2015"
+ ms.author="danlep"/>
 
 # MPI アプリケーションを実行するように Linux RDMA クラスターを設定する
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの構成について説明します。
+
 この記事では、Azure で[サイズ A8 および A9 の仮想マシン](virtual-machines-a8-a9-a10-a11-specs.md)を使用して Linux RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。サイズ A8 および A9 の Linux ベースの VM を構成して、サポートされている MPI 実装を実行すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
 
->[AZURE.NOTE]Azure Linux RDMA は、現在、SUSE Linux Enterprise Server 12 (SLES 12) で実行されている Intel MPI Library バージョン 5.0 でサポートされています。
+>[AZURE.NOTE]Azure Linux RDMA は、現在、SUSE Linux Enterprise Server 12 (SLES 12) で実行されている Intel MPI Library バージョン 5.0 でサポートされています。この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
 >
 > Azure は、RDMA バックエンド ネットワークに接続せずに、A8 および A9 インスタンスと同じ処理機能を持つ、A10 および A11 のコンピューティング集中型インスタンスも提供します。Azure で MPI ワークロードを実行する場合、一般に、A8 および A9 インスタンスで最良のパフォーマンスが得られます。
 
 
-## Linux クラスターのデプロイ オプション
+## Linux クラスターのデプロイメント オプション
 
 ジョブ スケジューラを使用する場合、または使用しない場合に、Linux の RDMA クラスターの作成に使用できる方法を次に示します。
 
-* **HPC Pack** - Azure で Microsoft HPC Pack クラスターを作成して、サポートされる Linux ディストリビューションを実行するコンピューティング ノードを追加することができます (HPC Pack 2012 R2 Update 2 以降でサポート)。Linux のノードの一部を構成して、RDMA ネットワークにアクセスできます。使用を開始するには、[HPC Pack のドキュメント](http://go.microsoft.com/fwlink/?LinkId=617894)を参照してください。
+* **HPC Pack** - Azure で Microsoft HPC Pack クラスターを作成して、サポートされる Linux ディストリビューションを実行するコンピューティング ノードを追加することができます (Linux C ノードは、HPC Pack 2012 R2 Update 2 以降でサポート)。Linux の特定のノードを構成して、RDMA ネットワークにアクセスできます。「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-cluster.md)」を参照してください。
 
-* **Azure CLI スクリプト** - Mac、Linux、および Windows 用の [Azure コマンド ライン インターフェイス](../xplat-cli.md) (CLI) を使用して独自のスクリプトを作成し、仮想ネットワークやその他の必要なコンポーネントをデプロイして、Linux クラスターを作成することができます。Azure サービス管理 (asm) モード の CLI では、クラスター ノードを順番にデプロイします。そのため、多くのコンピューティング ノードをデプロイしている場合は、デプロイの完了に数分かかる場合があります。例については、この記事の残りの部分に示す手順を参照してください。
+* **Azure CLI スクリプト** - この記事の以降の手順に示されるように、Mac、Linux、および Windows 用の [Azure コマンド ライン インターフェイス](../xplat-cli.md) (CLI) を使用して、仮想ネットワークやその他の必要なコンポーネントのデプロイメントのスクリプトを作成し、Linux クラスターを作成することができます。クラシック (サービス管理) デプロイメント モード の CLI では、クラスター ノードを順番に作成します。そのため、多くのコンピューティング ノードをデプロイしている場合は、デプロイメントの完了に数分かかる場合があります。
 
-* **Azure Resource Manager テンプレート** - Azure リソース マネージャーで簡単な JSON テンプレート ファイルを作成し、arm モードの Azure CLI でコマンドを実行 (または Azure プレビュー ポータルを使用) すると、複数の A8 および A9 Linux VM をデプロイするとともに、仮想ネットワーク、静的 IP アドレス、DNS の設定、その他のリソースを定義して、RDMA の利用および MPI ワークロードの実行が可能なコンピューティング クラスターを作成することができます。[独自のテンプレートを作成](../resource-group-authoring-templates.md)するか、または [「Azure クイック スタート テンプレート」ページ](https://azure.microsoft.com/documentation/templates/)で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。リソース マネージャーのテンプレートは、一般に、Linux クラスターを展開するための最も信頼性の高い、最速の方法を提供します。
+* **Azure リソース マネージャー テンプレート** - Azure リソース マネージャーで簡単な JSON テンプレート ファイルを作成し、リソース マネージャーに対して Azure CLI でコマンドを実行するか、または Azure プレビュー ポータルを使用すると、複数の A8 および A9 Linux VM をデプロイするとともに、仮想ネットワーク、静的 IP アドレス、DNS の設定、その他のリソースを定義して、RDMA の利用および MPI ワークロードの実行が可能なコンピューティング クラスターを作成することができます。[独自のテンプレートを作成](../resource-group-authoring-templates.md)するか、または [「Azure クイック スタート テンプレート」ページ](https://azure.microsoft.com/documentation/templates/)で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。リソース マネージャーのテンプレートは、一般に、Linux クラスターをデプロイするための最も信頼性の高い、最速の方法を提供します。
 
 ## Azure CLI スクリプトによる Azure サービス管理でのデプロイ
 
@@ -40,18 +43,19 @@ ms.service="virtual-machines"
 
 ### 前提条件
 
-* **クライアント コンピューター** - Azure と通信するための Mac、Linux、または Windows ベースのクライアント コンピューターが必要です。
+*   **クライアント コンピューター** - Azure と通信するための Mac、Linux、または Windows ベースのクライアント コンピューターが必要です。これらの手順は、Linux クライアントを使用していることを前提とします。
 
-* **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+*   **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-* **コア クォータ** - A8 または A9 VM のクラスターをデプロイするために、コア クォータを増やすことが必要な場合があります。たとえば、8 個の A9 VM をデプロイする場合は、少なくとも 128 コアが必要です。クォータを増やすには、[オンライン カスタマー サポートに申請](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
+*   **コア クォータ** - A8 または A9 VM のクラスターをデプロイするために、コア クォータを増やすことが必要な場合があります。たとえば、8 個の A9 VM をデプロイする場合は、少なくとも 128 コアが必要です。クォータを増やすには、[オンライン カスタマー サポートに申請](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 
-* **Azure CLI** - クライアント コンピューターに Azure CLI を[インストール](../xplat-cli-install.md)して[構成](../xplat-cli-connect.md)し、Azure サブスクリプションを使用します。
+*   **Azure CLI** - Azure CLI を[インストール](../xplat-cli-install.md)し、クライアント コンピューターから Azure サブスクリプションに接続するように[構成](../xplat-cli-connect.md)します。
 
+*   **Intel MPI** - クラスター用の Linux VM イメージのカスタマイズの一環として (この記事の後半の説明を参照)、Intel MPI Library 5 ランタイムを [Intel.com のサイト](https://software.intel.com/ja-JP/intel-mpi-library/)からダウンロードし、プロビジョニングする Azure Linux VM にインストールする必要があります。この準備をするために、Intel に登録した後、確認の電子メールに含まれる関連 Web ページへのリンクをクリックし、適切なバージョンの Intel MPI (.tgz ファイル) のダウンロード リンクをコピーします。この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
 
 ### SLES 12 VM のプロビジョニング
 
-Azure CLI を使用して Azure にログインした後に `azure config list` コマンドを実行し、CLI が Azure サービス管理 (asm) モードであることを確認します。asm モードでない場合は、次のコマンドを実行して asm モードに設定します。
+Azure CLI を使用して Azure にログインした後に `azure config list` を実行して、出力に **asm** モードが示されている (CLI が Azure サービス管理モードである) ことを確認します。asm モードでない場合は、次のコマンドを実行して asm モードに設定します。
 
 ```
 azure config mode asm
@@ -65,11 +69,11 @@ azure account list
 
 現在のアクティブなサブスクリプションは、`Current` が `true` に設定されています。クラスターの作成に使用するサブスクリプションがこれではない場合、適切なサブスクリプション番号をアクティブなサブスクリプションとして設定します。
 
-```he
+```
 azure account set <subscription-number>
 ```
 
-Azure でパブリックに利用可能な SLES 12 HPC イメージを表示するには、次のようなコマンドを実行します (シェル環境で **grep** がサポートされている場合)。
+Azure でパブリックに利用可能な SLES 12 HPC イメージを表示するには、次のようなコマンドを実行します (シェル環境で **grep** がサポートされていると仮定)。
 
 ```
 azure vm image list | grep "suse.*hpc"
@@ -80,14 +84,14 @@ azure vm image list | grep "suse.*hpc"
 次のようなコマンドを実行して、使用可能な SLES 12 HPC イメージを使用し、サイズ A9 VM をプロビジョニングします。
 
 ```
-azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location> -z A9 -n <vm-name> -e 10004 b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708
+azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location> -z A9 -n <vm-name> -e 22 b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708
 ```
 
 各値の説明:
 
 * サイズには A8 または A9 (この例では A9) を指定できます。
 
-* 外部 SSH ポート番号 (この例では 10004) は任意の有効なポート番号です。内部 SSH ポート番号は 22 に設定されます。
+* 外部 SSH ポート番号 (この例では、SSH の規定である 22) は任意の有効なポート番号です。内部 SSH ポート番号は 22 に設定されます。
 
 * 新しいクラウド サービスは、場所で指定された Azure リージョンに作成されます。A8 および A9 インスタンスに使用できる、"米国西部" などの場所を指定します。
 
@@ -95,79 +99,83 @@ azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location
 
 ### VM のカスタマイズ
 
-VM のプロビジョニングの完了後、VM の外部 IP アドレス (または DNS 名) と構成済みポート番号を使用して VM に SSH 接続し、カスタマイズします。接続の詳細については、[「Linux を実行する仮想マシンにログオンする方法」](virtual-machines-linux-how-to-log-on.md)を参照してください。
+VM のプロビジョニングの完了後、VM の外部 IP アドレス (または DNS 名) と構成済みポート番号を使用して VM に SSH 接続し、カスタマイズします。接続の詳細については、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)」を参照してください。手順の完了にルート アクセスが必要でない限り、VM で構成したユーザーとしてコマンドを実行する必要があります。
 
->[AZURE.NOTE]Microsoft Azure では Linux VM にルート アクセスが提供されません。ユーザーとして接続されているときに `sudo –s` を使用して、管理アクセス権を取得できます。
+>[AZURE.IMPORTANT]Microsoft Azure では Linux VM にルート アクセスが提供されません。ユーザーとして VM に接続されているときに管理アクセス権を取得するには、`sudo` を使用してコマンドを実行します。
 
-**更新プログラム** - **zypper** および NFS ユーティリティを使用して、更新プログラムをインストールできます。
+*   **更新プログラム** - **zypper** を使用して更新プログラムをインストールします。NFS ユーティリティをインストールすることもできます。  
 
->[AZURE.IMPORTANT]現時点では、カーネルの更新プログラムを適用しないことをお勧めします。適用した場合、Linux RDMA ドライバーに関連する問題が発生する可能性があります。
+    >[AZURE.IMPORTANT]現時点では、カーネルの更新プログラムを適用しないことをお勧めします。適用した場合、Linux RDMA ドライバーに関連する問題が発生する可能性があります。
 
-**Intel MPI** - Intel MPI Library 5.0 ランタイムを [Intel.com のサイト](https://software.intel.com/ja-JP/intel-mpi-library/)からダウンロードしてインストールします。Intel に登録した後、確認の電子メールに含まれる、関連 Web ページへのリンクをクリックし、適切なバージョンの Intel MPI (.tgz ファイル) のダウンロード リンクをコピーします。
+*   **Intel MPI** - 次のようなコマンドを実行して、Intel MPI Library 5 ランタイムを Intel.com のサイトからダウンロードしてインストールします。
 
-次のようなコマンドを実行して、Intel MPI を VM にインストールします。
+    ```
+    sudo wget <download link for your registration>
 
-```
+    sudo tar xvzf <tar-file>
 
-$ wget <download link for your registration>
-$ tar xvzf <tar-file>
-$ cd <mpi-directory>
-$ sudo ./install.sh
-```
+    cd <mpi-directory>
 
-**メモリのロック** - MPI コードによって、RDMA で使用可能なメモリをロックするには、/etc/security/limits.conf ファイルで、次の設定を追加または変更する必要があります。
+    sudo ./install.sh
 
-```
-<User or group name> hard    memlock <memory required for your application in KB>
-<User or group name> soft    memlock <memory required for your application in KB>
-```
+    ```
 
->[AZURE.NOTE]テスト目的で、memlock を無制限に設定することもできます。(例: `<User or group name>    hard    memlock unlimited`)。
+    既定の設定をそのまま使用して、Intel MPI を VM にインストールします。
+
+*   **メモリのロック** - MPI コードによって、RDMA で使用可能なメモリをロックするには、/etc/security/limits.conf ファイルで、次の設定を追加または変更する必要があります(このファイルを編集するにはルート アクセスが必要です)。
+
+    ```
+    <User or group name> hard    memlock <memory required for your application in KB>
+
+    <User or group name> soft    memlock <memory required for your application in KB>
+    ```
+
+    >[AZURE.NOTE]テスト目的で、memlock を無制限に設定することもできます。(例: `<User or group name>    hard    memlock unlimited`)。
 
 
-**SSH キー** - クラスター内のすべてのコンピューティング ノード間で、この VM の作成に使用したユーザー名とパスワードの信頼関係を確立します。次のコマンドを使用して、SSH キーを作成します。
+*   **SSH キー** - MPI ジョブの実行時にクラスター内のすべてのコンピューティング ノード間でユーザー アカウントの信頼を確立するために、SSH キーを生成します。次のコマンドを実行して、SSH キーを作成します。パスフレーズを設定せずに、単に Enter を押して既定の場所でキーを生成します。
 
-```
-$ ssh-keygen
-```
+    ```
+    ssh-keygen
+    ```
 
-既定の場所に公開キーを保存します。入力したパスフレーズを忘れないでください。
+    公開キーを、既知の公開キー用の authorized\_keys ファイルに追加します。
 
-```
-$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-```
+    ```
+    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+    ```
 
-~/.ssh ディレクトリにある、ssh\_config ファイルを編集 (存在しない場合は作成) します。Azure で使用するプライベート ネットワークの IP アドレスの範囲を指定します。
+    ~/.ssh ディレクトリにある、ssh\_config ファイルを編集 (存在しない場合は作成) します。Azure で使用するプライベート ネットワークの IP アドレスの範囲を指定します (この例では 10.32.0.0/16)。
 
-```
-host 10.32.0.*
-StrictHostKeyChecking no
-```
+    ```
+    host 10.32.0.*
+    StrictHostKeyChecking no
+    ```
 
-または、クラスター内の各 VM のプライベート ネットワーク IP アドレスを、次のように一覧表示できます。
+    または、クラスター内の各 VM のプライベート ネットワーク IP アドレスを、次のように一覧表示します。
 
-```
-host 10.32.0.1
- StrictHostKeyChecking no
-host 10.32.0.2
- StrictHostKeyChecking no
-host 10.32.0.3
- StrictHostKeyChecking no
-```
+    ```
+    host 10.32.0.1
+     StrictHostKeyChecking no
+    host 10.32.0.2
+     StrictHostKeyChecking no
+    host 10.32.0.3
+     StrictHostKeyChecking no
+    ```
 
->[AZURE.NOTE]特定の IP アドレスまたは範囲を指定しない場合、上記のように `StrictHostKeyChecking no` と構成すると、潜在的なセキュリティ リスクが生じる可能性があります。
+    >[AZURE.NOTE]特定の IP アドレスまたは範囲を指定しない場合、これらの例のように `StrictHostKeyChecking no` を構成すると、潜在的なセキュリティ リスクが生じる可能性があります。
 
-**アプリケーション** - イメージをキャプチャする前に、必要なアプリケーションをこの VM にコピーしたり、その他のカスタマイズを実行したりします。
+* **アプリケーション** - イメージをキャプチャする前に、必要なアプリケーションをこの VM にインストールしたり、その他のカスタマイズを実行したりします。
 
 ### イメージのキャプチャ
 
-イメージをキャプチャするには、最初に、Linux VM で次のコマンドを実行します。
+イメージをキャプチャするには、最初に、Linux VM で次のコマンドを実行します。これにより、VM がプロビジョニング解除されますが、設定したユーザー アカウントと SSH キーは維持されます。
 
 ```
-$ sudo waagent -deprovision
+sudo waagent -deprovision
 ```
 
-次に、クライアント コンピューターで次の Azure CLI コマンドを実行し、イメージをキャプチャします。詳細については、[「テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法」](virtual-machines-linux-capture-image.md)を参照してください。
+次に、クライアント コンピューターで次の Azure CLI コマンドを実行し、イメージをキャプチャします。詳細については、「[テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法](virtual-machines-linux-capture-image.md)」を参照してください。
 
 ```
 azure vm shutdown <vm-name>
@@ -178,53 +186,54 @@ azure vm capture -t <vm-name> <image-name>
 
 これらのコマンドを実行した後、使用する VM イメージがキャプチャされ、VM が削除されます。カスタム イメージをクラスターにデプロイする準備ができました。
 
-### イメージを使用したクラスターの展開
+### イメージを使用したクラスターのデプロイ
 
-次のスクリプトの該当部分を環境に合った適切な値に変更し、クライアント コンピューターで実行します。asm モードのデプロイ方法では VM を順番にデプロイするため、このスクリプトで示されている 8 個の A9 VM をデプロイするまでに数分かかります。
+次の Bash スクリプトの該当部分を環境に合った適切な値に変更し、クライアント コンピューターで実行します。サービス管理のデプロイメント方法では VM を順番にデプロイするため、このスクリプトで示されている 8 個の A9 VM をデプロイするまでに数分かかります。
 
 ```
-### Script to create a compute cluster without a scheduler in a VNet in Azure
-### Create a custom private network in Azure
-### Replace 10.32.0.0 with your virtual network address space
-### Replace <network-name> with your network identifier
-### Select a region where A8 and A9 VMs are available, such as West US
-### See Azure Pricing pages for prices and availability of A8 and A9 VMs
+#!/bin/bash -x
+# Script to create a compute cluster without a scheduler in a VNet in Azure
+# Create a custom private network in Azure
+# Replace 10.32.0.0 with your virtual network address space
+# Replace <network-name> with your network identifier
+# Select a region where A8 and A9 VMs are available, such as West US
+# See Azure Pricing pages for prices and availability of A8 and A9 VMs
 
 azure network vnet create -l "West US" -e 10.32.0.0 -i 16 <network-name>
 
-### Create a cloud service. All the A8 and A9 instances need to be in the same cloud service for Linux RDMA to work across InfiniBand.
-### Note: The current maximum number of VMs in a cloud service is 50. If you need to provision more than 50 VMs in the same cloud service in your cluster, contact Azure Support.
+# Create a cloud service. All the A8 and A9 instances need to be in the same cloud service for Linux RDMA to work across InfiniBand.
+# Note: The current maximum number of VMs in a cloud service is 50. If you need to provision more than 50 VMs in the same cloud service in your cluster, contact Azure Support.
 
 azure service create <cloud-service-name> --location "West US" –s <subscription-ID>
 
-### Define a prefix naming scheme for compute nodes, e.g., cluster11, cluster12, etc.
+# Define a prefix naming scheme for compute nodes, e.g., cluster11, cluster12, etc.
 
 vmname=cluster
 
-### Define a prefix for external port numbers. If you want to turn off external ports and use only internal ports to communicate between compute nodes via port 22, don’t use this option. Since port numbers up to 10000 are reserved, use numbers after 10000. Leave external port on for rank 0 and head node.
+# Define a prefix for external port numbers. If you want to turn off external ports and use only internal ports to communicate between compute nodes via port 22, don’t use this option. Since port numbers up to 10000 are reserved, use numbers after 10000. Leave external port on for rank 0 and head node.
 
 portnumber=101
 
-### In this cluster there will be 8 size A9 nodes, named cluster11 to cluster18. Specify your captured image in <image-name>.
+# In this cluster there will be 8 size A9 nodes, named cluster11 to cluster18. Specify your captured image in <image-name>. Specify the username and password you used when creating the SSH keys.
 
 for (( i=11; i<19; i++ )); do
         azure vm create -g <username> -p <password> -c <cloud-service-name> -z A9 -n $vmname$i -e $portnumber$i -w <network-name> -b Subnet-1 <image-name>
 done
 
-### Save this script and run it at the CLI prompt to provision your cluster
+# Save this script with a name like makecluster.sh and run it in your shell environnment to provision your cluster
 ```
-
 ## Intel MPI の構成と実行
 
-Azure Linux RDMA で MPI アプリケーションを実行するには、Intel MPI に固有な特定の環境変数を構成する必要があります。変数を構成し、アプリケーションを実行するサンプル スクリプトを示します。
+Azure Linux RDMA で MPI アプリケーションを実行するには、Intel MPI に固有な特定の環境変数を構成する必要があります。次に、変数を構成してアプリケーションを実行するサンプル Bash スクリプトを示します。
 
 ```
 #!/bin/bash -x
+
 source /opt/intel/impi_latest/bin64/mpivars.sh
 
 export I_MPI_FABRICS=shm:dapl
 
-# THIS IS A MANDATORY ENVIRONMENT VARIABLE AND MUST BE SET BEFORE RUNNING ANY JOB
+# THIS IS A MANDATORY ENVIRONMENT VARIABLEAND MUST BE SET BEFORE RUNNING ANY JOB
 # Setting the variable to shm:dapl gives best performance for some applications
 # If your application doesn’t take advantage of shared memory and MPI together, then set only dapl
 
@@ -243,23 +252,44 @@ mpirun -n <number-of-cores> -ppn <core-per-node> -hostfile <hostfilename>  /path
 #end
 ```
 
-ホスト ファイルの形式は、次のとおりです。クラスター内の各ノードに対して 1 つの行を追加します。DNS 名ではなく、前に VNet から定義したプライベート IP アドレスを指定します。
+ホスト ファイルの形式は、次のとおりです。クラスター内の各ノードに対して 1 つの行を追加します。DNS 名ではなく、前に VNet から定義したプライベート IP アドレスを指定します。たとえば、IP アドレス 10.32.0.1 と 10.32.0.2 を持つ 2 つのホストでは、ファイルに次の内容が含まれています。
 
 ```
-private ip address1:16 [e.g. 10.32.0.1:16]
-private ip address2:16
-...
+10.32.0.1:16
+10.32.0.2:16
 ```
 
 ## Intel MPI をインストールした後に、基本的な 2 ノード クラスターを確認します。
 
-次の Intel MPI コマンドを実行すると、Pingpong ベンチマークを使用してクラスター構成を確認することができます。
+この操作をまだ行っていない場合は、まず Intel MPI の環境を設定します。
 
 ```
-/opt/intel/impi_latest/bin64/mpirun -hosts <host1>, <host2> -ppn 1 -n 2 -env I_MPI_FABRICS dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 /opt/intel/impi_latest/bin64/IMB-MPI1 pingpong
+source /opt/intel/impi_latest/bin64/mpivars.sh
 ```
 
-2 つのノードで動作中のクラスターに、次のような出力が表示されます。
+### 単純な MPI コマンドの実行
+
+MPI が正しくインストールされており、少なくとも 2 つのコンピューティング ノード間で通信できることを示すために、いずれかのコンピューティング ノードで単純な MPI コマンドを実行します。次の **mpirun** コマンドは、2 つのノードで **hostname** コマンドを実行します。
+
+```
+/opt/intel/impi_latest/bin64/mpirun -ppn 1 -n 2 -hosts <host1>,<host2> -env I_MPI_FABRICS=shm:dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 hostname
+```
+出力では、`-hosts` の入力として渡したすべてのノードの名前が一覧表示されます。たとえば、2 つのノードを含む **mpirun** コマンドは、次のような出力を返します。
+
+```
+cluster11
+cluster12
+```
+
+### MPI ベンチマークの実行
+
+次の Intel MPI コマンドでは、pingpong ベンチマークを使用して、クラスターの構成および RDMA ネットワークへの接続を確認します。
+
+```
+/opt/intel/impi_latest/bin64/mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 /opt/intel/impi_latest/bin64/IMB-MPI1 pingpong
+```
+
+2 つのノードで動作中のクラスターに、次のような出力が表示されます。Azure RDMA ネットワークでは、最大 512 バイトのメッセージ サイズに対して、3 マイクロ秒以下の待機時間が必要です。
 
 ```
 #------------------------------------------------------------
@@ -339,4 +369,4 @@ private ip address2:16
 
 * Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/ja-JP/articles/intel-mpi-library-documentation/)を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

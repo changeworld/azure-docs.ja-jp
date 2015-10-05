@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="09/20/2015" 
 	ms.author="juliako"/>
 
 #方法: 資産の配信ポリシーを構成する
@@ -265,9 +265,18 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 	{"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
+Widevine DRM を使用してコンテンツを保護する場合は、WidevineLicenseAcquisitionUrl (値 7 が設定されています) を使用するように AssetDeliveryConfiguration の値を更新し、ライセンス配信サービスの URL を指定します。次の AMS パートナーを通してWidevine ライセンスを提供できます。[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
+
+次に例を示します。
+ 
+	
+	{"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{"Key":7,"Value":"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
+
+>[AZURE.NOTE]Widevine を使用して暗号化する場合、配信は DASH でのみ実行できます。アセット配信プロトコルに必ず DASH (2) を指定してください。
+  
 ###資産を資産配信ポリシーにリンクする
 
-「[資産を資産配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)」を参照してください。
+「[アセットをアセット配信ポリシーにリンクする](#link_asset_with_asset_delivery_policy)」を参照してください。
 
 
 ##<a id="types"></a>AssetDeliveryPolicy の定義に使用する種類
@@ -373,6 +382,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
     /// <summary>
     /// Keys used to get specific configuration for an asset delivery policy.
     /// </summary>
+
     public enum AssetDeliveryPolicyConfigurationKey
     {
         /// <summary>
@@ -409,8 +419,12 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
         /// The initialization vector to use for envelope encryption.
         /// </summary>
         EnvelopeEncryptionIV,
-    }
 
+        /// <summary>
+        /// Widevine DRM acquisition url
+        /// </summary>
+        WidevineLicenseAcquisitionUrl
+    }
 
 
 ##Media Services のラーニング パス
@@ -422,4 +436,4 @@ AMS のラーニング パスについては、以下を参照してください
 
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

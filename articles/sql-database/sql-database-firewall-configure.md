@@ -1,21 +1,21 @@
 <properties
    pageTitle="Azure SQL Database ファイアウォール | Microsoft Azure"
-	description="Microsoft Azure SQL Database ファイアウォールの構成方法。"
-	services="sql-database"
-	documentationCenter=""
-	authors="BYHAM"
-	manager="jeffreyg"
-	editor=""
-	tags=""/>
+   description="Microsoft Azure SQL Database ファイアウォールの構成方法。"
+   services="sql-database"
+   documentationCenter=""
+   authors="BYHAM"
+   manager="jeffreyg"
+   editor=""
+   tags=""/>
 
 <tags
    ms.service="sql-database"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="data-management"
-	ms.date="08/04/2015"
-	ms.author="rickbyh"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="data-management"
+   ms.date="08/04/2015"
+   ms.author="rickbyh"/>
 
 # Azure SQL Database ファイアウォール
 
@@ -114,9 +114,9 @@ Azure からの接続は、[管理ポータル](http://go.microsoft.com/fwlink/p
 
 Microsoft Azure SQL Database サービスへ期待どおりにアクセスできない場合は、次の点を検討してください。
 
-- **ローカル ファイアウォールの構成:** Azure SQL Database へアクセスする前に、TCP ポート 1433 に対し、コンピューターでファイアウォール例外を作成することが必要な場合があります。 
+- **ローカル ファイアウォールの構成:** Azure SQL Database へアクセスする前に、TCP ポート 1433 に対し、コンピューターでファイアウォール例外を作成することが必要な場合があります。Azure クラウド境界内で接続を行う場合は、追加のポートをいくつか開かなければならない場合があります。詳細については、「[ADO.NET 4.5 と SQL Database V12 の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」の「**SQL Database V12: 外部と内部**」を参照してください。
 
-- **ネットワーク アドレス変換 (NAT):** NAT が原因で、Azure SQL データベースに接続するコンピューターで使用される IP アドレスが、コンピューターの IP 構成設定で表示される IP アドレス異なっている場合があります。Azure に接続するためにコンピューターで使用している IP アドレスを表示するには、管理ポータルにログインし、データベースをホストしているサーバー上の **[構成]** タブへ移動します。**[許可された IP アドレス]** セクションに、**現在のクライアント IP アドレス**が表示されます。** 許可された IP アドレス** への **[追加]** をクリックし、このコンピューターのサーバーへのアクセスを許可します。
+- **ネットワーク アドレス変換 (NAT):** NAT が原因で、Azure SQL Database に接続するコンピューターで使用される IP アドレスが、コンピューターの IP 構成設定で表示される IP アドレスと異なっている場合があります。Azure に接続するためにコンピューターで使用している IP アドレスを表示するには、管理ポータルにログインし、データベースをホストしているサーバーの **[構成]** タブに移動します。**[許可された IP アドレス]** セクションに、**[現在のクライアント IP アドレス]** が表示されます。**[許可された IP アドレス]** への **[追加]** をクリックし、このコンピューターのサーバーへのアクセスを許可します。
 
 - **許可一覧に変更が反映されない:** Azure SQL Database ファイアウォールの構成に対する変更が反映されるまで最大 5 分間の遅延が発生する場合があります。
 
@@ -135,4 +135,4 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

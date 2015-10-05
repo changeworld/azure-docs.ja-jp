@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/03/2015"
+   ms.date="09/17/2015"
    ms.author="v-sharos" />
 
 # SharePoint 用 StorSimple アダプターをインストールして構成する
@@ -308,4 +308,4 @@ BLOB を SQL Server コンテンツ データベースに戻したら、次の�
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/ja-JP/library/ff943565.aspx
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

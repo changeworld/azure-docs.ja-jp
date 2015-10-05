@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/16/2015"
+   ms.date="09/23/2015"
    ms.author="alkohli" />
 
 # StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブル接続
@@ -204,7 +204,7 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 
 このデバイスのセットアップを初めて行うときは、最初に SAS ケーブル接続の手順を実行してから、電源ケーブル接続の手順を実行します。
 
-[AZURE.INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-sas-cable-8600.md)]
+[AZURE.INCLUDE [storsimple-cable-8600-for-SAS](../../includes/storsimple-sas-cable-8600.md)]
 
 [AZURE.INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
@@ -289,4 +289,4 @@ H、I | ホスト (ファイル サーバーなど)
 これで[オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough.md)準備ができました。
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

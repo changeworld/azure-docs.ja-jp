@@ -1,6 +1,6 @@
 ## Azure CLI を使用して ARM テンプレートをデプロイする
 
-PowerShell を使用してダウンロードした ARM テンプレートをデプロイするには、次の手順に従います。
+Azure CLI を使用してダウンロードした ARM テンプレートをデプロイするには、次の手順に従います。
 
 1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli.md)を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
@@ -11,7 +11,7 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 
 		info:    New mode is arm
 
-3. 必要に応じて、次のように **azure group create** で新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)」を参照してください。
+3. 必要に応じて、次のように **azure group create** で新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 
 		azure group create -n TestRG -l centralus
 
@@ -89,4 +89,4 @@ PowerShell を使用してダウンロードした ARM テンプレートをデ�
 		data:
 		info:    network vnet show command OK
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

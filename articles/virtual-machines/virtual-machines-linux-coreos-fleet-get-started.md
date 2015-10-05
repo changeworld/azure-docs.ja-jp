@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure 上の CoreOS で fleet を使ってみる"
-	description="Azure の CoreOS Linux 仮想マシン上での fleet と Docker を使用方法を紹介します。"
+	pageTitle="CoreOS で Fleet を使ってみる | Microsoft Azure"
+	description="Azure 上のクラシック デプロイ モデルで作成された CoreOS Linux 仮想マシン上での Fleet と Docker の使用方法を紹介します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dlepow"
@@ -18,6 +18,8 @@
 	ms.author="danlep"/>
 
 # Azure 上の CoreOS で fleet を使ってみる
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの管理について説明します。
 
 この記事では、[fleet](https://github.com/coreos/fleet) と [Docker](https://www.docker.com/) を使用して、[CoreOS] 仮想マシンのクラスターでアプリケーションを実行する簡単な例を 2 つ紹介します。
 
@@ -154,7 +156,7 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload apache@{1,2,3}.service
 
 * Azure リソース マネージャーで Fleet と CoreOS を開始するには、この[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)を試してください。
 
-* Azure での Linux VM およびオープン ソース環境の使用に関する詳細は、「[Azure 上での Linux およびオープン ソース コンピューティング]」をご覧ください。
+* Azure 内の Linux VM でのオープン ソース環境の使用に関する詳細は、「[Azure 上での Linux およびオープン ソース コンピューティング]」をご覧ください。
 
 <!--Link references-->
 [Azure Command-Line Interface (Azure)]: ../xplat-cli.md
@@ -173,4 +175,4 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload apache@{1,2,3}.service
 [CoreOS Apache Docker Hub イメージ]: https://registry.hub.docker.com/u/coreos/apache/
 [Azure 上での Linux およびオープン ソース コンピューティング]: virtual-machines-linux-opensource.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

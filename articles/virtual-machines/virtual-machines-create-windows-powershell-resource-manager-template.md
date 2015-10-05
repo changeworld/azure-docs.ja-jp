@@ -1,5 +1,5 @@
 <properties
-	pageTitle="リソース マネージャー テンプレートで Windows 仮想マシンを作成する"
+	pageTitle="ARM テンプレートを使用した VM の作成 |Microsoft Azure"
 	description="PowerShell または Azure CLI で新しい Windows 仮想マシンを簡単に作成するには、リソース マネージャー テンプレートを使用します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -11,13 +11,15 @@
 <tags
 	ms.service="virtual-machines"
 	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
+	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/28/2015"
 	ms.author="davidmu"/>
 
 # リソース マネージャー テンプレートで Windows 仮想マシンを作成する
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。このリソースは、クラシック デプロイメント モデルを使用して作成できません。
 
 Windows ベースの Azure 仮想マシンは、Azure PowerShell または Azure CLI からリソース マネージャー テンプレートを使って簡単に新規作成できます。このテンプレートは、新しいリソース グループにサブネットを 1 つ持った新しい仮想ネットワークに、Windows を実行する単一の仮想マシンを作成するものです。
 
@@ -333,4 +335,4 @@ Azure CLI のコマンドから、Github テンプレート リポジトリ内�
 
 [Azure PowerShell のインストールおよび構成方法](install-configure-powershell.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

@@ -1,24 +1,27 @@
-<properties 
-   pageTitle="FreeBSD VHD の作成と Azure へのアップロード"
-	description="FreeBSD オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="KylieLiang"
-	manager="timlt"
-	editor=""/>
+<properties
+   pageTitle="FreeBSD VM イメージの作成とアップロード | Microsoft Azure"
+   description="FreeBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成およびアップロードして、Azure 仮想マシンを作成する方法について説明します"
+   services="virtual-machines"
+   documentationCenter=""
+   authors="KylieLiang"
+   manager="timlt"
+   editor=""
+   tags="azure-service-management"/>
 
 <tags
    ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-linux"
-	ms.workload="infrastructure-services"
-	ms.date="05/19/2015"
-	ms.author="kyliel"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="vm-linux"
+   ms.workload="infrastructure-services"
+   ms.date="05/19/2015"
+   ms.author="kyliel"/>
 
-# FreeBSD VHD の作成と Azure へのアップロード 
+# FreeBSD VHD の作成と Azure へのアップロード
 
 ここでは、FreeBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成およびアップロードする方法を示し、それをイメージとして活用して Azure で仮想マシン (VM) を作成できるようにします。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 ##前提条件##
 この記事では、次の項目があることを前提としています。
@@ -48,9 +51,9 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
     SSH は、ディスクからインストールすると、既定で有効になります。有効になっていない場合または FreeBSD VHD を直接使用する場合は、次のように入力します。
 
-		# echo 'sshd_enable="YES"' >> /etc/rc.conf 
-		# ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key 
-		# ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key 
+		# echo 'sshd_enable="YES"' >> /etc/rc.conf
+		# ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+		# ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 		# service sshd restart
 
 3. **シリアル コンソールをセットアップする**
@@ -73,7 +76,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
     5\.2 **wget をインストールする**
 
-		# pkg install wget 
+		# pkg install wget
 
 6. **Azure エージェントをインストールする**
 
@@ -111,11 +114,11 @@ FreeBSD オペレーティング システムがインストールされた仮�
 	![ストレージ アカウントの簡易作成](./media/virtual-machines-freebsd-create-upload-vhd/Storage-quick-create.png)
 
 4. 次のようにフィールドを指定します。
-	
+
 	- **[URL]** で、ストレージ アカウントの URL で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
-			
+
 	- ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。アフィニティ グループを使用すると、クラウド サービスとストレージを同じデータセンターに配置できます。
-		 
+
 	- ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの geo レプリケーションを管理する方法の詳細については、[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)に関するページを参照してください。
 
 	![ストレージ アカウントの詳細の入力](./media/virtual-machines-freebsd-create-upload-vhd/Storage-create-account.png)
@@ -148,7 +151,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 1. Azure PowerShell コンソールを開きます。
 
 2. 次のコマンドを入力します。`Add-AzureAccount`
-	
+
 	このコマンドによりサインイン ウィンドウが開きますので、職場や学校のアカウントを使用してサインインできます。
 
 	![PowerShell ウィンドウ](./media/virtual-machines-freebsd-create-upload-vhd/add_azureaccount.png)
@@ -157,7 +160,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
 ###証明書方式を使用する
 
-1. Azure PowerShell コンソールを開きます。 
+1. Azure PowerShell コンソールを開きます。
 
 2. 次のコマンドを入力します: `Get-AzurePublishSettingsFile`
 
@@ -172,7 +175,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 	ここで、`<PathToFile>` は .publishsettings ファイルへの完全なパスです。
 
    詳細については、「[Microsoft Azure コマンドレットの概要](http://msdn.microsoft.com/library/windowsazure/jj554332.aspx)」を参照してください。
-	
+
    PowerShell のインストールと構成の詳細については、[Microsoft Azure PowerShell のインストールおよび構成の方法](../install-configure-powershell.md)に関するページを参照してください。
 
 ## ステップ 4: .vhd ファイルをアップロードする ##
@@ -193,7 +196,7 @@ FreeBSD オペレーティング システムがインストールされた仮�
 
     **重要**: 現時点では OS の種類として Linux を使用してください。これは、現在の Azure PowerShell のバージョンでは、パラメーターとして “Linux” または “Windows” しか使用できないためです。
 
-2. ここまでの手順を完了すると、Microsoft Azure 管理ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
+2. ここまでの手順を完了すると、Azure 管理ポータルで **[イメージ]** タブをクリックしたときに、新しいイメージが一覧に表示されます。
 
     ![add image](./media/virtual-machines-freebsd-create-upload-vhd/addfreebsdimage.png)
 
@@ -204,6 +207,5 @@ FreeBSD オペレーティング システムがインストールされた仮�
 4. プロビジョニングが完了したら、Azure での FreeBSD VM の稼働を確認できます。
 
 	![freebsd image in azure](./media/virtual-machines-freebsd-create-upload-vhd/freebsdimageinazure.png)
- 
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

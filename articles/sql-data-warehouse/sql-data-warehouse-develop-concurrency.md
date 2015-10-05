@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/26/2015"
+   ms.date="09/22/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # SQL Data Warehouse での同時実行とワークロード管理
@@ -139,21 +139,51 @@ SQL Data Warehouse には、データベース ロールを使用してリソー
 - INSERT-SELECT
 - UPDATE
 - 削除
-- SELECT (DMV に対して排他的にクエリを実行しない場合)
+- SELECT (ユーザー テーブルのクエリを実行する場合)
 - ALTER INDEX REBUILD
 - ALTER INDEX REORGANIZE
 - ALTER TABLE REBUILD
-- CREATE CLUSTERED INDEX
+- CREATE INDEX
 - CREATE CLUSTERED COLUMNSTORE INDEX
 - CREATE TABLE AS SELECT 
 - データの読み込み 
+- Data Movement Service (DMS) によって実行されるデータ移動操作
+
+次のステートメントでは、リソース クラスは**考慮されません。**
+
+- CREATE TABLE
+- ALTER TABLE ...SWITCH PARTITION 
+- ALTER TABLE ...SPLIT PARTITION 
+- ALTER TABLE ...MERGE PARTITION 
+- DROP TABLE
+- ALTER INDEX DISABLE
+- DROP INDEX
+- CREATE STATISTICS
+- UPDATE STATISTICS
+- DROP STATISTICS
+- TRUNCATE TABLE
+- ALTER AUTHORIZATION
+- CREATE LOGIN
+- CREATE USER
+- ALTER USER
+- DROP USER
+- CREATE PROCEDURE
+- ALTER PROCEDURE
+- DROP PROCEDURE
+- CREATE VIEW
+- DROP VIEW
+- INSERT VALUES
+- SELECT (システム ビューと DMV から)
+- EXPLAIN
+- DBCC
 
 <!--
 Removed as these two are not confirmed / supported under SQLDW
 - CREATE REMOTE TABLE AS SELECT
-- CREATE EXTERNAL TABLE AS SELECT 
+- CREATE EXTERNAL TABLE AS SELECT
+- REDISTRIBUTE 
 -->
-> [AZURE.NOTE]動的管理ビューとカタログ ビューに対して排他的に実行される `SELECT` クエリは、リソース クラスで管理**されません**。
+> [AZURE.NOTE]動的管理ビューとカタログ ビューに対して排他的に実行される `SELECT` クエリは、リソース クラスで**管理されません**。
 
 エンド ユーザーのクエリの大半がリソース クラスで管理される可能性が高いことにご注意ください。一般的に、処理中のクエリのワークロードは、プラットフォームで特別に除外されている場合を除き、同時実行クエリと同時実行スロットの両方のしきい値内に収まる必要があります。エンド ユーザーは、同時実行スロット モデルからクエリ除外を選択することはできません。いずれかのしきい値を超えたクエリは、キューに配置されます。キューに配置されたクエリは、まず優先順位に従って、次に送信時刻に従って処理されます。
 
@@ -418,8 +448,8 @@ FROM	sys.dm_pdw_wait_stats w
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[Azure SQL データベースにおけるデータベース、ログイン、およびユーザーの管理]: https://msdn.microsoft.com/ja-jp/library/azure/ee336235.aspx
+[Azure SQL データベースにおけるデータベース、ログイン、およびユーザーの管理]: https://msdn.microsoft.com/ja-JP/library/azure/ee336235.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

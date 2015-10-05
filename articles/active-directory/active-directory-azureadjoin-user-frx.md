@@ -43,7 +43,8 @@ Windows 10 では、エンドユーザーは、最初の実行エクスペリエ
 > [AZURE.NOTE]Windows の OOBE (Out-of-Box Experience) でオンプレミスの Active Directory ドメインに参加することはサポートされていません。このため、PC をドメインに参加させる予定の場合は、[代わりにローカル アカウントで Windows をセットアップしてください] リンクを選択する必要があります。その後で、前に実行したように、PC の [設定] メニューからドメインに参加できます。
 
 ## 追加情報
+* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

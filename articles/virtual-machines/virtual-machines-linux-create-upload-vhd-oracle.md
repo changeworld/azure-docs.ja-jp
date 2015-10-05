@@ -1,11 +1,12 @@
 <properties 
-	pageTitle="Azure 上での Oracle Linux VHD の作成とアップロード" 
+	pageTitle="Oracle Linux VHD の作成とアップロード | Microsoft Azure" 
 	description="Oracle Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="szarkos" 
 	manager="timlt" 
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-service-management,azure-resource-manager" />
 
 <tags 
 	ms.service="virtual-machines" 
@@ -17,6 +18,8 @@
 	ms.author="szark"/>
 
 # Azure 用の Oracle Linux 仮想マシンの準備
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 - [Azure 用の Oracle Linux 6.4 以上の仮想マシンの準備](#oracle6)
 - [Azure 用の Oracle Linux 7.0 以上の仮想マシンの準備](#oracle7)
@@ -227,4 +230,4 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

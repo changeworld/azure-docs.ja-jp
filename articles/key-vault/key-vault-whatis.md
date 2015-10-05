@@ -1,24 +1,24 @@
-<properties 
-	pageTitle="Azure Key Vault とは | Microsoft Azure" 
-	description="Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。Azure Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。" 
-	services="key-vault" 
-	documentationCenter="" 
-	authors="cabailey" 
+<properties
+	pageTitle="Azure Key Vault とは | Microsoft Azure"
+	description="Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。Azure Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。"
+	services="key-vault"
+	documentationCenter=""
+	authors="cabailey"
 	manager="mbaldwin"
 	tags="azure-resource-manager"/>
 
-<tags 
-	ms.service="key-vault" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="09/11/2015" 
+<tags
+	ms.service="key-vault"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/22/2015"
 	ms.author="cabailey"/>
 
 
 
-# Azure Key Vault とは 
+# Azure Key Vault とは
 
 Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の価格のページ](../../../../pricing/details/key-vault/)を参照してください。
 
@@ -43,7 +43,7 @@ Key Vault は、キー管理プロセスを合理化し、データにアクセ�
 
 Azure サブスクリプションを持つユーザーはだれでも、Key Vault を作成して使用できます。Key Vault は開発者とセキュリティ管理者にとってメリットがありますが、組織の他の Azure サービスを管理する組織の管理者がこれを実装し、管理できる可能性があります。たとえば、この管理者は Azure のサブスクリプションを使用してサインインし、キーの保存先に組織の資格情報コンテナーを作成し、次のような運用タスクを担当します。
 
-+ キーやシークレットの作成やインポート 
++ キーやシークレットの作成やインポート
 + キーやシークレットの取り消しや削除
 + キーやシークレットの管理や使用のための、ユーザーやアプリケーションの認証
 + キーの使用状況の構成 (署名や暗号化など)
@@ -53,7 +53,7 @@ Azure サブスクリプションを持つユーザーはだれでも、Key Vaul
 
    ![Azure Key Vault の概要][1]
 
-開発者は、API を使用してキーを直接管理することもできます。詳細については、MSDN の Microsoft Azure ドキュメント ライブラリにある「[Key Vault](https://msdn.microsoft.com/library/azure/dn903625.aspx)」をご覧ください。
+開発者は、API を使用してキーを直接管理することもできます。詳細については、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
 ## 次のステップ
 
@@ -65,7 +65,4 @@ Azure Key Vault でキーとシークレットを使用する方法の詳細に�
 <!--Image references-->
 [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
 
-
- 
-
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

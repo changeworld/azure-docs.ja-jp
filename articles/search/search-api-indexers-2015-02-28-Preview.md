@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api" 
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na" 
-ms.date="07/08/2015" 
+ms.date="09/21/2015" 
 ms.author="heidist" />
 
 #インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)
@@ -40,7 +40,7 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 
 将来的にサポートするデータ ソースを増やす予定です。決定項目に優先順位を付けるために、[Azure Search フィードバックフォーラム](http://feedback.azure.com/forums/263029-azure-search)でフィードバックをご提供ください。
 
-インデクサーとデータ ソースのリソースに関連する上限については、「[制限と制約](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+インデクサーとデータ ソースのリソースに関連する上限については、「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
 ## 一般的な使用フロー
 
@@ -158,7 +158,7 @@ DocumentDB データ ソースを使用するとき、DocumentDB が与える `_
 
 SQL データベースが[変更追跡](https://msdn.microsoft.com/library/bb933875.aspx)をサポートする場合、SQL 統合変更追跡ポリシーの使用が推奨されます。このポリシーは最も効率的な変更追跡を可能にし、スキーマに明示的な「ソフト削除」列がなくても、Azure Search で削除済み行を識別できます。
 
-統合変更追跡は、Azure VM で SQL Server を使用している場合は SQL Server 2008 R2 より、Azure SQL データベースを使用している場合は Azure SQL データベース V12 よりサポートされます。
+統合変更追跡は、Azure VM で SQL Server を使用している場合は SQL Server 2008 R2 より、Azure SQL Database を使用している場合は Azure SQL Database V12 よりサポートされます。
 
 SQL 統合変更追跡ポリシーを使用するときは、個別のデータ削除検出ポリシーを指定しないでください。個別のデータ削除ポリシーには、削除された行を識別するためのサポートが組み込まれています。
 
@@ -522,7 +522,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
     DELETE https://[service name].search.windows.net/indexers/[indexer name]?api-version=[api-version]
     api-key: [admin key]
 
-インデクサーが削除されるとき、その時点で進行中のインデクサー実行は完了しますが、後続の実行はスケジュールされません。存在しないインデクサーを使用しようとすると、HTTP ステータス コードの「404 見つかりません」が表示されます。
+インデクサーが削除されるとき、その時点で進行中のインデクサー実行は完了しますが、後続の実行はスケジュールされません。存在しないインデクサーを使用しようとすると、HTTP 状態コードの「404 見つかりません」が表示されます。
  
 `api-version` は必須です。プレビュー バージョンは `2015-02-28-Preview` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
@@ -775,4 +775,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

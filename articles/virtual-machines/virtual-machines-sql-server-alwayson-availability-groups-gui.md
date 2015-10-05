@@ -1,12 +1,13 @@
-<properties 
-	pageTitle="Azure VM での AlwaysOn 可用性グループの構成 (GUI)"
+<properties
+	pageTitle="AlwaysOn 可用性グループの構成 (GUI) | Microsoft Azure"
 	description="Azure Virtual Machines で AlwaysOn 可用性グループを作成します。このチュートリアルでは、スクリプトではなく、主にユーザー インターフェイスとツールを使用します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar" />
-<tags 
+	editor="monicar"
+	tags="azure-service-management" />
+<tags
 	ms.service="virtual-machines"
 	ms.devlang="na"
 	ms.topic="article"
@@ -16,6 +17,14 @@
 	ms.author="jroth" />
 
 # Azure VM での AlwaysOn 可用性グループの構成 (GUI)
+
+> [AZURE.SELECTOR]
+- [Portal](virtual-machines-sql-server-alwayson-availability-groups-gui.md)
+- [PowerShell](virtual-machines-sql-server-alwayson-availability-groups-powershell.md)
+
+<br/>
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 このエンド ツー エンドのチュートリアルでは、Azure の仮想マシン上で実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。
 
@@ -128,7 +137,7 @@
 
 	|ページ|設定|
 |---|---|
-|デプロイ構成|**新しいフォレストを追加する** = 選択<br/>**ルート ドメイン名** = corp.contoso.com|
+|デプロイメント構成|**新しいフォレストを追加する** = 選択<br/>**ルート ドメイン名** = corp.contoso.com|
 |ドメイン コントローラー オプション|**パスワード** = Contoso!000<br/>**パスワードの確認入力** = Contoso!000|
 
 1. **[次へ]** をクリックして、ウィザード内の他のページを進めます。**[前提条件のチェック]** ページで、"**すべての前提条件のチェックに合格しました**" というメッセージが表示されることを確認します。関連する警告メッセージを確認する必要がありますが、インストールは続行できます。
@@ -213,7 +222,7 @@
 
 1. [次の DNS サーバーのアドレスを使う] を選択し、**[優先 DNS サーバー]** に「**10.10.2.4**」を指定します。
 
-1. アドレス **10.10.2.4** は、Azure 仮想ネットワークの 10.10.2.0/24 サブネット内の VM に割り当てられているアドレスです。このアドレスが割り当てられている VM が **ContosoDC** です。**ContosoDC** の IP アドレスを確認するには、次のように、コマンド プロンプトで **nslookup contosodc** を使用します。
+1. アドレス **10.10.2.4** は、Azure Virtual Network の 10.10.2.0/24 サブネット内の VM に割り当てられているアドレスです。このアドレスが割り当てられている VM が **ContosoDC** です。**ContosoDC** の IP アドレスを確認するには、次のように、コマンド プロンプトで **nslookup contosodc** を使用します。
 
 	![Use NSLOOKUP to find IP address for DC](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC664954.jpg)
 
@@ -249,7 +258,7 @@
 
 1. **[OK]** をクリックして **[管理者のプロパティ]** ダイアログ ボックスを閉じます。
 
-### VM に**フェールオーバー クラスタリング**機能を追加する
+### 各 VM に**フェールオーバー クラスタリング**機能を追加します。
 
 1. **[サーバー マネージャー]** ダッシュボードの **[役割と機能の追加]** をクリックします。
 
@@ -283,7 +292,7 @@
 
 これらはすべて、WSFC クラスターに参加させるための各 VM の前提条件です。
 
-また、Azure 仮想ネットワークの動作は、オンプレミス ネットワークとは異なることに注意してください。クラスターは、次の順序で作成する必要があります。
+また、Azure Virtual Network の動作は、オンプレミス ネットワークとは異なることに注意してください。クラスターは、次の順序で作成する必要があります。
 
 1. ノードのいずれかに単一ノード クラスターを作成します (**ContosoSQL1**)。
 
@@ -372,11 +381,11 @@
 1. **[NT AUTHORITY\\System]** ログインを右クリックし、**[プロパティ]** をクリックします。
 
 1. ローカル サーバーの **[セキュリティ保護可能なリソース]** ページで、次のアクセス許可の **[許可]** を選択し、**[OK]** をクリックします。
-	
+
 	- 可用性グループの変更
-	
+
 	- SQL の接続
-	
+
 	- サーバー状態の表示
 
 1. 次に、既定の SQL Server インスタンスに **sysadmin** ロールとして **CORP\\Install** を追加します。**オブジェクト エクスプローラー**で、**[ログイン]** を右クリックし、**[新しいログイン]** をクリックします。
@@ -532,6 +541,6 @@
 ## 次のステップ
 これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を実装できました。この可用性グループのリスナーを構成するには、[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener.md)に関するページを参照してください。
 
-Azure での SQL Server の使用に関するその他の情報は、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
+Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Windows Server 仮想マシンに MongoDB をインストールする"
-	description="Windows Server を実行する Azure VM に MongoDB をインストールする方法について説明します。"
+	pageTitle="Windows VM への MongoDB のインストール | Microsoft Azure"
+	description="Windows Server を実行するクラシック デプロイメント モデルで作成された Azure VM に MongoDB をインストールする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -19,7 +19,9 @@
 
 #Windows Server を実行する仮想マシンに MongoDB をインストールする
 
-[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。[Azure ポータル][AzureManagementPortal]では、クラシック デプロイ モデルを使用して、Windows Server を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MongoDB データベースをインストールして構成することができます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメントモデルで作成された仮想マシンにアプリケーションをインストールする方法を説明します。
+
+[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。[Azure ポータル][AzureManagementPortal]では、クラシック デプロイメント モデルを使用して、Windows Server を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MongoDB データベースをインストールして構成することができます。
 
 
 ## Windows Server を実行する仮想マシンの作成
@@ -48,4 +50,4 @@
 [MongoDB]: http://www.mongodb.org/
 [AzureManagementPortal]: http://manage.windowsazure.com
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

@@ -1,11 +1,12 @@
 <properties 
-	pageTitle="Azure 上の Linux に対応するユーザー名の選択" 
+	pageTitle="Linux に対応するユーザー名の選択 | Microsoft Azure" 
 	description="Azure で Linux 仮想マシンに対応するユーザー名を選択する方法について説明します。" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="szarkos" 
 	manager="timlt" 
-	editor=""/>
+	editor=""
+	tags="azure-service-management,azure-resource-manager" />
 
 <tags 
 	ms.service="virtual-machines" 
@@ -248,4 +249,4 @@ Azure に Linux 仮想マシンをプロビジョニングするとき、後で 
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

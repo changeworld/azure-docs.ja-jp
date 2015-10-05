@@ -1,11 +1,13 @@
 <properties 
-	pageTitle="Azure での動作保証済み Linux ディストリビューション" 
-	description="Azure での動作保証済み Linux ディストリビューションについて、Ubuntu、OpenLogic、および SUSE に関する指針も含めて、説明します。" 
+	pageTitle="動作保証済み Linux ディストリビューション | Microsoft Azure" 
+	description="Azure での動作保証済み Linux ディストリビューションについて、Ubuntu、OpenLogic、Oracle、および SUSE に関する指針も含めて、説明します。" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="szarkos" 
 	manager="timlt" 
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-service-management,azure-resource-manager" 
+	/>
 
 <tags 
 	ms.service="virtual-machines" 
@@ -77,4 +79,4 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

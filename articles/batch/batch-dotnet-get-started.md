@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-compute"
-	ms.date="07/21/2015"
+	ms.date="09/23/2015"
 	ms.author="yidingz"/>
 
 # .NET 向け Azure Batch ライブラリの概要  
@@ -205,14 +205,14 @@ BLOB ストレージの詳細については、[.NET から BLOB ストレージ
 
 2. 次のコードを Main に追加します。このコードは、Azure Batch サービスを呼び出す際に資格情報を設定します。
 
-			BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials("https://[account-name].[region].batch.azure.com", "[account-name]", "[account-key]");
+			BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials("[account-url]", "[account-name]", "[account-key]");
 			BatchClient client = BatchClient.Open(cred);
 
-	次の値を置き換えます。
+	かっこ付きの値を、Batch アカウントに関連付けられた値に置き換えます。値は [Azure プレビュー ポータル](https://portal.azure.com)で見つけることができます。これらの値を見つけるには、[Azure プレビュー ポータル](https://portal.azure.com)にログインします。
 
-	- **[account-name]** を、以前に作成した Batch アカウントの名前に置き換えます。
-	- **[region]** を、アカウントがあるリージョンに置き換えます。使用可能なリージョンを検索するには、[Azure のリージョン](http://azure.microsoft.com/regions/)をご覧ください。
-	- **[account-key]** を、Batch アカウントのプライマリ キーに置き換えます。
+	- **[account-name]** - **[Batch アカウント]** をクリックし、作成した Batch アカウントを選択します。
+	- **[account-url]** - [Batch アカウント] ブレードで、**[プロパティ]**、**[URL]** の順にクリックします。
+	- **[account-key]** - [Batch アカウント] ブレードで、**[プロパティ]**、**[キー]**、**[プライマリ アクセス キー]** の順にクリックします。
 
 3.	次のメソッドを Program クラスに追加します。このメソッドは、プールを作成します。
 
@@ -339,7 +339,7 @@ BLOB ストレージの詳細については、[.NET から BLOB ストレージ
 		}
 
 
-	**[account-name]** は、以前に作成したストレージ アカウントの名前に置き換える必要があります。前の例の **[account-name]** の 4 つのインスタンスすべてを置き換えてください。
+	**[account-name]** は、前に作成したストレージ アカウントの名前に置き換える必要があります。前の例では、**[account-name]** の 4 つのインスタンスすべてを置き換えてください。
 
 
 2. 次のコードを Main に追加します。このコードは、先ほど追加したメソッドを呼び出します。
@@ -491,8 +491,8 @@ Azure のリソースに対して課金されるため、不要になったリ�
 
 ## 次のステップ
 
-1. ここまでは、タスクの実行の基本について説明してきました。アプリケーションの需要が変化した場合に、コンピューティング ノードを自動的にスケーリングする方法については、[Azure Batch プール内のコンピューティング ノードの自動スケーリング](batch-automatic-scaling.md)をご覧ください。
+1. ここまでは、タスクの実行の基本について説明してきました。アプリケーションの需要が変化した場合に、コンピューティング ノードを自動的にスケーリングする方法については、「[Azure Batch プール内のコンピューティング ノードの自動スケーリング](batch-automatic-scaling.md)」をご覧ください。
 
 2. 一部のアプリケーションは、処理するのに困難な大量のデータを生成します。これを解決する 1 つの方法は、[効率的なリスト クエリ](batch-efficient-list-queries.md)を使用することです。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"  
+	ms.date="09/23/2015"  
 	ms.author="juliako"/>
 
 #Azure オンデマンド メディア エンコーダーの概要と比較
@@ -36,7 +36,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
 
 - **メディア エンコーダー スタンダード**
-- **Azure メディア エンコーダー** 
+- **Azure Media Encoder** 
 - **メディア エンコーダー プレミアム ワークフロー**
 
 この記事には、オンデマンド メディア エンコーダーの簡単な説明と、詳しい情報を提供する記事のリンクが含まれています。このトピックではまた、エンコーダーを比較します。
@@ -49,10 +49,10 @@ Media Services は次のオンデマンド エンコーダーをサポートし�
 
 メディア エンコーダー スタンダードを使用することをお勧めします。ただし、これは現在、Azure ポータルでは公開されていません。
 
-Azure メディア エンコーダーと比較すると、このエンコーダーではサポートされる入力または出力の形式とコーデックの数が多くなっています。他には次のような利点があります。
+Azure Media Encoder と比較すると、このエンコーダーではサポートされる入力または出力の形式とコーデックの数が多くなっています。他には次のような利点があります。
 
 - 入力ファイルの作成方法に対する許容範囲が広い
-- Azure メディア エンコーダーより H.264 コーデックの品質が優れている
+- Azure Media Encoder より H.264 コーデックの品質が優れている
 - より新しく、より柔軟なパイプラインの上に構築される
 - より堅牢で回復力が高い
 
@@ -70,13 +70,13 @@ Azure メディア エンコーダーと比較すると、このエンコーダ�
 
 ###入力メタデータと出力メタデータ
 
-エンコーダーの入力メタデータの説明は[ここ](http://msdn.microsoft.com/library/azure/dn783120.aspx)にあります (Azure メディア エンコーダーと同じ)。
+エンコーダーの入力メタデータの説明は[ここ](http://msdn.microsoft.com/library/azure/dn783120.aspx)にあります。
 
-エンコーダーの出力メタデータの説明は[ここ](http://msdn.microsoft.com/library/azure/dn783217.aspx)にあります (Azure メディア エンコーダーと同じ)。
+エンコーダーの出力メタデータの説明は[ここ](http://msdn.microsoft.com/library/azure/dn783217.aspx)にあります。
 
 ###サムネイル
 
-現在、サポートされていません。
+サムネイルを生成する方法については、「[Media Encoder Standard を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md)」を参照してください。
 
 ###オーディオまたはビデオのオーバーレイ
 
@@ -90,11 +90,11 @@ Azure メディア エンコーダーと比較すると、このエンコーダ�
 
 ###概要
 
-Azure メディア エンコーダーは Media Services がサポートするエンコーダーの 1 つです。2015 年 7 月より、[メディア エンコーダー スタンダード](media-services-encode-asset.md#media_encoder_standard)を使用することをお勧めします。
+Azure Media Encoder は Media Services がサポートするエンコーダーの 1 つです。2015 年 7 月以降は、[Media Encoder Standard](media-services-encode-asset.md#media_encoder_standard) を使用することをお勧めします。
 
 ###使用方法
 
-[Azure メディア エンコーダーを使用したエンコード方法](media-services-dotnet-encode-asset.md)
+[Azure Media Encoder を使用したエンコード方法](media-services-dotnet-encode-asset.md)
 
 ###形式
 
@@ -102,7 +102,7 @@ Azure メディア エンコーダーは Media Services がサポートするエ
 
 ###プリセット
 
-Azure メディア エンコーダーは、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセットのいずれかを使用して構成されます。実際の Azure メディア エンコーダーのプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
+Azure Media Encoder は、[ここ](https://msdn.microsoft.com/library/azure/dn619392.aspx)で説明されているエンコーダーのプリセットのいずれかを使用して構成されています。実際の Azure Media Encoder のプリセット ファイルは、[ここ](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)で入手できます。
 
 ###入力メタデータと出力メタデータ
 
@@ -112,7 +112,7 @@ Azure メディア エンコーダーは、[ここ](https://msdn.microsoft.com/l
 
 ###サムネイル
 
-[サムネイルの作成](https://msdn.microsoft.com/library/azure/Dn673581.aspx)
+[サムネイルの作成](https://msdn.microsoft.com/library/hh973624.aspx)
 
 ###オーディオまたはビデオのオーバーレイ
 
@@ -127,14 +127,16 @@ Azure メディア エンコーダーは、[ここ](https://msdn.microsoft.com/l
 [ドルビー デジタル プラスを使ったメディアのエンコード](media-services-encode-with-dolby-digital-plus.md)
 
 ##メディア エンコーダー プレミアム ワークフロー
-	
-メディア エンコーダー プレミアム ワークフロー は複雑なワークフローを使用して構成されています。ワークフローのファイルは、[ワークフロー デザイナー](media-services-workflow-designer.md) ツールを使用して作成し、更新できます。
 
-詳細については、次を参照してください。
+###概要
 
-- [Azure Media Services の Premium Encoding の紹介 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
-- [Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+[Azure Media Services の Premium Encoding の紹介 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 
+###使用方法
+
+メディア エンコーダー プレミアム ワークフロー は複雑なワークフローを使用して構成されています。Workflow ファイルは、[Workflow Designer](media-services-workflow-designer.md) ツールを使用して作成して更新できます。
+
+[Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 
 ##<a id="compare_encoders"></a>エンコーダーの比較
 
@@ -143,11 +145,11 @@ Azure メディア エンコーダーは、[ここ](https://msdn.microsoft.com/l
 メディア プロセッサ名|適用される価格|メモ
 ---|---|---
 **メディア エンコーダー スタンダード** |エンコーダー|Encoding タスクは、[こちら][1]の「エンコーダー」列に指定されている料金で、出力資産のサイズ (GB) に従って課金されます。
-**Azure メディア エンコーダー** |エンコーダー|Encoding タスクは、[こちら][1]の「エンコーダー」列に指定されている料金で、出力資産のサイズ (GB) に従って課金されます。
+**Azure Media Encoder** |エンコーダー|Encoding タスクは、[こちら][1]の「エンコーダー」列に指定されている料金で、出力資産のサイズ (GB) に従って課金されます。
 **メディア エンコーダー プレミアム ワークフロー** |プレミアム エンコーダー|Encoding タスクは、[こちら][1]の「PREMIUM エンコーダー」列に指定されている料金で、出力資産のサイズ (GB) に従って課金されます。
 
 
-このセクションでは、**メディア エンコーダー スタンダード**、**Azure メディア エンコーダー**、**メディア エンコーダー プレミアム ワークフロー**のエンコード機能を比較します。
+このセクションでは、**メディア エンコーダー スタンダード**、**Azure Media Encoder**、**メディア エンコーダー プレミアム ワークフロー**のエンコード機能を比較します。
 
 
 ###入力コンテナー/ファイル形式
@@ -254,4 +256,4 @@ AMS のラーニング パスについては、以下を参照してください
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

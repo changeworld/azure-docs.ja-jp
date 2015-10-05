@@ -26,13 +26,13 @@
 
 このチュートリアルでは、Azure で提供される DocumentDB サービスを使用して、Azure にホストされている ASP.NET MVC Web アプリケーションからデータを保存したりデータにアクセスしたりする方法を説明します。
 
-> [AZURE.TIP]このチュートリアルでは、ASP.NET MVC と Azure Websites の使用経験がある読者を想定しています。ASP.NET や[前提条件となるツール](#_Toc395637760)を初めて扱う方は、完全な [todo](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/todo) チュートリアル プロジェクトを [GitHub](https://github.com/Azure/azure-documentdb-net) からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
+> [AZURE.TIP]このチュートリアルでは、ASP.NET MVC と Azure Websites の使用経験がある読者を想定しています。ASP.NET や[前提条件となるツール](#_Toc395637760)を初めて扱う方は、完全なサンプル プロジェクトを [GitHub][] からダウンロードして、この例の指示に従うことをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 
 ## <a name="_Toc395637760"></a>このデータベース チュートリアルの前提条件
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](../../pricing/free-trial/)をご覧ください。
+- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](../../pricing/free-trial/)を参照してください。
 - [Visual Studio 2013](http://www.visualstudio.com/) Update 4 以降。
 - Azure SDK for .NET Version 2.5.1 以降 ([Microsoft Web Platform Installer][] にて提供)。
 
@@ -581,7 +581,7 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 	![このデータベース チュートリアルで作成された、ToDo リスト Web アプリケーションのスクリーン ショット](./media/documentdb-dotnet-application/image24.png)
 
-	この段階でエラーが発生する場合は、自分のコードと [GitHub][] の todo チュートリアルとを比較してください。
+	この段階でエラーが発生する場合は、自分のコードと [GitHub][] のサンプル プロジェクトを比較してください。
 
 2. **[Create New]** リンクをクリックし、**[Name]** フィールドと **[Description]** フィールドに値を追加します。**[Completed]** チェック ボックスはオフのままとします。オンにした場合、新しい **Item** が完了済みの状態で追加されるため、最初のリストに表示されません。
 
@@ -619,44 +619,12 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 アプリケーションに機能を追加する場合は、[DocumentDB .NET ライブラリ](http://msdn.microsoft.com/library/azure/dn783362.aspx)から入手できる API を参考にしてください。[GitHub][] の DocumentDB .NET ライブラリにも気軽に投稿してください。
 
-##<a id="GetProject"></a>GitHub からのソリューションの入手
-
-時間を節約するために、コードを自分で追加することなく完全な todo ソリューションをビルドすることもできます。GitHub から完全なソリューションを入手して、次の手順に従うと、ソリューションを数分でビルドしてデプロイできます。
-
-1. [前提条件のソフトウェア](#_Toc395637760) (Visual Studio、Azure SDK for .NET Version 2.3 以降など) がインストールされていることを確認します。
-
-2. Git for Windows ([http://www.git-scm.com/](http://www.git-scm.com/)) を使用して azure-documentdb-net リポジトリを複製するか、[GitHub](https://github.com/Azure/azure-documentdb-net/) から zip ファイルをダウンロードします。
-
-2. Visual Studio で、azure-documentdb-net/tutorials/todo ディレクトリにある todo.sln ファイルを開きます。
-
-3. Visual Studio 2013 で DocumentDB .NET SDK への参照を復元するには、**ソリューション エクスプローラー**で todo ソリューションを右クリックし、**[NuGet パッケージの復元を有効にする]** をクリックして参照を復元します。
-
-4. [Azure プレビュー ポータル](https://portal.azure.com/)の DocumentDB アカウントの **[キー]** ブレードから、**[URI]** 値と **[プライマリ キー]** または **[セカンダリ キー]** 値を入手します。
-
-	
-	アカウントを持っていない場合は、「[データベース アカウントの作成](documentdb-create-account.md)」の説明に従ってアカウントを設定します。
-
-	![DocumentDB アカウントを示す、アクティブなハブ、[DocumentDB アカウント] ブレードの [キー] ボタン、[キー] ブレードの URI の値、プライマリ キーの値、およびセカンダリ キーの値が強調表示されている Azure プレビュー ポータルのスクリーン ショット](media/documentdb-dotnet-application/keys.png)
-
-5. Web.config ファイルの **endpoint** キーと **authKey** キーの既定値を更新します。
-
-    	<add key="endpoint" value="~enter URI for your DocumentDB Account, from Azure Preview portal~" /> 
-		<add key="authKey" value="~enter either Primary or Secondary key for your DocumentDB Account, from Azure Preview portal~" /> 
-
-	- [キー] ブレードの **[URI]** 値をコピーし、**endpoint** プロパティ値に貼り付けます。 
-	- **[キー]** ブレードの **[プライマリ キー]** または **[セカンダリ キー]** 値をコピーし、**authKey** プロパティ値に貼り付けます。
-	
-
-
-7. これで、[アプリケーションをローカルに実行](#_Toc395637773)し、[Azure Websites](#_Toc395637774) にデプロイできます。
-
 
 [*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
 [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[GitHub]: http://go.microsoft.com/fwlink/?LinkID=509838&clcid=0x409
 [Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
- 
+[GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/23/2015"
+   ms.date="09/22/2015"
    ms.author="barbkess"/>
 
 # 言語要素
@@ -49,8 +49,8 @@
 ## 演算子
 - [\+ (加算)](https://msdn.microsoft.com/library/ms178565.aspx)
 - [\+ (文字列連結)](https://msdn.microsoft.com/library/ms177561.aspx)
-- [\- (負)](https://msdn.microsoft.com/library/ms189480.aspx)
-- [\- (減算)](https://msdn.microsoft.com/library/ms189518.aspx)
+- [- (負)](https://msdn.microsoft.com/library/ms189480.aspx)
+- [- (減算)](https://msdn.microsoft.com/library/ms189518.aspx)
 - [* (乗算)](https://msdn.microsoft.com/library/ms176019.aspx)
 - [/ (除算)](https://msdn.microsoft.com/library/ms175009.aspx)
 - [剰余](https://msdn.microsoft.com/library/ms190279.aspx)
@@ -78,7 +78,7 @@
 - [& (ビット演算子 AND)](https://msdn.microsoft.com/library/ms174965.aspx)
 - [| (ビット演算子 OR)](https://msdn.microsoft.com/library/ms186714.aspx)
 - [^ (ビットごとの排他的 OR)](https://msdn.microsoft.com/library/ms190277.aspx)
-- [\~ (ビット演算子 NOT)](https://msdn.microsoft.com/library/ms173468.aspx)
+- [~ (ビット演算子 NOT)](https://msdn.microsoft.com/library/ms173468.aspx)
 - [^= (ビットごとの排他的 OR 代入)](https://msdn.microsoft.com/library/cc627413.aspx)
 - |= (ビット演算子 OR EQUALS)
 - ? (ビット演算子 AND EQUALS)
@@ -290,4 +290,4 @@
 
 <!--MSDN references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

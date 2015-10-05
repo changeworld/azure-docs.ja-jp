@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Data Factory のパイプラインの監視と管理"
-	description="Microsoft Azure 管理ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="Azure Data Factory のパイプラインの監視と管理" 
+	description="Microsoft Azure 管理ポータルおよび Azure PowerShell を使用して、作成した Azure Data Factory とパイプラインを監視および管理する方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/27/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/27/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory のパイプラインの監視と管理
@@ -287,6 +287,10 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 
 特定のエラーについてアラートを受信しないようにする場合は、上記の JSON 定義から **subStatus** を削除できます。
 
+上記の例では、サブスクリプション内のすべてのデータ ファクトリのアラートを設定しています。特定のデータ ファクトリのアラートを設定する場合は、次に示すように、**dataSource** ブロックの **resourceUri** にデータ ブロックを指定できます。
+
+	"resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>"
+
 次の表では、使用できる操作と状態 (および副状態) の一覧を示します。
 
 操作の名前 | 状態 | 副状態
@@ -369,7 +373,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 #### メトリックの有効化:
 メトリックを有効にするには、Data Factory ブレードから次のようにクリックします。
 
-**[監視]** -> **[メトリック]** -> **[診断設定]** -> **[診断]**
+**[監視]**、**[メトリック]**、**[診断設定]**、**[診断]**
 
 **[診断]** ブレードで **[オン]** をクリックし、ストレージ アカウントを選択して保存します。
 
@@ -380,7 +384,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 ### メトリックに対するアラートの設定:
 
-メトリックのアラートを設定するには、Data Factory ブレードから **[監視]**、**[メトリック]**、**[アラートの追加]**、**[アラート ルールの追加]** の順にクリックします。
+メトリックのアラートを設定するには、[データ ファクトリ] ブレードから **[監視]**、**[メトリック]**、**[アラートの追加]**、**[アラート ルールの追加]** の順にクリックします。
 
 アラート ルールの詳細を入力し、電子メールを指定して、**[OK]** をクリックします。
 
@@ -469,6 +473,6 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-monitor-manage-pipelines.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-monitor-manage-pipelines.md)でフィードバックをお寄せください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

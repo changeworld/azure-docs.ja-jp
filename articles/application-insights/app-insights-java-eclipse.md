@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/09/2015" 
+	ms.date="09/16/2015" 
 	ms.author="awills"/>
  
 # Eclipse で Java 用に Application Insights を使う
@@ -22,7 +22,7 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 
 ## 前提条件
 
-現在、プラグインは、Eclipse の動的 Web プロジェクトに対応しています ([他の種類の Java プロジェクトに Application Insights を追加します][java])。
+現在、プラグインは、Eclipse のMaven プロジェクトと動的 Web プロジェクトに対応しています ([他の種類の Java プロジェクトに Application Insights を追加します][java])。
 
 必要なものは次のとおりです。
 
@@ -46,29 +46,20 @@ Application Insights SDK は、利用状況とパフォーマンスを分析で�
 
 Java プロジェクトごとに、残りの手順に従います。
 
-## Application Insights のインストルメンテーション キーを取得する
+## Azure で Application Insights のリソースを作成する
 
-利用状況およびパフォーマンス分析は、Azure Web ポータルの Azure リソースに表示されます。この手順では、アプリケーションの Azure リソースを設定します。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 
 
-1. [Microsoft Azure ポータル](https://portal.azure.com)にログインします ([Azure サブスクリプションが必要です](http://azure.microsoft.com/))。
-2. 新しい Application Insights リソースを作成します。
-
-    ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-eclipse/01-create.png)
-3. アプリケーションの種類を [Java Web アプリケーション] に設定します。
-
-    ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-eclipse/02-create.png)
-4. 新しいリソースのインストルメンテーション キーを見つけます。このキーは、後で Eclipse のプロジェクトに貼り付けます。
-
-    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/03-key.png)
-
-## Java プロジェクトに SDK を追加する
+## Add Application Insights to your project
 
 1. Web プロジェクトのコンテキスト メニューから Application Insights を追加します。
 
-    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/4-addai.png)
+    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/02-context-menu.png)
+
 2. Azure ポータルで入手したインストルメンテーション キーを貼り付けます。
 
-    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/5-config.png)
+    ![新しいリソース概要で、[プロパティ] をクリックし、インストルメンテーション キーをコピーします](./media/app-insights-java-eclipse/03-ikey.png)
 
 
 このキーは、テレメトリのすべての項目と共に送信され、リソース内にこれを表示するように Application Insights に指示します。
@@ -267,4 +258,4 @@ Java Web アプリケーションに数行のコードを挿入して、ユー�
 
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

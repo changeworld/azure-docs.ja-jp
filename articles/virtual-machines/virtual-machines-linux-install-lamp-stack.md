@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Linux 仮想マシンへの LAMP スタックのインストール"
-	description="Azure 上の Linux 仮想マシン (VM) に LAMP スタックをインストールする方法について説明します。Ubuntu または CentOS 上でインストールできます。"
+	pageTitle="Linux 仮想マシンへの LAMP スタックのインストール | Microsoft Azure"
+	description="Azure 上の Linux 仮想マシン (VM) に LAMP スタックをインストールする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="szarkos"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags=“azure-service-management,azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -19,6 +20,8 @@
 
 
 #Azure 上の Linux 仮想マシンへの LAMP スタックのインストール
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用したリソースの作成について説明します。
 
 LAMP スタックは次のさまざまな要素で構成されています。
 
@@ -125,4 +128,4 @@ Ubuntu 上での LAMP スタックの設定については、他にも多くの�
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

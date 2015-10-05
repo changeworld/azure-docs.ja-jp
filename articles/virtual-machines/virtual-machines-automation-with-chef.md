@@ -1,18 +1,19 @@
 <properties
-   pageTitle="Chef で Azure 仮想マシンのデプロイメントを自動化する"
-	description="Chef を使用した Azure 仮想マシンの自動化技術について説明します"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="diegoviso"
-	manager="timlt"
-	editor=""/>
+   pageTitle="Chef による Azure 仮想マシンのデプロイ | Microsoft Azure"
+   description="Chef を使用して自動化された仮想マシンのデプロイと構成を Microsoft Azure で実行する方法について説明します。"
+   services="virtual-machines"
+   documentationCenter=""
+   authors="diegoviso"
+   manager="timlt"
+   tags="azure-service-management,azure-resource-manager"
+   editor=""/>
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-multiple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/19/2015"
-	ms.author="diviso"/>
+ms.tgt_pltfrm="vm-multiple"
+ms.devlang="na"
+ms.topic="article"
+ms.date="05/19/2015"
+ms.author="diviso"/>
 
 # Chef で Azure 仮想マシンのデプロイメントを自動化する
 
@@ -34,7 +35,7 @@ Chef は最新の cloud-api リリースで Azure とのシームレスな統合
 
 Chef には、Chef サーバー、Chef クライアント (ノード)、および Chef ワークステーションという 3 つの主要なアーキテクチャ コンポーネントがあります。
 
-Chef サーバーは管理ポイントとなります。Chef サーバーにはホスト型ソリューションと内部設置型ソリューションの 2 つのオプションがあります。ここではホスト型ソリューションを使用します。
+Chef サーバーは管理ポイントとなります。Chef サーバーにはホスト型ソリューションとオンプレミスのソリューションの 2 つのオプションがあります。ここではホスト型ソリューションを使用します。
 
 Chef クライアント (ノード) は管理対象のサーバーに置かれるエージェントです。
 
@@ -139,7 +140,7 @@ PATH 変数に C:\\opscode\\chefdk\\bin;C:\\opscode\\chefdk\\embedded\\bin;c:\\u
 
 ##Cookbook の作成
 
-Cookbookは管理するクライアント上で実行する一連のコマンドを定義するために Chef で使用します。Cookbook は簡単に作成でき、**chef generate cookbook** コマンドを使用して Cookbook のテンプレートを生成します。ポリシーで IIS を自動的に展開させるため、Cookbook webserver を呼び出します。
+Cookbookは管理するクライアント上で実行する一連のコマンドを定義するために Chef で使用します。Cookbook は簡単に作成でき、**chef generate cookbook** コマンドを使用して Cookbook のテンプレートを生成します。ポリシーで IIS を自動的にデプロイさせるため、Cookbook webserver を呼び出します。
 
 C:\\Chef ディレクトリで次のコマンドを実行します。
 
@@ -187,7 +188,7 @@ C:\\chef\\cookbooks\\webserver\\templates\\default\\Default.htm.erb ファイル
 
 ![][9]
 
-## Knife Azure で仮想マシンを展開する
+## Knife Azure で仮想マシンをデプロイする
 
 Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb ページをインストールする "Webserver" Cookbook を適用します。
 
@@ -236,4 +237,4 @@ Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb
 
 <!--Link references-->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

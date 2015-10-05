@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="tbd" 
-	ms.date="04/21/2015"
+	ms.date="09/17/2015"
 	ms.author="himad"/>
 
 
@@ -38,7 +38,7 @@ Azure Machine Learning では、発行された Web サービスに対して複�
 - 下部の **[エンドポイントの追加]** ボタンをクリックします。名前と説明を入力して、この Web サービスの他のエンドポイントに同じ名前がないことを確認します。特別な要件がない限り、調整レベルは既定値のままにします。調整の詳細については、「[API エンドポイントのスケーリング](machine-learning-scaling-endpoints.md)」をご覧ください。![エンドポイントを作成する](./media/machine-learning-create-endpoint/figure-4.png)
 
 
-エンドポイントが作成されたら、同期 API、バッチ API、および Excel のワークシートによってそれを使用できます。Machine Learning Web サービスの使用については、「[発行済みの Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」をご覧ください。
+エンドポイントが作成されたら、同期 API、バッチ API、および Excel のワークシートによってそれを使用できます。この UI によるエンドポイントの追加に加え、エンドポイントは Endpoint Management API を使用してプログラムで追加することもできます。Machine Learning Web サービスの使用については、「[発行済みの Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」をご覧ください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

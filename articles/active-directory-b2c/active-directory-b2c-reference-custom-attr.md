@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="09/22/2015"
 	ms.author="swkrish"/>
 
 #  Azure Active Directory B2C プレビュー: カスタム属性を使用してコンシューマーに関する情報を収集する
@@ -46,4 +46,4 @@ Azure Active Directory (AD) B2C ディレクトリには、組み込みの属性
 
 ポリシーで [今すぐ実行] 機能を使用して、コンシューマー エクスペリエンスを確認できます。コンシューマーのサインアップ時に収集される属性の一覧、およびアプリケーションに返送されるトークンに、"ShoeSize" が表示されるようになります。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

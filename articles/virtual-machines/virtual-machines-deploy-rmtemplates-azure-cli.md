@@ -1,11 +1,12 @@
 <properties
-	pageTitle="リソース マネージャー テンプレートと Mac、Linux、および Windows 用 Azure CLI を使用した Azure 仮想マシンのデプロイと管理 | Microsoft Azure"
-	description="Azure 仮想マシンの最も一般的な構成セットを簡単にデプロイし、リソース マネージャー テンプレートと Azure CLI を使用してそれらを管理します。"
+	pageTitle="テンプレートを使用した VM のデプロイと管理 | Microsoft Azure"
+	description="リソース マネージャー テンプレートと Azure CLI を使用して、Azure 仮想マシンの最も一般的な構成をデプロイおよび管理します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -20,12 +21,15 @@
 
 この記事では、Azure リソース マネージャー テンプレートと Azure CLI を使用し、Azure 仮想マシンのデプロイと管理に関する以下の一般的なタスクを実行する方法について説明します。使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)に関するページを参照してください。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイメント モデルのテンプレートを使用した VM のデプロイおよび管理について説明します。クラシック デプロイメント モデルのテンプレートは使用できません。
+
+
 - [Azure での仮想マシンの簡易作成](#quick-create-a-vm-in-azure)
 - [テンプレートから Azure への仮想マシンのデプロイ](#deploy-a-vm-in-azure-from-a-template)
 - [カスタム イメージからの仮想マシンの作成](#create-a-custom-vm-image)
 - [仮想ネットワークおよびロード バランサーを使用する仮想マシンのデプロイ](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
 - [リソース グループの削除](#remove-a-resource-group)
-- [リソース グループ デプロイのログの表示](#show-the-log-for-a-resource-group-deployment)
+- [リソース グループ デプロイメントのログの表示](#show-the-log-for-a-resource-group-deployment)
 - [仮想マシンに関する情報の表示](#display-information-about-a-virtual-machine)
 - [Linux ベースの仮想マシンへの接続](#log-on-to-a-linux-based-virtual-machine)
 - [仮想マシンの停止](#stop-a-virtual-machine)
@@ -86,9 +90,9 @@ Azure リソース管理テンプレートを使用するには、職場また�
 
 ## Azure リソース テンプレートおよびリソース グループについて
 
-大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。既定の Azure サービス管理 API と Azure ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。この方法では、個々のサービスを 1 つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
+大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。既定の Azure サービス管理 API と Azure ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。この方法では、個々のサービスを 1 つの論理的なデプロイメント単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
 
-*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイ全体、つまりすべてのリソースと、関連する構成およびデプロイ パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
+*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイメント単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイメント全体、つまりすべてのリソースと、関連する構成およびデプロイメント パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
 
 その後は、Azure CLI リソース管理コマンドを使用して以下を実行することで、そのグループのリソースのライフ サイクル全体を管理できます。
 
@@ -97,7 +101,7 @@ Azure リソース管理テンプレートを使用するには、職場また�
 - 操作を監査する。
 - 追跡機能を向上させるために追加のメタデータでリソースのタグ付けを行う。
 
-Azure リソース グループとその機能の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。テンプレートの作成に興味がある場合は、「[Azure リソース マネージャー テンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+Azure リソース グループとその機能の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
 
 ## <a id="quick-create-a-vm-in-azure"></a>タスク: Azure での VM の簡易作成
 
@@ -428,7 +432,7 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
 
 ### 手順 2. テンプレートを使用して仮想マシンを作成する
 
-パラメーター値を用意したら、テンプレートのデプロイ用のリソース グループを作成し、テンプレートをデプロイする必要があります。
+パラメーター値を用意したら、テンプレートのデプロイメント用のリソース グループを作成し、テンプレートをデプロイする必要があります。
 
 リソース グループを作成するには、使用するグループ名とデプロイ先のデータセンターの場所を指定して、「`azure group create <group name> <location>`」を入力します。この作成はすばやく実行されます。
 
@@ -446,14 +450,14 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
     info:    group create command OK
 
 
-デプロイを作成するには、`azure group deployment create` を呼び出し、次の情報を渡します。
+デプロイメントを作成するには、`azure group deployment create` を呼び出し、次の情報を渡します。
 
 - テンプレート ファイル (上記の JSON テンプレートをローカル ファイルに保存した場合)
 - テンプレートの URI (GitHub や他の Web アドレスにあるファイルをポイントする場合)
 - デプロイ先のリソース グループ
-- デプロイ名 (省略可能)
+- デプロイメント名 (省略可能)
 
-JSON ファイルの "parameters" セクションのパラメーター値を指定するよう求められます。すべてのパラメーター値を指定すると、デプロイが開始されます。
+JSON ファイルの "parameters" セクションのパラメーター値を指定するよう求められます。すべてのパラメーター値を指定すると、デプロイメントが開始されます。
 
 たとえば次のようになります。
 
@@ -709,7 +713,7 @@ Linux ベースの仮想マシンについては、「[Linux オペレーティ�
     data:
     info:    group create command OK
 
-次に、テンプレートを直接呼び出す `--template-uri` オプションを使用してデプロイを作成します (または `--template-file` オプションを使用してローカルに保存したファイルを使用することもできます)。テンプレートは既定値を指定されているため、求められる入力値は少数です。さまざまな場所にテンプレートをデプロイする場合、既定値 (特に、作成する DNS 名) との名前付けの競合が発生する場合があります。
+次に、テンプレートを直接呼び出す `--template-uri` オプションを使用してデプロイメントを作成します (または `--template-file` オプションを使用してローカルに保存したファイルを使用することもできます)。テンプレートは既定値を指定されているため、求められる入力値は少数です。さまざまな場所にテンプレートをデプロイする場合、既定値 (特に、作成する DNS 名) との名前付けの競合が発生する場合があります。
 
     azure group deployment create \
     > --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json \
@@ -1102,9 +1106,9 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
         ]
     }
 
-### 手順 2. テンプレートを使用してデプロイを作成する
+### 手順 2. テンプレートを使用してデプロイメントを作成する
 
-`azure group create <location>` を使用して、テンプレートのリソース グループを作成します。`azure group deployment create` を使用してそのリソース グループへのデプロイを作成し、リソース グループを渡します。デプロイ名を渡して、既定値がないテンプレートのパラメーターに関するプロンプトに答えます。
+`azure group create <location>` を使用して、テンプレートのリソース グループを作成します。`azure group deployment create` を使用してそのリソース グループへのデプロイメントを作成し、リソース グループを渡します。デプロイ名を渡して、既定値がないテンプレートのパラメーターに関するプロンプトに答えます。
 
 
     azure group create lbgroup westus
@@ -1180,15 +1184,15 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
     + Deleting resource group myResourceGroup
     info:    group delete command OK
 
-## <a id="show-the-log-for-a-resource-group-deployment"></a>タスク: リソース グループ デプロイのログの表示
+## <a id="show-the-log-for-a-resource-group-deployment"></a>タスク: リソース グループ デプロイメントのログの表示
 
-これは、テンプレートの作成時や使用時によく行われます。グループのデプロイ ログを表示するための呼び出しは `azure group log show <groupname>` ですが、これにより、何かが発生した場合、または発生しなかった場合、その理由を把握するのに役立つ大量の情報が表示されます (デプロイのトラブルシューティングの詳細、および問題に関するその他の情報については、「[Azure でのリソース グループのデプロイのトラブルシューティング](resource-group-deploy-debug.md)」を参照してください)。
+これは、テンプレートの作成時や使用時によく行われます。グループのデプロイメント ログを表示するための呼び出しは `azure group log show <groupname>` ですが、これにより、何かが発生した場合、または発生しなかった場合、その理由を把握するのに役立つ大量の情報が表示されます (デプロイメントのトラブルシューティングの詳細、および問題に関するその他の情報については、「[Azure でのリソース グループのデプロイメントのトラブルシューティング](resource-group-deploy-debug.md)」を参照してください)。
 
-特定のエラーを対象にするには、たとえば **jq** のようなツールを使用すると、個々のエラーのうちどれを修正する必要があるかなど、もう少し的確なクエリができます。次の例では、**jq** を使用して **lbgroup** のデプロイ ログを解析し、エラーを探しています。
+特定のエラーを対象にするには、たとえば **jq** のようなツールを使用すると、個々のエラーのうちどれを修正する必要があるかなど、もう少し的確な照会ができます。次の例では、**jq** を使用して **lbgroup** のデプロイメント ログを解析し、エラーを探しています。
 
     azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Failed") | .properties'
 
-発生している問題をすばやく見つけて、修正し、やり直すことができます。次のケースでは、テンプレートによって 2 つの VM が同時に作成されたため、.vhd にロックがかけられています。(テンプレートの修正後、デプロイは速やかに正常終了しました)。
+発生している問題をすばやく見つけて、修正し、やり直すことができます。次のケースでは、テンプレートによって 2 つの VM が同時に作成されたため、.vhd にロックがかけられています。(テンプレートの修正後、デプロイメントは速やかに正常終了しました)。
 
     {
       "statusCode": "Conflict",
@@ -1265,7 +1269,7 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>タスク: Linux ベースの仮想マシンへのログオン
 
-通常、Linux マシンは SSH によって接続されます。詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」を参照してください。
+通常、Linux マシンは SSH によって接続されます。詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」をご覧ください。
 
 ## <a id="stop-a-virtual-machine"></a>タスク: VM の停止
 
@@ -1302,4 +1306,4 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)に関するページを参照してください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

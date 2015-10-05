@@ -1,19 +1,19 @@
 <properties
  pageTitle="HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する | Microsoft Azure"
-	description="."
-	services="virtual-machines"
-	documentationCenter=""
-	authors="dlepow"
-	manager="timlt"
-	editor=""/>
+ description="."
+ services="virtual-machines"
+ documentationCenter=""
+ authors="dlepow"
+ manager="timlt"
+ editor=""/>
 <tags
 ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-windows"
-	ms.workload="big-compute"
-	ms.date="08/18/2015"
-	ms.author="danlep"/>
+ ms.devlang="na"
+ ms.topic="article"
+ ms.tgt_pltfrm="vm-windows"
+ ms.workload="big-compute"
+ ms.date="08/18/2015"
+ ms.author="danlep"/>
 
 # Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する
 
@@ -135,14 +135,14 @@ HPC Pack IaaS デプロイメント スクリプトは、HPC Pack クラスタ�
     <ServiceName>HPCExcelCN01</ServiceName>
     <VMSize>Medium</VMSize>
     <NodeCount>18</NodeCount>
-    <ImageName HPCPackInstalled="true">96316178b0644ae08bc4e037635ce104__HPC-Pack-2012R2-Update2-CN-Excel-4.4.4864.0-WS2012R2-ENU</ImageName>
+    <ImageName HPCPackInstalled="true">96316178b0644ae08bc4e037635ce104__HPC-Pack-2012R2-Update2-CN-Excel-4.4.4868.0-WS2012R2-ENU</ImageName>
   </ComputeNodes>
 </IaaSClusterConfig>
 ```
 
 **構成ファイルに関する注意事項**
 
-* ヘッド ノードの **VMName** は、**ServiceName** と正確に一致している必要があります。
+* ヘッド ノードの **VMName** は、**ServiceName** と正確に一致している必要があります。一致していないと、SOA ジョブの実行に失敗します。
 
 * ヘッド ノード証明書が生成されてエクスポートされるように、**EnableWebPortal** を必ず指定してください。
 
@@ -158,7 +158,7 @@ HPC Pack IaaS デプロイメント スクリプトは、HPC Pack クラスタ�
     # remove the compute node role for head node to make sure the Excel workbook won’t run on head node
         Get-HpcNode -GroupName HeadNodes | Set-HpcNodeState -State offline | Set-HpcNode -Role BrokerNode
 
-    # total number of nodes in the deployment including the head node and compute nodes
+    # total number of nodes in the deployment including the head node and compute nodes, which should match the number specified in the XML configuration file
         $TotalNumOfNodes = 19
 
         $ErrorActionPreference = 'SilentlyContinue'
@@ -210,14 +210,22 @@ You have enabled REST API or web portal on HPC Pack head node. Please import the
 
 2. クライアント コンピューターで、クラスター証明書を Cert:\\CurrentUser\\Root にインポートします。
 
-3. Excel がインストールされていることを確認します。次のような内容の Excel.exe.config ファイルを作成し、クライアント コンピューター上の Excel.exe と同じフォルダーに保存します。これにより、HPC Pack 2012 R2 の Excel COM アドインが正常に読み込まれます。
+3. Excel がインストールされていることを確認します。次のような内容の Excel.exe.config ファイルを作成し、クライアント コンピューター上の Excel.exe と同じフォルダーに保存します。これにより、HPC Pack 2012 R2 Excel COM のアドイン と Azure ストレージ ライブラリを正常に読み込むことができます。以下の 'href' は、クライアント コンピューターの %CCP\_HOME%Bin\\Microsoft.WindowsAzure.Storage.dll を指す必要があります。
 
     ```
 <?xml version="1.0"?>
 <configuration>
-  <startup useLegacyV2RuntimeActivationPolicy="true">
-    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
-  </startup>
+    <startup useLegacyV2RuntimeActivationPolicy="true">
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+    </startup>
+    <runtime>
+        <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+            <dependentAssembly>
+                <assemblyIdentity name="Microsoft.WindowsAzure.Storage"  culture="neutral" publicKeyToken="31bf3856ad364e35"/>
+                <codeBase version="4.3.0.0" href="C:\Program Files\Microsoft HPC Pack 2012\Bin\Microsoft.WindowsAzure.Storage.dll"/>
+            </dependentAssembly>
+        </assemblyBinding>
+    </runtime>
 </configuration>
 ```
 4.	[HPC Pack 2012 R2 Update 2 インストール](http://www.microsoft.com/download/details.aspx?id=47755)の完全版をダウンロードして HPC Pack クライアントをインストールするか、または [HPC Pack 2012 R2 Update 2 クライアント ユーティリティ](https://www.microsoft.com/download/details.aspx?id=47754)とコンピューターに適した Visual C++ 2010 再頒布可能パッケージをダウンロードしてインストールします ([x64](http://www.microsoft.com/download/details.aspx?id=14632)、[x86](https://www.microsoft.com/download/details.aspx?id=5555))。
@@ -263,11 +271,11 @@ Excel の UDF を実行するには、前記の手順 1 ～ 3 に従ってクラ
 
 クラスターが正常にデプロイされた後、引き続き以下の手順に従って、サンプルの組み込み Excel UDF を実行します。Excel UDF をカスタマイズした場合は、[リソース](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)を参考にして、XLL を作成し、IaaS クラスターにそれをデプロイしてください。
 
-1.	新しい Excel ブックを開きます。**[開発]** リボンで **[アドイン]** をクリックします。次に、ダイアログ ボックスで **[参照]** をクリックし、%CCP\_HOME%Bin\\XLL32 フォルダーに移動して、サンプルの ClusterUDF32.xll を選択します。
+1.	新しい Excel ブックを開きます。**[開発]** リボンで **[アドイン]** をクリックします。次に、ダイアログ ボックスで **[参照]** をクリックし、%CCP\_HOME%Bin\\XLL32 フォルダーに移動して、サンプルの ClusterUDF32.xll を選択します。ClusterUDF32 がクライアント コンピューターに存在しない場合は、ヘッド ノードの %CCP\_HOME%Bin\\XLL32 フォルダーからコピーすることができます。
 
     ![UDF を選択する][udf]
 
-2.	**[ファイル]**、**[オプション]**、**[詳細]** の順にクリックします。**[数式]** の **[計算クラスターでユーザー定義の XLL 関数を実行できるようにする]** をオンにします。**[オプション]** をクリックし、**[クラスター ヘッド ノード名]** に完全なクラスター名を入力します (説明したように、この入力ボックスには 34 文字の制限があり、長いクラスター名が入らない可能性があります。IaaS デプロイメント スクリプトでクラスターをデプロイするときに、短い名前を構成できます)。
+2.	**[ファイル]**、**[オプション]**、**[詳細]** の順にクリックします。**[数式]** の **[計算クラスターでユーザー定義の XLL 関数を実行できるようにする]** をオンにします。**[オプション]** をクリックし、**[クラスター ヘッド ノード名]** に完全なクラスター名を入力します (説明したように、この入力ボックスには 34 文字の制限があり、長いクラスター名が入らない可能性があります。クライアントに Update 2 QFE KB3085833 を適用し、ここで長いクラスター名にマシン全体の変数を設定することができます。)
 
     ![UDF を構成する][options]
 
@@ -376,4 +384,4 @@ SOA クライアント アプリケーションでは、IaaS クラスターの�
 [endpoint]: ./media/virtual-machines-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-excel-cluster-hpcpack/udf.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

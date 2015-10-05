@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="09/22/2015"
 	ms.author="swkrish"/>
 
 # Azure AD ディレクトリまたは Azure AD B2C ディレクトリの作成 - 問題と解決
@@ -34,4 +34,4 @@ Azure AD ディレクトリの初めての作成が失敗する場合は、も�
 	- 作成したディレクトリを削除し、もう一度やり直します。
 - 上記の解決策で問題が解決しない場合は、サポートに問い合わせてください。Azure AD B2C のサポートを要求する方法については、[こちらの記事](active-directory-b2c-support.md)を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

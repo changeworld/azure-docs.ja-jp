@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Data Factory から MapReduce プログラムを起動する"
-	description="Azure Data Factory から Azure HDInsight クラスターで MapReduce プログラムを実行してデータを処理する方法について説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="Azure Data Factory から MapReduce プログラムを起動する" 
+	description="Azure Data Factory から Azure HDInsight クラスターで MapReduce プログラムを実行してデータを処理する方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/31/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/22/2015" 
 	ms.author="spelluru"/>
 
 # Data Factory から MapReduce プログラムを起動する
@@ -32,7 +32,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 3. **className** プロパティでクラスの名前を指定します。
 4. **jarFilePath** プロパティでファイル名を含む JAR ファイルへのパスを指定します。
 5. **jarLinkedService** プロパティで、JAR ファイルを含む Azure BLOB ストレージを参照する、リンクされたサービスを指定します。   
-6. **arguments** セクションで MapReduce プログラムに任意の引数を指定します。 
+6. **arguments** セクションで MapReduce プログラムに任意の引数を指定します。実行時に、MapReduce フレームワークのいくつかの引数 (mapreduce.job.tags など) が表示されます。MapReduce の引数と区別するために、次の例のように、オプションと値の両方を引数として使用することを検討してください (-s、--input、--output などがオプションであり、直後に値が続きます)。
 
  
 
@@ -102,4 +102,4 @@ MapReduce の変換で HDInsight アクティビティを使用するための�
 [Azure Portal]: http://portal.azure.com
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

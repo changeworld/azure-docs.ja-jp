@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="07/06/2015"
+ ms.date="09/23/2015"
  ms.author="larryfr"/>
 
 # HDInsight での Apache Hadoop による Scalding MapReduce ジョブの開発
@@ -290,4 +290,4 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

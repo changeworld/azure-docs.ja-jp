@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Active Directory のコード例"
+   pageTitle="Azure Active Directory のコード例 | Microsoft Azure"
    description="シナリオ別に整理された Azure Active Directory のコード サンプルのインデックスです。"
    services="active-directory"
    documentationCenter="dev-center-name"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/30/2015"
+   ms.date="09/17/2015"
    ms.author="mbaldwin"/>
 
 # Azure Active Directory のコード例
@@ -151,4 +151,4 @@ PHP | [Azure AD Graph API 用の PHP サンプル アプリ](http://code.msdn.mi
 
 [Developing Modern Applications using OAuth and Active Directory Federation Services](http://msdn.microsoft.com/library/dn633593.aspx)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

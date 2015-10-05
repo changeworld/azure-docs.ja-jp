@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/25/2015"
+   ms.date="09/22/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # データの移行
@@ -191,7 +191,7 @@ PolyBase を使用したデータ ロードの詳細については、「[PolyBa
 
 [製品バージョン]: http://aka.ms/downloadazcopy/
 [プレビュー バージョン]: http://aka.ms/downloadazcopypr/
-[ADO NET 変換先エディター]: https://msdn.microsoft.com/ja-jp/library/bb934041.aspx
-[SSIS のドキュメント]: https://msdn.microsoft.com/ja-jp/library/ms141026.aspx
+[ADO NET 変換先エディター]: https://msdn.microsoft.com/JA-JP/library/bb934041.aspx
+[SSIS のドキュメント]: https://msdn.microsoft.com/JA-JP/library/ms141026.aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

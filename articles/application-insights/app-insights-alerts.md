@@ -114,6 +114,8 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 「HTTP 要求に対するサーバーの応答時間」の 5 分間の平均が 1 秒を超えた場合、電子メールで通知してください。私の Application Insights リソースは IceCreamWebApp と呼ばれており、リソース グループ Fabrikam 内にあります。私は Azure サブスクリプションの所有者です。
 
+GUID は、サブスクリプション ID です (アプリケーションのインストルメンテーション キーではありません)。
+
     Add-AlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
      -ResourceGroup "Fabrikam" `
@@ -169,7 +171,14 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 `view.count`|ページ ビュー|Web ページに対するクライアント ユーザーの要求数。代理トラフィックはフィルターで除外されます。
 {カスタム メトリック名}|{メトリック名}|[TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) または[追跡呼び出しの測定パラメーター](app-insights-api-custom-events-metrics.md#properties)でレポートされるメトリック値。
 
-   
+メトリックは、さまざまなテレメトリ モジュールによって送信されます。
+
+メトリック グループ | コレクター モジュール
+---|---
+basicExceptionBrowser、<br/>clientPerformance、<br/>view | [ブラウザーの JavaScript](app-insights-javascript.md)
+performanceCounter | [パフォーマンス](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3)
+remoteDependencyFailed| [依存関係](app-insights-configuration-with-applicationinsights-config.md#nuget-package-1)
+request、<br/>requestFailed|[サーバー要求](app-insights-configuration-with-applicationinsights-config.md#nuget-package-2)
 
 
 <!--Link references-->
@@ -182,4 +191,4 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

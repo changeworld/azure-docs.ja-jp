@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/24/2015"
+	ms.date="09/23/2015"
 	ms.author="larryfr"/>
 
 
@@ -48,9 +48,9 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 1. Hive アクションでは、HiveQL スクリプトを実行して、HDInsight に含まれている **hivesampletable** からレコードを抽出します。各データ行は、特定のモバイル デバイスからのアクセスを表します。レコードの形式は次のようになります。
 
-		8       18:54:20        ja-jp   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-		23      19:19:44        ja-jp   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-		23      19:19:46        ja-jp   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+		8       18:54:20        JA-JP   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+		23      19:19:44        JA-JP   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+		23      19:19:46        JA-JP   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
 	このドキュメントで使用する Hive スクリプトは、プラットフォームごと (Android や iPhone など) の合計アクセス数をカウントし、カウントしたアクセス数を新しい Hive テーブルに保存します。
 
@@ -725,4 +725,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

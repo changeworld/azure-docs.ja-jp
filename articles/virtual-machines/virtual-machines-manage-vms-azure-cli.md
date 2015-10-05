@@ -1,11 +1,12 @@
 <properties
-   pageTitle="Mac、Linux、および Windows 用の Azure CLI を使用した Azure VM の管理 | Microsoft Azure"
-   description="Mac、Linux、および Windows 用 Azure CLI を使用して、Azure VM を作成、管理、削除する方法について説明します。"
+   pageTitle="Azure CLI を使用した Azure VM の管理 | Microsoft Azure"
+   description="Mac、Linux、および Windows 用 Azure CLI を使用して Azure VM を管理する方法を説明します。"
    services="virtual-machines"
    documentationCenter="virtual-machines"
    authors="dlepow"
    manager="timlt"
-   editor=""/>
+   editor=""
+   tags="azure-service-management"/>
 
    <tags
    ms.service="virtual-machines"
@@ -17,6 +18,8 @@
    ms.author="danlep"/>
 
 # Mac、Linux、および Windows 用 Azure CLI を使用した仮想マシンの管理
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用して作成されたリソースの管理について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-how-to-automate-azure-resource-manager.md)を使用して作成されたリソースを管理することもできます。
 
 Azure CLI を使用すると、VM を管理するために日常的に実行する多くのタスクを自動化できます。この記事では、比較的単純なタスクにはコマンド例を示し、より複雑なタスクには、コマンドが記載されている記事へのリンクを示します。
 
@@ -79,6 +82,5 @@ Linux ベースの VM を新たに作成するには、いくつかの値を用�
 ## 次のステップ
 
 **arm** モードでの Azure CLI のその他の使用例については、[Azure リソース管理による Mac、Linux、および Windows 用 Microsoft Azure CLI の使用](../xplat-cli-resource-manager.md)に関するページを参照してください。Azure リソースとその概念の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

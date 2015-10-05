@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Linux 仮想マシンを作成するさまざまな方法"
-	description="Linux 仮想マシンを作成するさまざまな方法を紹介し、手順へのリンクを提供します。"
+	pageTitle="Linux VM を作成するさまざまな方法 | Microsoft Azure"
+	description="Azure で Linux 仮想マシンを作成するさまざまな方法を紹介し、手順へのリンクを提供します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -101,4 +101,4 @@ Azure PowerShell の場合は、「[Azure PowerShell を使用して Linux ベ�
 [Linux を実行する仮想マシンの作成]: virtual-machines-linux-tutorial.md
 [カスタム仮想マシンの作成]: virtual-machines-create-custom.md
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

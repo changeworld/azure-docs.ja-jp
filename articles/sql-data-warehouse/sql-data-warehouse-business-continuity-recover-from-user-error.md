@@ -1,20 +1,20 @@
 <properties
    pageTitle="SQL Data Warehouse でデータベースをユーザー エラーから復旧する |Microsoft Azure"
-	description="SQL Data Warehouse でデータベースをユーザー エラーから復旧するための手順です。"
-	services="sql-data-warehouse"
-	documentationCenter="NA"
-	authors="sahaj08"
-	manager="barbkess"
-	editor=""/>
+   description="SQL Data Warehouse でデータベースをユーザー エラーから復旧するための手順です。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="sahaj08"
+   manager="barbkess"
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-services"
-	ms.date="06/26/2015"
-	ms.author="sahajs"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="09/23/2015"
+   ms.author="sahajs"/>
 
 # SQL Data Warehouse でのデータベースのユーザー エラーからの復旧
 
@@ -30,16 +30,23 @@ SQL Data Warehouse には、意図しないデータの破損または削除の�
 
 ### PowerShell
 
-PowerShell を使用すると、プログラムでデータベースの復元を実行できます。データベースを復元するには、[Start-AzureSqlDatabaseRestore][] コマンドレットを使用します。
+Azure PowerShell を使用して、プログラムでデータベースの復元を実行します。Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。
 
-1. 復元するデータベースを含む自分のアカウントで、サブスクリプションを選択します。
-2. データベースの復元ポイントを一覧表示します (Azure リソースの管理モードが必要)。
-3. RestorePointCreationDate を使用して、目的の復元ポイントを選択します。
-3. 目的の復元ポイントに、データベースを復元します。
-4. 復元の進行状況を監視します。
+データベースを復元するには、[Start-AzureSqlDatabaseRestore][] コマンドレットを使用します。
+
+1. Microsoft Azure PowerShell を開きます。
+2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
+3. 復元するデータベースを含むサブスクリプションを選択します。
+4. データベースの復元ポイントを一覧表示します (Azure リソース管理モードにする必要があります)。
+5. RestorePointCreationDate を使用して、目的の復元ポイントを選択します。
+6. 目的の復元ポイントに、データベースを復元します。
+7. 復元の進行状況を監視します。
 
 ```
-Select-AzureSubscription -SubscriptionId <Subscription_GUID>
+
+Add-AzureAccount
+Get-AzureSubscription
+Select-AzureSubscription -SubscriptionName "<Subscription_name>"
 
 # List database restore points
 Switch-AzureMode AzureResourceManager
@@ -59,7 +66,7 @@ $RestoreRequest = Start-AzureSqlDatabaseRestore -SourceServerName "<YourServerNa
 Get-AzureSqlDatabaseOperation -ServerName "<YourServerName>" –OperationGuid $RestoreRequest.RequestID
 ```
 
-サーバーが foo.database.windows.net である場合は、PowerShell コマンドレットでサーバー名として "foo" を使用してください。
+サーバーが foo.database.windows.net の場合は、上の PowerShell コマンドレットで -ServerName として "foo" を使用してください。
 
 ### REST API
 プログラムでデータベースの復元を実行するには、REST を使用します。
@@ -74,15 +81,20 @@ Get-AzureSqlDatabaseOperation -ServerName "<YourServerName>" –OperationGuid $R
 データベースが削除された場合、削除されたデータベースを削除時の状態に復元することができます。Azure SQL Data Warehouse では、データベースが削除され 7 日間保持される前に、データベースのスナップショットが作成されます。
 
 ### PowerShell
-PowerShell を使用すると、プログラムでデータベースの復元を実行できます。削除済みデータベースを復元するには、[Start-AzureSqlDatabaseRestore][] コマンドレットを使用します。
+Azure PowerShell を使用して、削除済みデータベースの復元をプログラムで実行します。Azure PowerShell モジュールをダウンロードするには、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行します。
 
-1. 削除済みデータベースと削除日を、削除済みデータベースの一覧から検索します。
+削除済みデータベースを復元するには、[Start-AzureSqlDatabaseRestore][] コマンドレットを使用します。
+
+1. Microsoft Azure PowerShell を開きます。
+2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
+3. 復元する削除済みデータベースを含むサブスクリプションを選択します。
+4. 削除済みデータベースの一覧で、データベースと削除日を確認します。
 
 ```
 Get-AzureSqlDatabase -RestorableDropped -ServerName "<YourServerName>"
 ```
 
-2. 削除された特定のデータベースを取得し、復元を開始します。
+5. 削除された特定のデータベースを取得し、復元を開始します。
 
 ```
 $Database = Get-AzureSqlDatabase -RestorableDropped -ServerName "<YourServerName>" –DatabaseName "<YourDatabaseName>" -DeletionDate "1/01/2015 12:00:00 AM"
@@ -91,6 +103,8 @@ $RestoreRequest = Start-AzureSqlDatabaseRestore -SourceRestorableDroppedDatabase
 
 Get-AzureSqlDatabaseOperation –ServerName "<YourServerName>" –OperationGuid $RestoreRequest.RequestID
 ```
+
+サーバーが foo.database.windows.net の場合は、上の PowerShell コマンドレットで -ServerName として "foo" を使用してください。
 
 ### REST API
 プログラムでデータベースの復元を実行するには、REST を使用します。
@@ -122,4 +136,4 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 
 <!--Other Web references-->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

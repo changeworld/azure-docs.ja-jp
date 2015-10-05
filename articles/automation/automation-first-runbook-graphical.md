@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Automation での初めてのグラフィカルな Runbook"
+	pageTitle="My first graphical runbook in Azure Automation"
 	description="簡単なグラフィカル Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。Azure リソースに対する認証、入力パラメーター、条件付きリンクなど、複数の概念について説明します。"
 	services="automation"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="08/13/2015"
+	ms.date="09/17/2015"
 	ms.author="bwren"/>
 
 
@@ -21,15 +21,15 @@
 
 > [AZURE.SELECTOR]
 - [Graphical](automation-first-runbook-graphical.md)
-- [Textual](automation-first-runbook-textual.md)
+- [PowerShell Workflow](automation-first-runbook-textual.md)
 
-このチュートリアルでは、Azure Automation で[グラフィカルな Runbook](automation-graphical-authoring-intro.md) を作成する手順を説明します。簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure Virtual Machine を開始します。そして、Runbook のパラメーターおよび条件付きリンクを追加することによって、Runbook をいっそう堅牢にします。
+このチュートリアルでは、Azure Automation で[グラフィカルな Runbook](automation-runbook-types.md#graphical-runbooks) を作成する手順を説明します。簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。Then we'll modify the runbook to actually manage Azure resources, in this case starting an Azure virtual machine.そして、Runbook のパラメーターおよび条件付きリンクを追加することによって、Runbook をいっそう堅牢にします。
 
 ## 前提条件
 
 このチュートリアルを最後まで行うには、以下のものが必要です。
 
-- として機能します。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-trial/" target="_blank">[無料評価版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
+- として機能します。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-trial/" target="_blank">[無料試用版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
 - Runbook を保持するための [Automation アカウント](automation-configuring.md)。
 - Azure Virtual Machine。マシンを停止して起動するので、運用環境のものは使用しないでください。
 - Azure リソースに対する認証に使用する [Azure Active Directory のユーザーと Automation の資格情報資産](automation-configuring.md)。このユーザーには、仮想マシンを開始および停止するアクセス許可が必要です。
@@ -38,7 +38,7 @@
 
 最初に、*Hello World* というテキストを出力する簡単な Runbook を作成します。
 
-1. Azure プレビュー ポータルで、Automation アカウントを開きます。Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。既に資産がいくつかあります。これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。[前提条件](#prerequisites)で説明されている資格情報資産も必要です。
+1. Azure プレビュー ポータルで、Automation アカウントを開きます。The Automation account page gives you a quick view of the resources in this account.You should already have some Assets.これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。[前提条件](#prerequisites)で説明されている資格情報資産も必要です。
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。<br> ![Runbook の制御](media/automation-first-runbook-graphical/runbooks-control.png)
 2. **[Runbook の追加]** ボタンをクリックし、次に **[新しい Runbook の作成]** をクリックして、新しい Runbook を作成します
 3. Runbook の名前を *MyFirstRunbook-Graphical* に設定します。
@@ -72,7 +72,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 ## 手順 4 - Runbook を発行して開始する
 
-前の手順で作成した Runbook はまだドラフト モードです。運用環境で実行できるようにするには、発行する必要があります。Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
+前の手順で作成した Runbook はまだドラフト モードです。We need to publish it before we can run it in production.When you publish a runbook, you overwrite the existing Published version with the Draft version.この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
 
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。<br> ![Publish](media/automation-first-runbook-graphical/runbook-edit-toolbar-publish.png)
 2. **[Runbook]** ウィンドウで左にスクロールして Runbook を表示すると、**[作成状態]** は **[発行済]** になっています。
@@ -128,7 +128,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 6. **Start-AzureVM** アクティビティを選択し、**[パラメーター]** をクリックします。
 7. **[Name]** の **[データ ソース]** を **[Runbook の入力]** に変更し、**VMName** を選択します。<br> ![Start-AzureVM の Name パラメーター](media/automation-first-runbook-graphical/vmname-property.png) 
 8. **[ServiceName]** の **[データ ソース]** を **[Runbook の入力]** に変更し、**VMServiceName** を選択します。<br> ![Start-AzureVM のパラメーター](media/automation-first-runbook-graphical/start-azurevm-params-inputs.png) 
-9. Runbook を保存してテスト ウィンドウを開きます。テストで使用される 2 つの入力変数の値を指定できることに注意してください。 
+9. Runbook を保存してテスト ウィンドウを開きます。Note that you can now provide values for the two input variables that will be used in the test. 
 11.  テスト ウィンドウを閉じます。
 12.  **[発行]** をクリックして、新しいバージョンの Runbook を発行します。
 13.  前の手順で開始した仮想マシンを停止します。
@@ -158,15 +158,15 @@ Runbook をテストして発行しましたが、これまでのところ役に
 15.  **Write-Output** を選択し、**[パラメーター]** をクリックします。
 16.  **[InputObject]** の **[データ ソース]** を **[PowerShell 式]** に変更し、式に「*"$VMName.Name already started."*」と入力します。
 17.  Runbook を保存してテスト ウィンドウを開きます。
-18.  仮想マシンが停止している状態で Runbook を開始すると、仮想マシンが開始します。
+18.  Start the runbook with the virtual machine stopped, and it should start.
 19.  仮想マシンが開始している状態で Runbook を開始すると、仮想マシンが既に開始しているという出力が表示されます。
  
 
 ## 関連記事:
 
 - [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
-- [初めてのテキスト形式の Runbook](automation-first-runbook-textual.md)
+- [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Sept15_HO4-->

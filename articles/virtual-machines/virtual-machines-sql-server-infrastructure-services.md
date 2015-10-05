@@ -1,29 +1,32 @@
 <properties 
-	pageTitle="Azure VM 上の SQL Server の概要"
-	description="この記事は、Azure IaaS Virtual Machines でホストされている SQL Server の概要を示します。この記事には詳しいコンテンツへのリンクが掲載されています。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="rothja"
+	pageTitle="仮想マシンでの SQL Server の概要 | Microsoft Azure"
+	description="この記事では、Azure Virtual Machines でホストされている SQL Server の概要について説明します。この記事には詳しいコンテンツへのリンクが掲載されています。" 
+	services="virtual-machines" 
+	documentationCenter="" 
+	authors="rothja" 
 	manager="jeffreyg"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
-	ms.workload="infrastructure-services"
+	ms.workload="infrastructure-services" 
 	ms.date="09/01/2015"
 	ms.author="jroth"/>
 
 # Azure Virtual Machines における SQL Server の概要
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
 ## 使用の開始
 AlwaysOn 可用性グループと Azure Virtual Network を使用すると、1 つのデータベース サーバーや複数のコンピューターなど、さまざまな構成で、[Azure Virtual Machines に SQL Server](http://azure.microsoft.com/services/virtual-machines/sql-server/) をホストすることができます。
 
 >[AZURE.NOTE]Azure VM で SQL Server を実行することは、リレーショナル データを Azure に格納するための 1 つのオプションです。Azure SQL Database サービスを使用することもできます。詳細については、「[Azure SQL Database と Azure VM 内の SQL Server について](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。
 
-Azure で SQL Server 仮想マシンを作成するには、最初に Azure プラットフォーム サブスクリプションを入手する必要があります。Azure サブスクリプションは、[Purchase Options](http://azure.microsoft.com/pricing/purchase-options/) で購入できます。無料で試用するには、[Azure 無料評価版](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
+Azure で SQL Server 仮想マシンを作成するには、最初に Azure プラットフォーム サブスクリプションを入手する必要があります。Azure サブスクリプションは、複数の[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)で購入できます。無料で試用するには、[Azure 無料評価版](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
 ### 1 つの VM での SQL Server インスタンスのデプロイ
 
@@ -43,7 +46,7 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 
 >[AZURE.NOTE]データ ウェアハウスおよびトランザクション ワークロード用の仮想マシンのギャラリー イメージ (前に記載のない) は間もなく廃止され、ギャラリーから削除される予定です。前述の表に記載された標準のイメージを使用して、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」の推奨事項に従って、固有のワークロードのパフォーマンスを最適化してください。
 
-これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure の仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure の仮想マシンで SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure のコンピューティングおよびストレージ [コスト](http://azure.microsoft.com/pricing/details/virtual-machines)のみを支払います。
+これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure Virtual Machine を作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure Virtual Machine で SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure のコンピューティングおよびストレージ [コスト](http://azure.microsoft.com/pricing/details/virtual-machines)のみを支払います。
 
 これらのプロビジョニングと構成の初期段階での一般的なタスクは、次のとおりです。
 
@@ -108,7 +111,7 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 |Data Quality Services|インストール済み (SQL Server 2012 以降のみ)|
 |Master Data Services|インストール済み (SQL Server 2012 以降のみ)。[追加構成とコンポーネント](https://msdn.microsoft.com/library/ee633752.aspx)が必要です
 |PowerPivot for SharePoint|使用可能 (SQL Server 2012 以降のみ)追加構成とコンポーネントが必要です (SharePoint を含む)|
-|分散再生クライアント|使用可能 (SQL Server 2012 以降のみ)、ただし未インストール「[Running SQL Server setup from the platform-provided SQL Server image (プラットフォームによって提供される SQL Server イメージからの SQL Server セットアップの実行)](#run-sql-server-setup-from-the-platform-provided-sql-server-image)」をご覧ください|
+|分散再生クライアント|使用可能 (SQL Server 2012 以降のみ)、ただし未インストール「[プラットフォームによって提供される SQL Server イメージからの SQL Server セットアップの実行](#run-sql-server-setup-from-the-platform-provided-sql-server-image)」をご覧ください|
 |ツール|SQL Server Management Studio、SQL Server Configuration Manager、Business Intelligence Development Studio、SQL Server Setup、Client Tools Connectivity、Client Tools SDK、SQL Client Connectivity SDK や、データ層アプリケーション (DAC) などのアップグレードおよび移行ツール、バックアップ、リストア、アタッチ、および切断用ツールなど、すべてのツール|
 |SQL Server オンライン ブック|インストールされているが、ヘルプ ビューアーを使用して構成する必要があります|
 
@@ -128,7 +131,7 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 
 ### カスタマー エクスペリエンス向上プログラム (CEIP)
 
-[カスタマー エクスペリエンス向上プログラム (CEIP)](https://technet.microsoft.com/library/cc730757.aspx) が有効です。SQL Server エラーと使用状況レポート ユーティリティを使用して、CEIP を無効にすることができます。SQL Server エラーと使用状況レポート ユーティリティを起動するには、[スタート] メニューで [すべてのプログラム] をクリックし、[Microsoft SQL Server バージョン]、[構成ツール、]、[SQL Server エラーと使用状況レポート] の順にクリックします。CEIP を有効にした状態で SQL Server のインスタンスを使用しない場合は、独自の仮想マシン イメージを Azure にデプロイすることも検討できます。詳細については、「[Creating and Uploading a Virtual Hard Disk that Contains the Windows Server Operating System (Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード)](virtual-machines-create-upload-vhd-windows-server.md)」をご覧ください。
+[カスタマー エクスペリエンス向上プログラム (CEIP)](https://technet.microsoft.com/library/cc730757.aspx) が有効です。SQL Server エラーと使用状況レポート ユーティリティを使用して、CEIP を無効にすることができます。SQL Server エラーと使用状況レポート ユーティリティを起動するには、[スタート] メニューで [すべてのプログラム] をクリックし、[Microsoft SQL Server バージョン]、[構成ツール、]、[SQL Server エラーと使用状況レポート] の順にクリックします。CEIP を有効にした状態で SQL Server のインスタンスを使用しない場合は、独自の仮想マシン イメージを Azure にデプロイすることも検討できます。詳細については、「[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-create-upload-vhd-windows-server.md)」をご覧ください。
 
 ## プラットフォームによって提供される SQL Server イメージからの SQL Server セットアップの実行
 
@@ -144,4 +147,4 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 - [Azure Virtual Machines](virtual-machines-about.md) 
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

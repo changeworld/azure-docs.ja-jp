@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/16/2015"
+   ms.date="09/23/2015"
    ms.author="alkohli" />
 
 # StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブル接続
@@ -233,7 +233,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
     3. プライマリ LAN (インターネット アクセスのあるネットワーク) に DATA 0 ポートが接続されている。目的の役割に応じて、他のデータ ポートをネットワークの SAN/iSCSI LAN (VLAN) セグメントに接続できます。
 
     少なくとも、1 つのネットワーク インターフェイスをクラウド アクセス用に構成し、もう 1 つを iSCSI 用に構成してください。高可用性と高パフォーマンスを確保するには、各コントローラーにネットワーク インターフェイスのペアを 2 つ構成します。ネットワークのケーブル配線については以下の図を参照してください。(最小ネットワーク構成は青い実線で示されています。高可用性と高パフォーマンスを確保するために必要な追加の構成は点線で示されています。)
-
+	
     ![2U デバイスのネットワーク ケーブル接続](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
 
     **デバイスのネットワーク ケーブル配線**
@@ -275,4 +275,4 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 これで[オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough.md)準備ができました。
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

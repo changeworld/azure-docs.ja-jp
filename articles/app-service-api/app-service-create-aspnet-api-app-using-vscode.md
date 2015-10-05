@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Visual Studio Code を使用した ASP.NET 5 API アプリの作成"
+	pageTitle="Visual Studio Code を使用した ASP.NET 5 API アプリの作成"
 	description="このチュートリアルでは、Visual Studio Code を使用して ASP.NET 5 API アプリを作成する方法について説明します。"
 	services="app-service\api"
 	documentationCenter=".net"
@@ -19,9 +19,10 @@
 # Visual Studio Code を使用した ASP.NET 5 API アプリの作成
 
 > [AZURE.SELECTOR]
-- [Visual Studio 2013](app-service-dotnet-create-api-app.md)
-- [Visual Studio 2015 RC](app-service-dotnet-create-api-app-vs2015.md)
-- [Visual Studio Code](app-service-create-aspnet-api-app-using-vscode.md)
+- [.NET - Visual Studio 2015](app-service-dotnet-create-api-app.md)
+- [.NET - Visual Studio Code](app-service-create-aspnet-api-app-using-vscode.md)
+- [Node.js](app-service-api-nodejs-api-app.md)
+- [Java](app-service-api-java-api-app.md)
 
 ## 概要
 
@@ -448,4 +449,4 @@ Azure プレビュー ポータルで、目的の API アプリの **[API アプ
 このチュートリアルでは、Visual Studio Code を使用して API アプリを作成する方法について説明しました。Visual Studio Code の詳細については、[Visual Studio Code](https://code.visualstudio.com/Docs/) に関するページをご覧ください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページをご覧ください。
  
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

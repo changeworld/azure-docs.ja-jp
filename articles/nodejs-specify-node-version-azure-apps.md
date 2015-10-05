@@ -14,12 +14,13 @@ Node.js アプリケーションをホストするときに、アプリケーシ
 
 Azure が提供する Node.js のバージョンは常に更新されます。別に指定しない場合、最新のバージョンを使用します。現在含まれているバージョンは次のとおりです。
 
-- 0\.12.x: 0.12.0
+- 4\.x.x: 4.0.0
+- 0\.12.x: 0.12.6、0.12.3、0.12.2、0.12.0
 - 0\.10.x: 0.10.32、0.10.31、0.10.29、0.10.28、10.26、0.10.24、0.10.21、0.10.18、0.10.5
 - 0\.8.x: 0.8.28、0.8.27、0.8.26、0.8.19 0.8.2
 - 0\.6.x: 0.6.20、0.6.17
 
-> [AZURE.NOTE]Azure クラウド サービス (Web ロールまたは worker ロール) でアプリケーションをホストしており、初めてアプリケーションを展開した場合、開発環境にインストールされていた Node.js が Azure で使用できる既定のバージョンのいずれかと一致するときには、同じバージョンを使用することが試行されます。
+> [AZURE.NOTE]Azure クラウド サービス (Web ロールまたは worker ロール) でアプリケーションをホストしており、初めてアプリケーションをデプロイした場合、開発環境にインストールされていた Node.js が Azure で使用できる既定のバージョンのいずれかと一致するときには、同じバージョンを使用することが試行されます。
 
 ##package.json でバージョンを指定する
 
@@ -38,7 +39,7 @@ Web サイトでアプリケーションをホストしている場合は、環�
 
 ##PowerShell で Cloud Services のバージョンを指定する
 
-クラウド サービスでアプリケーションをホストしており、Windows Azure PowerShell を使用してアプリケーションを展開している場合は、PowerShell の **Set-AzureServiceProjectRole** コマンドレットを使用して既定の Node.js のバージョンをオーバーライドできます。次に例を示します。
+クラウド サービスでアプリケーションをホストしており、Windows Azure PowerShell を使用してアプリケーションをデプロイしている場合は、PowerShell の **Set-AzureServiceProjectRole** コマンドレットを使用して既定の Node.js のバージョンをオーバーライドできます。次に例を示します。
 
 	Set-AzureServiceProjectRole WebRole1 Node 0.8.4
 
@@ -88,11 +89,13 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
 
 ##次のステップ
 
-アプリケーションで使用される Node.js のバージョンを指定する方法が理解できたら、[モジュールの使用方法]、[Node.js Web サイトを構築、展開する方法]、[Mac および Linux 用 Azure コマンド ライン ツールの使用方法]に関する各トピックを参照してください。
+アプリケーションで使用される Node.js のバージョンを指定する方法が理解できたら、[モジュールの使用方法]、[Node.js Web サイトを構築、デプロイする方法]、[Mac および Linux 用 Azure コマンド ライン ツールの使用方法]に関する各トピックを参照してください。
+
+詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
 [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: xplat-cli.md
 [Azure コマンド ライン ツール]: xplat-cli.md
 [モジュールの使用方法]: nodejs-use-node-modules-azure-apps.md
-[Node.js Web サイトを構築、展開する方法]: web-sites-nodejs-develop-deploy-mac.md
+[Node.js Web サイトを構築、デプロイする方法]: web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Sept15_HO4-->

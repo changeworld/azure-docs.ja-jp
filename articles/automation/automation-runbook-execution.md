@@ -1,26 +1,32 @@
 <properties
    pageTitle="Azure Automation での Runbook の実行"
-	description="Azure Automation で Runbook が処理される方法の詳細について説明します。"
-	services="automation"
-	documentationCenter=""
-	authors="bwren"
-	manager="stevenka"
-	editor="tysonn"/>
+   description="Azure Automation で Runbook が処理される方法の詳細について説明します。"
+   services="automation"
+   documentationCenter=""
+   authors="bwren"
+   manager="stevenka"
+   editor="tysonn" />
 <tags
    ms.service="automation"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="07/22/2015"
-	ms.author="bwren"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/17/2015"
+   ms.author="bwren" />
 
 # Azure Automation での Runbook の実行
 
 
 Azure Automation で runbook を開始するときに、ジョブが作成されます。ジョブは、Runbook の単一の実行インスタンスです。各ジョブを実行する Azure Automation ワーカーが割り当てられます。ワーカーは複数の Azure アカウントで共有されるが、さまざまな Automation アカウントからのジョブは互いに分離されます。ジョブに対する要求をどのワーカーで処理するかを制御することはできません。1 つの Runbook で、複数のジョブを同時に実行することができます。Azure ポータルで Runbook の一覧を表示すると、各 Runbook に対して最後に起動されたジョブの状態が一覧表示されます。それぞれの状態を追跡するために、Runbook ごとにジョブの一覧を表示できます。ジョブのさまざまな状態の説明については、「[ジョブの状態](#job-statuses)」を参照してください。
 
-![ジョブの状態](./media/automation-runbook-execution/job-statuses.png)
+次の図に、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) と [PowerShell Workflow Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のための Runbook ジョブのライフサイクルを示します。
+
+![ジョブの状態 - PowerShell Workflow](./media/automation-runbook-execution/job-statuses.png)
+
+次の図に、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) のための Runbook ジョブのライフサイクルを示します。
+
+![ジョブの状態 - PowerShell スクリプト](./media/automation-runbook-execution/job-statuses-script.png)
 
 
 ジョブは、Azure サブスクリプションに接続することにより Azure リソースにアクセスします。データ センター内のリソースにパブリック クラウドからアクセスできる場合、ジョブはそれらのリソースにのみアクセスします。
@@ -32,7 +38,7 @@ Azure Automation で runbook を開始するときに、ジョブが作成され
 | 状態| 説明|
 |:---|:---|
 |完了|ジョブは正常に完了しました。|
-|失敗|ジョブはエラーで終了しました。|
+|失敗| [グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md) では、Runbook のコンパイルが失敗しました。[PowerShell スクリプト Runbook](automation-runbook-types.md) では、Runbook の開始に失敗したか、ジョブで例外が発生しました。 |
 |失敗、リソースを待機中|ジョブは [fair share](#fairshare) の限界に 3 回到達し、毎回、同じチェックポイントから、または Runbook の先頭から起動したために、失敗しました。|
 |キューに登録済み|ジョブは Automation ワーカー上のリソースが使用できるようになるのを待機しています。そうなれば、ジョブを起動できます。|
 |Starting|ジョブがワーカーに割り当てられており、システムがジョブを起動しているところです。|
@@ -41,10 +47,10 @@ Azure Automation で runbook を開始するときに、ジョブが作成され
 |実行中、リソースを待機中|ジョブは [fair share](#fairshare) 制限に達したためにアンロードされました。ジョブは最後のチェックポイントからすぐに再開します。|
 |停止済み|ジョブは完了した後、ユーザーによって停止されました。|
 |停止中|システムがジョブを停止させているところです。|
-|Suspended|ユーザーか、システムか、または Runbook 内のコマンドによってジョブは中断されました。中断されているジョブは、再度起動することができ、最後のチェックポイントから、チェックポイントがない場合は Runbook の先頭から再開することになります。Runbook は、例外が発生した場合にシステムによってのみ中断されます。既定では、ErrorActionPreference は **Continue** に設定されます。これはエラー発生時にもジョブが実行を維持することを意味します。このユーザー設定変数を **Stop** に設定すると、エラー発生時にジョブは中断します。|
-|中断中|ユーザーの要求を受けてシステムはジョブを中断しようとしています。Runbook は、次のチェックポイントに到達してからでないと、中断できません。それが最後のチェックポイントを既に過ぎている場合は、中断可能になる前に完了することになります。|
+|Suspended|ユーザーか、システムか、または Runbook 内のコマンドによってジョブは中断されました。中断されているジョブは、再度起動することができ、最後のチェックポイントから、チェックポイントがない場合は Runbook の先頭から再開することになります。Runbook は、例外が発生した場合にシステムによってのみ中断されます。既定では、ErrorActionPreference は **Continue** に設定されます。これはエラー発生時にもジョブが実行を維持することを意味します。このユーザー設定変数を **Stop** に設定すると、エラー発生時にジョブは中断します。[グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md) のみに適用されます。|
+|中断中|ユーザーの要求を受けてシステムはジョブを中断しようとしています。Runbook は、次のチェックポイントに到達してからでないと、中断できません。Runbook は、次のチェックポイントに到達してからでないと、中断できません。[グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md) のみに適用されます。|
 
-## Azure 管理ポータルを使用したジョブの状態の表示
+## Microsoft Azure 管理ポータルを使用したジョブの状態の表示
 
 ### Automation Dashboard
 
@@ -52,7 +58,7 @@ Automation Dashboard は、特定の Automation アカウントについてす�
 
 Automation Dashboard を表示するには、次の手順を使用します。
 
-1. Azure 管理ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
+1. Microsoft Azure 管理ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
 1. **[ダッシュボード]** タブを選択します。
 
 ### Runbook Dashboard
@@ -61,7 +67,7 @@ Runbook Dashboard には、単一の Runbook の概要が表示されます。�
 
 Runbook Dashboard を表示するには、次の手順を使用します。
 
-1. Azure 管理ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
+1. Microsoft Azure 管理ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
 1. Runbook の名前をクリックします。
 1. **[ダッシュボード]** タブを選択します。
 
@@ -71,7 +77,7 @@ Runbook Dashboard を表示するには、次の手順を使用します。
 
 次の手順を使用して Runbook のジョブを表示します。
 
-1. Azure 管理ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
+1. Microsoft Azure 管理ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
 1. Runbook の名前をクリックします。
 1. **[ジョブ]** タブを選択します。
 1. ジョブの **[作成されたジョブ]** 列をクリックして、その詳細と出力を表示します。
@@ -103,4 +109,4 @@ Runbook を作成する際には、2 つのチェックポイント間で任意�
 
 - [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Sept15_HO4-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="09/10/2015"
+	ms.date="09/22/2015"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した初めてのパイプラインの作成
@@ -148,13 +148,15 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 	1. [最新バージョンの **AzCopy**](http://aka.ms/downloadazcopy) または[最新のプレビュー バージョン](http://aka.ms/downloadazcopypr)をダウンロードします。ユーティリティを使用する手順については、[AzCopy を使用する方法](../storage/storage-use-azcopy.md)に関する記事を参照してください。
 	2. AzCopy をインストールした後は、コマンド プロンプトで次のコマンドを実行してシステム パスに追加できます。 
 	
-			set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
-	
+			set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy			 
 
 	3. c:\\adfgettingstarted フォルダーに移動し、次のコマンドを実行して Hive .HQL ファイルをストレージ アカウントにアップロードします。**StorageAccountName** はストレージ アカウントの名前に、**Storage Key** はストレージ アカウント キーに置き換えます。
 
 			AzCopy /Source:. /Dest:https://<StorageAccountName>.blob.core.windows.net/script /DestKey:<Storage Key>
-	4. ファイルが正常にアップロードされると、AzCopy から次の出力が表示されます。
+
+		> [AZURE.NOTE]上記のコマンドは **script** という名前のコンテナーを Azure BLOB ストレージ内に作成し、**partitionweblogs.hql** ファイルをそのコンテナーにコピーします。
+	>
+	5. ファイルが正常にアップロードされると、AzCopy から次の出力が表示されます。
 	
 			Finished 1 of total 1 file(s).
 			[2015/06/15 15:47:13] Transfer summary:
@@ -174,4 +176,4 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline.md)でフィードバックをお寄せください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

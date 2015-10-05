@@ -1,9 +1,10 @@
+<!--author=SharS last changed: 9/17/15-->
 
 >[AZURE.NOTE]SharePoint 用 StorSimple アダプターの RBS 構成を変更する際は、Domain Admins グループに属しているユーザー アカウントでログオンする必要があります。さらに、サーバーの全体管理と同じホストで実行されているブラウザーから構成ページにアクセスする必要があります。
 
 #### RBS を構成するには
 
-1. SharePoint サーバーの全体管理ページを開き、**[システム設定]** を開きます。 
+1. [SharePoint サーバーの全体管理] ページを開き、**[システム設定]** を参照します。 
 
 2. **[Azure StorSimple]** セクションで、**[StorSimple アダプターの構成]** をクリックします。
 
@@ -103,4 +104,4 @@
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

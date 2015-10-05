@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング"
+	pageTitle="VM でのアプリケーション アクセスのトラブルシューティング |Microsoft Azure"
 	description="Azure 仮想マシンで実行されているアプリケーションにアクセスできない場合は、次の手順を使用して問題の原因を特定してください。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -18,6 +18,8 @@
 	ms.author="dkshir"/>
 
 # Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルまたはリソース マネージャーのデプロイト モデルを使用して作成された仮想マシンでのアプリケーション アクセスのトラブルシューティングについて説明します。
 
 この記事では、Azure 仮想マシンで実行されているアプリケーションにアクセスできない場合にその原因を特定し、問題を解決するための系統的アプローチについて説明します。
 
@@ -101,7 +103,7 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 この記事の手順 1 ～ 3 を実行したうえで、問題解決のためにさらなる支援が必要な場合は、次のことが可能です。
 
-- 全世界の Azure エキスパートに支援を要請する。MSDN の Azure フォーラムまたはスタック オーバーフロー フォーラムに問題を投稿してください。詳細については、「[Microsoft Azure フォーラム](http://azure.microsoft.com/support/forums/)」を参照してください。
+- 全世界の Azure エキスパートに支援を要請する。MSDN の Azure フォーラムまたはスタック オーバーフロー フォーラムに問題を投稿してください。詳細については、「[Microsoft Azure フォーラム](http://azure.microsoft.com/support/forums/)」参照してください。
 - Azure サポート インシデントを送信する。[Azure サポート サイト](http://azure.microsoft.com/support/options/) にアクセスし、**[テクニカル/課金サポート]** の **[サポートの要求]** をクリックしてください。
 
 ## その他のリソース
@@ -110,4 +112,4 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

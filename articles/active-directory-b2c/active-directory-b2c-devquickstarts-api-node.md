@@ -13,18 +13,16 @@
   	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="09/22/2015"
 	ms.author="brandwe"/>
 
 # B2C プレビュー: node.js を使用して Web API をセキュリティで保護する
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-> [AZURE.NOTE]
-	この記事では、サインイン、サインアップ、プロファイルの管理を Azure AD B2C で実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しについて説明します。
-まだ行っていない場合は、先に [.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)で Azure AD B2C の基本を学習してください。
+> [AZURE.NOTE]この記事では、Azure AD B2C でサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。まだ行っていない場合は、先に [.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)で Azure AD B2C の基本を学習してください。
 
-> [AZURE.NOTE]	このサンプルは、[iOS B2C サンプル アプリケーション](active-directory-b2c-devquickstarts-ios.md)と接続することを目的に作成されたものです。 先にこのチュートリアルを行った後、そのサンプルに従ってください。
+> [AZURE.NOTE]このサンプルは、[iOS B2C サンプル アプリケーション](active-directory-b2c-devquickstarts-ios.md)と接続することを目的に作成されたものです。 先にこのチュートリアルを行った後、そのサンプルに従ってください。
 
 **Passport** は Node.js 用の認証ミドルウェアです。Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップされます。包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。Microsoft Azure Active Directory 用の戦略が開発されています。ここでは、このモジュールをインストールした後、Microsoft Azure Active Directory `passport-azure-ad` プラグインを追加します。
 
@@ -58,15 +56,18 @@ follow [these instructions](active-directory-b2c-app-registration.md).  Be sure 
 - Create an **Application Secret** for your application and copy it down.  You will need it shortly.
 - Copy down the **Application ID** that is assigned to your app.  You will also need it shortly.
 
+    > [AZURE.IMPORTANT]
+    You cannot use applications registered in the **Applications** tab on the [Azure Portal](https://manage.windowsazure.com/) for this.
+
 ## 3. Create your policies
 
-In Azure AD B2C, every user experience is defined by a [**policy**](active-directory-b2c-reference-policies.md).  This app contains three 
-identity experiences - sign-up, sign-in, and sign-in with Facebook.  You will need to create one policy of each type, as described in the 
+In Azure AD B2C, every user experience is defined by a [**policy**](active-directory-b2c-reference-policies.md).  This app contains three
+identity experiences - sign-up, sign-in, and sign-in with Facebook.  You will need to create one policy of each type, as described in the
 [policy reference article](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy).  When creating your three policies, be sure to:
 
 - Choose the **Display Name** and a few other sign-up attributes in your sign-up policy.
 - Choose the **Display Name** and **Object ID** application claims in every policy.  You can choose other claims as well.
-- Copy down the **Name** of each policy after you create it.  It should have the prefix `b2c_1_`.  You'll need those policy names shortly. 
+- Copy down the **Name** of each policy after you create it.  It should have the prefix `b2c_1_`.  You'll need those policy names shortly.
 
 Once you have your three policies successfully created, you're ready to build your app.
 
@@ -111,21 +112,7 @@ When using npm on some operating systems, you may receive an error of Error: EPE
 You may see something like this when installing Restify:
 
 ```Shell
-clang: error: no such file or directory: 'HD/azuread/node_modules/restify/node_modules/dtrace-provider/libusdt'
-make: *** [Release/DTraceProviderBindings.node] Error 1
-gyp ERR! build error
-gyp ERR! stack Error: `make` failed with exit code: 2
-gyp ERR! stack     at ChildProcess.onExit (/usr/local/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:267:23)
-gyp ERR! stack     at ChildProcess.EventEmitter.emit (events.js:98:17)
-gyp ERR! stack     at Process.ChildProcess._handle.onexit (child_process.js:789:12)
-gyp ERR! System Darwin 13.1.0
-gyp ERR! command "node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
-gyp ERR! cwd /Volumes/Development HD/azuread/node_modules/restify/node_modules/dtrace-provider
-gyp ERR! node -v v0.10.11
-gyp ERR! node-gyp -v v0.10.0
-gyp ERR! not ok
-npm WARN optional dep failed, continuing dtrace-provider@0.2.8
-```
+clang: error: no such file or directory: 'HD/azuread/node\_modules/restify/node\_modules/dtrace-provider/libusdt' make: *** [Release/DTraceProviderBindings.node] Error 1 gyp ERR! build error gyp ERR! stack Error: `make` failed with exit code: 2 gyp ERR! stack at ChildProcess.onExit (/usr/local/lib/node\_modules/npm/node\_modules/node-gyp/lib/build.js:267:23) gyp ERR! stack at ChildProcess.EventEmitter.emit (events.js:98:17) gyp ERR! stack at Process.ChildProcess.\_handle.onexit (child\_process.js:789:12) gyp ERR! System Darwin 13.1.0 gyp ERR! command "node" "/usr/local/lib/node\_modules/npm/node\_modules/node-gyp/bin/node-gyp.js" "rebuild" gyp ERR! cwd /Volumes/Development HD/azuread/node\_modules/restify/node\_modules/dtrace-provider gyp ERR! node -v v0.10.11 gyp ERR! node-gyp -v v0.10.0 gyp ERR! not ok npm WARN optional dep failed, continuing dtrace-provider@0.2.8 ```
 
 
 Restify は、DTrace を使用して REST 呼び出しをトレースする強力なメカニズムを備えています。ただし、多くのオペレーティング システムで DTrace は使用できません。これらのエラーは無視してかまいません。
@@ -264,7 +251,7 @@ var bunyan = require('bunyan');
 var restify = require('restify');
 var config = require('./config');
 var passport = require('passport');
-var OIDCBearerStrategy = require('passport-azure-ad').OIDCStrategy;
+var OIDCBearerStrategy = require('passport-azure-ad').BearerStategy;
 ```
 
 ファイルを保存します。この後すぐに、このファイルを使用します。
@@ -284,11 +271,10 @@ var OIDCBearerStrategy = require('passport-azure-ad').OIDCStrategy;
 // Don't commit this file to your public repos. This config is for first-run
 exports.creds = {
 mongoose_auth_local: 'mongodb://localhost/tasklist', // Your mongo auth uri goes here
-issuer: 'https://sts.windows.net/**<your application id>**/',
-audience: '<your redirect URI>',
+audience: '<your audience URI>',
 identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-configuration' // For using Microsoft you should never need to change this.
 tenantName:'<tenant name>',
-policyName:'<policy>',
+policyName:'b2c_1_<sign in policy name>',
 };
 
 ```
@@ -297,16 +283,16 @@ policyName:'<policy>',
 
 *IdentityMetadata*: これは、passport-azure-ad が、IdP 用の構成データと JWT トークンを検証するためのキーを検索する場所です。Azure Active Directory を使用する場合は、これを変更する必要はありません。
 
-*audience*: ポータルからのリダイレクト URI。このサンプルでは `http://localhost/TodoListService` を使用します。
+*audience*: サービスを識別するポータルからの URI。このサンプルでは `http://localhost/TodoListService` を使用します。
 
-*tenantName*: テナントの名前 (例: contoso.microsoftonline.com)
+*tenantName*: テナントの名前 (例: contoso.onmicrosoft.com)
 
-*policyName*: このサーバーが受け取ったトークンを検証するポリシー。クライアント アプリケーションと同じポリシーを使用する必要があります。
+*policyName*: このサーバーが受け取ったトークンを検証するポリシー。クライアント アプリケーションでサインインするために使用したのと同じポリシーを使用する必要があります。
 
-> [AZURE.NOTE]キーは頻繁に公開されます。"openid\_keys" URL からキーを常に取得し、アプリがインターネットにアクセスできるようにします。
+> [AZURE.NOTE]この B2C プレビューでは、クライアントとサーバーの両方の設定に同じポリシーを使用します。既にチュートリアルを行っていて、これらのポリシーを作成してある場合は、再度作成する必要はありません。このチュートリアルを完了しているため、このサイトで任意のクライアントのチュートリアルを行うときに新しいポリシーを設定する必要はありません。
 
 
-## 11: 構成を server.js ファイルに追加する
+## 13: 構成を server.js ファイルに追加する
 
 これらの値は、アプリケーション全体で、作成した構成ファイルから読み込む必要があります。これを行うには、.config ファイルを必須リソースとしてアプリケーションに追加し、グローバル変数を config.js ドキュメントに設定するだけです。
 
@@ -341,7 +327,7 @@ name: 'Microsoft Azure Active Directory Sample'
 });
 ```
 
-## 12: Moongoose を使用して MongoDB モデルとスキーマ情報を追加する
+## 手順 14. Moongoose を使用して MongoDB モデルとスキーマ情報を追加する
 
 これまでの準備が報われるときが来ました。これら 3 つのファイルを一緒に REST API サービスに取り込みます。
 
@@ -402,7 +388,7 @@ var Task = mongoose.model('Task');
 ```
 コードからわかるように、Schema を作成し、次に、***ルート*** を定義する際に、データを格納するためにコード全体で使用するモデル オブジェクトを作成します。
 
-## 13: Task REST API サーバー用のルートを追加する
+## 手順 15. Task REST API サーバー用ルートを追加する
 
 これで、操作対象のデータベース モデルが作成されたので、REST API サーバー用に使用するルートを追加します。
 
@@ -579,7 +565,7 @@ util.inherits(TaskNotFoundError, restify.RestError);
 ```
 
 
-## 14: サーバーを作成する
+## 手順 16. サーバーを作成する
 
 データベースの定義およびルートの配置が完了したので、最後に、呼び出しを管理するサーバー インスタンスを追加します。
 
@@ -616,7 +602,7 @@ server.use(restify.bodyParser({
 mapParams: true
 }));
 ```
-## 15: ルートを追加する (まだ認証は行われません)
+## 手順 17: サーバーにルートを追加する (まだ認証は行われません)
 
 ```Javascript
 /// Now the real handlers. Here we just CRUD
@@ -667,7 +653,7 @@ consoleMessage += '\n !!! why not try a $curl -isS %s | json to get some ideas? 
 consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 });
 ```
-## 16: OAuth サポートを追加する前にサーバーを実行する
+## 18: OAuth サポートを追加する前にサーバーを実行する
 
 認証を追加する前に、サーバーをテストします。
 
@@ -728,7 +714,7 @@ Brandon 用のタスクを次の方法でリストできます。
 
 これで、**MongoDB がある REST API サーバーが用意できました。**
 
-## 17: REST API サーバーに認証を追加する
+## 19: REST API サーバーに認証を追加する
 
 実稼働する REST API を作成できたので、次に、Azure AD に対して使用できるようにします。
 
@@ -736,7 +722,7 @@ Brandon 用のタスクを次の方法でリストできます。
 
 `cd azuread`
 
-### 1: passport-azure-ad に含まれている oidcbearerstrategy を使用する
+### 1: passport-azure-ad に含まれている OIDCBearerStrategy を使用する
 
 ここまで、認証がまったく行われない REST TODO サーバーを構築してきました。ここから、認証を配置する手順を開始します。
 
@@ -749,9 +735,9 @@ server.use(passport.initialize()); // Starts passport
 server.use(passport.session()); // Provides session support
 ```
 
-> [AZURE.TIP]API を記述するときは、ユーザーがなりすますことができないトークンの一意の情報に常にデータをリンクする必要があります。このサーバーは、TODO 項目を保存するときに、“owner” フィールドに配置される(token.sub を通して呼び出される) トークン内のユーザーのサブスクリプション ID に基づいてそれらを保存します。これにより、そのユーザーだけが自分の TODO にアクセスでき、他のユーザーは入力された TODO にアクセスすることはできません。API 内で “owner” が公開されることはないため、外部ユーザーは、認証された場合でも、他のユーザーの TODO を要求することができます。
+> [AZURE.TIP]API を記述するときは、ユーザーがなりすますことができないトークンの一意の情報に常にデータをリンクする必要があります。このサーバーは、TODO 項目を保存するときに、“owner” フィールドに配置される (token.oid を通して呼び出される) トークン内のユーザーのオブジェクト ID に基づいてそれらを保存します。これにより、そのユーザーだけが自分の TODO にアクセスでき、他のユーザーは入力された TODO にアクセスすることはできません。API 内で “owner” が公開されることはないため、外部ユーザーは、認証された場合でも、他のユーザーの TODO を要求することができます。
 
-次に、passport-azure-ad に含まれる Open ID Connect Bearer 戦略を使用します。今はコードをざっと見てください。内容は後で説明します。このコードを、上述のコードの後ろに置きます。
+次に、passport-azure-ad に含まれるべアラー戦略を使用します。今はコードをざっと見てください。内容は後で説明します。このコードを、上述のコードの後ろに置きます。
 
 ```Javascript
 /**
@@ -807,34 +793,34 @@ Passport は、すべての戦略ライターが従うすべての戦略 (Twitte
 さらに興味深いことを行うためにサーバー コードのルートを編集します。
 
 ```Javascript
-server.get('/tasks', passport.authenticate('oidc-bearer', {
+server.get('/tasks', passport.authenticate('oauth-bearer', {
 session: false
 }), listTasks);
-server.get('/tasks', passport.authenticate('oidc-bearer', {
+server.get('/tasks', passport.authenticate('oauth-bearer', {
 session: false
 }), listTasks);
-server.get('/tasks/:owner', passport.authenticate('oidc-bearer', {
+server.get('/tasks/:owner', passport.authenticate('oauth-bearer', {
 session: false
 }), getTask);
-server.head('/tasks/:owner', passport.authenticate('oidc-bearer', {
+server.head('/tasks/:owner', passport.authenticate('oauth-bearer', {
 session: false
 }), getTask);
-server.post('/tasks/:owner/:task', passport.authenticate('oidc-bearer', {
+server.post('/tasks/:owner/:task', passport.authenticate('oauth-bearer', {
 session: false
 }), createTask);
-server.post('/tasks', passport.authenticate('oidc-bearer', {
+server.post('/tasks', passport.authenticate('oauth-bearer', {
 session: false
 }), createTask);
-server.del('/tasks/:owner/:task', passport.authenticate('oidc-bearer', {
+server.del('/tasks/:owner/:task', passport.authenticate('oauth-bearer', {
 session: false
 }), removeTask);
-server.del('/tasks/:owner', passport.authenticate('oidc-bearer', {
+server.del('/tasks/:owner', passport.authenticate('oauth-bearer', {
 session: false
 }), removeTask);
-server.del('/tasks', passport.authenticate('oidc-bearer', {
+server.del('/tasks', passport.authenticate('oauth-bearer', {
 session: false
 }), removeTask);
-server.del('/tasks', passport.authenticate('oidc-bearer', {
+server.del('/tasks', passport.authenticate('oauth-bearer', {
 session: false
 }), removeAll, function respond(req, res, next) {
 res.send(204);
@@ -846,7 +832,7 @@ next();
 
 再び `curl` を使用して、エンドポイントに対して OAuth2 保護が有効になっていることを確認します。この操作は、このエンドポイントに対して、クライアント SDK のいずれかを実行する前に行います。返されるヘッダーは、正しいパスに沿っていることを確認するのに十分である必要があります。
 
-まず、monogoDB インスタンスが動作していることを確認します。
+まず、monogoDB インスタンスが実行されていることを確認します。
 
 	$sudo mongod
 
@@ -887,4 +873,4 @@ Restify と OAuth2 を使用して REST API を実装する方法についての
 
 [B2C で iOS を使用して Web-API に接続する >>](active-directory-b2c-devquickstarts-ios.md)
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

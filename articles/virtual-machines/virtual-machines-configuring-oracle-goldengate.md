@@ -1,6 +1,22 @@
-<properties title="Configuring Oracle GoldenGate for Azure" pageTitle="Azure 用の Oracle GoldenGate の構成" description="高可用性と障害復旧のために Oracle GoldenGate を Azure Virtual Machines にセットアップして実装するチュートリアルの手順" services="virtual-machines" authors="bbenz" documentationCenter=""/>
-<tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
+<properties
+	pageTitle="仮想マシンで Oracle GoldenGate を構成する |Microsoft Azure"
+	description="高可用性と障害復旧のために Oracle GoldenGate を Azure 仮想マシンにセットアップして実装するチュートリアルの手順。"
+	services="virtual-machines"
+	authors="bbenz"
+	documentationCenter=""
+	tags="azure-service-management"/>
+<tags
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows"
+	ms.workload="infrastructure-services"
+	ms.date="06/22/2015"
+	ms.author="bbenz" />
 #Azure 用の Oracle GoldenGate の構成
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用して作成されたリソースの管理について説明します。
+
 このチュートリアルでは、高可用性と障害復旧のために Azure Virtual Machines 環境用に Oracle GoldenGate をセットアップする方法について説明します。このチュートリアルでは、RAC 以外の Oracle データベースに対する[双方向レプリケーション](http://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_about_gg.htm)に重点を合わせており、両サイトがアクティブである必要があります。
 
 Oracle GoldenGate は、データ分布とデータ統合をサポートします。これにより Oracle 間レプリケーション構成を使用して、データ分布とデータ同期ソリューションをセットアップでき、柔軟な高可用性ソリューションが得られます。Oracle GoldenGate は、エンタープライズ全体の情報の分布とゼロダウンタイムのアップグレードと移行を有効にするレプリケーション機能を備えた Oracle Data Guard を補足します。詳細については、「[Oracle Data Guard での Oracle GoldenGate の使用](http://docs.oracle.com/cd/E11882_01/server.112/e17157/unplanned.htm)」をご覧ください。
@@ -28,7 +44,7 @@ Oracle GoldenGate に含まれる主なコンポーネントには、抽出、�
 1. サイト A とサイト B でデータベースをセットアップする  
 
 	1. 初期データ ロードを実行する
-	
+
 2. データベース レプリケーション用にサイト A とサイト B を準備する
 
 3. DDL レプリケーションのサポートに必要なすべてのオブジェクトを作成する
@@ -102,7 +118,7 @@ Oracle データベースと Oracle GoldenGate の今後のリリースでは、
 
 次に、以下を実行します。
 
-	SQL> create tablespace ggs_data   datafile 'c:\OracleDatabase\oradata<DBNAME><DBNAME>ggs_data01.dbf' size 200m; 
+	SQL> create tablespace ggs_data   datafile 'c:\OracleDatabase\oradata<DBNAME><DBNAME>ggs_data01.dbf' size 200m;
 	SQL> create user ggate identified by ggate default tablespace ggs_data  temporary tablespace temp;
 	      grant connect, resource to ggate;
 	      grant select any dictionary, select any table to ggate;
@@ -130,7 +146,7 @@ Oracle データベースと Oracle GoldenGate の今後のリリースでは、
 Oracle GoldenGate レプリケーション プロセスを説明するために、このチュートリアルでは以下のコマンドを使用して、サイト A とサイト B の両方でテーブルを作成する方法を示します。
 
 まず、SQL*Plus コマンド ウィンドウを開き、以下のコマンドを実行して、サイト A とサイト B のデータベースでインベントリ テーブルを作成します。
-	
+
 	create table scott.inventory
 	(prod_id number,
 	prod_category varchar2(20),
@@ -158,17 +174,17 @@ Oracle GoldenGate レプリケーション プロセスを説明するために�
 	:NEW.LAST_DML := SYSTIMESTAMP;
 	END IF;
 	END;
-	/ 
+	/
 
 
 ##2\.データベース レプリケーション用にサイト A とサイト B を準備する
 このセクションでは、データベース レプリケーション用にサイト A とサイト B を準備する方法について説明します。このセクションのすべての手順をサイト A とサイト B の両方で実行する必要があります。
 
 まず、Azure ポータルでリモート デスクトップを使用して、サイト A とサイト B に接続します。SQL*Plus コマンド ウィンドウを使用して、データベースを archivelog モードに切り替えます。
-	
-	sql>shutdown immediate 
-	sql>startup mount 
-	sql>alter database archivelog; 
+
+	sql>shutdown immediate
+	sql>startup mount
+	sql>alter database archivelog;
 	sql>alter database open;
 
 
@@ -182,7 +198,7 @@ Oracle GoldenGate レプリケーション プロセスを説明するために�
 
 次に、データベースをシャットダウンして再起動します。
 
-	sql>shutdown immediate 
+	sql>shutdown immediate
 	sql>startup
 
 
@@ -192,12 +208,12 @@ Oracle GoldenGate レプリケーション プロセスを説明するために�
 Windows コマンド プロンプトを開き、C:\\OracleGG などの Oracle GoldenGate フォルダーに移動します。サイト A とサイト B で **SYSDBA** などのデータベース管理者特権を使用して、SQL*Plus コマンド プロンプトを起動します。
 
 次に、以下のスクリプトを実行します。
-	
+
 	SQL> @marker_setup.sql  
 	Enter GoldenGate schema name: ggate
 	SQL> @ddl_setup.sql  
 	Enter GoldenGate schema name: ggate
-	SQL> @role_setup.sql 
+	SQL> @role_setup.sql
 	Enter GoldenGate schema name: ggate
 	SQL> grant ggs_ggsuser_role to ggate;
 	 Grant succeeded.
@@ -298,7 +314,7 @@ EDIT PARAMS コマンドを使用してパラメーター ファイルを開き�
 	Successfully logged into database.
 
 次に、データベースにチェックポイント テーブルを追加します。ここで、ggate は所有者を表します。
-	
+
 	GGSCI (MachineGG2) 2> ADD CHECKPOINTTABLE ggate.checkpointtable
 	Successfully created checkpoint table ggate.checkpointtable.
 
@@ -316,7 +332,7 @@ EDIT PARAMS コマンドを使用してパラメーター ファイルを開き�
 
 ###サイト B で REPLICAT を追加する
 このセクションでは、サイト B に REPLICAT プロセス "REP2" を追加する方法について説明します。
- 
+
 ADD REPLICAT コマンドを使用して、サイト B でレプリケート グループを作成します。
 
 	GGSCI (MachineGG2) 37> add replicat rep2 exttrail C:\OracleGG\dirdatab, checkpointtable ggate.checkpointtable
@@ -417,7 +433,7 @@ ADD TRANDATA コマンドを使用して、テーブル レベルで補足ログ
 	GGSCI (MachineGG1) 13> info trandata scott.inventory
 	Logging of supplemental redo log data is enabled for table SCOTT.INVENTORY.
 	Columns supplementally logged for table SCOTT.INVENTORY: PROD_ID, PROD_CATEGORY, QTY_IN_STOCK, LAST_DML.
-		
+
 リモート デスクトップを使用して MachineGG2 に接続し、Oracle GoldenGate コマンド インタープリターを開いて以下を実行します。
 
 	GGSCI (MachineGG2) 18> dblogin userid ggate password ggate
@@ -474,7 +490,7 @@ ADD TRANDATA コマンドを使用して、テーブル レベルで補足ログ
 
 	GGSCI (MachineGG1) 16> info all
 	Program     Status      Group       Lag at Chkpt  Time Since Chkpt
-	
+
 	MANAGER     RUNNING
 	EXTRACT     RUNNING     DPUMP1      00:00:00      00:46:33
 	EXTRACT     RUNNING     EXT1        00:00:00      00:00:04
@@ -497,7 +513,7 @@ ADD TRANDATA コマンドを使用して、テーブル レベルで補足ログ
 
 	GGSCI (ActiveGG2orcldb) 6> info all
 	Program     Status      Group       Lag at Chkpt  Time Since Chkpt
-	
+
 	MANAGER     RUNNING
 	EXTRACT     RUNNING     DPUMP2      00:00:00      136:13:33
 	EXTRACT     RUNNING     EXT2        00:00:00      00:00:04
@@ -535,29 +551,29 @@ ADD TRANDATA コマンドを使用して、テーブル レベルで補足ログ
 ##6\.双方向のレプリケーション プロセスを確認する
 
 Oracle GoldenGate 構成を確認するには、サイト A でデータベースに行を挿入します。リモート デスクトップを使用してサイト A に接続します。SQL*Plus コマンド ウィンドウを開いて、以下を実行します。SQL> select name from v$database;
-	
+
 	NAME
 	———
 	TESTGG
-	
+
 	SQL> insert into inventory values  (100,’TV’,100,sysdate);
-	
+
 	1 row created.
-	
+
 	SQL> commit;
-	
+
 	Commit complete.
 
 次に、その行がサイト B にレプリケートされているかどうかを確認します。それには、リモート デスクトップを使用してサイト B に接続します。SQL Plus ウィンドウを開き、以下を実行します。
 
 	SQL> select name from v$database;
-	
+
 	NAME
 	———
 	TESTGG
-	
+
 	SQL> select * from inventory;
-	
+
 	PROD_ID PROD_CATEGORY QTY_IN_STOCK LAST_DML
 	———- ——————– ———— ———
 	100 TV 100 22-MAR-13
@@ -566,21 +582,21 @@ Oracle GoldenGate 構成を確認するには、サイト A でデータベー�
 
 	SQL> insert into inventory  values  (101,’DVD’,10,sysdate);
 	1 row created.
-	
+
 	SQL> commit;
-	
+
 	Commit complete.
 
 リモート デスクトップを使用してサイト A に接続し、レプリケーションが行われたかどうかを確認します。
 
 	SQL> select * from inventory;
-	
+
 	PROD_ID PROD_CATEGORY QTY_IN_STOCK LAST_DML
 	———- ——————– ———— ———
 	100 TV 100 22-MAR-13
 	101 DVD 10 22-MAR-13
 
 ##その他のリソース
-[Oracle Virtual Machine images for Azure (Azure の Oracle 仮想マシン イメージ)](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
+[Azure の Oracle 仮想マシン イメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

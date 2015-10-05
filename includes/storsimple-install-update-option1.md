@@ -1,19 +1,4 @@
-<properties 
-   pageTitle="オプション 1: StorSimple 用 Windows PowerShell を使用した Update 1.2 のインストール"
-   description="StorSimple 用 Windows PowerShell を使用して、StorSimple 8000 シリーズの Update 1.2 をインストールする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="adinah"
-   editor="tysonn" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="09/09/2015"
-   ms.author="v-sharos" />
+<!--author=SharS last changed: 9/17/15-->
 
 #### StorSimple 用 Windows PowerShell を使用して Update 1.2 をインストールするには
 
@@ -36,7 +21,7 @@
  
         ![View basket](./media/storsimple-install-update-option-1/HCS_InstallBasket-include.png)
 
-    6. **[ダウンロード]** をクリックします。ダウンロード先となるローカルの場所を指定または**参照**します。更新プログラムが、選択した場所の **StorSimple Update 1.2 Appliance Update bundle** (KB3063418) フォルダーにダウンロードされます。デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
+    6. **[Download]** をクリックします。ダウンロード先となるローカルの場所を指定または**参照**します。更新プログラムが、選択した場所の **StorSimple Update 1.2 Appliance Update bundle** (KB3063418) フォルダーにダウンロードされます。デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
     
 	この手順では、ソフトウェア デバイスの更新プログラムを修正プログラムとして、Microsoft Update サーバーからはディスク ファームウェアの更新プログラムを、管理ポータルからは LSI ドライバーと Windows の更新プログラムをインストールする方法について説明します。ただし、ソフトウェア、ドライバー、およびディスク ファームウェアの更新プログラムをすべて修正プログラムとしてインストールするように選択できます。次に、StorSimple 1.2 SAS Controller Update (KB3043005) および StorSimple 1.2 Disk Firmware Update (KB3063416) をダウンロードし、同じ共有フォルダーに同じにコピーする必要があります。ディスク ファームウェアの更新プログラムを修正プログラムとしてインストールする場合は、[StorSimple 用 Windows PowerShell を使用してメンテナンス モードの修正プログラムをインストールする](storsimple-update-device.md#install-hotfixes-via-windows-powershell-for-storsimple)手順に従ってください。
     
@@ -127,4 +112,4 @@
  
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

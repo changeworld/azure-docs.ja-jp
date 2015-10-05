@@ -25,9 +25,9 @@
 
 ## Azure カスタマー サポートへの問い合わせ
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](http://azure.microsoft.com/support/forums/)で Azure 専門家に問い合わせることができます。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](http://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。
 
-または、Azure サポート インシデントを送信することもできます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
+または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](http://azure.microsoft.com/support/faq/)」を参照してください。
 
 
 ## 一般的なリモート デスクトップのエラー メッセージ
@@ -53,8 +53,8 @@
 詳細なトラブルシューティングに進む前に、以下の手順を実行します。
 
 - Azure ポータルまたは Azure プレビュー ポータル内の仮想マシンの状態を確認します。
-- [仮想マシンを再起動します。](https://msdn.microsoft.com/library/azure/dn763934.aspx)
-- [仮想マシンのサイズを変更します。](https://msdn.microsoft.com/library/dn168976.aspx)
+- 仮想マシンを再起動します。
+- [仮想マシンのサイズを変更します。](virtual-machines-size-specs.md)
 
 これらの手順を完了したら、もう一度リモート デスクトップ接続を試してみてください。
 
@@ -141,7 +141,7 @@
 - Windows ファイアウォールまたは他のローカルのファイアウォールで、リモート デスクトップのトラフィックを妨げている送信ルールが設定されている。
 - Azure 仮想マシンで実行されている侵入検出ソフトウェアまたは監視ソフトウェアが、リモート デスクトップ接続を妨げている。
 
-サービス管理 API を使用して作成された仮想マシンについて考えられるこれらの問題を修正するには、リモート Azure PowerShell セッションを Azure 仮想マシンに使用します。最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。「[Azure Virtual Machines への安全なリモート PowerShell アクセスを構成する](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)」を参照し、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上のフォルダーにダウンロードします。
+サービス管理 API を使用して作成された仮想マシンについて考えられるこれらの問題を修正するには、リモート Azure PowerShell セッションを Azure 仮想マシンに使用します。最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。「[Azure 仮想マシンへの安全なリモート PowerShell アクセスを構成する](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)」を参照し、**InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上のフォルダーにダウンロードします。
 
 次に、まだ Azure PowerShell がインストールされていなければ、インストールします。「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」を参照してください。
 
@@ -205,4 +205,4 @@ Azure 仮想マシンのリモート デスクトップのエンドポイント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Sept15_HO4-->

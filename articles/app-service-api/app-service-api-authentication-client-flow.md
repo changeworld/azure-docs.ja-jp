@@ -97,6 +97,8 @@ API アプリの認証における API アプリのゲートウェイのロー�
 	* 新しい ADD アプリケーションを作成するのではなく、作成済みの AAD アプリケーションを使用します。
  
 	* **アプリ ID URI** は、既存の AAD アプリケーションの URI と同じものをそのまま使用します (Readme ファイルで指定された形式に変更しないでください)。
+	
+	* その他の AAD アプリケーション設定を指示どおりに変更します。特に、サインオン URL と応答 URL をサンプル アプリのベース URL に設定します。
 
 Web アプリと API アプリの両方が同じ AAD アクセス トークンを使用できるように、API アプリ用に作成したアプリ ID URI をそのまま使用します。readme で規定された形式にアプリ ID URI を変更すると、その URI で Web アプリにアクセスすることはできますが、API アプリにはアクセスできません。その AAD トークンを API アプリのゲートウェイに渡して Zumo トークンを取得することはできません。ゲートウェイは、ゲートウェイ URL と "login/aad" で構成されているアプリ ID URI のトークンを想定しているからです。
 
@@ -110,13 +112,11 @@ Web アプリと API アプリの両方が同じ AAD アクセス トークン�
 
 	コードの生成が完了すると、API アプリの名前が付いた新しいフォルダーが**ソリューション エクスプローラー**に表示されます。このフォルダーには、クライアント クラスとデータ モデルを実装するコードが含まれています。
 
-	![](./media/app-service-api-authentication-client-flow/aboutpagestart.png)
-
-10. *ContactsList/ContactsExtensions.cs* で、生成されたコードによるあいまいな参照を修正します。2 つの `Task.Factory.StartNew` というインスタンスを `System.Threading.Tasks.Task.Factory.StartNew` に変更します。
+10. *ContactsList/ContactsExtensions.cs* で、生成されたコードによるあいまいな参照を修正します。`Task.Factory.StartNew` の2 つのインスタンスを `System.Threading.Tasks.Task.Factory.StartNew` に変更します。
  
 ## AAD トークンを Zumo トークンと交換するためのコードを追加します。
 
-1.	HomeController.cs で、App Service SDK と JSON シリアライザーに対して `using` ステートメントを追加します。
+1.	HomeController.cs で、App Service SDK と JSON シリアライザー用の `using` ステートメントを追加します。
 
 		using Microsoft.Azure.AppService;
 		using Newtonsoft.Json.Linq;
@@ -154,14 +154,14 @@ Web アプリと API アプリの両方が同じ AAD アクセス トークン�
 
 	このコードでは、`ConfigHelper.Authority` が "https://login.microsoftonline.com/{テナント}"、たとえば "https://login.microsoftonline.com/contoso.onmicrosoft.com" に解決されます。
 
-2.	コードを、`About` メソッドの末尾にある `return View()` ステートメントの直前に追加して、API アプリを呼び出します (次の手順では `About` ビューにコードを追加して、返されるデータを表示します)。
+2.	API アプリを呼び出すコードを、`About` メソッドの末尾にある `return View()` ステートメントの直前に追加します (次の手順では `About` ビューにコードを追加して、返されたデータを表示します)。
 
 		var appServiceClient = await GetAppServiceClient();
 		var client = appServiceClient.CreateContactsList();
 		var contacts = client.Contacts.Get();
 		ViewData["contacts"] = contacts;
 
-3. *Views/Home/About.cshtml* で、`h2` 見出しの直後にコードを追加して、連絡先情報を表示します。
+3. *Views/Home/About.cshtml* で、`h2` 見出しの直後に連絡先情報を表示するコードを追加します。
 
 		<h3>Contacts</h3>
 		<table class="table table-striped table-bordered table-condensed table-hover">
@@ -227,4 +227,4 @@ App Service API Apps のクライアント フローの認証方法は確認し�
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->

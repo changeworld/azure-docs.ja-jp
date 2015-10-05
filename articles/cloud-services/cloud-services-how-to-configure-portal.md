@@ -1,31 +1,31 @@
 <properties 
-	pageTitle="クラウド サービスの構成方法 | Microsoft Azure"
-	description="Azure のクラウド サービスの構成方法について説明します。クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。"
-	services="cloud-services"
-	documentationCenter=""
-	authors="Thraka"
-	manager="timlt"
+	pageTitle="クラウド サービスを構成する (プレビュー ポータル) | Microsoft Azure" 
+	description="Azure のクラウド サービスの構成方法について説明します。クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。これらの例では、Azure プレビュー ポータルを使用します。" 
+	services="cloud-services" 
+	documentationCenter="" 
+	authors="Thraka" 
+	manager="timlt" 
 	editor=""/>
 
 <tags 
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/29/2015"
+	ms.service="cloud-services" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/22/2015"
 	ms.author="adegeo"/>
 
 
 
 
-# クラウド サービスの構成方法
+# Cloud Services の構成方法
 
 > [AZURE.SELECTOR]
 - [Azure Portal](cloud-services-how-to-configure.md)
 - [Azure Preview Portal](cloud-services-how-to-configure-portal.md)
 
-クラウド サービスで最もよく使用される設定は Azure 管理ポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
+クラウド サービスで最もよく使用される設定は Microsoft Azure 管理ポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
 クラウド サービスで実行中の 1 つまたはすべてのロールへのリモート デスクトップ接続を有効にすることもできます。リモート デスクトップを使用すると、アプリケーションの実行中にそのデスクトップにアクセスし、問題のトラブルシューティングや診断を行うことができます。アプリケーション開発時にリモート デスクトップのサービス定義ファイル (.csdef) を構成しなかった場合でも、ロールへのリモート デスクトップ接続を有効にできます。リモート デスクトップ接続を有効にするために、アプリケーションを再デプロイする必要はありません。
 
@@ -85,8 +85,13 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 ## ロール インスタンスへのリモート アクセスの構成
 
-**Azure プレビュー ポータル**を使用して、リモート アクセスを構成することはできません。この設定を変更するには、[非プレビュー ポータル](http://manage.windowsazure.com/)を使用する必要があります。詳細については、[ここ](cloud-services-role-enable-remote-desktop.md)を参照してください。
+**Azure プレビュー ポータル**を使用して、リモート アクセスを構成することはできません。この設定を変更するには、[非プレビュー ポータル](http://manage.windowsazure.com/)を使用する必要があります。[こちら](cloud-services-role-enable-remote-desktop.md)に説明があります。
 			
- 
+## 次のステップ
 
-<!---HONumber=September15_HO1-->
+* 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
+* [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
+* [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
+* [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
+
+<!---HONumber=Sept15_HO4-->

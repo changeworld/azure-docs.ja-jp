@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示"
-   description="Azure Active Directory の開発者向けリソースの包括的なガイド"
+   description="シングル サインオンをサポートするアプリケーションを Azure Active Directory ギャラリーに表示する方法 | Microsoft Azure"
    services="active-directory"
    documentationCenter="dev-center-name"
    authors="msmbaldwin"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/30/2015"
+   ms.date="09/17/2015"
    ms.author="mbaldwin"/>
 
 
@@ -56,6 +56,5 @@
 > アプリケーションの大きいアイコン (PNG ファイル、215 x 215px、単色の背景色) を添付してください:
 >
 > アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Sept15_HO4-->

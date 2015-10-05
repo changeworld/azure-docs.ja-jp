@@ -1,19 +1,4 @@
-<properties 
-   pageTitle="SharePoint 用 StorSimple アダプターのアップグレード | Microsoft Azure"
-   description="SharePoint をアップグレードし、SharePoint 用 StorSimple アダプターの新しいバージョンをインストールする方法について説明します。"
-   services="storsimple"
-   documentationCenter="NA"
-   authors="SharS"
-   manager="carolz"
-   editor="" />
-<tags 
-   ms.service="storsimple"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="TBD"
-   ms.date="09/03/2015"
-   ms.author="v-sharos" />
+<!--author=SharS last changed: 9/17/15-->
 
 ### SharePoint 2010 を SharePoint 2013 にアップグレードして SharePoint 用 StorSimple アダプターをインストールする
 
@@ -48,4 +33,4 @@
  
 2. 新しい SharePoint 用 StorSimple アダプターをインストールします。新しいアダプターは、以前 RBS に対して有効または無効にされたコンテンツ データベースを自動的に認識し、以前の設定を使用します。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Sept15_HO4-->

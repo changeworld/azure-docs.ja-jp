@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Linux を実行する仮想マシンのイメージのキャプチャ"
-	description="Linux を実行する Azure の仮想マシン (VM) のイメージをキャプチャする方法について説明します。"
+	pageTitle="Linux VM のイメージをキャプチャする | Microsoft Azure"
+	description="Linux を実行するクラシック デプロイ モデルで作成された Azure の仮想マシン (VM) のイメージをキャプチャする方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -19,6 +19,8 @@
 
 
 # テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したイメージのキャプチャについて説明します。
 
 ここでは、Linux を実行する Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際のテンプレートのように使用する方法を示します。このテンプレートには、仮想マシンに接続された OS ディスクやデータ ディスクが含まれます。ネットワーク構成は含まれないため、テンプレートを使用する他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
 
@@ -58,7 +60,7 @@ Azure ではこのテンプレートをイメージとして扱い、**[イメ�
 
 	>[AZURE.NOTE]次の手順は、クライアント コンピューターに既に [Azure CLI がインストールされている](../xplat-cli-install.md)ことを前提としています。次の手順はすべて、[管理ポータル][]でも実行できます。
 
-5. クライアント コンピューターから Azure CLI を開き、Azure サブスクリプションにログインします。詳細については、[「Connect to an Azure subscription from the Azure CLI (Azure CLI から Azure サブスクリプションへの接続)」](../xplat-cli-connect.md)を参照してください。
+5. クライアント コンピューターから Azure CLI を開き、Azure サブスクリプションにログインします。詳細については、「[Connect to an Azure subscription from the Azure CLI (Azure CLI から Azure サブスクリプションへの接続)](../xplat-cli-connect.md)」を参照してください。
 
 6. サービス管理モードであることを確認します。
 
@@ -86,15 +88,15 @@ Azure ではこのテンプレートをイメージとして扱い、**[イメ�
 
 
 ## 次のステップ
-イメージの準備ができましたので、これをテンプレートとして使用して仮想マシンを作成します。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Using Azure CLI with Service Management API (サービス管理 API での Azure CLI の使用)](virtual-machines-command-line-tools.md)」をご覧ください。または、[管理ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、[「カスタム仮想マシンの作成方法」][]を参照してください。
+イメージの準備ができましたので、これをテンプレートとして使用して仮想マシンを作成します。Azure CLI コマンド `azure vm create` を使用して、先ほど作成したイメージの名前を指定することができます。コマンドの詳細については、「[Using Azure CLI with Service Management API (サービス管理 API での Azure CLI の使用)](virtual-machines-command-line-tools.md)」をご覧ください。または、[管理ポータル][]を使用し、**[ギャラリーから]** の方法を使用して、先ほど作成したイメージを選択することで、カスタム仮想マシンを作成することもできます。詳細については、「[カスタム仮想マシンの作成方法][]」を参照してください。
 
 **関連項目:** [Azure Linux エージェント ユーザー ガイド](virtual-machines-linux-agent-user-guide.md)
 
 [管理ポータル]: http://manage.windowsazure.com
 [Linux を実行する仮想マシンにログオンする方法]: virtual-machines-linux-how-to-log-on.md
 [Azure の仮想マシン イメージについて]: http://msdn.microsoft.com/library/azure/dn790290.aspx
-[「カスタム仮想マシンの作成方法」]: virtual-machines-create-custom.md
+[カスタム仮想マシンの作成方法]: virtual-machines-create-custom.md
 [How to Attach a Data Disk to a Virtual Machine]: storage-windows-attach-disk.md
 [How to Create a Virtual Machine Running Linux (Linux を実行する仮想マシンの作成方法)]: virtual-machines-linux-tutorial.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Sept15_HO4-->
