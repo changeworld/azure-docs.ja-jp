@@ -35,7 +35,7 @@ HDInsight の実装と HBase のスケールアウト アーキテクチャに�
 
 ## HDInsight HBase 内のデータの管理方法
 
-HBase 内のデータは、HBase シェルから `create`、`get`￼￼￼、`put`、`scan` というコマンドを使用して管理できます。データの書き込みは `put`、読み取りは `get` を使用します。`scan` コマンドは、テーブルの複数の行からデータを取得するために使用します。HBase の C# API を使用してデータを管理することもできます。これにより、HBase REST API 最上層のクライアント ライブラリを利用できます。HBase データベースは、Hive を使用して照会することもできます。これらのプログラミング モデルの基本的な説明については、「[Get started using HBase with Hadoop in HDInsight (HDInsight の Hadoop 環境で HBase を使用する)][hbase-get-started]」を参照してください。コプロセッサも利用でき、データベースをホストするノードでデータが処理できます。
+HBase 内のデータは、HBase シェルから `create`、`get`、`put`、`scan` というコマンドを使用して管理できます。データの書き込みは `put`、読み取りは `get` を使用します。`scan` コマンドは、テーブルの複数の行からデータを取得するために使用します。HBase の C# API を使用してデータを管理することもできます。これにより、HBase REST API 最上層のクライアント ライブラリを利用できます。HBase データベースは、Hive を使用して照会することもできます。これらのプログラミング モデルの基本的な説明については、「[Get started using HBase with Hadoop in HDInsight (HDInsight の Hadoop 環境で HBase を使用する)][hbase-get-started]」を参照してください。コプロセッサも利用でき、データベースをホストするノードでデータが処理できます。
 
 
 ## シナリオ: HBase のユース ケース

@@ -26,7 +26,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 詳細については、「[Event Hubs の概要]」をご覧ください。
 
-このチュートリアルでは、C のコンソール アプリケーションを使用してイベント ハブにメッセージをインジェストし、C# [￼￼￼￼￼￼￼イベント プロセッサ ホスト￼￼￼￼￼￼￼] ライブラリを使用して並列で取得する方法を学習します。
+このチュートリアルでは、C のコンソール アプリケーションを使用してイベント ハブにメッセージをインジェストし、C# [イベント プロセッサ ホスト] ライブラリを使用して並列で取得する方法を学習します。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -111,7 +111,7 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 
 <!-- Links -->
 [Azure ポータル]: https://manage.windowsazure.com/
-[￼￼￼￼￼￼￼イベント プロセッサ ホスト￼￼￼￼￼￼￼]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
+[イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
 [Event Hub でイベント処理の拡張]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3

@@ -24,7 +24,7 @@
 
 Azure リソース マネージャーで Windows PowerShell を使用するには、以下が必要です。
 
-- Windows PowerShell バージョン 3.0 または 4.0。Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。互換バージョンをインストールするには、「[￼Windows Management Framework 3.0￼](http://www.microsoft.com/download/details.aspx?id=34595)」または「[￼Windows Management Framework 4.0￼](http://www.microsoft.com/download/details.aspx?id=40855)」をご覧ください。
+- Windows PowerShell バージョン 3.0 または 4.0。Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。互換バージョンをインストールするには、「[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595)」または「[Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)」をご覧ください。
 
 - Azure PowerShell Version 0.8.0 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../powershell-install-configure.md)」をご覧ください。
 

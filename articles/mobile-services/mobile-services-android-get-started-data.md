@@ -45,7 +45,7 @@
 
 
 - [Azure Mobile Services Android SDK]
-- Android SDK を含む <a  href="https://developer.android.com/sdk/index.html" target="_blank">Android Studio 統合開発環境￼</a>、Android 4.2 以降のバージョン。ダウンロードした GetStartedWithData プロジェクトを実行するには、Android 4.2 以降のバージョンが必要です。ただし、Mobile Services SDK は、Android 2.2 以降で動作します。
+- Android SDK を含む <a  href="https://developer.android.com/sdk/index.html" target="_blank">Android Studio 統合開発環境</a>、Android 4.2 以降のバージョン。ダウンロードした GetStartedWithData プロジェクトを実行するには、Android 4.2 以降のバージョンが必要です。ただし、Mobile Services SDK は、Android 2.2 以降で動作します。
 
 ## サンプル コード
 
