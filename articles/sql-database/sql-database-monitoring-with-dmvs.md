@@ -33,13 +33,15 @@ SQL Database は、次に示す 3 つの動的管理ビューを一部サポー�
 
 SQL Database で、動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。**VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。**VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、次のクエリを実行します。
 
-```GRANT VIEW DATABASE STATE TO database_user; ```
+```
+GRANT VIEW DATABASE STATE TO database_user;
+```
 
-In an instance of on-premises SQL Server, dynamic management views return server state information. In SQL Database, they return information regarding your current logical database only.
+オンプレミスの SQL Server インスタンスでは、動的管理ビューにはサーバーの状態に関する情報が表示されます。 SQL Database では、動的管理ビューには現在の論理データベースに関する情報のみが表示されます。
 
-## Calculating database size
+## データベースのサイズを計算しています
 
-The following query returns the size of your database (in megabytes):
+次のクエリはデータベース サイズを MB 単位で返します。
 
 ```
 -- データベースのサイズを計算します。SELECT SUM(reserved_page_count)*8.0/1024 FROM sys.dm_db_partition_stats; GO
