@@ -36,83 +36,97 @@
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs.git```
 
-The completed application is provided at the end of this tutorial as well.
+完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
-> [AZURE.WARNING] 	For our B2C Preview you must use the same client ID/Application ID and policies for both the Web-API task server and the client that connects to it. This is true for our iOS and Android tutorials. If you have previously created an application in either of those quickstarts, please use those values instead of creating new ones below.
+> [AZURE.WARNING] 	B2C プレビューでは、Web-API タスク サーバーとそのサーバーに接続するクライアントの両方に同じクライアント ID またはアプリケーション ID およびポリシーを使用する必要があります。これは、iOS と Android のチュートリアルに当てはまります。これらのクイック スタートのいずれかでアプリケーションを作成したことがある場合は、以下で新しい値を作成するのではなく、それらの値を使用してください。
 
 
-## 1. Get an Azure AD B2C directory
+## 1.Azure AD B2C ディレクトリの取得
 
-Before you can use Azure AD B2C, you must create a directory, or tenant.  A directory is a container for all your users, apps, groups, and so on.  If you don't have
-one already, go [create a B2C directory](active-directory-b2c-get-started.md) before moving on.
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、
+先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
 
-## 2. Create an application
+## 2.アプリケーションの作成
 
-Now you need to create an app in your B2C directory, which gives Azure AD some information that it needs to securely communicate with your app.  Both the client app and web API will be represented by a single **Application ID** in this case, since they comprise one logical app.  To create an app,
-follow [these instructions](active-directory-b2c-app-registration.md).  Be sure to
+次に、B2C ディレクトリ内にアプリを作成する必要があります。これによって、 アプリと安全に通信するために必要ないくつかの情報が Azure AD に提供されます。ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つのロジック アプリを構成するためです。アプリを作成するには、
+[こちらの手順](active-directory-b2c-app-registration.md)に従います。このとき、
 
-- Include a **web app/web api** in the application
-- Enter `http://localhost/TodoListService` as a **Reply URL** - it is the default URL for this code sample.
-- Create an **Application Secret** for your application and copy it down.  You will need it shortly.
-- Copy down the **Application ID** that is assigned to your app.  You will also need it shortly.
+- アプリケーションに **Web アプリまたは Web API** を含めます。
+- `http://localhost/TodoListService` を**応答 URL** として入力します。これはこのサンプル コードで使用する既定の URL です。
+- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
+- アプリに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
     > [AZURE.IMPORTANT]
-    You cannot use applications registered in the **Applications** tab on the [Azure Portal](https://manage.windowsazure.com/) for this.
+    [Azure ポータル](https://manage.windowsazure.com/)の **[アプリケーション]** タブで登録されているアプリケーションは、ここでは使用できません。
 
-## 3. Create your policies
+## 3.ポリシーの作成
 
-In Azure AD B2C, every user experience is defined by a [**policy**](active-directory-b2c-reference-policies.md).  This app contains three
-identity experiences - sign-up, sign-in, and sign-in with Facebook.  You will need to create one policy of each type, as described in the
-[policy reference article](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy).  When creating your three policies, be sure to:
+Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポリシー**](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、3
+つの ID エクスペリエンス (サインアップ、サインイン、および Facebook でのサインイン) が含まれます。
+[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
-- Choose the **Display Name** and a few other sign-up attributes in your sign-up policy.
-- Choose the **Display Name** and **Object ID** application claims in every policy.  You can choose other claims as well.
-- Copy down the **Name** of each policy after you create it.  It should have the prefix `b2c_1_`.  You'll need those policy names shortly.
+- サインアップ ポリシーで、**[表示名]** と他のいくつかのサインアップ属性を選択します。
+- すべてのポリシーで、**[表示名]** と **[オブジェクト ID]** のアプリケーション クレームを選択します。その他のクレームも選択できます。
+- ポリシーの作成後、各ポリシーの **[名前]** をメモしておきます。名前には、プレフィックス `b2c_1_` が付加されます。これらのポリシー名はすぐに必要になります。
 
-Once you have your three policies successfully created, you're ready to build your app.
+3 つのポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
 
-Note that this article does not cover how to use the policies you just created.  If you want to learn about how policies work in Azure AD B2C,
-you should start with the [.NET Web App getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md).
+この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C 
+でどのように機能するかを学習する場合は、[.NET Web アプリの入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)から始めてください。
 
-## 4: Download node.js for your platform
-To successfully use this sample, you must have a working installation of Node.js.
+## 4\. プラットフォーム用の Node.js のダウンロード
+このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。
 
-Install Node.js from [http://nodejs.org](http://nodejs.org).
+Node.js を [http://nodejs.org](http://nodejs.org) からインストールします。
 
-## 5: Install MongoDB on to your platform
+## 5. プラットフォームへの MongoDB のインストール
 
-To successfully use this sample, you must have a working installation of MongoDB. We will use MongoDB to make our REST API persistant across server instances.
+このサンプルを正常に使用するには、MongoDB の実稼働するインストール環境が必要になります。MongoDB を使用して、REST API がサーバー インスタンス間で持続されるようにします。
 
-Install MongoDB from [http://mongodb.org](http://www.mongodb.org).
+MongoDB を [http://mongodb.org](http://www.mongodb.org) からインストールします。
 
-> [AZURE.NOTE] This walkthrough assumes that you use the default installation and server endpoints for MongoDB, which at the time of this writing is: mongodb://localhost
+> [AZURE.NOTE] このチュートリアルでは、MongoDB の既定のインストール環境およびサーバー エンドポイント (チュートリアルの記述時点では mongodb://localhost) が使用されることを想定しています。
 
-## 6: Install the Restify modules in to your Web API
+## 6. Web API への Restify モジュールのインストール
 
-We will be using Resitfy to build our REST API. Restify is a minimal and flexible Node.js application framework derived from Express that has a robust set of features for building REST APIs on top of Connect.
+Resitfy を使用して REST API を構築します。Resitfy は最小で柔軟性のある Node.js アプリケーション フレームワークで、Connect 上に REST API を構築するための一連の堅牢な機能を備えた Express から派生しています。
 
-### Install Restify
+### Restify をインストールする
 
-From the command-line, change directories to the azuread directory. If the **azuread** directory does not exist, create it.
+コマンド ラインで、azuread ディレクトリに移動します。**azuread** ディレクトリが存在しない場合は、作成します。
 
-`cd azuread` - or- `mkdir azuread;`
+`cd azuread` または `mkdir azuread;`
 
-Type the following command:
+次のコマンドを入力します。
 
 `npm install restify`
 
-This command installs Restify.
+このコマンドにより、Restify がインストールされます。
 
-#### Did you get an error?
+#### エラーが発生した場合
 
-When using npm on some operating systems, you may receive an error of Error: EPERM, chmod '/usr/local/bin/..' and a request to try running the account as an administrator. If this occurs, use the sudo command to run npm at a higher privilege level.
+一部のオペレーティング システムで npm を使用すると、エラー メッセージ「Error: EPERM, chmod '/usr/local/bin/..'」が表示され、管理者のアカウントを使用して再実行するように要求されることがあります。このような場合は、sudo コマンドを使用して、より高い権限レベルで npm を実行します。
 
-#### Did you get an error regarding DTrace?
+#### Dtrace に関するエラーが表示された場合
 
-You may see something like this when installing Restify:
+Restify をインストールするときに、次のようなメッセージが表示されることがあります。
 
 ```Shell
-clang: error: no such file or directory: 'HD/azuread/node\_modules/restify/node\_modules/dtrace-provider/libusdt' make: *** [Release/DTraceProviderBindings.node] Error 1 gyp ERR! build error gyp ERR! stack Error: `make` failed with exit code: 2 gyp ERR! stack at ChildProcess.onExit (/usr/local/lib/node\_modules/npm/node\_modules/node-gyp/lib/build.js:267:23) gyp ERR! stack at ChildProcess.EventEmitter.emit (events.js:98:17) gyp ERR! stack at Process.ChildProcess.\_handle.onexit (child\_process.js:789:12) gyp ERR! System Darwin 13.1.0 gyp ERR! command "node" "/usr/local/lib/node\_modules/npm/node\_modules/node-gyp/bin/node-gyp.js" "rebuild" gyp ERR! cwd /Volumes/Development HD/azuread/node\_modules/restify/node\_modules/dtrace-provider gyp ERR! node -v v0.10.11 gyp ERR! node-gyp -v v0.10.0 gyp ERR! not ok npm WARN optional dep failed, continuing dtrace-provider@0.2.8 ```
+clang: error: no such file or directory: 'HD/azuread/node_modules/restify/node_modules/dtrace-provider/libusdt'
+make: *** [Release/DTraceProviderBindings.node] Error 1
+gyp ERR! build error
+gyp ERR! stack Error: `make` failed with exit code: 2
+gyp ERR! stack     at ChildProcess.onExit (/usr/local/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:267:23)
+gyp ERR! stack     at ChildProcess.EventEmitter.emit (events.js:98:17)
+gyp ERR! stack     at Process.ChildProcess._handle.onexit (child_process.js:789:12)
+gyp ERR! System Darwin 13.1.0
+gyp ERR! command "node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /Volumes/Development HD/azuread/node_modules/restify/node_modules/dtrace-provider
+gyp ERR! node -v v0.10.11
+gyp ERR! node-gyp -v v0.10.0
+gyp ERR! not ok
+npm WARN optional dep failed, continuing dtrace-provider@0.2.8
+```
 
 
 Restify は、DTrace を使用して REST 呼び出しをトレースする強力なメカニズムを備えています。ただし、多くのオペレーティング システムで DTrace は使用できません。これらのエラーは無視してかまいません。
@@ -281,7 +295,7 @@ policyName:'b2c_1_<sign in policy name>',
 
 ### 必要な値
 
-*IdentityMetadata*: これは、passport-azure-ad が、IdP 用の構成データと JWT トークンを検証するためのキーを検索する場所です。Azure Active Directory を使用する場合は、これを変更する必要はありません。
+*IdentityMetadata*: これは、passport-azure-ad が、IdP 用の構成データと、JWT トークンを検証するためのキーを検索する場所です。Azure Active Directory を使用する場合は、これを変更する必要はありません。
 
 *audience*: サービスを識別するポータルからの URI。このサンプルでは `http://localhost/TodoListService` を使用します。
 

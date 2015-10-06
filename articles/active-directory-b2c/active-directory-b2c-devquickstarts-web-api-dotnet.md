@@ -82,13 +82,13 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-Web
 </appSettings>
   ```
 
-This article will not cover the details of securing the `TaskService`.  If you want to learn how a web API securely authenticates requests using Azure AD B2C, check out our
-[Web API Getting Started article](active-directory-b2c-devquickstarts-api-dotnet.md).
+この記事では、`TaskService` のセキュリティ保護の詳細は説明しません。Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、
+[Web API の概要に関する記事](active-directory-b2c-devquickstarts-api-dotnet.md)をご覧ください。
 
-## 6. Configure the task web app
+## 6.タスク Web アプリの構成
 
-In order for the `TaskWebApp` to communicate with Azure AD B2C, there are a few common parameters that you will need to provide.  In the `TaskWebApp` project, open up the
-`web.config` file in the root of the project and replace the values in the `<appSettings>` section.  These values will be used throughout the web app.
+`TaskWebApp` が Azure AD B2C と通信するために、指定する必要がある一般的なパラメーターがいくつかあります。`TaskWebApp` プロジェクトで、プロジェクトのルートにある 
+`web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。これらの値は、Web アプリ全体で使用されます。
 
 ```
 <appSettings>

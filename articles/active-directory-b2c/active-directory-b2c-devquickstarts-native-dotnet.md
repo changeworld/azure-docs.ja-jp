@@ -78,16 +78,15 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
   </appSettings>
   ```
 
-If you want to learn how a web API securely authenticates requests using Azure AD B2C, check out our
-[Web API Getting Started article](active-directory-b2c-devquickstarts-api-dotnet.md).
+Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、
+[Web API の概要に関する記事](active-directory-b2c-devquickstarts-api-dotnet.md)をご覧ください。
 
-## 6. Execute policies
-Now that the `TaskService` is ready to authenticate requests, we can implement the `TaskClient`.  Your app communicates with Azure AD B2C by sending HTTP authentication requests,
-specifying the policy it wishes to execute as part of the request.  For .NET desktop applications, you can use the **Active Directory Authentication Library (ADAL)**
-to send OAuth 2.0 authentication messages, execute policies, and get tokens for calling web APIs.
+## 6.ポリシーの実行
+`TaskService` で要求を認証する準備が完了したので、`TaskClient` を実装できます。アプリは、HTTP 認証要求を送信することで、Azure AD B2C と通信します。このとき、要求の一環として実行するポリシーを指定します。
+.NET デスクトップ アプリケーションでは、**Active Directory 認証ライブラリ (ADAL)** を使用して、OAuth 2.0 認証メッセージを送信し、ポリシーを実行して、呼び出し元の Web API のトークンを取得できます。
 
-#### Install ADAL
-Begin by adding ADAL to the TaskClient project using the Visual Studio Package Manager Console.
+#### ADAL をインストールする
+まず、Visual Studio Package Manager Console を使用して、ADAL を TaskClient プロジェクトに追加します。
 
 ```
 PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TaskClient -IncludePrerelease
