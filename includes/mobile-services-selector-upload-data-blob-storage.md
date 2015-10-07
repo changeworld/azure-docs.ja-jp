@@ -5,4 +5,4 @@
 - [(Windows Phone Silverlight 8.x | Javascript)](../articles/mobile-services-windows-phone-upload-data-blob-storage.md)
 - [(Android | Javascript)](../articles/mobile-services-android-upload-data-blob-storage.md)
 
-<!---HONumber=September15_HO1-->
+<!----HONumber=Sept15_HO1-->
