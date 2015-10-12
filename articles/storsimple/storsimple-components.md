@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="StorSimple のコンポーネントについて | Microsoft Azure"
-	description="StorSimple デバイス、仮想デバイス、サービス、管理テクノロジについて説明し、ソリューションで使用される主な用語を説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="AdinaH"
-	editor=""/>
+   pageTitle="StorSimple のコンポーネントについて | Microsoft Azure" 
+   description="StorSimple デバイス、仮想デバイス、サービス、管理テクノロジについて説明し、ソリューションで使用される主な用語を説明します。" 
+   services="storsimple" 
+   documentationCenter="NA" 
+   authors="SharS" 
+   manager="AdinaH" 
+   editor=""/>
 
 <tags
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/26/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD" 
+   ms.date="08/26/2015"
+   ms.author="v-sharos"/>
 
 
 # StorSimple のコンポーネントとその仕組みについて 
@@ -53,7 +53,7 @@ StorSimple 仮想デバイス (仮想アプライアンスともいいます) �
 - 仮想デバイスのインターフェイスは 1 つのみですが、物理デバイスには 6 個のネットワーク インターフェイスがあります。 
 - 仮想デバイスの登録は、別のタスクとしてではなく、デバイス構成時に行います。
 - 仮想デバイスからサービス データの暗号化キーを再生成することはできません。キーのロールオーバー中に、物理デバイスでキーを再生成し、新しいキーで仮想デバイスを更新します。
-- 仮想デバイスに更新プログラムを適用する必要がある場合、ある程度のダウン タイムが発生します。物理 StorSimple デバイスではダウン タイムが発生しません。
+- 現時点では、仮想デバイスに更新を適用することはできません。最新バージョンの仮想デバイスが必要な場合、新しいデバイスを作成して、ボリューム コンテナーを新しい仮想デバイスにフェールオーバーできます。
 
 クラウドへのデプロイやテスト シナリオなど、物理デバイスを使用できない障害復旧シナリオに対しては、StorSimple 仮想デバイスを使用することをお勧めします。
 
@@ -226,4 +226,4 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

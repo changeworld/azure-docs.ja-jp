@@ -29,26 +29,26 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 + 内部設置型 SQL Server
 + IaaS 上の SQL Server
 
-データのコピー アクティビティの設定方法については、「[Copy data with Azure Data Factory (Azure Data Factory を使用してデータをコピーする)][]」を参照してください。
+データのコピー アクティビティの設定方法については、「[Copy data with Azure Data Factory (Azure Data Factory を使用してデータをコピーする)](../data-factory/data-factory-data-movement-activities.md)」を参照してください。
 
 ## ストアド プロシージャ
  Azure Data Factory を使用すると、データ転送のスケジュールを設定できますが、それと同様に、ストアド プロシージャの実行を調整する際に使用することもできます。これにより、さらに複雑なパイプラインを作成でき、SQL Data Warehouse の演算性能を利用する Azure Data Factory の機能も拡張されます。
 
 ## 次のステップ
-統合の概要については、「[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)][]」をご覧ください。開発に関するその他のヒントについては、「[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][]」をご覧ください。
+統合の概要については、「[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)](sql-data-warehouse-overview-integrate.md)」をご覧ください。開発に関するその他のヒントについては、「[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)](sql-data-warehouse-overview-develop.md)」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
 
-[Copy data with Azure Data Factory]: ./data-factory-data-movement-activities/#copyactivity
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop/
-[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: ./sql-data-warehouse-overview-integration/
+[Copy data with Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/articles/data-factory-azure-sql-connector/
+[SQL Data Warehouse development overview]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-develop/
+[SQL Data Warehouse integration overview]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-integrate/
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 [Azure Data Factory のドキュメント]: https://azure.microsoft.com/documentation/services/data-factory/
-[Copy data with Azure Data Factory (Azure Data Factory を使用してデータをコピーする)]: https://azure.microsoft.com/JA-JP/documentation/articles/data-factory-data-movement-activities/
+[Copy data with Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/articles/data-factory-data-movement-activities/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

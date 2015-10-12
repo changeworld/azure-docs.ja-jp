@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="09/30/2015"
    ms.author="sahajs;twounder"/>
 
 # SQL Data Warehouse での Azure Stream Analytics の使用
@@ -89,11 +89,11 @@ SQL Database を選択し、[次へ] をクリックします。
 [Azure Stream Analytics の概要]: stream-analytics-introductiond.md
 [Azure Stream Analytics の使用]: stream-analytics-get-started.md
 [SQL Data Warehouse の開発の概要]: sql-data-warehouse-overview-develop.md
-[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: sql-data-warehouse-overview-integration.md
+[SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: sql-data-warehouse-overview-integrate.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 [Azure Stream Analytics documentation]: http://azure.microsoft.com/documentation/services/stream-analytics/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

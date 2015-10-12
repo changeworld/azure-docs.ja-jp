@@ -7,9 +7,9 @@
 	manager="jwhit"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="07/16/2015" ms.author="sammehta"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/24/2015" ms.author="sammehta"; "jimpark"/>
 
-# Azure DPM Backup の概要
+# DPM を使用して Azure へのワークロードをバックアップするための準備
 
 この記事では、Microsoft Azure Backup を使用して System Center Data Protection Manager (DPM) サーバーとワークロードを保護する方法について概説します。この記事を読むと次のことが理解できます。
 
@@ -60,7 +60,7 @@ DPM データをバックアップするために Azure Backup を準備する�
 - Azure Backup に格納されているデータは、"テープにコピー" オプションでは回復できません。
 - Azure Backup 機能が有効になっている Azure アカウントを使用する必要があります。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。[Azure Backup の料金](https://azure.microsoft.com/pricing/details/backup/)を参照してください。
 - Azure Backup を使用するには、バックアップ対象のサーバーに Azure Backup エージェントがインストールされていることが必要です。各サーバーには、キャッシュ場所として 2.5 GB のローカル空きストレージ スペースが必要です (推奨は 15 GB です)。
-- データは、Azure コンテナー ストレージに格納されます。Azure Backup コンテナーにバックアップできるデータ量に制限はありませんが、データ ソース (仮想マシンやデータベースなど) のサイズは 1.65 TB を超えないようにする必要があります。
+- データは、Azure コンテナー ストレージに格納されます。Azure Backup コンテナーにバックアップできるデータ量に制限はありませんが、データ ソース (仮想マシンやデータベースなど) のサイズは 54,400 GB を超えないようにする必要があります。
 
 Azure へのバックアップがサポートされているファイルの種類は、次のとおりです。
 
@@ -81,4 +81,4 @@ Azure へのバックアップがサポートされているファイルの種�
 
 >[AZURE.NOTE]System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

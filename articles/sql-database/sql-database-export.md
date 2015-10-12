@@ -45,7 +45,7 @@ BACPAC は Azure Storage BLOB コンテナーにエクスポートされます�
 
 .bacpac ファイルとしてエクスポートするデータベースの [SQL Database] ブレードを開きます。
 
-1.	[Azure プレビュー ポータル](https//:portal.azure.com)に移動します。
+1.	[Azure プレビュー ポータル](https://portal.azure.com)にアクセスします。
 2.	**[すべて参照]** をクリックします。
 3.	**[SQL データベース]** をクリックします。
 2.	BACPAC としてエクスポートするデータベースをクリックします。
@@ -101,4 +101,4 @@ BACPAC は Azure Storage BLOB コンテナーにエクスポートされます�
 [4]: ./media/sql-database-export/export-status.png
 [5]: ./media/sql-database-export/bacpac-details.png
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

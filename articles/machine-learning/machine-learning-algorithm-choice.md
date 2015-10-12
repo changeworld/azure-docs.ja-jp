@@ -14,7 +14,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="08/10/2015"
+	ms.date="09/28/2015"
 	ms.author="brohrer;garye" />
 
 # Microsoft Azure Machine Learning のアルゴリズムの選択方法
@@ -35,7 +35,7 @@
 
 チャートのパス ラベルとアルゴリズム ラベルは、"*&lt;パス ラベル&gt;* の場合は *&lt;アルゴリズム&gt;* を使用する" と読んでください。 たとえば、"*速度*の場合は *2 クラスのロジスティック回帰*を使用する" といった具合です。 場合によっては複数の分岐が適用されます。どれも完全に一致しない場合もあります。大まかな推奨事項なので、正確さは気にしないでください。複数のデータ科学者が、最善のアルゴリズムを探す唯一の方法はすべてを試してみることであると言っています。
 
-同じデータに対して複数のアルゴリズムを試した [Azure Machine Learning ギャラリー](http://gallery.azureml.net/)の実験例と、その結果の比較については、「[Compare Multi-class Classifiers: Letter recognition (多クラス分類モデルの比較: 文字認識)](http://gallery.azureml.net/Details/a635502fc98b402a890efe21cec65b92)」をご覧ください。
+同じデータに対して複数のアルゴリズムを試し、その結果を比較した [Cortana Analytics ギャラリー](http://gallery.azureml.net/) の次の例を参照してください。[Compare Multi-class Classifiers: Letter recognition (多クラス分類モデルの比較: 文字認識)](http://gallery.azureml.net/Details/a635502fc98b402a890efe21cec65b92)。
 
 ## 機械学習の種類
 
@@ -112,7 +112,7 @@
 |[ローカル詳細サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn913070.aspx)|○| | |8|大きい特徴セットに好適|
 |[ベイズ ポイント マシン](https://msdn.microsoft.com/library/azure/dn905930.aspx)| |○|●|3| |
 |**多クラス分類**| | | | | |
-|[ロジスティック回帰](https://msdn.microsoft.com/ja-jp/library/azure/dn905853.aspx)| |●|●|5| |
+|[ロジスティック回帰](https://msdn.microsoft.com/ja-JP/library/azure/dn905853.aspx)| |●|●|5| |
 |[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906015.aspx)|●|○| |6| |
 |[デシジョン ジャングル](https://msdn.microsoft.com/library/azure/dn905963.aspx)|●|○| |6|低メモリ フットプリント|
 |[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn906030.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)|
@@ -222,4 +222,4 @@ Azure Machine Learning には、[Vowpal Wabbit](https://msdn.microsoft.com/libra
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

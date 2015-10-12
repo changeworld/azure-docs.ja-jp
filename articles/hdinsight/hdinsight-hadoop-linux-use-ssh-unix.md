@@ -35,7 +35,7 @@
 
 または
 
-* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli.md)
+* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md)
 
 ##SSH とは
 
@@ -242,4 +242,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

@@ -422,4 +422,4 @@ Azure Storage サービスにデータをアップロードするために必要
 [Mobile Services .NET の使用方法の概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

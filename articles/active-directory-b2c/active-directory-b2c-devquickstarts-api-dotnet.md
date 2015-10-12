@@ -36,16 +36,18 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 - Web アプリの場合、**リダイレクト URI** の `https://localhost:44316/` を使用します。これは、このコード サンプルでの Web アプリ クライアントの既定の場所です。
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。このプロジェクトはすぐに必要になります。
 
-     >[AZURE.IMPORTANT][Azure ポータル](https://manage.windowsazure.com/)の **[アプリケーション]** タブで登録されているアプリケーションをこのために使用することはできません。
+ [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## 3\.ポリシーの作成
 
 Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポリシー**](active-directory-b2c-reference-policies.md)によって定義されます。このコード サンプルのクライアントには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、必ず以下の操作を行ってください。
 
 - ID プロバイダーのブレードで、**[ユーザー ID サインアップ]** または **[電子メール サインアップ]** を選択します。
-- サインアップ ポリシーで、**[表示名]** と他のいくつかのサインアップ属性を選択します。
-- すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** 要求を選択します。その他の要求も選択できます。
-- ポリシーの作成後、各ポリシーの **[名前]** をメモしておきます。名前には、プレフィックス `b2c_1_` が付加されます。これらのポリシー名はすぐに必要になります。 
+- サインアップ ポリシーで、**表示名**と他のいくつかのサインアップ属性を選択します。
+- すべてのポリシーで、アプリケーション クレームとして **表示名**と**オブジェクト ID** を選択します。その他の要求も選択できます。
+- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。これらのポリシー名はすぐに必要になります。 
+
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 3 つのポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
 
@@ -59,7 +61,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Dot
 
 また、完成済みのアプリも、[.zip 形式で入手する](https://github.com/AzureADQuickStarts/B2C-WebAPI-DotNet/archive/complete.zip)か、同じリポジトリの `complete` ブランチで利用できます。
 
-サンプル コードをダウンロードした後は、Visual Studio の `.sln` ファイルを開いて作業を開始します。ソリューションに `TaskWebApp` プロジェクトと `TaskService` プロジェクトという 2 つのプロジェクトがあることがわかります。`TaskWebApp` は、ユーザーと対話する MVC Web アプリケーションです。`TaskService` は、各ユーザーの To-Do リストを格納する、アプリのバックエンド Web API です。
+サンプル コードをダウンロードしたら、Visual Studio の `.sln` ファイルを開いて作業を開始します。ソリューションに `TaskWebApp` プロジェクトと `TaskService` プロジェクトの 2 つのプロジェクトがあることがわかります。`TaskWebApp` は、ユーザーと対話する MVC Web アプリケーションです。`TaskService` は、各ユーザーの To-Do リストを格納する、アプリのバックエンド Web API です。
 
 ## 5\.タスク Web アプリの構成
 
@@ -83,6 +85,8 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-Dot
 </appSettings>
 ```
 
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
+
 また、サインイン ポリシー名の指定が必要な 2 つの `[PolicyAuthorize]` デコレータもあります。`[PolicyAuthorize]` 属性は、認証が必要なアプリのページにユーザーがアクセスを試みたときに特定のポリシーを呼び出すために使用されます。
 
 ```C#
@@ -101,7 +105,7 @@ public class TasksController : Controller
 {
 ```
 
-`TaskWebApp` のような Web アプリで Azure AD B2C を使用する方法については、[Web アプリ サインインの概要に関する記事](active-directory-b2c-devquickstarts-web-dotnet.md)を参照してください。
+`TaskWebApp` のような Web アプリで Azure AD B2C を使用する方法については、[Web アプリ サインインの概要に関する記事](active-directory-b2c-devquickstarts-web-dotnet.md)をご覧ください。
 
 ## 6\.API のセキュリティ保護
 
@@ -151,7 +155,7 @@ public partial class Startup
 ```
 
 #### OAuth 2.0 認証を構成する
-`App_Start\Startup.Auth.cs` ファイルを開いて、`ConfigureAuth(...)` メソッドを実装します。
+`App_Start\Startup.Auth.cs` ファイルを開き、`ConfigureAuth(...)` メソッドを実装します。
 
 ```C#
 // App_Start\Startup.Auth.cs
@@ -183,7 +187,7 @@ public partial class Startup
 ```
 
 #### タスク コントローラーをセキュリティで保護する
-OAuth 2.0 認証を使用するようにアプリが構成されたので、Web API をセキュリティで保護するには、`[Authorize]` タグをタスク コントローラーに追加するだけです。このコントローラーでは To Do リストのすべての操作が実行されるため、コントローラー全体をクラス レベルでセキュリティ保護します。よりきめ細かく制御するために、`[Authorize]` タグを個々のアクションに追加することもできます。
+OAuth 2.0 認証を使用するようにアプリが構成されたので、Web API をセキュリティで保護するために必要なのは、`[Authorize]` タグをタスク コントローラーに追加することだけです。このコントローラーでは To Do リストのすべての操作が実行されるため、コントローラー全体をクラス レベルでセキュリティ保護します。よりきめ細かく制御するために、`[Authorize]` タグを個々のアクションに追加することもできます。
 
 ```C#
 // Controllers\TasksController.cs
@@ -196,7 +200,7 @@ public class TasksController : ApiController
 ```
 
 #### トークンからユーザー情報を取得する
-`TaskController` はデータベースにタスクを格納します。このデータベースでは、各タスクに、そのタスクを "所有" するユーザーが関連付けられています。所有者は、ユーザーの**オブジェクト ID** によって識別されます (すべてのポリシーにアプリケーション要求としてオブジェクト ID を追加する必要があったのは、このためです)。
+`TaskController` はデータベースにタスクを格納します。このデータベースでは、各タスクに、そのタスクを "所有" するユーザーが関連付けられています。所有者は、ユーザーの**オブジェクト ID** によって識別されます (すべてのポリシーにアプリケーション クレームとしてオブジェクト ID を追加する必要があったのは、このためです)。
 
 ```C#
 // Controllers\TasksController.cs
@@ -215,10 +219,11 @@ public IEnumerable<Models.Task> Get()
 
 ## 8\.ポリシーの編集
 
-Azure AD B2C を使用して API をセキュリティで保護したので、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。ポリシー内の**アプリケーション要求**を操作し、Web API で利用できるユーザー情報を変更することができます。その他の要求を追加した場合、その要求は、既に説明したように .NET MVC Web API の `ClaimsPrincipal` オブジェクト内で利用できます。
+Azure AD B2C を使用して API をセキュリティで保護したので、アプリのポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。
 <!--add **identity providers**
 to the policies, allowing you users to sign into the Task Client using social accounts.  You can also 
 -->
+ポリシー内の**アプリケーション クレーム**を操作し、Web API で利用できるユーザー情報を変更することができます。その他のクレームを追加した場合、そのクレームは、前述のように .NET MVC Web API の `ClaimsPrincipal` オブジェクト内で利用できます。
 
 <!--
 
@@ -232,4 +237,4 @@ You can now move onto more advanced B2C topics.  You may want to try:
 
 -->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

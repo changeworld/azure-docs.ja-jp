@@ -22,9 +22,9 @@
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-## B2C ディレクトリを取得する
+## B2C テナントの取得
 
-カスタマイズを始める前に、まだ行っていない場合は、[Azure AD B2C ディレクトリを取得](active-directory-b2c-get-started.md)する必要があります。
+Azure AD B2C テナントがまだない場合は、カスタマイズを始める前に、[Azure AD B2C テナントを取得](active-directory-b2c-get-started.md)する必要があります。
 
 ## サインアップ ポリシーを作成する
 
@@ -32,23 +32,23 @@
 
 ## アプリケーションを登録する
 
-B2C ディレクトリに、ポリシーを実行するために使用できる[アプリケーションを登録する](active-directory-b2c-app-registration.md)必要があります。アプリケーションを登録した後、サインアップ ポリシーを実際に実行するにはいくつかのオプションを使用できます。
+B2C テナントに、ポリシーを実行するために使用できる[アプリケーションを登録する](active-directory-b2c-app-registration.md)必要があります。アプリケーションを登録した後、サインアップ ポリシーを実際に実行するにはいくつかのオプションを使用できます。
 
 - [ここに](active-directory-b2c-overview.md#getting-started)一覧表示された Azure AD B2C のクイック スタート アプリケーションのいずれかを構築します。
-- ビルド済みの [Azure AD B2C プレイグラウンド](https://aadb2cplayground.azurewebsites.net) アプリケーションを使用します。プレイグラウンドを使用する場合は、**リダイレクト URI** `https://aadb2cplayground.azurewebsites.net/` を使用して B2C ディレクトリにアプリケーションを登録する必要があります。
+- ビルド済みの [Azure AD B2C プレイグラウンド](https://aadb2cplayground.azurewebsites.net) アプリケーションを使用します。プレイグラウンドを使用する場合は、**リダイレクト URI** `https://aadb2cplayground.azurewebsites.net/` を使用して B2C テナントにアプリケーションを登録する必要があります。
 - [Azure プレビュー ポータル](https://portal.azure.com)でポリシーの **[今すぐ実行]** ボタンを使用します。
 
 ## ポリシーをカスタマイズする
 
 ポリシーの外観と操作性をカスタマイズするには、最初に Azure AD B2C の固有の規則を使用して HTML および CSS ファイルを作成する必要があります。その後は、静的なコンテンツを、Azure AD B2C がアクセスできる公開されている場所にアップロードできます。そのような場所としては、独自の専用 Web サーバー、Azure BLOB ストレージ、Azure CDN、その他の静的リソース ホスティング プロバイダーを使用できます。唯一の要件は、コンテンツが HTTPS 経由で使用でき、CORS を使用してアクセスできることです。静的コンテンツを Web で公開した後は、この場所を参照してエンド ユーザーにそのコンテンツを表示するようにポリシーを編集できます。Azure AD B2Cカスタマイズ機能の動作の詳細については、[UI のカスタマイズに関するメインの記事](active-directory-b2c-reference-ui-customization.md)を参照してください。
 
-このチュートリアルでは、既にいくつかのサンプル コンテンツを作成し、Azure BLOB ストレージでホストしてあります。サンプル コンテンツは、架空の会社 "Fabrikam B2C" のテーマでの非常に基本的なカスタマイズです。独自のポリシーで試してみるには、次の手順を実行します。
+このチュートリアルでは、既にいくつかのサンプル コンテンツを作成し、Azure BLOB ストレージでホストしてあります。サンプル コンテンツは、架空の会社 "Contoso B2C" のテーマでの非常に基本的なカスタマイズです。独自のポリシーで試してみるには、次の手順を実行します。
 
-1. [Azure プレビュー ポータル](https://portal.azure.com)で、ディレクトリにサインインし、[B2C 機能] ブレードに移動します。
+1. [Azure プレビュー ポータル](https://portal.azure.com)でテナントにサインインし、B2C 機能ブレードに移動します。
 2. **[サインアップ ポリシー]** をクリックし、作成したサインアップ ポリシー ("b2c\_1\_sign\_up" など) をクリックします。
 3. **[ページの UI のカスタマイズ]**、**[ID プロバイダーの選択ページ]** の順にクリックします。
-4. **[カスタム テンプレートを使用する]** を **[はい]** に切り替えます。**[カスタム ページの URI]** フィールドに「`https://fabrikamb2c.blob.core.windows.net/aadb2cplayground/Index.html`」と入力します。**[OK]** をクリックします。
-5. **[ローカル アカウントのサインアップ ページ]** をクリックします。**[カスタム テンプレートを使用する]** を **[はい]** に切り替えます。**[カスタム ページの URI]** フィールドに「`https://fabrikamb2c.blob.core.windows.net/aadb2cplayground/EmailVerification.html`」と入力します。**[OK]** を 2 回クリックして、UI カスタマイズ ブレードを閉じます。
+4. **[カスタム テンプレートを使用する]** を **[はい]** に切り替えます。**[カスタム ページの URI]** フィールドに、「`https://contosob2c.blob.core.windows.net/static/Index.html`」と入力します。**[OK]** をクリックします。
+5. **[ローカル アカウントのサインアップ ページ]** をクリックします。**[カスタム テンプレートを使用する]** を **[はい]** に切り替えます。**[カスタム ページの URI]** フィールドに、「`https://contosob2c.blob.core.windows.net/static/EmailVerification.html`」と入力します。**[OK]** を 2 回クリックして、UI カスタマイズ ブレードを閉じます。
 6. **[保存]** をクリックします。
 
 カスタマイズしたポリシーを試すことができるようになります。独自のアプリケーションまたは AAD B2C プレイグラウンドを使用することもできますが、単にポリシー ブレードで **[今すぐ実行]** コマンドをクリックするのでもかまいません。ドロップダウンでアプリケーションを選び、適切なリダイレクト URI を選びます。**[今すぐ実行]** ボタンをクリックします。新しいブラウザー タブが開き、アプリケーションへのサインアップについて、新しいコンテンツが所定の場所に置かれた状態のユーザー エクスペリエンスを確認できます。
@@ -72,22 +72,22 @@ Azure BLOB ストレージを使用してページのコンテンツをホスト
 
 #### ヘルパー ツールとサンプル ファイルをダウンロードする
 
-[Azure BLOB ストレージ ヘルパー ツールとサンプル ファイルを .zip としてこちら](https://github.com/azureadsamples/b2c-azureblobstorage-client/archive/master.zip)からダウンロードできます。または、GitHub からコピーできます。
+[Azure BLOB ストレージ ヘルパー ツールとサンプル ファイルを .zip としてこちら](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip)からダウンロードできます。また、次のように GitHub から複製することもできます。
 
 ```
-git clone https://github.com/azureadsamples/b2c-azureblobstorage-client
+git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 ```
 
 このリポジトリには `sample_templates\contoso` ディレクトリが含まれており、そこには HTML、CSS、イメージの例が含まれています。これらのテンプレートで独自の Azure BLOB ストレージ アカウントを参照するには、HTML ファイルを編集する必要があります。`Index.htnml` および `EmailValidation.html` を開き、`https://localhost` のすべてのインスタンスを、前の手順でコピーした独自のコンテナーの URL に置き換えます。この場合、HTML は Azure AD によってドメイン `https://login.microsoftonline.com` で提供されるので、HTML ファイルの絶対パスを使用する必要があります。
 
 #### サンプル ファイルをダウンロードする
 
-同じリポジトリで、`B2CAzureStorageClient.zip` を解凍し、その中にある `B2CAzureStorageClient.exe` ファイルを実行します。このプログラムは単に、指定されたディレクトリ内のすべてのファイルをストレージ アカウントにアップロードし、それらのファイルに対する CORS アクセスを有効にします。上記の手順を実行した場合、HTML および CSS ファイルはストレージ アカウントを指すようになります。
+同じリポジトリで、`B2CAzureStorageClient.zip` を解凍し、その中にある `B2CAzureStorageClient.exe` ファイルを実行します。このプログラムは単に、指定されたディレクトリ内のすべてのファイルをストレージ アカウントにアップロードし、それらのファイルに対する CORS アクセスを有効にします。上記の手順を実行した場合、HTML および CSS ファイルはストレージ アカウントを指すようになります。ストレージ アカウントの名前は、`blob.core.windows.net` の前の部分 (`contoso` など) です。ブラウザーで `https://{storage-account-name}.blob.core.windows.net/{container-name}/Index.html` にアクセスしてみることで、コンテンツが正常にアップロードされていることを確認できます。また、[http://test-cors.org/](http://test-cors.org/) を使用して、コンテンツが CORS に対応していることを確認します (結果で XHR status: 200 を探します)。
 
 #### 再びポリシーをカスタマイズする
 
-独自のストレージ アカウントにサンプル コンテンツをアップロードしたので、それを参照するようにサインアップ ポリシーを編集する必要があります。前の「[ポリシーをカスタマイズする](#customize-your-policy)」セクションの手順を繰り返します。ただし今度は、独自のストレージ アカウントの URL を使用します。たとえば、`Index.html` ファイルの場所は `<url-of-your-container>/Index.html` などです。
+独自のストレージ アカウントにサンプル コンテンツをアップロードしたので、それを参照するようにサインアップ ポリシーを編集する必要があります。前述の「[ポリシーをカスタマイズする](#customize-your-policy)」の手順を繰り返します。ただし、今回は独自のストレージ アカウントの URL を使用します。たとえば、`Index.html` ファイルの場所は `<url-of-your-container>/Index.html` になります。
         
-これで、**[今すぐ実行]** ボタンや独自のアプリケーションを使用して、ポリシーを再度実行できるようになります。どちらの場合も同じサンプルの HTML と CSS を使用したので、結果はほぼ同じになるはずです。ただし今度は、ポリシーは Azure BLOB ストレージの独自のインスタンスを参照しているので、自由にファイルを編集して再アップロードできます。HTML および CSS のカスタマイズの詳細については、[UI のカスタマイズに関するメインの記事](active-directory-b2c-reference-ui-customization.md)を参照してください。
+これで、**[今すぐ実行]** ボタンまたは独自のアプリケーションを使用して、ポリシーを再度実行できるようになります。どちらの場合も同じサンプルの HTML と CSS を使用したので、結果はほぼ同じになるはずです。ただし今度は、ポリシーは Azure BLOB ストレージの独自のインスタンスを参照しているので、自由にファイルを編集して再アップロードできます。HTML および CSS のカスタマイズの詳細については、[UI のカスタマイズに関するメインの記事](active-directory-b2c-reference-ui-customization.md)をご覧ください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

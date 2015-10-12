@@ -25,9 +25,9 @@
 
 * はい、無料[価格レベル](app-insights-pricing.md)を選択した場合は、無料です。ほとんどの機能と大量のデータが手に入ります。 
 * Microsoft Azure に登録するには、クレジット カード データを登録する必要がありますが、他の有料の Azure のサービスを使用するか、明示的に有料レベルにアップグレードしない限り、料金は発生しません。
-* アプリが無料プランの月間クォータより多くのデータを送信すると、ログの記録を停止します。このような場合は、料金の支払いを開始するか、月末にクォータがリセットされるまでお待ちください。
+* アプリが Free レベルの月間クォータより多くのデータを送信すると、ログの記録を停止します。このような場合は、料金の支払いを開始するか、月末にクォータがリセットされるまでお待ちください。
 * 基本的な使用とセッション データは、クォータの対象になりません。
-* Premium の機能を無償で使用できる、30 日間の無料試用版もあります。
+* 30 日間の無料トライアルが用意されています。この期間中、Premium の機能を無料でご利用いただけます。
 * 各アプリケーション リソースには、個別のクォータがあり、それぞれに個別に価格レベルを設定します。
 
 #### 料金を払うと何ができますか。
@@ -54,7 +54,7 @@
 
 対応策:
 
-+ 適切な Azure アカウントのログイン資格情報を指定していることを確認してください。新しいバージョンのツールでは、[新しいプロジェクト] ダイアログに表示される Microsoft Azure の資格情報と、Visual Studio の右上に表示される Visual Studio Online の資格情報が異なる場合があります。
++ 適切な Azure アカウントのログイン資格情報を指定していることを確認してください。新しいバージョンのツールでは、[新しいプロジェクト] ダイアログに表示される Microsoft Azure の資格情報と、Visual Studio の右上に表示される資格情報が異なる場合があります。
 + ブラウザーで、[Azure ポータル](https://portal.azure.com)に対するアクセス権があることを確認してください。設定を開き、制限がないかどうか確認してください。
 + [Application Insights を既存のプロジェクトに追加するには][start]\: ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。
 + 解決しない場合は、[手動の手順](app-insights-start-monitoring-app-health-usage.md)を実行して、ポータルでリソースを追加してから、SDK をプロジェクトに追加してください。 
@@ -189,11 +189,6 @@ dc.services.visualstudio.com への https POST 呼び出しを中継できるプ
 いいえ。 このマップには Azure サービスの状態が示されています。Web テストの結果を確認するには、[参照]、[Application Insights]、対象のアプリケーションの順に選択し、Web テストの結果を表示します。
 
 
-#### <a name="q07"></a>Application Insights をアプリケーションに追加する機能を使用して Application Insights ポータルを開いたときの画面が、説明にあるスクリーンショットとまったく異なります。
-
-Visual Studio Online バージョンに接続される[古いバージョンの Application Insights SDK](http://msdn.microsoft.com/library/dn793604.aspx) をご利用ではないでしょうか。
-
-ご覧のヘルプ ページは、[Microsoft Azure 向けの Application Insights プレビュー][start] (Visual Studio 2013 Update 3 以降に付属) を対象にしています。
 
 #### <a name="data"></a>ポータルでのデータ保持期間はどのくらいですか? セキュリティで保護されていますか?
 
@@ -229,7 +224,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 
 Azure VM で Web サービスが実行されている場合は、そこでも[診断を取得][azurediagnostic]できます。
 
-## Automation
+## 自動化
 
 Application Insights リソースを作成するために [PowerShell スクリプトを書き込みます](app-insights-powershell-script-create-resource.md)。
 
@@ -248,4 +243,4 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

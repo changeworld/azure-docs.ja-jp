@@ -4,7 +4,7 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="spelluru"
-	manager="jhubbard"
+	manager="JennieHubbard"
 	editor=""/>
 
 <tags
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/08/2015"
-	ms.author="spelluru"/>
+	ms.date="09/24/2015"
+	ms.author="jhubbard"/>
 
 
 #Azure SQL データ同期の概要 (プレビュー)
 このチュートリアルでは、Azure (プレビュー) ポータルを使用して、Azure SQL データ同期の基礎を学習します。
 
 
-このチュートリアルは、SQL Server および Azure SQL データベースを使用した経験がほとんどない読者を対象に作成されています。このチュートリアルでは、ハイブリッド (SQL Server および SQL データベース インスタンス) 同期グループを作成し、全面的に構成して、設定したスケジュールに従って同期します。
+このチュートリアルは、SQL Server および Azure SQL データベースを使用した経験がほとんどない読者を対象に作成されています。このチュートリアルでは、ハイブリッド (SQL Server および SQ L Database インスタンス) 同期グループを作成し、全面的に構成して、設定したスケジュールに従って同期します。
 
 
 ## 手順 1: Azure SQL データベースへの接続
@@ -40,7 +40,7 @@
 
 
 ## ステップ 2. クライアント エージェントの追加
-この手順が必要になるのは、同期グループに内部設置型 SQL Server データベースを含める場合だけです。同期グループに SQL データベース インスタンスしかない場合は、「手順 4. 同期グループの作成」までスキップできます。
+この手順が必要になるのは、同期グループにオンプレミスの SQL Server データベースを含める場合だけです。同期グループにあるのが SQL データベースのインスタンスのみである場合は、手順 4 をスキップします。
 
 <a id="InstallRequiredSoftware"></a>
 ### ステップ 2a. 必要なソフトウェアのインストール
@@ -80,7 +80,7 @@
 
 ## ステップ 3. SQL Server データベースのクライアント エージェントへの登録
 
-クライアント エージェントをインストールした後、同期グループに含める内部設置型 SQL Server データベースをすべてエージェントに登録します。データベースをエージェントに登録するには、「[SQL Server データベースをクライアント エージェントに登録する](http://msdn.microsoft.com/library/jj823138.aspx)」を参照してください。
+クライアント エージェントをインストールした後、同期グループに含めるオンプレミスの SQL Server データベースをすべてエージェントに登録します。データベースをエージェントに登録するには、「[SQL Server データベースをクライアント エージェントに登録する](http://msdn.microsoft.com/library/jj823138.aspx)」を参照してください。
 
 
 
@@ -195,11 +195,11 @@ Azure SQL データ同期では、同期するテーブルと列を選択でき�
 ## 次のステップ
 SQL データベースと SQL データ同期の詳細については、以下を参照してください。
 
-* [SQL データ同期](https://msdn.microsoft.com/library/azure/hh456371.aspx)
+* [MSDN ライブラリの SQL データ同期に関するコンテンツ](https://msdn.microsoft.com/library/azure/hh456371.aspx)
 * [SQL Database の概要](sql-database-technical-overview.md)
 * [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
  
 
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

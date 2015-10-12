@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="08/13/2015"
+   ms.date="09/30/2015"
    ms.author="kempb" />
 
 # サーバー エクスプローラーから Azure Virtual Machines へのアクセス
@@ -51,6 +51,6 @@ Azure でホストされている仮想マシンには、サーバー エクス�
 
 ## 次のステップ
 
-Visual Studio での Azure ロールの使用方法の詳細については、「[Azure ロールでのリモート デスクトップの使用](http://go.microsoft.com/fwlink/p/?LinkID=623091)」を参照してください。
+Visual Studio での Azure ロールの使用方法の詳細については、「[Azure ロールでのリモート デスクトップの使用](vs-azure-tools-remote-desktop-roles.md)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

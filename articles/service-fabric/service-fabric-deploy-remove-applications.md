@@ -226,4 +226,4 @@ PS D:\temp>
 [11]: service-fabric-application-upgrade.md
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

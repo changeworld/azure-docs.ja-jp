@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure テーブルとの間でのデータの移動 | Azure Data Factory"
-	description="Azure Data Factory を使用して Azure テーブル ストレージに、または Azure テーブル ストレージからデータを移動する方法を説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="Azure テーブルとの間でのデータの移動 | Azure Data Factory" 
+	description="Azure Data Factory を使用して Azure テーブル ストレージに、または Azure テーブル ストレージからデータを移動する方法を説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/26/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
@@ -191,7 +191,7 @@
 
 このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB から Azure テーブル データベースのテーブルにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-**Azure ストレージのリンクされたサービス (Azure テーブルと BLOB の両方で使用):**
+**Azure ストレージのリンクされたサービス (Azure Table と BLOB の両方で使用):**
 
 	{
 	  "name": "StorageLinkedService",
@@ -370,8 +370,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
-azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | Azure テーブルのクエリ文字列。サンプル: **ColumnA eq ValueA** | いいえ
-azureTableSourceIgnoreTableNotFound | テーブルが存在しないという例外を受け入れるかどうかを示します。 | TRUE<br/>FALSE | いいえ |
+azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | <p>Azure テーブル クエリ文字列。</p>**例:****<br/> "azureTableSourceQuery": "PartitionKey eq 'DefaultPartitionKey'" <br/><br/>"azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00\_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00\_9999}\\')', SliceStart)" | No azureTableSourceIgnoreTableNotFound | テーブルが存在しないという例外を受け入れるかどうかを示します。 | TRUE<br/>FALSE | No |
 
 **AzureTableSink** の typeProperties セクションでは次のプロパティがサポートされます。
 
@@ -485,4 +484,4 @@ lastlogindate | Edm.DateTime
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

@@ -41,4 +41,4 @@ Azure Machine Learning では、発行された Web サービスに対して複�
 エンドポイントが作成されたら、同期 API、バッチ API、および Excel のワークシートによってそれを使用できます。この UI によるエンドポイントの追加に加え、エンドポイントは Endpoint Management API を使用してプログラムで追加することもできます。Machine Learning Web サービスの使用については、「[発行済みの Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」をご覧ください。
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

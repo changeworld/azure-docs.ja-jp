@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="07/01/2015"
+	ms.date="10/01/2015"
 	ms.author="krisragh;donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
@@ -155,7 +155,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
     #### TodoItem
 
-    | 属性 | 型 | 注 | 
+    | 属性 | 型 | 注 |
     |-------------- |  ------ | -------------------------------------------------------|
     | id (必須) | String | リモート ストア内のプライマリ キー (必須) |
     | 完了 | Boolean | Todo 項目フィールド |
@@ -272,4 +272,4 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 
 [Mobile Services のクイック スタート チュートリアル]: mobile-services-ios-get-started.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO1-->

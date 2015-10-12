@@ -101,7 +101,6 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 		ints = to.dfs(1:100)
 		calc = mapreduce(input = ints, map = function(k, v) cbind(v, 2*v))
 
-
 	最初の行では、RHadoop ライブラリの rmr2 を呼び出しています。これは、MapReduce 操作で使用します。
 
 	2 行目では、1 ～ 100 の値を生成し、`to.dfs` を使用して Hadoop ファイル システムに格納しています。
@@ -149,4 +148,4 @@ HDInsight クラスターへの R のインストールには、[https://hdiconf
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="09/09/2015" 
+	ms.date="09/29/2015" 
 	ms.author="jeffstok"/>
 
 # クエリを作成する
@@ -22,9 +22,13 @@ Azure Stream Analytics のストリーム処理ロジックは、ジョブが開
 
 ## Stream Analytics クエリを作成するには: ##
 
-1. Stream Analytics ジョブで **[クエリ]** をクリックします。
+1. Microsoft Azure 管理ポータルの Stream Analytics ジョブで、**[クエリ]** をクリックします。
 
     ![クエリの選択](./media/stream-analytics-write-queries/1-stream-analytics-write-queries.png)
+
+    Azure プレビュー ポータルで **[クエリ]** をクリックします。
+
+    ![クエリの選択のプレビュー](./media/stream-analytics-write-queries/query-preview-portal.png)
 
 2.	作業を始めやすいように、新しいジョブにはクエリ テンプレートが付いています。クエリ テンプレートは、入力イベントのすべてのフィールドを出力に反映させる「パススルー」クエリを実行します。
 
@@ -36,6 +40,8 @@ Azure Stream Analytics のストリーム処理ロジックは、ジョブが開
 ## クエリをテストするには: ##
 
 テスト データを含むローカル JSON ファイルを使用してブラウザーでクエリを実行することにより、クエリが意図したとおりに動作することを確認できます。これを行っても、ジョブが開始したり、課金に影響することはありません。
+
+> [AZURE.NOTE]現在、Azure プレビュー ポータルでは、ブラウザー内クエリ テストはサポートされていません。
 
 1.	クエリにエラーがないことを確認し (エラーがある場合は [テスト] ボタンが無効になります)、[テスト] ボタンをクリックします。  
 
@@ -62,6 +68,6 @@ Azure Stream Analytics のストリーム処理ロジックは、ジョブが開
 - [Azure Stream Analytics の使用](stream-analytics-get-started.md)
 - [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure Stream Analytics management REST API reference (Azure Stream Analytics の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+- [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

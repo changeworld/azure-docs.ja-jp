@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="07/02/2015"
+	ms.date="09/28/2015"
 	ms.author="dastrock"/>
 
 # Azure Active Directory テナントを取得する方法
@@ -65,4 +65,4 @@ Azure AD ユーザーがアプリケーションにサインインできるよ�
 
 Azure へのサインアップ プロセスの中で、クレジット カードの詳細を提供する必要があります。Azure AD でのアプリケーションの発行または新しいテナントの作成には料金は発生しないので安心してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

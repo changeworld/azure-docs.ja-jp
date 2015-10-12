@@ -20,6 +20,8 @@
 
 HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー データを処理し、D3.js を使用して表示する方法を説明します。このドキュメントでは、Azure 仮想ネットワークを使用して、HDInsight の Storm を HDInsight の HBase に接続し、HBase にトポロジからのデータを保存する方法についても説明します。
 
+> [AZURE.NOTE]このドキュメントの情報は、HDInsight クラスター上の Windows ベースの Storm の使用に基づいています。HDInsight で Linux ベースの Storm から Azure Event Hub を操作する方法の詳細については、「[Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](hdinsight-storm-develop-java-event-hub-topology.md)」を参照してください。
+
 ## 前提条件
 
 * Azure サブスクリプション。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
@@ -52,7 +54,7 @@ HDInsight で Apache Storm を使用し、Azure Event Hubs からのセンサー
 
 * **ダッシュボードの Web サイト**: データをリアルタイムでグラフにするサンプルのダッシュボード。
 
-	* Web サイトは Node.js で実装されるため、すべてのクライアント オペレーティング システムでテスト用に実行できます。また Azure Websites にデプロイすることもできます。
+	* Websites は Node.js で実装されるため、すべてのクライアント オペレーティング システムでテスト用に実行できます。また Azure Websites にデプロイすることもできます。
 
 	* [Socket.io](http://socket.io/) は Storm トポロジと Web サイト間のリアルタイムの通信に使用します。
 
@@ -420,4 +422,4 @@ Storm クラスターのトポロジを開始し、データを処理すると�
 
 [azure-portal]: https://manage.windowsazure.com/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

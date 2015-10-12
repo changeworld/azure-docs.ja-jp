@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/01/2015"
+	ms.date="09/29/2015"
 	ms.author="liviodlc"/>
 
 #Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
@@ -22,29 +22,29 @@
 
 次の例に示すように、この記事では、**Azure AD のシングル サインオン**を使用するように構成されたアプリのみに関連する内容を取り上げます。
 
-![Azure AD Single Sign-On](./media/active-directory-sso-certs/fed-sso.PNG)
+![Azure AD のシングル サインオン](./media/active-directory-sso-certs/fed-sso.PNG)
 
 ##フェデレーション証明書の有効期限をカスタマイズする方法
 
-既定では、証明書は 2 年後に期限切れになるように設定されています。次の手順に従って、証明書の別の有効期限を選択できます。ここに用意したスクリーンショットでは、例として ServiceNow を使用していますが、これらの手順は、他のフェデレーション SaaS アプリにも適用できます。
+既定では、証明書は 2 年後に期限切れになるように設定されています。次の手順に従って、証明書の別の有効期限を選択できます。ここに用意したスクリーンショットでは、例として Salesforce を使用していますが、これらの手順は、他のフェデレーション SaaS アプリにも適用できます。
 
 1. Azure Active Directory にあるアプリケーションの [クイック スタート] ページで、**[シングル サインオンの構成]** をクリックします。
 
-	![Open the SSO configuration wizard.](./media/active-directory-sso-certs/config-sso.png)
+	![SSO 構成ウィザードを開く](./media/active-directory-sso-certs/config-sso.png)
 
 2. **[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
 3. アプリケーションの **[サインオン URL]** を入力し、**[フェデレーション シングル サインオンに使用する証明書を構成します]** チェック ボックスをオンにします。その後、**[次へ]** をクリックします。
 
-	![Azure AD Single Sign-On](./media/active-directory-sso-certs/new-app-config-sso.PNG)
+	![Azure AD のシングル サインオン](./media/active-directory-sso-certs/new-app-config-sso.PNG)
 
 4. 次のページで **[新しい証明書の生成]** を選択し、証明書の有効期限を選択します。その後、**[次へ]** をクリックします。
 
-	![Generate a new certificate](./media/active-directory-sso-certs/new-app-config-cert.PNG)
+	![新しい証明書の生成](./media/active-directory-sso-certs/new-app-config-cert.PNG)
 
 5. 次に、**[証明書のダウンロード]** をクリックします。特定の SaaS アプリに証明書をアップロードする方法については、**[構成手順の表示]** をクリックします。
 
-	![Download then upload the certificate](./media/active-directory-sso-certs/new-app-config-app.PNG)
+	![証明書をダウンロードした後アップロードする](./media/active-directory-sso-certs/new-app-config-app.PNG)
 
 6. ダイアログの下部にある確認のチェック ボックスをオンにして [送信] をクリックするまで、証明書は有効になりません。
 
@@ -54,17 +54,17 @@
 
 1. Azure Active Directory にあるアプリケーションの [クイック スタート] ページで、**[シングル サインオンの構成]** をクリックします。
 
-	![Open the SSO configuration wizard](./media/active-directory-sso-certs/renew-sso-button.PNG)
+	![SSO 構成ウィザードを開く](./media/active-directory-sso-certs/renew-sso-button.PNG)
 
 2. ダイアログの最初のページで **[Azure AD のシングル サインオン]** を既に選択しているので、**[次へ]** をクリックします。
 
 3. 2 番目のページで、**[フェデレーション シングル サインオンに使用する証明書を構成します]** チェック ボックスをオンにします。その後、**[次へ]** をクリックします。
 
-	![Azure AD Single Sign-On](./media/active-directory-sso-certs/renew-config-sso.PNG)
+	![Azure AD のシングル サインオン](./media/active-directory-sso-certs/renew-config-sso.PNG)
 
 4. 次のページで **[新しい証明書の生成]** を選択し、新しい証明書の有効期限を選択します。その後、**[次へ]** をクリックします。
 
-	![Generate a new certificate](./media/active-directory-sso-certs/new-app-config-cert.PNG)
+	![新しい証明書の生成](./media/active-directory-sso-certs/new-app-config-cert.PNG)
 
 5. **[証明書のダウンロード]** をクリックします。正常に証明書を更新するには、次の 2 つの手順を実行する必要があります。
 
@@ -74,10 +74,8 @@
 
 	> [AZURE.IMPORTANT]これら 2 つの手順のいずれかを完了すると、一時的にアプリへのシングル サインオンが無効になりますが、2 番目の手順を完了すると再度有効になります。そのため、ダウンタイムを最小限に抑えるために、2 つの手順を間をおかずに短時間で完了してください。
 
-	![Download then upload the certificate](./media/active-directory-sso-certs/renew-config-app.PNG)
+	![証明書をダウンロードした後アップロードする](./media/active-directory-sso-certs/renew-config-app.PNG)
 
-##関連項目
+[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
-[アプリケーションへのアクセスと Azure AD でのシングル サインオン](active-directory-appssoaccess-whatis.md)
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

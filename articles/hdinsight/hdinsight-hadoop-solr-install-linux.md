@@ -19,7 +19,6 @@
 
 # HDInsight Hadoop クラスターに Solr をインストールして使用する
 
-
 このトピックでは、スクリプト アクションを使用して Azure HDInsight に Solr をインストールする方法について説明します。Solr は強力な検索プラットフォームで、Hadoop が管理するデータに対してエンタープライズ レベルの検索機能を提供します。HDInsight クラスターに Solr をインストールした後で、Solr を使用したデータの検索方法についても説明します。
 
 > [AZURE.NOTE]このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。Windows ベースのクラスターでの Solr の操作については、「[HDInsight Hadoop クラスターに Solr をインストールして使用する (Windows)](hdinsight-hadoop-solr-install.md)」を参照してください。
@@ -58,11 +57,11 @@ HDInsight クラスターに Solr をインストールするためのサンプ�
 
 3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
-4. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-provision-linux-clusters.md#portal)に関するページの説明に従って、クラスターのプロビジョニングを続行します。
+4. 「[Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-provision-linux-clusters.md#portal)」の説明に従って、クラスターのプロビジョニングを続行します。
 
 ## <a name="usesolr"></a>HDInsight で Solr を使用する方法
 
-###データのインデックス作成
+### データのインデックス作成
 
 最初に、いくつかのデータ ファイルに対し Solr のインデックスを作成する必要があります。これにより、インデックス付きデータに対して、Solr を使用して検索クエリを実行できます。以下の手順を使用して Solr にいくつかのサンプル データを追加し、そのデータを照会します。
 
@@ -153,7 +152,7 @@ HDInsight クラスターに Solr をインストールするためのサンプ�
 			    ]
 			  }
 
-###Solr ダッシュボードの使用
+### Solr ダッシュボードの使用
 
 Solr ダッシュボードは、Web ブラウザーを介して Solr を操作できる Web UI です。Solr ダッシュボードは HDInsight クラスターからインターネットに直接公開されませんが、SSH トンネルを使用してアクセスする必要があります。SSH トンネルの使用の詳細については、[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)方法に関するページを参照してください。
 
@@ -161,7 +160,7 @@ SSH トンネルを確立したら、Solr ダッシュボードを使用する�
 
 1. ブラウザーで、\_\___http://headnode0:8983/solr/#/__ に接続します。このトラフィックは、SSH トンネルを介して HDInsight クラスターの headnode0 にルーティングする必要があります。次のようなページが表示されます。
 
-	![Image of Solr dashboard](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
+	![Solr ダッシュボードのイメージ](./media/hdinsight-hadoop-solr-install-linux/solrdashboard.png)
 
 2. 左側のウィンドウで、**[Core Selector]** ボックスを使用して **[collection1]** を選択します。いくつかのエントリが __[collection1]__ の下に表示されます。
 
@@ -173,7 +172,7 @@ SSH トンネルを確立したら、Solr ダッシュボードを使用する�
 
 	最後に、検索ページの下部にある **[クエリの実行]** をクリックします。
 
-	![Use Script Action to customize a cluster](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
+	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install-linux/hdi-solr-dashboard-query.png)
 
 	これによる出力は、Solr のインデックス作成のために使用した 2 つのドキュメントを返します。出力結果は、以下のようになります。
 
@@ -229,7 +228,7 @@ SSH トンネルを確立したら、Solr ダッシュボードを使用する�
 			    ]
 			  }
 
-###Solr の開始と停止
+### Solr の開始と停止
 
 Solar を手動で停止または開始する必要がある場合は、次のコマンドを使用します。
 
@@ -237,8 +236,7 @@ Solar を手動で停止または開始する必要がある場合は、次の�
 
 	sudo start solr
 
-
-##インデックス付きデータのバックアップ
+## インデックス付きデータのバックアップ
 
 インデックス付きデータを Solr のクラスター ノードから Azure BLOB ストレージ にバックアップすることをお勧めします。そのために、次の手順を実行してください。
 
@@ -276,7 +274,7 @@ Solar を手動で停止または開始する必要がある場合は、次の�
 Solr のバックアップと復元の操作の詳細については、[SolrCores のバックアップの作成と復元](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups+of+SolrCores)に関するページを参照してください。
 
 
-## 関連項目##
+## 関連項目
 
 - [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。Hue は、Pig ジョブや Hive ジョブの作成、実行、保存のほか、HDInsight クラスターの既定のストレージの参照を容易にする Web UI です。
 
@@ -291,11 +289,9 @@ Solr のバックアップと復元の操作の詳細については、[SolrCore
 
 
 
-
-
 [hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

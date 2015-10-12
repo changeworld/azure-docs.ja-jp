@@ -40,7 +40,7 @@
 
 正しい whl ファイルを選択していることをご確認ください。
 
-たとえば、64 ビット コンピューター上で Python 2.7 を使用している場合は、pymssql‑2.1.1‑cp27‑none‑win_amd64.whl を選択します。.whl ファイルをダウンロードしたら、C:/Python27 フォルダーに配置します。
+たとえば、64 ビット コンピューター上で Python 2.7 を使用している場合は、pymssql‑2.1.1‑cp27‑none‑win\_amd64.whl を選択します。.whl ファイルをダウンロードしたら、C:/Python27 フォルダーに配置します。
 
 これでコマンドライン .cd から pip を使用して、pymssql ドライバーを C:/Python27 にインストールし、次を実行します
 	
@@ -100,11 +100,11 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 このコード例は、以下のトランザクションの使用について示します。
 
 
--トランザクションの開始
+- トランザクションの開始
 
--データの挿入
+- データの挿入
 
--トランザクションをロールバックして、挿入を元に戻す
+- トランザクションをロールバックして、挿入を元に戻す
 
 
 	import pymssql
@@ -114,6 +114,8 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 	cursor.execute("INSERT SalesLT.Product (Name, ProductNumber, StandardCost, ListPrice, SellStartDate) OUTPUT INSERTED.ProductID VALUES ('SQL Server Express New', 'SQLEXPRESS New', 0, 0, CURRENT_TIMESTAMP)")
 	cnxn.rollback()
 
- 
+## 次のステップ
 
-<!---HONumber=August15_HO6-->
+詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
+
+<!---HONumber=Oct15_HO1-->

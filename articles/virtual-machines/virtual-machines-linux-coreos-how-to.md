@@ -49,7 +49,7 @@ CoreOS は、Linux の軽量バージョンです。唯一のパッケージ化�
 1. SSH 証明書とキーを作成し、CoreOS 仮想マシンとのコミュニケーションを保護する
 2. 相互に通信するために、使用するクラスターの etcd ID を取得する
 3. cloud-config ファイルを [YAML] 形式で作成する
-4. Azure CLI を使用して、新しい Azure Cloud Service と 3 台の CoreOS VM を作成する
+4. Azure CLI を使用して、新しい Azure クラウド サービスと 3 台の CoreOS VM を作成する
 5. Azure VM で CoreOS クラスターをテストする
 6. localhost で CoreOS クラスターをテストする
 
@@ -198,7 +198,7 @@ azure vm create --custom-data=cloud-config.yaml --ssh=22 --ssh-cert=./myCert.pem
 
 
 <!--Link references-->
-[Azure コマンドライン インターフェイス (Azure CLI)]: ../xplat-cli.md
+[Azure コマンドライン インターフェイス (Azure CLI)]: ../xplat-cli-install.md
 [CoreOS]: https://coreos.com/
 [CoreOS Overview]: https://coreos.com/using-coreos/
 [CoreOS と Azure に関するページ]: https://coreos.com/docs/running-coreos/cloud-providers/azure/
@@ -208,4 +208,4 @@ azure vm create --custom-data=cloud-config.yaml --ssh=22 --ssh-cert=./myCert.pem
 [YAML]: http://yaml.org/
 [Azure 上の CoreOS で fleet を使ってみる]: virtual-machines-linux-coreos-fleet-get-started.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

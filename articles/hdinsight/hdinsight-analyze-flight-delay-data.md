@@ -13,18 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.date="08/12/2015"
 	ms.author="jgao"/>
 
 #HDInsight での Hive を使用したフライト遅延データの分析
 
 Hive では、*[HiveQL][hadoop-hiveql]* と呼ばれる SQL に似たスクリプト言語を使用して Hadoop MapReduce ジョブを実行します。大規模なデータの集約、照会、分析に Hive を利用できます。
 
+> [AZURE.NOTE]このドキュメントの手順では、Windows ベースの HDInsight クラスターが必要です。Linux ベースのクラスターでの手順については、「[HDInsight での Hive を使用したフライト遅延データの分析 (Linux)](hdinsight-analyze-flight-delay-data-linux.md)」を参照してください。
+
 Azure HDInsight の大きな利点の 1 つに、データ ストレージとコンピューティングの分離があります。HDInsight はデータ ストレージとして Azure BLOB ストレージを使用します。一般に、MapReduce 処理は、次の 3 つのパートに分割できます。
 
 1. **Azure BLOB ストレージにデータを保存する。** これは連続的なプロセスとなる場合があります。たとえば、気象データ、センサー データ、Web ログを Azure BLOB ストレージに保存できます。ここではフライトの遅延データが保存対象となります。
 2. **ジョブを実行する。** データを処理する段階になったら、Windows PowerShell スクリプト (またはクライアント アプリケーション) を実行して HDInsight クラスターをプロビジョニングし、ジョブを実行して、クラスターを削除します。このジョブによって、出力データが Azure BLOB ストレージに保存されます。出力データは、クラスターの削除後も維持されます。こうして、実際に消費した分だけが課金されることとなります。
-3. **Azure BLOB ストレージから出力結果を取り出す。**ここでは、Azure SQL Database にデータをエクスポートする過程がこれに相当します。
+3. **Azure BLOB ストレージから出力結果を取り出す。**ここでは、Azure SQL データベースにデータをエクスポートする過程がこれに相当します。
 
 このチュートリアルのシナリオと構成を示したのが次の図です。
 
@@ -53,7 +55,7 @@ Azure HDInsight の大きな利点の 1 つに、データ ストレージとコ
 
 **HDInsight ストレージについて**
 
-HDInsight の Hadoop クラスターでは、データ ストレージとして Azure BLOB ストレージが使用されます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
+HDInsight の Hadoop クラスターでは、データ ストレージとして Azure BLOB ストレージが使用されます。詳細については、[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]に関するページを参照してください。
 
 HDInsight クラスターをプロビジョニングするときに、Hadoop 分散ファイル システム (HDFS) と同じように、Azure ストレージ アカウントの BLOB ストレージ コンテナーを、既定のファイル システムとして指定します。このストレージ アカウントは "*既定のストレージ アカウント*" と呼ばれ、BLOB コンテナーは、"*既定の BLOB コンテナー*" または "*既定のコンテナー*" と呼ばれています。既定のストレージ アカウントは、HDInsight クラスターと同じデータ センター内に存在する必要があります。HDInsight クラスターを削除しても、既定のコンテナーと既定のストレージ アカウントは削除されません。
 
@@ -63,7 +65,7 @@ Azure BLOB ストレージの構文を次に示します。
 
 	wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.windows.net/<path>/<filename>
 
->[AZURE.NOTE]BLOB ストレージのパスは仮想パスです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
+>[AZURE.NOTE]BLOB ストレージのパスは仮想パスです。詳細については、[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]に関するページを参照してください。
 
 既定のコンテナーに格納されているファイルは、次の URI のどれを使用しても HDInsight からアクセスできます (例として flightdelays.hql を使用しています)。
 
@@ -121,7 +123,7 @@ Hadoop MapReduce はバッチ処理です。Hive ジョブの実行方法とし�
 
 **Windows PowerShell を使用して Hive クエリを実行するには**
 
-1. [付録 C](#appendix-c) の手順に従い、Azure SQL Database と Sqoop ジョブ出力用のテーブルを作成します。
+1. [付録 C](#appendix-c) の手順に従い、Azure SQL データベースと Sqoop ジョブ出力用のテーブルを作成します。
 2. 次のパラメーターを準備します。
 
 	<table border="1">
@@ -681,7 +683,7 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 
 ---
 ##<a id="appendix-c"></a>付録 C - Sqoop ジョブを出力するための Azure SQL Database の準備
-**SQL Database を準備するには (Sqoop スクリプトとマージ)**
+**SQL データベースを準備するには (Sqoop スクリプトとマージ)**
 
 1. 次のパラメーターを準備します。
 
@@ -832,12 +834,12 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 	- **$ipAddressRestService** - 既定値は http://bot.whatismyipaddress.com です。外部 IP アドレスを取得するためのパブリック IP アドレス (REST サービス) です。必要に応じて他のサービスを使用することもできます。このサービスを使用して取得した外部 IP アドレスは、Azure SQL Database サーバーのファイアウォール ルールを作成する際に使用され、ご利用のワークステーションから (Windows PowerShell スクリプトを使用して) データベースへのアクセスが許可されます。
 	- **$fireWallRuleName** - Azure SQL Database サーバーのファイアウォール ルールの名前です。既定の名前は <u>FlightDelay</u> です。この名前は必要に応じて変更できます。
 	- **$sqlDatabaseMaxSizeGB** - この値は、新しい Azure SQL Database サーバーを作成するときにのみ使用されます。既定値は 10 GB です。このチュートリアルにはこれで十分です。
-	- **$sqlDatabaseName** - この値は、新しい Azure SQL Database を作成するときにのみ使用されます。既定値は HDISqoop です。この名前を変更した場合は、Sqoop Windows PowerShell スクリプトにも反映する必要があります。
+	- **$sqlDatabaseName** - この値は、新しい Azure SQL データベースを作成するときにのみ使用されます。既定値は HDISqoop です。この名前を変更した場合は、Sqoop Windows PowerShell スクリプトにも反映する必要があります。
 
 4. **F5** キーを押して、スクリプトを実行します。
 5. スクリプトの出力結果を検証します。スクリプトが正常に実行されたことを確認してください。
 
-##<a id="nextsteps"></a>次のステップ
+##<a id="nextsteps"></a> 次のステップ
 ここでは、ファイルを Azure BLOB ストレージにアップロードする方法、Azure BLOB ストレージのデータを Hive テーブルに取り込む方法、Hive クエリの実行方法、Sqoop を使用して HDFS から Azure SQL Database にデータをエクスポートする方法を学習しました。詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の概要][hdinsight-get-started]
@@ -845,8 +847,8 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 * [HDInsight での Oozie の使用][hdinsight-use-oozie]
 * [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
 * [HDInsight での Pig の使用][hdinsight-use-pig]
-* [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
-* [Develop C#Hadoop streaming programs for HDInsight (HDInsight 用 C#Hadoop ストリーミング プログラムの開発)][hdinsight-develop-streaming]
+* [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][hdinsight-develop-mapreduce]
+* [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][hdinsight-develop-streaming]
 
 
 
@@ -879,4 +881,4 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png
 [img-hdi-flightdelays-flow]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.Flow.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

@@ -96,7 +96,7 @@ HPC Pack IaaS デプロイメント スクリプトは、HPC Pack クラスタ�
 
 **構成ファイルを作成する**
 
- HPC Pack IaaS デプロイメント スクリプトは HPC クラスターのインフラストラクチャについて記載された XML 構成ファイルを入力として使用します。Microsoft Excel を含む計算ノード イメージから作成された 1 個のヘッド ノードと 18 個の計算ノードで構成されるクラスターをデプロイするには、次のサンプル構成ファイルを実際の環境の値に置き換えます。構成ファイルの詳細については、スクリプト フォルダーまたは[スクリプト文書](https://msdn.microsoft.com/library/azure/dn864734.aspx)にある Manual.rtf ファイルを参照してください。
+ HPC Pack IaaS デプロイメント スクリプトは HPC クラスターのインフラストラクチャについて記載された XML 構成ファイルを入力として使用します。Microsoft Excel を含む計算ノード イメージから作成された 1 個のヘッド ノードと 18 個の計算ノードで構成されるクラスターをデプロイするには、次のサンプル構成ファイルを実際の環境の値に置き換えます。構成ファイルの詳細については、スクリプト フォルダーにある Manual.rtf ファイルおよび「[Create an HPC cluster with the HPC Pack IaaS deployment script (HPC Pack IaaS デプロイメント スクリプトを使用した HPC クラスターの作成)](virtual-machines-hpcpack-cluster-powershell-script.md)」参照してください。
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -384,4 +384,4 @@ SOA クライアント アプリケーションでは、IaaS クラスターの�
 [endpoint]: ./media/virtual-machines-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-excel-cluster-hpcpack/udf.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

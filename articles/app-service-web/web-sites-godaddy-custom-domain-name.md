@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure App Service でのカスタム ドメイン名の構成 (GoDaddy)"
 	description="GoDaddy から購入したカスタム ドメイン名を Azure Web Apps で使用する方法"
-	services="app-service\web"
+	services="app-service"
 	documentationCenter=""
 	authors="erikre"
 	manager="wpickett"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="app-service"
-	ms.workload="web"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
@@ -87,4 +87,4 @@ Azure App Service Web Apps からドメインを購入した場合は、「<a hr
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="09/28/2015" 
 	ms.author="juliako"/>
 
 #オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
@@ -53,7 +53,7 @@ Azure Media Services では、**チャネル**は、ライブ ストリーミン
 
 3. プログラムを作成します。
 
-	Azure の管理ポータルを使用する場合、プログラムを作成すると資産も作成されます。
+	Microsoft Azure の管理ポータルを使用する場合、プログラムを作成すると資産も作成されます。
 
 	.NET SDK または REST を使用する場合は、プログラムを作成するときに資産を作成し、その資産を使用するように指定する必要があります。 
 1. プログラムに関連付けられた資産を発行します。   
@@ -266,4 +266,4 @@ AMS のラーニング パスについては、以下を参照してください
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

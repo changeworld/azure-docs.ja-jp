@@ -64,8 +64,6 @@ Azure リソース マネージャーは、さまざまなリソース プロバ
 
 [AZURE.INCLUDE [virtual-networks-nrp-lb-include](../../includes/virtual-networks-nrp-lb-include.md)]
 
-[AZURE.INCLUDE [virtual-networks-nrp-appgw-include](../../includes/virtual-networks-nrp-lb-include.md)]
-
 [AZURE.INCLUDE [virtual-networks-nrp-vpn-include](../../includes/virtual-networks-nrp-vpn-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-nrp-dns-include](../../includes/virtual-networks-nrp-dns-include.md)]
@@ -242,12 +240,12 @@ ARM テンプレート言語の詳細については、「[Azure リソース �
 テンプレートから Azure にサービスをデプロイするには、PowerShell、AzureCLI を使用するか、または GitHub からクリック操作によってデプロイします。GitHub でテンプレートからサービスをデプロイするには、次の手順を実行します。
 
 1. GitHub で template3 ファイルを開きます。たとえば、[2 つのサブネットを含む仮想ネットワーク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network) を開きます。
-2. **[Azure にデプロイ]** をクリックし、資格情報を使用して Azure ポータルにサインインします。
+2. **[Azure に展開]** をクリックし、資格情報を使用して Azure ポータルにサインインします。
 3. テンプレートを確認し、**[保存]** をクリックします。
 4. **[パラメーターの編集]** をクリックし、VNET およびサブネットの場所 (*[米国西部]* など) を選択します。
 5. 必要に応じて、**ADDRESSPREFIX** および **SUBNETPREFIX** パラメーターを変更し、**[OK]** をクリックします。
 6. **[リソース グループの選択]** をクリックし、VNET とサブネットの追加先となるリソース グループをクリックします。あるいは、**[新規作成]** をクリックして、新しいリソース グループを作成することもできます。
-3. **[作成]** をクリックします。**[テンプレートのデプロイメントをプロビジョニング中]**というタイトルが表示されます。デプロイメントが完了すると、画面の表示は以下のようになります。
+3. **[作成]** をクリックします。**[テンプレートの展開をプロビジョニング中]**というタイトルが表示されます。デプロイメントが完了すると、画面の表示は以下のようになります。
 
 ![サンプル テンプレートのデプロイメント](./media/resource-groups-networking/Figure6.png)
 
@@ -262,7 +260,7 @@ ARM テンプレート言語の詳細については、「[Azure リソース �
 
 [Azure のネットワーク – 一般的に使用されているテンプレート](https://github.com/Azure/azure-quickstart-templates)
 
-[Compute リソース プロバイダー](../virtual-machines-azurerm-versus-azuresm)
+[コンピューティング リソース プロバイダー](../virtual-machines-azurerm-versus-azuresm)
 
 [Azure リソース マネージャーの概要](../resource-group-overview)
 
@@ -272,4 +270,4 @@ ARM テンプレート言語の詳細については、「[Azure リソース �
 
 [テンプレートのデプロイメント](https://msdn.microsoft.com/library/azure/dn790549.aspx)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

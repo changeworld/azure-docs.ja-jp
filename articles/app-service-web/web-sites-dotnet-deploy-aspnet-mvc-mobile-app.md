@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="ASP.NET MVC 5 モバイル Web アプリケーションを Azure App Service に展開する" 
 	description="ASP.NET MVC 5 Web アプリケーションのモバイル機能を使用して Web アプリケーションを Azure App Service に展開する方法のチュートリアル。" 
-	services="app-service\web" 
+	services="app-service" 
 	documentationCenter=".net" 
 	authors="cephalin" 
 	manager="wpickett" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="app-service" 
-	ms.workload="web" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
@@ -114,7 +114,7 @@ ASP.NET タグ ビューは、画面に合わせてズームされています�
 
 MVC 5 の新機能の 1 つに、ブートストラップの標準サポートがあります。ブートストラップによって、さまざまなビューの表示品質が瞬時に向上することは先ほど確認したとおりです。たとえば、ブラウザーの幅が小さくなったときに、上部のナビゲーション バーを自動的に折りたたむことができます。デスクトップ ブラウザーで、ブラウザー ウィンドウのサイズを変更して、ナビゲーション バーの外観と操作性がどのように変わるかを確認してください。これが、ブートストラップに組み込まれたレスポンシブ Web デザインです。
 
-ブートストラップを使用しない場合の Web アプリの外観を表示するには、*App\\\_Start\\\\BundleConfig.cs* を開き、*bootstrap.js* と *bootstrap.css* を含む行をコメント アウトします。次のコードは、変更後の `RegisterBundles` メソッドにある最後の 2 つのステートメントを示しています。
+ブートストラップを使用しない場合の Web アプリの外観を表示するには、*App\\_Start\\\BundleConfig.cs* を開き、*bootstrap.js* と *bootstrap.css* を含む行をコメント アウトします。次のコードは、変更後の `RegisterBundles` メソッドにある最後の 2 つのステートメントを示しています。
 
      bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
               //"~/Scripts/bootstrap.js",
@@ -144,7 +144,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 このセクションでは、モバイル専用のレイアウト ファイルを作成します。
 
-最初に、*Views\\Shared\\\_Layout.cshtml* を *Views\\Shared\\\_Layout.Mobile.cshtml* にコピーします。*\\\_Layout.Mobile.cshtml* を開き、タイトルを **MVC5 Application** から **MVC5 Application (Mobile)** に変更します。
+最初に、*Views\\Shared\\_Layout.cshtml* を *Views\\Shared\\_Layout.Mobile.cshtml* にコピーします。*\\_Layout.Mobile.cshtml* を開き、タイトルを **MVC5 Application** から **MVC5 Application (Mobile)** に変更します。
 
 ナビゲーション バーの各 `Html.ActionLink` を呼び出しで、各 *ActionLink* リンクの "Browse by" を削除します。次のコードは、モバイル レイアウト ファイルの完成した `<ul class="nav navbar-nav">` タグです。
 
@@ -191,7 +191,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
     using System.Web.WebPages;
 
-変更を保存します。*Views\\Shared\\\_Layout.Mobile.cshtml* ファイルを *Views\\Shared\\\_Layout.iPhone.cshtml* にコピーします。新しいファイルを開き、タイトルを `MVC5 Application (Mobile)` から `MVC5 Application (iPhone)` に変更します。
+変更を保存します。*Views\\Shared\\_Layout.Mobile.cshtml* ファイルを *Views\\Shared\\_Layout.iPhone.cshtml* にコピーします。新しいファイルを開き、タイトルを `MVC5 Application (Mobile)` から `MVC5 Application (iPhone)` に変更します。
 
 *Views\\Home\\AllTags.Mobile.cshtml* ファイルを *Views\\Home\\AllTags.iPhone.cshtml* にコピーします。新しいファイルで、`<h2>` 要素を "Tags (M)" から "Tags (iPhone)" に変更します。
 
@@ -209,7 +209,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllSpeakers_LayoutMobile]
 
-*Views\\\_ViewStart.cshtml* ファイルで次のように `RequireConsistentDisplayMode` を `true` に設定すると、モバイル レイアウト内で既定の (非モバイル) ビューの描画をグローバルに無効化できます。
+*Views\\_ViewStart.cshtml* ファイルで次のように `RequireConsistentDisplayMode` を `true` に設定すると、モバイル レイアウト内で既定の (非モバイル) ビューの描画をグローバルに無効化できます。
 
     @{
         Layout = "~/Views/Shared/_Layout.cshtml";
@@ -262,7 +262,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllSpeakersFixedDesktop]
 
-モバイル ブラウザー ビューは強化されましたが、スピーカーの長い一覧をスクロールするのは困難です。ブートストラップは、検索フィルターを標準で提供していませんが、数行のコードによって追加できます。まずビューに検索ボックスを追加した後、JavaScript コードを関連付けてフィルター機能を設定します。次に示すように、*Views\\Home\\AllSpeakers.cshtml* で、<\form\> タグを <\h2\> タグの直後に追加します。
+モバイル ブラウザー ビューは強化されましたが、スピーカーの長い一覧をスクロールするのは困難です。ブートストラップは、検索フィルターを標準で提供していませんが、数行のコードによって追加できます。まずビューに検索ボックスを追加した後、JavaScript コードを関連付けてフィルター機能を設定します。次に示すように、*Views\\Home\\AllSpeakers.cshtml* で、<form> タグを <h2> タグの直後に追加します。
 
     @model IEnumerable<string>
 
@@ -617,4 +617,4 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 [SessionByCodeFixed3-644]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionByCode-Fixed-3-644.png
  
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

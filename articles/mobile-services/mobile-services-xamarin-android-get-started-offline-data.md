@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-android"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/15/2015"
+	ms.date="09/25/2015"
 	ms.author="donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
@@ -46,7 +46,7 @@
 
 ## <a name="review-offline"></a>Mobile Services 同期コードのレビュー
 
-ネットワークにアクセスできない場合、エンドユーザーは Azure モバイル サービスのオフライン同期により、ローカル データベースとやり取りできるようになります。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。このセクションでは、`ToDoActivity.cs` のオフライン同期に関連するコードについて説明します。
+ネットワークにアクセスできない場合、エンドユーザーは Azure Mobile Services のオフライン同期により、ローカル データベースとやり取りできるようになります。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。このセクションでは、`ToDoActivity.cs` のオフライン同期に関連するコードについて説明します。
 
 1. Visual Studio または Xamarin Studio で、「[Mobile Services の使用]」チュートリアルで完了したプロジェクトを開きます。ファイル `ToDoActivity.cs` を開きます。
 
@@ -159,8 +159,8 @@
 
 
 <!-- URLs. -->
-[Mobile Services のオフライン サポートでの競合の処理]: ../mobile-services-xamarin-android-handling-conflicts-offline-data.md
-[Mobile Services のオフライン サポートでの競合を処理する]: ../mobile-services-xamarin-android-handling-conflicts-offline-data.md
+[Mobile Services のオフライン サポートでの競合の処理]: mobile-services-windows-store-dotnet-handling-conflicts-offline-data.md
+[Mobile Services のオフライン サポートでの競合を処理する]: mobile-services-windows-store-dotnet-handling-conflicts-offline-data.md
 [Get started with data]: mobile-services-android-get-started-data.md
 [Mobile Services の使用]: mobile-services-android-get-started.md
 [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法]: partner-xamarin-mobile-services-how-to-use-client-library.md
@@ -173,4 +173,4 @@
 [NuGet Addin for Xamarin]: https://github.com/mrward/monodevelop-nuget-addin
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

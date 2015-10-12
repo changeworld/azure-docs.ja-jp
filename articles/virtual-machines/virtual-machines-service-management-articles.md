@@ -41,7 +41,7 @@
 
 [Azure Command-Line Interface (Azure CLI) を使用して VM を作成する](virtual-machines-xplat-getting-started.md)
 
-[Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-xplat-cli.md)
+[Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-xplat-cli-install.md)
 
 ## 計画
 
@@ -95,7 +95,7 @@
 
 [Cassandra](virtual-machines-linux-nodejs-running-cassandra.md)
 
-[Docker](virtual-machines-docker-with-xplat-cli.md)
+[Docker](virtual-machines-docker-with-xplat-cli-install.md)
 
 [Exchange Server](https://technet.microsoft.com/library/jj619301.aspx)
 
@@ -151,4 +151,4 @@
 
 [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

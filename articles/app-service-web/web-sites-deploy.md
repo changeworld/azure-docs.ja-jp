@@ -1,15 +1,15 @@
 <properties
 	pageTitle="Azure App Service での Web アプリのデプロイ"
 	description="コンテンツを Web アプリにデプロイするときにどのような方法を利用できるかを紹介します。"
-	services="app-service\web"
+	services="app-service"
 	documentationCenter=""
 	authors="tdykstra"
 	manager="wpickett"
 	editor="mollybos"/>
 
 <tags
-	ms.service="app-service-web"
-	ms.workload="web"
+	ms.service="app-service"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
@@ -20,60 +20,37 @@
 
 ## 概要
 
-独自のコンテンツを [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイするための多くのオプションがあります。このトピックでは、各オプションに関する簡単な概要を説明し、詳細情報へのリンクを掲載します。
-
-
-###<a name="cloud"></a>クラウドでホストされているソース管理システムからのデプロイ
+このトピックでは、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) に独自のコンテンツをデプロイする際のオプションの概要を説明します。
 
 Web アプリをデプロイする最善の方法は、[継続的な配置ワークフロー](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery)を設定し、[ソース管理システム](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)に統合することです。自動化により、開発プロセスの効率が向上することに加え、バックアップと復元のプロセスの管理性と信頼性も向上します。
 
-まだソース管理を設定していない場合に、作業を開始する最も簡単な方法は、クラウドでホストされているソース管理システムを使用することです。
+クラウド ホスト型ソース管理システムからのデプロイについては、この記事の次のセクションをご覧ください。
 
 * [Visual Studio Online](#vso)
 * [Git を使用したリポジトリ Web サイト](#git)
 * [Mercurial を使用したリポジトリ Web サイト](#mercurial)
 * [Dropbox](#dropbox)
 
-###<a name="ide"></a>IDE からのデプロイ
-
-[Visual Studio](http://www.visualstudio.com/) と [WebMatrix](http://www.microsoft.com/web/webmatrix/) は Microsoft の IDE (統合開発環境) であり、Web 開発に使用できます。どちらにも、Web アプリへのデプロイを容易にする組み込み機能があります。どちらも [Web Deploy](http://www.iis.net/downloads/microsoft/web-deploy) を使用して、データベースのデプロイや接続文字列の変更など、デプロイに関連する追加のタスクを自動化することができます。どちらも [FTP または FTPS](http://en.wikipedia.org/wiki/File_Transfer_Protocol)) を使用してデプロイを実行することができます。
-
-WebMatrix は迅速にインストールでき、習得が容易ですが、Visual Studio には Web アプリを操作するためのさらに多くの機能が備わっています。Visual Studio IDE から Web アプリを作成、停止、起動、削除することができ、リアルタイムで作成されたログを表示することや、リモートでデバッグすることなども可能です。Visual Studio には、[Visual Studio Online](#vso)、[Team Foundation Server](#tfs)、[Git リポジトリ](#git) のようなソース管理システムも統合されています。
-
-* [Visual Studio](#vs)
-* [WebMatrix](#webmatrix)
-
-###<a name="ftp"></a>FTP ユーティリティを使用したデプロイ
-
-どの IDE を使用しているかに関係なく、[FTP](http://en.wikipedia.org/wiki/File_Transfer_Protocol) を使用してファイルをコピーする方法で、コンテンツをアプリにデプロイすることができます。Web アプリ用の FTP 資格情報は簡単に作成でき、Internet Explorer のようなブラウザーや、[FileZilla](https://filezilla-project.org/) のような多彩な機能を備えた無料のユーティリティなど、FTP と組み合わせて動作する任意のアプリケーションでその資格情報を使用できます。Web アプリでは、より安全な FTPS プロトコルもサポートしています。
-
-FTP ユーティリティを使用して Web アプリのファイルを Azure にコピーすることは簡単ですが、データベースのデプロイや接続文字列の変更のような関連するデプロイ タスク自動的な処理や調整が FTP ユーティリティによって実行されることはありません。また、多くの FTP ツールは、変更されていないファイルのコピーをスキップする目的でコピー元とコピー先のファイルを比較することもありません。大規模なアプリで常にすべてのファイルをコピーする場合は、小規模な更新であっても常にすべてのファイルがコピーされるため、デプロイに長時間を要する可能性があります。
-
-###<a name="onpremises"></a>内部設置型のソース管理システムからのデプロイ
-
-TFS、Git、または Mercurial を (クラウド ホステットではなく) 内部設置型リポジトリで使用している場合は、リポジトリから直接 Web アプリにデプロイすることができます。
+オンプレミスのソース管理システムからのデプロイについては、この記事の次のセクションをご覧ください。
 
 * [Team Foundation Server (TFS)](#tfs)
 * [内部設置型の Git または Mercurial リポジトリ](#onpremises)
 
-###<a name="commandline"></a>コマンド ライン ツールと Azure の REST 管理 API を使用したデプロイ
+コマンド ライン ツールを使用して、デプロイを自動化することもできます。コマンド ライン ツールを使用したデプロイについては、この記事の次のセクションをご覧ください。
 
-いつでも開発ワークフローを自動化できるのが最善ですが、ソース管理システムからそのような自動化を直接実行できない場合は、コマンド ライン ツールを使用して手動で設定することができます。多くの場合、デプロイにはサイト管理機能とコンテンツのコピーが関係するため、一般的にこの作業には複数のツールやフレームワークを使用することが関係します。
-
-Azure には、REST 管理 API と、その API を使用した作業をさらに簡単にする複数のフレームワークが備わっているため、Azure を使用しない場合に比べると、デプロイに関連して必要とされるサイト管理タスクが簡略化されます。
-
-* [FTP](#ftp)
 * [MSBuild](#msbuild)
-* [FTP スクリプト](#ftp2)
+* [FTP ツールとスクリプト](#ftp)
 * [Windows PowerShell](#powershell)
 * [.NET 管理 API](#api)
 * [Azure コマンド ライン インターフェイス (Azure CLI)](#cli)
 * [Web デプロイ コマンド ライン](#webdeploy)
  
-###<a name="octopus"></a>Octopus Deploy
+統合開発環境 (IDE) からデプロイする方が便利な場合もあります。IDE からのデプロイについては、この記事の次のセクションをご覧ください。
 
-[Octopus Deploy](http://en.wikipedia.org/wiki/Octopus_Deploy) は、App Service Web Apps で使用できます。詳細については、「[Deploy ASP.NET applications to Azure Web Sites (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)](https://octopusdeploy.com/blog/deploy-aspnet-applications-to-azure-websites)」をご覧ください。
+* [Visual Studio](#vs)
+* [WebMatrix](#webmatrix)
 
+もう 1 つのデプロイ オプションとして、[Octopus Deploy](http://en.wikipedia.org/wiki/Octopus_Deploy) などのクラウド ベースのサービスを使用することもできます。詳細については、「[Deploy ASP.NET applications to Azure Web Sites (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)](https://octopusdeploy.com/blog/deploy-aspnet-applications-to-azure-websites)」をご覧ください。
 
 ##<a name="vso"></a>Visual Studio Online
 
@@ -154,7 +131,6 @@ Git または Mercurial を使用する任意のリポジトリからデプロ�
 * [Git、Mercurial、Dropbox に関する Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=azuregit)。
 * [1 つの Git リポジトリから Azure への 2 つの Web サイトのデプロイ](http://www.hanselman.com/blog/DeployingTWOWebsitesToWindowsAzureFromOneGitRepository.aspx)。Scott Hanselman 氏によるブログの投稿です。
 
-
 ##<a name="msbuild"></a>MSBuild
 
 [Visual Studio IDE](#vs) を使用して開発を行う場合は、[MSBuild](http://msbuildbook.com/) を使用して IDE 内のすべての作業を自動化することができます。[Web Deploy](#webdeploy) または [FTP と FTPS](#ftp) を使用してファイルをコピーするように MSBuild を構成することができます。Web Deploy では、データベースのデプロイなど、デプロイに関連する多くのタスクを自動化することもできます。
@@ -164,9 +140,11 @@ MSBuild を使用したコマンドライン デプロイの詳細について�
 * [Visual Studio を使用した ASP.NET Web のデプロイ: コマンド ラインのデプロイ](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/command-line-deployment)。Visual Studio を使用して Azure のデプロイを行うチュートリアル シリーズの第 10 部。Visual Studio でプロファイルの発行を設定した後に、コマンド ラインを使用してデプロイを行う方法を示します。
 * [『Inside the Microsoft Build Engine: Using MSBuild and Team Foundation Build』](http://msbuildbook.com/)。MSBuild を使用してデプロイを実行する方法に関する章が掲載されている書籍。
 
-##<a name="ftp2"></a>FTP スクリプト
+##<a name="ftp"></a>FTP ツールとスクリプト
 
-Web アプリ用に [FTP と FTPS](http://en.wikipedia.org/wiki/File_Transfer_Protocol) の資格情報を簡単に作成し、FTP バッチ スクリプトでその資格情報を使用することができます。
+[FTP](http://en.wikipedia.org/wiki/File_Transfer_Protocol) を使用してファイルをコピーすることで、コンテンツをアプリにデプロイすることができます。Web アプリ用の FTP 資格情報は簡単に作成できます。これらの資格情報は、スクリプトや FTP と連携するアプリケーション (Internet Explorer などのブラウザーや、[FileZilla](https://filezilla-project.org/) などのフル機能を備えた無料のユーティリティなど) で使用できます。Web アプリでは、より安全な FTPS プロトコルもサポートしています。
+
+FTP ユーティリティを使用して Web アプリのファイルを Azure にコピーすることは簡単ですが、データベースのデプロイや接続文字列の変更のような関連するデプロイ タスク自動的な処理や調整が FTP ユーティリティによって実行されることはありません。また、多くの FTP ツールは、変更されていないファイルのコピーをスキップする目的でコピー元とコピー先のファイルを比較することもありません。大規模なアプリで常にすべてのファイルをコピーする場合は、小規模な更新であっても常にすべてのファイルがコピーされるため、デプロイに長時間を要する可能性があります。
 
 詳細については、次のリソースを参照してください。
 
@@ -227,4 +205,4 @@ Azure のロール ベースのアクセス制御を使用して、Web アプリ
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

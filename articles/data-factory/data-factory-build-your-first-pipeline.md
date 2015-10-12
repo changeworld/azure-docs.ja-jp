@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="09/22/2015"
+	ms.date="09/29/2015"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した初めてのパイプラインの作成
@@ -154,7 +154,7 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 
 			AzCopy /Source:. /Dest:https://<StorageAccountName>.blob.core.windows.net/script /DestKey:<Storage Key>
 
-		> [AZURE.NOTE]上記のコマンドは **script** という名前のコンテナーを Azure BLOB ストレージ内に作成し、**partitionweblogs.hql** ファイルをそのコンテナーにコピーします。
+		> [AZURE.NOTE]上記のコマンドは **script** という名前のコンテナーを Azure BLOB ストレージ内に作成し、**partitionweblogs.hql** ファイルをローカル ドライブから BLOB コンテナーにコピーします。
 	>
 	5. ファイルが正常にアップロードされると、AzCopy から次の出力が表示されます。
 	
@@ -176,4 +176,4 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline.md)でフィードバックをお寄せください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

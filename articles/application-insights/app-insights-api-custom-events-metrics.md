@@ -23,7 +23,7 @@
 
 Application Insights でデータを集めるとき、この API を使用すれば、ページ ビューや例外レポートなど、標準のテレメトリを送信できるだけでなく、独自のカスタム テレメトリも送信できます。
 
-## API summary
+## API の概要
 
 この API は、いくつかの小さな違いは別として、すべてのプラットフォームで一様になっています。
 
@@ -461,6 +461,17 @@ Web アプリでは、ユーザーは既定で Cookie により識別されま�
     }
 ```
 
+ASP.NET Web MVC アプリケーションでの例:
+
+*Razor*
+
+        @if (Request.IsAuthenticated)
+        {
+            <script>
+                appInsights.setAuthenticatedUserContext("@User.Identity.Name".replace(/[,;=| ]+/g, "_"));
+            </script>
+        }
+
 ユーザーの実際のサインイン名を使用する必要はありません。必要なのは、そのユーザーに一意の ID であるということだけです。ID には、スペースや `,;=|` を含めることはできません。
 
 ユーザー ID は、セッション Cookie にも設定され、サーバーに送信されます。サーバー SDK がインストールされている場合、認証されたユーザーの ID は、フィルター処理や検索を行えるように、クライアントおよびサーバー テレメトリの両方のコンテキスト プロパティの一部として送信されます。
@@ -470,7 +481,9 @@ Web アプリでは、ユーザーは既定で Cookie により識別されま�
 
       appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
-[メトリックス エクスプローラー](app-insights-metrics-explorer.md)で、**認証されたユーザー**と**アカウント**のグラフを作成できます。
+[メトリックス エクスプローラー](app-insights-metrics-explorer.md)で、ユーザー、**認証されたアカウント**、**ユーザー アカウント**のグラフを作成できます。
+
+特定のユーザー名とアカウントを持つクライアント データ ポイントを[検索][diagnostic]することもできます。
 
 
 ## <a name="defaults"></a>選択したカスタム テレメトリに既定値を設定する
@@ -652,7 +665,7 @@ telemetryItem で使用できる非カスタムプロパティの概要につい
 
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
-開発、テスト、および実稼働環境からのテレメトリの混合を回避するために、[別の Application Insights リソースを作成し、][create]環境に応じてそれぞれのキーを変更することができます。
+開発、テスト、および運用環境からのテレメトリの混合を回避するために、[別の Application Insights リソースを作成し、][create]環境に応じてそれぞれのキーを変更することができます。
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
@@ -699,7 +712,7 @@ Web ページで、スクリプトに一語一語コーディングするので�
     // Allow some time for flushing before shutdown.
     System.Threading.Thread.Sleep(1000);
 
-この機能は同期的であることに注意してください。
+この関数はインメモリ チャネルでは非同期ですが、[永続化チャネル](app-insights-windows-desktop.md#persistence-channel)の使用を選択した場合は同期になることに注意してください。
 
 
 
@@ -903,4 +916,4 @@ ApplicationInsights.config で:
 
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

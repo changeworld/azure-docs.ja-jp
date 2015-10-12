@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="TBD" 
-   ms.date="09/16/2015"
+   ms.date="09/24/2015"
    ms.author="coreyp"/>
 
 # Azure Automation DSC の概要 #
@@ -31,7 +31,7 @@ DSC は一連の Windows PowerShell 言語拡張機能、新しい Windows Power
 - ファイルとディレクトリの管理
 - プロセスとサービスの開始、停止、および管理
 - グループとユーザー アカウントの管理
-- 新しいソフトウェアの展開
+- 新しいソフトウェアのデプロイ
 - 環境変数の管理
 - Windows PowerShell スクリプトの実行
 - 必要な状態とは異なる構成の修正
@@ -47,7 +47,7 @@ Azure Automation DSC は、構成管理をより容易にするために PowerSh
 
 Azure Automation DSC を使用することで、[PowerShell Desired State Configuration の作成や管理](https://technet.microsoft.com/library/dn249918.aspx)、[DSC リソース](https://technet.microsoft.com/library/dn282125.aspx)のインポート、および DSC ノード構成 (MOF ドキュメント) の生成がすべてクラウドで可能になります。これらの DSC 項目は、Azure Automation の [DSC プル サーバー](https://technet.microsoft.com/library/dn249913.aspx)に配置されるため、クラウドおよびオンプレミスのターゲット ノード (物理および仮想マシンなど) はそれらを選択し、指定した必要な状態に自動的に準拠して、Azure Automation に必要な状態の準拠に関するレポートを返します。
 
-読むより見る方がよければ、 Azure Automation が初めて発表された 2015年 5 月に公開された次のビデオをご覧ください。**注:** このビデオで解説されている概念とライフサイクルは正しいものですが、このビデオが作成されてから Azure Automation はかなり進歩しています。現在はパブリック プレビュー段階であり、Azure ポータルではさらに広範な UI が提供され、追加機能がサポートされるようになっています。
+読むより見る方がよければ、 Azure Automation DSC が初めて発表された 2015年 5 月に公開された次のビデオをご覧ください。**注:** このビデオで解説されている概念とライフサイクルは正しいものですが、このビデオが作成されてから Azure Automation DSC はかなり進歩しています。現在はパブリック プレビュー段階であり、Azure ポータルではさらに広範な UI が提供され、追加機能がサポートされるようになっています。
 
 > [AZURE.VIDEO microsoft-ignite-2015-heterogeneous-configuration-management-using-microsoft-azure-automation]
 
@@ -76,7 +76,7 @@ Azure Automation DSC では、Azure Automation での DSC 構成のインポー�
 
 ###ノード構成###
 
-DSC 構成がコンパイルされると、構成内のノード ブロックに応じて、1 つ以上のノード構成が生成されます。ノード構成は「MOF」、つまり「構成ドキュメント」と同じで (これらの PS DSC 利用規約をよく理解している場合)、Web サーバーやワーカーなどの「ロール」(必要な状態を 1 つ以上のノードが想定する必要がある) を示します。Azure Automation DSC でのノード構成の名前は、“<Configuration-name>.<Node configuration-block-name>” という形式です。
+DSC 構成がコンパイルされると、構成内のノード ブロックに応じて、1 つ以上のノード構成が生成されます。ノード構成は「MOF」、つまり「構成ドキュメント」と同じで (これらの PS DSC 利用規約をよく理解している場合)、Web サーバーや worker などの「ロール」(必要な状態を 1 つ以上のノードが想定する必要がある) を示します。Azure Automation DSC でのノード構成の名前は、“<Configuration-name>.<Node configuration-block-name>” という形式です。
 
 PS DSC ノードは、DSC プッシュまたはプル メソッドのいずれかを使用して制定する必要があるノード構成を認識するようになります。Azure Automation DSC は、Azure Automation DSC プル サーバーから適用する必要があるノード構成をノードが要求する DSC プル方式に依存します。ノードは Azure Automation DSC に対して要求を行うため、ファイアウォールの内側に配置したり、受信ポートをすべて閉じたりすることができます。これらに必要なのは、インターネットへの発信アクセスのみです。
 
@@ -137,11 +137,11 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - Azure プレビュー ポータルで `Register-AzureAutomationDscNode`、`Set-AzureVMExtension`、または Azure Automation DSC VM 拡張機能を使用して Azure Automation DSC での管理用に Azure VM をオンボードするときは、VM が DSC ノードとして Azure Automation に表示されるまでに最大で 1 時間かかることがあります。これは、VM を Azure Automation DSC にオンボードするために必要な Windows Management Framework 5.0 を、Azure VM DSC 拡張機能が VM にインストールするためです。
 
-- ノードを登録するとき、ノードは登録後にその特定のノードが Azure Automation DSC への認証で使用する証明書を自動的にネゴシエートします。この証明書の有効期限は作成から 1 年間であり、現在、PS DSC プル プロトコルには証明書の有効期限が近くなったときに新しい証明書を発行するための方法はありません。このため、WMF の将来のバージョンにこのプロトコルが実装されるまで、ノードは 1 年ごとに Azure Automation DSC に再登録する必要があります。
+- 登録すると、各ノードは、1 年後に有効期限が切れる認証用の一意の証明書を自動的にネゴシエートします。現時点では、PowerShell DSC 登録プロトコルは、有効期限が近づいたときに証明書を自動的に更新することはできないため、1 年後にノードを再登録する必要があります。再登録する前に、各ノードで Windows Management Framework 5.0 RTM が実行されていることを確認します。ノードの認証証明書の有効期限が切れるときにノードが再登録されない場合、ノードは Azure Automation と通信できなくなり、[反応なし] とマークされます。 再登録は、ノードを初めて登録したのと同じ方法で実行されます。証明書の有効期限が切れる 90 日以内または証明書の有効期限が切れた後で再登録を実行すると、新しい証明書が生成されて使用されます。
 
 ##関連記事##
 
 - [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](http://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

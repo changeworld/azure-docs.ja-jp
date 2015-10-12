@@ -1,4 +1,5 @@
 <properties
+	writer="ricksal"
 	pageTitle="Android クライアントからのカスタム API 呼び出し | Microsoft Azure"
 	description="カスタム API を定義し、Microsoft Azure Mobile Services を使用する Android アプリからそれを呼び出す方法について説明します。"
 	services="mobile-services"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/24/2015" 
 	ms.author="ricksal"/>
 
 # クライアントからのカスタム API 呼び出し
@@ -61,4 +62,4 @@
 
 [ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

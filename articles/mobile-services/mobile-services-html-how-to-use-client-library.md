@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="mobile-html" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="09/09/2015" 
+	ms.date="09/24/2015" 
 	ms.author="glenga"/>
 
-# Azure モバイル サービス向け HTML/JavaScript クライアントを使用する方法
+# Azure Mobile Services 向け HTML/JavaScript クライアントを使用する方法
 
 [AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
 
 ##概要
 
-このガイドでは、Azure のモバイル サービス向け HTML/JavaScript クライアントを使用して一般的なシナリオを実行する方法について説明します。Windows ストア JavaScript アプリと PhoneGap/Cordova アプリが含まれます。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。モバイル サービスを初めて使用する場合は、まず「[モバイル サービスの使用](mobile-services-html-get-started.md)」を完了することを検討してください。このクイック スタート チュートリアルでは、アカウントを構成し、初めてのモバイル サービスを作成します。
+このガイドでは、Azure Mobile Services 向け HTML/JavaScript クライアントを使用して一般的なシナリオを実行する方法について説明します。Windows ストア JavaScript アプリと PhoneGap/Cordova アプリが含まれます。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず「[Mobile Services の使用](mobile-services-html-get-started.md)」を完了することを検討してください。このクイック スタート チュートリアルでは、アカウントを構成し、初めてのモバイル サービスを作成します。
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
@@ -66,7 +66,7 @@ SQL Database テーブルのデータにアクセスまたは変更するすべ�
 	    alert("Error: " + err);
 	});
 
-Query オブジェクトに呼び出し元の `where` を追加し、オブジェクトをパラメーターとして渡すことにより、`complete` 列に `false` 値が含まれる行のみを返すようにモバイル サービスに指示しています。また、次の要求 URI からわかるように、クエリ文字列自体にも変更を加えています。
+Query オブジェクトに呼び出し元の `where` を追加し、オブジェクトをパラメーターとして渡すことにより、`complete` 列に `false` 値が含まれる行のみを返すように Mobile Services に指示しています。また、次の要求 URI からわかるように、クエリ文字列自体にも変更を加えています。
 
 	GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 
@@ -246,7 +246,7 @@ select 関数のパラメーターは、取得するテーブルの列の名で�
 
 ##<a name="odata-query"></a>OData クエリ操作を実行する
 
-モバイル サービスでは、REST クエリの作成と実行に OData クエリ URI 慣例を使用します。組み込まれているクエリ関数ですべての OData クエリ (特にプロパティないのサブストリング検索などの複雑なフィルター操作) が作成できるわけではありません。複雑なクエリには、次のように有効な OData クエリ オプション文字列を `read` 関数に渡すことができます。
+Mobile Services では、REST クエリの作成と実行に OData クエリ URI 慣例を使用します。組み込まれているクエリ関数ですべての OData クエリ (特にプロパティないのサブストリング検索などの複雑なフィルター操作) が作成できるわけではありません。複雑なクエリには、次のように有効な OData クエリ オプション文字列を `read` 関数に渡すことができます。
 
 	function refreshTodoItems() {
 	    todoItemTable.read("$filter=substringof('search_text',text)").then(function(items) {
@@ -296,7 +296,7 @@ Mobile Services は、テーブルの **ID** 列で一意のカスタム文字�
 
 挿入されたレコードで文字列 ID 値がまだ設定されない場合は、Mobile Services によって ID 用の一意の値が生成されます。クライアントまたは .NET バックエンドで独自 ID 値を生成する方法の詳細については、「[方法: 一意の ID 値を生成する](mobile-services-how-to-use-server-scripts.md#generate-guids)」を参照してください。
 
-また、テーブルに整数 ID を使用することもできます。整数 ID を使用するには、`mobile table create` コマンドで `--integerId` オプションを使用してテーブルを作成する必要があります。このコマンドは、Azure のコマンド ライン インターフェイス (CLI) で使用されます。CLI の使い方の詳細については、「[モバイル サービス テーブルの管理用コマンド](../virtual-machines-command-line-tools.md#Mobile_Tables)」を参照してください。
+また、テーブルに整数 ID を使用することもできます。整数 ID を使用するには、`mobile table create` コマンドで `--integerId` オプションを使用してテーブルを作成する必要があります。このコマンドは、Azure のコマンド ライン インターフェイス (CLI) で使用されます。CLI の使い方の詳細については、「[Mobile Services テーブルの管理用コマンド](../virtual-machines-command-line-tools.md#Mobile_Tables)」を参照してください。
 
 ##<a name="modifying"></a>方法: モバイル サービスのデータを変更する
 
@@ -386,7 +386,7 @@ Windows ストア アプリでは、クエリの結果を使用して、[ListVie
 
 ##<a name="authentication"></a>方法: ユーザーを認証する
 
-モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル [「モバイル サービスでの認証の使用」] を参照してください。
+Mobile Services は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル [「モバイル サービスでの認証の使用」] を参照してください。
 
 >[AZURE.NOTE]PhoneGap または Cordova アプリで認証を使用するときは、次のプラグインもプロジェクトに追加する必要があります。
 >
@@ -397,7 +397,7 @@ Windows ストア アプリでは、クエリの結果を使用して、[ListVie
 _サーバー フロー_と_クライアント フロー_という 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
 ###サーバー フロー
-モバイル サービスによって Windows ストア アプリまたは HTML5 アプリの認証プロセスが管理されるようにするには、アプリケーションを ID プロバイダーに登録する必要があります。その後、モバイル サービス内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。詳細については、チュートリアル「[アプリへの認証の追加](mobile-services-html-get-started-users.md)」を参照してください。
+Mobile Services によって Windows ストア アプリまたは HTML5 アプリの認証プロセスが管理されるようにするには、アプリケーションを ID プロバイダーに登録する必要があります。その後、モバイル サービス内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。詳細については、チュートリアル「[アプリへの認証の追加](mobile-services-html-get-started-users.md)」を参照してください。
 
 ID プロバイダーを登録した後は、単純にプロバイダーの [MobileServiceAuthenticationProvider] 値で [LoginAsync メソッド] を呼び出すだけです。たとえば、Facebook にログインするには、次のコードを使用します。
 
@@ -409,13 +409,27 @@ ID プロバイダーを登録した後は、単純にプロバイダーの [Mob
 
 Facebook 以外の ID プロバイダーを使用している場合は、上の `login` メソッドに渡す値を `microsoftaccount`、`facebook`、`twitter`、`google`、`windowsazureactivedirectory` のいずれかに変更します。
 
-この場合、モバイル サービスは、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[login] 関数は、完了すると、**userId** フィールドのユーザー ID と **authenticationToken** フィールドのモバイル サービス認証トークンの両方を公開する JSON オブジェクト (**user**) を返します。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「認証トークンをキャッシュする」を参照してください。
-
-> [AZURE.NOTE]**Windows ストア アプリ** Windows ストア アプリケーションのユーザーの認証に Microsoft アカウント ログイン プロバイダーを使用する場合は、アプリケーション パッケージも Mobile Services に登録する必要があります。Windows ストア アプリケーションのパッケージ情報をモバイル サービスに登録すると、クライアントはシングル サインオン サービス エクスペリエンスを実現するために Microsoft アカウント ログイン資格情報を再利用できます。この操作を行わない場合、login メソッドが呼び出されるたびに、Microsoft アカウント ログイン ユーザーにログイン プロンプトが表示されます。Windows ストア アプリケーション パッケージの登録方法の詳細については、「[Windows ストア アプリケーション パッケージを Microsoft 認証に登録する](/develop/mobile/how-to-guides/register-windows-store-app-package/%20target="_blank")」を参照してください。パッケージ情報がモバイル サービスに登録された後、資格情報を再利用するには、[useSingleSignOn](http://go.microsoft.com/fwlink/p/?LinkId=322050%20target="_blank") パラメーターに値 **true** を指定して *login* メソッドを呼び出します。
+この場合、Mobile Services は、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後で Mobile Services 認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[login] 関数は、完了すると、**userId** フィールドのユーザー ID と **authenticationToken** フィールドの Mobile Services 認証トークンの両方を公開する JSON オブジェクト (**user**) を返します。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「認証トークンをキャッシュする」を参照してください。
 
 ###クライアント フロー
-アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のためにモバイル サービスに提供することもできます。このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
+アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のために Mobile Services に提供することもできます。このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
 
+####Facebook/Google SDK の基本的な例
+
+この例では、認証用の Facebook クライアント SDK を使用します。
+
+	client.login(
+	     "facebook",
+	     {"access_token": token})
+	.done(function (results) {
+	     alert("You are now logged in as: " + results.userId);
+	}, function (err) {
+	     alert("Error: " + err);
+	});
+
+この例では、それぞれのプロバイダー SDK で提供されるトークンが変数 `token` に格納されるとします。現時点では、クライアント認証に Twitter を使用することはできません。
+
+####Microsoft アカウントの基本的な例
 次の例では、Windows ストア アプリケーションのシングル サインオンを Microsoft アカウントによってサポートしている Live SDK を使用します。
 
 	WL.login({ scope: "wl.basic"}).then(function (result) {
@@ -430,20 +444,67 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 	      });
 	});
 
-この簡略化された例では、トークンを Live Connect から取得します。このトークンは、[login] 関数を呼び出すことによって、モバイル サービスに渡されます。シングル サインイン エクスペリエンスを提供するために Microsoft アカウントを使用する方法のより完全な例については、「[Live Connect シングル サインオンによる Windows ストア アプリの認証]」を参照してください。
+この簡略化された例では、トークンを Live Connect から取得します。このトークンは、[login] 関数を呼び出すことによって、Mobile Services に渡されます。
 
-クライアント認証に Facebook または Google API を使用している場合は、例が少し異なります。
 
-	client.login(
-	     "facebook",
-	     {"access_token": token})
-	.done(function (results) {
-	     alert("You are now logged in as: " + results.userId);
-	}, function (err) {
-	     alert("Error: " + err);
+####Microsoft アカウントの完全な例
+
+次の例では、Live SDK と WinJS API を使用して、拡張されたシングル サインオン エクスペリエンスを提供する方法を示します。
+
+	// Set the mobileClient variable to client variable generated by the tooling.
+	var mobileClient = <yourClient>;
+
+	var session = null;
+	var login = function () {
+		return new WinJS.Promise(function (complete) {
+			WL.login({ scope: "wl.basic" }).then(function (result) {
+				session = result.session;
+
+				WinJS.Promise.join([
+					WL.api({ path: "me", method: "GET" }),
+					mobileClient.login(result.session.authentication_token)
+				]).done(function (results) {
+					// Build the welcome message from the Microsoft account info.
+					var profile = results[0];                            
+					var title = "Welcome " + profile.first_name + "!";
+					var message = "You are now logged in as: "
+						+ mobileClient.currentUser.userId;
+					var dialog = new Windows.UI.Popups.MessageDialog(message, title);
+					dialog.showAsync().then(function () {
+						// Reload items from the mobile service.
+						refreshTodoItems();
+					}).done(complete);
+					
+				}, function (error) {
+
+				});
+			}, function (error) {
+				session = null;
+				var dialog = new Windows.UI.Popups.MessageDialog("You must log in.", "Login Required");
+				dialog.showAsync().done(complete);
+			});
+		});
+	}
+
+	var authenticate = function () {
+		// Block until sign-in is successful.
+		login().then(function () {
+			if (session === null) {
+				// Authentication failed, try again.
+				authenticate();
+			}
+		});
+	}
+
+	// Initialize the Live client.
+	WL.init({
+		redirect_uri: mobileClient.applicationUrl
 	});
 
-この例では、それぞれのプロバイダー SDK で提供されるトークンが変数 `token` に格納されるとします。現時点では、クライアント認証に Twitter を使用することはできません。この時点ではクライアント認証のために JavaScript バックエンドで Microsoft Azure Active Directory を使用することはできません。
+	// Start the sign-in process.
+	authenticate();
+
+これにより、Live Connect クライアントが初期化され、新しいログイン要求が Microsoft アカウントに送信され、返された認証トークンが Mobile Services に送信され、サインイン済みのユーザーに関する情報が表示されます。アプリは、認証が成功するまで起動しません。
 
 ###認証トークンをキャッシュする
 場合によっては、最初のユーザー認証の後の login メソッドの呼び出しを避けることができます。そのためには、[sessionStorage] または [localStorage] を使用して、ユーザーが初めてログインするときに使用した現在のユーザー ID をキャッシュし、それ以降はユーザー ID がキャッシュに保存されているかどうかをチェックします。キャッシュが空の場合や呼び出しが失敗した場合 (現在のログイン セッションが期限切れになったことを示します) は、ログオン プロセスを実行する必要があります。
@@ -470,7 +531,7 @@ Facebook 以外の ID プロバイダーを使用している場合は、上の 
 
 ##<a name="errors"></a>方法: エラーを処理する
 
-モバイル サービスには、エラーの検出、検証、回避のためのさまざまな方法があります。
+Mobile Services には、エラーの検出、検証、回避のためのさまざまな方法があります。
 
 たとえば、サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。次のようにデータを検証および変更するサーバー スクリプトを定義し、登録するとします。
 
@@ -559,11 +620,11 @@ promise はいくつかの異なる方法で使用することができます。
 	   next(request, callback);
 	});
 
-フィルターを使用する機会は要求ヘッダーをカスタマイズする機会よりもたくさんあります。フィルターを使用すると、要求の検査または変更、応答の検査または変更、ネットワーキング呼び出しのバイパス、複数の呼び出しの送信などの操作を実行できます。
+フィルターを使用する機会は要求ヘッダーをカスタマイズする機会よりもたくさんあります。フィルターを使用すると、要求の検査または変更、応答の検査または変更、ネットワーク呼び出しのバイパス、複数の呼び出しの送信などの操作を実行できます。
 
 ##<a name="hostnames"></a>方法: クロス オリジン リソース共有を使用する
 
-モバイル サービスとの対話やモバイル サービスへの要求の送信を許可する Web サイトを制御するには、ホストする Web サイトのホスト名をクロス オリジン リソース共有 (CORS) ホワイトリストに追加してください。JavaScript バックエンド モバイル サービスの場合、[Azure 管理ポータル](https://manage.windowsazure.com)の [構成] タブでホワイトリストを構成できます。必要に応じて、ワイルドカードを使用できます。既定では、新しいモバイル サービスは `localhost` からのアクセスのみを許可するようブラウザーに指示します。クロス オリジン リソース共有 (CORS) により、外部ホスト名のブラウザーで実行されている JavaScript コードがモバイル サービスと対話できるようになります。この構成は、WinJS アプリケーションには必要ありません。
+モバイル サービスとの対話やモバイル サービスへの要求の送信を許可する Web サイトを制御するには、ホストする Web サイトのホスト名をクロス オリジン リソース共有 (CORS) ホワイトリストに追加してください。JavaScript バックエンド モバイル サービスの場合、[Azure 管理ポータル](https://manage.windowsazure.com)の [構成] タブでホワイトリストを構成できます。必要に応じて、ワイルドカードを使用できます。既定では、新しい Mobile Services は `localhost` からのアクセスのみを許可するようブラウザーに指示します。クロス オリジン リソース共有 (CORS) により、外部ホスト名のブラウザーで実行されている JavaScript コードがモバイル サービスと対話できるようになります。この構成は、WinJS アプリケーションには必要ありません。
 
 <!-- Anchors. -->
 [What is Mobile Services]: #what-is
@@ -601,10 +662,10 @@ promise はいくつかの異なる方法で使用することができます。
 [ListView]: http://msdn.microsoft.com/library/windows/apps/br211837.aspx
 [データ バインディング (JavaScript と HTML を使った Windows ストア アプリ)]: http://msdn.microsoft.com/library/windows/apps/hh758311.aspx
 [login]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/Javascript/src/MobileServiceClient.js#L301
-[Live Connect シングル サインオンによる Windows ストア アプリの認証]: mobile-services-windows-store-javascript-single-sign-on.md
+[Authenticate your app with single sign-in]: mobile-services-windows-store-javascript-single-sign-on.md
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData システム クエリ オプション リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 [Call a custom API from the client]: mobile-services-html-call-custom-api.md
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

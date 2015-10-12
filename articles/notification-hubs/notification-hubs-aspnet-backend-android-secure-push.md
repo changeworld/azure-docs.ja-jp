@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/24/2015" 
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs の安全なプッシュ
@@ -131,4 +131,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 4. Android アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

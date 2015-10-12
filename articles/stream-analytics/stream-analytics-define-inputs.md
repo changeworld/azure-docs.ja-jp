@@ -14,39 +14,32 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="09/09/2015" 
+	ms.date="09/29/2015" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics 入力について
 
-Azure Stream Analytics 入力はデータ ソースへの接続として定義されます。Stream Analytics では、ジョブが実行されている Azure サブスクリプションの内外からの Azure ソース Event Hub と BLOB ストレージとの最上位の統合が行われます。データがそのデータ ソースにプッシュされると、Stream Analytics ジョブによって使用され、リアルタイムで処理されます。入力は 2 つの個別のタイプであるデータ ストリーム入力と参照データ入力に分けられます。
+Azure Stream Analytics 入力はデータ ソースへの接続として定義されます。Stream Analytics では、ジョブが実行されている Azure サブスクリプションの内外からの Azure ソース Event Hub、IoT Hub および BLOB ストレージとの最上位の統合が行われます。データがそのデータ ソースにプッシュされると、Stream Analytics ジョブによって使用され、リアルタイムで処理されます。入力は 2 つの個別のタイプであるデータ ストリーム入力と参照データ入力に分けられます。
 
-## データ ストリーム入力
-
-データ ストリームは、時間をかけて受け取る、制約のない一連のイベントです。Stream Analytics のジョブには、ジョブで使用および変換される少なくとも 1 つのデータ ストリームの入力を含める必要があります。Azure BLOB ストレージと Azure Event Hubs は、データ ストリーム入力ソースとしてサポートされます。Azure Event Hubs は複数のデバイスとソースから、ソーシャル メディア アクティビティ フィード、株式取引情報、センサーからのデータなど、イベント ストリームを回収するために使用されます。または、ストリームとしてバルク データを取り込むための入力ソースとして、Azure BLOB ストレージを使用できます。
-
-## 参照データ入力
-
-Stream Analytics は、参照データと呼ばれる 2 番目のタイプの入力をサポートします。これは静的データまたは変更頻度の低い補足データであり、通常は相関関係の関連付けと参照を実行するために使用されます。現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。参照データ ソースの BLOB のサイズは、最大で 50 MB に制限されています。
-
-参照データ入力を作成する方法については、[参照データの使用](./articles/stream-analytics-use-reference-data.md)に関するページを参照してください。
+- **データ ストリーム入力**: データ ストリームは、時間をかけて受け取る、制約のない一連のイベントです。Stream Analytics のジョブには、ジョブで使用および変換される少なくとも 1 つのデータ ストリームの入力を含める必要があります。BLOB ストレージ、Event Hub および IoT Hub は、データ ストリーム入力ソースとしてサポートされます。Event Hub は複数のデバイスとソースから、ソーシャル メディア アクティビティ フィード、株式取引情報、センサーからのデータなどのイベント ストリームを回収するために使用されます。IoT Hub はモノのインターネット化 (IoT) シナリオ内で、接続されているデバイスからデータを収集するように最適化されています。ストリームとしてバルク データを取り込むための入力ソースとして、BLOB ストレージを使用できます。  
+- **参照データ**: Stream Analytics は、参照データと呼ばれる 2 番目のタイプの入力をサポートします。これは静的データまたは変更頻度の低い補足データであり、通常は相関関係の関連付けと参照を実行するために使用されます。現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。参照データ ソースの BLOB のサイズは、最大で 50 MB に制限されています。参照データ入力を作成する方法については、[参照データの使用](stream-analytics-use-reference-data.md)に関するページを参照してください。  
 
 ## Event Hub データ入力ストリームの作成
 
-[Event Hubs](https://azure.microsoft.com/services/event-hubs/) はスケーラブルな発行/サブスクライブ イベント インジェスターです。1 秒間に数百万件のイベントを取り込むことができるため、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。Stream Analytics で最もよく使用される入力の 1 つがこれです。Event Hubs と Stream Analytics を一緒に使用することで、リアルタイム分析用のエンド ツー エンドのソリューションをお客様に提供できます。お客様は、Event Hubs を使用して Azure にイベントをリアルタイムでフィードし、Stream Analytics ジョブでこれらのイベントをリアルタイムで処理することができます。たとえば、お客様は、Web クリック、センサーの読み取り、オンライン ログ イベントを Event Hubs に送信し、リアルタイムのフィルター処理、集計、相関関係に入力データ ストリームとして Event Hubs を使用する Stream Analytics ジョブを作成できます。
+[Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) はスケーラブルな発行/サブスクライブ イベント インジェスターです。1 秒間に数百万件のイベントを取り込むことができるため、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。Stream Analytics で最もよく使用される入力の 1 つがこれです。Event Hubs と Stream Analytics を一緒に使用することで、リアルタイム分析用のエンド ツー エンドのソリューションをお客様に提供できます。お客様は、Event Hubs を使用して Azure にイベントをリアルタイムでフィードし、Stream Analytics ジョブでこれらのイベントをリアルタイムで処理することができます。たとえば、お客様は、Web クリック、センサーの読み取り、オンライン ログ イベントを Event Hubs に送信し、リアルタイムのフィルター処理、集計、相関関係に入力データ ストリームとして Event Hubs を使用する Stream Analytics ジョブを作成できます。
 
-Stream Analytics で Event Hubs から返されるイベントの既定のタイムスタンプは、このイベントがイベント ハブに到達したときのタイムスタンプであることに注意することが重要です。このタイムスタンプが *EventEnqueuedUtcTime* です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
+Stream Analytics で Event Hub から返されるイベントの既定のタイムスタンプは、このイベントがイベント ハブに到達したときのタイムスタンプであることに注意することが重要です。このタイムスタンプが EventEnqueuedUtcTime です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
 
 ## コンシューマー グループ
 
-Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。これは 1 つのコンシューマー グループの閲覧者数に影響を与えます。閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とするイベント ハブの上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。Event Hub ごとに 20 個のコンシューマー グループという制限もある点に注意してください。詳細については、「[Event Hubs のプログラミング ガイド](./articles/event-hubs-programming-guide.md)」を参照してください。
+Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。これは 1 つのコンシューマー グループの閲覧者数に影響を与えます。閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とするイベント ハブの上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。Event Hub ごとに 20 個のコンシューマー グループという制限もある点に注意してください。詳細については、「[Event Hubs のプログラミング ガイド](./event-hubs/event-hubs-programming-guide.md)」を参照してください。
 
-## 入力データ ストリームとしてのイベント ハブの構成
+## 入力データ ストリームとしてのイベント ハブの構成 ##
 
 次の表に、[イベント ハブ入力] タブの各プロパティとその説明を示しています。
 
 | プロパティ名 | 説明 |
-|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|------|------|
 | 入力のエイリアス | この入力を参照するジョブ クエリで使用されるわかりやすい名前。 |
 | Service Bus 名前空間 | Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。新しいイベント ハブを作成するときは、Service Bus 名前空間も作成します。 |
 | イベント ハブ | イベント ハブ入力の名前。 |
@@ -59,27 +52,63 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 データがイベント ハブのソースから送信されるとき、Stream Analytics クエリでアクセスできるメタデータ フィールドはほとんどありません。次の表に、そのフィールドと説明を一覧表示します。
 
 | プロパティ | 説明 |
-|------------------------------|--------------------------------------------------------------------|
+|------|------|
 | EventProcessedUtcTime | Stream Analytics によってイベントが処理された日時。 |
 | EventEnqueuedUtcTime | Event Hubs でイベントを受信した日時。 |
-| PartitionId | 入力アダプターの 0 から始まるパーティション ID |
+| PartitionId | 入力アダプターの 0 から始まるパーティション ID。 |
 
 たとえば、次のようにクエリを記述することができます。
 
+````
+SELECT
+	EventProcessedUtcTime,
+	EventEnqueuedUtcTime,
+	PartitionId
+FROM Input
+````
 
-    SELECT
-    	EventProcessedUtcTime,
-    	EventEnqueuedUtcTime,
-    	PartitionId
-    FROM Input
+## IoT Hub データ ストリーム入力の作成 ##
 
-## BLOB ストレージ データ ストリーム入力の作成
+IoT Hub は、IoT シナリオ向けに最適化されたスケーラブルな発行/サブスクライブ イベント インジェスターです。Stream Analytics で IoT Hub から返されるイベントの既定のタイムスタンプは、このイベントが IoT Hub に到達したときのタイムスタンプであることに注意することが重要です。このタイムスタンプが EventEnqueuedUtcTime です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
+
+## コンシューマー グループ ##
+
+Stream Analytics IoT Hub の各入力は、独自のコンシューマー グループを持つように構成する必要があります。ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。これは 1 つのコンシューマー グループの閲覧者数に影響を与えます。閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とする IoT Hub の上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。
+
+## 入力データ ストリームとしての IoT Hub の構成 ##
+
+次の表に、IoT Hub の入力タブの各プロパティとその説明を示しています。
+
+| プロパティ名 | 説明 |
+|------|------|
+| 入力のエイリアス | この入力を参照するジョブ クエリで使用されるわかりやすい名前。 |
+| IoT Hub | IoT Hub は、一連のメッセージング エンティティのコンテナーです。 |
+| エンドポイント | IoT Hub エンドポイントの名前。 |
+| 共有アクセス ポリシー名 | IoT Hub にアクセス権を付与する共有アクセス ポリシー。各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。 |
+| 共有アクセス ポリシー キー | IoT Hub へのアクセスを認証するために使用する共有アクセス キー。 |
+| コンシューマー グループ (省略可能) | IoT Hub からのデータを取り込むためのコンシューマー グループです。指定しないと、Stream Analytics ジョブは既定のコンシューマー グループを使用して IoT Hub からデータを取り込みます。Stream Analytics ジョブごとに個別のコンシューマー グループを使用することをお勧めします。 |
+| イベントのシリアル化の形式 | クエリを予想どおりに動作させるには、入ってくるデータ ストリームに使用しているシリアル化形式 (JSON、CSV、Avro) が Stream Analytics で認識される必要があります。 |
+| エンコード | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
+
+データが IoT Hub のソースから送信されるとき、Stream Analytics クエリでアクセスできるメタデータ フィールドはほとんどありません。次の表に、そのフィールドと説明を一覧表示します。
+
+| プロパティ | 説明 |
+|------|------|
+| System.Input.EventProcessedUtcTime | イベントが処理された日時。 |
+| System.Input.EventEnqueuedUtcTime | IoT Hub でイベントを受信した日時。 |
+| System.Input.PartitionId | 入力アダプターの 0 から始まるパーティション ID。 |
+| System.Input.MessageId | IoT Hub での双方向通信の関連付けに使用します。 |
+| System.Input.CorrelationId | IoT Hub でのメッセージ応答とフィードバックに使用します。 |
+| System.Input.ConnectionDeviceId | メッセージの送信に使用される認証済み ID であり、IoT Hub により servicebound メッセージにスタンプされます。 |
+| System.Input.ConnectionDeviceGenerationId | メッセージの送信に使用される認証済みデバイスの generationId であり、IoT Hub により servicebound メッセージにスタンプされます。 |
+| System.Input.EnqueuedTime | IoT Hub でメッセージを受信した時刻。 |
+| System.Input.StreamId | 送信元デバイスにより追加されたカスタム イベント プロパティ。 |
+
+## BLOB ストレージ データ ストリーム入力の作成 ##
 
 大量の非構造化データをクラウドに保存する場合は、BLOB ストレージを使用するとコスト効率の高いスケーラブルなソリューションが実現します。[BLOB ストレージ](http://azure.microsoft.com/services/storage/blobs/)のデータは一般的に "休息中の" データとして見なされますが、Stream Analytics でデータ ストリームとして処理できます。BLOB ストレージと Stream Analytics の一般的なシナリオには、テレメトリをシステムから取得し、解析し、処理し、意味のあるデータを抽出するログ処理があります。
 
 Stream Analytics の BLOB ストレージ イベントの既定のタイムスタンプは BLOB が最後に更新されたタイムスタンプであることに注意してください。このタイムスタンプが *BlobLastModifiedUtcTime* です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
-
-## 入力データ ストリームとしての BLOB ストレージの構成
 
 次の表に、[BLOB ストレージ入力] タブの各プロパティとその説明を示しています。
 
@@ -102,12 +131,13 @@ Stream Analytics の BLOB ストレージ イベントの既定のタイムス�
 <td>ストレージ アカウントに関連付けられている秘密キー。</td>
 </tr>
 <tr>
-<td>ストレージ コンテナー</td>
+<td>ストレージ コンテナー
+</td>
 <td>コンテナーにより、Microsoft Azure BLOB サービスに格納される BLOB が論理的にグループ化されます。BLOB を BLOB サービスにアップロードするとき、その BLOB のコンテナーを指定する必要があります。</td>
 </tr>
 <tr>
 <td>パス プレフィックスのパターン [省略可能]</td>
-<td>指定されたコンテナー内に BLOB を配置するために使用されるファイル パス。<BR>このパス内に、次の 3 つの変数のいずれかまたはすべてのインスタンスを指定できます。<BR>{date}、{time}、{partition}<BR>例 1: cluster1/logs/{date}/{time}/{partition}<BR>例 2: cluster1/logs/{date}</td>
+<td>指定されたコンテナー内に BLOB を配置するために使用されるファイル パス。このパス内に、次の 3 つの変数のいずれかまたはすべてのインスタンスを指定できます。<BR>{date}, {time},<BR>{partition}<BR>例 1: cluster1/logs/{date}/{time}/{partition}<BR>例 2: cluster1/logs/{date}</td>
 </tr>
 <tr>
 <td>日付形式 [省略可能]</td>
@@ -135,24 +165,25 @@ Stream Analytics の BLOB ストレージ イベントの既定のタイムス�
 データが BLOB ストレージのソースから送信されるとき、Stream Analytics クエリでアクセスできるメタデータ フィールドはほとんどありません。次の表に、そのフィールドと説明を一覧表示します。
 
 | プロパティ | 説明 |
-|--------------------------------|--------------------------------------------------------------------|
+|------|------|
 | BlobName | イベントに起因する入力 BLOB の名前。 |
 | EventProcessedUtcTime | Stream Analytics によってイベントが処理された日時。 |
-| BlobLastModifiedUtcTime | BLOB が最後に変更された日時 |
-| PartitionId | 入力アダプターの 0 から始まるパーティション ID |
+| BlobLastModifiedUtcTime | BLOB が最後に変更された日時。 |
+| PartitionId | 入力アダプターの 0 から始まるパーティション ID。 |
 
 たとえば、次のようにクエリを記述することができます。
 
-
-    SELECT
-    	BlobName,
-    	EventProcessedUtcTime,
-    	BlobLastModifiedUtcTime
-    FROM Input
+````
+SELECT
+	BlobName,
+	EventProcessedUtcTime,
+	BlobLastModifiedUtcTime
+FROM Input
+````
 
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/JA-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。このサービスの詳細については、以下の情報をご覧ください。
@@ -170,4 +201,4 @@ Stream Analytics の BLOB ストレージ イベントの既定のタイムス�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

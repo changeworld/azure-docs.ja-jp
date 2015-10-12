@@ -1,8 +1,6 @@
 <properties
-    title="Azure SQL Database elastic database query overview"
     pageTitle="Azure SQL Database エラスティック データベース クエリの概要"
-    description="エラスティック クエリ機能の概要"
-    metaKeywords="azure sql database elastic database queries"
+    description="エラスティック クエリ機能の概要"    
     services="sql-database"
     documentationCenter=""  
     manager="jeffreyg"
@@ -15,7 +13,7 @@
     ms.devlang="na"
     ms.topic="article"
     ms.date="07/09/2015"
-    ms.author="sidneyh" />
+    ms.author="sidneyh;torsteng" />
 
 # Azure SQL Database エラスティック データベース クエリ (プレビュー) の概要
 
@@ -81,7 +79,7 @@
 エラスティック データベース クエリ機能は、以下の 4 つの DDL ステートメントに依存しています。通常、これらの DDL ステートメントは、アプリケーションのスキーマが変更された場合に 1 度使用するだけであり、ほとんど使用することはありません。
 
 *    [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
-*    [CREATE CREDENTIAL](https://msdn.microsoft.com/library/ms189522.aspx)
+*    [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 *    [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
 *    [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
 
@@ -100,7 +98,7 @@
 
 マスター キーと資格情報は、次の構文を使用して削除できます。
 
-    DROP CREDENTIAL <credential_name> ON DATABASE;
+    DROP DATABASE SCOPED CREDENTIAL <credential_name>;
     DROP MASTER KEY;  
 
 ### 外部データ ソース
@@ -267,4 +265,4 @@ SP\_EXECUTE\_FANOUT は、シャード マップで表されるデータベー�
 
 <!--anchors-->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

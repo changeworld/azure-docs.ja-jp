@@ -23,12 +23,13 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
 
 | 説明 | 対象 | 言語/フレームワーク |
 |:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:---------------------------|
-| [Event Hub のスパウトとボルト](https://github.com/apache/storm/tree/master/external/storm-eventhubs) | Event Hub のスパウトとボルトのソース | Java |
+| [Event Hub のスパウトとボルトのソース](https://github.com/apache/storm/tree/master/external/storm-eventhubs) | Event Hub のスパウトとボルトのソース | Java |
 | [HDInsight での Apache Storm の Java ベース トポロジの開発][5797064f] | Maven | Java |
 | [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する][16fce2d1] | HDInsight Tools for Visual Studio | C#、Java |
 | [C# Storm トポロジでの複数のデータ ストリームの作成][ec5a4064] | 複数のストリーム | C# |
 | [HDInsight での Apache Storm を使用した Twitter のトレンディング トピック][3c86c7c8] | Trident | Java、Trident |
 | [HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)][844d1d81] | Event Hubs | C#、Java |
+| [Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](hdinsight-storm-develop-java-event-hub-topology.md) | Event Hubs | Java |
 | [Use Power Bi (preview) to visualize data from a Storm topology (Power BI (プレビュー) を使用した Storm トポロジのデータの表示)][94d15238] | Power BI | C# |
 | [HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析][ab894747] | Event Hubs、HBase、Socket.IO、Web ダッシュボード | C#、Java、JavaScript、HTML |
 | [Process vehicle sensor data from Event Hubs using Storm on HDInsight (HDInsight での Storm を使用した Event Hubs からの車両センサー データの処理)][246ee964] | Event Hubs、DocumentDb、Azure Storage Blob (WASB) | C#、Java |
@@ -58,4 +59,4 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
   [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "このプロジェクトには、Event Hubs、DocumentDB、SQL Database などの Azure サービスと対話するためのスパウト、ボルト、トポロジのテンプレートが含まれます。"
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

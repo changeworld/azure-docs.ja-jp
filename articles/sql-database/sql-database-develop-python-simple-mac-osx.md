@@ -24,7 +24,7 @@
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
-このトピックでは Python で記述されたコード サンプルについて説明します。サンプルは Mac コンピューター上で実行されます。サンプルは、**pymssql** ドライバーを使用して、Azure SQL Database に接続されます。
+このトピックでは Python で記述されたコード サンプルについて説明します。サンプルは Mac コンピューター上で実行されます。サンプルは、**pymssql** ドライバーを使用して、Azure SQL Database に接続されます。このドキュメントの補足として、[Mac で Python の使用を開始する](https://www.youtube.com/watch?v=OMpugPTwnTI) ビデオを視聴してください。
 
 
 ## 必要条件
@@ -43,7 +43,7 @@
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-**2) FreeTDS**: 端末から次のコマンドを実行します。コンピューターに FreeTDS がダウンロードされます。pymmsql を動かすには FreeTDS が必要です。
+**2) FreeTDS:** 端末から次のコマンドを実行します。コンピューターに FreeTDS がダウンロードされます。pymmsql を動かすには FreeTDS が必要です。
 
     brew install FreeTDS
   
@@ -102,11 +102,11 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 このコード例は、以下のトランザクションの使用について示します。
 
 
--トランザクションの開始
+- トランザクションの開始
 
--データの挿入
+- データの挿入
 
--トランザクションをロールバックして、挿入を元に戻す
+- トランザクションをロールバックして、挿入を元に戻す
 
 
 	import pymssql
@@ -118,4 +118,4 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

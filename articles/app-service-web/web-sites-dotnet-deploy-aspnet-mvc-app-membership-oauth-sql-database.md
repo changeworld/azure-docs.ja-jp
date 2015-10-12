@@ -1,46 +1,47 @@
 <properties 
-	pageTitle="認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ"
-	description="SQL Database バックエンドを使用して ASP.NET MVC 5 Web アプリを作成し、認証および承認を追加して、それを Azure にデプロイする方法について説明します。"
-	services="app-service\web"
-	documentationCenter=".net"
-	authors="Rick-Anderson"
-	manager="wpickett"
+	pageTitle="認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ" 
+	description="SQL Database バックエンドを使用して ASP.NET MVC 5 Web アプリを作成し、認証および承認を追加して、それを Azure にデプロイする方法について説明します。" 
+	services="app-service\web" 
+	documentationCenter=".net" 
+	authors="Rick-Anderson" 
+	writer="Rick-Anderson" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/07/2015"
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/30/2015" 
 	ms.author="riande"/>
-
-
 
 # 認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ
 
-このチュートリアルでは、ユーザーが Facebook や Google の資格情報を使用してログインできる、安全な ASP.NET MVC 5 Web アプリケーションを構築する方法を説明します。さらに、作成したアプリケーションを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法についても学習します。
+このチュートリアルでは、ユーザーが Facebook または Google の資格情報を使用してログインできる、セキュリティで保護された ASP.NET MVC 5 Web アプリを構築する方法について説明します。このアプリは、データベースへのアクセスに ADO.NET Entity Framework を使用する簡単な連絡先リストです。アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイします。
 
-Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けのアプリケーションを無料で開発できます。
-
-このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルでは、安全なデータ主導型 Web アプリケーションを作成し、クラウド データベースを使用してクラウド上で実行します。
-
-学習内容:
-
-* 安全な ASP.NET MVC 5 プロジェクトを作成して、Azure App Service で [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) に発行する方法
-* [OAuth](http://oauth.net/ "http://oauth.net/") および ASP.NET メンバーシップ データベースを使用してアプリケーションを保護する方法
-* SQL データベースを使用して Azure にデータを保存する方法
-
-ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity Framework を使用する、簡単な連絡先リスト Web アプリケーションをビルドします。次の図は、完成したアプリケーションのログイン ページです。
+このチュートリアルを完了すると、クラウド データベースを使用し、セキュリティで保護されたデータ主導型 Web アプリケーションをクラウドで起動して実行できるようになります。次の図は、完成したアプリケーションのログイン ページを示しています。
 
 ![login page][rxb]
 
->[AZURE.NOTE]上記のスクリーン ショットに示されているソーシャル ログイン ボタンを作成するには、「[Pretty social login buttons for ASP.NET MVC 5 (ASP.NET MVC 5 用のソーシャル ログイン ボタン)](http://www.jerriepelser.com/blog/pretty-social-login-buttons-for-asp-net-mvc-5)」を参照してください。
+学習内容:
 
->[AZURE.NOTE]このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](../ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料評価版にサインアップ](../ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+* Visual Studio で、セキュリティで保護された ASP.NET MVC 5 Web プロジェクトを作成する方法
+* Google または Facebook アカウントの資格情報を使用してログオンしたユーザーを認証および承認する方法 ([OAuth 2.0](http://oauth.net/2 "http://oauth.net/2") を使用したソーシャル プロバイダー認証)
+* アプリケーションによって管理されるデータベースに登録されたユーザーを認証および承認する方法 ([ASP.NET Identity](http://asp.net/identity/) を使用したローカル認証)
+* ADO.NET Entity Framework 6 の Code First を使用して、SQL データベースのデータを読み書きする方法
+* Entity Framework の Code First Migrations を使用してデータベースをデプロイする方法
+* Azure SQL Database を使用してリレーショナル データをクラウドに保存する方法
+* データベースを使用する Web プロジェクトを、Azure App Service の [Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)にデプロイする方法
 
->Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]これは長いチュートリアルです。Azure App Service と Visual Studio Web プロジェクトの簡単な概要については、「[Azure App Service での ASP.NET Web アプリの作成](web-sites-dotnet-get-started.md)」をご覧ください。
+>
+>Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページをご覧ください。このページでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+
+## 前提条件
+
+このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](../ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料評価版にサインアップ](../ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 
 開発環境をセットアップするには、[Visual Studio 2013 Update 4](http://go.microsoft.com/fwlink/?LinkId=390521) 以降および最新バージョンの [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409) をインストールする必要があります。この記事は、Visual Studio Update 4 および SDK 2.5.1 を対象にしています。
 
@@ -50,31 +51,31 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 1. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 
-	![New Project in File menu](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/gs13newproj.png)
+	![[ファイル] メニューの [新しいプロジェクト]](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/gs13newproj.png)
 
 1. **[新しいプロジェクト]** ダイアログ ボックスで、**[インストールされているテンプレート]** の下にある **[Visual C#]** を展開して **[Web]** を選択し、**[ASP.NET Web アプリケーション]** を選択します。
 
 1. アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
 
-	![New Project dialog box](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/GS13newprojdb.png)
+	![[新しいプロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/GS13newprojdb.png)
  
 	**注:** 必ず「ContactManager」と入力してください。これからコピーするコード ブロックは、ContactManager というプロジェクト名が前提となっています。
 
 1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択します。**[認証]** に **[個別ユーザー アカウント]** が設定されていること、**[クラウドでのホスト]** がオンになっていること、および **[Web アプリ]** が選択されていることを確認します。
 
-	![New ASP.NET Project dialog box](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newproject.png)
+	![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newproject.png)
 
 1. 構成ウィザードでは *ContactManager* に基づいて一意の名前が提示されます。新しい App Service プランとリソース グループを作成するかどうかを決める必要があります。新しいプランまたはリソース グループを作成するかどうかを決める方法については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。このチュートリアルでは、少なくとも 1 つのリソース グループを新しく作成します。近くのリージョンを選択します。[azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") を使用して、待ち時間が最も短いデータ センターを検索することができます。次の手順でデータベースを設定します。したがって、**[OK]** はまだクリックしないでください。
 
-	![New plan and resource group](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newplanandgroup.png)
+	![新しいプランとリソース グループ](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newplanandgroup.png)
  
 2. 以前にデータベースのサーバーを作成していない場合は、**[新しいサーバーの作成]** を選択し、データベース名、ユーザー名、およびパスワードを入力します。
 
-	![Use new database](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newdb.png)
+	![新しいデータベースを使用する](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/newdb.png)
 
 3. データベース サーバーがある場合は、そのサーバーを使用して新しいデータベースを作成します。データベース サーバーは貴重なリソースであるため、一般的にはデータベースごとにデータベース サーバーを作成するのではなく、同じサーバー上にテスト用や開発用の複数のデータベースを作成してください。Web アプリとデータベースが同じリージョンにあることを確認してください。
 
-	![Use exsiting database](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/useexistingdb.png)
+	![既存のデータベースを使用する](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/useexistingdb.png)
 
 ### ページのヘッダーとフッターを設定する
 
@@ -136,7 +137,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 	アプリケーションのホーム ページが既定のブラウザーに表示されます。
 
-	![Web app running locally](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rr2.png)
+	![ローカルで実行されている Web アプリ](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rr2.png)
 
 これで、Azure にデプロイするアプリケーションを作成するために必要な操作が完了しました。
 
@@ -144,56 +145,56 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 1. SSL を有効にします。ソリューション エクスプローラーで **ContactManager** プロジェクトをクリックし、F4 キーを押します。プロパティ ダイアログ ボックスが表示されます。**[SSL Enabled]** を True に変更します。**[SSL URL]** をコピーします。過去に SSL Web アプリを作成したことがなければ、SSL URL は https://localhost:44300/ になります。
 
-	![enable SSL][rxSSL]
+	![SSL を有効にする][rxSSL]
  
 1. ソリューション エクスプローラーで **Contact Manager** プロジェクトを右クリックし、**[プロパティ]** をクリックします。
 1. 左側のタブで **[Web]** をクリックします。
 1. **SSL URL** を使用するように **[プロジェクト URL]** を変更し、ページを保存します (Ctrl + S)。
 
-	![enable SSL](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrr1.png)
+	![SSL を有効にする](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrr1.png)
  
 1. 次の図に示すように、Internet Explorer が Visual Studio によって起動されるブラウザーであることを確認します。
 
-	![default browser](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss12.PNG)
+	![既定のブラウザー](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss12.PNG)
 
 	ブラウザー セレクターによって、Visual Studio が起動するブラウザーを指定することができます。
 
- 	![browser selector](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss13.png)
+ 	![ブラウザー セレクター](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss13.png)
 
 	変更を加える場合、複数のブラウザーを選択して、Visual Studio が各ブラウザーを更新するようにできます。詳細については、「[Using Browser Link in Visual Studio 2013 (Visual Studio 2013 でのブラウザー リンクの使用)](http://www.asp.net/visual-studio/overview/2013/using-browser-link)」を参照してください。
 
 
 1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。指示に従って、IIS Express が生成した自己署名証明書を信頼します。
 
-	 ![instructions to trust the self-signed certificate that IIS Express has generated](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss26.PNG)
+	 ![IIS Express が生成した自己署名証明書を信頼するよう促す指示](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss26.PNG)
 
 1. **[セキュリティ警告]** ダイアログを確認して、**localhost** を表す証明書をインストールする場合は **[はい]** をクリックします。
 
- 	![localhost IIS Express certificate warning](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss27.PNG)
+ 	![localhost の IIS Express の証明書に関する警告](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss27.PNG)
 
 1. IE は*ホーム* ページを表示し、SSL の警告はありません。
 
-	 ![IE with localhost SSL and no warnings](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss28.PNG)
+	 ![警告が表示されていない、localhost の SSL を有効にした IE](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss28.PNG)
 
 	Google Chrome も証明書を受け取り、警告なしで HTTPS コンテンツを表示します。Firefox は独自の証明書ストアを使用します。したがって、警告を表示します。
 
-	 ![FireFox Cert Warning](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss30.PNG)
+	 ![FireFox の証明書に関する警告](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss30.PNG)
 
 ## Azure にアプリケーションをデプロイする
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-	![Publish in project context menu](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/GS13publish.png)
+	![プロジェクトのコンテキスト メニューの [発行]](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/GS13publish.png)
 	
 	**Web の発行**ウィザードが開きます。
 
 1. **[Web の発行]** ダイアログ ボックスの **[発行]** をクリックします。
 
-	![Publish](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rr3.png)
+	![[発行]](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rr3.png)
 
 	これで、作成したアプリケーションはクラウドで実行されています。このアプリケーションを次にデプロイするときは、変更したファイル (または新しいファイル) のみがデプロイされます。
 
-	![Running in Cloud](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss4.PNG)
+	![クラウドで実行中](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss4.PNG)
 
 ## アプリケーションにデータベースを追加する
 
@@ -205,11 +206,11 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 1. **ソリューション エクスプローラー**で、Models フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
-	![Add Class in Models folder context menu](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rr5.png)
+	![[モデル] フォルダーのコンテキスト メニューの [クラスの追加]](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rr5.png)
 
 2. **[新しい項目の追加]** ダイアログ ボックスで、新しいクラス ファイルに「*Contact.cs*」という名前を付け、[**追加**] をクリックします。
 
-	![Add New Item dialog box][adddb002]
+	![[新しい項目の追加] ダイアログ ボックス][adddb002]
 
 3. Contacts.cs ファイルの内容を次のコードに置き換えます。
 
@@ -240,7 +241,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 1. プロジェクトをビルドします **(Ctrl + Shift + B)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。) 
 1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
 
-	![Add Controller in Controllers folder context menu][addcode001]
+	![[コントローラー] フォルダーのコンテキスト メニューの [コントローラーの追加]][addcode001]
 
 5. **[スキャフォールディングの追加]** ダイアログ ボックスで、**[MVC 5 コントローラーとビュー、EF を使用]** を選択し、**[追加]** をクリックします。
 	
@@ -261,7 +262,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 次の作業では、作成したデータ モデルに基づいてデータベースを作成するために、[Code First Migrations](http://msdn.microsoft.com/library/hh770484.aspx) 機能を有効にします。
 
-1. **[ツール]** メニューの **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** を順に選択します。![Package Manager Console in Tools menu](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/SS6.png)
+1. **[ツール]** メニューの **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** を順に選択します。![[ツール] メニューの [パッケージ マネージャー コンソール]](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/SS6.png)
 
 2. **[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを入力します。
 
@@ -341,7 +342,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 		update-database
 
-	![Package Manager Console commands][addcode009]
+	![パッケージ マネージャー コンソールのコマンド][addcode009]
 
 	**update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
 
@@ -360,6 +361,8 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 このチュートリアルでは、認証の他にロールを使用して権限を付与します。*canEdit* ロールに追加したユーザーのみがデータを変更 (連絡先を作成、編集、削除) できます。
 
 拙著のチュートリアル「[MVC 5 App with Facebook, Twitter, LinkedIn and Google OAuth2 Sign-on (Facebook や Google の OAuth2/OpenID サインオンを使用した ASP.NET MVC 5 アプリケーション)](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on#goog)」の「**Creating a Google app for OAuth 2 to set up a Google app for OAuth2 (OAuth 2 用の Google アプリを作成して OAuth2 用に Google アプリをセットアップする)**」の手順に従います。アプリケーションを実行してテストし、Google 認証を使用してログオンできることを確認します。
+
+プロバイダー固有のアイコンを使用してソーシャル ログイン ボタンを作成する場合は、「[Pretty social login buttons for ASP.NET MVC 5 (ASP.NET MVC 5 用ソーシャル ログイン ボタン)](http://www.jerriepelser.com/blog/pretty-social-login-buttons-for-asp-net-mvc-5)」をご覧ください。
 
 ## メンバーシップ API を使用する
 このセクションでは、ローカル ユーザーと *canEdit* ロールをメンバーシップ データベースに追加します。*canEdit* ロールのユーザーのみがデータを編集することができます。実行可能な操作に基づいてロール名を付けるのが望ましいので、この場合は *admin* より *canEdit* が適しています。その後、必要に応じて、(わかりにくい *superAdmin* ではなく) *canDeleteMembers* などの新しいロールを追加します。
@@ -399,11 +402,11 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 		        // Code removed for brevity
 		}
 
-	次の画像は、*Seed* メソッドへの変更を示します。
+	次の画像は、*Seed* メソッドの変更を示しています。
 
 	![code image](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss24.PNG)
 
-	このコードでは、*canEdit* という名前の新しいロールが作成され、新しいローカル ユーザー **user1@contoso.com* が作成されて、**user1@contoso.com* が *canEdit* ロールに追加されます。詳細については、[ASP.NET Identity のチュートリアル](http://www.asp.net/identity/overview/features-api)を参照してください。
+	このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー **user1@contoso.com* を作成して、**user1@contoso.com* を *canEdit* ロールに追加します。詳細については、[ASP.NET Identity のチュートリアル](http://www.asp.net/identity/overview/features-api)をご覧ください。
 
 ## 一時的なコードを使用して新しいソーシャル ログイン ユーザーを canEdit ロールに追加する  ##
 このセクションでは、Account コントローラーの **ExternalLoginConfirmation** メソッドを一時的に変更して、*canEdit* ロールに新しいユーザーを追加し、OAuth プロバイダーに登録します。ここで一時的に **ExternalLoginConfirmation** メソッドを変更し、新しいユーザーが管理者ロールに自動的に追加されるようにします。ロールの追加と管理に必要なツールの準備が整うまでの間、以下に示した一時的な自動登録コードを使用することになります。将来的には、ユーザー アカウントとロールの作成および編集のために、[WSAT](http://msdn.microsoft.com/library/ms228053.aspx) と同様のツールを提供する予定です。
@@ -457,13 +460,13 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 		Update-Database
 
-**Update-Database** コマンドを実行すると、**Seed** メソッドが実行され、先ほど追加した **AddUserAndRole** が実行されます。**AddUserAndRole** により、**user1@contoso.com* というユーザーが作成されて、*canEdit* ロールに追加されます。
+**Update-Database** コマンドを実行すると、**Seed** メソッドが実行され、先ほど追加した **AddUserAndRole** が実行されます。**AddUserAndRole** は、ユーザー **user1@contoso.com* を作成し、*canEdit* ロールに追加します。
 
 ## SSL と Authorize 属性を使用してアプリケーションを保護する ##
 
 このセクションでは、[Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx)) 属性を適用してアクション メソッドへのアクセスを制限します。匿名ユーザーが表示できるのは、home コントローラーの **Index** アクション メソッドだけになります。登録ユーザーは、連絡先データ (Cm コントローラーの **[Index]** ページと **[Details]** ページ)、[About] ページ、[Contact] ページを表示することができます。*canEdit* ロールを与えられているユーザーのみがアクション メソッドを実行してデータを変更できます。
 
-1. [Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) フィルターと [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターをアプリケーションに追加します。[Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) 属性と [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。詳細については、「[Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx)」を参照してください。*App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次のように書き換えます (2 つのフィルターを追加します)。
+1. [Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) フィルターと [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターをアプリケーションに追加します。[Authorize](http://msdn.microsoft.com/library/system.web.mvc.authorizeattribute.aspx) 属性と [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。詳細については、「[Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx)」を参照してください。*App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次の内容に置き換えます (2 つのフィルターを追加します)。
 
 		public static void
 		RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -530,7 +533,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 		
 1. まだ前のセッションにログインしている場合は、**ログアウト** リンクをクリックします。
 1. **[About]** または **[Contact]** リンクをクリックします。匿名ユーザーはこれらのページを表示できないため、ログイン ページにリダイレクトされます。 
-1. **[Register as a new user]** リンクをクリックして、電子メールが **joe@contoso.com* であるローカル ユーザーを追加します。*Joe* であれば Home ページ、About ページ、Contact ページを表示できることを確認します。
+1. **[Register as a new user]** リンクをクリックし、電子メールが **joe@contoso.com* であるローカル ユーザーを追加します。*Joe* であれば Home ページ、About ページ、Contact ページを表示できることを確認します。
 
 	![login](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/ss14.PNG)
 
@@ -544,7 +547,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-	![Publish in project context menu][firsdeploy003]
+	![プロジェクトのコンテキスト メニューの [発行]][firsdeploy003]
 
 	**Web の発行**ウィザードが開きます。
 
@@ -568,11 +571,11 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 1. **サーバー エクスプローラー**で **[Web Apps]** に移動します。
 4. Web アプリを右クリックし、**[停止]** を選択します。 
 
-	![stop web app](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/s1.png)
+	![Web アプリの停止](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/s1.png)
 
 	[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)から Web アプリを選択し、ページ下部の **[停止]** アイコンをクリックする方法もあります。
 
-	![stop web app portal](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/stopweb.png)
+	![web アプリ ポータルの停止](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/stopweb.png)
 
 ### AddToRoleAsync の削除、発行、テスト
 
@@ -580,7 +583,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 1. プロジェクトをビルドします。これにより、ファイルの変更が保存され、コンパイル エラーがないか確認が行われます。
 5. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[発行]** をクリックします。
 
-	   ![Publish in project context menu](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/GS13publish.png)
+	   ![プロジェクトのコンテキスト メニューの [発行]](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/GS13publish.png)
 	
 4. **[プレビューの開始]** をクリックします。更新する必要のあるファイルだけがデプロイされます。
 5. Visual Studio またはポータルから Web アプリを開きます。**Web アプリが停止した状態で発行することはできません。**
@@ -717,4 +720,4 @@ MVC および Entity Framework のプログラミングについては、Tom Dyk
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

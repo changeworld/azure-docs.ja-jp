@@ -116,4 +116,4 @@ OAuth 2.0 プロトコルとアクセス トークンの取得方法の詳細に
 
 更新トークンの取得方法と使用方法の詳細については、「[アプリ モデル v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

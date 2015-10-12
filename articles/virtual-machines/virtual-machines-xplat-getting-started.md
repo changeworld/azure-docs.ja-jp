@@ -27,11 +27,11 @@ Azure CLI をインストールして Azure サブスクリプションを持つ
 
 ## Azure CLI のインストール
 
-[Azure CLI のインストール](../xplat-cli.md#install)の手順に従ってください。
+[Azure CLI のインストール](../xplat-cli-install.md#install)の手順に従ってください。
 
 ## Azure CLI を使用して Azure へ接続する
 
-Azure CLI のインストールを個人の Azure アカウント、仕事用アカウント、学校用アカウントに紐付けることができます。相違点を理解して選択するには、「[Azure サブスクリプションに関連付ける方法](../xplat-cli.md#configure)」を参照してください。
+Azure CLI のインストールを個人の Azure アカウント、仕事用アカウント、学校用アカウントに紐付けることができます。相違点を理解して選択するには、「[Azure サブスクリプションに関連付ける方法](../xplat-cli-install.md#configure)」を参照してください。
 
 ## Azure で VM を作成および接続する
 
@@ -78,4 +78,4 @@ Azure CLI を使って Azure インフラストラクチャを管理する多く
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

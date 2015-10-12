@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="08/27/2015"
+	ms.date="09/24/2015"
 	ms.author="davidmu;v-marsma"/>
 
 # 効率的な Batch リスト クエリ
@@ -37,6 +37,8 @@ Azure Batch は大規模なコンピューティングです。運用環境で�
 - 項目数または項目のサイズが増えると、より多くのメモリが Batch を呼び出すアプリケーションで使用されます。
 - 項目数または項目のサイズが増えると、ネットワーク トラフィックの増加につながります。これによって転送時間が長くなり、アプリケーション アーキテクチャによっては、Batch アカウントのリージョンの外部に転送されるデータのネットワーク料金が増加する可能性があります。
 
+> [AZURE.IMPORTANT]アプリケーションの最大限の効率とパフォーマンスを確保するために、リスト API 呼び出しには常に filter 句と select 句を使用することを強くお勧めします。これらの句とその使用方法については、以下に記載されています。
+
 すべての Batch API では、次が適用されます。
 
 - 各プロパティ名は、オブジェクトのプロパティにマップされる文字列です。
@@ -50,15 +52,15 @@ Azure Batch は大規模なコンピューティングです。運用環境で�
 
 ## Batch .NET の効率的クエリ
 
-Batch .NET API では、クエリの [DetailLevel](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.detaillevel.aspx) を指定することで、リストで返される項目数と各項目で返される情報量の両方を減らすことができます。DetailLevel は抽象基本クラスであり、[ODATADetailLevel](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.aspx) オブジェクトが実際に作成され、該当メソッドにパラメーターとして渡される必要があります。
+Batch .NET API では、クエリの [DetailLevel](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.detaillevel.aspx) を指定することで、リストで返される項目数と各項目で返される情報量の両方を減らすことができます。DetailLevel は抽象基本クラスであり、[ODATADetailLevel][odata] オブジェクトが実際に作成され、適切なメソッドにパラメーターとして渡される必要があります。
 
 ODataDetailLevel オブジェクトには、コンストラクターで指定するか、直接設定できる 3 つのパブリック文字列プロパティがあります。
 
 - [FilterClause](#filter) – フィルター処理し、潜在的に返される項目数を減らします
-- [SelectClause](#select) – 項目ごとに返されるプロパティ値のサブセットを指定し、項目と応答のサイズを小さくします
+- [SelectClause](#select) – 項目ごとに返されるプロパティ値のサブセットを指定することで、項目と応答のサイズを減らします
 - [ExpandClause](#expand) -複数の呼び出しではなく 1 回の呼び出しで必要なデータをすべて返します
 
-> [AZURE.TIP]Select 句と Expand 句で構成された DetailLevel のインスタンスの場合、返されるデータの量を制限するには、[PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx) のような該当 Get メソッドに渡す必要もあります。
+> [AZURE.TIP]Select 句と Expand 句で構成された DetailLevel のインスタンスは、返されるデータの量を制限するために、[PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx) などの適切な Get メソッドに渡すこともできます。
 
 ### <a id="filter"></a> FilterClause
 
@@ -66,7 +68,7 @@ ODataDetailLevel オブジェクトには、コンストラクターで指定す
 
  [FilterClause](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.filterclause.aspx) は、*プロパティ名*、*演算子*、*値*で構成される、1 つ以上の式から成る文字列です。指定できるプロパティは、演算子が各プロパティでサポートされる場合、各 API 呼び出しに固有です。論理演算子の **and** と **or** を使用して、複数の式を結合できます。
 
-たとえば、このフィルター文字列は *displayName* が「MyTask」で始まる実行中タスクのみを返します。
+たとえば、次のフィルター文字列は、*displayName* が "MyTask" で始まる実行中のタスクのみを返します。
 
 	startswith(displayName, 'MyTask') and (state eq 'Running')
 
@@ -83,7 +85,7 @@ ODataDetailLevel オブジェクトには、コンストラクターで指定す
 - [アカウントの証明書を一覧表示する](https://msdn.microsoft.com/library/azure/dn820154.aspx)
 - [ノードのファイルを一覧表示する](https://msdn.microsoft.com/library/azure/dn820151.aspx)
 
-> [AZURE.IMPORTANT]3 つの種類の句のいずれかにプロパティを指定するとき、プロパティ名と大文字/小文字が Batch REST API 要素の対応部分のそれと一致することを確認します。たとえば、.NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) を使用するとき、.NET プロパティが [CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state) であっても、**State** の代わりに **state** を指定する必要があります。**state** プロパティの適切な名前と大文字/小文字を確認するには、たとえば、Batch REST API 文書の「[タスクに関する情報を取得する](https://msdn.microsoft.com/library/azure/dn820133.aspx)」で要素名を確認してください。
+> [AZURE.IMPORTANT]3 つの種類の句のいずれかにプロパティを指定するとき、プロパティ名と大文字/小文字が Batch REST API 要素の対応部分のそれと一致することを確認します。たとえば、.NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) を使用するときは、.NET プロパティが [CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state) であっても、**State** の代わりに **state** を指定する必要があります。**state** プロパティの適切な名前と大文字/小文字を確認するには、たとえば、Batch REST API ドキュメントの「[Get information about a task (タスクに関する情報の取得)](https://msdn.microsoft.com/library/azure/dn820133.aspx)」で要素名を確認します。
 
 ### <a id="select"></a> SelectClause
 
@@ -124,13 +126,33 @@ API 呼び出し数は、expand 句を使用して削減できます。各リス
 	// detail level we configured above
 	List<CloudPool> testPools = myBatchClient.PoolOperations.ListPools(detailLevel).ToList();
 
-> [AZURE.TIP]アプリケーションに対して最大の効率と最高のパフォーマンスを保証するために、リスト API 呼び出しには*常に* filter 句と select 句を使用することをお勧めします。
+## サンプル プロジェクト
+
+効率的なリスト クエリがアプリケーションのパフォーマンスに及ぼす影響を確認するには、GitHub の [EfficientListQueries][efficient_query_sample] サンプル プロジェクトをご覧ください。この C# コンソール アプリケーションでは、多数のタスクを作成してジョブに追加し、さまざまな [ODATADetailLevel][odata] 仕様を使用して Batch サービスのクエリを実行します。出力は次のようになります。
+
+		Adding 5000 tasks to job jobEffQuery...
+		5000 tasks added in 00:00:47.3467587, hit ENTER to query tasks...
+
+		4943 tasks retrieved in 00:00:04.3408081 (ExpandClause:  | FilterClause: state eq 'active' | SelectClause: id,state)
+		0 tasks retrieved in 00:00:00.2662920 (ExpandClause:  | FilterClause: state eq 'running' | SelectClause: id,state)
+		59 tasks retrieved in 00:00:00.3337760 (ExpandClause:  | FilterClause: state eq 'completed' | SelectClause: id,state)
+		5000 tasks retrieved in 00:00:04.1429881 (ExpandClause:  | FilterClause:  | SelectClause: id,state)
+		5000 tasks retrieved in 00:00:15.1016127 (ExpandClause:  | FilterClause:  | SelectClause: id,state,environmentSettings)
+		5000 tasks retrieved in 00:00:17.0548145 (ExpandClause: stats | FilterClause:  | SelectClause: )
+
+		Sample complete, hit ENTER to continue...
+
+経過時間情報に示すように、プロパティと返される項目の数を制限することで、クエリの応答時間を大幅に短縮できます。このサンプル プロジェクトと他のサンプル プロジェクトは、GitHub の [azure-batch-samples][github_samples] リポジトリにあります。
 
 ## 次のステップ
 
 1. 自分の開発シナリオに関連する Batch API 文書をお読みになっていない場合、必ずご確認ください。
     - [Batch REST](https://msdn.microsoft.com/library/azure/dn820158.aspx)
     - [Batch .NET](https://msdn.microsoft.com/library/azure/dn865466.aspx)
-2. GitHub の [Azure Batch サンプル](https://github.com/Azure/azure-batch-samples)を取得し、コードを調べる
+2. GitHub の [Azure Batch サンプル](https://github.com/Azure/azure-batch-samples)を取得し、コードを調べます。
 
-<!---HONumber=September15_HO1-->
+[efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
+[github_samples]: https://github.com/Azure/azure-batch-samples
+[odata]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.aspx
+
+<!---HONumber=Oct15_HO1-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure App Service でコネクタと API Apps の管理と監視を行う" 
+	pageTitle="Azure App Service でコネクタと API Apps の管理と監視を行う | Microsoft Azure" 
 	description="Azure App Service のコネクタと API Apps のパフォーマンスを表示する: マイクロサービス アーキテクチャ" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
@@ -13,20 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.date="09/29/2015" 
 	ms.author="mandia"/>
 
 # 組み込み API Apps とコネクタの管理と監視を実行する
 
 組み込み API アプリを作成しました。次は何でしょうか。
 
-Azure では、すべての API アプリは、Azure でホストされる独立した Web サイトです。その結果、行われた要求の数と、コネクタで使用されたデータの量を簡単に確認できます。
-
-さらに、API アプリのバックアップ、アラートの作成、Tinfoil Security の有効化、およびユーザーとロールの追加を実行できます。
+Azure では、すべての API アプリは、Azure でホストされる独立した Web サイトです。その結果、行われた要求の数と、コネクタで使用されたデータの量を簡単に確認できます。さらに、API アプリのバックアップ、アラートの作成、Tinfoil Security の有効化、およびユーザーとロールの追加を実行できます。
 
 このトピックでは、API アプリを管理するためのさまざまなオプションについて、その一部を説明します。
 
-これらの組み込み機能を表示するには、API アプリをプレビュー [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で開きます。API アプリがスタート画面に表示されている場合は、それを選択するとプロパティが表示されます。**[参照]**、**[API Apps]** の順に選択した後、API アプリを選択することもできます。
+これらの組み込み機能を表示するには、API アプリを [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で開きます。API アプリがスタート画面に表示されている場合は、それを選択するとプロパティが表示されます。**[参照]**、**[API Apps]** の順に選択した後、API アプリを選択することもできます。
 
 ![][browse]
 
@@ -51,17 +49,15 @@ API アプリを開くと、使用できるさまざまな機能とタスクが�
 手順は次のとおりです。
 
 1. コネクタまたは API アプリを開きます。この操作を実行すると、API アプリ ブレードが開きます。
-2. [基本要素] で、[ホスト] プロパティの下のハイパーリンクをクリックします。このハイパーリンクの名前は、*slackconnector* や *microsoftsqlconnector123* のようになります。
+2. **[基本要素]** で、[ホスト] プロパティの下のハイパーリンクをクリックします。このハイパーリンクの名前は、*slackconnector* や *microsoftsqlconnector123* のようになります。
 
 	![][apiapphost]
 
-3. [API アプリのホスト] ブレードで、**[設定]** を選択します。
-4. [設定] ブレードで、**[アプリケーション設定]** をクリックします。
-5. **[アプリ設定]** の下に構成値が表示されます。 
+3. [API アプリのホスト] ブレードで、**[設定]** を選択します。[設定] ブレードで、**[アプリケーション設定]** をクリックします。**[アプリ設定]** の下に構成値が表示されます。
 	
 	![][hostsettings]
 
-6. 変更する設定をクリックし、新しい値を入力し、変更を**保存**します。
+4. 変更する設定をクリックし、新しい値を入力し、変更を**保存**します。
 
 
 ## Hybrid Connection Manager をインストールする (省略可能)
@@ -75,7 +71,7 @@ API アプリを開くと、使用できるさまざまな機能とタスクが�
 > [AZURE.NOTE]Hybrid Connection Manager は、ファイアウォールの背後にあるオンプレミス リソースに接続する場合にのみ必要です。オンプレミスのシステムに接続していない場合、Hybrid Connection Manager は [コネクタ] ブレードに表示されない可能性があります。
 
 ## パフォーマンスを監視する
-パフォーマンス メトリックは組み込み機能であり、作成するすべての API アプリに含まれます。これらのメトリックは、Azure でホストされる API アプリに固有です。
+パフォーマンス メトリックは組み込み機能であり、作成するすべての API アプリに含まれます。これらのメトリックは、Azure でホストされる API アプリに固有です。メトリックの例:
 
 ![][monitoring]
 
@@ -118,6 +114,9 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 > 
 > これらのプロパティは、API アプリをホストする Web サイトに固有です。組み込み API アプリまたはコネクタを使用するとき、これらのプロパティの大半は実際には適用されないため、これらのプロパティを更新しないことをお勧めします。Visual Studio で独自の API アプリを作成し、Azure サブスクリプションにデプロイした場合は、[ホスト] ブレードと [ゲートウェイ] ブレードを使用できます。「[API アプリの管理](../app-service-api/app-service-api-manage-in-portal.md)」に、カスタム作成した API アプリに関して、これらのブレードで何ができるかについての詳細な説明があります。
 
+
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+
 ## 詳細
 
 [Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/> [App Service のコネクタと API Apps](app-service-logic-connectors-list.md)<br/> [Microsoft Azure ポータルでのロールベースのアクセス制御](role-based-access-control-configure.md)<br/> [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)
@@ -133,4 +132,4 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 [hostsettings]: ./media/app-service-logic-monitor-your-connectors/hostsettings.png
 [apiapphost]: ./media/app-service-logic-monitor-your-connectors/apiapphost.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

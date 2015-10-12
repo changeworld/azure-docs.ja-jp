@@ -40,13 +40,13 @@ HDInsight クラスターでサポートされている Sqoop のバージョン
 
 - **ワークステーション**: SSH クライアントを使用しているコンピューター。
 
-- **Azure CLI**: 詳細については、[Azure CLI のインストールおよび構成](../xplat-cli.md)に関するページを参照してください。
+- **Azure CLI**: 詳細については、[Azure CLI のインストールおよび構成](../xplat-cli-install.md)に関するページを参照してください。
 
 - **Linux ベースの HDInsight クラスター**: クラスターのプロビジョニングの手順については、「[HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。
 
 - **Azure SQL データベース**: このドキュメントでは、SQL データベースの例を作成するための手順を説明します。SQL Database の詳細については、[Azure SQL データベースの使用開始][sqldatabase-get-started]に関するページを参照してください。
 
-* **SQL Server**: このドキュメントの手順は、変更することで SQL Server でも使用できます。この記事の使用に固有の SQL Server の要件の詳細については、「[SQL Server の使用](#using-sql-server)」セクションを参照してください。
+* **SQL Server**: このドキュメントの手順は、多少変更するだけで SQL Server でも使用できます。ただし、HDInsight クラスターと SQL Server の両方が同じ Azure Virtual Network 上に存在する必要があります。この記事の使用に固有の SQL Server の要件の詳細については、「[SQL Server の使用](#using-sql-server)」セクションを参照してください。
 
 ##シナリオの理解
 
@@ -263,4 +263,4 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

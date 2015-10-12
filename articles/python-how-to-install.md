@@ -171,7 +171,7 @@ Azure Websites を開発して公開する詳細については、「[Creating W
 * [IPython - an advanced REPL/Notebook for Python][] (IPython - 高度な Python 用 REPL/Notebook)
 * [Azure での IPython Notebook][]
 * [Python Tools for Visual Studio on GitHub][] に関するページ
-
+* [Python デベロッパー センター](/develop/python/)
 
 [Continuum Analytics Python Distribution]: http://continuum.io
 [Enthought Python Distribution]: http://www.enthought.com
@@ -204,4 +204,4 @@ Azure Websites を開発して公開する詳細については、「[Creating W
 [キュー ストレージ]: storage-python-how-to-use-queue-storage.md
 [BLOB ストレージ]: storage-python-how-to-use-blob-storage.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/05/2015"
+	ms.date="08/12/2015"
 	ms.author="larryfr"/>
 
 # HDInsight での Hive を使用した Twitter データの分析
 
-このドキュメントでは、Twitter streaming API を使用してツイートを取得し、Linux ベースの HDInsight (プレビュー) クラスターで Apache Hive を使用して、JSON 形式のデータを処理します。結果として、特定の単語が含まれた最も多くのツイートを送信した Twitter ユーザーのリストが返されます。
+このドキュメントでは、Twitter streaming API を使用してツイートを取得し、Linux ベースの HDInsight クラスターで Apache Hive を使用して、JSON 形式のデータを処理します。結果として、特定の単語が含まれた最も多くのツイートを送信した Twitter ユーザーのリストが返されます。
 
 > [AZURE.NOTE]このドキュメントの各部分は Windows ベースの HDInsight クラスター (Python と Hive など) で使用できますが、多くの手順は Linux ベースの HDInsight クラスターの使用に基づいています。Windows ベースのクラスターに固有の手順については、「[HDInsight での Hive を使用した Twitter データの分析](hdinsight-analyze-twitter-data.md)」をご覧ください。
 
@@ -37,7 +37,7 @@
 
 - __Python__ と [pip](https://pypi.python.org/pypi/pip)。
 
-- __Azure CLI__。詳細については、「[Azure CLI のインストールと構成](../xplat-cli.md)」をご覧ください。
+- __Azure CLI__。詳細については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
 ##Twitter Feed の取得
 
@@ -319,4 +319,4 @@ WASB (HDInsight で使用される分散ファイル システム) にデータ�
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

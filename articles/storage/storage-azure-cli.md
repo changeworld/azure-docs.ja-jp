@@ -1,19 +1,19 @@
 <properties
     pageTitle="Azure Storage での Azure CLI の使用 | Microsoft Azure"
-	description="Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。"
-	services="storage"
-	documentationCenter="na"
-	authors="tamram"
-	manager="jdial"/>
+    description="Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。"
+    services="storage"
+    documentationCenter="na"
+    authors="tamram"
+    manager="jdial"/>
 
 <tags
     ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="chungli;jiyang;yaxia;tamram"/>
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article" 
+    ms.date="09/28/2015"
+    ms.author="chungli;jiyang;yaxia;tamram"/>
 
 # Azure Storage での Azure CLI の使用
 
@@ -21,7 +21,7 @@
 
 Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。豊富なデータ アクセス機能だけでなく、Microsoft Azure 管理ポータルにあるのと同じ機能の多くを提供します。
 
-このガイドでは、[Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli.md) を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。このガイドを使用する前に、最新の Azure CLI をダウンロードしてインストールするか、最新の Azure CLI にアップグレードすることをお勧めします。
+このガイドでは、[Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli-install.md) を使用して、Azure Storage でさまざまな開発タスクや管理タスクを実行する方法について説明します。このガイドを使用する前に、最新の Azure CLI をダウンロードしてインストールするか、最新の Azure CLI にアップグレードすることをお勧めします。
 
 このガイドでは、Azure Storage の基本概念を理解していることを前提としています。また、Azure CLI と Azure Storage を使用する方法を示すための多くのスクリプトを用意しています。各スクリプトの実行前に、使用する構成に基づいてスクリプト変数を更新してください。
 
@@ -94,7 +94,7 @@ Azure サブスクリプションの詳細については、「[アカウント�
 
 ### Azure サブスクリプションへの接続
 
-ほとんどのストレージ コマンドは、Azure サブスクリプションがなくても動作しますが、Azure CLI からサブスクリプションに接続することをお勧めします。Azure CLI がサブスクリプションで動作するように構成するには、[Azure サブスクリプションに接続する方法](../xplat-cli.md#how-to-connect-to-your-azure-subscription)に関するページの手順に従ってください。
+ほとんどのストレージ コマンドは、Azure サブスクリプションがなくても動作しますが、Azure CLI からサブスクリプションに接続することをお勧めします。Azure CLI がサブスクリプションで動作するように構成するには、[Azure サブスクリプションに接続する方法](../xplat-cli-install.md#how-to-connect-to-your-azure-subscription)に関するページの手順に従ってください。
 
 ### 新しいストレージ アカウントの作成
 
@@ -169,13 +169,11 @@ BLOB を削除するには、次のコマンドを使用します。
 
 ## ファイル共有を作成および管理する
 
-Azure File ストレージは、標準の SMB 2.1 プロトコルを使用して、アプリケーション用の共有ストレージを提供します。Microsoft Azure の仮想マシンとクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。ファイル共有とファイル データは、Azure CLI を使用して管理できます。Azure File ストレージの詳細については、[PowerShell と .NET で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files)に関するページを参照してください。
-
-> [AZURE.NOTE]Azure File ストレージは現在プレビュー段階にあります。このプレビュー機能の利用を申し込むには、[Microsoft Azure プレビューのページ](/services/preview/)で、**Azure Files** の利用を申し込んでください。申し込みが承認されると、File ストレージ プレビューを利用できるようになったという通知が送られます。その後で、File ストレージにアクセスするストレージ アカウントを作成できます。
+Azure File ストレージは、標準的な SMB プロトコルを使用して、アプリケーション用の共有ストレージを提供します。Microsoft Azure の仮想マシンとクラウド サービスでは、オンプレミスのアプリケーションと同じように、ファイル データを共有できます。ファイル共有とファイル データは、Azure CLI を使用して管理できます。Azure File ストレージの詳細については、「[How to use Azure File storage with Windows (Windows で Azure File ストレージを使用する方法)](storage-dotnet-how-to-use-files)」または「[How to use Azure File storage with Linux (Linux で Azure File ストレージを使用する方法)](storage-how-to-use-files-linux.md)」を参照してください。
 
 ### ファイル共有を作成する
 
-Azure File 共有は、Azure 内の SMB 2.1 ファイル共有です。ディレクトリとファイルはすべて、ファイル共有に作成する必要があります。アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。次の例では、**myshare** という名前のファイル共有を作成します。
+Azure File 共有は、Azure 内の SMB ファイル共有です。ディレクトリとファイルはすべて、ファイル共有に作成する必要があります。アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。次の例では、**myshare** という名前のファイル共有を作成します。
 
         azure storage share create myshare
 
@@ -224,4 +222,4 @@ Azure Storage の詳細についての関連記事とリソースがあります
 [Image1]: ./media/storage-azure-cli/azure_command.png
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

@@ -12,16 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="cache-redis"
    ms.workload="tbd"
-   ms.date="09/22/2015"
+   ms.date="09/30/2015"
    ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
 
 このトピックでは、Azure Redis Cache インスタンスの構成を確認し、更新する方法と、Azure Redis Cache インスタンス用の既定の Redis サーバー構成について説明します。
 
+>[AZURE.NOTE]Azure Redis Cache Premium レベルは、現在プレビュー中です。プレビュー期間中、Premium の機能はキャッシュ作成プロセス中にのみ構成できます。Premium キャッシュ機能の使用について詳しくは、「[How to configure persistence for a Premium Azure Redis Cache (Premium Azure Redis Cache の永続性の構成方法)](cache-how-to-premium-persistence.md)」、「[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)」、および「[How to configure Virtual Network support for a Premium Azure Redis Cache (Premium Azure Redis Cache に対する仮想ネットワーク サポートの構成方法)](cache-how-to-premium-vnet.md)」をご覧ください。
+
 ## Redis Cache の設定の構成
 
-キャッシュには、[Azure プレビュー ポータル](https://portal.azure.com)で **[参照]** ブレードを使用してアクセスできます。
+キャッシュには、[Azure プレビュー ポータル](https://portal.azure.com)で**[参照]** ブレードを使用してアクセスできます。
 
 ![Azure Redis Cache Browse Blade](./media/cache-configure/IC796920.png)
 
@@ -57,7 +59,7 @@
 
 ## [価格レベル]
 
-キャッシュの価格レベルを表示または変更するには、**[価格レベル]** をクリックします。スケーリングの詳細については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」を参照してください。
+キャッシュの価格レベルを表示または変更するには、**[価格レベル]** をクリックします。スケーリングの詳細については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」をご覧ください。
 
 ![Redis Cache 価格レベル](./media/cache-configure/pricing-tier.png)
 
@@ -88,7 +90,7 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 **maxmemory-reserved** 設定は、フェールオーバーに伴うレプリケーションなどのキャッシュ以外の操作のために予約されているメモリの量を、MB 単位で構成するものです。また、断片化率が高い場合も使用できます。この値を設定すると、負荷が変化するときでも、Redis サーバーの稼働状態がより安定します。この値は、書き込みが大量に発生するワークロードに対しては、高く設定する必要があります。メモリがこのような操作のために予約されていると、キャッシュされたデータの保存に使用できなくなります。
 
->[AZURE.IMPORTANT]**maxmemory-reserved** 設定は、Standard キャッシュに対してのみ使用可能です。
+>[AZURE.IMPORTANT]**maxmemory-reserved** 設定は、Standard キャッシュと Premium キャッシュにのみ使用可能です。
 
 ## キースペース通知 (詳細設定)
 
@@ -96,7 +98,7 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 ![Redis Cache Advanced Settings](./media/cache-configure/IC808319.png)
 
->[AZURE.IMPORTANT]キースペース通知と **notify-keyspace-events** 設定は、Standard キャッシュに対してのみ使用可能です。
+>[AZURE.IMPORTANT]キースペース通知と **notify-keyspace-events** 設定は、Standard キャッシュと Premium キャッシュに対してのみ使用可能です。
 
 詳細については、[Redis キースペース通知](http://redis.io/topics/notifications)に関するトピックを参照してください。サンプル コードについては、[Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) ファイルを参照してください。
 
@@ -104,7 +106,7 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 ![Redis Cache Users and Tags](./media/cache-configure/IC808320.png)
 
-**[ユーザー]** セクションでは、プレビュー ポータルでのロールベースのアクセス制御 (RBAC) をサポートしているため、組織はアクセス管理の要件を簡単かつ正確に満たすことができます。詳細については、「[Azure プレビュー ポータルでのロールベースのアクセス制御](http://go.microsoft.com/fwlink/?LinkId=512803)」を参照してください。
+**[ユーザー]** セクションでは、プレビュー ポータルでのロールベースのアクセス制御 (RBAC) をサポートしているため、組織はアクセス管理の要件を簡単かつ正確に満たすことができます。詳細については、「[Azure プレビュー ポータルでのロールベースのアクセス制御](http://go.microsoft.com/fwlink/?LinkId=512803)」をご覧ください。
 
 **[タグ]** セクションでは、リソースを整理できます。詳細については、[タグを使用した Azure リソースの整理](../resource-group-using-tags.md)に関するページを参照してください。
 
@@ -121,7 +123,7 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 |設定|既定値|説明|
 |---|---|---|
 |databases|16|既定のデータベースは DB 0 です。接続を使用して、接続ごとに異なるデータベースを選択できます。GetDataBase(dbid) の dbid は 0 ～ 15 の数値です。|
-|maxclients|料金レベルによって異なります<sup>1</sup>|これは、同時に接続が許可されているクライアントの最大数です。制限に達すると、Redis はすべての新しい接続を終了し、エラー 'max number of clients reached' を送信します。|
+|maxclients|価格レベルによって異なります<sup>1</sup>|これは、同時に接続が許可されているクライアントの最大数です。制限に達すると、Redis はすべての新しい接続を終了し、エラー 'max number of clients reached' を送信します。|
 |maxmemory-policy|volatile-lru|Maxmemory ポリシーは、maxmemory (キャッシュ作成時に選択したキャッシュのサイズ) に達したときに、Redis が削除する項目を選択する方法についての設定です。Azure Redis Cache の既定の設定は volatile-lru で、LRU アルゴリズムを使用して有効期限が設定されたキーを削除します。この設定は、プレビュー ポータルで構成できます。詳細については、「[maxmemory-policy と maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)」を参照してください。|
 |maxmemory-samples|3|LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、(メモリを節約するための) 近似アルゴリズムです。そのため、サンプル サイズも選択して確認できます。既定の Redis インスタンスの場合、キーを 3 つ確認し、直近の使用頻度が比較的低い ものを 1 つ選択します。|
 |lua-time-limit|5,000|Lua スクリプトの最大実行時間 (ミリ秒)。最大実行時間に達した場合は、Redis は、最大許容時間の後もスクリプトが実行中であることをログに記録し、クエリに対してエラーを知らせる応答を開始します。|
@@ -130,13 +132,19 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 <sup>1</sup>`maxclients` は Azure Redis Cache の価格レベルによって異なります。
 
--	C0 (250 MB) キャッシュ - 最大 256 接続
--	C1 (1 GB) キャッシュ - 最大 1,000 接続
--	C2 (2.5 GB) キャッシュ - 最大 2,000 接続
--	C3 (6 GB) キャッシュ - 最大 5,000 接続
--	C4 (13 GB) キャッシュ - 最大 10,000 接続
--	C5 (26 GB) キャッシュ - 最大 15,000 接続
--	C6 (53 GB) キャッシュ - 最大 20,000 接続
+-	Basic キャッシュおよび Standard キャッシュ
+	-	C0 (250 MB) キャッシュ - 最大 256 接続
+	-	C1 (1 GB) キャッシュ - 最大 1,000 接続
+	-	C2 (2.5 GB) キャッシュ - 最大 2,000 接続
+	-	C3 (6 GB) キャッシュ - 最大 5,000 接続
+	-	C4 (13 GB) キャッシュ - 最大 10,000 接続
+	-	C5 (26 GB) キャッシュ - 最大 15,000 接続
+	-	C6 (53 GB) キャッシュ - 最大 20,000 接続
+-	Premium キャッシュ
+	-	P1 (6 ～ 60 GB) - 最大 7,500 接続
+	-	P2 (13 ～ 130 GB) - 最大 15,000 接続
+	-	P3 (26 ～ 260 GB) - 最大 30,000 接続
+	-	P4 (53 ～ 530 GB) - 最大 40,000 接続
 
 ## Azure Redis Cache でサポートされない Redis コマンド
 
@@ -155,11 +163,11 @@ Redis コマンドの詳細については、[http://redis.io/commands](http://r
 
 ## Redis コンソール
 
-**Redis コンソール**を使用して Azure Redis Cache インスタンスにコマンドを安全に発行できます。このコンソールは Standard キャッシュに対して使用できます。Redis コンソールにアクセスするには、**[Redis Cache]** ブレードの **[コンソール]** をクリックします。
+**Redis コンソール**を使用して Azure Redis Cache インスタンスにコマンドを安全に発行できます。このコンソールは Standard キャッシュと Premium キャッシュに対して使用できます。Redis コンソールにアクセスするには、**[Redis Cache]** ブレードの **[コンソール]** をクリックします。
 
 ![Redis コンソール](./media/cache-configure/redis-console-menu.png)
 
->[AZURE.IMPORTANT]Redis コンソールは、Standard キャッシュに対してのみ使用できます。
+>[AZURE.IMPORTANT]Redis コンソールは、Standard キャッシュと Premium キャッシュに対してのみ使用できます。
 
 キャッシュ インスタンスに対してコマンドを発行するには、目的のコマンドをコンソールに入力します。
 
@@ -170,4 +178,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

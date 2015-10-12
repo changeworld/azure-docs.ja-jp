@@ -253,8 +253,8 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 
 [Azure リソース マネージャーの概要][resource-group-overview] [Azure CLI の使用方法][azure-command-line-tools] [Asure リソース マネージャーでの Azure PowerShell の使用方法][powershell-azure-resource-manager]
 
-[azure-command-line-tools]: ../xplat-cli.md
+[azure-command-line-tools]: ../xplat-cli-install.md
 [resource-group-overview]: ../resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

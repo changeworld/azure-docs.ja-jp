@@ -13,8 +13,9 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/24/2015"
 	ms.author="wesmc"/>
+
 # ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 
 > [AZURE.SELECTOR]
@@ -237,4 +238,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
 [Notification Hubs の使用]: /manage/services/notification-hubs/get-started-notification-hubs-ios
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure CLI と API アプリ |Microsoft Azure"
-	description="Azure API アプリを使用した Mac、Linux、Windows 向け Microsoft Azure コマンドライン インターフェイスの使用方法。"
+	pageTitle="Azure CLI と API Apps |Microsoft Azure"
+	description="Azure API Apps を使用した Mac、Linux、Windows 向け Microsoft Azure コマンドライン インターフェイスの使用方法。"
 	editor="jimbe"
 	manager="wpickett"
 	documentationCenter=""
@@ -22,7 +22,7 @@
 
 ## 前提条件
 
-この記事では、Azure CLI がインストールされていることと、基本的なタスクの実行方法を理解していることを前提としています。CLI の概要については、「[Azure CLI のインストールと構成](../xplat-cli.md)」をご覧ください。
+この記事では、Azure CLI がインストールされていることと、基本的なタスクの実行方法を理解していることを前提としています。CLI の概要については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
 > [AZURE.NOTE][Azure サブスクリプションへの接続](../xplat-cli-connect.md)手順では、職場または学校のアカウントを使用してログインする方法と、*.publishsettings* ファイルをダウンロードする方法の 2 点を説明しています。API アプリでは、*.publishsettings* ファイルの認証方法は機能しません。これは、API アプリを操作するにはリソースの管理モード (次のセクションで説明します) を使用する必要があり、*.publishsettings* ファイルの認証方法はリソース マネージャーでは機能しないからです。
 
@@ -285,7 +285,7 @@ Marketplace から API アプリを作成するには、`apiapap create` コマ�
 Azure リソース マネージャーで Azure コマンド ライン ユーティリティを使用する方法の詳細については、次のリソースをご覧ください。
  
 * [Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)
-* [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
+* [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

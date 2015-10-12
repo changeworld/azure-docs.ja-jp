@@ -14,8 +14,9 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="09/09/2015" 
+	ms.date="09/29/2015" 
 	ms.author="jeffstok"/>
+
 
 # アラートの設定
 
@@ -29,14 +30,14 @@
 
 ## Azure ポータルを使用したアラートの設定
 
-アラートは、次の 2 つの方法で設定できます。
+Microsoft Azure 管理ポータルでアラートを設定する方法は 2 つあります。
 
-1.	Stream Analytics ジョブの [監視] タブ  
+1.	Stream Analytics ジョブの **[監視]** タブ  
 2.	Management Services の操作ログ  
 
 ## ポータルでのジョブの [監視] タブを使用したアラート
 
-1.	[監視] タブでメトリックを選択し、ダッシュボードの下部にある [ルールの追加] をクリックし、ルールを設定します。  
+1.	[監視] タブでメトリックを選択し、ダッシュボードの下部にある **[ルールの追加]** をクリックし、ルールを設定します。  
 
     ![ダッシュボード](./media/stream-analytics-set-up-alerts/01-stream-analytics-set-up-alerts.png)
 
@@ -59,6 +60,20 @@
 
     ![アラートの定義](./media/stream-analytics-set-up-alerts/05-stream-analytics-set-up-alerts.png)
 
+## Azure プレビュー ポータルでアラートを設定する ##
+
+Azure プレビュー ポータルで、アラートを有効にする Stream Analytics ジョブを参照し、**[監視]** セクションをクリックします。表示された **[メトリック]** ブレードで、**[アラートの追加]** コマンドをクリックします。
+
+  ![Azure プレビュー ポータルでの設定](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)
+
+アラート ルールに名前を付け、通知メールに表示される説明を選択できます。
+
+[メトリック] を選択する場合は、メトリックの条件としきい値を選択します。
+
+  ![Azure プレビュー ポータルでのメトリックの選択](./media/stream-analytics-set-up-alerts/07-stream-analytics-set-up-alerts.png)
+
+Azure プレビュー ポータルでのアラートの構成の詳細については、「[アラート通知の受信](./azure-portal/insights-receive-alert-notifications.md)」を参照してください。
+
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
@@ -70,4 +85,4 @@
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

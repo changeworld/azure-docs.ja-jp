@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="09/27/2015" 
 	ms.author="tamram"/>
 
 
@@ -24,11 +24,11 @@
 
 共有アクセス署名 (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントのオブジェクトへの制限付きアクセスを他のクライアントに許可するための優れた方法です。共有アクセス署名についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。チュートリアルの[パート 2](storage-dotnet-shared-access-signature-part-2.md) では、BLOB サービスで共有アクセス署名を作成するプロセスを詳しく説明します。
 
-## 共有アクセス署名とは ##
+## 共有アクセス署名とは
 
 共有アクセス署名を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
 
-## 共有アクセス署名を使用するタイミング ##
+## 共有アクセス署名を使用するタイミング
 
 SAS は、自分のアカウント キーを知らせたくないクライアントに、自分のストレージ アカウント内のリソースへのアクセスを許可する場合に使用できます。ストレージ アカウント キーには、プライマリ キーとセカンダリ キーの両方が含まれており、これらによって、アカウントとそのすべてのリソースへの管理アクセスが付与されます。これらのアカウント キーのいずれかを知らせると、悪意で、または誤ってアカウントが使用される可能性が生じます。共有アクセス署名は、アカウント キーが不要で安全な代替方法です。この方法で、他のクライアントは、付与されたアクセス許可に従ってストレージ アカウント内のデータの読み取り、書き込み、削除を実行できます。
 
@@ -47,45 +47,91 @@ SAS が役立つ一般的なシナリオは、ストレージ アカウント内
 
 また、特定のシナリオにおけるコピー操作でソース オブジェクトを認証するには、SAS を使用する必要があります。
 
-- BLOB を別のストレージ アカウント内にある他の BLOB にコピーする場合、コピー元 BLOB の認証には SAS を使用する必要があります。2013-08-15 のストレージ サービスまたはそれ以降のバージョンを使用している限り、コピー先 BLOB の認証には任意で SAS を使用できます。
-- ファイルを別のストレージ アカウント内にある他のファイルにコピーする場合、コピー元ファイルの認証には SAS を使用する必要があります。コピー先ファイルの認証には任意で SAS が使用できます。
+- BLOB を別のストレージ アカウント内にある他の BLOB にコピーする場合、コピー元 BLOB の認証には SAS を使用する必要があります。バージョン 2015-04-05 では、コピー先 BLOB の認証に任意で SAS も使用できます。
+- ファイルを別のストレージ アカウント内にある他のファイルにコピーする場合、コピー元ファイルの認証には SAS を使用する必要があります。バージョン 2015-04-05 では、コピー先ファイルの認証に任意で SAS も使用できます。
 - BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合、同じストレージ アカウント内にコピー先とコピー元のオブジェクトがある場合でも、SAS を使用してソース オブジェクトを認証する必要があります。
 
-## 共有アクセス署名の機能 ##
+## 共有アクセス署名の種類
 
-共有アクセス署名は、ストレージ リソースを指す URI であり、クライアントがリソースにアクセスする方法を示すクエリ パラメーターの特殊なセットを含んでいます。これらのパラメーターの 1 つである署名は、SAS パラメーターで作成されており、アカウント キーで署名されています。この署名を使用して、Azure のストレージが SAS を認証します。
+バージョン 2015-04-05 の Azure Storage には、アカウント SAS という新しい種類の共有アクセス署名が導入されています。次のいずれかの種類の共有アクセス署名を作成できるようになりました。
 
-共有アクセス署名は、その定義である、次の制約を含んでいます。各制約は、URI でパラメーターとして表示されます。
+- **アカウント SAS。** アカウント SAS では、1 つ以上のストレージ サービスのリソースへのアクセスを委任できます。サービス SAS を使用して実行できるすべての操作は、アカウント SAS でも実行できます。アカウント SAS では、**Get/Set Service Properties** および **Get Service Stats** などの特定のサービスの操作へのアクセスも委任できます。サービス SAS で許可されていない BLOB コンテナー、テーブル、キューおよびファイル共有の読み取り、書き込みおよび削除操作へのアクセスも委任できます。アカウント SAS トークンを構築する方法の詳細については、「[アカウント SAS を構築する](https://msdn.microsoft.com/library/mt584140.aspx)」を参照してください。
 
-- **ストレージ リソース。** アクセスを委任できるストレージ リソースには次が含まれます。
+- **サービス SAS。** サービス SAS は、BLOB、キュー、テーブル、またはファイル サービスの 1 つのストレージ サービスのリソースへのアクセスを委任できます。サービス SAS トークンを構築する方法の詳細については、「[サービス SAS を構築する](https://msdn.microsoft.com/library/dn140255.aspx)」および「[サービス SAS の例](https://msdn.microsoft.com/library/dn140256.aspx)」を参照してください。
+
+## 共有アクセス署名の機能
+
+共有アクセス署名とは、特殊なクエリ パラメーターのセットを含むトークンを含む、1 つ以上のストレージ リソースをポイントする URI です。このトークンは、リソースへのクライアントのアクセス方法を示します。このクエリ パラメーターの 1 つである署名は、SAS パラメーターで作成されており、アカウント キーで署名されています。この署名を使用して、Azure Storage が SAS を認証します。
+
+アカウント SAS とサービス SAS のトークンには共通のパラメーターがいくつかあります。また別のパラメーターをいくつか取ります。
+
+### アカウント SAS とサービス SAS のトークンに共通するパラメーター
+
+- **API のバージョン。**要求の実行に使用するストレージ サービスのバージョンを指定する省略可能なパラメーターです。 
+- **サービスのバージョン。**要求の認証に使用するストレージ サービスのバージョンを指定する必須パラメーターです。
+- **開始時刻。** この時刻に SAS が有効になります。共有アクセス署名の開始時刻は省略可能です。省略した場合は、SAS がすぐに有効になります。 
+- **有効期限。** この時刻の後、SAS が有効ではなくなります。ベスト プラクティスでは、SAS の有効期限を指定するか、保存されているアクセス ポリシーに SAS を関連付けることを推奨しています (以下を参照)。
+- **アクセス許可。** SAS に指定されたアクセス許可は、クライアントが SAS を使用して、ストレージ リソースに対して実行できる操作を示します。使用可能なアクセス許可は、アカウント SAS とサービス SAS で異なります。
+- **IP。** 要求を受け入れる単一の IP アドレスまたは IP アドレス範囲を指定する省略可能なパラメーターです。 
+- **プロトコル。** 要求に許可されているプロトコルを指定する省略可能なパラメーターです。指定できる値は、既定値の HTTPS と HTTP (https,http) か、HTTPS のみ (https) です。HTTP のみの値は許可されていないことに注意してください。
+- **署名。** 署名は、トークンの一部として指定されたその他のパラメーターから構成され、その後に暗号化されます。これは、SAS の認証に使用されます。
+
+### アカウント SAS トークンのパラメーター
+
+- **単一または複数のサービス。** アカウント SAS では、1 つ以上のストレージ サービスにアクセスを委任できます。たとえば、BLOB およびファイル サービスにアクセスを委任するアカウント SAS を作成できます。または、(BLOB、キュー、テーブル、およびファイルの) 4 つのすべてのサービスにアクセスを委任する SAS を作成できます。
+- **ストレージ リソースの種類。** アカウント SAS は、特定のリソースではなく、ストレージ リソースの 1 つ以上のクラスに適用されます。アカウント SAS を作成して、次へのアクセスを委任できます。
+	- ストレージ アカウントのリソースを呼び出すサービスレベル API。この例は、**Get/Set Service Properties**、**Get Service Stats** および **List Containers/Queues/Tables/Shares** です。
+	- BLOB コンテナー、キュー、テーブル、およびファイル共有の各サービスのコンテナー オブジェクトを呼び出すコンテナーレベルの API。この例は、**Create/Delete Container**、**Create/Delete Queue**、**Create/Delete Table**、**Create/Delete Share** および **List BLOBs/Files and Directories** です。
+	- BLOB、キュー メッセージ、テーブル エンティティ、およびファイルを呼び出すオブジェクトレベルの API。たとえば、**Put BLOB**、**Query Entity**、**Get Messages** および **Create File** です。
+
+### サービス SAS トークンのパラメーター
+
+- **ストレージ リソース。** サービス SAS を使用してアクセスを委任できるストレージ リソースには次があります。
 	- コンテナーと BLOB
 	- ファイル共有とファイル
 	- キュー
 	- テーブルとテーブル エンティティの範囲
-- **開始時刻。** この時刻に SAS が有効になります。共有アクセス署名の開始時刻は省略可能です。省略した場合は、SAS がすぐに有効になります。 
-- **有効期限。** この時刻の後、SAS が有効ではなくなります。ベスト プラクティスでは、SAS の有効期限を指定するか、保存されているアクセス ポリシーに SAS を関連付けることを推奨しています (以下を参照)。
-- **アクセス許可。** SAS に指定されたアクセス許可は、クライアントが SAS を使用して、ストレージ リソースに対して実行できる操作を示します。 
 
-BLOB に読み書きアクセス許可を付与する SAS URI の例を、次に示します。表では、SAS での機能がわかりやすいように、URI の部分ごとに説明しています。
+## SAS の URI の例
 
-	https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&st=2013-04-29T22%3A18%3A26Z&se=2013-04-30T02%3A23%3A26Z&sr=b&sp=rw&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
+BLOB に読み書きアクセス許可を付与するサービス SAS URI の例を、次に示します。表では、SAS での機能がわかりやすいように、URI の部分ごとに説明しています。
 
-名前|リンク セクション|説明
+	https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
+
+名前|SAS の部分|説明
 ---|---|---
-Blob URI|https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt | BLOB のアドレス。HTTPS の使用を強くお勧めします。
-ストレージ サービスのバージョン|sv=2012-02-12|ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。
-開始時刻|st=2013-04-29T22%3A18%3A26Z|ISO 8061 形式で指定されます。SAS をすぐに有効にする場合は、開始時刻を省略します。
-有効期限|se=2013-04-30T02%3A23%3A26Z|ISO 8061 形式で指定されます。
+Blob URI|https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt |BLOB のアドレス。HTTPS の使用を強くお勧めします。
+ストレージ サービスのバージョン|sv=2015-04-05|ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。
+開始時刻|st=2015-04-29T22%3A18%3A26Z|ISO 8061 形式で指定されます。SAS をすぐに有効にする場合は、開始時刻を省略します。
+有効期限|se=2015-04-30T02%3A23%3A26Z|ISO 8061 形式で指定されます。
 リソース|sr=b|リソースは BLOB です。
 アクセス許可|sp=rw|SAS で付与されるアクセス許可には、読み取り (r) および書き込み (w) が含まれます。
+IP 範囲|sip=168.1.5.60-168.1.5.70|要求が受け入れられる IP アドレスの範囲です。
+プロトコル|spr=https|HTTPS を使用する要求のみが許可されます。
 署名|sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D|BLOB へのアクセスを認証するために使用します。署名は、SHA256 アルゴリズムを使用して署名対象文字列とキーを計算した後に、Base 64 エンコードを使用してエンコードした HMAC 値です。
 
-## 保存されているアクセス ポリシーによる共有アクセス署名の制御 ##
+トークンで同じ共通のパラメーターを使用するアカウント SAS の例を次に示します。これらのパラメーターは上で説明済みのため、ここでは説明はしません。アカウント SAS に固有のパラメーターのみを次の表に示します。
+
+	https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
+
+名前|SAS の部分|説明
+---|---|---
+リソース URI|https://myaccount.blob.core.windows.net/?restype=service&comp=properties|The BLOB サービスのエンドポイントと、(GET を使用して呼び出された場合は) サービスのプロパティを取得するパラメーター、または (SET を使用して呼び出された場合は) サービスのプロパティを設定するパラメーターです。
+サービス|ss = bf|SAS は BLOB およびファイル サービスに適用されます。
+リソースの種類|srt = s|SAS は、サービスレベルの操作に適用されます。
+アクセス許可|sp=rw|この許可は、読み書きの操作へのアクセスを付与します。  
+
+許可はサービスレベルに制限されているため、この SAS を使用してアクセスできる操作は、**Get BLOB Service Properties** (読み取り) および **Set BLOB Service Properties** (書き込み) になります。ただし、別のリソース URI に同じ SAS トークンを使用し、**Get BLOB Service Stats** (読み取り) へのアクセスを委任することもできます。
+
+## 保存されているアクセス ポリシーを使用した SAS の制御 ##
 
 共有アクセス署名の形式は、次の 2 つのいずれかです。
 
-- **アドホック SAS:** アドホック SAS を作成すると、開始時刻、有効期限、および SAS へのアクセス許可がすべて、SAS URI で指定されます (または、開始時刻を省略した場合は、暗黙で指定されます)。この種類の SAS は、コンテナー、BLOB、ファイル共有、ファイル、テーブル、またはキューで作成できます。
+- **アドホック SAS:** アドホック SAS を作成すると、開始時刻、有効期限、および SAS へのアクセス許可がすべて、SAS URI で指定されます (または、開始時刻を省略した場合は、暗黙で指定されます)。この種類の SAS はアカウント SAS またはサービス SAS として作成できます。 
+
 - **保存されているアクセス ポリシーのある SAS**: 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、キュー、ファイル共有) で定義されており、これを使用して、1 つ以上の共有アクセス署名のコンテナーを管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。
+
+>[AZURE.NOTE]現時点では、アカウント SAS はアドホック SAS である必要があります。保存されているアクセス ポリシーは、まだアカウント SAS では使用できません。
 
 1 つの重要なシナリオ、失効では、この 2 つの形式の相違点が重要です。SAS は URL であるため、取得したユーザーはだれでも、どのユーザーが最初に要求したかに関係なく、SAS を使用できます。SAS が一般ユーザーに発行された場合は、世界中のだれでも使用できます。配布された SAS は、次の 4 つの状況のいずれかになるまで有効です。
 
@@ -93,8 +139,153 @@ Blob URI|https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt | BLOB
 2.	保存されているアクセス ポリシーに指定された、SAS が参照する有効期限に達した (保存されているアクセス ポリシーが参照される場合、かつ有効期限が指定されている場合)。これは、期間が経過したため、または保存されているアクセス ポリシーの有効期限を過去の日時に変更したために発生します。このような有効期限の変更は、SAS を失効させる方法の 1 つです。
 3.	SAS の参照先である保存されているアクセス ポリシーが削除されている。これは、SAS を失効させる、もう 1 つの方法です。保存されているアクセス ポリシーを、完全に同じ名前で再作成すると、そのアクセス ポリシーに関連付けられたアクセス許可に従って、すべての既存の SAS トークンが再び有効になります (SAS の有効期限が過ぎていないことが前提です)。SAS を失効させるつもりで、将来の時間を有効期限に指定してアクセス ポリシーを再作成する場合は必ず、異なる名前を使用してください。
 4.	SAS の作成に使用したアカウント キーが再度生成された。これを行うと、そのアカウント キーを使用するすべてのアプリケーション コンポーネントが、別の有効なアカウント キー、または新しく再生成されたアカウント キーを使用するよう更新されるまで、認証に失敗します。
- 
-## 共有アクセス署名の使用のベスト プラクティス ##
+
+>[AZURE.IMPORTANT]共有アクセス署名 URI は、署名の作成に使用されたアカウント キーと、保存済みのアクセス ポリシー (存在する場合) に関連付けられます。保存済みのアクセス ポリシーが指定されていない場合、共有アクセス署名を取り消すにはアカウント キーを変更する以外に方法はありません。
+
+## 共有アクセス署名の例
+
+次に、アカウント SAS とサービス SAS の 2 種類の共有アクセス署名の例をいくつか示します。
+
+### アカウント SAS の例
+
+次のコード例では、BLOB およびファイル サービスに有効なアカウント SAS を作成します。これでは、クライアントに、サービスレベルの API にアクセスするための、読み取り、書き込み、および一覧表示のアクセス許可を付与します。アカウント SAS では、プロトコルを HTTPS に制限しているため、要求は HTTPS で行う必要があります。
+
+    static string GetAccountSASToken()
+    {
+        // To create the account SAS, you need to use your shared key credentials.
+        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+            Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+        // Create a new access policy for the account.
+        SharedAccessAccountPolicy policy = new SharedAccessAccountPolicy()
+            {
+                Permissions = SharedAccessAccountPermissions.Read | SharedAccessAccountPermissions.Write | SharedAccessAccountPermissions.List,
+                Services = SharedAccessAccountServices.Blob | SharedAccessAccountServices.File,
+                ResourceTypes = SharedAccessAccountResourceTypes.Service,
+                SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
+                Protocols = SharedAccessProtocol.HttpsOnly
+            };
+
+        // Return the SAS token.
+        return storageAccount.GetSharedAccessSignature(policy);
+    }
+
+BLOB サービス用にサービスレベルの API にアクセスするためにアカウント SAS を使用するには、SAS を使用して BLOB クライアントを構築し、ストレージ アカウント用に BLOB ストレージ エンドポイントを構築します。
+
+    static void UseAccountSAS(string sasToken)
+    {
+        // In this case, we have access to the shared key credentials, so we'll use them
+        // to get the Blob service endpoint.
+        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+            Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+        CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+        // Create new storage credentials using the SAS token.
+        StorageCredentials accountSAS = new StorageCredentials(sasToken);
+        // Use these credentials and the Blob storage endpoint to create a new Blob service client.
+        CloudStorageAccount accountWithSAS = new CloudStorageAccount(accountSAS, blobClient.StorageUri, null, null, null);
+        CloudBlobClient blobClientWithSAS = accountWithSAS.CreateCloudBlobClient();
+
+        // Now set the service properties for the Blob client created with the SAS.
+        blobClientWithSAS.SetServiceProperties(new ServiceProperties()
+        {
+            HourMetrics = new MetricsProperties()
+            {
+                MetricsLevel = MetricsLevel.ServiceAndApi,
+                RetentionDays = 7,
+                Version = "1.0"
+            },
+            MinuteMetrics = new MetricsProperties()
+            {
+                MetricsLevel = MetricsLevel.ServiceAndApi,
+                RetentionDays = 7,
+                Version = "1.0"
+            },
+            Logging = new LoggingProperties()
+            {
+                LoggingOperations = LoggingOperations.All,
+                RetentionDays = 14,
+                Version = "1.0"
+            }
+        });
+
+        // The permissions granted by the account SAS also permit you to retrieve service properties.
+        ServiceProperties serviceProperties = blobClientWithSAS.GetServiceProperties();
+        Console.WriteLine(serviceProperties.HourMetrics.MetricsLevel);
+        Console.WriteLine(serviceProperties.HourMetrics.RetentionDays);
+        Console.WriteLine(serviceProperties.HourMetrics.Version);
+    }
+
+### サービス SAS の例
+
+次のコード例では、保存されているアクセス ポリシーをコンテナーに作成し、次いでコンテナーのサービス SAS を生成します。その後、クライアントにこの SAS を提供し、このコンテナーの読み取りおよび書き込みアクセス許可を付与できます。
+
+    // The connection string for the storage account.  Modify for your account.
+    string storageConnectionString =
+       "DefaultEndpointsProtocol=https;" +
+       "AccountName=myaccount;" +
+       "AccountKey=<account-key>";
+    
+    // As an alternative, you can retrieve storage account information from an app.config file. 
+    // This is one way to store and retrieve a connection string if you are 
+    // writing an application that will run locally, rather than in Microsoft Azure.
+    
+    // string storageConnectionString = ConfigurationManager.AppSettings["StorageAccountConnectionString"];
+    
+    // Create the storage account with the connection string.
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+       
+    // Create the blob client object.
+    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+    
+    // Get a reference to the container for which shared access signature will be created.
+    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
+    container.CreateIfNotExists();
+    
+    // Get the current permissions for the blob container.
+    BlobContainerPermissions blobPermissions = container.GetPermissions();
+    
+    // The new shared access policy provides read/write access to the container for 24 hours.
+    blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy()
+    {
+       // To ensure SAS is valid immediately, don’t set the start time.
+       // This way, you can avoid failures caused by small clock differences.
+       SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24),
+       Permissions = SharedAccessBlobPermissions.Write |
+      SharedAccessBlobPermissions.Read
+    });
+    
+    // The public access setting explicitly specifies that 
+    // the container is private, so that it can't be accessed anonymously.
+    blobPermissions.PublicAccess = BlobContainerPublicAccessType.Off;
+    
+    // Set the permission policy on the container.
+    container.SetPermissions(blobPermissions);
+    
+    // Get the shared access signature token to share with users.
+    string sasToken =
+       container.GetSharedAccessSignature(new SharedAccessBlobPolicy(), "mypolicy");
+
+このサービス SAS を所有するクライアントは、コンテナー内の BLOB に対する読み取りまたは書き込み要求をコードから認証できるようになります。たとえば、次のコードは SAS トークンを使用し、コンテナー内に新しいブロック BLOB を作成します。
+
+    Uri blobUri = new Uri("https://myaccount.blob.core.windows.net/mycontainer/myblob.txt");
+    
+    // Create credentials with the SAS token. The SAS token was created in previous example.
+    StorageCredentials credentials = new StorageCredentials(sasToken);
+    
+    // Create a new blob.
+    CloudBlockBlob blob = new CloudBlockBlob(blobUri, credentials);
+    
+    // Upload the blob. 
+    // If the blob does not yet exist, it will be created. 
+    // If the blob does exist, its existing content will be overwritten.
+    using (var fileStream = System.IO.File.OpenRead(@"c:\Test\myblob.txt"))
+    {
+    	blob.UploadFromStream(fileStream);
+    }
+
+
+## 共有アクセス署名の使用のベスト プラクティス
 
 アプリケーションで共有アクセス署名を使用する場合は、次の 2 つの潜在的なリスクに注意する必要があります。
 
@@ -112,11 +303,11 @@ Blob URI|https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt | BLOB
 7.	**アカウントは、SAS によるものも含め、すべての使用について課金されます。** BLOB への書き込みアクセスを許可した場合は、ユーザーが 200 GB の BLOB をアップロードする可能性があります。ユーザーに読み取りアクセスも許可すると、この BLOB を 10 回ダウンロードする可能性があります。この場合、2 TB の送信料金が発生します。したがって、悪意のあるユーザーによるリスクが軽減されるように、制限付きアクセス許可を付与してください。このような脅威が軽減されるように、短期間の SAS を使用してください (ただし、終了時刻のクロック スキューには注意してください)。
 8.	**SAS を使用して書き込まれたデータを検証します。** クライアント アプリケーションがストレージ アカウントにデータを書き込む場合は、そのデータに問題がある可能性に注意してください。データが検証後または認証後に使用可能になることをアプリケーションが要求する場合は、書き込まれたデータをアプリケーションが使用する前に、この検証を実行する必要があります。これを実行すると、ユーザーが SAS を正当に入手している場合でも、漏えいした SAS を利用している場合でも、破損データまたは悪意によるデータの書き込みからアカウントが保護されます。
 9. **場合によっては SAS を使用しないようにします。** ストレージ アカウントに対する特定の操作に関連するリスクが、SAS の利点より重大である場合もあります。このような操作については、ビジネス ルールの検証、認証、および監査を実行した後にストレージ アカウントに書き込む中間層サービスを作成します。また、別の方法でアクセスを管理した方が容易である場合もあります。たとえば、コンテナー内のすべての BLOB が一般ユーザーに読み取り可能である場合は、すべてのクライアントにアクセス用の SAS を提供するのではなく、コンテナーをパブリックにします。
-10.	**Storage Analytics を使用してアプリケーションを管理します。** SAS プロバイダー サービスが中断したり、保存されているアクセス ポリシーを不注意で削除したりしたために発生する認証失敗の急増を、ログやメトリックを使用して監視できます。詳細については、[Microsoft Azure のストレージ チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)を参照してください。
+10.	**Storage Analytics を使用してアプリケーションを管理します。** SAS プロバイダー サービスが中断したり、保存されているアクセス ポリシーを不注意で削除したりしたために発生する認証失敗の急増を、ログやメトリックを使用して監視できます。詳細については、[Microsoft Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)を参照してください。
 
 ## まとめ ##
 
-共有アクセス署名は、アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。したがって、Azure のストレージを使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。ここに示すベスト プラクティスに従うと、アプリケーションのセキュリティを損なうことなく、SAS を使用して、ストレージ アカウントのリソースへのアクセスの柔軟性を高めることができます。
+共有アクセス署名は、アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。したがって、Azure Storage を使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。ここに示すベスト プラクティスに従うと、アプリケーションのセキュリティを損なうことなく、SAS を使用して、ストレージ アカウントのリソースへのアクセスの柔軟性を高めることができます。
 
 ## 次のステップ ##
 
@@ -129,4 +320,4 @@ Blob URI|https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt | BLOB
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

@@ -71,8 +71,8 @@ Azure SQL Database では、論理サーバーごとの DTU クォータが現�
 
 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)
 
-[Azure SQL Database のサービス階層とパフォーマンス レベル](https://msdn.microsoft.com/library/azure/dn741336.aspx)
+[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)
 
 [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

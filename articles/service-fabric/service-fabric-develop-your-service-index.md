@@ -1,20 +1,20 @@
 <properties
    pageTitle="Service Fabric サービスを開発する"
-	description="高信頼アクターや Reliable Services のプログラミング モデルの使用を理解できる概念的な情報とチュートリアル。"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="rwike77"
-	manager="timlt"
-	editor=""/>
+   description="高信頼アクターや Reliable Services のプログラミング モデルを使用した Service Fabric サービスの開発方法を理解できる概念的な情報とチュートリアル。"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="rwike77"
+   manager="timlt"
+   editor=""/>
 
 <tags
    ms.service="service-fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/20/2015"
-	ms.author="ryanwi"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="09/25/2015"
+   ms.author="ryanwi"/>
 
 # Service Fabric サービスを開発する
 このページには、Service Fabric サービスを開発できるようにする概要の記事やチュートリアルのリンクが記載されています。Service Fabric は、サービスを構築するための 2 つの高度なプログラミング モデルを提供します。すなわち、高信頼アクター API と、高信頼サービス API です。いずれも同一の Service Fabric コア上に構築されていますが、同時実行、パーティション分割、および通信の点で、簡潔性と柔軟性の釣り合いの取り方に違いがあります。アプリケーション内の特定のサービスに適切なフレームワークを選択できるように、両方のモデルを理解しておくと便利です。
@@ -30,10 +30,11 @@
 - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
 - [Fabric アクターの Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
 - [Azure Service Fabric のアクター型のシリアル化に関する留意事項](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+- [Node.js と信頼性の高いアクター](service-fabric-node-and-reliable-actors-an-winning-combination.md)
 
 アクターとの通信は以下で説明します。
 
-- [Service Fabric のアクター モデルの概要](service-fabric-reliable-actors-introduction.md#actor-communication)。
+- [Service Fabric のアクター モデルの概要](service-fabric-reliable-actors-introduction.md#actor-communication)
 - [サービスとの通信](service-fabric-connect-and-communicate-with-services.md)
 
 次の記事は、便利なデザイン パターンおよびシナリオについて説明します。
@@ -69,7 +70,6 @@
 Reliable Services は、重要な機能をアプリケーションに組み込むためのシンプルかつ強力な最上位レベルのプログラミング モデルを提供します。詳細については、次を参照してください。
 
 - [Reliable Services 使用](service-fabric-reliable-services-quick-start.md)
-- [プログラミング モデルの概要](../service-fabric-reliable-services-service-overview.md)  
 - [アーキテクチャ](service-fabric-reliable-services-platform-architecture.md)
 - [Reliable Collection](service-fabric-reliable-services-reliable-collections.md)
 - [ステートフル Reliable Services の構成](../Service-Fabric/service-fabric-reliable-services-configuration.md)
@@ -87,4 +87,4 @@ Reliable Services はイベントとパフォーマンス カウンターを出�
 
 - [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

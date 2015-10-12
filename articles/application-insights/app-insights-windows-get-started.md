@@ -135,7 +135,7 @@ Visual Studio で、受け取ったイベント数を確認できます。
 
 #### コレクターの選択
 
-Application Insights SDK には、さまざまな種類のデータをアプリから自動的に収集する、複数のコレクターが用意されています。既定では、これらはすべてアクティブです。ただし、アプリ コンストラクターでどのコレクターを初期化するかを選択することができます。
+Application Insights SDK には、さまざまな種類のデータをアプリから自動的に収集する、複数のコレクターが用意されています。既定では、これらはすべてアクティブになります。ただし、アプリ コンストラクターでどのコレクターを初期化するかを選択することができます。
 
     WindowsAppInitializer.InitializeAsync( "00000000-0000-0000-0000-000000000000",
        WindowsCollectors.Metadata
@@ -184,7 +184,7 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 
 **[新しいプロジェクト]** ダイアログ ボックスで **[Application Insights]** を選択します。
 
-サインインを求めるメッセージが表示されたら、Azure アカウント (Visual Studio Online アカウントとは異なります) の資格情報を使用します。
+サインインが要求されたら、Azure アカウントの資格情報を使用します。
 
 ![](./media/app-insights-windows-get-started/appinsights-d21-new.png)
 
@@ -232,4 +232,4 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 [windowsCrash]: app-insights-windows-crashes.md
 [windowsUsage]: app-insights-windows-usage.md
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

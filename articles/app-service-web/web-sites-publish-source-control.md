@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Azure App Service での GIT による継続的なデプロイ" 
 	description="Git を使用して Azure Web アプリを発行した後、Bitbucket、CodePlex、Dropbox、GitHub、または Mercurial からの継続的なデプロイを有効にする方法について説明します。" 
-	services="app-service\web" 
+	services="app-service" 
 	documentationCenter=".net" 
 	authors="cephalin" 
 	manager="wpickett" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="app-service" 
-	ms.workload="web" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
@@ -23,4 +23,4 @@
 [AZURE.INCLUDE [publishing-with-git](../../includes/publishing-with-git.md)]
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

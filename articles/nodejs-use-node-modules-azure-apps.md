@@ -71,11 +71,11 @@ Azure Websites では、すべてのネイティブ モジュールはサポー�
 詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
 
 [Node.js のバージョンを指定する方法]: nodejs-specify-node-version-azure-apps.md
-[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法]: xplat-cli.md
+[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法]: xplat-cli-install.md
 [Node.js を使って Web サイトを構築およびデプロイする方法]: web-sites-nodejs-develop-deploy-mac.md
 [Node.js Web Application with Storage on MongoDB (MongoLab)]: store-mongolab-web-sites-nodejs-store-data-mongodb.md
 [Publishing with Git]: web-sites-publish-source-control.md
 [Build and deploy a Node.js application to an Azure Cloud Service]: cloud-services-nodejs-develop-deploy-app.md
 [Custom Website Deployment Scripts with Kudu (Kudu でのカスタム Web サイト デプロイメント スクリプト)]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

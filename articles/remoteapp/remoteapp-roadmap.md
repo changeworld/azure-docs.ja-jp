@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Azure RemoteApp で予定される新機能"
+    pageTitle="Azure RemoteApp で予定される新機能 | Microsoft Azure"
     description="Azure RemoteApp の新機能が使用可能となる時期を説明します。"
     services="remoteapp"
     documentationCenter=""
@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="NA"
     ms.devlang="NA"
     ms.topic="article"
-    ms.date="08/12/2015"
+    ms.date="09/29/2015"
     ms.author="elizapo" />
 
 # Azure RemoteApp で予定される新機能
@@ -28,7 +28,9 @@
 |ExpressRoute ([フィードバック](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/5933123-existing-virtual-network-does-not-appear-when-tryi))| |○| | |
 |新しい [Azure プレビュー ポータル](http://azure.microsoft.com/overview/preview-portal/)で Azure RemoteApp の提供開始| | | |○|
 |Azure RemoteApp プレビュー用 Windows 10 ユニバーサル アプリケーション| | |○| |
-|個々のアプリケーションを特定のユーザーに発行する機能 ([フィードバック](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec))| | |○| |
+|個々のアプリケーションを特定のユーザーに発行する機能 - **パブリック プレビュー** ([フィードバック](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec))| | ||○|
+|Windows クライアントの再配布可能 MSI パッケージ ([フィードバック](http://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo))| | ||○|
+
 
 今年、これまでに追加されたその他の機能強化
 
@@ -39,4 +41,4 @@
 - オーストラリア データ センターでの可用性
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO1-->

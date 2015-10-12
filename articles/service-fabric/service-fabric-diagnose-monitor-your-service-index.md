@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/04/2015"
+   ms.date="09/25/2015"
    ms.author="ryanwi"/>
 
 # Service Fabric サービスの診断と監視
@@ -22,7 +22,6 @@
 - [ローカルでのサービスの監視方法と診断方法](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 - [Service Fabric アプリケーションに対する Application Insights の設定](service-fabric-diagnostics-application-insights-setup.md)
 - [アプリケーション アップグレードの障害のトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
-- [監視対象アプリケーションのアップグレードの失敗のトラブルシューティング](../service-fabric-application-monitored-upgrade-troubleshooting.md)
 - [高信頼アクターの診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md)
 - [Reliable Services の診断とパフォーマンス監視](service-fabric-reliable-services-diagnostics.md)
 
@@ -38,6 +37,5 @@ Service Fabric には、Service Fabric のエンティティのための機能�
 - [Service Fabric の正常性レポートの確認方法](service-fabric-view-entities-aggregated-health.md)
 - [トラブルシューティングのためのシステム正常性レポートの使用](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Service Fabric のカスタム正常性レポートの追加](service-fabric-report-health.md)
- 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO1-->

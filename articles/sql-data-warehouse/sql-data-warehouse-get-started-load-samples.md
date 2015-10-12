@@ -30,7 +30,7 @@ SQL Data Warehouse インスタンスを作成するときに、何らかのサ�
 2. プロセスが開始されたら、[ソースの選択] をクリックして、[サンプル] に設定します。新しいサーバーを作成しない場合は、作成に使用しているサーバーのログイン情報の入力も求められます。
 
 
-> [AZURE.NOTE] インスタンスにサンプル データを読み込むには、Azure サービスでサーバーへのアクセスを有効にする必要があります (新しいサーバーを作成する場合の既定では有効です)。有効にしないと、読み込みは失敗しますが、[手動でサンプルを読み込む][]ことはできます。
+> [AZURE.NOTE]インスタンスにサンプル データを読み込むには、Azure サービスでサーバーへのアクセスを有効にする必要があります (新しいサーバーを作成する場合の既定では有効です)。有効にしないと、読み込みは失敗しますが、[手動でサンプルを読み込む][]ことはできます。
 
 
 ##PowerBI を使用して Adventureworks を分析する
@@ -85,8 +85,8 @@ WHERE 句を使用して、ある日付以前の注文をフィルター処理�
 [コードの移行]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-migrate-code/
 [手動でサンプル データを読み込む]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
 [手動でサンプルを読み込む]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
-[Azure ポータル]: portal.azure.com
-[PowerBI]: www.powerbi.com
+[Azure ポータル]: https://portal.azure.com
+[PowerBI]: http://www.powerbi.com
 [SQL Data Warehouse に接続]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-integrate-power-bi/
 
 <!--MSDN references-->
@@ -95,4 +95,4 @@ WHERE 句を使用して、ある日付以前の注文をフィルター処理�
 <!--Other Web references-->
 [Sample Data Scripts]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksPDW2012.zip
 
-<!----HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

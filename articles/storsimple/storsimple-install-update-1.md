@@ -1,6 +1,6 @@
 <properties 
    pageTitle="StorSimple デバイスへの Update 1.2 のインストール | Microsoft Azure"
-   description="デバイスに StorSimple 8000 シリーズの Update 1.2 をインストールする方法について説明します。"
+   description="StorSimple 8000 シリーズのデバイスに StorSimple 8000 シリーズの Update 1.2 をインストールする方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/17/2015"
+   ms.date="09/28/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスへの Update 1.2 のインストール
@@ -153,4 +153,4 @@ Update 1.2 を適用するには、次の手順を実行します。**この更�
 
 詳細については、[Update 1.2 リリース](storsimple-update1-release-notes.md)に関するページを参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

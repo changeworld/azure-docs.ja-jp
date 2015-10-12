@@ -52,4 +52,4 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 
 <!--Other Web references-->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

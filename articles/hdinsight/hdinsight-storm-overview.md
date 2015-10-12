@@ -34,6 +34,8 @@ HDInsight の Apache Storm は、管理されるクラスターとして、Azure
 * 好みの言語を使用できます: **Java**、**C#**、**Python** で書かれた Storm コンポーネントのサポートを提供します。
 
 	* さまざまなプログラミング言語をサポートしています: Java を使用してデータを読み取り、C# を使用して処理できます。
+	
+		> [AZURE.NOTE]C# トポロジは、Windows ベースの HDInsight クラスターでのみサポートされています。
 
 	* **Trident** Java インターフェイスを使用して、メッセージの「厳密に 1 回」処理、「トランザクション」のデータストア永続化、一般的なストリーム分析操作のセットをサポートする Storm トポロジを作成します。
 
@@ -51,13 +53,17 @@ Storm の使用方法については、「[HDInsight での Storm の使用][get
 
 HDInsight クラスター上に新しい Storm を数分でプロビジョニングできます。クラスター名、サイズ、管理者アカウント、ストレージ アカウントを指定します。Azure は、トポロジのサンプルや Web 管理ダッシュボードを含む、クラスターを作成します。
 
-> [AZURE.NOTE][Azure CLI](../xplat-cli.md) または [Azure PowerShell](../powershell-install-configure.md) を使用して、Storm クラスターをプロビジョニングすることもできます。
+> [AZURE.NOTE][Azure CLI](../xplat-cli-install.md) または [Azure PowerShell](../powershell-install-configure.md) を使用して、Storm クラスターをプロビジョニングすることもできます。
 
 要求を送信すると、15 分以内には、新しい Storm クラスターが実行され、最初のリアルタイム分析のパイプラインの準備が完了します。
 
 ###使いやすさ
 
-Visual Studio を使用する場合、HDInsight Tools for Visual Studio で C# とハイブリッド C# /Java トポロジを作成し、それらを HDInsight クラスター上の Storm に送信できます。
+__HDInsight クラスターの Linux ベースの Storm__ では、SSH を使用してクラスターに接続し、`storm` コマンドを使用してトポロジを起動および管理できます。さらに、Ambari を使用して Storm サービスを監視し、Storm UI を使用して実行中のトポロジを監視および管理できます。
+
+Linux ベースの Storm クラスターの使用方法の詳細については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started-linux.md)」をご覧ください。
+
+__HDInsight クラスターの Windows ベースの Storm__ では、HDInsight Tools for Visual Studio を使用して C# トポロジと C#/Java ハイブリッド トポロジを作成し、それらを HDInsight クラスターの Storm に送信できます。
 
 ![Storm プロジェクトの作成](./media/hdinsight-storm-overview/createproject.png)
 
@@ -75,7 +81,11 @@ HDInsight クラスター上の各 Storm には、クラスターで実行され
 
 Storm ダッシュボードの使用に関する詳細については、「[HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology.md)」をご覧ください。
 
-HDInsight Storm では、**Event Hub Spout** を介して Azure Event Hubs と簡単に統合できます。これは、**%STORM\_HOME%\\examples\\eventhubspout\\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** の各 Storm クラスターで使用できます。Storm トポロジでのこのスパウトの使用例については、「[Event Hubs の使用](service-bus-event-hubs-c-storm-getstarted.MD)」と「[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.MD)」をご覧ください。
+HDInsight Storm では、**Event Hub Spout** を介して Azure Event Hubs と簡単に統合できます。これは、**%STORM\_HOME%\\examples\\eventhubspout\\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** の各 Storm クラスターで使用できます。Storm トポロジでのこのスパウトの使用例については、次のドキュメントをご覧ください。
+
+* [Azure Event Hubs を使用する C# トポロジの開発](hdinsight-storm-develop-csharp-event-hub-topology.md)
+
+* [Azure Event Hubs を使用する Java トポロジの開発](hdinsight-storm-develop-java-event-hub-topology.md)
 
 ###信頼性
 
@@ -155,7 +165,9 @@ HDInsight Tools for Visual Studio では、.NET 開発者は、C# のトポロ�
 
 Trident の詳細については、apache.org の「[Trident のチュートリアル](https://storm.incubator.apache.org/documentation/Trident-tutorial.html)」をご覧ください。
 
-未加工の Java と Trident トポロジの例については、HDInsight Storm クラスターの **%storm\_home%\\contrib\\storm-starter** ディレクトリをご覧ください。
+Java トポロジと Trident トポロジの例については、[Storm トポロジの例の一覧](hdinsight-storm-example-topology.md)、または HDInsight クラスターの storm-starter の例をご覧ください。
+
+storm-starter の例は、Linux ベースのクラスターでは \_\_ /usr/hdp/current/storm-client/contrib/storm-starter\_\_ ディレクトリ、Windows ベースのクラスターでは **%storm\_home%\\contrib\\storm-starter** ディレクトリにあります。
 
 ##一般的な開発パターンの例
 
@@ -206,6 +218,6 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 [stormtrident]: https://storm.incubator.apache.org/documentation/Trident-API-Overview.html
 [samoa]: http://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
-[gettingstarted]: ../hdinsight-storm-getting-started.md
+[gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

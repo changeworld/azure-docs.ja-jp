@@ -84,4 +84,4 @@ Azure の負荷分散と同様、内部負荷分散セットを構成すると�
 
 <!-- LINKS -->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

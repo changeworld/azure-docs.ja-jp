@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="06/26/2015" 
+	ms.date="09/25/2015" 
 	ms.author="mimig"/>
 
 # Azure プレビュー ポータルを使用して DocumentDB データベース アカウントを作成する
@@ -46,4 +46,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

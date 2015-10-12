@@ -105,4 +105,4 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 ##その他のリソース
 [Azure 用の Oracle 仮想マシンのイメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

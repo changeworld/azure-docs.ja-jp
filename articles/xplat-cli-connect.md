@@ -128,7 +128,7 @@ Azure CLI バージョン 0.9.9 以降では、多要素認証 (パスワード�
 
 Azure CLI で既定以外のサブスクリプションを使用して、既定のサブスクリプションを変更しないようにするには、コマンドで `--subscription` オプションを使用して、その操作に使用するサブスクリプションの名前を指定します。
 
-Azure サブスクリプションに接続すると、その Azure CLI コマンドの使用を開始することができます。詳細については、[Azure CLI の使用方法](xplat-cli.md)に関するページを参照してください。
+Azure サブスクリプションに接続すると、その Azure CLI コマンドの使用を開始することができます。詳細については、[Azure CLI の使用方法](xplat-cli-install.md)に関するページを参照してください。
 
 ## CLI 設定の格納
 
@@ -159,4 +159,4 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: virtual-machines/xplat-cli-azure-resource-manager.md
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

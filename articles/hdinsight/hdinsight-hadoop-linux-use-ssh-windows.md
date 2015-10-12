@@ -35,7 +35,7 @@
 
 または
 
-* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli.md)
+* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md)
 
 ##SSH とは
 
@@ -109,7 +109,7 @@ Linux ベースの HDInsight クラスターを作成するときには、以前
 
 ###Mac、Linux、Windows の Azure コマンド ライン インターフェイス
 
-[Mac、Linux、Windows の Azure CLI](../xplat-cli.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
+[Mac、Linux、Windows の Azure CLI](../xplat-cli-install.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
 
 このコマンドの使用方法の詳細については、「[カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
@@ -233,4 +233,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

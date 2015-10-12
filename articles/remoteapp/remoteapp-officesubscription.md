@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="09/09/2015" 
+    ms.date="09/24/2015" 
     ms.author="elizapo" />
 
 
@@ -25,6 +25,9 @@
 ## Office 365 サブスクリプションを使用して Azure RemoteApp で Office アプリケーションを実行できますか?
 
 はい。 実際、Azure RemoteApp で Office アプリケーションを実行する唯一の方法は、Office 365 サブスクリプションを使用することです。
+
+(注: Azure RemoteApp のデプロイがホスト側パートナーによって実行されている場合は、パートナーが[サービス プロバイダー ライセンス契約](http://www.microsoft.com/ja-JP/Licensing/licensing-programs/spla-program.aspx)に基づいて Office ライセンスを提供できる場合があります。)
+
 
 Office 365 サブスクリプションがすばらしい点は、Azure Cloud を含む多くのさまざまなプラットフォームおよび環境で同じユーザー ライセンスを使用できることです。Azure RemoteApp で Office アプリケーションを使用する場合、追加のライセンスを購入したり、特別な方法で既存のライセンスを構成したりする必要はありません。[Office 365 ProPlus](https://technet.microsoft.com/library/Gg702619.aspx) を含む Office 365 サブスクリプションがあれば十分です。
 
@@ -84,8 +87,8 @@ Office 365 ProPlus を含むコレクションのカスタム イメージを作
 構成ファイルには以下の行が含まれるようになります。
 	
 		<Display Level="NONE" AcceptEULA="TRUE" />
-		<Propery Name="SharedComputerLicensing" Value="1" />
-		<Updated Enabled="FALSE" />
+		<Property Name="SharedComputerLicensing" Value="1" />
+		<Updates Enabled="FALSE" />
 
 ## Office 365 ProPlus でイメージを更新するにどうすればよいですか?
 
@@ -117,4 +120,4 @@ Office 展開ツールを使用した更新の詳細については以下をご�
 - [Office 展開ツールを使用して Office 365 ProPlus を展開および更新する](https://channel9.msdn.com/Events/Ignite/2015/BRK3168) (ビデオ)
 - [Office 365 ProPlus の更新設定を構成する](https://technet.microsoft.com/library/dn761708.aspx)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

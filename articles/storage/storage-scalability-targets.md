@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage"
-   ms.date="08/07/2015"
+   ms.date="09/27/2015"
    ms.author="tamram" />
 
 # Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
@@ -37,7 +37,7 @@
 
 [AZURE.INCLUDE [azure-storage-limits-premium-storage](../../includes/azure-storage-limits-premium-storage.md)]
 
-## ストレージの制限 - Azure リソース マネージャー
+## Storage の制限 - Azure リソース マネージャー
 
 [AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -76,4 +76,4 @@ Azure Storage に格納されているデータを含むすべてのオブジェ
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO1-->

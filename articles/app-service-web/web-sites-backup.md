@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Azure App Service での Web アプリのバックアップ" 
 	description="Azure App Service で Web アプリのバックアップを作成する方法を説明します。" 
-	services="app-service\web" 
+	services="app-service" 
 	documentationCenter="" 
 	authors="cephalin" 
 	manager="wpickett" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="app-service" 
-	ms.workload="web" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
@@ -222,4 +222,4 @@ Azure を利用し始めるには、「[Microsoft Azure の無料試用版サイ
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

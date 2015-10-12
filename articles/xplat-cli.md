@@ -20,7 +20,7 @@
 
 > [AZURE.SELECTOR]
 - [PowerShell](powershell-install-configure.md)
-- [Azure CLI](xplat-cli.md)
+- [Azure CLI](xplat-cli-install.md)
 
 Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。Azure CLI で使用できる機能の多くは、Azure 管理ポータルで使用できるもの (たとえば、Web サイト、仮想マシン、モバイル サービス、SQL Database などの Azure Platform で提供されるサービスを管理する機能) と同じです。
 
@@ -281,4 +281,4 @@ Azure CLI では、エラー情報を STDERR にログ出力しますが、エ�
 [signuporg]: http://www.windowsazure.com/documentation/articles/sign-up-organization/
 [Using the Azure CLI]: virtual-machines-command-line-tools.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

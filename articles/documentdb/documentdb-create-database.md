@@ -13,34 +13,32 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/26/2015" 
+	ms.date="09/28/2015" 
 	ms.author="mimig"/>
 
 # Azure プレビュー ポータルを使用して DocumentDB データベースを作成する
 
 Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](documentdb-create-account.md)、データベース、コレクション、およびドキュメントを用意する必要があります。このトピックでは、Microsoft Azure プレビュー ポータルで DocumentDB データベースを作成する方法について説明します。
 
-データベースは必ずしもプレビュー ポータルを使用して作成する必要はなく、[DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用して作成することもできます。DocumentDB .NET SDK を使用してデータベースを作成する方法を示す C# コードのサンプルについては、DatabaseManagement プロジェクトの [Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/DatabaseManagement/Program.cs) ファイルを参照してください。このファイルは、[GitHub.com](https://github.com) の [azure-documentdb-net](https://github.com/Azure/azure-documentdb-net) リポジトリから入手できます。
+![[参照] ボタン、[参照] ブレードの [DocumentDB アカウント]、[DocumentDB アカウント] ブレードの DocumentDB アカウントが強調表示されているスクリーン ショット](./media/documentdb-create-database/docdb-database-creation-1-3.png)
 
-1.  [Azure プレビュー ポータル](https://portal.azure.com/)で **[すべてを参照]** をクリックします。
+1.  [Azure プレビュー ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB アカウント]** をクリックします。 
 
-2.  **[参照]** ブレードで、**[DocumentDB アカウント]** をクリックします。
+2.  **[DocumentDB アカウント]** ブレードで、DocumentDB データベースを追加するデータベースのあるアカウントを選択します。アカウントが何も表示されていない場合は、[DocumentDB アカウントを作成する](documentdb-create-account.md)必要があります。
 
-3.  **[DocumentDB アカウント]** ブレードで、DocumentDB データベースを追加するデータベースのあるアカウントを選択します。アカウントが何も表示されていない場合は、[DocumentDB アカウントを作成する](documentdb-create-account.md)必要があります。
-    
-    ![Screen shot highlighting the Browse button, DocumentDB Accounts on the Browse blade, and a DocumentDB account on the DocumentDB Accounts blade](./media/documentdb-create-database/docdb-database-creation-1-3.png)
+3. **[DocumentDB アカウント]** ブレードで、**[データベースの追加]** をクリックします。
 
-4. **[DocumentDB アカウント]** ブレードで、**[データベースの追加]** をクリックします。
+4. **[データベースの追加]** ブレードで、新しいデータベースの ID を入力します。名前が検証されると、緑色のチェック マークが **[ID]** ボックスに表示されます。
 
-5. **[データベースの追加]** ブレードで、新しいデータベースの ID を入力します。名前が検証されると、緑色のチェック マークが [ID] ボックスに表示されます。
+5. 画面下部の **[OK]** をクリックすると、新しいデータベースが作成されます。
 
-6. 画面下部の **[OK]** をクリックすると、新しいデータベースが作成されます。
-
-	![Screen shot highlighting the Add Database button on the DocumentDB Account blade, the ID box on the Add Database blade, and the OK button](./media/documentdb-create-database/docdb-database-creation-4-6.png)
-
-8. 新しいデータベースは、**[DocumentDB アカウント]** ブレードの **[データベース]** レンズに表示されます。
+7. 新しいデータベースは、**[DocumentDB アカウント]** ブレードの **[データベース]** レンズに表示されます。
  
-	![Screen shot of the new database in the DocumentDB Account blade](./media/documentdb-create-database/docdb-database-creation-7.png)
+	![[DocumentDB アカウント] ブレードの新しいデータベースのスクリーン ショット](./media/documentdb-create-database/docdb-database-creation-7.png)
+
+## DocumentDB データベースを作成するその他の方法
+
+データベースは必ずしもプレビュー ポータルを使用して作成する必要はなく、[DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用して作成することもできます。DocumentDB .NET SDK を使用してデータベースを作成する方法を示す C# コードのサンプルについては、DatabaseManagement プロジェクトの [Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/DatabaseManagement/Program.cs) ファイルを参照してください。このファイルは、[GitHub.com](https://github.com) の [azure-documentdb-net](https://github.com/Azure/azure-documentdb-net) リポジトリから入手できます。
 
 ## 次のステップ
 
@@ -50,4 +48,4 @@ DocumentDB データベースを作成できたら、次の手順は[コレク�
 
 コレクションにドキュメントを用意した後で、プレビュー ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-queries)することができます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

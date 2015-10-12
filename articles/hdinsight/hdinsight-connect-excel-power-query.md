@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/09/2015"
+	ms.date="09/25/2015"
 	ms.author="jgao"/>
 
 
@@ -49,11 +49,13 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
 2. 新しい空のブックを作成します。
 
-3. **[Power Query]** メニューをクリックし、**[その他のデータ ソース]**、**[Azure HDInsight から]** の順にクリックします。
+3. **[Power Query]** メニューをクリックし、**[Azure から]**、**[Microsoft Azure HDInsight から]** の順にクリックします。
 
 	![HDI.PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
 
-	注: **[Power Query]** メニューが表示されない場合は、**[ファイル]**、**[オプション]**、**[アドイン]** の順にクリックして、ページ下部にある **[管理]** ボックスの一覧の **[COM アドイン]** を選択します。**[設定]** をクリックして、Power Query for Excel アドインのボックスがオンになっていることを確認します。
+	**注:** **[Power Query]** メニューが表示されない場合は、**[ファイル]**、**[オプション]**、**[アドイン]** の順にクリックして、ページ下部にある **[管理]** ボックスの一覧の **[COM アドイン]** を選択します。**[設定]** をクリックして、Power Query for Excel アドインのボックスがオンになっていることを確認します。
+
+	**注:** Power Query では、**[その他のデータ ソース]** をクリックして、HDFS からデータをインポートすることもできます。
 
 3. **[アカウント名]** にクラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を入力し、**[OK]** をクリックします。
 
@@ -86,4 +88,4 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
 [powerquery-download]: http://go.microsoft.com/fwlink/?LinkID=286689
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

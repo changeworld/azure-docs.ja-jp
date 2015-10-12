@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/28/2015"
+	ms.date="09/28/2015"
 	ms.author="jgao"/>
 
 
@@ -62,7 +62,7 @@ Microsoft では、Azure BLOB ストレージを操作する次のユーティ�
 
 Azure CLI は、Azure サービスを管理できるクロスプラットフォーム ツールです。次の手順を使用して、Azure Blob ストレージにデータをアップロードします。
 
-1. [Mac、Linux、Windows 用の Azure CLI をインストールして構成する](../xplat-cli.md)
+1. [Mac、Linux、Windows 用の Azure CLI をインストールして構成する](../xplat-cli-install.md)
 
 2. コマンド プロンプト、bash、その他のシェルを開き、次を使用して、Azure サブスクリプションを認証します。
 
@@ -178,7 +178,7 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 
 | クライアント | Linux | OS X | Windows |
 | ------ |:-----:|:----:|:-------:|
-| [Azure Storage Explorer](http://azurestorageexplorer.codeplex.com/) | | | ✔ |
+| [Azure Storage Explorer](http://storageexplorer.com/) | ✔ | ✔ | ✔ |
 | [Cloud Storage Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | | ✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | | ✔ |
 | [Azure 用エクスプローラー](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | | ✔ |
@@ -187,33 +187,31 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 
 ###<a id="storageexplorer"></a>Azure Storage エクスプローラー
 
-*Azure Storage エクスプローラー*は、Azure ストレージ内のデータを調べたり、変更したりするときに役立つツールです。このツールは、CodePlex: [Azure Storage Explorer](http://azurestorageexplorer.codeplex.com/ "Azure Storage エクスプローラー") から無料でダウンロードできます。
+*Azure Storage エクスプローラー*は、BLOB 内のデータを調べたり、変更したりするときに役立つツールです。これは、[http://storageexplorer.com/](http://storageexplorer.com/) からダウンロードできる無料のオープン ソース ツールです。このリンクからソース コードも入手できます。
 
 Azure Storage エクスプローラーを使用するには、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。この情報を取得する方法については、「[ストレージ アカウントの作成、管理、削除][azure-create-storage-account]」の「方法:ストレージ アクセス キーを表示、コピー、再生成する」をご覧ください。
 
-1. Azure Storage エクスプローラーを実行します。
+1. Azure Storage エクスプローラーを実行します。Storage エクスプローラーを初めて実行した場合は、___ストレージ アカウント名__と__ストレージ アカウント キー__の入力を求められます。Storage エクスプローラーを以前に実行したことがある場合は、__[追加]__ ボタンをクリックして、新しいストレージ アカウント名とストレージ アカウント キーを追加します。
+
+    HDinsight クラスターで使用されるストレージ アカウントの名前とキーを入力し、__[保存/開く]__ をクリックします。
 
 	![HDI.AzureStorageExplorer][image-azure-storage-explorer]
 
-2. **[アカウントの追加]** をクリックします。アカウントを Azure Storage エクスプローラーに追加した後は、この手順を再び実行する必要はありません。
+5. インターフェイスの左側にあるコンテナーの一覧で、HDInsight クラスターに関連付けられているコンテナーの名前をクリックします。既定では、これは HDInsight クラスターの名前ですが、クラスターの作成時に特定の名前を入力した場合は異なることがあります。
 
-	![HDI.ASEAddAccount][image-ase-addaccount]
+6. ツール バーのアップロード アイコンをクリックします。
 
-3. **ストレージ アカウント名**と**ストレージ アカウント キー**を入力して、**[ストレージ アカウントの追加]** をクリックします。複数のストレージ アカウントを追加できます。その場合、各アカウントがタブに表示されます。
+    ![アップロード アイコンが強調表示されたツール バー](./media/hdinsight-upload-data/toolbar.png)
 
-4. **[ストレージの種類]** で **[BLOB]** をクリックします。
+7. アップロードするファイルを指定して、**[開く]** をクリックします。メッセージが表示されたら、__[アップロード]__ をクリックして、ファイルをストレージ コンテナーのルートにアップロードします。ファイルを特定のパスにアップロードする場合は、__[アップロード先]__ フィールドにパスを入力し、__[アップロード]__ をクリックします。
 
-	![HDI.ASEBlob][image-ase-blob]
-
-5. **[コンテナー]** で、HDInsight クラスターに関連付けられているコンテナーの名前をクリックします。HDInsight クラスターを作成するときにコンテナーを指定する必要があります。コンテナーを指定しない場合、そのユーザー専用のクラスターが作成されます。
-
-6. **[BLOB]** で **[アップロード]** をクリックします。
-
-7. アップロードするファイルを指定して、**[開く]** をクリックします。
+    ![[ファイルのアップロード] ダイアログ](./media/hdinsight-upload-data/fileupload.png)
+    
+    ファイルのアップロードが終了すると、HDInsight クラスターでジョブからそのファイルを使用できます。
 
 ##Azure Blob ストレージをローカル ドライブとしてマウントする
 
-「[Azure Blob ストレージをローカル ドライブとしてマウントする](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx)」を参照してください。
+「[Mount Azure Blob Storage as Local Drive (Azure BLOB ストレージをローカル ドライブとしてマウントする)](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx)」をご覧ください。
 
 ##サービス
 
@@ -280,11 +278,11 @@ Azure SDK のインストールの詳細については、[Azure のダウンロ
 
 [Powershell-install-configure]: ../powershell-install-configure.md
 
-[azurecli]: ../xplat-cli.md
+[azurecli]: ../xplat-cli-install.md
 
 
 [image-azure-storage-explorer]: ./media/hdinsight-upload-data/HDI.AzureStorageExplorer.png
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

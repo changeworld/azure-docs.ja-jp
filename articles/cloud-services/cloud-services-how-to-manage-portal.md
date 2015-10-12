@@ -113,4 +113,4 @@ Azure プレビュー ポータルでは、現在の Azure ポータルとは異
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

@@ -20,7 +20,9 @@
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
+
 > [AZURE.NOTE]この記事では、Azure AD B2C でサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。まだ行っていない場合は、先に [.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)で Azure AD B2C の基本を学習してください。
+
 
 > [AZURE.NOTE]このサンプルは、[iOS B2C サンプル アプリケーション](active-directory-b2c-devquickstarts-ios.md)と接続することを目的に作成されたものです。 先にこのチュートリアルを行った後、そのサンプルに従ってください。
 
@@ -56,8 +58,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 - アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
-    > [AZURE.IMPORTANT]
-    [Azure ポータル](https://manage.windowsazure.com/)の **[アプリケーション]** タブで登録されているアプリケーションは、ここでは使用できません。
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## 3.ポリシーの作成
 
@@ -65,16 +66,20 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポ
 つの ID エクスペリエンス (サインアップ、サインイン、および Facebook でのサインイン) が含まれます。
 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
+
 - サインアップ ポリシーで、**[表示名]** と他のいくつかのサインアップ属性を選択します。
 - すべてのポリシーで、**[表示名]** と **[オブジェクト ID]** のアプリケーション クレームを選択します。その他のクレームも選択できます。
 - ポリシーの作成後、各ポリシーの **[名前]** をメモしておきます。名前には、プレフィックス `b2c_1_` が付加されます。これらのポリシー名はすぐに必要になります。
+
+
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 3 つのポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
 
 この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C 
 でどのように機能するかを学習する場合は、[.NET Web アプリの入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)から始めてください。
 
-## 4\. プラットフォーム用の Node.js のダウンロード
+## 4. プラットフォーム用の Node.js のダウンロード
 このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。
 
 Node.js を [http://nodejs.org](http://nodejs.org) からインストールします。
@@ -293,13 +298,15 @@ policyName:'b2c_1_<sign in policy name>',
 
 ```
 
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
+
 ### 必要な値
 
-*IdentityMetadata*: これは、passport-azure-ad が、IdP 用の構成データと、JWT トークンを検証するためのキーを検索する場所です。Azure Active Directory を使用する場合は、これを変更する必要はありません。
+*IdentityMetadata*: これは、passport-azure-ad が、IDP 用の構成データと、JWT トークンを検証するためのキーを検索する場所です。Azure Active Directory を使用する場合は、これを変更する必要はありません。
 
-*audience*: サービスを識別するポータルからの URI。このサンプルでは `http://localhost/TodoListService` を使用します。
+*audience*: サービスを識別するポータルの URI。このサンプルでは `http://localhost/TodoListService` を使用します。
 
-*tenantName*: テナントの名前 (例: contoso.onmicrosoft.com)
+*tenantName*: テナントの名前 (例: contoso.onmicrosoft.com)。
 
 *policyName*: このサーバーが受け取ったトークンを検証するポリシー。クライアント アプリケーションでサインインするために使用したのと同じポリシーを使用する必要があります。
 
@@ -347,7 +354,7 @@ name: 'Microsoft Azure Active Directory Sample'
 
 このチュートリアルでは、***手順 4.*** で説明しているように、MongoDB を使用してタスクを格納します。
 
-手順 11 で作成した config.js ファイルから再度呼び出しを行うと、mogoose\_auth\_local 接続 URL の末尾に配置されているため、データベース *tasklist* が呼び出されます。このデータベースを MongoDB で事前に作成する必要はありません。存在しない場合、サーバー アプリケーションの初回実行時に作成されます。
+手順 11. で作成した config.js ファイルから再度呼び出しを行うと、mogoose\_auth\_local 接続 URL の末尾に配置されているため、データベース *tasklist* が呼び出されます。このデータベースを MongoDB で事前に作成する必要はありません。存在しない場合、サーバー アプリケーションの初回実行時に作成されます。
 
 これで、使用する MongoDB データベースについて、事前にサーバーに通知したことになります。次に、サーバーのタスク用のモデルとスキーマを作成する追加コードを記述する必要があります。
 
@@ -876,7 +883,7 @@ OAuth2 互換のクライアントを使用することなく、このサーバ�
 
 Restify と OAuth2 を使用して REST API を実装する方法についての情報のみを探している場合は、サービスの開発を継続し、このサンプルで構築方法を習得するのに十分過ぎるコードを既に所有しています。
 
-参照用の完全なサンプル (構成値を除く) が、[.zip としてこちらで提供されています](https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs/archive/complete.zip)。または、GitHub から複製できます:
+参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs.git```
 
@@ -887,4 +894,4 @@ Restify と OAuth2 を使用して REST API を実装する方法についての
 
 [B2C で iOS を使用して Web-API に接続する >>](active-directory-b2c-devquickstarts-ios.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

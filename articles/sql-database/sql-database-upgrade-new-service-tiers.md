@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする"
-	description="Azure SQL Database の Web または Business データベースを新しい Azure SQL Database の Basic、Standard、および Premium サービス階層とパフォーマンス レベルにアップグレードします。"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jeffreyg"
+	pageTitle="SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする" 
+	description="Azure SQL Database の Web または Business データベースを新しい Azure SQL Database の Basic、Standard、および Premium サービス階層とパフォーマンス レベルにアップグレードします。" 
+	services="sql-database" 
+	documentationCenter="" 
+	authors="stevestein" 
+	manager="jeffreyg" 
 	editor=""/>
 
 <tags 
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="06/18/2015"
-	ms.author="sstein"
-	ms.workload="data-management"
-	ms.topic="article"
+	ms.date="06/18/2015" 
+	ms.author="sstein" 
+	ms.workload="data-management" 
+	ms.topic="article" 
 	ms.tgt_pltfrm="NA"/>
 
 
@@ -29,7 +29,7 @@ Azure SQL Web データベースと Business データベースは廃止され�
 
 <p>Azure Web と Business SQL データベースは、データベースの予約済みリソース容量なしで、共有のマルチテナント環境で動作します。この共有リソース環境内の他のデータベースのアクティビティによってパフォーマンスが影響を受けることがあります。特定の時点でのリソースの可用性は、システムで同時に実行されている他のワークロードに大きく依存します。そのため、データベース アプリケーションのパフォーマンスはさまざまに変化し、予想が不可能です。お客様からは、この予測不可能なパフォーマンスは管理が難しく、より予測可能なパフォーマンスを希望するとの声をいただきました。
 
-このフィードバックに対処するために、Azure SQL Database サービスは新しいデータベース サービス階層 [(Basic、Standard および Premium)](http://msdn.microsoft.com/library/dn741340.aspx) を導入しました。これによりパフォーマンスの予測が可能になり、ビジネスの継続性とセキュリティのためのさまざまな新しい機能を活用できるようになります。これらの新しいサービス階層では、他の顧客がその環境内で実行する他のワークロードに関係なく、データベースのワークロードに対して指定したレベルのリソースが提供できます。これによりパフォーマンス動作の高度な予測が可能になります。
+このフィードバックに対処するために、Azure SQL Database サービスは新しいデータベース サービス階層 [(Basic、Standard および Premium)](sql-database-service-tiers.md) を導入しました。これによりパフォーマンスの予測が可能になり、ビジネスの継続性とセキュリティのためのさまざまな新しい機能を活用できるようになります。これらの新しいサービス階層では、他の顧客がその環境内で実行する他のワークロードに関係なく、データベースのワークロードに対して指定したレベルのリソースが提供できます。これによりパフォーマンス動作の高度な予測が可能になります。
 
 これらの変更に伴い、現在の Web と Business (W/B) データベースに最適な新しいサービス階層を評価して決定するにはどうしたらよいか、実際のアップグレード処理はどのようになるのかと疑問に思われるかもしれません。
 
@@ -57,7 +57,7 @@ Web または Business データベースを新しいサービス階層にアッ
 
 
 
-## 1.機能に基づいてサービス階層を決定する
+## 1\.機能に基づいてサービス階層を決定する
 
 Basic、Standard、Premium のサービス階層はそれぞれ異なる機能セットを提供します。適切な階層を選択するための最初の手順は、アプリケーションとビジネスに必要な最小レベルの機能を提供するサービス階層を特定することです。
 
@@ -73,11 +73,9 @@ Basic、Standard、Premium のサービス階層はそれぞれ異なる機能�
 
 | 記事 | 説明 |
 |:--|:--|
-|[Azure SQL データベースのサービス階層 (エディション)](http://msdn.microsoft.com/library/azure/dn741340.aspx)| Basic、Standard、Premium サービス階層の概要です。|
-|[Azure SQL データベースのサービス階層とパフォーマンス レベル](http://msdn.microsoft.com/library/dn741336.aspx)| 各サービス階層のメトリックと機能です (DMV を使用して、管理ポータルでのデータベースの使用率を監視する方法)。 |
-|[サービス階層での変更点](http://msdn.microsoft.com/library/dn369873.aspx#Different)| それぞれのサービス階層の詳細と、いずれかの階層を他より優先して選択する理由。 |
-|[Azure SQL データベースの継続性](http://msdn.microsoft.com/library/azure/hh852669.aspx)|それぞれのサービス階層のビジネス継続性と災害復旧機能 (特定の時点への復元、地理的復元、geo レプリケーション) の詳細。||
-|[SQL データベースの料金](http://azure.microsoft.com/pricing/details/sql-database/)|それぞれのサービス階層とパフォーマンス レベルの詳細な料金の情報。|
+|[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)| 各サービス階層の概要、メトリック、機能 (および管理ポータルで DMV を使用してデータベースの使用率を監視する方法)。 |
+|[Azure SQL Database の継続性](sql-database-business-continuity.md)|それぞれのサービス階層のビジネス継続性と災害復旧機能 (特定の時点への復元、地理的復元、geo レプリケーション) の詳細。||
+|[SQL Database の料金](http://azure.microsoft.com/pricing/details/sql-database/)|それぞれのサービス階層とパフォーマンス レベルの詳細な料金の情報。|
 
 <br>
 
@@ -85,7 +83,7 @@ Basic、Standard、Premium のサービス階層はそれぞれ異なる機能�
 
 
 
-## 2.過去のリソース使用率に基づいて、許容可能なパフォーマンス レベルを決定する
+## 2\.過去のリソース使用率に基づいて、許容可能なパフォーマンス レベルを決定する
 
 Azure SQL Database サービスでは、管理ポータルとシステム ビューに情報が表示され、既存の Web または Business データベースに相当する新しいサービス階層とパフォーマンス レベルが提示されます。
 
@@ -94,7 +92,7 @@ Web と Business データベースには保証された DTU/リソース制限�
 
 管理ポータルを使用して DTU 使用割合の概要を表示し、システム ビューを使用して詳細を確認します。
 
-また、Azure SQL Database V12 ([一部のリージョンではプレビュー](sql-database-preview-whats-new.md#V12AzureSqlDbPreviewGaTable)) にサーバーをアップグレードする際に、新しい Microsoft Azure 管理ポータルを使用して、Web または Business データベースの推奨されるサービス階層を表示することもできます。
+また、Azure SQL Database V12 ([一部のリージョンではプレビュー](sql-database-preview-whats-new.md#V12AzureSqlDbPreviewGaTable)) にサーバーをアップグレードする際に、新しい Azure 管理ポータルを使用して、Web または Business データベースの推奨されるサービス階層を表示することもできます。
 
 ### 新しい Microsoft Azure 管理ポータルで推奨されるサービス階層を表示する方法
 管理ポータルでは、Azure SQL Database V12 へのサーバーのアップグレード プロセス時に、Web または Business データベースに適したサービス階層が推奨されます。この推奨事項は、データベースのリソース消費の履歴分析に基づくものです。
@@ -134,9 +132,9 @@ Web と Business データベースには保証された DTU/リソース制限�
 ### システム ビュー
 
 
-Web と Business データベース リソース消費データには、現在のデータベースが置かれている論理サーバーのマスター データベースにある [sys.resource_stats](http://msdn.microsoft.com/library/azure/dn269979.aspx) ビューでアクセスできます。パフォーマンス レベルの制限に占める割合で、リソース消費データが表示されます。このビューでは、最大で過去 14 日分のデータを 5 分間隔で表示できます。
+Web と Business データベース リソース消費データには、現在のデータベースが置かれている論理サーバーのマスター データベースにある [sys.resource\_stats](http://msdn.microsoft.com/library/azure/dn269979.aspx) ビューでアクセスできます。パフォーマンス レベルの制限に占める割合で、リソース消費データが表示されます。このビューでは、最大で過去 14 日分のデータを 5 分間隔で表示できます。
 
-> [AZURE.NOTE]これで、Web および Business データベースの [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) ビューを使用して、リソース消費データをより細かく (15 秒ごと) 表示できるようになりました。sys.dm_db_resource_stats では 1 時間の履歴データのみを保持するため、1 時間ごとにこの DMV を照会し、さらに分析するためにデータを格納できます。
+> [AZURE.NOTE]これで、Web および Business データベースの [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) ビューを使用して、リソース消費データをより細かく (15 秒ごと) 表示できるようになりました。sys.dm\_db\_resource\_stats では 1 時間の履歴データのみを保持するため、1 時間ごとにこの DMV を照会し、さらに分析するためにデータを格納できます。
 
 データベースの平均 DTU 消費を取得するには、マスター データベースで次のクエリを実行します。
 
@@ -152,11 +150,11 @@ Web と Business データベース リソース消費データには、現在�
     WHERE database_name = '<your db name>'
     ORDER BY end_time DESC;
 
-Web および Business 階層について、[sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) と [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) によって返されるデータは、Standard S2 パフォーマンス階層に基づく割合です。たとえば、Web または Business データベースに対する実行時の戻り値が 70% の場合、S2 階層制限の 70% であることを示します。さらに、Web および Business では、割合が 100% (これも S2 階層制限に基づく) を超える数値を反映している場合があります。
+Web および Business 階層について、[sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) と [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) によって返されるデータは、Standard S2 パフォーマンス階層に基づく割合です。たとえば、Web または Business データベースに対する実行時の戻り値が 70% の場合、S2 階層制限の 70% であることを示します。さらに、Web および Business では、割合が 100% (これも S2 階層制限に基づく) を超える数値を反映している場合があります。
 
-S2 データベース レベルでの DTU 消費情報を使用すると、Web および Business データベースの現在の消費を新しい階層のデータベースで正規化でき、最適な階層を判断できます。たとえば、DTU 消費の平均的な割合が 80% であれば、S2 パフォーマンス レベルのデータベース制限の 80% の割合で DTU を消費していることになります。**sys.resource_stats** ビューで値が 100% を超える場合は、S2 よりも上のパフォーマンス階層が必要ということになります。たとえば、ピーク DTU の割合の値が 300% であるとします。これは、S2 で使用できるリソースの 3 倍のリソースを使用していることを表します。妥当な初期サイズを決定するためには、S2 (50 DTU) で使用可能な DTU を次に大きなサイズ (S3/P1 = 100 DTU、つまり S2 の 200%、P2 = 200 DTU、つまり S2 の 400%) と比較します。S2 の 300% となっているため、初期サイズを P2 として再テストします。
+S2 データベース レベルでの DTU 消費情報を使用すると、Web および Business データベースの現在の消費を新しい階層のデータベースで正規化でき、最適な階層を判断できます。たとえば、DTU 消費の平均的な割合が 80% であれば、S2 パフォーマンス レベルのデータベース制限の 80% の割合で DTU を消費していることになります。**sys.resource\_stats** ビューで値が 100% を超える場合は、S2 よりも上のパフォーマンス階層が必要ということになります。たとえば、ピーク DTU の割合の値が 300% であるとします。これは、S2 で使用できるリソースの 3 倍のリソースを使用していることを表します。妥当な初期サイズを決定するためには、S2 (50 DTU) で使用可能な DTU を次に大きなサイズ (S3/P1 = 100 DTU、つまり S2 の 200%、P2 = 200 DTU、つまり S2 の 400%) と比較します。S2 の 300% となっているため、初期サイズを P2 として再テストします。
 
-DTU の使用率とワークロードに合わせるのに必要な最大エディションに基づき、自分のデータベース ワークロードに最適なサービス階層とパフォーマンス レベルを決定できます (DTU の割合とさまざまな[パフォーマンス レベル](http://msdn.microsoft.com/library/azure/dn741336.aspx)の相対 DTU の累乗によって決定)。次の表は、Web/Business リソース消費の割合とそれに等しい新しいパフォーマンス レベルのマッピングを表しています。
+DTU の使用率とワークロードに合わせるのに必要な最大エディションに基づき、自分のデータベース ワークロードに最適なサービス階層とパフォーマンス レベルを決定できます (DTU の割合とさまざまな[パフォーマンス レベル](sql-database-service-tiers.md)の相対 DTU の累乗によって決定)。次の表は、Web/Business リソース消費の割合とそれに等しい新しいパフォーマンス レベルのマッピングを表しています。
 
 ![リソース消費][4]
 
@@ -199,11 +197,11 @@ DTU の使用率とワークロードに合わせるのに必要な最大エデ�
 
 ![DTU の使用状況](media/sql-database-upgrade-new-service-tiers/DTU_usage.png)
 
-**パフォーマンスへのメモリの影響:** メモリも DTU の評価に影響するリソースの 1 つですが、SQL Database は利用可能なすべてのメモリをデータベース操作に使用するように設計されています。そのため、メモリの消費は上記クエリの DTU 平均消費には含まれません。一方、より低いパフォーマンス レベルにダウンサイズすると、データベースで利用できるメモリも少なくなります。そうすると、IO 消費が大きくなり、消費される DTU が影響を受けることになります。そのため、低いパフォーマンス レベルにダウンサイズする場合は、IO の割合に十分な余裕があることを確認してください。これを監視するには、上述の [sys.dm_ db_ resource_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV を使用します。
+**パフォーマンスへのメモリの影響:** メモリも DTU の評価に影響するリソースの 1 つですが、SQL Database は利用可能なすべてのメモリをデータベース操作に使用するように設計されています。そのため、メモリの消費は上記クエリの DTU 平均消費には含まれません。一方、より低いパフォーマンス レベルにダウンサイズすると、データベースで利用できるメモリも少なくなります。そうすると、IO 消費が大きくなり、消費される DTU が影響を受けることになります。そのため、低いパフォーマンス レベルにダウンサイズする場合は、IO の割合に十分な余裕があることを確認してください。これを監視するには、上述の [sys.dm\_ db\_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV を使用します。
 
 
 
-## 3.Web または Business データベースの現在のパフォーマンスが、より高いパフォーマンス レベルに対応する理由を確認する
+## 3\.Web または Business データベースの現在のパフォーマンスが、より高いパフォーマンス レベルに対応する理由を確認する
 
 Web と Business データベースの場合、個々のデータベース用に特定のリソース容量が予約されているわけではありません。さらに、Web または Business データベースにはお客様がパフォーマンスをスケールアップまたはスケールダウンするためのメカニズムもありません。このため、Web と Business データベースのパフォーマンスは、きわめて遅いレベルから Premium レベルまでの範囲に渡ります。このようにさまざまなパフォーマンスの範囲が*一定でない*ことは、マルチテナント環境内でリソースを共有する他のデータベースによる、ある任意の時点における全体的なリソース消費レベルに起因します。
 
@@ -216,7 +214,7 @@ Web/Business と Basic、Standard、Premium サービス階層との違いをよ
 全体的な DTU 割合が極端に高い場合は、DTU の詳細なメトリックを調べる必要があります。特に、データベースのログ I/O やメモリ使用量を詳しく検討します。それにより、最適化して DTU 使用量を削減できる可能性がある領域が判明することがあります。
 
 
-## 4.低いパフォーマンス レベルに合わせてデータベースのワークロードを調整する
+## 4\.低いパフォーマンス レベルに合わせてデータベースのワークロードを調整する
 データベースの過去のリソース使用量を分析した結果、希望したよりもコストが高いパフォーマンス レベルへのアップグレードの必要性が示された場合は、追加のパフォーマンス チューニングが効果を発揮する領域を探します。
 
 アプリケーションの詳細に関する自らの知識に基づく判断として、典型的なワークロードで想定される使用量に比べてリソース使用量が極端に多いと思われる場合は、パフォーマンス チューニングによってアプリケーションのリソース使用量を削減できる可能性があります。
@@ -227,7 +225,7 @@ Web/Business と Basic、Standard、Premium サービス階層との違いをよ
 
 | 記事 | 説明 |
 |:--|:--|
-| [Azure SQL データベースのパフォーマンス ガイダンス](http://msdn.microsoft.com/library/dn369873.aspx) | 「アプリケーションの調整」セクションでは、Azure SQL Database のパフォーマンス チューニングに関する詳細な推奨事項と手法を記載しています。|
+| [Azure SQL Database のパフォーマンス ガイダンス](http://msdn.microsoft.com/library/dn369873.aspx) | 「アプリケーションの調整」セクションでは、Azure SQL Database のパフォーマンス チューニングに関する詳細な推奨事項と手法を記載しています。|
 |[パフォーマンス監視とチューニング ツール](https://msdn.microsoft.com/library/ms179428.aspx)| SQL Server のイベントの監視や物理データベース デザインのチューニングに使用できるツールに関するリンクと説明を記載しています。|
 |[パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)|MSDN の SQL Server 2014 のパフォーマンス チューニング セクション。|
 | [SQL Server 2008 のパフォーマンスに関する問題のトラブルシューティング](https://msdn.microsoft.com/library/dd672789.aspx) | 発行日は以前でも内容的には古くないこのホワイトペーパーでは、パフォーマンスに関する一般的な問題をトラブルシューティングするためのガイダンスを提供します。メモリや CPU のボトルネックのトラブルシューティングに関する役に立つ情報が含まれています。|
@@ -235,12 +233,12 @@ Web/Business と Basic、Standard、Premium サービス階層との違いをよ
 
 
 
-## 5.新しいサービス階層/パフォーマンス レベルにアップグレードする
+## 5\.新しいサービス階層/パフォーマンス レベルにアップグレードする
 お使いの Web と Business データベースに適切なサービス階層とパフォーマンス レベルを決定した後、データベースを新しい階層にアップグレードするには、いくつかの方法があります。
 
-| 管理ツール | データベースのサービス階層とパフォーマンス レベルを変更します。|
+| 管理ツール | データベースのサービス階層とパフォーマンス レベルを変更します。||
 | :---| :---|
-| [Microsoft Azure 管理ポータル](https://manage.windowsazure.com) | データベースのダッシュボード ページで **[スケール]** タブをクリックします。 |
+| [Azure 管理ポータル](https://manage.windowsazure.com) | データベースのダッシュボード ページで **[スケール]** タブをクリックします。 |
 | [Azure PowerShell](http://msdn.microsoft.com/library/azure/dn546726.aspx) | [Set-AzureSqlDatabase](http://msdn.microsoft.com/library/azure/dn546732.aspx) コマンドレットを使用します。 |
 | [サービス管理 REST API](http://msdn.microsoft.com/library/azure/dn505719.aspx) | [Update Database](http://msdn.microsoft.com/library/dn505718.aspx) コマンドを使用します。|
 | [Transact-SQL](http://msdn.microsoft.com/library/bb510741.aspx) | [ALTER DATABASE (Transact-SQL)](http://msdn.microsoft.com/library/ms174269.aspx) ステートメントを使用します。 |
@@ -248,8 +246,8 @@ Web/Business と Basic、Standard、Premium サービス階層との違いをよ
 詳細については、「[データベースのサービス階層とパフォーマンス レベルの変更](http://msdn.microsoft.com/library/dn369872.aspx)」を参照してください。
 
 
-## 6.新しいサービス階層/パフォーマンス レベルへのアップグレードを監視する
-Azure SQL Database では、論理サーバーのマスター データベースの sys.dm_operation_status 動的管理ビューで、データベース上で実行される管理操作 (CREATE、ALTER、DROP など) に関する進行状況の情報を確認できます。論理サーバーには現在のデータベースが配置されます。詳細については、[sys.dm _operation _status のドキュメントを参照してください](http://msdn.microsoft.com/library/azure/dn270022.aspx)。データベースのアップグレード操作の進行状況を確認するには、操作ステータス DMV を使用します。このサンプル クエリには、データベース上で実行されるすべての管理操作が表示されます。
+## 6\.新しいサービス階層/パフォーマンス レベルへのアップグレードを監視する
+Azure SQL Database では、論理サーバーのマスター データベースの sys.dm\_operation\_status 動的管理ビューで、データベース上で実行される管理操作 (CREATE、ALTER、DROP など) に関する進行状況の情報を確認できます。論理サーバーには現在のデータベースが配置されます。詳細については、sys.dm \_operation \_status のドキュメント (http://msdn.microsoft.com/library/azure/dn270022.aspx) をご覧ください。データベースのアップグレード操作の進行状況を確認するには、操作ステータス DMV を使用します。このサンプル クエリには、データベース上で実行されるすべての管理操作が表示されます。
 
     SELECT o.operation, o.state_desc, o.percent_complete
     , o.error_code, o.error_desc, o.error_severity, o.error_state
@@ -265,11 +263,11 @@ Azure SQL Database では、論理サーバーのマスター データベース
 選択したサービス階層/パフォーマンス レベルで許可されている最大制限 (つまりリソース消費が 100%) までデータベース ワークロードを実行するため、必要なリソースを提供できるようにパフォーマンス レベルは調整、制御されます。ワークロードが CPU/データ IO/ログ IO 制限のいずれかに達した場合、許可される最大レベルでリソースを引き続き受け取りますが、クエリの待ち時間が長くなる場合があります。いずれかの制限に達してもエラーにはなりませんが、ワークロードが遅くなり、遅延が深刻になった場合はクエリのタイムアウトが発生するようになります。許可される同時ユーザー セッション/要求 (ワーカー スレッド) の最大制限に達した場合は、[エラー 10928 または 10929](http://msdn.microsoft.com/library/azure/dn338078.aspx) が表示されます。
 
 
-## 7.アップグレード後のデータベースを監視する
+## 7\.アップグレード後のデータベースを監視する
 Web/Business データベースを新しい階層にアップグレードした後は、アプリケーションが希望のパフォーマンスで実行されていることを確認し、必要に応じて最適化できるように、データベースを積極的に監視することをお勧めします。データベースを監視する場合は、次の追加の手順を実行することもお勧めします。
 
 
-**リソース消費データ:** Basic、Standard、Premium データベースの場合、ユーザー データベース内の [sys.dm_ db_ resource_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) と呼ばれる新しい DMV から、より詳細なリソース消費データを利用できます。この DMV は、直近 1 時間の操作に関する 15 秒おきのほぼリアル タイムのリソース消費情報を提供します。1 つの間隔内の DTU 消費割合は、CPU、IO、ログにおける最大消費割合として算出されます。次は、過去 1 時間における DTU の平均消費割合を算出するクエリです。
+**リソース消費データ:** Basic、Standard、Premium データベースの場合、ユーザー データベース内の [sys.dm\_ db\_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) と呼ばれる新しい DMV から、より詳細なリソース消費データを利用できます。この DMV は、直近 1 時間の操作に関する 15 秒おきのほぼリアル タイムのリソース消費情報を提供します。1 つの間隔内の DTU 消費割合は、CPU、IO、ログにおける最大消費割合として算出されます。次は、過去 1 時間における DTU の平均消費割合を算出するクエリです。
 
     SELECT end_time
     	 , (SELECT Max(v)
@@ -281,10 +279,10 @@ Web/Business データベースを新しい階層にアップグレードした�
     ORDER BY end_time DESC;
 
  
-この DMV の使用方法の詳細については、追加の[ドキュメント](http://msdn.microsoft.com/library/dn800981.aspx)をご覧ください。「[Azure SQL データベース パフォーマンス ガイダンス](http://msdn.microsoft.com/library/azure/dn369873.aspx)」には、アプリケーションの監視と調整方法が記載されています。
+この DMV の使用方法の詳細については、追加の[ドキュメント](http://msdn.microsoft.com/library/dn800981.aspx)をご覧ください。「[Azure SQL Database パフォーマンス ガイダンス](http://msdn.microsoft.com/library/azure/dn369873.aspx)」には、アプリケーションの監視と調整方法が記載されています。
 
 
-- **アラート:** アップグレードしたデータベースの DTU 消費が特定の高レベルに近づいた場合に通知を表示するには、Microsoft Azure 管理ポータルで 'Alerts' を設定します。データベース アラートは、Microsoft Azure 管理ポータルで、DTU、CPU、IO、ログといったさまざまなパフォーマンス指標に対して設定できます。 
+- **アラート:** アップグレードしたデータベースの DTU 消費が特定の高レベルに近づいた場合に通知を表示するには、Azure 管理ポータルで 'Alerts' を設定します。データベース アラートは、Microsoft Azure 管理ポータルで、DTU、CPU、IO、ログといったさまざまなパフォーマンス指標に対して設定できます。 
 
 	たとえば、DTU の平均割合の値が 5 分間にわたって 75% を超過したような場合に、「DTU 割合」に関する電子メール アラートを送るように設定できます。アラート通知の構成方法の詳細については、「[方法: Azure でアラート通知を受け取り、アラート ルールを管理する](http://msdn.microsoft.com/library/azure/dn306638.aspx)」を参照してください。
 
@@ -296,7 +294,7 @@ Web/Business データベースを新しい階層にアップグレードした�
 
 
 ## 概要
-Azure SQL データベース サービスでは利用統計データとツールを提供することで、Web/Business データベースのワークロードを評価し、アップグレードに最適なサービス階層を決定できます。アップグレード処理は非常に簡単で、データベースをオフラインにしたり、データを損失したりすることなしに実行できます。アップグレードしたデータベースではパフォーマンスの予想が可能になり、新しいサービス階層によって提供される追加の機能を使用できます。
+Azure SQL Database サービスでは利用統計データとツールを提供することで、Web/Business データベースのワークロードを評価し、アップグレードに最適なサービス階層を決定できます。アップグレード処理は非常に簡単で、データベースをオフラインにしたり、データを損失したりすることなしに実行できます。アップグレードしたデータベースではパフォーマンスの予想が可能になり、新しいサービス階層によって提供される追加の機能を使用できます。
 
 
 
@@ -308,4 +306,4 @@ Azure SQL データベース サービスでは利用統計データとツール
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

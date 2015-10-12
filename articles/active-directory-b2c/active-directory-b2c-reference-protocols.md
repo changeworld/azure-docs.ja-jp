@@ -49,7 +49,7 @@ OAuth と OpenID Connect におけるフローはほぼすべて、情報のや�
 
 ## ポリシー
 
-おそらく、Azure AD B2C の**ポリシー**は、サービスの最も重要な機能です。Azure AD B2C は、ポリシーを導入することによって、標準の OAuth 2.0 や OpenID Connect プロトコルを拡張します。ポリシーにより、Azure AD B2C は単なる認証および承認以外の多くの機能を実行できます。ポリシーでは、サインアップ、サインイン、プロファイルの編集など、コンシューマーの ID エクスペリエンスが完全に記述されています。ポリシーは、管理 UI で定義し、HTTP 認証要求の特別なクエリ パラメーターを使用して実行できます。ポリシーは、OAuth 2.0 および OpenID Connect の標準機能ではないので、理解するために時間をかける必要があります。詳細については、「[Azure AD B2C ポリシー リファレンス ガイド](active-directory-b2c-reference-policies)」をご覧ください。
+おそらく、Azure AD B2C の**ポリシー**は、サービスの最も重要な機能です。Azure AD B2C は、ポリシーを導入することによって、標準の OAuth 2.0 や OpenID Connect プロトコルを拡張します。ポリシーにより、Azure AD B2C は単なる認証および承認以外の多くの機能を実行できます。ポリシーでは、サインアップ、サインイン、プロファイルの編集など、コンシューマーの ID エクスペリエンスが完全に記述されています。ポリシーは、管理 UI で定義し、HTTP 認証要求の特別なクエリ パラメーターを使用して実行できます。ポリシーは、OAuth 2.0 および OpenID Connect の標準機能ではないので、理解するために時間をかける必要があります。詳細については、「[Azure AD B2C ポリシー リファレンス ガイド](active-directory-b2c-reference-policies.md)」をご覧ください。
 
 
 ## Tokens
@@ -59,7 +59,7 @@ Azure AD B2C で使われている各種トークンの詳細については、[
 
 ## プロトコル
 
-要求の例を理解できる状態になったら、最初に以下のチュートリアルのどれかをご覧ください。いずれも、特定の認証シナリオに対応しています。どのフローを見ればよいかわからない場合は、[Azure AD B2C で作成できるアプリの種類](active-directory-b2c-apps)を確認してください。
+要求の例を理解できる状態になったら、最初に以下のチュートリアルのどれかをご覧ください。いずれも、特定の認証シナリオに対応しています。どのフローを見ればよいかわからない場合は、[Azure AD B2C で作成できるアプリの種類](active-directory-b2c-apps.md)を確認してください。
 
 - [OAuth 2.0 でモバイル アプリケーションおよびネイティブ アプリケーションを作成する](active-directory-b2c-reference-oauth-code.md)
 - [Open ID Connect で Web Apps を作成する](active-directory-b2c-reference-oidc.md)
@@ -70,4 +70,4 @@ Azure AD B2C で使われている各種トークンの詳細については、[
 
 <!-- [Call the Azure AD Graph API using the OAuth 2.0 Client Credentials Flow](active-directory-reference-graph.md) -->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

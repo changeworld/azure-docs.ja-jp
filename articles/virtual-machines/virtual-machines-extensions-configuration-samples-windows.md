@@ -165,10 +165,10 @@
               "type": "MicrosoftMonitoringAgent",
               "typeHandlerVersion": "1.0",
               "settings": {
-                "workspace_name" : "Workspace Name : The Workspace ID is available from within the Direct Agent Configuration section of the Azure Operational Insights portal"
+                "workspaceId" : "The Workspace ID is available from within the Direct Agent Configuration section of the Azure Operational Insights portal"
               }
               "protectedSettings": {
-                "workspace_key"  : "The Workspace Key is a string that is available from within the Direct Agent Configuration section of the Azure Operational Insights portal"
+                "workspaceKey"  : "The Workspace Key is a string that is available from within the Direct Agent Configuration section of the Azure Operational Insights portal"
               }
           }
             }
@@ -224,7 +224,7 @@
             }
           }
 
-### Confer Advanced Threat Prevention and Incident Response for Azure
+### Confer の Azure 向けの Advanced Threat Prevention and Incident Response
           {
             "publisher": "Confer",
             "type": "ConferForAzure",
@@ -245,7 +245,7 @@
             }
           }
 
-### Barracuda VPN Connectivity Agent for Microsoft Azure
+### Microsoft Azure 用 Barracuda VPN Connectivity Agent
           {
             "publisher": "Barracuda.Azure.ConnectivityAgent",
             "type": "BarracudaConnectivityAgent",
@@ -305,4 +305,4 @@ Azure 診断拡張機能の概要については、[こちら](https://msdn.micr
 
 [Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

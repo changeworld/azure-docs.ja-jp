@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure ポータルの HDInsight に関する記事の索引 | Microsoft Azure"
-	description="Azure ポータルの HDInsight に関する記事のリンクがある索引ページ。HDInsight の新しい Hadoop クラスターには Azure プレビュー ポータルをお勧めします。"
-	services="hdinsight"
-	documentationCenter="na"
-	authors="cjgronlund"
-	manager="pablissima"
-	editor=""/>
+   description="Azure ポータルの HDInsight に関する記事のリンクがある索引ページ。HDInsight の新しい Hadoop クラスターには Azure プレビュー ポータルをお勧めします。"
+   services="hdinsight"
+   documentationCenter="na"
+   authors="cjgronlund"
+   manager="pablissima"
+   editor=""/>
 
 <tags
    ms.service="hdinsight"
-	ms.devlang="na"
-	ms.topic="index-page"
-	ms.tgt_pltfrm="na"
-	ms.workload="big-data"
-	ms.date="08/17/2015"
-	ms.author="cjgronlund"/>
+   ms.devlang="na"
+   ms.topic="index-page"
+   ms.tgt_pltfrm="na"
+   ms.workload="big-data"
+   ms.date="08/17/2015"
+   ms.author="cjgronlund"/>
 
 # Azure ポータルの HDInsight に関する記事の索引
 
@@ -102,6 +102,7 @@ Azure プレビュー ポータルでの Apache Spark ネイティブ クラス�
 * [Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する](hdinsight-mahout.md)
 * [Learning path: Build advanced analytics solutions (ラーニング パス: 高度な分析ソリューションを構築する)](machine-learning-data-science-how-to-create-machine-learning-service.md)
 * [Learning path: Advanced data processing (ラーニング パス: 高度なデータ処理)](machine-learning-data-science-advanced-data-processing.md)
+* [HDInsight と Machine Learning を使用したタクシー データの予測に関するヒント](machine-learning-data-science-process-hive-walkthrough.md)
 
 ## 機能拡張
 
@@ -132,4 +133,4 @@ Azure プレビュー ポータルでの Apache Spark ネイティブ クラス�
 * [エラー メッセージを解釈する](hdinsight-debug-jobs.md)
 * [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

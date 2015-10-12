@@ -1,22 +1,22 @@
-<properties 
+<properties
 	pageTitle="Advanced Analytics Process and Technology の活用: Hadoop クラスターを使用する | Microsoft Azure"
 	description="HDInsight Hadoop クラスターを使用したエンド ツー エンドのシナリオで Advanced Analytics Process and Technology (ADAPT) を使用し、公開されているデータセットを使ってモデルを作成してデプロイします。"
 	services="machine-learning,hdinsight"
 	documentationCenter=""
 	authors="bradsev"
 	manager="paulettm"
-	editor="cgronlun"/>
+	editor="cgronlun" />
 
-<tags 
+<tags
 	ms.service="machine-learning"
 	ms.workload="data-services"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="hangzh;bradsev"/>
+	ms.date="09/28/2015"
+	ms.author="hangzh;bradsev" />
 
-                
+
 # Advanced Analytics Process and Technology の活用 - HDInsight Hadoop クラスターを使用する
 
 このチュートリアルでは、[Azure HDInsight Hadoop クラスター](http://azure.microsoft.com/services/hdinsight/)を使用したエンド ツー エンドのシナリオで Advanced Analytics Process and Technology (ADAPT) を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの格納、探索、特徴エンジニアリング、ダウンサンプリングを行います。データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。
@@ -63,7 +63,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 		Class 1 : tip_amount > $0
 
 2. **多クラス分類**: 乗車で支払われたチップの範囲を予測します。*tip\_amount* を次の 5 つの箱つまりクラスに分割します。
-	
+
 		Class 0 : tip_amount = $0
 		Class 1 : tip_amount > $0 and tip_amount <= $5
 		Class 2 : tip_amount > $5 and tip_amount <= $10
@@ -75,7 +75,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 ## <a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
 
->[AZURE.NOTE] これは、通常 **Admin** タスクです。
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
 
 HDInsight クラスターを使用する高度な分析用の Azure 環境は、次の 3 つの手順でセットアップできます。
 
@@ -84,14 +84,14 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 2. [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md): この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた Azure HDInsight Hadoop クラスターを作成します。HDInsight クラスターをカスタマイズする際、注意する必要のある 2 つの重要な手順があります。
 
 	* 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。このストレージ アカウントは、クラスター内で処理されるデータにアクセスするために使用されます。
-	
+
 	* クラスターを作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。**[構成]** タブに移動して、**[リモートを有効にする]** をクリックします。この手順で、リモート ログインに使用するユーザーの資格情報を指定します。
 
 3. [Azure Machine Learning ワークスペースを作成する](machine-learning-create-workspace.md): この Azure Machine Learning ワークスペースは、Machine Learning モデルの作成に使用されます。このタスクは、HDInsight クラスターを使用した初期データの探索とダウンサンプリングの完了後に対処されます。
 
 ## <a name="getdata"></a>公開されているソースからデータを取得する
 
->[AZURE.NOTE] これは、通常 **Admin** タスクです。
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
 
 公開されている場所から [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットを取得するには、「[Azure BLOB ストレージとの間でデータを移動する](machine-learning-data-science-move-azure-blob.md)」で説明されているいずれかの方法を使用して、データをコンピューターにコピーします。
 
@@ -99,7 +99,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 1. コマンド プロンプト ウィンドウで、次の AzCopy コマンドを発行し、*<path_to_data_folder>* を、目的の転送先に置き換えます。
 
-		
+
 		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
 2. コピーが完了すると、合計 24 個の Zip ファイルが選択したデータのフォルダー内に見つかります。ダウンロードされたファイルをローカル コンピューター上の同じディレクトリに解凍します。圧縮されていないファイルが存在するフォルダーをメモしておきます。*<path\_to\_unzipped\_data\_files>* として参照されるこのフォルダーについては、後ほど説明します。
@@ -107,7 +107,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 ## <a name="upload"></a>データを Azure HDInsight Hadoop クラスターの既定のコンテナーにアップロードする
 
->[AZURE.NOTE] これは、通常 **Admin** タスクです。
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
 
 次の AzCopy コマンドでは、Hadoop クラスターを作成してデータ ファイルを解凍したときに指定した実際の値で次のパラメーターを置き換えます。
 
@@ -130,7 +130,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 ## <a name="#download-hql-files"></a>Hadoop クラスターのヘッド ノードにログインして探索的データ分析の準備をする
 
->[AZURE.NOTE] これは、通常 **Admin** タスクです。
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
 
 探索的データ分析とデータのダウンサンプリングのためにクラスターのヘッド ノードにアクセスするには、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#headnode)」で説明されている手順に従います。
 
@@ -146,16 +146,16 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 ## <a name="#hive-db-tables"></a>Hive データベースと月ごとにパーティション分割されたテーブルを作成する
 
->[AZURE.NOTE] これは、通常 **Admin** タスクです。
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
 
 これで、NYC タクシー データセットの Hive テーブルを作成する準備ができました。Hadoop クラスターのヘッド ノード内で、ヘッド ノードのデスクトップで ***Hadoop コマンド ライン***を開き、次のコマンドを入力して Hive ディレクトリに入ります。
 
     cd %hive_home%\bin
 
->[AZURE.NOTE] **このチュートリアルでは、上記の Hive bin/ ディレクトリ プロンプトからすべての Hive コマンドを実行します。これは自動的にすべてのパスの問題に対処します。このチュートリアルでは、"Hive ディレクトリ プロンプト"、"Hive bin/ ディレクトリ プロンプト"、"Hadoop コマンド ライン" という用語は同じ意味で使用されます。**
+>[AZURE.NOTE]**このチュートリアルでは、上記の Hive bin/ ディレクトリ プロンプトからすべての Hive コマンドを実行します。これは自動的にすべてのパスの問題に対処します。このチュートリアルでは、"Hive ディレクトリ プロンプト"、"Hive bin/ ディレクトリ プロンプト"、"Hadoop コマンド ライン" という用語は同じ意味で使用されます。**
 
 Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop コマンド ラインで次のコマンドを入力し、Hive クエリを送信して Hive データベースとテーブルを作成します。
-	
+
 	hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
 ***C:\\temp\\sample\_hive\_create\_db\_and\_tables.hql*** ファイルの内容を以下に示します。このファイルでは、Hive データベース ***nyctaxidb***、テーブル ***trip***、***fare*** が作成されます。
@@ -163,52 +163,52 @@ Hive ディレクトリ プロンプトから、ヘッド ノードの Hadoop �
 	create database if not exists nyctaxidb;
 
 	create external table if not exists nyctaxidb.trip
-	( 
-	    medallion string, 
+	(
+	    medallion string,
 	    hack_license string,
-	    vendor_id string, 
-	    rate_code string, 
-	    store_and_fwd_flag string, 
-	    pickup_datetime string, 
-	    dropoff_datetime string, 
-	    passenger_count int, 
-	    trip_time_in_secs double, 
-	    trip_distance double, 
-	    pickup_longitude double, 
-	    pickup_latitude double, 
-	    dropoff_longitude double, 
+	    vendor_id string,
+	    rate_code string,
+	    store_and_fwd_flag string,
+	    pickup_datetime string,
+	    dropoff_datetime string,
+	    passenger_count int,
+	    trip_time_in_secs double,
+	    trip_distance double,
+	    pickup_longitude double,
+	    pickup_latitude double,
+	    dropoff_longitude double,
 	    dropoff_latitude double)  
-	PARTITIONED BY (month int) 
+	PARTITIONED BY (month int)
 	ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
 	STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
 
-	create external table if not exists nyctaxidb.fare 
-	( 
-	    medallion string, 
-	    hack_license string, 
-	    vendor_id string, 
-	    pickup_datetime string, 
-	    payment_type string, 
-	    fare_amount double, 
+	create external table if not exists nyctaxidb.fare
+	(
+	    medallion string,
+	    hack_license string,
+	    vendor_id string,
+	    pickup_datetime string,
+	    payment_type string,
+	    fare_amount double,
 	    surcharge double,
 	    mta_tax double,
 	    tip_amount double,
 	    tolls_amount double,
 	    total_amount double)
-	PARTITIONED BY (month int) 
+	PARTITIONED BY (month int)
 	ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
 	STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
 
 この Hive スクリプトでは 2 つのテーブルが作成されます。
 
-* テーブル "trip" には、乗車ごとの詳細 (運転手の詳細、乗車時間、乗車距離、乗車回数) が含まれます。 
+* テーブル "trip" には、乗車ごとの詳細 (運転手の詳細、乗車時間、乗車距離、乗車回数) が含まれます。
 * テーブル "fare" には、料金の詳細 (料金、チップ、道路などの通行料、追加料金) が含まれます。
 
 これらの手順または代わりの手順についてさらに支援が必要な場合は、「[Hive クエリを直接 Hadoop コマンドラインから送信する](machine-learning-data-science-process-hive-tables.md#submit)」をご覧ください。
 
 ## <a name="#load-data"></a>パーティションごとに Hive テーブルにデータを読み込む
 
->[AZURE.NOTE] これは、通常 **Admin** タスクです。
+>[AZURE.NOTE]これは、通常 **Admin** タスクです。
 
 NYC タクシー データセットは、月ごとに自然にパーティション分割されているので、これを使用することで処理を高速化し、クエリ時間を短縮できます。次の PowerShell コマンド (**Hadoop コマンド ライン** を使用して、Hive ディレクトリから発行) は、月ごとにパーティション分割された "trip" および "fare" Hive テーブルにデータを読み込みます。
 
@@ -227,10 +227,10 @@ Hadoop コマンド ライン ウィンドウ内に HDInsight Hadoop クラス�
 
 	hive -e "show databases;"
 
-### <a name="#show-tables"></a>nyctaxidb データベースの Hive テーブルを表示する 
-	
+### <a name="#show-tables"></a>nyctaxidb データベースの Hive テーブルを表示する
+
 nyctaxidb データベースのテーブルを表示するには、Hadoop コマンドラインで次のコマンドを実行します。
-	
+
 	hive -e "show tables in nyctaxidb;"
 
 次のコマンドを発行して、テーブルがパーティション分割されていることを確認できます。
@@ -252,7 +252,7 @@ nyctaxidb データベースのテーブルを表示するには、Hadoop コマ
 	month=8
 	month=9
 	Time taken: 2.075 seconds, Fetched: 12 row(s)
-	
+
 同様に、次のコマンドを発行して、fare テーブルがパーティション分割されていることを確認できます。
 
 	hive -e "show partitions nyctaxidb.fare;"
@@ -272,10 +272,10 @@ nyctaxidb データベースのテーブルを表示するには、Hadoop コマ
 	month=8
 	month=9
 	Time taken: 1.887 seconds, Fetched: 12 row(s)
-   
+
 ## <a name="#explore-hive"></a>Hive におけるデータの探索と特徴エンジニアリング
 
->[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
 
 Hive テーブルに読み込まれるデータのデータの探索タスクおよび特徴エンジニアリング タスクは、Hive クエリを使用して実現します。このセクションのチュートリアルで行うこのようなタスクの例を次に示します。
 
@@ -287,16 +287,16 @@ Hive テーブルに読み込まれるデータのデータの探索タスクお
 
 ### 探索: trip テーブルの上位 10 個のレコードを表示する
 
->[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
 
 データがどのように表示されるかを確認するために、各テーブルから 10 個のレコードを確認します。レコードを検査するには、Hadoop コマンド ライン コンソールの Hive ディレクトリ プロンプトから次の 2 つのクエリを実行します。
 
 最初の月から "trip" テーブルの上位 10 個のレコードを取得するには、次のクエリを実行します。
 
 	hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
-    
+
 最初の月から "fare" テーブルの上位 10 個のレコードを取得するには、次のクエリを実行します。
-	
+
 	hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
 
 レコードをファイルに保存すると、レコードを簡単に表示できるので便利です。これを実現するには、上記のクエリを少し変更します。
@@ -305,10 +305,10 @@ Hive テーブルに読み込まれるデータのデータの探索タスクお
 
 ### 探索: 12 個のそれぞれのパーティションのレコードの数を表示する
 
->[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
 
 関心事は、年間で乗車数がどのように変化するかです。月ごとにグループ化することで、乗車のこの分布がどのように表示されるかを見ることができます。
-	
+
 	hive -e "select month, count(*) from nyctaxidb.trip group by month;"
 
 これにより、次のような結果が表示されます。
@@ -373,7 +373,7 @@ Hive ディレクトリ プロンプトから次のコマンドを使用して�
 
 ### 探索: medallion (タクシー番号) ごとの乗車回数の分布
 
->[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
 
 この例では、指定した期間内で乗車回数が 100 を超える medallion (タクシー番号) を識別します。このクエリは、パーティション変数 **month** によって条件設定されているので、パーティション テーブルへのアクセスによるメリットが得られます。クエリ結果は、ヘッド ノード上の `C:\temp` にあるローカル ファイル queryoutput.tsv に書き込まれます。
 
@@ -385,7 +385,7 @@ Hive ディレクトリ プロンプトから次のコマンドを使用して�
 	FROM nyctaxidb.fare
 	WHERE month<=3
 	GROUP BY medallion
-	HAVING med_count > 100 
+	HAVING med_count > 100
 	ORDER BY med_count desc;
 
 NYC タクシーのデータ セット内にある medallion (タクシー番号) は、一意のタクシーを識別します。特定の期間に特定の乗車数を超えるタクシーを確認することで、"忙しい" タクシーを特定できます。次の例では、最初の 3 か月間で乗車回数が 100 を超えるタクシーを識別し、クエリ結果を C:\\temp\\queryoutput.tsv ローカル ファイルに保存します。
@@ -396,7 +396,7 @@ NYC タクシーのデータ セット内にある medallion (タクシー番号
 	FROM nyctaxidb.fare
 	WHERE month<=3
 	GROUP BY medallion
-	HAVING med_count > 100 
+	HAVING med_count > 100
 	ORDER BY med_count desc;
 
 Hive ディレクトリ プロンプトで次のコマンドを発行します。
@@ -405,12 +405,12 @@ Hive ディレクトリ プロンプトで次のコマンドを発行します�
 
 ### 探索: medallion および hack\_license ごとの乗車回数の分布
 
->[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
 
 データセットの探索時に、値のグループの出現回数を確認する必要があることがよくあります。このセクションでは、タクシーと運転手に対してこれを行う方法の一例を紹介します。
 
 *sample\_hive\_trip\_count\_by\_medallion\_license.hql* ファイルは、"medallion" と "hack\_license" で設定した料金データセットをグループ化し、それぞれの組み合わせの数を返します。その内容を次に示します。
-	
+
     SELECT medallion, hack_license, COUNT(*) as trip_count
 	FROM nyctaxidb.fare
 	WHERE month=1
@@ -428,7 +428,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 ### 探索: 無効な経度と緯度のレコードをチェックしてデータの品質を評価する
 
->[AZURE.NOTE] これは、通常、**データ サイエンティスト** タスクです。
+>[AZURE.NOTE]これは、通常、**データ サイエンティスト** タスクです。
 
 探索的データ分析の共通の目標は、無効または正しくないレコードを除外することです。このセクションの例では、緯度または経度のいずれかのフィールドに NYC 領域から大きく外れる値が含まれていないかどうかを判断します。そのようなレコードには緯度と経度の値にエラーがある可能性が高いため、モデリングに使用するすべてのデータからそれらを排除します。
 
@@ -455,12 +455,12 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 「[予測タスクの例](machine-learning-data-science-process-hive-walkthrough.md#mltasks)」で説明されている二項分類の問題では、チップが支払われたかどうかがわかると便利です。このチップの分布は、次の二項です。
 
 * tip given(Class 1, tip\_amount > $0)  
-* no tip (Class 0, tip\_amount = $0) 
+* no tip (Class 0, tip\_amount = $0)
 
 次に示す *sample\_hive\_tipped\_frequencies.hql* ファイルがこれを実行します。
 
-    SELECT tipped, COUNT(*) AS tip_freq 
-    FROM 
+    SELECT tipped, COUNT(*) AS tip_freq
+    FROM
     (
         SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
         FROM nyctaxidb.fare
@@ -478,12 +478,12 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 「[予測タスクの例](machine-learning-data-science-process-hive-walkthrough.md#mltasks)」で説明されている多クラス分類の問題では、このデータセットは支払われるチップの金額を予測する自然な分類にも対処します。箱を使って、クエリのチップの範囲を定義できます。さまざまなチップの範囲のクラス分布を取得するには、*sample\_hive\_tip\_range\_frequencies.hql* ファイルを使います。その内容を次に示します。
 
-	SELECT tip_class, COUNT(*) AS tip_freq 
-    FROM 
+	SELECT tip_class, COUNT(*) AS tip_freq
+    FROM
     (
-        SELECT if(tip_amount=0, 0, 
-            if(tip_amount>0 and tip_amount<=5, 1, 
-            if(tip_amount>5 and tip_amount<=10, 2, 
+        SELECT if(tip_amount=0, 0,
+            if(tip_amount>0 and tip_amount<=5, 1,
+            if(tip_amount>5 and tip_amount<=10, 2,
             if(tip_amount>10 and tip_amount<=20, 3, 4)))) as tip_class, tip_amount
         FROM nyctaxidb.fare
     )tc
@@ -503,7 +503,7 @@ Hadoop コマンド ライン コンソールから、次のコマンドを実�
 
     set R=3959;
     set pi=radians(180);
-	
+
 	insert overwrite directory 'wasb:///queryoutputdir'
 
     select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
@@ -512,9 +512,9 @@ Hadoop コマンド ライン コンソールから、次のコマンドを実�
      *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
      /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
      +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
-     pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance 
-    from nyctaxidb.trip 
-    where month=1 
+     pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance
+    from nyctaxidb.trip
+    where month=1
     and pickup_longitude between -90 and -30
     and pickup_latitude between 30 and 90
     and dropoff_longitude between -90 and -30
@@ -563,7 +563,7 @@ Azure Machine Learning の[リーダー][reader] モジュールからダウン�
 さらに、クエリはデータをダウンサンプリングして、クエリの結果が Azure Machine Learning Studio に合うようにします。元のデータセットの約 1% だけが Studio にインポートされます。
 
 Azure Machine Learning でモデル作成用データを準備する *sample\_hive\_prepare\_for\_aml\_full.hql* ファイルの内容を以下に示します。
-		
+
 		set R = 3959;
 	    set pi=radians(180);
 
@@ -604,8 +604,8 @@ Azure Machine Learning でモデル作成用データを準備する *sample\_hi
 		--- now insert contents of the join into the above internal table
 
     	insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
-    	select 
-        t.medallion, 
+    	select
+        t.medallion,
         t.hack_license,
         t.vendor_id,
         t.rate_code,
@@ -623,12 +623,12 @@ Azure Machine Learning でモデル作成用データを準備する *sample\_hi
         t.dropoff_longitude,
         t.dropoff_latitude,
 		t.direct_distance,
-        f.payment_type, 
-        f.fare_amount, 
-        f.surcharge, 
-        f.mta_tax, 
-        f.tip_amount, 
-        f.tolls_amount, 
+        f.payment_type,
+        f.fare_amount,
+        f.surcharge,
+        f.mta_tax,
+        f.tip_amount,
+        f.tolls_amount,
         f.total_amount,
         if(tip_amount>0,1,0) as tipped,
         if(tip_amount=0,0,
@@ -638,8 +638,8 @@ Azure Machine Learning でモデル作成用データを準備する *sample\_hi
 
     	from
     	(
-        select 
-		medallion, 
+        select
+		medallion,
         hack_license,
         vendor_id,
         rate_code,
@@ -668,19 +668,19 @@ Azure Machine Learning でモデル作成用データを準備する *sample\_hi
         )t
         join
         (
-        select 
-        medallion, 
-        hack_license, 
-        vendor_id, 
-        pickup_datetime, 
-        payment_type, 
-        fare_amount, 
-        surcharge, 
-        mta_tax, 
-        tip_amount, 
-        tolls_amount, 
+        select
+        medallion,
+        hack_license,
+        vendor_id,
+        pickup_datetime,
+        payment_type,
+        fare_amount,
+        surcharge,
+        mta_tax,
+        tip_amount,
+        tolls_amount,
         total_amount
-        from nyctaxidb.fare 
+        from nyctaxidb.fare
         )f
         on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
         where t.sample_key<=0.01
@@ -719,7 +719,7 @@ Hive ディレクトリ プロンプトで次のコマンドを発行します�
 
 Hive クエリと[リーダー][reader] モジュールのスナップショットを次に示します。
 
-![](http://i.imgur.com/1eTYf52.png)
+![](./media/machine-learning-data-science-process-hive-walkthrough/1eTYf52.png)
 
 ここでは、ダウンサンプリングされたデータは既定のコンテナーに存在するため、Azure Machine Learning の Hive クエリは、"SELECT * FROM nyctaxidb.nyctaxi\_downsampled\_data" という非常に単純なものになります。
 
@@ -737,17 +737,17 @@ a.この問題では、ターゲット (またはクラス) ラベルは "tipped
 
 次のスナップショットは、特定の乗車でチップが支払われたかどうかを予測するための実験を示しています。
 
-![](http://i.imgur.com/QGxRz5A.png)
+![](./media/machine-learning-data-science-process-hive-walkthrough/QGxRz5A.png)
 
 b.この実験では、ターゲット ラベルの分布がほぼ 1:1 です。
 
 次のスナップショットは、二項分類の問題のための、チップのクラス ラベルの分布を示しています。
 
-![](http://i.imgur.com/9mM4jlD.png)
+![](./media/machine-learning-data-science-process-hive-walkthrough/9mM4jlD.png)
 
 その結果、次の図に示す 0.987 の AUC を取得します。
 
-![](http://i.imgur.com/8JDT0F8.png)
+![](./media/machine-learning-data-science-process-hive-walkthrough/8JDT0F8.png)
 
 **2.多クラス分類**: 以前に定義したクラスを使用して、乗車で支払われたチップの金額の範囲を予測します。
 
@@ -757,15 +757,15 @@ a.この問題では、ターゲット (またはクラス) ラベルは、5 つ
 
 次のスナップショットは、チップが少なくなる可能性の高い箱 ( クラス 0: チップ = $0、クラス 1 : チップ > $0 とチップ <= $5、クラス 2 : チップ > $5 とチップ <= $10、クラス 3 : チップ > $10 とチップ <= $20、クラス 4 : チップ > $20) を予測する実験を示しています。
 
-![](http://i.imgur.com/5ztv0n0.png)
+![](./media/machine-learning-data-science-process-hive-walkthrough/5ztv0n0.png)
 
 実際のテスト クラスの分布がどのようになるかを次に示します。クラス 0 とクラス 1 は一般的ですが、他のクラスはまれであることがわかります。
 
-![](http://i.imgur.com/Vy1FUKa.png)
+![](./media/machine-learning-data-science-process-hive-walkthrough/Vy1FUKa.png)
 
 b.この実験では、混同行列を使って、予測精度を確認します。一般的なイメージを以下に示します。
 
-![](http://i.imgur.com/cxFmErM.png)
+![](./media/machine-learning-data-science-process-hive-walkthrough/cxFmErM.png)
 
 一般的なクラスのクラス精度がかなり良い一方で、そのモデルはまれなクラスでは "学習" がうまくいっていないことに注意してください。
 
@@ -778,15 +778,15 @@ a.この問題では、ターゲット (またはクラス) ラベルは "tip\_a
 
 次のスナップショットは、支払われるチップの金額を予測する実験を示しています。
 
-![](http://i.imgur.com/11TZWgV.png)
+![](./media/machine-learning-data-science-process-hive-walkthrough/11TZWgV.png)
 
 b.回帰の問題については、予測や決定係数での二乗誤差を見ることで予測の精度を測定します。これらについて以下に示します。
 
-![](http://i.imgur.com/Jat9mrz.png)
+![](./media/machine-learning-data-science-process-hive-walkthrough/Jat9mrz.png)
 
 決定係数が 0.709 であり、これは約 71% という分散がモデル係数で説明されていることを意味しています。
 
-**重要な注意事項:** Azure Machine Learning の詳細と Azure Machine Learning にアクセスして使用する方法の詳細については、「[Azure Machine Learning とは](machine-learning-what-is-machine-learning.md)」をご覧ください。Azure Machine Learning の一連の実験を再生する非常に便利なリソースとして[ギャラリー](https://gallery.azureml.net/)があります。ギャラリーには、すべての実験についての説明があり、Azure Machine Learning の機能範囲が詳しく説明されています。
+**重要な注意事項:** Azure Machine Learning の詳細と Azure Machine Learning にアクセスして使用する方法の詳細については、「[Azure Machine Learning とは](machine-learning-what-is-machine-learning.md)」をご覧ください。Machine Learning の一連の実験を再生する非常に便利なリソースとして [Cortana Analytics ギャラリー](https://gallery.azureml.net/)があります。ギャラリーには、すべての実験についての説明があり、Azure Machine Learning の機能範囲が詳しく説明されています。
 
 ## ライセンス情報
 
@@ -809,6 +809,5 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 <!-- Module References -->
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
- 
 
-<!-----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

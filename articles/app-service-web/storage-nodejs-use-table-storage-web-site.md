@@ -29,11 +29,11 @@
 
 * npm (ノード パッケージ マネージャー) を使用してノード モジュールをインストールする方法
 
-* Azure テーブル サービスを使用する方法
+* Azure Table サービスを使用する方法
 
 * Azure CLI を使用して Web アプリを作成する方法
 
-このチュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースの "To DO リスト" アプリケーションを作成します。タスクはテーブル サービスに格納されます。
+このチュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースの "To DO リスト" アプリケーションを作成します。タスクは Table サービスに格納されます。
 
 完成したアプリケーションを次に示します。
 
@@ -72,7 +72,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 ##モジュールのインストールとスキャフォールディングの生成
 
-ここでは、新しい Node アプリケーションを作成し、npm を使用してモジュール パッケージを追加します。このアプリケーションでは、[Express] モジュールと [Azure] モジュールを使用します。Express モジュールは node の Model View Controller フレームワークを提供し、Azure モジュールはテーブル サービスへの接続を提供します。
+ここでは、新しい Node アプリケーションを作成し、npm を使用してモジュール パッケージを追加します。このアプリケーションでは、[Express] モジュールと [Azure] モジュールを使用します。Express モジュールは node の Model View Controller フレームワークを提供し、Azure モジュールは Table サービスへの接続を提供します。
 
 ### express のインストールとスキャフォールディングの生成
 
@@ -614,7 +614,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [Git リモート]: http://git-scm.com/docs/git-remote
 
 [MongoDB を使用する Node.js Web アプリ]: web-sites-nodejs-store-data-mongodb.md
-[Azure CLI]: ../xplat-cli.md
+[Azure CLI]: ../xplat-cli-install.md
 
 [Continuous deployment using GIT in Azure App Service]: web-sites-publish-source-control.md
 [azure]: https://github.com/Azure/azure-sdk-for-node
@@ -641,4 +641,4 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [Create and deploy a Node.js application to an Azure Web Site]: web-sites-nodejs-develop-deploy-mac.md
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

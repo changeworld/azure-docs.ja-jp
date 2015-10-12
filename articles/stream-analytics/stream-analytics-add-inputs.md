@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="入力の追加 | Microsoft Azure" 
-	description="入力の追加のラーニング パス セグメント。"
+	description="Stream Analytics ジョブへの入力の追加 | ラーニング パス セグメント。"
 	documentationCenter=""
 	services="stream-analytics"
 	authors="jeffstokes72" 
@@ -13,8 +13,9 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="09/09/2015" 
+	ms.date="09/29/2015" 
 	ms.author="jeffstok"/>
+
 
 # 入力を追加する
 
@@ -25,34 +26,45 @@ Azure Stream Analytics ジョブを 1 つ以上の入力に接続できます。
 
 Stream Analytics ジョブに入力を追加するには:
 
-1. Stream Analytics ジョブで、**[入力]** をクリックし、**[入力の追加]** をクリックします。
+1. Azure ポータルの Stream Analytics ジョブで、**[入力]** をクリックし、**[入力の追加]** をクリックします。
 
-    ![入力を追加する](./media/stream-analytics-add-inputs/1-stream-analytics-add-inputs.png)
+    ![入力の追加](./media/stream-analytics-add-inputs/1-stream-analytics-add-inputs.png)
+
+    Azure プレビュー ポータルの Stream Analytics ジョブで、**[入力]** タイルをクリックします。
+
+    ![Azure プレビュー ポータルでの入力の追加](./media/stream-analytics-add-inputs/7-stream-analytics-add-inputs.png)
 
 2. 入力の種類として、**[データ ストリーム]** または **[参照データ]** を指定します。
 
     ![データの追加](./media/stream-analytics-add-inputs/2-stream-analytics-add-inputs.png)
 
-3. データ ストリーム入力を作成する場合は、入力のソースの種類を指定します。参照データを作成する場合は、サポートされるのは BLOB ストレージだけなので、この画面はスキップされます。
+    ![Azure プレビュー ポータルでのデータの追加](./media/stream-analytics-add-inputs/8-stream-analytics-add-inputs.png)
+
+3. データ ストリーム入力を作成する場合は、入力のソースの種類を指定します。参照データを作成する場合は、現時点でサポートされるのは BLOB ストレージだけなので、この手順はスキップできます。
 
     ![データ ストリームの追加](./media/stream-analytics-add-inputs/3-stream-analytics-add-inputs.png)
 
+    ![Azure プレビュー ポータルでのデータ ストリームの追加](./media/stream-analytics-add-inputs/9-stream-analytics-add-inputs.png)
+
 4. [入力のエイリアス] ボックスに、この入力のわかりやすい名前を入力します。この名前は、後で入力を参照するためにジョブのクエリで使用されます。
 
-    データ ソースへの接続に必要なほかの接続プロパティを入力します。これらのフィールドは入力の種類およびソースの種類によって異なり、詳細については[こちら](stream-analytics-create-a-job.md.)で定義されています。
+    データ ソースに接続するために必要な他の接続プロパティを入力します。これらのフィールドは入力の種類とソースの種類によって異なります。詳細は[ここ](stream-analytics-create-a-job.md)に定義されています。
 
     ![イベント ハブの追加](./media/stream-analytics-add-inputs/4-stream-analytics-add-inputs.png)
 
 5. 入力データのシリアル化の設定を指定します。
 	- クエリを正しく動作させるには、受信データの **[イベントのシリアル化の形式]** を指定します。サポートされているシリアル化形式は、JSON、CSV、Avro です。
-	- データの **[Encoding]** を確認します。現時点でサポートされているエンコード形式は UTF-8 だけです。
+	- データの **[エンコード]** を確認します。現時点でサポートされているエンコード形式は UTF-8 だけです。
 
     ![データ シリアル化の設定](./media/stream-analytics-add-inputs/5-stream-analytics-add-inputs.png)
+
+    ![Azure プレビュー ポータルでのデータ シリアル化の設定](./media/stream-analytics-add-inputs/10-stream-analytics-add-inputs.png)
 
 6. 入力の作成が完了すると、Stream Analytics は入力ソースに接続できることを確認します。Notification Hub でテスト接続操作の状態を表示できます。
 
     ![接続テスト](./media/stream-analytics-add-inputs/6-stream-analytics-add-inputs.png)
 
+    ![Azure プレビュー ポータルでの接続テスト](./media/stream-analytics-add-inputs/11-stream-analytics-add-inputs.png)
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -65,4 +77,4 @@ Stream Analytics ジョブに入力を追加するには:
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure Stream Analytics の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

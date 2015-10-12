@@ -40,6 +40,8 @@ B2C ディレクトリでは、主に 2 つのモードでGraph API と通信し
 
 B2C ディレクトリが用意できたら、Azure AD Powershell コマンドレットを使用してサービス アプリケーションを作成する必要があります。最初に、[Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152) をダウンロードしてインストールします。次に、[64-bit Azure Active Directory Module for Windows Powershell](http://go.microsoft.com/fwlink/p/?linkid=236297) をダウンロードしてインストールします。
 
+> [AZURE.NOTE]B2C ディレクトリで Graph API を使用するには、以下の指示に従い、PowerShell を使用して専用のアプリケーションを登録する必要があります。Azure ポータルに登録済みの既存の B2C アプリケーションを再利用することはできません。これは Azure AD B2C プレビューの制限であり、近い将来、この制限は削除されます。その時点で、この記事が更新される予定です。
+
 Powershell モジュールをインストールした後、Powershell を開き、B2C ディレクトリに接続します。`Get-Credential` を実行すると、ユーザー名とパスワードの入力を求められます。B2C ディレクトリ管理者アカウントのユーザー名とパスワードを入力します。
 
 ```
@@ -91,7 +93,7 @@ B2C ディレクトリに対してユーザーの作成、読み取り、更新�
 
 ## サンプル コードをダウンロード、構成、ビルドする
 
-まず、サンプル コードをダウンロードして実行します。その後、バック グラウンドで何が起こっているかを調べることができます。[サンプル コードを .zip としてダウンロード](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip)するか、任意のディレクトリにクローンを作成できます。
+まず、サンプル コードをダウンロードして実行します。その後、バック グラウンドで何が起こっているかを調べることができます。[サンプル コードを .zip としてダウンロード](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip)するか、次のようにサンプル コードを選択したディレクトリに複製できます。
 
 ```
 git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
@@ -107,7 +109,9 @@ git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
 </appSettings>
 ```
 
-次に、`B2CGraphClient` ソリューションを右クリックしてサンプルをリビルドします。成功すると、実行可能な `B2C.exe` が `B2CGraphClient\bin\Debug` に配置されます。
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
+
+次に、`B2CGraphClient` ソリューションを右クリックしてサンプルをリビルドします。リビルドが正常に完了すると、実行可能な `B2C.exe` が `B2CGraphClient\bin\Debug` に配置されます。
 
 ## Graph API でユーザーの CRUD を使用する
 
@@ -145,7 +149,7 @@ public B2CGraphClient(string clientId, string clientSecret, string tenant)
 }
 ```
 
-例として、`B2C Get-User` コマンドを使用してみましょう。`Get-User` がそれ以外の入力なしで呼び出されると、CLI は `B2CGraphClient.GetAllUsers(...)` メソッドを呼び出します。このメソッドは、HTTP GET 要求を Graph API に送信する `B2CGraphClient.SendGraphGetRequest(...)` を呼び出します。それは、GET 要求を送信する前に、ADAL を使用してアクセス トークンを取得します。
+例として、`B2C Get-User` コマンドを使用してみましょう。`Get-User` がその他の入力なしで呼び出されると、CLI は `B2CGraphClient.GetAllUsers(...)` メソッドを呼び出します。このメソッドは、HTTP GET 要求を Graph API に送信する `B2CGraphClient.SendGraphGetRequest(...)` を呼び出します。それは、GET 要求を送信する前に、ADAL を使用してアクセス トークンを取得します。
 
 ```C#
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -158,7 +162,7 @@ public async Task<string> SendGraphGetRequest(string api, string query)
 
 ```
 
-このように、ADAL の `AuthenticationContext.AcquireToken(...)` メソッドを呼び出すことで、Graph API 用のアクセス トークンを取得できます。ADAL は、アプリケーションの ID を表す access\_token を返します。
+ご覧のように、ADAL の `AuthenticationContext.AcquireToken(...)` メソッドを呼び出すことで、Graph API 用のアクセス トークンを取得できます。ADAL は、アプリケーションの ID を表す access\_token を返します。
 
 ### ユーザーの読み取り
 
@@ -181,9 +185,9 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 - B2C ディレクトリに対しては、クエリ パラメーター `api-version=beta` を使用する必要があります。
 
 
-> [AZURE.NOTE]Azure AD Graph API のベータ版の機能はプレビュー段階です。ベータ版の詳細については、[この Graph API チームのブログの投稿](http://blogs.msdn.com/b/aadgraphteam/archive/2015/04/10/graph-api-versioning-and-the-new-beta-version.aspx)を参照してください。
+> [AZURE.NOTE]Azure AD Graph API のベータ版の機能はプレビュー段階です。ベータ版の詳細については、[Graph API チームのこのブログ投稿](http://blogs.msdn.com/b/aadgraphteam/archive/2015/04/10/graph-api-versioning-and-the-new-beta-version.aspx)をご覧ください。
 
-これらの詳細は、両方とも `B2CGraphClient.SendGraphGetRequest(...)` メソッド内で処理されます。
+これらの詳細は、どちらも `B2CGraphClient.SendGraphGetRequest(...)` メソッド内で処理されます。
 
 ```C#
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -232,11 +236,12 @@ Content-Length: 338
 	"passwordProfile": {
 		"password": "P@ssword!",
 		"forceChangePasswordNextLogin": false   // always set to false
-	}
+	},
+	"passwordPolicies": "DisablePasswordExpiration"
 }
 ```
 
-上記の要求に含まれる各プロパティは、コンシューマー ユーザーを作成するために必要です。`//` コメントは説明のために含まれています。実際の要求では使用しないください。
+上記の要求に含まれる各プロパティは、コンシューマー ユーザーを作成するために必要です。`//` コメントは説明のために含まれています。実際の要求には含めないでください。
 
 この要求の実行を確認するには、次のコマンドのいずれかを実行してみます。
 
@@ -245,11 +250,11 @@ Content-Length: 338
 > B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
-`Create-User` コマンドは、入力パラメーターとして `.json` ファイルを使用します。このファイルには、ユーザー オブジェクトの JSON 表現が含まれます。サンプル コードには、ニーズに合わせて変更できる 2 つの `.json` ファイルのサンプルが含まれています (`usertemplate-email.json` と `usertemplate-username.json`)。上記の必須フィールドに加えて、これらのファイルには、使用できる多数のオプション フィールドがあります。これらのフィールドの詳細については、[Azure AD Graph API のエンティティ リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#UserEntity)を参照してください。
+`Create-User` コマンドは、入力パラメーターとして `.json` ファイルを使用します。このファイルには、ユーザー オブジェクトの JSON 表現が含まれます。サンプル コードには、ニーズに合わせて変更できる 2 つの `.json` ファイルのサンプルが含まれています (`usertemplate-email.json` と `usertemplate-username.json`)。上記の必須フィールドに加えて、これらのファイルには、使用できる多数のオプション フィールドがあります。これらのフィールドの詳細については、[Azure AD Graph API のエンティティ リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#UserEntity)をご覧ください。
 
 この POST 要求が `B2CGraphClient.SendGraphPostRequest(...)` にどのように構成されているかを確認できます。
 
-- アクセス トークンを要求の `Authorization` ヘッダーにアタッチします。
+- アクセス トークンを要求の `Authorization` ヘッダーに添付します。
 - `api-version=beta` を設定します。
 - JSON ユーザー オブジェクトを要求の本文に含めます。
 
@@ -294,14 +299,14 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 
 `B2CGraphClient.SendGraphDeleteRequest(...)` メソッドを調べて、この要求がどのように送信されるかの詳細を確認してください。
 
-ユーザー管理に加え、Azure AD Graph API で実行できるアクションは他にも多数あります。「[Azure AD Graph REST API reference (Azure AD Graph REST API リファレンス)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」に、各アクションの詳細が要求の例と共に説明されています。
+ユーザー管理に加え、Azure AD Graph API で実行できるアクションは他にも多数あります。「[Azure AD Graph REST API reference (Azure AD Graph REST API リファレンス)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)」には、各アクションの詳細が要求の例と共に記載されています。
 
 
 ## カスタム属性の使用
 
 ほぼすべてのコンシューマー アプリケーションは、何らかの種類のカスタム ユーザー プロファイル情報を格納する必要があります。これを行う 1 つの方法は、B2C ディレクトリの中にカスタム属性を定義することです。これにより、その属性をユーザー オブジェクトの他のプロパティと同じように処理できます。属性の更新、属性の削除、属性によるクエリの実行、属性をサインイン トークンの中でクレームとして送信することができます。
 
-B2C ディレクトリの中にカスタム属性を定義するには、「[Azure Active Directory B2C プレビュー: カスタム属性を使用してコンシューマーに関する情報を収集する](active-directory-b2c-reference-custom-attr.md)」を参照してください。
+B2C ディレクトリ内でカスタム属性を定義するには、「[Azure Active Directory B2C プレビュー: カスタム属性を使用してコンシューマーに関する情報を収集する](active-directory-b2c-reference-custom-attr.md)」をご覧ください。
 
 B2C ディレクトリ内に定義されたカスタム属性は、B2CGraphClient を使用して表示できます。
 
@@ -328,7 +333,7 @@ B2C ディレクトリ内に定義されたカスタム属性は、B2CGraphClien
 }
 ```
 
-ユーザー オブジェクトのプロパティとして、`extension_55dc0861f9a44eb999e0a8a872204adb_Jersey_Number` などの完全名を使用できます。`.json` ファイルを、新しいプロパティと値を使用して更新し、次を実行します。
+ユーザー オブジェクトのプロパティとして、`extension_55dc0861f9a44eb999e0a8a872204adb_Jersey_Number` などの完全名を使用できます。新しいプロパティとその値で `.json` ファイルを更新し、次のコマンドを実行します。
 
 ```
 > B2C Update-User <object-id-of-user> <path-to-json-file>
@@ -343,4 +348,4 @@ B2C ディレクトリ内に定義されたカスタム属性は、B2CGraphClien
 
 Graph API を使用した B2C ディレクトリに対する操作に関して、ご質問やご要望がある場合は、いつでもご遠慮なくお知らせください。 記事に対するコメントや GitHub リポジトリのコード例の問題をお寄せください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

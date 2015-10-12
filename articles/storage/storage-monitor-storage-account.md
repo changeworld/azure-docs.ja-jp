@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/03/2015"
+	ms.date="09/27/2015"
 	ms.author="tamram"/>
 
 # Azure ポータルでのストレージ アカウントの監視
@@ -24,14 +24,14 @@
 
 > [AZURE.NOTE]Azure ポータルで監視データを調査すると、追加のコストがかかります。詳細については、「<a href="http://msdn.microsoft.com/library/azure/hh360997.aspx">Storage Analytics と課金</a>」を参照してください。<br />
 
-> Azure ファイル サービスは、現時点では Storage Analytics をサポートしていません。
+> 現在、Azure File ストレージは、Storage Analytics のメトリックをサポートしますが、ログ記録はまだサポートされていません。[Azure プレビュー ポータル](https://ms.portal.azure.com)から Azure File ストレージのメトリックを有効にすることができます。
 
-> Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](../storage-monitoring-diagnosing-troubleshooting/)」をご覧ください。
+> Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../storage-monitoring-diagnosing-troubleshooting/)」をご覧ください。
 
 
 ## 方法: ストレージ アカウントの監視の設定
 
-1. [Azureポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
+1. [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
 2. **[構成]** をクリックして、BLOB、テーブル、キューの各サービスの **[監視]** 設定まで下にスクロールします。
 
@@ -122,7 +122,7 @@
 
 6. すべてのサービスについてメトリックを選択したら、[OK] \(チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
 
-7. テーブルからメトリックを削除するには、メトリックをクリックして選択し、**[メトリックの削除]** をクリックします
+7. テーブルからメトリックを削除するには、メトリックをクリックして選択し、**[メトリックの削除]** をクリックします。
 
 	![DeleteMetric](./media/storage-monitor-storage-account/Storage_DeleteMetric.png)
 
@@ -157,4 +157,4 @@
 
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について](http://msdn.microsoft.com/library/azure/hh343262.aspx)」を参照してください。
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

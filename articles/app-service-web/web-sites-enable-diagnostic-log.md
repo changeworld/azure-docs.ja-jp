@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure App Service の Web アプリの診断ログの有効化"
 	description="診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。"
-	services="app-service\web"
+	services="app-service"
 	documentationCenter=".net"
 	authors="cephalin"
 	manager="wpickett"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="app-service"
-	ms.workload="web"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
@@ -116,7 +116,7 @@ Azure コマンド ライン インターフェイスを使用してログ フ�
 
 これにより、"webappname" という名前の Web アプリのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
 
-> [AZURE.NOTE]Azure コマンド ライン インターフェイス (Azure CLI) をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure CLI の使用方法](../xplat-cli.md)」に関するページをご覧ください。
+> [AZURE.NOTE]Azure コマンド ライン インターフェイス (Azure CLI) をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure CLI の使用方法](../xplat-cli-install.md)」に関するページをご覧ください。
 
 ## Application Insights でログを表示する方法
 
@@ -175,7 +175,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 	azure site log tail webappname --path http
 
-> [AZURE.NOTE]Azure コマンド ライン インターフェイスをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、[Azure コマンド ライン インターフェイスの使用方法](../xplat-cli.md)に関するページをご覧ください。
+> [AZURE.NOTE]Azure コマンド ライン インターフェイスをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、[Azure コマンド ライン インターフェイスの使用方法](../xplat-cli-install.md)に関するページをご覧ください。
 
 ##<a name="understandlogs"></a> 診断ログを読む方法
 
@@ -265,4 +265,4 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

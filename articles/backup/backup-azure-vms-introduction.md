@@ -122,4 +122,4 @@ Azure 仮想マシンのバックアップを開始する前に、Azure VM エ�
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

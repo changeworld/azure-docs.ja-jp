@@ -1,27 +1,29 @@
 <properties
  pageTitle="HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け"
-	description="HDInsight で Storm と HBase を使用して、別々の時間に到着するイベントを関連付ける方法について説明します。"
-	services="hdinsight"
-	documentationCenter=""
-	authors="Blackmist"
-	manager="paulettm"
-	editor="cgronlun"
+ description="HDInsight で Storm と HBase を使用して、別々の時間に到着するイベントを関連付ける方法について説明します。"
+ services="hdinsight"
+ documentationCenter=""
+ authors="Blackmist"
+ manager="paulettm"
+ editor="cgronlun"
 	tags="azure-portal"/>
 
 <tags
  ms.service="hdinsight"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="big-data"
-	ms.date="09/02/2015"
-	ms.author="larryfr"/>
+ ms.devlang="dotnet"
+ ms.topic="article"
+ ms.tgt_pltfrm="na"
+ ms.workload="big-data"
+ ms.date="09/02/2015"
+ ms.author="larryfr"/>
 
 # HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け
 
 Apache Storm の永続的なデータ ストアを使用して、別々の時刻に到着するデータのエントリを関連付けることができます。たとえば、ユーザー セッションのログイン イベントとログアウト イベントをリンクして、セッションの継続期間を計算します。
 
 このドキュメントでは、ユーザー セッションのログイン イベントとログアウト イベントを追跡し、セッションの期間を計算する基本的な C# Storm トポロジを作成する方法を学習します。このトポロジは、永続的なデータ ストアとして HBase を使用します。HBase では、履歴データに対してバッチのクエリを実行し、特定の期間に開始または終了したユーザー セッションの数などの追加の情報を生成することもできます。
+
+[AZURE.INCLUDE [windows-only](../../includes/hdinsight-windows-only.md)]
 
 ## 前提条件
 
@@ -33,7 +35,7 @@ Apache Storm の永続的なデータ ストアを使用して、別々の時刻
 
 ## アーキテクチャ
 
-![Diagram of the data flow through the topology](./media/hdinsight-storm-correlation-topology/correlationtopology.png)
+![トポロジ経由のデータ フロー図](./media/hdinsight-storm-correlation-topology/correlationtopology.png)
 
 イベントを関連付けるには、イベント ソースの共通の識別子が必要です。たとえば、ユーザー ID、セッション ID、または a) 一意で、b) Storm に送信されたすべてのデータに含まれている他のデータが必要です。この例では、GUID 値を使用してセッション ID を表します。
 
@@ -109,7 +111,7 @@ HBase では、データは、次のスキーマと設定を使用してテー�
 
 2. **[ソリューション エクスプローラー]**で、**[SessionInfo]** プロジェクトを右クリックし、**[プロパティ]** を選択します。
 
-	![Screenshot of menu with properties selected](./media/hdinsight-storm-correlation-topology/selectproperties.png)
+	![メニューとプロパティが選択されたスクリーンショット](./media/hdinsight-storm-correlation-topology/selectproperties.png)
 
 3. **[設定]** を選択し、次の値を設定します。
 
@@ -123,7 +125,7 @@ HBase では、データは、次のスキーマと設定を使用してテー�
 
 	-	HBaseTableColumnFamily: 列ファミリ名
 
-	![Image of settings dialog](./media/hdinsight-storm-correlation-topology/settings.png)
+	![[設定] ダイアログの画像](./media/hdinsight-storm-correlation-topology/settings.png)
 
 5. ソリューションを実行するメッセージが表示されたら、'c' キーを選択し、HBase クラスター上でテーブルを作成します。
 
@@ -151,7 +153,7 @@ HBase では、データは、次のスキーマと設定を使用してテー�
 
 5.	**[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。
 
-	![Image of the submit to storm menu item](./media/hdinsight-storm-correlation-topology/submittostorm.png)
+	![[Storm に送信] メニュー項目の画像](./media/hdinsight-storm-correlation-topology/submittostorm.png)
 
 6.	**[トポロジの送信]** ダイアログ ボックスで、このトポロジを実行する Storm クラスターを選択します。
 
@@ -159,7 +161,7 @@ HBase では、データは、次のスキーマと設定を使用してテー�
 
 7.	トポロジがアップロードされてクラスターに送信されると、**[Storm トポロジ ビュー]** が開き、現在実行中のトポロジが表示されます。**[CorrelationTopology]** を選択し、ページ右上にある [更新] ボタンを使用して、トポロジ情報を更新します。
 
-	![Image of the topology view](./media/hdinsight-storm-correlation-topology/topologyview.png)
+	![トポロジ ビューの画像](./media/hdinsight-storm-correlation-topology/topologyview.png)
 
 	トポロジがデータの生成を開始すると、**[Emitted]** 列の値がインクリメントされます。
 
@@ -198,4 +200,4 @@ START イベントと同じ方法で END イベントを検索できます。た
 Storm の例の詳細については、「[HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

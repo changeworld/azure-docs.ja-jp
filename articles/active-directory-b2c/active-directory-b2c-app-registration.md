@@ -24,8 +24,7 @@
 
 コンシューマーのサインアップおよびサインインを受け付けるアプリケーションを作成するには、最初にアプリケーションを Azure Active Directory B2C ディレクトリに登録する必要があります。[ここ](active-directory-b2c-get-started.md)で説明されている手順を使用して、ディレクトリを取得します。この記事のすべての手順を実行した場合、B2C 機能ブレードがスタート画面にピン留めされているはずです。
 
-    > [AZURE.IMPORTANT]
-    You cannot use applications registered in the **Applications** tab on the [Azure Portal](https://manage.windowsazure.com/) for this.
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## B2C 機能ブレードに移動する
 
@@ -62,4 +61,4 @@ B2C 機能ブレードをスタート画面にピン留めしてある場合、B
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

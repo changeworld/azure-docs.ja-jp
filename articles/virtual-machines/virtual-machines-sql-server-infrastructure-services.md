@@ -32,6 +32,8 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 
 サブスクリプションにサインアップした後、Azure で SQL Server 仮想マシンをデプロイする最も簡単な方法は、[Microsoft Azure 管理ポータルで SQL Server マシンのギャラリー イメージをプロビジョニングする](virtual-machines-provision-sql-server.md)方法です。それらのイメージには、VM の価格での SQL Server のライセンスが含まれます。
 
+>[AZURE.NOTE][新しいポータル](https://manage.windowsazure.com)を使用して、SQL Server Virtual Machines をプロビジョニングおよび管理します。これにより、既定で Premium Storage が使用されるように設定され、自動修正、自動バックアップ、および AlwaysOn 構成が提供されます。
+
 次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。
 
 |SQL Server のバージョン|オペレーティング システム|SQL Server のエディション|
@@ -44,13 +46,14 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 |SQL Server 2014 SP1|Windows Server 2012 R2|Enterprise、Standard、Web|
 |SQL Server 2016 CTP|Windows Server 2012 R2|評価|
 
->[AZURE.NOTE]データ ウェアハウスおよびトランザクション ワークロード用の仮想マシンのギャラリー イメージ (前に記載のない) は間もなく廃止され、ギャラリーから削除される予定です。前述の表に記載された標準のイメージを使用して、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」の推奨事項に従って、固有のワークロードのパフォーマンスを最適化してください。
+>[AZURE.NOTE]データ ウェアハウスおよびトランザクション ワークロード用の仮想マシンのギャラリー イメージ (前に記載のない) は間もなく廃止され、ギャラリーから削除される予定です。前の表の標準イメージを使用し、特定のワークロードのパフォーマンスを最適化してください。
 
 これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure Virtual Machine を作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure Virtual Machine で SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure のコンピューティングおよびストレージ [コスト](http://azure.microsoft.com/pricing/details/virtual-machines)のみを支払います。
 
-これらのプロビジョニングと構成の初期段階での一般的なタスクは、次のとおりです。
+SQL Server イメージに最適な仮想マシン構成の設定を決定するには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」を確認してください。実稼働ワークロードでは、SQL Server Enterprise Edition の最小推奨仮想マシン サイズは **DS3** であり、Standard edition の最小推奨仮想マシン サイズは **DS2** です。
 
-- [Azure VM における SQL Server のパフォーマンスに関するベスト プラクティスの確認](virtual-machines-sql-server-performance-best-practices.md)
+パフォーマンスのベスト プラクティスを確認するほかに、以下の初期タスクがあります。
+
 - [Azure VM における SQL Server のセキュリティに関するベスト プラクティスの確認](virtual-machines-sql-server-security-considerations.md)
 - [接続のセットアップ](virtual-machines-sql-server-connectivity.md)
 
@@ -93,7 +96,7 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 |ゲスト アカウント|無効|
 |セキュリティが強化された Windows ファイアウォール|反対に、|
 |.NET Framework|バージョン 4|
-|ディスク|選択したサイズにより、構成できるデータ ディスクの数が制限されます。「[Azure の仮想マシンのサイズ](virtual-machines-size-specs.md)」をご覧ください。|
+|ディスク|選択したサイズにより、構成できるデータ ディスクの数が制限されます。[Azure の仮想マシンのサイズ](virtual-machines-size-specs.md)に関するページをご覧ください。|
 
 ### SQL Server
 
@@ -147,4 +150,4 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 - [Azure Virtual Machines](virtual-machines-about.md) 
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

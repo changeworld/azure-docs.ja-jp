@@ -24,6 +24,7 @@
   1. HDInsight クラスターで汎用アプリケーション履歴サーバーが有効化されました。これは、完了したアプリケーションに関する汎用的な情報の格納と取得を処理する YARN タイムライン サーバーのコンポーネントです。
   2. Azure HDInsight .Net SDK の API が使用できるようになりました。これにより、クラスターで実行するアプリケーションをプログラムで列挙し、関連するアプリケーションやコンテナーに限定したログ (テキスト形式) をダウンロードして、アプリケーションに問題が発生した際のデバッグに役立てられます。
 
+> [AZURE.NOTE]このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースの HDInsight クラスター上の YARN ログへのアクセスの詳細については、「[Access YARN application logs on Linux-based Hadoop on HDInsight (HDInsight の Linux ベースの Hadoop 上の YARN アプリケーション ログにアクセスする)](hdinsight-hadoop-access-yarn-app-logs-linux.md)」を参照してください。
 
 ## 前提条件
 
@@ -173,4 +174,4 @@ YARN はアプリケーションのスケジュール設定/監視からリソ�
 [binary-format]: https://issues.apache.org/jira/browse/HADOOP-3315
 [YARN-concepts]: http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

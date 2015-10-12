@@ -25,7 +25,7 @@
 
 [Visual Studio Application Insights](http://azure.microsoft.com/services/application-insights) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します ([デバイス アプリと Java サーバーも対象になります][start])。
 
-![Example performance monitoring charts](./media/app-insights-asp-net/10-perf.png)
+![パフォーマンス監視グラフの例](./media/app-insights-asp-net/10-perf.png)
 
 
 #### 開始する前に
@@ -57,7 +57,7 @@ Visual Studio に新しいプロジェクトを作成するとき、Application 
 
 #### セットアップ オプション
 
-初めての場合には、Microsoft Azure プレビュー版にログインまたはサインインするように求められます(Visual Studio Online アカウントとは異なります)。
+初めての場合には、Microsoft Azure にログインまたはサインインするように求められます
 
 このアプリがより大きなアプリケーションの一部である場合は、**[設定の構成]** を使用して、他のコンポーネントと同じリソース グループに配置することをお勧めします。
 
@@ -248,4 +248,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="Logic Apps での HTTP リスナーとコネクタの使用 | Microsoft Azure App Service"
-	description="HTTP リスナーと HTTP アクションのコネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-	services="app-service\logic"
-	documentationCenter=".net,nodejs,java"
-	authors="anuragdalmia"
-	manager="dwrede"
-	editor=""/>
+   description="HTTP リスナーと HTTP アクションのコネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+   services="app-service\logic"
+   documentationCenter=".net,nodejs,java"
+   authors="anuragdalmia"
+   manager="dwrede"
+   editor=""/>
 
 <tags
    ms.service="app-service-logic"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="integration"
-	ms.date="08/23/2015"
-	ms.author="prkumar"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="integration"
+   ms.date="08/23/2015"
+   ms.author="prkumar"/>
 
 
 # HTTP リスナーと HTTP アクションの使用を開始し、ロジック アプリにこれらを追加する
@@ -53,7 +53,7 @@ HTTP リソースに直接接続して、HTTP 要求をリッスンし、HTTP We
 API アプリが作成されると、ロジック アプリのトリガーとして HTTP リスナーを使用できます。そのためには、次の手順を実行する必要があります。
 
 4.	新しいロジック アプリを作成します。
-5.	[トリガーとアクション] を選択してロジック アプリ デザイナーを開き、フローを構成します。HTTP リスナーがギャラリーの一覧に表示されます。それを選択します。
+5.	[トリガーとアクション] を選択して Logic Apps デザイナーを開き、フローを構成します。HTTP リスナーがギャラリーの一覧に表示されます。それを選択します。
 6.	これで、HTTP メソッドと、フローをトリガーするリスナーを必要とする相対 URL を設定できます。![][4] ![][5]
 
 7.	完全な URI を取得するには、HTTP リスナーをダブルクリックしてその構成設定を表示し、API アプリの "ホスト" の URL をコピーします。![][6]
@@ -61,7 +61,7 @@ API アプリが作成されると、ロジック アプリのトリガーとし
 9.	最後に、応答を送信するには、もう一つの HTTP リスナーを追加して、HTTP 応答の送信アクションを選択します。要求 ID に HTTP リスナーから取得した要求 ID を設定して、返す対象の応答の本文と HTTP ステータスに入力します。![][9]
 
 ## HTTP アクションの使用
-HTTP アクションは、ロジック アプリがネイティブでサポートしており、使用可能にするために最初に API アプリを作成する必要はありません。ロジック アプリの任意の場所に HTTP アクションを挿入し、呼び出しの URI、ヘッダーおよび本文を選択できます。HTTP アクションはクライアント側のセキュリティの複数のオプションをサポートします。これらのオプションを使用する場合は、[この記事](http://aka.ms/logicapphttpauth)を参照してください。
+HTTP アクションは、Logic Apps がネイティブでサポートしており、使用可能にするために最初に API アプリを作成する必要はありません。ロジック アプリの任意の場所に HTTP アクションを挿入し、呼び出しの URI、ヘッダーおよび本文を選択できます。HTTP アクションはクライアント側のセキュリティの複数のオプションをサポートします。これらのオプションを使用する場合は、[この記事](http://aka.ms/logicapphttpauth)を参照してください。
 
 HTTP アクションの出力は、ヘッダーと本文です。これらは、その他のアクションとコネクタの出力を使用する場合と同様、フローのさらに下流で使用することができます。
 
@@ -71,6 +71,8 @@ HTTP アクションの出力は、ヘッダーと本文です。これらは、
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
+
+> [AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <!--Image references-->
 [1]: ./media/app-service-logic-connector-http/1.png
@@ -84,4 +86,4 @@ HTTP アクションの出力は、ヘッダーと本文です。これらは、
 [9]: ./media/app-service-logic-connector-http/9.png
 [10]: ./media/app-service-logic-connector-http/10.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

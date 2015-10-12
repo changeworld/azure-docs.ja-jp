@@ -34,11 +34,13 @@
 + [モバイル エンゲージメント iOS SDK]
 + プッシュ通知証明書 (.p12)。Apple Dev Center で入手できます
 
+> [AZURE.NOTE]このチュートリアルでは、Swift バージョン 2.0 を使用します。
+
 このチュートリアルを完了することは、iOS アプリケーションの他のすべての Mobile Engagement チュートリアルの前提条件です。
 
 > [AZURE.IMPORTANT]このチュートリアルを完了することは、その他すべての IOS アプリの Mobile Engagement チュートリアルの前提条件であり、これを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
-##<a id="setup-azme"></a>iOS アプリ用にモバイル エンゲージメントを設定する
+##<a id="setup-azme"></a>iOS アプリ用に Mobile Engagement を設定する
 
 [AZURE.INCLUDE [ポータルで Mobile Engagement アプリを作成する](../../includes/mobile-engagement-create-app-in-portal.md)]
 
@@ -74,11 +76,10 @@
 
 	![][4]
 
-8. ブリッジ ヘッダー ファイルを編集して、AzME OBJECTIVE-C コードを Swift コードに公開し、次の imports を追加します。
+8. ブリッジ ヘッダー ファイルを編集して、Mobile Engagement Objective-C コードを Swift コードに公開し、次の imports を追加します。
 
 		/* Mobile Engagement Agent */
 		#import "AEModule.h"
-		#import "AEPushDelegate.h"
 		#import "AEPushMessage.h"
 		#import "AEStorage.h"
 		#import "EngagementAgent.h"
@@ -87,6 +88,8 @@
 		#import "AEIdfaProvider.h"
 
 9. [ビルドの設定] で、Swift コンパイラの Objective-C Bridging Header のビルド設定で Swift コンパイラ - コード生成にこのヘッダーへのパスがあることを確認します。パスの例を次に示します。 **$(SRCROOT)/MySuperApp/MySuperApp-Bridging-Header.h (パスによる)**
+
+	![][6]
 
 10. アプリの *[接続情報]* ページで Azure ポータルに戻り、[接続文字列] をコピーします。
 
@@ -105,13 +108,9 @@
 
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
-1. **ViewController.h** ファイルを開き、**EngagementViewController.h** をインポートします。
+1. **ViewController.swift** ファイルを開き、**ViewController** の基本クラスを **EngagementViewController** に変更します。
 
-    `# import "EngagementViewController.h"`
-
-2. **ViewController** インターフェイスのスーパー クラスを **EngagementViewController** に置き換えます。
-
-	`@interface ViewController : EngagementViewController`
+	`class ViewController : EngagementViewController {`
 
 ##<a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 
@@ -132,10 +131,9 @@
 3. SDK を抽出したフォルダーに移動します
 4. `EngagementReach` フォルダーを選択します
 5. [追加] をクリックします。
-6. ブリッジ ヘッダー ファイルを編集して、AzME Objective-C Reach ヘッダーを公開し、次の imports を追加します。
+6. ブリッジ ヘッダー ファイルを編集して、Mobile Engagement Objective-C Reach ヘッダーを Swift コードに公開し、次の imports を追加します。
 
 		/* Mobile Engagement Reach */
-		#import "AE_TBXML.h"
 		#import "AEAnnouncementViewController.h"
 		#import "AEAutorotateView.h"
 		#import "AEContentViewController.h"
@@ -154,6 +152,7 @@
 		#import "AEReachModule.h"
 		#import "AEReachNotifAnnouncement.h"
 		#import "AEReachPoll.h"
+		#import "AEReachPollQuestion.h"
 		#import "AEViewControllerUtil.h"
 		#import "AEWebAnnouncementJsBridge.h"
 
@@ -171,16 +170,16 @@
 ###アプリで APNS プッシュ通知を受信できるようにする
 1. 次の行を `didFinishLaunchingWithOptions` メソッドに追加します。
 
-		if application.respondsToSelector("registerUserNotificationSettings:")
+		/* Ask user to receive push notifications */
+		if #available(iOS 8.0, *)
 		{
-			application.registerUserNotificationSettings(UIUserNotificationSettings(
-			forTypes: (UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound),
-			categories: nil))
-			application.registerForRemoteNotifications()
+		   let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound], categories: nil)
+		   application.registerUserNotificationSettings(settings)
+		   application.registerForRemoteNotifications()
 		}
 		else
 		{
-			application.registerForRemoteNotificationTypes(UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound)
+		   application.registerForRemoteNotificationTypes([UIRemoteNotificationType.Alert, UIRemoteNotificationType.Badge, UIRemoteNotificationType.Sound])
 		}
 
 2. 次のように、`didRegisterForRemoteNotificationsWithDeviceToken` メソッドを追加します。
@@ -210,5 +209,6 @@
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-swift-get-started/add-header-file.png
 [5]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
+[6]: ./media/mobile-engagement-ios-swift-get-started/add-bridging-header.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

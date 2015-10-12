@@ -43,25 +43,25 @@ HDInsight は、急激に拡大を続けている Apache Hadoop テクノロジ 
 
 Azure HDInsight は、**Linux** または **Windows** を基盤 OS として使用し、Hadoop クラスターをクラウドにデプロイしてプロビジョニングします。
 
-* **Linux での HDInsight (プレビュー)** - Ubuntu 上の Hadoop クラスター。Linux または Unix に詳しい場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで、これを使用します。
+* **Linux での HDInsight** - Ubuntu 上の Hadoop クラスター。Linux または Unix に詳しい場合、または Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで、これを使用します。
 
-* **Windows での HDInsight** - Windows Server 上の Hadoop クラスター。Windows に詳しい場合、または .NET や他の Windows 機能との統合が必要な場合は、既存の Windows ベースの Hadoop ソリューションから移行することで、これを使用します。
+* **Windows での HDInsight** - Windows Server 上の Hadoop クラスター。Windows に詳しい場合、既存の Windows ベースの Hadoop ソリューションから移行する場合、またはクラスターで .NET や他の Windows 専用テクノロジを使用する場合は、これを使用します。
 
 この 2 つを比較した内容を次に表に示します。
 
 カテゴリ | Linux での Hadoop | Windows での Hadoop
 ---------| -------------------| --------------------
 **クラスターの OS** | Ubuntu 12.04 Long Term Support (LTS) | Windows Server 2012 R2
-**クラスターの種類** | Hadoop は、 | Hadoop、HBase、Storm
-**デプロイ** | Azure ポータル、Azure CLI、Azure PowerShell | Azure ポータル、Azure CLI、Azure PowerShell、HDInsight .NET SDK
+**クラスターの種類** | Hadoop、HBase、Storm | Hadoop、HBase、Storm
+**デプロイ** | Azure プレビュー ポータル、Azure CLI、Azure PowerShell | Azure ポータル、Azure プレビュー ポータル、Azure CLI、Azure PowerShell、HDInsight .NET SDK
 **クラスター UI** | Ambari | クラスター ダッシュボード
-**リモート アクセス** | Secure Shell (SSH) | リモート デスクトップ プロトコル (RDP)
+**リモート アクセス** | Secure Shell (SSH)、REST API、ODBC、JDBC | リモート デスクトップ プロトコル (RDP)、REST API、ODBC、JDBC
 
 
 
 ### Hadoop、HBase、Storm、Spark、およびカスタマイズしたクラスター
 
-HDInsight には、Hadoop、HBase、Storm、および Spark 用のクラスター構成が用意されています。あるいは、<a href="http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-customize-cluster/" target="_blank">スクリプト アクションを使用してクラスターをカスタマイズ</a>することもできます。
+HDInsight には、Hadoop、HBase、または Storm というクラスター構成が用意されています。また、[スクリプト アクションを使用してクラスターをカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)することもできます。
 
 * **Hadoop** ("クエリ" ワークロード): [HDFS](#HDFS) を使用した信頼できるデータ ストレージと、データの処理および分析を同時に行うシンプルな [MapReduce](#mapreduce) プログラミング モデルを利用できます。
 
@@ -69,13 +69,33 @@ HDInsight には、Hadoop、HBase、Storm、および Spark 用のクラスタ�
 
 * **<a  target="_blank" href="https://storm.incubator.apache.org/">Apache Storm</a>** ("ストリーム" ワークロード) は、大量のデータ ストリームを高速処理するための分散型リアルタイム計算システムです。Storm は、HDInsight で管理されるクラスターとして提供されます。「[HDInsight (Hadoop) での Storm と HBase を使ったセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)」を参照してください。
 
-* **<a  target="_blank" href="http://spark.apache.org/">Apache Spark</a>**: ビッグデータ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。「[Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)」をご覧ください。
+#### カスタマイズ スクリプトの例
+
+スクリプト アクションは、クラスターのプロビジョニング中に実行されるスクリプトです。スクリプト アクションを使用して、クラスターに追加コンポーネントをインストールできます。Windows ベースの HDInsight クラスターでは、スクリプト アクションは PowerShell スクリプトです。Linux ベースのクラスターでは Bash スクリプトです。
+
+HDInsight チームによって提供されるスクリプトの例は次のとおりです。
+
+* [Hue](hdinsight-hadoop-hue-linux.md)
+
+	> [AZURE.NOTE]Hue スクリプトは、Linux ベースのクラスターでのみ使用できます。
+	
+* [Giraph](hdinsight-hadoop-giraph-install-linux.md)
+
+* [R](hdinsight-hadoop-r-scripts-linux.md)
+
+* [Solr](hdinsight-hadoop-solr-install-linux.md)
+
+* [Spark](hdinsight-hadoop-spark-install-linux.md)
+
+独自のスクリプト アクションを開発する方法については、「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
 
 ## Hadoop コンポーネントとは
 
 以前の構成全体に加え、HDInsight クラスターには次の各コンポーネントも含まれています。
 
 * **[Ambari](#ambari)** - クラスターのプロビジョニング、管理、および監視。
+
+	> [AZURE.NOTE]Windows ベースの HDInsight クラスターには、Ambari REST API のサブセットだけが提供されます。
 
 * **[Avro](#avro)** (Microsoft .NET Library for Avro) - Microsoft.NET 環境向けのデータ シリアル化。
 
@@ -101,7 +121,9 @@ HDInsight には、Hadoop、HBase、Storm、および Spark 用のクラスタ�
 
 ###<a name="ambari"></a>Ambari
 
-Apache Ambari は、Apache Hadoop クラスターのプロビジョニング、管理、および監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。「[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」、「[Ambari API を使用した HDInsight の Hadoop クラスターの監視](hdinsight-monitor-use-ambari-api.md)」、「<a target="_blank" href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md">Apache Ambari API リファレンス</a>」をご覧ください。
+Apache Ambari は、Apache Hadoop クラスターのプロビジョニング、管理、および監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。Linux ベースの HDInsight クラスターは、Ambari Web UI と Ambari REST API の両方を提供し、Windows ベースのクラスターは、REST API のサブセットを提供します。
+
+「[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」、「[Ambari API を使用した HDInsight の Hadoop クラスターの監視](hdinsight-monitor-use-ambari-api.md)」、「<a target="_blank" href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md">Apache Ambari API リファレンス</a>」をご覧ください。
 
 ### <a name="avro"></a>Avro (Microsoft .NET Library for Avro)
 
@@ -153,11 +175,11 @@ MapReduce の詳細については、Hadoop Wiki で「<a target="_blank" href="
 
 HDInsight の Hadoop は、Azure クラウド エコシステムの一部としていくつかのメリットを提供します。その一部を次に示します。
 
-* Hadoop クラスターの自動プロビジョニング。HDInsight クラスターは、手動で Hadoop クラスターを構成するよりも作成がはるかに簡単です。詳細については、「[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)」に関するページをご覧ください。
+* Hadoop クラスターの自動プロビジョニング。HDInsight クラスターは、手動で Hadoop クラスターを構成するよりも作成がはるかに簡単です。詳細については、「[HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」に関するページをご覧ください。
 
 * 最新の Hadoop コンポーネント。詳細については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能][component-versioning]」を参照してください。
 
-* クラスターの高い可用性と信頼性。「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability.md)」を参照してください。
+* クラスターの高い可用性と信頼性。「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
 * Hadoop 互換オプションの Azure BLOB ストレージによって実現される効率的で経済的なデータ ストレージ。詳細については、「[HDInsight の Hadoop での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
 
@@ -175,11 +197,15 @@ HDInsight の Hadoop を使うその他のメリットについては、[HDInsig
 この HDInsight の Hadoop とビッグ データ分析への入門は、次のリソースを使用して作成されました。
 
 
-### Linux での HDInsight (プレビュー)
+### Linux での HDInsight
+
+* [HDInsight ドキュメント](http://azure.microsoft.com/documentation/services/hdinsight/) - Azure HDInsight のドキュメント ページ。記事やビデオなどのリソースへのリンクも記載しています。
 
 * [Linux での HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - Linux に HDInsight Hadoop クラスターをプロビジョニングし、サンプルの Hive クエリを実行するためのクイック スタート チュートリアル。
 
-* [カスタム オプションを使用した Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md) - Azure ポータル、Azure CLI、Azure PowerShell のカスタム オプションを使用して Linux に HDInsight Hadoop クラスターをプロビジョニングする方法について説明します。
+* [HDInsight での Linux ベースの Storm の概要](hdinsight-apache-storm-tutorial-get-started-linux.md): HDInsight クラスターに Storm をプロビジョニングし、サンプルの Storm トポロジを実行するためのクイック スタート チュートリアル。
+
+* [Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md): Azure ポータル、Azure CLI、または Azure PowerShell を使用して、Linux に HDInsight Hadoop クラスターをプロビジョニングする方法について説明します。
 
 * [Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md) - Azure でプロビジョニングされた Hadoop Linux クラスターの使用に関するクイック ヒントを示します。
 
@@ -248,4 +274,4 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 [zookeeper]: http://zookeeper.apache.org/
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

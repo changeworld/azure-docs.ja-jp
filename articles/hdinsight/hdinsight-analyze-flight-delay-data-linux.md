@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="08/12/2015" 
 	ms.author="larryfr"/>
 
 #HDInsight での Hive を使用したフライト遅延データの分析
 
-Linux ベースの HDInsight (プレビュー) で Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートする方法について説明します。
+Linux ベースの HDInsight で Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートする方法について説明します。
 
 > [AZURE.NOTE]このドキュメントの各部分は Windows ベースの HDInsight クラスター (Python と Hive など) で使用できますが、多くの手順は Linux ベースのクラスターに固有のものです。Windows ベースのクラスターでの手順については、「[HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
 
@@ -33,7 +33,7 @@ Linux ベースの HDInsight (プレビュー) で Hive を使用してフライ
 
 - __Azure SQL Database__。保存先データ ストアとして Azure SQL Database を使用します。SQL Database がまだない場合、SQL Database を作成するには、「[How to create and configure an Azure SQL Database (Azure SQL Database を作成して構成する方法)](../sql-database/sql-database-create-configure.md)」をご覧ください。
 
-- __Azure CLI__。Azure CLI をインストールしていない場合、詳しい手順については、「[Azure CLI のインストールと構成](../xplat-cli.md)」をご覧ください。
+- __Azure CLI__。Azure CLI をインストールしていない場合、詳しい手順については、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
 
 ##フライト データのダウンロード
@@ -305,4 +305,4 @@ Azure SQL Database を作成するには、次の手順に従います。これ�
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

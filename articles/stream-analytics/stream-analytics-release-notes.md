@@ -13,10 +13,22 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="09/16/2015" 
+	ms.date="09/29/2015" 
 	ms.author="jeffstok"/>
 
 #Microsoft Stream Analytics リリース ノート
+
+## Stream Analytics の 2015 年 9 月 29 日付けリリースに関するノート ##
+
+このリリースには、次の更新プログラムが含まれています。
+
+タイトル | 説明
+---|---
+Azure IoT Suite のパブリック プレビュー | Stream Analytics は、Azure IoT Suite のパブリック プレビューに含まれています。
+Azure プレビュー ポータルの統合 | Microsoft Azure 管理ポータルで引き続き使用されている Stream Analytics が、[Azure プレビュー ポータル](http://azure.microsoft.com/overview/preview-portal/)にも統合されました。現在、プレビュー ポータルの Stream Analytics 機能は Microsoft Azure 管理ポータルで提供されている機能のサブセットであり、ブラウザ内クエリ テスト、Power BI 出力構成、およびアクセス権を持つサブスクリプション内の新しい入力および出力リソースの参照や作成に関するサポートは提供されていません。
+DocumentDB 出力のサポート | Stream Analytics のジョブを [DocumentDB](http://azure.microsoft.com/services/documentdb/) に出力できるようになりました。
+IoT Hub 入力に対するサポート | Stream Analytics ジョブで、IoT Hub からデータを取り込めるようになりました。
+多様なイベントに対する TIMESTAMP BY | 単一のデータ ストリームに、異なるフィールドにタイムスタンプを持つ複数のイベント タイプが含まれている場合、式と共に [TIMESTAMP BY](http://msdn.microsoft.com/library/mt573293.aspx) を使用してケースごとに異なるタイムスタンプ フィールドを指定できるようになりました。
 
 ## Stream Analytics の 2015 年 9 月 10 日付けリリースに関するノート ##
 
@@ -24,7 +36,7 @@
 
 タイトル|説明
 ---|---
-PowerBI グループのサポート|他の PowerBI ユーザーとデータを共有できるようにするために、Stream Analytics ジョブで PowerBI アカウント内の [PowerBI グループ](stream-analytics-define-outputs.md#power-bi)に書き込むことができるようになりました。
+PowerBI グループのサポート|他の Power BI ユーザーとデータを共有できるようにするために、Stream Analytics ジョブで Power BI アカウント内の [PowerBI グループ](stream-analytics-define-outputs.md#power-bi)に書き込むことができるようになりました。
 
 ## Stream Analytics の 2015 年 8 月 20 日付けリリースに関するノート ##
 
@@ -33,8 +45,8 @@ PowerBI グループのサポート|他の PowerBI ユーザーとデータを�
 タイトル|説明
 ---|---
 Last 関数の追加 |Stream Analytics ジョブで [Last](http://msdn.microsoft.com/library/mt421186.aspx) 関数が使用できるようになりました。これにより、特定の期間内のイベント ストリームで最新のイベントを取得することができます。
-新しい配列関数|配列関数 [GetArrayElement](http://msdn.microsoft.com/library/mt270218.aspx)、[GetArrayElements](http://msdn.microsoft.com/library/mt298451.aspx)、[GetArrayLength](http://msdn.microsoft.com/library/mt270226.aspx) が使用できるようになりました。
-新しいレコード関数|レコード関数 [GetRecordProperties](http://msdn.microsoft.com/library/mt270221.aspx)、[GetRecordPropertyValue](http://msdn.microsoft.com/library/mt270220.aspx) が使用できるようになりました。
+新しい配列関数|配列関数 [GetArrayElement](http://msdn.microsoft.com/library/mt270218.aspx)、[GetArrayElements](http://msdn.microsoft.com/library/mt298451.aspx)、[GetArrayLength](http://msdn.microsoft.com/library/mt270226.aspx) を使用できるようになりました。
+新しいレコード関数|レコード関数 [GetRecordProperties](http://msdn.microsoft.com/library/mt270221.aspx)、[GetRecordPropertyValue](http://msdn.microsoft.com/library/mt270220.aspx) を使用できるようになりました。
 
 ## Stream Analytics の 2015 年 7 月 30 日付けリリースに関するノート ##
 
@@ -88,8 +100,8 @@ PowerBI データセットにはテーブルを 1 つしか含めることがで
 - [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 - [Azure Stream Analytics の使用](../stream.analytics.get.started.md)
 - [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-- [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+- [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Stream Analytics 管理 REST API 参照](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

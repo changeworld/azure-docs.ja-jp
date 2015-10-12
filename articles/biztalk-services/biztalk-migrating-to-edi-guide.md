@@ -1,5 +1,5 @@
 <properties   
-	pageTitle="BizTalk Services への BizTalk Server EDI ソリューションの移行: テクニカル ガイド"
+	pageTitle="BizTalk Services への BizTalk Server EDI ソリューションの移行: テクニカル ガイド | Microsoft Azure"
 	description="MABS (Microsoft Azure BizTalk Services) への EDI の移行"
 	services="biztalk-services"
 	documentationCenter="na"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/01/2015"
+	ms.date="09/24/2015"
 	ms.author="mandia"/>
 
 
@@ -142,4 +142,4 @@ Microsoft Azure BizTalk Services は定期的なマイルストーンで更新�
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

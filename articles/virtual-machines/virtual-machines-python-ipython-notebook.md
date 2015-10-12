@@ -258,8 +258,9 @@ IPython Notebook には、Azure 上で Python エコシステムの機能に対�
 
 IPython の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介して Visual Studio 内部で使用することもできます。PTVS は、Microsoft が提供する無料のオープン ソース プラグインです。このプラグインによって、Visual Studio を Python の高度な開発環境として利用することができます。この開発環境には、IntelliSense を備えた高度なエディター、デバッグ、プロファイル、並列コンピューティング統合の機能が含まれています。
 
+## 次のステップ
 
-
+詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
 [Tornado]: http://www.tornadoweb.org/ "Tornado"
 [PyZMQ]: https://github.com/zeromq/pyzmq "PyZMQ"
@@ -272,4 +273,4 @@ IPython の主要機能は、[Python Tools for Visual Studio][] (PTVS) を介し
 [Python 2.7]: http://www.python.org/download
 [OpenSSL]: http://slproweb.com/products/Win32OpenSSL.html
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

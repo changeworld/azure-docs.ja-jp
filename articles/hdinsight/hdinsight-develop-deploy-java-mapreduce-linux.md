@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [pig セレクター](../../includes/hdinsight-maven-mapreduce-selector.md)]
 
-このドキュメントでは、Apache Maven を使用して MapReduce アプリケーションを作成し、HDInsight クラスターの Linux ベースの Hadoop にこれをデプロイして実行する手順について説明します。
+このドキュメントでは、Apache Maven を使用して MapReduce アプリケーションを作成し、HDInsight クラスターの Linux ベースの Hadoop にこれをデプロイして実行する手順について説明します。HDInsight クラスターでの Windows ベースの Hadoop の使用の詳細については、「[HDInsight での Hadoop 用 Java MapReduce プログラムの開発 (Windows)](hdinsight-develop-deploy-java-mapreduce.md)」を参照してください。
 
 ##<a name="prerequisites"></a>前提条件
 
@@ -31,9 +31,9 @@
 
 - [Apache Maven](http://maven.apache.org/)
 
-- **Azure サブスクリプション**: [Azure 無料試用版の取得](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)に関するページをご覧ください。
+- **Azure サブスクリプション**: [Azure 無料評価版の取得](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)に関するページをご覧ください。
 
-- **Azure CLI**: 詳細については、[Azure CLI のインストールおよび構成](../xplat-cli.md)に関するページをご覧ください。
+- **Azure CLI**: 詳細については、[Azure CLI のインストールおよび構成](../xplat-cli-install.md)に関するページをご覧ください。
 
 ##環境変数を構成する
 
@@ -88,7 +88,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 		  <scope>provided</scope>
 		</dependency>
 
-	このコードは、プロジェクトで特定のバージョン (<version> 内に記載) のライブラリ ( <artifactId> 内に記載) を必要とすることを Maven に通知しています。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar)を使用して、その他の情報を表示できます。
+	このコードは、プロジェクトで特定のバージョン (&lt;version> 内に記載) のライブラリ ( &lt;artifactId> 内に記載) を必要とすることを Maven に通知しています。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar)を使用して、その他の情報を表示できます。
 
 	`<scope>provided</scope>` は、これらの依存関係はアプリケーションに付属せず、実行時に HDInsight クラスターによって提供されることを Maven に通知しています。
 
@@ -267,7 +267,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 このドキュメントでは、Java MapReduce ジョブを作成する方法を説明しました。HDInsight を使用する他の方法については、次のドキュメントを参照してください。
 
 - [HDInsight での Hive の使用][hdinsight-use-hive]
-- [HDInsight での Pig の使用][hdinsight-use-pig]
+- [HDInsight の Hadoop での Pig の使用][hdinsight-use-pig]
 - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
 詳細については、[Java デベロッパー センター](/develop/java/)も参照してください。
@@ -300,4 +300,4 @@ Java と JDK をインストールするときに、次のような環境変数�
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

@@ -12,14 +12,14 @@ ms.service="search"
 ms.devlang="rest-api" 
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na" 
-ms.date="09/21/2015" 
+ms.date="09/29/2015" 
 ms.author="heidist" />
 
-#インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)
+#インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)#
 
-> [AZURE.NOTE]この記事では、[2015-02-28-Preview](search-api-2015-02-28-preview.md) のインデクサーについて説明します。現在のところ、[MSDN](http://go.mirosoft.com/fwlink/p/?LinkID=528173) に記載されている `2015-02-28` バージョンとここに記載する `2015-02-28-Preview` バージョンの唯一の違いは、このプレビューでは *fieldMappings* を提供するという点です。この機能の説明は「[インデクサーの作成](#CreateIndexer)」にあります。
+> [AZURE.NOTE]この記事では、[2015-02-28-Preview](./search-api-2015-02-28-preview) のインデクサーについて説明します。現在、[MSDN](http://go.mirosoft.com/fwlink/p/?LinkID=528173) の `2015-02-28` バージョンと、ここで説明する `2015-02-28-Preview` バージョンとの間に違いはありません。この API に変更がない場合でも、この記事では `2015-02-28-Preview` の完全なドキュメント セットを提供します。
 
-## 概要
+## 概要 ##
 
 Azure Search は一部の共通データ ソースと直接統合できます。データにインデックスを作成するためにコードを記述する必要はありません。これをセットアップするために、Azure Search API を呼び出し、**インデクサー**と**データ ソース**を作成し、管理できます。
 
@@ -42,7 +42,7 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 
 インデクサーとデータ ソースのリソースに関連する上限については、「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
-## 一般的な使用フロー
+## 一般的な使用フロー ##
 
 特定の `data source` または `indexer` リソースに簡単な HTTP 要求 (POST、GET、PUT、DELETE) を実行することでインデクサーとデータ ソースを作成し、管理できます。
 
@@ -63,9 +63,9 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 <!-- MSDN has 2 art files plus a API topic link list -->
 
 
-## データ ソースの作成
+## データ ソースの作成 ##
 
-HTTP POST 要求を実行し、Azure Search サービス内に新しいデータ ソースを作成できます。
+Azure Search では、インデクサーでデータ ソースが使用され、ターゲット インデックスのアドホックまたはスケジュールされたデータ更新用の接続情報が提供されます。HTTP POST 要求を実行し、Azure Search サービス内に新しいデータ ソースを作成できます。
 	
     POST https://[service name].search.windows.net/datasources?api-version=[api-version]
     Content-Type: application/json
@@ -75,7 +75,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいデータ
 
     PUT https://[service name].search.windows.net/datasources/[datasource name]?api-version=[api-version]
 
-**注**: 許可されるデータ ソースの最大数は価格レベルによって異なります。無料サービスの場合、最大 3 つのデータ ソースが許可されます。Standard サービスの場合、50 のデータ ソースが許可されます。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+**注**: 許可されるデータ ソースの最大数は価格レベルによって異なります。無料サービスの場合、最大 3 つのデータ ソースが許可されます。Standard サービスの場合、50 のデータ ソースが許可されます。詳細については、「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
 **要求**
 
@@ -125,7 +125,8 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 		
 - `container`:
 	- 必須の `name` プロパティにより、インデックスが作成されるテーブルまたはビュー (Azure SQL データ ソースの場合) あるいはコレクション (DocumentDB データ ソースの場合) が指定されます。 
-	- DocumentDB データ ソースは任意の `query` プロパティもサポートします。このプロパティにより、Azure Search がインデックスを作成できるフラット スキーマに任意の JSON ドキュメント レイアウトをフラット化するクエリを指定できます。   
+	- SQL データ ソースでは、dbo. などのスキーマのプレフィックスを省略して、コンテナーがテーブルまたはビューの名前だけで構成されるようにします。
+	- DocumentDB データ ソースは任意の `query` プロパティをサポートします。このプロパティにより、Azure Search がインデックスを作成できるフラット スキーマに任意の JSON ドキュメント レイアウトをフラット化するクエリを指定できます。   
 - 任意の `dataChangeDetectionPolicy` と `dataDeletionDetectionPolicy` の説明は下にあります。
 
 <a name="DataChangeDetectionPolicies"></a> **データ変更検出ポリシー**
@@ -211,7 +212,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 要求成功の場合: 201 作成されました。
 
 <a name="UpdateDataSource"></a>
-## データ ソースの更新
+## データ ソースの更新 ##
 
 HTTP PUT 要求を使用して既存のデータ ソースを更新できます。要求 URI に更新するデータ ソースの名前を指定します。
 
@@ -230,7 +231,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 **注:** 一部のプロパティは既存のデータ ソースで更新できません。たとえば、既存のデータ ソースの種類は変更できません。
 
 <a name="ListDataSource"></a>
-## データ ソースの一覧表示
+## データ ソースの一覧表示 ##
 
 **データ ソースの一覧表示**操作は Azure Search サービスのデータ ソースの一覧を返します。
 
@@ -269,7 +270,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 これは、Search サービスにデータ ソースがたくさんある場合、帯域幅を節約する便利な方法となります。
 
 <a name="GetDataSource"></a>
-## データ ソースの取得
+## データ ソースの取得 ##
 
 **データ ソースの取得**操作は Azure Search からデータ ソース定義を取得します。
 
@@ -304,7 +305,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 **注** この API を呼び出すときは `Accept` 要求ヘッダーを `application/json;odata.metadata=none` に設定しないでください。設定すると、応答から `@odata.type` 属性が省略され、さまざまな種類のデータ変更/データ削除検出ポリシーを区別できなくなります。
 
 <a name="DeleteDataSource"></a>
-## データ ソースの削除
+## データ ソースの削除 ##
 
 **データ ソースの削除**操作は Azure Search サービスからデータ ソースを削除します。
 
@@ -322,7 +323,7 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 状態コード: 応答の成功に対して「204 コンテンツがありません」が返されます。
 
 <a name="CreateIndexer"></a>
-## インデクサーの作成
+## インデクサーの作成 ##
 
 HTTP POST 要求を実行し、Azure Search サービス内に新しいインデクサーを作成できます。
 	
@@ -334,7 +335,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=[api-version]
 
-**注**: 許可されるインデクサーの最大数は価格レベルによって異なります。無料サービスの場合、最大 3 つのインデクサーが許可されます。Standard サービスの場合、50 のインデクサーが許可されます。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))](https://msdn.microsoft.com/library/azure/dn798934.aspx)」を参照してください。
+**注**: 許可されるインデクサーの最大数は価格レベルによって異なります。無料サービスの場合、最大 3 つのインデクサーが許可されます。Standard サービスの場合、50 のインデクサーが許可されます。詳細については、「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
 `api-version` は必須です。現行バージョンは `2015-02-28` です。[Azure Search バージョン管理](https://msdn.microsoft.com/library/azure/dn864560.aspx)に代替バージョンに関する情報を含む詳細があります。
 
@@ -355,14 +356,15 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
         "targetIndexName" : "Required. The name of an existing index",
         "schedule" : { Optional. See Indexing Schedule below. },
         "parameters" : { Optional. See Indexing Parameters below. },
-        "fieldMappings" : { Optional. See Field Mappings below. }
+        "fieldMappings" : { Optional. See Field Mappings below. },
+        "disabled" : Optional boolean value indicating whether the indexer is disabled. False by default.  
 	}
 
 **インデクサーのスケジュール**
 
 インデクサーには、必要に応じてスケジュールを指定できます。スケジュールが存在する場合、インデクサーはスケジュールに従って定期的に実行されます。スケジュールには次の属性があります。
 
-- `interval`: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。使用されるパターンは、`P(nD)(T(nH)(nM))` です。たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。 
+- `interval`: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。使用されるパターンは、`P[nD][T[nH][nM]]` です。たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。 
 
 - `startTime`: 必須。インデクサーの実行を開始する UTC 日時。
 
@@ -370,9 +372,9 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 インデクサーには任意でパラメーターを指定し、インデクサーの動作を変えることができます。パラメーターはすべて任意です。
 
-- `maxFailedItems`: インデックス作成失敗がこの項目数に到達すると、そのインデクサー実行は失敗であると見なされます。既定値は 0 です。失敗した項目に関する情報は[インデクサー状態の取得](#GetIndexerStatus)操作で返されます。 
+- `maxFailedItems`: インデックス作成失敗がこの項目数に到達すると、そのインデクサー実行は失敗であるとみなされます。既定値は 0 です。失敗した項目に関する情報は[インデクサー状態の取得](#GetIndexerStatus)操作で返されます。 
 
-- `maxFailedItemsPerBatch`: バッチごとのインデックス作成失敗がこの項目数に到達すると、そのインデクサー実行は失敗であると見なされます。既定値は 0 です。
+- `maxFailedItemsPerBatch`: バッチごとのインデックス作成失敗がこの項目数に到達すると、そのインデクサー実行は失敗であるとみなされます。既定値は 0 です。
 
 - `base64EncodeKeys`: ドキュメント キーを base 64 でエンコードするかどうかを指定します。Azure Search では、ドキュメント キーの文字に制約があります。ただし、ソース データの値には無効な文字を含めることができます。そのような値にドキュメント キーとしてインデックスを作成する必要がある場合、このフラグを true に設定できます。既定値は `false` です。
 
@@ -401,7 +403,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 たとえば、ソース フィールドに文字列 `["red", "white", "blue"]` が含まれている場合、`Collection(Edm.String)` 型のターゲット フィールドに `"red"`、`"white"`、`"blue"` の 3 つの値が入力されます。
 
-注: `targetFieldName` プロパティは任意です。省略した場合、`sourceFieldName` 値が使用されます。
+`targetFieldName` プロパティは任意です。省略した場合、`sourceFieldName` 値が使用されます。
 
 <a name="CreateIndexerRequestExamples"></a> **要求本文の例**
 
@@ -422,7 +424,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 
 <a name="UpdateIndexer"></a>
-## インデクサーの更新
+## インデクサーの更新 ##
 
 HTTP PUT 要求を使用して既存のインデクサーを更新できます。要求 URI に更新するインデクサーの名前を指定します。
 
@@ -444,7 +446,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 
 <a name="ListIndexers"></a>
-## インデクサーの一覧表示
+## インデクサーの一覧表示 ##
 
 **インデクサーの一覧表示**操作は Azure Search サービスのインデクサーの一覧を返します。
 
@@ -487,7 +489,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 
 <a name="GetIndexer"></a>
-## インデクサーの取得
+## インデクサーの取得 ##
 
 **インデクサーの取得** 操作は Azure Search からインデクサーの定義を取得します。
 
@@ -515,7 +517,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 
 <a name="DeleteIndexer"></a>
-## インデクサーの削除
+## インデクサーの削除 ##
 
 **インデクサーの削除**操作は Azure Search サービスからインデクサーを削除します。
 
@@ -533,7 +535,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 状態コード: 応答の成功に対して「204 コンテンツがありません」が返されます。
 
 <a name="RunIndexer"></a>
-## インデクサーの実行
+## インデクサーの実行 ##
 
 スケジュールに従って定期的に実行されるだけでなく、**インデクサーの実行**操作を実行して、オンデマンドでインデクサーを呼び出すこともできます。
 
@@ -549,7 +551,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 状態コード: 応答の成功に対して「202 受理されました」が返されます。
 
 <a name="GetIndexerStatus"></a>
-## インデクサー状態の取得
+## インデクサー状態の取得 ##
 
 **インデクサー状態の取得**操作は、インデクサーの現在の状態と実行の履歴を取得します。
 
@@ -617,7 +619,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 - `endTime`: この実行を終了した UTC 時刻。実行が進行中の場合、この値は設定されません。
 
-- `errors`: 項目レベルのエラーがあれば、その一覧。
+- `errors`: 項目レベルのエラーがあれば、その一覧。各エントリには、ドキュメント キー(`key` プロパティ) とエラー メッセージ (`errorMessage` プロパティ) が含まれています。
 
 - `itemsProcessed`: この実行の間にインデクサーがインデックス作成を試行したデータ ソース項目 (テーブル行など) の数。
 
@@ -635,15 +637,14 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 - `inProgress` は、インデクサー実行が進行中であることを示します。
 
-- `transientFailure` は、インデクサー実行が失敗したことを示します。詳細については、`errorMessage` プロパティを参照してください。エラーの修正にはユーザーの介在が必要になる場合とならない場合があります。たとえば、
-- データ ソースとターゲット インデックスの間にスキーマの互換性がない問題を修正する場合はユーザーの介在が必要ですが、データ ソースの一時的なダウンタイムの場合は必要ありません。スケジュールがあれば、スケジュールに基づいてインデクサーの呼び出しが続行されます。 
+- `transientFailure` は、インデクサー実行が失敗したことを示します。詳細については、`errorMessage` プロパティを参照してください。エラーには、それを修正するのに人間の介入が必要なものと不要なものがあります。たとえば、データ ソースとターゲット インデックス間のスキーマの互換性を修正するにはユーザーのアクションが必要ですが、データ ソースが一時的にダウンしている場合はユーザーのアクションは不要です。スケジュールがあれば、スケジュールに基づいてインデクサーの呼び出しが続行されます。
 
 - `persistentFailure` は、インデクサーでエラーが発生し、ユーザーの介在を必要していることを示します。スケジュールされているインデクサーの実行は停止します。問題を解決した後に、インデクサーのリセット API を使用し、スケジュールされている実行を再開します。
 
 - `reset` は、インデクサーをリセットする API (下記参照) の呼び出しによりインデクサーがリセットされたことを示します。
 
 <a name="ResetIndexer"></a>
-## インデクサーのリセット
+## インデクサーのリセット ##
 
 **インデクサーのリセット**操作は、インデクサーに関連付けられている変更追跡の状態をリセットします。リセットすることで、インデックス再作成を最初から始めたり (データ ソース スキーマが変更された場合など)、インデクサーに関連付けられているデータ ソースのデータ変更追跡ポリシーを変えたりできます。
 
@@ -658,7 +659,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 状態コード: 応答の成功に対して「204 コンテンツがありません」が返されます。
 
-## JSON データ型と Azure Search データ型の間のマッピング
+## JSON データ型と Azure Search データ型の間のマッピング ##
 
 <table style="font-size:12">
 <tr>
@@ -725,7 +726,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-## JSON データ型と Azure Search データ型間のマッピング
+## JSON データ型と Azure Search データ型間のマッピング ##
 
 <table style="font-size:12">
 <tr>
@@ -775,4 +776,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

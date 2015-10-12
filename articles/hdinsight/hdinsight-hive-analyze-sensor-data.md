@@ -38,7 +38,7 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
 
 * Microsoft Excel 2013
 
-	> [AZURE.NOTE]Microsoft Excel は、[Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=JA-JP&rs=JA-JP&ad=US) を使用したデータ視覚化のために使用します。
+	> [AZURE.NOTE]Microsoft Excel は、[Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=ja-JP&rs=ja-JP&ad=US) を使用したデータ視覚化のために使用します。
 
 * [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/download/details.aspx?id=40886)
 
@@ -54,4 +54,4 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
 
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

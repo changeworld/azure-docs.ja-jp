@@ -184,4 +184,4 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 [サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-load-samples.md
 [コードを開発したり]: ./articles/sql-data-warehouse-overview-develop/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

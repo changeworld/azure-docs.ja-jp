@@ -58,7 +58,7 @@ Web サイトを作成する Azure サブスクリプションの名前。
 
 ## WebDeployPackage
 
-Web サイトに発行する Web デプロイ パッケージへのパス。Visual Studio で Web の発行ウィザードを使用して、このパッケージを作成できます。詳細については、「[方法: Visual Studio で Web デプロイ パッケージを作成する](http://go.microsoft.com/fwlink/p/?LinkID=623089)」を参照してください。
+Web サイトに発行する Web デプロイ パッケージへのパス。Visual Studio で Web の発行ウィザードを使用して、このパッケージを作成できます。詳細については、「[Azure Cloud Services と ASP.NET を使ってみる](http://go.microsoft.com/fwlink/p/?LinkID=623089)」を参照してください。
 
 |パラメーター|既定値|
 |---|---|
@@ -97,7 +97,7 @@ true の場合、スクリプトからのメッセージは出力ストリーム
 
 ## 解説
 
-スクリプトを使用して開発とテストの環境を作成する方法の詳細については、「[Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](https://msdn.microsoft.com/library/azure/dn642480.aspx)」を参照してください。
+スクリプトを使用して開発とテストの環境を作成する方法の詳細については、「[Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](vs-azure-tools-publishing-using-powershell-scripts.md)」をご覧ください。
 
 JSON 構成ファイルではデプロイ対象の詳細が指定されます。この中には、Web サイトの名前やユーザー名など、プロジェクトの作成時に指定した情報が含まれます。また、プロビジョニングを行うデータベースがある場合はそれも含まれます。次のコードは JSON 構成ファイルの例を示しています。
 
@@ -127,6 +127,6 @@ JSON 構成ファイルは、デプロイ対象を変更するように編集で
 
 ## 次のステップ
 
-[Publish-WebApplicationVM (Windows PowerShell スクリプト)](https://msdn.microsoft.com/library/azure/dn689112.aspx)
+詳細については、「[Publish-WebApplicationVM (Windows PowerShell スクリプト)](vs-azure-tools-publish-webapplicationvm.md)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

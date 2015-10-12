@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="09/21/2015"
+   ms.date="09/24/2015"
    ms.author="alkohli"/>
 
 # StorSimple ソフトウェア、高可用性、ネットワークの要件
@@ -152,7 +152,7 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 |TCP 443 (HTTPS)<sup>3</sup>| アウト | WAN | あり |<ul><li>送信ポートは、クラウド内のデータにアクセスするために使用されます。</li><li>送信 Web プロキシはユーザーが構成可能です。</li><li>システムの更新を許可するには、コントローラーの固定 IP アドレスに対してこのポートも開いている必要があります。</li></ul>|
 |UDP 53 (DNS) | アウト | WAN | 場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) | アウト | WAN | 場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
-| TCP 9354 | アウト | WAN | 場合によっては、メモを参照してください。 |送信ポートは、デバイスと通信するために StorSimple Manager サービスによって使用されます。このポートは、現在のネットワークが HTTP 1.1 を使用したインターネット接続をサポートしていない場合 (たとえば、HTTP 1.0 ベースのプロキシ サーバーを使用している場合)、必須です。<br> プロキシ サーバー経由で接続する場合の詳細については、[サービス バス要件](https://msdn.microsoft.com/library/azure/ee706729.aspx)に関するページを参照してください。 |
+| TCP 9354 | アウト | WAN | 場合によっては、メモを参照してください。 |送信ポートは、StorSimple Manager サービスと通信するために StorSimple デバイスによって使用されます。このポートは、現在のネットワークが HTTP 1.1 を使用したインターネット接続をサポートしていない場合 (たとえば、HTTP 1.0 ベースのプロキシ サーバーを使用している場合)、必須です。<br> プロキシ サーバー経由で接続する場合の詳細については、[サービス バス要件](https://msdn.microsoft.com/library/azure/ee706729.aspx)に関するページを参照してください。 |
 | 3260 (iSCSI) | [ | LAN | いいえ | このポートは、iSCSI を介してデータにアクセスするために使用されます。|
 | 5985 | [ | LAN | いいえ | 受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によってを使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 | 5986 | [ | LAN | いいえ | このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
@@ -187,6 +187,8 @@ StorSimple ソリューションの最適なパフォーマンスを得るため
 
 - iSCSI とクラウドのアクセスに対してデバイスに専用のネットワーク インターフェイスを置くことで、iSCSI とクラウド トラフィックを分離します。詳細については、StorSimple デバイスで[ネットワーク インターフェイスを変更する](storsimple-modify-device-config.md#modify-network-interfaces)方法を参照してください。
 
+- ネットワーク インターフェイスには、Link Aggregation Protocol (LACP) 構成を使用しないでください。このような構成はサポートされていません。
+
 ## 次のステップ
 
 - [StorSimple システムの制限の詳細](storsimple-limits.md)
@@ -195,4 +197,4 @@ StorSimple ソリューションの最適なパフォーマンスを得るため
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

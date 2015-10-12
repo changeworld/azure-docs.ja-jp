@@ -6,7 +6,7 @@
    authors="rashimg"
    manager="mwinkle"
    editor="cgronlun"
-	tags="azure-portal"/>
+   tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -22,7 +22,9 @@
 
 既定では、Hadoop クラスターのパフォーマンスは最適化されていません。この記事では、クエリに適用できる最も一般的な Hive パフォーマンス最適化の方法について説明します。
 
+
 [AZURE.INCLUDE [preview-portal](../../includes/hdinsight-azure-preview-portal.md)]
+
 
 * [HDInsight の Hadoop に対する Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query-v1.md)。
 
@@ -59,7 +61,7 @@ Tez はより高速です。それは次の理由によります。
 
 	set hive.execution.engine=tez;
 
-Tez は、プロビジョニング時に有効にする必要があります。Tez が有効になっている Hadoop クラスターのプロビジョニング用のサンプル Azure PowerShell スクリプトを次に示します。
+Windows ベースの HDInsight クラスターの場合は、プロビジョニング時に Tez を有効にする必要があります。Tez が有効になっている Hadoop クラスターのプロビジョニング用のサンプル Azure PowerShell スクリプトを次に示します。
 
 
 	$clusterName = "[HDInsightClusterName]"
@@ -83,6 +85,10 @@ Tez は、プロビジョニング時に有効にする必要があります。T
 	Set-AzureHDInsightDefaultStorage -StorageAccountName "$defaultStorageAccountName.blob.core.windows.net" -StorageAccountKey $defaultStorageAccountKey -StorageContainerName $defaultStorageContainerName |
 	Add-AzureHDInsightConfigValues -Hive $hiveConfig |
 	New-AzureHDInsightCluster -Name $clusterName -Location $location -Credential $hdiCredential
+
+    
+> [AZURE.NOTE]Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
+    
 
 ## Hive パーティション分割
 
@@ -220,4 +226,4 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

@@ -106,6 +106,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
         // for privileges on both the GSM and the shards themselves.
     } 
  
+別の方法として、Powershell を使用して新しいシャード マップ マネージャーを作成できます。[こちら](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)の例を利用できます。
 
 ### シャード マップ管理資格情報
 
@@ -199,7 +200,7 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
             } 
         } 
  
-別の方法として、PowerShell スクリプトを使用して同じ結果を得ることができます。
+別の方法として、PowerShell スクリプトを使用して同じ結果を得ることができます。 [こちら](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)で、いくつかのPowerShell のサンプルを入手できます。
 
 シャード マップを設定した後は、データ アクセス アプリケーションを作成するか、またはマップに適合させることができます。**マップのレイアウト**を変更する必要があるまで、マップの設定または操作を再度行う必要はありません。
 
@@ -252,4 +253,4 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

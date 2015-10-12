@@ -190,4 +190,4 @@ FROM    <External Table Name>
 [Azure Storage のドキュメント]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/
 [ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

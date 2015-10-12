@@ -105,7 +105,9 @@ Azure PowerShell の使用方法については、「[Azure PowerShell の使用
 
 Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サービスをデプロイおよび管理するためのコマンド ライン ツールのセットです。Azure CLI のインストール方法については、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
 
+## 次のステップ
 
+詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
 
 
 [install-php]: http://www.php.net/manual/en/install.php
@@ -128,4 +130,4 @@ Azure CLI は、Azure Websites や Azure Virtual Machines などの Azure サー
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

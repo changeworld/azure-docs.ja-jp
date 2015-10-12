@@ -11,9 +11,9 @@
 	ms.service="mobile-services"
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-windows-phone"
-	ms.devlang="dotnet"
+	ms.devlang="dotnet" 
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/28/2015"
 	ms.author="glenga"/>
 
 # クライアントからのカスタム API 呼び出し
@@ -60,4 +60,4 @@
 
 [ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

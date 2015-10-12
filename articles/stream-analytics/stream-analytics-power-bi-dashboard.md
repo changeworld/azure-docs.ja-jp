@@ -1,19 +1,20 @@
 <properties 
-	pageTitle="Stream Analytics の Power BI ダッシュ ボード | Microsoft Azure"
-	description="リアルタイム ストリーミング Power BI ダッシュ ボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。"
-	services="stream-analytics"
-	documentationCenter=""
-	authors="jeffstokes72"
-	manager="paulettm"
+	pageTitle="Stream Analytics の Power BI ダッシュ ボード | Microsoft Azure" 
+	description="リアルタイム ストリーミング Power BI ダッシュ ボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。" 
+	keywords="business intelligence tools,power bi,streaming data,power bi dashboard"	
+	services="stream-analytics" 
+	documentationCenter="" 
+	authors="jeffstokes72" 
+	manager="paulettm" 
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="stream-analytics"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="data-services"
-	ms.date="08/27/2015"
+	ms.service="stream-analytics" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.workload="data-services" 
+	ms.date="09/29/2015" 
 	ms.author="jeffstok"/>
 	
 # Azure Stream Analytics & Power BI: ストリーミング データのリアルタイム分析に関するライブ ダッシュボード
@@ -24,7 +25,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使用して独自のカスタム ビジネス インテリジェンス ツールを作成する方法について説明します。
 
-> [AZURE.NOTE]Power BI 出力は Azure Stream Analytics のプレビュー機能です。
+> [AZURE.NOTE]Power BI 出力は Azure Stream Analytics のプレビュー機能です。現時点では、Power BI 出力の作成および構成は Azure プレビュー ポータルでサポートされていません。
 
 ## 前提条件 ##
 
@@ -168,6 +169,7 @@ Power BI は、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft
 そのため必然的に、Power BI は、Azure Stream Analytics で大幅なデータ負荷の低減が見られるケースへと落ち着きます。データのプッシュが最大で 1 プッシュ/秒となり、クエリがスループット要件の範囲内に収まるようにするには、TumblingWindow または HoppingWindow の使用をお勧めします。また、次の式を使用して、現在のウィンドウに設定する値 (秒) を計算ができます。![式 1](./media/stream-analytics-power-bi-dashboard/equation1.png)
 
 たとえば – 1,000 台のデバイスで 1 秒ごとにデータを送信し、1,000,000 行/時に対応する Power BI の Pro SKU を使用しており、Power BI でデバイスごとの平均データを取得する場合、1 つのデバイスにつき最大 4 秒ごとに 1 回プッシュできます (下図)。
+![式 2](./media/stream-analytics-power-bi-dashboard/equation2.png)
 
 つまり、元のクエリが次のように変更されます。
 
@@ -220,4 +222,4 @@ Power BI 出力のあるすべてのジョブについて、90 日おきに認�
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

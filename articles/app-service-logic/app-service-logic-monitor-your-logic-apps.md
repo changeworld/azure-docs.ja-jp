@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="ロジック アプリを監視する" 
-	description="ロジック アプリの作業内容を表示する方法。" 
+	pageTitle="Logic Apps を監視する | Microsoft Azure" 
+	description="Logic Apps の作業内容を表示する方法。" 
 	authors="stepsic-microsoft-com" 
 	manager="dwrede" 
 	editor="" 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="09/29/2015"
 	ms.author="stepsic"/>
 
-#ロジック アプリを監視する
+#Logic Apps を監視する
 
-「[ロジック アプリの作成](app-service-logic-create-a-logic-app.md)」で説明されている手順に従ってロジック アプリを作成した後、Azure ポータルで実行の完全な履歴を確認できます。履歴を表示するには、ポータルの画面の左側にある **[参照]** をクリックして **[Logic Apps]** を選択します。サブスクリプション内のロジック アプリの一覧が表示されます。ロジック アプリは**有効**または**無効**にできます。**有効**なロジック アプリは、トリガーによるトリガー イベントに反応してロジック アプリが実行されることを意味します。**無効**なロジック アプリは、イベントに反応して実行されることはありません。
+「[ロジック アプリの作成](app-service-logic-create-a-logic-app.md)」で説明されている手順に従ってロジック アプリを作成した後、Azure ポータルで実行の完全な履歴を確認できます。履歴を表示するには、ポータルの画面の左側にある **[参照]** をクリックして **[Logic Apps]** を選択します。サブスクリプション内の Logic Apps の一覧が表示されます。ロジック アプリは**有効**または**無効**にできます。**有効**な Logic Apps は、トリガーによるトリガー イベントに反応してロジック アプリが実行されることを意味します。**無効**なロジック アプリは、イベントに反応して実行されることはありません。
 
 ![概要](./media/app-service-logic-monitor-your-logic-apps/overview.png)
 
@@ -56,4 +56,4 @@ Push トリガーの場合、実行を開始した時間はここには表示さ
 現在の UI では利用できませんが、まもなく [REST API](http://go.microsoft.com/fwlink/?LinkID=525617&clcid=0x409) 経由で利用できるようになる追加機能があります。ロジック アプリの定義を更新すると、定義の前のバージョンが保存されます。その理由は、実行が既に進行中の場合、その実行は、実行開始時のロジック アプリのバージョンを参照するためです。実行の定義は進行中に変更できません。バージョン履歴 REST API によって、この情報にアクセスできます。
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Logic Apps での BizTalk X12 コネクタの使用 | Microsoft Azure App Service"
-	description="BizTalk X12 コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-	services="app-service\logic"
-	documentationCenter=".net,nodejs,java"
-	authors="rajeshramabathiran"
-	manager="dwrede"
-	editor=""/>
+   pageTitle="Logic Apps での BizTalk X12 コネクタの使用 | Microsoft Azure App Service" 
+   description="BizTalk X12 コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法" 
+   services="app-service\logic" 
+   documentationCenter=".net,nodejs,java" 
+   authors="rajeshramabathiran" 
+   manager="dwrede" 
+   editor=""/>
 
 <tags
    ms.service="app-service-logic"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="integration"
-	ms.date="08/23/2015"
-	ms.author="rajram"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="integration" 
+   ms.date="08/23/2015"
+   ms.author="rajram"/>
 
 # BizTalk X12 API アプリの使用開始とロジック アプリへの追加
 BizTalk X12 サービスを使用して、X12 プロトコルに従って企業間通信のメッセージを送受信します。X12 は、一般に ASC X12 (Accredited Standards Committee X12) とも呼ばれており、さまざまな業界で広く使用されています。
@@ -64,12 +64,14 @@ BizTalk X12 コネクタを使用するには、まず、BizTalk X12 コネク�
 ---|---|---
 コンテンツ|文字列|XML メッセージ
 契約 ID|文字列|契約 ID
-Is Batched Message|文字列|バッチ処理されたメッセージである
+パッチ処理されたメッセージ|文字列|バッチ処理されたメッセージである
 
 このアクションは、X12 ペイロードを含むオブジェクトを返します。
 
 ## コネクタでできること
 これでコネクタが作成されたため、このコネクタを Logic App を使用してビジネス フローに追加することができます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -89,4 +91,4 @@ Is Batched Message|文字列|バッチ処理されたメッセージである
 [10]: ./media/app-service-logic-connector-x12/EncodeConfigured.PNG
 [11]: ./media/app-service-logic-connector-x12/TriggerSettings.PNG
 
-<!----HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

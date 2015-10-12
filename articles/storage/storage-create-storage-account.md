@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/16/2015"
+	ms.date="09/23/2015"
 	ms.author="tamram"/>
 
 
@@ -25,8 +25,8 @@ Azure ストレージ アカウントを使用すると、Azure Storage の Azur
 
 ストレージ アカウントには、次の 2 種類があります。
 
-- Standard Storage アカウント。BLOB、テーブル、キュー ストレージが含まれています。ファイル ストレージは、[Azure プレビュー ページ](http://azure.microsoft.com/services/preview/)から要求できます。
-- Premium Storage アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」を参照してください。
+- 標準ストレージ アカウント。BLOB、テーブル、キュー、ファイル ストレージが含まれています。 
+- Premium Storage アカウント。現在、Azure 仮想マシン ディスクでのみサポートされています。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)」をご覧ください。
 
 ## ストレージ アカウントの課金
 
@@ -37,9 +37,9 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 - トランザクションには、Azure Storage に対するすべての読み取り操作と書き込み操作が含まれます。
 - 送信データ転送とは、Azure リージョンから転送されたデータを意味します。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます(Azure サービスでは、同じデータセンター内のデータとサービスをグループ化して、送信データ転送料金を削減または不要にする手順が用意されています)。  
 
-ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Azure の価格](http://azure.microsoft.com/pricing/details/#storage)」ページを参照してください。送信データ転送の料金の詳細については、[データ転送の料金詳細](http://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。
+ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Azure の価格](http://azure.microsoft.com/pricing/details/#storage)」ページをご覧ください。送信データ転送の料金の詳細については、[データ転送の料金詳細](http://azure.microsoft.com/pricing/details/data-transfers/)に関するページをご覧ください。
 
-ストレージ アカウントの容量とパフォーマンスのターゲットの詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/library/azure/dn249410.aspx)」を参照してください。
+ストレージ アカウントの容量とパフォーマンスのターゲットの詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/library/azure/dn249410.aspx)」をご覧ください。
 
 > [AZURE.NOTE]Azure の仮想マシンを作成する場合、デプロイ場所にまだストレージ アカウントがない状況では、その場所に自動的にストレージ アカウントが作成されます。このため、使用する仮想マシンのディスク用にストレージ アカウントを作成する場合、必ずしも以下の手順に従う必要はありません。ストレージ アカウント名は仮想マシン名を基にして付けられます。詳細については、[Azure Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
 
@@ -61,11 +61,16 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 
 4. **[場所/アフィニティ グループ]** で、自分または顧客がストレージ アカウントで使用しやすい場所を選択します。Azure 仮想マシンやクラウド サービスなど、別の Azure サービスからストレージ アカウントのデータにアクセスする場合、一覧のアフィニティ グループから 1 つを選択して、同じデータセンター内のストレージ アカウントと、パフォーマンス向上とコスト削減のために使用している他の Azure サービスをグループ化できます。
 
-	ストレージ アカウントを作成するときにアフィニティ グループを選択する必要があることに注意してください。既存のアカウントをアフィニティ グループに移動することはできません。アフィニティ グループの詳細については、後述の「[アフィニティ グループによるサービスのコロケーション](#service-co-location-with-an-affinity-group)」を参照してください。
+	ストレージ アカウントを作成するときにアフィニティ グループを選択する必要があることに注意してください。既存のアカウントをアフィニティ グループに移動することはできません。アフィニティ グループの詳細については、後述の「[アフィニティ グループによるサービスのコロケーション](#service-co-location-with-an-affinity-group)」をご覧ください。
+
+	>[AZURE.IMPORTANT][[プロバイダーのリスト]](https://msdn.microsoft.com/library/azure/dn790524.aspx) 操作を呼び出して、サブスクリプションに使用可能な場所を判別できます。PowerShell からプロバイダーをリストするには、[Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn757693.aspx) を呼び出します。.NET から、ProviderOperationsExtensions クラスの [List](https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.provideroperationsextensions.list.aspx) メソッドを使用します。
+	>
+	>どの領域でどのサービスを使用できるかについては、「[Azure リージョン](https://azure.microsoft.com/ja-JP/regions/#services)」をご覧ください。
+
 
 5. 複数の Azure サブスクリプションを所有している場合は、**[サブスクリプション]** フィールドが表示されます。**[サブスクリプション]** ボックスに、ストレージ アカウントを使用する Azure サブスクリプションを入力します。
 
-6. **[レプリケーション]** で、ストレージ アカウントに必要なレプリケーションのレベルを選択します。推奨されるレプリケーションのオプションは geo 冗長レプリケーションです。これは、最大限のデータ耐久性を提供します。Azure Storage のレプリケーション オプションの詳細については、[Azure Storage のレプリケーション](storage-redundancy.md)に関するページを参照してください。
+6. **[レプリケーション]** で、ストレージ アカウントに必要なレプリケーションのレベルを選択します。推奨されるレプリケーションのオプションは geo 冗長レプリケーションです。これは、最大限のデータ耐久性を提供します。Azure Storage のレプリケーション オプションの詳細については、[Azure Storage のレプリケーション](storage-redundancy.md)に関するページをご覧ください。
 
 6. **[ストレージ アカウントの作成]** をクリックします。
 
@@ -76,7 +81,7 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 
 ### ストレージ アカウント エンドポイント
 
-Azure Storage に格納するすべてのオブジェクトには一意の URL アドレスが設定されています。ストレージ アカウント名は、そのアドレスのサブドメインになります。サブドメインとドメイン名の組み合わせは、各サービスに固有であり、ストレージ アカウントの*エンドポイント*となります。
+Azure Storage に格納するすべてのオブジェクトには一意の URL アドレスが設定されています。ストレージ アカウント名は、そのアドレスのサブドメインになります。サブドメインとドメイン名の組み合わせは、各サービスに固有であり、ストレージ アカウントの*エンドポイント*になります。
 
 たとえば、ストレージ アカウントの名前が "mystorageaccount" の場合、ストレージ アカウントの既定のエンドポイントは次のようになります。
 
@@ -92,13 +97,13 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
 
-また、カスタム ドメイン名もストレージ アカウントを使用するように構成することができます。詳細については、「[Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成](storage-custom-domain-name.md)」を参照してください。
+また、カスタム ドメイン名もストレージ アカウントを使用するように構成することができます。詳細については、「[Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成](storage-custom-domain-name.md)」をご覧ください。
 
 ### アフィニティ グループによるサービスのコロケーション
 
 *アフィニティ グループ*は、Azure ストレージ アカウント内で Azure サービスと仮想マシンを地理的にまとめたグループです。アフィニティ グループは、コンピューター ワークロードを同じデータセンター内または対象ユーザーの近くに配置することにより、サービス パフォーマンスを向上させることができます。また、同じアフィニティ グループに属している別のサービスがストレージ アカウント内のデータにアクセスする場合には、課金されません。
 
-> [AZURE.NOTE]アフィニティ グループを作成するには、Azure ポータルの <b>[設定]</b> 領域を開き、<b>[アフィニティ グループ]</b> をクリックして、<b>[アフィニティ グループの追加]</b> または <b>[追加]</b> をクリックします。また、Azure サービス管理 API を使用してアフィニティ グループを作成および管理することもできます。詳細については、「<a href="http://msdn.microsoft.com/library/azure/ee460798.aspx">アフィニティ グループに対する操作</a>」を参照してください。
+> [AZURE.NOTE]アフィニティ グループを作成するには、Azure ポータルの <b>[設定]</b> 領域を開き、<b>[アフィニティ グループ]</b> をクリックして、<b>[アフィニティ グループの追加]</b> または <b>[追加]</b> をクリックします。また、Azure サービス管理 API を使用してアフィニティ グループを作成および管理することもできます。詳細については、「<a href="http://msdn.microsoft.com/library/azure/ee460798.aspx">アフィニティ グループに対する操作</a>」をご覧ください
 
 ## ストレージ アクセス キーの表示、コピーおよび再生成
 
@@ -110,7 +115,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 ### ストレージ アクセス キーのコピー  
 
-**[キーの管理]** を使用してストレージ アクセス キーをコピーし、接続文字列で使用することができます。接続文字列には、ストレージ アカウント名および認証で使用するキーが必要です。Azure ストレージ サービスにアクセスするための接続文字列の構成については、「[Azure 接続文字列の構成](http://msdn.microsoft.com/library/azure/ee758697.aspx)」を参照してください。
+**[キーの管理]** を使用してストレージ アクセス キーをコピーし、接続文字列で使用することができます。接続文字列には、ストレージ アカウント名および認証で使用するキーが必要です。Azure ストレージ サービスにアクセスするための接続文字列の構成については、「[Azure 接続文字列の構成](http://msdn.microsoft.com/library/azure/ee758697.aspx)」をご覧ください。
 
 1. [Azure ポータル](http://manage.windowsazure.com)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
@@ -164,6 +169,6 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 - Azure Storage の詳細については、[Azure.com](http://azure.microsoft.com/documentation/services/storage/) および [MSDN](http://msdn.microsoft.com/library/azure/gg433040.aspx) にある Azure Storage のドキュメントを参照してください。
 
-- [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+- [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

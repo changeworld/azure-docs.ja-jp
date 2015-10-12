@@ -1,6 +1,7 @@
 <properties
 	pageTitle="スループット向上のための Stream Analytics ジョブのスケーリング | Microsoft Azure"
 	description="Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。"
+	keywords="analytics jobs,data stream,data streaming"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -13,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="08/04/2015"
+	ms.date="09/29/2015"
 	ms.author="jeffstok"/>
 
 # スループット向上のための Azure Stream Analytics ジョブのスケーリング #
@@ -60,7 +61,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 
 ステップをパーティション分割するには、次の条件を満たす必要があります。
 
-- 入力ソースはパーティション分割する。詳細については、「[Azure Stream Analytics 開発者ガイド](../stream-analytics-developer-guide.md)」と「[Event Hub プログラミング ガイド](../azure-event-hubs-developer-guide.md)」を参照してください。
+- 入力ソースはパーティション分割する。詳細については、「[Azure Stream Analytics 開発者ガイド](../stream-analytics-developer-guide.md)」と「[Event Hubs プログラミング ガイド](../azure-event-hubs-developer-guide.md)」を参照してください。
 - クエリの SELECT ステートメントは、パーティション分割された入力ソースから読み取る。
 - ステップ内のクエリに **Partition By** 句を含める。
 
@@ -153,6 +154,9 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 
 ![Azure Stream Analytics のストリーミング ユニットのスケーリング][img.stream.analytics.streaming.units.scale]
 
+Azure プレビュー ポータルの [設定] からスケールの設定にアクセスできます。
+
+![Azure プレビュー ポータルでの Stream Analytics ジョブの構成][img.stream.analytics.preview.portal.settings.scale]
 
 ## ジョブのパフォーマンスを監視する ##
 
@@ -228,7 +232,7 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## 問い合わせ ##
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ ##
@@ -246,6 +250,7 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 [img.stream.analytics.configure.scale]: ./media/stream-analytics-scale-jobs/StreamAnalytics.configure.scale.png
 [img.stream.analytics.perfgraph]: ./media/stream-analytics-scale-jobs/perf.png
 [img.stream.analytics.streaming.units.scale]: ./media/stream-analytics-scale-jobs/StreamAnalyticsStreamingUnitsExample.jpg
+[img.stream.analytics.preview.portal.settings.scale]: ./media/stream-analytics-scale-jobs/StreamAnalyticsPreviewPortalJobSettings.png
 
 <!--Link references-->
 
@@ -260,4 +265,4 @@ Input1 の各パーティションは Stream Analytics によって個別に処�
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

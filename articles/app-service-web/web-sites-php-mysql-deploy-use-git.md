@@ -65,7 +65,7 @@ Web アプリと MySQL データベースを作成するには、次のステッ
 
 6. 法律条項への同意も含めて、新しいデータベースについての値を入力します。
 
-	![Create new MySQL database][new-mysql-db]
+	![新しい MySQL データベースの作成][new-mysql-db]
 
 7. Web アプリが作成されると、新しいリソース グループが表示されます。設定を構成する Web アプリの名前をクリックします。
 
@@ -260,8 +260,12 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
+## 次のステップ
+
+詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
+
 ## 変更内容
-* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、「[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
 
 [install-php]: http://www.php.net/manual/en/install.php
@@ -296,4 +300,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/library/windowsazure/ee621788.aspx
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

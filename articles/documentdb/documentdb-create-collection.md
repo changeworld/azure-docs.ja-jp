@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="DocumentDB データベース コレクションの作成 |Microsoft Azure" 
-	description="JSON の管理された NoSQL ドキュメント データベースである Azure DocumentDB 用のオンライン サービス ポータルを使用して、コレクションを作成する方法について説明します。無料評価版を今すぐ入手してください。" 
+	description="JSON の管理された NoSQL ドキュメント データベースである Azure DocumentDB 用のオンライン サービス ポータルを使用して、コレクションを作成する方法について説明します。無料試用版を今すぐ入手してください。" 
 	services="documentdb" 
 	authors="mimig1" 
 	manager="jhubbard" 
@@ -13,24 +13,24 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2015" 
+	ms.date="09/28/2015" 
 	ms.author="mimig"/>
 
 # Azure プレビュー ポータルを使用して DocumentDB コレクションを作成する
 
 Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](documentdb-create-account.md)、[データベース](documentdb-create-database.md)、コレクション、およびドキュメントを用意する必要があります。このトピックでは、Azure プレビュー ポータルで DocumentDB コレクションを作成する方法について説明します。
 
-コレクションは必ずしもプレビュー ポータルを使用して作成する必要はなく、[DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用して作成することもできます。DocumentDB .NET SDK を使用してコレクションを作成する方法を示す C# コードのサンプルについては、CollectionManagement プロジェクトの [Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/CollectionManagement/Program.cs) ファイルを参照してください。このファイルは、[GitHub.com](https://github.com) の [azure-documentdb-net](https://github.com/Azure/azure-documentdb-net) リポジトリから入手できます。
+![ジャンプバーの [DocumentDB アカウント] 、[DocumentDB アカウント] ブレードのアカウント、[DocumentDB アカウント] ブレードの [データベース] レンズのデータベースを強調表示しているスクリーン ショット](./media/documentdb-create-collection/docdb-database-creation-1-3.png)
 
-1.  [Azure プレビュー ポータル](https://portal.azure.com/)で **[すべてを参照]** をクリックします。
+1.  [Azure プレビュー ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB アカウント]** をクリックします。 
 
-2.  **[参照]** ブレードで、**[DocumentDB アカウント]** をクリックします。
+2.  **[DocumentDB アカウント]** ブレードで、コレクションを追加するアカウントを選択します。アカウントが何も表示されていない場合は、[DocumentDB アカウントを作成する](documentdb-create-account.md)必要があります。
 
-3.  **[DocumentDB アカウント]** ブレードで、コレクションを追加するデータベースのあるアカウントを選択します。アカウントが何も表示されていない場合は、[DocumentDB アカウントを作成する](documentdb-create-account.md)必要があります。
+3. 選択したアカウントの **[DocumentDB アカウント]** ブレードで、**[データベース]** レンズまで下にスクロールし、コレクションを追加するデータベースを選択します。
     
-    ![Screen shot highlighting the Browse button, DocumentDB Accounts on the Browse blade, and a DocumentDB account on the DocumentDB Accounts blade](./media/documentdb-create-collection/docdb-database-creation-1-3.png)
-
 4. **[データベース]** ブレードで、**[コレクションの追加]** をクリックします。
+
+	![[データベース] ブレードの [コレクションの追加]、[コレクションの追加] ブレードの設定、および [OK] ボタンを強調表示しているスクリーン ショット](./media/documentdb-create-collection/docdb-collection-creation-4-7.png)
 
 5. **[コレクションの追加]** ブレードで、新しいコレクションの ID を入力します。名前が検証されると、緑色のチェック マークが [ID] ボックスに表示されます。
 
@@ -46,11 +46,14 @@ Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](
 
 8. 画面下部の **[OK]** をクリックすると、新しいコレクションが作成されます。
 
-	![Screen shot highlighting the Add Collection button on the Database blade, the ID box on the Add Collection blade, and the OK button](./media/documentdb-create-collection/docdb-collection-creation-4-7.png)
 
 9. 新しいコレクションは、**[データベース]** ブレードの **[コレクション]** レンズに表示されます。
  
-	![Screen shot of the new database in the DocumentDB Account blade](./media/documentdb-create-collection/docdb-collection-creation-8.png)
+	![[データベース] ブレードの新しいコレクションのスクリーン ショット](./media/documentdb-create-collection/docdb-collection-creation-8.png)
+
+## DocumentDB コレクションを作成するその他の方法
+
+コレクションは必ずしもプレビュー ポータルを使用して作成する必要はなく、[DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用して作成することもできます。DocumentDB .NET SDK を使用してコレクションを作成する方法を示す C# コードのサンプルについては、CollectionManagement プロジェクトの [Program.cs](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/CollectionManagement/Program.cs) ファイルを参照してください。このファイルは、[GitHub.com](https://github.com) の [azure-documentdb-net](https://github.com/Azure/azure-documentdb-net) リポジトリから入手できます。
 
 ## 次のステップ
 
@@ -62,4 +65,4 @@ Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](
 
 コレクションにドキュメントを用意した後で、プレビュー ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-queries)することができます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

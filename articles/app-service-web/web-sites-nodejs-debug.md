@@ -120,11 +120,11 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 
 [IISNode]: https://github.com/tjanczuk/iisnode
 [IISNode Readme]: https://github.com/tjanczuk/iisnode#readme
-[How to Use The Azure Command-Line Interface]: ../xplat-cli.md
+[How to Use The Azure Command-Line Interface]: ../xplat-cli-install.md
 [Azure アプリケーションでの Node.js モジュールの使用]: ../nodejs-use-node-modules-azure-apps.md
 [Azure アプリケーションでの Node.js のバージョンの指定]: ../nodejs-specify-node-version-azure-apps.md
 
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

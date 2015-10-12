@@ -159,6 +159,8 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 
 1. アプリを Windows ストア アプリに関連付け、**パッケージ セキュリティ ID (SID)** と**シークレット キー** (クライアント シークレット) を取得する必要があります。[Windows ストア デベロッパー センター]からアプリを作成し、Visual Studio から**アプリとストアを関連付ける**ことができます。
 
+	![][7]
+
 2. Mobile Engagement ポータルの **[設定]** に移動し、左側の **[ネイティブ プッシュ]** セクションをクリックします。
 
 3. **[編集]** ボタンをクリックし、以下に示すように、**パッケージ セキュリティ ID (SID)** と**シークレット キー**を入力します。
@@ -178,10 +180,11 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 [Windows ユニバーサル アプリ - オーバーレイ統合]: ../mobile-engagement-windows-store-integrate-engagement-reach/#overlay-integration
 
 <!-- Images. -->
-[1]: ./media/mobile-engagement-windows-store-dotnet-get-started/UniversalAppCreation.png
+[1]: ./media/mobile-engagement-windows-store-dotnet-get-started/universal-app-creation.png
 [2]: ./media/mobile-engagement-windows-store-dotnet-get-started/manifest-capabilities.png
 [3]: ./media/mobile-engagement-windows-store-dotnet-get-started/add-connection-info.png
 [5]: ./media/mobile-engagement-windows-store-dotnet-get-started/manifest-toast.png
 [6]: ./media/mobile-engagement-windows-store-dotnet-get-started/enter-credentials.png
+[7]: ./media/mobile-engagement-windows-store-dotnet-get-started/associate-app-store.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

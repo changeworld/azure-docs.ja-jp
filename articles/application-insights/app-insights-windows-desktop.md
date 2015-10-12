@@ -50,7 +50,7 @@ Application Insights を使用すると、デプロイしたアプリケーシ�
 
 2. Application Insights コア API パッケージ: Microsoft.ApplicationInsights をインストールします。
 
-    ![Search for "Application Insights"](./media/app-insights-windows-desktop/04-core-nuget.png)
+    !["Application Insights" の検索](./media/app-insights-windows-desktop/04-core-nuget.png)
 
     *他のパッケージを使用することができますか。*
 
@@ -200,6 +200,8 @@ TrackMetric、または TrackEvent の測定値パラメーターを使用した
     ``` 
 3. アプリを終了する前に `telemetryClient.Flush()` を使用して、確実にデータがポータルに送信されるか、ファイルに保存されるようにします。
 
+    Flush() は永続化チャネルでは同期ですが、その他のチャネルでは非同期であることに注意してください。
+
  
 永続化チャネルは、アプリケーションで作成されるイベントの数が比較的少なく、接続の信頼性が低いことの多いデバイス シナリオに対して最適化されています。このチャネルは、イベントを最初にディスクに書き込んで確実に保存してから、送信を試行します。
 
@@ -297,4 +299,4 @@ namespace ConsoleApplication1
 [CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

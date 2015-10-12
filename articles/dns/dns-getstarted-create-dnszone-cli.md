@@ -173,4 +173,4 @@ DNS ゾーンは、`azure network dns zone create` コマンドを使用して�
 
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset-cli.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones-cli.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets-cli.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

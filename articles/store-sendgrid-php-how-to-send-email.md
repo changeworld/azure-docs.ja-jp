@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="SendGrid 電子メール サービスの使用方法 (PHP) | Microsoft Azure"
-	description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは PHP で記述されています。"
-	documentationCenter="php"
-	services=""
-	manager="sendgrid"
-	editor="mollybos"
+	pageTitle="SendGrid 電子メール サービスの使用方法 (PHP) | Microsoft Azure" 
+	description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは PHP で記述されています。" 
+	documentationCenter="php" 
+	services="" 
+	manager="sendgrid" 
+	editor="mollybos" 
 	authors="thinkingserious"/>
 
 <tags 
-	ms.service="multiple"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="PHP"
-	ms.topic="article"
-	ms.date="10/30/2014"
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="PHP" 
+	ms.topic="article" 
+	ms.date="10/30/2014" 
 	ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com"/>
 # PHP から SendGrid 電子メール サービスを使用する方法
 
@@ -38,7 +38,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 ## PHP アプリケーションからの SendGrid の使用
 
-Azure PHP アプリケーションで SendGrid を使用するために、特別な構成やコーディングは不要です。SendGrid はサービスであるため、内部設置型アプリケーションからとまったく同じ方法で、クラウド アプリケーションからアクセスできます。
+Azure PHP アプリケーションで SendGrid を使用するために、特別な構成やコーディングは不要です。SendGrid はサービスであるため、オンプレミスのアプリケーションからとまったく同じ方法で、クラウド アプリケーションからアクセスできます。
 
 ## 方法: 電子メールを送信する
 
@@ -390,6 +390,9 @@ SendGrid では、'フィルター' を使用することでその他の電子�
 -   SendGrid PHP ライブラリ: <https://github.com/sendgrid/sendgrid-php>
 -   Azure ユーザー向けの SendGrid 特別プラン: <https://sendgrid.com/windowsazure.html>
 
+詳細については、[PHP デベロッパー センター](/develop/php/)も参照してください。
+
+
   [https://sendgrid.com]: https://sendgrid.com
   [https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing
   [special offer]: https://www.sendgrid.com/windowsazure.html
@@ -401,4 +404,4 @@ SendGrid では、'フィルター' を使用することでその他の電子�
   [sendgrid-php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
   [Composer]: https://getcomposer.org/download/
 
-<!-----HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

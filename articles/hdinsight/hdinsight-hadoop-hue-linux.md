@@ -1,10 +1,10 @@
-<properties 
-	pageTitle="HDInsight Linux クラスターの Hadoop で Hue を使用する | Microsoft Azure" 
-	description="HDInsight Linux の Hadoop クラスターに Hue をインストールし、使用する方法について説明します。" 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="nitinme" 
-	manager="paulettm" 
+<properties
+	pageTitle="HDInsight Linux クラスターの Hadoop で Hue を使用する | Microsoft Azure"
+	description="HDInsight Linux の Hadoop クラスターに Hue をインストールし、使用する方法について説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="nitinme"
+	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags 
@@ -60,30 +60,25 @@ HDInsight クラスターに Hue をインストールするには、[https://hd
 
 SSH トンネリングは、実行後、クラスターの Hue にアクセスする唯一の方法です。SSH によるトンネリングでは、Hue が実行されているクラスターのヘッドノードにトラフィックが直接進むことができます。クラスターがプロビジョニングを完了したら、次の手順で HDInsight Linux クラスターで Hue を使用します。
 
-> [AZURE.NOTE]下の指示では、Firefox Web ブラウザーに [FoxyProxy](https://addons.mozilla.org/ja-JP/firefox/addon/foxyproxy-standard/) 拡張をインストールしているものと想定しています。
+1. 「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照して、クライアント システムから HDInsight クラスターへの SSH トンネルを作成し、この SSH トンネルをプロキシとして使用するように Web ブラウザーを構成します。
 
-1. デスクトップ コンピューターから SSH トンネリングを有効にし、SSH トンネルを使用するように Firefox Web ブラウザーを構成します。トンネリングを構成するとき、ポート 8888 以外のポートを使用します。
+2. SSH トンネルを作成し、これをトラフィックのプロキシとして使用するようにブラウザーを構成したら、ブラウザーを使用して Hue ポータル (http://headnode0:8888) を開きます。
 
-	* Linux コンピューターから SSH トンネリングを有効にする方法については、「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-linux-ambari-ssh-tunnel.md#usessh)」を参照してください。
-	* Windows コンピューターから SSH トンネリングを有効にする方法については、「[Windows から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-linux-ambari-ssh-tunnel.md#useputty)」を参照してください。
-
-	PuTTY セッションを維持します。
- 
-2. コンピューターから、http://headnode0:8888 で Hue ポータルを起動するように FoxyProxy を構成している Firefox Web を使用します。初めてログインするとき、Hue ポータルにログインするためのアカウントを作成するように求められます。ここで指定した資格情報はポータルに制限され、クラスターのプロビジョニング時に指定した管理者または SSH ユーザーの資格情報には関連しません。
+    > [AZURE.NOTE]初めてログインするときには、Hue ポータルにログインするためのアカウントを作成するよう求められます。ここで指定した資格情報はポータルに制限され、クラスターのプロビジョニング時に指定した管理者または SSH ユーザーの資格情報には関連しません。
 
 	![Hue ポータルにログインする](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Login.png "Hue ポータルの資格情報を指定する")
 
 ### Hive クエリを実行する
 
-1. Hue ポータルから、**[クエリ エディター]** をクリックし、**Hive** をクリックして Hive エディターを開きます。
+1. Hue ポータルから、**[クエリ エディター]** をクリックし、**[Hive]** をクリックして Hive エディターを開きます。
 
 	![Hive を使用する](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.png "Hive を使用する")
 
-2. **[支援]** タブの **[データベース]** に **hivesampletable** が表示されるはずです。これは HDInsight のすべての Hadoop クラスターに含まれるサンプル テーブルです。右ペインでサンプル クエリを入力します。画面キャプチャのように、下のペインの **[結果]** タブに出力が表示されます。
+2. **[支援]** タブの **[データベース]** に **[hivesampletable]** が表示されます。これは HDInsight のすべての Hadoop クラスターに含まれるサンプル テーブルです。右ペインでサンプル クエリを入力します。スクリーン キャプチャに示すように、下のペインの **[結果]** タブに出力が表示されます。
 
 	![Hive クエリを実行する](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Hive.Query.png "Hive クエリを実行する")
 
-	**[グラフ]** タブを使用し、結果を視覚的に表示することもできます。
+	**[グラフ]** タブを使用して、結果を視覚的に表示することもできます。
 
 ### クラスター ストレージを参照する
 
@@ -93,10 +88,9 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 	![ファイル ブラウザーを使用する](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.File.Browser.png "ファイル ブラウザーを使用する")
 
-3. ファイルまたはフォルダーを右クリックし、利用可能な操作を表示します。現在のディレクトリにファイルをアップロードするには、右隅にある **[アップロード]** ボタンを使用します。新しいファイルやディレクトリを作成するには、**[新規]** ボタンを使用します。
+3. ファイルまたはフォルダーを右クリックし、利用可能な操作を表示します。現在のディレクトリにファイルをアップロードするには、右隅にある **[アップロード]** ボタンを使用します。新しいファイルまたはディレクトリを作成するには、**[新規]** ボタンを使用します。
 
-> [AZURE.NOTE]Hue ファイル ブラウザーは HDInsight クラスターに関連付けられている既定のコンテナーのコンテンツのみを表示できます。追加のストレージ アカウント/コンテナーがクラスターに関連付けられている場合、ファイル ブラウザーではアクセスできません。ただし、 Hive ジョブの場合、クラスターに関連付けられている追加のコンテナーに常にアクセスできます。たとえば、Hive エディターに `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` コマンドを入力すると、追加コンテナーのコンテンツを表示できます。このコマンドで、**newcontainer** はクラスターに関連付けられている既定のコンテナーではありません。
-
+> [AZURE.NOTE]Hue ファイル ブラウザーは HDInsight クラスターに関連付けられている既定のコンテナーのコンテンツのみを表示できます。追加のストレージ アカウント/コンテナーがクラスターに関連付けられている場合、ファイル ブラウザーではアクセスできません。ただし、 Hive ジョブの場合、クラスターに関連付けられている追加のコンテナーに常にアクセスできます。たとえば、Hive エディターに `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` コマンドを入力すると、追加コンテナーのコンテンツも表示できます。このコマンドで、**newcontainer** はクラスターに関連付けられている既定のコンテナーではありません。
 
 ## 重要な考慮事項
 
@@ -114,7 +108,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 	これは既知の問題によるものです。この問題を回避するには、アクティブな Resource Manager も HEADNODE0 で実行されるように Ambari を変更します。
 
-5.	HDInsight クラスターが `wasb://` で Azure Storage を使用するとき、Hue は WebHDFS を認識します。そのため、スクリプト アクションで使用されるカスタム スクリプトは WebWasb をインストールします。これは WASB と通信するための WebHDFS 互換サービスです。そのため、Hue ポータルに HDFS と表示されている場合でも (**ファイル ブラウザー**の上にマウスを移動したときなど)、WASB として解釈するべきです。
+5.	HDInsight クラスターが `wasb://` で Azure Storage を使用しているときに、Hue は WebHDFS を認識します。そのため、スクリプト アクションで使用されるカスタム スクリプトは WebWasb をインストールします。これは WASB と通信するための WebHDFS 互換サービスです。Hue ポータルに HDFS と表示されている場合でも (**ファイル ブラウザー**の上にマウスを移動したときなど)、WASB として解釈する必要があります。
 
 
 ## 次のステップ
@@ -131,6 +125,5 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 [hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
- 
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

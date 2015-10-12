@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure SQL サーバーを PowerShell を使用する V12 にアップグレードする" 
-	description="Azure SQL サーバーを PowerShell を使用する V12 にアップグレードします。" 
+	pageTitle="PowerShell を使用して Azure SQL サーバーを V12 にアップグレードする" 
+	description="PowerShell を使用して Azure SQL サーバーを V12 にアップグレードします。" 
 	services="sql-database" 
 	documentationCenter="" 
 	authors="stevestein" 
@@ -13,14 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/05/2015" 
+	ms.date="09/30/2015" 
 	ms.author="sstein"/>
 
-# Azure SQL サーバーを PowerShell を使用する V12 にアップグレードする
- 
+# PowerShell を使用して SQL Database V12 にアップグレードする
 
-この記事では、SQL Database サーバーを価格レベルとエラスティック プールの推奨設定を使用して V12 にアップグレードする方法を示します。
 
+> [AZURE.SELECTOR]
+- [Azure Preview Portal](sql-database-v12-upgrade.md)
+- [PowerShell](sql-database-upgrade-server.md)
+
+
+この記事では PowerShell を使用して、SQL Database V12 にアップグレードする方法を示します。
+
+SQL Database V12 へのアップグレードの処理中に、すべての Web/Business データベースを新しいサービス層に更新する必要もあります。次の手順には、サーバー上の[すべての Web/Business データベースをアップグレードする](sql-database-upgrade-new-service-tiers.md)ために役立つ、価格レベルとエラスティック プールの推奨の使用が含まれています。
 
 
 ## 前提条件 
@@ -39,16 +45,13 @@ Azure SQL Database の作成と管理に使うコマンドレットは、Azure �
 
 
 
-## 資格情報の構成
+## 資格情報を構成してサブスクリプションを選択
 
 Azure サブスクリプションに PowerShell コマンドレットを実行するには、Azure アカウントにまずアクセスできるようにする必要があります。次を実行すると資格情報を入力するサインイン画面が表示されます。Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
 
 	Add-AzureAccount
 
 正常にサインインすると、サインインしている ID や使用中の Azure サブスクリプションを含む情報が画面に表示されます。
-
-
-## Azure サブスクリプションを選択します。
 
 使用するサブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要になります。前の手順からコピーするか、複数のサブスクリプションがある場合は **Get-AzureSubscription** コマンドレットを実行して結果セットから目的のサブスクリプション情報をコピーできます。
 
@@ -78,7 +81,7 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 このコマンドを実行すると、アップグレード プロセスが開始されます。推奨設定の出力をカスタマイズし、編集した推奨設定をこのコマンドレットに提供できます。
 
 
-## Azure SQL サーバーをアップグレードする
+## サーバーをアップグレードする
 
 
     # Adding the account
@@ -112,33 +115,45 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
 推奨設定がお使いのサーバーとビジネス ケースに適していない場合は、データベースをどのようにアップグレードするかを選択でき、それらを単一のデータベースまたはエラスティック データベースにマップできます。
 
-複数のデータベースをエラスティック データベース プールにアップグレードする:
-
-    $elasticPool = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties
-    $elasticPool.DatabaseDtuMax = 100  
-    $elasticPool.DatabaseDtuMin = 0  
-    $elasticPool.Dtu = 800
-    $elasticPool.Edition = "Standard"  
-    $elasticPool.DatabaseCollection = ("DB1")  
-    $elasticPool.Name = "elasticpool_1"  
-
-
-複数のデータベースを単一のデータベースにアップグレードする:
-
-    $databaseMap = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeDatabaseProperties  
-    $databaseMap.Name = "DB2"
-    $databaseMap.TargetEdition = "Standard"
-    $databaseMap.TargetServiceLevelObjective = "S0"
-    Start-AzureSqlServerUpgrade –ResourceGroupName resourcegroup1 –ServerName server1 -Version 12.0 -DatabaseCollection($databaseMap) -ElasticPoolCollection ($elasticPool)
+ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
+    
+    # Creating elastic pool mapping
+    #
+    $elasticPool = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeRecommendedElasticPoolProperties 
+    $elasticPool.DatabaseDtuMax = 100 
+    $elasticPool.DatabaseDtuMin = 0 
+    $elasticPool.Dtu = 800 
+    $elasticPool.Edition = "Standard" 
+    $elasticPool.DatabaseCollection = ("DB1", “DB2”, “DB3”, “DB4”) 
+    $elasticPool.Name = "elasticpool_1" 
+    $elasticPool.StorageMb = 800 
+     
+    # Creating single database mapping
+    #
+    $databaseMap = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeDatabaseProperties 
+    $databaseMap.Name = "DBMain" 
+    $databaseMap.TargetEdition = "Standard" 
+    $databaseMap.TargetServiceLevelObjective = "S0" 
+     
+    # Starting the upgrade
+    #
+    Start-AzureSqlServerUpgrade –ResourceGroupName resourcegroup1 –ServerName server1 -Version 12.0 -DatabaseCollection($databaseMap) -ElasticPoolCollection ($elasticPool) 
     
 
+
+
+
+- [Get-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143621.aspx)
+- [Start-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143623.aspx)
+- [Stop-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143622.aspx)
 
 
 
 ## 関連情報
 
 - [Azure SQL Database リソース マネージャー コマンドレット](https://msdn.microsoft.com/library/mt163521.aspx)
-- [Azure SQL Database サービス管理コマンドレット](https://msdn.microsoft.com/library/dn546726.aspx)
- 
+- [Get-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143621.aspx)
+- [Start-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143623.aspx)
+- [Stop-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143622.aspx)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

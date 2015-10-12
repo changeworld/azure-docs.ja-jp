@@ -37,22 +37,24 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 * [別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する](#SSMS)
 * [次のステップ](#Optional)
 
+>[AZURE.NOTE]この記事では、既存の Microsoft Azure 管理ポータルを使用して SQL Server VM をプロビジョニングする方法を説明します。ただし、[新しいポータル](https://manage.windowsazure.com)で SQL Server VM を作成および管理することもできます。Premium Storage の使用が既定に設定されることや、自動修正、自動バックアップ、AlwaysOn 構成といったその他のオプションなど、新しいポータルにはいくつかの利点があります。今後のコンテンツで、詳細な手順を説明します。
+
 ##<a id="Provision">ギャラリーからの SQL Server 仮想マシンのプロビジョニング</a>
 
 1. アカウントを使用して [Azure の管理ポータル](http://manage.windowsazure.com)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
-2. Microsoft Azure 管理ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2. Azure の管理ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
 3. **[イメージの選択]** ページで、**[SQL SERVER]** をクリックします。SQL Server イメージを選択します。ページの右下にある [次へ] 矢印をクリックします。
 
-	![Choose an Image](./media/virtual-machines-provision-sql-server/choose-sql-vm.png)
+	![イメージの選択](./media/virtual-machines-provision-sql-server/choose-sql-vm.png)
 
 Azure でサポートされる SQL Server イメージの最新情報については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)」をご覧ください。
 
 >[AZURE.NOTE] プラットフォーム イメージの SQL Server 評価エディションを使用して仮想マシンを作成した場合、それをギャラリーにある分単位課金エディション イメージにアップグレードすることはできません。次の 2 つのオプションのいずれかを選択できます。
 >
 > - ギャラリーにある分単位課金エディションの SQL Server を使用して新しい仮想マシンを作成し、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database)」の手順に従って、データベース ファイルをこの新しい仮想マシンに移行できます。
-> - または、「[SQL Server の別のエディションへのアップグレード](https://msdn.microsoft.com/library/cc707783.aspx)」の手順に従って、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の合意に基づき、SQL Server 評価エディションの既存のインスタンスを異なるエディションの SQL Server にアップグレードします。SQL Server のライセンス コピーを購入する方法については、[SQL Server の購入方法に関するページ](http://www.microsoft.com/sqlserver/get-sql-server/how-to-buy.aspx)を参照してください。
+> - または、「[SQL Server の別のエディションへのアップグレード](https://msdn.microsoft.com/library/cc707783.aspx)」の手順に従って、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の合意に基づき、SQL Server 評価エディションの既存のインスタンスを異なるエディションの SQL Server にアップグレードすることもできます。SQL Server のライセンス コピーを購入する方法については、[SQL Server の購入方法に関するページ](http://www.microsoft.com/sqlserver/get-sql-server/how-to-buy.aspx)を参照してください。
 
 4. 最初の **[仮想マシンの構成]** ページで、次の情報を指定します。
 	- **バージョンのリリース日**。複数のイメージが利用できる場合は、最新のイメージを選択します。
@@ -66,17 +68,12 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 
 	>[AZURE.NOTE]仮想マシンのサイズは、プロビジョニングで指定します。
  	>
-	> - 運用環境のワークロードで推奨される最小サイズは A2 です。 
-    > - SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは A3 です。
-    > - SQL Server Enterprise Edition を使用する場合は、A3 以上を選択してください。
-   	> - SQL Server 2012 または 2014 Enterprise Optimized for Transactional Workloads イメージを使用する場合は A4 以上を選んでください。  
-   	> - SQL Server 2012 または 2014 Enterprise Optimized for Data Warehousing Workloads イメージを使用する場合は A7 以上を選んでください。 
-   	> - 最大のパフォーマンスを得るには、Premium Storage の DS2 または DS3 を使用します。詳細については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」をご覧ください。
-   	> - 選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines-size-specs.md)」を参照してください。
+	> - 実稼働ワークロードの場合は、次の最小推奨サイズで Premium Storage を使用することをお勧めします。SQL Server Enterprise Edition の場合は **DS3**。SQL Server Standard Edition の場合は **DS2**。詳細については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」をご覧ください。
+	> - 選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines-size-specs.md)」を参照してください。
 
 5. VM 構成の詳細を入力後、右下にある次へ進む矢印をクリックして続行します。
 
-5. 2 回目の **[仮想マシンの構成]** ページで、ネットワーク、ストレージ、可用性に関するリソースを構成します。
+5. 2 回目の **[仮想マシンの構成]** ページで、ネットワーキング、ストレージ、可用性に関するリソースを構成します。
 	- **[クラウド サービス]** ボックスで、**[新しいクラウド サービスの作成]** を選択します。
 	- **[クラウド サービス DNS 名]** ボックスに、目的の DNS 名の最初の部分を入力すると、**TESTNAME.cloudapp.net** という形式の完全な名前を指定できます。 
 	- 複数のサブスクリプションがある場合は、**[サブスクリプション]** を選択します。この選択で、利用できる**ストレージ アカウントが決まります。
@@ -104,13 +101,13 @@ Azure でサポートされる SQL Server イメージの最新情報につい�
 
 1. プロビジョニングが完了したら、仮想マシンの名前をクリックして [ダッシュボード] ページに移動します。ページの下部にある **[接続]** をクリックします。
 
-2. **[開く]** ボタンをクリックします。
+2. **[開く]** をクリックします。
 
-	![Click the Open button](./media/virtual-machines-provision-sql-server/click-open-to-connect.png)
+	![[開く] をクリックする](./media/virtual-machines-provision-sql-server/click-open-to-connect.png)
 
 3. **[Windows セキュリティ]** ダイアログ ボックスで、**[別のアカウントを使用]** をクリックします。
 
-	![Click Use another account](./media/virtual-machines-provision-sql-server/credentials.png)
+	![[別のアカウントを使用] をクリックする](./media/virtual-machines-provision-sql-server/credentials.png)
 
 4. `machinename\username` の形式で、ドメイン名に管理者名が付くマシンの名前を使用します。パスワードを入力し、マシンに接続します。
 
@@ -158,4 +155,4 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

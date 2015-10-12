@@ -3,17 +3,17 @@
 	description="カスタム API を定義し、Azure Mobile Services を使用する HTML アプリからそれを呼び出す方法について説明します。"
 	services="mobile-services"
 	documentationCenter=""
-	authors="ggailey777"
+	authors="ggailey777"  
 	manager="dwrede"
 	editor=""/>
 
 <tags
 	ms.service="mobile-services"
 	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-html"
+	ms.tgt_pltfrm="mobile-html" 
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/28/2015"
 	ms.author="glenga"/>
 
 # HTML アプリケーションからのカスタム API 呼び出し
@@ -92,4 +92,4 @@
 [既存のアプリケーションへの Mobile Services の追加]: mobile-services-html-get-started-data.md
 [ソース管理へのサーバー スクリプトの保存]: mobile-services-store-scripts-source-control.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

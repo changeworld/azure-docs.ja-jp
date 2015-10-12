@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/29/2015" 
+	ms.date="09/29/2015" 
 	ms.author="spelluru"/>
 
 # データ移動アクティビティ
@@ -24,29 +24,30 @@ Data Factory には、以下に示すさまざまなデータ ストア間の[�
 
 | **ソース** | **シンク** |
 | ------ | ---- |
-| [Azure BLOB](data-factory-azure-blob-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB､オンプレミスのファイル システム |
-| [Azure テーブル](data-factory-azure-table-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
-| [Azure SQL Dtabase](data-factory-azure-sql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
-| [Azure DocumentDB](data-factory-azure-documentdb-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database |
-| [IaaS 上の SQL Server](data-factory-sqlserver-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
-| [オンプレミスのファイル システム](data-factory-onprem-file-system-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server、オンプレミスのファイル システム |
-| [オンプレミスの SQL Server](data-factory-sqlserver-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
-| [オンプレミスの Oracle Database](data-factory-onprem-oracle-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
-| [オンプレミスの MySQL データベース](data-factory-onprem-mysql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
-| [オンプレミスの DB2 データベース](data-factory-onprem-db2-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
-| [オンプレミスの Teradata データベース](data-factory-onprem-teradata-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
-| [オンプレミスの Sybase データベース](data-factory-onprem-sybase-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
-| [オンプレミスの PostgreSQL データベース](data-factory-onprem-postgresql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、オンプレミスの SQL Server、IaaS 上の SQL Server |
+| [Azure BLOB](data-factory-azure-blob-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB､オンプレミスのファイル システム |
+| [Azure テーブル](data-factory-azure-table-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
+| [Azure SQL Dtabase](data-factory-azure-sql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
+| [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
+| [Azure DocumentDB](data-factory-azure-documentdb-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse |
+| [IaaS 上の SQL Server](data-factory-sqlserver-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server |
+| [オンプレミスのファイル システム](data-factory-onprem-file-system-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server、オンプレミスのファイル システム |
+| [オンプレミスの SQL Server](data-factory-sqlserver-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server |
+| [オンプレミスの Oracle Database](data-factory-onprem-oracle-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server |
+| [オンプレミスの MySQL データベース](data-factory-onprem-mysql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server |
+| [オンプレミスの DB2 データベース](data-factory-onprem-db2-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server |
+| [オンプレミスの Teradata データベース](data-factory-onprem-teradata-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server |
+| [オンプレミスの Sybase データベース](data-factory-onprem-sybase-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server |
+| [オンプレミスの PostgreSQL データベース](data-factory-onprem-postgresql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server |
 
 ## <a name="copyactivity"></a>コピー アクティビティ
-コピー アクティビティは、1 つの入力データセット (**ソース**) を受け取り、アクティビティの構成に従って 1 つの出力データセット (**シンク**) にデータをコピーします。データのコピーは、アクティビティで指定されているスケジュールに従ってバッチ方式で行われます。
+コピー アクティビティは、1 つの入力データセット (**source**) を受け取り、アクティビティの構成に従って 1 つの出力データセット (**sink**) にデータをコピーします。データのコピーは、アクティビティで指定されているスケジュールに従ってバッチ方式で行われます。
 
 > [AZURE.NOTE]すべてのアクティビティで使用可能なさまざまな JSON セクションとプロパティなど、高レベルでの一般的なアクティビティ定義については、「[パイプラインとアクティビティの概要](data-factory-create-pipelines.md)」を参照してください。
 
 コピー アクティビティには次の機能が備わっています。
 
 ### <a name="global"></a>グローバルに使用できるデータの移動
-データ移動サービスを利用するコピー アクティビティは、以下の地域と場所でグローバルに使用できます。グローバルに使用できるトポロジは、ほとんどの場合に地域をまたがるホップを回避する効率的なデータ移動を保証します。
+データ移動サービスを利用するコピー アクティビティは、以下のリージョンと場所でグローバルに使用できます。グローバルに使用できるトポロジは、ほとんどの場合にリージョンをまたがるホップを回避する効率的なデータ移動を保証します。
 
 | リージョン | [地理的な場所] |
 | ------ | --------- | 
@@ -95,6 +96,6 @@ Data Gateway には次の機能が備わっています。
 
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-data-movement-activities.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-data-movement-activities.md)でフィードバックをお寄せください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

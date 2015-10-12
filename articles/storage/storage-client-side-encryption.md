@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Microsoft Azure Storage | Microsoft Azure のクライアント側の暗号化"
-	description=".NET 用 Azure Storage クライアント ライブラリはクライアント側の暗号化と Azure Key Vault との統合を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。"
-	services="storage"
-	documentationCenter=".net"
-	authors="tamram"
-	manager="carolz"
+	pageTitle=".NET による Microsoft Azure Storage のクライアント側の暗号化 | Microsoft Azure" 
+	description=".NET 用 Azure Storage クライアント ライブラリはクライアント側の暗号化と Azure Key Vault との統合を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。" 
+	services="storage" 
+	documentationCenter=".net" 
+	authors="tamram" 
+	manager="carolz" 
 	editor=""/>
 
 <tags 
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/21/2015"
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/29/2015" 
 	ms.author="tamram"/>
 
 
@@ -22,6 +22,8 @@
 ## 概要
 
 [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](http://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
+
+Java によるクライアント側の暗号化については、「[Client-Side Encryption with Java for Microsoft Azure Storage (icrosoft Azure Storage の Java を使用したクライアント側の暗号化)](storage-client-side-encryption-java.md)」を参照してください。
 
 ## エンベロープ手法による暗号化と復号化
 
@@ -62,7 +64,7 @@
 
 暗号化された BLOB のダウンロードには、便利なメソッド **DownloadTo***/**BlobReadStream** を使用した BLOB 全体のコンテンツの取得も含まれます。ラップされた CEK はラップ解除され、復号化されたデータをユーザーに返すために IV (この場合 BLOB メタデータとして格納された) と共に使用されます。
 
-暗号化された BLOB での任意の範囲 (**DownloadRange** メソッド) のダウンロードでは、ユーザーが指定した範囲が調整されます。これは、少量の追加データを取得して、要求された範囲を正常に復号化するためです。
+暗号化された BLOB での任意の範囲 (**downloadRange** メソッド) のダウンロードでは、ユーザーが指定した範囲が調整されます。これは、少量の追加データを取得して、要求された範囲を正常に復号化するためです。
 
 このスキームを使用して、すべての BLOB 型 (ブロック BLOB、ページ BLOB、および追加 BLOB) を暗号化/復号化できます。
 
@@ -148,11 +150,11 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 ### RequireEncryption モード
 
-すべてのアップロードとダウンロードを暗号化する必要がある場合、オプションで操作のモードを有効にすることができます。このモードでは、暗号化ポリシーを設定せずにデータをアップロードしようとしたり、サービスで暗号化されていないデータをダウンロードしようとしたりすると、クライアントで失敗します。要求オプション オブジェクトの **RequireEncryption** プロパティによって、この動作が制御されます。Azure Storage に保存されているすべてのオブジェクトがアプリケーションによって暗号化される場合、サービス クライアント オブジェクトの既定の要求オプションに **RequireEncryption** プロパティを設定できます。たとえば、**CloudBlobClient.DefaultRequestOptions.RequireEncryption** を **true** に設定して、そのクライアント オブジェクトを介して実行されるすべての BLOB 操作に対して暗号化を要求します。
+すべてのアップロードとダウンロードを暗号化する必要がある場合、オプションで操作のモードを有効にすることができます。このモードでは、暗号化ポリシーを設定せずにデータをアップロードしようとしたり、サービスで暗号化されていないデータをダウンロードしようとしたりすると、クライアントで失敗します。要求オプション オブジェクトの **RequireEncryption** プロパティによって、この動作が制御されます。Azure Storage に保存されているすべてのオブジェクトがアプリケーションによって暗号化される場合、サービス クライアント オブジェクトの既定の要求オプションに **requireEncryption** プロパティを設定できます。たとえば、**CloudBlobClient.DefaultRequestOptions.RequireEncryption** を **true** に設定して、そのクライアント オブジェクトを介して実行されるすべての BLOB 操作に対して暗号化を要求します。
 
 ### BLOB サービス暗号化
 
-**BlobEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定)。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
+**BlobEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
 	// Create the IKey used for encryption.
  	RsaKey key = new RsaKey("private:key1" /* key identifier */);
@@ -172,7 +174,7 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 ### Queue サービス暗号化
 
-**QueueEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定)。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
+**QueueEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
 
 	// Create the IKey used for encryption.
@@ -242,4 +244,4 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 [.NET 用 Azure Storage クライアント ライブラリ NuGet パッケージ](http://www.nuget.org/packages/WindowsAzure.Storage/5.0.0)をダウンロードする。GitHub から [.NET 用 Azure Storage クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-net)をダウンロードする。Azure Key Vault NuGet の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。[Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)にアクセスする。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

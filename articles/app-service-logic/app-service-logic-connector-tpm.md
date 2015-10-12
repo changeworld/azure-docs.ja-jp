@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Logic Apps での BizTalk 取引先管理コネクタの使用 | Microsoft Azure App Service"
-	description="BizTalk 取引先管理コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-	services="app-service\logic"
-	documentationCenter=".net,nodejs,java"
-	authors="rajeshramabathiran"
-	manager="dwrede"
-	editor=""/>
+   pageTitle="Logic Apps での BizTalk 取引先管理コネクタの使用 | Microsoft Azure App Service" 
+   description="BizTalk 取引先管理コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法" 
+   services="app-service\logic" 
+   documentationCenter=".net,nodejs,java" 
+   authors="rajeshramabathiran" 
+   manager="dwrede" 
+   editor=""/>
 
 <tags
    ms.service="app-service-logic"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="integration"
-	ms.date="08/23/2015"
-	ms.author="rajram"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="integration" 
+   ms.date="08/23/2015"
+   ms.author="rajram"/>
 
 # BizTalk 取引先管理の使用開始とロジック アプリへの追加
 BizTalk 取引先管理 (TPM) サービスにより、パートナーや契約などの企業間の関係を、スキーマや証明書などの関連する成果物と共に定義して保持することができます。これらの関係は、AS2、EDIFACT、および X12 などの関連する API サービスによって適用できます。
@@ -30,6 +30,8 @@ TPM API アプリは、AS2 コネクタ、X12 API アプリ、または EDIFACT 
 ## コネクタでできること
 コネクタが作成されたため、Logic App を使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
@@ -37,4 +39,4 @@ TPM API アプリは、AS2 コネクタ、X12 API アプリ、または EDIFACT 
 <!--References-->
 [1]: app-service-logic-create-a-trading-partner-agreement.md
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

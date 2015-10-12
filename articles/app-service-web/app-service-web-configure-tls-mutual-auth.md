@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Web アプリの TLS 相互認証を構成する方法" 
 	description="Web アプリを TLS でクライアント証明書認証を使用するように構成する方法について説明します。" 
-	services="app-service\web" 
+	services="app-service" 
 	documentationCenter="" 
 	authors="naziml" 
 	manager="wpickett" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="app-service" 
-	ms.workload="web" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
@@ -179,4 +179,4 @@ Web アプリをクライアント証明書認証を使用するように構成�
         }
     }
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

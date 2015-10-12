@@ -76,4 +76,4 @@ Azure DNS の DNS ゾーンを削除する前に、ゾーンの作成時に自�
 
 [.NET SDK を使用した操作の自動化](dns-sdk.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

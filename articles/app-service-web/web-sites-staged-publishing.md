@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure App Service の Web アプリのステージング環境を設定する"
 	description="Azure App Service の Web アプリのステージングされた発行を使用する方法について説明します。"
-	services="app-service\web"
+	services="app-service"
 	documentationCenter=""
 	authors="cephalin"
 	writer="cephalin"
@@ -10,11 +10,11 @@
 
 <tags
 	ms.service="app-service"
-	ms.workload="web"
+	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/16/2015"
+	ms.date="09/21/2015"
 	ms.author="cephalin"/>
 
 # Azure App Service の Web アプリのステージング環境を設定する
@@ -127,6 +127,11 @@
 
 3. デプロイ スロットにコードをプッシュします。しばらくすると自動スワップが実行され、更新がターゲット スロットの URL に反映されます。
 
+<a name="Multi-Phase"></a>
+## Web アプリに複数フェーズのスワップを使用する ##
+
+複数フェーズのスワップを使用すると、スロット固有として設計された構成要素 (接続文字列など) のコンテキストで検証を簡素化できます。この場合、スワップが実際に有効になる前に、スワップ ターゲットのこのような構成要素をスワップ ソースに適用して検証すると便利です。スワップ ターゲットの構成要素をスワップ ソースに適用した後は、実行可能な操作として、スワップを完了するか、スワップ ソースの元の構成に戻します。元の構成に戻すと、スワップをキャンセルできます。複数フェーズのスワップに使用できる Azure PowerShell コマンドレットのサンプルについては、「デプロイ スロット用の Azure PowerShell コマンドレット」をご覧ください。
+
 <a name="Rollback"></a>
 ## スワップ後に運用環境のアプリをロールバックするには ##
 スロットのスワップ後に運用サイトでエラーが見つかった場合は、同じ 2 つのスロットをすぐにスワップして、スロットをスワップ前の状態にロールバックすることができます。
@@ -147,49 +152,43 @@ Azure PowerShell は、Windows PowerShell から Azure を管理するための�
 
 - Azure PowerShell のインストールと構成、Azure サブスクリプションを使用した Azure PowerShell の認証については、「[Microsoft Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」を参照してください。  
 
-- PowerShell で Azure App Service に使用できるコマンドレットの一覧を表示するには、`help AzureWebsite` を呼び出してください。
+- PowerShell コマンドレットの新しい Azure リソース マネージャー モードを使用するには、`Switch-AzureMode -Name AzureResourceManager` で開始します。
 
 ----------
 
-### Get-AzureWebsite
-**Get-AzureWebsite** コマンドレットは、次の例に示すように、現在のサブスクリプションの Azure の Web アプリに関する情報を表示します。
+### Web アプリの作成
 
-`Get-AzureWebsite webappslotstest`
-
-----------
-
-### New-AzureWebsite
-**New-AzureWebsite** コマンドレットを使用し、Web アプリとスロット両方の名前を指定することで、デプロイ スロットを作成できます。また、次の例に示すように、デプロイ スロットの作成では Web アプリと同じリージョンを指定します。
-
-`New-AzureWebsite webappslotstest -Slot staging -Location "West US"`
+`New-AzureWebApp -ResourceGroupName [resource group name] -Name [web app name] -Location [location] -AppServicePlan [app service plan name]`
 
 ----------
 
-### Publish-AzureWebsiteProject
-次の例に示すように、コンテンツのデプロイには **Publish-AzureWebsiteProject** コマンドレットを使用できます。
+### Web アプリのデプロイ スロットを作成する
 
-`Publish-AzureWebsiteProject -Name webappslotstest -Slot staging -Package [path].zip`
-
-----------
-
-### Show-AzureWebsite
-コンテンツと構成の更新が新しいスロットに適用されたら、次の例に示すように、**Show-AzureWebsite** コマンドレットを使用してスロットを表示することで、更新を検証できます。
-
-`Show-AzureWebsite -Name webappslotstest -Slot staging`
+`New-AzureWebApp -ResourceGroupName [resource group name] -Name [web app name] -SlotName [deployment slot name] -Location [location] -AppServicePlan [app service plan name]`
 
 ----------
 
-### Switch-AzureWebsiteSlot
-**Switch-AzureWebsiteSlot** コマンドレットでは、次の例に示すように、スワップ操作を実行して、更新されたデプロイ スロットを運用サイトにすることができます。運用アプリではダウン タイムは発生せず、コールド スタートが行われることもありません。
+### 複数フェーズのスワップを開始し、ターゲット スロットの構成をソース スロットに適用する
 
-`Switch-AzureWebsiteSlot -Name webappslotstest`
+`$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}` `Invoke-AzureResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [web app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01`
 
 ----------
 
-### Remove-AzureWebsite
-デプロイ スロットが不要になった場合は、次の例に示すように、**Remove-AzureWebsite** コマンドレットを使用して削除できます。
+### 複数フェーズのスワップの最初のフェーズを元に戻し、ソース スロットの構成を復元する
 
-`Remove-AzureWebsite -Name webappslotstest -Slot staging`
+`Invoke-AzureResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [web app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01`
+
+----------
+
+### デプロイ スロットをスワップする
+
+`$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}` `Invoke-AzureResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [web app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01`
+
+----------
+
+### デプロイ スロットを削除する
+
+`Remove-AzureResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [web app name]/[slot name] -ApiVersion 2015-07-01`
 
 ----------
 
@@ -200,7 +199,7 @@ Azure PowerShell は、Windows PowerShell から Azure を管理するための�
 
 Azure CLI には、Web アプリ デプロイ スロットの管理のサポートなど、Azure を使用するためのクロス プラットフォーム コマンドが用意されています。
 
-- Azure サブスクリプションへのAzure CLI の接続方法に関する情報など、Azure CLI のインストールと構成手順については、「[Azure CLI のインストールと構成](../xplat-cli.md)」をご覧ください。
+- Azure サブスクリプションへのAzure CLI の接続方法に関する情報など、Azure CLI のインストールと構成手順については、「[Azure CLI のインストールと構成](../xplat-cli-install.md)」をご覧ください。
 
 -  Azure CLI で Azure App Service に使用できるコマンドの一覧を表示するには、`azure site -h` を呼び出してください。
 
@@ -261,4 +260,4 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

@@ -30,7 +30,7 @@
 ## VM 作成時に静的プライベート IP アドレスを指定する方法
 上記のシナリオに基づいて、*TestService* という名前の新しいクラウド サービスで *DNS01* という名前の VM を作成するには、以下の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](xplat-cli.md)を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 1. **azure service create** コマンドを実行して、クラウド サービスを作成します。
 
 		azure service create TestService --location uscentral
@@ -64,7 +64,7 @@
 	- **-l (または --location)**。VM が作成される Azure リージョンです。ここでは、*centralus* です。
 	- **-n (または --vm-name)**。作成する VM の名前です。
 	- **-w (または --virtual-network-name)**。VM の作成先となる VNet の名前です。 
-	- **-S (または --static-ip)**。NIC の静的プライベート IP アドレスです。
+	- **-S (または --static-ip)**。VM の静的プライベート IP アドレスです。
 	- **TestService**。VM の作成先となるクラウド サービスの名前です。
 	- **bd507d3a70934695bc2128e3e5a255ba\_\_RightImage-Windows-2012R2-x64-v14.2**。VM の作成に使用されるイメージです。
 	- **adminuser**。Windows VM のローカル管理者です。
@@ -115,4 +115,4 @@
 - [インスタンス レベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

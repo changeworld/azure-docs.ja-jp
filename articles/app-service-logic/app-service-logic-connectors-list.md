@@ -22,9 +22,10 @@
 
 料金情報および各サービス レベルに含まれる新機能の一覧については、「[Azure App Service の価格](http://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
 
+> [AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## Standard コネクタ
-次の表に、Standard コネクタと使用できる、マイクロソフトによって作成された使用可能なすべてのコネクタと API アプリを示します。
+次の表に、Standard コネクタと使用できる、マイクロソフトによって作成された使用可能なすべてのコネクタと API Apps を示します。
 
 名前 | 説明
 --- | ---
@@ -68,7 +69,7 @@
 [BizTalk ルール](app-service-logic-use-biztalk-rules.md) | BizTalk ルールは組織内のビジネス ロジックを定義し、制御します。ビジネス ポリシーは、関連付けられているアプリケーションの再コンパイルや再デプロイなしで更新できます。
 DB2 コネクタ | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM DB2 データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
 Informix | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM Informix データベースに接続します。Informix Structured Query Language (Informix 構造化クエリ言語) のコマンドに Web API と OData API の操作をマップできます。<br/><br/>トリガーはありません。アクションには、テーブルの選択、挿入、更新、削除、およびカスタム ステートメントが含まれます。<br/><br/>オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。このコネクタには、TCP/IP ネットワーク経由で Informix サーバーに接続するための Microsoft Client for DRDA も含まれています。
-MQ | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM WebSphere MQ Server Version 8 に接続します。オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。コネクタには、Microsoft Client for MQ も含まれています。<br/><br/>トリガーはありません。アクションはありません。<br/><br/>**注** 現在のところ、ロジック アプリで使用することはできません。
+MQ | Windows オペレーティング システムを実行している Azure 仮想マシン上およびオンプレミスの IBM WebSphere MQ Server Version 8 に接続します。オンプレミスで使用する場合は、VPN または Azure ExpressRoute を使用できます。コネクタには、Microsoft Client for MQ も含まれています。<br/><br/>トリガーはありません。アクションはありません。<br/><br/>**注** 現在のところ、Logic Apps で使用することはできません。
 [Oracle Database](app-service-logic-connector-oracle.md) | オンプレミスの Oracle Database に接続して、データベース テーブルのエントリを作成、更新、取得、削除できます。
 [SAP](app-service-logic-connector-sap.md) | オンプレミスの SAP サーバーに接続し、RFC、BAPI、tRFC を呼び出して、IDOC を送信します。
 [BizTalk Flat File Encoder](app-service-logic-flatfile-encoder.md) | フラット ファイル データ (Excel、csv など) と XML データ間の相互運用性を提供します。この API アプリによって、フラット ファイル インスタンスを XML に、またはその逆方向に変換できます。
@@ -77,7 +78,7 @@ MQ | Windows オペレーティング システムを実行している Azure �
 [BizTalk XPath Extractor](app-service-logic-xpath-extract.md) | 選択した XPath に基づいて XML コンテンツを検索し、データを抽出します。
 
 ## トリガーとしてのコネクタ
-いくつかのコネクタは、ロジック アプリのトリガーとして提供されています。これらのトリガーには、次の 2 種類があります。
+いくつかのコネクタは、Logic Apps のトリガーとして提供されています。これらのトリガーには、次の 2 種類があります。
 
 1. ポーリング トリガー: このトリガーは、指定された頻度でサービスをポーリングして、新しいデータをチェックします。新しいデータを利用できる場合、そのデータを入力値として Logic App の新しいインスタンスが実行されます。同じデータが複数回使用されることを防ぐために、Logic App で読み取られて渡されるデータのクリーンアップをトリガーで実行される場合があります。このようなコネクタには、ファイル、SQL、Azure Storage があります。
 2. プッシュ トリガー: このトリガーは、エンドポイント上のデータまたは発生するイベントをリッスンします。その後、Logic App の新しいインスタンスをトリガーします。このようなコネクタには、HTTP リスナーや Twitter があります。
@@ -93,4 +94,4 @@ MQ | Windows オペレーティング システムを実行している Azure �
 
 [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md) [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md) [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

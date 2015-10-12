@@ -1,6 +1,7 @@
 <properties
 	pageTitle="HDFS と互換性のある BLOB ストレージのデータのクエリ | Microsoft Azure"
 	description="HDInsight では、BLOB ストレージを HDFS のビッグ データ ストアとして使用します。BLOB ストレージのデータに対するクエリを実行し、分析結果を格納する方法について説明します。"
+	keywords="blob storage,hdfs,structured data,unstructured data"
 	services="hdinsight,storage"
 	documentationCenter=""
 	tags="azure-portal"
@@ -100,7 +101,7 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント][az
 
 ###Azure CLI の使用
 
-[Azure CLI のインストールと構成](../xplat-cli.md)が完了している場合は、次のコマンドを使用して、ストレージ アカウントとコンテナーを作成できます。
+[Azure CLI のインストールと構成](../xplat-cli-install.md)が完了している場合は、次のコマンドを使用して、ストレージ アカウントとコンテナーを作成できます。
 
 	azure storage account create <storageaccountname> --type LRS
 
@@ -314,5 +315,6 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 [img-hdi-powershell-blobcommands]: ./media/hdinsight-hadoop-use-blob-storage/HDI.PowerShell.BlobCommands.png
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
+<!--Please, pass the added \ in line 146-->
 
-<!----HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

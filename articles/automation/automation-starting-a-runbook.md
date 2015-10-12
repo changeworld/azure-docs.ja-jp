@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/11/2015"
-   ms.author="bwren" />
+   ms.date="09/28/2015"
+   ms.author="bwren;sngun"/>
 
 # Azure Automation での Runbook を開始する
 
@@ -49,7 +49,6 @@
   </td>
  </tr>
  <tr>
- <tr>
   <td><a href="http://msdn.microsoft.com/library/azure/mt163849.aspx">Azure Automation API</a></td>
   <td>
    <ul>
@@ -62,7 +61,6 @@
   </td>
  </tr>
  <tr>
- <tr>
   <td><a href="http://azure.microsoft.com/documentation/articles/automation-webhooks/">Webhook</a></td>
   <td>
    <ul>
@@ -74,6 +72,16 @@
   </td>
  </tr>
  <tr>
+  <td><a href="http://azure.microsoft.com/documentation/articles/automation-webhooks/">Azure アラートに応答する</a></td>
+  <td>
+   <ul>
+    <li>Azure アラートに応答して Runbook を開始します。</li>
+    <li>runbook 用の Webhook とアラートへのリンクを構成します。</li>
+    <li>URL のセキュリティ トークンを使用して認証します。</li>
+    <li>現時点ではメトリックに関するアラートのみサポートします。</li>
+   </ul>
+  </td>
+ </tr>
  <tr>
   <td><a href="http://azure.microsoft.com/documentation/articles/automation-scheduling-a-runbook">スケジュール</a></td>
   <td>
@@ -112,7 +120,7 @@
 1. Automation アカウントから、**[Runbook]** 部分をクリックして **[Runbook]** ブレードを開きます。
 1. Runbook をクリックすると、その **[Runbook]** ブレードが開きます。
 2. **[開始]** をクリックします。
-1. Runbook がパラメーターを持っていない場合は、開始するかどうかを確認するプロンプトが表示されます。Runbook にパラメーターがある場合、**[Runbook の開始]** が開くので、パラメーター値を指定できます。パラメーターについて詳しくは、「[Runbook のパラメーター](#Runbook-parameters)」をご覧ください。
+1. Runbook がパラメーターを持っていない場合は、開始するかどうかを確認するプロンプトが表示されます。Runbook にパラメーターがある場合、**[Runbook の開始]** ブレードが開くので、パラメーター値を指定できます。パラメーターについて詳しくは、「[Runbook のパラメーター](#Runbook-parameters)」をご覧ください。
 3. **[ジョブ]** ブレードが開くので、ジョブの状態を追跡できます。
 
 
@@ -232,4 +240,4 @@ credential というパラメーターを受け入れる次のテスト Runbook 
 
 - [別の Runbook からの Runbook の開始](http://msdn.microsoft.com/library/azure/dn857355.aspx) 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO1-->

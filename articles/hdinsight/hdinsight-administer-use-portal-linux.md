@@ -95,7 +95,9 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 	- __[選択]__: これを使用してデータ ソースの構成を保存します。
 
+	
 8. __[ノード価格レベル]__ を選択して、このクラスターに対して作成されるノードに関する情報を表示します。既定では、worker ノードの数は __4__ に設定されます。
+
 
 	クラスターの推定コストがブレードの下部に表示されます。
 
@@ -114,10 +116,14 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 		> [AZURE.IMPORTANT]HDInsight 構成から新しいネットワークを作成することはできないため、HDInsight クラスターを作成する前に Azure の仮想ネットワークを作成する必要があります。
 		>
 		> 現時点 (2015 年 8 月 25 日) では、Azure の仮想ネットワーク上に存在できる Linux ベースの HDInsight クラスターは 1 つだけという制限があります。
+        >
+        > Linux ベースの HDInsight で v1 (クラシック) Azure Virtual Network を使用することはできません。Azure プレビュー ポータルでの HDInsight クラスターの作成プロセスで Virtual Network をオプションとして表示したり、Azure CLI または Azure PowerShell からクラスターを作成するときに Virtual Network を使用できるようにするには、Virtual Network が v2 (Azure Resource Manager) である必要があります。
+        >
+        > v1 ネットワーク上にリソースがあり、HDInsight から仮想ネットワークを介してそれらのリソースに直接アクセスできるようにする場合、v2 Virtual Network を v1 Virtual Network に接続する方法については、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」をご覧ください。この接続が確立されたら、v2 Virtual Network で HDInsight クラスターを作成できます。
 
-	* __[スクリプト アクション]__: HDInsight クラスターをプロビジョニング中にカスタマイズする Bash スクリプトを指定できます。スクリプトには、(Hadoop を操作するグラフィカル クライアントである) [Hue をインストールするスクリプト](hdinsight-hadoop-hue-linux.md)などがあります。 スクリプト アクションの詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+	* __[スクリプト アクション]__: HDInsight クラスターをプロビジョニング中にカスタマイズする Bash スクリプトを指定できます。スクリプトには、(Hadoop を操作するグラフィカル クライアントである) [Hue をインストールするスクリプト](hdinsight-hadoop-hue-linux.md)などがあります。 スクリプト アクションの詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
-	* __[Azure Storage キー]__: 追加のストレージ アカウントを HDInsight サーバーと関連付けることができます。
+	* __[Azure ストレージ キー]__: 追加のストレージ アカウントを HDInsight サーバーに関連付けることができます。
 
 		> [AZURE.NOTE]HDInsight は、この構成セクションを使用して追加される既定のデータ ストアとして使用される Azure Storage アカウント、またはパブリックにアクセスできる Azure Storage アカウントのみにアクセスできます。
 
@@ -129,7 +135,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 	| ------------------ | --------------------- |
 	| ![スタート画面のプロビジョニング中インジケーター](./media/hdinsight-administer-use-portal-linux/provisioning.png) | ![プロビジョニングされたクラスターのタイル](./media/hdinsight-administer-use-portal-linux/provisioned.png) |
 
-	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の __[通知]__ エントリを使用します。
+	> [AZURE.NOTE]クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスを確認するには、スタート画面のタイルまたはページの左側の __[通知]__ エントリを使用します。
 
 ## クラスターの管理
 
@@ -137,9 +143,9 @@ Azure プレビュー ポータルでクラスターを選択すると、名前�
 
 ![クラスターの詳細](./media/hdinsight-administer-use-portal-linux/clusterdetails.png)
 
-このブレードの上部、__[要点]__ セクション、および __[クイック リンク]__ セクションにあるアイコンについては、次の説明を参照してください。
+次の説明を参照して、このブレードの上部、__[要点]__ セクション、__[クイック リンク]__ セクションにあるアイコンを理解してください。
 
-* __[設定]__ と __[すべての設定]__: クラスター用の __[設定]__ ブレードを表示します。このブレードを使用して、クラスターの詳細な構成情報にアクセスできます。
+* __[設定]__ と __[すべての設定]__: クラスター用の __[設定]__ ブレードを表示します。このブレードを使用して、クラスターの詳しい構成情報にアクセスできます。
 
 * __[ダッシュボード]__、__[クラスター ダッシュボード]__、__[URL]__: これらはすべてクラスター ダッシュボードにアクセスするために使用します。クラスター ダッシュボードは、Linux ベースのクラスター用の Ambari Web です。
 
@@ -149,17 +155,17 @@ Azure プレビュー ポータルでクラスターを選択すると、名前�
 
 * __[削除]__: HDInsight クラスターを削除します。
 
-* __クイック スタート__ (![雲と雷のアイコン = クイック スタート](./media/hdinsight-administer-use-portal-linux/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
+* __[クイック スタート]__ (![雲と雷のアイコン = クイック スタート](./media/hdinsight-administer-use-portal-linux/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
 
-* __ユーザー__ (![ユーザー アイコン](./media/hdinsight-administer-use-portal-linux/users.png)): このクラスターの_ポータル管理_に対する権限を、Azure サブスクリプションの他のユーザーに対して設定できます。
+* __[ユーザー]__ (![ユーザー アイコン](./media/hdinsight-administer-use-portal-linux/users.png)): このクラスターの_ポータル管理_に対する、Azure サブスクリプションの他のユーザーの権限を設定できます。
 
-	> [AZURE.IMPORTANT]これは Azure プレビュー ポータルでのこのクラスターへのアクセスと権限_のみ_に影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
+	> [AZURE.IMPORTANT]これは、Azure プレビュー ポータルでのこのクラスターへのアクセスと権限だけに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
 
-* __タグ__ (![タグ アイコン](./media/hdinsight-administer-use-portal-linux/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスで共通の値を使用できます。
+* __[タグ]__ (![タグ アイコン](./media/hdinsight-administer-use-portal-linux/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
 
 * __[ドキュメント]__: Azure HDInsight のドキュメントへのリンクです。
 
-> [AZURE.IMPORTANT]HDInsight クラスターによって提供されるサービスを管理するには、Ambari Web または Ambari REST API を使用する必要があります。Ambari の使用の詳細については、[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
+> [AZURE.IMPORTANT]HDInsight クラスターによって提供されるサービスを管理するには、Ambari Web または Ambari REST API を使用する必要があります。Ambari の使用の詳細については、「[Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
 ### <a name="scaling"></a>スケーリング
 
@@ -167,7 +173,7 @@ Azure プレビュー ポータルでクラスターを選択すると、名前�
 
 ![image of scaling ui](./media/hdinsight-administer-use-portal-linux/scaling.png)
 
-スケーリング操作の詳細については、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md#scaling)」を参照してください。
+スケーリング操作の詳細については、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md#scaling)」をご覧ください。
 
 ## クラスターの監視
 
@@ -175,7 +181,7 @@ HDInsight クラスター ブレードの __[使用状況]__ セクションに�
 
 ![使用状況に関する情報](./media/hdinsight-administer-use-portal-linux/usage.png)
 
-> [AZURE.IMPORTANT]HDInsight クラスターによって提供されるサービスを監視するには、Ambari Web または Ambari REST API を使用する必要があります。Ambari の使用の詳細については、[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
+> [AZURE.IMPORTANT]HDInsight クラスターによって提供されるサービスを監視するには、Ambari Web または Ambari REST API を使用する必要があります。Ambari の使用の詳細については、「[Ambari を使用した HDInsight クラスターの管理 (プレビュー)](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
 ## 次のステップ
 この記事では、Azure ポータルを使用して HDInsight クラスターを作成する方法、および Hadoop コマンド ライン ツールを開く方法について説明しました。詳細については、次の記事を参照してください。
@@ -189,4 +195,4 @@ HDInsight クラスター ブレードの __[使用状況]__ セクションに�
 
 [preview-portal]: https://portal.azure.com
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-html5"
 	ms.devlang="javascript"
 	ms.topic="get-started-article"
-	ms.date="08/11/2015"
+	ms.date="09/24/2015"
 	ms.author="glenga"/>
 
 
@@ -65,13 +65,11 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
  
 		Install-Package Microsoft.AspNet.WebApi.Cors  
 
-	これにより、バックエンドで必要な CORS のサポートがインストールされます。
-
-2. App\_Start/WebApiConfig.cs プロジェクト ファイルを開き、ステートメントを使用して次を追加します。
+2. App\_Start/Startup.MobileApp.cs プロジェクト ファイルを開き、次の using ステートメントを追加します。
 
 		using System.Web.Http.Cors;
 
-3. 次に、**HttpConfiguration** が作成された後、以下のコードを **WebApiConfig.Register** メソッドに追加します。
+3. 次に、**HttpConfiguration** (*config*) の作成後に、次のコードを **Startup.ConfigureMobileApp** メソッドに追加します。
 
         // Enable CORS support for localhost port 8000, all headers and methods.
         var cors = new EnableCorsAttribute("http://localhost:8000", "*", "*");
@@ -121,4 +119,4 @@ HTML アプリの他のすべての Mobile Apps チュートリアルを行う�
 [Visual Studio Community 2013]: https://www.visualstudio.com/downloads
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

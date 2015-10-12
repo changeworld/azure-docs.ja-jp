@@ -108,7 +108,7 @@ OR  y.[is_user_defined] = 1
 - **geography**: varbinary 型を使用します。
 - **hierarchyid**: この CLR 型はサポートされていません。
 - **image**、**text**、**ntext**: rchar/nvarchar を使用します (より小さいほうが適切)。
-- **nvarchar(max)**: パフォーマンスを向上させるために、varchar(4000) 以下を使用します。
+- **nvarchar(max)**: パフォーマンスを向上させるために、nvarchar(4000) 以下を使用します。
 - **numeric**: decimal を使用します。
 - **sql\_variant**: 列を厳密に型指定された複数の列に分割します。
 - **sysname**: nvarchar(128) を使用します。
@@ -145,4 +145,4 @@ SQLDW にデータベース スキーマを正常に移行した後、次の記�
 
 <!--Other Web references-->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

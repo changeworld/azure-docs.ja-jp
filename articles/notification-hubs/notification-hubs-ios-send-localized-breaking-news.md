@@ -13,8 +13,9 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="09/24/2015"
 	ms.author="wesmc"/>
+
 # Notification Hubs を使用した iOS デバイスへのローカライズ ニュース速報の送信
 
 > [AZURE.SELECTOR]
@@ -222,4 +223,4 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 [通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [方法: Windows Azure 通知ハブ (iOS アプリ)]: http://msdn.microsoft.com/library/jj927168.aspx
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

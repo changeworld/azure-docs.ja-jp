@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Azure のクラウド サービスは必要なコンピューティング オプションでしょうか。"
-	description="Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Cloud Services、Virtual Machines"
+	pageTitle="Azure のクラウド サービスは必要なコンピューティング オプションでしょうか。" 
+	description="Azure の次のコンピューティング ホスティング オプションとそのしくみについて学習します: App Service、Cloud Services、Virtual Machines" 
 	services="cloud-services"
-	documentationCenter=""
-	authors="Thraka"
+    documentationCenter=""
+	authors="Thraka" 
 	manager="timlt"/>
 
 <tags 
-	ms.service="multiple"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="adegeo"/>
 
 # 選択するクラウド サービス
@@ -33,7 +33,7 @@ Azure にはアプリケーションを実行するための複数のホステ�
 [.NET でのクラウド サービス アプリの作成](cloud-services-dotnet-get-started.md)<br/> [Node.js でのクラウド サービス アプリの作成](cloud-services-nodejs-develop-deploy-app.md)<br/> [PHP でのクラウド サービス アプリの作成](../cloud-services-php-create-web-role.md)<br/> [Python でのクラウド サービス アプリの作成](../cloud-services-python-ptvs.md)<br/>
 
 [App Service]: app-service-choose-me.md
-[仮想マシン]: ../virtual-machines-choose-me.md
+[仮想マシン]: ../virtual-machines-about.md
 [Cloud Services]: #tellmecs
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

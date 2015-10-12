@@ -1,24 +1,24 @@
 <properties 
-	pageTitle="SQL Server ストアド プロシージャ アクティビティ"
-	description="SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Databases でストアド プロシージャを呼び出す方法について説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="SQL Server ストアド プロシージャ アクティビティ" 
+	description="SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database または Azure SQL Data Warehouse でストアド プロシージャを呼び出す方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/30/2015" 
 	ms.author="spelluru"/>
 
 # SQL Server ストアド プロシージャ アクティビティ
 
-SQL Server ストアド プロシージャ アクティビティを Data Factory の[パイプライン](data-factory-create-pipelines.md)で使用して、**Azure SQL** Databases でストアド プロシージャを呼び出すことができます。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
+SQL Server ストアド プロシージャ アクティビティを Data Factory の[パイプライン](data-factory-create-pipelines.md)で使用して、**Azure SQL Database** または **Azure SQL Data Warehouse** でストアド プロシージャを呼び出すことができます。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
 
 ## 構文
 	{
@@ -46,8 +46,8 @@ name | アクティビティの名前 | あり
 description | アクティビティの用途を説明するテキストです。 | いいえ
 type | SqlServerStoredProcedure | あり
 inputs | 続行するストアド プロシージャ アクティビティに使用できる状態 (’Ready’ 状態) である必要がある入力データセット。ストアド プロシージャ アクティビティへの入力は、このアクティビティと他のアクティビティを関連付けるときの依存関係管理にのみ使用されます。入力データセットは、ストアド プロシージャでパラメーターとして使用できません。 | いいえ
-outputs | ストアド プロシージャ アクティビティで生成された出力データセット。出力テーブルでは、必ず Azure SQL Databases を Data Factory にリンクするリンク サービスを使用します。ストアド プロシージャ アクティビティの出力は、後続の処理にストアド プロシージャ アクティビティの結果を渡すための手段として、およびこのアクティビティと他のアクティビティを関連付けるときの依存関係管理に使用できます。 | あり
-storedProcedureName | 出力テーブルに使用するリンク サービスで示される Azure SQL データベースのストアド プロシージャ名を指定します。 | あり
+outputs | ストアド プロシージャ アクティビティで生成された出力データセット。出力テーブルでは、必ず Azure SQL Database または Azure SQL Data Warehouse を Data Factory にリンクするリンク サービスを使用します。ストアド プロシージャ アクティビティの出力は、後続の処理にストアド プロシージャ アクティビティの結果を渡すための手段として、およびこのアクティビティと他のアクティビティを関連付けるときの依存関係管理に使用できます。 | あり
+storedProcedureName | 出力テーブルに使用するリンク サービスで示される Azure SQL データベースまたは Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 | あり
 storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します | いいえ
 
 ## 例
@@ -132,4 +132,4 @@ Data Factory パイプラインでこのストアド プロシージャを実行
 		}
 	}
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

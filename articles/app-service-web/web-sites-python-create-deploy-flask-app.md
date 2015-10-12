@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure での Flask を使用した Web アプリの作成"
-	description="Azure での Python Web アプリの実行について説明するチュートリアル。"
-	services="app-service\web"
+	pageTitle="Azure での Flask を使用した Web アプリの作成" 
+	description="Azure での Python Web アプリの実行について説明するチュートリアル。" 
+	services="app-service\web" 
 	documentationCenter="python"
 	tags="python"
-	authors="huguesv"
-	manager="wpickett"
+	authors="huguesv" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="python"
-	ms.topic="article"
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="python" 
+	ms.topic="article" 
 	ms.date="08/30/2015"
 	ms.author="huguesv"/>
 
@@ -377,6 +377,8 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 - [Python Tools for Visual Studio を使用した Azure 上の Flask と MongoDB]
 - [Python Tools for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ]
 
+詳細については、[Python デベロッパー センター](/develop/python/)も参照してください。
+
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
@@ -399,4 +401,4 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 [Flask のドキュメント]: http://flask.pocoo.org/
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

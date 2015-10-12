@@ -64,7 +64,7 @@ VM リソースの使用量の取得 | 使用できません。 | `azure vm list
 
 ## 次のステップ
 
-* Azure CLI を使用してリソース マネージャーのリソースを操作する方法の詳細については、[リソース マネージャーでの Azure コマンド ライン インターフェイスの使用](xplat-cli-azure-resource-manager.md)に関するページと、[Azure コマンド ライン インターフェイスによるロールベースのアクセス制御の管理](../role-based-access-control-xplat-cli.md)に関するページを参照してください。
+* Azure CLI を使用してリソース マネージャーのリソースを操作する方法の詳細については、[リソース マネージャーでの Azure コマンド ライン インターフェイスの使用](xplat-cli-azure-resource-manager.md)に関するページと、[Azure コマンド ライン インターフェイスによるロールベースの Access Control の管理](../role-based-access-control-xplat-cli-install.md)に関するページを参照してください。
 * CLI コマンドのその他の例については、[Azure サービス管理での Azure コマンド ライン インターフェイスの使用](../virtual-machines-command-line-tools.md)に関するページと、[Azure リソース マネージャーでの Azure CLI の使用](azure-cli-arm-commands.md)に関するページを参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

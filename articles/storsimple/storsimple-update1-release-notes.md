@@ -1,19 +1,19 @@
 <properties 
-    pageTitle="StorSimple 8000 シリーズ Update 1.2 リリース ノート | Microsoft Azure"
-    description="StorSimple 8000 シリーズ Update 1.2 における新機能、問題、回避策について説明します。"
-    services="storsimple"
-    documentationCenter="NA"
-    authors="alkohli"
-    manager="carolz"
-    editor="" />
+   pageTitle="StorSimple 8000 シリーズ Update 1.2 リリース ノート | Microsoft Azure"
+   description="StorSimple 8000 シリーズ Update 1.2 における新機能、問題、回避策について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
  <tags 
-    ms.service="storsimple"
-    ms.devlang="NA"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"
-    ms.workload="TBD"
-    ms.date="09/09/2015"
-    ms.author="alkohli" />
+   ms.service="storsimple"
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="09/09/2015"
+   ms.author="alkohli" />
 
 # StorSimple 8000 シリーズ Update 1.2 リリース ノート  
 
@@ -124,4 +124,4 @@ Update 1 より前のバージョンを実行している物理デバイスに�
 - [デバイスに Update 1.2 をインストールします](storsimple-install-update-1.md)。
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

@@ -35,21 +35,21 @@
 
 3.  **[サブスクリプションの譲渡]** オプションをクリックします。
 
-    ![Azure account subscriptions tab](./media/billing-subscription-transfer/image1.png)
+    ![Azure アカウントの [サブスクリプション] タブ](./media/billing-subscription-transfer/image1.png)
 
 4.  指示に従って、譲渡先を指定します。
 
-    ![Transfer Subscription dialog box](./media/billing-subscription-transfer/image2.PNG)
+    ![[サブスクリプションの譲渡] ダイアログ ボックス](./media/billing-subscription-transfer/image2.PNG)
 
 5.  譲渡先には、承認用のリンクが記載された電子メールが自動的に送信されます。
 
-    ![Subscription transfer email to recipient](./media/billing-subscription-transfer/image3.png)
+    ![サブスクリプションの譲渡で譲渡先に送信される電子メール](./media/billing-subscription-transfer/image3.png)
 
 6.  譲渡先のユーザーは、リンクをクリックして指示に従います (支払情報の入力など)。
 
-    ![First subscription transfer web page](./media/billing-subscription-transfer/image4.PNG)
+    ![最初のサブスクリプション譲渡 Web ページ](./media/billing-subscription-transfer/image4.PNG)
 
-    ![Second subscription transfer web page](./media/billing-subscription-transfer/image5.PNG)
+    ![次のサブスクリプション譲渡 Web ページ](./media/billing-subscription-transfer/image5.PNG)
 
 7. 成功です。 サブスクリプションが譲渡されました。
 
@@ -59,6 +59,8 @@
 
     サービスへの影響はありません。この譲渡により、現在のアカウント管理者にあるサブスクリプションが事実上取り消され、譲渡先のアカウントに新しいサブスクリプションが作成されます。ただし、基になる Azure サービスが新しいサブスクリプションに関連付けられます。サブスクリプション ID は変わりません。
 
+-   **このメカニズムを使用してサブスクリプションのディレクトリを変更する方法を教えてください。**-Azure サブスクリプションは、アカウント管理者が属するディレクトリ内に作成されます。そのため、ディレクトリを変更するためには、サブスクリプションを譲渡先ディレクトリ内のユーザー アカウントに譲渡するだけです。譲渡先のユーザーが譲渡を受け入れるための手順を完了すると、サブスクリプションは自動的に譲渡先ディレクトリに移動します。
+   
 -   **サブスクリプションの所有権を別の組織から引き継ぐ場合、その組織のユーザーが引き続きこのリソースにアクセスすることはできますか。**
 
     サブスクリプションが別のテナントに譲渡されると、以前のテナントに関連付けられているユーザーはそのサブスクリプションにアクセスできなくなります。現在サービス管理者または共同管理者ではないユーザーでも、他のセキュリティ メカニズムを介してまだサブスクリプションにアクセスできることがあります。このメカニズムには次のものが含まれます。- サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。詳細については、「[Azure の管理証明書の作成とアップロード](https://msdn.microsoft.com/library/azure/gg551722.aspx)」を参照してください。- Storage などのサービスのアクセス キー。詳細については、「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。- Azure Virtual Machines などのサービスのリモート アクセス資格情報。
@@ -105,4 +107,4 @@
 4. このサブスクリプション用の課金アラートを、[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で更新します。[詳細情報](http://go.microsoft.com/fwlink/?LinkID=533292)
 5. 	パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。この操作は [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で実行できます。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

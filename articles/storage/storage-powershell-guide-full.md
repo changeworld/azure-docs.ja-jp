@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/27/2015"
+	ms.date="09/27/2015"
 	ms.author="selcint"/>
 
 # Azure Storage での Azure PowerShell の使用
@@ -595,9 +595,9 @@ Azure Queue サービスでの名前付け規則の詳細については、「[�
     $Queue.CloudQueue.DeleteMessage($QueueMessage)
 
 ## Azure ファイル共有とファイルを管理する方法
-Azure File ストレージは、標準の SMB 2.1 プロトコルを使用して、アプリケーション用の共有ストレージを提供します。Microsoft Azure の仮想マシンとクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。オンプレミスのアプリケーションでは、File ストレージ API または Azure PowerShell を介して、共有内のファイル データにアクセスできます。
+Azure File ストレージは、標準的な SMB プロトコルを使用して、アプリケーション用の共有ストレージを提供します。Microsoft Azure の仮想マシンとクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。オンプレミスのアプリケーションでは、File ストレージ API または Azure PowerShell を介して、共有内のファイル データにアクセスできます。
 
-Azure File ストレージの詳細については、[Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)に関するページと「[File サービス REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
+Azure File ストレージの詳細については、「[How to use Azure File storage with Windows (Windows で Azure File ストレージを使用する方法)](storage-dotnet-how-to-use-files.md)」と「[File サービス REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
 
 ## ストレージ分析を設定して照会する方法
 [Azure Storage Analytics](storage-analytics.md) を使用して、Azure ストレージ アカウントからメトリックを収集し、ストレージ アカウントに送信される要求に関するログ データを収集することができます。ストレージ メトリックを使用すると、ストレージ アカウントの正常性を監視でき、ストレージ ログを使用すると、ストレージ アカウントに関する問題の診断とトラブルシューティングができます。既定では、Storage サービスに対してストレージ メトリックは有効になっていません。Azure 管理ポータルか Windows PowerShell を利用するか、ストレージ API にプログラムを作成することで監視を有効にできます。ストレージ ログはサーバー側で発生し、ストレージ アカウント内の成功した要求と失敗した要求の両方について詳細を記録することが可能になります。これらのログを使用すると、読み取り、書き込み、削除の各操作の詳細、失敗した要求の原因を確認できます。
@@ -618,19 +618,19 @@ PowerShell を使用してストレージ ログを有効にする方法とロ�
 - **アドホック SAS**: アドホック SAS を作成すると、開始時刻、有効期限、SAS へのアクセス許可がすべて、SAS URI で指定されます。この種類の SAS は、コンテナー、BLOB、テーブル、キューで作成できます。これは取り消しできません。
 - **保存されているアクセス ポリシーのある SAS:** 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、またはキュー) で定義されており、これを使用して、1 つ以上の共有アクセス署名のコンテナーを管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。この種類の SAS は、取り消しできません。
 
-詳細については、[共有アクセス署名のチュートリアル](storage-dotnet-shared-access-signature-part-1.md)および [Azure ストレージ リソースへのアクセスの管理](storage-manage-access-to-resources.md)に関するページを参照してください。
+詳細については、[Shared Access Signature のチュートリアル](storage-dotnet-shared-access-signature-part-1.md)および [Azure ストレージ リソースへのアクセスの管理](storage-manage-access-to-resources.md)に関するページを参照してください。
 
 次のセクションでは、Azure テーブルに対する共有アクセス署名トークンと保存されたアクセス ポリシーを作成する方法を学習します。Azure PowerShell では、コンテナー、BLOB、キューに対して類似するコマンドレットが提供されます。このセクションのスクリプトを実行するには、[Azure PowerShell Version 0.8.14](http://go.microsoft.com/?linkid=9811175&clcid=0x409) 以降のバージョンをダウンロードしてください。
 
-### ポリシー ベースの共有アクセス署名トークンを作成する方法
+### ポリシー ベースの Shared Access Signature トークンを作成する方法
 New-AzureStorageTableStoredAccessPolicy コマンドレットを使用して新しい保存アクセス ポリシーを作成します。次に、[New-AzureStorageTableSASToken](http://msdn.microsoft.com/library/azure/dn806400.aspx) コマンドレットを呼び出し、Azure Storage テーブルに対する新しいポリシー ベースの共有アクセス署名トークンを作成します。
 
     $policy = "policy1"
     New-AzureStorageTableStoredAccessPolicy -Name $tableName -Policy $policy -Permission "rd" -StartTime "2015-01-01" -ExpiryTime "2016-01-01" -Context $Ctx
     New-AzureStorageTableSASToken -Name $tableName -Policy $policy -Context $Ctx
 
-### アドホック (取り消し不可) の共有アクセス署名トークンを作成する方法
-次のように [New-AzureStorageTableSASToken](http://msdn.microsoft.com/library/azure/dn806400.aspx) コマンドレットを使用して、Azure Storage テーブルに対するアドホック (取り消し不可) の共有アクセス署名トークンを作成します。
+### アドホック (取り消し不可) の Shared Access Signature トークンを作成する方法
+次のように [New-AzureStorageTableSASToken](http://msdn.microsoft.com/library/azure/dn806400.aspx) コマンドレットを使用して、Azure Storage テーブルに対するアドホック (取り消し不可) の Shared Access Signature トークンを作成します。
 
     New-AzureStorageTableSASToken -Name $tableName -Permission "rqud" -StartTime "2015-01-01" -ExpiryTime "2015-02-01" -Context $Ctx
 
@@ -736,4 +736,4 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 [Next Steps]: #next
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

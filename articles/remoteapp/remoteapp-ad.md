@@ -1,6 +1,6 @@
 
 <properties 
-    pageTitle="Azure RemoteApp の Active Directory を構成する" 
+    pageTitle="Azure RemoteApp に関する Azure AD と Active Directory の要件 | Microsoft Azure" 
     description="Azure RemoteApp で動作するように Active Directory をセットアップする方法について説明します。" 
     services="remoteapp" 
 	documentationCenter="" 
@@ -13,99 +13,36 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="08/03/2015" 
+    ms.date="09/28/2015" 
     ms.author="elizapo" />
 
 
 
-# Azure RemoteApp の Active Directory の構成
+# Azure RemoteApp に関する Azure AD と Active Directory の要件
 
 
-Azure RemoteApp のハイブリッド コレクションでは、オンプレミスの Active Directory ドメイン インフラストラクチャと Azure Active Directory テナントをディレクトリ統合 (および必要に応じてシングル サインオン) でセットアップする必要があります 。さらに、オンプレミスのディレクトリに Active Directory オブジェクトを作成する必要があります。次の情報を使用して、オンプレミスの Active Directory と Azure AD を構成し、その 2 つを統合します。
 
-## オンプレミスの Active Directory を構成する
-オンプレミスの Active Directory を構成して開始します。使用する UPN ドメイン サフィックスを特定し、RemoteApp に Active Directory オブジェクトを作成します。
+AD Connect を使用してフェデレーションするクラウド コレクションまたは Azure RemoteApp ハイブリッド コレクションでは、次を行う必要があります。
 
-Active Directory ドメイン サービスは、Windows Server 2012 R2 環境にまだ追加されていませんか。 追加方法の詳細については、[次の手順](https://technet.microsoft.com/library/cc731053.aspx)を参照してください。
-### UPN ドメイン サフィックスを検証し、構成します。
-フォレストが RemoteApp で使用する Azure AD ドメインに一致する UPN のサフィックスに構成されていない場合は、追加する必要があります。必要なサフィックスが構成されているかどうかを確認します。
+### Azure AD と Active Directory を接続する
 
+Azure AD テナントとオンプレミスの Active Directory 環境を接続する場合、AD Connect を使用します。2 つのディレクトリを接続するには、[4 回クリック](http://blogs.technet.com/b/ad/archive/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect.aspx)するのみです。
 
-1. Active Directory ユーザーとコンピューターを起動します。
-2.	ドメイン名を展開して、**[ユーザー]** をクリックします。
-3.	**[管理者]** を右クリックし、**[プロパティ]** をクリックします。
-4.	**[アカウント]** タブの **[ユーザー ログオン名]** フィールドでこのドメイン用に構成された UPN 名を確認します。
-5.	RemoteApp コレクションに使用するドメイン名に一致するサフィックスが表示されない場合は、次の手順を行います。
-	1.	Active Directory ドメインと信頼関係を起動します。
-	2.	**[Active Directory ドメインと信頼関係]** を右クリックし、**[プロパティ]** をクリックします。
-	3.	サフィックスの一覧を確認します。
-	4.	ボックスにドメイン名の FQDN を入力し、**[追加]** をクリックして、**[OK]** をクリックします。例: contoso.com. 
+注 - ハイブリッド コレクションではディレクトリの同期が必要です。
 
-		サフィックスには、"@" を含めないでください。
+### "@domain.com" が一致することを確認する
+作業を開始する前に、オンプレミス フォレストの UPN が、Azure AD ドメインのサフィックスと一致していることを確認してください。
 
-今後は新しいユーザーを作成する場合は、ユーザーのログオン名から新しいサフィックスを選択できます。また、ユーザーのプロパティの [アカウント] タブで既存のユーザーのサフィックスを変更できます。
+Azure AD に UPN ドメインのサフィックスをセットアップしたら、Azure RemoteApp にログインするすべてのユーザーが "user@<the suffix you set up>" としてログインするようになります。ユーザーが同じ user@suffix を使用してオンプレミス ドメインにログインできることも確認してください。場合によっては、Azure AD に 1 つのドメイン名をセットアップし、オンプレミスのユーザー用に別のドメイン サフィックスを指定することもできます。この場合、ユーザーは Azure RemoteApp を介してドメインに参加しているコンピューターまたはリソースに接続することはできません。
 
-詳細については、「[ユーザー プリンシパル名サフィックスを追加する](http://technet.microsoft.com/library/cc772007.aspx)」を参照してください。
+たとえば、UPN ドメイン サフィックスを AAD に contoso.com としてセットアップした場合に、オンプレミス/AD の一部のユーザーが @contoso.uk を使用してログインするように構成されている場合、そのようなユーザーは ARA コレクションに正しくログインすることはできません。ログインするには、AAD と AD のユーザー UPN が同じである必要があります。
 
-### Active Directory に RemoteApp のオブジェクトを作成します。
-RemoteApp は、オンプレミスの Active Directory に 2 つのオブジェクトを必要とします。
-
+### Azure RemoteApp のオブジェクトを作成する
+また、次のオンプレミス Active Directory オブジェクトを作成する必要もあります。
 
 - オンプレミスのドメインに RDSH エンド ポイントを結合して、RemoteApp プログラムのドメイン リソースにアクセスするサービス アカウント。
 - RemoteApp マシン オブジェクトを含む組織単位 (OU)。RemoteApp で使用するアカウントとポリシーを特定するために OU の使用を推奨します (必須ではありません)。
 
-次の情報を使用してこれらの各オブジェクトを作成します。
+RemoteApp コレクションを作成するときは、これらのオブジェクトが両方とも必要であるため、これらの手順を最初に行ってください。
 
-#### サービス アカウントを作成します:
-
-
-1. Active Directory ユーザーとコンピューターを起動します。
-2.	**[ユーザー]** を右クリックして、**[新規] > [ユーザー]** をクリックします。
-3.	RemoteApp サービス アカウントのユーザー名とパスワードを入力します。
-
-	**注:** RemoteApp コレクションを作成する場合は、このアカウント情報が必要です。
-
-#### 新しい組織単位 (OU) を作成します。
-
-
-1. [Active Directory ユーザーとコンピューター] で、ドメインを右クリックします。**[新規] > [組織単位]** をクリックします。
-2. RemoteApp 用に作成したサービス アカウントをこの新しい OU に追加します。
-
-	そのためには、作成したサービス アカウントを検索します。右クリックして、**[移動]** をクリックします。新しい OU を選択して、**[OK]** をクリックします。
-
-
-1. この OU にコンピューターを追加または削除する権限を RemoteApp サービス アカウントに付与します。
-	1. [Active Directory ユーザーとコンピューター] スナップインで、**[ビュー] > [高度な機能]** をクリックします。これで、**[セキュリティ]** タブがプロパティ情報に追加されます。
-	2. RemoteApp サービス OU を右クリックし、**[プロパティ]** をクリックします。
-	3. **[セキュリティ]** タブで、**[追加]** をクリックします。RemoteApp サービス アカウントのユーザー オブジェクトを選択して、**[OK]** をクリックします。
-	4. **[詳細設定]** をクリックします。
-	5. **[アクセス許可]** タブで、RemoteApp サービスのアカウントを選択して、**[編集]** をクリックします。
-	6. **[次に適用]** フィールドで **[このオブジェクトとすべての子オブジェクト]** を選択します。
-	7. **[アクセス許可]** フィールドで、[コンピューター オブジェクトの作成] と [コンピューター オブジェクトの削除] の横にある **[許可]** を選択し、**[OK]** をクリックします。 
-	8. 残りの 2 つのウィンドウで **[OK]** をクリックします。
-
-
-## Azure Active Directory を構成します
-これでオンプレミスの Active Directory が設定されました。Azure AD に移動します。オンプレミスのドメインの UPN ドメイン サフィックスと一致するカスタム ドメインを作成し、ディレクトリ統合を設定する必要があります。ハイブリッド コレクションは、Windows Server Active Directory のデプロイから同期されている (DirSync のようなツールを使用して) Azure Active Directory アカウントのみをサポートします。具体的には、パスワード同期オプションで同期されているか、または Active Directory フェデレーション サービス (AD FS) の構成されたフェデレーションのいずれかで同期されます。
-
-次の情報を使用して、Azure Active Directory を構成します。
-
-
-- [カスタム ドメインを Azure AD に追加する](http://technet.microsoft.com/library/hh969247.aspx) – この情報を使用して、オンプレミスの Active Directory ドメインの UPN ドメイン サフィックスと一致するドメインを追加します。
-- [ディレクトリ統合](http://technet.microsoft.com/library/jj573653.aspx) – この情報を使用して、[パスワード同期による DirSync](http://technet.microsoft.com/library/dn441214.aspx) または[フェデレーションによる DirSync](http://technet.microsoft.com/library/dn441213.aspx) のいずれかのディレクトリ統合オプションを選択します。
-
-[Multi-Factor Authentication (MFA)](http://technet.microsoft.com/library/dn249466.aspx) を構成することもできます。
-
-## ディレクトリ同期を構成する際に問題がありますか。
-
-ディレクトリ同期を構成する際に問題が発生した場合は、次の点を確認します。
-
-- Azure Directory 同期ツールの最新バージョンを使用している。 
--	管理ポータルの **[Active Directory] -> [既定のディレクトリ] -> [ドメイン]** で、カスタム ドメイン (mydomain.com など) が既に追加済みであり、それをプライマリ ドメインにしている。
--	**[Active Directory] -> [既定のディレクトリ] -> [ユーザー]** で、該当のドメインの下に新しいユーザーを追加している (たとえば、myAzureSyncUser@mydomain.com)。
--	Active Directory のドメインで、新しいドメイン ユーザーを追加し、そのユーザーをエンタープライズ管理者のメンバーにしている (たとえば、myDomainSyncUser@mydomain.com)。
-
-ここで Azure Directory 同期ツールを起動し、最初のプロンプトに対して ****myAzureSyncUser@mydomain.com** 資格情報 (Microsoft Azure Active Directory 管理者資格情報) を、2 番目のプロンプトに対して ****myDomainSyncUser@mydomain.com** を使用します。
- 
-
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO1-->

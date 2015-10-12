@@ -48,7 +48,7 @@ Azure ポータルから直接、システムおよびパフォーマンス デ�
 
 ## 前提条件
 - Microsoft Azure Linux エージェント バージョン 2.0.6 またはそれ以降。大部分の Azure VM Linux ギャラリー イメージにはバージョン 2.0.6 以降が含まれています。**WAAgent -version** を実行して、VM にインストールされているバージョンを確認できます。VM が 2.0.6 より前のバージョンを実行している場合は、[こちらの説明](https://github.com/Azure/WALinuxAgent "説明")に従って更新できます。
-- [Azure CLI](./xplat-cli.md)。[このガイダンス](./xplat-cli-install.md)に従って、コンピューターに Azure CLI 環境をセットアップしてください。Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。たとえば、詳細な使用法を確認するには **azure vm extension set --help** を、Azure にログインするには **azure login** を、Azure にあるすべての仮想マシンを一覧表示するには **azure vm list** を実行します。
+- [Azure CLI](./xplat-cli-install.md)。[このガイダンス](./xplat-cli-install.md)に従って、コンピューターに Azure CLI 環境をセットアップしてください。Azure CLI をインストールすると、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプト) から **azure** コマンドを使用して Azure CLI コマンドにアクセスできるようになります。たとえば、詳細な使用法を確認するには **azure vm extension set --help** を、Azure にログインするには **azure login** を、Azure にあるすべての仮想マシンを一覧表示するには **azure vm list** を実行します。
 - データを格納するためのストレージ アカウント。データをストレージにアップロードするには、事前にストレージ アカウント名とアクセス キーを作成しておく必要があります。
 
 
@@ -143,4 +143,4 @@ Rsyslog データは既定で常に収集されます。
 - バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
 - バージョン 2.0 の場合、最初にスクリプトを使用して Linux 診断拡張機能を有効にすると、 Azure ポータルからはデータを表示できません。最初にポータルから拡張機能を有効にした場合は、スクリプトも正常に機能します。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

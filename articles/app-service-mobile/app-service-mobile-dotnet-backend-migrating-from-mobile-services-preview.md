@@ -8,7 +8,7 @@
 	editor=""/>
 
 <tags 
-	ms.service="app-service" 
+	ms.service="app-service-mobile" 
 	ms.workload="mobile" 
 	ms.tgt_pltfrm="mobile" 
 	ms.devlang="dotnet" 
@@ -135,14 +135,14 @@ Mobile Apps と Mobile Services の大きな違いの 1 つは、Mobile Apps の
 [Azure の管理ポータルのプレビュー]: https://portal.azure.com/
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 [モバイル アプリとは]: app-service-mobile-value-prop-preview.md
-[Web サイトと Mobile Services を使用している場合に App Service を使用する利点]: /ja-jp/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services-preview
+[Web サイトと Mobile Services を使用している場合に App Service を使用する利点]: /ja-JP/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services-preview
 [モバイル アプリ サーバー SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [モバイル アプリの作成]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md
 [モバイル アプリへのプッシュ通知の追加]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-push-preview.md
 [モバイル アプリへの認証の追加]: app-service-mobile-dotnet-backend-xamarin-ios-get-started-users-preview.md
-[Azure Scheduler]: /ja-jp/documentation/services/scheduler/
+[Azure Scheduler]: /ja-JP/documentation/services/scheduler/
 [Web ジョブ]: ../app-service-web/websites-webjobs-resources.md
 [クロスプラットフォーム プッシュ通知の送信]: app-service-mobile-dotnet-backend-xamarin-ios-push-notifications-to-user-preview.md
 [.NET サーバー SDK の使用法 (How to use the .NET server SDK)]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

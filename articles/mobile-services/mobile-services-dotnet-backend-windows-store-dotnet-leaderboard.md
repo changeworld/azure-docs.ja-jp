@@ -1,5 +1,5 @@
 <properties 
-	pageTitle=".NET バックエンドを使用した Windows ストアのランキング アプリの作成 | Microsoft Azure" 
+	pageTitle=".NET バックエンドを使用した Windows ストアのランキング アプリの作成 | Azure Mobile Services" 
 	description="Azure Mobile Services の .NET バックエンドを使用して、Windows ストアのランキング アプリを作成する方法について説明します。" 
 	documentationCenter="windows" 
 	authors="MikeWasson" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.date="09/24/2015" 
 	ms.author="glenga"/>
 
 # Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成
@@ -332,7 +332,7 @@ NuGet Package Manager を使用して、Mobile Services クライアント ラ�
 
 	Install-Package WindowsAzure.MobileServices -Project LeaderboardApp
 
-\-Project スイッチは、パッケージをインストールするプロジェクトを指定します。
+-Project スイッチは、パッケージをインストールするプロジェクトを指定します。
 
 ## モデル クラスを追加する
 
@@ -762,4 +762,4 @@ Model-View-View Model (MVVM) は、Model-View-Controller (MVC) の一種です�
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

@@ -20,7 +20,7 @@
 
 > [AZURE.SELECTOR]
 - [Windows PowerShell](role-based-access-control-powershell.md)
-- [Azure CLI](/role-based-access-control-xplat-cli.md)
+- [Azure CLI](/role-based-access-control-xplat-cli-install.md)
 
 Azure ポータルと Azure リソース マネージャー API のロールベースのアクセス制御 (RBAC) を使用すると、サブスクリプションとリソースへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
@@ -32,7 +32,7 @@ Azure ポータルと Azure リソース マネージャー API のロールベ�
 
 Azure CLI を使用して RBAC を管理するには、事前に以下を用意しておく必要があります。
 
-- Azure CLI バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[Azure CLI のインストールと構成](../xplat-cli.md)」を参照してください。
+- Azure CLI バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[Azure CLI のインストールと構成](../xplat-cli-install.md)」を参照してください。
 - また、Azure CLI での Azure リソース マネージャーのセット アップと使用について詳しく理解するために、チュートリアル「[リソース マネージャーでの Azure CLI の使用](../xplat-cli-azure-resource-manager.md)」をお読みください。
 
 ## このチュートリアルの内容 ##
@@ -64,7 +64,7 @@ RBAC は Azure リソース マネージャーのみと協働するので、最�
     # Use the subscription name to select the one you want to work on.
     azure account set <subscription name>
 
-詳細については、「[Azure CLI のインストールと構成](../xplat-cli.md)」を参照してください。
+詳細については、「[Azure CLI のインストールと構成](../xplat-cli-install.md)」を参照してください。
 
 ## <a id="check"></a>既存のロールの割り当ての確認 ##
 
@@ -114,7 +114,7 @@ Azure AD ディレクトリ内の特定のユーザー (リソース グルー�
     - リソース グループ。リソース グループの一覧を入手するには、`azure group list` と入力します。
     - リソース。リソースの一覧を入手するには、`azure resource list` と入力します。
 
-次に、`azure role assignment create`  を使ってロールの割り当てを作成します。次に例を示します。
+次に、`azure role assignment create` ￼￼￼ を使ってロールの割り当てを作成します。次に例を示します。
 
  - ユーザーに関する現在のサブスクリプション レベルでの閲覧者の役割の割り当てが作成されます。
 
@@ -144,11 +144,11 @@ Azure AD ディレクトリ内の特定のユーザー (リソース グルー�
 Azure CLI を使用したロールベースのアクセス制御の管理の詳細と、関連トピックについては、以下を参照してください。
 
 - [Azure のロール ベースのアクセス制御](../role-based-access-control-configure.md)
-- [Azure CLI のインストールと構成](../xplat-cli.md)
+- [Azure CLI のインストールと構成](../xplat-cli-install.md)
 - [リソース マネージャーでの Azure CLI の使用](../xplat-cli-azure-resource-manager.md)
 - [Using Resource groups to manage your Azure resources (リソース グループを使用した Azure リソースの管理)](../azure-preview-portal-using-resource-groups.md): Microsoft Azure 管理ポータルでリソース グループを作成して管理する方法について説明します。
 - [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
 - [Windows PowerShell を使用したロールベースのアクセス制御の構成](role-based-access-control-powershell.md)
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

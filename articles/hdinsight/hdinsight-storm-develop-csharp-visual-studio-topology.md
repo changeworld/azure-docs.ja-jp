@@ -23,6 +23,8 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
 また、C# と Java コンポーネントを使用するハイブリッド トポロジの作成方法についても説明します。
 
+[AZURE.INCLUDE [windows-only](../../includes/hdinsight-windows-only.md)]
+
 ##前提条件
 
 -	下記いずれかのバージョンの Visual Studio
@@ -39,7 +41,7 @@ HDInsight tools for Visual Studio を使用して C# Storm トポロジを作成
 
     > [AZURE.NOTE]HDInsight Tools for Visual Studio は Visual Studio Express ではサポートされていません
 
--	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[HDInsight での Apache Storm の使用](hdinsight-storm-getting-started.md)」をご覧ください。
+-	HDInsight 上の Apache Storm クラスター: クラスターを作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-storm-getting-started.md)」をご覧ください。
 
 	> [AZURE.NOTE]現在、HDInsight Tools for Visual Studio では HDInsight バージョン 3.2 cluster の Storm のみサポートしています。
 
@@ -656,4 +658,4 @@ HDInsight を使用するさまざまな方法や、HDInsight での Storm の�
 
 -	[HDInsight での HBase の使用](../hdinsight-hbase-get-started.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

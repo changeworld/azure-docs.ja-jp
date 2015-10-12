@@ -276,7 +276,7 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Git website]: http://git-scm.com
 [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]: ../articles/install-configure-powershell.md
-[Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: ../articles/xplat-cli.md
+[Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: ../articles/xplat-cli-install.md
 [Git に関するドキュメント]: http://git-scm.com/documentation
 
 [portal-select-website]: ./media/publishing-with-git/git-select-website.png
@@ -298,4 +298,4 @@ Git を使用して Azure の Web アプリに発行する場合に発生する�
 [Using Dropbox to Share Git Repositories (Dropbox を使用した Git リポジトリの共有)]: https://gist.github.com/trey/2722927
 [Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

@@ -164,4 +164,4 @@ Azure ポータルの **[Cloud Services]** 領域では、サービス ロール
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

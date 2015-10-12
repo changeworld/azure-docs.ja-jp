@@ -13,20 +13,22 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="07/08/2015" 
+	ms.date="09/29/2015" 
 	ms.author="eugenesh"/>
 
-#インデクサーを使用した Azure Search への Azure SQL Database の接続#
+#インデクサーを使用した Azure Search への Azure SQL Database の接続
 
-Azure Search サービスを使用すると優れた検索エクスペリエンスを簡単に提供できますが、検索を行う前に、Azure Search インデックスにデータを設定する必要があります。データが Azure SQL Database に存在する場合は、Azure Search の新しい **Azure SQL Database 用 Azure Search インデクサー** (**Azure SQL インデクサー**) 機能でインデックス作成プロセスを自動化できます。これは、作成するコードと管理するインフラストラクチャが減ることを意味します。
+Azure Search サービスを使用すると優れた検索エクスペリエンスを簡単に提供できますが、検索を行う前に、Azure Search インデックスにデータを設定する必要があります。データが Azure SQL Database に存在する場合は、Azure Search の新しい **Azure SQL Database 用 Azure Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
 
-現時点では、インデクサーが動作するのは Azure SQL Database、Azure VM 上の SQL Server、および Azure DocumentDB だけです。この記事では、Azure SQL Database で動作するインデクサーについて説明します。その他のデータ ソースについてのサポートを希望する場合は、[Azure Search フィードバック フォーラム](http://feedback.azure.com/forums/263029-azure-search)でフィードバックを提供してください。
+現時点では、インデクサーが動作するのは Azure SQL Database、Azure VM 上の SQL Server、および [Azure DocumentDB](../documentdb/documentdb-search-indexer.md) だけです。この記事では、Azure SQL Database で動作するインデクサーについて説明します。その他のデータ ソースについてのサポートを希望する場合は、[Azure Search フィードバック フォーラム](http://feedback.azure.com/forums/263029-azure-search)でフィードバックを提供してください。
 
 この記事ではインデクサーを使用するしくみについて説明しますが、SQL Database のみで使用できる機能と動作の詳細にも触れます (統合された変更追跡など)。
 
 ## インデクサーとデータ ソース ##
 
-Azure SQL インデクサーをセットアップして構成するときは、[Azure Search REST API](http://go.microsoft.com/fwlink/p/?LinkID=528173) を呼び出して**インデクサー**および**データ ソース**を作成および管理できます。今後、この機能は Azure 管理ポータルおよび Azure Search .NET SDK でも使用できるようになります。
+Azure SQL インデクサーをセットアップして構成するときは、[Azure Search REST API](http://go.microsoft.com/fwlink/p/?LinkID=528173) を呼び出して**インデクサー**および**データ ソース**を作成および管理できます。
+
+インデクサーの作成とスケジュールは、[.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) の[インデクサー クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.indexer.aspx)を使用するか、[Azure ポータル](https://portal.azure.com)でデータインポートウィザードを使用して実行することもできます。
 
 **データ ソース**では、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更 (新しい行、変更された行、削除された行) を効率よく識別できるようにするポリシーを指定します。データ ソースは、複数のインデクサーで使用できるように、独立したリソースとして定義します。
 
@@ -249,7 +251,7 @@ SQL 統合変更追跡ポリシーが推奨されますが、データがビュ�
 
 ## Azure SQL インデクサーのカスタマイズ ##
  
-インデクサーの動作の一部をカスタマイズできます (たとえば、バッチ サイズ、インデクサーの実行が失敗する前にスキップできるドキュメントの数、など)。詳細については、[インデクサー API のドキュメント](http://go.microsoft.com/fwlink/p/?LinkId=528173)を参照してください。
+インデクサーの動作の一部をカスタマイズできます (たとえば、バッチ サイズ、インデクサーの実行が失敗する前にスキップできるドキュメントの数など)。詳細については、「[Azure Search Indexer のカスタマイズ](search-indexers-customization.md)」を参照してください。
 
 ## よく寄せられる質問 ##
 
@@ -277,4 +279,4 @@ A: はい。インデクサーは検索サービス内のノードの 1 つで�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

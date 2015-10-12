@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/25/2015" 
+	ms.date="09/25/2015" 
 	ms.author="mimig"/>
 
 # 一貫性レベルを使用した DocumentDB の可用性とパフォーマンスの最大化
@@ -56,15 +56,13 @@ Eventual の一貫性は、読み取りの一貫性という点は最も弱い�
 
 ### データベースの一貫性レベルの変更
 
-1.  [Azure プレビュー ポータル](https://portal.azure.com/)で **[すべてを参照]** をクリックします。
+1.  [Azure プレビュー ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB アカウント]** をクリックします。
 
-2.  **[すべてを参照]** ブレードで、**[DocumentDB アカウント]** をクリックします。
+2. **[DocumentDB アカウント]** ブレードで、変更するデータベース アカウントを選択します。
 
-3. **[DocumentDB アカウント]** ブレードで、変更するデータベース アカウントを選択します。
+3. アカウントのブレードで、**[構成]** レンズの **[既定の一貫性]** タイルをクリックします。
 
-4. アカウントのブレードで、**[構成]** レンズの **[既定の一貫性]** タイルをクリックします。
-
-5. 新しい一貫性レベルを選択して、**[保存]** をクリックします。
+4. **[既定の整合性]** ブレードで、新しい整合性レベルを選択し、**[保存]** をクリックします。
 
 	![[既定の一貫性] タイル、一貫性の設定、および [保存] ボタンを強調表示したスクリーン ショット](./media/documentdb-consistency-levels/database-consistency-level.png)
 
@@ -90,4 +88,4 @@ Eventual の一貫性は、読み取りの一貫性という点は最も弱い�
 -	Werner Vogels 著:Eventual Consistent - Revisited (結果的な一貫性 - 改訂版) [http://allthingsdistributed.com/2008/12/eventually\_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

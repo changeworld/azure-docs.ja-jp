@@ -55,9 +55,9 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 ## Power BI アプリケーションの登録
 
-1. 「[Power BI のクイック スタート](https://msdn.microsoft.com/JA-JP/library/dn931989.aspx)」に示されている手順に従って、Power BI にサインアップします。
+1. 「[Power BI のクイック スタート](https://msdn.microsoft.com/ja-JP/library/dn931989.aspx)」に示されている手順に従って、Power BI にサインアップします。
 
-2. 「[アプリの登録](https://msdn.microsoft.com/JA-JP/library/dn877542.aspx)」に示されている手順に従って、アプリケーションの登録を行います。登録情報は、Power BI REST API にアクセスするときに使用します。
+2. 「[アプリの登録](https://msdn.microsoft.com/ja-JP/library/dn877542.aspx)」に示されている手順に従って、アプリケーションの登録を行います。登録情報は、Power BI REST API にアクセスするときに使用します。
 
     > [AZURE.IMPORTANT]アプリケーション登録に**クライアント ID** を保存します。
 
@@ -139,4 +139,4 @@ Power BI プレビューを使用すると、データをレポートとして�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

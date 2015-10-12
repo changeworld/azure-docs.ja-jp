@@ -445,7 +445,7 @@ HDInsight クラスターをプロビジョニングするもう 1 つの方法�
 - **Node.js SDK** - <a href="https://www.npmjs.com/package/azure-mgmt-hdinsight" target="_blank">https://www.npmjs.com/package/azure-mgmt-hdinsight</a>
 - **Azure CLI** - <a href="https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz" target="_blank">https://github.com/azure/azure-xplat-cli/archive/hdinsight-February-18-2015.tar.gz</a>  
 
-Azure CLI の一般的な使用方法については、[Mac、Linux、Windows 用の Azure CLI](../xplat-cli.md) に関するページを参照してください。
+Azure CLI の一般的な使用方法については、[Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md) に関するページを参照してください。
 
 ここでは、Azure CLI を Linux および Windows にインストールする手順と、コマンド ラインを使用してクラスターをプロビジョニングする手順について説明します。
 
@@ -810,4 +810,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

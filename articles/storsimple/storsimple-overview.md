@@ -1,31 +1,31 @@
 <properties 
-   pageTitle="StorSimple について | Microsoft Azure"
-	description="StorSimple のデータ管理と保護プロセス、利点、アーキテクチャについて説明し、StorSimple のコンポーネントを紹介します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   pageTitle="StorSimple について | Microsoft Azure" 
+   description="StorSimple のデータ管理と保護プロセス、利点、アーキテクチャについて説明し、StorSimple のコンポーネントを紹介します。" 
+   services="storsimple" 
+   documentationCenter="NA" 
+   authors="SharS" 
+   manager="carolz" 
+   editor=""/>
 
 <tags
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/26/2015"
-	ms.author="v-sharos@microsoft.com"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD" 
+   ms.date="09/25/2015"
+   ms.author="v-sharos@microsoft.com"/>
 
 # StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション 
 
 ## 概要
 
-Microsoft Azure StorSimple は、企業のストレージとデータ保護に伴う多くの問題を解消し、費用を削減する、効率と経済性、管理性に優れたソリューションです。独自開発のデバイス (Microsoft Azure StorSimple デバイス)、クラウド サービスとの統合、管理ツールを使用して、クラウド ストレージを含め、企業が保有するすべてのストレージをシームレスに表示します。
+Microsoft Azure StorSimple は、企業のストレージとデータ保護に伴う多くの問題を解消し、費用を削減する、効率と経済性、管理性に優れた SAN ソリューションです。クラウド サービスと連携し、独自開発のデバイス (Microsoft Azure StorSimple デバイス)、管理ツールを使用して、クラウド ストレージを含め、企業が保有するすべてのストレージをシームレスに表示します。
 
 StorSimple では、ストレージ階層化を使用し、さまざまなストレージ メディアに格納されているデータを管理します。現在作業中のセットはソリッド ステート ドライブ (SSD) へ、あまり頻繁に使用しないデータはハード ディスク ドライブ (HDD) へ格納され、アーカイブ化したデータはクラウドへプッシュされます。また、StorSimple 圧縮を使用して、データが消費するストレージの量を削減します。ストレージの階層化プロセスは次のように行われます。
 
 1. システム管理者が、Microsoft Azure のクラウド ストレージ アカウントを設定します。
-2. 管理者がシリアル コンソールと StorSimple Manager サービス (Microsoft Azure 管理ポータルで実行) を使用して、デバイスとファイル サーバーを構成し、ボリュームとデータ保護ポリシーを作成します。オンプレミスのファイル サーバーは、Internet Small Computer System Interface (iSCSI) を使用して StorSimple デバイスにアクセスします。
+2. 管理者がシリアル コンソールと StorSimple Manager サービス (Microsoft Azure 管理ポータルで実行) を使用して、デバイスを構成し、ボリュームとデータ保護ポリシーを作成します。オンプレミスのコンピューター (ファイル サーバーなど) は、Internet Small Computer System Interface (iSCSI) を使用して StorSimple デバイスにアクセスします。
 3. 最初、StorSimple はデバイスの高速 SSD 階層にデータを格納します。
 4. SSD 階層が容量に近づくと、StorSimple は最も古いデータ ブロックを重複除去して圧縮し、HDD 階層に移動します。
 5. HDD 階層が容量に近づくと、StorSimple は最も古いデータ ブロックを暗号化し、HTTPS 経由で Microsoft Azure ストレージ アカウントに安全に送信します。
@@ -57,7 +57,7 @@ Microsoft Azure StorSimple には、次のような利点があります。
 Microsoft Azure StorSimple ソリューションには、次のコンポーネントが含まれています。
 
 - **Microsoft Azure StorSimple デバイス** - ソリッド ステート ドライブ (SSD) とハード ディスク ドライブ (HDD) に、冗長コントローラーと自動フェールオーバー機能を組み合わせたオンプレミスのハイブリッド ストレージ アレイです。ストレージの階層管理はコントローラーによって行われます。現在使用されているデータ (ホット データ) はローカル ストレージ (デバイスまたはオンプレミス サーバー) に配置され、使用頻度の低いデータはクラウドに移動されます。
-- **StorSimple 仮想デバイス** - 物理ハイブリッド ストレージ デバイスのアーキテクチャと機能をそのまま再現したソフトウェア版の StorSimple デバイスです (別名 StorSimple 仮想アプライアンス)。StorSimple 仮想デバイスは、Azure 仮想マシン内の単一ノードで動作します。仮想デバイスは、テスト シナリオや小規模な試験的シナリオに適しています。StorSimple デバイスやオンプレミスのサーバーに StorSimple 仮想デバイスを作成することはできません。
+- **StorSimple 仮想デバイス** - 物理ハイブリッド ストレージ デバイスのアーキテクチャと大部分の機能をそのまま再現したソフトウェア版の StorSimple デバイスです (別名 StorSimple 仮想アプライアンス)。StorSimple 仮想デバイスは、Azure 仮想マシン内の単一ノードで動作します。仮想デバイスは、テスト シナリオや小規模な試験的シナリオに適しています。StorSimple デバイスやオンプレミスのサーバーに StorSimple 仮想デバイスを作成することはできません。
 - **StorSimple 用 Windows PowerShell** - StorSimple デバイスの管理に使用するコマンドライン インターフェイスです。StorSimple 用 Windows PowerShell の機能を使って、StorSimple デバイスの登録、デバイスのネットワーク インターフェイスの構成、特定の種類の更新プログラムのインストール、サポート セッションへのアクセスによるデバイスのトラブルシューティング、デバイスの状態の変更などを行うことができます。StorSimple 用 Windows PowerShell には、シリアル コンソールに接続するか、Windows PowerShell リモート処理を使用してアクセスできます。
 - **StorSimple 用 Azure PowerShell コマンドレット** – コマンドラインからのサービス レベル タスクと移行タスクを自動化することができる Windows PowerShell コマンドレットのコレクションです。StorSimple 用の Azure PowerShell コマンドレットの詳細については、「[コマンドレット リファレンス](https://msdn.microsoft.com/library/dn920427.aspx)」を参照してください。
 - **StorSimple Manager サービス** - StorSimple デバイスまたは StorSimple 仮想デバイスを単一の Web インターフェイスから管理できる、Azure 管理ポータルの拡張機能です。StorSimple Manager サービスを使用して、サービスの作成と管理、デバイスの表示と管理、アラートの表示、ボリュームの管理、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
@@ -73,4 +73,4 @@ Microsoft Azure StorSimple ソリューションには、次のコンポーネ�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

@@ -51,13 +51,13 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 **Solr のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh[HDInsight クラスターでの Solr のインストールと使用](hdinsight-hadoop-solr-install-linux.md)に関するページを参照してください。
 **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh[HDInsight クラスターでの Giraph のインストールと使用](hdinsight-hadoop-giraph-install-linux.md)に関するページを参照してください。
 
-##Azure プレビュー ポータルからスクリプト アクションを使用する
+## Azure プレビュー ポータルからスクリプト アクションを使用する
 
 1. [カスタム オプションを使用したクラスターのプロビジョニング](hdinsight-provision-clusters.md#portal)に関するページの説明に従って、クラスターのプロビジョニングを開始します。
 
 2. __[オプションの構成]__ の **[スクリプト アクション]** ブレードで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
-	![Use Script Action to customize a cluster](./media/hdinsight-hadoop-customize-cluster-linux/HDI.CreateCluster.8.png "Script Action を使ってクラスターをカスタマイズする")
+	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-linux/HDI.CreateCluster.8.png "Script Action を使ってクラスターをカスタマイズする")
 
 	| プロパティ | 値 |
 	| -------- | ----- |
@@ -70,7 +70,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 3. **[選択]** をクリックしてスクリプト アクションの構成を保存し、クラスターのプロビジョニングを続行します。
 
-##Azure リソース マネージャーのテンプレートからスクリプト アクションを使用する
+## Azure リソース マネージャーのテンプレートからスクリプト アクションを使用する
 
 このセクションでは、Azure リソース マネージャー (ARM) テンプレートを使用して HDInsight クラスターをプロビジョニングします。また、スクリプト アクションを使用してクラスターにカスタム コンポーネント (この例では R) をインストールします。このセクションでは、スクリプト アクションを使用してクラスターをプロビジョニングする ARM テンプレートの例を示します。
 
@@ -165,7 +165,6 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		                "osType": "Linux",
 		                "clusterDefinition": {
 		                    "kind": "hadoop",
-
 		                    "configurations": {
 		                        "gateway": {
 		                            "restAuthCredential.isEnabled": true,
@@ -239,8 +238,6 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 		    }
 		}
 
-
-
 2. Azure PowerShell を起動し、Azure アカウントにログインします。資格情報を提供すると、コマンドがアカウントの情報を返します。
 
 		Add-AzureAccount
@@ -297,7 +294,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 		Get-AzureResourceGroupLog -ResourceGroup myresourcegroup -Status Failed -DetailedOutput
 
-##Azure PowerShell からスクリプト アクションを使用する
+## Azure PowerShell からスクリプト アクションを使用する
 
 このセクションでは、**<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptActionScript Action</a>** コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。次に進む前に、Azure PowerShell をインストールして構成したことを確認します。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。
 
@@ -346,15 +343,14 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 
 入力を求められたら、クラスターの資格情報を入力します。クラスターが作成されるまでに数分かかる場合があります。
 
-##HDInsight .NET SDK からスクリプト アクションを使用する
+## HDInsight .NET SDK からスクリプト アクションを使用する
 
 HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単に操作できるクライアント ライブラリを提供します。次の手順では、スクリプトを使用して HDInsight .NET SDK からクラスターをカスタマイズする方法を示します。
-
 
 > [AZURE.IMPORTANT]最初に自己署名証明書を作成し、それをワークステーションにインストールして、Azure サブスクリプションにアップロードする必要があります。手順については、「[Create a self-signed certificate (自己署名証明書の作成)](http://go.microsoft.com/fwlink/?LinkId=511138)」を参照してください。
 
 
-###Visual Studio プロジェクトを作成する
+### Visual Studio プロジェクトを作成する
 
 1. Visual Studio 2013 または 2015 を開きます。
 
@@ -441,7 +437,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 11. アプリケーションに変更を保存し、ソリューションをビルドします。
 
-###アプリケーションの実行
+### アプリケーションの実行
 
 Azure PowerShell コンソールを開き、プロジェクトを保存した場所に移動し、プロジェクト内の \\bin\\debug ディレクトリに移動して、次のコマンドを実行します。
 
@@ -471,7 +467,7 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 3. サンプル - よく利用されるカスタム コンポーネントに対しては、それらを HDInsight クラスターで使用する方法について Microsoft やその他の提供者がサンプルを用意している場合があります。これらのサンプルはサポートなしで提供されます。
 
-##トラブルシューティング
+## トラブルシューティング
 
 Ambari の Web UI を使用すると、クラスターのプロビジョニング中に、スクリプトによってログに記録された情報を表示できます。
 
@@ -481,11 +477,11 @@ Ambari の Web UI を使用すると、クラスターのプロビジョニン�
 
 2. ページ上部のバーから __[OPS]__ エントリを選択します。これにより、Ambari を使用してクラスターで実行される、現在と過去の操作の一覧が表示されます。
 
-	![Ambari web UI bar with ops selected](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
+	![OPS が選択されている Ambari Web UI バー](./media/hdinsight-hadoop-customize-cluster-linux/ambari-nav.png)
 
 3. __Operations__ 列で __run\_customscriptaction__ を含むエントリを探します。これらは、スクリプト アクションの実行時に作成されます。
 
-	![Screenshot of operations](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
+	![操作のスクリーンショット](./media/hdinsight-hadoop-customize-cluster-linux/ambariscriptaction.png)
 
 	このエントリを選択してリンクをたどると、クラスターでスクリプトを実行したときに生成される STDOUT と STDERR の出力が表示されます。
 
@@ -503,4 +499,4 @@ Ambari の Web UI を使用すると、クラスターのプロビジョニン�
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター プロビジョニング時の段階"
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

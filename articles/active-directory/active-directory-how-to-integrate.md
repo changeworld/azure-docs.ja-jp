@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/17/2015"
+   ms.date="09/24/2015"
    ms.author="mbaldwin"/>
 
 # Azure Active Directory との統合
@@ -76,7 +76,7 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 ### 簡単な開発
 
-**業界標準のプロトコル。** Microsoft は業界標準のサポートに取り組んでいます。Azure AD は、SAML 2.0、OpenID Connect 1.0、OAuth 2.0、WS-Federation 1.2 の各認証プロトコルをサポートしています。Graph API は OData 4.0 に準拠しています。アプリケーションがフェデレーション サインイン用に SAML 2.0 または OpenID Connect 1.0 プロトコルを既にサポートしている場合、Azure AD のサポートを簡単に追加できます。[Azure AD での認証プロトコルのサポート](../authentication-protocols.md)に関する詳細を参照してください。
+**業界標準のプロトコル。** Microsoft は業界標準のサポートに取り組んでいます。Azure AD は、SAML 2.0、OpenID Connect 1.0、OAuth 2.0、WS-Federation 1.2 の各認証プロトコルをサポートしています。Graph API は OData 4.0 に準拠しています。アプリケーションがフェデレーション サインイン用に SAML 2.0 または OpenID Connect 1.0 プロトコルを既にサポートしている場合、Azure AD のサポートを簡単に追加できます。[Azure AD での認証プロトコルのサポート](active-directory-authentication-protocols.md)に関する詳細を参照してください。
 
 **オープン ソース ライブラリ。** Microsoft は、開発時間短縮のため、一般的な言語とプラットフォームの完全にサポートされたオープン ソース ライブラリを提供します。ソース コードは Apache 2.0 でライセンスされており、自由にフォークしてプロジェクトに役立てることができます。詳細については、[Azure AD 認証ライブラリ](active-directory-authentication-libraries.md)を参照してください。
 
@@ -90,4 +90,4 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 [Azure AD を使用したユーザーのサインイン](active-directory-authentication-scenarios.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

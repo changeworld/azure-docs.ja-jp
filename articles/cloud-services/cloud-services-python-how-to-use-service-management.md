@@ -112,7 +112,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 ## <a name="CreateCloudService"> </a>方法: クラウド サービスを作成する
 
-アプリケーションを作成して、それを Azure で実行するときは、そのコードと構成をあわせて Azure [クラウド サービス]と呼びます (以前にリリースした Azure では*ホステッド サービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホステッド サービスを作成できます。そのためには、このメソッドに、ホステッド サービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
+アプリケーションを作成して、それを Azure で実行するときは、そのコードと構成をあわせて Azure [クラウド サービス]と呼びます (以前にリリースした Azure では*ホストされるサービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホストされるサービスを作成できます。そのためには、このメソッドに、ホストされるサービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -126,7 +126,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 	sms.create_hosted_service(name, label, desc, location)
 
-**list\_hosted\_services** メソッドを使用して、サブスクリプションのすべてのホステッド サービスを列挙できます。
+**list\_hosted\_services** メソッドを使用して、サブスクリプションのすべてのホストされるサービスを列挙できます。
 
 	result = sms.list_hosted_services()
 
@@ -136,7 +136,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 		print('Location: ' + hosted_service.hosted_service_properties.location)
 		print('')
 
-特定のホステッド サービスに関する情報を取得する場合は、ホステッド サービス名を **get\_hosted\_service\_properties** メソッドに渡します。
+特定のホストされるサービスに関する情報を取得する場合は、ホストされるサービス名を **get\_hosted\_service\_properties** メソッドに渡します。
 
 	hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -152,7 +152,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 
 	sms.delete_hosted_service('myhostedservice')
 
-サービスを削除する前に、そのサービスのすべての展開を最初に削除する必要があることに注意してください(詳細については「[方法: デプロイの削除](#DeleteDeployment)」を参照)。
+サービスを削除する前に、そのサービスのすべてのデプロイを最初に削除する必要があることに注意してください(詳細については「[方法: デプロイの削除](#DeleteDeployment)」を参照)。
 
 ## <a name="DeleteDeployment"> </a>方法: デプロイの削除
 
@@ -303,7 +303,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 		location=location)
 
 	# Name of an os image as returned by list_os_images
-	image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-ja-jp-30GB.vhd'
+	image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-ja-JP-30GB.vhd'
 
 	# Destination storage account container/blob where the VM disk
 	# will be created
@@ -406,7 +406,7 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 
 これで、サービス管理の基本を学習できました。[Azure Python SDK の完全な API のリファレンス ドキュメント](http://azure-sdk-for-python.readthedocs.org/en/documentation/index.html)にアクセスして、複雑なタスクを簡単に実行することにより、Python アプリケーションを管理できます。
 
-
+詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
 [What is Service Management]: #WhatIs
 [Concepts]: #Concepts
@@ -445,4 +445,4 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 [Virtual Machines]: http://msdn.microsoft.com/library/windowsazure/jj156003.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

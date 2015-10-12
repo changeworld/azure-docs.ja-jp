@@ -161,7 +161,7 @@ Web アプリを作成して、Git 発行を有効にするには、次の手順
 
 ##次のステップ
 
-この記事の手順では、Azure ポータルを使用して Web アプリを作成しましたが、[Azure コマンド ライン インターフェイス](../xplat-cli.md)を使用して同じ操作を行うこともできます。
+この記事の手順では、Azure ポータルを使用して Web アプリを作成しましたが、[Azure コマンド ライン インターフェイス](../xplat-cli-install.md)を使用して同じ操作を行うこともできます。
 
 Node.js は、アプリケーションで使用できるモジュールのリッチなエコシステムを実現します。Web Apps でモジュールを使用する方法については、「[Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)」を参照してください。
 
@@ -173,7 +173,7 @@ Azure へのデプロイ後にアプリケーションで問題が発生した�
 ##その他のリソース
 
 * [Azure PowerShell](../install-configure-powershell.md)
-* [Azure コマンド ライン インターフェイス](../xplat-cli.md)
+* [Azure コマンド ライン インターフェイス](../xplat-cli-install.md)
 * [Node.js デベロッパー センター](/develop/nodejs/)
 
 ## 変更内容
@@ -205,4 +205,4 @@ Azure へのデプロイ後にアプリケーションで問題が発生した�
 
 [git-url]: ./media/web-sites-nodejs-develop-deploy-mac/git-url.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

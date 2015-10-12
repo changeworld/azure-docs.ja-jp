@@ -1,14 +1,14 @@
 <properties
 	pageTitle="Microsoft Azure ポータルでのロールベースのアクセス制御"
 	description="ロール ベースのアクセス制御のしくみとその設定方法について説明します。"
-	services=""
+	services="active-directory"
 	documentationCenter=""
 	authors="IHenkel"
 	manager="stevenpo"
 	editor=""/>
 
 <tags
-	ms.service="multiple"
+	ms.service="active-directory"
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.tgt_pltfrm="Ibiza"
@@ -1275,7 +1275,7 @@ Azure RBAC を試用して、[フィードバック](http://aka.ms/azurerbacfeed
 ロールベースのアクセス制御の使用法に関するその他のリソースを以下に示します。
 
 + [Windows PowerShell を使用したロールベースのアクセス制御の管理](role-based-access-control-powershell.md)
-+ [Azure CLI を使用したロールベースのアクセス制御の管理](role-based-access-control-xplat-cli.md)
++ [Azure CLI を使用したロールベースのアクセス制御の管理](role-based-access-control-xplat-cli-install.md)
 + [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md)
 + [Azure Active Directory Premium および Basic](active-directory-editions.md)
 + [Azure サブスクリプションを Azure AD に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
@@ -1293,4 +1293,4 @@ Azure RBAC を試用して、[フィードバック](http://aka.ms/azurerbacfeed
 [9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
 [10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+	ms.date="09/28/2015"
 	ms.author="juliako"/>
 
 #Azure Media Services の概要と一般的なシナリオ
@@ -22,12 +22,9 @@ Microsoft Azure Media Services は拡張可能なクラウド ベースのプラ
 
 Media Services を使いこなして、エンド ツー エンドのワークフローを構築できます。ワークフローの一部にサード パーティのコンポーネントを使用することもできます。たとえば、サード パーティのエンコーダーを使用してエンコードしてから、Media Services を使用してアップロード、保護、パッケージ化、配信などを行うことができます。
 
-
-次のポスターは、メディアの作成から使用までの Azure Media Services のワークフローを示しています。ポスターは「[Azure Media Services poster](http://www.microsoft.com/download/details.aspx?id=38195)」(Azure Media Services のポスター) からダウンロードできます。
-
-![概要][overview]
-
 コンテンツをライブ ストリーム配信したり、オンデマンドで配信したりできます。このトピックでは、コンテンツの[ライブ](media-services-overview.md#live_scenarios)配信と[オンデマンド](media-services-overview.md#vod_scenarios)配信の共通シナリオを紹介します。このトピックでは、その他の関連トピックのリンクも提供します。
+
+## SDK とツール 
 
 Media Services ソリューションを構築するために、以下を使用できます。
 
@@ -43,6 +40,10 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
+##ポスター
+
+
+[ここ](http://azure.microsoft.com/documentation/infographics/media-services/)で、メディアの作成から使用までの Azure Media Services のワークフローを示す AMS ポスターを確認できます。
 
 ##前提条件
 
@@ -132,7 +133,7 @@ Azure Media Services を使用するには、次が必要です。
 - [公開の保護方法](media-services-manage-content.md#publish)
 - [エンコードの規模の設定方法](media-services-portal-encoding-units.md)
 
-##<a id="live_scenarios"></a>Azure Media Services を使用したライブ ストリーミング イベントの配信
+##<a id="live_scenarios"></a>Azure Media Services を使用してライブ ストリーミング イベントを配信する
 
 ライブ ストリーミングを使用する場合は、通常、次のコンポーネントが関連しています。
 
@@ -170,7 +171,7 @@ Azure Media Services、**チャネル**、**プログラム**、**ストリー�
 
 ![ライブ ワークフロー][live-overview1]
 
-詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+詳細については、「[Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 
 ###オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
@@ -226,4 +227,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

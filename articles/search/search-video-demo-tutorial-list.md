@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="09/16/2015"
+	ms.date="09/29/2015"
 	ms.author="heidist"/>
 
 #Azure Search: チュートリアル、ビデオ デモ、サンプル
@@ -31,6 +31,7 @@
 
 リンク|説明
 ----|-----------
+[AzureCon 2015 での Azure Search のベスト プラクティス](https://azure.microsoft.com/ja-JP/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)|Web またはモバイル シナリオ用のアプリを構築する際に、スケーリング、最適なパフォーマンス、および効率的なコーディングを実現する方法に関する実用的なアドバイスです。 
 [Microsoft Virtual Academy: Azure Search を Websites や Apps に追加する](http://channel9.msdn.com/Series/Adding-Microsoft-Azure-Search-to-Your-Websites-and-Apps)|Azure Search をアプリケーションに追加する方法に関する 7 部構成のシリーズです (提供者: Liam Cavanagh、Janusz Lembicz、および Bernardita Torres Garayar)。
 [Build 2015: 最新データ](http://channel9.msdn.com/Events/Build/2015/2-663)|この 29 分のセッションでは、Azure Search が最新のデータ革命にどのように組み込まれるかを説明します (提供者: Shawn Bice、Pablo Castro)。
 [Build 2015: Azure Search を使用した Mobile および WebApps における優れた検索エクスペリエンスの実現](http://channel9.msdn.com/Events/Build/2015/2-745)|Pablo Castro が Microsoft Build 2015 を使って説明します。
@@ -88,6 +89,6 @@ CodePlex で、最新バージョンと関連のあるパブリック プレビ�
 - [**提案デモ**](https://azsearchsuggestions.codeplex.com/SourceControl/latest)は、ASP.NET MVC 4 アプリケーションです。
 - [**GeoSearch サンプル**](https://azuresearchgeospatial.codeplex.com/)は、ASP.NET MVC 4 アプリケーションです。
 - [**SQL Server と Azure Search の同期サンプル**](http://sqlserver2azuresearch.codeplex.com/) は、埋め込み型のローカルのデータベースから SQL Server の行セットを読み込む Windows コンソール アプリケーションです。
-- [**スコアリング プロファイルのデモ**](https://azuresearchscoringprofiles.codeplex.com/) は、検索結果をチューニングするために必要なスコアリング プロファイル を定義し、実行し、更新する Windows コンソール アプリケーションです。
+- [**スコアリング プロファイルのデモ**](https://azuresearchscoringprofiles.codeplex.com/) は、検索結果をチューニングするために必要なスコアリング プロファイルを定義し、実行し、更新する Windows コンソール アプリケーションです。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

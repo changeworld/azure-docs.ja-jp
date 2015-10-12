@@ -28,7 +28,7 @@ Azure は、物理コンピューター ハードウェアをエミュレート�
 
 **しかし、このことはもはやニュースではありません。** 注目すべきは、Docker がもたらす次のようなメリットを Azure で活用できるようになったということです。
 
-- 状況に応じて、[さまざまな](virtual-machines-docker-with-xplat-cli.md)[方法](virtual-machines-docker-with-portal.md)[で](virtual-machines-docker-ubuntu-quickstart.md) [Docker ホストを作成](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)できる
+- 状況に応じて、[さまざまな](virtual-machines-docker-with-xplat-cli-install.md)[方法](virtual-machines-docker-with-portal.md)[で](virtual-machines-docker-ubuntu-quickstart.md) [Docker ホストを作成](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)できる
 - [Azure リソース マネージャー](resource-group-overview.md)と[リソース グループ テンプレート](resource-group-authoring-templates.md)を使用して、複雑な分散アプリケーションのデプロイや更新を簡略化できる
 - 自社製かオープン ソースかを問わず、さまざまな構成管理ツールを統合できる
 
@@ -120,7 +120,7 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 
 ここまでお読みになって、設計者、開発者、IT オペレーション スペシャリストの皆さんはこう思っているのではないでしょうか。「これなら何でも自動化できる。これこそ真の DCaaS (Data-Center-As-A-Service) だ」と。
 
-その通りです。コンテナーにはそれだけの可能性があります。Azure VM のグループを管理したり、スクリプトを使用してカスタム コードを挿入できるシステムは既に多数存在しています (その多くは [CustomScriptingExtension for Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) や [CustomScriptingExtension for Linux](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用したものです)。既に使用している方もいらっしゃるかもしれませんが、PowerShell や Azure CLI のスクリプトを使用すれば、Azure デプロイメントを自動化することもできます (詳しい方法は[こちら](virtual-machines-create-multi-vm-deployment-xplat-cli.md))。
+その通りです。コンテナーにはそれだけの可能性があります。Azure VM のグループを管理したり、スクリプトを使用してカスタム コードを挿入できるシステムは既に多数存在しています (その多くは [CustomScriptingExtension for Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) や [CustomScriptingExtension for Linux](http://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用したものです)。既に使用している方もいらっしゃるかもしれませんが、PowerShell や Azure CLI のスクリプトを使用すれば、Azure デプロイメントを自動化することもできます (詳しい方法は[こちら](virtual-machines-create-multi-vm-deployment-xplat-cli-install.md))。
 
 また多くの場合、これらの機能は [Puppet](https://puppetlabs.com/) や [Chef](https://www.chef.io/) などのツールに移行され、VM の作成や構成を柔軟に自動化する目的に使用されます。(Azure でこれらのツールを使用する方法については、[こちら](#tools-for-working-with-containers)のリンクを参照してください。)
 
@@ -185,7 +185,7 @@ Docker on Microsoft Azure:
 
 - [Azure での Linux 用 Docker VM 拡張機能](virtual-machines-docker-vm-extension.md)
 - [Azure の Docker 用 VM 拡張機能のユーザー ガイド](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
-- [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](virtual-machines-docker-with-xplat-cli.md)
+- [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](virtual-machines-docker-with-xplat-cli-install.md)
 - [Azure プレビュー ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)
 - [Azure Marketplace で Docker をすばやく開始する](virtual-machines-docker-ubuntu-quickstart.md)
 - [Azure で docker マシンを使用する方法](virtual-machines-docker-machine.md)
@@ -239,4 +239,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

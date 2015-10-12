@@ -35,7 +35,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 このチュートリアルを完了するには、以下が必要です。
 
 - Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料試用版](../../../pricing/free-trial)にサインアップできます。
-- コマンドライン インターフェイス バージョン 0.9.1 以降。最新バージョンをインストールして、Azure サブスクリプションに接続するには、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](xplat-cli.md)」を参照してください。
+- コマンドライン インターフェイス バージョン 0.9.1 以降。最新バージョンをインストールして、Azure サブスクリプションに接続するには、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](xplat-cli-install.md)」を参照してください。
 - このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/download/details.aspx?id=45343)から入手できます。手順については、付属の Readme ファイルをご覧ください。
 
 ## Azure クロスプラットフォーム コマンドライン インターフェイスでのヘルプの取得
@@ -54,7 +54,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 
 また、次のチュートリアルを読めば、Azure クロスプラットフォーム コマンド ライン インターフェイスでの Azure リソース マネージャーについて詳しく理解できます。
 
-- [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成方法](xplat-cli.md)
+- [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成方法](xplat-cli-install.md)
 - [Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)
 
 
@@ -89,7 +89,7 @@ Microsoft Azure での組織アカウントの使用の詳細については、�
 
     azure account set <subscription name>
 
-Azure クロスプラットフォーム コマンドライン インターフェイスの構成方法については、「[Azure クロスプラットォーム コマンドライン インターフェイスのインストールと構成方法](xplat-cli.md)」をご覧ください。
+Azure クロスプラットフォーム コマンドライン インターフェイスの構成方法については、「[Azure クロスプラットォーム コマンドライン インターフェイスのインストールと構成方法](xplat-cli-install.md)」をご覧ください。
 
 
 ## Azure リソース マネージャーの使用に切り替える
@@ -256,4 +256,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

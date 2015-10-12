@@ -37,7 +37,7 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
 インストール コマンドでは Ubuntu が想定されますが、サポートされる Linux ディストリビューションに応じてインストールを調整できます。
 
-仮想マシン script-vm では、Azure に接続できる Azure CLI がインストールされていることが必要です。詳細については、[Azure コマンド ライン インターフェイスのインストールと構成](../xplat-cli.md)に関するページを参照してください。
+仮想マシン script-vm では、Azure に接続できる Azure CLI がインストールされていることが必要です。詳細については、[Azure コマンド ライン インターフェイスのインストールと構成](../xplat-cli-install.md)に関するページを参照してください。
 
 ## スクリプトのアップロード
 
@@ -109,4 +109,4 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

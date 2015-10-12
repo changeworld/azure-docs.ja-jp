@@ -101,4 +101,4 @@ SQL Data Warehouse との統合の詳細については、「[Build integrated s
 [targit_more]: http://www.targit.com/en/
 [yellowfin_more]: http://www.yellowfinbi.com/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

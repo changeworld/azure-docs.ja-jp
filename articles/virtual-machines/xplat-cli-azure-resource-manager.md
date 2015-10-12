@@ -52,7 +52,7 @@ Azure リソース マネージャー モードは既定で無効になってい
 
 	azure location list
 
-これにより、「米国西部」や「米国東部」などの地域に固有の場所が表示されます。
+これにより、「米国西部」や「米国東部」などのリージョンに固有の場所が表示されます。
 
 ## リソース グループの作成
 
@@ -331,14 +331,14 @@ Azure CLI は既定の VM サイズで仮想マシンを作成します。また
 
 ## 次のステップ
 
-* Azure コマンド ライン インターフェイス (Azure CLI) の詳細については、「[Azure CLI のインストールと構成][clisetup]」を参照してください。
-* Azure リソース マネージャーで Azure PowerShell を使用する方法の詳細については、「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+* Azure コマンド ライン インターフェイス (Azure CLI) の詳細については、「[Azure CLI のインストール][clisetup]」を参照してください。
+* Azure リソース マネージャーで Azure PowerShell を使用する方法の詳細については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 * Azure ポータルから Azure リソース マネージャーを使用する方法の詳細については、「[リソース グループを使用した Azure リソースの管理][psrm]」を参照してください。
 
 [signuporg]: http://www.windowsazure.com/documentation/articles/sign-up-organization/
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [portal]: https://manage.windowsazure.com/
-[clisetup]: ../xplat-cli.md
+[clisetup]: ../xplat-cli-install.md
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

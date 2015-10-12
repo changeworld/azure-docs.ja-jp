@@ -14,47 +14,42 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="08/07/2015"
+   	ms.date="08/21/2015"
    	ms.author="nitinme"/>
 
-# Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する (プレビュー)
+# Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する
 
 > [AZURE.SELECTOR]
 - [Windows](hdinsight-hadoop-tutorial-get-started-windows.md)
 - [Linux](hdinsight-hadoop-linux-tutorial-get-started.md)
 
-この Hadoop のチュートリアルでは、Linux 上の Azure HDInsight の基本的な使用方法を紹介するために、Linux 上で Hadoop クラスターをプロビジョニングする方法と、Hive クエリを実行する方法を説明します。
+このドキュメントでは、Linux ベースの Hadoop クラスターを作成する方法、Secure Shell (SSH) を使用してクラスターに接続する方法、クラスターに含まれているサンプル データに対して Hive クエリ実行する方法を示しながら、Linux 上の Azure HDInsight の基本手順について説明します。
 
-
-> [AZURE.NOTE]Hadoop とビッグ データを初めて扱う方は、<a href="http://go.microsoft.com/fwlink/?LinkId=510084" target="_blank">Apache Hadoop</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510086" target="_blank">MapReduce</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510087" target="_blank">Hadoop Distributed File System (HDFS)</a>、<a href="http://go.microsoft.com/fwlink/?LinkId=510085" target="_blank">Hive</a> に関するトピックをご覧ください。HDInsight によって Azure でどのように Hadoop を利用できるかについては、「[Introduction to Hadoop in HDInsight (HDInsight の Hadoop 入門)](hdinsight-hadoop-introduction.md)」を参照してください。
-
-
-## このチュートリアルで目的とする操作
-
-構造化されていないデータ セットが大量にあり、このデータ セットに対してクエリを実行して、意味のある情報を抽出したいとします。これを実現するには、次の手順を実行します。
-
-   ![Hadoop チュートリアルの手順: Storage アカウントを作成します。Hadoop クラスターをプロビジョニングします。Hive でデータを照会します。](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.Linux.GetStartedFlow.png)
-
+> [AZURE.NOTE]Hadoop とビッグ データを初めて扱う場合は、[Apache Hadoop](http://go.microsoft.com/fwlink/?LinkId=510084)、[MapReduce](http://go.microsoft.com/fwlink/?LinkId=510086)、[Hadoop Distributed File System (HDFS)](http://go.microsoft.com/fwlink/?LinkId=510087)、[Hive](http://go.microsoft.com/fwlink/?LinkId=510085) に関するトピックを参照してください。HDInsight によって Azure でどのように Hadoop を利用できるかについては、「[Introduction to Hadoop in HDInsight (HDInsight の Hadoop 入門)](hdinsight-hadoop-introduction.md)」を参照してください。
 
 ## 前提条件
 
 Linux でこの Hadoop チュートリアルを開始する前に、以下の条件を満たしている必要があります。
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- **Secure Shell (SSH) キー**。パスワードの代わりに SSH とキーを使用して Linux クラスターにリモートでアクセスする場合に必要です。キーはより安全性が高いことから、キーを使用する方法をお勧めします。SSH キーを生成する手順については、次の記事をご覧ください。
-	-  Linux コンピューターの場合 - [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
-	-  Windows コンピューターの場合 - [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+- **Azure サブスクリプション**: [Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページをご覧ください。
 
-**推定所要時間:** 30 分
+- **Secure Shell (SSH) クライアント**: Linux、Unix、OS X システムには、`ssh` コマンドで SSH クライアントを提供していました。Windows システムの場合は [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。
+
+    > [AZURE.NOTE]すべてのクライアント オペレーティング システムで SSH を使用できるので、このドキュメントの手順では SSH を使用して HDInsight に接続します。HDInsight Tools for Visual Studio など、HDInsight クラスターへの接続に他の方法を使用する場合は、このドキュメントの「[次の手順](#nextsteps)」の Hive、Pig、MapReduce リンクを参照してください。
+    
+- **Secure Shell (SSH) キー** (省略可能): クラスターへの接続に使用する SSH アカウントは、パスワードまたはパブリック キーを使用してセキュリティで保護できます。キーの方が安全なので推奨される方法ですが、追加の設定が必要です。HDInsight で SSH キーを作成して使用する手順については、次の記事を参照してください。
+
+	-  Linux コンピューターの場合 - [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+    
+	-  Windows コンピューターの場合 - [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
 ## <a name="provision"></a>Linux での HDInsight クラスターのプロビジョニング
 
-クラスターをプロビジョニングすると、Hadoop と関連アプリケーションを含む Azure コンピューティング リソースがプロビジョニングされます。このセクションでは、HDInsight バージョン 3.2 クラスターをプロビジョニングします。他のバージョンの Hadoop クラスターも作成できます。手順については、「[Provision HDInsight clusters using custom options (カスタム オプションを使用した HDInsight クラスターのプロビジョニング)][hdinsight-provision]」を参照してください。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。
+クラスターをプロビジョニングするときに、Hadoop サービスとリソースを含む Azure コンピューティング リソースを作成します。このセクションでは、Hadoop バージョン 2.2 を含む HDInsight バージョン 3.2 クラスターをプロビジョニングします。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。HDInsight クラスターの詳細な作成方法については、[カスタム オプションを使用した HDInsight クラスターのプロビジョニング][hdinsight-provision]のページを参照してください。
 
 >[AZURE.NOTE]Windows Server オペレーティング システムを実行する Hadoop クラスターを作成することもできます。手順については、「[Windows で HDInsight を使用する](hdinsight-hadoop-tutorial-get-started-windows.md)」を参照してください。
 
-
-**HDInsight クラスターをプロビジョニングするには**
+新しいクラスターを作成するには、次の手順に従います。
 
 1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)にサインインします。
 2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
@@ -67,15 +62,15 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 4. 複数のサブスクリプションがある場合は、**[サブスクリプション]** エントリをクリックし、クラスターで使用する Azure サブスクリプションを選択します。
 
-5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力できます。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
+5. **[リソース グループ]** をクリックして既存のリソース グループの一覧を表示し、その中にクラスターを作成するグループを選択します。または、**[新規作成]** をクリックし、新しいリソース グループの名前を入力します。新しいグループ名を使用できる場合は、緑のチェック マークが表示されます。
 
 	> [AZURE.NOTE]このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
 
-6. **[資格情報]** をクリックし、管理ユーザーのパスワードを入力します。さらに、SSH ユーザーを認証するために使用される **[SSH ユーザー名]** と、**[パスワード]** または **[公開キー]** のどちらかを入力する必要があります。公開キーを使用することをお勧めします。下部にある **[選択]** をクリックして、資格情報の構成を保存します。
+6. **[資格情報]** をクリックし、管理ユーザーのパスワードを入力します。さらに、SSH ユーザーを認証するために使用される **[SSH ユーザー名]** と、**[パスワード]** または **[公開キー]** のどちらかを入力する必要があります。公開キーを使用することをお勧めします。下部にある **[選択]** をクリックして資格情報の構成を保存します。
 
 	![クラスターの資格情報の指定](./media/hdinsight-hadoop-linux-tutorial-get-started/HDI.CreateCluster.3.png "クラスターの資格情報の指定")
 
-    > [AZURE.NOTE]SSH はコマンドラインで HDInsight にリモート アクセスするために使用されます。ここで使用するユーザー名とパスワードまたは公開キーは、SSH でクラスターに接続するときに使用されます。また、SSH ユーザー名は一意にする必要があります。この名前により、すべての HDInsight クラスター ノードでユーザー アカウントが作成されます。次はクラスターのサービスのために予約されている名前の一部であり、SSH ユーザー名として使用できません。
+    > [AZURE.NOTE]SSH はコマンドラインで HDInsight クラスターにリモート アクセスするために使用されます。ここで使用するユーザー名とパスワードまたは公開キーは、SSH でクラスターに接続するときに使用されます。また、SSH ユーザー名は一意にする必要があります。この名前により、すべての HDInsight クラスター ノードでユーザー アカウントが作成されます。次はクラスターのサービスのために予約されている名前の一部であり、SSH ユーザー名として使用できません。
     >
     > root、hdiuser、storm、hbase、ubuntu、zookeeper、hdfs、yarn、mapred、hbase、hive、oozie、falcon、sqoop、admin、tez、hcat、hdinsight-zookeeper
 
@@ -93,9 +88,9 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 	- **選択方法**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
 
-	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。または、**[新規作成]** をクリックして、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
+	- **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。新しいストレージ アカウントを作成する場合は **[新規作成]** をクリックします。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
 
-	- **既定のコンテナーの選択**。 これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+	- **既定のコンテナーの選択**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
 
 	- **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。
 
@@ -119,19 +114,11 @@ Linux でこの Hadoop チュートリアルを開始する前に、以下の条
 
 プロビジョニングが完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。
 
-## <a name="hivequery"></a>クラスターでの Hive ジョブの送信
-HDInsight Linux クラスターがプロビジョニングされたら、HDInsight クラスターに付属するサンプル データ (sample.log) を問い合わせるサンプルの Hive ジョブを実行します。サンプル データには、トレース、警告、情報、エラーなどのログ情報が含まれています。このデータを問い合わせて、特定の重大度を持つエラー ログをすべて取得します。HDInsight Linux クラスターで Hive クエリを実行するには、次の手順を実行する必要があります。
-
-- Linux クラスターへの接続
-- Hive ジョブを実行する
-
-
-
-### クラスターに接続するには
+## <a name="connect"></a>クラスターに接続するには
 
 Linux 上の HDInsight クラスターには、Linux コンピューターまたは Windows ベースのコンピューターから SSH を使用して接続できます。
 
-**Linux コンピューターから接続するには**
+###Linux コンピューターから接続するには
 
 1. ターミナルを開き、次のコマンドを入力します。
 
@@ -146,9 +133,9 @@ Linux 上の HDInsight クラスターには、Linux コンピューターまた
 		hdiuser@headnode-0:~$
 
 
-**Windows ベースのコンピューターから接続するには**
+###Windows ベースのコンピューターから接続するには
 
-1. Windows ベースのクライアント用の <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY</a> をダウンロードします。
+1. Windows ベースのクライアント用の [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をダウンロードします。
 
 2. PuTTY を開きます。**[Category]** で、**[Session]** をクリックします。**[PuTTY セッションの基本設定]** 画面で、**[ホスト名 (または IP アドレス)]** フィールドに HDInsight サーバーの SSH アドレスを入力します。SSH アドレスは、クラスター名に続けて「-ssh.azurehdinsight.net」と入力します (**myhdinsightcluster-ssh.azurehdinsight.net** など)。
 
@@ -160,7 +147,7 @@ Linux 上の HDInsight クラスターには、Linux コンピューターまた
 
 		hdiuser@headnode-0:~$
 
-### Hive ジョブを実行するには
+##<a name="hivequery"></a>Hive クエリを実行する
 
 SSH を使用してクラスターに接続したら、次のコマンドを使用して Hive クエリを実行します。
 
@@ -241,33 +228,36 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 	返されるデータはすべて、[ERROR] ログに対応しています。
 
 ## <a name="nextsteps"></a>次のステップ
-この Linux チュートリアルでは、HDInsight を使用して Linux での Hadoop クラスターをプロビジョニングする方法と、SSH を使用してそのクラスターに Hive クエリを実行する方法を確認しました。詳細については、次の記事を参照してください。
 
-- [Ambari を使用して HDInsight クラスターを管理する](hdinsight-hadoop-manage-ambari.md): Linux ベースの HDInsight クラスターでは、Hadoop サービスの管理と監視のために Ambari を使用します。各クラスターの Ambari Web UI は、https://CLUSTERNAME.azurehdinsight.net で入手できます。
+このドキュメントでは、Azure プレビュー ポータルを使用して Linux ベースの HDInsight クラスターを作成する方法、SSH を使用してクラスターに接続する方法、基本的な Hive クエリを実行する方法について説明しました。
 
-	> [AZURE.IMPORTANT]Ambari Web の多くのセクションはインターネット経由で直接アクセスできますが、Hadoop サービスのリソース マネジャーやジョブ履歴などの Web UI では SSH トンネルを使用する必要があります。HDInsight での SSH トンネルの使用方法の詳細については、次の記事をご覧ください。
-	>
-	> * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#tunnel)
-	> * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel)
+HDInsight でデータを分析する方法の詳細については、次を参照してください。
 
-- [カスタム オプションを使用して HDInsight を Linux にプロビジョニングする](hdinsight-hadoop-provision-linux-clusters.md): HDInsight クラスターのプロビジョニング方法について詳しく説明します。
+- Visual Studio から Hive クエリを実行する方法など、HDInsight で Hive を使用する方法の詳細については、「[HDInsight での Hive の使用][hdinsight-use-hive]」を参照してください。
 
-- [Linux で HDInsight を操作する](hdinsight-hadoop-linux-information.md): Linux プラットフォームでの Hadoop の操作を熟知している場合、このドキュメントは、次のような Azure 固有の情報に関するガイダンスを提供します。
+- データの変換に使用される言語 Pig の詳細については、「[HDInsight での Pig の使用][hdinsight-use-pig]」を参照してください。
+
+- Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである MapReduce の詳細については、「[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]」を参照してください。
+
+- HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、[HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
+
+実際のデータを使用する準備が整っていて、HDInsight のデータの格納方法や HDInsight にデータを取り込む方法を確認する場合は、以下を参照してください。
+
+- HDInsight で Azure BLOB ストレージを使用する方法の詳細については、[HDInsight での Azure BLOB ストレージの使用](hdinsight-use-blob-storage.md)に関するページを参照してください。
+
+- データを HDInsight にアップロードする方法については、「[データを HDInsight にアップロードする方法][hdinsight-upload-data]」を参照してください。
+
+HDInsight クラスターの作成または管理の詳細については、以下を参照してください。
+
+- Linux ベースの HDInsight クラスターを管理する方法については、「[Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
+
+- HDInsight クラスターの作成時に選択できるオプションの詳細については、「[カスタム オプションを使用した Linux での HDInsight のプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+
+- Linux と Hadoop を使い慣れていて、HDInsight 上の Hadoop に関する詳細情報を確認するには、「[Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md)」を参照してください。次のような情報が掲載されています。
 
 	* クラスターでホストされる URL (Ambari や WebHCat など)
 	* Hadoop ファイルの場所とローカル ファイル システムの例
 	* 既定のデータ ストアとして、HDFS ではなく Azure Storage (WASB) を使用する
-
-- Hive、Pig、MapReduce の詳細については、次のトピックを参照してください。
-
-	- [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
-	- [HDInsight での Hive の使用][hdinsight-use-hive]
-	- [HDInsight での Pig の使用][hdinsight-use-pig]
-
-- HDInsight クラスターで使用される Azure Storage を操作する方法の詳細については、次のトピックを参照してください。
-
-	- [HDInsight での Azure BLOB ストレージの使用](../hdinsight-use-blob-storage.md)
-	- [HDInsight へのデータのアップロード][hdinsight-upload-data]
 
 
 [1]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
@@ -292,4 +282,4 @@ SSH を使用してクラスターに接続したら、次のコマンドを使�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

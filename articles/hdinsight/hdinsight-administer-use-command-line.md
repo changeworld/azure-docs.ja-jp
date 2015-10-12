@@ -34,11 +34,11 @@ Azure CLI はオープン ソースです。ソース コードは GitHub (<a hr
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-- **Azure CLI** - インストールと構成に関する情報は、[Azure CLI のインストールと構成](../xplat-cli.md)に関するページを参照してください。
+- **Azure CLI** - インストールと構成に関する情報は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するページを参照してください。
 
 ##インストール
 
-まだ完了していない場合は、[Azure CLI のインストールと構成](../xplat-cli.md)に関するドキュメントを使用して、Azure CLI をインストールおよび構成します。
+まだ完了していない場合は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するドキュメントを使用して、Azure CLI をインストールおよび構成します。
 
 ##HDInsight クラスターをプロビジョニングする
 
@@ -132,8 +132,11 @@ Azure プレビュー ポータルを使用して情報を取得する方法の�
 
 	azure hdinsight cluster delete <ClusterName>
 
+##<a name="scaling"></a>クラスターを拡張する
 
+Azure PowerShell を使用して Hadoop クラスターのサイズを変更するには、クライアント コンピューターから次のコマンドを実行します。
 
+	Set-AzureHDInsightClusterSize -ClusterSizeInNodes <NewSize> -name <clustername>
 
 ##次のステップ
 この記事では、さまざまな HDInsight クラスター管理タスクを実行する方法について説明しました。詳細については、次の記事を参照してください。
@@ -144,7 +147,7 @@ Azure プレビュー ポータルを使用して情報を取得する方法の�
 * [Azure CLI の使い方][azure-command-line-tools]
 
 
-[azure-command-line-tools]: ../xplat-cli.md
+[azure-command-line-tools]: ../xplat-cli-install.md
 [azure-create-storageaccount]: ../storage-create-storage-account.md
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
@@ -160,4 +163,4 @@ Azure プレビュー ポータルを使用して情報を取得する方法の�
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

@@ -33,11 +33,7 @@ Ambari は既定で Linux ベースの HDInsight クラスターに付属して�
 
 > [AZURE.NOTE]クラスター用の Ambari にはインターネットから直接アクセスできますが、Ambari Web UI の一部のリンク (JobTracker など) はインターネット上で公開されていません。そのため、これらの機能にアクセスしようとすると、Secure Shell (SSH) トンネルを使用してプロキシ Web トラフィックをクラスター ヘッド ノードに送信しない限り、サーバーが見つからないことを示すエラー メッセージが表示されます。
 
-ローカル コンピューターでポートからクラスターへのトラフィックに対して SSH トンネルを作成するには、次の記事をご覧ください。
-
-* <a href="../hdinsight-hadoop-linux-use-ssh-unix/#tunnel" target="_blank">Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する</a> - `ssh` コマンドを使用して SSH トンネルを作成する手順
-
-* <a href="../hdinsight-hadoop-linux-use-ssh-windows/#tunnel" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a> - PuTTY を使用して SSH トンネルを作成する手順
+Ambari と連携する SSH トンネルの作成の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
 ##Ambari Web UI
 
@@ -141,11 +137,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 > [AZURE.NOTE]いずれかのサービスの **[Quick Links]** リンクを選択すると、クラスターへのプロキシ Web トラフィックに Secure Sockets Layer (SSL) トンネルを使用していない限り、サーバーが見つからないことを示すエラー メッセージが表示されます。これは、この情報を表示するために使用される Web アプリケーションがインターネット上で公開されないためです。
 >
-> HDInsight で SSL トンネルを使用する方法については、次の記事をご覧ください。
->
-> * <a href="../hdinsight-hadoop-linux-use-ssh-unix/#tunnel" target="_blank">Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する</a> - `ssh` コマンドを使用して SSH トンネルを作成する手順
->
->* <a href="../hdinsight-hadoop-linux-use-ssh-windows/#tunnel" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a> - PuTTY を使用して SSH トンネルを作成する手順
+> HDInsight での SSL トンネルの使用の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
 ##管理
 
@@ -195,7 +187,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 ![service actions](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
 
-> [AZURE.WARNING]このメニューには __[サービスの追加]__ が表示されますが、これを使用してサービスをHDInsight クラスターに追加しないでください。新しいサービスは、クラスターのプロビジョニング中にスクリプト アクションを使用して追加する必要があります。スクリプト アクションの使用の詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> [AZURE.WARNING]このメニューには __[サービスの追加]__ が表示されますが、これを使用してサービスを HDInsight クラスターに追加しないでください。新しいサービスは、クラスターのプロビジョニング中にスクリプト アクションを使用して追加する必要があります。スクリプト アクションの使用の詳細については、「[Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 
 **[Actions]** ボタンではすべてのサービスを再起動できますが、特定のサービスを開始、停止、または再起動する必要がある場合があります。個々のサービスで操作を実行するには、次の手順に従います。
@@ -236,4 +228,4 @@ Ambari Web は基になる REST API に依存します。この REST API を活�
 
 REST API の完全なリファレンスについては、「[Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

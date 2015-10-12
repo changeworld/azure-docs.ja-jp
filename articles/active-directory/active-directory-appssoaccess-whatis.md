@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/01/2015"
+	ms.date="09/28/2015"
 	ms.author="asmalser-msft"/>
 
 #Azure Active Directory のアプリケーション アクセスとシングル サインオンとは
@@ -80,7 +80,7 @@ Azure AD は、HTML ベースのサインイン ページを持つあらゆる�
 
 パスワードベースの SSO の場合、エンド ユーザーのブラウザーには次のいずれかを使用できます。
 
-- Internet Explorer 8、9、10 - Windows 7 以降
+- Internet Explorer 8、9、および 10 -- Windows 7 以降 (「[How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (グループ ポリシーを使用する Internet Explorer のアクセスパネル拡張機能のデプロイ方法)](active-directory-saas-ie-group-policy.md)」も参照)
 - Chrome - Windows 7 以降、MacOS X 以降
 - Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
 
@@ -220,4 +220,4 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

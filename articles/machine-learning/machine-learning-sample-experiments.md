@@ -12,16 +12,16 @@
     ms.workload="data-services"
     ms.tgt_pltfrm="na"
     ms.devlang="na"
-    ms.topic="get-started-article" 
-    ms.date="06/29/2015"
+    ms.topic="get-started-article"
+    ms.date="09/28/2015"
     ms.author="chhavib;olgali"/>
 
 # サンプル実験を使用した新しい実験の作成
-実験を作成する場合は、Machine Learning チームのサンプル実験の例や、Machine Learning コミュニティで共有されている実験を探します。また、[ギャラリー](http://gallery.azureml.net/)内の実験について質問したり、コメントを投稿したりできます。
+実験を作成する場合は、Machine Learning チームのサンプル実験の例や、Machine Learning コミュニティで共有されている実験を探します。また、[Cortana Analytics ギャラリー](http://gallery.azureml.net/)で、実験について質問したり、コメントを投稿したりできます。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## ギャラリーを参照する
+## Cortana Analytics ギャラリーを参照する
 1. [ギャラリー](http://gallery.azureml.net/)にアクセスします。
 2. **[Trending experiments]** または **[Microsoft sample experiments]** に移動して参照します。
 3. 結果を絞り込むには、次のように検索とフィルターを使用します。![](./media/machine-learning-sample-experiments/image1.png) 
@@ -38,6 +38,5 @@
 - [サンプルの R 実験を確認する](machine-learning-r-csharp-web-service-examples.md)
 - [Web サービス API を作成する](machine-learning-publish-a-machine-learning-web-service.md)
 - [すぐに使用できるアプリケーションを参照する](https://datamarket.azure.com/browse?query=machine+learning)
- 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

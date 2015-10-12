@@ -1,5 +1,5 @@
 <properties
-   pageTitle="クラウドでの Batch と HPC ソリューション |Microsoft Azure"
+   pageTitle="クラウドでの Batch ソリューションと HPC ソリューション |Microsoft Azure"
    description="Azure での Batch およびハイ パフォーマンス コンピューティング (ビッグ コンピューティング) のシナリオおよびソリューションのオプションについて説明します。"
    services="batch, virtual-machines, cloud-services"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="07/01/2015"
+   ms.date="09/29/2015"
    ms.author="danlep"/>
 
 # Batch と HPC ソリューション
@@ -94,7 +94,7 @@ Windows ベースおよび Linux ベースのクラスター用のクラスタ�
 
 Azure にはさまざまなコンピューティング、データ、ネットワーク、および関連のサービスがあり、ビッグ コンピューティング ソリューションとワークフローに使用できます。これらの各サービスについて詳しくは、Azure サービスのドキュメントを参照してください。Batch および HPC アプリケーションでのいくつかの一般的な方法については、この記事の[ソリューション シナリオ](#solution-scenarios)を参照してください。
 
->[AZURE.NOTE]Azure プラットフォームには定期的に新しいサービスが導入されており、シナリオに役立つ可能性があります。プレビュー サービスの使用はテストまたは概念実証のデプロイに対してのみ推奨され、運用ワークロードには推奨されません。質問がある場合は、[Azure パートナー](https://pinpoint.microsoft.com/en-US/search?keyword=azure)または電子メール **bigcompute@microsoft.com* を利用してお問い合わせください。
+>[AZURE.NOTE]Azure プラットフォームには定期的に新しいサービスが導入されており、シナリオに役立つ可能性があります。プレビュー サービスの使用はテストまたは概念実証のデプロイに対してのみ推奨され、運用ワークロードには推奨されません。質問がある場合は、[Azure パートナー](https://pinpoint.microsoft.com/ja-JP/search?keyword=azure)または電子メール **bigcompute@microsoft.com* を利用してお問い合わせください。
 
 ### コンピューティング サービス
 
@@ -164,11 +164,11 @@ Azure Automation ツールを使用すると、Azure Virtual Machines に HPC �
 
 >[AZURE.NOTE]オンプレミスのクラスター ソリューションおよびアプリケーションのベンダーに、Infrastructure as a Service (IaaS) を提供するパブリック クラウドで実行するための追加要件とベスト プラクティスを確認します。
 
-たとえば、簡略化された次の図で示すように、Azure インフラストラクチャ サービスの仮想マシン (IaaS) 内に [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) で Windows Server ベースの HPC クラスターを作成し、ワークロードを実行できます。クラスターのユーザーは、クライアント コンピューターで実行されている標準の HPC Pack ジョブ送信ツールを使用して、クラウドのクラスターに安全にジョブを送信できます。詳細およびデプロイ オプションについては、「[Azure VM の Microsoft HPC Pack](https://msdn.microsoft.com/library/azure/dn518135.aspx)」をご覧ください。
+たとえば、簡略化された次の図で示すように、Azure インフラストラクチャ サービスの仮想マシン (IaaS) 内に [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) で HPC クラスターを作成し、Windows または Linux ワークロードを実行できます。クラスターのユーザーは、クライアント コンピューターで実行されている標準の HPC Pack ジョブ送信ツールを使用して、クラウドのクラスターに安全にジョブを送信できます。「[HPC cluster options with Microsoft HPC Pack in Azure (Azure での Microsoft HPC Pack を使用した HPC クラスター オプション)](../virtual-machines/virtual-machines-hpcpack-cluster-options.md)」を参照してください。
 
 ![IaaS でのクラスター][iaas_cluster]
 
-**自動デプロイ** - 多数の Windows Server または Linux VM をデプロイするには、標準またはカスタムの VM イメージと、[Azure コマンド ライン インターフェイス](../xplat-cli.md)や [Azure PowerShell](../powershell-install-configure.md) などの Azure Automation ツールを使用できます。たとえば、次のような文脈で使用されています。
+**自動デプロイ** - 多数の Windows Server または Linux VM をデプロイするには、標準またはカスタムの VM イメージと、[Azure コマンド ライン インターフェイス](../xplat-cli-install.md)や [Azure PowerShell](../powershell-install-configure.md) などの Azure Automation ツールを使用できます。たとえば、次のような文脈で使用されています。
 
 * Azure インフラストラクチャ サービスに HPC Pack クラスターをデプロイするには、クライアント コンピューターから柔軟な [Azure PowerShell スクリプト](https://msdn.microsoft.com/library/azure/dn864734.aspx)を実行できます。スクリプトはプレインストールされている HPC Pack で Windows Server VM イメージを使用します。Azure PowerShell または Azure CLI で Azure [クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)を使用して、HPC Pack クラスターをデプロイすることもできます。
 
@@ -222,4 +222,4 @@ Batch で作成できる一般的なワークフローについては、次の�
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

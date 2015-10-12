@@ -134,6 +134,22 @@ Tomcat の場合と同様、Jetty の独自のインスタンスをアップロ�
 
 Jetty の構成を start.ini で変更して、`java.net.preferIPv4Stack=true` を設定する必要があります。
 
+### Springboot
+実行されている Springboot アプリケーションを取得するには、JAR または WAR ファイルをアップロードし、次の web.config ファイルを追加する必要があります。web.config ファイルは、wwwroot フォルダーに配置されます。web.config で、JAR ファイルをポイントするように引数を調整します。次の例では、JAR ファイルも wwwroot フォルダーに配置されています。
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<configuration>
+	  <system.webServer>
+	    <handlers>
+	      <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified" />
+	    </handlers>
+	    <httpPlatform processPath="%JAVA_HOME%\bin\java.exe"
+	        arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar ";%HOME%\site\wwwroot\my-web-project.jar";">
+	    </httpPlatform>
+	  </system.webServer>
+	</configuration>
+
+
 ### Hudson
 
 Microsoft のテストでは、Hudson 3.1.2 war と既定の Tomcat 7.0.50 インスタンスを使用しましたが、セットアップに UI を使用しませんでした。Hudson はソフトウェア ビルド ツールであるため、Web アプリで **AlwaysOn** フラグを設定できる専用のインスタンスにインストールすることをお勧めします。
@@ -241,4 +257,4 @@ Java の詳細については、[Java デベロッパー センター](/develop/
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

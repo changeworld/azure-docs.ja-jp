@@ -191,7 +191,7 @@ PolyBase を使用したデータ ロードの詳細については、「[PolyBa
 
 [製品バージョン]: http://aka.ms/downloadazcopy/
 [プレビュー バージョン]: http://aka.ms/downloadazcopypr/
-[ADO NET 変換先エディター]: https://msdn.microsoft.com/JA-JP/library/bb934041.aspx
-[SSIS のドキュメント]: https://msdn.microsoft.com/JA-JP/library/ms141026.aspx
+[ADO NET 変換先エディター]: https://msdn.microsoft.com/ja-JP/library/bb934041.aspx
+[SSIS のドキュメント]: https://msdn.microsoft.com/ja-JP/library/ms141026.aspx
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

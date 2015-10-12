@@ -3,7 +3,7 @@
 	description="以前のバージョンの Azure SQL Database から Azure SQL Database V12 にアップグレードする方法について説明します。" 
 	services="sql-database" 
 	documentationCenter="" 
-	authors="sonalmm" 
+	authors="stevestein" 
 	manager="jeffreyg" 
 	editor=""/>
 
@@ -13,85 +13,76 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-management" 
-	ms.date="05/15/2015" 
-	ms.author="sonalm"/>
+	ms.date="09/30/2015" 
+	ms.author="sstein"/>
 
 
-# SQL Database V12 へのインプレース アップグレード
+# SQL Database V12 へのアップグレード
 
 
-SQL Database V12 に[サインアップ](https://portal.azure.com)すると、Microsoft Azure で次世代の SQL Database の機能を活用できるようになります。使用を開始するには、Microsoft Azure のサブスクリプションが必要です。[Azure の無料試用版](http://azure.microsoft.com/pricing/free-trial)にサインアップし、[料金](http://azure.microsoft.com/pricing/details/sql-database)の情報をご確認ください。
+> [AZURE.SELECTOR]
+- [Azure Preview Portal](sql-database-v12-upgrade.md)
+- [PowerShell](sql-database-upgrade-server.md)
 
 
-## SQL Database V12 へのアップグレードの手順
+SQL Database V12 は SQL Database の最新バージョンであり、[前の V2 バージョンに比べ、多くの利点があります](sql-database-v12-whats-new.md)。この記事では、Azure プレビュー ポータルを使用して V2 サーバーを V12 にアップグレードする方法を示します。
+
+SQL Database V12 へのアップグレードの処理中に、[すべての Web/Business データベースを新しいサービス層に更新する](sql-database-upgrade-new-service-tiers.md)必要もあります。次の手順には、Web/Business データベースを、データベースの使用履歴に基づいて推奨される価格レベルに更新するための手順が含まれています。
 
 
-| アップグレードの手順 | スクリーン ショット |
-| :--- | :--- |
-| 1\.[http://portal.azure.com/](http://portal.azure.com/) にサインインします。 | ![新しい Azure ポータル][1] |
-| 2\.**[参照]** をクリックします。 | ![サービスの参照][2] |
-| 3\.**[SQL Server]** をクリックします。SQL Server 名の一覧が表示されます。 | ![SQL Server サービスの選択][3] |
-| 4\.SQL Database 更新プログラムを有効にした新しいサーバーにコピーするサーバーを選択します。 | ![SQL Server の一覧の表示][4] |
-| 5\.**[設定]** または **[サーバー バージョン]** をクリックして、サーバーを V12 にアップグレードします。 | ![最新のプレビュー機能][5] |
-| 6\.**[このサーバーをアップグレード]** をクリックします。 | ![SQL Server からプレビュー版へのアップグレード][6] |
-| 7\.**[サーバーをアップグレードします]** をクリックすると、アップグレード プロセスが開始されます。 **[サーバーのバージョン]** で、通知が **[V2]** から **[アップグレードがスケジュールされています...]** に変ります。**[アップグレードがスケジュールされています...]** 通知をクリックすると、上部に **[アップグレードの取り消し]** ボタンがあるブレードが開きます。何らかの理由でサーバーをアップグレードしないことにした場合には、**[アップグレードの取り消し]** をクリックします。その取り消し操作は、アップグレード プロセスの途中では機能せず、アップロードが完了することに注意してください。|![アップグレードの取り消し][9] 
+
+1. [Azure プレビュー ポータル](http://portal.azure.com/)で、 **[すべて参照]**、**[SQL サーバー]** の順に選択し、目的のサーバーを選択することで、アップグレードするサーバーを参照します。
+2. **[最新の SQL Database 更新]**、**[このサーバーをアップグレード]** の順に選択します。
+
+      ![サーバーのアップグレード][1]
+
+## Web/Business データベースをアップグレードする
+
+2. すべての Web/Business データベースをアップグレードします。サーバーに Web データベースまたは Business データベースがある場合は、それらをアップグレードする必要があります。アップグレードする際、SQL Database サービスによって、各データベースに適したサービス層とパフォーマンス レベル (価格レベル) が推奨されます。サービスは、各データベースの使用履歴を分析することによって、既存のデータベースのワークロードを実行するために最適なレベルを推奨します。 
+    
+    各データベースを選択して見直しを行い、アップグレードするための推奨価格レベルを選択します。利用できる価格レベルはいつでも参照でき、お使いの環境に最適な価格レベルを選択できます。
+
+     ![データベース][2]
 
 
-> [AZURE.NOTE]アップグレード オプションを選択すると、サーバーとそのサーバー内のデータベースで SQL Database V12 の機能が有効になり、元に戻すことができなくなります。サーバーを SQL Database V12 にアップグレードするには、Basic、Standard、Premium のいずれかのサービス階層が必要です。サービス階層の詳細については、「[SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)」をご覧ください。
+
+7. 提案されているレベルをクリックすると、**[価格レベルの選択]** ブレードが表示されます。このブレードでレベルを選択し、**[選択]** をクリックすることで、そのレベルに変更できます。Web データベースまたは Business データベースごとに新しいレベルを選択します。
+
+    ![推奨事項][6]
 
 
-> [AZURE.IMPORTANT]SQL Database V12 (プレビュー) では、geo レプリケーションはサポートされていません。詳細については、「[Azure SQL Database V12 (プレビュー) へのアップグレードの計画と準備をする](sql-database-v12-plan-prepare-upgrade.md)」を参照してください。
+サーバー上のすべてのデータベースを処理した後、アップグレードを開始できます。
+
+## アップグレードを開始する
+
+3. サーバー上のすべてのデータベースをアップグレードの対象にしたら、アップグレードを実行することを確認するために**サーバー名を入力**し、**[OK]** をクリックします。 
+
+    ![アップグレードの確認][3]
 
 
-**[このサーバーをアップグレード]** をクリックすると、開いているブレードに、検証プロセスに関するメッセージが表示されます。
+4. アップグレードが開始され、進行中であることを通知するメッセージが表示されます。アップグレード処理が始まります。お使いのデータベースの詳細によっては、V12 へのアップグレードに時間がかかることがあります。その間、サーバー上のすべてのデータベースはオンラインのままですが、サーバーとデータベースの管理アクションは制限されます。
 
+    ![アップグレードが進行中][4]
 
-- 検証プロセスにより、データベースのサービス階層がチェックされ、Geo レプリケーションが有効になっているかどうかがチェックされます。検証が完了するとブレードに結果が表示されます。 
-- 検証プロセスが完了すると、SQL Database V12 へのアップグレード要件を満たすためのアクションが必要なデータベース名の一覧が表示されます。
- - **SQL Database V12 にアップグレードするには、これらの各データベースでアクションを完了する必要があります**。
-- 各データベース名をクリックすると、新しいブレードに、現在の使用状況に基づいた推奨のサービス価格レベルが表示されます。また、異なる価格レベルを参照して、お使いの環境に最適な価格レベルを選択できます。Geo レプリケーションが設定されているすべてのデータベースを再構成して、レプリケーションを停止する必要があります。 
-- 十分なデータが見つからない場合は、推奨の価格レベルが表示されませんのでご注意ください。 
+    新しいパフォーマンス レベルに実際に移行するときには、データベースへの接続が非常に短い時間 (通常は数秒)、一時的に解除される場合があります。接続が終了した場合に発生する一時的なエラーに対処するための機能 (再試行ロジック) がアプリケーションに備わっている場合は、アップグレードの終了に発生する接続解除に備えるだけで十分です。
 
+5. アップグレード操作が完了すると、SQL Database V12 サーバーの機能が有効になります。
 
-| アクション | スクリーン ショット |
-| :--- | :--- |
-| 7\.サーバーのアップグレード準備のためのアクションが完了したら、アップグレードするサーバー名を入力し、**[OK]** をクリックします。 | ![アップグレードするサーバー名の確認][7] |
-| 8\.アップグレード処理が始まります。アップグレードには最大 24 時間かかることがあります。その間、このサーバー上のすべてのデータベースはオンラインのままですが、サーバーとデータベースの管理アクションは制限されます。プロセスが完了すると、**[有効]** ステータスがサーバー ブレードに表示されます。 | ![プレビュー機能が有効になっていることの確認][8] |
-
-
-## PowerShell コマンドレット
-
-
-PowerShell コマンドレットを使用して、V11 を含め、V12 より前のバージョンから V12 への Azure SQL Database のアップグレードを開始、停止、監視できます。
-
-
-これらの PowerShell コマンドレットに関する次のリファレンス ドキュメントを参照してください。
-
-
-- [Get-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143621.aspx)
-- [Start-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143623.aspx)
-- [Stop-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143622.aspx)
-
-
-Stop- コマンドレットは、一時停止ではなく取り消しを意味します。アップグレードを再開する方法は、最初からやり直す方法以外にありません。Stop- コマンドレットにより、該当するすべてのリソースがクリーンアップされ、解放されます。
+    ![V12 の有効化][5]
 
 
 ## 関連リンク
 
--  [SQL Database V12 の新機能](sql-database-v12-whats-new.md) 
+- [SQL Database V12 の新機能](sql-database-v12-whats-new.md)
 - [SQL Database V12 へのアップグレードの計画と準備](sql-database-v12-plan-prepare-upgrade.md)
 
 
 <!--Image references-->
-[1]: ./media/sql-database-v12-upgrade/firstscreenportal.png
-[2]: ./media/sql-database-v12-upgrade/firstscreenportal.png
-[3]: ./media/sql-database-v12-upgrade/sqlserverlist.png
-[4]: ./media/sql-database-v12-upgrade/sqlserverlist.png
-[5]: ./media/sql-database-v12-upgrade/latestprview.png
-[6]: ./media/sql-database-v12-upgrade/upgrade.png
-[7]: ./media/sql-database-v12-upgrade/typeservername.png
-[8]: ./media/sql-database-v12-upgrade/enabled.png
-[9]: ./media/sql-database-v12-upgrade/cancel.PNG
- 
+[1]: ./media/sql-database-v12-upgrade/latest-sql-database-update.png
+[2]: ./media/sql-database-v12-upgrade/upgrade-server2.png
+[3]: ./media/sql-database-v12-upgrade/upgrade-server3.png
+[4]: ./media/sql-database-v12-upgrade/online-during-upgrade.png
+[5]: ./media/sql-database-v12-upgrade/enabled.png
+[6]: ./media/sql-database-v12-upgrade/recommendations.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

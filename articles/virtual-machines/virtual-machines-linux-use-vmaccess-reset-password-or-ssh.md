@@ -37,7 +37,7 @@ sudo 特権または [Azure プレビュー ポータル](https://portal.azure.c
 以下のものが必要になります。
 
 - Microsoft Azure Linux エージェント バージョン 2.0.5 またはそれ以降。仮想マシン ギャラリー内のほとんどの Linux イメージには、バージョン 2.0.5 が含まれています。インストールされているバージョンを確認するには、**waagent -version** を実行します。エージェントを更新するには、「[Azure Linux エージェント ユーザー ガイド]」の指示に従ってください。
-- Azure コマンド ライン インターフェイス (CLI)。Azure CLI の設定方法の詳細については、[Azure コマンド ライン インターフェイスのインストールと構成](../xplat-cli.md)に関するページを参照してください。
+- Azure コマンド ライン インターフェイス (CLI)。Azure CLI の設定方法の詳細については、[Azure コマンド ライン インターフェイスのインストールと構成](../xplat-cli-install.md)に関するページを参照してください。
 - Azure PowerShell。Set-AzureVMExtension コマンドレットでコマンドを使用して、VMAccessForLinux 拡張機能を自動的に読み込み、構成します。Azure PowerShell の設定方法の詳細については、[Azure PowerShell のインストールと構成の方法]に関するページを参照してください。
 - 新しいパスワードまたは一連の SSH キー (いずれかをリセットする場合)。SSH の構成をリセットする場合、これらは必要ありません。
 
@@ -263,4 +263,4 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 [Azure VM 拡張機能とその機能]: http://msdn.microsoft.com/library/azure/dn606311.aspx
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

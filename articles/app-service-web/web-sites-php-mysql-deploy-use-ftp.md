@@ -272,6 +272,9 @@ Web Apps で実行されている MySQL データベースに接続するには�
 
 `index.php` と `createtable.php` の両方をアップロードした後、**http://[sitename].azurewebsites.net/createtable.php** に移動してアプリケーション用の MySQL テーブルを作成し、**http://[sitename].azurewebsites.net/index.php** に移動してアプリケーションの使用を開始します。
  
+## 次のステップ
+
+詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
 
 [install-php]: http://www.php.net/manual/en/install.php
 [install-mysql]: http://dev.mysql.com/doc/refman/5.6/en/installing.html
@@ -297,4 +300,4 @@ Web Apps で実行されている MySQL データベースに接続するには�
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

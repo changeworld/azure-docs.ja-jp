@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Logic Apps での AS2 コネクタの使用 | Microsoft Azure App Service"
-	description="AS2 コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-	services="app-service\logic"
-	documentationCenter=".net,nodejs,java"
-	authors="rajeshramabathiran"
-	manager="dwrede"
-	editor=""/>
+   pageTitle="Logic Apps での AS2 コネクタの使用 | Microsoft Azure App Service" 
+   description="AS2 コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法" 
+   services="app-service\logic" 
+   documentationCenter=".net,nodejs,java" 
+   authors="rajeshramabathiran" 
+   manager="dwrede" 
+   editor=""/>
 
 <tags
    ms.service="app-service-logic"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="integration"
-	ms.date="08/23/2015"
-	ms.author="rajram"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="integration" 
+   ms.date="08/23/2015"
+   ms.author="rajram"/>
 
 # AS2 コネクタの使用開始とロジック アプリへの追加
 AS2 コネクタを使って、AS2 (Applicability Statement 2) トランスポート プロトコルにより企業間通信でメッセージの送受信を行います。データはインターネット経由で安全かつ確実に転送されます。セキュリティはデジタル証明書と暗号化を使用して実現されています。
@@ -28,7 +28,7 @@ AS2 コネクタは、ロジック アプリでトリガーまたはアクショ
 
 トリガー | アクション
 --- | ---
-Receive & Decode | Encode & Send
+Receive & Decode | エンコードと送信
 
 ## 前提要件
 AS2 コネクタで使用する前に、次の項目を自分で作成する必要があります。
@@ -99,6 +99,8 @@ AS2 の宛先 | 文字列 | AS2 メッセージの受信側の AS2 の ID。こ�
 ## コネクタでできること
 ロジック アプリの詳細については、「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
 パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
@@ -115,4 +117,4 @@ AS2 の宛先 | 文字列 | AS2 メッセージの受信側の AS2 の ID。こ�
 [9]: ./media/app-service-logic-connector-as2/EncodeAndSendInput.PNG
 [10]: ./media/app-service-logic-connector-as2/EncodeAndSendConfigured.PNG
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO1-->

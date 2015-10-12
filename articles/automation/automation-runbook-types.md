@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/17/2015"
+   ms.date="09/24/2015"
    ms.author="bwren" />
 
 # Azure Automation の Runbook の種類
@@ -35,15 +35,18 @@ Azure Automation がサポートする 3 種類の Runbook について次の表
 - [PowerShell ワークフロー](automation-powershell-workflow.md)について最低限の知識があれば Runbook を作成できます。
 - 管理プロセスが視覚的に表現されます。
 - エラーが発生した場合、[チェックポイント](automation-powershell-workflow.md#checkpoints)を使用して Runbook を再開できます。
-- [並列処理](automation-powershell-workflow.md#parallel-processing) を使用して複数のアクションを並列に実行できます。
-- 他のグラフィカル Runbook または PowerShell ワークフロー Runbook を子 Runbook として含むことができ、高度なワークフローを作成できます。
+- [並列処理](automation-powershell-workflow.md#parallel-processing)を使用して複数のアクティビティを並列に実行できます。
+- 高度なワークフローを作成するために、他のグラフィカル Runbook や PowerShell ワークフロー Runbook を子 Runbook として組み込むことができます。
+
 
 ### 制限事項
 
 - Azure ポータルの外部では Runbook を編集できません。
-- 一部の複雑なロジックを実行するには、PowerShell ワークフローのコードを含む[ワークフロー スクリプト コントロール](automation-powershell-workflow.md#activities)が必要になる場合があります。
+- 複雑なロジックを実行するために、PowerShell ワークフローのコードを含む[ワークフロー スクリプト コントロール](automation-powershell-workflow.md#activities)が必要になる場合があります。
+- グラフィカル ワークフローによって作成された PowerShell ワークフローのコードを表示したり、直接編集したりすることはできません。ワークフロー スクリプトのアクティビティのコードは表示できます。
 - グラフィカル Runbook は、実行する前にコンパイルする必要があるため、PowerShell Runbook より開始に時間がかかります。
-- 新しいジョブを作成する Start-AzureAutomationRunbook コマンドレットを使用することによってのみ、PowerShell Runbook を組み込むことができます。
+- PowerShell Runbook を子 Runbook として組み込むには、新しいジョブを作成する Start-AzureAutomationRunbook コマンドレットを使用する必要があります。
+
 
 ## PowerShell ワークフロー Runbook
 
@@ -53,15 +56,17 @@ PowerShell ワークフロー Runbook は、[Windows PowerShell ワークフロ�
 
 - すべての複雑なロジックを PowerShell ワークフローのコードで実装できます。
 - エラーが発生した場合、[チェックポイント](automation-powershell-workflow.md#checkpoints)を使用して Runbook を再開できます。
-- [並列処理](automation-powershell-workflow.md#parallel-processing) を使用して複数のアクションを並列に実行できます。
-- 他の PowerShell ワークフロー Runbook またはグラフィカル Runbook を子 Runbook として含むことができ、高度なワークフローを作成できます。
+- [並列処理](automation-powershell-workflow.md#parallel-processing)を使用して複数のアクションを並列に実行できます。
+- 高度なワークフローを作成するために、他のグラフィカル Runbook や PowerShell ワークフロー Runbook を子 Runbook として組み込むことができます。
+
 
 ### 制限事項
 
 - 作成者は、PowerShell ワークフローについて熟知する必要があります。
 - [逆シリアル化されたオブジェクト](automation-powershell-workflow.md#code-changes)など、PowerShell ワークフローに関する別の複雑さに対応する必要があります。
 - グラフィカル Runbook は、実行する前にコンパイルする必要があるため、PowerShell Runbook より開始に時間がかかります。
-- 新しいジョブを作成する Start-AzureAutomationRunbook コマンドレットを使用することによってのみ、PowerShell Runbook を組み込むことができます。
+- PowerShell Runbook を子 Runbook として組み込むには、新しいジョブを作成する Start-AzureAutomationRunbook コマンドレットを使用する必要があります。
+
 
 ## PowerShell Runbook
 
@@ -75,16 +80,16 @@ PowerShell Runbook は、Windows PowerShell に基づきます。Azure ポータ
 ### 制限事項
 
 - 作成者は、PowerShell スクリプトに熟知している必要があります。
-- [並列処理](automation-powershell-workflow.md#parallel-processing) を使用して複数のアクションを並列に実行できません。
-- エラーが発生した場合、[チェックポイント](automation-powershell-workflow.md#checkpoints)を使用して Runbook を再開できません。
-- [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) で Runbook を実行できません。
-- 新しいジョブを作成する Start-AzureAutomationRunbook コマンドレットを使用することによってのみ、PowerShell ワークフロー Runbook およびグラフィカル Runbook を組み込むことができます。
+- [並列処理](automation-powershell-workflow.md#parallel-processing)を使用して複数のアクションを並列に実行することはできません。
+- エラーが発生した場合、[チェックポイント](automation-powershell-workflow.md#checkpoints)を使用して Runbook を再開することはできません。
+- [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) で Runbook を実行することはできません。
+- PowerShell ワークフロー Runbook とグラフィカル Runbook を子 Runbook として組み込むには、新しいジョブを作成する Start-AzureAutomationRunbook コマンドレットを使用する必要があります。
 
 ### 既知の問題
 PowerShell Runbook に関する現在の既知の問題は次のとおりです。
 
-- PowerShell Runbook では、null 値を含む暗号化されていない[変数資産](automation-variables.md)を取得できません。
-- PowerShell Runbook では、名前に *~* が含まれる[変数資産](automation-variables.md)を取得できません。
+- PowerShell Runbook では、null 値を含む暗号化されていない[変数資産](automation-variables.md)は取得できません。
+- PowerShell Runbook では、名前に *~* が含まれる[変数資産](automation-variables.md)は取得できません。
 - PowerShell Runbook のループ内の Get-Process が、約 80 回反復した後でクラッシュする可能性があります。 
 - PowerShell Runbook は、非常に大量のデータを一度に出力ストリームに書き込もうとした場合、失敗する可能性があります。通常は、大きいオブジェクトを使用する場合、必要な情報だけを出力することによってこの問題を回避できます。たとえば、*Get-Process* などを出力するのではなく、*Get-Process | Select ProcessName, CPU* で必要なフィールドだけを出力できます。
 
@@ -93,7 +98,7 @@ PowerShell Runbook に関する現在の既知の問題は次のとおりです�
 特定の Runbook に使用する種類を決定するときは、さらに次のことを考慮する必要があります。
 
 - Runbook を別の種類に変換することはできません。
-- 異なる種類の Runbook を子 Runbook として使用する場合は制限があります。詳細については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」を参照してください。
+- 異なる種類の Runbook を子 Runbook として使用する場合は制限があります。詳細については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」をご覧ください。
 
 
 
@@ -104,4 +109,4 @@ PowerShell Runbook に関する現在の既知の問題は次のとおりです�
 - [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 - [Runbook の作成またはインポート](http://msdn.microsoft.com/library/azure/dn643637.aspx)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

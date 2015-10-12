@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="09/28/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: 制限事項および制約事項
@@ -24,7 +24,7 @@ Azure Active Directory (AD) B2C の機能の中には、プレビューではサ
 
 ## Azure AD B2C ディレクトリの作成中の問題
 
-[Azure AD B2C ディレクトリの作成](active-directory-b2c-get-started)の間に発生する可能性のある既知の問題があります。詳細については、この[記事](active-directory-b2c-support-create-directory.md)を確認してください。
+[Azure AD B2C テナントの作成](active-directory-b2c-get-started)中に発生する可能性のある既知の問題があります。詳細については、この[記事](active-directory-b2c-support-create-directory.md)を確認してください。
 
 ## 確認電子メール ページおよびセルフサービス パスワード リセット ページでのブランド表示の問題
 
@@ -50,32 +50,42 @@ Azure AD B2C プレビューでは現在、次のタイプのアプリケーシ�
 
 Azure AD B2C プレビューでは、[OAuth 2.0 トークンを使用して保護された Web API を作成](active-directory-b2c-apps.md#web-apis)することができます。ただし、その Web API は、同じアプリケーション ID を共有するクライアントからしかトークンを受け取ることができません。複数の異なるクライアントからアクセスされる Web API を構築することはできません。
 
+### Web API チェーン (On-Behalf-Of)
+
+Azure AD B2C によって保護された Web API から、同様に保護されたダウンストリームの別の Web API を呼び出す手法は、多くのアーキテクチャで使用されています。このシナリオは、バックエンドの Web API から Microsoft Online サービス (Azure AD Graph API など) を呼び出すネイティブ クライアントでよく見られます。
+
+このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant (On-Behalf-Of Flow) を使用してサポートできます。ただし、現時点では、Azure AD B2C プレビューに On-Behalf-Of Flow は実装されていません。
+
 ## ライブラリと SDK に関する制限事項
 
-Azure AD B2C のプレビュー版をサポートするライブラリが存在しない言語やプラットフォームも一部存在します。認証ライブラリ群は現在、.NET、iOS、Android、および NodeJS に限定されています。それぞれに対応するクイック スタート チュートリアルについては、[こちら](active-directory-b2c-overview.md#getting-started)のセクションを参照してください。
+Azure AD B2C のプレビュー版をサポートするライブラリが存在しない言語やプラットフォームも一部存在します。認証ライブラリ群は現在、.NET、iOS、Android、および NodeJS に限定されています。それぞれに対応するクイック スタート チュートリアルについては、「[使用の開始](active-directory-b2c-overview.md#getting-started)」をご覧ください。
 
-別の言語またはプラットフォームを使用して Azure AD B2C プレビューにアプリケーションを統合する場合は、「[OAuth 2.0 と OpenID Connect プロトコルのリファレンス](active-directory-b2c-protocols.md)」をご覧ください。Azure AD B2C サービスと通信するために必要な HTTP メッセージを構築する方法が説明されています。
+別の言語またはプラットフォームを使用して、アプリケーションを Azure AD B2C プレビューと統合する場合は、[OAuth 2.0 と OpenID Connect プロトコルのリファレンス](active-directory-b2c-protocols.md)をご覧ください。Azure AD B2C サービスと通信するために必要な HTTP メッセージを構築する方法が説明されています。
 
 ## プロトコルに関する制限事項
 
-Azure AD B2C プレビューでは、OpenID Connect と OAuth 2.0 がサポートされています。ただし、各プロトコルの一部の機能はまだ実装されていません。Azure AD B2C プレビューでサポートされているプロトコル機能の範囲についてより詳細に把握するには、「[OpenID Connect と OAuth 2.0 のプロトコル リファレンス](active-directory-b2c-protocols.md)」をご覧ください。
+Azure AD B2C プレビューでは、OpenID Connect と OAuth 2.0 がサポートされています。ただし、各プロトコルの一部の機能はまだ実装されていません。Azure AD B2C プレビューでサポートされているプロトコル機能の範囲について理解を深めるには、[OpenID Connect と OAuth 2.0 のプロトコル リファレンス](active-directory-b2c-protocols.md)をご覧ください。
 
 ## トークンに関する制限事項
 
-Azure AD B2C プレビューによって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。ただし、JWT に含まれているすべての情報 ("クレーム" と呼ばれる) で十分というわけではなく、欠落しているものもあります。たとえば、"sub" クレームや "preferred\_username" クレームなどです。ここに記載されている事柄は、プレビュー段階でかなり変更されることを想定しておく必要があります。Azure AD B2C サービスによって現在発行されているトークンについてより詳しく理解するには、[トークン リファレンス](active-directory-b2c-tokens.md)を参照してください。
+Azure AD B2C プレビューによって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。ただし、JWT に含まれているすべての情報 ("クレーム" と呼ばれる) で十分というわけではなく、欠落しているものもあります。たとえば、"sub" クレームや "preferred\_username" クレームなどです。ここに記載されている事柄は、プレビュー段階でかなり変更されることを想定しておく必要があります。Azure AD B2C サービスによって現在発行されているトークンについて理解を深めるには、[トークン リファレンス](active-directory-b2c-tokens.md)をご覧ください。
 
 ## Azure ポータルでのユーザー管理に関する問題
 
-B2C 機能には、Azure プレビュー ポータルからアクセスできます。ただし、Azure ポータルを使用して、ユーザー管理など、その他のディレクトリ機能にアクセスすることができます。現在、Azure プレビュー ポータルには、ユーザー管理 (**[ユーザー]** タブ) に関する既知の問題がいくつかあります。
+B2C 機能には、Azure プレビュー ポータルからアクセスできます。ただし、Azure ポータルを使用して、ユーザー管理などのその他のテナント機能にアクセスできます。現在、Azure ポータルには、ユーザー管理 (**[ユーザー]** タブ) に関する既知の問題がいくつかあります。
 
-- ローカル アカウント ユーザー (電子メール アドレスとパスワード、またはユーザー名とパスワードを使用してサインアップするコンシューマー) の場合、**[ユーザー名]** フィールドはサインアップ中に使用されるサインイン ID (電子メール アドレスまたはユーザー名) と一致しません。これは、Azure ポータルに表示されるフィールドが、実際には B2C シナリオでは使用されないユーザー プリンシパル名 (UPN) であるためです。ローカル アカウントのサインイン ID を確認するには、[Graph Explorer](https://graphexplorer.cloudapp.net/) でユーザー オブジェクトを見つけます。ソーシャル アカウント ユーザー (Facebook、Google+ などを使用してサインアップするコンシューマー) についても同じ問題がありますが、その場合、特にサインイン ID はありません。
+- ローカル アカウント ユーザー (電子メール アドレスとパスワード、またはユーザー名とパスワードを使用してサインアップするコンシューマー) の場合、**[ユーザー名]** フィールドはサインアップ中に使用されるサインイン ID (電子メール アドレスまたはユーザー名) に対応していません。これは、Azure ポータルに表示されるフィールドが、実際には B2C シナリオでは使用されないユーザー プリンシパル名 (UPN) であるためです。ローカル アカウントのサインイン ID を確認するには、[Graph Explorer](https://graphexplorer.cloudapp.net/) でユーザー オブジェクトを見つけます。ソーシャル アカウント ユーザー (Facebook、Google+ などを使用してサインアップするコンシューマー) についても同じ問題がありますが、その場合、特にサインイン ID はありません。
 
     ![ローカル アカウントの UPN](./media/active-directory-b2c-limitations/limitations-user-mgmt.png)
 
-- ローカル アカウント ユーザーの場合、**[プロファイル]** タブでフィールドを編集したり、変更を保存したりできません。この点に関しては、まもなく修正される予定です。
+- ローカル アカウント ユーザーの場合、**[プロファイル]** タブでフィールドを編集したり、変更を保存したりすることはできません。この点に関しては、まもなく修正される予定です。
+
+## Azure ポータルでの管理者によるパスワードのリセットに関する問題
+
+管理者が Azure ポータルでローカル アカウント ベースのコンシューマーのパスワードをリセットすると (**[ユーザー]** タブの **[パスワードのリセット]** コマンド)、そのコンシューマーは次回サインイン時に自分のパスワードを変更できなくなり、アプリケーションからロックアウトされます。Microsoft では、この問題の解決に取り組んでいます。回避策として、[Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用してコンシューマーのパスワードをリセットします。
 
 ## Azure AD B2C ディレクトリの削除に関する制限事項
 
-Azure ポータルで Azure AD B2C ディレクトリを削除することはできません。
+Azure ポータルで Azure AD B2C テナントを削除することはできません。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

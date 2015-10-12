@@ -27,7 +27,7 @@ Visual Studio Application Insights は、実行中のアプリケーションを
 
 
 
-![Example performance monitoring charts](./media/app-insights-start-monitoring-app-health-usage/10-perf.png)
+![パフォーマンス監視グラフの例](./media/app-insights-start-monitoring-app-health-usage/10-perf.png)
 
 *関連項目:*
 
@@ -148,9 +148,11 @@ Visual Studio で、送信されたイベント数が表示されます。
 ビルド情報がある場合、Application Insights Web モジュールは、**アプリケーションのバージョン**をプロパティとしてテレメトリのすべての項目に自動的に追加します。これにより、[診断の検索][diagnostic]を実行するとき、または[メトリックを調べる][metrics]ときに、バージョンによってフィルター処理できます。
 
 
-## 5\.依存関係の追跡およびパフォーマンス カウンターの追加
+## 5\.依存関係の追跡 (およびパフォーマンス カウンターの) 追加
 
 SDK によるデータへのアクセスでは、若干のサポートが必要です。具体的には、アプリからデータベース、REST API、またその他の外部コンポーネントへの呼び出しを自動的に測定するには、次の追加のステップが必要です。依存関係のメトリックは、パフォーマンスに関する問題の診断に非常に役立つ場合があります。
+
+独自の IIS サーバーで実行している場合、この手順は、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)にシステム パォーマンス カウンターが表示されるようにできます。
 
 #### アプリが IIS サーバーで実行される場合
 
@@ -158,7 +160,7 @@ SDK によるデータへのアクセスでは、若干のサポートが必要�
 
 [ファイアウォールで追加の送信ポートを開く](app-insights-monitor-performance-live-website-now.md#troubleshooting)ことが必要な場合があります。
 
-以下の手順では、CPU、メモリ、ネットワーク占有率などの[パフォーマンス カウンターのレポート](app-insights-web-monitor-performance.md#system-performance-counters)も有効化します。
+この手順では、CPU、メモリ、ネットワーク占有率などの[パフォーマンス カウンターのレポート](app-insights-web-monitor-performance.md#system-performance-counters)も有効化します。
 
 #### アプリが Azure の Web アプリの場合
 
@@ -166,7 +168,6 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ![Web アプリで、[設定]、[拡張機能]、[追加]、[Application Insights] の順に選択する](./media/app-insights-start-monitoring-app-health-usage/05-extend.png)
 
-(この拡張機能は、SDK で構築され Azure に発行されたアプリのみをサポートします。Status Monitor とは異なり、既存のアプリはインストルメント化できません。)
 
 #### Azure Cloud Services プロジェクトの場合
 
@@ -224,7 +225,7 @@ Visual Studio によって、Application Insights にリソースが作成され
 
 #### 既存のプロジェクトの場合
 
-ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights の追加] ** を選択します。
+ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights の追加]** を選択します。
 
 ![[Application Insights の追加] を選択する](./media/app-insights-start-monitoring-app-health-usage/appinsights-03-addExisting.png)
 
@@ -234,7 +235,7 @@ Visual Studio によって、Application Insights にリソースが作成され
 
 #### セットアップ オプション
 
-初めての場合には、Microsoft Azure プレビュー版にログインまたはサインインするように求められます(Visual Studio Online アカウントとは異なります)。
+初めての場合には、Microsoft Azure プレビュー版にログインまたはサインインするように求められます
 
 このアプリがより大きなアプリケーションの一部である場合は、**[設定の構成]** を使用して、他のコンポーネントと同じリソース グループに配置することをお勧めします。
 
@@ -272,4 +273,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-get-started.md
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

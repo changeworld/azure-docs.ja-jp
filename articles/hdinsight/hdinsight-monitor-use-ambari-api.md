@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/28/2015"
+	ms.date="09/25/2015"
 	ms.author="jgao"/>
 
 # Ambari API を使用した HDInsight の Hadoop クラスターの監視
@@ -23,7 +23,7 @@ Ambari API を使用して HDInsight クラスター バージョン 3.1 およ�
 
 > [AZURE.NOTE]この記事の情報は、Ambari REST API の読み取り専用バージョンを提供する Windows ベースの HDInsight クラスターを主に対象としたものです。Linux ベースのクラスターについては、[Ambari を使用した Hadoop クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
 
-## <a id="whatisambari"></a>Ambari とは
+## Ambari とは
 
 [Apache Ambari][ambari-home] は、Apache Hadoop クラスターのプロビジョニング、管理、監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。API の詳細については、「[Ambari API リファレンス][ambari-api-reference]」をご覧ください。
 
@@ -31,7 +31,7 @@ Ambari API を使用して HDInsight クラスター バージョン 3.1 およ�
 HDInsight は現在、Ambari の監視機能のみをサポートしています。Ambari API 1.0 は HDInsight バージョン 3.0 と 2.1 のクラスターによってサポートされています。この記事では、HDInsight バージョン 3.1 と 2.1 のクラスターでの Ambari API へのアクセスを取り上げます。この 2 つの重要な相違点は、新しい機能 (ジョブ履歴サーバーなど) の導入により、一部のコンポーネントに変更が加えられた点です。
 
 
-##<a id="prerequisites"></a>前提条件
+**前提条件**
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
@@ -54,7 +54,7 @@ HDInsight クラスター名|$clusterName||HDInsight クラスターの名前で
 
 
 
-##<a id="jumpstart"></a>ジャンプ スタート
+## ジャンプ スタート
 
 いくつかの方法で、Ambari を使用して HDInsight クラスターを監視することができます。
 
@@ -121,9 +121,9 @@ cURL を使用してクラスター情報を取得する例を以下に示しま
 
 **2014 年 10 月 8 日のリリースの注意点**:
 
-Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host\_name* フィールドがホスト名そのものではなくノードの完全修飾ドメイン名 (FQDN) を返します。2014 年 10 月 8 日のリリースの前は、このサンプルは単純に "**headnode0**" を返しました。2014 年 10 月 8 日のリリースの後は、上の例に示すように FQDN である "**headnode0.{ClusterDNS}.azurehdinsight.net**" を取得するようになりました。この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
+Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host\_name* フィールドがホスト名そのものではなくノードの完全修飾ドメイン名 (FQDN) を返します。2014 年 10 月 8 日のリリースの前は、このサンプルは単純に "**headnode0**" を返していました。2014 年 10 月 8 日のリリースの後は、上の例に示すように FQDN である "**headnode0.{ClusterDNS}.azurehdinsight.net**" が取得されます。この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
-##<a id="monitor"></a>Ambari での API の監視
+## Ambari での API の監視
 
 以下のテーブルに最も一般的な Ambari での API 呼び出しの監視の一部を示します。API の詳細については、「[Ambari API リファレンス][ambari-api-reference]」をご覧ください。
 
@@ -143,7 +143,7 @@ API 呼び出しの監視|URI|説明
 構成情報の取得|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/configurations?type=&lt;ConfigType&gt;&tag=&lt;VersionName&gt;`|構成の種類: core-site、hdfs-site、mapred-site、hive-site
 
 
-##<a id="nextsteps"></a>次のステップ
+##次のステップ
 
 ここでは Ambari での API 呼び出しの監視の使用方法を説明しました。詳細については、次を参照してください。
 
@@ -175,4 +175,4 @@ API 呼び出しの監視|URI|説明
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

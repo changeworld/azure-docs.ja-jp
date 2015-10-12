@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="09/08/2015"
+   ms.date="09/25/2015"
    ms.author="rickbyh"/>
 
 # Azure SQL Database におけるデータベースとログインの管理
@@ -140,7 +140,7 @@ CREATE DATABASE database1;
 
 > [AZURE.NOTE]ログインを作成する際には、強力なパスワードを使用する必要があります。詳細については、「[強力なパスワード](https://msdn.microsoft.com/library/ms161962.aspx)」を参照してください。
 
-次の例では、**database1** という名前のデータベースに、ログイン **login1** に対応する **login1User** という名前のデータベース ユーザーを作成する方法を示します。
+次の例では、**database1** という名前のデータベースに、ログイン **login1** に対応する **login1User** という名前のデータベース ユーザーを作成する方法を示します。次の例を実行するには、まず database1 データベース内に **ALTER ANY USER** アクセス許可を持つログインを使用して、そのデータベースに新しく接続する必要があります。**db\_owner** ロールのメンバーとして接続するすべてのユーザーは、データベースを作成したログインのように、そのアクセス許可を持ちます。
 
 ```
 -- Establish a new connection to the database1 database
@@ -169,4 +169,4 @@ SELECT * FROM sys.databases;
 
 [Azure SQL Database のセキュリティのガイドラインと制限事項](sql-database-security-guidelines.md) [Azure Active Directory Authentication の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

@@ -114,7 +114,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 
 ## 基本
 
-1. [基本: Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli.md)
+1. [基本: Azure コマンド ライン インターフェイス (Azure CLI)](../xplat-cli-install.md)
 4. [基本: 証明書の使用と管理](http://msdn.microsoft.com/library/azure/gg981929.aspx)
 5. [基本: Linux ユーザー名の選択](virtual-machines-linux-usernames.md)
 6. [基本: Azure ポータルを使用した Linux VM へのログオン](virtual-machines-linux-how-to-log-on.md)
@@ -131,7 +131,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 17. [基本: Cloud-init で使用するカスタム データの VM への挿入](virtual-machines-how-to-inject-custom-data.md)
 18. [基本に関するブログ: 12 の手順から成る Azure 上での高可用性 Linux の構築](http://blogs.technet.com/b/keithmayer/archive/2014/10/03/quick-start-guide-building-highly-available-linux-servers-in-the-cloud-on-microsoft-azure.aspx)
 19. [基本に関するブログ: Azure CLI、node.js、jhawk を使用した、Azure 上での Linux のプロビジョニングの自動化](http://blogs.technet.com/b/keithmayer/archive/2014/11/24/step-by-step-automated-provisioning-for-linux-in-the-cloud-with-microsoft-azure-xplat-cli-json-and-node-js-part-1.aspx)
-19. [Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-../xplat-cli.md)
+19. [Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-../xplat-cli-install.md)
 20. [基本: Azure の Docker VM 拡張機能](virtual-machines-docker-vm-extension.md)
 23. [Azure サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) のリファレンス
 24. [Azure での GlusterFS](http://dastouri.azurewebsites.net/gluster-on-azure-part-1/)
@@ -181,7 +181,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 
 このセクションで不足を埋めましょう。ご提案があれば PR をお送りください。または下記のコメントにご記載ください。
 
-1. [Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-../xplat-cli.md)
+1. [Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-../xplat-cli-install.md)
 2. [Patrick Chanezon の Azure Linux GitHub リポジトリ](https://github.com/chanezon/azure-linux)
 3. [ビデオ: **usbip** を使用して Linun のオンプレミス USB データを Azure に移動する方法](http://channel9.msdn.com/Blogs/Open/On-premises-USB-devices-on-Linux-on-Azure-via-usbip)
 4. [ビデオ: fernapp を使用してブラウザーで Azure の Linux ベースの GUI にアクセスする](http://channel9.msdn.com/Blogs/Open/Accessing-Linux-based-GUI-on-Azure-over-browser-with-fernapp)
@@ -258,7 +258,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 
 1. Docker
 	- [Azure での Linux 用 Docker VM 拡張機能](virtual-machines-docker-vm-extension.md)
-	- [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](virtual-machines-docker-with-../xplat-cli.md)
+	- [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](virtual-machines-docker-with-../xplat-cli-install.md)
 	- [Azure プレビュー ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)
 	- [Azure Marketplace で Docker をすばやく開始する](virtual-machines-docker-ubuntu-quickstart.md)
 	- [Azure で docker マシンを使用する方法](virtual-machines-docker-machine.md)
@@ -307,4 +307,4 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 [How to use docker-machine on Azure]: virtual-machines-docker-machine.md
 [How to use docker with swarm on Azure]: virtual-machines-docker-swarm.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

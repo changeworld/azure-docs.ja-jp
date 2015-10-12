@@ -1,20 +1,20 @@
 <properties
    pageTitle="HDInsight で Storm を使用して Event Hubs のイベントを処理する | Microsoft Azure"
-	description="Visual Studio で HDInsight Tools for Visual Studio を使用して作成した C# Storm トポロジによって Event Hubs のデータを処理する方法について説明します。"
-	services="hdinsight,notification hubs"
-	documentationCenter=""
-	authors="Blackmist"
-	manager="paulettm"
-	editor="cgronlun"/>
+   description="Visual Studio で HDInsight Tools for Visual Studio を使用して作成した C# Storm トポロジによって Event Hubs のデータを処理する方法について説明します。"
+   services="hdinsight,notification hubs"
+   documentationCenter=""
+   authors="Blackmist"
+   manager="paulettm"
+   editor="cgronlun"/>
 
 <tags
    ms.service="hdinsight"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="big-data"
-	ms.date="09/02/2015"
-	ms.author="larryfr"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="big-data"
+   ms.date="09/02/2015"
+   ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)
 
@@ -25,6 +25,8 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 * **EventHubWriter**: データをランダムに生成して Event Hubs に書き込む
 
 * **EventHubReader**: Event Hubs からデータを読み取って Azure テーブル ストレージに格納する
+
+[AZURE.NOTE]このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ有効です。このプロジェクトの Linux または Windows ベースのクラスターで機能する Java バージョンについては、「[Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](hdinsight-storm-develop-java-event-hub-topology.md)」を参照してください。
 
 ## 前提条件
 
@@ -120,7 +122,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
 3. **[新しいプロジェクト]** 画面で、**[インストール済]**、**[テンプレート]**の順に展開して **[HDInsight]** を選択します。テンプレートの一覧から、**[Storm Application]** を選択します。画面の下部に、アプリケーションの名前として「**EventHubWriter**」と入力します。
 
-	![image](./media/hdinsight-storm-develop-csharp-event-hub-topology/newproject.png)
+	![画像](./media/hdinsight-storm-develop-csharp-event-hub-topology/newproject.png)
 
 4. プロジェクトの作成後、次のファイルが生成されます。
 
@@ -555,4 +557,4 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->

@@ -94,6 +94,7 @@ public void ConfigureAuth(IAppBuilder app)
 									 Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0"),
 									 RedirectUri = redirectUri,
 									 Scope = "openid",
+									 ResponseType = "id_token",
 									 PostLogoutRedirectUri = redirectUri,
 									 TokenValidationParameters = new TokenValidationParameters
 									 {
@@ -204,8 +205,8 @@ public ActionResult About()
 
 [Secure a Web API with the v2.0 app model (v2.0 アプリ モデルでの Web API の保護 >>](active-directory-devquickstarts-webapi-dotnet.md)
 
-その他のリソースについては、以下を参照してください。
-- [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md)
+その他のリソースについては、以下を参照してください。 
+- [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) 
 - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO1-->

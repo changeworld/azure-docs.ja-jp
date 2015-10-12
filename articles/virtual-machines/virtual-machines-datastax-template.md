@@ -20,7 +20,7 @@
 
 DataStax は、Apache Cassandra に基づくソリューションの開発と配布を行う、実績のある業界リーダーです。Apache Cassandra は、商用使用がサポートされている、企業向けの NoSQL 分散データベース テクノロジで、アジャイルで常時稼働、しかも任意のサイズにスケール可能であるとして、広く認められています。DataStax は、Enterprise (DSE) と Community (DSC) の 2 種類の製品を提供しています。また、インメモリ コンピューティング、エンタープライズ レベルのセキュリティ、高速かつ強力な統合分析、エンタープライズ検索などの機能も提供しています。
 
-Azure Marketplace で既に提供されていたものに加え、[Azure PowerShell](../powershell-install-configure.md) または [Azure CLI](../xplat-cli.md) を通してデプロイされたリソース マネージャー テンプレートを使用して、Ubuntu VM 上に新しい DataStax クラスターを簡単にデプロイすることも可能になりました。
+Azure Marketplace で既に提供されていたものに加え、[Azure PowerShell](../powershell-install-configure.md) または [Azure CLI](../xplat-cli-install.md) を通してデプロイされたリソース マネージャー テンプレートを使用して、Ubuntu VM 上に新しい DataStax クラスターを簡単にデプロイすることも可能になりました。
 
 このテンプレートに基づいて新しくデプロイされるクラスターには、次の図に示すトポロジが実装されます。これ以外のトポロジも、この記事で示したテンプレートをカスタマイズすることで容易に実現できます。
 
@@ -477,4 +477,4 @@ vm-disk-utils-0.1.sh は、azure-quickstart-tempates GitHub リポジトリ内�
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

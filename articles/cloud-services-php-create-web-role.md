@@ -16,13 +16,13 @@
 	ms.date="09/01/2015"
 	ms.author="tomfitz"/>
 
-#PHP Web ロールとワーカー ロールを作成する方法
+#PHP Web ロールと worker ロールを作成する方法
 
 ## 概要
 
-このガイドでは、Windows 開発環境で PHP Web ロールまたは worker ロールを作成し、使用可能な "ビルトイン" バージョンから特定バージョンの PHP を選択して、PHP 構成を変更し、拡張機能を有効にして、最後に Azure にデプロイする方法を示します。また、指定した PHP ランタイムを (カスタムの構成および拡張機能と共に) 使用できるように Web ロールまたはワーカー ロールを構成する方法についても説明します。
+このガイドでは、Windows 開発環境で PHP Web ロールまたは worker ロールを作成し、使用可能な "ビルトイン" バージョンから特定バージョンの PHP を選択して、PHP 構成を変更し、拡張機能を有効にして、最後に Azure にデプロイする方法を示します。また、指定した PHP ランタイムを (カスタムの構成および拡張機能と共に) 使用できるように Web ロールまたは worker ロールを構成する方法についても説明します。
 
-## PHP Web ロールとワーカー ロールについて
+## PHP Web ロールと worker ロールについて
 
 Azure にはアプリケーションを実行するためのコンピューティング モデルとして、Azure App Service、Azure Virtual Machines、および Azure Cloud Services の 3 種類があります。これら 3 つのモデルはすべて、PHP をサポートしています。Web ロールと worker ロールを含む Cloud Services は、*サービスとしてのプラットフォーム (PaaS)* を提供します。クラウド サービス内で、Web ロールはフロントエンド Web アプリケーションをホストする専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。worker ロールは、ユーザーの操作や入力とは関係なく、非同期タスク、長時間かかるタスク、または常駐タスクを実行できます。
 
@@ -48,7 +48,7 @@ PHP Web ロールをプロジェクトに追加するには、プロジェクト
 
 	PS C:\myProject> Add-AzurePHPWebRole roleName
 
-ワーカー ロールについては、次のコマンドを使用します。
+worker ロールについては、次のコマンドを使用します。
 
 	PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
@@ -56,7 +56,7 @@ PHP Web ロールをプロジェクトに追加するには、プロジェクト
 
 ## ビルトイン PHP バージョンを指定する
 
-PHP Web ロールまたはワーカー ロールをプロジェクトに追加すると、プロジェクトの構成ファイルが変更され、アプリケーションのデプロイ時に、アプリケーションの各 Web インスタンスまたはワーカー インスタンスに PHP がインストールされるように指定されます。既定でインストールされる PHP のバージョンを確認するには、次のコマンドを実行します。
+PHP Web ロールまたは worker ロールをプロジェクトに追加すると、プロジェクトの構成ファイルが変更され、アプリケーションのデプロイ時に、アプリケーションの各 Web インスタンスまたはワーカー インスタンスに PHP がインストールされるように指定されます。既定でインストールされる PHP のバージョンを確認するには、次のコマンドを実行します。
 
 	PS C:\myProject> Get-AzureServiceProjectRoleRuntime
 
@@ -84,7 +84,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 ビルトインの PHP ランタイムをカスタマイズするには、次の操作を行います。
 
-1. Web ロールの `bin` ディレクトリに、`php` という名前の新しいフォルダーを追加します。ワーカー ロールについては、このフォルダーをロールのルート ディレクトリに追加します。
+1. Web ロールの `bin` ディレクトリに、`php` という名前の新しいフォルダーを追加します。worker ロールについては、このフォルダーをロールのルート ディレクトリに追加します。
 2. `php` フォルダー内に、`ext` という名前の別のフォルダーを作成します。有効にする `.dll` 拡張ファイル (`php_mongo.dll` など) はすべて、このフォルダーに配置します。
 3. `php` フォルダーに `php.ini` ファイルを追加します。このファイル内では、カスタム拡張を有効にし、PHP ディレクティブを設定します。たとえば、`display_errors` をオンにして `php_mongo.dll` 拡張機能を有効にする場合、`php.ini` ファイルの内容は次のようになります。
 
@@ -167,7 +167,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 		echo FAILED
 		exit /b -1
 
-5. アプリケーション ファイルをワーカー ロールのルート ディレクトリに追加します。
+5. アプリケーション ファイルを worker ロールのルート ディレクトリに追加します。
 
 6. 後述の「[アプリケーションの発行](#how-to-publish-your-application)」の説明に従って、アプリケーションを発行します。
 
@@ -198,6 +198,10 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 
 アプリケーションを発行するには、まず、**Import-PublishSettingsFile** コマンドレットを使用して発行設定をインポートする必要があります。次に [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) コマンドレットを使用して、アプリケーションを発行できます。サインインの詳細については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
+## 次のステップ
+
+詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
+
 [Azure SDK for PHP]: /develop/php/common-tasks/download-php-sdk/
 [install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
 [サービス定義ファイル (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
@@ -207,4 +211,4 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 インストーラー]: http://go.microsoft.com/fwlink/?LinkID=239648
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

@@ -1,10 +1,10 @@
 <properties
    pageTitle="Azure Cloud Services 向けの Application Insights"
-   description="Application Insights で Web とワーカー ロールを効果的に監視する"
+   description="Application Insights で Web と worker ロールを効果的に監視する"
    services="application-insights"
    documentationCenter=""
    authors="soubhagyadash"
-   manager="victormu"
+   manager="douge"
    editor="alancameronwills"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="ibiza"
    ms.topic="article"
    ms.workload="tbd"
-   ms.date="06/17/2015"
+   ms.date="09/30/2015"
    ms.author="sdash"/>
 
 # Azure Cloud Services 向けの Application Insights
@@ -21,7 +21,7 @@
 
 *Application Insights はプレビュー段階です。*
 
-[Microsoft Azure Cloud サービス アプリ](http://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を [Visual Studio Application Insights][start] で監視できます。アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
+[Microsoft Azure クラウド サービス アプリ](http://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を [Visual Studio Application Insights][start] で監視できます。アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
 
 ![例](./media/app-insights-cloudservices/sample.png)
 
@@ -47,7 +47,7 @@ Application Insights リソースでは、利用統計情報データが分析�
     ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-cloudservices/02-props.png)
 
 
-通常、それぞれの Web とワーカー ロールからのデータに対して個別のリソースを作成するのが最良の方法になります。
+通常、それぞれの Web と worker ロールからのデータに対して個別のリソースを作成するのが最良の方法になります。
 
 代替として、すべてのロールからのデータを 1 つだけのリソースに送信できます。ただし、各ロールからの結果をフィルター処理またはグループ化できるように[既定のプロパティ][apidefaults]を設定します。
 
@@ -60,30 +60,42 @@ Application Insights リソースでは、利用統計情報データが分析�
 
 2. [Web 向けの Application Insights](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet パッケージを追加します。SDK のこのバージョンには、ロールの情報など、サーバー コンテキストを追加するモジュールが含まれています。
 
-    ![Search for "Application Insights"](./media/app-insights-cloudservices/04-ai-nuget.png)
+    !["Application Insights" の検索](./media/app-insights-cloudservices/04-ai-nuget.png)
 
 
 3. データを Application Insights リソースに送信するように SDK を構成します。
 
-    `ApplicationInsights.config` を開き、この行を挿入します。
+    インストるメンテーション キーを構成設定として `ServiceConfiguration.Cloud.cscfg` ファイル内に設定します ([サンプル コード](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg))。
+ 
+    ```XML
+     
+    <Role name="WorkerRoleA"> 
+      <Setting name="Telemetry.AI.InstrumentationKey" value="YOUR IKEY" /> 
+    </Role>
+    ```
+ 
+    適切なスタートアップ関数の中に、構成設定のインストるメンテーション キーを設定します。
 
-    `<InstrumentationKey>` *コピーしたインストルメンテーション キー* `</InstrumentationKey>`
+    ```C#
 
-    Application Insights リソースからコピーしたインストルメンテーション キーを使用します。
+     TelemetryConfiguration.Active.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("Telemetry.AI.InstrumentationKey");
+    ```
 
-4. ApplicationInsights.config ファイルが常に出力ディレクトリにコピーされるように設定します。この操作は worker ロールのみに必要です。
+    この手順をアプリケーションの各ロールで実行します。次の例を参照してください。
+ 
+ * [Web ロール](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
+ * [worker ロール](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
+ * [Web ページ向け](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13)   
 
+4. ApplicationInsights.config ファイルが常に出力ディレクトリにコピーされるように設定します。 
 
-または、コード内でインストルメンテーション キー (iKey) を設定することもできます。これは、環境ごとにインストルメンテーション キーを管理する Azure サービス構成 (CSCFG) の設定を使用する場合などに便利です。iKey を設定する方法については、以下の[サンプル アプリケーション](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)をご覧ください。
+    (.config ファイルの中に、インストルメンテーション キーの配置を求めるメッセージがあります。ただし、クラウド アプリケーションでは、それは .cscfg ファイルから設定することをお勧めします。これにより、ポータルでロールが正確に識別されます)。
 
-* [Web ロール](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
-* [worker ロール](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
-* [Web ページ向け](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13)
 
 ## SDK を使用したテレメトリのレポート
 ### 要求のレポート
  * Web ロールでは、HTTP 要求に関するデータが要求モジュールによって自動的に収集されます。既定の収集動作をオーバーライドする方法の例については、[サンプルの MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole) をご覧ください。 
- * HTTP 要求の場合と同じ方法で追跡することで、ワーカー ロールの呼び出しのパフォーマンスを記録できます。Application Insights では、「要求」型の利用統計情報は、サーバー側で名前を付け、時間を指定し、個別に成功と失敗を判定できる作業単位を測定できます。SDK は HTTP 要求を自動的に記録します。一方で、独自のコードを挿入し、ワーカー ロールへの要求を追跡できます。
+ * HTTP 要求の場合と同じ方法で追跡することで、worker ロールの呼び出しのパフォーマンスを記録できます。Application Insights では、「要求」型の利用統計情報は、サーバー側で名前を付け、時間を指定し、個別に成功と失敗を判定できる作業単位を測定できます。SDK は HTTP 要求を自動的に記録します。一方で、独自のコードを挿入し、worker ロールへの要求を追跡できます。
  * 要求をレポートするためにインストルメント化された 2 つのサンプル worker ロール [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) および [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB) をご覧ください。
 
 ### 依存関係のレポート
@@ -196,4 +208,4 @@ Application Insights ポータルに表示される内容の例を次に示し�
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-get-started.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

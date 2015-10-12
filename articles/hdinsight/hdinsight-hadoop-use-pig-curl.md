@@ -90,7 +90,7 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
 ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、****wasb:///example/pigcurl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/pigcurl** ディレクトリに保存されます。
 
-これらのファイルは [Mac、Linux、Windows 用の Azure CLI](../xplat-cli.md) を使用して一覧表示し、ダウンロードできます。たとえば、**example/pigcurl** 内のファイルを一覧表示するには、次のコマンドを使用します。
+これらのファイルは [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md) を使用して一覧表示し、ダウンロードできます。たとえば、**example/pigcurl** 内のファイルを一覧表示するには、次のコマンドを使用します。
 
 	azure storage blob list <container-name> example/pigcurl
 
@@ -118,4 +118,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

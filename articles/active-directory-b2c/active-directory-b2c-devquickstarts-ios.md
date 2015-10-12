@@ -34,21 +34,21 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 - アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
-    > [AZURE.IMPORTANT][Azure ポータル](https://manage.windowsazure.com/)の **[アプリケーション]** タブで登録されているアプリケーションをこのために使用することはできません。
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## 3\.ポリシーの作成
-
-> [AZURE.NOTE]この B2C プレビューでは、クライアントとサーバーの両方の設定に同じポリシーを使います。既にチュートリアルを行っていて、これらのポリシーを作成してある場合は、再度作成する必要はありません。ポータルで前に作成したポリシーがアプリケーションの要件に一致する場合は、それを再利用してかまいません。
 
 Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポリシー**](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、3 つの ID エクスペリエンス (サインアップ、サインイン、および Facebook でのサインイン) が含まれます。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
 - サインアップ ポリシーで、**[表示名]** と他のいくつかのサインアップ属性を選択します。
 - すべてのポリシーで、**表示名**と**オブジェクト ID** のアプリケーション クレームを選択します。その他のクレームも選択できます。
-- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、プレフィックス `b2c_1_` が付加されます。これらのポリシー名はすぐに必要になります。 
+- ポリシーの作成後、各ポリシーの **[名前]** をメモしておきます。名前には、プレフィックス `b2c_1_` が付加されます。これらのポリシー名はすぐに必要になります。 
+
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 3 つのポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
 
-この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C でどのように機能するかを学習する場合は、「[Azure AD B2C プレビュー: .NET Web アプリをビルドする](active-directory-b2c-devquickstarts-web-dotnet.md)」から始めてください。
+この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C でどのように機能するかを学習する場合は、「[Azure AD B2C プレビュー: .NET Web アプリを構築する](active-directory-b2c-devquickstarts-web-dotnet.md)」から始めてください。
 
 ## 4\.コードのダウンロード
 
@@ -63,7 +63,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 また、完成済みのアプリも、[.zip 形式で入手する](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/complete.zip)か、同じリポジトリの `complete` ブランチで利用できます。
 
 
-次に Cocoapods を使用してポッドファイルを読み込みます。これにより、読み込む新しい XCode ワークスペースが作成されます。Cocoapods を持っていない場合は、[cocoapods をセットアップするための Web サイト](https://cocoapods.org)にアクセスしてください。
+次に Cocoapods を使用してポッドファイルを読み込みます。これにより、読み込む新しい XCode ワークスペースが作成されます。Cocoapods がない場合は、[cocoapods をセットアップするための Web サイト](https://cocoapods.org)にアクセスしてください。
 
 ```
 $ pod install
@@ -107,9 +107,11 @@ iOS タスク アプリが Azure AD B2C と通信するために、指定する�
 </plist>
 ```
 
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
+
 ## 6\.アクセス トークンを取得し、タスク API を呼び出す
 
-このセクションでは、Microsoft のライブラリとフレームワークを使用して、Web アプリで OAuth 2.0 トークンの交換を完了する方法を示します。**認証コード**と**アクセス トークン**を詳しく理解していない場合は、「[OAuth 2.0 プロトコル リファレンス](active-directory-b2c-reference-protocols.md)」に目を通すことをお勧めします。
+このセクションでは、Microsoft のライブラリとフレームワークを使用して、Web アプリで OAuth 2.0 トークンの交換を完了する方法を示します。**認証コード**と**アクセス トークン**の知識がない場合は、「[Azure AD B2C プレビュー: 認証プロトコル](active-directory-b2c-reference-protocols.md)」に目を通すことをお勧めします。
 
 #### 今後使用するメソッドを持つヘッダー ファイルを作成する
 
@@ -147,7 +149,7 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
 @end
 ```
 
-これらは、API に関する単純な CRUD 操作と、目的のポリシーを使用してトークンを取得できるメソッド `doPolicy` です。
+これらは、API に関する単純な CRUD 操作と、目的のポリシーを使用してトークンを取得できる `doPolicy` メソッドです。
 
 他にも、タスク項目とポリシー データを保持するために定義する必要がある 2 つのヘッダー ファイルがあります。次にこれらを作成しましょう。
 
@@ -215,11 +217,11 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
 
 #### iOS 用の ADAL を呼び出すためのセットアップ コードを記述する
 
-UI 用のオブジェクトを保存するクイック コードが完成しました。次に、タスク サーバーに提供するアクセス トークンを取得するために `settings.plist` に配置したパラメーターを使用して iOS 用の ADAL にアクセスするコードを記述する必要があります。これは冗長になる可能性があるため、集中力を保ってください。
+UI 用のオブジェクトを保存するクイック コードが完成しました。次に、タスク サーバーに提供するアクセス トークンを取得するために、`settings.plist` ファイルに配置したパラメーターを使用して iOS 用の ADAL にアクセスするコードを記述する必要があります。これは冗長になる可能性があるため、集中力を保ってください。
 
 すべての作業は、`samplesWebAPIConnector.m` の中で行われます。
 
-最初に、`samplesWebAPIConnector.h` ヘッダー ファイル内に記述した `doPolicy()` の実装を作成します。
+まず、`samplesWebAPIConnector.h` ヘッダー ファイル内に記述した `doPolicy()` の実装を作成します。
 
 ```
 +(void) doPolicy:(samplesPolicyData *)policy
@@ -251,7 +253,7 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
 
 ```
 
-このメソッドは非常に単純です。それは、入力として、少し前に作成した `samplesPolicyData` オブジェクト、親 ViewController、およびコール バックを使用します。このコール バックは興味深いものであり、その内容は次のとおりです。
+このメソッドは非常に単純です。このメソッドでは、入力として、少し前に作成した `samplesPolicyData` オブジェクト、親 ViewController、およびコールバックを使用します。このコール バックは興味深いものであり、その内容は次のとおりです。
 
 1. `completionBlock` は型として ADProfileInfo を持っています。これは `userInfo` オブジェクトで返されます。ADProfileInfo は、サーバーからのすべての応答、特にクレームを保持する型です。 
 
@@ -289,7 +291,7 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
 }
 
 ```
-このどちらかといえば単純なコードは、単純にポリシーに p を追加して、クエリが ?p=<policy> となるようにします。
+このどちらかといえば単純なコードは、ポリシーに p を追加して、クエリが ?p=<policy> となるようにします。
 
 次に、前述の大きなメソッド `getClaimsWithPolicyClearingCache` を記述しましょう。それは 1 つのセクションを立てて説明するに値する大きさがあります。
 
@@ -297,7 +299,7 @@ completionBlock:(void (^) (ADProfileInfo* userInfo, NSError* error)) completionB
 
 GitHub からのスケルトンをダウンロードしている場合は、サンプル アプリケーションで役に立つさまざまな呼び出しが既に用意されています。それらは、すべて `get(Claims|Token)With<verb>ClearningCache` のパターンに従っています。Objetive C の規約に従ったこのパターンは、英文の表記とほぼ同じです。たとえば、"get a Token with extra parameters I provide you and clear the cache (指定した追加パラメーターを使用してトークンを取得し、キャッシュをクリアする)" を行うとします。これは `getTokenWithExtraParamsClearingCache()` になります。非常に単純です。
 
-これから記述するのは、"get Claims and a token With the policy I provide you and don't clear the cache (指定したポリシーを使用してクレームとトークンを取得し、キャッシュはクリアしない)"、つまり `getClaimsWithPolicyClearingCache` です。トークンは常に ADALから戻るため、メソッドに "クレームとトークン" を指定する必要はありません。ただし、クレームを解析するオーバーヘッドなしでトークンのみを取得する場合があるため、スケルトンには `getTokenWithPolicyClearingCache` というクレームなしのメソッドが用意されています。
+これから記述する `getClaimsWithPolicyClearingCache` は、"指定したポリシーを使用してクレームとトークンを取得し、キャッシュはクリアしない" メソッドです。トークンは常に ADALから戻るため、メソッドに "クレームとトークン" を指定する必要はありません。ただし、クレームを解析するオーバーヘッドなしでトークンのみを取得する場合があるため、スケルトンには `getTokenWithPolicyClearingCache` というクレームなしのメソッドが用意されています。
 
 このコードを記述していきましょう。
 
@@ -347,7 +349,7 @@ GitHub からのスケルトンをダウンロードしている場合は、サ�
 
 ```
 
-最初の部分は見覚えがあるはずです。`Settings.plist` に指定した設定を読み込んで `data` に割り当てます。その後、iOS 用の ADAL から送られるすべてのエラーを受け取る `ADAuthenticationError` を設定します。ADAL への呼び出しを設定する `authContext` も作成します。それを *authority* に渡して、操作を開始します。また、`authContext` に親コントローラーへの参照を渡して、それに返すことができるようにします。さらに、`settings.plist` 内の文字列だった `redirectURI` を、ADAL が予期している NSURL 型に変換します。最後に、クライアントとサーバー間の呼び出しで使用される UUID である `correlationId` を設定します。これはデバッグで役立ちます。
+最初の部分は見覚えがあるはずです。`Settings.plist` に指定した設定を読み込んで `data` に割り当てます。その後、iOS 用の ADAL から送られるすべてのエラーを受け取る `ADAuthenticationError` を設定します。ADAL の呼び出しを設定する `authContext` も作成します。それを *authority* に渡して、操作を開始します。また、`authContext` に親コントローラーへの参照を渡して、それに返すことができるようにします。さらに、`settings.plist` 内の文字列だった `redirectURI` を、ADAL で求められる NSURL 型に変換します。最後に、クライアントとサーバー間の呼び出しで使用される UUID である `correlationId` を設定します。これはデバッグで役立ちます。
 
 次に、ADAL への実際の呼び出しを開始します。過去の iOS 用の ADAL の使い方で見てきた呼び出しと違ってくるのはここからです。
 
@@ -366,7 +368,7 @@ GitHub からのスケルトンをダウンロードしている場合は、サ�
 
 この呼び出しは非常に単純です。
 
-**scopes** - ユーザーがログインしているサーバーから要求するサーバーに渡すスコープです。B2C プレビューでは client\_id を渡します。ただし、これは、読み取りスコープに代わる予定です。このドキュメントはその時点で更新されます。**addtionalScopes** - アプリケーションで使用できるその他のスコープです。これは将来使用される予定です。 **clientId** - ポータルから取得したアプリケーション ID。 **redirectURI** - トークンが戻されるリダイレクト先。 **identifier** - ユーザーを識別して、キャッシュ内に使用可能なトークンが存在するか、常にサーバーに別のトークンを要求するかを判別できるようにする方法。これは `ADUserIdentifier` と呼ばれる型で実行され、使用するものを ID として指定できます。ユーザー名を使用する必要があります。 **promptBehavior** - これは廃止されました。AD\_PROMPT\_ALWAYS にする必要があります。 **extraQueryParameters** - URL エンコード形式でサーバーに渡す追加のパラメーター。 **policy** - 呼び出しているポリシー。このチュートリアルで最も重要な部分です。
+**scopes** - ユーザーがログインしているサーバーから要求するサーバーに渡すスコープです。B2C プレビューでは client\_id を渡します。ただし、これは、読み取りスコープに代わる予定です。このドキュメントはその時点で更新されます。**addtionalScopes** - アプリケーションで使用できるその他のスコープです。これは将来使用される予定です。 **clientId** - ポータルから取得したアプリケーション ID。 **redirectURI** - トークンが戻されるリダイレクト先。 **identifier** - ユーザーを識別して、キャッシュ内に使用可能なトークンが存在するか、常にサーバーに別のトークンを要求するかを判別できるようにする方法。これは `ADUserIdentifier` と呼ばれる型で実行され、使用するものを ID として指定できます。ユーザー名を使用する必要があります。 **promptBehavior** - これは使用されなくなりました。AD\_PROMPT\_ALWAYS にする必要があります。 **extraQueryParameters** - URL エンコード形式でサーバーに渡す追加のパラメーター。 **policy** - 呼び出すポリシー。このチュートリアルで最も重要な部分です。
 
 completionBlock で `ADAuthenticationResult` を渡しているのがわかります。この中にトークンとプロファイル情報が格納されています (呼び出しが成功した場合)。
 
@@ -391,7 +393,7 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock;
    completionBlock:(void (^) (bool, NSError* error)) completionBlock;
 ```
 
-`getTasksList` は、サーバー内のタスクを表す配列を用意します。`addTask` と `deleteTask` は、その後のアクションを実行し、成功した場合は TRUE または FALSE を返します。
+`getTasksList` は、サーバー内のタスクを表す配列を提供します。`addTask` と `deleteTask` は、その後のアクションを実行し、成功した場合は TRUE または FALSE を返します。
 
 `getTaskList` の記述から始めましょう。
 
@@ -486,7 +488,7 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock;
 }
 ```
 
-このタスクは、Web URI を受け取り、HTTP の `Bearer` ヘッダーにトークンを追加して、それを戻します。呼び出す `getTokenClearingCache` API は、一見おかしなものに見えるかもしれませんが、この呼び出しは、トークンをキャッシュから取得して、まだ有効であることを確認するために使用するだけです (getToken* 呼び出しが ADAL に依頼してこの作業を代わって実行してくれます)。このコードは呼び出しごとに使用します。その他のタスク メソッドの作成に戻りましょう。
+このタスクは、Web URI を受け取り、HTTP の `Bearer` ヘッダーにトークンを追加して、それを返します。呼び出す `getTokenClearingCache` API は、一見おかしなものに見えるかもしれませんが、この呼び出しは、トークンをキャッシュから取得し、そのトークンがまだ有効であることを確認するために使用するだけです (getToken* 呼び出しが ADAL に依頼してこの作業を代わって実行してくれます)。このコードは呼び出しごとに使用します。その他のタスク メソッドの作成に戻りましょう。
 
 `addTask` を記述しましょう。
 
@@ -543,7 +545,7 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
 }
 ```
 
-これは同じパターンをたどりますが、実装する必要がある別の (最後の) メソッドが導入されています。それは、配列を受け取ってディクショナリ オブジェクトに変換する `convertTaskToDictionary` です。ディクショナリ オブジェクトは、サーバーに渡す必要があるクエリ パラメーターに容易に変換できます。このコードは非常に単純です。
+これは同じパターンに従いますが、実装する必要がある別の (最後の) メソッドが導入されています。それは、配列を受け取ってディクショナリ オブジェクトに変換する `convertTaskToDictionary` です。ディクショナリ オブジェクトは、サーバーに渡す必要があるクエリ パラメーターに容易に変換できます。このコードは非常に単純です。
 
 ```
 // Here we have some converstion helpers that allow us to parse passed items in to dictionaries for URLEncoding later.
@@ -638,7 +640,7 @@ completionBlock:(void (^) (bool, NSError* error)) completionBlock
 
 API でタスクがユーザーごとに保存されたことを確認します。これは、API が、受信したアクセス トークンからユーザーID を抽出したためです。
 
-参照用に、完全なサンプルが[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/complete.zip)。または、GitHub からクローンを作成できます。
+参照用に、完成したサンプルが[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS```
 
@@ -650,4 +652,4 @@ API でタスクがユーザーごとに保存されたことを確認します�
 
 [B2C アプリの UX のカスタマイズ]()
 
-<!----HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

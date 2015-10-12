@@ -79,4 +79,4 @@ SQL Data Warehouse は数秒で簡単にデプロイできます。このサー�
 
 <!--Other Web references-->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

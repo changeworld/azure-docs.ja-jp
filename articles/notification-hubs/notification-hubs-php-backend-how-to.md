@@ -31,7 +31,7 @@ MSDN のトピック「[通知ハブの REST API](http://msdn.microsoft.com/libr
 * 選択したモバイル プラットフォームの「[Notification Hubs の使用](notification-hubs-ios-get-started.md)」に従って、PHP のバックエンド部分を実装します。
 
 ## クライアント インターフェイス
-メイン クライアント インターフェイスは、[.NET 通知ハブの SDK](http://msdn.microsoft.com/library/jj933431.aspx) で利用可能なものと同じメソッドを提供します。これにより、このサイトで現在利用できる、およびインターネットのコミュニティによって随時追加されるすべてのチュートリアルとサンプルを直接変換できます。
+メイン クライアント インターフェイスは、[.NET Notification Hubs の SDK](http://msdn.microsoft.com/library/jj933431.aspx) で利用可能なものと同じメソッドを提供します。これにより、このサイトで現在利用できる、およびインターネットのコミュニティによって随時追加されるすべてのチュートリアルとサンプルを直接変換できます。
 
 「[PHP REST wrapper sample (PHP REST ラッパー サンプル)]」で利用可能なすべてのコードを検索できます。
 
@@ -254,10 +254,11 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 * 引き続き、「[ニュース速報チュートリアル]」で Notification Hubs のタグ付け機能について学習してください。
 * 個別ユーザーへの通知のプッシュについては、「[ユーザーへの通知チュートリアル]」で学習してください。
 
+詳細については、[PHP デベロッパー センター](/develop/php/)も参照してください。
 
 [PHP REST wrapper sample (PHP REST ラッパー サンプル)]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [PHP REST ラッパー サンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

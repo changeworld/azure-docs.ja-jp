@@ -109,9 +109,11 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
 -   MSDN リファレンス: [Azure のデータの格納とアクセス][]
 -   [Azure Storage チームのブログ][]
 
+詳細については、[Python デベロッパー センター](/develop/python/)も参照してください。
+
 [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure Storage チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
 [Python Azure Storage パッケージ]: https://pypi.python.org/pypi/azure-storage
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO1-->

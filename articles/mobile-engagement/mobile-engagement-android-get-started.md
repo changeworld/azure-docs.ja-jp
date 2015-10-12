@@ -279,7 +279,7 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 	 
 	![][20]
 
-3. 次の手順に従い、キャンペーンの最初のフィールドをセットアップします。
+3. 次の手順に従って、キャンペーンの最初のフィールドを設定します。
 	 
 	![][21]
 
@@ -327,4 +327,4 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 [22]: ./media/mobile-engagement-android-get-started/campaign-content.png
 [24]: ./media/mobile-engagement-android-get-started/campaign-activate.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

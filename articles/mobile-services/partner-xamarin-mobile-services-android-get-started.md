@@ -1,5 +1,6 @@
 <properties 
 	pageTitle="Xamarin.Android 向けの Mobile Services の使用" 
+	writer="craigd" 
 	description="Azure Mobile Services を Xamarin.Android アプリで使用する方法について説明します。" 
 	documentationCenter="xamarin" 
 	authors="lindydonna" 
@@ -13,8 +14,8 @@
 	ms.tgt_pltfrm="mobile-xamarin-android" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/09/2015" 
-	ms.author="lindydonna"/>
+	ms.date="09/25/2015" 
+	ms.author="donnam"/>
 
 # <a name="getting-started"></a>Mobile Services の使用
 
@@ -136,4 +137,4 @@
 [Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

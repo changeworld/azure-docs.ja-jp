@@ -64,10 +64,6 @@
 
     ![Xamarin モバイル アプリの表示](./media/app-service-mobile-dotnet-backend-web-and-mobile/xamarin-ios-quickstart-device.png)
 
-## 次のステップ
-
-この例では、Web サイト クライアントとモバイル クライアントの両方を持つアプリで同じ基礎データベースを使用する方法について紹介しました。ここでは、2 つのクライアント間で再利用するビジネス ロジックがバックエンドになかったため、単純に同じデータベースを共有するだけで十分でした。今後のチュートリアルで、Web API にビジネス ロジックを追加し、そのロジックをモバイル アプリのバックエンド コードで再利用する方法を学習します。
-
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
@@ -77,4 +73,4 @@
 [MultiChannelToDo]: https://github.com/Azure/mobile-services-samples/tree/web-mobile/MultiChannelToDo
 [モバイル アプリを作成する]: ../article/app-service-mobile/app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

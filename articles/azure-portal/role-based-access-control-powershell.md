@@ -20,7 +20,7 @@
 
 > [AZURE.SELECTOR]
 - [Windows PowerShell](role-based-access-control-powershell.md)
-- [Azure CLI](role-based-access-control-xplat-cli.md)
+- [Azure CLI](role-based-access-control-xplat-cli-install.md)
 
 
 Azure ポータルと Azure リソース管理 API のロール ベースの Access Control (RBAC) を使用すると、サブスクリプションへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
@@ -33,7 +33,7 @@ Azure ポータルと Azure リソース管理 API のロール ベースの Acc
 
 Windows PowerShell を使って RBAC を管理するには、その前に以下が必要です。
 
-- Windows PowerShell バージョン 3.0 または 4.0。Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。互換バージョンをインストールするには、「[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595)」または「[Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)」をご覧ください。
+- Windows PowerShell バージョン 3.0 または 4.0。Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。互換バージョンをインストールするには、「[￼Windows Management Framework 3.0￼](http://www.microsoft.com/download/details.aspx?id=34595)」または「[￼Windows Management Framework 4.0￼](http://www.microsoft.com/download/details.aspx?id=40855)」をご覧ください。
 
 - Azure PowerShell バージョン 0.8.8 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../install-configure-powershell.md)」をご覧ください。
 
@@ -119,7 +119,7 @@ AD テナント内の特定のユーザー (リソース グループ「group1�
     - A resource group, to get a list of resource groups, type `PS C:\> Get-AzureResourceGroup`
     - A resource, to get a list of resources, type `PS C:\> Get-AzureResource`
 
-次に、`New-AzureRoleAssignment`  を使ってロールの割り当てを作成します。次に例を示します。
+次に、`New-AzureRoleAssignment` ￼￼￼ を使ってロールの割り当てを作成します。次に例を示します。
 
 
 次を使用すると、ユーザーに閲覧者として現在のサブスクリプション レベルでの役割の割り当てが作成されます。
@@ -161,7 +161,7 @@ Windows PowerShell を使用した役割ベースのアクセス制御の管理�
 - [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
-- [Azure CLI を使用したロール ベースの Access Control の構成](role-based-access-control-xplat-cli.md)
+- [Azure CLI を使用したロール ベースの Access Control の構成](role-based-access-control-xplat-cli-install.md)
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO1-->

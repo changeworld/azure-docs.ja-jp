@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="コード サンプル: worker ロールを使用した Application Insights から SQL へのエクスポート" 
+	pageTitle="コード サンプル: Application Insights からエクスポートされたデータの解析" 
 	description="連続エクスポート機能を使用して、Application Insights でテレメトリの独自の分析をコーディングします。" 
 	services="application-insights" 
     documentationCenter=""
@@ -12,16 +12,16 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="09/28/2015" 
 	ms.author="awills"/>
  
-# コード サンプル: worker ロールを使用した Application Insights から SQL へのエクスポート
+# コード サンプル: Application Insights からエクスポートされたデータの解析
 
-この記事では、[連続エクスポート][export]と少量のコードを使用してテレメトリ データを [Visual Studio Application Insights][start] から Azure SQL データベースに移動する方法を示します。
+この記事では、Application Insights からエクスポートされた JSON データを処理する方法を示します。例として、[連続エクスポート][export]を使用して、テレメトリ データを [Visual Studio Application Insights][start] から Azure SQL Database に移動するコードを記述します ([Stream Analytics](app-insights-code-sample-export-sql-stream-analytics.md) を使用してこれを実現することもできますが、ここではコードを示すことを目的としています)。
 
 連続エクスポートは JSON 形式でテレメトリを Azure Storage に移動するため、コードを記述し、JSON オブジェクトを解析してデータベース テーブルに行を作成します。
 
-(一般的に、連続エクスポートは、アプリが Application Insights に送信するテレメトリの独自の分析を行うための手段です。エクスポートしたテレメトリで他の処理を行うようこのコード サンプルを適合させることもできます。)
+一般に、連続エクスポートは、アプリが Application Insights に送信するテレメトリの独自の分析を行うための方法です。エクスポートされたテレメトリで他の処理を行うように、このコード サンプルを適合させることもできます。
 
 監視対象のアプリが存在していることを想定して説明を始めます。
 
@@ -50,6 +50,8 @@
 
 
 ## Azure でのストレージの作成
+
+Application Insights のデータは、常に JSON 形式で Azure ストレージ アカウントにエクスポートされます。コードでは、このストレージからデータを読み取ります。
 
 1. [Azure ポータル][portal]で、サブスクリプションの "クラシック" ストレージ アカウントを作成します。
 
@@ -83,7 +85,7 @@
 
     また、データはストレージにもエクスポートされます。
 
-4. エクスポートされたデータを検査します。Visual Studio で、**[表示]、[Cloud Explorer]** の順に選択します。[Azure]、[ストレージ] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+4. エクスポートされたデータを検査します。Visual Studio で、**[表示]、[Cloud Explorer]** の順に選択し、[Azure]、[ストレージ] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
 
     ![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/app-insights-code-sample-export-telemetry-sql-database/087-explorer.png)
 
@@ -92,6 +94,8 @@
 イベントが JSON 形式で BLOB ファイルに書き込まれます。各ファイルに 1 つ以上のイベントが含まれる場合があります。このため、イベント データを読み取って必要なフィールドをフィルター処理します。データの処理に関して行えることはありますが、今日の計画は、データを SQL データベースに移動するコードを記述することです。それにより、興味深い多くのクエリを実行しやすくなります。
 
 ## Azure SQL Database の作成
+
+この例では、データベースにデータをプッシュするコードを記述します。
 
 [Azure ポータル][portal]でサブスクリプションから開始するにあたり、データ書き込み先となるデータベース (サーバーが存在しない場合は新しいサーバーも) を作成します。
 
@@ -106,9 +110,9 @@
 
 ## worker ロールを作成する 
 
-エクスポートした BLOB で JSON を解析するための[いくつかのコード](https://sesitai.codeplex.com/)を記述し、データベースにレコードを作成することができるようになりました。エクスポート ストアとデータベースはどちらも Azure にあるため、コードを Azure worker ロールで実行します。
+エクスポートされた BLOB で JSON を解析する[コード](https://sesitai.codeplex.com/)を記述し、データベースにレコードを作成することができるようになりました。エクスポート ストアとデータベースはどちらも Azure にあるため、コードを Azure worker ロールで実行します。
 
-このコードでは、JSON に存在するすべてのプロパティを自動的に抽出します。プロパティの説明については、[データのエクスポート モデルに関するページ](app-insights-export-data-model.md)を参照してください。
+このコードでは、JSON に存在するすべてのプロパティを自動的に抽出します。各プロパティの詳細については、「[Application Insights エクスポート データ モデル](app-insights-export-data-model.md)」をご覧ください。
 
 
 #### worker ロール プロジェクトの作成
@@ -518,7 +522,7 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
     GO
 
 
-この例の動作を確認するには、完全に動くコードを[ダウンロード](https://sesitai.codeplex.com/)し、`app.config` の設定を変更し、worker ロールを Azure に発行します。
+この例の動作を確認するには、完全な作業コードを[ダウンロード](https://sesitai.codeplex.com/)し、`app.config` の設定を変更して、worker ロールを Azure に発行します。
 
 
 ## 関連記事:
@@ -539,4 +543,4 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
 
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

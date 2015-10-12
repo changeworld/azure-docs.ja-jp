@@ -152,7 +152,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 注: その他のパッケージをダウンロードおよびインストールする前に、システムがインターネットに接続されていることを確認します。
 
-\# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
+# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
 
 このコマンドは、次に示す 15 のパッケージを CentOS 6.6 リポジトリからダウンロードしてインストールします。
 
@@ -188,17 +188,17 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 注: ソース マシンで、ルートまたはブート デバイスとして Reiser または XFS のファイル システムが使用されている場合、保護する前に、次のパッケージを Linux マスター ターゲットにダウンロードしてインストールする必要があります。
 
-\# cd /usr/local
+# cd /usr/local
 
-\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
+# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
 
-\# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
+# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
 
-\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
+# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
-\# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
+# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
 
-\# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
+# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
 
 #### カスタム構成変更を適用する
 
@@ -210,11 +210,11 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 2. 次のコマンドを実行して、バイナリを解凍します。
 
-**tar -zxvf \<File name\>**
+**tar -zxvf <File name>**
 
 3. 次のコマンドを実行して、アクセス許可を付与します。
 
-\# **chmod 755 ./ApplyCustomChanges.sh**
+# **chmod 755 ./ApplyCustomChanges.sh**
 
 4. 次のコマンドを実行して、スクリプトを実行します。
 
@@ -274,6 +274,8 @@ Linux マスター ターゲット サーバー インストーラーのコピ�
 #### マスター ターゲット サーバーが構成サーバーに登録されたことを検証する
 
 マスター ターゲット サーバーが構成サーバーに正常に登録されたことを検証するには、[Azure Site Recovery] コンテナーの [構成サーバー] ページの下の [サーバーの詳細] にアクセスします。
+
+注: MT の登録後に、仮想マシンが Azure から削除されている、またはエンドポイントが適切に構成されていないことが原因であると考えられる構成エラーが MT で見つかることがあります。これは、MT が Azure にデプロイされるときに、Azure のエンドポイントによって MT の構成が検出されるためです。ただし、これは、オンプレミスの MT にはあてはまらないため、このエラーは無視できます。これに起因するフェールバックに問題はありません。
 
 
 ## オンプレミスを宛先として仮想マシンの保護を開始する
@@ -454,7 +456,7 @@ NAT Configuration|以降で詳細に説明します。
 
 5.  [Next] をクリックして、**Recover** ウィザードを開始します。
 
-6.  復旧する仮想マシンを選択します。
+6.  復旧する Virtual Machines を選択します。
 
     a.復旧できるすべての仮想マシンの一覧を確認します。
 
@@ -552,4 +554,4 @@ NAT Configuration|以降で詳細に説明します。
 
  
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO1-->

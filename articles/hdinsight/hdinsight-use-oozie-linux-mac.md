@@ -34,7 +34,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 - **Azure サブスクリプション**: [Azure 無料評価版の取得](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)に関するページをご覧ください。
 
-- **Azure CLI**: 「[Install and Configure the Azure CLI (Azure CLI のインストールと構成)](xplat-cli.md)」をご覧ください。
+- **Azure CLI**: 「[Azure CLI のインストール](xplat-cli-install.md)」をご覧ください。
 
 - **HDInsight クラスター**: [Linux での HDInsight の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
@@ -48,9 +48,9 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 1. Hive アクションでは、HiveQL スクリプトを実行して、HDInsight に含まれている **hivesampletable** からレコードを抽出します。各データ行は、特定のモバイル デバイスからのアクセスを表します。レコードの形式は次のようになります。
 
-		8       18:54:20        JA-JP   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-		23      19:19:44        JA-JP   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-		23      19:19:46        JA-JP   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+		8       18:54:20        ja-JP   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+		23      19:19:44        ja-JP   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+		23      19:19:46        ja-JP   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
 	このドキュメントで使用する Hive スクリプトは、プラットフォームごと (Android や iPhone など) の合計アクセス数をカウントし、カウントしたアクセス数を新しい Hive テーブルに保存します。
 
@@ -201,7 +201,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 次の手順では、データのエクスポート先となる Azure SQL Database を作成します。
 
-> [AZURE.IMPORTANT]これらの手順を実行する前に、[Azure CLI をインストールして構成する](xplat-cli.md)必要があります。CLI のインストールとデータベースを作成する手順は、HDInsight クラスターまたはローカル ワークステーションから実行できます。
+> [AZURE.IMPORTANT]これらの手順を実行する前に、[Azure CLI をインストールして構成する](xplat-cli-install.md)必要があります。CLI のインストールとデータベースを作成する手順は、HDInsight クラスターまたはローカル ワークステーションから実行できます。
 
 1. 次のコマンドを使用して、新しい Azure SQL Database サーバーを作成します。
 
@@ -477,11 +477,7 @@ Oozie Web UI は、クラスターでの Oozie ジョブの状態を表示する
 
 Oozie Web UI にアクセスするには、次の手順に従います。
 
-1. HDInsight クラスターへの SSH トンネルを作成します。この方法については、次のいずれかをご覧ください。
-
-	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#tunnel)
-
-	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel)
+1. HDInsight クラスターへの SSH トンネルを作成します。これを実行する方法の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
 2. トンネルが作成されたら、Web ブラウザーで Ambari Web UI を開きます。Ambari サイトの URI は、****https://CLUSTERNAME.azurehdinsight.net** です。**CLUSTERNAME** を、Linux ベースの HDInsight クラスターの名前に置き換えます。
 
@@ -715,7 +711,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: powershell-install-configure.md
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-script]: https://technet.microsoft.com/ja-jp/library/ee176961.aspx
+[powershell-script]: https://technet.microsoft.com/ja-JP/library/ee176961.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
@@ -725,4 +721,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

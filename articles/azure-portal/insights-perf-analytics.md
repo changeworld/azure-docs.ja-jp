@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/17/2015" 
+	ms.date="09/23/2015" 
 	ms.author="awills"/>
 
 # Azure Web アプリのパフォーマンスの監視
@@ -21,7 +21,7 @@
 
 Azure は、*拡張機能*を活用してアプリケーション パフォーマンス監視 (*APM*) をサポートします。これらの拡張機能はアプリケーションにインストールされ、データを収集し、監視サービスにレポートを返します。
 
-Application Insights と New Relic は、利用できるパフォーマンス監視拡張機能のうちの 2 つです。New Relic を使用するには、実行時にエージェントをインストールします。Application Insights を使用するには、SDK でコードを再ビルドします。また、追加データにアクセスできる拡張機能もインストールできます。SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。
+Application Insights と New Relic は、利用できるパフォーマンス監視拡張機能のうちの 2 つです。それらを使用するには、実行時にエージェントをインストールします。Application Insights には、SDK を使用してコードをビルドするためのオプションもあります。SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。
 
 ## 拡張機能を有効にする
 
@@ -37,9 +37,9 @@ Application Insights と New Relic は、利用できるパフォーマンス監
 
 ![分析タイルをクリックする](./media/insights-perf-analytics/10-vm1.png)
 
-### Application Insights 用: SDK を使用して再構築する
+### Application Insights 用のオプション: SDK を使用してリビルドする
 
-Application Insights は、アプリに SDK をインストールすることによって機能します。
+Application Insights では、アプリへの SDK のインストールによって、より詳細なテレメトリを提供できます。
 
 Application Insights SDK を Visual Studio のプロジェクトに追加します。
 
@@ -83,4 +83,4 @@ Application Insights のブレードが表示されたら、[パフォーマン�
 * Application Insights で [Web ページの可用性と応答性を監視](../app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO1-->

@@ -102,7 +102,7 @@ OR  y.[is_user_defined] = 1
 - **geography**: varbinary 型を使用します。
 - **hierarchyid**: ネイティブではない CLR 型です。
 - **image**、**text**、**ntext**: テキスト ベースの場合、varchar/nvarchar を使用します (小さいほど良好)。
-- **nvarchar(max)**: パフォーマンスを向上させるために、varchar(4000) 以下を使用します。
+- **nvarchar(max)**: パフォーマンスを向上させるために、nvarchar(4000) 以下を使用します。
 - **numeric**: decimal を使用します。
 - **sql\_variant**: 列を厳密に型指定された複数の列に分割します。
 - **sysname**: nvarchar(128) を使用します。
@@ -306,4 +306,4 @@ SQL Data Warehouse では、次の機能は使用またはサポートされま�
 
 <!--Other Web references-->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO1-->

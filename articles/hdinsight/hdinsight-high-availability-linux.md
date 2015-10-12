@@ -128,11 +128,7 @@ SSH 経由でヘッド ノードに接続している間、ログ ファイル�
 
 ###Ambari
 
-> [AZURE.NOTE]Ambari を通してログ ファイルにアクセスするには、SSH トンネルが必要です。これは、個々のサービスの Web サイトはインターネット上に公開されていないためです。SSL トンネルを使用する方法については、次の記事をご覧ください。
->
-> * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md#tunnel)
->
-> * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md#tunnel)
+> [AZURE.NOTE]Ambari を通してログ ファイルにアクセスするには、SSH トンネルが必要です。これは、個々のサービスの Web サイトはインターネット上に公開されていないためです。SSH トンネルの使用の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
 Ambari Web UI から、ログを表示するサービス (例: YARN) を選択し、**[クイック リンク]** を使用してログを表示するヘッド ノードを選択します。
 
@@ -158,7 +154,7 @@ Ambari Web UI から、ログを表示するサービス (例: YARN) を選択�
 
 - [Ambari REST リファレンス](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 
-- [Azure CLI のインストールと構成](../xplat-cli.md)
+- [Azure CLI のインストールと構成](../xplat-cli-install.md)
 
 - [Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)
 
@@ -168,6 +164,6 @@ Ambari Web UI から、ログを表示するサービス (例: YARN) を選択�
 
 [preview-portal]: https://portal.azure.com/
 [azure-powershell]: ../powershell-install-configure.md
-[azure-cli]: ../xplat-cli.md
+[azure-cli]: ../xplat-cli-install.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO1-->
