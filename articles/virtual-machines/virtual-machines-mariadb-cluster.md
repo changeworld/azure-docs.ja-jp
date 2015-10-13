@@ -373,4 +373,4 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 [Azure CLI ツールの issue #1268]: https://github.com/Azure/azure-xplat-cli/issues/1268
 [Linux 上で MySQL をクラスター化する別の方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
 
-<!----HONumber=Sept15_HO4-->
+<!-----HONumber=Sept15_HO4-->

@@ -21,7 +21,7 @@
 
 ## Azure Automation とは
 
-ユーザーは Microsoft Azure オートメーションを使用すると、クラウド環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。You can create, monitor, manage, and deploy resources in your Azure environment using runbooks, which are based on Windows PowerShell workflows.In this article, you will go through a tutorial for running a simple example runbook.次に、サービスのより高度な機能を探るためのリソースを紹介します。
+ユーザーは Microsoft Azure オートメーションを使用すると、クラウド環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。Runbook を使用して、Azure 環境内でリソースを作成、監視、管理、およびデプロイすることができます。Runbook は、Windows PowerShell のワークフローに基づいています。この記事では、チュートリアルを通じて、簡単なサンプルの Runbook を実行します。次に、サービスのより高度な機能を探るためのリソースを紹介します。
 
 ## チュートリアル
 このチュートリアルでは、オートメーション アカウントを作成し、Azure Automation にサンプルの「Hello World」Runbook をインポートし、その Runbook を実行して、出力を表示する手順について説明します。
@@ -46,7 +46,7 @@
 
 	![アカウントの作成](./media/automation-create-runbook-from-samples/automation_01_CreateAccount.png)
 
-3.	**[新しいオートメーション アカウントの追加]** ページで、名前を入力し、アカウントのリージョンを選択します。リージョンでは、アカウントの Automation リソースが格納される場所を指定します。This will not affect the functionality of your account, but your runbooks may execute faster if your account region is near where your other Azure resources are stored.準備ができたら、チェック マークをクリックします。
+3.	**[新しいオートメーション アカウントの追加]** ページで、名前を入力し、アカウントのリージョンを選択します。リージョンでは、アカウントの Automation リソースが格納される場所を指定します。これは、アカウントの機能には影響しませんが、アカウントのリージョンがご使用のその他の Azure リソースが格納された場所に近い場合、Runbook をより素早く実行できます。準備ができたら、チェック マークをクリックします。
 
 	![新しいアカウントの追加](./media/automation-create-runbook-from-samples/automation_02_addnewautoacct.png)
 
@@ -80,7 +80,7 @@
 
 ## <a name="publishrunbook"></a>Runbook の発行
 
-Runbook は、まずドラフト モードでインポートされます。This means you can continue to do work on it before authorizing it as a new version that can be run.このサンプルの Runbook は追加の構成を必要としないため、そのまますぐに発行できます。詳細については、「[Runbook の発行](http://aka.ms/runbookauthor/azure/publishrunbook)」を参照してください。
+Runbook は、まずドラフト モードでインポートされます。つまりこれは、承認前に実行可能な新しいバージョンとして Runbook で作業を継続できることを意味します。このサンプルの Runbook は追加の構成を必要としないため、そのまますぐに発行できます。詳細については、「[Runbook の発行](http://aka.ms/runbookauthor/azure/publishrunbook)」を参照してください。
 
 9.	Runbook のインポートが完了したら、**[Write-HelloWorld]** をクリックします。
 
@@ -146,4 +146,4 @@ Runbook をインポートし、発行したら、それを実行して、出力
 
 **フィードバックの送信** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
 
-<!---HONumber=Sept15_HO4-->
+<!----HONumber=Sept15_HO4-->
