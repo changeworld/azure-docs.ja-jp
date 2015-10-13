@@ -19,7 +19,7 @@ Azure AD B2C を使用すると、強力なセルフサービス方式の ID 管
 > [AZURE.NOTE]このクイック スタートを完全に機能させるためには、前提条件として、Azure AD で B2C によって保護されている Web API が存在する必要があります。すぐに使用できる .Net と node.js 用の Web API が既にビルドされています。このチュートリアルでは、node.js Web API のサンプルが構成されていると見なします。「[Node.js 用 Azure AD B2C Web API チュートリアル](active-directory-b2c-devquickstarts-api-node.md)」を参照してください。
 
  
-> [AZURE.NOTE]この記事では、サインイン、サインアップ、およびプロファイル管理を Azure AD B2C で実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。まだ行っていない場合は、先に「[.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)」で Azure AD B2C の基本を学習してください。
+> [AZURE.NOTE]この記事では、Azure AD B2C でサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。まだ行っていない場合は、先に [.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)で Azure AD B2C の基本を学習してください。
 
 
 保護されたリソースにアクセスする必要がある Android クライアントに対しては、Azure AD は Active Directory 認証ライブラリ (ADAL) を提供します。ADAL の唯一の目的は、アプリがアクセス トークンを容易に取得できるようにすることです。それがどれほど簡単であるかを示すために、ここで、次を実行する Android To-Do List アプリケーションを作成します。
@@ -32,7 +32,7 @@ Azure AD B2C を使用すると、強力なセルフサービス方式の ID 管
 
 ### 手順 1: Azure AD B2C ディレクトリの取得
 
-Azure AD B2C を使用するには、ディレクトリまたはテナントを作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に「[Azure AD B2C プレビュー: Azure AD B2C ディレクトリの作成方法](active-directory-b2c-get-started.md)」を参照してください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
 
 ### 手順 2: アプリケーションの作成
 
@@ -891,7 +891,16 @@ Cookie をクリアしたり、AuthenticationCallback を実装したりする�
  
  **同じファイル** (`ToDoActivity.java`) に次のコードを記述します。
  
- ``` private URL getEndpointUrl() { URL endpoint = null; try { endpoint = new URL(Constants.SERVICE\_URL); } catch (MalformedURLException e) { e.printStackTrace(); } return endpoint; }
+ ```
+    private URL getEndpointUrl() {
+        URL endpoint = null;
+        try {
+            endpoint = new URL(Constants.SERVICE_URL);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return endpoint;
+    }
 
  ```
 
@@ -964,21 +973,26 @@ API でタスクがユーザーごとに保存されたことを確認します�
 
 参照用に、完成したサンプルが[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-NativeClient-Android/archive/complete.zip)。または、GitHub から複製することもできます。
 
-```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-Android```
-
-
-### Important Information
-
-
-#### Encryption
-
-ADAL encrypts the tokens and store in SharedPreferences by default. You can look at the StorageHelper class to see the details. Android introduced AndroidKeyStore for 4.3(API18) secure storage of private keys. ADAL uses that for API18 and above. If you want to use ADAL for lower SDK versions, you need to provide secret key at AuthenticationSettings.INSTANCE.setSecretKey
-
-#### Session cookies in Webview
-
-Android webview does not clear session cookies after app is closed. You can handle this with sample code below:
 ```
-CookieSyncManager.createInstance(getApplicationContext()); CookieManager cookieManager = CookieManager.getInstance(); cookieManager.removeSessionCookie(); CookieSyncManager.getInstance().sync(); ``` More about cookies: http://developer.android.com/reference/android/webkit/CookieSyncManager.html
+git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-Android
+```
+
+
+### 重要な情報
+
+
+#### 暗号化
+
+ADAL は、既定では SharedPreferences のトークンとストアを暗号化します。詳細を確認するには、StorageHelper クラスを参照できます。Android は、秘密キーのセキュリティ保護された記憶域として AndroidKeyStore for 4.3(API18) を導入しています。ADAL はこの API18 以降を使用します。下位バージョンの SDK に ADAL を使用する場合は、AuthenticationSettings.INSTANCE.setSecretKey で秘密キーを提供する必要があります。
+
+#### Webview のセッション Cookie
+
+Android Webview は、アプリを閉じた後、セッションの Cookie をクリアしません。サンプル コード ```
+CookieSyncManager.createInstance(getApplicationContext());
+CookieManager cookieManager = CookieManager.getInstance();
+cookieManager.removeSessionCookie();
+CookieSyncManager.getInstance().sync();
+``` でこれを処理できます。Cookie の詳細については、http://developer.android.com/reference/android/webkit/CookieSyncManager.html を参照してください。
  
 
-<!---HONumber=Oct15_HO1-->
+<!----HONumber=Oct15_HO1-->

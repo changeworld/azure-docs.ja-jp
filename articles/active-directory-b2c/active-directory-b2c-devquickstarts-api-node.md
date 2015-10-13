@@ -36,7 +36,9 @@
 
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
-```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs.git```
+```
+git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs.git
+```
 
 完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
@@ -885,7 +887,9 @@ Restify と OAuth2 を使用して REST API を実装する方法についての
 
 参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs/archive/complete.zip)。または、GitHub から複製することもできます。
 
-```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs.git```
+```
+git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs.git
+```
 
 
 ## 次のステップ
@@ -894,4 +898,4 @@ Restify と OAuth2 を使用して REST API を実装する方法についての
 
 [B2C で iOS を使用して Web-API に接続する >>](active-directory-b2c-devquickstarts-ios.md)
 
-<!---HONumber=Oct15_HO1-->
+<!----HONumber=Oct15_HO1-->

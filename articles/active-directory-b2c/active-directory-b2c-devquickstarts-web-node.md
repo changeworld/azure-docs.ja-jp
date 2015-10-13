@@ -34,51 +34,48 @@
 
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
-```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git```
+```
+git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git
+```
 
-The completed application is provided at the end of this tutorial as well.
+完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
-> [AZURE.WARNING] 	For our B2C Preview you must use the same client ID/Application ID and policies for both the Web-API task server and the client that connects to it. This is true for our iOS and Android tutorials. If you have previously created an application in either of those quickstarts, please use those values instead of creating new ones below.
+> [AZURE.WARNING] 	B2C プレビューでは、Web-API タスク サーバーとそのサーバーに接続するクライアントの両方に同じクライアント ID またはアプリケーション ID およびポリシーを使用する必要があります。これは、iOS と Android のチュートリアルに当てはまります。これらのクイック スタートのいずれかでアプリケーションを作成したことがある場合は、以下で新しい値を作成するのではなく、それらの値を使用してください。
 
-## 1. Get an Azure AD B2C directory
+## 1.Azure AD B2C ディレクトリの取得
 
-Before you can use Azure AD B2C, you must create a directory, or tenant.  A directory is a container for all your users, apps, groups, and so on.  If you don't have
-one already, go [create a B2C directory](active-directory-b2c-get-started.md) before moving on.
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
 
-## 2. Create an application
+## 2.アプリケーションの作成
 
-Now you need to create an app in your B2C directory, which gives Azure AD some information that it needs to securely communicate with your app.  Both the client app and web API will be represented by a single **Application ID** in this case, since they comprise one logical app.  To create an app,
-follow [these instructions](active-directory-b2c-app-registration.md).  Be sure to
+次に、B2C ディレクトリ内にアプリを作成する必要があります。これによって、 アプリと安全に通信するために必要ないくつかの情報が Azure AD に提供されます。ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つのロジック アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従います。このとき、
 
-- Include a **web app/web api** in the application
-- Enter `http://localhost/TodoListService` as a **Reply URL** - it is the default URL for this code sample.
-- Create an **Application Secret** for your application and copy it down.  You will need it shortly.
-- Copy down the **Application ID** that is assigned to your app.  You will also need it shortly.
+- アプリケーションに **Web アプリまたは Web API** を含めます。
+- `http://localhost/TodoListService` を**応答 URL** として入力します。これはこのサンプル コードで使用する既定の URL です。
+- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
+- アプリに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## 3. Create your policies
+## 3.ポリシーの作成
 
-In Azure AD B2C, every user experience is defined by a [**policy**](active-directory-b2c-reference-policies.md).  This app contains three 
-identity experiences - sign-up, sign-in, and sign-in with Facebook.  You will need to create one policy of each type, as described in the 
-[policy reference article](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy).  When creating your three policies, be sure to:
+Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポリシー**](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、3 つの ID エクスペリエンス (サインアップ、サインイン、および Facebook でのサインイン) が含まれます。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
-- Choose the **Display Name** and a few other sign-up attributes in your sign-up policy.
-- Choose the **Display Name** and **Object ID** application claims in every policy.  You can choose other claims as well.
-- Copy down the **Name** of each policy after you create it.  It should have the prefix `b2c_1_`.  You'll need those policy names shortly. 
+- サインアップ ポリシーで、**表示名**と他のいくつかのサインアップ属性を選択します。
+- すべてのポリシーで、アプリケーション クレームとして**表示名**と**オブジェクト ID** を選択します。その他のクレームも選択できます。
+- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、プレフィックス `b2c_1_` が付加されます。これらのポリシー名はすぐに必要になります。 
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Once you have your three policies successfully created, you're ready to build your app.
+3 つのポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
 
-Note that this article does not cover how to use the policies you just created.  If you want to learn about how policies work in Azure AD B2C,
-you should start with the [.NET Web App getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md).
-
+この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C でどのように機能するかを学習する場合は、[.NET Web アプリの入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)から始めてください。
 
 
-## 4. Add pre-requisities to your directory
 
-From the command-line, change directories to your root folder if not already there and run the following commands:
+## 4.ディレクトリに前提条件を追加する
+
+コマンド ラインから、ディレクトリをルート フォルダーに移動し (まだルート フォルダーでない場合)、次のコマンドを実行します。
 
 - `npm install express`
 - `npm install ejs`
@@ -93,30 +90,34 @@ From the command-line, change directories to your root folder if not already the
 - `npm install express-session`
 - `npm install cookie-parser`
 
-- In addition, we've use `passport-azure-ad` for our Preview in the skeleton of the quickstart. 
+- さらに、クイック スタートのスケルトンで、プレビュー用に `passport-azure-ad` を使用しています。
 
 - `npm install passport-azure-ad`
 
 
-This will install the libraries that passport-azure-ad depend on.
+これにより、passport-azure-ad が依存するライブラリがインストールされます。
 
-## 5. Set up your app to use the passport-node-js strategy
-Here, we'll configure the Express middleware to use the OpenID Connect authentication protocol.  Passport will be used to issue sign-in and sign-out requests, manage the user's session, and get information about the user, amongst other things.
+## 5.passport-node-js 戦略を使用するようにアプリを設定する
+ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
--	To begin, open the `config.js` file in the root of the project, and enter your app's configuration values in the `exports.creds` section.
-    -	The `clientID:` is the **Application Id** assigned to your app in the registration portal.
-    -	The `returnURL` is the **Redirect URI** you entered in the portal.
-    - The `tenantName:` is the **tenant name** of your app, e.g. contoso.onmicrosoft.com
+-	最初に、プロジェクトのルートにある `config.js` ファイルを開いて、アプリの構成値を `exports.creds` セクションに入力します。
+    -	`clientID:` は、登録ポータル内のアプリに割り当てられた**アプリケーション ID** です。
+    -	`returnURL` は、ポータルで入力した**リダイレクト URI** です。
+    - `tenantName:` は、アプリの**テナント名** (たとえば、contoso.onmicrosoft.com) です。
 
 [AZURE.INCLUDE [active-directory-b2c-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-- Next open `app.js` file in the root of the proejct and add the follwing call to invoke the `OIDCStrategy` strategy that comes with `passport-azure-ad`
+- 次に、プロジェクトのルートにある `app.js` ファイルを開き、次の呼び出しを追加して、`passport-azure-ad` に付属する `OIDCStrategy` 戦略を呼び出します。
 
 
 ```JavaScript
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
-// ログを追加します var log = bunyan.createLogger({ name: 'Microsoft OIDC Example Web Application' }); ```
+// Add some logging
+var log = bunyan.createLogger({
+    name: 'Microsoft OIDC Example Web Application'
+});
+```
 
 - その後、今参照した戦略を使用してログイン要求を処理します。
 
@@ -271,9 +272,9 @@ app.post('/auth/openid/return',
 
 ## 4\.Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
 
-OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するように、アプリが適切に構成されました。認証メッセージの作成、Azure AD からのトークンの検証、ユーザー セッションの維持といった細かな処理は、すべて `passport-azure-ad` が行います。残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
+OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するように、アプリが適切に構成されました。認証メッセージの作成、Azure AD からのトークンの検証、ユーザー セッションの維持などの細かな処理は、すべて `passport-azure-ad` が行います。残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
 
-- まず、既定のメソッド、login メソッド、account メソッド、および logout メソッドを `app.js` ファイルに追加します。
+- まず、既定のメソッド、login メソッド、account メソッド、logout メソッドを `app.js` ファイルに追加します。
 
 ```JavaScript
 
@@ -304,7 +305,7 @@ app.get('/logout', function(req, res){
 -	これらについて詳しく説明しましょう。
     -	`/` ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
     - `/account` ルートは、***ユーザーが認証されていることを確認した後*** (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
-    - `/login` ルートは、`passport-azuread` から azuread-openidconnect authenticator を呼び出し、これが成功しなかった場合は、ユーザーを /login にリダイレクトして戻します。
+    - `/login` ルートは、`passport-azuread` から azuread-openidconnect 認証子を呼び出します。これが失敗した場合は、ユーザーはもう一度 /login にリダイレクトされます。
     - `/logout` は、クッキーをクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
 
 
@@ -411,9 +412,11 @@ exports.list = function(req, res){
 
 ##次のステップ
 
-参照用の完全なサンプル (構成値を除く) が、[.zip としてこちらで提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip)。または、GitHub から複製できます:
+参照用に、完成済みサンプル (構成値を除く) を [.zip 形式でこちらからダウンロードできます](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip)。または、GitHub から複製することもできます。
 
-```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-nodejs.git```
+```
+git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-nodejs.git
+```
 
 これ以降は、さらに高度なトピックに進むことができます。次のチュートリアルを試してみてください。
 
@@ -430,4 +433,4 @@ You can now move onto more advanced B2C topics.  You may want to try:
 
 -->
 
-<!---HONumber=Oct15_HO1-->
+<!----HONumber=Oct15_HO1-->

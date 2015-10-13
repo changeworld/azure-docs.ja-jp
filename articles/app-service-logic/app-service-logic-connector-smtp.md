@@ -103,4 +103,4 @@ SMTP コネクタでは、次のトリガーとアクションを使用できま
 [5]: ./media/app-service-logic-connector-smtp/img5.PNG
 [6]: ./media/app-service-logic-connector-smtp/img6.PNG
 
-<!---HONumber=Oct15_HO1-->
+<!----HONumber=Oct15_HO1-->
