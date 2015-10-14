@@ -262,7 +262,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 ![][AllSpeakersFixedDesktop]
 
-モバイル ブラウザー ビューは強化されましたが、スピーカーの長い一覧をスクロールするのは困難です。ブートストラップは、検索フィルターを標準で提供していませんが、数行のコードによって追加できます。まずビューに検索ボックスを追加した後、JavaScript コードを関連付けてフィルター機能を設定します。次に示すように、*Views\\Home\\AllSpeakers.cshtml* で、<form> タグを <h2> タグの直後に追加します。
+モバイル ブラウザー ビューは強化されましたが、スピーカーの長い一覧をスクロールするのは困難です。ブートストラップは、検索フィルターを標準で提供していませんが、数行のコードによって追加できます。まずビューに検索ボックスを追加した後、JavaScript コードを関連付けてフィルター機能を設定します。次に示すように、*Views\\Home\\AllSpeakers.cshtml* で、<\form\> タグを <\h2\> タグの直後に追加します。
 
     @model IEnumerable<string>
 
@@ -617,4 +617,4 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 [SessionByCodeFixed3-644]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionByCode-Fixed-3-644.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!----HONumber=Oct15_HO1-->
