@@ -29,6 +29,6 @@
 これで、モバイル サービスが、アプリケーションからシングル サインオン ログインを受信するように AAD で構成されます。
 
 
-[[Active Directory]]: https://manage.windowsazure.com/
+[Active Directory]: https://manage.windowsazure.com/
 
-<!----HONumber=August15_HO6-->
+<!-----HONumber=August15_HO6-->

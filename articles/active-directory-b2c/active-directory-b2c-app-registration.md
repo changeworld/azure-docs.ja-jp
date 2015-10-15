@@ -30,13 +30,13 @@
 
 次の 2 つの方法のどちらかで、B2C 機能ブレードに移動できます。
 
-### 1\.Azure プレビュー ポータルで直接アクセスする
+### 1.Azure プレビュー ポータルで直接アクセスする
 
 B2C 機能ブレードをスタート画面にピン留めしてある場合、B2C ディレクトリのグローバル管理者として [Azure プレビュー ポータル](https://portal.azure.com/)にサインインするとすぐに、B2C 機能ブレードが表示されます。
 
 [https://portal.azure.com/{directory}.onmicrosoft.com/?Microsoft\_AAD\_B2CAdmin=true#blade/Microsoft\_AAD\_B2CAdmin/TenantManagementBlade/id/{directory}.onmicrosoft.com](https://portal.azure.com/{directory}.onmicrosoft.com/?Microsoft_AAD_B2CAdmin=true#blade/Microsoft_AAD_B2CAdmin/TenantManagementBlade/id/{directory}.onmicrosoft.com) に移動して B2C 機能ブレードに直接アクセスすることもできます。**{directory}** はディレクトリ作成時に使用した名前に置き換え (例: contosob2c)、B2C ディレクトリのグローバル管理者としてサインインします。後で参照するときのために、このリンクをブックマークできます。
 
-### 2\.Azure ポータルからアクセスする
+### 2.Azure ポータルからアクセスする
 
 [Azure ポータル](https://manage.windowsazure.com/)にサブスクリプション管理者としてサインインします (これは Azure へのサインアップに使用したものと同じ職場または学校アカウント、または同じ Microsoft アカウントです)。左側の [Active Directory] 拡張機能に移動し、B2C ディレクトリをクリックします。**[クイック スタート]** タブ (表示される最初のタブ) で、**[管理]** の **[B2C 設定の管理]** をクリックします。新しいブラウザー ウィンドウまたはタブで、B2C 機能ブレードが開きます。
 
@@ -49,7 +49,8 @@ B2C 機能ブレードをスタート画面にピン留めしてある場合、B
 3. アプリケーションの **[名前]** には、コンシューマーがアプリケーションの機能を把握できるような名前を設定します。たとえば、"Contoso B2C app" などと入力します。
 4. Web ベースのアプリケーションを作成している場合は、**[Web アプリ/Web API を含める]** スイッチを **[はい]** に切り替えます。**[応答 URL]** は、アプリケーションが要求したトークンを Azure AD B2C が返すエンドポイントです。たとえば、「`https://localhost:44321/`」と入力します。セキュリティで保護する必要があるサーバー側コンポーネント (API) がアプリケーションに含まれる場合は、**[キーの生成]** ボタンをクリックして **[アプリケーションのシークレット]** も作成 (およびコピー) できます。
 
-    > [AZURE.NOTE]**[アプリケーションのシークレット]** は、重要なセキュリティ資格情報です。
+    > [AZURE.NOTE]
+    **[アプリケーションのシークレット]** は、重要なセキュリティ資格情報です。
 
 5. モバイル アプリケーションを作成している場合は、**[ネイティブ クライアントを含める]** スイッチを **[はい]** に切り替えます。自動的に作成される既定の **[リダイレクト URI]** をコピーします。
 6. **[作成]** をクリックして、アプリケーションを登録します。
@@ -61,4 +62,4 @@ B2C 機能ブレードをスタート画面にピン留めしてある場合、B
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
-<!---HONumber=Oct15_HO1-->
+<!----HONumber=Oct15_HO1-->
