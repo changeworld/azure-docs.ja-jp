@@ -341,10 +341,10 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 次のようなテーブルが作成されます。
 
 	+----+--------+
-	|&nbsp;id&nbsp;|&nbsp;value&nbsp;&nbsp;|
+	| id | value  |
 	+----+--------+
-	|&nbsp;&nbsp1&nbsp;|&nbsp;Value1&nbsp;|
-	|&nbsp;&nbsp4&nbsp;|&nbsp;Value2&nbsp;|
+	|  1 | Value1 |
+	|  4 | Value2 |
 	+----+--------+
 	2 rows in set (0.00 sec)
 
@@ -376,4 +376,4 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 [Azure CLI ツールの issue #1268]: https://github.com/Azure/azure-xplat-cli/issues/1268
 [Linux 上で MySQL をクラスター化する別の方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
 
-<!--------HONumber=Sept15_HO4-->
+<!---------HONumber=Sept15_HO4-->
