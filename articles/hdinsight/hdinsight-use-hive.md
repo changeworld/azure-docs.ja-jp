@@ -1,6 +1,7 @@
 <properties
 	pageTitle="Hive と HiveQL の使用方法の説明 |Microsoft Azure"
 	description="Apache Hive と HDInsight での Hadoop との使用方法について説明します。Hive ジョブを実行し、HiveQL を使用して Apache log4j サンプル ファイルを分析する方法を選択します。"
+	keywords="hiveql,what is hive"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +15,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="08/28/2015"
+	ms.date="10/05/2015"
 	ms.author="larryfr"/>
 
 # HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する
@@ -97,15 +98,13 @@ Azure BLOB ストレージが HDInsight の既定のストレージであるた�
 
 ##<a id="usetez"></a>パフォーマンスを改善するための Apache Tez の使用方法
 
-[Apache Tez](http://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。HDInsight の最新リリースでは、Hive は Tez 上での実行がサポートされます。
+[Apache Tez](http://tez.apache.org) は、Hive などの大量のデータを扱うアプリケーションを同じ規模で遥かに効率的に実行可能にするフレームワークです。HDInsight の最新リリースでは、Hive は Tez 上での実行がサポートされます。Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
 
-Tez は Windows ベースの HDInsight クラスターに対して現在既定でオフになっているため、有効にする必要があります。Tez を活用するために、Hive クエリに次の値を設定する必要があります。
-
-	set hive.execution.engine=tez;
-
-これは、クエリの先頭に配置することで、クエリ単位で送信できます。また、クラスターの作成時に構成値を設定することで、この機能が既定で有効になるようにクラスターを設定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
-
-Linux ベースの HDInsight クラスターでは、Tez は既定でオンになっています。
+> [AZURE.NOTE]Tez は Windows ベースの HDInsight クラスターに対して現在既定でオフになっているため、有効にする必要があります。Tez を活用するために、Hive クエリに次の値を設定する必要があります。
+>
+> ```set hive.execution.engine=tez;```
+>
+>これは、クエリの先頭に配置することで、クエリ単位で送信できます。また、クラスターの作成時に構成値を設定することで、この機能が既定で有効になるようにクラスターを設定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。
 
 [「Hive on Tez」設計ドキュメント](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)には、実装の選択肢および構成の調整に関する詳細がいくつか記載されています。
 
@@ -116,7 +115,8 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 
 | 使用する**方法** | **対話型**シェルの有無 | **バッチ**処理の有無 | 使用する**クラスターのオペレーティング システム** | 使用元の**クライアントのオペレーティング システム** |
 |:--------------------------------------------------------------------------------|:---------------------------:|:-----------------------:|:------------------------------------------|:-----------------------------------------|
-| [SSH](hdinsight-hadoop-use-hive-ssh.md) | ✔ | ✔ | Linux | Linux、Unix、Mac OS X、または Windows |
+| [(SSH セッションからの) Beeline コマンド](hdinsight-hadoop-use-hive-beeline.md) | ✔ | ✔ | Linux | Linux、Unix、Mac OS X、または Windows |
+| [(SSH セッションからの) Hive コマンド](hdinsight-hadoop-use-hive-ssh.md) | ✔ | ✔ | Linux | Linux、Unix、Mac OS X、または Windows |
 | [Curl](hdinsight-hadoop-use-hive-curl.md) | &nbsp; | ✔ | Linux または Windows | Linux、Unix、Mac OS X、または Windows |
 | [クエリ コンソール](hdinsight-hadoop-use-hive-query-console.md) | &nbsp; | ✔ | Windows | ブラウザー ベース |
 | [HDInsight Tools for Visual Studio](hdinsight-hadoop-use-hive-visual-studio.md) | &nbsp; | ✔ | Linux または Windows | Windows |
@@ -132,7 +132,7 @@ SQL Server Integration Services (SSIS) を利用して Hive ジョブを実行�
 - [Azure サブスクリプション接続マネージャー][connectionmanager]
 
 
-Azure Feature Pack for SSIS の詳細は[こちら][ssispack]にあります。
+Azure Feature Pack for SSIS の詳細については、[ここ][ssispack]を参照してください。
 
 
 ##<a id="nextsteps"></a>次のステップ
@@ -183,4 +183,4 @@ Azure Feature Pack for SSIS の詳細は[こちら][ssispack]にあります。
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO2-->

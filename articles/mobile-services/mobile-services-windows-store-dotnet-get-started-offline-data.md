@@ -29,8 +29,6 @@
 このチュートリアルでは、「[Mobile Services の使用]」チュートリアルで使用した Universal アプリケーション プロジェクトを更新して、Azure Mobile Services のオフライン機能をサポートできるようにします。その後、切断されたオフラインの状況でデータを追加し、それらの項目をオンライン データベースに同期してから、Azure の管理ポータルにログインして、アプリケーションを実行したときにデータに加えた変更を表示します。
 
 >[AZURE.NOTE]このチュートリアルの目的は、Azure を使用して Windows ストア アプリケーションのデータを格納および取得できるようにするためのモバイル サービスのしくみを説明することにあります。Mobile Services を初めて使用する場合は、チュートリアル「[Mobile Services の使用]」を完了する必要があります。
->
->以前の Visual Studio 2012 用 Windows Phone 8 チュートリアルも、「[Visual Studio 2012 用 Windows Phone 8 チュートリアル]」で引き続き利用可能です。
 
 ##前提条件 
 
@@ -253,7 +251,6 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 [Next Steps]: #next-steps
 
 <!-- Images -->
-[0]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-todoitem-data-browse.png
 [1]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-add-reference-sqlite-dialog.png
 [2]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-sqlitestore-nuget.png
 [6]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-data-browse.png
@@ -270,11 +267,9 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 [TodoList オフライン サンプル]: http://go.microsoft.com/fwlink/?LinkId=394777
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
 [Getting Started]: ../mobile-services-dotnet-backend-windows-phone-get-started.md
-[Get started with data]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md
 [Mobile Services の使用]: ../mobile-services-windows-store-get-started.md
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
 [SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkId=397953
-[Visual Studio 2012 用 Windows Phone 8 チュートリアル]: mobile-services-windows-phone-get-started-offline-data.md
 [Soft Delete]: mobile-services-using-soft-delete.md
 [論理的な削除]: mobile-services-using-soft-delete.md
 
@@ -283,4 +278,4 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

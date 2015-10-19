@@ -161,7 +161,6 @@
 <!-- URLs. -->
 [Mobile Services のオフライン サポートでの競合の処理]: mobile-services-windows-store-dotnet-handling-conflicts-offline-data.md
 [Mobile Services のオフライン サポートでの競合を処理する]: mobile-services-windows-store-dotnet-handling-conflicts-offline-data.md
-[Get started with data]: mobile-services-android-get-started-data.md
 [Mobile Services の使用]: mobile-services-android-get-started.md
 [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法]: partner-xamarin-mobile-services-how-to-use-client-library.md
 [論理的な削除]: mobile-services-using-soft-delete.md
@@ -173,4 +172,4 @@
 [NuGet Addin for Xamarin]: https://github.com/mrward/monodevelop-nuget-addin
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

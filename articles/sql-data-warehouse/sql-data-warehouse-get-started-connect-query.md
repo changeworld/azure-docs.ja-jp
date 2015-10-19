@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="10/01/2015"
    ms.author="JRJ@BigBangData.co.uk;barbkess"/>
 
 # 作業開始: Azure SQL Data Warehouse への接続
@@ -179,9 +179,9 @@ sqlcmd の詳細については、[sqlcmd のドキュメント](https://msdn.mi
 	クエリを実行するには、緑色の矢印をクリックするか、`CTRL`+`SHIFT`+`F5` のショートカット キーを使用します。
 
 ## 次のステップ ##
-これで接続してクエリを実行し、[サンプル データを読み込んだり][]、[コードを開発したり][]できます。
+これで接続してクエリを実行し、[サンプル データを読み込む][]ことができます。
 
-[サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-load-samples.md
-[コードを開発したり]: ./articles/sql-data-warehouse-overview-develop/
+[サンプル データを読み込む]: ./sql-data-warehouse-get-started-load-samples.md
+[developing code]: ./articles/sql-data-warehouse-overview-develop/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

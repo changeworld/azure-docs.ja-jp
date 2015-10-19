@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/15/2015" 
+	ms.date="10/02/2015" 
 	ms.author="tomfitz"/>
 
 # テンプレートを使用して Redis Cache を作成する
 
-このトピックでは、Azure Redis Cache をデプロイする Azure リソース マネージャーのテンプレートを作成する方法について説明します。キャッシュを既存のストレージ アカウントで使用することで、診断データを保持することができます。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+このトピックでは、Azure Redis Cache をデプロイする Azure リソース マネージャーのテンプレートを作成する方法について説明します。キャッシュを既存のストレージ アカウントで使用することで、診断データを保持することができます。さらに、デプロイメント対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 現時点では、診断設定は、サブスクリプションの同じリージョン内のすべてのキャッシュで共有されます。領域内の 1 つのキャッシュを更新すると、領域内の他のすべてのキャッシュに反映されます。
 
@@ -26,13 +26,15 @@
 
 完全なテンプレートについては、「[Redis Cache のテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)」を参照してください。
 
+>[AZURE.NOTE]新しい [Premium レベル](cache-premium-tier-intro.md)の APM テンプレートは近日公開予定です。最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で `Redis Cache` を検索してください。
+
 ## デプロイ対象
 
 このテンプレートでは、診断データ用に既存のストレージ アカウントを使用する Azure Redis Cache をデプロイします。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
-[![Azure へのデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+[![Azure へのデプロイ](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## パラメーター
 
@@ -117,7 +119,7 @@ Azure Redis Cache を作成します。
         ]
     }
 
-## デプロイを実行するコマンド
+## デプロイメントを実行するコマンド
 
 [AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
@@ -129,4 +131,4 @@ Azure Redis Cache を作成します。
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

@@ -1,25 +1,28 @@
 <properties
-   pageTitle="PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択"
-	description="リソース マネージャーで Azure 仮想マシンを作成する際に、イメージの発行元、プラン、および SKU イメージを決定する方法について説明します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="squillace"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+   pageTitle="VM イメージのナビゲーションと選択 | Microsoft Azure"
+   description="リソース マネージャー デプロイメント モデルで Azure 仮想マシンを作成する際に、イメージの発行元、プラン、および SKU イメージを決定する方法について説明します。"
+   services="virtual-machines"
+   documentationCenter=""
+   authors="squillace"
+   manager="timlt"
+   editor=""
+   tags="azure-resource-manager"
+   />
 
 <tags
    ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="command-line-interface"
-	ms.workload="infrastructure"
-	ms.date="08/25/2015"
-	ms.author="rasquill"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="command-line-interface"
+   ms.workload="infrastructure"
+   ms.date="08/25/2015"
+   ms.author="rasquill"/>
 
 # Windows PowerShell と Azure CLI による Azure Virtual Machine イメージのナビゲーションと選択
 
-> [AZURE.NOTE]このトピックで VM イメージを検索している場合、Mac、Linux、Windows 用の Azure CLI または Windows PowerShell のいずれかの最新のインストール環境で [Azure リソース マネージャー モード](../resource-group-overview.md)を使用しています。Azure CLI を使用している場合、次のように入力してこのモードに入ります`azure config mode arm`。PowerShell を使用している場合、次のように入力します`Switch-AzureMode AzureResourceManager`。更新と構成の詳細については、「[Using Azure CLI with Resource Manager (リソース マネージャーでの Azure CLI の使用)](xplat-cli-azure-resource-manager.md)」と「[Using Azure PowerShell with Azure Resource Manager (Azure リソース マネージャーでの Azure PowerShell の使用)](../powershell-azure-resource-manager.md)」をご覧ください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイメント モデルで仮想マシン イメージを検索する方法について説明します。[クラシック デプロイメント モデル](https://msdn.microsoft.com/library/azure/dn499770.aspx)でイメージを検索することもできます。
+
+この記事では、最新バージョンの Azure CLI または Azure PowerShell を使用して、仮想マシン イメージをナビゲートして選択する方法について説明します。前提条件として、リソース マネージャー モードに変更しておく必要があります。Azure CLI を使用している場合、次のように入力してこのモードに入ります`azure config mode arm`。PowerShell を使用している場合、次のように入力します`Switch-AzureMode AzureResourceManager`。更新と構成の詳細については、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)」と「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 ## よく使用されるイメージの表
 
@@ -134,7 +137,7 @@
     data:    canonical  ubuntuserver  14.04.2-LTS  14.04.201504270  westus    canonical:ubuntuserver:14.04.2-LTS:14.04.201504270
     info:    vm image list command OK
 
-これで、使用するイメージを正確に選択できます。検出した URN 情報を使用して仮想マシンを素早く作成する方法や、その URN 情報のあるテンプレートを使用する方法については、「[Azure リソース マネージャーでの Azure CLI for Mac, Linux, and Windows の使用](xplat-cli-azure-resource-manager.md)」をご覧ください。
+これで、使用するイメージを正確に選択できます。検出した URN 情報を使用して仮想マシンをすばやく作成する方法や、その URN 情報のあるテンプレートを使用する方法については、「[Azure リソース マネージャーでの Azure CLI for Mac, Linux, and Windows の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
 
 ### ビデオ チュートリアル
 
@@ -240,4 +243,4 @@ Azure リソース マネージャーを使用して新しいバーチャル マ
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO2-->

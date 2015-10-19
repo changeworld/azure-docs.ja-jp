@@ -20,7 +20,7 @@
 
 このトピックでは、.NET バックエンド モバイル サービスで非リレーショナル データ ストアを使用する方法を説明します。このチュートリアルでは、既定の Azure SQL Database のデータ ストアではなく Azure テーブル ストレージが使用されるように、Azure Mobile Services のクイック スタート プロジェクトを変更します。
 
-このチュートリアルを受けるには、[Mobile Services の使用]のチュートリアルまたは [Add Mobile Services to an existing app] のチュートリアルを完了している必要があります。Azure ストレージ アカウントも必要になります。
+このチュートリアルを使用するには、チュートリアル「[Mobile Services の使用]」を完了している必要があります。Azure ストレージ アカウントも必要になります。
 
 ##.NET バックエンド モバイル サービスでの Azure テーブル ストレージの構成
 
@@ -38,7 +38,7 @@
 
 4. 管理ポータルで、**[Storage]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
-5. **ストレージ アカウント名**と**アクセス キー**をメモします。
+5. **Storage アカウント名**と**アクセス キー**をメモします。
  
 6. モバイル サービスで [**構成**] タブをクリックして、下にスクロールして [**接続文字列**] を表示します。`StorageConnectionString` という**名前**で、次の形式で表されるストレージ アカウント接続文字列である**値**を含む新しい接続文字列を入力します。
 
@@ -135,9 +135,7 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 
 ここまでで、テーブル ストレージを .NET バックエンドに使用するのがいかに簡単かを説明したので、次に示すその他のバックエンド ストレージ オプションの使用も検討してみてください。
 
-+ [.NET バックエンドによる MongoDB をデータ ストアとして使用するサービスの作成](mobile-services-dotnet-backend-use-non-relational-data-store.md)</br>完了したばかりのチュートリアルと同じように、このトピックでは、Mobile Services に非リレーショナル データ ストアを使用する方法を紹介しています。このチュートリアルでは、データ ストアとして SQL Database ではなく MongoDB が使用されるように Mobile Services クイック スタート プロジェクトを変更します。
- 
-+ [ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)</br>ハイブリッド接続により、モバイル サービスを安全にオンプレミスの資産に接続します。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされている資産には、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。
++ [ハイブリッド接続を使用して Azure Mobile Services からオンプレミスの SQL Server に接続する](mobile-services-dotnet-backend-hybrid-connections-get-started.md)</br>ハイブリッド接続により、モバイル サービスを安全にオンプレミスのアセットに接続します。この方法で、モバイル クライアントが Azure を使用することによってオンプレミスのデータにアクセスできるようにします。サポートされている資産には、Microsoft SQL Server、MySQL、HTTP Web APIs、およびほとんどのカスタム Web サービスなど、静的 TCP ポートで実行されるすべてのリソースが含まれます。
 
 + [Mobile Services を使用した Azure Storage へのイメージのアップロード](mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage.md)</br>TodoList サンプル プロジェクトを拡張して、アプリケーションから Azure Blob ストレージにイメージをアップロードする方法を説明します。
 
@@ -152,10 +150,9 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 
 <!-- URLs. -->
 [Mobile Services の使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
-[Add Mobile Services to an existing app]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md
 [Azure Management Portal]: https://manage.windowsazure.com/
 [What is the Table Service]: ../storage-dotnet-how-to-use-tables.md#what-is
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

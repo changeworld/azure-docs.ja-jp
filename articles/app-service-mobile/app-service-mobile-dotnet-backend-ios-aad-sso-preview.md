@@ -1,5 +1,5 @@
 <properties
-        pageTitle="Azure Active Directory シングル サインオンで iOS アプリのユーザーを認証する"
+        pageTitle="Azure Active Directory サインオンで iOS アプリのユーザーを認証する"
         description="Active Directory 認証ライブラリを使用した iOS アプリケーションへのユーザーのログイン方法について説明します。"
         documentationCenter="Mobile"
         authors="mattchenderson"
@@ -14,7 +14,7 @@ ms.topic="article"
 ms.date="09/14/2015"
 ms.author="mahender" />
 
-# iOS アプリに Azure Active Directory シングル サインオンを追加する
+# iOS アプリに Azure Active Directory サインオンを追加する
 
 [AZURE.INCLUDE [app-service-mobile-selector-aad-sso](../../includes/app-service-mobile-selector-aad-sso.md)]
 
@@ -98,7 +98,7 @@ ADAL を使用してユーザーを認証できるようにするには、Azure 
             }];
         }
 
-4. 上記の `loginAndGetData` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com にする必要があります。この値は、[Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+4. 上記の `loginAndGetData` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com にする必要があります。この値は、[Microsoft Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
 
 5. 上記の `loginAndGetData` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル アプリの**アプリ ID の URI** に置き換えます。[Azure Active Directory でモバイル アプリを構成する方法]に関するトピックに従った場合、アプリ ID の URI は https://contosogateway.azurewebsites.net/login/aad のようになります。
 
@@ -118,9 +118,9 @@ ADAL を使用してユーザーを認証できるようにするには、Azure 
 
 <!-- URLs. -->
 [Azure Active Directory でモバイル アプリを構成する方法]: app-service-mobile-how-to-configure-active-directory-authentication-preview.md
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Microsoft Azure の管理ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
  [Mobile Apps の使用]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
  [Add authentication to your app (アプリケーションに認証を追加する)]: app-service-mobile-dotnet-backend-ios-get-started-users-preview.md
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

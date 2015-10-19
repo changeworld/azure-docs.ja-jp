@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="09/29/2015"
+	ms.date="10/06/2015"
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した初めてのパイプラインの作成
@@ -30,7 +30,7 @@
 ## チュートリアルの概要
 このチュートリアルでは、初めてパイプラインを稼動させるために必要な手順を示します。パイプラインを作成し、必要なすべてのリソースを最初から指定します。
 
-最初から作成せずにすばやく Data Factory のさまざまな機能を調べたい場合は、Azure プレビュー ポータルで提供されているサンプルを使用できます。Azure プレビュー ポータルを使用する使用例に基づくサンプルのデプロイ方法については、「[Azure Data Factory の更新: サンプルの簡略化されたデプロイ](http://azure.microsoft.com/blog/2015/04/24/azure-data-factory-update-simplified-sample-deployment/)」を参照してください。
+最初から作成せずにすばやく Data Factory のさまざまな機能を調べたい場合は、Azure プレビュー ポータルで提供されているサンプルを使用できます。Azure プレビュー ポータルを使用する使用例に基づくサンプルのデプロイ方法については、「[Azure Data Factory の更新: サンプルの簡略化されたデプロイメント](http://azure.microsoft.com/blog/2015/04/24/azure-data-factory-update-simplified-sample-deployment/)」を参照してください。
 
 ## 前提条件
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
@@ -176,4 +176,4 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/15/2015"
+	ms.date="10/05/2015"
 	ms.author="szarkos"/>
 
 # <a id="nonendorsed"> </a>動作保証外のディストリビューションに関する情報 #
@@ -191,4 +191,4 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
 - その後、仮想マシンをシャットダウンし、Azure に VHD をアップロードする必要があります。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

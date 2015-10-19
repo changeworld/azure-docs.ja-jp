@@ -18,7 +18,7 @@
    	ms.author="nitinme"/>
 
 
-#「Provision Hadoop Linux clusters in HDInsight using custom options (カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング」
+#「Provision Hadoop Linux clusters in HDInsight using custom options (カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング)」
 
 この記事では、Azure ポータル、Azure PowerShell、Azure CLI、または HDInsight .NET SDK を使用して、Azure HDInsight での Hadoop Linux クラスターのプロビジョニングをカスタマイズするさまざまな方法について説明します。
 
@@ -57,7 +57,7 @@ HDInsight クラスターでは、Hadoop の実装の詳細を抽象化してい
 
 メタストアには、Hive テーブル、パーティション、スキーマ、列などについての情報が格納されます。この情報は、データが Hadoop 分散ファイル システム (HDFS)、または HDInsight の Azure Blob ストレージのどこに格納されているかを見つけるために、Hive によって使用されます。既定では、Hive は組み込みデータベースを使用してこの情報を格納します。
 
-HDInsight クラスターをプロビジョニングするとき、Hive のメタストアを格納する SQL データベースを指定します。これにより、クラスターを削除するとき、SQL データベースに外付けで格納されているメタデータ情報を保持できます。Azure での SQL データベースの作成方法について詳しくは、「[最初の Azure SQL Database データベースを作成する](sql-database-get-started.md)」をご覧ください。
+HDInsight クラスターをプロビジョニングするとき、Hive のメタストアを格納する SQL データベースを指定します。これにより、クラスターを削除するとき、SQL データベースに外付けで格納されているメタデータ情報を保持できます。Azure での SQL Database の作成方法について詳しくは、「[最初の Azure SQL Database データベースを作成する](sql-database-get-started.md)」をご覧ください。
 
 ### スクリプト アクションを使用したクラスターのカスタマイズ
 
@@ -172,12 +172,12 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 
 	**[選択]** をクリックして、ノードの価格構成を保存します。
 
-9. **[オプションの構成]** をクリックし、クラスターのバージョンを選択して、その他のオプションの設定を構成します。その他のオプションには、**Virtual Network** への参加、Hive と Oozie 用のデータを保持する**外部メタストア** の設定、スクリプト アクションを使用してカスタム コンポーネントをインストールするようにクラスターをカスタマイズすること、クラスターでの追加のストレージ アカウントの使用などがあります。
+9. **[オプションの構成]** をクリックし、クラスターのバージョンを選択して、その他のオプションの設定を構成します。その他のオプションには、**Virtual Network** への参加、Hive と Oozie 用のデータを保持する**外部メタストア**の設定、スクリプト アクションを使用してカスタム コンポーネントをインストールするようにクラスターをカスタマイズすること、クラスターでの追加のストレージ アカウントの使用などがあります。
 
 	* **[HDInsight のバージョン]** ボックスの一覧から、クラスターで使用するバージョンを選択します。詳細については、「[HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。
 
 
-	* **[仮想ネットワーク]**: クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。
+	* **[Virtual Network]**: クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。
 
 		![[仮想ネットワーク] ブレード](./media/hdinsight-hadoop-provision-linux-clusters/HDI.CreateCluster.6.png "仮想ネットワークの詳細の指定")
 
@@ -238,7 +238,7 @@ HDInsight クラスターは、既定のファイル システムとして Azure
 
 Azure CLI は、Azure サービスを管理できる、プラットフォームに依存しないコマンドライン ユーティリティです。Azure リソース管理テンプレートと共に使用し、HDInsight クラスター、関連ストレージ アカウント、その他のサービスをプロビジョニングできます。
 
-Azure リソース管理テンプレートは、__リソース グループ__とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。 このテンプレート基準の手法では、1 つのテンプレートで HDInsight に必要なすべてのリソースを定義でき、グループに変更を適用する__デプロイ__を介して、グループに対する変更をまとめて管理できます。
+Azure リソース管理テンプレートは、__リソース グループ__とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。 このテンプレート基準の手法では、1 つのテンプレートで HDInsight に必要なすべてのリソースを定義でき、グループに変更を適用する__デプロイメント__を介して、グループに対する変更をまとめて管理できます。
 
 次の手順では、Azure CLI とテンプレートを利用して新しい HDInsight クラスターを段階的に作成できます。
 
@@ -301,7 +301,7 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
 ### <a id="powershell"></a>Azure PowerShell の使用
 
-Azure PowerShell は、Azure のワークロードのデプロイと管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、Azure PowerShell を使用して HDInsight クラスターをプロビジョニングする方法について説明します。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」をご覧ください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」をご覧ください。
+Azure PowerShell は、Azure のワークロードのデプロイメントと管理を制御し自動化するために使用できる強力なスクリプティング環境です。このセクションでは、Azure PowerShell を使用して HDInsight クラスターをプロビジョニングする方法について説明します。ワークステーションを構成して HDInsight Windows Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」をご覧ください。HDInsight で Azure PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)」をご覧ください。HDInsight Windows PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn858087.aspx)」をご覧ください。
 
 
 Azure PowerShell を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
@@ -386,7 +386,7 @@ Linux クラスターをプロビジョニングするために設定する必�
 ###<a id="sdk"></a>HDInsight .NET SDK を使用する場合
 HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。Visual Studio コンソール アプリケーションを作成し、クラスターを作成するためのコードを貼り付けるには、次の手順に従います。
 
-**Visual Studio コンソール アプリケーションを作成するには**
+**C# Visual Studio コンソール アプリケーションを作成するには**
 
 1. Visual Studio 2013 または 2015 を開きます。
 2. 次の設定を使用して、新しい Visual Studio プロジェクトを作成します。
@@ -406,6 +406,8 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 6. ソリューション エクスプ ローラーで、**Program.cs** をダブルクリックして開き、次のコードを貼り付け、変数の値を指定します。
 
+		using System;
+		using System.Security;
 		using Microsoft.Azure;
 		using Microsoft.Azure.Common.Authentication;
 		using Microsoft.Azure.Common.Authentication.Factories;
@@ -512,7 +514,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
 
 
-##<a id="nextsteps"></a>次のステップ
+## 次のステップ
 この記事では、HDInsight Hadoop クラスターを Linux でプロビジョニングする方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
 - [Linux での HDInsight の使用](hdinsight-hadoop-linux-information.md): Linux で HDInsight クラスターを操作するとはどういったことかを把握できます。
@@ -571,4 +573,4 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 
   [89e2276a]: /documentation/articles/hdinsight-use-sqoop/ "HDInsight での Sqoop の使用"
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

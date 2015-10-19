@@ -1,21 +1,21 @@
 
 <properties 
-   pageTitle="Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート"
-	description="Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート"
-	services="app-service\web"
-	documentationCenter=".net"
-	authors="Juliako"
-	manager="dwrede"
-	editor=""/>
+   pageTitle="Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート" 
+   description="Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート" 
+   services="app-service\web" 
+   documentationCenter=".net" 
+   authors="Juliako" 
+   manager="dwrede" 
+   editor=""/>
 
 <tags
    ms.service="app-service"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="integration"
-	ms.date="08/26/2015"
-	ms.author="juliako"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="integration" 
+   ms.date="08/26/2015"
+   ms.author="juliako"/>
 
 
 # Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート
@@ -71,7 +71,7 @@ Azure SDK 2.7 に含まれているサインインの機能強化は、Visual St
 
 ####既知の問題
 
-Web アプリ デプロイ スロットのノードがサーバー エクスプローラーのスロット ノードに表示されません。また、Web アプリ デプロイ スロットの子ノードがクラウド エクスプローラーに読み込まれません。この問題は解決され、次の SDK リリースに向けて準備されています。
+Web アプリ デプロイメント スロットのノードがサーバー エクスプローラーのスロット ノードに表示されません。また、Web アプリ デプロイ スロットの子ノードがクラウド エクスプローラーに読み込まれません。この問題は解決され、次の SDK リリースに向けて準備されています。
 
 
 ###<a id="cloud_explorer"></a>Cloud Explorer for Visual Studio 2015
@@ -92,12 +92,12 @@ Azure SDK 2.7 には、Azure リソースを表示し、そのプロパティを
  
 ###Azure リソース マネージャー ツール 
 
-Azure リソース マネージャー ツールは、ロール ベースの Access Control (RBAC) と新しいサブスクリプションの種類を使用するように更新されました。これらの変更には、従来のストレージに加えて、新しいストレージ アカウントを使用してデプロイ中にアーティファクトを格納する機能が含まれています。
+Azure リソース マネージャー ツールは、ロール ベースの Access Control (RBAC) と新しいサブスクリプションの種類を使用するように更新されました。これらの変更には、従来のストレージに加えて、新しいストレージ アカウントを使用してデプロイメント中にアーティファクトを格納する機能が含まれています。
 
 SDK 2.7 を使用して以前のバージョンの SDK から Azure リソース グループのプロジェクトを使用している場合は、従来のストレージの代わりに新しいストレージ アカウントを使用してデプロイするために、新しいデプロイメント スクリプトが必要です。プロジェクトに変更を加えて新しいスクリプトを追加する前に、プロンプトが表示されます。古いスクリプトは名前が変更されます。新しいスクリプトに手動で変更を加える必要があります。
  
  
-###ストレージ エクスプローラー ツール 
+###Storage エクスプローラー ツール 
 
 - 追加の BLOB を表示するためのサポート。詳細については、[このブログの投稿](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/04/13/introducing-azure-storage-append-blob.aspx)をご覧ください。 
 - サーバー エクスプローラーから Premium Storage アカウントを表示するためのサポート。サーバー エクスプローラーには、Premium Storage アカウントをサポートする唯一の種類である、Premium Storage アカウントのページ BLOB のみが表示されます。
@@ -150,6 +150,7 @@ HDInsight ツールの更新の詳細については、[このブログ](http://
 
 Visual Studio Community 2013 用のAzure SDK 2.6 または 2.7.1 を英語版以外の OS にインストールすると、Visual Studio の英語のリソースと英語以外のリソースが不一致である可能性があるという警告が表示されます。この警告は無視しても問題はありません。これは、コンピューターに Visual Studio Community 2013 がインストールされているないときに、英語版以外の OS に SDK をインストールする場合にのみ発生します。警告は、言語パックの RTM リソースが Visual Studio に適用された後、Update 4 が適用される前に表示されます。警告を消去すれば、言語パックの処理が続行され、言語パックの中の Update 4 のバージョンの適用を完了できます。
 
+LightSwitch プロジェクトはこのリリースと互換性がありません。この問題は、次の SDK のリリースで解決されます。
 
 ##関連トピック
 [Azure SDK 2.7.1 の発表に関する投稿](http://go.microsoft.com/fwlink/?LinkId=623850)
@@ -158,4 +159,4 @@ Visual Studio Community 2013 用のAzure SDK 2.6 または 2.7.1 を英語版以
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO2-->

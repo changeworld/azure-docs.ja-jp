@@ -35,7 +35,7 @@
 このチュートリアルには、次のものが必要です。
 
 * Windows 8.1 で実行されている Visual Studio 2013。
-* 「[モバイル サービスの使用]」または「[データの使用]」チュートリアルを完了している。
+* チュートリアル「[Mobile Services の使用]」を完了していること。
 * Microsoft Azure Mobile Services SDK の NuGet パッケージ
 * Active Directory 認証ライブラリの NuGet パッケージ
 
@@ -85,7 +85,7 @@
 
 ###ネイティブ アプリケーション登録の作成
 
-1. **Azure の管理ポータル**の [[Active Directory]] に移動し、目的のディレクトリをクリックします。
+1. **Microsoft Azure の管理ポータル**の [[Active Directory]] に移動し、目的のディレクトリをクリックします。
 
     ![][7]
 
@@ -162,7 +162,7 @@
             }
         }
 
-6. 前の `AuthenticateAsync` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+6. 前の `AuthenticateAsync` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Microsoft Azure 管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
 
 7. 前の `AuthenticateAsync` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル サービスの **App ID URI** に置き換えます。トピック「[Azure Active Directory 認証用の登録]」に従った場合は、アプリケーション ID URI が https://todolist.azure-mobile.net/login/aad と同様になる必要があります。
 
@@ -211,10 +211,10 @@
 
 <!-- URLs. -->
 [Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
-[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Microsoft Azure 管理ポータル]: https://manage.windowsazure.com/
 [[Active Directory]]: https://manage.windowsazure.com/
-[データの使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md
+[Mobile Services の使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [モバイル サービスの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [Windows デベロッパー センター ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

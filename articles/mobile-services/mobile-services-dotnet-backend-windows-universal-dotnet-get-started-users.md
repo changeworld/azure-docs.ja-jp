@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/01/2015" 
+	ms.date="10/05/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services アプリへの認証の追加 
@@ -26,7 +26,7 @@
 
 このチュートリアルは、Mobile Services のクイック スタートに基づいています。チュートリアルの [Mobile Services の使用]または[既存のアプリケーションへの Mobile Services の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md)のいずれかを完了しておくことも必要です。
 
->[AZURE.NOTE]このチュートリアルでは、Windows ストア アプリおよび Windows Phone ストア 8.1 アプリで、ユーザー主導の認証によってユーザー認証する方法について説明します。Windows Phone 8.0 アプリまたは Windows Phone Silverlight 8.1 アプリの場合、このバージョンの [Mobile Services アプリへの認証の追加](mobile-services-dotnet-backend-windows-phone-get-started-users.md)を参照してください。クライアント主導の認証の詳細については、[Logging in with Google, Microsoft and Facebook SDKs to Azure Mobile Services (Google、、Microsoft、Facebook の SDK を使用して Azure Mobile Services にログインする)](http://azure.microsoft.com/blog/2014/10/27/logging-in-with-google-microsoft-and-facebook-sdks-to-azure-mobile-services/) を参照してください。
+>[AZURE.NOTE]このチュートリアルでは、Windows ストア アプリおよび Windows Phone ストア 8.1 アプリで、ユーザー主導の認証によってユーザー認証する方法について説明します。クライアント主導の認証の詳細については、[Logging in with Google, Microsoft and Facebook SDKs to Azure Mobile Services (Google、、Microsoft、Facebook の SDK を使用して Azure Mobile Services にログインする)](http://azure.microsoft.com/blog/2014/10/27/logging-in-with-google-microsoft-and-facebook-sdks-to-azure-mobile-services/) を参照してください。
 
 ##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
@@ -84,7 +84,6 @@
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Single sign-on for Windows Store apps by using Live Connect]: mobile-services-windows-store-dotnet-single-sign-on.md
 [Mobile Services の使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [Get started with data]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-data.md
 [Get started with authentication]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md
@@ -97,4 +96,4 @@
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

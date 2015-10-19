@@ -44,8 +44,6 @@
 
 チュートリアル「[アプリへの認証の追加]」では、手順「[アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]」を完了したとき、統合アプリケーションに対する登録を作成しました。このセクションでは、その統合アプリケーションのクライアント ID でディレクトリ情報を読み取るときに使用するキーを生成します。
 
-チュートリアル「[Azure Active Directory Graph 情報へのアクセス]」を完了している場合は、この手順を既に完了しているため、このセクションを省略できます。
-
 [AZURE.INCLUDE [mobile-services-generate-aad-app-registration-access-key](../../includes/mobile-services-generate-aad-app-registration-access-key.md)]
 
 
@@ -385,13 +383,11 @@
 [アプリへの認証の追加]: mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users.md
 [How to Register with the Azure Active Directory]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure Management Portal]: https://manage.windowsazure.com/
-[Azure の管理ポータル]: https://manage.windowsazure.com/
 [Directory Sync Scenarios]: http://msdn.microsoft.com/library/azure/jj573653.aspx
 [Store Server Scripts]: mobile-services-store-scripts-source-control.md
 [アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
 [Graph REST API]: http://msdn.microsoft.com/library/azure/hh974478.aspx
 [IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
-[Azure Active Directory Graph 情報へのアクセス]: mobile-services-dotnet-backend-windows-store-dotnet-aad-graph-info.md
 [Azure AD Authentication Library for .NET]: https://msdn.microsoft.com/library/azure/jj573266.aspx
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO2-->

@@ -13,15 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="07/01/2015"
+   ms.date="10/01/2015"
    ms.author="rajram"/>
 
 # BizTalk Flat File Encoder
 
-BizTalk Flat File Encode Decode コネクタは、アプリでのフラット ファイル データ (excel、csv など) と XML データの相互運用を支援します。フラット ファイル インスタンスを XML に、またはその逆方向に変換できます。
+BizTalk Flat File Encodeｒ コネクタを使用して、フラット ファイル データ (excel、csv など) と XML データの相互運用を行います。フラット ファイル インスタンスを XML に、またはその逆方向に変換できます。
 
 ##BizTalk Flat File Encoder の使用
-1. BizTalk Flat File Encoder を使用するには、まず、BizTalk Flat File Encoder API アプリのインスタンスを作成する必要があります。これは、ロジック アプリを作成するときにインラインで、または Azure Marketplace から BizTalk Flat File Encoder API アプリを選択することによって、行うことができます。
+BizTalk Flat File Encoder を使用するには、まず、BizTalk Flat File Encoder API アプリのインスタンスを作成する必要があります。これは、ロジック アプリを作成するときにインラインで、または Azure Marketplace から BizTalk Flat File Encoder API アプリを選択することによって、行うことができます。
 
 ###BizTalk Flat File Encoder の構成
 BizTalk Flat File Encoder は、構成の一部としてスキーマを受け取ります。ユーザーは、Azure ポータルから直接 API アプリを起動して、またはデザイナー画面で API アプリをダブルクリックして、API アプリ構成ブレードを起動できます。
@@ -74,4 +74,4 @@ API アプリ ブレードでは、*[スキーマ]* 部分をクリックして�
 [6]: ./media/app-service-logic-flatfile-encoder/FlatFileEncoder.XmlToFlatFile.PNG
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

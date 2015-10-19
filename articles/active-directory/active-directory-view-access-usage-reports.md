@@ -64,7 +64,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 ## レポートのエディション
 
-|	レポート |	無料 |	基本 |	Premium |
+|	レポート |	無料 |	基本 |	プレミアム |
 |	------												|	----	|	-----	|	--------	|
 |	**異常アクティビティ レポート**
 |	不明なソースからのサインイン |	✓ |	✓ |	✓ |
@@ -159,7 +159,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | :-------------     | :-------        |
 | ディレクトリ内のすべての SaaS アプリケーションについて使用状況を表示するには、このレポートを使用します。このレポートは、アクセス パネルでユーザーがアプリケーションをクリックした回数の合計に基づきます。 | [ディレクトリ] > [レポート] タブ |
 
-![アプリケーションの使用状況の概要](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
+![Application usage summary](./media/active-directory-view-access-usage-reports/applicationUsage.PNG)
 
 
 ### アプリケーションの使用状況: 詳細
@@ -222,7 +222,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | ディレクトリに追加されているカスタム ビジネス アプリケーションへのサインイン | なし (近日対応予定) |
 | ディレクトリに追加されている Azure AD アプリケーション プロキシ アプリへのサインイン | なし (近日対応予定) |
 
-> 注: このレポートでは、ノイズの量を減らすために、[Microsoft Online Services Sign-In Assistant](http://community.office365.com/ja-JP/w/sso/534.aspx) によるサインインは表示されません。
+> 注: このレポートでは、ノイズの量を減らすために、[Microsoft Online Services サインイン アシスタント](http://community.office365.com/ja-JP/w/sso/534.aspx)によるサインインは表示されません。
 
 
 
@@ -243,7 +243,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 ## レポートの閲覧またはダウンロード:
 
-1. Azure 管理ポータルで、**[Active Directory]** をクリックし、組織のディレクトリの名前をクリックし、**[レポート]** をクリックします。
+1. Microsoft Azure 管理ポータルで、**[Active Directory]** をクリックし、組織のディレクトリの名前をクリックし、**[レポート]** をクリックします。
 2. [レポート] ページで、閲覧またはダウンロードするレポート をクリックします。
 
     > [AZURE.NOTE]Azure Active Directory のレポート機能を初めて使用した場合は、内容を選択するためのメッセージが表示されます。同意する場合は、チェック マーク アイコンをクリックして続行します。
@@ -256,6 +256,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 	- Microsoft Azure 管理ポータルに最大 1,000 件のイベントが表示されます。
 5. 必要に応じて **[ダウンロード]** をクリックして、オフラインでの閲覧またはアーカイブ目的のために、コンマ区切り値 (CSV) 形式で圧縮されたファイルのレポートをダウンロードします。
 	- ダウンロードしたファイルには、最大 75,000 件のイベントが含まれます。
+	- 詳細については、「[Azure AD Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
 
 ## イベントを無視する
 
@@ -270,4 +271,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

@@ -37,7 +37,7 @@
 ## 前提条件
 チュートリアルを完了するには次のものが必要です。
 
-- このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
+- このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
 - Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 - マルチ ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
 
@@ -190,12 +190,19 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 - ライブ イベントのアーカイブをオンデマンド ストリームとして提供し続けるのでない限り、ストリーミング エンドポイントを停止できます。チャネルが停止状態の場合は、いかなる課金も発生しません。
 
 
-##Media Services のラーニング パス
+##次のステップ
+
+###Media Services のラーニング パス
 
 AMS のラーニング パスについては、以下を参照してください。
 
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+### 他の情報をお探しですか。
+
+このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
+
 
 ## その他のリソース
 - [Microsoft Azure 管理ポータルを使用したライブ ストリーミングの開始](http://azure.microsoft.com/blog/getting-started-with-live-streaming-using-the-azure-management-portal/)
@@ -205,4 +212,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 <!-- Images -->
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO2-->

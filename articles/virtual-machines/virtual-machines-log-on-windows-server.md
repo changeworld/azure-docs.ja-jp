@@ -1,6 +1,6 @@
 <properties
 	pageTitle="VM へのログオン | Microsoft Azure"
-	description="ポータルを使用して、クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにログオンします。"
+	description="ポータルを使用して、クラシック デプロイメント モデルを使用して作成された Windows 仮想マシンにログオンします。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,31 +14,38 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/15/2015"
+	ms.date="10/05/2015"
 	ms.author="cynthn"/>
 
 
-# クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにログオンする
+# Azure ポータルを使用して Windows 仮想マシンにログオンする
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルでのリソースの管理について説明します。
 
-Azure プレビュー ポータルの **[接続]** ボタンを使用して、リモート デスクトップ セッションを開始します。まず仮想マシンに接続してからログインします。
+
+Azure ポータルの **[接続]** ボタンを使用して、リモート デスクトップ セッションを開始し、Windows VM にログオンします。
 
 Linux VM に接続する場合は、 「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)」を参照してください。
 
-## 仮想マシンへの接続
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルでのリソースの管理について説明します。
 
-以下には、このチュートリアルのステップが記載されています。
+## ビデオ チュートリアル
+
+以下は、このチュートリアルのステップのビデオです。Azure で Windows VM に接続するために使用する、エンドポイント、パブリック ポート、およびプライベート ポートについても説明します。
 
 [AZURE.VIDEO logging-on-to-vm-running-windows-server-on-azure]
 
-1. まだサインインしていない場合は、[Azure ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。
+## 仮想マシンへの接続
 
-3. コマンド バーで、**[接続]** をクリックします。
+1. [Azure ポータル](http://manage.windowsazure.com)にサインインします。
+
+2. **[Virtual Machines]** をクリックし、仮想マシンを選択します。
+
+3. ページの下部にあるコマンド バーで、**[接続]** をクリックします。
 
 	![仮想マシンへのログオン](./media/virtual-machines-log-on-windows-server/connectwindows.png)
+	
+> [AZURE.TIP][接続] ボタンを使用できない場合は、この記事の最後にあるトラブルシューティングのヒントを参照してください。
 
 ## 仮想マシンへのログオン
 
@@ -46,11 +53,11 @@ Linux VM に接続する場合は、 「[Linux を実行する仮想マシンに
 
 ## トラブルシューティングのヒント
 
-ポータルですぐに試すことができるいくつかの操作を次に示します。
+試すことができるいくつかの操作を次に示します。
 
--	リモート デスクトップ接続に問題がある場合は、構成をリセットしてください。仮想マシンのダッシュボードで、**[概要]** の **[リモート構成のリセット]** をクリックします。
+-	**[接続]** ボタンが非アクティブである場合、またはリモート デスクトップ接続に関するその他の問題が発生している場合は、構成をリセットします。仮想マシンのダッシュボードで、**[概要]** の **[リモート構成のリセット]** をクリックします。
 -	パスワードに問題がある場合は、パスワードをリセットしてください。仮想マシンのダッシュボードで、**[概要]** の **[パスワードのリセット]** をクリックします。
 
 これらのトピックで解決できない場合、または必要な情報が掲載されていない場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」を参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

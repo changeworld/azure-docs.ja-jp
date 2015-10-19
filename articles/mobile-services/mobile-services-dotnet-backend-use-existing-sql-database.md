@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article" 
-	ms.date="07/01/2015"
+	ms.date="08/01/2015"
 	ms.author="glenga"/>
 
 
@@ -613,6 +613,6 @@ Mobile Services .NET バックエンドを使用すると、モバイル サー�
 
     }
 
-次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。詳細については、[既存のアプケーションへの Mobile Services の追加](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md#update-the-app-to-use-the-mobile-service)を参照してください。
+次の手順では、サービスにアクセスするクライアント アプリケーションを作成できます。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

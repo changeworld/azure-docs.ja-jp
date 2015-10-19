@@ -21,6 +21,9 @@
 # Mac、Linux、Windows 用 Azure CLI で VM タスクに使用するリソース マネージャーとサービス管理の同等のコマンド
 この記事では、Azure サービス管理と Azure リソース マネージャーで Azure VM を作成および管理するための Microsoft Azure コマンド ライン インターフェイス (Azure CLI) の同等のコマンドを紹介します。この記事は、スクリプトをコマンド モード間で移行するための簡易ガイドとして使用してください。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーとクラシック (すなわち、サービス管理) デプロイメント モデルを両方とも使用して作成されるリソースについて説明します。
+
+
 * まだ Azure CLI をインストールしてサブスクリプションに接続していない場合は、[Azure CLI のインストール](../xplat-cli-install.md)に関するページと、[Azure CLI から Azure サブスクリプションへの接続](../xplat-cli-connect.md)に関するページをご覧ください。リソース マネージャー モードのコマンドを使用する場合は、必ず所定のログイン方法を使用して接続してください。
 
 * Azure CLI でリソース マネージャー モードを開始する方法とコマンド モードの切り替え方法については、[リソース マネージャーでの Azure コマンド ライン インターフェイスの使用](xplat-cli-azure-resource-manager.md)に関するページを参照してください。既定では、CLI はサービス管理モードで起動します。リソース マネージャー モードに変更するには、`azure config mode arm` を実行します。サービス管理モードに戻るには、`azure config mode asm` を実行します。
@@ -67,4 +70,4 @@ VM リソースの使用量の取得 | 使用できません。 | `azure vm list
 * Azure CLI を使用してリソース マネージャーのリソースを操作する方法の詳細については、[リソース マネージャーでの Azure コマンド ライン インターフェイスの使用](xplat-cli-azure-resource-manager.md)に関するページと、[Azure コマンド ライン インターフェイスによるロールベースの Access Control の管理](../role-based-access-control-xplat-cli-install.md)に関するページを参照してください。
 * CLI コマンドのその他の例については、[Azure サービス管理での Azure コマンド ライン インターフェイスの使用](../virtual-machines-command-line-tools.md)に関するページと、[Azure リソース マネージャーでの Azure CLI の使用](azure-cli-arm-commands.md)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

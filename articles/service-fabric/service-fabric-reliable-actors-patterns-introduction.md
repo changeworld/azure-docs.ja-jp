@@ -3,7 +3,7 @@
    description="Service Fabric アクターで問題なく動作する設計パターン"
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="vturecek"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="08/11/2015"
-   ms.author="claudioc"/>
+   ms.author="vturecek"/>
 
 # 高信頼アクターの設計パターンの概要
 Service Fabric の高信頼アクター プログラミング モデルは、クラウド スケールで現実の問題を解決するためにアクター モデルに基づいて構築されたプラットフォームです。Azure Service Fabric は、開発と管理が容易なクラウドおよびオンプレミスの両方の信頼性の高いスケーラブルなアプリケーションを構築するためのプラットフォームです。この記事は、実際の問題に関する実用的な説明を意図しています。さまざまなパターンを通読後は、Service Fabric アクター モデルを使用して、"エンタープライズ" または "クラウド" ソリューションを構築する方法を理解できるはずです。
@@ -70,4 +70,4 @@ Azure Fabric アクターの主なメリットは、1) エキスパート プロ
 
 * *明示的な非同期性。* Azure Fabric アクターのプログラミング モデルにより、分散アプリケーションの非同期的性質が明確になり、プログラマーが非ブロッキング非同期コードを作成する指針となります。これにより、マルチスレッドを明示的に使わずに、高い分散並列性と全体的スループットが実現されます。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

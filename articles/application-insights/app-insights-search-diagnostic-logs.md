@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="keboyd"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/02/2015" 
+	ms.date="10/07/2015" 
 	ms.author="awills"/>
  
 # Application Insights での ASP.NET のログ、例外、カスタム診断
 
 [Application Insights][start] の強力な[診断検索][diagnostic]ツールを使用すれば、Application Insights SDK によってアプリケーションから送信されたテレメトリを調査してドリルダウンすることができます。ユーザー ページ ビューなどの多数のイベントは、SDK によって自動的に送信されます。
 
-カスタム イベント、例外レポート、トレースを送信するコードの記述もできます。さらに、log4J、log4net、NLog、System.Diagnostics.Trace などのログ記録フレームワークを既に使用している場合は、それらのログもキャプチャして検索に含めることができます。このようにすると、ユーザーの操作、例外、その他のイベントをログ トレースと簡単に関連付けられるようになります。
+You can also write code to send custom events, exception reports, and traces.And if you already use a logging framework such as log4J, log4net, NLog, or System.Diagnostics.Trace, you can capture those logs and include them in the search.このようにすると、ユーザーの操作、例外、その他のイベントをログ トレースと簡単に関連付けられるようになります。
 
 ## <a name="send"></a>カスタム テレメトリを作成する前に
 
@@ -41,7 +41,7 @@
 
 カスタム イベントには名前があり、プロパティを持つこともできるため、数値の測定値と共にフィルター処理をすることができます。
 
-クライアント側の JavaScript
+JavaScript at client
 
     appInsights.trackEvent("WinGame",
          // String properties:
@@ -50,7 +50,7 @@
          {Score: currentGame.score, Opponents: currentGame.opponentCount}
          );
 
-サーバー側の C#
+C# at server
 
     // Set up some properties:
     var properties = new Dictionary <string, string> 
@@ -97,7 +97,7 @@
 
 ページ ビュー テレメトリは、[Web ページ内に挿入した JavaScript のスニペット][usage]に含まれる trackPageView() 呼び出しによって送信されます。その主な目的は、概要ページに表示されるページ ビューの数に加えることです。
 
-通常、この呼び出しは HTML ページごとに 1 回ですが、たとえば、シングル ページ アプリでユーザーが追加データを取得した場合に新しいページとして記録する必要があるときなどには、さらに呼び出しを埋め込むことができます。
+Usually it is called once in each HTML page, but you can insert more calls - for example, if you have a single-page app and you want to log a new page whenever the user gets more data.
 
     appInsights.trackPageView(pageSegmentName, "http://fabrikam.com/page.htm"); 
 
@@ -128,7 +128,7 @@ log4Net、NLog、System.Diagnostics.Trace といった、ログ記録フレー�
     ![適切なパッケージのプレリリース バージョンを入手する](./media/app-insights-search-diagnostic-logs/appinsights-36nuget.png)
 
 4. 次のいずれかの適切なパッケージを選択します。
-  + Microsoft.ApplicationInsights.TraceListener (System.Diagnostics.Trace 呼び出しをキャプチャするため)
+  + Microsoft.ApplicationInsights.TraceListener (to capture System.Diagnostics.Trace calls)
   + Microsoft.ApplicationInsights.NLogTarget
   + Microsoft.ApplicationInsights.Log4NetAppender
 
@@ -140,11 +140,11 @@ System.Diagnostics.Trace を使用する場合、通常の呼び出しは次の�
 
     System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 
-log4net や NLog を使用する場合
+If you prefer log4net or NLog:
 
     logger.Warn("Slow response - database01");
 
-デバッグ モードでアプリを実行するか、アプリをデプロイします。
+Run your app in debug mode, or deploy it.
 
 トレース フィルターを選択すると、診断検索にメッセージが表示されます。
 
@@ -206,7 +206,7 @@ VB
       telemetry.TrackException(ex, properties, measurements)
     End Try
 
-プロパティと測定値のパラメーターは省略可能ですが、フィルター処理と、特別な情報を追加するのに便利です。たとえば、複数のゲームを実行できるアプリケーションを使用している場合、1 つのゲームに関連する例外レポートをすべて検索できます。必要な数だけ項目を各辞書に追加できます。
+The properties and measurements parameters are optional, but are useful for filtering and adding extra information.For example, if you have an app that can run several games, you could find all the exception reports related to a particular game.必要な数だけ項目を各辞書に追加できます。
 
 #### 例外の表示
 
@@ -225,15 +225,15 @@ VB
 
 Application Insights は可能な場合、[Status Monitor][usage] と [Application Insights SDK][redfield] のどちらでインストルメントされたかにかかわらず、デバイス、[Web ブラウザー][greenbrown]、Web サーバーから送信された、ハンドルされていない例外をレポートします。
 
-ただし、.NET フレームワークが例外をキャッチする場合もあるため、必ずレポートされるというわけではありません。したがって、すべての例外を確実に表示するためには、ちょっとした例外ハンドラーを作成する必要があります。最良の対処方法は、テクノロジによって異なります。詳細については、[ASP.NET の例外テレメトリ][exceptions]に関するページをご覧ください。
+ただし、.NET フレームワークが例外をキャッチする場合もあるため、必ずレポートされるというわけではありません。To make sure you see all exceptions, you therefore have to write a small exception handler.最良の対処方法は、テクノロジによって異なります。詳細については、[ASP.NET の例外テレメトリ][exceptions]に関するページをご覧ください。
 
 ### ビルドとの関連付け
 
 診断ログを参照するとき、ソース コードは、現在のコードがデプロイされた後に変更されている可能性があります。
 
-そのため、例外やトレースごとに、現行バージョンの URL などのビルド情報をプロパティに入れるようにすると便利です。
+It's therefore useful to put build information, such as the URL of the current version, into a property along with each exception or trace.
 
-すべての例外呼び出しにプロパティを別途追加するのではなく、既定のコンテキストで情報を設定できます。
+Instead of adding the property separately to every exception call, you can set the information in the default context.
 
     // Telemetry initializer class
     public class MyTelemetryInitializer : IContextInitializer
@@ -290,9 +290,9 @@ Application Insights をインストールしないでログ アダプターの 
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-get-started.md
-[track]: app-insights-custom-events-metrics-api.md
+[track]: app-insights-api-custom-events-metrics.md
 [usage]: app-insights-web-track-usage.md
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

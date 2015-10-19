@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/14/2015" 
+	ms.date="10/06/2015" 
 	ms.author="glenga"/>
 
 # ユニバーサル Windows 8.1 アプリへの認証の追加
@@ -22,11 +22,9 @@
 
 このトピックでは、ユニバーサル Windows 8.1 アプリから Azure モバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
-このチュートリアルは、Mobile Services のクイック スタートに基づいています。チュートリアルの「[Mobile Services を使い始める]」または「[既存のアプリに Mobile Services を追加する](mobile-services-javascript-backend-windows-universal-dotnet-get-started-data.md)」のいずれかを完了しておくことも必要です。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
->[AZURE.NOTE]このチュートリアルでは、Windows ストア アプリおよび Windows Phone ストア 8.1 アプリでユーザーを認証する方法について説明します。Windows Phone 8.0 アプリまたは Windows Phone Silverlight 8.1 アプリの場合、このバージョンの「[モバイル サービスでの認証の使用](mobile-services-windows-phone-get-started-users.md)」を参照してください。
-
->このチュートリアルでは、さまざまな ID プロバイダーを使用した、サービスによって管理される認証フローについて説明します。この方法は構成が容易で、複数のプロバイダーをサポートしています。Windows Phone アプリで Live SDK を使用する、クライアントによって管理される認証フローを使用する場合は、トピック「[Microsoft アカウントを使用して、クライアントによって管理される認証で Windows ストア アプリを認証する](mobile-services-windows-store-dotnet-single-sign-on.md)」を参照してください。
+>[AZURE.NOTE]このチュートリアルでは、Windows ストア アプリおよび Windows Phone Store 8.1 アプリでユーザーを認証する方法について説明します。Windows Phone 8.0 アプリまたは Windows Phone Silverlight 8.1 アプリの場合、このバージョンの [Mobile Services アプリへの認証の追加](mobile-services-windows-phone-get-started-users.md)を参照してください。
 
 ##<a name="register"></a> アプリケーションを認証に登録し、Mobile Services を構成する
 
@@ -72,16 +70,14 @@
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[Mobile Services を使い始める]: mobile-services-javascript-backend-windows-store-dotnet-get-started.md
-[Get started with data]: ../mobile-services-javascript-backend-windows-store-dotnet-get-started-data.md
+[モバイル サービスの使用]: mobile-services-javascript-backend-windows-store-dotnet-get-started.md
 [Get started with authentication]: ../mobile-services-javascript-backend-windows-store-dotnet-get-started-users.md
 [Get started with push notifications]: ../mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md
 [Authorize users with scripts]: ../mobile-services-windows-store-dotnet-authorize-users-in-scripts.md
-[JavaScript and HTML]: mobile-services-windows-store-javascript-get-started-users.md
 
 [Azure Management Portal]: https://manage.windowsazure.com/
 [Mobile Servicesでの .NET の使用方法に関する概念リファレンス]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

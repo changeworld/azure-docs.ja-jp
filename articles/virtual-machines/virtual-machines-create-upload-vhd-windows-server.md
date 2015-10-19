@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Powershell を使用した Windows Server VHD の作成と Azure へのアップロード"
-	description="従来のデプロイ モデルと Azure Powershell を使用して Windows Server ベースの仮想ハード ディスク (VHD) を作成、アップロードする方法を説明します。"
+	pageTitle="Powershell を使用した Windows Server VHD の作成とアップロード | Microsoft Azure"
+	description="従来のデプロイメント モデルと Azure Powershell を使用して Windows Server ベースの仮想ハード ディスク (VHD) を作成、アップロードする方法を説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,11 +17,15 @@
 	ms.date="09/10/2015"
 	ms.author="cynthn"/>
 
-# Windows Server VHD の作成と Azure へのアップロード#
+# Windows Server VHD の作成と Azure へのアップロード
 
-この記事では、イメージを使用してそのイメージを基にした仮想マシンを作成するための、オペレーティング システムの仮想ハード ディスク (VHD) をアップロードする方法について説明します。ディスクの詳細については、「[Virtual Machines 用のディスクと VHD について](virtual-machines-disks-vhds.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
 
-## 前提条件##
+この記事では、イメージを使用してそのイメージを基にした仮想マシンを作成するための、オペレーティング システムの仮想ハード ディスク (VHD) をアップロードする方法について説明します。Microsoft Azure でのディスクと VHD の詳細については、「[Virtual Machines 用のディスクと VHD について](virtual-machines-disks-vhds.md)」を参照してください。
+
+
+
+## 前提条件
 
 この記事では、以下のことを前提としています。
 
@@ -29,11 +33,11 @@
 
 2. **Microsoft Azure PowerShell** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Microsoft Azure のダウンロード ページ](http://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルは[こちら](../powershell-install-configure.md)で入手できます。[Add-AzureVHD](http://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを使用して VHD をアップロードします。
 
-3. **.vhd ファイルに格納され、仮想マシンに接続されている、される Windows オペレーティング システム** - .vhd ファイルを作成するツールはいくつかあります。たとえば、Hyper-V を使用して仮想マシンを作成し、オペレーティング システムにインストールすることができます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。オペレーティング システムの詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](http://go.microsoft.com/fwlink/p/?LinkId=393550)」を参照してください。
+3. **.vhd ファイルに格納され、仮想マシンに接続されている Windows オペレーティング システム** - .vhd ファイルを作成するツールはいくつかあります。たとえば、Hyper-V を使用して仮想マシンを作成し、オペレーティング システムにインストールすることができます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。オペレーティング システムの詳細については、「[Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](http://go.microsoft.com/fwlink/p/?LinkId=393550)」を参照してください。
 
 > [AZURE.IMPORTANT]VHDX 形式は、Microsoft Azure ではサポートされていません。Hyper-V マネージャーまたは [Convert-VHD コマンドレット](http://technet.microsoft.com/library/hh848454.aspx)を使用して、ディスクを VHD 形式に変換できます。詳細については、この[ブログの投稿](http://blogs.msdn.com/b/virtual_pc_guy/archive/2012/10/03/using-powershell-to-convert-a-vhd-to-a-vhdx.aspx)を参照してください。
 
-## 手順 1: VHD を準備する ##
+## 手順 1: VHD を準備する 
 
 VHD を Azure にアップロードする前に、Sysprep ツールを使用して一般化する必要があります。一般化によって、VHD をイメージとして使用できるように準備します。Sysprep の詳細については、「[Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
@@ -55,7 +59,7 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 6.  **[OK]** をクリックします。
 
-## 手順 2: Azure ストレージ アカウントを作成する、またはアカウントの情報を取得する##
+## 手順 2: Azure ストレージ アカウントを作成する、またはアカウントの情報を取得する
 
 .vhd ファイルをアップロードする場所を用意するために、Azure のストレージ アカウントが必要です。この手順では、アカウントを作成する方法と、既存のアカウントから必要な情報を取得する方法について説明します。
 
@@ -73,11 +77,11 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
  - **[URL]** で、ストレージ アカウントの URL で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、サブスクリプションの BLOB、キュー、テーブル リソースへのアクセスに使用する URL のホスト名になります。
  - ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。アフィニティ グループを使用すると、クラウド サービスとストレージを同じデータセンターに配置できます。
- - ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。詳細については、「[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)」を参照してください。
+ - ストレージ アカウントの **geo レプリケーション**を使用するかどうかを決定します。geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーできます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。詳細については、「[ストレージ アカウントの作成、管理、削除](../storage-create-storage-account/#replication-options)」を参照してください。
 
       ![ストレージ アカウントの詳細の入力](./media/virtual-machines-create-upload-vhd-windows-server/Storage-create-account.png)
 
-5. **[ストレージ アカウントの作成]** をクリックします。作成したアカウントが **[Storage]** に表示されます。
+5. **[ストレージ アカウントの作成]** をクリックします。作成したアカウントが **[ストレージ]** に表示されます。
 
 	![ストレージ アカウントの作成に成功](./media/virtual-machines-create-upload-vhd-windows-server/Storagenewaccount.png)
 
@@ -183,7 +187,7 @@ Add-AzureVhd コマンドレットの詳細については、[Add-AzureVhd に�
 
 	![カスタム イメージ](./media/virtual-machines-create-upload-vhd-windows-server/vm_custom_image.png)
 
-	これで、仮想マシンを作成する際に **[マイ イメージ]** で新しいイメージが使用可能になりました。手順については、「[Windows を実行するカスタム仮想マシンを作成する方法](virtual-machines-windows-create-custom.md)」を参照してください。
+	これで、仮想マシンを作成する際に **[マイ イメージ]** で新しいイメージが使用可能になりました。手順については、[Windows を実行するカスタム仮想マシンの作成方法](virtual-machines-windows-create-custom.md)に関するページを参照してください。
 
 	![カスタム イメージからの VM の作成](./media/virtual-machines-create-upload-vhd-windows-server/create_vm_custom_image.png)
 
@@ -198,4 +202,4 @@ Add-AzureVhd コマンドレットの詳細については、[Add-AzureVhd に�
 [Step 3: Prepare the connection to Azure]: #prepAzure
 [Step 4: Upload the .vhd file]: #upload
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

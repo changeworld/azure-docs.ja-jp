@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Mobile Services の使用 (Xamarin iOS アプリケーション)"
+	pageTitle="Xamarin iOS アプリケーション用 Mobile Services の使用 | Microsoft Azure"
 	description="次のチュートリアルに従って、Xamarin iOS 開発用の Azure Mobile Services を使用します。"
 	services="mobile-services"
 	documentationCenter="xamarin"
@@ -12,23 +12,23 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="07/09/2015"
+	ms.topic="hero-article"
+	ms.date="10/06/2015"
 	ms.author="craig.dunn@xamarin.com"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
 
-このチュートリアルでは、Azure のモバイル サービスを使用して Xamarin.iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリ データを保存する簡単な <em>To do list</em> アプリの両方を作成します。
+[AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
+
+このチュートリアルでは、Azure のモバイル サービスを使用して Xamarin.iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。
 
 このチュートリアルのビデオを見る場合は、下のクリップでこのチュートリアルと同じ手順が表示されます。
 
 ビデオ: "Getting Started with Xamarin and Azure Mobile Services" (Xamarin と Azure モバイル サービスの使用)。Xamarin のデベロッパー エバンジェリスト Craig Dunn 氏 (再生時間: 10 分 05 秒)
 
 > [AZURE.VIDEO getting-started-with-xamarin-and-mobile-services]
-
-
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -98,13 +98,16 @@
 ## 次のステップ
 クイック スタートはこれで完了です。Mobile Services で重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-* [データの使用]<br/>モバイル サービスに新しいテーブルを追加して、そのテーブルから読み書きする方法を学習します。
+* [オフライン データの同期の使用] クイックスタートでオフライン データの同期を使用して、アプリの応答性と信頼性を高める方法について説明します。
 
-* [オフライン データの同期の使用]<br/>クイックスタートでオフライン データの同期を使用して、アプリの応答性と信頼性を高める方法について説明します。
+* [認証の使用] ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [認証の使用] <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
+* [プッシュ通知の使用] アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [プッシュ通知の使用] <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+* [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法](partner-xamarin-mobile-services-how-to-use-client-library.md) モバイル サービスに対してクエリを実行する方法、データを操作する方法、カスタム API にアクセスする方法について説明します。
+  
+
+[AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started
@@ -124,7 +127,6 @@
 
 
 <!-- URLs. -->
-[データの使用]: partner-xamarin-mobile-services-ios-get-started-data.md
 [オフライン データの同期の使用]: mobile-services-xamarin-ios-get-started-offline-data.md
 [認証の使用]: partner-xamarin-mobile-services-ios-get-started-users.md
 [プッシュ通知の使用]: partner-xamarin-mobile-services-ios-get-started-push.md
@@ -134,4 +136,4 @@
 
 [Management Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

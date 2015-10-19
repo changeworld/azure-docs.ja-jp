@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Event Hubs のプログラミング ガイド"
+   pageTitle="Azure Event Hubs のプログラミング ガイド |Microsoft Azure"
    description="Azure .NET SDK を使用し、Azure Event Hubs でプログラミングする方法について説明します。"
    services="event-hubs"
    documentationCenter="na"
@@ -12,22 +12,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="07/10/2015"
+   ms.date="09/30/2015"
    ms.author="sethm" />
 
 # Event Hubs のプログラミング ガイド
 
 このトピックでは、Azure .NET SDK を使用し、Azure Event Hubs でプログラミングする方法について説明します。Event Hubs の予備知識があることを前提としています。Event Hub の概要/概念については、「[Event Hubs 概要](event-hubs-overview.md)」を参照してください。
 
-## イベントの発行: イベントの発行元
+## イベント発行元
 
 イベントは Event Hub に HTTP POST と AMQP 1.0 接続のいずれかを利用して送信されます。何をいつ利用するかは、対処される特定のシナリオによって決まります。AMQP 1.0 接続は Service Bus の仲介型接続として課金され、メッセージ量が常に多く、待ち時間要件の低いシナリオに適しています。固定のメッセージング チャンネルが提供されるためです。
 
-Event Hubs は [NamespaceManager](https://msdn.microsoft.com/library/microsoft.servicebus.namespacemanager.aspx) クラスで作成され、管理されます。.NET 管理 API を使用するとき、Event Hubs にデータを発行するためのプライマリ コンストラクトは [EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) クラスと [EventData](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) クラスになります。[EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) クラスは、イベントが Event Hub に送信される AMQP 通信チャンネルを提供します。[EventData](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) クラスはイベントを表し、Event Hub にメッセージを発行するために使用されます。このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。その他のプロパティは [EventData](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) オブジェクトに追加され、Event Hub に渡されます。
+Event Hubs は [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスで作成され、管理されます。.NET 管理 API を使用するとき、Event Hubs にデータを発行するためのプライマリ コンストラクトは [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) クラスと [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスになります。[EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) クラスは、イベントが Event Hub に送信される AMQP 通信チャンネルを提供します。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスはイベントを表し、Event Hub にメッセージを発行するために使用されます。このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。その他のプロパティは [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) オブジェクトに追加され、Event Hub に渡されます。
 
 ## 作業開始
 
-Event Hubs をサポートする .NET クラスは Microsoft.ServiceBus.dll アセンブリの一部です。Service Bus API を参照し、すべての Service Bus 依存関係を備えたアプリケーションを構成する最も簡単な方法は Service Bus NuGet パッケージをダウンロードすることです。詳細については、「[NuGet Service Bus パッケージを使用する](https://msdn.microsoft.com/library/dn741354.aspx)」を参照してください。あるいは、Visual Studio の [パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) を利用できます。これを行うには、[パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)のウィンドウに次のコマンドを入力します。
+Event Hubs をサポートする .NET クラスは Microsoft.ServiceBus.dll アセンブリの一部です。Service Bus API を参照し、すべての Service Bus 依存関係を備えたアプリケーションを構成する最も簡単な方法は Service Bus NuGet パッケージをダウンロードすることです。詳細については、「[NuGet Service Bus パッケージを使用する](https://msdn.microsoft.com/library/azure/dn741354.aspx)」を参照してください。あるいは、Visual Studio の [パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) を利用できます。これを行うには、[パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)のウィンドウに次のコマンドを入力します。
 
 ```powershell
 Install-Package WindowsAzure.ServiceBus
@@ -35,32 +35,32 @@ Install-Package WindowsAzure.ServiceBus
 
 ## Event Hub を作成する
 
-[NamespaceManager](https://msdn.microsoft.com/library/microsoft.servicebus.namespacemanager.aspx) クラスを使用し、Event Hubs を作成できます。次に例を示します。
+[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用し、Event Hubs を作成できます。次に例を示します。
 
 ```c
 var manager = new Microsoft.ServiceBus.NamespaceManager("mynamespace.servicebus.windows.net");
 var description = manager.CreateEventHub("MyEventHub");
 ```
 
-ほとんどの場合、[CreateEventHubIfNotExists](https://msdn.microsoft.com/library/microsoft.servicebus.namespacemanager.createeventhubifnotexists.aspx) メソッドを使用し、サービスの再起動時に例外発生を回避することが推奨されます。次に例を示します。
+ほとんどの場合、[CreateEventHubIfNotExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createeventhubifnotexists.aspx) メソッドを使用し、サービスの再起動時に例外発生を回避することが推奨されます。次に例を示します。
 
 ```
 var description = manager.CreateEventHubIfNotExists("MyEventHub");
 ```
 
-[CreateEventHubIfNotExists](https://msdn.microsoft.com/library/microsoft.servicebus.namespacemanager.createeventhubifnotexists.aspx) など、すべての Event Hub 作成操作で、該当する名前空間の**管理**アクセス許可が必要になります。発行元またはコンシューマー アプリケーションのアクセス許可を制限する場合、アクセス許可を制限して資格情報を利用するとき、運用コードでこれらの作成操作呼び出しを回避できます。
+[CreateEventHubIfNotExists](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.createeventhubifnotexists.aspx) など、すべての Event Hub 作成操作で、該当する名前空間の**管理**アクセス許可が必要になります。発行元またはコンシューマー アプリケーションのアクセス許可を制限する場合、アクセス許可を制限して資格情報を利用するとき、運用コードでこれらの作成操作呼び出しを回避できます。
 
-[EventHubDescription](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubdescription.aspx) クラスには、承認規則、メッセージの保有期間、パーティション ID、状態、パスなど、Event Hub の詳細が含まれています。このクラスを使用し、Event Hub でメタデータを更新できます。
+[EventHubDescription](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubdescription.aspx) クラスには、承認規則、メッセージの保有期間、パーティション ID、状態、パスなど、Event Hub の詳細が含まれています。このクラスを使用し、Event Hub でメタデータを更新できます。
 
 ## Event Hub クライアントの作成
 
-Event Hubs とやり取りするためのプライマリ クラスは [Microsoft.ServiceBus.Messaging.EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) です。このクラスは送信機能と受信機能の両方を提供します。次の例のように、[Create](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.create.aspx) メソッドを利用してこのクラスをインスタンス化できます。
+Event Hubs とやり取りするためのプライマリ クラスは [Microsoft.ServiceBus.Messaging.EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) です。このクラスは送信機能と受信機能の両方を提供します。次の例のように、[Create](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) メソッドを利用してこのクラスをインスタンス化できます。
 
 ```
 var client = EventHubClient.Create(description.Path);
 ```
 
-このメソッドは `appSettings` セクションにある App.config ファイルの Service Bus 情報を使用します。Service Bus 接続情報を格納するために使用される `appSettings` XML の例については、[Microsoft.ServiceBus.Messaging.EventHubClient.Create(System.String)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.create.aspx) メソッドの文書を参照してください。
+このメソッドは `appSettings` セクションにある App.config ファイルの Service Bus 情報を使用します。Service Bus 接続情報を格納するために使用される `appSettings` XML の例については、[Microsoft.ServiceBus.Messaging.EventHubClient.Create(System.String)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) メソッドの文書を参照してください。
 
 接続文字列からクライアントを作成することもできます。この選択肢は Azure worker ロールを使用する場合に効果があります。worker の設定プロパティに文字列を格納できるためです。次に例を示します。
 
@@ -74,30 +74,30 @@ EventHubClient.CreateFromConnectionString("your_connection_string");
 Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=Manage;SharedAccessKey=[key]
 ```
 
-最後になりますが、[EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) オブジェクトは [MessagingFactory](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagingfactory.aspx) インスタンスから作成することもできます。その例を以下に示します。
+最後になりますが、[EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) オブジェクトは [MessagingFactory](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) インスタンスから作成することもできます。その例を以下に示します。
 
 ```
 var factory = MessagingFactory.CreateFromConnectionString("your_connection_string");
 var client = factory.CreateEventHubClient("MyEventHub");
 ```
 
-これは重要なことですが、メッセージング ファクトリ インスタンスから作成された追加 [EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) オブジェクトで同じ基礎 TCP 接続が再利用されることに注意してください。そのため、これらのオブジェクトでは、スループットにクライアント側の制限があります。[Create](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.create.aspx) メソッドでは 1 つのメッセージング ファクトリが再利用されます。1 名の送信者から非常に高いスループットを必要とする場合、各メッセージング ファクトリから複数のメッセージ ファクトリと 1 つの [EventHubClient](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.aspx) オブジェクトを作成できます。
+これは重要なことですが、メッセージング ファクトリ インスタンスから作成された追加 [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) オブジェクトで同じ基礎 TCP 接続が再利用されることに注意してください。そのため、これらのオブジェクトでは、スループットにクライアント側の制限があります。[Create](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) メソッドでは 1 つのメッセージング ファクトリが再利用されます。1 名の送信者から非常に高いスループットを必要とする場合、各メッセージング ファクトリから複数のメッセージ ファクトリと 1 つの [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) オブジェクトを作成できます。
 
 ## Event Hub にイベントを送信する
 
-[EventData](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) インスタンスを作成し、それを [Send](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.send.aspx) メソッドで送信することで Event Hub にイベントを送信します。このメソッドは [EventData](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) インスタンス パラメーターを 1 つ受け取り、それを Event Hub に同期で送信します。
+[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) インスタンスを作成し、それを [Send](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.send.aspx) メソッドで送信することで Event Hub にイベントを送信します。このメソッドは [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) インスタンス パラメーターを 1 つ受け取り、それを Event Hub に同期で送信します。
 
 ## イベントのシリアル化
 
-[EventData](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) クラスには [オーバーロードされたコンストラクターが 4 つ](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx)あります。これらのコンストラクターは、オブジェクト、シリアライザー、バイト配列、ストリームなど、さまざまパラメーターを受け取ります。[EventData](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) クラスをインスタンス化し、その後、本文のストリームを設定することもできます。JSON と共に [EventData](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) を使用するとき、**Encoding.UTF8.GetBytes()** を使用し、JSON でエンコードされた文字列のバイト配列を取得できます。
+[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスには [オーバーロードされたコンストラクターが 4 つ](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx)あります。これらのコンストラクターは、オブジェクト、シリアライザー、バイト配列、ストリームなど、さまざまパラメーターを受け取ります。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスをインスタンス化し、その後、本文のストリームを設定することもできます。JSON と共に [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) を使用するとき、**Encoding.UTF8.GetBytes()** を使用し、JSON でエンコードされた文字列のバイト配列を取得できます。
 
 ## パーティション キー
 
-[EventData](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) クラスには [PartitionKey](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) プロパティがあります。このプロパティを利用すると、送信者はハッシュ関数で処理されてパーティション割り当てを作成する値を指定できます。パーティション キーを利用すると、同じキーのすべてのイベントが Event Hub の同じパーティションに送信されます。共通のパーティション キーにはユーザー セッション ID と一意の送信者 ID が含まれます。[PartitionKey](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) プロパティは任意であり、[Microsoft.ServiceBus.Messaging.EventHubClient.Send(Microsoft.ServiceBus.Messaging.EventData)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) メソッドまたは [Microsoft.ServiceBus.Messaging.EventHubClient.SendAsync(Microsoft.ServiceBus.Messaging.EventData)](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) メソッドの利用時に指定できます。[PartitionKey](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) 値を指定しない場合、送信されたイベントはラウンドロビン モデルを利用してパーティションに配信されます。
+[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスには [PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) プロパティがあります。このプロパティを利用すると、送信者はハッシュ関数で処理されてパーティション割り当てを作成する値を指定できます。パーティション キーを利用すると、同じキーのすべてのイベントが Event Hub の同じパーティションに送信されます。共通のパーティション キーにはユーザー セッション ID と一意の送信者 ID が含まれます。[PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) プロパティは任意であり、[Microsoft.ServiceBus.Messaging.EventHubClient.Send(Microsoft.ServiceBus.Messaging.EventData)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) メソッドまたは [Microsoft.ServiceBus.Messaging.EventHubClient.SendAsync(Microsoft.ServiceBus.Messaging.EventData)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) メソッドの利用時に指定できます。[PartitionKey](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.partitionkey.aspx) 値を指定しない場合、送信されたイベントはラウンドロビン モデルを利用してパーティションに配信されます。
 
 ## イベントの一括送信操作
 
-イベントを一括送信すると、スループットが劇的に上がります。[SendBatch](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) メソッドは [EventData](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventdata.aspx) 型の **IEnumerable** パラメーターを受け取り、バッチ全体をアトミック操作として Event Hub に送信します。
+イベントを一括送信すると、スループットが劇的に上がります。[SendBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) メソッドは [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) 型の **IEnumerable** パラメーターを受け取り、バッチ全体をアトミック操作として Event Hub に送信します。
 
 ```
 public void SendBatch(IEnumerable<EventData> eventDataList);
@@ -107,7 +107,7 @@ public void SendBatch(IEnumerable<EventData> eventDataList);
 
 ## 非同期送信と大規模送信
 
-Event Hub にイベントを非同期送信することもできます。非同期送信を利用すると、クライアントがイベントを送信する速度が上がります。[Send](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.send.aspx) メソッドと [SendBatch](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) メソッドの両方を [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) オブジェクトを返す非同期バージョンで利用できます。この手法ではスループットが上がりますが、Event Hubs で調整中でもクライアントはイベントの送信を続けるので、適切に実装されていない場合、クライアントに障害が発生したり、メッセージが失われたりすることがあります。また、クライアントの [RetryPolicy](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.cliententity.retrypolicy.aspx) プロパティを使用し、クライアント再試行オプションを制御できます。
+Event Hub にイベントを非同期送信することもできます。非同期送信を利用すると、クライアントがイベントを送信する速度が上がります。[Send](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.send.aspx) メソッドと [SendBatch](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.sendbatch.aspx) メソッドの両方を [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) オブジェクトを返す非同期バージョンで利用できます。この手法ではスループットが上がりますが、Event Hubs で調整中でもクライアントはイベントの送信を続けるので、適切に実装されていない場合、クライアントに障害が発生したり、メッセージが失われたりすることがあります。また、クライアントの [RetryPolicy](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.cliententity.retrypolicy.aspx) プロパティを使用し、クライアント再試行オプションを制御できます。
 
 ## パーティション送信者の作成
 
@@ -117,22 +117,22 @@ Event Hub にイベントを非同期送信することもできます。非同�
 var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[0]);
 ```
 
-[CreatePartitionedSender](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubclient.createpartitionedsender.aspx) は [EventHubSender](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubsender.aspx) オブジェクトを返します。このオブジェクトを使用し、特定の Event Hub パーティションにイベントを発行できます。
+[CreatePartitionedSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.createpartitionedsender.aspx) は [EventHubSender](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubsender.aspx) オブジェクトを返します。このオブジェクトを使用し、特定の Event Hub パーティションにイベントを発行できます。
 
-## イベントの使用: イベント コンシューマー
+## イベント コンシューマー
 
-Event Hubs にはイベント使用のために 2 つの主要モデルが用意されています。ダイレクト レシーバーと [EventProcessorHost](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx) のような上位の抽象化です。ダイレクト レシーバーはコンシューマー グループ内のパーティションの独自のアクセス調整を担当します。
+Event Hubs にはイベント使用のために 2 つの主要モデルが用意されています。ダイレクト レシーバーと [EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) のような上位の抽象化です。ダイレクト レシーバーはコンシューマー グループ内のパーティションの独自のアクセス調整を担当します。
 
 ### ダイレクト コンシューマー
 
-コンシューマー グループ内のパーティションから読み取るための最も直接的な方法は [EventHubReceiver](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubreceiver.aspx) クラスを使用することです。このクラスのインスタンスを作成するには、[EventHubConsumerGroup](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubconsumergroup.aspx) クラスのインスタンスを使用する必要があります。次のコード例では、コンシューマー グループの受信者を作成するときにパーティション ID を指定する必要があります。
+コンシューマー グループ内のパーティションから読み取るための最も直接的な方法は [EventHubReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubreceiver.aspx) クラスを使用することです。このクラスのインスタンスを作成するには、[EventHubConsumerGroup](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubconsumergroup.aspx) クラスのインスタンスを使用する必要があります。次の例では、コンシューマー グループの受信者を作成するときにパーティション ID を指定する必要があります。
 
 ```
 EventHubConsumerGroup group = client.GetDefaultConsumerGroup();
 var receiver = group.CreateReceiver(client.GetRuntimeInformation().PartitionIds[0]);
 ```
 
-[CreateReceiver](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubconsumergroup.createreceiver.aspx)メソッドには、作成中のリーダーの制御を円滑にするいくつかのオーバーロードがあります。これらのメソッドでは文字列とタイムスタンプのいずれかをオフセットとして指定します。返されたストリームにこの指定したオフセットを含めるか、その後に開始するか指定できます。レシーバーを作成したら、返されたオブジェクトでイベントの受信を開始できます。[Receive](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventhubreceiver.receive.aspx) メソッドには、バッチ サイズや待機時間など、操作パラメーターを制御するオーバーロードが 4 つあります。これらのメソッドの非同期バージョンを利用し、コンシューマーのスループットを上げることができます。次に例を示します。
+[CreateReceiver](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubconsumergroup.createreceiver.aspx)メソッドには、作成中のリーダーの制御を円滑にするいくつかのオーバーロードがあります。これらのメソッドでは文字列とタイムスタンプのいずれかをオフセットとして指定します。返されたストリームにこの指定したオフセットを含めるか、その後に開始するか指定できます。レシーバーを作成したら、返されたオブジェクトでイベントの受信を開始できます。[Receive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubreceiver.receive.aspx) メソッドには、バッチ サイズや待機時間など、操作パラメーターを制御するオーバーロードが 4 つあります。これらのメソッドの非同期バージョンを利用し、コンシューマーのスループットを上げることができます。次に例を示します。
 
 ```
 bool receive = true;
@@ -152,27 +152,27 @@ while(receive)
 
 ### イベント プロセッサ ホスト
 
-[EventProcessorHost](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx)クラスは Event Hubs からのデータを処理します。.NET プラットフォームでのイベント リーダーを作成するときに、この実装を使用する必要があります。[EventProcessorHost](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx) はイベント プロセッサ実装のためにスレッドセーフでマルチプロセスの安全なランタイム環境を提供します。さらに、その環境では、チックポイント処理とパーティション リースの管理が提供されます。
+[EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)クラスは Event Hubs からのデータを処理します。.NET プラットフォームでのイベント リーダーを作成するときに、この実装を使用する必要があります。[EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) はイベント プロセッサ実装のためにスレッドセーフでマルチプロセスの安全なランタイム環境を提供します。さらに、その環境では、チックポイント処理とパーティション リースの管理が提供されます。
 
-[EventProcessorHost](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx) クラスを使用するために、[IEventProcessor](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.ieventprocessor.aspx) を実装できます。このインターフェイスには 3 つのメソッドが含まれています。
+[EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) クラスを使用するために、[IEventProcessor](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.aspx) を実装できます。このインターフェイスには 3 つのメソッドが含まれています。
 
-- [OpenAsync](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.ieventprocessor.openasync.aspx)
+- [OpenAsync](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.openasync.aspx)
 
-- [CloseAsync](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.ieventprocessor.closeasync.aspx)
+- [CloseAsync](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.closeasync.aspx)
 
-- [ProcessEventsAsync](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.ieventprocessor.processeventsasync.aspx)
+- [ProcessEventsAsync](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.processeventsasync.aspx)
 
-イベント処理を開始するには、[EventProcessorHost](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx) をインスタンス化し、Event Hub の適切なパラメーターを提供します。次に、[RegisterEventProcessorAsync](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.registereventprocessorasync.aspx) を呼び出し、[IEventProcessor](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.ieventprocessor.aspx) 実装をランタイムに登録します。この時点で、ホストは「どん欲な」アルゴリズムを利用して Event Hub にあるすべてのパーティションでリースの取得を試行します。これらのリースは一定の期間存続し、その後、更新する必要があります。新しいノード (この場合は worker インスタンス) がオンラインになると、新しいノードはリースを予約し、時間と共にリースの追加取得を試行し、負荷がノード間を移動します。
+イベント処理を開始するには、[EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) をインスタンス化し、Event Hub の適切なパラメーターを提供します。次に、[RegisterEventProcessorAsync](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.registereventprocessorasync.aspx) を呼び出し、[IEventProcessor](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.aspx) 実装をランタイムに登録します。この時点で、ホストは「どん欲な」アルゴリズムを利用して Event Hub にあるすべてのパーティションでリースの取得を試行します。これらのリースは一定の期間存続し、その後、更新する必要があります。新しいノード (この場合は worker インスタンス) がオンラインになると、新しいノードはリースを予約し、時間と共にリースの追加取得を試行し、負荷がノード間を移動します。
 
 ![イベント プロセッサ ホスト](./media/event-hubs-programming-guide/IC759863.png)
 
-時間と共に、均衡が確立されます。この動的機能により、スケールアップとスケールダウンの両方で、CPU に基づく自動スケーリングがコンシューマーに適用されます。Event Hubs にはメッセージ カウントの直接的概念がないため、平均的な CPU 利用率が、多くの場合、バックエンドまたはコンシューマー スケールを測定する最良のメカニズムとなります。発行元がコンシューマーが処理できる数を超えたイベントを発行し始めた場合、コンシューマーの CPU 増加を利用し、worker インスタンス カウントを自動拡張できます。
+時間と共に、均衡が確立されます。この動的機能により、スケールアップとスケールダウンの両方で、CPU に基づく自動スケールがコンシューマーに適用されます。Event Hubs にはメッセージ カウントの直接的概念がないため、平均的な CPU 利用率が、多くの場合、バックエンドまたはコンシューマー スケールを測定する最良のメカニズムとなります。発行元がコンシューマーが処理できる数を超えたイベントを発行し始めた場合、コンシューマーの CPU 増加を利用し、worker インスタンス カウントを自動拡張できます。
 
-[EventProcessorHost](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx) クラスも Azure ストレージ ベースのチェックポイント処理メカニズムを実装します。このメカニズムはパーティション基準でオフセットを格納します。そのため、各コンシューマーは前のコンシューマーからの最後のチェックポイントを判断できます。パーティションはリース経由でノード間を移動するため、これは負荷移動を円滑にする同期メカニズムとなります。
+[EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) クラスも Azure ストレージ ベースのチェックポイント処理メカニズムを実装します。このメカニズムはパーティション基準でオフセットを格納します。そのため、各コンシューマーは前のコンシューマーからの最後のチェックポイントを判断できます。パーティションはリース経由でノード間を移動するため、これは負荷移動を円滑にする同期メカニズムとなります。
 
 ## 発行元失効
 
-[EventProcessorHost](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx) の高度なランタイム機能に加え、Event Hubs は特定の発行元が Event Hub にイベントを発行するのを防ぐ目的で発行元失効を有効にします。このような機能は特に、発行元のトークンが侵害された、あるいはソフトウェア更新により不適切な動作が発生している場合に便利です。そのような状況では、SAS トークンの一部である発行元 ID を利用してイベントの発行をブロックできます。
+[EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) の高度なランタイム機能に加え、Event Hubs は特定の発行元が Event Hub にイベントを発行するのを防ぐ目的で発行元失効を有効にします。このような機能は特に、発行元のトークンが侵害された、あるいはソフトウェア更新により不適切な動作が発生している場合に便利です。そのような状況では、SAS トークンの一部である発行元 ID を利用してイベントの発行をブロックできます。
 
 発行元失効と発行元として Event Hubs に送信する方法の詳細については、「[Service Bus Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)」サンプルを参照してください。
 
@@ -183,6 +183,6 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 - [Event Hubs API 概要](event-hubs-api-overview.md)
 - [Event Hubs の概要](event-hubs-overview.md)
 - [Event Hubs コード サンプル](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hub&f[0].Type=SearchText&ac=5)
-- [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx)
+- [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

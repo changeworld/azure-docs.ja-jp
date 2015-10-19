@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/23/2015"
+	ms.date="10/04/2015"
 	ms.author="awills"/>
 
 
@@ -23,11 +23,11 @@
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
 
-Visual Studio Application Insights は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します
+Visual Studio Application Insights は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します。
 
 
 
-![パフォーマンス監視グラフの例](./media/app-insights-start-monitoring-app-health-usage/10-perf.png)
+![Example performance monitoring charts](./media/app-insights-start-monitoring-app-health-usage/10-perf.png)
 
 *関連項目:*
 
@@ -66,7 +66,7 @@ Azure の[リソース][roles]は、サービスのインスタンスです。�
 
 Application Insights SDK のインストールと構成は、作業中のプラットフォームによって異なります。ASP.NET アプリの場合は簡単です。
 
-1. Visual Studio で、デスクトップ アプリ プロジェクトの NuGet パッケージを編集します。
+1. Visual Studio で、Web アプリ プロジェクトの NuGet パッケージを編集します。
 
     ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-start-monitoring-app-health-usage/03-nuget.png)
 
@@ -84,7 +84,7 @@ Application Insights SDK のインストールと構成は、作業中のプラ�
 
 SDK の新しいバージョンは不定期でリリースされます。
 
-[SDK の新しいリリース](app-insights-release-notes-dotnet.md)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。**[Microsoft.ApplicationInsights.Web]**、**[アップグレード]** の順に選択します
+[SDK の新しいリリース](app-insights-release-notes-dotnet.md)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。**[Microsoft.ApplicationInsights.Web]**、**[アップグレード]** の順に選択します。
 
 ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
 
@@ -110,8 +110,8 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 #### データが表示されない場合
 
-* [[検索]][diagnostic] タイルを開き、個々のイベントを表示します。
 * アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
+* [[検索]][diagnostic] タイルを開き、個々のイベントを表示します。メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
 * 数秒待機してから **[最新の情報に更新]** をクリックします。グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
 * [トラブルシューティング][qna]に関するページを参照します。
 
@@ -119,7 +119,9 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 ここで、アプリケーションを IIS または Azure にデプロイし、データ累積を確認します。
 
-デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。アプリケーションをデプロイすると、データ累積速度は遅くなります。
+![Visual Studio を使用してアプリを発行する](./media/app-insights-start-monitoring-app-health-usage/15-publish.png)
+
+デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。リリース構成でアプリケーションをデプロイすると、データ累積速度は遅くなります。
 
 #### サーバーに発行した後でデータはありませんか。
 
@@ -134,33 +136,20 @@ Visual Studio で、送信されたイベント数が表示されます。
 [このトラブルシューティング項目](app-insights-troubleshoot-faq.md#NuGetBuild)を参照してください。
 
 
-## アプリケーションのバージョンを追跡する
 
-ビルド プロセスで `buildinfo.config` が生成されていることを確認します。.csproj ファイルに、次のコードを追加します。
-
-```XML
-
-    <PropertyGroup>
-      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
-    </PropertyGroup> 
-```
-
-ビルド情報がある場合、Application Insights Web モジュールは、**アプリケーションのバージョン**をプロパティとしてテレメトリのすべての項目に自動的に追加します。これにより、[診断の検索][diagnostic]を実行するとき、または[メトリックを調べる][metrics]ときに、バージョンによってフィルター処理できます。
-
-
-## 5\.依存関係の追跡 (およびパフォーマンス カウンターの) 追加
+## 5\.依存関係の追跡 (および IIS パフォーマンス カウンター) の追加
 
 SDK によるデータへのアクセスでは、若干のサポートが必要です。具体的には、アプリからデータベース、REST API、またその他の外部コンポーネントへの呼び出しを自動的に測定するには、次の追加のステップが必要です。依存関係のメトリックは、パフォーマンスに関する問題の診断に非常に役立つ場合があります。
 
-独自の IIS サーバーで実行している場合、この手順は、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)にシステム パォーマンス カウンターが表示されるようにできます。
+独自の IIS サーバーで実行している場合は、この手順に従うことで、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)にシステム パフォーマンス カウンターを表示できるようになります。
 
 #### アプリが IIS サーバーで実行される場合
 
-管理者権限でサーバーにログインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします。
+管理者権限でサーバーにサインインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします。
 
 [ファイアウォールで追加の送信ポートを開く](app-insights-monitor-performance-live-website-now.md#troubleshooting)ことが必要な場合があります。
 
-この手順では、CPU、メモリ、ネットワーク占有率などの[パフォーマンス カウンターのレポート](app-insights-web-monitor-performance.md#system-performance-counters)も有効化します。
+以下の手順では、CPU、メモリ、ネットワーク占有率などの[パフォーマンス カウンターのレポート](app-insights-web-monitor-performance.md#system-performance-counters)も有効化します。
 
 #### アプリが Azure の Web アプリの場合
 
@@ -171,19 +160,16 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 #### Azure Cloud Services プロジェクトの場合
 
-[スクリプトを Web ロールとworker ロールに追加します。](app-insights-cloudservices.md)
+[スクリプトを Web ロールと worker ロールに追加します。](app-insights-cloudservices.md)
 
 
 
 ## 6\.クライアント側の監視を追加します。
 
-アプリケーションのサーバー側 (バックエンド) からテレメトリ データを送信する SDK を既にインストールしています。このため、クライアント側の監視を追加することができます。これにより、ユーザー、セッション、ページ ビュー、およびクライアントで発生する例外やクラッシュに関するデータを入手できます。
+アプリケーションのサーバー側 (バックエンド) からテレメトリ データを送信する SDK を既にインストールしています。このため、クライアント側の監視を追加することができます。これにより、ユーザー、セッション、ページ ビュー、およびブラウザーで発生する例外やクラッシュに関するデータを入手できます。また、独自のコードを記述して、ユーザーのアプリの操作をクリックやキーボード操作までの細部にわたって追跡できます。
 
-また、独自のコードを記述して、ユーザーのアプリの操作をクリックやキーボード操作までの細部にわたって追跡できます。
 
-#### クライアントが Web ブラウザーの場合
-
-アプリが Web ページに表示される場合は、JavaScript のスニペットをすべてのページに追加します。コードは次に示す Application Insights のリソースから取得できます。
+すべてのページに JavaScript のスニペットを追加します。コードは次に示す Application Insights のリソースから取得できます。
 
 ![Web アプリでクイック スタートを開き、[Web ページを監視するコードを取得する] をクリックする](./media/app-insights-start-monitoring-app-health-usage/02-monitor-web-page.png)
 
@@ -191,12 +177,21 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 [Web ページの追跡についてはこちら](app-insights-web-track-usage.md)をご覧ください。
 
-#### クライアントがデバイス アプリの場合
 
-アプリケーションがスマートフォンやその他のデバイスなどのクライアントに配信される場合は、デバイス アプリに[適切な SDK](app-insights-platforms.md) を追加します。
+## アプリケーションのバージョンを追跡する
 
-SDK クライアントをサーバーの SDK と同じインストルメンテーション キーで構成する場合、まとめて確認できるように 2 つのストリームが統合されます。
+MSBuild プロセスで `buildinfo.config` が生成されていることを確認します。.csproj ファイルに、次のコードを追加します。
 
+```XML
+
+    <PropertyGroup>
+      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+    </PropertyGroup> 
+```
+
+ビルド情報がある場合、Application Insights Web モジュールは、**アプリケーションのバージョン**をプロパティとしてテレメトリのすべての項目に自動的に追加します。これにより、[診断の検索][diagnostic]を実行するとき、または[メトリックを調べる][metrics]ときに、バージョンによってフィルター処理できます。
+
+ただし、Visual Studio で開発者向けのビルドではなく、MS ビルドでのみビルド バージョン番号が生成されることに注意してください。
 
 ## 7\.インストールを完了する
 
@@ -225,7 +220,7 @@ Visual Studio によって、Application Insights にリソースが作成され
 
 #### 既存のプロジェクトの場合
 
-ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights の追加]** を選択します。
+ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights の追加] ** を選択します。
 
 ![[Application Insights の追加] を選択する](./media/app-insights-start-monitoring-app-health-usage/appinsights-03-addExisting.png)
 
@@ -273,4 +268,4 @@ Visual Studio によって、Application Insights にリソースが作成され
 [roles]: app-insights-resources-roles-access-control.md
 [start]: app-insights-get-started.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

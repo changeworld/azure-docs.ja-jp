@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Service Bus AMQP の概要 | Microsoft Azure"
-	description="Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。"
-	services="service-bus"
-	documentationCenter=".net"
-	authors="sethmanheim"
-	manager="timlt"
+	pageTitle="Service Bus AMQP の概要 | Microsoft Azure" 
+	description="Azure での Advanced Message Queuing Protocol (AMQP) 1.0 の使用について説明します。" 
+	services="service-bus" 
+	documentationCenter=".net" 
+	authors="sethmanheim" 
+	manager="timlt" 
 	editor="mattshel"/>
 
 <tags 
-	ms.service="service-bus"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="07/21/2015"
+	ms.service="service-bus" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="10/05/2015" 
 	ms.author="sethm"/>
 
 
@@ -63,11 +63,11 @@ AMQP 1.0 は、2008 年以降、20 社を超える企業 (テクノロジ サプ
 
 Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッセージング機能 (Service Bus キューとトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できるようになります。さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
 
-次の図は、標準の Java Message Service (JMS) API を使用して記述された Linux で実行される Java クライアントと、Windows で実行される .NET クライアントが、AMQP 1.0 を使用して Service Bus 経由でメッセージを交換する、サンプルのデプロイを示しています。
+次の図は、標準の Java Message Service (JMS) API を使用して記述された Linux で実行される Java クライアントと、Windows で実行される .NET クライアントが、AMQP 1.0 を使用して Service Bus 経由でメッセージを交換する、サンプルのデプロイメントを示しています。
 
 ![][0]
 
-**図 1: Service Bus と AMQP 1.0 を使用したクロスプラットフォーム メッセージングを示すサンプルのデプロイ シナリオ**
+**図 1: Service Bus と AMQP 1.0 を使用したクロスプラットフォーム メッセージングを示すサンプルのデプロイメント シナリオ**
 
 現時点では、次のクライアント ライブラリが Service Bus で機能することがわかっています。
 
@@ -81,21 +81,28 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 
 **図 2: AMQP 1.0 クライアント ライブラリの表**
 
-Service Bus からライブラリを取得して使用する方法の詳細については、「[Service Bus AMQP: 開発者ガイド][]」をご覧ください。詳細については、以下の「参照」セクションをご覧ください。
-
 ## 概要
 
 *    AMQP 1.0 は、プラットフォーム間共通のハイブリッド アプリケーションを構築するために使用できる、信頼性の高いオープンなメッセージング プロトコルです。AMQP 1.0 は OASIS の標準です。
 *    AMQP 1.0 サポートは、Azure Service Bus と Windows Server の Service Bus (Service Bus 1.1) で利用できるようになりました。料金は、既存のプロトコルと同じです。
 
-## 参照
+## 次のステップ
 
-*    [Service Bus .NET API で AMQP 1.0 を使用する方法](http://aka.ms/lym3vk)
-*    [Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法](http://aka.ms/ll1fm3)
-*    [Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)
-*    [OASIS Advanced Message Queuing Protocol (AMQP) バージョン 1.0 の仕様](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
+さらに詳しい情報については、 次のリンク先を参照してください。
 
-[0]: ./media/service-bus-amqp-overview/Example1.png
-[Service Bus AMQP: 開発者ガイド]: http://msdn.microsoft.com/library/jj841071.aspx
+- [AMQP で .NET から Service Bus を使用する]
+- [AMQP で Java から Service Bus を使用する]
+- [AMQP で Python から Service Bus を使用する]
+- [AMQP で PHP から Service Bus を使用する]
+- [Azure Linux VM に Apache Qpid Proton-C をインストールする]
+- [Windows Server 用 Service Bus の AMQP]
 
-<!---HONumber=August15_HO9-->
+[0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
+[AMQP で .NET から Service Bus を使用する]: service-bus-amqp-dotnet.md
+[AMQP で Java から Service Bus を使用する]: service-bus-amqp-java.md
+[AMQP で Python から Service Bus を使用する]: service-bus-amqp-python.md
+[AMQP で PHP から Service Bus を使用する]: service-bus-amqp-php.md
+[Azure Linux VM に Apache Qpid Proton-C をインストールする]: service-bus-amqp-apache.md
+[Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+
+<!---HONumber=Oct15_HO2-->

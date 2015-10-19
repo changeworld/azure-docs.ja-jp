@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/15/2015"
+	ms.date="10/05/2015"
 	ms.author="szarkos"/>
 
 # Azure 用の Ubuntu 仮想マシンの準備
@@ -36,7 +36,7 @@
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
 
-## <a id="ubuntu"> </a>Ubuntu 12.04 以上 ##
+## <a id="ubuntu"> </a>Ubuntu 12.04 ##
 
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 
@@ -54,38 +54,26 @@
 		# sudo apt-add-repository 'http://archive.canonical.com/ubuntu precise-backports main'
 		# sudo apt-get update
 
-	Ubuntu 12.10:
-
-		# sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
-		# sudo apt-add-repository 'http://archive.canonical.com/ubuntu quantal-backports main'
-		# sudo apt-get update
-
-	Ubuntu 14 以上:
+	Ubuntu 14.04:
 
 		# sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
 		# sudo apt-get update
 
-4. 次のコマンドを実行してオペレーティング システムを最新のカーネルに更新します。
+4. Ubuntu Azure イメージは、*HardWare Enablement* (HWE) カーネルに従うようになりました。次のコマンドを実行してオペレーティング システムを最新のカーネルに更新します。
 
 	Ubuntu 12.04:
 
 		# sudo apt-get update
-		# sudo apt-get install hv-kvp-daemon-init linux-backports-modules-hv-precise-virtual
+		# sudo apt-get install linux-image-generic-lts-trusty linux-cloud-tools-generic-lts-trusty
+		# sudo apt-get install hv-kvp-daemon-init
 		(recommended) sudo apt-get dist-upgrade
 
 		# sudo reboot
 
-	Ubuntu 12.10:
+	Ubuntu 14.04:
 
 		# sudo apt-get update
-		# sudo apt-get install hv-kvp-daemon-init linux-backports-modules-hv-quantal-virtual
-		(recommended) sudo apt-get dist-upgrade
-
-		# sudo reboot
-
-	Ubuntu 14 以上:
-
-		# sudo apt-get update
+		# sudo apt-get install linux-image-virtual-lts-vivid linux-lts-vivid-tools-common
 		# sudo apt-get install hv-kvp-daemon-init
 		(recommended) sudo apt-get dist-upgrade
 
@@ -124,4 +112,11 @@
 
 11. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=Sept15_HO4-->
+## 参照 ##
+
+Ubuntu HardWare Enablement (HWE) カーネル
+
+- [http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html](http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html)
+- [http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html](http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html)
+
+<!---HONumber=Oct15_HO2-->

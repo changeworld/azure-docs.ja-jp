@@ -20,12 +20,12 @@
 
 ## 概要 ##
 
-App Service 環境は、プレビュー段階で提供されている新しい Premium レベルの機能です。これには、新しいスケーリングおよびネットワーク アクセス機能が用意されています。この新しいスケール機能では、VNET に Azure App Service のインスタンスを配置することができます。App Service 環境 (ASE) の機能に慣れていない場合は、[App Service 環境の概要](app-service-app-service-environment-intro.md) を参照してください。ASE を作成する方法の詳細については、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)のドキュメントを参照してください。
+App Service 環境は、Azure App Service の新しい Premium レベルの機能であり、新しいスケーリングおよびネットワーク アクセス機能を提供します。この新しいスケール機能では、VNET に Azure App Service のインスタンスを配置することができます。App Service 環境 (ASE) の機能に慣れていない場合は、[App Service 環境の概要](app-service-app-service-environment-intro.md)に関するページのドキュメントを参照してください。ASE を作成する方法の詳細については、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)のドキュメントを参照してください。
 
 大まかに言えば、App Service 環境は次に挙げるいくつかの主要なコンポーネントで構成されます。
 
 - Azure App 環境ホステッド サービスで実行中のコンピューティング リソース
-- ストレージ
+- Storage
 - データベース
 - 1 つ以上のサブネットを持つクラシック "v1" Virtual Network
 - Azure App 環境のホストされるサービスが実行されるサブネット
@@ -50,7 +50,7 @@ App Service 環境の管理と監視を行うには、Azure プレビュー ポ�
 
 ## コンピューティング リソース ##
 
-コンピューティング リソース、ストレージ、データベースは、すべて Azure App Service によって操作されます。ただし、コンピューティング リソースの数量とサイズはユーザーが決めます。
+コンピューティング リソース、Storage、データベースは、すべて Azure App Service によって操作されます。ただし、コンピューティング リソースの数量とサイズはユーザーが決めます。
 
 コンピューティング リソースのサイズに関係なく、最小フット プリントには 2 つのフロントエンド サーバーと 2 つのワーカーが含まれます。App Service 環境は合計 55 個までのコンピューティング リソースを使用するように構成できます。この 55 個のコンピューティング リソースのうち、ワークロードのホストに使用できるのは 50 個のみです。その理由は 2 つあります。フロントエンドのコンピューティング リソースは最小で 2 つです。これにより、ワーカー プールの割り当てのサポートには最大で 53 個残ります。ただし、フォールト トレランスを提供するには、次のルールに従い、追加のコンピューティング リソースを割り当てる必要があります。
 
@@ -86,7 +86,7 @@ App Service 環境の管理と監視を行うには、Azure プレビュー ポ�
 - 未使用のワーカー プールを使用して、必要なサイズで必要なインスタンスを呼び出す。
 - App Service プランを新しいワーカー プールにスケーリングする。  
  
-こうすれば、実行中のワークロードでコンピューティング リソースのサイズを変更する場合に比べ、アプリの実行に与える影響は大幅に小さくなります。App Service 環境での Web アプリのスケーリングの詳細については、「[App Service 環境内での Web アプリのスケーリング](app-service-web-scale-a-web-app-in-an-app-service-environment.md)」を参照してください。
+こうすれば、実行中のワークロードでコンピューティング リソースのサイズを変更する場合に比べ、アプリの実行に与える影響は大幅に小さくなります。App Service 環境での Web アプリのスケーリングの詳細については、「[App Service 環境内での Web Apps のスケーリング](app-service-web-scale-a-web-app-in-an-app-service-environment.md)」を参照してください。
 
 ## Virtual Network ##
 
@@ -133,4 +133,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

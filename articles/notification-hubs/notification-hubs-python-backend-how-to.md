@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Python で通知ハブを使用する方法" 
+	pageTitle="Python で Notification Hubs を使用する方法" 
 	description="Python バックエンドから Azure Notification Hubs を使用する方法について説明します。" 
 	services="notification-hubs" 
 	documentationCenter="" 
@@ -16,12 +16,8 @@
 	ms.date="07/17/2015" 
 	ms.author="yuaxu"/>
 
-# Python で通知ハブを使用する方法
-> [AZURE.SELECTOR] 
-- [Java](notification-hubs-php-backend-how-to.md)
-- [PHP](notification-hubs-python-backend-how-to.md)
-- [Python](notification-hubs-nodejs-how-to-use-notification-hubs.md)
-- [Node.js](notification-hubs-nodejs-how-to-use-notification-hubs.md)
+# Python で Notification Hubs を使用する方法
+[AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 		
 MSDN のトピック「[Notification Hubs の REST API](http://msdn.microsoft.com/library/dn223264.aspx)」の説明にあるように、Notification Hubs の REST インターフェイスを使用して、Java/PHP/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
 
@@ -31,7 +27,7 @@ MSDN のトピック「[Notification Hubs の REST API](http://msdn.microsoft.co
 
 このトピックでは、次の方法について説明します。
 
-* Python で通知ハブ機能の REST クライアントを記述します。
+* Python で Notification Hubs 機能の REST クライアントを記述します。
 * 通知ハブ REST API には、Python インターフェイスを使用して通知を送信します。 
 * デバッグ/教育目的のための HTTP REST 要求/応答のダンプを取得します。 
 
@@ -332,7 +328,7 @@ HTTP ヘッダーが変更する形式と、ペイロードの本文が HTTP 要
 
 
 ## 次のステップ
-このトピックでは、通知ハブ用の単純な Python REST クライアントの作成方法を説明しました。次は、以下を実行できます。
+このトピックでは、Notification Hubs 用の単純な Python REST クライアントの作成方法を説明しました。次は、以下を実行できます。
 
 * [Python REST ラッパー サンプル]をすべてダウンロードします。サンプルには上記のコード、および登録管理のコードがすべて含まれています。
 * 引き続き、「[ニュース速報チュートリアル]」で Notification Hubs のタグ付け機能について学習してください。
@@ -352,4 +348,4 @@ HTTP ヘッダーが変更する形式と、ペイロードの本文が HTTP 要
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

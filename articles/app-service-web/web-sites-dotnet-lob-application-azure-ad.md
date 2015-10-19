@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="07/07/2015" 
+	ms.date="09/29/2015" 
 	ms.author="cephalin"/>
 
 # Azure Active Directory の認証を使用して Azure App Service で .NET MVC Web アプリを作成する #
@@ -331,7 +331,7 @@ public class WorkItemsController : Controller
 
 	![](./media/web-sites-dotnet-lob-application-azure-ad/9-create-workitem.png)
 
-16. フォームの残りの部分を設定し、**[作成]** をクリックします。これで、\~/WorkItems/Index ページに新しく作成した作業項目が表示されます。また、以下のスクリーンショットでは、Views\\WorkItems\\Index.cshtml の `AssignedToID` 列が削除されていることがわかります。
+16. フォームの残りの部分を設定し、**[作成]** をクリックします。これで、~/WorkItems/Index ページに新しく作成した作業項目が表示されます。また、以下のスクリーンショットでは、Views\\WorkItems\\Index.cshtml の `AssignedToID` 列が削除されていることがわかります。
 
 	![](./media/web-sites-dotnet-lob-application-azure-ad/10-workitem-index.png)
 
@@ -362,4 +362,4 @@ public class WorkItemsController : Controller
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

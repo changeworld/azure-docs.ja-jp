@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/05/2015"
+	ms.date="10/07/2015"
 	ms.author="lauraa"/>
 
 #  PowerShell を使用して Azure Site Recovery をデプロイする
@@ -461,4 +461,4 @@ if($isJobLeftForProcessing)
 
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> </UL>
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/01/2015"
+   ms.date="10/01/2015"
    ms.author="rajram"/>
 
 #BizTalk XPath Extractor
@@ -50,4 +50,4 @@ XPath|string|XMl 内部のクエリ パスです。
 <!-- Links -->
 [新しいロジック アプリを作成します]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

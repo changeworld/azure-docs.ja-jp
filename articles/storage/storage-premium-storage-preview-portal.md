@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Premium Storage: Azure の仮想マシン ワークロード用の高パフォーマンス ストレージ| Microsoft Azure"
-	description="ディスク向け Azure Premium Storage を説明します。Premium Storag アカウントの作成方法について説明します。"
+	description="ディスク向け Azure Premium Storage を説明します。Premium Storage アカウントの作成方法について説明します。"
 	services="storage"
 	documentationCenter=""
 	authors="tamram"
@@ -25,7 +25,7 @@ Azure 仮想マシンの高速化を実現する **Azure Premium Storage ディ�
 
 Premium Storage の導入により、Microsoft Azure では、**Premium Storage** と **Standard Storage** という耐久性の高い 2 種類のストレージを利用できるようになりました。Premium Storage は最新技術のソリッド ステート ドライブ (SSD) を使用してデータを格納し、Standard Storage はデータをハード ディスク ドライブ (HDD) に格納します。
 
-Premium Storage は、Azure 仮想マシンで実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。仮想マシン (VM) には、複数の Premium Storage ディスクをアタッチできます。Premium Storage を使用すると、アプリケーションに VM あたり最大 64 TB のストレージを設定できます。さらに VM あたり 80,000 IOPS (1 秒あたりの入力/出力操作)、VM あたり 2000 MB/秒のディスク スループットを実現でき、読み取り操作の待ち時間も非常に短くなります。
+Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。仮想マシン (VM) には、複数の Premium Storage ディスクをアタッチできます。Premium Storage を使用すると、アプリケーションに VM あたり最大 64 TB のストレージを設定できます。さらに VM あたり 80,000 IOPS (1 秒あたりの入力/出力操作)、VM あたり 2000 MB/秒のディスク スループットを実現でき、読み取り操作の待ち時間も非常に短くなります。
 
 Azure Premium Storage を使用するには、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)のページをご覧ください。
 
@@ -41,7 +41,7 @@ Azure Premium Storage を使用するには、[無料試用版](http://azure.mic
 
 - 現在 Premium Storage をサポートするリージョンの一覧については、「[リージョン別の Azure サービス](http://azure.microsoft.com/regions/#services)」を参照してください。
 
-- Premium Storage は Azure ページ BLOB のみをサポートしています。これは、Azure 仮想マシン (VM) の永続ディスクを保持するために使用されます。Azure ページ BLOB については、[ブロック BLOB とページ BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx)に関するページをご覧ください。Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure テーブル、Azure キューをサポートしていません。
+- Premium Storage は Azure ページ BLOB のみをサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使用されます。Azure ページ BLOB については、[ブロック BLOB とページ BLOB](http://msdn.microsoft.com/library/azure/ee691964.aspx)に関するページをご覧ください。Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure テーブル、Azure キューをサポートしていません。
 
 - Premium Storage アカウントローカル冗長 (LRS) であり、1 つのリージョン内にデータのコピーを 3 つ保持します。Premium Storage を使用するときの geo レプリケーションに関する考慮事項については、この記事の「[Premium Storage を使用するときのスナップショットと Copy BLOB](#snapshots-and-copy-blob-whja-JPing-premium-storage)」をご覧ください。
 
@@ -202,7 +202,7 @@ Premium Storage 上で Linux VM を設定するときは、次の重要な手順
 
 - Premium Storage ディスクのキャッシュ設定が ReadWrite の場合は、書き込みの耐久性を保証するためにバリアを有効にしてください。
 
-次に示す Linux ディストリビューションは、Premium Storage での検証が完了しています。Premium Storage を使用するときのパフォーマンスと安定性を高めるために、VM をこれらのバージョン (以降) の少なくとも 1 つにアップグレードすることをお勧めします。また、バージョンによっては最新の LIS (Linux Integration Services v4.0 for Microsoft Azure) が必要になります。下記のリンクからダウンロードとインストールを行ってください。マイクロソフトは今後もイメージの検証を行い、この一覧に追加していきます。これらのイメージのパフォーマンスは変動することが検証時に判明しています。また、ワークロードの特性とイメージの設定にも依存することにご注意ください。ワークロードの種類に応じて、異なるイメージをチューニングします。<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;"> <tbody> <tr> <td><strong>ディストリビューション</strong></td> <td><strong>バージョン</strong></td> <td><strong>サポートされているカーネル</strong></td> <td><strong>サポートされているイメージ</strong></td> </tr> <tr> <td rowspan="4"><strong>Ubuntu</strong></td> <td>12.04</td> <td>3.2.0-75.110</td> <td>Ubuntu-12\_04\_5-LTS-amd64-server-20150119-ja-JP-30GB</td> </tr> <tr> <td>14.04</td> <td>3.13.0-44.73</td> <td>Ubuntu-14\_04\_1-LTS-amd64-server-20150123-ja-JP-30GB</td> </tr> <tr> <td>14.10</td> <td>3.16.0-29.39</td> <td>Ubuntu-14\_10-amd64-server-20150202-ja-JP-30GB</td> </tr> <tr> <td>15.04</td> <td>3.19.0-15</td> <td>Ubuntu-15\_04-amd64-server-20150422-ja-JP-30GB</td> </tr> <tr> <td><strong>SUSE</strong></td> <td>SLES 12</td> <td>3.12.36-38.1</td> <td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td> </tr> <tr> <td><strong>CoreOS</strong></td> <td>584.0.0</td> <td>3.18.4</td> <td>CoreOS 584.0.0</td> </tr> <tr> <td rowspan="2"><strong>CentOS</strong></td> <td>6.5、6.6、7.0</td> <td></td> <td><a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (必須)</a></br> *以下の注記参照 </td> </tr> <tr> <td>7.1 </td> <td>3.10.0-229.1.2.el7 </td><td> <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (推奨)</a> <br/>*以下の注記参照</td> </tr>
+次に示す Linux ディストリビューションは、Premium Storage での検証が完了しています。Premium Storage を使用するときのパフォーマンスと安定性を高めるために、VM をこれらのバージョン (以降) の少なくとも 1 つにアップグレードすることをお勧めします。また、バージョンによっては最新の LIS (Linux Integration Services v4.0 for Microsoft Azure) が必要になります。下記のリンクからダウンロードとインストールを行ってください。マイクロソフトは今後もイメージの検証を行い、この一覧に追加していきます。これらのイメージのパフォーマンスは変動することが検証時に判明しています。また、ワークロードの特性とイメージの設定にも依存することにご注意ください。ワークロードの種類に応じて、異なるイメージをチューニングします。<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;"> <tbody> <tr> <td><strong>ディストリビューション</strong></td> <td><strong>バージョン</strong></td> <td><strong>サポートされているカーネル</strong></td> <td><strong>サポートされているイメージ</strong></td> </tr> <tr> <td rowspan="4"><strong>Ubuntu</strong></td> <td>12.04</td> <td>3.2.0-75.110</td> <td>Ubuntu-12\_04\_5-LTS-amd64-server-20150119-ja-JP-30GB</td> </tr> <tr> <td>14.04</td> <td>3.13.0-44.73</td> <td>Ubuntu-14\_04\_1-LTS-amd64-server-20150123-ja-JP-30GB</td> </tr> <tr> <td>14.10</td> <td>3.16.0-29.39</td> <td>Ubuntu-14\_10-amd64-server-20150202-ja-JP-30GB</td> </tr> <tr> <td>15.04</td> <td>3.19.0-15</td> <td>Ubuntu-15\_04-amd64-server-20150422-ja-JP-30GB</td> </tr> <tr> <td><strong>SUSE</strong></td> <td>SLES 12</td> <td>3.12.36-38.1</td> <td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td> </tr> <tr> <td><strong>CoreOS</strong></td> <td>584.0.0</td> <td>3.18.4</td> <td>CoreOS 584.0.0</td> </tr> <tr> <td rowspan="2"><strong>CentOS</strong></td> <td>6.5、6.6、6.7、7.0</td> <td></td> <td><a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (必須)</a></br> *以下の注記参照 </td> </tr> <tr> <td>7.1 </td> <td>3.10.0-229.1.2.el7 </td><td> <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS 4.0 (推奨)</a> <br/>*以下の注記参照</td> </tr>
 
 <tr>
 	<td rowspan="2"><strong>Oracle</strong></td>
@@ -222,6 +222,7 @@ Premium Storage 上で Linux VM を設定するときは、次の重要な手順
 
 OpenLogic CentOS VM を実行しているお客様は、次のコマンドを実行して最新のドライバーをインストールする必要があります。
 
+	sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
 	sudo yum install microsoft-hyper-v
 
 その後再起動して、新しいドライバーをアクティブ化する必要があります。
@@ -238,7 +239,7 @@ Premium Storage を使用するときには、課金に関する次の考慮事�
 Premium Storage、DS シリーズの VM、GS シリーズの VM の料金についての詳細は、次の項目を参照してください。
 
 - [Azure Storage の料金](http://azure.microsoft.com/pricing/details/storage/)
-- [仮想マシンの料金](http://azure.microsoft.com/pricing/details/virtual-machines/)
+- [Virtual Machines の料金](http://azure.microsoft.com/pricing/details/virtual-machines/)
 
 ## 仮想マシンのデータ ディスク用に Premium Storage アカウントを作成する
 
@@ -251,12 +252,12 @@ Premium Storage、DS シリーズの VM、GS シリーズの VM の料金につ�
 1.	[Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。まだサブスクリプションをお持ちでない場合は、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)をお試しください。
 
 
-    > [AZURE.NOTE]Azure 管理ポータルにログインする場合は、ポータルの右上にあるユーザー アカウント名をクリックします。次に、**[新しいポータルに切り替え]** をクリックします。
+    > [AZURE.NOTE]Microsoft Azure 管理ポータルにログインする場合は、ポータルの右上にあるユーザー アカウント名をクリックします。次に、**[新しいポータルに切り替え]** をクリックします。
 
 
 2.	ハブ メニューの **[新規]** をクリックします。
 
-3.	**[新規]** で、**[すべて]** をクリックします。**[データ、ストレージ、キャッシュ、+ バックアップ]** を選択します。そこから **[ストレージ]**、**[作成]** の順にクリックします。
+3.	**[新規]** で、**[すべて]** をクリックします。**[ストレージ、キャッシュ、バックアップ]** を選択します。そこから **[ストレージ]**、**[作成]** の順にクリックします。
 
 4.	[ストレージ アカウント] ブレードで、ストレージ アカウントの名前を入力します。**[価格レベル]** をクリックします。**[推奨される価格レベル]** ブレードで、**[すべての価格レベルの参照]** をクリックします。**[価格レベルの選択]** ブレードで、**[Premium ローカル冗長]** を選択します。**[選択]** をクリックします。**[ストレージ アカウント]** ブレードには、既定で **[価格レベル]** に **[Standard-GRS]** と表示されます。**[選択]** をクリックすると、**[価格レベル]** に **[Premium-LRS]** と表示されます。
 
@@ -341,4 +342,4 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

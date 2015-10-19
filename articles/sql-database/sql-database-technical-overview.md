@@ -20,14 +20,11 @@
 
 SQL Database は、ミッション クリティカルな機能を備えた、市場をリードする Microsoft SQL Server エンジンに基づくクラウド内のリレーショナル データベース サービスです。SQL Database は、予測可能なパフォーマンス、ダウンタイムなしの拡張性、ビジネス継続性、データ保護を提供し、いずれの場合も管理をほとんど必要としません。仮想マシンとインフラストラクチャの管理に煩わされることなく、迅速なアプリケーション開発および製品化に要する時間の短縮化に専念することができます。SQL Database は、[SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) エンジンを基礎としているため、既存の SQL Server ツール、ライブラリ、および API をサポートしています。したがって、クラウドへの移行およびクラウドへの拡張が簡単です。
 
-
-すぐに取りかかる場合は数分間で作成できますが、より深く理解したい場合はこの 30 分間のビデオを観てください。
+この記事では、パフォーマンス、スケーラビリティ、および管理容易性に関連する、SQL Database の中心概念および機能について紹介し、詳細を参照するためのリンクも提供します。先に進む準備ができたら、[最初の SQL Database の作成](sql-database-get-started.md)または[エラスティック データベース プールの作成](sql-database-elastic-pool-portal.md)を数分で実行できます。さらに詳しく知りたい場合は、この 30 分間のビデオをご覧ください。
 
 
 > [AZURE.VIDEO azurecon-2015-get-started-with-azure-sql-database]
 
-
-この記事では、パフォーマンス、スケーラビリティ、および管理容易性に関連する、SQL Database の中心概念および機能について紹介し、詳細を参照するためのリンクも提供します。先に進む準備ができたら、[最初の SQL Database の作成](sql-database-get-started.md)または[エラスティック データベース プールの作成](sql-database-elastic-pool-portal.md)を数分で実行できます。
 
 ## ダウンタイムなしでのパフォーマンスの調整とスケール
 SQL Database は、Basic、Standard、Premium の*サービス階層*で使用できます。各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、[さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md)を提供しています。最初のアプリケーションを月数ドルで小規模データベースにビルドし、やがてアプリケーションが世界中に急速に広まってきたら、アプリケーションやお客様にダウンタイムを発生させずに、いつでも手動またはプログラムで[サービス層を変更](sql-database-scale-up.md)することができます。
@@ -72,4 +69,4 @@ SQL サーバーには、アクセスの制限、データの保護、および�
 
 - [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。[C#](sql-database-connect-query.md)、[Java](sql-database-develop-java-simple-windows.md)、[Node.js](sql-database-develop-nodejs-simple-windows.md)、[PHP](sql-database-develop-php-retry-windows.md)、[Python](sql-database-develop-python-simple-windows.md)、または [Ruby](sql-database-develop-ruby-simple-linux) で最初のアプリケーションをビルドします。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

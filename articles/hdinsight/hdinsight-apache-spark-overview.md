@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/19/2015" 
+	ms.date="09/30/2015" 
 	ms.author="nitinme"/>
 
 # 概要: Azure HDInsight での Apache Spark 
@@ -40,8 +40,8 @@ Azure HDInsight は、完全に管理された Spark サービスを提供しま
 
 | 機能 | 説明 |
 |-------------------------------------|-------------------|
-| プロビジョニングのしやすさ | Azure 管理ポータル、Azure PowerShell、または HDInsight .NET SDK を使用すると、HDInsight に新しい Spark クラスターを数分でプロビジョニングできます。「[HDInsight での Spark クラスターのプロビジョニング](hdinsight-apache-spark-provision-clusters.md)」をご覧ください。 |
-| 使いやすさ | HDInsight クラスターの Spark には、Zeppelin および Jupyter の Notebook が事前に構成されています。対話型のデータ処理とビジュアル化にこれらを使用できます。これらの Notebook をクラスター ダッシュボードから起動し、Spark クラスターに対して直接使用できます。|
+| プロビジョニングのしやすさ | Microsoft Azure 管理ポータル、Azure PowerShell、または HDInsight .NET SDK を使用すると、HDInsight に新しい Spark クラスターを数分でプロビジョニングできます。「[HDInsight での Spark クラスターのプロビジョニング](hdinsight-apache-spark-provision-clusters.md)」をご覧ください。 |
+| 使いやすさ | HDInsight クラスターの Spark には、Zeppelin および Jupyter の Notebook が事前に構成されています。対話型のデータ処理とビジュアル化にこれらを使用できます。これらの Notebook の URL は https://CLUSTERNAME.azurehdinsight.net/zeppelin と https://CLUSTERNAME.azurehdinsight.net/jupyter です。__CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。|
 | REST API | HDInsight の Spark に含まれる Spark ジョブ サーバーは REST API サーバーであり、ユーザーはジョブをリモートで送信して実行を監視できます。 |
 | 同時クエリ | HDInsight の Spark は同時クエリをサポートします。これにより、1 人のユーザーからの複数のクエリまたは複数のユーザーおよびアプリケーションからの複数のクエリが、同じクラスター リソースを共有できます。 |
 | SSD へのキャッシュ | データのキャッシュ先を、メモリまたはクラスター ノードに取り付けられている SSD から選択できます。メモリへのキャッシュは、クエリのパフォーマンスは最高ですが、コストがかかります。SSD へのキャッシュは、メモリ内のデータセット全体を収めるのに必要なサイズのクラスターを作成する必要なしにクエリのパフォーマンスを向上できる優れたオプションです。|
@@ -63,7 +63,7 @@ HDInsight の Apache Spark では、次のような主要なシナリオが可�
 
 HDInsight の Apache Spark では、データは Azure BLOB に格納されます。ビジネス エキスパートや重要な意思決定者は、そのデータを分析してレポートを作成し、分析されたデータから Microsoft Power BI を使用して対話型レポートを作成できます。アナリストは Azure Storage の非構造化または半構造化されたデータから開始し、Notebook を使用してデータ用のスキーマを定義し、Microsoft Power BI を使用してデータ モデルを作成できます。また、HDInsight の Spark は Tableau、Qlikview、SAP Lumira などのサードパーティ製 BI ツールをサポートするので、データ アナリスト、ビジネス エキスパート、重要な意思決定者にとって理想的なプラットフォームです。
 
-### 反復的な機械学習
+### 反復的な Machine Learning
 
 [チュートリアルを見る](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 
@@ -100,4 +100,4 @@ HDInsight の Spark では、Microsoft Power BI や Tableau などの BI ツー�
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

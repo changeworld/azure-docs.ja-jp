@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="scoriani"
 	manager="timlt"
-	editor="tysonn"/>
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -17,6 +17,8 @@
 	ms.author="scoriani"/>
 
 # リソース マネージャー テンプレートを使用した Ubuntu 上での DataStax
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイメント モデルを使用したリソースの作成について説明します。
 
 DataStax は、Apache Cassandra に基づくソリューションの開発と配布を行う、実績のある業界リーダーです。Apache Cassandra は、商用使用がサポートされている、企業向けの NoSQL 分散データベース テクノロジで、アジャイルで常時稼働、しかも任意のサイズにスケール可能であるとして、広く認められています。DataStax は、Enterprise (DSE) と Community (DSC) の 2 種類の製品を提供しています。また、インメモリ コンピューティング、エンタープライズ レベルのセキュリティ、高速かつ強力な統合分析、エンタープライズ検索などの機能も提供しています。
 
@@ -233,7 +235,7 @@ Azure のデプロイ名、リソース グループ名、Azure の場所、JSON
 
 - 左側のナビゲーション バーで **[参照]** をクリックし、下へスクロールして **[リソース グループ]** をクリックします。  
 - 作成したリソース グループをクリックして、[リソース グループ] ブレードを表示します。  
-- [リソース グループ] ブレードの **[監視]** 部分にある [イベント] 棒グラフをクリックすると、デプロイのイベントを表示できます。
+- [リソース グループ] ブレードの **[監視]** 部分にある [イベント] 棒グラフをクリックすると、デプロイメントのイベントを表示できます。
 - 個々のイベントをクリックすることで、テンプレートのために実行された各操作の詳細にドリル ダウンできます。
 
 テスト後に、このリソース グループとそのすべてのリソース (ストレージ アカウント、仮想マシン、仮想ネットワーク) を削除する必要がある場合は、次のコマンドを使用します。
@@ -477,4 +479,4 @@ vm-disk-utils-0.1.sh は、azure-quickstart-tempates GitHub リポジトリ内�
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

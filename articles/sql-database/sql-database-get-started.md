@@ -35,11 +35,11 @@
 
 ## 手順 1. サインインして SQL データベースのセットアップを開始する
 1. [Azure ポータル](http://portal.azure.com/)にサインインします。
-2. **[新規]**、**[データ + ストレージ]**、**[SQL データベース]** の順にクリックします。
+2. **[新規]**、**[データ + ストレージ]**、**[SQL Database]** の順にクリックします。
 
 	![Create a new SQL database](./media/sql-database-get-started/create-db.png)
 	
-	**[SQL データベース]** 設定ブレードが表示されます。ここで、サーバーとデータベースの詳細を設定します。
+	**[SQL Database]** 設定ブレードが表示されます。ここで、サーバーとデータベースの詳細を設定します。
 
 	![Database and server settings for SQL database](./media/sql-database-get-started/get-started-dbandserversettings.png)
 
@@ -60,22 +60,22 @@ Azure の SQL データベースは、データベース サーバーに存在�
 
 	>[AZURE.TIP]データベース サーバーは、データベースを使用するアプリケーションに近い場所に作成してください。場所を変更する場合は、**[場所]** をクリックし、別の名前を選択して、**[OK]** をクリックするだけです。
 
-5. **[OK]** をクリックして、**[SQL データベース]** ブレードに戻ります。
+5. **[OK]** をクリックして、**[SQL Database]** ブレードに戻ります。
 
 データベースとサーバーはまだ作成されていません。これらは次の手順で作成されます。次の手順では、AdventureWorks サンプルからデータベースを作成して設定を確認します。
 
 ## 手順 4. データベースを設定して作成する
-1. **[SQL データベース]** ブレードで **[ソースの選択]**、**[サンプル]** の順にクリックします。 
+1. **[SQL Database]** ブレードで **[ソースの選択]**、**[サンプル]** の順にクリックします。 
 
 	![Create a database from a sample](./media/sql-database-get-started/new-sample-db.png)
 
-2. **[SQL データベース]** ブレードに戻ると、**[サンプルの選択]** に **"AdventureWorks LT [V12]"** が表示されます。**[作成]** をクリックし、サーバーとデータベースの作成を開始します。
+2. **[SQL Database]** ブレードに戻ると、**[サンプルの選択]** に **"AdventureWorks LT [V12]"** が表示されます。**[作成]** をクリックし、サーバーとデータベースの作成を開始します。
 
 	![Create a sample database](./media/sql-database-get-started/adworks_create.png)
 
 	>[AZURE.NOTE]この簡易な方法では、**[価格レベル]**、**[照合順序]**、**[リソース グループ]** の設定は変更していません。データベースの価格レベルの変更およびスケールアップとスケールダウンは、いつでもダウンタイムなしで実行できます。詳細については、「[SQL Database の価格](http://azure.microsoft.com/pricing/details/sql-database/)」と [SQL Database の価格レベル](sql-database-service-tiers.md)に関するページを参照してください。データベースの照合順序は、ここで設定すると変更できません。照合順序の詳細については、「[照合順序と Unicode のサポート](https://msdn.microsoft.com/library/ms143726.aspx)」を参照してください。Azure リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 
-Azure のスタート画面に戻ると、データベースが作成されてオンラインになるまでの進行状況がタイルに表示されます。また、**[すべて参照]**、**[SQL データベース]** の順にクリックして、データベースがオンラインであることを確認することもできます。
+Azure のスタート画面に戻ると、データベースが作成されてオンラインになるまでの進行状況がタイルに表示されます。また、**[すべて参照]**、**[SQL Database]** の順にクリックして、データベースがオンラインであることを確認することもできます。
 	
 ご利用ありがとうございます。 これでデータベースはクラウドで稼働されるようになりました。あともう少しで終了ですが、重要な手順が 1 つ残っています。データベースに接続できるように、データベース サーバーで規則を作成する必要があります。
 
@@ -101,7 +101,7 @@ Azure のスタート画面に戻ると、データベースが作成されて�
 
 	![Add the IP address](./media/sql-database-get-started/firewall_config_new_rule.png)
 
-	>[AZURE.IMPORTANT]IP アドレスは不定期で変更される可能性があるため、新しいファイアウォール規則を作成するまでサーバーにアクセスできなくなる場合があります。[Bing](http://www.bing.com/search?q=my%20ip%20address) を使用して IP アドレスを確認し、1 つの IP アドレスまたは特定の範囲の IP アドレスを追加できます。詳細については、[ファイアウォール設定の構成方法](sql-database-configure-firewall-settings.md)に関するページを参照してください。
+	>[AZURE.IMPORTANT]クライアント IP アドレスは不定期で変更される可能性があるため、新しいファイアウォール規則を作成するまでサーバーにアクセスできなくなる場合があります。[Bing](http://www.bing.com/search?q=my%20ip%20address) を使用して IP アドレスを確認し、1 つの IP アドレスまたは特定の範囲の IP アドレスを追加できます。詳細については、[ファイアウォール設定の構成方法](sql-database-configure-firewall-settings.md)に関するページを参照してください。
 
 ## 次のステップ
 これで、サンプル データを含むデータベースが作成され、お気に入りのツールを使用してデータベースを探索する準備が整いました。
@@ -114,4 +114,4 @@ Azure のスタート画面に戻ると、データベースが作成されて�
 
 - オンプレミスの SQL Server データベースを Azure に移動する場合の詳細については、[Azure SQL Database へのデータベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO2-->

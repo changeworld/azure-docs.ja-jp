@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services" 
-	ms.date="06/17/2015"
+	ms.date="10/02/2015"
 	ms.author="jeffreyg"/>
 
 # SQL Server IaaS Agent 拡張機能
@@ -77,4 +77,4 @@ VM からこの拡張機能を削除する場合は、次の Azure Powershell �
 ### 構文
 Remove-AzureVMSqlServerExtension -VM <IPersistentVM> [<CommonParameters>]
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

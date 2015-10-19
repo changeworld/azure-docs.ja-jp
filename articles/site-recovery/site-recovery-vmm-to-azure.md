@@ -81,7 +81,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
 
 
-2. 
+2. [
 3. *[Data Services]* をクリックし、*[Recovery Services]* を展開し、*[Site Recovery コンテナー]*クリックします。*
 3. *[新規作成]*、*[簡易作成]* の順にクリックします。
 
@@ -131,16 +131,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 5. **[インターネット接続]** で、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。*[既定のシステム プロキシ設定を使用]* を選択して、サーバー上に構成されている既定のインターネット接続設定を使用します。
 
-	![インターネット設定](./media/site-recovery-vmm-to-azure/VMMASRRegisterProxyDetailsScreen.png)
-	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシの設定を構成すると、プロキシの接続を確認するためのテストが実行されます。
-	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合は、プロキシのアドレスやポートなど、プロキシの詳細を入力する必要があります。
-	- 次の URL は、VMM サーバーと、Hyper-V ホストからアクセスできる必要があります。
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
-	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」および HTTPS (443) プロトコルで説明されている IP アドレスを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+	![インターネット設定](./media/site-recovery-vmm-to-azure/VMMASRRegisterProxyDetailsScreen.png) - カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシの設定を構成すると、プロキシの接続を確認するためのテストが実行されます。- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合は、プロキシのアドレスやポートなど、プロキシの詳細を入力する必要があります。- 次の URL は、VMM サーバーと、Hyper-V ホストからアクセスできる必要があります。 - *.hypervrecoverymanager.windowsazure.com - *.accesscontrol.windows.net - *.backup.windowsazure.com - *.blob.core.windows.net - *.store.core.windows.net - 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」および HTTPS (443) プロトコルで説明されている IP アドレスを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
 	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、[設定] ワークスペースを開いて [セキュリティ] を展開し、[実行アカウント] をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 
@@ -165,7 +156,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 >
 >1. プロバイダーのインストール ファイルと登録キーを C:\\ASR などのフォルダーにダウンロードします。
 >2. System Center Virtual Machine Manager サービスを停止します。
->3. **管理者**特権でコマンド プロンプトから次のコマンドを実行して、プロバイダーのインストーラーを抽出します。 
+>3. **管理者**特権でコマンド プロンプトから次のコマンドを実行して、プロバイダーのインストーラーを抽出します。
 >
     	C:\Windows\System32> CD C:\ASR
     	C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
@@ -184,9 +175,9 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
  - **/proxyAddress**: 省略可能。プロキシ サーバーのアドレスを指定します。
  - **/proxyport**: 省略可能。プロキシ サーバーのポートを指定します。
  - **/proxyUsername**: 省略可能。プロキシのユーザー名を指定します (認証が必要なプロキシの場合)。
- - **/proxyPassword**: 省略可能。プロキシ サーバーの認証に使用するパスワードを指定します (認証が必要なプロキシの場合)。 
+ - **/proxyPassword**: 省略可能。プロキシ サーバーの認証に使用するパスワードを指定します (認証が必要なプロキシの場合)。
 
-  
+
 ## ステップ 4: Azure のストレージ アカウントを作成する
 
 Azure ストレージ アカウントがない場合は、**[Azure ストレージ アカウントの追加]** をクリックします。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。
@@ -358,6 +349,5 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 
 
 <LI>ご不明な点やご質問などがありましたら、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>にアクセスしてください。</LI> </UL>
- 
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

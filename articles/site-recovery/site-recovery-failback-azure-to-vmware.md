@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.topic="article"
    ms.workload="required" 
-   ms.date="08/05/2015"
+   ms.date="10/07/2015"
    ms.author="ruturajd@microsoft.com"/>
 
 # Azure から VMware にフェールバックする手順
@@ -88,7 +88,7 @@ Azure 内の VM がデータをオンプレミスの MT に戻せるようにす
 
 	![](./media/site-recovery-failback-azure-to-vmware/image9.png)
 
-2.  プロセス サーバー名を指定し、仮想マシンに管理者として接続するために名前とパスワードを入力します。プロセス サーバーの登録先となる構成サーバーを選択します。これは仮想マシンの保護とフェールオーバーに使用しているサーバーと同じにする必要があります。プロセス サーバーをデプロイする Azure ネットワークを指定します。構成サーバーと同じネットワークにする必要があります。選択したサブネットから一意の IP アドレスを指定し、デプロイを開始します。
+2.  プロセス サーバー名を指定し、仮想マシンに管理者として接続するために名前とパスワードを入力します。プロセス サーバーの登録先となる構成サーバーを選択します。これは仮想マシンの保護とフェールオーバーに使用しているサーバーと同じにする必要があります。プロセス サーバーをデプロイする Azure ネットワークを指定します。構成サーバーと同じネットワークにする必要があります。選択したサブネットから一意の IP アドレスを指定し、デプロイメントを開始します。
 
 	![](./media/site-recovery-failback-azure-to-vmware/image10.png)
 
@@ -111,7 +111,7 @@ Azure 内の VM がデータをオンプレミスの MT に戻せるようにす
 
 Windows MT は、vContinuum セットアップに既にバンドルされています。vContinuum をインストールすると、MT も同じマシンにデプロイされ、構成サーバーに登録されます。
 
-1.  デプロイを開始するには、Azure からの VM の復旧先となる、オンプレミスの ESX ホスト上に空のマシンを作成します。
+1.  デプロイメントを開始するには、Azure からの VM の復旧先となる、オンプレミスの ESX ホスト上に空のマシンを作成します。
 
 2.  VM に 2 つ以上のディスクがアタッチされていることを確認します。1 つ目は OS 用に使用され、2 つ目はリテンション期間ドライブとして使用されます。
 
@@ -121,7 +121,7 @@ Windows MT は、vContinuum セットアップに既にバンドルされてい�
 
 ### Linux MT をデプロイする
 
-1.  デプロイを開始するには、Azure からの VM の復旧先となる、オンプレミスの ESX ホスト上に空のマシンを作成します。
+1.  デプロイメントを開始するには、Azure からの VM の復旧先となる、オンプレミスの ESX ホスト上に空のマシンを作成します。
 
 2.  VM に 2 つ以上のディスクがアタッチされていることを確認します。1 つ目は OS 用に使用され、2 つ目はリテンション期間ドライブとして使用されます。
 
@@ -152,7 +152,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 注: その他のパッケージをダウンロードおよびインストールする前に、システムがインターネットに接続されていることを確認します。
 
-\# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
+# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
 
 このコマンドは、次に示す 15 のパッケージを CentOS 6.6 リポジトリからダウンロードしてインストールします。
 
@@ -188,21 +188,17 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 注: ソース マシンで、ルートまたはブート デバイスとして Reiser または XFS のファイル システムが使用されている場合、保護する前に、次のパッケージを Linux マスター ターゲットにダウンロードしてインストールする必要があります。
 
-\# cd /usr/local
+# cd /usr/local
 
-\# wget
-<http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
+# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
 
-\# wget
-<http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
+# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
 
-\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm
-reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
+# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
-\# wget
-<http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
+# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
 
-\# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
+# rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
 
 #### カスタム構成変更を適用する
 
@@ -218,7 +214,7 @@ reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
 3. 次のコマンドを実行して、アクセス許可を付与します。
 
-\# **chmod 755 ./ApplyCustomChanges.sh**
+# **chmod 755 ./ApplyCustomChanges.sh**
 
 4. 次のコマンドを実行して、スクリプトを実行します。
 
@@ -391,13 +387,13 @@ NAT Configuration|以降で詳細に説明します。
 >
 > ![](./media/site-recovery-failback-azure-to-vmware/image28.png)
 >
-> プロセス サーバーのパブリック IP を識別するには、Azure の PS デプロイにアクセスし、そのパブリック IP アドレスを確認します。
+> プロセス サーバーのパブリック IP を識別するには、Azure の PS デプロイメントにアクセスし、そのパブリック IP アドレスを確認します。
 >
 > 2 つ目のチャネルは、プロセス サーバーとマスター ターゲットとの間に確立します。NAT を使用するかしないかのオプション選択は、MT と PS との間に VPN ベースの接続を使用しているか、またはインターネット経由で保護しているかによって異なります。PS が VPN 経由で MT と通信している場合は、このオプションを選択しないでください。マスター ターゲットがプロセス サーバーとインターネット経由で通信する必要がある場合は、PS 用の NAT 設定を指定します。
 >
 > ![](./media/site-recovery-failback-azure-to-vmware/image29.png)
 >
-> プロセス サーバーのパブリック IP を識別するには、Azure の PS デプロイにアクセスし、そのパブリック IP アドレスを確認します。
+> プロセス サーバーのパブリック IP を識別するには、Azure の PS デプロイメントにアクセスし、そのパブリック IP アドレスを確認します。
 >
 > ![](./media/site-recovery-failback-azure-to-vmware/image30.png)
 
@@ -558,4 +554,4 @@ NAT Configuration|以降で詳細に説明します。
 
  
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

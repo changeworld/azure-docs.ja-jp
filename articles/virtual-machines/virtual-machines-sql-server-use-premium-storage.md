@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/02/2015"
+	ms.date="10/02/2015"
 	ms.author="jroth"/>
 
 # 仮想マシン上での Azure Premium Storage と SQL Server の使用
@@ -88,7 +88,7 @@ DS* VM の場合、VM をホストする Virtual Network (VNET) を地域 VNET �
 
 Premium Storage 用に構成された新しいストレージ アカウントを作成する必要があります。Premium Storage の使用は、個別の VHD ではなくストレージ アカウントで設定されることに注意してください。ただし、DS* シリーズ VM を使用するときは、Premium および Standard Storage アカウントから VHD をアタッチできます。Premium Storage アカウントに OS の VHD を配置したくない場合、これを検討できます。
 
-次の **Type** が "Premium_LRS" の **New-AzureStorageAccountPowerShell** コマンドは、Premium Storage アカウントを作成します。
+次の **Type** が "Premium\_LRS" の **New-AzureStorageAccountPowerShell** コマンドは、Premium Storage アカウントを作成します。
 
     $newstorageaccountname = "danpremstor" 
     New-AzureStorageAccount -StorageAccountName $newstorageaccountname -Location "West Europe" -Type "Premium_LRS"   
@@ -148,9 +148,9 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 ストレージのパフォーマンスは、指定されている DS* VM のサイズと VHD のサイズによって決まります。VM により、アタッチできる VHD の数と、サポートする最大帯域幅 (MB/秒) は異なります。具体的な帯域幅については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines-size-specs.md)」を参照してください。
 
-ディスク サイズを大きくすると IOPS が向上します。移行パスについて考えるときはこれを検討する必要があります。詳細については、[IOPS とディスク タイプの表](../storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-JPing-premium-storage)を参照してください。
+ディスク サイズを大きくすると IOPS が向上します。移行パスについて考えるときはこれを検討する必要があります。詳細については、[IOPS とディスク タイプの表](../storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whJA-JPing-premium-storage)を参照してください。
 
-最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。たとえば、Standard_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
+最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。たとえば、Standard\_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
 
 ## 新しいデプロイ
 
@@ -379,7 +379,7 @@ Microsoft Azure ではただ 1 つの IP アドレスを VM の NIC に割り当
 1. **既存の AlwaysOn クラスターにセカンダリ レプリカを追加する**
 1. **新しい AlwaysOn クラスターに移行する**
 
-#### 1.既存の AlwaysOn クラスターにセカンダリ レプリカを追加する
+#### 1\.既存の AlwaysOn クラスターにセカンダリ レプリカを追加する
 
 1 つの方法は、AlwaysOn 可用性グループにセカンダリを追加することです。新しいクラウド サービスに追加し、新しいロード バランサーの IP でリスナーを更新する必要があります。
 
@@ -401,7 +401,7 @@ AlwaysOn の高可用性が期待どおりに機能することを確認する�
 1. 完全バックアップをコピーし、**NORECOVERY** で復元します。
 1. ログインなど、‘out of user DB’ 依存オブジェクトをコピーします。
 1. 内部ロード バランサー (ILB) を新しく作成するか、または外部ロード バランサー (ELB) を使用して、両方の新しいノードにロード バランサー エンドポイントを設定します。
-> [AZURE.NOTE] 続行する前に、すべてのノードのエンドポイント構成が適切であることをチェックしてください
+> [AZURE.NOTE]続行する前に、すべてのノードのエンドポイント構成が適切であることをチェックしてください
 
 1. (記憶域プールを使用している場合) SQL サーバーへのユーザー/アプリケーション アクセスを停止します。
 1. (記憶域プールを使用している場合) SQL Server エンジン サービスをすべてのノードで停止します。
@@ -426,7 +426,7 @@ AlwaysOn の高可用性が期待どおりに機能することを確認する�
 - セカンダリ設定中の SQL データ転送時間が長くなる可能性があります。
 - 新しいマシンを並行して実行しながらの移行には追加コストがかかります。
 
-#### 2.新しい AlwaysOn クラスターに移行する
+#### 2\.新しい AlwaysOn クラスターに移行する
 
 もう 1 つの方法は、新しいクラウド サービスに新しいノードで新しい AlwaysOn クラスターを作成し、それを使用するようにクライアントをリダイレクトすることです。
 
@@ -457,7 +457,7 @@ AlwaysOn の高可用性が期待どおりに機能することを確認する�
 1. **既存のセカンダリを利用する: シングルサイト**
 1. **既存のセカンダリ レプリカを利用する: マルチサイト**
 
-#### 1.既存のセカンダリを利用する: シングルサイト
+#### 1\.既存のセカンダリを利用する: シングルサイト
 
 ダウンタイムを最小限にする 1 つの方法は、既存のクラウドをセカンダリにし、現在のクラウド サービスから削除することです。その後、新しい Premium Storage アカウントに VHD をコピーし、新しいクラウド サービスに VM を作成します。次に、クラスターおよびフェールオーバーでリスナーを更新します。
 
@@ -503,7 +503,7 @@ AlwaysOn の高可用性が期待どおりに機能することを確認する�
 - 手順 5ii を使用する場合、追加される IP アドレス リソースの実行可能な所有者として SQL1 追加します。
 - フェールオーバーをテストします。
 
-#### 2.既存のセカンダリ レプリカを利用する: マルチサイト
+#### 2\.既存のセカンダリ レプリカを利用する: マルチサイト
 
 複数の Azure データセンター (DC) にノードがある場合、またはハイブリッド環境がある場合は、その環境で AlwaysOn 構成を使用してダウンタイムを最小にできます。
 
@@ -679,7 +679,7 @@ SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポ�
 
     Set-ClusterQuorum -NodeMajority  
 
-クラスター クォーラムの管理と構成の詳細については、「[Configure and Manage the Quorum in a Windows Server 2012 Failover Cluster (Windows Server 2012 フェールオーバー クラスターでのクォーラムの構成と管理)](https://technet.microsoft.com/ja-jp/library/jj612870.aspx)」を参照してください。
+クラスター クォーラムの管理と構成の詳細については、「[Configure and Manage the Quorum in a Windows Server 2012 Failover Cluster (Windows Server 2012 フェールオーバー クラスターでのクォーラムの構成と管理)](https://technet.microsoft.com/JA-JP/library/jj612870.aspx)」を参照してください。
 
 #### 手順 6. 既存のエンドポイントと ACL を抽出する
     #GET Endpoint info
@@ -1148,4 +1148,4 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [25]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_15.png
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

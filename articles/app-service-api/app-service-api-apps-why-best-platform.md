@@ -70,10 +70,10 @@ API Apps は、REST ベースの Web Api を開発、デプロイ、発行、使
 
 API アプリの使用を開始するには、[API アプリの作成に関するチュートリアル](app-service-dotnet-create-api-app.md)に従ってください。
 
-API のアプリに関する既知の問題の一覧については、[MSDN フォーラムのこの投稿](https://social.msdn.microsoft.com/Forums/en-US/7f8b42f2-ac0d-48b8-a35e-3b4934e1c25e/api-app-known-issues?forum=AzureAPIApps)を参照してください。
+API のアプリに関する既知の問題の一覧については、[MSDN フォーラムのこの投稿](https://social.msdn.microsoft.com/Forums/ja-JP/7f8b42f2-ac0d-48b8-a35e-3b4934e1c25e/api-app-known-issues?forum=AzureAPIApps)を参照してください。
 
 Azure App Service プラットフォームの詳細については、[Azure App Service](../app-service/app-service-value-prop-what-is.md) に関するページを参照してください。
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

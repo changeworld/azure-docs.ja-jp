@@ -1,7 +1,25 @@
-<properties pageTitle="Azure での Oracle WebLogic Server 12c 仮想マシンの作成" description="Windows Server 2012 で実行中の Oracle WebLogic Server 12c イメージを Microsoft Azure で作成する例の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
-<tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
+<properties
+	pageTitle="Oracle WebLogic Server 12c VM の作成 | Microsoft Azure"
+	description="リソース マネージャーのデプロイメント モデルを使用して、Windows Server 2012 で実行する Oracle WebLogic Server 12c 仮想マシンを Microsoft Azure で作成します。"
+	services="virtual-machines"
+	authors="bbenz"
+	documentationCenter=""
+	tags="azure-resource-manager"/>
+
+<tags
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="06/22/2015"
+	ms.author="bbenz" />
+
 #Azure での Oracle WebLogic Server 12c 仮想マシンの作成
 次の例は、Windows Server 2012 で実行しているマイクロソフト提供の WebLogic Server 12c のイメージに基づいて、Azure で仮想マシンを作成する方法を示しています。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用して Oracle WebLogic Server を作成する方法について説明します。
+
 
 ##Azure で Oracle WebLogic Server 12c 仮想マシンを作成するには
 
@@ -154,7 +172,7 @@
 
 	8.	規則の名前とオプションで説明を指定し、続いて **[完了]** をクリックします。
 
-12.	インターネット上で実行しているショッピングカート アプリケーションを表示するには、ブラウザーを開いて `http://<<unique_domain_name>>/shoppingcart` の形式の URL にアクセスします。([Azure ポータル](https://ms.portal.azure.com/)内で <<*unique\_domain\_name*>> の値を確定するには、**[Virtual Machines]** をクリックし、続いて Oracle WebLogic Server を実行するために使用している仮想マシンを選択します)
+12.	インターネット上で実行しているショッピングカート アプリケーションを表示するには、ブラウザーを開いて `http://<<unique_domain_name>>/shoppingcart` の形式の URL にアクセスします。([Azure ポータル](https://ms.portal.azure.com/)内で <<*unique\_domain\_name*>> の値を確定するには、**[Virtual Machines]** をクリックし、続いて Oracle WebLogic Server を実行するために使用している Virtual Machines を選択します)
 
 
 ##その他のリソース
@@ -168,4 +186,4 @@
 
 -	[Azure の Oracle 仮想マシン イメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

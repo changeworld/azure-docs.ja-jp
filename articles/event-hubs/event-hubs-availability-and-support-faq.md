@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="イベント ハブの可用性とサポートに関する FAQ"
-   description="Event Hubs の料金と FAQ です。"
+   pageTitle="Event Hubs の可用性とサポート | Microsoft Azure"
+   description="Event Hubs の可用性とサポートに関する FAQ"
    services="event-hubs"
    documentationCenter="na"
    authors="sethmanheim"
@@ -12,18 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="06/09/2015"
+   ms.date="10/07/2015"
    ms.author="sethm" />
 
-# イベント ハブの可用性とサポートに関する FAQ
+# Event Hubs の可用性とサポートに関する FAQ
 
 Event Hubs は、高スループット データ ソースや百万単位のデバイスからのデータ イベントの大規模な取り込み、保存、および処理を実行します。Service Bus キューおよびトピックと組み合わせると、Event Hubs は、あらゆるものをインターネット化するための持続的なコマンドと制御をデプロイできます。
 
-このセクションでは、可用性の情報について説明し、いくつかのよく寄せられる質問に回答します。
+この記事では、可用性の情報について説明し、いくつかのよく寄せられる質問に回答します。
 
 ## 料金情報
 
-Event Hubs の料金については、「[Event Hubs 料金](http://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
+Event Hubs 料金の詳細については、「[Event Hubs 料金](http://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
 ## Event Hubs の受信イベントはどのように計算されますか。
 
@@ -100,15 +100,14 @@ SLA の詳細については、「[サービス レベル アグリーメント]
 
 ## 次のステップ
 
-Event Hubs の詳細については、次のトピックを参照してください。
+Event Hubs の詳細については、次の記事を参照してください。
 
 - [Event Hubs の概要]
-- [Event Hub を使用する完全なサンプル アプリケーション]
+- [Event Hubs を使用する完全なサンプル アプリケーション]
 - Service Bus キューを使用する[キューに格納されたメッセージング ソリューション]
 
 [Event Hubs の概要]: event-hubs-overview.md
-[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
-[キューに格納されたメッセージング ソリューション]: ../cloud-services-dotnet-multi-tier-app-using-service-bus-queues.md
- 
+[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

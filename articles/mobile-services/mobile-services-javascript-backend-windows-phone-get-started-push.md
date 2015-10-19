@@ -140,8 +140,6 @@
 
 このチュートリアルでは、Windows ストア アプリで Mobile Services および Notification Hubs を使用してプッシュ通知を送信できるようにするための基本について説明しました。次に、次のチュートリアルのいずれかを完了します。
 
-+ [認証されたユーザーにプッシュ通知を送信する](mobile-services-javascript-backend-windows-phone-push-notifications-app-users.md) <br/>タグを使用して Mobile Services から認証されたユーザーのみにプッシュ通知を送信する方法について説明します。
-
 + [登録者へのブロードキャスト通知の送信](../notification-hubs-windows-phone-send-breaking-news.md) <br/>ユーザーが興味のあるカテゴリに関してプッシュ通知を登録して、プッシュ通知を受信できるようにする方法について説明します。
 
 + [登録者へのプラットフォーム固有の通知の送信](../notification-hubs-aspnet-cross-platform-notify-users.md) <br/>テンプレートを使用して、バックエンドでプラットフォームに固有のペイロードを作成する必要なくモバイル サービスからプッシュ通知を送信する方法について説明します。
@@ -180,4 +178,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

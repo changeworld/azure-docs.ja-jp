@@ -41,7 +41,7 @@
 
 ## 前提条件
 
-このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](../ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料評価版にサインアップ](../ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
+このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする](../ja-JP/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](../ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 
 開発環境をセットアップするには、[Visual Studio 2013 Update 4](http://go.microsoft.com/fwlink/?LinkId=390521) 以降および最新バージョンの [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409) をインストールする必要があります。この記事は、Visual Studio Update 4 および SDK 2.5.1 を対象にしています。
 
@@ -97,7 +97,7 @@
 		
 		</head>
 		<body>
-		    <div class="navbar navbar-inverase navbar-fixed-top">
+		    <div class="navbar navbar-inverse navbar-fixed-top">
 		        <div class="container">
 		            <div class="navbar-header">
 		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -212,7 +212,7 @@
 
 	![[新しい項目の追加] ダイアログ ボックス][adddb002]
 
-3. Contacts.cs ファイルの内容を次のコードに置き換えます。
+3. Contact.cs ファイルの内容を次のコードに置き換えます。
 
         using System.ComponentModel.DataAnnotations;
         using System.Globalization;
@@ -230,7 +230,7 @@
                 public string Email { get; set; }
             }
         }
-**Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (*ContactID*) を定義します。
+**Contact** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (*ContactID*) を定義します。
 
 ### アプリケーション ユーザーが連絡先を操作できる Web ページを作成する
 
@@ -344,7 +344,7 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 
 	![パッケージ マネージャー コンソールのコマンド][addcode009]
 
-	**update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
+	**update-database** によって、データベースを作成する最初の移行が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
 
 7. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行し、**[CM Demo]** リンクをクリックします (または、https://localhost:(port#)/Cm に移動します)。
 
@@ -554,11 +554,11 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 1. **[Web の発行]** ダイアログ ボックスの左側の **[設定]** タブをクリックします。**[v]** アイコンをクリックして **ApplicationDbContext** の **[リモート接続文字列]** を選択し、**[ContactManagerNN\_dbB]** を選択します。
 
    
-	![settings](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc2.png)
+	![設定](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc2.png)
 
 1. **ContactManagerContext** で、**[Code First Migrations を実行する]** を選択します。
 
-	![settings](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc3.png)
+	![設定](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/rrc3.png)
 
 1. **[発行]** をクリックします。
 1. **user1@contoso.com* (パスワード: "P\_assw0rd1") でログインし、データを編集できることを確認します。
@@ -620,7 +620,7 @@ Google アカウント情報の氏名を入力しないと、NullReferenceExcept
  
 3. このデータベースに接続したことがない場合は、現在の IP アドレスへのアクセスを有効にするファイアウォール規則を追加するように求められることがあります。IP アドレスは、自動的に入力されます。**[ファイアウォール規則の追加]** をクリックするだけで、アクセスが有効になります。
 
-	![add firewall rule](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/addfirewallrule.png)
+	![[ファイアウォール規則の追加]](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/addfirewallrule.png)
         
 	次に、データベースの作成時に指定したユーザー名とパスワードを使用して、データベースにログインします。
  
@@ -720,4 +720,4 @@ MVC および Entity Framework のプログラミングについては、Tom Dyk
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

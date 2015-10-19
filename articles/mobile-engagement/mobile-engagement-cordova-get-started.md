@@ -46,7 +46,7 @@
 
 [AZURE.INCLUDE [ポータルで Mobile Engagement アプリを作成する](../../includes/mobile-engagement-create-app-in-portal.md)]
 
-##<a id="connecting-app"></a>アプリをモバイル エンゲージメントのバックエンドに接続する
+##<a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続する
 
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。
 
@@ -73,7 +73,7 @@
 
 		$ cordova plugin add cordova-plugin-console 
 
-###アプリをモバイル エンゲージメントのバックエンドに接続する
+###アプリを Mobile Engagement のバックエンドに接続する
 
 1. Azure Mobile Engagement Cordova プラグインに変数値を設定しながら、このプラグインをインストールします。
 
@@ -85,6 +85,10 @@
 	        --variable AZME_ANDROID_GOOGLE_PROJECT_NUMBER=... (From your Google Cloud console for sending push notifications) 
 	        --variable AZME_REDIRECT_URL=... (URL scheme which triggers the app for deep linking)
 	        --variable AZME_ENABLE_LOG=true|false
+
+*Android Reach アイコン*: 拡張子も描画可能なプレフィックスも付いていないリソース名を指定する必要があります (例: mynotificationicon)。また、アイコン ファイルは Android プロジェクトにコピーする必要があります (platforms/android/res/drawable)。
+
+*iOS Reach アイコン*: 拡張子付きのリソース名を指定する必要があります (例: mynotificationicon.png)。また、アイコン ファイルは ([フィールドの追加] メニューを使用して) XCode と共に iOS プロジェクトに追加する必要があります。
 
 ##<a id="monitor"></a>リアルタイム監視の有効化
 
@@ -124,13 +128,13 @@
 
 ##<a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
 
-Mobile Engagement を導入すると、キャンペーンとの関連でプッシュ通知とアプリ内メッセージングを利用し、ユーザーとのやり取りを行うことができます。このモジュールは、モバイル エンゲージメント ポータルで REACH として呼び出されます。次のセクションでは、それらを受信するためにアプリをセットアップします。
+Mobile Engagement を導入すると、キャンペーンとの関連でプッシュ通知とアプリ内メッセージングを利用し、ユーザーとのやり取りを行うことができます。このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。次のセクションでは、それらを受信するためにアプリをセットアップします。
 
 ###Mobile Engagement のプッシュの資格情報を設定する
 
 Mobile Engagement がユーザーに代わりプッシュ通知を送信できるようにするには、Mobile Engagement に Apple iOS 証明書または GCM サーバーの API キーへのアクセスを許可する必要があります。
 	
-1. モバイル エンゲージメント ポータルに移動します。このプロジェクト用に使用しているアプリを対象にしていることを確認し、下部にある **[エンゲージ]** ボタンをクリックします。
+1. Mobile Engagement ポータルに移動します。このプロジェクト用に使用しているアプリを対象にしていることを確認し、下部にある **[エンゲージ]** ボタンをクリックします。
 	
 	![][1]
 	
@@ -183,13 +187,13 @@ GCM 通知は Android エミュレーターでサポートされているため�
 
 デバイスで実行されているアプリにプッシュ通知を送る簡単なプッシュ通知キャンペーンを作成してみましょう。
 
-1. Mobile Engagement ポータルで [**リーチ**] タブに移動します。
+1. Mobile Engagement ポータルで **[リーチ]** タブに移動します。
 
 2. **[新しいお知らせ]** をクリックして、プッシュ キャンペーンを作成します。
 
 	![][6]
 
-3. 情報を入力してキャンペーンを作成します。**[Android]**
+3. 情報を入力してキャンペーン **[Android]** を作成します。
 	
 	- キャンペーンの**名前**を指定します。 
 	- **[配信タイプ]** として *[システム通知]* - *[シンプル]* を選択します。
@@ -241,4 +245,4 @@ GCM 通知は Android エミュレーターでサポートされているため�
 [11]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-android.png
 [12]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-ios.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

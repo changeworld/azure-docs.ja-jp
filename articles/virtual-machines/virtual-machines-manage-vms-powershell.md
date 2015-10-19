@@ -19,6 +19,8 @@
 
 # Azure PowerShell を使用した仮想マシンの管理
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
 Azure PowerShell コマンドレットを使用すると、VM を管理するために日常的に行う多くのタスクを自動化できます。この記事では、比較的単純なタスクにはコマンド例を示し、より複雑なタスクには、コマンドが記載されている記事へのリンクを示します。
 
 >[AZURE.NOTE]まだ Azure PowerShell をインストール、構成していない場合は、[「Azure PowerShell のインストールおよび構成方法」](../install-configure-powershell.md)の記事に手順が記載されています。
@@ -94,4 +96,4 @@ Azure で Windows ベースの仮想マシンを新たに作成するには、�
 - 既存の負荷分散セットのメンバーとしての設定。
 - 静的 IP アドレス。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

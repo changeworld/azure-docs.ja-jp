@@ -6,7 +6,7 @@
     ms.tgt_pltfrm="universal" 
     ms.devlang="na" 
     ms.topic="article" 
-	ms.date="06/03/2015" 
+	ms.date="10/06/2015" 
     ms.author="crystk"/>
 
 # C++ アプリ向けの Application Insights
@@ -18,7 +18,7 @@ Visual Studio Application Insights を使用すると、使用状況、イベン
 必要なものは次のとおりです。
 
 * [Microsoft Azure](http://azure.com) のサブスクリプションWindows、XBox Live、またはその他の Microsoft クラウド サービスで所有している Microsoft アカウントを使用してサインインします。
-* Visual Studio 2015 以降。
+* Visual Studio 2015 or later.
 * Windows 10 ユニバーサル アプリケーション
 
 ## Application Insights リソースの作成
@@ -27,7 +27,7 @@ Visual Studio Application Insights を使用すると、使用状況、イベン
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順にクリックする](./media/app-insights-windows-cpp/01-universal.png)
 
-表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。あるいは、[参照] ボタンをクリックして探します。
+表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。To get back to it next time you login to Azure, you should find a tile for it on the start screen.あるいは、[参照] ボタンをクリックして探します。
 
 ####  インストルメンテーション キーをコピーします。
 
@@ -136,8 +136,8 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 [metrics]: app-insights-metrics-explorer.md
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
-[track]: app-insights-custom-events-metrics-api.md
+[track]: app-insights-api-custom-events-metrics.md
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

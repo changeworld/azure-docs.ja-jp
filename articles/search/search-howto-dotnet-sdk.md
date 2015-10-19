@@ -13,7 +13,7 @@
    ms.workload="search"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.date="07/08/2015"
+   ms.date="10/06/2015"
    ms.author="brjohnst"/>
 
 # .NET アプリケーションから Azure Search を使用する方法 #
@@ -31,7 +31,7 @@ SDK は、クライアント ライブラリ `Microsoft.Azure.Search` で構成�
 
 Azure Search .NET SDK の現在のバージョンはプレリリース版です。最初の安定バージョンに組み込むためのフィードバックを提供する場合は、[フィードバック ページ](http://feedback.azure.com/forums/263029-azure-search)を使用してください。
 
-.NET SDK はバージョン `2015-02-28` の Azure Search REST API をサポートします。ドキュメントは [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。マイクロソフトの自然言語プロセッサや `moreLikeThis` 検索パラメーターなど、このバージョンの一部では*ない*新機能は[プレビュー](search-api-2015-02-28-preview.md)段階であり、SDK ではまだ使用できません。これらの機能の最新の状態については、「[Azure Search サービスのバージョン](https://msdn.microsoft.com/library/azure/dn864560.aspx)」または「[What’s new in the latest update to Azure Search (Azure Search の最新の更新での新機能)](search-latest-updates.md)」で確認できます。
+.NET SDK はバージョン `2015-02-28` の Azure Search REST API をサポートします。ドキュメントは [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx) を参照してください。このバージョンでは、Microsoft 言語アナライザーがサポートされるようになりました。`moreLikeThis` 検索パラメーターのサポートなど、このバージョンの一部*ではない*新機能は[プレビュー](search-api-2015-02-28-preview.md)段階であり、SDK ではまだ使用できません。これらの機能の最新の状態については、「[Azure Search サービスのバージョン](https://msdn.microsoft.com/library/azure/dn864560.aspx)」または「[What’s new in the latest update to Azure Search (Azure Search の最新の更新での新機能)](search-latest-updates.md)」で確認できます。
 
 この SDK でサポートされない他の機能は次のとおりです。
 
@@ -335,7 +335,9 @@ Azure Search .NET SDK が `Hotel` のようなユーザー定義クラスのイ�
 
 最初に気付くのは、`Hotel` の各パブリック プロパティがインデックス定義のフィールドに対応していることですが、1 つ重要な違いがあります。各フィールドの名前が小文字で始まっているのに対し ("camel case")、`Hotel` の各パブリック プロパティの名前は大文字で始まっています ("Pascal case")。これは、ターゲット スキーマをアプリケーション開発者が制御できない場合にデータ バインドを実行する .NET アプリケーションでの一般的なシナリオです。プロパティ名を camel-case にして .NET の命名ガイドラインに違反するのではなく、プロパティ名を自動的に camel-case にマップするように `[SerializePropertyNamesAsCamelCase]` 属性で SDK に指示できます。
 
-`Hotel` クラスに関する 2 番目の重要な点は、パブリック プロパティのデータ型です。これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。`bool?` と `Edm.Boolean`、`DateTimeOffset?` と `Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。型のマッピングの具体的なルールについては、[MSDN](https://msdn.microsoft.com/library/azure/dn931291.aspx) で `Documents.Get` メソッドを参照してください。Azure Search のすべてのプリミティブ フィールド型は null 値を許容するので、`bool` や `int` などの値型は `Hotel` クラスで null 値を許容するようになっていることに注意してください。
+`Hotel` クラスに関する 2 番目の重要な点は、パブリック プロパティのデータ型です。これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。`bool?` と `Edm.Boolean`、`DateTimeOffset?` と `Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。型のマッピングの具体的なルールについては、[MSDN](https://msdn.microsoft.com/library/azure/dn931291.aspx) で `Documents.Get` メソッドを参照してください。
+ 
+> [AZURE.NOTE]独自のモデル クラスを設計して Azure Search インデックスにマップする場合は、`bool` ではなく null を許容する `bool` や `int` などの値型のプロパティ (`bool?` など) を宣言してください。Azure Search のすべてのプリミティブ フィールド型は null を許容しているため必要です。null を許容しない型を使用すると、`0`や `false` などの既定値のインデックスを作成するときに予期しない結果が発生することがあります。
 
 ドキュメントとして独自のクラスを使用するこの機能は、両方向で動作します。また、次のセクションで見るように、検索結果を取得し、SDK で自動的に任意の型に逆シリアル化することもできます。
 
@@ -625,4 +627,4 @@ Hotel.cs:
     }
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO2-->

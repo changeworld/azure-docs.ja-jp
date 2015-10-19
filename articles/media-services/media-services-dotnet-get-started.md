@@ -1,6 +1,6 @@
 <properties
-	pageTitle=".NET SDK を使用してビデオ オン デマンド (VoD) を配信する"
-	description="このチュートリアルでは、Azure Media Services と .NET を使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を紹介します。"
+	pageTitle=".NET SDK を使用したオンデマンド コンテンツ配信の概要"
+	description="このチュートリアルでは、Azure Media Services と .NET を使用したオンデマンド コンテンツ配信アプリケーションの実装手順を紹介します。"
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako"
@@ -12,18 +12,17 @@
 	ms.workload="media"
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
-	ms.topic="hero-article" 
-	ms.date="09/18/2015"
+	ms.topic="hero-article"
+	ms.date="10/05/2015"
 	ms.author="juliako"/>
 
 
-# .NET SDK を使用してビデオ オン デマンド (VoD) を配信する
+# .NET SDK を使用したオンデマンド コンテンツ配信の概要
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 
->[AZURE.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 このチュートリアルでは、Azure Media Services (AMS) SDK for .NET を使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順について説明します。
 
@@ -35,7 +34,7 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
 
 - オペレーティング システム: Windows 8 以降、Windows 2008 R2、Windows 7。
 - .NET Framework 4.5 か .NET Framework 4.0
-- Visual Studio 2013、Visual Studio 2012、Visual Studio 2010 SP1 (Professional、Premium、Ultimate、Express のいずれか)。
+- Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降。
 
 
 このクイック スタートでは、次のタスクが表示されます。
@@ -43,7 +42,7 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
 1.  Media Services アカウントの作成 (Azure ポータルを使用)
 2.  ストリーミング エンドポイントの構成 (ポータルを使用)
 3.  Visual Studio プロジェクトの作成と構成
-5.  メディア サービス アカウントに接続します。
+5.  Media Services アカウントに接続します。
 6.  新しいアセットを作成し、ビデオ ファイルをアップロードします。
 7.  一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
 8.  資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得します。  
@@ -54,15 +53,15 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
 
 1. Azure ポータルで、**[新規]**、**[Media Services]**、**[簡易作成]** の順にクリックします。
 
-	![メディア サービスの簡易作成](./media/media-services-dotnet-get-started/wams-QuickCreate.png)
+	![Media Services の簡易作成](./media/media-services-dotnet-get-started/wams-QuickCreate.png)
 
-2. **[名前]** ボックスに新しいアカウントの名前を入力します。メディア サービス アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
+2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
 
-3. **[リージョン]** ボックスで、メディア サービス アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンのみが表示されます。
+3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンのみが表示されます。
 
-4. **[ストレージ アカウント]** ボックスで、メディア サービス アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。メディア サービス アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
+4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
 
-5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、メディア サービス アカウントと同じです。
+5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
 6. フォームの下部にある **[簡易作成]** をクリックします。
 
@@ -72,7 +71,7 @@ Media Services SDK for .NET で開発を行うには、次の前提条件を満�
 
 	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
 
-	![[メディア サービス] ページ](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
+	![[Media Services] ページ](./media/media-services-dotnet-get-started/wams-mediaservices-page.png)
 
 	アカウント名をダブルクリックすると、既定で **[クイック スタート]** ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
@@ -119,14 +118,9 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 4. App.config ファイルを開き (既定で追加されていない場合はファイルをプロジェクトに追加してください)、ファイルに *appSettings* セクションを追加します。Azure Media Services のアカウント名とアカウント キーの値を設定します。次の例をご覧ください。アカウント名とキー情報を取得するには、Azure ポータルを開いて Media Services のアカウントを選択し、**[キーの管理]** をクリックします。
 
-	<pre><code>
-&lt;configuration>
-    &lt;appSettings>
-	&lt;add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
-    	&lt;add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
-    &lt;/appSettings>
-&lt;/configuration>
-</code></pre>
+	<configuration> ... <appSettings> <add key="MediaServicesAccountName" value="Media-Services-Account-Name" /> <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" /> </appSettings>
+	  
+	</configuration>ion&gt; </code></pre>
 
 5. Program.cs ファイルの先頭にある既存の **using** ステートメントを次のコードで上書きします。
 
@@ -246,9 +240,7 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 
 以下のコードは、エンコーディング ジョブの送信方法を示したものです。このジョブには、**Azure メディア エンコーダー**を使用して mezzanine ファイルを一連のアダプティブ ビットレート MP4 にトランスコードするよう指定するタスクが 1 つ存在します。このコードは、ジョブを送信してその完了を待機します。
 
-ジョブが完了したら、アセットをストリーミングしたり、トランスコードによって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。
-MP4 ファイルをプログレッシブにダウンロードするためにオンデマンド ストリーミング ユニットを取得する必要はありません。
-
+ジョブが完了したら、アセットをストリーミングしたり、トランスコードによって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。MP4 ファイルをプログレッシブにダウンロードするためにオンデマンド ストリーミング ユニットを取得する必要はありません。
 
 次のメソッドを Program クラスに追加します。
 
@@ -294,11 +286,11 @@ MP4 ファイルをプログレッシブにダウンロードするためにオ�
 
 スムーズ ストリーミングのストリーミング URL の形式は次のとおりです。
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
+	 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
 HLS のストリーミング URL の形式は次のとおりです。
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+	 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
 MPEG DASH のストリーミング URL の形式は次のとおりです。
 
@@ -421,13 +413,18 @@ MPEG DASH
 プログレッシブ ダウンロードをテストするには、ブラウザー (Internet Explorer、Chrome、Safari など) に URL を貼り付けます。
 
 
+##次のステップ
 
-##Media Services のラーニング パス
+###Media Services のラーニング パス
 
 AMS のラーニング パスについては、以下を参照してください。
 
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+### 他の情報をお探しですか。
+
+このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
 
 
 <!-- Anchors. -->
@@ -435,6 +432,6 @@ AMS のラーニング パスについては、以下を参照してください
 
 <!-- URLs. -->
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
-  [管理ポータル]: http://manage.windowsazure.com/
+  [Portal]: http://manage.windowsazure.com/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

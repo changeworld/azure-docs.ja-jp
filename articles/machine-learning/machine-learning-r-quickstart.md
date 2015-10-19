@@ -1,6 +1,7 @@
 <properties
 	pageTitle="Machine Learning 向け R 言語のクイック スタート チュートリアル | Microsoft Azure"
 	description="この R プログラミング チュートリアルは、Azure Machine Learning Studio と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を短期間で習得できるように作成されています。"
+	keywords="quickstart,r language,r programming language,r programming tutorial"
 	services="machine-learning"
 	documentationCenter=""
 	authors="Blackmist"
@@ -13,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/02/2015"
+	ms.date="10/08/2015"
 	ms.author="larryfr"/>
 
 # Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
@@ -112,15 +113,13 @@ R コード実行中に Machine Learning Studio でエラーが発生した場�
 この場合、output.log で R のエラー メッセージを見る必要がありそうです。[[R スクリプトの実行] ][execute-r-script]をクリックして、右側の**プロパティウィンドウ**にある **[出力ログの表示]** 項目をクリックします。新しいブラウザー ウィンドウが開き、次のことがわかります。
 
 
-	[ModuleOutput] [1] 14000
-	[ModuleOutput]
-	[ModuleOutput] Loading objects:
-	[ModuleOutput]
-	[ModuleOutput]   port1
-	[ModuleOutput]
-	[ModuleOutput] [1] "Loading variable port1..."
-	[ModuleOutput]
-	[ModuleOutput] Error in eval(expr, envir, enclos) : object 'y' not found
+    [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
+    ---------- Start of error message from R ----------
+    object 'y' not found
+    
+    
+    object 'y' not found
+    ----------- End of error message from R -----------
 
 このエラー メッセージに意外性はなく、明確に問題を特定しています。
 
@@ -161,7 +160,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 
 - Azure Machine Learning 環境を起動します。
 
-- 画面の左下の [+] をクリックし、**[データセット]** を選択します。
+- 画面の左下の __[+ 新規]__ をクリックし、**[データセット]** を選択します。
 
 - **[ローカル ファイルから]**、**[参照]** の順にクリックし、ファイルを選択します。
 
@@ -175,7 +174,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 
 いくつかのデータを Machine Learning Studio に読み込んだので、分析をするために実験を作成する必要があります。
 
-- 左下の [+] をクリックし、**[実験]**、**[空の実験]** の順に選択します。
+- 左下の __[+ 新規]__ をクリックし、**[実験]**、**[空の実験]** の順に選択します。
 
 - 実験を選択し、ページ上部のタイトル **[... に関して作成された実験]** を変更することで、実験に名前を付けることができます。たとえば、「**カリフォルニア乳製品分析**」に変更できます。
 
@@ -205,7 +204,7 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 
 *図 4: cadairydata.csv データセットのサマリー*
 
-このビューには、有用な情報が多数表示されます。**機能の種類**行には、Azure Machine Learning Studio がデータセットの列に割り当てたデータ型が表示されます。また、データセットの最初の数列も表示されます。このような概要表示により、重要な作業を開始する前に、適切なサニティ チェックを行うことができます。
+このビューには、有用な情報が多数表示されます。データセットの最初の数列も表示されます。列を選択すると、[統計] セクションには列に関する詳細情報が表示されます。たとえば、機能の種類行には、Azure Machine Learning Studio が列に割り当てたデータ型が表示されます。このような概要表示により、重要な作業を開始する前に、適切なサニティ チェックを行うことができます。
 
 ###	最初の R スクリプト
 
@@ -270,6 +269,17 @@ RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載�
 	cadairydata <- maml.mapInputPort(1)
 
 **[実行]** ボタンをクリックして、実験を実行します。実行が完了したら、[[R スクリプトの実行]][execute-r-script] モジュールをクリックし、プロパティ ウィンドウの** [出力ログの表示]** をクリックします。ブラウザーで新しいページが開き、output.log ファイルの内容が表示されます。下へスクロールすると、次のことがわかります。
+
+    [ModuleOutput] InputDataStructure
+    [ModuleOutput]
+    [ModuleOutput] {
+    [ModuleOutput]  "InputName":Dataset1
+    [ModuleOutput]  "Rows":228
+    [ModuleOutput]  "Cols":9
+    [ModuleOutput]  "ColumnTypes":System.Int32,3,System.Double,5,System.String,1
+    [ModuleOutput] }
+
+ページをダブルクリックすると、追加のデータが読み込まれ、次のように表示されます。
 
 	[ModuleOutput] [1] "Loading variable port1..."
 	[ModuleOutput]
@@ -377,9 +387,33 @@ R は動的に型を変更できる言語なので、必要に応じてデータ
 	## Azure Machine Learning Studio
 	maml.mapOutputPort('cadairydata')
 
-このコードを実行し、出力を調べましょう。R デバイス メニューの **[視覚化]** の出力を、図 9 に示します。
+このコードを実行して、R スクリプトの出力ログを確認してください。ログの関連するデータを図 9 に示します。
 
-![因子変数を持つデータフレームのサマリー][10]
+    [ModuleOutput] [1] "Loading variable port1..."
+    [ModuleOutput] 
+    [ModuleOutput] 'data.frame':	228 obs. of  9 variables:
+    [ModuleOutput] 
+    [ModuleOutput]  $ Column 0         : int  1 2 3 4 5 6 7 8 9 10 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Year.Month       : num  1995 1995 1995 1995 1995 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month            : Factor w/ 14 levels "Apr","April",..: 6 5 9 1 11 8 7 3 14 13 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
+    [ModuleOutput] 
+    [ModuleOutput] [1] "Saving variable  cadairydata  ..."
+    [ModuleOutput] 
+    [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
 *図 9: 因子変数を持つデータフレームのサマリー*
 
@@ -390,9 +424,33 @@ R は動的に型を変更できる言語なので、必要に応じてデータ
 	## Ensure the coding is consistent and convert column to a factor
 	cadairydata$Month <- as.factor(substr(cadairydata$Month, 1, 3))
 
-実験から戻り、R デバイス ポートの出力を**視覚化**すると、図 10 の結果になります。
+実験を再実行し、出力ログを確認します。出力例を図 10 に示します。
 
-![正しい数の因子レベルを持つデータフレームのサマリー][11]
+    [ModuleOutput] [1] "Loading variable port1..."
+    [ModuleOutput] 
+    [ModuleOutput] 'data.frame':	228 obs. of  9 variables:
+    [ModuleOutput] 
+    [ModuleOutput]  $ Column 0         : int  1 2 3 4 5 6 7 8 9 10 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Year.Month       : num  1995 1995 1995 1995 1995 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
+    [ModuleOutput] 
+    [ModuleOutput] [1] "Saving variable  cadairydata  ..."
+    [ModuleOutput] 
+    [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
 *図 10: 正しい数の因子レベルを持つデータフレームのサマリー*
 
@@ -411,9 +469,29 @@ R データフレームは、強力なフィルター処理機能をサポート
 	# Remove two columns we do not need
 	cadairydata <- cadairydata[, c(-1, -2)]
 
-実験でこのコードを実行し、R デバイス ポートを**視覚化**して結果をチェックします。これらの結果を、図 11 に示します。
+実験でこのコードを実行し、出力ログの結果を確認します。これらの結果を、図 11 に示します。
 
-![2 つの列を除去したデータフレームのサマリー][12]
+    [ModuleOutput] [1] "Loading variable port1..."
+    [ModuleOutput] 
+    [ModuleOutput] 'data.frame':	228 obs. of  7 variables:
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
+    [ModuleOutput] 
+    [ModuleOutput] [1] "Saving variable  cadairydata  ..."
+    [ModuleOutput] 
+    [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
 *図 11: 2 つの列を除去したデータフレームのサマリー*
 
@@ -439,9 +517,31 @@ R データフレームは、強力なフィルター処理機能をサポート
 	## Compute the new column for the dataframe
 	cadairydata$Month.Count <- num.month(cadairydata$Year, cadairydata$Month.Number)
 
-更新した実験を実行し、R デバイス ポートの **[可視化]** を使用して結果を表示します。これらの結果を図 12 に示します。
+更新した実験を実行し、出力ログで結果を確認します。これらの結果を図 12 に示します。
 
-![列を追加したデータフレームのサマリー][13]
+    [ModuleOutput] [1] "Loading variable port1..."
+    [ModuleOutput] 
+    [ModuleOutput] 'data.frame':	228 obs. of  8 variables:
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Cotagecheese.Prod: num  4.37 3.69 4.54 4.28 4.47 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Icecream.Prod    : num  51.6 56.1 68.5 65.7 73.7 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Milk.Prod        : num  2.11 1.93 2.16 2.13 2.23 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
+    [ModuleOutput] 
+    [ModuleOutput] [1] "Saving variable  cadairydata  ..."
+    [ModuleOutput] 
+    [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
 *図 12: 列を追加したデータフレームのサマリー*
 
@@ -498,13 +598,35 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 2. 各ケースで値 NA を返します。副作用がより少ないその他の選択肢も多数存在します。たとえば、ゼロ ベクトル、またはオリジナルの入力ベクトルを返すこともできます。
 
-3. 関数の引数に関するチェックが実行されます。各ケースでエラーが検出された場合、`warming()` 関数により既定値が戻され、メッセージが生成されます。現在、`warning()` ではなく `stop()` を使用しているのは、まさに避けようとしている実行の終了を が行ってしまうからです。このコードを手続き型スタイルで記述したことに注意してください。それは、この場合、関数型アプローチでは複雑で曖昧に思えたからです。
+3. 関数の引数に関するチェックが実行されます。各ケースでエラーが検出された場合、`warming()` 関数により既定値が戻され、メッセージが生成されます。現在、`stop()` ではなく `warning()` を使用しているのは、まさに避けようとしている実行の終了を が行ってしまうからです。このコードを手続き型スタイルで記述したことに注意してください。それは、この場合、関数型アプローチでは複雑で曖昧に思えたからです。
 
 4. 例外が発生せず、処理が突然中断しないように、対数計算は `tryCatch()` の中に含まれています。`tryCatch()` を使用しない場合、R 関数により発生したほとんどのエラーは、停止信号になっていしまい、処理が中断します。
 
-実験内でこの R コードを実行し、output.log ファイルに出力された内容を調べます。4 つの列が変換された値は、R デバイス メニューの **[視覚化]** を使用して表示できます (図 13 を参照)。
+実験内でこの R コードを実行し、output.log ファイルに出力された内容を調べます。図 13 に示すように、ログで変換後の 4 列の値を確認できます。
 
-![データフレームの変換された値のサマリー][14]
+    [ModuleOutput] [1] "Loading variable port1..."
+    [ModuleOutput] 
+    [ModuleOutput] 'data.frame':	228 obs. of  8 variables:
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
+    [ModuleOutput] 
+    [ModuleOutput] [1] "Saving variable  cadairydata  ..."
+    [ModuleOutput] 
+    [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
 *図 13: データフレームの変換された値のサマリー*
 
@@ -538,9 +660,27 @@ R データフレームは、強力なフィルター処理機能をサポート
 	cadairydata <- maml.mapInputPort(1)
 	str(cadairydata) # Check the results
 
-では、実験を実行します。R デバイス ポートの出力は、図 14 のように表示されます。
+では、実験を実行します。新しい R スクリプト図形のログは、図 14 のようになります。
 
-![R スクリプトの実行モジュールにおけるデータフレームのサマリー][15]
+    [ModuleOutput] [1] "Loading variable port1..."
+    [ModuleOutput] 
+    [ModuleOutput] 'data.frame':	228 obs. of  8 variables:
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
 
 *図 14: R スクリプトの実行モジュールにおけるデータフレームのサマリー*
 
@@ -559,9 +699,29 @@ R データフレームは、強力なフィルター処理機能をサポート
 
 	str(cadairydata) # Check the results
 
-R デバイス出力をチェックします。図 15 のように表示されます。
+ここでログを確認します。図 15 のように表示されます。
 
-![時系列オブジェクトを含むデータフレームのサマリー][16]
+    [ModuleOutput] [1] "Loading variable port1..."
+    [ModuleOutput] 
+    [ModuleOutput] 'data.frame':	228 obs. of  9 variables:
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
 *図 15: 時系列オブジェクトを含むデータフレームのサマリー*
 
@@ -662,9 +822,59 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 	cadairycorrelations
 
-このコードを実行すると、図 18 に示す出力が生成されます。
+このコードを実行すると、図 18 に示すログが生成されます。
 
-![ペアワイズ相関関係分析による ccf オブジェクトのリスト][19]
+    [ModuleOutput] Loading objects:
+    [ModuleOutput]   port1
+    [ModuleOutput] [1] "Loading variable port1..."
+    [ModuleOutput] [[1]]
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput] Autocorrelations of series 'X', by lag
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput]    -1     0     1 
+    [ModuleOutput] 0.148 0.358 0.317 
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput] [[2]]
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput] Autocorrelations of series 'X', by lag
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput]     -1      0      1 
+    [ModuleOutput] -0.395 -0.186 -0.238 
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput] [[3]]
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput] Autocorrelations of series 'X', by lag
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput]     -1      0      1 
+    [ModuleOutput] -0.059 -0.089 -0.127 
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput] [[4]]
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput] Autocorrelations of series 'X', by lag
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput]    -1     0     1 
+    [ModuleOutput] 0.140 0.294 0.293 
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput] [[5]]
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput] Autocorrelations of series 'X', by lag
+    [ModuleOutput] 
+    [ModuleOutput] 
+    [ModuleOutput]     -1      0      1 
+    [ModuleOutput] -0.002 -0.074 -0.124 
 
 *図 18: ペアワイズ相関関係分析による ccf オブジェクトのリスト*
 
@@ -700,7 +910,7 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 最初のコード行は少しわかりにくく、説明があれば理解するのに役立つかもしれません。詳細に説明すると、次のようになります。
 
-1.  引数 "**1**" を持つ演算子 "**[[**" は、ccf オブジェクト リストの最初の要素からの時間差における相関関係のベクトルを選択します。
+1.  引数が "**1**" の演算子 "**[[**" を指定すると、ccf オブジェクト リストの最初の要素からの時間差における相関関係のベクトルが選択されます。
 
 2.  `do.call()` 関数は、`lapply()` によるリスト応答の要素に、`rbind()` 関数を適用します。
 
@@ -741,9 +951,29 @@ R ccf オブジェクトとしての相関関係を計算するコードは、�
 
 	str(cadairydata)
 
-このコードを実行し、R デバイス出力ポートを調べます。結果が、図 21 のように表示されます。
+このコードを実行し、ログを確認します。結果が、図 21 のように表示されます。
 
-![データフレームのサマリー][22]
+    [ModuleOutput] [1] "Loading variable port1..."
+    [ModuleOutput] 
+    [ModuleOutput] 'data.frame':	228 obs. of  9 variables:
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Number     : int  1 2 3 4 5 6 7 8 9 10 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Year             : int  1995 1995 1995 1995 1995 1995 1995 1995 1995 1995 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month            : Factor w/ 12 levels "Apr","Aug","Dec",..: 5 4 8 1 9 7 6 2 12 11 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Cotagecheese.Prod: num  1.47 1.31 1.51 1.45 1.5 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Icecream.Prod    : num  5.82 5.9 6.1 6.06 6.17 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Milk.Prod        : num  7.66 7.57 7.68 7.66 7.71 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ N.CA.Fat.Price   : num  6.89 6.79 6.79 6.8 6.8 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
+    [ModuleOutput] 
+    [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
 *図 21: データフレームのサマリー*
 
@@ -1116,4 +1346,4 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO2-->

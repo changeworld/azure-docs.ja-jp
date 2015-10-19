@@ -15,7 +15,7 @@
 
 > [AZURE.NOTE]Web サイトのデプロイ用に Visual Studio [Azure SDK](http://azure.microsoft.com/downloads/) がインストールされていることを確認してください。
 
-1. Visual Studio または Visual Studio Express を起動します。
+1. Visual Studio または Visual Studio Express を起動します。**[サーバー エクスプローラー]** をクリックして Azure アカウントにサインインします。Visual Studio でアカウントの Web サイト リソースを作成するには、サインインする必要があります。
 2. Visual Studio で、**[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックし、**[テンプレート]**、**[Visual C#] ** の順に展開します。次に、**[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックし、「**AppBackend**」という名前を入力して、**[OK]** をクリックします。 
 	
 	![][B1]
@@ -24,7 +24,7 @@
 
 	![][B2]
 
-4. **[Azure サイトの構成]** ダイアログ ボックスで、このプロジェクトで使用するサブスクリプション、リージョン、データベースを選択します。アカウントのパスワードを入力して **[OK]** をクリックし、プロジェクトを作成します。
+4. **[Microsoft Azure Web アプリの構成]** ダイアログでサブスクリプションを選択し、作成した **App Service プラン**を選択します。また、**[新しい App Service プランの作成]** を選択してダイアログからプランを作成することもできます。このチュートリアルではデータベースは必要ありません。App Service プランを選択したら、**[OK]** をクリックしてプロジェクトを作成します。
 
 	![][B5]
 
@@ -36,7 +36,7 @@
 
 
 
-1. ソリューション エクスプローラーで、**AppBackend** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。新しいクラスに「**AuthenticationTestHandler.cs**」という名前を付け、**[追加]** をクリックして、クラスを生成します。このクラスは、*基本認証*でユーザーを認証するために使用します。実際のアプリでは、任意の認証スキームを使用できます。
+1. ソリューション エクスプローラーで、**AppBackend** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。新しいクラスに「**AuthenticationTestHandler.cs**」という名前を付け、**[追加]** をクリックして、クラスを生成します。説明を簡単にするために、このクラスを使用して*￼基本認証￼*でユーザーを認証します。実際のアプリでは、任意の認証スキームを使用できます。
 
 2. AuthenticationTestHandler.cs に次の `using` ステートメントを追加します。
 
@@ -48,9 +48,11 @@
 
 3. AuthenticationTestHandler.cs で、`AuthenticationTestHandler` クラス定義を次のコードに置き換えます。
 
-	このハンドラーでは、*承認* ヘッダーが含まれるすべての要求を処理します。要求で*基本*認証が使用され、ユーザー名の文字列がパスワードの文字列と一致する場合、バックエンドによって承認されます。それ以外の場合、要求は拒否されます。これは正規の認証や認証アプローチではありません。このチュートリアルでの非常に単純な例です。
+	このハンドラーは、次の 3 つの条件を満たす場合に要求を承認します。* 要求に *Authorization* ヘッダーが含まれている。* 要求に*基本*認証が使用されている。* ユーザー名の文字列とパスワードの文字列が同じ文字列である。
 
-	要求メッセージが認証され、`AuthenticationTestHandler` によって承認される場合、基本認証ユーザーは [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) の現在の要求に添付されます。HttpContext のユーザー情報は、別のコントローラー (RegisterController) で使用され、通知登録の要求に [タグ](https://msdn.microsoft.com/library/azure/dn530749.aspx) を追加します。
+	それ以外の場合、要求は拒否されます。これは正規の認証や認証アプローチではありません。このチュートリアルでの非常に単純な例です。
+
+	要求メッセージが認証され、`AuthenticationTestHandler` によって承認される場合、基本認証ユーザーは [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) の現在の要求に添付されます。HttpContext のユーザー情報は、後で別のコントローラー (RegisterController) で使用され、通知登録の要求に [タグ](https://msdn.microsoft.com/library/azure/dn530749.aspx) を追加します。
 
 		public class AuthenticationTestHandler : DelegatingHandler
 	    {
@@ -116,9 +118,9 @@
 
 1. ソリューション エクスプローラーで **AppBackend** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. 左側で、**[オンライン]** をクリックし、**[検索]** ボックスで「**Microsoft.Azure.NotificationHubs**」を検索します。
+2. 左側にある **[オンライン]** をクリックし、**[検索]** ボックスで「**Microsoft.Azure.NotificationHubs**」を検索します。
 
-3. 結果の一覧で、**[Microsoft Azure Notification Hubs Service Management Library]** をクリックし、**[インストール]** をクリックします。インストールが完了したら、NuGet パッケージ マネージャーのウィンドウを閉じます。
+3. 結果の一覧で、**[Microsoft Azure の Notification Hubs]** をクリックしてから、**[インストール]** をクリックします。インストールが完了したら、NuGet パッケージ マネージャーのウィンドウを閉じます。
 
 	これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
 
@@ -130,7 +132,7 @@
 
         using Microsoft.Azure.NotificationHubs;
 
-6. 次に、`Notifications` クラス定義を以下に置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure 管理ポータル](http://manage.windowsazure.com)で確認できます) に置き換えてください。
+6. 次に、`Notifications` クラス定義を以下に置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Microsoft Azure 管理ポータル](http://manage.windowsazure.com)で確認できます) に置き換えてください。
 
 		public class Notifications
         {
@@ -139,13 +141,14 @@
             public NotificationHubClient Hub { get; set; }
 
             private Notifications() {
-                Hub = NotificationHubClient.CreateClientFromConnectionString("<conn string with full access>", "<hub name>");
+                Hub = NotificationHubClient.CreateClientFromConnectionString("<your hub's DefaultFullSharedAccessSignature>", 
+																			 "<hub name>");
             }
         }
 
 
 
-7. 次に、**RegisterController** という新しいコントローラーを作成します。ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。**[Web API 2 コントローラー -- 空]** 項目をクリックし、**[追加]** をクリックします。新しいクラスに「**RegisterController**」という名前を付け、**[追加]** をもう一度クリックして、コントローラーを生成します。
+7. 次に **RegisterController** という名前の新しいコントローラーを作成します。ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。**[Web API 2 コントローラー -- 空]** 項目をクリックし、**[追加]** をクリックします。新しいクラスに「**RegisterController**」という名前を付け、**[追加]** をもう一度クリックして、コントローラーを生成します。
 
 	![][B7]
 
@@ -153,10 +156,10 @@
 
 8. RegisterController.cs に次の `using` ステートメントを追加します。
 
-        using Microsoft.ServiceBus.Notifications;
+        using Microsoft.Azure.NotificationHubs;
+		using Microsoft.Azure.NotificationHubs.Messaging;
         using AppBackend.Models;
         using System.Threading.Tasks;
-        using Microsoft.ServiceBus.Messaging;
         using System.Web;
 
 9. `RegisterController` クラス定義内で、次のコードを追加します。このコードでは、HttpContext に添付されるユーザーのユーザー タグを追加することに注意してください。ユーザーは認証され、追加したメッセージ フィルター `AuthenticationTestHandler` で HttpContext に添付されます。また、要求されたタグを登録する権限をユーザーが持っていることを確認するコードをオプションで追加することもできます。
@@ -291,7 +294,7 @@
             userTag[0] = "username:" + to_tag;
             userTag[1] = "from:" + user;
 
-            Microsoft.ServiceBus.Notifications.NotificationOutcome outcome = null;
+            Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
             HttpStatusCode ret = HttpStatusCode.InternalServerError;
 
             switch (pns.ToLower())
@@ -316,8 +319,8 @@
 
             if (outcome != null)
             {
-                if (!((outcome.State == Microsoft.ServiceBus.Notifications.NotificationOutcomeState.Abandoned) ||
-                    (outcome.State == Microsoft.ServiceBus.Notifications.NotificationOutcomeState.Unknown)))
+                if (!((outcome.State == Microsoft.Azure.NotificationHubs.NotificationOutcomeState.Abandoned) ||
+                    (outcome.State == Microsoft.Azure.NotificationHubs.NotificationOutcomeState.Unknown)))
                 {
                     ret = HttpStatusCode.OK;
                 }
@@ -333,11 +336,11 @@
 
 1. 次に、このアプリを Azure の Web サイトにデプロイして、すべてのデバイスからアクセスできるようにします。**AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
 
-2. 発行先として Azure の Web サイトを選択します。
+2. 発行先として **Microsoft Azure Web Apps** を選択します。
 
     ![][B15]
 
-3. Azure アカウントでログインし、既存または新規の Web サイトを選択します。
+3. Azure アカウントでログインし、既存または新規の Web アプリを選択します。
 
     ![][B16]
 
@@ -359,4 +362,4 @@
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/06/2015" 
+	ms.date="10/01/2015" 
 	ms.author="stefsch"/>
 
 # App Service 環境のネットワーク アーキテクチャの概要
@@ -40,7 +40,9 @@ App Service 環境からの発信インターネット接続を許可する方�
 ## 発信ネットワーク アドレス ##
 App Service 環境で発信呼び出しを行うと、IP アドレスが常に発信呼び出しに関連付けられます。使用される IP アドレスは、呼び出し先のエンドポイントが仮想ネットワーク トポロジの内部にあるか外部にあるかによって異なります。
 
-呼び出し先のエンドポイントが仮想ネットワーク トポロジの**外部**にある場合、使用される発信アドレス (発信 NAT アドレス) は、App Service 環境のパブリック VIP になります。このアドレスは、App Service 環境用のポータル ユーザー インターフェイスで確認できます (注: UX は保留中)。
+呼び出し先のエンドポイントが仮想ネットワーク トポロジの**外部**にある場合、使用される発信アドレス (発信 NAT アドレス) は、App Service 環境のパブリック VIP になります。このアドレスは、[プロパティ] ブレードの App Service 環境用のポータル ユーザー インターフェイスで確認できます。
+ 
+![発信 IP アドレス][OutboundIPAddress]
 
 このアドレスは、App Service 環境でアプリを作成した後、アプリのアドレスに対して *nslookup* を実行することでも判別できます。結果の IP アドレスは、パブリック VIP であり、App Service 環境の発信 NAT アドレスでもあります。
 
@@ -60,9 +62,13 @@ App Service 環境で発信呼び出しを行うと、IP アドレスが常に�
 ## App Service 環境間の呼び出し ##
 同じバーチャル ネットワーク内で、複数の App Service 環境をデプロイし、App Service 環境同士で発信呼び出しを行う場合、より複雑なシナリオとなるでしょう。このような交差したタイプの App Service 環境間呼び出しは、”インターネット” 呼び出しとしても扱われます。
 
-さきほどの 192.23.1.2 という発信 IP アドレスを使用する App Service 環境を例に挙げます。App Service 環境で実行中のアプリケーションが、同じバーチャル ネットワークに存在する第 2 の App Service 環境で実行中のアプリケーションに発信呼び出しを行う場合、第 2 の App Service 環境で着信する発信呼び出しは 192.23.1.2(第 1 の App Service 環境のサブネット アドレス範囲ではない) から送信されているように表示されます。
+次の図に階層アーキテクチャの例を示します。1 つ目の App Service 環境のアプリ (たとえば、"玄関口" である Web アプリ) は 2 つ目の App Service 環境のアプリ (たとえば、インターネットからアクセスできないようにする内部のバックエンド API アプリ) を呼び出します。
 
-異なる App Service 環境間での呼び出しは ”インターネット” 呼び出しとして扱われるものの、各 App Service 環境が同じ Azure リージョンに位置している場合は、ネットワーク トラフィックは同じリージョンの Azure ネットワーク内にとどまり、物理的にパブリック インターネット上に流出することはありません。そのため、第 2 の App Service 環境のサブネット上にネットワーク セキュリティ グループを設定することができ、192.23.1.2 からの受信呼び出しのみを許可することで、App Service 環境間での安全な通信を確保します。
+![App Service 環境間の呼び出し][CallsBetweenAppServiceEnvironments]
+
+上記の例では、App Service 環境 "ASE One" は、192.23.1.2 という発信 IP アドレスを使用します。この App Service 環境で実行されているアプリが、同じ仮想ネットワーク内にある 2 つ目の App Service 環境 ("ASE Two") で実行されているアプリに発信呼び出しを行う場合、発信呼び出しは "インターネット" 呼び出しとして扱われます。その結果、2 つ目の App Service 環境に到着するネットワーク トラフィックは、192.23.1.2 (つまり、1 つ目の App Service 環境のサブネット アドレス範囲ではない) から送信されているように表示されます。
+
+異なる App Service 環境間での呼び出しは "インターネット" 呼び出しとして扱われるものの、両方の App Service 環境が同じ Azure リージョンに位置している場合は、ネットワーク トラフィックは同じリージョンの Azure ネットワークにとどまり、物理的にパブリック インターネット上に流出することはありません。その結果、2 つ目の App Service 環境のサブネット上でネットワーク セキュリティ グループを使用して、1 つ目の App Service 環境 (発信 IP アドレスが 192.23.1.2) からの受信呼び出しのみを許可することができるため、App Service 環境間での安全な通信が確保されます。
 
 ## その他のリンクおよび情報 ##
 App Service 環境で使用される着信ポートと、ネットワーク セキュリティ グループを使用した着信トラフィック制御の詳細については、[ここ][controllinginboundtraffic]を参照してください。
@@ -77,6 +83,8 @@ App Service 環境への発信インターネット アクセスを許可する�
 
 <!-- IMAGES -->
 [GeneralNetworkFlows]: ./media/app-service-app-service-environment-network-architecture-overview/NetworkOverview-1.png
+[OutboundIPAddress]: ./media/app-service-app-service-environment-network-architecture-overview/OutboundIPAddress-1.png
 [OutboundNetworkAddresses]: ./media/app-service-app-service-environment-network-architecture-overview/OutboundNetworkAddresses-1.png
+[CallsBetweenAppServiceEnvironments]: ./media/app-service-app-service-environment-network-architecture-overview/CallsBetweenEnvironments-1.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

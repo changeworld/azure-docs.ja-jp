@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/28/2015"
+	ms.date="10/01/2015"
 	ms.author="markvi"/>
 
 # Azure Active Directory のエディション
@@ -54,11 +54,11 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 
 - **Multi-Factor Authentication** - Multi-Factor Authentication が Premium に含まれるようになり、オンプレミス アプリケーション (VPN、RADIUS など)、Azure、Microsoft Online Services (Office 365、Dynamics CRM Online など)、および Azure Active Directory と事前に統合されている MS 以外の多数のクラウド サービスに安全にアクセスできます。Azure Active Directory の ID に対する Multi-factor Authentication を有効にするだけで、ユーザーは次回サインイン時に追加検証の設定を求められます。
 
-    詳細については、「[Azure Multi-Factor Authentication とは](multi-factor-authentication.md)」をご覧ください。
+    詳細については、「[Azure Multi-Factor Authentication とは](multi-factor-authentication.md)」を参照してください。
 
-- **Microsoft Identity Manager (MIM)** - Premium には、ハイブリッド ID ソリューションの任意の組み合わせをサポートするためにオンプレミス ネットワーク内で MIM サーバー (および CAL) を使用する権限を付与するオプションがあります。これは、オンプレミスのディレクトリとデータベースを Azure Active Directory に直接同期する必要がある場合に便利なオプションです。使用できる FIM サーバーの数に制限はありませんが、MIM CAL は Azure Active Directory Premium ユーザー ライセンスの割り当てに基づいて許可されます。
+- **Microsoft Identity Manager** - Premium には、ハイブリッド ID ソリューションの任意の組み合わせをサポートするためにオンプレミス ネットワーク内で MIM サーバー (および CAL) を使用する権限を付与するオプションがあります。これは、オンプレミスのディレクトリとデータベースを Azure Active Directory に直接同期する必要がある場合に便利なオプションです。使用できる MIM サーバーの数に制限はありませんが、MIM CAL は Azure Active Directory Premium ユーザー ライセンスの割り当てに基づいて許可されます。
 
-    詳細については、「[Deploy MIM 2010 R2 (MIM 2010 R2 のデプロイ)](https://www.microsoft.com/server-cloud/products/forefront-identity-manager/features.aspx)」を参照してください。
+    詳細については、「[Microsoft Identity Manager](http://www.microsoft.com/ja-JP/server-cloud/products/microsoft-identity-manager/default.aspx)」参照してください。
 
 - **99.9% のエンタープライズ SLA** - Azure Active Directory Premium サービスでは 99.9% 以上の可用性が保証されます。
 
@@ -450,4 +450,4 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/30/2015" 
+	ms.date="10/01/2015" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache のデータ永続化の構成方法
@@ -81,8 +81,10 @@ Premium 料金レベルを選択した後、**[Redis の永続化]** をクリ�
 最新のものを除くすべてのバックアップは自動的に削除されます。この削除はすぐに行われないことがありますが、古いバックアップは無期限には保持されません。
 
 ## 次のステップ
+Premium キャッシュ機能をさらに使用する方法を学習します。
 
-その他の Premium キャッシュ機能の使用方法については、以下を参照してください。 - [Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md) - [Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)
+-	[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
+-	[Premium Azure Redis Cache に対する Virtual Network サポートの構成方法](cache-how-to-premium-vnet.md)
   
 <!-- IMAGES -->
 
@@ -94,4 +96,4 @@ Premium 料金レベルを選択した後、**[Redis の永続化]** をクリ�
 
 [redis-cache-persistence-selected]: ./media/cache-how-to-premium-persistence/redis-cache-persistence-selected.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure CLI からの Linux VM パスワードのリセット"
+	pageTitle="Azure CLI からの Linux VM パスワードのリセット | Microsoft Azure"
 	description="Azure ポータルまたは CLI の VMAccess 拡張機能を使用して、Linux VM パスワードと SSH キー、SSH 構成をリセットし、ユーザー アカウントを削除する方法を説明します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -17,9 +17,11 @@
 	ms.date="08/28/2015"
 	ms.author="cynthn"/>
 
-# Linux 仮想マシンのパスワードまたは SSH をリセットする方法 #
+# Linux Virtual Machines のパスワードまたは SSH をリセットする方法 #
 
-パスワードを忘れた、Secure Shell (SSH) キーが正しくない、または SSH の構成に問題があるために Linux 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccessforLinux 拡張機能を使用してパスワード、SSH キーをリセットするか、SSH の構成の問題を解決します。この記事は、**クラシック** デプロイ モデルを使用して作成された仮想マシンを対象としています。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
+パスワードを忘れた、Secure Shell (SSH) キーが正しくない、または SSH の構成に問題があるために Linux 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccessforLinux 拡張機能を使用してパスワード、SSH キーをリセットするか、SSH の構成の問題を解決します。この記事は、**クラシック** デプロイメント モデルを使用して作成された仮想マシンを対象としています。
 
 ## Azure プレビュー ポータル
 
@@ -263,4 +265,4 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 [Azure VM 拡張機能とその機能]: http://msdn.microsoft.com/library/azure/dn606311.aspx
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

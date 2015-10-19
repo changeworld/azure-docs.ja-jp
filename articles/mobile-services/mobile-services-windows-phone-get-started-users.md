@@ -30,7 +30,7 @@
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。また、最初にチュートリアル「[既存のアプリケーションへの Mobile Services の追加]」を完了しておく必要があります。
 
->[AZURE.NOTE]このチュートリアルでは、さまざまな ID プロバイダーを使用した、モバイル サービスによって管理される認証フローについて説明します。この方法は構成が容易で、複数のプロバイダーをサポートしています。Windows Phone アプリケーションでシングル サインオンできるようにクライアントによって管理される認証で Live Connect を使用するには、トピック「[Live Connect を使用した Windows Phone アプリケーションへのシングル サインオン]」を参照してください。クライアントによって管理される認証を使用すると、ID プロバイダーが維持する別のユーザー データにアプリでアクセスできます。サーバー スクリプトで **user.getIdentities()** 関数を呼び出せば、モバイル サービス内にある同じユーザー データを取得できます。詳細については、[この投稿](http://go.microsoft.com/fwlink/p/?LinkId=506605)を参照してください。
+>[AZURE.NOTE]このチュートリアルでは、さまざまな ID プロバイダーを使用した、モバイル サービスによって管理される認証フローについて説明します。この方法は構成が容易で、複数のプロバイダーをサポートしています。クライアントによって管理される認証を使用することにより、アプリは ID プロバイダーが保持する追加のユーザー データにアクセスできます。サーバー スクリプトで **user.getIdentities()** 関数を呼び出せば、モバイル サービス内にある同じユーザー データを取得できます。詳細については、[この投稿](http://go.microsoft.com/fwlink/p/?LinkId=506605)を参照してください。
 
 ##<a name="register"></a>アプリケーションを認証に登録し、Mobile Services を構成する
 
@@ -77,7 +77,6 @@
 [既存のアプリケーションへの Mobile Services の追加]: mobile-services-windows-phone-get-started-data.md
 [Authorize users with scripts]: ../mobile-services-windows-phone-authorize-users-in-scripts.md
 [Azure Management Portal]: https://manage.windowsazure.com/
-[Live Connect を使用した Windows Phone アプリケーションへのシングル サインオン]: mobile-services-windows-phone-single-sign-on.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

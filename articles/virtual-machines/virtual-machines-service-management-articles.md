@@ -14,12 +14,12 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="vm-multiple"
 	ms.workload="infrastructure-services"
-	ms.date="07/28/2015"
+	ms.date="10/01/2015"
 	ms.author="danlep"/>
 
 # サービス管理での仮想マシンの操作に関する記事
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルでのリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]以下は、クラシック デプロイメント モデルを使用したリソースの作成および管理に関する記事の一覧です。
 
 ## 作業開始
 
@@ -39,9 +39,9 @@
 
 [Azure PowerShell を使用した Windows ベース仮想マシンの作成と管理](virtual-machines-create-windows-powershell-service-manager.md)
 
-[Azure Command-Line Interface (Azure CLI) を使用して VM を作成する](virtual-machines-xplat-getting-started.md)
+[Azure Command-Line Interface (Azure CLI) を使用して、Linux を実行するカスタム VM を作成する](virtual-machines-linux-create-custom.md)
 
-[Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-xplat-cli-install.md)
+[Azure CLI を使用して複数の VM のデプロイメントを作成する](virtual-machines-create-multi-vm-deployment-xplat-cli-install.md)
 
 ## 計画
 
@@ -87,11 +87,13 @@
 
 [仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)
 
+[Mac、Linux、および Windows 用 Azure CLI を使用した仮想マシンの管理](virtual-machines-manage-vms-azure-cli.md)
+
 ## ワークロードの作成
 
-[Active Directory](https://msdn.microsoft.com/library/azure/jj156090.aspx)
+[Active Directory](../active-directory/active-directory-new-forest-virtual-machine.md)
 
-[BizTalk Server](https://msdn.microsoft.com/library/azure/jj248689)
+<!-- [BizTalk Server](https://msdn.microsoft.com/library/azure/jj248689) -->
 
 [Cassandra](virtual-machines-linux-nodejs-running-cassandra.md)
 
@@ -99,11 +101,11 @@
 
 [Exchange Server](https://technet.microsoft.com/library/jj619301.aspx)
 
-[HPC Pack](https://msdn.microsoft.com/library/azure/dn518135.aspx)
+[HPC Pack](virtual-machines-hpcpack-cluster-options.md)
 
 [LAMP スタック](virtual-machines-linux-install-lamp-stack.md)
 
-[メッセージ キュー (MSMQ)](https://msdn.microsoft.com/library/azure/dn529082.aspx)
+<!-- [Message Queuing (MSMQ)](https://msdn.microsoft.com/library/azure/dn529082.aspx) -->
 
 [Microsoft Dynamics AX](https://technet.microsoft.com/library/dn741581.aspx)
 
@@ -115,7 +117,7 @@
 
 [Oracle](virtual-machines-oracle-azure-virtual-machines.md)
 
-[SAP](https://msdn.microsoft.com/library/azure/dn745892.aspx)
+<!-- [SAP](https://msdn.microsoft.com/library/azure/dn745892.aspx) -->
 
 [SharePoint Server](virtual-machines-workload-intranet-sharepoint-farm.md)
 
@@ -125,15 +127,15 @@
 
 [System Center Operations Manager](https://technet.microsoft.com/library/dn249696.aspx#BKMK_Azure)
 
-[Team Foundation Server](https://msdn.microsoft.com/library/azure/dn769056.aspx)
+<!-- [Team Foundation Server](https://msdn.microsoft.com/library/azure/dn769056.aspx) -->
 
-[Windows Server Essentials エクスペリエンス](https://msdn.microsoft.com/library/azure/dn520827.aspx)
+<!-- [Windows Server Essentials Experience](https://msdn.microsoft.com/library/azure/dn520827.aspx) -->
 
 ## 監視
 
 [Azure のクラウド サービスおよび仮想マシンの診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
-[Visual Studio でのクラウド サービスまたは仮想マシンのデバッグ](https://msdn.microsoft.com/library/azure/ff683670.aspx)
+<!-- [Debugging a cloud service or virtual machine in Visual Studio](https://msdn.microsoft.com/library/azure/ff683670.aspx) -->
 
 [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](https://msdn.microsoft.com/library/azure/dn642480.aspx)
 
@@ -147,8 +149,8 @@
 
 [Azure サービス管理のコマンドレット](https://msdn.microsoft.com/library/azure/dn708504.aspx)
 
-[サービス管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/ee460799.aspx)
-
 [Azure サービス管理での Mac、Linux、および Windows 用 Azure CLI の使用](virtual-machines-command-line-tools.md)
 
-<!---HONumber=Oct15_HO1-->
+[サービス管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/ee460799.aspx)
+
+<!---HONumber=Oct15_HO2-->

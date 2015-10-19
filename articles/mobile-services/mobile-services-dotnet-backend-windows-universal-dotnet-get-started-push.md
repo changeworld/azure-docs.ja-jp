@@ -23,8 +23,6 @@
 ##概要
 このトピックでは、Azure Mobile Services を .NET バックエンドで使用してユニバーサル Windows アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、ユニバーサル Windows アプリ プロジェクトの Azure Notification Hubs を使用したプッシュ通知を有効にします。完了すると、TodoList テーブルにレコードが挿入されるたびに、モバイル サービスは、.NET バックエンドから、登録されたすべての Windows ストア アプリおよび Windows Phone ストア アプリにプッシュ通知を送信します。作成する通知ハブはモバイル サービスでは無料で、モバイル サービスから独立して管理することができ、他のアプリケーションおよびサービスで使用できます。
 
->[AZURE.NOTE]このトピックでは、Visual Studio Professional 2013 with Update 3 でツーリングを使用して、Mobile Services からユニバーサル Windows アプリへのプッシュ通知のサポートを追加する方法について説明します。同じ手順を使用して、Mobile Services から Windows ストアまたは Windows Phone ストア 8.1 アプリへのプッシュ通知を追加することができます。プッシュ通知を Windows Phone 8 または Windows Phone Silverlight 8.1 アプリに追加するには、このバージョンの [Mobile Services アプリへのプッシュ通知の追加](mobile-services-dotnet-backend-windows-phone-get-started-push.md)を参照してください。
-
 このチュートリアルを完了するには、以下が必要です。
 
 * アクティブな [Microsoft ストア アカウント](http://go.microsoft.com/fwlink/p/?LinkId=280045)。
@@ -84,7 +82,7 @@ Mobile Services と Notification Hubs については次のトピックを参照
 
 * [アプリへの認証の追加][Get started with authentication] <br/>Mobile Services を使用して別の種類のアカウントでアプリケーションのユーザーを認証する方法について説明します。
 
-* [通知ハブとは] <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
+* [Notification Hubs とは] <br/>Notification Hubs がすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
 * [Notification Hubs アプリケーションのデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630) </br>Notification Hubs ソリューションのトラブルシューティングとデバッグについて説明します。
 
@@ -104,9 +102,9 @@ Mobile Services と Notification Hubs については次のトピックを参照
 
 [プッシュ通知を認証ユーザーに送信する]: mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users.md
 
-[通知ハブとは]: ../notification-hubs-overview.md
+[Notification Hubs とは]: ../notification-hubs-overview.md
 
 [Azure Mobile Services 用の .NET クライアントを使用する方法]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [MobileServiceClient]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

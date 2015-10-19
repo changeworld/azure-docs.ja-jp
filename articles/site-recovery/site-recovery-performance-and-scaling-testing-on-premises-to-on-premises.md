@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="08/05/2015"
+	ms.date="10/07/2015"
 	ms.author="lauraa"/>
 
 # パフォーマンスとスケーリングのテスト: オンプレミス間
@@ -104,7 +104,7 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 
 ### まとめ
 
-結果では、Hyper-V レプリカと組み合わせた Azure Site Recovery には、大規模なクラスター構成でオーバーヘッドを最小限にする優れた拡張性があることが明確に示されました。Azure Site Recovery は、シンプルなデプロイ、レプリケーション、管理および監視を実現します。Hyper-V レプリカは、レプリケーションを正常にスケーリングするために必要なインフラストラクチャを提供します。最適なデプロイを計画するために、[Hyper-V Replica Capacity Planner](https://www.microsoft.com/ja-jp/download/details.aspx?id=39057) をダウンロードすることをお勧めします。
+結果では、Hyper-V レプリカと組み合わせた Azure Site Recovery には、大規模なクラスター構成でオーバーヘッドを最小限にする優れた拡張性があることが明確に示されました。Azure Site Recovery は、シンプルなデプロイ、レプリケーション、管理および監視を実現します。Hyper-V レプリカは、レプリケーションを正常にスケーリングするために必要なインフラストラクチャを提供します。最適なデプロイを計画するために、[Hyper-V Replica Capacity Planner](https://www.microsoft.com/JA-JP/download/details.aspx?id=39057) をダウンロードすることをお勧めします。
 
 ## テスト デプロイ環境
 
@@ -208,4 +208,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 - [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm.md)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

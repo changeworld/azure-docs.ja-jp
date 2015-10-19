@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/31/2015" 
+	ms.date="09/30/2015" 
 	ms.author="nitinme"/>
 
 
@@ -43,11 +43,15 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 
 ##<a name="app"></a>Spark MLlib を使用した Machine Learning アプリケーションの作成
 
-1. [Azure プレビュー ポータル](https://ms.portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。 
- 
-2. [Jupyter](https://jupyter.org) Notebook を起動します。Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
 
-2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python2]** をクリックします。
+2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
+
+	> [AZURE.NOTE]ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+	>
+	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
+
+2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python 2]** をクリックします。
 
 	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.Note.Jupyter.CreateNotebook.png "新しい Jupyter Notebook を作成します")
 
@@ -214,9 +218,9 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 	![Jupyter カーネルを再起動します](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/HDI.Spark.Jupyter.Restart.Kernel.png "Jupyter カーネルを再起動します")
 	  	   
 
-##<a name="anaconda"></a>Machine Learning への Anaconda scikit-learn ライブラリの使用
+##<a name="anaconda"></a> Machine Learning への Anaconda scikit-learn ライブラリの使用
 
-HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。これには、Machine Learning 用の **scikit-learn** ライブラリも含まれます。ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。scikit-learn ライブラリの使用例については、[http://scikit-learn.org/stable/auto\_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html) をご覧ください。
+HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。これには、機械学習用の **scikit-learn** ライブラリも含まれます。ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。scikit-learn ライブラリの使用例については、[http://scikit-learn.org/stable/auto\_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html) をご覧ください。
 
 ##<a name="seealso"></a>関連項目
 
@@ -243,4 +247,4 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

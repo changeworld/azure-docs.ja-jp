@@ -1,6 +1,6 @@
 <properties
- pageTitle="HPC Pack クラスターで Linux 計算ノードを使用する | Microsoft Azure"
- description="Windows Server を実行するヘッド ノードと Linux 計算ノードを含む HPC Pack クラスターを Azure にデプロイするスクリプトを作成する方法について説明します。"
+ pageTitle="HPC Pack クラスター内の Linux コンピューティング VM | Microsoft Azure"
+ description="Windows Server を実行するヘッド ノードと Linux コンピューティング ノードを含む HPC Pack クラスターの Azure へのデプロイメント用のスクリプトを作成する方法。"
  services="virtual-machines"
  documentationCenter=""
  authors="dlepow"
@@ -16,34 +16,36 @@
  ms.date="09/01/2015"
  ms.author="danlep"/>
 
-# Azure の HPC Pack クラスターで Linux 計算ノードの使用を開始する
+# Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する
 
-この記事では、Azure PowerShell スクリプトを使用し、Windows Server を実行するヘッド ノードと CentOS Linux ディストリビューションを実行する計算ノードを含む Microsoft HPC Pack クラスターを Azure に設定する方法を紹介します。Linux 計算ノードにデータ ファイルを移動する方法もいくつか紹介します。このクラスターを使用し、Azure で Linux HPC ワークロードを実行できます。
+この記事では、Azure PowerShell スクリプトを使用し、Windows Server を実行するヘッド ノードと CentOS Linux ディストリビューションを実行するコンピューティング ノードを含む Microsoft HPC Pack クラスターを Azure に設定する方法を紹介します。Linux コンピューティング ノードにデータ ファイルを移動する方法もいくつか紹介します。このクラスターを使用し、Azure で Linux HPC ワークロードを実行できます。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用して作成されたリソースについて説明します。
 
 これから作成する HPC Pack クラスターの概要は次の図のようになります。
 
 ![Linux ノードを含む HPC クラスター][scenario]
 
-## Linux 計算ノードと共に HPC Pack クラスターをデプロイします。
+## Linux コンピューティング ノードと共に HPC Pack クラスターをデプロイします。
 
-Microsoft HPC Pack IaaS デプロイ スクリプト (**New-HpcIaaSCluster.ps1**) を使用して、Azure インフラストラクチャ サービス (IaaS) でクラスターのデプロイを自動化します。この Azure PowerShell スクリプトは短期間でデプロイするために Azure Marketplace の HPC Pack VM イメージを使用します。包括的な構成パラメーターを備え、簡単かつ柔軟なデプロイを可能にします。このスクリプトにより、Azure 仮想ネットワーク、ストレージ アカウント、クラウド サービス、ドメイン コントローラー、任意の個別の SQL Server データベース サーバー、クラスター ヘッド ノード、計算ノード、ブローカー ノード、Azure PaaS (「バースト」) ノード、Linux 計算ノード (Linux サポートは [HPC Pack 2012 R2 Update 2](https://technet.microsoft.com/library/mt269417.aspx) で導入されました) がデプロイされます。
+Microsoft HPC Pack IaaS デプロイメント スクリプト (**New-HpcIaaSCluster.ps1**) を使用して、Azure インフラストラクチャ サービス (IaaS) でクラスターのデプロイを自動化します。この Azure PowerShell スクリプトは迅速なプロイメントのために Azure Marketplace の HPC Pack VM イメージを使用します。包括的な構成パラメーターを備え、簡単かつ柔軟なデプロイメントを可能にします。このスクリプトにより、Azure 仮想ネットワーク、ストレージ アカウント、クラウド サービス、ドメイン コントローラー、任意の個別の SQL Server データベース サーバー、クラスター ヘッド ノード、コンピューティング ノード、ブローカー ノード、Azure PaaS (「バースト」) ノード、Linux コンピューティング ノード (Linux サポートは [HPC Pack 2012 R2 Update 2](https://technet.microsoft.com/library/mt269417.aspx) で導入されました) がデプロイされます。
 
-HPC Pack クラスター デプロイ オプションの概要については、「[Getting Started Guide for HPC Pack 2012 R2 and HPC Pack 2012 (HPC Pack 2012 R2 と HPC Pack 2012 の入門ガイド)](https://technet.microsoft.com/library/jj884144.aspx)」をご覧ください。
+HPC Pack クラスター デプロイメント オプションの概要については、「[Getting Started Guide for HPC Pack 2012 R2 and HPC Pack 2012 (HPC Pack 2012 R2 と HPC Pack 2012 の入門ガイド)](https://technet.microsoft.com/library/jj884144.aspx)」をご覧ください。
 
 ### 前提条件
 
-* **クライアント コンピューター** - クラスター デプロイ スクリプトを実行するには、Windows ベースのクライアント コンピューターが必要です。
+* **クライアント コンピューター** - クラスター デプロイメント スクリプトを実行するには、Windows ベースのクライアント コンピューターが必要です。
 
 * **Azure PowerShell** - クライアント コンピューターに [Azure PowerShell をインストールして構成します](../powershell-install-configure.md) (バージョン 0.8.10 以降)。
 
-* **HPC Pack IaaS デプロイ スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949) から最新版のスクリプトをダウンロードし、解凍します。`New-HPCIaaSCluster.ps1 –Version` を実行すると、スクリプトのバージョンを確認できます。この記事はバージョン 4.4.0 以降のスクリプトに基づきます。
+* **HPC Pack IaaS デプロイメント スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949) から最新版のスクリプトをダウンロードし、解凍します。`New-HPCIaaSCluster.ps1 –Version` を実行すると、スクリプトのバージョンを確認できます。この記事はバージョン 4.4.0 以降のスクリプトに基づきます。
 
 * **Azure サブスクリプション** - Azure Global または Azure China サービスのサブスクリプションを利用できます。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 * **コア クォータ** - 場合によっては、コアのクォータを増やす必要があります。特に、マルチコア VM サイズのクラスター ノードをいくつかデプロイする場合に必要となる可能性があります。この記事の例では、少なくとも 24 コアが必要になります。クォータを増やすには、[オンライン カスタマー サポートに申請](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 
 ### 構成ファイルを作成する
-HPC Pack IaaS デプロイ スクリプトは HPC クラスターのインフラストラクチャについて記載された XML 構成ファイルを入力として使用します。1 つのヘッド ノードと 2 つの Linux 計算ノードから構成される小規模のクラスターをデプロイするには、ご利用の環境の値を次のサンプル構成ファイルに代入します。構成ファイルの詳細については、スクリプト フォルダーにある Manual.rtf ファイルおよび「[Create an HPC cluster with the HPC Pack IaaS deployment script (HPC Pack IaaS デプロイメント スクリプトを使用した HPC クラスターの作成)](virtual-machines-hpcpack-cluster-powershell-script.md)」参照してください。
+HPC Pack IaaS デプロイ スクリプトは HPC クラスターのインフラストラクチャについて記載された XML 構成ファイルを入力として使用します。1 つのヘッド ノードと 2 つの Linux コンピューティング ノードから構成される小規模のクラスターをデプロイするには、ご利用の環境の値を次のサンプル構成ファイルに代入します。構成ファイルの詳細については、スクリプト フォルダーにある Manual.rtf ファイルおよび「[Create an HPC cluster with the HPC Pack IaaS deployment script (HPC Pack IaaS デプロイメント スクリプトを使用した HPC クラスターの作成)](virtual-machines-hpcpack-cluster-powershell-script.md)」参照してください。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -105,11 +107,11 @@ HPC Pack IaaS デプロイ スクリプトは HPC クラスターのインフラ
 
 * **HeadNode** - HPC Pack ヘッド ノードの設定です。この例では、クラウド サービス centos7rdma-je で「CentOS7RDMA-HN」という名前の A7 ヘッド ノードを作成します。リモート (ドメイン不参加) クライアントから HPC ジョブを送信するために、このスクリプトにより HPC ジョブ スケジューラ REST API と HPC Web ポータルが有効になります。
 
-* **LinuxComputeNodes** - HPC Pack Linux 計算ノードの設定です。この例では、2 つのサイズの A7 CentOS 7 Linux 計算ノード (CentOS7RDMA-LN1 と CentOS7RDMA-LN2) をクラウド サービス centos7rdma-je で作成します。
+* **LinuxComputeNodes** - HPC Pack Linux コンピューティング ノードの設定です。この例では、2 つのサイズの A7 CentOS 7 Linux コンピューティング ノード (CentOS7RDMA-LN1 と CentOS7RDMA-LN2) をクラウド サービス centos7rdma-je で作成します。
 
-### Linux 計算ノードの追加の考慮事項
+### Linux コンピューティング ノードの追加の考慮事項
 
-* 現在のところ、HPC Pack では計算ノードの Linux ディストリビューションとして Ubuntu Server 14.10、CentOS 6.6、CentOS 7.0、SUSE Linux Enterprise Server 12 に対応しています。
+* 現在のところ、HPC Pack ではコンピューティング ノードの Linux ディストリビューションとして Ubuntu Server 14.10、CentOS 6.6、CentOS 7.0、SUSE Linux Enterprise Server 12 に対応しています。
 
 * この記事の例では Azure Marketplace で入手できる特定の CentOS バージョンを使用してクラスターを作成します。他のイメージを使用する場合、**get-azurevmimage** Azure PowerShell コマンドレットを使用して必要なイメージを探します。たとえば、すべての CentOS 7.0 イメージを一覧表示するには、```
     get-azurevmimage | ?{$_.Label -eq "OpenLogic 7.0"}
@@ -117,14 +119,14 @@ HPC Pack IaaS デプロイ スクリプトは HPC クラスターのインフラ
 
     必要なイメージを見つけ、構成ファイルの **ImageName** 値を置き換えます。
 
-* サイズ A8 と A9 の VM の RDMA 接続をサポートする Linux イメージを利用できます。Linux RDMA ドライバーがインストールされ、有効になっているイメージを指定した場合、HPC Pack IaaS デプロイ スクリプトによりドライバーがデプロイされます。たとえば、現在の SUSE Linux Enterprise Server 12 に `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708` というイメージ名を指定します。これは Marketplace のハイ パフォーマンス コンピューティング イメージに最適化されています。
+* サイズ A8 と A9 の VM の RDMA 接続をサポートする Linux イメージを利用できます。Linux RDMA ドライバーがインストールされ、有効になっているイメージを指定した場合、HPC Pack IaaS デプロイメント スクリプトによりドライバーがデプロイされます。たとえば、現在の SUSE Linux Enterprise Server 12 に `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708` というイメージ名を指定します。これは Marketplace のハイ パフォーマンス コンピューティング イメージに最適化されています。
 
-* サポートされているイメージから作成した Linux VM で Linux RDMA を有効にして MPI ジョブを実行するには、アプリケーション ニーズに基づいてクラスターをデプロイした後に、Linux ノードに特定の MPI ライブラリをインストールし、構成します。Azure の Linux ノードで RDMA を使用する方法の詳細については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)」をご覧ください。
+* サポートされているイメージから作成した Linux VM で Linux RDMA を有効にして MPI ジョブを実行するには、アプリケーション ニーズに基づいたクラスターのデプロイメントの後に、Linux ノードに特定の MPI ライブラリをインストールし、構成します。Azure の Linux ノードで RDMA を使用する方法の詳細については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)」を参照してください。
 
 * RDMA ネットワーク接続がノード間で機能するように、必ず 1 つのサービス内にすべての Linux RDMA ノードをデプロイします。
 
 
-## HPC Pack IaaS デプロイ スクリプトを実行する
+## HPC Pack IaaS デプロイメント スクリプトを実行する
 
 1. 管理者としてクライアント コンピューターで PowerShell を開きます。
 
@@ -140,7 +142,7 @@ HPC Pack IaaS デプロイ スクリプトは HPC クラスターのインフラ
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
 
-    このスクリプトでは、**-LogFile** パラメーターが指定されていないため、ログ ファイルが自動的に生成されます。ログはリアルタイムで書き込まれませんが、検証とデプロイの終わりに回収されます。そのため、スクリプトの実行中に PowerShell プロセスが停止した場合、一部のログが失われます。
+    このスクリプトでは、**-LogFile** パラメーターが指定されていないため、ログ ファイルが自動的に生成されます。ログはリアルタイムで書き込まれませんが、検証とデプロイメントの終わりに回収されます。そのため、スクリプトの実行中に PowerShell プロセスが停止した場合、一部のログが失われます。
 
     a.上記のコマンドには **AdminPassword** が指定されていないため、ユーザー *MyAdminName* のパスワードを入力するように促されます。
 
@@ -148,7 +150,7 @@ HPC Pack IaaS デプロイ スクリプトは HPC クラスターのインフラ
 
     ![検証][validate]
 
-    c.検証に合格すると、HPC クラスターに作成されるリソースが一覧表示されます。「Y」と入力して続行します。
+    c.検証に合格すると、HPC クラスターに作成されるリソースが一覧表示されます。「*Y*」と入力して続行します。
 
     ![リソース][resources]
 
@@ -156,7 +158,7 @@ HPC Pack IaaS デプロイ スクリプトは HPC クラスターのインフラ
 
     ![デプロイ][deploy]
 
-4. 構成が完了したら、ヘッド ノードにリモート デスクトップ接続し、HPC Cluster Manager を開き、HPC Pack クラスターの状態を確認します。Windows 計算ノードの場合と同じように Linux 計算ノードを管理し、監視できます。たとえば、ノード管理に Linux ノードが一覧表示されます。
+4. 構成が完了したら、ヘッド ノードにリモート デスクトップ接続し、HPC Cluster Manager を開き、HPC Pack クラスターの状態を確認します。Windows コンピューティング ノードの場合と同じように Linux コンピューティング ノードを管理し、監視できます。たとえば、ノード管理に Linux ノードが一覧表示されます。
 
     ![ノード管理][management]
 
@@ -176,9 +178,9 @@ HPC Pack IaaS デプロイ スクリプトは HPC クラスターのインフラ
 
 ### Azure ファイル
 
-[Azure File](https://azure.microsoft.com/services/storage/files/) サービスは、標準の SMB 2.1 プロトコルを使用してファイル共有を公開します。Azure の VM とクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。また、オンプレミスのアプリケーションでは、File ストレージ API を介して、共有内のファイル データにアクセスできます。詳細については、「[PowerShell と .NET で Azure File ストレージを使用する方法](../storage/storage-dotnet-how-to-use-files.md)」をご覧ください。
+[Azure File](https://azure.microsoft.com/services/storage/files/) サービスは、標準の SMB 2.1 プロトコルを使用してファイル共有を公開します。Azure の VM とクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。また、オンプレミスのアプリケーションでは、File ストレージ API を介して、共有内のファイル データにアクセスできます。詳細については、「[PowerShell と .NET で Azure File ストレージを使用する方法](../storage/storage-dotnet-how-to-use-files.md)」を参照してください。
 
-Azure File 共有を作成するには、「[Microsoft Azure Files サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)」にある詳しい手順をご覧ください。固定接続を設定するには、「[Microsoft Azure Files への接続の保持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)」をご覧ください。
+Azure File 共有を作成するには、「[Microsoft Azure Files サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)」にある詳しい手順を参照してください。固定接続を設定するには、「[Microsoft Azure Files への接続の保持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)」を参照してください。
 
 この例では、ストレージ アカウント allvhdsje に「rdma」という名前の Azure File 共有を作成します。ヘッド ノードに共有をマウントするには、コマンド ウィンドウを開き、次のコマンドを入力します。
 
@@ -189,7 +191,7 @@ Azure File 共有を作成するには、「[Microsoft Azure Files サービス�
 
 この例では、allvhdsje はストレージ アカウントの名前、storageaccountkey はストレージ アカウントのキー、rdma は Azure File 共有名になります。Azure File 共有はヘッド ノードの Z: にマウントされます。
 
-Linux ノードに Azure File 共有をマウントするには、ヘッド ノードで **clusrun** コマンドを実行します。**[Clusrun](https://technet.microsoft.com/library/cc947685.aspx)** は、複数のノードで管理タスクを実行するための便利な HPC Pack ツールです (この記事の「[Linux ノードの CLusrun](#CLusrun-for-Linux-nodes)」もご覧ください)。
+Linux ノードに Azure File 共有をマウントするには、ヘッド ノードで **clusrun** コマンドを実行します。**[Clusrun](https://technet.microsoft.com/library/cc947685.aspx)** は、複数のノードで管理タスクを実行するための便利な HPC Pack ツールです (この記事の「[Linux ノードの CLusrun](#CLusrun-for-Linux-nodes)」も参照してください)。
 
 Windows PowerShell ウィンドウを開き、次のコマンドを入力します。
 
@@ -260,9 +262,9 @@ PS > clusrun /nodegroup:LinuxNodes mount CentOS7RDMA-HN:/nfs /nfsshared
 
 * REST API
 
-HPC Pack GUI ツールと HPC Web ポータル経由で Azure のクラスターにジョブを送信する方法は Windows 計算ノードの場合と同じです。「[HPC ジョブ マネージャー](https://technet.microsoft.com/library/ff919691.aspx)」および「[オンプレミスのクライアントがジョブを送信できるように構成するための手順](https://msdn.microsoft.com/library/azure/dn689084.aspx)」をご覧ください。
+HPC Pack GUI ツールと HPC Web ポータル経由で Azure のクラスターにジョブを送信する方法は Windows コンピューティング ノードの場合と同じです。「[HPC ジョブ マネージャー](https://technet.microsoft.com/library/ff919691.aspx)」および「[オンプレミスのクライアントがジョブを送信できるように構成するための手順](https://msdn.microsoft.com/library/azure/dn689084.aspx)」を参照してください。
 
-REST API を使用してジョブを送信するには、「[Creating and Submitting Jobs by Using the REST API in Microsoft HPC Pack (Microsoft HPC Pack で REST API を使用したジョブの作成と送信)](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)」をご覧ください。Linux クライアントからジョブを送信する場合は、[HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756) の Python サンプルを参照してください。
+REST API を使用してジョブを送信するには、「[Creating and Submitting Jobs by Using the REST API in Microsoft HPC Pack (Microsoft HPC Pack で REST API を使用したジョブの作成と送信)](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)」を参照してください。Linux クライアントからジョブを送信する場合は、[HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756) の Python サンプルを参照してください。
 
 ## Linux ノードの clusrun
 
@@ -290,11 +292,11 @@ HPC Pack **clusrun** ツールを使用して、コマンド ウィンドウま�
 
 ## 次のステップ
 
-* クラスターで Linux ワークロードを実行してみます。例については、[Azure の Linux 計算ノード上で Microsoft HPC Pack を使用して NAMD を実行する](virtual-machines-linux-cluster-hpcpack-namd.md)方法に関するページを参照してください。
+* クラスターで Linux ワークロードを実行してみます。例については、[Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](virtual-machines-linux-cluster-hpcpack-namd.md)方法に関するページを参照してください。
 
-* クラスターをスケールアップしてノードの数を増やすか、サイズが [A8 または A9](virtual-machines-a8-a9-a10-a11-specs.md) の計算ノードをデプロイして MPI ワークロードを実行します。
+* クラスターをスケールアップしてノードの数を増やすか、サイズが [A8 または A9](virtual-machines-a8-a9-a10-a11-specs.md) のコンピューティング ノードをデプロイして MPI ワークロードを実行します。
 
-* Linux 計算ノードの数が多い HPC Pack のデプロイを高速化するには、Azure リソース マネージャーを使用して [Azure のクイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)を試します。
+* Linux コンピューティング ノードの数が多い HPC Pack のデプロイメントを高速化するには、Azure リソース マネージャーを使用して [Azure のクイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)を試します。
 
 <!--Image references-->
 [scenario]: ./media/virtual-machines-linux-cluster-hpcpack/scenario.png
@@ -310,4 +312,4 @@ HPC Pack **clusrun** ツールを使用して、コマンド ウィンドウま�
 [nfsperm]: ./media/virtual-machines-linux-cluster-hpcpack/nfsperm.png
 [nfsmanage]: ./media/virtual-machines-linux-cluster-hpcpack/nfsmanage.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->
