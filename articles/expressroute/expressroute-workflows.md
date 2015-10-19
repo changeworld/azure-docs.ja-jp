@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/22/2015"
+   ms.date="10/06/2015"
    ms.author="cherylmc"/>
 
 # ExpressRoute 回線のプロビジョニング ワークフローと回線の状態
@@ -30,9 +30,9 @@
 
 4. ルーティング ドメインを構成します。接続プロバイダーが代わりにレイヤー 3 を管理する場合、接続プロバイダーが回線のルーティングを構成します。接続プロバイダーがレイヤー 2 サービスのみを提供する場合、[ルーティング要件](expressroute-routing.md)ページと[ルーティング構成](expressroute-howto-routing-classic.md)ページのガイドラインに従い、自分でルーティングを構成する必要があります。
 
-	1. Azure プライベート ピアリングを有効にする - 仮想ネットワーク内にデプロイされている VM / クラウドに接続するには、このピアリングを有効にする必要があります。 
-	2. Azure パブリック ピアリングを有効にする - パブリック IP アドレスにホストされている Azure サービスに接続する場合、Azure パブリック ピアリングを有効にする必要があります。Azure プライベート ピアリングの既定のルーティングを有効にする場合、これが Azure リソースにアクセスするための要件となります。
-	3. Microsoft ピアリングを有効にする - Office 365 と CRM Online サービスにアクセスするにはこれを有効にする必要があります。 
+	-  Azure プライベート ピアリングを有効にする - 仮想ネットワーク内にデプロイされている VM / クラウドに接続するには、このピアリングを有効にする必要があります。
+	-  Azure パブリック ピアリングを有効にする - パブリック IP アドレスにホストされている Azure サービスに接続する場合、Azure パブリック ピアリングを有効にする必要があります。Azure プライベート ピアリングの既定のルーティングを有効にする場合、これが Azure リソースにアクセスするための要件となります。
+	-  Microsoft ピアリングを有効にする - Office 365 と CRM Online サービスにアクセスするにはこれを有効にする必要があります。 
 	
 	>[AZURE.IMPORTANT]Microsoft ピアリングを有効にしている場合、Azure パブリック ピアリングも有効にしないと Azure AD にアクセスできません。Microsoft に接続するには、インターネットに使用しているプロキシ/エッジとは別のプロキシ/エッジを使用する必要があります。ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。
 
@@ -116,8 +116,9 @@ BGP プロビジョニング状態からは、Microsoft エッジで BGP セッ�
 ## 次のステップ
 
 - ExpressRoute 接続を構成します。
+
 	- [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

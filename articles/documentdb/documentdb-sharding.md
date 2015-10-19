@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2015" 
+	ms.date="10/05/2015" 
 	ms.author="arramac"/>
 
 # .NET SDK を使用して DocumentDB 内のデータをパーティション分割する方法
@@ -167,4 +167,4 @@ Microsoft では、.NET SDK のお客様からいただいたフィードバッ�
 * [パフォーマンスに関するヒントについての DocumentDB ブログ](http://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

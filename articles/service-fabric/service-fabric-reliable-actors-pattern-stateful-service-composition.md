@@ -4,7 +4,7 @@
    description="サービス呼び出しの間の状態を維持したり、前のサービスの結果をキャッシュしたりするための、ステートフル アクターを使用する Service Fabric 高信頼アクターの設計パターン状態は永続化することも一時的にすることもできます。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="vturecek"
    manager="timlt"
    editor=""/>
 
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="08/05/2015"
-   ms.author="claudioc"/>
+   ms.author="vturecek"/>
 
 # 高信頼アクターの設計パターン: ステートフル サービスの構成
 開発者は 10 年半を費やし、企業に N 階層のステートレス サービスを構築してきました。開発者はデータベースの上にサービスを構築し、他のサービスの上に上位サービスを構築し、それらのサービスを調整するためのオーケストレーション エンジンとメッセージ指向のミドルウェアを構築しました。ユーザーのワークロードが増えるにつれて、要求の厳しい対話機能や拡張性、ステートレス サービス指向のアーキテクチャの欠点が見え始めました。
@@ -91,4 +91,4 @@ SOA サービスはステートレスな性質により水平方向にシーム�
 [2]: ./media/service-fabric-reliable-actors-pattern-stateful-service-composition/stateful-service-composition-2.png
 [3]: ./media/service-fabric-reliable-actors-pattern-stateful-service-composition/stateful-service-composition-3.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

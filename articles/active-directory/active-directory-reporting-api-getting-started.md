@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure AD Reporting API の概要"
-	description="Azure Active Directory Reporting API の概要について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kenhoff"
-	manager="mbaldwin"
-	editor=""/>
+   description="Azure Active Directory Reporting API の概要について説明します。"
+   services="active-directory"
+   documentationCenter=""
+   authors="kenhoff"
+   manager="mbaldwin"
+   editor=""/>
 
 <tags
    ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="07/17/2015"
-	ms.author="kenhoff;yossib"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="07/17/2015"
+   ms.author="kenhoff;yossib"/>
 
 
 # Azure AD Reporting API の概要
@@ -33,7 +33,7 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 
 
 ### アプリケーションの作成
-- [Azure 管理ポータル](https://manage.windowsazure.com/)に移動します。
+- [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)に移動します。
 - ディレクトリに移動します。
 - アプリケーションに移動します。
 - 下のバーで [追加] をクリックします。
@@ -157,10 +157,15 @@ Reporting API は、[OAuth](https://msdn.microsoft.com/library/azure/dn645545.as
 
 スクリプトは、使用可能なすべてのレポートの一覧、および AccountProvisioningEvents レポートからの出力を、PowerShell ウィンドウに JSON 形式で返します。また、同じ出力を JSON、テキスト、XML でファイルに作成します。他のレポートからデータを返すようにスクリプトを変更してテストしたり、必要のない出力形式をコメント化したりできます。
 
+## メモ
+
+- Azure AD Reporting API によって (OData 改ページ調整を使用) 返されるイベントの数に制限はありません。　
+	- レポート データの保持制限については、[レポートの保持ポリシー](active-directory-reporting-retention.md)を参照してください。
+
 
 ## 次のステップ
 - 使用可能なセキュリティ、監査、およびアクティビティ レポートに興味がある場合は、 「[View your access and usage reports (アクセスおよび使用状況のレポートの表示)](active-directory-view-access-usage-reports.md)」を参照してください
 - 監査レポートの詳細については、「[Azure Active Directory 監査レポートのイベント](active-directory-reporting-audit-events.md)」を参照してください
 - Graph API REST サービスの詳細については、「[Azure AD Reports and Events (Preview) (Azure AD のレポートとイベント (プレビュー))](https://msdn.microsoft.com/library/azure/mt126081.aspx)」を参照してください
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO2-->

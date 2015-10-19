@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/06/2015"
+   ms.date="10/01/2015"
    ms.author="bwren" />
 
 # Azure Automation の管理
@@ -21,25 +21,25 @@
 
 ## データの保持
 
-Azure Automation でリソースを削除する場合、完全に削除される前に、監査目的で 90 日間保持されます。この期間にリソースを表示したり使用したりすることはできません。このポリシーは、削除されるオートメーション アカウントに属するリソースにも適用されます。
+Azure Automation でリソースを削除する場合、完全に削除される前に、監査目的で 90 日間保持されます。You can’t see or use the resource during this time.This policy also applies to resources that belong to an automation account that is deleted.
 
-Azure Automation は、90 日を超えるジョブを自動的に削除して完全に除去します。
+Azure Automation automatically deletes and permanently removes jobs older than 90 days.
 
-次の表は、さまざまなリソースの保持ポリシーをまとめたものです。
+The following table summarizes the retention policy for different resources.
 
-|データ|ポリシー|
+|Data|Policy|
 |:---|:---|
-|アカウント|アカウントは、ユーザーによって削除された日から 90 日後に完全に除去されます。|
-|資産|資産は、ユーザーによって削除された日から 90 日後に、または資産を保持するアカウントがユーザーによって削除された日から 90 日後に、完全に除去されます。|
-|モジュール|モジュールは、ユーザーによって削除された日から 90 日後に、またはモジュールを保持するアカウントがユーザーによって削除された日から 90 日後に、完全に除去されます。|
-|Runbook|リソースは、ユーザーによって削除された日から 90 日後に、またはリソースを保持するアカウントがユーザーによって削除された日から 90 日後に、完全に除去されます。|
-|ジョブ|最終更新日から 90 日後に削除された後に、完全に除去されます。これは、ジョブが完了、停止、または中断された後に実行されます。|
+|Accounts|Permanently removed 90 days after the account is deleted by a user.|
+|Assets|Permanently removed 90 days after the asset is deleted by a user, or 90 days after the account that holds the asset is deleted by a user.|
+|Modules|Permanently removed 90 days after the module is deleted by a user, or 90 days after the account that holds the module is deleted by a user.|
+|Runbooks|Permanently removed 90 days after the resource is deleted by a user, or 90 days after the account that holds the resource is deleted by a user.|
+|Jobs|Deleted and permanently removed 90 days after last being modified.This could be after the job completes, is stopped, or is suspended.|
 
 保持ポリシーはすべてのユーザーに適用され、現在カスタマイズすることはできません。
 
 ## Azure Automation のバックアップ
 
-Microsoft Azure でオートメーション アカウントを削除すると、Runbook、モジュール、設定、ジョブ、資産など、アカウント内のすべてのオブジェクトが削除されます。アカウントを削除した後で、オブジェクトを復元することはできません。削除する前に、以下の情報を使用してオートメーション アカウントの内容をバックアップできます。
+Microsoft Azure でオートメーション アカウントを削除すると、Runbook、モジュール、設定、ジョブ、資産など、アカウント内のすべてのオブジェクトが削除されます。The objects cannot be recovered after the account is deleted.削除する前に、以下の情報を使用してオートメーション アカウントの内容をバックアップできます。
 
 ### Runbook
 
@@ -60,4 +60,4 @@ Azure Automation から[資産](https://msdn.microsoft.com/library/dn939988.aspx
 
 Azure Automation から証明書をエクスポートすることはできません。すべての証明書が Azure の外部で使用できることを確認する必要があります。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

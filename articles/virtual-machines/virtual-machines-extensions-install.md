@@ -1,21 +1,25 @@
-<properties 
+<properties
  pageTitle="仮想マシン拡張機能の管理 | Microsoft Azure"
-	description="拡張機能を追加、検索、更新、および削除する方法について説明します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="squillace"
-	manager="timlt"
-	editor=""/>
-<tags 
+ description="クラシック デプロイメント モデルで、Azure Virtual Machines の拡張機能を追加、検索、更新、および削除する方法について説明します。"
+ services="virtual-machines"
+ documentationCenter=""
+ authors="squillace"
+ manager="timlt"
+ editor=""
+ tags="azure-service-management"/>
+<tags
  ms.service="virtual-machines"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-multiple"
-	ms.workload="infrastructure-services"
-	ms.date="08/25/2015"
-	ms.author="rasquill"/>
+ ms.devlang="na"
+ ms.topic="article"
+ ms.tgt_pltfrm="vm-multiple"
+ ms.workload="infrastructure-services"
+ ms.date="08/25/2015"
+ ms.author="rasquill"/>
 #仮想マシン拡張機能の管理
-Azure の Windows 仮想マシンまたは Linux 仮想マシンのいずれかで VM 拡張機能を検索、追加、変更、削除する方法について説明します。
+Azure の Windows Virtual Machines または Linux Virtual Machines のいずれかで VM 拡張機能を検索、追加、変更、削除する方法について説明します。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用して拡張機能を管理する方法について説明します。
+
 
 ##VM 拡張機能の使用
 
@@ -26,7 +30,7 @@ Azure VM 拡張機能は、Azure VM 上での他のプログラムの動作の�
 最も一般的なタスクは次のとおりです。
 
 1.  使用可能な拡張機能の検索
-    
+
 2.  読み込み済みの拡張機能の更新
 
 3.  拡張機能の追加
@@ -41,7 +45,7 @@ Azure VM 拡張機能には次のものがあります (サポートする機能
 -   Azure クロスプラットフォーム インターフェイス (Azure CLI)
 -   サービス管理 REST API
 
-利用可能な拡張機能の情報を検索するには、[Azure PowerShell](https://msdn.microsoft.com/library/azure/dn495240.aspx) コマンドレットまたは[サービス管理REST API](https://msdn.microsoft.com/library/ee460799.aspx) を使用します。
+利用可能な拡張機能の情報を検索するには、[Azure PowerShell](https://msdn.microsoft.com/library/azure/dn495240.aspx) コマンドレットまたは[サービス管理 REST API](https://msdn.microsoft.com/library/ee460799.aspx) を使用します。
 
 ###Azure PowerShell
 
@@ -53,7 +57,7 @@ Azure VM 拡張機能には次のものがあります (サポートする機能
 -   Virtual Machines のインスタンスの場合、[Get-AzureVMAvailableExtension](https://msdn.microsoft.com/library/azure/dn722480.aspx) コマンドレットを使用できます。
 
      例として、次のコード例に PowerShell を使用して **IaaSDiagnostics** 拡張機能の情報を一覧表示する方法を示します。
-    
+
         PS C:\PowerShell> Get-AzureVMAvailableExtension -ExtensionName IaaSDiagnostics
         VERBOSE: 5:09:01 PM - Begin Operation: Get-AzureVMAvailableExtension
         VERBOSE: 5:09:06 PM - Completed Operation: Get-AzureVMAvailableExtension
@@ -137,4 +141,4 @@ Azure PowerShell コマンドレットを使用するのが、最も簡単に拡
 
 >[AZURE.NOTE]拡張機能では、JSON で定義された構成も使用できます。これらの種類の拡張機能を使用する場合、**SampleConfig** 要素だけが使用されます。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO2-->

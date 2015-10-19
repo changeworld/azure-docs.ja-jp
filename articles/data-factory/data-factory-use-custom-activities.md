@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/29/2015" 
+	ms.date="10/06/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory パイプラインでカスタム アクティビティを使用する
@@ -60,6 +60,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 		using System.IO;
 		using System.Globalization;
 		using System.Diagnostics;
+		using System.Linq;
 	
 		using Microsoft.Azure.Management.DataFactories.Models;
 		using Microsoft.Azure.Management.DataFactories.Runtime;
@@ -77,10 +78,9 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
 8. **IDotNetActivity** インターフェイスの **Execute** メソッドを **MyDotNetActivity** クラスに実装 (追加) し、次のサンプル コードをメソッドにコピーします。
 
-
 	次のサンプル コードでは、入力 BLOB 内の行数をカウントし、BLOB へのパス、BLOB 内の行数、アクティビティが実行されたコンピューター、現在の日時を出力 BLOB に生成します。
 
-        public IDictionary<string, string> Execute(IEnumerable<LinkedService> linkedServices, IEnumerable<Table> tables, Activity activity, IActivityLogger logger)
+		public IDictionary<string, string> Execute(IEnumerable<LinkedService> linkedServices, IEnumerable<Dataset> datasets, Activity activity, IActivityLogger logger)
         {
             IDictionary<string, string> extendedProperties = ((DotNetActivity)activity.TypeProperties).ExtendedProperties;
 
@@ -88,13 +88,12 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
             CustomDataset inputLocation;
             AzureBlobDataset outputLocation;
 
-            Table inputTable = tables.Single(table => table.Name == activity.Inputs.Single().Name);
-            inputLocation = inputTable.Properties.TypeProperties as CustomDataset;
+            Dataset inputDataset = datasets.Single(dataset => dataset.Name == activity.Inputs.Single().Name);
+            inputLocation = inputDataset.Properties.TypeProperties as CustomDataset;
 
-			// using First method instead of Single since we are using the same 
-			// Azure Storage linked service for input and output. 
-            inputLinkedService = linkedServices.First(linkedService => linkedService.Name == inputTable.Properties.LinkedServiceName).Properties.TypeProperties as AzureStorageLinkedService;
-
+            // using First method instead of Single since we are using the same 
+            // Azure Storage linked service for input and output. 
+            inputLinkedService = linkedServices.First(linkedService => linkedService.Name == inputDataset.Properties.LinkedServiceName).Properties.TypeProperties as AzureStorageLinkedService;
 
             string output = string.Empty;
 
@@ -107,7 +106,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
             }
 
             string connectionString = GetConnectionString(inputLinkedService);
-            string folderPath = GetFolderPath(inputTable);
+            string folderPath = GetFolderPath(inputDataset);
 
             logger.Write("Reading blob from: {0}", folderPath);
 
@@ -159,12 +158,12 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
 
             } while (continuationToken != null);
 
-            Table outputTable = tables.Single(table => table.Name == activity.Outputs.Single().Name);
-            outputLocation = outputTable.Properties.TypeProperties as AzureBlobDataset;
-            outputLinkedService = linkedServices.First(linkedService => linkedService.Name == outputTable.Properties.LinkedServiceName).Properties.TypeProperties as AzureStorageLinkedService;
+            Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
+            outputLocation = outputDataset.Properties.TypeProperties as AzureBlobDataset;
+            outputLinkedService = linkedServices.First(linkedService => linkedService.Name == outputDataset.Properties.LinkedServiceName).Properties.TypeProperties as AzureStorageLinkedService;
 
             connectionString = GetConnectionString(outputLinkedService);
-            folderPath = GetFolderPath(outputTable);
+            folderPath = GetFolderPath(outputDataset);
 
             logger.Write("Writing blob to: {0}", folderPath);
 
@@ -192,8 +191,7 @@ Azure Data Factory は、パイプラインで使用してデータの移動や�
             return asset.ConnectionString;
         }
 
-        
-        private static string GetFolderPath(Table dataArtifact)
+        private static string GetFolderPath(Dataset dataArtifact)
         {
             if (dataArtifact == null || dataArtifact.Properties == null)
             {
@@ -478,4 +476,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

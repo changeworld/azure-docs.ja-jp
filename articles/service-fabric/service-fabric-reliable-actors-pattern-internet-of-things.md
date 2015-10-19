@@ -4,7 +4,7 @@
    description="Service Fabric 高信頼アクターは、HTTPS、MQTT、AMQP などの複数のトランスポートをサポートするメッセージ システム フロントエンドを結合する、システム内の (中間層としての) 重要な構成要素です。フロントエンドは、個別のデバイスを表すアクターと通信します。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="vturecek"
    manager="timlt"
    editor=""/>
 
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="08/05/2015"
-   ms.author="claudioc"/>
+   ms.author="vturecek"/>
 
 # 高信頼アクターの設計パターン: モノのインターネット (IoT)
 デバイスとクラウド サービス両方での技術の進歩に伴って IoT が新しいトレンドになり、開発者はシステムを開発の主要な構成要素に注目し始めています。次の図は、Service Fabric 高信頼アクターを使用して実現される重要なシナリオを示したものです。
@@ -217,4 +217,4 @@ Azure Service Fabric アクターは、アクターの有効期間も処理し�
 [1]: ./media/service-fabric-reliable-actors-pattern-internet-of-things/internet-of-things-1.png
 [2]: ./media/service-fabric-reliable-actors-pattern-internet-of-things/internet-of-things-2.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

@@ -58,6 +58,8 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 
 最初に、必要であれば、「[Azure PowerShell のインストールと構成方法](../install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。Azure PowerShell プロンプトを開きます。
 
+> [AZURE.NOTE]この記事には、バージョン 1.0.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。この記事に示す Azure PowerShell コマンド ブロックは、Azure PowerShell のバージョン 1.0.0 以降の新しいコマンドレットをサポートするためにテストおよび更新を行っている段階にあります。もうしばらくお待ちください。
+
 次に、以下のコマンドで、適切な Azure サブスクリプションを選択します。引用符内のすべての文字 (< and > を含む) を正しい名前に置き換えます。
 
 	$subscr="<Subscription name>"
@@ -333,4 +335,4 @@ Azure PowerShell で仮想マシンを順番に起動するには、リソース
 	Start-AzureVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2015"
+	ms.date="10/05/2015"
 	ms.author="josephd"/>
 
 # 基本構成テスト環境
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-base-configuration-test-environment-resource-manager.md)を使用してリソースを作成することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。また、[リソース マネージャー デプロイメント モデル](virtual-machines-base-configuration-test-environment-resource-manager.md)を使用してリソースを作成することもできます。
 
-この記事では、サービスマネージメントで作成された仮想マシンコンピューターを使用し、Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
+この記事では、Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
 
 完成したテスト環境は、次の用途に使うことができます。
 
@@ -51,7 +51,7 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 3.	APP1 を構成する。
 4.	CLIENT1 を構成する。
 
-まだ Azure アカウントがない場合は、[こちら](http://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
+まだ Azure アカウントがない場合は、[1 か月間の無料試用版](http://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
 > [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines 料金](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 料金計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
 
@@ -59,7 +59,7 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 
 まず、基本構成の Corpnet サブネットをホストすることになる TestLab という仮想ネットワークを作成します。
 
-1.	Microsoft Azure 管理ポータルのタスク バーで、**[新規]、[Network Service]、[Virtual Network]、[カスタム作成]** の順にクリックします。
+1.	[Azure ポータル](https://manage.windowsazure.com)のタスク バーで、**[新規]、[Network Service]、[Virtual Network]、[カスタム作成]** の順にクリックします。
 2.	[Virtual Network の詳細] ページの**[名前]** に「**TestLab**」と入力します。
 3.	**[場所]** から適切なリージョンを選択します。
 4.	次へ進む矢印をクリックします。
@@ -254,6 +254,8 @@ Azure の基本構成の準備が整いました。アプリケーションの�
 
 ## その他のリソース
 
+[Azure のテスト ラボ](http://social.technet.microsoft.com/wiki/contents/articles/24092.azure-test-lab.aspx)
+
 [ハイブリッド クラウド テスト環境](../virtual-network/virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
 [Azure リソース マネージャーでの基本構成テスト環境](virtual-machines-base-configuration-test-environment-resource-manager.md)
@@ -286,4 +288,4 @@ Azure PowerShell で順に仮想マシンを起動するには、クラウド �
 	Start-AzureVM -ServiceName $serviceName -Name "APP1"
 	Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

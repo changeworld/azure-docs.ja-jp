@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="09/11/2015" 
+	ms.date="10/05/2015" 
 	ms.author="ricksal"/>
 
 
@@ -649,7 +649,7 @@ ToDoItemAdapter コンストラクターの 2 つ目のパラメーターはレ�
 
 *ToDoItem* テーブルを変更したときにその結果を表示するには、その都度アダプターを呼び出す必要があります。変更はレコード単位で加えられるため、操作の対象はコレクションではなく行になります。項目を挿入する場合は、アダプターの *add* メソッドを呼び出します。項目を削除する場合は、*remove* メソッドを呼び出します。
 
-##<a name="#custom-api"></a>方法: カスタム API の呼び出し
+##<a name="custom-api"></a>方法: カスタム API の呼び出し
 
 カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。モバイル サービスでカスタム API を作成する方法の例については、「[カスタム API を定義する方法](mobile-services-dotnet-backend-define-custom-api.md)」を参照してください。
 
@@ -933,4 +933,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Mobile Services を使い始める]: mobile-services-android-get-started.md
 [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

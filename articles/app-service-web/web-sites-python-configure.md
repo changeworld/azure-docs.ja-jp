@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="04/15/2015" 
+	ms.date="09/29/2015" 
 	ms.author="huguesv"/>
 
 
@@ -24,12 +24,12 @@
 
 このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) に作成して構成する方法について説明します。
 
-仮想環境や、requirements.txt を使用したパッケージ インストールなどの Git デプロイの追加の機能を説明します。
+仮想環境や、requirements.txt を使用したパッケージ インストールなどの Git デプロイメントの追加の機能を説明します。
 
 
 ## Bottle、Django、Flask
 
-Azure Marketplace には、Bottle、Django、Flask フレームワーク用のテンプレートが含まれます。 Azure App Service に最初の Web アプリを開発している場合、または Git に習熟していない場合は、これらのチュートリアルのいずれかに従うことをお勧めします。これらのチュートリアルでは、Windows または Mac から Git デプロイを使用して、ギャラリーから作業アプリケーションを構築するためのステップ バイ ステップの手順を紹介しています。
+Azure Marketplace には、Bottle、Django、Flask フレームワーク用のテンプレートが含まれます。Azure App Service に最初の Web アプリを開発している場合、または Git に習熟していない場合は、これらのチュートリアルのいずれかに従うことをお勧めします。これらのチュートリアルでは、Windows または Mac から Git デプロイメントを使用して、ギャラリーから作業アプリケーションを構築するためのステップ バイ ステップの手順を紹介しています。
 
 - [Bottle を使用した Web アプリの作成](web-sites-python-create-deploy-bottle-app.md)
 - [Django を使用した Web アプリの作成](web-sites-python-create-deploy-django-app.md)
@@ -44,7 +44,7 @@ Azure Marketplace には、Bottle、Django、Flask フレームワーク用の�
 
 ## Git 発行
 
-「[Azure App Service での GIT を使用した継続的なデプロイ](web-sites-publish-source-control.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。このチュートリアルでは、Python Web アプリの作成と管理、Azure App Service への発行を Git を使用して行います。
+「[Azure App Service での GIT を使用した継続的なデプロイメント](web-sites-publish-source-control.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。このチュートリアルでは、Python Web アプリの作成と管理、Azure App Service への発行を Git を使用して行います。
 
 Git 発行の設定が完了すると、Git リポジトリが作成されて Web アプリに関連付けられます。このリポジトリの URL が表示され、以後、ローカル開発環境からクラウドにデータをプッシュする目的で使用できます。Git を介してアプリケーションを発行するには、Git クライアントを併せてインストールする必要があります。提供されるインストラクションに従って Web アプリのコンテンツを Azure App Service にプッシュしてください。
 
@@ -86,16 +86,16 @@ WSGI は、[PEP 3333](http://www.python.org/dev/peps/pep-3333/) で規定され�
 
 上記の例のアプリは外部パッケージを必要としませんが、アプリケーションによっては外部パッケージが必要になる場合があります。
 
-外部のパッケージとの依存関係を管理するために、Azure の Git デプロイでは、仮想環境の作成がサポートされています。
+外部のパッケージとの依存関係を管理するために、Azure の Git デプロイメントでは、仮想環境の作成がサポートされています。
 
-Azure がリポジトリのルート ディレクトリに requirements.txt を検出すると、`env` という名前の仮想環境が自動的に作成されます。これは、最初のデプロイ、または選択した Python ランタイムを変更した後のデプロイ時に発生します。
+Azure がリポジトリのルート ディレクトリに requirements.txt を検出すると、`env` という名前の仮想環境が自動的に作成されます。これは、最初のデプロイメント、または選択した Python ランタイムを変更した後のデプロイメント時に発生します。
 
 仮想開発環境をローカルで作成する場合、Git リポジトリには含めないでください。
 
 
 ## パッケージの管理
 
-requirements.txt 内のリストにあるパッケージが、pip を使用して仮想環境に自動的にインストールされます。これはデプロイごとに発生しますが、パッケージが既にインストールされている場合は、インストールがスキップされます。
+requirements.txt 内のリストにあるパッケージが、pip を使用して仮想環境に自動的にインストールされます。これはデプロイメントごとに発生しますが、パッケージが既にインストールされている場合は、インストールがスキップされます。
 
 例 `requirements.txt`
 
@@ -137,8 +137,8 @@ Python 2.7 用の`web.config` の例:
       <system.webServer>
         <modules runAllManagedModulesForAllRequests="true" />
         <handlers>
-          <remove name="Python273_via_FastCGI" />
-          <remove name="Python340_via_FastCGI" />
+          <remove name="Python27_via_FastCGI" />
+          <remove name="Python34_via_FastCGI" />
           <add name="Python FastCGI"
                path="handler.fcgi"
                verb="*"
@@ -157,6 +157,7 @@ Python 2.7 用の`web.config` の例:
             <rule name="Configure Python" stopProcessing="true">
               <match url="(.*)" ignoreCase="false" />
               <conditions>
+                <add input="{REQUEST_URI}" pattern="^/static/.*" ignoreCase="true" negate="true" />
               </conditions>
               <action type="Rewrite"
                       url="handler.fcgi/{R:1}"
@@ -186,8 +187,8 @@ Python 3.4 用の`web.config` の例:
       <system.webServer>
         <modules runAllManagedModulesForAllRequests="true" />
         <handlers>
-          <remove name="Python273_via_FastCGI" />
-          <remove name="Python340_via_FastCGI" />
+          <remove name="Python27_via_FastCGI" />
+          <remove name="Python34_via_FastCGI" />
           <add name="Python FastCGI"
                path="handler.fcgi"
                verb="*"
@@ -206,6 +207,7 @@ Python 3.4 用の`web.config` の例:
             <rule name="Configure Python" stopProcessing="true">
               <match url="(.*)" ignoreCase="false" />
               <conditions>
+                <add input="{REQUEST_URI}" pattern="^/static/.*" ignoreCase="true" negate="true" />
               </conditions>
               <action type="Rewrite" url="handler.fcgi/{R:1}" appendQueryString="true" />
             </rule>
@@ -218,13 +220,6 @@ Python 3.4 用の`web.config` の例:
 パフォーマンスを向上させるために、静的ファイルは、Python コードを介さずに、Web サーバーによって直接処理されます。
 
 上記の例では、静的ファイルのディスク上の場所は URL の場所と一致する必要があります。つまり、`http://pythonapp.azurewebsites.net/static/site.css` への要求は、ディスクの `\static\site.css` にあるファイルを使用します。
-
-URL の場所とは別のディスク上の場所にあるファイルを使用するように、ルール `Static Files` を構成することもできます。次のルール定義では、`http://pythonapp.azurewebsites.net/static/site.css` への要求は、`\static\site.css` ではなく、ディスクの `\FlaskWebProject\static\site.css` にあるファイルを使用します。
-
-    <rule name="Static Files" stopProcessing="true">
-      <match url="^/static/.*" ignoreCase="true" />
-      <action type="Rewrite" url="^/FlaskWebProject/static/.*" appendQueryString="true" />
-    </rule>
 
 `WSGI_ALT_VIRTUALENV_HANDLER` は WSGI ハンドラーを指定する場所です。上記の例では、ハンドラーはルート フォルダーの `app.py` の `wsgi_app` という名前の関数であるため、`app.wsgi_app` になります。
 
@@ -254,6 +249,7 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
     import datetime
     import os
     import sys
+    import traceback
 
     if sys.version_info[0] == 3:
         def to_str(value):
@@ -294,20 +290,22 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
 
     def get_wsgi_handler(handler_name):
         if not handler_name:
-            raise Exception('WSGI_HANDLER env var must be set')
-        
+            raise Exception('WSGI_ALT_VIRTUALENV_HANDLER env var must be set')
+    
         if not isinstance(handler_name, str):
             handler_name = to_str(handler_name)
-
+    
         module_name, _, callable_name = handler_name.rpartition('.')
         should_call = callable_name.endswith('()')
         callable_name = callable_name[:-2] if should_call else callable_name
         name_list = [(callable_name, should_call)]
         handler = None
+        last_tb = ''
 
         while module_name:
             try:
                 handler = __import__(module_name, fromlist=[name_list[0][0]])
+                last_tb = ''
                 for name, should_call in name_list:
                     handler = getattr(handler, name)
                     if should_call:
@@ -319,10 +317,11 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
                 callable_name = callable_name[:-2] if should_call else callable_name
                 name_list.insert(0, (callable_name, should_call))
                 handler = None
-
+                last_tb = ': ' + traceback.format_exc()
+    
         if handler is None:
-            raise ValueError('"%s" could not be imported' % handler_name)
-
+            raise ValueError('"%s" could not be imported%s' % (handler_name, last_tb))
+    
         return handler
 
     activate_this = os.getenv('WSGI_ALT_VIRTUALENV_ACTIVATE_THIS')
@@ -343,9 +342,9 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
         import site
         sys.executable = activate_this
         old_sys_path, sys.path = sys.path, []
-        
+    
         site.main()
-        
+    
         sys.path.insert(0, '')
         for item in old_sys_path:
             if item not in sys.path:
@@ -357,7 +356,7 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
         return handler
 
 
-## Git デプロイのカスタマイズ
+## Git デプロイメントのカスタマイズ
 
 [AZURE.INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-deployment.md)]
 
@@ -378,7 +377,7 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
 >[AZURE.NOTE]Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、「[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+* Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
 
 
@@ -387,4 +386,4 @@ URL の場所とは別のディスク上の場所にあるファイルを使用�
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

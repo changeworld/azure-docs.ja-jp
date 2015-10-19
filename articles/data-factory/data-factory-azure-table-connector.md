@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/26/2015" 
+	ms.date="10/06/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
 
-この記事では、Azure Data Factory のコピー アクティビティを利用し、Azure テーブルと別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+この記事では、Azure Data Factory のコピー アクティビティを使用し、Azure テーブルと別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
 ## サンプル: Azure テーブルから Azure BLOB にデータをコピーする
 
@@ -31,7 +31,7 @@
 
 このサンプルは Azure テーブルのデフォルト パーティションに属するデータを 1 時間ごとに BLOB にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-**Azure ストレージのリンクされたサービス:**
+**Azure Storage のリンクされたサービス:**
 
 	{
 	  "name": "StorageLinkedService",
@@ -191,7 +191,7 @@
 
 このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB から Azure テーブル データベースのテーブルにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-**Azure ストレージのリンクされたサービス (Azure Table と BLOB の両方で使用):**
+**Azure Storage のリンクされたサービス (Azure テーブルと BLOB の両方で使用):**
 
 	{
 	  "name": "StorageLinkedService",
@@ -341,9 +341,9 @@
 	   }
 	}
 
-## Azure ストレージのリンクされたサービスのプロパティ
+## Azure Storage のリンクされたサービスのプロパティ
 
-Azure ストレージのリンクされたサービスを利用し、Azure ストレージ アカウントを Azure Data Factory にリンクできます。次の表は、Azure ストレージのリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+Azure Storage のリンクされたサービスを利用し、Azure ストレージ アカウントを Azure Data Factory にリンクできます。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
@@ -370,7 +370,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
-azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | <p>Azure テーブル クエリ文字列。</p>**例:****<br/> "azureTableSourceQuery": "PartitionKey eq 'DefaultPartitionKey'" <br/><br/>"azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00\_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00\_9999}\\')', SliceStart)" | No azureTableSourceIgnoreTableNotFound | テーブルが存在しないという例外を受け入れるかどうかを示します。 | TRUE<br/>FALSE | No |
+azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | <p>Azure テーブル クエリ文字列。</p>**例:****<br/> "azureTableSourceQuery": "PartitionKey eq 'DefaultPartitionKey'" <br/><br/>"azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00\_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00\_9999}\\')', SliceStart)" | No azureTableSourceIgnoreTableNotFound | テーブルが存在しないという例外を受け入れるかどうかを示します。| TRUE<br/>FALSE | No |
 
 **AzureTableSink** の typeProperties セクションでは次のプロパティがサポートされます。
 
@@ -384,6 +384,26 @@ azureTableInsertType | Azure テーブルにデータを挿入する方法です
 writeBatchSize | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | 1 ～ 100 の整数 (単位 = 行数) | いいえ (既定値 = 100) 
 writeBatchTimeout | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | (単位 = 時間)例: "00:20:00" (20 分) | No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒)
 
+### azureTablePartitionKeyName
+azureTablePartitionKeyName として宛先列を使用する前に、translator JSON プロパティを使用して、ソース列を宛先列にマップする必要があります。
+
+次の例では、ソース列の DivisionID が宛先列の DivisionID にマップされます。
+
+	"translator": {
+		"type": "TabularTranslator",
+		"columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
+	} 
+
+EmpID は、パーティション キーとして指定されます。
+
+	"sink": {
+		"type": "AzureTableSink",
+		"azureTablePartitionKeyName": "DivisionID",
+		"writeBatchSize": 100,
+		"writeBatchTimeout": "01:00:00"
+	}
+
+
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### Azure テーブルの型のマッピング
@@ -393,7 +413,7 @@ writeBatchTimeout | writeBatchSize または writeBatchTimeout に達したと�
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
 
-Azure Table との間でデータを移動するとき、次の「[Azure Table サービスにより定義されたマッピング](https://msdn.microsoft.com/library/azure/dd179338.aspx)」が Azure Table OData 型と .NET 型の間の移動に利用されます。
+Azure Table 間でデータの移動時に、次の [Azure Table サービスにより定義されたマッピング](https://msdn.microsoft.com/library/azure/dd179338.aspx)が Azure Table の OData 型と .NET 型の間の移動に利用されます。
 
 | OData データ型 | .NET 型 | 詳細 |
 | --------------- | --------- | ------- |
@@ -484,4 +504,4 @@ lastlogindate | Edm.DateTime
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

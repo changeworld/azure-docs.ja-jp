@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/10/2015"
+   ms.date="10/07/2015"
    ms.author="seanmck"/>
 
 # Service Fabric 開発環境の設定
@@ -66,7 +66,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
     ```powershell
     cd "$env:ProgramW6432\Microsoft SDKs\Service Fabric\ClusterSetup"
     ```
-    
+
 3. 実行
 
     ```powershell
@@ -81,7 +81,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 SDK に付属している Service Fabric エクスプローラー ツールを使用して、クラスターが正常に作成されたことを確認できます。
 
-1. 次のコマンドを実行して、Service Fabric Explorer を起動します。 
+1. 次のコマンドを実行して、Service Fabric Explorer を起動します。
 
     ```powershell
     . "$env:ProgramW6432\Microsoft SDKs\Service Fabric\Tools\ServiceFabricExplorer\ServiceFabricExplorer.exe"
@@ -106,4 +106,4 @@ SDK に付属している Service Fabric エクスプローラー ツールを�
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO2-->

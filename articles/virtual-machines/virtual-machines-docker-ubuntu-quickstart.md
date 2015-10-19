@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure"
-	ms.date="05/20/2015"
+	ms.date="10/04/2015"
 	ms.author="rasquill"/>
 
 # Azure Marketplace で Docker をすばやく開始する方法
@@ -24,7 +24,7 @@
 
 すぐに SSH で VM を接続し、そのまま直接 Docker で作業を始められます。
 
-> [AZURE.NOTE]Azure Marketplace テンプレートで作成された VM は、リモートの Docker クライアントによる管理目的の Docker リモート API をホストしません。リモートでこの VM の Docker ホストの管理を有効にするには、[HTTPS による Docker の実行](https://docs.docker.com/articles/https/)に関するページを参照するか、「[Azure ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)」または「[Azure CLI での Docker VM 拡張機能の使用](virtual-machines-docker-with-xplat-cli-install.md)」の手順に従ってください。高度な設定をする場合は、GitHub で [Windows Docker クライアント](https://github.com/ahmetalpbalkan/Docker.DotNet)を構築することもできます ([nuget](https://www.nuget.org/packages/Docker.DotNet/) での取得も可能です)。
+> [AZURE.NOTE]Azure Marketplace テンプレートで作成された VM は、リモートの Docker クライアントによる管理目的の Docker リモート API をホストしません。リモートでこの VM の Docker ホストの管理を有効にするには、[HTTPS による Docker の実行](https://docs.docker.com/articles/https/)に関するページを参照するか、「[Azure ポータルでの Docker VM 拡張機能の使用](virtual-machines-docker-with-portal.md)」または「[Azure CLI での Docker VM 拡張機能の使用](virtual-machines-docker-with-xplat-cli-install.md)」の手順に従ってください。<!-- --> Windows からの Azure Docker VM を自動化する場合は、[Docker ツールボックスをインストール](https://docs.docker.com/installation/windows/)するか、[Chocolatey から](https://chocolatey.org/packages/docker) Docker.exe を取得してください。
 
 ## ポータルへのログオン
 
@@ -40,7 +40,7 @@
 
 > ![Locate the image in the Image Gallery](./media/virtual-machines-docker-ubuntu-quickstart/DockerOnUbuntuServerMSOpenTech.png)
 
-3. インスタンスのユーザー名とパスワードを入力するか、**.pem** ファイルを指定して SSH で証明書を使用できるようにします(以下の図はユーザー名とパスワードの組み合わせの入力画面を示しています)。 次に、下部にある **[作成]** をクリックします。
+3. インスタンスのユーザー名とパスワードを入力するか、**.pub** ファイル (ssh-rsa format) のコンテンツを指定して SSH で証明書を使用できるようにします(以下の図はユーザー名とパスワードの組み合わせの入力画面を示しています)。 次に、下部にある **[作成]** をクリックします。
 
 > ![Configure the vm instance](./media/virtual-machines-docker-ubuntu-quickstart/CreateVMDockerUbuntuPwd.png)
 
@@ -77,4 +77,4 @@ Docker コマンドの発行を開始しますが、この Azure VM では既定
 [MSOpenTech]: http://msopentech.com/
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [mobile-services-selector-client-library](../../includes/mobile-services-selector-client-library.md)]
 
-このガイドでは、Azure Mobile Services の [iOS SDK] を使用して一般的なシナリオを実行する方法について説明します。Mobile Services を初めて使用する場合は、まず、「[Mobile Services のクイック スタート]」または「[既存のアプリケーションへの Mobile Services の追加]」を実行することで、アカウントを構成し、テーブルを作成し、モバイル サービスを作成してください。
+このガイドでは、Azure Mobile Services の [iOS SDK] を使用して一般的なシナリオを実行する方法について説明します。Mobile Services を初めて使用する場合は、まず、「[Mobile Services のクイック スタート]」を実行してアカウントを構成し、テーブルを作成し、モバイル サービスを作成してください。
 
 > [AZURE.NOTE]このガイドは、最新では [iOS Mobile Services SDK](https://go.microsoft.com/fwLink/?LinkID=266533&clcid=0x409) を使用します。プロジェクトで古いバージョンの SDK が使用されている場合は、まず Xcode のフレームワークをアップグレードします。
 
@@ -28,7 +28,7 @@
 
 ##<a name="Setup"></a>セットアップと前提条件
 
-このガイドでは、前提条件として、モバイル サービスとテーブルを作成してあるとします。詳細については、「[テーブルの作成]」を参照するか、「[Mobile Services のクイック スタート]」または「[既存のアプリケーションへの Mobile Services の追加]」で作成した `TodoItem` テーブルを再利用してください。このガイドでは、テーブルのスキーマが、これらのチュートリアルのテーブルの場合と同じであることを前提とします。このガイドではまた、Xcode が `WindowsAzureMobileServices.framework` を参照し、`WindowsAzureMobileServices/WindowsAzureMobileServices.h` をインポートすることを前提とします。
+このガイドでは、前提条件として、モバイル サービスとテーブルを作成してあるとします。詳細については、「[テーブルの作成]」を参照するか、「[Mobile Services のクイック スタート]」で作成した `TodoItem` テーブルを再利用してください。このガイドでは、テーブルのスキーマが、これらのチュートリアルのテーブルの場合と同じであることを前提とします。このガイドではまた、Xcode が `WindowsAzureMobileServices.framework` を参照し、`WindowsAzureMobileServices/WindowsAzureMobileServices.h` をインポートすることを前提とします。
 
 ##<a name="create-client"></a>方法: Mobile Services クライアントを作成する
 
@@ -311,11 +311,9 @@ Azure Mobile Services は、次の 2 つの認証ワークフローをサポー�
 <!-- Images. -->
 
 <!-- URLs. -->
-[既存のアプリケーションへの Mobile Services の追加]: /develop/mobile/tutorials/get-started-data
-[Mobile Services のクイック スタート]: /develop/mobile/tutorials/get-started-ios
-[Mobile Services クイック スタート]: /develop/mobile/tutorials/get-started-ios
-[Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
-[Validate and modify data in Mobile Services by using server scripts]: /develop/mobile/tutorials/validate-modify-and-augment-data-ios
+[Mobile Services のクイック スタート]: mobile-services-ios-get-started.md
+[Mobile Services クイック スタート]: mobile-services-ios-get-started.md
+[Get started with Mobile Services]: mobile-services-ios-get-started.md
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [認証]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
@@ -324,13 +322,11 @@ Azure Mobile Services は、次の 2 つの認証ワークフローをサポー�
 [Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
 [権限]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [サービス側の承認]: mobile-services-javascript-backend-service-side-authorization.md
-[Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 [動的スキーマ]: http://go.microsoft.com/fwlink/p/?LinkId=296271
-[How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
 [テーブルの作成]: http://msdn.microsoft.com/library/windowsazure/jj193162.aspx
 [NSDictionary object]: http://go.microsoft.com/fwlink/p/?LinkId=301965
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [競合ハンドラー]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

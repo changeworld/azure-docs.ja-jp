@@ -61,7 +61,7 @@
             var usernameTag = "username:" + HttpContext.Current.User.Identity.Name;
 
             // windows
-            var rawNotificationToBeSent = new Microsoft.ServiceBus.Notifications.WindowsNotification(secureNotificationInTheBackend.Id.ToString(),
+            var rawNotificationToBeSent = new Microsoft.Azure.NotificationHubs.WindowsNotification(secureNotificationInTheBackend.Id.ToString(),
                             new Dictionary<string, string> {
                                 {"X-WNS-Type", "wns/raw"}
                             });
@@ -84,4 +84,4 @@
 
 24. 発行先として Azure の Web サイトを選択します。Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を*バックエンド エンドポイント*として参照します。**[発行]** をクリックします。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

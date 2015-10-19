@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="08/04/2015"
+	ms.date="10/05/2015"
 	ms.author="awills"/>
 
 # Visual Studio Application Insights を使ってみる
 
 *Application Insights はプレビュー段階です。*
 
-問題を検出し、問題を解決し、アプリケーションの継続的に改善します。実行中のアプリケーションの問題をすぐに診断します。ユーザーがアプリケーションを何に利用しているかを理解します。
+問題を検出し、問題を解決し、アプリケーションの継続的に改善します。Quickly diagnose any problems in your live application.Understand what your users do with it.
 
 構成は非常に簡単であり、数分以内で結果を確認できます。
 
@@ -33,7 +33,7 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 [Microsoft Azure](http://azure.com) のアカウントが必要になります。既にお持ちの組織のグループ アカウントにアクセスすることも、従量課金アカウントを取得することもできます。Application Insights には Free レベルが用意されているため、アプリの人気が出るまでお支払いいただく必要はありません。「[料金のページ](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
-使用目的 | 必要な操作 | 取得内容
+使用目的 | What to do | 取得内容
 ---|---|---
  <a href="app-insights-start-monitoring-app-health-usage.md">![ASP.NET](./media/app-insights-get-started/appinsights-gs-i-01-perf.png)</a> | <a href="app-insights-start-monitoring-app-health-usage.md">Web プロジェクトに Application Insights SDK を追加する</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-start-monitoring-app-health-usage.md">![パフォーマンスと利用状況の監視](./media/app-insights-get-started/appinsights-gs-r-01-perf.png)</a>
 <a href="app-insights-monitor-performance-live-website-now.md">![既にライブの ASP.NET サイト](./media/app-insights-get-started/appinsights-gs-i-04-red2.png)</a><br/><a href="app-insights-monitor-performance-live-website-now.md">![依存関係とパフォーマンスの監視](./media/app-insights-get-started/appinsights-gs-i-03-red.png)</a>|<a href="app-insights-monitor-performance-live-website-now.md">IIS サーバーに状態モニターをインストールする</a> <br/> ![取得する](./media/app-insights-get-started/appinsights-00arrow.png) | <a href="app-insights-monitor-performance-live-website-now.md">![ASP.NET の依存関係の監視](./media/app-insights-get-started/appinsights-gs-r-03-red.png)</a>
@@ -46,14 +46,17 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 ## サポートとフィードバック
 
+
 * 質問および問題点:
  * [トラブルシューティング][qna]
- * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-jp/home?forum=ApplicationInsights)
+ * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/JA-JP/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
 * ご提案:
  * [ユーザーの声](http://visualstudio.uservoice.com/forums/121579-visual-studio/category/77108-application-insights)
+* コード サンプル
+ * [コード サンプル](app-insights-code-samples.md)
 
 
 
@@ -72,4 +75,4 @@ Application Insights は SDK をアプリに追加することで動作し、テ
 
 [qna]: app-insights-troubleshoot-faq.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

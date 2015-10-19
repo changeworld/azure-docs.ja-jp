@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Azure での Linux とオープン ソース コンピューティング"
-	description="このトピックには、Linux の基本的な使用法、Azure での Linux イメージの実行やアップロードに関するいくつかの基本的な概念、特定のテクノロジと最適化に関するその他のコンテンツなど、Azure での Linux およびオープン ソース コンピューティングの一覧が含まれています。"
+	pageTitle="Azure での Linux とオープン ソース コンピューティング | Microsoft Azure"
+	description="Linux の基本的な使用法、Azure での Linux イメージの実行やアップロードに関するいくつかの基本的な概念、特定のテクノロジと最適化に関するその他のコンテンツなど、Azure での Linux およびオープン ソース コンピューティングに関する記事を一覧します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
 	manager="timlt"
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -20,7 +21,9 @@
 
 # Azure での Linux とオープン ソース コンピューティング
 
-このドキュメントは、Microsoft とそのパートナーによって書かれた、Microsoft Azure での Linux ベースの仮想マシンの実行およびその他のオープン ソースのコンピューティング環境とアプリケーションに関するすべてのトピックをまとめて一覧にしたものです。Azure やオープン ソース コンピューティングの環境はめまぐるしく変化しています。最新情報を追加し、古くなった情報を削除するよう常に最善を尽くしていますが、*それでも*このドキュメントの情報が最新ではない可能性があります。不足などあればコメント欄よりお知らせください。または、[GitHub リポジトリ](https://github.com/Azure/azure-content/)でプル要求を送信してください。
+このドキュメントは、Microsoft とそのパートナーによって書かれた、Microsoft Azure での Linux ベースの Virtual Machines の実行およびその他のオープン ソースのコンピューティング環境とアプリケーションに関するすべてのトピックをまとめて一覧にしたものです。Azure やオープン ソース コンピューティングの環境はめまぐるしく変化しています。最新情報を追加し、古くなった情報を削除するよう常に最善を尽くしていますが、*それでも*このドキュメントの情報が最新ではない可能性があります。不足などあればコメント欄よりお知らせください。または、[GitHub リポジトリ](https://github.com/Azure/azure-content/)でプル要求を送信してください。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、デプロイメント モデルに関係なくトピックを一覧します。
 
 ## 一般的な注意事項
 このページのセクションは、右に示すように分けられています。(トピックが複数のコンセプト、ディストリビューション、テクノロジに関連しているため、複数のセクションにリンクが出現します)。 さらに、さまざまな Linux オプション、イメージ リポジトリ、ケース スタディに関するトピック、および独自のカスタム イメージをアップロードする操作方法に関するトピックがあります。
@@ -131,7 +134,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 17. [基本: Cloud-init で使用するカスタム データの VM への挿入](virtual-machines-how-to-inject-custom-data.md)
 18. [基本に関するブログ: 12 の手順から成る Azure 上での高可用性 Linux の構築](http://blogs.technet.com/b/keithmayer/archive/2014/10/03/quick-start-guide-building-highly-available-linux-servers-in-the-cloud-on-microsoft-azure.aspx)
 19. [基本に関するブログ: Azure CLI、node.js、jhawk を使用した、Azure 上での Linux のプロビジョニングの自動化](http://blogs.technet.com/b/keithmayer/archive/2014/11/24/step-by-step-automated-provisioning-for-linux-in-the-cloud-with-microsoft-azure-xplat-cli-json-and-node-js-part-1.aspx)
-19. [Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-../xplat-cli-install.md)
+19. [Azure CLI を使用して複数の VM のデプロイメントを作成する](virtual-machines-create-multi-vm-deployment-../xplat-cli-install.md)
 20. [基本: Azure の Docker VM 拡張機能](virtual-machines-docker-vm-extension.md)
 23. [Azure サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) のリファレンス
 24. [Azure での GlusterFS](http://dastouri.azurewebsites.net/gluster-on-azure-part-1/)
@@ -181,7 +184,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 
 このセクションで不足を埋めましょう。ご提案があれば PR をお送りください。または下記のコメントにご記載ください。
 
-1. [Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-../xplat-cli-install.md)
+1. [Azure CLI を使用して複数の VM のデプロイメントを作成する](virtual-machines-create-multi-vm-deployment-../xplat-cli-install.md)
 2. [Patrick Chanezon の Azure Linux GitHub リポジトリ](https://github.com/chanezon/azure-linux)
 3. [ビデオ: **usbip** を使用して Linun のオンプレミス USB データを Azure に移動する方法](http://channel9.msdn.com/Blogs/Open/On-premises-USB-devices-on-Linux-on-Azure-via-usbip)
 4. [ビデオ: fernapp を使用してブラウザーで Azure の Linux ベースの GUI にアクセスする](http://channel9.msdn.com/Blogs/Open/Accessing-Linux-based-GUI-on-Azure-over-browser-with-fernapp)
@@ -269,7 +272,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 3. Deis
 	- [GitHub のリポジトリ: Azure 上の CoreOS クラスターへの Deis のインストール](https://github.com/chanezon/azure-linux/tree/master/coreos/deis)
 4. Kubernetes
-	- [CoreOS と Weave を使用した Kubernetes クラスターのデプロイの自動化に関する包括的なガイド](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
+	- [CoreOS と Weave を使用した Kubernetes クラスターのデプロイメントの自動化に関する包括的なガイド](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
 	- [Kubernetes Visualizer](http://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure)
 5. Jenkins と Hudson
 	- [ブログ: Azure 用 Jenkins スレーブ プラグイン](http://msopentech.com/blog/2014/09/23/announcing-jenkins-slave-plugin-azure/)
@@ -277,7 +280,7 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 	- [サード パーティ: Azure 用 Hudson スレーブ プラグイン](http://wiki.hudson-ci.org/display/HUDSON/Azure+Slave+Plugin)
 	- [サード パーティ: Azure 用 Hudson ストレージ プラグイン](https://github.com/hudson3-plugins/windows-azure-storage-plugin)
 10. Chef
-	- [Chef と仮想マシン](virtual-machines-windows-install-chef-client.md)
+	- [Chef とVirtual Machines](virtual-machines-windows-install-chef-client.md)
 	- [ビデオ: Chef の概要とそのしくみ](https://msopentech.com/blog/2014/03/31/using-chef-to-manage-azure-resources/)
 
 12. Azure Automation
@@ -307,4 +310,4 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 [How to use docker-machine on Azure]: virtual-machines-docker-machine.md
 [How to use docker with swarm on Azure]: virtual-machines-docker-swarm.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

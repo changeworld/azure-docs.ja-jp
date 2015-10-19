@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2015"
+	ms.date="10/05/2015"
 	ms.author="josephd"/>
 
 
@@ -113,7 +113,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -	データベース サーバー:
 	-	仮想マシン イメージ: SQL Server 2014 RTM Enterprise on Windows Server 2012 R2 です。
 	-	ホスト名プレフィックス: 初期構成中に指定されます。
-	-	サイズ: データベース サーバーは A5 (既定)、ファイル共有監視は A0 (既定)。
+	-	サイズ: データベース サーバーは A5 (既定)、ファイル共有監視 (SQL0) は A0 (既定)。
 	-	データベース アクセス アカウント名: 初期構成中に指定されます。
 	-	データベース アクセス アカウント パスワード: 初期構成中に指定されます。
 	-	SQL Server サービス アカウント名: sqlservice (既定)。
@@ -137,8 +137,8 @@ Azure プレビュー ポータルの SharePoint サーバー ファーム機能
 
 [SharePoint Server Farm](virtual-machines-sharepoint-farm-azure-preview.md)
 
-[Azure Virtual Machines での SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
+[Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

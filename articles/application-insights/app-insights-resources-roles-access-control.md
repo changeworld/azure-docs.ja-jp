@@ -4,7 +4,7 @@
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
-	manager="ronmart"/>
+	manager="douge"/>
 
 <tags 
 	ms.service="application-insights" 
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/21/2015" 
+	ms.date="10/01/2015" 
 	ms.author="awills"/>
  
 # Application Insights のリソース、ロール、アクセス制御
@@ -38,7 +38,6 @@ Visual Studio [Application Insights][start] では、[Microsoft Azure の役割�
 
     
     ![[参照]、[リソース グループ] を選択し、グループを選択します。](./media/app-insights-resources-roles-access-control/11-group.png)
-
 
 * [**サブスクリプション**](https://manage.windowsazure.com) - Application Insights またはその他の Azure リソースを使用するには、Azure サブスクリプションにサインインします。すべてのリソース グループが 1 つの Azure サブスクリプションに属します。そのサブスクリプションで価格パッケージを選択します。会社のサブスクリプションの場合、メンバーとそのアクセス許可を選択します。
 * [**Microsoft アカウント**][account] - Microsoft Azure サブスクリプション、XBox Live、Outlook.com、その他の Microsoft サービスにサインインするためのユーザー名とパスワード。
@@ -73,18 +72,18 @@ Visual Studio [Application Insights][start] では、[Microsoft Azure の役割�
 
 ![新しいユーザーの役割を選択します。](./media/app-insights-resources-roles-access-control/03-role.png)
 
-役割 | リソース グループにて
+役割 | In the resource group
 ---|---
-所有者 | ユーザーのアクセスなど、すべての項目を変更できます。
-共同作成者 | すべてのリソースを含む、すべての項目を編集できます。
-Application Insights コンポーネントの共同作業者 | Application Insights リソース、Web テスト、アラートを編集できます。
-閲覧者 | すべての項目を表示できますが、変更はできません。
+Owner | Can change anything, including user access
+Contributor | Can edit anything, including all resources
+Application Insights Component contributor | Can edit Application Insights resources, web tests and alerts
+Reader | Can view but not change anything
 
-「編集」には作成、削除、更新が含まれます。
+'Editing' includes creating, deleting and updating:
 
-* リソース
-* Web テスト
-* アラート
+* Resources
+* Web tests
+* Alerts
 * 連続エクスポート
 
 #### ユーザーを選択する
@@ -111,4 +110,4 @@ Application Insights コンポーネントの共同作業者 | Application Insig
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

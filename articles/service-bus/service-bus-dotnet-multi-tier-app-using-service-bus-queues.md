@@ -1,6 +1,6 @@
 <properties
 	pageTitle=".NET 多層アプリケーション | Microsoft Azure"
-	description="Service Bus キューを使用して層間で通信する多層アプリケーションを Azure で開発するのに役立つチュートリアルです。.NET でのサンプル。"
+	description="Service Bus キューを使用して層間で通信する多層アプリケーションを Azure で開発するのに役立つ .NET チュートリアルです。"
 	services="service-bus"
 	documentationCenter=".net"
 	authors="sethmanheim"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="07/02/2015"
+	ms.date="10/07/2015"
 	ms.author="sethm"/>
 
 # Azure Service Bus キューを使用する .NET 多層アプリケーション
 
 ## はじめに
 
-Microsoft Azure 向けアプリケーションは、Visual Studio 2013 および無料の Azure SDK for .NET を使用して簡単に開発できます。VisualStudio 2013 を所有していない場合でも、SDK をインストールすると自動的に Visual Studio Express がインストールされるため、Azure 向けの開発を完全に無料で始めることができます。この記事は、Azure を初めて使用するユーザーを対象としています。このチュートリアルを最後まで読むと、ローカル環境で実行され、多層アプリケーションの動作のしくみを示す、複数の Azure リソースを使用するアプリケーションを作成できます。
+Microsoft Azure 向けアプリケーションは、Visual Studio および無料の Azure SDK for .NET を使用して簡単に開発できます。VisualStudio を所有していない場合でも、SDK をインストールすると自動的に Visual Studio Express がインストールされるため、Azure 向けの開発を完全に無料で始めることができます。この記事は、Azure を初めて使用するユーザーを対象としています。このチュートリアルを最後まで読むと、ローカル環境で実行され、多層アプリケーションの動作のしくみを示す、複数の Azure リソースを使用するアプリケーションを作成できます。
 
 学習内容:
 
@@ -51,11 +51,11 @@ Service Bus には、仲介型メッセージングをサポートする、キ�
 
 この通信メカニズムには、直接メッセージングと比較した場合に、次のような利点があります。
 
--   **一時的な結合の解除:** 非同期メッセージング パターンでは、プロデューサーと コンシューマーが同時にオンラインになっている必要はありません。コンシューマーが メッセージを受け取る用意ができるまで、Service Bus が確実に メッセージを保持します。このため、保守などのために、分散型アプリケーションの 各コンポーネントの接続を自主的に解除できます。また、コンポーネントの クラッシュによって接続が解除されても問題なく、接続解除の際にシステム 全体に影響が及ぶことがありません。さらに、コンシューマー側アプリケーションが オンラインになっている時間は、1 日のうち一定の時間だけで済みます。
+-   **一時的な結合の解除:** 非同期メッセージング パターンでは、プロデューサーと コンシューマーが同時にオンラインになっている必要はありません。コンシューマーが メッセージを受け取る用意ができるまで、Service Bus が確実に メッセージを保持します。このため、保守などのために、分散型アプリケーションの各コンポーネントの接続を自主的に解除できます。また、コンポーネントのクラッシュによって接続が解除されても問題なく、接続解除の際にシステム全体に影響が及ぶことがありません。さらに、コンシューマー側アプリケーションがオンラインになっている時間は、1 日のうち一定の時間だけで済みます。
 
--   **負荷平準化:** 多くのアプリケーションでは、システム負荷が時間の経過とともに変化しますが、各作業単位に必要な処理時間は通常一定に保たれます。メッセージ プロデューサーとメッセージ コンシューマーの間をキューで仲介することは、コンシューマー側アプリケーション (worker) はピーク時ではなく平均時の負荷に対応できるようにプロビジョニングすればいいということを意味します。キューの深さは、受信する負荷の変化に合わせて増減します。このため、アプリケーション負荷への対応に必要なインフラストラクチャの観点から直接費用を節約できます。
+-   **負荷平準化:** 多くのアプリケーションでは、システム負荷が時間の経過とともに変化しますが、各作業単位に必要な処理時間は通常一定に保たれます。メッセージ プロデューサーとメッセージ コンシューマーの間をキューで仲介することは、コンシューマー側アプリケーション (worker) はピーク時ではなく平均時の負荷に対応できるようにプロビジョニングすればいいということを意味します。キューの深さは、受信の負荷の変化に応じて増減します。このため、アプリケーション負荷への対応に必要なインフラストラクチャの観点から直接費用を節約できます。
 
--   **負荷分散:** 負荷の増大に合わせて、キューからの読み取りのために worker プロセスを追加できます。各メッセージは、worker プロセスの中の 1 つのプロセスによって処理されます。また、このプルベースの負荷分散では、各 worker マシンがそれぞれ独自の最大レートでメッセージをプルする ため、worker マシンの処理能力が異なる場合であっても使用率を 最適化できます。このパターンは、競合コンシューマー パターンと 呼ばれることもあります。
+-   **負荷分散:** 負荷の増大に合わせて、キューからの読み取りのために worker プロセスを追加できます。各メッセージは、ワーカー プロセスの中の 1 つのプロセスによって処理されます。また、このプルベースの負荷分散では、各 worker マシンがそれぞれ独自の最大レートでメッセージをプルするため、worker マシンの処理能力が異なる場合であっても最適に使用できます。このパターンは、*競合コンシューマー* パターンと 呼ばれることもあります。
 
     ![][2]
 
@@ -85,13 +85,11 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
 ## Service Bus の名前空間を設定する
 
-次の手順では、サービス名前空間を作成し、共有秘密 (SAS) キーを取得します。サービス名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
-
-> [AZURE.NOTE]Visual Studio サーバー エクスプローラーを使用しても名前空間と Service Bus メッセージング エンティティを管理できますが、新しい名前空間を作成できるのは Azure ポータル内からのみです。
+次の手順では、サービス名前空間を作成し、共有秘密 (SAS) キーを取得します。名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
 ### Azure ポータルを使用して名前空間を設定する
 
-1.  [Azure ポータル][]にログインします。
+1.  [Azure ポータル][]にログオンします。
 
 2.  Azure ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
@@ -107,7 +105,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
     > [AZURE.IMPORTANT]アプリケーションをデプロイする予定の国またはリージョンと**同じ国/リージョン**を選択してください。そうすることで、パフォーマンスが最高になります。
 
-6.  チェック マークをクリックします。これで、システムによってサービス名前空間が 作成および有効化されます。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
+6.  OK チェック マークをクリックします。これで、システムによってサービス名前空間が 作成および有効化されます。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
 
 	![][27]
 
@@ -127,7 +125,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
 ## Web ロールを作成する
 
-このセクションでは、アプリケーションのフロンドエンドを作成します。最初に、アプリケーションで表示するさまざまなページを作成します。その後、Service Bus キューに項目を送信し、キューに関するステータス情報を表示するコードを追加します。
+このセクションでは、アプリケーションのフロントエンドを作成します。最初に、アプリケーションで表示するさまざまなページを作成します。その後、Service Bus キューに項目を送信し、キューに関するステータス情報を表示するコードを追加します。
 
 ### プロジェクトを作成する
 
@@ -247,7 +245,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
 7.  **[追加]** をクリックします。
 
-8.  次に、アプリケーションの表示名を変更します。**ソリューション エクスプローラー**で、**Views\\Shared\\\_Layout.cshtml** ファイルをダブルクリックして Visual Studio エディターで開きます。
+8.  次に、アプリケーションの表示名を変更します。**ソリューション エクスプローラー**で、**Views\\Shared\\_Layout.cshtml** ファイルをダブルクリックして Visual Studio エディターで開きます。
 
 9.  **My ASP.NET Application** となっている箇所をすべて **LITWARE'S Products** に置き換えます。
 
@@ -331,7 +329,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
             }
         }
 
-    注: このチュートリアルの後半で、**名前空間**と SAS キーの値を構成ファイルに保存する方法を学習します。
+    チュートリアル後半で**名前空間**と SAS キーの値を構成ファイルに保存する方法を学習します。
 
 4.  次に、**Initialize** メソッドが呼び出されるようにします。**ソリューション エクスプローラー**で、**Global.asax\\Global.asax.cs** をダブルクリックします。
 
@@ -381,13 +379,13 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
 
 ## クラウド構成マネージャー
 
-**Microsoft.WindowsAzure.Configuration.CloudConfigurationManager** クラスでは **GetSettings** メソッドにより、プラットフォームの構成ストアから構成設定を読み取ることができます。たとえば、コードを Web ロールか worker ロールで実行している場合、**GetSettings** メソッドは ServiceConfiguration.cscfg ファイルを読み取り、コードを標準的なコンソール アプリで実行している場合は、**GetSettings** メソッドは、app.config ファイルを読み取ります。
+[Microsoft.WindowsAzure.Configuration.CloudConfigurationManager][] クラスでは [GetSetting][] メソッドにより、プラットフォームの構成ストアから構成設定を読み取ることができます。たとえば、コードを Web ロールか worker ロールで実行している場合、[GetSetting][] メソッドは ServiceConfiguration.cscfg ファイルを読み取り、コードを標準的なコンソール アプリで実行している場合は、[GetSetting][] メソッドは、app.config ファイルを読み取ります。
 
-Service Bus 名前空間の接続文字列を構成ファイルに保存している場合は、**GetSettings** メソッドを使用して接続文字列を読み取り、それを使用して **NamespaceMananger** オブジェクトをインスタンス化できます。**NamespaceMananger** インスタンスを使用して Service Bus 名前空間をプログラムで構成できます。同じ接続文字列を使用してクライアントのオブジェクト (**QueueClient**、**TopicClient**、**EventHubClient** オブジェクトなど) をインスタンス化し、メッセージの送受信などのランタイム操作を実行できます。
+Service Bus 名前空間の接続文字列を構成ファイルに保存している場合は、[GetSetting][] メソッドを使用して接続文字列を読み取り、それを使用して [NamespaceMananger][] オブジェクトをインスタンス化できます。[NamespaceMananger][] インスタンスを使用して Service Bus 名前空間をプログラムで構成できます。同じ接続文字列を使用してクライアントのオブジェクト ([QueueClient][]、[TopicClient][]、[EventHubClient][] オブジェクトなど) をインスタンス化し、メッセージの送受信などのランタイム操作を実行できます。
 
 ### Connection string
 
-クライアント (たとえば、**Service Bus の QueueClient**) をインスタンス化するための構成情報は、接続文字列として表すことができます。その接続文字列を使用してクライアントの型をインスタンス化する `CreateFromConnectionString()` メソッドがクライアント側には用意されています。たとえば、次の構成セクションがあるとします。
+クライアント (たとえば、[Service Bus の QueueClient][]) をインスタンス化するための構成情報は、接続文字列として表すことができます。その接続文字列を使用してクライアントの型をインスタンス化する `CreateFromConnectionString()` メソッドがクライアント側には用意されています。たとえば、次の構成セクションがあるとします。
 
 	<ConfigurationSettings>
     ...
@@ -412,7 +410,7 @@ Service Bus 名前空間の接続文字列を構成ファイルに保存して�
 	// Initialize the connection to Service Bus queue.
 	Client = QueueClient.CreateFromConnectionString(connectionString, QueueName);
 
-次のセクションのコードは、**CloudConfigurationManager** クラスを使用しています。
+次のセクションのコードは、[CloudConfigurationManager][Microsoft.WindowsAzure.Configuration.CloudConfigurationManager] クラスを使用しています。
 
 ## worker ロールを作成する
 
@@ -477,7 +475,7 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 * [Service Bus サービス ページ][sbwacom]  
 * [Service Bus キューの使用方法][sbwacomqhowto]  
 
-多層シナリオの詳細またはクラウド サービスにアプリケーションを展開する方法については、以下を参照してください。
+多層シナリオの詳細またはクラウド サービスにアプリケーションをデプロイする方法については、以下を参照してください。
 
 * [.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーション)][mutitierstorage]  
 
@@ -491,7 +489,7 @@ Azure のクラウド サービスではなく、Azure Web サイトに多層ア
 
 3. フロントエンドとバックエンドは個別にテストできるほか、個別の Visual Studio インスタンスで両方を同時にテストすることもできます。
 
-Azure Web サイトにフロンドエンドを展開する方法については、[ASP.NET Web アプリケーションの Azure の Web サイトへのデプロイ](http://azure.microsoft.com/develop/net/tutorials/get-started/)に関するページを参照してください。Azure のクラウド サービスにバックエンドをデプロイする方法については、「[ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション][mutitierstorage]」を参照してください。
+Azure Web サイトにフロンドエンドをデプロイする方法については、「[Azure App Service での ASP.NET Web アプリの作成](../app-service-web/web-sites-dotnet-get-started.md)」を参照してください。Azure のクラウド サービスにバックエンドをデプロイする方法については、「[ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション][mutitierstorage]」を参照してください。
 
 
   [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
@@ -502,6 +500,16 @@ Azure Web サイトにフロンドエンドを展開する方法については�
   [3]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-3.png
 
 
+  [GetSetting]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.getsetting.aspx
+  [Microsoft.WindowsAzure.Configuration.CloudConfigurationManager]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.aspx
+  [NamespaceMananger]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx
+
+  [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
+  [Service Bus の QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
+
+  [TopicClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.topicclient.aspx
+
+  [EventHubClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx
 
   [Azure portal]: http://manage.windowsazure.com
   [Azure ポータル]: http://manage.windowsazure.com
@@ -530,7 +538,7 @@ Azure Web サイトにフロンドエンドを展開する方法については�
   [30]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-09.png
   [31]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-06.png
   [32]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-41.png
-  [33]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-4-2-WebPI.png
+  [33]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-42-webpi.png
   [35]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/multi-web-45.png
   [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx
   [sbwacom]: /documentation/services/service-bus/
@@ -538,4 +546,4 @@ Azure Web サイトにフロンドエンドを展開する方法については�
   [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   [executionmodels]: ../cloud-services/fundamentals-application-models.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

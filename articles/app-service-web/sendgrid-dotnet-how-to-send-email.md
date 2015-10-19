@@ -139,9 +139,8 @@ SendGrid の .NET クラス ライブラリは、**SendGridMail** という名�
     // Create an Web transport for sending email.
     var transportWeb = new Web(credentials);
 
-    // Send the email.
-    // You can also use the **DeliverAsync** method, which returns an awaitable task.
-    transportWeb.Deliver(myMessage);
+    // Send the email, which returns an awaitable task.
+    transportWeb.DeliverAsync(myMessage);
 
 ## 方法: 添付ファイルを追加する
 
@@ -241,4 +240,4 @@ SendGrid の Web ベース API と webhook を使用して、Azure アプリケ�
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

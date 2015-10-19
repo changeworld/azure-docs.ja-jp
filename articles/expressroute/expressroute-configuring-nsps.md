@@ -1,20 +1,20 @@
 <properties 
    pageTitle="NSP との Expressroute の構成"
-	description="このチュートリアルでは、NSP を通じた ExpressRoute の設定について説明します。"
-	documentationCenter="na"
-	services="expressroute"
-	authors="cherylmc"
-	manager="adinah"
-	editor="tysonn"/>
+   description="このチュートリアルでは、NSP を通じた ExpressRoute の設定について説明します。"
+   documentationCenter="na"
+   services="expressroute"
+   authors="cherylmc"
+   manager="adinah"
+   editor="tysonn"/>
 
 <tags 
    ms.service="expressroute"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="06/29/2015"
-	ms.author="cherylmc"/>
+   ms.devlang="na"
+   ms.topic="article" 
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services" 
+   ms.date="09/29/2015"
+   ms.author="cherylmc"/>
 
 #  ネットワーク サービス プロバイダーによる ExpressRoute 接続の構成
 
@@ -150,4 +150,4 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 		
 		Provisioned 
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO2-->

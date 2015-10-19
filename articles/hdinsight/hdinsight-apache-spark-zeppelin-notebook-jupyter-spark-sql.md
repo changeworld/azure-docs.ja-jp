@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/07/2015"
+	ms.date="09/30/2015"
 	ms.author="nitinme"/>
 
 
@@ -104,7 +104,13 @@
 
 >[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Zeppelin を起動した後、**Zeppelin HVAC tutorial** という名前でこの Notebook を検索します。
 
-1. Zeppelin Notebook を起動します。Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。表示されるページの指示に従って Notebook を起動します。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+
+2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Zeppelin Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
+
+	> [AZURE.NOTE]ブラウザーで次の URL を開き、クラスターの Zeppelin Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+	>
+	> `https://CLUSTERNAME.azurehdinsight.net/zeppelin`
 
 2. 新しい Notebook を作成します。ヘッダー ウィンドウで **[Notebook]** をクリックし、**[Note の新規作成]** をクリックします。
 
@@ -183,7 +189,13 @@
 
 >[AZURE.NOTE]以下の説明に従って作成した Notebook も、クラスターにおいて既定で利用できます。Jupyter を起動した後、**HVACTutorial.ipynb** という名前でこの Notebook を検索します。
 
-1. Jupyter Notebook を起動します。Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+1. [Azure プレビュー ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+
+2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュ ボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
+
+	> [AZURE.NOTE]ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+	>
+	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
 2. 新しい Notebook を作成します。**[新規]** をクリックし、**[Python2]** をクリックします。
 
@@ -280,4 +292,4 @@
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

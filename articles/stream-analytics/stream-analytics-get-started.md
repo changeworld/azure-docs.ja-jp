@@ -1,6 +1,7 @@
 <properties
 	pageTitle="Azure Stream Analytics の使用: リアルタイムの不正行為の検出 | Microsoft Azure"
 	description="Stream Analytics を使用してリアルタイムの不正行為検出ソリューションを作成する方法について説明します。リアルタイム イベント処理のためにイベント ハブを使用します。"
+	keywords="event hub,fraud detection,real-time,real-time processing"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -13,7 +14,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="08/04/2015"
+	ms.date="10/05/2015"
 	ms.author="jeffstok" />
 
 
@@ -245,7 +246,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![不正行為の検出: 不正なイベントをリアルタイムで表示](./media/stream-analytics-get-started/stream-ananlytics-view-real-time-fraudent-events.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/JA-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -256,4 +257,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

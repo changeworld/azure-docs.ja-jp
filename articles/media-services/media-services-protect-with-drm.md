@@ -1,6 +1,6 @@
 <properties
-	pageTitle="PlayReady DRM の動的暗号化とライセンス提供サービスの使用"
-	description="Microsoft Azure Media Services を使用すると、MPEG DASH、Smooth Streaming、および HTTP ライブ ストリーミング (HLS) のストリームを Microsoft PlayReady DRM で保護して配信できます。このトピックでは、PlayReady DRM を使用して動的に暗号化する方法とキー配信サービスを使用する方法について説明します。"
+	pageTitle="PlayReady または Widevine の動的共通暗号化を使用する"
+	description="Microsoft Azure Media Services を使用すると、MPEG DASH、Smooth Streaming、および HTTP ライブ ストリーミング (HLS) のストリームを Microsoft PlayReady DRM で保護して配信できます。Widevine DRM で暗号化された DASH を配信することもできます。このトピックでは、PlayReady と Widevine DRM を使用して動的に暗号化する方法について説明します。"
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako"
@@ -13,18 +13,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="09/16/2015"
+	ms.date="10/07/2015"
 	ms.author="juliako"/>
 
-#PlayReady DRM の動的暗号化とライセンス提供サービスの使用
+
+#PlayReady または Widevine の動的共通暗号化を使用する
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-protect-with-drm.md)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 
-Microsoft Azure Media Services を使用すると、MPEG DASH、Smooth Streaming、および HTTP ライブ ストリーミング (HLS) のストリームを [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) で保護して配信できます。
+Microsoft Azure Media Services を使用すると、MPEG DASH、Smooth Streaming、および HTTP ライブ ストリーミング (HLS) のストリームを [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) で保護して配信できます。Widevine DRM で暗号化された DASH を配信することもできます。PlayReady と Widevine はいずれも共通暗号化 (CENC) 仕様に従って暗号化されます。[AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (バージョン 3.5.1 以降) または REST API を使用して、Widevine を使用するように AssetDeliveryConfiguration を構成できます。
 
-Media Services では、Microsoft PlayReady ライセンスの配信サービスが提供されるようになりました。また、Media Services で提供される API を使用して、保護されたコンテンツをユーザーが再生しようとしたときに PlayReady DRM ランタイムが適用する権限と制限を構成できます。ユーザーが PlayReady で保護されたコンテンツを要求すると、クライアント プレーヤー アプリケーションが Azure Media Services にコンテンツを要求します。要求を受けた Azure Media Services はクライアントを Azure Media Services PlayReady ライセンス サーバーにリダイレクトし、そこでコンテンツへのユーザーのアクセスが認証および承認されます。PlayReady ライセンスには、クライアント プレーヤーがコンテンツの暗号化解除とストリーミングに使用できる暗号化解除キーが含まれています。
+また、Media Services では、Microsoft PlayReady ライセンスの配信サービスも提供されるようになりました。また、Media Services で提供される API を使用して、保護されたコンテンツをユーザーが再生しようとしたときに PlayReady DRM ランタイムが適用する権限と制限を構成できます。ユーザーが PlayReady で保護されたコンテンツを要求すると、クライアント プレーヤー アプリケーションが Azure Media Services にコンテンツを要求します。要求を受けた Azure Media Services はクライアントを Azure Media Services PlayReady ライセンス サーバーにリダイレクトし、そこでコンテンツへのユーザーのアクセスが認証および承認されます。PlayReady ライセンスには、クライアント プレーヤーがコンテンツの暗号化解除とストリーミングに使用できる暗号化解除キーが含まれています。
+
+>[AZURE.NOTE]現在、Media Services では、Widevine のライセンス サーバーは提供されません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
+>
+> 詳細については、[Axinom](media-services-axinom-integration.md) と [castLabs](media-services-castlabs-integration.md) の統合を参照してください。
 
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープン、トークン制限、IP 制限) を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。Media Services では、[Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 形式と [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 形式のトークンがサポートされます。詳細については、「コンテンツ キー承認ポリシーを構成する」を参照してください。
 
@@ -34,13 +39,13 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 >[AZURE.NOTE]動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも 1 つ取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
 
-##PlayReady 動的暗号化と PlayReady ライセンス提供サービスのワークフロー
+##動的共通暗号化と PlayReady ライセンス配信サービスの構成
 
 以下では、Media Services ライセンス配信サービスと動的暗号化を使用して、PlayReady で資産を保護する際に実行する必要のある一般的な手順について説明します。
 
 1. 資産を作成し、その資産にファイルをアップロードします。 
 1. ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードします。
-1. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。詳細については、ContentKey に関するページを参照してください。
+1. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。
 1. コンテンツ キーの承認ポリシーを構成します。コンテンツ キー承認ポリシーを構成する必要があります。コンテンツ キーがクライアントに配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。 
 1. 資産の配信ポリシーを構成します。配信ポリシーの構成には、配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはそのすべて)、動的暗号化の種類 (たとえば、共通暗号化)、PlayReady ライセンス取得 URL が含まれます。 
  
@@ -51,7 +56,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 前述したワークフローを図にすると、次のようになります。ここでは、認証のためにトークンが使用されています。
 
-![Protect with PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-playready.png)
+![Protect with PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
 
 このトピックの残りの部分では、詳細な説明、コード例、および前述したタスクの実行方法を説明するトピックへのリンクを紹介します。
 
@@ -63,81 +68,14 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 ビデオの管理、エンコード、およびストリーミングを行うには、最初にコンテンツを Microsoft Azure Media Services にアップロードする必要があります。コンテンツをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
-次のコード スニペットは、資産を作成し、指定したファイルを資産にアップロードする方法を示しています。
-
-	static public IAsset UploadFileAndCreateAsset(string singleFilePath)
-	{
-	    if(!File.Exists(singleFilePath))
-	    {
-	        Console.WriteLine("File does not exist.");
-	        return null;
-	    }
-	
-	    var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
-	    IAsset inputAsset = _context.Assets.Create(assetName, AssetCreationOptions.StorageEncrypted);
-	
-	    var assetFile = inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));
-	
-	    Console.WriteLine("Created assetFile {0}", assetFile.Name);
-	
-	    var policy = _context.AccessPolicies.Create(
-	                            assetName,
-	                            TimeSpan.FromDays(30),
-	                            AccessPermissions.Write | AccessPermissions.List);
-	
-	    var locator = _context.Locators.CreateLocator(LocatorType.Sas, inputAsset, policy);
-	
-	    Console.WriteLine("Upload {0}", assetFile.Name);
-	
-	    assetFile.Upload(singleFilePath);
-	    Console.WriteLine("Done uploading {0}", assetFile.Name);
-	
-	    locator.Delete();
-	    policy.Delete();
-	
-	    return inputAsset;
-	}
+詳細については、「[Media Services アカウントへのファイルのアップロード](media-services-dotnet-upload-files.md)」を参照してください。
 
 ##ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードする
 
 動的暗号化を使用する場合に必要となるのは、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産の作成のみです。そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。詳細については、「[動的パッケージの概要](media-services-dynamic-packaging-overview.md)」を参照してください。
 
-次のコード スニペットは、資産をアダプティブ ビットレート MP4 セットにエンコードする方法を示しています。
-
-	static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset inputAsset)
-	{
-	    var encodingPreset = "H264 Adaptive Bitrate MP4 Set 720p";
+エンコード手順については、「[Media Encoder Standard を使用して資産をエンコードする方法](media-services-dotnet-encode-with-media-encoder-standard.md)」を参照してください。
 	
-	    IJob job = _context.Jobs.Create(String.Format("Encoding into Mp4 {0} to {1}",
-	                            inputAsset.Name,
-	                            encodingPreset));
-	
-	    var mediaProcessors = 
-	        _context.MediaProcessors.Where(p => p.Name.Contains("Media Encoder")).ToList();
-	
-	    var latestMediaProcessor = 
-	        mediaProcessors.OrderBy(mp => new Version(mp.Version)).LastOrDefault();
-	
-	
-	
-	    ITask encodeTask = job.Tasks.AddNew("Encoding", latestMediaProcessor, encodingPreset, TaskOptions.None);
-	    encodeTask.InputAssets.Add(inputAsset);
-	    encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), AssetCreationOptions.StorageEncrypted);
-	
-	    job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-	    job.Submit();
-	    job.GetExecutionProgressTask(CancellationToken.None).Wait();
-	
-	    return job.OutputMediaAssets[0];
-	}
-	
-	static private void JobStateChanged(object sender, JobStateChangedEventArgs e)
-	{
-	    Console.WriteLine(string.Format("{0}\n  State: {1}\n  Time: {2}\n\n",
-	        ((IJob)sender).Name,
-	        e.CurrentState,
-	        DateTime.UtcNow.ToString(@"yyyy_M_d__hh_mm_ss")));
-	}
 
 ##<a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
 
@@ -168,7 +106,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 >[AZURE.NOTE]資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
 
-資産を発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
+アセットを発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
 
 ##テスト トークンを取得する
 
@@ -192,6 +130,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 1. 新しいコンソール プロジェクトを作成します。
 1. NuGet を使用して、Azure Media Services .NET SDK Extensions をインストールして追加します。このパッケージをインストールすると、Media Services .NET SDK が一緒にインストールされるほか、必要な依存関係がすべて追加されます。
+2. その他の参照 (System.Runtime.Serialization と System.Configuration) を追加します。
 2. アカウント名とキー情報が含まれた構成ファイルを追加します。
 
 	
@@ -213,7 +152,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 1. Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
 	
 	必ず変数を更新して、入力ファイルが置かれているフォルダーをポイントするようにしてください。
-
+		
 		using System;
 		using System.Collections.Generic;
 		using System.Configuration;
@@ -222,12 +161,11 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		using System.Text;
 		using System.Threading;
 		using System.Threading.Tasks;
-		using System.Xml.Linq;
 		using Microsoft.WindowsAzure.MediaServices.Client;
 		using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
 		using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
 		
-		namespace PlayReadyDynamicEncryptAndKeyDeliverySvc
+		namespace CommonDynamicEncryptAndKeyDeliverySvc
 		{
 		    class Program
 		    {
@@ -306,11 +244,9 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		                Console.WriteLine();
 		            }
 		
-		            // You can use the http://smf.cloudapp.net/healthmonitor player 
-		            // to test the smoothStreamURL URL.
-		            //
+
 		            string url = GetStreamingOriginLocator(encodedAsset);
-		            Console.WriteLine("Encrypted Smooth Streaming URL: {0}/manifest", url);
+		            Console.WriteLine("Encrypted MPEG-DASH URL: {0}/Manifest(format=mpd-time-csf) ", url);
 		
 		
 		            Console.ReadLine();
@@ -349,38 +285,41 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		            return inputAsset;
 		        }
 		
-		
-		        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset inputAsset)
-		        {
-		            var encodingPreset = "H264 Adaptive Bitrate MP4 Set 720p";
-		
-		            IJob job = _context.Jobs.Create(String.Format("Encoding into Mp4 {0} to {1}",
-		                                    inputAsset.Name,
-		                                    encodingPreset));
-		
-		            var mediaProcessors =
-		                _context.MediaProcessors.Where(p => p.Name.Contains("Media Encoder")).ToList();
-		
-		            var latestMediaProcessor =
-		                mediaProcessors.OrderBy(mp => new Version(mp.Version)).LastOrDefault();
-		
-		
-		
-		            ITask encodeTask = job.Tasks.AddNew("Encoding", latestMediaProcessor, encodingPreset, TaskOptions.None);
-		            encodeTask.InputAssets.Add(inputAsset);
-		            encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), AssetCreationOptions.StorageEncrypted);
-		
-		            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-		            job.Submit();
-		            job.GetExecutionProgressTask(CancellationToken.None).Wait();
-		
-		            return job.OutputMediaAssets[0];
-		        }
-		
+	
+				static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+				{
+				    // Declare a new job.
+				    IJob job = _context.Jobs.Create("Media Encoder Standard Job");
+				    // Get a media processor reference, and pass to it the name of the 
+				    // processor to use for the specific task.
+				    IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+				
+				    // Create a task with the encoding details, using a string preset.
+				    // In this case "H264 Multiple Bitrate 720p" preset is used.
+				    ITask task = job.Tasks.AddNew("My encoding task",
+				        processor,
+				        "H264 Multiple Bitrate 720p",
+				        TaskOptions.None);
+				
+				    // Specify the input asset to be encoded.
+				    task.InputAssets.Add(asset);
+				    // Add an output asset to contain the results of the job. 
+				    // This output is specified as AssetCreationOptions.None, which 
+				    // means the output asset is not encrypted. 
+				    task.OutputAssets.AddNew("Output asset",
+				        AssetCreationOptions.None);
+				
+				    job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+				    job.Submit();
+				    job.GetExecutionProgressTask(CancellationToken.None).Wait();
+				
+				    return job.OutputMediaAssets[0];
+				}
+
 		
 		        static public IContentKey CreateCommonTypeContentKey(IAsset asset)
 		        {
-		            // Create envelope encryption content key
+		            // Create common encryption content key
 		            Guid keyId = Guid.NewGuid();
 		            byte[] contentKey = GetRandomBuffer(16);
 		
@@ -502,30 +441,30 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		            return MediaServicesLicenseTemplateSerializer.Serialize(responseTemplate);
 		        }
 		
-		        static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
-		        {
-		            Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
 		
-		            Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-		                new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-		            {
-		                {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
-		            };
-		
-		            var assetDeliveryPolicy = _context.AssetDeliveryPolicies.Create(
-		                    "AssetDeliveryPolicy",
-		                AssetDeliveryPolicyType.DynamicCommonEncryption,
-		                AssetDeliveryProtocol.SmoothStreaming,
-		                assetDeliveryPolicyConfiguration);
-		
-		            // Add AssetDelivery Policy to the asset
-		            asset.DeliveryPolicies.Add(assetDeliveryPolicy);
-		
-		            Console.WriteLine();
-		            Console.WriteLine("Adding Asset Delivery Policy: " +
-		                assetDeliveryPolicy.AssetDeliveryPolicyType);
-		        }
-		
+				static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
+				{
+				    Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
+				
+				    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+				        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+				    {
+				        {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
+				        {AssetDeliveryPolicyConfigurationKey.WidevineLicenseAcquisitionUrl,"http://testurl"},
+				        
+				    };
+				
+				    var assetDeliveryPolicy = _context.AssetDeliveryPolicies.Create(
+				            "AssetDeliveryPolicy",
+				        AssetDeliveryPolicyType.DynamicCommonEncryption,
+				        AssetDeliveryProtocol.Dash,
+				        assetDeliveryPolicyConfiguration);
+				
+				   
+				    // Add AssetDelivery Policy to the asset
+				    asset.DeliveryPolicies.Add(assetDeliveryPolicy);
+				
+				}
 		
 		        /// <summary>
 		        /// Gets the streaming origin locator.
@@ -556,14 +495,6 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		            return originLocator.Path + assetFile.Name;
 		        }
 		
-		        static private void JobStateChanged(object sender, JobStateChangedEventArgs e)
-		        {
-		            Console.WriteLine(string.Format("{0}\n  State: {1}\n  Time: {2}\n\n",
-		                ((IJob)sender).Name,
-		                e.CurrentState,
-		                DateTime.UtcNow.ToString(@"yyyy_M_d__hh_mm_ss")));
-		        }
-		
 		        static private byte[] GetRandomBuffer(int length)
 		        {
 		            var returnValue = new byte[length];
@@ -576,6 +507,49 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		
 		            return returnValue;
 		        }
+
+
+				static private void JobStateChanged(object sender, JobStateChangedEventArgs e)
+				{
+				    Console.WriteLine("Job state changed event:");
+				    Console.WriteLine("  Previous state: " + e.PreviousState);
+				    Console.WriteLine("  Current state: " + e.CurrentState);
+				    switch (e.CurrentState)
+				    {
+				        case JobState.Finished:
+				            Console.WriteLine();
+				            Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+				            break;
+				        case JobState.Canceling:
+				        case JobState.Queued:
+				        case JobState.Scheduled:
+				        case JobState.Processing:
+				            Console.WriteLine("Please wait...\n");
+				            break;
+				        case JobState.Canceled:
+				        case JobState.Error:
+				
+				            // Cast sender as a job.
+				            IJob job = (IJob)sender;
+				
+				            // Display or log error details as needed.
+				            break;
+				        default:
+				            break;
+				    }
+				}
+				
+				
+				static private IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+				{
+				    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+				    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+				
+				    if (processor == null)
+				        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+				
+				    return processor;
+				}
 		    }
 		}
 
@@ -587,4 +561,8 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-<!---HONumber=Sept15_HO3-->
+##関連項目
+
+[Configure Widevine packaging with AMS (AMS を使用して Widevine パッケージを構成する)](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
+
+<!---HONumber=Oct15_HO2-->

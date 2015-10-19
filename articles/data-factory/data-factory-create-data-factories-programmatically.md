@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Data Factory SDK を使用して Azure Data Factory を作成、監視、管理する"
-	description="Data Factory SDK を使用して Azure データ ファクトリをプログラムによって作成、監視、管理する方法について説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="Data Factory SDK を使用して Azure Data Factory を作成、監視、管理する" 
+	description="Data Factory SDK を使用して Azure データ ファクトリをプログラムによって作成、監視、管理する方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/06/2015" 
 	ms.author="spelluru"/>
 
 # Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する
@@ -56,8 +56,8 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 		    <add key="AdfClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
 		    <add key="RedirectUri" value="urn:ietf:wg:oauth:2.0:oob" />
 		    <!--Make sure to write your own tenenat id and subscription ID here-->
-		    <add key="SubscriptionId" value="<subscription ID>" />
-    		<add key="ActiveDirectoryTenantId" value="<tenant ID" />
+		    <add key="SubscriptionId" value="your subscription ID" />
+    		<add key="ActiveDirectoryTenantId" value="your tenant ID" />
 		</appSettings>
 6. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
 
@@ -71,7 +71,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 		
 		using Microsoft.IdentityModel.Clients.ActiveDirectory;
 		using Microsoft.Azure;
-6. **DataPipelineManagementClient** クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。このオブジェクトを使用して、Data Factory、リンクされたサービス、入力テーブルと出力テーブル、パイプラインを作成します。また、実行時にテーブルのスライスも監視します。    
+6. **DataPipelineManagementClient** クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。このオブジェクトを使用して、Data Factory、リンクされたサービス、入力と出力データセット、およびパイプラインを作成します。また、実行時にデータセットのスライスを監視する際にもこのオブジェクトを使用します。    
 
         // create data factory management client
         string resourceGroupName = "resourcegroupname";
@@ -123,25 +123,25 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                 }
             }
         );
-9. **入力テーブルと出力テーブル**を作成する次のコードを **Main** メソッドに追加します。 
+9. **入力と出力データセット**を作成する次のコードを **Main** メソッドに追加します。 
 
 	入力 BLOB の **FolderPath** を **adftutorial/** に設定します。この **adftutorial** は BLOB ストレージ内のコンテナーの名前です。Azure BLOB ストレージにこのコンテナーが存在しない場合は、**adftutorial** という名前のコンテナーを作成し、このコンテナーにテキスト ファイルをアップロードします。
 	
 	出力 BLOB の FolderPath を **adftutorial/apifactoryoutput/{Slice}** に設定します。この **Slice** は **SliceStart** (各スライスの開始日時) の値に基づいて動的に計算されます。
 
  
-        // create input and output tables
-        Console.WriteLine("Creating input and output tables");
-        string Table_Source = "TableBlobSource";
-        string Table_Destination = "TableBlobDestination";
+        // create input and output datasets
+        Console.WriteLine("Creating input and output datasets");
+        string Dataset_Source = "DatasetBlobSource";
+        string Dataset_Destination = "DatasetBlobDestination";
 
-        client.Tables.CreateOrUpdate(resourceGroupName, dataFactoryName,
-            new TableCreateOrUpdateParameters()
+        client.Datasets.CreateOrUpdate(resourceGroupName, dataFactoryName,
+            new DatasetCreateOrUpdateParameters()
             {
-                Table = new Table()
+                Dataset = new Dataset()
                 {
-                    Name = Table_Source,
-                    Properties = new TableProperties()
+                    Name = Dataset_Source,
+                    Properties = new DatasetProperties()
                     {
                         LinkedServiceName = "LinkedService-AzureStorage",
                         TypeProperties = new AzureBlobDataset()
@@ -167,13 +167,13 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                 }
             });
 
-        client.Tables.CreateOrUpdate(resourceGroupName, dataFactoryName,
-            new TableCreateOrUpdateParameters()
+        client.Datasets.CreateOrUpdate(resourceGroupName, dataFactoryName,
+            new DatasetCreateOrUpdateParameters()
             {
-                Table = new Table()
+                Dataset = new Dataset()
                 {
-                    Name = Table_Destination,
-                    Properties = new TableProperties()
+                    Name = Dataset_Destination,
+                    Properties = new DatasetProperties()
                     {
 
                         LinkedServiceName = "LinkedService-AzureStorage",
@@ -233,14 +233,14 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                                 Inputs = new List<ActivityInput>()
                                 {
                                     new ActivityInput() {
-                                        Name = Table_Source
+                                        Name = Dataset_Source
                                     }
                                 },
                                 Outputs = new List<ActivityOutput>()
                                 {
                                     new ActivityOutput()
                                     {
-                                        Name = Table_Destination
+                                        Name = Dataset_Destination
                                     }
                                 },
                                 TypeProperties = new CopyActivity()
@@ -297,7 +297,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
             throw new InvalidOperationException("Failed to acquire token");
         }  
  
-13. 次のコードを **Main** メソッドに追加して、出力テーブルのデータ スライスのステータスを取得します。この例で予想されるスライスのみが存在します。
+13. 次のコードを **Main** メソッドに追加して、出力データセットのデータ スライスのステータスを取得します。この例で予想されるスライスのみが存在します。
  
         // Pulling status within a timeout threshold
         DateTime start = DateTime.Now;
@@ -309,7 +309,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
             // wait before the next status check
             Thread.Sleep(1000 * 12);
 
-            var datalistResponse = client.DataSlices.List(resourceGroupName, dataFactoryName, Table_Destination,
+            var datalistResponse = client.DataSlices.List(resourceGroupName, dataFactoryName, Dataset_Destination,
                 new DataSliceListParameters()
                 {
                     DataSliceRangeStartTime = PipelineActivePeriodStartTime.ConvertToISO8601DateTimeString(),
@@ -342,7 +342,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         var datasliceRunListResponse = client.DataSliceRuns.List(
                 resourceGroupName,
                 dataFactoryName,
-                Table_Destination,
+                Dataset_Destination,
                 new DataSliceRunListParameters()
                 {
                     DataSliceStartTime = PipelineActivePeriodStartTime.ConvertToISO8601DateTimeString()
@@ -363,7 +363,8 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         Console.WriteLine("\nPress any key to exit.");
         Console.ReadKey();
 
-15. コンソール アプリケーションをビルドします。メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。**ConfigurationManager** クラスについてのエラーが発生した場合は、**System.Configuration** アセンブリへの参照を追加して、再度構築を試行します。
+15. ソリューション エクスプローラーで、プロジェクト (**DataFactoryAPITestApp**) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。**System.Configuration** アセンブリのチェック ボックスをオンにして、**[OK]** をクリックします。
+16. コンソール アプリケーションをビルドします。メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。 
 16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
 
         John, Doe
@@ -372,7 +373,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 17. メニューの **[デバッグ]**、**[デバッグの開始]** の順にクリックして、サンプルを実行します。**[Getting run details of a data slice]** が表示されている場合は、数分待機して、**Enter** を押します。
 18. Azure プレビュー ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。 
 	- リンクされたサービス: **LinkedService\_AzureStorage** 
-	- テーブル: **TableBlobSource** と **TableBlobDestination**
+	- データセット: **DatasetBlobSource** と **DatasetBlobDestination**
 	- パイプライン: **PipelineBlobSample** 
 18. **adftutorial** コンテナーの **apifactoryoutput** フォルダーに出力ファイルが作成されることを確認します。
 
@@ -394,4 +395,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO2-->

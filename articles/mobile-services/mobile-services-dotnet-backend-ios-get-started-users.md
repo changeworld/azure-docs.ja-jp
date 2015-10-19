@@ -56,7 +56,6 @@ Xcode で、プロジェクトを開きます。**[実行]** をクリックし�
 <!-- URLs. -->
 [Mobile Services ユーザーのサービス側の承認]: mobile-services-dotnet-backend-service-side-authorization.md
 [Mobile Services のクイック スタート チュートリアル]: mobile-services-dotnet-backend-ios-get-started.md
-[Get started with data]: mobile-services-dotnet-backend-ios-get-started-data.md
 [Get started with authentication]: mobile-services-dotnet-backend-ios-get-started-users.md
 [Get started with push notifications]: mobile-services-dotnet-backend-ios-get-started-push.md
 [Authorize users with scripts]: ../mobile-services-dotnet-backend-ios-authorize-users-in-scripts.md
@@ -65,4 +64,4 @@ Xcode で、プロジェクトを開きます。**[実行]** をクリックし�
 [Mobile Services .NET How-to Conceptual Reference]: /develop/mobile/how-to-guides/work-with-net-client-library
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

@@ -16,7 +16,7 @@
 	ms.date="09/30/2015" 
 	ms.author="sstein"/>
 
-# PowerShell を使用して SQL Database V12 にアップグレードする
+# PowerShell を使用し、SQL Database V12 にアップグレードします
 
 
 > [AZURE.SELECTOR]
@@ -128,16 +128,21 @@ ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
     $elasticPool.Name = "elasticpool_1" 
     $elasticPool.StorageMb = 800 
      
-    # Creating single database mapping
+    # Creating single database mapping for 2 databases. DBMain1 mapped to S0 and DBMain2 mapped to S2
     #
-    $databaseMap = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeDatabaseProperties 
-    $databaseMap.Name = "DBMain" 
-    $databaseMap.TargetEdition = "Standard" 
-    $databaseMap.TargetServiceLevelObjective = "S0" 
+    $databaseMap1 = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeDatabaseProperties 
+    $databaseMap1.Name = "DBMain1" 
+    $databaseMap1.TargetEdition = "Standard" 
+    $databaseMap1.TargetServiceLevelObjective = "S0"
+    
+    $databaseMap2 = New-Object -TypeName Microsoft.Azure.Management.Sql.Models.UpgradeDatabaseProperties 
+    $databaseMap2.Name = "DBMain2" 
+    $databaseMap2.TargetEdition = "Standard" 
+    $databaseMap2.TargetServiceLevelObjective = "S2"
      
     # Starting the upgrade
     #
-    Start-AzureSqlServerUpgrade –ResourceGroupName resourcegroup1 –ServerName server1 -Version 12.0 -DatabaseCollection($databaseMap) -ElasticPoolCollection ($elasticPool) 
+    Start-AzureSqlServerUpgrade –ResourceGroupName resourcegroup1 –ServerName server1 -Version 12.0 -DatabaseCollection @($databaseMap1, $databaseMap2) -ElasticPoolCollection @($elasticPool) 
     
 
 
@@ -156,4 +161,4 @@ ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
 - [Start-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143623.aspx)
 - [Stop-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143622.aspx)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

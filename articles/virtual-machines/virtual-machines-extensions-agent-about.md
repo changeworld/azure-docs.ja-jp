@@ -1,24 +1,26 @@
 <properties
- pageTitle="仮想マシン エージェントおよび拡張機能について | Microsoft Azure"
- description="エージェントおよび拡張機能の概要とエージェントのインストール方法について説明します。"
+ pageTitle="Azure VM エージェントおよび拡張機能 | Microsoft Azure"
+ description="エージェントおよび拡張機能の概要と、クラシック デプロイメント モデルを使用してエージェントをインストールする方法について説明します。"
  services="virtual-machines"
  documentationCenter=""
  authors="squillace"
  manager="timlt"
- editor=""/>
+ editor=""
+ tags="azure-service-management"/>
+
 <tags
-ms.service="virtual-machines"
+ ms.service="virtual-machines"
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="infrastructure-services"
  ms.date="09/22/2015"
  ms.author="rasquill"/>
- 
+
 #仮想マシンのエージェントおよび拡張機能について
 Azure 仮想マシン エージェント (VM エージェント) は、Azure 仮想マシン拡張機能 (VM 拡張機能) のインストール、構成、管理、および実行に使用します。VM 拡張機能により、Microsoft とその他のサード パーティが提供する動的機能を使用できます。エージェントと拡張機能は主に管理ポータルを使用して追加しますが、VM の作成時または既存の VM の使用時に、[PowerShell](../install-configure-powershell.md) コマンドレットまたは [Azure CLI](xplat-install.md) を使用して追加して構成することもできます。
 
-> [AZURE.NOTE]このトピックでは PowerShell と Azure CLI について説明しますが、説明するデプロイ呼び出しは従来のデプロイ モデルのためのものであり、リソース マネージャー デプロイ モデル用ではありません。デプロイ モデルの詳細については、「[Azure リソース マネージャーにおける Azure コンピューティング、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルのためのデプロイメント呼び出しについて言及します。
 
 
 VM 拡張機能により以下を実行できます。
@@ -62,4 +64,4 @@ VM エージェントは、次のような状況で有効化されます。
 
 これらのタスクの詳細については、「[仮想マシン拡張機能の管理](virtual-machines-extensions-install.md)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

@@ -12,17 +12,19 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-sencha"
 	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="08/18/2015"
+	ms.topic="get-started-article"
+	ms.date="10/09/2015"
 	ms.author="glenga"/>
 
 # <a name="getting-started"></a>Mobile Services と Sencha Touch の使用
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
+
+[AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
 
 ##概要
 
-このチュートリアルでは、Sencha Touch アプリケーションで Azure Mobile Services を活用する方法について説明します。管理ポータルで定義したモバイル サービスを活用し、Sencha Touch を使用する簡単な To Do List アプリケーションを作成します。このチュートリアルでは、JavaScript について適切な知識を持ち、Sencha Touch フレームワークに精通する熟達した Web アプリケーション開発者を対象として中間的な説明を行うことを意図しています。
+このチュートリアルでは、Sencha Touch アプリケーションで Azure Mobile Services を活用する方法について説明します。管理ポータルで定義したモバイル サービスを活用し、Sencha Touch を使用する簡単な *To Do List* アプリケーションを作成します。このチュートリアルでは、JavaScript について適切な知識を持ち、Sencha Touch フレームワークに精通する熟達した Web アプリケーション開発者を対象として中間的な説明を行うことを意図しています。
 
 このチュートリアルのビデオを見る場合は、このクリップで、このチュートリアルと同じ手順が表示されます。このビデオでは、Arthur Kay が Azure Mobile Services バックエンドを使用して Sencha Touch アプリケーションをビルドする方法について説明します。
 
@@ -49,7 +51,7 @@
 
 モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、モバイル サービス用に新しいデータベース テーブルを作成できます。
 
-1. 管理ポータルで、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[HTML]** をクリックし、**[新しい HTML アプリを作成する]** を展開します。
 
@@ -708,7 +710,10 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
 
 Sencha Touch のさらなる概要については、全[ガイド](http://docs.sencha.com/touch/#!/guide) セットを参照してください。
 
+
+[AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
+
 <!-- images -->
 [0]: ./media/partner-sencha-mobile-services-get-started/finished-app.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

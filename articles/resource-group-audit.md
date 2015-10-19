@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/10/2015" 
+	ms.date="10/07/2015" 
 	ms.author="tomfitz"/>
 
 # リソース マネージャーの監査操作
@@ -26,15 +26,15 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 
 ## PowerShell
 
-ログ エントリを取得するには、**Get-AzureResourceGroupLog** コマンドを実行します。パラメーターを追加し、エントリの一覧を絞り込むことができます。
+ログ エントリを取得するには、**Get-AzureRmLog** コマンドを実行します (1.0 プレビューよりも前のバージョンの PowerShell では **Get-AzureResourceGroupLog** を実行します)。パラメーターを追加し、エントリの一覧を絞り込むことができます。
 
 次の例は、監査ログを利用し、ソリューションの使用期間中に行われたアクションを調査する方法を示すものです。アクションが発生したタイミングとそれを要請したユーザーを確認できます。
 
-    PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00
+    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00
 
 指定した開始時刻によっては、前のコマンドを実行したとき、そのリソース グループのアクションが長い一覧で返されることがあります。検索基準を指定すると、探しものの結果を絞り込むことができます。たとえば、Web アプリが停止した理由を調査する場合、次のコマンドを実行すると、someone@example.com が停止アクションを実行したことが判明します。
 
-    PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
+    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
 
     Authorization     :
                         Scope     : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
@@ -54,11 +54,11 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 
 次の例では、指定した開始時刻後に失敗したアクションがわかります。エラー メッセージを表示するには、**DetailedOutput** パラメーターも追加します。
 
-    PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleGroup -StartTime 2015-08-27T12:00 -Status Failed –DetailedOutput
+    PS C:\> Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-27T12:00 -Status Failed –DetailedOutput
     
 このコマンドで返されるエントリとプロパティの数が多すぎる場合、**properties** プロパティを取得することで監査に集中できます。
 
-    PS C:\> (Get-AzureResourceGroupLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties
+    PS C:\> (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties
 
     Content
     -------
@@ -68,7 +68,7 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 
 また、ステータス メッセージを見て、結果をさらに絞り込むことができます。
 
-    PS C:\> (Get-AzureResourceGroupLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json
+    PS C:\> (Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json
 
     Code       : Conflict
     Message    : Website with given name mysite already exists.
@@ -151,4 +151,4 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 - サービス プリンシパルにアクセスを付与する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
 - すべてのユーザーのリソースに対するアクションについては、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

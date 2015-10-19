@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Service Bus キューの使用方法 (Java) | Microsoft Azure"
+	pageTitle="Java での Service Bus キューの使用方法 | Microsoft Azure"
 	description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは Java で記述されています。"
 	services="service-bus"
 	documentationCenter="java"
@@ -13,27 +13,32 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/19/2015"
+	ms.date="10/07/2015"
 	ms.author="sethm"/>
 
 # Service Bus キューの使用方法
 
-このガイドでは、Service Bus キューの使用方法について説明します。サンプルは Java で記述され、[Azure SDK for Java][] を利用しています。紹介するシナリオは、**キューの作成**、**メッセージの送受信**、**キューの削除**です。
+この記事では、Service Bus キューの使用方法について説明します。サンプルは Java で記述され、[Azure SDK for Java][] を利用しています。紹介するシナリオは、**キューの作成**、**メッセージの送受信**、**キューの削除**です。
 
 [AZURE.INCLUDE [service-bus-java-how-to-create-queue](../../includes/service-bus-java-how-to-create-queue.md)]
 
 ## Service Bus を使用するようにアプリケーションを構成する
-このサンプルを作成する前に [Azure SDK for Java][] がインストールされていることを確認してください。Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][] をインストールできます。これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。 ![](media/service-bus-java-how-to-use-queues/eclipselibs.png)
 
-次の import ステートメントを Java ファイルの先頭に追加します。
+このサンプルを作成する前に [Azure SDK for Java][] がインストールされていることを確認してください。Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][] をインストールできます。これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。
 
-	// Include the following imports to use Service Bus APIs
-	import com.microsoft.windowsazure.services.servicebus.*;
-	import com.microsoft.windowsazure.services.servicebus.models.*;
-	import com.microsoft.windowsazure.core.*;
-	import javax.xml.datatype.*;
+![](media/service-bus-java-how-to-use-queues/eclipselibs.png)
 
-## キューの作成方法
+次の `import` ステートメントを Java ファイルの先頭に追加します。
+
+```
+// Include the following imports to use Service Bus APIs
+import com.microsoft.windowsazure.services.servicebus.*;
+import com.microsoft.windowsazure.services.servicebus.models.*;
+import com.microsoft.windowsazure.core.*;
+import javax.xml.datatype.*;
+```
+
+## キューを作成する
 
 Service Bus キューの管理処理は **ServiceBusContract** クラスを使用して実行できます。**ServiceBusContract** オブジェクトは SAS をカプセル化する構成とそれを管理するアクセス許可で構築されます。**ServiceBusContract** クラスでのみ Azure Service Bus トピックとのやり取りが可能です。
 
@@ -60,7 +65,7 @@ Service Bus キューの管理処理は **ServiceBusContract** クラスを使�
         System.exit(-1);
     }
 
-QueueInfo には、キューのプロパティを調整できるメソッドが用意されています (たとえば、キューに送信されるメッセージに対して既定の "有効期間" 値が適用されるように設定できます)。次の例では、名前が "TestQueue"、最大サイズが 5 GB であるキューを作成する方法を示しています。
+**QueueInfo** には、キューのプロパティを調整できるメソッドが用意されています (たとえば、キューに送信されるメッセージに対して既定の有効期間 (TTL) 値が適用されるように設定できます)。次の例では、名前が `TestQueue`、最大サイズが 5 GB であるキューを作成する方法を示しています。
 
     long maxSizeInMegabytes = 5120;
     QueueInfo queueInfo = new QueueInfo("TestQueue");
@@ -69,9 +74,9 @@ QueueInfo には、キューのプロパティを調整できるメソッドが�
 
 **ServiceBusContract** オブジェクトの **listQueues** メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
 
-## メッセージをキューに送信する方法
+## メッセージをキューに送信する
 
-メッセージを Service Bus キューに送信するには、アプリケーションで **ServiceBusContract** オブジェクトを取得します。次のコードでは、前のコードで "HowToSample" サービス名前空間内で作成した "TestQueue" キューにメッセージを送信する方法を示しています。
+メッセージを Service Bus キューに送信するには、アプリケーションで **ServiceBusContract** オブジェクトを取得します。次のコードでは、上のコードで `HowToSample` 名前空間内で作成した `TestQueue` キューにメッセージを送信する方法を示しています。
 
     try
     {
@@ -85,9 +90,9 @@ QueueInfo には、キューのプロパティを調整できるメソッドが�
         System.exit(-1);
     }
 
-Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、**BrokeredMessage** クラスのインスタンスになります。**BrokeredMessage** オブジェクトには、一連の標準的なメソッド (**getLabel**、**getTimeToLive**、**setLabel**、**setTimeToLive** など) と、アプリケーションに固有のカスタム プロパティの保持に使用するディクショナリが用意されており、任意のアプリケーション データの本体が格納されます。アプリケーションでは、**BrokeredMessage** のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切なシリアライザーを使用してオブジェクトをシリアル化します。この方法に代わって、**java.IO.InputStream** を使用できます。
+Service Bus キューに送信されたメッセージおよび Service Bus キューから受信したメッセージは、[BrokeredMessage][] クラスのインスタンスになります。[BrokeredMessage][] オブジェクトには、([Label](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx)、[TimeToLive](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx) などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。アプリケーションでは、[BrokeredMessage][] のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切なシリアライザーを使用してオブジェクトをシリアル化します。または、**java.IO.InputStream** オブジェクトを提供することもできます。
 
-次の例では、前に示したコード スニペットで取得した "TestQueue" の **MessageSender** に 5 通のテスト メッセージを送信する方法を示しています。
+以下の例では、上のコード スニペットで取得した `TestQueue` **MessageSender** にテスト メッセージを 5 件送信する方法を示しています。
 
     for (int i=0; i<5; i++)
     {
@@ -101,7 +106,7 @@ Service Bus キューに送信されたメッセージ (および Service Bus �
 
 Service Bus キューでは、最大 256 KB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。
 
-## キューからメッセージを受信する方法
+## キューからメッセージを受信する
 
 キューからメッセージを受信する主な方法は、**ServiceBusContract** オブジェクトを使用することです。メッセージは、**ReceiveAndDelete** と **PeekLock** の 2 つの異なるモードで受信できます。
 
@@ -109,7 +114,7 @@ Service Bus キューでは、最大 256 KB までのメッセージをサポー
 
 **PeekLock** モードでは、メッセージの受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して **Delete** を呼び出して受信処理の第 2 段階を完了します。Service Bus が **Delete** の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
 
-次の例では、**PeekLock** モード (既定ではない) を使用したメッセージの受信および処理の方法を示しています。次の例では、無限ループを使用して、"TestQueue" にメッセージが到着するごとに処理しています。
+次の例では、(既定モードではなく) **PeekLock** モードを使用したメッセージの受信および処理の方法を示しています。次の例では、無限ループを使用して、"TestQueue" にメッセージが到着するごとに処理しています。
 
     	try
 	{
@@ -166,30 +171,21 @@ Service Bus キューでは、最大 256 KB までのメッセージをサポー
 
 Service Bus には、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、受信したメッセージについて (**deleteMessage** メソッドの代わりに) **unlockMessage** メソッドを呼び出すことができます。このメソッドが呼び出されると、Service Bus によってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
 
-キュー内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、メッセージのロックが自動的に解除され、再度受信できる状態に変わります。
+キュー内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、Service Bus によりメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
 メッセージが処理された後、**deleteMessage** 要求が発行される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。一般的に、この動作は **"1 回以上の処理"** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。通常、この問題はメッセージの **getMessageId** メソッドを使用して対処します。このプロパティは、配信が試行された後も同じ値を保持します。
 
 ## 次のステップ
 
-これで、Service Bus キューの基本を学習できました。詳細については、[キュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
+これで、Service Bus キューの基本を学習できました。詳細については、「[キュー、トピック、およびサブスクリプション][]」を参照してください。
 
-詳細については、[Java デベロッパー センター](/develop/java/)も参照してください。
+詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
 
   [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
-  [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/ja-JP/library/azure/hh694271.aspx
-  [What are Service Bus Queues?]: #what-are-service-bus-queues
-  [Create a Service Namespace]: #create-a-service-namespace
-  [Obtain the Default Management Credentials for the Namespace]: #obtain-default-credentials
-  [Configure Your Application to Use Service Bus]: #bkmk_ConfigApp
-  [How to: Create a Security Token Provider]: #bkmk_HowToCreateQueue
-  [How to: Send Messages to a Queue]: #bkmk_HowToSendMsgs
-  [How to: Receive Messages from a Queue]: #bkmk_HowToReceiveMsgs
-  [How to: Handle Application Crashes and Unreadable Messages]: #bkmk_HowToHandleAppCrashes
-  [Next Steps]: #bkmk_NextSteps
+  [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh694271.aspx
   [Azure Management Portal]: http://manage.windowsazure.com/
-  [キュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
- 
+  [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
+  [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

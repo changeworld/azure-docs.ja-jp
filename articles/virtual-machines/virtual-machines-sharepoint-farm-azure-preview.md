@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="Windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2015"
+	ms.date="10/05/2015"
 	ms.author="josephd"/>
 
 # SharePoint Server Farm
@@ -52,7 +52,8 @@ SharePoint Server Farm のテンプレートを使用して SharePoint ファー
 7. SharePoint サーバーを構成するには、矢印をクリックします。ホスト名プレフィックス (既定はリソース グループ名)、SharePoint サーバーのサイズ (既定は A2)、SharePoint ユーザー アカウント (既定は sp\_setup) とパスワード、SharePoint ファームのアカウント名 (既定は sp\_farm) とパスワード、SharePoint ファームのパスフレーズを指定できます。既定では、管理者のパスワードを SharePoint のユーザー アカウント、ファーム アカウント、パスフレーズに使用します。
 8. 仮想ネットワーク、ストレージ アカウント、診断のオプションの構成設定を構成するには、対応する矢印をクリックします。
 9. サブスクリプションを指定するには、矢印をクリックします。
-10. 準備ができたら **[作成]** をクリックします。
+10. Azure の場所を指定するには、矢印をクリックします。
+11. 準備ができたら **[作成]** をクリックします。
 
 > [AZURE.NOTE]ドメイン コントローラーには、既定で、Active Directory 管理ツールがインストールされていません。管理ツールをインストールするには、ドメイン コントローラーの仮想マシンで、管理者レベルの Windows PowerShell コマンド プロンプトから **Install-WindowsFeature AD-Domain-Services -IncludeManagementTools** コマンドを実行します。
 
@@ -62,8 +63,8 @@ SharePoint Server Farm のテンプレートを使用して SharePoint ファー
 
 1.	Azure プレビュー ポータルの **[参照]** をクリックし、**[リソース グループ]** をクリックします。
 2.	リソース グループの一覧で、SharePoint ファーム リソース グループの名前をクリックします。
-3.	SharePoint ファーム リソース グループのウィンドウで、**[デプロイ履歴]** をクリックします。
-4.	**[デプロイ履歴]** ウィンドウで、**[Microsoft.SharePointFarm]** をクリックします。
+3.	SharePoint ファーム リソース グループのウィンドウで、**[デプロイメント履歴]** をクリックします。
+4.	**[デプロイメント履歴]** ウィンドウで、**[Microsoft.SharePointFarm]** をクリックします。
 5.	**[Microsoft.SharePointFarm]** ウィンドウで、**[SHAREPOINTSITEURL]** フィールドの URL を選択してコピーします。
 6.	その URL をインターネット ブラウザーのアドレス フィールドに貼り付けます。
 7.	プロンプトが表示されたら、ファームの作成時に指定したユーザー アカウントの資格情報を入力します。
@@ -72,8 +73,8 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 
 1.	Azure プレビュー ポータルの **[参照]** をクリックし、**[リソース グループ]** をクリックします。
 2.	リソース グループの一覧で、SharePoint ファーム リソース グループの名前をクリックします。
-3.	SharePoint ファーム リソース グループのウィンドウで、**[デプロイ履歴]** をクリックします。
-4.	**[デプロイ履歴]** ウィンドウで、**[Microsoft.SharePointFarm]** をクリックします。
+3.	SharePoint ファーム リソース グループのウィンドウで、**[デプロイメント履歴]** をクリックします。
+4.	**[デプロイメント履歴]** ウィンドウで、**[Microsoft.SharePointFarm]** をクリックします。
 5.	**[Microsoft.SharePointFarm]** ウィンドウで、**[SHAREPOINTCENTRALADMINURL]** フィールドの URL を選択してコピーします。
 6.	その URL をインターネット ブラウザーのアドレス フィールドに貼り付けます。
 7.	プロンプトが表示されたら、ファームの作成時に指定したユーザー アカウントの資格情報を入力します。
@@ -81,22 +82,19 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 
 注:
 
-- Azure プレビュー ポータルは、これらの仮想マシンを指定されたサブスクリプション内に作成します。
 - Azure プレビュー ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
-- これらのサーバーはリモート デスクトップ接続を通じて管理できます。詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](virtual-machines-log-on-windows-server.md)」を参照してください。
+- これらのサーバーはリモート デスクトップ接続を通じて管理できます。詳細については、「[仮想マシンへのログオン](virtual-machines-windows-tutorial.md#log-on-to-the-virtual-machine)」を参照してください。
 
 ## Azure リソース マネージャー
 
-Azure プレビュー ポータルの SharePoint Server Farm 機能により、従来のデプロイ モデルを使用して仮想マシンが作成されます。リソース マネージャーのデプロイメント モデルを使用して SharePoint Server 2013 ファームを作成する場合は、「[Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ](virtual-machines-workload-template-sharepoint.md)」を参照してください。
+Azure プレビュー ポータルの SharePoint Server Farm 機能により、従来のデプロイメント モデルを使用して仮想マシンが作成されます。リソース マネージャーのデプロイメント モデルを使用して SharePoint Server 2013 ファームを作成する場合は、「[Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ](virtual-machines-workload-template-sharepoint.md)」を参照してください。
 
 ## その他のリソース
 
 [SharePoint サーバー ファームの構成の詳細](virtual-machines-sharepoint-farm-config-azure-preview.md)
 
-[Azure インフラストラクチャ サービスでの SharePoint](http://msdn.microsoft.com/library/azure/dn275955.aspx)
+[Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-[Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
-
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

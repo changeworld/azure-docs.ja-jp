@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="REST API を使用してビデオ オン デマンド (VoD) の配信を開始する" 
-	description="このチュートリアルでは REST API を使用した Azure Media Services でのビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を説明します。" 
+	pageTitle="REST API を使用したオンデマンド コンテンツ配信の概要" 
+	description="このチュートリアルでは、Azure Media Services と REST API を使用したオンデマンド コンテンツ配信アプリケーションの実装手順を紹介します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -16,7 +16,7 @@
 	ms.date="09/18/2015" 
 	ms.author="juliako"/>
 
-#REST API を使用してビデオ オン デマンド (VoD) の配信を開始する 
+#REST API を使用したオンデマンド コンテンツ配信の概要
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
@@ -53,9 +53,9 @@ REST API を使用して Media Services での開発を始めるには、次の�
 
 2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
 
-3. **[リージョン]** ボックスで、メディア サービス アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンだけが表示されます。
+3. **[リージョン]** ボックスで、Media Services アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能な Media Services リージョンだけが表示されます。
 
-4. **[ストレージ アカウント]** ボックスで、メディア サービス アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
+4. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
 
 5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
@@ -68,7 +68,7 @@ REST API を使用して Media Services での開発を始めるには、次の�
 	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
 
 	
-	![[メディア サービス] ページ](./media/media-services-rest-get-started/wams-mediaservices-page.png)
+	![[Media Services] ページ](./media/media-services-rest-get-started/wams-mediaservices-page.png)
 
 	アカウント名をダブルクリックすると、既定で [クイック スタート] ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
@@ -214,7 +214,7 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 	 
 
 
->[AZURE.NOTE] このチュートリアルではこれ以降、新しい URI を使用します。
+>[AZURE.NOTE]このチュートリアルではこれ以降、新しい URI を使用します。
 
 ## <a id="upload"></a>新しいアセットを作成し、REST API を使用してビデオのファイルをアップロードする
 
@@ -469,7 +469,7 @@ SAS URL には次の形式があります。
 	
 AccessPolicy と Locator を設定すると、実際のファイルは、Azure Storage REST API を使用して Azure Blob ストレージ コンテナーにアップロードされます。ページにアップロードするか、blob をブロックできます。
 
->[AZURE.NOTE] 前のセクションで受信したロケーターの **Path** 値にアップロードするファイルのファイル名を追加する必要があります。たとえば、「https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?」のように入力します。
+>[AZURE.NOTE]前のセクションで受信したロケーターの **Path** 値にアップロードするファイルのファイル名を追加する必要があります。たとえば、「https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?」のように入力します。
 
 Azure ストレージ BLOB の使用の詳細については、[BLOB サービス REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx) をご覧ください。
 
@@ -556,7 +556,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
 
->[AZURE.NOTE] 料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+>[AZURE.NOTE]料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
 ストリーミング予約ユニットの数を変更するには、以下の手順を実行します。
 	
@@ -830,7 +830,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
 - タスクは、サイクルを形成することはできません。
 - JobInputAsset または JobOutputAsset に渡す値パラメーターは、Asset のインデックス値を表します。実際の Asset は、Job エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。 
 
->[AZURE.NOTE] Media Services は OData v3 上に構築されるため、 InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"\_\_metadata : uri" の名前と値のペアによって参照されます。
+>[AZURE.NOTE]Media Services は OData v3 上に構築されるため、 InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"\_\_metadata : uri" の名前と値のペアによって参照されます。
 
 - InputMediaAssets は、Media Services で作成した1 つまたは複数の資産にマップされます。OutputMediaAssets はシステムによって作成されます。既存の資産は参照しません。
 - OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ <outputAsset> 要素の内部テキストの値になります。たとえば、"Sample"に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)\_NewJob" になります。
@@ -905,7 +905,7 @@ Media Services では、CancelJob 関数を使用して実行中のジョブを�
 
 成功した場合、メッセージ本文なしで応答コード 204 が返されます。
 
->[AZURE.NOTE] ジョブ id (通常は nb:jid:UUID: somevalue)は、CancelJob へのパラメーターとして渡すときは URL エンコードする必要があります。
+>[AZURE.NOTE]ジョブ id (通常は nb:jid:UUID: somevalue)は、CancelJob へのパラメーターとして渡すときは URL エンコードする必要があります。
 
 
 ### 出力資産を取得する 
@@ -1085,7 +1085,7 @@ MPEG DASH のストリーミング URL の形式は次のとおりです。
 
 AccessPolicy と Locator を設定したら、Azure Storage REST API を使用してファイルをダウンロードできます。
 
->[AZURE.NOTE] 前のセクションで受信した Locator の **Path** 値にダウンロードするファイルのファイル名を追加する必要があります。たとえば、「https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?」のように入力します。
+>[AZURE.NOTE]前のセクションで受信した Locator の **Path** 値にダウンロードするファイルのファイル名を追加する必要があります。たとえば、「https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?」のように入力します。
 
 Azure ストレージ BLOB の使用の詳細については、[BLOB サービス REST API](http://msdn.microsoft.com/library/azure/dd135733.aspx) をご覧ください。
 
@@ -1188,15 +1188,18 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 プログレッシブ ダウンロードをテストするには、ブラウザー (IE、Chrome、Safari など) に URL を貼り付けます。
 
 
+##次のステップ
 
-##Media Services のラーニング パス
+###Media Services のラーニング パス
 
 AMS のラーニング パスについては、以下を参照してください。
 
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
+### 他の情報をお探しですか。
 
+このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
 
 ##その他のリソース
 - <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - 今すぐビデオをオンラインにしましょう!</a>
@@ -1210,4 +1213,4 @@ AMS のラーニング パスについては、以下を参照してください
 
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="10/05/2015" 
 	ms.author="awills"/>
 
 
@@ -23,9 +23,9 @@
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
 
-[Visual Studio Application Insights](http://azure.microsoft.com/services/application-insights) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します ([デバイス アプリと Java サーバーも対象になります][start])。
+[Visual Studio Application Insights](http://azure.microsoft.com/services/application-insights) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します。([デバイス アプリと Java サーバーも対象になります][start])。
 
-![パフォーマンス監視グラフの例](./media/app-insights-asp-net/10-perf.png)
+![Example performance monitoring charts](./media/app-insights-asp-net/10-perf.png)
 
 
 #### 開始する前に
@@ -64,7 +64,7 @@ Visual Studio に新しいプロジェクトを作成するとき、Application 
 
 ####<a name="land"></a> [Application Insights の追加] の実行結果
 
-このコマンドによって次の手順が実行されます (必要に応じて代わりに手動で実行できます)。
+このコマンドによって次の手順が実行されます (必要に応じて、代わりに[手動で実行](app-insights-start-monitoring-app-health-usage.md)できます)。
 
 * [Azure ポータル][portal]に Application Insights のリソースが作成されます。ここにデータが表示されます。リソースを識別する*インストルメンテーション キー*を取得します。
 * プロジェクトに Application Insights Web SDK NuGet パッケージが追加されます。Visual Studio で表示するには、プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。
@@ -99,8 +99,9 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 #### データが表示されない場合
 
-* [[検索]][diagnostic] タイルを開き、個々のイベントを表示します。
+* 対象が正しいことを確認します。[Azure ポータル](https://portal.azure.com)でサインインし、[参照]、[Application Insights] の順にクリックしてからアプリケーションを選択します。
 * アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
+* [[検索]][diagnostic] ブレードを開き、個々のイベントを表示します。メトリック パイプラインを経由すると、イベントの表示に少し時間がかかる場合があります。
 * 数秒待機してから [最新の情報に更新] をクリックします。
 * [トラブルシューティング][qna]に関するページを参照します。
 
@@ -111,15 +112,13 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 ## ブラウザーの監視を追加する
 
-ブラウザーまたはクライアント側の監視は、ユーザー、セッション、ページ ビュー、およびブラウザーで発生する例外やクラッシュに関するデータを提供します。
+ブラウザーの監視は、ユーザー、セッション、ページ ビュー、およびブラウザーで発生する例外やクラッシュに関するデータを提供します。
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/app-insights-asp-net/16-page-views.png)
 
 また、独自のコードを記述して、ユーザーのアプリの操作をクリックやキーボード操作までの細部にわたって追跡できます。
 
-#### クライアントが Web ブラウザーの場合
-
-アプリが Web ページに表示される場合は、JavaScript のスニペットをすべてのページに追加します。コードは次に示す Application Insights のリソースから取得できます。
+すべてのページに JavaScript のスニペットを追加します。コードは次に示す Application Insights のリソースから取得できます。
 
 ![Web アプリでクイック スタートを開き、[Web ページを監視するコードを取得する] をクリックする](./media/app-insights-asp-net/02-monitor-web-page.png)
 
@@ -127,11 +126,6 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 [Web ページの追跡についてはこちら](app-insights-web-track-usage.md)をご覧ください。
 
-#### クライアントがデバイス アプリの場合
-
-アプリケーションがスマートフォンやその他のデバイスなどのクライアントに配信される場合は、デバイス アプリに[適切な SDK](app-insights-platforms.md) を追加します。
-
-SDK クライアントをサーバーの SDK と同じインストルメンテーション キーで構成する場合、まとめて確認できるように 2 つのストリームが統合されます。
 
 ## 使用状況の追跡
 
@@ -196,7 +190,7 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ![Web アプリで、[設定]、[拡張機能]、[追加]、[Application Insights] の順に選択する](./media/app-insights-asp-net/05-extend.png)
 
-(この拡張機能は、SDK で構築されたアプリのみをサポートします。Status Monitor とは異なり、既存のアプリはインストルメント化できません。)
+(SDK をインストールしていない場合でも、既存のアプリに拡張機能を追加することもできます。)
 
 #### Azure Cloud Services ロールを監視するには
 
@@ -248,4 +242,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

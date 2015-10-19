@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/02/2015" 
+	ms.date="09/29/2015" 
 	ms.author="cephalin"/>
 
 # Azure App Service Web アプリにおけるオペレーティング システムの機能 #
@@ -111,4 +111,4 @@ Azure 上の Web アプリケーションが使用できない診断情報ログ
  
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

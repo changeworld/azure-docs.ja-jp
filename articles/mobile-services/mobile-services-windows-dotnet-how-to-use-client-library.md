@@ -22,7 +22,7 @@
 
 ##概要
 
-このガイドでは、Windows ストア アプリと Windows Phone アプリで Azure のモバイル サービス用の .NET クライアントを使用する一般的なシナリオを実行する方法を示します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず「[Mobile Services のクイック スタート](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md)」または「[既存のアプリケーションに Mobile Services を追加する](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data.md)」のチュートリアルを完了することを検討してください。
+このガイドでは、Windows ストア アプリと Windows Phone アプリで Azure のモバイル サービス用の .NET クライアントを使用する一般的なシナリオを実行する方法を示します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。Mobile Services を初めて使用する場合は、まず「[Mobile Services のクイックスタート](mobile-services-dotnet-backend-windows-store-dotnet-get-started.md)」チュートリアルを完了することを検討してください。
 
 [AZURE.INCLUDE [mobile-services-concepts](../../includes/mobile-services-concepts.md)]
 
@@ -744,7 +744,6 @@ Mobile Services クライアント ライブラリは、Json.NET を使用して
 [Take]: http://msdn.microsoft.com/library/windowsazure/dn250574.aspx
 [Fiddler]: http://www.telerik.com/fiddler
 [Azure モバイル サービス クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
-[Call a custom API from the client]: mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api.md
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

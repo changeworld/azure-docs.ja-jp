@@ -8,7 +8,7 @@
    * [Microsoft](mobile-services-how-to-register-microsoft-authentication.md)
    * [Azure Active Directory](mobile-services-how-to-register-active-directory-authentication.md) 
    
-   プロバイダーで生成されるクライアント ID とクライアント シークレット値をメモしておいてください。クライアント シークレットを配布したり、共有したりしないでください。
+    プロバイダーで生成されるクライアント ID とクライアント シークレット値をメモしておいてください。クライアント シークレットを配布したり、共有したりしないでください。
 
 3. Azure ポータルで、**[Mobile Services]**、目的のモバイル サービス、**[ID]**、ID プロバイダー設定の順にクリックし、クライアント ID とプロバイダーのシークレット値を入力します。 
  
@@ -16,4 +16,4 @@
 
 > [AZURE.IMPORTANT]ID プロバイダーの開発者向けサイトに、正しいリダイレクト URI が設定されていることをご確認ください。上記リンクの各プロバイダーに関する手順で説明しているように、リダイレクト URI は .NET バックエンド サービス用と JavaScript バックエンド サービス用とで異なる場合があります。リダイレクト URI が正しく構成されていないと、ログイン画面が正しく表示されず、アプリが予期しない異常を起こす場合があります。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

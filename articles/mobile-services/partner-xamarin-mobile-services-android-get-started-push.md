@@ -28,7 +28,7 @@
 + アクティブな Google アカウント。
 + [Google Cloud Messaging のクライアント コンポーネント]。このコンポーネントは、チュートリアル中に追加します。
 
-[Xamarin.Android] と [Azure Mobile Services コンポーネント] は、[Mobile Services の使用]または[既存のアプリケーションへの Mobile Services の追加]のいずれかを完了していれば、プロジェクトにインストールされています。
+[Xamarin.Android] コンポーネントと [Azure Mobile Services] コンポーネントは、[Mobile Services の使用]を実行していれば、それ以降はプロジェクトにインストールされているはずです。
 
 ##<a id="register"></a>Google Cloud Messaging を有効にする
 
@@ -40,7 +40,7 @@
 
 ##<a id="update-scripts"></a>通知を送信するように登録済み挿入スクリプトを更新する
 
->[AZURE.TIP]次の手順では、Azure 管理ポータルの TodoItem テーブルに対する挿入操作に登録されているスクリプトを更新する方法を示します。このモバイル サービス スクリプトは、Visual Studio のサーバー エクスプローラーの Azure ノードで、直接アクセスして編集することもできます。
+>[AZURE.TIP]次の手順では、Microsoft Azure 管理ポータルの TodoItem テーブルに対する挿入操作に登録されているスクリプトを更新する方法を示します。このモバイル サービス スクリプトは、Visual Studio のサーバー エクスプローラーの Azure ノードで、直接アクセスして編集することもできます。
 
 [AZURE.INCLUDE [mobile-services-javascript-backend-android-push-insert-script](../../includes/mobile-services-javascript-backend-android-push-insert-script.md)]
 
@@ -65,11 +65,9 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 Mobile Services と Notification Hubs については次のトピックを参照してください。
 
-* [既存のアプリケーションへの Mobile Services の追加] <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
-
 * [認証の使用](mobile-services-android-get-started-users.md) <br/>Mobile Services を使用して別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
 
-* [Notification Hubs とは](../notification-hubs-overview.md) <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
+* [Notification Hubs とは](../notification-hubs-overview.md) <br/>Notification Hubs がすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
 * [Notification Hubs のデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630) </br>Notification Hubs ソリューションのトラブルシューティングとデバッグについて説明します。
 
@@ -79,11 +77,10 @@ Mobile Services と Notification Hubs については次のトピックを参照
 
 <!-- URLs. -->
 [Mobile Services の使用]: mobile-services-ios-get-started.md
-[既存のアプリケーションへの Mobile Services の追加]: mobile-services-android-get-started-data.md
 
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Xamarin.Android]: http://xamarin.com/download/
-[Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
+[Azure Mobile Services]: http://components.xamarin.com/view/azure-mobile-services/
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

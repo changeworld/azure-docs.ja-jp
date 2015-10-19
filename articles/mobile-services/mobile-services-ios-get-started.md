@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="07/28/2015"
+	ms.date="10/05/2015"
 	ms.author="krisragh"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
@@ -40,7 +40,7 @@
 
 3. **[TodoItem テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
 
-4. **[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。これにより、Mobile Services に接続されている _To do list_ サンプル アプリケーションのプロジェクトが、Mobile Services iOS SDK と共にダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
+4. **[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。これにより、モバイル サービスに接続されている _To do list_ サンプル アプリケーションのプロジェクトが、Mobile Services iOS SDK と共にダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
 ## 新しい iOS アプリを実行する
 
@@ -50,8 +50,6 @@
 
 ## <a name="next-steps"> </a>次のステップ
 Mobile Services で重要になるこれ以外の作業については、以下のトピックをご覧ください。
-
-* [既存のアプリにモバイル サービスを追加] <br/>Mobile Services を使用してデータの格納とクエリを実行する方法について説明します。
 
 * [オフライン データの同期の使用]<br/> オフライン データの同期を使用して、アプリの応答性と信頼性を高める方法について説明します。
 
@@ -77,7 +75,6 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 
 
 <!-- URLs. -->
-[既存のアプリにモバイル サービスを追加]: mobile-services-dotnet-backend-ios-get-started-data.md
 [オフライン データの同期の使用]: mobile-services-ios-get-started-offline-data.md
 [既存の Azure Mobile Services アプリへの認証の追加]: mobile-services-dotnet-backend-ios-get-started-users.md
 [Mobile Services アプリへのプッシュ通知の追加]: mobile-services-dotnet-backend-ios-get-started-push.md
@@ -88,4 +85,4 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [.NET バックエンド バージョン]: mobile-services-dotnet-backend-ios-get-started.md
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

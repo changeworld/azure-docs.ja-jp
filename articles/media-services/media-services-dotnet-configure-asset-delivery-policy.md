@@ -127,7 +127,7 @@ Azure Media Services では、Widevine による暗号化を追加すること�
 	
 	}
 
->[AZURE.NOTE]Widevine を使用して暗号化する場合、配信は DASH でのみ実行できます。アセット配信プロトコルに必ず DASH (2) を指定してください。
+>[AZURE.NOTE]Widevine を使用して暗号化する場合、配信は DASH でのみ実行できます。アセット配信プロトコルには必ず DASH を指定してください。
 
 
 ##DynamicEnvelopeEncryption 資産の配信ポリシー 
@@ -328,4 +328,4 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="リソース マネージャーと PowerShell を使用した Azure VM の管理 |Microsoft Azure"
+	pageTitle="Azure リソース マネージャー VM の管理 | Microsoft Azure"
 	description="Azure リソース マネージャー テンプレートと PowerShell を使用して仮想マシンを管理します。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -25,7 +25,7 @@
 
 Azure PowerShell とリソース マネージャー テンプレートを使用すると、Microsoft Azure でリソースを管理する際に高い処理能力と柔軟性が得られます。この記事にあるタスクを使用すると、仮想マシンのリソースを作成して管理できます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの管理について説明します。また、[従来のデプロイ モデル](virtual-machines-windows-tutorial-classic-portal.md)を使用してリソースを管理することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイメント モデルを使用したリソースの管理について説明します。また、[従来のデプロイメント モデル](virtual-machines-windows-tutorial-classic-portal.md)を使用してリソースを管理することもできます。
 
 次のタスクでは、リソース マネージャー テンプレートと PowerShell を使用します。
 
@@ -379,4 +379,4 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

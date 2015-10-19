@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/30/2015" 
+	ms.date="10/06/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -29,19 +29,23 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 -	**メモリ**: Basic レベルと Standard レベルでは、250 MB ～ 53 GB です。Premium レベルは最大 530 GB であり、[要求すれば](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)さらに多く使用できます。詳細については、「[Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
 -	**ネットワーク パフォーマンス**: 高いスループットを必要とするワークロードがある場合、Standard または Basic より Premium レベルの方が多くの帯域幅を提供します。また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。詳細については後の表を参照してください。
 -	**スループット**: Premium レベルでは、使用可能な最大のスループットが提供されます。キャッシュ サーバーまたはクライアントが帯域幅の限界に達した場合、クライアント側でタイムアウトが発生します。詳細については後の表を参照してください。
--	**高可用性/SLA**: Standard/Premium キャッシュは 99.9% 以上の時間使用できることが保証されます (プレビュー期間が終了するまで Premium に SLA はありません)。SLA の詳細については、「[Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。SLA は、Cache エンドポイントへの接続のみをカバーします。SLA は、データ損失からの保護には対応していません。Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
+-	**高可用性/SLA**: Standard/Premium キャッシュは 99.9% 以上の時間使用できることが Azure Redis Cache により保証されます (プレビュー期間が終了するまで Premium に SLA はありません)。SLA の詳細については、「[Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。SLA は、Cache エンドポイントへの接続のみをカバーします。SLA は、データ損失からの保護には対応していません。Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
 -	**Redis データの保持**: Premium レベルでは、Azure ストレージ アカウント内のキャッシュ データを永続化できます。Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。Azure Redis Cache には、Redis の永続化の RDB オプションと AOF オプション (近日公開予定) があります。詳細については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
 -	**Redis クラスター**: 53 GB を超えるキャッシュを作成するか、複数の Redis ノード間でデータを共有する場合、Premium レベルで利用可能な Redis クラスタリングを使用することができます。各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
--	**強化されたセキュリティとネットワーク分離**: Azure Virtual Network (VNET) のデプロイメントでは、Azure Redis Cache のための強化されたセキュリティと分離、およびサブネット、アクセス制御ポリシー、さらにアクセスを制限するためのその他の機能が提供されます。詳細については、「[How to configure Virtual Network support for a Premium Azure Redis Cache (Premium Azure Redis Cache に対する仮想ネットワーク サポートの構成方法)](cache-how-to-premium-vnet.md)」を参照してください。
+-	**強化されたセキュリティとネットワーク分離**: Azure Virtual Network (VNET) のデプロイメントでは、Azure Redis Cache のための強化されたセキュリティと分離、およびサブネット、アクセス制御ポリシー、さらにアクセスを制限するためのその他の機能が提供されます。詳細については、「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
 -	**Redis の構成**: Standard レベルと Premium レベルでは、Keyspace 通知用に Redis を構成できます。
--	**最大クライアント接続数**: Premium レベルでは、Redis に接続できるクライアントの最大数が提供されます。キャッシュのサイズが大きいほど、接続の数は多くなります。[詳細については料金のページを参照してください](TODO)。
+-	**最大クライアント接続数**: Premium レベルでは、Redis に接続できるクライアントの最大数が提供されます。キャッシュのサイズが大きいほど、接続の数は多くなります。[詳細については、料金のページを参照してください](https://azure.microsoft.com/pricing/details/cache/)。
 -	**Redis サーバー専用コア**: Premium レベルでは、すべてのキャッシュ サイズに Redis 専用のコアがあります。Basic/Standard レベルでは、C1 サイズ以上に Redis サーバー専用コアがあります。
 -	**Redis はシングル スレッドです**。したがって、3 つ以上のコアを使用しても 2 つのコアを使用する場合と比べて追加のメリットはありません。ただし、一般に、VM のサイズが大きいほど、小さなサイズよりも多くの帯域幅を利用できます。キャッシュ サーバーまたはクライアントが帯域幅の制限に達すると、クライアント側でタイムアウトが発生します。
 -	**パフォーマンス向上**: Premium レベルのキャッシュは、高速プロセッサを備え、Basic/Standard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。
 
 次の表に、Azure Redis Cache のエンドポイントに対して Iaas VM から `redis-benchmark.exe` を使用して Standard および Premium キャッシュのさまざまなサイズをテストした結果得られた最大帯域幅を示します。これらの値は保証された値ではなく、これらの値の SLA もありません。これらの値は、標準的な値と考えてください。アプリケーションに最適なキャッシュ サイズを特定するには、アプリケーションに対してロード テストを実行する必要があります。
 
-この表からは次のような結論が得られます。 - キャッシュのサイズが同じ場合、スループットは Standard レベルより Premium レベルの方が高くなります。例: 6 GB のキャッシュでは、P1 のスループットが 140 K RPS であるのに対し、C3 では 49 K です。 - Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすとスループットもそれに比例して上昇します。例: 10 シャードの P4 クラスターを作成した場合、使用可能なスループットは 250 K * 10 = 250 万 RPS です。 - キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルの方が高くなります。
+この表からは次のような結論が得られます。
+
+-	同じサイズのキャッシュでも Standard レベルと比べて Premium のスループットの方が高い。たとえば、6 GB のキャッシュの場合、P1 のスループットが 140 K RPS であるのに対し、C3 では 49 K になります。
+-	Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。たとえば、10 シャードの P4 クラスターを作成した場合、使用可能なスループットは 250 万 (250 K * 10) RPS となります。
+-	キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
 | [価格レベル] | サイズ | 使用可能な帯域幅 (Mbps) | 1 KB のキーのサイズ |
 |----------------------|--------|----------------------------|--------------------------------|
@@ -183,8 +187,8 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 <a name="cache-reference"></a>
 ## 他のいくつかの Azure サービスと異なり Azure Redis Cache の MSDN クラス ライブラリ リファレンスが提供されない理由
 
-Microsoft Azure Redis Cache は、広く普及しているオープン ソースの Redis Cache をベースに、Microsoft によって管理された、セキュリティで保護された専用の Redis Cache へのアクセスを提供します。[Redis クライアント](http://redis.io/clients)についても、多くのプログラミング言語に対応してさまざまなクライアントが提供されています。各クライアントは、[Redis コマンド](http://redis.io/commands)を使用して Redis Cache インスタンスを呼び出す独自の API を持ちます。
+Microsoft Azure Redis Cache は、広く普及しているオープン ソースの Redis Cache をベースに、Microsoft によって管理された、セキュリティで保護された専用の Redis Cache へのアクセスを提供します。[Redis クライアント](http://redis.io/clients)についても、多くのプログラミング言語に対応してさまざまなクライアントが提供されています。各クライアントは、[Redis コマンド](http://redis.io/commands)を使用して Redis キャッシュ インスタンスを呼び出す独自の API を持ちます。
 
 クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントに加えて、Azure.com の[ Redis Cache のドキュメント](http://azure.microsoft.com/documentatgion/services/redis-cache/)のページには、さまざまな言語およびキャッシュ クライアントを使用して Azure Redis Cache を使用する方法に関するいくつかのチュートリアルがあります。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

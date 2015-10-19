@@ -1,20 +1,20 @@
 
-<properties 
-	pageTitle="Android アプリ用 Azure Mobile Services の使用" 
-	description="次のチュートリアルに従って、Android 開発用の Azure Mobile Services を使用します。" 
-	services="mobile-services" 
-	documentationCenter="android" 
-	authors="RickSaling" 
-	manager="dwrede" 
+<properties
+	pageTitle="Android アプリ用 Azure Mobile Services の使用"
+	description="次のチュートリアルに従って、Android 開発用の Azure Mobile Services を使用します。"
+	services="mobile-services"
+	documentationCenter="android"
+	authors="RickSaling"
+	manager="dwrede"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="java" 
-	ms.topic="article" 
-	ms.date="08/18/2015" 
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="java"
+	ms.topic="get-started-article"
+	ms.date="10/05/2015"
 	ms.author="ricksal"/>
 
 
@@ -26,13 +26,13 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![][88]
+![](./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png)
 
 このチュートリアルを完了するには、Android Studio 統合開発環境と最新の Android プラットフォームを含む [Android Developer Tools][Android Studio] が必要です。このほか、Android のバージョン 4.2 以降が必要になります。
 
 ダウンロードしたクイック スタート プロジェクトには、Android 向けのモバイル サービス SDK が含まれています。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
+> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
 
 <!-- -->
 
@@ -71,7 +71,7 @@
 1. [管理ポータル]で、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
 2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Android]** を選択し、**[新しい Android アプリを作成する]** を展開します。
- 
+
 	![][2]
 
 3. まだインストールしていない場合は、[Android Developer Tools][Android SDK] をダウンロードしてローカル コンピューターまたは仮想マシンにインストールします。
@@ -85,11 +85,11 @@
 [AZURE.INCLUDE [mobile-services-run-your-app](../../includes/mobile-services-android-get-started.md)]
 
 ## <a name="next-steps"> </a>次のステップ
-クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
+クイック スタートはこれで完了です。Mobile Services で重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-* [認証の使用] <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
+* [アプリケーションにプッシュ通知を追加する] <br/>アプリにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [プッシュ通知の使用] <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+* [に認証を追加する] <br/>アプリの特定の登録ユーザーについて、バックエンド データへのアクセスを制限する方法について説明します。
 
 * [Mobile Services .NET バックエンドのトラブルシューティング] <br/>Mobile Services .NET バックエンドで発生する問題を診断して解決する方法について説明します。
 
@@ -100,7 +100,7 @@
 [Next Steps]: #next-steps
 
 <!-- Images. -->
-[88]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
+[0]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
 [1]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-vs-AS.png
 [2]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-android-AS.png
 
@@ -117,16 +117,14 @@
 [15]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-services-import-android-project.png
 
 <!-- URLs. -->
-[Eclipse の使用]: mobile-services-dotnet-backend-android-get-started-EC.md
-[Get started with data]: mobile-services-dotnet-backend-android-get-started-data.md
-[認証の使用]: mobile-services-dotnet-backend-android-get-started-users.md
-[プッシュ通知の使用]: mobile-services-dotnet-backend-android-get-started-push.md
+[Eclipse の使用]: mobile-services-dotnet-backend-android-get-started-ec.md
+[アプリケーションにプッシュ通知を追加する]: mobile-services-dotnet-backend-android-get-started-push.md
+[に認証を追加する]: mobile-services-dotnet-backend-android-get-started-auth.md
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 [Android Studio]: https://developer.android.com/sdk/index.html
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Mobile Services .NET バックエンドのトラブルシューティング]: mobile-services-dotnet-backend-how-to-troubleshoot.md
 
 [管理ポータル]: https://manage.windowsazure.com/
- 
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

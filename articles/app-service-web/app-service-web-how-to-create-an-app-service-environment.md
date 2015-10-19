@@ -18,7 +18,7 @@
 
 # App Service 環境の作成方法 #
 
-App Service 環境 (ASE) は、現在プレビュー段階にある Azure App Service の Premium サービスの 1 つのオプションです。App Service 環境 (ASE) は、マルチテナント スタンプでは使用できない高度な構成機能を提供します。App Service 環境が提供される機能の詳細については、[App Service 環境の概要][WhatisASE]に関するページを参照してください。
+App Service 環境 (ASE) は Azure App Service の Premium サービス オプションであり、マルチテナント スタンプでは使用できない高度な構成機能を提供します。App Service 環境が提供される機能の詳細については、[App Service 環境の概要][WhatisASE]に関するページを参照してください。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -145,4 +145,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | Microsoft Azure"
-	description="Azure Mobile Services を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
-	documentationCenter="xamarin"
-	authors="lindydonna"
-	editor="wesmc"
-	manager="dwrede"
+	pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | Microsoft Azure" 
+	description="Azure Mobile Services を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" 
+	documentationCenter="xamarin" 
+	authors="lindydonna" 
+	editor="wesmc" 
+	manager="dwrede" 
 	services="mobile-services"/>
 
 <tags 
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
 	ms.date="07/01/2015"
 	ms.author="donnam"/>
 
@@ -175,7 +175,6 @@
 <!-- URLs. -->
 [Mobile Services のオフライン サポートでの競合の処理]: ../mobile-services-xamarin-ios-handling-conflicts-offline-data.md
 [Mobile Services のオフライン サポートでの競合を処理する]: ../mobile-services-xamarin-ios-handling-conflicts-offline-data.md
-[Get started with data]: mobile-services-ios-get-started-data.md
 [Mobile Services の使用]: mobile-services-ios-get-started.md
 [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法]: partner-xamarin-mobile-services-how-to-use-client-library.md
 [論理的な削除]: mobile-services-using-soft-delete.md
@@ -184,4 +183,4 @@
 [Xamarin 拡張機能]: http://xamarin.com/visual-studio
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO2-->

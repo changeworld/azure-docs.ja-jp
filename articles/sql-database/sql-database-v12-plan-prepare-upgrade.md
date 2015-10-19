@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/23/2015"
+	ms.date="10/01/2015"
 	ms.author="genemi"/>
 
 
@@ -33,8 +33,7 @@
 | タイトルとリンク | コンテンツの説明 |
 | :--- | :--- |
 | [SQL Database V12 の新機能](sql-database-v12-whats-new.md) | V12 によって、Azure SQL Database が機能的にどれくらい Microsoft SQL Server に近づいたかについて説明します。 |
-| [チュートリアル: 最新の SQL Database 更新プログラム V12 にサインアップする](sql-database-v12-sign-up.md) | Azure SQL Database を V12 にアップグレードする場合に実行する必要がある手順について説明します。 |
-| [SQL Database の更新プログラム V12 でデータベースを作成する](sql-database-create.md) | V12 で新しい Azure SQL Database を作成する方法について説明します。空のデータベースだけでなく、さまざまなオプションも説明します。 |
+| [SQL Database V12 でデータベースを作成する](sql-database-get-started.md) | V12 で新しい Azure SQL Database を作成する方法について説明します。空のデータベースだけでなく、さまざまなオプションも説明します。 |
 
 
 ## 事前の計画
@@ -60,9 +59,9 @@ V12 から使用する場合、Azure SQL Database は Basic、Standard、Premium
 
 Basic、Standard、Premium サービス階層の詳細については、次を参照してください。
 
-
+- [SQL Database のサービス階層](sql-database-service-tiers.md)
 - [SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)
-- [Azure SQL Database の料金](http://azure.microsoft.com/pricing/details/sql-database/)
+
 
 
 ### geo レプリケーションの構成を確認する
@@ -254,4 +253,4 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 [Subheading 1]: #subheading-1
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

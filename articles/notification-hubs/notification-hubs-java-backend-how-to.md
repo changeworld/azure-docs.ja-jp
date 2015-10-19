@@ -17,11 +17,7 @@
 	ms.author="yuaxu"/>
 
 # Java から Notification Hubs を使用する方法
-> [AZURE.SELECTOR] 
-- [Java](notification-hubs-php-backend-how-to.md)
-- [PHP](notification-hubs-python-backend-how-to.md)
-- [Python](notification-hubs-nodejs-how-to-use-notification-hubs.md)
-- [Node.js](notification-hubs-nodejs-how-to-use-notification-hubs.md)
+[AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 		
 このトピックでは、新しい Azure Notification Hub Java SDK の主な機能について説明します。Azure Notification Hub Java SDK は、完全にサポートされている公式の SDK です。これはオープン ソース プロジェクトであり、SDK コード全体は [Java SDK] で確認できます。
 
@@ -307,4 +303,4 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 [Maven]: http://maven.apache.org/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

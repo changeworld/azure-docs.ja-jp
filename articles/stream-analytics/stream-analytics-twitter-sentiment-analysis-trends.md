@@ -1,6 +1,7 @@
 <properties
 	pageTitle="Stream Analytics でのリアルタイム Twitter センチメント分析 |Microsoft Azure"
 	description="リアルタイム Twitter センチメント分析で Stream Analytics を使用する方法について説明します。イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。"
+	keywords="real-time twitter,sentiment analysis,social media analysis,social media analytics tools"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -13,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="08/04/2015"
+	ms.date="10/05/2015"
 	ms.author="jeffstok"/>
 
 
@@ -223,7 +224,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 ![ソーシャル メディア分析: Power BI ダッシュ ボードでの Stream Analytics センチメント分析 (意見マイニング) 出力。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-output-power-bi.png)
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/JA-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -235,4 +236,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

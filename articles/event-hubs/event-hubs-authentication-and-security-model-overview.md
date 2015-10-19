@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Event Hubs の認証とセキュリティ モデルの概要"
+   pageTitle="Event Hubs 認証とセキュリティ モデルの概要 | Microsoft Azure"
    description="Event Hubs の FAQ"
    services="event-hubs"
    documentationCenter="na"
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="06/09/2015"
+   ms.date="10/07/2015"
    ms.author="sethm" />
 
 # Event Hubs の認証とセキュリティ モデルの概要
@@ -20,14 +20,12 @@
 Event Hubs のセキュリティ モデルは、次の要件に対応します。
 
 - 有効な資格情報を提示するデバイスだけが Event Hub にデータを送信できる。
-
 - デバイスが別のデバイスを偽装できないようにする。
-
 - 悪意のあるデバイスをブロックして Event Hub にデータを送信できないようにする。
 
 ## デバイスの認証
 
-Event Hubs のセキュリティ モデルは、[Shared Access Signature (SAS)](https://msdn.microsoft.com/library/dn170477.aspx) トークンとイベント パブリッシャーの組み合わせに基づいています。イベント パブリッシャーは Event Hub の仮想エンドポイントを定義します。パブリッシャーは、Event Hub にメッセージを送信するためにのみ使用できます。パブリッシャーからメッセージを受信することはできません。
+Event Hubs のセキュリティ モデルは、[Shared Access Signature (SAS)](service-bus-shared-access-signature-authentication.md) トークンとイベント パブリッシャーの組み合わせに基づいています。イベント パブリッシャーは Event Hub の仮想エンドポイントを定義します。パブリッシャーは、Event Hub にメッセージを送信するためにのみ使用できます。パブリッシャーからメッセージを受信することはできません。
 
 通常、Event Hub はデバイスごとに 1 つのパブリッシャーを使用します。Event Hub のパブリッシャーに送信されるすべてのメッセージは、その Event Hub 内でキューに格納されます。パブリッシャーは、きめの細かいアクセス制御と調整を行うことができます。
 
@@ -37,14 +35,13 @@ Event Hubs のセキュリティ モデルは、[Shared Access Signature (SAS)](
 
 すべてのトークンは、SAS キーで署名されます。通常、すべてのトークンは、同じキーで署名されます。デバイスはキーを認識しません。これによって、デバイスがトークンを生成することを防いでいます。
 
-### キーの作成
+### SAS キーを作成する
 
 Service Bus は、名前空間を作成するときに、**RootManageSharedAccessKey** という名前の 256 ビットの SAS キーを生成します。このキーは、名前空間に対する送信、リッスン、および管理権限を与えます。追加のキーを作成できます。特定の Event Hub に送信アクセス許可を与えるキーを生成することをお勧めします。これ以降、このトピックでは、このキーは `EventHubSendKey` という名前であることを前提とします。
 
 次の例では、Event Hub を作成するときに送信専用のキーを作成します。
 
-```C#
-
+```
 // Create namespace manager.
 string serviceNamespace = "YOUR_NAMESPACE";
 string namespaceManageKeyName = "RootManageSharedAccessKey";
@@ -60,24 +57,29 @@ string eventHubSendKey = SharedAccessAuthorizationRule.GenerateRandomKey();
 SharedAccessAuthorizationRule eventHubSendRule = new SharedAccessAuthorizationRule(eventHubSendKeyName, eventHubSendKey, new[] { AccessRights.Send });
 ed.Authorization.Add(eventHubSendRule); 
 nm.CreateEventHub(ed);
-
 ```
 
-### トークンの生成
+### トークンを生成する
 
 SAS キーを使用してトークンを生成できます。デバイスごとにトークンを 1 つだけ作成する必要があります。トークンは、次のメソッドを使用して生成できます。すべてのトークンは、**EventHubSendKey** キーを使用して生成されます。各トークンには、一意の URI が割り当てられます。
 
-	public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
+```
+public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
+```
 
 このメソッドを呼び出すときは、URI に `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>` を指定する必要があります。すべてのトークンで同じ URI を使用しますが、`PUBLISHER_NAME` のみ、トークンごとに異なるものにする必要があります。`PUBLISHER_NAME` はそのトークンを受信するデバイスの ID を表していると理想的です。
 
 このメソッドは、次の構造を持つトークンを生成します。
 
-	SharedAccessSignature sr={URI}&sig={HMAC_SHA256_SIGNATURE}&se={EXPIRATION_TIME}&skn={KEY_NAME}
+```
+SharedAccessSignature sr={URI}&sig={HMAC_SHA256_SIGNATURE}&se={EXPIRATION_TIME}&skn={KEY_NAME}
+```
 
 トークンの有効期限は、1970 年 1 月 1 日からの秒単位で指定されます。次に、トークンの例を示します。
 
-	SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFmBHG77A%3d&se=1403130337&skn=RootManageSharedAccessKey
+```
+SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFmBHG77A%3d&se=1403130337&skn=RootManageSharedAccessKey
+```
 
 通常、トークンは、デバイスの寿命とほぼ同じかそれより長い寿命を持っています。デバイスが新しいトークンを取得できる場合は、短い寿命のトークンを使用できます。
 
@@ -99,45 +101,57 @@ Service Bus の現在のバージョンは、個々のサブスクリプショ�
 
 個々のコンシューマー グループに対する SAS 認証が存在しない場合は、SAS キーを使用することで、一般的なキーを持つすべてのコンシューマー グループを保護できます。この方法によって、アプリケーションは、Event Hub のすべてのコンシューマー グループのデータを使用できます。
 
-### ACS でのサービス ID、証明書利用者、およびルールの作成
+### ACS でサービス ID、証明書利用者、ルールを作成する
 
-ACS では、いくつかの方法で、サービス ID、証明書利用者、およびルールを作成できますが、最も簡単な方法は [SBAZTool](http://code.msdn.microsoft.com/windowsazure/Authorization-SBAzTool-6fd76d93) を使用することです。次に例を示します。
+ACS では、いくつかの方法で、サービス ID、証明書利用者、およびルールを作成できますが、最も簡単な方法は [SBAZTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93) を使用することです。次に例を示します。
 
 1. **EventHubSender** のサービス ID を作成します。これは、作成されたサービス ID の名前とそのキーを返します。
 
-		sbaztool.exe exe -n <namespace> -k <key>  makeid eventhubsender
+	```
+	sbaztool.exe exe -n <namespace> -k <key>  makeid eventhubsender
+	```
 
 2. Event Hub に、**EventHubSender** "クレーム送信" 権限を与えます。
 
-		sbaztool.exe -n <namespace> -k <key> grant Send /AuthTestEventHub eventhubsender
+	```
+	sbaztool.exe -n <namespace> -k <key> grant Send /AuthTestEventHub eventhubsender
+	```
 
 3. Consumer Group 1 に対するレシーバー用のサービス ID を作成します。
 
-		sbaztool.exe exe -n <namespace> -k <key> makeid consumergroup1receiver
+	```
+	sbaztool.exe exe -n <namespace> -k <key> makeid consumergroup1receiver
+	```
 
 4. **ConsumerGroup1** に、`consumergroup1receiver` "クレーム リッスン" 権限を与えます。
 
-		sbaztool.exe -n <namespace> -k <key> grant Listen /AuthTestEventHub/ConsumerGroup1 consumergroup1receiver
+	```
+	sbaztool.exe -n <namespace> -k <key> grant Listen /AuthTestEventHub/ConsumerGroup1 consumergroup1receiver
+	```
 
 5. **Consumer Group 2** に対するレシーバー用のサービス ID を作成します。
 
-		sbaztool.exe exe -n <namespace> -k <key>  makeid consumergroup2receiver
+	```
+	sbaztool.exe exe -n <namespace> -k <key>  makeid consumergroup2receiver
+	```
 
 6. **ConsumerGroup2** に、`consumergroup2receiver` "クレーム リッスン" 権限を与えます。
 
-		sbaztool.exe -n <namespace> -k <key> grant Listen /AuthTestEventHub/ConsumerGroup2 consumergroup2receiver
+	```
+	sbaztool.exe -n <namespace> -k <key> grant Listen /AuthTestEventHub/ConsumerGroup2 consumergroup2receiver
+	```
 
 ## 次のステップ
 
 Event Hubs の詳細については、次のトピックを参照してください。
 
 - [Event Hubs の概要]
-- [Event Hub を使用する完全なサンプル アプリケーション]
+- [Event Hubs を使用する完全なサンプル アプリケーション]
 - Service Bus キューを使用する[キューに格納されたメッセージング ソリューション]
 
 [Event Hubs の概要]: event-hubs-overview.md
-[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
-[キューに格納されたメッセージング ソリューション]: ../cloud-services-dotnet-multi-tier-app-using-service-bus-queues.md
+[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

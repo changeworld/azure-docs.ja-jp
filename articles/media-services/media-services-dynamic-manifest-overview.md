@@ -192,6 +192,9 @@ Media Services のリリース 2.11 以降では、アセットにフィルタ�
 
 最大 3 つのフィルターを結合できます。
 
+詳細については、[この投稿](http://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support)を参照してください。
+
+
 ##既知の問題と制限
 
 - 動的マニフェストは GOP 境界 (キー フレーム) で動作するため、トリミングの正確度は GOP に応じます。 
@@ -230,4 +233,4 @@ AMS のラーニング パスについては、以下を参照してください
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

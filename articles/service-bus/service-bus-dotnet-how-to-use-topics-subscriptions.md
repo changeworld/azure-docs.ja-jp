@@ -158,7 +158,7 @@ Websites または Virtual Machines を使用する場合には、.NET 構成シ
 
 トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージを指定できるフィルターを設定することもできます。
 
-サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter] クラスです。SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression][] 構文の説明を参照してください。
+サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter][] クラスです。SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression][] 構文の説明を参照してください。
 
 次の例では、**HighMessages** という名前のサブスクリプションを作成し、[SqlFilter] を適用します。このフィルターでは、カスタム **MessageNumber** プロパティが 3 を超えるメッセージのみが選択されます。
 
@@ -299,4 +299,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [Service Bus が仲介するメッセージングに関する .NET チュートリアル]: http://msdn.microsoft.com/library/azure/hh367512.aspx
   [Azure のサンプル]: https://code.msdn.microsoft.com/windowsazure/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO2-->

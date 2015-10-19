@@ -19,7 +19,7 @@
 
 ## 概要
 
-Azure File ストレージは、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。File ストレージは現在一般に提供されており、SMB 3.0 と SMB 2.1 の両方をサポートしています。
+Azure File ストレージは、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。File ストレージは現在一般に提供されており、SMB 2.1 と SMB 3.0 の両方をサポートしています。
 
 Azure のファイル共有は、Azure プレビュー ポータル、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。また、ファイル共有は SMB 共有であるため、それらには標準の使い慣れたファイル システム API を使用してアクセスできます。
 
@@ -61,7 +61,7 @@ File ストレージは、すべてのストレージ アカウントでサポ�
 
 ## PowerShell を使用したファイル共有の管理
 
-次に、Azure PowerShell を使用して、ファイル共有を作成します。作成されたファイル共有は、SMB 2.1 をサポートしている任意のファイル システムからマウントできます。
+次に、Azure PowerShell を使用して、ファイル共有を作成します。作成されたファイル共有は、SMB 2.1 または SMB 3.0 をサポートしている任意のファイル システムからマウントできます。
 
 ### Azure Storage 用の PowerShell コマンドレットのインストール
 
@@ -162,14 +162,14 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 仮想マシンにリモート接続した後で、`net use` コマンドを実行してファイル共有をマウントできます。その場合は次の構文を使用します。`<storage-account-name>` を実際のストレージ アカウントの名前に置き換え、`<share-name>` を実際の File ストレージ共有に置き換えてください。
 
-    net use <drive-letter>: <storage-account-name>.file.core.windows.net<share-name>
+    net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name>
 
 	example :
 	net use z: \\samples.file.core.windows.net\logs
 
 前の手順でストレージ アカウントの資格情報を適用したため、`net use` コマンドで資格情報を指定する必要はありません。資格情報をまだ適用していない場合は、次の例に示されているように、`net use` コマンドに渡されるパラメーターとして資格情報を指定してください。
 
-    net use <drive-letter>: <storage-account-name>.file.core.windows.net<share-name> /u:<storage-account-name> <storage-account-key>
+    net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name> /u:<storage-account-name> <storage-account-key>
 
 	example :
 	net use z: \\samples.file.core.windows.net\logs /u:samples <storage-account-key>
@@ -540,4 +540,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

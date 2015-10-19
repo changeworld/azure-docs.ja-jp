@@ -103,21 +103,21 @@
 
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
-1. 	**MainPage.xaml.cs** に、`using` ステートメントを追加します。
+1. 	**MainPage.xaml.cs** に、次の `using` ステートメントを追加します。
 
-		using Microsoft.Azure.Engagement;
+		using Microsoft.Azure.Engagement.Overlay;
 
-2. **MainPage** の基本クラスの **Page** を **EngagementPage** に置き換えます。
+2. **MainPage** の基本クラスの **Page** を **EngagementPageOverlay** に置き換えます。
 
-		class MainPage : EngagementPage
+		class MainPage : EngagementPageOverlay
 
 3. `MainPage.xaml` ファイルで次の操作を行います。
 
 	a.次の内容を名前空間宣言に追加します。
 
-		xmlns:engagement="using:Microsoft.Azure.Engagement"
+		xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay"
 
-	b.XML タグ名の **Page** を **engagement:EngagementPage** に置き換えます。
+	b.XML タグ名の **Page** を **engagement:EngagementPageOverlay** に置き換えます。
 	
 > [AZURE.IMPORTANT]ページが `OnNavigatedTo` メソッドをオーバーライドする場合は、必ず `base.OnNavigatedTo(e)` を呼び出します。そうしないと、アクティビティが報告されません (`EngagementPage` は、`OnNavigatedTo` メソッド内で `StartActivity` を呼び出します)。これは既定のテンプレートに `OnNavigatedTo` メソッドがある Windows Phone プロジェクトで特に重要です。
 
@@ -171,13 +171,15 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 
 [AZURE.INCLUDE [Windows Push キャンペーンを作成する](../../includes/mobile-engagement-windows-push-campaign.md)]
 
-デバイスにキャンペーンのトースト通知が表示されるはずです。このトースト通知を表示するには、アプリを閉じる必要があります。アプリが実行中の場合、キャンペーンをアクティブにしてトースト通知を受信できるようにする数分前にアプリを閉じます。通知がアプリに表示されるように、アプリ内通知を統合する場合、「[Windows ユニバーサル アプリ - オーバーレイ統合]」を参照してください。
+アプリが実行中の場合は、アプリ内通知が表示されます。アプリが閉じている場合は、トースト通知が表示されます。トースト通知ではなくアプリ内通知が表示され、Visual Studio のデバッグ モードでアプリを実行している場合、ツールバーの **[ライフサイクル イベント] -> [中断]** を選択し、アプリが実際に中断していることを確認します。Visual Studio でアプリケーションをデバッグ中に [ホーム] ボタンをクリックしただけでは中断されず、アプリ内通知は表示されても、トースト通知は表示されないことがあります。
+
+![][8]
 
 <!-- URLs. -->
 [Mobile Engagement Windows Universal SDK documentation]: ../mobile-engagement-windows-store-integrate-engagement/
 [MicrosoftAzure.MobileEngagement]: http://go.microsoft.com/?linkid=9864592
 [Windows ストア デベロッパー センター]: http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409
-[Windows ユニバーサル アプリ - オーバーレイ統合]: ../mobile-engagement-windows-store-integrate-engagement-reach/#overlay-integration
+[Windows Universal Apps - Overlay integration]: ../mobile-engagement-windows-store-integrate-engagement-reach/#overlay-integration
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-windows-store-dotnet-get-started/universal-app-creation.png
@@ -186,5 +188,6 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 [5]: ./media/mobile-engagement-windows-store-dotnet-get-started/manifest-toast.png
 [6]: ./media/mobile-engagement-windows-store-dotnet-get-started/enter-credentials.png
 [7]: ./media/mobile-engagement-windows-store-dotnet-get-started/associate-app-store.png
+[8]: ./media/mobile-engagement-windows-store-dotnet-get-started/vs-suspend.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/30/2015"
+	ms.date="10/01/2015"
 	ms.author="ricksal"/>
 
 # オフライン データ同期を Android Mobile Services アプリケーションに追加する
@@ -33,7 +33,6 @@
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites.md)]
 
-
 ## オフライン同期をサポートするようにアプリケーションを更新する
 
 オフライン同期では、*同期テーブル*に対して読み取りや書き込みをします (*IMobileServiceSyncTable* インターフェイスを使用)。このテーブルは、デバイス上の **SQL Light** データベースの一部です。
@@ -48,14 +47,14 @@
 2. 次の **import** ステートメントを *ToDoActivity.java* に追加します。
 
 		import java.util.Map;
-		
+
 		import android.widget.Toast;
-		
-		import com.microsoft.windowsazure.mobileservices.table.query.Query; 
-		import com.microsoft.windowsazure.mobileservices.table.sync.MobileServiceSyncContext; 
-		import com.microsoft.windowsazure.mobileservices.table.sync.MobileServiceSyncTable; 
-		import com.microsoft.windowsazure.mobileservices.table.sync.localstore.ColumnDataType; 
-		import com.microsoft.windowsazure.mobileservices.table.sync.localstore.SQLiteLocalStore; 
+
+		import com.microsoft.windowsazure.mobileservices.table.query.Query;
+		import com.microsoft.windowsazure.mobileservices.table.sync.MobileServiceSyncContext;
+		import com.microsoft.windowsazure.mobileservices.table.sync.MobileServiceSyncTable;
+		import com.microsoft.windowsazure.mobileservices.table.sync.localstore.ColumnDataType;
+		import com.microsoft.windowsazure.mobileservices.table.sync.localstore.SQLiteLocalStore;
 
 3. `ToDoActivity` クラスの上部で、`mToDoTable` 変数の宣言を `MobileServiceTable<ToDoItem>` クラスから `MobileServiceSyncTable<ToDoItem>` クラスに変更します。
 
@@ -109,7 +108,7 @@
 		public void syncAsync(){
 			if (isNetworkAvailable()) {
 				new AsyncTask<Void, Void, Void>() {
-	
+
 					@Override
 					protected Void doInBackground(Void... params) {
 						try {
@@ -136,7 +135,7 @@
 	これにより、スタートアップしているデバイスが Azure のテーブルと同期されます。このコードを追加しないと、ローカル ストアの最後のオフライン コンテンツが表示されます。
 
 
- 
+
 9. このクエリ (`try` ブロック内の最初のコード行) が使用されるように、`refreshItemsFromTable` メソッドのコードを更新します。
 
 		final MobileServiceList<ToDoItem> result = mToDoTable.read(mPullQuery).get();
@@ -162,8 +161,8 @@
 
 次のシナリオでテストしてみましょう。
 
-1. デバイスにいくつかの新しい項目を追加します。 
-2. ポータルで項目が表示されていないことを確認します。 
+1. デバイスにいくつかの新しい項目を追加します。
+2. ポータルで項目が表示されていないことを確認します。
 3. 次に [**更新**] を押して、これらの項目が表示されることを確認します。
 4. ポータルで項目を変更するか追加してから [**更新**] を押して、変更がデバイス上に表示されることを確認します。
 
@@ -212,7 +211,6 @@ One thing which is important to point out: if there are pending changes in the l
 
 
 [Get started with Mobile Services]: mobile-services-android-get-started.md
-[Get started with data]: mobile-services-android-get-started-data.md
 [Handling Conflicts with Offline Support for Mobile Services]: mobile-services-android-handling-conflicts-offline-data.md
 [Soft Delete]: mobile-services-using-soft-delete.md
 
@@ -221,4 +219,4 @@ One thing which is important to point out: if there are pending changes in the l
 
 [Mobile Services Quick Start tutorial (Mobile Services のクイック スタート チュートリアル)]: mobile-services-android-get-started.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

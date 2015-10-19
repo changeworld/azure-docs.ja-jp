@@ -66,7 +66,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[InterCloud](https://www.intercloud.com/)** | サポートされています | サポートされていません | アムステルダム、ロンドン、シンガポール、ワシントン DC |
 | **Internet Solutions - Cloud Connect** | サポートされています | サポートされていません | アムステルダム、ロンドン |
 | **Interxion** | サポートされています | サポートされていません | アムステルダム |
-| **[レベル 3 通信](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされていません | シカゴ、ダラス、ロンドン、シアトル、シリコン バレー、ワシントン DC |
+| **[レベル 3 通信](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされていません | アムステルダム、シカゴ、ダラス、ロンドン、シアトル、シリコン バレー、ワシントン DC |
 | **Megaport** | サポートされています | サポートされていません | メルボルン、シドニー |
 | **MTN** | サポートされています | サポートされていません | ロンドン |
 | **NTT Communications** | 近日対応予定 | サポートされていません | 東京+ |
@@ -127,4 +127,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 - すべての前提条件を満たしていることを確認します。「[Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

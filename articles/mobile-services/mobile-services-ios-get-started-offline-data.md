@@ -261,7 +261,6 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 
 
 [Get started with Mobile Services]: mobile-services-ios-get-started.md
-[Get started with data]: mobile-services-ios-get-started-data.md
 [Mobile Services のオフライン サポートでの競合の処理]: mobile-services-ios-handling-conflicts-offline-data.md
 [Mobile Services のオフライン サポートでの競合を処理する]: mobile-services-ios-handling-conflicts-offline-data.md
 [Soft Delete]: mobile-services-using-soft-delete.md
@@ -272,4 +271,4 @@ Core Data ローカル ストアを使用する場合は、[正しいシステ�
 
 [Mobile Services のクイック スタート チュートリアル]: mobile-services-ios-get-started.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

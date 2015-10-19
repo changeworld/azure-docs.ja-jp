@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="mobile-xamarin"
 	ms.workload="mobile"
-	ms.date="06/10/2015"
-	ms.author="normesta"/>
+	ms.date="10/05/2015"
+	ms.author="wesmc"/>
 
 # Xamarin.Forms アプリにプッシュ通知を追加する
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
@@ -293,7 +293,7 @@ APNS と連携するようにモバイル サービスが構成されました�
             const string template = "{"aps":{"alert":"$(message)"}}";
 
             var expiryDate = DateTime.Now.AddDays(90).ToString
-                (System.Globalization.CultureInfo.CreateSpecificCulture("ja-JP"));
+                (System.Globalization.CultureInfo.CreateSpecificCulture("JA-JP"));
 
             var push = client.GetPush();
 
@@ -847,4 +847,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Completed Xamarin.Forms Azure Push Notification Sample (Xamarin.Forms の Azure プッシュ通知の完全なサンプル)]: https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPushXamarinForms
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO2-->

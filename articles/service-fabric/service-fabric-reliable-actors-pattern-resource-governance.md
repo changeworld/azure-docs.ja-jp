@@ -3,7 +3,7 @@
    description="拡張する必要はあるが制約のあるリソースを使用するアプリケーションのモデル化に Service Fabric アクターを使用できる設計パターン"
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="vturecek"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="08/11/2015"
-   ms.author="claudioc"/>
+   ms.author="vturecek"/>
 
 # 高信頼アクターの設計パターン: リソースのガバナンス
 このパターンおよび関連するシナリオは、すぐに拡張できない制約されたリソースがオンプレミスまたはクラウドにある開発者または大規模なアプリケーションとデータをクラウドに出荷する開発者 (エンタープライズまたはその他) であれば簡単に認識できます。
@@ -417,4 +417,4 @@ public class EventWriter : Actor<EventWriterState>, IEventWriter
 [2]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch2.png
 [3]: ./media/service-fabric-reliable-actors-pattern-resource-governance/resourcegovernance_arch3.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

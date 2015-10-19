@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric サービスを開発する"
-   description="高信頼アクターや Reliable Services のプログラミング モデルを使用した Service Fabric サービスの開発方法を理解できる概念的な情報とチュートリアル。"
+   pageTitle="Service Fabric サービスを開発する | Microsoft Azure"
+   description="Reliable Actor や Reliable Services のプログラミング モデルの使用を理解できる概念的な情報とチュートリアル。"
    services="service-fabric"
    documentationCenter=".net"
    authors="rwike77"
@@ -24,13 +24,13 @@
 - [高信頼サービス プログラミング モデルの概要](../Service-Fabric/service-fabric-reliable-services-introduction.md)
 
 ## 高信頼アクターのプログラミング モデル
- 高信頼アクターは、非同期のシングル スレッド アクター モデルを提供します。アクターとは、高いスケーラビリティを実現するためにクラスター全体に配布される状態と計算の単位を表します。信頼性アクター モデルは、基盤となる Service Fabric プラットフォームにより提供される分散ストアを活用し、可用性が高く一貫性のある状態管理をアプリケーションの開発者に提供します。詳細については、次を参照してください。
+ Reliable Actors は、非同期のシングル スレッド アクター モデルを提供します。アクターとは、高いスケーラビリティを実現するためにクラスター全体に配布される状態と計算の単位を表します。信頼性アクター モデルは、基盤となる Service Fabric プラットフォームにより提供される分散ストアを活用し、可用性が高く一貫性のある状態管理をアプリケーションの開発者に提供します。詳細については、次を参照してください。
 
-- [高信頼アクターの使用](service-fabric-reliable-actors-get-started.md)
+- [Reliable Actors の使用](service-fabric-reliable-actors-get-started.md)
 - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
 - [Fabric アクターの Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
 - [Azure Service Fabric のアクター型のシリアル化に関する留意事項](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
-- [Node.js と信頼性の高いアクター](service-fabric-node-and-reliable-actors-an-winning-combination.md)
+- [Node.js と信頼性の Reliable Actors](service-fabric-node-and-reliable-actors-an-winning-combination.md)
 
 アクターとの通信は以下で説明します。
 
@@ -48,19 +48,19 @@
 - [パターン: 分散計算](service-fabric-reliable-actors-pattern-distributed-computation.md)
 - [いくつかのアンチ パターン](service-fabric-reliable-actors-anti-patterns.md)
 
-高信頼アクター メソッドには、ターンごとの単純な同時実行が提供されます。同時実行、タイマーと通知、および再入については、次の記事で説明します。
+Reliable Actor メソッドには、ターンごとの単純な同時実行が提供されます。同時実行、タイマーと通知、および再入については、次の記事で説明します。
 
 - [同時実行](service-fabric-reliable-actors-introduction.md#concurrency)
 - [同時実行に関連するイベントとパフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md)
 - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
 - [アクターのタイマー](service-fabric-reliable-actors-timers-reminders.md)
 
-高信頼アクターの構成の詳細については、次を参照してください。
+Reliable Actors の構成の詳細については、次を参照してください。
 
 - [KVSActorStateProvider 構成](../Service-Fabric/service-fabric-reliable-actors-KVSActorstateprovider-configuration.md)  
-- [高信頼アクターの構成 - ReliableDictionaryActorStateProvider](../service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
+- [Reliable Actors の構成 - ReliableDictionaryActorStateProvider](../service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
 
-高信頼アクターはイベントとパフォーマンス カウンターを出力し、サービスの診断と監視に使用することができます。
+Reliable Actors はイベントとパフォーマンス カウンターを出力し、サービスの診断と監視に使用することができます。
 
 - [アクターの診断](service-fabric-reliable-actors-diagnostics.md)
 - [アクターのイベント](service-fabric-reliable-actors-events.md)
@@ -87,4 +87,4 @@ Reliable Services はイベントとパフォーマンス カウンターを出�
 
 - [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

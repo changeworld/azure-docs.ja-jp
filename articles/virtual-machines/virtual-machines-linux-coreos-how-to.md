@@ -1,6 +1,6 @@
 <properties
 	pageTitle="CoreOS を使用する方法 |Microsoft Azure"
-	description="CoreOS、Azure 上で CoreOS 仮想マシン クラスターを作成する方法、その基本的な使用方法について説明します。"
+	description="CoreOS について説明するほか、Azure 上でクラシック デプロイメント モデルで CoreOS 仮想マシン クラスターを作成する方法とその基本的な使用方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
@@ -21,7 +21,8 @@
 
 このトピックでは、このオペレーティング システムを理解するためのクイック スタートとして [CoreOS] について説明し、Azure 上に 3 台の CoreOS 仮想マシンで構成されるクラスターを作成する方法を示します。ここでは、CoreOS デプロイメントのごく基本的な要素と、[CoreOS と Azure に関するページ]、[Tim Park による CoreOS のチュートリアル]、および [Patrick Chanezon によるチュートリアル]の例を使用して、CoreOS デプロイメントの基本構造を理解し、3 台の仮想マシンから構成されるクラスターを正常に実行するための極限まで抑えた最小要件について説明します。
 
->[AZURE.NOTE]この記事では、Azure コマンド ライン インターフェイスとサービス管理のコマンドを使用して、CoreOS の仮想マシンを作成する方法を示します。Azure リソース マネージャーで CoreOS を開始するには、この[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)を試してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、Azure CLI を使用して、クラシック デプロイメント モデルで CoreOS VM を作成する方法について説明します。[リソース マネージャーのデプロイメント モデル](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)のテンプレートを使用して CoreOS VM を作成することもできます。
+
 
 ## <a id='intro'>CoreOS、クラスター、Linux コンテナー</a>
 
@@ -49,7 +50,7 @@ CoreOS は、Linux の軽量バージョンです。唯一のパッケージ化�
 1. SSH 証明書とキーを作成し、CoreOS 仮想マシンとのコミュニケーションを保護する
 2. 相互に通信するために、使用するクラスターの etcd ID を取得する
 3. cloud-config ファイルを [YAML] 形式で作成する
-4. Azure CLI を使用して、新しい Azure クラウド サービスと 3 台の CoreOS VM を作成する
+4. Azure CLI を使用して、新しい Azure Cloud Service と 3 台の CoreOS VM を作成する
 5. Azure VM で CoreOS クラスターをテストする
 6. localhost で CoreOS クラスターをテストする
 
@@ -145,7 +146,7 @@ azure vm create --custom-data=cloud-config.yaml --ssh=22 --ssh-cert=./myCert.pem
 
 ### localhost で CoreOS クラスターをテストする
 
-最後に、ローカル Linux クライアントで CoreOS クラスターをテストします。**npm** を使用して **fleetctl** をインストールするか、ローカル クライアントに **fleet** をインストールして **fleetctl** を自身でビルドすることもできます。 **fleet** には **golang** が必要なため、次を入力してまずそれをインストールする必要があります。
+最後に、ローカル Linux クライアントで CoreOS クラスターをテストします。**npm** を使用して **fleetctl** をインストールするか、ローカル クライアントに **fleet** をインストールして **fleetctl** を自身でビルドすることもできます。**fleet** には **golang** が必要なため、次を入力してまずそれをインストールする必要があります。
 
 `sudo apt-get install golang`
 
@@ -208,4 +209,4 @@ azure vm create --custom-data=cloud-config.yaml --ssh=22 --ssh-cert=./myCert.pem
 [YAML]: http://yaml.org/
 [Azure 上の CoreOS で fleet を使ってみる]: virtual-machines-linux-coreos-fleet-get-started.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

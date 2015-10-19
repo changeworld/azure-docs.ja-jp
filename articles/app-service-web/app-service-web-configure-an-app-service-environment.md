@@ -86,7 +86,7 @@ App Service 環境の管理と監視を行うには、Azure プレビュー ポ�
 - 未使用のワーカー プールを使用して、必要なサイズで必要なインスタンスを呼び出す。
 - App Service プランを新しいワーカー プールにスケーリングする。  
  
-こうすれば、実行中のワークロードでコンピューティング リソースのサイズを変更する場合に比べ、アプリの実行に与える影響は大幅に小さくなります。App Service 環境での Web アプリのスケーリングの詳細については、「[App Service 環境内での Web アプリのスケーリング](app-service-web-scale-a-web-app-in-an-app-service-environment.md)」を参照してください。
+こうすれば、実行中のワークロードでコンピューティング リソースのサイズを変更する場合に比べ、アプリの実行に与える影響は大幅に小さくなります。App Service 環境での Web アプリのスケーリングの詳細については、「[App Service 環境内での Web Apps のスケーリング](app-service-web-scale-a-web-app-in-an-app-service-environment.md)」を参照してください。
 
 ## Virtual Network ##
 
@@ -133,4 +133,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

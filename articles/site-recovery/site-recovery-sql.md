@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/05/2015" 
+	ms.date="10/07/2015" 
 	ms.author="raynew"/>
 
 
@@ -51,10 +51,12 @@ Site Recovery は、次の表に要約したネイティブの SQL Server の BC
 
 
 
+
+
 次の表は、Site Recovery デプロイに SQL Server の BCDR テクノロジを統合するための推奨事項を示しています。
 
 **バージョン** |**エディション** | **デプロイ** | **オンプレミスからオンプレミス** | **オンプレミスから Azure** 
----|---|---|---|
+---|---|---|---|---
 SQL Server 2014 または 2012 | Enterprise | フェールオーバー クラスター インスタンス | AlwaysOn 可用性グループ | AlwaysOn 可用性グループ
  | Enterprise | 高可用性のための AlwaysOn 可用性グループ | AlwaysOn 可用性グループ | AlwaysOn 可用性グループ
  | Standard | フェールオーバー クラスター インスタンス | ローカルのミラーを使用した Site Recovery レプリケーション | ローカルのミラーを使用した Site Recovery レプリケーション
@@ -362,4 +364,4 @@ SQL Standard のクラスターの場合、計画外のフェールオーバー�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

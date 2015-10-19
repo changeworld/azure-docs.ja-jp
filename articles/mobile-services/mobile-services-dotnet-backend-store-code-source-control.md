@@ -24,7 +24,7 @@
 
 このトピックでは、.NET バックエンド サービス プロジェクトの格納に Azure のモバイル サービスによって提供される、ソース管理を使用する方法を説明します。実稼働環境のモバイル サービスに、ローカルの Git リポジトリからアップロードすることで、プロジェクトをパブリッシュできます。
 
-このチュートリアルを完了するには、「[Mobile Services の使用]」または「[既存のアプリにモバイル サービスを追加する]」チュートリアルを完了し、モバイル サービスを作成しておく必要があります。
+このチュートリアルを完了するには、「[モバイル サービスの使用]」チュートリアルを完了して、モバイル サービスを既に作成してある必要があります。
 
 ##<a name="enable-source-control"></a>モバイル サービスでソース管理を有効にする
 
@@ -32,7 +32,7 @@
 
 ##<a name="clone-repo"></a>Git をインストールし、ローカル リポジトリを作成する
 
-1. ローカル コンピューターに Git をインストールします。 
+1. ローカル コンピューターに Git をインストールします。
 
 	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
 
@@ -86,7 +86,7 @@
 
 	![Mobile Services のスタートアップ ページ](./media/mobile-services-dotnet-backend-store-code-source-control/mobile-service-startup.png)
 
-モバイル サービス プロジェクトは、ソース管理で管理され、ローカル リポジトリから更新をプッシュすることで、サービスの更新を発行することができます。SQL データベースを使用して、.NET バックエンド モバイル サービスでデータ モデルの変更を行う方法の詳細については、「[.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]」を参照してください。
+モバイル サービス プロジェクトは、ソース管理で管理され、ローカル リポジトリから更新をプッシュすることで、サービスの更新を発行することができます。SQL Database を使用して、.NET バックエンド モバイル サービスでデータ モデルの変更を行う方法の詳細については、「[.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]」を参照してください。
 
 <!-- Anchors. -->
 
@@ -96,11 +96,8 @@
 [Git website]: http://git-scm.com
 [Source control]: http://msdn.microsoft.com/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
 [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Mobile Services の使用]: mobile-services-dotnet-backend-ios-get-started.md
-[既存のアプリにモバイル サービスを追加する]: mobile-services-dotnet-backend-ios-get-started-data.md
+[モバイル サービスの使用]: mobile-services-dotnet-backend-ios-get-started.md
 [Azure Management Portal]: https://manage.windowsazure.com/
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[Call a custom API from the client]: mobile-services-dotnet-backend-ios-call-custom-api.md
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

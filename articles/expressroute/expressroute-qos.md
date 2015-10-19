@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/22/2015"
+   ms.date="10/06/2015"
    ms.author="cherylmc"/>
 
 # ExpressRoute QoS の要件
@@ -44,9 +44,10 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
 ## 次のステップ
 
 - [ルーティング](expressroute-routing.md)と [NAT](expressroute-nat.md) の要件を参照してください。
-- ExpressRoute 接続を構成します。
+- ExpressRoute 接続を構成するには、次のリンクを参照してください。
+
 	- [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->
