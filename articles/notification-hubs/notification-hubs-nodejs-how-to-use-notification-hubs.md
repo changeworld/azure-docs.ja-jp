@@ -17,23 +17,19 @@
 	ms.author="wesmc"/>
 
 # Node.js から Notification Hubs を使用する方法
-
-> [AZURE.SELECTOR]
-- [Java](notification-hubs-java-backend-how-to.md)
-- [PHP](notification-hubs-php-backend-how-to.md)
-- [Python](notification-hubs-python-backend-how-to)
+[AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
 ##概要
 
 このガイドでは、Node.js アプリケーションから Notification Hubs を使用する方法について説明します。紹介するシナリオでは、**Android、iOS、Windows Phone、Windows ストア アプリへの通知の送信**を対象としています。通知ハブの詳細については、「[次のステップ](#next)」のセクションを参照してください。
 
-##Windows Azure 通知ハブとは
+##Notification Hubs とは
 
-Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすく拡張性の高いマルチプラットフォーム インフラストラクチャが提供されます。詳細については、「[Azure 通知ハブ](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)」を参照してください。
+Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすく拡張性の高いマルチプラットフォーム インフラストラクチャが提供されます。詳細については、「[Azure Notification Hubs とは](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)」を参照してください。
 
 ##Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへの展開][nodejswebsite]」、「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用)、または「[WebMatrix を使用した Web サイト]」を参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite]」、「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用)、または「[WebMatrix を使用した Web サイト]」を参照してください。
 
 ##アプリケーションを構成して Notification Hub を使用する
 
@@ -71,9 +67,9 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-接続 **connectionstring** の値は、Azure 管理ポータルで次の手順を実行して取得できます。
+接続 **connectionstring** の値は、Microsoft Azure 管理ポータルで次の手順を実行して取得できます。
 
-1. Azure 管理ポータルで **[Service Bus]** を選択し、通知ハブが含まれている名前空間を選択します。
+1. Microsoft Azure 管理ポータルで **[Service Bus]** を選択し、通知ハブが含まれている名前空間を選択します。
 
 2. **[Notification Hubs]** を選択し、使用するハブを選択します。
 
@@ -217,4 +213,4 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
   [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

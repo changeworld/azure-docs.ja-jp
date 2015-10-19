@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/20/2015"
+	ms.date="10/01/2015"
 	ms.author="adegeo"/>
 
 
-# Azure Management API の管理証明書のアップロード
+# Azure Management API Management 証明書のアップロード
 
-Azure のサービス管理 API に対する認証は、管理証明書で行うことができます。これらの証明書は、各種 Azure サービスの構成とデプロイを自動化するために、今後多くのプログラムおよびツール (Visual Studio、Azure SDK など) で使用されることになります。これらはクラウド サービスには実際には関連がありません。
+Azure のサービス管理 API に対する認証は、管理証明書で行うことができます。これらの証明書は、各種 Azure サービスの構成とデプロイメントを自動化するために、今後多くのプログラムおよびツール (Visual Studio、Azure SDK など) で使用されることになります。これらはクラウド サービスには実際には関連がありません。
 
 >[AZURE.WARNING]ご注意ください。 これらの種類の証明書を使用して認証する場合、関連付けられているサブスクリプションを管理できます。
 
@@ -31,7 +31,7 @@ Azure の証明書の詳細 (自己署名証明書の作成を含む) につい�
 
 管理証明書 (公開キーのみを含んだ .cer ファイル) を作成したら、それをポータルにアップロードすることができます。ポータルで証明書が使用可能な状態になると、対になる証明書 (秘密キー) を持つすべての人が、Management API を経由して接続し、そのサブスクリプションに関連付けられているリソースにアクセスすることができます。
 
-1. [Azure 管理ポータル](http://manage.windowsazure.com)にログインします。
+1. [Microsoft Azure 管理ポータル](http://manage.windowsazure.com)にログインします。
 2. ポータルの左側にある **[設定]** をクリックします (必要に応じて下へスクロールしてください)。 
     
     ![設定](./media/azure-api-management-certs/settings.png)
@@ -50,6 +50,6 @@ Azure の証明書の詳細 (自己署名証明書の作成を含む) につい�
 
 ## 次のステップ
 
-サブスクリプションへの管理証明書の関連付けはこれで完了です。対になる証明書がローカルにインストールされていれば、プログラムから [Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) に接続し、同じサブスクリプションに関連付けられているその他さまざまな Azure リソースを自動化できます。
+サブスクリプションへの管理証明書の関連付けはこれで完了です。対になる証明書がローカルにインストールされていれば、プログラムから [Service Management REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) に接続し、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

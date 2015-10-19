@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/30/2015"
+   ms.date="10/01/2015"
    ms.author="bwren" />
 
 # Azure Automation の Runbook をスケジュール設定する
 
-指定の時刻に開始するように Azure Automation の Runbook をスケジュール設定するには、Runbook を 1 つ以上のスケジュールにリンクします。スケジュールは、一度だけ実行されるよう構成することも、指定の日数または時間ごとに繰り返し実行されるよう構成することもできます。1 つの Runbook を複数のスケジュールにリンクし、1 つのスケジュールを複数の Runbook にリンクすることができます。
+指定の時刻に開始するように Azure Automation の Runbook をスケジュール設定するには、Runbook を 1 つ以上のスケジュールにリンクします。A schedule can be configured to either run one time or recurring every specified number of hours or days.1 つの Runbook を複数のスケジュールにリンクし、1 つのスケジュールを複数の Runbook にリンクすることができます。
 
 ## スケジュールを作成する
 
@@ -45,7 +45,7 @@ Azure 管理ポータルまたは Windows PowerShell で新しいスケジュー
 
 ## スケジュールを Runbook にリンクする
 
-1 つの Runbook を複数のスケジュールにリンクし、1 つのスケジュールを複数の Runbook にリンクすることができます。Runbook にパラメーターがある場合は、それらの値を指定することができます。必須パラメーターには値を指定する必要があり、オプションのパラメーターに値を指定することもできます。これらの値は、対象スケジュールによって Runbook が開始されるたびに使用されます。同じ Runbook を別のスケジュールに関連付けて、異なるパラメーター値を指定することができます。
+1 つの Runbook を複数のスケジュールにリンクし、1 つのスケジュールを複数の Runbook にリンクすることができます。If a runbook has parameters, then you can provide values for them.You must provide values for any mandatory parameters and may provide values for any optional parameters.These values will be used each time the runbook is started by this schedule.同じ Runbook を別のスケジュールに関連付けて、異なるパラメーター値を指定することができます。
 
 ### Azure 管理ポータルで Runbook にスケジュールをリンクするには
 
@@ -70,14 +70,14 @@ Azure 管理ポータルまたは Windows PowerShell で新しいスケジュー
 
 ## スケジュールを無効にする
 
-スケジュールを無効にすると、そのスケジュールにリンクされた Runbook はいずれもそのスケジュールに基づいて実行できなくなります。手動でスケジュールを無効にすることも、時間ごとのスケジュールや毎日のスケジュールを作成する際に有効期限を設定することもできます。有効期限の時刻に達すると、スケジュールが無効になります。
+スケジュールを無効にすると、そのスケジュールにリンクされた Runbook はいずれもそのスケジュールに基づいて実行できなくなります。You can manually disable a schedule or set an expiration time for Hourly and Daily schedules when you create them.有効期限の時刻に達すると、スケジュールが無効になります。
 
 ### Azure 管理ポータルでスケジュールを無効にするには
 
 Azure 管理ポータルで、スケジュール用の [スケジュールの詳細] ページからスケジュールを無効にすることができます。
 
-1. Azure 管理ポータルで、[Automation] を選択し、次に Automation アカウントの名前をクリックします。
-1. [資産] タブを選択します。
+1. In the Azure Management Portal, select Automation and then then click the name of an automation account.
+1. Select the Assets tab.
 1. スケジュールの名前をクリックして、その詳細ページを開きます。
 2. **[有効]** を **[いいえ]** に変更します。
 
@@ -96,4 +96,4 @@ Azure 管理ポータルで、スケジュール用の [スケジュールの詳
 - [Azure Automation のスケジュール資産](http://msdn.microsoft.com/library/azure/dn940016.aspx)
 - [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md) 
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

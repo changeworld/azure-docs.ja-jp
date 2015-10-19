@@ -5,6 +5,7 @@
 	services="mobile-services, notification-hubs"
 	documentationCenter="android"
 	authors="RickSaling"
+	writer="ricksal"
 	manager="dwrede"
 	editor=""/>
 
@@ -14,7 +15,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="10/06/2015"
 	ms.author="ricksal"/>
 
 
@@ -30,15 +31,18 @@
 
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../../includes/mobile-services-android-prerequisites.md)]
 
-##<a id="register"></a>Google Cloud Messaging を有効にする
+## サンプル コード
+完成したソース コードを表示するには、[ここ](https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPush)に移動します。
+
+## Google Cloud Messaging を有効にする
 
 [AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
-##<a id="configure"></a>プッシュ要求を送信するように Mobile Services を構成する
+## プッシュ要求を送信するようにモバイル サービスを構成する
 
 [AZURE.INCLUDE [mobile-services-android-configure-push](../../includes/mobile-services-android-configure-push.md)]
 
-##<a id="add-push"></a>アプリケーションにプッシュ通知を追加する
+## アプリケーションにプッシュ通知を追加する
 
 
 
@@ -55,12 +59,12 @@
 [AZURE.INCLUDE [mobile-services-android-getting-started-with-push](../../includes/mobile-services-android-getting-started-with-push.md)]
 
 
-##<a id="update-scripts"></a>管理ポータルで登録されている挿入スクリプトを更新する
+## 管理ポータルで登録されている挿入スクリプトを更新する
 
 [AZURE.INCLUDE [mobile-services-javascript-backend-android-push-insert-script](../../includes/mobile-services-javascript-backend-android-push-insert-script.md)]
 
 
-##<a id="test"></a>アプリケーションでプッシュ通知をテストする
+## アプリケーションでプッシュ通知をテストする
 
 Android フォンを USB ケーブルで直接接続するか、エミュレーターで仮想デバイスを使用する方法により、アプリケーションをテストできます。
 
@@ -97,23 +101,9 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 [AZURE.INCLUDE [SDK の確認](../../includes/mobile-services-verify-android-sdk-version.md)]
 
-
-## 古いコードのバージョン
-
-このチュートリアルの Eclipse バージョンを確認する場合は、「[プッシュ通知の使用 (Eclipse)]」をご覧ください。
-
-
-<!--
-To see a completed version of the source code in an Eclipse project, go <a href="https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithData/Android">here</a>.
--->
-
-
-## <a name="next-steps"> </a>次のステップ
+## 次のステップ
 
 <!---This tutorial demonstrated the basics of enabling an Android app to use Mobile Services and Notification Hubs to send push notifications. Next, consider completing the next tutorial, [Send push notifications to authenticated users], which shows how to use tags to send push notifications from a Mobile Service to only an authenticated user.
-
-+ [Send push notifications to authenticated users]
-	<br/>Learn how to use tags to send push notifications from a Mobile Service to only an authenticated user.
 
 + [Send broadcast notifications to subscribers]
 	<br/>Learn how users can register and receive push notifications for categories they're interested in.
@@ -122,13 +112,11 @@ To see a completed version of the source code in an Eclipse project, go <a href=
 	<br/>Learn how to use templates to send push notifications from a Mobile Service, without having to craft platform-specific payloads in your back-end.
 -->
 
-Mobile Services と通知ハブについては次のトピックを参照してください。
-
-* [データの使用] <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
+Mobile Services と Notification Hubs については次のトピックを参照してください。
 
 * [認証の使用] <br/>Mobile Services を使用して別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
 
-* [Notification Hubs とは] <br/>通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
+* [Notification Hubs とは] <br/>Notification Hubs がすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
 * [Notification Hubs アプリケーションのデバッグ](http://go.microsoft.com/fwlink/p/?linkid=386630) </br>Notification Hubs ソリューションのトラブルシューティングとデバッグについて説明します。
 
@@ -149,11 +137,9 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 
 <!-- URLs. -->
-[プッシュ通知の使用 (Eclipse)]: mobile-services-javascript-backend-android-get-started-push-ec.md
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Get started with Mobile Services]: mobile-services-android-get-started.md
-[データの使用]: mobile-services-android-get-started-data.md
 [認証の使用]: mobile-services-android-get-started-users.md
 [Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-js
 [Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-js
@@ -166,11 +152,8 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [gcm object]: http://go.microsoft.com/fwlink/p/?LinkId=282645
 
 [Mobile Services のサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
-
-[Send push notifications to authenticated users]: mobile-services-javascript-backend-android-push-notifications-app-users.md
-
 [Notification Hubs とは]: ../notification-hubs-overview.md
 [Send broadcast notifications to subscribers]: ../notification-hubs-android-send-breaking-news.md
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO2-->

@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/22/2015"
+   ms.date="10/06/2015"
    ms.author="cherylmc"/>
 
 # ExpressRoute NAT の要件
@@ -59,9 +59,11 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 ## 次のステップ
 
 - [ルーティング](expressroute-routing.md)と [QoS](expressroute-qos.md) の要件を参照してください。
+- ワークフロー情報については、「[ExpressRoute 回線のプロビジョニング ワークフローと回線の状態](expressroute-workflows.md)」を参照してください。
 - ExpressRoute 接続を構成します。
+
 	- [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md)
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

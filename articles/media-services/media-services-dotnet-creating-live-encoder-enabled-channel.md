@@ -1,5 +1,5 @@
 <properties 
-	pageTitle=".NET SDK を使用して、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する" 
+	pageTitle=".NET SDK を使用して、シングル ビットレートからマルチ ビットレート ストリーミングへの Live Encoding を実行するチャネルを作成する" 
 	description="このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="09/29/2015"
+	ms.date="10/05/2015"
 	ms.author="juliako"/>
 
 
-#.NET SDK を使用して、シングル ビットレートからマルチ ビットレート ストリーミングへのライブ エンコーディングを実行するチャネルを作成する
+#.NET SDK を使用して、シングル ビットレートからマルチ ビットレート ストリーミングへの Live Encoding を実行するチャネルを作成する
 
 > [AZURE.SELECTOR]
 - [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -28,7 +28,7 @@
 
 このチュートリアルでは、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードする**チャネル**を作成する手順について説明します。
 
->[AZURE.NOTE]ライブ エンコードが有効になっているチャネルに関連する概念的な情報については、「[シングル ビットレートからアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの作成](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
+>[AZURE.NOTE]ライブ エンコードが有効になっているチャネルに関連する概念的な情報については、「[シングル ビットレートからアダプティブ ビットレート ストリームへの Live Encoding を実行するチャネルの作成](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
 
 >[AZURE.NOTE]Media Services .NET SDK バージョン 3.2.0.0 以降を使用する必要があります。
 
@@ -79,7 +79,7 @@
 ##前提条件
 チュートリアルを完了するには次のものが必要です。
 
-- このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](azure.microsoft.com)を参照してください。
+- このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](azure.microsoft.com)を参照してください。
 - Media Services アカウント。Media Services アカウントを作成するには、「[アカウントの作成](media-services-create-account.md)」を参照してください。
 - Visual Studio 2010 SP1 以降。
 - シングル ビットレートのライブ ストリームを送信できる Web カメラとエンコーダー。
@@ -487,14 +487,17 @@ app.config ファイルに appSettings セクションを追加し、Media Servi
 	
 
 
+##次のステップ
 
-##Media Services のラーニング パス
+###Media Services のラーニング パス
 
 AMS のラーニング パスについては、以下を参照してください。
 
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
- 
+### 他の情報をお探しですか。
 
-<!---HONumber=Oct15_HO1-->
+このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
+
+<!---HONumber=Oct15_HO2-->

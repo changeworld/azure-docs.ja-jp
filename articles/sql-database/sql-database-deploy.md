@@ -3,7 +3,7 @@
 	description="SQL Server 2016 Management Studio のウィザードを使用して、Azure SQL Databaseに SQL Server データベースを展開します。" 
 	services="sql-database" 
 	documentationCenter="" 
-	authors="sidneyh" 
+	authors="CarlRabeler" 
 	manager="jeffreyg" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/17/2015" 
-	ms.author="sidneyh"/>
+	ms.date="10/08/2015" 
+	ms.author="carlrab"/>
 
 
 # SQL Server データベースを Azure SQL Database にデプロイする方法
@@ -593,4 +593,4 @@ SQL Server Management Studio (SSMS) でこれらのスクリプトを実行し�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

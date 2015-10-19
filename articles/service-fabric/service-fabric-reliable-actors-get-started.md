@@ -3,7 +3,7 @@
    description="このチュートリアルでは、Service Fabric の信頼性の高いアクターを使用して標準的な HelloWorld の作成、デバッグ、およびデプロイを行う手順について説明します。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="vturecek"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="08/05/2015"
-   ms.author="claudioc"/>
+   ms.author="vturecek"/>
 
 # 信頼性の高いアクター: 正規の HelloWorld のチュートリアル シナリオ
 ここでは、Service Fabric の信頼性の高いアクターの基本と、Visual Studio で簡易な HelloWorld アプリケーションの作成、デバッグ、およびデプロイの手順について説明します。
@@ -158,4 +158,4 @@ Visual Studio 用の Service Fabric ツールは、ローカル マシンでの�
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

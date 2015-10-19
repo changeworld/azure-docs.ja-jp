@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/28/2015"
+   ms.date="09/28/2015"
    ms.author="cherylmc"/>
 
 #  Exchange プロバイダーによる ExpressRoute 接続の構成
@@ -231,4 +231,4 @@ Windows PowerShell は、Azure でのワークロードのデプロイメント�
 
 - ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

@@ -29,6 +29,8 @@
 
 ASP.NET アプリケーション、または Windows Server 2012 R2 のインターネット インフォメーション サービス (IIS) 8 でホストできる古いアプリケーションをデプロイできる、2 つの Web サーバー仮想マシンがあります。
 
+> [AZURE.NOTE]この記事には、バージョン 1.0.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。この記事に示す Azure PowerShell コマンド ブロックは、Azure PowerShell のバージョン 1.0.0 以降の新しいコマンドレットをサポートするためにテストおよび更新を行っている段階にあります。もうしばらくお待ちください。
+
 最初に、基幹業務アプリケーションへのクライアント トラフィックが、Azure によって 2 つの Web サーバーに均等に配分されるように、内部ロード バランサーを構成します。この場合、名前とサブネットのアドレス空間 (Azure 仮想ネットワークに割り当てたアドレス空間) から割り当てられた独自の IP アドレスで構成される内部負荷分散インスタンスを指定する必要があります。内部ロード バランサー用に選択した IP アドレスが使用できるかどうかを確認するには、Azure PowerShell プロンプトで次のコマンドを使用します。変数の値を指定して、< and > の文字を削除します。
 
 	Switch-AzureMode AzureServiceManagement
@@ -172,4 +174,4 @@ Test-AzureStaticVNetIP コマンドに表示される **IsAvailable** フィー�
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

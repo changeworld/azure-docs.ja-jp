@@ -43,7 +43,7 @@ Microsoft Azure IoT サービス SDK には、IoT Hub と直接やりとりし�
 
 - [Node.js 用 Azure IoT サービス SDK][]
 
-## API リファレンス ドキュメント
+## オンライン API リファレンス ドキュメント
 
 Azure IoT デバイス ライブラリのオンライン API リファレンス ドキュメントへのリンクの一覧を次に示します。
 
@@ -73,4 +73,4 @@ Azure IoT サービス ライブラリのオンライン API リファレンス 
 [Microsoft Azure IoT device SDK for Node.js (Node.js 用 Microsoft Azure IoT デバイス SDK)]: http://azure.github.io/azure-iot-sdks/node/api_reference/index.html
 [IoT Hub REST]: https://msdn.microsoft.com/library/mt548492.aspx
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

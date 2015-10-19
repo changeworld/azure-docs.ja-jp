@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/30/2015" 
+	ms.date="10/01/2015" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
@@ -72,15 +72,17 @@ Azure Redis Cache が正常に動作しなくなる可能性がある一般的�
 -	サブネット内の Redis ロール インスタンス VM が相互に通信できません。Redis ロール インスタンスは、使用されているポートのいずれかで TCP を使用して相互に通信できるようにする必要があります。ポートは変化する可能性がありますが、最低でも Redis CSDEF ファイルで使用されているすべてのポートを使用できると仮定できます。
 -	TCP/HTTP ポート 16001 で Azure Load Balancer から Redis VM への接続がブロックされています。Azure Redis Cache は、既定の Azure Load Balancer プローブが有効なロール インスタンスを判断する処理に依存しています。既定の Load Balancer プローブは、ポート 16001 で Azure ゲスト エージェントに ping を送信することで判断します。ILB から転送されるトラフィックを受信するローテーションには、ping に反応したロール インスタンスのみが組み込まれます。ポートのブロックが原因で ping が失敗するため、ローテーション内にインスタンスがない場合、ILB は受信 TCP 接続を一切受け付けません。
 -	SSL 公開キーに使用されるクライアント アプリケーションの Web トラフィックがブロックされています。ポート 6380 を使用して Redis に接続し、SSL サーバー認証を実行する際に SSL 証明書の検証を実行するには、(Virtual Network 内の) Redis のクライアントがパブリック インターネットに対して HTTP トラフィックを通信できる状態で、CA 証明書と証明書失効リストをダウンロードできる必要があります。
--	Azure Load Balancer がポート 1300x (13000、13001 など) または 1500x (15000、15001 など) で TCP 経由でのクラスター内の Redis VM への接続はブロックされています。VNET は、これらのポートを開く Load Balancer プローブを含む csdef ファイルで構成されています。Azure Load Balancer は、NSG から許可されている必要があります。既定の NSG は、タグ AZURE\_LOADBALANCER を使用してこの処理を実行します。Azure Load Balancer には、168.63.126.16 の静的 IP アドレスが割り当てられています。詳細については、「[ネットワーク セキュリティ グループ (NSG) について](..\virtual-network\virtual-networks-nsg.md)」を参照してください。
+-	Azure Load Balancer がポート 1300x (13000、13001 など) または 1500x (15000、15001 など) で TCP 経由でのクラスター内の Redis VM への接続はブロックされています。VNET は、これらのポートを開く Load Balancer プローブを含む csdef ファイルで構成されています。Azure Load Balancer は、NSG から許可されている必要があります。既定の NSG は、タグ AZURE\_LOADBALANCER を使用してこの処理を実行します。Azure Load Balancer には、168.63.126.16 の静的 IP アドレスが割り当てられています。詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。
 
 ## Standard キャッシュまたは Basic キャッシュで VNET を使用できますか
 
 VNET は Premium キャッシュでのみ使用できます。
 
 ## 次のステップ
+Premium キャッシュ機能をさらに使用する方法を学習します。
 
-その他の Premium キャッシュ機能の使用方法については、「[Premium Azure Redis Cache の永続性を構成する方法](cache-how-to-premium-persistence.md)」と「[Premium Azure Redis Cache のクラスタリングを構成する方法](cache-how-to-premium-clustering.md)」を参照してください。
+-	[How to configure persistence for a Premium Azure Redis Cache (Premium Azure Redis Cache の永続性の構成方法)](cache-how-to-premium-persistence.md)
+-	[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
 
 
 
@@ -101,4 +103,4 @@ VNET は Premium キャッシュでのみ使用できます。
 
 [redis-cache-vnet-subnet]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-subnet.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

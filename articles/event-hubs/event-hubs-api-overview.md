@@ -1,25 +1,25 @@
 <properties 
    pageTitle="Event Hubs API 概要"
-	description="主要な Event Hubs .NET クライアント API のまとめ。"
-	services="event-hubs"
-	documentationCenter="na"
-	authors="sethmanheim"
-	manager="timlt"
-	editor=""/>
+   description="主要な Event Hubs .NET クライアント API のまとめ。"
+   services="event-hubs"
+   documentationCenter="na"
+   authors="sethmanheim"
+   manager="timlt"
+   editor="" />
 <tags 
    ms.service="event-hubs"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="tbd"
-	ms.date="07/10/2015"
-	ms.author="sethm"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="tbd"
+   ms.date="07/10/2015"
+   ms.author="sethm" />
 
 # Event Hubs API 概要
 
 この記事は主要な Event Hubs .NET クライアント API についてまとめてあります。2 つのカテゴリがあります。管理 API とランタイム API です。ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。
 
-監視シナリオは管理とランタイムの両方にまたがります。.NET API に関する詳細なリファレンス ドキュメントについては、「[.NET クラス ライブラリ](https://msdn.microsoft.com/library/jj933431.aspx)」リファレンスと「[EventProcessorHost API](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.aspx)」リファレンスを参照してください。
+監視シナリオは管理とランタイムの両方にまたがります。.NET API に関する詳細なリファレンス ドキュメントについては、「[.NET クラス ライブラリ](https://msdn.microsoft.com/library/azure/jj933431.aspx)」リファレンスと「[EventProcessorHost API](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.aspx)」リファレンスを参照してください。
 
 ## 管理 API
 
@@ -50,7 +50,7 @@ namespaceManager.UpdateEventHubAsync(ehd).Wait();
 ### 削除
 
 ```
-namespaceManager.DeleteEventHubAsync("event hub name").Wait();
+namespaceManager.DeleteEventHubAsync("Event Hub name").Wait();
 ```
 
 ## ランタイム API
@@ -59,7 +59,7 @@ namespaceManager.DeleteEventHubAsync("event hub name").Wait();
 
 ```
 // EventHubClient model (uses implicit factory instance, so all links on same connection)
-EventHubClient eventHubClient = EventHubClient.Create("event hub name");
+EventHubClient eventHubClient = EventHubClient.Create("Event Hub name");
 ```
 
 ### メッセージの発行
@@ -131,7 +131,7 @@ EventProcessorHost host = new EventProcessorHost(WorkerName, EventHubName, defau
 host.UnregisterEventProcessorAsync().Wait();   
 ```
 
-[IEventProcessor](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.ieventprocessor.aspx) インターフェイスは次のように定義されています。
+[IEventProcessor](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.ieventprocessor.aspx) インターフェイスは次のように定義されています。
 
 ```
 public class SimpleEventProcessor : IEventProcessor
@@ -184,7 +184,7 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 
 .NET API リファレンスはここにあります。
 
-- [Service Bus と Event Hubs の .NET API リファレンス](https://msdn.microsoft.com/library/jj933424.aspx)
-- [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.eventprocessorhost.aspx)
+- [Service Bus と Event Hubs の .NET API リファレンス](https://msdn.microsoft.com/library/azure/jj933424.aspx)
+- [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO2-->

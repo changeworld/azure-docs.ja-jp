@@ -1,11 +1,12 @@
 <properties
-   pageTitle="Azure で docker マシンを使用する方法"
-   description="Azure で Ubuntu の docker マシンを起動して実行する方法について説明します。"
+   pageTitle="Azure での docker マシンの使用 | Microsoft Azure"
+   description="クラシック デプロイメント モデルを使用して、Azure で Ubuntu の docker マシンを起動して実行する方法について説明します。"
    services="virtual-machines"
    documentationCenter="virtual-machines"
    authors="squillace"
    manager="timlt"
-   editor="tysonn"/>
+   editor="tysonn"
+   tags="azure-service-management"/>
 
 <tags
    ms.service="virtual-machines"
@@ -211,6 +212,5 @@ Docker でコンテナーのポート 80 が VM のポート 49153 に割り当�
 [Link 1 to another azure.microsoft.com documentation topic]: virtual-machines-windows-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
- 
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

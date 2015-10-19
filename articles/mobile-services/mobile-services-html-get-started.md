@@ -1,5 +1,5 @@
 <properties
-	pageTitle="HTML 5 アプリ用 Azure Mobile Services の使用"
+	pageTitle="HTML/JavaScript アプリ向け Azure Mobile Services の使用 | Microsoft Azure"
 	description="次のチュートリアルに従って、HTML 開発用の Azure Mobile Services を使用します。"
 	services="mobile-services"
 	documentationCenter=""
@@ -12,14 +12,16 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-html5"
 	ms.devlang="javascript"
-	ms.topic="article" 
-	ms.date="07/25/2015"
+	ms.topic="get-started-article" 
+	ms.date="10/05/2015"
 	ms.author="glenga"/>
 
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
+
+[AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
 
 ##概要 
 
@@ -31,7 +33,7 @@
 
 ![][0]
 
-このチュートリアルを完了することは、HTML アプリの他のすべての Mobile Services チュートリアルの前提条件です。PhoneGap/Cordova アプリについては、このチュートリアルの [PhoneGap/Cordova バージョン](mobile-services-javascript-backend-phonegap-get-started.md)をご覧ください。
+このチュートリアルを完了することは、HTML アプリの他のすべての Mobile Services チュートリアルの前提条件です。PhoneGap/Cordova アプリについては、このチュートリアルの [PhoneGap/Cordova バージョン](mobile-services-javascript-backend-phonegap-get-started.md)を参照してください。
 
 ##前提条件
 
@@ -46,7 +48,7 @@
 	このアプリケーションは任意の Web サーバーを使用してホストすることができますが、これらの Web サーバーは、ダウンロードしたスクリプトでサポートされています。
 
 + HTML5 をサポートする Web ブラウザー。
-+ Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)を参照してください。 
++ Azure アカウント。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)を参照してください。 
 
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
@@ -117,13 +119,12 @@
 ## <a name="next-steps"> </a>次のステップ
 クイック スタートはこれで完了です。Mobile Services で重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-* **[データの使用]**<br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
+* **[アプリへの認証の追加]** ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* **[HTML アプリケーションからのカスタム API 呼び出し]**<br/>HTML アプリケーションを Mobile Services でホストされるカスタム API に接続します。
+* **[Mobile Services HTML/JavaScript の使用方法の概念リファレンス]**HTML/JavaScript で Mobile Services を使用する方法について説明します。
 
-* **[認証の使用]**<br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* **[Mobile Services HTML/JavaScript の使用方法の概念リファレンス]**<br/>HTML/JavaScript で Mobile Services を使用する方法について説明します。
+[AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started
@@ -144,9 +145,7 @@
 
 
 <!-- URLs. -->
-[データの使用]: mobile-services-html-get-started-data.md
-[認証の使用]: mobile-services-html-get-started-users.md
-[HTML アプリケーションからのカスタム API 呼び出し]: mobile-services-html-call-custom-api.md
+[アプリへの認証の追加]: mobile-services-html-get-started-users.md
 
 [Management Portal]: https://manage.windowsazure.com/
 [Microsoft Web プラットフォーム インストーラー]: http://go.microsoft.com/fwlink/p/?LinkId=286333
@@ -155,4 +154,4 @@
 [Cross-origin resource sharing]: http://msdn.microsoft.com/library/azure/dn155871.aspx
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

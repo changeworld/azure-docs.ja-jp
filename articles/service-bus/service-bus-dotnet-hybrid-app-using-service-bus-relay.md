@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="06/02/2015"
+	ms.date="10/07/2015"
 	ms.author="sethm"/>
 
 # Azure Service Bus Relay を使用する .NET オンプレミス/クラウド ハイブリッド アプリケーション
@@ -551,8 +551,7 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
 
 Service Bus の詳細については、次のリソースを参照してください。
 
-* [Azure の Service Bus][sbmsdn]  
-* [Service Bus の利用方法に関するページ][sbwacom]  
+* [Azure の Service Bus][sbwacom]  
 * [Service Bus キューの使用方法][sbwacomqhowto]  
 
 
@@ -561,7 +560,7 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [Gツールと SDK の入手]: http://go.microsoft.com/fwlink/?LinkId=271920
   [NuGet]: http://nuget.org
   [2]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-3.png
-  [3]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-4-2-WebPI.png
+  [3]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-42-webpi.png
 
 
   [Azure ポータル]: http://manage.windowsazure.com
@@ -607,9 +606,8 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
   [45]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-45.png
 
-  [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx
   [sbwacom]: /documentation/services/service-bus/
   [sbwacomqhowto]: service-bus-dotnet-how-to-use-queues.md
   [executionmodels]: ../cloud-services/fundamentals-application-models.md
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO2-->

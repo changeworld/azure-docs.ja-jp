@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="07/07/2015" 
+	ms.date="09/29/2015" 
 	ms.author="cephalin"/>
 
 # AD FS の認証を使用して Azure App Service で .NET MVC Web アプリを作成する
@@ -343,4 +343,4 @@ Azure App Service Web Apps では、[ハイブリッド接続](../integration-hy
  
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

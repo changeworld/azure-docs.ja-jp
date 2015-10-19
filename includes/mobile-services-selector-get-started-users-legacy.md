@@ -3,10 +3,7 @@
 - [(iOS | JavaScript)](../articles/mobile-services-ios-get-started-users.md)
 - [(Windows 8.x Store C# | .NET)](../articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users.md)
 - [(Windows 8.x Store C# | Javascript)](../articles/mobile-services-windows-store-dotnet-get-started-users.md)
-- [(Windows 8.x Store JavaScript | Javascript)](../articles/mobile-services-windows-store-javascript-get-started-users.md)
-- [(Windows Phone Silverlight 8.x | .NET)](../articles/mobile-services-dotnet-backend-windows-phone-get-started-users.md)
 - [(Windows Phone Silverlight 8.x | Javascript)](../articles/mobile-services-windows-phone-get-started-users.md)
-- [(Android | .NET)](../articles/mobile-services-dotnet-backend-android-get-started-users.md)
 - [(Android | Javascript)](../articles/mobile-services-android-get-started-users.md)
 - [(Xamarin.iOS | .NET)](../articles/mobile-services-dotnet-backend-xamarin-ios-get-started-users.md)
 - [(Xamarin.iOS | Javascript)](../articles/partner-xamarin-mobile-services-ios-get-started-users.md)
@@ -14,4 +11,4 @@
 - [(Xamarin.Android | Javascript)](../articles/partner-xamarin-mobile-services-android-get-started-users.md)
 - [(HTML | Javascript)](../articles/mobile-services-html-get-started-users.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

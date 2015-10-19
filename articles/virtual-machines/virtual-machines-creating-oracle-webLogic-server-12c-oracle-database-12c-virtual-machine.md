@@ -1,9 +1,26 @@
-<properties pageTitle="Azure での Oracle WebLogic Server 12c および Oracle Database 12c の仮想マシンの作成" description="Windows Server 2012 で実行中の Oracle WebLogic Server 12c および Oracle Database 12c のイメージを Microsoft Azure で作成する例の手順を実行します。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
-<tags ms.service="virtual-machines" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services" ms.date="06/22/2015" ms.author="bbenz" />
+<properties
+	pageTitle="Oracle WebLogic Server および Database 仮想マシン | Microsoft Azure"
+	description="リソース マネージャーのデプロイメント モデルを使用して、Windows Server 2012 で実行される Oracle WebLogic Server 12c および Oracle Database 12c Azure イメージを作成します。"
+	services="virtual-machines"
+	authors="bbenz"
+	documentationCenter=""
+	tags="azure-resource-manager"/>
+
+<tags
+	ms.service="virtual-machines"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows"
+	ms.workload="infrastructure-services"
+	ms.date="06/22/2015"
+	ms.author="bbenz" />
 
 #Azure での Oracle WebLogic Server 12c および Oracle Database 12c の仮想マシンの作成
 
 この記事では、Windows Server 2012 で実行しているマイクロソフト提供の Oracle WebLogic Server 12c および Oracle Database 12c のイメージに基づいて、Azure で仮想マシンを作成する方法を示しています。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用して Oracle WebLogic Server および Database を作成する方法について説明します。
+
 
 ##Azure で Oracle WebLogic Server 12c および Oracle Database 12c の仮想マシンを作成するには
 
@@ -25,7 +42,7 @@
 
 	a.仮想マシン名で新しいストレージ アカウントを作成するには、**[ストレージ アカウント]** をそのままにします。
 
-	b.**[可用性セット]** を **[未構成]** のままにします。
+	b.**[可用性セット]** を「**未構成**」のままにします。
 
 	c.この時点ではエンドポイントを追加しないでください。
 
@@ -54,4 +71,4 @@
 
 [Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

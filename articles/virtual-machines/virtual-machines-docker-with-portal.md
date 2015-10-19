@@ -1,11 +1,12 @@
 <properties
-	pageTitle="Azure での Linux 用 Docker VM 拡張機能の使用"
-	description="Docker と Azure 仮想マシン拡張機能について説明し、Azure CLI を使用してコマンド ラインから Azure 上に Docker ホストである仮想マシンをプログラムで作成する方法を示します。"
+	pageTitle="Linux 用 Docker VM 拡張機能の使用 | Microsoft Azure"
+	description="Docker と Azure Virtual Machines の拡張機能について説明し、クラシック デプロイメント モデルで Azure CLI を使用して、Docker ホストである Azure Virtual Machines を作成する方法を示します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
 	manager="timlt"
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -19,9 +20,9 @@
 
 # Azure ポータルでの Docker VM 拡張機能の使用
 
-[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント]で管理する Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
-
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
+[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント]で管理する Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
 
 > [AZURE.NOTE]このトピックでは、Azure ポータルで Docker VM を作成する方法について説明します。コマンド ラインで Docker VM を作成する方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用]」を参照してください。コンテナーとその利点に関する概要については、「[Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
 
@@ -144,6 +145,5 @@ WARNING: No swap limit support
 
 [HTTPS を使用した Docker の実行]: http://docs.docker.com/articles/https/
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
- 
 
-<!----HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

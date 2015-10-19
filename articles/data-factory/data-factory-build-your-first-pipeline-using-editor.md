@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="07/27/2015"
+	ms.date="10/06/2015"
 	ms.author="spelluru"/>
 
 # Data Factory Editor (Azure ポータル) を使用した初めての Azure Data Factory パイプラインの作成
@@ -32,6 +32,8 @@
 
 この記事では、Azure Data Factory サービスの概念については説明しません。サービスの詳細については、記事「[Azure Data Factory サービスの概要](data-factory-introduction.md)」を参照してください。
 
+> [AZURE.IMPORTANT]「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」という記事を参照し、前提条件の手順を完了してから、このチュートリアルを実行してください。
+
 ## 手順 1: データ ファクトリを作成する
 
 1.	[Azure プレビュー ポータル](http://portal.azure.com/)にログインした後、次の操作を行います。
@@ -41,7 +43,7 @@
 
 		![[作成] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
 
-2.	**[新しいデータ ファクトリ]** ブレードで、[名前] フィールドに「**DataFactoryMyFirstPipeline**」と入力します。
+2.	**[新しいデータ ファクトリ]** ブレードで、[名前] に「**DataFactoryMyFirstPipeline**」と入力します。
 
 	![New data factory blade](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
@@ -49,7 +51,7 @@
 3.	リソース グループを作成していない場合は、リソース グループを作成する必要があります。これを行うには、次の手順を実行します。
 	1.	**[リソース グループ名]** をクリックします。
 	2.	**[リソース グループ]** ブレードで、**[新規リソース グループの作成]** を選択します。
-	3.	**[リソース グループの作成]** ブレードで、**[名前]** フィールドに「**ADF**」と入力します。
+	3.	**[リソース グループの作成]** ブレードで、**[名前]** に「**ADF**」と入力します。
 	4.	**[OK]** をクリックします。
 	
 		![Create resource group](./media/data-factory-build-your-first-pipeline-using-editor/create-resource-group.png)
@@ -120,10 +122,10 @@
 ### 出力データセットを作成する
 次に、Azure BLOB ストレージに格納されるデータを表す出力データセットを作成します。
 
-1. **Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、**[Azure BLOB ストレージ]** をクリックします。  
+1. **Data Factory エディター**で、コマンド バーの **[新しいデータセット]** をクリックし、**[Azure BLOB ストレージ]** を選択します。  
 
 	![新しいデータセット](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
-2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。この JSON スニペットでは、**AzureBlobOutput** という名前のデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。さらに、結果を **data** という名前の BLOB コンテナーおよび **partitioneddata** という名前のフォルダーに格納することを指定します。**availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
+2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。この JSON スニペットでは、**AzureBlobOutput** という名前のデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。さらに、結果を **data** という BLOB コンテナーおよび **partitioneddata** というフォルダーに格納することを指定します。**availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
 	
 		{
 		  "name": "AzureBlobOutput",
@@ -209,7 +211,7 @@
 
 	![パイプラインを表示しているツリー ビュー](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-pipeline.png)
 5. これで、最初のパイプラインが正常に作成されました。
-6. **[X]** をクリックして Data Factory エディターを閉じます。[Data Factory] ブレードに戻って **[ダイアグラム]** をクリックします。
+6. **[X]** をクリックして Data Factory エディターのブレードを閉じ、[Data Factory] ブレードに戻って **[ダイアグラム]** をクリックします。
   
 	![[ダイアグラム] タイル](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
 7. ダイアグラム ビューに、パイプラインの概要と、このチュートリアルで使用されるデータセットが表示されます。
@@ -218,10 +220,10 @@
 8. ダイアグラム ビューで、**AzureBlobOutput** データセットをダブルクリックします。現在処理中のスライスが表示されます。
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
-9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかることに注意してください。 
+9. 処理が完了すると、スライスの状態が **[準備完了]** と示されます。オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかることに注意してください。 
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)	
-10. スライスが **Ready** 状態になったら、BLOB ストレージの **data** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
+10. スライスが **[準備完了]** 状態になったら、BLOB ストレージの **data** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
  
 
  
@@ -231,6 +233,6 @@
   
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-editor.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-editor.md)でフィードバックをお寄せください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

@@ -1,5 +1,5 @@
 <properties
- pageTitle="仮想マシン サイズ"
+ pageTitle="Virtual Machine のサイズ | Microsoft Azure"
  description="仮想マシンのさまざまなサイズとその容量を一覧を示します。"
  services="virtual-machines"
  documentationCenter=""
@@ -21,9 +21,9 @@ ms.service="virtual-machines"
 
 ## 概要
 
-この記事では、アプリとワークロードの実行に使用できる仮想マシン ベースのコンピューティング リソースの利用可能なサイズとオプションについて説明します。また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。
+この記事では、アプリとワークロードの実行に使用できる仮想マシン ベースのコンピューティング リソースの利用可能なサイズとオプションについて説明します。また、これらのリソースの使用を計画するときに注意する必要のあるデプロイメントの考慮事項も示します。
 
-Azure Virtual Machines と Cloud Services は、Azure が提供する数種類のコンピューティング リソースの中の 2 つです。詳細については、「[Azure が提供するコンピューティング ホスティング オプション](http://go.microsoft.com/fwlink/p/?LinkID=311926)」を参照してください。
+Azure Virtual Machines と Cloud Services は、Azure が提供する数種類のコンピューティング リソースの中の 2 つです。詳細については、「[Azure が提供する Compute ホスティング オプション](http://go.microsoft.com/fwlink/p/?LinkID=311926)」を参照してください。
 
 >[AZURE.NOTE]関連する Azure の制限については、[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)に関するページを参照してください。
 
@@ -39,7 +39,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 *   DS シリーズと GS シリーズの VM では、Premium Storage を使用できます。これは、高負荷の I/O ワークロードのための、高パフォーマンスで待機時間の少ない記憶域を提供します。これらの VM では、仮想マシンのディスクをホストするためのソリッド ステート ドライブ (SSD) が使用されており、ローカル SSD ディスク キャッシュも提供されます。Premium Storage は特定のリージョンで使用できます。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage-premium-storage-preview-portal.md)に関するページをご覧ください。
 
-仮想マシンのサイズは価格に影響します。また、サイズは仮想マシンの処理、メモリ、記憶容量にも影響します。ストレージのコストは、ストレージ アカウントで使用されるページに基づいて個別に計算されます。詳細については、[Virtual Machines 料金の詳細](http://azure.microsoft.com/pricing/details/virtual-machines/)に関するページと「[Azure Storage 料金](http://azure.microsoft.com/pricing/details/storage/)」を参照してください。VM のストレージの詳細については、[仮想マシン用のディスクと VHD](virtual-machines-disks-vhds.md)に関するページをご覧ください。
+仮想マシンのサイズは価格に影響します。また、サイズは仮想マシンの処理、メモリ、記憶容量にも影響します。Storage のコストは、ストレージ アカウントで使用されるページに基づいて個別に計算されます。詳細については、[Virtual Machines 料金の詳細](http://azure.microsoft.com/pricing/details/virtual-machines/)に関するページと「[Azure Storage 料金](http://azure.microsoft.com/pricing/details/storage/)」を参照してください。VM のストレージの詳細については、[仮想マシン用のディスクと VHD](virtual-machines-disks-vhds.md)に関するページをご覧ください。
 
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
@@ -49,7 +49,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 *   SQL Server Enterprise Edition を使用する場合は、4 基または 8 基の CPU コアを搭載した仮想マシンを選択します。
 
-*   Azure データ センターの物理ホストの一部では、A5 ～ A11 などの大きな仮想マシンのサイズをサポートしていない場合があります。その結果、既存の仮想マシンのサイズを新しいサイズに変更した場合、2013 年 4 月 16 日よりも前に作成された仮想ネットワーク内に新しい仮想マシンを作成した場合、または既存のクラウド サービスに新しい仮想マシンを追加した場合に、"**仮想マシン <machine name> を構成できませんでした**" または "**仮想マシン <machine name> を作成できませんでした**" というエラー メッセージが表示されることがあります。各デプロイ シナリオの回避策については、サポート フォーラムで、[エラー: "仮想マシンを構成できませんでした"](https://social.msdn.microsoft.com/Forums/ja-JP/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) というトピックを参照してください。
+*   Azure データ センターの物理ホストの一部では、A5 ～ A11 などの大きな仮想マシンのサイズをサポートしていない場合があります。その結果、既存の仮想マシンのサイズを新しいサイズに変更した場合、2013 年 4 月 16 日よりも前に作成された仮想ネットワーク内に新しい仮想マシンを作成した場合、または既存のクラウド サービスに新しい仮想マシンを追加した場合に、"**仮想マシン <machine name> を構成できませんでした**" または "**仮想マシン <machine name> を作成できませんでした**" というエラー メッセージが表示されることがあります。各デプロイメント シナリオの回避策については、サポート フォーラムで、[エラー: "仮想マシンを構成できませんでした"](https://social.msdn.microsoft.com/Forums/ja-JP/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) というトピックを参照してください。
 
 *   A8/A10 と A9/A11 の仮想マシンのサイズは、同じ容量です。A8 と A9 の仮想マシンのインスタンスには、仮想マシン間の高速通信用のリモート ダイレクト メモリ アクセス (RDMA) ネットワークに接続された追加のネットワーク アダプターが含まれています。A8 と A9 のインスタンスは、実行中にノード間で持続的で待ち時間の少ない通信を必要とする高パフォーマンス コンピューティング アプリケーション (Message Passing Interface (MPI) を使用するアプリケーションなど) 向けに設計されています。A10 と A11 の仮想マシン インスタンスには、追加のネットワーク アダプターが含まれていません。A10 と A11 のインスタンスは、ノード間で一定した待ち時間の少ない通信を必要としない高パフォーマンス コンピューティング アプリケーション (パラメトリックまたは Embarrassingly Parallel アプリケーションとも呼ばれる) 向けに設計されています。
 
@@ -57,11 +57,11 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 ## 一般的な制限事項
 
-次の表は、サービス管理デプロイ モデルを使用して作成された仮想マシンについて、仮想マシンのサイズに関係なく適用される制限事項を示したものです。
+次の表は、サービス管理デプロイメント モデルを使用して作成された仮想マシンについて、仮想マシンのサイズに関係なく適用される制限事項を示したものです。
 
 [AZURE.INCLUDE [azure-virtual-machines-limits](../../includes/azure-virtual-machines-limits.md)]
 
-次の表は、リソース マネージャー デプロイ モデルを使用して作成された仮想マシンについて、仮想マシンのサイズに関係なく適用される制限事項を示したものです。
+次の表は、リソース マネージャー デプロイメント モデルを使用して作成された仮想マシンについて、仮想マシンのサイズに関係なく適用される制限事項を示したものです。
 
 [AZURE.INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
@@ -85,7 +85,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 |サイズ - Azure ポータル\\コマンドレットと API|CPU コア数|メモリ|最大ディスク サイズ – 仮想マシン|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
 |---|---|---|---|---|---|
-|A0\\極小|1|768 MB|<p>OS = 1,023 GB</p><p>一時ディスク = 20 GB</p>|1|1 x 500|
+|A0\\ExtraSmall|1|768 MB|<p>OS = 1,023 GB</p><p>一時ディスク = 20 GB</p>|1|1 x 500|
 |A1\\小|1|1\.75 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 70 GB</p>|2|2 x 500|
 |A2\\中|2|3\.5 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 135 GB</p>|4|4 x 500|
 |A3\\大|4|7 GB|<p>OS = 1,023 GB</p><p>一時ディスク = 285 GB</p>|8|8 x 500|
@@ -167,4 +167,4 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 [A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-a8-a9-a10-a11-specs.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

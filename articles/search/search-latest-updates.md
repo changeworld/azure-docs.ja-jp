@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="07/08/2015" 
+	ms.date="10/01/2015" 
 	ms.author="heidist"/>
 
 #Azure Search 関連の最新の更新履歴情報#
@@ -27,7 +27,15 @@ Azure Search の一般提供が開始されています。これは [API バー�
 .NET ライブラリおよび REST API の両方に、複数のバージョンがあります。新機能がロール アウトされた後も、従来の API は引き続き動作します。バージョン管理ポリシーの詳細については、「[Azure Search サービスのバージョン](https://msdn.microsoft.com/library/azure/dn864560.aspx)」を参照してください。
 
 
+##API バージョン 2015-02-28-Preview
+**再リリース日: 2015 年 9 月**
+
+このバージョンでは、新しい [Lucene クエリ構文のサポート](https://msdn.microsoft.com/library/azure/mt589323.aspx)が追加されました。この構文は、[プレビュー バージョンの Azure Search サービス REST API](search-api-2015-02-28-preview.md) に使用できます。新しい構文を使用するには、Search Documents 操作で `queryType`を指定する必要があります。
+
+また、自然言語プロセッサと、検索、提案、および参照クエリの POST という 2 つの機能はプレビューから外され、MSDN の公式 API に追加されました。
+
 ##.NET SDK 0.10.0-Preview
+**リリース日: 2015 年 8 月**
 
 これは、.NET クライアント ライブラリ Microsoft.Azure.Search.dll の、2 番目のイテレーションです。  
 このバージョンでは、.NET クラスを使用してインデクサーを作成、管理、および使用できるようになりました。また、Azure SQL インデクサーの場合、地理ポイントのインデックス作成が新しくサポートされます。  
@@ -82,7 +90,7 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
 - [Lucene 言語アナライザー](search-api-2014-10-20-preview.md)が、Lucene と共に配布されるカスタム言語アナライザーで多言語サポートするために追加されました。 
 
-- [Azure 管理ポータル](https://portal.azure.com)には、スコアリング プロファイルを含め、インデックス作成のためのツール サポートが導入されました。
+- [Microsoft Azure 管理ポータル](https://portal.azure.com)には、スコアリング プロファイルを含め、インデックス作成のためのツール サポートが導入されました。
 
 ##API バージョン 2014-07-31-Preview
 **リリース日: 2014 年 8 月 21 日**
@@ -95,7 +103,7 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
 - 地理空間サポートは当初より利用可能です。これは最初から Azure Search の一部であった `Edm.GeographyPoint` データ型により提供されます。
 
-- [Azure 管理ポータル](https://portal.azure.com)のプレビュー バージョンでのプロビジョニング。Azure Search は、新しいポータルでのみ使用できるいくつかのサービスの 1 つでした。
+- [Microsoft Azure 管理ポータル](https://portal.azure.com)のプレビュー バージョンでのプロビジョニング。Azure Search は、新しいポータルでのみ使用できるいくつかのサービスの 1 つでした。
 
 ##管理 API バージョン 2015-08-19
 **リリース日: 2015 年 9 月 11 日**
@@ -120,4 +128,4 @@ SDK のインストールおよび使用のガイダンスについては、「[
 
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

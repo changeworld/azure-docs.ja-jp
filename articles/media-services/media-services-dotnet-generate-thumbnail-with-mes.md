@@ -21,10 +21,7 @@
 
 このトピックでは、Media Services .NET SDK で Media Encoder Standard を使用して、資産をエンコードしサムネイルを生成する方法を説明します。このトピックでは、エンコードと同時にサムネイルを生成するタスクの作成に使用できる XML および JSON サムネイル プリセットを定義します。[この](https://msdn.microsoft.com/library/mt269962.aspx)ドキュメントには、これらのプリセットで使用される要素の説明があります。
 
-次の考慮事項が適用されます。
-
-- 明示的に Start、Step、Range でタイムスタンプを使用する場合、入力ソースは少なくとも 1 分であると仮定しています。
-
+必ず「[考慮事項](media-services-dotnet-generate-thumbnail-with-mes.md#considerations)」セクションを確認してください。
 
 ##例
 
@@ -355,6 +352,25 @@
 	  </Outputs>
 	</Preset>
 
+##考慮事項
+
+次の考慮事項が適用されます。
+
+- 明示的に Start、Step、Range でタイムスタンプを使用する場合、入力ソースは少なくとも 1 分であると仮定しています。
+- Jpg/Png/BmpVideo 要素には Start、Step、Range の文字列属性があり、次のように解釈できます。
+
+	- 負ではない整数の場合は、フレーム番号 (例:"Start": "120")
+	- % サフィックス付きで表現される場合は、ソース期間に対する相対値 (例:"Start": "15%")
+	- HH:MM:SS… 形式で表現される場合は、タイムスタンプ (例:"Start" : "00:01:00")
+
+	必要に応じて、表記法を混在させたり、一致させたりすることができます。
+	
+	また、Start は特殊なマクロの {Best} もサポートしています。このマクロは、コンテンツの最初の "関連する" フレームを決定しようと試みます。注: (Start が {Best} に設定されている場合、Step と Range は無視されます)
+	
+	- 既定: Start:{Best}
+- 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。指定されている場合、JpgVideo は JpgFormat に、などと AMS によって関連付けられます。OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
+
+
 ##Media Services のラーニング パス
 
 AMS のラーニング パスについては、以下を参照してください。
@@ -366,4 +382,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

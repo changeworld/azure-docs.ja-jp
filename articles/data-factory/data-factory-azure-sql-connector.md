@@ -24,11 +24,11 @@
 
 下のサンプルで確認できる要素:
 
-1. [AzureSqlDatabase](data-factory-azure-sql-connector.md#azure-sql-linked-service-properties) 型のリンクされたサービス。
+1. [AzureSqlDatabase](#azure-sql-linked-service-properties) 型のリンクされたサービス。
 2. [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。 
-3. [AzureSqlTable](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。 
+3. [AzureSqlTable](#azure-sql-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。 
 4. [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-4. [SqlSource](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+4. [SqlSource](#azure-sql-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 このサンプルはある時系列に属するデータを 1 時間おきに Azure SQL データベースのテーブルから BLOB にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
@@ -44,6 +44,8 @@
 	  }
 	}
 
+このリンクされたサービスでサポートされているプロパティの一覧については、「[Azure SQL のリンクされたサービス](#azure-sql-linked-service-properties)」を参照してください。
+
 **Azure BLOB ストレージのリンクされたサービス**
 
 	{
@@ -55,6 +57,8 @@
 	    }
 	  }
 	}
+
+このリンクされたサービスでサポートされているプロパティの一覧については、[Azure BLOB](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) に関する記事を参照してください。
 
 **Azure SQL の入力データセット**
 
@@ -84,6 +88,8 @@
 	    }
 	  }
 	}
+
+このデータセット型でサポートされているプロパティの一覧については、「[Azure SQL データセットの type プロパティ](#azure-sql-dataset-type-properties)」を参照してください。
 
 **Azure BLOB の出力データセット**
 
@@ -143,6 +149,8 @@
 	  }
 	}
 
+このデータセット型でサポートされているプロパティの一覧については、「[Azure BLOB データセットの type プロパティ](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)」を参照してください。
+
 **コピー アクティビティのあるパイプライン**
 
 上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **SqlSource** に設定され、**sink** 型が **BlobSink** に設定されています。**SqlReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
@@ -192,6 +200,16 @@
 	   }
 	}
 
+> [AZURE.NOTE]上記の例では、SqlSource に **sqlReaderQuery** が指定されています。コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。
+>  
+> または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
+>  
+> SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Azure SQL Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
+
+
+SqlSource と BlobSink でサポートされるプロパティの一覧については、「[SqlSource](#sqlsource)」および [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) に関する記述を参照してください。
+
+
 ## サンプル: Azure BLOB から Azure SQL にデータをコピーする
 
 下のサンプルで確認できる要素:
@@ -217,6 +235,8 @@
 	  }
 	}
 
+このリンクされたサービスでサポートされているプロパティの一覧については、「[Azure SQL のリンクされたサービス](#azure-sql-linked-service-properties)」を参照してください。
+
 **Azure BLOB ストレージのリンクされたサービス**
 
 	{
@@ -228,6 +248,8 @@
 	    }
 	  }
 	}
+
+このリンクされたサービスでサポートされているプロパティの一覧については、[Azure BLOB](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) に関する記事を参照してください。
 
 **Azure BLOB の入力データセット**
 
@@ -296,6 +318,8 @@
 	  }
 	}
 
+このデータセット型でサポートされているプロパティの一覧については、「[Azure BLOB データセットの type プロパティ](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties)」を参照してください。
+
 **Azure SQL の出力データセット**
 
 このサンプルは Azure SQL の「MyTable」というテーブルにデータをコピーします。BLOB CSV ファイルに含めることが予想される数の列で Azure SQL にテーブルを作成する必要があります。新しい行は 1 時間ごとにテーブルに追加されます。
@@ -314,6 +338,8 @@
 	    }
 	  }
 	}
+
+このデータセット型でサポートされているプロパティの一覧については、「[Azure SQL データセットの type プロパティ](#azure-sql-dataset-type-properties)」を参照してください。
 
 **コピー アクティビティのあるパイプライン**
 
@@ -364,6 +390,9 @@
 	   }
 	}
 
+SqlSink と BlobSource でサポートされるプロパティの一覧については、「[Sql Sink](#sqlsink)」および [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) に関する記述を参照してください。
+
+
 ## Azure SQL のリンクされたサービスのプロパティ
 
 次の表は、Azure SQL のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
@@ -377,7 +406,7 @@
 
 ## Azure SQL データセットの type プロパティ
 
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
 
 typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**AzureSqlTable** 型のデータセットの **typeProperties** セクションには次のプロパティがあります。
 
@@ -387,7 +416,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 ## Azure SQL のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
 > [AZURE.NOTE]コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 
@@ -401,7 +430,13 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 | -------- | ----------- | -------------- | -------- |
 | sqlReaderQuery | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: select * from MyTable指定されていない場合に実行される SQL ステートメント: select from MyTable | いいえ |
 | sqlReaderStoredProcedureName | ソース テーブルからデータを読み取るストアド プロシージャの名前。 | ストアド プロシージャの名前。 | いいえ |
-| storedProcedureParameters | ストアド プロシージャのパラメーター。 | 名前と値のペア。パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ | 
+| storedProcedureParameters | ストアド プロシージャのパラメーター。 | 名前と値のペア。パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ |
+
+SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。
+
+または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
+
+SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Azure SQL Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます (mytable から column1 と column2 を選択)。データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
 ### SqlSource の例
 
@@ -439,7 +474,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | (単位 = 時間) 例: “00:30:00” (30 分) | いいえ | 
-| writeBatchSize | バッファー サイズが writeBatchSize に到達したときに SQL テーブルにデータを挿入します。 | 整数 (単位 = 行数) | いいえ (既定値 = 10000)
+| writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 | 整数 (単位 = 行数) | いいえ (既定値 = 10000)
 | sqlWriterCleanupScript | 特定のスライスのデータを消去する方法で実行するコピー アクティビティのユーザー指定のクエリ。詳細については、下にある繰り返し性のセクションを参照してください。 | クエリ ステートメント。 | いいえ |
 | sliceIdentifierColumnName | コピー アクティビティで、自動生成スライス ID を入力する列のユーザー指定の名前。再実行時、特定のスライスのデータを消去するために使用されます。詳細については、下にある繰り返し性のセクションを参照してください。 | バイナリ (32) のデータ型の列の列名。 | いいえ |
 | sqlWriterStoredProcedureName | 対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 | ストアド プロシージャの名前。 | いいえ |
@@ -527,4 +562,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 
 	 
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

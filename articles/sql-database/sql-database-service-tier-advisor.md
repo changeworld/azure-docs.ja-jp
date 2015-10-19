@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="09/22/2015"
+   ms.date="10/02/2015"
    ms.author="sstein"/>
 
 # SQL Database の価格レベルの提案
@@ -27,12 +27,16 @@
 
 - [SQL Database のサービス階層とパフォーマンス レベル (価格レベル) を変更する](sql-database-scale-up.md)
 - [Azure SQL サーバーを V12 にアップグレードする](sql-database-v12-upgrade.md)
-- [エラスティック データベース プールの作成](sql-database-elastic-pool.md#elastic-database-pool-pricing-tier-recommendations)
+- V12 サーバーをブラウズする - データベースに [Elastic Database プールによるメリットがある](sql-database-elastic-pool-portal.md#recommended-elastic-database-pools)場合は、サーバー ブレードに推奨されるプールを示すメッセージが表示されます。メッセージをクリックすると、推奨されるプールが作成されます。
+- [エラスティック データベース プールを作成します](sql-database-elastic-pool.md#elastic-database-pool-pricing-tier-recommendations)
+
+
+
 
 
 ## 概要
 
-SQL Database サービスでは、SQL Database の過去のリソースの使用状況を評価して、現在のパフォーマンス要件と機能要件が分析されます。また、最小限許容可能なサービス階層については、データベースのサイズと有効になっている[ビジネス継続性](https://msdn.microsoft.com/library/azure/hh852669.aspx)に基づいて判断されます。
+SQL Database サービスでは、SQL Database の過去のリソースの使用状況を評価して、現在のパフォーマンス要件と機能要件が分析されます。また、最小限許容可能なサービス階層については、データベースのサイズと有効になっている[ビジネス継続性](sql-database-business-continuity.md)に基づいて判断されます。
 
 この情報を分析することにより、データベースの一般的なワークロードを実行し、現在の機能セットを維持するために最適なサービス階層とパフォーマンス レベルが提案されます。
 
@@ -55,9 +59,8 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 価格レベルの提案を受けるには、既存の Web または Business データベースを選択し、**[価格レベル]** タイルをクリックします。(価格レベルの提案は、[SQL サーバーを V12 にアップグレードする](sql-database-v12-upgrade.md)ときにも利用できます)。
 
 1. [Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
-2. 左側のメニューの **[参照]** をクリックします。
-3. **[参照]** ブレードで、**[SQL データベース]** をクリックします。
-4. **[SQL データベース]** ブレードで、サービスを使って分析するデータベースをクリックします。
+2. **[参照]**、**[SQL データベース]** の順にクリックします。
+4. **[SQL データベース]** ブレードで、推奨情報を見るデータベースをクリックします。
 
     ![データベースの選択][1]
 
@@ -97,4 +100,4 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

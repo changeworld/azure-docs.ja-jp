@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2015" 
+	ms.date="10/05/2015" 
 	ms.author="awills"/>
 
 #  Application Insights: コード サンプルとチュートリアル
@@ -35,7 +35,7 @@
 テレメトリ データを独自のツールで分析するには、ストレージに[そのテレメトリ データをエクスポートします](app-insights-export-telemetry.md)。そこで、解析して処理できます。
 
 * [Power BI へのエクスポート](app-insights-export-power-bi.md) 
-* [worker ロールを使用して SQL にエクスポートする](app-insights-code-sample-export-telemetry-sql-database.md)
+* [worker ロールを使用してエクスポートされたデータを解析する](app-insights-code-sample-export-telemetry-sql-database.md)
 * [Stream Analytics を使用して SQL にエクスポートする](app-insights-code-sample-export-sql-stream-analytics.md)
 * [Microsoft CRM のテレメトリの有効化](app-insights-sample-mscrm.md)
 
@@ -53,4 +53,4 @@
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

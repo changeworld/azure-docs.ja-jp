@@ -24,30 +24,27 @@ Azure におけるルートの追加、削除、変更は、PowerShell で行う
 ### テーブルの作成方法
 *FrontEndSubnetRouteTable* という名前のルート テーブルを作成するには、次の PowerShell コマンドを実行します。
 
-```powershell
-New-AzureRouteTable -Name FrontEndSubnetRouteTable `
-	-Location uscentral `
-	-Label "Route table for frontend subnet"
-```
+	```powershell
+	New-AzureRouteTable -Name FrontEndSubnetRouteTable `
+		-Location uscentral `
+		-Label "Route table for front end subnet"
+	```
 
 上記のコマンドの出力は次のようになります。
 
-	Error          :
-	HttpStatusCode : OK
-	Id             : 085ac8bf-26c3-9c4c-b3ae-ebe880108c70
-	Status         : Succeeded
-	StatusCode     : OK
-	RequestId      : a8cc03ca42d39f27adeaa9c1986c14f7
+	Name                      Location   Label                          
+	----                      --------   -----                          
+	FrontEndSubnetRouteTable  West US    Route table for front end subnet
 
 ### ルート テーブルにルートを追加する方法
 *10.2.0.0/16* サブネットの次ホップとして *10.1.1.10* が設定されたルートを先ほど作成したルート テーブルに追加するには、次の PowerShell コマンドを実行します。
 
-```powershell
-Get-AzureRouteTable FrontEndSubnetRouteTable `
-	|Set-AzureRoute -RouteName FirewallRoute -AddressPrefix 10.2.0.0/16 `
-	-NextHopType VirtualAppliance `
-	-NextHopIpAddress 10.1.1.10
-```
+	```powershell
+	Get-AzureRouteTable FrontEndSubnetRouteTable `
+		|Set-AzureRoute -RouteName FirewallRoute -AddressPrefix 10.2.0.0/16 `
+		-NextHopType VirtualAppliance `
+		-NextHopIpAddress 10.1.1.10
+	```
 
 上記のコマンドの出力は次のようになります。
 
@@ -62,21 +59,21 @@ Get-AzureRouteTable FrontEndSubnetRouteTable `
 ### サブネットにルートを関連付ける方法
 ルート テーブルを使用するためには、そのルート テーブルを少なくとも 1 つのサブネットに関連付ける必要があります。仮想ネットワーク *ProductionVnet* の *FrontEndSubnet* というサブネットに *FrontEndSubnetRouteTable* ルート テーブルを関連付けるには、次のPowerShell コマンドを実行します。
 
-```powershell
-Set-AzureSubnetRouteTable -VirtualNetworkName ProductionVnet `
-	-SubnetName FrontEndSubnet `
-	-RouteTableName FrontEndSubnetRouteTable
-```
+	```powershell
+	Set-AzureSubnetRouteTable -VirtualNetworkName ProductionVnet `
+		-SubnetName FrontEndSubnet `
+		-RouteTableName FrontEndSubnetRouteTable
+	```
 
 ### VM 内の適用されたルートを確認する方法
 特定の VM またはロール インスタンスで実際に適用されているルートは、Azure に照会して確認できます。表示されるルートには、Azure によって提供された既定のルートに加え、VPN ゲートウェイによってアドバタイズされたルートが含まれます。表示されるルートの上限は 800 個です。
 
 *FWAppliance1* という VM 上のプライマリ NIC に関連付けられているルートを確認するには、次の PowerShell コマンドを実行します。
 
-```powershell
-Get-AzureVM -Name FWAppliance1 -ServiceName ProductionVMs `
-	| Get-AzureEffectiveRouteTable
-```
+	```powershell
+	Get-AzureVM -Name FWAppliance1 -ServiceName ProductionVMs `
+		| Get-AzureEffectiveRouteTable
+	```
 
 上記のコマンドの出力は次のようになります。
 
@@ -93,17 +90,17 @@ Get-AzureVM -Name FWAppliance1 -ServiceName ProductionVMs `
 
 *FWAppliance1* という VM 上の *backendnic* という名前のセカンダリ NIC に関連付けられているルートを確認するには、次の PowerShell コマンドを実行します。
 
-```powershell
-Get-AzureVM -Name FWAppliance1 -ServiceName ProductionVMs `
-	| Get-AzureEffectiveRouteTable -NetworkInterfaceName backendnic
-```
+	```powershell
+	Get-AzureVM -Name FWAppliance1 -ServiceName ProductionVMs `
+		| Get-AzureEffectiveRouteTable -NetworkInterfaceName backendnic
+	```
 
 クラウド サービス *ProductionVMs* に属している *myRole* というロール インスタンス上のプライマリ NIC に関連付けられているルートを確認するには、次の PowerShell コマンドを実行します。
 
-```powershell
-Get-AzureEffectiveRouteTable -ServiceName ProductionVMs `
-	-RoleInstanceName myRole
-```
+	```powershell
+	Get-AzureEffectiveRouteTable -ServiceName ProductionVMs `
+		-RoleInstanceName myRole
+	```
 
 ## IP 転送を管理する方法
 既に述べたように、仮想アプライアンスとして機能する VM またはロール インスタンスに対して IP 転送を有効にする必要があります。
@@ -127,7 +124,7 @@ Set-AzureIPForwarding -ServiceName DMZService `
 *FWAppliance1* という VM の IP 転送を無効にするには、次の PowerShell コマンドを実行します。
 
 ```powershell
-Get-AzureVM -Name FWAppliance1 -ServiceName ProductionVMs `
+Get-AzureVM -Name FWAppliance1 -ServiceName DMZService `
 	| Set-AzureIPForwarding -Disable
 ```
 
@@ -146,4 +143,4 @@ Get-AzureVM -Name FWAppliance1 -ServiceName ProductionVMs `
 	| Get-AzureIPForwarding
 ``` 
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

@@ -7,9 +7,13 @@
 	manager="jwhit"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/24/2015" ms.author="sammehta"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/05/2015" ms.author="sammehta"; "jimpark"/>
 
 # DPM を使用して Azure へのワークロードをバックアップするための準備
+
+> [AZURE.SELECTOR]
+- [Azure Backup](backup-azure-microsoft-azure-backup.md)
+- [SCDPM](backup-azure-dpm-introduction.md)
 
 この記事では、Microsoft Azure Backup を使用して System Center Data Protection Manager (DPM) サーバーとワークロードを保護する方法について概説します。この記事を読むと次のことが理解できます。
 
@@ -28,7 +32,7 @@ System Center DPM は、ファイルとアプリケーション データをバ�
 DPM サーバーのバックアップに Azure Backup を使用するビジネス上のメリットは、次のとおりです。
 
 - オンプレミス DPM デプロイメントでは、Azure バックアップはテープへの長期的なデプロイの代替手段として使用できます。
-- Azure の DPM デプロイでは、Azure Backup を使用して Azure ディスクからストレージをオフロードし、Azure Backup に古いデータを、ディスクに新しいデータを格納してスケールアップすることができます。
+- Azure の DPM デプロイメントでは、Azure Backup を使用して Azure ディスクからストレージをオフロードし、Azure Backup に古いデータを、ディスクに新しいデータを格納してスケールアップすることができます。
 
 ## DPM サーバーのバックアップ動作のしくみ
 仮想マシンをバックアップするには、まずデータの特定の時点のスナップショットが必要です。Azure Backup サービスは、スケジュールされた時刻にバックアップ ジョブを開始し、バックアップ拡張機能をトリガーしてスナップショットを作成します。バックアップ拡張機能は、インゲスト VSS サービスと連携して一貫性を実現し、一貫性に達すると、Azure ストレージ サービスの BLOB スナップショット API を呼び出します。これにより、仮想マシンをシャット ダウンすることなく、一貫性のあるディスクのスナップショットが作成されます。
@@ -81,4 +85,4 @@ Azure へのバックアップがサポートされているファイルの種�
 
 >[AZURE.NOTE]System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

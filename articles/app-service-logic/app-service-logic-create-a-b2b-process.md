@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="07/01/2015"
+   ms.date="10/01/2015"
    ms.author="rajram"/>
 
 
@@ -73,4 +73,4 @@ Contoso 社と Northwind 社は、ビジネス パートナーの関係にあり
 [2]: ./media/app-service-logic-create-a-b2b-process/Tracking.jpg
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

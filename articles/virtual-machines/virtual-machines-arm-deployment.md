@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ"
-	description="Compute、Network、および Storage .NET ライブラリで提供される一部のクライアントを使用して、Microsoft Azure のリソースを作成および削除する方法について説明します。"
+	pageTitle=".NET ライブラリを使用したリソースのデプロイ | Microsoft Azure"
+	description="Compute、Storage、および Network .NET ライブラリを使用し、リソース マネージャーで Microsoft Azure のリソースを作成および削除する方法について説明します。"
 	services="virtual-machines,virtual-network,storage"
 	documentationCenter=""
 	authors="davidmu1"
@@ -19,7 +19,7 @@
 
 # Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイメント モデルを使用したリソースの管理について説明します。
 
 このチュートリアルでは、Compute、Network、および Storage .NET ライブラリで提供される一部のクライアントを使用して、Microsoft Azure のリソースを作成および削除する方法について示します。また、Azure Active Directory を使用して Azure リソース マネージャーへの要求を認証する方法についても示します。
 
@@ -189,7 +189,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
 		CreateStorageAccount(credential);
 		Console.ReadLine();
 
-###仮想ネットワークの作成
+###ネットワーク構成の作成
 
 仮想マシンは、仮想ネットワークに追加された場合に最も生産性が高くなります。
 
@@ -348,7 +348,7 @@ Azure Active Directory アプリケーションを作成し、認証ライブラ
           }
         }
 
-	>[AZURE.NOTE]イメージの vhd 名はイメージ ギャラリーで定期的に変更されるので、仮想マシンをデプロイするには現在のイメージ名を取得する必要があります。「[Windows PowerShell を使用してイメージを管理する](https://msdn.microsoft.com/library/azure/dn790330.aspx)」でその方法を参照し、{source-image-name} を使用する vhd ファイルの名前に置き換えます。たとえば、"a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201411.01-en.us-127GB.vhd" などです。
+	>[AZURE.NOTE]イメージの vhd 名はイメージ ギャラリーで定期的に変更されるので、仮想マシンをデプロイするには現在のイメージ名を取得する必要があります。「[Windows PowerShell を使用してイメージを管理する](https://msdn.microsoft.com/library/azure/dn790330.aspx)」でその方法を参照し、{source-image-name} を使用する vhd ファイルの名前に置き換えます。たとえば、"a699494373c04fc0bc8f2bb1389d6106\_\_Windows-Server-2012-R2-201411.01-en.us-127GB.vhd" などです。
 
 	{subscription-id} を、サブスクリプションの ID に置き換えます。
 
@@ -390,4 +390,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/virtual-machines-arm-deployment/crpportal.png)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

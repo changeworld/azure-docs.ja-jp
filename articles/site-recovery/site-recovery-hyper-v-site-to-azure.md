@@ -1,19 +1,19 @@
 <properties
-	pageTitle="オンプレミスの Hyper-V サイトと Azure 間の保護の設定" 
-	description="Azure Site Recovery は、オンプレミスの Hyper-V サーバーに配置された仮想マシンの Azure へのレプリケーション、フェールオーバー、および復旧を調整します。" 
-	services="site-recovery" 
-	documentationCenter="" 
-	authors="rayne-wiselman" 
-	manager="jwhit" 
+	pageTitle="オンプレミスの Hyper-V サイトと Azure 間の保護の設定"
+	description="Azure Site Recovery は、オンプレミスの Hyper-V サーバーに配置された仮想マシンの Azure へのレプリケーション、フェールオーバー、および復旧を調整します。"
+	services="site-recovery"
+	documentationCenter=""
+	authors="rayne-wiselman"
+	manager="jwhit"
 	editor=""/>
 
-<tags 
-	ms.service="site-recovery" 
+<tags
+	ms.service="site-recovery"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.workload="storage-backup-recovery" 
-	ms.date="08/05/2015" 
+	ms.workload="storage-backup-recovery"
+	ms.date="09/29/2015"
 	ms.author="raynew"/>
 
 
@@ -41,18 +41,19 @@ Azure Site Recovery は、仮想マシンと物理サーバーのレプリケー
 ### Azure の前提条件
 
 - [Microsoft Azure](http://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](pricing/free-trial/)を使用できます。
-- - レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。
-- - フェールオーバー後に、レプリケートされた仮想マシンをネットワークに接続するために、Azure 仮想ネットワークが必要です。
+- レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。
+- フェールオーバー後に、レプリケートされた仮想マシンをネットワークに接続するために、Azure 仮想ネットワークが必要です。
 
-## Hyper-V の前提条件
+### Hyper-V の前提条件
 
 - ソースのオンプレミスのサイトで、Hyper-V のロールを持ち、Windows Server 2012 R2 で稼働する少なくとも 1 つのサーバーが必要になります。
 - Hyper-V サーバーには、1 つ以上の仮想マシンが搭載されます。
 - Hyper-V サーバーは、直接、またはプロキシを経由して、インターネットに接続します。
+- Hyper-V サーバーには [KB2961977](https://support.microsoft.com/ja-JP/kb/2961977 "KB2961977") で説明されている修正プログラムをインストールする必要があります。
 
 ### 仮想マシンの前提条件
 
-保護する仮想マシンは、[Azure の前提条件](https://msdn.microsoft.com/library/azure/dn469078.aspx#BKMK_E2A)に従う必要があります。
+保護する仮想マシンは、[仮想マシンの前提条件](site-recovery-best-practices.md/#virtual-machines)に従う必要があります。
 
 ### プロバイダーとエージェントの前提条件
 
@@ -66,14 +67,14 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 - **.backup.windowsazure.com
 - **.blob.core.windows.net
 - **.store.core.windows.net
-
+ 
 - カスタム プロキシを使用するには、プロバイダーをインストールする前に、プロキシ サーバーを設定します。プロバイダーのセットアップ中には、プロキシ サーバーのアドレスとポート、およびアクセスのために使用できる資格情報を指定する必要があります。HTTPS ベースのプロキシはサポートされていないことに注意してください。
 
 次の図は、Azure Site Recovery でオーケストレーションやレプリケーションに使用される、さまざまな通信チャネルと通信ポートを示しています。
 
 ![B2A Topology](./media/site-recovery-hyper-v-site-to-azure/B2ATopology.png)
 
- 
+
 ## ステップ 1: コンテナーの作成
 
 1. [管理ポータル](https://portal.azure.com)にサインインします。
@@ -86,7 +87,7 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 
 4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 
-5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)](pricing/details/site-recovery/)」で利用可能地域をご覧ください。
+5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[￼Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)￼](pricing/details/site-recovery/)」で利用可能地域を参照してください。
 
 6. **[コンテナーの作成]** をクリックします。
 
@@ -120,8 +121,8 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 
 4. **[プロバイダーのダウンロード]** をクリックして最新のバージョンを取得します。
 5. コンテナーに登録する各 Hyper-V サーバーで、ファイルを実行します。このファイルにより、2 つのコンポーネントがインストールされます。
-	- **Azure Site Recovery プロバイダー** - Hyper-V サーバーと Azure Site Recovery ポータルとの間で、通信と調整を処理します。 
-	- **Azure Recovery Services エージェント** - ソースの Hyper-V サーバーで稼働する仮想マシンと Azure ストレージの間のデータ転送を処理します。 
+	- **Azure Site Recovery プロバイダー** - Hyper-V サーバーと Azure Site Recovery ポータルとの間で、通信と調整を処理します。
+	- **Azure Recovery Services エージェント** - ソースの Hyper-V サーバーで稼働する仮想マシンと Azure ストレージの間のデータ転送を処理します。
 6. **[Microsoft Update]** で、アップデートの内容を設定できます。この設定を有効にすることで、Microsoft Update のポリシーに従って、プロバイダーとエージェントのアップデートがインストールされます。
 
 	![Microsoft 更新プログラム](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_Provider1.png)
@@ -142,13 +143,13 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 	以下の点に注意してください。
 
 	- Hyper-V サーバー上の既定のプロキシに認証が必要な場合は、カスタム プロキシ サーバーの使用を選択する必要があります。既定のプロキシの詳細を入力し、資格情報を指定します。
-	- カスタム プロキシ サーバーを使用する場合は、プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。 
+	- カスタム プロキシ サーバーを使用する場合は、プロバイダーをインストールする前に、カスタム プロキシ サーバーを設定します。
 	- 次の URL に Hyper-V ホストからアクセスできるようにする必要があります。
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
+		- **.hypervrecoverymanager.windowsazure.com
+- **.accesscontrol.windows.net
+- **.backup.windowsazure.com
+- **.blob.core.windows.net
+- **.store.core.windows.net
 
 	- 「[Azure Datacenter の IP 範囲](http://go.microsoft.com/fwlink/?LinkId=511094)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
 
@@ -165,31 +166,33 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 
 	![サーバー登録](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_Provider7.png)
 
-Windows Server 2012 R2 の Server Core またはスタンドアロン Hyper-V Server 2012 R2 にプロバイダーをインストールする場合は、次の操作を行います。
+	> [AZURE.NOTE]Azure Site Recovery プロバイダーは、次のコマンド ラインを使用してインストールすることもできます。このメソッドを使用すると、Windows Server 2012 R2 の Server CORE にプロバイダーをインストールできます。
+	>
+	>1. プロバイダーのインストール ファイルと登録キーを C:\\ASR などのフォルダーにダウンロードします。
+	>2. **管理者**特権でコマンド プロンプトから次のコマンドを実行して、プロバイダーのインストーラーを抽出します。
+	>
+	    	C:\Windows\System32> CD C:\ASR
+	    	C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
+	>4. 次のコマンドを実行して、プロバイダーをインストールします。
+	>
+			C:\ASR> setupdr.exe /i
+	>5. 次のコマンドを実行して、プロバイダーを登録します。
+	>
+	    	CD C:\Program Files\Microsoft Azure Site Recovery Provider\
+	    	C:\Program Files\Microsoft Azure Site Recovery Provider> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file>
 
-1. プロバイダーのインストール ファイルと、登録キーを C:\\ASR などのフォルダーにダウンロードします。
-2. 次を入力して、プロバイダーのインストーラーを抽出します。
 
-	    C:\Windows\System32> CD C:\ASR
-	    C:\ASR>AzureSiteRecoveryProvider.exe /x:. /q
+	>----------
+          
+	>####コマンド ラインのインストール パラメーター一覧####
+	>- **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。  
+	> - **/Friendlyname**: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。
+	> - **/proxyAddress**: 省略可能。プロキシ サーバーのアドレスを指定します。
+	> - **/proxyport**: 省略可能。プロキシ サーバーのポートを指定します。
+	> - **/proxyUsername**: 省略可能。プロキシのユーザー名を指定します (認証が必要なプロキシの場合)。
+	> - **/proxyPassword**: 省略可能。プロキシ サーバーの認証に使用するパスワードを指定します (認証が必要なプロキシの場合)。
 
-3. 次のコマンドを入力して、プロバイダーをインストールします。
-
-	    C:\ASR> setupdr.exe /i
-
-4. 次のコマンドを入力して、サーバーを登録します。
-
-	    C:\Program Files\Azure Site Recovery Provider> DRConfigurator.exe /r /Credentials <Location of key> /FriendlyName <Hyper-V host name>
-
-	- /Credentials: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。
-	- /Friendlyname: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。
-	- 省略可能なプロキシ パラメーター:
-		- /proxyAddress <address>: プロキシ サーバーのアドレス
-		- /proxyport <port>: プロキシ サーバーのポート
-		- /proxyUsername <username>: プロキシに認証が必要な場合の資格情報。
-		- proxyPassword <password>
-
->[AZURE.NOTE]異なるネットワーク帯域幅設定を使用して Azure に仮想マシンをレプリケートするように個々の Hyper-V ホストを構成することができます。詳細については、「[Azure 保護ネットワーク帯域幅使用のオンプレミスでの管理方法](https://support.microsoft.com/ja-jp/kb/3056159)」を参照してください。
+>[AZURE.TIP]異なるネットワーク帯域幅設定を使用して Azure に仮想マシンをレプリケートするように個々の Hyper-V ホストを構成することができます。詳細については、「[Azure 保護ネットワーク帯域幅使用のオンプレミスでの管理方法](https://support.microsoft.com/ja-JP/kb/3056159)」を参照してください。
 
 
 ## ステップ 4: Azure リソースの作成
@@ -221,29 +224,29 @@ Windows Server 2012 R2 の Server Core またはスタンドアロン Hyper-V Se
 仮想マシンを保護グループに追加し、保護を有効にします。
 
 1. 保護グループの **[仮想マシン]** タブで、**[仮想マシンを保護グループに追加して保護を有効にする]** をクリックします。
-2. **[仮想マシンの保護の有効化]** ページで、保護する仮想マシンを選択します。 
+2. **[仮想マシンの保護の有効化]** ページで、保護する仮想マシンを選択します。
 
 	![仮想マシンの保護の有効化](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_AddVM3.png)
 
-	保護の有効化ジョブが開始されます。ジョブの進捗状況は **[ジョブ]** タブで追跡できます。保護の最終処理のジョブが実行されると、仮想マシンは、フェールオーバーを実行できる状態になります。 
+	保護の有効化ジョブが開始されます。ジョブの進捗状況は **[ジョブ]** タブで追跡できます。保護の最終処理のジョブが実行されると、仮想マシンは、フェールオーバーを実行できる状態になります。
 3. 保護の設定後、次のことを行えます。
 
-	- **[保護された項目]** > **[保護グループ]** > *保護グループ名* > **[仮想マシン]** の順に移動し、仮想マシンを表示します。**プロパティ** タブでマシンの詳細をドリルダウンできます。
-	- **[保護された項目]** > **[保護グループ]** > *保護グループ名* > **[仮想マシン]** *仮想マシン名* > **[構成]** の順に移動し、仮想マシンのフェールオーバーのプロパティを構成します。利用できる構成は、次のとおりです。
+	- **[保護された項目]** > **[保護グループ]** > *保護グループ名* > **[Virtual Machines]** の順に移動し、仮想マシンを表示します。**プロパティ** タブでマシンの詳細をドリルダウンできます。
+	- **[保護された項目]** > **[保護グループ]** > *保護グループ名* > **[Virtual Machines]** *仮想マシン名* > **[構成]** の順に移動し、仮想マシンのフェールオーバーのプロパティを構成します。利用できる構成は、次のとおりです。
 		- **名前**: Azure の仮想マシンの名前。
 		- **サイズ**: フェールオーバーする仮想マシンのターゲット サイズ。
 
 		![仮想マシンのプロパティの構成](./media/site-recovery-hyper-v-site-to-azure/VMProperties.png)
-	- *[保護された項目]* > **[保護グループ]** > *保護グループ名* > **[仮想マシン]** *仮想マシン名* > **[構成]** の順に移動し、次に示す追加の仮想マシンの設定を構成します。
+	- *[保護された項目]* > **[保護グループ]** > *保護グループ名* > **[Virtual Machines]** *仮想マシン名* > **[構成]** の順に移動し、次に示す追加の仮想マシンの設定を構成します。
 
-		- **ネットワーク アダプター**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。 
+		- **ネットワーク アダプター**: ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。
 			- 大 (A3) および A6: 2
 			- 特大 (A4) および A7:
 			- A9: 2
 			- D3: 2
 			- D4: 4
 			- D13: 4
-			
+
 			仮想マシンのサイズを変更し、設定を保存すると、次回 **[構成]** ページを開くときに、ネットワーク アダプターが表示されます。仮想マシン用のアダプターの数は、次のように決定されます。
 
 
@@ -253,7 +256,7 @@ Windows Server 2012 R2 の Server Core またはスタンドアロン Hyper-V Se
 		- **Azure ネットワーク**: 仮想マシンのフェールオーバー先のネットワークを指定します。仮想マシンに複数のネットワーク アダプターがある場合は、すべてのアダプターが、同じ Azure ネットワークに接続する必要があります。
 		- **サブネット**: 仮想マシン上の各ネットワーク アダプターに対して、フェールオーバー後にマシンが接続する Azure ネットワーク内のサブネットを選択します。
 		- **ターゲット IP アドレス**: 静的 IP アドレスを使用するようソース仮想マシンのネットワーク アダプターが構成されている場合、フェールオーバー後にターゲット仮想マシンの IP アドレスが同じになるよう、ターゲット仮想マシンの IP アドレスを指定できます。IP アドレスを指定しない場合、フェールオーバー時に、使用可能なアドレスが割り当てられます。使用中のアドレスを指定すると、フェールオーバーは失敗します。
-		 
+
 		![仮想マシンのプロパティの構成](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_VMMultipleNic.png)
 
 ## ステップ 7: 復旧計画の作成
@@ -272,7 +275,7 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 
 1. オンプレミスの仮想マシンの実際のテスト フェールオーバーで使用するのと同じネットワークで、ドメイン コントローラーと DNS を含む仮想マシンのテスト フェールオーバーを実行します。
 2. フェールオーバーされた DNS 仮想マシンに割り当てられた IP アドレスを書き留めます。
-3. フェールオーバーで使用する Azure 仮想ネットワークに、DNS サーバーのアドレスとして、書き留めた IP アドレスを追加します。
+3. フェールオーバーで使用する Azure Virtual Network に、DNS サーバーのアドレスとして、書き留めた IP アドレスを追加します。
 4. Azure テスト ネットワークを指定して、ソースのオンプレミスの仮想マシンのテスト フェールオーバーを実行します。
 5. 障害テストが予期したとおりに動作したことを確認したら、復旧計画のテスト フェールオーバーについて完了と記録します。その後、ドメイン コントローラーと DNS の仮想マシンのテスト フェールオーバーについても完了と記録します。
 
@@ -306,4 +309,4 @@ Azure ターゲット ネットワークを指定せずに、保護が有効に�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

@@ -94,17 +94,17 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 6. Azure プレビュー ポータルの **[カスタム デプロイメント]** ウィンドウに戻ります。**[新規または既存の Automation アカウント]** および **[Automation アカウント名]** で、モジュールをインストールするかどうかを指定します。既存のアカウントを使用する場合、**[Automation アカウントの場所]** は無視されます。 
 7. **[リソース グループ]** を選択し、既存のリソース グループを指定するか、モジュール用に新しいリソース グループを作成します。
 6. **[法的条項]** を選択し、**[購入]** をクリックします。このボタンの名前はこうなっていますが、実際にはモジュールをインストールしても課金されません。
-7. **[作成]** をクリックしてモジュールをインポートします。  
+7. **[作成]** をクリックしてモジュールをインポートします。各アクティビティを抽出する必要があるため、数分かかる場合があります。  
 8. モジュールがデプロイされていることを示す通知、および完了したことを示す通知を受け取ります。 
 
 
 ## Runbook またはモジュールの要求
 
-[UserVoice] (http://feedback.azure.com/[forum](http://social.msdn.microsoft.com/Forums/windowsazure/ja-JP/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)s/246290-azure-automation) に要求を送信できます。Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/ja-JP/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)に質問を投稿してください。
+[ユーザーの声](http://feedback.azure.com/forums/246290-azure-automation)に要求を送信できます。Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/ja-JP/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)に質問を投稿してください。
 
 ## 関連記事:
 
 - [Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)
 - [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

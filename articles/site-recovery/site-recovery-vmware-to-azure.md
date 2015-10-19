@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.date="10/07/2015"
 	ms.author="raynew"/>
 
 # オンプレミスの VMware 仮想マシンまたは物理サーバーと Azure 間の保護の設定
 
 この記事では、Site Recovery をデプロイして以下を実現する方法について説明します。
 
-- **VMware 仮想マシンを保護する** — Azure へのオンプレミス VMware 仮想マシンのレプリケーション、フェールオーバー、復旧を調整します
+- ** VMware 仮想マシンを保護する** — Azure へのオンプレミス VMware 仮想マシンのレプリケーション、フェールオーバー、復旧を調整します
 - **物理サーバーを保護する** — Azure Site Recovery サービスを使用した Azure へのオンプレミス Windows および Linux 物理サーバーのレプリケーション、フェールオーバー、および内復旧を調整します
 
 この記事では、概要、デプロイの前提条件、設定方法について説明します。この記事を読み終わると、VMware 仮想マシンまたは物理サーバーを Azure にレプリケートできるようになります。問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
@@ -763,12 +763,12 @@ Azure で実行しているフェールオーバーされたマシンをオン�
 
 Do Not Translate or Localize
 
-The software and firmware running in the Microsoft product or service is based on or incorporates material from the projects listed below (collectively, “Third Party Code”).  Microsoft is the not original author of the Third Party Code.  The original copyright notice and license, under which Microsoft received such Third Party Code, are set forth below.
+マイクロソフトの製品またはサービスで実行されるソフトウェアおよびファームウェアは、以下に記載されたプロジェクトの情報 (総称して " サード パーティのコード" と呼びます) に基づくか、その情報を組み込んでいます。Microsoft is the not original author of the Third Party Code.マイクロソフトは、サード パーティのコードの元の作成者ではありません。元の著作権情報と、マイクロソフトがサード パーティのコードなどを受け取った際に適用された使用許諾契約は、以下に記載されています。
 
-The information in Section A is regarding Third Party Code components from the projects listed below. Such licenses and information are provided for informational purposes only.  This Third Party Code is being relicensed to you by Microsoft under Microsoft's software licensing terms for the Microsoft product or service.  
+The information in Section A is regarding Third Party Code components from the projects listed below.Such licenses and information are provided for informational purposes only.このサード パーティのコードは、マイクロソフトの製品またはサービスに対するマイクロソフトのソフトウェア使用許諾契約条件の下で、マイクロソフトからお客様に使用が再許諾されています。
 
 The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
-The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
+完全なファイルは、[Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=529428)から入手できる場合があります。マイクロソフトは、この契約の下で明示的には付与されないその他すべての権利を、黙示、禁反言、その他のいずれによるかを問わず留保します。
 
-<!----------HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

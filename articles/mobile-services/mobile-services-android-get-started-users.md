@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="09/04/2015"
+	ms.date="10/05/2015"
 	ms.author="ricksal"/>
 
 # Mobile Services Android アプリへの認証の追加 (JavaScript バックエンド)
@@ -108,4 +108,4 @@
 
 [Azure Management Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO2-->

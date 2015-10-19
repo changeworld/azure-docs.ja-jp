@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/29/2015"
+	ms.date="10/01/2015"
 	ms.author="chhavib;cgronlun;garye"/>
 
 
@@ -136,4 +136,4 @@ Cortana Analytics ギャラリーは、1 回のクリックで予測分析の実
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaanalytics.com)**
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

@@ -102,6 +102,8 @@ Azure PowerShell コマンドの次のブロックを使用して、4 つの Sha
 
 「[接続をテストするには](virtual-machines-workload-intranet-sharepoint-phase2.md#testconn)」の手順を 4 回 (SharePoint サーバーごとに 1 回) 実行して、組織のネットワーク上の場所への接続をテストします。
 
+> [AZURE.NOTE]SharePoint サーバーは、SharePoint Server 2013 試用版のイメージから作成されます。インストールを変換して SharePoint Server 2013 の Standard エディションまたは Enterprise エディションの製品版またはボリューム ライセンス キーを使用する必要があります。
+
 ## SharePoint ファームの構成
 
 ファームの最初の SharePoint サーバーを構成するには、次の手順に従います。
@@ -195,4 +197,4 @@ SharePoint ファームへのクライアント トラフィックが 2 つの�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

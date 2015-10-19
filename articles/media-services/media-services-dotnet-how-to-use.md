@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="09/07/2015"
+	ms.date="10/05/2015"
 	ms.author="juliako"/>
 
 #.NET を使用した Media Services 開発 
@@ -28,9 +28,9 @@
 ##前提条件
 
 -   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
--   オペレーティング システム: Windows 7、Windows Server 2008 R2、Windows 8。
+-   オペレーティング システム: Windows 10、Windows 7、Windows Server 2008 R2、または Windows 8。
 -   .NET Framework 4.5。
--   Visual Studio 2013、Visual Studio 2012 または Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 
+-    Visual Studio 2015、Visual Studio 2013、Visual Studio 2012、または Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express)。 
   
 
 ##Visual Studio プロジェクトの作成と構成 
@@ -75,15 +75,9 @@
 	**アカウント名**と**アカウント キー**情報を取得するには、**Microsoft Azure 管理ポータル**を開いて Media Services のアカウントを選択し、**[キーの管理]** をクリックします。
 
 
-	<pre><code>
-&lt;configuration>
-    &lt;appSettings>
-	&lt;add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
-    	&lt;add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
-    &lt;/appSettings>
-&lt;/configuration>
-</code></pre>
-
+	<configuration> ... <appSettings> <add key="MediaServicesAccountName" value="Media-Services-Account-Name" /> <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" /> </appSettings>
+	  
+	</configuration>
 
 5. Program.cs ファイルの先頭にある既存のステートメントを次のコードで上書きします。
 
@@ -108,4 +102,4 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO2-->

@@ -47,7 +47,7 @@ SDK と、.NET、Java、PHP、Python、Node.js のサンプルを提供してい
 Apple iOS、Android、Windows ユニバーサル、Windows Phone、Kindle、Android China (Baidu 経由)、Xamarin (iOS と Android)、Chrome アプリ プラットフォームへの通知の送信をサポートしています。こうしたプラットフォーム用のステップ バイ ステップの概要チュートリアルは、「[Notification Hubs の使用]」から入手できます。
 
 ###3\.SMS/メール/Web 通知はサポートしていますか。
-通知ハブは、主に、上記のプラットフォームを使用してモバイル アプリに通知を送信することを目的としています。メールや SMS への送信機能は提供していませんが、こうした機能を提供するサード パーティ製のプラットフォームを通知ハブに統合させて、Azure モバイル サービスを使いネイティブのプッシュ通知を送信ができます。たとえば、「[Mobile Services から音声および SMS 機能に Twilio を使用する方法]」では、Azure Mobile Services を使って SMS 通知を送信する方法について説明しています。また、すぐに使えるブラウザー内プッシュ通知も提供していません。お客様は SignalR でこれを実装することもできます。また、Google Chrome ブラウザーで作動する Chrome アプリへのプッシュ通知の送信についてのチュートリアルも提供しています。「[Notification Hubs の使用]」をご覧ください。
+通知ハブは、主に、上記のプラットフォームを使用してモバイル アプリに通知を送信することを目的としています。メールや SMS への送信機能は提供していませんが、こうした機能を提供するサード パーティ製のプラットフォームを通知ハブに統合させて、Azure モバイル サービスを使いネイティブのプッシュ通知を送信ができます。また、すぐに使えるブラウザー内プッシュ通知も提供していません。お客様は SignalR でこれを実装することもできます。また、Google Chrome ブラウザーで作動する Chrome アプリへのプッシュ通知の送信についてのチュートリアルも提供しています。「[Notification Hubs の使用]」をご覧ください。
 
 ###4\.Azure モバイル サービスと Azure 通知ハブとの関係について教えてください。いつ、どれを使えばいいのですか。
 モバイル アプリのバックエンドが既にあり、プッシュ通知の送信機能だけを追加する場合は、Azure 通知ハブを使う必要があります。モバイル アプリのバックエンドを最初から設定する場合は、Azure モバイル サービスの使用を検討する必要があります。Azure モバイル サービスでは通知ハブを自動的にプロビジョニングするため、モバイル アプリのバックエンドから簡単にプッシュ通知を送信できます。Azure モバイル サービスの料金には、通知ハブの基本料金が含まれており、それに含まれるプッシュ数を超過する場合のみ料金を支払います。詳しくは「[Mobile Services 料金]」をご覧ください。
@@ -119,7 +119,6 @@ Azure 通知ハブでは Azure 管理ポータルでテレメトリ データの
 [CaseStudy - 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [Notification Hubs REST インターフェイスの使用方法]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Mobile Services から音声および SMS 機能に Twilio を使用する方法]: http://azure.microsoft.com/documentation/articles/partner-twilio-mobile-services-how-to-use-voice-sms/
 [Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
 [Mobile Services 料金]: http://azure.microsoft.com/pricing/details/mobile-services/
 [アプリ バックエンドからの登録]: https://msdn.microsoft.com/library/azure/dn743807.aspx
@@ -131,4 +130,4 @@ Azure 通知ハブでは Azure 管理ポータルでテレメトリ データの
 [Notification Hubs のメトリックのサンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [登録の一括エクスポートと変更]: https://msdn.microsoft.com/library/dn790624.aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="08/05/2015" 
+	ms.date="10/07/2015" 
 	ms.author="raynew"/>
 
 # 登録と保護の管理
@@ -212,4 +212,4 @@ VMware 仮想マシンまたは物理サーバーの保護を停止する場合�
 	- **[保護を無効にする]**—このオプションを有効にして保存すると、マシンは Site Recovery によって保護されなくなります。マシンの保護設定は、自動的にクリーンアップされます。
 	- **[コンテナーから削除する]**—このオプションを選択すると、Site Recovery のコンテナーからのみマシンが削除されます。マシンのオンプレミスの保護設定には影響しません。マシンの設定を削除したり、Azure のサブスクリプションから仮想マシンを削除したりするには、モビリティ サービスをアンインストールして、設定をクリーンアップする必要があります。 ![オプションを削除する](./media/site-recovery-manage-registration-and-protection/RegistrationProtection_RemoveVM.png)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

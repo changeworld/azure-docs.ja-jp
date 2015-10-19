@@ -38,7 +38,7 @@ Azure プレビュー ポータルで Azure Active Directory (AD) B2C のサポ�
     - **[要求の種類]** は **[技術]** です。
 	- **[リソース]** は **[Active Directory]** です。
 	- **[問題カテゴリ]** ブレードで、**[問題の種類]** として **[B2C プレビュー]** を選択し、適切な **[カテゴリ]** を選択します。
-	- **[説明]** ブレードで、問題の詳細を説明します。**[リソース]** テキスト ボックスに B2C テナントの名前 (例: contosob2c.onmicrosoft.com) を入力します。
+	- **[説明]** ブレードで、問題の詳細を説明します。**[リソース]** テキスト ボックスに、B2C テナントの名前 (例: contosob2c.onmicrosoft.com) を入力します。
 
 5. サポート要求を送信した後は、スタート画面の **[ヘルプとサポート]** をクリックした後 **[サポート要求の管理]** をクリックして、監視できます。
 
@@ -50,4 +50,4 @@ Azure プレビュー ポータルで Azure Active Directory (AD) B2C のサポ�
 
 ![サポート - サブスクリプションなし](./media/active-directory-b2c-support/support-no-sub.png)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

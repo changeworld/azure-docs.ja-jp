@@ -8,7 +8,7 @@
  editor=""
  tags="azure-service-management"/>
 <tags
-ms.service="virtual-machines"
+ ms.service="virtual-machines"
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
@@ -19,6 +19,9 @@ ms.service="virtual-machines"
 # Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する
 
 この記事では、大規模な生体分子系の構造を計算し視覚化するために、Azure に Microsoft HPC Pack クラスターをデプロイし、仮想クラスター ネットワーク内の複数の Linux コンピューティング ノードで **charmrun** を使用して [NAMD](http://www.ks.uiuc.edu/Research/namd/) ジョブを実行する方法について説明します。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用して作成されたリソースについて説明します。
+
 
 NAMD (ナノスケール分子力学プログラム) とは、ウイルス、セル構造体、および巨大タンパク質など、最大で数百万個の原子を含む大規模な生体分子系を高いパフォーマンスでシミュレーションするために設計された並列分子動力学パッケージです。NAMD は、通常のシミュレーションでは数百個のコアに対応し、大規模なシミュレーションでは 500,000 個を超えるコアに対応します。
 
@@ -404,4 +407,4 @@ a8lxTKnZCsRXU1HexqZs+DSc+30tz50bNqLdido/l5B4EJnQP03ciO0=
 [task_details]: ./media/virtual-machines-linux-cluster-hpcpack-namd/task_details.png
 [vmd_view]: ./media/virtual-machines-linux-cluster-hpcpack-namd/vmd_view.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

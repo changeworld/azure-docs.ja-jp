@@ -22,7 +22,6 @@
 
 > [AZURE.NOTE]HDInsight は、Spark をクラスターの種類としても提供します。つまり、Hadoop クラスターを変更しなくても、Spark クラスターを直接プロビジョニングすることができるようになりました。ただし現在、これは Windows ベースのクラスターに限定されています。Spark クラスターの種類を使用して、Spark バージョン 1.3.1 の HDInsight バージョン 3.2 クラスター (Windows ベース) を取得します。詳細については、「[HDInsight での Apache Spark 入門](hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql.md)」を参照してください。
 
-
 ## <a name="whatis"></a>Spark とは
 
 <a href="http://spark.apache.org/docs/latest/index.html" target="_blank">Apache Spark</a> はビッグ データ分析アプリケーションのパフォーマンスを向上するメモリ内の処理をサポートする、オープン ソースの並列処理のフレームワークです。Spark のメモリ内の計算能力により、機械学習とグラフ計算における反復的なアルゴリズムに対して、Spark は適切な選択肢となります。
@@ -33,21 +32,21 @@ Spark を使用して、従来のディスク ベースのデータ処理を実�
 
 ## <a name="whatis"></a>インストールできる Spark のバージョン
 
-このトピックでは、Script Action のカスタム スクリプトを使用して、HDInsight クラスターに Spark をインストールします。このスクリプトでは、Spark 1.5.0 をインストールします。
+このトピックでは、Script Action のカスタム スクリプトを使用して、HDInsight クラスターに Spark をインストールします。このスクリプトでは、Spark 1.5.1 をインストールします。
 
 このスクリプトを変更するか、独自のスクリプトを作成してその他の Spark バージョンをインストールできます。
 
 ## スクリプトの機能
 
-このスクリプトでは、`/usr/hdp/current/spark` に Spark バージョン 1.5.0 をインストールします。
+このスクリプトでは、`/usr/hdp/current/spark` に Spark バージョン 1.5.1 をインストールします。
 
 ## <a name="install"></a>スクリプト アクションを使用した Spark のインストール
 
-HDInsight クラスターに Spark をインストールするためのサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh](https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh) の読み取り専用の Azure ストレージ BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターをプロビジョニングする際に、サンプル スクリプトを使用する方法について説明します。
+HDInsight クラスターに Spark をインストールするためのサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh](https://hdiconfigactions.blob.core.windows.net/linuxsparkconfigactionv02/spark-installer-v02.sh) の読み取り専用の Azure ストレージ BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE]また、Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+> [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
-1. 「[Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-provision-linux-clusters.md#portal)」に記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
+1. [Linux ベースの HDInsight クラスターの作成](hdinsight-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターの作成を開始します。ただし、作成を完了しないでください。
 
 2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
@@ -60,15 +59,15 @@ HDInsight クラスターに Spark をインストールするためのサンプ
 
 3. 下部にある **[スクリプト アクション]** で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** ボタンを使用し、オプションの構成情報を保存します。
 
-4. 「[Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-provision-linux-clusters.md#portal)」の説明に従って、クラスターのプロビジョニングを続行します。
+4. 「[Linux ベースの HDInsight クラスターの作成](hdinsight-provision-linux-clusters.md#portal)」の説明に従って、クラスターのプロビジョニングを続行します。
 
 ## <a name="usespark"></a>HDInsight で Spark を使用する方法
 
-Spark は Scala、Python、および Java で API を提供します。対話型の Spark シェルを使用して Spark クエリを実行することもできます。クラスターのプロビジョニングが完了したら、次を使用して HDInsight クラスターに接続します。
+Spark は Scala、Python、および Java で API を提供します。対話型の Spark シェルを使用して Spark クエリを実行することもできます。クラスターの作成が完了したら、次を使用して HDInsight クラスターに接続します。
 
 	ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 	
-HDInsight での SSH の使用方法の詳細については、以下を参照してください。
+HDInsight での SSH の使用方法の詳細については、以下の記事を参照してください。
 
 * [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -109,7 +108,7 @@ HDInsight での SSH の使用方法の詳細については、以下を参照�
 
 ###<a name="sparksql"></a>Spark シェルを使用して、Spark SQL のクエリを実行する
 
-Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、Scala で表されるリレーショナル クエリを実行することができます。このセクションでは、Spark を使用した Hive テーブルのサンプルにおける Hive クエリの実行について確認します。このセクションで使用する Hive テーブル (**hivesampletable**) は、クラスターをプロビジョニングする際に既定で使用できます。
+Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、Scala で表されるリレーショナル クエリを実行することができます。このセクションでは、Spark を使用した Hive テーブルのサンプルにおける Hive クエリの実行について確認します。このセクションで使用する Hive テーブル (**hivesampletable**) は、クラスターを作成する際に既定で使用できます。
 
 1. 次のコマンドを実行して、Spark シェルを起動します。
 
@@ -235,4 +234,4 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 [powershell-install-configure]: ../install-configure-powershell.md
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

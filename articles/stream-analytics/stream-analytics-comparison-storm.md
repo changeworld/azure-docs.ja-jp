@@ -1,6 +1,7 @@
 <properties
 	pageTitle="比較: Apache Storm vs.Azure Stream Analytics | Microsoft Azure"
 	description="リアルタイム Twitter センチメント分析で Stream Analytics を使用する方法について説明します。イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。"
+	keywords="real-time twitter,sentiment analysis,social media analysis,social media analytics tools"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -13,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="08/13/2015"
+	ms.date="10/05/2015"
 	ms.author="jeffstok"/>
 
 # Apache Storm と Azure Stream Analytics の比較 #
@@ -123,7 +124,7 @@
                     Stream Analytics では、処理するデータのボリュームと必要な (ジョブが実行されている 1 時間あたりの) ストリーミング ユニットの数によって請求されます。
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/ja-jp/pricing/details/stream-analytics/">料金についての詳細は、こちらをご覧ください。</a>
+                    <a href="http://azure.microsoft.com/pricing/details/stream-analytics/">料金についての詳細は、こちらをご覧ください。</a>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -131,7 +132,7 @@
                     HDInsight の Apache Storm では、購入単位はクラスター ベースであり、デプロイされるジョブとは無関係に、実行されるクラスターの時間に基づいて請求されます。
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/ja-jp/pricing/details/hdinsight/">料金についての詳細は、こちらをご覧ください。</a>
+                    <a href="http://azure.microsoft.com/pricing/details/hdinsight/">料金についての詳細は、こちらをご覧ください。</a>
                 </p>
             </td>
         </tr>
@@ -589,4 +590,4 @@
     </tbody>
 </table>
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO2-->

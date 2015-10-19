@@ -1,5 +1,5 @@
 <properties
-	pageTitle="PhoneGap/Cordova アプリ用 Azure Mobile Services の使用"
+	pageTitle="PhoneGap/Cordova アプリ向け Azure Mobile Services の使用 | Microsoft Azure"
 	description="このチュートリアルでは、iOS、Android、Windows Phone 用に PhoneGap の開発を行う場合に Azure Mobile Services を使用する方法について説明します。"
 	services="mobile-services"
 	documentationCenter=""
@@ -12,13 +12,15 @@
 	ms.workload="mobile"
 	ms.tgt_pltfrm="mobile-phonegap"
 	ms.devlang="multiple"
-	ms.topic="article" 
-	ms.date="07/21/2015"
+	ms.topic="get-started-article" 
+	ms.date="10/05/2015"
 	ms.author="ggailey777"/>
 
 # Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
+
+[AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
 
 このチュートリアルでは、Azure Mobile Services を使用してアプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。
 
@@ -151,9 +153,13 @@
 ## 次のステップ
 クイック スタートはこれで完了です。Mobile Services で重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-* [Add authentication to your app (アプリケーションに認証を追加する)]<br/> ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
+* **[アプリへの認証の追加]** ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。  
 
-* [アプリケーションにプッシュ通知を追加する](https://msdn.microsoft.com/magazine/dn879353.aspx)<br/>プッシュ通知を登録し、アプリに送信する方法について説明します。
+* **[アプリケーションにプッシュ通知を追加する](https://msdn.microsoft.com/magazine/dn879353.aspx)**プッシュ通知を登録し、アプリに送信する方法について説明します。
+
+* **[Mobile Services HTML/JavaScript の使用方法の概念リファレンス](mobile-services-html-how-to-use-client-library.md)** JavaScript クライアント ライブラリを使用してデータにアクセスする方法、カスタム API を呼び出す方法、認証を実行する方法について説明します。
+
+[AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Images. -->
 [0]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot1.png
@@ -163,12 +169,11 @@
 [4]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-android.png
 
 <!-- URLs. -->
-[Add Mobile Services to an existing app]: mobile-services-html-get-started-data.md
-[Add authentication to your app (アプリケーションに認証を追加する)]: mobile-services-html-get-started-users.md
+[アプリへの認証の追加]: mobile-services-html-get-started-users.md
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 [Management Portal]: https://manage.windowsazure.com/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

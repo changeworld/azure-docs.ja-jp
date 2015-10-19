@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/30/2015" 
+	ms.date="10/02/2015" 
 	ms.author="omark"/>
 
 # Azure App Service とは
@@ -24,7 +24,7 @@ Azure App Service は、Azure Websites、Azure Mobile Services、Azure Biztalk S
 ## App Service を使用する理由
 ビジネス プロセスの自動化だけでなく、Web アプリやモバイル アプリの迅速な開発にも重点を置いている Azure App Service は、単一の開発エクスペリエンスと管理エクスペリエンスを通じてエンタープライズ機能の統合セットを提供しており、次のような利点があります。
 
-- **Web アプリとモバイル アプリの迅速な構築** - 単一のバックエンドを使用して、従業員や顧客向けに Web アプリやモバイル アプリを迅速に構築、デプロイ、および管理します。.NET、Java、NodeJS、PHP、Python など、既存の言語スキルを使用します。Azure Marketplace に用意されている豊富な API、コネクタ、ロジックのギャラリーへのアクセスにより、開発時間を短縮します。
+- **Web Apps と Mobile Apps の迅速な構築** - 単一のバックエンドを使用して、従業員や顧客向けに Web アプリやモバイル アプリを迅速に構築、デプロイ、および管理します。.NET、Java、NodeJS、PHP、Python など、既存の言語スキルを使用します。Azure Marketplace に用意されている豊富な API、コネクタ、ロジックのギャラリーへのアクセスにより、開発時間を短縮します。
 
 - **任意のサービスへの接続とデータのロック解除** - 組み込みコネクタを使用して、Web アプリやモバイル アプリをエンタープライズ システムや SaaS に数分で接続します。SAP、Siebel、Oracle などのエンタープライズ システムから Salesforce や Office 365 などの人気のエンタープライズ SaaS サービス、Facebook、Twitter、Dropbox などの人気のインターネット サービスまで、50 を超えるコネクタから選択できます。
 
@@ -41,22 +41,22 @@ Azure App Service は、Azure Websites、Azure Mobile Services、Azure Biztalk S
 ### アプリの種類
 App Service を使用すると、単一の開発エクスペリエンスで次の種類のアプリを作成することができます。
 
-- [**Web アプリ**](../app-service-web-overview) - ビジネスに合わせて拡張できるミッション クリティカルな Web アプリをすばやく作成してデプロイします。
-- [**モバイル アプリ**](../app-service-mobile-value-prop-preview) - あらゆるデバイスを使用する従業員、パートナー、顧客といつでもつながります。
-- [**API アプリ**](../app-service-api-apps-why-best-platform) - クラウド API を簡単に構築して使用し、API エコノミーに参加します。
-- [**ロジック アプリ**](../app-service-logic-what-are-logic-apps) - コードを記述することなく、クラウド全体のデータへのアクセスと使用を自動化します。
+- [**Web Apps**](../app-service-web-overview) - ビジネスに合わせて拡張できるミッション クリティカルな Web アプリをすばやく作成してデプロイします。
+- [**Mobile Apps**](../app-service-mobile-value-prop-preview) - あらゆるデバイスを使用する従業員、パートナー、顧客といつでもつながります。
+- [**API Apps**](../app-service-api-apps-why-best-platform) - 簡単な操作でクラウド API を作成し、使用します。
+- [**Logic Apps**](../app-service-logic-what-are-logic-apps) - コードを記述することなく、クラウド全体のデータへのアクセスと使用を自動化します。
 
 App Service は単一の統合サービスとして、上に挙げた種類のアプリを作成して単一のソリューションにすることを簡単にします。これにより、同じバックエンドを使用して Web クライアントとモバイル クライアントの両方を対象とするアプリを簡単に構築し、Office 365 や salesforce.com などの一般的なサービスと同様に、オンプレミスのシステムとも統合します。
 
 ### App Service プラン
-App Service プランは、アプリ間で共有できる一連の機能と容量を表します。App Service プランでは、いくつかの料金レベル (Free、Shared、Basic、Standard など) がサポートされています。料金レベルごとに利用できる機能は異なります。アプリがホストされる App Service プランを、ダウンタイムなしですばやく変更できます。[App Service プランの詳細に関するページを参照してください](../web-sites-web-hosting-plan-overview.md)。
+App Service プランは、アプリ間で共有できる一連の機能と容量を表します。App Service プランでは、いくつかの料金レベル (Free、Shared、Basic、Standard、および Premium など) がサポートされています。各レベルには独自の機能があります。アプリがホストされる App Service プランを、ダウンタイムなしですばやく変更できます。[App Service プランの詳細に関するページを参照してください](../web-sites-web-hosting-plan-overview.md)。
 
 ##App Service の使用開始
 App Service をぜひお試しください。 すぐに使用を開始しましょう。
 
 Azure App Service なら、言語の選択と同じくらい簡単に使用できます。
 
-無料ですぐに、[新しい Web アプリを作成してください](http://go.microsoft.com/fwlink/?LinkId=523751)。クレジット カードもコミットメントも不要です。面倒なことはありません。
+無料ですぐに[新しいアプリを作成できます](http://go.microsoft.com/fwlink/?LinkId=523751)。クレジット カードもコミットメントも不要です。面倒なことはありません。
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

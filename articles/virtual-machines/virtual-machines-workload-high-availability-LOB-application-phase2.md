@@ -53,6 +53,8 @@ Azure PowerShell コマンドの次のブロックを使用して、2 つのド�
 
 V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-machines-workload-high-availability-LOB-application-phase1.md)」で定義したものです。
 
+> [AZURE.NOTE]この記事には、バージョン 1.0.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。この記事に示す Azure PowerShell コマンド ブロックは、Azure PowerShell のバージョン 1.0.0 以降の新しいコマンドレットをサポートするためにテストおよび更新を行っている段階にあります。もうしばらくお待ちください。
+
 適切な値をすべて指定したら、Azure PowerShell プロンプトでそのブロックを実行します。
 
 	# Set up subscription and key variables
@@ -210,4 +212,4 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO2-->

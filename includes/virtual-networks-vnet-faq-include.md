@@ -1,4 +1,4 @@
-## 仮想ネットワークの基礎
+## Virtual Network の基礎
 
 ### Azure Virtual ネットワーク (VNet) とは何ですか。
 
@@ -20,7 +20,7 @@ VNet を使用して次のことが行えます。
 
 ### 仮想ネットワークが必要かどうかを知る方法
 
-[仮想ネットワークの概要](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)にアクセスし、最適なネットワーク設計オプションの決定に役立つディシジョン テーブルを参照してください。
+[Virtual Network の概要](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)にアクセスし、最適なネットワーク設計オプションの決定に役立つディシジョン テーブルを参照してください。
 
 ### 開始するには?
 
@@ -34,7 +34,7 @@ VNet は、Cloud Services (PaaS)、Virtual Machines、Web Apps など、さま�
 
 はい。サイト間接続を使用せずに VNet を使用することができます。これは、Azure でドメイン コントローラーと SharePoint ファームを実行する場合に特に便利です。
 
-## 仮想ネットワークの構成
+## Virtual Network の構成
 
 ### VNet を作成するのには、どのようなツールを使用でしょうか。
 
@@ -58,7 +58,7 @@ VNet 内で使用できるサブネットの数に制限はありません。す
 
 ### これらのサブネット内の IP アドレスの使用に関する制限はありますか。
 
-Azure は、各サブネット内で一部の IP アドレスを予約します。サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 2 つ以上のアドレスと共に、プロトコル準拠に予約されます。
+Azure は、各サブネット内で一部の IP アドレスを予約します。サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。
 
 ### VNet およびサブネットは、どれくらい小規模に、また、大規模になるのでしょうか。
 
@@ -120,7 +120,7 @@ PowerShell コマンドレットまたは NETCFG ファイルを使用してそ�
 
 はい。REST API または Windows PowerShell を使用して VNet 間の通信を作成できます。[VNet 間の接続の構成](virtual-networks-configure-vnet-to-vnet-connection.md)を参照してください。
 
-## VM とロール インスタンスの名前解決
+## 名前解決 (DNS)
 
 ### VNet の DNS オプションとは何でしょうか。
 
@@ -215,13 +215,14 @@ Azure で提供される DNS は、Microsoft によって提供されるマル�
 
 ### VNet でどのようなサービスを使用できますか。
 
-VNet 内のコンピューティング サービスのみ使用できます。コンピューティング サービスは、クラウド サービス (web ロールとワーカー ロール) および VM に制限されます。
+VNet 内のコンピューティング サービスのみ使用できます。Compute Services は、Cloud Services (web ロールとワーカー ロール) および VM に制限されます。
 
 ### Web Apps を Virtual Network と連動できますか。
 
 いいえ。VNet 内で Azure の Web App をデプロイすることはできません。ただし、ご使用の VNet にポイント対サイトの 構成をした場合、Web Apps を安全に接続して、Azure VNet 内のリソースにアクセスできます。詳細については、次のトピックを参照してください。
 
-- [Web Apps Virtual Network 統合](http://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
+- [Web Apps Virtual Network 統合](http://azure.microsoft.com/blog/
+- 014/09/15/azure-websites-virtual-network-integration/)
 
 - [Web Apps と VNet Integration and Hybrid Connections の併用](http://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)
 
@@ -264,4 +265,4 @@ Vnet は、1 つの別の機能と、Azure インフラストラクチャでホ�
 
 はい。各種プラットフォームで PowerShell とコマンド ライン ツールを使用することができます。詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkId=317721)で確認できます。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

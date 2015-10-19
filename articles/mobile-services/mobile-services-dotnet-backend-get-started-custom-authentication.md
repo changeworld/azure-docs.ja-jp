@@ -390,7 +390,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
 	Accounts テーブルにユーザー ログイン情報を保持するなら、特定のユーザーについて **CustomRegistration** エンドポイントを呼び出してアカウントを作成するのは 1 回だけで済みます。サポートされているさまざまなクライアント プラットフォームでカスタム API を呼び出す方法の例については、記事「[Custom API in Azure Mobile Services – client SDKs (Azure Mobile Services でのカスタム API - クライアント SDK)](http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx)」を参照してください。
 	 
-	> [AZURE.IMPORTANT]このユーザー プロビジョニング手順が実行されるのは 1 回だけなので、なんらかの帯域外の方法でユーザー アカウントを作成することを考える必要があります。パブリック登録エンドポイントの場合、SMS ベースまたは電子メール ベースの検証プロセス、または不正なアカウントの生成を防ぐための他のなんらかの保護対策の実装を検討することも必要です。Twilio を使用して Mobile Services から SMS メッセージを送信できます。詳細については、「[方法: SMS メッセージを送信する](partner-twilio-mobile-services-how-to-use-voice-sms.md#howto_send_sms)」を参照してください。SendGrid を使用して Mobile Services から電子メールを送信することもできます。詳細については、「[SendGrid を使用した Mobile Services からの電子メールの送信](store-sendgrid-mobile-services-send-email-scripts.md)」を参照してください。
+	> [AZURE.IMPORTANT]このユーザー プロビジョニング手順が実行されるのは 1 回だけなので、なんらかの帯域外の方法でユーザー アカウントを作成することを考える必要があります。パブリック登録エンドポイントの場合、SMS ベースまたは電子メール ベースの検証プロセス、または不正なアカウントの生成を防ぐための他のなんらかの保護対策の実装を検討することも必要です。Twilio を使用して Mobile Services から SMS メッセージを送信できます。SendGrid を使用して Mobile Services から電子メールを送信することもできます。SendGrid の詳細な使用方法については、「[SendGrid を使用した Mobile Services からの電子メールの送信](store-sendgrid-mobile-services-send-email-scripts.md)」を参照してください。
 	
 3. 適切な **invokeApi** メソッドを再び使用して今度は **CustomLogin** エンドポイントを呼び出し、実行時に提供されるユーザー名とパスワードをメッセージ本文で渡します。
 
@@ -420,4 +420,4 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 [ProviderCredentials]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobile.service.security.providercredentials.aspx
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

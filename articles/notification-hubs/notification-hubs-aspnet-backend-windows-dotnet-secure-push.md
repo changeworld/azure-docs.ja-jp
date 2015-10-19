@@ -8,12 +8,12 @@
 	services="notification-hubs"/>
 
 <tags
-	ms.service="notification-hubs"
+	ms.service="notification-hubs" 
 	ms.workload="mobile"
 	ms.tgt_pltfrm="windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/16/2015"
+	ms.date="10/05/2015"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs の安全なプッシュ
@@ -41,7 +41,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 重要なのは、前のフロー (およびこのチュートリアル) では、デバイスは、ユーザーがログインした後、認証トークンをローカル ストレージに保存すると想定していることです。デバイスはこのトークンを使用して通知の安全なペイロードを取得できるため、これによって完全にシームレスなエクスペリエンスが保証されます。アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリケーションは、通知を受け取ったときにアプリケーションの起動を促す一般的な通知を表示する必要があります。その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
 
-この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは「**ユーザーへの通知**」チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
+この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは「[ユーザーへの通知](notification-hubs-aspnet-backend-windows-dotnet-notify-users.md)」チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
 
 > [AZURE.NOTE]このチュートリアルは、「[Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started.md)」の説明に従って通知が作成され、構成されていることを前提としています。また、Windows Phone 8.1 には (Windows Phone ではなく) Windows の資格情報が必要で、Windows Phone 8.0 または Silverlight 8.1 ではバックグラウンド タスクが機能しないことに注意してください。Windows ストア アプリケーションの場合は、アプリケーションでロック画面が有効 (Appmanifest でチェック ボックスをオンにする) な場合にだけバックグラウンド タスクから通知を受信できます。
 
@@ -186,4 +186,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO2-->

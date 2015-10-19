@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="認証されたユーザー (ユニバーサル Windows 8.1) へのプッシュ通知の送信 | Microsoft Azure" 
+	pageTitle="認証されたユーザー (ユニバーサル Windows 8.1) へのプッシュ通知の送信 | Azure Mobile Services" 
 	description="Azure Mobile Services を使用して、ユニバーサル Windows 8.1 アプリを実行している特定の認証済みユーザーにプッシュ通知を送信する方法について説明します。" 
 	services="mobile-services,notification-hubs" 
 	documentationCenter="windows" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/01/2015" 
+	ms.date="10/05/2015" 
 	ms.author="glenga"/>
 
 # 認証されたユーザーへのプッシュ通知の送信
@@ -30,9 +30,9 @@
 
 このチュートリアルの前に、次の Mobile Services のチュートリアルを完了している必要があります。
 
-+ [認証の使用]<br/>TodoList サンプル アプリケーションにログイン要件を追加します。
++ [認証の使用] TodoList サンプル アプリケーションにログイン要件を追加します。
 
-+ [プッシュ通知の使用]<br/>通知ハブを使用してプッシュ通知を送信するよう TodoList サンプル アプリケーションを構成します。
++ [プッシュ通知の使用] Notification Hubs を使用してプッシュ通知を送信するよう TodoList サンプル アプリケーションを構成します。
 
 両方のチュートリアルを完了すると、モバイル サービスからのプッシュ通知に、認証されていないユーザーが登録できないようにすることができます。
 
@@ -66,4 +66,4 @@
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

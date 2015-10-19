@@ -1,23 +1,28 @@
 <properties 
    pageTitle="Microsoft サポートに問い合わせる | Microsoft Azure"
-	description="サポート要求を作成する方法と StorSimple デバイスでサポート セッションを開始する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="サポート要求を作成する方法と StorSimple デバイスでサポート セッションを開始する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/31/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="10/06/2015"
+   ms.author="alkohli" />
 
 # Microsoft サポートに問い合わせる
 
-Microsoft Azure StorSimple ソリューションで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。サポート エンジニアとのオンライン セッションで、StorSimple デバイスのサポート セッションを開始することが必要になる場合もあります。この記事では、サポート要求を作成するプロセスについて説明したうえで、StorSimple デバイスの Windows PowerShell インターフェイスでサポート セッションを開始するプロセスについても説明します。
+Microsoft Azure StorSimple ソリューションで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。サポート エンジニアとのオンライン セッションで、StorSimple デバイスのサポート セッションを開始することが必要になる場合もあります。この記事で説明する内容は次のとおりです。
+
+- サポート要求を作成する方法
+- StorSimple デバイスの Windows PowerShell インターフェイスでサポート セッションを開始する方法
+
+サポート要求を作成する前に、[StorSimple 8000 シリーズのサポート SLA および情報](https://msdn.microsoft.com/library/mt433077.aspx)を確認してください。
 
 ## サポート要求の作成
 
@@ -71,4 +76,4 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 
 > [AZURE.IMPORTANT]サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO2-->

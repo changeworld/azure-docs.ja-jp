@@ -72,7 +72,7 @@ SAS が役立つ一般的なシナリオは、ストレージ アカウント内
 - **開始時刻。** この時刻に SAS が有効になります。共有アクセス署名の開始時刻は省略可能です。省略した場合は、SAS がすぐに有効になります。 
 - **有効期限。** この時刻の後、SAS が有効ではなくなります。ベスト プラクティスでは、SAS の有効期限を指定するか、保存されているアクセス ポリシーに SAS を関連付けることを推奨しています (以下を参照)。
 - **アクセス許可。** SAS に指定されたアクセス許可は、クライアントが SAS を使用して、ストレージ リソースに対して実行できる操作を示します。使用可能なアクセス許可は、アカウント SAS とサービス SAS で異なります。
-- **IP。** 要求を受け入れる単一の IP アドレスまたは IP アドレス範囲を指定する省略可能なパラメーターです。 
+- **IP。** 要求の送信元である Azure 外部の IP アドレスまたは IP アドレスの範囲を指定する省略可能なパラメーター (Express Route については、「[ルーティング セッション構成の状態](../expressroute/expressroute-workflows.md#routing-session-configuration-state)」を参照してください)。 
 - **プロトコル。** 要求に許可されているプロトコルを指定する省略可能なパラメーターです。指定できる値は、既定値の HTTPS と HTTP (https,http) か、HTTPS のみ (https) です。HTTP のみの値は許可されていないことに注意してください。
 - **署名。** 署名は、トークンの一部として指定されたその他のパラメーターから構成され、その後に暗号化されます。これは、SAS の認証に使用されます。
 
@@ -312,12 +312,12 @@ BLOB サービス用にサービスレベルの API にアクセスするため�
 ## 次のステップ ##
 
 - [共有アクセス署名、第 2 部: BLOB サービスによる SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)
-- [PowerShell と .NET で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
-- [Azure ストレージ リソースへのアクセスの管理](storage-manage-access-to-resources.md)
-- [共有アクセス署名を使用したアクセスの委任 (REST API) に関するページ](http://msdn.microsoft.com/library/azure/ee395415.aspx)
+- [Windows で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
+- [Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)
+- [共有アクセス署名を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)
 - [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx) [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

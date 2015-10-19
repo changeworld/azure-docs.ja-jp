@@ -13,14 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="10/06/2015"
    ms.author="sahajs"/>
 
 # SQL Data Warehouse での Azure Machine Learning の使用
 
-Azure Machine Learning は、完全に管理された予測分析サービスです。このサービスを使用して、SQL Data Warehouse のデータに対して予測モデルを作成し、いつでも利用できる Web サービスとして発行することができます。予測分析と機械学習の基礎については、「[Introduction to Machine Learning on Azure (Azure の機械学習の概要)][]」をご覧ください。機械学習モデルの作成、トレーニング、スコア付け、およびテストの方法については、[実験作成チュートリアル][]のページをご覧ください。
+Azure Machine Learning は、完全に管理された予測分析サービスです。このサービスを使用して、SQL Data Warehouse のデータに対して予測モデルを作成し、いつでも利用できる Web サービスとして発行することができます。予測分析と機械学習の基礎については、「[Azure の Machine Learning の概要][]」をご覧ください。機械学習モデルの作成、トレーニング、スコア付け、およびテストの方法については、[実験作成チュートリアル][]のページをご覧ください。
 
-この記事では、[Azure Machine Learning Studio][] を使用して、次のことを行う方法について説明します。- データベースからデータを読み取り、予測モデルの作成、トレーニング、スコア付けを行う。- データベースにデータを書き込む。
+この記事では、[Azure Machine Learning Studio][] を使用して次のことを行う方法を説明します。
+
+- データベースからデータを読み取って予測モデルを作成、トレーニング、スコア計算する
+- データベースにデータを書き込む 
 
 
 ## SQL Data Warehouse からのデータの読み取り
@@ -72,8 +75,13 @@ FROM dbo.DimProduct;
 
 ## モデルの作成、トレーニング、スコア付け
 
-このデータセットを使用して、次のことを行います。- モデルの作成: データを処理し、機能を定義します。- モデルのトレーニング: 学習アルゴリズムを選択して適用します。- モデルのスコア付けとテスト: 新しい自転車の価格を予測します。
-	
+このデータセットを使用して次のことができます。
+
+- モデルの作成: データを処理し、機能を定義する
+- モデルのトレーニング: 学習アルゴリズムを選択して適用する
+- モデルのスコア計算とテスト: 新しい自転車の価格を予測する
+ 
+
 ![][model]
 
 機械学習モデルの作成、トレーニング、スコア付け、およびテストの方法の詳細については、[実験作成チュートリアル][]のページをご覧ください。
@@ -130,8 +138,8 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 [SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop/
 [SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: ./sql-data-warehouse-overview-integration/
-[実験作成チュートリアル]: ./machine-learning-create-experiment/
-[Introduction to Machine Learning on Azure (Azure の機械学習の概要)]: ./machine-learning-what-is-machine-learning/
+[実験作成チュートリアル]: https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-create-experiment/
+[Azure の Machine Learning の概要]: https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-what-is-machine-learning/
 [Azure Machine Learning Studio]: https://studio.azureml.net/Home
 [Azure ポータル]: https://portal.azure.com/
 
@@ -141,4 +149,4 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 [Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

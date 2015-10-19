@@ -97,7 +97,7 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 
 データベースが SQL Database V12 でホストされていない場合は、「[SQL Database V12 へのアップグレードの計画と準備をする](sql-database-v12-plan-prepare-upgrade.md)」を参照してから、Azure ポータルにアクセスしてデータベースを SQL Database V12 に移行してください。
 
-または、[SQL Database 更新プログラムでのデータベースの作成](sql-database-create.md)に関するページに記載されている手順に従って、SQL Database V12 で新しいデータベースを作成することもできます。**ヒント**: 新しいデータベースのサブスクリプションを選択する前に、次の手順をお読みください。
+または、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」に記載されている手順に従って、SQL Database V12 で新しいデータベースを作成することもできます。**ヒント**: 新しいデータベースのサブスクリプションを選択する前に、次の手順をお読みください。
 
 ## 3\.省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更する
 
@@ -322,4 +322,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [9]: ./media/sql-database-aad-authentication/9ad-settings.png
 [10]: ./media/sql-database-aad-authentication/10choose-admin.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

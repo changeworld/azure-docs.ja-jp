@@ -13,12 +13,10 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="09/23/2015"
+	ms.date="10/05/2015"
 	ms.author="ricksal"/>
 
 # 既存の Android アプリへの Mobile Services の追加 (JavaScript バックエンド)
-
-[AZURE.INCLUDE [mobile-services-selector-get-started-data](../../includes/mobile-services-selector-get-started-data.md)]
 
 ## 概要
 
@@ -92,7 +90,7 @@
 
    	![][9]
 
-   	**TodoItem** テーブルに、Mobile Services によって生成されたいくつかの値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
+   	**TodoItem** テーブルに、モバイル サービスによって生成されたいくつかの値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
 これで、Android 向けの**データの使用**に関するチュートリアルは終了です。
 
@@ -110,7 +108,7 @@
 
 次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [サーバー スクリプトを使用した Mobile Services のデータの検証および変更] <br/>Mobile Services でサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
+* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更] <br/>Mobile Services でサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
 * [ページングを使用したモバイル サービス クエリの改善] <br/>クエリ内でページングを使用して、1 回の要求で渡されるデータの量を制御する方法について説明します。
 
@@ -138,7 +136,7 @@
 
 
 <!-- URLs. -->
-[サーバー スクリプトを使用した Mobile Services のデータの検証および変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
 [ページングを使用したモバイル サービス クエリの改善]: /develop/mobile/tutorials/add-paging-to-data-android
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-android
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-android
@@ -151,4 +149,4 @@
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkID=282122
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

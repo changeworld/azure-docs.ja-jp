@@ -90,7 +90,6 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [Get started with Mobile Services]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
-[Get started with data]: mobile-services-javascript-backend-windows-universal-dotnet-get-started-data.md
 [認証の使用]: mobile-services-javascript-backend-windows-universal-dotnet-get-started-users.md
 
 [Send push notifications to authenticated users]: mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users.md
@@ -101,4 +100,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [MobileServiceClient]: http://go.microsoft.com/fwlink/p/?LinkId=302030
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO2-->

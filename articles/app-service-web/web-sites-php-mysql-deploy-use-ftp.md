@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure App Service で PHP-MySQL Web アプリを作成して FTP でデプロイする" 
-	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への FTP デプロイを使用する方法を説明するチュートリアル。" 
+	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への FTP デプロイメントを使用する方法を説明するチュートリアル。" 
 	services="app-service\web" 
 	documentationCenter="php" 
 	authors="tfitzmac" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="06/24/2015" 
+	ms.date="10/01/2015" 
 	ms.author="tomfitz"/>
 
 
@@ -70,9 +70,9 @@ Web アプリと MySQL データベースを作成するには、次のステッ
 
 	![Web アプリを開く][go-to-webapp]
 
-6. 下にスクロールすると、**[デプロイ資格情報の設定]** という項目があります。
+6. 下にスクロールすると、**[デプロイメント資格情報の設定]** という項目があります。
 
-	![デプロイ資格情報の設定][set-deployment-credentials]
+	![デプロイメント資格情報の設定][set-deployment-credentials]
 
 7. FTP 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。資格情報を保存します。作成したユーザー名とパスワードはメモしておいてください。
 
@@ -300,4 +300,4 @@ Web Apps で実行されている MySQL データベースに接続するには�
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

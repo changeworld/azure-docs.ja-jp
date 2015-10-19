@@ -3,7 +3,7 @@
    description="Web ベースのアプリケーションでキャッシュ インフラストラクチャとして高信頼アクターを使用する方法の設計パターン"
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="vturecek"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="08/05/2015"
-   ms.author="claudioc"/>
+   ms.author="vturecek"/>
 
 # 高信頼アクターの設計パターン: スマート キャッシュ
 Web 層、キャッシュ層、ストレージ層、および場合によっては worker 層の組み合わせは、現在のアプリケーションの標準的な部分とよく一致します。通常、キャッシュ層はパフォーマンスにとって非常に重要であり、実際には、それ自体が複数の階層で構成される場合があります。多くのキャッシュは単純なキーと値のペアですが、キャッシュとして使用される [Redis](http://redis.io) のような他のシステムはさらにリッチなセマンティクスを提供します。それでも、特別なキャッシュ層はセマンティクスの制限があり、さらに重要なことはまだ管理すべきもう 1 つの層であるということです。代わりにオブジェクトがローカル変数に状態を保持し、これらのオブジェクトを自動的に永続的ストアにスナップショットまたは永続化できるとしたらどうでしょうか。 さらに、リスト、並べ替えられたセット、キュー、およびその他のカスタム種類などのリッチなコレクションは、単にメンバー変数およびメソッドとしてモデル化されます。
@@ -302,4 +302,4 @@ public Task RefreshRates()
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-pattern-smart-cache/smartcache-arch.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

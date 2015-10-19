@@ -13,14 +13,14 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/22/2015"
+   ms.date="10/06/2015"
    ms.author="cherylmc"/>
 
 # ExpressRoute 回線の作成と変更
 
 この記事では、PowerShell コマンドレットとクラシック デプロイメント モデルを使用して、ExpressRoute 回線を作成する手順について説明します。以下の手順では、ExpressRoute 回線の状態確認、更新、または削除およびプロビジョニング解除の方法も示します。
 
->[AZURE.IMPORTANT]Azure は現在、2 つのデプロイ モデル (リソース マネージャーおよび従来のモデル) で使用できることを理解しておくことが重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイメント モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
+>[AZURE.IMPORTANT]Azure は現在、2 つのデプロイ モデル (リソース マネージャーおよび従来のモデル) で使用できることを理解しておくことが重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイメント モデルについては、「[Azure デプロイメント モデル](../azure-classic-rm.md)」をご覧ください。
 
 ## 構成の前提条件
 
@@ -153,21 +153,21 @@
 
 	新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
 	
-		**ServiceProviderProvisioningState :** NotProvisioned
+		ServiceProviderProvisioningState : NotProvisioned
 		
-		**Status                           :** Enabled
+		Status                           : Enabled
 
-	ServiceProviderProvisioningState はサービス プロバイダー側でのプロビジョニングの現在の状態に関する情報を提供し、Statusは Microsoft 側での状態を示します。ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
+	*ServiceProviderProvisioningState* はサービス プロバイダー側でのプロビジョニングの現在の状態に関する情報を提供し、Statusは Microsoft 側での状態を示します。ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
 
-		**ServiceProviderProvisioningState :** Provisioned
+		ServiceProviderProvisioningState : Provisioned
 		
-		**Status                           :** Enabled
+		Status                           : Enabled
 
 	回線は、接続プロバイダーが有効にしている間、次の状態になります。
 
-		**ServiceProviderProvisioningState :** Provisioned
+		ServiceProviderProvisioningState : Provisioned
 		
-		**Status                           :** Enabled
+		Status                           : Enabled
 
 
 
@@ -276,8 +276,8 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 		ServiceKey                       : *********************************
 		ServiceProviderName              : equinix
 		ServiceProviderProvisioningState : Provisioned
-		Sku                              : Premium
-		Status                           : Standard
+		Sku                              : Standard
+		Status                           : Enabled
 
 これで回線の Premium アドオンが無効になります。
 
@@ -321,7 +321,7 @@ ExpressRoute 回線サービス プロバイダーのプロビジョニング状
 
 ## 次のステップ
 
-- [ExpressRoute ルーティングの構成 (回線ピアリングの管理)](expressroute-howto-routing-classic.md)
-- [ExpressRoute 回線への仮想ネットワークのリンク](expresssroute-howto-linkvnet-classic.md) 
+- [ルーティングの構成](expressroute-howto-routing-classic.md)
+- [ExpressRoute 回線への VNet のリンク](expresssroute-howto-linkvnet-classic.md) 
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO2-->

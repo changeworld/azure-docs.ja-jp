@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/15/2015" 
+	ms.date="10/05/2015" 
 	ms.author="szark"/>
 
 #Azure 上の Linux における SSH の使用方法
@@ -179,4 +179,4 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->

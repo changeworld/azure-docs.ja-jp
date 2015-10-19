@@ -3,7 +3,7 @@
    description="Service Fabric 高信頼アクターのプログラミング モデルの概要"
    services="service-fabric"
    documentationCenter=".net"
-   authors="jessebenson"
+   authors="vturecek"
    manager="timlt"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="08/05/2015"
-   ms.author="claudioc"/>
+   ms.author="vturecek"/>
 
 # Service Fabric 高信頼アクターの概要
 高信頼アクター API は、[Service Fabric](service-fabric-technical-overview.md) が提供する 2 つの高度なフレームワークの 1 つです (もう 1 つのフレームワークは[高信頼サービス API](service-fabric-reliable-services-introduction.md))。
@@ -198,4 +198,4 @@ public interface IVoicemailBoxActor : IActor
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO2-->

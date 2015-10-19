@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure ポータルを使用したビデオ オン デマンド (VoD) の配信の概要 | Microsoft Azure"
+	pageTitle="Azure ポータルを使用したオンデマンド コンテンツ配信の概要 | Microsoft Azure"
 	description="このチュートリアルでは、Azure Media Services と Azure ポータルを使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順を紹介します。"
 	services="media-services"
 	documentationCenter=""
@@ -11,13 +11,14 @@
 	ms.service="media-services"
 	ms.workload="media"
 	ms.tgt_pltfrm="na"
-	ms.devlang="ne"
+	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/18/2015"
+	ms.date="10/05/2015"
 	ms.author="juliako"/>
 
 
-# Azure ポータルを使用してビデオ オン デマンド (VoD) の配信を開始する
+# Azure ポータルを使用したオンデマンド コンテンツ配信の概要
+
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
@@ -40,7 +41,7 @@
 
 1. [Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
 
-	![メディア サービスの簡易作成](./media/media-services-portal-get-started/wams-QuickCreate.png)
+	![Media Services の簡易作成](./media/media-services-portal-get-started/wams-QuickCreate.png)
 
 2. **[名前]** ボックスに新しいアカウントの名前を入力します。Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 ～ 24 文字です。
 
@@ -58,7 +59,7 @@
 
 	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーを示すダイアログ ボックスが表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
 
-	![[メディア サービス] ページ](./media/media-services-portal-get-started/wams-mediaservices-page.png)
+	![[Media Services] ページ](./media/media-services-portal-get-started/wams-mediaservices-page.png)
 
 	アカウント名をダブルクリックすると、既定で [クイック スタート] ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
@@ -78,7 +79,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 ストリーミング予約ユニットの数を変更するには、以下の手順を実行します。
 
-1. [Azure ポータル](https://manage.windowsazure.com/)で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
+1. [Azure ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
 
 2. [ストリーミング エンドポイント] ページを選択します。次に、変更するストリーミング エンドポイントをクリックします。
 
@@ -97,7 +98,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 ## コンテンツをアップロードする
 
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[メディア サービス]** をクリックし、目的の Media Services アカウント名をクリックします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックします。
 2. [コンテンツ] ページを選択します。
 3. ページまたはポータルの下部にある **[アップロード]** をクリックします。
 4. **[コンテンツのアップロード]** ダイアログ ボックスで、目的の資産ファイルを見つけます。ファイルをクリックして、**[開く]** をクリックするか、Enter キーを押します。
@@ -222,12 +223,18 @@ MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf
 
 
 
-##Media Services のラーニング パス
+##次のステップ
+
+###Media Services のラーニング パス
 
 AMS のラーニング パスについては、以下を参照してください。
 
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+### 他の情報をお探しですか。
+
+このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
 
 ### その他のリソース
 - <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - 今すぐビデオをオンラインにしましょう!</a>
@@ -254,4 +261,4 @@ AMS のラーニング パスについては、以下を参照してください
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO2-->
