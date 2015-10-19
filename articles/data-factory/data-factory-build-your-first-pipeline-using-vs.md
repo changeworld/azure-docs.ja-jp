@@ -39,7 +39,9 @@
 
 ### 前提条件
 
-コンピューターに Visual Studio 2013 がインストールされており、Azure SDK for Visual Studio 2013 がダウンロードされている必要があります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/)に移動して、**[.NET]** セクションにあるインストール項目の **[VS 2013]** をクリックします。[Visual Studio 2013]、[ツール]、[更新]、[Visual Studio ギャラリー]の順に移動し、そこで [Visual Studio の Azure Data Factory ツール] プラグイン エントリの [更新] をクリックします。
+コンピューターに:
+- Visual Studio 2013
+- がインストールされており、Azure SDK for Visual Studio 2013 がダウンロードされている必要があります。[Azure ダウンロード ページ](http://azure.microsoft.com/downloads/) に移動して、**.NET** セクションの**[VS 2013 install]** をクリックします。
 
 
 ### Visual Studio プロジェクトの作成 

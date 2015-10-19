@@ -21,7 +21,8 @@
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
+>[AZURE.NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
 
 このクイックスタートでは Azure Media Services (AMS) の REST API を使用するビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装について手順を追って説明します。
 
@@ -81,7 +82,8 @@ Azure Media Services にアクセスする際には、Azure Access Control Servi
 1. アクセス トークンを取得します。 
 2. Media Services URI に接続します。 
 	
-	>[AZURE.NOTE]https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。その新しい URI に再度コールする必要があります。
+	>[AZURE.NOTE]
+	https://media.windows.net に正常に接続すると、別の Media Services URI が指定された 301 リダイレクトが表示されます。その新しい URI に再度コールする必要があります。
 	> 
 	> ODATA API メタデータの説明が含まれる HTTP/1.1 200 応答が表示される場合もあります。
 3. 新しい URL に後続の API 呼び出しを投稿します。 
@@ -145,7 +147,8 @@ Media Services アカウントの AccountKey は、アクセス トークン要�
 	}
 	
 
->[AZURE.NOTE]"access\_token " と "expires\_in " の値は外部ストレージにキャッシュすることをお勧めします。後でそのストレージからトークンのデータを取り出し、Media Services REST API コールで再利用できます。これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
+>[AZURE.NOTE]
+"access\_token " と "expires\_in " の値は外部ストレージにキャッシュすることをお勧めします。後でそのストレージからトークンのデータを取り出し、Media Services REST API コールで再利用できます。これはトークンが複数のプロセスやコンピューターで安全に共有される場合に、特に便利です。
 
 アクセス トークンの "expires\_in" 値を確認し、必要に応じて新しいトークンで REST API コールを更新してください。
 
@@ -1008,7 +1011,8 @@ MPEG DASH のストリーミング URL の形式は次のとおりです。
 
 成功した場合、作成した AccessPolicy エンティティについて記述した 201 サクセス コードが返されます。これで、配信して Locator エンティティを作成するファイルが含まれている資産 (出力資産など) の Asset Id と AccessPolicy Id を使用できます。
 
->[AZURE.NOTE]この基本的なワークフローは (このトピックで既に説明した) 資産の取り込み時にファイルをアップロードするのと同じです。また、ファイルのアップロードのように、ファイルにすぐにアクセスする必要がある場合は、StartTime 値を現在の時刻より 5 分前に設定します。この操作は、クライアントと Media Services との間でクロック スキューがある可能性があるために必要です。StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。
+>[AZURE.NOTE]
+この基本的なワークフローは (このトピックで既に説明した) 資産の取り込み時にファイルをアップロードするのと同じです。また、ファイルのアップロードのように、ファイルにすぐにアクセスする必要がある場合は、StartTime 値を現在の時刻より 5 分前に設定します。この操作は、クライアントと Media Services との間でクロック スキューがある可能性があるために必要です。StartTime 値の DateTime 形式は、YYYY-MM-DDTHH:mm:ssZ とする必要があります (たとえば、"2014-05-23T17:53:50Z")。
 
 
 ###コンテンツをダウンロードするための SAS URL を作成する 
@@ -1074,7 +1078,8 @@ MPEG DASH のストリーミング URL の形式は次のとおりです。
 
 返された **Path** プロパティには、SAS URL が含まれています。
 
->[AZURE.NOTE]ストレージ暗号化コンテンツをダウンロードする場合は、表示する前に手動で暗号化を解除するか、または処理タスク内の Storage Decryption MediaProcessor を使用して、処理されたファイルを OutputAsset にクリア テキストで出力し、その Asset からダウンロードする必要があります。処理の詳細については、「Media Services REST API によるエンコード ジョブの作成」をご覧ください。また、作成した後は SAS URL ロケーターを更新できません。たとえば、更新された StartTime 値を持つ同じロケーターを再利用することはできません。これは、SAS URL の作成方法による制限です。ロケーターの有効期限が切れた後の資産にダウンロードのためにアクセスする場合、新しい StartTime で新しくロケーターを作成する必要があります。
+>[AZURE.NOTE]
+ストレージ暗号化コンテンツをダウンロードする場合は、表示する前に手動で暗号化を解除するか、または処理タスク内の Storage Decryption MediaProcessor を使用して、処理されたファイルを OutputAsset にクリア テキストで出力し、その Asset からダウンロードする必要があります。処理の詳細については、「Media Services REST API によるエンコード ジョブの作成」をご覧ください。また、作成した後は SAS URL ロケーターを更新できません。たとえば、更新された StartTime 値を持つ同じロケーターを再利用することはできません。これは、SAS URL の作成方法による制限です。ロケーターの有効期限が切れた後の資産にダウンロードのためにアクセスする場合、新しい StartTime で新しくロケーターを作成する必要があります。
 
 ###ファイルをダウンロードする
 
