@@ -4,7 +4,7 @@
 
 1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトに **CreateDeviceIdentity** という名前を付けます。
 
-	![][10]
+   	![][10]
 
 2. ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューション用 NuGet パッケージの管理]** をクリックします。
 
@@ -134,4 +134,4 @@
 [11]: ./media/iot-hub-getstarted-cloud-csharp/create-identity-csharp2.png
 [12]: ./media/iot-hub-getstarted-cloud-csharp/create-identity-csharp3.png
 
-<!---HONumber=Oct15_HO3-->
+<!----HONumber=Oct15_HO3-->
