@@ -1,6 +1,7 @@
 <properties
 	pageTitle="HBase のチュートリアル: Hadoop での HBase の使用 | Microsoft Azure"
 	description="HDInsight の Hadoop で Apache HBase を使用するには、この HBase チュートリアルの手順に従ってください。HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
+	keywords="apache hbase,hbase,hbase shell,hbase tutorial"
 	services="hdinsight"
 	documentationCenter=""
 	authors="mumian"
@@ -55,7 +56,7 @@ HDInsight で HBase クラスターをプロビジョニングする方法、HBa
 	>[AZURE.NOTE]**[カスタム作成]** オプションも使用できます。
 3. **クラスター名**、**クラスター サイズ**、HTTP ユーザーのパスワード、**ストレージ アカウント**を入力します。
 
-	![Provision HBase cluster in HDInsight][img-hdinsight-hbase-cluster-quick-create]
+	![HDInsight での HBase クラスターのプロビジョニング][img-hdinsight-hbase-cluster-quick-create]
 
 	既定の HTTP ユーザー名は admin です。名前は、[カスタム作成] オプションを使用してカスタマイズできます。
 
@@ -246,7 +247,7 @@ Hive を使用して HBase テーブルのデータを照会できます。こ�
 
 GitHub から HBase REST API Client Library for .NET をダウンロードして HBase .NET SDK が使用できるように、プロジェクトをビルドする必要があります。このタスクを実行する手順は、次のとおりです。
 
-1. 新しい C#Visual Studio Windows デスクトップ コンソール アプリケーションを作成します。
+1. 新しい C# Visual Studio Windows デスクトップ コンソール アプリケーションを作成します。
 2. **[ツール]** メニュー、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックして NuGet のパッケージ マネージャー コンソールを開きます。
 3. コンソールで次の NuGet コマンドを実行します。
 
@@ -328,7 +329,7 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
 
 
 ## 次の手順
-この HDInsight の HBase のチュートリアルでは、HBase クラスターのプロビジョニング方法、テーブルの作成方法、作成したテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C#REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
+この HDInsight の HBase のチュートリアルでは、HBase クラスターのプロビジョニング方法、テーブルの作成方法、作成したテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
 
 詳細については、次を参照してください。
 
@@ -364,4 +365,4 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

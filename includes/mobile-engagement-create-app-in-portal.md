@@ -25,4 +25,4 @@
 
    	![](./media/mobile-engagement-create-app-in-portal/app-connection-info-page.png)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

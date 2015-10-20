@@ -19,7 +19,8 @@
  
 	- **[場所]** を使用して、DocumentDB アカウントのホストの場所を指定します。
 
-4.	新しい DocumentDB アカウントのオプションを構成したら、**[作成]** をクリックします。DocumentDB アカウントの作成には数分かかる場合があります。状態を確認するには、スタート画面で進行状況を監視してください。![スタート画面の [作成中] タイルのスクリーン ショット (オンライン データベース クリエーター)](media/documentdb-create-dbaccount/ca4.png)
+4.	新しい DocumentDB アカウントのオプションを構成したら、**[作成]** をクリックします。DocumentDB アカウントの作成には数分かかる場合があります。状態を確認するには、スタート画面で進行状況を監視してください。  
+	![スタート画面の [作成中] タイルのスクリーン ショット (オンライン データベース クリエーター)](media/documentdb-create-dbaccount/ca4.png)
   
 	または、通知ハブから進行状況を監視できます。
 
@@ -35,4 +36,4 @@
 [Next steps]: #NextSteps
 [documentdb-manage]: ../articles/documentdb/documentdb-manage.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

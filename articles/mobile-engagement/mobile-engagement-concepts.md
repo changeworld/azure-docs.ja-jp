@@ -5,7 +5,7 @@
 	documentationCenter="mobile"
 	authors="piyushjo"
 	manager="dwrede"
-	editor=""/>
+	editor="" />
 
 <tags
 	ms.service="mobile-engagement"
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="get-started-article"
 	ms.date="08/10/2015"
-	ms.author="piyushjo"/>
+	ms.author="piyushjo" />
 
 # Azure Mobile Engagement の概念
 
@@ -85,4 +85,4 @@ extras は JSON オブジェクトと同様に構造化されます。キー/値
 - [iOS SDK for Azure Mobile Engagement](mobile-engagement-ios-sdk-overview.md)
 - [Android SDK for Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

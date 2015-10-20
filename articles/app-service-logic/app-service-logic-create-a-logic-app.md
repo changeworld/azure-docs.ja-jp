@@ -1,6 +1,6 @@
 <properties
 	pageTitle="ロジック アプリを作成する | Microsoft Azure"
-	description="App Services ロジック アプリを作成する方法を説明します。"
+	description="基本的な App Services ロジック アプリを作成する方法を説明します。"
 	authors="stepsic-microsoft-com"
 	manager="dwrede"
 	editor=""
@@ -21,8 +21,8 @@
 | クイック リファレンス |
 | --------------- |
 | [Logic Apps の定義言語](https://msdn.microsoft.com/library/azure/dn948512.aspx?f=255&MSPPError=-2147217396) |
-| [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/ja-JP/documentation/articles/app-service-logic-connectors-list/) |
-| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurelogicapps) |
+| [Logic Apps コネクターのドキュメント](https://azure.microsoft.com/ja-jp/documentation/articles/app-service-logic-connectors-list/) |
+| [Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=azurelogicapps) |
 
 このトピックでは、初めての方に向けて [App Service Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。今回は、興味を持ったツイートを Dropbox フォルダーに保存できるようにするまでの流れを見ていきます。
 
@@ -46,7 +46,7 @@
 4. **[パッケージの設定]** を選択します。ここに、Twitter アプリケーションからの情報を入力する必要があります。次の手順で、無料のアプリケーションを設定できます。
 	1. [[Twitter アプリの登録ページ]](http://apps.twitter.com) に移動します。
 	2. 新しいアプリを作成します。
-	3. 名前と説明を入力します。Web サイトの任意の URL を入力し、コールバック URL は空白のままにしておくことができます。
+	3. 名前と説明を入力します。Web サイトの URL とコールバック URL として、任意の URL を入力できます (空白にはしないでください)。
 	4. 登録が完了したら、Twitter の **Consumer Key** を Azure の **clientId** フィールドにコピーし、Twitter の **Consumer Secret** を **clientSecret** にコピーします。
 	5. Azure ウィンドウで **[OK]** をクリックして、他の API 設定に戻ります。
 
@@ -184,4 +184,4 @@
 [Use logic app features]: app-service-logic-use-logic-app-features.md
 [ロジック アプリの機能を使用する]: app-service-logic-use-logic-app-features.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

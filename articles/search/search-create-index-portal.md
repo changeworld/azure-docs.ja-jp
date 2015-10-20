@@ -100,4 +100,4 @@ Azure Search では、既定で searchable、 facetable、filterable などの�
 [4]: ./media/search-create-index-portal/AzureSearch-PortalIndex-4.PNG
 [5]: ./media/search-create-index-portal/AzureSearch-PortalIndex-5.PNG
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

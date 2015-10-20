@@ -36,11 +36,11 @@
 
 左側の **[API Management]** メニューにある **[成果物]** をクリックして、**[成果物]** ページを表示します。
 
-![Add product][api-management-add-product]
+![製品の追加][api-management-add-product]
 
 **[成果物の追加]** をクリックして **[新しい成果物の追加]** ダイアログ ボックスを表示します。
 
-![Add new product][api-management-new-product-window]
+![新しいの製品を追加][api-management-new-product-window]
 
 **[タイトル]** ボックスに、「**無料試用版**」と入力します。
 
@@ -54,13 +54,13 @@ API Management の成果物は、保護することも開くこともできま�
 
 すべての値を入力したら、**[保存]** をクリックして成果物を作成します。
 
-![Product added][api-management-product-added]
+![製品が追加されました][api-management-product-added]
 
 **Administrators** グループのユーザーには、既定で、新しい成果物が表示されます。ここでは、**Developers** グループを追加します。**[無料試用版]** をクリックし、**[表示]** タブをクリックします。
 
 >API Management では、開発者に成果物の表示を許可するかどうかが、グループを使用して管理されます。成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。詳細については、「[How to create and use groups in Azure API Management (Azure API Management でグループを作成して使用する方法)][]」をご覧ください。
 
-![Add developers group][api-management-add-developers-group]
+![開発者グループの追加][api-management-add-developers-group]
 
 **[Developers]** チェック ボックスをオンにし、**[保存]** をクリックします。
 
@@ -72,33 +72,33 @@ API Management の成果物は、保護することも開くこともできま�
 
 成果物を構成するには、左側の **[API Management]** メニューにある **[成果物]** をクリックし、**[無料試用版]** をクリックします。
 
-![Configure product][api-management-configure-product]
+![製品の構成][api-management-configure-product]
 
 **[成果物への API の追加]** をクリックします。
 
-![Add API to product][api-management-add-api]
+![API を製品に追加][api-management-add-api]
 
 **[Echo API]** を選択して、**[保存]** をクリックします。
 
-![Add Echo API][api-management-add-echo-api]
+![Echo API の追加][api-management-add-echo-api]
 
 ## <a name="policies"> </a>呼び出しレート制限ポリシーとクォータ ポリシーを構成するには
 
 レート制限とクォータは、ポリシー エディターで構成します。左側の **[API Management]** メニューの下にある **[ポリシー]** をクリックします。**[成果物]** ボックスの一覧で **[無料試用版]** をクリックします。
 
-![Product policy][api-management-product-policy]
+![製品のポリシー][api-management-product-policy]
 
 **[ポリシーの追加]** をクリックしてポリシー テンプレートをインポートし、レート制限とクォータ ポリシーの作成を開始します。
 
-![Add policy][api-management-add-policy]
+![ポリシーの追加][api-management-add-policy]
 
 ポリシーを挿入し、ポリシー テンプレートの **inbound** または **outbound** セクションにカーソルを置きます。レート制限ポリシーとクォータ ポリシーは inbound ポリシーなので、カーソルを inbound 要素に置きます。
 
-![Policy editor][api-management-policy-editor-inbound]
+![ポリシー エディター][api-management-policy-editor-inbound]
 
 このチュートリアルでは、[呼び出しレート制限][] と [使用量クォータの設定][] という 2 つのポリシーを追加します。
 
-![Policy statements][api-management-limit-policies]
+![ポリシー ステートメント][api-management-limit-policies]
 
 **inbound** ポリシー要素にカーソルを置いたら、**呼び出しレート制限** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
 
@@ -163,17 +163,17 @@ API Management の成果物は、保護することも開くこともできま�
 
 必要なポリシーの構成が完成したら、**[保存]** をクリックします。
 
-![Save policy][api-management-policy-save]
+![ポリシーの保存][api-management-policy-save]
 
 ## <a name="publish-product"> </a> 成果物を発行するには
 
 API を追加し、ポリシーを構成したら、成果物を開発者が使用できるように発行する必要があります。成果物を構成するには、左側の **[API Management]** メニューにある **[成果物]** をクリックし、**[無料試用版]** をクリックします。
 
-![Configure product][api-management-configure-product]
+![製品の構成][api-management-configure-product]
 
 **[発行]** をクリックし、**[はい。発行します]** をクリックして確定します。
 
-![Publish product][api-management-publish-product]
+![製品の発行][api-management-publish-product]
 
 ## <a name="subscribe-account"> </a>成果物のサブスクリプションを開発者アカウントに追加するには
 
@@ -183,23 +183,23 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 
 左側の **[API Management]** メニューにある **[ユーザー]** をクリックし、目的の開発者アカウントの名前をクリックします。この例では、**Clayton Gragg** という開発者アカウントを使用します。
 
-![Configure developer][api-management-configure-developer]
+![開発者の構成][api-management-configure-developer]
 
 **[サブスクリプションの追加]** をクリックします。
 
-![Add subscription][api-management-add-subscription-menu]
+![サブスクリプションの追加][api-management-add-subscription-menu]
 
 **[無料試用版]** を選択し、**[サブスクライブ]** をクリックします。
 
-![Add subscription][api-management-add-subscription]
+![サブスクリプションの追加][api-management-add-subscription]
 
 >[AZURE.NOTE] このチュートリアルの場合、無料試用版の成果物の複数の同時サブスクリプションは無効になっています。有効になっている場合は、次の例に示すように、サブスクリプションに名前を付けるように促されます。
 
-![Add subscription][api-management-add-subscription-multiple]
+![サブスクリプションの追加][api-management-add-subscription-multiple]
 
 **[サブスクライブ]** をクリックすると、ユーザーの **[サブスクリプション]** リストに成果物が表示されます。
 
-![Subscription added][api-management-subscription-added]
+![サブスクリプションを追加しました][api-management-subscription-added]
 
 ## <a name="test-rate-limit"> </a>操作を呼び出してレート制限をテストするには
 
@@ -213,21 +213,21 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 
 **[GET リソース]** をクリックし、**[コンソールを開く]** をクリックします。
 
-![Open console][api-management-open-console]
+![コンソールを開く][api-management-open-console]
 
 既定のパラメーターの値はそのままにし、対象となる無料試用版の成果物のサブスクリプション キーを選択します。
 
-![Subscription key][api-management-select-key]
+![サブスクリプション キー][api-management-select-key]
 
 >[AZURE.NOTE] 複数のサブスクリプションがある場合は、必ず、**[無料試用版]** のキーを選択してください。そうしないと、これまでの手順で構成したポリシーが有効になりません。
 
 **[HTTP GET]** をクリックして応答を確認します。**[応答のステータス]** が "**200 OK**" と表示されることに注目してください。
 
-![Operation results][api-management-http-get-results]
+![操作の結果][api-management-http-get-results]
 
 呼び出しレート制限ポリシー (1 分間に 10 回) を超える頻度で **[HTTP Get]** をクリックします。レート制限ポリシーを超えると、応答ステータスとして "**429 要求が多すぎます**" が返されます。
 
-![Operation results][api-management-http-get-429]
+![操作の結果][api-management-http-get-429]
 
 **[応答ヘッダー]** 領域と **[応答の内容]** 領域は、再試行が成功するまでの残り時間を示します。
 
@@ -292,4 +292,4 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 [呼び出しレート制限]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [使用量クォータの設定]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

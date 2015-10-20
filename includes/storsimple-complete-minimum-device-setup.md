@@ -38,4 +38,4 @@
 
 最小限のデバイス設定を完了する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/minimum-storsimple-device-setup/)を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

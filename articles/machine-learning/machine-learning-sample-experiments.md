@@ -39,4 +39,4 @@
 - [Web サービス API を作成する](machine-learning-publish-a-machine-learning-web-service.md)
 - [すぐに使用できるアプリケーションを参照する](https://datamarket.azure.com/browse?query=machine+learning)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

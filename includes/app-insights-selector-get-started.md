@@ -7,4 +7,4 @@
 - [Android](https://github.com/Microsoft/ApplicationInsights-Android/blob/master/README.md)
 - [Other](../article/application-insights/app-insights-platforms.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

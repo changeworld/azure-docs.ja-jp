@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Backup サービスを Windows Server のバックアップ用に構成する | Microsoft Azure"
-	description="このチュートリアルを使用し、Microsoft の Azure クラウド ソリューションの Backup サービスを使って、Windows Server をクラウドにバックアップする方法について学習します。"
+	description="このチュートリアルでは、Microsoft の Azure クラウド ソリューションの Backup サービスを使って、Windows Server をクラウドにバックアップする方法について学習します。"
 	services="backup"
 	documentationCenter=""
 	authors="Jim-Parker"
@@ -12,7 +12,7 @@
 # Azure Backup を Windows Server のバックアップ用に構成する
 
 この記事では、Azure Backup 機能を有効にする手順について説明します。Windows Server または Windows クライアントを Azure にバックアップするには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
->[AZURE.NOTE]以前は、バックアップ サーバーを登録するために、X.509 v3 証明書の作成や取得が必要でした。証明書は現在でもサポートされていますが、サーバーへの Azure 資格情報コンテナーの登録を容易にするために、[クイック スタート] ページから資格情報コンテナーの資格情報を生成できます。
+>[AZURE.NOTE]以前は、バックアップ サーバーを登録するために、X.509 v3 証明書の作成や取得が必要でした。証明書は現在でもサポートされていますが、サーバーへの Azure 資格情報コンテナーの登録を容易にするために、[クイック スタート] ページから資格情報コンテナーの資格情報を作成できます。
 
 ## 開始する前に
 ファイルやデータを Windows Server から Azure にバックアップするには、まず次のことを行う必要があります。
@@ -34,4 +34,4 @@
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 - [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -19,6 +19,12 @@
 
 # DocumentDB を使用した Java Web アプリケーションの作成
 
+> [AZURE.SELECTOR]
+- [.NET](documentdb-dotnet-application.md)
+- [Node.js](documentdb-nodejs-application.md)
+- [Java](documentdb-java-application.md)
+- [Python](documentdb-python-application.md)
+
 この Java Web アプリケーション チュートリアルでは、[Microsoft Azure DocumentDB](https://portal.azure.com/#gallery/Microsoft.DocumentDB) サービスを使用して、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。このトピックでは、次の内容を説明します。
 
 - Eclipse で、基本的な JSP アプリケーションを作成する方法。
@@ -33,7 +39,7 @@
 ##<a id="Prerequisites"></a>この Java Web アプリケーション チュートリアルの前提条件
 このアプリケーション開発チュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- アクティブな Azure アカウントアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](../../pricing/free-trial/)をご覧ください。
+- アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](../../pricing/free-trial/)を参照してください。
 - [Java Development Kit (JDK) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 - [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)。
 - [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト](../web-sites-java-get-started.md)。
@@ -231,7 +237,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		    }
 		}
 
-4. 次の手順では、いくつかのコードを記述して、コレクションに TodoItems を持続的にアクセスさせます。この例では、[Gson](https://code.google.com/p/google-gson/) を使用して、TodoItem Plain Old Java Objects (POJO) を JSON ドキュメントにシリアル化およびシリアル化解除します。[Jackson](http://jackson.codehaus.org/) または独自のカスタム シリアライザーも POJO をシリアル化するための優れた代替手段です。
+4. 次の手順では、いくつかのコードを記述して、コレクションに TodoItems を持続的にアクセスさせます。この例では、[Gson](https://code.google.com/p/google-gson/) を使用して、TodoItem Plain Old Java Objects (POJO) を JSON ドキュメントにシリアル化および逆シリアル化します。[Jackson](http://jackson.codehaus.org/) または独自のカスタム シリアライザーも POJO をシリアル化するための優れた代替手段です。
 
 	    // We'll use Gson for POJO <=> JSON serialization for this example.
 	    private static Gson gson = new Gson();
@@ -276,7 +282,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	        }
 	    }
 
-6. 手順 5. のヘルパー メソッドを使用して、id により TodoItem の JSON ドキュメントを取得し、POJO にシリアル化解除できます。
+6. 手順 5. のヘルパー メソッドを使用して、id により TodoItem の JSON ドキュメントを取得し、POJO に逆シリアル化できます。
 
 	    @Override
 	    public TodoItem readTodoItem(String id) {
@@ -737,7 +743,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 
 ##<a id="Deploy"></a>手順 6: Azure Websites に Java アプリケーションをデプロイする
 
-Azure Web サイトでの Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: GIT) または FTP のいずれかを使用してアップロードするだけです。
+Azure Websites での Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: GIT) または FTP のいずれかを使用してアップロードするだけです。
 
 1. アプリケーションを WAR としてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、**[Export]**、**[WAR File]** の順にクリックします。 
 2. **[WAR Export]** ウィンドウで、次の操作を行います。
@@ -780,4 +786,4 @@ Azure Web サイトでの Java アプリケーションのデプロイは簡単�
 [1]: media/documentdb-java-application/keys.png
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

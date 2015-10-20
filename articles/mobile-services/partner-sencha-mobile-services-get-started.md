@@ -68,11 +68,11 @@
 
 1. 管理ポータルの **appKey** と **appUrl** をメモします。これらは、このチュートリアルの他のセクションで使用します。
 
-    ![app key](./media/partner-sencha-mobile-services-get-started/mobile-app-key-portal.png)
+    ![アプリ キー](./media/partner-sencha-mobile-services-get-started/mobile-app-key-portal.png)
 
 1. **[構成]** タブで、**[クロス オリジン リソース共有 (CORS)]** の **[ホスト名からの要求を許可する]** に `localhost` が既に表示されていることを確認します。表示されていない場合は、**[ホスト名]** フィールドに「`localhost`」と入力して、**[保存]** をクリックします。
 
-    ![Setup CORS for localhost](./media/partner-sencha-mobile-services-get-started/mobile-services-set-cors-localhost.png)
+    ![ローカルホストの CORS をセットアップ](./media/partner-sencha-mobile-services-get-started/mobile-services-set-cors-localhost.png)
 
 ##Touch アプリケーションの生成
 
@@ -667,23 +667,23 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
 
     * *sencha web start* : これによって、アプリケーションをテストするローカル Web サーバーが起動します。
 
-    ![sencha web start](./media/partner-sencha-mobile-services-get-started/sencha-web-start.png)
+    ![Sencha Web スタート](./media/partner-sencha-mobile-services-get-started/sencha-web-start.png)
 
   3. アプリケーションを開始するために、ターミナルに示された URL を Web ブラウザーで開きます (たとえば http://localhost:1841)http://localhost:1841)。
 
   4. アプリケーションで、意味のあるテキスト (たとえば、"チュートリアルの完了") を入力し、**[Add]** をクリックします。
 
-    ![new todo item](./media/partner-sencha-mobile-services-get-started/new-todo-item.png)
+    ![新しい ToDo 項目](./media/partner-sencha-mobile-services-get-started/new-todo-item.png)
 
     これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。
 
   5. 管理ポータルに戻り、**[データ]** タブ、TodoItems テーブルの順にクリックします。
 
-    ![Todo Items table](./media/partner-sencha-mobile-services-get-started/mobile-data-tab.png)
+    ![ToDo 項目 テーブル](./media/partner-sencha-mobile-services-get-started/mobile-data-tab.png)
 
     これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
-    ![browse todo table](./media/partner-sencha-mobile-services-get-started/mobile-data-browse.png)
+    ![ToDo テーブルを参照する](./media/partner-sencha-mobile-services-get-started/mobile-data-browse.png)
 
 ##次のステップ
 ファースト ステップ ガイドはこれで完了です。Sencha による Mobile Services で重要になるこれ以外の作業については、以下のトピックを参照してください。
@@ -701,7 +701,7 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
 ##その他のリソース
 
   * [Sencha Touch のダウンロード](http://pages.sencha.com/touch-for-azure.html)
-  * [Sencha Touch Extensions for Azure](https://market.sencha.com/extensions/sencha-touch-extensions-for-windows-azure)
+  * [Azure 用 Sencha Touch Extension](https://market.sencha.com/extensions/sencha-touch-extensions-for-windows-azure)
 
 
 ##概要
@@ -716,4 +716,4 @@ Sencha Touch のさらなる概要については、全[ガイド](http://docs.s
 <!-- images -->
 [0]: ./media/partner-sencha-mobile-services-get-started/finished-app.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

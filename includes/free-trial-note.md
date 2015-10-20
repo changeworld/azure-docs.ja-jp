@@ -4,4 +4,4 @@
   > 
   > + [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。MSDN サブスクリプションにより、有料の Azure サービスを使用できるクレジットが毎月提供されます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

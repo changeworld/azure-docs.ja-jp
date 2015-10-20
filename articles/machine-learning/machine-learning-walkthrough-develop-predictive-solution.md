@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/08/2015"
+	ms.date="10/13/2015"
 	ms.author="garye"/>
 
 
@@ -30,6 +30,8 @@
 
 Machine Learning Studio を開くには、[https://studio.azureml.net/Home](https://studio.azureml.net/Home) のリンクをクリックします。Machine Learning Studio の概要の詳細については、「[Microsoft Azure Machine Learning Studio ホーム](https://studio.azureml.net/)」をご覧ください。
 
+>[AZURE.TIP]Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」参照してください。
+
 信用リスク評価ソリューションを作成するのには、次の手順に従います。
 
 1.	[Machine Learning ワークスペースの作成](machine-learning-walkthrough-1-create-ml-workspace.md)
@@ -41,4 +43,4 @@ Machine Learning Studio を開くには、[https://studio.azureml.net/Home](http
 
 このチュートリアルは、Machine Learning Studio に含まれる「[Credit risk prediction sample experiment (クレジット リスク予測のサンプル実験)](../machine-learning-sample-credit-risk-prediction.md)」の簡略版に基づきます。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

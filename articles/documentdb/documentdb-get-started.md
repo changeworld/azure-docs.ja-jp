@@ -19,7 +19,11 @@
 
 #DocumentDB .NET SDK の使用  
 
-DocumentDB .NET SDK の使用へようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、照会するコンソール アプリケーションを準備することができます。
+> [AZURE.SELECTOR]
+- [.NET](documentdb-get-started.md)
+- [Node.js](documentdb-nodejs-get-started.md)
+
+DocumentDB .NET SDK の使用へようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
 
 ここで説明する操作は以下のとおりです。
 
@@ -28,10 +32,10 @@ DocumentDB .NET SDK の使用へようこそ。 このチュートリアルに�
 - データベースを作成する
 - コレクションを作成する
 - JSON ドキュメントを作成する
-- コレクションを照会する
+- コレクションをクエリする
 - データベースを削除する
 
-時間がなくても 心配はありません。 [GitHub](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/get-started) で完全なソリューションを入手できます。手順については「[完全なソリューションの取得](#GetSolution)」を参照してください。
+時間がなくても 心配はありません。 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) で完全なソリューションを入手できます。手順については「[完全なソリューションの取得](#GetSolution)」を参照してください。
 
 その後で、このページの上部または下部にある投票ボタンを使用して、フィードバックをお寄せください。マイクロソフトから直接ご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
 
@@ -41,8 +45,8 @@ DocumentDB .NET SDK の使用へようこそ。 このチュートリアルに�
 
 以下のものがそろっていることを確認してください。
 
-- アクティブな Azure アカウント。これがない場合は、[Azure の無料評価版](http://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-- [Visual Studio 2013 / Visual Studio 2015](http://www.visualstudio.com/)。
+- アクティブな Azure アカウント。これがない場合は、[Azure の無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+- [Visual Studio 2013/Visual Studio 2015](http://www.visualstudio.com/)。
 
 ## 手順 1: DocumentDB アカウントを作成する
 
@@ -102,7 +106,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 		}
 	}
 
-> [AZURE.WARNING]ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するために資格情報をあえてソース コード内に記述しています。運用環境で資格情報を格納する方法の詳細については、「[Azure Web Sites: How Application Strings and Connection Strings Work (Azure Web Sites: アプリケーション文字列と接続文字列の動作)](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」を参照してください。ソース コードの外部に資格情報を格納する例については、[GitHub](https://github.com/Azure/azure-documentdb-net/blob/master/tutorials/get-started/src/Program.cs) のサンプル アプリケーションをご覧ください。
+> [AZURE.WARNING]ソース コード内に資格情報を保存することは絶対に避けてください。このサンプルでは、単純化するために資格情報をあえてソース コード内に記述しています。運用環境で資格情報を格納する方法の詳細については、「[Azure Web Sites: How Application Strings and Connection Strings Work (Azure Web Sites: アプリケーション文字列と接続文字列の動作)](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」を参照してください。ソース コードの外部に資格情報を格納する例については、[GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) のサンプル アプリケーションをご覧ください。
 
 これで、DocumentDB アカウントへの接続方法および **DocumentClient** クラスのインスタンスの作成方法がわかりました。次に、DocumentDB リソースの使用方法について説明します。
 
@@ -456,7 +460,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 この記事のすべてのサンプルを含む GetStarted ソリューションをビルドするには、以下が必要です。
 
 -   [DocumentDB アカウント][documentdb-create-account]。
--   GitHub で入手可能な [GetStarted](https://github.com/Azure/azure-documentdb-net/tree/master/tutorials/get-started) ソリューション。
+-   GitHub で入手可能な [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) ソリューション。
 
 Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリューション エクスプローラーで **GetStarted** ソリューションを右クリックし、**[NuGet パッケージの復元を有効にする]** をクリックします。次に、「[DocumentDB アカウントへの接続](#Connect)」の説明に従って、App.config ファイルの EndpointUrl と AuthorizationKey の値を更新します。
 
@@ -474,4 +478,4 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 [keys]: media/documentdb-get-started/keys.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

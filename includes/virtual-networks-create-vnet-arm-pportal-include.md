@@ -35,4 +35,4 @@ Azure プレビュー ポータルを使用して、上記のシナリオに基�
 
 	![VNet 内のサブネットの一覧](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

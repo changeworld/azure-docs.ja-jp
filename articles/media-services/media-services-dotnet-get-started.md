@@ -119,9 +119,14 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 4. App.config ファイルを開き (既定で追加されていない場合はファイルをプロジェクトに追加してください)、ファイルに *appSettings* セクションを追加します。Azure Media Services のアカウント名とアカウント キーの値を設定します。次の例をご覧ください。アカウント名とキー情報を取得するには、Azure ポータルを開いて Media Services のアカウントを選択し、**[キーの管理]** をクリックします。
 
-	<configuration> ... <appSettings> <add key="MediaServicesAccountName" value="Media-Services-Account-Name" /> <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" /> </appSettings>
-	  
-	</configuration>ion&gt; </code></pre>
+	<pre><code>
+&lt;configuration>
+    &lt;appSettings>
+	&lt;add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
+    	&lt;add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
+    &lt;/appSettings>
+&lt;/configuration>
+</code></pre>
 
 5. Program.cs ファイルの先頭にある既存の **using** ステートメントを次のコードで上書きします。
 
@@ -244,7 +249,6 @@ Media Services に取り込んだ資産には、メディアのエンコード�
 ジョブが完了したら、アセットをストリーミングしたり、トランスコードによって作成された MP4 ファイルをプログレッシブにダウンロードしたりできます。
 MP4 ファイルをプログレッシブにダウンロードするためにオンデマンド ストリーミング ユニットを取得する必要はありません。
 
-
 次のメソッドを Program クラスに追加します。
 
 	static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
@@ -289,11 +293,11 @@ MP4 ファイルをプログレッシブにダウンロードするためにオ�
 
 スムーズ ストリーミングのストリーミング URL の形式は次のとおりです。
 
-	 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
+	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
 HLS のストリーミング URL の形式は次のとおりです。
 
-	 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
 MPEG DASH のストリーミング URL の形式は次のとおりです。
 
@@ -435,6 +439,6 @@ AMS のラーニング パスについては、以下を参照してください
 
 <!-- URLs. -->
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
-  [Portal]: http://manage.windowsazure.com/
+  [管理ポータル]: http://manage.windowsazure.com/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

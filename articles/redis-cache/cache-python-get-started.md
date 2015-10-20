@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="08/25/2015"
+	ms.date="10/05/2015"
 	ms.author="sdanie"/>
 
 # Python で Azure Redis Cache を使用する方法
@@ -59,4 +59,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 [1]: ./media/cache-python-get-started/cache01.png
 [2]: ./media/cache-python-get-started/cache02.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

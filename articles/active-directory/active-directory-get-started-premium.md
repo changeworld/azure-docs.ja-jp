@@ -4,6 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="MarkusVi"
+	writer="markvi"
 	manager="stevenpo" 
 	editor="LisaToft"/>
 
@@ -121,4 +122,4 @@ Microsoft クラウド サービスで利用できるサービスと機能は、
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

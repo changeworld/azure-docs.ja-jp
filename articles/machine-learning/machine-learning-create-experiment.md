@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="09/09/2015"
+	ms.date="10/13/2015"
 	ms.author="garye"/>
 
-#Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する
+# Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する
 
 このチュートリアルでは、製造仕様と技術仕様などのさまざまな変数に基づいて自動車の価格を予測する線形回帰モデルを作成します。これを行うには、Microsoft Azure Machine Learning Studio を使用して、簡単な予測分析の実験を開発し、繰り返します。
 
@@ -27,10 +27,12 @@ Machine Learning Studio の実験では、コンポーネントをキャンバ�
 
 Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)) に進み、**[開始する]** ボタンをクリックします。[ゲスト アクセス] を選択するか、Microsoft アカウントを使用してサインインできます。
 
-Machine Learning Studio に関する全般的な情報については、「[Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」をご覧ください。
+Machine Learning Studio に関する全般的な情報については、「[Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
+
+>[AZURE.TIP]Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」参照してください。
 
 
-##実験を作成する 5 つの手順
+## 実験を作成する 5 つの手順
 
 このチュートリアルでは、Machine Learning Studio で 5 つの基本的なステップに従い、モデルを作成、トレーニング、スコア付けするための実験を構築します。
 
@@ -54,7 +56,7 @@ Machine Learning Studio に関する全般的な情報については、「[Mach
 
 Machine Learning Studio には、多数のサンプル データセットが含まれており、多様なソースからデータをインポートできます。この例では、含まれているサンプル データセット **自動車価格データ (未加工)** を使用します。このデータセットには、製造仕様、モデル仕様、技術仕様などの情報を含む、多くの個別の自動車のエントリが含まれています。
 
-1. Machine Learning Studio ウィンドウの下部にある **[+新規]** をクリックして新しい実験を開始し、**[実験]** を選択してから **[空の実験]** を選択します。キャンバスの上部にある既定の実験名を選択して、**自動車価格の予測**など、わかりやすい名前に変更します。
+1. Machine Learning Studio ウィンドウの下部にある **[+新規]** をクリックして新しい実験を開始し、**[実験]** を選択してから「**空の実験**」を選択します。キャンバスの上部にある既定の実験名を選択して、**自動車価格の予測**など、わかりやすい名前に変更します。
 
 2. 実験キャンバスの左側には、データセットとモジュールのパレットがあります。このパレットの上部にある検索ボックスに「**自動車**」と入力し、**自動車価格データ (未加工)** というラベルが付いたデータセットを検索します。
 
@@ -198,11 +200,11 @@ Machine Learning Studio には、多数のサンプル データセットが含�
 
 [runhistory]: machine-learning-manage-experiment-iterations.md
 
-作成したモデルが期待どおりであれば、Web サービスとしてデプロイし、新しいデータを使用した自動車価格の予測に使用できます。詳細については、「[Azure Machine Learning Web サービスをデプロイする][publish]」をご覧ください。
+作成したモデルが期待どおりであれば、Web サービスとしてデプロイし、新しいデータを使用した自動車価格の予測に使用できます。詳細については、「[Azure Machine Learning Web サービスをデプロイする][publish]」を参照してください。
 
 [publish]: machine-learning-publish-a-machine-learning-web-service.md
 
-予測モデリング手法によってモデルの作成、トレーニング、スコア付け、開発を行う方法を解説した詳しいチュートリアルについては、「[Azure Machine Learning を使用した予測ソリューションの開発][walkthrough]」をご覧ください。
+予測モデリング手法によってモデルの作成、トレーニング、スコア付け、デプロイを行う方法を解説した詳しいチュートリアルについては、「[Azure Machine Learning を使用した予測ソリューションの開発][walkthrough]」を参照してください。
 
 [walkthrough]: machine-learning-walkthrough-develop-predictive-solution.md
 
@@ -232,4 +234,4 @@ Machine Learning Studio には、多数のサンプル データセットが含�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

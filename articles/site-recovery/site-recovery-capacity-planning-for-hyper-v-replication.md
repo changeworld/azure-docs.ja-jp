@@ -239,4 +239,4 @@ ASR のデプロイを開始する際は、次の記事を参照してくださ�
 - [単一の VMM サーバーを使用した保護の設定](site-recovery-single-vmm)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

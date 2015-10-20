@@ -64,4 +64,4 @@
 ![PowerPoint](https://raw.githubusercontent.com/guscatalano/azure-content/master/articles/media/remoteapp-tutorial-o365anywhere/11-pp.PNG)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

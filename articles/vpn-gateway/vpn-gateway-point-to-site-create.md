@@ -162,4 +162,4 @@ Virtual Network のクロスプレミス接続の詳細については、「[Vir
 
 仮想ネットワークに仮想マシンを追加できます。「[カスタム仮想マシンの作成方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

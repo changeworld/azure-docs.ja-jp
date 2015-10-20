@@ -105,4 +105,4 @@ VM5 | C:\\ClusterStorage\\SourceVolume3 | 該当なし | マッピングを構�
 
 記憶域マッピングについて理解を深めたので、[ベスト プラクティス](site-recovery-best-practices.md)を読み、デプロイの準備をします。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -41,7 +41,7 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 > [AZURE.NOTE]このチュートリアルは、Windows 上の Azure PowerShell を使用します。
 
 - [Azure Powershell](../install-configure-powershell.md) のインストールおよび構成。
-- [Azure SDK for .NET 2.7](http://www.microsoft.com/ja-JP/download/details.aspx?id=48178) のダウンロードとインストール。インストールのセットアップ時に、次のいずれかを選択します。
+- [Azure SDK for .NET 2.7](http://www.microsoft.com/ja-jp/download/details.aspx?id=48178) のダウンロードとインストール。インストールのセットアップ時に、次のいずれかを選択します。
     - MicrosoftAzureAuthoringTools
     - MicrosoftAzureComputeEmulator
 
@@ -197,4 +197,4 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

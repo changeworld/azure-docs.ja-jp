@@ -23,4 +23,4 @@ Data Factory は、データの移動や変換を調整し自動化するクラ�
 
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/adf-learning-map.svg" width="100%" height="100%"> </object>
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

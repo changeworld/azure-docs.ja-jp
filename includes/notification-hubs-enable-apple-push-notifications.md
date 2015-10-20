@@ -1,11 +1,12 @@
 
-Apple Push Notification Service (APNS) では、証明書を使用してプッシュ通知を認証します。次の手順に従って、通知を送受信するために必要なプッシュ証明書を作成します。公式な APNS 機能のドキュメントについては、[Apple プッシュ通知サービス](http://go.microsoft.com/fwlink/p/?LinkId=272584)に関するページを参照してください。
 
 ##証明書の署名要求ファイルを生成する
 
-まず、Apple が署名済みのプッシュ証明書を生成するために使用する、証明書署名要求 (CSR: Certificate Signing Request) ファイルを生成する必要があります。
+Apple Push Notification サービス (APNS) では、証明書を使用してプッシュ通知を認証します。次の手順に従って、通知を送受信するために必要なプッシュ証明書を作成します。これらの概念の詳細については、[Apple Push Notification サービス](http://go.microsoft.com/fwlink/p/?LinkId=272584)の公式ドキュメントを参照してください。
 
-1. **[Utilities]** フォルダーまたは **[Other]** フォルダーから Keychain Access ツールを実行します。
+Apple が署名済みのプッシュ証明書を生成するために使用する、証明書署名要求 (CSR: Certificate Signing Request) ファイルを生成します。
+
+1. Mac で、キーチェーン アクセス ツールを実行します。これは、Launchpad の **[ユーティリティ]** フォルダーまたは **[その他]** フォルダーから実行できます。
 
 2. **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
 
@@ -32,11 +33,13 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
 
-2. **[App ID Description (アプリ ID の説明)]** 名にアプリのわかりやすい名前を入力します。
+2. 新しいアプリの次の 3 つのフィールドを更新し、**[Continue]** をクリックします。
 
-	**[Explicit App ID (明示的なアプリ ID)]** に、「[App Distribution Guide (アプリ ディストリビューション ガイド)](http://go.microsoft.com/fwlink/?LinkId=613485)」で説明したように `<Organization Identifier>.<Product Name>` の形式で **Bundle Identifier** を入力します。使用する *Organization Identifier* と *Product Name* は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。次のスクリーンショットでは、組織 ID として*NotificationHubs*、製品名として *GetStarted* を使用しています。XCode プロジェクトで使用する値と一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
+	* **[Name]**: **[App ID Description]** セクションの **[Name]** フィールドに、アプリのわかりやすい名前を入力します。
 	
-	App Services セクションの **[Push Notifications (プッシュ通知)]** オプションを選択し、**[Continue (続行)]** をクリックします。
+	* **[Bundle Identifier]**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](http://go.microsoft.com/fwlink/?LinkId=613485)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。使用する *Organization Identifier* と *Product Name* は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。次のスクリーンショットでは、組織 ID として*NotificationHubs*、製品名として *GetStarted* を使用しています。XCode プロジェクトで使用する値と一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
+	
+	* **[Push Notifications]**: **[App Services]** セクションの **[Push Notifications]** オプションをオンにします。
 
 	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
@@ -52,11 +55,11 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
     ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
 
-3. 作成したアプリケーション ID を見つけ、その行をクリックします。
+3. Developer センターで、アプリケーション ID の一覧から作成したアプリケーション ID を見つけ、その行をクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids2.png)
 
-   	アプリケーション ID をクリックすると、アプリケーションの詳細が表示されます。**[編集]** をクリックします。
+   	アプリケーション ID をクリックすると、アプリケーションの詳細が表示されます。画面の下部にある **[Edit]** をクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
@@ -121,8 +124,8 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
 
-  	新しいプロビジョニング プロファイルが作成されます。
+7. 新しいプロビジョニング プロファイルが作成されたら、それをクリックしてダウンロードし、Xcode の開発用コンピューターにインストールします。次に、**[Done]** をクリックします。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

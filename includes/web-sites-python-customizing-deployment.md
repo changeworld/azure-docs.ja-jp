@@ -33,4 +33,4 @@ Django アプリケーションで静的なファイルの収集をスキップ�
 
 [Azure コマンド ライン インターフェイス]: http://azure.microsoft.com/downloads/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

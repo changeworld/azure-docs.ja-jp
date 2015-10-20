@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="08/25/2015"
+	ms.date="10/05/2015"
 	ms.author="sdanie"/>
 
 # Node.js で Azure Redis Cache を使用する方法
@@ -91,4 +91,4 @@ DNS ホスト名を入力します。フォーム `<name>.redis.cache.windows.ne
 
 [Socket.IO を使用した Node.js チャット アプリケーションの構築]: ../app-service-web/web-sites-nodejs-chat-app-socketio.md
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

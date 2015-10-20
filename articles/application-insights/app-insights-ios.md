@@ -1,19 +1,19 @@
 <properties
     pageTitle="iOS アプリ向けの Application Insights | Microsoft Azure"
-	description="Application Insights を使用して iOS アプリの使用状況とパフォーマンスを分析します。"
-	services="application-insights"
-	documentationCenter="ios"
-	authors="alancameronwills"
-	manager="ronmart"/>
+    description="Application Insights を使用して iOS アプリの使用状況とパフォーマンスを分析します。"
+    services="application-insights"
+    documentationCenter="ios"
+    authors="alancameronwills"
+    manager="ronmart"/>
 
 <tags
     ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="04/27/2015"
-	ms.author="awills"/>
+    ms.workload="tbd"
+    ms.tgt_pltfrm="ibiza"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="04/27/2015"
+    ms.author="awills"/>
 
 # iOS アプリ向けの Application Insights
 
@@ -33,7 +33,7 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順にクリックする](./media/app-insights-ios/11-new.png)
 
-表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。あるいは、[参照] ボタンをクリックして探します。
+表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次回 Azure にログインするときにそこに戻るには、スタート画面上のタイルをお使いください。あるいは、[参照] ボタンをクリックして探します。
 
 ## Mac 向けの Application Insights をダウンロードする
 
@@ -137,4 +137,4 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 [qna]: app-insights-troubleshoot-faq.md
 [track]: app-insights-api-custom-events-metrics.md
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

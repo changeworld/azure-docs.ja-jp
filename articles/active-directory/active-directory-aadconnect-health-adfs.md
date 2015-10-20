@@ -1,20 +1,20 @@
 
 <properties 
-	pageTitle="AD FS での Azure AD Connect Health の使用 | Microsoft Azure"
-	description="オンプレミスの AD FS インフラストラクチャを監視する方法を説明する Azure AD Connect Health のページです。"
-	services="active-directory"
-	documentationCenter=""
-	authors="billmath"
-	manager="stevenpo"
+	pageTitle="AD FS での Azure AD Connect Health の使用 | Microsoft Azure" 
+	description="オンプレミスの AD FS インフラストラクチャを監視する方法を説明する Azure AD Connect Health のページです。" 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="billmath" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/14/2015"
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="get-started-article" 
+	ms.date="08/14/2015" 
 	ms.author="billmath"/>
 
 # AD FS での Azure AD Connect Health の使用 
@@ -25,7 +25,7 @@ Azure AD Connect Health アラート セクションには、アクティブな�
 
 アラートを選択すると、アラートの解決に利用できる手順やその他のドキュメントへのリンクなどの追加情報が表示されます。
 
-![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/alert2.png)
+![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health/alert2.png)
 
 
 
@@ -34,7 +34,7 @@ Azure AD Connect Health 利用状況分析では、フェデレーション サ�
 
 >[AZURE.NOTE]AD FS で利用状況分析を使用するためには、AD FS 監査が有効になっている必要があります。詳細については、「[AD FS の監査の有効化](active-directory-aadconnect-health-operations.md#enable-auditing-for-ad-fs)」を参照してください。
 
-![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/report1.png)
+![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health/report1.png)
 
 追加のメトリックを選択するには、時間範囲を指定します。グループ分けを変更するには、利用状況の分析グラフを右クリックし、[グラフの編集] を選択します。次に時間範囲を指定し、メトリックを変更または選択して、グループ分けを変更します。さまざまな "メトリック" に基づいて認証トラフィックの分布を確認し、次に示す "グループ化" という関連パラメーターを使用して各メトリックをグループ化できます。
 
@@ -58,7 +58,7 @@ Azure AD Connect Health 利用状況分析では、フェデレーション サ�
 Azure AD Connect Health のパフォーマンスの監視は、メトリックに関する監視情報を提供します。[監視] ボックスを選択すると、ブレードが開き、メトリックに関する詳細情報が表示されます。
 
 
-![Azure AD Connect Health Portal](./media/active-directory-aadconnect-health/perf1.png)
+![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health/perf1.png)
 
 
 ブレードの上部にある [フィルター] を選択すると、サーバーごとにフィルター処理して個々のサーバーのメトリックを表示することができます。メトリックを変更するには、監視ブレードの監視グラフを右クリックし、[グラフの編集] を選択します。次に、開いた新しいブレードのドロップダウンから追加のメトリックを選択し、パフォーマンス データを表示する時間範囲を指定します。
@@ -73,4 +73,4 @@ Azure AD Connect Health のパフォーマンスの監視は、メトリック�
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

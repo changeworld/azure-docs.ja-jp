@@ -5,7 +5,7 @@
 	documentationCenter="Mobile"
 	authors="piyushjo"
 	manager="dwrede"
-	editor=""/>
+	editor="" />
 
 <tags
 	ms.service="mobile-engagement"
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="get-started-article"
 	ms.date="08/10/2015"
-	ms.author="piyushjo"/>
+	ms.author="piyushjo" />
 
 # Mobile Engagement 戦略の定義
 
@@ -127,4 +127,4 @@ Mobile Engagement 戦略を構築するには、最初にアプリの目標と�
 [Mobile Engagement の概念]: http://azure.microsoft.com/documentation/articles/mobile-engagement-concepts/
 [チュートリアル]: http://azure.microsoft.com/documentation/articles/mobile-engagement-ios-get-started/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

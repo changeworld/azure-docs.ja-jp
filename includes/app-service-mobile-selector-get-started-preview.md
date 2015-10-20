@@ -6,4 +6,4 @@
 - [Xamarin.iOS](../articles/app-service-mobile/app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview.md)
 - [Xamarin.Forms](../articles/app-service-mobile/app-service-mobile-dotnet-backend-xamarin-forms-get-started-preview.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

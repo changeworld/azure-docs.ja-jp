@@ -256,4 +256,4 @@ Azure BizTalk Services を Azure ポータルで作成するには、[BizTalk Se
 - [BizTalk Services: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
 - [BizTalk Services SDK 使用開始](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

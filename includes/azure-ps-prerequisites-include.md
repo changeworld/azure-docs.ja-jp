@@ -3,4 +3,4 @@
 
 > [AZURE.NOTE]Azure アカウントをお持ちでない場合は、取得する必要があります。[ここで無料試用版](sign-up-organization.md)にサインアップしてください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

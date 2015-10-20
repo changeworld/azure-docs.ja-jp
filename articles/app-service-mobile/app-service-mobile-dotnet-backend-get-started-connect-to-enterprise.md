@@ -188,4 +188,4 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: app-service-mobile-dotnet-backend-ios-aad-sso-preview.md
 [Mobile Apps .NET Backend App Service Extension]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.AppService/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -55,7 +55,7 @@
 
 3. **[ハイブリッド接続の作成]** ブレードで、作成するハイブリッド接続の **[名前]** と **[ホスト名]** を指定し、**[ポート]** を [`1433`] に設定します。
 
-	![Create a hybrid connection](./media/app-service-mobile-dotnet-backend-hybrid-connections-get-started-preview/create-hybrid-connection.png)
+	![ハイブリッド接続の追加](./media/app-service-mobile-dotnet-backend-hybrid-connections-get-started-preview/create-hybrid-connection.png)
 
 4. **[Biz Talk Service]** をクリックし、BizTalk サービスの名前を入力し、**[OK]** をクリックします。
 
@@ -164,4 +164,4 @@
 [Azure Management Portal]: http://go.microsoft.com/fwlink/p/?linkid=213885
 [Get started with Mobile Services]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

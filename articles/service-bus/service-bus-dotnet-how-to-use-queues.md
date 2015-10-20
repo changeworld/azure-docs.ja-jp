@@ -18,7 +18,7 @@
 
 # Azure Service Bus キューの使用方法
 
-この記事では、Service Bus キューの使用方法について説明します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオはキューの作成とメッセージの送受信です。キューの詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
+この記事では、Service Bus キューの使用方法について説明します。サンプルは C# で記述され、.NET API を利用しています。紹介するシナリオはキューの作成とメッセージの送受信です。キューの詳細については、「[次のステップ](#Next-steps)」セクションを参照してください。
 
 [AZURE.INCLUDE [アカウント作成メモ](../../includes/create-account-note.md)]
 
@@ -257,4 +257,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [QueueClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx
   [Complete]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

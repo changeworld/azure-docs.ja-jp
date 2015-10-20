@@ -22,4 +22,4 @@
 
 サービス登録キーの取得方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/get-the-service-registration-key/)を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

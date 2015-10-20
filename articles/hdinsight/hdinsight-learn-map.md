@@ -25,4 +25,4 @@ HDInsight では、Hadoop、HBase、Apache Storm、カスタマイズされた�
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/HDI.Content.Flow.svg" width="100%" height="100%"> </object>
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -25,7 +25,7 @@
 
 ハイブリッド接続は Azure BizTalk サービスの機能の一種です。ハイブリッド接続は、Azure App Service の Web Apps 機能 (以前の Websites) と Azure App Service (以前の Mobile Services) の Mobile Apps 機能をファイアウォールの後ろにあるオンプレミスのリソースに簡単に接続する便利な方法を提供します。
 
-![Hybrid Connections][HCImage]
+![ハイブリッド接続と][HCImage]
 
 ハイブリッド接続には、以下の利点があります。
 
@@ -103,4 +103,4 @@ Port | 必要である理由
 [HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

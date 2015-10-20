@@ -31,7 +31,7 @@ Azure サービス構成で接続文字列を構成するには:
 
 	> [AZURE.NOTE]ストレージ アカウント キーは、ストレージ アカウントの root パスワードに似ています。キーは必ず保護してください。キーを他のユーザーに配布したり、他のユーザーがアクセスできるプレーン テキスト ファイルに保存したりしないでください。キーが侵害されたと思われる場合は、管理ポータルを使用してキーを再生成します。
 	
-    ![Select target environment][connection-string4]
+    ![ターゲット環境を選択][connection-string4]
 
 6.  エントリの **[名前]** を **Setting1** から **StorageConnectionString** などのわかりやすい名前に変更します。この接続文字列は、このガイドの後半のコードで参照します。![接続文字列名の変更][connection-string5]
 	
@@ -63,4 +63,4 @@ Azure クラウド サービスではないアプリケーションを作成す�
 
 [Configuring Connection Strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->
