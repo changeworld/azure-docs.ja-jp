@@ -65,7 +65,8 @@ Note: if you have already provisioned a device on your solution, you can skip th
 
 1. テキスト エディターで **c/serializer/samples/serializer/remote\_monitoring.c** ファイルを開きます。
 
-2. ファイル内で次のコードを見つけます。```
+2. ファイル内で次のコードを見つけます。
+    ```
     static const char* deviceId = "[Device Id]";
     static const char* deviceKey = "[Device Key]";
     static const char* hubName = "[IoTHub Name]";
@@ -104,7 +105,8 @@ Note: if you have already provisioned a device on your solution, you can skip th
 
 2. Visual Studio の**ソリューション エクスプローラー**で、samples フォルダーに移動します。**remote\_monitoring** プロジェクトの **remote\_monitoring.c** ファイルを開きます。
 
-2. ファイル内で次のコードを見つけます。```
+2. ファイル内で次のコードを見つけます。
+    ```
     static const char* deviceId = "[Device Id]";
     static const char* deviceKey = "[Device Key]";
     static const char* hubName = "[IoTHub Name]";
@@ -171,7 +173,8 @@ mbed プロジェクトを作成してサンプル コードをインポート�
 
 	![][8]
 
-- remote\_monitoring\\remote\_monitoring.c を開き、ファイル内で次のコードを見つけます。```
+- remote\_monitoring\\remote\_monitoring.c を開き、ファイル内で次のコードを見つけます。
+    ```
     static const char* deviceId = "[Device Id]";
     static const char* deviceKey = "[Device Key]";
     static const char* hubName = "[IoTHub Name]";
@@ -309,4 +312,4 @@ node .
 
 このサンプルの機能を拡張するには、実際のセンサーをデバイスに接続して実際のデータを送信する、コマンドと制御機能を実装するなど、複数の方法があります。詳細を確認するには、リモート監視ソリューションの拡張方法に関する[ガイド](articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions.md)を使用してください。
 
-<!---HONumber=Oct15_HO2-->
+<!----HONumber=Oct15_HO2-->

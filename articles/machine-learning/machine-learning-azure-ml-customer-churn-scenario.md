@@ -213,7 +213,7 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 ##参照
 [1] 予測分析: Beyond the Predictions (予想を超える)、W. McKnight、Information Management、2011 年 7 月/8 月、p18～20。
 
-[2] Accuracy and precision (正確度と精度) (http://en.wikipedia.org/wiki/Accuracy_and_precision)、Wikipedia
+\[2] Accuracy and precision (正確度と精度) (http://en.wikipedia.org/wiki/Accuracy_and_precision)、Wikipedia
 
 [3] CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド (http://www.the-modeling-agency.com/crisp-dm.pdf)
 
@@ -238,4 +238,4 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
 
-<!---HONumber=Oct15_HO1-->
+<!----HONumber=Oct15_HO1-->

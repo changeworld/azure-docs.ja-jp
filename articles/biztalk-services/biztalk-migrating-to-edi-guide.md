@@ -118,7 +118,7 @@ BizTalk Server のオーケストレーション処理を Microsoft Azure に移
 
 - *Windows Workflow Foundation デベロッパー センター* (MSDN)。[こちら](http://go.microsoft.com/fwlink/p/?LinkId=237315)をご覧ください。
 
-- *Windows Workflow Foundation 4 (WF4) のドキュメント* (MSDN)。[こちら] をご覧ください (https://msdn.microsoft.com/library/dd489441(v=vs.100).aspx))。
+- *Windows Workflow Foundation 4 (WF4) のドキュメント* (MSDN)。[こちら](https://msdn.microsoft.com/library/dd489441(v=vs.100).aspx) をご覧ください 。
 
 ## その他の考慮事項
 
@@ -142,4 +142,4 @@ Microsoft Azure BizTalk Services は定期的なマイルストーンで更新�
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png
 
-<!---HONumber=Oct15_HO1-->
+<!----HONumber=Oct15_HO1-->
