@@ -38,7 +38,7 @@
 
 このチュートリアルを完了することは、Xamarin.Android アプリの他のすべての Notification Hubs チュートリアルの前提条件です。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F)を参照してください。
+> [AZURE.IMPORTANT]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F)を参照してください。
 
 ##<a name="register"></a>Google Cloud Messaging を有効にする
 
@@ -496,4 +496,4 @@ Microsoft では、.NET プラットフォームに通知を送信するため�
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging コンポーネント]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

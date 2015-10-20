@@ -10,7 +10,7 @@ Azure Backup 資格情報コンテナーを作成したら、データやアプ�
 
 3. [クイック スタート] ページで、**[エージェントのダウンロード]** の **[Windows Server または System Center Data Protection Manager または Windows クライアント用]** オプションをクリックします。**[保存]** をクリックして、ローカル コンピューターにコピーします。
 
-    ![Save agent](./media/backup-install-agent/agent.png)
+    ![エージェントの保存](./media/backup-install-agent/agent.png)
 
 4. エージェントがインストールされたら、MARSAgentInstaller.exe をダブルクリックして Azure Backup エージェントのインストールを起動します。エージェントに必要なインストール フォルダーとスクラッチ フォルダーを選択します。指定されたキャッシュの場所には、バックアップ データの 5% 以上の空き領域が必要です。
 
@@ -20,11 +20,11 @@ Azure Backup 資格情報コンテナーを作成したら、データやアプ�
 
 7.	エージェントがインストールされたら、**[登録に進む]** ボタンをクリックして、ワークフローを続行します。
 
-    ![Register](./media/backup-install-agent/register.png)
+    ![登録](./media/backup-install-agent/register.png)
 
 8. [資格情報コンテナーの資格情報] 画面で、以前にダウンロードされた資格情報コンテナーの資格情報ファイルを参照して選択します。
 
-    ![Vault credentials](./media/backup-install-agent/vc.png)
+    ![コンテナー資格情報](./media/backup-install-agent/vc.png)
 
     資格情報コンテナーの資格情報ファイルは (ポータルからダウンロード後) 48 時間のみ有効です。この画面で何らかのエラー (例: "指定されたコンテナーの資格情報ファイルは期限切れです。") が発生した場合は、Azure ポータルにログインし、資格情報コンテナーの資格情報ファイルを再度ダウンロードします。
 
@@ -42,10 +42,10 @@ Azure Backup 資格情報コンテナーを作成したら、データやアプ�
 
 11. Microsoft Azure Backup をスタンドアロンで使用する場合は、Azure Backup mmc スナップインの **[プロパティの変更]** オプションをクリックすることによって、登録ワークフロー時に指定した設定を変更できます。
 
-    ![Change Properties](./media/backup-install-agent/change.png)
+    ![プロパティの変更](./media/backup-install-agent/change.png)
 
     別の方法として、Data Protection Manager を使用する場合は、**[管理]** タブで **[オンライン]** を選択して **[構成]** オプションをクリックすることによって、登録ワークフロー時に指定した設定を変更できます。
 
     ![Azure Backup を構成する](./media/backup-install-agent/configure.png)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -4,4 +4,4 @@
 - [REST API](../articles/media-services/media-services-rest-get-started.md)
 - [Java](../articles/media-services/media-services-java-how-to-use.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

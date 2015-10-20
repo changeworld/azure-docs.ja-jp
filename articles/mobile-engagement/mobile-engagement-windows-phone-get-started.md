@@ -35,7 +35,7 @@
 + Visual Studio 2013
 + [MicrosoftAzure.MobileEngagement] Nuget パッケージ
 
-> [AZURE.IMPORTANT]Windows Phone Silverlight アプリ向けの他のすべてのモバイル エンゲージメント チュートリアルは、このチュートリアルを完了していることが前提条件となっています。このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
+> [AZURE.IMPORTANT]Windows Phone Silverlight アプリ向けの他のすべてのモバイル エンゲージメント チュートリアルは、このチュートリアルを完了していることが前提条件となっています。このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
 
 ##<a id="setup-azme"></a>Windows Phone アプリ用に Mobile Engagement を設定する
 
@@ -172,4 +172,4 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 [5]: ./media/mobile-engagement-windows-phone-get-started/reach-capabilities.png
 [6]: ./media/mobile-engagement-windows-phone-get-started/push-screenshot.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

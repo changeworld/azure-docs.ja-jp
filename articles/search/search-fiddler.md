@@ -235,4 +235,4 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 [4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png
 [5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

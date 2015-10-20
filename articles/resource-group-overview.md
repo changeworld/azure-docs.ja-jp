@@ -131,4 +131,4 @@ REST API の詳細については、[Azure リソース マネージャー REST 
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

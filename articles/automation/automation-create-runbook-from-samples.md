@@ -64,19 +64,19 @@
 
 6.	**[新規]** > **[Runbook]** > **[ギャラリーから]** の順にクリックします。
 
-	![Runbook Gallery](./media/automation-create-runbook-from-samples/automation_05_ImportGallery.png)
+	![Runbook ギャラリー](./media/automation-create-runbook-from-samples/automation_05_ImportGallery.png)
 
 7.  **[チュートリアル]** カテゴリを選択し、**[Hello World for Azure Automation]** を選択します。右矢印ボタンをクリックします。
 
-	![Import Runbook](./media/automation-create-runbook-from-samples/automation_06_ImportRunbook.png)
+	![Runbook のインポート](./media/automation-create-runbook-from-samples/automation_06_ImportRunbook.png)
 
 8.  Runbook の内容を確認し、右矢印ボタンをクリックします。
 
-	![Runbook Definition](./media/automation-create-runbook-from-samples/automation_07_RunbookDefinition.png)
+	![Runbook 定義](./media/automation-create-runbook-from-samples/automation_07_RunbookDefinition.png)
 
 8.	Runbook の詳細を確認し、チェック マーク ボタンをクリックします。
 
-	![Runbook Details](./media/automation-create-runbook-from-samples/automation_08_RunbookDetails.png)
+	![Runboon の詳細](./media/automation-create-runbook-from-samples/automation_08_RunbookDetails.png)
 
 ## <a name="publishrunbook"></a>Runbook の発行
 
@@ -146,4 +146,4 @@ Runbook をインポートし、発行したら、それを実行して、出力
 
 **フィードバックの送信** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
 
-<!----HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

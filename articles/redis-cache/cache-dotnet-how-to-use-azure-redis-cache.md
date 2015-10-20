@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="09/30/2015" 
+	ms.date="10/13/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の使用方法
@@ -50,7 +50,7 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 
 ![新しいキャッシュ][NewCacheMenu]
 
->[AZURE.NOTE]Azure アカウントがない場合は、無料評価版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][]を参照してください。
+>[AZURE.NOTE]Azure アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][]を参照してください。
 
 **[Redis Cache の新規作成]** ブレードで、必要なキャッシュ構成を指定します。
 
@@ -58,7 +58,7 @@ Azure Redis Cache の導入は簡単です。使い始めるには、キャッ�
 
 キャッシュ エンドポイントに使用するサブドメイン名を **[DNS 名]** に入力します。エンドポイントは、数字と小文字のみを含む、先頭が文字の 6 ～ 12 文字の文字列にしてください。
 
-**[料金レベル]** を使用して、必要なキャッシュ サイズと機能を選択します。
+**[価格レベル]** を使用して、必要なキャッシュ サイズと機能を選択します。
 
 **[リソース グループ]** で、キャッシュのリソース グループを選択または作成します。
 
@@ -208,7 +208,7 @@ Visual Studio で Redis Cache Session State NuGet パッケージを使用して
 
 ![Redis Cache Session State NuGet Package][SessionStateNuGet]
 
-NuGet パッケージによって、必要なアセンブリ参照がダウンロードされて追加されます。さらに、web.config ファイルには、ASP.NET アプリケーションが Redis Cache Session 状態プロバイダーを使用するために必要な構成を記述した以下のセクションが追加されます。
+NuGet パッケージによって、必要なアセンブリ参照がダウンロードされて追加されます。さらに、web.config ファイルには、ASP.NET アプリケーションが Redis Cache Session 状態プロバイダーを使用するために必要な構成を記述した次のセクションが追加されます。
 
     <sessionState mode="Custom" customProvider="MySessionStateStore">
       <providers>
@@ -367,6 +367,6 @@ Azure Redis セッション状態プロバイダーの構成と使用の詳細�
 
 [How Application Strings and Connection Strings Work (アプリケーション文字列と接続文字列の動作)]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 
-[Azure の無料評価版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
+[Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

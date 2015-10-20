@@ -1,19 +1,19 @@
 <properties
     pageTitle="Azure RemoteApp テンプレート イメージの内容"
-	description="Azure RemoteApp に含まれるテンプレート イメージについて説明します。"
-	services="remoteapp"
-	documentationCenter=""
-	authors="lizap"
-	manager="mbaldwin"/>
+    description="Azure RemoteApp に含まれるテンプレート イメージについて説明します。"
+    services="remoteapp"
+    documentationCenter=""
+    authors="lizap"
+    manager="mbaldwin" />
 
 <tags
     ms.service="remoteapp"
-	ms.workload="compute"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/02/2015"
-	ms.author="elizapo"/>
+    ms.workload="compute"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="09/02/2015" 
+    ms.author="elizapo" />
 
 # Azure RemoteApp テンプレート イメージの内容
 
@@ -105,4 +105,4 @@ Office 365 ProPlus、Visio Pro、Project Pro のライセンスは個別に取�
 > [AZURE.IMPORTANT]**法的情報:** このイメージには、Microsoft Office のライセンスは含まれていないため、*運用環境では使用できません*。Office 2013 Professional Plus イメージは評価版を使用する目的でのみ提供されます。運用環境で Azure RemoteApp の Office アプリケーションを使用する場合は、Office 365 ProPlus のイメージを使用する必要があります。Office のライセンスの詳細については、[Azure RemoteApp での Office 365 の使用](remoteapp-o365.md)に関すページを参照してください。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

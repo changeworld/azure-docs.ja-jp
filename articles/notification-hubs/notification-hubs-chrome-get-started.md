@@ -40,7 +40,7 @@ Chrome アプリケーション通知を使用する主な利点の 1 つは、�
 
 Notification Hubs を使用してデバイスの特定のユーザーとグループに対応する方法を理解するために、「次のステップ」セクションに記載されているチュートリアルも一緒に参照してください。
 
->[AZURE.NOTE]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F)を参照してください。
+>[AZURE.NOTE]このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F)を参照してください。
 
 ##<a id="register"></a>Google Cloud Messaging を有効にする
 
@@ -368,16 +368,16 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 		  }
 		}
 
-	上記のスクリプトの注意事項は次のとおりです。
-	- *window.onload* は、UI の 2 つのボタンのボタン クリック イベント (GCM への登録を行うイベントと、GCM への登録後に返される登録 ID を使用して Azure Notification Hubs への登録を行うイベント) を定義します。
-	- *updateLog* 関数は、単純なログ関数を定義します。 
-	- *registerWithGCM* は、Chrome アプリ インスタンスを登録するために、GCM に対して *chrome.gcm.register* を呼び出す最初のボタン クリック ハンドラーです。 
-	- *registerCallback* は、上記の GCM 登録の呼び出しから戻った時点で呼び出されるコールバック関数です。 
-	- *registerWithNH* は、Notification Hubs に登録する 2 番目のボタン クリック ハンドラーです。また、ユーザーが指定した *hubName* と *connectionString* を取得して、Notification Hubs 登録の REST API 呼び出しを作成します。 
-	- *splitConnectionString* と *generateSaSToken* は、すべての REST API 呼び出しで送信する必要のある SaS トークン作成の JavaScript 実装です。これについての詳細は、[共通概念](http://msdn.microsoft.com/library/dn495627.aspx) を参照してください。 
-	- *sendNHRegistrationRequest* は、HTTP REST 呼び出しを実行する関数です。 
-	- *registrationPayload* は、登録 xml ペイロードを定義します。これについての詳細は、「[登録の作成]」を参照してください。このペイロードでは、GCM から受信した ID を使用して登録 ID を更新します。
-	- *client* は、HTTP POST 要求の発行のために使用する *XMLHttpRequest* のインスタンスです。*Authorization* ヘッダーは sasToken を使用して更新します。この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
+	上記のスクリプトの注意事項は以下のとおりです。
+	- *window.onload* は、UI の 2 つのボタンのボタン クリック イベントを定義します。1 つは GCM への登録を行い、もう 1 つは GCM への登録後に返される登録 ID を使用して Azure Notification Hubs への登録を行います。
+	- *updateLog* 関数は、単純なログ関数を定義します。
+	- *registerWithGCM* は、Chrome アプリケーション インスタンスを登録するために、GCM に対して **chrome.gcm.register** を呼び出す最初のボタン クリック ハンドラーです。
+	- *registerCallback* は、上記の GCM 登録の呼び出しから戻った時点で呼び出されるコールバック関数です。
+	- *registerWithNH* は、Notification Hubs に登録する 2 番目のボタン クリック ハンドラーです。また、ユーザーが指定した **hubName** と **connectionString** を取得して、Notification Hubs 登録の REST API 呼び出しを作成します。
+	- *splitConnectionString* と *generateSaSToken* は、すべての REST API 呼び出しで送信する必要のある SaS トークン作成の JavaScript 実装です。これについての詳細は、「[共通概念](http://msdn.microsoft.com/library/dn495627.aspx)」をご覧ください。
+	- *sendNHRegistrationRequest* は、HTTP REST 呼び出しを実行する関数です。
+	- *registrationPayload* は、登録 XML ペイロードを定義します。詳細については、「[登録の作成]」をご覧ください。このペイロードでは、GCM から受信した ID を使用して登録 ID を更新します。
+	- *client* は、HTTP POST 要求の発行のために使用する **XMLHttpRequest** のインスタンスです。**Authorization** ヘッダーは **sasToken** を使用して更新します。この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
 
 
 最後に、フォルダーについて次のビューが表示されます。
@@ -453,9 +453,9 @@ Notification Hubs と統合した Azure モバイル サービス バックエ�
 
 ## <a name="next-steps"> </a>次のステップ
 
-この簡単な例では、Chrome アプリケーションに通知をブロードキャストします。
-Notification Hubs の詳細については、「[Notification Hubs の概要]」を参照してください。
-特定のユーザーをターゲットとするには、「[Azure Notification Hubs によるユーザーへの通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。
+この簡単な例では、Chrome アプリケーションに通知をブロードキャストしました。Notification Hubs の詳細については、「[Notification Hubs の概要]」を参照してください。
+特定のユーザーを対象とする方法については、チュートリアル「[Azure Notification Hubs によるユーザーへの通知]」をご覧ください。
+対象グループごとにユーザーを区分する場合は、「[Azure Notification Hubs を使用したニュース速報の送信]」をご覧ください。
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG
@@ -496,4 +496,4 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 [Azure Notification Hubs によるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
 [Azure Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 
-<!-----HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

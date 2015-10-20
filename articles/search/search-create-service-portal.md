@@ -120,4 +120,4 @@ Azure Search 構成の最後の手順では、サービスがクライアント 
 [2]: ./media/search-create-service-portal/create-search-portal-2.PNG
 [3]: ./media/search-create-service-portal/create-search-portal-3.PNG
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

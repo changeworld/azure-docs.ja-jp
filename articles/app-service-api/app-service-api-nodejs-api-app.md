@@ -171,7 +171,7 @@
 
 このセクションでは、Azure App Service で実行されている API アプリにサンプル アプリケーションをデプロイするために、ローカル Git リポジトリを作成してそのリポジトリから Azure にプッシュします。
 
-1. Git をインストールしていない場合は、[Git のダウンロード ページ](http://git-scm.com/download%20target="_blank")からインストールします。
+1. Git をインストールしていない場合は、[Git のダウンロード ページ](http://git-scm.com/download)からインストールします。
 
 1. コマンド ラインを使用して、サンプル アプリケーションのディレクトリに移動し、次のコマンドを入力してローカル Git リポジトリを初期化します。
 
@@ -249,4 +249,4 @@ API アプリ バックエンドを使用する Node.js Web アプリケーシ�
 [sample-api-app-page]: ./media/app-service-api-nodejs-api-app/sample-api-app-page.png
 [browse-api-app-page]: ./media/app-service-api-nodejs-api-app/browse-api-app-page.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

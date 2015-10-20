@@ -100,7 +100,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 2. 何らかのテスト データを入力し、アップロードする画像 (*.jpg*) を選択したら、**[Create]** をクリックします。
 
-	![Create page](./media/cloud-services-dotnet-get-started/create.png)
+	![作成ページ](./media/cloud-services-dotnet-get-started/create.png)
 
 	[Index] ページが表示されますが、新しい広告の処理が完了していないため、縮小表示はまだ表示されません。
 
@@ -110,7 +110,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
 4. 広告に対応する **[Details]** をクリックすると、フルサイズの画像が表示されます。
 
-	![Details page](./media/cloud-services-dotnet-get-started/details.png)
+	![詳細ページ](./media/cloud-services-dotnet-get-started/details.png)
 
 これまで、クラウドへの接続なしで、アプリケーションを完全にローカル コンピューター上で実行してきました。ストレージ エミュレーターは、キュー データと BLOB データを SQL Server Express LocalDB データベースに格納します。アプリケーションは、広告データを別の LocalDB データベースに格納します。Web アプリが初めてアクセスしようとしたとき、広告データベースが Entity Framework Code First によって自動的に作成されました。
 
@@ -147,7 +147,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
 	次の画像では、クラウド サービスは contosoads.cloudapp.net という URL で作成されます。
 
-	![New Cloud Service](./media/cloud-services-dotnet-get-started/newcs.png)
+	![新しいクラウド サービス](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### Azure SQL データベースの作成
 
@@ -171,7 +171,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
 1. **[SQL データベースの作成]** をクリックします。
 
-	![New SQL Database](./media/cloud-services-dotnet-get-started/newdb.png)
+	![新しい SQL データベース](./media/cloud-services-dotnet-get-started/newdb.png)
 
 1. Azure によってデータベースが作成されたら、ポータルの左側のウィンドウにある **[SQL Database]** タブをクリックし、新しいデータベースの名前をクリックします。
 
@@ -207,7 +207,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 5. **[ストレージ アカウントの作成]** をクリックします。
 
-	![New storage account](./media/cloud-services-dotnet-get-started/newstorage.png)
+	![新しいストレージ アカウント](./media/cloud-services-dotnet-get-started/newstorage.png)
 
 	次の画像では、ストレージ アカウントは `contosoads.core.windows.net` という URL で作成されます。
 
@@ -230,11 +230,11 @@ Web ロールと worker ロールのクラウド サービス環境設定には�
 
 2. [Azure ポータル](http://manage.windowsazure.com)で、左側のウィンドウの **[SQL Database]** をクリックし、このチュートリアル用に作成したデータベースをクリックします。次に、**[ダッシュボード]** タブをクリックし、**[接続文字列の表示]** をクリックします。
 
-	![Show connection strings](./media/cloud-services-dotnet-get-started/showcs.png)
+	![接続文字列の表示](./media/cloud-services-dotnet-get-started/showcs.png)
 
 	接続文字列と、パスワードのプレースホルダーがポータルに表示されます。
 
-	![Connection strings](./media/cloud-services-dotnet-get-started/connstrings.png)
+	![接続文字列](./media/cloud-services-dotnet-get-started/connstrings.png)
 
 4. *Web.Release.config* 変換ファイルで `{connectionstring}` を削除し、Azure ポータルからコピーした ADO.NET 接続文字列をその場所に貼り付けます。
 
@@ -246,7 +246,7 @@ Web ロールと worker ロールのクラウド サービス環境設定には�
 
 5. **ソリューション エクスプローラー**で、該当するクラウド サービス プロジェクトの **[ロール]** の下の **[ContosoAdsWorker]** を右クリックし、**[プロパティ]** をクリックします。
 
-	![Role properties](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
+	![ロール プロパティ](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
 
 6. **[設定]** タブをクリックします。
 
@@ -254,7 +254,7 @@ Web ロールと worker ロールのクラウド サービス環境設定には�
 
 7. `ContosoAdsDbConnectionString` 設定のテキストを選択し、チュートリアルの前のセクションでコピーした接続文字列を貼り付けます。
 
-	![Database connection string for worker role](./media/cloud-services-dotnet-get-started/workerdbcs.png)
+	![ワーカー ロールのデータベース接続文字列](./media/cloud-services-dotnet-get-started/workerdbcs.png)
 
 7. 変更を保存します。
 
@@ -264,19 +264,19 @@ Web ロール プロジェクトと worker ロール プロジェクトの Azure
 
 4. **ソリューション エクスプローラー**で、**[ContosoAdsCloudService]** プロジェクトの **[ロール]** の下にある **[ContosoAdsWeb]** を右クリックし、**[プロパティ]** をクリックします。
 
-	![Role properties](./media/cloud-services-dotnet-get-started/roleproperties.png)
+	![ロール プロパティ](./media/cloud-services-dotnet-get-started/roleproperties.png)
 
 5. **[設定]** タブをクリックします。**[サービス構成]** ボックスの一覧の **[クラウド]** を選択します。
 
-	![Cloud configuration](./media/cloud-services-dotnet-get-started/sccloud.png)
+	![クラウドの構成](./media/cloud-services-dotnet-get-started/sccloud.png)
 
 6. **StorageConnectionString** エントリを選択すると、行の右端に省略記号 **[...]** ボタンが表示されます。省略記号ボタンをクリックして、**[ストレージ アカウント接続文字列の作成]** ダイアログ ボックスを開きます。
 
-	![Open Connection String Create box](./media/cloud-services-dotnet-get-started/opencscreate.png)
+	![[接続文字列の作成] ボックスを開く](./media/cloud-services-dotnet-get-started/opencscreate.png)
 
 1. **[ストレージ接続文字列の作成]** ダイアログ ボックスで、**[サブスクリプション]** オプションをクリックします。前に作成したストレージ アカウントを選択し、**[OK]** をクリックします。まだログインしていない場合は、Azure アカウントの資格情報を入力するよう求められます。
 
-	![Create Storage Connection String](./media/cloud-services-dotnet-get-started/createstoragecs.png)
+	![ストレージ接続文字列の作成](./media/cloud-services-dotnet-get-started/createstoragecs.png)
 
 1. 変更を保存します。
 
@@ -317,21 +317,21 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
 3.	**ソリューション エクスプローラー**で、**[ContosoAdsCloudService]** クラウド プロジェクトを右クリックし、**[発行]** をクリックします。
 
-	![Publish menu](./media/cloud-services-dotnet-get-started/pubmenu.png)
+	![[発行] メニュー](./media/cloud-services-dotnet-get-started/pubmenu.png)
 
 2. **Azure アプリケーションの発行**ウィザードの [**サインイン**] 手順で、[**次へ**] をクリックします。
 
-	![Sign in step](./media/cloud-services-dotnet-get-started/pubsignin.png)
+	![[サインイン] 手順](./media/cloud-services-dotnet-get-started/pubsignin.png)
 
 3. ウィザードの **[設定]** 手順で、**[次へ]** をクリックします。
 
-	![Settings step](./media/cloud-services-dotnet-get-started/pubsettings.png)
+	![[設定] 手順](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
 	**[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。[詳細設定] タブの詳細については、「[Windows Azure アプリケーションの発行ウィザード](http://msdn.microsoft.com/library/hh535756.aspx)」を参照してください。
 
 2. **[概要]** 手順で、**[発行]** をクリックします。
 
-	![Summary step](./media/cloud-services-dotnet-get-started/pubsummary.png)
+	![[概要] 手順](./media/cloud-services-dotnet-get-started/pubsummary.png)
 
    **[Azure のアクティビティ ログ]** ウィンドウが Visual Studio で開きます。
 
@@ -339,7 +339,7 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 
 	デプロイメントが完了するまで 5 分程度かかる場合があります。
 
-	![Azure Activity Log window](./media/cloud-services-dotnet-get-started/waal.png)
+	![[Azure のアクティビティ ログ] ウィンドウ](./media/cloud-services-dotnet-get-started/waal.png)
 
 1. ステータスのデプロイメントが完了したら、**Web サイトの URL** をクリックしてアプリケーションを開始します。
 
@@ -373,11 +373,11 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 4. **[新しい Azure クラウド サービス]** ダイアログ ボックスで、Web ロールと worker ロールを追加します。Web ロールに ContosoAdsWeb という名前を付け、worker ロールに ContosoAdsWorker という名前を付けます(右側のウィンドウの鉛筆アイコンを使用して、ロールの既定の名前を変更します)。
 
-	![New Cloud Service Project](./media/cloud-services-dotnet-get-started/newcsproj.png)
+	![新しいクラウド サービス プロジェクト](./media/cloud-services-dotnet-get-started/newcsproj.png)
 
 5. Web ロールの **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、MVC テンプレートを選択し、次に **[認証の変更]** をクリックします。
 
-	![Change Authentication](./media/cloud-services-dotnet-get-started/chgauth.png)
+	![認証の変更](./media/cloud-services-dotnet-get-started/chgauth.png)
 
 7. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、次に **[OK]** をクリックします。
 
@@ -437,7 +437,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 2. ContosoAdsCloudService プロジェクトで、**[ロール]** の下の [ContosoAdsWeb] を右クリックし、**[プロパティ]** をクリックします。
 
-	![Role properties](./media/cloud-services-dotnet-get-started/roleproperties.png)
+	![ロール プロパティ](./media/cloud-services-dotnet-get-started/roleproperties.png)
 
 3. **[ContosAdsWeb [ロール]]** プロパティ ウィンドウで、**[設定]** タブをクリックし、**[設定の追加]** をクリックします。
 
@@ -445,7 +445,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 
 4. *StorageConnectionString* という名前の新しい設定を追加します。**[種類]** を *[接続文字列]* に設定し、**[値]** を *UseDevelopmentStorage=true* に設定します。
 
-	![New connection string](./media/cloud-services-dotnet-get-started/scall.png)
+	![新しい接続文字列](./media/cloud-services-dotnet-get-started/scall.png)
 
 5. 変更を保存します。
 
@@ -813,4 +813,4 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 * [クラウド サービスの管理方法](cloud-services-how-to-manage.md)
 * [Azure ストレージ](/documentation/services/storage/)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

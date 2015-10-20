@@ -205,7 +205,7 @@ BizTalk サービスが作成された後で、新しい、または別の証明
 
 
 
-## Hybrid Connections
+## ハイブリッド接続と
 
 Azure BizTalk サービスを作成するときに、**[ハイブリッド接続]** タブが使用可能になります。
 
@@ -237,4 +237,4 @@ BizTalk サービスが作成されたので、[BizTalk サービス: [ダッシ
 [ACSServiceIdentities]: ./media/biztalk-provision-services/WABS_ACSServiceIdentities.png
 [HybridConnectionTab]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

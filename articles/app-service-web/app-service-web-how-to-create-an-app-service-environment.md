@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="09/11/2015" 
+	ms.date="10/13/2015" 
 	ms.author="ccompy"/>
 
 # App Service 環境の作成方法 #
@@ -32,19 +32,19 @@ ASE 機能は、基本的に、Azure App Service を顧客の VNET にデプロ�
 
 App Service 環境をホストするための VNET をまだ用意していない場合は、App Service 環境の作成時に作成できます。
 
-それぞれの ASE デプロイメントは、Azure によって管理および保守されるホステッド サービスです。お客様は、ASE システム ロールをホストするコンピューティング リソースにアクセスすることはできませんが、インスタンスの数量とそのサイズを管理できます。
+それぞれの ASE デプロイは、Azure によって管理および保守されるホステッド サービスです。お客様は、ASE システム ロールをホストするコンピューティング リソースにアクセスすることはできませんが、インスタンスの数量とそのサイズを管理できます。
 
 ## App Service 環境の作成 ##
 
 ASE の作成用 UI にアクセスするには、2 つの方法があります。1 つは Azure Marketplace で ***App Service 環境*** を検索する方法、もう 1 つは [新規]、[Web + モバイル] の順に選択する方法です。
 
 ### Quick create ###
-作成用 UI を開いた後、デプロイメントの名前を入力するだけで ASE をすばやく作成できます。この場合、512 個のアドレスを持つ VNET、その VNET 内に 256 個のアドレスを持つサブネット、ワーカー プール 1 に 2 つのフロントエンドと 2 つのワーカーを持つ ASE 環境が作成されます。システムを配置する場所とそこに配置するサブスクリプションを必ず選択してください。ASE を使用してコンテンツをホストできる唯一のアカウントは、その作成に使用されたサブスクリプションに属している必要があります。
+作成用 UI を開いた後、デプロイの名前を入力するだけで ASE をすばやく作成できます。この場合、512 個のアドレスを持つ VNET、その VNET 内に 256 個のアドレスを持つサブネット、ワーカー プール 1 に 2 つのフロントエンドと 2 つのワーカーを持つ ASE 環境が作成されます。新しい *App Service プラン*を作成するか、既存の App Service プランとそのサブスクリプションを選びます。ASE を使用してコンテンツをホストできる唯一のアカウントは、その作成に使用されたサブスクリプションに属している必要があります。
 
 ASE 用に指定した名前は、ASE で作成される Web アプリに使用されます。たとえば、ASE の名前が appsvcenvdemo の場合、ドメイン名は .*appsvcenvdemo.p.azurewebsites.net* になります。ここで mytestapp という名前の Web アプリを作成した場合、この Web アプリのアドレスは *mytestapp.appsvcenvdemo.p.azurewebsites.net* となります。名前に空白文字は使用できません。名前に大文字を使用した場合、ドメイン名はその名前をすべて小文字で表記したバージョンになります。
 
 
-![][1]
+![][1] ![][4]
 
 ### コンピューティング リソース プール ###
 
@@ -67,14 +67,14 @@ App Service 環境用に使用されるコンピューティング リソース�
 - X が 21 ～ 40 の場合、ワークロードに使用できるコンピューティング リソースの数は X-2 です。
 - X が 41 ～ 53 の場合、ワークロードに使用できるコンピューティング リソースの数は X-3 です。
 
-任意のプールに割り当てることのできるコンピューティング リソースの数量を管理できるだけでなく、サイズを制御することもできます。App Service 環境では、P1 ～ P4 のラベルが付けられた 4 種類のサイズから選択することができます。これらのサイズとその料金設定の詳細については、「[App Service 料金][AppServicePricing]」を参照してください。P1 ～ P3 のコンピューティング リソース サイズは、マルチテナント環境で利用できるものと同様です。P4 コンピューティング リソースでは、8 つのコアと 14 GB の RAM が提供され、App Service 環境でのみ利用できます。
+任意のプールに割り当てることのできるコンピューティング リソースの数量を管理できるだけでなく、サイズを制御することもできます。App Service 環境では、P1 ～ P4 のラベルが付けられた 4 種類のサイズから選択することができます。これらのサイズとその価格設定の詳細については、「[App Service の価格][AppServicePricing]」を参照してください。P1 ～ P3 のコンピューティング リソース サイズは、マルチテナント環境で利用できるものと同様です。P4 コンピューティング リソースでは、8 つのコアと 14 GB の RAM が提供され、App Service 環境でのみ利用できます。
 
 App Service 環境の価格設定は、割り当てられるコンピューティング リソースを対象としています。ワークロードをホストしているかどうかに関係なく、App Service 環境に割り当てられているコンピューティング リソースに対する料金を支払うことになります。
 
 
 
 ### VNET の作成 ###
-自動的に新しい VNET を作成する簡易作成機能が用意されているほか、既存の VNET を選択することも、VNET を手動で作成することもできます。既存の VNET (現時点でサポートされているのはクラシック "v1" のみ) が App Service 環境のデプロイメントをサポートするのに十分な大きさを持つ場合は、これを選択できます。VNET は、512 個以上のアドレスを持つ必要があります。既存の VNET を選択する場合は、使用するサブネットを指定するか、または新しいサブネットを作成する必要があります。サブネットは、8 個以上のアドレスを持つ必要があります。
+自動的に新しい VNET を作成する簡易作成機能が用意されているほか、既存の VNET を選択することも、VNET を手動で作成することもできます。既存の VNET (現時点でサポートされているのはクラシック "v1" のみ) が App Service 環境のデプロイをサポートするのに十分な大きさを持つ場合は、これを選択できます。VNET は、512 個以上のアドレスを持つ必要があります。既存の VNET を選択する場合は、使用するサブネットを指定するか、または新しいサブネットを作成する必要があります。サブネットは、8 個以上のアドレスを持つ必要があります。
 
 VNET の作成用 UI を使用する場合は、次の項目を指定する必要があります。
 
@@ -138,6 +138,7 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [1]: ./media/app-service-web-how-to-create-an-app-service-environment/createaseblade.png
 [2]: ./media/app-service-web-how-to-create-an-app-service-environment/createasenetwork.png
 [3]: ./media/app-service-web-how-to-create-an-app-service-environment/createasescale.png
+[4]: ./media/app-service-web-how-to-create-an-app-service-environment/createaseappserviceplan.png
 
 <!--Links-->
 [WhatisASE]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
@@ -145,4 +146,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
 [AzureAppService]: http://azure.microsoft.com/documentation/articles/app-service-value-prop-what-is/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

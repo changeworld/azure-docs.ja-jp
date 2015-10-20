@@ -290,4 +290,4 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

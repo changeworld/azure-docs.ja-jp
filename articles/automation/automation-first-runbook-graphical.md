@@ -23,7 +23,7 @@
 - [Graphical](automation-first-runbook-graphical.md)
 - [PowerShell Workflow](automation-first-runbook-textual.md)
 
-このチュートリアルでは、Azure Automation で[グラフィカルな Runbook](automation-runbook-types.md#graphical-runbooks) を作成する手順を説明します。簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure Virtual Machine を開始します。そして、Runbook のパラメーターおよび条件付きリンクを追加することによって、Runbook をいっそう堅牢にします。
+このチュートリアルでは、Azure Automation で[グラフィカルな Runbook](automation-runbook-types.md#graphical-runbooks) を作成する手順を説明します。簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。Then we'll modify the runbook to actually manage Azure resources, in this case starting an Azure virtual machine.そして、Runbook のパラメーターおよび条件付きリンクを追加することによって、Runbook をいっそう堅牢にします。
 
 ## 前提条件
 
@@ -173,4 +173,4 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
  
 
-<!----HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

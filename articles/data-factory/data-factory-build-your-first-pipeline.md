@@ -62,8 +62,8 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 ## チュートリアルの Azure Storage を準備する
 チュートリアルを開始する前に、チュートリアルに必要なファイルで Azure Storage を準備する必要があります。
 
-1. メモ帳を起動し、次のテキストを貼り付け、**partitionweblogs.hql** という名前でハード ドライブの C:\\adfgettingstarted フォルダーに保存します。この Hive スクリプトは、2 つの外部テーブル **WebLogsRaw** と **WebLogsPartitioned** を作成します。
-
+1. **メモ帳**を起動し、次の HQL スクリプトを貼り付けます。この Hive スクリプトは、2 つの外部テーブル **WebLogsRaw** と **WebLogsPartitioned** を作成します。メニューの **[ファイル]** をクリックし、**[名前を付けて保存]** を選択します。ハード ドライブの **C:\\adfgettingstarted** フォルダーを参照します。**[ファイルの種類]** フィールドで **[すべてのファイル (*.*)]** を選択します。**[ファイル名]** に「**partitionweblogs.hql**」と入力します。ダイアログ ボックスの下部にある **[エンコード]** フィールドが **[ANSI]** に設定されていることを確認します。そうでない場合は、**[ANSI]** に設定します。  
+	
 		set hive.exec.dynamic.partition.mode=nonstrict;
 		
 		DROP TABLE IF EXISTS WebLogsRaw; 
@@ -142,10 +142,9 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 		  year(date),
 		  month(date)
 		FROM WebLogsRaw
-	
- 
+	 
 2. チュートリアル用に Azure Storage を準備するには:
-	1. [最新バージョンの **AzCopy**](http://aka.ms/downloadazcopy) または[最新のプレビュー バージョン](http://aka.ms/downloadazcopypr)をダウンロードします。ユーティリティを使用する手順については、[AzCopy を使用する方法](../storage/storage-use-azcopy.md)に関する記事を参照してください。
+	1. [最新バージョンの **AzCopy**](http://aka.ms/downloadazcopy) または[最新のプレビュー バージョン](http://aka.ms/downloadazcopypr)をダウンロードします。ユーティリティを使用する手順については、[AzCopy を使用する方法](../storage/storage-use-azcopy.md)に関するページを参照してください。
 	2. AzCopy をインストールした後は、コマンド プロンプトで次のコマンドを実行してシステム パスに追加できます。 
 	
 			set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy			 
@@ -171,9 +170,9 @@ Hive スクリプトが実行した後、結果は Azure BLOB ストレージ �
 
 - Azure ポータルの一部である Data Factory エディターを使用してチュートリアルを実行するには、上部にある「[Data Factory エディターの使用](data-factory-build-your-first-pipeline-using-editor.md)」というリンクをクリックします。
 - Azure PowerShell を使用してチュートリアルを実行するには、上部にある「[PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)」というリンクをクリックします。
-- Visual Studio を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)」というリンクをクリックします。 
+- Visual Studio を使用してチュートリアルを実行するには、上部にある "[Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)" というリンクをクリックします。 
 
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

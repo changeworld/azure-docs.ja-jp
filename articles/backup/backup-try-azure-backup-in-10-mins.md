@@ -46,4 +46,4 @@ Azure Backup のセットアップはとても簡単です。次の操作方法�
 - [Windows Server のバックアップ](backup-azure-backup-windows-server.md)
 - [Azure のバックアップ フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

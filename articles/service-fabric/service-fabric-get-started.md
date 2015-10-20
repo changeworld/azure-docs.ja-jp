@@ -106,4 +106,4 @@ SDK に付属している Service Fabric エクスプローラー ツールを�
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

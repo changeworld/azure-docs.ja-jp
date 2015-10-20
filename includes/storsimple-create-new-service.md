@@ -5,7 +5,7 @@
 
 1. Microsoft アカウント資格情報を使用して、この URL ([http://azure.microsoft.com/](http://azure.microsoft.com/)) から管理ポータルにログオンします。
 
-2. 管理ポータルで、**[新規]**、**[Data Services]**、**[StorSimple Manager]**、**[簡易作成]** の順にクリックします。
+2. 管理ポータルで、**[新規]**、**[データ サービス]**、**[StorSimple Manager]**、**[簡易作成]** の順にクリックします。
 
 3. 表示されるフォームで、次の手順を実行します。
   1. サービスの一意の **[名前]** を指定します。これは、サービスの識別に使用できるフレンドリ名です。名前の長さは 2 ～ 50 文字とし、文字、数字、ハイフンを含めることができます。名前の最初と最後は、文字か数字とする必要があります。
@@ -18,7 +18,7 @@
   4. **[新しいストレージ アカウントを作成する]** をオンにすると、サービスの作成時にストレージ アカウントが自動的に作成されます。このストレージ アカウントは、"storsimplebwv8c6dcnf" などの特別な名前になります。 別の場所でデータが必要になる場合、このボックスをオフにします。 
   5. **[StorSimple Manager の作成]** をクリックしてサービスを作成します。
 
-   ![サービスの作成](./media/storsimple-create-new-service/HCS_CreateAService-include.png)
+   ![StorSimple Manager の作成](./media/storsimple-create-new-service/HCS_CreateAService-include.png)
 
   **[サービス]** ランディング ページが表示されます。サービスの作成には数分かかります。サービスが正常に作成されると、適宜、通知が表示され、サービスの状態が **"アクティブ"** に変わります。
  
@@ -28,4 +28,4 @@
 
 新しい StorSimple Manager サービスを作成する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/)を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

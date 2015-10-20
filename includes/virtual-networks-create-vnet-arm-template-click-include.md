@@ -27,4 +27,4 @@ Microsoft によって管理され、コミュニティにも公開されてい�
 
 	![プレビュー ポータルでの VNet の作成](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.gif)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

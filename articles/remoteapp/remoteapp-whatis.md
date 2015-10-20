@@ -77,4 +77,4 @@ Azure RemoteApp は、Windows および Windows RT の RemoteApp クライアン
 - [Azure RemoteApp よく寄せられる質問](remoteapp-faq.md)
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

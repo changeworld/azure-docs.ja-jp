@@ -232,4 +232,4 @@ Application Insights SDK には、さまざまな種類のデータをアプリ�
 [windowsCrash]: app-insights-windows-crashes.md
 [windowsUsage]: app-insights-windows-usage.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties
     pageTitle="Android アプリ向けの Application Insights | Microsoft Azure"
-	description="Application Insights を使用して Android アプリの使用状況とパフォーマンスを分析します。"
-	services="application-insights"
-	documentationCenter="android"
-	authors="alancameronwills"
-	manager="ronmart"/>
+    description="Application Insights を使用して Android アプリの使用状況とパフォーマンスを分析します。"
+    services="application-insights"
+    documentationCenter="android"
+    authors="alancameronwills"
+    manager="ronmart"/>
 
 <tags
     ms.service="application-insights"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="na"
-	ms.topic="get-started-article"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-android"
+    ms.devlang="na"
+    ms.topic="get-started-article"
 	ms.date="04/28/2015"
-	ms.author="awills"/>
+    ms.author="awills"/>
 
 # Android アプリ向けの Application Insights
 
@@ -33,7 +33,7 @@ Visual Studio の Application Insights を使用すると、使用状況、イ�
 
 ![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する](./media/app-insights-android/11-new.png)
 
-表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。または、[参照] ボタンをクリックして、探します。
+表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。To get back to it next time you login to Azure, you should find a tile for it on the start screen.または、[参照] ボタンをクリックして、探します。
 
 ## Android Studio に Application Insights プラグインをインストールします
 
@@ -197,4 +197,4 @@ http://portal.azure.com に戻り、Application Insights リソースを参照�
 [qna]: app-insights-troubleshoot-faq.md
 [track]: app-insights-api-custom-events-metrics.md
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

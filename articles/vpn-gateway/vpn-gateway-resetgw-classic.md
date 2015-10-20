@@ -59,4 +59,4 @@ Azure VPN Gateway をリセットするための PowerShell コマンドレッ�
 	
 このコマンドレットの詳細については、[PowerShell リファレンス](https://msdn.microsoft.com/library/azure/mt270366.aspx)を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

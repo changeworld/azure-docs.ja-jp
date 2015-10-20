@@ -20,4 +20,4 @@
 
 Visual Studio によって、API アプリとしてデプロイされるように構成された Web API プロジェクトが作成されます。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

@@ -20,4 +20,4 @@
 
 StorSimple ソリューションでボリューム コンテナーを作成する方法を説明したビデオについては、[こちら](http://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/)を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

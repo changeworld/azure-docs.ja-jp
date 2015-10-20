@@ -49,15 +49,15 @@ Visual Studio で、**[新しいプロジェクト]** ダイアログ ボック�
 
 Azure クラウド サービス ウィザードでは、新しい Web ロールまたは worker ロールを作成できます。
 
-![Azure Cloud Service Dialog](./media/cloud-services-python-ptvs/new-service-wizard.png)
+![Azure クラウド サービス ダイアログ](./media/cloud-services-python-ptvs/new-service-wizard.png)
 
 worker ロール テンプレートには、Azure ストレージ アカウントまたは Azure Service Bus に接続するための定型コードが含まれています。
 
-![Cloud Service Solution](./media/cloud-services-python-ptvs/worker.png)
+![クラウド サービス ソリューション](./media/cloud-services-python-ptvs/worker.png)
 
 Web ロールまたは worker ロールは、既存のクラウド サービスにいつでも追加することができます。既存のプロジェクトをソリューションに追加するか、または新たに作成するかを選択できます。
 
-![Add Role Command](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
+![ロール コマンドの追加](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
 クラウド サービスには、異なる言語で実装されたロールを含めることができます。たとえば、Django を使用して実装された Python Web ロールを、Python worker ロールや C# worker ロールと共存させることができます。ロール間のやり取りは、Service Bus キューまたはストレージ キューを使用することで簡単に行うことができます。
 
@@ -69,31 +69,31 @@ PTVS (Python Tools for Visual Studio) はエミュレーターでの起動をサ
 
 Web ロールまたは worker ロールをデバッグするには、対象となるロール プロジェクトをスタートアップ プロジェクトに設定したうえで、デバッグするようにしてください。複数のスタートアップ プロジェクトを設定することもできます。ソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** を選択します。
 
-![Solution Startup Project Properties](./media/cloud-services-python-ptvs/startup.png)
+![ソリューション スタートアップ プロジェクト プロパティ](./media/cloud-services-python-ptvs/startup.png)
 
 ## Azure に発行する
 
 クラウド サービス プロジェクトを発行するには、対象のクラウド サービス プロジェクトをソリューション内で右クリックし、**[発行]** を選択します。
 
-![Microsoft Azure Publish Sign In](./media/cloud-services-python-ptvs/publish-sign-in.png)
+![Microsoft Azure 発行サインイン](./media/cloud-services-python-ptvs/publish-sign-in.png)
 
 [設定] ページで、発行するクラウド サービスを選択します。
 
-![Microsoft Azure Publish Settings](./media/cloud-services-python-ptvs/publish-settings.png)
+![Microsoft Azure 発行設定](./media/cloud-services-python-ptvs/publish-settings.png)
 
 そのクラウド サービスがまだない場合は、新しいクラウド サービスを作成できます。
 
-![Create Cloud Service Dialog](./media/cloud-services-python-ptvs/publish-create-cloud-service.png)
+![クラウド サービス ダイアログの作成](./media/cloud-services-python-ptvs/publish-create-cloud-service.png)
 
 エラーをデバッグする際の利便性を高めるために、コンピューターへのリモート デスクトップ接続を有効にすることもできます。
 
-![Remote Desktop Configuration Dialog](./media/cloud-services-python-ptvs/publish-remote-desktop-configuration.png)
+![リモート デスクトップ構成ダイアログ](./media/cloud-services-python-ptvs/publish-remote-desktop-configuration.png)
 
 設定が済んだら、**[発行]** をクリックします。
 
 出力ウィンドウにいくつかの進行状況が表示された後、[Microsoft Azure のアクティビティ ログ] ウィンドウが表示されます。
 
-![Microsoft Azure Activity Log Window](./media/cloud-services-python-ptvs/publish-activity-log.png)
+![[Microsoft Azure のアクティビティ ログ] ウィンドウ](./media/cloud-services-python-ptvs/publish-activity-log.png)
 
 数分経過するとデプロイメントが完了し、Web ロールまたは worker ロールが Azure 上で稼働状態となります。
 
@@ -138,4 +138,4 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

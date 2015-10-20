@@ -33,7 +33,7 @@
 + Visual Studio 2013
 + [MicrosoftAzure.MobileEngagement] Nuget パッケージ
 
-> [AZURE.IMPORTANT]このチュートリアルを完了することは、Windows ユニバーサル アプリの他のすべての Mobile Engagement チュートリアルの前提条件です。このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
+> [AZURE.IMPORTANT]このチュートリアルを完了することは、Windows ユニバーサル アプリの他のすべての Mobile Engagement チュートリアルの前提条件です。このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>をご覧ください。
 
 ##<a id="setup-azme"></a>Windows ユニバーサル アプリの Mobile Engagement を設定する
 
@@ -190,4 +190,4 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 [7]: ./media/mobile-engagement-windows-store-dotnet-get-started/associate-app-store.png
 [8]: ./media/mobile-engagement-windows-store-dotnet-get-started/vs-suspend.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

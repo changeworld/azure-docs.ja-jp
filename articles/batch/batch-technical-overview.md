@@ -153,4 +153,4 @@ Batch アカウントを作成し、Azure プレビュー ポータルまたは 
 [work_item_workflow]: ./media/batch-technical-overview/work_item_workflow.png
 [app_pub_workflow]: ./media/batch-technical-overview/app_pub_workflow.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

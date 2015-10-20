@@ -41,9 +41,9 @@ DocumentDB アカウントを作成できたら、次の手順として Document
 
 DocumentDB の詳細については、以下の資料を参照してください。
 
--	[DocumentDB の学習マップ](documentdb-learning-map.md)
+-	[DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 -	[DocumentDB のリソース モデルと概念](documentdb-resources.md)
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

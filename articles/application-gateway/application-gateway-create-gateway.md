@@ -17,7 +17,7 @@
 
 # Application Gateway の作成、起動、または削除
 
-Application Gateway はロード バランサーの第 7 層です。クラウドでもオンプレミスでも、フェールオーバーと、異なるサーバー間のパフォーマンス ルーティング HTTP 要求を提供します。Application Gateway は、HTTP 負荷分散、クッキー ベースのセッション アフィニティ、SSL オフロードなどのアプリケーション配信機能を備えています。
+Application Gateway はロード バランサーの第 7 層です。クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。Application Gateway は、HTTP 負荷分散、クッキー ベースのセッション アフィニティ、SSL オフロードなどのアプリケーション配信機能を備えています。
 
 > [AZURE.SELECTOR]
 - [Azure Classic Powershell steps](application-gateway-create-gateway.md)
@@ -420,4 +420,4 @@ ILB とともに使用するように Application Gateway を構成する場合�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

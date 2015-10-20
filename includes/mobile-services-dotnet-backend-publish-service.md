@@ -3,4 +3,4 @@
 
 2. Azure の資格情報でサインインし、**[既存の Mobile Services]** から目的のサービスを選択します。Visual Studio によって、Azure から直接、発行設定がダウンロードされます。最後に、**[発行]** をクリックします。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

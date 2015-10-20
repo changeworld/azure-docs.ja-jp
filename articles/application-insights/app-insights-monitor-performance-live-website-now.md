@@ -215,4 +215,4 @@ IIS のサポート: IIS 7、7.5、8、8.5 (IIS は必須)。
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -25,7 +25,7 @@
 
 この記事では、仮想ネットワークと、オンプレミスのネットワークに対するサイト間 VPN 接続を作成する手順について説明します。この記事は、クラシック デプロイメント モデルに適用されます。
 
->[AZURE.IMPORTANT]Azure は現在、2 つのデプロイメント モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことは重要です。構成を開始する前に、デプロイメント モデルとツールについて理解しておくようにしてください。デプロイメント モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
+>[AZURE.IMPORTANT]Azure は現在、2 つのデプロイメント モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことは重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイメント モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
 
 上にあるタブを使用して、デプロイメント モデルとデプロイメント ツールに関する記事を選択できます。たとえば、クラシック モデルではなく、Azure リソース マネージャーのモデルを使用してサイト間 VPN Gateway 接続を作成する場合は、上にある **[PowerShell - Resource Manager]** タブをクリックして「[Azure リソース マネージャーと PowerShell を使用してサイト間 VPN 接続を作成する](vpn-gateway-create-site-to-site-rm-powershell.md)」に移動します。
 
@@ -34,7 +34,7 @@
 
 構成を開始する前に、以下がそろっていることを確認します。
 
-- 互換性のある VPN デバイスおよびデバイスを構成できる人員。「[VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。
+- 互換性のある VPN デバイスおよびデバイスを構成できる人員。「[VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」をご覧ください。
 - VPN デバイスの外部接続用パブリック IP アドレス。この IP アドレスを NAT の内側に割り当てることはできません。
 - Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
@@ -99,4 +99,4 @@ Virtual Network のクロスプレミス接続の詳細については、「[Vir
 
 従来の仮想ネットワークと Azure リソース マネージャー モードを使用して作成された仮想ネットワーク間の接続を構成する場合は、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s-howto.md)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

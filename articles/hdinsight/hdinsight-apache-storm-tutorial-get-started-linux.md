@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Apache Storm チュートリアル: Storm 入門 |Microsoft Azure"
-	description="HDInsight での Apache Storm および Storm Starter サンプルを使用したビッグ データ分析の概要Storm を使用してデータをリアルタイムに処理する方法について説明します。"
+	pageTitle="Apache Storm チュートリアル: HDInsight での Linux ベースの Storm の使用 |Microsoft Azure"
+	description="Linux ベースの HDInsight での Apache Storm および Storm Starter サンプルを使用したビッグ データ分析の概要Storm を使用してデータをリアルタイムに処理する方法について説明します。"
 	keywords="apache storm,apache storm tutorial,big data analytics,storm starter"
 	services="hdinsight"
 	documentationCenter=""
@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/18/2015"
+   ms.date="10/09/2015"
    ms.author="larryfr"/>
 
 
@@ -233,4 +233,4 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

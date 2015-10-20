@@ -67,9 +67,9 @@
 <!-- Links -->
 
 [Azure IoT - デバイス SDK NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
-[一時的な障害処理]: https://msdn.microsoft.com/ja-JP/library/hh680901(v=pandp.50).aspx
+[一時的な障害処理]: https://msdn.microsoft.com/ja-jp/library/hh680901(v=pandp.50).aspx
 
 <!-- Images -->
 [30]: ./media/iot-hub-getstarted-device-csharp/create-identity-csharp1.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

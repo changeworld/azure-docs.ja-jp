@@ -137,7 +137,7 @@ Azure SQL Database を今すぐ V11 から V12 にアップグレードするこ
 3. **[SQL Server]** をクリックします。
 4. サーバーまたはデータベースの隣のアイコンから、現在の状態がわかります。
  - ![Icon for a v12 server](./media/sql-database-v12-whats-new/v12_icon.png) **V12 の論理サーバー**
- - ![Icon for earlier version server](./media/sql-database-v12-whats-new/earlier_icon.png) **以前のバージョンの論理サーバー**
+ - ![以前のバージョンのサーバーのアイコン](./media/sql-database-v12-whats-new/earlier_icon.png) **以前のバージョンの論理サーバー**
 
 
 データベースで `SELECT @@version;` ステートメントを実行し、次のような結果を確認することで、バージョンを確認することもできます。
@@ -161,4 +161,4 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 
 [Microsoft Azure プレビューの使用条件に関する補足](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

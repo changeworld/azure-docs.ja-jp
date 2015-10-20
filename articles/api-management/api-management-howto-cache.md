@@ -42,11 +42,11 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 **[操作]** タブをクリックし、**[操作]** ボックスの一覧の **[GET Resource (cached)]** 操作をクリックします。
 
-![Echo API operations][api-management-echo-api-operations]
+![Echo API 操作][api-management-echo-api-operations]
 
 **[キャッシュ]** タブをクリックして、この操作のキャッシュ設定を表示します。
 
-![Caching tab][api-management-caching-tab]
+![[キャッシュ] タブ][api-management-caching-tab]
 
 操作に対してキャッシュを有効にするには、**[有効]** チェック ボックスをオンにします。この例では、キャッシュは有効になっています。
 
@@ -64,11 +64,11 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 左側の **[API Management]** メニューの **[ポリシー]** をクリックし、**[操作]** ドロップダウン リストの **[Echo API / GET Resource (cached)]** を選択します。
 
-![Policy scope operation][api-management-operation-dropdown]
+![ポリシー スコープの操作][api-management-operation-dropdown]
 
 ポリシー エディターにこの操作のポリシーが表示されます。
 
-![API Management policy editor][api-management-policy-editor]
+![API Management ポリシー エディター][api-management-policy-editor]
 
 この操作のポリシー定義には、前のステップで **[キャッシュ]** タブを使用して確認したキャッシュ構成を定義するポリシーが含まれています。
 
@@ -103,7 +103,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 **[GET Resource (cached)]** 操作を選択し、**[コンソールを開く]** をクリックします。
 
-![Open console][api-management-open-console]
+![コンソールを開く][api-management-open-console]
 
 コンソールを使用すると、開発者ポータルから直接操作を呼び出すことができます。
 
@@ -161,4 +161,4 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

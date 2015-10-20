@@ -19,6 +19,12 @@
 
 # DocumentDB による Python Flask Web アプリケーション開発
 
+> [AZURE.SELECTOR]
+- [.NET](documentdb-dotnet-application.md)
+- [Node.js](documentdb-nodejs-application.md)
+- [Java](documentdb-java-application.md)
+- [Python](documentdb-python-application.md)
+
 このドキュメントでは、Azure DocumentDB を効果的に活用して、JSON ドキュメントの保存とクエリを行う方法を紹介します。エンドツーエンドの Python Web アプリケーション チュートリアルとして、Azure DocumentDB を使用して投票の Web アプリケーションを構築する方法を採り上げます。
 
 このチュートリアルでは、Azure に用意されている DocumentDB サービスを使用して、Azure にホストされている Python Web アプリケーションからデータを保存する方法や、データにアクセスする方法を説明します。Python と Azure Websites の使用経験がある読者を想定しています。
@@ -161,7 +167,7 @@
             	year=datetime.now().year,
             	message='You just created a new database, collection, and document.  Your old votes have been deleted')
 
-> [AZURE.TIP]**CreateCollection** メソッドは、省略可能な 3 番目のパラメーター **RequestOptionsas** を受け取ります。これを使用すると、コレクションのプランの種類を指定することができます。offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
+> [AZURE.TIP]**CreateCollection** メソッドは、省略可能な 3 番目のパラメーター **RequestOptions** を受け取ります。これを使用すると、コレクションのプランの種類を指定することができます。offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
 >
 ### データベース、コレクション、およびドキュメントの読み取りとフォームの送信
 
@@ -355,4 +361,4 @@ Web アプリケーションに機能を追加する場合は、[DocumentDB Pyth
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties
  pageTitle="Azure Scheduler とは | Microsoft Azure"
-	description="Azure Scheduler では、クラウドで実行するアクションを宣言的に記述することができます。その後スケジュールを設定し、アクションを自動的に実行します。"
-	services="scheduler"
-	documentationCenter=".NET"
-	authors="krisragh"
-	manager="dwrede"
-	editor=""/>
+ description="Azure Scheduler では、クラウドで実行するアクションを宣言的に記述することができます。その後スケジュールを設定し、アクションを自動的に実行します。"
+ services="scheduler"
+ documentationCenter=".NET"
+ authors="krisragh"
+ manager="dwrede"
+ editor=""/>
 <tags
  ms.service="scheduler"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="get-started-article"
-	ms.date="08/04/2015"
-	ms.author="krisragh"/>
+ ms.workload="infrastructure-services"
+ ms.tgt_pltfrm="na"
+ ms.devlang="dotnet"
+ ms.topic="get-started-article"
+ ms.date="08/04/2015"
+ ms.author="krisragh"/>
 
 # Azure Scheduler とは
 
@@ -50,4 +50,4 @@ Scheduler では、ジョブおよび[ジョブ コレクション](scheduler-co
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->
