@@ -39,7 +39,7 @@ Hadoop on Windows を理解して HDInsight の使用を開始できるように
 
 HDInsight での Hadoop の説明については、このチュートリアルのデモ ビデオをご覧ください。
 
-![Video of a first Hadoop tutorial: Submit a Hive query on a Hadoop cluster, and analyze results in Excel.][img-hdi-getstarted-video]
+![初めての Hadoop チュートリアル動画: Hadoop クラスターでの Hive クエリーの送信、Excel によるデータ分析][img-hdi-getstarted-video]
 
 **[YouTube で HDInsight の Hadoop チュートリアルを見る](https://www.youtube.com/watch?v=Y4aNjnoeaHA&list=PLDrz-Fkcb9WWdY-Yp6D4fTC1ll_3lU-QS)**
 
@@ -159,7 +159,7 @@ HDInsight クラスターがプロビジョニングされたら、サンプル�
 
 6. **[Hive エディター]** タブで、**[クエリ名]** に「**HTC20**」と入力します。クエリ名は、ジョブのタイトルです。クエリ ウィンドウで、次の図に示すように、Hive クエリを入力します。
 
-	![Hive query entered in the query pane of the Hive Editor.][img-hdi-dashboard-query-select]
+	![[Hive エディター] に入力された Hive クエリ][img-hdi-dashboard-query-select]
 
 4. **[Submit]** をクリックします。結果が返されるまでしばらく時間がかかります。画面は 30 秒ごとに更新されます。**[最新の情報に更新]** をクリックして画面を更新することもできます。
 
@@ -179,7 +179,7 @@ HDInsight クラスターがプロビジョニングされたら、サンプル�
 3. **[管理者]** をクリックし、以前書き留めたジョブの開始時刻よりも少し後の最終変更時刻の GUID をクリックします。この GUID をコピーします。これは、次のセクションで必要になります。
 
 
-   	![The Hive query output file GUID listed in the File Browser tab.][img-hdi-dashboard-query-browse-output]
+   	![[ファイル ブラウザー] タブに表示された Hive クエリ出力ファイルの GUID][img-hdi-dashboard-query-browse-output]
 
 
 ##<a name="powerquery"></a>Excel 用 Microsoft Business Intelligence ツールに接続する
@@ -205,7 +205,7 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 
 6. **[名前]** 列で **stdout** を見つけます。対応する **[フォルダーのパス]** 列の GUID が前にコピーした GUID と一致していることを確認します。一致している場合、出力データは送信したジョブに対応しています。**[stdout]** の左側の列の **[バイナリ]** をクリックします。
 
-	![Finding the data output by GUID in the list of content.][image-hdi-gettingstarted-powerquery-importdata2]
+	![コンテンツの一覧の GUID でデータ出力を検索中。][image-hdi-gettingstarted-powerquery-importdata2]
 
 9. 左上隅にある **[閉じて読み込む]** をクリックして、Hive ジョブ出力を Excel にインポートします。
 
@@ -282,4 +282,4 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -90,22 +90,22 @@ Azure RemoteApp について次のような質問が寄せられています。�
 - **RemoteApp に関するドキュメントはありますか。** ご問い合わせありがとうございます。ポータルのヘルプ ドロアーのヘルプ コンテンツ (ポータルのいずれかのページの **?** をクリックするだけです) に加えて、RemoteApp のすべてについて詳細に説明する次の資料を参照できます。
 	- **概要:**
 		- [Azure RemoteApp とは](remoteapp-whatis.md)
-		- [What is in the RemoteApp template images?](remoteapp-images.md)
-		- [How does licensing work in Azure RemoteApp?](remoteapp-licensing.md)
-		- [Using Office 365 with Azure RemoteApp](remoteapp-o365.md)
-		- [Using redirection in Azure RemoteApp](remoteapp-redirection.md)
+		- [RemoteApp テンプレート イメージとは何ですか。](remoteapp-images.md)
+		- [How does licensing work? (ライセンスはどのように機能しますか。)](remoteapp-licensing.md)
+		- [RemoteApp と Office は、どうやって一緒に使うのですか?](remoteapp-o365.md)
+		- [RemoteApp でリダイレクトはどのように使用できますか](remoteapp-redirection.md)?
 	- **デプロイ:**
 		- [RemoteApp のカスタム テンプレート イメージの作成方法](remoteapp-create-custom-image.md)
 		- [RemoteApp のハイブリッド デプロイメントの作成方法](remoteapp-create-hybrid-deployment.md)
 		- [RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
-		- [Configuring Active Directory for Azure RemoteApp](remoteapp-ad.md)
-		- [How to publish an app in RemoteApp](remoteapp-publish.md)
+		- [Configure Azure Active Directory for RemoteApp (RemoteApp に Azure Active Directory を構成する)](remoteapp-ad.md)
+		- [RemoteApp のアプリを公開する](remoteapp-publish.md)
 	- **管理:**
 		- [ユーザーの追加](remoteapp-user.md)
-		- [Best practices for configuring and using Azure RemoteApp](remoteapp-bestpractices.md)	
+		- [Best practices for configuring and using RemoteApp (Azure RemoteApp を構成し、使用するためのベスト プラクティス)](remoteapp-bestpractices.md)	
 
 	ビデオ。 RemoteApp についての多くのビデオがあります。これらの一部は概要 ([Azure RemoteApp の概要](http://azure.microsoft.com/documentation/videos/cloud-cover-ep-150-azure-remote-app-with-thomas-willingham-and-nihar-namjoshi/)) について説明し、一部はデプロイメント ([Cloud Deployment Overview](https://www.youtube.com/watch?v=3NAv2iwZtGc&feature=youtu.be) (クラウドのデプロイメント概要) および [Hybrid Deployment](https://www.youtube.com/watch?v=GCIMxPUvg0c&feature=youtu.be) (ハイブリッドのデプロイメント)) について説明します。確認してください。
 
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

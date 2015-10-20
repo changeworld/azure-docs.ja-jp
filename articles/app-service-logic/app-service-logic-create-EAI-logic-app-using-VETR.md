@@ -67,7 +67,7 @@ Microsoft Azure 管理ポータルで、画面左下の **[+ 新規]** ボタン
 
 これで、検証アクションは、HTTP リスナー後の最初のアクションになります。
 
-![BizTalk XML Validator][3]
+![BizTalk XML 検証][3]
 
 同様にして、他のアクションも追加します。
 
@@ -114,4 +114,4 @@ Microsoft Azure 管理ポータルで、画面左下の **[+ 新規]** ボタン
 [4]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BizTalkTransforms.PNG
 [5]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/AzureServiceBus.PNG
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

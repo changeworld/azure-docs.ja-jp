@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Microsoft Azure IoT Suite 事前構成済みソリューションの使用開始に関するチュートリアル | Microsoft Azure"
+	pageTitle="構成済みソリューションの使用 | Microsoft Azure"
 	description="このチュートリアルに従って、Azure IoT Suite 事前構成済みソリューションのデプロイ方法について学習します。"
 	services=""
-	documentationCenter=".net"
+	documentationCenter=""
 	authors="aguilaaj"
 	manager="timlt"
 	editor=""/>
@@ -12,11 +12,11 @@
      ms.devlang="na"
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
-     ms.workload="tbd"
+     ms.workload="na"
      ms.date="09/29/2015"
      ms.author="araguila"/>
 
-# IoT 事前構成済みソリューションの使用
+# チュートリアル: IoT 事前構成済みソリューションの使用
 
 ## はじめに
 
@@ -110,9 +110,9 @@ Azure IoT Suite の事前構成済みソリューションにより、さまざ�
 
 -   [IoT Suite の概要][]
 
-[Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F%20target=
+[Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F%20target=
 
 [事前構成済みソリューションのカスタマイズに関するガイダンス]: https://azure.microsoft.com/documentation/articles/iot-suite-guidance-on-customizing-preconfigured-solutions/
 [IoT Suite の概要]: https://azure.microsoft.com/documentation/articles/iot-suite-overview/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

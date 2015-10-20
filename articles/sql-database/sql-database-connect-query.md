@@ -13,12 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="09/09/2015"
+	ms.date="10/09/2015"
 	ms.author="genemi"/>
 
 
 # C&#x23; を使用して SQL Database に接続し、クエリを実行する
 
+> [AZURE.SELECTOR]
+- [C#](sql-database-connect-query.md)
+- [SSMS](sql-database-connect-query-ssms.md)
+- [Excel](sql-database-connect-excel.md)
 
 クラウド上にある Azure SQL Database のデータベースに接続するには、ADO.NET を使用する C# プログラムを記述する必要があります。
 
@@ -72,7 +76,7 @@ Visual Studio のインストールが必要な場合、以下の方法でイン
 
 6. データベース ブレードの上部付近にある **[Visual Studio で開く]** をクリックします。Visual Studio のインストール場所へのリンクを備えた、Visual Studio に関する新しいブレードが開きます。
  
-	![Open in Visual Studio button][20-OpenInVisualStudioButton]
+	![[Visual Studio で開く] ボタン][20-OpenInVisualStudioButton]
 
 7. **[Community (無料)]** リンク、またはそれに類似したリンクをクリックします。新しい Web ページが追加されます。
 
@@ -97,7 +101,7 @@ Visual Studio で、スタート テンプレート ([C#]、[Windows]、**[コ�
 
 2. **[インストール済み]** で、[C#]、[Windows] と展開すると、中央のペインに **[コンソール アプリケーション]** が表示されます。
 
-	![The New Project dialog][30-VSNewProject]
+	![[新しいプロジェクト] ダイアログ][30-VSNewProject]
 
 2. **[名前]** に「**ConnectAndQuery\_Example**」と入力します。**[OK]** をクリックします。
 
@@ -162,7 +166,7 @@ C# のサンプルでは .NET Framework アセンブリの **System.Configuratio
  - これにより、&#x2a;.exe ファイルのビルド先ディレクトリにある &#x2a;.exe.config ファイルの内容が、App.config ファイルの内容に置き換わります。この置き換えは、&#x2a;.exe を再コンパイルするたびに発生します。
  - &#x2a;.exe.config ファイルは、C# サンプル プログラムの実行時に読み取られます。
 
-	![Copy to Output Directory = Copy always][50-VSCopyToOutputDirectoryProperty]
+	![[出力ディレクトリにコピー] = [常にコピーする]][50-VSCopyToOutputDirectoryProperty]
 
 
 ## 手順 6. C# サンプル コード内に貼り付ける
@@ -170,7 +174,7 @@ C# のサンプルでは .NET Framework アセンブリの **System.Configuratio
 
 1. Visual Studio で、**[ソリューション エクスプローラー]** ペインから **Program.cs** ファイルを開きます。 
 
-	![Paste in our sample C# program code][40-VSProgramCsOverlay]
+	![サンプルの C# プログラム コードに貼り付ける][40-VSProgramCsOverlay]
 
 2. 次の C# サンプル コードを貼り付けて、Program.cs 内のすべてのスタート コードを上書きします。
  - コード サンプルを短くする場合は、接続文字列全体をリテラルとして変数 **SQLConnectionString** に割り当てることができます。その後は、**GetConnectionStringFromExeConfig** と **GatherPasswordFromConsole** の 2 つのメソッドを削除できます。
@@ -319,7 +323,7 @@ IP アドレスは、[Azure プレビュー ポータル](http://portal.azure.co
 
 
 
-詳細については、「<br/> [ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
+詳細については、<br/>「[ファイアウォール設定の構成方法 (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 
 
@@ -353,4 +357,4 @@ IP アドレスは、[Azure プレビュー ポータル](http://portal.azure.co
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

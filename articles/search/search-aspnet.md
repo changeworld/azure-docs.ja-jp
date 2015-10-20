@@ -462,4 +462,4 @@ Azure Search と ASP.NET の統合についてさらに理解を深めるには�
 - [Azure Search 開発者向けのケース スタディ](search-dev-case-study-whattopedia.md)
 - [Azure Search 開発の一般的ワークフロー](search-workflow.md) 
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

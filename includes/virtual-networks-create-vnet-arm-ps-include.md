@@ -3,19 +3,10 @@
 PowerShell を使用して VNet を作成するには、次の手順に従います。
 
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
-2. 次に示すように、Azure PowerShell プロンプトで **Switch-AzureMode** コマンドレットを実行して、リソース マネージャー モードに切り替えます。
-
-		Switch-AzureMode AzureResourceManager
 	
-	予想される出力:
+3. 必要に応じて、次に示すように **New-AzureRMResourceGroup** コマンドレットを実行して、新しいリソース グループを作成します。このシナリオでは、*TestRG* という名前のリソース グループを作成します。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)」を参照してください。
 
-		WARNING: The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.
-
-	>[AZURE.WARNING]Switch-AzureMode コマンドレットは間もなく廃止予定です。これらが廃止された場合は、すべてのリソース マネージャー コマンドレットの名前が変更されます。
-	
-3. 必要に応じて、次に示すように **New-AzureResourceGroup** コマンドレットを実行して、新しいリソース グループを作成します。このシナリオでは、*TestRG* という名前のリソース グループを作成します。リソース グループの詳細については、[Azure リソース マネージャーの概要](resource-group-overview.md/#resource-groups)を参照してください。
-
-		New-AzureResourceGroup -Name TestRG -Location centralus
+		New-AzureRMResourceGroup -Name TestRG -Location centralus
 
 	予想される出力:
 	
@@ -28,11 +19,11 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		                    =======  ==========
 		                    *
 		
-		ResourceId        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG	
+		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG	
 
-4. 次に示すように、**New-AzureVirtualNetwork** コマンドレットを実行して新しい VNet を作成します。
+4. 次に示すように、**New-AzureRMVirtualNetwork** コマンドレットを実行して新しい VNet を作成します。
 
-		New-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet `
+		New-AzureRMVirtualNetwork -ResourceGroupName TestRG -Name TestVNet `
 			-AddressPrefix 192.168.0.0/16 -Location centralus	
 		
 	予想される出力:
@@ -40,8 +31,8 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		Name              : TestVNet
 		ResourceGroupName : TestRG
 		Location          : centralus
-		Id                : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-		Etag              : W/"5b89894f-db7f-4634-9870-f9b97e209510"
+		Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
+		Etag              : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 		ProvisioningState : Succeeded
 		Tags              :
 		AddressSpace      : {
@@ -55,15 +46,15 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		NetworkInterfaces : null
 		Subnets           : []
 
-5. 次に示すように、**Get-AzureVirtualNetwork** コマンドレットを実行して、仮想ネットワーク オブジェクトを変数に格納します。
+5. 次に示すように、**Get-AzureRMVirtualNetwork** コマンドレットを実行して、仮想ネットワーク オブジェクトを変数に格納します。
 
-		$vnet = Get-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
+		$vnet = Get-AzureRMVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
 	
-	>[AZURE.TIP]**$vnet = New-AzureVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus** を実行すると、手順 4 と手順 5 を組み合わせることができます。
+	>[AZURE.TIP]**$vnet = New-AzureRMVirtualNetwork -ResourceGroupName TestRG -Name TestVNet -AddressPrefix 192.168.0.0/16 -Location centralus** を実行すると、手順 4. と手順 5. を組み合わせることができます。
 
-6. 次に示すように、**Add-AzureVirtualNetworkSubnetConfig** コマンドレットを実行して新しい VNet にサブネットを追加します。
+6. 次に示すように、**Add-AzureRMVirtualNetworkSubnetConfig** コマンドレットを実行して新しい VNet にサブネットを追加します。
 
-		Add-AzureVirtualNetworkSubnetConfig -Name FrontEnd `
+		Add-AzureRMVirtualNetworkSubnetConfig -Name FrontEnd `
 			-VirtualNetwork $vnet -AddressPrefix 192.168.1.0/24
 		
 	予想される出力:
@@ -71,8 +62,8 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		Name              : TestVNet
 		ResourceGroupName : TestRG
 		Location          : centralus
-		Id                : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-		Etag              : W/"5b89894f-db7f-4634-9870-f9b97e209510"
+		Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
+		Etag              : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 		ProvisioningState : Succeeded
 		Tags              :
 		AddressSpace      : {
@@ -99,20 +90,20 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 
 7. 作成するサブネットごとに、上記の手順 6. を繰り返します。このシナリオでは、次のコマンドで *BackEnd* サブネットを作成します。
 
-		Add-AzureVirtualNetworkSubnetConfig -Name BackEnd `
+		Add-AzureRMVirtualNetworkSubnetConfig -Name BackEnd `
 			-VirtualNetwork $vnet -AddressPrefix 192.168.2.0/24
 
-8. サブネットは作成されますが、この時点では、上記の手順 4. で作成する、VNet の取得に使用するローカル変数にのみ格納されています。Azure への変更を保存するには、次のように **Set-AzureVirtualNetwork** コマンドレットを実行します。
+8. サブネットは作成されますが、この時点では、上記の手順 4. で作成する、VNet の取得に使用するローカル変数にのみ格納されています。Azure への変更を保存するには、次のように **Set-AzureRMVirtualNetwork** コマンドレットを実行します。
 
-		Set-AzureVirtualNetwork -VirtualNetwork $vnet	
+		Set-AzureRMVirtualNetwork -VirtualNetwork $vnet	
 		
 	予想される出力:
 
 		Name              : TestVNet
 		ResourceGroupName : TestRG
 		Location          : centralus
-		Id                : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
-		Etag              : W/"2d3496d8-2b85-4238-bde2-377fe660aa4a"
+		Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
+		Etag              : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 		ProvisioningState : Succeeded
 		Tags              :
 		AddressSpace      : {
@@ -127,8 +118,8 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		Subnets           : [
 		                      {
 		                        "Name": "FrontEnd",
-		                        "Etag": "W/"2d3496d8-2b85-4238-bde2-377fe660aa4a"",
-		                        "Id": "/subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd",
+		                        "Etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
+		                        "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd",
 		                        "AddressPrefix": "192.168.1.0/24",
 		                        "IpConfigurations": [],
 		                        "NetworkSecurityGroup": null,
@@ -137,8 +128,8 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		                      },
 		                      {
 		                        "Name": "BackEnd",
-		                        "Etag": "W/"2d3496d8-2b85-4238-bde2-377fe660aa4a"",
-		                        "Id": "/subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd",
+		                        "Etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
+		                        "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd",
 		                        "AddressPrefix": "192.168.2.0/24",
 		                        "IpConfigurations": [],
 		                        "NetworkSecurityGroup": null,
@@ -147,4 +138,4 @@ PowerShell を使用して VNet を作成するには、次の手順に従いま
 		                      }
 		                    ]
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

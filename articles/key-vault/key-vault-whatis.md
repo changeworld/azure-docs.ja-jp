@@ -65,4 +65,4 @@ Azure Key Vault でキーとシークレットを使用する方法の詳細に�
 <!--Image references-->
 [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

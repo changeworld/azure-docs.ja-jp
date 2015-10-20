@@ -14,15 +14,17 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="get-started-article"
-	ms.date="10/05/2015"
+	ms.date="10/07/2015"
 	ms.author="ricksal"/>
 
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
 
-このチュートリアルでは、Azure モバイル サービスを使用して Android アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン](mobile-services-android-get-started.md)」を参照してください。
+[AZURE.INCLUDE [mobile-services-hero-slug](../../includes/mobile-services-hero-slug.md)]
+
+このチュートリアルでは、Azure Mobile Services を使用して Android アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン](mobile-services-android-get-started.md)」を参照してください。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -30,13 +32,10 @@
 
 このチュートリアルを完了するには、Android Studio 統合開発環境と最新の Android プラットフォームを含む [Android Developer Tools][Android Studio] が必要です。このほか、Android のバージョン 4.2 以降が必要になります。
 
-ダウンロードしたクイック スタート プロジェクトには、Android 向けのモバイル サービス SDK が含まれています。
+ダウンロードしたクイック スタート プロジェクトには、Android 向けの Mobile Services SDK が含まれています。
 
-> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、Azure 試用版にサインアップして最大 10 の無料モバイル サービスを取得し、試用期間が終わった後でも使用し続けることができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
+> [AZURE.IMPORTANT]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル サービスを入手できます。このサービスは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)を参照してください。
 
-<!-- -->
-
-> [AZURE.NOTE]このチュートリアルの Eclipse バージョンについては、「[Eclipse の使用]」をご覧ください。
 
 ## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
@@ -89,7 +88,7 @@
 
 * [アプリケーションにプッシュ通知を追加する] <br/>アプリにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [に認証を追加する] <br/>アプリの特定の登録ユーザーについて、バックエンド データへのアクセスを制限する方法について説明します。
+* [アプリケーションに認証を追加する] <br/>アプリの特定の登録ユーザーに対して、バックエンド データへのアクセスを制限する方法について説明します。
 
 * [Mobile Services .NET バックエンドのトラブルシューティング] <br/>Mobile Services .NET バックエンドで発生する問題を診断して解決する方法について説明します。
 
@@ -117,9 +116,9 @@
 [15]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-services-import-android-project.png
 
 <!-- URLs. -->
-[Eclipse の使用]: mobile-services-dotnet-backend-android-get-started-ec.md
+[Get started (Eclipse)]: mobile-services-dotnet-backend-android-get-started-ec.md
 [アプリケーションにプッシュ通知を追加する]: mobile-services-dotnet-backend-android-get-started-push.md
-[に認証を追加する]: mobile-services-dotnet-backend-android-get-started-auth.md
+[アプリケーションに認証を追加する]: mobile-services-dotnet-backend-android-get-started-auth.md
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 [Android Studio]: https://developer.android.com/sdk/index.html
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
@@ -127,4 +126,4 @@
 
 [管理ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -103,7 +103,7 @@ Azure Site Recovery をデプロイして、データセンターと Azure 間�
 
 ## コンポーネントのデプロイの計画
 
-### Azure Site Recovery Provider
+### Azure Site Recovery プロバイダー
 
 Providerは、VMM サーバー、Hyper-V ホスト サーバー (デプロイに VMM サーバーがない場合)、または構成サーバーで実行されます。暗号化された HTTPS 接続を使用して、インターネット上で Site Recovery サービスに接続します。以下の点に注意してください。
 
@@ -178,4 +178,4 @@ VMware 仮想マシンまたは物理サーバーにインストールします�
 
 デプロイ シナリオに合わせてコンポーネントを構成します。[詳細情報](site-recovery-overview.md)。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

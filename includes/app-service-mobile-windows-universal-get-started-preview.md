@@ -7,4 +7,4 @@
 
 このチュートリアルを完了することは、Windows ストア アプリおよび Windows Phone ストア アプリの他のすべてのモバイル アプリ チュートリアルを実行するための前提条件です。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -63,19 +63,19 @@ Azure API Management を任意のバックエンドで実行し、それに基�
 
 API Management を使用するにあたって最初に行うことは、サービス インスタンスの作成です。[Azure ポータル][]にサインインし、**[新規]**、**[App Services]**、**[API Management]**、**[作成]** の順にクリックします。
 
-![API Management new instance][api-management-create-instance-menu]
+![API Management の新しいインスタンス][api-management-create-instance-menu]
 
 **[URL]** に、サービス URL に使用する一意のサブドメイン名を指定します。
 
 サービス インスタンスの **[サブスクリプション]** と **[リージョン]** を選択します。それらを選択したら、**[次へ]** ボタンをクリックします。
 
-![New API Management service][api-management-create-instance-step1]
+![新しい API Management サービス][api-management-create-instance-step1]
 
 **[組織名]** フィールドに「**Contoso Ltd.**」と入力し、**[管理者の電子メール]** フィールドに電子メール アドレスを入力します。
 
 >[AZURE.NOTE]API Management システムからの通知には、この電子メール アドレスが使用されます。詳細については、「[Azure API Management で通知と電子メール テンプレートを構成する方法][]」を参照してください。
 
-![New API Management service][api-management-create-instance-step2]
+![新しい API Management サービス][api-management-create-instance-step2]
 
 API Management サービス インスタンスは、Developer、Standard、Premium の 3 つのレベルで利用できます。既定では、新しい API Management サービス インスタンスは、Developer レベルで作成されます。Standard レベルまたは Premium レベルを選択するには、**[詳細設定]** チェック ボックスをオンにし、次の画面で希望のレベルを選択します。
 
@@ -83,7 +83,7 @@ API Management サービス インスタンスは、Developer、Standard、Premi
 
 チェック ボックスをクリックすると、サービス インスタンスが作成されます。
 
-![New API Management service][api-management-instance-created]
+![新しい API Management サービス][api-management-instance-created]
 
 サービス インスタンスが作成されたら、次は、API の作成またはインポートを行います。
 
@@ -243,4 +243,4 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

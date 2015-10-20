@@ -1,35 +1,35 @@
 このチュートリアルの最後に、新しいアプリケーションをビルドして実行します。
 
+### プロジェクトを Android Studio に読み込んで、Gradle を同期する
+
 1. 圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上の Android Studio プロジェクトのディレクトリに展開します。
 
 2. Android Studio を起動します。プロジェクトを使用していて、それが表示された場合は、そのプロジェクトを閉じます ([ファイル] => [プロジェクトを閉じる])。
 
-3. **[既存の Android Studio プロジェクトを開く]** を選択し、プロジェクトの場所を参照して、**[OK]** をクリックします。
+3. **[既存の Android Studio プロジェクトを開く]** を選択し、プロジェクトの場所を参照して、**[OK]** をクリックします。 これにより、プロジェクトが読み込まれ、Gradle との同期が開始されます。
 
  	![](./media/mobile-services-android-get-started/android-studio-import-project.png)
 
-4. 左側の **[プロジェクト エクスプローラー]** ウィンドウで、*[プロジェクト]* タブが選択されていることを確認し、**[app]**、**[src]**、**[java]** の順に開いて、**[ToDoactivity]** をダブルクリックします。
+4. Gradle 同期アクティビティが完了するを待ちます。"ターゲットを見つけられませんでした" というエラーが発生した場合、サンプルのバージョンが Android Studio で使用されるバージョンと一致していないことが原因です。エラー メッセージ内の **[不足しているプラットフォームをインストールして、プロジェクトを同期する]** というリンクをクリックすれば、最も簡単に問題を修正できます。別のバージョンのエラー メッセージが表示される場合がありますが、エラーが表示されなくなるまでこのプロセスを繰り返してください。
+    - Android の最新バージョンや最上位バージョンで実行する場合は、別の修正方法があります。*app* ディレクトリにある *build.gradle* 内の **targetSdkVersion** を、コンピューターにインストールされているバージョンと一致するように更新します。このバージョンを確認するには、**SDK Manager** アイコンをクリックします。次に、**[Sync Project with Gradle Files]** をクリックします。ビルド ツールのバージョンに関するエラー メッセージが表示される場合がありますが、同じ方法で修正してください。
 
-   	![](./media/mobile-services-android-get-started/Android-Studio-quickstart.png)
+### アプリの実行
 
+エミュレーターまたは実際のデバイスでアプリを実行できます。
 
-5. SDK のバージョン 2.0 をダウンロードした場合は、モバイル サービスの URL とキーを含むようにコードを更新する必要があります。
-	- 	**TodoActivity.java** の **OnCreate** メソッド内で、Mobile Services クライアントをインスタンス化するコードを見つけます。前の図にこのコードが示されています。
-	- 	"MobileServiceUrl" を、モバイル サービスの実際の URL に置き換えます。
-	- 	"AppKey" を、モバイル サービスのキーに置き換えます。
-	- 	詳細については、チュートリアル「[既存のアプリに Mobile Services を追加する](../articles/mobile-services/mobile-services-android-get-started-data.md)」を参照してください。 
+1. デバイスから実行するには、USB ケーブルでコンピューターに電話を接続します。[開発用にデバイスをセットアップする](https://developer.android.com/training/basics/firstapp/running-app.html)必要があります。Windows コンピューターで開発している場合は、USB ドライバーもダウンロードしてインストールする必要があります。
 
-6. **[Run]** メニューの **[Run]** をクリックして、Android エミュレーター内でプロジェクトを開始します。
+2. Android エミュレーターを使用して実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager アイコンクリックします。
 
-	> [AZURE.IMPORTANT]プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
+3. **[実行]** メニューの **[実行]** をクリックしてプロジェクトを開始し、表示されたダイアログ ボックスでデバイスまたはエミュレーターを選択します。
 
-7. アプリケーションで、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、**[Add]** をクリックします。
+4. アプリが表示されたら、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、**[追加]** をクリックします。
 
-   	![][10]
+   	![](./media/mobile-services-android-get-started/mobile-quickstart-startup-android.png)
 
    	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
-	> [AZURE.NOTE]モバイル サービスにアクセスして ToDoActivity.java ファイルにあるデータを照会および挿入するコードを確認できます。
+	> [AZURE.NOTE]モバイル サービスにアクセスして ToDoActivity.java ファイルにあるデータをクエリ会および挿入するコードを確認できます。
 
 8. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
@@ -39,26 +39,4 @@
 
    	![](./media/mobile-services-android-get-started/mobile-data-browse.png)
 
-
-<!-- Images. -->
-[0]: ./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png
-[6]: ./media/mobile-services-android-get-started/mobile-portal-quickstart-android.png
-[7]: ./media/mobile-services-android-get-started/mobile-quickstart-steps-android.png
-[8]: ./media/mobile-services-android-get-started/Android-Studio-quickstart.png
-[10]: ./media/mobile-services-android-get-started/mobile-quickstart-startup-android.png
-[11]: ./media/mobile-services-android-get-started/mobile-data-tab.png
-[12]: ./media/mobile-services-android-get-started/mobile-data-browse.png
-[14]: ./media/mobile-services-android-get-started/android-studio-import-project.png
-[15]: ./media/mobile-services-android-get-started/mobile-services-import-android-project.png
-
-<!-- URLs. -->
-[Add Mobile Services to an existing app]: ../articles/mobile-services/mobile-services-android-get-started-data.md
-[Get started with authentication]: ../articles/mobile-services/mobile-services-android-get-started-users.md
-[Get started with push notifications]: ../articles/mobile-services/mobile-services-javascript-backend-android-get-started-push.md
-[Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-[Android Studio]: https://developer.android.com/sdk/index.html
-[Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-
-[Management Portal]: https://manage.windowsazure.com/
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

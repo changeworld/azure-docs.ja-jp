@@ -65,7 +65,7 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 
 	>[AZURE.IMPORTANT][[プロバイダーのリスト]](https://msdn.microsoft.com/library/azure/dn790524.aspx) 操作を呼び出して、サブスクリプションに使用可能な場所を判別できます。PowerShell からプロバイダーをリストするには、[Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn757693.aspx) を呼び出します。.NET から、ProviderOperationsExtensions クラスの [List](https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.provideroperationsextensions.list.aspx) メソッドを使用します。
 	>
-	>どの領域でどのサービスを使用できるかについては、「[Azure リージョン](https://azure.microsoft.com/ja-JP/regions/#services)」をご覧ください。
+	>どの領域でどのサービスを使用できるかについては、「[Azure リージョン](https://azure.microsoft.com/ja-jp/regions/#services)」をご覧ください。
 
 
 5. 複数の Azure サブスクリプションを所有している場合は、**[サブスクリプション]** フィールドが表示されます。**[サブスクリプション]** ボックスに、ストレージ アカウントを使用する Azure サブスクリプションを入力します。
@@ -171,4 +171,4 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 - [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

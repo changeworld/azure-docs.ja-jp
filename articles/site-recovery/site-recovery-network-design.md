@@ -190,4 +190,4 @@ Woodgrove がレプリケーションをデプロイし、IP アドレスを維�
 
 [学習内容](site-recovery-network-mapping.md): Site Recovery がソースおよびターゲット ネットワークをマップする方法。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

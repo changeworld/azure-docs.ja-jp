@@ -1,19 +1,19 @@
 <properties
-   pageTitle="Service Bus REST のチュートリアル | Microsoft Azure"
-	description="REST ベースのインターフェイスを表示する簡易な Service Bus ホスト アプリケーションを構築します。"
-	services="service-bus"
-	documentationCenter="na"
-	authors="sethmanheim"
-	manager="timlt"
-	editor=""/>
+   pageTitle="リレー型メッセージングを使用した Service Bus REST チュートリアル | Microsoft Azure"
+   description="REST ベースのインターフェイスを表示する簡易な Service Bus Relay ホスト アプリケーションを構築します。"
+   services="service-bus"
+   documentationCenter="na"
+   authors="sethmanheim"
+   manager="timlt"
+   editor="" />
 <tags
    ms.service="service-bus"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.workload="tbd"
-	ms.date="07/07/2015"
-	ms.author="sethm"/>
+   ms.devlang="na"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="10/14/2015"
+   ms.author="sethm" />
 
 # Service Bus REST のチュートリアル
 
@@ -23,7 +23,7 @@
 
 ## 手順 1: Azure アカウントにサインアップする
 
-最初の手順では、サービス名前空間を作成し、共有秘密 (SAS) キーを取得します。サービス名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、SAS キーが生成されます。サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
+最初の手順では、サービス名前空間を作成し、Shared Access Signature (SAS) キーを取得します。名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、SAS キーが生成されます。サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
 ### サービス名前空間を作成し、SAS キーを取得するには
 
@@ -51,7 +51,7 @@
 
 4. **System.ServiceModel.dll** への参照をプロジェクトに追加します。
 
-	a.**ソリューション エクスプローラー**でプロジェクト フォルダーの **[参照]** フォルダーを右クリックし、**[参照の追加]** をクリックします。
+	a.ソリューション エクスプローラーでプロジェクト フォルダーの **[参照]** フォルダーを右クリックし、**[参照の追加]** をクリックします。
 
 	b.**[参照の追加]** ダイアログ ボックスの **[.NET]** タブをクリックし、**System.ServiceModel** が表示されるまで下にスクロールします。選択して **[OK]** をクリックします。
 
@@ -66,11 +66,11 @@
   	using System.IO;
 	```
 
-	[System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) は、WCF の基本機能にプログラムでアクセスできる名前空間です。Service Bus は、サービス コントラクトの定義に WCF の多くのオブジェクトと属性を使用します。ほとんどの場合、Service Bus Relay アプリケーションにはこの名前空間を使用することになります。同様に、[System.ServiceModel.Channels](https://msdn.microsoft.com/ja-JP/library/system.servicemodel.channels.aspx) はチャネルの定義に役立ちます。チャネルは、Service Bus とクライアント Web ブラウザーとの通信を経由するオブジェクトです。最後に、[System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) には、Web ベースのアプリケーションを作成できる型が含まれています。
+	[System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) は、WCF の基本機能にプログラムでアクセスできる名前空間です。Service Bus は、サービス コントラクトの定義に WCF の多くのオブジェクトと属性を使用します。ほとんどの場合、Service Bus Relay アプリケーションにはこの名前空間を使用することになります。同様に、[System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) はチャネルの定義に役立ちます。チャネルは、Service Bus とクライアント Web ブラウザーとの通信を経由するオブジェクトです。最後に、[System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) には、Web ベースのアプリケーションを作成できる型が含まれています。
 
 7. プログラムの名前空間を Visual Studio の既定の名前から **Microsoft.ServiceBus.Samples** に変更します。
 
- 	```c
+ 	```
 	namespace Microsoft.ServiceBus.Samples
 	{
 		...
@@ -78,7 +78,7 @@
 
 8. 名前空間の宣言の直後に、**IImageContract** という新しいインターフェイスを定義し、値が `http://samples.microsoft.com/ServiceModel/Relay/` の **ServiceContractAttribute** 属性をインターフェイスに適用します。この名前空間の値は、コードのスコープ全体で使用する名前空間とは異なります。この名前空間の値は、このコントラクトの一意の識別子として使用されます。値にはバージョン情報が含まれています。詳細については、「[サービスのバージョン管理](http://go.microsoft.com/fwlink/?LinkID=180498)」を参照してください。名前空間を明示的に指定すると、既定の名前空間値がコントラクト名に追加されなくなります。
 
-	```c
+	```
 	[ServiceContract(Name = "ImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/RESTTutorial1")]
 	public interface IImageContract
 	{
@@ -87,7 +87,7 @@
 
 9. `IImageContract` インターフェイス内で、`IImageContract` コントラクトがインターフェイスで公開している単一操作のメソッドを宣言し、パブリック Service Bus コントラクトの一部として公開するメソッドに `OperationContractAttribute` 属性を適用します。
 
-	```c
+	```
 	public interface IImageContract
 	{
 		[OperationContract]
@@ -97,7 +97,7 @@
 
 10. **OperationContract** 属性の次に、**WebGet** 属性を適用します。
 
-	```c
+	```
 	public interface IImageContract
 	{
 		[OperationContract, WebGet]
@@ -109,7 +109,7 @@
 
 11. `IImageContract` 定義の直後に、`IImageContract` インターフェイスと `IClientChannel` インターフェイスの両方から継承するチャネルを宣言します。
 
-	```c
+	```
 	[ServiceContract(Name = "IImageContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
 	public interface IImageContract
 	{
@@ -126,9 +126,9 @@
 
 ### 例
 
-次のコード例は、Service Bus コントラクトを定義する基本的なインターフェイスを示しています。
+次のコードは、Service Bus コントラクトを定義する基本的なインターフェイスを示しています。
 
-```c
+```
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -169,7 +169,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 1. **IImageContract** インターフェイスの定義の直後に、**ImageService** という新しいクラスを作成します。**ImageService** クラスで **IImageContract** インターフェイスを実装します。
 
-	```c
+	```
 	class ImageService : IImageContract
 	{
 	}
@@ -178,7 +178,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 2. [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) 属性を **IImageService** クラスに適用して、クラスが WCF コントラクトの実装であることを示します。
 
-	```c
+	```
 	[ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
 	class ImageService : IImageContract
 	{
@@ -197,7 +197,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 5. **System.Drawing.dll**、**System.Runtime.Serialization.dll**、および **Microsoft.ServiceBus.dll** アセンブリへの参照をプロジェクトに追加し、次の関連する `using` ステートメントも追加します。
 
-	```c
+	```
 	using System.Drawing;
 	using System.Drawing.Imaging;
 	using Microsoft.ServiceBus;
@@ -206,7 +206,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 6. ビットマップを読み込む次のコンストラクターを **ImageService** クラスに追加し、クライアント ブラウザーに送信する準備をします。
 
-	```c
+	```
 	class ImageService : IImageContract
 	{
 		const string imageFileName = "image.jpg";
@@ -222,7 +222,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 7. 前のコードの直後に、次のように、画像を含む HTTP メッセージを返す **GetImage** メソッドを **ImageService** クラスに追加します。
 
-	```c
+	```
 	public Stream GetImage()
 	{
 		MemoryStream stream = new MemoryStream();
@@ -243,9 +243,9 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 1. **ImageListener** プロジェクトを右クリックします。**[追加]** をクリックし、**[新しい項目]** をクリックします。
 
-2. **ソリューション エクスプローラ**で、**App.config** をダブルクリックします。この時点で、App.config には次の XML 要素が含まれています。
+2. **ソリューション エクスプローラー**で、**App.config** をダブルクリックします。この時点で、App.config には次の XML 要素が含まれています。
 
-	```xml
+	```
 	<?xml version="1.0" encoding="utf-8" ?>
 	<configuration>
 	</configuration>
@@ -256,7 +256,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 3. `<system.serviceModel>`XML 要素を App.config ファイルに追加します。これは 1 つ以上のサービスを定義する WCF 要素です。この要素は、サービス名とエンドポイントの定義に使用されます。
 
-	```xml
+	```
 	<?xml version="1.0" encoding="utf-8" ?>
 	<configuration>
 		<system.serviceModel>
@@ -268,7 +268,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 4. `system.serviceModel`要素内に、次の内容の `<bindings>` 要素を追加します。ここでアプリケーションに使用するバインドを定義します。複数のバインドを定義できますが、このチュートリアルで定義するバインドは 1 つのみです。
 
-	```xml
+	```
 	<bindings>
 		<!-- Application Binding -->
 		<webHttpRelayBinding>
@@ -283,7 +283,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 5. `<bindings>` 要素の後に、`<services>` 要素を追加します。バインドと同様に、1 つの構成ファイルで複数のサービスを定義できます。ただし、このチュートリアルで定義するサービスは 1 つのみです。
 
-	```xml
+	```
 	<services>
 		<!-- Application Service -->
 		<service name="Microsoft.ServiceBus.Samples.ImageService"
@@ -300,9 +300,9 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 	この手順では、以前に定義した既定の **webHttpRelayBinding** を使用するサービスを構成します。また、既定の **sbTokenProvider** を使用します。この値は次の手順で定義します。
 
-6. `<services>` 要素の後に、次の内容の `<behaviors>` 要素を作成します。このとき、"SAS\_KEY" キーを、手順 1 で Azure ポータルから取得した*共有アクセス署名 (SAS)* に置き換えます。
+6. `<services>` 要素の後に、次の内容の `<behaviors>` 要素を作成します。このとき、"SAS\_KEY" キーを、手順 1 で Azure ポータルから取得した*Shared Access Signature (SAS)* に置き換えます。
 
-	```xml
+	```
 	<behaviors>
 		<endpointBehaviors>
 			<behavior name="sbTokenProvider">
@@ -327,7 +327,7 @@ REST スタイルの Service Bus Service を作成するには、まずコント
 
 次のコードは、**WebHttpRelayBinding** バインドを使用して Service Bus で実行する REST ベース サービスのコントラクトとサービスの実装を示しています。
 
-```c
+```
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -389,7 +389,7 @@ namespace Microsoft.ServiceBus.Samples
 
 次の例は、サービスに関連付けられている App.config ファイルです。
 
-```xml
+```
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
   <system.serviceModel>
@@ -445,14 +445,14 @@ namespace Microsoft.ServiceBus.Samples
 
 1. `Main()`関数の宣言で、Service Bus プロジェクトの名前空間を格納する変数を作成します。
 
-	```c
+	```
 	string serviceNamespace = "InsertServiceNamespaceHere";
 	```
 	Service Bus は、名前空間の名前を使用して一意の URI を作成します。
 
 2. 名前空間に基づくサービスのベース アドレスの `Uri` インスタンスを作成します。
 
-	```c
+	```
 	Uri address = ServiceBusEnvironment.CreateServiceUri("https", serviceNamespace, "Image");
 	```
 
@@ -460,7 +460,7 @@ namespace Microsoft.ServiceBus.Samples
 
 - このセクションで作成した URI アドレスを使用して、Web サービス ホストを作成します。
 
-	```c
+	```
 	WebServiceHost host = new WebServiceHost(typeof(ImageService), address);
 	```
 	サービス ホストは、ホスト アプリケーションをインスタンス化する WCF オブジェクトです。この例では、作成するホストの種類 (**ImageService**) と、ホスト アプリケーションを公開するアドレスを渡します。
@@ -469,14 +469,14 @@ namespace Microsoft.ServiceBus.Samples
 
 1. サービスを開きます。
 
-	```c
+	```
 	host.Open();
 	```
 	サービスが実行されます。
 
 2. サービスが実行中であることと、サービスの停止方法を示すメッセージが表示されます。
 
-	```c
+	```
 	Console.WriteLine("Copy the following address into a browser to see the image: ");
 	Console.WriteLine(address + "GetImage");
 	Console.WriteLine();
@@ -494,7 +494,7 @@ namespace Microsoft.ServiceBus.Samples
 
 次の例では、チュートリアルの前の手順で説明したサービス コントラクトと実装が含まれています。ここでは、コンソール アプリケーションでサービスをホストします。次のコードをコンパイルして、ImageListener.exe という実行可能ファイルを作成します。
 
-```c
+```
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -578,8 +578,8 @@ namespace Microsoft.ServiceBus.Samples
 
 ここでは、Service Bus Relay サービスを使用するアプリケーションを構築しました。リレー型メッセージングの詳細については、次の記事を参照してください。
 
-- [Azure Service Bus アーキテクチャの概要](fundamentals-service-bus-hybrid-solutions.md#relays)
+- [Azure Service Bus アーキテクチャの概要](service-bus-fundamentals-hybrid-solutions.md#relays)
 
 - [Service Bus Relay サービスの使用方法](service-bus-dotnet-how-to-use-relay.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

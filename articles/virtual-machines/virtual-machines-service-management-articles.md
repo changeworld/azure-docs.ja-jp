@@ -14,12 +14,13 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="vm-multiple"
 	ms.workload="infrastructure-services"
-	ms.date="10/01/2015"
+	ms.date="10/07/2015"
 	ms.author="danlep"/>
 
 # サービス管理での仮想マシンの操作に関する記事
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]以下は、クラシック デプロイメント モデルを使用したリソースの作成および管理に関する記事の一覧です。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 ## 作業開始
 
@@ -41,7 +42,7 @@
 
 [Azure Command-Line Interface (Azure CLI) を使用して、Linux を実行するカスタム VM を作成する](virtual-machines-linux-create-custom.md)
 
-[Azure CLI を使用して複数の VM のデプロイメントを作成する](virtual-machines-create-multi-vm-deployment-xplat-cli-install.md)
+[Azure CLI を使用して複数の VM のデプロイを作成する](virtual-machines-create-multi-vm-deployment-xplat-cli-install.md)
 
 ## 計画
 
@@ -86,8 +87,6 @@
 [インターネットに接続するロード バランサーの構成の開始](../load-balancer/load-balancer-internet-getstarted.md)
 
 [仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)
-
-[Mac、Linux、および Windows 用 Azure CLI を使用した仮想マシンの管理](virtual-machines-manage-vms-azure-cli.md)
 
 ## ワークロードの作成
 
@@ -153,4 +152,4 @@
 
 [サービス管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/ee460799.aspx)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

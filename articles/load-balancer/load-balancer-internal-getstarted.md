@@ -116,7 +116,7 @@ Get-azureinternalloadbalancer コマンドの表示から IP アドレスをメ�
 
 Contoso Corporation は、インターネットに接続された Web サーバー セットと、データベース サーバー セット間で負荷分散を提供したいと考えています。両方のサーバー セットは、1 つの Azure クラウド サービスでホストされます。TCP ポート 1433 への Web サーバーのトラフィックは、データベース層の 3 つの仮想マシンに分散される必要があります。図 1 に、この構成を示します。
 
-![Internal load-balanced set for the database tier](./media/load-balancer-internal-getstarted/IC736321.png)
+![このデータベース層の内部負荷分散セット](./media/load-balancer-internal-getstarted/IC736321.png)
 
 図 1: インターネットに接続された多層アプリケーションの例
 
@@ -160,7 +160,7 @@ Contoso Corporation は、インターネットに接続された Web サーバ�
 
 Contoso Corporation は、Azure の Web サーバー セットで基幹業務 (LOB) アプリケーションをホストしたいと考えています。TCP ポート 80 へのクライアント トラフィックは、クロスプレミス仮想ネットワークで実行されている次の 3 つの仮想マシン間で負荷分散する必要があります。図 2 に、この構成を示します。
 
-![Internal load balancing for an LOB application](./media/load-balancer-internal-getstarted/IC744148.png)
+![LOB アプリケーションの内部負荷分散](./media/load-balancer-internal-getstarted/IC744148.png)
 
 図 2: Azure でホストされる LOB アプリケーションの例
 
@@ -332,4 +332,4 @@ Visual Studio でクラウド デプロイのサービス構成ファイル (.cs
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

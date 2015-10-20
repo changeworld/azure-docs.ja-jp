@@ -106,4 +106,4 @@ Azure CLI を使用すると、Windows、Linux、または OSX を実行して�
 		data:
 		info:    network vnet show command OK
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

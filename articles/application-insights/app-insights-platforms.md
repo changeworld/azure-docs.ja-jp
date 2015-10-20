@@ -27,7 +27,7 @@
 + [C++ (Windows ストア)](app-insights-windows-cpp.md)
 + [Java](app-insights-java-get-started.md)
 + [JavaScript Web ページ](app-insights-web-track-usage.md)
-+ [Objective-C](app-insights-ios.md)
++ [Objective-C](https://github.com/Microsoft/ApplicationInsights-iOS)
 + [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 + [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 + [Ruby](https://rubygems.org/gems/application_insights)
@@ -79,4 +79,4 @@
 
 <!--Link references-->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

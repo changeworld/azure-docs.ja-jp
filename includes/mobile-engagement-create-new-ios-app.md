@@ -14,4 +14,4 @@
 
 Xcode により Mobile Engagement の統合先のデモ アプリが作成されます。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

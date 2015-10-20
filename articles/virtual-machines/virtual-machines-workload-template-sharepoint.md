@@ -19,7 +19,7 @@
 
 # Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイメント モデルを使用したリソースの作成について説明します。このリソースは、クラシック デプロイメント モデルを使用して作成することはできません。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
 
 この記事の手順では、リソース マネージャーのテンプレートを使用して、3 台または 9 台のサーバーで構成される新しい SharePoint Server 2013 ファームをデプロイします。
 
@@ -52,7 +52,7 @@
 
 開始する前に、適切なバージョンの Azure PowerShell がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[こちら](virtual-machines-deploy-rmtemplates-powershell.md#setting-up-powershell-for-resource-manager-templates)をクリックします。
 
-次のコマンド セットに、Azure のデプロイメント名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
+次のコマンド セットに、Azure のデプロイ名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
 
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
@@ -84,7 +84,7 @@
 
 	azure group create <group name> <location>
 
-次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイメントの名前を指定します。
+次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイの名前を指定します。
 
 	azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sharepoint-three-vm/azuredeploy.json <group name> <deployment name>
 
@@ -122,7 +122,7 @@
 
 開始する前に、適切なバージョンの Azure PowerShell がインストールされていること、ログインしていること、新しいリソース マネージャー モードに切り替えていることを確認します。詳細については、[こちら](virtual-machines-deploy-rmtemplates-powershell.md#setting-up-powershell-for-resource-manager-templates)をクリックします。
 
-次のコマンド セットに、Azure のデプロイメント名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
+次のコマンド セットに、Azure のデプロイ名、新しいリソース グループ名、Azure データ センターの場所を入力します。引用符内のすべての文字 (< and > を含む) を削除します。
 
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
@@ -154,7 +154,7 @@
 
 	azure group create <group name> <location>
 
-次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイメントの名前を指定します。
+次に、次のコマンドを使用して、新しいリソース グループの名前と、Azure デプロイの名前を指定します。
 
 	azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sharepoint-server-farm-ha/azuredeploy.json <group name> <deployment name>
 
@@ -184,4 +184,4 @@
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

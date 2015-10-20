@@ -1,6 +1,7 @@
 <properties
    pageTitle="Hadoop のチュートリアル: Windows での Hadoop の使用 | Microsoft Azure"
    description="HDInsight での Hadoop の使用Windows での Hadoop クラスターのプロビジョニング、データに対する Hive クエリの実行、Excel での出力の分析を行う方法について説明します。"
+   keywords="hadoop tutorial,hadoop on windows,hadoop cluster,learn hadoop, hive query"
    services="hdinsight"
    documentationCenter=""
    authors="nitinme"
@@ -33,11 +34,11 @@ Hadoop on Windows を理解して HDInsight の使用を開始できるように
 
 大規模な非構造化データ セットがあり、このデータ セットに対して Hive クエリを実行して、意味のある情報を抽出する場合を仮定します。これが、このチュートリアルで目的としていることです。これを実現するには、次の手順を実行します。
 
-   !["Hadoop tutorial: Create an account; provision a Hadoop cluster; submit a Hive query; analyze data in Excel.][image-hdi-getstarted-flow]
+   ![Hadoop チュートリアル: アカウントの作成、Hadoop クラスターのプロビジョニング、Hive クエリーの送信、Excel によるデータ分析][image-hdi-getstarted-flow]
 
 HDInsight での Hadoop の説明については、このチュートリアルのデモ ビデオをご覧ください。
 
-![Video of a first Hadoop tutorial: Submit a Hive query on a Hadoop cluster, and analyze results in Excel.][img-hdi-getstarted-video]
+![初めての Hadoop チュートリアル動画: Hadoop クラスターでの Hive クエリーの送信、Excel によるデータ分析][img-hdi-getstarted-video]
 
 **[YouTube で HDInsight の Hadoop チュートリアルを見る](https://www.youtube.com/watch?v=Y4aNjnoeaHA&list=PLDrz-Fkcb9WWdY-Yp6D4fTC1ll_3lU-QS)**
 
@@ -73,7 +74,7 @@ HDInsight で Hadoop クラスターをプロビジョニングするときに�
 1. [Azure ポータル][azure-management-portal]にサインインします。
 2. 左下隅にある **[新規]** をクリックし、次の図に示すように、値を入力します。
 
-	![Azure portal where you can use Quick Create to set up a new storage account.][image-hdi-storageaccount-quickcreate]
+	![簡易作成を使用して新しいストレージ アカウントを設定できる Azure ポータル。][image-hdi-storageaccount-quickcreate]
 
 >[AZURE.NOTE]ストレージ アカウントは、クラスターでサポートされる場所 (**東アジア**、**東南アジア**、**北ヨーロッパ**、**西ヨーロッパ**、**米国東部**、**米国西部**、**米国中北部**、**米国中南部**) に作成してください。
 
@@ -92,7 +93,7 @@ HDInsight で Hadoop クラスターをプロビジョニングするときに�
 
 2. 左下隅にある **[新規]** をクリックし、次の図に示すように、値を入力します。
 
-	![Creation of a Hadoop cluster in HDInsight.][image-hdi-quickcreatecluster]
+	![HDInsight での Hadoop クラスターの作成。][image-hdi-quickcreatecluster]
 
 <!-- COMMENTED OUT TEXT BEGINS --
 
@@ -148,7 +149,7 @@ HDInsight クラスターがプロビジョニングされたら、サンプル�
 3. Hive ジョブの実行に使用するクラスターの名前をクリックし、ページの下部にある **[クエリ コンソール]** をクリックします。
 4. 別のブラウザー タブで Web ページが開きます。Hadoop ユーザー アカウントとパスワードを入力します。既定のユーザー名は **admin** で、パスワードはプロビジョニング処理中に入力したパスワードです。ダッシュボードは、次のようになります。
 
-	![Hive Editor tab in the HDInsight cluster dashboard.][img-hdi-dashboard]
+	![HDInsight クラスターのダッシュボードの [Hive エディター] タブ。][img-hdi-dashboard]
 
 	ページの上部にいくつかのタブがあります。既定のタブは **[Hive エディター]** です。これ以外に、**[ジョブ履歴]** タブと **[ファイル ブラウザー]** タブがあります。ダッシュボードでは、Hive クエリの送信、Hadoop ジョブ ログの確認、ストレージ内のファイルの参照などの操作を実行できます。
 
@@ -156,15 +157,15 @@ HDInsight クラスターがプロビジョニングされたら、サンプル�
 
 6. **[Hive エディター]** タブで、**[クエリ名]** に「**HTC20**」と入力します。クエリ名は、ジョブのタイトルです。クエリ ウィンドウで、次の図に示すように、Hive クエリを入力します。
 
-	![Hive query entered in the query pane of the Hive Editor.][img-hdi-dashboard-query-select]
+	![[Hive エディター] に入力された Hive クエリ][img-hdi-dashboard-query-select]
 
 4. **[Submit]** をクリックします。結果が返されるまでしばらく時間がかかります。画面は 30 秒ごとに更新されます。**[最新の情報に更新]** をクリックして画面を更新することもできます。
 
-    ![Results from a Hive query in listed at the bottom of the cluster dashboard.][img-hdi-dashboard-query-select-result]
+    ![クラスターのダッシュボードの下部に表示される Hive クエリの結果。][img-hdi-dashboard-query-select-result]
 
 5. 状態にジョブの完了が表示されたら、画面のクエリ名をクリックして出力を表示します。**[ジョブの開始時刻 (UTC)]** の値をメモしておきます。この情報は後で必要になります。
 
-    ![Job Start Time listed in the Job History tab of the HDInsight cluster dashboard.][img-hdi-dashboard-query-select-result-output]
+    ![HDInsight クラスターのダッシュボードの [ジョブ履歴] タブに表示されるジョブ開始時間。][img-hdi-dashboard-query-select-result-output]
 
     このページには、**ジョブの出力**と**ジョブのログ**も表示されます。出力ファイル (\_stdout) とログ ファイル (\_stderr) をダウンロードすることもできます。
 
@@ -176,7 +177,7 @@ HDInsight クラスターがプロビジョニングされたら、サンプル�
 3. **[管理者]** をクリックし、以前書き留めたジョブの開始時刻よりも少し後の最終変更時刻の GUID をクリックします。この GUID をコピーします。これは、次のセクションで必要になります。
 
 
-   	![The Hive query output file GUID listed in the File Browser tab.][img-hdi-dashboard-query-browse-output]
+   	![[ファイル ブラウザー] タブに表示された Hive クエリ出力ファイルの GUID][img-hdi-dashboard-query-browse-output]
 
 
 ##<a name="powerquery"></a>Excel 用 Microsoft Business Intelligence ツールに接続する
@@ -194,7 +195,7 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 1. Excel を開き、新しいブックを作成します。
 3. **[Power Query]** メニューをクリックし、**[その他のデータ ソース]**、**[Azure HDInsight から]** の順にクリックします。
 
-	![Excel PowerQuery Import menu open for Azure HDInsight.][image-hdi-gettingstarted-powerquery-importdata]
+	![Azure HDInsight 用に開いた Excel の Power Query Import のメニュー。][image-hdi-gettingstarted-powerquery-importdata]
 
 3. クラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を **[アカウント名]** ボックスに入力し、**[OK]** をクリックします。(これは、このチュートリアルで作成済みのストレージ アカウントです。)
 4. Azure BLOB ストレージ アカウントのアカウント キーを **[アカウント キー]** ボックスに入力し、**[保存]** をクリックします。
@@ -202,7 +203,7 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 
 6. **[名前]** 列で **stdout** を見つけます。対応する **[フォルダーのパス]** 列の GUID が前にコピーした GUID と一致していることを確認します。一致している場合、出力データは送信したジョブに対応しています。**[stdout]** の左側の列の **[バイナリ]** をクリックします。
 
-	![Finding the data output by GUID in the list of content.][image-hdi-gettingstarted-powerquery-importdata2]
+	![コンテンツの一覧の GUID でデータ出力を検索中。][image-hdi-gettingstarted-powerquery-importdata2]
 
 9. 左上隅にある **[閉じて読み込む]** をクリックして、Hive ジョブ出力を Excel にインポートします。
 
@@ -219,7 +220,7 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 - [HDInsight での Hive の使用][hdinsight-use-hive]
 - [HDInsight での Pig の使用][hdinsight-use-pig]
 - [HDInsight での Oozie の使用][hdinsight-use-oozie]
-- [Develop C#Hadoop streaming programs for HDInsight (HDInsight 用 C#Hadoop ストリーミング プログラムの開発)][hdinsight-develop-streaming]
+- [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][hdinsight-develop-streaming]
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 
 
@@ -279,4 +280,4 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

@@ -74,7 +74,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 5. 作成した Runbook ジョブのジョブ ウィンドウが開かれます。このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
 6.  ジョブの状態が **[ジョブの概要]** に表示され、Runbook をテストしたときに確認した状態と一致しています。<br> ![ジョブの概要](media/automation-first-runbook-textual/job-pane-summary.png)
 7.  Runbook の状態が *[完了]* になったら、**[出力]** をクリックします。[出力] ウィンドウが開き、「*Hello World*」と表示されます。<br> ![ジョブの概要](media/automation-first-runbook-textual/job-pane-output.png)  
-8.  Close the Output pane.
+8.  [出力] ウィンドウを閉じます。
 9.  **[ストリーム]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。出力ストリームでは *Hello World* だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。<br> ![ジョブの概要](media/automation-first-runbook-textual/job-pane-streams.png) 
 9. ストリーム ウィンドウを閉じると、ジョブ ウィンドウは MyFirstRunbook ウィンドウに戻ります。
 9.  **[ジョブ]** をクリックして、この Runbook のジョブ ウィンドウを開きます。この Runbook によって作成されたジョブの一覧が表示されます。ジョブを 1 回実行しただけなので、一覧に表示されるジョブは 1 つだけです。<br> ![ジョブ](media/automation-first-runbook-textual/runbook-control-jobs.png) 
@@ -122,4 +122,4 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 - [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

@@ -11,4 +11,4 @@
 	CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 		ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString);
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

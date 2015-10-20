@@ -99,4 +99,4 @@
 [bootstrap]: http://getbootstrap.com/
 [LESS 変数]: http://getbootstrap.com/css/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

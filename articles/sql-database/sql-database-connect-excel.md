@@ -4,8 +4,8 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="joseidz"
-	manager="joseidz"
-	editor="joseidz"/>
+	manager="jeffreyg"
+	editor="jeffreyg"/>
 
 
 <tags
@@ -14,41 +14,52 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/09/2015"
+	ms.date="10/09/2015"
 	ms.author="joseidz"/>
 
 
 # Excel を使用した Azure SQL Database への接続
-Excel を Azure SQL Database に接続し、データベース内のデータに関するレポートを作成します。
 
-## 前提条件
-- Azure SQL Database のプロビジョニングと実行。新しい SQL Database を作成するには、「[Microsoft Azure SQL Database の概要](sql-database-get-started.md)」をご覧ください。
-- [Microsoft Excel 2013](https://products.office.com/en-US/) (または Microsoft Excel 2010)
+> [AZURE.SELECTOR]
+- [C#](sql-database-connect-query.md)
+- [SSMS](sql-database-connect-query-ssms.md)
+- [Excel](sql-database-connect-excel.md)
 
-## SQL Database に接続し、レポートを作成する
-1.	Excel を開きます。
-2.	ページの上部にあるメニュー バーで **[データ] **をクリックします。
-3.	**[その他のデータ ソース]** をクリックし、**[SQL Server]** をクリックします。**[データ接続ウィザード]** が表示されます。
+この記事では、Excel を Azure SQL データベースに接続し、データベース内のデータに関するレポートを作成する方法について説明します。まず、SQL データベースが必要です。SQL データベースがない場合は、「[最初の SQL Database を作成する](sql-database-get-started.md)」を参照することで、サンプル データを含むデータベースを数分で作成して実行できます。以降の説明は、その記事で作成したサンプル データに基づいていますが、独自のデータでも同様の手順を実行できます。
 
-	![データ接続ウィザード][1]
-4.	**[サーバー名]** ボックスに、Azure SQL Database のサーバー名を入力します。例:
+また、Excel も必要です。この記事では、[Microsoft Excel 2016](https://products.office.com/ja-jp/) を使用します。
 
-	 	adventureserver.database.windows.net
-5.	**[ログオン時の証明]** セクションで、**[以下のユーザー名とパスワードを使用する]** を選択し、SQL Database サーバーの適切な資格情報を入力します。その後、**[次へ]** をクリックします。
+## 接続してレポートを作成する
 
-	注: Excel の [PowerPivot](https://www.microsoft.com/download/details.aspx?id=102) アドインと [Power Query](https://www.microsoft.com/download/details.aspx?id=39379) のアドインは、非常によく似た機能を備えています。
+1.	Excel を開き、新しいブックを作成するか、または接続するブックを開きます。
 
-6. **[データベースとテーブルの選択]** ダイアログ ボックスで、プルダウン メニューから **[AdventureWorks]** データベースを選択し、テーブルとビューの一覧から **[vGetAllCategories]** を選択して、**[次へ]** をクリックします。
+2.	ページの上部にあるメニュー バーで、**[データ]**、**[その他のデータ ソース]**、**[SQL Server]** の順にクリックします。
+	
+	![データ ソースの選択](./media/sql-database-connect-excel/excel_data_source.png)
+
+	データ接続ウィザードが開きます。
+
+3.	**[データベース サーバーへの接続]** ダイアログ ボックスで、接続する論理サーバーをホストする**サーバー名**を **<*servername*>.database.windows.net** の形式で入力します。たとえば、「**adventureserver.database.windows.net**」のように入力します。
+
+4.	**[ログオン資格情報]** セクションで、**[次のユーザー名とパスワードを使用する]** をクリックし、SQL Database サーバーを作成した際に設定した**ユーザー名**と**パスワード**を入力して、**[次へ]** をクリックします。
+
+	> [AZURE.TIP]Excel の [PowerPivot](https://www.microsoft.com/download/details.aspx?id=102) アドインと [Power Query](https://www.microsoft.com/download/details.aspx?id=39379) アドインは、よく似た機能を備えています。
+
+5. **[データベースとテーブルの選択]** ダイアログ ボックスで、プルダウン メニューから **[AdventureWorks]** データベースを選択し、テーブルとビューの一覧から **[vGetAllCategories]** を選択して、**[次へ]** をクリックします。
 
 	![データベースとテーブルの選択][5]
-7. **[データ接続ファイルを保存して終了]** ダイアログ ボックスで、**[完了]** をクリックします。
-8. **[データのインポート]** ダイアログ ボックスで **[ピボットグラフ]** を選択し、**[OK]** をクリックします。
+
+6. **[データ接続ファイルを保存して終了]** ダイアログ ボックスで、**[完了]** をクリックします。
+
+7. **[データのインポート]** ダイアログ ボックスで **[ピボットグラフ]** を選択し、**[OK]** をクリックします。
 
 	![インポート データの選択][2]
-9. **[ピボットグラフ フィールド]** ダイアログ ボックスで、カテゴリごとに製品数のレポートを作成するために、次の構成を選択します。
+
+8. **[ピボットグラフ フィールド]** ダイアログ ボックスで、カテゴリごとに製品数のレポートを作成するために、次の構成を選択します。
 
 	![構成][3]
-10.	成功すると、次のような画面が表示されます。
+
+	成功すると、次のような画面が表示されます。
 
 	![成功][4]
 
@@ -63,4 +74,4 @@ Excel を Azure SQL Database に接続し、データベース内のデータに
 [4]: ./media/sql-database-connect-excel/power-pivot-results.png
 [5]: ./media/sql-database-connect-excel/select-database-and-table.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->
