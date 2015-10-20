@@ -4,8 +4,8 @@
 
 通知の送信方法を確認できるチュートリアルの一覧を次に示します。
 
-- Azure Mobile Services: Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、[Mobile Services でのプッシュ通知の使用]に関するページを参照してください。  
-- ASP.NET: [Notification Hubs を使用したユーザーへのプッシュ通知]
+- Azure Mobile Services: Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、[Mobile Services でのプッシュ通知の使用](../mobile-services-javascript-backend-ios-get-started-push.md)に関するページを参照してください。  
+- ASP.NET: [Notification Hubs を使用したユーザーへのプッシュ通知](notification-hubs-aspnet-backend-ios-notify-users.md)
 - Azure Notification Hub Java SDK: Java からの通知を送信するには「[Java から Notification Hubs を使用する方法](../articles/notification-hubs/notification-hubs-java-backend-how-to.md)」を参照してください。これは Android の開発用に Eclipse でテストされています。
 - PHP: [PHP から Notification Hubs を使用する方法](../articles/notification-hubs/notification-hubs-php-backend-how-to.md)
 

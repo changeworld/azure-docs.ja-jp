@@ -44,9 +44,13 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 1.  左側のナビゲーション ウィンドウで **[Service Bus]** ノードをクリックして、利用可能な名前空間の一覧を表示します。![](./media/howto-service-bus-queues/sb-queues-13.png)
 
-2.  表示された一覧から先ほど作成した名前空間を選択します。 ![](./media/howto-service-bus-queues/sb-queues-09.png)
+2.  表示された一覧から先ほど作成した名前空間を選択します。 
+	
+	![](./media/howto-service-bus-queues/sb-queues-09.png)
 
-3.  **[接続情報]** をクリックします。![](./media/howto-service-bus-queues/sb-queues-06.png)
+3.  **[接続情報]** をクリックします。
+	
+	![](./media/howto-service-bus-queues/sb-queues-06.png)
 
 4.  **[接続情報へのアクセス]** ウィンドウで、SAS キーとキー名を含む接続文字列を見つけます。
 

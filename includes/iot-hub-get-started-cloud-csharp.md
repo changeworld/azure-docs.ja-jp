@@ -55,11 +55,11 @@
 
     ![][12]
 
-> [AZURE.NOTE]IoT ハブの ID レジストリは、アクセスをセキュリティ保護する目的で、デバイス ID を格納するためだけに使用する (つまり、セキュリティ資格情報の格納や、個々のデバイスのアクセスの有効化/無効化のため) 点に注意してください。デバイス アプリケーションのメタデータは、アプリケーション固有のストアに保存する必要があります。詳細については、「[IoT Hub 開発者ガイド][IoT Hub Developer Guide - Identity Registry]」を参照してください。
+> [AZURE.NOTE] IoT ハブの ID レジストリは、アクセスをセキュリティ保護する目的で、デバイス ID を格納するためだけに使用する (つまり、セキュリティ資格情報の格納や、個々のデバイスのアクセスの有効化/無効化のため) 点に注意してください。デバイス アプリケーションのメタデータは、アプリケーション固有のストアに保存する必要があります。詳細については、「[IoT Hub 開発者ガイド][IoT Hub Developer Guide - Identity Registry]」を参照してください。
 
 ## デバイスからクラウドへのメッセージの受信
 
-このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Windows コンソール アプリを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るために [Event Hubs][Event Hubs Overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルでは読者を単純化しているため、高スループットのデプロイメントには適しません。IoT Hub のデバイスからクラウドへのメッセージを処理する方法の詳細については、「Process Device-to-Cloud messages (デバイスからクラウドへのメッセージの処理)」チュートリアルを参照してください。Event Hubs からのメッセージを処理する方法の詳細については、「[Event Hubs の使用]」チュートリアルを参照してください。
+このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Windows コンソール アプリを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るために [Event Hubs][Event Hubs Overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルでは読者を単純化しているため、高スループットのデプロイメントには適しません。IoT Hub のデバイスからクラウドへのメッセージを処理する方法の詳細については、「[Process Device-to-Cloud messages] (デバイスからクラウドへのメッセージの処理)」チュートリアルを参照してください。Event Hubs からのメッセージを処理する方法の詳細については、「[Event Hubs の使用]」チュートリアルを参照してください。
 
 1. 現在の Visual Studio ソリューションで、**[ファイル]、[追加]、[プロジェクト]** の順にクリックし、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトに **ReadDeviceToCloudMessages** という名前を付けます。
 
@@ -116,7 +116,7 @@
 
 <!-- Links -->
 
-[Azure IoT - Service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+[Azure IoT - サービス SDK NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 
 [Event Hubs の使用]: event-hubs-csharp-ephcs-getstarted.md
 [IoT Hub Developer Guide - Identity Registry]: iot-hub-devguide.md#identityregistry

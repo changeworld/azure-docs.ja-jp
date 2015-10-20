@@ -30,13 +30,13 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 * **ReadDeviceToCloudMessages**。デバイスからクラウドへのメッセージを読み取り、その内容を表示します。
 * **SimulatedDevice**。以前に作成したデバイス ID で IoT ハブに接続して、1 秒ごとにデバイスからクラウドへのメッセージを送信します。
 
-> [AZURE.NOTE]IoT Hub には、Azure IoT デバイス SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター][]を参照してください。Java および Node 用の Azure IoT サービス SDK は、近日リリース予定です。
+> [AZURE.NOTE] IoT Hub には、Azure IoT デバイス SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、「[Azure IoT デベロッパー センター]」を参照してください。Java および Node 用の Azure IoT サービス SDK は、近日リリース予定です。
 
 このチュートリアルを完了するには、以下が必要になります。
 
 + Microsoft Visual Studio 2015、
 
-+ アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fiot%2Ftutorials%2Fgetstarted%2F target="\_blank") を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[「Azure の無料試用版サイト」](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fgetstarted%2F target=”\_blank”) を参照してください。
 
 ## IoT ハブの作成
 
@@ -92,17 +92,17 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 このチュートリアルでは、新しい IoT ハブを設定し、ハブの ID レジストリでデバイス ID を作成し、この ID を使用して、デバイスからクラウドへのメッセージを送信するシミュレーション対象デバイスをプログラミングしました。次のチュートリアルで IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
-- 「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信][]」には、デバイスにメッセージを送信し、IoT Hub によって生成される配信フィードバックを処理する方法が示されています。
-- 「[デバイスからクラウドへのメッセージの処理][]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
-- 「[デバイスからのファイルのアップロード][]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
+- 「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]」には、デバイスにメッセージを送信し、IoT Hub によって生成される配信フィードバックを処理する方法が示されています。
+- 「[デバイスからクラウドへのメッセージの処理]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
+- 「[デバイスからのファイルのアップロード]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
 
 IoT Hub に関するその他の情報:
 
-* [IoT Hub の概要][]
-* [Azure IoT Hub 開発者ガイド][]
-* [Azure IoT Hub のガイダンス][]
+* [IoT Hub の概要]
+* [Azure IoT Hub 開発者ガイド]
+* [Azure IoT Hub のガイダンス]
 * [サポートされているデバイスのプラットフォームおよび言語][Supported devices]
-* [Azure IoT デベロッパー センター][]
+* [Azure IoT デベロッパー センター]
 
 <!-- Images. -->
 [1]: ./media/iot-hub-csharp-csharp-getstarted/create-iot-hub1.png
