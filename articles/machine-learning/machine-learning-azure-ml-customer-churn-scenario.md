@@ -55,7 +55,7 @@
 
 ![][2]
 
-図 4: 統合されたマルチモデルのアーキタイプ
+*図 4: 統合されたマルチモデルのアーキタイプ*
 
 顧客維持のための包括的なアプローチを提供するなら、モデル間の相互作用が鍵となります。各モデルの効果は時間の経過と共に必然的に低下するため、アーキテクチャは暗黙的なループになります (CRISP-DM データ マイニング標準によるアーキタイプと同様 [***3***])。
 
@@ -73,7 +73,7 @@
 
 ![][3]
 
-図 5: 離反モデリング アプローチのプロトタイプ
+*図 5: 離反モデリング アプローチのプロトタイプ*
 
 次のセクションでは、Cloud ML Studio を使用して実装したプロトタイプのスコア付けモデルについて詳しく説明します。
 
@@ -92,13 +92,14 @@
 
 ![][4]
 
-図 6: データ ソースの一部 (難読化済み)
+*図 6: データ ソースの一部 (難読化済み)*
 
 ![][5]
 
 
-図 7: データ ソースから抽出された特徴
-> これはプライベート データであるため、モデルとデータを共有することはできません。ただし、パブリックに使用可能なデータを使用する同様のモデルに関しては、[Cortana Analytics ギャラリー](http://gallery.azureml.net/) の「[Telco Customer Churn (Telco の顧客離れ)](http://gallery.azureml.net/Experiment/31c19425ee874f628c847f7e2d93e383)」にあるサンプル実験をご覧ください。
+*図 7: データ ソースから抽出された特徴*
+> これはプライベート データであるため、モデルとデータを共有することはできません。
+> ただし、パブリックに使用可能なデータを使用する同様のモデルに関しては、[Cortana Analytics ギャラリー](http://gallery.azureml.net/) の「[Telco Customer Churn (Telco の顧客離れ)](http://gallery.azureml.net/Experiment/31c19425ee874f628c847f7e2d93e383)」にあるサンプル実験をご覧ください。
 >
 
 ###プロトタイプで使用されたアルゴリズム
@@ -116,7 +117,7 @@
 ![][6]
 
 
-図 8: Machine Learning Studio でモデルを作成する
+*図 8: Machine Learning Studio でモデルを作成する*
 
 ###スコア付けの手法
 ラベル付けされたトレーニング データセットを使用して、4 つのモデルのスコアを計算しました。
@@ -134,7 +135,7 @@ SAS Enterprise Miner 12 のデスクトップのエディションを使用し�
 ![][7]
 
 
-図 9: Passau プロトタイプの曲線下面積
+*図 9: Passau プロトタイプの曲線下面積*
 
 ###AUC を使用した結果の比較
 曲線下面積 (AUC) は、正と負の母集団のスコア分布の*可分性*の大域尺度を表すメトリックです。従来の Receiver Operator Characteristic (ROC) グラフと似ているものの、AUC メトリックではしきい値を選択する必要がないという重要な違いがあります。AUC では、可能性のある**すべての**選択肢を対象にした結果がまとめられます。それとは対照的に、従来の ROC グラフでは縦軸に陽性率、横軸に偽陽性率が示され、分類のしきい値は変動します。
@@ -155,7 +156,7 @@ Wikipedia から引用した次の図には、わかりやすいグラフィッ�
 
 ![][8]
 
-図 10: 正確度と精度のトレードオフ
+*図 10: 正確度と精度のトレードオフ*
 
 ###ブースト ツリー モデルの正確度と精度の結果  
 
@@ -163,7 +164,7 @@ Wikipedia から引用した次の図には、わかりやすいグラフィッ�
 
 ![][9]
 
-図 11: ブースト デシジョン ツリー モデルの特性
+*図 11: ブースト デシジョン ツリー モデルの特性*
 
 ##パフォーマンスの比較
 Machine Learning Studio モデルと、SAS Enterprise Miner 12.1 のデスクトップ エディションを使用して作成した同等のモデルを使用して、データのスコア付けの速度を比較しました。
@@ -197,6 +198,7 @@ Machine Learning Studio でホストされたモデルは、実行速度の点�
 Azure Machine Learning にはほかにも便利な機能があり、元から利用できる事前定義済みモジュールのリポジトリにカスタム モジュールを追加できます。この機能を利用すれば、ライブラリを選択し、垂直市場向けのテンプレートを作成できます。これは、市場で Azure Machine Learning を差別化している重要な機能です。
 
 このトピックについては、いずれ、ビッグ データ分析との絡みで説明できればと考えています。
+
 ##まとめ
 このペーパーでは、汎用フレームワークを使用して、顧客離れという一般的な問題に対処するための効果的なアプローチを取り上げました。スコア付けモデルのプロトタイプについて検討し、それを Azure Machine Learning を使って実装しました。最後に、同等の SAS のアルゴリズムと比較しつつ、プロトタイプ ソリューションの正確度とパフォーマンスを評価しました。
 
@@ -210,21 +212,22 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 このフィードバックは、今後発表するホワイト ペーパーの品質向上に利用させていただきます。
 
 [こちらからフィードバックをお送りください](mailto:sqlfback@microsoft.com)。
+
 ##参照
 [1] 予測分析: Beyond the Predictions (予想を超える)、W. McKnight、Information Management、2011 年 7 月/8 月、p18～20。
 
-\[2] Accuracy and precision (正確度と精度) (http://en.wikipedia.org/wiki/Accuracy_and_precision)、Wikipedia
+[2] [Accuracy and precision (正確度と精度)](http://en.wikipedia.org/wiki/Accuracy_and_precision)、Wikipedia
 
-[3] CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド (http://www.the-modeling-agency.com/crisp-dm.pdf)
+[3] [CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド](http://www.the-modeling-agency.com/crisp-dm.pdf)
 
 [4] ビッグ データ マーケティング
 
-[5] Big Data Marketing (ビッグ データ マーケティング): Engage Your Customers More Effectively and Drive Value (お客様に効率の向上と価値の促進を保証する) (http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[5] [Big Data Marketing (ビッグ データ マーケティング): Engage Your Customers More Effectively and Drive Value (お客様に効率の向上と価値の促進を保証する)](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 ##付録
 
 ![][10]
 
-図 12: 離反プロトタイプに関するプレゼンテーションのスナップショット
+*図 12: 離反プロトタイプに関するプレゼンテーションのスナップショット*
 
 
 [1]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-1.png
@@ -238,4 +241,4 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
 
-<!----HONumber=Oct15_HO1-->
+<!-----HONumber=Oct15_HO1-->
