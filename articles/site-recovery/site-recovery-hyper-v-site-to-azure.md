@@ -87,7 +87,7 @@ Azure Site Recovery のデプロイの一部として、保護する仮想マシ
 
 4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 
-5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[￼Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)￼](pricing/details/site-recovery/)」で利用可能地域を参照してください。
+5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)](pricing/details/site-recovery/)」で利用可能地域を参照してください。
 
 6. **[コンテナーの作成]** をクリックします。
 
