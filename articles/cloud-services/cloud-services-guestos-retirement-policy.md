@@ -90,4 +90,4 @@ Web アプリケーションのアーキテクチャが、基になるオペレ�
 ## 次のステップ
 最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

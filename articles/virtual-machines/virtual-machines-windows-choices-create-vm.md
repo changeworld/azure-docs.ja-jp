@@ -99,4 +99,4 @@ Azure PowerShell については、「[Use Azure PowerShell to create and precon
 
 [Azure ハイブリッド クラウド テスト環境]: virtual-machines-hybrid-cloud-test-environments.md
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

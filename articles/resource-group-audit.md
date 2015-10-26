@@ -13,18 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/07/2015" 
+	ms.date="10/14/2015" 
 	ms.author="tomfitz"/>
 
 # リソース マネージャーの監査操作
 
-ソリューションのデプロイメント中または使用中に問題を見つけたら、その原因を究明する必要があります。リソース マネージャーでは、発生した問題とその原因を 2 通りの方法で発見できます。デプロイメント コマンドを利用し、特定のデプロイメントと操作に関する情報を取得できます。あるいは、監査ログを利用し、デプロイメントとソリューションの使用期間中に行われたその他のアクションに関する情報を取得できます。このトピックでは、監査ログに重点を置いて説明します。
+ソリューションのデプロイ中または使用中に問題を見つけたら、その原因を究明する必要があります。リソース マネージャーでは、発生した問題とその原因を 2 通りの方法で発見できます。デプロイ コマンドを利用し、特定のデプロイと操作に関する情報を取得できます。あるいは、監査ログを利用し、デプロイとソリューションの使用期間中に行われたその他のアクションに関する情報を取得できます。このトピックでは、監査ログに重点を置いて説明します。
 
 監査ログには、リソースで実行されたすべての操作が含まれています。そのため、組織のユーザーがリソースを変更した場合、そのアクション、時刻、ユーザーを特定できます。
 
 Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを利用し、監査ログから情報を取得できます。
 
 ## PowerShell
+
+[AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
 
 ログ エントリを取得するには、**Get-AzureRmLog** コマンドを実行します (1.0 プレビューよりも前のバージョンの PowerShell では **Get-AzureResourceGroupLog** を実行します)。パラメーターを追加し、エントリの一覧を絞り込むことができます。
 
@@ -87,11 +89,11 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 
     azure group log show ExampleGroup --json | jq ".[] | select(.operationName.localizedValue == "Update web sites config")"
 
-**–-last-deployment** パラメーターを追加すれば、返されるエントリを最後のデプロイメントからの操作のみに制限できます。
+**–-last-deployment** パラメーターを追加すれば、返されるエントリを最後のデプロイからの操作のみに制限できます。
 
     azure group log show ExampleGroup --last-deployment
 
-最後のデプロイメントからの操作の一覧が長すぎる場合は、失敗した操作の結果だけに絞り込むことができます。
+最後のデプロイからの操作の一覧が長すぎる場合は、失敗した操作の結果だけに絞り込むことができます。
 
     azure group log show tfCopyGroup --last-deployment --json | jq ".[] | select(.status.value == "Failed")"
 
@@ -151,4 +153,4 @@ Azure PowerShell、Azure CLI、REST API、Azure プレビュー ポータルを�
 - サービス プリンシパルにアクセスを付与する方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
 - すべてのユーザーのリソースに対するアクションについては、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

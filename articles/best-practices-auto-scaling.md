@@ -133,4 +133,4 @@ Web ポータルでは、CPU 使用率またはキューの長さに基づく単
 - [Microsoft.WindowsAzure.Management.Monitoring.Autoscale 名前空間](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.management.monitoring.autoscale.aspx)
 - MSDN の「[Autoscaling Application Block (オートスケーリング アプリケーション ブロック)](http://msdn.microsoft.com/library/hh680892%28v=pandp.50%29.aspx)」ドキュメントと主なシナリオ。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

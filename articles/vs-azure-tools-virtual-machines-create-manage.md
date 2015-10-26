@@ -177,4 +177,4 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
 仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-tutorial.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](virtual-machines-windows-tutorial.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

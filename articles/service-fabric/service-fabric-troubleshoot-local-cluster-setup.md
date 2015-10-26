@@ -1,10 +1,10 @@
 <properties
-   pageTitle="ローカル クラスターのセットアップをトラブルシューティングする"
+   pageTitle="ローカル Service Fabric クラスター セットアップのトラブルシューティング | Microsoft Azure"
    description="この記事には、ローカル開発クラスターのトラブルシューティングに関する推奨事項が記載されています。"
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
-   manager="timlt"
+   manager="coreysa"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/09/2015"
+   ms.date="10/13/2015"
    ms.author="seanmck"/>
 
 # ローカル開発クラスターのセットアップをトラブルシューティングする
@@ -86,4 +86,4 @@ Visual Studio を使用してデバッグしている際に、FabricConnectionDe
 - [システム正常性レポートでクラスターを理解してトラブルシューティングする](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

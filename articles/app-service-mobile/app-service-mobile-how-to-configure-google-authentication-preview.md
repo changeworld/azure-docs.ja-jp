@@ -1,9 +1,9 @@
 <properties
 	pageTitle="App Services アプリケーションに Google 認証を構成する方法"
 	description="App Services アプリケーションに Google 認証を構成する方法について説明します。"
-	services="app-service\mobile"
+    services="app-service\mobile"
 	documentationCenter=""
-	authors="mattchenderson"
+	authors="mattchenderson" 
 	manager="dwrede"
 	editor=""/>
 
@@ -68,4 +68,4 @@
 [Microsoft Azure 管理ポータル]: https://portal.azure.com/
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -19,7 +19,8 @@
 
 # Azure VM 拡張機能のエラーのトラブルシューティング
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
 
 ## Azure リソース マネージャー テンプレートの概要
 
@@ -84,4 +85,4 @@ VM でカスタム スクリプト拡張機能を使用してスクリプトを�
 
 拡張機能を削除した後、テンプレートを再実行して、VM 上でスクリプトを実行できます。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

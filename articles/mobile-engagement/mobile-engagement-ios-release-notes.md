@@ -5,7 +5,7 @@
 	documentationCenter="mobile"
 	authors="MehrdadMzfr"
 	manager="dwrede"
-	editor=""/>
+	editor="" />
 
 <tags
 	ms.service="mobile-engagement"
@@ -14,9 +14,16 @@
 	ms.devlang="objective-c"
 	ms.topic="article"
 	ms.date="08/05/2015"
-	ms.author="MehrdadMzfr"/>
+	ms.author="MehrdadMzfr" />
 
 #リリース ノート
+
+##3\.2.0 (10/08/2015)
+
+-   **Xcode 7** と連携できるように、SDK のビットコードを有効化。
+-   アプリ内通知に関連するバグを修正。
+-   バッテリ低下のような状況でのアプリ内通知の信頼性を向上。
+-   サード パーティ製のライブラリによって生成される余分なコンソール ログの削除。
 
 ##3\.1.0 (2015 年 8 月 26 日)
 
@@ -47,4 +54,4 @@
 -   セキュリティの強化。
 -   SmartAd の追跡が削除されました。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

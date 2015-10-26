@@ -24,11 +24,11 @@
 5. **[OK]** をクリックします。サブスクリプションに API アプリが作成されます。
 
 	このプロセスには数分かかることがあるため、Visual Studio に確認ダイアログ ボックスが表示されます。
-	
+
 6. [確認] ダイアログで **[OK]** をクリックします。
  
 	プロビジョニング プロセスにより、Azure サブスクリプションにリソース グループと API アプリが作成されます。Visual Studio の **[Azure App Service アクティビティ]** ウィンドウに進捗状況が表示されます。
 
 	![[Azure App Service アクティビティ] ウィンドウによる状態の通知](./media/app-service-api-pub-web-create/26-provisioning-success-v3.png)
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

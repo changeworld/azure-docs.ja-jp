@@ -25,17 +25,17 @@
 
 *Application Insights が正常に追加された後でアプリケーションを実行したところ、ポータルにデータが表示されません。*
 
-* 少し待ってから、[最新の情報に更新] をクリックします。現時点では、自動での更新は行われません。
-* ApplicationInsights.config ファイルにインストルメンテーション キーが定義されていることと、それが Application Insights ポータルのキーと同じであることを確認します。キーを表示するには、概要ブレードで [Essentials] をクリックします。
+* 少し待ってから、[最新の情報に更新] をクリックします。Currently, refresh isn't automatic.
+* Check that you have an instrumentation key defined in the ApplicationInsights.config file, and that it is the same as the key in the Application Insights portal.キーを表示するには、概要ブレードで [Essentials] をクリックします。
 * アプリが[外向きのネットワーク アクセスを要求すること](https://msdn.microsoft.com/library/windows/apps/hh452752.aspx)を確認します。
-* エミュレーターまたはテスト デバイスと Application Insights ポータルの間にファイアウォールはありますか。 場合によっては、dc.services.visualstudio.com と f5.services.visualstudio.com にトラフィックを送るために TCP ポート 80 と 443 を開く必要があります。
-* Microsoft Azure のスタート ボードで、サービス状態マップを確認してください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
+* エミュレーターまたはテスト デバイスと Application Insights ポータルの間にファイアウォールはありますか。 You might have to open TCP ports 80 and 443 for outgoing traffic to dc.services.visualstudio.com and f5.services.visualstudio.com.
+* In the Microsoft Azure start board, look at the service status map.アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
 
 
 #### データが表示されていたのに停止しました。
 
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
-* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いて確認します。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+* データ ポイントの月間クォータに達していませんか? Open Settings/Quota and Pricing to find out.上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 
 ## ユニバーサル アプリに Application Insights を追加する方法は?
@@ -68,10 +68,10 @@
 
 これを行うには 2 つの方法があります。
 
-* クライアントとサーバーに (異なるインストルメンテーション キーで) 2 つの Application Insights リソースを作成します。ただし、同じ Azure リソース グループで作成します。これで互いの切り替えが簡単になります。
-* 1 つの Application Insights リソースを使用し、クライアント プロジェクトとサーバー プロジェクトの両方にそのインストルメンテーション キーを配置します。次に、2 つのリソースのメトリックとイベントを相互に関連付けることができます。
+* Create two Application Insights resources (with different instrumentation keys), for the client and the server.But create them in the same Azure resource group.That makes it easy to switch between one and the other.
+* Use one Application Insights resource and put its instrumentation key into both client and server projects.Then you can correlate metrics and events from the two sources.
 
-クライアントとサーバーのイベントを相互関連付けに役立てるために、要求別の操作 ID を生成します。それをクライアントとサーバーの間で送信し、両方の端で利用統計情報に追加します。
+To help correlate events in the client and server, generate an operation id for each request.それをクライアントとサーバーの間で送信し、両方の端で利用統計情報に追加します。
 
     telemetry.Context.OperationId = opid;
 
@@ -113,11 +113,11 @@
 [data]: app-insights-data-retention-privacy.md
 [javalogs]: app-insights-java-trace-logs.md
 [platforms]: app-insights-platforms.md
-[track]: app-insights-custom-events-metrics-api.md
+[track]: app-insights-api-custom-events-metrics.md
 [universal]: app-insights-windows-get-started.md#universal
 [usage]: app-insights-web-track-usage.md
 [windows]: app-insights-windows-get-started.md
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

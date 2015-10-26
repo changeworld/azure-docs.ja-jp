@@ -34,7 +34,7 @@ DNS レコード セットと個々の DNS レコードの違いを理解する�
 
 >ゾーンの頂点のレコード セットの場合は、レコード セット名として "@" (引用符を含みます) を使用します。レコード セットの完全修飾名はゾーン名と同じになります。この場合は "contoso.com" です。
 
-Azure DNS では、A、AAAA、CNAME、MX、NS、SOA、SRV、TXT というレコードの種類がサポートされています。SOA という種類のレコード セットは、各ゾーンと共に自動的に作成されるため、個別には作成できません。
+Azure DNS では、A、AAAA、CNAME、MX、NS、SOA、SRV、TXT というレコードの種類がサポートされています。SOA という種類のレコード セットは、各ゾーンと共に自動的に作成されるため、個別には作成できません。[レコードの種類 SPF は、DNS 標準で推奨されておらず、レコードの種類 TXT を使用して SPF レコードを作成することが推奨されている](http://tools.ietf.org/html/rfc7208#section-3.1)ことに注意してください。
 
 	azure network dns record-set create myresourcegroup contoso.com  www  A --ttl 300
 
@@ -239,4 +239,4 @@ A レコード セットを作成した後、`azure network dns record-set add-r
 [レコード セットとレコードの作成の概要](dns-getstarted-create-recordset-cli.md)<BR> [DNS ゾーンに対する操作の実行](dns-operations-dnszones-cli.md)<BR> [.NET SDK を使用した操作の自動化](dns-sdk.md)
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

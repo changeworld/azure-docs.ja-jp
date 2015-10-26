@@ -4,4 +4,4 @@
 - [Web Apps with Traffic Manager](../article/app-service-web/web-sites-traffic-manager-custom-domain-name.md)
 - [GoDaddy](../article/app-service-web/web-sites-godaddy-custom-domain-name.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

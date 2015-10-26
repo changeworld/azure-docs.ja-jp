@@ -1,4 +1,6 @@
-- [Role Based Access Control](role-based-access-control-configure.md)
-- [Manage access using Azure Powershell](role-based-access-control-manage-access-powershell.md)
-- [Manage access using the Azure CLI](role-based-access-control-manage-access-azure-cli.md)
-- [RBAC Built in Roles](role-based-access-built-in-roles.md)
+- [ロール ベースのアクセス制御](role-based-access-control-configure.md)
+- [Azure PowerShell を使用したアクセス権の管理](role-based-access-control-manage-access-powershell.md)
+- [Azure CLI を使用したアクセス権の管理](role-based-access-control-manage-access-azure-cli.md)
+- [RBAC の組み込みのロール](role-based-access-built-in-roles.md)
+
+<!---HONumber=Oct15_HO3-->

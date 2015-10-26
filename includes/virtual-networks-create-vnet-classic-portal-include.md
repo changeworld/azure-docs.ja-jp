@@ -34,4 +34,4 @@
 
 	![新しい仮想ネットワーク](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure5.png)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

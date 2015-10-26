@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="10/05/2015"
+	ms.date="10/15/2015"
 	ms.author="wesmc"/>
 
 #Azure Notification Hubs によるユーザーへの通知
@@ -28,6 +28,13 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 また、「[安全なプッシュ]」チュートリアルの前提条件でもあります。このチュートリアルの手順を完了した後は、このチュートリアルのコードにプッシュ通知を安全に送信するための変更を加える方法を示した「[安全なプッシュ]」チュートリアルに進むことができます。
 
 
+
+
+
+## 開始する前に
+
+マイクロソフトでは、お客様からのフィードバックを真剣に受け止めています。このトピックを完了するうえで問題がある場合、またはこのコンテンツを改善するためのご提案がある場合には、ページの下部でフィードバックを送信できます。
+
 このチュートリアルの完成したコードについては、GitHub の[こちら](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers)を参照してください。
 
 
@@ -36,7 +43,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 このチュートリアルの前に、次の Mobile Services のチュートリアルを完了している必要があります。
 
-+ [Notification Hubs の使用]<br/>このチュートリアルでは、通知ハブを作成し、アプリ名を予約して通知を受け取るための登録を行います。このチュートリアルでは、これらの手順を既に完了することを前提としています。完了していない場合は、「[Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started.md)」の手順に従ってください。特に、「[アプリを Windows ストアに登録する](notification-hubs-windows-store-dotnet-get-started.md#register-your-app-for-the-windows-store)」と「[Notification Hubs を構成する](notification-hubs-windows-store-dotnet-get-started.md#configure-your-notification-hub)」を完了してください。特に、ポータルで通知ハブの **[構成]** タブに、**[パッケージ SID]** と **[クライアント シークレット]** の値を入力してください。この構成手順は、セクション「[通知ハブを構成する](notification-hubs-windows-store-dotnet-get-started.md#configure-your-notification-hub)」で説明しています。これは重要な手順です。ポータルの資格情報が、選択したアプリケーション名に指定した資格情報と一致しない場合、プッシュ通知は成功しません。
++ [Notification Hubs の使用]<br/>このチュートリアルでは、通知ハブを作成し、アプリ名を予約して通知を受け取るための登録を行います。このチュートリアルでは、これらの手順を既に完了することを前提としています。完了していない場合は、「[Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started.md)」の手順に従ってください。特に、「[アプリを Windows ストアに登録する](notification-hubs-windows-store-dotnet-get-started.md#register-your-app-for-the-windows-store)」と「[通知ハブを構成する](notification-hubs-windows-store-dotnet-get-started.md#configure-your-notification-hub)」を完了してください。特に、ポータルで通知ハブの **[構成]** タブに、**[パッケージ SID]** と **[クライアント シークレット]** の値を入力してください。この構成手順は、セクション「[通知ハブを構成する](notification-hubs-windows-store-dotnet-get-started.md#configure-your-notification-hub)」で説明しています。これは重要な手順です。ポータルの資格情報が、選択したアプリケーション名に指定した資格情報と一致しない場合、プッシュ通知は成功しません。
 
 
 
@@ -377,4 +384,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

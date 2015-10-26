@@ -98,4 +98,4 @@ Web Apps の復元機能 ([Azure プレビュー ポータル](http://portal.azu
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

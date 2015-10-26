@@ -4,8 +4,8 @@
 	services="app-service\web" 
 	documentationCenter=".net" 
 	authors="thinkingserious" 
-	manager="sendgrid" 
-	editor="erikre"/>
+	manager="dwrede" 
+	editor=""/>
 
 <tags 
 	ms.service="app-service-web" 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/24/2015" 
-	ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork"/>
+	ms.date="10/12/2015" 
+	ms.author="team-pi@sendgrid.com"/>
 
 
 
@@ -22,7 +22,6 @@
 
 # SendGrid を使用した Azure での電子メールの送信方法
 
-更新日: 2015 年 2 月 24 日
 
 ## 概要
 
@@ -39,7 +38,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 -   顧客の問い合わせを転送する。
 -   受信電子メールを処理する。
 
-詳細については、[https://sendgrid.com](https://sendgrid.com)を参照してください。
+詳細については、[https://sendgrid.com](https://sendgrid.com) または [C# ライブラリ][sendgrid-csharp]を参照してください。
 
 ## SendGrid アカウントを作成する
 
@@ -47,21 +46,23 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 ## SendGrid .NET クラス ライブラリを参照する
 
-[SendGrid NuGet パッケージ](https://www.nuget.org/packages/Sendgrid)は、SendGrid API を取得し、すべての依存関係を備えたアプリケーションを構成する最も簡単な方法です。NuGet は Microsoft Visual Studio 2012 に含まれる Visual Studio 拡張機能であり、これを使用してライブラリおよびツールのインストールと更新を簡単に行うことができます。
+[SendGrid NuGet パッケージ](https://www.nuget.org/packages/Sendgrid)は、SendGrid API を取得し、すべての依存関係を備えたアプリケーションを構成する最も簡単な方法です。NuGet は Microsoft Visual Studio 2015 に含まれる Visual Studio 拡張機能であり、これを使用してライブラリおよびツールのインストールと更新を簡単に行うことができます。
 
-> [AZURE.NOTE]Visual Studio 2012 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[http://www.nuget.org](http://www.nuget.org) にアクセスして、**[Install NuGet]** ボタンをクリックしてください。
+> [AZURE.NOTE]Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[http://www.nuget.org](http://www.nuget.org) にアクセスして、**[Install NuGet]** ボタンをクリックしてください。
 
 アプリケーションに SendGrid NuGet パッケージをインストールするには、次のステップを行います。
 
-1.  **[ソリューション エクスプローラー]** で、**[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1.  新しいプロジェクトを作成します。![新しいプロジェクトを作成する][create-new-project]
 
-2.  **[NuGet パッケージの管理]** ダイアログ ボックスの左側のウィンドウで、**[オンライン]** をクリックします。
+2.  テンプレートを選択します。![テンプレートの選択][select-a-template]
 
-3.  **SendGrid** を検索し、検索結果の一覧から **[SendGrid]** を選択します (現在のバージョンは 5.0.0)。
+3.  **[ソリューション エクスプローラー]** で、**[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
+
+4.  「**SendGrid**」を検索し、検索結果の一覧から **SendGrid** を選択します。
 
     ![SendGrid NuGet パッケージ][SendGrid-NuGet-package]
 
-4.  **[インストール]** をクリックしてインストールを実行した後、このダイアログを閉じます。
+5.  **[インストール]** をクリックしてインストールを実行した後、このダイアログを閉じます。
 
 SendGrid の .NET クラス ライブラリは、**SendGridMail** という名前です。これには次の名前空間が含まれます。
 
@@ -109,20 +110,34 @@ SendGrid の .NET クラス ライブラリは、**SendGridMail** という名�
 
 電子メール メッセージを作成した後で、SendGrid の Web API を使用してメッセージを送信することができます。または、[.NET の組み込みライブラリを使用](https://sendgrid.com/docs/Code_Examples/csharp.html)する方法もあります。
 
-電子メールを送信する場合は、SendGrid アカウントの資格情報 (ユーザー名とパスワード) を指定する必要があります。次のコードに、**NetworkCredential** オブジェクトで資格情報をラップする方法を示します。
+電子メールを送信する場合は、SendGrid アカウントの資格情報 (ユーザー名とパスワード) または SendGrid API キーを指定する必要があります。可能であれば API キーの使用をお勧めします。API キーを構成する方法の詳細については、[こちらのドキュメント](https://sendgrid.com/docs/Classroom/Send/api_keys.html)を参照してください。
+
+これらの資格情報は、Azure ポータルで [構成] をクリックし、"アプリケーション設定" にキー/値のペアを追加することによって保存できます。
+
+ ![Azure app settings][azure_app_settings]
+
+ これらには、次のようにしてアクセスすることができます。
+    
+    var username = System.Environment.GetEnvironmentVariable("SENDGRID_USER"); 
+    var pswd = System.Environment.GetEnvironmentVariable("SENDGRID_PASS");
+    var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+
+資格情報の使用:
     
     // Create network credentials to access your SendGrid account
     var username = "your_sendgrid_username";
     var pswd = "your_sendgrid_password";
 
-    /* Alternatively, you may store these credentials via your Azure portal
-       by clicking CONFIGURE and adding the key/value pairs under "app settings".
-       Then, you may access them as follows: 
-       var username = System.Environment.GetEnvironmentVariable("SENDGRID_USER"); 
-       var pswd = System.Environment.GetEnvironmentVariable("SENDGRID_PASS");
-       assuming you named your keys SENDGRID_USER and SENDGRID_PASS */
-
     var credentials = new NetworkCredential(username, pswd);
+    // Create an Web transport for sending email.
+    var transportWeb = new Web(credentials);
+
+API キーの使用:
+
+    var apiKey = "your_sendgrid_api_key";  
+    // create a Web transport, using API Key
+    var transportWeb = new Web(apiKey);
+
 
 次の例に、Web API でメッセージを送信する方法を示します。
 
@@ -141,6 +156,9 @@ SendGrid の .NET クラス ライブラリは、**SendGridMail** という名�
 
     // Send the email, which returns an awaitable task.
     transportWeb.DeliverAsync(myMessage);
+
+    // If developing a Console Application, use the following
+    // transportWeb.DeliverAsync(mail).Wait();
 
 ## 方法: 添付ファイルを追加する
 
@@ -210,11 +228,11 @@ SendGrid の Web ベース API と webhook を使用して、Azure アプリケ�
 
 これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-* SendGrid C# ライブラリ レポート: [sendgrid-csharp][]
+*   SendGrid C# ライブラリ レポート: [sendgrid-csharp][]
 *   SendGrid API に関するドキュメント: <https://sendgrid.com/docs>
 *   Azure ユーザー向けの SendGrid 特別プラン: [https://sendgrid.com](https://sendgrid.com)
 
-  [次のステップ]: #nextsteps
+  [次のステップ]: #next-steps
   [What is the SendGrid Email Service?]: #whatis
   [Create a SendGrid Account]: #createaccount
   [Reference the SendGrid .NET Class Library]: #reference
@@ -224,12 +242,12 @@ SendGrid の Web ベース API と webhook を使用して、Azure アプリケ�
   [How to: Use Filters to Enable Footers, Tracking, and Analytics]: #usefilters
   [How to: Use Additional SendGrid Services]: #useservices
   
-  
   [special offer]: https://www.sendgrid.com/windowsazure.html
   
-  
-  
-  [SendGrid-NuGet-package]: ./media/sendgrid-dotnet-how-to-send-email/sendgrid01.png
+  [create-new-project]: ./media/sendgrid-dotnet-how-to-send-email/create_new_project.png
+  [select-a-template]: ./media/sendgrid-dotnet-how-to-send-email/select_a_template.png
+  [SendGrid-NuGet-package]: ./media/sendgrid-dotnet-how-to-send-email/sendgrid_nuget.png
+  [azure_app_settings]: ./media/sendgrid-dotnet-how-to-send-email/app_settings.png
   [sendgrid-csharp]: https://github.com/sendgrid/sendgrid-csharp
   [sendgrid-csharp に関するページ]: https://github.com/sendgrid/sendgrid-csharp
   [SMTP vs. Web API]: https://sendgrid.com/docs/Integrate/index.html
@@ -240,4 +258,4 @@ SendGrid の Web ベース API と webhook を使用して、Azure アプリケ�
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

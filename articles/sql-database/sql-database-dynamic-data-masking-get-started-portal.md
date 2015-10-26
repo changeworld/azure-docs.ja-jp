@@ -100,4 +100,4 @@ Azure ポータルの [監視とセキュリティ] タブでデータベース�
 
 「[Azure SQL データベースの操作](https://msdn.microsoft.com/library/dn505719.aspx)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -301,4 +301,4 @@ Azure ポータルで (図をクリックすると) ADF 上にパイプライン
 
 ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。これを行う方法と ADF が提供するその他の機能の詳細については、[ADF のドキュメント](http://azure.microsoft.com/services/data-factory/)を参照してください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -25,7 +25,7 @@ Visual Studio 2013 Update 3 以降を使用してプロジェクトに Applicati
 
 ApplicationInsights.config を開きます。`ActiveProfile` および `Profiles` ノードがある場合は以前のバージョンであり、アップグレードをする必要があります。
 
-または、Visual Studio ソリューション エクスプ ローラーでプロジェクトを確認し、[参照設定] で Microsoft.ApplicationInsights を選択します。[プロパティ] ウィンドウで [バージョン] を探します。これが 0.12 未満の場合、アップグレードが必要です。
+または、Visual Studio ソリューション エクスプ ローラーでプロジェクトを確認し、[参照設定] で Microsoft.ApplicationInsights を選択します。In the Properties window, find the Version.これが 0.12 未満の場合、アップグレードが必要です。
 
 ## Visual Studio プロジェクトがある場合
 
@@ -51,7 +51,7 @@ ApplicationInsights.config を開きます。`ActiveProfile` および `Profiles
 
 ## Java Web サービスがある場合
 
-1. サーバー コンピューターで、Web サービスのスタートアップ ファイルから APM エージェントへの参照を削除して以前のエージェントを無効にします。TomCat サーバーでは Catalina.bat を編集します。JBoss サーバーでは Run.bat を編集します。 
+1. サーバー コンピューターで、Web サービスのスタートアップ ファイルから APM エージェントへの参照を削除して以前のエージェントを無効にします。On a TomCat server, edit Catalina.bat.On a JBoss server, edit Run.bat. 
 2. Web サービスを再起動します。
 3. Microsoft Azure ポータルで、[新しい Application Insights リソースを追加][java]します。開発用コンピューターで、Web プロジェクトに [Java SDK][java] を追加します。
 4. Web ページの <head> セクションのスクリプトを置き換えます (サーバー側には 1 つのコピーだけが含まれている可能性があります)。 [Azure の新しい Application Insights リソースの [クイック スタート] ブレードから新しいスクリプトを取得][usage]します。Web ページの本文に logEvent や logPage などのテレメトリ呼び出しが含まれている場合、[新しい API を使用するようにそれらを更新][track]します。
@@ -68,9 +68,9 @@ ApplicationInsights.config を開きます。`ActiveProfile` および `Profiles
 [greenbrown]: app-insights-start-monitoring-app-health-usage.md
 [java]: app-insights-java-get-started.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
-[track]: app-insights-custom-events-metrics-api.md
+[track]: app-insights-api-custom-events-metrics.md
 [usage]: app-insights-web-track-usage.md
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

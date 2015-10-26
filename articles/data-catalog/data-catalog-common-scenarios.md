@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Data Catalog の一般的なシナリオ"
-	description="高価値のデータ ソースの登録と検出、セルフ サービス ビジネス インテリジェンスの有効化、データ ソースとプロセスに関する既存の組織固有の知識のキャプチャなど、Azure Data Catalog の一般的なシナリオの概要を説明します。"
-	services="data-catalog"
-	documentationCenter=""
-	authors="steelanddata"
-	manager="NA"
-	editor=""
-	tags=""/>
+   description="高価値のデータ ソースの登録と検出、セルフ サービス ビジネス インテリジェンスの有効化、データ ソースとプロセスに関する既存の組織固有の知識のキャプチャなど、Azure Data Catalog の一般的なシナリオの概要を説明します。"
+   services="data-catalog"
+   documentationCenter=""
+   authors="steelanddata"
+   manager="NA"
+   editor=""
+   tags=""/>
 <tags
    ms.service="data-catalog"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-catalog"
-	ms.date="07/31/2015"
-	ms.author="maroche"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-catalog"
+   ms.date="07/31/2015"
+   ms.author="maroche"/>
 
 
 # Azure Data Catalog の一般的なシナリオ
@@ -66,4 +66,4 @@ Azure Data Catalog を使用すると、ユーザーはこの冗長な作業の�
 
 Azure Data Catalog は、この組織固有の知識を共有し、簡単に検出できるようにするための場所を提供します。データ エキスパートは、データ資産に直接注釈を付けるほか、既存のドキュメントにリンクを含めることもできます。これにより、知識自体がキャプチャされるだけでなく、データ ソース検出に使用するのと同じエクスペリエンス内に知識が格納されます。カタログを使用してデータ ソースを検出すると、ソース自体だけでなく、以前はエキスパート自身の頭の中だけに存在していた知識も見つけることができます。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

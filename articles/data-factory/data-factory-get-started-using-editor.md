@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する"
-	description="このチュートリアルでは、Azure ポータルで Data Factory Editor を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する" 
+	description="このチュートリアルでは、Azure ポータルで Data Factory Editor を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/25/2015" 
 	ms.author="spelluru"/>
 
 # チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する
@@ -47,12 +47,12 @@
 6. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。
 	1. **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
 	
-  		![New data factory blade][image-data-factory-getstarted-new-data-factory-blade]
+  		![[新しいデータ ファクトリ] ブレード][image-data-factory-getstarted-new-data-factory-blade]
 	2. **[リソース グループ名]** をクリックし、以下の手順を実行します。
 		1. **[新しいリソース グループを作成]** をクリックします。
 		2. **[リソース グループの作成]** ブレードで、リソース グループの **[名前]** に「**ADFTutorialResourceGroup**」と入力し、**[OK]** をクリックします。 
 
-			![Create Resource Group][image-data-factory-create-resource-group]
+			![リソース グループの作成][image-data-factory-create-resource-group]
 
 		このチュートリアルの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](resource-group-overview.md)に関するページを参照してください。  
 7. **[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加する]** が選択されていることを確認してください。
@@ -60,12 +60,12 @@
 
 	Azure Data Factor の名前はグローバルに一意にする必要があります。**""ADFTutorialDataFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を変更して (yournameADFTutorialDataFactory など) 作成し直してください。このチュートリアルでは以降の手順の実行中に、この名前を ADFTutorialFactory の代わりに使用します。Data Factory アーティファクトの名前付け規則については、[Data Factory - 名前付け規則][data-factory-naming-rules]に関するトピックを参照してください。
 	 
-	![Data Factory name not available][image-data-factory-name-not-available]
+	![使用できないデータ ファクトリ名][image-data-factory-name-not-available]
 
 9. 左側の **[通知]** ハブをクリックし、作成プロセスからの通知を探します。**[通知]** ブレードが開いている場合は、**[X]** をクリックして閉じます。
 10. 作成が完了すると、次に示すような **[Data Factory]** ブレードが表示されます。
 
-    ![Data factory home page][image-data-factory-get-stated-factory-home-page]
+    ![データ ファクトリのホーム ページ][image-data-factory-get-stated-factory-home-page]
 
 ## <a name="CreateLinkedServices"></a>手順 2. リンクされたサービスを作成する
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。
@@ -75,13 +75,13 @@
 ### Azure ストレージ アカウント用にリンクされたサービスを作成する
 1.	**[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
-	![Author and Deploy Tile][image-author-deploy-tile]
+	![[作成とデプロイ] タイル][image-author-deploy-tile]
 
 	Data Factory エディターの詳細については、トピック「[Data Factory エディター][data-factory-editor]」を参照してください。
 	 
 5. **エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure Storage]** を選択します。Azure Storage のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
 
-	![Editor New data store button][image-editor-newdatastore-button]
+	![エディターの [新しいデータ ストア] ボタン][image-editor-newdatastore-button]
     
 6. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
@@ -91,14 +91,14 @@
 
 6. ツール バーの **[デプロイ]** をクリックして、StorageLinkedService をデプロイします。タイトル バーに **"リンクされたサービスが正常に作成されました"** というメッセージが表示されていることを確認します。
 
-	![Editor Blob Storage Deploy][image-editor-blob-storage-deploy]
+	![エディターの BLOB ストレージのデプロイ][image-editor-blob-storage-deploy]
 
 ### Azure SQL Database 用にリンクされたサービスを作成する
 1. **Data Factory エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure SQL Database]** を選択します。Azure SQL のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
 
-	![Editr Azure SQL Settings][image-editor-azure-sql-settings]
+	![エディターの Azure SQL 設定][image-editor-azure-sql-settings]
 
-2. **servername**、**databasename**、**username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
+2. **servername**、**databasename**、****username@servername**、**password** を、Azure SQL のサーバー名、データベース名、ユーザー アカウント、パスワードに置き換えます。
 3. ツール バーの **[デプロイ]** をクリックして、AzureSqlLinkedService を作成してデプロイします。 
    
 
@@ -220,9 +220,9 @@
 ## <a name="CreateAndRunAPipeline"></a>手順 4. パイプラインを作成して実行する
 この手順では、**EmpTableFromBlob** を入力、**EmpSQLTable** を出力として使用し、**コピー アクティビティ**を持つパイプラインを作成します。
 
-1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **... (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 
-	![Editor New Pipeline Button][image-editor-newpipeline-button]
+	![エディターの [新しいパイプライン] ボタン][image-editor-newpipeline-button]
  
 2. 右側のウィンドウの JSON スクリプトを、次の JSON スニペットに置き換えます。
 		
@@ -293,16 +293,16 @@
 ### ダイアグラム ビューでの Data Factory の表示 
 1. **[Data Factory]** ブレードで、**[ダイアグラム]** をクリックします。
 
-	![Data Factory Blade - Diagram Tile][image-datafactoryblade-diagramtile]
+	![[データ ファクトリ] ブレードの [ダイアグラム] タイル][image-datafactoryblade-diagramtile]
 
 2. 以下のような図が表示されるはずです。
 
-	![Diagram view][image-data-factory-get-started-diagram-blade]
+	![[ダイアグラム] ビュー][image-data-factory-get-started-diagram-blade]
 
 	パイプラインとテーブルは、拡大、縮小、100% に拡大、ウィンドウのサイズに合わせて大きさを変更、自動的に配置などの表示が可能です。また、系列情報を表示 (選択した項目の上位項目や下位項目を強調表示) することもできます。オブジェクト (入力/出力テーブルまたはパイプライン) をダブルクリックすると、そのオブジェクトのプロパティを表示できます。 
 3. ダイアグラム ビューで **[ADFTutorialPipeline]** を右クリックして **[パイプラインを開く]** をクリックします。パイプライン内のアクティビティに加えて、アクティビティの入力データセットと出力データセットが表示されます。このチュートリアルでは、パイプラインのアクティビティ (コピー アクティビティ) は、入力データセットとして EmpTableBlob、出力データセットとして EmpSQLTable の 1 つだけです。   
 
-	![Open Pipeline](./media/data-factory-get-started-using-editor/DiagramView-OpenPipeline.png)
+	![パイプラインを開く](./media/data-factory-get-started-using-editor/DiagramView-OpenPipeline.png)
 
 4. 左上にある階層リンクで **[Data Factory]** をクリックして、ダイアグラム ビューに戻ります。ダイアグラム ビューには、すべてのパイプラインが表示されます。この例では 1 つのパイプラインのみ作成しました。
  
@@ -314,12 +314,12 @@
 2. **ADFTutorialDataFactory** のブレードが開いていない場合は、**スタート画面**で **[ADFTutorialDataFactory]** をクリックして開きます。 
 3. 作成したテーブルの数と名前、およびパイプラインの名前がブレードに表示されます。
 
-	![home page with names][image-data-factory-get-started-home-page-pipeline-tables]
+	![名前のついたホーム ページ][image-data-factory-get-started-home-page-pipeline-tables]
 
 4. **[データセット]** タイルをクリックします。
 5. **[データセット]** ブレードで、**[EmpTableFromBlob]** をクリックします。これは、**ADFTutorialPipeline** 用の入力テーブルです。
 
-	![Datasets with EmpTableFromBlob selected][image-data-factory-get-started-datasets-emptable-selected]   
+	![EmpTableFromBlob を選択したデータセット][image-data-factory-get-started-datasets-emptable-selected]   
 5. 現在の時刻までのデータ スライスが既に生成されており、**準備完了**になっています。これは、**emp.txt** ファイルが BLOB コンテナー **adftutorial\\input** 内に常に存在しているためです。下部の **[最近失敗したスライス]** セクションにスライスが表示されていないことを確認します。
 
 	**[最近更新したスライス]** と **[最近失敗したスライス]** の一覧は、どちらも **[最終更新時刻]** で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
@@ -332,40 +332,40 @@
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
-	![Data Slices by Slice Time][DataSlicesBySliceTime]
+	![データ スライス (スライスの時刻別)][DataSlicesBySliceTime]
 
 6. **[データセット]** ブレードで、**[EmpSQLTable]** をクリックします。これは、**ADFTutorialPipeline** 用の出力テーブルです。
 
-	![data sets blade][image-data-factory-get-started-datasets-blade]
+	![[データセット] ブレード][image-data-factory-get-started-datasets-blade]
 
 
 
 	 
 6. **[EmpSQLTable]** ブレードが次のように表示されます。
 
-	![table blade][image-data-factory-get-started-table-blade]
+	![[テーブル] ブレード][image-data-factory-get-started-table-blade]
  
 7. 現在の時刻までのデータ スライスが既に生成されており、**[準備完了]** になっています。下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
 8. **... (省略記号)** をクリックし、すべてのスライスを表示します。
 
-	![data slices blade][image-data-factory-get-started-dataslices-blade]
+	![[データ スライス] ブレード][image-data-factory-get-started-dataslices-blade]
 
 9. 一覧の任意のデータ スライスをクリックすると、**[データ スライス]** ブレードが表示されます。
 
-	![data slice blade][image-data-factory-get-started-dataslice-blade]
+	![[データ スライス] ブレード][image-data-factory-get-started-dataslice-blade]
   
 	スライスが **[準備完了]** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備完了でない上位スライス]** の一覧に表示されます。
 
 11. **[データ スライス]** ブレードの下部にある一覧に、すべてのアクティビティの実行状況が表示されます。**[アクティビティの実行状況]** をクリックすると、**[アクティビティの実行状況の詳細]** ブレードが表示されます。
 
-	![Activity Run Details][image-data-factory-get-started-activity-run-details]
+	![アクティビティの実行状況の詳細][image-data-factory-get-started-activity-run-details]
 
 	
 12. **[X]** をクリックすると、すべてのブレードが閉じられ、**ADFTutorialDataFactory** のホーム ブレードに戻ります。
 14. (省略可能) **ADFTutorialDataFactory** のホーム ページで **[パイプライン]** をクリックし、**[パイプライン]** ブレードの **[ADFTutorialPipeline]** をクリックし、入力テーブル (**Consumed**) または出力テーブル (**Produced**) を表示します。
 15. **SQL Server Management Studio** を起動し、Azure SQL Database に接続して、データベース内の **emp** テーブルに行が挿入されていることを確認します。
 
-	![sql query results][image-data-factory-get-started-sql-query-results]
+	![SQL クエリの結果][image-data-factory-get-started-sql-query-results]
 
 
 ## 概要 
@@ -377,8 +377,7 @@
 4.	**パイプライン**を作成します。パイプラインは、入力を処理し、出力を生成する 1 つ以上のアクティビティで構成されます。パイプラインの **開始**時間と**終了**時間を指定して、パイプラインの有効期間を設定します。有効期間は、データ スライスが生成される期間を定義します。 
 
 
-サポートされているアクティビティの一覧については、トピック「[パイプラインとアクティビティ][msdn-activities]」を参照してください。
-サポートされているリンクされたサービスの一覧については、MSDN ライブラリのトピック「[リンクされたサービス][msdn-linkedservices]」を参照してください。
+サポートされているアクティビティの一覧については、トピック「[パイプラインとアクティビティ][msdn-activities]」を参照してください。サポートされているリンクされたサービスの一覧については、MSDN ライブラリのトピック「[リンクされたサービス][msdn-linkedservices]」を参照してください。
  
 Azure PowerShell を使用してこのチュートリアルの内容を実行する方法については、「[Azure PowerShell を使用した Azure Data Factory の監視と管理][monitor-manage-using-powershell]」を参照してください。
 
@@ -502,4 +501,4 @@ Azure PowerShell を使用してこのチュートリアルの内容を実行す
 [image-data-factory-name-not-available]: ./media/data-factory-get-started-using-editor/getstarted-data-factory-not-available.png
  
 
-<!------HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

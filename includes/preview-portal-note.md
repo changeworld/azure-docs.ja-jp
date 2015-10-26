@@ -5,4 +5,4 @@
 > 
 > 現在、Azure サブスクリプションにログインしていない場合は、[プレビュー ポータル](https://portal.azure.com/)にアクセスすると、ログインするように求められます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

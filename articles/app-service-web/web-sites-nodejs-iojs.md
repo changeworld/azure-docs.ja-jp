@@ -61,4 +61,4 @@ Node.js アプリケーションをデプロイすると、App Service Web Apps 
 [io.js デプロイメント スクリプト]: https://github.com/felixrieseberg/iojs-azure
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

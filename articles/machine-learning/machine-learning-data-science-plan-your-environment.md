@@ -2,6 +2,7 @@
 	pageTitle="Azure Machine Learning の高度な分析環境を計画する | Microsoft Azure" 
 	description="重要事項を考慮して、高度な分析環境を計画します。" 
 	services="machine-learning" 
+	solutions="" 
 	documentationCenter="" 
 	authors="msolhab"
 	manager="paulettm" 
@@ -79,4 +80,4 @@ Azure Machine Learning で高度な分析を実行する環境をセットアッ
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

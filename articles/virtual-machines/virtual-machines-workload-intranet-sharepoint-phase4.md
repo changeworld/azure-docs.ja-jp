@@ -19,11 +19,12 @@
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 4: SharePoint サーバーの構成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
 イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、SharePoint ファームのアプリケーション層と Web 層を構築し、SharePoint 構成ウィザードを使用してファームを作成します。
 
-[フェーズ 5](virtual-machines-workload-intranet-sharepoint-phase5.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Deploying SharePoint with SQL Server AlwaysOn Availability Groups in Azure (Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ)](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
+[フェーズ 5](virtual-machines-workload-intranet-sharepoint-phase5.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
 
 ## Azure での SharePoint サーバー仮想マシンの作成
 
@@ -197,4 +198,4 @@ SharePoint ファームへのクライアント トラフィックが 2 つの�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

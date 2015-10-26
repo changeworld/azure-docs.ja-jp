@@ -32,7 +32,7 @@ Azure Mobile Services を使用すると、SQL データベースにデータを
 <a name="Diagnosing"></a>
 ## 問題の診断
 
-負荷のある状態でモバイル サービスに問題が発生している疑いがある場合は、まず **Azure の管理ポータル**でサービスの [ダッシュボード][] タブを確認します。ここでは、次の点について確認します。
+負荷のある状態でモバイル サービスに問題が発生している疑いがある場合は、まず **Azure の管理ポータル**でサービスの [[ダッシュボード]][] タブを確認します。ここでは、次の点について確認します。
 
 - **API 呼び出し**や**アクティブなデバイス**の測定値など、使用量の測定値がクォータを超えていない
 - **エンドポイントの監視**ステータスで、サービスが稼働していることが示されている (サービスが Standard 階層を使用し、エンドポイントの監視が有効になっている場合のみ利用できます) 
@@ -263,7 +263,7 @@ SQL Server Management Studio で前のセクションの手順を完了して、
 
 #### 高度なメトリック
 
-Basic、Standard、および Premium 階層を使用している場合は、管理ポータルで特定のメトリックをすぐに利用できます。ただし、Web および Business 階層を使用している場合、ポータルで利用できるのはストレージ メトリックのみです。さいわいなことに、**[sys.resource_stats](http://msdn.microsoft.com/library/dn269979.aspx)** 管理ビューを使用すると、使用している階層に関係なく、それらも含めたメトリックを簡単に取得できます。次のクエリについて考えてみましょう。
+Basic、Standard、および Premium 階層を使用している場合は、管理ポータルで特定のメトリックをすぐに利用できます。ただし、Web および Business 階層を使用している場合、ポータルで利用できるのはストレージ メトリックのみです。さいわいなことに、**[sys.resource\_stats](http://msdn.microsoft.com/library/dn269979.aspx)** 管理ビューを使用すると、使用している階層に関係なく、それらも含めたメトリックを簡単に取得できます。次のクエリについて考えてみましょう。
 
     SELECT TOP 10 * 
     FROM sys.resource_stats 
@@ -444,7 +444,7 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 <!-- LINKS -->
 
 [Azure の管理ポータル]: http://manage.windowsazure.com
-[ダッシュボード]: http://manage.windowsazure.com
+[[ダッシュボード]]: http://manage.windowsazure.com
 
 [Azure SQL Database のドキュメント]: http://azure.microsoft.com/documentation/services/sql-database/
 [Managing SQL Database using SQL Server Management Studio]: http://go.microsoft.com/fwlink/p/?linkid=309723&clcid=0x409
@@ -476,4 +476,4 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 [How much does that key cost? (そのキーのコスト)]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

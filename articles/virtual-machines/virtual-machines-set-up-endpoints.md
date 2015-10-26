@@ -96,4 +96,4 @@ Azure PowerShell コマンドレットを使用してこれを設定するには
 
 [Azure インフラストラクチャ サービスの負荷分散](virtual-machines-load-balance.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

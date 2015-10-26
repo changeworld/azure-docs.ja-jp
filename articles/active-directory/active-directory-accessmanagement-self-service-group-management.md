@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/21/2015"
+	ms.date="10/09/2015"
 	ms.author="femila"/>
 
 #アプリケーション アクセス管理のセルフ サービス化に必要な Azure AD の設定
@@ -49,4 +49,4 @@ Microsoft Azure 管理ポータルの [構成] タブで、[委任されたグ�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

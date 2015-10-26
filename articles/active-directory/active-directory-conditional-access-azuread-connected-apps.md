@@ -86,4 +86,4 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 このフラグの設定に加えて、Multi-Factor Authentication が実行されるように、フェデレーション テナントの AD FS インスタンスを構成する必要があります。オンプレミスの Azure Multi-Factor Authentication のデプロイの手順に従ってください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

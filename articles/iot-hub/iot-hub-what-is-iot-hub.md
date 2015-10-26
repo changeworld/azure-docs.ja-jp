@@ -1,10 +1,10 @@
 <properties
- pageTitle="Azure IoT Hub とは | Microsoft Azure"
- description="デバイスの接続、通信パターンおよびサービス支援通信パターンを含む、Azure IoT Hub サービスの概要"
+ pageTitle="Azure IoT Hub の概要 | Microsoft Azure"
+ description="デバイスの接続、通信パターン、およびサービス支援通信パターンを含む、Azure IoT Hub サービスの概要"
  services="iot-hub"
- documentationCenter=".net"
+ documentationCenter=""
  authors="fsautomata"
- manager="kevinmil"
+ manager="timlt"
  editor=""/>
 
 <tags
@@ -12,19 +12,19 @@
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
- ms.workload="tbd"
+ ms.workload="na"
  ms.date="09/29/2015"
  ms.author="elioda"/>
 
 # Azure IoT Hub とは
 
- Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バック エンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。Azure IoT Hub は、信頼性に優れた非常にスケール性の高いデバイスとクラウド間のメッセージングを提供し、デバイスごとのセキュリティ資格情報とアクセス制御を使用してセキュリティで保護された通信を可能にし、最も一般的な言語とプラットフォームのデバイス ライブラリを含みます。
+Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。Azure IoT Hub は、信頼性に優れた非常にスケール性の高いデバイスとクラウド間のメッセージングを提供し、デバイスごとのセキュリティ資格情報とアクセス制御を使用してセキュリティで保護された通信を可能にし、最も一般的な言語とプラットフォームのデバイス ライブラリを含みます。
 
 ![クラウド ゲートウェイとしての IoT Hub とは][img-architecture]
 
 ## IoT デバイスの接続
 
-IoT プロジェクトが直面する最も大きな課題の 1 つは、アプリケーション バック エンドにデバイスを確実かつ安全に接続する方法です。IoT デバイスには、多くの場合、ブラウザー、他のサーバー、およびモバイル アプリケーションなどの他のクライアントと比較して異なる特性があります。
+IoT プロジェクトが直面する最も大きな課題の 1 つは、アプリケーション バック エンドにデバイスを確実かつ安全に接続する方法です。IoT デバイスには、多くの場合、ブラウザー、他のサーバー、およびモバイル アプリなどの他のクライアントと比較して異なる特性があります。
 
 -   多くの場合、その組み込みシステムを人間が操作することはありません。
 
@@ -80,23 +80,23 @@ Azure IoT Hub は、[サービス支援通信][lnk-service-assisted-pattern]パ�
 
 Azure IoT Hub の詳細については、次のリンクを参照してください。
 
-* [IoT Hub Developer Guide (Azure IoT Hub 開発者ガイド)]
-* [IoT Hub Guidance (Azure IoT Hub のガイダンス)]
+* [IoT Hub 開発者ガイド]
+* [IoT Hub のガイダンス]
 * [サポートされているデバイスのプラットフォームおよび言語]
 * [Azure IoT デベロッパー センター]
 * [IoT Hub の概要]
 
 [IoT Hub Overview]: iot-hub-what-is-iot-hub.md
-[IoT Hub Guidance (Azure IoT Hub のガイダンス)]: iot-hub-guidance.md
-[IoT Hub Developer Guide (Azure IoT Hub 開発者ガイド)]: iot-hub-devguide.md
+[IoT Hub のガイダンス]: iot-hub-guidance.md
+[IoT Hub 開発者ガイド]: iot-hub-devguide.md
 [IoT Hub Supported Devices]: iot-hub-supported-devices.md
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
 [サポートされているデバイスのプラットフォームおよび言語]: iot-hub-sdks-summary.md#os-platforms-and-hardware-compatibility
-[Azure IoT デベロッパー センター]: http://www.azure.com/iotdev
+[Azure IoT デベロッパー センター]: https://azure.microsoft.com/develop/iot/
 
 [img-why-use]: media/iot-hub-what-is-iot-hub/image1.png
 [img-architecture]: media/iot-hub-what-is-iot-hub/hubarchitecture.png
 
 [lnk-service-assisted-pattern]: http://blogs.msdn.com/b/clemensv/archive/2014/02/10/service-assisted-communication-for-connected-devices.aspx "サービス支援通信に関する Clemens Vasters によるブログの投稿"
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

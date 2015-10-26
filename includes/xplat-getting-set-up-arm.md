@@ -1,3 +1,13 @@
+<properties services="virtual-machines" title="Using Azure CLI with Azure Resource Manager" authors="squillace" solutions="" manager="timlt" editor="tysonn" />
+
+<tags
+   ms.service="virtual-machine"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="linux"
+   ms.workload="infrastructure"
+   ms.date="04/13/2015"
+   ms.author="rasquill" />
 
 ## Azure リソース マネージャー (ARM) での Azure CLI の使用
 
@@ -54,4 +64,4 @@ Azure リソース管理 (ARM) モードで Azure CLI を使用するには、�
 
 > [AZURE.NOTE]「`azure config mode asm`」と入力すると、Azure サービス管理モードに戻してそのコマンドを再度使用できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

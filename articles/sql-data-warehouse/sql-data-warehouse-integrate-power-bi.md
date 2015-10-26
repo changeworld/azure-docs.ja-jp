@@ -63,4 +63,4 @@ Azure ポータルでは、サーバーの完全修飾名とデータベース�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

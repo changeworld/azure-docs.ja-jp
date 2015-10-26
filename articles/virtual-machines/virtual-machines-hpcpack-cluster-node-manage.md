@@ -18,15 +18,16 @@ ms.service="virtual-machines"
 
 # Azure の HPC Pack クラスターのコンピューティング ノードの数と可用性を管理する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、従来のデプロイメント モデルを使用して作成されたリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
-Azure VM で HPC Pack クラスターを作成した場合、クラスターにたくさんのコンピューティング ノード VM を簡単に追加し、開始し (プロビジョニング)、停止 (プロビジョニング解除) できる方法があれば便利です。そのような作業を行うには、ヘッド ノードにインストールされている Azure PowerShell スクリプトを実行します (HPC Pack 2012 R2 更新プログラム 1 以降)。これらのスクリプトを利用すれば、HPC Pack クラスター リソースの数と可用性を制御し、コストを管理できます。
+
+Azure VM で HPC Pack クラスターを作成した場合、クラスターにたくさんのコンピューティング ノード VM を簡単に追加し、開始し (プロビジョニング)、停止 (プロビジョニング解除) できる方法があれば便利です。そのような作業を行うには、ヘッド ノード VM にインストールされている Azure PowerShell スクリプトを実行します (HPC Pack 2012 R2 更新プログラム 1 以降)。これらのスクリプトを利用すれば、HPC Pack クラスター リソースの数と可用性を制御し、コストを管理できます。
 
 >[AZURE.NOTE]スクリプトはヘッド ノードの %CCP\_HOME%bin フォルダーにあります。各スクリプトは管理者として実行する必要があります。
 
 ## 前提条件
 
-* **Azure VM の HPC Pack クラスター** - HPC Pack 2012 R2 更新プログラム 1 以降を利用し、従来 (サービス管理) のデプロイメント モデルで HPC Pack クラスターを作成します。たとえば、Azure Marketplace の HPC Pack VM イメージや Azure PowerShell スクリプトを利用し、デプロイメントを自動化できます。詳細と前提条件については、「[HPC Pack IaaS デプロイメント スクリプトを使用した HPC クラスターの作成](virtual-machines-hpcpack-cluster-powershell-script.md)」を参照してください。
+* **Azure VM の HPC Pack クラスター** - HPC Pack 2012 R2 更新プログラム 1 以降を利用し、従来 (サービス管理) のデプロイ モデルで HPC Pack クラスターを作成します。たとえば、Azure Marketplace の HPC Pack VM イメージや Azure PowerShell スクリプトを利用し、デプロイを自動化できます。詳細と前提条件については、「[HPC Pack IaaS デプロイ スクリプトを使用した HPC クラスターの作成](virtual-machines-hpcpack-cluster-powershell-script.md)」を参照してください。
 
 * **Azure 管理証明書または発行設定ファイル** - ヘッド ノードで次のいずれかを行う必要があります。
 
@@ -177,4 +178,4 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 * クラスターのジョブやタスクの現在のワークロードに合わせ、Azure コンピューティング リソースを自動的に拡大縮小する方法については、「[HPC Pack クラスターの Azure コンピューティング リソースを拡大縮小する](virtual-machines-hpcpack-cluster-node-autogrowshrink.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

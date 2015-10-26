@@ -11,4 +11,4 @@
 <!-- images -->
 [1]: ./media/app-service-mobile-android-configure-push/mobile-push-api-key.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

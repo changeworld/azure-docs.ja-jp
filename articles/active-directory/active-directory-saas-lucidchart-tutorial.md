@@ -15,7 +15,7 @@
 1.  Lucidchart のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-lucidchart-tutorial/IC791183.png "シナリオ")
 ##Lucidchart のアプリケーション統合の有効化
@@ -65,7 +65,7 @@
 
 3.  **[アプリ URL の構成]** ページの **[Lucidchart サインオン URL]** テキストボックスに、ユーザーが Lucidchart アプリケーションにサインオンするときに使用する URL (例: **https://chart2.office.lucidchart.com/saml/sso/azure*")) を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-lucidchart-tutorial/IC791188.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-lucidchart-tutorial/IC791188.png "アプリケーション URL の構成")
 
 4.  **[Lucidchart でのシングル サインオンの構成]** ページで、**[データのダウンロード]** をクリックしてメタデータをダウンロードし、データ ファイルをコンピューターのローカルに保存します。
 
@@ -112,4 +112,4 @@ Lucidchart へのユーザー プロビジョニングの構成にあたって�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

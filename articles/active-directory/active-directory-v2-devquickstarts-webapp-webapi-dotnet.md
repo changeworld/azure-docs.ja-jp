@@ -41,14 +41,14 @@ To-Do List Web API をクライアントから呼び出す基本的な手順は�
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet.git```
 
-Alternatively, you can [download the completed app as a .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/complete.zip) or clone the completed app:
+また、[完成したアプリを zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/complete.zip)することも、完成したアプリを複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet.git```
 
 ## 1\.アプリを登録します
 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
-- アプリに割り当てられた**アプリケーション ID** を書き留めます。これは、後ですぐ必要になります。
+- アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 - **[パスワード]** の **[アプリケーション シークレット]** を作成し、後で使用するために値を書き留めます
 - アプリの **Web** プラットフォームを追加します。
 - 適切な**リダイレクト URI** を入力します。リダイレクト URI は、認証の応答が送られる Azure AD を示します。このチュートリアルの既定値は `https://localhost:44326/` です。
@@ -57,14 +57,14 @@ Alternatively, you can [download the completed app as a .zip](https://github.com
 ## 2\.OpenID Connect を使用してユーザーのサインイン処理を行います
 ここでは、[OpenID Connect 認証プロトコル](active-directory-v2-protocols.md#openid-connect-sign-in-flow)を使用するように、OWIN ミドルウェアを構成します。OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
--	最初に、`TodoList-WebApp` プロジェクトのルートにある `web.config` ファイルを開いて、アプリの構成値を `<appSettings>` セクションで入力します。
-    -	`ida:ClientId` は、登録ポータル内のアプリに割り当てられる **アプリケーション ID** です。
+-	最初に、`TodoList-WebApp` プロジェクトのルートにある `web.config` ファイルを開いて、アプリの構成値を `<appSettings>` セクションに入力します。
+    -	`ida:ClientId` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
 	- `ida:ClientSecret` は、登録ポータルで作成した**アプリケーション シークレット**です。
     -	`ida:RedirectUri` は、ポータルで入力した**リダイレクト URI** です。
 - `TodoList-Service` プロジェクトのルートにある `web.config` ファイルを開き、`ida:Audience` を上記と同じ**アプリケーション ID** に置き換えます。
 
 
--	ここで、Package Manager Console を使用して、OWIN ミドルウェア NuGet パッケージを `TodoList-WebApp` プロジェクトに追加します。
+-	次に、パッケージ マネージャー コンソールを使用して、`TodoList-WebApp` プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
 
 ```
 PM> Install-Package Microsoft.Owin.Security.OpenIdConnect -ProjectName TodoList-WebApp
@@ -72,7 +72,7 @@ PM> Install-Package Microsoft.Owin.Security.Cookies -ProjectName TodoList-WebApp
 PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoList-WebApp
 ```
 
--	ファイル `App_Start\Startup.Auth.cs` を開き、前記のライブラリの `using` ステートメントを追加します。
+-	`App_Start\Startup.Auth.cs` ファイルを開き、前記のライブラリの `using` ステートメントを追加します。
 - 同じファイルに、`ConfigureAuth(...)` メソッドを実装します。`OpenIDConnectAuthenticationOptions` で提供されたパラメーターは、アプリが Azure AD と通信するための調整役として機能します。
 
 ```C#
@@ -118,14 +118,17 @@ public void ConfigureAuth(IAppBuilder app)
 
 - まず、ADAL のプレビュー バージョンをインストールします。
 
-```PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoList-WebApp -IncludePrerelease```
-- And add another `using` statement to the `App_Start\Startup.Auth.cs` file for ADAL.
-- Now add a new method, the `OnAuthorizationCodeReceived` event handler.  This handler will use ADAL to acquire an access token to the To-Do List API, and will store the token in ADAL's token cache for later:
+```PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoList-WebApp -IncludePrerelease``` 
+- 別の `using` ステートメントを ADAL の `App_Start\Startup.Auth.cs` ファイルに追加します。
+- 次に、新しいメソッドとして `OnAuthorizationCodeReceived` イベント ハンドラーを追加します。このハンドラーは、ADAL を使用して To Do List API へのアクセス トークンを取得し、後で使用できるように ADAL のトークン キャッシュに格納します。
 
 ```C#
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
 {
- string userObjectId = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value; string tenantID = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value; string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenantID, string.Empty); ClientCredential cred = new ClientCredential(clientId, clientSecret);
+		string userObjectId = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
+		string tenantID = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
+		string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenantID, string.Empty);
+		ClientCredential cred = new ClientCredential(clientId, clientSecret);
 
 		// Here you ask for a token using the web app's clientId as the scope, since the web app and service share the same clientId.
 		var authContext = new Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext(authority, new NaiveSessionCache(userObjectId));
@@ -134,7 +137,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 ...
 ```
 
-- Web アプリの ADAL には、トークンの格納に使用できる拡張可能なトークン キャッシュが用意されています。このサンプルでは、http セッション ストレージを使用する `NaiveSessionCache` を実装して、トークンをキャッシュします。
+- Web アプリの ADAL には、トークンの格納に使用できる拡張可能なトークン キャッシュが用意されています。このサンプルでは、http セッション ストレージを使用してトークンをキャッシュする `NaiveSessionCache` を実装します。
 
 <!-- TODO: Token Cache article -->
 
@@ -146,7 +149,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 
     `using Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory;`
 
-- `Index` アクションで ADAL の `AcquireTokenSilentAsync` メソッドを使用して access\_token を取得します。これは、To-Do List サービスからデータを読み取るのに使用できます。
+- `Index` アクションで ADAL の `AcquireTokenSilentAsync` メソッドを使用して access\_token を取得します。これは、To-Do List サービスからデータを読み取る際に使用できます。
 
 ```C#
 ...
@@ -162,7 +165,7 @@ result = await authContext.AcquireTokenSilentAsync(new string[] { Startup.client
 ```
 
 - 次に、作成されたトークンを `Authorization` ヘッダーとして HTTP GET 要求に追加します。To-Do List サービスはこれを使って要求を認証します。
-- To-Do List サービスで `401 Unauthorized` 応答が返された場合、ADAL の access\_tokens が何らかの理由で無効になっています。この場合、ADAL キャッシュから access\_tokens をドロップし、サインインし直す必要があることを示すメッセージをユーザーに表示する必要があります。これにより、トークンの取得フローが再起動されます。
+- To-Do List サービスから `401 Unauthorized` 応答が返された場合、ADAL の access\_tokens が何らかの理由で無効になっています。この場合、ADAL キャッシュから access\_tokens をドロップし、サインインし直す必要があることを示すメッセージをユーザーに表示する必要があります。これにより、トークンの取得フローが再起動されます。
 
 ```C#
 ...
@@ -179,7 +182,7 @@ if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
 ...
 ```
 
-- 同様に、ADAL が何らかの理由で access\_token を返せない場合、ユーザーにサインインし直すよう指示する必要があります。これは、`AdalException` をキャッチするだけの簡単な操作です:
+- 同様に、ADAL が何らかの理由で access\_token を返せない場合、ユーザーにサインインし直すよう指示する必要があります。これは、`AdalException` のキャッチと同様に簡単です。
 
 ```C#
 ...
@@ -191,7 +194,7 @@ catch (AdalException ee)
 ...
 ```
 
-- まったく同じ `AcquireTokenSilentAsync` 呼び出しが、`Create` および `Delete` アクションに実装されます。Web アプリでは、この ADAL メソッドを使用して、アプリで必要になったときにいつでも access\_tokens を取得できます。ADAL によりトークンが自動的に取得、キャッシュ、および更新されます。
+- まったく同じ `AcquireTokenSilentAsync` 呼び出しが、`Create` アクションと `Delete` アクションに実装されています。Web アプリでは、この ADAL メソッドを使用して、アプリで必要になったときにいつでも access\_tokens を取得できます。ADAL によりトークンが自動的に取得、キャッシュ、および更新されます。
 
 最後に、アプリを構築して実行します。 Microsoft アカウントまたは Azure AD アカウントでサインインすると、ユーザーの ID が上部のナビゲーション バーにどのように反映されるかがわかります。ユーザーの To-Do List からいくつかの項目を追加、削除して、OAuth 2.0 の保護された API 呼び出しの動作を確認します。これで、Web アプリと Web API のいずれも業界標準のプロトコルで保護され、個人および職場/学校アカウントの両方でユーザーを認証できるようになりました。
 
@@ -201,4 +204,4 @@ catch (AdalException ee)
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

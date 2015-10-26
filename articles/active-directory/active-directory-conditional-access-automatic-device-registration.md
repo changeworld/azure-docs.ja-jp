@@ -83,6 +83,6 @@ Azure AD へのデバイス登録により、広範なデバイスの機能が�
 
 モバイル デバイスと従来型デバイスの両方を使用する企業、または Office 365 や Azure AD などの Microsoft サービスを利用する企業は、Azure AD Device Registration サービスを使用して、デバイスを Azure AD に登録する必要があります。企業でモバイル デバイスや Office 365、Azure AD、Microsoft Intune などの Microsoft サービスを利用せずに、代わりにオンプレミス アプリケーションのみをホストする場合、AD FS を使用してデバイスを Active Directory に登録することができます。
 
-AD FS を使用したデバイス登録のデプロイに関する詳細については、[ここ](https://technet.microsoft.com/ja-JP/library/dn486831.aspx)を参照してください。
+AD FS を使用したデバイス登録のデプロイに関する詳細については、[ここ](https://technet.microsoft.com/ja-jp/library/dn486831.aspx)を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="C# を使用した Azure SQL Database の作成と管理"
-	description="この記事では、C# で Azure SQL Database Library for .NET を使用して、Azure SQL Database を作成および管理する方法を説明します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jeffreyg"
-	editor=""/>
+   pageTitle="C# を使用した Azure SQL Database の作成と管理" 
+   description="この記事では、C# で Azure SQL Database Library for .NET を使用して、Azure SQL Database を作成および管理する方法を説明します。" 
+   services="sql-database" 
+   documentationCenter="" 
+   authors="stevestein" 
+   manager="jeffreyg" 
+   editor=""/>
 
 <tags
    ms.service="sql-database"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="powershell"
-	ms.workload="data-management"
-	ms.date="08/25/2015"
-	ms.author="sstein"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="powershell"
+   ms.workload="data-management" 
+   ms.date="08/25/2015"
+   ms.author="sstein"/>
 
 # C&#x23; で SQL Database を作成し、管理する
 
@@ -798,4 +798,4 @@ SQL Database はサーバーに格納されます。サーバー名がすでに�
 [8]: ./media/sql-database-client-library/add-application2.png
 [9]: ./media/sql-database-client-library/clientid.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -13,19 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/09/2015"
+   ms.date="10/13/2015"
    ms.author="ryanwi"/>
 
 # Service Fabric サービスの管理
 このページには、Service Fabric サービスを管理できるようにする概要の記事やチュートリアルのリンクが記載されています。
 
-- [アプリケーションのライフ サイクル](service-fabric-application-lifecycle.md)
-- [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
-
 ## パッケージ化、デプロイ、およびアプリケーションの削除
 次のトピックでは、Service Fabric アプリケーション モデルと、アプリケーションをパッケージ化してデプロイする方法について説明しています。
 
 - [アプリケーション モデル](service-fabric-application-model.md)
+- [アプリケーションのライフ サイクル](service-fabric-application-lifecycle.md)
 - [サービス マニフェスト リソース](service-fabric-service-manifest-resources.md)
 - [アプリケーションのパッケージ化](service-fabric-application-model.md)
 - [アプリケーションのデプロイと削除](service-fabric-deploy-remove-applications.md)
@@ -48,4 +46,7 @@
 - [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 - [Service Fabric アプリケーションのスケーリング](service-fabric-concepts-scalability.md)
 
-<!---HONumber=Sept15_HO4-->
+## クラスターの管理
+- [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
+
+<!---HONumber=Oct15_HO3-->

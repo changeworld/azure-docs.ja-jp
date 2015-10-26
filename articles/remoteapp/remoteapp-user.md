@@ -53,4 +53,4 @@ RemoteApp を使用するために Active Directory を構成する方法の詳�
 コレクションに、Office 365 ProPlus のテンプレート イメージを使用しているか*または* Office 365 を使用するカスタム イメージを作成した場合は、サブスクリプションの既定のドメイン用の Office 365 サブスクリプションを持つ Azure Active Directory のユーザーのみを追加できます。詳細については、「[Azure RemoteApp で Office 365 を使用する](remoteapp-o365.md)」を参照してください。
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

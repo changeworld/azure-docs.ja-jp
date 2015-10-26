@@ -192,4 +192,4 @@ CloudBlobClient、CloudQueueClient、CloudTableClient クラスにはすべて�
 [ストレージ ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/dn782840.aspx)
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

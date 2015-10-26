@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure App Service の .NET Web アプリに対する New Relic によるパフォーマンス管理"
-	description="New Relic のパフォーマンス監視を、Azure App Service で実行する ASP.NET アプリケーションに対して使用する方法について説明します。"
-	services="app-service\web"
-	documentationCenter=".net"
-	authors="cephalin"
-	manager="wpickett"
+	pageTitle="Azure App Service の .NET Web アプリに対する New Relic によるパフォーマンス管理" 
+	description="New Relic のパフォーマンス監視を、Azure App Service で実行する ASP.NET アプリケーションに対して使用する方法について説明します。" 
+	services="app-service\web" 
+	documentationCenter=".net" 
+	authors="cephalin" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="07/30/2015"
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="07/30/2015" 
 	ms.author="stepsic"/>
 
 
@@ -39,7 +39,7 @@ New Relic Standard は、Azure ユーザーであれば無料でご利用いた�
 Azure ユーザーは、New Relic エージェントのデプロイ時に、New Relic Pro の 2 週間の試用サブスクリプションをご利用になれます。
 
 Azure Marketplace を使用して New Relic にサインアップする
---
+
 New Relic は、Azure の Web ロール、Worker ロール、および Azure App Service とシームレスに統合されます。
 
 Azure Marketplace から New Relic に直接サインアップするには、次の簡単な 4 つの手順を実行します。
@@ -167,7 +167,6 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 * Azure ポータルから Azure プレビュー ポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)を参照してください。
 
 
-[webmatrixwebsite]: web-sites-dotnet-using-webmatrix.md
 [vswebsite]: web-sites-dotnet-get-started.md
 
 [wmnugetbutton]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrwmnugetbutton.png
@@ -179,4 +178,4 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 [custom]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrcustom.png
  
 
-<!----HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

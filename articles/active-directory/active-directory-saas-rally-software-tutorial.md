@@ -13,7 +13,7 @@
 1.  Rally Software のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-rally-software-tutorial/IC769525.png "シナリオ")
 ##Rally Software のアプリケーション統合の有効化
@@ -63,7 +63,7 @@
 
 3.  **[アプリ URL の構成]** ページで、**[Rally Software テナント URL]** ボックスに、"*https://\<tenant-name>.rally.com*" というパターンで URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-rally-software-tutorial/IC769529.png "アプリ URL の構成")
+    ![アプリ URL の構成](./media/active-directory-saas-rally-software-tutorial/IC769529.png "アプリケーション URL の構成")
 
 4.  **[Rally Software でのシングル サインオンの構成]** ページで、[メタデータのダウンロード] をクリックしてメタデータをダウンロードし、コンピューターに保存します。
 
@@ -104,7 +104,7 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 
 4.  **[Create User]** セクションで、次の手順に従います。
 
-    ![ユーザーの作成](./media/active-directory-saas-rally-software-tutorial/IC781040.png "ユーザーの作成")
+    ![Create User](./media/active-directory-saas-rally-software-tutorial/IC781040.png "ユーザーの作成")
 
     1.  **[User Name]** ボックスに、プロビジョニングする Azure AD ユーザーの名前を入力します。
     2.  **[Email Address]** ボックスに、プロビジョニングする Azure AD ユーザーのメール アドレスを入力します。
@@ -130,4 +130,4 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

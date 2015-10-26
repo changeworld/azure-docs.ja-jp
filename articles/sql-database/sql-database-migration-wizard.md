@@ -98,4 +98,4 @@ CodePlex から、SQL Azure 移行ウィザードをダウンロードできま�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

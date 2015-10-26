@@ -7,4 +7,4 @@
 
 <sup>2</sup>入力エンドポイントは、仮想マシンのクラウド サービスの外部から仮想マシンへの通信を可能にします。同じクラウド サービスまたは仮想ネットワーク内の仮想マシンは自動的に相互に通信できます。「[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-set-up-endpoints.md)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

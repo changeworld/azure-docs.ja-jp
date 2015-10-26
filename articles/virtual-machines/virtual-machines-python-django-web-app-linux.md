@@ -25,7 +25,8 @@
 
 <br>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 このチュートリアルでは、Linux 仮想マシンを使用して Microsoft Azure で Django ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウドで動作する Django ベースのアプリケーションが完成します。
 
@@ -77,7 +78,7 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 
 ## 新しい Django アプリケーションの作成
 
-1.  上のセクションで使用した**ターミナル** ウィンドウを開き、SSH キーを使用して仮想マシンにログインします。
+1.  上のセクションで使用した**ターミナル** ウィンドウを開き、SSH キーを使用して VM にログインします。
     
 1.  次のコマンドを入力して、新しい Django プロジェクトを作成します。
 
@@ -132,4 +133,4 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 [portal-vm]: /manage/linux/tutorials/virtual-machine-from-gallery/
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

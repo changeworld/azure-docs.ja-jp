@@ -68,7 +68,7 @@ REST API を使用して Media Services での開発を始めるには、次の�
 	ページ下部に **[キーの管理]** ボタンが表示されます。このボタンをクリックすると、Media Services アカウント名、プライマリ キー、セカンダリ キーがダイアログに表示されます。Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
 
 	
-	![[Media Services] ページ](./media/media-services-rest-get-started/wams-mediaservices-page.png)
+	![[メディア サービス] ページ](./media/media-services-rest-get-started/wams-mediaservices-page.png)
 
 	アカウント名をダブルクリックすると、既定で [クイック スタート] ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
@@ -1213,4 +1213,4 @@ AMS のラーニング パスについては、以下を参照してください
 
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -796,7 +796,7 @@
 		    sb.Append(", "AccessPolicyId" : "" + accessPolicyId + """);
 		    sb.Append(", "Type" : "" + locatorType + """);
 		    if (startTime != DateTime.MinValue)
-		        sb.Append(", "StartTime" : "" + startTime.ToString("G", CultureInfo.CreateSpecificCulture("ja-JP")) + """);
+		        sb.Append(", "StartTime" : "" + startTime.ToString("G", CultureInfo.CreateSpecificCulture("ja-jp")) + """);
 		    if (!string.IsNullOrEmpty(locatorIdToReplicate))
 		        sb.Append(", "Id" : "" + locatorIdToReplicate + """);
 		    sb.Append("}");
@@ -960,4 +960,4 @@
 
 これで、トラフィック マネージャーを使用して 2 つのデータ センター間で要求をルーティングできるので、障害時のフェールオーバーが可能になりました。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

@@ -57,4 +57,4 @@ Service Bus メッセージングの詳細については、次のトピック�
 - [Azure Service Bus アーキテクチャの概要](fundamentals-service-bus-hybrid-solutions.md)
 - [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

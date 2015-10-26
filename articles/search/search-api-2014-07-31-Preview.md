@@ -1,6 +1,6 @@
 <properties pageTitle="Azure Search サービス REST API バージョン 2014-07-31-Preview" description="Azure Search サービス REST API: バージョン 2014-07-31-Preview" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor=""/>
 
-<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="08/26/2015" ms.author="heidist"/>
+<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="08/26/2015" ms.author="heidist" />
 
 # Azure Search サービス REST API バージョン: 2014-07-31-Preview
 
@@ -317,7 +317,7 @@ Azure Search 内の既存のインデックスを、HTTP PUT 要求を使用し�
 
 **重要:** Azure Search 検索パブリック プレビューでは、フィールド タイプの変更など、インデックスの再作成を必要とするスキーマの更新をサポートしていません。新しいフィールドはいつでも追加できますが、既存のフィールドを変更または削除することはできません。
 
-新しいフィールドをインデックスに追加すると、インデックス内のすべての既存ドキュメントでそのフィールドに null 値が自動的に設定されます。新しいドキュメントがインデックスに追加されるまで、追加のストレージは使用されません。
+新しいフィールドをインデックスに追加すると、インデックス内のすべての既存ドキュメントでそのフィールドに null 値が自動的に設定されます。新しいドキュメントがインデックスに追加されるまで、追加の記憶域は使用されません。
 
 **要求**
 
@@ -1062,4 +1062,4 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 
     GET /indexes/hotels/docs/suggest?search=lux&$top=5&api-version=2014-07-31-Preview
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -142,4 +142,4 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - [RemoteApp のクラウド コレクションの作成方法](remoteapp-create-cloud-deployment.md)
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

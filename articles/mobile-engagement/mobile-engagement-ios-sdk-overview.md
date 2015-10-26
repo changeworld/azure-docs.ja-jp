@@ -5,7 +5,7 @@
 	documentationCenter="mobile"
 	authors="piyushjo"
 	manager="dwrede"
-	editor=""/>
+	editor="" />
 
 <tags
 	ms.service="mobile-engagement"
@@ -14,7 +14,7 @@
 	ms.devlang="objective-c"
 	ms.topic="article"
 	ms.date="08/05/2015"
-	ms.author="MehrdadMzfr"/>
+	ms.author="MehrdadMzfr" />
 
 #iOS SDK for Azure Mobile Engagement
 
@@ -32,9 +32,12 @@
 
 ##リリース ノート
 
-###3\.1.0 (2015 年 8 月 26 日)
+##3\.2.0 (10/08/2015)
 
--   サードパーティ ライブラリと iOS 9 の互換性バグを修正。ポーリングの結果、アプリケーション情報、追加のデータの送信時にクラッシュを引き起こしていました。
+-   **Xcode 7** と連携できるように、SDK のビットコードを有効化。
+-   アプリ内通知に関連するバグを修正。
+-   バッテリ低下のような状況でのアプリ内通知の信頼性を向上。
+-   サード パーティ製のライブラリによって生成される余分なコンソール ログの削除。
 
 以前のバージョンについては、「[完全リリース ノート](mobile-engagement-ios-release-notes.md)」をご覧ください。
 
@@ -59,4 +62,4 @@ AEPushDelegate.h インターフェイスは廃止されるため、すべての
 	-(void)didFailToRetrieveLaunchMessage;
 	-(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

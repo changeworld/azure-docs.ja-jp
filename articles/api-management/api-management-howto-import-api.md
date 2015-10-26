@@ -95,4 +95,4 @@ API を作成して操作をインポートした後は、追加の設定を確�
 [Azure API Management で API を作成する方法]: api-management-howto-create-apis.md
 [API 設定を構成する方法]: api-management-howto-create-apis.md#configure-api-settings
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

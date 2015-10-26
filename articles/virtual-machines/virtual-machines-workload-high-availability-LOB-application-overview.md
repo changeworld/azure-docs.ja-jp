@@ -19,7 +19,8 @@
 
 # Azure での高可用な基幹業務アプリケーションのデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
 
 この記事には、Azure インフラストラクチャ サービスに、高可用なイントラネット専用のWeb ベース基幹業務アプリケーションと SQL Server AlwaysOn 可用性グループをデプロイするための詳細な手順へのリンクが含まれます。アプリケーションは、次のコンピューターでホストされます。
 
@@ -42,7 +43,7 @@
 - [フェーズ 4: Web サーバーを構成する](virtual-machines-workload-high-availability-LOB-application-phase4.md)。Web サーバー仮想マシンを 2 つ作成して構成します。
 - [フェーズ 5: アプリケーション データベースを SQL Server AlwaysOn 可用性グループに追加する](virtual-machines-workload-high-availability-LOB-application-phase5.md)。基幹業務アプリケーションのデータベースを準備し、SQL Server AlwaysOn 可用性グループに追加します。
 
-このデプロイメントは、[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)が付属し、最新の推奨事項が組み込まれるように設計されています。
+このデプロイは、[基幹業務アプリケーションのアーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)が付属し、最新の推奨事項が組み込まれるように設計されています。
 
 これは、規範となる、定義済みのアーキテクチャです。次の点に注意してください。
 
@@ -68,4 +69,4 @@ Azure の IT ワークロードの設計に関する詳細については、「[
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

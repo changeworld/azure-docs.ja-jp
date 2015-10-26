@@ -68,4 +68,4 @@ Windows PowerShell インターフェイスを使用して StorSimple デバイ�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

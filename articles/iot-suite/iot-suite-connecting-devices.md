@@ -1,18 +1,18 @@
 <properties
-   pageTitle="Azure IoT Suite の事前構成済みリモート管理ソリューションにデバイスを接続する | Microsoft Azure"
-   description="温度と湿度に関する例を使用して、Azure IoT Suite の事前構成済みリモート監視ソリューションにデバイスを接続する方法を説明します。"
-   services="iot-hub"
+   pageTitle="構成済みソリューションへのデバイスの接続 | Microsoft Azure"
+   description="温度と湿度のデータに関する例を使用して、Azure IoT Suite の事前構成済みリモート監視ソリューションにデバイスを接続する方法を説明します。"
+   services=""
    documentationCenter="na"
    authors="hegate"
-   manager="jamesosb"
+   manager="timlt"
    editor=""/>
 
 <tags
-   ms.service="iot-hub"
+   ms.service="na"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="na"
+   ms.workload="nana"
    ms.date="09/29/2015"
    ms.author="hegate"/>
 
@@ -28,7 +28,7 @@
 
 ### IoT Suite をプロビジョニングする
 
-リモート監視の事前構成済みソリューションをまだプロビジョニングしていない場合は、[こちら](http://www.microsoft.com/ja-JP/server-cloud/internet-of-things/getting-started.aspx)でプロビジョニングできます。
+リモート監視の事前構成済みソリューションをまだプロビジョニングしていない場合は、[こちら](http://www.microsoft.com/JA-JP/server-cloud/internet-of-things/getting-started.aspx)でプロビジョニングできます。
 
 
 ### リモート監視ソリューションでデバイスをプロビジョニングする
@@ -136,7 +136,7 @@ Note: if you have already provisioned a device on your solution, you can skip th
 8. ここで、[コマンドと制御](#command)に関するセクションに進み、リモート監視ソリューションからデバイスの温度を変更する方法を確認してください。
 
 
-8. 次に、コマンドと制御のセクションに移動して、リモート監視ソリューションからデバイスの温度を変更する方法について説明します。
+8. ここで、コマンドと制御に関するセクションに進み、リモート監視ソリューションからデバイスの温度を変更する方法を確認してください。
 
 ### mbed 上でデバイスを実行する
 
@@ -213,7 +213,7 @@ mbed プロジェクトを作成してサンプル コードをインポート�
 
 8. ダッシュボードをクリックすると、データが受信されていることがわかります。サンプルは、内部温度の場合は 50 ユニット、外部温度の場合は 55 ユニット、湿度の場合は 50 ユニットを送信するように構成されています。ダッシュボードに既定で表示されるのは温度と湿度のみであることに注意してください。
 
-8. 次に、[コマンドと制御](#command)のセクションに移動して、リモート監視ソリューションからデバイスの温度を変更する方法について説明します。
+8. ここで、[コマンドと制御](#command)に関するセクションに進み、リモート監視ソリューションからデバイスの温度を変更する方法を確認してください。
 
 
 
@@ -312,4 +312,4 @@ node .
 
 このサンプルの機能を拡張するには、実際のセンサーをデバイスに接続して実際のデータを送信する、コマンドと制御機能を実装するなど、複数の方法があります。詳細を確認するには、リモート監視ソリューションの拡張方法に関する[ガイド](articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions.md)を使用してください。
 
-<!----HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

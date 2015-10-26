@@ -1,20 +1,21 @@
 <properties 
-	pageTitle="SQL Azure からデータを処理する | Microsoft Azure"
-	description="SQL Azure からのデータを処理する"
-	services="machine-learning"
-	documentationCenter=""
-	authors="fashah"
-	manager="paulettm"
-	editor=""/>
+	pageTitle="SQL Azure からデータを処理する | Microsoft Azure" 
+	description="SQL Azure からのデータを処理する" 
+	services="machine-learning" 
+	solutions="" 
+	documentationCenter="" 
+	authors="fashah" 
+	manager="paulettm" 
+	editor="" />
 
 <tags 
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="fashah;garye"/>
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
+	ms.author="fashah;garye" />
 
 #<a name="heading">Azure の SQL Server Virtual Machine でデータを処理する</a>
 
@@ -152,4 +153,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

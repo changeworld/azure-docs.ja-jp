@@ -183,4 +183,4 @@ SQL Server のログインの詳細については、「[ログインの作成](
 
 	![SSMS を使用した接続](./media/virtual-machines-sql-server-connection-steps/33Connect-SSMS.png)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -19,9 +19,10 @@
 
 # MariaDB (MySQL) クラスター - Azure チュートリアル
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したMariaDB クラスターの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
-ここでは、[MariaDB](https://mariadb.org/en/about/) のマルチマスター [Galera](http://galeracluster.com/products/) クラスターを作成します。これを Azure の仮想マシン上の高可用性環境で稼働することで、MySQL の堅牢でスケーラブル、かつ信頼性の高い代替製品として実行するためです。
+
+ここでは、[MariaDB](https://mariadb.org/en/about/) のマルチマスター [Galera](http://galeracluster.com/products/) クラスターを作成します。これを Azure Virtual Machines 上の高可用性環境で稼働することで、MySQL の堅牢でスケーラブル、かつ信頼性の高い代替製品として実行するためです。
 
 ## アーキテクチャの概要
 
@@ -35,7 +36,7 @@
 
 ![アーキテクチャ](./media/virtual-machines-mariadb-cluster/Setup.png)
 
-> [AZURE.NOTE]  このトピックでは、[Azure CLI] ツールを使用します。ダウンロードして、指示に従って Azure サブスクリプションに接続してください。Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI command reference (Azure CLI コマンド リファレンス)]」を参照してください。また、[認証用に SSH キーを作成]し、**.pem ファイルの場所**をメモしておく必要があります。
+> [AZURE.NOTE] このトピックでは、[Azure CLI] ツールを使用します。ダウンロードして、指示に従って Azure サブスクリプションに接続してください。Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI command reference (Azure CLI コマンド リファレンス)]」を参照してください。また、[認証用に SSH キーを作成]し、**.pem ファイルの場所**をメモしておく必要があります。
 
 
 ## テンプレートの作成
@@ -209,7 +210,7 @@
 
 	- **[mariadb]** セクションを編集し、以下を追加します。
 
-	> [AZURE.NOTE] **innodb\_buffer\_pool\_size** を、お使いの仮想マシンのメモリの 70% にすることをお勧めします。ここでは、3.5 GB の RAM を持つ中の Medium Azure VM に、2.45 GB を設定しています。
+	> [AZURE.NOTE]**innodb\_buffer\_pool\_size** を、お使いの VM のメモリの 70% にすることをお勧めします。ここでは、3.5 GB の RAM を持つ中の Medium Azure VM に、2.45 GB を設定しています。
 
 	        innodb_buffer_pool_size = 2508M # The buffer pool contains buffered data and the index. This is usually set to 70% of physical memory.
             innodb_log_file_size = 512M #  Redo logs ensure that write operations are fast, reliable, and recoverable after a crash
@@ -228,9 +229,7 @@
 11. ポータルで VM をキャプチャします。(現在、[Azure CLI ツールの issue #1268] には、Azure CLI ツールでキャプチャしたイメージで、接続されているデータ ディスクがキャプチャされていないという問題が記載されています)。
 
 	- ポータルでマシンをシャットダウンします。
-    - [キャプチャ] をクリックし、イメージの名前に「**mariadb-galera-image**」を指定し説明を適切に入力して、[waagent を実行しました] をチェックします。
-	![仮想マシンをキャプチャする](./media/virtual-machines-mariadb-cluster/Capture.png)
-	![仮想マシンをキャプチャする](./media/virtual-machines-mariadb-cluster/Capture2.PNG)
+    - [キャプチャ] をクリックし、イメージの名前に「**mariadb-galera-image**」を指定し説明を適切に入力して、[waagent を実行しました] をチェックします。![仮想マシンをキャプチャする](./media/virtual-machines-mariadb-cluster/Capture.png)![仮想マシンをキャプチャする](./media/virtual-machines-mariadb-cluster/Capture2.PNG)
 
 ## クラスターの作成
 
@@ -302,8 +301,7 @@
 
 ここでは、Azure ロード バランサーを使用して、3 つのノードに要求を分散します。
 
-Azure CLI を使用して、マシン上で次のコマンドを実行します。
-コマンドのパラメーター構造は次のとおりです。`azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
+Azure CLI を使用して、マシン上で次のコマンドを実行します。コマンドのパラメーター構造は次のとおりです。`azure vm endpoint create-multiple <MachineName> <PublicPort>:<VMPort>:<Protocol>:<EnableDirectServerReturn>:<Load Balanced Set Name>:<ProbeProtocol>:<ProbePort>`
 
 	azure vm endpoint create-multiple mariadb1 3306:3306:tcp:false:MySQL:tcp:3306
     azure vm endpoint create-multiple mariadb2 3306:3306:tcp:false:MySQL:tcp:3306
@@ -376,4 +374,4 @@ CLI でロード バランサー プローブ間隔が 15 秒 (少し長すぎ�
 [Azure CLI ツールの issue #1268]: https://github.com/Azure/azure-xplat-cli/issues/1268
 [Linux 上で MySQL をクラスター化する別の方法]: http://azure.microsoft.com/documentation/articles/virtual-machines-linux-mysql-cluster/
 
-<!---------HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

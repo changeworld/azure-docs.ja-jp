@@ -41,4 +41,4 @@ Visual Studio プロジェクトで Azure Storage の NuGet パッケージが�
 
 詳細については、[Azure WebJobs の推奨リソース](http://go.microsoft.com/fwlink/?linkid=390226)に関するページをご覧ください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

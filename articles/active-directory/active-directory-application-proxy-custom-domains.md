@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="rkarlin"
-	manager="msStevenPo"
+	manager="StevenPo"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/09/2015"
+	ms.date="10/07/2015"
 	ms.author="rkarlin"/>
 
 # Azure AD アプリケーション プロキシでのカスタム ドメインの使用
@@ -35,9 +35,22 @@ Q: 既にアップロードされている証明書は、もう一度アップ�
 
 
 
+## 関連項目
+アプリケーション プロキシを使ってできることは他にもたくさんあります。
+
+- [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
+- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
+- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md) - [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
+
+## アプリケーション プロキシに関するその他の情報
+- [オンライン ヘルプ](active-directory-application-proxy-enable.md)
+- [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
+- [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
+
 ## その他のリソース
 
 * [Azure への組織としてのサインアップ](..sign-up-organization.md)
 * [Azure ID](..fundamentals-identity.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

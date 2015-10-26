@@ -65,4 +65,4 @@
 
 Visual Studio は使用しないが、ソース管理からロジック アプリをデプロイするツールを使用する場合は、いつでも [API](https://msdn.microsoft.com/library/azure/dn948510.aspx) または [PowerShell](../powershell-azure-resource-manager.md) を直接使用してデプロイを自動化できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

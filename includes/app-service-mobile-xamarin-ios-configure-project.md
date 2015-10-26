@@ -2,7 +2,7 @@
 
 1. Xamarin.Studio で、**Info.plist** を開き、前に作成した ID で **[Bundle Identifier]** を更新します。
 
-    ![](./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-21.png)
+    ![][88]
 
 2. **[Background Modes]** まで下へスクロールし、**[Enable Background Modes]** と **[Remote notifications]** の各チェック ボックスをオンにします。
 
@@ -30,7 +30,8 @@
 
     これで、プロジェクトではコード署名のために新しいプロファイルを使用するようになります。公式の Xamarin デバイス プロビジョニングのドキュメントについては、[Xamarin デバイス プロビジョニング]に関するページを参照してください。
 
+[88]:./media/app-service-mobile-xamarin-ios-configure-project/mobile-services-ios-push-21.png
 
 [Xamarin デバイス プロビジョニング]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

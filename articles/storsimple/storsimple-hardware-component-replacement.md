@@ -142,4 +142,4 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 StorSimple のハードウェア コンポーネントを交換する前に、すべての[安全に関する情報](storsimple-safety.md)を確認します。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

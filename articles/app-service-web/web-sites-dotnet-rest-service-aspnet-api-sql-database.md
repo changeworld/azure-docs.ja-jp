@@ -1,19 +1,20 @@
 <properties 
-	pageTitle="ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する"
-	description="Visual Studio により ASP.NET Web API を使用するアプリケーションを Azure Web アプリケーションにデプロイする方法を示すチュートリアル。"
-	services="app-service\web"
-	documentationCenter=".net"
-	authors="Rick-Anderson"
-	manager="wpickett"
+	pageTitle="ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する" 
+	description="Visual Studio により ASP.NET Web API を使用するアプリケーションを Azure Web アプリケーションにデプロイする方法を示すチュートリアル。" 
+	services="app-service\web" 
+	documentationCenter=".net" 
+	authors="Rick-Anderson" 
+	writer="Rick-Anderson" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="08/31/2015" 
 	ms.author="riande"/>
 
 # ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する
@@ -160,7 +161,7 @@ Azure サーバーにファイルをコピーする処理が開始されます�
 
 2. **[新しい項目の追加]** ダイアログ ボックスで、新しいクラス ファイルに「*Contact.cs*」という名前を付け、[**追加**] をクリックします。
 
-	![Add New Item dialog box][adddb002]
+	![[新しい項目の追加] ダイアログ ボックス][adddb002]
 
 3. Contacts.cs ファイルの内容を次のコードに置き換えます。
 
@@ -307,7 +308,7 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 		update-database
 
-	![Package Manager Console commands][addcode009]
+	![パッケージ マネージャー コンソールのコマンド][addcode009]
 
 	**update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
 
@@ -810,4 +811,4 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

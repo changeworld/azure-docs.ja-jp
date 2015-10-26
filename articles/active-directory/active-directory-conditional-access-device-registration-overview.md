@@ -79,4 +79,4 @@ Windows 7 デバイスおよび Windows 8.1 デバイスでは、ユーザー �
 
 Azure AD Device Registration を使用して、ドメイン参加済みの Windows 7 デバイスおよび Windows 8.1 デバイスを登録することができます。次のトピックでは、Windows 7 デバイスおよび Windows 8.1 デバイス上でデバイス登録を構成するために必要な前提条件と手順について詳しく説明します。Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

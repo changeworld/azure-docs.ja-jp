@@ -266,4 +266,4 @@ Microsoft Azure StorSimple デバイスの両方のコントローラーが故�
 
 [StorSimple ハードウェア コンポーネントの交換の詳細](storsimple-hardware-component-replacement.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

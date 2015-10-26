@@ -77,7 +77,7 @@
 
 3.  **[アプリケーション URL の構成]** ページで、**[Box テナント URL]** ボックスに、Box テナント URL (例: https://<mydomainname>.box.com) を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-box-tutorial/IC669826.png "アプリケーション URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-box-tutorial/IC669826.png "アプリケーション URL の構成")
 
 4.  **[Box でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、データ ファイルをコンピューターのローカルに保存します。
 
@@ -141,4 +141,4 @@ Box テナントでは、同期済みのユーザーは、**[管理コンソー�
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

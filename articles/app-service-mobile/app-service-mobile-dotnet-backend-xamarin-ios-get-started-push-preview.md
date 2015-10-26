@@ -195,12 +195,12 @@
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
-[Get started with Mobile Services]: /ja-JP/develop/mobile/tutorials/get-started-xamarin-ios
-[Get started with data]: /ja-JP/develop/mobile/tutorials/get-started-with-data-xamarin-ios
-[Get started with authentication]: /ja-JP/develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[Get started with push notifications]: /ja-JP/develop/mobile/tutorials/get-started-with-push-xamarin-ios
-[Push notifications to app users]: /ja-JP/develop/mobile/tutorials/push-notifications-to-users-ios
-[Authorize users with scripts]: /ja-JP/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
+[Get started with Mobile Services]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-ios
+[Get started with data]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios
+[Get started with authentication]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios
+[Get started with push notifications]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios
+[Push notifications to app users]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios
+[Authorize users with scripts]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
 [Xamarin Device Provisioning]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
 [Installing Xamarin.iOS on Windows (Windows への Xamarin.iOS のインストール)]: http://developer.xamarin.com/guides/ios/getting_started/installation/windows/
 
@@ -212,4 +212,4 @@
 
  
 
-<!-----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

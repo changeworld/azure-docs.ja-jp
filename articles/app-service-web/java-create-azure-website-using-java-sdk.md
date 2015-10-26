@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure SDK for Java を使用した Azure App Service での Web アプリの作成"
-	description="Azure SDK for Java を使用してプログラムで Azure App Service の Web アプリを作成する方法について説明します。"
+	pageTitle="Azure SDK for Java を使用した Azure App Service での Web アプリの作成" 
+	description="Azure SDK for Java を使用してプログラムで Azure App Service の Web アプリを作成する方法について説明します。" 
 	tags="azure-classic-portal"
-	services="app-service\web"
-	documentationCenter="Java"
-	authors="donntrenton"
-	manager="wpickett"
+	services="app-service\web" 
+	documentationCenter="Java" 
+	authors="donntrenton" 
+	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="multiple"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="10/12/2015" 
 	ms.author="v-donntr"/>
 
 
@@ -47,7 +47,7 @@
 
 ### Azure で Active Directory (AD) を作成する
 
-Azure サブスクリプションでまだ Active Directory (AD) を持っていない場合は、Microsoft アカウントを使用して [Azure の旧ポータル][]にログインします。複数のサブスクリプションを持っている場合は、**[サブスクリプション]** をクリックし、このプロジェクトで使用するサブスクリプションの既定のディレクトリを選択します。**[適用]** をクリックしてそのサブスクリプション ビューに切り替えます。
+Azure サブスクリプションでまだ Active Directory (AD) を持っていない場合は、Microsoft アカウントを使用して [Azure クラシック ポータル][]にログインします。複数のサブスクリプションを持っている場合は、**[サブスクリプション]** をクリックし、このプロジェクトで使用するサブスクリプションの既定のディレクトリを選択します。**[適用]** をクリックしてそのサブスクリプション ビューに切り替えます。
 
 1. 左側のメニューから **[Active Directory]** を選択します。**[新規] > [ディレクトリ] > [カスタム作成]** の順にクリックします。
 
@@ -66,7 +66,7 @@ AD の詳細については、「[Azure AD ディレクトリとは][]」をご�
 
 Azure SDK for Java は、管理証明書を使用して Azure サブスクリプションを認証します。これらは、クライアント アプリケーションの認証に使用する X.509 v3 証明書で、サービス管理 API を使用してサブスクリプション所有者に代わって動作し、サブスクリプションのリソースを管理します。
 
-この手順のコードは、自己署名証明書を使用して Azure を認証します。この手順では、証明書を作成し、事前に [Azure の旧ポータル][]にアップロードする必要があります。これには、次の手順が含まれます。
+この手順のコードは、自己署名証明書を使用して Azure を認証します。この手順では、証明書を作成し、事前に [Azure クラシック ポータル][]にアップロードする必要があります。これには、次の手順が含まれます。
 
 - クライアント証明書を表す PFX ファイルを生成し、ローカルに保存します。
 - PFX ファイルから管理証明書 (CER ファイル) を生成します。
@@ -340,12 +340,12 @@ createWebApp() を呼び出して Web アプリを作成する、main() メソ�
     
     ----------
 
-Azure 旧ポータルにログインし、**[Web アプリ]** をクリックします。数分以内に、新しい Web アプリが Web アプリの一覧に表示されます。
+Azure クラシック ポータルにログインし、**[Web Apps]** をクリックします。数分以内に、新しい Web アプリが Web アプリの一覧に表示されます。
 
 
 ## Web アプリへのアプリケーションのデプロイ
 
-AzureWebDemo を実行して新しい Web アプリを作成したら、旧ポータルにログインし、**[Web アプリ]** をクリックして、**[Web アプリ]** の一覧から **[WebDemoWebApp]** を選択します。Web アプリのダッシュ ボード ページで、**[参照]** をクリックして移動します (または、URL `webdemowebapp.azurewebsites.net` をクリックします)。コンテンツがまだ Web アプリに発行されていないため、空のプレースホルダー ページが表示されます。
+AzureWebDemo を実行して新しい Web アプリを作成したら、旧ポータルにログインし、**[Web Apps]** をクリックして、**[Web アプリ]** の一覧から **[WebDemoWebApp]** を選択します。Web アプリのダッシュボード ページで、**[参照]** をクリックして移動します (または、URL `webdemowebapp.azurewebsites.net` をクリックします)。コンテンツがまだ Web アプリに発行されていないため、空のプレースホルダー ページが表示されます。
 
 次に、"Hello World" アプリケーションを作成し、これを Web アプリにデプロイします。
 
@@ -425,14 +425,14 @@ Web プロジェクト ファイルを Web アーカイブ (WAR) ファイルと
 
     `<project-path>/JSPHello/src/JSPHello.war`
 
-WAR ファイルのデプロイ方法の詳細については、「[Azure の Java Web サイトへのアプリケーションの追加](web-sites-java-add-app.md)」をご覧ください。
+WAR ファイルのデプロイ方法の詳細については、「[Azure App Service Web Apps への Java アプリケーションの追加](web-sites-java-add-app.md)」をご覧ください。
 
 
 ### FTP を使用して Hello World アプリケーションをデプロイする
 
 サードパーティの FTP クライアントを選択してアプリケーションを発行します。この手順では、2 つのオプション (Azure に組み込まれている Kudu コンソールと、グラフィカル UI を備えた使いやすい一般的なツール FileZilla) について説明します。
 
-> **注:** Azure Plugin for Eclipse with Java 2.4 は、ストレージ アカウントとクラウド サービスへのデプロイをサポートしていますが、Web アプリへのデプロイは現在サポートしていません。ストレージ アカウントとクラウド サービスへのデプロイは、「[Azure の Hello World アプリケーションを Eclipse で作成する](http://msdn.microsoft.com/library/azure/hh690944.aspx)」の説明に従って、Azure デプロイ プロジェクトを使用して行うことができますが、Web アプリへはデプロイできません。FTP や GitHub などの他の方法を使用して、Web アプリにファイルを転送します。
+> **注:** Azure Toolkit for Eclipse は、ストレージ アカウントとクラウド サービスへのデプロイをサポートしていますが、Web アプリへのデプロイは現在サポートしていません。ストレージ アカウントとクラウド サービスへのデプロイは、「[Azure の Hello World アプリケーションを Eclipse で作成する](http://msdn.microsoft.com/library/azure/hh690944.aspx)」の説明に従って、Azure デプロイ プロジェクトを使用して行うことができますが、Web アプリへはデプロイできません。FTP や GitHub などの他の方法を使用して、Web アプリにファイルを転送します。
 
 > **注:** Windows コマンド プロンプトから FTP (Windows に付属するコマンド ラインの FTP.EXE ユーティリティ) を使用することはお勧めしません。FTP.EXE などのアクティブ FTP を使用する FTP クライアントは、多くの場合、ファイアウォールでの動作に失敗します。アクティブ FTP は LAN ベースの内部アドレスを指定するため、FTP サーバーは接続に失敗する可能性があります。
 
@@ -445,7 +445,7 @@ FTP を使用した App Service Web アプリへのデプロイの詳細につ�
 
 **AzureWebDemo** アプリケーションを実行して Web アプリを作成したことを確認します。ファイルはこの場所に転送されます。
 
-1. 旧ポータルにログインし、**[Web アプリ]** をクリックします。**WebDemoWebApp** が Web アプリの一覧に表示され、実行していることを確認します。**[WebDemoWebApp]** をクリックし、**[ダッシュボード]** ページを開きます。
+1. 旧ポータルにログインし、**[Web Apps]** をクリックします。**WebDemoWebApp** が Web アプリの一覧に表示され、実行していることを確認します。**[WebDemoWebApp]** をクリックし、**[ダッシュボード]** ページを開きます。
 
 2. **[ダッシュボード]** ページの **[概要]** で、**[Set up your deployment credentials]** をクリックします (既にデプロイ資格情報を設定している場合は、**[Reset your deployment credentials]** が読み込まれます)。
 
@@ -490,7 +490,7 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 
 アプリケーションを発行する前に、Web アプリが Java アプリケーションをホストできるように、いくつかの構成設定を変更する必要があります。
 
-1. 旧ポータルで、Web アプリの **[ダッシュ ボード]** ページに移動し、**[構成]** をクリックします。**[構成]** ページで、次の設定を指定します。
+1. 旧ポータルで、Web アプリの **[ダッシュボード]** ページに移動し、**[構成]** をクリックします。**[構成]** ページで、次の設定を指定します。
 
 2. **[Java バージョン]** の既定値を **[オフ]** にし、アプリケーションに対応する Java バージョンを選択します (例: 1.7.0\_51)。次に、**[Web コンテナー]** が Tomcat サーバーのバージョンに設定されていることを確認します。
 
@@ -592,7 +592,7 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Web Platform Installer (WebPI)]: http://go.microsoft.com/fwlink/?LinkID=252838
 [Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh690946.aspx
-[Azure の旧ポータル]: https://manage.windowsazure.com
+[Azure クラシック ポータル]: https://manage.windowsazure.com
 [Azure AD ディレクトリとは]: http://technet.microsoft.com/library/jj573650.aspx
 [Azure の管理証明書の作成とアップロード]: http://msdn.microsoft.com/library/azure/gg551722.aspx
 [Key and Certificate Management Tool (keytool) (キーと証明書管理ツール (keytool))]: http://docs.oracle.com/javase/6/docs/technotes/tools/windows/keytool.html
@@ -600,4 +600,4 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 [WebSpaceNames]: http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/models/WebSpaceNames.html
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

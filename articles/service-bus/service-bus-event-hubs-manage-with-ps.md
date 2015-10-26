@@ -274,4 +274,4 @@ Service Bus の名前空間を操作する場合、NET SDK の代わりに [Get-
 [.NET API for Service Bus]: https://msdn.microsoft.com/library/microsoft.servicebus.aspx
 [Azure PowerShell のインストールおよび構成]: ../install-configure-powershell.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

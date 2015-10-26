@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/15/2015"
+   ms.date="10/12/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用したボリューム グループの作成と管理
@@ -23,7 +23,11 @@
 
 ボリューム グループは関連するボリュームのプールであり、バックアップのアプリケーション整合性を確保するために使用されます。詳細については、「[ボリュームとボリューム グループ](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups)」および「[Windows ボリューム シャドウ コピー サービスとの統合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)」をご覧ください。
 
->[AZURE.IMPORTANT]ボリューム グループを構成するときは、クラスター共有ボリューム (CSV) と非 CSV を同じボリューム グループに混在させないでください。StorSimple Snapshot Manager では、同じスナップショット内に CSV と非 CSV が混在した環境はサポートされません。
+>[AZURE.IMPORTANT]
+>
+> * ボリューム グループ内のすべてのボリュームは、1 つのクラウド サービス プロバイダーから取得する必要があります。
+> 
+> * ボリューム グループを構成するときは、クラスター共有ボリューム (CSV) と非 CSV を同じボリューム グループに混在させないでください。StorSimple Snapshot Manager では、同じスナップショット内に CSV と非 CSV が混在した環境はサポートされません。
  
 ![[ボリューム グループ] ノード](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Volume_groups.png)
 
@@ -140,7 +144,7 @@
 
 ## 次のステップ
 
-- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
-- [StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理方法](storsimple-snapshot-manager-manage-backup-policies.md)
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)方法を確認する。
+- [StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理](storsimple-snapshot-manager-manage-backup-policies.md)方法を確認する。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

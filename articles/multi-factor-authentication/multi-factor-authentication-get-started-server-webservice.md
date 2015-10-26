@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="MFA Server モバイル アプリ Web サービスの概要"
-	description="Azure Multi-Factor Authentication アプリでは、他にもアウトオブバンドの認証オプションが提供されています。これにより MFA Server で、ユーザーへのプッシュ通知を許可できます。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="billmath"
-	manager="stevenpo"
+	pageTitle="MFA Server モバイル アプリ Web サービスの概要" 
+	description="Azure Multi-Factor Authentication アプリでは、他にもアウトオブバンドの認証オプションが提供されています。これにより MFA Server で、ユーザーへのプッシュ通知を許可できます。" 
+	services="multi-factor-authentication" 
+	documentationCenter="" 
+	authors="billmath" 
+	manager="stevenpo" 
 	editor="curtland"/>
 
 <tags 
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.service="multi-factor-authentication" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/24/2015" 
 	ms.author="billmath"/>
 
 # MFA Server モバイル アプリ Web サービスの概要
@@ -89,4 +89,4 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

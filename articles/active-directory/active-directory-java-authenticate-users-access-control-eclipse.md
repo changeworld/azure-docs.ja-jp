@@ -13,14 +13,14 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="09/22/2015"
+    ms.date="10/12/2015" 
     ms.author="robmcm" />
 
 # Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法
 
-このガイドでは、Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 内で Azure の Access Control Service (ACS) を使用する方法について説明します。ACS の詳細については、「[次のステップ](#next_steps)」を参照してください。
+このガイドでは、Azure Toolkit for Eclipse 内で Azure の Access Control Service (ACS) を使用する方法について説明します。ACS の詳細については、「[次のステップ](#next_steps)」を参照してください。
 
-> [AZURE.NOTE]Azure の Access Control Services Filter (Microsoft Open Technologies 提供) は Community Technology Preview 版です。プレリリース版ソフトウェアとして Microsoft Open Technologies, Inc. によってもマイクロソフトによっても正式にサポートされていません。
+> [AZURE.NOTE]Azure Access Control Services Filter は Community Technology Preview 版です。プレリリース版ソフトウェアとしてマイクロソフトによって正式にサポートされていません。
 
 ## ACS とは
 
@@ -48,7 +48,7 @@ Azure ACS はクレーム ベース ID のプリンシパルに基づいてお�
 
 **トークン** - トークンはセキュリティ データの集まりで、通常はユーザーの成功した認証に対して発行されます。これには、*クレーム* (認証されたユーザーの属性) のセットが含まれます。クレームは、ユーザー名、ユーザーが属するロールの識別子、ユーザーの年齢などを表すことができます。トークンは通常、電子署名されます。つまり、常に発行者を明らかにすることが可能で、そのコンテンツを改ざんできませんユーザーは、RP アプリケーションへのアクセスを得るために、RP アプリケーションが信頼している機関によって発行されたトークンを提示します。
 
-**ID プロバイダー (IP)** - IP は、ユーザー ID を認証し、セキュリティ トークンを発行する機関です。実際にトークンを発行する作業は、セキュリティ トークン サービス (STS) と呼ばれる特別なサービスを介して実行されます。IP の典型的な例には Windows Live ID、Facebook、ビジネス ユーザー リポジトリ (たとえば Active Directory) などがあります。ACS を構成して、IP を信頼する場合、システムは、その IP によって発行されたトークンを受け入れ、検証します。ACS は同時に複数の IP を信頼できます。つまり、アプリケーションが ACS を信頼すると、ACS が信頼するすべての IP の認証されたユーザーすべてに、アプリケーションが直ちに提示されます。
+**ID プロバイダー (IP)** - IP は、ユーザー ID を認証し、セキュリティ トークンを発行する機関です。実際にトークンを発行する作業は、Security Token Service (STS) と呼ばれる特別なサービスを介して実行されます。IP の典型的な例には Windows Live ID、Facebook、ビジネス ユーザー リポジトリ (たとえば Active Directory) などがあります。ACS を構成して、IP を信頼する場合、システムは、その IP によって発行されたトークンを受け入れ、検証します。ACS は同時に複数の IP を信頼できます。つまり、アプリケーションが ACS を信頼すると、ACS が信頼するすべての IP の認証されたユーザーすべてに、アプリケーションが直ちに提示されます。
 
 **フェデレーション プロバイダー (FP)** - IP はユーザーについての直接の情報を持ち、資格情報を使ってユーザーを認証し、ユーザーのどのような情報を持っているかについてのクレームを発行します。フェデレーション プロバイダー (FP) は、それとは別の種類の機関です。ユーザーを直接認証するのではなく、仲介者として機能し、1 つの RP と 1 つ以上の IP との間で認証を仲介します。IP と FP はどちらもセキュリティ トークンを発行するため、Security Token Services (STS) を使用します。ACS は FP の 1 つです。
 
@@ -76,7 +76,7 @@ Azure ACS はクレーム ベース ID のプリンシパルに基づいてお�
 - Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。 
 - Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、GlassFish、JBoss Application Server、Jetty など)。
 - Azure サブスクリプション。<http://www.microsoft.com/windowsazure/offers/> から入手できます。
-- Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 2014 年 4 月リリース。詳細については、[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)を参照してください。
+- Azure Toolkit for Eclipse、2014 年 4 月のリリース以降。詳細については、「[Azure Toolkit for Eclipse のインストール](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)」を参照してください。
 - アプリケーションで使用する X.509 証明書。この証明書は .cer (公開証明書) と .PFX (Personal Information Exchange) の両方の形式のものが必要です。(この証明書の作成方法についてはこのチュートリアルで後で説明)。
 - [Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)で説明されている、Azure コンピューティング エミュレーターとそのエミュレーターへのデプロイ手法に精通していること。
 
@@ -141,7 +141,7 @@ Azure で Access Control Service (ACS) の使用を開始するには、ACS 名�
 3.  **[トークン署名証明書またはキーの追加]** ページで、次の操作を行います。
     1. **[使用目的]** セクションで、**[証明書利用者アプリケーション]** をクリックし、**[Azure Web App]** (前の手順で設定した証明書利用者アプリケーションの名前) を選択します。
     2. **[種類]** セクションで **[X.509 証明書]** を選択します。
-    3. **[証明書]** セクションで、参照ボタンをクリックし、使用する X.509 証明書ファイルに移動します。これが .PFX ファイルになります。そのファイルを選択し、**[開く]** をクリックして、**[パスワード]** ボックスに証明書のパスワードを入力します。テスト目的で、自己署名証明書を使用してもかまいません。自己署名証明書を作成するには、**[ACS Filter Library]** ダイアログ ボックスの **[New]** ボタンを使用するか (後で説明)、または Azure Starter Kit for Java (Microsoft Open Technologies 提供) の**プロジェクト Web サイト**の [encutil.exe][] ユーティリティを使用します。
+    3. **[証明書]** セクションで、参照ボタンをクリックし、使用する X.509 証明書ファイルに移動します。これが .PFX ファイルになります。そのファイルを選択し、**[開く]** をクリックして、**[パスワード]** ボックスに証明書のパスワードを入力します。テスト目的で、自己署名証明書を使用してもかまいません。自己署名証明書を作成するには、**[ACS Filter Library]** ダイアログ ボックスの **[New]** ボタンを使用するか (後で説明)、または Azure Starter Kit for Java の**プロジェクト Web サイト**の [encutil.exe][] ユーティリティを使用します。
     4. **[プライマリにする]** チェック ボックスがオンになっていることを確認します。**[トークン署名証明書またはキーの追加]** ページは次のようになります。![トークン署名証明書の追加][add_token_signing_cert]
     5. **[保存]** をクリックして設定を保存し、**[トークン署名証明書またはキーの追加]** ページを閉じます。
 
@@ -287,7 +287,7 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [Deploy to Azure]: #deploy_azure
 [Next steps]: #next_steps
 [encutil.exe]: http://wastarterkit4java.codeplex.com/releases/view/61026
-[How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)]: /ja-JP/develop/java/how-to-guides/view-saml-returned-by-acs/
+[How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)]: /JA-JP/develop/java/how-to-guides/view-saml-returned-by-acs/
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
 [Access Control Service 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
 [Windows Identity Foundation]: http://www.microsoft.com/download/en/details.aspx?id=17331
@@ -310,4 +310,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -79,4 +79,4 @@ UCI の Web サイトでは、財務情報、信用貸付の履歴、雇用状�
 
 [1]: ./media/machine-learning-walkthrough-2-upload-data/upload1.png
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

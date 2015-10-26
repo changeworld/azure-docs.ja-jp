@@ -100,7 +100,7 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 - [Salesforce](http://go.microsoft.com/fwlink/?LinkId=286017)
 - [Salesforce Sandbox](http://go.microsoft.com/fwlink/?LinkId=327869)
 - [ServiceNow](http://go.microsoft.com/fwlink/?LinkId=309587)
-- [Workday](https://msdn.microsoft.com/library/azure/dn762434.aspx) (受信のプロビジョニング)
+- [Workday](http://go.microsoft.com/fwlink/?LinkId=690250) (受信のプロビジョニング)
 
 自動ユーザー プロビジョニングをサポートするアプリに対して、まず、外部のプログラムでユーザーの作成、保守、削除を自動化するのに必要なエンドポイントを提供する必要があります。そのため、すべての SaaS アプリがこの機能と互換性があるとは限りません。これをサポートするアプリでは、Azure AD エンジニア リング チームがこれらのアプリケーションにプロビジョニング コネクタを作成でき、この作業の優先順位は現在と将来の顧客のニーズによって決まります。
 
@@ -108,4 +108,4 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

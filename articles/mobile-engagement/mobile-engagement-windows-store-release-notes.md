@@ -35,10 +35,10 @@
 
 ##2\.0.0 (02/17/2015)
 
--   Azure モバイル エンゲージメントの最初のリリース
+-   Azure Mobile Engagement の最初のリリース
 -   appId/sdkKey 構成は、接続文字列の構成で置き換えられます。
 -   セキュリティの強化。
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

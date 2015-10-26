@@ -1,3 +1,19 @@
+<properties 
+   pageTitle="Stream Analytics に関する制限の表"
+   description="Stream Analytics コンポーネントおよび接続のシステム制限および推奨サイズについて説明します。"
+   services="stream-analytics"
+   documentationCenter="NA"
+   authors="jeffstokes72"
+   manager="paulettm"
+   editor="cgronlun" />
+<tags 
+   ms.service="stream-analytics"
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="big-data"
+   ms.date="07/13/2015"
+   ms.author="jeffstok" />
 
 | 制限の種類 | 制限 | 説明 |
 |----------------- | ------------|--------- |
@@ -6,4 +22,4 @@
 | SELECT ステートメントのクエリに関する制限 | クエリごとに 5 つの出力 | この制限は将来に増加する可能性があります。 |
 | SELECT ステートメントのサブクエリに関する制限 | サブクエリごとに 14 の集計 | この制限は将来に増加する可能性があります。 |
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -523,4 +523,4 @@ Accept ヘッダーにより既知のメディアの種類が指定されない�
 - [RESTful Cookbook](http://restcookbook.com/) では、RESTful API の構築に関する概要が説明されています。
 - Web [API Checklist](https://mathieu.fenniak.net/the-api-checklist/) には、Web API を設計および実装するときに検討する、役立つ項目の一覧が含まれています。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

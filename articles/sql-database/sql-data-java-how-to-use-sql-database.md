@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="09/22/2015" 
+	ms.date="10/12/2015" 
 	ms.author="genemi"/>
 
 # Java での Azure SQL Database の使用方法
@@ -36,8 +36,8 @@ SQL Database に関するその他のリソースについては、「[次のス
 次の前提条件は Java で SQL Database を使用する場合に必要になります。
 
 * A Java Developer Kit (JDK) v 1.6 以降。
-* Azure サブスクリプション <http://www.microsoft.com/windowsazure/offers/> から入手できます。
-* Eclipse を使用している場合は、Eclipse IDE for Java EE Developers Indigo 以降が必要です。<http://www.eclipse.org/downloads/> からダウンロードできます。また、Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) も必要です。このプラグインのインストール時には Microsoft JDBC Driver 4.0 for SQL Server がインストール済みであることを確認してください。詳細については、「[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)」を参照してください。
+* Azure サブスクリプション。<http://www.microsoft.com/windowsazure/offers/> から入手できます。
+* Eclipse を使用している場合は、Eclipse IDE for Java EE Developers Indigo 以降が必要です。<http://www.eclipse.org/downloads/> からダウンロードできます。また、Azure Toolkit for Eclipse も必要です。このプラグインのインストール時には Microsoft JDBC Driver 4.0 for SQL Server がインストール済みであることを確認してください。詳細については、「[Azure Toolkit for Eclipse のインストール](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)」を参照してください。
 * Eclipse を使用していない場合は、Microsoft JDBC Driver 4.0 for SQL Server が必要です。これは、<http://www.microsoft.com/download/details.aspx?id=11774> からダウンロードできます。
 
 ## Azure SQL Database の作成
@@ -678,7 +678,7 @@ WHERE 句は、行数の取得、行の更新、行の削除にも使用でき�
 
 ## Azure デプロイ内での Java からの SQL Database の使用
 
-Azure デプロイ内の Java で SQL Database を使用するには、前に示したように Microsoft JDBC Driver 4.0 for SQL Server をライブラリとしてクラス パスに追加する操作に加え、パッケージ化してデプロイメントに追加する必要があります。
+Azure デプロイ内の Java で SQL Database を使用するには、前に示したように Microsoft JDBC Driver 4.0 for SQL Server をライブラリとしてクラス パスに追加する操作に加え、パッケージ化してデプロイに追加する必要があります。
 
 
 **Eclipse を使用している場合の Microsoft JDBC Driver 4.0 SQL Server のパッケージ化**
@@ -688,7 +688,7 @@ Azure デプロイ内の Java で SQL Database を使用するには、前に示
 3. **[New Assembly Directive]** ダイアログ ボックスで、**[Java Build Path Entries]**、**[Next]** の順にクリックします。
 4. **[Microsoft JDBC Driver 4.0 SQL Server]** を選択し、**[完了]** をクリックします。
 5. **[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。
-6. プロジェクトの WAR ファイルを approot フォルダーにエクスポートし、Azure プロジェクトを再ビルドします。その手順については、「[Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) を使用した Hello World アプリケーションの作成](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)」で説明しています。そのトピックでは、コンピューティング エミュレーターおよび Azure 上でアプリケーションを実行する方法についても説明しています。
+6. プロジェクトの WAR ファイルを approot フォルダーにエクスポートし、Azure プロジェクトを再ビルドします。その手順については、[Azure Toolkit for Eclipse を使用した Hello World アプリケーションの作成](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)についてのページで説明しています。そのトピックでは、コンピューティング エミュレーターおよび Azure 上でアプリケーションを実行する方法についても説明しています。
 
 **Eclipse を使用していない場合の Microsoft JDBC Driver 4.0 SQL Server のパッケージ化**
 
@@ -728,4 +728,4 @@ Microsoft JDBC Driver for SQL Server の詳細については、「[JDBC ドラ�
 [allowed_ips_dialog]: ./media/sql-data-java-how-to-use-sql-database/WA_Allowed_IPs.png
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

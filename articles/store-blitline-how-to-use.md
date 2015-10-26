@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Blitline を使用した画像処理の方法 - Azure の機能ガイド"
-	description="Azure アプリケーション内で Blitline サービスを使用して画像を処理する方法について説明します。"
-	services=""
-	documentationCenter=".net"
-	authors="blitline-dev"
-	manager="jason@blitline.com"
+	pageTitle="Blitline を使用した画像処理の方法 - Azure の機能ガイド" 
+	description="Azure アプリケーション内で Blitline サービスを使用して画像を処理する方法について説明します。" 
+	services="" 
+	documentationCenter=".net" 
+	authors="blitline-dev" 
+	manager="jason@blitline.com" 
 	editor="jason@blitline.com"/>
 
 <tags 
-	ms.service="multiple"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="12/09/2014"
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="12/09/2014" 
 	ms.author="support@blitline.com"/>
 # Azure と Azure Storage で Blitline を使用する方法
 
@@ -132,4 +132,4 @@ Azure Storage に関する Blitline のドキュメントの最新版を[ここ]
 * Blitline API の例 <http://www.blitline.com/docs/examples>
 * サード パーティの Nuget ライブラリ <http://nuget.org/packages/Blitline.Net>
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

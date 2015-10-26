@@ -39,7 +39,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 プロジェクトが .NET Framework 4 または 4.5 をターゲットにしていることを確認し、クラウド サービス プロジェクトを作成している場合は、ASP.NET MVC の Web ロールおよび worker ロールのプロジェクトを追加して、Web ロールに対応するインターネット アプリケーションを選択します。確認メッセージが表示されたら、**[インターネット アプリケーション]** を選択します。
 Web アプリを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。[Azure App Service での ASP.NET Web アプリの作成](../web-sites-dotnet-get-started.md)に関するページを参照してください。
 
-> [AZURE.NOTE]Visual Studio Online では、現在、Visual Studio Web アプリケーションの CI デプロイメントのみをサポートしています。Web サイト プロジェクトはサポート対象外です。
+	> [AZURE.NOTE]Visual Studio Online では、現在、Visual Studio Web アプリケーションの CI デプロイメントのみをサポートしています。Web サイト プロジェクトはサポート対象外です。
 
 1. ソリューションのコンテキスト メニューを開き、**[ソリューションをソース管理に追加]** を選択します。
 
@@ -322,4 +322,4 @@ Visual Studio Online での単位テストの詳細については、[「ビル�
 [49]: ./media/cloud-services-continuous-delivery-use-vso/TestsFailed.PNG
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

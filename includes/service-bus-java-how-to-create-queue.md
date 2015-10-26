@@ -56,4 +56,4 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
   [34]: ./media/service-bus-java-how-to-create-queue/VSProperties.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

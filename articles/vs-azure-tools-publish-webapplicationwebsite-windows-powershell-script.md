@@ -129,4 +129,4 @@ JSON 構成ファイルは、デプロイ対象を変更するように編集で
 
 詳細については、「[Publish-WebApplicationVM (Windows PowerShell スクリプト)](vs-azure-tools-publish-webapplicationvm.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

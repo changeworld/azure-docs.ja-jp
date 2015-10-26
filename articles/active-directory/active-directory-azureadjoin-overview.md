@@ -71,4 +71,4 @@ Azure AD 参加には、次の機能があります。
 * [Azure AD 参加の使用シナリオとデプロイに関する考慮事項について](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -19,7 +19,8 @@
 
 # テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 このトピックでは、Microsoft Azure でホストされるイントラネット基幹業務 (LOB) アプリケーションをテストするためにハイブリッド クラウド環境を作成する手順について説明します。完成すると次のような構成になります。
 
@@ -198,4 +199,4 @@ ping コマンドで IP アドレス 10.0.0.1 からの応答が 4 回成功す�
 [Azure インフラストラクチャ サービス実装ガイドライン](../virtual-machines/virtual-machines-infrastructure-services-implementation-guidelines.md)
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

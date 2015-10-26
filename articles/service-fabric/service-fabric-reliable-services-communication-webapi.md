@@ -614,4 +614,4 @@ ASP.NET 5 でも、Web アプリケーションで*ホスト*から*アプリケ
 
 [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

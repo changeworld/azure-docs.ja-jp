@@ -157,4 +157,4 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -2,9 +2,9 @@
 
 このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを処理する Windows コンソール アプリを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るために [Event Hubs][Event Hubs Overview] と互換性のあるエンドポイントを公開します。このチュートリアルでは [EventProcessorHost] を使用して、コンソール アプリでこれらのメッセージを処理します。Event Hubs からのメッセージを処理する方法の詳細については、「[Event Hubs の使用]」チュートリアルを参照してください。
 
-データ ポイント メッセージの信頼性の高いストレージを実装する場合や、対話型メッセージを転送する場合の主な課題は、Event Hubs のイベント処理がその進行状況をチェックポイントとするメッセージ コンシューマーに依存することです。さらに、Event Hubs からの読み取り時に高スループットを実現するには、大規模なバッチでチェックポイントの実行が必要になるため、大量のメッセージの処理が重複する可能性があります。このチュートリアルでは、イベント プロセッサ ホストのチェックポイントを使用して、Azure ストレージの書き込みと Service Bus の重複除去期間を同期する方法を示します。
+データ ポイント メッセージの信頼性の高いストレージを実装する場合や、対話型メッセージを転送する場合の主な課題は、Event Hubs のイベント処理がその進行状況をチェックポイントとするメッセージ コンシューマーに依存することです。さらに、Event Hubs からの読み取り時に高スループットを実現するには、大規模なバッチでチェックポイントの実行が必要になるため、大量のメッセージの処理が重複する可能性があります。このチュートリアルでは、イベント プロセッサ ホストのチェックポイントを使用して、Azure Storage の書き込みと Service Bus の重複除去期間を同期する方法を示します。
 
-メッセージを Azure ストレージに確実に書き込むには、個々のブロック コミットの[ブロック BLOB][Azure Block Blobs] 機能を使用します。イベント プロセッサでは、チェックポイントの実行時間になるまで (つまり、蓄積されたバッファーが最大ブロック サイズの 4 Mb より大きくなるか、Service Bus の重複除去期間が経過するまで)、メッセージがメモリに蓄積されます。その後、チェックポイント処理の前に、新しいブロックが BLOB にコミットされます。
+メッセージを Azure Storage に確実に書き込むには、個々のブロック コミットの[ブロック BLOB][Azure Block Blobs] 機能を使用します。イベント プロセッサでは、チェックポイントの実行時間になるまで (つまり、蓄積されたバッファーが最大ブロック サイズの 4 Mb より大きくなるか、Service Bus の重複除去期間が経過するまで)、メッセージがメモリに蓄積されます。その後、チェックポイント処理の前に、新しいブロックが BLOB にコミットされます。
 
 イベント プロセッサでは、ブロック ID として Event Hubs のメッセージ オフセットを使用します。これにより、コミットされたブロックとチェックポイント間でクラッシュが発生する可能性がないかどうかを注意して、新しいブロックをストレージにコミットする前に、重複除去を確認できます。
 
@@ -29,7 +29,7 @@
 
     ![][31]
 
-3. 上部の **[ダッシュ ボード]** をクリックしてから、下部の **[接続情報]** をクリックし、2 つの接続文字列をメモします。
+3. 上部の **[ダッシュボード]** をクリックしてから、下部の **[接続情報]** をクリックし、2 つの接続文字列をメモします。
 
     ![][32]
 
@@ -53,7 +53,7 @@
 
 5. **[ProcessDeviceToCloudMessages]** プロジェクトを右クリックし、**[追加]** をクリックしてから **[クラス]** をクリックします。新しいクラスに **SimpleEventProcessor** という名前を付けてから、**[OK]** をクリックしてクラスを作成します。
 
-6. SimpleEventProcessor.cs ファイルの先頭に次のステートメントを追加します。
+6. StoreEventProcessor.cs ファイルの先頭に次のステートメントを追加します。
 
         using System.IO;
         using System.Diagnostics;
@@ -96,7 +96,7 @@
 
             Task IEventProcessor.OpenAsync(PartitionContext context)
             {
-                Console.WriteLine("SimpleEventProcessor initialized.  Partition: '{0}', Offset: '{1}'", context.Lease.PartitionId, context.Lease.Offset);
+                Console.WriteLine("StoreEventProcessor initialized.  Partition: '{0}', Offset: '{1}'", context.Lease.PartitionId, context.Lease.Offset);
 
                 if (!long.TryParse(context.Lease.Offset, out currentBlockInitOffset))
                 {
@@ -126,7 +126,7 @@
                         WriteHighlightedMessage(string.Format("Received interactive message: {0}", messageId));
                         continue;
                     }
-                    
+
                     if (toAppend.Length + data.Length > MAX_BLOCK_SIZE || stopwatch.Elapsed > MAX_CHECKPOINT_TIME)
                     {
                         await AppendAndCheckpoint(context);
@@ -199,7 +199,7 @@
 
     `ProcessEventsAsync()` メソッドは、次のように処理される IoT Hub からメッセージのバッチを受信します。対話型メッセージは Service Bus キューに送信されますが、データ ポイント メッセージは `toAppend` というメモリ バッファーに追加されます。メモリ バッファーがブロック制限 (つまり、4 Mb) に達したか、前回のチェックポイント以降に Service Bus の重複除去期間 (このチュートリアルでは 1 時間) が経過した場合に、チェックポイントがトリガーされます。
 
-    メソッド `AppendAndCheckpoint()` は最初に、追加されるブロックの blockId を生成します。Azure ストレージではすべてのブロック ID が同じ長さである必要があるため、オフセットには先行ゼロが埋め込まれます (`currentBlockInitOffset.ToString("0000000000000000000000000")`)。次に、この ID を持つブロックが既に BLOB にある場合は、メソッドは現在のもので上書きします。
+    メソッド `AppendAndCheckpoint()` は最初に、追加されるブロックの blockId を生成します。Azure Storage ではすべてのブロック ID が同じ長さである必要があるため、オフセットには先行ゼロが埋め込まれます (`currentBlockInitOffset.ToString("0000000000000000000000000")`)。次に、この ID を持つブロックが既に BLOB にある場合は、メソッドは現在のもので上書きします。
 
 > [AZURE.NOTE]コードを簡略化するために、このチュートリアルでは、メッセージを格納するパーティションごとに 1 つの BLOB ファイルを使用します。実際のソリューションではファイル ローリングを実装します。その場合、特定のサイズ (Azure BLOB は最大 195 Gb にすることができます) に達したときか、一定時間 (`fileName_{partitionId}_{date-time}` など) の後に、追加ファイルを作成します。
 
@@ -229,7 +229,7 @@
 > [AZURE.NOTE]わかりやすくするため、このチュートリアルでは [EventProcessorHost] の単一のインスタンスを使用します。デバイスからクラウドへのメッセージの処理の詳細については、「[Event Hubs のプログラミング ガイド]」および「デバイスからクラウドへのメッセージの処理」チュートリアルを参照してください。
 
 ## 対話型メッセージの受信
-このセクションでは、Service Bus キューから対話型メッセージを受信する Windows コンソール アプリケーションを作成します。Service Bus を使用してソリューションを構築する方法の詳細については、Service Bus を使用する多層アプリケーションのビルドに関する記述を参照してください。
+このセクションでは、Service Bus キューから対話型メッセージを受信する Windows コンソール アプリケーションを作成します。Service Bus を使用してソリューションを構築する方法の詳細については、[Service Bus を使用する多層アプリケーションのビルド][]に関する記述を参照してください。
 
 1. 現在の Visual Studio ソリューションで、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトに **ProcessD2cInteractiveMessages** という名前を付けます。
 
@@ -309,9 +309,11 @@
 
 [Service Bus Queue]: ../service-bus/service-bus-dotnet-how-to-use-queues.md
 
+[Service Bus を使用する多層アプリケーションのビルド]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+
 
 <!-- Images -->
-[10]: ./media/iot-hub-getstarted-cloud-csharp/create-identity-csharp1.png
+[10]: ./media/iot-hub-process-d2c-cloud-csharp/create-identity-csharp1.png
 [12]: ./media/iot-hub-getstarted-cloud-csharp/create-identity-csharp3.png
 
 [20]: ./media/iot-hub-getstarted-cloud-csharp/create-storage1.png
@@ -322,4 +324,4 @@
 [31]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue3.png
 [32]: ./media/iot-hub-process-d2c-cloud-csharp/createqueue4.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

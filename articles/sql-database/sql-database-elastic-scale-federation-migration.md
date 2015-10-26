@@ -150,4 +150,4 @@ Federations 移行ユーティリティが提供する機能は次のとおり�
 [3]: ./media/sql-database-elastic-scale-federation-migration/migrate-3.png
  
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

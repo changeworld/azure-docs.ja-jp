@@ -181,4 +181,4 @@ Azure 管理ポータルでアプリケーションのシングル サインオ�
 [3]: ./media/active-directory-saas-access-panel-introduction/ic767168.png
 [4]: ./media/active-directory-saas-access-panel-introduction/ic767169.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

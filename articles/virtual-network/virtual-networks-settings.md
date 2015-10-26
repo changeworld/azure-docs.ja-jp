@@ -100,4 +100,4 @@ VNet の設定を表示および変更するには、Azure ポータルを使用
 
 [Virtual Network (VNet) の削除方法](../virtual-networks-delete-vnet)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

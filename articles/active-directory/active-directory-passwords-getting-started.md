@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="概要: Azure AD でのパスワード管理 | Microsoft Azure" 
-	description="自分のパスワードのリセットを可能にし、パスワード リセットの前提条件を学習するほか、パスワード ライトバックを有効化してオンプレミスの Active Directory パスワードを管理します。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="asteen" 
-	manager="kbrint" 
+<properties
+	pageTitle="概要: Azure AD でのパスワード管理 | Microsoft Azure"
+	description="自分のパスワードのリセットを可能にし、パスワード リセットの前提条件を学習するほか、パスワード ライトバックを有効化してオンプレミスの Active Directory パスワードを管理します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="kbrint"
 	editor="billmath"/>
 
-<tags 
-	ms.service="active-directory" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
 	ms.date="09/18/2015" 
 	ms.author="asteen"/>
 
@@ -50,13 +50,13 @@
 - Azure AD Premium または Basic にアップグレードする。詳細については、[Azure Active Directory のエディション](http://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
   >[AZURE.NOTE]セルフサービスのパスワード リセットを有効にするには、Azure AD Premium または Azure AD Basic にアップグレードする必要があります。詳細については、「Azure Active Directory のエディション」を参照してください。この情報には、Azure AD Premium または Basic にサインアップする方法、ライセンス プランをアクティブ化して Azure AD アクセスをアクティブ化する方法、および管理者とユーザーのアカウントにアクセス権を割り当てる方法の詳細が含まれます。
-  
+
 - AAD ディレクトリで、管理者アカウントとユーザー アカウントを少なくとも 1 つずつ作成する。
 - AAD Premium または Basic のライセンスを、作成済みの管理者およびユーザーのアカウントに割り当てる。
 
 ### 手順 1: パスワードのリセット ポリシーを構成する
 ユーザー パスワードのリセット ポリシーを構成するには、以下の手順を実行します。
- 
+
 1.	任意のブラウザーを開いて、[Azure 管理ポータル](https://manage.windowsazure.com)に移動します。
 2.	[Azure 管理ポータル](https://manage.windowsazure.com)の左側のナビゲーション バーで **[Active Directory] 拡張機能**を選択します。
 
@@ -134,7 +134,7 @@
 
     ![][014]
 
-5.	ユーザーが電話番号を確認した後は、[通話] ウォールをクリックするとスピナーが表示され、電話が鳴ります。ユーザーが電話を取ると、アカウントの確認のため **「\#」 を押すよう**指示するメッセージが再生されます。\# キーを押すと、ユーザーが最初のチャレンジをクリアしたことが自動的に確認され、2 番目の確認手順の UI に進みます。
+5.	ユーザーが電話番号を確認した後は、[通話] ウォールをクリックするとスピナーが表示され、電話が鳴ります。ユーザーが電話を取ると、アカウントの確認のため **「#」 を押すよう**指示するメッセージが再生されます。# キーを押すと、ユーザーが最初のチャレンジをクリアしたことが自動的に確認され、2 番目の確認手順の UI に進みます。
 
     ![][015]
 
@@ -179,16 +179,16 @@
 - 管理者アカウントと、この機能をテストするために使用できる Azure AD Premium ライセンスが付与されたテスト ユーザー アカウントが少なくとも 1 つずつある。詳細については、[Azure Active Directory のエディション](active-directory-editions.md)を参照してください。
 
   >[AZURE.NOTE]パスワード ライトバックの有効化に使用する管理者アカウントは、クラウドの管理者アカウント (Azure AD で作成された) であり、フェデレーション アカウント (オンプレミスの AD で作成され、Azure AD に同期された) ではありません。
-  
+
 - Windows Server 2008、Windows Server 2008 R2、Windows Server 2012、または Windows Server 2012 R2 を最新のサービス パックをインストールして実行している、1 つまたは複数のマルチフォレスト AD オンプレミスのデプロイを使用している。
 
   >[AZURE.NOTE]古いバージョンの Windows Server 2008 または 2008 R2 を実行している場合でもこの機能を使用できますが、クラウドでローカル AD パスワード ポリシーを適用するには、[KB 2386717 をダウンロードおよびインストール](https://support.microsoft.com/kb/2386717)する必要があります。
-  
+
 - Azure AD Connect ツールをインストールし、クラウドに同期するための AD 環境が準備されている。詳細については、[クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)を参照してください。
 - DirSync を使用している場合、パスワード ライトバックを有効にして使用できるようにするには、送信接続をブロックし、**TCP ポート 828 または 818** のブロックが解除されるように組織のファイアウォールが構成されているようにする必要があります。Azure AD Sync または Azure AD Connect を使用している場合は、**TCP 送信ポート 443** (場合によっては** TCP 9350-9354**) のみを開く必要があるため、この手順は必要ありません。
 
   >[AZURE.NOTE]Azure AD Sync ツールまたは DirSync ツールを使用している場合、優れたエクスペリエンスと、リリースされる新しい機能を利用できるように、Azure AD Connect の最新バージョンにアップグレードすることを強くお勧めします。
-  
+
 
 ### 手順 1: Azure AD Connect の最新バージョンをダウンロードする
 パスワード ライトバックは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0419.0911** 以降の Azure AD Sync ツールで使用できます。アカウントが自動的にロック解除されるパスワード ライトバックが使用できるのは、Azure AD Connect のリリース、またはバージョン番号が **1.0.0485.0222** 以降の Azure AD Sync ツールです。以前のバージョンを実行している場合は、続行する前に、少なくともこのバージョンにアップグレードしてください。[ここをクリックすると、Azure AD Connect の最新バージョンをダウンロードできます。](active-directory-aadconnect.md#download-azure-ad-connect)
@@ -242,7 +242,7 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 
 1.	インストールの完了後、ご使用の環境で不明な送信接続をブロックしている場合は、次の規則をファイアウォールに追加する必要があります。これらの変更を行った後に、AAD Connect のコンピューターを必ず再起動してください。
    - TCP ポート 443 経由の送信接続を許可する
-   - https://ssprsbprodncu-sb.accesscontrol.windows.net/への送信接続を許可する 
+   - https://ssprsbprodncu-sb.accesscontrol.windows.net/への送信接続を許可する
    - プロキシを使用している場合や、一般的な接続問題が発生した場合は、TCP ポート 9350-9534 の送信接続を許可する
 
 ### 手順 4: Active Directory の適切な権限を設定する
@@ -276,7 +276,7 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 
 ### 手順 5: ユーザーとして AD パスワードをリセットする
 これでパスワード ライトバックが有効になったので、その動作をテストできます。テストするには、アカウントがクラウド テナントと同期されているユーザーのパスワードをリセットします。
- 
+
 #### パスワード ライトバックの正常な動作を確認するには
 1.	[http://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com) に移動するか、組織の ID ログイン画面に移動し、[**アカウントにアクセスできない場合**] リンクをクリックします。
 
@@ -341,4 +341,4 @@ Azure AD Connect ツールでパスワード ライトバックを有効にし�
 [030]: ./media/active-directory-passwords-getting-started/030.jpg "Image_030.jpg"
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

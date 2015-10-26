@@ -68,7 +68,7 @@
 
 3.  **[アプリケーション URL の構成]** ページの **[ServiceNow サインイン URL]** ボックスに、"*https://<InstanceName>.servicenow.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-servicenow-tutorial/IC769497.png "アプリケーション URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-servicenow-tutorial/IC769497.png "アプリケーション URL の構成")
 
 4.  **[ServiceNow でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをローカルにコンピューターに保存して、**[次へ]** をクリックします。
 
@@ -214,4 +214,4 @@
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-<!-------HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

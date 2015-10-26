@@ -1,18 +1,18 @@
 <properties
-	pageTitle="C 用 Azure IoT デバイス SDK – IoTHubClient の詳細"
-	description="C 用 Azure IoT device SDK に含まれる IoTHubClient ライブラリの詳細"
+	pageTitle="C 用 Azure IoT デバイス SDK – IoTHubClient | Microsoft Azure"
+	description="C 用 Azure IoT device SDK に含まれている IoTHubClient ライブラリの使用について説明します"
 	services="iot-hub"
-	documentationCenter="na"
+	documentationCenter=""
 	authors="MichelBarnett"
 	manager="timlt"
 	editor=""/>
 
 <tags
      ms.service="iot-hub"
-     ms.devlang="na"
+     ms.devlang="cpp"
      ms.topic="article"
      ms.tgt_pltfrm="na"
-     ms.workload="tbd"
+     ms.workload="na"
      ms.date="09/29/2015"
      ms.author="michelb"/>
 
@@ -276,4 +276,4 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 この記事は、**C 用 Azure IoT デバイス SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。[次の記事](iot-hub-device-sdk-c-serializer.md)では、**serializer** ライブラリについて同様に詳細を紹介します。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -143,4 +143,4 @@ Logic App 定義の詳細については、[「Author Logic App definitions (Log
 [新しいロジック アプリを作成する]: app-service-logic-create-a-logic-app.md
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

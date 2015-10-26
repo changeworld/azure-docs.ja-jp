@@ -89,4 +89,4 @@ Application Insights を使用して、Service Fabric アプリをインスト�
 - [独自のカスタム イベントとメトリックを作成する方法を学習する](../app-insights-custom-events-metrics-api.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

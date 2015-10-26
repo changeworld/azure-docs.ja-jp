@@ -123,4 +123,4 @@ ADAL を使用してユーザーを認証できるようにするには、Azure 
  [Mobile Apps の使用]: app-service-mobile-dotnet-backend-ios-get-started-preview.md
  [Add authentication to your app (アプリケーションに認証を追加する)]: app-service-mobile-dotnet-backend-ios-get-started-users-preview.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

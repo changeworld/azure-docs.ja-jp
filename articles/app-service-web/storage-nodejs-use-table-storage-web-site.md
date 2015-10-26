@@ -641,4 +641,4 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [Create and deploy a Node.js application to an Azure Web Site]: web-sites-nodejs-develop-deploy-mac.md
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

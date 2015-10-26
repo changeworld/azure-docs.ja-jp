@@ -104,4 +104,4 @@ SQL Database 構成ブレードの動的データ マスク操作を選択する
 
 「[Azure SQL データベースの操作](https://msdn.microsoft.com/library/dn505719.aspx)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

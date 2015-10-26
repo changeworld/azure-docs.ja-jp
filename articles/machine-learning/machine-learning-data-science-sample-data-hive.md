@@ -2,10 +2,11 @@
 	pageTitle="Azure HDInsight Hive テーブル内のデータのサンプリング | Microsoft Azure"
 	description="Azure HDInsight Hive テーブルのデータのダウンサンプリング"
 	services="machine-learning,hdinsight"
+	solutions=""
 	documentationCenter=""
 	authors="hangzh-msft"
-	manager="paulettm"
-	editor="cgronlun"/>
+	manager="paulettm" 
+	editor="cgronlun"  />
 
 <tags
 	ms.service="machine-learning"
@@ -14,7 +15,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/01/2015"
-	ms.author="hangzh;bradsev"/>
+	ms.author="hangzh;bradsev" />
 
 # Azure HDInsight Hive テーブル内のデータのサンプリング
 
@@ -99,4 +100,4 @@ Hadoop クラスターのヘッド ノードで、Hadoop コマンド ライン 
 Hive で使用できるより高度なサンプリング方法については、「[LanguageManual Sampling (LanguageManual のサンプリング)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling)」をご覧ください。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -42,4 +42,4 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 * [Azure Automation の使用](http://go.microsoft.com/fwlink/?LinkId=390560) (Azure Automation のファースト ステップ ガイド)
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

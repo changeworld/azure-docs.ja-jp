@@ -121,4 +121,4 @@
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
   
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

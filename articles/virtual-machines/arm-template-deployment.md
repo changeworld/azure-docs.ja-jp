@@ -19,7 +19,8 @@
 
 # .NET ライブラリとテンプレートを使用した Azure リソースのデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
 
 リソース グループとテンプレートを使用すると、アプリケーションをサポートするすべてのリソースをまとめて管理できます。このチュートリアルでは、Azure リソース管理ライブラリで利用可能なクライアントの一部を使用する方法と、仮想マシン、仮想ネットワーク、ストレージ アカウントをデプロイするためのテンプレートを作成する方法を示します。
 
@@ -29,7 +30,7 @@
 
 - [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 - [Azure ストレージ アカウント](../storage-create-storage-account.md)
-- [Windows Management Framework 3.0](http://www.microsoft.com/ja-JP/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/ja-JP/download/details.aspx?id=40855)
+- [Windows Management Framework 3.0](http://www.microsoft.com/JA-JP/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/JA-JP/download/details.aspx?id=40855)
 - [Azure PowerShell](../powershell-install-configure.md)
 
 これらの手順を実行するには約 30 分かかります。
@@ -38,37 +39,29 @@
 
 Azure AD を使用して Azure リソース マネージャーへの要求を認証するには、アプリケーションを既定のディレクトリに追加する必要があります。アプリケーションを追加するには、次の手順に従います。
 
-1. Azure PowerShell コマンド プロンプトを開き、次のコマンドを実行します。
+1. Azure PowerShell コマンド プロンプトを開き、このコマンドを実行し、メッセージが表示されたら、サブスクリプションの資格情報を入力します。
 
-        Switch-AzureMode –Name AzureResourceManager
+	    Login-AzureRmAccount
 
-2. このチュートリアルに使用する Azure アカウントを設定します。このコマンドを実行し、メッセージが表示されたら、サブスクリプションの資格情報を入力します。
+2. 次のコマンド内の {password} を使用するパスワードに置き換え、このコマンドを実行してアプリケーションを作成します。
 
-	    Add-AzureAccount
+	    New-AzureRmADApplication -DisplayName "My AD Application 1" -HomePage "https://myapp1.com" -IdentifierUris "https://myapp1.com"  -Password "{password}"
 
-3. 次のコマンド内の {password} を使用するパスワードに置き換え、このコマンドを実行してアプリケーションを作成します。
+	>[AZURE.NOTE]アプリケーションが作成された後で、返されたアプリケーション ID をメモしてください。これは次の手順で必要になります。アプリケーション ID は、ポータルの Active Directory セクションにあるアプリケーションのクライアント ID フィールドでも確認できます。
 
-	    New-AzureADApplication -DisplayName "My AD Application 1" -HomePage "https://myapp1.com" -IdentifierUris "https://myapp1.com"  -Password "{password}"
+3. {application-id} を記録しておいた ID に置き換えてから、次のようにアプリケーションのサービス プリンシパルを作成します。
 
-4. 前の手順からの応答にある ApplicationId の値を記録します。この情報は後で必要になります。
+        New-AzureRmADServicePrincipal -ApplicationId {application-id}
 
-	![AD アプリケーションの作成](./media/arm-template-deployment/azureapplicationid.png)
+4. アプリケーションを使用するためのアクセス許可を設定します。
 
-	>[AZURE.NOTE]アプリケーション ID は、管理ポータルのアプリケーションのクライアント ID フィールドでも確認できます。
-
-5. {application-id} を記録しておいた ID に置き換えてから、次のようにアプリケーションのサービス プリンシパルを作成します。
-
-        New-AzureADServicePrincipal -ApplicationId {application-id}
-
-6. アプリケーションを使用するためのアクセス許可を設定します。
-
-	    New-AzureRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName "https://myapp1.com"
+	    New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName "https://myapp1.com"
 
 ## 手順 2: Visual Studio プロジェクト、テンプレート ファイル、パラメーター ファイルを作成する
 
 ###テンプレート ファイルを作成する
 
-Azure リソース マネージャー テンプレートによって、リソースや関連するデプロイメント パラメーターの JSON 記述を使用して、Azure リソースをまとめてデプロイし、管理することが可能になります。Visual Studio で、次の手順を実行します。
+Azure リソース マネージャー テンプレートによって、リソースや関連するデプロイ パラメーターの JSON 記述を使用して、Azure リソースをまとめてデプロイし、管理することが可能になります。Visual Studio で、次の手順を実行します。
 
 1. **[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします。
 
@@ -304,7 +297,7 @@ Azure リソース マネージャー テンプレートによって、リソー
           }
         }
 
-    >[AZURE.NOTE]イメージの vhd 名はイメージ ギャラリーで定期的に変更されるので、仮想マシンをデプロイするには現在のイメージ名を取得する必要があります。これを行うには、「[仮想マシンのイメージについて](https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-images/)」を参照し、{source-image-name} を、使用する vhd ファイルの名前に置き換えます。たとえば、"a699494373c04fc0bc8f2bb1389d6106\_\_Windows-Server-2012-R2-201412.01-en.us-127GB.vhd" などです。{subscription-id} を、サブスクリプションの ID に置き換えます。
+    >[AZURE.NOTE]イメージの vhd 名はイメージ ギャラリーで定期的に変更されるので、仮想マシンをデプロイするには現在のイメージ名を取得する必要があります。これを行うには、「[仮想マシンのイメージについて](https://azure.microsoft.com/JA-JP/documentation/articles/virtual-machines-images/)」を参照し、{source-image-name} を、使用する vhd ファイルの名前に置き換えます。たとえば、"a699494373c04fc0bc8f2bb1389d6106\_\_Windows-Server-2012-R2-201412.01-en.us-127GB.vhd" などです。{subscription-id} を、サブスクリプションの ID に置き換えます。
 
 
 4.	作成したパラメーター ファイルを保存します。
@@ -453,4 +446,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/arm-template-deployment/crpportal.png)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

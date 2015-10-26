@@ -10,7 +10,7 @@
 <tags
 	ms.service="active-directory"
 	ms.workload="identity"
-	ms.tgt_pltfrm="na"
+  ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="09/11/2015"
@@ -40,12 +40,12 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 
 完成したアプリは、このチュートリアルの終わりにも示しています。
 
-## 1. アプリの登録
-[apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、またはこちらの[詳細な手順](active-directory-v2-app-registration.md)に従います。以下を忘れずに行ってください。
+## 1\.アプリを登録します
+[apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
-- アプリ用の**モバイル** プラットフォームを追加します。
-- ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob` を使用する必要があります。
+- アプリ用の**モバイル** プラットフォームを追加します。
+- ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 ## 2. ADAL のインストールと構成
 マイクロソフトへのアプリの登録が完了したら、ADAL をインストールし、自分の ID 関連コードを記述できます。ADAL が v2.0 エンドポイントと通信できるようにするには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
@@ -53,17 +53,17 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 -    最初に、パッケージ マネージャー コンソールを使用して、ADAL を TodoListClient プロジェクトに追加します。
 
 ```
-PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoListClient -IncludePrerelease 
+PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoListClient -IncludePrerelease
 ```
 
 -	TodoListClient プロジェクトで `app.config` を開きます。アプリ登録ポータルで入力した値が反映されるように、`<appSettings>` セクションの要素の値を置き換えます。これらの値は、コードで ADAL を使用する際に常に参照されます。
     -	`ida:ClientId` は、ポータルからコピーしたアプリの**アプリケーション ID** です。
     -	`ida:RedirectUri` は、ポータルの**リダイレクト URI** です。
 - TodoList-Service プロジェクトで、プロジェクトのルートにある `web.config` を開きます。  
-    - `ida:Audience` 値をポータルからの同じ**アプリケーション ID** に置き換えます。
+    - `ida:Audience` 値をポータルから取得した**アプリケーション ID** に置き換えます。
 
 ## 3\.ADAL を使用してトークンを取得します
-ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、必要な操作は `authContext.AcquireToken(...)` を呼び出すことだけで、残りの処理は ADAL が実行してくれることです。
+ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、必要な操作は `authContext.AcquireToken(...)` を呼び出すことだけで、残りの処理は ADAL が実行することです。
 
 -	`TodoListClient` プロジェクトで、`MainWindow.xaml.cs` を開き、`OnInitialized(...)` メソッドを見つけます。最初の手順は、アプリの `AuthenticationContext` (ADAL のプライマリ クラス) を初期化することです。ここでは、ADAL が Azure AD と通信し、トークンをキャッシュする方法を通知するために必要な調整項目を ADAL に渡します。
 
@@ -78,7 +78,7 @@ protected override async void OnInitialized(EventArgs e)
 }
 ```
 
-- アプリの起動時に、ユーザーが既にアプリにサインインしているかどうかを確認する必要があります。ただし、まだサインイン UI は呼び出しません。これを行うには、ユーザーに [サインイン] をクリックさせます。また、`OnInitialized(...)` メソッドで次のコードを実行します:
+- アプリの起動時に、ユーザーが既にアプリにサインインしているかどうかを確認する必要があります。ただし、まだサインイン UI は呼び出しません。これを行うには、ユーザーに [サインイン] をクリックさせます。また、`OnInitialized(...)` メソッドで次のコードを実行します。
 
 ```C#
 // As the app starts, we want to check to see if the user is already signed in.
@@ -165,7 +165,7 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 }
 ```
 
-- ユーザーが正常にサインインすると、ADAL によりトークンが自動的に受信、キャッシュされ、ここでは確実に `GetTodoList()` メソッドを呼び出すことができます。ユーザーが行う必要があるのは、`GetTodoList()` メソッドの実装だけです。
+- ユーザーが正常にサインインすると、ADAL によりトークンが自動的に受信してキャッシュされ、`GetTodoList()` メソッドの呼び出しを実行できます。ユーザーのタスクを取得するために必要な操作は、`GetTodoList()` メソッドの実装だけです。
 
 ```C#
 private async void GetTodoList()
@@ -231,11 +231,11 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null) { /
 		...
 ```
 
-おめでとうございます。ユーザーを認証し、OAuth 2.0 を使用して安全に Web API を呼び出すことができる、.NET WPF アプリが動作するようになりました。両方のプロジェクトを実行し、個人用の Microsoft アカウントか職場または学校アカウントでサインインしてください。ユーザーの To Do リストにタスクを追加します。いったんサインアウトしてから、別のユーザーとして再度サインインし、ユーザーの To Do リストを表示します。アプリをいったん終了し、再実行します。ユーザーのセッションに影響がないことを確認してください。これは、アプリがトークンをローカル ファイルにキャッシュしているためです。
+ご利用ありがとうございます。 ユーザーを認証し、OAuth 2.0 を使用して安全に Web API を呼び出すことができる、.NET WPF アプリが動作するようになりました。両方のプロジェクトを実行し、個人用の Microsoft アカウントか職場または学校アカウントでサインインしてください。ユーザーの To Do リストにタスクを追加します。いったんサインアウトしてから、別のユーザーとして再度サインインし、ユーザーの To Do リストを表示します。アプリを閉じて、再び実行します。ユーザーのセッションに影響がないことを確認してください。これは、アプリがトークンをローカル ファイルにキャッシュしているためです。
 
-ADAL では、個人用アカウントと職場アカウントの両方を使用して、一般的な ID 機能をアプリに簡単に組み込むことができます。キャッシュ管理、OAuth プロトコルのサポート、ユーザーへのログイン UI の表示、期限の切れたトークンの更新など、面倒な作業はすべて自動的に実行されます。知っておく必要があるのは、`authContext.AcquireTokenAsync(...)` というただ 1 つの API 呼び出しだけです。
+ADAL では、個人用アカウントと職場アカウントの両方を使用して、一般的な ID 機能をアプリに簡単に組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`authContext.AcquireTokenAsync(...)` のみです。
 
-参考として、完成したサンプル (ユーザーの構成値は含まない) の [.zip ファイルをここに用意しています](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip)。または、GitHub から複製することもできます。
+参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git```
 
@@ -247,4 +247,4 @@ ADAL では、個人用アカウントと職場アカウントの両方を使用
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "adal" タグ >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

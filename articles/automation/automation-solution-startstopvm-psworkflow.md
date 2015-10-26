@@ -193,4 +193,4 @@ Runbook で使用する仮想マシンを取得する場合は、**Get-AzureVM**
 - [Azure Automation での子 Runbook](automation-child-runbooks.md) 
 - [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

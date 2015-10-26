@@ -115,7 +115,7 @@ HTTP POST 要求を発行して、次の要求ヘッダーを含む新しいデ�
         }
     }
 
-###Response
+###応答
 
 データ ソースが正常に作成された場合は、HTTP 201 Created 応答を受け取ります。
 
@@ -205,7 +205,7 @@ HTTP POST 要求を次のヘッダーと共に使用して、Azure Search サー
         "schedule" : { "interval" : "PT1H", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-###Response
+###応答
 
 インデクサーが正常に作成された場合、HTTP 201 Created 応答を受け取ります。
 
@@ -216,7 +216,7 @@ HTTP POST 要求を次のヘッダーと共に使用して、Azure Search サー
     POST https://[Search service name].search.windows.net/indexers/[indexer name]/run?api-version=[api-version]
     api-key: [Search service admin key]
 
-###Response
+###応答
 
 インデクサーが正常に呼び出された場合、HTTP 202 Accepted 応答を受け取ります。
 
@@ -227,7 +227,7 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
     GET https://[Search service name].search.windows.net/indexers/[indexer name]/status?api-version=[api-version]
     api-key: [Search service admin key]
 
-###Response
+###応答
 
 インデクサーの全体的な正常性状態、インデクサーの最後の呼び出し、および (存在する場合は) インデクサー呼び出しの最近の履歴に関する情報が含まれる応答の本文と共に、HTTP 200 OK 応答が表示されます。
 
@@ -270,4 +270,4 @@ HTTP GET 要求を発行して、インデクサーの現在の状態と実行�
  - Azure Search の詳細については、[ここ](/services/search/)をクリックしてください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -42,4 +42,4 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 * [PowerShell で Service Bus を管理する](service-bus-powershell-how-to-provision.md) (記事)
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -54,4 +54,4 @@ Emulator Express を使用する前に、いくつかの制限事項に注意す
 
 [Cloud Services のデバッグ](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

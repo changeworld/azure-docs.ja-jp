@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="09/28/2015"
+   ms.date="10/08/2015"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure Active Directory 認証を使用して SQL Database に接続する 
@@ -151,39 +151,42 @@ Azure Active Directory 認証は、最新の SQL Database V12 でサポートさ
 
 ### PowerShell を使用して Azure SQL Server の Azure AD 管理者をプロビジョニングする 
 
-続行するには、バージョン 0.9.8以降の Azure PowerShell をインストールして構成する必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md#Install)」を参照してください。
+> [AZURE.IMPORTANT]Azure PowerShell 1.0 プレビューのリリースから、Switch-AzureMode コマンドレットは不要になりました。また、Azure ResourceManger モジュールに含まれていたコマンドレットの名前が変更されました。この記事の例では、新しい PowerShell 1.0 プレビューの命名規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページをご覧ください。
+
+
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールして実行する必要があります。Switch-AzureMode が削除されたため、最新の Azure PowerShell をダウンロードし、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行してインストールする必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 Azure AD 管理者をプロビジョニングするには、次のような Azure PowerShell コマンドを実行する必要があります。
 
 - Add-AzureAccount
 - Select-AzureSubscription
-- Switch-AzureMode -Name AzureResourceManager
+
 
 Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
 
 | コマンドレット名 | 説明 |
 |---------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| Set-AzureSqlServerActiveDirectoryAdministrator | Azure SQL Server の Azure Active Directory 管理者をプロビジョニングします(現在のサブスクリプションから実行する必要があります)。 |
-| Remove-AzureSqlServerActiveDirectoryAdministrator | Azure SQL Server の Azure Active Directory 管理者を削除します。 |
-| Get-AzureSqlServerActiveDirectoryAdministrator | 現在 Azure SQL Server 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
+| [Set-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt603544.aspx) | Azure SQL Server の Azure Active Directory 管理者をプロビジョニングします(現在のサブスクリプションから実行する必要があります)。 |
+| [Remove-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt619340.aspx) | Azure SQL Server の Azure Active Directory 管理者を削除します。 |
+| [Get-AzureRMSqlServerActiveDirectoryAdministrator](https://msdn.microsoft.com/library/azure/mt603737.aspx) | 現在 Azure SQL Server 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
 
-これらの各コマンドの詳細を確認するには、``get-help Set-AzureSqlServerActiveDirectoryAdministrator`` のように PowerShell コマンドの get-help を使用します。
+これらの各コマンドの詳細を確認するには、``get-help Set-AzureRMSqlServerActiveDirectoryAdministrator`` のように PowerShell コマンドの get-help を使用します。
 
 次のスクリプトでは、**Group-23** という名前のリソース グループ内にあるサーバー **demo\_server** に対して、**DBA\_Group** という名前の Azure AD 管理者グループ (オブジェクト ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) をプロビジョニングします。
 
 ```
-Set-AzureSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" 
+Set-AzureRMSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" 
 –ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
-**DisplayName** 入力パラメーターには、Azure AD の表示名とユーザー プリンシパル名のいずれかを使用できます。たとえば、``DisplayName="John Smith"`` や ``DisplayName="johns@contoso.com"`` のようになります。Azure AD グループの場合は、Azure AD の表示名のみがサポートされています。
+**DisplayName** 入力パラメーターには、Azure AD の表示名またはユーザー プリンシパル名を使用できます。たとえば、``DisplayName="John Smith"`` や ``DisplayName="johns@contoso.com"`` のようになります。Azure AD グループの場合は、Azure AD の表示名のみがサポートされています。
 
-> [AZURE.NOTE]Azure PowerShell コマンド ```Set-AzureSqlServerActiveDirectoryAdministrator``` によって、サポートされていないユーザーの Azure AD 管理者をプロビジョニングできなくなることはありません。サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません(サポートされている管理者の一覧については、上記の「**Azure AD の機能と制限事項**」を参照してください)。
+> [AZURE.NOTE]Azure PowerShell コマンド ```Set-AzureRMSqlServerActiveDirectoryAdministrator``` によって、サポートされていないユーザーに対して Azure AD 管理者をプロビジョニングできなくなることはありません。サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません(サポートされている管理者の一覧については、上記の「**Azure AD の機能と制限事項**」を参照してください)。
 
 次の例では、オプションとして **ObjectID** を使用します。
 
 ```
-Set-AzureSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" 
+Set-AzureRMSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" 
 –ServerName "demo_server" -DisplayName "DBA_Group" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353f"
 ```
 
@@ -192,11 +195,11 @@ Set-AzureSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23"
 次の例では、Azure SQL Server の現在の Azure AD 管理者に関する情報が返されます。
 
 ```
-Get-AzureSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" –ServerName "demo_server" | Format-List
+Get-AzureRMSqlServerActiveDirectoryAdministrator –ResourceGroupName "Group-23" –ServerName "demo_server" | Format-List
 ```
 
 次の例では、Azure AD 管理者が削除されます。```
-Remove-AzureSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" –ServerName "demo_server"
+Remove-AzureRMSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" –ServerName "demo_server"
 ```
 
 ## 5\.クライアント コンピューターを構成する
@@ -211,7 +214,7 @@ Azure AD の ID を使用して Azure SQL Database に接続するアプリケ�
 - [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) または [SQL Server Data Tools for Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) をインストールすると、.NET Framework 4.6 の要件が満たされます。 
 - SSMS の場合、x86 バージョンの **ADALSQL.DLL** がインストールされます。(現時点では、SSMS は、インストール後に再起動が必要であることを示すメッセージを表示しません。これは、将来の CTP で修正される予定です。)
 - SSDT の場合、amd64 バージョンの **ADALSQL.DLL** がインストールされます。SSDT では、Azure AD 認証が部分的にしかサポートされていません。
-- 「[Visual Studio ダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs)」にある最新の Visual Studio をインストールすると、.NET Framework 4.6 の要件は満たされますが、必要な amd64 バージョンの **ADALSQL.DLL** はインストールされません。
+- 「[Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs)」にある最新の Visual Studio をインストールすると、.NET Framework 4.6 の要件は満たされますが、必要な amd64 バージョンの **ADALSQL.DLL** はインストールされません。
 
 ## 6\.Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成する 
 
@@ -264,7 +267,7 @@ Azure AD またはフェデレーション ドメインのグループを表す�
 	CREATE USER [Nurses] FROM EXTERNAL PROVIDER;
 
 
-Azure Active Directory の ID に基づく包含データベース ユーザーの作成の詳細については、「[CREATE USER (TRANSACT-SQL)](http://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
+Azure Active Directory の ID に基づく包含データベース ユーザーの作成の詳細については、「[CREATE USER (Transact-SQL)](http://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
 
 データベース ユーザーを作成すると、そのユーザーは **CONNECT** アクセス許可が付与されるため、**PUBLIC** ロールのメンバーとしてそのデータベースに接続できます。最初にこのユーザーが利用できるアクセス許可は、**PUBLIC** ロールに付与されているアクセス許可か、またはそのユーザーが属している Windows グループに付与されているアクセス許可のみです。Azure AD ベースの包含データベース ユーザーをプロビジョニングすると、他の種類のユーザーにアクセス許可を付与する場合と同様に、そのユーザーに追加のアクセス許可を付与できます。通常は、データベース ロールにアクセス許可を付与し、そのロールにユーザーを追加します。詳細については、[データベース エンジンのアクセス許可の基本知識](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)に関するページを参照してください。特殊な SQL Database ロールの詳細については、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」を参照してください。管理対象ドメインにインポートされるフェデレーション ドメイン ユーザーは、管理対象ドメインの ID を使用する必要があります。
 
@@ -322,4 +325,4 @@ Azure AD 認証に関連した具体的なコード例については、MSDN の
 [9]: ./media/sql-database-aad-authentication/9ad-settings.png
 [10]: ./media/sql-database-aad-authentication/10choose-admin.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

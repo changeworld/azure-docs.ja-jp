@@ -272,4 +272,4 @@ Here is the entire flow for a native  app; each request is detailed in the secti
 - [アプリケーションを作成し](active-directory-b2c-app-registration.md)、アプリケーション ID と redirect\_uri を取得します。アプリに**ネイティブ クライアント**を追加します。
 - [ポリシーを作成し](active-directory-b2c-reference-policies.md)、ポリシー名を取得します。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

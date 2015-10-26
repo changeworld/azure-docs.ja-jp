@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/23/2015" 
+	ms.date="10/11/2015" 
 	ms.author="awills"/>
 
 # Application Insights での作業
@@ -32,6 +32,11 @@
 アプリがエラー コードを返すことによって負荷の兆候を示す場合もあります。**[失敗した要求]** でアラートを設定します。
 
 **[サーバーの例外]** でアラートを設定する場合は、データを表示するために[追加セットアップ](app-insights-asp-net-exceptions.md)が必要になる場合があります。
+
+### 例外での電子メール
+
+1. [例外の監視を設定します](app-insights-asp-net-exceptions.md)
+2. 例外数メトリックに[アラートを設定](app-insights-alert.md)します
 
 
 ### アプリのイベントでの電子メール
@@ -71,10 +76,29 @@
 * 電子メールは状態が変化したときにのみ送信されます。これは、高い値と低い値の両方のメトリックを送信する必要がある理由です。 
 * アラートを評価するため、前の期間に受け取った値の平均が計算されます。これはメトリックを受信するたびに行われるので、設定した期間より頻繁に電子メールが送信される可能性があります。
 * 電子メールは "警告" と "正常" の両方で送信されるので、1 回限りのイベントを 2 つの状態として考え直すことができます。たとえば、"ジョブ完了" イベントの代わりに、"ジョブ進行中" という状態を考え、その場合はジョブの開始時と終了時に電子メールを受け取ります。
- 
-## アプリケーション バージョン フィルター
 
-新しいバージョンのアプリを発行するときは、異なるバージョンのテレメトリを区別する必要があります。
+### アラートの自動設定
+
+[Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](app-insights-alerts/#set-alerts-by-using-powershell)
+
+## PowerShell を使用した Application Insights の管理
+
+* [新しいリソースの作成に関するページ](app-insights-powershell-script-create-resource.md)
+* [新しいアラートの作成に関するページ](app-insights-alerts/#set-alerts-by-using-powershell)
+
+## アプリケーションのバージョンとスタンプ
+
+### 開発、テスト、および運用環境の結果を区分する
+
+* さまざまな環境に、個別の iKey を設定します。
+* さまざまなスタンプ (開発、テスト、運用) のタグに、個別のプロパティ値を持つテレメトリを設定します。
+
+[詳細情報](app-insights-separate-resources.md)
+ 
+
+### ビルド番号でのフィルター処理
+
+新しいバージョンのアプリを発行するときは、異なるビルドのテレメトリを区別する必要があります。
 
 アプリケーション バージョン プロパティを設定することで、[検索](app-insights-diagnostic-search.md)および[メトリック エクスプローラー](app-insights-metrics-explorer.md)の結果をフィルター処理できます。
 
@@ -89,7 +113,7 @@
 
 * その行を[テレメトリ初期化子](app-insights-api-custom-events-metrics.md#telemetry-initializers)にラップして、すべての TelemetryClient インスタンスが一貫して設定されるようにします。
 
-* [ASP.NET] `BuildInfo.config`でバージョンを設定します。Web モジュールは BuildLabel ノードからバージョンを取得します。このファイルをプロジェクトに追加し、ソリューション エクスプローラーで [常にコピーする] プロパティを設定します。
+* [ASP.NET] `BuildInfo.config` でバージョンを設定します。Web モジュールは BuildLabel ノードからバージョンを取得します。このファイルをプロジェクトに追加し、ソリューション エクスプローラーで [常にコピーする] プロパティを設定します。
 
     ```XML
 
@@ -119,4 +143,85 @@
 
     MSBuild がバージョン番号を生成できるようにするには、AssemblyReference.cs で `1.0.*` のようなバージョンを設定します。
 
-<!---HONumber=Oct15_HO1-->
+## バックエンド サーバーの監視
+
+[基本的な API の使用に関するページ](app-insights-windows-desktop.md)
+
+
+## データの視覚化
+
+#### 複数のアプリケーションのメトリックを使用したダッシュボード
+
+* [Metric エクスプローラー](app-insights-metrics-explorer.md)でグラフをカスタマイズし、お気に入りとして保存します。Azure ダッシュボードにピン留めします。
+* 
+
+#### 他のソースや Application Insights からのデータのあるダッシュボード
+
+* [テレメトリを Power BI にエクスポートします](app-insights-export-power-bi.md)。 
+
+または
+
+* SharePoint をダッシュボードとして使用して、SharePoint Web パーツにデータを表示します。[連続エクスポートと Stream Analytics を使用して SQL にエクスポートします](app-insights-code-sample-export-sql-stream-analytics.md)。PowerView を使用してデータベースを確認し、PowerView の SharePoint Web パーツを作成します。
+
+
+### 複雑なフィルター処理、セグメント化、結合
+
+* [連続エクスポートと Stream Analytics を使用して SQL にエクスポートします](app-insights-code-sample-export-sql-stream-analytics.md)。PowerView を使用してデータベースを確認します。
+
+<a name="search-specific-users"></a>
+### 匿名ユーザーまたは認証済みユーザーのフィルター処理
+
+ユーザーがサインインしたら、[認証されたユーザー ID](app-insights-api-custom-events-metrics.md#authenticated-users) を設定できます。(自動的には設定されません。)
+
+次に以下のことを行えます。
+
+* 特定のユーザー ID で検索
+
+![](./media/app-insights-how-do-i/110-search.png)
+
+* 匿名ユーザーまたは認証済みユーザーに対するメトリックのフィルター処理
+
+![](./media/app-insights-how-do-i/115-metrics.png)
+
+## 特定のユーザーとその使用状況を一覧表示する
+
+[特定のユーザーのみを検索](#search-specific-users)するために、[認証されたユーザー ID](app-insights-api-custom-events-metrics/#authenticated-users) を設定できます。
+
+ユーザーが表示するページやログインの頻度についてユーザーを一覧表示するには、2 つのオプションがあります。
+
+* [認証されたユーザー ID を設定](app-insights-api-custom-events-metrics/#authenticated-users)し、[データベースにエクスポート](app-insights-code-sample-export-sql-stream-analytics.md)し、適切なツールを使用してユーザー データを分析します。
+* ユーザー数が少ない場合は、メトリック値またはイベント名として関心のあるデータを使用し、ユーザー ID をプロパティとして設定して、カスタム イベントまたはメトリックを送信します。ページ ビューを分析するには、標準の JavaScript trackPageView 呼び出しを置き換えます。サーバー側のテレメトリを分析するには、テレメトリ初期化子を使用して、ユーザー ID をすべてのサーバー テレメトリに追加します。次に、ユーザー ID を基に、メトリックや検索結果をフィルター処理および細分化します。
+
+
+## アプリから Application Insights へのトラフィックの削減
+
+* [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で不要なモジュール (パフォーマンス カウンターなど) を無効にします。
+* [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) を使用する場合は、結果を送信する前にメトリック値のバッチの集計を計算します。これに対して提供される TrackMetric() のオーバーロードを考慮します。
+
+詳細については、[価格とクォータ](app-insights-pricing.md)に関するページを参照してください。
+
+## システム パフォーマンス カウンターの表示
+
+メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。事前定義された**サーバー**というブレードに、それらのいくつかが表示されます。
+
+![Application Insights リソースを開いて、[サーバー] をクリック](./media/app-insights-how-do-i/121-servers.png)
+
+### パフォーマンス カウンターのデータが表示されない場合
+
+* 自身のコンピューターまたは VM の**IIS サーバー**の場合。[Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)します。 
+* **Azure の Web サイト**の場合。パフォーマンス カウンターにまだ対応していません。Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
+* **Unix サーバー**の場合。[collectd をインストールします](app-insights-java-collectd.md)。
+
+### 表示するパフォーマンス カウンターの数を増やすには
+
+* 最初に、[新しいグラフを追加](app-insights-metrics-explorer.md)し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
+* 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](app-insights-web-monitor-performance.md#system-performance-counters)します。
+
+
+ 
+
+### Azure Web ロール
+
+現在、以下に関するパフォーマンス カウンターを監視していません。
+
+<!---HONumber=Oct15_HO3-->

@@ -9,7 +9,7 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 
 	ZRS は LRS よりも高い持続性を実現しますが、持続性を最大限に高めるために、以下で説明する geo 冗長ストレージを使用することをお勧めします。
 
-	> [AZURE.NOTE]ZRS の使用は、現在、ブロック BLOB に限られます。
+	> [AZURE.NOTE]ZRS は現在、ブロック BLOB のみで使用でき、2014-02-14 以降のバージョンでのみサポートされています。
 	> 
 	> ストレージ アカウントを作成し、ZRS を選択すると、他の種類のレプリケーションを使用するように変換することはできません (その逆の変換もできません)。
 
@@ -22,8 +22,8 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
  
 ストレージ レプリケーション オプションの詳細については、[Azure Storage のレプリケーション](../articles/storage/storage-redundancy.md)に関するページを参照してください。
 
-ストレージ アカウント レプリケーションの料金情報については、[ストレージの料金の詳細](http://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
+ストレージ アカウント レプリケーションの価格情報については、[Storage の価格の詳細](http://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
 
 Azure Storage の持続性に関するアーキテクチャの詳細については、[Azure Storage SOSP ペーパー](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)のページを参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

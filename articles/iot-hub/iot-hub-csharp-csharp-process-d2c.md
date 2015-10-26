@@ -4,7 +4,7 @@
 	services="iot-hub"
 	documentationCenter=".net"
 	authors="fsautomata"
-	manager="kevinmil"
+	manager="timlt"
 	editor=""/>
 
 <tags
@@ -12,15 +12,15 @@
      ms.devlang="csharp"
      ms.topic="article"
      ms.tgt_pltfrm="na"
-     ms.workload="tbd"
+     ms.workload="na"
      ms.date="09/29/2015"
      ms.author="elioda"/>
 
-# IoT Hub のデバイスからクラウドへのメッセージの処理
+# チュートリアル: IoT Hub のデバイスからクラウドへのメッセージを処理する方法
 
 ## はじめに
 
-Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バック エンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。前のチュートリアル (「[IoT Hub の概要]」と「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]」) では、IoT Hub の基本的なデバイスとクラウド間のメッセージング機能と、デバイスとクラウド コンポーネントからのアクセス方法を示しました。
+Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。前のチュートリアル (「[IoT Hub の概要]」と「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]」) では、IoT Hub の基本的なデバイスとクラウド間のメッセージング機能と、デバイスとクラウド コンポーネントからのアクセス方法を示しました。
 
 このチュートリアルでは、「[IoT Hub の概要]」に示されているコードに基づいて、デバイスからクラウドへのメッセージを処理するための 2 つのパターンを示します。
 
@@ -41,7 +41,7 @@ IoT Hub はデバイスからクラウドへのメッセージを受信するた
 * **ProcessDeviceToCloudMessages**。[EventProcessorHost] を使用して、Azure BLOB に*データ ポイント* メッセージを確実に格納し、*対話型*メッセージを Service Bus キューに転送します。
 * **ProcessD2cInteractiveMessages**。キューからメッセージをデキューします。
 
-> [AZURE.NOTE]IoT Hub には、Azure IoT デバイス SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、「[Azure IoT デベロッパー センター]」を参照してください。
+> [AZURE.NOTE]IoT Hub には、Azure IoT デバイス SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター]を参照してください。
 
 > [AZURE.NOTE]このチュートリアルの内容は、Storm のような [Hadoop] プロジェクトなど、Event Hubs と互換性のあるメッセージを使用する他の方法に直接適用できます。詳細については、[IoT Hub のガイダンスの Event Hubs との互換性]に関する記述を参照してください。
 
@@ -49,7 +49,7 @@ IoT Hub はデバイスからクラウドへのメッセージを受信するた
 
 + Microsoft Visual Studio 2015、
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target=”\_blank”) を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2FJA-JP%2Fdevelop%2Fiot%2Ftutorials%2Fprocess-d2c%2F target="\_blank") を参照してください。
 
 また、[Azure Storage] と [Azure Service Bus] について、ある程度の知識があることを前提とします。
 
@@ -73,7 +73,7 @@ IoT Hub はデバイスからクラウドへのメッセージを受信するた
 
 ## 次のステップ
 
-このチュートリアルでは、[EventProcessorHost] を使用して、*データ ポイント*と*対話型*のデバイスからクラウドへのメッセージを確実に処理する方法を学習しました。似たようなメッセージ処理ロジックを以下を使用して実装することができます。
+このチュートリアルでは、[EventProcessorHost] を使用して、*データ ポイント*と*対話型*のデバイスからクラウドへのメッセージを確実に処理する方法を学習しました。同じようなメッセージ処理ロジックを、次のようにして実装することができます。
 
 - 「[デバイスからのファイルのアップロード]」では、デバイスからのファイル アップロードを容易にするためにクラウドからデバイスへのメッセージを活用したパターンについて説明しています。
 
@@ -91,19 +91,19 @@ IoT Hub に関するその他の情報:
 
 <!-- Links -->
 
-[Azure BLOB]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-dotnet-how-to-use-blobs/
-[Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/services/data-factory/
-[Hadoop]: https://azure.microsoft.com/ja-JP/documentation/services/hdinsight/
-[Service Bus Queue]: https://azure.microsoft.com/ja-JP/documentation/articles/service-bus-dotnet-how-to-use-queues/
-[Service Bus キュー]: https://azure.microsoft.com/ja-JP/documentation/articles/service-bus-dotnet-how-to-use-queues/
+[Azure BLOB]: https://azure.microsoft.com/JA-JP/documentation/articles/storage-dotnet-how-to-use-blobs/
+[Azure Data Factory]: https://azure.microsoft.com/JA-JP/documentation/services/data-factory/
+[Hadoop]: https://azure.microsoft.com/JA-JP/documentation/services/hdinsight/
+[Service Bus Queue]: https://azure.microsoft.com/JA-JP/documentation/articles/service-bus-dotnet-how-to-use-queues/
+[Service Bus キュー]: https://azure.microsoft.com/JA-JP/documentation/articles/service-bus-dotnet-how-to-use-queues/
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 
-[Transient Fault Handling]: https://msdn.microsoft.com/ja-JP/library/hh680901(v=pandp.50).aspx
+[Transient Fault Handling]: https://msdn.microsoft.com/JA-JP/library/hh680901(v=pandp.50).aspx
 
 [IoT Hub のガイダンスの Event Hubs との互換性]: iot-hub-guidance.md#eventhubcompatible
 
-[Azure Storage]: https://azure.microsoft.com/ja-JP/documentation/services/storage/
-[Azure Service Bus]: https://azure.microsoft.com/ja-JP/documentation/services/service-bus/
+[Azure Storage]: https://azure.microsoft.com/JA-JP/documentation/services/storage/
+[Azure Service Bus]: https://azure.microsoft.com/JA-JP/documentation/services/service-bus/
 
 [Azure Preview Portal]: https://portal.azure.com/
 
@@ -117,10 +117,6 @@ IoT Hub に関するその他の情報:
 [IoT Hub Supported Devices]: iot-hub-supported-devices.md
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
-[Azure IoT デベロッパー センター]: http://www.azure.com/iotdev
+[Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 
-
-
- 
-
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

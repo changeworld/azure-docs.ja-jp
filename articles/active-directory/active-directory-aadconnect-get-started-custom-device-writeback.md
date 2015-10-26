@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="Azure AD Connect でのデバイスの書き戻しの有効化" 
-	description="Azure AD Connect を使用するデバイスの書き戻しを有効にする方法について詳しく説明します" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="msStevenPo" 
+<properties
+	pageTitle="Azure AD Connect でのデバイスの書き戻しの有効化 | Microsoft Azure"
+	description="Azure AD Connect を使用するデバイスの書き戻しを有効にする方法について詳しく説明します"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="StevenPo"
 	editor="curtand"/>
 
-<tags 
+<tags
 	ms.service="active-directory"  
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
 	ms.date="09/15/2015"
 	ms.author="billmath"/>
 
@@ -62,7 +62,7 @@ AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利�
 パラメーター:
 
 
-- DomainName: デバイス オブジェクトが作成される Active Directory ドメイン。注: 特定の Active Directory フォレストのデバイスはすべて、1 つのドメインに作成されます。 
+- DomainName: デバイス オブジェクトが作成される Active Directory ドメイン。注: 特定の Active Directory フォレストのデバイスはすべて、1 つのドメインに作成されます。
 
 
 - AdConnectorAccount: ディレクトリ内のオブジェクトを管理するために Azure AD Connect によって使用される Active Directory アカウント。
@@ -83,17 +83,18 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
 
 ## デバイスが Active Directory に同期されていることを確認する
 デバイスの書き戻しは正常に動作するようになっています。デバイス オブジェクトを AD に書き戻すには、最大 3 時間かかる可能性があります。デバイスが正しく同期されていることを確認するには、同期規則が完了した後で次のようにします。
- 
-1.	Active Directory 管理センターを起動します。 
+
+1.	Active Directory 管理センターを起動します。
 2.	フェデレーションされているドメイン内の RegisteredDevices を展開します。 ![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback5.png)
-3.	現在登録されているデバイスが一覧表示されます。 
+3.	現在登録されているデバイスが一覧表示されます。
 
 ![カスタム インストール](./media/active-directory-aadconnect-get-started-custom-device-writeback/devicewriteback6.png)
 
-## 追加情報 
-
-
+## 追加情報
 - [条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md)
-- [Setting up On-premises Conditional Access using Azure Active Directory Device Registration](https://msdn.microsoft.com/library/azure/dn788908.aspx)
+- [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](https://msdn.microsoft.com/library/azure/dn788908.aspx)
 
-<!---HONumber=Sept15_HO3-->
+## 次のステップ
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+
+<!---HONumber=Oct15_HO3-->

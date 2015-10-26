@@ -120,4 +120,4 @@ SAP は、世界中の多くの組織に使用されているトップクラス�
 
 SAP NetWeaver 用に Azure Site Recovery をデプロイする方法の詳細なガイダンスについては、[リンク先のドキュメント](http://aka.ms/asr-sap)を参照してください。
 
-<!----HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

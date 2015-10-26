@@ -19,7 +19,8 @@
 
 # 基幹業務アプリケーション ワークロード フェーズ 5: 可用性グループを作成してアプリケーション データベースを追加する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
 
 高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこの最終フェーズでは、新しい SQL Server AlwaysOn 可用性グループを作成し、アプリケーションのデータベースを追加します。
 
@@ -127,4 +128,4 @@
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

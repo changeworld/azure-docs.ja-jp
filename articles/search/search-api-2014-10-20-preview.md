@@ -1,6 +1,6 @@
-<properties pageTitle="Azure Search サービス REST API バージョン 2014-10-20-Preview" description="Azure Search サービス REST API バージョン 2014-10-20-Preview" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor=""/>
+<properties pageTitle="Azure Search サービス REST API バージョン 2014-10-20-Preview" description="Azure Search サービス REST API バージョン 2014-10-20-Preview" services="search" solutions="" documentationCenter="" authors="HeidiSteen" manager="mblythe" editor="" />
 
-<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="08/25/2015" ms.author="heidist"/>
+<tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="08/25/2015" ms.author="heidist" />
 
 #Azure Search サービス REST API バージョン 2014-10-20-Preview
 
@@ -58,7 +58,7 @@ Azure Search サービスの認証には、Search サービスの URL と `api-k
 
 サービスごとに、2 個の管理者キーと最大 50 個のクエリ キーを使用できます。一方のキーをロールオーバーする必要がある場合に、2 個の管理者キーがあるので役立ちます。
 
-アクセス制御は、Azure プレビュー ポータルで提供されるロール ベースのアクセス制御 (RBAC) によってサービス管理に限定されます。ロールは、サービス管理のアクセス レベルの設定に使用されます。たとえば、管理者キーの表示は所有者ロールと共同作成者ロールに制限されるのに対し、サービスの状態はすべてのロールのメンバーが表示できます。
+Access Control は、Azure プレビュー ポータルで提供されるロール ベースのアクセス制御 (RBAC) によってサービス管理に限定されます。ロールは、サービス管理のアクセス レベルの設定に使用されます。たとえば、管理者キーの表示は所有者ロールと共同作成者ロールに制限されるのに対し、サービスの状態はすべてのロールのメンバーが表示できます。
 
 インデックスの管理、インデックスの設定、クエリなど、Search サービスのエンドポイントに対して実行されるデータ操作は、`api-keys` を使用して排他的にアクセスされます。RBAC は、インデックスまたはドキュメント関連の操作には適用されません。Azure Search での `api-keys` または RBAC の詳細については、「[Microsoft Azure で検索サービスを管理する](search-manage.md)」を参照してください。
 
@@ -1455,4 +1455,4 @@ Suggestions 要求はターゲット ドキュメントの検索候補を示す�
 
     GET /indexes/hotels/docs/suggest?search=lux&$top=5&suggesterName=sg&api-version=2014-10-20-Preview
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

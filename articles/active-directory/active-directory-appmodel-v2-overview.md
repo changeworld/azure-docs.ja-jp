@@ -30,13 +30,13 @@ v2.0 のアプリ モデルはプレビュー期間中です。プレビュー�
 <!-- TODO: Get approval on how it looks  -->
 
 ## 使用の開始
-v2.0 のアプリ モデルを使用して、ご自分のアプリケーションを稼働する方法は 2 つあります。[OAuth 2.0](active-directory-v2-protocols.md#oauth2-authorization-code-flow) または [Open ID Connect](active-directory-v2-protocols.md#openid-connect-sign-in-flow) を使用して、プロトコル メッセージを直接送信することができます。または、Microsoft のライブラリを使用することもできます。次の中からお好みのプラットフォームを選択して、作業を開始してください。
+v2.0 のアプリ モデルを使用して、ご自分のアプリケーションを稼働する方法は 2 つあります。1 つは [OAuth 2.0](active-directory-v2-protocols.md#oauth2-authorization-code-flow) または [Open ID Connect](active-directory-v2-protocols.md#openid-connect-sign-in-flow) を使用して、プロトコル メッセージを直接送信する方法です。もう 1 つは、Microsoft のライブラリを使用する方法です。次の中からお好みのプラットフォームを選択して、作業を開始してください。
 <!-- TODO: Finalize this table  -->
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-v2-quickstart-table.md)]
 
 ## 新機能
-今後の v2.0 アプリ モデルのパブリック プレビューに変更については、このページを頻繁に確認してください。すべての更新については、@AzureAD からツイートもしていきます。
+今後の v2.0 アプリ モデルのパブリック プレビューの変更については、このページを頻繁に確認してください。すべての更新については、@AzureAD からツイートもしていきます。
 
 - [アプリ モデル v2.0 を使用して構築できるアプリケーションの種類](active-directory-v2-flows.md)について詳しく学習します。
 - Azure Active Directory を使い慣れた開発者の方は、[プロトコルの更新および v2.0 アプリ モデルで異なる点](active-directory-v2-compare.md)を確認してください。
@@ -48,7 +48,7 @@ v2.0 のアプリ モデルを使用して、ご自分のアプリケーショ�
 - [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) または [adal](http://stackoverflow.com/questions/tagged/adal) タグを使用したスタック オーバーフローの対処法についてのヒントが得られます。
 - [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) を使用して、プレビューに関する感想をお寄せください。皆様からのご意見をお待ちしております。 識別しやすいように、投稿のタイトルに "AppModelv2:" という言葉を入れてください。
 - [アプリ モデル v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)
-- [アプリ モデル v2.0 トークンの参照](active-directory-v2-tokens.md)
+- [アプリ モデル v2.0 トークンのリファレンス](active-directory-v2-tokens.md)
 - [Office 365 の REST API リファレンス](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)
 - [v2 のエンドポイントでのスコープと同意](active-directory-v2-scopes.md)
 
@@ -57,4 +57,4 @@ v2.0 のアプリ モデルを使用して、ご自分のアプリケーショ�
 - [v2 Endpoint FAQs](active-directory-v2-faq.md)
 -->
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

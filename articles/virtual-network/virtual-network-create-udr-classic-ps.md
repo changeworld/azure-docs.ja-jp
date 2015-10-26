@@ -119,4 +119,4 @@ FW1 VM で IP 転送を有効にするには、次の手順に従います。
 		Get-AzureVM -Name FW1 -ServiceName TestRGFW `
 			| Set-AzureIPForwarding -Enable
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

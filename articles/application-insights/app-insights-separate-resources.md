@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="開発、テスト、および実稼働用に Application Insights リソースを分ける"
-	description="開発のさまざまな段階で、アプリケーションのパフォーマンスと使用状況を監視します。"
-	services="application-insights"
-	documentationCenter=""
-	authors="alancameronwills"
+	pageTitle="開発、テスト、および実稼働用に Application Insights リソースを分ける" 
+	description="開発のさまざまな段階で、アプリケーションのパフォーマンスと使用状況を監視します。" 
+	services="application-insights" 
+    documentationCenter=""
+	authors="alancameronwills" 
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/02/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/02/2015" 
 	ms.author="awills"/>
 
 # 開発、テスト、および実稼働用に Application Insights リソースを分ける
@@ -53,7 +53,7 @@
 
 ## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
-通常、SDK が ApplicationInsights.config から iKey を取得します。代わりにコードで設定すると、変更をより簡単に実行できます。
+通常、SDK が ApplicationInsights.config から iKey を取得します。Instead, make it more easy to change by setting it in your code.
 
 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
@@ -94,8 +94,8 @@ iKey は、アプリの Web ページや、[クイック スタート ブレー�
 [api]: app-insights-api-custom-events-metrics.md
 [diagnostic]: app-insights-diagnostic-search.md
 [metrics]: app-insights-metrics-explorer.md
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

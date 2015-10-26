@@ -38,4 +38,4 @@ Service Fabric には、Service Fabric のエンティティのための機能�
 - [トラブルシューティングのためのシステム正常性レポートの使用](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Service Fabric のカスタム正常性レポートの追加](service-fabric-report-health.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

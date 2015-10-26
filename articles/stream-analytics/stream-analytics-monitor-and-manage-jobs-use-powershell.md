@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="10/05/2015" 
+	ms.date="10/06/2015" 
 	ms.author="jeffstok"/>
 
 
@@ -25,24 +25,23 @@
 
 ## Stream Analytics 用に Azure PowerShell コマンドレットを実行するための前提条件
 
-1.	Azure PowerShell のインストールおよび構成。
+ - サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」を参照してください。  
 
-	Azure PowerShell をインストールするには、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールおよび構成方法)][powershell-install]」の手順に従います。
 
-	Azure Active Directory 方式を使用して、Azure サブスクリプションに接続するには、次のようにします。
-
+ 		# Log in to your Azure account
 		Add-AzureAccount
 
-	有効になっている Azure Stream Analytics サービスで Azure サブスクリプションを選択するには、次の方法を使用します。
+		# Select the Azure subscription you want to use to create the resource group
+		Select-AzureSubscription -SubscriptionName <subscription name>
+ 
+		# Create an Azure resource group	
+			# If Stream Analytics has not been registered to the subscription, remove remark symbol below (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
+			#Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 
-		Select-AzureSubscription
+		# Create an Azure resource group
+		New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
+		
 
-
-2.	Azure モードを構成します。
-
-	Azure PowerShell をインストールしたら、[Switch-AzureMode][msdn-switch-azuremode] コマンドレットを実行して、Stream Analytics コマンドレットにアクセスするように適切な Azure モードを設定します。
-
-		Switch-AzureMode AzureResourceManager
 
 > [AZURE.NOTE]プログラムで作成された Stream Analytics ジョブは、既定では監視は有効になっていません。Azure ポータルで、ジョブの [監視] ページに移動し、[有効にする] ボタンをクリックして、手動で監視を有効にすることができます。または「[Programatically monitor Stream Analytics jobs](stream-analytics-monitor-jobs.md)」にある手順に従って、プログラムで有効にすることもできます。
 
@@ -259,7 +258,7 @@ Microsoft Azure で実行中の Stream Analytics ジョブを非同期的に停�
 この PowerShell コマンドは、StreamingJob 内の出力 Output の接続状態をテストします。
 
 ## サポートを受ける
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/JA-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
 
 
 ## 次のステップ
@@ -288,4 +287,4 @@ Microsoft Azure で実行中の Stream Analytics ジョブを非同期的に停�
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

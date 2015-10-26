@@ -24,7 +24,8 @@
 
 [Azure Premium Storage](../storage-premium-storage-preview-portal.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。IaaS [仮想マシン](http://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの使用について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
 この記事では、SQL Server を実行する仮想マシンから Premium Storage の使用への移行に関する計画とガイダンスについて説明します。これには、Azure インフラストラクチャ (ネットワーク、ストレージ) とゲストの Windows VM の手順が含まれます。[付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の例では、PowerShell を使用して、強化されたローカル SSD ストレージを利用するように大きな VM を移動する方法の詳細な移行を示します。
 
@@ -48,7 +49,7 @@ Premium Storage を使用するにはいくつかの前提条件があります�
 
 Premium Storage を使用するには、DS シリーズ仮想マシン (VM) を使用する必要があります。クラウド サービスで DS シリーズ マシンを使用していない場合、既存の VM を削除し、アタッチされたディスクを保持し、新しいクラウド サービスを作成してから、DS* ロール サイズとして VM を再作成する必要があります。仮想マシンのサイズの詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines-size-specs.md)」を参照してください。
 
-### Cloud Services
+### クラウド サービス
 
 Premium Storage で DS* VM を使用できるのは、新しいクラウド サービスに作成されるときだけです。Azure で SQL Server AlwaysOn を使用する場合、AlwaysOn Listener はクラウド サービスと関連付けられた Azure の内部または外部ロード バランサーの IP アドレスを参照します。この記事では、このシナリオで可用性を維持しながら移行する方法について説明します。
 
@@ -148,7 +149,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 ストレージのパフォーマンスは、指定されている DS* VM のサイズと VHD のサイズによって決まります。VM により、アタッチできる VHD の数と、サポートする最大帯域幅 (MB/秒) は異なります。具体的な帯域幅については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](virtual-machines-size-specs.md)」を参照してください。
 
-ディスク サイズを大きくすると IOPS が向上します。移行パスについて考えるときはこれを検討する必要があります。詳細については、[IOPS とディスク タイプの表](../storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-JPing-premium-storage)を参照してください。
+ディスク サイズを大きくすると IOPS が向上します。移行パスについて考えるときはこれを検討する必要があります。詳細については、[IOPS とディスク タイプの表](../storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whJA-JPing-premium-storage)を参照してください。
 
 最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。たとえば、Standard_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
 
@@ -478,7 +479,7 @@ AlwaysOn の高可用性が期待どおりに機能することを確認する�
 
 ##### 短所
 
-- 移行中に、一時的に高可用性と災害復旧が失われます。
+- 移行中に、一時的に高可用性と障害復旧が失われます。
 - これは 1:1 の移行であるため、VHD の数をサポートする最小限の VM サイズを使用する必要があり、VM をダウンサイズできない可能性があります。
 - このシナリオで使用する Azure **Start-AzureStorageBlobCopy** コマンドレットは非同期です。コピーの完了に対する SLA はありません。コピーに要する時間は一定ではなく、キューでの待機に依存し、それはまた転送するデータの量に依存します。別のリージョンの Premium Storage をサポートする別の Azure データ センターへの転送の場合、コピー時間が増加します。ノードが 2 つだけの場合、コピーがテストより長くかかる場合に可能な移行について考慮します。これには次のアイデアが含まれます。
 	- 合意されたダウンタイムでの移行の前に、HA に第 3 の SQL Server ノードを一時的に追加します。
@@ -679,7 +680,7 @@ SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポ�
 
     Set-ClusterQuorum -NodeMajority  
 
-クラスター クォーラムの管理と構成の詳細については、「[Configure and Manage the Quorum in a Windows Server 2012 Failover Cluster (Windows Server 2012 フェールオーバー クラスターでのクォーラムの構成と管理)](https://technet.microsoft.com/ja-jp/library/jj612870.aspx)」を参照してください。
+クラスター クォーラムの管理と構成の詳細については、「[Configure and Manage the Quorum in a Windows Server 2012 Failover Cluster (Windows Server 2012 フェールオーバー クラスターでのクォーラムの構成と管理)](https://technet.microsoft.com/JA-JP/library/jj612870.aspx)」を参照してください。
 
 #### 手順 6. 既存のエンドポイントと ACL を抽出する
     #GET Endpoint info
@@ -1148,4 +1149,4 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [25]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_15.png
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

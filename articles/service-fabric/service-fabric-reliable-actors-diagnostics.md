@@ -155,4 +155,4 @@ EventSource イベントの収集または表示に役立つツールとテク�
 |ActorActivated|5|情報|0x1|アクターがアクティブ化されました。|
 |ActorDeactivated|6|情報|0x1|アクターが非アクティブ化されました。|
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

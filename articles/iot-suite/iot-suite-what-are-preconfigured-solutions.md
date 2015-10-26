@@ -1,10 +1,10 @@
 <properties
- pageTitle="Azure IoT の構成済みソリューションの説明 | Microsoft Azure"
+ pageTitle="Azure IoT の構成済みソリューション | Microsoft Azure"
  description="Azure IoT の構成済みソリューションとそのアーキテクチャ (追加リソースのリンクを含む) の説明。"
  services=""
- documentationCenter=".net"
+ documentationCenter=""
  authors="aguilaaj"
- manager="kevinmil"
+ manager="timlt"
  editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
- ms.workload="tbd"
+ ms.workload="na"
  ms.date="09/29/2015"
  ms.author="araguila"/>
 
@@ -48,21 +48,21 @@ Azure に構成済みソリューションをデプロイして実行するだ�
 
 ### デバイス
 
-リモート監視の構成済みソリューションが事前プロビジョニングされているデバイスは、温度と湿度の遠隔測定データを送信する冷却器のソフトウェア シミュレーションです。このデバイスは、IoT ハブを介してソリューション ポータルから送信された一連のコマンドに応答することもできます。シミュレーターに既に実装されているコマンドは Ping Device、Start Telemetry、Stop Telemetry、Change Set Point Temp、Diagnostic Telemetry、および Change Device です。
+リモート監視の構成済みソリューションが事前プロビジョニングされているデバイスは、温度と湿度のテレメトリ データを送信する冷却器のソフトウェア シミュレーションです。このデバイスは、IoT Hub を介してソリューション ポータルから送信された一連のコマンドに応答することもできます。シミュレーターに既に実装されているコマンドは Ping Device、Start Telemetry、Stop Telemetry、Change Set Point Temp、Diagnostic Telemetry、および Change Device です。
 
 この構成済みソリューションの冷却器は、一般的な IoT ソリューション アーキテクチャの **デバイスおよびデータ ソース**に相当します。
 
-### IoT ハブ
+### IoT Hub
 
-IoT ハブは、1 つのエンドポイントで冷却器から遠隔測定データを受信し、デバイスが PingDevice コマンドなどのコマンドを取得できるデバイス固有のエンドポイントを管理します。
+IoT Hub は、1 つのエンドポイントで冷却器からテレメトリ データを受信し、デバイスが PingDevice コマンドなどのコマンドを取得できるデバイス固有のエンドポイントを管理します。
 
-IoT ハブはコンシューマー グループのエンドポイントから受け取る遠隔測定データを公開します。
+IoT Hub はコンシューマー グループのエンドポイントから受け取るテレメトリ データを公開します。
 
-この構成済みソリューションの IoT ハブ インスタンスは、一般的な IoT ソリューション アーキテクチャの **IoT バックエンド アプリケーション**に相当します。
+この構成済みソリューションの IoT Hub インスタンスは、一般的な IoT ソリューション アーキテクチャの **IoT バックエンド アプリケーション**に相当します。
 
 ### Azure Stream Analytics
 
-構成済みのソリューションは、[Azure Stream Analytics][] ジョブを使用して、冷却器からのイベントのストリームをフィルター処理します。あるジョブが、冷蔵用の Azure ストレージ blob にすべての遠隔測定データを送信します。2 番目のジョブは、コマンド応答メッセージとデバイス状態更新メッセージのイベント ストリームをフィルター処理し、これらの特定のメッセージを Azure イベント ハブのエンドポイントに送信します。3 番目のジョブは、トリガーされたアラームをフィルター処理し、そのアラームをソリューション ポータルのダッシュ ボード ビューのアラーム履歴テーブルに表示します。
+構成済みのソリューションは、[Azure Stream Analytics][] ジョブを使用して、冷却器からのイベントのストリームをフィルター処理します。あるジョブが、冷蔵用の Azure ストレージ blob にすべてのテレメトリ データを送信します。2 番目のジョブは、コマンド応答メッセージとデバイス状態更新メッセージのイベント ストリームをフィルター処理し、これらの特定のメッセージを Azure イベント ハブのエンドポイントに送信します。3 番目のジョブは、トリガーされたアラームをフィルター処理し、そのアラームをソリューション ポータルのダッシュボード ビューのアラーム履歴テーブルに表示します。
 
 
 ### イベント プロセッサ
@@ -73,13 +73,13 @@ Web ジョブで実行されているイベント プロセッサのインスタ
 
 ソリューション ポータルは Web ベースの UI であり、次のことが可能です。
 
-- ダッシュ ボードにテレメトリとアラームの履歴を表示します。
+- ダッシュボードにテレメトリとアラームの履歴を表示します。
 - 新しいデバイスをプロビジョニングします。
 - デバイスを管理し、監視します。
 - 特定のデバイスにコマンドを送信します。
 - ルールとアクションを管理します。
 
-> [AZURE.NOTE]ソリューション ポータルのデバイス ビューは DocumentDB データベースの詳細なデバイス状態情報のストアと同期した IoT ハブ デバイス ID レジストリも保持します。
+> [AZURE.NOTE]ソリューション ポータルのデバイス ビューは DocumentDB データベースの詳細なデバイス状態情報のストアと同期した IoT Hub デバイス ID レジストリも保持します。
 
 ## 次のステップ
 
@@ -91,4 +91,4 @@ IoT の構成済みソリューションの詳細については、次のリソ�
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [Azure Stream Analytics]: https://azure.microsoft.com/services/stream-analytics/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

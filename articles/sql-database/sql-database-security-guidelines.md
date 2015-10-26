@@ -111,4 +111,4 @@ Azure SQL Database アプリケーションのセキュリティの脅威に対�
 
 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

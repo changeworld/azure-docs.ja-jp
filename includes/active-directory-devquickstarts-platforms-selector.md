@@ -6,4 +6,4 @@
 - [Android](../articles/app-insights-android.md)
 - [Other](../articles/app-insights-platforms.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

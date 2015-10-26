@@ -96,4 +96,4 @@ cd
 [StreamingLogsScreenshot]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
 [ConsoleScreenshot]: ./media/web-sites-streaming-logs-and-console/console.png
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -29,4 +29,4 @@
 [Azure Active Directory の詳細を確認する](http://azure.microsoft.com/services/active-directory/)
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

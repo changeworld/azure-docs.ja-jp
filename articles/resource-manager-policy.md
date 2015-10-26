@@ -115,7 +115,7 @@ Azure リソース マネージャーで、カスタム ポリシーを使用し
       "if" : {
         "not" : {
           "field" : "location",
-          "in" : ["north europe" , "west europe"]
+          "in" : ["northeurope" , "westeurope"]
         }
       },
       "then" : {
@@ -213,6 +213,26 @@ Azure リソース マネージャーで、カスタム ポリシーを使用し
 
 ポリシー定義は、前述の例のいずれかとして定義できます。api-version には、*2015-10-01-preview* を使用します。例と詳細については、[ポリシー定義用 REST API](https://msdn.microsoft.com/library/azure/mt588471.aspx) のページを参照してください。
 
+### PowerShell を使用したポリシー定義の作成
+
+以下に示されているように、New-AzureRmPolicyDefinition コマンドレットを使用して新しいポリシー定義を作成できます。以下の例では、リソースを北ヨーロッパと西ヨーロッパに限定できるポリシーを作成します。
+
+    $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation onlyin certain regions" -Policy '{	"if" : {
+    	    			    "not" : {
+    	      			    	"field" : "location",
+    	      			    		"in" : ["northeurope" , "westeurope"]
+    	    			    	}
+    	    		          },
+    	      		    		"then" : {
+    	    			    		"effect" : "deny"
+    	      			    		}
+    	    		    	}'    		
+
+実行の出力は後でポリシーを割り当てるときに使用できるように、$policy オブジェクトに保存されます。ポリシー パラメーターの場合、以下に示されているように、ポリシー インラインを指定するのではなく、ポリシーが含まれている .json ファイルへのパスを提供することもできます。
+
+    New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain 	regions" -Policy "path-to-policy-json-on-disk"
+
+
 ## ポリシーの適用
 
 ### REST API を使用したポリシーの割り当て
@@ -238,6 +258,22 @@ Azure リソース マネージャーで、カスタム ポリシーを使用し
       "name":"VMPolicyAssignment"
     }
 
-例と詳細については、[ポリシー割り当用 REST API](https://msdn.microsoft.com/library/azure/mt588466.aspx) のページを参照してください。
+例と詳細については、[ポリシー割り当て用 REST API](https://msdn.microsoft.com/library/azure/mt588466.aspx) のページをご覧ください。
 
-<!---HONumber=Oct15_HO2-->
+### PowerShell を使用したポリシーの割り当て
+
+以下に示されているように、New-AzureRmPolicyAssignment コマンドレットを使用して、上記で作成したポリシーを PowerShell を介して目的のスコープに適用できます。
+
+    New-AzureRmPolicyAssignment -Name regionPolicyAssignment -PolicyDefinition $policy -Scope    /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
+        
+ここで、$policy は上記のように New-AzureRmPolicyDefinition コマンドレットを実行した結果として返されたポリシー オブジェクトです。ここでのスコープは、指定するリソース グループの名前です。
+
+上記のポリシー割り当てを削除するには、次のようにします。
+
+    Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
+
+Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-AzureRmPolicyDefinition コマンドレットをそれぞれ使用して、ポリシー定義を取得、変更、または削除できます。
+
+同様に、Get-AzureRmPolicyAssignment、Set-AzureRmPolicyAssignment、および Remove-AzureRmPolicyAssignment コマンドレットをそれぞれ使用して、ポリシーの割り当てを取得、変更、または削除することもできます。
+
+<!---HONumber=Oct15_HO3-->

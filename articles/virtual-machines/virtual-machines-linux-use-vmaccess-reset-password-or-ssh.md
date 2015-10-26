@@ -17,11 +17,12 @@
 	ms.date="08/28/2015"
 	ms.author="cynthn"/>
 
-# Linux Virtual Machines のパスワードまたは SSH をリセットする方法 #
+# Linux 仮想マシンのパスワードまたは SSH をリセットする方法 #
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
-パスワードを忘れた、Secure Shell (SSH) キーが正しくない、または SSH の構成に問題があるために Linux 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccessforLinux 拡張機能を使用してパスワード、SSH キーをリセットするか、SSH の構成の問題を解決します。この記事は、**クラシック** デプロイメント モデルを使用して作成された仮想マシンを対象としています。
+
+パスワードを忘れた、Secure Shell (SSH) キーが正しくない、または SSH の構成に問題があるために Linux 仮想マシンに接続できない場合は、Azure プレビュー ポータルまたは VMAccessforLinux 拡張機能を使用してパスワード、SSH キーをリセットするか、SSH の構成の問題を解決します。この記事は、**クラシック** デプロイ モデルを使用して作成された仮想マシンを対象としています。
 
 ## Azure プレビュー ポータル
 
@@ -130,7 +131,7 @@ SSH の構成が望ましい状態でない場合は、VM にアクセスでき�
 
 ### <a name="deletecli"></a>ユーザーの削除
 
-仮想マシンにログインせずに直接ユーザー アカウントを削除するには、このスクリプトを使用できます。
+VM にログインせずに直接ユーザー アカウントを削除するには、このスクリプトを使用できます。
 
 手順 1. プレースホルダーの値を置き換えて、次の内容を含む PrivateConf.json という名前のファイルを作成します。
 
@@ -265,4 +266,4 @@ VMAccess 拡張機能の状態を表示するには、次のコマンドを実�
 [Azure VM 拡張機能とその機能]: http://msdn.microsoft.com/library/azure/dn606311.aspx
 [RDP または SSH を使用した Azure 仮想マシンへの接続]: http://msdn.microsoft.com/library/azure/dn535788.aspx
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

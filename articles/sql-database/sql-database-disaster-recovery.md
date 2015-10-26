@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="SQL Database の災害復旧"
-	description="Azure SQL Database の geo レプリケーションと地理リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="elfisher"
-	manager="jeffreyg"
-	editor="monicar"/>
+   pageTitle="SQL Database の災害復旧" 
+   description="Azure SQL Database の geo レプリケーションと地理リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。" 
+   services="sql-database" 
+   documentationCenter="" 
+   authors="elfisher" 
+   manager="jeffreyg" 
+   editor="monicar"/>
 
 <tags
    ms.service="sql-database"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-management"
-	ms.date="07/14/2015"
-	ms.author="elfish"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-management" 
+   ms.date="07/14/2015"
+   ms.author="elfish"/>
 
 # Azure SQL Database を障害から回復する
 
@@ -103,4 +103,4 @@ REST を使用して、プログラムでデータベースの復旧を実行し
 データベースの復旧後に、「[Finalize a Recovered Database (復旧データベースの最終処理)](sql-database-recovered-finalize.md)」ガイドに従って、復旧したデータベースを構成することができます。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

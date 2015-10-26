@@ -56,7 +56,7 @@ HDInsight クラスターを使用するには、Azure ストレージ アカウ
 
 3. 新しいリソース グループを作成します。
 
-	New-AzureResourceGroup -name <AzureResourceGroupName> -Location <AzureDataCente> #例: "West US"
+	New-AzureResourceGroup -name <AzureResourceGroupName> -Location <AzureDataCente> # 例: "West US"
 
 	[AZURE.INCLUDE [データ センターの一覧](../../includes/hdinsight-pricing-data-centers-clusters.md)]
 
@@ -343,4 +343,4 @@ Hive の使用法の詳細については、「[HDInsight での Hive の使用]
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

@@ -155,4 +155,4 @@ Standard キャッシュには可用性について 99.9% の SLA がある一�
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

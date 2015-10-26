@@ -66,4 +66,4 @@ Service Fabric アプリケーションのアップグレード プロセスの�
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

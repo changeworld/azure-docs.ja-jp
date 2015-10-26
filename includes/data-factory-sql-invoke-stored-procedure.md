@@ -60,4 +60,4 @@
 
 ストアド プロシージャ機能は[テーブル値パラメーター](https://msdn.microsoft.com/library/bb675163.aspx)を利用しています。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

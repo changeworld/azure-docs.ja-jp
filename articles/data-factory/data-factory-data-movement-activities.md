@@ -13,11 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/29/2015" 
+	ms.date="10/12/2015" 
 	ms.author="spelluru"/>
 
 # データ移動アクティビティ
 Data Factory には、以下に示すさまざまなデータ ストア間の[コピー アクティビティ](#copyactivity)によるデータ移動をサポートする[グローバルに利用可能なサービス](#global)があります。また、Data Factory には、Data Management Gateway を使用して[オンプレミスの場所とクラウドの間でデータを安全に移動する](#moveonpremtocloud)ための組み込みサポートもあります。
+
+コピー アクティビティの使用のクイック チュートリアルについては、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する](data-factory-get-started.md)」を参照してください。このチュートリアルでは、コピー アクティビティを使用して、Azure BLOB ストレージから Azure SQL データベースにデータをコピーします。次のセクションは、コピー アクティビティでサポートされているすべてのソースとシンクの一覧です。
+
 
 ## コピー アクティビティでサポートされるデータ ストア
 コピー アクティビティは、**ソース** データ ストアから**シンク** データ ストアにデータをコピーします。Data Factory は、以下のデータ ストアおよびソースとシンクの組み合わせをサポートします。データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
@@ -26,7 +29,7 @@ Data Factory には、以下に示すさまざまなデータ ストア間の[�
 | ------ | ---- |
 | [Azure BLOB](data-factory-azure-blob-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB､オンプレミスのファイル システム |
 | [Azure テーブル](data-factory-azure-table-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
-| [Azure SQL Dtabase](data-factory-azure-sql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
+| [Azure SQL Database](data-factory-azure-sql-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
 | [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server、Azure DocumentDB |
 | [Azure DocumentDB](data-factory-azure-documentdb-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse |
 | [IaaS 上の SQL Server](data-factory-sqlserver-connector.md) | Azure BLOB、Azure テーブル、Azure SQL Database、Azure SQL Data Warehouse、オンプレミスの SQL Server、IaaS 上の SQL Server |
@@ -98,4 +101,4 @@ Data Gateway には次の機能が備わっています。
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-data-movement-activities.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

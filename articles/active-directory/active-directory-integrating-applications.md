@@ -351,4 +351,4 @@ ConsentReturnUrl にエンコードされた URL の一部として、追加の�
 
 - [Active Directory 開発者ガイド](active-directory-developer's guide.md) を参照する
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

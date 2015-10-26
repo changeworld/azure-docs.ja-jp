@@ -41,7 +41,7 @@ SQL Data Warehouse インスタンスを作成するときに、何らかのサ�
 
 2. 売上の棒グラフを作成するには、[SalesAmount] 列をクリックすると、自動的に作成されます。[CustomerIncome] グラフを [AggregateSales] の左にある [Axis] フィールドにドラッグすると、次元が追加され、顧客の収入ブラケット別の売上が表示されます。
 
-3. 最後に、売上のタイムラインを作成する場合、必要な操作は、[SalesAmount]、[OrderDate]、および \[折れ線グラフ\] ([視覚エフェクト] の 2 行目の最初のアイコン) のクリックのみです。
+3. 最後に、売上のタイムラインを作成する場合、必要な操作は、[SalesAmount]、[OrderDate]、および [折れ線グラフ] ([視覚エフェクト] の 2 行目の最初のアイコン) のクリックのみです。
 
 左上にある [保存] をクリックし、視覚エフェクトをレポートとして保存することで、進行状況をいつでも保存できます。
 
@@ -78,21 +78,21 @@ WHERE 句を使用して、ある日付以前の注文をフィルター処理�
 <!--Image references-->
 
 <!--Article references-->
-[移行]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-migrate/
-[開発]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-develop/
-[ロード]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-load/
-[接続とクエリ]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-get-started-connect-query/
-[コードの移行]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-migrate-code/
-[手動でサンプル データを読み込む]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
-[手動でサンプルを読み込む]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
+[移行]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-migrate/
+[開発]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-develop/
+[ロード]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-load/
+[接続とクエリ]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-get-started-connect-query/
+[コードの移行]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-migrate-code/
+[手動でサンプル データを読み込む]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
+[手動でサンプルを読み込む]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
 [Azure ポータル]: https://portal.azure.com
 [PowerBI]: http://www.powerbi.com
-[SQL Data Warehouse に接続]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-integrate-power-bi/
+[SQL Data Warehouse に接続]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-integrate-power-bi/
 
 <!--MSDN references-->
-[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-JP/download/details.aspx?id=36433
+[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-jp/download/details.aspx?id=36433
 
 <!--Other Web references-->
 [Sample Data Scripts]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksPDW2012.zip
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

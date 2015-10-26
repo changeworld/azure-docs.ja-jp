@@ -65,7 +65,7 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777679.png "シングル サインオンの構成")
 
-3.  **[アプリケーション URL の構成]** ページの **[Jitbit Helpdesk サインイン URL]** ボックスに、"*https://<tenant-name>.Jitbit.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Jitbit Helpdesk サインイン URL]** ボックスに、"*https://\<tenant-name>.Jitbit.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
     ![アプリケーション URL の構成](./media/active-directory-saas-jitbit-helpdesk-tutorial/IC777528.png "アプリケーション URL の構成")
 
@@ -145,4 +145,4 @@ Azure AD ユーザーが Jitbit Helpdesk にログインできるようにする
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

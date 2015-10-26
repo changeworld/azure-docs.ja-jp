@@ -23,4 +23,4 @@
 [AZURE.INCLUDE [mobile-services-content-not-ready](../../includes/mobile-services-content-not-ready.md)]
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

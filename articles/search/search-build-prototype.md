@@ -133,4 +133,4 @@ Azure テーブル ストレージなど、JSON をネイティブに使用す�
 [1]: ./media/search-build-prototype/azsearch-datafiles.png
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure コンテンツ配信ネットワーク (CDN) の POP の場所"
-	description="このトピックでは、Azure コンテンツ配信ネットワーク (CDN) の POP の場所の一覧を示します。"
-	services="cdn"
-	documentationCenter=""
-	authors="Juliako"
-	manager="dwrede"
+	pageTitle="Azure コンテンツ配信ネットワーク (CDN) の POP の場所" 
+	description="このトピックでは、Azure コンテンツ配信ネットワーク (CDN) の POP の場所の一覧を示します。" 
+	services="cdn" 
+	documentationCenter="" 
+	authors="Juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="cdn"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="ne"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="cdn" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="ne" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="juliako"/>
 
 
@@ -71,4 +71,4 @@
 - メルボルン
 - シドニー 
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

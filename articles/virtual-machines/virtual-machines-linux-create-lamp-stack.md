@@ -21,7 +21,8 @@
 
 "LAMP" スタックはオープン ソースのソフトウェアのグループであり、通常はまとめてインストールすることで、サーバーが動的な Web サイトや Web アプリケーションをホストできるようになります。この用語は、Apache Web サーバーを使用した Linux オペレーティング システムを表す頭字語です。サイト データは MySQL データベースに格納され、動的なコンテンツは PHP が処理します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 このガイドでは、Linux イメージにインストールした LAMP スタックを取得して、Microsoft Azure にデプロイします。
 
@@ -455,4 +456,4 @@ LAMP スタックを正しく設定したら、既存の Web アプリケーシ�
 [17]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-17.png
 [18]: ./media/virtual-machines-linux-create-lamp-stack/virtual-machines-linux-create-lamp-stack-18.jpg
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

@@ -19,7 +19,7 @@
 
 *Application Insights はプレビュー段階です。*
 
-これは、[Visual Studio Application Insights](app-insights-get-started.md) の使い方を示すコード サンプルのコンパイルです。
+これは、[Visual Studio Application Insights](app-insights-overview.md) の使い方を示すコード サンプルのコンパイルです。
 
 ## SDK ラボ
 
@@ -37,7 +37,7 @@
 * [Power BI へのエクスポート](app-insights-export-power-bi.md) 
 * [worker ロールを使用してエクスポートされたデータを解析する](app-insights-code-sample-export-telemetry-sql-database.md)
 * [Stream Analytics を使用して SQL にエクスポートする](app-insights-code-sample-export-sql-stream-analytics.md)
-* [Microsoft CRM のテレメトリの有効化](app-insights-sample-mscrm.md)
+* [Microsoft Dynamics CRM のテレメトリの有効化](app-insights-sample-mscrm.md)
 
 
 ## タスクの自動化
@@ -53,4 +53,4 @@
 
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

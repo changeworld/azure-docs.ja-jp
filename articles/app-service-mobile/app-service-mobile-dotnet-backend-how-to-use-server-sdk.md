@@ -77,17 +77,17 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
 
 - [Microsoft.Azure.Mobile.Server.Quickstart] Mobile Apps の基本的なセットアップをサポートします。構成に追加するには、初期化中に **UseDefaultConfiguration** 拡張機能メソッドを呼び出します。この拡張機能には、Notifications、Authentication、Entity、Tables、Crossdomain、および Home パッケージが含まれています。これは、Azure ポータル からダウンロードするクイックスタート サーバー プロジェクトに相当します。
 
-- [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) Web サイトのルートにシンプルなホーム ページを追加します。構成に追加するには、**AddMobileAppHomeController** 拡張機能メソッドを呼び出します。
+- [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) Web サイトのルートに、*このモバイル アプリが実行される既定のページ*を実装します。構成に追加するには、**AddMobileAppHomeController** 拡張メソッドを呼び出します。
 
-- [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) データ処理のためのクラスが含まれており、データ パイプラインを設定します。構成に追加するには、**AddTables** 拡張機能メソッドを呼び出します。
+- [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) データ処理のためのクラスが含まれており、データ パイプラインを設定します。構成に追加するには、**AddTables** 拡張メソッドを呼び出します。
 
-- [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) Entity Framework で SQL Database のデータにアクセスできるようにします。構成に追加するには、**AddTablesWithEntityFramework** 拡張機能メソッドを呼び出します。
+- [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) Entity Framework で SQL Database のデータにアクセスできるようにします。構成に追加するには、**AddTablesWithEntityFramework** 拡張メソッドを呼び出します。
 
-- [Microsoft.Azure.Mobile.Server.Authentication] 認証を有効化し、トークン検証用の OWIN ミドルウェアを設定します。構成に追加するには、**AddAppServiceAuthentication** 拡張機能メソッドと **IAppBuilder**.**UseMobileAppAuthentication** 拡張機能メソッドを呼び出します。
+- [Microsoft.Azure.Mobile.Server.Authentication] 認証を有効にし、トークンの検証に使用する OWIN ミドルウェアを設定します。構成に追加するには、**AddAppServiceAuthentication** 拡張メソッドと **IAppBuilder**.**UseMobileAppAuthentication** 拡張メソッドを呼び出します。
 
-- [Microsoft.Azure.Mobile.Server.Notifications] プッシュ通知を有効化し、プッシュ登録エンドポイントを定義します。構成に追加するには、**AddPushNotifications** 拡張機能メソッドを呼び出します。
+- [Microsoft.Azure.Mobile.Server.Notifications] プッシュ通知を有効にし、プッシュ登録エンドポイントを定義します。構成に追加するには、**AddPushNotifications** 拡張メソッドを呼び出します。
 
-- [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) モバイル アプリから従来の Web ブラウザーにデータを提供するコントローラーを作成します。構成に追加するには、**MapLegacyCrossDomainController** 拡張機能メソッドを呼び出します。
+- [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) モバイル アプリから従来の Web ブラウザーにデータを提供するコントローラーを作成します。構成に追加するには、**MapLegacyCrossDomainController** 拡張メソッドを呼び出します。
 
 ## 方法: カスタム API コントローラーを定義する
 
@@ -95,13 +95,13 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
 
 1. Visual Studio で、Controllers フォルダーを右クリックして、**[追加]**、**[コントローラー]** の順にクリックし、**[Web API 2 コントローラー - 空]** を選択して **[追加]** をクリックします。
 
-2. **コントローラー名** (`CustomController` など) を指定して **[追加]** をクリックします。これで、**ApiController** を継承する **CustomController** クラスが新規作成されます。
+2. **コントローラー名** (`CustomController` など) を指定し、**[追加]** をクリックします。これで、**ApiController** から継承した新しい **CustomController** クラスが作成されます。
 
 3. 新しいコントローラーのクラス ファイルに、次の using ステートメントを追加します。
 
 		using Microsoft.Azure.Mobile.Server.Config;
 
-4. 次の例に従って、API コントローラーのクラス定義に **MobileAppControllerAttribute** を適用します。
+4. 次の例に示すように、API コントローラーのクラス定義に **MobileAppControllerAttribute** を適用します。
 
 		[MobileAppController] 
 		public class CustomController : ApiController
@@ -115,31 +115,31 @@ OWIN スタートアップ クラスの `Configuration()` メソッドで、サ�
 		    .MapApiControllers()
 		    .ApplyTo(config);
     
-	代わりにすべての機能を初期化する **UseDefaultConfiguration** を呼び出す場合は、**MapApiControllers** を呼び出す必要はないことに注意してください。
+	代わりに、すべての機能を初期化する **UseDefaultConfiguration** を呼び出す場合は、**MapApiControllers** を呼び出す必要はありません。
 
-クライアントは **MobileAppControllerAttribute** が適用されていないコントローラーにもアクセスできますが、こうしたコントローラーはモバイル アプリ クライアント SDK を使用するクライアントには適切に使用されません。
+クライアントは **MobileAppControllerAttribute** が適用されていないコントローラーにもアクセスできますが、こうしたコントローラーはモバイル アプリ クライアント SDK を使用するクライアントでは適切に使用されません。
 
 ## 方法: テーブル コントローラーを定義する
 
-テーブル コントローラーは、テーブル ベースのデータ ストア (SQL Database や Azure テーブル ストレージなど) にあるエンティティ データへのアクセスを提供します。テーブル コントローラーは、次に示すように **TableController** 汎用クラスから継承します。このクラスでは、汎用タイプはテーブル スキーマを表すモデルのエンティティです。
+テーブル コントローラーは、テーブル ベースのデータ ストア (SQL Database や Azure テーブル ストレージなど) にあるエンティティ データへのアクセスを提供します。テーブル コントローラーは、次のように **TableController** ジェネリック クラスから継承します。このクラスでは、ジェネリック型はテーブル スキーマを表すモデルのエンティティです。
 
 	public class TodoItemController : TableController<TodoItem>
     {  
 		//...
 	}
 
-テーブル コントローラーは、**AddTables** 拡張機能メソッドを使用して初期化します。次の例では、データ アクセスに Entity Framework を使用するテーブル コントローラーを初期化します。
+テーブル コントローラーは、**AddTables** 拡張メソッドを使用して初期化します。次の例では、データ アクセスに Entity Framework を使用するテーブル コントローラーを初期化します。
 
     new MobileAppConfiguration().AddTables(
         new MobileAppTableConfiguration()
         .MapTableControllers()
         .AddEntityFramework()).ApplyTo(config);
  
-Azure SQL Database のデータへのアクセスに Entity Framework を使用するテーブル コントローラーの例については、Azure ポータル からダウンロードしたクイックスタート サーバー プロジェクトの **TodoItemController** クラスを参照してください。
+Entity Framework を使用して Azure SQL Database のデータにアクセスするテーブル コントローラーの例については、Azure ポータルからダウンロードしたクイックスタート サーバー プロジェクトの **TodoItemController** クラスを参照してください。
 
 ## 方法: サーバー プロジェクトに認証を追加する
 
-**MobileAppConfiguration** オブジェクトを拡張して OWIN ミドルウェアを構成すると、サーバー プロジェクトに認証を追加することができます。[Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、**UseDefaultConfiguration** 拡張機能メソッドを呼び出している場合は、手順 3 に進むことができます。
+**MobileAppConfiguration** オブジェクトを拡張し、OWIN ミドルウェアを構成すると、サーバー プロジェクトに認証を追加することができます。[Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、**UseDefaultConfiguration** 拡張メソッドを呼び出している場合は、手順 3 に進むことができます。
 
 1. Visual Studio で、[Microsoft.Azure.Mobile.Server.Authentication] パッケージをインストールします。 
 
@@ -151,17 +151,17 @@ Azure SQL Database のデータへのアクセスに Entity Framework を使用�
 
 3. 認証が必要なすべてのコントローラーまたはメソッドに `[Authorize]` 属性を追加します。これで、ユーザーはエンドポイントや特定の API にアクセスするときに認証を受ける必要があるようになりました。
 
-Mobile Apps バックエンドに認証クライアントを追加する方法については、「[Azure Mobile Apps を使用した iOS の認証](app-service-mobile-dotnet-backend-ios-get-started-users-preview.md)」を参照してください。
+Mobile Apps バックエンドに対してクライアントを認証する方法については、「[アプリケーションに認証を追加する](app-service-mobile-dotnet-backend-ios-get-started-users-preview.md)」をご覧ください。
 
 ## 方法: サーバー プロジェクトにプロジェクトを追加する
 
-**MobileAppConfiguration** オブジェクトを拡張して Notification Hubs クライアントを作成すると、サーバー プロジェクトにプッシュ通知を追加することができます。[Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、**UseDefaultConfiguration** 拡張機能メソッドを呼び出している場合は、手順 3 に進むことができます。
+**MobileAppConfiguration** オブジェクトを拡張し、Notification Hubs クライアントを作成すると、サーバー プロジェクトにプッシュ通知を追加することができます。[Microsoft.Azure.Mobile.Server.Quickstart] パッケージをインストールし、**UseDefaultConfiguration** 拡張メソッドを呼び出している場合は、手順 3 に進むことができます。
 
-1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックし、Microsoft.Azure.Mobile.Server.Notifications を検索して **[インストール]** をクリックします。これにより、[Microsoft.Azure.Mobile.Server.Notifications] パッケージがインストールされます。
+1. Visual Studio で、サーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** をクリックし、Microsoft.Azure.Mobile.Server.Notifications を検索して、**[インストール]** をクリックします。これにより、[Microsoft.Azure.Mobile.Server.Notifications] パッケージがインストールされます。
  
 3. 上記の手順を繰り返して、Notification Hubs クライアント ライブラリが含まれる `Microsoft.Azure.NotificationHubs` パッケージをインストールします。
 
-2. App\_Start/Startup.MobileApp.cs で、次に示すように、初期化中に **AddPushNotifications** 拡張機能メソッドの呼び出しを追加します。
+2. App\_Start/Startup.MobileApp.cs で、次に示すように、初期化中に **AddPushNotifications** 拡張メソッドの呼び出しを追加します。
 
 		new MobileAppConfiguration()
 			// other features...
@@ -191,7 +191,7 @@ Mobile Apps バックエンドに認証クライアントを追加する方法�
         NotificationHubClient hub = NotificationHubClient
         .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
 
-これで、Notification Hubs クライアントを使用して、登録済みデバイスにプッシュ通知を送信できるようになりました。詳細については、「[iOS アプリへのプッシュ通知の追加](app-service-mobile-dotnet-backend-ios-get-started-push-preview.md)」を参照してください。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](../notification-hubs/notification-hubs-overview.md)」を参照してください。
+これで、Notification Hubs クライアントを使用して、登録済みデバイスにプッシュ通知を送信できるようになりました。詳細については、「[アプリケーションにプッシュ通知を追加する](app-service-mobile-dotnet-backend-ios-get-started-push-preview.md)」をご覧ください。Notification Hubs で実行可能なすべての操作については、「[Azure 通知ハブ](../notification-hubs/notification-hubs-overview.md)」をご覧ください。
 
 ## 方法: サーバー プロジェクトの発行
 
@@ -205,4 +205,4 @@ Mobile Apps バックエンドに認証クライアントを追加する方法�
 [Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

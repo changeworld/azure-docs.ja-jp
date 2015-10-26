@@ -13,4 +13,4 @@
 
    	![](./media/app-service-mobile-windows-universal-test-push-preview/mobile-quickstart-push5-wp8.png)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

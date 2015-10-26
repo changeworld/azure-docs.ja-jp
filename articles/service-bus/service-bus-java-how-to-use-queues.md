@@ -188,4 +188,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
   [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

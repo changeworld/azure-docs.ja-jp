@@ -225,4 +225,4 @@ Service Fabric は、正常性評価のためのエンティティ (レプリカ
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

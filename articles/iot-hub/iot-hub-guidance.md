@@ -1,10 +1,10 @@
 <properties
- pageTitle="Azure IoT Hub に関するガイダンス | Microsoft Azure"
- description="Azure IoT Hub を使用したソリューションに関するガイダンスのトピックのコレクション。"
+ pageTitle="Azure IoT Hub の使用に関するガイダンス トピック |Microsoft Azure"
+ description="Azure IoT Hub を使用したソリューションの開発に関するガイダンス トピックのコレクション。"
  services="iot-hub"
- documentationCenter=".net"
+ documentationCenter=""
  authors="fsautomata"
- manager="kevinmil"
+ manager="timlt"
  editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
- ms.workload="tbd"
+ ms.workload="na"
  ms.date="09/29/2015"
  ms.author="elioda"/>
 
@@ -20,7 +20,7 @@
 
 ## デバイス プロビジョニング
 
-IoT ソリューションはさまざまなシステムとストアのデバイス情報を保持します。アプリケーション固有のデバイス情報を保持するストアの 1 つとして [IoT Hub の IT レジストリ][IoT Hub Developer Guide - identity registry]があります。*プロビジョニング*とは、こうしたシステムすべてに必要なデバイス情報を作成するプロセスです。
+IoT ソリューションはさまざまなシステムとストアのデバイス情報を保持します。アプリケーション固有のデバイス情報を保持するストアの 1 つとして [IoT Hub の ID レジストリ][IoT Hub Developer Guide - identity registry]があります。*プロビジョニング*とは、こうしたシステムすべてに必要なデバイス情報を作成するプロセスです。
 
 デバイス プロビジョニングの要件と戦略は多数あります (詳細については、[IoT Hub デバイス管理のガイダンス]を参照してください)。[IoT Hub ID レジストリ][IoT Hub Developer Guide - identity registry]には、プロビジョニング プロセスで IoT Hub を統合するときに必要な API が用意されています。
 
@@ -88,4 +88,4 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub? (Azure IoT Hub とは)]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

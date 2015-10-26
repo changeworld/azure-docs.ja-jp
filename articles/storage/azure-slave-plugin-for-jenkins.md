@@ -1,11 +1,11 @@
 <properties
     pageTitle="Azure スレーブ プラグインを Jenkins 継続的インテグレーションで使用する方法 | Microsoft Azure"
-	description="Azure スレーブ プラグインを Jenkins 継続的インテグレーションで使用する方法について説明します。"
+    description="Azure スレーブ プラグインを Jenkins 継続的インテグレーションで使用する方法について説明します。"
 	services="storage"
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor="jimbe" />
 
 <tags
 	ms.service="storage"
@@ -14,7 +14,7 @@
 	ms.devlang="Java"
 	ms.topic="article"
 	ms.date="09/01/2015"
-	ms.author="v-dedomi"/>
+    ms.author="v-dedomi"/>
 
 # Azure スレーブ プラグインを Jenkins 継続的インテグレーションで使用する方法
 
@@ -204,4 +204,4 @@ Jenkins 用の Azure スレーブ プラグインを使用して、分散され�
 
 Jenkins は、前のセクションで作成したテンプレートを使用してスレーブ ノードを作成し、このタスク用のビルド手順で指定されたスクリプトを実行します。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

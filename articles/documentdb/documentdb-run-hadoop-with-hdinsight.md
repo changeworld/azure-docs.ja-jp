@@ -262,7 +262,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
 		$queryString = $queryStringPart1 + $queryStringPart2 + $queryStringPart3
 		$hiveJobDefinition = New-AzureHDInsightHiveJobDefinition -Query $queryString
 
-	\-File スイッチを使用して、HDFS 上の HiveQL スクリプト ファイルを指定することもできます。
+	-File スイッチを使用して、HDFS 上の HiveQL スクリプト ファイルを指定することもできます。
 
 6. 次のスニペットを追加して、開始時刻を格納し、Hive ジョブを送信します。
 
@@ -349,7 +349,7 @@ HDInsight クラスターをプロビジョニングするときは、Azure ス�
         $queryString = $queryStringPart1 + $queryStringPart2 + $queryStringPart3
         $pigJobDefinition = New-AzureHDInsightPigJobDefinition -Query $queryString -StatusFolder $statusFolder
 
-	\-File スイッチを使用して、HDFS 上の Pig スクリプト ファイルを指定することもできます。
+	-File スイッチを使用して、HDFS 上の Pig スクリプト ファイルを指定することもできます。
 
 6. 次のスニペットを追加して、開始時刻を格納し、Pig ジョブを送信します。
 
@@ -480,4 +480,4 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [powershell-install-configure]: ../install-configure-powershell.md
  
 
-<!-------HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

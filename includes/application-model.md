@@ -346,4 +346,4 @@ Web サイト ロール インスタンスでは、受信するトラフィッ�
   [Azure へのアプリケーションの移行]: http://msdn.microsoft.com/library/gg186051.aspx
   [Azure アプリケーションの構成]: http://msdn.microsoft.com/library/windowsazure/ee405486.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

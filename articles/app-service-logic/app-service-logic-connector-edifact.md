@@ -41,7 +41,7 @@ Edifact コネクタを使用するにはまず、AS2 コネクタ API アプリ
 - Azure Logic Apps フロー デザイナーを起動します。
 - 右側のウィンドウの [Edifact コネクタ] をクリックします。  
 ![トリガー設定][3]
-- -> (右矢印) をクリックします。  
+- [->] (右矢印) をクリックします。  
 ![トリガー オプション][4]
 - Edifact コネクタでは 1 つのトリガーが表示されます。*[リリース バッチ]* を選択します。  
 ![バッチ入力のリリース][5]
@@ -78,7 +78,7 @@ Segment Terminator Suffix|文字列|セグメント終端記号のサフィッ�
 ## コネクタでできること
 これでコネクタが作成されたため、このコネクタを Logic App を使用してビジネス フローに追加することができます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE]Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」を参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
 
@@ -97,4 +97,4 @@ Segment Terminator Suffix|文字列|セグメント終端記号のサフィッ�
 [9]: ./media/app-service-logic-connector-edifact/EncodeInput.PNG
 [10]: ./media/app-service-logic-connector-edifact/EncodeConfigured.PNG
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

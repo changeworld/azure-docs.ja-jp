@@ -19,7 +19,8 @@
 
 # Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルまたはリソース マネージャーのデプロイト モデルを使用して作成された仮想マシンでの SSH 接続のトラブルシューティングについて説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 
 Linux ベースの Azure 仮想マシンに対する SSH エラーには、さまざまな原因が考えられます。この記事は、原因を特定してエラーを修正するために役立ちます。
@@ -33,20 +34,17 @@ Linux ベースの Azure 仮想マシンに対する SSH エラーには、さ�
 または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](http://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](http://azure.microsoft.com/support/faq/)」を参照してください。
 
 
-## 基本的な手順
-
-
-### クラシック デプロイ モデル
+## 基本的な手順 - クラシック デプロイ モデル
 
 クラシック デプロイ モデルを使用して作成された仮想マシンの一般的な SSH 接続エラーを解決するには、次の手順を試してください。
 
-1. [Azure ポータル](https://portal.azure.com)からリモート アクセスをリセットします。**[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
+1. [Azure プレビュー ポータル](https://portal.azure.com)から**リモート アクセスをリセット**します。**[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[リモート アクセスのリセット]** の順にクリックします。
 
 	![リモート アクセスのリセット](./media/virtual-machines-troubleshoot-ssh-connections/Portal-SSH-Reset-Windows.png)
 
-2. 前の手順と同様に、仮想マシンを再起動します。[Azure プレビュー ポータル](https://portal.azure.com)から、**[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[再起動]** の順にクリックします。[Azure 管理ポータル](https://manage.windowsazure.com)から、**[仮想マシン]**、**[インスタンス]** の順に開いて、**[再起動]** をクリックします。
+2. 仮想マシンを**再起動**します。[Azure プレビュー ポータル](https://portal.azure.com)から、**[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の Windows 仮想マシン、**[再起動]** の順にクリックします。[Azure 管理ポータル](https://manage.windowsazure.com)から、**[仮想マシン]**、**[インスタンス]** の順に開いて、**[再起動]** をクリックします。
 
-3. [仮想マシンのサイズを変更します](https://msdn.microsoft.com/library/dn168976.aspx)。
+3. [仮想マシンの**サイズを変更**します](https://msdn.microsoft.com/library/dn168976.aspx)。
 
 4. 「[Linux 仮想マシンのパスワードまたは SSH をリセットする方法](virtual-machines-linux-use-vmaccess-reset-password-or-ssh.md)」の指示に従って、仮想マシンで次の操作を行います。
 
@@ -55,96 +53,115 @@ Linux ベースの Azure 仮想マシンに対する SSH エラーには、さ�
 	- SSH 構成をリセットする
 
 
-### リソース マネージャーのデプロイ モデル
+## 基本的な手順 - リソース マネージャーのデプロイ モデル
 
 リソース マネージャーのデプロイ モデルを使用して作成された仮想マシンの一般的な SSH の問題を解決するには、次の手順を試してください。
 
-1. コマンド ラインで Linux VM への SSH 接続をリセットします。[Microsoft Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)のバージョン 2.0.5 以降がインストールされていることを確認します。
+1. Azure CLI または Azure PowerShell のいずれかを使用し、コマンド ラインで Linux VM への **SSH 接続をリセット**します。[Microsoft Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)のバージョン 2.0.5 以降がインストールされていることを確認します。
 
-	[A] Azure CLI を使用する場合
+	**Azure CLI の使用**
 
-	手順 1. まだインストールしていない場合は、[Azure CLI をインストールし](../xplat-cli-install.md)、`azure login` コマンドを使用して Azure サブスクリプションに接続します。
+	a.まだインストールしていない場合は、[Azure CLI をインストールし](../xplat-cli-install.md)、`azure login` コマンドを使用して Azure サブスクリプションに接続します。
 
-	手順 2. リソース マネージャー モードに切り替えます。
+	b.リソース マネージャー モードに切り替えます。
 
-		azure config mode arm
+	```
+	azure config mode arm
+	```
 
-	手順 3. 次の方法のいずれかを使用して SSH 接続をリセットします。
+	c.次の方法のいずれかを使用して SSH 接続をリセットします。
 
-	(i) 次の例のように、`vm reset-access` コマンドを使用します。
+	* 次の例のように、`vm reset-access` コマンドを使用します。
 
-		azure vm reset-access -g TestRgV2 -n TestVmV2 -r
+	```
+	azure vm reset-access -g TestRgV2 -n TestVmV2 -r
+	```
 
 	これにより、`VMAccessForLinux` 拡張機能が仮想マシンにインストールされます。
 
-	(ii) 次の内容を含む PrivateConf.json という名前のファイルを作成します。
+	* あるいは、次の内容を含む PrivateConf.json という名前のファイルを作成します。
 
-		{
-			"reset_ssh":"True"
-		}
+	```
+	{  
+	"reset_ssh":"True"
+	}
+	```
 
 	その後、`VMAccessForLinux` 拡張機能を手動で実行して SSH 接続をリセットします。
 
-		azure vm extension set "testRG" "testVM" VMAccessForLinux Microsoft.OSTCExtensions "1.2" --private-config-path PrivateConf.json
+	```
+	azure vm extension set "testRG" "testVM" VMAccessForLinux Microsoft.OSTCExtensions "1.2" --private-config-path PrivateConf.json
+	```
 
-	[B] Azure PowerShell を使用する場合
+	**Azure PowerShell の使用**
 
-	手順 1. まだインストールしていない場合は、[Azure PowerShell をインストールし、Azure AD 方式を使用して Azure サブスクリプションに接続します](../powershell-install-configure.md)。
+	a.まだインストールしていない場合は、[Azure PowerShell をインストールし、Azure AD メソッドを使用して Azure サブスクリプションに接続します](../powershell-install-configure.md)。
 
-	手順 2. リソース マネージャー モードに切り替えます。
+	b.リソース マネージャー モードに切り替えます。
 
-		Switch-AzureMode -Name AzureResourceManager
+	```
+	Switch-AzureMode -Name AzureResourceManager
+	```
 
-	手順 3. 次の例のように、`VMAccessForLinux` 拡張機能を実行して SSH 接続をリセットします。
+	c.次の例のように、`VMAccessForLinux` 拡張機能を実行して SSH 接続をリセットします。
 
-		Set-AzureVMExtension -ResourceGroupName "testRG" -VMName "testVM" -Location "West US" -Name "VMAccessForLinux" -Publisher "Microsoft.OSTCExtensions" -ExtensionType "VMAccessForLinux" -TypeHandlerVersion "1.2" -SettingString "{}" -ProtectedSettingString '{"reset_ssh":true}'
+	```
+	Set-AzureVMExtension -ResourceGroupName "testRG" -VMName "testVM" -Location "West US" -Name "VMAccessForLinux" -Publisher "Microsoft.OSTCExtensions" -ExtensionType "VMAccessForLinux" -TypeHandlerVersion "1.2" -SettingString "{}" -ProtectedSettingString '{"reset_ssh":true}'
+	```
 
-2. ポータルから Linux VM を再起動します。[Azure プレビュー ポータル](https://portal.azure.com)で、**[すべて参照]**、**[仮想マシン]**､ご使用の Windows 仮想マシン、**[再起動]** の順にクリックします。
+2. ポータルから Linux VM を**再起動**します。[Azure プレビュー ポータル](https://portal.azure.com)で、**[すべて参照]**、**[仮想マシン]**､ご使用の Windows 仮想マシン、**[再起動]** の順にクリックします。
 
 	![Restart V2](./media/virtual-machines-troubleshoot-ssh-connections/Portal-SSH-Restart-V2-Windows.png)
 
-3. コマンド ラインで、Linux VM のパスワードと SSH キー、またはどちらか一方をリセットします。次の例のように、sudo 権限を持つ新しいユーザー名/パスワードを作成することもできます。
+3. Azure CLI または Azure PowerShell のいずれかを使用し、コマンド ラインで Linux VM の **パスワードまたは SSH キーをリセット**します。次の例のように、sudo 権限を持つ新しいユーザー名/パスワードを作成することもできます。
 
-	[A] Azure CLI を使用する場合
+	**Azure CLI の使用**
 
 	既に説明したように Azure CLI をインストールして構成します。リソース マネージャー モードに切り替えてから、次の方法のいずれかを使用して拡張機能を実行します。
 
-	(i) `vm reset-access` コマンドを実行して任意の SSH 資格情報を設定します。
+	* `vm reset-access` コマンドを実行して任意の SSH 資格情報を設定します。
 
-		azure vm reset-access TestRgV2 TestVmV2 -u NewUser -p NewPassword
+	```
+	azure vm reset-access TestRgV2 TestVmV2 -u NewUser -p NewPassword
+	```
 
 	コマンド ラインで `azure vm reset-access -h` を入力すると、このコマンドの詳細が表示されます。
 
-	(ii) 次の内容を含む PrivateConf.json という名前のファイルを作成します。
-
-		{
-			"username":"NewUsername", "password":"NewPassword", "expiration":"2016-01-01", "ssh_key":"", "reset_ssh":false, "remove_user":""
-		}
+	* あるいは、次の内容を含む PrivateConf.json という名前のファイルを作成します。```
+	{
+	"username":"NewUsername", "password":"NewPassword", "expiration":"2016-01-01", "ssh_key":"", "reset_ssh":false, "remove_user":""
+	}
+	```
 
 	上記のファイルを使用して Linux 拡張機能を実行します。
 
-		$azure vm extension set "testRG" "testVM" VMAccessForLinux Microsoft.OSTCExtensions "1.2" --private-config-path PrivateConf.json
+	```
+	$azure vm extension set "testRG" "testVM" VMAccessForLinux Microsoft.OSTCExtensions "1.2" --private-config-path PrivateConf.json
+	```
 
 	「[Linux 仮想マシンのパスワードまたは SSH をリセットする方法](virtual-machines-linux-use-vmaccess-reset-password-or-ssh.md)」と同様の手順に従って、他のバリエーションを試すこともできます。必ずリソース マネージャー モード用に Azure CLI の命令を変更してください。
 
-	[B] Azure PowerShell を使用する場合
+	**Azure PowerShell の使用**
 
 	既に説明したように Azure PowerShell をインストールして構成します。リソース マネージャー モードに切り替えてから、次のように拡張機能を実行します。
 
-		$RGName = 'testRG'
-		$VmName = 'testVM'
-		$Location = 'West US'
+	```
+	$RGName = 'testRG'
+	$VmName = 'testVM'
+	$Location = 'West US'
 
-		$ExtensionName = 'VMAccessForLinux'
-		$Publisher = 'Microsoft.OSTCExtensions'
-		$Version = '1.2'
+	$ExtensionName = 'VMAccessForLinux'
+	$Publisher = 'Microsoft.OSTCExtensions'
+	$Version = '1.2'
 
-		$PublicConf = '{}'
-		$PrivateConf = '{"username":"NewUsername", "password":"NewPassword", "ssh_key":"", "reset_ssh":false, "remove_user":""}'
+	$PublicConf = '{}'
+	$PrivateConf = '{"username":"NewUsername", "password":"NewPassword", "ssh_key":"", "reset_ssh":false, "remove_user":""}'
 
-		Set-AzureVMExtension -ResourceGroupName $RGName -VMName $VmName -Location $Location -Name $ExtensionName -Publisher $Publisher -ExtensionType $ExtensionName -TypeHandlerVersion $Version -SettingString $PublicConf -ProtectedSettingString $PrivateConf
+	Set-AzureVMExtension -ResourceGroupName $RGName -VMName $VmName -Location $Location -Name $ExtensionName -Publisher $Publisher -ExtensionType $ExtensionName -TypeHandlerVersion $Version -SettingString $PublicConf -ProtectedSettingString $PrivateConf
 
-	必ず $RGName、$VmName、$Location、SSH 資格情報の値を、インストールに固有の値に置き換えてください。
+	```
+
+	必ず $RGName、$VmName、$Location、SSH 資格情報の値を、インストールに固有の値で置き換えてください。
 
 ## 詳細なトラブルシューティング
 
@@ -162,7 +179,7 @@ Linux ベースの Azure 仮想マシンに対する SSH エラーには、さ�
 
 1. **[仮想マシン]** > *VM 名*をクリックします。
 2. VM の**ダッシュボード**をクリックし、その状態を確認します。
-3. コンピューティング、ストレージ、およびネットワーク リソースの最近のアクティビティを確認するには、**[監視]** をクリックします。
+3. コンピューティング、記憶域、およびネットワーク リソースの最近のアクティビティを確認するには、**[監視]** をクリックします。
 4. SSH トラフィックのエンドポイントがあることを確認するには、**[エンドポイント]** をクリックします。
 
 [Azure プレビュー ポータル](https://portal.azure.com)では、次の手順を実行します。
@@ -243,7 +260,7 @@ Linux ベースの Azure 仮想マシンに対する SSH エラーには、さ�
 <a id="nsg"></a>
 #### ソース 4: ネットワーク セキュリティ グループ
 
-ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。ネットワーク セキュリティ グループ ルールで、インターネットからの SSH トラフィックが許可されていることを確認します。詳細については、「[ネットワーク セキュリティ グループについて](../traffic-manager/virtual-networks-nsg.md)」を参照してください。
+ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。ネットワーク セキュリティ グループ ルールで、インターネットからの SSH トラフィックが許可されていることを確認します。詳細については、「[ネットワーク セキュリティ グループについて](../traffic-manager/virtual-networks-nsg.md)」をご覧ください。
 
 #### ソース 5: Linux ベースの Azure 仮想マシン
 
@@ -269,4 +286,4 @@ Linux ベースの Azure 仮想マシンに対する SSH エラーには、さ�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

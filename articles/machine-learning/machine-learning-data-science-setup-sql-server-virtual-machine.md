@@ -3,9 +3,9 @@
 	description="SQL Server および IPython Server のあるデータ サイエンス仮想マシンを設定します。"
 	services="machine-learning"
 	documentationCenter=""
-	authors="msolhab"
+	authors="bradsev" 
 	manager="paulettm"
-	editor="cgronlun"/>
+	editor="cgronlun" />
 
 <tags
 	ms.service="machine-learning"
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="mohabib;xibingao;bradsev"/>
+	ms.date="10/13/2015"
+	ms.author="mohabib;xibingao;bradsev" />
 
 # 高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する
 
-このトピックでは、クラウド ベースのデータ サイエンス環境の一部として使われる SQL Server 仮想マシンをプロビジョニングおよび構成する方法について説明します。IPython Notebook、Azure Storage Explorer および AzCopy などのサポート ツールに加えて、データ サイエンス プロジェクトに役立つ他のユーティリティのある Windows 仮想マシンを構成します。たとえば Azure Storage Explorer および AzCopy には、ローカル マシンから Azure BLOB ストレージにデータをアップロードしたり、BLOB ストレージからローカル マシンにデータをダウンロードしたりするための便利な機能が備わっています。
+このトピックでは、クラウド ベースのデータ サイエンス環境の一部として使われる SQL Server 仮想マシンをプロビジョニングおよび構成する方法について説明します。IPython Notebook、Azure ストレージ エクスプローラーおよび AzCopy などのサポート ツールに加えて、データ サイエンス プロジェクトに役立つ他のユーティリティのある Windows 仮想マシンを構成します。たとえば Azure ストレージ エクスプローラーおよび AzCopy には、ローカル マシンから Azure BLOB ストレージにデータをアップロードしたり、BLOB ストレージからローカル マシンにデータをダウンロードしたりするための便利な機能が備わっています。
 
 Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。実際のデータ要件に適した SQL Server VM イメージを選択してください。推奨されるイメージは、次のとおりです。
 
@@ -30,9 +30,9 @@ Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Serv
 
 ##<a name="Provision"></a>Azure 管理ポータルに接続し、SQL Server 仮想マシンをプロビジョニングする
 
-1.  アカウントを使用して [Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](http://www.windowsazure.com/pricing/free-trial/)にアクセスしてください。
+1.  アカウントを使用して [Azure 管理ポータル](http://manage.windowsazure.com/)にログインします。Azure アカウントを持っていない場合は、[Azure の無料試用版サイト](http://www.windowsazure.com/pricing/free-trial/)にアクセスしてください。
 
-2.  Azure の管理ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2.  Azure 管理ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
 3.  **[仮想マシンの作成]** ページで、実際のデータ要件に応じた SQL Server を含む仮想マシン イメージを 1 つ選択し、ページの右下にある次へ進む矢印をクリックします。Azure でサポートされる SQL Server イメージの最新情報については、「[Azure Virtual Machines における SQL Server」](http://go.microsoft.com/fwlink/p/?LinkId=294720)ドキュメント セットの「[Azure Virtual Machines における SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294719)」トピックを参照してください。
 
@@ -95,7 +95,7 @@ Windows リモート デスクトップで仮想マシンに接続したら、�
 
 ##<a name="InstallIPython"></a>IPython Notebook とその他のサポート ツールをインストールする
 
-IPython Notebook サーバーとして機能するよう新しい SQL Server VM を構成し、AzCopy、Azure Storage Explorer、便利な Data Science Python パッケージその他のサポート ツールを追加でインストールできるよう、特別なカスタマイズ スクリプトが用意されています。インストールするには、次のようにします。
+IPython Notebook サーバーとして機能するよう新しい SQL Server VM を構成し、AzCopy、Azure ストレージ エクスプローラー、便利な Data Science Python パッケージその他のサポート ツールを追加でインストールできるよう、特別なカスタマイズ スクリプトが用意されています。インストールするには、次のようにします。
 
 - Windows の [スタート] アイコンを右クリックし、**[コマンド プロンプト (管理者)]** をクリックします。
 - 次のコマンドをコピーして、コマンド プロンプトに貼り付けます。
@@ -111,7 +111,7 @@ IPython Notebook サーバーとして機能するよう新しい SQL Server VM 
 	+ IPython Notebook サーバーのリモート接続用
 	+ サンプルの IPython ノートブックおよび SQL スクリプトを取得する
 	+ 便利な Data Science Python パッケージをダウンロードしてインストールする
-	+ AzCopy や Azure Storage Explorer などの Azure ツールをダウンロードしてインストールする <br>
+	+ AzCopy や Azure ストレージ エクスプローラーなどの Azure ツールをダウンロードしてインストールする <br>
 - 任意のローカルまたはリモート ブラウザーから、URL 形式 `https://<virtual_machine_DNS_name>:<port>` を使用して IPython Notebook にアクセスし実行することができます (ポートは仮想マシンのプロビジョニング中に選択した IPython パブリック ポート)。
 - IPython Notebook サーバーはバックグラウンド サービスとして実行され、仮想マシンの再起動時に自動的に再起動されます。
 
@@ -223,7 +223,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 別のコンピューターから SQL Server データベース エンジンに接続するには、仮想マシンのドメイン ネーム システム (DNS) 名が必要になります(これは、仮想マシンを識別するためにインターネットで使用される名前です。IP アドレスを使用することもできますが、Azure で冗長化またはメンテナンスのためにリソースが移動された場合、IP アドレスは変わる可能性があります。DNS 名は、新しい IP アドレスにリダイレクトできるため、安定しています)。
 
-1.  Azure の管理ポータルで (または前の手順から)、**[仮想マシン]** を選択します。
+1.  Azure 管理ポータルで (または前の手順から)、**[仮想マシン]** を選択します。
 
 2.  **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、****http://** から始まる仮想マシンの DNS 名を探してコピーします。(名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
 
@@ -263,7 +263,7 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 
-1. アカウントを使用して [Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。  
+1. アカウントを使用して [Azure 管理ポータル](http://manage.windowsazure.com/)にログインします。  
 
 2. 左側のナビゲーション バーから **[仮想マシン]** を選択します。
 
@@ -277,7 +277,7 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 
 ## Azure SQL Server VM を使用する準備ができました。次のステップは ...
 
-これで、仮想マシンをデータ サイエンス演習で使用する準備ができました。また、仮想マシンを IPython Notebook サーバーとして使用し、データの探索と処理など、Azure Machine Learning と Azure Machine Learning and the Advanced Analytics Process and Technology (ADAPT) に関連するタスクを行う準備もできました。
+これで、仮想マシンをデータ サイエンス演習で使用する準備ができました。また、仮想マシンを IPython Notebook サーバーとして使用し、データの探索と処理など、Azure Machine Learning および Cortana Analytics Process (CAP) に関連するタスクを行う準備もできました。
 
 データ サイエンス プロセスにおける次のステップは、「[学習ガイド: Azure での高度なデータ処理](machine-learning-data-science-advanced-data-processing.md)」に示されています。これには、HDInsight にデータを移動して、Azure Machine Learning でデータから知見を得るための準備としてデータを処理してサンプリングするための手順が含まれています。
 
@@ -298,4 +298,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

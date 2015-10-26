@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/04/2015" 
+	ms.date="08/18/2015" 
 	ms.author="cephalin"/>
 
 # Azure Web アプリと Azure CDN の統合 #
@@ -94,7 +94,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 	![](media/app-service-with-cdn/11-access-success.png)
 
-1. 次に、ASP.NET プロジェクトで **\~/Content/bootstrap.css** ファイルにアクセスしてみます。ブラウザーのウィンドウで **http://*&lt;cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動します。この設定では、次の URL を使用します。
+1. 次に、ASP.NET プロジェクトで **~/Content/bootstrap.css** ファイルにアクセスしてみます。ブラウザーのウィンドウで **http://*&lt;cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動します。この設定では、次の URL を使用します。
 
 		http://az673227.vo.msecnd.net/Content/bootstrap.css
 
@@ -133,7 +133,7 @@ Azure CDN 統合を Azure Web アプリに組み込むと、CDN エンドポイ�
       ...
     </system.webServer>
 
-この操作を実行すると、Azure Web アプリ内のすべての静的ファイルは、CDN キャッシュ内で同じ規則に従います。キャッシュ設定をより細かく制御するには、*Web.config* ファイルをフォルダーに追加し、そこに設定を追加します。たとえば、*Web.config* ファイルを *\Content* フォルダーに追加して、その内容を次の XML で置き換えます。
+この操作を実行すると、Azure Web アプリ内のすべての静的ファイルは、CDN キャッシュ内で同じ規則に従います。キャッシュ設定をより細かく制御するには、*Web.config* ファイルをフォルダーに追加し、そこに設定を追加します。たとえば、*Web.config* ファイルを *\\Content* フォルダーに追加して、その内容を次の XML で置き換えます。
 
 	<?xml version="1.0"?>
 	<configuration>
@@ -144,7 +144,7 @@ Azure CDN 統合を Azure Web アプリに組み込むと、CDN エンドポイ�
 	  </system.webServer>
 	</configuration>
 
-この設定は、*\Content* フォルダーのすべての静的ファイルを 15 日間キャッシュすることを指定しています。
+この設定は、*\\Content* フォルダーのすべての静的ファイルを 15 日間キャッシュすることを指定しています。
 
 `<clientCache>` 要素を構成する方法については、[クライアント キャッシュ &lt;clientCache>](http://www.iis.net/configreference/system.webserver/staticcontent/clientcache) に関するページを参照してください。
 
@@ -207,11 +207,11 @@ Web アプリで次のような Chuck Norris の若いときの画像 ([Alan Lig
                   return new HttpStatusCodeResult(HttpStatusCode.NotFound);
                 }
 
-                if (Debugger.IsAttached) // デバッグ操作を維持
+                if (Debugger.IsAttached) // Preserve the debug experience
                 {
                   return Redirect(string.Format("/MemeGenerator/Generate?top={0}&bottom={1}", data.Item1, data.Item2));
                 }
-                else // のコンテンツを取得 Azure CDN
+                else // Get content from Azure CDN
                 {
                   return Redirect(string.Format("http://<yourCDNName>.vo.msecnd.net/MemeGenerator/Generate?top={0}&bottom={1}", data.Item1, data.Item2));
                 }
@@ -243,16 +243,16 @@ Web アプリで次のような Chuck Norris の若いときの画像 ([Alan Lig
 
               private Font FindBestFitFont(Image i, Graphics g, String text, Font font, out SizeF size)
               {
-                // 実際のサイズを計算、必要に応じて縮小
+                // Compute actual size, shrink if needed
                 while (true)
                 {
                   size = g.MeasureString(text, font);
 
-                  // 収まる、バック アウト
+                  // It fits, back out
                   if (size.Height < i.Height &&
                      size.Width < i.Width) { return font; }
 
-                  // より小さいフォントで試す (古いサイズの 90%)
+                  // Try a smaller font (90% of old size)
                   Font oldFont = font;
                   font = new Font(font.Name, (float)(font.Size * .9), font.Style);
                   oldFont.Dispose();
@@ -269,7 +269,7 @@ Web アプリで次のような Chuck Norris の若いときの画像 ([Alan Lig
 
 	![](media/app-service-with-cdn/cdn-7-configureview.PNG)
 
-4. 新しい *Views\MemeGenerator\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
+4. 新しい *Views\\MemeGenerator\\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
 
 		<h2>Meme Generator</h2>
 		
@@ -344,7 +344,7 @@ URL の書き換え規則が適用された後、CDN エンドポイントにキ
 		...
     }
 
-最初の `bundles.Add()` ステートメントは、スクリプト バンドルを仮想ディレクトリ `~/bundles/jquery` で追加します。次に、*Views\Shared_Layout.cshtml* を開いて、スクリプト バンドル タグがどのようにレンダリングされているかを確認します。次の Razor コードが見つかります。
+最初の `bundles.Add()` ステートメントは、スクリプト バンドルを仮想ディレクトリ `~/bundles/jquery` で追加します。次に、*Views\\Shared\_Layout.cshtml* を開いて、スクリプト バンドル タグがどのようにレンダリングされているかを確認します。次の Razor コードが見つかります。
 
     @Scripts.Render("~/bundles/jquery")
 
@@ -375,8 +375,8 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
           bundles.Add(new ScriptBundle("~/bundles/jqueryval", string.Format(cdnUrl, "bundles/jqueryval")).Include(
                 "~/Scripts/jquery.validate*"));
 
-          // 開発、学習用に Modernizr の開発バージョンを使用。次に、運用の準備ができたら、
-          // ビルド ツール (http://modernizr.com) を使って、必要なテストのみを選択。
+          // Use the development version of Modernizr to develop with and learn from. Then, when you're
+          // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
           bundles.Add(new ScriptBundle("~/bundles/modernizr", string.Format(cdnUrl, "bundles/modernizer")).Include(
                 "~/Scripts/modernizr-*"));
 
@@ -461,8 +461,8 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
                 { CdnFallbackExpression = "$.validator" }
                 .Include("~/Scripts/jquery.validate*"));
 
-    	  // 開発、学習用に Modernizr の開発バージョンを使用。次に、運用の準備ができたら、
-    	  // ビルド ツール (http://modernizr.com) を使って、必要なテストのみを選択。
+    	  // Use the development version of Modernizr to develop with and learn from. Then, when you're
+    	  // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
     	  bundles.Add(new ScriptBundle("~/bundles/modernizr", string.Format(cdnUrl, "bundles/modernizer")) 
                 { CdnFallbackExpression = "window.Modernizr" }
                 .Include("~/Scripts/modernizr-*"));
@@ -540,7 +540,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 	CSS バンドルに対して挿入されたスクリプトには、次の行に `CdnFallbackExpression` プロパティのエラーの残りがまだ含まれている点に注意してください。
 
-        }())||document.write('<script src="/Content/css"></script>');</script>
+        }())||document.write('<script src="/Content/css"><\/script>');</script>
 
 	ただし、(すぐ上の行の) || 式の最初の部分は常に true を返すため、document.write() 関数が実行されることはありません。
 
@@ -551,11 +551,11 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 7. Azure Web アプリのブラウザー ウィンドウを更新します。これで、すべてのスクリプトとスタイルシートが正しく読み込まれていることを確認できます。
 
 ## 詳細情報 ##
-- [Azure コンテンツ配信ネットワーク (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
+- [Azure Content Delivery Network (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
 - [Web アプリケーションで Azure CDN からコンテンツを配信する](../cdn-serve-content-from-cdn-in-your-web-application.md)
 - [クラウド サービスと Azure CDN との統合](../cdn-cloud-service-with-cdn.md)
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 - [Azure 用 CDN の使用](../cdn-how-to-use.md)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

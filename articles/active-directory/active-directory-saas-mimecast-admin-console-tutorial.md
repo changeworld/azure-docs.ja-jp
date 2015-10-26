@@ -15,7 +15,7 @@
 1.  Mimecast Admin Console のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795008.png "シナリオ")
 ##Mimecast Admin Console のアプリケーション統合の有効化
@@ -67,7 +67,7 @@
 
     >[AZURE.NOTE]サインオン URL は、リージョン固有のものになります。
 
-    ![アプリ URL の構成](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795013.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795013.png "アプリケーション URL の構成")
 
 4.  **[Mimecast Admin Console でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
 
@@ -160,4 +160,4 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

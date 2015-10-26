@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure MFA での連絡方法としてモバイル アプリを使用する"
-	description="このページは、Azure MFA の主要な連絡方法としてモバイル アプリを使用する方法を示します。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="billmath"
-	manager="stevenp"
+	pageTitle="Azure MFA での連絡方法としてモバイル アプリを使用する" 
+	description="このページは、Azure MFA の主要な連絡方法としてモバイル アプリを使用する方法を示します。" 
+	services="multi-factor-authentication" 
+	documentationCenter="" 
+	authors="billmath" 
+	manager="stevenp" 
 	editor="curtland"/>
 
 <tags 
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.service="multi-factor-authentication" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/24/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication での連絡方法としてモバイル アプリを使用する
@@ -73,4 +73,4 @@ Azure MFA を既に使用しているアカウントの場合、バーコード�
 >[AZURE.NOTE]"職場アカウントの追加" と表示されている場合、これは社内参加用であり、多要素認証用ではありません。これは無視してかまいません。
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

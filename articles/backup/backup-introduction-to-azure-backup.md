@@ -7,7 +7,7 @@
 	manager="shreeshd"
 	editor="tysonn"/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/18/2015" ms.author="trinadhk"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/01/2015" ms.author="aashishr"; "trinadhk"; "jimpark"/>
 
 # Azure Backup の概要
 この記事では、オンプレミスまたは Azure に存在するデータをバックアップできる Microsoft のクラウド統合バックアップ ソリューションの概要について説明します。
@@ -38,27 +38,36 @@ Azure Backup は、オンプレミスまたは Azure に存在するデータを
 
 5. **簡単**: Azure Backup は、あらゆる規模のデプロイを保護するために拡張できる、使いやすいインターフェイスを提供します。サービスが進化すると、中央管理などの機能を使用して 1 つの場所からバックアップ インフラストラクチャを管理できるようになります。
 
-6. **コスト効率**: Azure Backup 料金には、インスタンスごとのバックアップ管理手数料と Azure で使用中のストレージのコスト (ブロック BLOB 料金) が含まれます。他のクラウド ベースのバックアップ ソリューションとは異なり、Azure Backup では復元操作に対して料金がかかりません。また、復元操作時の出力 (送信) データの転送コストもかかりません。
+6. **コスト効率**: Azure Backup の価格には、インスタンスごとのバックアップ管理手数料と Azure で使用中のストレージのコスト (ブロック BLOB 料金) が含まれます。他のクラウド ベースのバックアップ ソリューションとは異なり、Azure Backup では復元操作に対して料金がかかりません。また、復元操作時の出力 (送信) データの転送コストもかかりません。
 
 7. **クラウドでのバックアップ**: Azure Backup では、仮想マシンをシャットダウンせずに、実行中の Azure IaaS 仮想マシンの VSS ベースのアプリケーション整合性バックアップを実行できます。また、ファイルシステムの整合性を維持しながら、Azure で Linux 仮想マシンをバックアップすることもできます。
+
+
+## デプロイ シナリオ
+| コンポーネント | Azure にデプロイできる? | オンプレミスにデプロイできる? | サポートされているターゲット ストレージ|
+| --- | --- | --- | --- |
+| Azure Backup エージェント | **はい** <br><br>Azure Backup エージェントは、Azure で実行されている任意の Windows Server VM にデプロイできます。 | **はい** <br><br>Azure Backup エージェントは、任意の Windows Server VM または物理マシンにデプロイできます。 | Azure Backup コンテナー |
+| System Center Data Protection Manager (SCDPM) | **はい** <br><br>[SCDPM による Azure のワークロードの保護](http://blogs.technet.com/b/dpm/archive/2014/09/02/azure-iaas-workload-protection-using-data-protection-manager.aspx)の詳細を参照してください。 | **はい** <br><br>[データ センターのワークロードと VM の保護](https://technet.microsoft.com/JA-JP/library/hh758173.aspx)の詳細を参照してください。 | ローカルに接続されているディスク、<br>Azure Backup コンテナー、<br>テープ (オンプレミスのみ) |
+| Azure Backup (VM 拡張機能) | **はい** <br><br>[Azure IaaS 仮想マシンのバックアップ](backup-azure-vms-introduction.md)に特化しています。 | **いいえ** <br><br>データ センターの仮想マシンをバックアップするには SCDPM を使用します。 | Azure Backup コンテナー |
 
 
 ## アプリケーションとワークロード
 
 | ワークロード | ソース コンピューター | Azure Backup ソリューション |
 | --- | --- |---|
-| ファイルとフォルダー | Windows Server、Windows クライアント | Azure Backup エージェント |
-| ファイルとフォルダー | Windows Server、Windows クライアント | System Center DPM |
+| ファイルとフォルダー | Windows Server | [Azure Backup エージェント](backup-configure-vault.md)、<br> [System Center DPM](backup-azure-dpm-introduction.md) |
+| ファイルとフォルダー | Windows クライアント | [Azure Backup エージェント](backup-configure-vault.md)、<br> [System Center DPM](backup-azure-dpm-introduction.md) |
 | Hyper-V 仮想マシン (Windows) | Windows Server | System Center DPM |
 | Hyper-V 仮想マシン (Linux) | Windows Server | System Center DPM |
-| Microsoft SQL Server | Windows Server | System Center DPM |
-| Microsoft SharePoint | Windows Server | System Center DPM |
+| Microsoft SQL Server | Windows Server | [System Center DPM](backup-azure-backup-sql.md) |
+| Microsoft SharePoint | Windows Server | [System Center DPM](backup-azure-backup-sharepoint.md) |
 | Microsoft Exchange | Windows Server | System Center DPM |
-| Azure IaaS VMs (Windows)| - | Azure Backup | | Azure IaaS VMs (Linux) | - | Azure Backup |
+| Azure IaaS VM (Windows)| - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) | | Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
+
 
 ## 次のステップ
 - [Azure Backup を試す](backup-try-azure-backup-in-10-mins.md)
 - Azure Backup サービスに関してよく寄せられる質問は、[こちら](backup-azure-backup-faq.md)をご覧ください。
-- [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
+- [Azure のバックアップ フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

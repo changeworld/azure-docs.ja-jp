@@ -56,7 +56,6 @@ public class Leaderboard : Actor<LeaderboardCollection>, ILeaderboard
     public Task UpdateLeaderboard(Score score)
     {
         State.UpdateLeaderboard(score);
-        return TaskDone.Done;
     }
 
     public Task<List<Score>> GetLeaderboard(int count)
@@ -186,7 +185,6 @@ public class JobQueue : Actor<List<Jobs>>, IJobQueue
 
         ...
 
-        return TaskDone.Done;
     }
 
     public Task<Job> Dequeue()
@@ -262,13 +260,11 @@ public Task Activate()
     TimeSpan.FromSeconds(0), // start immediately
     TimeSpan.FromSeconds(5)); // refresh every 5 seconds
 
-    return TaskDone.Done;
 }
 
 public Task RefreshRates()
 {
     // this is where we will make an external call and populate rates
-    return TaskDone.Done;
 }
 
 ```
@@ -302,4 +298,4 @@ public Task RefreshRates()
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-pattern-smart-cache/smartcache-arch.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

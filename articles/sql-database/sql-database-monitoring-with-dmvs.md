@@ -37,14 +37,17 @@ SQL Database で、動的管理ビューに対してクエリを実行するに�
 GRANT VIEW DATABASE STATE TO database_user;
 ```
 
-オンプレミスの SQL Server インスタンスでは、動的管理ビューにはサーバーの状態に関する情報が表示されます。 SQL Database では、動的管理ビューには現在の論理データベースに関する情報のみが表示されます。
+オンプレミスの SQL Server のインスタンスでは、動的管理ビューにサーバーの状態についての情報が表示されます。SQL Database では、動的管理ビューには現在の論理データベースに関する情報のみが表示されます。
 
 ## データベースのサイズを計算しています
 
-次のクエリはデータベース サイズを MB 単位で返します。
+次のクエリは、データベースのサイズ (MB 単位) を返します。
 
 ```
--- データベースのサイズを計算します。SELECT SUM(reserved_page_count)*8.0/1024 FROM sys.dm_db_partition_stats; GO
+-- データベースのサイズを計算します。 
+SELECT SUM(reserved_page_count)*8.0/1024
+FROM sys.dm_db_partition_stats;
+GO
 ```
 
 次のクエリは、データベース内の個々のオブジェクトのサイズ (MB 単位) を返します。
@@ -60,7 +63,7 @@ GO
 
 ## 接続の監視
 
-[sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) ビューを使用すると、特定の Azure SQL Database サーバーに対して確立している接続に関する情報と、各接続の詳細を取得できます。また、[sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) ビューは、すべてのアクティブなユーザー接続と内部タスクに関する情報を取得する際に役立ちます。次のクエリは、現在の接続に関する情報を取得します。
+[sys.dm\_exec\_connections](https://msdn.microsoft.com/library/ms181509.aspx) ビューを使用して、特定の Azure SQL Database サーバーに対して確立されている接続についての情報と、各接続の詳細を取得できます。また、[sys.dm\_exec\_sessions](https://msdn.microsoft.com/library/ms176013.aspx) ビューは、すべてのアクティブなユーザー接続と内部タスクについての情報を取得する場合に役立ちます。次のクエリは、現在の接続に関する情報を取得します。
 
 ```
 SELECT 
@@ -75,11 +78,11 @@ JOIN sys.dm_exec_sessions AS s
 WHERE c.session_id = @@SPID;
 ```
 
-> [AZURE.NOTE]**sys.dm_exec_requests** と **sys.dm_exec_sessions views** を実行したときに、ユーザーがデータベースに対して **VIEW DATABASE STATE** アクセス許可を持っている場合、データベースで実行中のすべてのセッションがユーザーに表示されます。アクセス許可がない場合は、現在のセッションのみが表示されます。
+> [AZURE.NOTE]**sys.dm\_exec\_requests** と **sys.dm\_exec\_sessions views** を実行するときに、ユーザーがデータベースに対するアクセス許可 **VIEW DATABASE STATE** を持っていると、データベースで実行中のすべてのセッションがユーザーに表示されます。ユーザーがアクセス許可を持っていない場合は、現在のセッションのみが表示されます。
 
 ## クエリのパフォーマンスの監視
 
-クエリが低速または実行時間が長いと、大量のシステム リソースが消費される可能性があります。ここでは、動的管理ビューを使用して、いくつかの一般的なクエリ パフォーマンスの問題を検出する方法について説明します。Microsoft TechNet の古い記事ですが、「[SQL Server 2008 のパフォーマンスに関する問題のトラブルシューティング](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx)」はトラブルシューティングに役立ちます。
+クエリが低速または実行時間が長いと、大量のシステム リソースが消費される可能性があります。ここでは、動的管理ビューを使用して、いくつかの一般的なクエリ パフォーマンスの問題を検出する方法について説明します。Microsoft TechNet の [SQL Server 2008 のパフォーマンスに関する問題のトラブルシューティング](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx)についての記事が、古いものの今でもトラブルシューティングに役立ちます。
 
 ### 上位 N 個のクエリの検索
 
@@ -134,4 +137,4 @@ ORDER BY highest_cpu_queries.total_worker_time DESC;
 
 [SQL Database の概要](sql-database-technical-overview.md)
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

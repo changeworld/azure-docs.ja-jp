@@ -131,4 +131,4 @@
 
 Visual Studio で Azure プロジェクトの他の部分を構成する方法については、[Azure プロジェクトの構成](http://go.microsoft.com/fwlink/p/?LinkID=623075)に関するページを参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

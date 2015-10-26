@@ -91,4 +91,4 @@ Azure サポートに問い合わせて調整できる DocumentDB クォータ�
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

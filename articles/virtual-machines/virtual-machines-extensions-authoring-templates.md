@@ -19,7 +19,8 @@
 
 # VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+ 
 
 ## Azure リソース マネージャー テンプレートの概要
 
@@ -88,4 +89,4 @@ VM の拡張機能を使用して完成したテンプレートを取得する�
 
 テンプレートを作成したら、Azure CLI または Azure Powershell を使用してそのテンプレートをデプロイできます。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

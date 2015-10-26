@@ -50,7 +50,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 
 + [Mobile Services でのバックエンド ジョブの計画]
 
-  	モバイル サービスのジョブ スケジューラ機能を使用して、定義したスケジュールに従って実行されるサーバー スクリプト コードを定義する方法について説明します。
+  	Mobile Services のジョブ スケジューラ機能を使用して、定義したスケジュールに従って実行されるサーバー スクリプト コードを定義する方法について説明します。
 
 + [Mobile Services のサーバー スクリプト リファレンス]
 
@@ -58,7 +58,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
  
 + [Mobile Services .NET の使用方法の概念リファレンス]
 
-    .NET でモバイル サービスを使用する方法について説明します
+    .NET で Mobile Services を使用する方法について説明します
   
  
 <!-- Anchors. -->
@@ -87,4 +87,4 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

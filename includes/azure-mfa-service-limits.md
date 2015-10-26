@@ -13,4 +13,4 @@ MFA が **X** 回連続して拒否された後でユーザー アカウント�
 
 <sup>1</sup>これは、将来増加する予定です。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

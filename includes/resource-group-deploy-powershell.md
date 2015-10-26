@@ -10,7 +10,7 @@
           --                             ----    
           example@contoso.com            User       ...   
 
-2. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。 
+2. 複数のサブスクリプションがある場合、デプロイに使用するサブスクリプション ID を提供します。 
 
           Select-AzureSubscription -SubscriptionID <YourSubscriptionId>
 
@@ -68,4 +68,4 @@
 
         Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

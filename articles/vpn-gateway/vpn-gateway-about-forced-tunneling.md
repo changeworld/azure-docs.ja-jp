@@ -1,12 +1,12 @@
-<properties pageTitle="Microsoft Azure VPN Gateways の強制トンネリングの構成 | Microsoft Azure" description="クロスプレミスの VPN ゲートウェイを含む仮想ネットワークの場合、インターネットへのすべてのトラフィックをオンプレミスの場所にリダイレクトまたは ”強制的” に戻すことができます。" services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carolz" editor=""/>
+<properties pageTitle="Microsoft Azure VPN Gateways の強制トンネリングの構成 | Microsoft Azure" description="クロスプレミスの VPN ゲートウェイを含む仮想ネットワークの場合、インターネットへのすべてのトラフィックをオンプレミスの場所にリダイレクトまたは ”強制的” に戻すことができます。" services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carolz" editor="" />
 <tags  
    ms.service="vpn-gateway"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/20/2015"
-	ms.author="cherylmc"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/20/2015"
+   ms.author="cherylmc" />
 
 # 強制トンネリングについて
 
@@ -151,4 +151,4 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 ネットワーク トラフィックのセキュリティ保護の詳細については、[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

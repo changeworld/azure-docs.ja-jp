@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Application Insights による Web アプリケーションの利用状況の分析"
-	description="Application Insights による利用状況分析の概要"
-	services="application-insights"
-	documentationCenter=""
-	authors="alancameronwills"
+	pageTitle="Application Insights による Web アプリケーションの利用状況の分析" 
+	description="Application Insights による利用状況分析の概要" 
+	services="application-insights" 
+    documentationCenter=""
+	authors="alancameronwills" 
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/24/2015" 
 	ms.author="awills"/>
  
 # Application Insights による Web アプリケーションの利用状況の分析
@@ -32,7 +32,7 @@ Web アプリケーションからの使用状況データは、クライアン�
 
 Application Insights リソースは、アプリのテレメトリ データが分析され、表示される Microsoft Azure 内の場所です。[ASP.NET][greenbrown] か [J2EE][java] のサーバー側からのデータを表示するためにApplication Insights リソース を既にセットアップしています。そうでない場合は、その作業を実行できます。
 
-通常、サーバーからのデータと同じリソースで、Web クライアントからの使用状況データを表示することをお勧めします。これにより、両端から診断とメトリックを簡単に関連付けることができます。そのため、リソースが既にある場合は、次の手順に進みます。
+It's usually best to display the usage data from the web client in the same resource as the data from the server.That way, you can easily correlate diagnostics and metrics from the two ends.そのため、リソースが既にある場合は、次の手順に進みます。
 
 #### Web ページにコードを挿入する
 
@@ -42,7 +42,7 @@ Application Insights リソースは、アプリのテレメトリ データが�
 
 すべてのページに含まれるように、コードを (.NET の) \_Layout.cshtml などのマスター ページまたはインクルード ファイルに配置します。
 
-コード スニペットには、リソースを識別するインストルメンテーション キー (iKey) が含まれています。たとえば、テスト中に個別のリソースにデータを送信するには、iKey を置き換える必要があります。
+The code snippet includes the instrumentation key (iKey) that identifies your resource.To send data to a different resource - for example during testing - you only have to replace the iKey.
 
 Web ページを発行するか、デバッグ モードで使用するには、テレメトリ データを作成します。
 
@@ -82,12 +82,12 @@ Web ページを発行するか、デバッグ モードで使用するには、
 
 [問題を診断する][diagnostic]場合は、すべての要求とイベント、ログに記録された例外や追跡を含む、問題が発生したセッションに関連するすべてのテレメトリを見つけることができます。
 
-セッションは、デバイス、オペレーティング システム、場所などのコンテキストの人気度について詳細な情報を提供します。たとえば、デバイスでグループ化されたセッションの数を示すことにより、デバイスがアプリと使用された頻度について、ページ ビューをカウントするよりも正確にカウントできます。これはデバイス固有の問題の優先順位を決定する便利なインプットになります。
+セッションは、デバイス、オペレーティング システム、場所などのコンテキストの人気度について詳細な情報を提供します。By showing the count of sessions grouped by device, for example, you get a more accurate count of how often that device is used with your app, than by counting page views.これはデバイス固有の問題の優先順位を決定する便利なインプットになります。
 
 
 #### セッションとは何ですか。
 
-セッションは、ユーザーとアプリケーション間の単一のエンカウンターを表します。最も単純な形式では、セッションは、ユーザーがアプリケーションを起動すると開始され、ユーザーがアプリを終了すると終了します。Web Apps では、既定では、アイドル状態が 30 分続くか、アクティビティが 24 時間続くと終了します。
+セッションは、ユーザーとアプリケーション間の単一のエンカウンターを表します。In its simplest form, session starts with a user launching the app and finishes when user leaves the app.For web apps, by default, the session terminates after 30 minutes of inactivity, or after 24 hours of activity.
 
 これらの既定値は、コード スニペットを編集して変更できます。
 
@@ -112,7 +112,7 @@ Web ページを発行するか、デバッグ モードで使用するには、
 
 各ユーザーのセッションは、一意のユーザー ID に関連付けられます。
 
-既定では、ユーザーは、Cookie を配置することによって識別されます。複数のブラウザーやデバイスを使用しているユーザーは複数回カウントされます。ただし、次の場合は[認証されたユーザー](#authenticated-users)に関するページを参照してください:
+By default, the user is identified by placing a cookie.複数のブラウザーやデバイスを使用しているユーザーは複数回カウントされます。ただし、次の場合は[認証されたユーザー](#authenticated-users)に関するページを参照してください:
 
 
 特定の間隔の**ユーザー数**メトリックは、この間隔の間に記録されたアクティビティとの一意のユーザー数として定義されます。その結果、時間範囲を1 時間未満に設定した場合、長いセッションを持つユーザーは複数回カウントされることがあります。
@@ -121,7 +121,7 @@ Web ページを発行するか、デバッグ モードで使用するには、
 
 ### 認証されたユーザー
 
-ユーザーがサインインできる Web アプリの場合、Application Insights に一意のユーザー識別子を提供することで、より正確な数値を取得できます。ユーザーの名前や、アプリで使用しているのと同じ ID を使用する必要はありません。アプリでユーザーが識別されたら、次のコードを使用します。
+ユーザーがサインインできる Web アプリの場合、Application Insights に一意のユーザー識別子を提供することで、より正確な数値を取得できます。It doesn't have to be their name, or the same id that you use in your app.アプリでユーザーが識別されたら、次のコードを使用します。
 
 
 *クライアント側の JavaScript*
@@ -141,7 +141,7 @@ Web ページを発行するか、デバッグ モードで使用するには、
 
 合成トラフィックには、可用性とロード テスト、検索エンジンのクローラーやその他のエージェントからの要求が含まれています。
 
-Application Insight は合成トラフィックを自動的に特定して分類し、適切にマークにします。ほとんどの場合、合成トラフィックは JavaScript SDK を呼び出しません。そのため、このアクティビティはユーザーとセッションのカウントから除外されます。
+Application Insights tries strives to automatically determine and classify synthetic traffic and mark it appropriately.ほとんどの場合、合成トラフィックは JavaScript SDK を呼び出しません。そのため、このアクティビティはユーザーとセッションのカウントから除外されます。
 
 ただし、Application Insights [Web テスト][availability]では、ユーザー ID は、POP の場所に基づいて、セッション ID はテストの実行 ID に基づいて、自動的に設定されます。既定のレポートでは、合成のトラフィックは既定により、フィルター処理され、これらのユーザーとセッションは除外されます。ただし、合成トラフィックが含まれる場合は、全体的なユーザーとセッション数はわずかに増加する可能性があります。
  
@@ -152,17 +152,17 @@ Application Insight は合成トラフィックを自動的に特定して分類
 
 ![概要ブレードで、[ページ ビュー] グラフをクリックします](./media/app-insights-web-track-usage/05-games.png)
  
-上の例はゲーム Web サイトの情報を示しています。このグラフから、次のことがわかります。
+上の例はゲーム Web サイトの情報を示しています。From it we can instantly see:
 
-* 過去 1 週間の間に利用数が伸びていない。おそらく検索エンジンの最適化について考える必要があります。
-* ホーム ページを見ているユーザーよりもゲームのページを見ているユーザーの方が少ない。ホーム ページ上でより積極的にゲームに誘導する必要があります。
-* 最も人気のあるゲームは "クロスワード" である。このゲームに優先的に新しいアイデアと改良を加える必要があります。
+* Usage hasn't improved in the past week.Maybe we should think about search engine optimization?
+* Many fewer people see the games pages than the Home page.Why doesn't our Home page attract people to play games?
+* 'Crossword' is the most popular game.このゲームに優先的に新しいアイデアと改良を加える必要があります。
 
 ## カスタムの追跡
 
-それぞれのゲームを別個の Web ページで実装する代わりに、ほとんどの機能が Web ページの JavaScript としてコーディングされた同じ単一ページ アプリにこれらのゲームをすべてリファクタリングするとします。これにより、ユーザーは、1 つのゲームから別のゲームにすばやく移動したり、1 ページに複数のゲームを表示したりできます。
+それぞれのゲームを別個の Web ページで実装する代わりに、ほとんどの機能が Web ページの JavaScript としてコーディングされた同じ単一ページ アプリにこれらのゲームをすべてリファクタリングするとします。This allows the user to switch quickly between one game and another, or even have several games on one page.
 
-この場合も、Application Insights を使用して、別個の Web ページでゲームを実装していた場合とまったく同じように、それぞれのゲームが開かれた回数を記録したいとします。これを実現するのは簡単です。新しい "ページ" が開かれたことを記録する JavaScript コードにテレメトリ モジュールの呼び出しを挿入するだけです。
+But you'd still like Application Insights to log the number of times each game is opened, in exactly the same way as when they were on separate web pages.これを実現するのは簡単です。新しい "ページ" が開かれたことを記録する JavaScript コードにテレメトリ モジュールの呼び出しを挿入するだけです。
 
 	appInsights.trackPageView(game.Name);
 
@@ -193,13 +193,13 @@ Application Insight は合成トラフィックを自動的に特定して分類
 
 ![1 つのメトリックのみを示すグラフを選択します。[グループ] をオンにします。プロパティを選択します。使用できないプロパティもあります。](./media/app-insights-web-track-usage/06-eventsSegment.png)
 
-タイムラインには、変化を他のメトリックやイベントに関連付けることができるという便利な機能があります。たとえば、より多くのゲームがプレイされているときは、破棄されたゲームの数も増えることが予想されます。しかし、破棄されたゲーム数の増加率には偏りがあります。そこで、高い負荷が原因となってユーザーが許容できない問題が発生しているかどうかを確認してみましょう。
+タイムラインには、変化を他のメトリックやイベントに関連付けることができるという便利な機能があります。For example, at times when more games are played, you'd expect to see a rise in abandoned games as well.しかし、破棄されたゲーム数の増加率には偏りがあります。そこで、高い負荷が原因となってユーザーが許容できない問題が発生しているかどうかを確認してみましょう。
 
 ## 特定のイベントのドリルダウン
 
 一般的なセッションの状況についてより深く理解するためには、特定の種類のイベントが含まれている特定のユーザー セッションに注目します。
 
-この例では、ユーザーが実際にゲームを開始せずにログアウトすると呼び出されるカスタム イベント "NoGame" を作成しています。ユーザーはなぜそのようなことをするのでしょうか。 いくつかの特定の発生箇所をドリルダウンすると、そのヒントが得られるでしょう。
+In this example, we coded a custom event "NoGame" that is called if the user logs out without actually starting a game.Why would a user do that? Maybe if we drill into some specific occurrences, we'll get a clue.
 
 アプリから受信したカスタム イベントは、概要ブレードに名前別に表示されます。
 
@@ -223,7 +223,7 @@ Application Insight は合成トラフィックを自動的に特定して分類
 
 ![](./media/app-insights-web-track-usage/10-filter.png)
  
-ここから、このユーザーは最新のスコアを確認するためにのみログオンしたことがわかります。おそらく、これを簡単にするようなユーザー ストーリーの開発を検討する必要があります (加えて、この特定のストーリーが発生したことを報告するカスタム イベントを実装する必要があります)。
+ここから、このユーザーは最新のスコアを確認するためにのみログオンしたことがわかります。Maybe we should consider developing a user story that makes it easier to do that.(加えて、この特定のストーリーが発生したことを報告するカスタム イベントを実装する必要があります)。
 
 ## プロパティを使用してデータをフィルター処理、検索、および分割する
 イベントには任意のタグと数値をアタッチできます。
@@ -297,9 +297,9 @@ Application Insight は合成トラフィックを自動的に特定して分類
 
 ## A | B テスト
 
-ある機能のどちらのバージョンが成功するかわからない場合は、その両方をリリースして、それぞれを異なるユーザーが利用できるようにします。それぞれの効果を評価した後、統合バージョンに移行します。
+ある機能のどちらのバージョンが成功するかわからない場合は、その両方をリリースして、それぞれを異なるユーザーが利用できるようにします。Measure the success of each, and then move to a unified version.
 
-この方法では、アプリの各バージョンから送信されるすべてのテレメトリに識別可能なタグをアタッチします。そのためには、アクティブな TelemetryContext でプロパティを定義します。これらの既定のプロパティは、アプリケーションによって送信されるすべてのテレメトリ メッセージに追加されます。つまり、カスタムのメッセージだけでなく、標準のテレメトリにも追加されます。
+For this technique, you attach distinct tags to all the telemetry that is sent by each version of your app.You can do that by defining properties in the active TelemetryContext.These default properties are added to every telemetry message that the application sends - not just your custom messages, but the standard telemetry as well.
 
 Application Insights ポータルでは、タグに基づいてデータをフィルター選択およびグループ化 (分割) して、異なるバージョンを比較できます。
 
@@ -329,7 +329,7 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
 個々のテレメトリは、既定値を無視することができます。
 
-すべての新しい TelemetryClients が自動的にコンテキストを使用できるように、汎用の初期化子を設定できます。
+You can set up a universal initializer so that all new TelemetryClients automatically use your context.
 
 ```C#
 
@@ -358,13 +358,13 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
 ## ビルド、評価、学習
 
-分析は、単に問題の解決に役立つだけのものではなく、開発サイクルの重要な部分を構成します。いくつかのヒントを次に示します。
+分析は、単に問題の解決に役立つだけのものではなく、開発サイクルの重要な部分を構成します。Here are some tips:
 
-* アプリケーションの重要なメトリックを見極める。対象ユーザーはできる限り多数のユーザーですか。それとも少数のたいへん満足しているユーザーですか。 アクセス数または売上を最大にしたいと思いますか。
-* 各ストーリーの評価を計画する。新しいユーザー ストーリーまたは機能の概略を考える場合、または既存のユーザー ストーリーまたは機能の更新を計画する場合は、変更の成功をどのように評価するかを常に考える必要があります。コーディングを始める前に、"これが動作したときにメトリックはどのような影響を受けるか。 すべての新しいイベントを追跡する必要があるか。" を常に考える必要があります。 もちろん、機能が稼動状態になったら、分析に注目し、その結果に基づいて対応します。 
-* 他のメトリックを重要なメトリックに関連付ける。たとえば、"お気に入り" 機能を追加した場合は、ユーザーがお気に入りを追加する頻度を確認することになるでしょう。しかし、ユーザーがお気に入りに再びアクセスする頻度を知る方が、おそらくより興味深い結果が得られるでしょう。そして最も重要なことは、お気に入りを利用するユーザーに最終的により多くの製品を購入してもらえるかどうか、ということになります。
-* カナリア テスト。新機能が一部のユーザーにのみ表示されるようにする機能スイッチを設定します。Application Insights を使用して、新機能が意図したように使用されるかどうかを確認します。調整を行った後、より多くのユーザーを対象にリリースします。
-* ユーザーと話をする。 分析は、それだけでは不十分ですが、良好な顧客関係を保つための補完的役割を果たします。
+* Determine the key metric of your application.Do you want as many users as possible, or would you prefer a small set of very happy users? Do you want to maximize visits or sales?
+* Plan to measure each story.When you sketch a new user story or feature, or plan to update an existing one, always think about how you will measure the success of the change.Before coding starts, ask "What effect will this have on our metrics, if it works? Should we track any new events?" And of course, when the feature is live, make sure you look at the analytics and act on the results. 
+* Relate other metrics to the key metric.For example, if you add a "favorites" feature, you'd like to know how often users add favorites.But it's perhaps more interesting to know how often they come back to their favorites.And, most importantly, do customers who use favorites ultimately buy more of your product?
+* Canary testing.Set up a feature switch that allows you to make a new feature visible only to some users.Use Application Insights to see whether the new feature is being used in the way you envisaged.Make adjustments, then release it to a wider audience.
+* Talk to your users! 分析は、それだけでは不十分ですが、良好な顧客関係を保つための補完的役割を果たします。
 
 
 ## 参照
@@ -391,4 +391,4 @@ Application Insights ポータルでは、タグに基づいてデータをフ�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

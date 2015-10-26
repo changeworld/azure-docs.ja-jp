@@ -1,19 +1,19 @@
 <properties 
    pageTitle="管理ポータルでの VPN Gateway の 構成 | Microsoft Azure"
-	description="この記事では、仮想ネットワーク VPN ゲートウェイの構成手順、および VPN ゲートウェイのルーティングの種類を静的から動的、または動的から静的に変更する手順について説明します。"
-	services="vpn-gateway"
-	documentationCenter="na"
-	authors="cherylmc"
-	manager="carolz"
-	editor=""/>
+   description="この記事では、仮想ネットワーク VPN ゲートウェイの構成手順、および VPN ゲートウェイのルーティングの種類を静的から動的、または動的から静的に変更する手順について説明します。"
+   services="vpn-gateway"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="vpn-gateway"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/25/2015"
-	ms.author="cherylmc"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/25/2015"
+   ms.author="cherylmc" />
 
 # Azure ポータルで VPN ゲートウェイを構成する
 
@@ -151,4 +151,4 @@ Virtual Network のクロスプレミス接続の詳細については、[仮想
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

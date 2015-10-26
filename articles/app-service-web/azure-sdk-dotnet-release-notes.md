@@ -65,4 +65,4 @@
 [MSDN の Azure SDK リリース ノート](https://msdn.microsoft.com/library/azure/dn627519.aspx)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

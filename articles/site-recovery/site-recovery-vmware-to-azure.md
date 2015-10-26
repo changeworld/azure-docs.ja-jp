@@ -771,4 +771,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 完全なファイルは、[Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=529428)から入手できる場合があります。マイクロソフトは、この契約の下で明示的には付与されないその他すべての権利を、黙示、禁反言、その他のいずれによるかを問わず留保します。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

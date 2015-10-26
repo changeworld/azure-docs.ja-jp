@@ -148,16 +148,111 @@ Site Recovery は、Azure にレプリケートするときに、ゲスト ク�
 
 
 
-##復旧計画の作成
+##Azure への SQL AlwaysOn の統合
 
-復旧計画は、一緒にフェールオーバーするマシンをグループ化します。開始する前に、[復旧計画](site-recovery-create-recovery-plans.md)と[フェールオーバー](site-recovery-failover.md)の詳細情報を参照してください。
+Azure Site Recovery (ASR) は SQL AlwaysOn をネイティブでサポートします。Azure の仮想マシンを "セカンダリ" として設定した状態で SQL 可用性グループを作成した場合、ASR を使用して可用性グループのフェールオーバーを管理できます。
+
+この機能は現時点でプレビュー段階であり、プライマリ データセンターが System Center Virtual Machine Manager (VMM) で管理される際に使用可能です。
+
+### VMM Serverで管理される環境
+ASR コンテナー内に入ると、[保護された項目] タブの下に SQL Servers のタブが表示されます。
+
+![保護された項目](./media/site-recovery-sql/protected-items.png)
+
+ASR への SQL AlwaysON の統合の手順を以下に示します。
+
+#### 前提条件
+- スタンドアロン サーバーまたはフェールオーバー クラスターでのオンプレミスの SQL Server 
+- SQL Server がインストールされている 1 つまたは複数の Azure 仮想マシン
+- オンプレミスの SQL Server と Azure で実行されている SQL Server 間の SQL 可用性グループ セットアップ
+- PowerShell リモート処理をオンプレミスの SQL Server で有効にする必要があります。VMM Server から SQL Server へのリモート PowerShell 呼び出しが可能になっている必要があります。
+- オンプレミスの SQL Server では、SQL ユーザー グループにユーザー アカウントを追加する際に、少なくとも次のアクセス許可を付与する必要があります。
+	- ALTER AVAILABILITY GROUP - [参照 1](https://msdn.microsoft.com/JA-JP/library/hh231018.aspx)、[参照 2](https://msdn.microsoft.com/JA-JP/library/ff878601.aspx#Anchor_3)
+	- ALTER DATABASE - [参照 1](https://msdn.microsoft.com/JA-JP/library/ff877956.aspx#Security)
+- そのアカウントの実行アカウントは事前に VMM Server 上で作成しておく必要があります。
+- SQL PS モジュールをオンプレミスで実行している SQL Servers と Azure 仮想マシン上にインストールする必要があります。
+- Azure で実行している仮想マシン上に VM Agent をインストールする必要があります。
+- Azure の仮想マシン上で実行している SQL Server でNTAUTHORITY\\System に次のアクセス許可が付与されている必要があります。
+	- ALTER AVAILABILITY GROUP - [参照 1](https://msdn.microsoft.com/JA-JP/library/hh231018.aspx)、[参照 2](https://msdn.microsoft.com/JA-JP/library/ff878601.aspx#Anchor_3)
+	- ALTER DATABASE - [参照 1](https://msdn.microsoft.com/JA-JP/library/ff877956.aspx#Security)
+
+#### SQL Server の追加
+
+[Add SQL] をクリックして、新規の SQL Server を追加します。
+
+![Add SQL](./media/site-recovery-sql/add-sql.png)
+
+SQL Server の管理に使用する SQL Server、VMM、資格情報を詳しく指定します。
+
+![Add SQL Dialog](./media/site-recovery-sql/add-sql-dialog.png)
+
+##### パラメーター
+1. 名前: この SQL Server を表すフレンドリ名
+2. SQL Server (FQDN): 追加するソースの SQL Server の完全修飾ドメイン名 (FQDN)。SQL Server をフェールオーバー クラスターにインストールする場合、クラスターの FQDN を指定し、クラスター ノードの FQDN には指定しないでください。 
+3. SQL Server インスタンス: デフォルトの SQL インスタンスを選択するか、カスタム SQL インスタンス名を指定します。
+4. VMM Server: Azure Site Recovery (ASR) ですでに登録済みの VMM Server のいずれかを選択します。ASR は SQL Server との通信にこの VMM Server を使用します。
+5. 実行アカウント: 上で選択した VMM Server 上で作成した実行アカウント名のいずれかを指定します。この実行アカウントは SQL Server へのアクセスに使用され、SQL Server の可用性グループで読み取りおよびフェールオーバーのアクセス許可を持っている必要があります。 
+
+SQL Server を追加すると、SQL Server タブの下に表示されるようになります。
+
+![SQL Server List](./media/site-recovery-sql/sql-server-list.png)
+
+#### SQL 可用性グループの追加
+
+SQL Server を追加したら、次の手順は ASR への可用性グループの追加になります。それを行うには、前の手順で追加した SQL Server の中をドリルダウンし、[SQL 可用性グループの追加] をクリックします。
+
+![Add SQL AG](./media/site-recovery-sql/add-sqlag.png)
+
+SQL 可用性グループは Azure の 1 つまたは複数の仮想マシンへのレプリケートが可能です。SQL 可用性グループの追加の際、ASR によって可用性グループをフェールオーバーさせる Azure 仮想マシンの名前およびサブスクリプションを指定する必要があります。
+
+![Add SQL AG Dialog](./media/site-recovery-sql/add-sqlag-dialog.png)
+
+上の例では、Availability Group (可用性グループ) DB1-AG がフェールオーバーの際に、サブスクリプション DevTesting2 内で実行している仮想マシン SQLAGVM2 でプライマリとなります。
+
+>[AZURE.NOTE]上の手順で追加した SQL Server 上でプライマリとなる可用性グループのみが ASR に追加可能です。SQL Server に可用性グループ プライマリを作成した場合、もしくは SQL Server を追加したあとに SQL Server にさらに可用性グループを追加した場合は、SQL Server 上で使用可能な [更新] オプションで更新をかけてください。
+
+#### 復旧計画の作成
+
+次の手順は仮想マシンと可用性グループの両方を使用した復旧計画の作成です。手順 1 で使用した VMM Server と同じものをソースとして、Microsoft Azure をターゲットとして選択してください。
+
+![復旧計画の作成](./media/site-recovery-sql/create-rp1.png)
+
+![復旧計画の作成](./media/site-recovery-sql/create-rp2.png)
+
+例では、Sharepoint アプリケーションはバックエンドに SQL 可用性グループを使用している 3 つの仮想マシンで構成されています。この復旧計画では、アプリケーションを構成する可用性グループと仮想マシンの両方を選択できます。
+
+仮想マシンを他のフェールオーバー グループに移動して、フェールオーバーの実行順序を指定することで復旧計画をカスタマイズすることもできます。可用性グループはどのアプリケーションでもバックエンドとして使用されるので、常に一番最初にフェールオーバーされます。
+
+![復旧計画のカスタマイズ](./media/site-recovery-sql/customize-rp.png)
+
+#### フェールオーバー
+
+可用性グループを復旧計画に追加した後は、他のフェールオーバー オプションも使用可能になります。
+
+##### 計画されたフェールオーバー
+
+計画されたフェールオーバーとはデータ損失のないフェールオーバーを意味します。そのためには、SQL 可用性グループの可用性モードを最初に "同期" に設定し、フェールオーバーがトリガーされることで、ASR に可用性グループを追加した際に指定した仮想マシンに対して可用性グループが "プライマリ" となります。フェールオーバーが完了すると、可用性モードは計画されたフェールオーバーがトリガーされる前と同じ値に設定されます。
+
+##### 計画されていないフェールオーバー
+
+計画されていないフェールオーバーではデータの損失が生じることがあります。計画されていないフェールオーバーがトリガーされても、可用性グループの可用性モードは変更されず、ASR に可用性グループを追加した際に指定した仮想マシンに対して "プライマリ" となっています。計画されていないフェールオーバーが完了すると、SQL Server で実行しているオンプレミスのサーバーが再び使用可能となり、レプリケーションの反転が可用性グループに対してトリガーされる必要があります。この操作は復旧計画では使用できず、[SQL Servers] タブの下の SQL 可用性グループにて行われることに注意してください。
+
+##### テスト フェールオーバー
+SQL 可用性グループのテスト フェールオーバーはサポートされていません。SQL 可用性グループを含む復旧計画のテスト フェールオーバーをトリガーしたとしても、可用性グループに対するフェールオーバーはスキップされます。
+
+##### フェールバック
+
+可用性グループをオンプレミスの SQL Server で再度 "プライマリ" にする場合、復旧計画で計画性フェールオーバーをトリガーし、方向を Microsoft Azure からオンプレミスの VMM Server に選択することで行うことができます。
+
+##### 反転レプリケーション
+
+計画されていないフェールオーバーの後、可用性グループで反転レプリケーションをトリガーしてレプリケーションを再開させる必要があります。これが行われるまでは、レプリケーションが中断されたままです。
 
 
-### SQL Server クラスター (SQL Server 2012/2014 Enterprise) の復旧計画の作成
+### VMM で管理されない環境
 
-#### Azure へのフェールオーバー用の SQL Server スクリプトの構成
+VMM Server で管理されない環境については、Azure Automation Runbooks を使用して、SQL 可用性グループのスクリプト化されたフェールオーバーを構成できます。以下が構成手順です。
 
-このシナリオでは、復旧計画用にカスタム スクリプトと Azure Automation を利用して、SQL Server 可用性グループのスクリプト化されたフェールオーバーを構成します。
 
 1.	可用性グループをフェールオーバーするスクリプトのローカル ファイルを作成します。このサンプル スクリプトでは、Azure レプリカ上の可用性グループへのパスを指定し、そのレプリカ インスタンスに可用性グループをフェールオーバーします。このスクリプトは、カスタム スクリプトの拡張を使用して可用性グループを渡すことによって、SQL Server レプリカ仮想マシン上で実行されます。
 
@@ -243,120 +338,25 @@ Site Recovery は、Azure にレプリケートするときに、ゲスト ク�
 
 2. アプリケーションの復旧計画を作成するときに、可用性グループをフェールオーバーするスクリプトを呼び出す「pre-Group 1 boot」というスクリプト化した手順を追加します。
 
-### SQL Server クラスター (Standard) の復旧計画の作成
-
-#### Azure へのフェールオーバー用の SQL Server スクリプトの構成
-
-1.	SQL Server データベース ミラーをフェールオーバーするスクリプトのローカル ファイルを作成します。次のサンプル スクリプトを使用します。
-
-    	Param(
-    	[string]$database
-    	)
-    	Import-module sqlps
-    	Invoke-sqlcmd –query “ALTER DATABASE $database SET PARTNER FORCE_SERVICE_ALLOW_DATA_LOSS”
-
-2.	スクリプトを Azure ストレージ アカウント内の BLOB にアップロードします。次のサンプル スクリプトを使用します。
-
-    	$context = New-AzureStorageContext -StorageAccountName "Account" -StorageAccountKey "Key"
-    	Set-AzureStorageBlobContent -Blob "AGFailover.ps1" -Container "script-container" -File "ScriptLocalFilePath" -context $context
-
-3.	Azure の SQL Server レプリカ仮想マシンでスクリプトを呼び出す Azure Automation Runbook を作成します。これを行うには、次のサンプル スクリプトを使用します。復旧計画での Automation Runbook の使用方法については、[詳細情報](site-recovery-runbook-automation.md)を参照してください。これを行う前に、フェールオーバーした SQL Server 仮想マシン上で仮想マシン エージェントが実行されていることを確認します。
-
-    	workflow SQLAvailabilityGroupFailover
-		{
-    		param (
-        		[Object]$RecoveryPlanContext
-    		)
-
-    	$Cred = Get-AutomationPSCredential -name 'AzureCredential'
-	
-    	#Connect to Azure
-    	$AzureAccount = Add-AzureAccount -Credential $Cred
-    	$AzureSubscriptionName = Get-AutomationVariable –Name ‘AzureSubscriptionName’
-    	Select-AzureSubscription -SubscriptionName $AzureSubscriptionName
-    
-    	InLineScript
-    	{
-     	#Update the script with name of your storage account, key and blob name
-     	$context = New-AzureStorageContext -StorageAccountName "Account" -StorageAccountKey "Key";
-     	$sasuri = New-AzureStorageBlobSASToken -Container "script-container" -Blob "AGFailover.ps1" -Permission r -FullUri -Context $context;
-     
-     	Write-output "failovertype " + $Using:RecoveryPlanContext.FailoverType;
-               
-     	if ($Using:RecoveryPlanContext.FailoverType -eq "Test")
-       		{
-           		#Skipping TFO in this version.
-           		#We will update the script in a follow-up post with TFO support
-           		Write-output "tfo: Skipping SQL Failover";
-       		}
-     	else
-       			{
-           		Write-output "pfo/ufo";
-           		#Get the SQL Azure Replica VM.
-           		#Update the script to use the name of your VM and Cloud Service
-           		$VM = Get-AzureVM -Name "SQLAzureVM" -ServiceName "SQLAzureReplica";     
-       
-           		Write-Output "Installing custom script extension"
-           		#Install the Custom Script Extension on teh SQL Replica VM
-           		Set-AzureVMExtension -ExtensionName CustomScriptExtension -VM $VM -Publisher Microsoft.Compute -Version 1.3| Update-AzureVM; 
-                    
-           		Write-output "Starting AG Failover";
-           		#Execute the SQL Failover script
-           		#Pass the SQL AG path as the argument.
-       
-           		$AGArgs="-SQLAvailabilityGroupPath sqlserver:\sql\sqlazureVM\default\availabilitygroups\testag";
-       
-           		Set-AzureVMCustomScriptExtension -VM $VM -FileUri $sasuri -Run "AGFailover.ps1" -Argument $AGArgs | Update-AzureVM;
-       
-           		Write-output "Completed AG Failover";
-
-       			}
-        
-    		}
-		}
-
-
-
-4. 次の手順を、SQL Server 層をフェールオーバーする復旧計画に追加します。
-
-	- 計画されたフェールオーバーでは、"グループのシャットダウン" 後にプライマリ クラスターをシャットダウンするプライマリ側のスクリプトを追加します。
-	- SQL Server データベース ミラーの仮想マシンを復旧計画 (可能であれば最初のブート グループ) に追加します。
-3.	上記の自動化スクリプトを使用して、この仮想マシン内のミラー コピーをフェールオーバーするフェールオーバー後のスクリプトを追加します。データベース インスタンス名は変更される可能性があるため、新しいデータベースを使用するようアプリケーション層を再構成する必要があります。
-
-
-#### セカンダリ サイトへのフェールオーバー用の SQL Server スクリプトの構成
-
-1.	このサンプル スクリプトは、プライマリ サイトおよびセカンダリ サイト上の VMM ライブラリに追加します。
-
-    	Param(
-    	[string]$database
-    	)
-    	Import-module sqlps
-    	Invoke-sqlcmd –query “ALTER DATABASE $database SET PARTNER FORCE_SERVICE_ALLOW_DATA_LOSS”
-
-2.	SQL Server データベース ミラーの仮想マシンを復旧計画 (可能であれば最初のブート グループ) に追加します。
-3.	上記の VMM スクリプトを使用して、この仮想マシン内のミラー コピーをフェールオーバーするフェールオーバー後のスクリプトを追加します。データベース インスタンス名は変更される可能性があるため、新しいデータベースを使用するようアプリケーション層を再構成する必要があります。
-
-
-
-
 
 ## テスト フェールオーバーの考慮事項
 
 AlwaysOn 可用性グループを使用している場合は、SQL Server 層のテスト フェールオーバーを実行できません。別の方法として、以下のオプションについて検討します。
 
-- 方法 1
+###方法 1
 
-	1. アプリケーション層とフロントエンド層のテスト フェールオーバーを実行します。
-	2. 読み取り専用モードでレプリカのコピーにアクセスするようアプリケーション層を更新し、アプリケーションの読み取り専用テストを実行します。
 
-- 方法 2
+
+1. アプリケーション層とフロントエンド層のテスト フェールオーバーを実行します。
+
+2. 読み取り専用モードでレプリカのコピーにアクセスするようアプリケーション層を更新し、アプリケーションの読み取り専用テストを実行します。
+
+###方法 2
+
 1.	(サイト間の VMM の複製または Azure Backup を使用して) レプリカの SQL Server 仮想マシン インスタンスのコピーを作成し、テスト ネットワークで起動します。
 2.	復旧計画を使用して、テスト フェールオーバーを実行します。
 
-## フェールバックに関する考慮事項
 
-SQL Standard のクラスターの場合、計画外のフェールオーバー後のフェールバックに SQL Server のバックアップが必要となり、ミラー インスタンスから元のクラスターに復元してから、ミラーを再確立する必要があります。
 
 
 
@@ -364,4 +364,4 @@ SQL Standard のクラスターの場合、計画外のフェールオーバー�
 
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

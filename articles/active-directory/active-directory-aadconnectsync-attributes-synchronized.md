@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.date="10/13/2015"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -71,7 +71,7 @@
 | facsimiletelephonenumber| ○| ○| | |
 | givenName| ○| ○| | |
 | homePhone| ○| ○| | |
-| info| ○| ○| ○| |
+| info| ○| ○| ○| この属性は現在、グループには使用されていません。|
 | Initials| ○| ○| | |
 | l| ○| ○| | |
 | legacyExchangeDN| ○| ○| ○| |
@@ -97,11 +97,11 @@
 | msExchELCExpirySuspensionStart| ○| | | |
 | msExchELCMailboxFlags| ○| | | |
 | msExchEnableModeration| ○| | ○| |
-| msExchExtensionCustomAttribute1| ○| ○| ○| |
-| msExchExtensionCustomAttribute2| ○| ○| ○| |
-| msExchExtensionCustomAttribute3| ○| ○| ○| |
-| msExchExtensionCustomAttribute4| ○| ○| ○| |
-| msExchExtensionCustomAttribute5| ○| ○| ○| |
+| msExchExtensionCustomAttribute1| ○| ○| ○| この属性は現在、Exchange Online では使用されていません。 |
+| msExchExtensionCustomAttribute2| ○| ○| ○| この属性は現在、Exchange Online では使用されていません。 |
+| msExchExtensionCustomAttribute3| ○| ○| ○| この属性は現在、Exchange Online では使用されていません。 |
+| msExchExtensionCustomAttribute4| ○| ○| ○| この属性は現在、Exchange Online では使用されていません。 |
+| msExchExtensionCustomAttribute5| ○| ○| ○| この属性は現在、Exchange Online では使用されていません。 |
 | msExchHideFromAddressLists| ○| ○| ○| |
 | msExchImmutableID| ○| | | |
 | msExchLitigationHoldDate| ○| ○| ○| |
@@ -409,11 +409,9 @@
 - 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。mail などの代替 ID 属性は、Azure AD の属性 userPrincipalName と同期されます。
 
 
-## その他のリソース
+## 次のステップ
+[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
-* [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
-* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!--Image references-->
-
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

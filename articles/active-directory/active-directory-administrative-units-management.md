@@ -36,4 +36,4 @@ Azure AD モジュールのソフトウェア要件とインストールの詳�
 ## 次のステップ
 [Azure Active Directory のエディション](active-directory-editions.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

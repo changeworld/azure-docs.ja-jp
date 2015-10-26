@@ -171,4 +171,4 @@ Service Bus の仲介型メッセージング エンティティの使用の詳�
 - [Event Hubs 開発者ガイド](../event-hubs-programming-guide.md)
 - [仲介型メッセージング: 高度なフィルター](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

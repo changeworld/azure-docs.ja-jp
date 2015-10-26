@@ -73,4 +73,4 @@ Azure アカウントの作成がこのプロセスの最初の手順です。SQ
 
 [バックアップと復元に関するベスト プラクティス (Azure BLOB ストレージ サービス)](http://go.microsoft.com/fwlink/?LinkId=272394)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -26,4 +26,4 @@
 
 8. 次の [RBS の構成](#configure-rbs)手順に進みます。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

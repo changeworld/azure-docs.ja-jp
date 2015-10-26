@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="07/17/2015"
+	ms.date="10/13/2015"
 	ms.author="brandwe"/>
 
 # Azure AD の Android アプリへの統合
@@ -406,8 +406,8 @@ adb コマンドの他の例については、https://developer.android.com/tool
 
 Fiddler は、最も簡単な HTTP トレース ツールです。これが ADAL ネットワーク トラフィックを正しく記録するように、次のリンク先にある情報を用いて設定します。Fiddler、または Charles などのツールはいずれも、役立つものとするには、暗号化されていない SSL トラフィックを記録するように構成することが必要です。注: この方法で生成されたトレースには、アクセス トークン、ユーザー名、パスワードなどの、非常に機密性の高い情報が含まれている可能性があります。運用環境のアカウントを使用している場合は、それらのトレースを第三者と共有することがないようにしてください。サポートを受けるためにトレースを他者に提供する必要がある場合は、共有しても問題がないユーザー名とパスワードを使う一時的なアカウントを使用して問題を再現します。
 
-+ [Configure Fiddler For Android](http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid)
-+ [How to listen to httpUrlConnection in Android app from Fiddler](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/How-to-listen-to-httpUrlConnection-in-Android-app-from-Fiddler)
++ [Setting Up Fiddler For Android](http://docs.telerik.com/fiddler/configure-fiddler/tasks/ConfigureForAndroid)
++ [Configure Fiddler Rules For ADAL](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/How-to-listen-to-httpUrlConnection-in-Android-app-from-Fiddler)
 
 
 ### ダイアログ モード
@@ -456,4 +456,4 @@ ADAL バージョン 1.1.0 は、WebViewClient からの onReceivedHttpAuthReque
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -554,7 +554,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 		    return $oozieJobId
 		}
 
-	> [AZURE.NOTE] ワークフロー ジョブを送信するときに別の Web サービスを呼び出して、ジョブが作成された後にそのジョブを開始する必要があります。この場合は、コーディネーター ジョブは、時間によってトリガーされます。このジョブは自動的に開始されます。
+	> [AZURE.NOTE]ワークフロー ジョブを送信するときに別の Web サービスを呼び出して、ジョブが作成された後にそのジョブを開始する必要があります。この場合は、コーディネーター ジョブは、時間によってトリガーされます。このジョブは自動的に開始されます。
 
 6. スクリプトの末尾に次のコードを追加します。この部分は、Oozie ジョブの状態をチェックします。
 
@@ -627,7 +627,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 		# ShowOozieJobLog($oozieJobId)
 		# killOozieJob($oozieJobId)
 
-	追加の機能を実行するには、#記号を削除します。
+	追加の機能を実行するには、# 記号を削除します。
 
 7. HDInsight クラスターが Version 2.1 である場合は、"https://$clusterName.azurehdinsight.net:443/oozie/v2/" を "https://$clusterName.azurehdinsight.net:443/oozie/v1/" に置き換えてください。HDInsight クラスター Version 2.1 は、Web サービスの Version 2 をサポートしていません。
 
@@ -688,7 +688,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 - [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
 - [HDInsight での Hive の使用][hdinsight-use-hive]
 - [HDInsight での Pig の使用][hdinsight-use-pig]
-- [HDInsight 用 C#Hadoop ストリーミング ジョブの開発][hdinsight-develop-streaming-jobs]
+- [HDInsight 用 C# Hadoop ストリーミング ジョブの開発][hdinsight-develop-streaming-jobs]
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-java-mapreduce]
 
 
@@ -738,4 +738,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

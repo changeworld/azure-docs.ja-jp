@@ -2,7 +2,7 @@
  pageTitle="IT プロフェッショナル向けの Azure IoT Hub の情報 | Microsoft Azure"
  description="IT プロフェッショナルがポート要件やセキュリティ バックグラウンドなど、Azure IoT Hub を使用するときに役立つ情報です。"
  services="iot-hub"
- documentationCenter=".net"
+ documentationCenter=""
  authors="dominicbetts"
  manager="timlt"
  editor=""/>
@@ -12,8 +12,8 @@
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
- ms.workload="tbd"
- ms.date="09/04/2015"
+ ms.workload="na"
+ ms.date="09/28/2015"
  ms.author="dobett"/>
 
 # IoT Hub へのアクセスの構成と管理
@@ -49,4 +49,4 @@ IoT Hub のその他の管理エンドポイントへのアクセスも、*iothu
 [lnk-devguide]: iot-hub-devguide.md#security
 [lnk-manage-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

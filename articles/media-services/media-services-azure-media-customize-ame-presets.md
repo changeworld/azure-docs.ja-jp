@@ -517,4 +517,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 [Azure メディア エンコーダーの XML スキーマ](https://msdn.microsoft.com/library/azure/dn584702.aspx)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -4,4 +4,4 @@
 - [AzCopy](../articles/machine-learning/machine-learning-data-science-move-data-to-azure-blob-using-azcopy.md)
 - [Python](../articles/machine-learning/machine-learning-data-science-move-data-to-azure-blob-using-python.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

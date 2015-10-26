@@ -33,7 +33,7 @@
 
 3. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[Create New App]** をクリックします。
 
-4. 新しいアプリの **[Name]** と **[Description]** を入力します。**[Website]** 値に**モバイル アプリの URL** を貼り付けます。次に、**[Callback URL]** に先ほどコピーした **[Callback URL]** を貼り付けます。この URL は、モバイル アプリ ゲートウェイの後にパス _/signin-twitter_ を追加したフォーマットです。たとえば、「`https://contosogateway.azurewebsites.net/signin-twitter`」のように入力します。HTTPS スキームを使用していることを確認します。
+4. 新しいアプリの **[名前]** と **[説明]** を入力します。**[Web サイト]** 値に**モバイル アプリの URL** を貼り付けます。次に、**[コールバック URL]** に先ほどコピーした **[コールバック URL]** を貼り付けます。この URL は、モバイル アプリ ゲートウェイの後にパス _/signin-twitter_ を追加したフォーマットです。たとえば、「`https://contosogateway.azurewebsites.net/signin-twitter`」のように入力します。HTTPS スキームを使用していることを確認します。
 
     ![][0]
 
@@ -72,4 +72,4 @@
 [xamarin]: ../app-services-mobile-app-dotnet-backend-xamarin-ios-get-started-users-preview.md
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

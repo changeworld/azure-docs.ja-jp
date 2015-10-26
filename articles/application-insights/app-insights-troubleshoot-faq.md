@@ -134,7 +134,7 @@ NuGet パッケージを 0.17 以降に更新した後に上記のエラーが�
 
 + 概要ページで、検索タイルをクリックして診断検索を開いてください。データはまずここに表示されます。
 + [更新] ボタンをクリックします。ブレードは周期的に自動で更新されますが、手動でも更新できます。時間範囲が広いと、更新間隔は長くなります。
-+ Microsoft Azure のスタート ボードで、サービス状態マップを確認してください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
++ Microsoft Azure のスタート画面で、サービス状態マップを確認してください。アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
 + [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)も参照してください。
 
 #### サーバーにアプリケーションを発行したのでデータがない
@@ -170,7 +170,7 @@ dc.services.visualstudio.com への https POST 呼び出しを中継できるプ
 
 ## ポータル
 
-#### <a name="q05"></a>Microsoft Azure プレビューのスタート ボードを表示しています。Application Insights でデータを見つけるにはどうすればいいですか?
+#### <a name="q05"></a>Microsoft Azure プレビューのスタート画面を表示しています。Application Insights でデータを見つけるにはどうすればいいですか?
 
 次のどちらかの操作を行います。
 
@@ -230,7 +230,7 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 
 ## その他の回答
 
-* [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
+* [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/JA-JP/home?forum=ApplicationInsights)
 
 
 <!--Link references-->
@@ -238,9 +238,9 @@ Application Insights リソースを作成するために [PowerShell スクリ�
 [azurediagnostic]: ../insights-how-to-use-diagnostics.md
 [data]: app-insights-data-retention-privacy.md
 [platforms]: app-insights-platforms.md
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

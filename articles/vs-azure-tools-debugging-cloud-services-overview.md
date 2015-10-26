@@ -27,4 +27,4 @@ Azure Tools for Microsoft Visual Studio および Azure SDK を使用すれば�
 
 - Visual Studio からクラウド サービスをデプロイするときに、そのリモート デバッグを有効にできます。デプロイメントのリモート デバッグを有効にすると、各ロール インスタンスを実行する仮想マシンにリモート デバッグ サービスがインストールされます。msvsmon.exe をはじめとするこれらのサービスは、パフォーマンスに影響せず、追加コストも発生しません。詳細については、「[Azure でクラウド サービスをデバッグする](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-a-cloud-service-in-azure)」を参照してください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

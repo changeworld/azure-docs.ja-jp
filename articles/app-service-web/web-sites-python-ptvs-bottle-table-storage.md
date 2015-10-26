@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="Python Tools 2.2 for Visual Studio を使用した Azure 上の Bottle と Azure テーブル ストレージ"
-	description="Python Tools for Visual Studio を使用して、 Azure テーブル ストレージにデータを保存する Bottle アプリケーションを作成し、Azure App Service Web Apps に Web アプリをデプロイする方法について説明します。"
-	services="app-service\web"
-	documentationCenter="python"
-	authors="huguesv"
-	manager="wpickett"
+	pageTitle="Python Tools 2.2 for Visual Studio を使用した Azure 上の Bottle と Azure テーブル ストレージ" 
+	description="Python Tools for Visual Studio を使用して、 Azure テーブル ストレージにデータを保存する Bottle アプリケーションを作成し、Azure App Service Web Apps に Web アプリをデプロイする方法について説明します。" 
+	services="app-service\web" 
+	documentationCenter="python" 
+	authors="huguesv" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="python"
-	ms.topic="article"
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="python" 
+	ms.topic="article" 
 	ms.date="08/30/2015"
 	ms.author="huguesv"/>
 
@@ -215,4 +215,4 @@ Python Tools for Visual Studio、Bottle および Azure テーブル ストレ�
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

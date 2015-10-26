@@ -94,7 +94,7 @@ Windows ベースおよび Linux ベースのクラスター用のクラスタ�
 
 Azure にはさまざまなコンピューティング、データ、ネットワーク、および関連のサービスがあり、ビッグ コンピューティング ソリューションとワークフローに使用できます。これらの各サービスについて詳しくは、Azure サービスのドキュメントを参照してください。Batch および HPC アプリケーションでのいくつかの一般的な方法については、この記事の[ソリューション シナリオ](#solution-scenarios)を参照してください。
 
->[AZURE.NOTE]Azure プラットフォームには定期的に新しいサービスが導入されており、シナリオに役立つ可能性があります。プレビュー サービスの使用はテストまたは概念実証のデプロイに対してのみ推奨され、運用ワークロードには推奨されません。質問がある場合は、[Azure パートナー](https://pinpoint.microsoft.com/ja-JP/search?keyword=azure)または電子メール **bigcompute@microsoft.com* を利用してお問い合わせください。
+>[AZURE.NOTE]Azure プラットフォームには定期的に新しいサービスが導入されており、シナリオに役立つ可能性があります。プレビュー サービスの使用はテストまたは概念実証のデプロイに対してのみ推奨され、運用ワークロードには推奨されません。質問がある場合は、[Azure パートナー](https://pinpoint.microsoft.com/ja-jp/search?keyword=azure)または電子メール **bigcompute@microsoft.com* を利用してお問い合わせください。
 
 ### コンピューティング サービス
 
@@ -222,4 +222,4 @@ Batch で作成できる一般的なワークフローについては、次の�
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

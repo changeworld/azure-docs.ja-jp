@@ -23,7 +23,8 @@
 
 このドキュメントは、Microsoft とそのパートナーによって書かれた、Microsoft Azure での Linux ベースの Virtual Machines の実行およびその他のオープン ソースのコンピューティング環境とアプリケーションに関するすべてのトピックをまとめて一覧にしたものです。Azure やオープン ソース コンピューティングの環境はめまぐるしく変化しています。最新情報を追加し、古くなった情報を削除するよう常に最善を尽くしていますが、*それでも*このドキュメントの情報が最新ではない可能性があります。不足などあればコメント欄よりお知らせください。または、[GitHub リポジトリ](https://github.com/Azure/azure-content/)でプル要求を送信してください。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、デプロイメント モデルに関係なくトピックを一覧します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 ## 一般的な注意事項
 このページのセクションは、右に示すように分けられています。(トピックが複数のコンセプト、ディストリビューション、テクノロジに関連しているため、複数のセクションにリンクが出現します)。 さらに、さまざまな Linux オプション、イメージ リポジトリ、ケース スタディに関するトピック、および独自のカスタム イメージをアップロードする操作方法に関するトピックがあります。
@@ -310,4 +311,4 @@ CoreOS は、カスタマイズを細かく制御できる純粋なコンピュ�
 [How to use docker-machine on Azure]: virtual-machines-docker-machine.md
 [How to use docker with swarm on Azure]: virtual-machines-docker-swarm.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

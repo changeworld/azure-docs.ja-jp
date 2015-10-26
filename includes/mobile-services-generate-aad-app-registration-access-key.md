@@ -1,4 +1,4 @@
-1. [Azure の管理ポータル](https://manage.windowsazure.com/)でディレクトリ ページの **アプリケーション** タブをクリックします。
+1. **Azure の管理ポータル**でディレクトリ ページの [[アプリケーション]](https://manage.windowsazure.com/) タブをクリックします。
   
 2. 統合アプリケーションの登録をクリックします。
 
@@ -30,4 +30,4 @@
     ![](./media/mobile-services-generate-aad-app-registration-access-key/aad-app-settings.png)
   
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

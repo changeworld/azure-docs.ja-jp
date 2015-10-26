@@ -720,7 +720,7 @@ _.chain()
     .value();
 </pre>
 </td>
-<td>述語があり、id = "X998\_Y998" のドキュメントのクエリ。ID とメッセージ (エイリアスは msg) をプロジェクションします。</td>
+<td>述語があり、id = "X998_Y998" のドキュメントのクエリ。ID とメッセージ (エイリアスは msg) をプロジェクションします。</td>
 </tr>
 <tr>
 <td>
@@ -919,4 +919,4 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 -	[サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 -	[Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

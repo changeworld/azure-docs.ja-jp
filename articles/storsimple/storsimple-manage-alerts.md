@@ -234,4 +234,4 @@ StorSimple Manager サービスのダッシュボードでは、アラートが�
 - [StorSimple エラーの詳細](storsimple-troubleshoot-operational-device.md)
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -3,7 +3,7 @@
         description="クラウドにファイル共有を作成して、Azure VM または Linux で実行されているオンプレミスのアプリケーションからマウントします。"
         services="storage"
         documentationCenter="na"
-        authors="jutang"
+        authors="jasontang501"
         manager="jahogg"
         editor="" />
 
@@ -12,7 +12,7 @@
       ms.tgt_pltfrm="na"
       ms.devlang="na"
       ms.topic="article"
-      ms.date="09/28/2015"
+      ms.date="10/06/2015"
       ms.author="jutang;tamram" />
 
 
@@ -28,7 +28,7 @@ Azure で実行されているアプリケーションでは、Azure の仮想�
 
 Linux の SMB クライアントでは暗号化はまだサポートされていないため、Linux からファイル共有をマウントするには、クライアントがファイル共有と同じ Azure リージョンに存在する必要があります。ただし、Linux での暗号化のサポートは、SMB 機能を担当している Linux 開発者によって実装される予定です。今後の暗号化をサポートする Linux ディストリビューションによって、任意の場所から Azure File 共有をマウントできるようになります。
 
-## 使用する Linux ディストリビューション ##
+## 使用する Linux ディストリビューションの選択 ##
 
 Azure で Linux 仮想マシンを作成するときに、Azure イメージ ギャラリーの SMB 2.1 以降をサポートする Linux イメージを指定できます。推奨される Linux イメージの一覧を次に示します。
 
@@ -57,9 +57,7 @@ Azure で Linux 仮想マシンを作成するときに、Azure イメージ ギ
 
     //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username= myaccountname,password= StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 
-具体的な例を次に示します。
-
-Azure マーケットプレースで入手できる Linux イメージ Ubuntu Server 15.04 を使用して Azure VM を作成した場合は、次のようにファイルをマウントできます。
+たとえば、Linux image Ubuntu Server 15.04 (Azure イメージ ギャラリーから入手可能) を使用して Azure VM を作成した場合、次のようにファイルをマウントできます。
 
     azureuser@azureconubuntu:~$ sudo apt-get install apt-file
     azureuser@azureconubuntu:~$ sudo mkdir /mnt/mountpoint
@@ -85,6 +83,28 @@ Open SUSE 13.2 を使用する場合は、次に示すようにファイルを�
     Filesystem  Size  Used Avail Use% Mounted on
     //myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
 
+## ファイル共有の管理 ##
+
+[Azure プレビュー ポータル](https://portal.azure.com/)では、Azure File ストレージを管理するためのユーザー インターフェイスを使用できるようになりました。Web ブラウザーから、次の操作を実行できます。
+
+- ファイル共有からのファイルのアップロードおよびダウンロード
+- 各ファイル共有の実際の使用状況の監視
+- ファイル共有のサイズ クォータの調整
+- Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドのコピー 
+
+また、Linux から Azure のクロスプラットフォームのコマンドライン インターフェイス (Azure CLI) を使用してファイル共有を管理することもできます。Azure CLI には、File ストレージなど、Azure Storage を処理できるオープン ソースのクロスプラットフォーム コマンド セットが用意されています。豊富なデータ アクセス機能だけでなく、Azure ポータルにあるものと同じ機能の多くを使用できます。たとえば、「[Azure Storage での Azure CLI の使用](storage-azure-cli.md)」をご覧ください。
+
+## File ストレージを使用した開発 ##
+
+開発者は、[Azure Storage Client Library for Java](https://github.com/azure/azure-storage-java) を使用して、File ストレージでアプリケーションを作成できます。コード サンプルについては、「[Java からファイル ストレージを使用する方法](storage-java-how-to-use-file-storage.md)」をご覧ください。
+
+[Azure Storage Client Library for Node.js](https://github.com/Azure/azure-storage-node) を使用して File ストレージに対して開発することもできます。
+
+## フィードバックと詳細情報 ##
+
+Linux ユーザーからのご意見をお待ちしています。
+
+Azure File storage for Linux ユーザーのグループによって、File ストレージを Linux で評価および使用するときにフィードバックを共有できるフォーラムが提供されています。[Azure File Storage Linux ユーザー](mailto:azurefileslinuxusers@microsoft.com)にメールを送信して、ユーザーのグループに参加してください。
 
 ## 次のステップ
 
@@ -110,4 +130,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

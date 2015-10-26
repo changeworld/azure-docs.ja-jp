@@ -94,4 +94,4 @@ ACR を削除するには、管理ポータルの **[構成]** ページを使�
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

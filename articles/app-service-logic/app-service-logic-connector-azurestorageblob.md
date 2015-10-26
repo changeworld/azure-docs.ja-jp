@@ -104,4 +104,4 @@ BLOB の書き込みコンテンツ | アップロードする BLOB のコンテ
 [11]: ./media/app-service-logic-connector-azurestorageblob/BasicInputsUploadBlob.PNG
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

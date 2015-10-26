@@ -31,7 +31,7 @@ Visual Studio Application Insights を使うと、アプリの可用性、パフ
 ![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-sharepoint/01-new.png)
 
 
-表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。あるいは、[参照] ボタンをクリックして探します。
+表示されるブレードには、アプリケーションに関するパフォーマンスと使用状況データが表示されます。To get back to it next time you login to Azure, you should find a tile for it on the start screen.あるいは、[参照] ボタンをクリックして探します。
     
 
 
@@ -102,10 +102,10 @@ Web パーツを挿入し、コード スニペットをそれに埋め込みま
 
 * [Web テスト](app-insights-monitor-web-app-availability.md)はサイトの可用性を監視します。
 
-* その他の種類のアプリのための [Application Insights](app-insights-get-started.md)。
+* その他の種類のアプリのための [Application Insights](app-insights-overview.md)。
 
 
 
 <!--Link references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

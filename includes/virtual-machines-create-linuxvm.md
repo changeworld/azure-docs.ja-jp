@@ -39,4 +39,4 @@
 
 これらすべての Azure CLI 仮想マシン コマンドの詳細については、「[サービス管理 API での Azure CLI の使用](../articles/virtual-machines/virtual-machines-command-line-tools.md)」を参照してください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

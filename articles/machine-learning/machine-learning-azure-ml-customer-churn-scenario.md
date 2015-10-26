@@ -198,7 +198,6 @@ Machine Learning Studio でホストされたモデルは、実行速度の点�
 Azure Machine Learning にはほかにも便利な機能があり、元から利用できる事前定義済みモジュールのリポジトリにカスタム モジュールを追加できます。この機能を利用すれば、ライブラリを選択し、垂直市場向けのテンプレートを作成できます。これは、市場で Azure Machine Learning を差別化している重要な機能です。
 
 このトピックについては、いずれ、ビッグ データ分析との絡みで説明できればと考えています。
-
 ##まとめ
 このペーパーでは、汎用フレームワークを使用して、顧客離れという一般的な問題に対処するための効果的なアプローチを取り上げました。スコア付けモデルのプロトタイプについて検討し、それを Azure Machine Learning を使って実装しました。最後に、同等の SAS のアルゴリズムと比較しつつ、プロトタイプ ソリューションの正確度とパフォーマンスを評価しました。
 
@@ -212,7 +211,6 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 このフィードバックは、今後発表するホワイト ペーパーの品質向上に利用させていただきます。
 
 [こちらからフィードバックをお送りください](mailto:sqlfback@microsoft.com)。
-
 ##参照
 [1] 予測分析: Beyond the Predictions (予想を超える)、W. McKnight、Information Management、2011 年 7 月/8 月、p18～20。
 
@@ -241,4 +239,4 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
 
-<!-----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

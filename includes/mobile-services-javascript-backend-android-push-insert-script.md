@@ -37,4 +37,4 @@
 
    	これで、新しい insert スクリプトが登録されます。このスクリプトは [gcm オブジェクト](http://go.microsoft.com/fwlink/p/?LinkId=282645)を使用して、挿入が成功した後に、登録されているすべてのデバイスにプッシュ通知を送信します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

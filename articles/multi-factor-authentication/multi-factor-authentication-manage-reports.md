@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication レポート"
-	description="ここでは、Azure Multi-Factor Authentication 機能のレポートを使用する方法について説明します。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="billmath"
-	manager="stevenpo"
+	pageTitle="Azure Multi-Factor Authentication レポート" 
+	description="ここでは、Azure Multi-Factor Authentication 機能のレポートを使用する方法について説明します。" 
+	services="multi-factor-authentication" 
+	documentationCenter="" 
+	authors="billmath" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.service="multi-factor-authentication" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/24/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication のレポート
@@ -35,8 +35,8 @@ Azure Multi-Factor Authentication は、個人や組織が使用できるいく�
 
 1. [http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。
 2. 左側で、[Active Directory] を選択します。
-3. 上部にある [多要素認証プロバイダー] を選択します。多要素認証プロバイダーの一覧が表示されます。
-4. 複数の多要素認証プロバイダーがある場合は、不正アクセスのアラート レポートを表示するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。これにより、Azure Multi-Factor Authentication 管理ポータルが開きます。
+3. 上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。
+4. 複数の Multi-Factor Authentication プロバイダーがある場合は、不正アクセスのアラート レポートを表示するプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。これにより、Azure Multi-Factor Authentication 管理ポータルが開きます。
 5. Azure Multi-Factor Authentication 管理ポータルの左側に、[レポートの表示] が表示されます。ここから、上記で説明したレポートを選択できます。
 
 
@@ -50,4 +50,4 @@ Azure Multi-Factor Authentication は、個人や組織が使用できるいく�
 * [Azure Multi-Factor Authentication (MSDN)](https://msdn.microsoft.com/library/azure/dn249471.aspx)
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

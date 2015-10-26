@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ExpressRoute 回線の構成ワークフロー |Microsoft Azure"
+   pageTitle="ExpressRoute 回線の構成ワークフロー | Microsoft Azure"
    description="このページでは、ExpressRoute の回線とピアリングを構成するためのワークフローについて段階的に説明します。"
    documentationCenter="na"
    services="expressroute"
@@ -12,10 +12,10 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/06/2015"
+   ms.date="10/12/2015"
    ms.author="cherylmc"/>
 
-# ExpressRoute 回線のプロビジョニング ワークフローと回線の状態
+# 回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
 このページでは、サービス プロビジョニングと上位のルーティング構成ワークフローについて段階的に説明します。
 
 ![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
@@ -121,4 +121,4 @@ BGP プロビジョニング状態からは、Microsoft エッジで BGP セッ�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

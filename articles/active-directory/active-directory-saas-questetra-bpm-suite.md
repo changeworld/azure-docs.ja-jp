@@ -265,4 +265,4 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 [300]: ./media/active-directory-saas-questetra-bpm-suite/questera_bpm_suite_11.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

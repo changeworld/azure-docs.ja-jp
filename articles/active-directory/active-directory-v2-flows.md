@@ -93,7 +93,7 @@ Web API は、アクセス許可 ([スコープ](active-directory-v2-scopes.md)�
 
 Web API は、すべての種類のアプリ (Web サーバー アプリ、デスクトップ アプリとモバイル アプリ、シングル ページ アプリ、サーバー側のデーモン、さらにそれ以外の Web API など) から access\_token を受信できます。例として、Web API を呼び出す Web サーバー アプリのフロー全体を見てみましょう。
 
-![Web App Web API Swimlanes Image](../media/active-directory-v2-flows/convergence_scenarios_webapp_webapi.png)
+![Web API のスイムレーン イメージ](../media/active-directory-v2-flows/convergence_scenarios_webapp_webapi.png)
 
 authorization\_code と refresh\_token についてのほか、access\_tokens の詳しい取得手順については、[OAuth 2.0 プロトコルの説明](active-directory-v2-protocols.md#oauth2-authorization-code-flow)を参照してください。
 
@@ -105,7 +105,7 @@ v2.0 アプリ モデルと OAuth 2.0 access\_token で Web API をセキュリ�
 
 このフローでは、アプリはユーザーのサインインの際に v2.0 エンドポイントから authorization\_code を受け取ります。これは、現在サインインしているユーザーの代わりにバックエンド サービスを呼び出すアプリのアクセス許可を表します。次に、アプリはバックグラウンドで authoriztion\_code を OAuth 2.0 access\_token および refresh\_token と交換します。アプリはその access\_token を使って HTTP 要求で Web API に対して認証を実行します。また、access\_token の有効期限が切れた場合は、refresh\_token を使って新しい access\_token を取得します。
 
-![Native App Swimlanes Image](../media/active-directory-v2-flows/convergence_scenarios_native.png)
+![ネイティブ アプリのスイムレーン イメージ](../media/active-directory-v2-flows/convergence_scenarios_native.png)
 
 ## 現在のプレビューの制限事項
 これらの種類のアプリは、現時点では v2.0 アプリ モデルのプレビューでサポートされていませんが、一般公開に間に合うように準備中です。v2.0 アプリ モデル パブリック プレビューのその他の制限事項については、[v2.0 プレビューの制限事項に関する記事](active-directory-v2-limitations.md)を参照してください。
@@ -125,4 +125,4 @@ v2.0 アプリ モデルによって保護された Web API から、同じよ�
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant ([On-Behalf-Of フロー](active-directory-v2-protocols.md#oauth2-on-behalf-of-flow)) を使用してサポートできます。しかし現時点では v2.0 アプリ モデル プレビューに On-Behalf-Of フローが実装されていません。一般提供版 Azure AD サービスにおけるこのフローの動作については、[GitHub の On-Behalf-Of コード サンプル](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

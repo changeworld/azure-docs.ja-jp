@@ -15,4 +15,4 @@
 	これで、プロジェクトを使用する準備ができました。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

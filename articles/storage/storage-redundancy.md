@@ -1,21 +1,21 @@
 
-<properties 
-  pageTitle="Azure Storage のレプリケーション | Microsoft Azure" 
-  description="Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされています。レプリケーション オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。" 
-  services="storage" 
-  documentationCenter="" 
-  authors="tamram" 
-  manager="adinah" 
-  editor=""/>
+<properties 
+  pageTitle="Azure Storage のレプリケーション |Microsoft Azure" 
+  description="Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされています。レプリケーション オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。" 
+  services="storage" 
+  documentationCenter="" 
+  authors="tamram" 
+  manager="adinah" 
+  editor=""/>
 
-<tags 
-  ms.service="storage" 
-  ms.workload="storage" 
-  ms.tgt_pltfrm="na" 
-  ms.devlang="na" 
-  ms.topic="article" 
-  ms.date="09/01/2015" 
-  ms.author="tamram"/>
+<tags 
+  ms.service="storage" 
+  ms.workload="storage" 
+  ms.tgt_pltfrm="na" 
+  ms.devlang="na" 
+  ms.topic="article" 
+  ms.date="10/07/2015" 
+  ms.author="tamram"/>
 
 # Azure Storage のレプリケーション
 
@@ -56,7 +56,7 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 ゾーン冗長ストレージ (ZRS) では、1 つまたは 2 つのリージョン内の 2 つから 3 つの施設でデータがレプリケートされるため、LRS よりも高い持続性を実現します。ご使用のストレージ アカウントで ZRS が有効になっている場合、1 つの施設で障害が発生した場合でもデータは保持されます。
 
 
->[AZURE.NOTE]ZRS の使用は、現在、ブロック BLOB に限られます。ストレージ アカウントを作成し、ゾーン冗長レプリケーションを選んだ後に、他の種類のレプリケーションを使用するように変更することはできません (また、その逆もできません)。
+>[AZURE.NOTE]ZRS は現在、ブロック BLOB のみで使用でき、2014-02-14 以降のバージョンでのみサポートされています。ストレージ アカウントを作成し、ゾーン冗長レプリケーションを選んだ後に、他の種類のレプリケーションを使用するように変更することはできません (また、その逆もできません)。
 
 
 ## geo 冗長ストレージ
@@ -101,7 +101,7 @@ GRS が有効なストレージ アカウントでは、更新は最初にプラ
 
 - [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)
 - [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)  
-- [RA-GRS を使用した Microsoft Azure Storage Emulator 3.1](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/08/microsoft-azure-storage-emulator-3-1-with-ra-grs.aspx)
+- [RA-GRS を使用した Microsoft Azure ストレージ エミュレーター 3.1](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/08/microsoft-azure-storage-emulator-3-1-with-ra-grs.aspx)
 - [Azure Storage SOSP ペーパー](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

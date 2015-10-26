@@ -29,4 +29,4 @@ Data Factory は、お客様のサブスクリプションが互いのワーク�
 
 Azure リソース マネージャーでは、API 呼び出しの制限があります。API の呼び出しは、[Azure リソース マネージャーの API 制限](azure-subscription-service-limits/#resource-group-limits)内の割合で実行できます。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -20,11 +20,12 @@
 
 # Azure 仮想マシンへの SharePoint 2010 のデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 Microsoft SharePoint Server 2010 は高度に柔軟なデプロイを行い、ビジネスのニーズと目標に沿った適切なデプロイ シナリオを決定するのに役立ちます。Microsoft Azure でホストされ管理される Azure Virtual Machines は、Microsoft SQL Server や SharePoint デプロイのように、さまざまなオンデマンド アプリケーションやデータベース ワークロードをサポートする、信頼性が高く実際に利用できる総合的なインフラストラクチャを実現します。
 
-Azure Virtual Machines は複数のワークロードをサポートしますが、この記事では SharePoint のデプロイを取り上げます。Azure の仮想マシンを使用すると、SharePoint インフラストラクチャをすばやく作成して管理できるだけでなく、ほぼすべてのホストを対象として汎用的にプロビジョニングやアクセスを行えます。プロセッサ、RAM、CPU 範囲などの SharePoint 仮想マシン リソースを全面的にコントロールして管理できます。
+Azure 仮想マシンは複数のワークロードをサポートしますが、この記事では SharePoint のデプロイを取り上げます。Azure の仮想マシンを使用すると、SharePoint インフラストラクチャをすばやく作成して管理できるだけでなく、ほぼすべてのホストを対象として汎用的にプロビジョニングやアクセスを行えます。プロセッサ、RAM、CPU 範囲などの SharePoint 仮想マシン リソースを全面的にコントロールして管理できます。
 
 Azure の仮想マシンを活用すると、ハードウェアを用意する必要性が減少するため、高い事前コストや複雑な処理に対処するのではなく、規模に応じてインフラストラクチャを構築し管理することに目を向けることができます。つまり、従来のデプロイのように日単位や週単位ではなく、時間単位で技術革新、実験、反復作業ができるようになります。
 
@@ -50,7 +51,7 @@ SharePoint の物理サーバーとファームをデプロイ、テスト、お
 
 ### 使用量の測定
 
-Azure の仮想マシンには、SharePoint シナリオ用のコンピューティング パワー、メモリ、ストレージが用意されており、その価格は一般にリソースの消費量に基づいて決められます。使用した分だけ料金を支払えばよく、SharePoint インフラストラクチャを実行するのに必要な容量はすべて提供されます。料金と課金の詳細については、[料金の概要ページ](http://azure.microsoft.com/pricing/)を参照してください。Azure からオンプレミスのネットワークにストレージとデータを移動すると、料金が若干掛かります。ただし Azure の場合、データのアップロードには料金がかかりません。
+Azure の仮想マシンには、SharePoint シナリオ用のコンピューティング パワー、メモリ、ストレージが用意されており、その価格は一般にリソースの消費量に基づいて決められます。使用した分だけ料金を支払えばよく、SharePoint インフラストラクチャを実行するのに必要な容量はすべて提供されます。価格と課金の詳細については、[価格の概要ページ](http://azure.microsoft.com/pricing/)を参照してください。Azure からオンプレミスのネットワークにストレージとデータを移動すると、料金が若干掛かります。ただし Azure の場合、データのアップロードには料金がかかりません。
 
 ### 柔軟性
 
@@ -74,7 +75,7 @@ Azure ポータルでは、SysPrep ツールが既に実行されている場所
 
 ## Azure への SharePoint 2010 のデプロイ 
 
-次の手順に従うことで、従来のデプロイメント モデルを使用して SharePoint 2010 を Azure にデプロイできます。
+次の手順に従うことで、従来のデプロイ モデルを使用して SharePoint 2010 を Azure にデプロイできます。
 
 1. Azure サブスクリプション アカウントを使用して [Microsoft Azure 管理ポータル](http://manage.windowsazure.com/)にサインインします。Azure アカウントを持っていない場合は、[Azure の無料試用版にサインアップしてください](http://azure.microsoft.com/pricing/free-trial/)。
 2. 基本オペレーティング システムの仮想マシンを作成するには、Azure ポータルで、**[新規]、[Compute]、[仮想マシン]、[ギャラリーから]** の順にクリックします。
@@ -164,7 +165,7 @@ SharePoint 開発環境とテスト環境を Azure に実装するには、次�
 	- SharePoint 2010 簡易セットアップ スクリプトを使用して、SharePoint 開発マシンを構築します。詳細については、「[SharePoint 2010 Easy Setup Script (SharePoint 2010 簡易セットアップ スクリプト)](http://www.microsoft.com/download/details.aspx?id=23415)」を参照してください。Windows PowerShell を使用します。詳細については、「[Windows PowerShell を使用して SharePoint Server 2010 をインストールする](http://technet.microsoft.com/library/cc262839.aspx)」を参照してください。CodePlex プロジェクトの AutoSPInstaller を使用します。詳細については、[CodePlex の AutoSPInstaller](http://autospinstaller.codeplex.com/) のページを参照してください。
 	- Visual Studio をインストールします。詳細については、「[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)」を参照してください。
 	- SQL Server をインストールします。詳細については、「[SysPrep を使用した SQL Server 2014 のインストール](http://msdn.microsoft.com/library/ee210664.aspx)」を参照してください。
-3. アプリケーションとデータベースのためのデプロイ パッケージとスクリプトの開発: イメージ ライブラリにある仮想マシンを使用する場合は、目的のオンプレミスのアプリケーションとデータベースを Azure Virtual Machines にデプロイできます。
+3. アプリケーションとデータベースのためのデプロイ パッケージとスクリプトの開発: イメージ ライブラリにある仮想マシンを使用する場合は、目的のオンプレミスのアプリケーションとデータベースを Azure 仮想マシンにデプロイできます。
 	- SQL Server Data Tools と Visual Studio を使用して、既存のオンプレミスのアプリケーションとデータベースのためのデプロイ パッケージを作成します。
 	- このパッケージを使用して、アプリケーションとデータベースを Azure の仮想マシンにデプロイします。
 4. SharePoint アプリケーションとデータベースのデプロイ:
@@ -182,11 +183,11 @@ SharePoint 開発環境とテスト環境を Azure に実装するには、次�
 
 このシナリオの場合、SharePoint Server は公開された Web サイトをホストする土台として使用されます。安全で拡張性の高いクラウド インフラストラクチャ上で、ビジネス Web サイトの迅速なデプロイ、カスタマイズ、およびホストができます。Azure で SharePoint の公開 Web サイトを使用すると、トラフィックの増大に応じてサイズを変更し、使用した分だけ料金を支払うことができます。オンプレミスと同様の一般的ツールを、Azure 上の SharePoint でもコンテンツのオーサリング、ワークフロー、および承認に使用できます。
 
-さらに、Azure Virtual Machines を使用すると、仮想マシン上で動作しているステージング環境と運用環境を簡単に構成できます。Azure で作成した SharePoint の公開仮想マシンは、仮想ストレージにバックアップできます。さらに、災害復旧目的で、連続的な geo レプリケーション機能を利用して、あるデータ センターにある仮想マシンを遠く離れた別のデータ センターに自動的にバックアップすることができます。
+さらに、Azure Virtual Machines を使用すると、仮想マシン上で動作しているステージング環境と運用環境を簡単に構成できます。Azure で作成した SharePoint の公開仮想マシンは、仮想ストレージにバックアップできます。さらに、障害復旧目的で、連続的な geo レプリケーション機能を利用して、あるデータ センターにある仮想マシンを遠く離れた別のデータ センターに自動的にバックアップすることができます。
 
 Azure インフラストラクチャの仮想マシンは、SQL Server や SharePoint Server など他の Microsoft 製品でも動作することが検証されサポートされています。Azure および SharePoint Server は連携して利用すると一段と便利です。どちらも、最適な体験を提供できるように徹底的に統合、サポート、テストされています。どちらも SharePoint アプリケーションと Azure インフラストラクチャのサポートが一元化されています。
 
-このシナリオでは、余分なトラフィックをサポートするために SharePoint Server にフロントエンドの Web サーバーを追加する必要があります。追加するサーバーは、ユーザー認証とアクセス制御をサポートするために、セキュリティの強化、および Active Directory Domain Services ドメイン コントローラーが必要です。図 4 に、このシナリオのレイアウトを示します。
+このシナリオでは、余分なトラフィックをサポートするために SharePoint Server にフロントエンドの Web サーバーを追加する必要があります。追加するサーバーは、ユーザー認証とアクセス制御をサポートするために、セキュリティの強化、および Active Directory ドメイン サービス ドメイン コントローラーが必要です。図 4 に、このシナリオのレイアウトを示します。
 
 ![azure-sharepoint-wp-12](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-12.png)
 
@@ -194,7 +195,7 @@ Azure インフラストラクチャの仮想マシンは、SQL Server や Share
 
 公開された SharePoint ファームを Azure に実装するには、次の手順に従います。
 
-1. Active Directory のデプロイ: Active Directory を Azure の仮想マシンにデプロイするときに必要な基本的要件は、オンプレミスの仮想マシン (そしてある程度は物理マシン) にデプロイするときと同様です。ただし同一ではありません。この違いの詳細、指針、その他の考慮事項については、「[Azure Virtual Machines での Active Directory のデプロイ ガイドライン](http://msdn.microsoft.com/library/jj156090)」を参照してください。Azure で Active Directory をデプロイするには、以下の手順を実行します。
+1. Active Directory のデプロイ: Active Directory を Azure の仮想マシンにデプロイするときに必要な基本的要件は、オンプレミスの仮想マシン (そしてある程度は物理マシン) にデプロイするときと同様です。ただし同一ではありません。この違いの詳細、指針、その他の考慮事項については、「[Azure 仮想マシンでの Active Directory のデプロイ ガイドライン](http://msdn.microsoft.com/library/jj156090)」を参照してください。Azure で Active Directory をデプロイするには、以下の手順を実行します。
 	- 仮想マシンを特定のサブネットに割り当てることのできる仮想ネットワークを定義して作成します。
 	- Azure ポータルを使用して、Azure の新しい仮想マシンにドメイン コントローラーを作成してデプロイします。Windows PowerShell スクリプトを参照し、Azure Virtual Machines と Azure Virtual Network を使用して、クラウドにスタンドアロン ドメインをデプロイすることもできます。Azure Virtual Network 上の仮想マシンに新しい Active Directory フォレストを作成する方法の詳細については、「[Azure での新しい Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)」を参照してください。
 2. 仮想マシンのプロビジョニング: Azure ポータルで、イメージ ギャラリーにあるストック イメージを使用して、新しい仮想マシンをプロビジョニングします。
@@ -252,7 +253,7 @@ Azure の仮想マシンを使用すると、経済的で高度なセキュリ�
 
 次に示しているのは、イメージ ライブラリにある構築済みイメージから、カスタマイズした SharePoint ファーム環境を作成する手順です。ただし、SharePoint ファーム仮想マシンをイメージ ライブラリにアップロードして、権限のあるユーザーがその仮想マシンを選択して、必要な SharePoint ファームを Azure 上に構築することもできます。
 
-1. Active Directory のデプロイ: Active Directory を Azure の仮想マシンにデプロイするときに必要な基本的要件は、オンプレミスの仮想マシン (そしてある程度は物理マシン) にデプロイするときと同様です。ただし同一ではありません。この違いの詳細、指針、その他の考慮事項については、「[Azure Virtual Machines での Active Directory のデプロイ ガイドライン](http://msdn.microsoft.com/library/jj156090)」を参照してください。Azure で Active Directory をデプロイするには、以下の手順を実行します。
+1. Active Directory のデプロイ: Active Directory を Azure の仮想マシンにデプロイするときに必要な基本的要件は、オンプレミスの仮想マシン (そしてある程度は物理マシン) にデプロイするときと同様です。ただし同一ではありません。この違いの詳細、指針、その他の考慮事項については、「[Azure 仮想マシンでの Active Directory のデプロイ ガイドライン](http://msdn.microsoft.com/library/jj156090)」を参照してください。Azure で Active Directory をデプロイするには、以下の手順を実行します。
 	- 仮想マシンを特定のサブネットに割り当てることのできる仮想ネットワークを定義して作成します。
 	- Azure ポータルを使用して、Azure の新しい仮想マシンにドメイン コントローラーを作成してデプロイします。
 	- Azure Virtual Network 上の仮想マシンに新しい Active Directory フォレストを作成する方法の詳細については、「[Azure での新しい Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine)」を参照してください。
@@ -287,4 +288,4 @@ SharePoint Server を Azure の仮想マシンに正常にデプロイするに�
 
 [SharePoint Server 2016 IT Preview を Azure でテストする](http://azure.microsoft.com/blog/test-sharepoint-server-2016-it-preview-4/)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

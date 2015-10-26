@@ -510,4 +510,4 @@ false | mergeFiles | <p>ソース フォルダ Folder1 が次のような構造�
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-azure-blob-connector.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

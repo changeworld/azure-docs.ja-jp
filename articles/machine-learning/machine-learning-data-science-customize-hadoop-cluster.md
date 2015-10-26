@@ -1,24 +1,28 @@
 <properties 
-	pageTitle="Advanced Analytics Process and Technology 向けに Hadoop クラスターをカスタマイズする | Microsoft Azure"
+	pageTitle="Advanced Analytics Process and Technology 向けに Hadoop クラスターをカスタマイズする | Microsoft Azure" 
 	description="一般的な Python モジュールは、カスタムの Azure HDInsight Hadoop クラスターで利用できます。"
-	services="machine-learning"
-	documentationCenter=""
-	authors="hangzh-msft"
-	manager="paulettm"
-	editor="cgronlun"/>
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="hangzh-msft" 
+	manager="paulettm" 
+	editor="cgronlun"  />
 
 <tags 
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="hangzh;bradsev"/>
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/13/2015" 
+	ms.author="hangzh;bradsev" />
 
 # Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする
 
-この記事では、HDInsight サービスでクラスターをプロビジョニングするときに各ノードで 64 ビット Anaconda (Python 2.7) をインストールして、HDInsight Hadoop クラスターをカスタマイズする方法について説明します。このカスタマイズでは、Azure Machine Learning で使用される Advanced Analytics Process and Technology (ADAPT) で使用するクラスターを準備します。また、クラスターにカスタム ジョブを送信するためにヘッドノードにアクセスする方法も示します。
+このメニューは、Cortana Analytics Process (CAP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
+
+この記事では、HDInsight サービスでクラスターをプロビジョニングするときに各ノードで 64 ビット Anaconda (Python 2.7) をインストールして、HDInsight Hadoop クラスターをカスタマイズする方法について説明します。このカスタマイズでは、Cortana Analytics Process で使用するためのクラスターを準備します。また、クラスターにカスタム ジョブを送信するためにヘッドノードにアクセスする方法も示します。
 
 このカスタマイズでは、便宜上 Anaconda に含まれる多くの一般的な Python モジュールを、クラスター内のハイブ レコードを処理するように設計されたユーザー定義関数 (UDF) で使用できるようにします。このシナリオで使用される手順の詳細については、「[高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する](machine-learning-data-science-hive-queries.md)」をご覧ください。
 
@@ -98,4 +102,4 @@ Hive レコードを処理するために使用されるクラスターに格納
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -1,6 +1,6 @@
 <properties 
    pageTitle="オンプレミスの AlwaysOn 可用性グループの Azure への拡張 | Microsoft Azure"
-   description="このチュートリアルでは、クラシック デプロイメント モデルで作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。"
+   description="このチュートリアルでは、クラシック デプロイ モデルで作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。"
    services="virtual-machines"
    documentationCenter="na"
    authors="rothja"
@@ -21,7 +21,8 @@
 
 AlwaysOn 可用性グループは、セカンダリ レプリカを追加することで、データベースのグループの高可用性を実現します。これらのレプリカを使用すると、障害発生時にデータベースをフェールオーバーできます。また、読み取りワークロードやバックアップ タスクをオフロードすることもできます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
 SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニングし、その VM をレプリカとしてオンプレミスの可用性グループに追加することで、オンプレミスの可用性グループを Microsoft Azure に拡張できます。
 
@@ -71,7 +72,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 |**ドメイン ユーザー名**|ローカル クラスター ノード上のローカルの Administrators グループに属しているアカウントを指定します。|
 |**パスワード**|ドメイン ユーザー名のパスワードを指定します。|
 
-1. **[OK]** をクリックして、デプロイメント設定を検証します。
+1. **[OK]** をクリックして、デプロイ設定を検証します。
 
 1. 次に、法律条項が表示されます。これらの条項を読み、同意する場合は **[OK]** をクリックします。
 
@@ -91,7 +92,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 1. プロビジョニング プロセスが開始されます。ウィザードが正常に完了したら、**[閉じる]** をクリックして、ウィザードを終了します。
 
->[AZURE.NOTE]Azure レプリカの追加ウィザードでは、<Users><ユーザー名>\\AppData\\Local\\SQL Server\\AddReplicaWizard にログ ファイルが作成されます。このログ ファイルは、障害が発生した Azure レプリカのデプロイメントのトラブルシューティングに使用できます。ウィザードで操作の実行に失敗すると、プロビジョニングされた VM が削除されるなど、前のすべての操作がロールバックされます。
+>[AZURE.NOTE]Azure レプリカの追加ウィザードでは、<Users><ユーザー名>\\AppData\\Local\\SQL Server\\AddReplicaWizard にログ ファイルが作成されます。このログ ファイルは、障害が発生した Azure レプリカのデプロイのトラブルシューティングに使用できます。ウィザードで操作の実行に失敗すると、プロビジョニングされた VM が削除されるなど、前のすべての操作がロールバックされます。
 
 ## 可用性グループ リスナーの作成
 
@@ -99,8 +100,8 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 
 ## 次のステップ
 
-**Azure レプリカの追加ウィザード**を使用して AlwaysOn 可用性グループを Azure に拡張するだけでなく、一部の SQL Server ワークロードを完全に Azure に移行することもできます。最初に、「[Azure での SQL Server Virtual Machine のプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
+**Azure レプリカの追加ウィザード**を使用して AlwaysOn 可用性グループを Azure に拡張するだけでなく、一部の SQL Server ワークロードを完全に Azure に移行することもできます。最初に、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)」を参照してください。
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

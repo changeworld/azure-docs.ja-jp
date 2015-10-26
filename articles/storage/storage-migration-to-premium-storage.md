@@ -41,7 +41,7 @@ Premium Storage の機能の概要については、「[Premium Storage: Azure �
 ### 考慮事項
 
 #### VM サイズ
-Azure VM のサイズの仕様は、「[仮想マシンのサイズ](https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-size-specs/)」に記載されています。Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
+Azure VM のサイズの仕様は、「[仮想マシンのサイズ](https://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-size-specs/)」に記載されています。Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
 
 
 #### ディスク サイズ
@@ -61,7 +61,7 @@ Premium Storage アカウントには、[Azure Storage のスケーラビリテ�
 |:--|:---|
 |ディスク容量: 35 TB<br />スナップショット容量: 10 TB|受信と送信を合わせて最大 50 GB/秒|
 
-Premium Storage の仕様の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-JPing-premium-storage)」を参照してください。
+Premium Storage の仕様の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](storage-premium-storage-preview-portal.md#scalability-and-performance-targets-whja-jping-premium-storage)」を参照してください。
 
 #### 追加のデータ ディスク
 ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。複数の永続データ ディスクを VM に接続できます。必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。[記憶域スペース](http://technet.microsoft.com/library/hh831739.aspx)を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。Linux VM の場合は、*mdadm* ユーティリティを使用すると同じ結果を得ることができます。詳細については、[Linux でのソフトウェア RAID の構成](../virtual-machines-linux-configure-raid.md)に関する記事を参照してください。
@@ -668,4 +668,4 @@ OS イメージまたは OS ディスクを登録したら、新しい DS シリ
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

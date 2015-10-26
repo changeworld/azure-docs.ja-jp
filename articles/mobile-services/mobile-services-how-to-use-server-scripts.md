@@ -1057,4 +1057,4 @@ Stream|サポートされていません
 [Azure Mobile Services 内での package.json のサポート]: http://go.microsoft.com/fwlink/p/?LinkId=391036
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

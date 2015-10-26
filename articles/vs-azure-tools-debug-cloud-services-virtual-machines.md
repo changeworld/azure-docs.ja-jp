@@ -190,4 +190,4 @@ Visual Studio ASP.NET プロジェクトでは、アプリケーションのテ�
 - **Intellitrace** を使用して、リリース サーバーから呼び出しおよびイベントのログを収集します。[IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](http://go.microsoft.com/fwlink/?LinkID=623016)に関するページを参照してください。
 - **Azure 診断**を使用して、ロールが開発環境と Azure のどちらで実行されているかにかかわらず、ロール内で実行されているコードの詳細な情報をログに記録します。「[Azure 診断を使用したログ データの収集](http://go.microsoft.com/fwlink/p/?LinkId=400450)」を参照してください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

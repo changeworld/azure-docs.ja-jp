@@ -425,7 +425,7 @@ API アプリから Dropbox API を呼び出すことができるようにする
 
 ![](./media/app-service-api-dotnet-connect-to-saas/http405.png)
 
-メソッドが許可されていないことを示す 405 エラーが表示されるのは、クライアントが非 SSL の HTTP POST 要求を試みたところ、ゲートウェイにより *https://* にリダイレクトされ、その結果 GET 要求が返されることが原因です。同意のリンクを取得するための URL で受け取ることができるのは、POST 要求のみです。
+メソッドが許可されていないことを示す 405 エラーが表示されるのは、クライアントが非 SSL の HTTP POST 要求を試みたところ、ゲートウェイにより **https://* にリダイレクトされ、その結果 GET 要求が返されることが原因です。同意のリンクを取得するための URL で受け取ることができるのは、POST 要求のみです。
 
 ### <a id="400"></a>Dropbox ログイン ページの代わりに表示される HTTP エラー 400
 
@@ -452,4 +452,4 @@ SaaS プラットフォームに接続する API アプリのコード記述と�
 [Azure プレビュー ポータル]: https://portal.azure.com/
 [Azure ポータル]: https://manage.windowsazure.com/
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

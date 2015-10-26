@@ -184,10 +184,10 @@ FROM    <External Table Name>
 [SSIS]: https://msdn.microsoft.com/library/ms141026.aspx
 
 <!--Other Web references-->
-[AZCopy インストール手順]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-use-azcopy/
-[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-JP/download/details.aspx?id=36433
-[インポート/エクスポート]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-import-export-service/
-[Azure Storage のドキュメント]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/
+[AZCopy インストール手順]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-use-azcopy/
+[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-jp/download/details.aspx?id=36433
+[インポート/エクスポート]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-import-export-service/
+[Azure Storage のドキュメント]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/
 [ExpressRoute に関するドキュメント]: http://azure.microsoft.com/documentation/services/expressroute/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

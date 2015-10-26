@@ -105,19 +105,19 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 - *hivesampletable* という名前の Hive テーブル。*/hive/warehouse/hivesampletable* にあるデータ ファイルを参照しています。テーブルはモバイル デバイスのデータを含んでいます。Hive テーブルのスキーマは次のとおりです。
 
 	<table border="1">
-<tr><th>フィールド</th><th>データ型</th></tr>
-<tr><td>clientid</td><td>文字列</td></tr>
-<tr><td>querytime</td><td>文字列</td></tr>
-<tr><td>market</td><td>文字列</td></tr>
-<tr><td>deviceplatform</td><td>文字列</td></tr>
-<tr><td>devicemake</td><td>文字列</td></tr>
-<tr><td>devicemodel</td><td>文字列</td></tr>
-<tr><td>state</td><td>文字列</td></tr>
-<tr><td>country</td><td>文字列</td></tr>
-<tr><td>querydwelltime</td><td>double</td></tr>
-<tr><td>sessionid</td><td>bigint</td></tr>
-<tr><td>sessionpagevieworder</td><td>bigint</td></tr>
-</table>
+	<tr><th>フィールド</th><th>データ型</th></tr>
+	<tr><td>clientid</td><td>string</td></tr>
+	<tr><td>querytime</td><td>string</td></tr>
+	<tr><td>market</td><td>string</td></tr>
+	<tr><td>deviceplatform</td><td>string</td></tr>
+	<tr><td>devicemake</td><td>string</td></tr>
+	<tr><td>devicemodel</td><td>string</td></tr>
+	<tr><td>state</td><td>string</td></tr>
+	<tr><td>country</td><td>string</td></tr>
+	<tr><td>querydwelltime</td><td>double</td></tr>
+	<tr><td>sessionid</td><td>bigint</td></tr>
+	<tr><td>sessionpagevieworder</td><td>bigint</td></tr>
+	</table>
 
 まず、*sample.log* と *hivesampletable* を Azure SQL データベースまたは SQL Server にエクスポートしてから、次のパスを使用して、モバイル デバイスのデータを含むテーブルを HDInsight にインポートして戻します。
 
@@ -612,4 +612,4 @@ Azure SQL データベースまたは SQL Server で 2 つのテーブルを作�
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

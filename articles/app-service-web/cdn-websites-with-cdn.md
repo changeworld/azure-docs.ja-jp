@@ -159,7 +159,7 @@ Azure CDN 統合を Azure Web アプリに組み込むと、CDN エンドポイ�
 
 ## Azure CDN を介してコントローラー アクションからコンテンツを配信する ##
 
-Azure CDN と Web アプリを統合すると、Azure CDN を介してコントローラー アクションからコンテンツを比較的簡単に配信できます。この場合も、CDN を介して Azure Web アプリ全体を配信する場合は、すべてのコントローラー アクションが既に CDN から到達可能なため、この手順は不要です。ただし、「[統合された CDN エンドポイントで Azure に Web アプリをデプロイする](#deploy-a-web-app-to-azure-with-an-integrated-cdn-endpoint)」で指摘したとおり、この手順の代わりに、Azure CDN から配信するコントローラー アクションを選択できます。[Maarten Balliauw](https://twitter.com/maartenballiauw) 氏が、[Azure CDN による Web の遅延時間の短縮](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)に関する講演の中でおもしろい MemeGenerator コントローラーを使用した方法を紹介しています。ここではその方法を再現します。
+Azure CDN と Web Apps を統合すると、Azure CDN を介してコントローラー アクションからコンテンツを比較的簡単に配信できます。この場合も、CDN を介して Azure Web アプリ全体を配信する場合は、すべてのコントローラー アクションが既に CDN から到達可能なため、この手順は不要です。ただし、「[統合された CDN エンドポイントで Azure に Web アプリをデプロイする](#deploy-a-web-app-to-azure-with-an-integrated-cdn-endpoint)」で指摘したとおり、この手順の代わりに、Azure CDN から配信するコントローラー アクションを選択できます。[Maarten Balliauw](https://twitter.com/maartenballiauw) 氏が、[Azure CDN による Web の遅延時間の短縮](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)に関する講演の中でおもしろい MemeGenerator コントローラーを使用した方法を紹介しています。ここではその方法を再現します。
 
 Web アプリで次のような Chuck Norris の若いときの画像 ([Alan Light](http://www.flickr.com/photos/alan-light/218493788/) による撮影) に基づいてミームを生成するとします。
 
@@ -566,4 +566,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

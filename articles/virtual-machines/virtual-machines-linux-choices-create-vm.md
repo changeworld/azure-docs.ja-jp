@@ -101,4 +101,4 @@ Azure PowerShell の場合は、「[Azure PowerShell を使用して Linux ベ�
 [Linux を実行する仮想マシンの作成]: virtual-machines-linux-tutorial.md
 [カスタム仮想マシンの作成]: virtual-machines-create-custom.md
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

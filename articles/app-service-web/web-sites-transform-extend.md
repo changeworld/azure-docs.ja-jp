@@ -182,4 +182,4 @@ HTTPS が使用され、".scm" が含まれていることを除き、開発す�
 [TransformSiteSolEx]: ./media/web-sites-transform-extend/TransformSiteSolEx.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

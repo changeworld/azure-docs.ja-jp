@@ -96,4 +96,4 @@ Azure 管理ポータルで、スケジュール用の [スケジュールの詳
 - [Azure Automation のスケジュール資産](http://msdn.microsoft.com/library/azure/dn940016.aspx)
 - [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md) 
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

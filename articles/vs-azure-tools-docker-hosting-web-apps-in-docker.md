@@ -1,19 +1,19 @@
 <properties
    pageTitle="Docker での Web アプリのホスト | Microsoft Azure"
-	description="Visual Studio を使用して、Docker コンテナーで Web アプリケーションをホストする方法について説明します。"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tglee"/>
+   description="Visual Studio を使用して、Docker コンテナーで Web アプリケーションをホストする方法について説明します。"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tglee" />
 <tags
    ms.service="multiple"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="multiple"
-	ms.date="08/20/2015"
-	ms.author="kempb"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="multiple"
+   ms.date="08/20/2015"
+   ms.author="kempb" />
 
 # Docker での Web アプリのホスト
 
@@ -80,7 +80,7 @@
     |イメージ|Docker ホストで使用する OS イメージがある場合は、それを選択します。この例では、Ubuntu Server イメージを選択します(使用可能なイメージの一覧で Windows Server イメージが使用できるようになったことに注意してください)。|
     |ユーザー名|仮想マシンの一意のユーザー名を入力します。|
     |パスワード|ユーザーのパスワードを入力し、それを確認します。|
-    |証明書ディレクトリ |これは、Docker 証明書を格納するフォルダーを指定します。新しいフォルダーを作成したり、既存のフォルダーをポイントしたりすることができますが、既定の証明書フォルダー (C:\\Users\[*ユーザー名*]\\.docker) を使用することをお勧めします。そうでないと、別のプロジェクトまたはシステムで同じホストを再利用する場合に、認証オプションを自動的に取得できません。|
+    |証明書ディレクトリ |これは、Docker 証明書を格納するフォルダーを指定します。新しいフォルダーを作成したり、既存のフォルダーをポイントしたりすることができますが、既定の証明書フォルダー (C:\\Users\\[*ユーザー名*]\\.docker) を使用することをお勧めします。そうでないと、別のプロジェクトまたはシステムで同じホストを再利用する場合に、認証オプションを自動的に取得できません。|
 
 1. **[証明書ディレクトリ]** エントリの横の省略記号 (...) ボタンを選択し、Docker 証明書の新しいフォルダーを作成するか、既存の Docker 証明書フォルダーに移動します。
 
@@ -177,4 +177,4 @@ Visual Studio での Docker の使用に関する問題については、「[Vis
 [7]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/IC796685.png
 [8]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/IC796686.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

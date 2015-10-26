@@ -15,7 +15,7 @@
 1.  Samanage のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-samanage-tutorial/IC771705.png "シナリオ")
 ##Samanage のアプリケーション統合の有効化
@@ -67,7 +67,7 @@
 
 3.  **[アプリ URL の構成]** ページで、**[Samanage サインイン URL]** テキストボックスに、"*https://\<tenant-name>.Samanage.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-samanage-tutorial/IC771711.png "アプリ URL の構成")
+    ![アプリ URL の構成](./media/active-directory-saas-samanage-tutorial/IC771711.png "アプリケーション URL の構成")
 
 4.  **[Samanage でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -149,4 +149,4 @@ Azure AD ユーザーが Samanage にログインできるようにするには�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!------HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -77,4 +77,4 @@
 [2]: ./media/active-directory-saas-scoping-filters/ic782812.png
 [3]: ./active-directory-saas-scoping-filters/ic782813.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

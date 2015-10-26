@@ -82,7 +82,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
 	この値 (重み) を使用し、オブジェクト間の距離に応じて線を引くと、先のデータは次の図のようになります。
 
-	![tiny\_graph.txt drawn as circles with lines of varying distance between](./media/hdinsight-hadoop-giraph-install-v1/giraph-graph.png)
+	![円で表した tiny\_graph.txt (線はオブジェクト間の距離)](./media/hdinsight-hadoop-giraph-install-v1/giraph-graph.png)
 
 	
 
@@ -152,7 +152,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 	
 	これを視覚化して、ID 1 と他のすべてのオブジェクトの間で最短パスを結ぶことにより、結果を検証できます。ID 1 と ID 4 の最短パスは 5 です。これは、<span style="color:orange">ID 1 と 3</span>、<span style="color:red">ID 3 と 4</span> を結ぶ距離の合計です。
 
-	![Drawing of objects as circles with shortest paths drawn between](./media/hdinsight-hadoop-giraph-install-v1/giraph-graph-out.png)
+	![オブジェクトを円で表し、最短パスで結んだ図](./media/hdinsight-hadoop-giraph-install-v1/giraph-graph-out.png)
 
 
 
@@ -190,4 +190,4 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

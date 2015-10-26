@@ -21,7 +21,8 @@
 
 Apache Tomcat (または単に Tomcat、以前は Jakarta Tomcat) は Apache Software Foundation (ASF) によって開発されたオープン ソース Web サーバーであり、サーブレット コンテナーです。Tomcat は、Sun Microsystems の Java Servlet および JavaServer Pages (JSP) 仕様を実装し、純粋な Java HTTP Web サーバー環境を提供して Java コードを実行します。最も単純な構成では Tomcat は単一のオペレーティング システムのプロセスで実行されます。このプロセスは、Java 仮想マシン (JVM) を実行します。ブラウザーからの Tomcat に対するすべての HTTP 要求は、Tomcat プロセスで個別のスレッドとして処理されます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 このガイドでは、Linux イメージ上に Tomcat7 をインストールして Microsoft Azure にデプロイすることができます。
 
@@ -31,7 +32,7 @@ Apache Tomcat (または単に Tomcat、以前は Jakarta Tomcat) は Apache Sof
 -	Tomcat7 の仮想マシンを準備する方法。
 -	Tomcat7 をインストールする方法。
 
-読者は既に Azure サブスクリプションを持っていることを前提にしています。持っていない場合は、[http://azure.microsoft.com](http://azure.microsoft.com) で無料試用版にサインアップしてください。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別料金: MSDN、MPN、BizSpark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39)をご覧ください。Azure の詳細については、「[Azure とは](http://azure.microsoft.com/overview/what-is-azure/)」を参照してください。
+読者は既に Azure サブスクリプションを持っていることを前提にしています。持っていない場合は、[http://azure.microsoft.com](http://azure.microsoft.com) で無料試用版にサインアップしてください。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別価格: MSDN、MPN、BizSpark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39)をご覧ください。Azure の詳細については、「[Azure とは](http://azure.microsoft.com/overview/what-is-azure/)」を参照してください。
 
 このトピックは、Tomcat や Linux の基本的な知識を持つ読者を想定しています。
 
@@ -305,4 +306,4 @@ Tomcat サービスを再起動するには:
 [17]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-17.png
 [18]: ./media/virtual-machines-linux-setup-tomcat7-linux/virtual-machines-linux-setup-tomcat7-linux-18.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

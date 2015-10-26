@@ -138,8 +138,8 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 [SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop/
 [SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: ./sql-data-warehouse-overview-integration/
-[実験作成チュートリアル]: https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-create-experiment/
-[Azure の Machine Learning の概要]: https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-what-is-machine-learning/
+[実験作成チュートリアル]: https://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-create-experiment/
+[Azure の Machine Learning の概要]: https://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-what-is-machine-learning/
 [Azure Machine Learning Studio]: https://studio.azureml.net/Home
 [Azure ポータル]: https://portal.azure.com/
 
@@ -149,4 +149,4 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 [Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

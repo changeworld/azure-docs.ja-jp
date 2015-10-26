@@ -101,4 +101,4 @@ ExpressRoute での App Service 環境の使用方法の詳細については、
 
 <!-- IMAGES -->
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

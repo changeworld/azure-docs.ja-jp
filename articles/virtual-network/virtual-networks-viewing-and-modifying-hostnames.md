@@ -1,19 +1,19 @@
 <properties 
    pageTitle="ホスト名の表示と変更 | Microsoft Azure"
-	description="名前解決のため、Azure Virtual Machines のホスト名、および Web ロールと Worker ロールを表示、変更する方法"
-	services="virtual-network"
-	documentationCenter="na"
-	authors="joaoma"
-	manager="jdial"
-	editor="tysonn"/>
+   description="名前解決のため、Azure Virtual Machines のホスト名、および Web ロールと Worker ロールを表示、変更する方法"
+   services="virtual-network"
+   documentationCenter="na"
+   authors="joaoma"
+   manager="jdial"
+   editor="tysonn" />
 <tags 
    ms.service="virtual-network"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/25/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/25/2015"
+   ms.author="joaoma" />
 
 # ホスト名の表示と変更
 
@@ -51,7 +51,7 @@ REST クライアントから次の手順を実行します。
 
 1. x-ms-version という名前のヘッダー エントリの値を 2013-11-01 に設定します。
 
-1. 次の形式で要求を送信します。https://management.core.windows.net/<サブスクリプション ID>/services/hostedservices/<サービス名>?embed-detail=true
+1. 次の形式で要求を送信します。https://management.core.windows.net/\<サブスクリプション ID>/services/hostedservices/<サービス名>?embed-detail=true
 
 1. 各 **RoleInstance** 要素の **HostName** 要素を検索します。
 
@@ -71,4 +71,4 @@ REST クライアントから次の手順を実行します。
 
 [ネットワーク構成ファイルを使用した DNS 設定の指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

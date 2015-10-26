@@ -69,7 +69,7 @@ Ambari Web UI は、**https://&lt;clustername>.azurehdinsight.net** で作成し
 
 * **[admin] ボタン** - Ambari の管理、ユーザー設定、ログアウトを行います。
 
-##Monitoring
+##監視
 
 ###アラート
 
@@ -228,4 +228,4 @@ Ambari Web は基になる REST API に依存します。この REST API を活�
 
 REST API の完全なリファレンスについては、「[Ambari API リファレンス V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)」をご覧ください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

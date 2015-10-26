@@ -21,7 +21,8 @@
 
 この記事では Azure での[Deis](http://deis.io/) クラスターのプロビジョニングをについて説明します。必要な証明書の作成から新しくプロビジョニングされたクラスタ上にサンプルの **Go** アプリケーション をデプロイ・スケーリングする手順まで、すべての手順を網羅しています。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
 
 次の図は、デプロイ済みシステムのアーキテクチャを示します。システム管理者は**deis** と **deisctl**などの Deis ツールを使ってクラスタを管理します。接続は、クラスター上のメンバーノードの 1 つに、接続を転送をする。Azure ロード バランサーを介して確立されます。同様に Load Balancer を使用してアプリケーションをクライアントがアクセスにデプロイされます。この場合は、Load Balancer は Deis ルーターメッシュへトラフィックを転送します。さらに、クラスターでホストされている、対応する Docker コンテナーへのトラフィックをルートします。
 
@@ -77,7 +78,7 @@
 
 8. **newStorageAccountName** パラメータを修正します。これは、VM OS ディスクのストレージ アカウントです。このアカウントの名前はグローバルに一意です。
 
-9. **publicDomainName** パラメータを修正します。これが Load Balancer のパブリック IP に関連付けられている DNS 名の一部になります。最後の FQDN は _[このパラメーターの値]_._[region]_ cloudapp.azure.com の形式になります。たとえば、deishbai32 として名前を指定して、リソース グループが米国西部地域にデプロイされている場合、Load Balancer の最終的な FQDN は deishbai32.westus.cloudapp.azure.com となります。
+9. **publicDomainName** パラメータを修正します。これが Load Balancer のパブリック IP に関連付けられている DNS 名の一部になります。最後の FQDN は _[このパラメーターの値]_._[region]_ cloudapp.azure.com の形式になります。たとえば、deishbai32 として名前を指定して、リソース グループが米国西部リージョンにデプロイされている場合、Load Balancer の最終的な FQDN は deishbai32.westus.cloudapp.azure.com となります。
 
 10. パラメーター ファイルを保存します。Azure PowerShell を使用してプロビジョニングするには、次の手順を実行します。
 
@@ -257,4 +258,4 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 [resource-group-overview]: ../resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -4,4 +4,4 @@
 - [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
 - [Azure CLI](virtual-networks-create-vnet-classic-cli.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

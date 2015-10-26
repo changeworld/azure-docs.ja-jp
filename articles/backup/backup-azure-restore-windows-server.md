@@ -109,4 +109,4 @@
 - [Azure 仮想マシンのバックアップ](backup-azure-vms-introduction.md)
 - [Microsoft ワークロードのバックアップ](backup-azure-dpm-introduction.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

@@ -3,9 +3,9 @@
 	description="PowerShell を使用した Azure SQL Database の管理。" 
 	services="sql-database" 
 	documentationCenter="" 
-	authors="TigerMint" 
-	manager="" 
-	editor=""/>
+	authors="stevestein" 
+	manager="jeffreyg" 
+	editor="monicar"/>
 
 <tags 
 	ms.service="sql-database" 
@@ -13,33 +13,24 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/11/2015" 
-	ms.author="vinsonyu"/>
+	ms.date="10/08/2015" 
+	ms.author="sstein; vinsonyu"/>
 
 # PowerShell を使用した Azure SQL Database の管理
 
 
 > [AZURE.SELECTOR]
 - [Azure Preview Portal](sql-database-manage-portal.md)
-- [SSMS](sql-database-manage-azure-ssms.md)
+- [Transact-SQL (SSMS)](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
-このトピックでは、Azure リソース マネージャー コマンドレットを使用した、多数の Azure SQL Database タスクを実行する PowerShell コマンドを紹介します。
+このトピックでは、多数の Azure SQL Database タスクを実行する PowerShell コマンドについて説明します。
 
 
-## 前提条件
+> [AZURE.IMPORTANT]Azure PowerShell 1.0 Preview のリリースから、Switch-AzureMode コマンドレットは利用できなくなりました。また、Azure ResourceManger モジュールで使用されていたコマンドレットは名前が変更されました。この記事の例では、新しい PowerShell 1.0 Preview の名付け規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
 
-PowerShell コマンドを実行するには、Azure PowerShell がインストールされ実行されていること、リソース マネージャー モードに切り替えて Azure リソース マネージャーの PowerShell コマンドレットを使用できるようにしておくことが必要です。
 
-Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行してダウンロードおよびインストールすることができます。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
-
-Azure SQL Database の作成と管理に使うコマンドレットは、Azure リソース マネージャー モジュールにあります。Azure PowerShell を開始するときに、Azure モジュールのコマンドレットが既定でインポートされます。Azure リソース マネージャー モジュールに切り替えるには、**Switch-AzureMode** コマンドレットを使用します。
-
-	Switch-AzureMode -Name AzureResourceManager
-
-「Switch-AzureMode コマンドレットは廃止予定で、今後のリリースで削除される予定です。」という警告が表示される場合、 無視して次のセクションに移動してください。
-
-詳細については、「[リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールして実行する必要があります。Switch-AzureMode が削除されたため、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行し、最新の Azure PowerShell をダウンロードしてインストールする必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 
 
@@ -54,7 +45,7 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
 ## Azure サブスクリプションを選択します。
 
-使用するサブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要になります。前の手順からコピーするか、複数のサブスクリプションがある場合は **Get-AzureSubscription** コマンドレットを実行して結果セットから目的のサブスクリプション情報をコピーできます。
+使用するサブスクリプションを選択するには、サブスクリプション ID (**SubscriptionId**) またはサブスクリプション名 (**SubscriptionName**) が必要になります。前の手順からコピーするか、複数のサブスクリプションがある場合は **Get-AzureSubscription** コマンドレットを実行して結果セットから目的のサブスクリプション情報をコピーできます。
 
 現在のサブスクリプションを設定するには、サブスクリプション情報と共に次のコマンドレットを実行します。
 
@@ -68,78 +59,76 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
 有効な Azure SQL Database サーバーの場所一覧については、次のコマンドレットを実行します。
 
-	$AzureSQLLocations = Get-AzureLocation | Where-Object Name -Like "*SQL/Servers"
+	$AzureSQLLocations = Get-AzureRMLocation | Where-Object Name -Like "*SQL/Servers"
 	$AzureSQLLocations.Locations
 
 既にリソース グループがある場合、サーバーの作成に進みます。次のコマンドを実行して新しいリソース グループを作ることもできます。
 
-	New-AzureResourceGroup -Name "resourcegroupJapanWest" -Location "Japan West"
+	New-AzureRMResourceGroup -Name "resourcegroupJapanWest" -Location "Japan West"
 
 ## サーバーの作成 
 
-新しい V12 サーバーを作成するには、[New-AzureSqlServer](https://msdn.microsoft.com/library/mt163526.aspx) コマンドを使用します。server12 をご利用のサーバー名に置き換えます。サーバー名がすでに使われている場合はエラーが発生する可能性があるため、Azure SQL Server で一意のサーバー名を使用する必要があります。このコマンドは完了するまでに数分かかる場合があることに注意してください。サーバーが正常に作成されると、サーバーの詳細と PowerShell のプロンプトが表示されます。コマンドを編集すると、任意の有効な場所を使用できます。
+新しい V12 サーバーを作成するには、[New-AzureRMSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx) コマンドレットを使用します。server12 をご利用のサーバー名に置き換えます。サーバー名が既に使われている場合はエラーが発生する可能性があるため、Azure SQL Server で一意のサーバー名を使用する必要があります。このコマンドは完了するまでに数分かかる場合があることに注意してください。サーバーが正常に作成されると、サーバーの詳細と PowerShell のプロンプトが表示されます。コマンドを編集すると、任意の有効な場所を使用できます。
 
-	New-AzureSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -Location "Japan West" -ServerVersion "12.0"
+	New-AzureRMSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -Location "Japan West" -ServerVersion "12.0"
 
 コマンドを実行すると、**[ユーザー名]** と **[パスワード]** の入力を求めるウィンドウが表示されます。ここで入力するユーザー名とパスワードは Azure の資格情報ではなく、新しいサーバーの管理者の資格情報となります
 
 ## サーバー ファイアウォール規則の作成
 
-サーバーへアクセスするために、ファイアウォール規則を作成するには、[New-AzureSqlServerFirewallRule](https://msdn.microsoft.com/library/mt125953.aspx) コマンドを使用します。ご利用のクライアントで有効な開始 IP アドレスと終了 IP アドレスに置き換え、次のコマンドを実行します。
+サーバーにアクセスするためのファイアウォール ルールを作成するには、[New-AzureRMSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860.aspx) コマンドを使用します。ご利用のクライアントで有効な開始 IP アドレスと終了 IP アドレスに置き換え、次のコマンドを実行します。
 
 サーバーで別の Azure サービスへのアクセス許可が必要な場合は、**- AllowAllAzureIPs** スイッチを追加して特別なファイアウォール規則を追加し、サーバーへのすべての Azure トラフィック アクセスを許可します。
 
-	New-AzureSqlServerFirewallRule -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -FirewallRuleName "clientFirewallRule1" -StartIpAddress "192.168.0.198" -EndIpAddress "192.168.0.199"
+	New-AzureRMSqlServerFirewallRule -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -FirewallRuleName "clientFirewallRule1" -StartIpAddress "192.168.0.198" -EndIpAddress "192.168.0.199"
 
 詳細については、「[Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx)」をご覧ください。
 
 ## SQL Database の作成
 
-データベースを作成するには、[New-azuresqldatabase](https://msdn.microsoft.com/library/mt125915.aspx) コマンドを使用します。データベースを作成するには、サーバーが必要です。次の例では TestDB12 という名前の SQL Database を作成します。このデータベースは、Standard S1 データベースとして作成されます。
+データベースを作成するには、[New-AzureRMSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) コマンドを使用します。データベースを作成するには、サーバーが必要です。次の例では TestDB12 という名前の SQL Database を作成します。このデータベースは、Standard S1 データベースとして作成されます。
 
-	New-AzureSqlDatabase -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -DatabaseName "TestDB12" -Edition Standard -RequestedServiceObjectiveName "S1"
+	New-AzureRMSqlDatabase -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -DatabaseName "TestDB12" -Edition Standard -RequestedServiceObjectiveName "S1"
 
 
 ## SQL Database のパフォーマンス レベルを変更します
 
-[Set-azuresqldatabase](https://msdn.microsoft.com/library/mt125814.aspx) コマンドを使用すると、データベースをスケールアップまたはダウンできます。次の例では、TestDB12 という名前の SQL Database を、現在のパフォーマンス レベルから標準的な S3 レベルにスケールアップします。
+[Set-AzureRMSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433.aspx) コマンドを使用してデータベースをスケールアップまたはスケールダウンできます。次の例では、TestDB12 という名前の SQL Database を、現在のパフォーマンス レベルから Standard S3 レベルにスケールアップします。
 
-	Set-AzureSqlDatabase -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -DatabaseName "TestDB12" -Edition Standard -RequestedServiceObjectiveName "S3"
+	Set-AzureRMSqlDatabase -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -DatabaseName "TestDB12" -Edition Standard -RequestedServiceObjectiveName "S3"
 
 
 ## SQL Database の削除
 
-SQL Database は、[Remove-AzureSqlDatabase](https://msdn.microsoft.com/library/mt125977.aspx) コマンドを使用して削除できます。次の例では TestDB12 という名前の SQL Database を削除します。
+[Remove-AzureRMSqlDatabase](https://msdn.microsoft.com/library/azure/mt619368.aspx) コマンドを使用して SQL Database を削除できます。次の例では TestDB12 という名前の SQL Database を削除します。
 
-	Remove-AzureSqlDatabase -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -DatabaseName "TestDB12"
+	Remove-AzureRMSqlDatabase -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -DatabaseName "TestDB12"
 
 ## サーバーの削除
 
-サーバーは、[Remove-AzureSqlServer](https://msdn.microsoft.com/library/mt125891.aspx) コマンドを使用して削除することもできます。次の例では server12 という名前のサーバーを削除します。
+また、[Remove-AzureRMSqlServer](https://msdn.microsoft.com/library/azure/mt603488.aspx) コマンドを使用してサーバーを削除できます。次の例では server12 という名前のサーバーを削除します。
 
-	Remove-AzureSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12"
+	Remove-AzureRMSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12"
 
 
 
 これらの Azure SQL リソースまたは同様のリソースを再作成する場合は、次のことができます。
 
 - これを PowerShell スクリプト ファイル (*.ps1) として保存します
-- Microsoft Azure 管理ポータルの [オートメーション] セクションに、これを Azure の Automation Runbook として保存する。 
+- Microsoft Azure 管理ポータルの [オートメーション] セクションに、これを Azure Automation Runbook として保存する。 
 
 ## 次のステップ
 
 コマンドを結合し、自動化します。たとえば、サーバー、ファイアウォール規則、およびデータベースを作成するために、< and > 文字を含む引用符内のすべてのものを置換します。
 
 
-    New-AzureResourceGroup -Name "<resourceGroupName>" -Location "<Location>"
-    New-AzureSqlServer -ResourceGroupName "<resourceGroupName>" -ServerName "<serverName>" -Location "<Location>" -ServerVersion "12.0"
-    New-AzureSqlServerFirewallRule -ResourceGroupName "<resourceGroupName>" -ServerName "<serverName>" -FirewallRuleName "<firewallRuleName>" -StartIpAddress "<192.168.0.198>" -EndIpAddress "<192.168.0.199>"
-    New-AzureSqlDatabase -ResourceGroupName "<resourceGroupName>" -ServerName "<serverName>" -DatabaseName "<databaseName>" -Edition <Standard> -RequestedServiceObjectiveName "<S1>"
+    New-AzureRMResourceGroup -Name "<resourceGroupName>" -Location "<Location>"
+    New-AzureRMSqlServer -ResourceGroupName "<resourceGroupName>" -ServerName "<serverName>" -Location "<Location>" -ServerVersion "12.0"
+    New-AzureRMSqlServerFirewallRule -ResourceGroupName "<resourceGroupName>" -ServerName "<serverName>" -FirewallRuleName "<firewallRuleName>" -StartIpAddress "<192.168.0.198>" -EndIpAddress "<192.168.0.199>"
+    New-AzureRMSqlDatabase -ResourceGroupName "<resourceGroupName>" -ServerName "<serverName>" -DatabaseName "<databaseName>" -Edition <Standard> -RequestedServiceObjectiveName "<S1>"
 
 ## 関連情報
 
-- [Azure SQL Database リソース マネージャー コマンドレット](https://msdn.microsoft.com/library/mt163521.aspx)
-- [Azure SQL Database サービス管理コマンドレット](https://msdn.microsoft.com/library/dn546726.aspx)
- 
+- [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

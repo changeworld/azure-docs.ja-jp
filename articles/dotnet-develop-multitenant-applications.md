@@ -95,4 +95,4 @@ Azure には、アプリケーション用に新しいテナントをプロビ�
 [Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)]: http://msdn.microsoft.com/library/hh534480.aspx
 [Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -38,7 +38,7 @@
 
 **3) TinyTDS:** 端末から次のコマンドを実行します。これにより、TinyTDS がコンピューターにインストールされます。
 
-    sudo ARCHFLAGS="-arch x86_64" gem install tiny_tds
+    gem install tiny_tds
 
 ## データベースを作成し、接続文字列を取得する
 
@@ -104,4 +104,4 @@ Microsoft SQL Server の [datetime](http://msdn.microsoft.com/library/ms187819.a
     puts row
     end
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

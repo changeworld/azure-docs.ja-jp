@@ -151,4 +151,4 @@ Azure CLI を使用したロールベースのアクセス制御の管理の詳�
 - [Windows PowerShell を使用したロールベースのアクセス制御の構成](role-based-access-control-powershell.md)
 - [ロール ベースの Access Control のトラブルシューティング](role-based-access-control-troubleshooting.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

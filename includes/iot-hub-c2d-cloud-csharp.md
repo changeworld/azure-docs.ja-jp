@@ -94,7 +94,7 @@
 
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
 [Azure IoT - サービス SDK NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[一時的な障害処理]: https://msdn.microsoft.com/ja-JP/library/hh680901(v=pandp.50).aspx
+[一時的な障害処理]: https://msdn.microsoft.com/ja-jp/library/hh680901(v=pandp.50).aspx
 [[IoT Hub の概要]]: iot-hub-csharp-csharp-getstarted.md
 
 <!-- Images -->
@@ -102,4 +102,4 @@
 [21]: ./media/iot-hub-c2d-cloud-csharp/sendc2d1.png
 [22]: ./media/iot-hub-c2d-cloud-csharp/sendc2d2.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

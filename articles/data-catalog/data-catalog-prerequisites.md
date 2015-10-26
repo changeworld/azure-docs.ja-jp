@@ -36,10 +36,10 @@ Azure Active Directory (Azure AD) は、企業がクラウドとオンプレミ�
 
  ![Active Directory グローバル認証ポリシー](./media/data-catalog-prerequisites/global-auth-policy.png)
 
-詳細については、「[認証ポリシーの構成](https://technet.microsoft.com/ja-JP/library/dn486781.aspx)」を参照してください。
+詳細については、「[認証ポリシーの構成](https://technet.microsoft.com/ja-jp/library/dn486781.aspx)」を参照してください。
 
 
 ## Azure サブスクリプション
 Azure サブスクリプションは、Azure Data Catalog のようなクラウド サービス リソースへのアクセスを整理するために役立ちます。さらに、リソースの使用状況の報告、課金、および支払い方法の制御にも役立ちます。サブスクリプションごとに異なる課金および支払いを設定することができるため、部門別、プロジェクト別、支社別などで、異なるサブスクリプションや異なるプランを利用することができます。すべてのクラウド サービスがサブスクリプションに属しているため、Azure Data Catalog をセットアップする前に、サブスクリプションが必要です。詳細については、「[アカウント、サブスクリプション、管理ロールの管理](https://msdn.microsoft.com/library/azure/hh531793.aspx)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

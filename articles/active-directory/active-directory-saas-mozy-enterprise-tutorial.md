@@ -15,7 +15,7 @@
 1.  Mozy Enterprise のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-mozy-enterprise-tutorial/IC777308.png "シナリオ")
 ##Mozy Enterprise のアプリケーション統合の有効化
@@ -65,7 +65,7 @@
 
 3.  **[アプリ URL の構成]** ページで、**[Mozy Enterpris サインイン URL]** ボックスに、"*https://\<tenant-name>.Mozyenterprise.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-mozy-enterprise-tutorial/IC777312.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-mozy-enterprise-tutorial/IC777312.png "アプリケーション URL の構成")
 
 4.  **[Mozy Enterprise でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
 
@@ -144,4 +144,4 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

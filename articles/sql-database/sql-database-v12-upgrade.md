@@ -4,7 +4,7 @@
 	services="sql-database" 
 	documentationCenter="" 
 	authors="stevestein" 
-	manager="jeffreyg" 
+	manager="jeffreyg"
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-management" 
-	ms.date="09/30/2015" 
+	ms.date="10/08/2015" 
 	ms.author="sstein"/>
 
 
@@ -85,4 +85,4 @@ SQL Database V12 へのアップグレードの処理中に、[すべての Web/
 [5]: ./media/sql-database-v12-upgrade/enabled.png
 [6]: ./media/sql-database-v12-upgrade/recommendations.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

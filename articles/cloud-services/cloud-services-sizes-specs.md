@@ -27,7 +27,11 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
-* インスタンスは、D シリーズ VM を使用するように構成できるようになりました。これらは、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの投稿「[新しい D シリーズ仮想マシンのサイズ](http://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。  
+* D シリーズ VM インスタンスは、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの投稿「[新しい D シリーズ仮想マシンのサイズ](http://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。  
+
+*   オリジナルの D シリーズに続く Dv2 シリーズには、より強力な CPU が備わっています。Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.2 GHz まで実現できます。Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
+
+    Dv2 シリーズのリージョン別の提供状況は、次のスケジュールに基づきます。2015 年 10 月: 米国東部 2、米国中部、米国中北部、米国西部 2015 年 11 月: 米国東部、北ヨーロッパ、西ヨーロッパ 2016 年 1 月: 米国中南部、APAC 西部、APAC 南東部、西日本、東日本、オーストラリア東部、オーストラリア南東部、ブラジル南部
 
 * Web ロールと worker ロールは、システム要件により Azure Virtual Machines よりも多くの一時ディスク領域が必要です。システム ファイルは、Windows ページファイルに 4 GB、Windows ダンプ ファイルに 2 GB の領域を予約します。
 
@@ -41,7 +45,7 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 
 |サイズ|CPU<br>コア|メモリ|ディスク サイズ|
 |---|---|---|---|
-|ExtraSmall|1|768 MB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 15384 GB<br/>アプリ = 約 1.5 GB|
+|ExtraSmall|1|768 MB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 15384 MB<br/>アプリ = 約 1.5 GB|
 |Small|1|1\.75 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 225304 MB<br/>アプリ = 約 1.5 GB|
 |中|2|3\.5 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 496664 MB<br/>アプリ = 約 1.5 GB|
 |Large|4|7 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1018904 MB<br/>アプリ = 約 1.5 GB|
@@ -49,10 +53,10 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 |A5|2|14 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 496664 MB<br/>アプリ = 約 1.5 GB|
 |A6|4|28 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1018904 MB<br/>アプリ = 約 1.5 GB|
 |A7|8|56 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 2083864 MB<br/>アプリ = 約 1.5 GB
-|A8|8|56 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1856172 MB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページを参照してください。</blockquote>|
-|A9|16|112 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1856172 MB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページを参照してください。</blockquote>|
-|A10|8|56 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1856172 MB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページを参照してください。</blockquote>|
-|A11|16|112 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1856172 MB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページを参照してください。</blockquote>|
+|A8|8|56 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1856172 MB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページをご覧ください。</blockquote>|
+|A9|16|112 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1856172 MB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページをご覧ください。</blockquote>|
+|A10|8|56 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1856172 MB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページをご覧ください。</blockquote>|
+|A11|16|112 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 1856172 MB<br/>アプリ = 約 1.5 GB<blockquote>注: このサイズの使用に関する情報と考慮事項については、<a href="http://go.microsoft.com/fwlink/p/?linkid=328042">A8、A9、A10、A11 コンピューティング集中型インスタンス</a>に関するページをご覧ください。</blockquote>|
 |Standard\_D1|1|3\.5 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 46104 MB<br/>アプリ = 約 1.5 GB|
 |Standard\_D2|2|7 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 97304 MB<br/>アプリ = 約 1.5 GB|
 |Standard\_D3|4|14 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 199704 MB<br/>アプリ = 約 1.5 GB|
@@ -61,7 +65,15 @@ Azure Virtual Machines と Cloud Services は、Azure が提供する数種類�
 |Standard\_D12|4|28 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 199704 MB<br/>アプリ = 約 1.5 GB|
 |Standard\_D13|8|56 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 404504 MB<br/>アプリ = 約 1.5 GB|
 |Standard\_D14|16|112 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 814104 MB<br/>アプリ = 約 1.5 GB|
-
+|Standard\_D1\_v2|1|3\.5 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 46104 MB<br/>アプリ = 約 1.5 GB|
+|Standard\_D2\_v2|2|7 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 97304 MB<br/>アプリ = 約 1.5 GB|
+|Standard\_D3\_v2|4|14 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 199704 MB<br/>アプリ = 約 1.5 GB|
+|Standard\_D4\_v2|8|28 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 404504 MB<br/>アプリ = 約 1.5 GB|
+|Standard\_D5\_v2|16|56 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 814104 MB<br/>アプリ = 約 1.5 GB|
+|Standard\_D11\_v2|2|14 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 97304 MB<br/>アプリ = 約 1.5 GB|
+|Standard\_D12\_v2|4|28 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 199704 MB<br/>アプリ = 約 1.5 GB|
+|Standard\_D13\_v2|8|56 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 404504 MB<br/>アプリ = 約 1.5 GB|
+|Standard\_D14\_v2|16|112 GB|OS = ゲスト OS のサイズ<br/>ローカル リソース = 814104 MB<br/>アプリ = 約 1.5 GB|
 ## Cloud Services のサイズの構成
 
 ロール インスタンスの仮想マシンのサイズを、サービス定義ファイルに記述されているサービス モデルの一部として指定できます。ロールのサイズによって、CPU コアの数、メモリ容量、および実行中のインスタンスに割り当てられるローカル ファイル システムのサイズが決まります。ロールのサイズは、アプリケーションのリソース要件に基づいて選択します。
@@ -78,4 +90,4 @@ Web ロール インスタンスのロール サイズを Small に設定する�
 
 [Azure のクラウド サービスのセットアップ](https://msdn.microsoft.com/library/hh124108)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
-pageTitle="Azure Cloud Services のロールでのリモート デスクトップ接続の有効化"
-	description="Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法"
-	services="cloud-services"
-	documentationCenter=""
-	authors="sbtron"
-	manager="timlt"
-	editor=""/>
+pageTitle="Azure Cloud Services のロールでリモート デスクトップ接続を有効にする" 
+description="Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法" 
+services="cloud-services" 
+documentationCenter="" 
+authors="sbtron" 
+manager="timlt" 
+editor=""/>
 <tags 
-ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/06/2015"
-	ms.author="saurabh"/>
+ms.service="cloud-services" 
+ms.workload="tbd" 
+ms.tgt_pltfrm="na" 
+ms.devlang="na" 
+ms.topic="article" 
+ms.date="10/14/2015" 
+ms.author="saurabh"/>
 
 # Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
 
@@ -147,4 +147,4 @@ Visual Studio のサーバー エクスプローラーで次の操作を行い�
 
 [クラウド サービスの構成方法](cloud-services-how-to-configure.md)
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

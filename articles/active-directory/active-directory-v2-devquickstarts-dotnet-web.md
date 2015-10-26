@@ -21,7 +21,7 @@
 v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/学校アカウントの両方に対応した Web アプリに認証をすばやく追加できます。ASP.NET Web アプリでは、.NET Framework 4.5 に含まれる Microsoft の OWIN ミドルウェアを使用することにより、これを達成できます。
 
   >[AZURE.NOTE]
-	この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+    この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
 
  ここでは、Azure AD と v2.0 アプリ モデルを使用してアプリに対するユーザーのサインイン処理を行う、ユーザーに関する一部の情報を表示する、およびアプリからのユーザーのサインアウト処理を行う機能について、OWIN を使用して実装します。
 
@@ -34,25 +34,22 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
-```
-git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git
-```
+```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 
 完成したアプリは、このチュートリアルの終わりにも示しています。
 
-## 1. アプリを登録します
+## 1\.アプリを登録します
+[apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
-[apps.dev.microsoft.com](https://apps.dev.microsoft.com)で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。  次のことを確認します:
-
-- アプリに割り当てられた**アプリケーション ID** を書き留めます。これは、後ですぐ必要になります。 
+- アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 - アプリの **Web** プラットフォームを追加します。
-- 適切な**リダイレクト URI** を入力します。 は、認証の応答が送られる Azure AD を示します。このチュートリアルの既定値は `https://localhost:44326/` です。
+- 適切な**リダイレクト URI** を入力します。リダイレクト URI は、認証の応答が送られる Azure AD を示します。このチュートリアルの既定値は `https://localhost:44326/` です。
 
-## 2. OWIN 認証パイプラインを使用するようにアプリをセットアップする
-ここでは、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。  OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
+## 2\.アプリで OWIN 認証パイプラインを使用するよう設定します。
+ここでは、OpenID Connect 認証プロトコルを使用するように、OWIN ミドルウェアを構成します。OWIN は、サインイン要求またはサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
--	最初に、プロジェクトのルートにある `web.config` ファイルを開いて、アプリの構成値を `<appSettings>` セクションに入力します。
-    -	`ida:ClientId` は、登録ポータル内のアプリに割り当てられた**アプリケーション ID** です。
+-	最初に、プロジェクトのルートにある `web.config` ファイルを開いて、`<appSettings>` セクションでアプリの構成値を入力します。
+    -	`ida:ClientId` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
     -	`ida:RedirectUri` は、ポータルで入力した**リダイレクト URI** です。
 
 -	次に、パッケージ マネージャー コンソールを使用して、プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
@@ -63,7 +60,7 @@ PM> Install-Package Microsoft.Owin.Security.Cookies
 PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
--	"OWIN Startup クラス" を `Startup.cs` という名前のプロジェクトに追加します。プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックし、"OWIN" を検索します。アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。
+-	"OWIN Startup クラス" を `Startup.cs` という名前のプロジェクトに追加します。プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックして、"OWIN" を検索します。アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。
 -	クラス宣言を `public partial class Startup` に変更します。このクラスの一部は別ファイルで実装済みです。`Configuration(...)` メソッドで、ConfigureAuth(...) を呼び出して、Web アプリ用の認証をセットアップします。  
 
 ```C#
@@ -171,7 +168,7 @@ else
 ```
 
 ## 4\.ユーザー情報を表示する
-OpenID Connect を使用してユーザーの認証処理を実行すると、v2.0 エンドポイントは id\_token をアプリに返します。id\_token には、"[要求](active-directory-v2-tokens.md#id_tokens)" か、ユーザーに関する "アサーション" が含まれます。これらの要求を使用して、アプリを個人向けにカスタマイズすることができます。
+OpenID Connect を使用してユーザーの認証処理を実行すると、v2.0 エンドポイントは id\_token をアプリに返します。id\_token には、"[要求](active-directory-v2-tokens.md#id_tokens)"、つまりユーザーに関する "アサーション" が含まれます。これらの要求を使用して、アプリを個人向けにカスタマイズすることができます。
 
 - `Controllers\HomeController.cs` ファイルを開きます。`ClaimsPrincipal.Current` セキュリティ プリンシパル オブジェクトを介して、コントローラー内のユーザー クレームにアクセスできます。
 
@@ -197,11 +194,9 @@ public ActionResult About()
 
 最後に、アプリを構築して実行します。 Microsoft の個人または職場/学校アカウントのいずれかでサインインすると、ユーザーの ID が上部のナビゲーション バーにどのように反映されるかがわかります。これで、Web アプリが業界標準のプロトコルで保護され、個人および職場/学校アカウントの両方でユーザーを認証できるようになりました。
 
-参照用に、完成済みサンプル (構成値を除く) を [.zip 形式でこちらからダウンロードできます](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/complete.zip)。または、GitHub から複製することもできます。
+参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/complete.zip)。または、GitHub から複製することもできます。
 
-```
-git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git
-```
+```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 
 ## 次のステップ
 
@@ -209,8 +204,8 @@ git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-Web
 
 [v2.0 アプリ モデルでの Web API の保護 >>](active-directory-devquickstarts-webapi-dotnet.md)
 
-その他のリソースについては、以下を参照してください。 
-- [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) 
+その他のリソースについては、以下を参照してください。
+- [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

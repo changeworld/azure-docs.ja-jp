@@ -2,4 +2,4 @@
 - [(C# | C#)](../articles/iot-hub-csharp-csharp-c2d.md)
 - [(Java | C#)](../articles/iot-hub-java-csharp-c2d.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

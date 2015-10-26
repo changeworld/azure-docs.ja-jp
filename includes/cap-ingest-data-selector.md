@@ -5,3 +5,5 @@
 - [Azure SQL database](../articles/machine-learning/machine-learning-data-science-move-sql-azure.md)
 - [HDInsight(Hadoop on Azure)](../articles/machine-learning/machine-learning-data-science-move-hive-tables.md)
 - [Azure Machine Learning Studio](../articles/machine-learning/machine-learning-import-data.md)
+
+<!---HONumber=Oct15_HO3-->

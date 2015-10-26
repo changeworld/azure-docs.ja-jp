@@ -218,4 +218,4 @@ Service Bus トピックでは、最大 256 MB までのメッセージをサポ
 -	GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

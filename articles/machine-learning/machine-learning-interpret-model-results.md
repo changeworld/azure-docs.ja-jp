@@ -309,4 +309,4 @@ Web サービスを実行して返された結果は、図 14 のようになり
 [train-matchbox-recommender]: https://msdn.microsoft.com/library/azure/fa4aa69d-2f1c-4ba4-ad5f-90ea3a515b4c/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

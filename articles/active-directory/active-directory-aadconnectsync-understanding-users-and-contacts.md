@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure AD Connect Sync: ユーザーと連絡先について"
+	pageTitle="Azure AD Connect Sync: ユーザーと連絡先について | Microsoft Azure"
 	description="Azure AD Connect Sync のユーザーと連絡先について説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="swadhwa"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2015"
+	ms.date="10/13/2015"
 	ms.author="markusvi"/>
 
 
 # Azure AD Connect Sync: ユーザーと連絡先について
 
-複数の Active Directory フォレストを使用することになる理由はさまざまあり、複数の異なるデプロイメント トポロジがあります。一般的なモデルとしては、アカウント リソース デプロイメント、合併や買収の後で GAL 同期が行われたフォレストなどがあります。ただし、純粋なモデルがある一方で、ハイブリッド モデルも一般的です。Azure AD Connect Sync の既定の構成では特殊なモデルを想定しませんが、インストール ガイドにおけるユーザーの一致の選択方法によっては、異なる動作が見られることもあります。
+複数の Active Directory フォレストを使用することになる理由はさまざまあり、複数の異なるデプロイ トポロジがあります。一般的なモデルとしては、アカウント リソース デプロイ、合併や買収の後で GAL 同期が行われたフォレストなどがあります。ただし、純粋なモデルがある一方で、ハイブリッド モデルも一般的です。Azure AD Connect Sync の既定の構成では特殊なモデルを想定しませんが、インストール ガイドにおけるユーザーの一致の選択方法によっては、異なる動作が見られることもあります。
 
 このトピックでは、既定の構成が特定のトポロジでどのように動作するかを説明します。構成の概要についてと、構成を確認するために使用できる同期ルール エディターについて取り上げます。
 
@@ -72,7 +72,7 @@ Azure AD に対するオブジェクトのプロビジョニングでは、メ�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
- 
+
 <!--Image references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

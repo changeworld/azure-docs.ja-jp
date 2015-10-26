@@ -241,4 +241,4 @@ Windows PowerShell for StorSimple には、デバイスのシリアル コンソ
 
 StorSimple デバイスの電源を入れるときまたはシャットダウンするときに問題が発生した場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

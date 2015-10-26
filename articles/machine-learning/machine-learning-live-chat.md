@@ -12,8 +12,8 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="07/06/2015" 
-    ms.author="luisca"/>
+    ms.date="10/14/2015" 
+    ms.author="olgali"/>
 #機械学習のライブ チャット サポートを利用する
 
 [Azure Machine Learning Studio](machine-learning-what-is-ml-studio.md) では、機械学習モデルをビルドするための直感的なインターフェイスを提供します。使用するうえで役立つ[ギャラリー](machine-learning-gallery-how-to-use-contribute-publish.md)と[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)が用意されています。
@@ -31,4 +31,4 @@
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

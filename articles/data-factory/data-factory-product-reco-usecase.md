@@ -60,4 +60,4 @@ Azure Data Factory は、ソリューション アクセラレータの Cortana 
 
   
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

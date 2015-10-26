@@ -29,4 +29,4 @@ ST\_WITHIN クエリのポリゴン引数の最大ポイント数* |16
 
 アスタリスク (*) 付きで表示されているクォータは、[Azure サポートに問い合わせて調整できます](../articles/documentdb/documentdb-increase-limits.md)。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

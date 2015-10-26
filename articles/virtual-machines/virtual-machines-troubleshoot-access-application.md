@@ -19,7 +19,8 @@
 
 # Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルまたはリソース マネージャーのデプロイト モデルを使用して作成された仮想マシンでのアプリケーション アクセスのトラブルシューティングについて説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 この記事では、Azure 仮想マシンで実行されているアプリケーションにアクセスできない場合にその原因を特定し、問題を解決するための系統的アプローチについて説明します。
 
@@ -112,4 +113,4 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-troubleshoot-ssh-connections.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

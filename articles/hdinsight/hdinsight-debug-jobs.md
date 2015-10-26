@@ -300,4 +300,4 @@ Azure PowerShell またはプレビュー ポータルでユーザーが遭遇�
 
 [image-hdi-debugging-error-messages-portal]: ./media/hdinsight-debug-jobs/hdi-debug-errormessages-portal.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

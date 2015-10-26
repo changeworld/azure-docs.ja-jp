@@ -52,4 +52,4 @@ Servicedefinition.csdef ファイルにはエンドポイント構成が含ま�
 
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

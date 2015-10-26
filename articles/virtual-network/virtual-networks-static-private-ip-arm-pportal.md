@@ -97,4 +97,4 @@
 - [インスタンス レベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

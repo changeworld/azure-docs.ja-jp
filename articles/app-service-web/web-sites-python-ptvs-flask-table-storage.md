@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Python Tools 2.2 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ"
-	description="Python Tools for Visual Studio を使用して、Azure テーブル ストレージにデータを保存する Flask Web アプリを作成し、Azure App Service Web Apps にデプロイする方法について説明します。"
+	pageTitle="Python Tools 2.2 for Visual Studio を使用した Azure 上の Flask と Azure テーブル ストレージ" 
+	description="Python Tools for Visual Studio を使用して、Azure テーブル ストレージにデータを保存する Flask Web アプリを作成し、Azure App Service Web Apps にデプロイする方法について説明します。" 
 	services="app-service\web"
 	tags="python"
-	documentationCenter="python"
-	authors="huguesv"
-	manager="wpickett"
+	documentationCenter="python" 
+	authors="huguesv" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="python"
-	ms.topic="article"
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="python" 
+	ms.topic="article" 
 	ms.date="08/30/2015"
 	ms.author="huguesv"/>
 
@@ -210,4 +210,4 @@ Python Tools for Visual Studio、Flask および Azure テーブル ストレー
 [Azure SDK for Python]: https://github.com/Azure/azure-sdk-for-python
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure SQL Database への BACPAC のインポート"
-	description="Azure SQL Database への BACPAC のインポート"
+	pageTitle="BACPAC ファイルをインポートして新しい Azure SQL Database を作成する"
+	description="既存の BACPAC ファイルをインポートして新しい Azure SQL Database を作成する"
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
@@ -10,14 +10,15 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="09/05/2015"
+	ms.date="10/13/2015"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
 
-# SQL Database への BACPAC のインポート
+# BACPAC ファイルをインポートして新しい Azure SQL Database を作成する
+
 
 **1 つのデータベース**
 
@@ -25,11 +26,11 @@
 - [Azure Preview Portal](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 
-この記事では、[Azure プレビュー ポータル](https://portal.azure.com)を使用して BACPAC をインポートすることで、SQL Database を作成する方法を示します。
+この記事は、[Azure プレビュー ポータル](https://portal.azure.com)を使用して BACPAC ファイルから新しい Azure SQL Database を作成する手順について説明します。
 
 BACPAC は、データベース スキーマとデータを含む .bacpac ファイルです。詳細については、「[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)」の「バックアップ パッケージ (.bacpac)」を参照してください。
 
-Azure Storage BLOB コンテナーからインポートされた BACPAC からデータベースが作成されます。Azure Storage に .bacpac ファイルがない場合は、「[Azure SQL Database の BACPAC の作成およびエクスポート](sql-database-backup.md)」の手順に従って 1 つ作成できます。
+Azure Storage BLOB コンテナーからインポートされた BACPAC からデータベースが作成されます。Azure Storage に .bacpac ファイルがない場合は、「[SQL Database の BACPAC の作成およびエクスポート](sql-database-export.md)」の手順に従って作成できます。
 
 
 > [AZURE.NOTE]Azure SQL Database では、復元できるすべてのユーザー データベースのバックアップが自動的に作成され、保守されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
@@ -109,4 +110,4 @@ Azure Storage BLOB コンテナーからインポートされた BACPAC から�
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -56,4 +56,4 @@ Azure で使用するルート証明書の詳細については、[Azure ルー�
 
 Java の詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

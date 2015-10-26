@@ -18,7 +18,9 @@
 
 # Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
+
 
 このトピックでは、任意のプラットフォーム上のサービス管理 (asm) モードの Azure CLI から Docker VM 拡張機能を使用して VM を作成する方法について説明します。[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)に対して Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。コンテナーとその利点に関する概要については、「[Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
 
@@ -85,18 +87,59 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 
 ![](./media/virtual-machines-docker-with-xplat-cli/dockercreateresults.png)
 
-> [AZURE.NOTE]仮想マシンの作成には数分かかることがありますが、プロビジョニングが終わると、Docker デーモン (Docker サービス) が起動し、Docker コンテナー ホストに接続できるようになります。
+> [AZURE.NOTE]仮想マシンの作成には数分かかることがありますが、プロビジョニングが終わると (状態値は `ReadyRole`)、Docker デーモン (Docker サービス) が起動し、Docker コンテナー ホストに接続できるようになります。
 
 Azure 上に作成した Docker VM をテストするために、次のコマンドを入力します。
 
 `docker --tls -H tcp://<vm-name-you-used>.cloudapp.net:2376 info`
 
-*<vm-name-you-used>* は、`azure vm docker create` の呼び出しで使用した仮想マシンの名前です。以下のような応答が表示されます。Azure 上で Docker ホスト VM が稼働し、コマンドの入力を待機していることが示されています。
+*&lt;vm-name-you-used&gt;* は、`azure vm docker create` の呼び出しで使用した仮想マシンの名前です。以下のような応答が表示されます。Azure 上で Docker ホスト VM が稼働し、コマンドの入力を待機していることが示されています。
 
-![](./media/virtual-machines-docker-with-xplat-cli/connectingtodockerhost.png)
+これで、Docker クライアントを使用して接続し、情報を取得しようとすることができます (Mac の場合など、一部の Docker クライアントのセットアップでは、`sudo` の使用が必要になる場合があります)。
+
+	sudo docker --tls -H tcp://testsshasm.cloudapp.net:2376 info
+	Password:
+	Containers: 0
+	Images: 0
+	Storage Driver: devicemapper
+	Pool Name: docker-8:1-131781-pool
+	Pool Blocksize: 65.54 kB
+	Backing Filesystem: extfs
+	Data file: /dev/loop0
+	Metadata file: /dev/loop1
+	Data Space Used: 1.821 GB
+	Data Space Total: 107.4 GB
+	Data Space Available: 28 GB
+	Metadata Space Used: 1.479 MB
+	Metadata Space Total: 2.147 GB
+	Metadata Space Available: 2.146 GB
+	Udev Sync Supported: true
+	Deferred Removal Enabled: false
+	Data loop file: /var/lib/docker/devicemapper/devicemapper/data
+	Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata
+	Library Version: 1.02.77 (2012-10-15)
+	Execution Driver: native-0.2
+	Logging Driver: json-file
+	Kernel Version: 3.19.0-28-generic
+	Operating System: Ubuntu 14.04.3 LTS
+	CPUs: 1
+	Total Memory: 1.637 GiB
+	Name: testsshasm
+	WARNING: No swap limit support
+
+すべてが機能していることを確認するために、VM で Docker 拡張機能を調査できます。
+
+	azure vm extension get testsshasm
+	info: Executing command vm extension get
+	+ Getting virtual machines
+	data: Publisher Extension name ReferenceName Version State
+	data: -------------------- --------------- ------------------------- ------- ------
+	data: Microsoft.Azure.E... DockerExtension DockerExtension 1.* Enable
+	info: vm extension get command OK
 
 ### Docker ホスト VM の認証
-コマンド `azure vm docker create` では、Docker VM の作成に加えて、必要な証明書も自動的に作成されます。Docker クライアント コンピューターは、この証明書を使用することで、HTTPS を介して Azure コンテナー ホストに接続できます。証明書は必要に応じてクライアントとホスト マシンのどちらにも格納されます。以降の実行では、既存の証明書が再利用され、新しいホストと共有されます。
+
+コマンド `azure vm docker create` では、Docker VM の作成に加えて、必要な証明書も自動的に作成されます。Docker クライアント コンピューターは、この証明書を使用することで、HTTPS を介して Azure コンテナー ホストに接続できます。証明書は必要に応じてクライアントとホスト マシンのどちらにも格納されます。これ以降に実行しようとすると、既存の証明書が再利用され、新しいホストと共有されます。
 
 既定では、証明書は `~/.docker` に配置されます。Docker はポート **2376** で実行するように構成されます。別のポートやディレクトリを使用する場合は、以下の `azure vm docker create` コマンド ライン オプションのいずれかを使用して、Docker コンテナー ホスト VM がクライアントとの接続に別のポートや証明書を使用するよう構成できます。
 
@@ -108,9 +151,6 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 ホストの Docker デーモンは、`azure vm docker create` コマンドで生成された証明書を使用して、指定されたポートでクライアント接続をリッスンし、認証するよう構成されています。クライアント コンピューターには、Docker ホストにアクセスできるように、これらの証明書が配置されている必要があります。
 
 > [AZURE.NOTE]ネットワークに接続されたホストにこれらの証明書がない場合は、コンピューターに接続できる第三者に対して脆弱になります。既定の構成を変更する前に、コンピューターやアプリケーションに対するリスクについてよく理解してください。
-
-
-
 
 ## 次のステップ
 
@@ -141,4 +181,4 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

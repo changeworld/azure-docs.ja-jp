@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="AndKjell"
-   manager="msStevenPo"
+   manager="StevenPo"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/09/2015"
+   ms.date="10/13/2015"
    ms.author="andkjell"/>
 
 # 誤って削除されないように保護する
@@ -21,7 +21,7 @@
 
 Azure AD Connect のインストール中は、誤った削除操作を防止する機能が既定で有効になり、500 個を超える削除を行うエクスポートを許可しないように構成されます。この機能は、構成を誤って変更することと、たくさんのユーザーに影響を与える可能性があるオンプレミス ディレクトリの変更を防ぐように設計されています。
 
-500 オブジェクトという既定値は PowerShell と `Enable-ADSyncExportDeletionThreshold` で変更できます。組織の規模に合わせてこの値を構成する必要があります。同期スケジューラーは 3 時間おきに実行されるので、この値は 3 時間以内に確認される削除数になります。
+500 オブジェクトという既定値は PowerShell と `Enable-ADSyncExportDeletionThreshold` で変更できます。組織の規模に合わせてこの値を構成する必要があります。同期スケジューラは 3 時間おきに実行されるので、この値は 3 時間以内に確認される削除数になります。
 
 この機能が有効なときに、Azure AD にエクスポートするようにステージングされた削除の数が多すぎる場合は、エクスポートは続行されず、次のような電子メールが送信されます。
 
@@ -44,7 +44,8 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 3. 保護を再度有効にするには、PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold` を実行します。
 
 ## 次のステップ
+[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
-Azure AD Connect Sync の構成の詳細については、[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) に関するページを参照してください。
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -266,7 +266,7 @@ namespace WorkerRole1
 ```
 
 ### シナリオ 2
-**WebRole1** から **WorkerRole1** へのネットワーク トラフィック、および WebRole1 から **WorkerRole2** へのネットワーク トラフィックのみを許可する。
+**WebRole1** から **WorkerRole1** へのネットワーク トラフィック、および **WorkerRole2** へのネットワーク トラフィックのみを許可する。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -359,4 +359,4 @@ namespace WorkerRole1
 ## 次のステップ
 Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

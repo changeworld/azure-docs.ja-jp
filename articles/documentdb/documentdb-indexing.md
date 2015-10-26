@@ -67,4 +67,4 @@ DocumentDB のインデックス作成は、ストレージの効率性とマル
 - DocumentDB のインデックスをカスタマイズする方法については、[こちら](documentdb-indexing-policies.md)で説明します。
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

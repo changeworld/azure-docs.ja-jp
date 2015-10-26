@@ -382,4 +382,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

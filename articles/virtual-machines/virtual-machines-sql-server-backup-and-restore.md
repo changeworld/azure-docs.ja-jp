@@ -19,11 +19,12 @@
 
 # Azure Virtual Machines における SQL Server のバックアップと復元
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 ## 概要
 
-SQL Server データベースのデータのバックアップは、アプリケーション エラーやユーザー エラーによるデータ損失から保護する戦略の重要な要素です。これは、Azure Virtual Machines (VM) で実行されている SQL Server にも同様に当てはまります。
+SQL Server データベースのデータのバックアップは、アプリケーション エラーやユーザー エラーによるデータ損失から保護する戦略の重要な要素です。これは、Azure 仮想マシン (VM) で実行されている SQL Server にも同様に当てはまります。
 
 Azure VM で実行されている SQL Server では、バックアップ ファイルの保存先として接続されたディスクを使用するネイティブなバックアップおよび復元手法を使用できます。ただし、[仮想マシンのサイズ](virtual-machines-size-specs.md)に基づいて、Azure 仮想マシンに接続できるディスク数には制限があります。また、ディスク管理のオーバーヘッドも考慮する必要があります。
 
@@ -74,7 +75,7 @@ SQL Server 2012 での SQL Server のバックアップと復元の詳細につ�
 
 SQL Server 2012 SP1 Cumulative Update 2 以降では、Azure BLOB ストレージ サービスとの間でバックアップと復元を実行できます。この拡張機能を使用して、Azure 仮想マシンで実行されている SQL Server 上またはオンプレミスのインスタンス上の SQL Server データベースをバックアップできます。詳細については、「[Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)」をご覧ください。
 
-Azure BLOB ストレージ サービスを使用する利点として、接続されるディスク数の上限 (16 個) を回避できること、管理しやすいこと、移行または災害復旧のために、Azure 仮想マシンで実行されている SQL Server インスタンスの別のインスタンスまたはオンプレミスのインスタンスでバックアップ ファイルを直接利用できることなどがあります。SQL Server バックアップに Azure BLOB ストレージ サービスを使用する利点の詳細については、「[Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)」の*利点*に関するセクションをご覧ください。
+Azure BLOB ストレージ サービスを使用する利点として、接続されるディスク数の上限 (16 個) を回避できること、管理しやすいこと、移行または障害復旧のために、Azure 仮想マシンで実行されている SQL Server インスタンスの別のインスタンスまたはオンプレミスのインスタンスでバックアップ ファイルを直接利用できることなどがあります。SQL Server バックアップに Azure BLOB ストレージ サービスを使用する利点の詳細については、「[Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)」の*利点*に関するセクションをご覧ください。
 
 ベスト プラクティスの推奨事項とトラブルシューティング情報については、「[バックアップと復元に関するベスト プラクティス (Azure BLOB ストレージ サービス)](https://msdn.microsoft.com/library/jj919149%28v=sql.110%29.aspx)」をご覧ください。
 
@@ -92,4 +93,4 @@ Azure VM に SQL Server をデプロイすることを計画している場合�
 
 [Azure Virtual Machines で SQL Server を実行するための他のリソース](virtual-machines-sql-server-infrastructure-services.md)を確認します。
 
-<!----HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

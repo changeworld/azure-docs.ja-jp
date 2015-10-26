@@ -18,7 +18,7 @@
 	- [Box を統合する方法](https://msdn.microsoft.com/library/azure/dn308589.aspx)
 	- [ServiceNow を統合する方法](https://msdn.microsoft.com/library/azure/dn510971.aspx)
 	- [Dropbox for Business を統合する方法](https://msdn.microsoft.com/library/azure/dn510978.aspx)
-	- [Workday を統合する方法](https://msdn.microsoft.com/library/azure/dn510972.aspx) 
+	- [Workday を統合する方法](http://go.microsoft.com/fwlink/?LinkId=690250) 
 	- [その他のSaaS アプリケーション用チュートリアル](active-directory-saas-tutorial-list.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

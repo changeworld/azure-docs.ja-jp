@@ -4,4 +4,4 @@
 - [GitHub の Azure AD サンプル](https://github.com/AzureAdSamples)
 - [CloudIdentity.com](https://cloudidentity.com)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

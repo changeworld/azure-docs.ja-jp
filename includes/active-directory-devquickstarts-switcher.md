@@ -7,4 +7,4 @@
 - [Xamarin](active-directory-devquickstarts-xamarin.md)
 - [Cordova](active-directory-devquickstarts-cordova.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

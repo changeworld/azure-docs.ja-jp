@@ -152,4 +152,4 @@ azure モジュールは、Azure Service Bus 名前空間に接続するため�
 この記事で説明されている Azure サービス バス キューと、「[サービス バス キューの使用方法](/develop/ruby/how-to-guides/queue-service/)」で説明されている Azure サービス バス キューの比較については、「[Azure Queues and Azure Service Bus Queues - Compared and Contrasted (Azure キューと Azure サービス バス キューの比較)](service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

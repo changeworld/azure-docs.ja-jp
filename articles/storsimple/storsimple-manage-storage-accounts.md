@@ -151,4 +151,4 @@ StorSimple Manager サービスにこの変更を認識させるには、StorSim
 - [StorSimple のセキュリティの詳細](storsimple-security.md)
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

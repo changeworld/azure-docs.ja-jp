@@ -1,20 +1,20 @@
 <properties
-    pageTitle="HDInsight での Script Action 開発 | Microsoft Azure"
-	description="Script Action を使用して Hadoop クラスターをカスタマイズする方法について説明します。"
-	services="hdinsight"
-	documentationCenter=""
-	authors="Blackmist"
-	manager="paulettm"
-	editor="cgronlun"/>
+    pageTitle="Linux ベースの HDInsight での Script Action 開発 | Microsoft Azure"
+    description="Script Action を使って Linux ベースの HDInsight クラスターをカスタマイズする方法について説明します。"
+    services="hdinsight"
+    documentationCenter=""
+    authors="Blackmist"
+    manager="paulettm"
+    editor="cgronlun"/>
 
 <tags
     ms.service="hdinsight"
-	ms.workload="big-data"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/18/2015"
-	ms.author="larryfr"/>
+    ms.workload="big-data"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/09/2015"
+    ms.author="larryfr"/>
 
 # HDInsight での Script Action 開発
 
@@ -154,7 +154,7 @@ VARIABLENAME は、変数の名前です。この後に変数にアクセスす�
 
 スクリプトのデプロイを準備する際に実行した手順を次に示します。
 
-- カスタム スクリプトが含まれているファイルを、デプロイメント時にクラスター ノードからアクセス可能な場所に配置します。これには、クラスターのデプロイメント時に指定された既定または追加のストレージ アカウント、またはその他のパブリックにアクセス可能なストレージ コンテナーを指定できます。
+- カスタム スクリプトが含まれているファイルを、デプロイ時にクラスター ノードからアクセス可能な場所に配置します。これには、クラスターのデプロイ時に指定された既定または追加のストレージ アカウント、またはその他のパブリックにアクセス可能なストレージ コンテナーを指定できます。
 
 - スクリプトがべき等に実行されるようにチェックを追加し、スクリプトが同じノードで複数回実行できるようにします。
 
@@ -213,4 +213,4 @@ _解決_: ファイルを ASCII として、または BOM なしの UTF-8 とし
 
 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

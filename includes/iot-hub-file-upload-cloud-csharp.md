@@ -43,7 +43,7 @@
             return blob.Uri + sasBlobToken;
         }
 
-    このメソッドにより、新しい BLOB リファレンスが作成され、「[BLOB サービスによる SAS の作成および使用](https://azure.microsoft.com/ja-JP/documentation/articles/storage-dotnet-shared-access-signature-part-2/)」で説明されているように共有アクセス署名 URI が生成されます。上記のメソッドで生成される署名 URI の有効期限は 24 時間です。ターゲット デバイスでファイルをアップロードするのにこれ以上の時間を要する場合は (接続頻度が低い場合や、容量の大きいファイルをアップロードするには接続の信頼性が低い場合など)、署名の有効期限の延長を検討してください。
+    このメソッドにより、新しい BLOB リファレンスが作成され、「[BLOB サービスによる SAS の作成および使用](https://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-shared-access-signature-part-2/)」で説明されているように共有アクセス署名 URI が生成されます。上記のメソッドで生成される署名 URI の有効期限は 24 時間です。ターゲット デバイスでファイルをアップロードするのにこれ以上の時間を要する場合は (接続頻度が低い場合や、容量の大きいファイルをアップロードするには接続の信頼性が低い場合など)、署名の有効期限の延長を検討してください。
 
 5. 次の方法で **SendCloudToDeviceMessageAsync** を変更します。
 
@@ -61,13 +61,13 @@
 
 <!-- Links -->
 
-[Azure ストレージについて]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-create-storage-account/#create-a-storage-account
+[Azure ストレージについて]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/#create-a-storage-account
 
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
 [Azure IoT - Service SDK NuGet package]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[Transient Fault Handling]: https://msdn.microsoft.com/ja-JP/library/hh680901(v=pandp.50).aspx
+[Transient Fault Handling]: https://msdn.microsoft.com/ja-jp/library/hh680901(v=pandp.50).aspx
 [Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 
 <!-- Images -->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

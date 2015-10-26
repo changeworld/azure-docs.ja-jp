@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/01/2015"
+	ms.date="10/08/2015"
 	ms.author="genemi"/>
 
 
@@ -149,7 +149,7 @@ Visual Studio 2013 (VS2013) で Azure SQL Database に接続することをお�
 - オンラインまたはオフラインでのデータベースの開発。
 
 
-代わりに、VS2013 の無償ですべての機能を備えたバージョンである [Visual Studio Community 2013](https://www.visualstudio.com/ja-JP/news/vs2013-community-vs.aspx/) で接続することもできます。
+代わりに、VS2013 の無償ですべての機能を備えたバージョンである [Visual Studio Community 2013](https://www.visualstudio.com/JA-JP/news/vs2013-community-vs.aspx/) で接続することもできます。
 
 
 以前の Azure ポータルでは、データベース ページで **[Visual Studio で開く]** をクリックしてコンピューター上で VS2013 を起動し、Azure SQL Database に接続できます。
@@ -225,13 +225,14 @@ V11 データベースは、V12 へのアップグレード中も、引き続き
 
 PowerShell コマンドレットを使用して、V11 を含め、V12 より前のバージョンから V12 への Azure SQL Database のアップグレードを開始、停止、監視できます。
 
+- [PowerShell を使用し、SQL Database V12 にアップグレードします](sql-database-upgrade-server.md)
 
-これらの PowerShell コマンドレットに関する次のリファレンス ドキュメントを参照してください。
+これらの PowerShell コマンドレットについては、次のリファレンス ドキュメントを参照してください。
 
 
-- [Get-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143621.aspx)
-- [Start-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143623.aspx)
-- [Stop-AzureSqlServerUpgrade](http://msdn.microsoft.com/library/mt143622.aspx)
+- [Get-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603582.aspx)
+- [Start-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt619403.aspx)
+- [Stop-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603589.aspx)
 
 
 Stop- コマンドレットは、一時停止ではなく取り消しを意味します。アップグレードを再開する方法は、最初からやり直す方法以外にありません。Stop- コマンドレットにより、該当するすべてのリソースがクリーンアップされ、解放されます。
@@ -253,4 +254,4 @@ Stop- コマンドレットは、一時停止ではなく取り消しを意味�
 [Subheading 1]: #subheading-1
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

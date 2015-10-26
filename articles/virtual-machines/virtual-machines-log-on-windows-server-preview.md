@@ -19,7 +19,7 @@
 
 # Windows Server が実行されている仮想マシンにログオンする方法 
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用した Windows VM へのログオンについて説明します。また、[クラシック デプロイ モデル](virtual-machines-log-on-windows-server.md)を使用してリソースを作成することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-log-on-windows-server.md)。
 
 Azure プレビュー ポータルの **[接続]** ボタンを使用して、リモート デスクトップ セッションを開始します。まず仮想マシンに接続してからログインします。
 
@@ -29,7 +29,7 @@ Azure プレビュー ポータルの **[接続]** ボタンを使用して、�
 
 2.	ハブ メニューの **[参照]** をクリックします。
 
-3.	検索ブレードを下にスクロールし、**[Virtual Machines]** をクリックします。
+3.	検索ブレードを下へスクロールし、**[仮想マシン]** をクリックします。
 
 	![仮想マシンのサイズ](./media/virtual-machines-log-on-windows-server-preview/search-blade-preview-portal.png)
 
@@ -45,6 +45,6 @@ Azure プレビュー ポータルの **[接続]** ボタンを使用して、�
 
 ## トラブルシューティング
 
-ログオンのヒントで解決できない場合、または必要な情報が掲載されていない場合は、「[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)」を参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
+ログオンのヒントで解決できない場合、または必要な情報が掲載されていない場合は、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続のトラブルシューティング](virtual-machines-troubleshoot-remote-desktop-connections.md)に関するページを参照してください。この記事では、一般的な問題の診断と解決の手順について説明します。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

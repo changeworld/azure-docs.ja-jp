@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Visual Studio と SSDT を使用した移行"
-	description="Microsoft Azure SQL Database、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード"
-	services="sql-database"
-	documentationCenter=""
-	authors="carlrabeler"
-	manager="jeffreyg"
-	editor=""/>
+   pageTitle="Visual Studio と SSDT を使用した移行" 
+   description="Microsoft Azure SQL Database、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード" 
+   services="sql-database" 
+   documentationCenter="" 
+   authors="carlrabeler" 
+   manager="jeffreyg" 
+   editor=""/>
 
 <tags
    ms.service="sql-database"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-management"
-	ms.date="08/24/2015"
-	ms.author="carlrab"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-management" 
+   ms.date="08/24/2015"
+   ms.author="carlrab"/>
 
 #データベースのインプレース更新と Azure SQL Database へのデプロイ
 
@@ -82,4 +82,4 @@ Azure SQL Database V12 へのオンプレミスのデータベースの移行で
 
 14.	SSMS を使用して、Azure SQL V12 互換のデータベース スキーマとデータを Azure SQL Database にデプロイします。「[SSMS を使用した互換性のあるデータベースの移行](sql-database-migrate-ssms.md)」をご覧ください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

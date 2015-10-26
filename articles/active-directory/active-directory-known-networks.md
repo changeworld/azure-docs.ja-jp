@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="既知のネットワーク"
-	description="既知のネットワークを構成すると、";複数の地域からのサインイン"; レポートおよび ";疑わしいアクティビティを示す IP アドレスからのサインイン"; レポートに、組織が所有する IP アドレスが含まれないようにすることができます。"
-	services="active-directory"
-	documentationCenter=""
-	authors="markusvi"
-	manager="msStevenPo"
+	pageTitle="既知のネットワーク" 
+	description="既知のネットワークを構成すると、";複数の地域からのサインイン"; レポートおよび ";疑わしいアクティビティを示す IP アドレスからのサインイン"; レポートに、組織が所有する IP アドレスが含まれないようにすることができます。" 
+	services="active-directory" 
+	documentationCenter="" 
+	authors="markusvi" 
+	manager="msStevenPo"  
 	editor=""/>
 
 <tags 
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/03/2015"
+	ms.service="active-directory" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/03/2015" 
 	ms.author="markvi"/>
 
 # 既知のネットワーク
@@ -56,4 +56,4 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 * [不審なアクティビティのある IP アドレスからのサインイン](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
 * [複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="10/09/2015" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の監視方法
@@ -143,6 +143,33 @@ Azure Redis Cache には診断データをストレージ アカウントに格�
 
 ![グラフの詳細を表示][redis-cache-view-chart-details]
 
+## クラスタリングを使用した Premium キャッシュの監視方法
+
+[クラスタリング](cache-how-to-premium-clustering.md)が有効になっている Premium キャッシュでは、最大で 10 個のシャードを使用できます。各シャードには独自のメトリックがあり、これらのメトリックが集約されて、キャッシュ全体としてのメトリックが提供されます。各メトリックには 2 つのバージョンがあります。1 つ目のメトリックは、キャッシュ全体のパフォーマンスを測定し、名前に `(Shard 0-9)` が含まれる 2 つ目のバージョンのメトリックは、キャッシュ内の 1 つのシャードのパフォーマンスを測定します。たとえば、キャッシュに 3 つのシャードがある場合、`Cache Hits` はキャッシュ全体の総ヒット数で、`Cache Hits (Shard 2)` はキャッシュの当該シャードのヒット数のみになります。
+
+各監視グラフには、キャッシュ シャードごとのメトリックと、キャッシュの最上位レベルのメトリックが表示されます。
+
+![監視][redis-cache-premium-monitor]
+
+データ ポイントの上にカーソルを合わせると、その時点での詳細が表示されます。
+
+![監視][redis-cache-premium-point-summary]
+
+概して、大きな値はキャッシュの集計値であり、小さい値はシャードの個々のメトリックです。この例では、3 つのシャードがあり、キャッシュ ヒットはシャード間で均等に分散されます。
+
+![監視][redis-cache-premium-point-shard]
+
+詳細を確認するには、グラフをクリックして **[メトリック]** ブレードで展開ビューを表示してください。
+
+![監視][redis-cache-premium-chart-detail]
+
+既定では、各グラフには個々のシャードのパフォーマンス カウンターと共に、最上位レベルのキャッシュのパフォーマンス カウンターが含まれます。これらは **[グラフの編集]** ブレードでカスタマイズできます。
+
+![監視][redis-cache-premium-edit]
+
+使用可能なパフォーマンス カウンターの詳細については、「[使用可能なメトリックとレポート期間](#available-metrics-and-reporting-intervals)」をご覧ください。
+
+
 ## 処理とアラート
 
 **[処理]** セクションには、**[イベント]** セクションと **[アラート ルール]** セクションがあります。
@@ -222,4 +249,14 @@ Azure のアラートの詳細については、「[アラート通知の受信]
 
 [redis-cache-add-alert]: ./media/cache-how-to-monitor/redis-cache-add-alert.png
 
-<!---HONumber=Oct15_HO2-->
+[redis-cache-premium-monitor]: ./media/cache-how-to-monitor/redis-cache-premium-monitor.png
+
+[redis-cache-premium-edit]: ./media/cache-how-to-monitor/redis-cache-premium-edit.png
+
+[redis-cache-premium-chart-detail]: ./media/cache-how-to-monitor/redis-cache-premium-chart-detail.png
+
+[redis-cache-premium-point-summary]: ./media/cache-how-to-monitor/redis-cache-premium-point-summary.png
+
+[redis-cache-premium-point-shard]: ./media/cache-how-to-monitor/redis-cache-premium-point-shard.png
+
+<!---HONumber=Oct15_HO3-->

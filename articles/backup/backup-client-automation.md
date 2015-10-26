@@ -7,7 +7,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/21/2015" ms.author="aashishr"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/01/2015" ms.author="aashishr"; "jimpark"/>
 
 
 # PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
@@ -16,6 +16,15 @@
 [AZURE.INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
 ## セットアップと登録
+開始するには
+
+1. [最新の PowerShell](https://github.com/Azure/azure-powershell/releases) (1.0.0 以降のバージョンが必要) をダウンロードします。
+2. **Switch-AzureMode** コマンドレットを使用して、*AzureResourceManager* モードに切り替えて Azure Backup コマンドレットを使用可能にします。
+
+```
+PS C:\> Switch-AzureMode AzureResourceManager
+```
+
 PowerShell を使用して次のセットアップおよび登録タスクを自動化できます。
 
 - バックアップ コンテナーの作成
@@ -25,14 +34,17 @@ PowerShell を使用して次のセットアップおよび登録タスクを自
 - 暗号化の設定
 
 ### バックアップ コンテナーの作成
-**New-AzureBackupVault** コマンドレットを使用して、新しいバックアップ コンテナーを作成できます。バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
+
+> [AZURE.WARNING]顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
+
+**New-AzureRMBackupVault** コマンドレットを使用すると、新しいバックアップ コンテナーを作成できます。バックアップ コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。管理者特権の Azure PowerShell コンソールで、次のコマンドを実行します。
 
 ```
-PS C:\> New-AzureResourceGroup –Name “test-rg” –Location “West US”
-PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GRS
+PS C:\> New-AzureResourceGroup –Name “test-rg” -Region “West US”
+PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GeoRedundant
 ```
 
-**Get-AzureBackupVault** コマンドレットを使用して、特定のサブスクリプション内のすべてのバックアップ コンテナーの一覧を取得できます。
+**Get-AzureRMBackupVault** コマンドレットを使用して、特定のサブスクリプション内のすべてのバックアップ コンテナーの一覧を取得できます。
 
 
 ### Microsoft Azure Backup エージェントのインストール
@@ -80,7 +92,7 @@ Microsoft Azure Backup サービスへの登録を実行する前に、[前提�
 - 有効な Azure サブスクリプションがあること
 - バックアップ コンテナーがあること
 
-コンテナーの資格情報をダウンロードするには、Azure PowerShell コンソールで **Get-AzureBackupVaultCredentials** コマンドレットを実行し、*C:\\Downloads* などのアクセスしやすい場所に保管します。
+コンテナーの資格情報をダウンロードするには、Azure PowerShell コンソールで **Get-AzureRMBackupVaultCredentials** コマンドレットを実行し、*C:\\Downloads* などのアクセスしやすい場所に保管します。
 
 ```
 PS C:\> $credspath = "C:"
@@ -580,7 +592,7 @@ PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePa
 ## 次のステップ
 Azure Backup for Windows Server/Client の詳細については、以下を参照してください。
 
-- [Azure Backup の概要](backup-introduction-to-azure-backup.md)
+- [Azure Backup の概要](backup-configure-vault.md)
 - [Windows Server のバックアップ](backup-azure-backup-windows-server.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

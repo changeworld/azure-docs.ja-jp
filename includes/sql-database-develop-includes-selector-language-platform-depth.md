@@ -17,4 +17,4 @@
 - [(Ruby | Mac. Starter)](sql-database-develop-ruby-simple-mac-osx.md)
 - [(Ruby | Windows. Starter)](sql-database-develop-ruby-simple-windows.md)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

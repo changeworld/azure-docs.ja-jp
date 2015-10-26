@@ -18,20 +18,21 @@ ms.service="virtual-machines"
 
 # クラスター ワークロードに合わせ、HPC Pack クラスターで Azure コンピューティング リソースを自動的に拡大縮小します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、従来のデプロイメント モデルを使用して作成されたリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 HPC Pack クラスターで Azure の「バースト」ノードをデプロイする場合、あるいは Azure VM で HPC Pack クラスターを作成する場合、クラスターのジョブやタスクの現在のワークロードに合わせ、Azure コンピューティング リソースを自動的に拡大縮小できれば便利です。そうすれば、Azure リソースをさらに効率的に利用し、そのコストを制御できます。これを行うには、HPC Pack でインストールされる **AzureAutoGrowShrink.ps1** HPC PowerShell スクリプトを使用します。
 
->[AZURE.TIP]HPC Pack 2012 R2 更新プログラム 2 より、HPC Pack には Azure バースト ノードまたは Azure VM コンピューティング ノードを自動的に拡大縮小するためのサービスが内蔵されています。[HPC Pack IaaS デプロイメント スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)の設定でサービスを構成するか、**AutoGrowShrink** クラスター プロパティを手動で設定します。「[Microsoft HPC Pack 2012 R2 更新プログラム 2 の新機能](https://technet.microsoft.com/library/mt269417.aspx)」を参照してください。
+>[AZURE.TIP]HPC Pack 2012 R2 更新プログラム 2 より、HPC Pack には Azure バースト ノードまたは Azure VM コンピューティング ノードを自動的に拡大縮小するためのサービスが内蔵されています。[HPC Pack IaaS デプロイ スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)の設定でサービスを構成するか、**AutoGrowShrink** クラスター プロパティを手動で設定します。「[Microsoft HPC Pack 2012 R2 更新プログラム 2 の新機能](https://technet.microsoft.com/library/mt269417.aspx)」を参照してください。
 
 ## 前提条件
 
-* **HPC Pack 2012 R2 更新プログラム 1 以降のクラスター** - **AzureAutoGrowShrink.ps1** スクリプトが %CCP\_HOME%bin フォルダーにインストールされています。クラスターのヘッド ノードはオンプレミスにするか、Azure VM に配置できます。Azure の「バースト」ノードでオンプレミス ヘッド ノードを使用するには、「[HPC Pack でハイブリッド クラスターをセットアップする](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)」を参照してください。Azure VM で HPC Pack クラスターをすばやくデプロイするには、「[HPC Pack IaaS デプロイメント スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)」を参照してください。
+* **HPC Pack 2012 R2 更新プログラム 1 以降のクラスター** - **AzureAutoGrowShrink.ps1** スクリプトが %CCP\_HOME%bin フォルダーにインストールされています。クラスターのヘッド ノードはオンプレミスにするか、Azure VM に配置できます。Azure の「バースト」ノードでオンプレミス ヘッド ノードを使用するには、「[HPC Pack でハイブリッド クラスターをセットアップする](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)」を参照してください。Azure VM で HPC Pack クラスターをすばやくデプロイするには、「[HPC Pack IaaS デプロイ スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)」を参照してください。
 
 * **Azure バースト ノードを含むクラスターの場合** -HPC Pack がインストールされているクライアント コンピューターで、またはヘッド ノードではスクリプトを実行します。クライアント コンピューターで実行する場合、ヘッド ノードをポイントするように $env:CCP\_SCHEDULER 変数を適切に設定します。Azure の「バースト」ノードをクラスターに追加しておく必要がありますが、「未デプロイ」の状態になっている場合があります。
 
 
-* **Azure VM にデプロイされているクラスター** - ヘッド ノード VM でスクリプトを実行します。そこでインストールされている **Start-HpcIaaSNode.ps1** スクリプトと **Stop-HpcIaaSNode.ps1** スクリプトに依存するためです。これらのスクリプトは追加で Azure 管理証明書を必要とするか、設定ファイルを公開します (「[Azure で HPC Pack クラスターのコンピューティング ノードを管理する](virtual-machines-hpcpack-cluster-node-manage.md)」を参照してください)。必要なコンピューティング ノード VM がすべてクラスターに追加されていることを確認します。ただし、「停止」状態になっている場合があります。
+* **Azure VM にデプロイされているクラスター** - ヘッド ノード VM でスクリプトを実行します。そこでインストールされている **Start-HpcIaaSNode.ps1** スクリプトと **Stop-HpcIaaSNode.ps1** スクリプトに依存するためです。これらのスクリプトは追加で Azure 管理証明書を必要とするか、設定ファイルを発行します (「[Azure で HPC Pack クラスターのコンピューティング ノードを管理する](virtual-machines-hpcpack-cluster-node-manage.md)」を参照してください)。必要なコンピューティング ノード VM がすべてクラスターに追加されていることを確認します。ただし、「停止」状態になっている場合があります。
 
 ## 構文
 
@@ -101,4 +102,4 @@ AzureAutoGrowShrink.ps1
 .\AzureAutoGrowShrink.ps1 -NodeTemplates 'Default ComputeNode Template' -JobTemplates 'Default' -NodeType ComputeNodes -NumOfActiveQueuedTasksPerNodeToGrow 10 -NumOfActiveQueuedTasksToGrowThreshold 15 -NumOfInitialNodesToGrow 5 -GrowCheckIntervalMins 1 -ShrinkCheckIntervalMins 1 -ShrinkCheckIdleTimes 10 -ArgFile 'IaaSVMComputeNodes_Arg.xml' -LogFilePrefix 'IaaSVMComputeNodes_log'
 ```
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

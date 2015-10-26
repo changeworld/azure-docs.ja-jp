@@ -99,7 +99,7 @@
     5.  **お使いのアカウント ID** をコピーします。
     6.  **[保存]** をクリックします。
 
-9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Azure AD ポータルで、[シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-tinfoil-security-tutorial/IC798974.png "Configure Single Sign-On")
 
@@ -107,7 +107,7 @@
 
     ![属性](./media/active-directory-saas-tinfoil-security-tutorial/IC795920.png "属性")
 
-11. 必要な属性マッピングを追加するには、次の手順を実行します。
+11. 必要な属性のマッピングを追加するには、次の手順を実行します。
 
     ![属性](./media/active-directory-saas-tinfoil-security-tutorial/IC798975.png "属性")
 
@@ -142,10 +142,10 @@ Azure AD ユーザーが Tinfoil Security にログインできるようにす�
 
     ![ユーザーの割り当て](./media/active-directory-saas-tinfoil-security-tutorial/IC798976.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選択し、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
 
     ![あり](./media/active-directory-saas-tinfoil-security-tutorial/IC767830.png "あり")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

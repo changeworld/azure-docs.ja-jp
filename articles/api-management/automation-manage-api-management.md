@@ -44,4 +44,4 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 * [#Azure API Management REST API の PowerShell モジュール](https://alexandrebrisebois.wordpress.com/2014/08/17/powershell-module-for-the-azure-api-management-rest-apis/)に関するコミュニティ ブログの投稿をお読みください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->
