@@ -61,4 +61,4 @@ Azure クラウド サービス プロジェクトは、そのプロジェクト
 
 Visual Studio で Azure のクラウド サービス プロジェクトを構成する方法の詳細については、「[複数のサービス構成を使用した Azure プロジェクトの構成](vs-azure-tools-multiple-services-project-configurations.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

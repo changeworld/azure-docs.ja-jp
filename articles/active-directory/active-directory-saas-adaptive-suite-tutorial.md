@@ -57,11 +57,11 @@
 
 1.  Azure AD ポータルの **Adaptive Suite** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-adaptive-suite-tutorial/IC805640.png "シングル サインオンの構成")
+    ![シングル サインオンの構成](./media/active-directory-saas-adaptive-suite-tutorial/IC805640.png "Configure Single Sign-On")
 
 2.  **[ユーザーの Adaptive Suite へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-adaptive-suite-tutorial/IC805641.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-adaptive-suite-tutorial/IC805641.png "Configure Single Sign-On")
 
 3.  **[アプリケーション設定の構成]** ページの **[応答 URL]** テキスト ボックスに、次のパターン ”*https://login.adaptiveinsights.com:443/samlsso/RlJFRVRSSUFMMTI3MTE=*" を使用して URL を入力してから、**[次へ]** をクリックします。
 
@@ -71,7 +71,7 @@
 
 4.  **[Adaptive Suite でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-adaptive-suite-tutorial/IC805643.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-adaptive-suite-tutorial/IC805643.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザーのウィンドウで、管理者として Adaptive Suite 企業サイトにログインします。
 
@@ -100,7 +100,7 @@
 
 9.  Azure AD ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]**をクリックして **[シングル サインオンの構成] **ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-adaptive-suite-tutorial/IC805647.png "シングル サインオンの構成")
+    ![シングル サインオンの構成](./media/active-directory-saas-adaptive-suite-tutorial/IC805647.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが Adaptive Suite にログインできるようにするには、そのユーザーを Adaptive Suite にプロビジョニングする必要があります。Adaptive Suite の場合、プロビジョニングは手動で実行します。
@@ -145,4 +145,4 @@ Azure AD ユーザーが Adaptive Suite にログインできるようにする�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

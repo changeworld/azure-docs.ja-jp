@@ -20,7 +20,7 @@
 *Application Insights はプレビュー段階です。*
 
 
-問題を検出し、問題を解決し、アプリケーションの継続的に改善します。実行中のアプリケーションの問題をすぐに診断します。ユーザーがアプリケーションを何に利用しているかを理解します。
+問題を検出し、問題を解決し、アプリケーションの継続的に改善します。Quickly diagnose any problems in your live application.Understand what your users do with it.
 
 構成は非常に簡単であり、数分以内で結果を確認できます。
 
@@ -28,7 +28,7 @@
 
 * [Azure Web アプリ - Web とワーカー ロール](app-insights-cloudservices.md)
 * [Azure VM の IIS の Web アプリ](../insights-perf-analytics.md)
-* [Azure の外のアプリケーション](app-insights-get-started.md)
+* [Azure の外のアプリケーション](app-insights-overview.md)
 
 
 
@@ -39,4 +39,4 @@
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

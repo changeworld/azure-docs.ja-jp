@@ -242,4 +242,4 @@ public class VoicemailBoxActor : Actor<VoicemailBox>, IVoicemailBoxActor
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -238,4 +238,4 @@ NuGet パッケージで提供される Web ロール用と worker ロール用�
 [3]: ./media/sql-database-elastic-scale-overview-split-and-merge/diagnostics-config.png
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

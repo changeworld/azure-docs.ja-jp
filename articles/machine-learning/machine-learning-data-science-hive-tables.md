@@ -2,6 +2,7 @@
 	pageTitle="データを作成して BLOB ストレージ から Hive テーブルに読み込む | Microsoft Azure" 
 	description="Hive テーブルを作成し、BLOB 内のデータを Hive テーブルに読み込む" 
 	services="machine-learning" 
+	solutions="" 
 	documentationCenter="" 
 	authors="hangzh-msft" 
 	manager="paulettm" 
@@ -145,4 +146,4 @@
 これで ORC 形式のデータを格納したテーブルを使用する準備が整いました。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

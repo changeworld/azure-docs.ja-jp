@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Mobile Engagement Android SDK の統合"
+	pageTitle="Azure Mobile Engagement Android SDK の統合" 
 	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="dwrede"
-	editor=""/>
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo" 
+	manager="dwrede" 
+	editor="" />
 
 <tags 
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="08/10/2015"
-	ms.author="piyushjo"/>
+	ms.service="mobile-engagement" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-android" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="08/10/2015" 
+	ms.author="piyushjo" />
 
 
 #リリース ノート
@@ -47,4 +47,4 @@
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

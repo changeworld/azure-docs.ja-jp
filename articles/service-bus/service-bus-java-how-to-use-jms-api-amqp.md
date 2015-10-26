@@ -342,4 +342,4 @@ Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、そ�
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -99,7 +99,7 @@
         "destinationMap": {
             "defaultValue": {
                 "science": "http://www.nasa.gov",
-                "microsoft": "https://www.microsoft.com/ja-JP/default.aspx",
+                "microsoft": "https://www.microsoft.com/ja-jp/default.aspx",
                 "google": "https://www.google.com",
                 "robots": "https://en.wikipedia.org/wiki/Robot",
                 "NSA": "https://www.nsa.gov/"
@@ -234,7 +234,7 @@ Logic Apps は、多くの場合、離散されているほど管理が簡単に
 }
 ```
 
-MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/ja-JP/library/azure/dn948511.aspx)に関するページを参照してください。
+MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/ja-jp/library/azure/dn948511.aspx)に関するページを参照してください。
 
 >[AZURE.NOTE]ロジック アプリ デザイナーでは、ロジック アプリの種類のアクションがサポートされていないため、定義を手動で編集する必要があります。
 
@@ -250,7 +250,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
     "parameters": {
         "dataFeeds": {
             "defaultValue": [
-                "https://www.microsoft.com/ja-JP/default.aspx",
+                "https://www.microsoft.com/ja-jp/default.aspx",
                 "https://gibberish.gibberish/"
             ],
             "type": "Array"
@@ -306,7 +306,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
     "parameters": {
         "dataFeeds": {
             "defaultValue": [
-                "https://www.microsoft.com/ja-JP/default.aspx",
+                "https://www.microsoft.com/ja-jp/default.aspx",
                 "https://office.live.com/start/default.aspx"
             ],
             "type": "Array"
@@ -723,4 +723,4 @@ API を呼び出しているときに、特定の応答を待ってから処理�
 
 ロジック アプリの作成と管理用に用意したすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/dn948513.aspx)を参照してください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

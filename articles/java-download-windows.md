@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure SDK for Java のダウンロード (Windows)" 
-	description="Azure SDK for Java をダウンロードします。Maven 用のコードを示します。Azure Plugin for Eclipse with Java のインストール手順を示します。" 
+	description="Azure SDK for Java をダウンロードします。Maven 用のコードを示します。Azure Tookit for Eclipse のインストール手順を示します。" 
 	services="" 
 	documentationCenter="java" 
 	authors="rmcmurray" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="08/14/2015" 
+	ms.date="10/12/2015" 
 	ms.author="robmcm"/>
 
 #Azure SDK for Java のダウンロード
@@ -26,4 +26,4 @@
 
 詳細については、[Java デベロッパー センター](/develop/java/)を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

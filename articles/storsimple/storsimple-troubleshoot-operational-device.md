@@ -1,19 +1,19 @@
 <properties 
    pageTitle="デプロイ済みの StorSimple デバイスのトラブルシューティング | Microsoft Azure"
-	description="デプロイし、現在運用している StorSimple デバイスに発生するエラーを診断して修正する方法について説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   description="デプロイし、現在運用している StorSimple デバイスに発生するエラーを診断して修正する方法について説明します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="SharS"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/31/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="08/31/2015"
+   ms.author="v-sharos" />
 
 # StorSimple 運用デバイスのトラブルシューティング
 
@@ -64,7 +64,7 @@
 問題を解決できない場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
 
-[1]: https://technet.microsoft.com/ja-JP/%5Clibrary/Dn688135(v=WPS.630).aspx
-[2]: https://technet.microsoft.com/ja-JP/%5Clibrary/Dn715782(v=WPS.630).aspx
+[1]: https://technet.microsoft.com/ja-jp/%5Clibrary/Dn688135(v=WPS.630).aspx
+[2]: https://technet.microsoft.com/ja-jp/%5Clibrary/Dn715782(v=WPS.630).aspx
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

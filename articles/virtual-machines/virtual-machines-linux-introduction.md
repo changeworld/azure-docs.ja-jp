@@ -19,8 +19,6 @@
 
 #Azure での Linux 入門
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
-
 このトピックでは、Azure クラウドで Linux 仮想マシンを使用するさまざまな局面について概説します。Linux 仮想マシンのデプロイは、ギャラリー内に存在するイメージを使用する際に簡単に使用できるプロセスです。
 
 ## 認証: ユーザー名、パスワード、SSH 鍵。
@@ -99,4 +97,4 @@ Linux では、データ ディスクはカーネルによって `/dev/sdc` と�
 
  - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

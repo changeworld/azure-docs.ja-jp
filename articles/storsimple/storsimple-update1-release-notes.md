@@ -124,4 +124,4 @@ Update 1 より前のバージョンを実行している物理デバイスに�
 - [デバイスに Update 1.2 をインストールします](storsimple-install-update-1.md)。
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

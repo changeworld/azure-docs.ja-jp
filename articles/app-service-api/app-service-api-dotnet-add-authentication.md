@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure API アプリの保護"
-	description="Visual Studio を使用して Azure API アプリを保護する方法について説明します。"
-	services="app-service\api"
-	documentationCenter=".net"
-	authors="tdykstra"
-	manager="wpickett"
+	pageTitle="Azure API アプリの保護" 
+	description="Visual Studio を使用して Azure API アプリを保護する方法について説明します。" 
+	services="app-service\api" 
+	documentationCenter=".net" 
+	authors="tdykstra" 
+	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-api"
-	ms.workload="web"
-	ms.tgt_pltfrm="dotnet"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/05/2015"
+	ms.service="app-service-api" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="dotnet" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/05/2015" 
 	ms.author="tdykstra"/>
 
 # API アプリの保護: Azure Active Directory またはソーシャル プロバイダーの認証の追加
@@ -272,4 +272,4 @@ Visual Studio でリソース グループが作成されたときに、*ゲー�
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

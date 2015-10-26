@@ -40,7 +40,7 @@ Azure SDK で提供される Python API を使用して、以下のことを行�
 
 このドキュメントは、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。
 
-- Azure サブスクリプションを設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/ja-JP/pricing/free-trial/)」を参照してください。
+- Azure サブスクリプションを設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/ja-jp/pricing/free-trial/)」を参照してください。
 - ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../storage-create-storage-account.md)」を参照してください。
 
 ## BLOB へのデータのアップロード
@@ -121,4 +121,4 @@ BLOB からデータをダウンロードするには、次のメソッドを使
 	    except:
 	        print "something wrong happened when downloading the data %s"%blob.name
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

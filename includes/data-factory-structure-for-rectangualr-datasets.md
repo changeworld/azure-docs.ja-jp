@@ -47,4 +47,4 @@ Data Factory は、Azure BLOB などの読み取りデータ ソースでスキ�
 
 Datetime と Datetimeoffset の場合、必要に応じて “culture” と “format” 文字列を指定して、カスタムの Datetime 文字列の解析に利用することができます。型変換については、以下のサンプルを参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -2,7 +2,7 @@
 	pageTitle="出力の定義 | Microsoft Azure" 
 	description="Stream Analytics 出力について" 
 	keywords="big data analytics,cloud service,internet of things,managed service,stream processing,streaming analytics,streaming data"
-	services="stream-analytics" 
+	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
 	manager="paulettm" 
@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="09/29/2015" 
+	ms.date="10/14/2015" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics 出力について
@@ -247,7 +247,7 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。このサービスの詳細については、以下の情報をご覧ください。
@@ -265,4 +265,4 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

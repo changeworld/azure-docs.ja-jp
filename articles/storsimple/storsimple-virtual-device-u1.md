@@ -392,4 +392,4 @@ StorSimple デバイスの構成ページで Windows PowerShell リモート処�
 
 [バックアップ セットからの StorSimple ボリュームの復元方法](storsimple-restore-from-backup-set.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -98,4 +98,4 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
 [モジュールの使用方法]: nodejs-use-node-modules-azure-apps.md
 [Node.js Web サイトを構築、展開する方法]: web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

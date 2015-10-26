@@ -32,7 +32,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ![Policies menu][policies-menu]
 
-ポリシー エディターは、[ポリシー スコープ] \(上部)、ポリシーを編集するための [ポリシー定義] \(左側)、およびステートメントの一覧 (右側) の 3 つのメイン セクションから構成されます。
+ポリシー エディターは、[ポリシー スコープ] (上部)、ポリシーを編集するための [ポリシー定義] (左側)、およびステートメントの一覧 (右側) の 3 つのメイン セクションから構成されます。
 
 ![Policies editor][policies-editor]
 
@@ -128,4 +128,4 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -14,4 +14,4 @@ Premium Storage ディスク タイプ | P10 | P20 | P30
 ディスクあたりの IOPS | 500 | 2300 | 5000
 ディスクあたりのスループット | 100 MB/秒 | 150 MB/秒 | 200 MB/秒
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

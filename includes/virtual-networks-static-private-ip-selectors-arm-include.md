@@ -3,4 +3,4 @@
 - [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 - [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

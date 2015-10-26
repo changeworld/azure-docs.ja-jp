@@ -100,11 +100,11 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 
 ## Runbook またはモジュールの要求
 
-[ユーザーの声](http://feedback.azure.com/forums/246290-azure-automation)に要求を送信できます。Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/ja-JP/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)に質問を投稿してください。
+[ユーザーの声](http://feedback.azure.com/forums/246290-azure-automation)に要求を送信できます。Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/ja-jp/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)に質問を投稿してください。
 
 ## 関連記事:
 
 - [Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)
 - [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

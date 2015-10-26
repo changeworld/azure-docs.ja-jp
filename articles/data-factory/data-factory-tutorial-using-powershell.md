@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う (Azure PowerShell)"
-	description="この高度なチュートリアルでは、現実に近いシナリオについて説明し、そのシナリオを Azure Data Factory サービスと Azure PowerShell を使用して実装します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="Azure Data Factory を使用してログ ファイルの移動と処理を行う (Azure PowerShell)" 
+	description="この高度なチュートリアルでは、現実に近いシナリオについて説明し、そのシナリオを Azure Data Factory サービスと Azure PowerShell を使用して実装します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/25/2015" 
 	ms.author="spelluru"/>
 
 # チュートリアル: Data Factory を使用したログ ファイルの移動と処理 [PowerShell]
@@ -189,7 +189,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 	- **スタート画面** (ホーム ページ) で **[LogProcessingFactory]** をクリックします。
 	- 左側の **[参照]** をクリックし、**[すべて]**、**[Data Factory]** の順にクリックし、最後に目的のデータ ファクトリをクリックします。
  
-	Azure Data Factor の名前はグローバルに一意にする必要があります。**""LogProcessingFactory" という名前の Data Factory は使用できません"** というエラー メッセージが表示された場合は、名前を変更します (例: yournameLogProcessingFactory)。このチュートリアルの手順の実行中に、この名前を LogProcessingFactory の代わりに使用します。
+	Azure Data Factory の名前はグローバルに一意にする必要があります。**""LogProcessingFactory" という名前の Data Factory は使用できません"** というエラー メッセージが表示された場合は、名前を変更します (例: yournameLogProcessingFactory)。このチュートリアルの手順の実行中に、この名前を LogProcessingFactory の代わりに使用します。
  
 ## <a name="MainStep3"></a>手順 3. リンクされたサービスを作成する
 
@@ -297,26 +297,26 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 ### テーブルを作成するには
 
 1.	Azure PowerShell で、サンプルを展開した場所から **Tables** フォルダー (**C:\\ADFWalkthrough\\Tables**) に移動します。
-2.	**New-AzureDataFactoryTable** コマンドレットを使用して、次のように **RawGameEventsTable**.json のテーブルを作成します。	
+2.	**New-AzureDataFactoryDataset** コマンドレットを使用して、次のように **RawGameEventsTable**.json のデータセットを作成します。	
 
 
-		New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName $df –File .\RawGameEventsTable.json
+		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\RawGameEventsTable.json
 
 	ResourceGroupName および DataFactoryName に別の名前を使用している場合は、上記コマンドレットでそれらの名前を参照します。また、テーブルの JSON ファイルがコマンドレットで見つけられない場合は、そのファイルの完全なパスを入力します。
 
 3. 前の手順を繰り返して、以下のテーブルを作成します。
 		
-		New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName $df –File .\PartitionedGameEventsTable.json
+		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\PartitionedGameEventsTable.json
 		
-		New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName $df –File .\RefGeoCodeDictionaryTable.json
+		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\RefGeoCodeDictionaryTable.json
 			
-		New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName $df –File .\RefMarketingCampaignTable.json
+		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\RefMarketingCampaignTable.json
 			
-		New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName $df –File .\EnrichedGameEventsTable.json
+		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\EnrichedGameEventsTable.json
 			
-		New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessSQLTable.json
+		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessSQLTable.json
 			
-		New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessBlobTable.json
+		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessBlobTable.json
 
 
 
@@ -326,7 +326,7 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 	また、Azure PowerShell から次のコマンドを使用することも可能です。
 			
-		Get-AzureDataFactoryTable –ResourceGroupName ADF –DataFactoryName $df
+		Get-AzureDataFactoryDataset –ResourceGroupName ADF –DataFactoryName $df
 
 	
 
@@ -558,4 +558,4 @@ Azure ポータルはデータ セットとテーブルの作成をまだサポ�
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial-using-powershell/DataFactoryCreateButton.png
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -270,4 +270,4 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="アプリケーションのシナリオと Service Fabric での設計"
-	description="アプリケーションのカテゴリステートフル サービスとステートレス サービスを使用したアプリケーションの設計"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="msfussell"
-	manager="timlt"
-	editor=""/>
+   pageTitle="アプリケーションのシナリオと Service Fabric での設計" 
+   description="アプリケーションのカテゴリステートフル サービスとステートレス サービスを使用したアプリケーションの設計" 
+   services="service-fabric" 
+   documentationCenter=".net" 
+   authors="msfussell" 
+   manager="timlt" 
+   editor=""/>
 
 <tags
    ms.service="service-fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/21/2015"
-	ms.author="mfussell"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA" 
+   ms.date="08/21/2015"
+   ms.author="mfussell"/>
 
 # Service Fabric アプリケーションのシナリオ
 
@@ -68,4 +68,4 @@ Service Fabric の[信頼性の高いサービス](service-fabric-reliable-servi
  
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

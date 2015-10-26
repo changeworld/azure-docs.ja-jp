@@ -1,8 +1,8 @@
 <properties
- pageTitle="Microsoft Azure IoT Suite およびモノのインターネット (IoT) | Microsoft Azure"
- description="サンプル IoT ソリューション アーキテクチャや、それが、Azure IoT Hub、デバイス SDK、および構成済みソリューションとどのように関連するかなど、Azure での IoT の概要。"
+ pageTitle="モノのインターネット用の Azure ソリューション | Microsoft Azure"
+ description="サンプル ソリューション アーキテクチャや、それが Azure IoT Suite および構成済みソリューションとどのように関連するかなど、Azure での IoT の概要。"
  services=""
- documentationCenter=".net"
+ documentationCenter=""
  authors="dominicbetts"
  manager="timlt"
  editor=""/>
@@ -12,7 +12,7 @@
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
- ms.workload="tbd"
+ ms.workload="na"
  ms.date="09/29/2015"
  ms.author="dobett"/>
 
@@ -43,7 +43,7 @@ Azure の IoT の詳細については、以下のリソースを参照してく
 [Azure IoT Hub]: https://azure.microsoft.com/services/iot-hub/
 [Azure Event Hubs]: https://azure.microsoft.com/services/event-hubs/
 [Azure Stream Analytics]: https://azure.microsoft.com/services/stream-analytics/
-[Azure Machine Learning]: https://azure.microsoft.com/ja-JP/services/machine-learning/
-[Azure storage]: https://azure.microsoft.com/ja-JP/services/storage/
+[Azure Machine Learning]: https://azure.microsoft.com/JA-JP/services/machine-learning/
+[Azure storage]: https://azure.microsoft.com/JA-JP/services/storage/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

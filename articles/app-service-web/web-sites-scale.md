@@ -30,8 +30,7 @@ App Service プランの詳細については、「[App Service プラン](../we
 
 > [AZURE.NOTE]Web アプリを **Free** モードから **Basic**、**Standard**、または **Premium** モードに切り替える前に、Azure App Service のサブスクリプションに設定されている使用制限を解除する必要があります。Microsoft Azure App Service サブスクリプションのオプションを表示または変更するには、「[Microsoft Azure サブスクリプション][azuresubscriptions]」を参照してください。
 
-<a name="scalingsharedorbasic"></a>
-<!-- ===================================== -->
+<a name="scalingsharedorbasic"></a> <!-- ===================================== -->
 ## 共有または基本モードへの規模の変更
 <!-- ===================================== -->
 
@@ -51,8 +50,7 @@ App Service プランの詳細については、「[App Service プラン](../we
 	
 	操作が完了すると、**[通知]** タブに緑色で "**成功**" が点滅します。
 	
-<a name="scalingstandard"></a>
-<!-- ================================= -->
+<a name="scalingstandard"></a> <!-- ================================= -->
 ## 標準またはプレミアム モードへの規模の変更
 <!-- ================================= -->
 
@@ -201,4 +199,4 @@ Web アプリのモードに応じて、次の開発者向け機能を使用で�
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

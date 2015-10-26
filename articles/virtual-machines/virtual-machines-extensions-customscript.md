@@ -23,7 +23,7 @@
 
 Microsoft や信頼された第三者の発行元によってビルドされた仮想マシン (VM) の拡張機能を使って、VM の機能を拡張します。VM 拡張機能の概要については、「[Azure VM 拡張機能と機能](virtual-machines-extensions-features.md)」をご覧ください。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-extensions-customscript%20-with%20template.md)を使用してリソースを作成することもできます。
+リンク:[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-extensions-customscript%20-with%20template.md)。
 
 
 ## カスタム スクリプト拡張機能の概要
@@ -33,8 +33,8 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 ### カスタム スクリプト拡張機能を実行する前提条件
 
 1. <a href="http://azure.microsoft.com/downloads" target="_blank">ここ</a>から Azure PowerShell コマンドレット バージョン 0.8.0 以降をインストールします。
-2. スクリプトが既存の VM で実行されている場合、VM エージェントがその VM 上で有効であることを確認してください。そうでない場合は、<a href="https://msdn.microsoft.com/library/azure/dn832621.aspx" target="_blank">こちらの記事</a>の手順に従ってインストールしてください。
-3. VM で実行するスクリプトを Azure ストレージにアップロードします。スクリプトは、1 つのコンテナーまたは複数のストレージ コンテナーから取得できます。
+2. スクリプトが既存の VM で実行されている場合、VM エージェントがその VM 上で有効であることを確認してください。有効になっていない場合は、こちらの<a href="https://msdn.microsoft.com/library/azure/dn832621.aspx" target="_blank">記事</a>の手順に従ってインストールしてください。
+3. VM で実行するスクリプトを Azure Storage にアップロードします。スクリプトは、1 つのコンテナーまたは複数のストレージ コンテナーから取得できます。
 4. スクリプトは、拡張機能によって起動されるエントリ スクリプトが、他のスクリプトを順に起動するように記述されている必要があります。
 
 ## カスタム スクリプト拡張機能のシナリオ
@@ -73,7 +73,7 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 
 ### ポータルからのカスタム スクリプト拡張機能の追加
 
-<a href="https://portal.azure.com/ " target="_blank">Azure プレビュー ポータル</a>の VM を参照し、実行するスクリプト ファイルを指定して拡張機能を追加します。
+<a href="https://portal.azure.com/ " target="_blank">Azure プレビュー ポータル</a>で VM を参照し、実行するスクリプト ファイルを指定して拡張機能を追加します。
 
   ![][5]
 
@@ -91,4 +91,4 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 <!--Image references-->
 [5]: ./media/virtual-machines-extensions-customscript/addcse.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

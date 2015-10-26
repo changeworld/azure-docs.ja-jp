@@ -85,7 +85,7 @@ Application Insights のデータは、常に JSON 形式で Azure ストレー�
 
     また、データはストレージにもエクスポートされます。
 
-4. エクスポートされたデータを検査します。Visual Studio で、**[表示]、[Cloud Explorer]** の順に選択し、[Azure]、[ストレージ] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+4. エクスポートされたデータを検査します。Visual Studio で、**[表示]、[Cloud Explorer]** の順に選択します。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります。[新しいプロジェクト] ダイアログを開き、[Visual c#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
 
     ![Visual Studio で次の順に開きます。[サーバー ブラウザー]、[Azure]、[Storage]](./media/app-insights-code-sample-export-telemetry-sql-database/087-explorer.png)
 
@@ -126,14 +126,14 @@ Visual Studio で、worker ロールの新しいプロジェクトを作成し�
 
 #### ストレージ アカウントへの接続
 
-Azure で、Storage アカウントから接続文字列を取得します。
+Azure で、ストレージ アカウントから接続文字列を取得します。
 
-![[Storage アカウント] で、[キー] を選択し、プライマリ接続文字列をコピーします](./media/app-insights-code-sample-export-telemetry-sql-database/055-get-connection.png)
+![[ストレージ アカウント] で、[キー] を選択し、プライマリ接続文字列をコピーします](./media/app-insights-code-sample-export-telemetry-sql-database/055-get-connection.png)
 
-Visual Studio で、Storage アカウントの接続文字列で worker ロール設定を構成します。
+Visual Studio で、ストレージ アカウントの接続文字列で worker ロール設定を構成します。
 
 
-![ソリューション エクスプローラーの [Cloud Service] プロジェクトの下の [ロール] を展開し、worker ロールを開きます。[設定] タブを開き、[設定の追加] を選択し、name=StorageConnectionString、 type=connection string と設定し、クリックして値を設定します。これを手動で設定し、接続文字列を貼り付けます。](./media/app-insights-code-sample-export-telemetry-sql-database/130-connection-string.png)
+![ソリューション エクスプローラーの [Cloud Service] プロジェクトの下の [ロール] を展開し、worker ロールを開きます。[設定] タブを開き、[設定の追加] を選択し、name=StorageConnectionString、type= 接続文字列と設定し、クリックして値を設定します。これを手動で設定し、接続文字列を貼り付けます。](./media/app-insights-code-sample-export-telemetry-sql-database/130-connection-string.png)
 
 
 #### パッケージ
@@ -525,7 +525,7 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
 この例の動作を確認するには、完全な作業コードを[ダウンロード](https://sesitai.codeplex.com/)し、`app.config` の設定を変更して、worker ロールを Azure に発行します。
 
 
-## 関連記事:
+## 関連記事
 
 * [worker ロールを使用して SQL にエクスポートする](app-insights-code-sample-export-telemetry-sql-database.md)
 * [Application Insights での連続エクスポート](app-insights-export-telemetry.md)
@@ -539,8 +539,8 @@ Visual Studio で、Storage アカウントの接続文字列で worker ロー�
 [export]: app-insights-export-telemetry.md
 [metrics]: app-insights-metrics-explorer.md
 [portal]: http://portal.azure.com/
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

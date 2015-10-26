@@ -14,19 +14,26 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="10/07/2015"
+	ms.date="10/12/2015"
 	ms.author="garye;bradsev" />
 
 
 # さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする
 
-[AZURE.INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
+この**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できるターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
+
+
+## はじめに
 
 Machine Learning Studio で独自のデータを使用して予測分析ソリューションを開発し、トレーニングする場合、次の操作を実行できます。
 
 - ハード ドライブの**ローカル ファイル**を事前にアップロードし、ワークスペースにデータセット モジュールを作成する。  
 - [リーダー][reader] モジュールで実験を実行している間に、いずれかの**オンライン データ ソース**からデータにアクセスする。 
 - **データセット**として保存された他の Azure Machine Learning 実験のデータを使用する。 
+
+[AZURE.INCLUDE [import-data-into-aml-studio-selector](../../includes/machine-learning-import-data-into-aml-studio.md)]
 
 これらの各オプションについては、上にあるメニューの各トピックを参照してください。各トピックでは、多様なデータ ソースのデータをインポートして Machine Learning Studio で使用する方法が説明されています。
 
@@ -89,4 +96,4 @@ Machine Learning Studio は***データ テーブル***と呼ばれる内部デ�
 [metadata-editor]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

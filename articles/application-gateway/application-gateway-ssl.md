@@ -229,4 +229,4 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

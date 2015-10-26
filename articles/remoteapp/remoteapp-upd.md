@@ -126,4 +126,4 @@ OneDrive for Business などのデータ同期アプリを使用することも�
 
 いいえ。Azure RemoteApp ではサポートされません。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

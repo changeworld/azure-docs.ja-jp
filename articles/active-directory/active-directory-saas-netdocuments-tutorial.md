@@ -15,7 +15,7 @@
 1.  NetDocuments のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-netdocuments-tutorial/IC795040.png "シナリオ")
 ##NetDocuments のアプリケーション統合の有効化
@@ -51,9 +51,7 @@
     ![NetDocuments](./media/active-directory-saas-netdocuments-tutorial/IC795042.png "NetDocuments")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで NetDocuments に対する認証を行えるようにする方法を説明します。  
-NetDocuments にシングル サインオンを構成するには、証明書の拇印の値を取得する必要があります。  
-この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで NetDocuments に対する認証を行えるようにする方法を説明します。NetDocuments にシングル サインオンを構成するには、証明書の拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -67,10 +65,10 @@ NetDocuments にシングル サインオンを構成するには、証明書の
 
 3.  **[アプリ URL の構成]** ページで、次の手順に従います。
 
-    ![アプリ URL の構成](./media/active-directory-saas-netdocuments-tutorial/IC795045.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-netdocuments-tutorial/IC795045.png "アプリケーション URL の構成")
 
-    1.  **[サインオン URL]** ボックスに、ユーザーが NetDocuments アプリケーションへのサインオンに使用する URL を入力します (例: "*https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=CA-JI1BG3H1*")。
-    2.  **[NetDocuments 応答 URL]** ボックスに、**[サインオン URL]** ボックスに入力したのと同じ値を入力します。  
+    1.  **[サインオン URL]** ボックスに、ユーザーが NetDocuments アプリケーションへのサインオンに使用する URL を入力します (例: "**https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=CA-JI1BG3H1*")。
+2.  **[NetDocuments 応答 URL]** ボックスに、**[サインオン URL]** ボックスに入力したのと同じ値を入力します。  
 
         >[AZURE.NOTE]適切な値は、**フェデレーション ID** ダイアログの最後に見つけることができます (ステップ 9 のスクリーン ショットをご覧ください)。
 
@@ -145,4 +143,4 @@ Azure AD ユーザーが NetDocuments にログインできるようにするに
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!-----HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

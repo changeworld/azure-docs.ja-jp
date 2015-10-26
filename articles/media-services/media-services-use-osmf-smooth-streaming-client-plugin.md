@@ -411,4 +411,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 [OSMF を更新するための](http://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/)Microsoft Adaptive Streamingプラグイン
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

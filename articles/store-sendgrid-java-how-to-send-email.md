@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="SendGrid 電子メール サービスの使用方法 (Java) | Microsoft Azure"
-	description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは Java で記述されています。"
-	services=""
-	documentationCenter="java"
-	authors="thinkingserious"
-	manager="sendgrid"
+	pageTitle="SendGrid 電子メール サービスの使用方法 (Java) | Microsoft Azure" 
+	description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは Java で記述されています。" 
+	services="" 
+	documentationCenter="java" 
+	authors="thinkingserious" 
+	manager="sendgrid" 
 	editor="mollybos"/>
 
 <tags 
-	ms.service="multiple"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="10/30/2014"
+	ms.service="multiple" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="10/30/2014" 
 	ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork"/>
 # Java から SendGrid を使用して電子メールを送信する方法
 
@@ -124,7 +124,7 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
 
     // Local file name and path.
     String attachmentName = "myfile.zip";
-    String attachmentPath = "c:\\myfiles"; 
+    String attachmentPath = "c:\\myfiles\"; 
     MimeBodyPart attachmentPart = new MimeBodyPart();
     // Specify the local file to attach.
     DataSource source = new FileDataSource(attachmentPath + attachmentName);
@@ -205,4 +205,4 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

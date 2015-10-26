@@ -51,4 +51,4 @@ Service Fabric アプリケーションは、完全な自己完結型のアプ�
 [アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

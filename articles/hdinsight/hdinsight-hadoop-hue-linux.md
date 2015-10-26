@@ -126,4 +126,4 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

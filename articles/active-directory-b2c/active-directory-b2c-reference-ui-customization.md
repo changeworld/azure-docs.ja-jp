@@ -276,4 +276,4 @@ Azure BLOB ストレージでホストされるサンプルの HTML と CSS の�
 	- Mozilla Firefox 38.0
 	- Mozilla Firefox 37.0
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

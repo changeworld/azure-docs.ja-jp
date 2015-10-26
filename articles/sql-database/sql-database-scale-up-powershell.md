@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="09/10/2015"
+	ms.date="10/08/2015"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -45,15 +45,14 @@
 
 - Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
 - Azure SQL Database。SQL Database がない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
-- Azure PowerShell。Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行してダウンロードおよびインストールすることができます。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」をご覧ください。
+- Azure PowerShell。
 
-Azure SQL Database のサービス階層の変更に使うコマンドレットは、Azure リソース マネージャー モジュールにあります。Azure PowerShell を開始するときに、Azure モジュールのコマンドレットが既定でインポートされます。Azure リソース マネージャー モジュールに切り替えるには、Switch-AzureMode コマンドレットを使用します。
+> [AZURE.IMPORTANT]Azure PowerShell 1.0 Preview のリリースから、Switch-AzureMode コマンドレットは利用できなくなりました。また、Azure ResourceManger モジュールで使用されていたコマンドレットは名前が変更されました。この記事の例では、新しい PowerShell 1.0 Preview の名付け規則が使用されています。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
 
-	Switch-AzureMode -Name AzureResourceManager
 
-**Switch-AzureMode** を実行して、警告*「Switch-AzureMode コマンドレットは廃止予定で、今後のリリースで削除される予定です。」*が出た場合は問題ありません。次の手順に進み、資格情報の構成を行ってください。
+PowerShell コマンドレットを実行するには、Azure PowerShell をインストールして実行する必要があります。Switch-AzureMode が削除されたため、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行し、最新の Azure PowerShell をダウンロードしてインストールする必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
-詳細については、「[リソース マネージャーでの Windows PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
+
 
 ## 資格情報を構成してサブスクリプションを選択
 
@@ -66,7 +65,7 @@ Azure SQL Database のサービス階層の変更に使うコマンドレット�
 
 ### Azure サブスクリプションを選択します。
 
-サブスクリプションを選択するには、サブスクリプション ID またはサブスクリプション名 (**-SubscriptionName**) が必要になります。サブスクリプション ID は前の手順で示された情報からコピーすることができます。または、複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。ご利用のサブスクリプションを取得したら次のコマンドレットを実行します。
+サブスクリプションを選択するには、サブスクリプション ID またはサブスクリプション名 (**-SubscriptionName**) が必要になります。サブスクリプション ID は前の手順で示された情報からコピーできます。または、複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。ご利用のサブスクリプションを取得したら次のコマンドレットを実行します。
 
 	$SubscriptionId = "4cac86b0-1e56-bbbb-aaaa-000000000000"
     Select-AzureSubscription -SubscriptionId $SubscriptionId
@@ -79,7 +78,7 @@ Azure SQL Database のサービス階層の変更に使うコマンドレット�
 
 ## SQL Database のサービス階層とパフォーマンス レベルを変更する
 
-**Set-AzureSqlDatabase** コマンドレットを実行し、**-RequestedServiceObjectiveName** を目的の価格レベルのパフォーマンス レベルに設定します (*S0*、*S1*、*S2*、*S3*、*P1*、*P2* など)。
+**Set-AzureRMSqlDatabase** コマンドレットを実行し、**-RequestedServiceObjectiveName** を目的の価格レベルのパフォーマンス レベルに設定します (*S0*、*S1*、*S2*、*S3*、*P1*、*P2* など)。
 
     $ResourceGroupName = "resourceGroupName"
     
@@ -100,7 +99,7 @@ Azure SQL Database のサービス階層の変更に使うコマンドレット�
 ## SQL Database のサービス階層とパフォーマンス レベルを変更するサンプル PowerShell スクリプト
 
     
-	Switch-AzureMode -Name AzureResourceManager
+
     
     $SubscriptionId = "4cac86b0-1e56-bbbb-aaaa-000000000000"
     
@@ -116,7 +115,7 @@ Azure SQL Database のサービス階層の変更に使うコマンドレット�
     Add-AzureAccount
     Select-AzureSubscription -SubscriptionId $SubscriptionId
     
-    $ScaleRequest = Set-AzureSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -ResourceGroupName $ResourceGroupName -Edition $NewEdition -RequestedServiceObjectiveName $NewPricingTier
+    $ScaleRequest = Set-AzureRMSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -ResourceGroupName $ResourceGroupName -Edition $NewEdition -RequestedServiceObjectiveName $NewPricingTier
     
     $ScaleRequest
     
@@ -125,7 +124,7 @@ Azure SQL Database のサービス階層の変更に使うコマンドレット�
 
 ## 次のステップ
 
-- [スケール アウトとスケール イン](sql-database-elastic-scale-get-started.md)
+- [スケールアウトとスケールイン](sql-database-elastic-scale-get-started.md)
 - [SSMS での SQL Database の接続とクエリ](sql-database-connect-query-ssms.md)
 - [Azure SQL Database のエクスポート](sql-database-export-powershell.md)
 
@@ -133,5 +132,6 @@ Azure SQL Database のサービス階層の変更に使うコマンドレット�
 
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
+- [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt163521.aspx)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

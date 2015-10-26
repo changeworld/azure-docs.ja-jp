@@ -27,7 +27,8 @@
 
 このチュートリアルは、Ubuntu Server 14.04 LTS を使用して検証されました。他の Linux ディストリビューションを使用する場合は、Rails のインストール手順が異なる場合があります。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 ## Azure VM の作成
 
@@ -174,4 +175,4 @@ Ruby アプリケーションから Azure のサービスを使用する方法�
 
 [new-endpoint1]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint1.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

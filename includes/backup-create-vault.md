@@ -39,4 +39,4 @@ GRS では、データのコピーが 6 つ保持されます。GRS を使用す
 
 ![LRS](./media/backup-create-vault/lrs.png)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

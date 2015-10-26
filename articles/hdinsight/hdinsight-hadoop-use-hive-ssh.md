@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/28/2015"
+   ms.date="10/09/2015"
    ms.author="larryfr"/>
 
 #SSH による HDInsight での Hive と Hadoop の使用
@@ -147,4 +147,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

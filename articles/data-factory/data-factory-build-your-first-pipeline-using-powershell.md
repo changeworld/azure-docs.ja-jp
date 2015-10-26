@@ -152,9 +152,9 @@
 
 	前の例では、**AzureBlobOutput** というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。さらに、結果を **data** という BLOB コンテナーおよび **partitioneddata** というフォルダーに格納することを指定します。**availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
 
-2. 次のコマンドを Azure PowerShell で実行して、Data Factory テーブルを作成します。
+2. 次のコマンドを Azure PowerShell で実行して、Data Factory データセットを作成します。
 
-		New-AzureDataFactoryTable $df -File .\OutputTable.json
+		New-AzureDataFactoryDataset $df -File .\OutputTable.json
 
 ## 手順 3: 最初のパイプラインを作成する
 この手順では、最初のパイプラインを作成します。
@@ -268,4 +268,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-powershell.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -79,4 +79,4 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

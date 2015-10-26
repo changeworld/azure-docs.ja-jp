@@ -3,4 +3,4 @@
 - [Windows](../articles/app-service-mobile-dotnet-backend-windows-store-dotnet-push-notifications-to-users-preview.md)
 - [Xamarin.iOS](../articles/app-service-mobile-dotnet-backend-xamarin-ios-push-notifications-to-user-preview.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

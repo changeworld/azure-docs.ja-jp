@@ -32,7 +32,7 @@ Azure ストレージ エクスプローラーは、Azure Storage アカウン�
 
 このドキュメントは、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。データのアップロード/ダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。
 
-- Azure サブスクリプションを設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/ja-JP/pricing/free-trial/)」を参照してください。
+- Azure サブスクリプションを設定するには、「[1 か月間の無料評価版](https://azure.microsoft.com/ja-jp/pricing/free-trial/)」を参照してください。
 - ストレージ アカウントの作成と、アカウントとキー情報の取得についての手順については、「[Azure ストレージ アカウントについて](../storage-create-storage-account.md)」を参照してください。
 
 
@@ -53,4 +53,4 @@ Azure ストレージ エクスプローラーは、Azure Storage アカウン�
 [2]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img2.png
 [3]: ./media/machine-learning-data-science-move-azure-blob/data-science-process-uploading-data-to-blob-storage-img3.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

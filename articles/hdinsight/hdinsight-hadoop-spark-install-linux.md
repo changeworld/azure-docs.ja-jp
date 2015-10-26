@@ -130,9 +130,9 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
 6. 出力次のように表示されます。
 
-		[820,11:35:17,ja-JP,Android,HTC,Inspire 4G,Louisiana,UnitedStates, 2.7383836,0,1]
-		[1055,17:24:08,ja-JP,Android,HTC,Incredible,Ohio,United States,18.0894738,0,0]
-		[1067,03:42:29,ja-JP,Windows Phone,HTC,HD7,District Of Columbia,United States,null,0,0]
+		[820,11:35:17,ja-jp,Android,HTC,Inspire 4G,Louisiana,UnitedStates, 2.7383836,0,1]
+		[1055,17:24:08,ja-jp,Android,HTC,Incredible,Ohio,United States,18.0894738,0,0]
+		[1067,03:42:29,ja-jp,Windows Phone,HTC,HD7,District Of Columbia,United States,null,0,0]
 
 7. :q を入力して、Scala プロンプトを終了します。
 
@@ -208,7 +208,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 6. 次のコマンドを使用して、SimpleApp.scala プログラムを実行します。
 
 
-		/usr/hdp/current/spark/bin/spark-submit --class "SimpleApp" --master local target/scala-2.10/simpleapp_2.10-1.0.jar
+		/usr/hdp/current/spark/bin/spark-submit --class "SimpleApp" --master yarn target/scala-2.10/simpleapp_2.10-1.0.jar
 
 4. プログラムの実行が完了すると、コンソールに出力が表示されます。
 
@@ -234,4 +234,4 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 [powershell-install-configure]: ../install-configure-powershell.md
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

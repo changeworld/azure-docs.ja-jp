@@ -326,7 +326,7 @@ MongoDB C# ドライバーをインストールするには、以下を実行し
 	}
 
 ## スタイルを設定する ##
-ページ上部のタイトルを変更するには、**ソリューション エクスプローラー**で *Views\\Shared\\\_Layout.cshtml* ファイルを開き、ナビゲーション ヘッダーの "Application name" を、次のように "My Task List Application" に置き換えます。
+ページ上部のタイトルを変更するには、**ソリューション エクスプローラー**で *Views\\Shared\\_Layout.cshtml* ファイルを開き、ナビゲーション ヘッダーの "Application name" を、次のように "My Task List Application" に置き換えます。
 
  	@Html.ActionLink("My Task List Application", "Index", "Home", null, new { @class = "navbar-brand" })
 
@@ -499,4 +499,4 @@ MongoDB 用 C# アプリケーションの開発の詳細については、[CSha
 [Deploy the ASP.NET application to the web site using Git]: #deployapp
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

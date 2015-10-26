@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="DocumentDB との間でのデータの移動 | Azure Data Factory"
-	description="Azure Data Factory を使用して Azure DocumentDB コレクションに、または Azure DocumentDB コレクションからデータを移動する方法を説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="DocumentDB との間でのデータの移動 | Azure Data Factory" 
+	description="Azure Data Factory を使用して Azure DocumentDB コレクションに、または Azure DocumentDB コレクションからデータを移動する方法を説明します。" 
+	services="data-factory, documentdb" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.service="multiple" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/14/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した DocumentDB との間でのデータの移動
@@ -396,9 +396,24 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | -------- | ----------- | -------------- | -------- |
 | nestingSeparator | 入れ子になった文書が必要であることを示すソース列名の特殊文字。<p>上記の例の場合: 出力テーブルの Name.First は DocumentDB 文書で次の JSON 構造を生成します。</p><p>"Name": {<br/> "First": "John"<br/>},</p> | 入れ子レベルの分割に使用される文字。<p>既定値は . (ドット) です。</p> | 入れ子レベルの分割に使用される文字。<p>既定値は . (ドット) です。</p> | いいえ | 
-| writeBatchSize | DocumentDB サービスに文書の作成を要求する並列要求の数。<p>このプロパティを利用し、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。ただし、調整は回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。</p><p>調整は、文書のサイズ、文書内の用語の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっと良いコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。</p> | 整数値 | いいえ |
+| writeBatchSize | DocumentDB サービスに文書の作成を要求する並列要求の数。<p>このプロパティを利用し、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。</p><p>スロットルは、文書のサイズ、文書内の用語の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっと良いコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。</p> | 整数値 | いいえ |
 | writeBatchTimeout | タイムアウトする前に操作の完了を待つ時間です。 | (単位 = 時間) 例: “00:30:00” (30 分) | いいえ |
  
- 
+## 付録
+1. **質問:** コピー アクティビティは、既存のレコードの更新をサポートしていますか?
 
-<!---HONumber=August15_HO9-->
+	**回答:** いいえ。
+
+2. **質問:** DocumentDB へのコピーを再試行すると、既にコピーしたレコードはどのように扱われますか?
+
+	**回答:** レコードに "ID" フィールドがあり、コピー操作で同じ ID のレコードが挿入される場合、そのコピー操作はエラーをスローします。
+ 
+3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](https://azure.microsoft.com/documentation/articles/documentdb-partition-data/)をサポートしていますか?
+
+	**回答:** いいえ。 
+4. **質問:** 1 つのテーブルに複数の DocumentDB コレクションを指定できますか?
+	
+	**回答:** いいえ。現時点では、1 つのコレクションだけを指定できます。
+     
+
+<!---HONumber=Oct15_HO3-->

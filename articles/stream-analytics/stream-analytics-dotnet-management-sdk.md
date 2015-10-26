@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="10/05/2015" 
+	ms.date="10/06/2015" 
 	ms.author="jeffstok"/>
 
 
@@ -35,20 +35,20 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 - サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell については、「[Azure PowerShell のインストールおよび構成](../install-configure-powershell.md)」を参照してください。  
 
 
-		# Configure the Azure PowerShell session to access Azure Resource Manager
-		Switch-AzureMode AzureResourceManager
-
 		# Log in to your Azure account
 		Add-AzureAccount
 
 		# Select the Azure subscription you want to use to create the resource group
 		Select-AzureSubscription -SubscriptionName <subscription name>
 
-		# Create an Azure resource group	
-		New-AzureResourceGroup -Name <YOUR RESORUCE GROUP NAME> -Location <LOCATION>
+			# If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
+			#Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 
+		# Create an Azure resource group
+		New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
+		
 
--	使用する入力ソースと出力ターゲットを設定します。この記事で使用するサンプルの入力または出力の設定方法については、「[Azure Stream Analytics の使用](stream-analytics-get-started.md)」を参照してください。
+-	使用する入力ソースと出力ターゲットを設定します。詳しい手順については、サンプル入力を設定する場合は「[入力を追加する](stream-analytics-add-inputs.md)」、サンプル出力を設定する場合は「[出力を追加する](stream-analytics-add-outputs.md)」を参照してください。
 
 
 ## プロジェクトの設定
@@ -365,4 +365,4 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

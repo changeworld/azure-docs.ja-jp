@@ -211,4 +211,4 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 インストーラー]: http://go.microsoft.com/fwlink/?LinkID=239648
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

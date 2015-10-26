@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/30/2015" 
+	ms.date="10/12/2015" 
 	ms.author="spelluru"/>
 
 # SQL Server ストアド プロシージャ アクティビティ
@@ -50,63 +50,129 @@ outputs | ストアド プロシージャ アクティビティで生成され�
 storedProcedureName | 出力テーブルに使用するリンク サービスで示される Azure SQL データベースまたは Azure SQL Data Warehouse のストアド プロシージャ名を指定します。 | あり
 storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します | いいえ
 
-## 例
+## サンプルのチュートリアル
 
-Azure SQL データベースで 2 つの列があるテーブルを作成する例について考えてみましょう。
+### サンプル テーブルとストアド プロシージャ
+1. SQL Server Management Studio などのツールを使って Azure SQL Database に以下の**テーブル**を作成します。datetimestamp 列は、対応する ID が生成された日付と時刻です。 
 
-分割 | 型
------- | ----
-ID | uniqueidentifier
-Datetime | 対応する ID が生成された日付と時刻
+		CREATE TABLE dbo.sampletable
+		(
+			Id uniqueidentifier,
+			datetimestamp nvarchar(127)
+		)
+		GO
 
-![サンプル データ](./media/data-factory-stored-proc-activity/sample-data.png)
+		CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
+		GO
 
-	CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
-	AS
+	Id は一意の識別子で、datetimestamp 列は、対応する ID が生成された日時です。 ![サンプル データ](./media/data-factory-stored-proc-activity/sample-data.png)
+
+2. **sampletable** にデータを挿入する**ストアド プロシージャ**を作成します。
+
+		CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
+		AS
+		
+		BEGIN
+		    INSERT INTO [sampletable]
+		    VALUES (newid(), @DateTime)
+		END
+
+	> [AZURE.IMPORTANT]パラメーターの**名前**と**大文字と小文字**は (この例では DateTime) は、パイプライン/アクティビティ JSON に指定されたパラメーターのものと一致する必要があります。ストアド プロシージャ定義で、**@** がパラメーターのプレフィックスとして使用されていることを確認します。
 	
-	BEGIN
-	    INSERT INTO [sampletable]
-	    VALUES (newid(), @DateTime)
-	END
+### Data Factory を作成する。  
+4. [Azure プレビュー ポータル](http://portal.azure.com/)にログインした後、次の操作を行います。
+	1.	左側のメニューの **[新規]** をクリックします。 
+	2.	**[作成]** ブレードの **[データ分析]** をクリックします。
+	3.	**[データ分析]** ブレードの **[Data Factory]** をクリックします。
+4.	**[新しいデータ ファクトリ]** ブレードで、[名前] フィールドに「**SProcDF**」と入力します。Azure Data Factory の名前はグローバルで一意となります。ファクトリを作成するには、データ ファクトリの名前の先頭にあなたの名前を付ける必要があります。 
+3.	リソース グループを作成していない場合は、リソース グループを作成する必要があります。これを行うには、次の手順を実行します。
+	1.	**[リソース グループ名]** をクリックします。
+	2.	**[リソース グループ]** ブレードで、**[新規リソース グループの作成]** を選択します。
+	3.	**[リソース グループの作成]** ブレードで、**[名前]** に「**ADFTutorialResourceGroup**」と入力します。
+	4.	**[OK]** をクリックします。
+4.	リソース グループを選択した後、データ ファクトリを作成する正しいサブスクリプションを使用していることを確認します。
+5.	**[新しいデータ ファクトリ]** ブレードで **[作成]** をクリックします。
+6.	Azure プレビュー ポータルの**スタート画面**にデータ ファクトリを作成中であることが示されます。データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。
 
-> [AZURE.NOTE]パラメーターの**名前**と**大文字と小文字**は (この例では DateTime) は、以下のアクティビティ JSON に指定されたパラメーターのものと一致する必要があります。ストアド プロシージャ定義で、**@** がパラメーターのプレフィックスとして使用されていることを確認します。
+### Azure SQL のリンク サービスを作成する  
+データ ファクトリの作成後、Azure SQL Database をデータ ファクトリに関連付ける Azure SQL リンク サービスを作成します。これは、sampletable テーブルと sp\_sample ストアド プロシージャを含んだデータベースです。
 
-Data Factory パイプラインでこのストアド プロシージャを実行するには、以下の手順を実行する必要があります。
+7.	**[SProcDF]** の **[DATA FACTORY]** ブレードの **[作成とデプロイ]** をクリックします。Data Factory エディタが起動します。 
+2.	コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure SQL]** を選択します。Azure SQL のリンク サービスを作成するための JSON スクリプトがエディターに表示されます。 
+4. **servername** に、ご使用の Azure SQL Database サーバーの名前を指定します。**databasename** には、テーブルとストアド プロシージャの作成先となったデータベースを指定します。****username@servername** には、そのデータベースへのアクセス権を持ったユーザー アカウントを、**password** には、そのユーザー アカウントのパスワードを指定してください。
+5. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
-1.	[リンク サービス](data-factory-azure-sql-connector.md/#azure-sql-linked-service-properties)を作成して、ストアド プロシージャを実行する Azure SQL データベースの接続文字列を登録します。
-2.	Azure SQL データベースの出力テーブルを示す[データセット](data-factory-azure-sql-connector.md/#azure-sql-dataset-type-properties)を作成します。このデータセット sprocsampleout を呼び出してみましょう。このデータセットは、手順 1 のリンク サービスを参照する必要があります。 
-3.	Azure SQL Databases にストアド プロシージャを作成します。
-4.	SqlServerStoredProcedure アクティビティを使用して次の[パイプライン](data-factory-azure-sql-connector.md/#azure-sql-copy-activity-type-properties)を作成し、Azure SQL Database のストアド プロシージャを呼び出します。
+### 出力データセットの作成
+6. コマンド バーの **[新しいデータセット]** をクリックし、**[Azure SQL]** を選択します。
+7. 次の JSON スクリプトをコピーして JSON エディターに貼り付けます。
+
+		{			    
+			"name": "sprocsampleout",
+			"properties": {
+				"type": "AzureSqlTable",
+				"linkedServiceName": "AzureSqlLinkedService",
+				"typeProperties": {
+					"tableName": "sampletable"
+				},
+				"availability": {
+					"frequency": "Hour",
+					"interval": 1
+				}
+			}
+		}
+7. コマンド バーの **[デプロイ]** をクリックしてデータセットをデプロイします。 
+
+### SqlServerStoredProcedure アクティビティでパイプラインを作成する
+今度は、SqlServerStoredProcedure アクティビティでパイプラインを作成しましょう。
+ 
+9. コマンド バーの **[...] (省略記号)** をクリックし、**[新しいパイプライン]** をクリックします。 
+9. 次の JSON スニペットをコピーして貼り付けます。**storedProcedureName** は **sp\_sample** に設定します。パラメーター **DateTime** の名前は、大文字と小文字の区別も含め、ストアド プロシージャの定義と一致させる必要があります。  
 
 		{
 		    "name": "SprocActivitySamplePipeline",
-		    "properties":
-		    {
-		        "activities":
-		        [
+		    "properties": {
+		        "activities": [
 		            {
-		            	"name": "SprocActivitySample",
-		             	"type": " SqlServerStoredProcedure",
-		             	"outputs": [ {"name": "sprocsampleout"} ],
-		             	"typeProperties":
-		              	{
-		                	"storedProcedureName": "sp_sample",
-			        		"storedProcedureParameters": 
-		        			{
-		            			"DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
-		        			}
-						}
-	            	}
-		        ]
-		     }
+		                "type": "SqlServerStoredProcedure",
+		                "typeProperties": {
+		                    "storedProcedureName": "sp_sample",
+		                    "storedProcedureParameters": {
+		                        "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
+		                    }
+		                },
+		                "outputs": [
+		                    {
+		                        "name": "sprocsampleout"
+		                    }
+		                ],
+		                "scheduler": {
+		                    "frequency": "Hour",
+		                    "interval": 1
+		                },
+		                "name": "SprocActivitySample"
+		            }
+		        ],
+		        "start": "2015-01-02T00:00:00Z",
+		        "end": "2015-01-03T00:00:00Z",
+		        "isPaused": false
+		    }
 		}
-5.	[パイプライン](data-factory-create-pipelines.md)をデプロイします。
-6.	データ ファクトリの監視と管理のビューを使用して、[パイプラインを監視](data-factory-monitor-manage-pipelines.md)します。
+9. ツール バーの **[デプロイ]** をクリックしてパイプラインをデプロイします。  
+
+### パイプラインの監視
+
+6. **[X]** をクリックして Data Factory エディターのブレードを閉じ、[Data Factory] ブレードに戻って **[ダイアグラム]** をクリックします。
+7. ダイアグラム ビューに、パイプラインの概要と、このチュートリアルで使用されるデータセットが表示されます。 
+8. ダイアグラム ビューで、**sprocsampleout** データセットをダブルクリックします。スライスが準備完了状態として表示されます。スライスは 2015/01/02 から 2015/01/03 まで毎時生成されるため、スライス数は 24 となります。 
+10. スライスが **[準備完了]** 状態のときに、Azure SQL Database に対して **select * from sampledata** クエリを実行し、ストアド プロシージャによってデータがテーブルに挿入されたことを確認します。
+
+	![出力データ](./media/data-factory-stored-proc-activity/output.png)
+
+	Azure Data Factory パイプラインの監視の詳細については、[パイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するページを参照してください。
 
 > [AZURE.NOTE]上の例では、SprocActivitySample に入力がありません。アップストリームのアクティビティ (つまり前の処理) とこれを関連付ける場合、アップストリーム アクティビティの出力をこのアクティビティの入力として使用できます。この場合、このアクティビティは、アップストリーム アクティビティが完了し、アップストリーム アクティビティの出力を使用できる状態 (Ready 状態) になるまで実行されません。入力は、ストアド プロシージャ アクティビティのパラメーターとして直接使用できません。
-> 
-> JSON ファイルのストアド プロシージャ パラメーターの名前と大文字と小文字は、対象データベースのストアド プロシージャ パラメーターの名前と一致する必要があります。
 
+## 静的な値を渡す 
 次に、‘Document sample’ という静的値を含む ‘Scenario’ という別の列をテーブルに追加する例を考えてましょう。
 
 ![サンプル データ 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
@@ -132,4 +198,4 @@ Data Factory パイプラインでこのストアド プロシージャを実行
 		}
 	}
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

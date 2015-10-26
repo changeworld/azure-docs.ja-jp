@@ -34,7 +34,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 + Microsoft Visual Studio Express 2013 for Windows
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
 ## Event Hub を作成する
 
@@ -117,4 +117,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [Event Hub でイベント処理の拡張]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [キューに格納されたメッセージング ソリューション]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

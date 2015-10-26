@@ -13,4 +13,4 @@
 
 	詳細については、「[アカウント、サブスクリプション、管理ロールの管理](http://go.microsoft.com/fwlink/?LinkId=324796)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

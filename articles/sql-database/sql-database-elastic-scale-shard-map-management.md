@@ -253,4 +253,4 @@ Elastic Scale では、シャーディング キーとして次の .NET Framewor
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

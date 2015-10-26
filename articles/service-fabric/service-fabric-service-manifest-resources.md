@@ -1,20 +1,20 @@
 <properties
    pageTitle="Sevice Fabric サービス マニフェストのリソース"
-	description="サービス マニフェストにリソースを記述する方法"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="sumukhs"
-	manager="anuragg"
-	editor=""/>
+   description="サービス マニフェストにリソースを記述する方法"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="sumukhs"
+   manager="anuragg"
+   editor=""/>
 
 <tags
    ms.service="service-fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/26/2015"
-	ms.author="sumukhs"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/26/2015"
+   ms.author="sumukhs"/>
 
 # サービス マニフェストのリソース
 
@@ -69,4 +69,4 @@ HTTP エンドポイントは Service Fabric によって自動的に ACL に登
 ```
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

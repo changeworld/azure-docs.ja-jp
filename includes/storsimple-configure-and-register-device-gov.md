@@ -79,10 +79,7 @@
 
      `Get-HcsSystem`
 
-    次のバージョンが表示されます。
-    - HcsSoftwareVersion: 6.3.9600.17491
-    - CisAgentVersion: 1.0.9037.0
-    - MdsAgentVersion: 26.0.4696.1433
+    次のバージョンが表示されます。- HcsSoftwareVersion: 6.3.9600.17491 - CisAgentVersion: 1.0.9037.0 - MdsAgentVersion: 26.0.4696.1433
  
 9. 次のコマンドレットを実行して、ファームウェアの更新が正しく適用されたことを確認します。
 
@@ -131,10 +128,10 @@
    
     	![StorSimple Devices page](./media/storsimple-configure-and-register-device-gov/HCS_DeviceOnline-gov-include.png) 
   
-        デバイスの状態が **オフライン** の場合は、デバイスがオンラインになるまで数分待ちます。 
+        If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
       
-        数分たってもデバイスがまだオフラインの場合、ファイアウォールのネットワークが [StorSimple デバイスのネットワーク要件](https://msdn.microsoft.com/library/dn772371.aspx) で記述されているとおりに構成されているかを確認する必要があります。HTTP 1.1 がサポートされていない場合、ポート 9354 が、送信の通信に対してオープンになっていることを確認します。このポートは、StorSimple Manager サービスおよび StorSimple デバイス間での通信に使用されます。
+        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in the [network requirements for your StorSimple device](https://msdn.microsoft.com/library/dn772371.aspx). If you do not have HTTP 1.1 support, check port 9354 to make sure that it is open for outbound communication. This port is used for communication between the StorSimple Manager service and your StorSimple device.
      
         
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

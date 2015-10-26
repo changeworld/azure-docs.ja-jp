@@ -50,4 +50,4 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

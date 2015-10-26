@@ -89,8 +89,7 @@ UCI のドイツ語のクレジット カード データ データセットは�
 
 最後にもう一度実験を実行します (**[実行]** をクリックします)。モデルがまだ稼動していることを確認するには、[モデルのスコア付け][score-model]モジュールをクリックし、**[結果の表示]** を選択します。元のデータが、信用リスク値 ("スコア付けラベル") とスコア付け確率値 ("スコア付け確率") と共に表示されます。
 
-##
-Web サービスをデプロイする
+## Web サービスをデプロイする
 
 実験から派生する Web サービスをデプロイするには、キャンバスの下にある **[Web サービスのデプロイ]** をクリックします。Machine Learning Studio によって実験が Web サービスとしてデプロイされ、サービス ダッシュボードが表示されます。
 
@@ -127,4 +126,4 @@ Web サービスによって生成された結果がダッシュボードの下�
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -86,4 +86,4 @@ HTTP アクションの出力は、ヘッダーと本文です。これらは、
 [9]: ./media/app-service-logic-connector-http/9.png
 [10]: ./media/app-service-logic-connector-http/10.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

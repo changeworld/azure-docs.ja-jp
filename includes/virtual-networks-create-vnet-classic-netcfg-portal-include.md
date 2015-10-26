@@ -1,6 +1,6 @@
 ## Azure ポータルのネットワーク構成ファイルを使用して VNet を作成する方法
 
-Azure では、xml ファイルを使用して、サブスクリプションに使用可能なすべての VNet を定義します。このファイルをダウンロードし、既存の VNet が変更または削除されるようにそのファイルを編集することで、新しい VNet を作成します。このドキュメントでは、ネットワーク構成 (または netcgf) ファイルと呼ばれるこのファイルをダウンロードする方法と、そのファイルを編集して新しい VNet を作成する方法を説明します。ネットワーク構成ファイルの詳細については、[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)を参照してください。
+Azure では、xml ファイルを使用して、サブスクリプションに使用可能なすべての VNet を定義します。このファイルをダウンロードし、既存の Vnet が変更または削除されるようにファイルを編集することで、新しい VNet を作成します。このドキュメントでは、ネットワーク構成 (または netcgf) ファイルをダウンロードする方法と、そのファイルを編集して新しい VNet を作成する方法を説明します。ネットワーク構成ファイルの詳細については、[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)を参照してください。
 
 Azure ポータルで取得した netcfg ファイルを使用して VNet を作成するには、次の手順に従います。
 
@@ -49,4 +49,4 @@ Azure ポータルで取得した netcfg ファイルを使用して VNet を作
 
 	![新しい仮想ネットワーク](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure6.png)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -77,7 +77,7 @@ Application Insights SDK およびエージェントは、アプリケーショ�
 
 1.	アプリケーションに対して最大 200 の一意のメトリックの名前と 200 の一意のプロパティの名前。メトリックには、TrackMetric を通じて送信されるデータと、イベントなどの他のデータ型の測定値が含まれます。[メトリックとプロパティの名前][api]は、データ型にスコープが制限されず、インストルメンテーション キーごとにグローバルです。
 2.	各プロパティに対する一意の値は 100 未満であり、[プロパティ][apiproperties]は、フィルタリングとグループ化のみに使用できます。一意の値が 100 を超えた後も、プロパティは検索とフィルタリングに使用できますが、フィルター処理には使用できなくなります。
-3.	要求名やページの URL などの標準プロパティは、1 週間あたり 1,000 個の一意な値に制限されます。一意の値が 1,000 個を超えると、追加の値は "その他の値" としてマークされます。元の値は、全文テキスト検索とフィルタリングに引き続き使用できます。
+3.	要求名やページの URL などの標準プロパティは、1 週間あたりの 1000 の一意な値に制限されます。1000 の一意の値を超えると、追加の値は「その他の値」としてマークされます。元の値は、全文テキスト検索とフィルタリングに引き続き使用できます。
 
 
 ## アクセス
@@ -245,9 +245,9 @@ SDK diagnostics | トレース メッセージまたは例外
 [platforms]: app-insights-platforms.md
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: app-insights-monitor-performance-live-website-now.md
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

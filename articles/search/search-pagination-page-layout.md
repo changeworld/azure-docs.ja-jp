@@ -114,4 +114,4 @@ Azure Search では、`"Sortable": true.` とインデックス付けされた�
 [4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
 [5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

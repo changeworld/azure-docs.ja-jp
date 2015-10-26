@@ -58,7 +58,7 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 
 - **Microsoft Identity Manager** - Premium には、ハイブリッド ID ソリューションの任意の組み合わせをサポートするためにオンプレミス ネットワーク内で MIM サーバー (および CAL) を使用する権限を付与するオプションがあります。これは、オンプレミスのディレクトリとデータベースを Azure Active Directory に直接同期する必要がある場合に便利なオプションです。使用できる MIM サーバーの数に制限はありませんが、MIM CAL は Azure Active Directory Premium ユーザー ライセンスの割り当てに基づいて許可されます。
 
-    詳細については、「[Microsoft Identity Manager](http://www.microsoft.com/ja-JP/server-cloud/products/microsoft-identity-manager/default.aspx)」参照してください。
+    詳細については、「[Microsoft Identity Manager](http://www.microsoft.com/ja-jp/server-cloud/products/microsoft-identity-manager/default.aspx)」参照してください。
 
 - **99.9% のエンタープライズ SLA** - Azure Active Directory Premium サービスでは 99.9% 以上の可用性が保証されます。
 
@@ -396,7 +396,7 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 	<tr>
 		<td>
 		<p>
-		オンプレミスの Active Directory インフラストラクチャの正常性を監視し、利用状況分析を取得する <a href="https://msdn.microsoft.com/ja-JP/library/azure/dn906722.aspx">Azure Active Directory Connect Health</a></p>
+		オンプレミスの Active Directory インフラストラクチャの正常性を監視し、利用状況分析を取得する <a href="https://msdn.microsoft.com/ja-jp/library/azure/dn906722.aspx">Azure Active Directory Connect Health</a></p>
 		</td>
 		<td>
 		<p></p>
@@ -450,4 +450,4 @@ Active Directory Premium Edition は、Azure Active Directory の有料プラン
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

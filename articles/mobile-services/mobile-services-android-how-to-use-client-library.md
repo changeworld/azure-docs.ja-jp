@@ -933,4 +933,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Mobile Services を使い始める]: mobile-services-android-get-started.md
 [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -13,17 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/29/2015" 
+	ms.date="10/07/2015" 
 	ms.author="tamram"/>
 
 
 # Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 
+[AZURE.INCLUDE [storage-selector-client-side-encryption-include](../../includes/storage-selector-client-side-encryption-include.md)]
+
 ## 概要
 
 [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](http://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
 
-Java によるクライアント側の暗号化については、「[Client-Side Encryption with Java for Microsoft Azure Storage (icrosoft Azure Storage の Java を使用したクライアント側の暗号化)](storage-client-side-encryption-java.md)」を参照してください。
+Java によるクライアント側の暗号化については、「[Java による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption-java.md)」を参照してください。
 
 ## エンベロープ手法による暗号化と復号化
 
@@ -56,7 +58,7 @@ Java によるクライアント側の暗号化については、「[Client-Side
 
 ### BLOB
 
-現在、クライアント ライブラリでは BLOB 全体の暗号化のみがサポートされています。特に、**UploadFrom*** メソッドや **OpenWrite** メソッドを使用するときに暗号化がサポートされます。ダウンロードについては、完全ダウンロードと一部の範囲のダウンロードの両方がサポートされています。
+現在、クライアント ライブラリでは BLOB 全体の暗号化のみがサポートされています。具体的には、**UploadFrom*** メソッドや **OpenWrite** メソッドを使用する場合に暗号化がサポートされます。ダウンロードについては、完全ダウンロードと一部の範囲のダウンロードの両方がサポートされています。
 
 暗号化中、クライアント ライブラリは 16 バイトのランダムな初期化ベクトル (IV) と 32 バイトのランダムなコンテンツ暗号化キー (CEK) を生成し、この情報を使用して BLOB データのエンベロープ暗号化を実行します。ラップされた CEK と一部の追加暗号化メタデータが、サービスの暗号化された BLOB と共に、BLOB メタデータとして格納されます。
 
@@ -64,7 +66,7 @@ Java によるクライアント側の暗号化については、「[Client-Side
 
 暗号化された BLOB のダウンロードには、便利なメソッド **DownloadTo***/**BlobReadStream** を使用した BLOB 全体のコンテンツの取得も含まれます。ラップされた CEK はラップ解除され、復号化されたデータをユーザーに返すために IV (この場合 BLOB メタデータとして格納された) と共に使用されます。
 
-暗号化された BLOB での任意の範囲 (**downloadRange** メソッド) のダウンロードでは、ユーザーが指定した範囲が調整されます。これは、少量の追加データを取得して、要求された範囲を正常に復号化するためです。
+暗号化された BLOB での任意の範囲 (**DownloadRange*** メソッド) のダウンロードでは、ユーザーが指定した範囲が調整されます。これは、少量の追加データを取得して、要求された範囲を正常に復号化するためです。
 
 このスキームを使用して、すべての BLOB 型 (ブロック BLOB、ページ BLOB、および追加 BLOB) を暗号化/復号化できます。
 
@@ -117,7 +119,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 - Microsoft.Azure.KeyVault には Key Vault REST クライアントが含まれています。
 - Microsoft.Azure.KeyVault.Extensions には、暗号化アルゴリズム、RSAKey、および SymmetricKey の実装を含む拡張機能コードが含まれています。これは、コアおよび KeyVault 名前空間に依存し、集計リゾルバー (複数のキー プロバイダーを使用する必要がある場合) およびキャッシュ キー リゾルバーを定義する機能を提供します。ストレージ クライアント ライブラリはこのパッケージに直接依存しませんが、Azure Key Vault を使用してキーを格納するか、Key Vault 拡張機能を使用してローカルおよびクラウドの暗号化プロバイダーを使用する必要がある場合はこのパッケージが必要です。
 
-Key Vault は値の高いマスター キー向けで、Key Vault ごとの調整の上限はこれを念頭に設計されています。Key Vault を使用してクライアント側の暗号化を実行するときに推奨されるモデルは、Key Vault 内のシークレットやローカルにキャッシュされたシークレットとして格納された対象マスター キーを使用することです。次の操作を実行する必要があります。
+Key Vault は値の高いマスター キー向けで、Key Vault ごとのスロットルの上限はこれを念頭に設計されています。Key Vault を使用してクライアント側の暗号化を実行するときに推奨されるモデルは、Key Vault 内のシークレットやローカルにキャッシュされたシークレットとして格納された対象マスター キーを使用することです。次の操作を実行する必要があります。
 
 1. シークレットをオフラインで作成し、Key Vault にアップロードします。
 2. シークレットのベース識別子をパラメーターとして使用して、シークレットの現在のバージョンを暗号化用に解決し、この情報をローカルでキャッシュします。キャッシュ用の CachingKeyResolver の使用: ユーザーが自身のキャッシュ ロジックを実装することは想定されていません。
@@ -150,7 +152,7 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 ### RequireEncryption モード
 
-すべてのアップロードとダウンロードを暗号化する必要がある場合、オプションで操作のモードを有効にすることができます。このモードでは、暗号化ポリシーを設定せずにデータをアップロードしようとしたり、サービスで暗号化されていないデータをダウンロードしようとしたりすると、クライアントで失敗します。要求オプション オブジェクトの **RequireEncryption** プロパティによって、この動作が制御されます。Azure Storage に保存されているすべてのオブジェクトがアプリケーションによって暗号化される場合、サービス クライアント オブジェクトの既定の要求オプションに **requireEncryption** プロパティを設定できます。たとえば、**CloudBlobClient.DefaultRequestOptions.RequireEncryption** を **true** に設定して、そのクライアント オブジェクトを介して実行されるすべての BLOB 操作に対して暗号化を要求します。
+すべてのアップロードとダウンロードを暗号化する必要がある場合、オプションで操作のモードを有効にすることができます。このモードでは、暗号化ポリシーを設定せずにデータをアップロードしようとしたり、サービスで暗号化されていないデータをダウンロードしようとしたりすると、クライアントで失敗します。要求オプション オブジェクトの **RequireEncryption** プロパティによって、この動作が制御されます。Azure Storage に保存されているすべてのオブジェクトがアプリケーションによって暗号化される場合、サービス クライアント オブジェクトの既定の要求オプションに **RequireEncryption** プロパティを設定できます。たとえば、**CloudBlobClient.DefaultRequestOptions.RequireEncryption** を **true** に設定して、そのクライアント オブジェクトを介して実行されるすべての BLOB 操作に対して暗号化を要求します。
 
 ### BLOB サービス暗号化
 
@@ -231,7 +233,7 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 #### 属性の使用
 
-前述のように、エンティティで TableEntity を実装した場合、プロパティは、**EncryptionResolver** を指定するのではなく、[EncryptProperty] 属性で修飾できます。
+上記のとおり、エンティティで TableEntity を実装した場合、プロパティは、**EncryptionResolver** を指定するのではなく、[EncryptProperty] 属性で修飾できます。
 
 	[EncryptProperty]
  	public string EncryptedProperty1 { get; set; }
@@ -244,4 +246,4 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 [.NET 用 Azure Storage クライアント ライブラリ NuGet パッケージ](http://www.nuget.org/packages/WindowsAzure.Storage/5.0.0)をダウンロードする。GitHub から [.NET 用 Azure Storage クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-net)をダウンロードする。Azure Key Vault NuGet の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。[Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)にアクセスする。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="2 つの仮想ネットワーク間の VPN 接続の構成 | Microsoft Azure"
-	description="2 つの Azure 仮想ネットワーク間に VPN 接続とドメイン名の解決を構成する方法と、HBase geo レプリケーションを構成する方法について説明します。"
-	services="hdinsight,virtual-network"
-	documentationCenter=""
-	authors="mumian"
-	manager="paulettm"
-	editor="cgronlun"/>
+   pageTitle="2 つの仮想ネットワーク間の VPN 接続の構成 | Microsoft Azure" 
+   description="2 つの Azure 仮想ネットワーク間に VPN 接続とドメイン名の解決を構成する方法と、HBase geo レプリケーションを構成する方法について説明します。" 
+   services="hdinsight,virtual-network" 
+   documentationCenter="" 
+   authors="mumian" 
+   manager="paulettm" 
+   editor="cgronlun"/>
 
 <tags
    ms.service="hdinsight"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="big-data"
-	ms.date="07/08/2015"
-	ms.author="jgao"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="big-data" 
+   ms.date="07/08/2015"
+   ms.author="jgao"/>
 
 # 2 つの Azure 仮想ネットワーク間の VPN 接続の構成  
 
@@ -270,4 +270,4 @@ Vnet に VM をデプロイすることなく、Azure ポータルの VNet ダ�
 [img-vnet-lnet-diagram]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.LNet.diagram.png
 [img-vpn-status]: ./media/hdinsight-hbase-geo-replication-configure-VNets/HDInsight.HBase.VPN.status.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

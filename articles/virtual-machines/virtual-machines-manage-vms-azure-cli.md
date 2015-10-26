@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Azure CLI を使用した Azure VM の管理 | Microsoft Azure"
-   description="Mac、Linux、および Windows 用 Azure CLI を使用して Azure VM を管理する方法を説明します。"
+   pageTitle="CLI を使用した仮想マシンの管理 | Microsoft Azure"
+   description="Azure コマンド ライン インターフェイス (CLI) を使用して、Azure リソース マネージャー VM の管理を自動化します。"
    services="virtual-machines"
-   documentationCenter="virtual-machines"
+   documentationCenter=""
    authors="dlepow"
    manager="timlt"
    editor=""
-   tags="azure-service-management"/>
+   tags="azure-resource-manager"/>
 
    <tags
    ms.service="virtual-machines"
@@ -14,18 +14,19 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="06/09/2015"
+   ms.date="10/07/2015"
    ms.author="danlep"/>
 
-# Mac、Linux、および Windows 用 Azure CLI を使用した仮想マシンの管理
+# Mac、Linux、および Windows 用 Azure CLI を使用したリソース マネージャー仮想マシンの管理
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用して作成されたリソースの管理について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-how-to-automate-azure-resource-manager.md)を使用して作成されたリソースを管理することもできます。
 
-Azure CLI を使用すると、VM を管理するために日常的に実行する多くのタスクを自動化できます。この記事では、比較的単純なタスクにはコマンド例を示し、より複雑なタスクには、コマンドが記載されている記事へのリンクを示します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](virtual-machines-how-to-automate-azure-resource-manager.md)。
 
->[AZURE.NOTE]Azure CLI をまだインストールして構成していない場合は、[こちら](../xplat-cli-install.md)から手順を参照してください。PowerShell で複数の同一タスクをクイックスタートする場合は、「[Azure PowerShell を使用した仮想マシンの管理](virtual-machines-manage-vms-powershell.md)」を参照してください。
+Mac、Linux、および Windows 用の Azure コマンド ライン インターフェイス (CLI) を使用すると、VM を管理するために日常的に実行する多くのタスクを自動化できます。この記事では、比較的単純なタスクにはコマンド例を示し、より複雑なタスクには、コマンドが記載されている記事へのリンクを示します。
 
-## 例のコマンドを使用する方法
+>[AZURE.NOTE]Azure CLI をまだインストールしていない場合は、[こちら](../xplat-cli-install.md)で手順を参照してください。また、[こちら](../xplat-cli-connect.md)でサブスクリプションへの接続方法を確認することもできます。さらに、Azure リソース マネージャー (arm) モードで CLI を構成する必要があります。
+
+## サンプル コマンドを使用する方法
 コマンド内のテキストの一部を、使用する環境に適した別のテキストに置き換える必要があります。記号の < and > は置き換える必要があるテキストであることを示しています。テキストを置き換える場合、記号は削除し、引用符はそのままの位置に残します。
 
 > [AZURE.NOTE]プログラムによってコンソール コマンドの出力を格納および操作する場合は、**[jq](https://github.com/stedolan/jq)**、**[jsawk](https://github.com/micha/jsawk)** などの JSON 解析ツール、またはそのタスクに適した言語ライブラリを使用することをお勧めします。
@@ -46,7 +47,7 @@ VM に関する情報を取得するには、このコマンドを実行し、�
 
 ## Linux ベースの仮想マシンへのログオン
 
-通常、Linux マシンは SSH によって接続されます。詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」を参照してください。Azure リソース マネージャーの概要
+通常、Linux マシンは SSH によって接続されます。詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-use-ssh-key.md)」をご覧ください。Azure リソース マネージャーの概要
 ## VM の停止
 
 次のコマンドを実行します。
@@ -81,6 +82,8 @@ Linux ベースの VM を新たに作成するには、いくつかの値を用�
 
 ## 次のステップ
 
-**arm** モードでの Azure CLI のその他の使用例については、[Azure リソース管理による Mac、Linux、および Windows 用 Microsoft Azure CLI の使用](../xplat-cli-resource-manager.md)に関するページを参照してください。Azure リソースとその概念の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
+* Azure リソース マネージャー モードでの Azure CLI のその他の使用例については、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+* Azure リソースとその概念の詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
+
+<!---HONumber=Oct15_HO3-->

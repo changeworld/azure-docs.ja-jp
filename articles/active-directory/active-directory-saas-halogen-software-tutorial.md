@@ -35,7 +35,7 @@ Halogen Software と Azure AD の統合を構成するには、次のものが�
 - シングル サインオン対応の Halogen Software サブスクリプション
 
 
-> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE]このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
@@ -45,8 +45,7 @@ Halogen Software と Azure AD の統合を構成するには、次のものが�
 
  
 ## シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。<br>
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。<br>このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Halogen Software の追加 
 2. Azure AD シングル サインオンの構成とテスト
@@ -90,7 +89,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 1. Azure AD ポータルの **[Halogen Software]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][8]
 
-2. **[ユーザーの Halogen Software へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD のシングル サインオン][9]
+2. **[ユーザーの Halogen Software へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD Single Sign-On][9]
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行します。<br><br>![アプリケーションの設定の構成][10]
  
@@ -111,7 +110,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
      8\.3.ダウンロードしたメタデータ ファイルをアップロードするには、**[Browse]** をクリックしてファイルを選択し、**[Upload File]** をクリックします。
 
-     8\.4.構成をテストするには、**[Run Test]** をクリックします。 > [AZURE.NOTE] "*The SAML test is complete.Please close this window*" というメッセージが表示されるまで待機する必要があります。次に、開いているブラウザー ウィンドウを閉じます。<br>**[Enable SAML]** チェック ボックスは、テストが完了した場合にのみ有効にします。
+     8\.4.構成をテストするには、**[Run Test]** をクリックします。[AZURE.NOTE]"*The SAML test is complete.Please close this window*" というメッセージが表示されるまで待機する必要があります。次に、開いているブラウザー ウィンドウを閉じます。<br>**[Enable SAML]** チェック ボックスは、テストが完了した場合にのみ有効にします。
 
      8\.5.**[Enable SAML]** を選択します。
     
@@ -181,8 +180,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 ### シングル サインオンのテスト
 
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。<br>
-アクセス パネルで Halogen Software のタイルをクリックすると、自動的に Halogen Software アプリケーションにサインオンします。
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。<br> アクセス パネルで Halogen Software のタイルをクリックすると、自動的に Halogen Software アプリケーションにサインオンします。
 
 
 ## その他のリソース
@@ -223,4 +221,4 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 [300]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_300.png
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

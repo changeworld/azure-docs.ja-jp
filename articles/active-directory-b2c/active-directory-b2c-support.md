@@ -50,4 +50,4 @@ Azure プレビュー ポータルで Azure Active Directory (AD) B2C のサポ�
 
 ![サポート - サブスクリプションなし](./media/active-directory-b2c-support/support-no-sub.png)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

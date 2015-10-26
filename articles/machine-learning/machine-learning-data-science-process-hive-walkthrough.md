@@ -794,9 +794,7 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 
 ## 参照
 
-•	[Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
-•	[NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-•	[ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+• [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/) • [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/) • [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 
 [2]: ./media/machine-learning-data-science-process-hive-walkthrough/output-hive-results-3.png
@@ -810,4 +808,4 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 [project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

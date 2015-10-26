@@ -23,4 +23,4 @@
 
 1. 同じ **[IP アドレス]** プロパティ ウィンドウで、**[IP アドレス名]** を変更します。この IP アドレス名は、PowerShell スクリプトの **$IPResourceName** 変数で使用されます。ソリューションが複数の Azure VNet にまたがる場合は、IP リソースごとにこの手順を繰り返します。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -84,12 +84,11 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 
 Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、「[Azure AD B2C プレビュー: .Net Web API を構築する](active-directory-b2c-devquickstarts-api-dotnet.md)」をご覧ください。
 
-## 6\.ポリシーを実行する
-`TaskService` で要求を認証する準備が完了したので、`TaskClient` を実装できます。アプリは、HTTP 認証要求を送信することで、Azure AD B2C と通信します。このとき、要求の一環として実行するポリシーを指定します。
-.NET デスクトップ アプリケーションでは、**Active Directory 認証ライブラリ (ADAL)** を使用して、OAuth 2.0 認証メッセージを送信し、ポリシーを実行して、呼び出し元の Web API のトークンを取得できます。
+## 6\.ポリシーの実行
+`TaskService` で要求を認証する準備が完了したので、`TaskClient` を実装できます。アプリは、HTTP 認証要求を送信することで、Azure AD B2C と通信します。このとき、要求の一環として実行するポリシーを指定します。.NET デスクトップ アプリケーションでは、**Active Directory 認証ライブラリ (ADAL)** を使用して、OAuth 2.0 認証メッセージを送信し、ポリシーを実行して、呼び出し元の Web API のトークンを取得できます。
 
 #### ADAL をインストールする
-まず、Visual Studio パッケージ マネージャー コンソールを使用して、ADAL を TaskClient プロジェクトに追加します。
+まず、Visual Studio Package Manager Console を使用して、ADAL を TaskClient プロジェクトに追加します。
 
 ```
 PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TaskClient -IncludePrerelease
@@ -330,9 +329,7 @@ IDP の追加や削除、アプリケーション要求の操作、サインア�
 
 参照用に、完成したサンプルが[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip)。または、GitHub から複製することもできます。
 
-```
-git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git
-```
+```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git```
 
 <!--
 
@@ -346,4 +343,4 @@ You can now move onto more advanced B2C topics.  You may want to try:
 
 -->
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

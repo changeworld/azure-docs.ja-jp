@@ -841,4 +841,4 @@ Service Bus の詳細については、次のトピックを参照してくだ�
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 - [Service Bus のアーキテクチャ](service-bus-architecture.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -736,4 +736,4 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 [Next Steps]: #next
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

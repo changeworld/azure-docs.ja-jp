@@ -3,4 +3,4 @@
 - [.NET](../articles/media-services/media-services-dotnet-upload-files.md)
 - [REST API](../articles/media-services/media-services-rest-upload-files.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

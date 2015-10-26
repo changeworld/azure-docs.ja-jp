@@ -1,20 +1,20 @@
 <properties
    pageTitle="混乱のテストの実行"
-	description="この記事では、Microsoft 提供の事前定義された Service Fabric のシナリオについて説明します。"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="anmolah"
-	manager="timlt"
-	editor=""/>
+   description="この記事では、Microsoft 提供の事前定義された Service Fabric のシナリオについて説明します。"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="anmolah"
+   manager="timlt"
+   editor=""/>
 
 <tags
    ms.service="service-fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/26/2015"
-	ms.author="anmola"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/26/2015"
+   ms.author="anmola"/>
 
 # Testability のシナリオ
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。Service Fabric を使用すると、開発者は信頼性の低いインフラストラクチャ上で実行できるサービスのコードを記述できます。高品質なサービスのコードを記述するには、開発者はこうした信頼性の低いインフラストラクチャを誘発してサービスの安定性をテストできる必要があります。Service Fabric を使用すると、開発者は障害アクションを誘発して、障害のある状態でサービスをテストできます。ただし、ターゲットを特定した障害のシミュレーションには限界があります。さらなるテストを行えるように、Service Fabric には、事前に作成されたテスト シナリオが用意されています。それらのシナリオでは、長時間にわたり、クラスター全体で、グレースフルと非グレースフルの両方が交互配置された連続した障害がシミュレートされます。障害の発生率と種類を構成し、C# API または PowerShell を使用してクライアント側ツールとして実行し、クラスターとサービスに障害を生成します。Testability 機能の一部として、次のシナリオが用意されています。
@@ -251,4 +251,4 @@ Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxService
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

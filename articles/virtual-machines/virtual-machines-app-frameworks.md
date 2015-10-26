@@ -21,7 +21,8 @@
 
 仮想マシンは、テンプレートを使ってすばやく作成できます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
 
 | テンプレート | 説明 | テンプレートを見る | 今すぐデプロイする |
 |:---|:---|:---:|:---:|
@@ -34,7 +35,7 @@
 | Django アプリ | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して、Django アプリケーションを Ubuntu VM にデプロイします。Python と Apache のサイレント インストールを実行します。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/django-app) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdjango-app%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Docker コンテナー | このテンプレートを使用すると、Docker (Docker 拡張機能を使用) と 3 つの Docker コンテナー (Docker Hub から直接取得され、Docker Compose を使ってデプロイ) を使って Ubuntu VM をデプロイすることができます。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdocker-simple-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Elasticsearch クラスター | このテンプレートは、Elasticsearch クラスターを Ubuntu VM 上にデプロイし、テンプレート リンクを使用してデータ ノード スケール ユニットを作成します。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Felasticsearch%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
-| Hortonworks HDP | このテンプレートは、CentOS 仮想マシン上に、マルチ サーバーの Hortonworks HDP 2.2 Apache Hadoop デプロイメントを作成し、クラスターに対して HDP インストールを構成します。| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/hortonworks-on-centos) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fhortonworks-on-centos%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>|
+| Hortonworks HDP | このテンプレートは、CentOS 仮想マシン上に、マルチ サーバーの Hortonworks HDP 2.2 Apache Hadoop デプロイを作成し、クラスターに対して HDP インストールを構成します。| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/hortonworks-on-centos) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fhortonworks-on-centos%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>|
 | Jenkins マスター ノードとスレーブ ノード | このテンプレートは、Ubuntu VM 上に Jenkins マスター ノードをデプロイし、他の 2 つの VM 上に複数の Jenkins スレーブ ノードをデプロイします。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/jenkins-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fjenkins-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Kafka クラスター | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して、Kafka クラスターを Ubuntu VM にデプロイします。また、パブリックにアクセスできる VM が 1 つ作成されます。この VM を起点として、Kafka ノードに SSH でアクセスし、診断やトラブルシューティングを行うことができます。| [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/kafka-on-ubuntu) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%kafka-on-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Ubuntu 上の LAMP スタック | このテンプレートは、Azure Linux CustomScript 拡張機能を使用して LAMP アプリケーションをデプロイします。Ubuntu VM を作成し、MySQL、Apache、PHP のサイレント インストールを実行した後、単純な PHP スクリプトを作成します。 | [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app) | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Flamp-app%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
@@ -52,4 +53,4 @@
 
 [Azure リソース マネージャー](../resource-group-template-deploy.md)の詳細を確認します。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

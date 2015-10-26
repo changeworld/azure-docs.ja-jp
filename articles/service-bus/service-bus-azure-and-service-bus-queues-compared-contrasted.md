@@ -141,7 +141,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 |有害なメッセージのサポート|**はい**|**はい**|
 |インプレース更新|**はい**|**はい**|
 |サーバー側のトランザクション ログ|**はい**|**いいえ**|
-|ストレージのメトリック|**はい**<br/><br/>**分単位のメトリック**: 可用性、TPS、API 呼び出し数、エラー数、その他のメトリックをすべてリアルタイムで提供します (分単位で集計され、運用環境での発生から数分以内にレポートされます)。詳細については、「[ストレージ分析 メトリックスについて](https://msdn.microsoft.com/library/hh343258.aspx)」を参照してください。|**はい**<br/><br/>([GetQueues](https://msdn.microsoft.com/library/hh293128.aspx) の呼び出しによる一括クエリ)|
+|Storage のメトリック|**はい**<br/><br/>**分単位のメトリック**: 可用性、TPS、API 呼び出し数、エラー数、その他のメトリックをすべてリアルタイムで提供します (分単位で集計され、運用環境での発生から数分以内にレポートされます)。詳細については、「[Storage 分析 メトリックスについて](https://msdn.microsoft.com/library/hh343258.aspx)」を参照してください。|**はい**<br/><br/>([GetQueues](https://msdn.microsoft.com/library/hh293128.aspx) の呼び出しによる一括クエリ)|
 |状態管理|**いいえ**|**はい**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](https://msdn.microsoft.com/library/microsoft.servicebus.messaging.entitystatus.aspx)|
 |メッセージの自動転送|**いいえ**|**はい**|
 |キューの消去機能|**はい**|**いいえ**|
@@ -204,7 +204,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 |比較条件|Azure キュー|Service Bus キュー|
 |---|---|---|
 |管理プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**|
-|ランタイム プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**<br/><br/>**AMQP 1.0 Standard (TCP と TLS)**| |.NET マネージ API|**はい**<br/><br/>(.NET 管理対象ストレージ クライアント API)|**はい**<br/><br/>(.NET の仲介型メッセージング API)|
+|ランタイム プロトコル|**HTTP/HTTPS 経由の REST**|**HTTPS 経由の REST**<br/><br/>**AMQP 1.0 Standard (TCP と TLS)**| |.NET マネージ API|**はい**<br/><br/>(.NET 管理対象 Storage クライアント API)|**はい**<br/><br/>(.NET の仲介型メッセージング API)|
 |ネイティブ C++|**はい**|**いいえ**|
 |Java API|**はい**|**はい**|
 |PHP API|**はい**|**はい**|
@@ -275,7 +275,7 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 |キュー トランザクションのコスト|**$0.0036**<br/><br/>(100,000 トランザクションあたり)|**Basic レベル**: **$0.05**<br/><br/>(100 万回の処理あたり)|
 |課金可能な操作|**すべて**|**送信/受信のみ**<br/><br/>(他の操作には料金はかかりません)|
 |アイドル状態のトランザクション|**課金対象**<br/><br/>(空のキューに対するクエリは課金可能なトランザクションと見なされます)|**課金対象**<br/><br/>(空のキューに対する受信は課金可能なメッセージと見なされます)|
-|ストレージ コスト|**$0.07**<br/><br/>(GB/月あたり)|**$0.00**|
+|Storage コスト|**$0.07**<br/><br/>(GB/月あたり)|**$0.00**|
 |送信データ転送のコスト|**$0.12～$0.19**<br/><br/>(地理的条件による)|**$0.12～$0.19**<br/><br/>(地理的条件による)|
 
 ### 追加情報
@@ -311,4 +311,4 @@ Service Bus キューには高度な機能が数多く用意されているた�
 - [Azure Storage の課金について - 帯域幅、トランザクション、容量 (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

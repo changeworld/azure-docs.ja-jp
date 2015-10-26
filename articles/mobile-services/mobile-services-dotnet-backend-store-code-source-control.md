@@ -36,8 +36,7 @@
 
 	Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)]」を参照してください。
 
-	> [AZURE.NOTE]
-	> オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
+	> [AZURE.NOTE]オペレーティング システムによっては、コマンド ラインと GUI の両方のバージョンの Git を使用できます。この記事で説明する手順では、コマンド ライン バージョンを使用します。
 
 2. **GitBash** (Windows) や **Bash** (Unix シェル) などのコマンド ラインを開きます。OS X システムでは、**ターミナル** アプリケーションを使用してコマンド ラインにアクセスできます。
 
@@ -100,4 +99,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

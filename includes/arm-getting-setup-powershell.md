@@ -1,5 +1,5 @@
 ## リソース マネージャー テンプレート向けの PowerShell の設定
- 
+
 リソース マネージャーで Azure PowerShell を使用する前に、適切なバージョンの Windows PowerShell と Azure PowerShell を用意する必要があります。
 
 ### PowerShell のバージョンを確認する
@@ -23,7 +23,7 @@ Windows PowerShell Version 3.0 または 4.0 があることを確認します�
 
 **PSVersion** の値が 3.0 または 4.0 であることを確認します。3.0 または 4.0 でない場合は、[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855) のダウンロード ページを参照してください。
 
-また、Azure PowerShell Version 0.9.0 以降も必要です。Azure PowerShell をまだインストールおよび構成していない場合は、[こちら](powershell-install-configure.md)で手順を参照してください。
+また、Azure PowerShell Version 1.0.0 以降も必要です。Azure PowerShell をまだインストールおよび構成していない場合は、[こちら](powershell-install-configure.md)で手順を参照してください。
 
 インストールした Azure PowerShell のバージョンは、Azure PowerShell コマンド プロンプトで次のコマンドを使用して確認できます。
 
@@ -33,9 +33,9 @@ Windows PowerShell Version 3.0 または 4.0 があることを確認します�
 
 	Version
 	-------
-	0.9.0
+	1.0.0
 
-0\.9.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)に関するページを参照してください。
+1\.0.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)に関するページを参照してください。
 
 ### Azure アカウントとサブスクリプションを設定する
 
@@ -43,11 +43,11 @@ Azure サブスクリプションを持っていない場合は、[MSDN サブ�
 
 Azure PowerShell コマンド プロンプトを開き、次のコマンドで Azure にログオンします。
 
-	Add-AzureAccount
+	Login-AzureRmAccount
 
 Azure サブスクリプションが複数ある場合は、次のコマンドで、Azure サブスクリプションの一覧を表示できます。
 
-	Get-AzureSubscription
+	Get-AzureRmSubscription
 
 次の種類の情報が表示されます。
 
@@ -59,22 +59,14 @@ Azure サブスクリプションが複数ある場合は、次のコマンド�
 	Accounts                  : {johndoe@contoso.com}
 	IsDefault                 : True
 	IsCurrent                 : True
-	CurrentStorageAccountName : 
+	CurrentStorageAccountName :
 	TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
 Azure PowerShell コマンド プロンプトで次のコマンドを実行して、現在の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
 
-	$subscr="<SubscriptionName from the display of Get-AzureSubscription>"
-	Select-AzureSubscription -SubscriptionName $subscr -Current	
+	$subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
+	Select-AzureRmSubscription -SubscriptionName $subscr -Current
 
 Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](powershell-install-configure.md#Connect)に関するトピックを参照してください。
 
-### Azure リソース マネージャー モジュールに切り替える
-
-Azure リソース マネージャー モジュールを使用するには、既定の Azure コマンド セットから Azure リソース マネージャーのコマンド セットに切り替える必要があります。次のコマンドを実行します。
-
-	Switch-AzureMode AzureResourceManager
-
-> [AZURE.NOTE]**Switch-AzureMode AzureServiceManagement** コマンドを使用して、既定のコマンド セットに戻すことができます。
-
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

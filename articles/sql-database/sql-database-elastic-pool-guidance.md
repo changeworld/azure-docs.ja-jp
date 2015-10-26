@@ -10,7 +10,7 @@
 <tags 
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="09/23/2015" 
+	ms.date="10/08/2015" 
 	ms.author="sstein" 
 	ms.workload="data-management" 
 	ms.topic="article" 
@@ -119,7 +119,7 @@ Single Database を個々に使用するのと、エラスティック データ
 
     プール価格 = *プール eDTUs* * *プール eDTU 単価*
 
-    料金情報については、「[SQL Database の料金](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+    料金情報については、「[SQL Database の価格](http://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 
 
 4. 手順 3 のプールの価格と、Single Database の適切なパフォーマンス レベルを使用した場合の価格を比較してください。
@@ -136,7 +136,7 @@ Single Database を個々に使用するのと、エラスティック データ
 可能なサイズの詳細については、「[エラスティック データベース プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool-reference.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
 
 
-### 推奨サイズを決定するためのサービス層アドバイザー (STA) と動的管理ビュー (DMV) の使用   
+### 推奨サイズを決定するためのサービス レベル アドバイザー (STA) と動的管理ビュー (DMV) の使用   
 
 STA および DMV には、エラスティック データベース プールのサイズを決定するためのさまざまなツール オプションと機能があります。使用しているツール オプションにかかわらず、サイズの評価は、初期評価とエラスティック データベース プールの作成のみに使用される必要があります。プールを作成したら、リソースの使用量を正確に監視し、必要に応じてプールのパフォーマンスの設定を上下に調整します。
 
@@ -189,7 +189,7 @@ STA は、データベースの使用量の履歴を評価して、Single Databa
 ### スクリプトの詳細
 
 
-スクリプトは、ローカル コンピューターまたはクラウド上の仮想マシンから実行できます。ローカル コンピューターから実行する場合、スクリプトは、ターゲット データベースからデータをダウンロードする必要があるためデータ送信費用が発生する可能性があります。次に、ターゲット データベースの数と、スクリプトの実行期間に基づくデータ量の評価を示します。Azure のデータ転送コストの詳細については、「[データ転送の料金詳細](http://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。
+スクリプトは、ローカル コンピューターまたはクラウド上の VM から実行できます。ローカル コンピューターから実行する場合、スクリプトは、ターゲット データベースからデータをダウンロードする必要があるためデータ送信費用が発生する可能性があります。次に、ターゲット データベースの数と、スクリプトの実行期間に基づくデータ量の評価を示します。Azure のデータ転送コストの詳細については、「[Data Transfers (データ転送) の料金詳細](http://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。
        
  -     1 データベース 1 時間あたり = 38 KB
  -     1 データベース 1 日あたり = 900 KB
@@ -216,8 +216,8 @@ STA は、データベースの使用量の履歴を評価して、Single Databa
 
 スクリプトが完了すると、ターゲット サーバー内のすべての候補データベースを格納するために、エラスティック プールに必要な推定 eDTU 数が出力されます。この推定 eDTU は、これらのデータベースを格納するエラスティック データベース プールを作成および構成するため使用できます。プールが作成され、プールにデータベースを移動した後には、数日間厳密に監視する必要があります。そして必要に応じて、プール eDTU 構成に必要な調整を行う必要があります。
 
+> [AZURE.IMPORTANT]このスクリプトには、バージョン 1.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
 
-スクリプト全体をコピーする場合、スクリプト内の任意のテキストを 3 回クリック (トリプルクリック) します。
 
     
     param (
@@ -435,4 +435,4 @@ STA は、データベースの使用量の履歴を評価して、Single Databa
 [2]: ./media/sql-database-elastic-pool-guidance/four-databases.png
 [3]: ./media/sql-database-elastic-pool-guidance/twenty-databases.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -41,14 +41,14 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 
 <!--Article references-->
 
-[Copy data with Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/articles/data-factory-azure-sql-connector/
-[SQL Data Warehouse development overview]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-develop/
-[SQL Data Warehouse integration overview]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-integrate/
+[Copy data with Azure Data Factory]: https://azure.microsoft.com/ja-jp/documentation/articles/data-factory-azure-sql-connector/
+[SQL Data Warehouse development overview]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-develop/
+[SQL Data Warehouse integration overview]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-integrate/
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 [Azure Data Factory のドキュメント]: https://azure.microsoft.com/documentation/services/data-factory/
-[Copy data with Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/articles/data-factory-data-movement-activities/
+[Copy data with Azure Data Factory]: https://azure.microsoft.com/ja-jp/documentation/articles/data-factory-data-movement-activities/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

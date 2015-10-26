@@ -118,4 +118,4 @@ Reliable Collection は、常に排他ロックを取得します。読み取り
 - [Reliable Service プログラミング モデルの詳細な使用方法](../Service-Fabric/service-fabric-reliable-services-advanced-usage.md)
 - [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

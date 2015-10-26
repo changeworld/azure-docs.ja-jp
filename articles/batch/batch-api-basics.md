@@ -385,4 +385,4 @@ Batch アカウントに証明書を追加するには、証明書の追加操�
 
 [Azure Batch の概要]: batch-technical-overview.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

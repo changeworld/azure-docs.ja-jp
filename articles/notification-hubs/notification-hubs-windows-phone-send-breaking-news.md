@@ -35,7 +35,7 @@
 
 最初の手順として、既存のメイン ページに UI 要素を追加して、ユーザーが登録するカテゴリを選択できるようにします。ユーザーにより選択されるカテゴリは、デバイスに格納されます。アプリが起動すると、通知ハブにデバイス登録が作成され、選択されたカテゴリがタグとして追加されます。
 
-1. MainPage.xaml プロジェクト ファイルを開き、`TitlePanel` と `ContentPanel` という名前の **Grid** 要素を次のコードに置き換えます。
+1. MainPage.xaml プロジェクト ファイルを開き、`TitlePanel` と `ContentPanel` という名前の **￼Grid￼** 要素を次のコードに置き換えます。
 
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="Breaking News" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
@@ -254,4 +254,4 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 [Azure Management Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

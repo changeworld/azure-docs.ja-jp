@@ -189,4 +189,4 @@ AMS のラーニング パスについては、以下を参照してください
 [ストレージ キーの展開後に Media Services ロケーターを更新する](media-services-roll-storage-access-keys.md)
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

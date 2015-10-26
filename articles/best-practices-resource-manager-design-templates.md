@@ -383,4 +383,4 @@ T シャツ サイズ テンプレートは、指定されたサイズ (*large*)
 - Azure リソース マネージャーのセキュリティ上の推奨事項については、「[Azure リソース マネージャーのセキュリティに関する考慮事項](best-practices-resource-manager-security.md)」を参照してください。
 - テンプレート内やテンプレート間での状態の共有方法については、「[Azure リソース マネージャーのテンプレートでの状態の共有](best-practices-resource-manager-state.md)」を参照してください。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="10/08/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: ページのユーザー インターフェイス (UI) カスタマイズ機能を試すために使用するヘルパー ツール
@@ -22,7 +22,7 @@
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-## B2C テナントの取得
+## Azure AD B2C テナントを取得する
 
 Azure AD B2C テナントがまだない場合は、カスタマイズを始める前に、[Azure AD B2C テナントを取得](active-directory-b2c-get-started.md)する必要があります。
 
@@ -60,7 +60,7 @@ Azure BLOB ストレージを使用してページのコンテンツをホスト
 #### ストレージ アカウントの作成
 
 1. [Azure プレビュー ポータル](https://portal.azure.com/)にサインインします。
-2. **[+ 新規]**、**[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。Azure BLOB ストレージ アカウントを作成するには、Azure サブスクリプションが必要です。[ここ](https://azure.microsoft.com/ja-JP/pricing/free-trial/)で無料試用版にサインアップできます。
+2. **[+ 新規]**、**[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。Azure BLOB ストレージ アカウントを作成するには、Azure サブスクリプションが必要です。[ここ](https://azure.microsoft.com/JA-JP/pricing/free-trial/)で無料試用版にサインアップできます。
 3. ストレージ アカウントの **[名前]** を指定し ("contoso" など)、適切な **[価格レベル]**、**[リソース グループ]**、**[サブスクリプション]** を選択します。**[スタート画面にピン留めする]** がオンになっていることを確認します。**[作成]** をクリックします。
 4. スタート画面に戻り、作成したストレージ アカウントをクリックします。
 5. **[概要]** セクションで、**[コンテナー]**、**[+ 追加]** の順にクリックします。
@@ -90,4 +90,4 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
         
 これで、**[今すぐ実行]** ボタンまたは独自のアプリケーションを使用して、ポリシーを再度実行できるようになります。どちらの場合も同じサンプルの HTML と CSS を使用したので、結果はほぼ同じになるはずです。ただし今度は、ポリシーは Azure BLOB ストレージの独自のインスタンスを参照しているので、自由にファイルを編集して再アップロードできます。HTML および CSS のカスタマイズの詳細については、[UI のカスタマイズに関するメインの記事](active-directory-b2c-reference-ui-customization.md)をご覧ください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

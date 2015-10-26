@@ -430,4 +430,4 @@ Swagger UI を有効にすると、呼び出すクライアント コードを�
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

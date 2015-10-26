@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイスの PCM を交換する | Microsoft Azure"
-	description="StorSimple デバイスの電源冷却モジュール (PCM) を取り外して交換する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple デバイスの電源冷却モジュール (PCM) を取り外して交換する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/31/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="08/31/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスの電源冷却モジュールを交換する
 
@@ -152,4 +152,4 @@ StorSimple デバイスに PCM を取り付けるには次の手順に従いま�
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

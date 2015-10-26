@@ -65,7 +65,7 @@
 
 3.  **[アプリケーション URL の構成]** ページの **[Cornerstone OnDemand サインイン URL]** ボックスに、"**http://company.csod.com*"" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781598.png "アプリケーション URL の構成")
+    ![アプリ URL の構成](./media/active-directory-saas-cornerstone-ondemand-tutorial/IC781598.png "アプリケーション URL の構成")
 
 4.  **[Cornerstone OnDemand でのシングル サインオン構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをローカルでコンピューターに保存します。
 
@@ -110,4 +110,4 @@ Azure AD ユーザーが Cornerstone OnDemand にログインできるように�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

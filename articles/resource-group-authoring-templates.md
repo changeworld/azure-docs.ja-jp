@@ -39,16 +39,23 @@ Azure アプリケーションでは、通常、目的を達成するために�
        "outputs": {  }
     }
 
-| 要素名    | 必須 | 説明
+| 要素名  
+ | 必須 | 説明
 | :------------: | :------: | :----------
-| $schema        |   あり    | テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。
-| contentVersion |   あり    | テンプレートのバージョン (1.0.0.0 など)。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。
-| parameters     |   いいえ     | リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。
-| variables      |   いいえ     | テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。
-| リソース      |   あり    |  リソース グループ内でデプロイまたは更新されるサービスの種類。
-| outputs        |   いいえ     | デプロイ後に返される値。
+| $schema | あり | テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。  
 
-テンプレートのセクションについては、後で詳しく説明します。 次に、テンプレートを構成する構文のいくつかを確認します。  
+| contentVersion | あり | テンプレートのバージョン (1.0.0.0 など)。  
+テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。  
+
+| parameters | いいえ | リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。
+| variables | いいえ | テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。  
+
+| リソース | あり | リソース グループ内でデプロイまたは更新されるサービスの種類。  
+
+| outputs | いいえ | デプロイ後に返される値。
+
+テンプレートのセクションについては、後で詳しく説明します。  
+次に、テンプレートを構成する構文のいくつかを確認します。  
 
 
 ## 式と関数  
@@ -109,16 +116,26 @@ Azure アプリケーションでは、通常、目的を達成するために�
        "<parameterName>" : {
          "type" : "<type-of-parameter-value>",
          "defaultValue": "<optional-default-value-of-parameter>",
-         "allowedValues": [ "<optional-array-of-allowed-values>" ]
+         "allowedValues": [ "<optional-array-of-allowed-values>" ],
+         "minValue": <optional-minimum-value-for-int-parameters>,
+         "maxValue": <optional-maximum-value-for-int-parameters>,
+         "minLength": <optional-minimum-length-for-string-secureString-array-parameters>,
+         "maxLength": <optional-maximum-length-for-string-secureString-array-parameters>
        }
     }
 
-| 要素名   | 必須 | 説明
+| 要素名  
+ | 必須 | 説明
 | :------------: | :------: | :----------
-| parameterName  |    あり    | パラメーターの名前。有効な JavaScript 識別子で指定する必要があります。
-| type           |    あり    | パラメーター値の型。使用できる型については、下にある一覧を参照してください。
-| defaultValue   |   いいえ     | パラメーターに値が指定されない場合のパラメーターの既定値。
-| allowedValues  |   いいえ     | 適切な値が確実に指定されるように、パラメーターに使用できる値の配列。
+| parameterName | あり | パラメーターの名前。有効な JavaScript 識別子で指定する必要があります。  
+
+| type | あり | パラメーター値の型。使用できる型については、下にある一覧を参照してください。
+| defaultValue | いいえ | パラメーターに値が指定されない場合のパラメーターの既定値。
+| allowedValues | いいえ | 適切な値が確実に指定されるように、パラメーターに使用できる値の配列。
+| minValue | いいえ | int 型パラメーターの最小値。
+| maxValue | いいえ | int 型パラメーターの最大値。
+| minLength | いいえ | 文字列型、secureString 型、配列型パラメーターの長さの最小値。
+| maxLength | いいえ | 文字列型、secureString 型、配列型パラメーターの長さの最大値。
 
 使用できる型と値は次のとおりです。
 
@@ -136,10 +153,13 @@ Azure アプリケーションでは、通常、目的を達成するために�
 
     "parameters": {
        "siteName": {
-          "type": "string"
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 60
        },
        "siteLocation": {
-          "type": "string"
+          "type": "string",
+          "minLength": 2
        },
        "hostingPlanName": {
           "type": "string"
@@ -154,6 +174,14 @@ Azure アプリケーションでは、通常、目的を達成するために�
             "Premium"
           ],
           "defaultValue": "Free"
+       },
+       "instancesCount": {
+          "type": "int",
+          "maxValue": 10
+       },
+       "numberOfWorkers": {
+          "type": "int",
+          "minValue": 1
        }
     }
 
@@ -227,16 +255,29 @@ resources セクションでは、デプロイまたは更新されるリソー�
        }
     ]
 
-| 要素名             | 必須 | 説明
+| 要素名  
+ | 必須 | 説明
 | :----------------------: | :------: | :----------
-| apiVersion               |   あり    | リソースをサポートする API のバージョン。 リソースに使用可能なバージョンとスキーマについては、[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)に関するページを参照してください。
-| type                     |   あり    | リソースの種類。  この値は、リソース プロバイダーの名前空間と、リソース プロバイダーがサポートするリソースの種類の組み合わせです。 
-| name                     |   あり    | リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります
-| location                 |  いいえ     | 指定されたリソースのサポートされている地理的な場所。
-| tags                     |   いいえ     | リソースに関連付けられたタグ。
-| dependsOn                |   いいえ     | 定義されているリソースが依存するリソース。 リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。
-| プロパティ               |   いいえ     | リソース固有の構成設定。
-| リソース                |   いいえ     | 定義されているリソースに依存する子リソース。
+| apiVersion | あり | リソースをサポートする API のバージョン。  
+リソースに使用可能なバージョンとスキーマについては、[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)に関するページを参照してください。
+| type | あり | リソースの種類。  
+この値は、リソース プロバイダーの名前空間と、リソース プロバイダーがサポートするリソースの種類の組み合わせです。  
+
+| name | あり | リソースの名前。  
+この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。  
+
+| location | いいえ | 指定されたリソースのサポートされている地理的な場所。  
+
+| tags | いいえ | リソースに関連付けられたタグ。  
+
+| dependsOn | いいえ | 定義されているリソースが依存するリソース。  
+リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。  
+相互依存していないリソースは、平行してデプロイされます。  
+値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。  
+
+| プロパティ | いいえ | リソース固有の構成設定。  
+
+| リソース | いいえ | 定義されているリソースに依存する子リソース。  
 
 
 リソース名が一意でない場合は、**resourceId** ヘルパー関数 (後で説明) を使用すると、リソースの一意識別子を取得できます。
@@ -309,11 +350,18 @@ resources セクションでは、デプロイまたは更新されるリソー�
        }
     }
 
-| 要素名   | 必須 | 説明
+| 要素名  
+ | 必須 | 説明
 | :------------: | :------: | :----------
-| outputName     |   あり    | 出力値の名前。 有効な JavaScript 識別子で指定する必要があります。
-| type           |   あり    | 出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。
-| 値          |   あり    | 評価され、出力値として返されるテンプレート言語式。 
+| outputName | あり | 出力値の名前。  
+有効な JavaScript 識別子で指定する必要があります。  
+
+| type | あり | 出力値の型。  
+出力値では、テンプレート入力パラメーターと同じ型がサポートされています。  
+
+| 値 | あり | 評価され、出力値として返されるテンプレート言語式。  
+
+
 
 次の例では、outputs セクションで返される値を示します。  
 
@@ -331,13 +379,13 @@ resources セクションでは、デプロイまたは更新されるリソー�
 ただし、シナリオによっては、より高度なタスクが必要になる場合があります。  
 
 
-2 つのテンプレートをマージしたり、親テンプレート内で子テンプレートを使用したりすることが必要な場合があります。詳細については、「[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。
+2 つのテンプレートをマージしたり、親テンプレート内で子テンプレートを使用したりすることが必要な場合があります。詳細については、「[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。
 
-1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+リソースの種類を作成するときに、指定した回数を繰り返すには、「[Azure リソース マネージャーにおけるリソースの複数のインスタンスの作成](resource-group-create-multiple.md)」を参照してください。
 
 別のリソース グループ内に存在するリソースの使用が必要になる場合があります。  
 これは、複数のリソース グループ間で共有されているストレージ アカウントまたは仮想ネットワークを使用している場合は一般的です。  
-For more information, see the [resourceId function](../resource-group-template-functions#resourceid).
+詳細については、[resourceId 関数](../resource-group-template-functions#resourceid)に関するページを参照してください。
 
 ## 完全なテンプレート  
 
@@ -424,9 +472,9 @@ For more information, see the [resourceId function](../resource-group-template-f
     }
 
 ## 次のステップ
-- テンプレート内から使用できる関数の詳細については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
-- 作成したテンプレートをデプロイする方法を確認するには、「[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
+- テンプレート内から使用できる関数の詳細については、「[Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)」を参照してください。
+- 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
 - アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
-- 使用可能なスキーマを確認するには、[Azure Resource Manager のスキーマに関するページ](https://github.com/Azure/azure-resource-manager-schemas)を参照してください。
+- 使用可能なスキーマを確認するには、[Azure リソース マネージャーのスキーマ](https://github.com/Azure/azure-resource-manager-schemas)に関するページを参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

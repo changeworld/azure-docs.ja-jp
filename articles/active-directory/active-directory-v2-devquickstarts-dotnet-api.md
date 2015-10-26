@@ -37,25 +37,27 @@ ASP.NET Web API では、.NET Framework 4.5 に含まれる Microsoft の OWIN �
 完成したアプリは、このチュートリアルの終わりにも示しています。
 
 
-## 1. アプリの登録
-[apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、またはこちらの[詳細な手順](active-directory-v2-app-registration.md)に従います。以下を忘れずに行ってください。
+## 1\.アプリを登録します
+[apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 
 この Visual Studio ソリューションには、単純な WPF アプリである "TodoListClient" も含まれています。TodoListClient は、ユーザーがどのようにサインインし、クライアントが Web API にどのように要求を発行するかを示すために使用されます。ここでは、TodoListClient と TodoListService の両方に同じアプリが使用されています。TodoListClient を構成するために、以下のことも行う必要があります。
 
-- アプリ用の**モバイル** プラットフォームを追加します。
-- ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob` を使用する必要があります。
+- アプリ用の**モバイル** プラットフォームを追加します。
+- ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 
-## 2. アプリで OWIN 認証パイプラインを使用するよう設定します。
+## 2\.アプリで OWIN 認証パイプラインを使用するよう設定します。
 
 アプリの登録が完了したら、受け取った要求やトークンを検証するために、v2.0 エンドポイントと通信するようアプリを設定する必要があります。
 
--	最初に、ソリューションを開き、パッケージ マネージャー コンソールを使用して、TodoListService プロジェクトに OWIN ミドルウェア NuGet パッケージを追加します。
+-	まず、ソリューションを開き、パッケージ マネージャー コンソールを使用して、OWIN ミドルウェア NuGet パッケージを TodoListService プロジェクトに追加する必要があります。
 
 ```
-PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TodoListService PM> Install-Package Microsoft.Owin.Security.Jwt -ProjectName TodoListService PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService 
+PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TodoListService
+PM> Install-Package Microsoft.Owin.Security.Jwt -ProjectName TodoListService
+PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
 ```
 
 -	OWIN Startup クラスを TodoListService プロジェクト (`Startup.cs`) に追加します。プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックして、"OWIN" を検索します。アプリが起動すると、OWIN ミドルウェアは `Configuration(…)` メソッドを呼び出します。
@@ -116,7 +118,7 @@ public class TodoListController : ApiController
 {
 ```
 
-- 承認呼び出し元が `TodoListController` API の 1 つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内の要求にアクセスできるようにします。  
+- 承認呼び出し元が `TodoListController` API の 1 つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内のクレームにアクセスできるようにします。  
 
 ```C#
 public IEnumerable<TodoItem> Get()
@@ -145,7 +147,7 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 
 最後に、各プロジェクトをクリーンアップし、ビルドして、実行します。 これで、.NET MVC Web API で個人の Microsoft アカウントと職場/学校アカウントの両方からトークンが受け付けられるようになりました。TodoListClient にサインインし、Web API を呼び出して、タスクをユーザーの To-Do リストに追加します。
 
-参照用の完全なサンプル (構成値を除く) が、[.zip としてこちらで提供されています](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip)。または、GitHub から複製できます:
+参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git```
 
@@ -156,4 +158,4 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 
 その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

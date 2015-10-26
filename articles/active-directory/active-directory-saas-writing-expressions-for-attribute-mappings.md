@@ -44,7 +44,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
    3. 他の関数例: FunctionOne(<<argument1>>, FunctionTwo(<<argument2>>))
 
 
-- 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。例: "Company name: "Contoso""
+- 文字列定数では、文字列に円記号 (\\) または引用符 (") を含める必要がある場合は、円記号 (\\) でエスケープする必要があります。例: "Company name: "Contoso""
 
 
 
@@ -307,4 +307,4 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 
 [AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

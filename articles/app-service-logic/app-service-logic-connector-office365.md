@@ -129,4 +129,4 @@ Office 365 アカウントに接続して、電子メールの送受信、およ
 [20]: ./media/app-service-logic-connector-office365/20_Office365_Send_Configured.png
 [21]: ./media/app-service-logic-connector-office365/21-create-new-o365-api-app.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

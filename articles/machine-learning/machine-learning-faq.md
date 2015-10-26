@@ -93,8 +93,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 
 **Amazon S3 からデータを読み取ることはできますか。**
 
-少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。
-<!--
+少量のデータがあり、http URL 経由でこれを公開する場合は、[リーダー][reader] モジュールを使用できます。大量のデータの場合は、まず Azure Storage に転送してから、[リーダー][reader] モジュールを使用して実験に取り込みます。<!--
 <SEE CLOUD DS PROCESS>
 -->
 
@@ -215,8 +214,7 @@ Retraining API を使用することもできます。サンプル コードは[
 
 RRS の場合は通常、Web サービスの応答に結果が表示されます。BLOB に書き込むこともできます。BES の場合、既定では BLOB に出力が書き込まれます。また、ライター モジュールを使用してデータベースやテーブルに出力を書き込むこともできます。
 
- **Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 
-いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
+ ****Web サービスを作成できるのは Studio で作成されたモデルからのみですか。 いいえ。Jupyter Notebooks、および RStudio から直接 Web サービスを作成することもできます。
 
 
 ##拡張性
@@ -309,4 +307,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!-----HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

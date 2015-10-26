@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Java から Queue ストレージを使用する方法 | Microsoft Azure"
-	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。コード サンプルは Java で記述されています。"
-	services="storage"
-	documentationCenter="java"
-	authors="rmcmurray"
-	manager="wpickett"
+	pageTitle="Java から Queue ストレージを使用する方法 | Microsoft Azure" 
+	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。コード サンプルは Java で記述されています。" 
+	services="storage" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
 	editor="jimbe"/>
 
 <tags 
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="08/31/2015" 
 	ms.author="robmcm"/>
 
 # Java から Queue ストレージを使用する方法
@@ -391,4 +391,4 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

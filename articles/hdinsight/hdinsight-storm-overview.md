@@ -220,4 +220,4 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

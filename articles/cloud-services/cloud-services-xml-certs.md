@@ -70,4 +70,4 @@ Virtual Machines は、インストール後に証明書の秘密キーにアク
 ## 次のステップ
 [サービス定義 XML](https://msdn.microsoft.com/library/azure/ee758711.aspx) スキーマと [サービス構成 XML](https://msdn.microsoft.com/library/azure/ee758710.aspx) スキーマを確認します。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

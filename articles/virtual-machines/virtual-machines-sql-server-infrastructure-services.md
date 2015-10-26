@@ -19,14 +19,15 @@
 
 # Azure Virtual Machines における SQL Server の概要
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 ## 使用の開始
 AlwaysOn 可用性グループと Azure Virtual Network を使用すると、1 つのデータベース サーバーや複数のコンピューターなど、さまざまな構成で、[Azure Virtual Machines に SQL Server](http://azure.microsoft.com/services/virtual-machines/sql-server/) をホストすることができます。
 
 >[AZURE.NOTE]Azure VM で SQL Server を実行することは、リレーショナル データを Azure に格納するための 1 つのオプションです。Azure SQL Database サービスを使用することもできます。詳細については、「[Azure SQL Database と Azure VM 内の SQL Server について](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。
 
-Azure で SQL Server 仮想マシンを作成するには、最初に Azure プラットフォーム サブスクリプションを入手する必要があります。Azure サブスクリプションは、複数の[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)で購入できます。無料で試用するには、[Azure 無料評価版](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
+Azure で SQL Server 仮想マシンを作成するには、最初に Azure プラットフォーム サブスクリプションを入手する必要があります。Azure サブスクリプションは、複数の[購入オプション](http://azure.microsoft.com/pricing/purchase-options/)で購入できます。無料で試用するには、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
 ### 1 つの VM での SQL Server インスタンスのデプロイ
 
@@ -48,7 +49,7 @@ Azure で SQL Server 仮想マシンを作成するには、最初に Azure プ�
 
 >[AZURE.NOTE]データ ウェアハウスおよびトランザクション ワークロード用の仮想マシンのギャラリー イメージ (前に記載のない) は間もなく廃止され、ギャラリーから削除される予定です。前の表の標準イメージを使用し、特定のワークロードのパフォーマンスを最適化してください。
 
-これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure Virtual Machine を作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure Virtual Machine で SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure のコンピューティングおよびストレージ [コスト](http://azure.microsoft.com/pricing/details/virtual-machines)のみを支払います。
+これらの事前構成されたイメージのほかに、SQL Server がプレインストールされていない状態で [Azure 仮想マシンを作成する](virtual-machines-windows-tutorial.md)こともできます。ライセンスのある SQL Server のインスタンスであればインストールできます。「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://azure.microsoft.com/pricing/license-mobility/)」の説明に従って、Azure 仮想マシンで SQL Server を実行するために、Azure にライセンスを移行します。このシナリオでは、仮想マシンに関連付けられた Azure のコンピューティングおよびストレージ [コスト](http://azure.microsoft.com/pricing/details/virtual-machines)のみを支払います。
 
 SQL Server イメージに最適な仮想マシン構成の設定を決定するには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」を確認してください。実稼働ワークロードでは、SQL Server Enterprise Edition の最小推奨仮想マシン サイズは **DS3** であり、Standard edition の最小推奨仮想マシン サイズは **DS2** です。
 
@@ -72,7 +73,7 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 - [Azure リソース マネージャーのテンプレートを使用した SQL Server AlwaysOn のデプロイ](virtual-machines-workload-template-sql-alwayson.md)
 - [オンプレミスの AlwaysOn 可用性グループの Azure への拡張](virtual-machines-sql-server-extend-on-premises-alwayson-availability-groups.md)
 
-その他の高可用性構成については、「[Azure の仮想マシン内の SQL Server の高可用性と災害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)」を参照してください。
+その他の高可用性構成については、「[Azure の仮想マシン内の SQL Server の高可用性と障害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)」を参照してください。
 
 ## バックアップと復元
 オンプレミス データベースを使う場合は、SQL Server のバックアップ ファイルを格納するためのセカンダリ データ センターとして Azure を利用できます。バックアップと復元のオプションの概要については、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-sql-server-backup-and-restore.md)」をご覧ください。
@@ -146,8 +147,8 @@ SQL Server 仮想マシンを起動した後、マシンに既存のデータベ
 
 - [Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-provision-sql-server.md)
 - [Azure VM の SQL Server へのデータベースの移行](virtual-machines-migrate-onpremises-database.md)
-- [Azure の仮想マシン内の SQL Server の高可用性と災害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)
+- [Azure の仮想マシン内の SQL Server の高可用性と障害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-sql-server-application-patterns-and-development-strategies.md)
 - [Azure Virtual Machines](virtual-machines-about.md) 
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -95,7 +95,7 @@
 [アプリに認証を追加する]: ../mobile-services-windows-store-dotnet-get-started-users.md
 [アプリケーションにプッシュ通知を追加する]: ../mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

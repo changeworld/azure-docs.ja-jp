@@ -41,9 +41,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 -	アクティブな [Microsoft Azure アカウント](/account/)
 -	Visual Studio 2013 と [Azure SDK for .NET](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
-> + [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
-> + [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 >
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -70,13 +68,11 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 8. Azure で Web アプリを作成していない場合は、Visual Studio でアプリを作成できます。**[Microsoft Azure Websites を構成する]** ダイアログ ボックスで、サイト名が一意になっていることを確認します。次に、**[OK]** をクリックします
 
-	<!--todo: need 2.5.1 screenshot-->
-	![](media/cdn-websites-with-cdn/5-create-website.png)
+	<!--todo: need 2.5.1 screenshot-->![](media/cdn-websites-with-cdn/5-create-website.png)
 
 9. ASP.NET アプリケーションが作成されたら、[Web 発行アクティビティ] ウィンドウで **[`<app name>` をこのサイトに今すぐ発行する]** をクリックして、そのアプリケーションを Azure に発行します。**[発行]** をクリックしてプロセスを完了します。
 
-	<!--todo: need 2.5.1 screenshot-->
-	![](media/cdn-websites-with-cdn/6-publish-website.png)
+	<!--todo: need 2.5.1 screenshot-->![](media/cdn-websites-with-cdn/6-publish-website.png)
 
 	発行が完了すると、発行済みの Web アプリがブラウザーに表示されます。
 
@@ -85,7 +81,7 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 	![](media/cdn-websites-with-cdn/7-create-cdn.png)
 
-	> [AZURE.NOTE] CDN エンドポイントが作成されると、その URL と統合先のオリジン ドメインが Azure ポータルに表示されます。ただし、新しい CDN エンドポイントの構成がすべての CDN ノードの場所に完全に反映されるまで少し時間がかかる場合があります。
+	> [AZURE.NOTE]CDN エンドポイントが作成されると、その URL と統合先のオリジン ドメインが Azure ポータルに表示されます。ただし、新しい CDN エンドポイントの構成がすべての CDN ノードの場所に完全に反映されるまで少し時間がかかる場合があります。
 
 3. Azure ポータルに戻り、**[CDN]** タブで、作成した CDN エンドポイントの名前をクリックします。
 
@@ -95,9 +91,9 @@ Visual Studio の既定の ASP.NET MVC テンプレートを使用して Web ア
 
 	![](media/cdn-websites-with-cdn/9-enable-query-string.png)
 
-	>[AZURE.NOTE] チュートリアルのこのセクションでのクエリ文字列の有効化は必須ではありませんが、ここでの変更がすべての CDN ノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。
+	>[AZURE.NOTE]チュートリアルのこのセクションでのクエリ文字列の有効化は必須ではありませんが、ここでの変更がすべての CDN ノードに反映されるまで時間がかかるため、できる限り早めに有効にしておくと便利です。また、クエリ文字列非対応コンテンツで CDN キャッシュが停滞するのを防ぐためでもあります (CDN コンテンツの更新については後で説明します)。
 
-2. 次に、CDN エンドポイントのアドレスをクリックします。エンドポイントの準備が完了している場合、Web アプリが表示されます。**HTTP 404** エラーが表示された場合は、CDN エンドポイントの準備ができていません。CDN の構成がすべてのエッジ ノードに反映されるまで、最大で 1 時間待機することが必要になる場合があります。 
+2. 次に、CDN エンドポイントのアドレスをクリックします。エンドポイントの準備が完了している場合、Web アプリが表示されます。**HTTP 404** エラーが表示された場合は、CDN エンドポイントの準備ができていません。CDN の構成がすべてのエッジ ノードに反映されるまで、最大で 1 時間待機することが必要になる場合があります。
 
 	![](media/cdn-websites-with-cdn/11-access-success.png)
 
@@ -131,7 +127,7 @@ Azure CDN から Azure Web アプリ全体を配信することが常に (また
 
 ## Azure Web アプリの静的ファイルのキャッシュ オプションを構成する ##
 
-Azure CDN 統合を Azure Web アプリに組み込むと、CDN エンドポイントで静的コンテンツをどのようにキャッシュするかを指定できます。そのためには、ASP.NET プロジェクト (例: **cdnwebapp**) から *Web.config* を開き `<system.webServer>` に `<staticContent>` 要素を追加します。次の XML では、3 日間で有効期限が切れるキャッシュを追加しています。  
+Azure CDN 統合を Azure Web アプリに組み込むと、CDN エンドポイントで静的コンテンツをどのようにキャッシュするかを指定できます。そのためには、ASP.NET プロジェクト (例: **cdnwebapp**) から *Web.config* を開き `<system.webServer>` に `<staticContent>` 要素を追加します。次の XML では、3 日間で有効期限が切れるキャッシュを追加しています。
 
     <system.webServer>
       <staticContent>
@@ -159,7 +155,7 @@ Azure CDN 統合を Azure Web アプリに組み込むと、CDN エンドポイ�
 
 ## Azure CDN を介してコントローラー アクションからコンテンツを配信する ##
 
-Azure CDN と Web アプリを統合すると、Azure CDN を介してコントローラー アクションからコンテンツを比較的簡単に配信できます。この場合も、CDN を介して Azure Web アプリ全体を配信する場合は、すべてのコントローラー アクションが既に CDN から到達可能なため、この手順は不要です。ただし、「[統合された CDN エンドポイントで Azure に Web アプリをデプロイする](#deploy-a-web-app-to-azure-with-an-integrated-cdn-endpoint)」で指摘したとおり、この手順の代わりに、Azure CDN から配信するコントローラー アクションを選択できます。[Maarten Balliauw](https://twitter.com/maartenballiauw) 氏が、[Azure CDN による Web の遅延時間の短縮](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)に関する講演の中でおもしろい MemeGenerator コントローラーを使用した方法を紹介しています。ここではその方法を再現します。
+Azure CDN と Web Apps を統合すると、Azure CDN を介してコントローラー アクションからコンテンツを比較的簡単に配信できます。この場合も、CDN を介して Azure Web アプリ全体を配信する場合は、すべてのコントローラー アクションが既に CDN から到達可能なため、この手順は不要です。ただし、「[統合された CDN エンドポイントで Azure に Web アプリをデプロイする](#deploy-a-web-app-to-azure-with-an-integrated-cdn-endpoint)」で指摘したとおり、この手順の代わりに、Azure CDN から配信するコントローラー アクションを選択できます。[Maarten Balliauw](https://twitter.com/maartenballiauw) 氏が、[Azure CDN による Web の遅延時間の短縮](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)に関する講演の中でおもしろい MemeGenerator コントローラーを使用した方法を紹介しています。ここではその方法を再現します。
 
 Web アプリで次のような Chuck Norris の若いときの画像 ([Alan Light](http://www.flickr.com/photos/alan-light/218493788/) による撮影) に基づいてミームを生成するとします。
 
@@ -365,7 +361,7 @@ Azure Web アプリでこの Razor コードが実行されると、次のよう
 
 ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合するには、次の手順に従います。
 
-1. *App\_Start\BundleConfig.cs* に戻り、CDN アドレスを指定する別の [Bundle コンストラクター](http://msdn.microsoft.com/library/jj646464.aspx)を使用するように `bundles.Add()` メソッドを変更します。そのためには、`RegisterBundles` メソッドの定義を次のコードで置き換えます。  
+1. *App\_Start\\BundleConfig.cs* に戻り、CDN アドレスを指定する別の [Bundle コンストラクター](http://msdn.microsoft.com/library/jj646464.aspx)を使用するように `bundles.Add()` メソッドを変更します。そのためには、`RegisterBundles` メソッドの定義を次のコードで置き換えます。  
 	
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -492,9 +488,9 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	
 	ただし、[Ember Consulting Group](https://github.com/EmberConsultingGroup/StyleBundleFallback) から優れた[スタイル バンドルのフォールバック](https://github.com/EmberConsultingGroup)が提供されています。
 
-2. CSS の対処法を使用するには、ASP.NET プロジェクトの *App\_Start* フォルダーに *StyleBundleExtensions.cs* という名前の新しい .cs ファイルを作成し、その内容を [GitHub に公開されているコード](https://github.com/EmberConsultingGroup/StyleBundleFallback/blob/master/Website/App_Start/StyleBundleExtensions.cs)で置き換えます。 
+2. CSS の対処法を使用するには、ASP.NET プロジェクトの *App\_Start* フォルダーに *StyleBundleExtensions.cs* という名前の新しい .cs ファイルを作成し、その内容を [GitHub に公開されているコード](https://github.com/EmberConsultingGroup/StyleBundleFallback/blob/master/Website/App_Start/StyleBundleExtensions.cs)で置き換えます。
 
-4. *App\_Start\\StyleFundleExtensions.cs* で、名前空間の名前を ASP.NET アプリケーションの名前空間 (例: **cdnwebapp**) に変更します。 
+4. *App\_Start\\StyleFundleExtensions.cs* で、名前空間の名前を ASP.NET アプリケーションの名前空間 (例: **cdnwebapp**) に変更します。
 
 3. `App_Start\BundleConfig.cs` に戻り、最後の `bundles.Add` ステートメントを、次のコードに置き換えます。
 
@@ -506,30 +502,11 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 
 	この新しいメソッドでは、同じアイデアを使用するスクリプトを HTML に挿入します。つまり、DOM を調べて CSS バンドルに定義されているクラス名、規則名、および規則値が一致するかどうかを確認し、一致しない場合はオリジン Web サーバーにフォールバックします。
 
-4. もう一度 Azure Web アプリに発行し、ホーム ページにアクセスします。 
+4. もう一度 Azure Web アプリに発行し、ホーム ページにアクセスします。
 5. ページの HTML コードを表示します。次のようなスクリプトが挿入されていることを確認できます。    
 	
-	```
-	...
-	<link href="http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
-<script>(function() {
-                var loadFallback,
-                    len = document.styleSheets.length;
-                for (var i = 0; i < len; i++) {
-                    var sheet = document.styleSheets[i];
-                    if (sheet.href.indexOf('http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) {
-                        var meta = document.createElement('meta');
-                        meta.className = 'sr-only';
-                        document.head.appendChild(meta);
-                        var value = window.getComputedStyle(meta).getPropertyValue('width');
-                        document.head.removeChild(meta);
-                        if (value !== '1px') {
-                            document.write('<link href="/Content/css" rel="stylesheet" type="text/css" />');
-                        }
-                    }
-                }
-                return true;
-            }())||document.write('<script src="/Content/css"><\/script>');</script>
+	``` ... <link href="http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474" rel="stylesheet"/>
+<script>(function() { var loadFallback, len = document.styleSheets.length; for (var i = 0; i < len; i++) { var sheet = document.styleSheets[i]; if (sheet.href.indexOf('http://az673227.vo.msecnd.net/Content/css?v=1.0.0.25474') !== -1) { var meta = document.createElement('meta'); meta.className = 'sr-only'; document.head.appendChild(meta); var value = window.getComputedStyle(meta).getPropertyValue('width'); document.head.removeChild(meta); if (value !== '1px') { document.write('<link href="/Content/css" rel="stylesheet" type="text/css" />'); } } } return true; }())||document.write('<script src="/Content/css"><\\/script>');</script>
 
 	<script src="http://az673227.vo.msecnd.net/bundles/modernizer?v=1.0.0.25474"></script>
  	<script>(window.Modernizr)||document.write('<script src="/bundles/modernizr"><\/script>');</script>
@@ -542,11 +519,11 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	...
 	```
 
-	CSS バンドルに対して挿入されたスクリプトには、次の行に `CdnFallbackExpression` プロパティのエラーの残りがまだ含まれている点に注意してください。
+	Note that injected script for the CSS bundle still contains the errant remnant from the `CdnFallbackExpression` property in the line:
 
 		}())||document.write('<script src="/Content/css"><\/script>');</script>
 
-	ただし、(すぐ上の行の) || 式の最初の部分は常に true を返すため、document.write() 関数が実行されることはありません。
+	But since the first part of the || expression will always return true (in the line directly above that), the document.write() function will never run.
 
 6. フォールバック スクリプトが動作するかどうかをテストするには、CDN エンドポイントのダッシュボードに戻り、**[エンドポイントを無効にする]** をクリックします。
 
@@ -566,4 +543,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

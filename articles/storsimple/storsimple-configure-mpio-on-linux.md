@@ -339,10 +339,10 @@ StorSimple デバイスに必要なものは次のとおりです。
 	    		Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
 
 
-		ここに表示されているのが 1 つのホスト インターフェイスと 2 つのパスのみの場合は、iSCSI 用にホストの両方のインターフェイスを有効にする必要があります。[Linux ドキュメントの詳細な手順](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)を参照してください。
+		ここに表示されているのが 1 つのホスト インターフェイスと 2 つのパスのみの場合は、iSCSI 用にホストの両方のインターフェイスを有効にする必要があります。[Linux ドキュメントの詳細な手順](https://access.redhat.com/documentation/ja-jp/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)を参照してください。
 
 	
-	1. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。詳細については、[手順 6. ボリュームを作成する](https://sandboxmsdnstage.redmond.corp.microsoft.com/ja-JP/library/azure/dn772357.aspx)方法 (StorSimple デバイス上で管理ポータルを経由する) を参照してください。
+	1. ボリュームは、StorSimple デバイスから CentOS サーバーに公開されます。詳細については、[手順 6. ボリュームを作成する](https://sandboxmsdnstage.redmond.corp.microsoft.com/ja-jp/library/azure/dn772357.aspx)方法 (StorSimple デバイス上で管理ポータルを経由する) を参照してください。
 
 	1. 使用可能なパスを確認します。次のコマンドを入力します。
 
@@ -475,4 +475,4 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 - [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 - [Linux トレーニング ガイド](http://linux-training.be/files/books/LinuxAdm.pdf)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

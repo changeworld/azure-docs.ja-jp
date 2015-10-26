@@ -27,4 +27,4 @@
 [Microsoft Azure の管理ポータル]: https://manage.windowsazure.com/
 [Azure Active Directory でモバイル アプリを構成する方法]: ../articles/app-service-how-to-configure-active-directory-authentication-preview.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

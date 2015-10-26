@@ -27,7 +27,7 @@
    - ゲートウェイ
    - プライマリ DNS サーバーの IP アドレス
     
-		処理の各手順の後に、システムによってネットワーク設定が検証されることに注意してください。
+		Note that the system is validating network settings after each step in the process.
    
       >[AZURE.NOTE]サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"Data 0 へのネットワーク接続を確認してください" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
 
@@ -60,12 +60,12 @@
    
     	![StorSimple Devices page](./media/storsimple-configure-and-register-device-u1/HCS_DevicesPageM_U1-include.png) 
   
-	デバイスの状態が **"オフライン"** の場合は、デバイスがオンラインになるまで数分待ちます。
-	      
-	数分待ってもデバイスがまだオフラインである場合は、[StorSimple デバイスのネットワーク要件](../articles/storsimple/storsimple-system-requirements.md)に関するページで説明されているとおりにファイアウォール ネットワークが構成されていることを確認する必要があります。
-	
-	HTTP 1.1 がサポートされていない場合は、ポート 9354 が発信方向の通信のために開かれていることを確認してください。このポートは、StorSimple Manager サービスと StorSimple デバイスの間の通信に使用されます。
+        If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
+      
+        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in the [network requirements for your StorSimple device](../articles/storsimple/storsimple-system-requirements.md). 
+
+		If you do not have HTTP 1.1 support, check port 9354 to make sure that it is open for outbound communication. This port is used for communication between the StorSimple Manager service and your StorSimple device.
      
        
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

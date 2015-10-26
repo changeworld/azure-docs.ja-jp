@@ -1,8 +1,9 @@
 <properties 
+	title="How to add a users to an elastic database pool" 
 	pageTitle="弾力性データベース プールにユーザーを追加する方法" 
 	description="プール内の各 db に特権を持つユーザーを追加する必要があります。" 
-	services="sql-database" 
-	documentationCenter=""  
+	metaKeywords="azure sql database elastic databases credentials" 
+	services="sql-database" documentationCenter=""  
 	manager="jeffreyg" 
 	authors="sidneyh"/>
 
@@ -44,4 +45,4 @@
 [1]: ./media/sql-database-elastic-jobs-overview/elastic-jobs.png
 <!--anchors-->
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

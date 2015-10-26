@@ -18,7 +18,8 @@ ms.service="virtual-machines"
 
 # A8、A9、A10、A11 コンピューティング集中型インスタンスについて
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事は、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用してリソースを作成する場合に適用されます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 この記事では、*コンピューティング集中型*インスタンスとも呼ばれる Azure A8、A9、A10、A11 インスタンスの背景情報および使用上の注意事項について説明します。これらのインスタンスの主な機能:
 
@@ -90,7 +91,7 @@ Windows Server で HPC Pack を使って、多くのコンピューティング�
 
 ### Linux A8 および A9 VM からのアクセス
 
-単一のクラウド サービスまたは可用性セット内では、Linux RDMA ドライバーを使用してインスタンス間の通信を行う MPI アプリケーションが実行されていれば、A8 および A9 インスタンスは Azure の RDMA ネットワークにアクセスできます。現時点では、[Intel MPI Library 5](https://software.intel.com/ja-JP/intel-mpi-library/) では Azure Linux RDMA のみがサポートされています。
+単一のクラウド サービスまたは可用性セット内では、Linux RDMA ドライバーを使用してインスタンス間の通信を行う MPI アプリケーションが実行されていれば、A8 および A9 インスタンスは Azure の RDMA ネットワークにアクセスできます。現時点では、[Intel MPI Library 5](https://software.intel.com/ja-jp/intel-mpi-library/) では Azure Linux RDMA のみがサポートされています。
 
 >[AZURE.NOTE]現在、Azure Linux RDMA ドライバーは、ドライバー拡張機能を介したインストールでは使用できません。これを使用する唯一の方法は、Azure Marketplace の RDMA 対応 SLES 12 イメージを使用することです。
 
@@ -133,4 +134,4 @@ MPI | MS-MPI 2012 R2 以降 (スタンドアロンまたは HPC Pack 2012 R2 以
 * A8 および A9 インスタンスを使用して Linux ベースのクラスターをデプロイし、Azure RDMA ネットワークにアクセスするように構成する方法については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-cluster-rdma.md)」を参照してください。
 * Windows 上の HPC Pack により A8 および A9 インスタンスのデプロイと使用を開始する方法については、「[Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-hpcpack-cluster-rdma.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -19,7 +19,8 @@
 
 # 基幹業務アプリケーションのワークロード フェーズ 2: ドメイン コントローラーを構成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+ 
 
 高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、オンプレミス ネットワークへの接続で認証トラフィックを送信するのではなく、Web リソースに対するクライアントの Web 要求を Azure Virtual Network 内でローカルに認証できるように、Azure Virtual Network で 2 つのレプリカ ドメイン コントローラーを構成します。
 
@@ -123,7 +124,7 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 
 ### <a id="datadisk"></a>空のディスクを初期化するには
 
-1.	サーバー マネージャーの左ウィンドウで、**[ファイル サービスと記憶域サービス]** をクリックし、**[ディスク]** をクリックします。
+1.	サーバー マネージャーの左側のウィンドウで、**[ファイル サービスと記憶域サービス]** をクリックし、**[ディスク]** をクリックします。
 2.	コンテンツ ウィンドウで、**[ディスク]** グループの (**[パーティション]** が **[不明]** に設定されている) **[ディスク 2]** をクリックします。
 3.	**[タスク]** をクリックし、**[ボリューム]** をクリックします。
 4.	新しいボリューム ウィザードの [開始する前に] ページで **[次へ]** をクリックします。
@@ -212,4 +213,4 @@ V、S、ST、Aの各表は、「[フェーズ 1: Azure を構成する](virtual-
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

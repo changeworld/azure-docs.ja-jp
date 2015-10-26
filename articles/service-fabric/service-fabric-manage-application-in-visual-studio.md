@@ -79,4 +79,4 @@ Visual Studio で、[ビルド] メニューから、[ソリューションの�
 [newservice]: ./media/service-fabric-manage-application-in-visual-studio/newservice.png
 [newserviceapplicationmanifest]: ./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

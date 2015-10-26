@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/15/2015"
+   ms.date="10/07/2015"
    ms.author="tomfitz"/>
 
 # リソース マネージャー デプロイと従来のデプロイを理解する
@@ -46,20 +46,24 @@
 
         ![preview portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        Compute、Storage、ネットワークのリソースについては、リソース マネージャーと従来のデプロイのどちらかを使用できます。 **[リソース マネージャー]** を選択します。
+        For Compute, Storage, and Networking resources, you have the option of using either Resourece Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
-  - PowerShell コマンドは **AzureResourceManager** モードで実行されます。
+  - Azure PowerShell 1.0 Preview 未満のバージョンでは、**AzureResourceManager** モードでコマンドが実行されます。
 
             PS C:\> Switch-AzureMode -Name AzureResourceManager
 
-  - REST 操作のための [Azure リソース マネージャー REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx)
+  - Azure PowerShell 1.0 Preview では、リソース マネージャー版のコマンドを使用してください。これらのコマンドは、次に示すように *verb-AzureRm* 形式となります。
+
+            PS C:\> Get-AzureRmResourceGroupDeployment
+
+  - [Azure リソース マネージャー REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx) (REST 操作の場合)。
   - Azure CLI コマンドは **arm** モードで実行されます。
 
             azure config mode arm
 
-- リソース タイプの名前には **(classic)** は含まれません。下の画像ではタイプとして「**Storage account**」が示されています。
+- リソース タイプの名前には **(classic)** は含まれません。下の画像ではタイプとして "**ストレージ アカウント**" が表示されています。
 
     ![Web アプリ](./media/resource-manager-deployment-model/resource-manager-type.png)
 
@@ -73,17 +77,21 @@
 
         ![Azure portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        または、プレビュー ポータルを使い、**クラシック** デプロイを指定 (Compute、Storage、ネットワーク).
+        Or, the preview portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
-  - PowerShell コマンドは **AzureServiceManagement** モードで実行されます (これは既定のモードであり、AzureResourceManager に明示的に切り替えない場合、AzureServiceManagement モードで実行されます)。
+  - Azure PowerShell 1.0 Preview 未満のバージョンでは、**AzureServiceManagement** モードでコマンドが実行されます (これは既定のモードであり、AzureResourceManager に明示的に切り替えない場合、AzureServiceManagement モードで実行されます)。
 
             PS C:\> Switch-AzureMode -Name AzureServiceManagement
 
+  - Azure PowerShell 1.0 Preview では、サービス管理版のコマンドを使用してください。これらのコマンドの名前は、*verb-AzureRm* 形式とは**異なります**。
+
+            PS C:\> Get-AzureDeployment
+
   - REST 操作のための[サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx)
   - Azure CLI コマンドは **asm** または既定のモードで実行されます。
-- リソース タイプの名前に **(classic)** が含まれます。下の画像ではタイプとして「**Storage account (classic)**」が示されています。
+- リソース タイプの名前に **(classic)** が含まれます。下の画像ではタイプとして "**ストレージ アカウント (クラシック)**" が表示されています。
 
     ![従来のタイプ](./media/resource-manager-deployment-model/classic-type.png)
 
@@ -94,7 +102,7 @@
 リソース マネージャーはリソース グループの概念を加えます。リソース マネージャーで作成したリソースはすべてリソース グループ内に存在します。リソース マネージャーのデプロイ モデルにはいくつかの利点があります。
 
 - ソリューションのサービスを個別に処理するのではなく、すべてのサービスをデプロイ、管理、監視できます。
-- アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできるます。常にリソースが一貫した状態でデプロイされます。
+- アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできます。常にリソースが一貫した状態でデプロイされます。
 - 宣言型のテンプレートを利用し、デプロイを定義できます。 
 - 正しい順序でデプロイされるようにリソース間の依存性を定義できます。
 - ロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブ統合されるため、リソース グループのすべてのサービスにアクセス制御を適用できます。
@@ -117,7 +125,7 @@
 
 従来のデプロイ モデルで作成したリソースはリソース マネージャーの操作に対応していません。場合によっては、リソース マネージャー コマンドで従来のデプロイで作成したリソースに関する情報を取得できます。あるいは、従来のリソースを別のリソース グループに移動するなどの管理タスクを実行できますが、この種類がリソース マネージャーの操作に対応するという印象を与えるべきではありません。たとえば、あるリソース グループにリソース マネージャーと従来のデプロイで作成された Virtual Machines が含まれるとします。次の PowerShell コマンドを実行すると、すべての Virtual Machines が表示されます。
 
-    PS C:\> Get-AzureResourceGroup -Name ExampleGroup
+    PS C:\> Get-AzureRmResourceGroup -Name ExampleGroup
     ...
     Resources :
      Name                 Type                                          Location
@@ -149,7 +157,7 @@ Virtual Machines を使用するときには、重要な考慮事項がいくつ
 
 従来のデプロイからリソース マネージャーに移行するときの同等の Azure CLI コマンドの一覧については、「[VM 操作のためのリソース マネージャーとサービス管理の同等コマンド](./virtual-machines/xplat-cli-azure-manage-vm-asm-arm.md)」を参照してください。
 
-Compute、Storage、ネットワーキングのリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure コンピューティング、ネットワーク、ストレージ プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+Compute、Storage、Networking のリソースの移行に関する詳細については、「[Azure リソース マネージャーの Azure Compute、Network および Storage プロバイダー](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
 
 さまざまなデプロイ モデルから仮想ネットワークを接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](./virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
 
@@ -158,4 +166,4 @@ Compute、Storage、ネットワーキングのリソースの移行に関する
 - 宣言型デプロイ テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

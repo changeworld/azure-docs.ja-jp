@@ -19,7 +19,8 @@
 
 # Windows を実行する Azure 仮想マシンへの Remote Desktop 接続に関するトラブルシューティング
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルまたはリソース マネージャーのデプロイメント モデルを使用して作成された仮想マシンのトラブルシューティングについて説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 Windows を実行する Azure 仮想マシンに対する Remote Desktop (RDP) は、さまざまな理由で失敗する可能性があります。この記事は、原因を特定して修正するために役立ちます。
 
@@ -157,4 +158,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-troubleshoot-access-application.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

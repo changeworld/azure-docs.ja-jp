@@ -1,20 +1,20 @@
 <properties
    pageTitle="クラウド サービスのロールに .NET をインストールする"
-	description="この記事では、クラウド サービスの Web ロールと worker ロールに .NET Framework を手動でインストールする方法について説明します。"
-	services="cloud-services"
-	documentationCenter=".net"
-	authors="sbtron"
-	manager="timlt"
-	editor=""/>
+   description="この記事では、クラウド サービスの Web ロールと worker ロールに .NET Framework を手動でインストールする方法について説明します。"
+   services="cloud-services"
+   documentationCenter=".net"
+   authors="sbtron"
+   manager="timlt"
+   editor=""/>
 
 <tags
    ms.service="cloud-services"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/03/2015"
-	ms.author="saurabh"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/03/2015"
+   ms.author="saurabh"/>
 
 # クラウド サービスのロールに .NET をインストールする 
 
@@ -142,4 +142,4 @@ Azure Diagnostics を、スタートアップ スクリプトまたは .NET イ�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

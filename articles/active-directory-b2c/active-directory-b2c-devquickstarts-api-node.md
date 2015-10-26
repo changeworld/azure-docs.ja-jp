@@ -36,65 +36,56 @@
 
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
-```
-git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs.git
-```
+```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs.git```
 
 完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
-> [AZURE.WARNING] 	B2C プレビューでは、Web-API タスク サーバーとそのサーバーに接続するクライアントの両方に同じクライアント ID またはアプリケーション ID およびポリシーを使用する必要があります。これは、iOS と Android のチュートリアルに当てはまります。これらのクイック スタートのいずれかでアプリケーションを作成したことがある場合は、以下で新しい値を作成するのではなく、それらの値を使用してください。
+> [AZURE.WARNING]B2C プレビューでは、Web-API タスク サーバーとそのサーバーに接続するクライアントの両方に同じクライアント ID またはアプリケーション ID およびポリシーを使用する必要があります。これは、iOS と Android のチュートリアルに当てはまります。これらのクイック スタートのいずれかでアプリケーションを作成したことがある場合は、以下で新しい値を作成するのではなく、それらの値を使用してください。
 
 
-## 1.Azure AD B2C ディレクトリの取得
+## 1\.Azure AD B2C ディレクトリの取得
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、
-先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
 
-## 2.アプリケーションの作成
+## 2\.アプリケーションの作成
 
-次に、B2C ディレクトリ内にアプリを作成する必要があります。これによって、 アプリと安全に通信するために必要ないくつかの情報が Azure AD に提供されます。ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つのロジック アプリを構成するためです。アプリを作成するには、
-[こちらの手順](active-directory-b2c-app-registration.md)に従います。このとき、
+次に、B2C ディレクトリ内にアプリを作成する必要があります。これによって、 アプリと安全に通信するために必要ないくつかの情報が Azure AD に提供されます。ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従ってください。このとき、
 
 - アプリケーションに **Web アプリまたは Web API** を含めます。
 - `http://localhost/TodoListService` を**応答 URL** として入力します。これはこのサンプル コードで使用する既定の URL です。
 - アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
-- アプリに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
+- アプリケーションに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## 3.ポリシーの作成
+## 3\.ポリシーの作成
 
-Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポリシー**](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、3
-つの ID エクスペリエンス (サインアップ、サインイン、および Facebook でのサインイン) が含まれます。
-[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
+Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポリシー**](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、3 つの ID エクスペリエンス (サインアップ、サインイン、および Facebook でのサインイン) が含まれます。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
-
-- サインアップ ポリシーで、**[表示名]** と他のいくつかのサインアップ属性を選択します。
-- すべてのポリシーで、**[表示名]** と **[オブジェクト ID]** のアプリケーション クレームを選択します。その他のクレームも選択できます。
-- ポリシーの作成後、各ポリシーの **[名前]** をメモしておきます。名前には、プレフィックス `b2c_1_` が付加されます。これらのポリシー名はすぐに必要になります。
-
+- サインアップ ポリシーで、**表示名**と他のいくつかのサインアップ属性を選択します。
+- すべてのポリシーで、アプリケーション クレームとして**表示名**と**オブジェクト ID** を選択します。その他のクレームも選択できます。
+- ポリシーの作成後、各ポリシーの**名前**をメモしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名はすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 3 つのポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
 
-この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C 
-でどのように機能するかを学習する場合は、[.NET Web アプリの入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)から始めてください。
+この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C でどのように機能するかを学習する場合は、[.NET Web アプリの入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)から始めてください。
 
-## 4. プラットフォーム用の Node.js のダウンロード
+## 4\. プラットフォーム用の Node.js のダウンロード
 このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。
 
 Node.js を [http://nodejs.org](http://nodejs.org) からインストールします。
 
-## 5. プラットフォームへの MongoDB のインストール
+## 5\. プラットフォームへの MongoDB のインストール
 
 このサンプルを正常に使用するには、MongoDB の実稼働するインストール環境が必要になります。MongoDB を使用して、REST API がサーバー インスタンス間で持続されるようにします。
 
 MongoDB を [http://mongodb.org](http://www.mongodb.org) からインストールします。
 
-> [AZURE.NOTE] このチュートリアルでは、MongoDB の既定のインストール環境およびサーバー エンドポイント (チュートリアルの記述時点では mongodb://localhost) が使用されることを想定しています。
+> [AZURE.NOTE]このチュートリアルでは、MongoDB の既定のインストール環境およびサーバー エンドポイント (チュートリアルの記述時点では mongodb://localhost) が使用されることを想定しています。
 
-## 6. Web API への Restify モジュールのインストール
+## 6\. Web API への Restify モジュールのインストール
 
 Resitfy を使用して REST API を構築します。Resitfy は最小で柔軟性のある Node.js アプリケーション フレームワークで、Connect 上に REST API を構築するための一連の堅牢な機能を備えた Express から派生しています。
 
@@ -186,7 +177,7 @@ Restify は、DTrace を使用して REST 呼び出しをトレースする強�
 
 > [AZURE.NOTE]OAuth2 は、任意の既知のトークン タイプを発行できるフレームワークを提供しますが、一部のトークン タイプのみが広範に使用されています。エンドポイントを保護するために、ベアラー トークンが広く使用されるようになっています。ベアラー トークンは、OAuth2 の最も広く発行されるタイプのトークンで、多くの実装では、発行されるトークンのタイプとしてベアラー トークンのみを想定しています。
 
-コマンド ラインで、ディレクトリを azuread ディレクトリに変更します。
+コマンド ラインで、azuread ディレクトリに移動します。
 
 次のコマンドを入力して、Passport.js の passport-azure-ad モジュールをインストールします。
 
@@ -304,7 +295,7 @@ policyName:'b2c_1_<sign in policy name>',
 
 ### 必要な値
 
-*IdentityMetadata*: これは、passport-azure-ad が、IDP 用の構成データと、JWT トークンを検証するためのキーを検索する場所です。Azure Active Directory を使用する場合は、これを変更する必要はありません。
+*IdentityMetadata*: これは、passport-azure-ad が、IdP 用の構成データと、JWT トークンを検証するためのキーを検索する場所です。Azure Active Directory を使用する場合は、これを変更する必要はありません。
 
 *audience*: サービスを識別するポータルの URI。このサンプルでは `http://localhost/TodoListService` を使用します。
 
@@ -356,7 +347,7 @@ name: 'Microsoft Azure Active Directory Sample'
 
 このチュートリアルでは、***手順 4.*** で説明しているように、MongoDB を使用してタスクを格納します。
 
-手順 11. で作成した config.js ファイルから再度呼び出しを行うと、mogoose\_auth\_local 接続 URL の末尾に配置されているため、データベース *tasklist* が呼び出されます。このデータベースを MongoDB で事前に作成する必要はありません。存在しない場合、サーバー アプリケーションの初回実行時に作成されます。
+手順 11. で作成した config.js ファイルから再度呼び出しを行うと、mongoose\_auth\_local 接続 URL の末尾に配置されているため、データベース *tasklist* が呼び出されます。このデータベースを MongoDB で事前に作成する必要はありません。存在しない場合、サーバー アプリケーションの初回実行時に作成されます。
 
 これで、使用する MongoDB データベースについて、事前にサーバーに通知したことになります。次に、サーバーのタスク用のモデルとスキーマを作成する追加コードを記述する必要があります。
 
@@ -887,9 +878,7 @@ Restify と OAuth2 を使用して REST API を実装する方法についての
 
 参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs/archive/complete.zip)。または、GitHub から複製することもできます。
 
-```
-git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs.git
-```
+```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebAPI-nodejs.git```
 
 
 ## 次のステップ
@@ -898,4 +887,4 @@ git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebAPI-nod
 
 [B2C で iOS を使用して Web-API に接続する >>](active-directory-b2c-devquickstarts-ios.md)
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -12,21 +12,26 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/05/2015" 
+	ms.date="10/13/2015" 
 	ms.author="awills"/>
 
 
-# ASP.NET 向けの Application Insights
+# ASP.NET 向けの Application Insights の設定
 
 *Application Insights はプレビュー段階です。*
 
-[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
+<a name="selector1"></a>
+
+[Visual Studio Application Insights](http://azure.microsoft.com/services/application-insights) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、アプリに SDK をインストールすることによって機能します。アプリに関するテレメトリが SDK から Application Insights サービスに送信されます。このサービスで、ユーザーはアプリの動作を分析および視覚化します。
 
 
-[Visual Studio Application Insights](http://azure.microsoft.com/services/application-insights) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断][detect]、[アプリの使用方法の把握][knowUsers]に役立ちます。Application Insights は、さまざまな種類のアプリケーションで使用できます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します。([デバイス アプリと Java サーバーも対象になります][start])。
+[AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
+
+Visual Studio でアプリに SDK を追加すると、サーバー要求、応答時間、およびエラーのグラフが表示されます。
 
 ![Example performance monitoring charts](./media/app-insights-asp-net/10-perf.png)
 
+API を使用して、使用状況の詳細も監視できるようになります。
 
 #### 開始する前に
 
@@ -85,6 +90,7 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 ![プロジェクトを右クリックして Azure ポータルを開く](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
+### メトリック: 集計データ
 
 概要グラフでデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。次に例を示します。
 
@@ -92,117 +98,43 @@ Visual Studio で、送信されたイベント数が表示されます。
 
 任意のグラフをクリックして、より詳細なメトリックを表示します。[メトリックの詳細についてはこちらをご覧ください。][perf]
 
-ここで、アプリケーションをデプロイし、データ累積を確認します。
+* *ユーザーまたはページのデータがない場合* - [ユーザーとページのデータを追加します](../article/application-insights/app-insights-asp-net-client.md)。
 
+### 検索: 個々のイベント
 
-デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。アプリケーションをデプロイすると、データ累積速度は遅くなります。
+個々の要求とそれに関連するイベントを調査するには [検索] を開きます。
 
-#### データが表示されない場合
+![](./media/app-insights-asp-net/21-search.png)
 
-* 対象が正しいことを確認します。[Azure ポータル](https://portal.azure.com)でサインインし、[参照]、[Application Insights] の順にクリックしてからアプリケーションを選択します。
+[検索の詳細についてはこちらを参照してください。](app-insights-diagnostic-search.md)
+
+* *関連するイベントがない場合* - [サーバー例外](../article/application-insights/app-insights-asp-net-exception-mvc.md)と[依存関係](../article/application-insights/app-insights-asp-net-dependencies.md)を設定します。
+
+### データが表示されない場合
+
+* 対象が正しいことを確認します。[Azure ポータル](https://portal.azure.com)にサインインし、[参照]、[Application Insights] の順にクリックしてからアプリケーションを選択します。
 * アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
 * [[検索]][diagnostic] ブレードを開き、個々のイベントを表示します。メトリック パイプラインを経由すると、イベントの表示に少し時間がかかる場合があります。
 * 数秒待機してから [最新の情報に更新] をクリックします。
 * [トラブルシューティング][qna]に関するページを参照します。
 
+
+## アプリケーションの発行
+
+ここで、アプリケーションをデプロイし、データ累積を確認します。
+
+デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。アプリケーションをデプロイすると、データ累積速度は遅くなります。
+
 #### ビルド サーバーで問題が発生した場合
 
 [このトラブルシューティング項目](app-insights-troubleshoot-faq.md#NuGetBuild)を参照してください。
 
+## 次のステップ
 
-## ブラウザーの監視を追加する
-
-ブラウザーの監視は、ユーザー、セッション、ページ ビュー、およびブラウザーで発生する例外やクラッシュに関するデータを提供します。
-
-![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/app-insights-asp-net/16-page-views.png)
-
-また、独自のコードを記述して、ユーザーのアプリの操作をクリックやキーボード操作までの細部にわたって追跡できます。
-
-すべてのページに JavaScript のスニペットを追加します。コードは次に示す Application Insights のリソースから取得できます。
-
-![Web アプリでクイック スタートを開き、[Web ページを監視するコードを取得する] をクリックする](./media/app-insights-asp-net/02-monitor-web-page.png)
-
-コードにはアプリケーション リソースを識別するインストルメンテーション キーが含まれています。
-
-[Web ページの追跡についてはこちら](app-insights-web-track-usage.md)をご覧ください。
-
-
-## 使用状況の追跡
-
-新しいユーザー ストーリーを提供した際には、顧客がどの程度使用しているのか、目標を達成しているのか、または問題に直面しているのかを知る必要があります。クライアントおよびサーバーの両方に TrackEvent() とその他のコードを挿入することで、ユーザーの利用状況の詳細を把握できます。
-
-[API を使用した利用状況の追跡][api]
-
-
-## 診断ログ
-
-お気に入りのログ記録フレームワークから[ログ トレースをキャプチャ][netlogs]して問題の診断に役立てます。ログ エントリが Application Insights のテレメトリ イベントとともに[診断検索][diagnostic]に表示されます。
-
-## アプリケーションの発行
-
-(Application Insights を追加するために) アプリをまだ発行していない場合は、今すぐ発行してください。ユーザーがアプリを使用するに連れてグラフのデータが増えます。
-
-
-#### サーバーに発行した後でデータはありませんか。
-
-サーバーのファイアウォールで発信トラフィック用のこれらのポートを開きます。
-
-+ `dc.services.visualstudio.com:443`
-+ `f5.services.visualstudio.com:443`
-
-
-## 開発、テスト、およびリリース
-
-重要なアプリケーションでは、異なるスタンプ (デバッグ、テスト、および運用のためのビルド) からのテレメトリ データを[別々のリソース](app-insights-separate-resources.md)に送信することをお勧めします。
-
-## アプリケーションのバージョンを追跡する
-
-ビルド プロセスで `buildinfo.config` が生成されていることを確認します。.csproj ファイルに、次のコードを追加します。
-
-```XML
-
-    <PropertyGroup>
-      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
-    </PropertyGroup> 
-```
-
-ビルド情報がある場合、Application Insights Web モジュールは、**アプリケーションのバージョン**をプロパティとしてテレメトリのすべての項目に自動的に追加します。これにより、[診断の検索][diagnostic]を実行するとき、または[メトリックを調べる][metrics]ときに、バージョンによってフィルター処理できます。
-
-
-
-## 依存関係の追跡およびシステム パフォーマンス カウンターの追加
-
-[依存関係のメトリック](app-insights-dependencies.md)は、パフォーマンスに関する問題の診断に非常に役立つ場合があります。これらは、アプリからデータベース、REST Api、およびその他の外部のコンポーネントへの呼び出しを測定します。
-
-![](./media/app-insights-asp-net/04-dependencies.png)
-
-以下の手順では、CPU、メモリ、ネットワーク占有率などの[パフォーマンス カウンターのレポート](app-insights-web-monitor-performance.md#system-performance-counters)も有効化します。
-
-#### アプリが IIS サーバーで実行される場合
-
-管理者権限でサーバーにログインし、[Application Insights Status Monitor](http://go.microsoft.com/fwlink/?LinkId=506648) をインストールします。
-
-[サーバーのファイアウォールで他にも開いているポートがある](app-insights-monitor-performance-live-website-now.md#troubleshooting)ことを確認する必要があります。
-
-#### アプリが Azure の Web アプリの場合
-
-Azure の Web アプリのコントロール パネルで、Application Insights 拡張機能を追加します。
-
-![Web アプリで、[設定]、[拡張機能]、[追加]、[Application Insights] の順に選択する](./media/app-insights-asp-net/05-extend.png)
-
-(SDK をインストールしていない場合でも、既存のアプリに拡張機能を追加することもできます。)
-
-#### Azure Cloud Services ロールを監視するには
-
-[ステータス モニターを手動でを追加する方法](app-insights-cloudservices.md)があります。
-
-## 可用性 Web テスト
-
-[Web テストをセットアップ][availability]して、外部からアプリケーションの稼働状態と応答性をテストします。
-
-
-![](./media/app-insights-asp-net/appinsights-10webtestresult.png)
-
+- [ユーザーとページのデータ](../article/application-insights/app-insights-asp-net-client.md#selector1)
+- [Exceptions](../article/application-insights/app-insights-asp-net-exception-mvc.md#selector1)
+- [依存関係](../article/application-insights/app-insights-asp-net-dependencies.md#selector1)
+- [可用性](../article/application-insights/app-insights-monitor-web-app-availability.md#selector1)
 
 
 
@@ -238,8 +170,8 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [roles]: app-insights-resources-roles-access-control.md
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

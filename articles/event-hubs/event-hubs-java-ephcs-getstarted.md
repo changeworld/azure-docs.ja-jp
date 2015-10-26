@@ -30,13 +30,11 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 このチュートリアルを完了するには、以下が必要です。
 
-+ Java 開発環境。このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を想定しています。
++ Java 開発環境。このチュートリアルでは、[￼Eclipse￼](https://www.eclipse.org/) を想定しています。
 
 + Microsoft Visual Studio Express 2013 for Windows
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト
-+ 
-+ </a>をご覧ください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト￼</a>をご覧ください。
 
 ## イベント ハブの作成
 
@@ -121,4 +119,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [キューに格納されたメッセージング ソリューション]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!-----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

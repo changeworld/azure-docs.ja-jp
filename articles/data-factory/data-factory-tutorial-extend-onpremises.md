@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="出力データをオンプレミスの SQL Server データベースにコピーする (Azure ポータル)"
+	pageTitle="出力データをオンプレミスの SQL Server データベースにコピーする (Azure ポータル)" 
 	description="ここでは、Azure ポータルで Data Factory Editor を使用してチュートリアルを拡張して、パイプラインで出力データを SQL Server データベースにコピーするようにします。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/25/2015" 
 	ms.author="spelluru"/>
 
 
@@ -122,7 +122,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 	 
 #### パイプラインを作成して Azure BLOB から SQL Server へデータをコピーする
 
-1.	1. **Data Factory エディター**で、ツール バーの **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **... (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1.	1. **Data Factory エディター**で、ツール バーの **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 2. 右側のウィンドウにある JSON を、**C:\\ADFWalkthrough\\OnPremises** フォルダーにある **EgressDataToOnPremPipeline.json** の JSON スクリプトに置き換えます。
 3. JSON の**閉じ角かっこ (']')** の最後に**コンマ (',')** を追加してから、その閉じ角かっこの後に次の 3 行を追加します。 
 
@@ -169,4 +169,4 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
  
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

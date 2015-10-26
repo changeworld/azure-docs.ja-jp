@@ -215,17 +215,17 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
-	![diagram of cloud-only configuration](./media/hdinsight-provision-clusters/hdinsight-vnet-cloud-only.png)
+	![クラウドのみの構成の図](./media/hdinsight-provision-clusters/hdinsight-vnet-cloud-only.png)
 
 * 仮想プライベート ネットワーク (VPN) を使用したローカル データセンター ネットワークへのクラウド リソースの接続 (サイト間またはポイント対サイト)
 
 	サイト間構成では、ハードウェア VPN を使用するか、ルーティングとリモート アクセス サービスを使用して、データセンターから複数のリソースを Azure 仮想ネットワークに接続できます。
 
-	![diagram of site-to-site configuration](./media/hdinsight-provision-clusters/hdinsight-vnet-site-to-site.png)
+	![サイト間構成の図](./media/hdinsight-provision-clusters/hdinsight-vnet-site-to-site.png)
 
 	ポイント対サイト構成では、ソフトウェア VPN を使用して、特定のリソースを Azure 仮想ネットワークに接続できます。
 
-	![diagram of point-to-site configuration](./media/hdinsight-provision-clusters/hdinsight-vnet-point-to-site.png)
+	![ポイント対サイト構成の図](./media/hdinsight-provision-clusters/hdinsight-vnet-point-to-site.png)
 
 Virtual Network の機能、利点の詳細については、「[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
@@ -264,10 +264,10 @@ Virtual Network の機能、利点の詳細については、「[Azure Virtual N
 
    		![Data source blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.4.png "Provide data source configuration")
 
-  		* **選択方法**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。 既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
-  		* **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。 または、**[新規作成]** をクリックして、新しいストレージ アカウントを作成します。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
-  		* **[既定のコンテナーの選択]**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。 任意の名前を入力できますが、特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
-  		* **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。 この場所は、クラスターの場所を決定します。  クラスターとその既定のストレージ アカウントは、同じデータセンター内に配置されている必要があります。
+  		* **Selection Method**: Set this to **From all subscriptions** to enable browsing of storage accounts from all your subscriptions. Set this to **Access Key** if you want to enter the **Storage Name** and **Access Key** of an existing storage account.
+  		* **Select storage account / Create New**: Click **Select storage account** to browse and select an existing storage account you want to associate with the cluster. Or, click **Create New** to create a new storage account. Use the field that appears to enter the name of the storage account. A green check will appear if the name is available.
+  		* **Choose Default Container**: Use this to enter the name of the default container to use for the cluster. While you can enter any name here, we recommend using the same name as the cluster so that you can easily recognize that the container is used for this specific cluster.
+  		* **Location**: The geographic region that the storage account is in, or will be created in. This location will determine the cluster location.  The cluster and its default storage account must co-locate in the same Azure data center.
   	
   * **[ノード価格レベル]**: クラスターで必要なworker ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
   
@@ -277,33 +277,33 @@ Virtual Network の機能、利点の詳細については、「[Azure Virtual N
 
   * **[オプションの構成]** をクリックし、クラスターのバージョンを選択して、その他のオプションの設定を構成します。その他のオプションには、**Virtual Network** への参加、Hive と Oozie 用のデータを保持する**外部メタストア**の設定、スクリプト アクションを使用してカスタム コンポーネントをインストールするようにクラスターをカスタマイズすること、クラスターでの追加のストレージ アカウントの使用などがあります。
 
-  		* **[HDInsight のバージョン]**: クラスターで使用するバージョンを選択します。 詳細については、[HDInsight クラスターのバージョン](hdinsight-component-versioning.md)をご覧ください。
-  		* **Virtual Network**: クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。  
+  		* **HDInsight Version**: Select the version you want to use for the cluster. For more information, see [HDInsight cluster versions](hdinsight-component-versioning.md).
+  		* **Virtual Network**: Select an Azure virtual network and the subnet if you want to place the cluster into a virtual network.  
 
 			![Virtual network blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.6.png "Specify virtual network details")
 
-			>[AZURE.NOTE] Windows ベースの HDInsight クラスターは、クラシック仮想ネットワークにのみ配置できます。
+			>[AZURE.NOTE] Windows based HDInsight cluster can only be placed into a classical virtual network.
   
 
   		
-		* **[外部メタストア]**: クラスターに関連付けられた Hive と Oozie のメタデータを保存するための SQL Database を指定します。
+		* **External Metastores**: Specify an Azure SQL database to store Hive and Oozie metadata associated with the cluster.
  
 
 			![Custom metastores blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.7.png "Specify external metastores")
 
 
-			**[Hive メタデータで既存の SQL DB を使用する]** で、**[はい]** をクリックし、SQL データベースを選択し、データベースのユーザー名/パスワードを指定します。 **[Oozie メタデータで既存の SQL DB を使用する]** 場合は、これらの手順を繰り返します。 **[オプションの構成]** ブレードに戻るまで **[選択]** をクリックします。
+			For **Use an existing SQL DB for Hive** metadata, click **Yes**, select a SQL database, and then provide the username/password for the database. Repeat these steps if you want to **Use an existing SQL DB for Oozie metadata**. Click **Select** till you are back on the **Optional Configuration** blade.
 
 
-			>[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。 Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。 Tこれは、SQL データベース インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
+			>[AZURE.NOTE] The Azure SQL database used for the metastore must allow connectivity to other Azure services, including Azure HDInsight. On the Azure SQL database dashboard, on the right side, click the server name. This is the server on which the SQL database instance is running. Once you are on the server view, click **Configure**, and then for **Azure Services**, click **Yes**, and then click **Save**.
 		
-  		* クラスターを作成するときに、カスタム スクリプトを使用してクラスターをカスタマイズする場合は、**[スクリプト アクション]** をクリックします。 スクリプト アクションの詳細については、[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md) をご覧ください。 [Script Action] ブレードで、次の画面キャプチャに示すように、詳細を指定します。
+  		* **Script Actions** if you want to use a custom script to customize a cluster, as the cluster is being created. For more information about script actions, see [Customize HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster.md). On the Script Actions blade provide the details as shown in the screen capture.
   	
 
 			![Script action blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.8.png "Specify script action")
 
 
-    	* **[Azure ストレージ キー]**: クラスターに関連付ける追加のストレージ アカウントを指定します。 **[Azure ストレージ キー]** ブレードで、**[ストレージ キーの追加]** をクリックし、既存のストレージ アカウントを選択するか新しいアカウントを作成します。
+    	* **Azure Storage Keys**: Specify additional storage accounts to associate with the cluster. In the **Azure Storage Keys** blade, click **Add a storage key**, and then select an existing storage account or create a new account.
     
 
 			![Additional storage blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.9.png "Specify additional storage accounts")
@@ -752,9 +752,9 @@ Azure Feature Pack for SSIS の詳細については、[ここ][ssispack]を参�
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-preview-portal]: https://manage.windowsazure.com
-[connectionmanager]: http://msdn.microsoft.com/ja-JP/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/ja-JP/library/mt146770(v=sql.120).aspx
-[ssisclustercreate]: http://msdn.microsoft.com/ja-JP/library/mt146774(v=sql.120).aspx
-[ssisclusterdelete]: http://msdn.microsoft.com/ja-JP/library/mt146778(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/ja-jp/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/ja-jp/library/mt146770(v=sql.120).aspx
+[ssisclustercreate]: http://msdn.microsoft.com/ja-jp/library/mt146774(v=sql.120).aspx
+[ssisclusterdelete]: http://msdn.microsoft.com/ja-jp/library/mt146778(v=sql.120).aspx
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

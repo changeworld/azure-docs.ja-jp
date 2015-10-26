@@ -5,8 +5,9 @@
 	documentationCenter=""
 	authors="scoriani"
 	manager="timlt"
-	editor="tysonn"/>
-<!-- In pageTitle, to follow corporate style (sentence-case caps), s/b lowercase "template", correct? This matches what is used later in article too. Also, precede first mention of "Azure" with "Microsoft" -->
+	editor="tysonn"
+	tags="azure-resource-manager"/>
+
 <tags
 	ms.service="virtual-machines"
 	ms.workload="multiple"
@@ -18,7 +19,8 @@
 
 # リソース マネージャー テンプレートの使用による Ubuntu 上への DataStax Enterprise のデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
 
 DataStax は、Apache Cassandra™ に基づくソリューションの開発と配布を行う、実績のある業界リーダーです。Apache Cassandra は、商用使用がサポートされている、企業向けの NoSQL 分散データベース テクノロジで、アジャイルで常時稼働、しかも任意のサイズにスケール可能であるとして、広く認められています。DataStax は、Enterprise (DSE) と Community (DSC) の 2 種類の製品を提供しています。Datastax Enterprise は、Community エディションの機能に加えて、インメモリ コンピューティング、エンタープライズレベルのセキュリティ、高速で強力な統合分析、およびエンタープライズレベルの管理機能を備えており、運用環境での使用に十分に耐える Cassandra 実装です。
 
@@ -46,7 +48,7 @@ Azure リソース マネージャーとこのデプロイに使用するテン�
 
 GitHub テンプレート リポジトリのリソース マネージャー テンプレートを使用して、DataStax Enterprise に基づく Apache Cassandra クラスターを作成するには、以下の手順に従います。各手順には、Azure PowerShell と Azure CLI の両方の手順が含まれています。
 
-### 手順 1-a. PowerShell を使用して、テンプレート ファイルをダウンロードします。
+### 手順 1-a: PowerShell を使用してテンプレート ファイルをダウンロードする
 
 JSON テンプレートとその他の関連ファイル用のローカル フォルダーを作成します (例: C:\\Azure\\Templates\\DataStax)。
 
@@ -88,8 +90,7 @@ JSON テンプレートとその他の関連ファイル用のローカル フ�
 
 	git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 
-完了後に、C:\Azure\Templates の datastax-enterprise フォルダーを探します。
-<!--Wrapping name of folder in bold typeface is not corp style  -->
+完了後に、C:\\Azure\\Templates ディレクトリの datastax-enterprise フォルダーを探します。<!--Wrapping name of folder in bold typeface is not corp style  -->
 ### 手順 2. (省略可能) テンプレート パラメーターを理解する
 
 DataStax に基づく Apache Cassandra クラスターのような自明ではないソリューションをデプロイする場合、必要な複数の設定を処理するために構成パラメーターのセットを指定する必要があります。テンプレートの定義でこれらのパラメーターを宣言することで、デプロイ時に外部ファイルまたはコマンド ラインを通して値を指定することができます。
@@ -188,7 +189,7 @@ azuredeploy.json ファイルの先頭の "parameters" セクションで、Data
 
 ### 手順 3-a. PowerShell とテンプレートを使用して、DataStax Enterprise クラスターをデプロイする
 
-すべてのパラメーターの実行時の値を含む JSON ファイルを作成することによって、デプロイ用の parameters ファイルを準備します。このファイルは、単一のエンティティとしてデプロイメント コマンドに渡されます。parameters ファイルが指定されていない場合、PowerShell はテンプレートで指定されているすべての既定値を使用し、残りの値を入力するように要求します。
+すべてのパラメーターの実行時の値を含む JSON ファイルを作成することによって、デプロイ用の parameters ファイルを準備します。このファイルは、単一のエンティティとしてデプロイ コマンドに渡されます。parameters ファイルが指定されていない場合、PowerShell はテンプレートで指定されているすべての既定値を使用し、残りの値を入力するように要求します。
 
 次に、azuredeploy-parameters.json ファイルのパラメーター セットの例を示します。
 
@@ -231,7 +232,7 @@ azuredeploy.json ファイルの先頭の "parameters" セクションで、Data
 		}
 	}
 
-Azure のデプロイメント名、リソース グループ名、Azure の場所、JSON デプロイ ファイルの保存先フォルダーを指定します。続いて、次のコマンド セットを実行します。
+Azure のデプロイ名、リソース グループ名、Azure の場所、JSON デプロイ ファイルの保存先フォルダーを指定します。続いて、次のコマンド セットを実行します。
 
 	$deployName="<deployment name>"
 	$RGName="<resource group name>"
@@ -248,7 +249,7 @@ Azure のデプロイメント名、リソース グループ名、Azure の場�
 
 デプロイ時には新しい Azure ストレージ アカウントを作成する必要があるため、ストレージ アカウント パラメーターとして指定する名前は一意であり、かつ Azure ストレージ アカウントのすべての要件 (小文字と数字のみ) を満たしている必要がある点に留意してください。
 
-デプロイメント中およびデプロイメント後には、プロビジョニング中に行われたすべての要求 (発生したすべてのエラーを含む) を確認できます。
+デプロイ中およびデプロイ後には、プロビジョニング中に行われたすべての要求 (発生したすべてのエラーを含む) を確認できます。
 
 確認するには、[Azure ポータル](https://portal.azure.com)に移動し、次の操作を行います。
 
@@ -277,9 +278,7 @@ Azure CLI を使用して DataStax Enterprise クラスターをデプロイす�
 
 ## Datastax Enterprise のテンプレート構造とファイル編成について
 
-堅牢で再利用可能なリソース マネージャー テンプレートを設計するには、さらに検討を加え、DataStax Enterprise のような複雑なソリューションのデプロイメント時に必要な、複雑で相互に関連する一連のタスクを整理する必要があります。関連する拡張機能によるスクリプト実行に加え、ARM の**テンプレート リンク**機能や**リソース ループ**機能を活用することで、実質的にはどのような複雑なテンプレート ベースのデプロイメントにも再利用可能なモジュール式の手法を実行できます。
-<!-- In previous paragraph, we can't use bold typeface to show emphasis. You can use italic to denote emphasis. -->
-次の図は、このデプロイの GitHub からダウンロードされるすべてのファイル間の関係を表しています。
+堅牢で再利用可能なリソース マネージャー テンプレートを設計するには、さらに検討を加え、DataStax Enterprise のような複雑なソリューションのデプロイ時に必要な、複雑で相互に関連する一連のタスクを整理する必要があります。関連する拡張機能によるスクリプト実行に加え、ARM の**テンプレート リンク**機能や**リソース ループ**機能を活用することで、実質的にはどのような複雑なテンプレート ベースのデプロイにも再利用可能なモジュール式の手法を実行できます。<!-- In previous paragraph, we can't use bold typeface to show emphasis. You can use italic to denote emphasis. --> 次の図は、このデプロイの GitHub からダウンロードされるすべてのファイル間の関係を表しています。
 
 ![datastax-enterprise-files](media/virtual-machines-datastax-enterprise-template/datastax-enterprise-files.png)
 
@@ -356,7 +355,7 @@ azuredeploy.json の "parameters" セクションには、このテンプレー�
 
 ### "resources" セクション
 
-"resources" セクションではアクションの大部分が発生します。このセクションを確認すると、すぐに 2 つの異なるケースを特定できます。1 つ目は、基本的にはメインのデプロイメントでの入れ子になったデプロイの呼び出しを意味する型の `Microsoft.Resources/deployments` について定義された要素です。"templateLink" 要素 (および関連するバージョン プロパティ) を通して、一連のパラメーターを入力として渡すことにより呼び出されるリンク済みテンプレート ファイルを指定できます (次の例を参照)。
+"resources" セクションではアクションの大部分が発生します。このセクションを確認すると、すぐに 2 つの異なるケースを特定できます。1 つ目は、基本的にはメインのデプロイでの入れ子になったデプロイの呼び出しを意味する型の `Microsoft.Resources/deployments` について定義された要素です。"templateLink" 要素 (および関連するバージョン プロパティ) を通して、一連のパラメーターを入力として渡すことにより呼び出されるリンク済みテンプレート ファイルを指定できます (次の例を参照)。
 
 	{
 	      "name": "shared",
@@ -382,14 +381,9 @@ azuredeploy.json の "parameters" セクションには、このテンプレー�
 	      }
 	    },
 
-この 1 つ目の例から明らかなように、このシナリオの azuredeploy.json は、ある種のオーケストレーション メカニズムとして編成され、それぞれが必要なデプロイメント アクティビティの一部を担う、他の数多くのテンプレート ファイルを呼び出しています。
+この 1 つ目の例から明らかなように、このシナリオの azuredeploy.json は、ある種のオーケストレーション メカニズムとして編成され、それぞれが必要なデプロイ アクティビティの一部を担う、他の数多くのテンプレート ファイルを呼び出しています。
 
-特に、このデプロイには次のリンク済みテンプレートが使用されます。
-<!-- In list format, using bold typeface in the following manner is ok -->
--	**shared-resource.json**: デプロイ全体で共有されるすべてのリソースの定義を格納します。たとえば、VM の OS ディスクおよび仮想ネットワークの格納に使用されるストレージ アカウントです。
--	**opscenter-resources.json**: OpsCenter VM と、すべての関連するリソース (ネットワーク インターフェイスやパブリック IP アドレスなど) をデプロイします。
--	**opscenter-install-resources.json**: OpsCenter VM の拡張機能 (Linux 用のカスタム スクリプト) をデプロイします。この拡張機能は、VM 内での OpsCenter サービスのセットアップに必要な bash スクリプト ファイル (opscenter.sh) を呼び出します。
--	**ephemeral-nodes-resources.json**: すべてのクラスター ノードの VM と、接続されているリソース (ネットワーク カード、プライベート IP など) をデプロイします。このテンプレートは、VM 拡張機能 (Linux 用のカスタム スクリプト) も同様にデプロイし、bash スクリプト (dsenode.sh) を呼び出して各ノードに Apache Cassandra の構成要素を物理的にインストールします。
+特に、このデプロイには次のリンク済みテンプレートが使用されます。<!-- In list format, using bold typeface in the following manner is ok --> - **shared-resource.json**: デプロイ全体で共有されるすべてのリソースの定義を格納します。たとえば、VM の OS ディスクおよび仮想ネットワークの格納に使用されるストレージ アカウントです。 - **opscenter-resources.json**: OpsCenter VM と、すべての関連するリソース (ネットワーク インターフェイスやパブリック IP アドレスなど) をデプロイします。 - **opscenter-install-resources.json**: OpsCenter VM の拡張機能 (Linux 用のカスタム スクリプト) をデプロイします。この拡張機能は、VM 内での OpsCenter サービスのセットアップに必要な bash スクリプト ファイル (opscenter.sh) を呼び出します。 - **ephemeral-nodes-resources.json**: すべてのクラスター ノードの VM と、接続されているリソース (ネットワーク カード、プライベート IP など) をデプロイします。このテンプレートは、VM 拡張機能 (Linux 用のカスタム スクリプト) も同様にデプロイし、bash スクリプト (dsenode.sh) を呼び出して各ノードに Apache Cassandra の構成要素を物理的にインストールします。
 
 この最後のテンプレートは、テンプレート開発の観点から見て最も興味深いテンプレートの 1 つです。このテンプレートの使用方法について、詳しく見てみましょう。注意が必要な重要な概念は、どのようにすれば 1 つのテンプレート ファイルによって単一の種類のリソースの複数のコピーをデプロイできるか、また、各インスタンスが必要な設定に対して一意の値を設定できるかということです。この概念は、リソース ループと呼ばれています。
 
@@ -488,18 +482,18 @@ vm-disk-utils-0.1.sh は、azure-quickstart-tempates github リポジトリ内�
 	}
 	}
 
-このデプロイメントに含まれる他のファイルを熟知することで、Azure リソース マネージャー テンプレートを活用しながら、任意のテクノロジに基づく複数ノード ソリューションの複雑なデプロイメント戦略を編成および調整するために必要な、すべての詳細とベスト プラクティスを理解することができます。必須ではありませんが、次の図で表されているようにテンプレート ファイルを構築する手法をお勧めします。
+このデプロイに含まれる他のファイルを熟知することで、Azure リソース マネージャー テンプレートを活用しながら、任意のテクノロジに基づく複数ノード ソリューションの複雑なデプロイ戦略を編成および調整するために必要な、すべての詳細とベスト プラクティスを理解することができます。必須ではありませんが、次の図で表されているようにテンプレート ファイルを構築する手法をお勧めします。
 
 ![datastax-enterprise-template-structure](media/virtual-machines-datastax-enterprise-template/datastax-enterprise-template-structure.png)
 
 この手法では、次のことを提案しています。
 
 -	すべてのデプロイ アクティビティに対する中心的なオーケストレーション ポイントとして、核となるテンプレート ファイルを定義し、サブ テンプレートの実行を呼び出すためにテンプレート リンクを活用します。
--	他のすべてのデプロイ タスク (ストレージ アカウント、VNET 構成など) の間で共有されるすべてのリソースをデプロイする、特定のテンプレート ファイルを作成します。これは、共通のインフラストラクチャに関して類似した要件を持つデプロイメント間で頻繁に再利用できます。
+-	他のすべてのデプロイ タスク (ストレージ アカウント、VNET 構成など) の間で共有されるすべてのリソースをデプロイする、特定のテンプレート ファイルを作成します。これは、共通のインフラストラクチャに関して類似した要件を持つデプロイ間で頻繁に再利用できます。
 -	特定のリソースに固有のスポット要件用にオプションのリソース テンプレートを含みます。
 -	リソース グループの同一メンバー (クラスター内のノードなど) に対して、一意のプロパティを持つ複数のインスタンスをデプロイするため、リソース ループを活用する特定のテンプレートを作成します。
--	すべてのデプロイメント後のタスク (製品のインストールや構成など) について、スクリプト デプロイの拡張機能を活用し、各テクノロジに固有のスクリプトを作成します。
+-	すべてのデプロイ後のタスク (製品のインストールや構成など) について、スクリプト デプロイの拡張機能を活用し、各テクノロジに固有のスクリプトを作成します。
 
 詳細については、「[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

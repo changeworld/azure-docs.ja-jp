@@ -36,7 +36,7 @@
 
 
 
-1. ソリューション エクスプローラーで、**AppBackend** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。新しいクラスに「**AuthenticationTestHandler.cs**」という名前を付け、**[追加]** をクリックして、クラスを生成します。説明を簡単にするために、このクラスを使用して*基本認証*でユーザーを認証します。実際のアプリでは、任意の認証スキームを使用できます。
+1. ソリューション エクスプローラーで、**AppBackend** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。新しいクラスに「**AuthenticationTestHandler.cs**」という名前を付け、**[追加]** をクリックして、クラスを生成します。説明を簡単にするために、このクラスを使用して*￼基本認証￼*でユーザーを認証します。実際のアプリでは、任意の認証スキームを使用できます。
 
 2. AuthenticationTestHandler.cs に次の `using` ステートメントを追加します。
 
@@ -362,4 +362,4 @@
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

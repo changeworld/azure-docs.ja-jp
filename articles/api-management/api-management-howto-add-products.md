@@ -148,4 +148,4 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 [Azure API Management でグループを作成および使用して開発者アカウントを管理する方法]: api-management-howto-create-groups.md
 [Azure API Management で成果物を作成して詳細設定を行う方法]: api-management-howto-product-with-rules.md
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

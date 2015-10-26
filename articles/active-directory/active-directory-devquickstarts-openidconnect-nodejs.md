@@ -10,10 +10,10 @@
 <tags
 	ms.service="active-directory"
 	ms.workload="identity"
-	ms.tgt_pltfrm="na"
+  ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.date="10/13/2015"
 	ms.author="brandwe"/>
 
 # Azure AD を使用した Web アプリのサインインおよびサインアウト
@@ -25,7 +25,7 @@
 - ユーザーについての情報を表示します。
 - ユーザーをアプリからサインアウトします。
 
-**Passport** は Node.js 用の認証ミドルウェアです。Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップされます。包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。Microsoft Azure Active Directory 用の戦略が開発されています。このモジュールをインストールし、Microsoft Azure Active Directory `passport-azure-ad` プラグインを追加します。
+**Passport** は Node.js 用の認証ミドルウェアです。Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップされます。包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。Microsoft Azure Active Directory 用の戦略が開発されています。ここでは、このモジュールをインストールした後、Microsoft Azure Active Directory `passport-azure-ad` プラグインを追加します。
 
 これを行うには、次の手順を実行する必要があります。
 
@@ -40,18 +40,18 @@
 
 完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
-## 1. アプリの登録
-- Microsoft Azure の管理ポータルにサインインします。
-- I左側のナビゲーションで **Active Directory** をクリックします。
+## 1\.アプリを登録します
+- Microsoft Azure 管理ポータルにサインインします。
+- 左側のナビゲーションで **[Active Directory]** をクリックします。
 - アプリケーションの登録先となるテナントを選択します。
-- **[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
+- **[アプリケーション]** タブをクリックし、下部のドロアーで [追加] をクリックします。
 - 画面の指示に従い、新しい **Web アプリケーションまたは WebAPI** を作成します。
     - アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
-    -	**[サインオン URL]**  は、アプリのベース URL です。  スケルトンの既定値は、 `http://localhost:3000/auth/openid/return`` です。.
-    - **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。  形式は、`https://<tenant-domain>/<app-name>` たとえば、`https://contoso.onmicrosoft.com/my-first-aad-app` です。
-- 登録が完了すると、AAD により、アプリケーションに一意のクライアント ID が割り当てられます。  この値は次のセクションで必要になるので、[構成] タブからコピーします。
+    -	**[サインオン URL]** は、アプリのベース URL です。スケルトンの既定値は、`http://localhost:3000/auth/openid/return`` です。
+    - **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。形式は、`https://<tenant-domain>/<app-name>` (たとえば、`https://contoso.onmicrosoft.com/my-first-aad-app`) です。
+- 登録が完了すると、AAD により、アプリケーションに一意のクライアント ID が割り当てられます。この値は次のセクションで必要になるので、[構成] タブからコピーします。
 
-## 2. ディレクトリに前提条件を追加する
+## 2\.ディレクトリに前提条件を追加する
 
 コマンド ラインから、ディレクトリをルート フォルダーに移動し (まだルート フォルダーでない場合)、次のコマンドを実行します。
 
@@ -70,23 +70,26 @@
 
 これにより、passport-azure-ad が依存するライブラリがインストールされます。
 
-## 3. passport-node-js 戦略を使用するようにアプリを設定する
-ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。  Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
+## 3\.passport-node-js 戦略を使用するようにアプリを設定する
+ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
--	最初に、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションにアプリの構成値を入力します。
-    -	`clientID`: は、登録ポータル内のアプリに割り当てられる **アプリケーション ID** です。
+-	最初に、プロジェクトのルートにある `config.js` ファイルを開いて、`exports.creds` セクションでアプリの構成値を入力します。
+    -	`clientID:` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
     -	`returnURL` は、ポータルで入力した**リダイレクト URI** です。
     - `clientSecret` は、ポータルで生成したシークレットです。
 
-- 次に、プロジェクトのルートにある `app.js`  ファイルを開き、次の呼び出しを追加して、`passport-azure-ad` に付属する `OIDCStrategy` 戦略を呼び出します。
+- 次に、プロジェクトのルートにある `app.js` ファイルを開き、次の呼び出しを追加して、`passport-azure-ad` に付属する `OIDCStrategy` 戦略を呼び出します。
 
 
 ```JavaScript
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
-// logger を追加する
+// add a logger
 
-var log = bunyan.createLogger({ name: 'Microsoft OIDC Example Web Application' }); ```
+var log = bunyan.createLogger({
+    name: 'Microsoft OIDC Example Web Application'
+});
+```
 
 - その後、今参照した戦略を使用してログイン要求を処理します。
 
@@ -351,36 +354,16 @@ exports.list = function(req, res){
 
 ```HTML
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Passport-OpenID Example</title>
-	</head>
-	<body>
-		<% if (!user) { %>
-			<p>
-			<a href="/">Home</a> | 
-			<a href="/login">Log In</a>
-			</p>
-		<% } else { %>
-			<p>
-			<a href="/">Home</a> | 
-			<a href="/account">Account</a> | 
-			<a href="/logout">Log Out</a>
-			</p>
-		<% } %>
-		<%- body %>
-	</body>
-</html>```
+<!DOCTYPE html> <html> <head> <title>Passport-OpenID Example</title> </head> <body> <% if (!user) { %> <p> <a href="/">Home</a> | <a href="/login">Log In</a> </p> <% } else { %> <p> <a href="/">Home</a> | <a href="/account">Account</a> | <a href="/logout">Log Out</a> </p> <% } %> <%- body %> </body> </html>```
 
-Finally, build and run your app! 
+最後に、アプリを構築して実行します。
 
-Run `node app.js` and navigate to `http://localhost:3000`
+`node app.js` を実行し、`http://localhost:3000` に移動します。
 
 
-Sign in with either a personal Microsoft Account or a work or school account, and notice how the user's identity is reflected in the /account list.  You now have a web app secured using industry standard protocols that can authenticate users with both their personal and work/school accounts.
+Microsoft の個人または職場/学校アカウントのいずれかでサインインすると、ユーザーの ID が /account リストにどのように反映されるかがわかります。これで、Web アプリが業界標準のプロトコルで保護され、個人および職場/学校アカウントの両方でユーザーを認証できるようになりました。
 
-For reference, the completed sample (without your configuration values) [is provided as a .zip here](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip), or you can clone it from GitHub:
+参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
@@ -391,4 +374,4 @@ For reference, the completed sample (without your configuration values) [is prov
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

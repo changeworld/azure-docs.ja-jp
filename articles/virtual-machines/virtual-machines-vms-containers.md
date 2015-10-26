@@ -22,7 +22,8 @@
 <!--The next line, with one pound sign at the beginning, is the page title-->
 # 仮想マシンとコンテナーが Azure にもたらすメリット
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+ 
 
 Azure は、物理コンピューター ハードウェアをエミュレートした仮想マシンを利用して、ソフトウェア デプロイメントの移動を迅速化し、物理ハードウェアよりも格段に効率的なリソース統合を可能にするすばらしいクラウド ソリューションです。この数年間、[Docker](https://www.docker.com) のコンテナー アプローチと Docker エコシステムが業界に大きな影響を与えたこともあり、Linux のコンテナー テクノロジは分散型ソフトウェアの開発や管理のあり方を大きく変えています。コンテナー内のアプリケーション コードは、ホストの Azure VM からだけでなく、同じ VM 上にあるその他のコンテナーからも分離されるため、Azure VM がもたらす開発やデプロイメントのアジリティをアプリケーション レベルでさらに高めることにつながります。
 
@@ -239,4 +240,4 @@ Linux ディストリビューションと Azure での導入例:
 [マイクロサービス]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

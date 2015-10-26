@@ -94,4 +94,4 @@
 - [Create your first Azure SQL Database (最初の Azure SQL Database を作成する)](sql-database-get-started.md)
 - [Entity Framework 6 here, EF 7 on GitHub (Entity Framework 6、GitHub における EF7)](http://entityframework.codeplex.com/)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

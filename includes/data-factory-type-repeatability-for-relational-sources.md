@@ -10,7 +10,7 @@
 	
 	  "source": {
 	    "type": "SqlSource",
-	    "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \'{0:yyyy-MM-dd HH:mm\' AND timestampcolumn < \'{1:yyyy-MM-dd HH:mm\'', WindowStart, WindowEnd)"
+	    "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
 	  },
 
 上記のクエリでは、スライス期間の範囲内にある "MyTable" からデータを読み取ります。このスライスを再実行すると、この動作は常に確認されます。
@@ -24,4 +24,4 @@
 	          },
 	
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

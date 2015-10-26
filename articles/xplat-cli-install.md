@@ -21,7 +21,8 @@
 
 この記事では、Azure コマンド ライン インターフェイス (Azure CLI) をインストールする方法について説明します。Azure CLI には、Microsoft Azure 上のリソースを作成および管理するための一連のオープン ソースのシェル ベース コマンドが用意されています。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルまたはクラシック デプロイメント モデルを使用したリソースの作成および管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-both-include.md)]
+
 
 Azure CLI は JavaScript で記述されており、[Node.js](https://nodejs.org) が必要です。[Azure SDK for Node](https://github.com/azure/azure-sdk-for-node) を使用して実装されており、Apache 2.0 ライセンスに基づいてリリースされています。プロジェクトのリポジトリは [https://github.com/azure/azure-xplat-cli](https://github.com/azure/azure-xplat-cli) にあります。
 
@@ -155,4 +156,4 @@ Azure CLI をインストールすると、コマンドライン ユーザー �
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: virtual-machines/xplat-cli-azure-resource-manager.md
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

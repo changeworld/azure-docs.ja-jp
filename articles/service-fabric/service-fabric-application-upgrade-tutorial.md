@@ -126,4 +126,4 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 [アプリケーション アップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

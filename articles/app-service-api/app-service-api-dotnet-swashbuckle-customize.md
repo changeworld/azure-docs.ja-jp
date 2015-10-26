@@ -250,4 +250,4 @@ Visual Studio を使用して REST API のクライアント コードを再生�
 この記事では Swashbuckle により操作 ID と有効な応答コードを生成する方法のカスタマイズについて説明しました。詳細については、[GitHub の Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) をご覧ください。
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

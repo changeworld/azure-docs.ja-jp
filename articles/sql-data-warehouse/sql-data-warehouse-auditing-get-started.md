@@ -141,4 +141,4 @@ Azure リソース マネージャー モードを実行中に、`Get-Command *A
 
 <!--Link references-->
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

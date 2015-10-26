@@ -163,4 +163,4 @@ Azure PowerShell を使用して Hadoop クラスターのサイズを変更す�
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

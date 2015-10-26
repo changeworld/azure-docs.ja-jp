@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/21/2015" 
+	ms.date="10/09/2015" 
 	ms.author="femila"/>
 
 
@@ -124,7 +124,7 @@ Microsoft Azure 管理ポータルでは高度なルールを臨機応変に設�
 | passwordPolicies | なし DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration、DisableStrongPassword | (user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName | 任意の文字列値または $null。 | (user.physicalDeliveryOfficeName -eq "value") |
 | postalCode | 任意の文字列値または $null。 | (user.postalCode -eq "value") |
-| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "ja-JP") |
+| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "ja-jp") |
 | sipProxyAddress | 任意の文字列値または $null。 | (user.sipProxyAddress -eq "value") |
 | state | 任意の文字列値または $null。 | (user.state -eq "value") |
 | streetAddress | 任意の文字列値または $null。 | (user.streetAddress -eq "value") |
@@ -168,4 +168,4 @@ Microsoft Azure 管理ポータルでは高度なルールを臨機応変に設�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

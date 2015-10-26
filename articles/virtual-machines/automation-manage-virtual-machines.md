@@ -22,7 +22,6 @@
 
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure 仮想マシンの管理を簡略化する方法について紹介します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 ## Azure Automation とは
 
@@ -44,4 +43,4 @@ Virtual Machines は、[Azure PowerShell](https://msdn.microsoft.com/library/azu
 
 [Azure Automation の使用](../automation-create-runbook-from-samples.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

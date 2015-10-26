@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/29/2015"
+	ms.date="10/08/2015"
 	ms.author="davidmu"/>
 
 
 # Azure リソース マネージャーのテンプレートを使用した、可用性の高い Active Directory ドメイン サービスのドメインのデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
 
 この記事の手順に従って、リソース マネージャー テンプレートを使用して可用性の高い Active Directory ドメインをデプロイできます。このテンプレートにより、同一サブネット上の新しい仮想ネットワークに 2 つの仮想マシンを作成します。
 
@@ -54,8 +54,8 @@
 	$RGName="<resource group name>"
 	$locName="<Azure location, such as West US>"
 	$templateURI="https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/active-directory-new-domain-ha-2-dc/azuredeploy.json"
-	New-AzureResourceGroup -Name $RGName -Location $locName
-	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
+	New-AzureRmResourceGroup -Name $RGName -Location $locName
+	New-AzureRmResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
 たとえば次のようになります。
 
@@ -63,12 +63,12 @@
 	$RGName="TestRG"
 	$locname="West US"
 	$templateURI="https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/active-directory-new-domain-ha-2-dc/azuredeploy.json"
-	New-AzureResourceGroup -Name $RGName -Location $locName
-	New-AzureResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
+	New-AzureRmResourceGroup -Name $RGName -Location $locName
+	New-AzureRmResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
 次に、Azure PowerShell プロンプトでコマンド ブロックを実行します。
 
-**New-AzureResourceGroupDeployment** コマンドを実行すると、一連のパラメーターの値を指定するよう求められます。すべてのパラメーター値を指定したら、**New-AzureResourceGroupDeployment** により仮想マシンが作成、構成されます。
+**New-AzureRmResourceGroupDeployment** コマンドを実行すると、一連のパラメーターの値を指定するよう求められます。すべてのパラメーターの値を指定すると、**New-AzureRmResourceGroupDeployment** により仮想マシンが作成、構成されます。
 
 テンプレートの実行が完了すると、サーバー 2 台構成の新しい Active Directory ドメインが新しいリソース グループに作成されます。
 
@@ -96,16 +96,16 @@
 
 ## その他のリソース
 
-[Azure リソース マネージャー テンプレートと Azure PowerShell を使用した Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
+[Azure リソース マネージャー テンプレートと Azure PowerShell を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
 
 [Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)
 
 [Azure リソース マネージャーの概要](../resource-group-overview.md)
 
-[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理](virtual-machines-deploy-rmtemplates-azure-cli.md)
+[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-azure-cli.md)
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

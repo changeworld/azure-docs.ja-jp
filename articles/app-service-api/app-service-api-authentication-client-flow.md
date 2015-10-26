@@ -227,4 +227,4 @@ App Service API Apps のクライアント フローの認証方法は確認し�
 [Azure ポータル]: https://manage.windowsazure.com/
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

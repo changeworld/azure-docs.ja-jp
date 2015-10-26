@@ -3,4 +3,4 @@
 - [.NET](../articles/media-services/media-services-deliver-streaming-content.md)
 - [REST API](../articles/media-services/media-services-rest-deliver-streaming-content.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -65,7 +65,7 @@
 
 3.  **[アプリケーション URL の構成]** ページの **[Igloo Software サインイン URL]** ボックスに、"**https://company.igloocommunities.com/?signin*"" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-igloo-software-tutorial/IC773625.png "アプリケーション URL の構成")
+    ![アプリ URL の構成](./media/active-directory-saas-igloo-software-tutorial/IC773625.png "アプリケーション URL の構成")
 
 4.  **[Igloo Software でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
@@ -141,4 +141,4 @@ Igloo Software へのユーザー プロビジョニングを構成するとき�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -20,7 +20,8 @@
 
 # Windows Server 2012 R2 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 [MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。[Azure ポータル](http://manage.windowsazure.com)では、Windows Server 2012 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。次に、MySQL Server としてこれをインストールと構成できます。
 
@@ -88,7 +89,7 @@ MySQL Server の Community バージョンをインストール、構成、と�
 
 	![](./media/virtual-machines-mysql-windows-server-2008r2/MySQL_CommandPrompt.png)
 
-19.	また、C:\Program Files (x86)\MySQL\MySQL Server 5.6\my-default.ini ファイルに入力することにより、ベース ディレクトリやデータ ディレクトリ、ドライブなど、サーバー構成に関する既定の設定についても構成できます。詳細については、[5.1.2 サーバー構成の既定値](http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html)に関するページを参照してください。
+19.	また、C:\\Program Files (x86)\\MySQL\\MySQL Server 5.6\\my-default.ini ファイルに入力することにより、ベース ディレクトリやデータ ディレクトリ、ドライブなど、サーバー構成に関する既定の設定についても構成できます。詳細については、[5\.1.2 サーバー構成の既定値](http://dev.mysql.com/doc/refman/5.6/en/server-configuration-defaults.html)に関するページを参照してください。
 
 
 インターネット上の MySQL クライアント コンピューターで MySQL Server サービスを利用可能にするには、MySQL Server サービスがリッスンしている TCP ポートにエンドポイントを構成し、別の Windows ファイアウォール ルールを作成する必要があります。前の手順 10. で説明した **[Type and Networking]** ページで別のポートを指定した場合を除き、これは TCP ポート 3306 です。
@@ -129,4 +130,4 @@ Azure 仮想マシンで実行する MySQL Server サービスへのリモート
 
 MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

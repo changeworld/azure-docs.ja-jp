@@ -44,4 +44,4 @@ Azure HDInsight コマンドレットでは、Linux または Windows での HDI
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

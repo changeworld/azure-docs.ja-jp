@@ -578,4 +578,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-move-data-between-onprem-and-cloud.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

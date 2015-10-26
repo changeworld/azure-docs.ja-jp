@@ -33,7 +33,7 @@
 </div>
 
 
-<p>このチュートリアルでは Azure Mobile Services における Android アプリケーションからのデータの保存と取得方法についての詳細を分かりやすく説明します。したがって、Mobile Services のクイック スタート チュートリアルで完了している手順の多くについても説明します。Mobile Services を初めて使用する場合は、最初にチュートリアル「<a href="/ja-JP/develop/mobile/tutorials/get-started-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
+<p>このチュートリアルでは Azure Mobile Services における Android アプリケーションからのデータの保存と取得方法についての詳細を分かりやすく説明します。したがって、Mobile Services のクイック スタート チュートリアルで完了している手順の多くについても説明します。Mobile Services を初めて使用する場合は、最初にチュートリアル「<a href="/ja-jp/develop/mobile/tutorials/get-started-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
 
 ## 前提条件
 
@@ -43,7 +43,7 @@
 
 
 - [Azure Mobile Services Android SDK]
-- Android SDK を含む <a  href="https://developer.android.com/sdk/index.html" target="_blank">Android Studio 統合開発環境</a>、Android 4.2 以降のバージョン。ダウンロードした GetStartedWithData プロジェクトを実行するには、Android 4.2 以降のバージョンが必要です。ただし、Mobile Services SDK は、Android 2.2 以降で動作します。
+- Android SDK を含む <a  href="https://developer.android.com/sdk/index.html" target="_blank">Android Studio 統合開発環境￼</a>、Android 4.2 以降のバージョン。ダウンロードした GetStartedWithData プロジェクトを実行するには、Android 4.2 以降のバージョンが必要です。ただし、Mobile Services SDK は、Android 2.2 以降で動作します。
 
 ## サンプル コード
 
@@ -149,4 +149,4 @@
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkID=282122
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

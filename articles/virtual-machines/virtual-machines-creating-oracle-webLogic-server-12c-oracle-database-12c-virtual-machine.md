@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Oracle WebLogic Server および Database 仮想マシン | Microsoft Azure"
-	description="リソース マネージャーのデプロイメント モデルを使用して、Windows Server 2012 で実行される Oracle WebLogic Server 12c および Oracle Database 12c Azure イメージを作成します。"
+	pageTitle="Oracle WebLogic Server および Database VM | Microsoft Azure"
+	description="リソース マネージャーのデプロイ モデルを使用して、Windows Server 2012 で実行される Oracle WebLogic Server 12c および Oracle Database 12c Azure イメージを作成します。"
 	services="virtual-machines"
 	authors="bbenz"
 	documentationCenter=""
@@ -19,7 +19,7 @@
 
 この記事では、Windows Server 2012 で実行しているマイクロソフト提供の Oracle WebLogic Server 12c および Oracle Database 12c のイメージに基づいて、Azure で仮想マシンを作成する方法を示しています。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用して Oracle WebLogic Server および Database を作成する方法について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 
 ##Azure で Oracle WebLogic Server 12c および Oracle Database 12c の仮想マシンを作成するには
@@ -71,4 +71,4 @@
 
 [Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

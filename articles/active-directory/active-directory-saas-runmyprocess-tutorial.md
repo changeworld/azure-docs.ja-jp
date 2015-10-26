@@ -15,7 +15,7 @@
 1.  RunMyProcess のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-runmyprocess-tutorial/IC789614.png "シナリオ")
 ##RunMyProcess のアプリケーション統合の有効化
@@ -65,7 +65,7 @@
 
 3.  **[アプリ URL の構成]** ページで、**[RunMyProcess サインオン URL]** テキストボックスに、"**http://company.runmyprocess.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-runmyprocess-tutorial/IC789623.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-runmyprocess-tutorial/IC789623.png "アプリケーション URL の構成")
 
 4.  **[RunMyProcess でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -138,4 +138,4 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

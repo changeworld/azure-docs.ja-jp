@@ -15,7 +15,7 @@
 1.  OfficeSpace Software のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-officespace-software-tutorial/IC777764.png "シナリオ")
 ##OfficeSpace Software のアプリケーション統合の有効化
@@ -65,7 +65,7 @@
 
 3.  **[アプリ URL の構成]** ページの **[OfficeSpace Software サインオン URL]** テキストボックスに、ユーザーが OfficeSpace Software アプリケーションのサインオンに使用する URL (例: "**https://company.officespacesoftware.com*") を入力して、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-officespace-software-tutorial/IC775556.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-officespace-software-tutorial/IC775556.png "アプリケーション URL の構成")
 
 4.  **[OfficeSpace Software でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
@@ -120,4 +120,4 @@ Azure AD ユーザーの OfficeSpace Software へのログインを有効にす�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

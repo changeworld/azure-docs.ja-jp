@@ -1,19 +1,19 @@
 <properties
    pageTitle="特定の認証の資格情報を設定する"
-	description="Visual Studio から Azure にアプリケーションを発行したり、既存のクラウド サービスを監視したりする際に、送信する要求の本人性を Visual Studio が Azure に証明するための資格情報を指定する方法について説明します。"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tglee"/>
+   description="Visual Studio から Azure にアプリケーションを発行したり、既存のクラウド サービスを監視したりする際に、送信する要求の本人性を Visual Studio が Azure に証明するための資格情報を指定する方法について説明します。"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tglee" />
 <tags
    ms.service="multiple"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="multiple"
-	ms.date="09/02/2015"
-	ms.author="kempb"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="multiple"
+   ms.date="09/02/2015"
+   ms.author="kempb" />
 
 # 名前付き認証資格情報の設定
 
@@ -71,4 +71,4 @@ Visual Studio では、サブスクリプション ID が証明書データと�
 
     1. 作成した .cer ファイルのフル パスを貼り付け、指定したパスワードを入力します。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

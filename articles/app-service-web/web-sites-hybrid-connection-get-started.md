@@ -20,7 +20,7 @@
 
 Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTTP Web APIs、Mobile Services、ほとんどのカスタム Web サービスなど、静的 TCP ポートを使用する任意の内部設置型のリソースに接続できます。ここでは、App Service の Web アプリケーションと内部設置型の SQL Server データベース間のハイブリッド接続の作成方法を示します。
 
-> [AZURE.NOTE] ハイブリッド接続機能の Web Apps 部分は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
+> [AZURE.NOTE]ハイブリッド接続機能の Web Apps 部分は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715)でのみ使用できます。BizTalk Services で接続を作成するには、「[Hybrid Connections (ハイブリッド接続)](http://go.microsoft.com/fwlink/p/?LinkID=397274)」を参照してください。
 
 ## 前提条件
 - Azure サブスクリプション。無料サブスクリプションについては、「[1 か月間無料評価版](http://azure.microsoft.com/pricing/free-trial/)」を参照してください。 
@@ -32,12 +32,12 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 	- ポート 5671 で Azure に接続できること
 	- 内部設置型のリソースの *hostname*:*portnumber* に到達できること 
 
-> [AZURE.NOTE] この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
+> [AZURE.NOTE]この記事の手順では、オンプレミスのハイブリッド接続のエージェントをホストするコンピューターからブラウザーを使用していると想定しています。
 
 
 ## Azure ポータルで Web アプリを作成する ##
 
-> [AZURE.NOTE] このチュートリアルで使用する Web アプリを Azure ポータルで既に作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)」から開始してください。
+> [AZURE.NOTE]このチュートリアルで使用する Web アプリを Azure ポータルで既に作成している場合は、この手順をスキップし、「[ハイブリッド接続および BizTalk サービスを作成する](#CreateHC)」から開始してください。
 
 1. [Azure ポータル](https://portal.azure.com)の左下隅の **[新規]** > **[Web + モバイル]** > **[Web サイト]** をクリックします。
 	
@@ -77,11 +77,7 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 	
 	![Create a hybrid connection][TwinCreateHCBlades]
 	
-	**[ハイブリッド接続の作成]** ブレードで、次の操作を行います。
-	- **[名前]** に、接続の名前を入力します。
-	- **[ホスト名]** に、リソースをホストする内部設置型コンピューターの名前を入力します。
-	- **[ポート]** に、内部設置型リソースが使用するポート番号 (SQL Server の既定のインスタンスの場合は 1433) を入力します。
-	- **[BizTalk サービス]** をクリックします。
+	**[ハイブリッド接続の作成]** ブレードで、次の操作を行います。- **[名前]** に、接続の名前を入力します。- **[ホスト名]** に、リソースをホストする内部設置型コンピューターの名前を入力します。- **[ポート]** に、内部設置型リソースが使用するポート番号 (SQL Server の既定のインスタンスの場合は 1433) を入力します。- **[BizTalk サービス]** をクリックします。
 
 
 4. **[BizTalk サービスの作成]** ブレードが開きます。BizTalk サービスの名前を入力し、**[OK]** をクリックします。
@@ -97,16 +93,16 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 6. 処理が完了すると、ポータルの通知領域に接続の作成が完了したことが通知されます。
 	<!-- TODO
 
-    Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the old portal
-	(full portal) and created the BizTalk service but it doesn't seem to let you connnect them - When you finish the
-	Create hybrid conn step, you get the following error
-	Failed to create hybrid connection RelecIoudHC. The 
-	resource type could not be found in the namespace 
-	'Microsoft.BizTaIkServices for api version 2014-06-01'.
+Everything fails at this step. I can't create a BizTalk service in the dogfood portal. I switch to the old portal
+(full portal) and created the BizTalk service but it doesn't seem to let you connnect them - When you finish the
+Create hybrid conn step, you get the following error
+Failed to create hybrid connection RelecIoudHC. The 
+resource type could not be found in the namespace 
+'Microsoft.BizTaIkServices for api version 2014-06-01'.
 
-	The error indicates it couldn't find the type, not the instance.
-	![Success notification][CreateHCSuccessNotification]
-	-->
+The error indicates it couldn't find the type, not the instance.
+![Success notification][CreateHCSuccessNotification]
+-->
 7. Web アプリのブレードの **[ハイブリッド接続]** アイコンは、ハイブリッド接続が 1 つ作成されたことを示しています。
 	
 	![One hybrid connection created][CreateHCOneConnectionCreated]
@@ -211,4 +207,4 @@ Azure App Service の Web アプリケーションは、SQL Server、MySQL、HTT
 [HCStatusConnected]: ./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
  
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

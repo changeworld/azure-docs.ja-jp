@@ -78,4 +78,4 @@ BizTalk API Apps には、次のようなものがあります。Azure ポータ
 [3]: ./media/app-service-logic-create-a-trading-partner-agreement/X12AgreementCreation.jpg
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

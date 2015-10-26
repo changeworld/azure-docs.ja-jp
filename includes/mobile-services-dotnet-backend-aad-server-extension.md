@@ -13,4 +13,4 @@
         options.LoginProviders.Remove(typeof(AzureActiveDirectoryLoginProvider));
         options.LoginProviders.Add(typeof(AzureActiveDirectoryExtendedLoginProvider));
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

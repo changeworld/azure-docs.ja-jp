@@ -1,3 +1,13 @@
+<properties services="virtual-machines" title="Setting up PowerShell" authors="JoeDavies-MSFT" solutions="" manager="timlt" editor="tysonn" />
+
+<tags
+   ms.service="virtual-machines"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm=""
+   ms.workload="infrastructure"
+   ms.date="05/12/2015"
+   ms.author="josephd" />
 
 ## PowerShell のセットアップ
 
@@ -68,4 +78,4 @@ Azure PowerShell コマンド プロンプトで次のコマンドを実行し�
 
 Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](powershell-install-configure.md#Connect)に関するトピックを参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

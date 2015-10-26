@@ -199,4 +199,4 @@ Export-HcsSupportPackage コマンドレットで使用できるさまざまな�
 - [サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする方法](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting) 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

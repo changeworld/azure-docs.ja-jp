@@ -3,8 +3,7 @@
 #チュートリアル: Azure Active Directory と TimeOffManager の統合
 >[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=534748)をクリックしてください。
   
-このチュートリアルでは、Azure と TimeOffManager の統合について説明します。  
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と TimeOffManager の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   TimeOffManager でのシングル サインオンが有効なサブスクリプション
@@ -54,9 +53,7 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで TimeOffManager に対する認証を行うことができるようにする方法を説明します。  
-この手順の途中で、base-64 でエンコードされた証明書を TimeOffManager テナントにアップロードする必要があります。  
-この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで TimeOffManager に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書を TimeOffManager テナントにアップロードする必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
@@ -110,7 +107,7 @@
 
     ![属性](./media/active-directory-saas-timeoffmanager-tutorial/IC795920.png "属性")
 
-10. 必要な属性マッピングを追加するには、次の手順を実行します。
+10. 必要な属性のマッピングを追加するには、次の手順を実行します。
 
     ![SAML トークンの属性](./media/active-directory-saas-timeoffmanager-tutorial/IC795921.png "SAML トークンの属性")
 
@@ -128,9 +125,7 @@
 
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが TimeOffManager にログインできるようにするには、そのユーザーを TimeOffManager にプロビジョニングする必要があります。  
-TimeOffManager は、ジャストインタイム ユーザー プロビジョニングをサポートしています。ユーザー側で必要な操作はありません。  
-シングル サインオンを使用して初めてログインするときに、ユーザーが自動的に追加されます。
+Azure AD ユーザーが TimeOffManager にログインできるようにするには、そのユーザーを TimeOffManager にプロビジョニングする必要があります。TimeOffManager は、ジャストインタイム ユーザー プロビジョニングをサポートしています。ユーザー側で必要な操作はありません。シングル サインオンを使用して初めてログインするときに、ユーザーが自動的に追加されます。
 
 >[AZURE.NOTE]TimeOffManager から提供されている他の TimeOffManager ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -146,10 +141,10 @@ TimeOffManager は、ジャストインタイム ユーザー プロビジョニ
 
     ![ユーザーの割り当て](./media/active-directory-saas-timeoffmanager-tutorial/IC795922.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
 
     ![あり](./media/active-directory-saas-timeoffmanager-tutorial/IC767830.png "あり")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

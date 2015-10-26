@@ -24,4 +24,4 @@
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

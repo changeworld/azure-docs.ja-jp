@@ -128,4 +128,4 @@ Azure AD B2C によって保護された Web API から、同様に保護され�
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant (On-Behalf-Of Flow) を使用してサポートできます。ただし、現時点では、Azure AD B2C プレビューに On-Behalf-Of Flow は実装されていません。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

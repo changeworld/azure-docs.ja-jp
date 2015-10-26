@@ -21,7 +21,7 @@
 
 Microsoft Azure StorSimple デバイスのデプロイへようこそ。デプロイに関するこれらのチュートリアルは、Azure Government Portal で Update 1 ソフトウェアを実行している StorSimple 8000 シリーズに適用されます。このチュートリアルのシリーズでは、StorSimple デバイスを構成する方法について説明します。また、構成チェック リスト、構成の前提条件、詳細な構成手順についても紹介します。
 
-これらのチュートリアルの情報は、ユーザーが安全上の注意を確認していること、および StorSimple デバイスのパッケージを展開してラックに配置し、配線していることを想定しています。これらのタスクを実行する必要がある場合は、最初に[安全性に関する注意事項](storsimple-safety.md)をご確認ください。また、デバイス モデルに応じて以下のいずれかの手順に従い、デバイスの開梱、ラック取り付け、およびケーブル接続を行ってください。
+これらのチュートリアルの情報は、ユーザーが安全上の注意を確認していること、および StorSimple デバイスのパッケージを展開してラックに配置し、配線していることを想定しています。これらのタスクを実行する必要がある場合は、最初に[安全性に関する注意事項](storsimple-safety.md)を確認してください。また、デバイス モデルに応じて以下のいずれかの手順に従い、デバイスの開梱、ラック取り付け、およびケーブル接続を行ってください。
 
 - [8100 デバイスの開梱、ラック取り付け、およびケーブル接続](storsimple-8100-hardware-installation.md)
 - [8600 デバイスの開梱、ラック取り付け、およびケーブル接続](storsimple-8600-hardware-installation.md)
@@ -238,7 +238,7 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 デバイスの更新には、数時間かかることがあります。次の手順を実行して、更新プログラムをスキャンしてデバイスに適用します。
 
-<!-- > [AZURE.NOTE] ゲートウェイを DATA 0 以外のネットワーク インターフェイスで構成している場合は、更新プログラムをインストールする前に、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にする必要があります。 **[デバイス]、[構成]** の順に移動し、DATA 2 と DATA 3 のインターフェイスを無効にします。デバイスの更新後に、これらのインターフェイスをもう一度有効にする必要があります。-->
+<!--If you have a gateway configured on a network interface other than Data 0, you will need to disable Data 2 and Data 3 network interfaces before installing the update. Go to **Devices > Configure** and disable Data 2 and Data 3 interfaces. You should re-enable these interfaces after the device is updated.-->
 
 #### デバイスを更新するには
 
@@ -277,4 +277,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

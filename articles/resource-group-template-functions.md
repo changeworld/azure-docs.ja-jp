@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/14/2015"
+   ms.date="10/13/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートの関数
@@ -493,6 +493,41 @@
     }
 
 
+## uniqueString
+
+**uniqueString (stringForCreatingUniqueString, ...)**
+
+指定された文字列の 64 ビット ハッシュを実行し、一意の文字列を作成します。この関数は、リソースの一意の名前を作成する必要がある場合に便利です。結果の一意性のレベルを表すパラメーターの値を指定します。サブスクリプション、リソース グループ、またはデプロイメントに関して名前が一意であるかどうかを指定できます。
+
+| パラメーター | 必須 | 説明
+| :--------------------------------: | :------: | :----------
+| stringForCreatingUniqueString | あり | 一意の文字列を作成するためにハッシュ関数で使用される基本文字列。
+| 必要に応じて追加のパラメーター | いいえ | 文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。
+
+返される値は完全にランダムな文字列ではなく、ハッシュ関数の結果になります。返される値は、13 文字です。グローバルに一意であるかは保証されません。命名規則にある何らかのプレフィックスをこの値と組み合わせて、よりわかりやすい名前を作成することもできます。
+
+次の例は、uniqueString を使用して、一般的に使用されている別のレベル用に一意の値を作成する方法を示しています。
+
+サブスクリプションに基づいて一意
+
+    "[uniqueString(subscription().subscriptionId)]"
+
+リソース グループに基づいて一意
+
+    "[uniqueString(resourceGroup().id)]"
+
+リソース グループのデプロイメントに基づいて一意
+
+    "[uniqueString(resourceGroup().id, deployment().name)]"
+    
+次の例は、リソース グループに基づいてストレージ アカウントの一意の名前を作成する方法を示しています。
+
+    "resources": [{ 
+        "name": "[concat('ContosoStorage', uniqueString(resourceGroup().id))]", 
+        "type": "Microsoft.Storage/storageAccounts", 
+        ...
+
+
 ## variables
 
 **variables (variableName)**
@@ -505,9 +540,9 @@
 
 
 ## 次のステップ
-- Azure リソース マネージャー テンプレートのセクションの説明については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-- 複数のテンプレートをマージするには、[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
-- ある種類のリソースの作成時に指定した回数を繰り返すには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
-- 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」を参照してください。
+- Azure リソース マネージャー テンプレートのセクションの説明については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
+- 複数のテンプレートをマージするには、[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページをご覧ください。
+- 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
+- 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](azure-portal/resource-group-template-deploy.md)」をご覧ください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

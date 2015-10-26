@@ -97,4 +97,4 @@ Web API プロジェクトで Windows 認証を検出するために、ウィザ
 詳細については、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

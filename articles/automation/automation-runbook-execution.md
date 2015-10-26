@@ -109,4 +109,4 @@ Runbook を作成する際には、2 つのチェックポイント間で任意�
 
 - [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

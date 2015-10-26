@@ -25,4 +25,4 @@ AMS アカウントあたりの Encoding ユニット数 </p></td>|25</p></td>|N
 
 <sup>5</sup> ストレージ アカウントは、同じ Azure サブスクリプションからのものである必要があります。
 
-<!----HONumber=Sept15_HO1-->
+<!---HONumber=Oct15_HO3-->

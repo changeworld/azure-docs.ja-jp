@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/14/2015" 
+	ms.date="10/08/2015" 
 	ms.author="tdykstra"/>
 
 # Azure App Service の API アプリのデバッグ
 
 ## 概要
 
-このチュートリアルでは、[Azure App Service](../app-service/app-service-value-prop-what-is.md) の [API アプリ](app-service-api-apps-why-best-platform.md)で実行するように構成された ASP.NET Web API コードをデバッグする方法について説明します。ローカルに行う方法と (Azure で実行中に) リモートで行う方法の両方のデバッグ方法について説明します。
+このチュートリアルでは、[Azure App Service](../app-service/app-service-value-prop-what-is.md) の [API アプリ](app-service-api-apps-why-best-platform.md)で実行するように構成された ASP.NET Web API コードをデバッグする方法について説明します。ローカルで実行しているときと Azure でリモートで実行しているときに、このコードをデバッグします。
 
 このチュートリアルでは、このシリーズ内の前のチュートリアルで[作成](app-service-dotnet-create-api-app.md)して[デプロイ](app-service-dotnet-deploy-api-app.md)した API アプリを扱います。
 
@@ -44,7 +44,7 @@
 
 	![Swagger UI](./media/app-service-api-dotnet-debug/rd-swagger-ui.png)
 
-5. Visual Studio に戻って、**[表示]、[サーバー エクスプローラー]** の順にをクリックします。
+5. Visual Studio に戻って、**[表示]、[サーバー エクスプローラー]** の順にクリックします。
 
 6. **サーバー エクスプローラー**で、**[Azure]、[App Service]** ノードの順に展開します。
 
@@ -132,8 +132,8 @@ Azure サーバーへのラウンドトリップによってデバッグが低�
 
 ## 次のステップ
 
-このチュートリアルでは、API Apps をデバッグする方法について説明しました。トラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。API Apps は、Web サービスをホストする追加機能を備えた Web アプリです。そのため、Web アプリに使用する API アプリ用と同じデバッグとトラブルシューティング ツールを使用できます。
+このチュートリアルでは、API Apps をデバッグする方法について説明しました。
 
- 
+トラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。API Apps は、Web サービスをホストする追加機能を備えた Web アプリです。そのため、Web アプリに使用する API アプリ用と同じデバッグとトラブルシューティング ツールを使用できます。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

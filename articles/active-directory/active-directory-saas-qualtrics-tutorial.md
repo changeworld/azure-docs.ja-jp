@@ -15,7 +15,7 @@
 1.  Qualtrics のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-qualtrics-tutorial/IC789542.png "シナリオ")
 ##Qualtrics のアプリケーション統合の有効化
@@ -65,7 +65,7 @@
 
 3.  **[アプリの URL の構成]** ページで、**[Qualtrics サインオン URL]** ボックスに URL (例: "*https://ssotest2ut1.qualtrics.com*") を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-qualtrics-tutorial/IC789547.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-qualtrics-tutorial/IC789547.png "アプリケーション URL の構成")
 
 4.  **[Qualtrics でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターに保存します。
 
@@ -99,4 +99,4 @@ Qualtrics へのユーザー プロビジョニングの構成にあたって必
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

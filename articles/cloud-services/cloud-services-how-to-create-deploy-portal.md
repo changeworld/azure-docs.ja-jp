@@ -114,4 +114,4 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

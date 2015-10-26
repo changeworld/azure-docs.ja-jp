@@ -19,7 +19,8 @@
 
 # Azure 仮想マシン用のディスクと VHD について
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルおよびクラシック デプロイメント モデルを使用して作成されたリソースについて説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 ユーザーが仮想マシンを作成する場合、Azure でのすべての仮想マシンは少なくとも 2 つのディスクで構成されます。1 つはオペレーティング システム ディスクであり、もう 1 つはリソース ディスクとも呼ばれる一時的なローカル ディスクです。オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は実際に仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。仮想マシンではデータ ディスクも保持することができ、これらも VHD として格納されます。
 
@@ -67,4 +68,4 @@ Windows 仮想マシン
 -  [Windows 仮想マシンをキャプチャする](virtual-machines-capture-image-windows-server.md)
 -  [ディスクを取り外す](storage-windows-detach-disk.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

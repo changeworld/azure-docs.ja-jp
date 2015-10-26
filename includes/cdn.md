@@ -111,4 +111,4 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 [create-new-storage-account]: ./media/cdn/CDN_CreateNewStorageAcct.png
 [Previous Management Portal]: ../../Shared/Media/previous-portal.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

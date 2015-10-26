@@ -370,4 +370,4 @@ Azure Search では、既定のスコアリングを使用して初期スコア�
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

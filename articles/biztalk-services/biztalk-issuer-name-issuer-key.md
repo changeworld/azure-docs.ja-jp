@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="BizTalk Services における発行者名と発行者キー | Microsoft Azure"
-	description="BizTalk サービスの Service Bus または Access Control (ACS) の発行者名と発行者キーを取得する方法について説明します。MABS、WABS"
-	services="biztalk-services"
-	documentationCenter=""
-	authors="MandiOhlinger"
-	manager="dwrede"
+	pageTitle="BizTalk Services における発行者名と発行者キー | Microsoft Azure" 
+	description="BizTalk サービスの Service Bus または Access Control (ACS) の発行者名と発行者キーを取得する方法について説明します。MABS、WABS" 
+	services="biztalk-services" 
+	documentationCenter="" 
+	authors="MandiOhlinger" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="biztalk-services"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.service="biztalk-services" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/26/2015" 
 	ms.author="mandia"/>
 
 
@@ -71,9 +71,7 @@ Access Control 発行者名および発行者キーは次のコンポーネン�
 2. 左のナビゲーション ウィンドウで、[**Service Bus**] を選択します。
 3. 名前空間を選択します。タスク バーで [**接続情報**] をクリックします。これにより、**既定の発行者** (発行者名) と**既定のキー** (発行者キー) が表示されます。これらの値はコピーできます。  
 
-まとめると次のようになります:  
-発行者名 = 既定の発行者  
-発行者キー = 既定のキー
+まとめると次のようになります: 発行者名 = 既定の発行者 発行者キー = 既定のキー
 
 ## 次へ
 Azure BizTalk サービスに関するその他のトピック:
@@ -94,4 +92,4 @@ Azure BizTalk サービスに関するその他のトピック:
 - [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
  
 
-<!-----HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

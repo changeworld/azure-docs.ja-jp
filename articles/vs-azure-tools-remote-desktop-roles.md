@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Azure ロールでのリモート デスクトップの使用"
-	description="Azure ロールでのリモート デスクトップの使用"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tlee"/>
+   description="Azure ロールでのリモート デスクトップの使用"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tlee" />
 <tags 
    ms.service="multiple"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/24/2015"
-	ms.author="kempb"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/24/2015"
+   ms.author="kempb" />
 
 # Azure ロールでのリモート デスクトップの使用
 
@@ -75,4 +75,4 @@ Azure にクラウド サービスを発行したら、サーバー エクスプ
 
 1. 以前作成したユーザー名とパスワードを入力します。これでリモート セッションにログインした状態になります。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

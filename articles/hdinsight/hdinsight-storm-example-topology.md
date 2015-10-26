@@ -37,6 +37,7 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
 | [HDInsight の Storm から Azure サービスを使用するためのテンプレート C# Storm トポロジ プロジェクト][ce0c02a2] | Event Hubs、DocumentDb、SQL Database、HBase、SignalR | C#、Java |
 | [HDInsight の Storm を使用して Azure Event Hubs から読み取る場合の拡張性ベンチマーク][d6c540e3] | メッセージ スループット、Event Hubs、SQL Database | C#、Java |
 | [HDInsight での Storm および HBase を使用した関連付け](hdinsight-storm-correlation-topology.md) | HBase | C# |
+| [HDInsight の Storm での Python の使用](hdinsight-storm-develop-python-topology.md) | Java および Clojure ベースの Storm トポロジによる Python コンポーネント | Python |
 
 ## 次のステップ
 
@@ -59,4 +60,4 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
   [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "このプロジェクトには、Event Hubs、DocumentDB、SQL Database などの Azure サービスと対話するためのスパウト、ボルト、トポロジのテンプレートが含まれます。"
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="07/17/2015"
+	ms.date="10/13/2015"
 	ms.author="brandwe"/>
 
 # Azure AD の iOS アプリへの統合
@@ -225,4 +225,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

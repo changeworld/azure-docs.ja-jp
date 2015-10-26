@@ -18,7 +18,7 @@
 
 # Microsoft Passport 経由でのパスワードを使用しない ID の認証
 
-パスワードだけで認証する現在の方法は、ユーザーの安全を保つうえで十分ではありません。ユーザーは、パスワードを再利用したり、忘れたりすることがあります。パスワードに対しては、攻撃やフィッシング、解読、推測が可能です。また、パスワードは、覚えるのが難しく、"pass the hash" のような攻撃の対象にもなります。
+パスワードだけで認証する現在の方法は、ユーザーの安全を保つうえで十分ではありません。ユーザーは、パスワードを再利用したり、忘れたりすることがあります。パスワードに対しては、攻撃やフィッシング、解読、推測が可能です。また、パスワードは、覚えるのが難しく、"Pass the Hash" のような攻撃の対象にもなります。"Pass the Hash" は、通常であれば関連付けられたプレーンテキスト パスワードを要求する代わりに、攻撃者がユーザーのパスワードの基になる NTLM ハッシュや LanMan ハッシュを使用してリモートのサーバー/サービスを認証できるようにするハッキング手法です。詳細については、[Pass the Hash](https://technet.microsoft.com/JA-JP/dn785092.aspx) に関するページを参照してください。
 
 ## Microsoft Passport とは
 Microsoft Passport は、組織とコンシューマー向けの、パスワードを超える新しい秘密/公開キーまたは証明書ベースの認証方式です。この認証方式は、パスワードに代わるこれらのキー ペア資格情報を利用し、セキュリティ侵害、盗難、フィッシングに対する耐性を備えています。Microsoft Passport では、ユーザーは、Microsoft アカウント、Active Directory アカウント、Microsoft Azure Active Directory (AD) アカウント、または Fast ID Online (FIDO) 認証をサポートする Microsoft 以外のサービスに対して認証できます。Microsoft Passport の登録時の 2 段階の初期検証の後、Microsoft Passport がユーザーのデバイスに設定されます。次に、ユーザーがジェスチャ (Windows Hello または PIN) を設定します。ユーザーは、身元を確認するジェスチャを提供します。その後、Windows が Microsoft Passport を使ってユーザーを認証し、保護されたリソースとサービスにアクセスできるようにします。
@@ -45,7 +45,7 @@ Microsoft Passport を有効にすると、次の操作によって会社のリ�
 ## Microsoft Passport のライフサイクル
 Microsoft Passport による認証のライフサイクル![](./media/active-directory-azureadjoin/active-directory-azureadjoin-microsoft-passport.png) 上の図は、秘密/公開キーのペアと、ID プロバイダーによる検証を示しています。これらの各手順について、以下で詳しく説明します。
 
-1. ユーザーが組み込みの複数の証明方法 (ジェスチャ、物理スマート カード、多要素認証) を通じて自分の身元を証明し、Azure Active Directory、Active Directory などの ID プロバイダー (IDP) にこの情報を送信します。
+1. ユーザーが組み込みの複数の証明方法 (ジェスチャ、物理スマート カード、Multi-Factor Authentication) を通じて自分の身元を証明し、Azure Active Directory、Active Directory などの ID プロバイダー (IDP) にこの情報を送信します。
 
 2.  デバイスが、キーを作成し、キーを証明した後、このキーの公開部分を取り出してステーションのステートメントをアタッチします。署名後 IDP に送信して、このキーを登録します。
 
@@ -68,5 +68,6 @@ Microsoft Passport による認証のライフサイクル![](./media/active-dir
 
 * [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-overview.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
+* [Microsoft Passport を使った本人確認の管理](https://technet.microsoft.com/library/mt219735(v=vs.85).aspx)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

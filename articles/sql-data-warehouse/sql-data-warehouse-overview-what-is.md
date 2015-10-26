@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="09/22/2015"
+   ms.date="10/08/2015"
    ms.author="barbkess;twounder;JRJ@BigBangData.co.uk;"/>
 
 
@@ -68,6 +68,8 @@ SQL Data Warehouse は数秒で簡単にデプロイできます。このサー�
 ## 次のステップ
 「[データ ウェアハウスのワークロード]」について学習します。開始するには[サンプル データ]を[プロビジョニング]して読み込みます。
 
+>[AZURE.NOTE]記事の改善にご協力ください。「この記事は役に立ちましたか?」という質問に「いいえ」を選択した場合は、不足しているものやどうすれば記事を改善できるかについてのご提案をお願いいたします。ご協力ありがとうございます。
+
 <!--Image references-->
 
 <!--Article references-->
@@ -79,4 +81,4 @@ SQL Data Warehouse は数秒で簡単にデプロイできます。このサー�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

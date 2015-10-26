@@ -21,7 +21,8 @@
 
 Azure では、仮想ハードウェアの選択、およびソフトウェアの構成の両方で MySQL のパフォーマンスに影響を与える多くの要素があります。この記事では、ストレージ、システム、およびデータベースの構成でのパフォーマンスの最適化について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 ##Azure の仮想マシン上での RAID の使用
 ストレージは、クラウド環境でデータベースのパフォーマンスに影響を与える重要な要素です。RAID は、1 つのディスクと比較して、同時実行制御を使用して高速アクセスを提供できます。詳細については、[標準の RAID レベル](http://en.wikipedia.org/wiki/Standard_RAID_levels)に関するページを参照してください。
@@ -347,4 +348,4 @@ MySQL 低速クエリ ログによって、MySQL の低速のクエリを特定�
 [13]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-13.png
 [14]: ./media/virtual-machines-linux-optimize-mysql-perf/virtual-machines-linux-optimize-mysql-perf-14.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

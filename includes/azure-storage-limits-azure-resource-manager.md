@@ -5,4 +5,4 @@
 Storage アカウント管理操作数 (読み取り)|5 分あたり 800
 Storage アカウント管理操作数 (書き込み)|1 時間あたり 200
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

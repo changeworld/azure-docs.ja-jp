@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="データ変換のアクティビティ | Microsoft Azure"
-	description="Azure Data Factory サービスを使用してデータを変換、分析する方法について説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="データ変換のアクティビティ | Microsoft Azure" 
+	description="Azure Data Factory サービスを使用してデータを変換、分析する方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/26/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/26/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した変換と分析
@@ -24,11 +24,7 @@ Azure Data Factory の変換アクティビティにより、未加工のデー�
 
 変換アクティビティ | Compute 環境 
 ----------------------- | --------------------
-[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] 
-[Pig](data-factory-pig-activity.md) | HDInsight [Hadoop]  
-[MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop]  
-[Hadoop Streaming](https://msdn.microsoft.com/library/mt185698.aspx) | HDInsight [Hadoop]
-[Machine Learning Batch Scoring](data-factory-create-predictive-pipelines.md) | Azure VM 
+[Hive](data-factory-hive-activity.md) | HDInsight [Hadoop] [Pig](data-factory-pig-activity.md) | HDInsight [Hadoop] [MapReduce](data-factory-map-reduce.md) | HDInsight [Hadoop] [Hadoop Streaming](https://msdn.microsoft.com/library/mt185698.aspx) | HDInsight [Hadoop] [Machine Learning Batch Execution](data-factory-azure-ml-batch-execution-activity.md) | Azure VM 
 [ストアド プロシージャ](data-factory-stored-proc-activity.md) | Azure SQL | 
 [DotNet](data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch    
 
@@ -42,4 +38,4 @@ Data Factory でサポートされているコンピューティングにリン�
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-data-transformation-activities.md)でフィードバックをお寄せください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

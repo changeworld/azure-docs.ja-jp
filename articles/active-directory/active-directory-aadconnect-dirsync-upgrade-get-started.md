@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Microsoft Azure AD Connect - Windows Azure AD 同期ツール (DirSync) からのアップグレード"
+   pageTitle="Microsoft Azure AD Connect - Windows Azure AD 同期ツール (DirSync) からのアップグレード | Microsoft Azure"
    description="DirSync から Azure AD Connect にアップグレードする方法について説明します。この記事では、Windows Azure AD 同期 ツール (DirSync) を Azure AD Connect へアップグレードするための手順について説明します。"
    services="active-directory"
    documentationCenter=""
    authors="shoatman"
-   manager="terrylanfear"
+   manager="stevenpo"
    editor="billmath"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="09/02/2015" 
+   ms.date="09/02/2015"
    ms.author="shoatman"/>
 
 # Azure Active Directory Connect に Windows Azure Active Directory 同期 (DirSync) をアップグレードします。
@@ -32,9 +32,9 @@ Azure AD Connect をインストールし、DirSync からアップグレード�
 - ローカルの Active Directory のエンタープライズ管理者アカウント
 - 省略可能: SQL Server の完全バージョンを使用するように DirSync を構成する場合 - 該当するデータベース インスタンスの情報
 
-### 並列展開
+### 並列デプロイ
 
-現在 50K 以上のオブジェクトを同期している場合、並列展開の実行オプションを選択できます。並列展開には、個別のサーバーまたはサーバーのセット (SQL Server に個別のサーバーが必要な場合) が必要です。並列展開の利点は、同期のダウンタイムを回避する機会を得られることです。Azure AD Connect のインストールでは、予期されるダウンタイムを予測しますが、過去に DirSync をアップグレードしたことがある場合は、その経験が最善の指標となります。
+現在 50K 以上のオブジェクトを同期している場合、並列デプロイの実行オプションを選択できます。並列デプロイには、個別のサーバーまたはサーバーのセット (SQL Server に個別のサーバーが必要な場合) が必要です。並列デプロイの利点は、同期のダウンタイムを回避する機会を得られることです。Azure AD Connect のインストールでは、予期されるダウンタイムを予測しますが、過去に DirSync をアップグレードしたことがある場合は、その経験が最善の指標となります。
 
 ## Azure AD Connect のインストール
 
@@ -95,7 +95,7 @@ Azure AD Connect をダウンロードし、既存の DirSync サーバーにコ
 
 この場合、個別のサーバーでの並列アップグレードの検討をお勧めします。これを推奨する理由は、組織の規模によっては、ローカルの Active Directory での変更がどの程度の速度で Azure AD/Office 365 に反映されるかという点で、インプレース アップグレードがビジネスのサービス レベル契約に影響を与える可能性があるためです。Azure AD Connect を使用した最初の同期にどの程度の時間がかかるかについて推定します。前述のように、DirSync のインストールまたは DirSync へのアップグレードを実行した経験が最善の指標となります。
 
-並列展開には、個別のサーバーまたはサーバーのセットが必要です (Azure AD Connect から SQL Server を個別のサーバーで実行する必要がある場合)。このような理由から、組織への影響を回避するようにスケジュールを設定できる場合は、インプレース アップグレードを検討することが合理的です。
+並列デプロイには、個別のサーバーまたはサーバーのセットが必要です (Azure AD Connect から SQL Server を個別のサーバーで実行する必要がある場合)。このような理由から、組織への影響を回避するようにスケジュールを設定できる場合は、インプレース アップグレードを検討することが合理的です。
 
 インプレース アップグレードを続行するには、[このコンピューター上の DirSync のアップグレードを続行する] の横のチェックボックスをオンにします。
 
@@ -107,13 +107,13 @@ DirSync のインストールにおいて、ローカルまたはリモートで
 
 DirSync によって使用されている既存の SQL Server データベース サーバーに関する情報が表示されます。必要に応じて、適切に調整を行います。[次へ] をクリックすると、インストールが続行されます。
 
-## 並列展開 - 50K 以上のオブジェクト
+## 並列デプロイ - 50K 以上のオブジェクト
 
-手順 3 で、50K 以上のオブジェクトがある場合、Azure AD Connect のインストールでは並列展開が推奨されます。Azure AD Connect のインプレースまたは並列展開の選択について詳しくは、上述の「インプレース アップグレード - 50K 以上のオブジェクト」を参照してください次のような画面が表示されます。
+手順 3 で、50K 以上のオブジェクトがある場合、Azure AD Connect のインストールでは並列デプロイが推奨されます。Azure AD Connect のインプレースまたは並列デプロイの選択について詳しくは、上述の「インプレース アップグレード - 50K 以上のオブジェクト」を参照してください次のような画面が表示されます。
 
 ![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)
 
-並列展開を開始する場合は、次の手順を実行する必要があります。
+並列デプロイを開始する場合は、次の手順を実行する必要があります。
 
 - [設定のエクスポート] をクリックします。Azure AD Connect を別のサーバーにインストールすると、これらの設定がインポートされ、現在の DirSync から新しい AAD Connect インストールにすべての設定が移行されます。
 
@@ -143,7 +143,7 @@ Azure AD Connect に接続され、次の UI が表示されます。
 
 ![Azure ADの資格情報を入力します。](./media/active-directory-aadconnect-dirsync-upgrade-get-started/advancedsettings.png)
 
-7. [次へ] をクリックします。 
+7. [次へ] をクリックします。
 8. [構成の準備完了] ページで [構成が完了したらすぐに同期プロセスを開始する] チェック ボックスをオンのままにします。[AZURE.NOTE]Windows Server Active Directory と Azure Active Directory の間で同期が開始されますが、変更は Azure AD にエクスポートされません。一度にアクティブにし変更をエクスポートできる同期ツールは 1 つだけです。
 9. [インストール] をクリックします。
 
@@ -182,7 +182,7 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 
 * [インストール] ボタンをクリックします。
 
-ご利用ありがとうございます。 並列展開を使用した Azure AD Connect への移行が正常に完了しました。
+ご利用ありがとうございます。 並列デプロイを使用した Azure AD Connect への移行が正常に完了しました。
 
 ## Azure AD Connect でサポートされるコンポーネント
 
@@ -205,4 +205,4 @@ Azure AD Connect が DirSync からの引き継ぎの準備を完了している
 * [詳細情報](active-directory-aadconnect-learn-more.md)
 * [MSDN の Azure AD Connect](active-directory-aadconnect.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

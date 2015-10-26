@@ -149,7 +149,7 @@ Windows PowerShell for StorSimple に接続する方法を決定するときは�
 
 #### Windows PowerShell for StorSimple のワークフロー
 
-|目的の操作 ...|実行する手順 .|
+|目的の操作|実行する手順|
 |---|---|
 |デバイスを登録する|[Windows PowerShell for StorSimple を使用してデバイスを構成して登録する](storsimple-deployment-walkthrough.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |
 |Web プロキシの </br>Web プロキシ表示設定を構成する|[StorSimple デバイスの Web プロキシを構成する](storsimple-configure-web-proxy.md)|
@@ -197,4 +197,4 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 ## 次のステップ
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「[StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

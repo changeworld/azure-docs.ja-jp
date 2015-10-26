@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Node.js から Queue ストレージを使用する方法 | Microsoft Azure"
-	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。サンプルは Node.js で記述されています。"
-	services="storage"
-	documentationCenter="nodejs"
-	authors="MikeWasson"
-	manager="wpickett"
+	pageTitle="Node.js から Queue ストレージを使用する方法 | Microsoft Azure" 
+	description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。サンプルは Node.js で記述されています。" 
+	services="storage" 
+	documentationCenter="nodejs" 
+	authors="MikeWasson" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="nodejs"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="mwasson"/>
 
 
@@ -333,4 +333,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
  [WebMatrix による Web サイトの作成とデプロイ]: ../web-sites-nodejs-use-webmatrix.md
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

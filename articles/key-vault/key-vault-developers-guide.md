@@ -67,4 +67,4 @@ Azure Key Vault コンテナー (資格情報コンテナー) は、次の記事
 
 - 次のダウンロードには、サンプル アプリケーション (HelloKeyVault) と、Azure Web サービスの例の両方が含まれています。[Azure Key Vault のコード サンプル](http://www.microsoft.com/download/details.aspx?id=45343)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

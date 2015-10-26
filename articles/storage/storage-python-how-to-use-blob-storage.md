@@ -116,4 +116,4 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
 [Python Azure Storage パッケージ]: https://pypi.python.org/pypi/azure-storage
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

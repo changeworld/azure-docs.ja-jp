@@ -93,4 +93,4 @@ PowerShell の使用の詳細については、「[Introduction to PowerShell cm
 
 [Azure ポータル]: http://portal.azure.com/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

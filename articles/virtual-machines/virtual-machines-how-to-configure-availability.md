@@ -1,6 +1,6 @@
 <properties
 	pageTitle="VM の可用性セットを構成する | Microsoft Azure"
-	description="Azure ポータルと Azure PowerShell を使用して新規または既存の仮想マシンに対する可用性セットをクラシック デプロイメント モデルで構成します。"
+	description="Azure ポータルと Azure PowerShell を使用して新規または既存の仮想マシンに対する可用性セットをクラシック デプロイ モデルで構成します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -17,9 +17,10 @@
 	ms.date="08/10/2015"
 	ms.author="cynthn"/>
 
-# クラシック デプロイメント モデルに仮想マシンの可用性セットを構成する方法
+# クラシック デプロイ モデルに仮想マシンの可用性セットを構成する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 可用性セットは、メンテナンス時などのシステム停止時に仮想マシンを利用するのに役立ちます。同じように構成された 2 つ以上の仮想マシンを同じ可用性セットに割り当てることによって、仮想マシンが実行するアプリケーションやサービスの可用性を維持するために必要な冗長性が実現されます。この機能の詳細については、「[仮想マシンの可用性管理][]」を参照してください。
 
@@ -50,7 +51,7 @@ Azure ポータルを使用する方法と、Azure PowerShell コマンドを使
 
 	1. 適切なクラウド サービス名を選択します。ここでは、**[新しいクラウド サービスの作成]** に設定します (ただし、新しい仮想マシンを既存の仮想マシン クラウド サービスに追加する場合を除く)。**[クラウド サービス DNS 名]** で、名前を入力します。DNS 名は、仮想マシンに接続するために使用される URI の一部になります。クラウド サービスは、通信および分離グループとしての機能があります。すべての仮想マシンが同じクラウド サービス内に属していれば、相互の通信、負荷分散設定、同一可用性セットへの割り当てができます。
 
-	2. 仮想ネットワークを使用する場合には、**[リージョン/アフィニティ グループ/仮想ネットワーク]** で、使用する仮想ネットワークを指定します。**重要**: 仮想マシンで仮想ネットワークを使用する場合は、仮想マシンを作成時に仮想ネットワークに参加させる必要があります。作成後に仮想マシンを仮想ネットワークに参加させることはできません。詳細については、「[仮想ネットワークの概要][]」を参照してください。
+	2. 仮想ネットワークを使用する場合には、**[リージョン/アフィニティ グループ/仮想ネットワーク]** で、使用する仮想ネットワークを指定します。**重要**: 仮想マシンで仮想ネットワークを使用する場合は、仮想マシンを作成時に仮想ネットワークに参加させる必要があります。作成後に仮想マシンを仮想ネットワークに参加させることはできません。詳細については、「[Virtual Network の概要][]」を参照してください。
 
 	3. 可用性セットを作成します。**[可用性セット]** で、**[可用性セットの作成]** が選択されたままにします。次に、可用性セットの名前を入力します。
 
@@ -108,7 +109,7 @@ Azure PowerShell コマンドを使用するには、管理者レベルの Azure
 [Azure インフラストラクチャ サービスの負荷分散]: virtual-machines-load-balance.md
 [仮想マシンの可用性管理]: virtual-machines-manage-availability.md
 [Windows を実行する仮想マシンの作成]: virtual-machines-windows-tutorial.md
-[仮想ネットワークの概要]: virtual-networks-overview.md
+[Virtual Network の概要]: virtual-networks-overview.md
 [サービス管理での仮想マシンの操作に関する記事]: virtual-machines-service-management-articles.md
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

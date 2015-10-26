@@ -1,20 +1,20 @@
 <properties
    pageTitle="サービス通信モデルの概要"
-	description="この記事では、Reliable Service の API でサポートされる通信モデルの基本について説明します。"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="BharatNarasimman"
-	manager="vipulm"
-	editor=""/>
+   description="この記事では、Reliable Service の API でサポートされる通信モデルの基本について説明します。"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="BharatNarasimman"
+   manager="vipulm"
+   editor=""/>
 
 <tags
    ms.service="service-fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="required"
-	ms.date="08/27/2015"
-	ms.author="bharatn@microsoft.com"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="required"
+   ms.date="08/27/2015"
+   ms.author="bharatn@microsoft.com"/>
 
 # サービス通信モデル
 
@@ -230,4 +230,4 @@ var myServicePartitionClient = new ServicePartitionClient<MyCommunicationClient>
 * [WebAPI 通信スタックを使用する Reliable Services API を使用したサービスの作成](service-fabric-reliable-services-communication-webapi.md)
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

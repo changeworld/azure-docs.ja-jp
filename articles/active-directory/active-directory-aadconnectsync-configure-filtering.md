@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.date="10/13/2015"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -276,10 +276,9 @@ Azure AD Connect をインストールした後にフォレスト内のドメイ
 7. 完全同期の実行: [コネクタ] タブで [SourceAD] を右クリックし、[実行]、[完全同期]、[OK] の順にクリックします。
 
 
+## 次のステップ
+[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
-## その他のリソース
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-* [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
-* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

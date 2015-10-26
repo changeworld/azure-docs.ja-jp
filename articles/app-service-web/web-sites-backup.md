@@ -27,7 +27,7 @@ Azure Web アプリをバックアップから復元する方法については�
 
 <a name="whatsbackedup"></a>
 ## バックアップ対象 
-Web アプリでは、次の情報をバックアップできます。
+Web Apps では、次の情報をバックアップできます。
 
 * Web アプリの構成
 * Web アプリ ファイルの内容
@@ -49,7 +49,7 @@ Web アプリでは、次の情報をバックアップできます。
 <a name="manualbackup"></a>
 ## 手動バックアップの作成
 
-1. Azure ポータルでは、[Web アプリ] ブレードから Web アプリを選択します。これにより、新しいブレードで、Web アプリの詳細が表示されます。
+1. Azure ポータルでは、[Web Apps] ブレードから Web アプリを選択します。これにより、新しいブレードで、Web アプリの詳細が表示されます。
 2. **[設定]** オプションを選択します。**[設定]** ブレードが表示され、Web アプリを変更できるようになります。
 	
 	![バックアップ ページ][ChooseBackupsPage]
@@ -125,8 +125,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 今後まったく変更されることがない過去のログ ファイルや静止画像を含む Web アプリがあるとします。古い画像を含む Web アプリの完全バックアップは既に存在します。今後、Web アプリのバックアップを毎日実行しますが、変更されることがないログ ファイルや静止画像ファイルはバックアップしないようにするとします。
 
-![Logs フォルダー][LogsFolder]	
-![images フォルダー][ImagesFolder]
+![Logs フォルダー][LogsFolder] ![images フォルダー][ImagesFolder]
 	
 次の手順は、これらのファイルをバックアップから除外する方法を示しています。
 
@@ -142,7 +141,7 @@ Web アプリのすべてをバックアップしたくない場合がありま�
 
 2. `_backup.filter` という名前のファイルを作成し、上のリストをこのファイルに配置します。ただし `D:\home` は削除します。1 つのディレクトリまたはファイルを 1 行に配置します。したがって、ファイルの内容は次のようになります。
 
-    \site\wwwroot\Logs \LogFiles \site\wwwroot\Images\2013 \site\wwwroot\Images\2014 \site\wwwroot\Images\brand.png
+    \\site\\wwwroot\\Logs \\LogFiles \\site\\wwwroot\\Images\\2013 \\site\\wwwroot\\Images\\2014 \\site\\wwwroot\\Images\\brand.png
 
 3. このファイルを、[ftp](web-sites-deploy.md#ftp)やその他の方法を使用して、サイトの `D:\home\site\wwwroot` ディレクトリにアップロードします。ファイルを `http://{yourapp}.scm.azurewebsites.net/DebugConsole` 内に直接作成し、そこにコンテンツを挿入することもできます。
 
@@ -200,7 +199,7 @@ Azure を利用し始めるには、「[Microsoft Azure の無料試用版サイ
 
 [ストレージ アカウントの監視方法](../storage-monitor-storage-account.md)
 
-[Azure ストレージでの課金について](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
+[Azure Storage での課金について](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
 
 ## 変更内容
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
@@ -222,4 +221,4 @@ Azure を利用し始めるには、「[Microsoft Azure の無料試用版サイ
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

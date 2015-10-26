@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Azure PowerShell で削除した Azure SQL データベースを復元する" 
-   description="Microsoft Azure SQL データベース, 削除したデータベースの復元, 削除したデータベースの回復, Azure PowerShell" 
+   description="Microsoft Azure SQL Database, 削除したデータベースの復元, 削除したデータベースの回復, Azure PowerShell" 
    services="sql-database" 
    documentationCenter="" 
    authors="elfisher" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="storage-backup-recovery" 
-   ms.date="07/24/2015"
+   ms.date="10/08/2015"
    ms.author="elfish; v-romcal; v-stste"/>
 
 # Azure PowerShell で削除した Azure SQL データベースを復元する
@@ -38,17 +38,19 @@
 
 次のコマンドレットを実行するには証明書ベースの認証を使用する必要があります。詳細については、「[Azure PowerShell のインストールと構成方法](../powershell-install-configure.md#use-the-certificate-method)」の「*証明書メソッドを使用する*」セクションを参照してください。
 
+> [AZURE.IMPORTANT]この記事には、バージョン 1.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。
+
 1. [Get-AzureSqlDatabase](http://msdn.microsoft.com/library/azure/dn546735.aspx) コマンドレットを使用して回復可能なデータベースの一覧を取得します。
 	* **RestorableDropped** スイッチを使用して、データベースを削除したサーバーの **ServerName** を指定します。
 	* 次のコマンドを実行すると結果が **$RecoverableDBs** という変数に格納されます。
 	
-	`PS C:\>$RecoverableDBs = Get-AzureSqlDatabase -ServerName "myserver" –RestorableDropped`
+	`$RecoverableDBs = Get-AzureSqlDatabase -ServerName "myserver" –RestorableDropped`
 
 2. 削除済みデータベースの一覧から復元するデータベースを選びます。
 
 	* **$RecoverableDBs** の一覧から削除したデータベースの番号を入力します。  
 
-	`PS C:\>$Database = $RecoverableDBs[<deleted database number>]`
+	`$Database = $RecoverableDBs[<deleted database number>]`
 
 	* 復元可能な削除済みデータベース オブジェクトの取得方法について詳しくは、「[Get-AzureSqlDatabase](http://msdn.microsoft.com/library/dn546735.aspx)」を参照してください。
 
@@ -58,14 +60,14 @@
 
 	**$RestoreRequest** という変数に返された結果を格納します。この変数には、復元の状態を監視するための復元要求 ID が含まれています。
 	
-	`PS C:\>$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceRestorableDroppedDatabase $Database –TargetDatabaseName “myrestoredDB”`
+	`$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceRestorableDroppedDatabase $Database –TargetDatabaseName “myrestoredDB”`
 
 復元が完了するまで時間がかかる場合があります。復元の状態を監視するには、[Get AzureSqlDatabaseOperation](http://msdn.microsoft.com/library/azure/dn546738.aspx) コマンドレットを使用して、次のパラメーターを指定します。
 
 * 復元先のデータベースの **ServerName**。
 * 手順 3 で **$RestoreRequest** 変数に格納した復元要求 ID **OperationGuid**。
 
-	`PS C:\>Get-AzureSqlDatabaseOperation –ServerName "myserver" –OperationGuid $RestoreRequest.RequestID`
+	`Get-AzureSqlDatabaseOperation –ServerName "myserver" –OperationGuid $RestoreRequest.RequestID`
 
 **[State]** と **[PercentComplete]** のフィールドには復元の状態が表示されます。
 
@@ -73,10 +75,8 @@
 
 詳細については、次のトピックを参照してください。
 
-[Azure SQL データベースの継続性](http://msdn.microsoft.com/library/azure/hh852669.aspx)
-
-[Azure SQL Database のバックアップと復元](http://msdn.microsoft.com/library/azure/jj650016.aspx)
+[Azure SQL Database のビジネス継続性](sql-database-business-continuity.md)
 
 [Azure PowerShell](http://msdn.microsoft.com/library/azure/jj156055.aspx)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

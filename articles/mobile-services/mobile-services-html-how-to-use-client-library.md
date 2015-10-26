@@ -665,4 +665,4 @@ promise はいくつかの異なる方法で使用することができます。
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData システム クエリ オプション リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

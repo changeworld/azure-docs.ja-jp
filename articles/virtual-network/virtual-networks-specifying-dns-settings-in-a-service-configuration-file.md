@@ -1,19 +1,19 @@
 <properties 
    pageTitle="サービス構成ファイルでの DNS 設定の指定 | Microsoft Azure"
-	description="仮想ネットワークのサービス構成ファイルを使用してカスタム DNS 設定を指定する"
-	services="virtual-network"
-	documentationCenter="na"
-	authors="joaoma"
-	manager="jdial"
-	editor="tysonn"/>
+   description="仮想ネットワークのサービス構成ファイルを使用してカスタム DNS 設定を指定する"
+   services="virtual-network"
+   documentationCenter="na"
+   authors="joaoma"
+   manager="jdial"
+   editor="tysonn" />
 <tags 
    ms.service="virtual-network"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="09/01/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/01/2015"
+   ms.author="joaoma" />
 
 # サービス構成ファイルでの DNS 設定の指定
 
@@ -41,4 +41,4 @@
 
 [管理ポータルでの Virtual Network の設定について](http://go.microsoft.com/fwlink/?LinkId=248092)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

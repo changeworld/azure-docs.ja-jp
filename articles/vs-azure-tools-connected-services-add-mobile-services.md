@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Visual Studio の接続済みサービスを使用した Mobile Services の追加 | Microsoft Azure"
-	description="Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用して Mobile Services を追加する"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="patshea123"
-	manager="douge"
-	editor="tlee"/>
+   description="Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用して Mobile Services を追加する"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="patshea123"
+   manager="douge"
+   editor="tlee" />
 <tags 
    ms.service="visual-studio-online"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="mobile"
-	ms.date="08/12/2015"
-	ms.author="patshea"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="mobile"
+   ms.date="08/12/2015"
+   ms.author="patshea" />
 
 # Visual Studio 接続済みサービスを使用した Mobile Services の追加
 
@@ -89,4 +89,4 @@ Visual Studio でプロジェクトを変更する方法はプロジェクトの
 
  - [azure.microsoft.com の Azure Mobile Services](http://azure.microsoft.com/documentation/services/mobile-services/)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

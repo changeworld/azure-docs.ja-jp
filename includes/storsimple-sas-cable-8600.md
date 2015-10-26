@@ -46,4 +46,4 @@
     |5、6|主エンクロージャの SAS ポート (EBOD のラベル)|
     |7、8|EBOD エンクロージャの SAS ポート (ポート A)|
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -228,4 +228,4 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 
 [Azure Active Directory アカウントを使用して開発者ポータルにログインする方法]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -389,4 +389,4 @@ enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の ju
 - [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
 - [Azure リソース マネージャーのテンプレートの関数](resource-group-template-functions.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

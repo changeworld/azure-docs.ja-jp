@@ -127,7 +127,7 @@ DNS ゾーンは、New-AzureDnsZone コマンドレットを使用して作成�
 >[AZURE.NOTE]DNS ゾーンのルート (または '頂点') にあるレコード セットは、レコード セット名として "@" を使用します。
 
 
-最初の DNS ゾーンを作成したところで、nslookup、dig、[Resolve-DnsName PowerShell コマンドレット](https://technet.microsoft.com/ja-JP/library/jj590781.aspx)などの DNS ツールを使用してそのゾーンをテストできます。<BR>
+最初の DNS ゾーンを作成したところで、nslookup、dig、[Resolve-DnsName PowerShell コマンドレット](https://technet.microsoft.com/ja-jp/library/jj590781.aspx)などの DNS ツールを使用してそのゾーンをテストできます。<BR>
 
 Azure DNS の新しいゾーンを使用するためのドメインの委任をまだ行っていない場合は、ゾーンのネーム サーバーの 1 つに DNS クエリを直接送信する必要があります。ゾーンのネーム サーバーは、上記の Get-AzureDnsRecordSet によって一覧表示されたように、NS レコードに示されます。以下のコマンドの値を、ゾーンの正しい値に置き換えてください。<BR>
 
@@ -155,4 +155,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 [レコード セットおよびレコード作成の概要](dns-getstarted-create-recordset.md)<BR> [DNS ゾーンの管理方法](dns-operations-dnszones.md)<BR> [DNS レコードの管理方法](dns-operations-recordsets.md)<BR> [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)<BR> [Azure DNS REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163862.aspx)
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

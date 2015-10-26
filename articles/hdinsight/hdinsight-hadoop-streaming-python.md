@@ -14,14 +14,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/04/2015"
+   ms.date="10/09/2015"
    ms.author="larryfr"/>
 
 #HDInsight 用 Python ストリーミング プログラムの開発
 
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。この記事では、Python を使用して、MapReduce 操作を実行する方法を説明します。
 
-> [AZURE.NOTE]この記事は、Michael Noll が [http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/] (Python での Hadoop MapReduce プログラムの作成方法) に公開した情報とサンプルを基にしています。
+> [AZURE.NOTE]このドキュメントの Python コードは Windows ベースの HDInsight クラスターで使用できますが、ドキュメント内の手順は Linux ベースのクラスターに固有のものです。
+
+この記事は、Michael Noll が [http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/] (Python での Hadoop MapReduce プログラムの作成方法) に公開した情報とサンプルを基にしています。
 
 ##前提条件
 
@@ -35,7 +37,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 ##文字数
 
-この例では、マッパーとリデューサーを使用して、基本的な文字カウントを実装します。マッパーは文をいくつかの単語に分割し、リデューサーは単語数や回数を合計して出力を生成します。
+この例では、マッパーとレジューサを使用して、基本的な文字カウントを実装します。マッパーは文をいくつかの単語に分割し、レジューサは単語数や回数を合計して出力を生成します。
 
 次のフローチャートは、map および reduce のフェーズで実際に何が実行されるかを示しています。
 
@@ -59,9 +61,9 @@ Hadoop では、ジョブで使用される map および reduce のロジック
 
 Python では、STDIN からの読み取りに **sys** モジュールを、STDOUT への印刷に **print** を使用して、これらの要件を簡単に処理できます。その他、キーと値の間にタブ (`\t`) 文字を使用してデータを簡単に書式設定できます。
 
-##マッパーとリデューサーの作成
+##マッパーとレジューサの作成
 
-マッパーとリデューサーは単なるテキスト ファイルで、この場合 **mapper.py** と **reducer.py** であるため、各ファイルで何が実行されるかは明白です。これらは、好みのエディターを使用して作成できます。
+マッパーとレジューサは単なるテキスト ファイルで、この場合 **mapper.py** と **reducer.py** であるため、各ファイルで何が実行されるかは明白です。これらは、好みのエディターを使用して作成できます。
 
 ###Mapper.py
 
@@ -164,7 +166,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 	* **-mapper**: マッパーとして使用するファイルを Hadoop に伝えます。
 
-	* **-reducer**: リデューサーとして使用するファイルを Hadoop に伝えます。
+	* **-reducer**: レジューサとして使用するファイルを Hadoop に伝えます。
 
 	* **-input**: 文字数をカウントする入力ファイル
 
@@ -203,4 +205,4 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

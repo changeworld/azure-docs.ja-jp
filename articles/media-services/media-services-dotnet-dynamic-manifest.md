@@ -147,4 +147,4 @@ AMS のラーニング パスについては、以下を参照してください
 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

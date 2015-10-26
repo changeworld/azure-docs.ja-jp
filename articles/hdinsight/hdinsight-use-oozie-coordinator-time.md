@@ -67,25 +67,23 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 - **HDInsight クラスター**。HDInsight クラスターの作成については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」または「[HDInsight の概要][hdinsight-get-started]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
 
 	<table border = "1">
-	<tr><th>クラスター プロパティ</th><th>Windows PowerShell 変数名</th><th>値</th><th>説明</th></tr>
-	<tr><td>HDInsight クラスター名</td><td>$clusterName</td><td></td><td>このチュートリアルを実行する HDInsight クラスター。</td></tr>
-	<tr><td>HDInsight クラスター ユーザー名</td><td>$clusterUsername</td><td></td><td>HDInsight クラスターのユーザー名。</td></tr>
-	<tr><td>HDInsight クラスター ユーザー パスワード </td><td>$clusterPassword</td><td></td><td>HDInsight クラスター ユーザーのパスワード。</td></tr>
-	<tr><td>Azure ストレージ アカウント名</td><td>$storageAccountName</td><td></td><td>HDInsight クラスターで利用できる Azure ストレージ アカウント。このチュートリアルでは、クラスターのプロビジョニング プロセス中に指定された既定のストレージ アカウントを使用します。</td></tr>
-	<tr><td>Azure BLOB コンテナー名</td><td>$containerName</td><td></td><td>この例では、既定の HDInsight クラスター ファイル システムで使用する Azure BLOB ストレージ コンテナーを使用します。既定では、HDInsight クラスターと同じ名前です。</td></tr>
-	</table>
+<tr><th>クラスター プロパティ</th><th>Windows PowerShell 変数名</th><th>値</th><th>説明</th></tr>
+<tr><td>HDInsight クラスター名</td><td>$clusterName</td><td></td><td>このチュートリアルを実行する HDInsight クラスター。</td></tr>
+<tr><td>HDInsight クラスター ユーザー名</td><td>$clusterUsername</td><td></td><td>HDInsight クラスターのユーザー名。</td></tr>
+<tr><td>HDInsight クラスター ユーザー パスワード </td><td>$clusterPassword</td><td></td><td>HDInsight クラスター ユーザーのパスワード。</td></tr>
+<tr><td>Azure ストレージ アカウント名</td><td>$storageAccountName</td><td></td><td>HDInsight クラスターで利用できる Azure ストレージ アカウント。このチュートリアルでは、クラスターのプロビジョニング プロセス中に指定された既定のストレージ アカウントを使用します。</td></tr>
+<tr><td>Azure BLOB コンテナー名</td><td>$containerName</td><td></td><td>この例では、既定の HDInsight クラスター ファイル システムで使用する Azure BLOB ストレージ コンテナーを使用します。既定では、HDInsight クラスターと同じ名前です。</td></tr>
+</table>
 
 - **Azure SQL データベース**。コンピューターから SQL Database サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。この記事には、このチュートリアルに必要な Azure SQL データベース テーブルを作成するための Windows PowerShell スクリプトが示されています。
 
 	<table border = "1">
-	<tr><th>SQL データベースのプロパティ</th><th>Windows PowerShell 変数名</th><th>値</th><th>説明</th></tr>
-	<tr><td>SQL データベース サーバー名</td><td>$sqlDatabaseServer</td><td></td><td>Sqoop によるデータのエクスポート先となる SQL データベース サーバー。</td></tr>
-	<tr><td>SQL データベース ログイン名</td><td>$sqlDatabaseLogin</td><td></td><td>SQL データベースのログイン名。</td></tr>
-	<tr><td>SQL データベース ログイン パスワード</td><td>$sqlDatabaseLoginPassword</td><td></td><td>SQL データベースのログイン パスワード。</td></tr>
-	<tr><td>SQL データベース名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先となる Azure SQL データベース。</td></tr>
-	</table>
-
-	> [AZURE.NOTE]既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure プレビュー ポータルから有効にする必要があります。SQL Database の作成方法とファイアウォール ルールの構成方法については、「[SQL Database の作成と構成][sqldatabase-create-configure]」を参照してください。
+<tr><th>SQL データベースのプロパティ</th><th>Windows PowerShell 変数名</th><th>値</th><th>説明</th></tr>
+<tr><td>SQL データベース サーバー名</td><td>$sqlDatabaseServer</td><td></td><td>Sqoop によるデータのエクスポート先となる SQL データベース サーバー。</td></tr>
+<tr><td>SQL データベース ログイン名</td><td>$sqlDatabaseLogin</td><td></td><td>SQL データベースのログイン名。</td></tr>
+<tr><td>SQL データベース ログイン パスワード</td><td>$sqlDatabaseLoginPassword</td><td></td><td>SQL データベースのログイン パスワード。</td></tr>
+<tr><td>SQL データベース名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop によるデータのエクスポート先となる Azure SQL データベース。</td></tr>
+</table>> [AZURE.NOTE]既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure プレビュー ポータルから有効にする必要があります。SQL Database の作成方法とファイアウォール ルールの構成方法については、「[SQL Database の作成と構成][sqldatabase-create-configure]」を参照してください。
 
 
 > [AZURE.NOTE]テーブルに値を入力します。そうしておくと、このチュートリアルを読み進める際に役に立ちます。
@@ -188,23 +186,21 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 	RunHiveScript には、変数がいくつかあります。その値は、Azure PowerShell を使用してワークステーションから Oozie ジョブを送信するときに渡します。
 
 	<table border = "1">
-	<tr><th>ワークフローの変数</th><th>説明</th></tr>
-	<tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。HDInsight クラスター バージョン 3.0 および 2.0 の <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
-	<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システムの wasb:// アドレス (たとえば、<i>wasb://&lt;containerName>@&lt;storageAccountName>.blob.core.windows.net</i>) を使用します。</td></tr>
-	<tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。<strong>default</strong> を使用します。</td></tr>
-	</table><table border = "1">
-	<tr><th>Hive アクションの変数</th><th>説明</th></tr>
-	<tr><td>${hiveDataFolder}</td><td>Hive の CREATE TABLE コマンドのソース ディレクトリ。</td></tr>
-	<tr><td>${hiveOutputFolder}</td><td>INSERT OVERWRITE ステートメントの出力フォルダー。</td></tr>
-	<tr><td>${hiveTableName}</td><td>log4j データ ファイルを参照する Hive テーブルの名前。</td></tr>
-	</table><table border = "1">
-	<tr><th>Sqoop アクションの変数</th><th>説明</th></tr>
-	<tr><td>${sqlDatabaseConnectionString}</td><td>SQL データベース接続文字列。</td></tr>
-	<tr><td>${sqlDatabaseTableName}</td><td>データのエクスポート先となる Azure SQL データベース テーブル。</td></tr>
-	<tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダー。これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
-	</table>
-
-	Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
+<tr><th>ワークフローの変数</th><th>説明</th></tr>
+<tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。HDInsight クラスター バージョン 3.0 および 2.0 の <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
+<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システムの wasb:// アドレス (たとえば、<i>wasb://&lt;containerName>@&lt;storageAccountName>.blob.core.windows.net</i>) を使用します。</td></tr>
+<tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。<strong>default</strong> を使用します。</td></tr>
+</table><table border = "1">
+<tr><th>Hive アクションの変数</th><th>説明</th></tr>
+<tr><td>${hiveDataFolder}</td><td>Hive の CREATE TABLE コマンドのソース ディレクトリ。</td></tr>
+<tr><td>${hiveOutputFolder}</td><td>INSERT OVERWRITE ステートメントの出力フォルダー。</td></tr>
+<tr><td>${hiveTableName}</td><td>log4j データ ファイルを参照する Hive テーブルの名前。</td></tr>
+</table><table border = "1">
+<tr><th>Sqoop アクションの変数</th><th>説明</th></tr>
+<tr><td>${sqlDatabaseConnectionString}</td><td>SQL データベース接続文字列。</td></tr>
+<tr><td>${sqlDatabaseTableName}</td><td>データのエクスポート先となる Azure SQL データベース テーブル。</td></tr>
+<tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダー。これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
+</table>Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
 
 2. ANSI(ASCII) エンコードを使用して、ファイルを **C:\\Tutorials\\UseOozie\\workflow.xml** として保存します。(テキスト エディターにこのオプションがない場合はメモ帳を使用します。)
 
@@ -554,7 +550,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 		    return $oozieJobId
 		}
 
-	> [AZURE.NOTE] ワークフロー ジョブを送信するときに別の Web サービスを呼び出して、ジョブが作成された後にそのジョブを開始する必要があります。この場合は、コーディネーター ジョブは、時間によってトリガーされます。このジョブは自動的に開始されます。
+	> [AZURE.NOTE]ワークフロー ジョブを送信するときに別の Web サービスを呼び出して、ジョブが作成された後にそのジョブを開始する必要があります。この場合は、コーディネーター ジョブは、時間によってトリガーされます。このジョブは自動的に開始されます。
 
 6. スクリプトの末尾に次のコードを追加します。この部分は、Oozie ジョブの状態をチェックします。
 
@@ -627,7 +623,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 		# ShowOozieJobLog($oozieJobId)
 		# killOozieJob($oozieJobId)
 
-	追加の機能を実行するには、#記号を削除します。
+	追加の機能を実行するには、# 記号を削除します。
 
 7. HDInsight クラスターが Version 2.1 である場合は、"https://$clusterName.azurehdinsight.net:443/oozie/v2/" を "https://$clusterName.azurehdinsight.net:443/oozie/v1/" に置き換えてください。HDInsight クラスター Version 2.1 は、Web サービスの Version 2 をサポートしていません。
 
@@ -688,7 +684,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 - [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
 - [HDInsight での Hive の使用][hdinsight-use-hive]
 - [HDInsight での Pig の使用][hdinsight-use-pig]
-- [HDInsight 用 C#Hadoop ストリーミング ジョブの開発][hdinsight-develop-streaming-jobs]
+- [HDInsight 用 C# Hadoop ストリーミング ジョブの開発][hdinsight-develop-streaming-jobs]
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-java-mapreduce]
 
 
@@ -738,4 +734,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

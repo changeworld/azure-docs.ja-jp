@@ -83,10 +83,10 @@ Azure プレビュー ポータルで、メッセージのレベルでフィル�
 
   ![操作の詳細](./media/stream-analytics-operation-logs/05-stream-analytics-operation-logs.png)
 
-[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)で[サポート](http://azure.microsoft.com/support/options/)に問い合わせたり、チームに情報を提供したりする必要がある場合は、操作の詳細、特に**相関 ID** をメモしておいてください。
+[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)で[サポート](http://azure.microsoft.com/support/options/)に問い合わせたり、チームに情報を提供したりする必要がある場合は、操作の詳細、特に**相関 ID** をメモしておいてください。
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
@@ -96,4 +96,4 @@ Azure プレビュー ポータルで、メッセージのレベルでフィル�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure Stream Analytics の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

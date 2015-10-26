@@ -21,7 +21,8 @@
 
 この記事では、Docker と [Compose](http://github.com/docker/compose) を使用して、Azure の Linux 仮想マシンで複雑なアプリケーションを定義し、実行する方法について説明します。Compose (*Fig* の後継) では、単純なテキスト ファイルを使用して、複数の Docker コンテナーで構成されるアプリケーションを定義します。次に、VM 上でアプリケーションを実行するためのあらゆる操作を実行する単一のコマンドで、アプリケーションを起動します。たとえば、この記事では、バックエンド MariaDB SQL Database で WordPress ブログをすばやくセットアップする方法を示していますが、Compose を使用してさらに複雑なアプリケーションをセットアップすることもできます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事は、リソース マネージャーとクラシック デプロイメント モデルの両方を使用して仮想マシンを作成する場合に適用されます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 Docker とコンテナーの知識がない場合は、「[Docker high level whiteboard (Docker の概要ホワイトボード)](http://azure.microsoft.com/documentation/videos/docker-high-level-whiteboard/)」をご覧ください。
 
@@ -59,18 +60,9 @@ docker-compose 1.3.2
 
 VM 上に作業ディレクトリを作成し、任意のテキスト エディターを使用して `docker-compose.yml` を作成します。簡単な例を試すために、次のテキストをファイルにコピーしてください。この構成では、[DockerHub Registry](https://registry.hub.docker.com/_/wordpress/) から取得したイメージを使用して、WordPress (オープン ソースのブログ作成およびコンテンツ管理システム)、およびリンクされたバックエンド MariaDB SQL Database がインストールされます。
 
- ```
- wordpress:
-  image: wordpress
-  links:
-    - db:mysql
-  ports:
-    - 8080:80
+ ``` wordpress: image: wordpress links: - db:mysql ports: - 8080:80
 
-db:
-  image: mariadb
-  environment:
-    MYSQL_ROOT_PASSWORD: <your password>
+db: image: mariadb environment: MYSQL\_ROOT\_PASSWORD: <your password>
 
 ```
 
@@ -86,9 +78,7 @@ $ docker-compose up -d
 This starts the Docker containers specified in `docker-compose.yml`. You'll see output similar to:
 
 ```
-Creating wordpress\_db\_1...
-Creating wordpress\_wordpress\_1...
-```
+Creating wordpress\_db\_1...Creating wordpress\_wordpress\_1... ```
 
 >[AZURE.NOTE]コンテナーがバックグラウンドで継続的に実行されるように、必ず起動時に **-d** オプションを使用してください。
 
@@ -120,11 +110,10 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 
 * 複数コンテナー アプリのビルドとデプロイのその他の例については、[Compose CLI リファレンス](http://docs.docker.com/compose/cli/)と[ユーザー ガイド](http://docs.docker.com/compose/)を参照してください。
 * 自分で用意するか[コミュニティ](http://azure.microsoft.com/documentation/templates/)から取得した Azure リソース マネージャー テンプレートを利用して、Docker を搭載した Azure VM や Compose を搭載したアプリケーション セットアップをデプロイできます。たとえば、[Deploy a WordPress blog with Docker](https://azure.microsoft.com/documentation/templates/docker-wordpress-mysql/) テンプレートは、Docker と Compose を使用して、Ubuntu VM に WordPress と MySQL バックエンドを迅速にデプロイします。
-* Docker Compose と [Docker Swarm](virtual-machines-docker-swarm.md) クラスターを統合できます。このシナリオについては、
-[Docker Compose/Swarm の統合](https://github.com/docker/compose/blob/master/SWARM.md)に関するページを参照してください。
+* Docker Compose と [Docker Swarm](virtual-machines-docker-swarm.md) クラスターを統合できます。このシナリオについては、[Docker Compose/Swarm の統合](https://github.com/docker/compose/blob/master/SWARM.md)に関するページを参照してください。
 
 <!--Image references-->
 
 [wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

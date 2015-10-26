@@ -110,4 +110,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: http://azure.microsoft.com/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

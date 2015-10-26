@@ -53,4 +53,4 @@
 [2]: ./media/app-service-logic-wait/DelayInput.PNG
 [3]: ./media/app-service-logic-wait/ActionConfigured.PNG
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

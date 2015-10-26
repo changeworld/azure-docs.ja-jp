@@ -67,4 +67,4 @@ API Management サービスが VPN に接続された後で仮想ネットワー
 [Azure API Management で API Inspector を使用して呼び出しをトレースする方法]: api-management-howto-api-inspector.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -303,7 +303,7 @@ Azure 証明書の詳細については、「[証明書の管理](http://msdn.mi
 		location=location)
 
 	# Name of an os image as returned by list_os_images
-	image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-ja-JP-30GB.vhd'
+	image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-ja-jp-30GB.vhd'
 
 	# Destination storage account container/blob where the VM disk
 	# will be created
@@ -445,4 +445,4 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 [Virtual Machines]: http://msdn.microsoft.com/library/windowsazure/jj156003.aspx
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

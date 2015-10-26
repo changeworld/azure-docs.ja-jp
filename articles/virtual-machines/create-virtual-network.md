@@ -20,7 +20,7 @@
 # チュートリアル: Azure でのクラウド専用 Virtual Network の作成
 
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
 
 
 このチュートリアルでは、Microsoft Azure 管理ポータルで 2 つのサブセットを含むクラウド専用 Azure Virtual Network のサンプルを作成する手順について説明します。作成された仮想ネットワークは次のようになります。
@@ -41,7 +41,7 @@
 
 ##  前提条件
 
-*  少なくとも 1 つの Azure サブスクリプションが有効でアクティブな Microsoft アカウント。Azure サブスクリプションを持っていない場合は、[Azure の無料試用版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別料金: MSDN、MPN、Bizspark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をご覧ください。
+*  少なくとも 1 つの Azure サブスクリプションが有効でアクティブな Microsoft アカウント。Azure サブスクリプションを持っていない場合は、[Azure の無料試用版のページ](http://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップすることもできます。MSDN サブスクリプションを持っている場合は、[Microsoft Azure 特別価格: MSDN、MPN、Bizspark の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をご覧ください。
 
 ##  このチュートリアル用の Virtual Network の作成
 
@@ -49,7 +49,7 @@
 
 1. 管理ポータルにログインします。
 
-2. 画面の左下隅で、**[新規]**、**[Network Services]**、**[仮想ネットワーク]** の順にクリックし、**[カスタム作成]** をクリックして構成ウィザードを開始します。
+2. 画面の左下隅で、**[新規]**、**[Network Services]**、**[Virtual Network]** の順にクリックし、**[カスタム作成]** をクリックして構成ウィザードを開始します。
 
 	![][Image1]
 
@@ -123,4 +123,4 @@ Virtual Network 構成のその他の手順と設定については、[Azure Vir
 
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

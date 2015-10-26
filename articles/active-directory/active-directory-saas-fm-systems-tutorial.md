@@ -102,7 +102,7 @@ Azure AD ユーザーが FM:Systems にログインできるようにするに�
 
 4.  **[ユーザーの作成]** セクションで、次の手順を実行します。
 
-    ![ユーザーの作成](./media/active-directory-saas-fm-systems-tutorial/IC795907.png "ユーザーの作成")
+    ![ユーザーの作成](./media/active-directory-saas-fm-systems-tutorial/IC795907.png "Create User")
 
     1.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントのユーザー名、パスワード、確認パスワード、電子メール アドレス、および従業員 ID を入力します。
     2.  **[次へ]** をクリックします。
@@ -127,4 +127,4 @@ Azure AD ユーザーが FM:Systems にログインできるようにするに�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

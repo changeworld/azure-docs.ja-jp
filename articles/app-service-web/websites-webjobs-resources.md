@@ -107,7 +107,7 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 ##<a name="additionalsdk"></a>その他の Web ジョブ SDK のリソース
 
 * [Web ジョブ SDK のソース コード](https://github.com/Azure/azure-webjobs-sdk)
-* [BlobTrigger が動作する方法](http://blogs.msdn.com/b/jmstall/archive/2014/04/17/how-does-blobinput-work.aspx) 
+* [￼￼[BlobTrigger]￼￼ が動作する方法](http://blogs.msdn.com/b/jmstall/archive/2014/04/17/how-does-blobinput-work.aspx) 
 * [Azure Web ジョブ SDK での高度なバインド](http://victorhurdugaci.com/advanced-bindings-with-the-windows-azure-web-jobs-sdk/)
 * [Web ジョブ SDK を使用した、FREB のファイルの Azure Storage へのアップロード](http://thenextdoorgeek.com/post/WAWS-WebJob-to-upload-FREB-files-to-Azure-Storage-using-the-WebJobs-SDK)
 * [Azure がホストする Web ジョブのログに関するメリットが得られる、Azure 外部での Azure Web ジョブのホスティング](http://bypassion.dk/?p=510)
@@ -141,6 +141,5 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 * Web サイトから App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
-<!---Line 110; hyperlink-->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

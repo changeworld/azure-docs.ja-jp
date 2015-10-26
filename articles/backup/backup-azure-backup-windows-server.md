@@ -47,4 +47,4 @@
 - [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/15/2015"
+   ms.date="10/12/2015"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用して StorSimple 帯域幅テンプレートを管理する
@@ -68,7 +68,7 @@
    3. ドロップダウン リストから、**[開始時刻]** を選択します。これはスケジュールが開始する時刻です。
    4. ドロップダウン リストから、**[終了時刻]** を選択します。これはスケジュールが停止する時刻です。
    
-         > [AZURE.NOTE] スケジュールの重複は許可されません。開始および終了時刻が重なると、エラー メッセージが表示されます。
+         > [AZURE.NOTE] Overlapping schedules are not allowed. If the start and end times will result in an overlapping schedule, you will see an error message to that effect.
 
    5. **[帯域幅レート]** を指定します。これは、クラウドに関連する操作で StorSimple デバイスが使用する帯域幅 (メガ ビット/秒 (Mbps)) です。1 ～ 1,000 の値をこのフィールドで指定します。
    
@@ -174,7 +174,6 @@ StorSimple デバイスに関する次のベスト プラクティスに従っ�
 
 ## 次のステップ
 
-- [StorSimple コンポーネントの詳細](storsimple-components.md) 
-- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
+[StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

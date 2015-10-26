@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple EBOD コントローラーを交換する | Microsoft Azure"
-	description="StorSimple 8600 デバイスの一方または両方の EBOD コントローラー モジュールを取り外して交換する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple 8600 デバイスの一方または両方の EBOD コントローラー モジュールを取り外して交換する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/12/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="08/12/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスの EBOD コントローラーを交換する
 
@@ -107,4 +107,4 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

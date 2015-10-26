@@ -39,4 +39,4 @@ TPM API アプリは、AS2 コネクタ、X12 API アプリ、または EDIFACT 
 <!--References-->
 [1]: app-service-logic-create-a-trading-partner-agreement.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

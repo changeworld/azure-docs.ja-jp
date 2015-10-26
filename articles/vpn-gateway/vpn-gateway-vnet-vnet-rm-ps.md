@@ -1,20 +1,21 @@
 <properties
    pageTitle="Azure リソース マネージャーおよび PowerShell を使用した VNet 間の接続の構成 | Microsoft Azure"
-	description="この記事では、Azure リソース マネージャーおよび PowerShell を使用して仮想ネットワークどうしを接続する方法を説明します。"
-	services="vpn-gateway"
-	documentationCenter="na"
-	authors="cherylmc"
-	manager="carolz"
-	editor=""/>
+   description="この記事では、Azure リソース マネージャーおよび PowerShell を使用して仮想ネットワークどうしを接続する方法を説明します。"
+   services="vpn-gateway"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="carolz"
+   editor=""
+   tags="azure-resource-manager"/>
 
 <tags
    ms.service="vpn-gateway"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/20/2015"
-	ms.author="cherylmc"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="10/13/2015"
+   ms.author="cherylmc"/>
 
 # Azure リソース マネージャーおよび PowerShell を使用した VNet 間の接続の構成
 
@@ -22,6 +23,9 @@
 - [Azure Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
 - [PowerShell - Azure Resource Manager](vpn-gateway-vnet-vnet-rm-ps.md)
 
+この記事では、リソース マネージャー デプロイメント モデルを使用して、手順を説明します。上にあるタブを使用して、デプロイ モデルとデプロイ ツールに関する記事を選択できます。
+
+>[AZURE.NOTE]Azure は現在、2 つのデプロイメント モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことは重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイメント モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
 
 仮想ネットワークどうし (VNet 間) の接続は、仮想ネットワークをオンプレミス サイトの場所に接続することとよく似ています。どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。接続する VNet は、リージョンが異なっていてもかまいません。マルチサイト構成と VNet 間通信を組み合わせることもできます。そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます (下図参照)。
 
@@ -29,9 +33,6 @@
 ![VNet 間接続の図](./media/virtual-networks-configure-vnet-to-vnet-connection/IC727360.png)
 
  
-
->[AZURE.NOTE]現在、Azure には、従来のデプロイ モードと Azure リソース マネージャーのデプロイ モードの 2 つのデプロイ モードがあります。構成コマンドレットと手順は、デプロイ モードによって異なります。このトピックでは、Azure リソース マネージャー モードで作成された仮想ネットワークを接続する方法について説明します。従来のデプロイ モードを使用して VNet 間接続を作成する場合は、[Azure ポータルを使用した VNet 間の接続の構成](virtual-networks-configure-vnet-to-vnet-connection.md)を参照してください。従来のモードで作成された仮想ネットワークを、Azure リソース マネージャーで作成された仮想ネットワークに接続する場合は、[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)を参照してください。
-
 ## 仮想ネットワークを接続する理由
 
 仮想ネットワークを接続するのは次のような場合です。
@@ -43,15 +44,12 @@
 - **特定の地域内で強固な分離境界を備えた多層アプリケーション**
 	- 同じ地域内の相互に接続された複数の仮想ネットワークを使って多層アプリケーションをセットアップすることができます。それぞれの層のアプリケーションが強固に分離され、安全な層間通信を実現することができます。
 
-
-
 ### 注意する点
 
 この記事では、VNet1 と VNet2 の 2 つの仮想ネットワークを接続する手順を見ていきます。実際のネットワーク設計の要件に対応した IP アドレス範囲に置き換えるためには、ネットワークに関する知識が必要です。
 
 
 ![VNet 間の接続](./media/virtual-networks-configure-vnet-to-vnet-connection/IC727361.png)
-
 
 
 - 仮想ネットワークが属している Azure リージョン (場所) は異なっていてもかまいません。
@@ -74,35 +72,19 @@
 
 - VNet 間のトラフィックは、Azure バックボーン経由で送信できます。
 
-
 ## 作業を開始する前に
-
 
 開始する前に、以下がそろっていることを確認します。
 
-
-- 最新バージョンの Azure PowerShell コマンドレット。最新バージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の Windows PowerShell セクションからダウンロードしてインストールできます。 
 - Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-- 既に仮想ネットワークを作成済みの場合は、[既存 VNet の接続](#connecting-existing-vnets)を参照してください。
-	
+
+- 最新バージョンの Azure PowerShell コマンドレット。最新バージョンは、 [ダウンロード ページ](http://azure.microsoft.com/downloads/)の Windows PowerShell のセクションからダウンロードしてインストールできます。この記事は、Azure PowerShell *0.9.8* 向けに書かれています。
+
+>[AZURE.NOTE]ミッション クリティカルなアプリを実行している場合は、Azure PowerShell 0.9.8 を使用し続けてください。ほとんどの場合、2 つのバージョンは、1.0 プレビューのコマンドレット名が {verb}-AzureRm{noun} というパターンであり、0.9.8 の名前には Rm が含まれないという点のみ異なります。たとえば、New-AzureResourceGroup は New-AzureRmResourceGroup になっています。Azure PowerShell 1.0 プレビューについては、この[ブログ記事](https://azure.microsoft.com/blog/azps-1-0-pre/)をご覧ください。Azure PowerShell 1.0 プレビューのコマンドレットの詳細については、[Azure リソース マネージャーのコマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)に関するページをご覧ください。
 
 
-VNet 間接続を作成および構成する手順は複数あります。以下の順にそれぞれのセクションを構成してください。
+## 1\.IP アドレス範囲を決める
 
-
-1. [IP アドレス範囲を決める](#plan-your-ip-address-ranges)
-2. [サブスクリプションへの接続](#connect-to-your-subscription)
-3. [仮想ネットワークの作成](#create-a-virtual-network)
-4. [ゲートウェイのパブリック IP アドレスの要求](#request-a-public-ip-address)
-5. [ゲートウェイ構成の作成](#create-the-gateway-configuration)
-6. [ゲートウェイの作成](#create-the-gateway)
-7. [手順を繰り返して VNet2 を構成](#create-vnet2)
-8. [VPN ゲートウェイの接続](#connect-the-gateways)
-
-
-## IP アドレス範囲を決める
-
-### 手順 1.
 
 ネットワーク構成に使用する範囲を決めることは重要です。VNet1 から見ると、VNet2 は、Azure プラットフォームに定義されている別の VPN 接続にすぎません。また、VNet2 から見れば、VNet1 も別の VPN 接続です。VNet の範囲やローカル ネットワークの範囲が重複することは、どのような形であれ許容されないので注意してください。
 
@@ -129,26 +111,23 @@ VNet2 の値:
 - GatewaySubnet = 10.2.0.0/28
 - Subnet1 = 10.2.1.0/28
 
-## サブスクリプションへの接続 
+## 2\.サブスクリプションへの接続 
 
-### 手順 2.
+PowerShell コンソールを開き、アカウントに接続します。以下の説明では、Azure PowerShell バージョン 0.9.8 が使用されています。このバージョンは、[ダウンロード ページ](http://azure.microsoft.com/downloads/)の Windows PowerShell のセクションからダウンロードしてインストールできます。
 
-
-PowerShell コンソールを開き、Azure リソース マネージャー モードに切り替えます。接続するには、次のサンプルを参照してください。
+接続するには、次のサンプルを参照してください。
 
 		Add-AzureAccount
 
-Select-AzureSubscription を実行して、使用するサブスクリプションに接続します。
+複数のサブスクリプションがある場合、*Select-AzureSubscription* を実行して、使用するサブスクリプションに接続します。
 
 		Select-AzureSubscription "yoursubscription"
 
-次に、ARM モードに切り替えます。ARM モードを使用できるモードに切り替わります。
-
+次に、Azure リソース マネージャー モードに切り替えます。
+		
 		Switch-AzureMode -Name AzureResourceManager
 
-## 仮想ネットワークの作成
-
-### 手順 3.
+## 3\.仮想ネットワークの作成
 
 
 仮想ネットワークとゲートウェイ サブネットを作成するには、次のサンプルを使用してください。サンプル値は実際の値に変更してください。この例では、VNet1 を作成します。後で同じ手順を繰り返して VNet2 を作成します。
@@ -161,11 +140,10 @@ Select-AzureSubscription を実行して、使用するサブスクリプショ�
 
  		$subnet = New-AzureVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.0.0/28
 		$subnet1 = New-AzureVirtualNetworkSubnetConfig -Name 'Subnet1' -AddressPrefix '10.1.1.0/28'
-		New-AzurevirtualNetwork -Name VNet1 -ResourceGroupName testrg1 -Location 'West US' -AddressPrefix 10.1.0.0/16 -Subnet $subnet, $subnet1
+		New-AzureVirtualNetwork -Name VNet1 -ResourceGroupName testrg1 -Location 'West US' -AddressPrefix 10.1.0.0/16 -Subnet $subnet, $subnet1
 
-## パブリック IP アドレスの要求
+## 4\.パブリック IP アドレスの要求
 
-### 手順 4.
 
 次に、VNet で作成するゲートウェイに割り当てるパブリック IP アドレスを要求します。使用する IP アドレスは指定できません。IP アドレスはゲートウェイに動的に割り当てられます。この IP アドレスは、次の構成セクションで使用します。
 
@@ -174,10 +152,8 @@ Select-AzureSubscription を実行して、使用するサブスクリプショ�
 
 		$gwpip= New-AzurePublicIpAddress -Name gwpip1 -ResourceGroupName testrg1 -Location 'West US' -AllocationMethod Dynamic
 
+## 5\.ゲートウェイ構成の作成
 
-## ゲートウェイ構成の作成
-
-### 手順 5
 
 ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。次のサンプルを使用して、ゲートウェイの構成を作成します。
 
@@ -186,25 +162,19 @@ Select-AzureSubscription を実行して、使用するサブスクリプショ�
 		$subnet = Get-AzureVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 		$gwipconfig = New-AzureVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id 
 
+## 6\.ゲートウェイを作成する
 
-## ゲートウェイの作成
-
-### 手順 6
 
 この手順では、VNet の仮想ネットワーク ゲートウェイを作成します。VNet 間構成では、RouteBased VpnType が必要です。ゲートウェイの作成には時間がかかるため、気長に取り組んでください。
 
 		New-AzureVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg1 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
 
-## VNet2 の作成
-
-### 手順 7.
-
-VNet1 の構成後、前述の手順を繰り返して、VNet2 とそのゲートウェイ構成を構成します。これら 2 つの VNet とそれぞれのゲートウェイの構成が完了したら、 [ゲートウェイの接続](#connect-the-gateways)に進みます。
+## 7\.VNet2 の作成
 
 
-## ゲートウェイの接続
+VNet1 の構成後、前述の手順を繰り返して、VNet2 とそのゲートウェイ構成を構成します。両方の VNet とそれぞれのゲートウェイの構成が完了したら、**手順 8. ゲートウェイの接続**に進みます。
 
-### 手順 8.
+## 8\.ゲートウェイの接続
 
 このステップでは、2 つの仮想ネットワーク ゲートウェイ間の VPN ゲートウェイ接続を作成します。この例では、参照される共有キーが表示されます。共有キーには独自の値を使用することができます。両方の構成の共有キーが一致することが重要です。
 
@@ -226,8 +196,39 @@ VNet1 の構成後、前述の手順を繰り返して、VNet2 とそのゲー�
     New-AzureVirtualNetworkGatewayConnection -Name conn2 -ResourceGroupName testrg2 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location 'Japan East' -ConnectionType Vnet2Vnet -SharedKey 'abc123'
     
 
-
 数分後に接続が確立されます。この時点では、Azure リソース マネージャーで作成されたゲートウェイおよび接続は、プレビュー ポータルでは表示されません。
+
+## 接続の検証
+
+この時点では、リソース マネージャーを使用して作成された VPN 接続はプレビュー ポータルに表示されません。しかし、*Get-AzureVirtualNetworkGatewayConnection –Debug* を使用して、接続が成功したことを検証できます。将来、これを行うためのコマンドレットと、プレビュー ポータルで接続を表示する機能が提供される予定です。
+
+次のコマンドレットの例を使用できます。検証する各接続と一致するように、値を変更してください。プロンプトが表示されたら、*A* を選択してすべてを実行します。
+
+		Get-AzureVirtualNetworkGatewayConnection -Name vnet2connection -ResourceGroupName vnet2vnetrg -Debug 
+
+ コマンドレットが完了したら、スクロールして値を表示します。以下の例では、接続状態は *Connected* と表示され、受信バイトと送信バイトを確認できます。
+
+	Body:
+	{
+	  "name": "Vnet2Connection",
+	  "id": "/subscriptions/a932c0e6-b5cb-4e68-b23d-5064372c8a3cdef/resourceGroups/Vnet2VnetRG/providers/Microsoft.Network/connections/Vnet2Connection",
+	  "properties": {
+	    "provisioningState": "Succeeded",
+	    "resourceGuid": "3c0bc049-860d-46ea-9909-e08098680a8bdef",
+	    "virtualNetworkGateway1": {
+	      "id": "/subscriptions/a932c0e6-b5cb-4e68-b23d-5064372c8a3cdef/resourceGroups/Vnet2VnetRG/providers/Microsoft.Network/virtualNetworkGateways/Vnet2Gw"
+	    },
+	    "virtualNetworkGateway2": {
+	      "id": "/subscriptions/a932c0e6-b5cb-4e68-b23d-5064372c8a3cdef/resourceGroups/Vnet2VnetRG/providers/Microsoft.Network/virtualNetworkGateways/Vnet1Gw"
+	    },
+	    "connectionType": "Vnet2Vnet",
+	    "routingWeight": 3,
+	    "sharedKey": "abc123",
+	    "connectionStatus": "Connected",
+	    "ingressBytesTransferred": 3359044,
+	    "egressBytesTransferred": 4142451
+	  }
+	} 
 
 ## 既存 VNet の接続
 
@@ -243,10 +244,13 @@ VNet にゲートウェイ サブネットを追加する必要がある場合�
 		Add-AzureVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/28 -VirtualNetwork $vnet
 		Set-AzureVirtualNetwork -VirtualNetwork $vnet
 
-ゲートウェイ サブネットが正しく構成されていることを確認したら、引き続き[パブリック IP アドレスを要求](#request-a-public-ip-address)の作業を続け、その後の手順に従います。
+ゲートウェイ サブネットが正しく構成されていることを確認したら、引き続き、**手順4. パブリック IP アドレスの要求**の手順に従います。
+
 
 ## 次のステップ
 
-仮想ネットワークに仮想マシンを追加できます。[仮想マシンの作成](../virtual-machines/virtual-machines-windows-tutorial.md)。
+仮想ネットワークに仮想マシンを追加できます。[仮想マシンを作成します](../virtual-machines/virtual-machines-windows-tutorial.md)。
 
-<!---HONumber=August15_HO9-->
+VPN Gateway の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-faq.md)」をご覧ください。
+
+<!---HONumber=Oct15_HO3-->

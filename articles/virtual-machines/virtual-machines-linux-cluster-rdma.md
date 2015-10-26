@@ -18,7 +18,8 @@ ms.service="virtual-machines"
 
 # MPI アプリケーションを実行するように Linux RDMA クラスターを設定する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの構成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 この記事では、Azure で[サイズ A8 および A9 の仮想マシン](virtual-machines-a8-a9-a10-a11-specs.md)を使用して Linux RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。サイズ A8 および A9 の Linux ベースの VM を構成して、サポートされている MPI 実装を実行すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
 
@@ -27,13 +28,13 @@ ms.service="virtual-machines"
 > Azure は、RDMA バックエンド ネットワークに接続せずに、A8 および A9 インスタンスと同じ処理機能を持つ、A10 および A11 のコンピューティング集中型インスタンスも提供します。Azure で MPI ワークロードを実行する場合、一般に、A8 および A9 インスタンスで最良のパフォーマンスが得られます。
 
 
-## Linux クラスターのデプロイメント オプション
+## Linux クラスターのデプロイ オプション
 
 ジョブ スケジューラを使用する場合、または使用しない場合に、Linux の RDMA クラスターの作成に使用できる方法を次に示します。
 
 * **HPC Pack** - Azure で Microsoft HPC Pack クラスターを作成して、サポートされる Linux ディストリビューションを実行するコンピューティング ノードを追加することができます (Linux C ノードは、HPC Pack 2012 R2 Update 2 以降でサポート)。Linux の特定のノードを構成して、RDMA ネットワークにアクセスできます。「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-cluster.md)」を参照してください。
 
-* **Azure CLI スクリプト** - この記事の以降の手順に示されるように、Mac、Linux、および Windows 用の [Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (CLI) を使用して、仮想ネットワークやその他の必要なコンポーネントのデプロイメントのスクリプトを作成し、Linux クラスターを作成することができます。クラシック (サービス管理) デプロイメント モード の CLI では、クラスター ノードを順番に作成します。そのため、多くのコンピューティング ノードをデプロイしている場合は、デプロイメントの完了に数分かかる場合があります。
+* **Azure CLI スクリプト** - この記事の以降の手順に示されるように、Mac、Linux、および Windows 用の [Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (CLI) を使用して、仮想ネットワークやその他の必要なコンポーネントのデプロイのスクリプトを作成し、Linux クラスターを作成することができます。クラシック (サービス管理) デプロイ モード の CLI では、クラスター ノードを順番に作成します。そのため、多くのコンピューティング ノードをデプロイしている場合は、デプロイの完了に数分かかる場合があります。
 
 * **Azure リソース マネージャー テンプレート** - Azure リソース マネージャーで簡単な JSON テンプレート ファイルを作成し、リソース マネージャーに対して Azure CLI でコマンドを実行するか、または Azure プレビュー ポータルを使用すると、複数の A8 および A9 Linux VM をデプロイするとともに、仮想ネットワーク、静的 IP アドレス、DNS の設定、その他のリソースを定義して、RDMA の利用および MPI ワークロードの実行が可能なコンピューティング クラスターを作成することができます。[独自のテンプレートを作成](../resource-group-authoring-templates.md)するか、または [「Azure クイック スタート テンプレート」ページ](https://azure.microsoft.com/documentation/templates/)で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。リソース マネージャーのテンプレートは、一般に、Linux クラスターをデプロイするための最も信頼性の高い、最速の方法を提供します。
 
@@ -51,7 +52,7 @@ ms.service="virtual-machines"
 
 *   **Azure CLI** - Azure CLI を[インストール](../xplat-cli-install.md)し、クライアント コンピューターから Azure サブスクリプションに接続するように[構成](../xplat-cli-connect.md)します。
 
-*   **Intel MPI** - クラスター用の Linux VM イメージのカスタマイズの一環として (この記事の後半の説明を参照)、Intel MPI Library 5 ランタイムを [Intel.com のサイト](https://software.intel.com/ja-JP/intel-mpi-library/)からダウンロードし、プロビジョニングする Azure Linux VM にインストールする必要があります。この準備をするために、Intel に登録した後、確認の電子メールに含まれる関連 Web ページへのリンクをクリックし、適切なバージョンの Intel MPI (.tgz ファイル) のダウンロード リンクをコピーします。この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
+*   **Intel MPI** - クラスター用の Linux VM イメージのカスタマイズの一環として (この記事の後半の説明を参照)、Intel MPI Library 5 ランタイムを [Intel.com のサイト](https://software.intel.com/JA-JP/intel-mpi-library/)からダウンロードし、プロビジョニングする Azure Linux VM にインストールする必要があります。この準備をするために、Intel に登録した後、確認の電子メールに含まれる関連 Web ページへのリンクをクリックし、適切なバージョンの Intel MPI (.tgz ファイル) のダウンロード リンクをコピーします。この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
 
 ### SLES 12 VM のプロビジョニング
 
@@ -188,7 +189,7 @@ azure vm capture -t <vm-name> <image-name>
 
 ### イメージを使用したクラスターのデプロイ
 
-次の Bash スクリプトの該当部分を環境に合った適切な値に変更し、クライアント コンピューターで実行します。サービス管理のデプロイメント方法では VM を順番にデプロイするため、このスクリプトで示されている 8 個の A9 VM をデプロイするまでに数分かかります。
+次の Bash スクリプトの該当部分を環境に合った適切な値に変更し、クライアント コンピューターで実行します。サービス管理のデプロイ方法では VM を順番にデプロイするため、このスクリプトで示されている 8 個の A9 VM をデプロイするまでに数分かかります。
 
 ```
 #!/bin/bash -x
@@ -367,6 +368,6 @@ cluster12
 
 * Linux クラスター上で、Linux MPI アプリケーションのデプロイと実行を試します。
 
-* Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/ja-JP/articles/intel-mpi-library-documentation/)を参照してください。
+* Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/JA-JP/articles/intel-mpi-library-documentation/)を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

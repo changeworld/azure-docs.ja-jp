@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイスの MPIO の構成 | Microsoft Azure"
-	description="Windows Server 2012 R2 を実行するホストに接続されている、StorSimple デバイスのマルチパス I/O (MPIO) を構成する方法を説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="Windows Server 2012 R2 を実行するホストに接続されている、StorSimple デバイスのマルチパス I/O (MPIO) を構成する方法を説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/31/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/31/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスのマルチパス IO の構成
 
@@ -173,4 +173,4 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 [StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-modify-device-config.md)の詳細を確認する。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

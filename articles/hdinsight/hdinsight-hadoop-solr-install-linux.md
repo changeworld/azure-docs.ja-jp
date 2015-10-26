@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Script Action を使用して Hadoop クラスターに Solr をインストールする | Microsoft Azure"
-	description="Solr を使用して HDInsight クラスターをカスタマイズする方法について説明します。Solr をインストールするスクリプトを使用するために、Script Action の構成オプションを使用します。"
+	pageTitle="Script Action を使用した Linux ベースの HDInsight での Solr のインストール | Microsoft Azure"
+	description="Script Action を使用して Linux ベースの HDInsight Hadoop クラスターに Solr をインストールする方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/20/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに Solr をインストールして使用する
@@ -42,7 +42,7 @@
 
 HDInsight クラスターに Solr をインストールするためのサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh) の読み取り専用 Azure ストレージ BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターをプロビジョニングする際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE]また、Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
+> [AZURE.NOTE]Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
 1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 
@@ -284,7 +284,7 @@ Solr のバックアップと復元の操作の詳細については、[SolrCore
 
 - [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install-linux.md): クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
 
-- [HDInsight クラスターに Hue をインストールする](hdinsight-hadoop-hue-linux.md)。クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Hue をインストールします。Hue は Hadoop クラスターとの情報のやり取りに使用される一連の Web アプリケーションです。
+- [HDInsight クラスターに Hue をインストールする](hdinsight-hadoop-hue-linux.md)。クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Hue をインストールします。Hue は Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。
 
 
 
@@ -294,4 +294,4 @@ Solr のバックアップと復元の操作の詳細については、[SolrCore
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

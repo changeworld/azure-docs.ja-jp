@@ -363,4 +363,4 @@ ARM VNet (vnet02) 用に作成されたゲートウェイの IP アドレスが�
 - [ネットワーク リソース プロバイダー](../resource-groups-networking.md)についてさらに学習できます。
 - [create a S2S VPN connection between a classic VNet and an ARM VNet (従来の VNet と ARM VNet の間の S2S VPN 接続を作成する)](../virtual-networks-arm-asm-s2s-howto.md) 方法に関する一般的なガイドラインを参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

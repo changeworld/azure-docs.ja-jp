@@ -24,4 +24,4 @@ Azure モバイル サービスを利用すると、サポートされている 
 
 [AZURE.INCLUDE [mobile-services-how-to-configure-iis-express](../../includes/mobile-services-how-to-configure-iis-express.md)]
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

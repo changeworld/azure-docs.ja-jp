@@ -71,16 +71,16 @@ WHERE 句を使用して、ある日付以前の注文をフィルター処理�
 <!--Image references-->
 
 <!--Article references-->
-[移行]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-migrate/
-[開発]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-develop/
-[ロード]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-overview-load/
-[接続とクエリ]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-get-started-connect-query/
-[コードの移行]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-migrate-code/
+[移行]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-migrate/
+[開発]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-develop/
+[ロード]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-overview-load/
+[接続とクエリ]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-get-started-connect-query/
+[コードの移行]: https://azure.microsoft.com/ja-jp/documentation/articles/sql-data-warehouse-migrate-code/
 
 <!--MSDN references-->
-[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-JP/download/details.aspx?id=36433
+[Microsoft Command Line Utilities for SQL Server]: http://www.microsoft.com/ja-jp/download/details.aspx?id=36433
 
 <!--Other Web references-->
 [サンプル データ スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksPDW2012.zip
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

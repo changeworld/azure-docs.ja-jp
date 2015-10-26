@@ -8,9 +8,9 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/11/2015" ms.author="trinadhk"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/01/2015" ms.author="trinadhk"; "jimpark"/>
 
-# 仮想マシンの復元
+# Azure 仮想マシンの復元
 復元操作を使用して、Azure バックアップ資格情報コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元できます。
 
 ## ワークフローの復元
@@ -49,9 +49,9 @@
   - 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。既存の仮想マシンを同じ名前に置き換える場合は、まず既存の仮想マシンとデータ ディスクを削除し、次に Azure バックアップからデータを復元します。
   - 仮想マシンのクラウド サービスを選択する: これは仮想マシンを作成するために必須です。既存のクラウド サービスを使用するか、新しいクラウド サービスを作成するかを選択できます。
 
-        クラウド サービス名はどのようなものであれグローバルに一意である必要があります。クラウド サービス名は通常、[cloudservice].cloudapp.net の形式で公開される URL に紐付けられます。Azure では、名前がすでに使用されている場合は新しいクラウド サービスを作成できません。新しいクラウド サービスの選択でクラウド サービスを作成する場合、仮想マシンと同じ名前になります。ここで選択された VM 名は関連するクラウド サービスに使うことができる、一意のものである必要があります。
+        Whatever cloud service name is picked should be globally unique. Typically, the cloud service name gets associated with a public-facing URL in the form of [cloudservice].cloudapp.net. Azure will not allow you to create a new cloud service if the name has already been used. If you choose to create select create a new cloud service, it will be given the same name as the virtual machine – in which case the VM name picked should be unique enough to be applied to the associated cloud service.
 
-        復元インスタンス詳細のアフィニティ グループに関連しないクラウド サービスや仮想ネットワークのみが表示されます。[詳細について](https://msdn.microsoft.com/ja-jp/library/azure/jj156085.aspx)。
+        We only display cloud services and virtual networks that are not associated with any affinity groups in the restore instance details. [Learn More](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
 
 2. 仮想マシンのストレージ アカウントを選択する: これは仮想マシンを作成するために必須です。Azure Backup 資格情報コンテナーと同じリージョン内の既存のストレージ アカウントから選択できます。ゾーン冗長または Premium Storage タイプのストレージ アカウントはサポートされません。
 
@@ -59,7 +59,7 @@
 
     ![仮想ネットワークを作成する](./media/backup-azure-restore-vms/restore-sa.png)
 
-3. 仮想マシンを選択する: 仮想マシンの作成時に、仮想マシンの仮想ネットワーク (VNET) を選択する必要があります。復元 UI は、使用できるこのサブスクリプション内の VNET をすべて表示します。復元された仮想マシンの VNET を選択する必要はありません。VNET が適用されない場合でも、インターネット経由で復元された仮想マシンに接続できます。
+3. 仮想ネットワークを選択する: 仮想マシンの作成時に、仮想マシンの仮想ネットワーク (VNET) を選択する必要があります。復元 UI は、使用できるこのサブスクリプション内の VNET をすべて表示します。復元された仮想マシンの VNET を選択する必要はありません。VNET が適用されない場合でも、インターネット経由で復元された仮想マシンに接続できます。
 
     選択したクラウド サービスが仮想ネットワークに関連付けられている場合は、仮想ネットワークを変更できません。
 
@@ -105,4 +105,4 @@ VM は、(他の VM と同様に) Azure ポータルから復元するか、ま�
 - [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

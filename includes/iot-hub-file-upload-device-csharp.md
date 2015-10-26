@@ -70,8 +70,8 @@
 
 <!-- Links -->
 [IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
-[Azure Storage - How to use blobs (Azure ストレージ - BLOB の使用方法)]: https://azure.microsoft.com/ja-JP/documentation/articles/storage-dotnet-how-to-use-blobs/#upload-a-blob-into-a-container
+[Azure Storage - How to use blobs (Azure ストレージ - BLOB の使用方法)]: https://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/#upload-a-blob-into-a-container
 
 <!-- Images -->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

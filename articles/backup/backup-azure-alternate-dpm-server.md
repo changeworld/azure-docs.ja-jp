@@ -12,7 +12,7 @@
 # バックアップ コンテナーで別の DPM サーバーからデータを復元する
 コンテナーに登録されている DPM サーバーから、Azure Backup コンテナーに保護しているデータを復元できるようになりました。この復元プロセスは DPM 管理コンソールに完全統合されており、その他の復元ワークフローと似ています。
 
-バックアップ コンテナーで別の DPM サーバーからデータを復元するには、[System Center Data Protection Manager UR7](https://support.microsoft.com/ja-JP/kb/3065246) と[最新の Azure Backup エージェント](http://aka.ms/azurebackup_agent)が必要です。
+バックアップ コンテナーで別の DPM サーバーからデータを復元するには、[System Center Data Protection Manager UR7](https://support.microsoft.com/ja-jp/kb/3065246) と[最新の Azure Backup エージェント](http://aka.ms/azurebackup_agent)が必要です。
 
 ## 別の DPM サーバーからデータを復元する
 別の DPM サーバーからデータを復元するには:
@@ -96,4 +96,4 @@
 ## 次のステップ:
 • [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

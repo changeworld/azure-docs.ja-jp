@@ -79,4 +79,4 @@
 <!-- URLs. -->
 [既存の Mobile Services アプリケーションに認証を追加]: mobile-services-dotnet-backend-ios-get-started-users.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -72,4 +72,4 @@ SQL Server Management Studio か SQLCMD を使用します。EXE をデータベ
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

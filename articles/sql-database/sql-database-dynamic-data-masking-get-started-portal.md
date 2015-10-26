@@ -62,7 +62,7 @@ Azure ポータルの [監視とセキュリティ] タブでデータベース�
 <a name="Anchor1"></a>
 ### セキュリティが有効な接続文字列
 
-["ダウンレベル クライアント"](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md) を使用する場合、変更した接続文字列を使用するには既存のクライアント (例: アプリケーション) を更新する必要があります。詳細については、[こちら](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)をご覧ください。
+["ダウンレベル クライアント"](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md) を使用する場合、変更した接続文字列を使用するには既存のクライアント (例: アプリケーション) を更新する必要があります。詳細については、[￼こちら￼](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md)をご覧ください。
 
 
 ## Azure ポータル使用によるデータベースの動的データ マスク設定
@@ -100,4 +100,4 @@ Azure ポータルの [監視とセキュリティ] タブでデータベース�
 
 「[Azure SQL データベースの操作](https://msdn.microsoft.com/library/dn505719.aspx)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -13,10 +13,11 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/27/2015" 
+	ms.date="10/09/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory リリース ノート
+特定のリリースでの Data Factory .NET SDK に対する変更については、「[Data Factory - .NET API の変更ログ](data-factory-api-change-log.md)」を参照してください。
 
 ## Data Factory の 2015 年 7 月 17 日リリース ノート
 2015 年 7 月リリースの Azure PowerShell では、次の JSON の変更が導入されています。
@@ -82,7 +83,7 @@ Dataset | RelationTableLocation | RelationalTable
 以下の点に注意してください。
 
 - **type** プロパティは 1 レベル上に移動し、**AzureStorage** (**AzureStorageLinkedService** から **AzureStorage** に変更) に設定されます。 
-- 新しい **typeProperties** 要素には、Azure Storage のリンクされているサービスでサポートされるプロパティを含みます (この例では **connectionString**)。  
+- 新しい **typeProperties** 要素には、Azure Storage のリンクされたサービスでサポートされているプロパティが含まれています (この例では **connectionString**)。  
 
 ### 古いデータセットの JSON
 	{
@@ -267,7 +268,7 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 -  **Set-AzureDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 -  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
 
-一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツールバーの **[フィルター]** をクリックします。
  
 **[データ スライス (スライスの時刻別)]** タイルをクリックして、スライスを時間別に並べ替えて表示することもできます。これらのコレクションのスライスは、スライスの時間で並べ替えられます。たとえば、1 時間ごとのスケジュールである場合、スライスは次のようになります: 4/4/2015 5pm 処理中 - 4/4/2015 4pm 成功 - 4/4/2015 3pm 失敗
 
@@ -331,7 +332,7 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 - CustomActivity から DotNetActivity へ
 	- **ICustomActivity** インターフェイスの名前が **IDotNetActivity** に変更されました。Data Factory NuGet パッケージを更新し、カスタム アクティビティのソース コードで、ICustomActivity を IDotNetActivity に変更する必要があります。  
 	- カスタム アクティビティの JSON 定義におけるカスタム アクティビティの種類を、**CustomActivity** から **DotNetActivity** に変更する必要があります。 
-	- **CustomActivity** と **CustomActivityProperties** クラスの名前は、それぞれ、**DotNetActivity** と **DotNetActivityProperties** に変更されました （プロパティ セットは変わりません)。
+	- **CustomActivity** と **CustomActivityProperties** クラスの名前は、それぞれ、**DotNetActivity** と **DotNetActivityProperties** に変更されました (プロパティ セットは変わりません)。
 
 		古いバージョンの SDK および Azure PowerShell を使用している場合は、DotNetActivity の代わりに、引き続き CustomActivity を使用できます。
     
@@ -353,4 +354,4 @@ HDInsight のアクティビティ (Hive、Pig、MapReduce、Hadoop ストリー
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

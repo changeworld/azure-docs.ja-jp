@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="CDN を使用する方法 | Microsoft Azure"
-	description="Azure Content Delivery Network (CDN) を使用して、BLOB と静的コンテンツをキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。"
-	services="cdn"
-	documentationCenter=".net"
-	authors="zhangmanling"
-	manager="dwrede"
+	pageTitle="CDN を使用する方法 | Microsoft Azure" 
+	description="Azure Content Delivery Network (CDN) を使用して、BLOB と静的コンテンツをキャッシュすることにより、高帯域幅コンテンツを配信する方法について説明します。" 
+	services="cdn" 
+	documentationCenter=".net" 
+	authors="zhangmanling" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="cdn" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="mazha"/>
 
 
@@ -112,7 +112,7 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 [How to Register a Custom Subdomain Name for Accessing Blobs in Azure]: ../storage-custom-domain-name.md
 [Azure でアフィニティ グループを作成する方法]: http://msdn.microsoft.com/library/azure/ee460798.aspx
 [Overview of the Azure CDN]: cdn-overview.md
-[方法: Azure サブスクリプションのストレージ アカウントを管理する]: https://msdn.microsoft.com/ja-JP/library/azure/hh531793.aspx
+[方法: Azure サブスクリプションのストレージ アカウントを管理する]: https://msdn.microsoft.com/ja-jp/library/azure/hh531793.aspx
 [CDN コンテンツをカスタム ドメインにマッピングする方法]: cdn-map-content-to-custom-domain.md
 
 
@@ -120,4 +120,4 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

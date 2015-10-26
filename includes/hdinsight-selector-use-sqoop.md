@@ -2,4 +2,4 @@
 - [SSH](../articles/hdinsight/hdinsight-use-sqoop-mac-linux.md)
 - [PowerShell](../articles/hdinsight/hdinsight-use-sqoop.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

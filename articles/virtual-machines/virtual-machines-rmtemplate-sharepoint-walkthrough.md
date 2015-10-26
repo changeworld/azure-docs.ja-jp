@@ -18,7 +18,7 @@
 
 # 3 台のサーバーから成る SharePoint ファーム リソース マネージャーのテンプレート
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
 
 このトピックでは、3 台のサーバーから成る SharePoint ファームの azuredeploy.json テンプレート ファイルの構造について段階的に説明します。[こちら](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sharepoint-three-vm/azuredeploy.json)からブラウザーでこのテンプレートの内容を見ることができます。
 
@@ -376,4 +376,4 @@ JSON ファイルの **"resources"** セクションのサブセクションの�
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

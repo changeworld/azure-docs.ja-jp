@@ -15,7 +15,7 @@
 1.  PolicyStat のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-policystat-tutorial/IC808662.png "シナリオ")
 ##PolicyStat のアプリケーション統合の有効化
@@ -108,7 +108,7 @@
 
     ![属性](./media/active-directory-saas-policystat-tutorial/IC795920.png "属性")
 
-13. 必要な属性のマッピングを追加するには、次の手順に従います。
+13. 必要な属性のマッピングを追加するには、次の手順を実行します。
 
     ![属性](./media/active-directory-saas-policystat-tutorial/IC804823.png "属性")
 
@@ -135,10 +135,10 @@ Azure AD ユーザーが PolicyStat にログインできるようにするに�
 
     ![ユーザーの割り当て](./media/active-directory-saas-policystat-tutorial/IC808636.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確認します。
 
     ![あり](./media/active-directory-saas-policystat-tutorial/IC767830.png "あり")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

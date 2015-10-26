@@ -53,4 +53,4 @@ SDK のいくつかのバージョンがない場合は、次の手順に従う�
 
 [アップグレード手順](mobile-engagement-windows-store-upgrade-procedure/)をご覧ください
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

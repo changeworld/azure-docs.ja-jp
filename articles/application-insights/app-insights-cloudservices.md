@@ -21,7 +21,7 @@
 
 *Application Insights はプレビュー段階です。*
 
-[Microsoft Azure クラウド サービス アプリ](http://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を [Visual Studio Application Insights][start] で監視できます。アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
+[Microsoft Azure Cloud サービス アプリ](http://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を [Visual Studio Application Insights][start] で監視できます。アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
 
 ![例](./media/app-insights-cloudservices/sample.png)
 
@@ -206,6 +206,6 @@ Application Insights ポータルに表示される内容の例を次に示し�
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

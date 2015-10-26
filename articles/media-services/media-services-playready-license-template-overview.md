@@ -48,7 +48,7 @@ Media Services を使用して PlayReady ライセンスを設定するには、
 
 XML は、PlayReady ライセンス テンプレートの XML スキーマのセクションで定義されたPlayReady ライセンス テンプレート XML スキーマに準拠しています。
 
-Media Services は、XML へのシリアル化および XML からの逆シリアル化に使用できる一連の .NET クラスも定義します。主要なクラスについては、ライセンス テンプレートの構成に使用する [Media Services の .NET クラス](media-services-playready-license-template-overview.md#classes) を参照してください。
+Media Services は、XML へのシリアル化および XML からの逆シリアル化に使用できる一連の .NET クラスも定義します。主要なクラスについては、「ライセンス テンプレートの構成に使用する Media Services の .NET クラス」(media-services-playready-license-template-overview.md#classes) を参照してください。
 
 エンドツーエンドでの .NET クラスを使用した PlayReady ライセンス テンプレートの構成例については、「[PlayReady 動的暗号化とライセンス提供サービスの使用](https://msdn.microsoft.com/library/azure/dn783467.aspx)」を参照してください。
 
@@ -309,4 +309,4 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

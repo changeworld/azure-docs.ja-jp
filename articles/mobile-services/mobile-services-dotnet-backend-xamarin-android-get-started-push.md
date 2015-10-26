@@ -75,4 +75,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Xamarin.Android]: http://xamarin.com/download/
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

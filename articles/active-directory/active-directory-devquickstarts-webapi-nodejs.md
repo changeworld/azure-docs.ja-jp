@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="07/17/2015"
+	ms.date="10/13/2015"
 	ms.author="brandwe"/>
 
 # ノード用の Web API の概要
@@ -1180,4 +1180,4 @@ ADAL に関連するさらに高度な手順に興味がある場合は、学習
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

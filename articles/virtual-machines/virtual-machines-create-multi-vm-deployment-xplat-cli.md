@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure CLI を使用して複数の仮想マシンのデプロイを作成する | Microsoft Azure"
-   description="クラシック デプロイ モデルと Azure CLI を使用して複数の仮想マシンのデプロイを作成する方法について説明します。"
+   pageTitle="Azure CLI を使用して複数の VM のデプロイを作成する | Microsoft Azure"
+   description="クラシック デプロイ モデルと Azure CLI を使用して複数の VM のデプロイを作成する方法について説明します。"
    services="virtual-machines"
    documentationCenter="nodejs"
    authors="AlanSt"
@@ -17,17 +17,18 @@
    ms.date="02/20/2015"
    ms.author="alanst"/>
 
-# Azure CLI を使用して複数の仮想マシンのデプロイを作成する
+# Azure CLI を使用して複数の VM のデプロイを作成する
 
-> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
-次のスクリプトは、Azure コマンドライン インターフェイス (Azure CLI) を使用して VNET で複数 VM の複数クラウド サービスのデプロイメントを構成する方法を示しています。
+次のスクリプトは、Azure コマンドライン インターフェイス (Azure CLI) を使用して VNET で複数 VM の複数クラウド サービスのデプロイを構成する方法を示しています。
 
-次の図は、スクリプトが完了した後でデプロイメントがどのようになるかを示しています。
+次の図は、スクリプトが完了した後でデプロイがどのようになるかを示しています。
 
 ![](./media/virtual-machines-create-multi-vm-deployment-xplat-cli/multi-vm-xplat-cli.png)
 
-このスクリプトによって、クラウド サービス **servercs** で 1 つの仮想マシン (**servervm**) が、クラウド サービス **workercs** で 2 つの仮想マシン (**clientvm1, clientvm2**) が作成されます。どちらのクラウド サービスも VNET **samplevnet** にあります。**servercs** クラウド サービスは、外部接続用に構成されたエンドポイントも保持しています。
+このスクリプトによって、2 つのデータ ディスクが接続された 1 つの VM (**servervm**) がクラウド サービス **servercs** に、2 つの VM (**clientvm1、clientvm2**) がクラウド サービス **workercs** に作成されます。どちらのクラウド サービスも VNET **samplevnet** にあります。**servercs** クラウド サービスは、外部接続用に構成されたエンドポイントも保持しています。
 
 ## CLI スクリプトでの構成
 比較的簡単なコードで構成できます。具体的には次の通りです。
@@ -35,9 +36,9 @@
 >[AZURE.NOTE]ほとんどの場合、servercs と workercs の両クラウド サービスの名前は固有の名前に変更する必要があります。
 
     azure network vnet create samplevnet -l "West US"
-    azure vm create -l "West US" -w samplevnet -e 10000 -z Small -n servervm servercs b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-ja-JP-30GB azureuser Password@1
-    azure vm create -l "West US" -w samplevnet -e 10001 -z Small –n clientvm1 clientcs b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-ja-JP-30GB azureuser Password@1
-    azure vm create -l "West US" -w samplevnet -e 10002 -c -z Small -n clientvm2 clientcs b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-ja-JP-30GB azureuser Password@1
+    azure vm create -l "West US" -w samplevnet -e 10000 -z Small -n servervm servercs b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-JA-JP-30GB azureuser Password@1
+    azure vm create -l "West US" -w samplevnet -e 10001 -z Small –n clientvm1 clientcs b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-JA-JP-30GB azureuser Password@1
+    azure vm create -l "West US" -w samplevnet -e 10002 -c -z Small -n clientvm2 clientcs b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-JA-JP-30GB azureuser Password@1
     azure vm disk attach-new servervm 100
     azure vm disk attach-new servervm 500
     azure vm endpoint create servervm 443 443 -n https -o tcp
@@ -70,4 +71,4 @@
 * [Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-how-to-log-on.md)
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

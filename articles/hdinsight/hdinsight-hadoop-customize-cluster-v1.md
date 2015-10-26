@@ -57,7 +57,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 **Spark のインストール** | https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1「[HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]」をご覧ください。
 **R のインストール** | https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1「[HDInsight クラスターに R をインストールして使用する][hdinsight-install-r]」をご覧ください。
 **Solr のインストール** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1「[HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)」をご覧ください。
-\- **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1「[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」をご覧ください。
+- **Giraph のインストール** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1「[HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)」をご覧ください。
 
 
 
@@ -66,7 +66,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 1. 「[カスタム オプションを使用したクラスターのプロビジョニング](hdinsight-provision-clusters.md#portal)」に関するページの説明に従い、**[カスタム作成]** オプションを使用してプロビジョニングを開始します。 
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
-	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-v1/HDI.CustomProvision.Page6.png "Script Action を使ってクラスターをカスタマイズする")
+	![Use Script Action to customize a cluster](./media/hdinsight-hadoop-customize-cluster-v1/HDI.CustomProvision.Page6.png "Script Action を使ってクラスターをカスタマイズする")
 	
 	<table border='1'>
 	<tr><th>プロパティ</th><th>値</th></tr>
@@ -176,4 +176,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-v1/HDI-Cluster-state.png "クラスター プロビジョニング時の段階"
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

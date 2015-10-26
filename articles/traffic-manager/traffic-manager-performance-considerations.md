@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Traffic Manager のパフォーマンスに関する考慮事項 | Microsoft Azure"
-	description="Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。"
-	services="traffic-manager"
-	documentationCenter=""
-	authors="kwill-MSFT"
-	manager="adinah"
-	editor="joaoma"/>
+   description="Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。"
+   services="traffic-manager"
+   documentationCenter=""
+   authors="kwill-MSFT"
+   manager="adinah"
+   editor="joaoma" />
 
 <tags 
    ms.service="traffic-manager"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/19/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/19/2015"
+   ms.author="joaoma" />
 
 
 # Traffic Manager のパフォーマンスに関する考慮事項
@@ -98,4 +98,4 @@ http://www.digwebinterface.com – watchmouse サイトと似ていますが、�
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

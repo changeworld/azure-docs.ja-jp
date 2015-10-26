@@ -13,12 +13,13 @@ ms.service="virtual-machines"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="09/28/2015"
+ ms.date="10/08/2015"
  ms.author="danlep"/>
 
 # Microsoft HPC Pack を使用して Azure でハイパフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事は、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用してリソースを作成する場合に適用されます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 Microsoft HPC Pack と、Azure のコンピューティングおよびインフラストラクチャ サービスを使用して、クラウド ベースのハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理します。[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) は、Microsoft Azure と Windows Server テクノロジに基づいて構築された、Microsoft の無料 HPC ソリューションであり、Windows と Linux HPC の両方のワークロードをサポートしています。クラウド ベースの HPC Pack クラスターには、クラスター管理者や独立系ソフトウェア ベンダー (ISV) がオンプレミスのコンピューティング クラスター インフラストラクチャへの投資を減らしながら、コンピューティング集約型アプリケーションを実行できる、柔軟でスケーラブルなプラットフォームが用意されています。
 
@@ -46,7 +47,7 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 ### PowerShell デプロイメント スクリプト
 
-* [Create an HPC cluster with the HPC Pack IaaS deployment script (HPC Pack IaaS デプロイメント スクリプトを使用した HPC クラスターの作成)](virtual-machines-hpcpackcluster-powershell-script.md)
+* [Create an HPC cluster with the HPC Pack IaaS deployment script (HPC Pack IaaS デプロイメント スクリプトを使用した HPC クラスターの作成)](virtual-machines-hpcpack-cluster-powershell-script.md)
 
 ### Tutorials (チュートリアル)
 
@@ -94,4 +95,4 @@ Microsoft HPC Pack と、Azure のコンピューティングおよびインフ�
 
 <!-- * [Set up a Linux RDMA cluster to run MPI applications](virtual-machines-linux-hpcpack-cluster-rdma.md) -->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

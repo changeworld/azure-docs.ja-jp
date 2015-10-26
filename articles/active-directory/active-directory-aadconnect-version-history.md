@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure AD Connect: バージョンのリリース履歴 | Microsoft Azure"
-	description="このトピックは、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧です"
-	services="active-directory"
-	documentationCenter=""
-	authors="AndKjell"
-	manager="stevenpo"
-	editor=""/>
+   description="このトピックは、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧です"
+   services="active-directory"
+   documentationCenter=""
+   authors="AndKjell"
+   manager="stevenpo"
+   editor=""/>
 
 <tags
    ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="08/24/2015"
-	ms.author="andkjell"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="10/13/2015"
+   ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
 
@@ -137,9 +137,7 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 
 **Azure AD Sync の最初のリリースです。**
 
-## その他のリソース
-[Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
+## 次のステップ
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -19,7 +19,8 @@
 
 # Azure PowerShell を使用した仮想マシンの管理
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 Azure PowerShell コマンドレットを使用すると、VM を管理するために日常的に行う多くのタスクを自動化できます。この記事では、比較的単純なタスクにはコマンド例を示し、より複雑なタスクには、コマンドが記載されている記事へのリンクを示します。
 
@@ -28,7 +29,7 @@ Azure PowerShell コマンドレットを使用すると、VM を管理するた
 ## サンプル コマンドを使用する方法
 コマンド内のテキストの一部を、使用する環境に適した別のテキストに置き換える必要があります。記号の < and > は置き換える必要があるテキストであることを示しています。テキストを置き換える場合、記号は削除し、引用符はそのままの位置に残します。
 
-## 仮想マシンの取得
+## VM の取得
 これは頻繁に使用することになる基本的なタスクです。VM に関する情報の取得、VM でのタスクの実行、変数に格納する出力の取得に使用します。
 
 VM に関する情報を取得するには、このコマンドを実行し、引用符内のすべての文字 (< and > を含む) を置き換えます。
@@ -39,7 +40,7 @@ VM に関する情報を取得するには、このコマンドを実行し、�
 
     $vm = Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-## Windows ベースの仮想マシンへのログオン
+## Windows ベースの VM へのログオン
 
 次の各コマンドを実行します。
 
@@ -89,11 +90,11 @@ BLOB ストレージにある既存の .vhd ファイルからデータ ディ�
 
 ## Windows ベースの VM の作成
 
-Azure で Windows ベースの仮想マシンを新たに作成するには、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」をご覧ください。このトピックでは、次の項目を事前構成することができる Windows ベースの仮想マシンを作成するための Azure PowerShell コマンド セットを作成する手順を説明します。
+Azure で Windows ベースの仮想マシンを新たに作成するには、「[Azure PowerShell を使用して Windows ベースの仮想マシンを作成し、事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)」をご覧ください。このトピックでは、次の項目を事前構成することができる Windows ベースの VM を作成するための Azure PowerShell コマンド セットを作成する手順を説明します。
 
 - Active Directory ドメイン メンバーシップ。
 - 追加のディスク。
 - 既存の負荷分散セットのメンバーとしての設定。
 - 静的 IP アドレス。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

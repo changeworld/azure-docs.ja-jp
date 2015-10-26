@@ -48,4 +48,4 @@ Logic Apps の場合でも、既定のアプリケーションを使用する代
 [4]: ./media/app-service-logic-oauth-security/TwitterApp.png
 [5]: ./media/app-service-logic-oauth-security/TwitterKeys.png
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Mahout と Hadoop を使用してリコメンデーションを生成する | Microsoft Azure"
-	description="Apache Mahout 機械学習ライブラリを使用して HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。"
+	pageTitle="Mahout と Windows ベースの HDInsight を使用したリコメンデーションの生成 | Microsoft Azure"
+	description="Apache Mahout 機械学習ライブラリを使用して Windows ベースの HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/23/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する
@@ -145,7 +145,7 @@ Mahout ジョブは出力を STDOUT に返しません。代わりに、指定�
 	3	[284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
 	4	[690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-最初の列は `userID` です。"[" と "]" に含まれる値は `movieId`:`recommendationScore` です。
+最初の列は `userID` です。'[' と ']' の間に入る値は `movieId`:`recommendationScore` です。
 
 ###出力を表示する
 
@@ -302,7 +302,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
 		hadoop jar c:/apps/dist/mahout-0.9.0.2.1.3.0-1887/examples/target/mahout-examples-0.9.0.2.1.3.0-1887-job.jar org.apache.mahout.classifier.df.mapreduce.BuildForest -Dmapred.max.split.size=1874231 -d wasb:///example/data/KDDTrain+.arff -ds wasb:///example/data/KDDTrain+.info -sl 5 -p -t 100 -o nsl-forest
 
-    この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (__wasb://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
+    この操作の出力は、HDInsight クラスターのストレージにある __nsl-forest__ ディレクトリに格納されます (\_\___wasb://user/&lt;username>/nsl-forest/nsl-forest.seq)。&lt;username> は、リモート デスクトップ セッションに使用されるユーザー名です。これは、人間が判読できないファイルです。
 
 5. __KDDTest+.arff__ データセットを分類してフォレストをテストします。次のコマンドを使用します。
 
@@ -334,7 +334,7 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 	    Reliability                                53.4921%
 	    Reliability (standard deviation)            0.4933
 
-  このジョブでも、__wasb:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
+  このジョブでも、\_\___wasb:///example/data/predictions/KDDTest+.arff.out__ にファイルが生成されますが、これは、人間が判読できないファイルです。
 
 > [AZURE.NOTE]Mahout ジョブはファイルを上書きしません。これらのジョブをもう一度実行する場合は、前のジョブで作成したファイルを削除する必要があります。
 
@@ -355,9 +355,9 @@ Mahout は HDInsight 3.1 クラスターにインストールされますが、�
 
 			mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
 
-    	ビルドが完了した後、__mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__ で JAR ファイルを入手できます。
+    	After the build completes, you can find the JAR file at __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
 
-    	> [AZURE.NOTE] Mahout 1.0 がリリースされると、HDInsight 3.0 で既成のパッケージを使用できるようになります。
+    	> [AZURE.NOTE] When Mahout 1.0 is released, you should be able to use the prebuilt packages with HDInsight 3.0.
 
 2. この jar ファイルを、使用しているクラスターの既定のストレージ内の __example/jars__ にアップロードします。次の例では、[HDInsight-Tools][tools] の add-hdinsightfile を使用してファイルをアップロードします。
 
@@ -422,4 +422,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

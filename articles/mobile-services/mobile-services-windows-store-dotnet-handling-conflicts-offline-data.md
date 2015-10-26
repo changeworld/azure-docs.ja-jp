@@ -164,4 +164,4 @@ Mobile Services でオフライン機能を使用するためには、ローカ�
 [Todo オフラインのモバイル サービスのサンプル]: http://go.microsoft.com/fwlink/?LinkId=512866
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

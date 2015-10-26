@@ -208,4 +208,4 @@ StorSimple Snapshot Manager で予防措置のバックアップを作成して�
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
 - [StorSimple Snapshot Manager のタスクとワークフローの詳細](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

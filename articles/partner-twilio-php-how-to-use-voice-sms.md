@@ -81,7 +81,7 @@ PHP 用 Twilio ライブラリを使用するようにアプリケーション�
 
 1. GitHub ([https://github.com/twilio/twilio-php][twilio_php]) から PHP 用 Twilio ライブラリをダウンロードし、**Services** ディレクトリをアプリケーションに追加します。
 
-	\- または -
+	- または -
 
 2. PHP 用 Twilio ライブラリを PEAR パッケージとしてインストールします。インストールには、次のコマンドを使用できます。
 
@@ -267,4 +267,4 @@ Azure で PHP に基づいて Twilio を使用する方法の詳細について�
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

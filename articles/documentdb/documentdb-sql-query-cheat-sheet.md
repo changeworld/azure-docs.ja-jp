@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="DocumentDB クエリのチート シート | Microsoft Azure"
-	description="DocumentDB の SQL に似た文法を利用し、NoSQL データベースで JSON ドキュメントのクエリを作成できる印刷可能なクエリ チート シート。"
-	services="documentdb"
-	documentationCenter=""
-	authors="mimig1"
-	manager="jhubbard"
+	pageTitle="DocumentDB クエリのチート シート | Microsoft Azure" 
+	description="DocumentDB の SQL に似た文法を利用し、NoSQL データベースで JSON ドキュメントのクエリを作成できる印刷可能なクエリ チート シート。" 
+	services="documentdb" 
+	documentationCenter="" 
+	authors="mimig1" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="documentdb"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/20/2015"
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/20/2015" 
 	ms.author="mimig"/>
 
 # ダウンロード可能な DocumentDB SQL クエリのチート シート
@@ -38,4 +38,4 @@ DocumentDB は [SQL](documentdb-sql-query.md) を利用した JSON ドキュメ�
 - DocumentDB で利用できるクエリ オプションのチュートリアルについては、「[DocumentDB のクエリ](documentdb-sql-query.md)」を参照してください。
 - 関連リファレンス ドキュメントについては、「[DocumentDB SQL クエリ言語](https://msdn.microsoft.com/library/azure/dn782250.aspx)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

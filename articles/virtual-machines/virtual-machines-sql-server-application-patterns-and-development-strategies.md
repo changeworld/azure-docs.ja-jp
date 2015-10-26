@@ -316,4 +316,4 @@ SQL Server ベースの多層アプリケーションを Azure に実装およ�
 
 Azure の仮想マシンで SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

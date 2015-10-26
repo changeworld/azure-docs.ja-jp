@@ -19,7 +19,8 @@
 
 # Azure ハイブリッド クラウド テスト環境
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 開発/テスト環境または概念実証のハイブリッド クラウド テスト環境向けに、ローカルのインターネット接続といずれかのパブリック IP アドレスを使用して、実用的なクロスプレミス Azure Virtual Network (VNet) を段階的に設定します。設定が完了したら、アプリケーションの開発とテストの実行や、簡略化された IT ワークロードでの実験ができます。また、サイト間の仮想プライベート ネットワーク (VPN) 接続のパフォーマンスをインターネット上の場所を基準に測定することができます。
 
@@ -58,4 +59,4 @@
 
 [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-infrastructure-services-implementation-guidelines.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

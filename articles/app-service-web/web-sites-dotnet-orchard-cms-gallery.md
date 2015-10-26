@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Marketplace から Orchard CMS Web アプリを作成する"
-	description="Azure で新しい Web アプリを作成する方法について説明するチュートリアルです。また、Azure ポータルを使用して Web アプリを公開し、管理する方法についても説明しています。"
+	pageTitle="Azure Marketplace から Orchard CMS Web アプリを作成する" 
+	description="Azure で新しい Web アプリを作成する方法について説明するチュートリアルです。また、Azure ポータルを使用して Web アプリを公開し、管理する方法についても説明しています。" 
 	tags="azure-portal"
-	services="app-service\web"
-	documentationCenter=".net"
-	authors="tfitzmac"
-	manager="wpickett"
+	services="app-service\web" 
+	documentationCenter=".net" 
+	authors="tfitzmac" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/03/2015"
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="08/03/2015" 
 	ms.author="tomfitz"/>
 
 # Azure Marketplace から Orchard CMS Web アプリを作成する
@@ -91,4 +91,4 @@ Marketplace には、Microsoft、サード パーティ企業、およびオー�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

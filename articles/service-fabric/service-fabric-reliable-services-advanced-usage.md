@@ -59,4 +59,4 @@ Service Fabric に関する詳細なトピックについては、次の記事�
 
 - [配置の制約の概要](service-fabric-placement-constraint.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

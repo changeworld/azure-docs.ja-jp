@@ -160,4 +160,4 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 [Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
 [Next steps]: #next-steps
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

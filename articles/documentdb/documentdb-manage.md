@@ -77,4 +77,4 @@ Azure プレビュー ポータルでパフォーマンス レベルを監視す
 コレクションのパフォーマンス レベルの選択の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels)」を参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

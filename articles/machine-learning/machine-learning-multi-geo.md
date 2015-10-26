@@ -57,4 +57,4 @@
 [3]: ./media/machine-learning-multi-geo/multi-geo_3.png
 [4a]: ./media/machine-learning-multi-geo/multi-geo_4a.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

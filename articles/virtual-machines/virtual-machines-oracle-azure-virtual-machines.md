@@ -19,7 +19,8 @@
 
 # Azure 仮想マシンでホストされている Oracle ソフトウェア
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
 Azure インフラストラクチャ サービス内で、仮想マシン上で実行される 1 番目または 2 番目の開発およびテスト、または運用 Oracle データベースを設定します。構成のしやすさ、また Oracle データベースのワークロードをすばやく拡張して新しい容量を含める機能をご活用ください。
 
@@ -55,4 +56,4 @@ Windows Server ベースの Azure 仮想マシン上の Oracle ソフトウェ�
 
 「[Azure 用の Oracle GoldenGate の構成](virtual-machines-configuring-oracle-goldengate.md)」では、データベースおよびレプリケーションの設定の手順を説明します。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

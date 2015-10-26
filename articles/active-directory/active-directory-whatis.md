@@ -104,4 +104,4 @@ Azure AD はマルチテナント型で地理的に分散した高可用性の�
 
 - [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

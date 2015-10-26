@@ -1,20 +1,20 @@
 <properties
    pageTitle="SSMS を使用した SQL Database への移行"
-	description="Microsoft Azure SQL Database、sql データベースの移行、ssms を使用した移行"
-	services="sql-database"
-	documentationCenter=""
-	authors="carlrabeler"
-	manager="jeffreyg"
-	editor=""/>
+   description="Microsoft Azure SQL Database、sql データベースの移行、ssms を使用した移行"
+   services="sql-database"
+   documentationCenter=""
+   authors="carlrabeler"
+   manager="jeffreyg"
+   editor=""/>
 
 <tags
    ms.service="sql-database"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-management"
-	ms.date="08/24/2015"
-	ms.author="carlrab"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-management"
+   ms.date="08/24/2015"
+   ms.author="carlrab"/>
 
 #SSMS を使用した互換性のあるデータベースの移行
 
@@ -76,4 +76,4 @@ SSMS から直接デプロイすると、常にスキーマ全体とすべての
 ##代替手段
 コマンド ライン ユーティリティである sqlpackage.exe を使用して、データベースのデプロイまたは BACPAC のエクスポートとインポートを実行することもできます。Sqlpackage.exe では、SSMS と同じ DAC テクノロジが使用されているため、結果は同じです。詳細については、MSDN の「[SqlPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx)」をご覧ください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

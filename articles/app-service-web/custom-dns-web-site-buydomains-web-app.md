@@ -98,4 +98,4 @@ Web アプリのドメイン名を持っていない場合は、[Microsoft Azure
 この時点でブラウザーにカスタム ドメイン名を入力して、対象の Web アプリに正常にアクセスできることを確認できます。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

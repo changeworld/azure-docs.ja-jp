@@ -8,9 +8,9 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/09/2015" ms.author="aashishr"; "jimpark"; "trinadhk"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/01/2015" ms.author="aashishr"; "jimpark"; "trinadhk"/>
 
-# 仮想マシンの管理
+# Azure 仮想マシンのバックアップを管理および監視する
 
 ## 保護された仮想マシンを管理する
 
@@ -65,7 +65,7 @@
 - 仮想マシンに関連付けられているバックアップ データを Azure Backup コンテナー内に保持する
 - 仮想マシンに関連付けられているバックアップ データを削除する
 
-仮想マシンに関連付けられているバックアップ データを保持する方法を選択した場合、バックアップ データを使用して仮想マシンを復元できます。このような仮想マシンの詳しい料金については、[ここ](http://azure.microsoft.com/pricing/details/backup/)をクリックしてください。
+仮想マシンに関連付けられているバックアップ データを保持する方法を選択した場合、バックアップ データを使用して仮想マシンを復元できます。このような仮想マシンの詳しい価格については、[ここ](http://azure.microsoft.com/pricing/details/backup/)をクリックしてください。
 
 仮想マシンに対する保護を停止するには:
 
@@ -153,21 +153,21 @@
 
 ![ダッシュボード](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
 
->[AZURE.NOTE]ダッシュ ボード内の値は、24 時間に 1 度更新されます。
+>[AZURE.NOTE]ダッシュボード内の値は、24 時間に 1 度更新されます。
 
 ## 監査操作
 Azure Backup では、顧客がトリガーしたバックアップ操作の "操作ログ" を確認できます。この機能を使えば、バックアップ コンテナーで行われた管理操作を正確に把握することができます。操作ログは、バックアップ操作の事後分析や監査を行うのに役立ちます。
 
 操作ログには、次の操作が記録されます。
 
-- Register
+- 登録
 - 登録解除
 - 保護の構成
 - バックアップ ([今すぐバックアップ] で行うオンデマンド バックアップとスケジュールされたバックアップの両方)
 - 復元
-- Stop protection
+- 保護の停止
 - バックアップ データの削除
-- Add policy
+- ポリシーの追加
 - ポリシーの削除
 - ポリシーの更新
 - ジョブの取り消し
@@ -249,4 +249,4 @@ PS C:\> Add-AlertRule -Operator GreaterThanOrEqual -Threshold 1 -ResourceId '/su
 
 - [Azure VM の復元](backup-azure-restore-vms.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

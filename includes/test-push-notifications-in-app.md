@@ -7,4 +7,4 @@
 
   	![](../articles/media/mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

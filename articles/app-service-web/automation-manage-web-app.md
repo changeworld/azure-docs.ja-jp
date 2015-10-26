@@ -43,4 +43,4 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 * [Azure Automation の使用](../automation-intro.md) (Azure Automation の作業開始のチュートリアル)
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

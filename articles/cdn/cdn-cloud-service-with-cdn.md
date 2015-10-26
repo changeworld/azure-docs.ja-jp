@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="クラウド サービスと Azure CDN との統合"
-	description="統合 Azure CDN エンドポイントからコンテンツを提供するクラウド サービスをデプロイする方法について説明するチュートリアル"
-	services="cdn, cloud-services"
-	documentationCenter=".net"
-	authors="cephalin"
-	manager="wpickett"
+	pageTitle="クラウド サービスと Azure CDN との統合" 
+	description="統合 Azure CDN エンドポイントからコンテンツを提供するクラウド サービスをデプロイする方法について説明するチュートリアル" 
+	services="cdn, cloud-services" 
+	documentationCenter=".net" 
+	authors="cephalin" 
+	manager="wpickett" 
 	editor="tysonn"/>
 
 <tags 
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="cdn" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="cephalin"/>
 
 
@@ -48,9 +48,7 @@
 -	アクティブな [Microsoft Azure アカウント](/account/)
 -	Visual Studio 2013 と [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
-> + [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps など無料の Azure サービスをご利用になれます。
-> + [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web サイトなど無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
 <a name="deploy"></a>
 ## クラウド サービスを統合 CDN エンドポイントと共にデプロイする ##
@@ -325,7 +323,7 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 
 	![](media/cdn-cloud-service-with-cdn/cdn-7-configureview.PNG)
 
-4. 新しい *Views\MemeGenerator\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
+4. 新しい *Views\\MemeGenerator\\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
 
 		<h2>Meme Generator</h2>
 		
@@ -622,4 +620,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 - [Azure 用 CDN の使用](cdn-how-to-use.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

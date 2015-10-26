@@ -187,4 +187,4 @@
 [4]: ./media/sql-database-elastic-jobs-service-installation/incomplete.png
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

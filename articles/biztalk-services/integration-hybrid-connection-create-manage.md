@@ -129,7 +129,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 3. グループ ポリシーを変更するコンピューターで、以下の手順を実行します。  
 
 	- .ADMX ファイルを *%WINROOT%\\PolicyDefinitions* フォルダーにコピーします。
-	- .ADML ファイルを *%WINROOT%\\PolicyDefinitions\\ja-JP* フォルダーにコピーします。
+	- .ADML ファイルを *%WINROOT%\\PolicyDefinitions\\ja-jp* フォルダーにコピーします。
 
 コピーが終了すると、グループ ポリシー エディターを使用してポリシーを変更できます。
 
@@ -150,4 +150,4 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

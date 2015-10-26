@@ -155,7 +155,7 @@ Linux ベースの HDInsight クラスターを使用している場合は、次
 
 ###SSH
 
-SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する</a>」または「<a href="../hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a>」をご覧ください。
+SSH の使用に関する詳細については、「Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する<a href="../hdinsight-hadoop-linux-use-ssh-unix/" target="_blank"></a>」または「<a href="../hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a>」をご覧ください。
 
 1. Python の例の [streaming.py](#streamingpy) と [jython.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
 
@@ -326,4 +326,4 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

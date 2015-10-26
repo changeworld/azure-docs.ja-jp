@@ -1,77 +1,23 @@
-
-<properties 
-	pageTitle="Azure AD Connect 同期規則エディターの使用"
-	description="Azure AD Connect 同期規則エディターの使用方法について説明します。"
+<properties
+	pageTitle="Azure AD Connect の既定の構成の変更"
+	description="Azure AD Connect の既定の構成を変更する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="billmath"
+	authors="andkjell"
 	manager="stevenpo"
 	editor="curtand"/>
 
-<tags 
+<tags
 	ms.service="active-directory"
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/24/2015"
-	ms.author="billmath"/>
+	ms.author="andkjell"/>
 
-# Azure AD Connect 同期規則エディター
+# Azure AD Connect の既定の構成の変更
 
+コンテンツは削除されました。
 
-## 同期規則エディターの使用
-
-Azure AD Connect では、同期規則を構成することにより、Azure AD とオンプレミスのディレクトリとの間のオブジェクトと属性のフローを構成、調整できます。
-
-同期規則は、条件が満たされた場合に、フローする属性のセットを含む構成オブジェクトです。また、これを使用して、結合または一致と呼ばれる、コネクタ スペース内のオブジェクトとメタバース内のオブジェクトとの関連付けを記述することもできます。同期規則には、互いがどのように関連するのかを示す優先順位があります。優先順位の数値が低いほど、同期規則の優先順位は高くなります。属性のフローの競合が発生した場合には、優先順位の高い同期規則が、競合の解決では優先されます。同期規則は、同期規則エディターを使用して構成できます。
-
-例として、同期規則 "AD からの受信 – User AccountEnabled" を使って説明します。SRE でこの行をマークし、[編集] を選択します。同期規則には次の 4 つの構成セクションがあります。説明、スコープ フィルター、結合規則、および変換です。
-
-### 説明
-最初のセクションでは、名前や説明などの基本的な情報を提供します。
-
-<center>![Join Rule](./media/active-directory-aadconnect-whats-next-synch-rules-editor/sync1.png) </center>
-
-この規則が関連する接続先システム、この規則の適用される接続先システム、およびメタバース オブジェクトの種類の情報も示されています。メタバース オブジェクトの種類は、ソース オブジェクトの種類がユーザーでも、iNetOrgPerson でも連絡先でも、必ず個人です。メタバース オブジェクトの種類は、ジェネリック型として作成されるため、変更しないでください。リンクの種類は、[結合]、[スティッキー結合]、または [プロビジョニング] に設定できます。この設定は [結合規則] セクションと共に機能します。これについては、後でします。
-
-### スコープ フィルター
-
-[スコープ フィルター] セクションは、同期規則の適用が必要なタイミングを構成するために使用されます。現在、説明している同期規則の名前は、有効なユーザーにのみ同期規則が適用されることを意味しているため、AD 属性の userAccountControl にビット 2 を設定しないようスコープは構成されます。AD にユーザーが見つかると、userAccountControl が 10 進数 512 (有効になっている通常のユーザー) に設定されている場合、この規則は適用されます。ただし、見つかったユーザーの userAccountControl に 514 (無効になっている通常のユーザー) が設定されている場合は適用されません。
-
-<center>![Join Rule](./media/active-directory-aadconnect-whats-next-synch-rules-editor/sync2.png) </center>
-
-スコープ フィルターには、入れ子にできるグループおよび句があります。同期規則を適用するには、グループ内のすべての句が満たされている必要があります。複数のグループが定義されている場合、規則を適用するには少なくとも 1 つのグループが満たされている必要があります。つまり、グループ間では論理 OR が評価され、グループ内では論理 AND が評価されます。この例は、以下に示す送信の同期規則 "AAD への送信 – グループ結合" にあります。同期フィルター グループは 2 つあります。1 つはセキュリティ グループ向け (securityEnabled EQUAL True) 、もう 1 つは配布グループ向け (securityEnabled EQUAL False) です。
-
-<center>![Join Rule](./media/active-directory-aadconnect-whats-next-synch-rules-editor/sync3.png) </center>
-
-この規則は、AAD にプロビジョニングするグループを定義するために使用されます。配布グループを AAD と同期するにはメールを有効にする必要がありますが、セキュリティ グループの場合、これは不要です。おわかりになるように、追加の属性の多くも評価されます。
-
-###結合規則
-3 番目のセクションは、コネクタ スペース内のオブジェクトと、メタバース内のオブジェクトの関連付けの構成に使用されます。前に説明した規則には、結合規則の構成はありません。よって "AD からの受信 – ユーザー結合" について説明します。
-
-<center>![Join Rule](./media/active-directory-aadconnect-whats-next-synch-rules-editor/sync4.png) </center>
-
-結合規則の内容は、インストール ウィザードで選択されている一致オプションによって異なります。受信規則の場合、評価はソースのコネクタ スペースのオブジェクトで開始され、結合規則の各グループが順番に評価されます。結合規則の 1 つを使用してソース オブジェクトを評価した結果、メタバースの 1 つのオブジェクトのみと一致した場合、これらのオブジェクトは結合されます。すべての規則が評価されて一致が存在しない場合は、説明ページのリンクの種類が使用されます。この設定が [プロビジョニング] に設定されている場合は、新しいオブジェクトがターゲットであるメタバースに作成されます。メタバースへの新しいオブジェクトのプロビジョニングは、メタバースへのオブジェクトの投影とも呼ばれています。結合規則は、1 回のみ評価されます。コネクタ スペース オブジェクトと、メタバース オブジェクトが結合されている場合は、同期規則のスコープが引き続き満たされている限り、結合が維持されます。同期規則を評価する際は、結合規則が定義されている同期規則が 1 つだけスコープ内に必要です。1 つのオブジェクトに対して、結合規則を持つ複数の同期規則がある場合は、エラーがスローされます。このため、複数の同期規則がオブジェクトのスコープ内にある場合は、結合を定義した同期規則を 1 つだけにすることがベスト プラクティスとなります。Azure AD Connect の標準の構成では、これらの規則は、名前で検索すると名前の末尾に Join という語が付いています。同期規則に結合規則が定義されておらず、別の同期規則によってオブジェクトが結合されているか、ターゲットに新しいオブジェクトがプロビジョニングされている場合、その同期規則は属性フローを適用します。
-
-###変換
-変換セクションでは、オブジェクトが結合され、スコープ フィルターも満たしている場合にターゲット オブジェクトに適用されるすべての属性のフローを定義します。"AD からの受信 – User AccountEnabled" に戻ってみると、次の変換があることがわかります。
-
-<center>![Join Rule](./media/active-directory-aadconnect-whats-next-synch-rules-editor/sync5.png) </center>
-
-これを踏まえると、アカウント/リソース フォレストのデプロイでは、アカウント フォレストには有効なアカウントが、Exchange および Lync 設定のあるリソース フォレストには無効なアカウントが見つかると予想されます。ここで説明している同期規則には、ログインに必要な属性が含まれており、有効なアカウントが見つかったフォレストから、これらの属性がフローする必要があります。これらの属性のフローは 1 つの同期規則にまとめられます。変換の種類には、定数、直接、および式があります。定数フローは、常に特定の値をフローします。上の例では、常に accountEnabled という名前のメタバース属性に True を設定します。直接フローは、ソースの属性の値をターゲット属性にフローします。3 番目のフローの種類は式で、より高度な構成が可能です。式の言語は VBA (Visual Basic for Applications) で、Microsoft Office または VBScript の経験があるユーザーであれば形式がわかります。属性は、[attributeName] のように角かっこで囲みます。属性名および関数名では、大文字と小文字が区別されます。同期規則エディターが式を評価し、式が無効な場合は警告を出します。すべての式は関数が入れ子になって 1 行で表されます。この構成言語の強力な機能を、次の pwdLastSet のフローで示しています。追加のコメントも挿入されています。
-
-		// If-then-else
-		IIF(
-		// (The evaluation for IIF) Is the attribute pwdLastSet present in AD? 
-		IsPresent([pwdLastSet]),
-		// (The True part of IIF) If it is, then from right to left, convert the AD time format to a .Net datetime, change it to the time format used by AAD, and finally convert it to a string.
-		CStr(FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")),
-		// (The False part of IIF) Nothing to contribute
-		NULL
-		)
-
-変換に関するトピックは膨大となるため、Azure AD Connect で可能なカスタム構成の大部分を占めます。この概要ドキュメントではカスタム構成については説明しませんが、追加の属性フローの一部については後述します。
- 
-
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

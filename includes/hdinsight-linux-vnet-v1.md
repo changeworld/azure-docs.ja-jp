@@ -2,4 +2,4 @@
 > 
 > v1 ネットワーク上にリソースがあり、HDInsight から仮想ネットワークを介してそれらのリソースに直接アクセスできるようにする場合、v2 Virtual Network を v1 Virtual Network に接続する方法については、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」をご覧ください。この接続が確立されると、v2 Virtual Network で HDInsight クラスターを作成できます。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

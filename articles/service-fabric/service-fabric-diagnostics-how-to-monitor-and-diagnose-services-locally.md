@@ -79,4 +79,4 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 * [Azure Service Fabric アクターの診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md)
 * [ステートフル Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

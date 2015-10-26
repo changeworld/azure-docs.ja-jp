@@ -1,19 +1,19 @@
 <properties 	
-	pageTitle="Azure Data Factory - サンプル"
-	description="Azure Data Factory サービスに付属するサンプルについて詳細に説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="Azure Data Factory - サンプル" 
+	description="Azure Data Factory サービスに付属するサンプルについて詳細に説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/21/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/13/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - サンプル
@@ -24,25 +24,25 @@ Azure ポータルの **[パイプラインのサンプル]** ブレードを使
 1. 新しいデータ ファクトリを作成するか、既存のデータ ファクトリを開きます。データ ファクトリを作成する手順については、「[Azure Data Factory を使ってみる][data-factory-get-started]」を参照してください
 2. データ ファクトリの **[Data Factory]** ブレードで、**[パイプラインのサンプル]** タイルをクリックします。
 
-	![Sample pipelines tile](./media/data-factory-samples/SamplePipelinesTile.png)
+	![サンプル パイプライン タイル](./media/data-factory-samples/SamplePipelinesTile.png)
 
 2. **[パイプラインのサンプル]** ブレードで、デプロイする**サンプル**をクリックします。
 	
-	![Sample pipelines blade](./media/data-factory-samples/SampleTile.png)
+	![サンプル パイプライン ブレード](./media/data-factory-samples/SampleTile.png)
 
 3. このサンプルの構成設定を指定します。たとえば、Azure ストレージ アカウント名とアカウント キー、Azure SQL サーバーの名前、データベース、ユーザー ID、パスワードなどです。
 
-	![Sample blade](./media/data-factory-samples/SampleBlade.png)
+	![サンプル ブレード](./media/data-factory-samples/SampleBlade.png)
 
 4. 構成設定の指定が完了したら **[作成]** をクリックして、サンプルのパイプラインと、そのパイプラインで使用するリンクされたサービスとテーブルを作成またはデプロイします。
 5. 前に **[パイプラインのサンプル]** ブレードでクリックしたサンプルのタイルに、デプロイの状態が表示されます。
 
-	![Deployment status](./media/data-factory-samples/DeploymentStatus.png)
+	![デプロイ ステータス](./media/data-factory-samples/DeploymentStatus.png)
 
 6. サンプルのタイルに**デプロイに成功した**ことを示すメッセージが表示されたら、**[パイプラインのサンプル]** ブレードを閉じます。
 5. **[Data Factory]** ブレードで、リンクされたサービス、データ セット、パイプラインがデータ ファクトリに追加されたことを確認できます。  
 
-	![Data Factory blade](./media/data-factory-samples/DataFactoryBladeAfter.png)
+	![[データ ファクトリ] ブレード](./media/data-factory-samples/DataFactoryBladeAfter.png)
    
 
 次の表で、**[パイプラインのサンプル]** タイルで使用できるサンプルについて簡単に説明します。
@@ -59,4 +59,4 @@ Azure ポータルの **[パイプラインのサンプル]** ブレードを使
 
 [data-factory-get-started]: data-factory-get-started.md#CreateDataFactory
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

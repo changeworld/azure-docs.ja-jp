@@ -2,4 +2,4 @@ NSG を使用して、仮想ネットワーク内の 1 つまたは複数の仮�
 
 NSG の詳細については、「[what is an NSG (NSG の概要)](virtual-networks-nsg)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

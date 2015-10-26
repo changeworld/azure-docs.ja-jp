@@ -15,7 +15,7 @@
 1.  Jobscience のアプリ統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-jobscience-tutorial/IC784341.png "シナリオ")
 ##Jobscience のアプリ統合の有効化
@@ -51,9 +51,7 @@
     ![Jobscience](./media/active-directory-saas-jobscience-tutorial/IC784357.png "Jobscience")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jobscience に対する認証を行えるようにする方法を説明します。  
-Jobscience のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。  
-この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Jobscience に対する認証を行えるようにする方法を説明します。Jobscience のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -67,7 +65,7 @@ Jobscience のシングル サインオンを構成するには、証明書か�
 
     ![マイ ドメイン](./media/active-directory-saas-jobscience-tutorial/IC767825.png "マイ ドメイン")
 
-4.  ドメインが正しく設定されていることを確認するには、“**Step 4 Deployed to Users**” で “**My Domain Settings**” を確認します。
+4.  ドメインが正しく設定されていることを確認するには、“**ステップ 4 ユーザーへのデプロイ**” で “**マイ ドメインの設定**” を確認します。
 
     ![ユーザーにデプロイされたドメイン](./media/active-directory-saas-jobscience-tutorial/IC784377.png "ユーザーにデプロイされたドメイン")
 
@@ -83,7 +81,7 @@ Jobscience のシングル サインオンを構成するには、証明書か�
 
 8.  **[アプリ URL の構成]** ページの **[Jobscience サインイン URL]** ボックスに、"**http://company.my.salesforce.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-jobscience-tutorial/IC784362.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-jobscience-tutorial/IC784362.png "アプリケーション URL の構成")
 
 9.  **[Jobscience でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
 
@@ -184,4 +182,4 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!--------HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

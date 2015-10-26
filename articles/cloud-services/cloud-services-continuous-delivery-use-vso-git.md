@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Git と Visual Studio Online を使用した Azure への継続的な配信"
+	pageTitle="Git と Visual Studio Online を使用した Azure への継続的な配信" 
 	description="Git を使用して Visual Studio Online チーム プロジェクトを自動的にビルドして Azure App Service の Web アプリ機能またはクラウド サービスにデプロイするための構成方法について説明します。"
 	services="cloud-services"
 	documentationCenter=".net"
@@ -23,8 +23,7 @@ Visual Studio Online チーム プロジェクトを使用してソース コー
 Visual Studio 2013 および Azure SDK をインストールする必要があります。Visual Studio 2013 がない場合は、**www.visualstudio.com** で[無料利用の開始](http://www.visualstudio.com)リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
 
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Online のアカウントが必要です。
-> [Visual Studio Online アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
+> [AZURE.NOTE]このチュートリアルを完了するには、Visual Studio Online のアカウントが必要です。[Visual Studio Online アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
 
 Visual Studio Online を使用してクラウド サービスを自動的にビルドして Azure にデプロイするように設定するには、次の手順に従います。
 
@@ -273,4 +272,4 @@ Visual Studio Online で Git を使用する場合のその他のヒントにつ
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

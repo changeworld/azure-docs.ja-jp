@@ -153,4 +153,4 @@ Update 1.2 を適用するには、次の手順を実行します。**この更�
 
 詳細については、[Update 1.2 リリース](storsimple-update1-release-notes.md)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -128,4 +128,4 @@ StorSimple Snapshot Manager では、すべての操作メニューと **[操作
 - [StorSimple Snapshot Manager のユーザー インターフェイスの詳細](storsimple-use-snapshot-manager.md)
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

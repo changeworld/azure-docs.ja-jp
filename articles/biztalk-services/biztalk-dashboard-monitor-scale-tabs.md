@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="BizTalk Services での [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] | Microsoft Azure"
-	description="BizTalk Services の管理ポータルのタブのコントロールについて説明し、パフォーマンスを監視します: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続]。MABS、WABS"
-	services="biztalk-services"
-	documentationCenter=""
-	authors="MandiOhlinger"
-	manager="dwrede"
+	pageTitle="BizTalk Services での [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] | Microsoft Azure" 
+	description="BizTalk Services の管理ポータルのタブのコントロールについて説明し、パフォーマンスを監視します: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続]。MABS、WABS" 
+	services="biztalk-services" 
+	documentationCenter="" 
+	authors="MandiOhlinger" 
+	manager="dwrede" 
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="biztalk-services"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.service="biztalk-services" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/26/2015" 
 	ms.author="mandia"/>
 
 
@@ -28,23 +28,20 @@ Azure 管理ポータルを開くと、自動的に [**すべてのアイテム*
 新しいウィンドウが開き、次のタブが表示されます。このトピックでは、これらのタブについて説明します。
 
 ## クイック スタート (![クイック スタート][QuickStart])
-BizTalk サービスのエディションによっては、ここに示したオプションの一部が表示されないこともあります。
-<table border="1">
-    <tr>
-        <td><strong>ツールの入手</strong></td>
+BizTalk サービスのエディションによっては、ここに示したオプションの一部が表示されないこともあります。<table border="1"> <tr> <td><strong>ツールの入手</strong></td>
 
-        <td>BizTalk サービス SDK をダウンロードし、Visual Studio プロジェクト テンプレートを内部設置型の開発用コンピューターにインストールします。 これらのテンプレートは、BizTalk サービスにデプロイされる<strong>BizTalk サービス</strong> (ブリッジ) および <strong>BizTalk サービス アーティファクト</strong> (変換) Visual Studio プロジェクトを作成します。
+        <td>Download the BizTalk Services SDK to install the Visual Studio project templates on your on-premises development computer. These templates create the <strong>BizTalk Services</strong> (bridge) and the <strong>BizTalk Service Artifacts</strong> (Transform) Visual Studio projects that are deployed to your BizTalk Service.
         <br/><br/>
-		作業を開始する手順については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">Azure BizTalk Services SDK を使用して開始する方法に関するページ</a> および <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Azure BizTalk Services SDK のインストールに関するページ</a> を参照してください。
+		<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335"> How do I Start Using the Azure BizTalk Services SDK </a> and <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Installing the Azure BizTalk Services SDK</a> lists the steps to get started.
         </td>
     </tr>
 
     <tr>
-        <td><strong>パートナー契約の作成</strong></td>
+        <td><strong>Create partner agreements</strong></td>
 
-        <td>Azure でホストされている Azure BizTalk サービス ポータルを開きます。ここで、パートナーを追加し、X12 契約、AS2 契約、および EDIFACT EDI 契約を作成します。
+        <td>Opens the Azure BizTalk Services Portal hosted on Azure where you add partners and create X12, AS2, and EDIFACT EDI agreements.
         <br/><br/>
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk サービス ポータル上の EDI メッセージングのコンポーネントの構成に関するページ</a>で、作業を開始する手順を説明しています。
+        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">Configuring Components for EDI Messaging on BizTalk Services Portal</a> lists the steps to get started.
         </td>
     </tr>
 
@@ -236,17 +233,14 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 
 ##### グラフ内のメトリックを削除または表示するには:
 1. **[監視]** タブを選択します。
-2. タスク バーで [**メトリックの追加**] を選択します。  
-![[メトリックの追加] を選択する][AddMetrics]
+2. タスク バーで [**メトリックの追加**] を選択します。![[メトリックの追加] を選択する][AddMetrics]
 3. 表示したいパフォーマンス メトリックのチェック ボックスをオンにします。
 4. チェックマークを選択して **[監視]** タブに戻ります。
 5. グラフにメトリック値を表示するメトリックの横にある円を選択します。  
 
-	たとえば、**[CPU 使用率]** メトリックが淡色表示されているとき、グラフにその出力は表示されません。  
-![CPU 使用率のメトリックは淡色表示される][GrayedMetric]  
+	たとえば、**[CPU 使用率]** メトリックが淡色表示されているとき、グラフにその出力は表示されません。![CPU 使用率のメトリックは淡色表示される][GrayedMetric]
 
-	淡色表示された円をクリックすると、**[CPU 使用率]** メトリックが有効になり、グラフ内で表示されます。  
-![[CPU 使用率] メトリックが有効になっている][EnabledMetric]
+	淡色表示された円をクリックすると、**[CPU 使用率]** メトリックが有効になり、グラフ内で表示されます。![[CPU 使用率] メトリックが有効になっている][EnabledMetric]
 
 6. 特定のメトリックをグラフ表示とリストから削除するには、タスク バーの **[メトリックの削除]** を選択します。メトリックを再びリストに追加するには、タスク バーの **[メトリックの追加]** を選択し、そのメトリックのチェック ボックスをオンにしてから、チェックマークを選択して **[監視]** タブに戻ります。淡色表示されている円を選択すると、そのメトリックが有効な状態になります。
 
@@ -365,4 +359,4 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
  
 
-<!----HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

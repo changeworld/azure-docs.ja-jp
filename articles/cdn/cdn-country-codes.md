@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="CDN - 国コード"
-	description="国のフィルタリング機能では、国コードを使用して、セキュリティ保護されたディレクトリに対して要求を許可またはブロックする要求発信元の国を定義します。"
-	services="cdn"
-	documentationCenter=".NET"
-	authors="juliako"
-	manager="dwrede"
+	pageTitle="CDN - 国コード" 
+	description="国のフィルタリング機能では、国コードを使用して、セキュリティ保護されたディレクトリに対して要求を許可またはブロックする要求発信元の国を定義します。" 
+	services="cdn" 
+	documentationCenter=".NET" 
+	authors="juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="cdn" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="juliako"/>
 
 #国コード
@@ -268,4 +268,4 @@
 | ZM | ザンビア | |
 | ZW | ジンバブエ | |
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

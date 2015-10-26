@@ -810,4 +810,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 [ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

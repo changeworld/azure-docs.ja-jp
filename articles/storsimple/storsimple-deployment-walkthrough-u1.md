@@ -238,10 +238,9 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 ## 更新プログラムをスキャンして適用する
 
-デバイスの更新には、数時間かかることがあります。次の手順を実行して、更新プログラムをスキャンしてデバイスに適用します。
-<!--can take 1-4 hours-->
+デバイスの更新には、数時間かかることがあります。次の手順を実行して、更新プログラムをスキャンしてデバイスに適用します。<!--can take 1-4 hours-->
 
-<!--ゲートウェイを DATA 0 以外のネットワーク インターフェイスで構成している場合は、更新プログラムをインストールする前に、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にする必要があります。 **[デバイス]、[構成]** の順に移動し、DATA 2 と DATA 3 のインターフェイスを無効にします。デバイスの更新後に、これらのインターフェイスをもう一度有効にする必要があります。-->
+<!--If you have a gateway configured on a network interface other than Data 0, you will need to disable Data 2 and Data 3 network interfaces before installing the update. Go to **Devices > Configure** and disable Data 2 and Data 3 interfaces. You should re-enable these interfaces after the device is updated.-->
 
 #### デバイスを更新するには
 
@@ -251,7 +250,7 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 3.	更新ジョブが作成されます。**[ジョブ]** に移動して、更新の状態を監視します。
 
-	> [AZURE.NOTE] 更新ジョブが開始されるとすぐ、状態は 50% として表示されます。更新ジョブの完了後、状態が 100% に変わります。更新プログラムのプロセスでは、リアルタイムの状態は表示されません。
+	> [AZURE.NOTE]更新ジョブが開始されるとすぐ、状態は 50% として表示されます。更新ジョブの完了後、状態が 100% に変わります。更新プログラムのプロセスでは、リアルタイムの状態は表示されません。
 
 4.	デバイスが正常に更新された後、DATA 2 および DATA 3 のネットワーク インターフェイスを無効にしていた場合は有効にします。
 
@@ -287,4 +286,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 [StorSimple Manager サービス](storsimple-manager-service-administration.md)を使用して StorSimple デバイスを管理します。
  
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -18,7 +18,8 @@
 
 # Azure でホストされる Web サイトで ReportViewer を使用する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 Microsoft Azure 仮想マシンに保存されたレポートを表示する Visual Studio ReportViewer コントロールを使用して、Microsoft Azure Web サイトを作成できます。ReportViewer コントロールは、ASP.NET Web アプリケーション テンプレートを使用して作成する Web アプリケーション内にあります。
 
@@ -102,10 +103,10 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 
 [Microsoft レポート](http://go.microsoft.com/fwlink/?LinkId=205399)
 
-[Azure の仮想マシンでの SQL Server Business Intelligence](virtual-machines-sql-server-business-intelligence.md)
+[Azure Virtual Machines での SQL Server Business Intelligence](virtual-machines-sql-server-business-intelligence.md)
 
 [ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](virtual-machines-sql-server-create-native-mode-report-server-powershell.md)
 
 [Reporting Services のレポート ビューアー制御と Microsoft Azure 仮想マシン ベースのレポート サーバー](http://download.microsoft.com/download/2/2/0/220DE2F1-8AB3-474D-8F8B-C998F7C56B5D/Reporting%20Services%20report%20viewer%20control%20and%20Azure%20VM%20based%20report%20servers.docx)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

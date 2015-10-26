@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="TBD" 
-   ms.date="09/24/2015"
+   ms.date="10/09/2015"
    ms.author="coreyp"/>
 
 # Azure Automation DSC の概要 #
@@ -107,9 +107,9 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 現在、Azure Automation DSC では、コンパイル ジョブを管理するために [Azure リソース マネージャーの PowerShell モジュール](https://msdn.microsoft.com/library/mt244122.aspx)で以下のコマンドレットが提供されます。
 
--	`Get-AzureAutomationDscCompilationJob`
--	`Get-AzureAutomationDscCompilationJobOutput`
--	`Start-AzureAutomationDscCompilationJob`
+-	`Get-AzureRmAutomationDscCompilationJob`
+-	`Get-AzureRmAutomationDscCompilationJobOutput`
+-	`Start-AzureRmAutomationDscCompilationJob`
 
 ##Azure Automation DSC のライフサイクル##
 空のオートメーション アカウントから適切に構成されたノードの管理対象セットを作成するには、構成を定義し、定義した構成をノード構成に変更して、ノードを Azure Automation DSC とこれらのノード構成にオンボードする一連のプロセスを行います。次の図に、Azure Automation DSC のライフサイクルを示します。
@@ -143,5 +143,6 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](http://azure.microsoft.com/pricing/details/automation/)
+- [Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

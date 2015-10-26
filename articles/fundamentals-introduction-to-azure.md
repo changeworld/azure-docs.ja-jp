@@ -199,7 +199,7 @@ BLOB ストレージは、ユーザーのワークロードを確実に処理で
 Azure は、現在、世界中で広く展開され多数のデータセンターで稼働しています。アプリケーションを実行したり、データを格納したりする際は、これらの中から使用するデータセンターを 1 つ以上選択できます。さらに、以下のサービスを使用して、さまざまな方法でこれらのデータセンターに接続できます。
 
 
-### Virtual Network
+### 仮想ネットワーク
 ![VirtualNetwork](./media/fundamentals-introduction-to-azure/VirtualNetworkIntroNew.png)
 
 *図: Virtual Network は、さまざまなサービスが相互通信したり、クロスプレミス接続に VPN 接続を設定している場合はオンプレミスのリソースへアクセスしたりできるように、クラウド内でプライベート ネットワークを提供する。*
@@ -352,7 +352,7 @@ Azure API Management は、組織がより簡単に、規模に応じて安全�
 
 
 
-## Mobile
+## モバイル
 
 モバイル デバイスのアプリケーションを作成している場合は、大量のカスタム コードを記述する必要なしに、クラウドへのデータの格納、ユーザーの認証、プッシュ通知の送信を行うために Azure が役立つことがあります。
 
@@ -611,4 +611,4 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

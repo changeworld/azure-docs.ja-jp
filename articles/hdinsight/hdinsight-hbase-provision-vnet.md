@@ -335,7 +335,7 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 - [HDInsight での Hadoop クラスターのプロビジョニング](hdinsight-provision-clusters.md)
 - [HDInsight の Hadoop 環境での HBase の使用](../hdinsight-hbase-get-started.md)
 - [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する](../hdinsight-hbase-twitter-sentiment.md)
-- [仮想ネットワークの概要][vnet-overview]
+- [Virtual Network の概要][vnet-overview]
 
 
 [1]: http://azure.microsoft.com/services/virtual-network/
@@ -384,4 +384,4 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 
 [azure-preview-portal]: https://portal.azure.com
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

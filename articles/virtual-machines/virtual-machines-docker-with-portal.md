@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Linux 用 Docker VM 拡張機能の使用 | Microsoft Azure"
-	description="Docker と Azure Virtual Machines の拡張機能について説明し、クラシック デプロイメント モデルで Azure CLI を使用して、Docker ホストである Azure Virtual Machines を作成する方法を示します。"
+	description="Docker と Azure Virtual Machines の拡張機能について説明し、クラシック デプロイ モデルで Azure CLI を使用して、Docker ホストである Azure 仮想マシンを作成する方法を示します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
@@ -20,7 +20,8 @@
 
 # Azure ポータルでの Docker VM 拡張機能の使用
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 [Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。[Azure Linux エージェント]で管理する Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
 
@@ -75,7 +76,7 @@ Docker VM 拡張機能を選択します。この操作により、Docker の説
 
 ![](./media/virtual-machines-docker-with-portal/AddExtensionFormFilled.png)
 
-> [AZURE.NOTE] \(上のイメージに示すように) 既定で 2376 が入力されています。ここに任意のエンドポイントを入力できますが、次のステップで、一致するエンドポイントを開く必要があります。既定値を変更した場合は、必ず、次のステップで一致するエンドポイントを開いてください。
+> [AZURE.NOTE](上のイメージに示すように) 既定で 2376 が入力されています。ここに任意のエンドポイントを入力できますが、次のステップで、一致するエンドポイントを開く必要があります。既定値を変更した場合は、必ず、次のステップで一致するエンドポイントを開いてください。
 
 ## Docker 通信エンドポイントの追加
 前に作成したリソース グループの VM が表示されているときに、下へスクロールして **[エンドポイント]** をクリックすると、下に示すように VM 上のエンドポイントが表示されます。
@@ -146,4 +147,4 @@ WARNING: No swap limit support
 [HTTPS を使用した Docker の実行]: http://docs.docker.com/articles/https/
 [Docker ユーザー ガイド]: https://docs.docker.com/userguide/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

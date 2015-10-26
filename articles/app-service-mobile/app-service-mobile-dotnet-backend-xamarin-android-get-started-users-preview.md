@@ -1,26 +1,24 @@
 <properties 
-	pageTitle="Xamarin Android でのモバイル アプリの認証の使用"
-	description="モバイル アプリを使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。"
-	services="app-service\mobile"
-	documentationCenter="xamarin"
-	authors="mattchenderson"
-	manager="dwrede"
+	pageTitle="Xamarin Android でのモバイル アプリの認証の使用" 
+	description="モバイル アプリを使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。" 
+	services="app-service\mobile" 
+	documentationCenter="xamarin" 
+	authors="mattchenderson" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-xamarin-android"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/27/2015"
+	ms.service="app-service" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-xamarin-android" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="08/27/2015" 
 	ms.author="mahender"/>
 
 # Xamarin.Android アプリに認証を追加する
 
-[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
 このトピックでは、クライアント アプリケーションから Mobile App のユーザーを認証する方法について説明します。このチュートリアルでは、Azure Mobile Apps でサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。Mobile App によって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
@@ -96,4 +94,4 @@
 [Azure Management Portal]: https://portal.azure.com
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

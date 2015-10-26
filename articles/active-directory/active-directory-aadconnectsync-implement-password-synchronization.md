@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.date="10/13/2015"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -171,4 +171,4 @@ ID 657 に対応するイベントは、これらの要求の結果を提供し�
 [4]: ./media/active-directory-aadsync-implement-password-synchronization/IC662506.png
 [5]: ./media/active-directory-aadsync-implement-password-synchronization/IC662507.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

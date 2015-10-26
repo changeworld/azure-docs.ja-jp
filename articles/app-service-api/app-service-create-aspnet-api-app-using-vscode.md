@@ -1,19 +1,19 @@
 <properties
-	pageTitle="Visual Studio Code を使用した ASP.NET 5 API アプリの作成"
-	description="このチュートリアルでは、Visual Studio Code を使用して ASP.NET 5 API アプリを作成する方法について説明します。"
-	services="app-service\api"
-	documentationCenter=".net"
-	authors="erikre"
-	manager="wpickett"
-	editor="jimbe"/>
+   pageTitle="Visual Studio Code を使用した ASP.NET 5 API アプリの作成"
+   description="このチュートリアルでは、Visual Studio Code を使用して ASP.NET 5 API アプリを作成する方法について説明します。"
+   services="app-service\api"
+   documentationCenter=".net"
+   authors="erikre"
+   manager="wpickett"
+   editor="jimbe"/>
 
 <tags
-	ms.service="app-service-api"
-	ms.workload="web"
-	ms.tgt_pltfrm="dotnet"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="app-service-api" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="dotnet" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="erikre"/>
 
 # Visual Studio Code を使用した ASP.NET 5 API アプリの作成
@@ -140,28 +140,28 @@ namespace ContactsList.Models
 3. **Controllers** フォルダーを右クリックし、*ContactsController.cs* ファイルを追加します。次のような内容になります。
 
 	<pre class="prettyprint">
-	using System.Collections.Generic;
-	using Microsoft.AspNet.Mvc;
-	using ContactsList.Models;
-	
-	namespace ContactsList.Controllers
-	{
-	    [Route("api/[controller]")]
-	    public class ContactsController : Controller
-	    {
-	        // GET: api/Contacts
-	        [HttpGet]
-	        public IEnumerable&lt;Contact&gt; Get()
-	        {
-	            return new Contact[]{
-	                new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
-	                new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
-	                new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
-	            };
-	        }
-	    }
-	}
-	</pre>
+using System.Collections.Generic;
+using Microsoft.AspNet.Mvc;
+using ContactsList.Models;
+
+namespace ContactsList.Controllers
+{
+    [Route("api/[controller]")]
+    public class ContactsController : Controller
+    {
+        // GET: api/Contacts
+        [HttpGet]
+        public IEnumerable&lt;Contact> Get()
+        {
+            return new Contact[]{
+                new Contact { Id = 1, EmailAddress = "barney@contoso.com", Name = "Barney Poland"},
+                new Contact { Id = 2, EmailAddress = "lacy@contoso.com", Name = "Lacy Barrera"},
+                new Contact { Id = 3, EmailAddress = "lora@microsoft.com", Name = "Lora Riggs"}
+            };
+        {
+    {
+{
+</pre>
 
 4. **[ファイル]**、**[すべてを保存]** の順に選択して、すべてのファイルを保存します。
 5. **コマンド パレット**で、次のコマンドを入力してアプリをローカルで実行します。
@@ -399,8 +399,7 @@ Git は、Azure の Web サイトをデプロイするために使用できる�
 
 	![Git の初期化](./media/app-service-create-aspnet-api-app-using-vscode/19-initgit.png)
 
-5. 
-6. コミット メッセージを追加し、**[すべてコミット]** チェック マークを選択します。
+5. コミット メッセージを追加し、**[すべてコミット]** チェック マークを選択します。
 
 	![Git すべてコミット](./media/app-service-create-aspnet-api-app-using-vscode/20-git-commit.png)
 
@@ -411,13 +410,13 @@ Git は、Azure の Web サイトをデプロイするために使用できる�
 cd c:\VSCodeProjects\ContactsList
 </pre>
 
-7. コピーしておいた (".git" で終わる) Git URL を使用して、作成した Web アプリ (API アプリ ホスト) に更新をプッシュするためのリモート参照を作成します。
+8. コピーしておいた (".git" で終わる) Git URL を使用して、作成した Web アプリ (API アプリ ホスト) に更新をプッシュするためのリモート参照を作成します。
 
 	<pre class="prettyprint">
 git remote add azure [URL for remote repository]
 </pre>
 
-8. 次のコマンドを入力して、変更内容を Azure にプッシュします。
+9. 次のコマンドを入力して、変更内容を Azure にプッシュします。
 
 	<pre class="prettyprint">
 git push azure master
@@ -449,4 +448,4 @@ Azure プレビュー ポータルで、目的の API アプリの **[API アプ
 このチュートリアルでは、Visual Studio Code を使用して API アプリを作成する方法について説明しました。Visual Studio Code の詳細については、[Visual Studio Code](https://code.visualstudio.com/Docs/) に関するページをご覧ください。API アプリの詳細については、[API Apps の概要](app-service-api-apps-why-best-platform.md)に関するページをご覧ください。
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

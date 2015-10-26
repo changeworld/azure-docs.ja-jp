@@ -475,4 +475,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-monitor-manage-pipelines.md)でフィードバックをお寄せください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

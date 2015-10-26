@@ -1,5 +1,5 @@
-<properties 
-	pageTitle="ディレクトリ統合ツールの比較"
+<properties
+	pageTitle="ディレクトリ統合ツールの比較 | Microsoft Azure"
 	description="このページの包括的な表では、さまざまなディレクトリ統合ツールを比較しています。"
 	services="active-directory"
 	documentationCenter=""
@@ -7,13 +7,13 @@
 	manager="stevenpo"
 	editor="curtand"/>
 
-<tags 
+<tags
 	ms.service="active-directory"
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.date="10/13/2015"
 	ms.author="billmath"/>
 
 # ディレクトリ統合ツールの比較
@@ -82,10 +82,13 @@
 機能 | Azure Active Directory Connect | Azure Active Directory 同期サービス | Azure Active Directory 同期ツール (DirSync) | Forefront Identity Manager 2010 R2 (FIM)  
 :-------- |:--------:|:--------:|:--------:|:--------:|
 ドメインおよび組織単位でのフィルター処理 | ● | ● | ● | ●  
-オブジェクトの属性値でのフィルター処理 | ● | ● | ● | ● 
-最小の属性セットの同期 (MinSync) の許可 | ● | ● | |   
-属性フローへのさまざまなサービス テンプレートの適用の許可 |● | ● | |   
+オブジェクトの属性値でのフィルター処理 | ● | ● | ● | ●
+最小の属性セットの同期 (MinSync) の許可 | ● | ● | |
+属性フローへのさまざまなサービス テンプレートの適用の許可 |● | ● | |
 AD から Azure AD に流れる属性の削除の許可 | ● | ● | |  
 属性フローの高度なカスタマイズの許可 | ● | ● | | ●  
 
-<!---HONumber=August15_HO9-->
+## 次のステップ
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+
+<!---HONumber=Oct15_HO3-->

@@ -73,4 +73,4 @@ API 操作は、管理サービスで定義されている追加のエラー情�
 
  [Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

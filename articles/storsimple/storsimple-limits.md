@@ -27,4 +27,4 @@ StorSimple は、データセンターのスケーラブルかつフレキシブ
 
 [StorSimple のシステム要件](storsimple-system-requirements.md)を確認します。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

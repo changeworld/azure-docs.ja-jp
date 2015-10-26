@@ -1,10 +1,10 @@
 <properties
- pageTitle="Azure IoT Hub の高可用性と災害復旧 | Microsoft Azure"
- description="障害復旧 (DR) 機能を持つソリューションの構築を支援する機能について説明します。"
+ pageTitle="IoT Hub の HA および DR | Microsoft Azure"
+ description="障害復旧機能を持つ高可用性ソリューションの構築を支援する機能について説明します。"
  services="iot-hub"
- documentationCenter=".net"
+ documentationCenter=""
  authors="fsautomata"
- manager="kevinmil"
+ manager="timlt"
  editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
- ms.workload="tbd"
+ ms.workload="na"
  ms.date="10/02/2015"
  ms.author="elioda"/>
 
@@ -22,7 +22,7 @@ IoT Hub は、Azure サービスとして、Azure リージョン レベルの�
 
 ## IoT Hub での地域フェールオーバー
 
-このセクションでは、IoT ソリューションでのデプロイメント トポロジの詳細については取り上げませんが、高可用性と障害復旧を実現するために、*地域フェールオーバー* デプロイメント モデルについて検討します。
+このセクションでは、IoT ソリューションでのデプロイ トポロジの詳細については取り上げませんが、高可用性と障害復旧を実現するために、*地域フェールオーバー* デプロイ モデルについて検討します。
 
 地域フェールオーバー モデルでは、ソリューション バックエンドは、主に 1 つのデータセンターの場所で実行されますが、追加の IoT Hub とバックエンドは、プライマリ データセンターの IoT Hub で障害が発生した場合、またはデバイスからプライマリ データセンターへのネットワーク接続が中断された場合にフェールオーバーできるように、追加のデータセンター リージョンにデプロイされます。プライマリ ゲートウェイにアクセスできない場合は必ず、セカンダリ サービス エンドポイントがデバイスによって使用されます。複数のリージョンにまたがるフェールオーバー機能を使用すると、ソリューションの可用性は、1 つのリージョンの高可用性を超えて向上させることができます。
 
@@ -48,4 +48,4 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub? (Azure IoT Hub とは)]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

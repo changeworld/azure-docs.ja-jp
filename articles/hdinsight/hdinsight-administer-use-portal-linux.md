@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure ポータルを使用した HDInsight での Hadoop クラスターの管理 | Microsoft Azure"
-	description="HDInsight サービスを管理する方法を学習します。HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。"
+	pageTitle="Azure ポータルを使用した HDInsight での Linux ベースの Hadoop クラスターの管理 | Microsoft Azure"
+	description="Azure ポータルを使用して Linux ベースの HDInsight クラスターを作成および管理する方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/06/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 # Azure プレビュー ポータルを使用した HDInsight での Hadoop クラスターの管理
@@ -117,7 +117,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 		>
 		> 現時点 (2015 年 8 月 25 日) では、Azure の仮想ネットワーク上に存在できる Linux ベースの HDInsight クラスターは 1 つだけという制限があります。
         >
-        > Linux ベースの HDInsight で v1 (クラシック) Azure Virtual Network を使用することはできません。Azure プレビュー ポータルでの HDInsight クラスターの作成プロセスで Virtual Network をオプションとして表示したり、Azure CLI または Azure PowerShell からクラスターを作成するときに Virtual Network を使用できるようにするには、Virtual Network が v2 (Azure Resource Manager) である必要があります。
+        > Linux ベースの HDInsight で v1 (クラシック) Azure Virtual Network を使用することはできません。Azure プレビュー ポータルでの HDInsight クラスターの作成プロセスで Virtual Network をオプションとして表示したり、Azure CLI または Azure PowerShell からクラスターを作成するときに Virtual Network を使用できるようにしたりするには、Virtual Network が v2 (Azure リソース マネージャー) である必要があります。
         >
         > v1 ネットワーク上にリソースがあり、HDInsight から仮想ネットワークを介してそれらのリソースに直接アクセスできるようにする場合、v2 Virtual Network を v1 Virtual Network に接続する方法については、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」をご覧ください。この接続が確立されたら、v2 Virtual Network で HDInsight クラスターを作成できます。
 
@@ -125,7 +125,7 @@ Azure ポータル以外にも、HDInsight を管理するツールが用意さ�
 
 	* __[Azure ストレージ キー]__: 追加のストレージ アカウントを HDInsight サーバーに関連付けることができます。
 
-		> [AZURE.NOTE]HDInsight は、この構成セクションを使用して追加される既定のデータ ストアとして使用される Azure Storage アカウント、またはパブリックにアクセスできる Azure Storage アカウントのみにアクセスできます。
+		> [AZURE.NOTE]HDInsight は、この構成セクションを使用して追加される既定のデータ ストアとして使用される Azure ストレージ アカウント、またはパブリックにアクセスできる Azure ストレージ アカウントのみにアクセスできます。
 
 	![[オプションの構成] ブレード](./media/hdinsight-administer-use-portal-linux/optionalconfiguration.png)
 
@@ -195,4 +195,4 @@ HDInsight クラスター ブレードの __[使用状況]__ セクションに�
 
 [preview-portal]: https://portal.azure.com
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

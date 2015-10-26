@@ -58,6 +58,7 @@ Media Encoder Standard の入力コンテナーは次のオーディオ形式に
 AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む) |8 ビット 4:2:0 および 4:2:2 
 Avid DNxHD (MXF) |あり 
 DVCPro/DVCProHD (MXF) |あり 
+デジタル ビデオ (DV) (AVI ファイルで) |あり
 JPEG 2000 |あり 
 MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|最大 422 プロファイル 
 MPEG-1 |あり 
@@ -118,4 +119,4 @@ AMS のラーニング パスについては、以下を参照してください
 
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

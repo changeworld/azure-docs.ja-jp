@@ -126,4 +126,4 @@ Azure への展開後にアプリケーションで問題が発生した場合�
 [nodesitefromtemplateazure]: ./media/web-sites-nodejs-use-webmatrix/webmatrix-node-site-azure.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

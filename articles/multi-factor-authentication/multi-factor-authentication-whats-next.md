@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication - 次の手順"
-	description="これは、MFA で次に何を実行するかを説明する Azure Multi-factor Authentication のページです。レポート、不正アクセスの通報、ワンタイム バイパス、カスタム音声メッセージ、キャッシュ、信頼できる IP、およびアプリ パスワードの説明が含まれます。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="billmath"
-	manager="stevenpo"
+	pageTitle="Azure Multi-Factor Authentication - 次の手順" 
+	description="これは、MFA で次に何を実行するかを説明する Azure Multi-factor Authentication のページです。レポート、不正アクセスの通報、ワンタイム バイパス、カスタム音声メッセージ、キャッシュ、信頼できる IP、およびアプリ パスワードの説明が含まれます。" 
+	services="multi-factor-authentication" 
+	documentationCenter="" 
+	authors="billmath" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.service="multi-factor-authentication" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/24/2015" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の構成
@@ -173,7 +173,7 @@
 1. [http://azure.microsoft.com](http://azure.microsoft.com) にログオンします。
 2. 左側で、[Active Directory] を選択します。
 3. 上部にある [Multi-Factor Authentication プロバイダー] を選択します。Multi-Factor Authentication プロバイダーの一覧が表示されます。
-4. 複数のMulti-Factor Authentication プロバイダーがある場合は、不正アクセスのアラートを有効にするプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
+4. 複数の Multi-Factor Authentication プロバイダーがある場合は、不正アクセスのアラートを有効にするプロバイダーを選択し、ページの下部にある [管理] をクリックします。プロバイダーが 1 つだけある場合は、単に [管理] をクリックします。Azure Multi-Factor Authentication 管理ポータルが開きます。
 5. Azure Multi-Factor Authentication 管理ポータルで、左側の [キャッシュ] をクリックします。
 6. [キャッシュの構成] ページで [新しいキャッシュ] をクリックします。
 7. キャッシュの種類と、キャッシュする秒数を選択します。[作成] をクリックします。
@@ -365,4 +365,4 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 <li>[サービスの設定] ページで、[ユーザーのデバイス設定の管理] の下の [デバイスを記憶させることで多要素認証を一時停止することをユーザーに許可する] をオン/オフします。</li>
 ![デバイスの一時停止](./media/multi-factor-authentication-manage-users-and-devices/suspend.png) <li>一時停止を許可する日数を設定します。既定値は 14 日です。</li> <li>[保存] をクリックします。</li> 。<li>[閉じる] をクリックします。</li>
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

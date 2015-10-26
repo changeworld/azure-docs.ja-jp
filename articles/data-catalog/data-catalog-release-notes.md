@@ -45,7 +45,7 @@ Azure Data Catalog の初期プレビュー リリースでの SQL Server Report
 
 Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開くと、[**Microsoft Excel のセキュリティに関する通知**] ダイアログ ボックスにメッセージが表示されることがあります。これは標準の予想される動作であり、ユーザーは、[**有効にする**] を選択して続行できます。
 
-詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/ja-JP/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
+詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/ja-jp/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
 
 ### BLOB および UDT 列がプレビューに含まれない
 
@@ -61,7 +61,7 @@ Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開�
 
 特定の状況で、ユーザーが企業ネットワーク上にいる場合のみ、またはユーザーが企業ネットワークの外部から接続している場合のみ、このエラー動作が発生することがあります。グローバル認証ポリシーでは、イントラネット接続とエクストラネット接続で個別に認証方法を有効にすることができます。ログオン エラーは、ユーザーの接続元のネットワークで、フォーム認証が有効にされていない場合に発生する可能性があります。
 
-詳細については、「[認証ポリシーの構成](https://technet.microsoft.com/ja-JP/library/dn486781.aspx)」を参照してください。
+詳細については、「[認証ポリシーの構成](https://technet.microsoft.com/ja-jp/library/dn486781.aspx)」を参照してください。
 
 **原因 2: ネットワーク プロキシの構成**。企業ネットワークでプロキシ サーバーを使用している場合、登録ツールが、プロキシ経由で Azure Active Directory に接続できないことがあります。ユーザーは、ツールの構成ファイルを編集し、このセクションをファイルに追加して、登録ツールが確実に接続できるようにします。
 
@@ -77,4 +77,4 @@ Azure Data Catalog ポータルから Microsoft Excel でデータ資産を開�
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

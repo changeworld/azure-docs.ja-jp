@@ -5,7 +5,7 @@
 	documentationCenter="mobile"
 	authors="MehrdadMzfr"
 	manager="dwrede"
-	editor=""/>
+	editor="" />
 
 <tags
 	ms.service="mobile-engagement"
@@ -14,7 +14,7 @@
 	ms.devlang="objective-c"
 	ms.topic="article"
 	ms.date="08/05/2015"
-	ms.author="MehrdadMzfr"/>
+	ms.author="MehrdadMzfr" />
 
 #アップグレードの手順
 
@@ -29,7 +29,7 @@ iOS 4.X のサポートが終了。このバージョンから、アプリケー
 
 アプリケーション デリゲートのメソッド `application:didReceiveRemoteNotification:` は、`application:didReceiveRemoteNotification:fetchCompletionHandler:` に置き換える必要があります。
 
-AEPushDelegate.h インターフェイスは廃止されるため、すべての参照を消去する必要があります。これには、`[[EngagementAgent shared] setPushDelegate:self]` の削除や、アプリケーション デリゲートからのデリゲート メソッドの削除も含まれます。
+AEPushDelegate.h インターフェイスは廃止されるため、すべての参照を削除する必要があります。これには、`[[EngagementAgent shared] setPushDelegate:self]` の削除や、アプリケーション デリゲートからのデリゲート メソッドの削除も含まれます。
 
 	-(void)willRetrieveLaunchMessage;
 	-(void)didFailToRetrieveLaunchMessage;
@@ -72,4 +72,4 @@ SmartAd の追跡が SDK から削除されました。`AETrackModule` クラス
 -   クラス `CapptainUtils` は `EngagementUtils` に変更されました。
 -   クラス `CapptainViewController` は `EngagementViewController` に変更されました。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -94,4 +94,4 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 
 [apache-hadoop]: http://hadoop.apache.org/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

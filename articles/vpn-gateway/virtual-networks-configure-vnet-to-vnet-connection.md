@@ -1,20 +1,20 @@
 <properties
    pageTitle="VNet 間の接続の構成 | Microsoft Azure"
-	description="サブスクリプションまたはリージョンが同じ場合または異なる場合に、Azure Virtual Network を接続する方法。"
-	services="vpn-gateway"
-	documentationCenter="na"
-	authors="cherylmc"
-	manager="carolz"
-	editor=""/>
+   description="サブスクリプションまたはリージョンが同じ場合または異なる場合に、Azure Virtual Network を接続する方法。"
+   services="vpn-gateway"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="carolz"
+   editor=""/>
 
 <tags
    ms.service="vpn-gateway"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/20/2015"
-	ms.author="cherylmc"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/20/2015"
+   ms.author="cherylmc"/>
 
 
 # Azure ポータルでの VNet 間接続の構成
@@ -232,4 +232,4 @@ RRAS を使用して VNet 接続を構成する場合は、[Windows Server 2012 
 [2]: http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="BizTalk Services での調整について | Microsoft Azure"
-	description="調整のしきい値についてと、結果として生じる BizTalk Services のランタイムの動作について説明します。調整は、メモリ使用率とメッセージの数に基づいて行われます。MABS、WABS"
-	services="biztalk-services"
-	documentationCenter=""
-	authors="MandiOhlinger"
-	manager="dwrede"
+	pageTitle="BizTalk Services での調整について | Microsoft Azure" 
+	description="調整のしきい値についてと、結果として生じる BizTalk Services のランタイムの動作について説明します。調整は、メモリ使用率とメッセージの数に基づいて行われます。MABS、WABS" 
+	services="biztalk-services" 
+	documentationCenter="" 
+	authors="MandiOhlinger" 
+	manager="dwrede" 
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="biztalk-services"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.service="biztalk-services" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/26/2015" 
 	ms.author="mandia"/>
 
 
@@ -28,10 +28,7 @@ Azure BizTalk Services は、メモリ使用率およびメッセージの同時
 
 調整の対象としきい値の一覧を次の表に示します。
 
-||説明|低いしきい値|高いしきい値|
-|---|---|---|---|
-|メモリ|使用可能な合計システム メモリ/PageFileBytes の割合。<p><p>使用可能な合計 PageFileBytes は、システムの RAM の約 2 倍です。|60%|70%|
-|メッセージ処理|メッセージの同時処理数|40 * コアの数|100 * コアの数|
+||説明|低いしきい値|高いしきい値| |---|---|---|---| |メモリ|使用可能な合計システム メモリ/PageFileBytes の割合。<p><p>使用可能な合計 PageFileBytes は、システムの RAM の約 2 倍です。|60%|70%| |メッセージ処理|メッセージの同時処理数|40 * コアの数|100 * コアの数|
 
 高いしきい値に達すると、調整が開始されます。低いしきい値に達すると、調整は停止します。たとえば、サービスで 65% のシステム メモリを使用しているとします。この状況では、調整は行われません。一方、サービスで 70% のシステム メモリの使用を開始するとします。この状況では、調整が行われ、サービスによるシステム メモリの使用が 60% (低いしきい値) になるまで調整が継続されます。
 
@@ -42,8 +39,7 @@ Azure BizTalk Services では、調整の状態 (通常と調整された状態)
 
 Azure BizTalk Services が調整状態になると、次のことが発生します。
 
-- 調整はロール インスタンス単位で行われます。次に例を示します。<br/>RoleInstanceA は調整中です。RoleInstanceB は調整されていません。この状況では、RoleInstanceB のメッセージは予期したとおりに処理されます。RoleInstanceA のメッセージは破棄され、次のエラーで失敗します。<br/><br/>
-**サーバーがビジー状態です。もう一度実行してください。**<br/><br/>
+- 調整はロール インスタンス単位で行われます。次に例を示します。<br/>RoleInstanceA は調整中です。RoleInstanceB は調整されていません。この状況では、RoleInstanceB のメッセージは予期したとおりに処理されます。RoleInstanceA のメッセージは破棄され、次のエラーで失敗します。<br/><br/> **サーバーがビジー状態です。もう一度実行してください。**<br/><br/>
 - どの取り出し元も、メッセージのポーリングやダウンロードを行いません。次に例を示します。<br/>パイプラインは外部の FTP ソースからメッセージを取り出します。取り出しを実行するロール インスタンスは調整状態になります。この状況では、パイプラインは、ロール インスタンスが調整を停止するまで追加のメッセージのダウンロードを停止します。
 - 応答がクライアントに送信され、クライアントはメッセージを再送信できるようになります。
 - 調整が解決されるまで待つ必要があります。具体的には、低いしきい値に達するまで待つ必要があります。
@@ -70,4 +66,4 @@ Azure BizTalk Services が調整状態になると、次のことが発生しま
 - [BizTalk Services: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

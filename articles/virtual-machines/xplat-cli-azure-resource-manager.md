@@ -16,7 +16,8 @@
 
 <br>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
 
 この記事では、Azure リソース マネージャー モードを使用し、Mac、Linux、Windows 用 Azure CLI を使用して、Azure VM を作成、管理、削除する方法について説明します。
 
@@ -341,4 +342,4 @@ Azure CLI は既定の VM サイズで仮想マシンを作成します。また
 [clisetup]: ../xplat-cli-install.md
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

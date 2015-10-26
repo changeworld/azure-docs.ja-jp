@@ -257,4 +257,4 @@ Java の詳細については、[Java デベロッパー センター](/develop/
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

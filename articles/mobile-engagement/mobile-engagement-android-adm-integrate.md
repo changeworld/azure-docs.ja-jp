@@ -113,4 +113,4 @@ OAuth Credentials (クライアント ID とクライアントシークレット
 [この手順]: https://developer.amazon.com/sdk/adm/integrating-app.html#Asset
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

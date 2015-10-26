@@ -421,4 +421,4 @@ Azure SQL データベース内のサブスクライバー データは、最も
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

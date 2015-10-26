@@ -337,4 +337,4 @@ Azure では、IP トラフィックを各パケットの宛先に基づいて�
 - ルーティングと IP 転送を有効にするには、「[Azure でルートを作成して IP 転送を有効にする方法](virtual-network/virtual-networks-udr-how-to.md)」を参照してください。 
 - ロールベースのアクセス制御の概要については、「[Microsoft Azure ポータルでのロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

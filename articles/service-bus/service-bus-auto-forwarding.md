@@ -69,4 +69,4 @@ Service Bus のパフォーマンスの向上の詳細については、「[メ�
   [1]: ./media/service-bus-auto-forwarding/IC628632.gif
   [メッセージング エンティティのパーティション分割]: service-bus-partitioning.md
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

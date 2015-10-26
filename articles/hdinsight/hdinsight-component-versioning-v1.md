@@ -160,4 +160,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

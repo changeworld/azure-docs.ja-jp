@@ -183,4 +183,4 @@ VMM クラウドで VM の保護を有効にします。
 
 このシナリオに関するご質問やご意見については、[Site Recovery フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr/)をご覧ください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

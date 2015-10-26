@@ -37,4 +37,4 @@ Azure Active Directory サービスに関する使用上の制約およびその
 * [Azure への組織としてのサインアップ](sign-up-organization.md)
 * [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

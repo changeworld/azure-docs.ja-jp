@@ -23,8 +23,7 @@
 
 この記事では、Linux を実行している Azure 仮想マシンに MySQL をインストールして構成する方法を説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用したリソースの作成について説明します。
-
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
 ##仮想マシンに MySQL をインストールする
@@ -186,4 +185,4 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 ###次の手順
 MySQL の使用法などの情報は[こちら](https://www.mysql.com/)です。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

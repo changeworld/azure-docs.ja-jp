@@ -1,26 +1,24 @@
 <properties
     pageTitle="Azure モバイル アプリ (Xamarin Android) に対するオフライン同期の有効化"
-	description="App Service モバイル アプリを使用して、Xamarin Android アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
-	documentationCenter="xamarin"
-	authors="wesmc7777"
-	manager="dwrede"
-	editor=""
-	services="app-service\mobile"/>
+    description="App Service モバイル アプリを使用して、Xamarin Android アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
+    documentationCenter="xamarin"
+    authors="wesmc7777"
+    manager="dwrede"
+    editor=""
+    services="app-service\mobile"/>
 
 <tags
     ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-xamarin-android"
-	ms.devlang="dotnet"
-	ms.topic="article"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-xamarin-android"
+    ms.devlang="dotnet"
+    ms.topic="article"
 	ms.date="08/22/2015"
-	ms.author="wesmc"/>
+    ms.author="wesmc"/>
 
 # Xamarin Android モバイル アプリのオフライン同期を有効にする
 
-[AZURE.INCLUDE [app-service-mobile-selector-offline-preview](../../includes/app-service-mobile-selector-offline-preview.md)]
-&nbsp;  
-[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-offline-preview](../../includes/app-service-mobile-selector-offline-preview.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
 ## 概要
 
@@ -28,7 +26,7 @@
 
 このチュートリアルでは、「[Create a Xamarin Android app (Xamarin Android アプリの作成)]」チュートリアルからクライアント プロジェクトを更新し、Azure モバイル アプリのオフライン機能をサポートできるようにします。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
-オフラインの同期機能の詳細については、トピック「[Azure モバイル アプリでのオフライン データ同期]」をご覧ください。
+オフラインの同期機能の詳細については、トピック「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
 ## 必要条件
 
@@ -38,12 +36,11 @@
 
 ## クライアント同期コードの確認
 
-チュートリアル「[Xamarin Android アプリの作成]」を完了した際にダウンロードした Xamarin クライアント プロジェクトには、ローカルの SQLite データベースを使用したオフライン同期をサポートするコードが既に含まれてます。チュートリアルのコードにすでに含まれているものの概要を示します。機能の概念的な概要については、「[Azure モバイル アプリでのオフライン データ同期]」をご覧ください。
+チュートリアル「[Xamarin Android アプリの作成]」を完了した際にダウンロードした Xamarin クライアント プロジェクトには、ローカルの SQLite データベースを使用したオフライン同期をサポートするコードが既に含まれてます。チュートリアルのコードにすでに含まれているものの概要を示します。機能の概念的な概要については、「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
 
-* テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。`ToDoActivity.OnCreate()` が `ToDoActivity.InitLocalStoreAsync()` を実行すると、ローカル ストアのデータベースが初期化されます。これにより、Azure モバイル アプリのクライアント SDK で提供される `MobileServiceSQLiteStore` クラスを使用して、新しいローカルの SQLite データベースが作成されます。 
+* テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。`ToDoActivity.OnCreate()` が `ToDoActivity.InitLocalStoreAsync()` を実行すると、ローカル ストアのデータベースが初期化されます。これにより、Azure Mobile Apps クライアント SDK で提供される `MobileServiceSQLiteStore` クラスを使用して、新しいローカルの SQLite データベースが作成されます。 
  
-	`DefineTable` メソッドを実行すると、提供された型のフィールドに一致するテーブルがローカル ストアに作成されます。この例では、`ToDoItem` になります。この型に、リモート データベース内のすべての列を含める必要はありません。列のサブセットのみ格納できます。
-		// ToDoActivity.cs
+	`DefineTable` メソッドを実行すると、提供された型のフィールドに一致するテーブルがローカル ストアに作成されます。この例では、`ToDoItem` になります。この型に、リモート データベース内のすべての列を含める必要はありません。列のサブセットのみ格納できます。 // ToDoActivity.cs
 
         private async Task InitLocalStoreAsync()
         {
@@ -66,17 +63,14 @@
 
 * `ToDoActivity` の `toDoTable` メンバーは、`IMobileServiceTable` ではなく、`IMobileServiceSyncTable` 型です。これは、テーブルの作成、読み取り、更新、および削除 (CRUD) といったすべての操作がローカル ストア データベースに行われるようにします。
  
-	これらの変更がいつ Azure モバイル アプリのバックエンドにプッシュされるかを決定するには、クライアント接続のための同期コンテキストを使用して `IMobileServiceSyncContext.PushAsync()` を呼び出すことで行います。同期コンテキストは、`PushAsync` が呼び出されたときに、クライアント アプリが変更を行ったすべてのテーブルで、変更を追跡およびプッシュすることで、テーブルの関係を保持するのに役立ちます。
+	これらの変更がいつ Azure Mobile Apps バックエンドにプッシュされるかを決定するには、クライアント接続のための同期コンテキストを使用して `IMobileServiceSyncContext.PushAsync()` を呼び出すことで行います。同期コンテキストは、`PushAsync` が呼び出されたときに、クライアント アプリが変更を行ったすべてのテーブルで、変更を追跡およびプッシュすることで、テーブルの関係を保持するのに役立ちます。
 
 	todoitem リストの更新、または todoitem の追加や完了があれば、提供されているコードは `ToDoActivity.SyncAsync()` を呼び出して同期します。同期コンテキストへのプッシュや同期テーブルへのプルを実行するようなローカルの変更があれば毎回同期が行われます。ただし、コンテキストによって追跡された保留中のローカル更新のあるテーブルに対してプルが実行される場合、そのプルの処理は自動的にコンテキストのプッシュを最初にトリガーします。これら (項目の更新、追加、完了) のケースでは、明示的な `PushAsync` の呼び出しを省略できます。冗長となるからです。
 
-    提供されたコードでは、リモートの `TodoItem` テーブルのすべてのレコードはクエリされますが、クエリ ID やクエリを `PushAsync` に渡すことでレコードをフィルター処理することも可能です。詳細は、「[Azure モバイル アプリでのオフライン データ同期]」の *増分同期*のセクションを参照してください。
+    提供されたコードでは、リモートの `TodoItem` テーブルのすべてのレコードはクエリされますが、クエリ ID やクエリを `PushAsync` に渡すことでレコードをフィルター処理することも可能です。詳細は、「[ Azure Mobile Apps でのオフライン データ同期]」の「*増分同期*」セクションを参照してください。
 
 	<!-- Need updated conflict handling info : `InitializeAsync` uses the default conflict handler, which fails whenever there is a conflict. To provide a custom conflict handler, see the tutorial [Handling conflicts with offline support for Mobile Services].
-	-->
-
-
-		// ToDoActivity.cs
+-->	// ToDoActivity.cs
 
         private async Task SyncAsync()
         {
@@ -151,7 +145,7 @@
 
 * [Azure モバイル アプリでのオフライン データ同期]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(メモ: このビデオは Mobile Services に関するものですが、オフライン同期は Azure モバイル アプリでも同様に機能します\)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
 <!-- ##Summary
 
@@ -169,7 +163,8 @@
 <!-- URLs. -->
 [Create a Xamarin Android app (Xamarin Android アプリの作成)]: ../app-service-mobile-dotnet-backend-xamarin-android-get-started-preview.md
 [Xamarin Android アプリの作成]: ../app-service-mobile-dotnet-backend-xamarin-android-get-started-preview.md
-[Azure モバイル アプリでのオフライン データ同期]: ../app-service-mobile-offline-data-sync-preview.md
+[ Azure Mobile Apps でのオフライン データ同期]: ../app-service-mobile-offline-data-sync-preview.md
+[Azure Mobile Apps でのオフライン データ同期]: ../app-service-mobile-offline-data-sync-preview.md
 [Azure モバイル アプリでのオフライン データ同期]: ../app-service-mobile-offline-data-sync-preview.md
 
 [How to use the Xamarin Component client for Azure Mobile Services]: ../partner-xamarin-mobile-services-how-to-use-client-library.md
@@ -179,4 +174,4 @@
 
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 
-<!----HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイスの DATA 0 設定を変更する | Microsoft Azure"
-	description="StorSimple 用 Windows PowerShell を使用して、StorSimple デバイスの DATA 0 のネットワーク インターフェイスを再構成する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple 用 Windows PowerShell を使用して、StorSimple デバイスの DATA 0 のネットワーク インターフェイスを再構成する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="09/02/2015"
-	ms.author="alkohli"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="09/02/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスの DATA 0 ネットワーク インターフェイスの設定の変更
 
@@ -71,4 +71,4 @@ DATA 0 ネットワーク インターフェイスを再構成するためのも
 
 DATA 0 以外のネットワーク インターフェイスを構成するには、[管理ポータルで [構成] ページ](storsimple-modify-device-config.md)を使用できます。ネットワーク インターフェイスを構成するときに問題が発生した場合は、「[StorSimple デバイスのデプロイメントのトラブルシューティング](storsimple-troubleshoot-deployment.md)」をご覧ください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

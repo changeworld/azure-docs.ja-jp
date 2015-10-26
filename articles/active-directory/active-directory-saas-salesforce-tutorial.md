@@ -216,7 +216,7 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 		![Confirm the assignment.][29]
 
-		> [AZURE.IMPORTANT] Salesforce の**開発者**環境向けにプロビジョニングしている場合は、プロファイルごとに利用できるライセンスの数がごく少なくなります。そのため、4,999 個のライセンスを利用できる **Chatter Free User** プロファイル向けにユーザーをプロビジョニングすることをお勧めします。
+		> [AZURE.IMPORTANT] If you are provisioning to a Salesforce **developer** environment, you will have a very limited number of licenses available for each profile. Therefore, it's best to provision users to the **Chatter Free User** profile, which has 4,999 licenses available.
 
 4. シングル サインオンの設定をテストするために、アクセス パネル ([https://myapps.microsoft.com](https://myapps.microsoft.com/)) を開き、テスト アカウントにサインインして **[Salesforce]** をクリックします。
 
@@ -253,4 +253,4 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
 
-<!-----HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

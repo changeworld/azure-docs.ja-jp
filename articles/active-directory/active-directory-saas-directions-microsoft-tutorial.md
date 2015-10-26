@@ -95,8 +95,8 @@ Directions on Microsoft へのユーザー プロビジョニングの構成に�
 
     ![ユーザーの割り当て](./media/active-directory-saas-directions-microsoft-tutorial/IC786884.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
 
     ![あり](./media/active-directory-saas-directions-microsoft-tutorial/IC767830.png "あり")
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

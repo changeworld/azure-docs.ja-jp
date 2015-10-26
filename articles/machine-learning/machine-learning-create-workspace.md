@@ -13,11 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/01/2015" 
-	ms.author="garye"/>
+	ms.date="10/13/2015" 
+	ms.author="garye;bradsev"/>
 
 
 # Azure Machine Learning ワークスペースの作成 
+
+このメニューは、Cortana Analytics Process (CAP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
 Azure Machine Learning Studio を使用するには、機械学習ワークスペースが必要です。このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 
@@ -63,4 +67,4 @@ Machine Learning ワークスペースが作成されると、**機械学習**�
 
 <!--Link references-->
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

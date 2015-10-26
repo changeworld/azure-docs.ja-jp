@@ -21,7 +21,7 @@
 
 StorSimple Manager サービスの **[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
-このチュートリアルでは、バックアップ セットを一覧表示、選択、削除する方法について説明します。バックアップからデバイスを復元する方法については、「[Restore your device from a backup set (バックアップ セットからデバイスを復元する)](storsimple-restore-from-backup-set.md)」をご覧ください。ボリュームを複製する方法については、「[StorSimple ボリュームの複製](storsimple-clone-volume.md)」をご覧ください。
+このチュートリアルでは、バックアップ セットを一覧表示、選択、削除する方法について説明します。バックアップからデバイスを復元する方法については、「[Restore your device from a backup set (バックアップ セットからデバイスを復元する)](storsimple-restore-from-backup-set.md)」をご覧ください。ボリュームを複製する方法については、「[￼StorSimple ボリュームの複製￼](storsimple-clone-volume.md)」をご覧ください。
 
 ![バックアップ カタログ](./media/storsimple-manage-backup-catalog/HCS_BackupCatalog.png)
 
@@ -117,4 +117,4 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Maven を使用した HBase アプリケーションのビルド | Microsoft Azure"
-	description="Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure HDInsight にデプロイする方法について説明します。"
+	pageTitle="Maven を使用した HBase アプリケーションのビルドと、Windows ベースの HDInsight へのデプロイ |Microsoft Azure"
+	description="Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Windows ベースの Azure HDInsight クラスターにデプロイする方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/11/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 #Use Maven to build Java applications that use HBase with HDInsight (Hadoop) (HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築)
@@ -39,7 +39,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 		mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
-	これにより、__artifactID__ パラメーターにより指定された名前で、新しいディレクトリが現在のディレクトリに作成されます (この例では **hbaseapp**)。 このディレクトリには、次の項目が含まれます。
+	これにより、__artifactID__ パラメーターで指定した名前 (この例では **hbaseapp**) で、新しいディレクトリが現在のディレクトリに作成されます。 このディレクトリには、次の項目が含まれます。
 
 	* __pom.xml__: プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
 
@@ -353,7 +353,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 > [AZURE.NOTE]「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で説明されているように、ファイルを HDInsight にアップロードするには多くの方法があります。次の手順では、[Azure PowerShell](../install-configure-powershell.md) を使用します。
 
-1. Azure PowerShell をインストールし、構成した後で、__hbase-runner.psm1__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
+1. Azure PowerShell をインストールし、構成した後で、__hbase-runner.psm1￼__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
 
 		<#
 		.SYNOPSIS
@@ -592,4 +592,4 @@ __hdinsightclustername__ を、使用する HDInsight クラスターの名前�
 
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された標準エラー (STDERR) を表示します。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

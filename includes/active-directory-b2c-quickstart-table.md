@@ -7,4 +7,4 @@
 | | [NodeJS Web API をセキュリティで保護する](active-directory-b2c-devquickstarts-api-node.md) | サーバー側デーモン (近日対応予定) |
 | | [.NET Web アプリから Web API を呼び出す](active-directory-b2c-devquickstarts-web-api-dotnet.md) | サーバー側デーモン (近日対応予定) |
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

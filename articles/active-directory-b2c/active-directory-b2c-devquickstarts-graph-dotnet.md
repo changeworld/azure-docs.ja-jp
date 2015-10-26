@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure AD B2C プレビュー | Microsoft Azure"
-	description="アプリケーション ID を使用して B2C ディレクトリ用の Graph API を呼び出してプロセスを自動化する方法。"
+	description="アプリケーション ID を使用して B2C テナント用の Graph API を呼び出してプロセスを自動化する方法。"
 	services="active-directory-b2c"
 	documentationCenter=".net"
 	authors="dstrockis"
@@ -13,36 +13,35 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="10/08/2015"
 	ms.author="dastrock"/>
-
 
 # Azure AD B2C プレビュー: Graph API の使用
 
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-graph-switcher](../../includes/active-directory-b2c-devquickstarts-graph-switcher.md)]-->
 
-Azure AD B2C ディレクトリは、非常に大きくなる傾向があります。これは、多くの一般的なディレクトリ管理タスクをプログラムで実行する必要があることを意味します。その代表例はユーザー管理です。たとえば、既存のユーザー ストアを B2C ディレクトリに移行する必要があったり、バック グラウンドで Azure AD 内にユーザー アカウントを作成してユーザー登録を独自のページでホストしたりする場合があります。この種のタスクでは、ユーザー アカウントの作成、読み取り、更新、削除を実行する機能が必要です。Azure AD Graph API を使用してこれらの操作を実行できます。
+Azure AD B2C テナントは、非常に大きくなる傾向があります。これは、多くの一般的なテナント管理タスクをプログラムで実行する必要があることを意味します。その代表例はユーザー管理です。たとえば、既存のユーザー ストアを B2C テナントに移行する必要があったり、バック グラウンドで Azure AD 内にユーザー アカウントを作成してユーザー登録を独自のページでホストしたりする場合があります。この種のタスクでは、ユーザー アカウントの作成、読み取り、更新、削除を実行する機能が必要です。Azure AD Graph API を使用してこれらの操作を実行できます。
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 	
-B2C ディレクトリでは、主に 2 つのモードでGraph API と通信します。
+B2C テナントでは、主に 2 つのモードで Graph API と通信します。
 
-- 対話型の一度だけ実行されるタスクでは、多くの場合、B2C ディレクトリの管理者アカウントとして機能する管理タスクを実行します。このモードでは、管理者は、Graph API への呼び出しを実行する前に、資格情報を使用してログインする必要があります。
+- 対話型の一度だけ実行されるタスクでは、多くの場合、B2C テナントの管理者アカウントとして機能する管理タスクを実行します。このモードでは、管理者は、Graph API への呼び出しを実行する前に、資格情報を使用してログインする必要があります。
 - 自動化された継続的なタスクでは、必要な権限を付与した何らかの種類のサービス アカウントを使用して管理タスクを実行します。Azure AD では、アプリケーションを登録し、"アプリケーション ID" を使用して Azure AD に対する認証を行うことで、これを実行できます。この操作には [OAuth 2.0 Client Credentials Grant](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api) が使用されます。この場合、アプリケーションは、特定のユーザーとしてではなく、それ自身として機能する Graph API を呼び出します。  
 
 この記事では、後者の自動化された事例を実行する方法を示します。デモンストレーションとして、ユーザーの CRUD 操作を実行する .NET 4.5 "B2CGraphClient" を構築します。いろいろなことを試すために、クライアントにはさまざまなメソッドを呼び出すことができる Windows コマンド ライン インターフェイスがあるものとします。ただし、コードは、非対話型の自動化された方法で動作するように記述されます。それでは始めましょう。
 
-## B2C 対応ディレクトリを取得する
+## Azure AD B2C テナントを取得する
 
-アプリケーションとユーザーの作成、または Azure AD との対話を行う前に、B2C 対応ディレクトリとそのディレクトリの管理者アカウントが必要です。まだ用意していない場合は、「[Azure Active Directory B2C プレビュー: Azure AD B2C ディレクトリの作成方法](active-directory-b2c-get-started.md)」のガイドに従ってください。
+アプリケーションとユーザーの作成、または Azure AD との対話を行う前に、Azure AD B2C テナントと、そのテナントのグローバル管理者アカウントが必要です。まだ用意していない場合は、「[Azure Active Directory B2C プレビュー: Azure AD B2C ディレクトリの作成方法](active-directory-b2c-get-started.md)」のガイドに従ってください。
 
-## サービス アプリケーションをディレクトリに登録する
+## サービス アプリケーションをテナントに登録する
 
-B2C ディレクトリが用意できたら、Azure AD Powershell コマンドレットを使用してサービス アプリケーションを作成する必要があります。最初に、[Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152) をダウンロードしてインストールします。次に、[64-bit Azure Active Directory Module for Windows Powershell](http://go.microsoft.com/fwlink/p/?linkid=236297) をダウンロードしてインストールします。
+B2C テナントが用意できたら、Azure AD Powershell コマンドレットを使用してサービス アプリケーションを作成する必要があります。最初に、[Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152) をダウンロードしてインストールします。次に、[64-bit Azure Active Directory Module for Windows Powershell](http://go.microsoft.com/fwlink/p/?linkid=236297) をダウンロードしてインストールします。
 
-> [AZURE.NOTE]B2C ディレクトリで Graph API を使用するには、以下の指示に従い、PowerShell を使用して専用のアプリケーションを登録する必要があります。Azure ポータルに登録済みの既存の B2C アプリケーションを再利用することはできません。これは Azure AD B2C プレビューの制限であり、近い将来、この制限は削除されます。その時点で、この記事が更新される予定です。
+> [AZURE.NOTE]B2C テナントで Graph API を使用するには、以下の指示に従い、PowerShell を使用して専用のアプリケーションを登録する必要があります。Azure ポータルに登録済みの既存の B2C アプリケーションを再利用することはできません。これは Azure AD B2C プレビューの制限であり、近い将来、この制限は削除されます。その時点で、この記事が更新される予定です。
 
-Powershell モジュールをインストールした後、Powershell を開き、B2C ディレクトリに接続します。`Get-Credential` を実行すると、ユーザー名とパスワードの入力を求められます。B2C ディレクトリ管理者アカウントのユーザー名とパスワードを入力します。
+Powershell モジュールをインストールした後、Powershell を開き、B2C テナントに接続します。`Get-Credential` を実行すると、ユーザー名とパスワードの入力を求められます。B2C テナント管理者アカウントのユーザー名とパスワードを入力します。
 
 ```
 > $msolcred = Get-Credential
@@ -81,7 +80,7 @@ Usage                 : Verify
 
 アプリケーションの作成が成功すると、上記のようなアプリケーションの一部のプロパティが出力されます。`ObjectId` と `AppPrincipalId` の両方が必要になるので、これらの値もメモしておきます。
 
-これで B2C ディレクトリ内にアプリケーションが作成されたので、ユーザーの CRUD 操作を実行するために必要なアクセス許可をそのアプリケーションに割り当てる必要があります。アプリケーションには、次の 3 つの異なるロールを割り当てる必要があります。ディレクトリ リーダー (ユーザーを読み取るため)、ディレクトリ ライター (ユーザーの作成と更新を行うため)、およびユーザー アカウント管理者 (ユーザーを削除するため)。これらのロールには既知の識別子があるため、次のコマンドを実行できます (`-RoleMemberObjectId` パラメーターを前述の `ObjectId` に置き換えます)。すべてのディレクトリ ロールの一覧を表示するには、`Get-MsolRole` を実行してみてください。
+これで B2C テナント内にアプリケーションが作成されたので、ユーザーの CRUD 操作を実行するために必要なアクセス許可をそのアプリケーションに割り当てる必要があります。アプリケーションには、次の 3 つの異なるロールを割り当てる必要があります。ディレクトリ リーダー (ユーザーを読み取るため)、ディレクトリ ライター (ユーザーの作成と更新を行うため)、およびユーザー アカウント管理者 (ユーザーを削除するため)。これらのロールには既知の識別子があるため、次のコマンドを実行できます (`-RoleMemberObjectId` パラメーターを前述の `ObjectId` に置き換えます)。すべてのディレクトリ ロールの一覧を表示するには、`Get-MsolRole` を実行してみてください。
 
 ```
 > Add-MsolRoleMember -RoleObjectId 88d8e3e3-8f55-4a1e-953a-9b9898b8876b -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
@@ -89,7 +88,7 @@ Usage                 : Verify
 > Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId <Your-ObjectId> -RoleMemberType servicePrincipal
 ```  
 
-B2C ディレクトリに対してユーザーの作成、読み取り、更新、削除を実行する権限を持つアプリケーションが用意されました。次に、それを使用するコードを記述していきましょう。
+B2C テナントに対してユーザーの作成、読み取り、更新、削除を実行する権限を持つアプリケーションが用意されました。次に、それを使用するコードを記述していきましょう。
 
 ## サンプル コードをダウンロード、構成、ビルドする
 
@@ -140,7 +139,7 @@ public B2CGraphClient(string clientId, string clientSecret, string tenant)
 	this.clientSecret = clientSecret;
 	this.tenant = tenant;
 
-	// The AuthenticationContext is ADAL's primary class, in which you indicate the directory to use.
+	// The AuthenticationContext is ADAL's primary class, in which you indicate the tenant to use.
 	this.authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenant);
 
 	// The ClientCredential is where you pass in your client_id and client_secret, which are 
@@ -166,7 +165,7 @@ public async Task<string> SendGraphGetRequest(string api, string query)
 
 ### ユーザーの読み取り
 
-Graph API からユーザーの一覧または特定のユーザーを取得するには、HTTP GET 要求を `/users` エンドポイントに送信します。ディレクトリ内のすべてのユーザーを求める要求は次のようになります。
+Graph API からユーザーの一覧または特定のユーザーを取得するには、HTTP GET 要求を `/users` エンドポイントに送信します。テナント内のすべてのユーザーを求める要求は次のようになります。
 
 ```
 GET https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=beta
@@ -182,7 +181,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 ここで注意すべき重要な点は 2 つあります。
 
 - ADAL 経由で取得されたアクセス トークンは、`Bearer` スキームを使用する `Authorization` ヘッダーに追加されます。
-- B2C ディレクトリに対しては、クエリ パラメーター `api-version=beta` を使用する必要があります。
+- B2C テナントに対しては、クエリ パラメーター `api-version=beta` を使用する必要があります。
 
 
 > [AZURE.NOTE]Azure AD Graph API のベータ版の機能はプレビュー段階です。ベータ版の詳細については、[Graph API チームのこのブログ投稿](http://blogs.msdn.com/b/aadgraphteam/archive/2015/04/10/graph-api-versioning-and-the-new-beta-version.aspx)をご覧ください。
@@ -212,7 +211,7 @@ public async Task<string> SendGraphGetRequest(string api, string query)
 		
 ### コンシューマー ユーザー アカウントの作成 
 
-B2C ディレクトリにユーザー アカウントを作成するときは、HTTP POST 要求を `/users` エンドポイントに送信できます。
+B2C テナントにユーザー アカウントを作成するときは、HTTP POST 要求を `/users` エンドポイントに送信できます。
 
 ```
 POST https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=beta
@@ -304,11 +303,11 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0
 
 ## カスタム属性の使用
 
-ほぼすべてのコンシューマー アプリケーションは、何らかの種類のカスタム ユーザー プロファイル情報を格納する必要があります。これを行う 1 つの方法は、B2C ディレクトリの中にカスタム属性を定義することです。これにより、その属性をユーザー オブジェクトの他のプロパティと同じように処理できます。属性の更新、属性の削除、属性によるクエリの実行、属性をサインイン トークンの中でクレームとして送信することができます。
+ほぼすべてのコンシューマー アプリケーションは、何らかの種類のカスタム ユーザー プロファイル情報を格納する必要があります。これを行う 1 つの方法は、B2C テナントの中にカスタム属性を定義することです。これにより、その属性をユーザー オブジェクトの他のプロパティと同じように処理できます。属性の更新、属性の削除、属性によるクエリの実行、属性をサインイン トークンの中で要求として送信することができます。
 
-B2C ディレクトリ内でカスタム属性を定義するには、「[Azure Active Directory B2C プレビュー: カスタム属性を使用してコンシューマーに関する情報を収集する](active-directory-b2c-reference-custom-attr.md)」をご覧ください。
+B2C テナント内でカスタム属性を定義するには、[B2C プレビューのカスタム属性に関するリファレンス](active-directory-b2c-reference-custom-attr.md)を参照してください。
 
-B2C ディレクトリ内に定義されたカスタム属性は、B2CGraphClient を使用して表示できます。
+B2C テナント内に定義されたカスタム属性は、B2CGraphClient を使用して表示できます。
 
 ```
 > B2C Get-B2C-Application
@@ -339,13 +338,15 @@ B2C ディレクトリ内に定義されたカスタム属性は、B2CGraphClien
 > B2C Update-User <object-id-of-user> <path-to-json-file>
 ```
 
-これで終わりです。 B2CGraphClient を使用して B2C ディレクトリのユーザーをプログラムで管理できるサービス アプリケーションが作成されました。このアプリケーションは、独自のアプリケーション ID を使用して、Azure AD Graph API に対する認証を行い、client\_secret を使用してトークンを取得します。独自のアプリケーションにこの機能を組み込むときは、B2C アプリに関するいくつかの重要な点に注意してください。
+これで終わりです。 B2CGraphClient を使用して B2C テナントのユーザーをプログラムで管理できるサービス アプリケーションが作成されました。このアプリケーションは、独自のアプリケーション ID を使用して、Azure AD Graph API に対する認証を行い、client\_secret を使用してトークンを取得します。独自のアプリケーションにこの機能を組み込むときは、B2C アプリに関するいくつかの重要な点に注意してください。
 
-- ディレクトリの適切なアクセス許可をアプリケーションに付与する必要があります。
+- テナントの適切なアクセス許可をアプリケーションに付与する必要があります。
 - 現時点では、アクセス トークンを取得するには ADAL v2 を使用する必要があります (または、ライブラリなしでプロトコル メッセージを直接送信します)。
 - Graph API を呼び出すときは、[`api-version=beta`](http://blogs.msdn.com/b/aadgraphteam/archive/2015/04/10/graph-api-versioning-and-the-new-beta-version.aspx) を使用します。
 - コンシューマー ユーザーの作成と更新を行うときは、上記で説明したいくつかの必須プロパティがあります。
 
-Graph API を使用した B2C ディレクトリに対する操作に関して、ご質問やご要望がある場合は、いつでもご遠慮なくお知らせください。 記事に対するコメントや GitHub リポジトリのコード例の問題をお寄せください。
+> [AZURE.IMPORTANT]B2C アプリで Azure AD Graph API を使用する場合は、Azure AD B2C の基礎にあるディレクトリ サービスのレプリケーション特性を考慮する必要があります (詳細については、[こちらの記事](http://blogs.technet.com/b/ad/archive/2014/09/02/azure-ad-under-the-hood-of-our-geo-redundant-highly-available-geo-distributed-cloud-directory.aspx)を参照してください)。コンシューマーが **サインアップ** ポリシーを使用して B2C にサインアップしたすぐ後に、アプリ内で Azure AD Graph API を使用してユーザー オブジェクトを読み取ろうとしてもできない場合があります。その際は、レプリケーション プロセスが完了するまで数秒待つ必要があります。一般公開時には、Azure AD Graph API とディレクトリ サービスによって提供される "書き込みと読み取りの整合性保証" について、より具体的なガイダンスを公開する予定です。
 
-<!---HONumber=Oct15_HO1-->
+Graph API を使用した B2C テナントに対する操作に関して、ご質問やご要望がある場合は、いつでもご遠慮なくお知らせください。 記事に対するコメントや GitHub リポジトリのコード例の問題をお寄せください。
+
+<!---HONumber=Oct15_HO3-->

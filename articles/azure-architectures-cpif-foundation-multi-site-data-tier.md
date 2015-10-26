@@ -56,4 +56,4 @@ SQL Server 2012 で導入された AlwaysOn 可用性グループは、Azure Inf
 
 [バッチ処理層](https://gallery.technet.microsoft.com/Cloud-Platform-Integration-0bc3f8b1)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

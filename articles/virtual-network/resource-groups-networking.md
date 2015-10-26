@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/14/2015"
+   ms.date="10/07/2015"
    ms.author="telmos" />
 
 # ネットワーク リソース プロバイダー
@@ -24,9 +24,9 @@ Azure リソース マネージャーは、さまざまなリソース プロバ
 - **ネットワークの制御の拡大** – ネットワーク リソースは疎結合され、より細かく制御することができます。つまり、ネットワーク リソースを管理する柔軟性が高まります。
 - **構成の高速化** – ネットワーク リソースは疎結合されているため、ネットワーク リソースの作成と調整を並行して実行できます。これにより、構成にかかる時間が大幅に減少しました。
 - **ロール ベースのアクセス制御** – RBAC は、特定のセキュリティのスコープを持つ既定のロールを備えているだけでなく、セキュリティで保護された管理用のカスタム ロールを作成できます。 
-- **管理とデプロイメントの簡略化** – アプリケーション全体のスタックを、リソース グループ内の 1 つのリソース コレクションとして作成できるため、アプリケーションのデプロイと管理が簡単になります。テンプレートの JSON ペイロードを用意するだけでデプロイできるため、デプロイにかかる時間が短縮されます。
-- **迅速なカスタマイズ** – 宣言型形式のテンプレートを使用して、反復可能な方法で迅速にデプロイメントをカスタマイズできます。 
-- **反復可能なカスタマイズ** – 宣言型形式のテンプレートを使用して、反復可能な方法で迅速にデプロイメントをカスタマイズできます。
+- **管理とデプロイの簡略化** – アプリケーション全体のスタックを、リソース グループ内の 1 つのリソース コレクションとして作成できるため、アプリケーションのデプロイと管理が簡単になります。テンプレートの JSON ペイロードを用意するだけでデプロイできるため、デプロイにかかる時間が短縮されます。
+- **迅速なカスタマイズ** – 宣言型形式のテンプレートを使用して、反復可能な方法で迅速にデプロイをカスタマイズできます。 
+- **反復可能なカスタマイズ** – 宣言型形式のテンプレートを使用して、反復可能な方法で迅速にデプロイをカスタマイズできます。
 - **管理インターフェイス** - リソースの管理には、次のいずれかのインターフェイスを使用できます。
 	- REST ベースの API
 	- PowerShell
@@ -46,7 +46,7 @@ Azure リソース マネージャーは、さまざまなリソース プロバ
 
 すべてのリソースには、共通のプロパティのセットとその個々のプロパティがあります。共通のプロパティは次のとおりです。
 
-|プロパティ|説明|サンプルの値|
+|プロパティ|説明|値の例|
 |---|---|---|
 |**name**|リソースの一意の名前。リソースの種類ごとに、独自の名前付け制限がある。|PIP01、VM01、NIC01|
 |**location**|リソースが存在する Azure リージョン|westus、eastus|
@@ -56,17 +56,21 @@ Azure リソース マネージャーは、さまざまなリソース プロバ
 
 [AZURE.INCLUDE [virtual-networks-nrp-pip-include](../../includes/virtual-networks-nrp-pip-include.md)]
 
-[AZURE.INCLUDE [virtual-networks-nrp-vnet-include](../../includes/virtual-networks-nrp-vnet-include.md)]
-
 [AZURE.INCLUDE [virtual-networks-nrp-nic-include](../../includes/virtual-networks-nrp-nic-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-nrp-nsg-include](../../includes/virtual-networks-nrp-nsg-include.md)]
 
-[AZURE.INCLUDE [virtual-networks-nrp-lb-include](../../includes/virtual-networks-nrp-lb-include.md)]
+[AZURE.INCLUDE [virtual-networks-nrp-udr-include](../../includes/virtual-networks-nrp-udr-include.md)]
 
-[AZURE.INCLUDE [virtual-networks-nrp-vpn-include](../../includes/virtual-networks-nrp-vpn-include.md)]
+[AZURE.INCLUDE [virtual-networks-nrp-vnet-include](../../includes/virtual-networks-nrp-vnet-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-nrp-dns-include](../../includes/virtual-networks-nrp-dns-include.md)]
+
+[AZURE.INCLUDE [virtual-networks-nrp-lb-include](../../includes/virtual-networks-nrp-lb-include.md)]
+
+[AZURE.INCLUDE [virtual-networks-nrp-appgw-include](../../includes/virtual-networks-nrp-appgw-include.md)]
+
+[AZURE.INCLUDE [virtual-networks-nrp-vpn-include](../../includes/virtual-networks-nrp-vpn-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-nrp-tm-include](../../includes/virtual-networks-nrp-tm-include.md)]
 
@@ -245,9 +249,9 @@ ARM テンプレート言語の詳細については、「[Azure リソース �
 4. **[パラメーターの編集]** をクリックし、VNET およびサブネットの場所 (*[米国西部]* など) を選択します。
 5. 必要に応じて、**ADDRESSPREFIX** および **SUBNETPREFIX** パラメーターを変更し、**[OK]** をクリックします。
 6. **[リソース グループの選択]** をクリックし、VNET とサブネットの追加先となるリソース グループをクリックします。あるいは、**[新規作成]** をクリックして、新しいリソース グループを作成することもできます。
-3. **[作成]** をクリックします。**[テンプレートの展開をプロビジョニング中]**というタイトルが表示されます。デプロイメントが完了すると、画面の表示は以下のようになります。
+3. **[作成]** をクリックします。**[テンプレートのデプロイをプロビジョニング中]** というタイルが表示されます。デプロイが完了すると、画面の表示は以下のようになります。
 
-![サンプル テンプレートのデプロイメント](./media/resource-groups-networking/Figure6.png)
+![サンプル テンプレートのデプロイ](./media/resource-groups-networking/Figure6.png)
 
 
 ## 関連項目
@@ -268,6 +272,6 @@ ARM テンプレート言語の詳細については、「[Azure リソース �
 
 [Azure リソース マネージャーでのタグの使用](https://msdn.microsoft.com/library/azure/dn848368.aspx)
 
-[テンプレートのデプロイメント](https://msdn.microsoft.com/library/azure/dn790549.aspx)
+[テンプレートのデプロイ](https://msdn.microsoft.com/library/azure/dn790549.aspx)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

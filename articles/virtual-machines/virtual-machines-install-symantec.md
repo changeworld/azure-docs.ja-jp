@@ -1,6 +1,6 @@
 <properties
 	pageTitle="VM に Symantec Endpoint Protection をインストールする | Microsoft Azure"
-	description="クラシック デプロイメント モデルで作成された新しいまたは既存の Azure VM に Symantec Endpoint Protection のセキュリティ拡張機能をインストールして構成する方法を説明します。"
+	description="クラシック デプロイ モデルで作成された新しいまたは既存の Azure VM に Symantec Endpoint Protection のセキュリティ拡張機能をインストールして構成する方法を説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -19,7 +19,8 @@
 
 # How to install and configure Symantec Endpoint Protection on an Azure VM (Azure VM に Symantec Endpoint Protection をインストールし、構成する方法)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメントモデルで作成された仮想マシンにアプリケーションをインストールする方法を説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 この記事では、Windows Server を実行している既存の仮想マシン (VM) または新しい VM に Symantec Endpoint Protection クライアントをインストールして構成する方法を説明します。このクライアントには、ウイルスおよびスパイウェア対策、ファイアウォール、侵入防止などのサービスが含まれています。
 
@@ -97,4 +98,4 @@ Symantec のセキュリティ拡張機能がインストールされ、最新�
 
 [Ext]: http://go.microsoft.com/fwlink/p/?linkid=390493
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

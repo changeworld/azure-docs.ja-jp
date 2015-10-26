@@ -126,4 +126,4 @@ The sync table uses the [System Properties](https://msdn.microsoft.com/library/a
 [Xamarin Android: オフライン同期を有効にする]: ../app-service-mobile-xamarin-ios-get-started-offline-data-preview.md
 [Windows 8.1: オフライン同期を有効にする]: ../app-service-mobile-windows-store-dotnet-get-started-offline-data-preview.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

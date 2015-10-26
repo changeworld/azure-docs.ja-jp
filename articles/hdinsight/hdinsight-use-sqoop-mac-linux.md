@@ -1,5 +1,5 @@
 <properties
-	pageTitle="HDInsight での Hadoop Sqoop の使用 | Microsoft Azure"
+	pageTitle="Linux ベースの HDInsight での Hadoop Sqoop の使用 | Microsoft Azure"
 	description="Sqoop を使用して、HDInsight クラスター上の Linux ベースの Hadoop と Azure SQL データベース間でインポートおよびエクスポートする方法について説明します。"
 	editor="cgronlun"
 	manager="paulettm"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/02/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 #HDInsight の Hadoop での Sqoop の使用 (SSH)
@@ -54,14 +54,14 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 | フィールド | データ型 |
 | ----- | --------- |
-| clientid | string |
-| querytime | string |
-| market | string |
-| deviceplatform | string |
-| devicemake | string |
-| devicemodel | string |
-| state | string |
-| country | string |
+| clientid | 文字列 |
+| querytime | 文字列 |
+| market | 文字列 |
+| deviceplatform | 文字列 |
+| devicemake | 文字列 |
+| devicemodel | 文字列 |
+| state | 文字列 |
+| country | 文字列 |
 | querydwelltime | double |
 | sessionid | bigint |
 | sessionpagevieworder | bigint |
@@ -263,4 +263,4 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -21,7 +21,7 @@
 
 この記事では、Azure PowerShell を使用して、Windows ベースの仮想マシンを作成および管理する方法について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用した Windows VM の作成について説明します。また、[リソース マネージャー デプロイ モデル](virtual-machines-deploy-rmtemplates-powershell.md)を使用して Windows VM を作成することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-deploy-rmtemplates-powershell.md)。
 
 
 
@@ -74,7 +74,7 @@ Microsoft Azure のサインイン ダイアログで、Azure アカウントの
 
 次に、クラウド サービスが必要です。クラウド サービスがまだない場合は、新たに作成する必要があります。小文字、数字、ハイフンのみから成る一意の名前を選んでください。フィールドの先頭と末尾の文字は、文字または数字としてください。
 
-たとえば、TestCS-*UniqueSequence* という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに TestCS-Tailspin という名前を付けることができます。
+たとえば、TestCS-*UniqueSequence* という名前を付けることができます。*￼UniqueSequence￼* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに TestCS-Tailspin という名前を付けることができます。
 
 次の Azure PowerShell コマンドを使用することで、名前の一意性を確認することができます。
 
@@ -180,7 +180,7 @@ VM に関する情報を取得するには、このコマンドを実行し、�
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 ## データ ディスクの接続
-このタスクには、いくつかの手順が必要です。まず、**Add-AzureDataDisk** コマンドレットを使用して、$vm オブジェクトにディスクを追加します。次に、Update-AzureVM コマンドレットを使用して、仮想マシンの構成を更新します。
+このタスクには、いくつかの手順が必要です。まず、**Add-AzureDataDisk** コマンドレットを使用して、$vm オブジェクトにディスクを追加します。次に、Update-AzureVM コマンドレットを使用して、VM の構成を更新します。
 
 新しいディスクとデータを含むディスクのどちらを接続するかについても決める必要があります。新しいディスクの場合、コマンドによって .vhd ファイルが作成され、それが同じコマンドで接続されます。
 
@@ -209,4 +209,4 @@ BLOB ストレージにある既存の .vhd ファイルからデータ ディ�
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

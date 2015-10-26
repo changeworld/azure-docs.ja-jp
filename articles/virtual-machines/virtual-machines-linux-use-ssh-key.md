@@ -19,9 +19,7 @@
 
 #Azure 上の Linux における SSH の使用方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
-
-Microsoft Azure 管理ポータルの現在のバージョンのみが、X509 証明書にカプセル化された SSH 公開キーを受領します。次に示している、Azure で SSH キーを生成および使用する手順に従ってください。
+Azure の管理ポータルの現在のバージョンのみが、X509 証明書にカプセル化された SSH 公開キーを受領します。次に示している、Azure で SSH キーを生成および使用する手順に従ってください。
 
 ## Linux で Azure 互換のキーを生成する ##
 
@@ -179,4 +177,4 @@ Windows 用 `openssl` を含むさまざまなユーティリティがありま�
 5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -210,7 +210,7 @@ Table サービス ソリューションでは、読み取り、書き込み、�
 最初の方のセクション [Azure Table サービスの概要](#azure-table-service-overview) では、クエリの設計に直接影響を与える Azure Table サービスの主な機能の一部について説明します。ここから、Table サービスのクエリを設計する際には、次のような一般的なガイドラインが考えられます。次の例で使用されるフィルター構文は、Table サービス REST API のものですのでご注意ください。詳細については、MSDN の [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx) を参照してください。
 
 -	***ポイント クエリ*** は、最も効率的な検索です。大量の参照または短い待機時間が求められる参照に使用することをお勧めします。このようなクエリでは、**PartitionKey** と **RowKey** 値の両方を指定することでインデックスを使用し、個別のエンティティを非常に効率よく検索することができます。例: $filter (PartitionKey eq 'Sales') = および (RowKey eq '2')  
--	2 番目に良い方法は、 **PartitionKey** を使用する***範囲クエリ***と、**RowKey** 値 の範囲にフィルターをかけ、1 つ以上のエンティティを返す Range Query です。 **PartitionKey** 値は特定のパーティションを識別し、**RowKey** 値はそのパーティション内のエンティティのサブセットを識別します。例: $filter=PartitionKey eq 'Sales' および RowKey ge 'S' および RowKey lt 'T'  
+-	2 番目に良い方法は、 **PartitionKey** を使用する***範囲クエリ***と、**RowKey** 値 の範囲にフィルターをかけ、1 つ以上のエンティティを返す です。 **PartitionKey** 値は特定のパーティションを識別し、**RowKey** 値はそのパーティション内のエンティティのサブセットを識別します。例: $filter=PartitionKey eq 'Sales' および RowKey ge 'S' および RowKey lt 'T'  
 -	3 番目に良い方法は、**PartitionKey** を使用し、他のキーを持たないプロパティにフィルターをかけ、 1 つ以上のエンティティを返すことが可能な ***パーティション スキャン***です。 **PartitionKey** 値は特定のパーティションを識別し、プロパティ値はそのパーティション内のエンティティのサブセットを選択します。例: $filter = PartitionKey eq '販売'、および LastName eq 'Smith'  
 -	***Table Scan*** に **PartitionKey** は含まれません。また、一致するエンティティのテーブルを構成するパーティションのすべてを検索するため、非常に非効率的です。フィルターが **RowKey** を使用する / しないに関わりなく、テーブルのスキャンが実行されます。例: $filter = LastName eq 'Jones'  
 -	クエリは複数のエンティティを **PartitionKey** と **RowKey** の順序で並べ替えて返します。クライアント内でエンティティを再度並べ替えのを防ぐため、最も一般的な並べ替え順序を定義する **RowKey** を選択します。  
@@ -720,7 +720,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid\_000123')、(RowKey lt 'em
 
 自然に最新のエントリを逆の日付と時刻順で並べ替える **RowKey** を使用してエンティティの保存、するため、表の一番上に最も最近のエントリが表示されます。
 
-たとえば、従業員が提出した経費請求を日時の新しいものから 10 件取得できるようにする場合は、現在の日時から派生した逆順のティック値を使用できます。次の c\# のコード サンプルは、最新から最古の順で並べ替える **RowKey** 用の適切な「逆タイマー刻み」値を作成する方法の 1 つを示しています。
+たとえば、従業員が提出した経費請求を日時の新しいものから 10 件取得できるようにする場合は、現在の日時から派生した逆順のティック値を使用できます。次の c# のコード サンプルは、最新から最古の順で並べ替える **RowKey** 用の適切な「逆タイマー刻み」値を作成する方法の 1 つを示しています。
 
 `string invertedTicks = string.Format("{0:D19}", DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks);`
 
@@ -976,7 +976,7 @@ Storage Analytics は内部のバッファーにログ メッセージを保管�
 
 #### ストレージ クライアント ライブラリを使ってポイント クエリを実行する  
 
-ポイント クエリを実行する最も簡単な方法は、次の c\# コード スニペットに表示された、 **PartitionKey** 値 "Sales" と **RowKey** 値"212" を持つエンティティを取得する**取得** テーブル操作の使用です。
+ポイント クエリを実行する最も簡単な方法は、次の c# コード スニペットに表示された、 **PartitionKey** 値 "Sales" と **RowKey** 値"212" を持つエンティティを取得する**取得** テーブル操作の使用です。
 
 	TableOperation retrieveOperation =
 		TableOperation.Retrieve<EmployeeEntity>("Sales", "212");
@@ -991,7 +991,7 @@ Storage Analytics は内部のバッファーにログ メッセージを保管�
 
 #### LINQ を使って複数のエンティティを取得する  
 
-複数のエンティティを取得するには、て、ストレージ クライアント ライブラリとともにLINQ を使用し、**where** 句のあるクエリを指定します。テーブル スキャンを回避するのには、where 句の **PartitionKey** 値と、可能であれば **RowKey** 値をインクルードし、テーブルとパーティションのスキャンを避けます。Table サービスは、where 句で一部の比較演算子 (より大きい、以上、より小さい、以下、等しい、等しくない) のみサポートしています。次の c\# のコード スニペットは、Sales 部署 (**PartitionKey** が部署名を格納していると仮定)の中で、姓が "B" (**RowKey** が姓を格納していると仮定) で始まるすべての従業員を検索 します。
+複数のエンティティを取得するには、て、ストレージ クライアント ライブラリとともにLINQ を使用し、**where** 句のあるクエリを指定します。テーブル スキャンを回避するのには、where 句の **PartitionKey** 値と、可能であれば **RowKey** 値をインクルードし、テーブルとパーティションのスキャンを避けます。Table サービスは、where 句で一部の比較演算子 (より大きい、以上、より小さい、以下、等しい、等しくない) のみサポートしています。次の c# のコード スニペットは、Sales 部署 (**PartitionKey** が部署名を格納していると仮定)の中で、姓が "B" (**RowKey** が姓を格納していると仮定) で始まるすべての従業員を検索 します。
 
 	TableQuery<EmployeeEntity> employeeQuery =
   			employeeTable.CreateQuery<EmployeeEntity>();
@@ -1320,7 +1320,7 @@ Table サービスとは、 *スキーマのない* テーブル ストアを 1 
 
 **RowKey** と **PartitionKey** 値とともに格納されている特定のエンティティの型がわかっている場合、エンティティ取得する際は、前述の 2 つの例に示すように**従業員エンティティ**: [、ストレージ クライアント ライブラリを使用して 1 つのエンティティを取得する](#retrieving-a-single-entity-using-the-storage-client-library) と [LINQ を使用して複数のエンティティを取得する](#retrieving-multiple-entities-using-linq) の型を指定します。
 
-2 番目のオプションは、具体的な POCO エンティティ型の代わりに **DynamicTableEntity** 型 (プロパティ バッグ) の使用です(エンティティを .NET 型にシリアル化および非シリアル化する必要がないため、このオプションはパフォーマンスも向上させます) 。次の c\# コードは、テーブルから潜在的にさまざまな種類の複数のエンティティを取得しますが、すべてのエンティティを **DynamicTableEntity** インスタンスとして返します。**EntityType** プロパティを使用して各エンティティの種類を決定します。
+2 番目のオプションは、具体的な POCO エンティティ型の代わりに **DynamicTableEntity** 型 (プロパティ バッグ) の使用です(エンティティを .NET 型にシリアル化および非シリアル化する必要がないため、このオプションはパフォーマンスも向上させます) 。次の c# コードは、テーブルから潜在的にさまざまな種類の複数のエンティティを取得しますが、すべてのエンティティを **DynamicTableEntity** インスタンスとして返します。**EntityType** プロパティを使用して各エンティティの種類を決定します。
 
 	string filter = 	TableQuery.CombineFilters(
     	TableQuery.GenerateFilterCondition("PartitionKey",
@@ -1551,4 +1551,4 @@ Azure チームの功績の次のメンバーに感謝いたします。 Dominic
 [29]: ./media/storage-table-design-guide/storage-table-design-IMAGE29.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

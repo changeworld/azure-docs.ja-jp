@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="クラウド サービスの監視方法 | Microsoft Azure"
-	description="Azure 管理ポータルを使用してクラウド サービスを監視する方法について説明します。"
-	services="cloud-services"
-	documentationCenter=""
-	authors="rboucher"
-	manager="jwhit"
+	pageTitle="クラウド サービスの監視方法 | Microsoft Azure" 
+	description="Azure 管理ポータルを使用してクラウド サービスを監視する方法について説明します。" 
+	services="cloud-services" 
+	documentationCenter="" 
+	authors="rboucher" 
+	manager="jwhit" 
 	editor=""/>
 
 <tags 
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.service="cloud-services" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/04/2015" 
 	ms.author="robb"/>
 
 
@@ -102,7 +102,7 @@
  
 	![[メトリックの追加] の検索](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png)
 
-3. メトリックの選択が終了したら OK (チェックマーク) をクリックします。
+3. メトリックの選択が終了したら [OK] (チェックマーク) をクリックします。
 
 	下図のように、選択したメトリックがメトリック テーブルに追加されます。
 
@@ -192,4 +192,4 @@
 	WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role instances)
  
 
-<!-----HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

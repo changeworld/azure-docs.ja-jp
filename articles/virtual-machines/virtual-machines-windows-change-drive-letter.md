@@ -1,6 +1,6 @@
 <properties
 	pageTitle="一時ディスクのドライブ文字を変更する | Microsoft Azure"
-	description="クラシック デプロイメント モデルで作成された Windows 仮想マシンの一時ディスクのドライブ文字を変更する"
+	description="クラシック デプロイ モデルで作成された Windows 仮想マシンの一時ディスクのドライブ文字を変更する"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn
@@ -18,9 +18,10 @@
 	ms.date="05/27/2015"
 	ms.author="cynthn"/>
 
-#クラシック デプロイメント モデルで作成された仮想マシンの Windows 一時ディスクのドライブ文字を変更する
+#クラシック デプロイ モデルで作成された仮想マシンの Windows 一時ディスクのドライブ文字を変更する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 D ドライブを使用してデータを格納する必要がある場合、次の手順に従って一時ディスク用の別のドライブを使用します。維持する必要があるデータは、一時ディスクに格納しないでください。
 
@@ -74,4 +75,4 @@ D ドライブの既存のデータ ディスクを使用する場合は、そ�
 
 [Storage]: ../storage-whatis-account.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -355,4 +355,4 @@ DocumentDB の地理空間機能の基本的な使い方を身に付けたら、
 - [DocumentDB クエリ](documentdb-sql-query.md)についてさらに理解を深める
 - [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)についてさらに理解を深める
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

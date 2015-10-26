@@ -12,4 +12,4 @@
 
 [1]: ./media/app-service-mobile-apns-configure-push-preview/mobile-push-notification-hub.png
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

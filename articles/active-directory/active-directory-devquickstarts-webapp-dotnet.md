@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="07/17/2015"
+	ms.date="10/13/2015"
 	ms.author="dastrock"/>
 
 # Azure AD を使用した Web アプリのサインインおよびサインアウト
@@ -176,4 +176,4 @@ public ActionResult About()
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="テーブル ストレージを使用した Web アプリケーション (Node.js) | Microsoft Azure"
-	description="Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。"
-	services="cloud-services, storage"
-	documentationCenter="nodejs"
-	authors="TomArcher"
-	manager="wpickett"
+	pageTitle="テーブル ストレージを使用した Web アプリケーション (Node.js) | Microsoft Azure" 
+	description="Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。" 
+	services="cloud-services, storage" 
+	documentationCenter="nodejs" 
+	authors="TomArcher" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="nodejs"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="nodejs" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="tarcher"/>
 
 
@@ -408,4 +408,4 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
  
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

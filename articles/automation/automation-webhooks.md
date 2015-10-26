@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/28/2015"
+   ms.date="10/08/2015"
    ms.author="bwren;sngun"/>
 
 # Azure Automation Webhook
@@ -156,7 +156,8 @@ Runbook では、要求の本文に JSON 形式の仮想マシン一覧が必要
             # Start each virtual machine
 			foreach ($VM in $VMList)
 			{
-				Write-Output "Starting $VM.Name."
+				$VMName = $VM.Name
+				Write-Output "Starting $VMName"
 				Start-AzureVM -Name $VM.Name -ServiceName $VM.ServiceName
 			}
 		}
@@ -254,4 +255,4 @@ Azure アラートを通知システムとして使用するだけでなく、�
 - [Runbook ジョブの状態の表示](automation-viewing-the-status-of-a-runbook-job.md)
 - [Using Azure Automation to take actions on Azure Alerts (Azure Automation を使用した Azure アラートに対するアクションの実行)](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

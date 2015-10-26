@@ -114,4 +114,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [登録者への通知の送信]: ../notification-hubs-windows-store-dotnet-send-localized-breaking-news.md
 [Azure Management Portal]: https://manage.windowsazure.com/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

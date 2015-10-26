@@ -4,4 +4,4 @@
 - [Azure CLI](../articles/hdinsight/hdinsight-administer-use-command-line.md)
 - [Azure PowerShell](../articles/hdinsight/hdinsight-administer-use-powershell.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

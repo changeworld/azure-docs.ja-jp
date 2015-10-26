@@ -46,7 +46,7 @@ SMTP、または SendGrid の Web API を使用して電子メールを送信で
 
 ### SMTP API
 
-SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。*Swift Mailer* ライブラリは、[http://swiftmailer.org/download][] v5.3.0 からダウンロードできます (Swift Mailer をインストールするには、[Composer] を使用します)。このライブラリを使用して電子メールを送信するには、<span class="auto-style2">Swift\_SmtpTransport</span>、<span class="auto-style2">Swift\_Mailer</span>、および <span class="auto-style2">Swift\_Message</span> クラスのインスタンスを作成し、適切なプロパティを設定して、<span class="auto-style2">Swift\_Mailer::send</span> メソッドを呼び出します。
+SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。*Swift Mailer* ライブラリは、[http://swiftmailer.org/download][] v5.3.0 からダウンロードできます (Swift Mailer をインストールするには、[[Composer]] を使用します)。このライブラリを使用して電子メールを送信するには、<span class="auto-style2">Swift\_SmtpTransport</span>、<span class="auto-style2">Swift\_Mailer</span>、および <span class="auto-style2">Swift\_Message</span> クラスのインスタンスを作成し、適切なプロパティを設定して、<span class="auto-style2">Swift\_Mailer::send</span> メソッドを呼び出します。
 
     <?php
      include_once "vendor/autoload.php";
@@ -283,7 +283,7 @@ Web API を使用した添付ファイルの送信は、Web API を使用した�
 
 SendGrid では、'フィルター' を使用することでその他の電子メール機能も利用することができます。その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。
 
-フィルターは、フィルターのプロパティを使用してメッセージに適用できます。各フィルターは、フィルター固有の設定を格納したハッシュで指定します。次の例では、フッター フィルターを有効にし、電子メール メッセージの下部に追加されるテキスト メッセージを指定しています。この例では、[sendgrid-php] ライブラリを使用します。ライブラリをインストールするには、[Composer] を使用します。
+フィルターは、フィルターのプロパティを使用してメッセージに適用できます。各フィルターは、フィルター固有の設定を格納したハッシュで指定します。次の例では、フッター フィルターを有効にし、電子メール メッセージの下部に追加されるテキスト メッセージを指定しています。この例では、[sendgrid-php] ライブラリを使用します。ライブラリをインストールするには、[[Composer]] を使用します。
     
     php composer.phar require sendgrid/sendgrid 2.1.1
 
@@ -402,6 +402,6 @@ SendGrid では、'フィルター' を使用することでその他の電子�
   [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
   [sendgrid-php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
-  [Composer]: https://getcomposer.org/download/
+  [[Composer]]: https://getcomposer.org/download/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

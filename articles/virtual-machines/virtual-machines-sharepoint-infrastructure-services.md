@@ -19,7 +19,8 @@
 
 # Azure インフラストラクチャ サービスでホストされる SharePoint ファーム
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルまたはクラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 Microsoft Azure インフラストラクチャ サービスで、最初または次の開発/テスト環境または運用環境の SharePoint ファームを設定します。ここでは、簡単に構成できる機能と、新機能を追加したり主要な機能を最適化するためにファームを迅速に拡張する機能を活用することができます。
 
@@ -67,4 +68,4 @@ Azure における SharePoint の詳細と構成については、次のリソ�
 
 - [Microsoft Azure での Office 365 ディレクトリ同期 (DirSync) のデプロイ](https://technet.microsoft.com/library/dn635310.aspx)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

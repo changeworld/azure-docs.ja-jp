@@ -7,7 +7,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/24/2015" ms.author="trinadhk";"aashishr";"jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/07/2015" ms.author="trinadhk";"aashishr";"jimpark"/>
 
 # Azure 仮想マシンのバックアップ
 
@@ -54,7 +54,7 @@ Azure 仮想マシンの詳細については、「[Virtual Machine のドキュ
 >[AZURE.NOTE]Linux 仮想マシンでは、ファイル整合性のバックアップのみが可能です。
 
 ## 保護するインスタンスの計算
-Azure Backup を使用してバックアップされている Azure 仮想マシンは、[Azure バックアップ料金](http://azure.microsoft.com/pricing/details/backup/)の対象になります。保護するインスタンスの計算は、仮想マシンの*実際*のサイズ (”リソース ディスク” を除く、仮想マシン上の全データの合計) に基づきます。仮想マシンに接続されている各データ ディスクがサポートする最大サイズ*ではなく*、データ ディスクに格納されている実際のデータに基づいて課金されます。同様に、バックアップ ストレージの課金は、Azure Backup で格納されているデータ量 (各回復ポイントの実際のデータの合計) に基づきます。
+Azure Backup を使用してバックアップされている Azure 仮想マシンは、[Azure Backup の価格](http://azure.microsoft.com/pricing/details/backup/)の対象になります。保護するインスタンスの計算は、仮想マシンの*実際*のサイズ ("リソース ディスク" を除く、仮想マシン上の全データの合計) に基づきます。仮想マシンに接続されている各データ ディスクがサポートする最大サイズ*ではなく*、データ ディスクに格納されている実際のデータに基づいて課金されます。同様に、バックアップ ストレージの課金は、Azure Backup で格納されているデータ量 (各回復ポイントの実際のデータの合計) に基づきます。
 
 たとえば、最大サイズが各 1 TB のデータ ディスクが 2 台追加で搭載されている A2 標準サイズの仮想マシンがあります。次の表は、これらの各ディスクに格納されている実際のデータを示しています。
 
@@ -79,7 +79,7 @@ Azure 仮想マシンのバックアップを開始するにはまずバック�
 
 1. [管理ポータル](http://manage.windowsazure.com/)にサインインします。
 
-2. **[新規]** > **[Data Services]** > **[復旧サービス]** > **[バックアップ資格情報コンテナー]** > **[簡易作成]** の順にクリックします。組織のアカウントに関連付けられたサブスクリプションが複数ある場合は、正しいアカウントを選択してバックアップ資格情報コンテナーに関連付けてください。各 Azure サブスクリプションに複数のバックアップ資格情報コンテナーを保有し、保護する仮想マシンを編成できます。
+2. **[新規]** > **[Data Services]** > **[Recovery Services]** > **[バックアップ資格情報コンテナー]** > **[簡易作成]** の順にクリックします。組織のアカウントに関連付けられたサブスクリプションが複数ある場合は、正しいアカウントを選択してバックアップ資格情報コンテナーに関連付けてください。各 Azure サブスクリプションに複数のバックアップ資格情報コンテナーを保有し、保護する仮想マシンを編成できます。
 
 3. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。これは、サブスクリプションごとに一意である必要があります。
 
@@ -87,7 +87,7 @@ Azure 仮想マシンのバックアップを開始するにはまずバック�
 
 5. **[資格情報コンテナーの作成]** をクリックします。バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。ポータルの下部にある状態の通知を監視します。![資格情報コンテナーのトースト通知の作成](./media/backup-azure-vms-introduction/creating-vault.png)
 
-6. 資格情報コンテナーが正常に作成されたことを示すメッセージが表示され、[復旧サービス] ページに [アクティブ] と表示されます。コンテナーを作成したら、適切なストレージの冗長オプションが選択されていることを確認してください。詳細については、「[setting the storage redundancy option in the backup vault (バックアップ資格情報コンテナーのストレージ冗長オプションの設定)](../backup-azure-backup-create-vault.md#storage-redundancy-options)」をご覧ください。![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-introduction/backup_vaultslist.png)
+6. 資格情報コンテナーが正常に作成されたことを示すメッセージが表示され、[Recovery Services] ページに [アクティブ] と表示されます。コンテナーを作成したら、適切なストレージの冗長オプションが選択されていることを確認してください。詳細については、「[setting the storage redundancy option in the backup vault (バックアップ コンテナーのストレージ冗長オプションの設定)](backup-configure-vault.md#azure-backup---storage-redundancy-options)」をご覧ください。![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-introduction/backup_vaultslist.png)
 
 7. バックアップ資格情報コンテナーをクリックして、**[クイック スタート]** ページに進むと、Azure 仮想マシンのバックアップ手順が表示されます。![ダッシュボード ページの仮想マシンのバックアップ手順](./media/backup-azure-vms-introduction/vmbackup-instructions.png)
 
@@ -104,14 +104,15 @@ Azure 仮想マシンのバックアップを開始する前に、Azure VM エ�
 - Premium Storage を使用した仮想マシンのバックアップはサポートされません。
 - 予約済み IP が複数ある仮想マシンのバックアップはサポートされません。
 - 予約済み IP はあるがエンドポイントが定義されていない仮想マシンのバックアップはサポートされません。
-- 複数のNIC を使用した仮想マシンのバックアップ、または負荷分散の構成の仮想マシンのバックアップはサポートされません。
+- 複数の NIC を使用した仮想マシンのバックアップはサポートされません。
+- 負荷分散の構成 (内部およびインターネット接続) の仮想マシンのバックアップはサポートされません。
 - 復元中に既存の仮想マシンを置き換えることはサポートされません。まず既存の仮想マシンに関連付けられているディスクを削除し、次にバックアップからデータを復元します。
 - リージョン間のバックアップと復元はサポートされません。
-- Azure Backup サービスを使用した仮想マシンのバックアップは、Azure のすべてのパブリック リージョンでサポートされます。サポートされるリージョンについては、「[リージョン別のサービス](http://azure.microsoft.com/regions/#services)」を参照ください。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
+- Azure Backup サービスを使用した仮想マシンのバックアップは、Azure のすべてのパブリック リージョンでサポートされます。サポートされるリージョンについては、「[リージョン別のサービス](http://azure.microsoft.com/regions/#services)」を参照してください。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
 - オペレーティング システムのバージョンの選択でサポートされるのは、Azure Backup サービスを使用した仮想マシンのバックアップのみです。
   - **Linux**: Azure で動作保証済みのディストリビューションの一覧は、[こちら](../virtual-machines-linux-endorsed-distributions.md)でご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
   - **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
-- マルチ DC 構成の一部であるドメイン コント ローラー仮想マシンの復元は、PowerShell を通じてのみサポートされます。詳細については、「[ドメイン コントローラー の VM の復元](backup-azure-restore-vms.md#restoring-domain-controller-vms)」を参照してください。
+- マルチ DC 構成の一部であるドメイン コントローラー VM の復元は、PowerShell を通じてのみサポートされます。詳細については、「[ドメイン コントローラーの VM の復元](backup-azure-restore-vms.md#restoring-domain-controller-vms)」を参照してください。
 
 確認したい機能が含まれている場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
@@ -122,4 +123,4 @@ Azure 仮想マシンのバックアップを開始する前に、Azure VM エ�
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

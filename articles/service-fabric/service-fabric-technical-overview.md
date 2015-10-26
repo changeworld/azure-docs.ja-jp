@@ -1,20 +1,20 @@
 <properties
    pageTitle="技術概要"
-	description="Service Fabric の技術概要。主要な概念とアーキテクチャの概要について説明します。"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="msfussell"
-	manager="timlt"
-	editor="chackdan;subramar"/>
+   description="Service Fabric の技術概要。主要な概念とアーキテクチャの概要について説明します。"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="msfussell"
+   manager="timlt"
+   editor="chackdan;subramar"/>
 
 <tags
    ms.service="service-fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/25/2015"
-	ms.author="mfussell"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/25/2015"
+   ms.author="mfussell"/>
 
 # Service Fabric の技術概要
 
@@ -54,4 +54,4 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 - [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -89,4 +89,4 @@ API は時系列データでこれらの検出を実行し、時系列の各ポ�
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

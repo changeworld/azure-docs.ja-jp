@@ -34,4 +34,4 @@ API アプリのシークレット。この値は、base64 でエンコードさ
       "type": "string"
     }
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

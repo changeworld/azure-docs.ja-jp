@@ -12,7 +12,7 @@
 	ms.workload="core"
 	ms.tgt_pltfrm="csharp"
 	ms.devlang="csharp"
-	ms.topic="article"
+	ms.topic="article" 
 	ms.date="09/01/2015"
 	ms.author="sethm"/>
 
@@ -24,7 +24,7 @@
 
 Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。
 
-詳細については、「[Event Hubs の概要]」を参照してください。
+詳細については、「[￼￼￼￼￼￼￼Event Hubs の概要￼￼￼￼￼￼￼]」を参照してください。
 
 このチュートリアルでは、C# のコンソール アプリケーションを使用して、イベント ハブにメッセージをインジェストし、Apache Storm を使用して並列で取得する方法を学習します。
 
@@ -34,7 +34,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 + [Maven](http://maven.apache.org/) を実行するように構成された Java 開発環境。このチュートリアルでは、[Eclipse](https://www.eclipse.org/) を想定しています
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
 ## Event Hub を作成する
 
@@ -107,10 +107,10 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 <!-- Links -->
 [Azure ポータル]: https://manage.windowsazure.com/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
-[Event Hubs の概要]: event-hubs-overview.md
+[￼￼￼￼￼￼￼Event Hubs の概要￼￼￼￼￼￼￼]: event-hubs-overview.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
 [Event Hub でイベント処理の拡張]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [キューに格納されたメッセージング ソリューション]: ../service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

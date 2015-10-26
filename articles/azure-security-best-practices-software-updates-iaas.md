@@ -75,7 +75,7 @@ PaaS のシナリオでは、オペレーティング システムの更新の�
 
 ## ソフトウェアの更新に関する注意点
 
-社内で使用されているソフトウェアの最初の監査を実行後、ソフトウェア更新管理システムをセットアップするための要件を決定する必要があります。これは、使用しているソフトウェアの更新管理システムに依存します。WSUS については「[Windows Server Update Services を使用したベスト プラクティス](https://technet.microsoft.com/ja-JP/library/Cc708536)」、System Center については「[Configuration Manager でのソフトウェア更新プログラムの計画](https://technet.microsoft.com/ja-JP/library/gg712696)」を参照してください。
+社内で使用されているソフトウェアの最初の監査を実行後、ソフトウェア更新管理システムをセットアップするための要件を決定する必要があります。これは、使用しているソフトウェアの更新管理システムに依存します。WSUS については「[Windows Server Update Services を使用したベスト プラクティス](https://technet.microsoft.com/ja-jp/library/Cc708536)」、System Center については「[Configuration Manager でのソフトウェア更新プログラムの計画](https://technet.microsoft.com/ja-jp/library/gg712696)」を参照してください。
 
 ただし、以下のセクションで示しているように、使用しているソリューションに関係なく適用できる一般的な考慮事項およびベスト プラクティスがあります。
 
@@ -87,13 +87,13 @@ PaaS のシナリオでは、オペレーティング システムの更新の�
 
 -   **参照コンピューターを含む実稼働前のコレクションの作成**: 実稼働前のコレクションには、オペレーティング システムのバージョン、基幹業務ソフトウェア、社内で実行されているその他のソフトウェアの典型的な構成を含む必要があります。
 
-ソフトウェア更新サーバーを設置する場所をクラウド内の Azure IaaS インフラストラクチャにするか、またはオンプレミスにするかについても検討する必要があります。オンプレミス リソースと Azure インフラストラクチャの間のトラフィックの量を評価する必要があるため、これは重要な決定です。オンプレミスのインフラストラクチャを Azure に接続する方法の詳細については、「[オンプレミス ネットワークを Microsoft Azure 仮想ネットワークに接続する](https://technet.microsoft.com/ja-JP/library/Dn786406.aspx)」を参照してください。
+ソフトウェア更新サーバーを設置する場所をクラウド内の Azure IaaS インフラストラクチャにするか、またはオンプレミスにするかについても検討する必要があります。オンプレミス リソースと Azure インフラストラクチャの間のトラフィックの量を評価する必要があるため、これは重要な決定です。オンプレミスのインフラストラクチャを Azure に接続する方法の詳細については、「[オンプレミス ネットワークを Microsoft Azure 仮想ネットワークに接続する](https://technet.microsoft.com/ja-jp/library/Dn786406.aspx)」を参照してください。
 
-更新サーバーが設置される場所を決定する設計オプションは、現在のインフラストラクチャや現在使用しているソフトウェア更新システムによっても異なります。WSUS については「[Windows Server Update Services を組織にデプロイする](https://technet.microsoft.com/ja-JP/library/hh852340.aspx)」、System Center Configuration Manager については「[Configuration Manager のサイトと階層の計画](https://technet.microsoft.com/ja-JP/library/Gg712681.aspx)」を参照してください。
+更新サーバーが設置される場所を決定する設計オプションは、現在のインフラストラクチャや現在使用しているソフトウェア更新システムによっても異なります。WSUS については「[Windows Server Update Services を組織にデプロイする](https://technet.microsoft.com/ja-jp/library/hh852340.aspx)」、System Center Configuration Manager については「[Configuration Manager のサイトと階層の計画](https://technet.microsoft.com/ja-jp/library/Gg712681.aspx)」を参照してください。
 
 ### Backup
 
-ソフトウェア更新管理のプラットフォームだけでなく、更新対象のサーバーにおいても定期的なバックアップは重要です。所定の[変更管理プロセス](https://technet.microsoft.com/ja-JP/library/cc543216.aspx)を持つ組織では、サーバーを更新する必要がある理由、推定ダウンタイム、および考えられる影響について IT 部門が正当性を示す必要があります。更新が失敗した場合のロールバック用構成を確保できるように、必ずシステムを定期的にバックアップしてください。
+ソフトウェア更新管理のプラットフォームだけでなく、更新対象のサーバーにおいても定期的なバックアップは重要です。所定の[変更管理プロセス](https://technet.microsoft.com/ja-jp/library/cc543216.aspx)を持つ組織では、サーバーを更新する必要がある理由、推定ダウンタイム、および考えられる影響について IT 部門が正当性を示す必要があります。更新が失敗した場合のロールバック用構成を確保できるように、必ずシステムを定期的にバックアップしてください。
 
 次のような Azure IaaS のバックアップ オプションがあります。
 
@@ -119,4 +119,4 @@ PaaS のシナリオでは、オペレーティング システムの更新の�
 
 この記事で示されているガイドラインを使用して、Azure IaaS 内の仮想マシンに対してソフトウェア更新プログラムの最適なオプションを決定できます。ソフトウェア更新プログラムのベスト プラクティスについては、従来のデータセンター内と Azure IaaS 内で多数の類似点があります。したがって、現在のソフトウェア更新ポリシーを評価して、全体的なソフトウェア更新プロセスに Azure VM を含め、この記事内の関連するベスト プラクティスを含めることをお勧めします。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

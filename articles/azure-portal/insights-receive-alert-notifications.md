@@ -65,4 +65,4 @@
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

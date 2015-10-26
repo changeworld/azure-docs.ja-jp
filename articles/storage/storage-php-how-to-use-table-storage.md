@@ -480,4 +480,4 @@ Table バッチ処理の詳細については、「[エンティティ グルー
 [filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

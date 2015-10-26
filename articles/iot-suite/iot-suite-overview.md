@@ -1,8 +1,8 @@
 <properties
 	pageTitle="Microsoft Azure IoT Suite の概要 | Microsoft Azure"
-	description="Azure IoT Suite の概要を説明します。"
+	description="パッケージ化と構成済みのソリューションを含む、Azure IoT Suite の概要を説明します。"
 	services=""
-	documentationCenter=".net"
+	documentationCenter=""
 	authors="aguilaaj"
 	manager="timlt"
 	editor=""/>
@@ -12,7 +12,7 @@
      ms.devlang="na"
      ms.topic="article"
      ms.tgt_pltfrm="na"
-     ms.workload="tbd"
+     ms.workload="na"
      ms.date="10/06/2015"
      ms.author="araguila"/>
 
@@ -28,7 +28,7 @@ Azure IoT Suite の中核となるものは IoT Hub サービスです。この�
 
 データ ストレージ機能は Azure Storage と Azure Document DB の組み合わせにより有効になります。Azure Storage では、保存や将来の分析のためテレメトリの BLOB ストレージを有効にできます。Document DB は、デバイス メタデータを管理するために、半構造化されたデータにインデックスを付けて保存するために使用されます。異なるデバイスで異なるコンテンツを保持できるため、異種デバイスの管理が可能になります。
 
-データの視覚化は Azure Web サイトと Microsoft Power BI の組み合わせによって提供されます。Power BI の柔軟性により、お客様は IoT Suite データから独自の対話型ダッシュボードをすばやく構築できます。
+データの視覚化は Azure Websites と Microsoft Power BI の組み合わせによって提供されます。Power BI の柔軟性により、お客様は IoT Suite データから独自の対話型ダッシュボードをすばやく構築できます。
 
 アーキテクチャとこれらのサービスの使用方法に関する詳細は、「[Microsoft Azure とモノのインターネット (IoT)](iot-suite-what-is-azure-iot.md)」という記事にあります。
 
@@ -38,4 +38,4 @@ Azure IoT Suite の中核となるものは IoT Hub サービスです。この�
 
 使用可能な最初の構成済みのソリューションは[リモート監視](iot-suite-what-are-preconfigured-solutions.md)です。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -51,7 +51,7 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 
 + [Mobile Services .NET の使用方法の概念リファレンス](../mobile-services-windows-dotnet-how-to-use-client-library.md)
 
-     .NET でモバイル サービスを使用する方法について説明します
+     .NET で Mobile Services を使用する方法について説明します
  
 <!-- Anchors. -->
 [Install the Storage Client library]: #install-storage-client
@@ -71,4 +71,4 @@ BLOB ストレージ サービスにデータを安全にアップロードす�
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

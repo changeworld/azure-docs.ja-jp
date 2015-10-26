@@ -1,10 +1,10 @@
 <properties
- pageTitle="Azure IoT Hub と Event Hubs の比較 | Microsoft Azure"
- description="IoT Hub と Event Hubs の比較"
+ pageTitle="Azure IoT Hub と Azure Event Hubs の比較 | Microsoft Azure"
+ description="機能の相違点とユース ケースを中心とした、Azure IoT Hub サービスと Azure Event Hubs サービスの比較です。"
  services="iot-hub"
- documentationCenter=".net"
+ documentationCenter=""
  authors="fsautomata"
- manager="kevinmil"
+ manager="timlt"
  editor=""/>
 
 <tags
@@ -12,7 +12,7 @@
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
- ms.workload="tbd"
+ ms.workload="na"
  ms.date="10/02/2015"
  ms.author="elioda"/>
 
@@ -49,4 +49,4 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub? (Azure IoT Hub とは)]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

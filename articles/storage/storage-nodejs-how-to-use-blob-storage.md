@@ -378,4 +378,4 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

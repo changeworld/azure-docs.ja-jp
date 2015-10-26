@@ -62,4 +62,4 @@ MSBuild を使用して Azure パッケージを作成するには、ソフト�
 
 パッケージは、ビルド後に Azure にデプロイできます。このプロセスについて説明するチュートリアルについては、Azure の Web サイトを参照してください。このプロセスを自動化する方法については、「[Azure でのクラウド サービスの継続的な配信](../cloud-services/cloud-services-dotnet-continuous-delivery)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

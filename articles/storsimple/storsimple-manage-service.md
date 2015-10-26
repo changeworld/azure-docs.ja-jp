@@ -115,4 +115,4 @@ StorSimple デバイスをデプロイする場合は、**[簡易作成]** オ�
 
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

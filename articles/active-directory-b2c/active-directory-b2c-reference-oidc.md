@@ -133,8 +133,7 @@ Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあ
 
 id\_token の署名で使用されたポリシー (とメタデータのフェッチ場所) は 2 つの方法で判断できます。最初の方法です。ポリシー名が id\_token の `acr` 要求に含まれています。id\_token の要求を解析する方法については、「[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)」を参照してください。もう 1 つの方法です。要求を発行するとき、`state` パラメーターの値に含まれるポリシーを符号化し、それから復号化して使用されたポリシーを判断します。いずれの方法も完全に有効です。
 
-OpenID Connect メタデータ エンドポイントからメタデータ ドキュメントを取得したら、このエンドポイントにある RSA256 公開鍵を利用し、id\_token の署名を検証できます。このエンドポイントには常時、複数のキーがリストされており、それぞれのキーは `kid` で識別されます。id\_token のヘッダーにはさらに `kid` 要求が格納されていて、複数のキーのうち、どのキーが id\_token の署名に使用されたかが、この要求によって示されます。[トークンの検証](active-directory-b2c-reference-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-b2c-reference-tokens.md#validating-tokens)を含む詳細については、[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。
-<!--TODO: Improve the information on this-->
+OpenID Connect メタデータ エンドポイントからメタデータ ドキュメントを取得したら、このエンドポイントにある RSA256 公開鍵を利用し、id\_token の署名を検証できます。このエンドポイントには常時、複数のキーがリストされており、それぞれのキーは `kid` で識別されます。id\_token のヘッダーにはさらに `kid` 要求が格納されていて、複数のキーのうち、どのキーが id\_token の署名に使用されたかが、この要求によって示されます。[トークンの検証](active-directory-b2c-reference-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-b2c-reference-tokens.md#validating-tokens)を含む詳細については、[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。<!--TODO: Improve the information on this-->
 
 id\_token の署名を検証した後に、確認の必要な要求がいくつか存在します。
 
@@ -345,4 +344,4 @@ image goes here
 
 -->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

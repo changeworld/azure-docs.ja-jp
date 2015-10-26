@@ -240,4 +240,4 @@ credential というパラメーターを受け入れる次のテスト Runbook 
 
 - [別の Runbook からの Runbook の開始](http://msdn.microsoft.com/library/azure/dn857355.aspx) 
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -12,7 +12,7 @@
 
 	![[ID] ブレード](./media/app-service-api-gateway-config-auth/identityblade.png)
   
-3. 使用する ID プロバイダーを選択し、該当する記事の手順に従って、API アプリをそのプロバイダーで構成します。これらの記事はモバイル アプリ向けに書かれていますが、API アプリでも手順は同じです。一部の手順では、[Azure ポータル]を使用する必要があります。
+3. 使用する ID プロバイダーを選択し、該当する記事の手順に従って、API アプリをそのプロバイダーで構成します。これらの記事はモバイル アプリ向けに書かれていますが、API アプリでも手順は同じです。一部の手順では、Azure ポータルを使用する必要があります。
 
  - [Microsoft アカウント](../articles/app-service-mobile/app-service-mobile-how-to-configure-microsoft-authentication-preview.md)
  - [Facebook ログイン](../articles/app-service-mobile/app-service-mobile-how-to-configure-facebook-authentication-preview.md)
@@ -20,7 +20,7 @@
  - [Google ログイン](../articles/app-service-mobile/app-service-mobile-how-to-configure-google-authentication-preview.md)
  - [Azure Active Directory](../articles/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication-preview.md)
 
-たとえば、次のスクリーン ショットは、Azure Active Directory の認証を設定した後の [Azure ポータル]のページと [Azure プレビュー ポータル]のブレードを示しています。
+たとえば、次のスクリーン ショットは、Azure Active Directory の認証を設定した後の Azure ポータルのページと Azure プレビュー ポータルのブレードを示しています。
 
 Azure プレビュー ポータルでは、**[Azure Active Directory]** ブレードに、Azure ポータルの [Azure Active Directory] タブで作成したアプリケーションの**クライアント ID** が表示されます。さらに、**[許可されたテナント]** に、Azure Active Directory テナント ("contoso.onmicrosoft.com" など) が表示されます。
 
@@ -38,4 +38,4 @@ Azure ポータルでは、**[Azure Active Directory]** タブで作成したア
 
 (この図の応答 URL には、同じ URL が 2 つ表示されています。1 つには `http:`、もう 1 つには `https:` が付いています。)
 
-<!----HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

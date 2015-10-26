@@ -86,4 +86,4 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * [Enable Remote Desktop Connection for a Role in Azure Cloud Services (Azure Cloud Services でのロールに対するリモート デスクトップ接続を有効にする)](cloud-services-role-enable-remote-desktop.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

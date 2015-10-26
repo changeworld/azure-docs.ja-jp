@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="ビジネス継続性のための SQL Database の設計"
-	description="選択するためのガイダンス。このセクションでは、どの BCDR 機能をいつ使用するかを選択する方法についてのガイダンスが提供されます。これには、SQL DB を使用して自動的に取得できることに関する説明が含まれます。"
-	services="sql-database"
-	documentationCenter=""
-	authors="elfisher"
-	manager="jeffreyg"
-	editor="monicar"/>
+   pageTitle="ビジネス継続性のための SQL Database の設計" 
+   description="選択するためのガイダンス。このセクションでは、どの BCDR 機能をいつ使用するかを選択する方法についてのガイダンスが提供されます。これには、SQL DB を使用して自動的に取得できることに関する説明が含まれます。"
+   services="sql-database" 
+   documentationCenter="" 
+   authors="elfisher" 
+   manager="jeffreyg" 
+   editor="monicar"/>
 
 <tags
    ms.service="sql-database"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-management"
-	ms.date="07/14/2015"
-	ms.author="elfish"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-management" 
+   ms.date="07/14/2015"
+   ms.author="elfish"/>
 
 #ビジネス継続性のための設計
 
@@ -102,4 +102,4 @@ Premium データベースの読み取り可能なセカンダリで geo レプ�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

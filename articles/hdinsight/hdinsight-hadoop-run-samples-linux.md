@@ -1,12 +1,12 @@
 <properties
-	pageTitle="HDInsight での Hadoop のサンプルの実行 | Microsoft Azure"
+	pageTitle="Linux ベースの HDInsight での Hadoop サンプルの実行 | Microsoft Azure"
 	description="Linux ベースの HDInsight で MapReduce サンプルの使用を開始します。SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
 	manager="paulettm"
 	editor="cgronlun"
-	tags="azure-portal"/>
+    tags="azure-portal"/>
 
 <tags
 	ms.service="hdinsight"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/02/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 
@@ -243,4 +243,4 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -359,8 +359,8 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[CTAS]: https://msdn.microsoft.com/ja-JP/library/mt204041.aspx
+[CTAS]: https://msdn.microsoft.com/ja-jp/library/mt204041.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

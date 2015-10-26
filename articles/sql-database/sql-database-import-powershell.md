@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="PowerShell を使用した Azure SQL Database への BACPAC のインポート" 
-    description="PowerShell を使用した Azure SQL Database への BACPAC のインポート" 
+    pageTitle="PowerShell で BACPAC ファイルをインポートして新しい Azure SQL Database を作成する" 
+    description="PowerShell で BACPAC ファイルをインポートして新しい Azure SQL Database を作成する" 
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
@@ -13,10 +13,10 @@
     ms.topic="article"
     ms.tgt_pltfrm="powershell"
     ms.workload="data-management" 
-    ms.date="09/23/2015"
+    ms.date="10/13/2015"
     ms.author="sstein"/>
 
-# PowerShell を使用した SQL Database への BACPAC のインポート
+# PowerShell で BACPAC ファイルをインポートして新しい Azure SQL Database を作成する
 
 **1 つのデータベース**
 
@@ -25,11 +25,11 @@
 - [PowerShell](sql-database-import-powershell.md)
 
 
-この記事では、PowerShell を使用して BACPAC をインポートすることで、SQL Database を作成する方法を示します。
+この記事は、PowerShell で BACPAC ファイルをインポートして Azure SQL Database を作成する手順について説明します。
 
 BACPAC は、データベース スキーマとデータを含む .bacpac ファイルです。詳細については、「[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)」の「バックアップ パッケージ (.bacpac)」を参照してください。
 
-Azure Storage BLOB コンテナーからインポートされた BACPAC からデータベースが作成されます。Azure Storage に .bacpac ファイルがない場合は、「[Azure SQL Database の BACPAC の作成およびエクスポート](sql-database-backup.md)」の手順に従って 1 つ作成できます。
+Azure Storage BLOB コンテナーからインポートされた BACPAC からデータベースが作成されます。Azure Storage に .bacpac ファイルがない場合は、「[SQL Database の BACPAC の作成およびエクスポート](sql-database-export-powershell.md)」の手順に従って作成できます。
 
 > [AZURE.NOTE]Azure SQL Database では、復元できるすべてのユーザー データベースのバックアップが自動的に作成され、保守されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
 
@@ -38,7 +38,9 @@ SQL Database をインポートするには、以下が必要です。
 
 - Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
 - 復元するデータベースの .bacpac ファイル (BACPAC)。BACPAC は、[Azure ストレージ アカウント (クラシック)](storage-create-storage-account.md) の BLOB コンテナー内にある必要があります。
-- Azure PowerShell。Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行してダウンロードおよびインストールすることができます。詳細については、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」をご覧ください。
+
+
+> [AZURE.IMPORTANT]この記事には、バージョン 1.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。
 
 
 
@@ -53,11 +55,11 @@ SQL Database をインポートするには、以下が必要です。
 
 ### Azure サブスクリプションを選択します。
 
-サブスクリプションを選択するには、サブスクリプション ID が必要です。サブスクリプション ID は前の手順で示された情報からコピーすることができます。または、複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。サブスクリプション ID を取得したら、次のコマンドレットを実行します。
+サブスクリプションを選択するには、サブスクリプション ID が必要です。サブスクリプション ID は前の手順で表示された情報からコピーできます。または、複数のサブスクリプションがあり、詳しい情報が必要な場合は、**Get-AzureSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。サブスクリプション ID を取得したら、次のコマンドレットを実行します。
 
 	Select-AzureSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
 
-**Select-AzureSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブクスリプションが複数ある場合は、**Get-AzureSubscription** を実行して、選択したサブスクリプションが **IsCurrent: True** と表示されていることを確認できます。
+**Select-AzureSubscription** を正常に実行すると、PowerShell プロンプトに戻ります。サブスクリプションが複数ある場合は、**Get-AzureSubscription** を実行して、選択したサブスクリプションが **IsCurrent : True** と表示されていることを確認できます。
 
 
 ## 使用環境用の変数の設定
@@ -72,7 +74,7 @@ SQL Database をインポートするには、以下が必要です。
     $DatabaseName = "databasename"
 
 
-BACPAC が配置されているストレージ アカウントの変数を以下に示します。[Azure プレビュー ポータル](https://portal.azure.com)で、ストレージ アカウントを参照し、これらの値を取得します。プライマリ アクセス キーは、ストレージ アカウントのブレードで **[すべての設定]** をクリックしてから **[キー]** をクリックすることで検索できます。
+BACPAC が配置されているストレージ アカウントの変数を以下に示します。[Azure プレビュー ポータル](https://portal.azure.com)でストレージ アカウントを参照し、これらの値を取得します。プライマリ アクセス キーは、ストレージ アカウントのブレードで **[すべての設定]** をクリックしてから **[キー]** をクリックすることで検索できます。
 
 BLOB 名は、データベースの作成元の、既存の .bacpac ファイルの名前です。.bacpac 拡張子を含める必要があります。
 
@@ -101,9 +103,9 @@ BLOB 名は、データベースの作成元の、既存の .bacpac ファイル
 
 ## 操作の進行状況の監視
 
-**Start-AzureSqlDatabaseImport** の実行後に、要求の状態を確認することができます。
+**Start-AzureSqlDatabaseImport** を実行した後、要求の状態を確認できます。
 
-要求直後の状態を確認すると、通常は、**Pending**、または **Running** という状態が返され、現在の完了率が示されます。したがって、出力に **Status : Completed** が表示されるまで、これを複数回実行できます。
+要求を送信した直後に状態を確認すると、通常は、**保留中**または**実行中**の状態が返され、現在の完了率が示されます。このため、出力に **Status : Completed** が表示されるまで何度も確認を実行できます。
 
 このコマンドを実行すると、パスワードの入力を求められます。SQL Server の管理ログインとパスワードを入力します。
 
@@ -150,4 +152,4 @@ BLOB 名は、データベースの作成元の、既存の .bacpac ファイル
 - [災害復旧訓練](sql-database-disaster-recovery-drills.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -291,4 +291,4 @@ Service Bus のパフォーマンスの最適化の詳細については、「[�
   [メッセージング エンティティのパーティション分割]: service-bus-partitioning.md
   
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

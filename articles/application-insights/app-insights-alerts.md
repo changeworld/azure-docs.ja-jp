@@ -17,7 +17,7 @@
  
 # Application Insights のアラートの設定
 
-[Visual Studio Application Insights][start] は、アプリケーションのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。
+[Visual Studio の Application Insights][start] は、アプリケーションのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。
 
 Application Insights は、[さまざまなプラットフォーム][platforms]で実行中のアプリケーションを監視して、パフォーマンスの問題の診断と使用パターンの把握を支援します。
 
@@ -213,8 +213,8 @@ request、<br/>requestFailed|[サーバー要求](app-insights-configuration-wit
 [client]: app-insights-javascript.md
 [platforms]: app-insights-platforms.md
 [roles]: app-insights-resources-roles-access-control.md
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

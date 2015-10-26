@@ -1,5 +1,5 @@
 <properties
- pageTitle="Azure IoT Hub 開発者ガイド | Microsoft Azure"
+ pageTitle="IoT Hub の開発者ガイド トピック | Microsoft Azure"
  description="IoT Hub のエンドポイント、セキュリティ、デバイス ID レジストリ、メッセージングなどについて説明する、Azure IoT Hub の開発者ガイドです。"
  services="iot-hub"
  documentationCenter=".net"
@@ -9,10 +9,10 @@
 
 <tags
  ms.service="iot-hub"
- ms.devlang="na"
+ ms.devlang="multiple"
  ms.topic="article"
  ms.tgt_pltfrm="na"
- ms.workload="tbd"
+ ms.workload="na"
  ms.date="09/29/2015"
  ms.author="elioda"/>
 
@@ -488,6 +488,7 @@ IoT Hub の開発の概要については以上です。詳細については、
 
 - [IoT Hubs の使用 (チュートリアル)][lnk-get-started]
 - [OS プラットフォームとハードウェアの互換性][lnk-compatibility]
+- [Azure IoT デベロッパー センター][lnk-iotdev]
 - [IoT の実装計画][lnk-guidance]
 
 [Event Hubs - イベント プロセッサ ホスト]: http://blogs.msdn.com/b/servicebus/archive/2015/01/16/event-processor-host-best-practices-part-1.aspx
@@ -531,5 +532,6 @@ IoT Hub の開発の概要については以上です。詳細については、
 [lnk-sasl-plain]: http://tools.ietf.org/html/rfc4616
 [lnk-servicebus]: http://azure.microsoft.com/services/service-bus/
 [lnk-tls]: https://tools.ietf.org/html/rfc5246
+[lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

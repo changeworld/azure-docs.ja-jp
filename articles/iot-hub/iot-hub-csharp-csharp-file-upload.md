@@ -4,23 +4,23 @@
 	services="iot-hub"
 	documentationCenter=".net"
 	authors="fsautomata"
-	manager="kevinmil"
+	manager="timlt"
 	editor=""/>
 
 <tags
      ms.service="iot-hub"
-     ms.devlang="csharp"
+     ms.devlang="dotnet"
      ms.topic="article"
      ms.tgt_pltfrm="na"
-     ms.workload="tbd"
+     ms.workload="na"
      ms.date="09/29/2015"
      ms.author="elioda"/>
 
-# IoT Hub でデバイスからクラウドにファイルをアップロードする
+# チュートリアル: IoT Hub でデバイスからクラウドにファイルをアップロードする方法
 
 ## はじめに
 
-Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バック エンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。前のチュートリアル (「[IoT Hub の概要]」と「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]」) では、IoT Hub の基本的なデバイスとクラウド間のメッセージング機能と、デバイスとクラウド コンポーネントからのアクセス方法を示しました。[デバイスからクラウドへのメッセージの処理]に関するページでは、Azure BLOB ストレージにデバイスからクラウドへのメッセージを確実に格納する方法を説明しました。ただし、デバイスから送信されるデータが比較的小さなデバイスからクラウドへのメッセージに容易にマップされない場合があります。たとえば、大きなファイルには、イメージ、ビデオ、高周波振動データのサンプルが含まれるものや、何らかの形式の前処理済みデータが含まれるものがあります。これらのファイルは通常、[Azure Data Factory] や [Hadoop] スタックなどのツールを使用してバッチ処理されます。イベントの送信よりデバイスからのファイルのアップロードが好ましい場合は、IoT Hub セキュリティと信頼性機能を引き続き使用できます。
+Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立できる、完全に管理されたサービスです。前のチュートリアル (「[IoT Hub の概要]」と「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]」) では、IoT Hub の基本的なデバイスとクラウド間のメッセージング機能と、デバイスとクラウド コンポーネントからのアクセス方法を示しました。[デバイスからクラウドへのメッセージの処理]に関するページでは、Azure BLOB ストレージにデバイスからクラウドへのメッセージを確実に格納する方法を説明しました。ただし、デバイスから送信されるデータが比較的小さなデバイスからクラウドへのメッセージに容易にマップされない場合があります。たとえば、大きなファイルには、イメージ、ビデオ、高周波振動データのサンプルが含まれるものや、何らかの形式の前処理済みデータが含まれるものがあります。これらのファイルは通常、[Azure Data Factory] や [Hadoop] スタックなどのツールを使用してバッチ処理されます。イベントの送信よりデバイスからのファイルのアップロードが好ましい場合は、IoT Hub セキュリティと信頼性機能を引き続き使用できます。
 
 このチュートリアルでは、「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]」に示されているコードに基づき、クラウドからデバイスへのメッセージを使用して、ファイルのアップロードに使用される Azure BLOB URI をデバイスに安全に提供する方法と、IoT Hub の配信確認を使用して、アプリ バックエンドからのファイル処理のトリガー方法を示します。この方法の利点は、IoT Hub のデバイス ID と、クラウドからデバイスへのメッセージの配信確認を再利用して、ファイルが正常にアップロードされたことをアプリ バックエンドに通知できることです。
 
@@ -33,13 +33,13 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 * **SimulatedDevice**。「[IoT Hub を使用したクラウドからデバイスへのメッセージの送信]」で作成したアプリケーションの修正バージョン。これは IoT Hub に接続し、Azure BLOB URI を含むクラウドからデバイスへのメッセージを受信します。受信したクラウドからデバイスへのメッセージごとに、指定された BLOB URI へのファイルのアップロードがトリガーされます。
 * **SendCloudToDevice**。Azure BLOB URI を作成し (「[BLOB サービスによる SAS の作成および使用](../storage/storage-dotnet-shared-access-signature-part-2.md)」の説明を参照)、IoT Hub 経由でシミュレーション対象デバイスにクラウドからデバイスへのメッセージを送信してから、その配信確認を受信します。
 
-> [AZURE.NOTE]IoT Hub には、Azure IoT デバイス SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、「[Azure IoT デベロッパー センター]」を参照してください。Java および Node 用の Azure IoT サービス SDK は、近日リリース予定です。
+> [AZURE.NOTE]IoT Hub には、Azure IoT デバイス SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター]を参照してください。Java および Node 用の Azure IoT サービス SDK は、近日リリース予定です。
 
 このチュートリアルを完了するには、以下が必要になります。
 
 + Microsoft Visual Studio 2015、
 
-+ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdevelop%2Fiot%2Ftutorials%2Ffile-upload%2F target=”\_blank”) を参照してください。
++ アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「Azure の無料試用版サイト」(http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2FJA-JP%2Fdevelop%2Fiot%2Ftutorials%2Ffile-upload%2F target="\_blank") を参照してください。
 
 
 [AZURE.INCLUDE [iot-hub-file-upload-cloud-csharp](../../includes/iot-hub-file-upload-cloud-csharp.md)]
@@ -62,7 +62,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 このチュートリアルでは、クラウドからデバイスへのメッセージを活用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。次のチュートリアルで IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
-- 「[デバイスからクラウドへのメッセージの処理]」には、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
+- [デバイスからクラウドへのメッセージの処理]に関するページには、デバイスから送信されるテレメトリおよび対話型メッセージを確実に処理する方法が示されています。
 
 IoT Hub に関するその他の情報:
 
@@ -82,8 +82,8 @@ IoT Hub に関するその他の情報:
 
 [Azure プレビュー ポータル]: https://portal.azure.com/
 
-[Azure Data Factory]: https://azure.microsoft.com/ja-JP/documentation/services/data-factory/
-[Hadoop]: https://azure.microsoft.com/ja-JP/documentation/services/hdinsight/
+[Azure Data Factory]: https://azure.microsoft.com/JA-JP/documentation/services/data-factory/
+[Hadoop]: https://azure.microsoft.com/JA-JP/documentation/services/hdinsight/
 
 [Get started with IoT Hub]: iot-hub-csharp-csharp-getstarted.md
 [IoT Hub を使用したクラウドからデバイスへのメッセージの送信]: iot-hub-csharp-csharp-c2d.md
@@ -96,10 +96,6 @@ IoT Hub に関するその他の情報:
 [IoT Hub Supported Devices]: iot-hub-supported-devices.md
 [IoT Hub の概要]: iot-hub-csharp-csharp-getstarted.md
 [Supported devices]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
-[Azure IoT デベロッパー センター]: http://www.azure.com/iotdev
+[Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
 
-
-
- 
-
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="10/05/2015"
+	ms.date="10/13/2015"
 	ms.author="jeffstok"/>
 
 # Apache Storm と Azure Stream Analytics の比較 #
@@ -124,7 +124,7 @@
                     Stream Analytics では、処理するデータのボリュームと必要な (ジョブが実行されている 1 時間あたりの) ストリーミング ユニットの数によって請求されます。
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/pricing/details/stream-analytics/">料金についての詳細は、こちらをご覧ください。</a>
+                    <a href="http://azure.microsoft.com/pricing/details/stream-analytics/">価格についての詳細は、こちらをご覧ください。</a>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -132,7 +132,7 @@
                     HDInsight の Apache Storm では、購入単位はクラスター ベースであり、デプロイされるジョブとは無関係に、実行されるクラスターの時間に基づいて請求されます。
                 </p>
                 <p>
-                    <a href="http://azure.microsoft.com/pricing/details/hdinsight/">料金についての詳細は、こちらをご覧ください。</a>
+                    <a href="http://azure.microsoft.com/pricing/details/hdinsight/">価格についての詳細は、こちらをご覧ください。</a>
                 </p>
             </td>
         </tr>
@@ -374,7 +374,7 @@
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>ジョブのデプロイメント モデル</strong>
+                    <strong>ジョブのデプロイ モデル</strong>
                 </p>
                 <p>
                     - <strong>Azure ポータル</strong>
@@ -388,12 +388,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    デプロイメントは、Azure ポータル、PowerShell、REST API を使用して実装されます。
+                    デプロイは、Azure ポータル、PowerShell、REST API を使用して実装されます。
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    デプロイメントは、Azure ポータル、PowerShell、 Visual Studio、REST API を使用して実装されます。
+                    デプロイは、Azure ポータル、PowerShell、 Visual Studio、REST API を使用して実装されます。
                 </p>
             </td>
         </tr>
@@ -578,7 +578,7 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    はい、ASA ジョブ作成中の関数として、公開済みの Azure Machine Learning モデルを構成します。
+                    ASA ジョブの作成中に、公開済みの Azure Machine Learning モデルを関数として構成します <a href="http://blogs.msdn.com/b/streamanalytics/archive/2015/05/24/real-time-scoring-of-streaming-data-using-machine-learning-models.aspx">(プライベート プレビュー)</a>。
                 </p>
             </td>
             <td width="246" valign="top">
@@ -590,4 +590,4 @@
     </tbody>
 </table>
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

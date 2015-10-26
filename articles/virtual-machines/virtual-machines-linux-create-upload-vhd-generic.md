@@ -19,7 +19,6 @@
 
 # <a id="nonendorsed"> </a>動作保証外のディストリビューションに関する情報 #
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 **重要**: Azure プラットフォームの SLA は、[動作保証済みディストリビューション](virtual-machines-../linux-endorsed-distributions.md)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
@@ -191,4 +190,4 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
 - その後、仮想マシンをシャットダウンし、Azure に VHD をアップロードする必要があります。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

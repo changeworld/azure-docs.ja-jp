@@ -1,6 +1,7 @@
 <properties
 	pageTitle="HDInsight 用の Hadoop Emulator の概要 |Microsoft Azure"
 	description="MapReduce チュートリアルでインストールされるエミュレーターおよび他のサンプルを使用して、Hadoop エコシステムについて学びます。HDInsight Emulator は、Hadoop サンドボックスに似た動作をします。"
+	keywords="emulator,hadoop ecosystem,hadoop sandbox,mapreduce tutorial"
 	editor="cgronlun"
 	manager="paulettm"
 	services="hdinsight"
@@ -196,7 +197,7 @@ HDInsight Emulator をインストールすると、Windows 上の Apache Hadoop
 
 ###<a name="scenarios"></a>IIS W3C ログ データのシナリオ
 
-W3C シナリオでは、IIS W3C ログ データを、1 MB (小)、500 MB (中)、2 GB (大) の 3 つのサイズで生成し、HDFS または Azure BLOB ストレージにインポートします。3 種類のジョブがあり、それぞれを C\#、Java、Pig、および Hive で実装します。
+W3C シナリオでは、IIS W3C ログ データを、1 MB (小)、500 MB (中)、2 GB (大) の 3 つのサイズで生成し、HDFS または Azure BLOB ストレージにインポートします。3 種類のジョブがあり、それぞれを C#、Java、Pig、および Hive で実装します。
 
 - **totalhits** - 所定のページに対する要求の総数を計算します。
 - **avgtime** - ページあたりの要求にかかかった平均時間 (秒単位) を計算します。
@@ -241,7 +242,7 @@ Azure PowerShell スクリプトの importdata.ps1 を使用して、データ�
 
 ###<a name="javamapreduce"></a>Java MapReduce ジョブの実行
 
-MapReduce は Hadoop の基本的コンピューティング エンジンです。既定で Java で実装されていますが、C#を使用する .NET および Hadoop Streaming を活用した例もあります。MapReduce ジョブを実行する構文は次のとおりです。
+MapReduce は Hadoop の基本的コンピューティング エンジンです。既定で Java で実装されていますが、C# を使用する .NET および Hadoop Streaming を活用した例もあります。MapReduce ジョブを実行する構文は次のとおりです。
 
 	hadoop jar <jarFileName>.jar <className> <inputFiles> <outputFolder>
 
@@ -467,7 +468,7 @@ Emulator をインストールしたコンピューターでコントロール �
 
 - [Azure HDInsight の概要](../hdinsight-get-started.md)
 - [HDInsight 用 Java MapReduce プログラムの開発](hdinsight-develop-deploy-java-mapreduce.md)
-- [HDInsight 用 C#Hadoop ストリーミング MapReduce プログラムの開発](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
+- [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発](hdinsight-hadoop-develop-deploy-streaming-jobs.md)
 - [HDInsight Emulator リリース ノート](hdinsight-emulator-release-notes.md)
 - [HDInsight について議論する MSDN フォーラム](http://social.msdn.microsoft.com/Forums/hdinsight)
 
@@ -497,4 +498,4 @@ Emulator をインストールしたコンピューターでコントロール �
 [image-hdi-emulator-services]: ./media/hdinsight-hadoop-emulator-get-started/HDI.Emulator.Services.png
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

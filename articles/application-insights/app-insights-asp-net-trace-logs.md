@@ -35,7 +35,7 @@ ASP.NET アプリケーションで NLog、log4Net、System.Diagnostics.Trace �
     ![適切なパッケージのプレリリース バージョンを入手する](./media/app-insights-asp-net-trace-logs/appinsights-36nuget.png)
 
 4. 次のいずれかの適切なパッケージを選択します。
-  + Microsoft.ApplicationInsights.TraceListener (System.Diagnostics.Trace 呼び出しをキャプチャするため)
+  + Microsoft.ApplicationInsights.TraceListener (to capture System.Diagnostics.Trace calls)
   + Microsoft.ApplicationInsights.NLogTarget
   + Microsoft.ApplicationInsights.Log4NetAppender
 
@@ -120,8 +120,8 @@ Application Insights をインストールしないでログ アダプターの 
 [exceptions]: app-insights-web-failures-exceptions.md
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

@@ -5,7 +5,7 @@
 	services="active-directory" 
 	documentationCenter="" 
 	authors="femila" 
-	manager="swadhwa" 
+	manager="stevenpo" 
 	editor="Curtis"
 	tags="azure-classic-portal"/>
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/13/2015" 
+	ms.date="10/09/2015" 
 	ms.author="femila"/>
 
 
@@ -30,9 +30,7 @@
 ここでは、Azure Active Directory の追加情報を提供するいくつかのトピックを紹介します。
 
 * [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
-
 * [Azure Active Directory とは](active-directory-whatis.md)
-
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

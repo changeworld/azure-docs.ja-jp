@@ -254,7 +254,7 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 
 ##<a name="nextsteps"></a>次のステップ
 
-- [Web Apps を監視する方法](/ja-JP/manage/services/web-sites/how-to-monitor-websites/)
+- [Web Apps を監視する方法](/ja-jp/manage/services/web-sites/how-to-monitor-websites/)
 - [Visual Studio での Azure の Web Apps のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)
 - [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
@@ -265,4 +265,4 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 * 古いポータルから新しいポータルへの変更ガイドについては、[プレビュー ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)をご覧ください。
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

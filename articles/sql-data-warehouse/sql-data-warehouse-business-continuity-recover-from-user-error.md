@@ -132,8 +132,8 @@ Azure SQL Database のその他のエディションのビジネス継続性に�
 [データベース操作の状態]: http://msdn.microsoft.com/library/azure/dn720371.aspx
 [削除された復元可能なデータベースの取得]: http://msdn.microsoft.com/library/azure/dn509574.aspx
 [削除された復元可能なデータベースの一覧表示]: http://msdn.microsoft.com/library/azure/dn509562.aspx
-[Start-AzureSqlDatabaseRestore]: https://msdn.microsoft.com/ja-JP/library/dn720218.aspx
+[Start-AzureSqlDatabaseRestore]: https://msdn.microsoft.com/ja-jp/library/dn720218.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

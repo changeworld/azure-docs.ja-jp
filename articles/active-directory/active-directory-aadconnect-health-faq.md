@@ -1,4 +1,4 @@
-<properties 
+<properties
 	pageTitle="Azure AD Connect Health の FAQ"
 	description="この FAQ は、Azure AD Connect Health について寄せられる質問とその回答です。サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。"
 	services="active-directory"
@@ -7,13 +7,13 @@
 	manager="stevenpo"
 	editor="curtand"/>
 
-<tags 
+<tags
 	ms.service="active-directory"
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/14/2015"
+	ms.date="10/15/2015"
 	ms.author="billmath"/>
 
 
@@ -25,10 +25,9 @@
 
 
 
-**Q: Azure Active Directory にいくつかのテナントがあります。どのようにすればその 1 つを Azure Active Directory Premium に切り替えることができますか。**
+**Q: 複数の Azure AD ディレクトリを管理しています。どのようにすればその 1 つを Azure Active Directory Premium に切り替えることができますか。**
 
-左側のナビゲーション バーで [ホーム] を選択して、右上隅の現在ログオンしているユーザー名を選択して、正しいテナントのアカウントを選択すると、Azure AD テナントを切り替えることができます。そこにテナント アカウントが表示されない場合、[サインアウト] を選択し、Azure Active Directory Premium のグローバルのテナント管理資格情報を使用しログインします。
-
+右上隅にある、現在サインインしているユーザー名を選択し、適切なアカウントを選択することで、Azure AD ディレクトリを切り替えることができます。ここにアカウントが表示されていない場合は、[サインアウト] を選択し、Azure Active Directory Premium が有効になっているディレクトリのグローバル管理者資格情報を使用してサインインします。
 
 ## インストールに関する質問
 
@@ -43,7 +42,7 @@ CPU、メモリ消費、ネットワーク帯域幅、ストレージに関し�
 - CPU 消費率: 約 1% 上昇
 - メモリ消費量: システム メモリ合計の最大 10%
 - ネットワーク帯域幅の使用量: 1000 件の ADFS 要求につき約 1 MB
->[AZURE.NOTE]エージェントが Azure と通信できない場合は、合計システム メモリの最大 10% の上限に達するまで、データをローカルに保存します。合計物理メモリの 10% に達した後でエージェントがサービスにデータをアップロードできない場合は、新しい ADFS トランザクションによって、“キャッシュされた” トランザクションが “最も過去に処理された” トランザクションから上書きされます。
+>[AZURE.NOTE]エージェントは、Azure と通信できない場合、定義済みの上限に達するまで、データをローカルに保存します。上限に達した後、エージェントがサービスにデータをアップロードできなくなった場合は、新しい ADFS トランザクションによって、“処理された時期が最も古い” トランザクションから順に、“キャッシュされた” トランザクションが上書きされます。
 
 - AD Health エージェントのローカル バッファー ストレージ: 約 20 MB
 - 監査チャネルに必要なデータ ストレージ
@@ -60,49 +59,14 @@ AD FS Audit Channel for AD Health エージェントがすべてのデータを�
 
 **Q: Azure AD Connect Health サービスはパススルー http プロキシで動作しますか。**
 
-はい。登録プロセスも通常の動作も、送信 http 要求を転送する明示的なプロキシ設定で機能します。"Netsh WinHttp set Proxy" は、エージェントが Microsoft Windows HTTP サービスではなく System.Net を使用して Web 要求を行うので、このケースでは動作しません。
+はい。実行中の操作については、HTTP プロキシを使用して送信 http 要求を転送するように Health エージェントを構成できます。詳細については、「[HTTP プロキシを使用するための Azure AD Connect Health エージェントの構成](active-directory-aadconnect-health-agent-install-adfs.md#configure-azure-ad-connect-health-agent-to-use-http-proxy)」をご覧ください。
 
-Register-AdHealthAgent (インストールの最後の手順) を実行する前の任意の時点で実行してください。
-
-
-- 手順 1 – machine.config ファイルにエントリを追加する
-
-
-machine.config ファイルを探します。ファイルのパスは、%windir%\\Microsoft.NET\\Framework64\[version]\\config\\machine.config です。</li>
-
-machine.config ファイルの <configuration></configuration> 要素の下に、次のエントリを追加します。
-		
-	<system.net>  
-			<defaultProxy useDefaultCredentials="true">
-       		<proxy 
-        usesystemdefault="true" 
-        proxyaddress="http://YOUR.PROXY.HERE.com"  
-        bypassonlocal="true"/>
-		</defaultProxy>
-	</system.net> 
-
- 
-
-<defaultProxy> に関する情報は、[こちら](https://msdn.microsoft.com/library/kd3cf2ex(v=vs.110))) も参照してください。
-
-この設定により、システム全体の .NET アプリケーションが、http .NET 要求を行うときにユーザーが明示的に定義したプロキシを使用するように構成されます。個々の app.config を個別に変更することは、自動更新の間に元に戻るので、お勧めできません。machine.config のみを変更対象にすれば、変更するファイルが 1 つで済み、更新を経ても変更が維持されます。
-
-- 手順 2 - [インターネット オプション] でプロキシを構成する
-
-Internet Explorer から [設定]、[インターネット オプション]、[接続]、[LAN の設定] の順に開きます。
-
-[LAN にプロキシ サーバーを使用する] をオンにします。
-
-HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、[詳細設定] を選択します。
-
-
+エージェントの登録時にプロキシを構成する必要がある場合は、Internet Explorer のプロキシ設定を変更する必要があります。<br>Internet Explorer で、[設定]、[インターネット オプション]、[接続]、[LAN の設定] の順に開きます。<br> [LAN にプロキシ サーバーを使用する] をオンにします。<br> HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、[詳細設定] を選択します。<br>
 
 
 **Q: Azure AD Connect Health サービスは、Http プロキシに接続するときに基本認証をサポートしますか。**
 
 いいえ。基本認証に対して任意のユーザー名/パスワードを指定するメカニズムは、現在サポートされていません。
-
-
 
 
 
@@ -125,7 +89,7 @@ Azure AD Connect Health アラートは、成功条件を満たすと解決さ�
 
 **Q: Azure AD Connect Health エージェントを使用するためには、どのファイアウォール ポートを開放すればよいですか。**
 
-Azure AD Health サービス エンドポイントと通信できるようにするには、Azure AD Connect Health エージェント用に TCP/UDP ポート 80 と 443 を開く必要があります。
+Azure AD Health サービス エンドポイントと通信できるようにするには、Azure AD Connect Health エージェント用に TCP/UDP ポート 80、443、および 5671 を開く必要があります。
 
 ## 関連リンク
 
@@ -134,4 +98,4 @@ Azure AD Health サービス エンドポイントと通信できるようにす
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)
 * [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -217,4 +217,4 @@
 [モバイル サービスの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [Windows デベロッパー センター ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

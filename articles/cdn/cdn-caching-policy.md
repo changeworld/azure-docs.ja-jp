@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Media Services Extension での CDN キャッシュ ポリシー"
-	description="このトピックでは、Media Services Extension での CDM キャッシュ ポリシーの概要について説明します。"
-	services="cdn"
-	documentationCenter=".NET"
-	authors="juliako"
-	manager="dwrede"
+	pageTitle="Media Services Extension での CDN キャッシュ ポリシー" 
+	description="このトピックでは、Media Services Extension での CDM キャッシュ ポリシーの概要について説明します。" 
+	services="cdn" 
+	documentationCenter=".NET" 
+	authors="juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="cdn" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="juliako"/>
 
 #Media Services Extension での CDN キャッシュ ポリシー
@@ -43,4 +43,4 @@ Azure 管理ポータルまたは Azure Media Services API を使用して、キ
 3. 既定では、Azure Media または Azure Storage の構成に関係なく 2 秒のキャッシュ ヘッダーがライブ ストリーミング マニフェスト (プレイリスト) に適用され、この値の上書きは使用できません。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

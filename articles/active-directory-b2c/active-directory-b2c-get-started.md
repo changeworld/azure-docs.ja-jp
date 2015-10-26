@@ -70,4 +70,4 @@ Azure サブスクリプションが既にある場合は、次の手順に進�
 
 [Azure AD B2C へのアプリケーションの登録とクイック スタート アプリケーションの作成](active-directory-b2c-app-registration.md)に進みます。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

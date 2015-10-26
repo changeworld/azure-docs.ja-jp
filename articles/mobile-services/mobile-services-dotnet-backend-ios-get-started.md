@@ -13,12 +13,14 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="07/28/2015"
+	ms.date="10/07/2015"
 	ms.author="krisragh"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]&nbsp;
+
+>[AZURE.TIP]Microsoft Azure を使用したモバイル開発を初めて行う場合は、Azure Mobile Services の代わりに [Azure Mobile Apps を使用](app-service-mobile-dotnet-backend-ios-get-started-preview.md)してください。[さらに多くのメリット](app-service-mobile-value-prop-migration-from-mobile-services-preview.md)が得られます。
 
 このチュートリアルでは、Azure Mobile Services を使用して iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。Mobile Services はサーバー側ビジネス ロジックの .NET と Visual Studio を使用します。JavaScript のサーバー側ビジネス ロジックを使用してモバイル サービスを作成する方法については、このトピックの[ JavaScript バックエンド バージョン]をご覧ください。
 
@@ -66,6 +68,8 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 
 * [Mobile Services .NET バックエンドのトラブルシューティング] <br/>Mobile Services .NET バックエンドで発生する問題を診断して解決する方法について説明します。
 
+[AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
+
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started
 [Create a new mobile service]: #create-new-service
@@ -97,4 +101,4 @@ Mobile Services で重要になるこれ以外の作業については、以下�
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [ JavaScript バックエンド バージョン]: mobile-services-ios-get-started.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

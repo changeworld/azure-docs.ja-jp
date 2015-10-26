@@ -62,4 +62,4 @@ Azure Active Directory B2C プレビューの特定の機能を使用する方�
 - [Azure Active Directory B2C の FAQ](active-directory-b2c-faqs.md)
 - [Azure Active Directory B2C に対するサポート要求の提出](active-directory-b2c-support.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

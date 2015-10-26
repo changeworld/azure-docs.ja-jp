@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple デバイスのディスク ドライブを交換する | Microsoft Azure"
-	description="StorSimple プライマリ デバイスまたは EBOD エンクロージャのディスク ドライブを交換する方法について説明します。"
-	services="storsimple"
-	documentationCenter=""
-	authors="alkohli"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple プライマリ デバイスまたは EBOD エンクロージャのディスク ドライブを交換する方法について説明します。"
+   services="storsimple"
+   documentationCenter=""
+   authors="alkohli"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/31/2015"
-	ms.author="alkohli"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="08/31/2015"
+   ms.author="alkohli" />
 
 # StorSimple デバイスのディスク ドライブを交換する
 
@@ -124,4 +124,4 @@ Microsoft Azure StorSimple デバイスから障害が発生したドライブ�
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -114,4 +114,4 @@ Azure の各種ログを使用して NSG の管理やトラブルシューティ
 - [Power BI を使用した Azure 監査ログの視覚化](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ記事
 - [Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関するブログ記事
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->
