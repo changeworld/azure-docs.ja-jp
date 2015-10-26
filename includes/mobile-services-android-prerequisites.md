@@ -4,8 +4,8 @@
 
 
 <!-- URLs. 
-[Get started with Mobile Services]: ../articles/mobile-services-android-get-started.md
-[Add Mobile Services to an existing app]: ../articles/mobile-services-android-get-started-data.md
+[Mobile Services の使用]: ../articles/mobile-services-android-get-started.md
+[既存のアプリケーションへのMobile Services の追加]: ../articles/mobile-services-android-get-started-data.md
 -->
 
 <!---HONumber=Oct15_HO3-->

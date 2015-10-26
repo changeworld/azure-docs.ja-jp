@@ -90,7 +90,7 @@
             await CreateTable();
         }
 
-5. **TodoListViewController** で、**ViewDidAppear** メソッドをオーバーライドし、次のように定義します。これにより、ユーザーに対するハンドルが **￼ToDoService￼** にまだない場合は、ユーザーにログインします。
+5. **TodoListViewController** で、**ViewDidAppear** メソッドをオーバーライドし、次のように定義します。これにより、ユーザーに対するハンドルが **ToDoService** にまだない場合は、ユーザーにログインします。
 
         public override async void ViewDidAppear(bool animated)
         {

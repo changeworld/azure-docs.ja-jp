@@ -65,7 +65,8 @@ Note: if you have already provisioned a device on your solution, you can skip th
 
 1. テキスト エディターで **c/serializer/samples/serializer/remote\_monitoring.c** ファイルを開きます。
 
-2. ファイル内で次のコードを見つけます。```
+2. ファイル内で次のコードを見つけます。
+    ```
     static const char* deviceId = "[Device Id]";
     static const char* deviceKey = "[Device Key]";
     static const char* hubName = "[IoTHub Name]";
@@ -104,7 +105,8 @@ Note: if you have already provisioned a device on your solution, you can skip th
 
 2. Visual Studio の**ソリューション エクスプローラー**で、samples フォルダーに移動します。**remote\_monitoring** プロジェクトの **remote\_monitoring.c** ファイルを開きます。
 
-2. ファイル内で次のコードを見つけます。```
+2. ファイル内で次のコードを見つけます。
+    ```
     static const char* deviceId = "[Device Id]";
     static const char* deviceKey = "[Device Key]";
     static const char* hubName = "[IoTHub Name]";
@@ -171,7 +173,8 @@ mbed プロジェクトを作成してサンプル コードをインポート�
 
 	![][8]
 
-- remote\_monitoring\\remote\_monitoring.c を開き、ファイル内で次のコードを見つけます。```
+- remote\_monitoring\\remote\_monitoring.c を開き、ファイル内で次のコードを見つけます。
+    ```
     static const char* deviceId = "[Device Id]";
     static const char* deviceKey = "[Device Key]";
     static const char* hubName = "[IoTHub Name]";

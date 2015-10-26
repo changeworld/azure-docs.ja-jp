@@ -152,7 +152,7 @@ Linux 仮想マシンの各 SCSI ハード ディスクの SCSI ID を取得す�
 
 注: その他のパッケージをダウンロードおよびインストールする前に、システムがインターネットに接続されていることを確認します。
 
-# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
+\# yum install -y xfsprogs perl lsscsi rsync wget kexec-tools
 
 このコマンドは、次に示す 15 のパッケージを CentOS 6.6 リポジトリからダウンロードしてインストールします。
 
@@ -190,13 +190,17 @@ wget-1.12-5.el6\_6.1.x86\_64.rpm
 
 # cd /usr/local
 
-# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
+\# wget
+<http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm>
 
-# wget <http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
+\# wget
+<http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/reiserfs-utils-3.6.21-1.el6.elrepo.x86_64.rpm>
 
-# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
+\# rpm -ivh kmod-reiserfs-0.0-1.el6.elrepo.x86\_64.rpm
+reiserfs-utils-3.6.21-1.el6.elrepo.x86\_64.rpm
 
-# wget <http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
+\# wget
+<http://mirror.centos.org/centos/6.6/os/x86_64/Packages/xfsprogs-3.1.1-16.el6.x86_64.rpm>
 
 # rpm -ivh xfsprogs-3.1.1-16.el6.x86\_64.rpm
 

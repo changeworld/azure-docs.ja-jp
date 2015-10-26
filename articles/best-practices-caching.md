@@ -123,7 +123,8 @@ HTTP 接続経由でデータを提供する Web アプリケーションを作�
 
 ただし、キャッシュが一時的に使用できない場合の元のデータ ストアへのフォール バックは、システムのスケーラビリティに影響を与える可能性があります。データ ストアの復元中に元のデータ ストアにデータの要求が押し寄せて、タイムアウトや接続の中断が起きる可能性があるのです。すべてのアプリケーション インスタンスがアクセスできる共有キャッシュとともに、アプリケーションの各インスタンスにローカルなプライベート キャッシュを実装する方法をお勧めします。アプリケーションは、項目を取得するときに、ローカル キャッシュ内、共有キャッシュ内、元のデータ ストア内の順に確認します。ローカル キャッシュは、共有キャッシュのデータを使用して、または共有キャッシュが使用できない場合はデータベースのデータを使用して設定できます。この方法では、ローカル キャッシュが共有キャッシュと比較して古くなりすぎないように注意深く設定する必要がありますが、ローカル キャッシュは共有キャッシュが到達可能でない場合にバッファーとして機能します。図 3 に、この構造を示します。
 
-![共有キャッシュとローカルなプライベート キャッシュの併用](media/best-practices-caching/Caching3.png) _図 3: 共有キャッシュとローカルなプライベート キャッシュの併用_
+![共有キャッシュとローカルなプライベート キャッシュの併用](media/best-practices-caching/Caching3.png)
+_図 3: 共有キャッシュとローカルなプライベート キャッシュの併用_
 
 一部のキャッシュ サービスでは、有効期間が比較的長いデータを保持する大規模なキャッシュをサポートするために、キャッシュが使用できなくなった場合に自動フェールオーバーを実装する、高可用性オプションを使用できます。通常、このアプローチでは、プライマリ キャッシュ サーバーに格納されているキャッシュされたデータをセカンダリ キャッシュ サーバーにレプリケートして、プライマリ サーバーで障害が発生するか接続が失われた場合にセカンダリ サーバーに切り替えます。複数の送信先への書き込みに伴う待機時間を短くするために、プライマリ サーバーのキャッシュにデータが書き込まれるときに、セカンダリ サーバーへのレプリケーションが非同期的に行われる場合があります。この方法では、障害発生時に一部のキャッシュされた情報が失われる可能性が生じますが、こうしたデータの割合はキャッシュのサイズ全体と比べると小さいと考えられます。
 
@@ -431,9 +432,20 @@ Redis は、文字列値を取得および設定する一連のアトミック�
 
 - `INCR`、`INCRBY`、`DECR`、および `DECRBY` は、整数データ値をインクリメントおよびデクリメントするアトミック操作を実行します。StackExchange ライブラリには、これらの操作を実行し、キャッシュに格納された結果の値を返すオーバーロード バージョンの `IDatabase.StringIncrementAsync` メソッドと `IDatabase.StringDecrementAsync` メソッドがあります。次のコード スニペットに、これらのメソッドを使用する方法を示します。
 
-  ```csharp ConnectionMultiplexer redisHostConnection = ...; IDatabase cache = redisHostConnection.GetDatabase(); ... await cache.StringSetAsync("data:counter", 99); ... long oldValue = await cache.StringIncrementAsync("data:counter"); // 1 ずつインクリメント (既定) // oldValue は 100 になるはずです
+  ```csharp
+  ConnectionMultiplexer redisHostConnection = ...;
+  IDatabase cache = redisHostConnection.GetDatabase();
+  ...
+  await cache.StringSetAsync("data:counter", 99);
+  ...
+  long oldValue = await cache.StringIncrementAsync("data:counter");
+  // 1 ずつインクリメント (既定)
+  // oldValue は 100 になるはずです
 
-  long newValue = await cache.StringDecrementAsync("data:counter", 50); // 50 ずつデクリメント// newValue は 50 になるはずです```
+  long newValue = await cache.StringDecrementAsync("data:counter", 50);
+  // 50 ずつデクリメント
+  // newValue は 50 になるはずです
+  ```
 
 - `GETSET` は、キーに関連付けられている値を取得し、新しい値に変更します。StackExchange ライブラリでは、この操作を `IDatabase.StringGetSetAsync` メソッドで実行できます。以下のコード スニペットに、このメソッドの例を示します。このコードは、同じ操作の一部として、上の例の “data:counter” キーに関連付けられている現在の値を返し、このキーの値をゼロにリセットします。
 
@@ -446,9 +458,28 @@ Redis は、文字列値を取得および設定する一連のアトミック�
 
 - `MGET` と `MSET` は、単一の操作として、一連の文字列値を返すか変更します。`IDatabase.StringGetAsync` メソッドと `IDatabase.StringSetAsync` メソッドは、次の例のように、この機能をサポートするためにオーバーロードされます。
 
-  ```csharp ConnectionMultiplexer redisHostConnection = ...; IDatabase cache = redisHostConnection.GetDatabase(); ... // キー/値ペアのリストを作成 var keysAndValues = new List<KeyValuePair<RedisKey  RedisValue>>() { new KeyValuePair<RedisKey  RedisValue>("data:key1", "value1"), new KeyValuePair<RedisKey  RedisValue>("data:key99", "value2"), new KeyValuePair<RedisKey  RedisValue>("data:key322", "value3") };
+  ```csharp
+  ConnectionMultiplexer redisHostConnection = ...;
+  IDatabase cache = redisHostConnection.GetDatabase();
+  ...
+  // キー/値ペアのリストを作成
+  var keysAndValues =
+      new List<KeyValuePair<RedisKey  RedisValue>>()
+      {
+          new KeyValuePair<RedisKey  RedisValue>("data:key1", "value1"),
+          new KeyValuePair<RedisKey  RedisValue>("data:key99", "value2"),
+          new KeyValuePair<RedisKey  RedisValue>("data:key322", "value3")
+      };
 
-  // キー/値ペアのリストをキャッシュに格納 cache.StringSet(keysAndValues.ToArray()); ... // キーのリストに一致するすべての値を検索 RedisKey keys = { "data:key1", "data:key99", "data:key322"}; RedisValue values = null; values = cache.StringGet(keys); // values には { "value1", "value2", "value3" } が含まれるはずです```
+  // キー/値ペアのリストをキャッシュに格納
+  cache.StringSet(keysAndValues.ToArray());
+  ...
+  // キーのリストに一致するすべての値を検索
+  RedisKey keys = { "data:key1", "data:key99", "data:key322"};
+  RedisValue values = null;
+  values = cache.StringGet(keys);
+  // values には { "value1", "value2", "value3" } が含まれるはずです
+  ```
 
 このガイダンスの「Redis のトランザクションとバッチ」セクションで説明されているように、複数の操作を組み合わせて 1 つの Redis トランザクションにすることもできます。StackExchange ライブラリは、`ITransaction` インターフェイスを介してトランザクションをサポートします。IDatabase.CreateTransaction メソッドを使用することで ITransaction オブジェクトを作成し、`ITransaction` オブジェクトが提供するメソッドを使用することでトランザクションに対してコマンドを呼び出すことができます。`ITransaction` インターフェイスでは、`IDatabase` インターフェイスと同様の一連のメソッドを使用できますが、すべてのメソッドが非同期である点が異なります。これらのメソッドは、`ITransaction.Execute` メソッドが呼び出されたときにのみ実行されます。Execute メソッドから返される値は、トランザクションが正常に作成されたか (true) 作成に失敗したか (false) を示します。
 
@@ -682,7 +713,7 @@ foreach (var post in await cache.SortedSetRangeByRankWithScoresAsync(redisKey))
 }
 ```
 
-> [AZURE.NOTE]StackExchange ライブラリには、スコアの順序でデータを返す IDatabase.SortedSetRangeByRankAsync メソッドもあります。ただしこのメソッドは、スコアは返しません。
+> [AZURE.NOTE] StackExchange ライブラリには、スコアの順序でデータを返す IDatabase.SortedSetRangeByRankAsync メソッドもあります。ただしこのメソッドは、スコアは返しません。
 
 IDatabase.SortedSetRangeByRankWithScoresAsync メソッドに追加のパラメーターを指定することで、スコアの降順でも項目を取得でき、返される項目の数を制限することもできます。次の例では、上位 10 個のブログの投稿のタイトルとスコアを表示します。
 
@@ -739,7 +770,8 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 
 - 複数のサブスクライバーが同じチャネルにサブスクライブでき、すべてのサブスクライバーがそのチャネルに発行されたメッセージを受信します。
 - サブスクライバーは、サブスクライブした後に発行されたメッセージのみを受信します。チャネルはバッファリングされません。メッセージが発行されると、Redis インフラストラクチャは各サブスクライバーにメッセージをプッシュし、メッセージを削除します。
-- 既定では、サブスクライバーは、送信された順序でメッセージを受信します。メッセージの数が多く、サブスクライバーとパブリッシャーの数も多い稼働率の高いシステムでは、メッセージの順次配信を保証すると、システムのパフォーマンスが低下する可能性があります。各メッセージが独立していて順序が重要ではない場合は、Redis システムによる同時処理を有効にして、応答性を高めることができます。StackExchange クライアントでこれを実現するには、サブスクライバーで使用する接続の PreserveAsyncOrder を false に設定します。```csharp
+- 既定では、サブスクライバーは、送信された順序でメッセージを受信します。メッセージの数が多く、サブスクライバーとパブリッシャーの数も多い稼働率の高いシステムでは、メッセージの順次配信を保証すると、システムのパフォーマンスが低下する可能性があります。各メッセージが独立していて順序が重要ではない場合は、Redis システムによる同時処理を有効にして、応答性を高めることができます。StackExchange クライアントでこれを実現するには、サブスクライバーで使用する接続の PreserveAsyncOrder を false に設定します。
+  ```csharp
   ConnectionMultiplexer redisHostConnection = ...;
   redisHostConnection.PreserveAsyncOrder = false;
   ISubscriber subscriber = redisHostConnection.GetSubscriber();

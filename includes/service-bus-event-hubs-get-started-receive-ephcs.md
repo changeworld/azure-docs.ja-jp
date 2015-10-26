@@ -113,7 +113,7 @@
 
 <!-- Links -->
 [Event Hubs の概要]: event-hubs-overview.md
-[[イベント処理のスケールアウトのサンプル]]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
+[イベント処理のスケールアウトのサンプル]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [Azure ストレージ アカウント]: storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx

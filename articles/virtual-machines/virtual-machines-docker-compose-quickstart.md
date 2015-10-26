@@ -51,7 +51,8 @@ $ docker-compose --version
 
 ```
 docker-compose 1.3.2
-``` のような出力が表示されます。
+```
+のような出力が表示されます。
 
 
 ## 手順3: docker-compose.yml 構成ファイルの作成
@@ -60,9 +61,18 @@ docker-compose 1.3.2
 
 VM 上に作業ディレクトリを作成し、任意のテキスト エディターを使用して `docker-compose.yml` を作成します。簡単な例を試すために、次のテキストをファイルにコピーしてください。この構成では、[DockerHub Registry](https://registry.hub.docker.com/_/wordpress/) から取得したイメージを使用して、WordPress (オープン ソースのブログ作成およびコンテンツ管理システム)、およびリンクされたバックエンド MariaDB SQL Database がインストールされます。
 
- ``` wordpress: image: wordpress links: - db:mysql ports: - 8080:80
+ ```
+ wordpress:
+  image: wordpress
+  links:
+    - db:mysql
+  ports:
+    - 8080:80
 
-db: image: mariadb environment: MYSQL\_ROOT\_PASSWORD: <your password>
+db:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: <your password>
 
 ```
 
@@ -78,7 +88,9 @@ $ docker-compose up -d
 This starts the Docker containers specified in `docker-compose.yml`. You'll see output similar to:
 
 ```
-Creating wordpress\_db\_1...Creating wordpress\_wordpress\_1... ```
+Creating wordpress\_db\_1...
+Creating wordpress\_wordpress\_1...
+```
 
 >[AZURE.NOTE]コンテナーがバックグラウンドで継続的に実行されるように、必ず起動時に **-d** オプションを使用してください。
 
@@ -110,7 +122,8 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 
 * 複数コンテナー アプリのビルドとデプロイのその他の例については、[Compose CLI リファレンス](http://docs.docker.com/compose/cli/)と[ユーザー ガイド](http://docs.docker.com/compose/)を参照してください。
 * 自分で用意するか[コミュニティ](http://azure.microsoft.com/documentation/templates/)から取得した Azure リソース マネージャー テンプレートを利用して、Docker を搭載した Azure VM や Compose を搭載したアプリケーション セットアップをデプロイできます。たとえば、[Deploy a WordPress blog with Docker](https://azure.microsoft.com/documentation/templates/docker-wordpress-mysql/) テンプレートは、Docker と Compose を使用して、Ubuntu VM に WordPress と MySQL バックエンドを迅速にデプロイします。
-* Docker Compose と [Docker Swarm](virtual-machines-docker-swarm.md) クラスターを統合できます。このシナリオについては、[Docker Compose/Swarm の統合](https://github.com/docker/compose/blob/master/SWARM.md)に関するページを参照してください。
+* Docker Compose と [Docker Swarm](virtual-machines-docker-swarm.md) クラスターを統合できます。このシナリオについては、
+[Docker Compose/Swarm の統合](https://github.com/docker/compose/blob/master/SWARM.md)に関するページを参照してください。
 
 <!--Image references-->
 

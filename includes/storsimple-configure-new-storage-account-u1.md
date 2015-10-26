@@ -35,7 +35,7 @@
 	  		
  - クラウド サービス プロバイダーとして **Openstack** を選択した場合は、**ホスト名**、**アクセス キー**、**シークレット キー**を指定します。
 
-        > [AZURE.NOTE] For all the cloud service providers, excluding Azure, a friendly name is allowed. You can use different friendly names and create more than one storage account with the same set of credentials.
+        > [AZURE.NOTE] Azure を除くすべてのクラウド サービス プロバイダーに、フレンドリ名を付けることができます。 フレンドリ名を使って、同じ一連の資格情報を使用したストレージ アカウントを複数作成することができます。
 
         ![Add Openstack storage account](./media/storsimple-configure-new-storage-account-u1/AddOpenstackStorageaccount-include.png)
 

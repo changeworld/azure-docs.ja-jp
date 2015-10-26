@@ -242,11 +242,11 @@ app.post('/auth/openid/return',
   });
   ```
 
-## 4. Use Passport to issue sign-in and sign-out requests to Azure AD
+## 4. Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
 
-Your app is now properly configured to communicate with the v2.0 endpoint using the OpenID Connect authentication protocol.  `passport-azure-ad` has taken care of all of the ugly details of crafting authentication messages, validating tokens from Azure AD, and maintaining user session.  All that remains is to give your users a way to sign in, sign out, and gather additional info on the logged in user.
+これまでに、アプリは、OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと適切に通信するように構成されています。  `passport-azure-ad`  は、認証メッセージの構築、Azure AD からのトークンの検証、およびユーザー セッションの維持を行うためのすべての煩わしい処理を実行します。  残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
 
-- First, lets add the default, login, account, and logout methods to our `app.js` file:
+- まず、既定のメソッド、login メソッド、account メソッド、および logout メソッドを `app.js`  ファイルに追加します。
 
 ```JavaScript
 
@@ -262,14 +262,14 @@ app.get('/logout', function(req, res){ req.logout(); res.redirect('/'); });
 
 ```
 
--	Let's review these in detail:
-    -	The `/` route will redirect to the index.ejs view passing the user in the request (if it exists)
-    - The `/account` route will first ***ensure we are authenticated*** (we implement that below) and then pass the user in the request so that we can get additional information about the user.
-    - The `/login` route will call our azuread-openidconnect authenticator from `passport-azuread` and if that doesn't succeed will redirect the user back to /login
-    - The `/logout` will simply call the logout.ejs (and route) which clears cookies and then return the user back to index.ejs
+-	これらについて詳しく説明しましょう。
+    -	`/`  ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
+    - `/account`  ルートは、***ユーザーが認証されていることを確認した後*** (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
+    - `/login`  ルートは、`passport-azuread`  から azuread-openidconnect authenticator を呼び出し、これが成功しなかった場合は、ユーザーを /login にリダイレクトして戻します。
+    - `/logout`  は、クッキーをクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
 
 
-- For the last part of `app.js`, let's add the EnsureAuthenticated method that is used in `/account` above.
+- `app.js`  の最後の部分に、上記の `/account`  で使用される EnsureAuthenticated メソッドを追加します。
 
 ```JavaScript
 
@@ -354,7 +354,27 @@ exports.list = function(req, res){
 
 ```HTML
 
-<!DOCTYPE html> <html> <head> <title>Passport-OpenID Example</title> </head> <body> <% if (!user) { %> <p> <a href="/">Home</a> | <a href="/login">Log In</a> </p> <% } else { %> <p> <a href="/">Home</a> | <a href="/account">Account</a> | <a href="/logout">Log Out</a> </p> <% } %> <%- body %> </body> </html>```
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Passport-OpenID Example</title>
+	</head>
+	<body>
+		<% if (!user) { %>
+			<p>
+			<a href="/">Home</a> | 
+			<a href="/login">Log In</a>
+			</p>
+		<% } else { %>
+			<p>
+			<a href="/">Home</a> | 
+			<a href="/account">Account</a> | 
+			<a href="/logout">Log Out</a>
+			</p>
+		<% } %>
+		<%- body %>
+	</body>
+</html>```
 
 最後に、アプリを構築して実行します。
 

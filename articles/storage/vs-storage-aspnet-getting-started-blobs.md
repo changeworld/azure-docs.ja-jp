@@ -142,7 +142,7 @@ Azure BLOB ストレージでは、ブロック BLOB とページ BLOB がサポ
 	Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
 
-必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に設定することもできます。これで、ディレクトリに関係なく、すべての BLOB が **￼CloudBlockBlob￼￼** として返されるようになります。次の例では、**ListBlobs** への呼び出しを示しています。
+必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に設定することもできます。これで、ディレクトリに関係なく、すべての BLOB が **CloudBlockBlob** として返されるようになります。次の例では、**ListBlobs** への呼び出しを示しています。
 
     // Loop over items within the container and output the length and URI.
 	foreach (IListBlobItem item in container.ListBlobs(null, true))

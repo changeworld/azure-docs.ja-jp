@@ -159,7 +159,7 @@ Azure Storage では、ブロック BLOB とページ BLOB がサポートされ
 	Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
 
-必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に設定することもできます。これで、ディレクトリに関係なく、すべての BLOB が **￼CloudBlockBlob￼￼** として返されるようになります。次に、**ListBlobs** の呼び出しを示します。
+必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に設定することもできます。これで、ディレクトリに関係なく、すべての BLOB が **CloudBlockBlob** として返されるようになります。次に、**ListBlobs** の呼び出しを示します。
 
     // Loop over items within the container and output the length and URI.
 	foreach (IListBlobItem item in container.ListBlobs(null, true))

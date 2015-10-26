@@ -20,7 +20,8 @@
 
 v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/学校アカウントの両方に対応した Web アプリに認証をすばやく追加できます。ASP.NET Web アプリでは、.NET Framework 4.5 に含まれる Microsoft の OWIN ミドルウェアを使用することにより、これを達成できます。
 
-  >[AZURE.NOTE]この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
+  >[AZURE.NOTE]
+    この情報は、v2.0 アプリ モデルのパブリック プレビューに関するものです。一般公開されている Azure AD サービスと連携する手順については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」を参照してください。
 
  ここでは、Azure AD と v2.0 アプリ モデルを使用してアプリに対するユーザーのサインイン処理を行う、ユーザーに関する一部の情報を表示する、およびアプリからのユーザーのサインアウト処理を行う機能について、OWIN を使用して実装します。
 
@@ -203,6 +204,8 @@ public ActionResult About()
 
 [v2.0 アプリ モデルでの Web API の保護 >>](active-directory-devquickstarts-webapi-dotnet.md)
 
-その他のリソースについては、以下を参照してください。 - [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md) - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+その他のリソースについては、以下を参照してください。
+- [アプリ モデル v2.0 プレビュー >>](active-directory-appmodel-v2-overview.md)
+- [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 <!---HONumber=Oct15_HO3-->

@@ -88,7 +88,10 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
-|	modelName |	英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 20 | | apiVersion | 1.0 | ||| | Request Body | NONE |
+|	modelName |	英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 20 |
+| apiVersion | 1.0 | 
+||| 
+| Request Body | NONE |
 
 
 **応答**:
@@ -138,7 +141,8 @@ OData XML
 |:--------			|:--------								|
 |	id |	モデルの一意識別子 (大文字小文字を区別する) |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -200,7 +204,8 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -268,7 +273,8 @@ OData XML
 |:--------			|:--------								|
 |	id | モデルの一意識別子 (大文字小文字を区別する) |
 |	apiVersion | 1\.0 |
-|||| Request Body | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能であることに注意してください。Description または ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
+|||
+| Request Body | `<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`<Description>New Description</Description>`<br>`<ActiveBuildId>-1</ActiveBuildId>`<br>` </ModelUpdateParams>`<br><br>XML タグ Description と ActiveBuildId は省略可能であることに注意してください。Description または ActiveBuildId を設定したくない場合は、タグ全体を削除します。|
 
 **応答**:
 
@@ -285,7 +291,8 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 |	id |	モデルの一意識別子 (大文字小文字を区別する) |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -328,7 +335,8 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -564,7 +572,8 @@ OData XML
 |	modelId |	モデルの一意識別子 |
 |	buildId |	省略可能 – 成功したビルドを識別する数値。 |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -643,7 +652,8 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -853,7 +863,8 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	apiVersion | 1\.0 |
-||| | Request Body | <ins>BlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>Upsale ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"]}</Value></ApiFilter>`<br><br><ins>WhiteList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>PerSeedBlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+|||
+| Request Body | <ins>BlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>Upsale ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"]}</Value></ApiFilter>`<br><br><ins>WhiteList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>PerSeedBlockList ルールを追加する:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 **応答**:
 
@@ -900,7 +911,8 @@ OData XML
 |	modelId |	モデルの一意識別子 |
 |	filterId |	フィルターの一意識別子 |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -916,7 +928,8 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -940,7 +953,11 @@ HTTP 状態コード: 200
 
 | 名前 | 必須 | 型 | 説明 |
 |:---|:---|:---|:---|
-| 項目 ID |あり | [A-z]、[a-z]、[0-9]、[\_] &#40;アンダースコア&#41;、[-] &#40;ダッシュ&#41;￼ <br>最大長: 50 | 項目の一意識別子。| | Item Name | はい | 任意の英数字 <br> 最大長: 255 | 項目名。| | Item Category | はい | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。| | 説明 | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) |任意の英数字 <br> 最大長: 4000 | この項目の説明。| | Features list | いいえ |任意の英数字 <br> 最大長: 4000 | モデルの推奨事項を強化するために使用できる特徴名=特徴の値のコンマ区切りの一覧。「[高度なトピック](#2-advanced-topics)」セクションを参照してください。|
+| 項目 ID |あり | [A-z]、[a-z]、[0-9]、[\_] &#40;アンダースコア&#41;、[-] &#40;ダッシュ&#41; <br>最大長: 50 | 項目の一意識別子。| 
+| Item Name | はい | 任意の英数字 <br> 最大長: 255 | 項目名。| 
+| Item Category | はい | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。| 
+| 説明 | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) |任意の英数字 <br> 最大長: 4000 | この項目の説明。| 
+| Features list | いいえ |任意の英数字 <br> 最大長: 4000 | モデルの推奨事項を強化するために使用できる特徴名=特徴の値のコンマ区切りの一覧。「[高度なトピック](#2-advanced-topics)」セクションを参照してください。|
 
 
 | HTTP メソッド | URI |
@@ -951,7 +968,10 @@ HTTP 状態コード: 200
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 | | apiVersion | 1.0 | ||| | Request Body | 例 (特徴あり):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> |
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 | 
+| apiVersion | 1.0 | 
+||| 
+| Request Body | 例 (特徴あり):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> |
 
 
 **応答**:
@@ -994,7 +1014,8 @@ OData XML
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -1096,7 +1117,8 @@ OData XML
 |	modelId |	モデルの一意識別子 |
 |	token |	カタログ項目の名前のトークン。3 文字以上にする必要があります。 |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -1150,7 +1172,10 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 50 | | apiVersion | 1.0 | ||| | Request Body | 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>User Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[_] &#40;アンダースコア&#41;, [-] &#40;ダッシュ&#41;<br> 最大長: 255 </td><td>ユーザーの一意識別子。</td></tr><tr><td>Item Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[&#95;] &#40;アンダースコア&#41;, [-] &#40;ダッシュ&#41;<br> 最大長: 50</td><td>項目の一意識別子。</td></tr><tr><td>Time</td><td>いいえ</td><td>以下の形式の日付: YYYY/MM/DDTHH:MM:SS (例: 2013/06/20T10:00:00)</td><td>データの日付。</td></tr><tr><td>Event</td><td>いいえ。指定する場合は日付も必要。</td><td>以下の 1 つ。<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイルサイズ: 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 50 | 
+| apiVersion | 1.0 | 
+|||
+| Request Body | 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>User Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[_] &#40;アンダースコア&#41;, [-] &#40;ダッシュ&#41;<br> 最大長: 255 </td><td>ユーザーの一意識別子。</td></tr><tr><td>Item Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[&#95;] &#40;アンダースコア&#41;, [-] &#40;ダッシュ&#41;<br> 最大長: 50</td><td>項目の一意識別子。</td></tr><tr><td>Time</td><td>いいえ</td><td>以下の形式の日付: YYYY/MM/DDTHH:MM:SS (例: 2013/06/20T10:00:00)</td><td>データの日付。</td></tr><tr><td>Event</td><td>いいえ。指定する場合は日付も必要。</td><td>以下の 1 つ。<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイルサイズ: 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **応答**:
 
@@ -1286,7 +1311,8 @@ OData XML
 |:--------			|:--------								|
 |	forModelId |	モデルの一意識別子 |
 |	apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -1352,7 +1378,8 @@ OData XML
 | endDate |	終了日。形式: yyyy/MM/ddTHH:mm:ss |
 | eventTypes |	イベント種類のコンマ区切りの文字列。すべてのイベントを取得する場合は null 値。 |
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -1434,7 +1461,8 @@ OData XML
 | modelId |	モデルの一意識別子 |
 | フィールド |	モデルの使用状況ファイルの一意識別子。 |
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -1456,7 +1484,8 @@ HTTP 状態コード: 200
 | fid |	モデルの使用状況ファイルの一意識別子。 |
 | ダウンロード | 1 |
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -1476,7 +1505,8 @@ HTTP 状態コード: 200
 | modelId |	モデルの一意識別子 |
 | フィールド | 削除するファイルの一意識別子 |
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -1494,7 +1524,8 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 | modelId |	モデルの一意識別子 |
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -1515,7 +1546,8 @@ HTTP 状態コード: 200
 | modelId |	モデルの一意識別子 |
 |samplingSize| カタログ内に存在するデータに従い、特徴ごとに含める値の数。<br/>有効値:<br> -1 - すべてのサンプル。<br>0 - サンプリングなし。<br>N - 特徴名ごとに、N 個のサンプルを返します。|
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 
 **応答**:
@@ -1597,7 +1629,8 @@ OData XML
 |samplingSize| カタログ内に存在するデータに従い、特徴ごとに含める値の数。<br/> 有効値:<br> -1 - すべてのサンプル。<br>0 - サンプリングなし。<br>N - 特徴名ごとに、N 個のサンプルを返します。|
 |rankBuildId| 順位付けのビルドの一意識別子。最後の順位付けのビルドの場合は -1。|
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 
 **応答**:
@@ -1746,7 +1779,8 @@ FBT (よく一緒に購入されている品目) のビルドは「控えめな�
 | modelId |	モデルの一意識別子 |
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。<br>最大長: 50 |
 | apiVersion | 1\.0 |
-||| | Request Body | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細については、「パラメーターのビルド」セクションを参照してください。)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
+|||
+| Request Body | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細については、「パラメーターのビルド」セクションを参照してください。)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
 
 **応答**:
 
@@ -1821,7 +1855,8 @@ OData XML
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例を参照してください。<br>最大長: 50 |
 | buildType | 呼び出すビルドの種類: <br/> - 推奨事項のビルドは、'Recommendation' <br> - 順位付けのビルドは 'Ranking' <br/> -FBT のビルドは ' Fbt'
 | apiVersion | 1\.0 |
-||| | 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、XML として本文に入れて送信します。(パラメーターの詳細と完全なリストについては、パラメーターのビルド セクションをご覧ください。)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
+|||
+| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、XML として本文に入れて送信します。(パラメーターの詳細と完全なリストについては、パラメーターのビルド セクションをご覧ください。)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
 
 **応答**:
 
@@ -2785,7 +2820,8 @@ Azure Machine Learning Recommendations は、システムで永続的なエラ�
 |:--------			|:--------								|
 | modelId | 省略可能なパラメーター。省略すると、すべてのモデルのすべての通知が取得されます。<br>有効な値: モデルの一意識別子。|
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答:**
 
@@ -2836,7 +2872,8 @@ OData XML
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 
@@ -2853,7 +2890,8 @@ HTTP ステータス コード: 200
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 | apiVersion | 1\.0 |
-||| | Request Body | NONE |
+|||
+| Request Body | NONE |
 
 **応答**:
 

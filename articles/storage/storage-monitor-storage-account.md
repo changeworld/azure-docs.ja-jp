@@ -120,9 +120,9 @@
 	![ExpandCollapse](./media/storage-monitor-storage-account/Storage_AddMetrics_ExpandCollapse.png)
 
 
-6. すべてのサービスについてメトリックを選択したら、[OK] (チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
+6. すべてのサービスについてメトリックを選択したら、[OK] \(チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
 
-7. テーブルからメトリックを削除するには、メトリックをクリックして選択し、**[メトリックの削除]** をクリックします。
+7. テーブルからメトリックを削除するには、メトリックをクリックして選択し、**[メトリックの削除]** をクリックします
 
 	![DeleteMetric](./media/storage-monitor-storage-account/Storage_DeleteMetric.png)
 

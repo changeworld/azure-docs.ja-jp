@@ -18,7 +18,9 @@
 
 # Windows アプリのオフライン同期を有効にする
 
-[AZURE.INCLUDE [app-service-mobile-selector-offline-preview](../../includes/app-service-mobile-selector-offline-preview.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-offline-preview](../../includes/app-service-mobile-selector-offline-preview.md)]
+&nbsp;  
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
 ## 概要
 
@@ -54,7 +56,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
     次に、Windows Store 8.1 と Windows Phone 8.1 プロジェクトの両方に NuGet リファレンスを追加します。
 
-    >[AZURE.NOTE]インストールによって、すでにインストールしてある SQLite とは別のバージョンのリファレンスが追加で作成される場合、コンパイル エラーとなります。このエラーを解決するには、プロジェクト内で **参照** ノードが重複しないようにします。
+    >[AZURE.NOTE]インストールによって、すでにインストールしてある SQLite とは別のバージョンのリファレンスが追加で作成される場合、コンパイル エラーとなります。このエラーを解決するには、プロジェクト内で **[参照]** ノードが重複しないようにします。
 
 3. ソリューション エクスプローラーで Windows 8.1 ランタイムおよび Windows Phone 8.1 プラットフォーム プロジェクトの [**参照設定**] を右クリックし、[**拡張**] セクションにある SQLite への参照を追加します。
 
@@ -249,7 +251,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 * [Azure モバイル アプリでのオフライン データ同期]
 
-* [Cloud Cover: Offline Sync in Azure Mobile Services (Cloud Cover: Azure Mobile Services でのオフライン同期)] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期]  \(注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure モバイル アプリでも同様に機能します\)
 
 * [Azure Friday: Azure Mobile Services のオフライン対応アプリ]
 

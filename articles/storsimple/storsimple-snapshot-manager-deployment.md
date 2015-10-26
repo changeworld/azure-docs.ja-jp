@@ -35,7 +35,9 @@ Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナ�
 
 次の手順では、StorSimple Snapshot Manager をインストールする前に完了する必要がある構成タスクの概要を説明します。システム要件や詳細な手順の説明など、Microsoft Azure StorSimple の構成とセットアップに関する完全な情報については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」をご覧ください。
 
->[AZURE.IMPORTANT]開始する前に、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」にある「[デプロイメント チェックリスト](storsimple-deployment-walkthrough.md#deployment-configuration-checklist)」と「[デプロイメントの前提条件](storsimple-deployment-walkthrough.md#deployment-prerequisites)」をご確認ください。<br>
+>[AZURE.IMPORTANT]開始する前に、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)
+> 」にある「[デプロイメント チェックリスト](storsimple-deployment-walkthrough.md#deployment-configuration-checklist)」と「[デプロイメントの前提条件](storsimple-deployment-walkthrough.md#deployment-prerequisites)」をご確認ください。
+<br>
  
 ### StorSimple Snapshot Manager をインストールする前に
 
@@ -201,7 +203,7 @@ StorSimple Snapshot Manager データベースのコピーを作成して保存�
 
         ![Stop the StorSimple Manager service](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 
-2. C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
+2. C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
 
     >[AZURE.NOTE]ProgramData は隠しフォルダーです。
 
@@ -233,7 +235,7 @@ StorSimple Snapshot Manager を再インストールするには、「[StorSimpl
 
     4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
 
-2. C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
+2. C:\ProgramData\Microsoft\StorSimple\BACatalog を参照します。
 
      >[AZURE.NOTE]ProgramData は隠しフォルダーです。
 

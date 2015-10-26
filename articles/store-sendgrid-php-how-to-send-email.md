@@ -283,7 +283,7 @@ Web API を使用した添付ファイルの送信は、Web API を使用した�
 
 SendGrid では、'フィルター' を使用することでその他の電子メール機能も利用することができます。その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。
 
-フィルターは、フィルターのプロパティを使用してメッセージに適用できます。各フィルターは、フィルター固有の設定を格納したハッシュで指定します。次の例では、フッター フィルターを有効にし、電子メール メッセージの下部に追加されるテキスト メッセージを指定しています。この例では、[sendgrid-php] ライブラリを使用します。ライブラリをインストールするには、[[Composer]] を使用します。
+フィルターは、フィルターのプロパティを使用してメッセージに適用できます。各フィルターは、フィルター固有の設定を格納したハッシュで指定します。次の例では、フッター フィルターを有効にし、電子メール メッセージの下部に追加されるテキスト メッセージを指定しています。この例では、[sendgrid-php] ライブラリを使用します。ライブラリをインストールするには、[Composer] を使用します。
     
     php composer.phar require sendgrid/sendgrid 2.1.1
 
@@ -402,6 +402,6 @@ SendGrid では、'フィルター' を使用することでその他の電子�
   [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
   [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
   [sendgrid-php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
-  [[Composer]]: https://getcomposer.org/download/
+  [Composer]: https://getcomposer.org/download/
 
 <!---HONumber=Oct15_HO3-->

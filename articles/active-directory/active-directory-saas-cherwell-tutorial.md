@@ -66,7 +66,7 @@
     ![アプリケーション URL の構成](./media/active-directory-saas-cherwell-tutorial/IC798992.png "アプリケーション URL の構成")
 
     1.  **[サインオン URL]** ボックスに、ユーザーが **Cherwell** へのサインオンに使用する URL を入力します (例: **https://pictdev.cherwellondemand.com/cherwellclient*)。
-2.  **[次へ]** をクリックします。
+    2.  **[次へ]** をクリックします。
 
 4.  **[Cherwell でのシングル サインオンの構成]** ページで、次の手順を実行します。
 

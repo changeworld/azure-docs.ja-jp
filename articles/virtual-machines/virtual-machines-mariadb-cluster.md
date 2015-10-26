@@ -36,7 +36,7 @@
 
 ![アーキテクチャ](./media/virtual-machines-mariadb-cluster/Setup.png)
 
-> [AZURE.NOTE]このトピックでは、[Azure CLI] ツールを使用します。ダウンロードして、指示に従って Azure サブスクリプションに接続してください。Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI command reference (Azure CLI コマンド リファレンス)]」を参照してください。また、[認証用に SSH キーを作成]し、**.pem ファイルの場所**をメモしておく必要があります。
+> [AZURE.NOTE] このトピックでは、[Azure CLI] ツールを使用します。ダウンロードして、指示に従って Azure サブスクリプションに接続してください。Azure CLI で使用できるコマンドのリファレンスが必要な場合は、「[Azure CLI command reference (Azure CLI コマンド リファレンス)]」を参照してください。また、[認証用に SSH キーを作成]し、**.pem ファイルの場所**をメモしておく必要があります。
 
 
 ## テンプレートの作成
@@ -237,7 +237,7 @@
 
 1. **mariadb-galera-image** イメージから 1 台目の CentOS 7 VM を作成し、仮想ネットワーク名を **mariadbvnet**、サブネットを **mariadb**、マシンのサイズを **Medium** として、クラウド サービス名を渡して名前を **mariadbha** (または mariadbha.cloudapp.net 経由でアクセスする任意の名前) とし、マシン名を **mariadb1**、ユーザー名を **azureuser** にし、SSH アクセスを有効にして、SSH 証明書 .pem ファイルを渡し、**/path/to/key.pem** を、生成された .pem SSH キーを格納するパスに置き換えます。
 
-	> [AZURE.NOTE]次のコマンドは、わかりやすいように複数の行に分割しますが、それぞれ 1 つの行として入力する必要があります。
+	> [AZURE.NOTE] 次のコマンドは、わかりやすいように複数の行に分割しますが、それぞれ 1 つの行として入力する必要があります。
 
 		azure vm create
         --virtual-network-name mariadbvnet
@@ -283,7 +283,8 @@
 
 		sudo vi /etc/my.cnf.d/server.cnf
 
-	開始位置の **#** を削除して **`wsrep_cluster_name`** と **`wsrep_cluster_address`** をコメント解除し、実際に必要な値になっているかどうか検証します。また、**`wsrep_node_address`** の **`<ServerIP>`** と **`wsrep_node_name`** の **`<NodeName>`** を、それぞれ VM の IP アドレスと名前で置き換え、それらの行もコメント解除します。
+	開始位置の **#** を削除して **`wsrep_cluster_name`** と **`wsrep_cluster_address`** をコメント解除し、実際に必要な値になっているかどうか検証します。
+    また、**`wsrep_node_address`** の **`<ServerIP>`** と **`wsrep_node_name`** の **`<NodeName>`** を、それぞれ VM の IP アドレスと名前で置き換え、それらの行もコメント解除します。
 
 5. MariaDB1 でクラスターを起動し、起動時に実行されるようにします。
 

@@ -316,8 +316,10 @@ Shared Access Signature は、アカウント キーを知らせずに、スト�
 - [Shared Access Signature、第 2 部: BLOB サービスによる SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)
 - [Windows で Azure File ストレージを使用する方法](storage-dotnet-how-to-use-files.md)
 - [Azure Storage リソースへのアクセスの管理](storage-manage-access-to-resources.md)
-- [Shared Access Signature を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-- [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx) [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
+- [共有アクセス署名を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)
+- [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+[sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
+[sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
 
  

@@ -38,7 +38,20 @@ Azure Site Recovery の機能は、アプリケーション レベルの保護�
 
 ASR レプリケーションのテクノロジは、仮想マシンで実行されているすべてのアプリケーションと互換性があります。各アプリケーションのサポートを強化するために、アプリケーション製品のチームと協力して、追加のテストを実施しました。
 
-**ワークロード** | <p>**Hyper-V 仮想マシンのレプリケート**</p> <p>**(セカンダリ サイトへ)**</p> | <p>**Hyper-V 仮想マシンのレプリケート**</p> <p>**(Azure へ)**</p> | <p>**VMware 仮想マシンのレプリケート**</p> <p>**(セカンダリ サイトへ)**</p> | <p>**VMware 仮想マシンのレプリケート**</p><p>**(Azure へ)****</p> ---|---|---|---|--- Active Directory、DNS | Y | Y | Y | Y Web アプリ (IIS、SQL) | Y | Y | Y | Y SCOM | Y | Y | Y | Y Sharepoint | Y | Y | Y | Y <p>SAP</p><p>クラスター以外の Azure に SAP サイトをレプリケート</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) Exchange (非 DAG) | Y | 近日対応予定 | Y | Y Remote Desktop/VDI | Y | Y | Y | N/A <p>Linux</p> <p>(オペレーティング システムとアプリ)</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) Dynamics AX | Y | Y | Y | Y Dynamics CRM | Y | 近日対応予定 | Y | 近日対応予定 Oracle | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) Windows File Server | Y | Y | Y | Y
+**ワークロード** | <p>**Hyper-V 仮想マシンのレプリケート**</p> <p>**(セカンダリ サイトへ)**</p> | <p>**Hyper-V 仮想マシンのレプリケート**</p> <p>**(Azure へ)**</p> | <p>**VMware 仮想マシンのレプリケート**</p> <p>**(セカンダリ サイトへ)**</p> | <p>**VMware 仮想マシンのレプリケート**</p><p>**(Azure へ)****</p>
+---|---|---|---|---
+Active Directory、DNS | Y | Y | Y | Y
+Web アプリ (IIS、SQL) | Y | Y | Y | Y
+SCOM | Y | Y | Y | Y
+Sharepoint | Y | Y | Y | Y
+<p>SAP</p><p>クラスター以外の Azure に SAP サイトをレプリケート</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み)
+Exchange (非 DAG) | Y | 近日対応予定 | Y | Y
+Remote Desktop/VDI | Y | Y | Y | N/A
+<p>Linux</p> <p>(オペレーティング システムとアプリ)</p> | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み)
+Dynamics AX | Y | Y | Y | Y
+Dynamics CRM | Y | 近日対応予定 | Y | 近日対応予定
+Oracle | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み) | Y (Microsoft によってテスト済み)
+Windows File Server | Y | Y | Y | Y
 
 ##Active Directory と DNS
 

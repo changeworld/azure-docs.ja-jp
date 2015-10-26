@@ -21,7 +21,7 @@ Azure Marketplace には、Microsoft、サード パーティ企業、および�
 
     ![Marketplace icon][marketplace]
 
-    または、ダッシュダッシュボードボードの右上の**[新規]** アイコンをクリックして、一覧の一番下にある**[Marketplace]** を選択します。
+    または、ダッシュダッシュボードボードの右上の**[新規]** アイコンをクリックして、一覧の一番下にある **Marketplace** を選択します。
 	
     ![Create New][5]
 	

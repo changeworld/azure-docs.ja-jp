@@ -26,7 +26,7 @@ Azure 仮想マシンが既にあり、IPython Notebook サーバーをセット
 
 Azure で仮想マシンを作成するプロセスを始める前に、プロジェクトのデータ処理に必要なマシンのサイズを決定する必要があります。小さいマシンは大きいマシンに比べてメモリの量と CPU コア数が少ないですが、より安価でもあります。マシンの種類と価格については、「<a href="http://azure.microsoft.com/pricing/details/virtual-machines/" target="_blank">Virtual Machines 価格</a>」ページをご覧ください。
 
-1. <a href="https://manage.windowsazure.com" target="_blank">Azure ポータル</a>にログインし、左下隅にある **[新規]** をクリックします。ウィンドウがポップアップ表示されます。**[Compute]** -> **[仮想マシン]** -> **[ギャラリーから]** の順にクリックします。
+1. <a href="https://manage.windowsazure.com" target="_blank">Azure ポータル</a>にログインし、左下隅にある **[新規]** をクリックします。ウィンドウがポップアップ表示されます。**[コンピューティング]** -> **[仮想マシン]** -> **[ギャラリーから]** の順にクリックします。
 
 	![Create workspace][24]
 
@@ -104,7 +104,7 @@ IPython Notebook を使用すると、ユーザーはローカル マシン上�
 
 Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用しないときに課金されないようにするには、未使用時に **[停止 (割り当て解除)]** 状態にする必要があります。
 
-> [AZURE.NOTE](Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure 管理ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
+> [AZURE.NOTE] \(Windows 電源オプションを使用して) 仮想マシン内部から VM をシャット ダウンすると、その VM は停止しますが、割り当てられた状態のままになります。継続的に課金されないようにするには、常に [Microsoft Azure 管理ポータル](http://manage.windowsazure.com/)から仮想マシンを停止してください。また、Powershell で VM を停止することもできます。その場合、"PostShutdownAction" を "StoppedDeallocated" に設定して **ShutdownRoleOperation** を呼び出します。
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 

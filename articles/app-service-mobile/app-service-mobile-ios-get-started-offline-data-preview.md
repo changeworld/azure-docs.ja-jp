@@ -18,7 +18,9 @@
 
 # iOS モバイル アプリのオフライン同期を有効にする
 
-[AZURE.INCLUDE [app-service-mobile-selector-offline-preview](../../includes/app-service-mobile-selector-offline-preview.md)]&nbsp;[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
+[AZURE.INCLUDE [app-service-mobile-selector-offline-preview](../../includes/app-service-mobile-selector-offline-preview.md)]
+&nbsp;  
+[AZURE.INCLUDE [app-service-mobile-note-mobile-services-preview](../../includes/app-service-mobile-note-mobile-services-preview.md)]
 
 ## 概要
 
@@ -88,7 +90,7 @@ Azure Mobile Apps のオフライン データ同期機能を使用すると、�
 
     `pullWithQuery` に対する 2 番目のパラメーターは、*増分同期*に使用するクエリ ID です。増分同期では、前回の同期以降に変更されたレコードのみを、レコードの `UpdatedAt` タイムスタンプ (ローカル ストアでは `ms_updatedAt` と呼ばれます) を使用して取得します。クエリ ID は、アプリ内の各論理クエリに対して一意の、わかりやすい文字列にする必要があります。増分同期を解除するには、`nil` をクエリ ID として渡します。これは、プル操作のたびにすべてのレコードを取得するため、非効率になる場合があります。
 
-	<!--     >[AZURE.NOTE] To remove records from the device local store when they have been deleted in your mobile service database, you should enable [Soft Delete]. Otherwise, your app should periodically call `MSSyncTable.purgeWithQuery` to purge the local store.
+	<!--     >[AZURE.NOTE] モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除] を有効にする必要があります。 有効にしない場合は、アプリで定期的に {MSSyncTable.purgeWithQuery} を呼び出して、ローカル ストアを削除する必要があります。
  -->
 
 5. クラス `QSTodoService` では、メソッド `syncData` はデータ変更操作である `addItem` や `completeItem` の後に呼び出されます。また、`QSTodoListViewController.refresh` からも呼び出されるため、ユーザーが更新ジェスチャを実行するたびに最新のデータが取得されます。`QSTodoListViewController.init` は `refresh` を呼び出すため、アプリケーションは起動時に同期も実行します。
@@ -158,7 +160,9 @@ Core Data オフライン ストアを使用するときは、データ モデ�
     | id | 文字列、必須のマーク | リモート ストア内のプライマリ キー |
     | 完了 | Boolean | Todo 項目フィールド |
     | テキスト | String | Todo 項目フィールド |
-    | ms\_createdAt | 日付 | (省略可能) \_\_createdAt システム プロパティにマップ | | ms\_updatedAt | Date | (省略可能) \_\_updatedAt システム プロパティにマップ | | ms\_version | String | (省略可能) 競合の検出に使用され、\_\_version にマップ |
+    | ms\_createdAt | 日付 | (省略可能) \_\_createdAt システム プロパティにマップ | 
+    | ms\_updatedAt | Date | (省略可能) \_\_updatedAt システム プロパティにマップ | 
+    | ms\_version | String | (省略可能) 競合の検出に使用され、\_\_version にマップ |
 
 
 ## <a name="setup-sync"></a>アプリケーションの同期動作を変更する
@@ -222,14 +226,14 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 
     増分同期を無効にする場合は、`nil` をクエリ ID として渡します。この場合、`pullWithQuery` への呼び出しごとにすべてのレコードが再取得されるため、場合によっては非効率となります。
 
-<!-- * To remove records from the device local store when they have been deleted in your mobile service database, you should enable [Soft Delete]. Otherwise, your app should periodically call `MSSyncTable.purgeWithQuery` to remove records from the local database, in case they have been deleted in the remote service.
+<!-- * モバイル サービス データベースでレコードが削除されたときに、デバイスのローカル ストアからレコードを削除するには、[論理的な削除] を有効にする必要があります。 Otherwise, your app should periodically call `MSSyncTable.purgeWithQuery` to remove records from the local database, in case they have been deleted in the remote service.
  -->
 
 ## その他のリソース
 
 * [Azure モバイル アプリでのオフライン データ同期]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 
 <!-- URLs. -->
 

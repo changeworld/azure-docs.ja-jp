@@ -33,7 +33,9 @@ SQL Database は、次に示す 3 つの動的管理ビューを一部サポー�
 
 SQL Database で、動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。**VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。**VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、次のクエリを実行します。
 
-```GRANT VIEW DATABASE STATE TO database_user; ```
+```
+GRANT VIEW DATABASE STATE TO database_user;
+```
 
 オンプレミスの SQL Server のインスタンスでは、動的管理ビューにサーバーの状態についての情報が表示されます。SQL Database では、動的管理ビューには現在の論理データベースに関する情報のみが表示されます。
 
@@ -42,9 +44,9 @@ SQL Database で、動的管理ビューに対してクエリを実行するに�
 次のクエリは、データベースのサイズ (MB 単位) を返します。
 
 ```
--- Calculates the size of the database. 
+-- データベースのサイズを計算します。 
 SELECT SUM(reserved_page_count)*8.0/1024
-FROM sys.dm_db_partition_stats; 
+FROM sys.dm_db_partition_stats;
 GO
 ```
 
@@ -105,11 +107,11 @@ ORDER BY 2 DESC;
 
 ### クエリのブロックの監視
 
-クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。sys.dm\_tran\_locks ビューを使用すると、Azure SQL Database で現在ロックされているアクティビティに関する情報を取得できます。コード例については、SQL Server オンライン ブックの「[sys.dm\_tran\_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx)」を参照してください。
+クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。sys.dm\_tran\_locks ビューを使用すると、Azure SQL Database で現在ロックされているアクティビティに関する情報を取得できます。コード例については、SQL Server オンライン ブックの「[sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx)」を参照してください。
 
 ### クエリ プランの監視
 
-クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。次の例では、[sys.dm\_exec\_query\_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、累積 CPU 時間が最も多いクエリを特定します。
+クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。次の例では、[sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、CPU の累積使用量が最も多いクエリを特定します。
 
 ```
 SELECT 

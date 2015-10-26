@@ -66,7 +66,7 @@
 
 <!-- URLs. -->
 
-[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure の管理ポータル]: https://portal.azure.com/
  
 

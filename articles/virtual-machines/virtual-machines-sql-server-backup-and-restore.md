@@ -28,7 +28,7 @@ SQL Server データベースのデータのバックアップは、アプリケ
 
 Azure VM で実行されている SQL Server では、バックアップ ファイルの保存先として接続されたディスクを使用するネイティブなバックアップおよび復元手法を使用できます。ただし、[仮想マシンのサイズ](virtual-machines-size-specs.md)に基づいて、Azure 仮想マシンに接続できるディスク数には制限があります。また、ディスク管理のオーバーヘッドも考慮する必要があります。
 
-SQL Server 2014 以降では、Microsoft Azure BLOB ストレージへのバックアップと復元が可能です。SQL Server 2016 には、このオプションの拡張機能も用意されています。また、データベース ファイルが Microsoft Azure BLOB ストレージに保存されている場合、SQL Server 2016 では、Azure のスナップショットを使用して、ほぼ瞬時にバックアップを作成し、迅速に復元できます。この記事では、これらのオプションの概要を説明します。追加情報については、「SQL Server Backup and Restore with Microsoft Azure Blob Storage Service (Microsoft Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元)」(https://msdn.microsoft.com/library/jj919148(v=sql.130).aspx)) をご覧ください。
+SQL Server 2014 以降では、Microsoft Azure BLOB ストレージへのバックアップと復元が可能です。SQL Server 2016 には、このオプションの拡張機能も用意されています。また、データベース ファイルが Microsoft Azure BLOB ストレージに保存されている場合、SQL Server 2016 では、Azure のスナップショットを使用して、ほぼ瞬時にバックアップを作成し、迅速に復元できます。この記事では、これらのオプションの概要を説明します。追加情報については、「SQL Server Backup and Restore with Microsoft Azure Blob Storage Service [Microsoft Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148(v=sql.130).aspx) をご覧ください。
 
 >[AZURE.NOTE]大規模なデータベースのバックアップのオプションについては、「[Multi-Terabyte SQL Server Database Backup Strategies for Azure Virtual Machines (Azure Virtual Machines の数 TB の SQL Server データベースのバックアップ戦略)](http://blogs.msdn.com/b/igorpag/archive/2015/07/28/multi-terabyte-sql-server-database-backup-strategies-for-azure-virtual-machines.aspx)」をご覧ください。
 

@@ -46,7 +46,7 @@
 
         ![preview portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        For Compute, Storage, and Networking resources, you have the option of using either Resourece Manager or Classic deployment. Select **Resource Manager**.
+        Compute、Storage、ネットワークのリソースについては、リソース マネージャーと従来のデプロイのどちらかを使用できます。 **[リソース マネージャー]** を選択します。
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -77,7 +77,7 @@
 
         ![Azure portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        Or, the preview portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
+        または、プレビュー ポータルを使い、**クラシック** デプロイを指定 (Compute、Storage、ネットワーク).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 

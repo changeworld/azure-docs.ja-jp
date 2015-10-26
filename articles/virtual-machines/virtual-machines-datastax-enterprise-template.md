@@ -90,7 +90,8 @@ JSON テンプレートとその他の関連ファイル用のローカル フ�
 
 	git clone https://github.com/Azure/azure-quickstart-templates C:\Azure\Templates
 
-完了後に、C:\\Azure\\Templates ディレクトリの datastax-enterprise フォルダーを探します。<!--Wrapping name of folder in bold typeface is not corp style  -->
+完了後に、C:\Azure\Templates の datastax-enterprise フォルダーを探します。
+<!--Wrapping name of folder in bold typeface is not corp style  -->
 ### 手順 2. (省略可能) テンプレート パラメーターを理解する
 
 DataStax に基づく Apache Cassandra クラスターのような自明ではないソリューションをデプロイする場合、必要な複数の設定を処理するために構成パラメーターのセットを指定する必要があります。テンプレートの定義でこれらのパラメーターを宣言することで、デプロイ時に外部ファイルまたはコマンド ラインを通して値を指定することができます。
@@ -383,7 +384,12 @@ azuredeploy.json の "parameters" セクションには、このテンプレー�
 
 この 1 つ目の例から明らかなように、このシナリオの azuredeploy.json は、ある種のオーケストレーション メカニズムとして編成され、それぞれが必要なデプロイ アクティビティの一部を担う、他の数多くのテンプレート ファイルを呼び出しています。
 
-特に、このデプロイには次のリンク済みテンプレートが使用されます。<!-- In list format, using bold typeface in the following manner is ok --> - **shared-resource.json**: デプロイ全体で共有されるすべてのリソースの定義を格納します。たとえば、VM の OS ディスクおよび仮想ネットワークの格納に使用されるストレージ アカウントです。 - **opscenter-resources.json**: OpsCenter VM と、すべての関連するリソース (ネットワーク インターフェイスやパブリック IP アドレスなど) をデプロイします。 - **opscenter-install-resources.json**: OpsCenter VM の拡張機能 (Linux 用のカスタム スクリプト) をデプロイします。この拡張機能は、VM 内での OpsCenter サービスのセットアップに必要な bash スクリプト ファイル (opscenter.sh) を呼び出します。 - **ephemeral-nodes-resources.json**: すべてのクラスター ノードの VM と、接続されているリソース (ネットワーク カード、プライベート IP など) をデプロイします。このテンプレートは、VM 拡張機能 (Linux 用のカスタム スクリプト) も同様にデプロイし、bash スクリプト (dsenode.sh) を呼び出して各ノードに Apache Cassandra の構成要素を物理的にインストールします。
+特に、このデプロイには次のリンク済みテンプレートが使用されます。
+<!-- In list format, using bold typeface in the following manner is ok -->
+-	**shared-resource.json**: デプロイ全体で共有されるすべてのリソースの定義を格納します。たとえば、VM の OS ディスクおよび仮想ネットワークの格納に使用されるストレージ アカウントです。
+-	**opscenter-resources.json**: OpsCenter VM と、すべての関連するリソース (ネットワーク インターフェイスやパブリック IP アドレスなど) をデプロイします。
+-	**opscenter-install-resources.json**: OpsCenter VM の拡張機能 (Linux 用のカスタム スクリプト) をデプロイします。この拡張機能は、VM 内での OpsCenter サービスのセットアップに必要な bash スクリプト ファイル (opscenter.sh) を呼び出します。
+-	**ephemeral-nodes-resources.json**: すべてのクラスター ノードの VM と、接続されているリソース (ネットワーク カード、プライベート IP など) をデプロイします。このテンプレートは、VM 拡張機能 (Linux 用のカスタム スクリプト) も同様にデプロイし、bash スクリプト (dsenode.sh) を呼び出して各ノードに Apache Cassandra の構成要素を物理的にインストールします。
 
 この最後のテンプレートは、テンプレート開発の観点から見て最も興味深いテンプレートの 1 つです。このテンプレートの使用方法について、詳しく見てみましょう。注意が必要な重要な概念は、どのようにすれば 1 つのテンプレート ファイルによって単一の種類のリソースの複数のコピーをデプロイできるか、また、各インスタンスが必要な設定に対して一意の値を設定できるかということです。この概念は、リソース ループと呼ばれています。
 

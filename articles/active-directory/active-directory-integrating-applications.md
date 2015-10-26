@@ -349,6 +349,6 @@ ConsentReturnUrl にエンコードされた URL の一部として、追加の�
 
 - [Azure Active Directory のアプリケーション マニフェスト](active-directory-application-manifest.md)について理解する
 
-- Active Directory 開発者ガイド (active-directory-developer's guide.md) を参照する
+- [Active Directory 開発者ガイド](active-directory-developer's guide.md) を参照する
 
 <!---HONumber=Oct15_HO3-->

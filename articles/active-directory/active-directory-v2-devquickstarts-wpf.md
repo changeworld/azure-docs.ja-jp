@@ -47,10 +47,10 @@ v2.0 アプリ モデルを使用すると、Microsoft の個人および職場/
 - アプリ用の**モバイル** プラットフォームを追加します。
 - ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
-## 2\.ADAL のインストールと構成
+## 2. ADAL のインストールと構成
 マイクロソフトへのアプリの登録が完了したら、ADAL をインストールし、自分の ID 関連コードを記述できます。ADAL が v2.0 エンドポイントと通信できるようにするには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
 
--	最初に、パッケージ マネージャー コンソールを使用して、ADAL を TodoListClient プロジェクトに追加します。
+-    最初に、パッケージ マネージャー コンソールを使用して、ADAL を TodoListClient プロジェクトに追加します。
 
 ```
 PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoListClient -IncludePrerelease

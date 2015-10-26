@@ -48,7 +48,9 @@
 -	アクティブな [Microsoft Azure アカウント](/account/)
 -	Visual Studio 2013 と [Azure SDK](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
 
-> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。+ [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web サイトなど無料の Azure サービスをご利用になれます。+ [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
+> + [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます。- Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps など無料の Azure サービスをご利用になれます。
+> + [MSDN サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます。- MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
 <a name="deploy"></a>
 ## クラウド サービスを統合 CDN エンドポイントと共にデプロイする ##
@@ -323,7 +325,7 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 
 	![](media/cdn-cloud-service-with-cdn/cdn-7-configureview.PNG)
 
-4. 新しい *Views\\MemeGenerator\\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
+4. 新しい *Views\MemeGenerator\Index.cshtml* を開き、その内容を、ジョークを送信するための次の単純な HTML で置き換えます。
 
 		<h2>Meme Generator</h2>
 		

@@ -74,7 +74,16 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | オプション | 詳細 | 既定値 |
 | ---- | ----- | ----- |
-| /q | サイレント インストール | - | | /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent | | /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch | | /m | Microsoft Update のオプトイン | - | | /nu | インストールの完了後に更新プログラムを確認しない | - | | /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - | | /ph | プロキシ ホストのアドレス | - | | /po | プロキシ ホストのポート番号 | - | | /pu | プロキシ ホストのユーザー名 | - | | /pw | プロキシ パスワード | - |
+| /q | サイレント インストール | - |
+| /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent |
+| /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
+| /m | Microsoft Update のオプトイン | - |
+| /nu | インストールの完了後に更新プログラムを確認しない | - |
+| /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - |
+| /ph | プロキシ ホストのアドレス | - |
+| /po | プロキシ ホストのポート番号 | - |
+| /pu | プロキシ ホストのユーザー名 | - |
+| /pw | プロキシ パスワード | - |
 
 
 ### Microsoft Azure Backup サービスへの登録
@@ -106,7 +115,7 @@ Region              : West US
 Machine registration succeeded.
 ```
 
-> [AZURE.IMPORTANT]コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。このコマンドレットへの入力には、絶対パスを指定する必要があります。
+> [AZURE.IMPORTANT] コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。このコマンドレットへの入力には、絶対パスを指定する必要があります。
 
 ### ネットワークの設定
 プロキシ サーバーを介して Windows コンピューターをインターネットに接続した場合、プロキシ設定もエージェントに指定できます。この例では、プロキシ サーバーがないため、プロキシ関連の情報はないことを明示的に示しています。
@@ -131,7 +140,7 @@ PS C:\> ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force 
 Server properties updated successfully
 ```
 
-> [AZURE.IMPORTANT]設定したら、パスフレーズ情報をセキュリティで保護された安全な場所に保管してください。このパスフレーズがないと、Azure からデータを復元できません。
+> [AZURE.IMPORTANT] 設定したら、パスフレーズ情報をセキュリティで保護された安全な場所に保管してください。このパスフレーズがないと、Azure からデータを復元できません。
 
 ## ファイルとフォルダーのバックアップ
 Windows サーバーおよびクライアントから Microsoft Azure Backup へのすべてのバックアップは、ポリシーによって管理されます。ポリシーは 3 つの部分で構成されます。
@@ -173,7 +182,7 @@ BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName :
 PS C:\> $retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
-> [AZURE.NOTE]現在、PowerShell コマンドレットでは長期間の保有ポリシーの設定はサポートされていません。長期的な保有期間ポリシーを設定するには、Azure Backup の UI コンソールを使用してください。
+> [AZURE.NOTE] 現在、PowerShell コマンドレットでは長期間の保有ポリシーの設定はサポートされていません。長期的な保有期間ポリシーを設定するには、Azure Backup の UI コンソールを使用してください。
 
 保有ポリシーは、コマンドレット [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405) を使用してメインのポリシーと関連付ける必要があります。
 
@@ -571,8 +580,8 @@ PS C:\> Set-ExecutionPolicy unrestricted -force
 コンピューターを、エージェントのインストールを始め、リモートで管理できるようになりました。たとえば、次のスクリプトは、エージェントをリモート コンピューターにコピーし、インストールします。
 
 ```
-PS C:\> $dloc = "\\REMOTESERVER01\c$\Windows\Temp"
-PS C:\> $agent = "\\REMOTESERVER01\c$\Windows\Temp\MARSAgentInstaller.exe"
+PS C:\> $dloc = "\REMOTESERVER01\c$\Windows\Temp"
+PS C:\> $agent = "\REMOTESERVER01\c$\Windows\Temp\MARSAgentInstaller.exe"
 PS C:\> $args = "/q"
 PS C:\> Copy-Item "C:\Downloads\MARSAgentInstaller.exe" -Destination $dloc - force
 

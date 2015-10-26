@@ -15,32 +15,35 @@
 5. **[列]** タブをクリックします。次の既定の列が自動的に作成されていることを確認します。
 	
 	<table border="1" cellpadding="10">
-<tr>
-<th>列名</th>
-<th>種類</th>
-<th>インデックス</th>
-</tr>
-<tr>
-<td>id</td>
-<td>string</td>
-<td>インデックス設定済み</td>
-</tr>
-<tr>
-<td>__createdAt</td>
-<td>date</td>
-<td>インデックス設定済み</td>
-</tr>
-<tr>
-<td>__updatedAt</td>
-<td>date</td>
-<td><font color="transparent">-</font></td>
-</tr>
-<tr>
-<td>__version</td>
-<td>timestamp (MSSQL)</td>
-<td><font color="transparent">-</font></td>
-</tr> 	
-</table>これは、モバイル サービスのテーブルの最小要件です。
+ 	<tr>
+ 	<th>列名</th>
+ 	<th>種類</th>
+ 	<th>インデックス</th>
+ 	</tr>
+ 	<tr>
+ 	<td>id</td>
+ 	<td>string</td>
+ 	<td>インデックス設定済み</td>
+ 	</tr>
+ 	<tr>
+ 	<td>__createdAt</td>
+ 	<td>date</td>
+ 	<td>インデックス設定済み</td>
+ 	</tr>
+ 	<tr>
+ 	<td>__updatedAt</td>
+ 	<td>date</td>
+ 	<td><font color="transparent">-</font></td>
+ 	</tr>
+ 	<tr>
+ 	<td>__version</td>
+ 	<td>timestamp (MSSQL)</td>
+ 	<td><font color="transparent">-</font></td>
+ 	</tr> 	
+ 	</table> 	
+		
+
+  	これは、モバイル サービスのテーブルの最小要件です。
 
     > [AZURE.NOTE]モバイル サービスで動的スキーマを有効にすると、挿入操作または更新操作によって JSON オブジェクトがモバイル サービスに送信されるときに新しい列が自動的に作成されます。
 

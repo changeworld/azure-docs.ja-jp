@@ -74,7 +74,7 @@ Microsoft Azure のサインイン ダイアログで、Azure アカウントの
 
 次に、クラウド サービスが必要です。クラウド サービスがまだない場合は、新たに作成する必要があります。小文字、数字、ハイフンのみから成る一意の名前を選んでください。フィールドの先頭と末尾の文字は、文字または数字としてください。
 
-たとえば、TestCS-*UniqueSequence* という名前を付けることができます。*￼UniqueSequence￼* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに TestCS-Tailspin という名前を付けることができます。
+たとえば、TestCS-*UniqueSequence* という名前を付けることができます。*UniqueSequence* は組織の略称です。たとえば、組織の名前が Tailspin Toys であれば、クラウド サービスに TestCS-Tailspin という名前を付けることができます。
 
 次の Azure PowerShell コマンドを使用することで、名前の一意性を確認することができます。
 

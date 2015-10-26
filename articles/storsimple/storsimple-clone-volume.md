@@ -43,7 +43,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 
   1. ターゲット デバイスを指定します。これは、複製が作成される場所です。同じデバイスを選択することも、別のデバイスを指定することもできます。別のクラウド サービス プロバイダー (Azure 以外) に関連付けられたボリュームを選択する場合、ターゲット デバイスのドロップダウン リストには物理デバイスのみが表示されます。別のクラウド サービスのプロバイダーに関連付けられたボリュームを仮想デバイス上に複製することはできません。
 
-        >  [AZURE.NOTE] Make sure that the capacity required for the clone is lower than the capacity available on the target device.
+        >  [AZURE.NOTE] 複製に必要な容量がターゲット デバイスで使用可能な容量を下回っていることを確認してください。
   2. 複製の一意の [ボリューム名] を指定します。名前は 3 文字以上 127 文字以下にする必要があります。
   3. 矢印アイコン ![矢印アイコン](./media/storsimple-clone-volume/HCS_ArrowIcon.png) をクリックして、次のページに進みます。
 

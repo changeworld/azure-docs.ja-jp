@@ -3,7 +3,8 @@
 #チュートリアル: Azure Active Directory と Sprinklr の統合
 >[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=526454)をクリックしてください。
   
-このチュートリアルでは、Azure と Sprinklr の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と Sprinklr の統合について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Sprinklr テナント
@@ -53,7 +54,9 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、Sprinklr で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、Sprinklr で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。  
+この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
+この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
@@ -75,7 +78,7 @@
 
 5.  別の Web ブラウザー ウィンドウで、Sprinklr 企業サイトに管理者としてログインします。
 
-6.  **[Administration]、[Settings]** の順に選択します。
+6.  **[管理]、[設定]** の順に選択します。
 
     ![管理](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "管理")
 
@@ -96,7 +99,7 @@
     3.  **[Use new SSO Certificate]** を選択します。
     4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
 
-        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
     5.  base-64 でエンコードされた証明書をノートパッドで開き、その内容をクリップボードにコピーして、**[ID プロバイダー証明書]** テキスト ボックスに貼り付けます。
     6.  Azure ポータルの **[Sprinklr でのシングル サインオンの構成]** ダイアログ ページで、**ID プロバイダーの ID** の値をコピーし、**[Entity Id]** ボックスに貼り付けます。
@@ -120,11 +123,11 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 1.  Sprinklr 企業サイトに管理者としてログインします。
 
-2.  **[Administration]、[Settings]** の順に選択します。
+2.  **[管理]、[設定]** の順に選択します。
 
     ![管理](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "管理")
 
-3.  左側のパネルで、**[クライアントの管理]、[Users]** の順に選択します。
+3.  左側のパネルで、**[クライアントの管理]、[ユーザー]** の順に選択します。
 
     ![設定](./media/active-directory-saas-sprinklr-tutorial/IC782914.png "設定")
 
@@ -142,7 +145,7 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
     4.  **[User Type]** を選択します。
     5.  **[Update]** をクリックします。
 
-    >[AZURE.IMPORTANT]ユーザーが ID プロバイダー経由でログインできるようにするには、**[Password Disabled]** を選択する必要があります。
+    >[AZURE.IMPORTANT] ユーザーが ID プロバイダー経由でログインできるようにするには、**[Password Disabled]** を選択する必要があります。
 
 6.  **[Role]** に移動して、次の手順に従います。
 
@@ -151,7 +154,7 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
     1.  **[Global]** ボックスの一覧から、**[ALL\_Permissions]** を選択します。
     2.  **[Update]** を選択します。
 
->[AZURE.NOTE]Sprinklr から提供されている他の Sprinklr ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] Sprinklr から提供されている他の Sprinklr ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ##ユーザーの割り当て
   

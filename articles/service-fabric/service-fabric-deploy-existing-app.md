@@ -34,7 +34,13 @@ Azure Service Fabric を使用して既存のアプリケーションをデプ�
 
   アプリケーション マニフェストの例を次に示します。
 
-  ```xml <?xml version="1.0" encoding="utf-8"?> <ApplicationManifest ApplicationTypeName="actor2Application" ApplicationTypeVersion="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  ```xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <ApplicationManifest ApplicationTypeName="actor2Application"
+                       ApplicationTypeVersion="1.0.0.0"
+                       xmlns="http://schemas.microsoft.com/2011/01/fabric"
+                       xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="actor2Pkg" ServiceManifestVersion="1.0.0.0" />
@@ -49,7 +55,8 @@ Azure Service Fabric を使用して既存のアプリケーションをデプ�
       </Service>
     </DefaultServices>
 
-  </ApplicationManifest>```
+  </ApplicationManifest>
+  ```
 
 * **サービス マニフェスト**
 
@@ -57,7 +64,16 @@ Azure Service Fabric を使用して既存のアプリケーションをデプ�
 
   サービス マニフェストの例を次に示します
 
-  ```xml <?xml version="1.0" encoding="utf-8"?> <ServiceManifest Name="actor2Pkg" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <ServiceTypes> <StatelessServiceType ServiceTypeName="actor2Type" /> </ServiceTypes>
+  ```xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <ServiceManifest Name="actor2Pkg"
+                   Version="1.0.0.0"
+                   xmlns="http://schemas.microsoft.com/2011/01/fabric"
+                   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ServiceTypes>
+      <StatelessServiceType ServiceTypeName="actor2Type" />
+    </ServiceTypes>
 
     <CodePackage Name="Code" Version="1.0.0.0">
       <EntryPoint>
@@ -74,7 +90,8 @@ Azure Service Fabric を使用して既存のアプリケーションをデプ�
         <Endpoint Name="ServiceEndpoint" />
       </Endpoints>
     </Resources>
-  </ServiceManifest>```
+  </ServiceManifest>
+  ```
 
 ## アプリケーション パッケージ ファイルの構造
 powershell コマンドレットなどを使用してアプリケーションをデプロイするには、そのアプリケーションは、次の定義済みディレクトリ構造に従っている必要があります。
@@ -115,7 +132,7 @@ root には、アプリケーションを定義する applicationmanifest.xml �
 ### アプリケーションのコードと構成ファイルを追加する
 ディレクトリ構造を作成したら、アプリケーションのコードと構成ファイルを、Code ディレクトリおよび Config ディレクトリの下に追加できます。Code ディレクトリまたは Config ディレクトリに、追加のディレクトリまたはサブ ディレクトリを作成することもできます。Service Fabric は、アプリケーション root ディレクトリのコンテンツの xcopy を実行します。したがって、2 つの上位ディレクトリである Code および Settings を作成する以外に、使用できる定義済みの構造はありません (ただし、必要に応じて別の名前を選択できます。詳細については、次のセクションを参照してください)。
 
->[AZURE.NOTE]アプリケーションに必要なすべてのファイルと依存関係を必ず含めるようにしてください。Service Fabric では、アプリケーション パッケージ のコンテンツが、アプリケーションのサービスがデプロイされるクラスター内のすべてのノードにコピーされます。パッケージには、アプリケーションを実行するのに必要なすべてのコードが含まれています。依存関係がインストール済みであることを想定するのはお勧めしません。
+>[AZURE.NOTE]: アプリケーションに必要なすべてのファイルと依存関係を必ず含めるようにしてください。Service Fabric では、アプリケーション パッケージ のコンテンツが、アプリケーションのサービスがデプロイされるクラスター内のすべてのノードにコピーされます。パッケージには、アプリケーションを実行するのに必要なすべてのコードが含まれています。依存関係がインストール済みであることを想定するのはお勧めしません。
 
 ### サービス マニフェスト ファイルを編集する
 次の手順では、サービス マニフェスト ファイルを編集して、次の情報を含めます。
