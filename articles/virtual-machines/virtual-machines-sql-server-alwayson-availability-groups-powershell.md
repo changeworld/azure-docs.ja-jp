@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure VM での AlwaysOn 可用性グループの構成 | Microsoft Azure"
-	description="このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、PowerShell を使用して Azure AlwaysOn 可用性グループを作成します。"
+	description="このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、PowerShell を使用して Azure AlwaysOn 可用性グループを作成します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
@@ -24,7 +24,8 @@
 
 <br/>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 Azure 仮想マシン (VM) を使用すると、データベース管理者は高可用性の SQL Server システムを低いコストで実装できます。このチュートリアルでは、Azure 環境内で SQL Server AlwaysOn をエンド ツー エンドで使用し、可用性グループを実装する方法について説明します。チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
@@ -182,7 +183,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 		    -Name $dcServerName `
 		    -LocalPath "$workingDir$dcServerName.rdp"
 
-DC サーバーは、これで正常にプロビジョニングされました。次に、この DC サーバー上の Active Directory ドメインを構成します。ローカル コンピューターで、PowerShell ウィンドウを開いたままにしておきます。2 つの SQL Server VM を作成するために、後でまた使用します。
+これで、DC サーバーは正常にプロビジョニングされました。次に、この DC サーバー上の Active Directory ドメインを構成します。ローカル コンピューターで、PowerShell ウィンドウを開いたままにしておきます。2 つの SQL Server VM を作成するために、後でまた使用します。
 
 ## ドメイン コントローラーの構成
 
@@ -535,7 +536,7 @@ DC サーバーは、これで正常にプロビジョニングされました�
 		$svc2.Start();
 		$svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
 
-1. [Azure VM に AlwaysOn 可用性グループの WSFC クラスターを作成する](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)方法に関するページから **CreateAzureFailoverCluster.ps1** をローカルの作業ディレクトリにダウンロードします。このスクリプトを使用すると、必要最小限の WSFC クラスターを作成できます。WSFC と Azure ネットワークのやり取りに関する重要な情報については、[Azure Virtual Machines の SQL Server の高可用性と災害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)に関するページを参照してください。
+1. [Azure VM に AlwaysOn 可用性グループの WSFC クラスターを作成する](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)方法に関するページから **CreateAzureFailoverCluster.ps1** をローカルの作業ディレクトリにダウンロードします。このスクリプトを使用すると、必要最小限の WSFC クラスターを作成できます。WSFC と Azure ネットワークのやり取りに関する重要な情報については、[Azure Virtual Machines の SQL Server の高可用性と障害復旧](virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions.md)に関するページを参照してください。
 
 1. 作業ディレクトリに移動し、ダウンロードしたスクリプトで WSFC クラスターを作成します。
 
@@ -630,4 +631,4 @@ DC サーバーは、これで正常にプロビジョニングされました�
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

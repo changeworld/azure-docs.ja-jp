@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="LDAP 認証と Azure Multi-Factor Authentication Server"
-	description="LDAP 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="billmath"
-	manager="stevenpo"
+	pageTitle="LDAP 認証と Azure Multi-Factor Authentication Server" 
+	description="LDAP 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。" 
+	services="multi-factor-authentication" 
+	documentationCenter="" 
+	authors="billmath" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.service="multi-factor-authentication" 
+	ms.workload="identity" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/24/2015" 
 	ms.author="billmath"/>
 
 # LDAP 認証と Azure Multi-Factor Authentication Server 
@@ -63,4 +63,4 @@ LDAP クライアントを構成するには、次のガイドラインに従い
 - LDAP タイムアウトは、LDAP ディレクトリでユーザーの資格情報を検証し、第 2 要素認証を実行し、応答を受け取って LDAP アクセス要求に応答する時間があるように、30 ～ 60 秒に構成します。 
 - LDAPS を使用する場合、LDAP クエリを行うアプライアンスまたはサーバーは、Azure Multi-Factor Authentication Server にインストールされている SSL 証明書を信頼する必要があります。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -99,4 +99,4 @@ ACL は、ルールの一覧が格納されたオブジェクトです。ACL を
 
 [PowerShell を使用してエンドポイントのアクセス制御リスト (ACL) を管理する方法](../virtual-networks-acl-powershell)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -7,7 +7,7 @@
    manager="shreeshd"
    editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/26/2015" ms.author="trinadhk";"giridham"; "arunak"; "jimpark"; "aashishr"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/07/2015" ms.author="trinadhk";"giridham"; "arunak"; "jimpark"; "aashishr"/>
 
 # Azure Backup - FAQ
 Azure Backup に関する一般的な質問を次に示します。Azure Backup に関して他に不明な点がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)にアクセスして、質問を投稿してください。コミュニティのメンバーから回答を得ることができます。よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -27,7 +27,7 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 |Windows Storage Server 2012 R2 と最新 SP |64 ビット|	Standard、Workgroup|
 |Windows Storage Server 2012 と最新 SP |64 ビット |Standard、Workgroup
 |Windows Server 2012 R2 と最新 SP |64 ビット|	Essential|
-|Windows Server 2008 R2 SP1] |64 ビット|	Standard、Enterprise、Datacenter、Foundation|
+|Windows Server 2008 R2 SP1 |64 ビット|	Standard、Enterprise、Datacenter、Foundation|
 |Windows Server 2008 SP2 |64 ビット|	Standard、Enterprise、Datacenter、Foundation|
 
 **Q2.最新の Azure Backup エージェントはどこでダウンロードできますか。** <br/> A2.最新のエージェントは[こちら](http://aka.ms/azurebackup_agent)からダウンロードできます。Windows Server、SCDPM サーバー、Windows クライアントにインストールできます。
@@ -46,7 +46,7 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 **Q9.別のデータ センターにサーバーを登録する方法を教えてください。**<br/> A9.通常、バックアップ データは登録されている Backup サービスのデータセンターに送信されます。データセンターを変更する最も簡単な方法は、エージェントをアンインストールして再インストールし、新しいデータセンターに登録することです。
 
-**Q10.Azure にデータをバックアップしている Windows サーバーの名前を変更するとどうなりますか。** <br/> A10.現在構成されているバックアップは、すべて停止されます。サーバーをバックアップ資格情報コンテナーに再登録する必要があります。このサーバーは Recovery Services によって新しいサーバーと見なされるため、登録後に実行される初回のバックアップ操作は、前回実行されたバックアップからの変更分ではなく、バックアップ対象として含まれているすべてのデータの完全バックアップになります。ただし、復旧操作を実行する必要がある場合は、[別のサーバーからの復旧] という復旧オプションを使用して、バックアップされているデータを復旧できます。詳細については、「サーバーの名前の変更」をご覧ください。
+**Q10.Azure にデータをバックアップしている Windows サーバーの名前を変更するとどうなりますか。** <br/> A10.現在構成されているバックアップは、すべて停止されます。サーバーをバックアップ資格情報コンテナーに再登録する必要があります。このサーバーは Recovery Services によって新しいサーバーと見なされるため、登録後に実行される初回のバックアップ操作は、前回実行されたバックアップからの変更分ではなく、バックアップ対象として含まれているすべてのデータの完全バックアップになります。ただし、復旧操作を実行する必要がある場合は、[別のサーバーからの復旧] という復旧オプションを使用して、バックアップされているデータを復旧できます。
 
 **Q11.ファイルとフォルダーのバックアップ元として、どのような種類のドライブを使用できますか?** <br/> A11.次の一連のドライブやボリュームはバックアップできません。
 
@@ -99,10 +99,10 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 |No. |	オペレーティング システム |	データ ソースの最大サイズ |
 | :-------------: |:-------------| :-----|
 |1| Windows Server 2012 またはそれ以降| 54,400 GB|
-|2| Windows Server 8 またはそれ以降| 54,400 GB|
+|2| Windows 8 またはそれ以降| 54,400 GB|
 |3| Windows Server 2008、Windows Server 2008 R2 | 1,700 GB|
 |4| Windows 7 | 1,700 GB|
- 
+
 データソースのサイズは、以下のように計測されます。
 
 |	データソース |	詳細 |
@@ -120,9 +120,9 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 **Q4.DPM と Azure Backup (Windows Server 上で DPM なし) の保有ポリシーには違いがありますか?**<br/> A4.いいえ。同じ機能です。毎日、毎週、毎月、毎年単位で保有ポリシーを指定できます。
 
-**Q5.保有ポリシーを選択して構成できますか (毎週と毎日を指定し、毎年と毎月を指定しないなど)?**<br/> A5.最適なコンプライアンス / 保有期間の要件を定義するポリシーを考え出すためのあらゆるヒントがあります。
+**Q5.保有ポリシーを選択して構成できますか (毎週と毎日を指定し、毎年と毎月を指定しないなど)?**<br/> A5.はい。Azure Backup の保有構造では、要件に合わせて保有ポリシーを柔軟に定義できます。
 
-**Q6.午後 6 時に "バックアップをスケジュール" し、別の時刻に ”保有ポリシー” を指定することはできますか?**<br/> A6.いいえ。保有ポリシーは、バックアップ ポイントにのみ適用できます。下の画像では、午前 12 時と午後 6 時にバックアップが行われるように保有ポリシーが指定されています。<br/>
+**Q6.午後 6 時に "バックアップをスケジュール" し、別の時刻に "保有ポリシー" を指定することはできますか?**<br/> A6.いいえ。保有ポリシーは、バックアップ ポイントにのみ適用できます。下の画像では、午前 12 時と午後 6 時にバックアップが行われるように保有ポリシーが指定されています。<br/>
 
 ![バックアップのスケジュールと保有期間](./media/backup-azure-backup-faq/Schedule.png) <br/>
 
@@ -175,4 +175,4 @@ Azure Backup に関する一般的な質問を次に示します。Azure Backup 
 
 バックアップが新しいキャッシュ場所で正常に動作したら、元のキャッシュ フォルダーを削除できます。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

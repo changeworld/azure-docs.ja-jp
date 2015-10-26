@@ -21,7 +21,8 @@
 
 この拡張機能を使用すると、Azure 仮想マシンの SQL Server で、この記事に掲載されている特定のサービスを使用できるようになります。これらのサービスは、この拡張機能がインストールされている場合にのみ使用できます。この拡張機能は、Azure プレビュー ポータルの SQL Server Gallery Images の場合に自動的にインストールされます。Azure VM Guest Agent がインストールされている Azure の任意の SQL Server VM にインストールできます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの使用について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
  
 ## 前提条件
 Powershell コマンドレットを使用するための要件:
@@ -77,4 +78,4 @@ VM からこの拡張機能を削除する場合は、次の Azure Powershell �
 ### 構文
 Remove-AzureVMSqlServerExtension -VM <IPersistentVM> [<CommonParameters>]
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -156,4 +156,4 @@ VPN Gateway について詳しくは、「[VPN Gateway について](vpn-gateway
 
 サイト間 VPN を構成するには、「[サイト間 VPN 接続を使用した仮想ネットワークの作成](vpn-gateway-site-to-site-create.md)」を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

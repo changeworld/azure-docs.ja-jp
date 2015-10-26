@@ -10,7 +10,7 @@
 <tags 
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="09/23/2015" 
+	ms.date="10/08/2015" 
 	ms.author="sstein" 
 	ms.workload="data-management" 
 	ms.topic="article" 
@@ -149,17 +149,17 @@ Azure SQL Database V12 サーバーは、リソース グループにありま�
 
 エラスティック プールの作成と管理には、いくつかの PowerShell コマンドレットと REST API コマンドを使用できます。詳細とコード例については、「[PowerShell を使用したSQL Database のエラスティック データベース プールの作成と管理](sql-database-elastic-pool-powershell.md)」と「[C# で SQL Database を作成し、管理する](sql-database-client-library.md)」をご覧ください。
 
-
+> [AZURE.IMPORTANT]Azure PowerShell 1.0 Preview のリリースから、Switch-AzureMode コマンドレットは利用できなくなりました。また、Azure ResourceManger モジュールで使用されていたコマンドレットは名前が変更されました。詳細については、[Azure PowerShell での Switch-AzureMode の廃止](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)に関するページを参照してください。
 
 | [PowerShell コマンドレット](https://msdn.microsoft.com/library/mt163521.aspx) | [REST API のコマンド](https://msdn.microsoft.com/library/mt163571.aspx) |
 | :-- | :-- |
-| [New-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125987.aspx) | [エラスティック データベース プールを作成します](https://msdn.microsoft.com/library/mt163596.aspx) |
-| [Set-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125994.aspx) | [エラスティック データベース プールのパフォーマンス設定を設定します](https://msdn.microsoft.com/library/mt163641.aspx) |
-| [Remove-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt125830.aspx) | [エラスティック データベース プールを削除します](https://msdn.microsoft.com/library/mt163672.aspx) |
-| [Get-AzureSqlElasticPool](https://msdn.microsoft.com/library/mt126017.aspx) | [エラスティック データベース プールとそのプロパティ値を取得します](https://msdn.microsoft.com/ja-JP/library/mt163646.aspx) |
-| [Get-AzureSqlElasticPoolActivity](https://msdn.microsoft.com/library/mt125837.aspx) | [エラスティック データベース プールの操作の状態を取得します](https://msdn.microsoft.com/library/mt163669.aspx) |
-| [Get-AzureSqlElasticPoolDatabase](https://msdn.microsoft.com/library/mt125960.aspx) | [エラスティック データベース プールのデータベースを取得します](https://msdn.microsoft.com/library/mt163646.aspx) |
-| [Get-AzureSqlElasticPoolDatabaseActivity](https://msdn.microsoft.com/library/mt125973.aspx) | [プールへ、またはプールからのデータベースの移動の状態を取得します](https://msdn.microsoft.com/library/mt163669.aspx) |
+| [New-AzureRMSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378.aspx) | [エラスティック データベース プールを作成します](https://msdn.microsoft.com/library/mt163596.aspx) |
+| [Set-AzureRMSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603511.aspx) | [エラスティック データベース プールのパフォーマンス設定を設定します](https://msdn.microsoft.com/library/mt163641.aspx) |
+| [Remove-AzureRMSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619355.aspx) | [エラスティック データベース プールを削除します](https://msdn.microsoft.com/library/mt163672.aspx) |
+| [Get-AzureRMSqlElasticPool](https://msdn.microsoft.com/library/azure/mt603517.aspx) | [エラスティック データベース プールとそのプロパティ値を取得します](https://msdn.microsoft.com/JA-JP/library/mt163646.aspx) |
+| [Get-AzureRMSqlElasticPoolActivity](https://msdn.microsoft.com/library/azure/mt603812.aspx) | [エラスティック データベース プールの操作の状態を取得します](https://msdn.microsoft.com/library/mt163669.aspx) |
+| [Get-AzureRMSqlElasticPoolDatabase](https://msdn.microsoft.com/library/azure/mt619484.aspx) | [エラスティック データベース プールのデータベースを取得します](https://msdn.microsoft.com/library/mt163646.aspx) |
+| [Get-AzureRMSqlElasticPoolDatabaseActivity]() | [プールへ、またはプールからのデータベースの移動の状態を取得します](https://msdn.microsoft.com/library/mt163669.aspx) |
 
 ## Transact-SQL
 
@@ -172,7 +172,7 @@ TRANSACT-SQL を使用して、次のエラスティック データベース管
 | プールのリソース使用状況の統計を取得する | [sys.elastic\_pool\_resource\_stats (Azure SQL Database)](https://msdn.microsoft.com/library/mt280062.aspx) |
 
 
-## 課金と料金情報
+## 課金と価格情報
 
 エラスティック データベース プールは、次の特性ごとに課金されます。
 
@@ -184,7 +184,7 @@ TRANSACT-SQL を使用して、次のエラスティック データベース管
 - エラスティック プールの価格は、プールの eDTU 数に基づきます。エラスティック プールの価格は、内部のエラスティック データベースの使用率とは関係ありません。
 - 価格は、(プールの eDTU 数) x (eDTU あたりの単価) で計算されます。
 
-エラスティック プールの eDTU 単価は、同じサービス階層のスタンドアロン データベースの DTU 単価よりも高くなります。詳細については、「[SQL Database 料金](http://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+エラスティック プールの eDTU 単価は、同じサービス階層のスタンドアロン データベースの DTU 単価よりも高くなります。詳細については、「[SQL Database の価格](http://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 ## エラスティック データベース プールのエラー
 
@@ -199,4 +199,4 @@ TRANSACT-SQL を使用して、次のエラスティック データベース管
 | 40860 | EX_USER | エラスティック プール '%ls' とサービス目標 '%ls' の組み合わせが正しくありません。 | エラスティック プール名、サービス レベル目標名 | エラスティック プールとサービス目標は、サービス目標が 'ElasticPool' に指定されている場合にのみ同時に指定できます。 | エラスティック プールとサービス目標の適切な組み合わせを指定してください。 |
 | 40861 | EX_USER | データベースのエディション '%.*ls' は、エラスティック プールのサービス階層 ('%.*ls') と同じである必要があります。 | データベースのエディション、エラスティック プールのサービス階層 | データベースのエディションの大文字と小文字が、エラスティック プールのサービス階層と異なります。 | エラスティック プールのサービス階層と異なるデータベース エディションを指定しないでください。データベースのエディションを指定する必要がないことにご注意ください。 |
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

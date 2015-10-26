@@ -254,4 +254,4 @@ Redis Cache を削除するには、次のコマンドを使用します。
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

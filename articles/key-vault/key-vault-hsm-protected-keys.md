@@ -317,4 +317,4 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 これでこの HSM 保護キーを Key Vault で使用できます。詳細については、[Azure Key Vault の概要](key-vault-get-started.md)のチュートリアルの「**ハードウェア セキュリティ モジュール (HSM) を使用する場合**」セクションを参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

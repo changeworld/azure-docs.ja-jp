@@ -403,4 +403,4 @@ AMS のラーニング パスについては、以下を参照してください
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、「[アセットの配信ポリシーの構成方法](media-services-dotnet-configure-asset-delivery-policy.md)」トピックにお進みください。
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

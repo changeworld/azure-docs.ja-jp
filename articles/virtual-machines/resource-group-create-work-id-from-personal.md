@@ -21,7 +21,8 @@
 
 MSDN Azure クレジットを活用するために、個人の Azure アカウントを作成した場合や、個人の MSDN サブスクリプションがあり、Azure アカウントを作成した場合、*Microsoft アカウント* ID を使用して作成しています。Azure の優れた機能の中でも[リソース グループ テンプレート](../resource-group-overview.md)はその一例ですが、作業にあたって職場または学校のアカウント (Azure Active Directory で管理される ID) が必要です。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、Resource Manager デプロイ モデルとクラシック デプロイ モデルの両方で必要となる AAD ID の作成ついて説明します。
+
+> [AZURE.NOTE]Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[リソース マネージャー デプロイ モデルとクラシック デプロイ モデル](../resource-manager-deployment-model.md)です。この記事では、両方のモデルについて取り上げていますが、最新のデプロイではリソース マネージャー モデルの使用をお勧めします。
 
 
 個人の Azure アカウントを持つことで得られるメリットの 1 つは、既定の Azure Active Directory ドメインが付属することです。これを使用して職場や学校のアカウントを新規に作成し、アカウントを要求する Azure 機能で利用できます。
@@ -144,4 +145,4 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
     data:
     info:    group create command OK
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

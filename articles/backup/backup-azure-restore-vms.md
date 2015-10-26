@@ -8,9 +8,9 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/11/2015" ms.author="trinadhk"; "jimpark"/>
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/01/2015" ms.author="trinadhk"; "jimpark"/>
 
-# 仮想マシンの復元
+# Azure 仮想マシンの復元
 復元操作を使用して、Azure バックアップ資格情報コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元できます。
 
 ## ワークフローの復元
@@ -59,7 +59,7 @@
 
     ![仮想ネットワークを作成する](./media/backup-azure-restore-vms/restore-sa.png)
 
-3. 仮想マシンを選択する: 仮想マシンの作成時に、仮想マシンの仮想ネットワーク (VNET) を選択する必要があります。復元 UI は、使用できるこのサブスクリプション内の VNET をすべて表示します。復元された仮想マシンの VNET を選択する必要はありません。VNET が適用されない場合でも、インターネット経由で復元された仮想マシンに接続できます。
+3. 仮想ネットワークを選択する: 仮想マシンの作成時に、仮想マシンの仮想ネットワーク (VNET) を選択する必要があります。復元 UI は、使用できるこのサブスクリプション内の VNET をすべて表示します。復元された仮想マシンの VNET を選択する必要はありません。VNET が適用されない場合でも、インターネット経由で復元された仮想マシンに接続できます。
 
     選択したクラウド サービスが仮想ネットワークに関連付けられている場合は、仮想ネットワークを変更できません。
 
@@ -105,4 +105,4 @@ VM は、(他の VM と同様に) Azure ポータルから復元するか、ま�
 - [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

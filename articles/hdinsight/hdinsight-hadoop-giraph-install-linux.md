@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/18/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
@@ -91,7 +91,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 	この値 (重み) を使用し、オブジェクト間の距離に応じて線を引くと、先のデータは次の図のようになります。
 
-	![tiny\_graph.txt drawn as circles with lines of varying distance between](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
+	![円で表した tiny\_graph.txt (線はオブジェクト間の距離)](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
 
 2. ファイルを保存するには、__Ctrl キーを押しながら X キー__を押し、__Y__ キー、__Enter__ キーの順に押してファイル名を確定します。
 
@@ -135,7 +135,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 	これを視覚化して、ID 1 と他のすべてのオブジェクトの間で最短パスを結ぶことにより、結果を検証できます。ID 1 と ID 4 の最短パスは 5 です。これは、<span style="color:orange">ID 1 と 3</span>、<span style="color:red">ID 3 と 4</span> を結ぶ距離の合計です。
 
-	![Drawing of objects as circles with shortest paths drawn between](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph-out.png)
+	![オブジェクトを円で表し、最短パスで結んだ図](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph-out.png)
 
 
 ## 次のステップ
@@ -148,4 +148,4 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 - [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install-linux.md):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。Solr は、格納されたデータに対して強力な検索操作を実行することができます。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

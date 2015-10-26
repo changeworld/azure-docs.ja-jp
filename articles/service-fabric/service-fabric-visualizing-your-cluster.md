@@ -75,4 +75,4 @@ Service Fabric Explorer を使用して、クラスターで実行されてい�
 [replicadetails]: ./media/service-fabric-visualizing-your-cluster/replicadetails.png
 [servicefabricexplorer]: ./media/service-fabric-visualizing-your-cluster/servicefabricexplorer.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

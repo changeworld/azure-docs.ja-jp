@@ -42,4 +42,4 @@ API ヘルプ ページには、R、C#、Python の各プログラミング言�
 
 これらの Web サービスにアクセスして使用する方法の詳細については、「[Machine Learning の実験から発行された Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

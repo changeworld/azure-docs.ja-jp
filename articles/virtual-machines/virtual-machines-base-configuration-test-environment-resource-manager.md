@@ -19,7 +19,8 @@
 
 # Azure リソース マネージャーでの基本構成テスト環境
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。また、[クラシック デプロイメント モデル](virtual-machines-base-configuration-test-environment.md)を使用してリソースを作成することもできます。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-base-configuration-test-environment.md)。
 
 この記事では、リソース マネージャーで作成された仮想マシンコンピューターを使用し、Microsoft Azure Virtual Network 内に基本構成テスト環境を作成する手順について説明します。
 
@@ -34,9 +35,9 @@
 
 その構成要素を次に示します。
 
-- Azure Virtual Machines (×1)。イントラネットのドメイン コントローラーおよびドメイン ネーム システム (DNS) サーバーとして構成された、DC1 という名前の Windows Server 2012 R2 を実行します。
-- Azure Virtual Machines (×1)。一般的なアプリケーション/Web サーバーとして構成された、APP1 という名前の Windows Server 2012 R2 を実行します。
-- Azure Virtual Machines (×1)。CLIENT1 という名前の Windows Server 2012 R2 を実行し、イントラネットのクライアントとして機能します。
+- Azure 仮想マシン (×1)。イントラネットのドメイン コントローラーおよびドメイン ネーム システム (DNS) サーバーとして構成された、DC1 という名前の Windows Server 2012 R2 を実行します。
+- Azure 仮想マシン (×1)。一般的なアプリケーション/Web サーバーとして構成された、APP1 という名前の Windows Server 2012 R2 を実行します。
+- Azure 仮想マシン (×1)。CLIENT1 という名前の Windows Server 2012 R2 を実行し、イントラネットのクライアントとして機能します。
 
 この構成では、DC1、APP1、CLIENT1 をはじめとする、Corpnet サブネットに属しているコンピューターに対して、次のことを実行できます。
 
@@ -52,15 +53,15 @@ Windows Server 2012 R2 基本構成テスト環境の Corpnet サブネットを
 
 まだ Azure アカウントがない場合は、[こちら](http://azure.microsoft.com/pricing/free-trial/)から無料試用版にサインアップしてください。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
-> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure Virtual Machines を実行するコストの詳細については、[Virtual Machines 料金](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 料金計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
+> [AZURE.NOTE]Azure で仮想マシンを実行しているときは継続的に料金コストが発生します。その費用は、無料試用版、MSDN サブスクリプション、または有料のサブスクリプションに対して請求されます。Azure 仮想マシンを実行するコストの詳細については、[Virtual Machines の価格](http://azure.microsoft.com/pricing/details/virtual-machines/)と [Azure 価格計算ツール](http://azure.microsoft.com/pricing/calculator/)に関するページを参照してください。コストを低く抑える方法については、「[Azure のテスト環境の仮想マシンで生じるコストを最小限に抑える方法](#costs)」を参照してください。
 
 ## フェーズ 1: 仮想ネットワークを作成する
 
-最初に、必要であれば、「[Azure PowerShell のインストールと構成方法](../install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。Azure PowerShell プロンプトを開きます。
+最初に、必要であれば、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。Azure PowerShell プロンプトを開きます。
 
 > [AZURE.NOTE]この記事には、バージョン 1.0.0 *未満*の Azure PowerShell に対応するコマンドが含まれています。Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドで確認できます。この記事に示す Azure PowerShell コマンド ブロックは、Azure PowerShell のバージョン 1.0.0 以降の新しいコマンドレットをサポートするためにテストおよび更新を行っている段階にあります。もうしばらくお待ちください。
 
-次に、以下のコマンドで、適切な Azure サブスクリプションを選択します。引用符内のすべての文字 (< and > を含む) を正しい名前に置き換えます。
+次に、以下のコマンドで、適切な Azure サブスクリプションを選択します。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
 
 	$subscr="<Subscription name>"
 	Select-AzureSubscription -SubscriptionName $subscr –Current
@@ -121,7 +122,7 @@ Test-AzureName コマンドで **False** と表示される場合、指定した
 
 DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン corp.contoso.com のドメイン コントローラーとして、また、TestLab 仮想ネットワークの仮想マシンに使用される DNS サーバーとして機能します。
 
-まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトでリソース グループの名前、Azure の場所、ストレージ アカウント名を入力して、これらのコマンドを実行し、DC1 の Azure Virtual Machines を作成します。
+まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトでリソース グループの名前、Azure の場所、ストレージ アカウント名を入力して、これらのコマンドを実行し、DC1 の Azure 仮想マシンを作成します。
 
 	$rgName="<resource group name>"
 	$locName="<Azure location, such as West US>"
@@ -163,7 +164,7 @@ DC1 は、Active Directory ドメイン サービス (AD DS) のドメイン cor
 7.	[ドライブ文字またはフォルダーへの割り当て] ページで、**[次へ]** をクリックします。
 8.	[ファイル システム形式の選択] ページで、**[次へ]** をクリックします。
 9.	[選択内容の確認] ページで、**[作成]** をクリックします。
-10.	作成されたら、**[閉じる]** をクリックします。
+10.	完了したら、**[閉じる]** をクリックします。
 
 次に、corp.contoso.com ドメインのドメイン コントローラー兼 DNS サーバーとして DC1 を構成します。管理者レベルの Windows PowerShell コマンド プロンプトで以下のコマンドを実行します。
 
@@ -202,7 +203,7 @@ DC1 とのリモート デスクトップ セッションを閉じ、CORP\\User1
 
 APP1 は、Web サービスとファイル共有サービスを提供します。
 
-まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトでリソース グループの名前、Azure の場所、ストレージ アカウント名を入力して、これらのコマンドを実行し、APP1 の Azure Virtual Machines を作成します。
+まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトでリソース グループの名前、Azure の場所、ストレージ アカウント名を入力して、これらのコマンドを実行し、APP1 の Azure 仮想マシンを作成します。
 
 	$rgName="<resource group name>"
 	$locName="<Azure location, such as West US>"
@@ -251,7 +252,7 @@ APP1 が再起動した後、CORP\\User1 のアカウント名とパスワード
 
 CLIENT1 は、Contoso イントラネット上の標準的なノート PC、タブレット、またはデスクトップ コンピューターとなります。
 
-まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトでリソース グループの名前、Azure の場所、ストレージ アカウント名を入力して、これらのコマンドを実行し、CLIENT1 の Azure Virtual Machines を作成します。
+まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトでリソース グループの名前、Azure の場所、ストレージ アカウント名を入力して、これらのコマンドを実行し、CLIENT1 の Azure 仮想マシンを作成します。
 
 	$rgName="<resource group name>"
 	$locName="<Azure location, such as West US>"
@@ -335,4 +336,4 @@ Azure PowerShell で仮想マシンを順番に起動するには、リソース
 	Start-AzureVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

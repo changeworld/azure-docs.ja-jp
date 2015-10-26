@@ -45,7 +45,7 @@
 
 2.	**[新しいデータ ファクトリ]** ブレードで、[名前] に「**DataFactoryMyFirstPipeline**」と入力します。
 
-	![New data factory blade](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
+	![[新しいデータ ファクトリ] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
 	> [AZURE.IMPORTANT]Azure Data Factory の名前はグローバルで一意となります。ファクトリを作成するには、データ ファクトリの名前の先頭にあなたの名前を付ける必要があります。 
 3.	リソース グループを作成していない場合は、リソース グループを作成する必要があります。これを行うには、次の手順を実行します。
@@ -54,7 +54,7 @@
 	3.	**[リソース グループの作成]** ブレードで、**[名前]** に「**ADF**」と入力します。
 	4.	**[OK]** をクリックします。
 	
-		![Create resource group](./media/data-factory-build-your-first-pipeline-using-editor/create-resource-group.png)
+		![リソース グループの作成](./media/data-factory-build-your-first-pipeline-using-editor/create-resource-group.png)
 4.	リソース グループを選択した後、データ ファクトリを作成する正しいサブスクリプションを使用していることを確認します。
 5.	**[新しいデータ ファクトリ]** ブレードで **[作成]** をクリックします。
 6.	次のように、Azure プレビュー ポータルの**スタート画面**にデータ ファクトリを作成中であることが示されます。   
@@ -62,7 +62,7 @@
 	![Data factory を作成中の状態](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
 7. ご利用ありがとうございます。 これで、最初のデータ ファクトリが正常に作成されました。データ ファクトリが正常に作成されると、データ ファクトリの内容を表示するデータ ファクトリ ページが表示されます。 	
 
-	![Data Factory blade](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
+	![[データ ファクトリ] ブレード](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
 
 以降の手順では、このチュートリアルで使用するリンクされたサービス、データセット、およびパイプラインを作成する方法を説明します。
 
@@ -75,7 +75,7 @@
 	![[作成とデプロイ] タイル](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
 2.	**[新しいデータ ストア]** をクリックし、**[Azure ストレージ]** を選択します。
 	
-	![Azure ストレージのリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
+	![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
 	Azure Storage のリンクされたサービスを作成するための JSON スクリプトがエディターに表示されます。 
 4. **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md/#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
@@ -216,7 +216,7 @@
 	![[ダイアグラム] タイル](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
 7. ダイアグラム ビューに、パイプラインの概要と、このチュートリアルで使用されるデータセットが表示されます。
 	
-	![Diagram View](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png) 
+	![[ダイアグラム] ビュー](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png) 
 8. ダイアグラム ビューで、**AzureBlobOutput** データセットをダブルクリックします。現在処理中のスライスが表示されます。
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
@@ -235,4 +235,4 @@
 ## フィードバックの送信
 この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-build-your-first-pipeline-using-editor.md)でフィードバックをお寄せください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

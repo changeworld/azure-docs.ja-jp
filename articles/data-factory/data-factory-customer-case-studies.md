@@ -48,4 +48,4 @@ Data Factory は、データの移動や変換を自動化するクラウド ベ
 
 [Cloud Machine Learning により、顧客とのつながりを強化](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

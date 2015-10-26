@@ -106,9 +106,9 @@ Azure Mobile Engagement [SDK][Link 5] をアプリケーションに統合し、
 [Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
 [Link 7]: https://account.windowsazure.com/PreviewFeatures
 [Link 8]: https://social.msdn.microsoft.com/Forums/azure/ja-jp/home?forum=azuremobileengagement
-[Link 9]: http://azure.microsoft.com/ja-jp/services/mobile-engagement/
-[Link 10]: http://azure.microsoft.com/ja-jp/documentation/services/mobile-engagement/
-[Link 11]: http://azure.microsoft.com/ja-jp/pricing/details/mobile-engagement/
+[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
 [Link 12]: mobile-engagement-user-interface-navigation.md
 [Link 13]: mobile-engagement-user-interface-home.md
 [Link 14]: mobile-engagement-user-interface-my-account.md
@@ -133,4 +133,4 @@ Azure Mobile Engagement [SDK][Link 5] をアプリケーションに統合し、
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

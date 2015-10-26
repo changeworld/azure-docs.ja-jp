@@ -1,20 +1,20 @@
 
 <properties 
-    pageTitle="Azure RemoteApp で Office を使用する"
-	description="Azure RemoteApp と Office を連携させる方法について説明します。"
-	services="remoteapp"
-	documentationCenter=""
-	authors="lizap"
-	manager="mbaldwin"/>
+    pageTitle="Azure RemoteApp で Office を使用する" 
+    description="Azure RemoteApp と Office を連携させる方法について説明します。" 
+    services="remoteapp" 
+    documentationCenter="" 
+    authors="lizap" 
+    manager="mbaldwin" />
 
 <tags 
-    ms.service="remoteapp"
-	ms.workload="compute"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/02/2015"
-	ms.author="elizapo"/>
+    ms.service="remoteapp" 
+    ms.workload="compute" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/02/2015" 
+    ms.author="elizapo" />
 
 # Azure RemoteApp で Office を使用する
 
@@ -50,4 +50,4 @@ RemoteApp の 30 日間の無償試用期間中は、Office 2013 Professional Pl
 試用期間の終了後に実稼働モードに切り替えないと、RemoteApp コレクションは無効になります。データは保存されます - 設定とユーザーのデータはあと 90 日間保存されますので、サービスをアクティブ化してデータを失うことなく、実稼働モードに切り替えることができます。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

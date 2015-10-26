@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="ASP.NET 5 向けの Application Insights"
-	description="Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。"
-	services="application-insights"
-	documentationCenter=".net"
-	authors="alancameronwills"
+	pageTitle="ASP.NET 5 向けの Application Insights" 
+	description="Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。" 
+	services="application-insights" 
+    documentationCenter=".net"
+	authors="alancameronwills" 
 	manager="ronmart"/>
 
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/27/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="05/27/2015" 
 	ms.author="awills"/>
 
 # ASP.NET 5 向けの Application Insights
@@ -38,7 +38,7 @@ Visual Studio 2015 の標準の ASP.NET 5 プロジェクト テンプレート�
 
 表示される [[リソース][roles]] ブレードには、アプリに関するパフォーマンスと使用状況データが表示されます。次に Azure にログインするときにこのブレードに戻るには、スタート画面でそのタイルを見つけてください。あるいは、[参照] ボタンをクリックして探します。
 
-アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリック エクスプ ローラー][metrics]に表示されるプロパティが設定されます。
+アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリックス エクスプローラー][metrics]に表示されるプロパティが設定されます。
 
 ##  インストルメンテーション キーでプロジェクトを構成します。
 
@@ -54,13 +54,13 @@ ASP.NET 5 プロジェクトで、`config.json` にキーを貼り付けます�
       }
     }
 
-あるいは、構成を動的にする場合、このコードをアプリケーションのスタートアップ クラスに追加できます。
+または、構成を動的にする場合、このコードをアプリケーションのスタートアップ クラスに追加できます。
 
     configuration.AddApplicationInsightsSettings(
       instrumentationKey: "11111111-2222-3333-4444-555555555555");
 
 
-## アプリケーションの正常性と利用状況の監視
+## Application Insights をプロジェクトに追加する
 
 
 #### NuGet パッケージを参照する
@@ -128,7 +128,7 @@ NuGet パッケージの [最新のリリース番号](https://github.com/Micros
 
     @inject Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration TelemetryConfiguration
 
-`</head>` タグの前とその他のスクリプトの前に Html ヘルパーを挿入します。ページから報告するカスタム JavaScript の利用統計情報があれば、このスニペットの後に挿入します。
+`</head>` タグの前とその他のスクリプトの前に Html ヘルパーを挿入します。ページから報告するカスタム JavaScript のテレメトリがあれば、このスニペットの後に挿入します。
 
     <head> 
 
@@ -172,7 +172,7 @@ Visual Studio でアプリケーションをデバッグするか、それを We
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

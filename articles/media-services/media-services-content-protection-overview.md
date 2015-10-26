@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="コンテンツ保護の概要" 
-	description="この記事では、Media Services でのコンテンツ保護のの概要について説明します。" 
+	description="この記事では、Media Services でのコンテンツ保護の概要について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/07/2015" 
+	ms.date="09/08/2015" 
 	ms.author="juliako"/>
 
 #コンテンツ保護の概要
 
 
-Microsoft Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と、PlayReady や Widevine DRM を使用する共通暗号化 (CENC) 使用して、動的に暗号化したコンテンツを配信できます。Media Services では、承認されたクライアントにキーと PlayReady ライセンスを配信するためのサービスも提供しています。現在、Media Services では、Widevine のライセンス サーバーは提供されません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
+Microsoft Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と、PlayReady や Widevine DRM を使用する共通暗号化 (CENC) 使用して、動的に暗号化したコンテンツを配信できます。Media Services では、承認されたクライアントにキーと PlayReady ライセンスを配信するためのサービスも提供しています。現在、Media Services では、Widevine ライセンス サーバーは提供されていません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
 
 - 次に、"PlayReady と Widevine DRM の動的共通暗号化" ワークフローの説明図を示します。詳細については、「[PlayReady DRM の動的暗号化とライセンス提供サービスの使用](media-services-protect-with-drm.md)」を参照してください。
 
@@ -30,7 +30,7 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 	![AES-128 での保護](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
->[AZURE.NOTE]動的暗号化を使用するには、暗号化されたコンテンツのストリーミング元となるストリーミング エンドポイントに、少なくとも 1 つのストリーミング占有ユニットが必要です。
+>[AZURE.NOTE]動的暗号化を使用するには、暗号化されたコンテンツのストリーミング元となるストリーミング エンドポイントに、少なくとも 1 つのストリーミング予約ユニットが必要です。
 
 ##概念
 
@@ -54,7 +54,7 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 ###動的な暗号化
 
-Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と PlayReady DRM を使用して動的に暗号化したコンテンツを配信できます。
+Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と PlayReady または Widevine DRM を使用して動的に暗号化したコンテンツを配信できます。
 
 現時点では、以下のストリーミング形式を暗号化できます。HLS、MPEG DASH、およびスムーズ ストリーミング。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
 
@@ -86,15 +86,15 @@ Media Services には PlayReady ライセンスを提供するサービスが用
 
 ###Widevine
 
-AMS では、Widevine DRM で暗号化された DASH を配信することもできます。PlayReady と Widevine はいずれも共通暗号化 (CENC) 仕様に従って暗号化されます。[AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (バージョン 3.5.1 以降) または REST API を使用して、Widevine を使用するように AssetDeliveryConfiguration を構成できます。
+AMS では、Widevine DRM で暗号化された MPEG DASH を配信することもできます。PlayReady と Widevine はいずれも共通暗号化 (CENC) 仕様に従って暗号化されます。[AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (バージョン 3.5.1 以降) または REST API を使用して、Widevine を使用するように AssetDeliveryConfiguration を構成できます。
 
-現在、Media Services では、Widevine のライセンス サーバーは提供されません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
+現在、Media Services では、Widevine ライセンス サーバーは提供されていません。Widevine ライセンスは、AMS パートナーの [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/) を通して配信できます。
 
 ##一般的なシナリオ
 
 ###ストレージ内のコンテンツ保護、動的に暗号化されたストリーミング メディアの配信、AMS キー/ライセンス配信サービスの使用  
 
-1. 高品質な中間ファイルをアセットに取り出します。ストレージ暗号化オプションをアセットに適用します。
+1. 高品質な中間ファイルを資産に取り出します。ストレージ暗号化オプションを資産に適用します。
 2. ストリーミング エンドポイントを構成します。
 1. アダプティブ ビットレート MP4 セットにエンコードします。ストレージ暗号化オプションを出力資産に適用します。
 1. 再生中に動的に暗号化する資産の、暗号化コンテンツ キーを作成します。
@@ -136,4 +136,4 @@ AMS のラーニング パスについては、以下を参照してください
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

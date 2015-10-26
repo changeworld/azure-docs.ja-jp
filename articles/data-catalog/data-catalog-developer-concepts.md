@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Data Catalog 開発者の概念"
-	description="Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。"
-	services="data-catalog"
-	documentationCenter=""
-	authors="dvana"
-	manager="mblythe"
-	editor=""
-	tags=""/>
+   description="Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。"
+   services="data-catalog"
+   documentationCenter=""
+   authors="dvana"
+   manager="mblythe"
+   editor=""
+   tags=""/>
 <tags 
    ms.service="data-catalog"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-catalog"
-	ms.date="07/13/2015"
-	ms.author="derrickv"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-catalog"
+   ms.date="07/13/2015"
+   ms.author="derrickv"/>
 
 # Azure Data Catalog 開発者の概念
 
@@ -113,7 +113,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <table><tr><td><b>注釈の型</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>説明</td><td></td><td></td><td>システムの各ユーザーは、独自の説明とタグを追加できます。そのユーザーだけが説明オブジェクトを編集できます (管理者および資産の所有者は、説明オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、資産ごとに説明の配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、資産に関する知識を提供した各ユーザーの説明)。</td></tr><tr><td></td><td>friendlyName</td><td>string</td><td>データ ソースから派生した名前の代わりに使用できるフレンドリ名。これは、表示と検索を行う場合に有用です。</td></tr><tr><td></td><td>tags</td><td>string[]</td><td>資産のタグの配列。</td></tr><tr><td></td><td>description</td><td>string</td><td>資産の簡単な説明 (2 ～ 3 行)。</td></tr><tr><td>スキーマ</td><td></td><td></td><td>スキーマは、データの構造を説明します。属性 (列、属性、フィールドなど) の名前と型、およびその他のメタデータを一覧表示します。この情報はすべて、データ ソースから派生します。通常、資産には 1 つのスキーマ項目があります。</td></tr><tr><td></td><td>columns</td><td>Column[]</td><td>列オブジェクトの配列。データ ソースから派生した情報を含む列を説明します。</td></tr><tr><td>SchemaDescription</td><td></td><td></td><td>スキーマで定義されている各属性の説明とタグ セットが含まれています。システムの各ユーザーは、独自の説明とタグを追加できます。そのユーザーだけが説明オブジェクトを編集できます (管理者および資産の所有者は、SchemaDescription オブジェクトを削除できますが、編集することはできません)。システムで、これらは別々に管理されます。したがって、資産ごとに SchemaDescription オブジェクトの配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、属性に関する知識を提供した各ユーザーの説明)。SchemaAttributes はスキーマに疎結合されているため、同期しなくなる可能性があります。つまり、SchemaDescription は、スキーマに存在しない列を説明する場合や、最近追加された新しい列を参照できない場合があります。これらの同期を保つのは、ライターの責任です。データ ソースには、説明情報も含まれる場合があります。これは、ツールを実行するときに作成される追加の schemaDescription オブジェクトです。</td></tr><tr><td></td><td>columnDescriptions</td><td>ColumnDescription[]</td><td>スキーマ内の列を説明する ColumnDescriptions の配列です。</td></tr><tr><td>エキスパート</td><td></td><td></td><td>データ セット内でエキスパートと見なされるユーザーの一覧が含まれています。説明の一覧を表示すると、エキスパートの意見 (説明) が UX の一番上に表示されます。各ユーザーは、エキスパートの独自の一覧を指定できます。そのユーザーだけがエキスパート オブジェクトを編集できます (管理者および資産の所有者は、エキスパート オブジェクトを削除できますが、編集することはできません)。</td></tr><tr><td></td><td>experts</td><td>string[]</td><td>電子メール アドレスの配列。</td></tr><tr><td>更新</td><td></td><td></td><td>プレビューには、資産のデータの上位 20 行のスナップショットが含まれています。プレビューは、一部の資産の型に対してのみ意味を持ちます (テーブルに対しては意味を持ちますが、メジャーに対しては意味を持ちません)。</td></tr><tr><td></td><td>プレビュー</td><td>object[]</td><td>列を表すオブジェクトの配列。各オブジェクトには、列へのプロパティ マッピングが、行に対するその列の値と共に含まれます。</td></tr>
 <tr><td>AccessInstruction</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>mimeType</td><td>string</td><td>コンテンツの MIME の種類。</td></tr>
-<tr><td></td><td>コンテンツ</td><td>string</td><td>このデータ資産にアクセスする方法の手順。これには、URL、電子メール アドレス、一連の手順が考えられます。</td></tr>
+<tr><td></td><td>コンテンツ</td><td>文字列</td><td>このデータ資産にアクセスする方法の手順。これには、URL、電子メール アドレス、一連の手順が考えられます。</td></tr>
 
 <tr><td>TableDataProfile</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>データ セット内の行の数</td></tr>
@@ -131,7 +131,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 共通の型は、プロパティの型として使用できますが、項目ではありません。
 
-<table><tr><td><b>共通の型</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr><tr><td></td><td>sourceType</td><td>string</td><td>SQL Server、Oracle データベースなど、データ ソースの種類を説明します。  </td></tr><tr><td></td><td>ObjectType</td><td>string</td><td>SQL Server のテーブルやビューなど、データ ソース内のオブジェクトの種類を説明します。</td></tr><tr><td></td><td>formatType</td><td>string</td><td>データの構造について説明します。現在の値は、構造化済みであるか、または構造化されていません。</td></tr><tr><td>SecurityPrincipal</td><td></td><td></td><td></td></tr><tr><td></td><td>upn</td><td>string</td><td>ユーザーの一意の電子メール アドレス。</td></tr><tr><td></td><td>firstName</td><td>string</td><td>ユーザーの名前 (表示用)。</td></tr><tr><td></td><td>lastName</td><td>string</td><td>ユーザーの姓 (表示用)。</td></tr><tr><td>分割</td><td></td><td></td><td></td></tr><tr><td></td><td>name</td><td>string</td><td>列または属性の名前。</td></tr><tr><td></td><td>type</td><td>string</td><td>列または属性のデータ型。使用可能な型は、資産のデータ ソースの種類によって異なります。型のサブセットのみがサポートされます。</td></tr><tr><td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>Precision</td><td>byte</td><td>列または属性の有効桁数。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>isNullable</td><td>Boolean</td><td>列が null 値を含むことができるかどうか。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>expression</td><td>string</td><td>値が計算列である場合、このフィールドには値を表す式が含まれています。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>defaultValue</td><td>オブジェクト</td><td>オブジェクトに対して insert ステートメントで指定されていない場合に挿入される既定値。データ ソースから派生します。一部のソースの種類のみに適用されます。</td>
+<table><tr><td><b>共通の型</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr><tr><td></td><td>sourceType</td><td>string</td><td>SQL Server、Oracle データベースなど、データ ソースの種類を説明します。  </td></tr><tr><td></td><td>ObjectType</td><td>string</td><td>SQL Server のテーブルやビューなど、データ ソース内のオブジェクトの種類を説明します。</td></tr><tr><td></td><td>formatType</td><td>string</td><td>データの構造について説明します。現在の値は、構造化済みであるか、または構造化されていません。</td></tr><tr><td>SecurityPrincipal</td><td></td><td></td><td></td></tr><tr><td></td><td>upn</td><td>string</td><td>ユーザーの一意の電子メール アドレス。</td></tr><tr><td></td><td>firstName</td><td>string</td><td>ユーザーの名前 (表示用)。</td></tr><tr><td></td><td>lastName</td><td>string</td><td>ユーザーの姓 (表示用)。</td></tr><tr><td>分割</td><td></td><td></td><td></td></tr><tr><td></td><td>name</td><td>string</td><td>列または属性の名前。</td></tr><tr><td></td><td>type</td><td>string</td><td>列または属性のデータ型。使用可能な型は、資産のデータ ソースの種類によって異なります。型のサブセットのみがサポートされます。</td></tr><tr><td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>Precision</td><td>byte</td><td>列または属性の有効桁数。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>isNullable</td><td>Boolean</td><td>列が null 値を含むことができるかどうか。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>expression</td><td>文字列</td><td>値が計算列である場合、このフィールドには値を表す式が含まれています。データ ソースから派生します。一部のソースの種類のみに適用されます。</td></tr><tr><td></td><td>defaultValue</td><td>オブジェクト</td><td>オブジェクトに対して insert ステートメントで指定されていない場合に挿入される既定値。データ ソースから派生します。一部のソースの種類のみに適用されます。</td>
 
 </tr><tr><td>ColumnDescription</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>tags</td><td>string[]</td><td>列を説明するタグの配列。</td></tr>
@@ -139,7 +139,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 </tr><tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columnName </td><td>string</td><td>列の名前</td></tr>
-<tr><td></td><td>type </td><td>string</td><td>列の種類</td></tr>
+<tr><td></td><td>type </td><td>文字列</td><td>列の種類</td></tr>
 <tr><td></td><td>min </td><td>string</td><td>データ セット内の最小値</td></tr>
 <tr><td></td><td>max </td><td>string</td><td>データ セット内の最大値</td></tr>
 <tr><td></td><td>avg </td><td>double</td><td>データ セット内の平均値</td></tr>
@@ -182,15 +182,15 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 
 ## REST API
 
-**PUT** および **POST** の "項目の表示" 要求を使用して、ロールおよびアクセス許可を制御することができます。項目のペイロードに加えて、**__roles** と **__permissions** の 2 つのシステム プロパティを指定できます。
+**PUT** および **POST** の "項目の表示" 要求を使用して、ロールおよびアクセス許可を制御することができます。項目のペイロードに加えて、**\_\_roles** と **\_\_permissions** の 2 つのシステム プロパティを指定できます。
 
 > [AZURE.NOTE]
 >
-> **__permissions** は、ルート項目のみに適用されます。
+> **__**\_\_permissions** は、ルート項目のみに適用されます。
 >
 > **所有者**ロールは、ルート項目のみに適用されます。
 >
-> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。項目がすべてのユーザーによって更新される必要がある場合、**共同作成者**は、項目が最初に公開されたときに **__roles** プロパティで特別なセキュリティ プリンシパル <Everyone> に設定する必要があります (次の例を参照)。**共同作成者**は変更することができず、項目の有効期間中同じままになります (つまり、**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。**共同作成者**の明示的な設定に対してサポートされている唯一の値は、<Everyone> です。つまり、**共同作成者**には、項目または <Everyone> を作成したユーザーのみを指定できます。
+> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。項目がすべてのユーザーによって更新される必要がある場合、**共同作成者**は、項目が最初に公開されたときに **\_\_roles** プロパティで特別なセキュリティ プリンシパル <Everyone> に設定する必要があります (次の例を参照)。**共同作成者**は変更することができず、項目の有効期間中同じままになります (つまり、**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。**共同作成者**の明示的な設定に対してサポートされている唯一の値は、<Everyone> です。つまり、**共同作成者**には、項目または <Everyone> を作成したユーザーのみを指定できます。
 
 ###例
 **項目を公開する場合は、共同作成者を <Everyone> に設定します。** 特別なセキュリティ プリンシパル <Everyone> の objectId は「00000000-0000-0000-0000-000000000201」です。**POST** https://123154bb...6aad6370ee14.datacatalog.azure.com/default/views/tables/?api-version=2015-07.1.0-Preview **本文**
@@ -258,4 +258,4 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -106,4 +106,4 @@ Azure SDK 2.6 において、Azure コンピューティング エミュレー�
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

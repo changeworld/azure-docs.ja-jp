@@ -5,4 +5,4 @@
 - [Remote Desktop](../articles/hdinsight/hdinsight-hadoop-use-mapreduce-remote-desktop.md)
 - [Curl](../articles/hdinsight/hdinsight-hadoop-use-mapreduce-curl.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

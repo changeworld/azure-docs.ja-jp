@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Maven を使用した HBase アプリケーションのビルド | Microsoft Azure"
+	pageTitle="Maven と Java を使用した HBase アプリケーションのビルドと、Linux ベースの HDInsight へのデプロイ | Microsoft Azure"
 	description="Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure クラウドの Linux ベースの HDInsight にデプロイする方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/12/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 #Use Maven to build Java applications that use HBase with HDInsight (Hadoop) (HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築)
@@ -121,7 +121,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 4. __conf__ という名前の新しいディレクトリを __hbaseapp__ ディレクトリ内に作成します。このディレクトリを使用して、HBase に接続するための構成情報を保持します。
 
-5. 次のコマンドを使用して、HDInsight サーバーから __conf__ ディレクトリに HBase の構成をコピーします。**USERNAME** を SSH ログインの名前に置き換えます。**CLUSTERNAME** を HDInsight クラスターの名前に置き換えます。
+5. 次のコマンドを使用して、HDInsight サーバーから __conf__ ディレクトリに HBase の構成をコピーします。**USERNAME** には、SSH ログイン名を指定します。**CLUSTERNAME** には、HDInsight クラスター名を指定します。
 
 		scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
 
@@ -318,7 +318,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 ##JAR ファイルをアップロードしてジョブを実行する
 
-1. 次のコマンドを使用して、HDInsight クラスターに jar をアップロードします。**USERNAME** を SSH ログインの名前に置き換えます。**CLUSTERNAME** を HDInsight クラスターの名前に置き換えます。
+1. 次のコマンドを使用して、HDInsight クラスターに jar をアップロードします。**USERNAME** には、SSH ログイン名を指定します。**CLUSTERNAME** には、HDInsight クラスター名を指定します。
 
 		scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.
 
@@ -328,7 +328,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 	>
 	> `scp -i ~/.ssh/id_rsa ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`
 
-2. SSH を使用して、HDInsight クラスターに接続します。**USERNAME** を SSH ログインの名前に置き換えます。**CLUSTERNAME** を HDInsight クラスターの名前に置き換えます。
+2. SSH を使用して、HDInsight クラスターに接続します。**USERNAME** には、SSH ログイン名を指定します。**CLUSTERNAME** には、HDInsight クラスター名を指定します。
 
 		ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
@@ -361,4 +361,4 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 
 	hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

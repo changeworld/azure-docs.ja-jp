@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="10/08/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory (AD) B2C プレビュー: LinkedIn アカウントでコンシューマーにサインアップおよびサインインを提供する
@@ -45,11 +45,11 @@ Azure Active Directory (AD) B2C で ID プロバイダーとして LinkedIn を�
 ## ディレクトリで ID プロバイダーとして LinkedIn を構成する
 
 1. [Azure プレビュー ポータルで B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
-2. B2C 機能ブレードで、**[ソーシャル ID プロバイダー]** をクリックします。
+2. B2C 機能ブレードで、**[ID プロバイダー]** をクリックします。
 3. ブレードの上部にある **[+追加]** をクリックします。
 4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。たとえば、「LI」などと入力します。
 5. **[ID プロバイダーの種類]** をクリックし、**[LinkedIn]** を選択して、**[OK]** をクリックします。
 6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した LinkedIn アプリケーションの **[クライアント ID]** と **[クライアント シークレット]** を入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして LinkedIn の構成を保存します。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

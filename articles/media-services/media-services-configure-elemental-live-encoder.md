@@ -32,7 +32,7 @@
 
 - ライブ イベントを作成するには、Elemental Live Web インターフェイスの使用に関する知識が必要です。
 - [Azure Media Services アカウントの作成](media-services-create-account.md)
-- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行していることを確認します。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」を参照してください。 
+- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」を参照してください。 
 
 - 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。
 - ツールを起動し、AMS アカウントに接続します。
@@ -40,7 +40,7 @@
 ##ヒント
 
 - 可能な限り、有線のインターネット接続を使用します。 
-- 帯域幅要件を決定する際の目安は、ストリーミングのビットレートの 2 倍です。これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。  
+- 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。  
 - ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## RTP インジェストを使用する Elemental Live
@@ -60,7 +60,7 @@
  
 3. **[チャネルの作成]** をクリックします。 ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental12.png)
 
->[AZURE.NOTE]チャネルの開始には 20 分程度かかることがあります。
+>[AZURE.NOTE]チャネルの開始までに 20 分程度かかることがあります。
 
 チャネルを開始している間に、[エンコーダーを構成する](media-services-configure-elemental-live-encoder.md#configure_elemental_rtp)ことができます。
 
@@ -171,4 +171,4 @@ AMS のラーニング パスについては、以下を参照してください
 - [AMS のライブ ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS のオンデマンド ストリーミング ワークフロー](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

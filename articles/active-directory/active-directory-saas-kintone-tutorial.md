@@ -15,7 +15,7 @@
 1.  Kintone のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-kintone-tutorial/IC785859.png "シナリオ")
 ##Kintone のアプリケーション統合の有効化
@@ -65,7 +65,7 @@
 
 3.  **[アプリ URL の構成]** ページの **[Kintone サインオン URL]** テキストボックスに、"**https://company.kintone.com*" というパターンの URL を入力して、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-kintone-tutorial/IC785875.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-kintone-tutorial/IC785875.png "アプリケーション URL の構成")
 
 4.  **[Kintone でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
 
@@ -146,10 +146,10 @@ Azure AD ユーザーが Kintone にログインできるようにするには�
 
     ![ユーザーの割り当て](./media/active-directory-saas-kintone-tutorial/IC785891.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
 
     ![あり](./media/active-directory-saas-kintone-tutorial/IC767830.png "あり")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

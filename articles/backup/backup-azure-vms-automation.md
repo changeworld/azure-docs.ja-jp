@@ -7,7 +7,7 @@
 	manager="shreeshd"
 	editor=""/>
 
-<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/21/2015" ms.author="trinadhk";"aashishr" />
+<tags ms.service="backup" ms.workload="storage-backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/01/2015" ms.author="aashishr";"trinadhk" />
 
 
 # PowerShell を使用した Azure VM のバックアップのデプロイおよび管理
@@ -26,7 +26,7 @@ PowerShell を効果的に使用するには、オブジェクトの階層およ
 ## セットアップと登録
 開始するには
 
-1. [最新の PowerShell](https://github.com/Azure/azure-powershell/releases) (0.9.8 以降のバージョンが必要) をダウンロードします。
+1. [最新の PowerShell](https://github.com/Azure/azure-powershell/releases) (1.0.0 以降のバージョンが必要) をダウンロードします。
 
 2. **Switch-azuremode** コマンドレットを使用して、*AzureResourceManager* モードに切り替えて Azure Backup コマンドレットを使用可能にします。
 
@@ -77,7 +77,9 @@ Name                      Type               ScheduleType       BackupTime
 DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:00 AM
 ```
 
-バックアップ ポリシーは、少なくとも 1 つのアイテム保持ポリシーと関連付けられています。アイテム保持ポリシーには、Azure Backup で復旧ポイントを保持する期間が定義されています。**New-AzureRMBackupRetentionPolicy** コマンドレットは、アイテム保持ポリシー情報を保持する PowerShell オブジェクトを作成します。これらのアイテム保持ポリシー オブジェクトは、*New-AzureRMBackupProtectionPolicy* コマンドレットへの入力、または *Enable-AzureRMBackupProtection* コマンドレットと同時に直接使用されます。
+> [AZURE.NOTE]PowerShell の BackupTime フィールドのタイムゾーンは UTC です。ただし、Azure ポータルでバックアップ時刻が表示されるときには、UTC オフセットとローカル システムに合わせてタイムゾーンが調整されます。
+
+バックアップ ポリシーは、少なくとも 1 つのアイテム保持ポリシーと関連付けられています。アイテム保持ポリシーには、Azure Backup で復旧ポイントを保持する期間が定義されています。**New-AzureRMBackupRetentionPolicy** コマンドレットは、アイテム保持ポリシー情報を保持する PowerShell オブジェクトを作成します。これらのアイテム保持ポリシー オブジェクトは、*New-AzureRMBackupProtectionPolicy* コマンドレットへの入力として使用されるか、*Enable-AzureRMBackupProtection* コマンドレットで直接使用されます。
 
 バックアップ ポリシーには、アイテムのバックアップが実行されるタイミングと方法を定義します。**New-AzureRMBackupProtectionPolicy** コマンドレットは、バックアップ ポリシー情報を保持する PowerShell オブジェクトを作成します。バックアップ ポリシーは、*Enable-AzureRMBackupProtection* コマンドレットへの入力として使用されます。
 
@@ -98,7 +100,7 @@ PS C:\> Get-AzureRMBackupContainer -Type AzureVM -Status Registered -Vault $back
 ```
 
 ### 初回バックアップ
-バックアップのスケジュールによって、アイテムの完全な初回コピーと以降のバックアップの増分コピーが行われます。ただし、初回バックアップを特定の時間に強制的に行う場合や直ちに行う場合は、**Backup-AzureRMBackupItem** コマンドレットを使用します。
+バックアップのスケジュールによって、アイテムの完全な初回コピーと以降のバックアップの増分コピーが行われます。ただし、初回バックアップを特定の時間に強制的に行う場合やすぐに行う場合は、**Backup-AzureRMBackupItem** コマンドレットを使用します。
 
 ```
 PS C:\> $container = Get-AzureRMBackupContainer -Vault $backupvault -type AzureVM -name "testvm"
@@ -110,10 +112,12 @@ WorkloadName    Operation       Status          StartTime              EndTime
 testvm          Backup          InProgress      01-Sep-15 12:24:01 PM  01-Jan-01 12:00:00 AM
 ```
 
+> [AZURE.NOTE]PowerShell で表示される StartTime フィールドと EndTime フィールドのタイムゾーンは UTC です。ただし、Azure ポータルで同様の情報が表示されるときには、ローカル システム クロックに合わせてタイムゾーンが調整されます。
+
 ### バックアップ ジョブの監視
 Azure Backup で長時間実行される多くの操作は、ジョブとしてモデル化されています。これにより、Azure ポータルを常に開いていなくても進捗を簡単に追跡できるようになります。
 
-進行中のジョブの最新の状態を得るには、**Get-AzureRMBackupJob** コマンドレットを使用します。
+進行中のジョブの最新の状態を取得するには、**Get-AzureRMBackupJob** コマンドレットを使用します。
 
 ```
 PS C:\> $joblist = Get-AzureRMBackupJob -Vault $backupvault -Status InProgress
@@ -124,7 +128,7 @@ WorkloadName    Operation       Status          StartTime              EndTime
 testvm          Backup          InProgress      01-Sep-15 12:24:01 PM  01-Jan-01 12:00:00 AM
 ```
 
-これらのジョブが完了するまで不要にポーリングするのではなく、別の **Wait-AzureRMBackupJob** コマンドレットを使用する方が簡単になります。スクリプトで使用する場合、ジョブが完了するまで、または指定したタイムアウト値に到達するまでコマンドレットは実行を停止します。
+完了確認のためにこれらのジョブをポーリングすると、不要な追加コードが発生します。代わりに、**Wait-AzureRMBackupJob** コマンドレットを使用する方が簡単です。スクリプトで使用する場合、ジョブが完了するまで、または指定したタイムアウト値に到達するまでコマンドレットは実行を停止します。
 
 ```
 PS C:\> Wait-AzureRMBackupJob -Job $joblist[0] -Timeout 43200
@@ -137,7 +141,7 @@ PS C:\> Wait-AzureRMBackupJob -Job $joblist[0] -Timeout 43200
 
 ### VM の選択
 
-バックアップする正しい項目を特定する PowerShell オブジェクトを取得するには、コンテナー内のコンテナーから開始し、次いでオブジェクト階層の上から下に進みます。VM のコンテナーを選択するには、**Get-AzureRMBackupContainer** コマンドレットを使用し、**Get AzureRMBackupItem** コマンドレットへのパイプとして使用します。
+バックアップする正しい項目を特定する PowerShell オブジェクトを取得するには、コンテナー内のコンテナーから開始し、次いでオブジェクト階層の上から下に進みます。VM を表すコンテナーを選択するには、**Get-AzureRMBackupContainer** コマンドレットを使用し、**Get-AzureRMBackupItem** コマンドレットへのパイプとして使用します。
 
 ```
 PS C:\> $backupitem = Get-AzureRMBackupContainer -Vault $backupvault -Type AzureVM -name "testvm" | Get-AzureRMBackupItem
@@ -145,7 +149,7 @@ PS C:\> $backupitem = Get-AzureRMBackupContainer -Vault $backupvault -Type Azure
 
 ### 復元ポイントの選択
 
-これで **Get-AzureRMBackupRecoveryPoint** コマンドレットを使用して、バックアップ アイテムのすべての復元ポイントを一覧表示して、復元する復元ポイントを選択できます。通常、ユーザーが一覧表示内の最新 *AppConsistent* ポイントを選択します。
+**Get-AzureRMBackupRecoveryPoint** コマンドレットを使用して、バックアップ アイテムのすべての復旧ポイントのリストを表示し、復元する復旧ポイントを選択できるようになりました。通常、ユーザーはこのリスト内の最新の *AppConsistent* ポイントを選択します。
 
 ```
 PS C:\> $rp =  Get-AzureRMBackupRecoveryPoint -Item $backupitem
@@ -156,6 +160,8 @@ RecoveryPointId    RecoveryPointType  RecoveryPointTime      ContainerName
 15273496567119     AppConsistent      01-Sep-15 12:27:38 PM  iaasvmcontainer;testvm;testv...
 ```
 
+```$rp``` 変数は、選択したバックアップ アイテムの復旧ポイントの配列であり、時間の逆順に並べ替えられています。つまり、最新の復旧ポイントがインデックス 0 の位置になります。標準の PowerShell 配列のインデックスを使用して、復旧ポイントを選択します。例: ```$rp[0]``` は、最新の復旧ポイントを選択します。
+
 ### データの復元
 
 Azure ポータルと Azure PowerShell を使用して実行する復元処理には決定的な違いがあります。Powershell では、復元操作は、復元ポイントからディスクと構成情報を復元すると停止します。仮想マシンは作成されません。
@@ -163,7 +169,7 @@ Azure ポータルと Azure PowerShell を使用して実行する復元処理�
 > [AZURE.WARNING]Restore-AzureRMBackupItem では、VM は作成されません。指定したストレージ アカウントにディスクを復元するのみです。これは、Azure ポータルの動作とは異なります。
 
 ```
-PS C:\> $restorejob = Restore-AzureRMBackupItem -StorageAccountName "DestAccount" -RecoveryPoint $rp
+PS C:\> $restorejob = Restore-AzureRMBackupItem -StorageAccountName "DestAccount" -RecoveryPoint $rp[0]
 PS C:\> $restorejob
 
 WorkloadName    Operation       Status          StartTime              EndTime
@@ -171,7 +177,7 @@ WorkloadName    Operation       Status          StartTime              EndTime
 testvm          Restore         InProgress      01-Sep-15 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
 
-復元ジョブが一度完了すると、復元操作の詳細は、**Get-AzureRMBackupJobDetails** コマンドレットを使用して取得できます。*ErrorDetails* プロパティには、VM を再構築するために必要な情報が含まれます。
+復元ジョブが完了したら、**Get-AzureRMBackupJobDetails** コマンドレットを使用して復元操作の詳細を取得できます。*ErrorDetails* プロパティには、VM を再構築するために必要な情報が含まれます。
 
 ```
 PS C:\> $restorejob = Get-AzureRMBackupJob -Job $restorejob
@@ -231,4 +237,67 @@ New-AzureVM -ServiceName "panbhasample" -Location "SouthEast Asia" -VM $vm
 - [New-AzureVMConfig](https://msdn.microsoft.com/library/azure/dn495159.aspx)
 - [New-AzureVM](https://msdn.microsoft.com/library/azure/dn495254.aspx)
 
-<!---HONumber=Sept15_HO4-->
+## コード サンプル
+
+### 1\.ジョブのサブタスクの完了状態の取得
+
+個々のサブタスクの完了状態を追跡するには、**Get-AzureRMBackupJobDetails** コマンドレットを使用します。
+
+```
+PS C:\> $details = Get-AzureRMBackupJobDetails -JobId $backupjob.InstanceId -Vault $backupvault
+PS C:\> $details.SubTasks
+
+Name                                                        Status
+----                                                        ------
+Take Snapshot                                               Completed
+Transfer data to Backup vault                               InProgress
+```
+
+### 2\.バックアップ ジョブの日次/週次レポートの作成
+
+通常、管理者は過去 24 時間に実行されたバックアップ ジョブと、それらのバックアップ ジョブの状態を知りたいと考えています。また、転送されたデータの量によって、管理者は毎月のデータ使用量を推定できます。次のスクリプトは、Azure Backup サービスから生データを取得し、PowerShell コンソールに情報を表示します。
+
+```
+param(  [Parameter(Mandatory=$True,Position=1)]
+        [string]$backupvaultname,
+
+        [Parameter(Mandatory=$False,Position=2)]
+        [int]$numberofdays = 7)
+
+
+#Initialize variables
+$DAILYBACKUPSTATS = @()
+$backupvault = Get-AzureRMBackupVault -Name $backupvaultname
+$enddate = ([datetime]::Today).AddDays(1)
+$startdate = ([datetime]::Today)
+
+for( $i = 1; $i -le $numberofdays; $i++ )
+{
+    # We query one day at a time because pulling 7 days of data might be too much
+    $dailyjoblist = Get-AzureRMBackupJob -Vault $backupvault -From $startdate -To $enddate -Type AzureVM -Operation Backup
+    Write-Progress -Activity "Getting job information for the last $numberofdays days" -Status "Day -$i" -PercentComplete ([int]([decimal]$i*100/$numberofdays))
+
+    foreach( $job in $dailyjoblist )
+    {
+        #Extract the information for the reports
+        $newstatsobj = New-Object System.Object
+        $newstatsobj | Add-Member -type NoteProperty -name Date -value $startdate
+        $newstatsobj | Add-Member -type NoteProperty -name VMName -value $job.WorkloadName
+        $newstatsobj | Add-Member -type NoteProperty -name Duration -value $job.Duration
+        $newstatsobj | Add-Member -type NoteProperty -name Status -value $job.Status
+
+        $details = Get-AzureRMBackupJobDetails -Job $job
+        $newstatsobj | Add-Member -type NoteProperty -name BackupSize -value $details.Properties["Backup Size"]
+        $DAILYBACKUPSTATS += $newstatsobj
+    }
+
+    $enddate = $enddate.AddDays(-1)
+    $startdate = $startdate.AddDays(-1)
+}
+
+$DAILYBACKUPSTATS | Out-GridView
+```
+
+このレポート出力にグラフ作成機能を追加する場合は、TechNet ブログの「[Charting with PowerShell (PowerShell でのグラフ作成)](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)」をご覧ください。
+
+<!---HONumber=Oct15_HO3-->

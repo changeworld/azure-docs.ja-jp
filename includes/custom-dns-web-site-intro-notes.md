@@ -4,4 +4,4 @@
 >
 > **Free モードの Web アプリでは、カスタム ドメイン名を使用できません**。Web アプリを **Shared** モード、**Basic** モード、または **Standard** モードに構成する必要があります。その場合、サブスクリプションに対して課金される金額が変更される可能性があります。詳細については、<a href=/pricing/details/web-sites/">Web Apps の料金の詳細</a>に関するページを参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -15,7 +15,7 @@
 1.  Lynda.com のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-lynda-tutorial/IC781046.png "シナリオ")
 ##Lynda.com のアプリケーション統合の有効化
@@ -67,7 +67,7 @@
 
 3.  **[アプリの URL の構成]** ページで、**[Lynda.com サインイン URL]** ボックスに Lynda.com テナントの URL (例: **https://shib.lynda.com/Shibboleth.sso/InCommon?providerId=https://sts.windows-ppe.net/6247032d-9415-403c-b72b-277e3fb6f2c8/&target=https://shib.lynda.com/InCommon*) を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-lynda-tutorial/IC781047.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-lynda-tutorial/IC781047.png "アプリケーション URL の構成")
 
 4.  **[Lynda.com でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
 
@@ -102,4 +102,4 @@ Lynda.com へのユーザー プロビジョニングの構成にあたって必
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -24,7 +24,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 
 8. 右矢印をクリックします。
 
-9. **[購入の確認]** タブで、プランと料金情報および法律条項を確認します。条項に同意したら、チェックマークをクリックします。チェック マークをクリックすると、SendGrid アカウントの [SendGrid のプロビジョニング プロセス]が開始されます。
+9. **[購入の確認]** タブで、プランと価格情報および法律条項を確認します。条項に同意したら、チェックマークをクリックします。チェック マークをクリックすると、SendGrid アカウントの [SendGrid のプロビジョニング プロセス]が開始されます。
 
 	![store-screen-3][store-screen-3]
 
@@ -34,7 +34,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 
 	SendGrid アカウントが直ちにプロビジョニングされ、"**アドオン SendGrid の購入が完了しました**" というメッセージが表示されます。アカウントと資格情報が作成されました。この時点で、電子メールを送信する準備が整っています。
 
-	サブスクリプション プランを変更するか、SendGrid 連絡先設定を表示するには、SendGrid サービスの名前をクリックし、SendGrid マーケットプレース ダッシュボードを開きます。
+	サブスクリプション プランを変更するか、SendGrid 連絡先設定を表示するには、SendGrid サービスの名前をクリックし、SendGrid Marketplace ダッシュボードを開きます。
 
 	![sendgrid-add-on-dashboard][sendgrid-add-on-dashboard]
 
@@ -50,7 +50,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 
 	![sendgrid-connection-info][sendgrid-connection-info]
 
-	電子メール配信を設定するには、**[管理]** ボタンをクリックします。これにより Sendgrid.com Web インターフェイスが開き、ログインして SendGrid コントロール パネルを開くことができます。
+	電子メール配信を設定するには、**[管理]** ボタンをクリックします。これで、SendGrid のコントロール パネルにリダイレクトされます。
 
 	![sendgrid-control-panel][sendgrid-control-panel]
 
@@ -76,4 +76,4 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 [SendGrid のプロビジョニング プロセス]: https://support.sendgrid.com/hc/articles/200181628-Why-is-my-account-being-provisioned-
 [すべての API]: https://sendgrid.com/docs/API_Reference/index.html
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

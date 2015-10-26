@@ -40,7 +40,7 @@
 
 ##<a id="update-scripts"></a>通知を送信するように登録済み挿入スクリプトを更新する
 
->[AZURE.TIP]次の手順では、Microsoft Azure 管理ポータルの TodoItem テーブルに対する挿入操作に登録されているスクリプトを更新する方法を示します。このモバイル サービス スクリプトは、Visual Studio のサーバー エクスプローラーの Azure ノードで、直接アクセスして編集することもできます。
+>[AZURE.TIP]次の手順では、Azure 管理ポータルの TodoItem テーブルに対する挿入操作に登録されているスクリプトを更新する方法を示します。このモバイル サービス スクリプトは、Visual Studio のサーバー エクスプローラーの Azure ノードで、直接アクセスして編集することもできます。
 
 [AZURE.INCLUDE [mobile-services-javascript-backend-android-push-insert-script](../../includes/mobile-services-javascript-backend-android-push-insert-script.md)]
 
@@ -83,4 +83,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Azure Mobile Services]: http://components.xamarin.com/view/azure-mobile-services/
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -85,4 +85,4 @@ v2.0 アプリ モデルは、Open ID Connect および OAuth 2.0 をサポー�
 
 v2.0 アプリ モデルでサポートされるプロトコル機能の範囲について、より詳細な情報については、[OpenID Connect と OAuth 2.0 のプロトコル リファレンス](active-directory-v2-protocols.md)を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

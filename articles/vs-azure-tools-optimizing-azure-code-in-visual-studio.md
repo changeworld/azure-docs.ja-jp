@@ -532,4 +532,4 @@ public class BlogsController : Controller
 
 Azure アプリケーションの最適化とトラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」をご覧ください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

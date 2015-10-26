@@ -165,4 +165,4 @@ SQL Database の Azure へのバックアップと回復の管理には、次の
 
 • [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -4,4 +4,4 @@
 - [Azure CLI](virtual-networks-create-nsg-arm-cli.md)
 - [ARM template](virtual-networks-create-nsg-arm-template.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

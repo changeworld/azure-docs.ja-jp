@@ -357,4 +357,4 @@ RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテ�
 
 Azure の診断ログの詳細については、[Azure のクラウド サービスおよび仮想マシンの診断機能](cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](web-sites-enable-diagnostic-log.md)」を参照してください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

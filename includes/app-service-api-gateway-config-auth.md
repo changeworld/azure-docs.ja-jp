@@ -38,4 +38,4 @@ Azure ポータルでは、**[Azure Active Directory]** タブで作成したア
 
 (この図の応答 URL には、同じ URL が 2 つ表示されています。1 つには `http:`、もう 1 つには `https:` が付いています。)
 
-<!----HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

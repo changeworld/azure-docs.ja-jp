@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="チュートリアル: サイト間接続用のクロスプレミス仮想ネットワークの作成"
-	description="このチュートリアルでは、クロスプレミス接続を使う Azure の仮想ネットワークを作成する方法について説明します。"
-	services="virtual-network"
-	documentationCenter=""
-	authors="cherylmc"
-	manager="adinah"
+	pageTitle="チュートリアル: サイト間接続用のクロスプレミス仮想ネットワークの作成" 
+	description="このチュートリアルでは、クロスプレミス接続を使う Azure の仮想ネットワークを作成する方法について説明します。" 
+	services="virtual-network" 
+	documentationCenter="" 
+	authors="cherylmc" 
+	manager="adinah" 
 	editor="tysonn"/>
 
 <tags 
-	ms.service="virtual-network"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2015"
+	ms.service="virtual-network" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/17/2015" 
 	ms.author="cherylmc"/>
 
 
@@ -272,4 +272,4 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

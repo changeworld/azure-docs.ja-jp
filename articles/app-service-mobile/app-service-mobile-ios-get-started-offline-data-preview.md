@@ -251,4 +251,4 @@ Azure Mobile Apps に対する通常の CRUD 操作は、アプリケーショ�
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
  
 
-<!------HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

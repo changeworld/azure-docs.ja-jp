@@ -21,7 +21,7 @@
 
 Azure リソース マネージャーに Compute、Network、Strage の機能が追加されたことによって、IaaS 上で動作する複雑なアプリケーションのデプロイメントと管理が大幅に単純化されます。多くのアプリケーションは、Virtual Network、ストレージ アカウント、Virtual Machine、ネットワーク インターフェイスなど、リソースの組み合わせを必要とします。Azure リソース マネージャーには、そうしたリソースをすべてひとまとめにして単一のアプリケーションとしてデプロイし、管理する JSON テンプレートを作成する機能が用意されています。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
 ## Azure リソース マネージャー下に Compute、Network、Strage を統合する利点
@@ -116,4 +116,4 @@ Azure コマンドライン インターフェイス (Azure CLI) には、**Azur
 
 広範囲にわたるスターター テンプレートを「[Azure リソース マネージャー クイックスタート テンプレート](http://azure.microsoft.com/documentation/templates/)」で見つけることができます。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

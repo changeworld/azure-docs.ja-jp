@@ -184,4 +184,4 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 -	[Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 -	[Azure Storage のドキュメント](http://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

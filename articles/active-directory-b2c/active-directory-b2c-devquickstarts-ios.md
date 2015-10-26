@@ -642,9 +642,7 @@ API でタスクがユーザーごとに保存されたことを確認します�
 
 参照用に、完成したサンプルが[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS/archive/complete.zip)。または、GitHub から複製することもできます。
 
-```
-git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS
-```
+```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-iOS```
 
 ## 次のステップ
 
@@ -654,4 +652,4 @@ git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClie
 
 [B2C アプリの UX のカスタマイズ]()
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

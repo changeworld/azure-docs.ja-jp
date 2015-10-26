@@ -26,4 +26,4 @@ Azure Web アプリ リソースを [ARM Move Resources Api](../resource-group-m
 	* 注: このシナリオでは、変換先のリソース グループにすべてのMicrosoft.Web リソースを含めることはできません。
 * 個々の Web アプリをそれぞれの異なるリソース グループに移動しますが、この時 Web アプリはまだ現行のアプリのサービス プランでホストされています (アプリのサービス プランは古いリソース グループにとどまっています)。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

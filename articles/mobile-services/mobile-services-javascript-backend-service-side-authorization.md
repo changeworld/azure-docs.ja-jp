@@ -70,4 +70,4 @@
 [Azure 管理ポータル]: https://manage.windowsazure.com/
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

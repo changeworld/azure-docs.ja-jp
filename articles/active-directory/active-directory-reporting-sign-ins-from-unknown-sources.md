@@ -22,4 +22,4 @@
 
 ![不明なソースからのサインイン](./media/active-directory-reporting-sign-ins-from-unknown-sources/signInsFromUnknownSources.PNG)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

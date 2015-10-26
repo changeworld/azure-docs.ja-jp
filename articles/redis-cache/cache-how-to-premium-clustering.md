@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/06/2015" 
+	ms.date="10/09/2015" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Redis クラスタリングの構成方法
@@ -42,9 +42,9 @@ Azure では、Redis クラスターは、各シャードがプライマリ/レ�
 
 ![Redis Cache の作成][redis-cache-new-cache-menu]
 
-クラスタリングを構成するには、まず **[料金レベルの選択]** ブレードで **[Premium]** キャッシュのいずれかを選択します。
+クラスタリングを構成するには、まず **[価格レベルの選択]** ブレードで **[Premium]** キャッシュのいずれかを選択します。
 
-![料金レベルの選択][redis-cache-premium-pricing-tier]
+![価格レベルの選択][redis-cache-premium-pricing-tier]
 
 クラスタリングは **[Redis クラスター]** ブレードで構成します。
 
@@ -97,7 +97,7 @@ Premium の最大キャッシュ サイズは、53 GB です。最大 10 個の�
 
 ## キャッシュの個々のシャードに直接接続できますか
 
-これは公式にはサポートされていません。つまり、各シャードはキャッシュ インスタンスと総称して呼ばれるプライマリ/レプリカ キャッシュ ペアで構成されます。キャッシュ インスタンスには、redis-cli.exe を次のパターンで使用して接続できます。
+これは公式にはサポートされていません。つまり、各シャードはキャッシュ インスタンスと総称して呼ばれるプライマリ/レプリカ キャッシュ ペアで構成されます。GitHub で Redis リポジトリの[不安定な](http://redis.io/download)ブランチにある redis-cli ユーティリティを使用して、これらのキャッシュ インスタンスに接続できます。このバージョンは、`-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。詳細については、[http://redis.io](http://redis.io) の [Redis クラスター チュートリアル](http://redis.io/topics/cluster-tutorial)で「[クラスターの使用](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。
 
 SSL 以外の場合は、次のコマンドを使用します。
 
@@ -146,4 +146,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-clustering-selected]: ./media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

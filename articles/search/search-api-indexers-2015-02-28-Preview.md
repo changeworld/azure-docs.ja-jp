@@ -750,7 +750,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 <td></td>
 </tr>
 <tr>
-<td>string</td>
+<td>文字列</td>
 <td>Edm.String</td>
 <td></td>
 </tr>
@@ -776,4 +776,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

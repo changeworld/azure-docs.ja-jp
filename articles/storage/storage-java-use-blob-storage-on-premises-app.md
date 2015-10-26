@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="08/31/2015"
+	ms.date="08/31/2015" 
 	ms.author="robmcm"/>
 
 # BLOB ストレージを使用するオンプレミスのアプリケーション
@@ -367,4 +367,4 @@
   [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

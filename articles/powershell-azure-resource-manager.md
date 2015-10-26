@@ -377,4 +377,4 @@ AzureResourceManager モジュールにはエラーを防止するためのコ�
 - テンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](./resource-group-template-deploy.md)」を参照してください。
 - プロジェクトをデプロイする方法の詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

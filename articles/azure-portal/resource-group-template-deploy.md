@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/02/2015"
+   ms.date="10/14/2015"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ
@@ -27,27 +27,37 @@
 
 ## PowerShell でデプロイする
 
-Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409) を実行してダウンロードおよびインストールすることができます。
+[AZURE.INCLUDE [powershell-preview-inline-include](../../includes/powershell-preview-inline-include.md)]
+
 
 1. Azure アカウントにログインします。資格情報を提供すると、コマンドがアカウントの情報を返します。
 
+    Azure PowerShell 1.0 Preview 未満:
+
+        PS C:\> Switch-AzureMode AzureResourceManager
+        ...
         PS C:\> Add-AzureAccount
 
         Id                             Type       ...
         --                             ----    
         someone@example.com            User       ...   
 
-2. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。
+    Azure PowerShell 1.0 Preview:
 
-        PS C:\> Select-AzureSubscription -SubscriptionID <YourSubscriptionId>
+         PS C:\> Login-AzureRmAccount
 
-3. Azure リソース マネージャー モジュールに切り替える
+         Evironment : AzureCloud
+         Account    : someone@example.com
+         ...
 
-        PS C:\> Switch-AzureMode AzureResourceManager
 
-4. 既存のリソース グループがない場合は、新しいリソース グループを作成します。ソリューションに必要なリソース グループと場所の名前を指定します。新しいリソース グループの概要が返されます。
+2. 複数のサブスクリプションがある場合、**Select-AzureRmSubscription** コマンドでデプロイに使用するサブスクリプション ID を提供します。
 
-        PS C:\> New-AzureResourceGroup -Name ExampleResourceGroup -Location "West US"
+        PS C:\> Select-AzureRmSubscription -SubscriptionID <YourSubscriptionId>
+
+3. 既存のリソース グループがない場合は、**New-AzureRmResourceGroup** コマンドで新しいリソース グループを作成します。ソリューションに必要なリソース グループと場所の名前を指定します。新しいリソース グループの概要が返されます。
+
+        PS C:\> New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
    
         ResourceGroupName : ExampleResourceGroup
         Location          : westus
@@ -59,24 +69,24 @@ Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://
                     *
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 
-5. リソース グループに新しいデプロイメントを作成するには、**New-AzureResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイメントの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
+5. リソース グループに新しいデプロイを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
    
      次のオプションを使用してパラメーターの値を提供できます。
    
      - インライン パラメーターを使用する
 
-            PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -myParameterName "parameterValue"
+            PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -myParameterName "parameterValue"
 
      - パラメーター オブジェクトを使用する
 
             PS C:\> $parameters = @{"<ParameterName>"="<Parameter Value>"}
-            PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterObject $parameters
+            PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterObject $parameters
 
      - パラメーター ファイルの使用テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。
 
-            PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterFile <PathOrLinkToParameterFile>
+            PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterFile <PathOrLinkToParameterFile>
 
-     リソース グループをデプロイすると、デプロイメントの概要が表示されます。
+     リソース グループをデプロイすると、デプロイの概要が表示されます。
 
           DeploymentName    : ExampleDeployment
           ResourceGroupName : ExampleResourceGroup
@@ -85,13 +95,10 @@ Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://
           Mode              : Incremental
           ...
 
-6. デプロイメント エラーに関する情報を取得するには
+6. デプロイ エラーに関する情報を取得するには
 
-        PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed
+        PS C:\> Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -Name ExampleDeployment
 
-7. デプロイメント エラーに関する詳細情報を取得するには
-
-        PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
         
 ### ビデオ
 
@@ -111,7 +118,7 @@ Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://
         ...
         info:    login command OK
 
-2. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。
+2. 複数のサブスクリプションがある場合、デプロイに使用するサブスクリプション ID を提供します。
 
         azure account set <YourSubscriptionNameOrId>
 
@@ -137,7 +144,7 @@ Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://
         data:
         info:    group create command OK
 
-5. リソース グループに新しいデプロイメントを作成するには、次のコマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイメントの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
+5. リソース グループに新しいデプロイを作成するには、次のコマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
    
      次のオプションを使用してパラメーターの値を提供できます。
 
@@ -153,7 +160,7 @@ Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://
     
              azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g ExampleResourceGroup -n ExampleDeployment
 
-     リソース グループをデプロイすると、デプロイメントの概要が表示されます。
+     リソース グループをデプロイすると、デプロイの概要が表示されます。
   
            info:    Executing command group deployment create
            + Initializing template configurations and parameters
@@ -162,11 +169,11 @@ Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://
            info:    group deployment create command OK
 
 
-6. 最新のデプロイメントに関する情報を取得するには
+6. 最新のデプロイに関する情報を取得するには
 
          azure group log show -l ExampleResourceGroup
 
-7. デプロイメント エラーに関する詳細情報を取得するには
+7. デプロイ エラーに関する詳細情報を取得するには
       
          azure group log show -l -v ExampleResourceGroup
 
@@ -183,7 +190,7 @@ Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://
              }
            }
    
-3. リソース グループの新しいデプロイメントを作成します。サブスクリプション ID、デプロイするリソース グループの名前、デプロイメントの名前、およびテンプレートの場所を指定します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。リソース グループを作成する REST API の詳細については、「[テンプレートのデプロイメントを作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。
+3. リソース グループの新しいデプロイを作成します。サブスクリプション ID、デプロイするリソース グループの名前、デプロイの名前、およびテンプレートの場所を指定します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。リソース グループを作成する REST API の詳細については、「[テンプレートのデプロイを作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。
     
          PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
             <common headers>
@@ -201,14 +208,14 @@ Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://
               }
             }
    
-4. テンプレートのデプロイメントの状態を取得します。詳細については、「[テンプレートのデプロイメントに関する情報を取得](https://msdn.microsoft.com/library/azure/dn790565.aspx)」を参照してください。
+4. テンプレートのデプロイの状態を取得します。詳細については、「[テンプレートのデプロイに関する情報を取得](https://msdn.microsoft.com/library/azure/dn790565.aspx)」を参照してください。
 
          GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
            <common headers>
 
 ## プレビュー ポータルでデプロイする
 
-ご存知でしょうか。 [プレビュー ポータル](https://portal.azure.com/)を使用して作成するすべてのアプリケーションは、Azure リソース マネージャーのテンプレートに基づいています。 ポータルを使用して Virtual Machines、Virtual Network、ストレージ アカウント、App Service、またはデータベースを作成するだけで、追加の操作を行わなくても、Azure リソース マネージャーの恩恵を得られます。**[新規]** アイコンを選択するだけで、Azure リソース マネージャーを使用してアプリケーションのデプロイを進めることができます。
+ご存知でしょうか。 [プレビュー ポータル](https://portal.azure.com/)を使用して作成するすべてのアプリケーションは、Azure リソース マネージャーのテンプレートに基づいています。 ポータルを使用して仮想マシン、仮想ネットワーク、ストレージ アカウント、App Service、またはデータベースを作成するだけで、追加の操作を行わなくても、Azure リソース マネージャーの恩恵を得られます。**[新規]** アイコンを選択するだけで、Azure リソース マネージャーを使用してアプリケーションのデプロイを進めることができます。
 
 ![新規](./media/resource-group-template-deploy/new.png)
 
@@ -217,7 +224,7 @@ Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://
 
 ## パラメーター ファイル
 
-デプロイメント中にパラメーター ファイルを使用してパラメーター値をテンプレートに渡す場合は、次の例に示すような形式の JSON ファイルを作成する必要があります。
+デプロイ中にパラメーター ファイルを使用してパラメーター値をテンプレートに渡す場合は、次の例に示すような形式の JSON ファイルを作成する必要があります。
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -246,4 +253,4 @@ Azure PowerShell モジュールは、[Microsoft Web Platform Installer](http://
 
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

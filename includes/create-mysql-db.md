@@ -73,4 +73,4 @@
 [portal]: http://manage.windowsazure.com
 [configure]: ../article/app-service-web/web-sites-configure.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

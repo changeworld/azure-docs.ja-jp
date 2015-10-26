@@ -43,7 +43,7 @@
 * Windows Server 2012 R2 の更新されたスキーマ
 * Azure Active Directory Premium のサブスクリプション
 * Azure AD に対する SSO 用に構成された Windows Server 2012 R2 フェデレーション サービス
-* Windows Server 2012 R2 Web アプリケーション プロキシ Microsoft Azure Active Directory Connect (Azure AD Connect)。[Azure AD Connect はここからダウンロード](http://www.microsoft.com/ja-JP/download/details.aspx?id=47594)
+* Windows Server 2012 R2 Web アプリケーション プロキシ Microsoft Azure Active Directory Connect (Azure AD Connect)。[Azure AD Connect はここからダウンロード](http://www.microsoft.com/ja-jp/download/details.aspx?id=47594)
 * 確認済みドメイン 
 
 このリリースの既知の問題
@@ -212,7 +212,7 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 9. **[完了]** を選択し、**[適用]** を選択します。
 10. 作成した規則よりも寛容なルールはすべて削除します。たとえば、既定の **[すべてのユーザーにアクセスを許可する]** 規則を削除します。
 
-これで、ユーザーが自身で登録しワークプレースに参加させたデバイスからアクセスする場合に限り、アクセスを許可するようにアプリケーションが構成されます。より高度なアクセス ポリシーについては、「[多要素アクセス制御を使用したリスク管理](https://technet.microsoft.com/ja-JP/library/dn280949.aspx)」をご覧ください。
+これで、ユーザーが自身で登録しワークプレースに参加させたデバイスからアクセスする場合に限り、アクセスを許可するようにアプリケーションが構成されます。より高度なアクセス ポリシーについては、「[多要素アクセス制御を使用したリスク管理](https://technet.microsoft.com/ja-jp/library/dn280949.aspx)」をご覧ください。
 
 次に、アプリケーションのカスタム エラー メッセージを構成します。エラー メッセージは、アプリケーションにアクセスするには事前にユーザーのデバイスをワークプレースに参加させなければならないことをユーザーに通知するものです。カスタム HTML および Windows PowerShell を使用してカスタム アプリケーション アクセス拒否メッセージを作成できます。
 
@@ -238,4 +238,4 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 ![ユーザーがデバイスを Azure AD に登録していなかった場合に表示されるエラーのスクリーン ショット](./media/active-directory-conditional-access/error-azureDRS-device-not-registered.gif)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

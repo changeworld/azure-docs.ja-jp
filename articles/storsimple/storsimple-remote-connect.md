@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/15/2015"
+   ms.date="10/12/2015"
    ms.author="alkohli" />
 
 # StorSimple デバイスにリモート接続する
@@ -234,7 +234,7 @@ Windows PowerShell と SSL を使用して、リモート ホストまたはク�
 
 Windows PowerShell のリモート接続元にするコンピューターで次の手順を実行します。
 
-### Windows PowerShell と SSL を使用してデバイスの SSAdmin セッションに移行するには
+#### Windows PowerShell と SSL を使用してデバイスの SSAdmin セッションに移行するには
 
 1. Windows PowerShell セッションを管理者として開始します。
 
@@ -256,7 +256,7 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 
      `$session = new-pssession -usessl -CN <Serial number of target device> -credential $cred -configurationname "SSAdminConsole"`
 
-    コマンドレットの CN 名には *<serial number of target device>* を指定します。このシリアル番号は、リモート ホストの hosts ファイルで、DATA 0 の IP アドレスにマップしたものです。たとえば、次の図に示す **SHX0991003G44MT** です。
+    コマンドレットの CN 名には、<*serial number of target device*> を指定します。このシリアル番号は、リモート ホストの hosts ファイルで、DATA 0 の IP アドレスにマップしたものです。たとえば、次の図に示す **SHX0991003G44MT** です。
 
 5. 次のコマンドを入力します。
 
@@ -268,8 +268,8 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 
 ## 次のステップ
 
-- [Windows PowerShell を使用して StorSimple デバイスを管理する方法の詳細](storsimple-windows-powershell-administration.md)
+- [Windows PowerShell を使用した StorSimple デバイスの管理](storsimple-windows-powershell-administration.md)の詳細を確認する。
 
-- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)の詳細を確認する。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

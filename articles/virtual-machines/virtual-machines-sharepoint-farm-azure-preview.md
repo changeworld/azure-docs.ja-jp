@@ -17,9 +17,10 @@
 	ms.date="10/05/2015"
 	ms.author="josephd"/>
 
-# SharePoint Server Farm
+# SharePoint サーバー ファーム
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
 Microsoft Azure プレビュー ポータルは、SharePoint Server Farm を使用して、事前構成された SharePoint Server 2013 ファームを作成します。これにより、開発またはテストの環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
 
@@ -63,8 +64,8 @@ SharePoint Server Farm のテンプレートを使用して SharePoint ファー
 
 1.	Azure プレビュー ポータルの **[参照]** をクリックし、**[リソース グループ]** をクリックします。
 2.	リソース グループの一覧で、SharePoint ファーム リソース グループの名前をクリックします。
-3.	SharePoint ファーム リソース グループのウィンドウで、**[デプロイメント履歴]** をクリックします。
-4.	**[デプロイメント履歴]** ウィンドウで、**[Microsoft.SharePointFarm]** をクリックします。
+3.	SharePoint ファーム リソース グループのウィンドウで、**[デプロイ履歴]** をクリックします。
+4.	**[デプロイ履歴]** ウィンドウで、**[Microsoft.SharePointFarm]** をクリックします。
 5.	**[Microsoft.SharePointFarm]** ウィンドウで、**[SHAREPOINTSITEURL]** フィールドの URL を選択してコピーします。
 6.	その URL をインターネット ブラウザーのアドレス フィールドに貼り付けます。
 7.	プロンプトが表示されたら、ファームの作成時に指定したユーザー アカウントの資格情報を入力します。
@@ -73,8 +74,8 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 
 1.	Azure プレビュー ポータルの **[参照]** をクリックし、**[リソース グループ]** をクリックします。
 2.	リソース グループの一覧で、SharePoint ファーム リソース グループの名前をクリックします。
-3.	SharePoint ファーム リソース グループのウィンドウで、**[デプロイメント履歴]** をクリックします。
-4.	**[デプロイメント履歴]** ウィンドウで、**[Microsoft.SharePointFarm]** をクリックします。
+3.	SharePoint ファーム リソース グループのウィンドウで、**[デプロイ履歴]** をクリックします。
+4.	**[デプロイ履歴]** ウィンドウで、**[Microsoft.SharePointFarm]** をクリックします。
 5.	**[Microsoft.SharePointFarm]** ウィンドウで、**[SHAREPOINTCENTRALADMINURL]** フィールドの URL を選択してコピーします。
 6.	その URL をインターネット ブラウザーのアドレス フィールドに貼り付けます。
 7.	プロンプトが表示されたら、ファームの作成時に指定したユーザー アカウントの資格情報を入力します。
@@ -87,7 +88,7 @@ SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint �
 
 ## Azure リソース マネージャー
 
-Azure プレビュー ポータルの SharePoint Server Farm 機能により、従来のデプロイメント モデルを使用して仮想マシンが作成されます。リソース マネージャーのデプロイメント モデルを使用して SharePoint Server 2013 ファームを作成する場合は、「[Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ](virtual-machines-workload-template-sharepoint.md)」を参照してください。
+Azure プレビュー ポータルの SharePoint Server Farm 機能により、従来のデプロイ モデルを使用して仮想マシンが作成されます。リソース マネージャーのデプロイ モデルを使用して SharePoint Server 2013 ファームを作成する場合は、「[Azure リソース マネージャーのテンプレートを使用した SharePoint ファームのデプロイ](virtual-machines-workload-template-sharepoint.md)」を参照してください。
 
 ## その他のリソース
 
@@ -97,4 +98,4 @@ Azure プレビュー ポータルの SharePoint Server Farm 機能により、�
 
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

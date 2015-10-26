@@ -88,7 +88,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 上記の例では、「NRP RG」という名前のリソース グループと「West US」という名前の場所を作成しました。
 
-## 仮想ネットワークと、フロント エンド IP プールのパブリック IP アドレスの作成
+## Virtual Network と、フロント エンド IP プールのパブリック IP アドレスの作成
 
 
 ### 手順 1.
@@ -251,4 +251,4 @@ PS C:\> $backendnic1
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

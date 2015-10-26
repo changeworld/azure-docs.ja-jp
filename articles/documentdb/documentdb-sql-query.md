@@ -2089,4 +2089,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

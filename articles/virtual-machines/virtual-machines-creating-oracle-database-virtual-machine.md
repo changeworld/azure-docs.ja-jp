@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure ポータルで Oracle データベース VM を作成する |Microsoft Azure" 
-	description="従来のデプロイメント モデルと Azure プレビュー ポータルで、Oracle Database を使用して仮想マシンを作成する方法について説明します。" 
+	description="従来のデプロイ モデルと Azure プレビュー ポータルで、Oracle Database を使用して仮想マシンを作成する方法について説明します。" 
 	services="virtual-machines" 
 	authors="bbenz" 
 	documentationCenter=""
@@ -17,7 +17,8 @@
 	
 #Azure で Oracle Database 仮想マシンを作成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 次の例は、Windows Server 2012 で実行しているマイクロソフト提供の Oracle Database のイメージに基づいて、Azure で仮想マシン (VM) を作成する方法を示しています。次の 2 つの手順が含まれます。最初に VM を作成し、VM 内に Oracle Database を作成します。この例で示されているのは Oracle Database バージョン 12c ですが、手順はバージョン 11g とほぼ同じです。
 
@@ -195,8 +196,8 @@ Oracle Database Enterprise Manager のリモート アクセスを有効にす�
 
 -	[Java アプリケーションから Oracle Database に接続する](http://docs.oracle.com/cd/E11882_01/appdev.112/e12137/getconn.htm#TDPJD136)
 
--	[Azure 用の Oracle 仮想マシンのイメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
+-	[Azure の Oracle 仮想マシン イメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
 -	[Oracle Database 2 日間 DBA 12c リリース 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

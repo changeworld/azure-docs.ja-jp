@@ -47,7 +47,7 @@ Azure Storage Client Library for Xamarin で開発するとき、自分のアカ
 
 	https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-04-13T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
 
-コンテナーに作成した共有アクセス署名は次の日まで有効です。この署名はコンテナー内の BLOB に完全アクセス許可を与えます (読み取り、書き込み、削除、一覧表示など)。
+コンテナーに作成した共有アクセス署名は次の日まで有効です。この署名はコンテナー内の BLOB に完全アクセス許可を与えます (読み取り、書き込み、削除、一覧表示*など*)。
 
 共有アクセス署名の詳細については、「[.NET の SAS チュートリアル](storage-dotnet-shared-access-signature-part-2.md)」を参照してください。
 
@@ -173,10 +173,10 @@ Azure Storage Client Library for Xamarin で開発するとき、自分のアカ
 
 BLOB、テーブル、キューの詳細は次のリンクで確認できます。
 
-[Microsoft Azure ストレージの概要](storage-introduction.md) 
-[.NET から BLOB ストレージを利用する方法](storage-dotnet-how-to-use-blobs.md) 
-[.NET からテーブル ストレージを利用する方法](storage-dotnet-how-to-use-tables.md) 
+[Microsoft Azure ストレージの概要](storage-introduction.md)  
+[.NET から BLOB ストレージを利用する方法](storage-dotnet-how-to-use-blobs.md)  
+[.NET からテーブル ストレージを利用する方法](storage-dotnet-how-to-use-tables.md)  
 [.NET からキュー ストレージを利用する方法](storage-dotnet-how-to-use-queues.md)
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

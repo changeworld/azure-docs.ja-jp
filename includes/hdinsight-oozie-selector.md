@@ -2,4 +2,4 @@
 - [Linux cluster](../articles/hdinsight/hdinsight-use-oozie-linux-mac.md)
 - [Windows cluster](../articles/hdinsight/hdinsight-use-oozie.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -35,4 +35,4 @@
 
 	![プレビュー ポータルでの VNet の作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure7.gif)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

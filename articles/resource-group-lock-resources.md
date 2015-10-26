@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/01/2015" 
+	ms.date="10/14/2015" 
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーによるリソースのロック
@@ -28,7 +28,7 @@ Azure リソース マネージャーは、リソース管理のロックを通�
 
 一般的なシナリオの 1 つに、オンとオフを繰り返して使用されるリソースがリソース グループ内に存在する場合が挙げられます。VM のリソースが定期的にオンになり、一定の時間データを処理し、その後オフになるような場合です。このシナリオでは、VM のシャットダウンを有効にする必要がありますが、一方でストレージ アカウントを削除しないことが必須条件となります。このシナリオでは、ストレージ アカウントに対して、ロック レベルが **CanNotDelete** のリソース ロックを使用ことができます。
 
-また、別のシナリオとして、運用システムに更新を適用しない時間帯を設定する場合もあります。**ReadOnly** のロック レベルを使用すると、作成または更新を停止できます。小売企業であれば、祝日のショッピング期間中に更新を許可しないようにすることができます。金融サービス企業であれば、市場の取引時間帯によって、デプロイメントに関連する制約を設けることができます。リソース ロックでは、適切にリソースをロックするポリシーを提供できます。これを、特定のリソースにのみ、またはリソース グループ全体に適用することができます。
+また、別のシナリオとして、運用システムに更新を適用しない時間帯を設定する場合もあります。**ReadOnly** のロック レベルを使用すると、作成または更新を停止できます。小売企業であれば、祝日のショッピング期間中に更新を許可しないようにすることができます。金融サービス企業であれば、市場の取引時間帯によって、デプロイに関連する制約を設けることができます。リソース ロックでは、適切にリソースをロックするポリシーを提供できます。これを、特定のリソースにのみ、またはリソース グループ全体に適用することができます。
 
 ## 組織でロックを作成または削除できるユーザー
 
@@ -93,11 +93,13 @@ Azure リソース マネージャーは、リソース管理のロックを通�
 
 ## Azure PowerShell を使用したロックの作成
 
-Azure PowerShell を使用してデプロイ済みのリソースをロックするには、次のように **New-AzureResourceLock** を使用します。PowerShell で、**LockLevel** を**CanNotDelete** に設定するだけです。
+[AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
 
-    PS C:\> New-AzureResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites -ResourceGroupName ExampleGroup
+Azure PowerShell を使用してデプロイ済みのリソースをロックするには、次のように **New-AzureRmResourceLock** を使用します。PowerShell で、**LockLevel** を**CanNotDelete** に設定するだけです。
 
-PowerShell では、動作中のロックに対するその他のコマンドを使用できます。たとえば、ロックを更新する **Set-AzureResourceLock**、ロックを削除する **Remove-AzureResourceLock** があります。
+    PS C:\> New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockSite -ResourceName examplesite -ResourceType Microsoft.Web/sites
+
+Azure PowerShell では、動作中のロックに対するその他のコマンドを使用できます。たとえば、ロックを更新する **Set-AzureRmResourceLock**、ロックを削除する **Remove-AzureRmResourceLock** があります。
 
 ## 次のステップ
 
@@ -105,4 +107,4 @@ PowerShell では、動作中のロックに対するその他のコマンドを
 - リソースを理論的に整理する方法については、「[タグを使用したリソースの整理](resource-group-using-tags.md)」を参照してください。
 - リソースが存在するリソース グループを変更するには、「[新しいリソース グループへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

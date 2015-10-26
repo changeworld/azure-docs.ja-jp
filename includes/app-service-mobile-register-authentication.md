@@ -15,4 +15,4 @@
 <!-- URLs. -->
 [Azure portal]: https://portal.azure.com/
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

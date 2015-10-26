@@ -70,4 +70,4 @@ Azure ロード バランサーと可用性セットを結合することで、�
 [可用性セット内の仮想マシンが 1 つのみにならないようにする]: #avoid-single-instance-virtual-machines-in-availability-sets
 [仮想マシンの可用性セットを構成する方法]: virtual-machines-how-to-configure-availability.md
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

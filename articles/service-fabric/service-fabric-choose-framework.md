@@ -1,10 +1,10 @@
 <properties
-   pageTitle="フレームワークの選択"
+   pageTitle="Service Fabric フレームワークの選択 | Microsoft Azure"
    description="Service Fabric では、アクター フレームワークとサービス フレームワークという、サービスを構築するための 2 つの高度なフレームワークが提供されています。それぞれの価値を理解すると、アプリケーションのアーキテクチャを正しく決定するのに役立ちます。"
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
-   manager="timlt"
+   manager="coreysa"
    editor=""/>
 
 <tags
@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/09/2015"
+   ms.date="10/13/2015"
    ms.author="seanmck"/>
 
 # サービスのフレームワークの選択
 
-Service Fabric は、高信頼アクター API と高信頼サービス API という、サービスを構築するための 2 つの高度なフレームワークを提供します。いずれも同一の Service Fabric コア上に構築されていますが、同時実行、パーティション分割、および通信の点で、簡潔性と柔軟性の釣り合いの取り方に違いがあります。アプリケーション内の特定のサービスに適切なフレームワークを選択できるように、両方のモデルを理解しておくと便利です。
+Service Fabric は、Reliable Actors API と Reliable Services API という、サービスを構築するための 2 つの高度なフレームワークを提供します。いずれも同一の Service Fabric コア上に構築されていますが、同時実行、パーティション分割、および通信の点で、簡潔性と柔軟性の釣り合いの取り方に違いがあります。アプリケーション内の特定のサービスに適切なフレームワークを選択できるように、両方のモデルを理解しておくと便利です。
 
-## 高信頼アクター API と高信頼サービス API の比較
+## Reliable Actors API と Reliable Services API の比較
 
-|**高信頼アクター API**|**高信頼サービス API**|
+|**Reliable Actors API**|**Reliable Services API**|
 |-----------------------|--------------------------|
 |問題空間に、小規模な独立したユニットの状態およびロジックが多数含まれている|複数のコンポーネント間でロジックを維持する必要がある|
 |シングル スレッドのオブジェクトを操作しつつ、拡張および一貫性の維持を可能にする|信頼性の高いコレクション (.NET ディクショナリやキューなど) を使用して状態を格納し管理する|
@@ -33,7 +33,7 @@ Service Fabric は、高信頼アクター API と高信頼サービス API と�
 
 ## 次のステップ
 
-- [高信頼アクター API についての詳細](service-fabric-reliable-actors-introduction.md)
-- [高信頼サービス API についての詳細](../Service-Fabric/service-fabric-reliable-services-introduction.md)
+- [Reliable Actors API についての詳細](service-fabric-reliable-actors-introduction.md)
+- [Reliable Services API についての詳細](../Service-Fabric/service-fabric-reliable-services-introduction.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

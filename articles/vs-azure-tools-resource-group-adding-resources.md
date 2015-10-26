@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Azure リソース グループへのリソースの追加"
-	description="Visual Studio を使用して Azure リソース グループにリソースを追加する方法について説明します。"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tglee"/>
+   description="Visual Studio を使用して Azure リソース グループにリソースを追加する方法について説明します。"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tglee" />
 <tags 
    ms.service="multiple"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="multiple"
-	ms.date="08/13/2015"
-	ms.author="kempb"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="multiple"
+   ms.date="08/13/2015"
+   ms.author="kempb" />
 
 # Azure リソース グループへのリソースの追加
 
@@ -61,4 +61,4 @@
 
 [Channel9 ビデオ: Azure リソース マネージャー](http://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B224#fbid=)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

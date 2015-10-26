@@ -1,18 +1,18 @@
 <properties
-	pageTitle="構成済みソリューションのカスタマイズに関する Microsoft Azure IoT Suite ガイダンス |Microsoft Azure"
-	description="Azure IoT Suite の構成済みソリューションのカスタマイズに関するガイダンスを提供します。"
+	pageTitle="構成済みソリューションのカスタマイズ | Microsoft Azure"
+	description="Azure IoT Suite の構成済みソリューションのカスタマイズ方法に関するガイダンスを提供します。"
 	services=""
 	documentationCenter=".net"
 	authors="stevehob"
-	manager="kevinmil"
+	manager="timlt"
 	editor=""/>
 
 <tags
      ms.service="na"
-     ms.devlang="na"
+     ms.devlang="dotnet"
      ms.topic="article"
      ms.tgt_pltfrm="na"
-     ms.workload="tbd"
+     ms.workload="na"
      ms.date="09/29/2015"
      ms.author="stevehob"/>
 
@@ -30,7 +30,7 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 
 ## 構成済みルールの変更
 
-リモート監視ソリューションには、ダッシュ ボードに表示されるテレメトリおよびアラーム ロジックを実装するための 2 つの [Azure Stream Analytics](http://azure.microsoft.com/services/stream-analytics) ジョブが含まれます。
+リモート監視ソリューションには、ダッシュボードに表示されるテレメトリおよびアラーム ロジックを実装するための 2 つの [Azure Stream Analytics](http://azure.microsoft.com/services/stream-analytics) ジョブが含まれます。
 
 最初のジョブでは、テレメトリの受信ストリームからのすべてのデータを選択し、2 つの異なる出力を作成します。このジョブには「**[ソリューション名]-テレメトリ**」という名前が付けられます。
 
@@ -69,4 +69,4 @@ IoT デバイスの詳細については、[Azure IoT 開発者向けサイト](
 
 [IoT デバイス SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

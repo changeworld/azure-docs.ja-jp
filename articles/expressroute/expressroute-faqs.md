@@ -1,19 +1,19 @@
 <properties
    pageTitle="ExpressRoute の FAQ"
-	description="ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。"
-	documentationCenter="na"
-	services="expressroute"
-	authors="cherylmc"
-	manager="carolz"
-	editor=""/>
+   description="ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。"
+   documentationCenter="na"
+   services="expressroute"
+   authors="cherylmc"
+   manager="carolz"
+   editor=""/>
 <tags
    ms.service="expressroute"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="09/02/2015"
-	ms.author="cherylmc"/>
+   ms.devlang="na"
+   ms.topic="article" 
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/02/2015"
+   ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
 
@@ -59,7 +59,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 
 	- CDN
 	- Visual Studio Online のロード テスト
-	- Multi-Factor Authentication
+	- Multi-factor Authentication
 
 ## データおよび接続
 
@@ -177,7 +177,7 @@ BGP セッションが切断されます。プレフィックス数が上限未�
 ### ExpressRoute 回線の帯域幅を変更するには、どうすればいいですか。
 専用回線の更新用の API や PowerShell コマンドレットを使用して、ExpressRoute 回線の帯域幅を更新できます。
 
-## ExpressRoute Premium
+## ExpressRoute premium
 
 ### ExpressRoute Premium とは何ですか。
 ExpressRoute Premium は、次に示す機能で構成されたサービスです。
@@ -287,4 +287,4 @@ NSP 経由と EXP 経由の両方で Office 365 サービスへの接続がサ�
 はい。自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

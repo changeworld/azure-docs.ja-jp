@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="PostgreSQL からデータを移動する | Azure Data Factory"
-	description="Azure Data Factory を使用して PostgreSQL Databases からデータを移動する方法を説明します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="PostgreSQL からデータを移動する | Azure Data Factory" 
+	description="Azure Data Factory を使用して PostgreSQL Databases からデータを移動する方法を説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/26/2015" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して PostgreSQL からデータを移動する
@@ -306,4 +306,4 @@ serial | serial4 | Int32
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

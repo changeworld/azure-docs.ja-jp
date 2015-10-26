@@ -1,18 +1,18 @@
 <properties 
-	pageTitle="チュートリアル: Application Insights を使用して Microsoft Dynamics CRM を監視する"
-	description="Application Insights を使用して Microsoft Dynamics CRM Online からテレメトリを取得します。設定、データの取得、視覚化、およびエクスポートをしてみましょう。"
-	services="application-insights"
-	documentationCenter=""
-	authors="mazharmicrosoft"
+	pageTitle="チュートリアル: Application Insights を使用して Microsoft Dynamics CRM を監視する" 
+	description="Application Insights を使用して Microsoft Dynamics CRM Online からテレメトリを取得します。設定、データの取得、視覚化、およびエクスポートをしてみましょう。" 
+	services="application-insights" 
+    documentationCenter=""
+	authors="mazharmicrosoft" 
 	manager="douge"/>
 
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/04/2015" 
 	ms.author="awills"/>
  
 # チュートリアル: Application Insights を使用して Microsoft Dynamics CRM Online のテレメトリを有効にする
@@ -60,7 +60,7 @@
 
     ![](./media/app-insights-sample-mscrm/08.png)
     
-4. Application Insights からコードをコピーします。
+4. Application Insights からコードをコピーします。コピーの際は <script> タグを無視します。次のスクリーン ショットを参照してください。
 
     ![](./media/app-insights-sample-mscrm/09.png)
 
@@ -91,7 +91,7 @@
 
 ## キャプチャされるメトリック
 
-フォームのテレメトリ キャプチャを設定しました。使用するたびに、Application Insights のリソースにデータが送信されます。
+フォームのテレメトリ キャプチャを設定しました。使用するたびに、データが Application Insights のリソースに送信されます。
 
 表示されるデータのサンプルを次に示します。
 
@@ -161,4 +161,4 @@
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

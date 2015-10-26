@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Application Insights を使用したメトリックの探索" 
-	description="内部設置型または Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
+	description="オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。" 
 	services="application-insights" 
     documentationCenter=""
 	authors="alancameronwills" 
@@ -131,7 +131,7 @@
 
 特定のプロパティの値を選択しない場合、すべての値を選択するのと同じ意味になり、そのプロパティに基づくフィルターはオフになります。
 
-各プロパティ値の横に表示されるイベントの数に注意してください。あるプロパティの値を選択すると、他のプロパティ値の横に表示される数値が調整されます。
+各プロパティ値の横に表示されるイベントの数に注意してください。あるプロパティの値を選択すると、その他のプロパティの値の横に表示される数値が調整されます。
 
 ### プロパティをフィルター一覧に追加するには
 
@@ -188,7 +188,7 @@
 
 表示されている内容がエクスポートされます。エクスポートするデータの範囲を変更する場合は、時間の範囲またはフィルターを変更します。テーブルの場合で、**[さらに読み込む]** が表示されている場合は、それをクリックしてから [エクスポート] をクリックすると、より多くのデータをエクスポートできます。
 
-*現時点では、Internet Explorer と Chrome でのみエクスポートできます。その他のブラウザーについてもサポートの追加に向けて対処していおります。*
+*現時点では、Internet Explorer と Chrome でのみエクスポートできます。その他のブラウザーについてもサポートの追加に向けて対処しています。*
 
 ### 連続エクスポート
 
@@ -207,9 +207,9 @@
 <!--Link references-->
 
 [alerts]: app-insights-alerts.md
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 [track]: app-insights-api-custom-events-metrics.md
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

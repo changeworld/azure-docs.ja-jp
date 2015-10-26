@@ -50,7 +50,7 @@ Azure SQL Database のエラスティック データベース ジョブ (プレ
 	New-AzureSqlJobTarget -CustomCollectionName $customCollectionName 
 	$ResourceGroupName = "ddove_samples"
 	$ServerName = "samples"
-	$dbsinserver = Get-AzureSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName 
+	$dbsinserver = Get-AzureRMSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName 
 	$dbsinserver | %{
     $currentdb = $_.DatabaseName 
     $ErrorActionPreference = "Stop"
@@ -447,4 +447,4 @@ JobTaskExecution オブジェクトには、タスクの Lifecycle のプロパ�
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

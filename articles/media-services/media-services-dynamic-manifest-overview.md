@@ -233,4 +233,4 @@ AMS のラーニング パスについては、以下を参照してください
 [skiing]: ./media/media-services-dynamic-manifest-overview/media-services-skiing.png
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

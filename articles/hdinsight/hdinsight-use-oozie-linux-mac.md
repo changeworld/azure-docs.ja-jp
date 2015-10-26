@@ -1,6 +1,6 @@
 <properties
-	pageTitle="HDInsight での Hadoop Oozie の使用 | Microsoft Azure"
-	description="ビッグ データ サービスとして HDInsight で Hadoop Oozie を使用します。Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。"
+	pageTitle="Linux ベースの HDInsight での Hadoop Oozie ワークフローの使用 | Microsoft Azure"
+	description="Linux ベースの HDInsight で Hadoop Oozie を使用します。Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/23/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 
@@ -32,7 +32,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure サブスクリプション**: [Azure 無料評価版の取得](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)に関するページをご覧ください。
+- **Azure サブスクリプション**: [Azure 無料試用版の取得](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)に関するページをご覧ください。
 
 - **Azure CLI**: 「[Azure CLI のインストール](xplat-cli-install.md)」をご覧ください。
 
@@ -48,9 +48,9 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 1. Hive アクションでは、HiveQL スクリプトを実行して、HDInsight に含まれている **hivesampletable** からレコードを抽出します。各データ行は、特定のモバイル デバイスからのアクセスを表します。レコードの形式は次のようになります。
 
-		8       18:54:20        ja-JP   Android Samsung SCH-i500        California     United States    13.9204007      0       0
-		23      19:19:44        ja-JP   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
-		23      19:19:46        ja-JP   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
+		8       18:54:20        JA-JP   Android Samsung SCH-i500        California     United States    13.9204007      0       0
+		23      19:19:44        JA-JP   Android HTC     Incredible      Pennsylvania   United States    NULL    0       0
+		23      19:19:46        JA-JP   Android HTC     Incredible      Pennsylvania   United States    1.4757422       0       1
 
 	このドキュメントで使用する Hive スクリプトは、プラットフォームごと (Android や iPhone など) の合計アクセス数をカウントし、カウントしたアクセス数を新しい Hive テーブルに保存します。
 
@@ -711,7 +711,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: powershell-install-configure.md
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
-[powershell-script]: https://technet.microsoft.com/ja-JP/library/ee176961.aspx
+[powershell-script]: https://technet.microsoft.com/JA-JP/library/ee176961.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
@@ -721,4 +721,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

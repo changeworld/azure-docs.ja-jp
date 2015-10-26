@@ -24,7 +24,7 @@
 
 ## データ形式の構成要素
 
-Service Fabric では、永続化されレプリケートされたデータが C# クラスから取得されます。[信頼性の高いコレクション](service-fabric-reliable-services-reliable-collections.md)を使用するアプリケーションの場合、それは信頼性の高いディクショナリとキューのオブジェクトです。[ステートフルな信頼性の高いアクター](service-fabric-reliable-actors-introduction.md)を使用するアプリケーションの場合は、アクターのバッキング ステートになります。これらの c\# クラスは、永続化されレプリケートされるよう、シリアル化可能である必要があります。そのため、データの形式は、シリアル化されるフィールドやプロパティ、シリアル化の方法によっても定義されます。たとえば、`IReliableDictionary<int, MyClass>` では、データはシリアル化された `int` で、シリアル化された `MyClass` です。
+Service Fabric では、永続化されレプリケートされたデータが C# クラスから取得されます。[信頼性の高いコレクション](service-fabric-reliable-services-reliable-collections.md)を使用するアプリケーションの場合、それは信頼性の高いディクショナリとキューのオブジェクトです。[ステートフルな信頼性の高いアクター](service-fabric-reliable-actors-introduction.md)を使用するアプリケーションの場合は、アクターのバッキング ステートになります。これらの c# クラスは、永続化されレプリケートされるよう、シリアル化可能である必要があります。そのため、データの形式は、シリアル化されるフィールドやプロパティ、シリアル化の方法によっても定義されます。たとえば、`IReliableDictionary<int, MyClass>` では、データはシリアル化された `int` で、シリアル化された `MyClass` です。
 
 ### データ形式の変更
 
@@ -65,4 +65,4 @@ C# クラスによって、データ形式が決まるため、クラスへの�
 
 [高度なトピック](service-fabric-application-upgrade-advanced.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

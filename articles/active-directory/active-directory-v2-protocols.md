@@ -475,4 +475,4 @@ On Behalf Of フロー (JWT ベアラー資格情報付与) は、[OAuth 2.0 Ext
 
 このフローは現在、v2.0 アプリ モデル プレビューではサポートされていません。一般提供版の Azure AD サービスにおける動作については、[こちらの Azure AD コード サンプル](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

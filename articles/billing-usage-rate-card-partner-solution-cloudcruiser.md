@@ -234,4 +234,4 @@ _UsageAPI_ シートで Usage API から情報を抽出して処理し、_Publis
 [13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "図 13 - タグ情報に対する新しいフィールドの作成"
 [14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "図 14 - 参照からの情報を使用したアカウント構造の設定"
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

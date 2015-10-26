@@ -1,26 +1,31 @@
 <properties 
-	pageTitle="データを作成して BLOB ストレージ から Hive テーブルに読み込む | Microsoft Azure"
-	description="Hive テーブルを作成し、BLOB 内のデータを Hive テーブルに読み込む"
-	services="machine-learning,storage"
-	documentationCenter=""
-	authors="hangzh-msft"
-	manager="jacob.spoelstra"
-	editor="cgronlun"/>
+	pageTitle="データを作成して BLOB ストレージ から Hive テーブルに読み込む | Microsoft Azure" 
+	description="Hive テーブルを作成し、BLOB 内のデータを Hive テーブルに読み込む" 
+	services="machine-learning,storage" 
+	documentationCenter="" 
+	authors="hangzh-msft" 
+	manager="jacob.spoelstra" 
+	editor="cgronlun"  />
 
 <tags 
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2015"
-	ms.author="hangzh;bradsev"/>
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/12/2015" 
+	ms.author="hangzh;bradsev" />
 
  
 #データを作成して Azure BLOB ストレージから Hive テーブルに読み込む
+
+この**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できるターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
+
  
 ## はじめに
-このドキュメントには Hive テーブルを作成し、Azure BLOB ストレージからデータを読み込む汎用の Hive クエリがあります。Hive テーブルをパーティション分割する方法や、Optimized Row Columnar (ORC) 形式を使用してクエリのパフォーマンスを向上させる方法についてのガイダンスも提供されます。
+**このドキュメント**には Hive テーブルを作成し、Azure BLOB ストレージからデータを読み込む汎用の Hive クエリがあります。Hive テーブルをパーティション分割する方法や、Optimized Row Columnar (ORC) 形式を使用してクエリのパフォーマンスを向上させる方法についてのガイダンスも提供されます。
 
 ## 前提条件
 この記事では、以下のことを前提としています。
@@ -30,7 +35,7 @@
 * クラスターへのリモート アクセスを有効にし、ログインし、Hadoop コマンド ライン コンソールを開いている。手順については、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#headnode)」をご覧ください。 
 
 ## Azure BLOB ストレージにデータをアップロードする
-[高度な分析のための Azure 仮想マシンのセットアップ](machine-learning-data-science-setup-virtual-machine.md)に関するページの指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\<ユーザー名>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。
+[高度な分析のための Azure 仮想マシンのセットアップ](machine-learning-data-science-setup-virtual-machine.md)に関するページの指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\\<ユーザー名>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。
 
 ここでは、Hive テーブルのデータが**圧縮されていない**表形式であることと、Hadoop クラスターが使用するストレージ アカウントの既定の (または追加の) コンテナーにデータがアップロードされていることを想定しています。
 
@@ -160,4 +165,4 @@ Hive テーブルをパーティション分割することに加え、Optimized
 
 この手順が終了すれば、すぐに使用できる ORC 形式のデータを含むテーブルが手に入ったことになります。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

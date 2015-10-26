@@ -133,4 +133,4 @@ Azure プレビュー ポータルでの Apache Spark ネイティブ クラス�
 * [エラー メッセージを解釈する](hdinsight-debug-jobs.md)
 * [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

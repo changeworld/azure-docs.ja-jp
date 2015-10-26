@@ -256,4 +256,4 @@ Service Bus における SAS の概要については、「[Shared Access Signat
 
 Service Bus 認証の背景の詳細については、「[Service Bus の認証と承認](service-bus-authentication-and-authorization.md)」を参照してください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

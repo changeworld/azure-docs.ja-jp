@@ -19,7 +19,8 @@
 
 # Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用した VHD のアップロードについて説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 ここでは、仮想ハードディスク (VHD) を作成およびアップロードし、それをイメージとして活用して Azuere 内で仮想マシンを作成する方法を示します。そのイメージに基づいて複数の仮想マシンを作成できるよう、オペレーティング システムを準備する方法についても説明します。この記事では、クラシック デプロイ モデルを使用して作成された仮想マシンを参照していることに注意してください。
 
@@ -161,4 +162,4 @@ VHD ファイルをアップロードするストレージ アカウントが必
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

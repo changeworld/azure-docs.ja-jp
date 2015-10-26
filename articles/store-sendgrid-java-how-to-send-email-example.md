@@ -221,4 +221,4 @@ Azure 上で Java から SendGrid を使用する方法を示すために、こ�
 [emailsent]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailSent.jpg
 [emailresult]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaResult.jpg
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

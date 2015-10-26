@@ -18,4 +18,4 @@ Azure レプリカをホストする各 VM に負荷分散されたエンドポ�
 
 	発行設定ファイルがインポートされたら、PowerShell セッションで、Azure サブスクリプションを管理できます。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

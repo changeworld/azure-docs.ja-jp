@@ -88,4 +88,4 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
 [powerquery-download]: http://go.microsoft.com/fwlink/?LinkID=286689
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

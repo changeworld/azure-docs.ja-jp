@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="rkarlin"
-	manager="msStevenPo"
+	manager="StevenPo"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/09/2015"
+	ms.date="10/12/2015"
 	ms.author="rkarlin"/>
 
 # Azure AD アプリケーション プロキシの有効化
@@ -49,7 +49,7 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 2. Active Directory に移動し、アプリケーション プロキシを有効にするディレクトリを選択します。
 3. [構成] をクリックし、下へスクロールして [アプリケーション プロキシ] を表示し、[このディレクトリに対してアプリケーション プロキシ サービスを有効にする] を [有効] に切り替えます。
 
-	![Enable Application Proxy](http://i.imgur.com/87woFzq.png) <p>
+	![アプリケーション プロキシを有効にする](./media/active-directory-application-proxy-enable/app_proxy_enable.png) <p>
 4. 画面の下部の [今すぐダウンロード] をクリックします。この操作により、ダウンロード ページが表示されます。ライセンス条項を読んで同意し、[ダウンロード] をクリックして、アプリケーション プロキシ コネクタの Windows インストーラー ファイル (.exe) を保存します。 
 
 ##手順 2: コネクタのインストールと登録
@@ -61,12 +61,27 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 - Azure AD コネクタをインストールするサーバーで [IE セキュリティ強化の構成] を [オン] に設定している場合、登録画面がブロックされることがあります。その場合は、エラー メッセージに示された指示に従って、アクセスを許可します。Internet Explorer のセキュリティ強化がオフであることを確認してください。
 - コネクタの登録が成功しなかった場合は、「アプリケーション プロキシのトラブルシューティング」を参照してください。
 
-4. インストールが完了したら、次に示す 2 つの新しいサービスがサーバーに追加されます。接続を可能にするコネクタ サービスと、定期的にコネクタの新しいバージョンをチェックし必要に応じてコネクタを更新する自動更新サービスです。インストール ウィンドウで、[完了] をクリックしてインストールを終了します。![Application Proxy Connector Service](http://i.imgur.com/zsVJKOz.png) <p>
+4. インストールが完了したら、次に示す 2 つの新しいサービスがサーバーに追加されます。接続を可能にするコネクタ サービスと、定期的にコネクタの新しいバージョンをチェックし必要に応じてコネクタを更新する自動更新サービスです。インストール ウィンドウで、[完了] をクリックしてインストールを終了します。![アプリケーション プロキシ コネクタ サービス!](./media/active-directory-application-proxy-enable/app_proxy_services.png) <p>
 5. プリケーション プロキシを使用してアプリケーションを発行する準備がこれで整いました。
 
 コネクタをアンインストールする場合は、コネクタ サービスと更新サービスをアンインストールしてから、コンピューターを再起動してサービスを完全に削除するようにしてください。<p>高可用性を確保するには、追加のコネクタを少なくとも 1 つデプロイしてください。追加のコネクタをデプロイするには、上記の手順 2. と手順 3. を繰り返します。各コネクタは個別に登録する必要があります。
 
 
+
+## 関連項目
+アプリケーション プロキシを使ってできることは他にもたくさんあります。
+
+- [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
+- [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
+- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
+- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
+- [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
+
+## アプリケーション プロキシに関するその他の情報
+- [オンライン ヘルプ](active-directory-application-proxy-enable.md)
+- [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
+- [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 ## その他のリソース
 
@@ -74,4 +89,4 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、Sha
 * [Azure ID](..fundamentals-identity.md)
 * [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

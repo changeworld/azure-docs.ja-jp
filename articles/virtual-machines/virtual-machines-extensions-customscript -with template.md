@@ -23,7 +23,7 @@
 
 カスタム スクリプト拡張機能の概要については、[こちらの記事](virtual-machines-extensions-customscript.md)をご覧ください。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。リソースは、[クラシック デプロイ モデル](virtual-machines-extensions-customscript.md)でも作成できます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-extensions-customscript.md)。
 
 カスタム スクリプト拡張機能は、導入以来、Windows VM と Linux VM でワークロードを構成するために広く使用されてきました。Azure リソース マネージャー テンプレートの導入により、VM をプロビジョニングするだけでなく、VM でワークロードも構成する単一のテンプレートを作成できるようになりました。
 
@@ -31,13 +31,13 @@
 
 Azure リソース マネージャー テンプレートでは、リソース間の依存関係を定義することで、JSON 言語で Azure IaaS インフラストラクチャを宣言によって指定できます。Azure リソース マネージャー テンプレートの概要については、次の記事をご覧ください。
 
-<a href="https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-overview/" target="_blank">リソース グループの概要</a><br/><a href="https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli/" target="_blank">Azure CLI を使用したテンプレートのデプロイ</a><br/><a href="https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/" target="_blank">Azure Powershell を使用したテンプレートのデプロイ</a>
+<a href="https://azure.microsoft.com/JA-JP/documentation/articles/resource-group-overview/" target="_blank">リソース グループの概要</a>。<br/> <a href="https://azure.microsoft.com/JA-JP/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli/" target="_blank">Azure CLI を使用したテンプレートのデプロイ</a>。<br/><a href="https://azure.microsoft.com/JA-JP/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/" target="_blank">Azure Powershell を使用したテンプレートのデプロイ</a>。
 
 ### カスタム スクリプト拡張機能を実行する前提条件
 
 1. <a href="http://azure.microsoft.com/downloads" target="_blank">ここ</a>から最新の Azure PowerShell コマンドレットまたは Azure CLI をインストールします。
 2. スクリプトが既存の VM で実行されている場合、VM エージェントがその VM 上で有効であることをご確認ください。そうでない場合は、<a href="https://msdn.microsoft.com/library/azure/dn832621.aspx" target="_blank">こちらの記事</a>の手順に従ってインストールしてください。
-3. VM で実行するスクリプトを Azure ストレージにアップロードします。スクリプトは、1 つか複数のストレージ コンテナーから取得できます。
+3. VM で実行するスクリプトを Azure Storage にアップロードします。スクリプトは、1 つか複数のストレージ コンテナーから取得できます。
 4. スクリプトを Github アカウントにアップロードすることもできます。
 5. スクリプトは、拡張機能によって起動されるエントリ スクリプトが、他のスクリプトを順に起動するように記述されている必要があります。
 
@@ -98,6 +98,6 @@ Azure リソース マネージャー テンプレートでは、リソース間
 
 カスタム スクリプト拡張機能を使用して、VM でアプリケーションを構成する完全なサンプルについては、次の例をご覧ください。
 
-<a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/" target="_blank">Linux VM のカスタム スクリプト拡張機能</a></br><a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">Windows VM のカスタム スクリプト拡張機能</a>
+<a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/" target="_blank">Linux VM のカスタム スクリプト拡張機能</a>。</br> <a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">Windows VM のカスタム スクリプト拡張機能</a>。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

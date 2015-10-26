@@ -129,4 +129,4 @@ StorSimple 8000 シリーズ Update 1 では、DATA 0 のルーティング メ�
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
      
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -96,8 +96,7 @@ Machine Learning Web サービスにアクセスする詳細については、�
 
 Microsoft Azure 管理ポータルでは、**[Machine Learning]** サービスをクリックして Machine Learning ワークスペースを開き、その後 **[WEB SERVICES]** タブから Web サービスを開くことで Web サービスを管理できます。このページから Web サービスの監視、更新、削除ができます。Web サービスを発行するときに作成される既定のエンドポイントに加えて 2 つ目のエンドポイントを追加することもできます。
 
-詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。
-<!-- When this article gets published, fix the link and uncomment
+詳細については、「[Azure Machine Learning ワークスペースの管理](machine-learning-manage-workspace.md)」をご覧ください。<!-- When this article gets published, fix the link and uncomment
 For more information on how to manage Azure Machine Learning web service endpoints using the REST API, see **Azure machine learning web service endpoints**.
 -->
 
@@ -112,4 +111,4 @@ Web サービスを更新するには、Web サービスのデプロイに使用
 
 Web サービスを更新するオプションの 1 つに、モデルをプログラムによって再トレーニングする方法があります。詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](machine-learning-retrain-models-programmatically.md)」をご覧ください。
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

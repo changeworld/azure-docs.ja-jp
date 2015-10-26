@@ -131,4 +131,4 @@ Windows PowerShell の [Publish-AzureAutomationRunbook](https://msdn.microsoft.c
 - [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
 - [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -1,20 +1,21 @@
 <properties 
-	pageTitle="SQL パーティション テーブルを使用した並列の一括データ インポート | Microsoft Azure"
-	description="SQL パーティション テーブルを使用した並列の一括データ インポート"
-	services="machine-learning"
-	documentationCenter=""
+	pageTitle="SQL パーティション テーブルを使用した並列の一括データ インポート | Microsoft Azure" 
+	description="SQL パーティション テーブルを使用した並列の一括データ インポート" 
+	services="machine-learning" 
+	solutions="" 
+	documentationCenter="" 
 	authors="msolhab"
-	manager="paulettm"
-	editor="cgronlun"/>
+	manager="paulettm" 
+	editor="cgronlun" />
 
 <tags 
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="msolhab"/>
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
+	ms.author="msolhab" />
 
 # SQL パーティション テーブルを使用した並列の一括データ インポート
 
@@ -184,4 +185,4 @@ SQL データベースへのビッグ データの読み込み/転送では、_�
 Advanced Analytics Process and Technology (ADAPT) とパブリック データセットを使用した完全なチュートリアルの例については、「[実行中の Advanced Analytics Process and Technology: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

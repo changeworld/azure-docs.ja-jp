@@ -52,4 +52,4 @@ Azure モバイル エンゲージメントは、Google 社の GCM、Apple 社�
 [概要チュートリアル (開発者)](/documentation/services/mobile-engagement/)
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

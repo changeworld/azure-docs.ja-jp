@@ -1,5 +1,5 @@
 <properties
-   pageTitle="HDInsight で Storm を使用して Event Hubs のイベントを処理する | Azure"
+   pageTitle="Java を使用した HDInsight の Storm での Event Hubs のイベントの処理 | Azure"
    description="Maven で作成した Java Storm トポロジを使用して Event Hubs を処理する方法について説明します。"
    services="hdinsight,notification hubs"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/12/2015"
+   ms.date="10/09/2015"
    ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)
@@ -360,7 +360,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
     トポロジが開始され、"reader" と "writer" というフレンドリ名が付けられます。
 
-3. 1 ～ 2 分待つと、トポロジで Event Hub のイベントの書き込みと読み取りを実行できるようになります。次に、以下のコマンドを使用して、EventHubReader がデータを HDInsight Storage に格納していることを確認します。
+3. 1 ～ 2 分待つと、トポロジで Event Hub のイベントの書き込みと読み取りを実行できるようになります。次に、以下のコマンドを使用して、EventHubReader がデータを HDInsight ストレージに格納していることを確認します。
 
         hadoop fs -ls /devicedata
 
@@ -397,7 +397,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
 ###Windows ベースのクラスターを使用している場合
 
-1. ブラウザーで https://CLUSTERNAME.azurehdinsight.net を開きます。メッセージが表示されたら、HDInsight クラスター管理者の資格情報を入力します。Storm ダッシュ ボードが表示されます。
+1. ブラウザーで https://CLUSTERNAME.azurehdinsight.net を開きます。メッセージが表示されたら、HDInsight クラスター管理者の資格情報を入力します。Storm ダッシュボードが表示されます。
 
 2. __[Jar ファイル]__ ドロップダウンを使用して、ビルド環境にある EventHubExample-1.0-SNAPSHOT.jar を参照して選択します。
 
@@ -476,4 +476,4 @@ Storm UI の詳細な使用方法については、次のトピックを参照�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

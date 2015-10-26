@@ -100,4 +100,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
 [.NET バックエンド モバイル サービスにデータ モデルの変更を加える方法]: mobile-services-dotnet-backend-how-to-use-code-first-migrations.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

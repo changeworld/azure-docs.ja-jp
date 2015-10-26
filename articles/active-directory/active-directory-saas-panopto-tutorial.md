@@ -1,7 +1,5 @@
 <properties pageTitle="チュートリアル: Azure Active Directory と Panopto の統合 | Microsoft Azure" description="Azure Active Directory で Panopto を使用して、シングル サインオンを有効にする方法、プロビジョニングを自動化する方法などについて説明します。" services="active-directory" authors="MarkusVi"  documentationCenter="na" manager="stevenpo"/>
-
-<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi"/>
-
+<tags ms.service="active-directory" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="identity" ms.date="08/01/2015" ms.author="markvi" />
 #チュートリアル: Azure Active Directory と Panopto の統合
 >[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=524766)をクリックしてください。
   
@@ -67,7 +65,7 @@
 
 3.  **[アプリ URL の構成]** ページで、**[Panopto サインイン URL]** ボックスに、"*https://\<tenant-name>。Panopto.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-panopto-tutorial/IC777528.png "アプリケーション URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-panopto-tutorial/IC777528.png "アプリケーション URL の構成")
 
 4.  **[Panopto でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -126,4 +124,4 @@ Panopto へのユーザー プロビジョニングの構成にあたって必�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -1,8 +1,9 @@
 <properties 
+    title="Elastic Scale Security Configurations" 
     pageTitle="Elastic Scale のセキュリティの構成" 
     description="暗号化のための x409 証明書の設定" 
-    services="sql-database" 
-	documentationCenter="" 
+    metaKeywords="Elastic Database certificates security" 
+    services="sql-database" documentationCenter="" 
     manager="jhubbard" 
     authors="sidneyh"/>
 
@@ -85,11 +86,11 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 8.    [許可されているクライアントをサービス構成ファイルに構成する](Configure#Allowed#Clients#in#the#Service#Configuration#File)
 
 ### 既存のクライアント証明書を使用する
-1.    [CA の公開キーを検索する](Find\#CA\#Public Key)
+1.    [CA の公開キーを検索する](Find#CA#Public Key)
 2.    [CA 証明書をクラウド サービスにアップロードする](Upload#CA#certificate#to#cloud#service)
 3.    [サービス構成ファイルの CA 証明書を更新する](Update#CA#Certificate#in#Service#Configuration#File)
 4.    [クライアント証明書のサムプリントをコピーする](Copy#Client#Certificate#Thumbprints)
-5.    [許可されているクライアントをサービス構成ファイルに構成する](Configure\#Allowed\#Clients\#in\#the\#Service\#Configuration File)
+5.    [許可されているクライアントをサービス構成ファイルに構成する](Configure#Allowed#Clients#in#the#Service#Configuration File)
 6.    [クライアント証明書の失効確認を構成する](Configure#Client#Certificate#Revocation#Check)
 
 ## 許可された IP アドレス
@@ -473,4 +474,4 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

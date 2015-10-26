@@ -317,4 +317,4 @@ Web ロールと worker ロールが開始、実行、停止される過程に�
 - [Azure キューと Service Bus キューの比較](http://msdn.microsoft.com/library/hh767287.aspx)
 - [クラウド サービスの診断を有効にする方法](http://msdn.microsoft.com/library/dn482131.aspx)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -2,8 +2,11 @@
 	pageTitle="Azure で高度な分析ソリューションを構築する | Microsoft Azure" 
 	description="このガイドを使用して、クラウドでのデータ科学および Machine Learning に関する Azure の使用手順を理解します。" 
 	services="machine-learning,hdinsight" 
+	solutions="" 
 	documentationCenter="" 
 	authors="bradsev" 
+	videoId="" 
+	scriptId="" 
 	manager="paulettm" />
 
 <tags 
@@ -26,4 +29,4 @@
 <object type="image/svg+xml" data="https://sidneyhcontent.blob.core.windows.net/documentation/machine-learning-how-to-create-ml-service.svg" width="100%" height="100%"> </object>
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

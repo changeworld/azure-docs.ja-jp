@@ -71,7 +71,7 @@
 
     これですべてではありません。譲渡先では、リソースへのアクセスの制限を必要としている場合、サービスに関連付けられているすべてのシークレットの更新を検討する必要があります。ほとんどのリソースを次の手順で更新できます。
 
-    1.   Azure ポータル [*https://portal.azure.com*](https://portal.azure.com) にアクセスします。
+    1.   Azure ポータル [**https://portal.azure.com*](https://portal.azure.com) にアクセスします。
 
     2.    [すべてを参照]、[すべてのリソース] の順にクリックします。
 
@@ -111,4 +111,4 @@
 4. このサブスクリプション用の課金アラートを、[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で更新します。[詳細情報](http://go.microsoft.com/fwlink/?LinkID=533292)
 5. 	パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。この操作は [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で実行できます。
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

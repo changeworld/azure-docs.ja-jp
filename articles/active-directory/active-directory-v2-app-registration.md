@@ -41,4 +41,4 @@ Microsoft アプリを構築したら、いずれかのクイック スタート
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-v2-quickstart-table.md)]
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

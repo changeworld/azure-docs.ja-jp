@@ -247,4 +247,4 @@ Azure SQL のリンクされたサービスを作成し、[ストアド プロ�
  
    
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -24,7 +24,8 @@
 
 <br/>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 このエンド ツー エンドのチュートリアルでは、Azure の仮想マシン上で実行されている SQL Server AlwaysOn を使用して可用性グループを実装する方法について説明します。
 
@@ -46,7 +47,7 @@
 
 ![Test Lab Architecture for AG in Azure](./media/virtual-machines-sql-server-alwayson-availability-groups-gui/IC791912.png)
 
-これは、考えられる 1 つの構成であることに注意してください。たとえば、Azure でのコンピューティング時間を節約するために、ドメイン コントローラーを 2 つのノードの WSFC クラスターでクォーラム ファイル共有監視として使用することで、2 つのレプリカを持つ可用性グループ用の VM 数を最小限に抑えることができます。この方法では、前の構成よりも VM の数が 1 つ減少します。
+これは、考えられる 1 つの構成であることに注意してください。たとえば、Azure でのコンピューティング時間を節約するために、ドメイン コントローラーを 2 つのノードの WSFC クラスターでクォーラム ファイル共有監視として使用することで、2 つのレプリカを持つ可用性グループ用の VM 数を最小限に抑えることができます。この方法では、上記の構成よりも VM 数が 1 つ減少します。
 
 このチュートリアルでは、次のことを前提としています。
 
@@ -137,7 +138,7 @@
 
 	|ページ|設定|
 |---|---|
-|デプロイメント構成|**新しいフォレストを追加する** = 選択<br/>**ルート ドメイン名** = corp.contoso.com|
+|デプロイ構成|**新しいフォレストを追加する** = 選択<br/>**ルート ドメイン名** = corp.contoso.com|
 |ドメイン コントローラー オプション|**パスワード** = Contoso!000<br/>**パスワードの確認入力** = Contoso!000|
 
 1. **[次へ]** をクリックして、ウィザード内の他のページを進めます。**[前提条件のチェック]** ページで、"**すべての前提条件のチェックに合格しました**" というメッセージが表示されることを確認します。関連する警告メッセージを確認する必要がありますが、インストールは続行できます。
@@ -543,4 +544,4 @@
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

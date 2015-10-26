@@ -7,4 +7,4 @@
 
 UDR および IP 転送の詳細については、「[ユーザー定義のルートと IP 転送](./virtual-networks-udr-overview.md)」を参照してください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

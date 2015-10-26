@@ -87,4 +87,4 @@ Premium 課金単位には、最大 10,000 個の Premium ジョブ コレクシ
  [Scheduler 送信認証](scheduler-outbound-authentication.md)
   
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

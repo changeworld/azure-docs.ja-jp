@@ -8,4 +8,4 @@ VM の静的 IP アドレスの構成方法をわかりやすく説明するた�
 
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

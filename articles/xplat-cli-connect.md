@@ -21,7 +21,9 @@
 
 Azure CLI は、Azure プラットフォームで使用できるオープン ソース、クロスプラットフォームのコマンド群です。この記事では、すべての CLI コマンドを使用できるように、Azure CLI から Azure サブスクリプションに接続する方法について説明します。CLI をまだインストールしていない場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照してください。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルまたはクラシック デプロイメント モデルを使用したリソースの作成および管理について説明します。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-both-include.md)]
+
 
 Azure CLI からサブスクリプションに接続する方法には、次の 2 つがあります。
 
@@ -159,4 +161,4 @@ Azure サブスクリプションに接続すると、その Azure CLI コマン
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: virtual-machines/xplat-cli-azure-resource-manager.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

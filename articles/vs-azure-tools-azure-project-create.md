@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Visual Studio を使用した Azure プロジェクトの作成"
-	description="Visual Studio を使用した Azure プロジェクトの作成"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="kempb"
-	manager="douge"
-	editor="tlee"/>
+   description="Visual Studio を使用した Azure プロジェクトの作成"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="kempb"
+   manager="douge"
+   editor="tlee" />
 <tags 
    ms.service="multiple"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/24/2015"
-	ms.author="kempb"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="08/24/2015"
+   ms.author="kempb" />
 
 # Visual Studio を使用した Azure プロジェクトの作成
 
@@ -62,4 +62,4 @@ Azure クラウド サービスのソリューションには、以下の種類�
 
 1. プロジェクトに追加したロールの名前を変更するには、**[新しい Azure プロジェクト]** ダイアログ ボックスでそのロールの上にマウス ポインターを置き、ロールの右側にある **[名前の変更]** アイコンをクリックします。追加後も、ソリューション内でロールの名前を変更できます。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

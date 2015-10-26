@@ -64,4 +64,4 @@ Windows PowerShell コマンドレットを使用するには、最初に Window
 
 	- 組織内のすべてのユーザーのパスワードを無期限に設定するには、次のコマンドレットを実行します。 `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires \$true`
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

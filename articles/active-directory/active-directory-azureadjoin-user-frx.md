@@ -47,4 +47,4 @@ Windows 10 では、エンドユーザーは、最初の実行エクスペリエ
 * [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

@@ -36,4 +36,4 @@ Azure にはアプリケーションを実行するための複数のホステ�
 [仮想マシン]: ../virtual-machines-about.md
 [Cloud Services]: #tellmecs
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

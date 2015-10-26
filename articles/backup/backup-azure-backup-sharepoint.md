@@ -226,4 +226,4 @@ Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、Shar
 - 「[System Center 2012 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860415.aspx)」をご覧ください
 - 「[System Center 2012 SP1 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860394.aspx)」をご覧ください
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

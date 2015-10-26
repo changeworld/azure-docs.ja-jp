@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Hadoop 用 Java MapReduce プログラムの開発 | Microsoft Azure"
-	description="HDInsight Emulator で Java MapReduce プログラムを開発する方法、それらのプログラムを HDInsight にデプロイする方法について説明します。"
+	pageTitle="Linux ベースの HDInsight 用 Java MapReduce プログラムの開発 | Microsoft Azure"
+	description="Java MapReduce プログラムを開発する方法と、それらのプログラムを Linux ベースの HDInsight にデプロイする方法について説明します。"
 	services="hdinsight"
 	editor="cgronlun"
 	manager="paulettm"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="09/02/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 # HDInsight での Hadoop 用 Java MapReduce プログラムの開発
@@ -31,7 +31,7 @@
 
 - [Apache Maven](http://maven.apache.org/)
 
-- **Azure サブスクリプション**: [Azure 無料評価版の取得](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)に関するページをご覧ください。
+- **Azure サブスクリプション**: [Azure 無料試用版の取得](get-azure-free-trial-for-testing-hadoop-in-hdinsight.md)に関するページをご覧ください。
 
 - **Azure CLI**: 詳細については、[Azure CLI のインストールおよび構成](../xplat-cli-install.md)に関するページをご覧ください。
 
@@ -267,7 +267,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 このドキュメントでは、Java MapReduce ジョブを作成する方法を説明しました。HDInsight を使用する他の方法については、次のドキュメントを参照してください。
 
 - [HDInsight での Hive の使用][hdinsight-use-hive]
-- [HDInsight の Hadoop での Pig の使用][hdinsight-use-pig]
+- [HDInsight での Pig の使用][hdinsight-use-pig]
 - [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
 詳細については、[Java デベロッパー センター](/develop/java/)も参照してください。
@@ -300,4 +300,4 @@ Java と JDK をインストールするときに、次のような環境変数�
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -2,6 +2,7 @@
 	pageTitle="高度な分析プロセスで HDInsight Hadoop クラスターに Hive クエリを送信する | Microsoft Azure" 
 	description="ハイブ テーブルからのデータの処理" 
 	services="machine-learning" 
+	solutions="" 
 	documentationCenter="" 
 	authors="hangzh-msft" 
 	manager="paulettm" 
@@ -325,4 +326,4 @@ Hive 埋め込み UDF のリストについては、[こちら](https://cwiki.ap
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -265,4 +265,4 @@ App Service SDK は、Swagger API の定義を利用してクライアント ク
 App Service での認証については、[API Apps と Mobile Apps の認証](../app-service/app-service-authentication-overview.md)に関するページを参照してください。
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

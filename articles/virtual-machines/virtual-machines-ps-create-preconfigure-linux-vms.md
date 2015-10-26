@@ -25,9 +25,10 @@
 
 <br>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
-次の手順では、一連の Azure PowerShell コマンドを使用して、従来の管理モデルで Linux 仮想マシンを作成および事前構成する方法を示します。このプロセスを使用すると、新しい Linux ベースの仮想マシンにコマンド セットを迅速に作成することができるため、既存のデプロイメントを拡張できます。また、複数のコマンド セットを作成してカスタム開発やテスト、IT プロの環境をすばやく構築できます。
+次の手順では、一連の Azure PowerShell コマンドを使用して、従来の管理モデルで Linux 仮想マシンを作成および事前構成する方法を示します。このプロセスを使用すると、新しい Linux ベースの仮想マシンにコマンド セットを迅速に作成することができるため、既存のデプロイを拡張できます。また、複数のコマンド セットを作成してカスタム開発やテスト、IT プロの環境をすばやく構築できます。
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、Azure PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。Azure PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
@@ -264,4 +265,4 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 
 [Azure PowerShell を使用して Windows ベースの仮想マシンを作成および事前構成する](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

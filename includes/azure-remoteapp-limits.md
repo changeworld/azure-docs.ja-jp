@@ -20,4 +20,4 @@
 
 有料のコレクションまたは同時接続の数の増加を要求するには、必要な[remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com) に電子メールを送信します。その際、サブスクリプション ID などの必要な詳細を含めてください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

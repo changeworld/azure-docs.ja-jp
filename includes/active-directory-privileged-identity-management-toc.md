@@ -10,4 +10,4 @@
 - [MFA を要求する方法](active-directory-privileged-identity-management-how-to-require-mfa.md)
 - [監査ログを使用する方法](active-directory-privileged-identity-management-how-to-use-audit-log.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

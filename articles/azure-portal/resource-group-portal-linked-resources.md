@@ -34,4 +34,4 @@
 - リソース間のリンクの作成方法の詳細については、「[Azure リソース マネージャーでのリソースのリンク](../resource-group-link-resources.md)」をご覧ください。
 - プレビュー ポータルからリソース グループを使用する方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)」をご覧ください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -1,17 +1,17 @@
 <properties 
-	pageTitle="Application Insights for .NET のリリース ノート"
-	description="最新の更新プログラム。"
-	services="application-insights"
-	documentationCenter=""
-	authors="alancameronwills"
+	pageTitle="Application Insights for .NET のリリース ノート" 
+	description="最新の更新プログラム。" 
+	services="application-insights" 
+    documentationCenter=""
+	authors="alancameronwills" 
 	manager="douge"/>
 <tags 
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/06/2015"
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/06/2015" 
 	ms.author="sergkanz"/>
  
 # .NET 向けの Application Insights SDK のリリース ノート
@@ -32,6 +32,17 @@
 * ApplicationInsights.config を前のコピーと比較します。表示される変更の大部分は、モジュールを削除したり、パラメーター化できるようにしたことが原因です。前のファイルに対して行ったカスタマイズをもう一度設定します。
 * ソリューションをリビルドします。
 
+## Version 2.0.0-beta1
+- 必須フィールドの一部が指定されていない場合は、TrackDependency によって有効な JSON が生成されます。
+- 冗長なプロパティの ```RequestTelemetry.ID``` は、```RequestTelemetry.Operation.Id``` のプロキシのみになりました。
+- 新しい ```ISupportSampling``` インターフェイスが導入され、ほとんどのデータ項目の型で明示的に実装できるようになりました。
+- DependencyTelemetry の ```Count``` プロパティが廃止としてマークされました。代わりに ```SamplingPercentage``` を使用してください。
+- ```CloudContext``` が新しく導入され、そこに ```DeviceContext``` から ```RoleName``` プロパティおよび ```RoleInstance``` プロパティが移動しました。
+- 認証されたユーザー ID を指定する ```UserContext``` の新しい ```AuthenticatedUserId``` プロパティが導入されました。
+- Javascript SDK によって設定された認証済みユーザーのコンテキストを初期化する `Microsoft.ApplicationInsights.Web.AccountIdTelemetryInitializer`、`Microsoft.ApplicationInsights.Web.AuthenticatedUserIdTelemetryInitializer` が追加されました。
+- `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ITelemetryProcessor` とその実装としての固定比率のサンプリングのサポートが追加されました。
+- `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.TelemetryChannelBuilder` が追加され、一連の `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ITelemetryProcessor` を使用して `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` を作成できるようになりました。
+
 ## バージョン 1.2
 
 - ASP.NET ライブラリへの依存関係を持たないテレメトリ初期化子が、`Microsoft.ApplicationInsights.Web` から新しい依存関係 nuget である `Microsoft.ApplicationInsights.WindowsServer` に移動されました。
@@ -41,7 +52,7 @@
 - ランタイム インストルメンテーション エージェント (Status Monitor または Azure WebSite 拡張機能を通して有効にします) を使用して収集される依存関係は、スレッドに HttpContext.Current が存在しない場合は非同期としてマークされません。
 - `DependencyTrackingTelemetryModule` の `SamplingRatio` プロパティは何もせず、廃止とマークされています。
 - `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector` アセンブリは `Microsoft.AI.PerfCounterCollector` に名前が変更されました。
-- Web SDK と Devices SDK でいくつかの小さなバグが修正されています。
+- Web SDK とデバイス SDK でいくつかの小さなバグが修正されています。
 
 
 ## バージョン 1.1
@@ -61,10 +72,10 @@
 
 ## バージョン 0.17
 - Framework 4.5 アプリケーションの EventSource NuGet に対する依存関係が削除されました。
-- 匿名ユーザーとセッションの Cookie は、サーバー側では生成されません。Web アプリのユーザーおよびセッションの追跡を実装するために JS SDK によるインストルメンテーションが必要になりました。JavaScript SDK の Cookie は引き続き適用されます。テレメトリ モジュール ```WebSessionTrackingTelemetryModule``` と ```WebUserTrackingTelemetryModule``` はサポートされなくなり、ApplicationInsights.config ファイルから削除されました。この変更により、ユーザー数とセッション数の大幅な再計算が発生する場合があることに注意してください。これは、ユーザーが開始したセッションのみがカウントされるようになったためです。
+- Anonymous User and Session cookies will not be generated on server side.Web アプリのユーザーおよびセッションの追跡を実装するために JS SDK によるインストルメンテーションが必要になりました。JavaScript SDK の Cookie は引き続き適用されます。テレメトリ モジュール ```WebSessionTrackingTelemetryModule``` と ```WebUserTrackingTelemetryModule``` はサポートされなくなり、ApplicationInsights.config ファイルから削除されました。この変更により、ユーザー数とセッション数の大幅な再計算が発生する場合があることに注意してください。これは、ユーザーが開始したセッションのみがカウントされるようになったためです。
 - OSVersion の値が SDK により既定で設定されなくなりました。空の場合、OS と OSVersion が Application Insights のパイプラインによってユーザー エージェントに基づいて計算されます。 
 - Web SDK では、高負荷のシナリオ用に最適化された永続化チャネルが使用されます。"Spiral of death (悪循環)" の問題が修正されました。"Spiral of death (悪循環)" とは、テレメトリの項目数が急激に増加し、エンドポイントの調整の限界を大幅に超えた場合に、一定時間の経過後に処理が再試行されるものの、その再試行でも調整が発生するような状態を指します。
-- 開発者モードは運用環境向けに最適化されています。誤ってそのままにしておいても、追加情報の出力を試行する前ほどの大きな負荷は発生しません。
+- 開発者モードは実稼働用に最適化されています。誤ってそのままにしておいても、追加情報の出力を試行する前ほどの大きな負荷は発生しません。
 - 開発者モードが既定で有効になるのは、アプリケーションがデバッグ中の場合のみです。この設定は ```ITelemetryChannel``` インターフェイスの ```DeveloperMode``` プロパティを使用してオーバーライドできます。
 
 ## バージョン 0.16 
@@ -72,13 +83,13 @@
 2015-04-28 プレビュー
 
 - SDK は DNX ターゲット プラットフォームをサポートし、[.NET Core フレームワーク](http://www.dotnetfoundation.org/NETCore5) アプリケーションを監視できるようになりました。
-- ```TelemetryClient``` のインスタンスはインストルメンテーション キーをキャッシュしなくなりました。インストルメンテーション キーが ```TelemetryClient``` に明示的に設定されていなかった場合、```InstrumentationKey``` は null を返します。いくらかの利用統計情報が既に収集された後、```TelemetryConfiguration.Active.InstrumentationKey``` を設定すると、問題が解決されます。依存関係コレクター、Web 要求データ コレクション、パフォーマンス カウンター コレクションのような利用統計情報モジュールは新しいインストルメンテーション キーを使用します。
+- ```TelemetryClient``` のインスタンスはインストルメンテーション キーをキャッシュしなくなりました。インストルメンテーション キーが ```TelemetryClient``` に明示的に設定されていなかった場合、```InstrumentationKey``` は null を返します。いくらかのテレメトリが既に収集された後、```TelemetryConfiguration.Active.InstrumentationKey``` を設定すると、問題が解決されます。依存関係コレクター、Web 要求データ コレクション、パフォーマンス カウンター コレクションのようなテレメトリ モジュールは新しいインストルメンテーション キーを使用します。
 
 ## バージョン 0.15
 
-- 新しいプロパティ ```Operation.SyntheticSource``` が ```TelemetryContext``` で利用できるようになりました。利用統計情報項目を「本物のユーザー トラフィックではない」として設定し、そのトラフィックが生成された背景を指定できるようになりました。このプロパティを設定する例としては、テスト自動化のトラフィックを負荷テストのトラフィックと区別できます。
+- 新しいプロパティ ```Operation.SyntheticSource``` が ```TelemetryContext``` で利用できるようになりました。テレメトリ項目を「本物のユーザー トラフィックではない」として設定し、そのトラフィックが生成された背景を指定できるようになりました。このプロパティを設定する例としては、テスト自動化のトラフィックを負荷テストのトラフィックと区別できます。
 - チャネル ロジックは「Microsoft.ApplicationInsights.PersistenceChannel」と呼ばれる別個の NuGet に移動されました。既定のチャネルは「InMemoryChannel」という名前になりました。
-- 新しいメソッド ```TelemetryClient.Flush``` では、バッファーからの利用統計情報項目を同期的にフラッシュできます。
+- 新しいメソッド ```TelemetryClient.Flush``` では、バッファーからのテレメトリ項目を同期的にフラッシュできます。
 
 ## バージョン 0.13
 
@@ -86,4 +97,4 @@
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

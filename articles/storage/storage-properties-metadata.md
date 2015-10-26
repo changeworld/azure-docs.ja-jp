@@ -106,4 +106,4 @@ BLOB でプロパティを設定するには、プロパティ値を指定して
 - [.NET 用の BLOB ストレージの概要](storage-dotnet-how-to-use-blobs.md)  
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -35,7 +35,8 @@ Linux 診断拡張機能は、Microsoft Azure で実行されている Linux VM 
 - この[ドキュメント](https://scx.codeplex.com/wikipage?title=xplatproviders")で指定されているすべてのシステム データ。
 - ユーザーが指定したログ ファイル。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 ## 拡張機能を有効にする方法
 拡張機能は、[Azure ポータル](https://ms.portal.azure.com/#)、Azure PowerShell、または Azure CLI スクリプトから有効にできます。
@@ -126,12 +127,12 @@ Rsyslog データは既定で常に収集されます。
 
 
 ## データを確認する
-パフォーマンスと診断のデータが Azure ストレージ テーブルに保存されます。[この記事](storage-ruby-how-to-use-table-storage.md)を確認して、Azure CLI スクリプトを使用してストレージ テーブル内のデータにアクセスする方法を学習します。
+パフォーマンスと診断のデータが Azure Storage テーブルに保存されます。[この記事](storage-ruby-how-to-use-table-storage.md)を確認して、Azure CLI スクリプトを使用してストレージ テーブル内のデータにアクセスする方法を学習します。
 
 さらに、次の UI ツールを使用してデータにアクセスすることもできます。
 
 1.	Visual Studio のサーバー エクスプローラーを使用します。ストレージ アカウントに移動します。VM を約 5 分間稼働した後、既定のテーブル「LinuxCpu」、「LinuxDisk」、「LinuxMemory」、および「Linuxsyslog」を確認する必要があります。データを表示するには、テーブル名をダブルクリックします。
-2.	[Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage エクスプローラー") を使用してデータにアクセスします。
+2.	[Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")を使用してデータにアクセスします。
 
 ![image](./media/virtual-machines-linux-diagnostic-extension/no1.png)
 
@@ -143,4 +144,4 @@ Rsyslog データは既定で常に収集されます。
 - バージョン 2.0 の場合、Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトからのみアクセスできます。
 - バージョン 2.0 の場合、最初にスクリプトを使用して Linux 診断拡張機能を有効にすると、 Azure ポータルからはデータを表示できません。最初にポータルから拡張機能を有効にした場合は、スクリプトも正常に機能します。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -232,4 +232,4 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [方法: Windows Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/jj927172.aspx
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Java からファイル ストレージを使用する方法 | Microsoft Azure"
-	description="Azure ファイル サービスを使用して、ファイルをアップロード、ダウンロード、一覧表示、削除する方法について説明します。コード サンプルは Java で記述されています。"
-	services="storage"
-	documentationCenter="java"
-	authors="rmcmurray"
-	manager="wpickett"
-	editor="jimbe"/>
+	pageTitle="Java からファイル ストレージを使用する方法 | Microsoft Azure" 
+	description="Azure ファイル サービスを使用して、ファイルをアップロード、ダウンロード、一覧表示、削除する方法について説明します。コード サンプルは Java で記述されています。" 
+	services="storage" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor="jimbe" />
 
 <tags 
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="Java"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="storage" 
+	ms.workload="storage" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="v-dedomi"/>
 
 # Java からファイル ストレージを使用する方法
@@ -221,4 +221,4 @@ CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出
 [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

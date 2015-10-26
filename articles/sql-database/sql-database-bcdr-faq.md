@@ -65,4 +65,4 @@ geo レプリケーションでは連続コピーを使用します。そのた�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

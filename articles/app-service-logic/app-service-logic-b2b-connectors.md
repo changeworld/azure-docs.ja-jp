@@ -206,4 +206,4 @@ Microsoft Azure App Service では、これらの B2B API Apps を使用でき�
 
 [コネクタと API Apps の一覧](app-service-logic-connectors-list.md)<br/><br/> [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

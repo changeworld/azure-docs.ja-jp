@@ -112,4 +112,4 @@ DocumentDB を使用すると、いつでも作成したコレクションを追
 
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

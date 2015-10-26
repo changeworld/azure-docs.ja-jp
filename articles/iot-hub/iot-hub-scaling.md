@@ -2,9 +2,9 @@
  pageTitle="Azure IoT Hub のスケーリング | Microsoft Azure"
  description="Azure IoT Hub のスケーリングについて説明します。"
  services="iot-hub"
- documentationCenter=".net"
+ documentationCenter=""
  authors="fsautomata"
- manager="kevinmil"
+ manager="timlt"
  editor=""/>
 
 <tags
@@ -12,13 +12,13 @@
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
- ms.workload="tbd"
+ ms.workload="na"
  ms.date="10/02/2015"
  ms.author="elioda"/>
 
 # IoT Hub のスケーリング
 
-IoT Hub では、IoT Hub S1 または S2 ユニット数を 2.000 に増やすことで、最大 100 万の同時接続デバイスをサポートできます。詳細については、[IoT Hub の料金][lnk-pricing]に関するページを参照してください。
+IoT Hub では、IoT Hub S1 または S2 ユニット数を 2.000 に増やすことで、最大 100 万の同時接続デバイスをサポートできます。詳細については、[IoT Hub の価格][lnk-pricing]に関するページを参照してください。
 
 各 IoT Hub ユニットで、同時に接続できるレジストリ内のデバイス ID 数と、毎日のメッセージ数が許可されます。
 
@@ -73,4 +73,4 @@ Azure IoT Hub についてさらに学習するには、次のリンクを使用
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [What is Azure IoT Hub? (Azure IoT Hub とは)]: iot-hub-what-is-iot-hub.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

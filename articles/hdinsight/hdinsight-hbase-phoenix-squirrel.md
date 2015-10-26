@@ -212,7 +212,7 @@ X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Expr
 
 **SQuirreL をインストールするには**
 
-1. [http://squirrel-sql.sourceforge.net/\#installation](http://squirrel-sql.sourceforge.net/#installation) から SQuirreL SQL クライアントの jar ファイルをダウンロードします。
+1. [http://squirrel-sql.sourceforge.net/#installation](http://squirrel-sql.sourceforge.net/#installation) から SQuirreL SQL クライアントの jar ファイルをダウンロードします。
 2. jar ファイルを開くか実行します。[Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)が必要です。
 3. **[次へ]** を 2 回クリックします。
 4. 書き込みアクセス許可のあるパスを指定し、**[次へ]** をクリックします。
@@ -306,4 +306,4 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

@@ -111,7 +111,7 @@ Web サイト|http://www.myhdinsightapp.com
 8. ページの右上隅にある **[Test OAuth]** をクリックします。
 9. **コンシューマー キー**、**コンシューマー シークレット**、**アクセス トークン**、**アクセス トークン シークレット**を書き留めます。これらの値は後で必要になります。
 
-このチュートリアルでは、Windows PowerShell を使用して Web サービスを呼び出します。.NET の c#サンプルについては、[HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する方法][hdinsight-hbase-twitter-sentiment]に関するページを参照してください。Web サービスを呼び出すその他の一般的なツールは [*Curl*][curl] です。Curl は[ここ][curl-download]からダウンロードできます。
+このチュートリアルでは、Windows PowerShell を使用して Web サービスを呼び出します。.NET の c# サンプルについては、[HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する方法][hdinsight-hbase-twitter-sentiment]に関するページを参照してください。Web サービスを呼び出すその他の一般的なツールは [*Curl*][curl] です。Curl は[ここ][curl-download]からダウンロードできます。
 
 >[AZURE.NOTE]Windows で curl コマンドを使用する場合、オプション値には一重引用符の代わりに二重引用符を使用します。
 
@@ -561,4 +561,4 @@ $hqlScriptFile|HiveQL スクリプト ファイルの場所とファイル名で
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

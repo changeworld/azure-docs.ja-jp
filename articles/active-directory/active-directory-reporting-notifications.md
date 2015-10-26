@@ -50,4 +50,4 @@
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

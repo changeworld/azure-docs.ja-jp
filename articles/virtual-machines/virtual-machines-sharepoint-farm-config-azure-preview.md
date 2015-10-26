@@ -19,7 +19,8 @@
 
 # SharePoint サーバー ファームの構成の詳細
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
 SharePoint サーバー ファームは、事前構成された SharePoint Server 2013 ファームを自動で作成する Azure プレビュー ポータルの機能です。ファームの構成には次の 2 種類があります。
 
@@ -135,10 +136,10 @@ Azure プレビュー ポータルの SharePoint サーバー ファーム機能
 
 ## その他のリソース
 
-[SharePoint Server Farm](virtual-machines-sharepoint-farm-azure-preview.md)
+[SharePoint サーバー ファーム](virtual-machines-sharepoint-farm-azure-preview.md)
 
 [Azure インフラストラクチャ サービスでホストされる SharePoint ファーム](virtual-machines-sharepoint-infrastructure-services.md)
 
 [テスト用のハイブリッド クラウドでの SharePoint イントラネット ファームの設定](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

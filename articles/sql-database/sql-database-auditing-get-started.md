@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/01/2015" 
+	ms.date="10/08/2015" 
 	ms.author="jeffreyg"/>
  
 # SQL Database 監査の使用 
-<p>Azure SQL Database 監査は、データベース イベントを追跡し、監査したイベントを Azure Storage アカウントの監査ログに書き込みます監査は通常、Basic、Standard、と Premium の各サービス層で使用できます。
+<p>Azure SQL Database 監査は、データベース イベントを追跡し、監査したイベントを Azure ストレージ アカウントの監査ログに書き込みます監査は通常、Basic、Standard、と Premium の各サービス層で使用できます。
 
 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
 
-監査ツールは、標準準拠を強化し促進しますが、準拠を保証するものではありません。標準準拠をサポートする Azure プログラムの詳細については、「<a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Microsoft Azure のトラスト センター</a>」を参照してください。
+監査ツールは、標準準拠を強化し促進しますが、準拠を保証するものではありません。標準準拠をサポートする Azure プログラムの詳細については、「<a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure セキュリティ センター</a>」を参照してください。
 
 + [Azure SQL Database の監査の基本] 
 + [データベースに対する監査を設定する]
@@ -139,12 +139,15 @@ SQL Database 監査により、以下のことが可能になります。
 4. ストレージの UI に戻り、*セカンダリ アクセス キー*を**再生成** (次のキー更新サイクルの準備として) します。
   
 ##<a id="subheading-4"></a>Automation
-Azure SQL データベースで監査を構成する際、使用できる PowerShell コマンドレットがいくつかあります。auditing コマンドレットにアクセスにするには、Azure リソース マネージャー モードで PowerShell を実行する必要があります。
+Azure SQL Database で監査を構成する際、使用できる PowerShell コマンドレットがいくつかあります。
 
-> [AZURE.NOTE][Azure リソース マネージャー](https://msdn.microsoft.com/library/dn654592.aspx) モジュールは、現在プレビュー段階にあります。Azure モジュールと同じ管理機能を提供しないことがあります。
-
-Azure リソース マネージャー モードを実行中に、`Get-Command *AzureSql*` を実行して、使用できるコマンドレットの一覧を表示します。
-
+- [Get-AzureRMSqlDatabaseAuditingPolicy](https://msdn.microsoft.com/library/azure/mt603731.aspx)
+- [Get-AzureRMSqlServerAuditingPolicy](https://msdn.microsoft.com/library/azure/mt619329.aspx)
+- [Remove-AzureRMSqlDatabaseAuditing](https://msdn.microsoft.com/library/azure/mt603796.aspx)
+- [Remove-AzureRMSqlServerAuditing](https://msdn.microsoft.com/library/azure/mt603574.aspx)
+- [Set-AzureRMSqlDatabaseAuditingPolicy](https://msdn.microsoft.com/library/azure/mt603531.aspx)
+- [Set-AzureRMSqlServerAuditingPolicy](https://msdn.microsoft.com/library/azure/mt603794.aspx)
+- [Use-AzureRMSqlServerAuditingPolicy](https://msdn.microsoft.com/library/azure/mt619353.aspx)
 
 
 
@@ -182,4 +185,4 @@ Azure リソース マネージャー モードを実行中に、`Get-Command *A
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -1,8 +1,7 @@
 
 Secure Socket Layer (SSL) 暗号化を使用する HTTPS を使用して、Web アプリとブラウザー間の通信をセキュリティで保護することができます。これは、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法であり、サイトの訪問者に対し、アプリに対するトランザクションが安全であることを保証します。この記事では、Azure App Service で Web アプリに対する HTTPS を構成する方法について説明します。この記事では、クライアント証明書の認証については扱っていません。それにについては、「[Web Apps 用に TLS 相互認証を構成する方法](../articles/app-service-web/app-service-web-configure-tls-mutual-auth.md)」(英語) を参照してください。
 
-> [AZURE.NOTE]
-> より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! カスタム ドメイン名の関連付けと、Azure Cloud Services または [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) との通信の保護 (SSL) をすばやく行えます。
+> [AZURE.NOTE]より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! カスタム ドメイン名の関連付けと、Azure Cloud Services または [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) との通信の保護 (SSL) をすばやく行えます。
 
 ##<a name="bkmk_azurewebsites"></a>*.azurewebsites.net ドメインの HTTPS
 
@@ -12,7 +11,7 @@ Secure Socket Layer (SSL) 暗号化を使用する HTTPS を使用して、Web �
 
 ##<a name="bkmk_domainname"></a>カスタム ドメインの SSL を有効にする
 
-**contoso.com** のようなカスタム ドメインの HTTPS を有効にするには、まず、ドメイン名レジストラーにカスタム ドメイン名を登録する必要があります。Web アプリのドメイン名の構成方法の詳細については、[Azure Web サイトのカスタム ドメイン名の構成](/ja-JP/develop/net/common-tasks/custom-dns-web-site/)に関するページを参照してください。カスタム ドメイン名を登録し、そのカスタム名に応答するように Web アプリを構成した後、そのドメインに対応する SSL 証明書を要求する必要があります。
+**contoso.com** のようなカスタム ドメインの HTTPS を有効にするには、まず、ドメイン名レジストラーにカスタム ドメイン名を登録する必要があります。Web アプリのドメイン名の構成方法の詳細については、[Azure Web サイトのカスタム ドメイン名の構成](/ja-jp/develop/net/common-tasks/custom-dns-web-site/)に関するページを参照してください。カスタム ドメイン名を登録し、そのカスタム名に応答するように Web アプリを構成した後、そのドメインに対応する SSL 証明書を要求する必要があります。
 
 > [AZURE.NOTE]カスタム ドメイン名の HTTPS を有効にするには、Web アプリを **Standard** モードで構成する必要があります。現在 Free モードまたは Shared モードを使用している場合、このモードで構成を行うと追加料金が発生する場合があります。Shared モードと **Standard** モードの料金の詳細については、[料金の詳細][pricing]に関するページを参照してください。
 
@@ -544,4 +543,4 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

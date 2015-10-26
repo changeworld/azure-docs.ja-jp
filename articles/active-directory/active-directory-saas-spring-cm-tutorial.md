@@ -107,7 +107,7 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
 
 2.  **[GOTO]**、**[Address Book]** の順にクリックします。
 
-    ![ユーザーの作成](./media/active-directory-saas-spring-cm-tutorial/IC797054.png "ユーザーの作成")
+    ![ユーザーの作成](./media/active-directory-saas-spring-cm-tutorial/IC797054.png "Create User")
 
 3.  **[Create User]** をクリックします。
 
@@ -141,4 +141,4 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

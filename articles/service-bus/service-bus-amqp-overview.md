@@ -105,4 +105,4 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 [Azure Linux VM に Apache Qpid Proton-C をインストールする]: service-bus-amqp-apache.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

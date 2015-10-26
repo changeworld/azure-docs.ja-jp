@@ -20,7 +20,8 @@
 
 #リモート デスクトップを使用して Microsoft Azure Linux VM に接続する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 ##概要
 
@@ -115,4 +116,4 @@ Linux VM の `user` と `password` を使用してログインすると、Micros
 ##次へ
 xrdp の使用の詳細については、[こちら](http://www.xrdp.org/)を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

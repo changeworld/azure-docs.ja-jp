@@ -91,4 +91,4 @@ ExpressRoute の詳細については、「[ExpressRoute の技術概要](../exp
 
 「[ExpressRoute の FAQ](../expressroute/expressroute-faqs.md)」と「[VPN Gateway の FAQ](vpn-gateway-vpn-faq.md)」を参照してください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

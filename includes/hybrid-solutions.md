@@ -101,4 +101,4 @@ Event Hubs は、毎秒数百万件の処理が可能な高度にスケーラブ
 [relay]: ./media/hybrid-solutions/SvcBus_04_relay.png
 [Event Hubs の概要]: https://msdn.microsoft.com/library/azure/dn836025.aspx
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

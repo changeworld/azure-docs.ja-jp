@@ -109,7 +109,7 @@ Azure に存在する各種コンピューティング階層については、[�
 
 - 拡張性と回復力に優れたアーキテクチャの構築など、Azure App Service のベスト プラクティスについては、「[Azure App Service Web Apps のベスト プラクティス](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)」を参照してください。
 
-- Web アプリの拡張に関するビデオ:
+- Web Apps の拡張に関するビデオ:
 	
 	- [Azure Websites のスケールを設定するタイミング - Stefan Schackow 共演](/documentation/videos/azure-web-sites-free-vs-standard-scaling/)
 	- [Azure Websites、CPU、またはスケジュールの自動スケール - Stefan Schackow 共演](/documentation/videos/auto-scaling-azure-web-sites/)
@@ -131,4 +131,4 @@ Azure に存在する各種コンピューティング階層については、[�
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

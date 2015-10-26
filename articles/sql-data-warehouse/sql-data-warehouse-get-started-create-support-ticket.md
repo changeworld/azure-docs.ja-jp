@@ -84,4 +84,4 @@
 [Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

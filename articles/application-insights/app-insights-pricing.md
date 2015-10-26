@@ -19,7 +19,7 @@
 
 *Application Insights はプレビュー段階です。*
 
-[Visual Studio Application Insights][start] の[価格][pricing]は、アプリケーションごとのデータ量に基づきます。真の意味で無料のレベルがあり、いくつかの制限はありますが、ほとんどの機能を利用できます。
+[Visual Studio Application Insights][start] の[価格][pricing]は、アプリケーションごとのデータ量に基づきます。真の意味で Free レベルがあり、いくつかの制限はありますが、ほとんどの機能を利用できます。
 
 各 Application Insights リソースは個々のサービスとして課金され、Azure のサブスクリプションの課金内容に加えられます。
 
@@ -42,9 +42,9 @@
 
 ### 無料の Premium 評価版
 
-最初に新しい Application Insights リソースを作成するときは、無料レベルから開始します。
+最初に新しい Application Insights リソースを作成するときは、Free レベルから開始します。
 
-いつでも 30 日間無料の Premium 評価版に切り替えることができます。これにより、Premium レベルを体験できます。30 日が経過すると、明示的に別のレベルを選択していなければ、以前のレベルに自動的に戻ります。評価期間中はいつでもご希望のレベルを選択できますが、30 日の期間が終了するまでは無料評価版を取得できます。
+いつでも 30 日間無料の Premium 評価版に切り替えることができます。これにより、Premium レベルを体験できます。30 日が経過すると、明示的に別のレベルを選択していなければ、以前のレベルに自動的に戻ります。評価期間中はいつでもご希望のレベルを選択できますが、30 日の期間が終了するまでは無料試用版を取得できます。
 
 
 ## 月間クォータ
@@ -95,14 +95,14 @@
 調整の上限に対処する方法を次に示します。
 
 * [ApplicationInsights.config を編集](app-insights-configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
-* メトリックを事前集計します。TrackMetric への呼び出しをアプリに配置した場合、平均計算と測定のバッチの標準偏差を受け入れるオーバーロードを使用して、トラフィックを減らすことができます。また、[事前集計パッケージ](https://www.myget.org/gallery/applicationinsights-sdk-labs)を使用することもできます。 
+* Pre-aggregate metrics.TrackMetric への呼び出しをアプリに配置した場合、平均計算と測定のバッチの標準偏差を受け入れるオーバーロードを使用して、トラフィックを減らすことができます。また、[事前集計パッケージ](https://www.myget.org/gallery/applicationinsights-sdk-labs)を使用することもできます。 
 
 
 ### 名前の制限
 
 1.	アプリケーションに対して最大 200 の一意のメトリックの名前と 200 の一意のプロパティの名前。メトリックには、TrackMetric を通じて送信されるデータと、イベントなどの他のデータ型の測定値が含まれます。[メトリックとプロパティの名前][api]は、データ型にスコープが制限されず、インストルメンテーション キーごとにグローバルです。
 2.	各プロパティに対する一意の値は 100 未満であり、[プロパティ][apiproperties]は、フィルタリングとグループ化のみに使用できます。一意の値が 100 を超えた後も、プロパティは検索とフィルタリングに使用できますが、フィルター処理には使用できなくなります。
-3.	要求名やページの URL などの標準プロパティは、1 週間あたり 1,000 個の一意な値に制限されます。一意の値が 1,000 個を超えると、追加の値は "その他の値" としてマークされます。元の値は、全文テキスト検索とフィルタリングに引き続き使用できます。
+3.	要求名やページの URL などの標準プロパティは、1 週間あたりの 1000 の一意な値に制限されます。1000 の一意の値を超えると、追加の値は "その他の値" としてマークされます。 元の値は、全文テキスト検索とフィルタリングに引き続き使用できます。
 
 ## データの保持
 
@@ -130,9 +130,9 @@ Application Insights の課金は Azure の課金内容に加えられます。A
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
 
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

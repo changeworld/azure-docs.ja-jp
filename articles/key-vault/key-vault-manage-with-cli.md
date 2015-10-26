@@ -256,4 +256,4 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

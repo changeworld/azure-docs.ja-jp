@@ -1,3 +1,5 @@
-> [AZURE.NOTE] This topic includes PowerShell cmdlets from Azure PowerShell 1.0 Preview, which is a preview release and not intended for mission-critical apps. If you are running mission-critical apps, please continue to use Azure PowerShell 0.9.8. In most cases, the only difference between the two versions is that the 1.0 Preview cmdlet name follows the pattern {verb}-AzureRm{noun}; whereas, the 0.9.8 name does not include **Rm** (for example, New-AzureRmResourceGroup instead of New-AzureResourceGroup). When the difference between the versions is more significant, this topic shows examples for both versions.
+> [AZURE.NOTE]このトピックには、Azure PowerShell 1.0 Preview の PowerShell コマンドレットについての記述が含まれています。プレビュー リリースであるため、ミッションクリティカルなアプリは想定していません。ミッション クリティカルなアプリを実行している場合は、Azure PowerShell 0.9.8 を使用し続けてください。ほとんどの場合、2 つのバージョンの唯一の違いは、1.0 Preview のコマンドレット名は {verb}-AzureRm{noun} というパターンになっており、0.9.8 の名前には **Rm** が含まれないという点です (たとえば、New-AzureResourceGroup ではなく New-AzureRmResourceGroup となる)。バージョン間の違いが著しい場合、このトピックでは、両方のバージョンの例を紹介しています。
 >
-> For more information about installing and using Azure PowerShell 1.0 Preview, see [Azure Resource Manager Cmdlets](https://msdn.microsoft.com/library/mt125356.aspx).
+> Azure PowerShell 1.0 Preview のインストールと使い方の詳細については、[Azure リソース マネージャーのコマンドレット](https://msdn.microsoft.com/library/mt125356.aspx)に関するページを参照してください。
+
+<!---HONumber=Oct15_HO3-->

@@ -19,7 +19,8 @@
 
 #Azure の仮想マシンについて 
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルとクラシック デプロイ モデルを使用して作成されるリソースについて説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 Azure Virtual Machines は、Azure が提供するオンデマンドでスケーラブルなコンピューティング リソースのひとつです。通常、コンピューティング環境のよりよい管理を必要とする場合には、さまざまなオプションの中でも仮想マシンを選択します。
 
@@ -51,4 +52,4 @@ Azure 仮想マシンについて習得を始めたばかりであれば、[よ�
 [Virtual Machines]: #tellmevm
 [Cloud Services]: cloud-services-choose-me.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

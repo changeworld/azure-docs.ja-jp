@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/29/2015" 
+	ms.date="10/07/2015" 
 	ms.author="tamram"/>
 
 
 # Java による Microsoft Azure Storage のクライアント側の暗号化   
 
+[AZURE.INCLUDE [storage-selector-client-side-encryption-include](../../includes/storage-selector-client-side-encryption-include.md)]
+
 ## 概要  
-[Java 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](http://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
+[Java 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](http://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
 
 ## エンベロープ手法による暗号化と復号化    
 暗号化と復号化のプロセスは、エンベロープ手法に倣います。
@@ -51,7 +53,7 @@
 ストレージ クライアント ライブラリは [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) を使用して、ユーザー データを暗号化します。具体的には、AES で[暗号ブロック チェーン (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) モードを使用します。サービスごとに動作が多少異なるため、以下でそれぞれについて説明します。
 
 ### BLOB  
-現在、クライアント ライブラリでは BLOB 全体の暗号化のみがサポートされています。特に、**upload*** メソッドや **openOutputStream** メソッドを使用するときに暗号化がサポートされます。ダウンロードについては、完全ダウンロードと一部の範囲のダウンロードの両方がサポートされています。
+現在、クライアント ライブラリでは BLOB 全体の暗号化のみがサポートされています。具体的には、**upload*** メソッドや **openOutputStream** メソッドを使用するときに暗号化がサポートされます。ダウンロードについては、完全ダウンロードと一部の範囲のダウンロードの両方がサポートされています。
 
 暗号化中、クライアント ライブラリは 16 バイトのランダムな初期化ベクトル (IV) と 32 バイトのランダムなコンテンツ暗号化キー (CEK) を生成し、この情報を使用して BLOB データのエンベロープ暗号化を実行します。ラップされた CEK と一部の追加暗号化メタデータが、サービスの暗号化された BLOB と共に、BLOB メタデータとして格納されます。
 
@@ -59,7 +61,7 @@
 
 暗号化された BLOB のダウンロードには、便利なメソッド **download*/openInputStream** を使用した BLOB 全体のコンテンツの取得も含まれます。ラップされた CEK はラップ解除され、復号化されたデータをユーザーに返すために IV (この場合 BLOB メタデータとして格納された) と共に使用されます。
 
-暗号化された BLOB での任意の範囲 (**downloadRange** メソッド) のダウンロードでは、ユーザーが指定した範囲が調整されます。これは、少量の追加データを取得して、要求された範囲を正常に復号化するためです。
+暗号化された BLOB での任意の範囲 (**downloadRange*** メソッド) のダウンロードでは、ユーザーが指定した範囲が調整されます。これは、少量の追加データを取得して、要求された範囲を正常に復号化するためです。
 
 このスキームを使用して、すべての BLOB 型 (ブロック BLOB、ページ BLOB、および追加 BLOB) を暗号化/復号化できます。
 
@@ -98,7 +100,7 @@
 クエリ操作を実行するには、結果セット内のすべてのキーを解決できる Key Resolver を指定する必要があります。クエリの結果に含まれたエンティティをプロバイダーに解決できない場合、クライアント ライブラリでエラーがスローされます。クエリでサーバー側のプロジェクションが実行される場合、クライアント ライブラリは既定で、特別な暗号化メタデータ プロパティ (\_ClientEncryptionMetadata1 および \_ClientEncryptionMetadata2) を選択した列に追加します。
 
 ## Azure Key Vault  
-Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。Azure Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。詳細については、「[Azure Key Vault とは](https://azure.microsoft.com/ja-JP/documentation/articles/key-vault-whatis/)」を参照してください。
+Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。Azure Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。詳細については、「[Azure Key Vault とは](../articles/key-vault-whatis.md)」を参照してください。
 
 ストレージ クライアント ライブラリは Key Vault のコア ライブラリを使用して、Azure 全体でのキー管理用の一般的なフレームワークを提供します。Key Vault 拡張機能ライブラリを使用すると追加のメリットも得られます。拡張機能ライブラリには、シンプルかつシームレスな対称/RSA ローカルおよびクラウドのキー プロバイダーに関する便利な機能や、集計またはキャッシュに関する機能が用意されています。
 
@@ -109,7 +111,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 
 - azure-keyvault-extensions には、暗号化アルゴリズム、RSAKey、および SymmetricKey の実装を含む拡張機能コードが含まれています。これは、コアおよび KeyVault 名前空間に依存し、集計リゾルバー (複数のキー プロバイダーを使用する必要がある場合) およびキャッシュ キー リゾルバーを定義する機能を提供します。ストレージ クライアント ライブラリはこのパッケージに直接依存しませんが、Azure Key Vault を使用してキーを格納するか、Key Vault 拡張機能を使用してローカルおよびクラウドの暗号化プロバイダーを使用する必要がある場合はこのパッケージが必要です。
 
-  Key Vault は値の高いマスター キー向けで、Key Vault ごとの調整の上限はこれを念頭に設計されています。Key Vault を使用してクライアント側の暗号化を実行するときに推奨されるモデルは、Key Vault 内のシークレットやローカルにキャッシュされたシークレットとして格納された対象マスター キーを使用することです。次の操作を実行する必要があります。
+  Key Vault は値の高いマスター キー向けで、Key Vault ごとのスロットルの上限はこれを念頭に設計されています。Key Vault を使用してクライアント側の暗号化を実行するときに推奨されるモデルは、Key Vault 内のシークレットやローカルにキャッシュされたシークレットとして格納された対象マスター キーを使用することです。次の操作を実行する必要があります。
 
 1.	シークレットをオフラインで作成し、Key Vault にアップロードします。  
 
@@ -141,7 +143,7 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 たとえば、**CloudBlobClient.getDefaultRequestOptions().setRequireEncryption(true)** を使用して、そのクライアント オブジェクトを介して実行されるすべての BLOB 操作に対して暗号化を要求します。
 
 ### BLOB サービス暗号化  
-**BlobEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定)。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
+**BlobEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
 	// Create the IKey used for encryption.
 	RsaKey key = new RsaKey("private:key1" /* key identifier */);
@@ -160,7 +162,7 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 	ByteArrayOutputStream outputStream = new ByteArrayOutputStream(); blob.DownloadToStream(outputStream, null, options, null);
 
 ### Queue サービス暗号化  
-**QueueEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定)。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
+**QueueEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
 	// Create the IKey used for encryption.
 	RsaKey key = new RsaKey("private:key1" /* key identifier */);
@@ -230,6 +232,6 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。このオーバーヘッドは、暗号化されるデータの量によって異なります。開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
 
 ## 次のステップ  
-[Java 用 Azure Storage クライアント ライブラリ Maven パッケージ] (<fix URL>) をダウンロードする。[GitHub から Java 用 Azure Storage クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-java)をダウンロードする。Azure Key Vault Maven の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。<fix URL>[Azure Key Vault ドキュメント](https://azure.microsoft.com/ja-JP/documentation/articles/key-vault-whatis/)にアクセスする。
+[Java 用 Azure Storage クライアント ライブラリ Maven パッケージ](<fix URL>) をダウンロードする。[GitHub から Java 用 Azure Storage クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-java)をダウンロードする。Azure Key Vault Maven の[コア](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[クライアント](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、および[拡張機能](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)パッケージをダウンロードする。[Azure Key Vault ドキュメント](../articles/key-vault-whatis.md)にアクセスする。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

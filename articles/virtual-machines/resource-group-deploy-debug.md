@@ -3,8 +3,8 @@
    description="リソース マネージャーのデプロイ モデルを使用して作成したリソースのデプロイ時の一般的な問題、およびこれらの問題を検出および修正する方法について説明します。"
    services="azure-resource-manager,virtual-machines"
    documentationCenter=""
-   authors="squillace"
-   manager="timlt"
+   authors="tfitzmac"
+   manager="wpickett"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure"
-   ms.date="09/18/2015"
-   ms.author="rasquill"/>
+   ms.date="10/14/2015"
+   ms.author="tomfitz;rasquill"/>
 
 # Azure でのリソース グループのデプロイのトラブルシューティング
 
@@ -26,14 +26,16 @@
 
 ユーザーに表示される一般的なエラーの対処方法もこのトピックで説明しています。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイ モデルを使用して作成したリソース グループのトラブルシューティングについて説明します。クラシック デプロイ モデルを使用してリソース グループを作成することはできません。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。クラシック デプロイ モデルを使用してリソース グループを作成することはできません。
 
 
 ## PowerShell でのトラブルシューティング
 
-**Get-azureresourcegroupdeployment** コマンドを使用すると、デプロイ全体の状態を取得できます。以下の例では、デプロイは失敗しています。
+[AZURE.INCLUDE [powershell-preview-inline-include](../../includes/powershell-preview-inline-include.md)]
 
-    PS C:\> Get-AzureResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
+**Get-AzureRmResourceGroupDeployment** コマンドを使用すると、デプロイ全体の状態を取得できます。以下の例では、デプロイは失敗しています。
+
+    PS C:\> Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
 
     DeploymentName    : ExampleDeployment
     ResourceGroupName : ExampleGroup
@@ -52,9 +54,9 @@
 
     Outputs           :
 
-通常、各デプロイは、それぞれの操作がデプロイ処理の 1 手順を示す、複数の操作で構成されています。デプロイの問題を検出するには、通常デプロイ操作に関する詳細を確認する必要があります。操作の状態は、**Get AzureResourceGroupDeploymentOperation** で確認できます。
+通常、各デプロイは、それぞれの操作がデプロイ処理の 1 手順を示す、複数の操作で構成されています。デプロイの問題を検出するには、通常デプロイ操作に関する詳細を確認する必要があります。操作の状態は、**Get-AzureRmResourceGroupDeploymentOperation** で確認できます。
 
-    PS C:\> Get-AzureResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup
+    PS C:\> Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup
     Id                        OperationId          Properties         
     -----------               ----------           -------------
     /subscriptions/xxxxx...   347A111792B648D8     @{ProvisioningState=Failed; Timestam...
@@ -64,7 +66,7 @@
 
 状態のメッセージは、次のコマンドを使用して取得できます。
 
-    PS C:\> (Get-AzureResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties.StatusMessage
+    PS C:\> (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName ExampleDeployment -ResourceGroupName ExampleGroup).Properties.StatusMessage
 
     Code       : Conflict
     Message    : Website with given name mysite already exists.
@@ -74,7 +76,7 @@
 
 ## Azure CLI を使用したトラブルシューティング
 
-**azure group deployment show** コマンドを使用すると、デプロイの全体の状態を取得できます。以下の例では、デプロイは失敗しています。
+**azure group deployment show** コマンドを使用すると、デプロイ全体の状態を取得できます。以下の例では、デプロイは失敗しています。
 
     azure group deployment show ExampleGroup ExampleDeployment
 
@@ -99,7 +101,7 @@
 
     azure group log show ExampleGroup --last-deployment
 
-**azure group log show** コマンドは多数の情報を返します。通常、トラブルシューティングを行う場合は、失敗した操作に重点的に取り組みます。次のスクリプトは **--json** オプションと **jq** を使用して、デプロイ エラーのログを検索します。**jq** などのツールについて学習するには、「[Azure とやり取りする便利なツール](#useful-tools-to-interact-with-azure)」を参照してください。
+**azure group log show** コマンドを使用すると、多数の情報が返される可能性があります。通常、トラブルシューティングを行う場合は、失敗した操作に重点的に取り組みます。次のスクリプトは **--json** オプションと **jq** を使用して、デプロイ エラーのログを検索します。**jq** などのツールについて学習するには、「[Azure とやり取りする便利なツール](#useful-tools-to-interact-with-azure)」を参照してください。
 
     azure group log show ExampleGroup --json | jq '.[] | select(.status.value == "Failed")'
 
@@ -157,7 +159,7 @@ json の **properties** には失敗した操作の情報が含まれます。
 
 Azure の資格情報が期限切れの場合や Azure アカウントにサインインしていない場合、デプロイは失敗します。セッションが長時間開かれている場合、資格情報の期限が切れる場合があります。資格情報は、次のオプションを使用して更新できます。
 
-- PowerShell では、**Add-AzureAccount** コマンドレットを使用します。発行設定ファイルの資格情報は、AzureResourceManager モジュールのコマンドレットには十分ではありません。
+- PowerShell では、**Login-AzureRmAccount** コマンドレットを使用します (PowerShell 1.0 プレビューよりも前のバージョンでは、**Add-AzureAccount** を使用します)。発行設定ファイルの資格情報は、AzureResourceManager モジュールのコマンドレットには十分ではありません。
 - Azure CLI では、**azure login** を使用します。認証エラーのヘルプを表示する場合は、[Azure CLI が正しく構成されている](../xplat-cli-connect.md)ことを確認してください。
 
 ## テンプレートおよびパラメーターの形式のチェック
@@ -166,9 +168,9 @@ Azure の資格情報が期限切れの場合や Azure アカウントにサイ�
 
 ### PowerShell
 
-PowerShell では、**Test-AzureResourceGroupTemplate** を使用します。
+PowerShell では、**Test-AzureRmResourceGroupDeployment** を使用します (PowerShell 1.0 プレビューよりも前のバージョンでは、**Test-AzureResourceGroupTemplate** を使用します)。
 
-    PS C:\> Test-AzureResourceGroupTemplate -ResourceGroupName ExampleGroup -TemplateFile c:\Azure\Templates\azuredeploy.json -TemplateParameterFile c:\Azure\Templates\azuredeploy.parameters.json
+    PS C:\> Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile c:\Azure\Templates\azuredeploy.json -TemplateParameterFile c:\Azure\Templates\azuredeploy.parameters.json
     VERBOSE: 12:55:32 PM - Template is valid.
 
 ### Azure CLI
@@ -190,7 +192,7 @@ Azure CLI では、**azure group template validate <resource group>** を使用�
 
 ### REST API
 
-REST API の場合は、「[テンプレートのデプロイの検証](https://msdn.microsoft.com/library/azure/dn790547.aspx)」を参照してください。
+REST API の場合は、「[テンプレートのデプロイの検証](https://msdn.microsoft.com/library/azure/dn790547.aspx)」をご覧ください。
 
 ## リソースをサポートする場所の確認
 
@@ -198,7 +200,7 @@ REST API の場合は、「[テンプレートのデプロイの検証](https://
 
 ### PowerShell
 
-PowerShell の場合、**Get-AzureLocation** コマンドを使用すると、すべてのリソースおよび場所が一覧表示されます。
+PowerShell 1.0 プレビューよりも前のバージョンの場合、**Get-AzureLocation** コマンドを使用すると、すべてのリソースおよび場所が一覧表示されます。
 
     PS C:\> Get-AzureLocation
 
@@ -219,6 +221,33 @@ PowerShell の場合、**Get-AzureLocation** コマンドを使用すると、�
                                                                 North Europe, West Europe, East Asia, Southeast Asia,
                                                                 Japan East, Japan West
 
+PowerShell 1.0 プレビューでは、**Get-AzureRmResourceProvider** を使用してサポートされている場所を取得します。
+
+    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web
+
+    ProviderNamespace RegistrationState ResourceTypes               Locations
+    ----------------- ----------------- -------------               ---------
+    Microsoft.Web     Registered        {sites/extensions}          {Brazil South, ...
+    Microsoft.Web     Registered        {sites/slots/extensions}    {Brazil South, ...
+    Microsoft.Web     Registered        {sites/instances}           {Brazil South, ...
+    ...
+
+リソースの特定の種類を指定するには、次を使用します。
+
+    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
+
+    Brazil South
+    East Asia
+    East US
+    Japan East
+    Japan West
+    North Central US
+    North Europe
+    South Central US
+    West Europe
+    West US
+    Southeast Asia
+
 ### Azure CLI
 
 Azure CLI の場合は、**azure location list** を使用します。場所の一覧は長くなることがあり、多数のプロバイダーがあるため、ツールを使用して、まだ使用可能でない場所を使用する前に、プロバイダーと場所を確認します。次のスクリプトでは、**jq** を使用して、Azure Virtual Machines のリソース プロバイダーが使用可能な場所を探索します。
@@ -231,7 +260,7 @@ Azure CLI の場合は、**azure location list** を使用します。場所の�
 
 ### REST API
         
-REST API の場合、「[リソース プロバイダーの情報の取得](https://msdn.microsoft.com/library/azure/dn790534.aspx)」を参照してください。
+REST API の場合、「[リソース プロバイダーの情報の取得](https://msdn.microsoft.com/library/azure/dn790534.aspx)」をご覧ください。
 
 ## 一意のリソース名の作成
 
@@ -239,7 +268,7 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
 
 ## 認証、サブスクリプション、ロール、クォータの問題
 
-認証と承認および Azure Active Directory に関連する、デプロイの成功を妨げる 1 つ以上の問題があることがあります。Azure リソース グループの管理方法に関係なく、アカウントへのサインインに使用する ID は、Azure Active Directory のオブジェクトか、サービス プリンシパル (仕事または学校のアカウント、あるいは組織の ID とも呼ばれるもの) のいずれかである必要があります。
+認証と承認および Azure Active Directory に関連する、デプロイの成功を妨げる 1 つ以上の問題があることがあります。Azure リソース グループを管理する方法に関係なく、アカウントにサインインするために使用する ID は Azure Active Directory オブジェクトである必要があります。この ID は作成した、あるいは割り当てられた会社または学校アカウントにすることができます。または、アプリケーション用のサービス プリンシパルを作成できます。
 
 しかし、Azure Active Directory では、ユーザーまたはユーザーの管理者が、どの ID がどのリソースにアクセスできるかを高い精度で制御できるようにします。デプロイが失敗する場合は、認証または承認の問題の兆候があるかどうかについて要求自体を調べ、リソース グループのデプロイメントのログを調べます。自分が一部のリソースに対するアクセス許可を持つ一方、他のリソースに対するアクセス許可のないことがわかる場合があります。Azure CLI を使用すると、`azure ad` コマンドを使用して、Azure Active Directory テナントおよびユーザーを確認することができます。(Azure CLI コマンドの完全な一覧については、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](azure-cli-arm-commands.md)」をご覧ください)。
 
@@ -272,7 +301,7 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
 
 ### PowerShell
 
-リソース プロバイダーと登録状態の一覧を取得するには、**Get-AzureProvider** を使用します。
+PowerShell 1.0 プレビューよりも前のバージョンの場合、リソース プロバイダーと登録状態の一覧を取得するには、**Get-AzureProvider** を使用します。
 
     PS C:\> Get-AzureProvider
 
@@ -284,6 +313,18 @@ REST API の場合、「[リソース プロバイダーの情報の取得](http
     ...
 
 プロバイダーを登録するには、**Register-AzureProvider** を使用します。
+
+Powershell 1.0 プレビューでは、**Get-AzureRmResourceProvider** を使用します。
+
+    PS C:\> Get-AzureRmResourceProvider -ListAvailable
+
+    ProviderNamespace               RegistrationState ResourceTypes
+    -----------------               ----------------- -------------
+    Microsoft.ApiManagement         Unregistered      {service, validateServiceName, checkServiceNameAvailability}
+    Microsoft.AppService            Registered        {apiapps, appIdentities, gateways, deploymenttemplates...}
+    Microsoft.Batch                 Registered        {batchAccounts}
+
+プロバイダーを登録するには、**Register-AzureRmResourceProvider** を使用します。
 
 ### Azure CLI
 
@@ -355,7 +396,7 @@ Azure CLI を使用してプロバイダーが登録されているかどうか�
 コマンドラインから Azure リソースを使用する場合に、作業に役立つツールがあります。Azure リソース グループのテンプレートは JSON ドキュメントで、Azure リソース マネージャー API は JSON を受信して返します。このため、JSON 解析ツールは、リソースに関する情報を参照したり、テンプレートとテンプレートのパラメーター ファイルを設計し、操作する際に最初に使用するツールの 1 つになります。
 
 ### Mac、Linux、Windows の各ツール
-Mac、Linux、Windows 用の Azure CLI を使用する場合、標準のダウンロード ツール (**[curl](http://curl.haxx.se/)** と **[wget](https://www.gnu.org/software/wget/)** または **[Resty](https://github.com/beders/Resty)** など)、JSON ユーティリティ (**[jq](http://stedolan.github.io/jq/download/)**、**[jsawk](https://github.com/micha/jsawk)** など)や、JSON を適切に処理する言語ライブラリを既に使い慣れていることと思います(これらのツールの多くには、[wget](http://gnuwin32.sourceforge.net/packages/wget.htm) などの Windows 用のポートもあります。実際、Linux とその他のオープン ソース ソフトウェア ツールを Windows でも実行させるいくつかの方法があります)。
+Mac、Linux、Windows 用の Azure CLI を使用する場合、標準のダウンロード ツール (**[curl](http://curl.haxx.se/)** と **[wget](https://www.gnu.org/software/wget/)** または **[Resty](https://github.com/beders/Resty)** など)、JSON ユーティリティ (**[jq](http://stedolan.github.io/jq/download/)**、**[jsawk](https://github.com/micha/jsawk)** など)や、JSON を適切に処理する言語ライブラリを既に使い慣れていることと思います (これらのツールの多くには、[wget](http://gnuwin32.sourceforge.net/packages/wget.htm) などの Windows 用のポートもあります。実際、Linux とその他のオープン ソース ソフトウェア ツールを Windows でも実行させるいくつかの方法があります)。
 
 このトピックには、**jq** とともに使用して、正確な情報をより効率的に取得する Azure CLI コマンドが含まれています。Azure リソースの使用状況を理解するには、使い慣れているツールセットを選択する必要があります。
 
@@ -375,4 +416,4 @@ PowerShell には、同じ手順を実行するいくつかの基本的なコマ
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

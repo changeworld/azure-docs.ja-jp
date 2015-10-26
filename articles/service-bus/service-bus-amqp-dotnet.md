@@ -168,10 +168,6 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 さらに詳しい情報については、 次のリンク先を参照してください。
 
 - [Service Bus AMQP の概要]
-- [AMQP で Java から Service Bus を使用する]
-- [AMQP で Python から Service Bus を使用する]
-- [AMQP で PHP から Service Bus を使用する]
-- [Azure Linux VM に Apache Qpid Proton-C をインストールする]
 - [Windows Server 用 Service Bus の AMQP]
 
   [Service Bus キューの使用方法]: service-bus-dotnet-how-to-use-queues.md
@@ -203,10 +199,6 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 [NuGet]: http://nuget.org/packages/WindowsAzure.ServiceBus/
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
-[AMQP で Java から Service Bus を使用する]: service-bus-amqp-java.md
-[AMQP で Python から Service Bus を使用する]: service-bus-amqp-python.md
-[AMQP で PHP から Service Bus を使用する]: service-bus-amqp-php.md
-[Azure Linux VM に Apache Qpid Proton-C をインストールする]: service-bus-amqp-apache.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

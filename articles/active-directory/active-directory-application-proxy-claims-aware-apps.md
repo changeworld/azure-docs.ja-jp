@@ -49,4 +49,4 @@
 
 ![エンドポイントを追加し、信頼された URL 値を設定しているスクリーン ショット](./media/active-directory-application-proxy-claims-aware-apps/appproxyendpointtrustedurl.png)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -56,4 +56,4 @@
 [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

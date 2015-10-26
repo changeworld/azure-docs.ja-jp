@@ -547,4 +547,4 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 [API Management インスタンスの作成]: api-management-get-started.md#create-service-instance
 [Azure API Management での最初の API の管理]: api-management-get-started.md
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -20,7 +20,7 @@
 
 ## 概要
 
-Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で実行されている Web アプリを[デバッグ モード](http://www.visualstudio.com/ja-JP/get-started/debug-your-app-vs.aspx)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
+Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) で実行されている Web アプリを[デバッグ モード](http://www.visualstudio.com/ja-jp/get-started/debug-your-app-vs.aspx)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -71,7 +71,7 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
    
 	このウィンドウの [アプリケーション設定] ボックスと [接続文字列] ボックスについては、[Azure Web Apps: アプリケーション文字列と接続文字列の動作](http://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx)に関するページを参照してください。
 
-	このウィンドウでは実行できない Web アプリ管理タスクを行う場合は、**[管理ポータルで開く]** をクリックし、ブラウザー ウィンドウを開いて管理ポータルにアクセスできます。詳細については、「[Web Apps の構成方法](/ja-JP/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig)」を参照してください。
+	このウィンドウでは実行できない Web アプリ管理タスクを行う場合は、**[管理ポータルで開く]** をクリックし、ブラウザー ウィンドウを開いて管理ポータルにアクセスできます。詳細については、「[Web Apps の構成方法](/ja-jp/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig)」を参照してください。
 
 ## <a name="remoteview"></a>サーバー エクスプローラーでの Web アプリ ファイルへのアクセス
 
@@ -543,7 +543,7 @@ Web サーバーのログを Azure のストレージ アカウントに記録�
 
 多くの場合、ストレージ アカウント形式はファイル システム形式と比較して、ログに対してより多くのストレージと、より長い期間にわたる保持を実現します。アプリケーション トレース ログをストレージに送る別の利点は、ファイル システムのログでは得ることのできない詳しい情報をそれぞれのログと共に入手できることです。
 
-5. Azure ノードの **[Storage]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
+5. Azure ノードの **[ストレージ]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
 
 ![ストレージ アカウントの作成](./media/web-sites-dotnet-troubleshoot-visual-studio/createstor.png)
 
@@ -761,4 +761,4 @@ Web アプリではなく Azure Cloud Services をデバッグする場合は、
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

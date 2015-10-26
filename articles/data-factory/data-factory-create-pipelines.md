@@ -1,13 +1,20 @@
 <properties 
-	pageTitle="パイプラインの作成"
-	description="Azure Data Factory のパイプラインについて、およびパイプラインを作成してデータを移動および変換して洞察を得るために使用できる情報を生成する方法について説明します"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	pageTitle="パイプラインの作成" 
+	description="Azure Data Factory のパイプラインについて、およびパイプラインを作成してデータを移動および変換して洞察を得るために使用できる情報を生成する方法について説明します" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
-<tags ms.service="data-factory" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" y" ms.date="07/28/2015" ms.author="spelluru"/>
+<tags 
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" y
+	ms.date="07/28/2015" 
+	ms.author="spelluru"/>
 
 # パイプラインとアクティビティの概要
 この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。この記事では、既に[概要](data-factory-introduction.md)および[データセットの作成](data-factory-create-datasets.md)に関する記事を読んであるものとします。
@@ -18,7 +25,7 @@
 ### アクティビティとは
 アクティビティは、データに対して実行するアクションを定義します。各アクティビティは、入力として 0 個以上の[データセット](data-factory-create-datasets.md)を受け取り、出力として 1 つまたは複数のデータセットを生成します。**アクティビティは、Azure Data Factory でのオーケストレーションの単位です。**
 
-たとえば、コピー アクティビティを使用して、データセット間のデータのコピーを調整できます。同様に、Azure HDInsight クラスターに対して Hive クエリを実行する Hive アクティビティを使用して、データを変換および分析できます。Azure Data Factory には、[データ変換、分析](data-factory-data-transformation-activities.md)、[データ移動のためのさまざまなアクティビティ](data-factory-data-movement-activities.md)があります。また、カスタム .NET アクティビティを作成して独自のコードを実行することもできます。
+たとえば、コピー アクティビティを使用して、データセット間のデータのコピーを調整できます。同様に、Azure HDInsight クラスターに対して Hive クエリを実行する Hive アクティビティを使用して、データを変換および分析できます。Azure Data Factory には、[データ変換、分析](data-factory-data-transformation-activities.md)、[データ移動のための広範なアクティビティ](data-factory-data-movement-activities.md)があります。また、カスタム .NET アクティビティを作成して独自のコードを実行することもできます。
 
 以下の 2 つのデータセットについて考えます。
 
@@ -159,7 +166,7 @@
 
 アクティビティがどういうものかわかったので、パイプラインに戻ります。
  
-パイプラインは、アクティビティの論理的なグループです。パイプラインは、タスクを実行するユニットにアクティビティをグループ化するために使用されます。**パイプラインは、アクティビティのデプロイメントと管理の単位でもあります。** たとえば、論理的に関連性のあるアクティビティを 1 つのパイプラインにして、まとめてアクティブ状態や一時停止状態にできます。
+パイプラインは、アクティビティの論理的なグループです。パイプラインは、タスクを実行するユニットにアクティビティをグループ化するために使用されます。**パイプラインは、アクティビティのデプロイと管理の単位でもあります。** たとえば、論理的に関連性のあるアクティビティを 1 つのパイプラインにして、まとめてアクティブ状態や一時停止状態にできます。
 
 アクティビティ間の依存関係を定義することで、パイプラインのあるアクティビティからの出力データセットを、同じまたは別のパイプラインの別のアクティビティの入力データセットにできます。詳細については、「[スケジュールと実行](#scheduling-and-execution)」セクションで説明します。
 
@@ -231,7 +238,7 @@ isPaused | true に設定すると、パイプラインは実行されません�
 scheduler | アクティビティのスケジュールを定義します。サブプロパティは、[データセットの availability プロパティ](data-factory-create-datasets.md#Availability)と同じです。 | × | 
 
 ### アクティビティの種類
-Azure Data Factory には、[データ移動](data-factory-data-movement-activities.md)および[データ変換](data-factory-data-transformation-activities.md)のためのさまざまなアクティビティがあります。
+Azure Data Factory には、[データ移動](data-factory-data-movement-activities.md)および[データ変換](data-factory-data-transformation-activities.md)のための広範なアクティビティがあります。
 
 ### ポリシー
 ポリシーはアクティビティの実行時の動作に影響します。具体的には、テーブルのスライスがいつ処理されるかです。次の表で詳細に説明します。
@@ -243,7 +250,7 @@ executionPriorityOrder | NewestFirst<p>OldestFirst</p> | OldestFirst | 処理さ
 retry | 整数<p>最大値は 10</p> | 3 | スライスのデータ処理が失敗としてマークされるまでの再試行回数。データ スライスのアクティビティの実行は、指定された再試行回数まで再試行されます。再試行は、障害発生後にできるだけ早く行われます。
 timeout | TimeSpan | 00:00:00 | アクティビティのタイムアウト。例: 00:10:00 (タイムアウトが 10 分であることを意味します)<p>値が指定されていない場合、または値が 0 の場合は、タイムアウトは無期限です。</p><p>スライスのデータ処理時間がタイムアウト値を超えた場合、処理はキャンセルされて、システムは処理の再試行を試みます。再試行の回数は、retry プロパティで指定します。タイムアウトが発生すると、ステータスは TimedOut になります。</p>
 delay | TimeSpan | 00:00:00 | スライスのデータ処理が開始する前の遅延時間を指定します。<p>データ スライスのアクティビティの実行は、予想実行時刻を Delay だけ過ぎてから開始します。</p><p>例: 00:10:00 (10 分の遅延を意味します)</p>
-longRetry | 整数<p>最大値: 10</p> | 1 | スライスの実行が失敗になる前の、長い再試行の回数。<p>longRetry の試行は longRetryInterval の間隔で行われます。再試行間隔の時間を指定する必要がある場合は、longRetry を使用します。Retry と longRetry の両方を指定すると、各 longRetry に Retry が含まれ、最大再試行回数は Retry * longRetry 回になります。</p><p>たとえば、次のようなアクティビティ ポリシーがあるとします:<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/></p><p>実行するスライスは 1 つだけとし (ステータスは PendingExecution)、毎回アクティビティ実行は失敗します。最初に 3 つの連続する試行があります。試行するたびには、スライスの状態は Retry になります。最初の 3 つの試行が終わると、スライスの状態は LongRetry になります。</p><p>1 時間 (つまり longRetryInteval の値) の後、再度 3 回連続して試行されます。その後、スライスの状態は Failed になり、それ以上再試行は行われません。したがって、全部で 6 回試行されます。</p><p>注: いずれかの実行が成功すると、スライスの状態は Ready になり、それ以上再試行は行われません。</p><p>longRetry は、従属データがいつ到着するかわからない場合、またはデータ処理が行われる環境全体が当てにならない場合などに使用します。このような場合、連続して再試行しても意味がなく、時間をおくと成功することがあります。</p><p>注意: longRetry または longRetryInterval に大きい値を設定しないでください。一般に、値を大きくすることは、この間にシステムの他の問題を無視することになります。</p> 
+longRetry | 整数<p>最大値: 10</p> | 1 | スライスの実行が失敗になる前の、長い再試行の回数。<p>longRetry の試行は longRetryInterval の間隔で行われます。再試行間隔の時間を指定する必要がある場合は、longRetry を使用します。Retry と longRetry の両方を指定すると、各 longRetry に Retry が含まれ、最大再試行回数は Retry * longRetry になります。</p><p>たとえば、次のようなアクティビティ ポリシーがあります:<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/></p><p>実行するスライスは 1 つだけとし (ステータスは PendingExecution)、毎回アクティビティ実行は失敗します。最初に 3 つの連続する試行があります。試行するたびには、スライスの状態は Retry になります。最初の 3 つの試行が終わると、スライスの状態は LongRetry 。</p><p>1 時間 (つまり longRetryInteval の値) の後、再度 3 回連続して試行されます。その後、スライスの状態は Failed になり、それ以上再試行は行われません。したがって、全部で 6 回試行されます。</p><p>注: いずれかの実行が成功すると、スライスの状態は Ready になり、それ以上再試行は行われません。</p><p>longRetry は、依存するデータがいつ到着するかわからない場合、またはデータ処理が行われる環境全体が当てにならない場合などに使用します。このような場合、連続して再試行しても意味がなく、時間をおくと成功することがあります。</p><p>注意: longRetry または longRetryInterval に大きい値を設定しないでください。一般に、高い値は軽視されている他のシステムの問題を意味します</p> 
 longRetryInterval | TimeSpan | 00:00:00 | 長い再試行の間の遅延 
 
 ## パイプラインの作成と管理
@@ -267,7 +274,7 @@ Azure Data Factory は、(1 つ以上のアクティビティを含む) パイ�
 
 6. パイプラインの作成が完了したら、コマンド バーの **[デプロイ]** をクリックして、パイプラインをデプロイします。
 
-	**注:** Azure Data Factory サービスは、一般的な問題を修正しやすくするために、デプロイ中にいくつかの検証チェックを実行します。エラーがある場合、対応する情報が表示されます。修正処理を実行し、作成したパイプラインを再デプロイします。エディターを使用してパイプラインを更新および削除できます。
+	**注:** Azure Data Factory サービスはデプロイ中にいくつかの検証チェックを実行し、一般的な問題を修正します。エラーがある場合、対応する情報が表示されます。修正処理を実行し、作成したパイプラインを再デプロイします。エディターを使用してパイプラインを更新および削除できます。
 
 ### Visual Studio プラグインの使用
 Visual Studio を使用して、パイプラインを作成して Azure Data Factory にデプロイできます。詳細については、「[チュートリアル: Azure Storage から Azure SQL にデータをコピーする (Visual Studio)](data-factory-get-started-using-vs.md)」を参照してください。
@@ -280,7 +287,7 @@ Azure PowerShell を使用して、Azure Data Factory にパイプラインを�
 このコマンドレットの詳細については、「[New-AzureDataFactoryPipeline コマンドレット](https://msdn.microsoft.com/library/dn820227.aspx)」を参照してください。
 
 ### REST API の使用
-REST API を使用してパイプラインを作成およびデプロイすることもできます。このメカニズムを利用すると、プログラムでパイプラインを作成できます。詳細については、「[Create or Update a Pipeline](https://msdn.microsoft.com/library/azure/dn906741.aspx)」 (パイプラインの作成または更新) を参照してください。
+REST API を使用してパイプラインを作成およびデプロイすることもできます。このメカニズムを利用すると、プログラムでパイプラインを作成できます。詳細については、「[パイプラインを作成または更新する](https://msdn.microsoft.com/library/azure/dn906741.aspx)」を参照してください。
 
 ### .NET SDK の使用
 .NET SDK を使用してパイプラインを作成およびデプロイすることもできます。このメカニズムを利用すると、プログラムでパイプラインを作成できます。詳細については、「[Data Factory をプログラムで作成、管理、監視する](data-factory-create-data-factories-programmatically.md)」を参照してください。
@@ -304,7 +311,7 @@ REST API を使用してパイプラインを作成およびデプロイする�
 - [初めてのパイプラインをビルドしてデプロイしてください](data-factory-build-your-first-pipeline.md)。 
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-create-pipelines.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-create-pipelines.md)でフィードバックをお寄せください。
  
 
    
@@ -329,4 +336,4 @@ REST API を使用してパイプラインを作成およびデプロイする�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

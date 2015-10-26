@@ -25,11 +25,11 @@
 - [PowerShell: Resource Manager deployment](virtual-machines-deploy-rmtemplates-powershell.md)
 - [PowerShell: Classic deployment](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。また、[リソース マネージャー デプロイメント モデル](virtual-machines-windows-tutorial.md)を使用してリソースを作成することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](virtual-machines-windows-tutorial.md)。
 
 このチュートリアルでは、Azure ポータルで Azure 仮想マシン (VM) を簡単に作成する方法を示します。例として Windows Server イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。イメージの選択肢は、サブスクリプションによって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
 
-また、[独自のイメージ](virtual-machines-create-upload-vhd-windows-server.md)を使用して VM を作成することもできます。この方法や他の方法の詳細については、「[Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)」をご覧ください。
+また、[独自のイメージ](virtual-machines-create-upload-vhd-windows-server.md)を使用して VM を作成することもできます。この方法や他の方法の詳細については、「[Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)」を参照してください。
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
@@ -43,7 +43,7 @@
 
 このセクションでは、Azure ポータルの **[ギャラリーから]** オプションを使用して仮想マシンを作成する方法について説明します。このオプションは、**[簡易作成]** オプションよりも多数の構成の選択肢があります。たとえば、仮想マシンを仮想ネットワークに参加させる場合、**[ギャラリーから]** オプションを使用する必要があります。
 
-> [AZURE.NOTE]さらに、より機能が豊富でカスタマイズも可能な [Azure プレビュー ポータル](https://portal.azure.com)を使用すれば、仮想マシンの作成、強化された監視や診断の使用、Premium Storage の使用など、さまざまな操作を試すことができます。この 2 つのポータルにある利用可能な仮想マシン構成オプションには、性質上、重複するものもありますが、まったく同じではありません。たとえば、プレビュー ポータルを利用して、Premium Storage を使用する仮想マシンを構成します。
+> [AZURE.NOTE]さらに、より機能が豊富でカスタマイズも可能な [Azure プレビュー ポータル](https://portal.azure.com)を使用すれば、仮想マシンの作成、強化された監視機能や診断機能の使用、Premium Storage の使用など、さまざまな操作を試すことができます。この 2 つのポータルにある利用可能な仮想マシン構成オプションには、性質上、重複するものもありますが、まったく同じではありません。たとえば、プレビュー ポータルを利用して、Premium Storage を使用する仮想マシンを構成します。
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../../includes/virtual-machines-create-windowsvm.md)]
 
@@ -53,4 +53,4 @@
 
 - データを格納するディスクを接続します。空のディスクと、データが含まれているディスクのどちらも接続できます。手順については、[データ ディスクの接続に関するチュートリアル](storage-windows-attach-disk.md)を参照してください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

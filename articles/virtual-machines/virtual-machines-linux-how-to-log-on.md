@@ -22,7 +22,7 @@
 
 #Linux を実行する仮想マシンにログオンする方法 #
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用して作成した仮想マシンの使用について説明します。[リソース マネージャーのデプロイメント モデル](virtual-machines-linux-tutorial-portal-rm.md)を使用して作成した仮想マシンについては類似の手順を利用できます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](virtual-machines-linux-tutorial-portal-rm.md)。
 
 Linux オペレーティング システムを実行する仮想マシンへのログオンには、Secure Shell (SSH) クライアントを使用します。
 
@@ -49,11 +49,11 @@ Linux オペレーティング システムを実行する仮想マシンへの�
 
 	![仮想マシンへのログオン](./media/virtual-machines-linux-how-to-log-on/sshlogin.png)
 
->[AZURE.NOTE]VMAccess 拡張機能では、SSH キーやパスワードを忘れた場合にリセットできます。ユーザー名を忘れた場合は、拡張機能を使用して sudo 権限で新しいユーザー名を作成できます。手順については、「[Linux Virtual Machines のパスワードまたは SSH をリセットする方法]」を参照してください。
+>[AZURE.NOTE]VMAccess 拡張機能では、SSH キーやパスワードを忘れた場合にリセットできます。ユーザー名を忘れた場合は、拡張機能を使用して sudo 権限で新しいユーザー名を作成できます。手順については、「[Linux 仮想マシンのパスワードまたは SSH をリセットする方法]」を参照してください。
 
 これで、仮想マシンを他のサーバーとまったく同様に扱うことができます。
 
 <!-- LINKS -->
-[Linux Virtual Machines のパスワードまたは SSH をリセットする方法]: http://go.microsoft.com/fwlink/p/?LinkId=512138
+[Linux 仮想マシンのパスワードまたは SSH をリセットする方法]: http://go.microsoft.com/fwlink/p/?LinkId=512138
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

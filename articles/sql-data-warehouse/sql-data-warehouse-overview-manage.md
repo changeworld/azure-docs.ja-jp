@@ -43,9 +43,9 @@ SQL Data Warehouse に対するサポートが含まれた [SQL Server Data Tool
 [接続]: sql-data-warehouse-develop-connections.md
 
 <!--MSDN references-->
-[SQL Server Data Tools]: https://msdn.microsoft.com/ja-JP/library/mt204009.aspx
+[SQL Server Data Tools]: https://msdn.microsoft.com/ja-jp/library/mt204009.aspx
 
 <!--Other web references-->
 [Azure ポータル]: http://portal.azure.com/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

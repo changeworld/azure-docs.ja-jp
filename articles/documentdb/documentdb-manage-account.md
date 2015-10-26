@@ -113,4 +113,4 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
  
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

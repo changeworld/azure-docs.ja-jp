@@ -54,4 +54,4 @@ Basic/Standard レベルで作成されたキャッシュは、パブリック �
 -	[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
   
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

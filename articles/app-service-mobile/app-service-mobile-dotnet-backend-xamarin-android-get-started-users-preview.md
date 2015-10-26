@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Xamarin Android でのモバイル アプリの認証の使用"
-	description="モバイル アプリを使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。"
-	services="app-service\mobile"
-	documentationCenter="xamarin"
-	authors="mattchenderson"
-	manager="dwrede"
+	pageTitle="Xamarin Android でのモバイル アプリの認証の使用" 
+	description="モバイル アプリを使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。" 
+	services="app-service\mobile" 
+	documentationCenter="xamarin" 
+	authors="mattchenderson" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-xamarin-android"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/27/2015"
+	ms.service="app-service" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-xamarin-android" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="08/27/2015" 
 	ms.author="mahender"/>
 
 # Xamarin.Android アプリに認証を追加する
@@ -96,4 +96,4 @@
 [Azure Management Portal]: https://portal.azure.com
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

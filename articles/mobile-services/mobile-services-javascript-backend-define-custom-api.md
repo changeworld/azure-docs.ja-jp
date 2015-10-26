@@ -36,4 +36,4 @@ Mobile Services クライアント ライブラリを使用し、アプリでカ
 
 <!-- URLs. -->
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

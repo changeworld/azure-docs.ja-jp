@@ -30,7 +30,7 @@ Azure PIM は、既定の管理者ロールとして次のロールを使用し�
 - ユーザー管理者
 - パスワード管理者
 
-Office 365、Exchange Online、Sharepoint Online、Skype for Business のロールの詳細については、「[Office 365 での管理者ロールの割り当て](https://support.office.com/ja-JP/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504?ui=ja-JP&rs=ja-JP&ad=US)」を参照してください。
+Office 365、Exchange Online、Sharepoint Online、Skype for Business のロールの詳細については、「[Office 365 での管理者ロールの割り当て](https://support.office.com/ja-jp/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504?ui=ja-jp&rs=ja-jp&ad=US)」を参照してください。
 
 <!--**PLACEHOLDER: The above article may not be the one we want since PIM gets roles from places other that Office 365**-->
 
@@ -57,4 +57,4 @@ Office 365、Exchange Online、Sharepoint Online、Skype for Business のロー�
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

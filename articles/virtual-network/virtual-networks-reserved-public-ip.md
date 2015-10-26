@@ -1,19 +1,19 @@
 <properties 
    pageTitle="予約済み IP"
-	description="予約済み IP、VIP、ILPIP、およびそれらを管理する方法を理解します。"
-	services="virtual-network"
-	documentationCenter="na"
-	authors="telmosampaio"
-	manager="adinah"
-	editor="tysonn"/>
+   description="予約済み IP、VIP、ILPIP、およびそれらを管理する方法を理解します。"
+   services="virtual-network"
+   documentationCenter="na"
+   authors="telmosampaio"
+   manager="adinah"
+   editor="tysonn" />
 <tags 
    ms.service="virtual-network"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/17/2015"
-	ms.author="telmos"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="08/17/2015"
+   ms.author="telmos" />
 
 # 予約済み IP の概要
 Azure での IP アドレスは、動的と予約済みという 2 つのカテゴリに分類されます。 Azure で管理されるパブリック IP アドレスは、既定では動的です。これは、特定のクラウド サービス (VIP) に使用される IP アドレス、または VM やロール インスタンスへの直接アクセスに使用される IP アドレスが、リソースがシャット ダウンまたは割り当て解除された場合に変更される場合があるということです。
@@ -119,4 +119,4 @@ IP アドレスが予約されると、サブスクリプションとの関連�
 
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

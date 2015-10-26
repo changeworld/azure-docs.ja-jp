@@ -17,7 +17,10 @@ ms.date="06/22/2015"
 ms.author="bbenz" />
 
 #Oracle 仮想マシンのイメージに関するその他の考慮事項
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 この記事では、オペレーティング システムとして Windows Server を利用し、Microsoft 提供の Oracle ソフトウェア イメージに基づく Oracle 仮想マシンを Azure で実行することに関する考慮事項について説明します。
 
@@ -103,6 +106,6 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 -  **64-bit JDK.** Azure によって提供される Oracle WebLogic Server 仮想マシンおよび Oracle JDK 仮想マシンのイメージには、Windows Server と JDK 両方の 64 ビット版が含まれています。
 
 ##その他のリソース
-[Azure 用の Oracle 仮想マシンのイメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
+[Azure の Oracle 仮想マシン イメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

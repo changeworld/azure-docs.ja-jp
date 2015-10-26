@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Git と Visual Studio Online を使用した Azure への継続的な配信"
+	pageTitle="Git と Visual Studio Online を使用した Azure への継続的な配信" 
 	description="Git を使用して Visual Studio Online チーム プロジェクトを自動的にビルドして Azure App Service の Web アプリ機能またはクラウド サービスにデプロイするための構成方法について説明します。"
 	services="cloud-services"
 	documentationCenter=".net"
@@ -273,4 +273,4 @@ Visual Studio Online で Git を使用する場合のその他のヒントにつ
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

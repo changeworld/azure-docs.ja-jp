@@ -1,6 +1,6 @@
 <properties
-	pageTitle="VM の作成と事前構成 | Microsoft Azure"
-	description="リソース マネージャー デプロイ モデルと PowerShell で Azure Virtual Machine を作成して事前構成します。"
+	pageTitle="VM の作成と構成 | Microsoft Azure"
+	description="Powershell とリソース マネージャー デプロイ モデルで Azure 仮想マシンを作成および構成します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,20 +14,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/22/2015"
+	ms.date="10/08/2015"
 	ms.author="cynthn"/>
 
-# リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する
+# リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、構成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。また、[クラシック デプロイ モデル](virtual-machines-ps-create-preconfigure-windows-vms.md)を使用してリソースを作成することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-ps-create-preconfigure-windows-vms.md)。
 
-ここでは、リソース マネージャー デプロイ モデルで Azure Virtual Machine を作成および事前構成する一連の Azure PowerShell コマンドを構築する手順について説明します。この基本的なプロセスを利用すると、簡単な新しい Windows ベースの仮想マシン向けにコマンド セットを作成し、既存のデプロイを拡張できるようになります。また、カスタムの開発環境、テスト環境、IT プロ環境を簡単に構築する複数のコマンド セットを作成することもできます。
+次の手順では、一連の Azure PowerShell のコマンドを作成して Azure の仮想マシンを作成および構成する方法を説明します。この基本的なプロセスを利用すると、簡単な新しい Windows ベースの仮想マシン向けにコマンド セットを作成し、既存のデプロイを拡張できるようになります。また、カスタムの開発環境、テスト環境、IT プロ環境を簡単に構築する複数のコマンド セットを作成することもできます。
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
 ## 手順 1. Azure PowerShell をインストールする
 
-また、Azure PowerShell Version 0.9.0 以降も必要です。Azure PowerShell をまだインストールおよび構成していない場合は、[こちら](../powershell-install-configure.md)で手順を参照してください。
+また、Azure PowerShell Version 1.0.0 以降も必要です。Azure PowerShell をまだインストールおよび構成していない場合は、[こちら](../powershell-install-configure.md)で手順を参照してください。
 
 インストールした Azure PowerShell のバージョンは、Azure PowerShell プロンプトで次のコマンドを実行して確認できます。
 
@@ -37,108 +37,120 @@
 
 	Version
 	-------
-	0.9.0
+	1.0.0
 
-バージョン 0.9.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページを参照してください。
+バージョン 1.0.0 以降でない場合は、コントロール パネルの [プログラムと機能] を使用して Azure PowerShell を削除してから、最新バージョンをインストールする必要があります。詳細については、[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページを参照してください。
 
 ## 手順2. サブスクリプションを設定する
 
-まず Azure PowerShell プロンプトを実行します。
+まず Azure PowerShell プロンプトを開始します。
 
-次に、Azure PowerShell プロンプトでこれらのコマンドを実行して、Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+ご使用のアカウントにログインします。
+	
+	Login-AzureRmAccount
+
+次のコマンドを使用して、サブスクリプション名を取得します。
+
+	Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
+
+Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
 	$subscr="<subscription name>"
 	Select-AzureSubscription -SubscriptionName $subscr –Current
 
-このコマンドの表示から、正しいサブスクリプション名を取得できます。
 
-	Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
+## 手順 3: リソースを作成する
 
-次に、Azure PowerShell をリソース マネージャー モードに切り替えます。
+このセクションでは、新しい仮想マシン用に各リソースを作成する方法を説明します。
 
-	Switch-AzureMode AzureResourceManager
+### リソース グループ
 
-## 手順 3. 必要なリソースを作成する
 
-リソース マネージャー ベースの仮想マシンには、リソース グループが必要です。必要に応じて、次のコマンドを実行して新しい仮想マシンの新しいリソース グループを作成します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
+リソース マネージャーのデプロイ モデルを使用して作成された VM には、リソース グループが必要です。必要に応じて、新しい仮想マシンの新しいリソース グループを作成します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
 	$rgName="<resource group name>"
 	$locName="<location name, such as West US>"
-	New-AzureResourceGroup -Name $rgName -Location $locName
+	New-AzureRmResourceGroup -Name $rgName -Location $locName
 
-一意のリソース グループ名を確認するには、次のコマンドを実行して、既存のリソース グループの一覧を取得します。
+このコマンドを使用して、既存のリソース グループを一覧表示できます。
 
-	Get-AzureResourceGroup | Sort ResourceGroupName | Select ResourceGroupName
+	Get-AzureRmResourceGroup | Sort ResourceGroupName | Select ResourceGroupName
 
-リソース マネージャー ベースの仮想マシンを作成できる Azure の場所一覧を取得するには、次のコマンドを実行します。
+リソース マネージャー ベースの仮想マシンを作成できる Azure の場所を一覧表示します。
 
-	$loc=Get-AzureLocation | where { $_.Name –eq "Microsoft.Compute/virtualMachines" }
+	$loc=Get-AzureRmLocation | where { $_.Name –eq "Microsoft.Compute/virtualMachines" }
 	$loc.Locations
 
-リソース マネージャー ベースの仮想マシンには、リソース マネージャー ベースのストレージ アカウントが必要です。必要に応じて、次のコマンドを実行して新しい仮想マシンの新しいストレージ アカウントを作成します。
+### ストレージ アカウント
+
+
+リソース マネージャーのデプロイ モデルを使用して作成された VM には、リソース マネージャー ベースのストレージ アカウントが必要です。必要に応じて、次のコマンドを実行して新しい仮想マシンの新しいストレージ アカウントを作成します。
 
 	$rgName="<resource group name>"
 	$locName="<location name, such as West US>"
 	$saName="<storage account name>"
 	$saType="<storage account type, specify one: Standard_LRS, Standard_GRS, Standard_RAGRS, or Premium_LRS>"
-	New-AzureStorageAccount -Name $saName -ResourceGroupName $rgName –Type $saType -Location $locName
+	New-AzureRmStorageAccount -Name $saName -ResourceGroupName $rgName –Type $saType -Location $locName
 
 小文字のアルファベットと数字のみが含まれているストレージ アカウントのグローバルに一意の名前を選択する必要があります。既存のストレージ アカウントの一覧を取得するには、次のコマンドを実行します。
 
-	Get-AzureStorageAccount | Sort Name | Select Name
+	Get-AzureRmStorageAccount | Sort Name | Select Name
 
-選択したストレージ アカウント名がグローバルに一意かどうかをテストするには、PowerShell の Azure サービス管理モードで **Test-AzureName** コマンドを実行する必要があります。次のコマンドを実行します。
+選択したストレージ アカウント名がグローバルに一意かどうかをテストするには、**Test-AzureName** コマンドを実行する必要があります。
 
-	Switch-AzureMode AzureServiceManagement
 	Test-AzureName -Storage <Proposed storage account name>
 
-Test-AzureName コマンドで "False" と表示される場合、指定した名前は一意です。一意の名前だと判断できたら、次のコマンドで Azure PowerShell をリソース マネージャー モードに戻ります。
+Test-AzureName コマンドで "False" と表示される場合、指定した名前は一意です。
 
-	Switch-AzureMode AzureResourceManager
 
-リソース マネージャー ベースの仮想マシンには、パブリック ドメイン名ラベルを使用できます。このラベルには、アルファベット、数字、およびハイフンのみ使用できます。フィールドの先頭と末尾の文字は、文字または数字としてください。
+### パブリック ドメイン名のラベル
+
+
+リソース マネージャーのデプロイ モデルで作成された VM では、パブリック ドメイン名のラベルを使用できます。このラベルには、文字、数字、ハイフンのみを含めることができます。先頭と末尾の文字は、文字または数字にしてください。
 
 選択したドメイン名のラベルがグローバルに一意かどうかをテストするには、次のコマンドを実行します。
 
 	$domName="<domain name label to test>"
 	$loc="<short name of an Azure location, for example, for West US, the short name is westus>"
-	Test-AzureDnsAvailability -DomainQualifiedName $domName -Location $loc
+	Test-AzureRmDnsAvailability -DomainQualifiedName $domName -Location $loc
 
 DNSNameAvailability が"True"の場合、指定の名前はグローバルに一意です。
 
->[AZURE.NOTE]Test-AzureDnsAvailability コマンドレットは、バージョン 0.9.5 より前のバージョンの Azure PowerShell では Get-AzureCheckDnsAvailability という名前でした。バージョン 0.9.4 以前を使用している場合は、上記のコマンドの Test-AzureDnsAvailability を Get-AzureCheckDnsAvailability に置き換えてください。
+### 可用性セット
 
-リソース マネージャー ベースの仮想マシンは、リソース マネージャー ベースの可用性セットに配置できます。必要に応じて、次のコマンドを実行して新しい仮想マシンの新しい可用性セットを作成します。
+
+必要に応じて、次のコマンドを実行して新しい仮想マシンの新しい可用性セットを作成します。
 
 	$avName="<availability set name>"
 	$rgName="<resource group name>"
 	$locName="<location name, such as West US>"
-	New-AzureAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
+	New-AzureRmAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
 
 既存の可用性セットの一覧を取得するには、次のコマンドを実行します。
 
-	Get-AzureAvailabilitySet –ResourceGroupName $rgName | Sort Name | Select Name
+	Get-AzureRmAvailabilitySet –ResourceGroupName $rgName | Sort Name | Select Name
 
+### NAT 規則	
+	
 リソース マネージャーを基盤とする仮想マシンは、インターネットから入ってくるトラフィックを許可し、負荷を分散して配置するように受信 NAT ルールで構成できます。いずれの場合でも、ロード バランサーのインスタンスとその他の設定を指定する必要があります。詳細については、「[Azure リソース マネージャーを使用したロード バランサーの作成](../load-balancer/load-balancer-arm-powershell.md)」を参照してください。
 
-リソース マネージャー ベースの仮想マシンには、リソース マネージャー ベースの仮想ネットワークが必要です。必要に応じて、新しい仮想マシンの少なくとも 1 つのサブネットを含む、新しいリソース マネージャー ベースの仮想ネットワークを作成します。次に、frontendSubnet と backendSubnet という 2 つのサブネットを含む新しい仮想ネットワークの例を示します。
+リソース マネージャーのデプロイ モデルを使用して作成された VM には、リソース マネージャーの仮想ネットワークが必要です。必要に応じて、新しい仮想マシンの少なくとも 1 つのサブネットを含む、新しいリソース マネージャー ベースの仮想ネットワークを作成します。次に、**frontendSubnet** と **backendSubnet** という 2 つのサブネットを含む、**TestNet** という名前の新しい仮想ネットワークの例を示します。
 
 	$rgName="LOBServers"
 	$locName="West US"
-	$frontendSubnet=New-AzureVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix 10.0.1.0/24
-	$backendSubnet=New-AzureVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 10.0.2.0/24
-	New-AzurevirtualNetwork -Name TestNet -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet,$backendSubnet
+	$frontendSubnet=New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix 10.0.1.0/24
+	$backendSubnet=New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix 10.0.2.0/24
+	New-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet,$backendSubnet
 
 既存の仮想ネットワークの一覧を取得するには、次のコマンドを実行します。
 
 	$rgName="<resource group name>"
-	Get-AzureVirtualNetwork -ResourceGroupName $rgName | Sort Name | Select Name
+	Get-AzureRmVirtualNetwork -ResourceGroupName $rgName | Sort Name | Select Name
 
 ## 手順 4. コマンド セットを構築する
 
 好みのテキスト エディターまたは PowerShell Integrated Scripting Environment (ISE) の新規インスタンスを開き、コマンド セットの先頭に次の行をコピーします。この新しい仮想マシンのリソース グループ名、Azure の場所、ストレージ アカウントを指定します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
-	Switch-AzureMode AzureResourceManager
 	$rgName="<resource group name>"
 	$locName="<Azure location, such as West US>"
 	$saName="<storage account name>"
@@ -147,13 +159,13 @@ DNSNameAvailability が"True"の場合、指定の名前はグローバルに一
 
 	$rgName="<resource group name>"
 	$vnetName="<virtual network name>"
-	Get-AzureVirtualNetwork -Name $vnetName -ResourceGroupName $rgName | Select Subnets
+	Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName | Select Subnets
 
 サブネット インデックスは、このコマンドの出力に表示されるサブネットの番号です。左から右の順に、0から連続して番号が付けられます。
 
 例:
 
-	PS C:\> Get-AzureVirtualNetwork -Name TestNet -ResourceGroupName LOBServers | Select Subnets
+	PS C:\> Get-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName LOBServers | Select Subnets
 
 	Subnets
 	-------
@@ -165,7 +177,7 @@ frontendSubnet のサブネット インデックスは 0 です。backendSubnet
 
 	$vnetName="<name of an existing virtual network>"
 	$subnetIndex=<index of the subnet on which to create the NIC for the virtual machine>
-	$vnet=Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgName
+	$vnet=Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
 
 次に、ネットワーク インターフェイス カード (NIC) を作成します。次のオプションのいずれかをコマンド セットにコピーし、必要な情報を入力します。
 
@@ -174,17 +186,17 @@ frontendSubnet のサブネット インデックスは 0 です。backendSubnet
 コマンド セットに次の行をコピーし、NIC の名前を指定します。
 
 	$nicName="<name of the NIC of the VM>"
-	$pip = New-AzurePublicIpAddress -Name $nicName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
-	$nic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
+	$pip = New-AzureRmPublicIpAddress -Name $nicName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+	$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
 
 ### オプション 2: NIC 名と DNS ドメイン名ラベルを指定します。
 
-コマンド セットに次の行をコピーし、NIC の名前とグローバルに一意なドメイン名ラベルを指定します。Azure PowerShell のサービス管理モードで仮想マシンを作成すると、次の手順が自動的に実行されます。
+コマンド セットに次の行をコピーし、NIC の名前とグローバルに一意なドメイン名ラベルを指定します。
 
 	$nicName="<name of the NIC of the VM>"
 	$domName="<domain name label>"
-	$pip = New-AzurePublicIpAddress -Name $nicName -ResourceGroupName $rgName -DomainNameLabel $domName -Location $locName -AllocationMethod Dynamic
-	$nic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
+	$pip = New-AzureRmPublicIpAddress -Name $nicName -ResourceGroupName $rgName -DomainNameLabel $domName -Location $locName -AllocationMethod Dynamic
+	$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
 
 ### オプション 3: NIC 名を指定し、静的なプライベート IP アドレスを割り当てます。
 
@@ -192,8 +204,8 @@ frontendSubnet のサブネット インデックスは 0 です。backendSubnet
 
 	$nicName="<name of the NIC of the VM>"
 	$staticIP="<available static IP address on the subnet>"
-	$pip = New-AzurePublicIpAddress -Name $nicName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
-	$nic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id -PrivateIpAddress $staticIP
+	$pip = New-AzureRmPublicIpAddress -Name $nicName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+	$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id -PrivateIpAddress $staticIP
 
 ### オプション 4: NIC 名と受信 NAT ルールのロード バランサーのインスタンスを指定します。
 
@@ -211,8 +223,8 @@ NIC を作成し、受信 NAT ルールのロード バランサーのインス�
 	$lbName="<name of the load balancer instance>"
 	$bePoolIndex=<index of the back end pool, starting at 0>
 	$natRuleIndex=<index of the inbound NAT rule, starting at 0>
-	$lb=Get-AzureLoadBalancer -Name $lbName -ResourceGroupName $rgName
-	$nic=New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
+	$lb=Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgName
+	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
 
 $NicName 文字列はリソース グループで一意にする必要があります。最良事例は、「LOB07-NIC」のように文字列に仮想マシン名を組み込むことです。
 
@@ -230,8 +242,8 @@ NIC を作成し、負荷分散セットのロード バランサーのインス
 	$nicName="<name of the NIC of the VM>"
 	$lbName="<name of the load balancer instance>"
 	$bePoolIndex=<index of the back end pool, starting at 0>
-	$lb=Get-AzureLoadBalancer -Name $lbName -ResourceGroupName $rgName
-	$nic=New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex]
+	$lb=Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgName
+	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex]
 
 次に、ローカル VM オブジェクトを作成し、必要に応じて可用性セットに追加します。次の 2 つのオプションのいずれかをコマンド セットをコピーし、名前、サイズ、および可用性セット名を入力します。
 
@@ -239,26 +251,26 @@ NIC を作成し、負荷分散セットのロード バランサーのインス
 
 	$vmName="<VM name>"
 	$vmSize="<VM size string>"
-	$vm=New-AzureVMConfig -VMName $vmName -VMSize $vmSize
+	$vm=New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 
 オプション 1 の VM サイズ文字列の有効な値を確認するには、次のコマンドを実行します。
 
 	$locName="<Azure location of your resource group>"
-	Get-AzureVMSize -Location $locName | Select Name
+	Get-AzureRmVMSize -Location $locName | Select Name
 
 オプション 2. 仮想マシンの名前とサイズを指定し、可用性セットに追加します。
 
 	$vmName="<VM name>"
 	$vmSize="<VM size string>"
 	$avName="<availability set name>"
-	$avSet=Get-AzureAvailabilitySet –Name $avName –ResourceGroupName $rgName
-	$vm=New-AzureVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avset.Id
+	$avSet=Get-AzureRmAvailabilitySet –Name $avName –ResourceGroupName $rgName
+	$vm=New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avset.Id
 
 オプション 2 の VM サイズ文字列の有効な値を確認するには、次のコマンドを実行します。
 
 	$rgName="<resource group name>"
 	$avName="<availability set name>"
-	Get-AzureVMSize -ResourceGroupName $rgName -AvailabilitySetName $avName | Select Name
+	Get-AzureRmVMSize -ResourceGroupName $rgName -AvailabilitySetName $avName | Select Name
 
 > [AZURE.NOTE]現在、リソース マネージャーでは、作成時にのみ仮想マシンを可用性セットに追加できます。
 
@@ -267,9 +279,9 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 	$diskSize=<size of the disk in GB>
 	$diskLabel="<the label on the disk>"
 	$diskName="<name identifier for the disk in Azure storage, such as 21050529-DISK02>"
-	$storageAcc=Get-AzureStorageAccount -ResourceGroupName $rgName -Name $saName
+	$storageAcc=Get-AzureRmStorageAccount -ResourceGroupName $rgName -Name $saName
 	$vhdURI=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + $diskName  + ".vhd"
-	Add-AzureVMDataDisk -VM $vm -Name $diskLabel -DiskSizeInGB $diskSize -VhdUri $vhdURI  -CreateOption empty
+	Add-AzureRmVMDataDisk -VM $vm -Name $diskLabel -DiskSizeInGB $diskSize -VhdUri $vhdURI  -CreateOption empty
 
 次に、仮想マシンのイメージの発行元、プラン、提供、および SKU を判断する必要があります。次の表は、一般的に使用される Windows ベースのイメージの一覧です。
 
@@ -293,25 +305,25 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 	$offerName="<Image offer name>"
 	$skuName="<Image SKU name>"
 	$cred=Get-Credential -Message "Type the name and password of the local administrator account."
-	$vm=Set-AzureVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-	$vm=Set-AzureVMSourceImage -VM $vm -PublisherName $pubName -Offer $offerName -Skus $skuName -Version "latest"
-	$vm=Add-AzureVMNetworkInterface -VM $vm -Id $nic.Id
+	$vm=Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+	$vm=Set-AzureRmVMSourceImage -VM $vm -PublisherName $pubName -Offer $offerName -Skus $skuName -Version "latest"
+	$vm=Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 
 最後に、コマンド セットに次のコマンドをコピーし、VM のオペレーティング システム ディスクの名前の識別子を入力します。
 
 	$diskName="<name identifier for the disk in Azure storage, such as OSDisk>"
-	$storageAcc=Get-AzureStorageAccount -ResourceGroupName $rgName -Name $saName
+	$storageAcc=Get-AzureRmStorageAccount -ResourceGroupName $rgName -Name $saName
 	$osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $diskName  + ".vhd"
-	$vm=Set-AzureVMOSDisk -VM $vm -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage
-	New-AzureVM -ResourceGroupName $rgName -Location $locName -VM $vm
+	$vm=Set-AzureRmVMOSDisk -VM $vm -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage
+	New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
 ## 手順 5. コマンド セットを実行する
 
-手順 4. で、テキスト エディターまたは PowerShell ISE を使用して構築した、複数のコマンド ブロックで構築されている Azure PowerShell コマンド セットを確認します。必要なすべての変数が指定され、それらの値がすべて正しいことを確認します。さらに、文字 < and > がすべて削除されていることも確認します。
+テキスト エディターまたは PowerShell ISE を使用して手順 4. で作成した Azure PowerShell コマンド セットを確認します。すべての変数が指定され、それらの値が正しいことを確認します。さらに、文字 < and > がすべて削除されていることも確認します。
 
-テキスト エディターでコマンドを構築した場合は、コマンド セットをクリップボードにコピーしてから、開いている Azure PowerShell プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして実行され、Azure 仮想マシンが作成されます。または、Azure PowerShell ISE のコマンド セットを実行します。
+テキスト エディターでコマンドを構築した場合は、コマンド セットをクリップボードにコピーしてから、Azure PowerShell プロンプトを右クリックします。この操作により、コマンド セットが一連の PowerShell コマンドとして送信され、Azure 仮想マシンが作成されます。または、Azure PowerShell ISE のコマンド セットを実行します。
 
-この仮想マシンを作成する場合、またはこれに似た仮想マシンをもう一度作成する場合は、PowerShell スクリプト ファイル (*.ps1) としてこのコマンド セットを保存することができます。
+この情報を再利用してさらに VM を作成する場合、PowerShell スクリプト ファイル (*.ps1) としてこのコマンド セットを保存できます。
 
 ## 例
 
@@ -323,10 +335,7 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 - 既存の AZDatacenter 仮想ネットワークの FrontEnd サブネット (サブネット インデックス 0) 内のパブリック IP アドレスを持つ NIC がある
 - 200 GB の追加データ ディスク容量
 
-手順 4. で説明したプロセスに基づいて、対応する Azure PowerShell コマンド セットを実行して、この仮想マシンを作成します。
-
-	# Switch to the Resource Manager mode
-	Switch-AzureMode AzureResourceManager
+この仮想マシンを作成するための Azure PowerShell コマンド セットは次のとおりです。
 
 	# Set values for existing resource group and storage account names
 	$rgName="LOBServers"
@@ -336,44 +345,44 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 	# Set the existing virtual network and subnet index
 	$vnetName="AZDatacenter"
 	$subnetIndex=0
-	$vnet=Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgName
+	$vnet=Get-AzureRMVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
 
 	# Create the NIC
 	$nicName="LOB07-NIC"
 	$domName="contoso-vm-lob07"
-	$pip=New-AzurePublicIpAddress -Name $nicName -ResourceGroupName $rgName -DomainNameLabel $domName -Location $locName -AllocationMethod Dynamic
-	$nic=New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
+	$pip=New-AzureRmPublicIpAddress -Name $nicName -ResourceGroupName $rgName -DomainNameLabel $domName -Location $locName -AllocationMethod Dynamic
+	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[$subnetIndex].Id -PublicIpAddressId $pip.Id
 
 	# Specify the name, size, and existing availability set
 	$vmName="LOB07"
 	$vmSize="Standard_A3"
 	$avName="WEB_AS"
-	$avSet=Get-AzureAvailabilitySet –Name $avName –ResourceGroupName $rgName
-	$vm=New-AzureVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avset.Id
+	$avSet=Get-AzureRmAvailabilitySet –Name $avName –ResourceGroupName $rgName
+	$vm=New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avset.Id
 
 	# Add a 200 GB additional data disk
 	$diskSize=200
 	$diskLabel="APPStorage"
 	$diskName="21050529-DISK02"
-	$storageAcc=Get-AzureStorageAccount -ResourceGroupName $rgName -Name $saName
+	$storageAcc=Get-AzureRmStorageAccount -ResourceGroupName $rgName -Name $saName
 	$vhdURI=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + $diskName  + ".vhd"
-	Add-AzureVMDataDisk -VM $vm -Name $diskLabel -DiskSizeInGB $diskSize -VhdUri $vhdURI -CreateOption empty
+	Add-AzureRmVMDataDisk -VM $vm -Name $diskLabel -DiskSizeInGB $diskSize -VhdUri $vhdURI -CreateOption empty
 
 	# Specify the image and local administrator account, and then add the NIC
 	$pubName="MicrosoftWindowsServer"
 	$offerName="WindowsServer"
 	$skuName="2012-R2-Datacenter"
 	$cred=Get-Credential -Message "Type the name and password of the local administrator account."
-	$vm=Set-AzureVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-	$vm=Set-AzureVMSourceImage -VM $vm -PublisherName $pubName -Offer $offerName -Skus $skuName -Version "latest"
-	$vm=Add-AzureVMNetworkInterface -VM $vm -Id $nic.Id
+	$vm=Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+	$vm=Set-AzureRmVMSourceImage -VM $vm -PublisherName $pubName -Offer $offerName -Skus $skuName -Version "latest"
+	$vm=Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 
 	# Specify the OS disk name and create the VM
 	$diskName="OSDisk"
-	$storageAcc=Get-AzureStorageAccount -ResourceGroupName $rgName -Name $saName
+	$storageAcc=Get-AzureRmStorageAccount -ResourceGroupName $rgName -Name $saName
 	$osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + $diskName  + ".vhd"
-	$vm=Set-AzureVMOSDisk -VM $vm -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage
-	New-AzureVM -ResourceGroupName $rgName -Location $locName -VM $vm
+	$vm=Set-AzureRmVMOSDisk -VM $vm -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage
+	New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
 ## その他のリソース
 
@@ -387,4 +396,4 @@ VM にデータ ディスクを追加するには、こませに次の行をコ�
 
 [Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

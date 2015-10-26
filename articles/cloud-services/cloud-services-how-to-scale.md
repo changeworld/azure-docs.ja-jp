@@ -227,4 +227,4 @@ Azure 管理ポータルの [スケール] ページで、アプリケーショ�
 [scale_schedule]: ./media/cloud-services-how-to-scale/CloudServices_SetUpSchedule.png
  
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -64,4 +64,4 @@ Application Gateway を作成します。「[アプリケーション ゲート�
 
 SSL オフロードを構成します。「[SSL オフロードのアプリケーション ゲートウェイの構成](application-gateway-ssl.md)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

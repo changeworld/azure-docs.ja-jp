@@ -1,19 +1,19 @@
 <properties 
-    pageTitle="StorSimple モニタリング インジケーター | Microsoft Azure"
-	description="StorSimple デバイスの状態を監視するための発光ダイオード (LED) と可聴アラームについて説明します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+    pageTitle="StorSimple モニタリング インジケーター | Microsoft Azure" 
+    description="StorSimple デバイスの状態を監視するための発光ダイオード (LED) と可聴アラームについて説明します。"
+    services="storsimple"
+    documentationCenter="NA"
+    authors="SharS"
+    manager="carolz"
+    editor="" />
  <tags 
     ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/31/2015"
-	ms.author="v-sharos"/>
+    ms.devlang="NA"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"
+    ms.workload="TBD"
+    ms.date="08/31/2015"
+    ms.author="v-sharos" />
 
 # StorSimple モニタリング インジケーターを使用してデバイスを管理する   
 
@@ -256,4 +256,4 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

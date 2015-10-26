@@ -53,4 +53,4 @@ Azure でホストされている仮想マシンには、サーバー エクス�
 
 Visual Studio での Azure ロールの使用方法の詳細については、「[Azure ロールでのリモート デスクトップの使用](vs-azure-tools-remote-desktop-roles.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

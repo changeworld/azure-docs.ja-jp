@@ -623,4 +623,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

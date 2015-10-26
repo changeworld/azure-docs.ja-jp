@@ -130,4 +130,4 @@ Azure 通知ハブでは Azure 管理ポータルでテレメトリ データの
 [Notification Hubs のメトリックのサンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [登録の一括エクスポートと変更]: https://msdn.microsoft.com/library/dn790624.aspx
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

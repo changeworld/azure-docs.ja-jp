@@ -95,4 +95,4 @@ StorSimple Manager サービスを使用して、StorSimple ソリューショ�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

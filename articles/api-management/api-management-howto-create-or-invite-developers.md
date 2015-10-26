@@ -91,4 +91,4 @@ API Management では、開発者は、API Management を使用して公開さ�
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 [電子メール テンプレートの構成]: api-management-howto-configure-notifications.md#email-templates
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure での Bottle を使用した Python Web アプリ"
-	description="Azure App Service Web Apps での Python Web アプリの実行について説明したチュートリアルです。"
-	services="app-service\web"
-	documentationCenter="python"
+	pageTitle="Azure での Bottle を使用した Python Web アプリ" 
+	description="Azure App Service Web Apps での Python Web アプリの実行について説明したチュートリアルです。" 
+	services="app-service\web" 
+	documentationCenter="python" 
 	tags="python"
-	authors="huguesv"
-	manager="wpickett"
+	authors="huguesv" 
+	manager="wpickett" 
 	editor=""/>
 
 <tags 
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="python"
-	ms.topic="article"
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="python" 
+	ms.topic="article" 
 	ms.date="08/30/2015"
 	ms.author="huguesv"/>
 
@@ -397,4 +397,4 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 [Bottle のドキュメント]: http://bottlepy.org/docs/dev/index.html
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

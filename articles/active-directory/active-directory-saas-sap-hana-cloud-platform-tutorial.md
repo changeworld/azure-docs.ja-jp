@@ -80,7 +80,7 @@
 
 6.  Azure Active Directory ポータルの **[アプリ URL の構成]** ページで、次の手順に従ってから、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790798.png "アプリ URL の構成")
+    ![アプリ URL の構成](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790798.png "アプリケーション URL の構成")
 
     1.  **[サインオン URL]** テキストボックスに、ユーザーが **SAP HANA Cloud Platform** アプリケーションへのサインオンに使用する URL を入力します。これは、SAP HANA Cloud Platform アプリケーションで保護されたリソースのアカウント固有の URL です。この URL は、*https://\<applicationName><accountName>.<landscape host>.ondemand.com/<path\_to\_protected\_resource>* というパターンに基づいています (例: **https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)。
 
@@ -181,4 +181,4 @@ Azure AD ユーザーが SAP HANA Cloud Platform にログインできるよう�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

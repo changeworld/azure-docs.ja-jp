@@ -20,7 +20,7 @@
 
 # Azure リソース マネージャーを使用して自動化する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイ モデルを使用したリソースの作成について説明します。このリソースは、クラシック デプロイメント モデルを使用して作成できません。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。このリソースは、クラシック デプロイ モデルを使用して作成することはできません。
 
 Azure リソース マネージャーを使用すると、Azure インフラストラクチャ サービス上で実行される複雑なアプリケーションのデプロイと管理が容易になります。多くのアプリケーションで、仮想ネットワーク、ストレージ アカウント、仮想マシンなどのコンピューティング、ネットワーク、およびストレージのリソースをネットワーク インターフェイスと組み合わせる必要があります。Azure リソース マネージャーでは、そうしたリソースをすべてひとまとめにして単一のアプリケーションとしてデプロイして管理する JSON テンプレートを作成および使用することができます。
 
@@ -32,7 +32,7 @@ Azure リソース マネージャーを使用すると、Azure インフラス�
 
 [テンプレートを使用したアプリケーション フレームワーク](virtual-machines-app-frameworks.md)
 
-[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理](http://go.microsoft.com/fwlink/p/?linkid=534868&clcid=0x409)
+[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](http://go.microsoft.com/fwlink/p/?linkid=534868&clcid=0x409)
 
 [Azure リソース マネージャー テンプレートと PowerShell を使用した仮想マシンのデプロイと管理](virtual-machines-deploy-rmtemplates-powershell.md)
 
@@ -52,7 +52,7 @@ Azure リソース マネージャーを使用すると、Azure インフラス�
 
 [Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)
 
-[Azure リソース マネージャー テンプレートと Azure CLI を使用した Virtual Machines のデプロイと管理](http://go.microsoft.com/fwlink/p/?linkid=534868&clcid=0x409)
+[Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](http://go.microsoft.com/fwlink/p/?linkid=534868&clcid=0x409)
 
 ## Azure PowerShell での自動化
 
@@ -74,4 +74,4 @@ Azure リソース マネージャーを使用すると、Azure インフラス�
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

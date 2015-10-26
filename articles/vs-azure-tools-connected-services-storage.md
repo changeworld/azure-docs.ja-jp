@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Visual Studio の接続済みサービスを使用して Azure Storage を追加する | Microsoft Azure"
-	description="Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用してアプリに Azure Storage を追加する"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="patshea123"
-	manager="douge"
-	editor="tlee"/>
+   description="Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用してアプリに Azure Storage を追加する"
+   services="visual-studio-online"
+   documentationCenter="na"
+   authors="patshea123"
+   manager="douge"
+   editor="tlee" />
 <tags 
    ms.service="visual-studio-online"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="mobile"
-	ms.date="08/12/2015"
-	ms.author="patshea"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="mobile"
+   ms.date="08/12/2015"
+   ms.author="patshea" />
 
 # Visual Studio 接続済みサービスを使用した Azure ストレージの追加
 
@@ -94,4 +94,4 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
      - [Storage のドキュメント (azure.microsoft.com)](http://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

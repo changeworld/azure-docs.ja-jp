@@ -55,4 +55,4 @@ SDK の一部のバージョンが不足している場合、いくつかの手�
 [アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure/)をご覧ください
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

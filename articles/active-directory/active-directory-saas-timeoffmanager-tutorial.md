@@ -110,7 +110,7 @@
 
     ![属性](./media/active-directory-saas-timeoffmanager-tutorial/IC795920.png "属性")
 
-10. 必要な属性マッピングを追加するには、次の手順を実行します。
+10. 必要な属性のマッピングを追加するには、次の手順を実行します。
 
     ![SAML トークンの属性](./media/active-directory-saas-timeoffmanager-tutorial/IC795921.png "SAML トークンの属性")
 
@@ -146,10 +146,10 @@ TimeOffManager は、ジャストインタイム ユーザー プロビジョニ
 
     ![ユーザーの割り当て](./media/active-directory-saas-timeoffmanager-tutorial/IC795922.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
 
     ![あり](./media/active-directory-saas-timeoffmanager-tutorial/IC767830.png "あり")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!----HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

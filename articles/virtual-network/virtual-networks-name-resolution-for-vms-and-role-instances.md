@@ -177,4 +177,4 @@ VM およびロール インスタンスで使用するように複数の DNS �
 
 [ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

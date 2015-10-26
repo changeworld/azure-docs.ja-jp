@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/08/2015"
+   ms.date="10/13/2015"
    ms.author="andkjell"/>
 
 # Azure AD Connect のトポロジ
@@ -108,8 +108,8 @@ Office 365 の一部のワークロードでは、サポートされるトポロ
 
 | ワークロード | |
 | --------- | --------- |
-| Exchange Online |	オンプレミスに複数の Exchange 組織がある場合 (つまり、Exchange が複数のフォレストにデプロイされている場合) は、Exchange 2013 SP1 以降を使用する必要があります。詳細については「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/ja-JP/library/jj873754.aspx)」を参照してください。 |
-| Skype for Business | オンプレミスで複数のフォレストを使用する場合は、アカウント リソース フォレスト トポロジのみがサポートされます。サポートされているトポロジの詳細については、「[Skype for Business Server 2015 の環境要件](https://technet.microsoft.com/ja-JP/library/dn933910.aspx)」を参照してください。 |
+| Exchange Online |	オンプレミスに複数の Exchange 組織がある場合 (つまり、Exchange が複数のフォレストにデプロイされている場合) は、Exchange 2013 SP1 以降を使用する必要があります。詳細については「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/JA-JP/library/jj873754.aspx)」を参照してください。 |
+| Skype for Business | オンプレミスで複数のフォレストを使用する場合は、アカウント リソース フォレスト トポロジのみがサポートされます。サポートされているトポロジの詳細については、「[Skype for Business Server 2015 の環境要件](https://technet.microsoft.com/JA-JP/library/dn933910.aspx)」を参照してください。 |
 
 ## ステージング サーバー
 ![StagingServer](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)
@@ -159,7 +159,12 @@ Azure AD のディレクトリは、分離するように設計されていま�
 
 2 つの Exchange 組織間でユーザーを GALsync するための、オンプレミスでの FIM2010/MIM2016 の使用はサポートされています。1 つの組織内のユーザーは、他の組織では外部ユーザーおよび連絡先として表示されます。これらの異なるオンプレミス AD は、独自の Azure AD ディレクトリと同期できます。
 
-## 次のステップ
-これらのシナリオのために Azure AD Connect をインストールする方法については、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」を参照してください。Azure AD Connect Sync の構成の詳細については、「[Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+## 次のステップ
+これらのシナリオのために Azure AD Connect をインストールする方法については、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」を参照してください。
+
+[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
+
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+
+<!---HONumber=Oct15_HO3-->

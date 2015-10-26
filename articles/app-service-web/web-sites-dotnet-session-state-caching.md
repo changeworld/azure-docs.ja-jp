@@ -109,4 +109,4 @@ Redis Cache を使用して、Web アプリケーションのオブジェクト�
   [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

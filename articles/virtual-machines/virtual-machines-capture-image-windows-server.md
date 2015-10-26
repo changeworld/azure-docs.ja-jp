@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Windows 仮想マシンのイメージをキャプチャする | Microsoft Azure"
+	pageTitle="Windows VM のイメージをキャプチャする | Microsoft Azure"
 	description="クラシック デプロイ モデルを使用して作成された Windows 仮想マシンのイメージをキャプチャする"
 	services="virtual-machines"
 	documentationCenter=""
@@ -19,7 +19,8 @@
 
 #クラシック デプロイ モデルを使用して作成された Windows 仮想マシンのイメージをキャプチャする
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 ここでは、Windows を実行する Azure 仮想マシンをキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。このイメージには、オペレーティング システム ディスクと、仮想マシンに接続されているすべてのデータ ディスクが含まれます。ネットワーク構成は含まれないため、テンプレートを使用する他の仮想マシンを作成するときは、ネットワーク構成を行う必要があります。
 
@@ -85,4 +86,4 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 [Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
 [Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

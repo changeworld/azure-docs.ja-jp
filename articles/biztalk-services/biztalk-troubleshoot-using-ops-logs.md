@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="操作ログを用いた BizTalk Services のトラブルシューティング | Microsoft Azure"
-	description="操作ログを使用して BizTalk Services のトラブルシューティングを行います。MABS、WABS"
-	services="biztalk-services"
-	documentationCenter=""
-	authors="MandiOhlinger"
-	manager="dwrede"
+	pageTitle="操作ログを用いた BizTalk Services のトラブルシューティング | Microsoft Azure" 
+	description="操作ログを使用して BizTalk Services のトラブルシューティングを行います。MABS、WABS" 
+	services="biztalk-services" 
+	documentationCenter="" 
+	authors="MandiOhlinger" 
+	manager="dwrede" 
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="biztalk-services"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/26/2015"
+	ms.service="biztalk-services" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/26/2015" 
 	ms.author="mandia"/>
 
 
@@ -67,4 +67,4 @@ PurgeBackupBizTalkService | 保持期間を超えた BizTalk サービスのバ�
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

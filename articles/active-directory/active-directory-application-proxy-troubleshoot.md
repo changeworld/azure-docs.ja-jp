@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="rkarlin"
-	manager="msStevenPo"
+	manager="StevenPo"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/09/2015"
+	ms.date="10/07/2015"
 	ms.author="rkarlin"/>
 
 
@@ -81,13 +81,22 @@
 
 
 ## 関連項目
+アプリケーション プロキシを使ってできることは他にもたくさんあります。
 
-[セキュリティで保護されたリモート アクセスのためのアプリケーション プロキシを使用したアプリケーションの発行](active-directory-application-proxy-configure.md)
 
-[アプリケーション プロキシ サービスを有効にする](active-directory-application-proxy-enable.md)
+- [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
+- [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
+- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
+- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
+
+## アプリケーション プロキシに関するその他の情報
+- [オンライン ヘルプ](active-directory-application-proxy-enable.md)
+- [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
+- [Channel 9 ビデオ](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-troubleshoot/connectorproperties.png
 [2]: ./media/active-directory-application-proxy-troubleshoot/sessionlog.png
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

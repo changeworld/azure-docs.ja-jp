@@ -29,12 +29,14 @@
 
 また、オンプレミスの単一のユーザー インターフェイスから、保護対象のさまざまなエンティティ (サーバーとクライアント) の保護を管理することができます。
 
+>[AZURE.NOTE]Microsoft Azure Backup サーバーは、Data Protection Manager (DPM) のワークロード バックアップの機能を継承しています。これらの機能の一部については、DPM ドキュメントへのポインターがあります。ただし、Microsoft Azure Backup サーバーは、テープ上の保護や System Center との統合の機能は提供していません。
+
 Microsoft Azure Backup サーバーは、次の形でデプロイすることができます。
 
 - 物理的なスタンドアロン サーバー。
-- Hyper-V 仮想マシン: オンプレミスの Hyper-V ホスト サーバー上でホストされている仮想マシンとして DPM を実行して、オンプレミスのデータをバックアップすることができます。この環境における考慮事項の一覧については、「[DPM を仮想マシンとしてオンプレミス Hyper-V サーバーにインストールする](https://technet.microsoft.com/library/dn440941.aspx)」を参照してください。
-- VMWare 内の Windows 仮想マシン: DPM をデプロイして、VMWare 内の Windows 仮想マシンで実行されている Microsoft のワークロードを保護することができます。このシナリオでは、DPM をスタンドアロンの物理サーバー、Hyper-V 仮想マシン、または VMWare 内の Windows 仮想マシンとしてデプロイすることができます。
-- Azure の仮想マシン: Azure 内の仮想マシンとして DPM を実行して、Azure の仮想マシンとして実行されているクラウドのワークロードをバックアップすることができます。このデプロイの詳細については、[Azure の仮想マシンとしての DPM のインストール](https://technet.microsoft.com/library/hh758176.aspx)に関するページを参照してください。
+- Hyper-V 仮想マシン: オンプレミスの Hyper-V ホスト サーバー上でホストされている仮想マシンとして Microsoft Azure Backup サーバーを実行して、オンプレミスのデータをバックアップすることができます。この環境における考慮事項の一覧については、「[DPM を仮想マシンとしてオンプレミス Hyper-V サーバーにインストールする](https://technet.microsoft.com/library/dn440941.aspx)」を参照してください。
+- VMWare 内の Windows 仮想マシン: Microsoft Azure Backup サーバーをデプロイして、VMWare 内の Windows 仮想マシンで実行されている Microsoft のワークロードを保護することができます。このシナリオでは、Microsoft Azure Backup サーバーをスタンドアロンの物理サーバー、Hyper-V 仮想マシン、または VMWare 内の Windows 仮想マシンとしてデプロイすることができます。
+- Azure の仮想マシン: Azure 内の仮想マシンとして Microsoft Azure Backup サーバーを実行して、Azure の仮想マシンとして実行されているクラウドのワークロードをバックアップすることができます。このデプロイの詳細については、[Azure の仮想マシンとしての DPM のインストール](https://technet.microsoft.com/library/hh758176.aspx)に関するページを参照してください。
 
 また、
 
@@ -42,7 +44,7 @@ Microsoft Azure Backup サーバーは、次の形でデプロイすることが
 - Microsoft Azure Backup サーバーは、SCDPM または SCDPM RA のエージェントがインストールされているコンピューターにはインストールできません。
 - Microsoft Azure Backup サーバーは、Microsoft Azure Backup エージェントがインストールされていて、Azure Backup コンテナーに登録されているコンピューターにはインストールできません。
 
->[AZURE.NOTE]Microsoft Azure Backup サーバーは、Data Protection Manager (DPM) のワークロード バックアップの機能を継承しています。ただし、テープ上の保護や System Center との統合の機能は提供していません。
+
 
 Microsoft Azure Backup をインストールするサーバーを選択したら、次の手順を実行する必要があります。
 
@@ -64,7 +66,7 @@ Microsoft Azure Backup をインストールするサーバーを選択したら
 - Microsoft Azure Backup サーバーがドメインに参加している必要があります。
 - Microsoft Azure Backup サーバーには、.Net 3.5、.Net 4.0、.Net 3.5 SP1 の機能がインストールされている必要があります。詳細については、[.Net Framework を有効にする方法の詳細](https://technet.microsoft.com/library/dn482071.aspx)に関するページを参照してください。
 - Microsoft Azure Backup サーバーには、Windows Management Framework 4.0 がインストールされている必要があります。[こちら](http://www.microsoft.com/download/details.aspx?id=40855)からダウンロードできます。
-- DPM データ ストレージの専用領域として使用するディスクの推奨される記憶域プールのサイズは、保護対象のデータのサイズの 1.5 倍です。詳細については、[このトピック](https://technet.microsoft.com/library/hh758176.aspx#DPMserver) の「ディスクおよび記憶域」のセクションを参照してください。
+- Microsoft Azure Backup サーバー データ ストレージの専用領域として使用するディスクの推奨される記憶域プールのサイズは、保護対象のデータのサイズの 1.5 倍です。詳細については、[このトピック](https://technet.microsoft.com/library/hh758176.aspx#DPMserver) の「ディスクおよび記憶域」のセクションを参照してください。
 
 データをバックアップするために、次の手順で Microsoft Azure Backup サーバーを準備します。
 
@@ -286,4 +288,4 @@ Q: Microsoft Azure Backup サーバーでは、ディスクとクラウドの両
 - [SharePoint サーバーのバックアップ](backup-azure-backup-sharepoint.md)
 - [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

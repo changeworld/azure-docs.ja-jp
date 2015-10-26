@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Azure Marketplace に Machine Learning Web service の公開と使用に関する FAQ | Microsoft Azure"
-	description="よく寄せられる質問"
-	services="machine-learning"
-	documentationCenter=""
-	authors="LuisCabrer"
-	manager="paulettm"
+	pageTitle="Azure Marketplace に Machine Learning Web service の公開と使用に関する FAQ | Microsoft Azure" 
+	description="よく寄せられる質問" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="LuisCabrer" 
+	manager="paulettm" 
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="luisca"/>
 
 #Azure Marketplace での Machine Learning アプリケーションの公開と使用に関する FAQ
@@ -77,4 +77,4 @@ Azure Machine Learning Web サービスに直接接続するときと、これ�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

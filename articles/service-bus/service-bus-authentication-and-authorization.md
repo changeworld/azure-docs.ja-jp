@@ -73,4 +73,4 @@ Service Bus における SAS の概要については、「[Shared Access Signat
 
 ACS トークンの詳細については、「[方法: OAuth WRAP プロトコルを使用して ACS からのトークンを要求する](https://msdn.microsoft.com/library/hh674475.aspx)」を参照してください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

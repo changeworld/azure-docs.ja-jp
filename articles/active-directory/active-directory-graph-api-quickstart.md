@@ -1,22 +1,22 @@
 <properties
    pageTitle="Azure AD Graph API のクイック スタート | Microsoft Aure"
-	description="Azure Active Directory Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。"
-	services="active-directory"
-	documentationCenter="n/a"
-	authors="JimacoMS"
-	manager="msmbaldwin"
-	editor=""
-	tags=""/>
+   description="Azure Active Directory Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。アプリケーションでは、Graph API を使用して、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。"
+   services="active-directory"
+   documentationCenter="n/a"
+   authors="JimacoMS"
+   manager="msmbaldwin"
+   editor=""
+   tags=""/>
 
 
    <tags
       ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="08/24/2015"
-	ms.author="v-jibran@microsoft.com"/>
+      ms.devlang="na"
+      ms.topic="article"
+      ms.tgt_pltfrm="na"
+      ms.workload="identity"
+      ms.date="08/24/2015"
+      ms.author="v-jibran@microsoft.com"/>
 
 # Azure AD Graph API のクイック スタート
 
@@ -123,4 +123,4 @@ Graph によって公開される Azure AD エンティティと型の詳細と�
 
 [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) の詳細
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="出力データをオンプレミスの SQL Server データベースにコピーする (Azure ポータル)"
+	pageTitle="出力データをオンプレミスの SQL Server データベースにコピーする (Azure ポータル)" 
 	description="ここでは、Azure ポータルで Data Factory Editor を使用してチュートリアルを拡張して、パイプラインで出力データを SQL Server データベースにコピーするようにします。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/25/2015" 
 	ms.author="spelluru"/>
 
 
@@ -169,4 +169,4 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
  
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure での docker マシンの使用 | Microsoft Azure"
-   description="クラシック デプロイメント モデルを使用して、Azure で Ubuntu の docker マシンを起動して実行する方法について説明します。"
+   description="クラシック デプロイ モデルを使用して、Azure で Ubuntu の docker マシンを起動して実行する方法について説明します。"
    services="virtual-machines"
    documentationCenter="virtual-machines"
    authors="squillace"
@@ -21,7 +21,8 @@
 
 このトピックでは、[Docker](https://www.docker.com/) を [machine](https://github.com/docker/machine) や [Azure CLI](https://github.com/Azure/azure-xplat-cli) と共に使用して、Ubuntu を実行するコンピューターから Linux コンテナーを簡単かつ速やかに管理する Azure 仮想マシンを作成する方法について説明します。チュートリアルを通じて、[busybox Docker Hub image イメージ](https://registry.hub.docker.com/_/busybox/)と [nginx Docker Hub image](https://registry.hub.docker.com/_/nginx/) の両方をデプロイする方法と、Web 要求を nginx コンテナーにルートするコンテナーの構成方法について実際に示していきます (Docker **machine** ドキュメントではこの手順が他のプラットフォームでどのように変わるかについて説明しています)。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
 
 このチュートリアルを完了するにはいくつかの前提条件があります。次をインストールする必要があります。
@@ -213,4 +214,4 @@ Docker でコンテナーのポート 80 が VM のポート 49153 に割り当�
 [Link 2 to another azure.microsoft.com documentation topic]: ../web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

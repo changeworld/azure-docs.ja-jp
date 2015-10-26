@@ -77,7 +77,7 @@
 
     ![管理者](./media/active-directory-saas-bime-tutorial/IC775558.png "管理者")
 
-7.  アカウント構成ページで、次の手順を実行します。
+7.  アカウント構成ページで、次の手順に従います。
 
     ![Configure Single Sign-On](./media/active-directory-saas-bime-tutorial/IC775559.png "Configure Single Sign-On")
 
@@ -135,4 +135,4 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure AD Connect の設計概念 |Microsoft Azure"
-	description="このトピックでは、特定の実装設計の領域について詳しく説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="AndKjell"
-	manager="stevenpo"
-	editor=""/>
+   description="このトピックでは、特定の実装設計の領域について詳しく説明します。"
+   services="active-directory"
+   documentationCenter=""
+   authors="AndKjell"
+   manager="stevenpo"
+   editor=""/>
 
 <tags
    ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="Identity"
-	ms.date="09/03/2015"
-	ms.author="andkjell"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="Identity"
+   ms.date="10/13/2015"
+   ms.author="andkjell"/>
 
 # Azure AD Connect の設計概念
 このトピックの目的は、Azure AD Connect の実装設計時に検討する必要がある部分について説明することです。ここでは特定の部分について詳しく説明しますが、これらの概念については、他のトピックでも簡単に説明しています。
@@ -66,4 +66,7 @@ Azure AD でオブジェクトを作成して、ID を同期した後に、sourc
 - 別の Azure AD Connect サーバーをインストールする場合は、前に使用したのと同じ sourceAnchor 属性を選択する必要があります。以前に DirSync を使用していて Azure AD Connect に移行する場合は、**objectGUID** を使用する必要があります。これは、DirSync で使用される属性です。
 - Azure AD にオブジェクトをエクスポートした後で sourceAnchor の値を変更すると、Azure AD Connect Sync によってエラーがスローされます。問題が解決され、ソース ディレクトリで sourceAnchor が元に戻されるまでは、そのオブジェクトをそれ以上変更できなくなります。
 
-<!---HONumber=September15_HO1-->
+## 次のステップ
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+
+<!---HONumber=Oct15_HO3-->

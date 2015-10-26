@@ -28,6 +28,9 @@ AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ス
 > 
 > AzCopy 4.x に関しては、コマンド ラインのオプションとその機能が今後のリリースで変更される可能性があるため、注意してください。
 
+
+また、AzCopy を強化するコア データ移動フレームワークに基づいたオープン ソースのライブラリもリリースしています。詳細については、「[Introducing Azure Storage Data Movement Library Preview (Azure Storage Data Movement Library プレビューの概要)](https://azure.microsoft.com/JA-JP/blog/introducing-azure-storage-data-movement-library-preview-2/)」をご覧ください。
+
 ## AzCopy のダウンロードとインストール
 
 1. [最新バージョンの AzCopy](http://aka.ms/downloadazcopy) または[最新のプレビュー バージョン](http://aka.ms/downloadazcopypr)をダウンロードします。
@@ -225,21 +228,21 @@ AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ス
   </tr>
   <tr>
     <td><b>/MT</b></td>
-    <td>ダウンロードしたファイルの最後の変更時刻をソースの BLOB またはファイルと同じに設定します。</td>
+    <td>ダウンロードしたファイルの最後の変更時刻をソースの BLOB またはファイルと同じ値に設定します。</td>
     <td>Y</td>
     <td>Y<br /> (プレビューのみ)</td>
     <td>N</td>
   </tr>
   <tr>
     <td><b>/XN</b></td>
-    <td>新しいソース リソースを除外します。ソースが宛先より新しい場合、リソースはコピーされません。</td>
+    <td>新しいソース リソースを除外します。ソースが最後に変更された時刻が宛先と同じか、それよりも後である場合、リソースはコピーされません。</td>
     <td>Y</td>
     <td>Y<br /> (プレビューのみ)</td>
     <td>N</td>
   </tr>
   <tr>
     <td><b>/XO</b></td>
-    <td>古いソース リソースを除外します。ソース リソースが宛先リソースより古い場合、リソースはコピーされません。</td>
+    <td>古いソース リソースを除外します。ソースが最後に変更された時刻が宛先と同じか、それよりも前である場合、リソースはコピーされません。</td>
     <td>Y</td>
     <td>Y<br /> (プレビューのみ)</td>
     <td>N</td>
@@ -405,7 +408,7 @@ AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ス
   <tr>
     <td><b>/SetContentType:&lt;content-type></b></td>
     <td>コピー先の BLOB またはファイルの MIME コンテンツの種類を指定します。<br />
-		既定では、AzCopy は BLOB またはファイルのコンテンツの種類を <code>application/octet-stream</code> 設定します。このオプションで値を明示的に指定することで、すべての BLOB またはファイルのコンテンツの種類を設定できます。このオプションで値を指定しない場合、AzCopy は各 BLOB またはファイルのコンテンツの種類をそのファイルの拡張子に応じて設定します。</td>
+		既定では、AzCopy は BLOB またはファイルのコンテンツの種類を <code>application/octet-stream</code> に設定します。このオプションで値を明示的に指定することで、すべての BLOB またはファイルのコンテンツの種類を設定できます。このオプションで値を指定しない場合、AzCopy は各 BLOB またはファイルのコンテンツの種類をそのファイルの拡張子に応じて設定します。</td>
     <td>Y</td>
     <td>Y<br /> (プレビューのみ)</td>
     <td>N</td>
@@ -423,7 +426,7 @@ AzCopy は、Microsoft Azure の BLOB、ファイル、およびテーブル ス
 
 ## データのコピー中の同時書き込みの制限
 
-AzCopy を使用して BLOB またはファイルをコピーする場合は、コピー中に別のアプリケーションがそのデータを変更している可能性があることに注意してください。可能な場合は、コピーしているデータがコピー操作中に変更されないようにしてください。たとえば、Azure 仮想マシンに関連付けられている VHD をコピーしている場合は、その VHD に別のアプリケーションが書き込み中でないことを確認します。または、最初に VHD のスナップショットを作成してからそのスナップショットをコピーします。
+AzCopy を使用して BLOB またはファイルをコピーする場合は、コピー中に別のアプリケーションがそのデータを変更している可能性があることに注意してください。可能な場合は、コピーしているデータがコピー操作中に変更されないようにしてください。たとえば、Azure 仮想マシンに関連付けられている VHD をコピーしている場合は、その VHD に別のアプリケーションが書き込まないようにします。または、最初に VHD のスナップショットを作成してからそのスナップショットをコピーします。
 
 コピーしている BLOB またはファイルに対する他のアプリケーションによる書き込みを回避できない場合は、ジョブが終了した時点で、コピー対象のリソースがソース リソースとの間に完全なパリティを保持していない可能性があることを覚えておいてください。
 
@@ -479,7 +482,7 @@ BLOB を 1 つのストレージ アカウント内または複数のストレ�
 
 	AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer/vd /DestKey:key /Pattern:abc.txt
 
-存在しない仮想ディレクトリを指定すると、アップロードされるファイルの名前に仮想ディレクトリが含められることに注意してください (例: 上記の例の `vd/abc.txt`)。
+存在しない仮想ディレクトリを指定すると、アップロードされるファイルの名前に仮想ディレクトリが含められることに注意してください (*例*: 上記の例の `vd/abc.txt`)。
 
 ### 新しいフォルダーへの BLOB のダウンロード
 
@@ -737,11 +740,11 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 `/MT` オプションを指定して、ソース BLOB と宛先ファイルの最終変更時刻を比較します。
 
-**宛先ファイルより新しい BLOB を除外する**
+**最終変更時刻が宛先ファイルと同じかそれよりも後の BLOB を除外**
 
 	AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XN
 
-**宛先ファイルより古い BLOB を除外する**
+**最終変更時刻が宛先ファイルと同じかそれよりも前の BLOB を除外**
 
 	AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfolder /SourceKey:key /MT /XO
 
@@ -758,7 +761,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 既定では、AzCopy は 2 つのストレージ エンドポイント間で非同期でデータをコピーします。そのため、コピー操作は、BLOB のコピー速度に関する SLA のない予備の帯域幅容量を使用してバック グラウンドで実行され、AzCopy はコピーが完了または失敗するまで定期的にコピー状態を確認します。
 
-`/SyncCopy` オプションは、一定速度のコピー操作を保証します。AzCopy は、指定されたソースからローカル メモリにコピーして BLOB をダウンロードし、これを BLOB ストレージのコピー先にアップロードすることで同期コピーを実行します。
+`/SyncCopy` オプションは、コピー操作が一定の速度になるようにします。AzCopy は、指定されたソースからローカル メモリにコピーして BLOB をダウンロードし、これを BLOB ストレージのコピー先にアップロードすることで同期コピーを実行します。
 
 	AzCopy /Source:https://myaccount1.blob.core.windows.net/myContainer/ /Dest:https://myaccount2.blob.core.windows.net/myContainer/ /SourceKey:key1 /DestKey:key2 /Pattern:ab /SyncCopy
 
@@ -782,7 +785,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 	AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/myfolder1/ /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
 
-指定されたソースが Azure ファイル共有の場合は、厳密なファイル名 (例: `abc.txt`) を指定して単一ファイルをコピーするか、オプション `/S` を指定して共有内の全ファイルを再帰的にコピーする必要があることに注意してください。ファイル パターンとオプション `/S` の両方を同時に指定しようとすると、エラーになります。
+指定されたソースが Azure ファイル共有の場合は、厳密なファイル名 (*例: * `abc.txt`) を指定して単一ファイルをコピーするか、オプション `/S` を指定して共有内の全ファイルを再帰的にコピーする必要があることに注意してください。ファイル パターンとオプション `/S` の両方を同時に指定しようとすると、エラーになります。
 
 ### Azure ファイル共有のファイルおよびフォルダーをファイル システムにダウンロードし、再帰的に共有アクセス署名を指定する
 
@@ -858,7 +861,7 @@ AzCopy により、指定した宛先フォルダーまたは BLOB コンテナ�
 
 	AzCopy /Source:https://myaccount.table.core.windows.net/myTable/ /Dest:C:\myfolder\ /SourceKey:key /PayloadFormat:CSV
 
-CSV ペイロード形式を指定すると、パラメーター `/Dest` で指定した場所にある `.csv` 拡張子を持つデータ ファイルの他に、AzCopy はデータ ファイルごとにファイル拡張子 `.schema.csv` を持つスキーマ ファイルを生成します。AzCopy には CSV データ ファイルの「インポート」のサポートは含まれていませんが、JSON 形式を使用してテーブルのエクスポートおよびインポートを行うことができます。
+CSV ペイロード形式を指定すると、AzCopy は、パラメーター `/Dest` で指定した場所にある `.csv` 拡張子を持つデータ ファイルの他に、データ ファイルごとにファイル拡張子 `.schema.csv` を持つスキーマ ファイルを生成します。AzCopy には CSV データ ファイルの「インポート」のサポートは含まれていませんが、JSON 形式を使用してテーブルのエクスポートおよびインポートを行うことができます。
 
 ### エンティティを Azure BLOB にエクスポートする
 
@@ -870,7 +873,7 @@ AzCopy は、次の名前付け規則を使用して JSON データ ファイル
 
 生成される JSON データ ファイルは、最小のメタデータ用のペイロード形式に準じます。このペイロード形式の詳細については、「[テーブル サービス操作のペイロード形式](http://msdn.microsoft.com/library/azure/dn535600.aspx)」を参照してください。
 
-ストレージ テーブル エンティティをストレージの Blob にエクスポートするとき、AzCopy はまずテーブル エンティティをローカルの一時データ ファイルにエクスポートし、次にそれらのファイルを Blob にアップロードします。このような一時データ ファイルは、既定のパス “<code>%LocalAppData%\\Microsoft\\Azure\\AzCopy</code>” を持つジャーナル ファイル フォルダーに格納されます。/Z:[journal-file-folder] を指定すれば、ジャーナル ファイル フォルダーの場所を変更して、一時データ ファイルの場所を変更することができます。一時データ ファイルのサイズは、テーブル エンティティのサイズと、オプション /SplitSize で指定したサイズによって決まります。ローカル ディスクの一時データ ファイルは Blob にアップロードされた後すぐに削除されますが、そのような一時データ ファイルを格納するのに十分なローカル ディスク領域が存在することを事前に確認しておく必要があります。
+ストレージ テーブル エンティティをストレージの Blob にエクスポートするとき、AzCopy はまずテーブル エンティティをローカルの一時データ ファイルにエクスポートし、次にそれらのファイルを Blob にアップロードします。このような一時データ ファイルは、既定のパス “<code>%LocalAppData%\\Microsoft\\Azure\\AzCopy</code>” を持つジャーナル ファイル フォルダーに格納されます。/Z:[journal-file-folder] を指定すれば、ジャーナル ファイル フォルダーの場所を変更して、一時データ ファイルの場所を変更することができます。一時データ ファイルのサイズは、テーブル エンティティのサイズと、オプション /SplitSize で指定したサイズによって決まります。ローカル ディスクの一時データ ファイルは BLOB にアップロードされた後すぐに削除されますが、そのような一時データ ファイルを格納するのに十分なローカル ディスク領域が存在することを事前に確認しておく必要があります。
 
 ### エクスポート ファイルを分割する
 
@@ -910,7 +913,7 @@ AzCopy では、複数のファイルを区別できるように、分割した�
 
 ## 既知の問題とベスト プラクティス
 
-#### 1 つのマシンで 1 つの AzCopy インスタンスを実行します。
+#### 1 つのマシンでは 1 つの AzCopy インスタンスを実行します。
 AzCopy はマシン リソースの利用率を最大限に高めてデータ転送を高速化する設計になっています。1 つのマシンで実行する AzCopy インスタンスは 1 つのみとすること、同時実行操作の数を増やす必要がある場合はオプション `/NC` を指定することをお勧めします。詳細については、コマンド ラインに「`AzCopy /?:NC`」と入力してください。
 
 #### [暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う] を有効にする場合、AzCopy に対して FIPS 準拠の MD5 アルゴリズムを有効にします。
@@ -931,23 +934,25 @@ FIPS 準拠アルゴリズムは既定で Windows マシンでは無効に設定
 
 ## AzCopy のバージョン
 
-| バージョン | 新機能 |
-|---------|-----------------------------------------------------------------------------------------------------------------|
-| **V4.2.0** | **最新のプレビュー バージョン。V3.2.0 のすべての機能が含まれています。また、ファイル ストレージ共有 SAS、ファイル ストレージ非同期コピー、CSV へのテーブル エンティティのエクスポート、テーブル エンティティをエクスポートするときのマニフェスト名の指定もサポートされます。**
-| **V3.2.0** | **最新リリース バージョン。追加 BLOB と FIPS 準拠 MD5 設定をサポートします。**
-| V4.1.0 | V3.1.0 のすべての機能が含まれています。BLOB およびファイルの同期コピーと、コピー先の BLOB またはファイルへのコンテンツの種類の指定をサポートします。
-| V3.1.0 | BLOB の同期コピーと、コピー先の BLOB へのコンテンツの種類の指定をサポートします。
-| V4.0.0 | V3.0.0 のすべての機能が含まれています。Azure ファイル ストレージとの間のファイルのコピーと Azure テーブル ストレージとの間のエンティティのコピーもサポートしています。
-| V3.0.0 | AzCopy コマンド ライン構文が変更され、パラメーター名が必要になりました。また、コマンド ライン ヘルプが再設計されています。このバージョンでは、Azure BLOB ストレージとの間のコピーのみをサポートしています。	
-| V2.5.1 | オプション /xo と /xn を使用したときのパフォーマンスが最適化されました。ソース ファイル名に含まれた特殊文字に関連するバグと、ユーザーが誤ったコマンド ライン構文を入力した後のジャーナル ファイルの損傷が解決されました。	
-| V2.5.0 | 大規模なコピーのシナリオでのパフォーマンスが最大化され、使いやすさの点でいくつかの重要な改善が加えられました。
-| V2.4.1 | インストール ウィザードでの宛先フォルダーの指定をサポートします。                     			
-| V2.4.0 | Azure ファイル ストレージに対するファイルのアップロードとダウンロードをサポートします。
-| V2.3.0 | Geo 冗長ストレージ アカウントの読み取りアクセスをサポートします。|
-| V2.2.2 | Azure ストレージ クライアント ライブラリのバージョン 3.0.3 を使用できるようにアップグレードされました。
-| V2.2.1 | 同一ストレージ アカウント内での大量のファイル コピーで発生していたパフォーマンスの問題が解決されました。
-| V2.2 | BLOB 名に対して仮想ディレクトリの区切り記号を設定する操作がサポートされています。ジャーナル ファイルのパスの指定がサポートされています。|
-| V2.1 | 効果的な BLOB のアップロード、ダウンロード、およびコピーのために 20 個を超えるオプションが提供されています。|
+> [AZURE.NOTE]最新バージョンの AzCopy をインストールして、新しい機能と取得し、パフォーマンスを高めることをお勧めします。
+
+| バージョン | 新機能 | 参照される .NET クライアント ライブラリのバージョン | ターゲット ストレージの REST API バージョン |
+|---------|-----------------------------------------------------------------------------------------------------------------|--------|----------|
+| [**V4.2.0**](http://xdmrelease.blob.core.windows.net/azcopy-4-2-0-preview/MicrosoftAzureStorageTools.msi) | **最新のプレビュー バージョン。V3.2.0 のすべての機能が含まれています。また、ファイル ストレージ共有 SAS、ファイル ストレージ非同期コピー、CSV へのテーブル エンティティのエクスポート、テーブル エンティティをエクスポートするときのマニフェスト名の指定もサポートされます。** | **V5.0.0** | **2015-02-21**
+| [**V3.2.0**](http://xdmrelease.blob.core.windows.net/azcopy-3-2-0/MicrosoftAzureStorageTools.msi) | **最新リリース バージョン。追加 BLOB と FIPS 準拠 MD5 設定をサポートします。** | **V5.0.0** | **2015-02-21**
+| [V4.1.0](http://xdmrelease.blob.core.windows.net/azcopy-4-1-0-preview/MicrosoftAzureStorageTools.msi) | V3.1.0 のすべての機能が含まれています。BLOB およびファイルの同期コピーと、コピー先の BLOB またはファイルへのコンテンツの種類の指定をサポートします。 | V4.3.0 | 2014-02-14
+| [V3.1.0](http://xdmrelease.blob.core.windows.net/azcopy-3-1-0/MicrosoftAzureStorageTools.msi) | BLOB の同期コピーと、コピー先の BLOB へのコンテンツの種類の指定をサポートします。| V4.3.0 | 2014-02-14
+| [V4.0.0](http://xdmrelease.blob.core.windows.net/azcopy-4-0-0-preview/MicrosoftAzureStorageTools.msi) | V3.0.0 のすべての機能が含まれています。Azure ファイル ストレージとの間のファイルのコピーと Azure テーブル ストレージとの間のエンティティのコピーもサポートしています。| V4.2.1 | 2014-02-14
+| [V3.0.0](http://xdmrelease.blob.core.windows.net/azcopy-3-0-0/MicrosoftAzureStorageTools.msi) | AzCopy コマンド ライン構文が変更され、パラメーター名が必要になりました。また、コマンド ライン ヘルプが再設計されています。このバージョンでは、Azure BLOB ストレージとの間のコピーのみをサポートしています。| V4.2.1 | 2014-02-14
+| V2.5.1 | オプション /xo と /xn を使用したときのパフォーマンスが最適化されました。ソース ファイル名に含まれた特殊文字に関連するバグと、ユーザーが誤ったコマンド ライン構文を入力した後のジャーナル ファイルの損傷が解決されました。| V4.1.0 | 2014-02-14
+| V2.5.0 | 大規模なコピーのシナリオでのパフォーマンスが最大化され、使いやすさの点でいくつかの重要な改善が加えられました。| V4.1.0 | 2014-02-14
+| V2.4.1 | インストール ウィザードでの宛先フォルダーの指定をサポートします。| V4.0.0 | 2014-02-14
+| V2.4.0 | Azure ファイル ストレージに対するファイルのアップロードとダウンロードをサポートします。| V4.0.0 | 2014-02-14
+| V2.3.0 | Geo 冗長ストレージ アカウントの読み取りアクセスをサポートします。| V3.0.3 | 2013-08-15
+| V2.2.2 | Azure ストレージ クライアント ライブラリのバージョン 3.0.3 を使用できるようにアップグレードされました。| V3.0.3 | 2013-08-15
+| V2.2.1 | 同一ストレージ アカウント内での大量のファイル コピーで発生していたパフォーマンスの問題が解決されました。| V2.1.0 |
+| V2.2 | BLOB 名に対して仮想ディレクトリの区切り記号を設定する操作がサポートされています。ジャーナル ファイルのパスの指定がサポートされています。| V2.1.0 |
+| V2.1 | 効果的な BLOB のアップロード、ダウンロード、およびコピーのために 20 個を超えるオプションが提供されています。| V2.0.5 |
 
 
 ## 次のステップ
@@ -961,6 +966,7 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 - [ファイル ストレージを使用して Azure に SMB ファイル共有を作成する](storage-dotnet-how-to-use-files.md)
 
 ### Azure Storage に関するブログの投稿:
+- [DML: Introducing azure storage data movement library preview (DML: Azure Storage Data Movement Library プレビューの概要)](https://azure.microsoft.com/JA-JP/blog/introducing-azure-storage-data-movement-library-preview-2/)
 - [AzCopy: Introducing synchronous copy and customized content type (AzCopy: 同期コピーとカスタマイズしたコンテンツの種類の概要)](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
 - [AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support (AzCopy: AzCopy 3.0 の一般公開とテーブルおよびファイルのサポートを伴う AzCopy 4.0 のプレビュー リリースのお知らせ)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
 - [AzCopy: Optimized for Large-Scale Copy Scenarios (AzCopy: 大量のコピーのシナリオ用の最適化)](http://go.microsoft.com/fwlink/?LinkId=507682)
@@ -970,6 +976,4 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 - [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
- 
-
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

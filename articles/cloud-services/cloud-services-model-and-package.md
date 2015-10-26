@@ -1,5 +1,5 @@
 <properties
-    pageTitle="Azure でのクラウド サービス モデルと パッケージ"
+    pageTitle="クラウド サービス モデルとパッケージ | Microsoft Azure"
     description="Azure でのクラウド サービス モデル (.csdef、.cscfg) と パッケージ (.cspkg) について説明します。"
     services="cloud-services"
     documentationCenter=""
@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/06/2015"
+    ms.date="10/09/2015"
     ms.author="adegeo"/>
 
 # クラウド サービス モデルとそのパッケージ化について
@@ -84,7 +84,7 @@ Azure でクラウド サービスが実行されている場合は、**ServiceC
 </ServiceDefinition>
 ```
 
-ここで使用する XML スキーマの詳細については、[サービスの定義スキーマ]][] をご覧ください。ここでは、いくつかの要素を簡単に説明します。
+ここで使用する XML スキーマの詳細については、[サービスの定義スキーマ][] をご覧ください。ここでは、いくつかの要素を簡単に説明します。
 
 >**サイト**には、IIS7 でホストされている Web サイトか Web アプリケーションの定義が含まれています。
 >
@@ -130,7 +130,7 @@ Azure でクラウド サービスが実行されている場合は、**ServiceC
 
 ここで使用する XML スキーマの詳細については、[サービスの構成スキーマ](https://msdn.microsoft.com/library/azure/ee758710.aspx)をご覧ください。ここでは、要素について簡単に説明します。
 
->**インスタンス**は、ロールの実行するインスタンスの数を設定します。アップグレード中にクラウド サービスが利用できなくなるのを避けるために、Web に接続されたロールの 2 つ以上のインスタンスをデプロイすることを推奨します。これにより、サービスに 2 つ以上のロール インスタンスがデプロイされている場合、インターネットに接続されたロールの 99.95% の外部接続を保証する [Azure コンピューティング サービス レベル アグリーメント (SLA)](http://azure.microsoft.com/support/legal/sla/) ガイドラインに従っていることになります。
+>**インスタンス**は、ロールの実行するインスタンスの数を設定します。アップグレード中にクラウド サービスが利用できなくなるのを避けるために、Web に接続されたロールの 2 つ以上のインスタンスをデプロイすることを推奨します。これにより、サービスに 2 つ以上のロール インスタンスがデプロイされている場合、インターネットに接続されたロールの 99.95% の外部接続を保証する [Azure Compute サービス レベル アグリーメント (SLA)](http://azure.microsoft.com/support/legal/sla/) ガイドラインに従っていることになります。
 
 >**ConfigurationSettings** は、ロールの実行中のインスタンスの設定を構成します。`<Setting>` 要素の名前は、サービス定義ファイルの設定の定義と一致する必要があります。
 
@@ -187,7 +187,7 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
 
 - **ロール インスタンスのサービス トポロジを変更する** トポロジの変更は、インスタンスが削除されている場合を除いて、実行中のインスタンスには影響ありません。残りのすべてのインスタンスは、通常はリサイクルの必要はありません。ただし、トポロジの変更に応じてロール インスタンスをリサイクルできます。
 
-- **証明書のサムプリントを変更する** ロール インスタンスがオフラインのときのみ、証明書を更新できます。ロール インスタンスがオンラインの間に、証明書が追加、削除、変更されると、Azure はインスタンスを正常にオフラインにし、証明書を更新し、変更の完了後にオンラインに戻します。
+- **証明書の拇印を変更する** ロール インスタンスがオフラインのときのみ、証明書を更新できます。ロール インスタンスがオンラインの間に、証明書が追加、削除、変更されると、Azure はインスタンスを正常にオフラインにし、証明書を更新し、変更の完了後にオンラインに戻します。
 
 ### サービス ランタイム イベントを使用して構成変更を処理する
 [Azure ランタイム ライブラリ](https://msdn.microsoft.com/library/azure/dn511024.aspx)には、ロールのインスタンスで実行されているコードから Azure 環境と対話するクラスを提供する [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.aspx) 名前空間が含まれています。[RoleEnvironment](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) クラスは、構成の変更の前後に発生する次のイベントを定義します。
@@ -225,7 +225,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
            /sites:[RoleName];[VirtualPath];[PhysicalPath]
            /out:[OutputFileName]
 
-アプリケーションに Web ロールとワーカー ロールの両方が含まれている場合は、次のコマンドを使用します。
+アプリケーションに Web ロールと worker ロールの両方が含まれている場合は、次のコマンドを使用します。
 
     cspack [DirectoryName][ServiceDefinition]
            /out:[OutputFileName]
@@ -251,11 +251,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 クラウド サービス パッケージを作成しているのですが...
 
-<!--
-* [Configure Sizes for Cloud Services](!!!!!https://msdn.microsoft.com/library/azure/ee814754.aspx)  
-* [Configure Local Storage Resources](!!!!!https://azure.microsoft.com/documentation/articles/cloud-services-configure-local-storage-resources/)
--->
-
+* [ローカル ストレージ リソースを構成する](cloud-services-configure-local-storage-resources.md)
 * [クラウド サービスのインスタンスのリモート デスクトップのセットアップ][remotedesktop]
 * [クラウド サービス プロジェクトのデプロイ][deploy]
 
@@ -269,9 +265,9 @@ Visual Studio を使用しているのですが...
 
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop.md
-[vs_remote]: https://msdn.microsoft.com/ja-JP/library/gg443832.aspx
-[vs_deploy]: https://msdn.microsoft.com/ja-JP/library/ee460772.aspx
+[vs_remote]: https://msdn.microsoft.com/library/gg443832.aspx
+[vs_deploy]: https://msdn.microsoft.com/library/ee460772.aspx
 [vs_reconfigure]: https://msdn.microsoft.com/library/ee405486.aspx
-[vs_create]: https://msdn.microsoft.com/ja-JP/library/ee405487.aspx
+[vs_create]: https://msdn.microsoft.com/library/ee405487.aspx
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

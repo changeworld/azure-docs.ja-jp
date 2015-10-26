@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure Data Catalog - Data Catalog とは"
-	description="機能および対処するように設計されている問題など、Microsoft Azure Data Catalog の概要について説明します。Azure Data Catalog は、アナリストからデータ サイエンティスト、開発者まで、すべてのユーザーによるデータ ソースの登録、検出、理解、および使用を可能にする機能を備えています。"
-	services="data-catalog"
-	documentationCenter=""
-	authors="steelanddata"
-	manager="NA"
-	editor=""
-	tags=""/>
+   description="機能および対処するように設計されている問題など、Microsoft Azure Data Catalog の概要について説明します。Azure Data Catalog は、アナリストからデータ サイエンティスト、開発者まで、すべてのユーザーによるデータ ソースの登録、検出、理解、および使用を可能にする機能を備えています。"
+   services="data-catalog"
+   documentationCenter=""
+   authors="steelanddata"
+   manager="NA"
+   editor=""
+   tags=""/>
 <tags
    ms.service="data-catalog"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-catalog"
-	ms.date="08/21/2015"
-	ms.author="maroche"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-catalog"
+   ms.date="08/21/2015"
+   ms.author="maroche"/>
 
 # Azure Data Catalog とは何ですか
 
@@ -122,4 +122,4 @@ Microsoft **Azure Data Catalog** は、完全に管理されたクラウド サ�
 
 > [AZURE.NOTE]Azure Data Catalog のプレビューでは、直接サポートされているのは Microsoft Excel と SQL Server Reporting Services レポート マネージャーのみです。これらは **[開く]** メニューで使用できます。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

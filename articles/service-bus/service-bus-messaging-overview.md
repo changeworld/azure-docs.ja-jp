@@ -56,4 +56,4 @@ Service Bus メッセージングの詳細については、次のトピック�
 - [How to use Service Bus Topics (Service Bus トピックの利用方法)](service-bus-dotnet-how-to-use-topics-subscriptions.md)
  
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

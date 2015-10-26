@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Mahout と Hadoop を使用してリコメンデーションを生成する | Microsoft Azure"
-	description="Apache Mahout 機械学習ライブラリを使用して HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。"
+	pageTitle="Mahout と Windows ベースの HDInsight を使用したリコメンデーションの生成 | Microsoft Azure"
+	description="Apache Mahout 機械学習ライブラリを使用して Windows ベースの HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/23/2015"
+	ms.date="10/09/2015"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する
@@ -145,7 +145,7 @@ Mahout ジョブは出力を STDOUT に返しません。代わりに、指定�
 	3	[284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
 	4	[690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-最初の列は `userID` です。"[" と "]" に含まれる値は `movieId`:`recommendationScore` です。
+最初の列は `userID` です。'[' と ']' の間に入る値は `movieId`:`recommendationScore` です。
 
 ###出力を表示する
 
@@ -422,4 +422,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

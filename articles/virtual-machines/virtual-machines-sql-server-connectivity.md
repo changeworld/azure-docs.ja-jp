@@ -18,7 +18,8 @@
 
 # Azure での SQL Server 仮想マシンへの接続
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの使用について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
  
 ## 概要
 
@@ -74,7 +75,7 @@ DNS が構成済みであることを前提として、接続文字列で SQL Se
 
 ## Azure VM で SQL Server への接続を構成する手順
 
-[AZURE.INCLUDE [VM で SQL Server に接続する](../../includes/virtual-machines-sql-server-connection-steps.md)]
+[AZURE.INCLUDE [VM 内で SQL Server に接続する](../../includes/virtual-machines-sql-server-connection-steps.md)]
 
 ## 次のステップ
 
@@ -86,4 +87,4 @@ Azure の仮想マシンで実行されている SQL Server のセキュリテ�
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

@@ -36,7 +36,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ## Application Insights によるアプリの監視
 
-まだ試していないなら、今からはじめましょう。Application Insights では、さまざまなプラットフォーム (Windows、iOS、Android、J2EE など) のすべてのデバイスまたは Web アプリを監視できます。[概要](app-insights-get-started.md)。
+まだ試していないなら、今からはじめましょう。Application Insights では、さまざまなプラットフォーム (Windows、iOS、Android、J2EE など) のすべてのデバイスまたは Web アプリを監視できます。[使用を開始するには、こちらを参照してください](app-insights-overview.md)。
 
 ## Azure でのストレージの作成
 
@@ -56,7 +56,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
     ![ストレージで、[設定]、[キー] の順に開き、プライマリ アクセス キーのコピーを取ります](./media/app-insights-export-power-bi/045.png)
 
-## Azure Storage への連続エクスポートの開始
+## Azure ストレージへの連続エクスポートの開始
 
 [連続エクスポート](app-insights-export-telemetry.md)は、Application Insights から Azure のストレージにデータを移動します。
 
@@ -111,7 +111,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ![](./media/app-insights-export-power-bi/120.png)
 
-ここで、Storage アカウントからのプライマリ アクセス キーが必要になります。これは前にメモしておいたものです。Storage アカウント キーとしてこれを設定します。
+ここで、ストレージ アカウントからのプライマリ アクセス キーが必要になります。これは前にメモしておいたものです。ストレージ アカウント キーとしてこれを設定します。
 
 ![](./media/app-insights-export-power-bi/130.png)
 
@@ -203,7 +203,7 @@ Noam Ben Zeev で、この記事で説明する内容を確認できます。
 
 ``` 
 
-* このクエリはメトリック製品利用統計情報をドリルダウンし、イベント時刻とメトリック値を取得します。メトリック値は配列内に置かれます。そのため、OUTER APPLY GetElements パターンを使用し、行を抽出します。「myMetric」がこのケースのメトリックの名前になります。 
+* このクエリはメトリックス テレメトリをドリルダウンし、イベント時刻とメトリック値を取得します。メトリック値は配列内に置かれます。そのため、OUTER APPLY GetElements パターンを使用し、行を抽出します。「myMetric」がこのケースのメトリックの名前になります。 
 
 
 
@@ -239,4 +239,4 @@ Noam Ben Zeev で、Power BI にエクスポートする方法を確認できま
 * [Application Insights](app-insights-overview.md)
 * [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

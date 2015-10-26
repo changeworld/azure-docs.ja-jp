@@ -30,4 +30,4 @@ Cloud Services は監視も提供します。Azure Virtual Machines と同様に
 
 PaaS という Cloud Services の本質には、他の含意もあります。最も重要なことの 1 つは、このテクノロジを基盤に構築されるアプリケーションは、Web または Worker ロール インスタンスでエラーが発生したときに正しく実行するように記述することが必要です。これを実現するには、Cloud Services のアプリケーションがそれ自体の VM のファイル システムで状態を維持してはなりません。Azure Virtual Machines で作成された VM と異なり、Cloud Services VM への書き込みは永続的ではありません。その点で Virtual Machines のデータ ディスクとは大きく異なります。Cloud Services アプリケーションはすべての状態を SQL Database、BLOB、テーブルか、その他の外部ストレージに明示的に書き込む必要があります。この方法でアプリケーションを構築すると、スケーリングしやすく、耐障害性が備わります。この 2 つは Cloud Services の重要なゴールです。
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

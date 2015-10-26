@@ -197,4 +197,4 @@
 [001]: ./media/active-directory-passwords-faq/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

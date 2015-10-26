@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Google 認証用の登録 | Microsoft Azure"
-	description="Google を使用して Azure Mobile Services で認証できるようにアプリケーションを登録する方法について説明します。"
-	services="mobile-services"
-	documentationCenter="android"
-	authors="ggailey777"
-	manager="dwrede"
+	pageTitle="Google 認証用の登録 | Microsoft Azure" 
+	description="Google を使用して Azure Mobile Services で認証できるようにアプリケーションを登録する方法について説明します。" 
+	services="mobile-services" 
+	documentationCenter="android" 
+	authors="ggailey777" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="08/27/2015"
+	ms.service="mobile-services" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-android" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="08/27/2015" 
 	ms.author="glenga"/>
 
 # Mobile Services での Google ログイン用のアプリケーションの登録
@@ -56,4 +56,4 @@
 [Azure Management Portal]: https://manage.windowsazure.com/
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

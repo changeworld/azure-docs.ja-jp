@@ -72,4 +72,4 @@ var ev = GetEvent<IGameEvents>();
 ev.GameScoreUpdated(Id.GetGuidId(), State.Status.Score);
 ```
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

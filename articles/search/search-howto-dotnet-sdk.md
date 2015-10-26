@@ -13,7 +13,7 @@
    ms.workload="search"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.date="10/06/2015"
+   ms.date="10/07/2015"
    ms.author="brjohnst"/>
 
 # .NET アプリケーションから Azure Search を使用する方法 #
@@ -337,7 +337,7 @@ Azure Search .NET SDK が `Hotel` のようなユーザー定義クラスのイ�
 
 `Hotel` クラスに関する 2 番目の重要な点は、パブリック プロパティのデータ型です。これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。`bool?` と `Edm.Boolean`、`DateTimeOffset?` と `Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。型のマッピングの具体的なルールについては、[MSDN](https://msdn.microsoft.com/library/azure/dn931291.aspx) で `Documents.Get` メソッドを参照してください。
  
-> [AZURE.NOTE]独自のモデル クラスを設計して Azure Search インデックスにマップする場合は、`bool` ではなく null を許容する `bool` や `int` などの値型のプロパティ (`bool?` など) を宣言してください。Azure Search のすべてのプリミティブ フィールド型は null を許容しているため必要です。null を許容しない型を使用すると、`0`や `false` などの既定値のインデックスを作成するときに予期しない結果が発生することがあります。
+> [AZURE.NOTE]Azure Search インデックスにマッピングする独自のモデル クラスを設計するときは、`bool` や `int` など値型のプロパティを null 許容型として宣言してください (たとえば、`bool` ではなく `bool?` を使用する)。Azure Search のすべてのプリミティブ フィールド型は null を許容しているため必要です。null を許容しない型を使用すると、`0` や `false` などの既定値のインデックスを作成するときに予期しない結果が発生します。特にそのような既定値は、インデックスの作成時に null に変換されます。今後リリースされる SDK では、この点が改善され、非 null 許容型を使用すると例外がスローされるようになります。
 
 ドキュメントとして独自のクラスを使用するこの機能は、両方向で動作します。また、次のセクションで見るように、検索結果を取得し、SDK で自動的に任意の型に逆シリアル化することもできます。
 
@@ -627,4 +627,4 @@ Hotel.cs:
     }
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

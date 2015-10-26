@@ -1,21 +1,21 @@
 <properties
  pageTitle="HDInsight の WebHCat エラーの説明と解決策"
-	description="HDInsight で WebHCat から返される一般的なエラーの原因とその解決策について説明します。"
-	services="hdinsight"
-	documentationCenter=""
-	authors="Blackmist"
-	manager="paulettm"
-	editor="cgronlun"
-	tags="azure-portal"/>
+ description="HDInsight で WebHCat から返される一般的なエラーの原因とその解決策について説明します。"
+ services="hdinsight"
+ documentationCenter=""
+ authors="Blackmist"
+ manager="paulettm"
+ editor="cgronlun"
+ tags="azure-portal"/>
 
 <tags
  ms.service="hdinsight"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="big-data"
-	ms.date="09/02/2015"
-	ms.author="larryfr"/>
+ ms.devlang="na"
+ ms.topic="article"
+ ms.tgt_pltfrm="na"
+ ms.workload="big-data"
+ ms.date="09/02/2015"
+ ms.author="larryfr"/>
 
 #HDInsight で WebHCat (Templeton) から受信したエラーの説明と解決策
 
@@ -86,4 +86,4 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 [max-age-ms]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

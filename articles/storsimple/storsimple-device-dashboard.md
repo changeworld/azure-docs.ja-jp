@@ -100,4 +100,4 @@ StorSimple デバイスでチャレンジ ハンドシェイク認証プロト�
 - [StorSimple Manager サービスのダッシュボードの詳細](storsimple-service-dashboard.md)
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

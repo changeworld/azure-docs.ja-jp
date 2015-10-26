@@ -1,20 +1,20 @@
 <properties 
-   pageTitle=".NET SDK を使用した DNS とレコード セットの操作の自動化 |Microsoft Azure"
-	description=".NET SDK を使用した Azure DNS のすべての DNS 操作の自動化"
-	services="dns"
-	documentationCenter="na"
-	authors="joaoma"
-	manager="adinah"
-	editor=""/>
+   pageTitle=".NET SDK を使用した DNS とレコード セットの操作の自動化 |Microsoft Azure" 
+   description=".NET SDK を使用した Azure DNS のすべての DNS 操作の自動化" 
+   services="dns" 
+   documentationCenter="na" 
+   authors="joaoma" 
+   manager="adinah" 
+   editor=""/>
 
 <tags
    ms.service="dns"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/20/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services" 
+   ms.date="08/20/2015"
+   ms.author="joaoma"/>
 # .NET SDK を使用した DNS ゾーンとレコード セットの作成
 DNS ゾーン、レコードセット、レコードを作成、削除、更新する操作は、DNS SDK と .NET DNS 管理ライブラリを使用して自動化できます。Visual Studio プロジェクト全体は、[こちら](http://download.microsoft.com/download/2/A/C/2AC64449-1747-49E9-B875-C71827890126/AzureDnsSDKExample_2015_05_05.zip)から入手できます。
 
@@ -108,4 +108,4 @@ Azure DNS では、[Etag](dns-getstarted-create-dnszone.md#Etags-and-tags) と�
 
 [Visual Studio SDK のサンプル プロジェクト](http://download.microsoft.com/download/2/A/C/2AC64449-1747-49E9-B875-C71827890126/AzureDnsSDKExample_2015_05_05.zip)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

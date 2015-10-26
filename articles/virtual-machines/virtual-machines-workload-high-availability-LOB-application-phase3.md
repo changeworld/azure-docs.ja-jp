@@ -19,7 +19,8 @@
 
 # 基幹業務アプリケーションのワークロード フェーズ 3: SQL Server インフラストラクチャを構成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャーのデプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
 
 高可用な基幹業務アプリケーションを Azure インフラストラクチャ サービスにデプロイするこのフェーズでは、SQL Server を実行する 2 台のコンピューターとクラスター マジョリティ ノード コンピューターを構成し、Windows Server クラスターに統合します。
 
@@ -213,7 +214,7 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 
 	Install-WindowsFeature Failover-Clustering -IncludeManagementTools
 
-現在、Azure の DHCP によって RFC に準拠していない動作が発生するため、Windows Server フェールオーバー クラスタリング (WSFC) クラスターの作成に失敗する可能性があります。詳細については、「Azure Virtual Machines 内の SQL Server の高可用性と災害復旧」で、「Azure ネットワークでの WSFC クラスターの動作」を検索してください。ただし、回避策があります。次の手順に従って、クラスターを作成します。
+現在、Azure の DHCP によって RFC に準拠していない動作が発生するため、Windows Server フェールオーバー クラスタリング (WSFC) クラスターの作成に失敗する可能性があります。詳細については、「Azure Virtual Machines 内の SQL Server の高可用性と障害復旧」で、「Azure ネットワークでの WSFC クラスターの動作」を検索してください。ただし、回避策があります。次の手順に従って、クラスターを作成します。
 
 1.	[フェーズ 2](virtual-machines-workload-high-availability-LOB-application-phase2.md) で作成した sqladmin アカウントを使用して、プライマリ SQL Server 仮想マシンにログオンします。
 2.	スタート画面で「**フェールオーバー**」と入力し、**[フェールオーバー クラスター マネージャー]** をクリックします。
@@ -274,4 +275,4 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 [Azure インフラストラクチャ サービスのワークロード: SharePoint Server 2013 ファーム](virtual-machines-workload-intranet-sharepoint-farm.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

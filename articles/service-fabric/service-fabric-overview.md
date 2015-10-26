@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Service Fabric の概要 | Microsoft Azure"
-	description="アプリケーションがマイクロサービスで構成されている Service Fabric を紹介します。Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="msfussell"
-	manager="timlt"
-	editor="masnider"/>
+   pageTitle="Service Fabric の概要 | Microsoft Azure" 
+   description="アプリケーションがマイクロサービスで構成されている Service Fabric を紹介します。Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。" 
+   services="service-fabric" 
+   documentationCenter=".net" 
+   authors="msfussell" 
+   manager="timlt" 
+   editor="masnider"/>
 
 <tags
    ms.service="service-fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/25/2015"
-	ms.author="mfussell"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA" 
+   ms.date="08/25/2015"
+   ms.author="mfussell"/>
 
 # Service Fabric の概要
 Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題に対処します。Service Fabric を使用することで、開発者と管理者は複雑なインフラストラクチャの問題を解決する必要がなくなり、代わりにミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。こうしたワークロードは、スケーラブルで信頼性が高く管理しやすいからです。Service Fabric は、これらのエンタープライズ クラスの Tier-1 クラウド スケール サービスを構築して管理するための次世代のミドルウェア プラットフォームを表します。
@@ -98,4 +98,4 @@ Service Fabric を使用すると、次の操作を実行できます。
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

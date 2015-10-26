@@ -233,4 +233,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -85,4 +85,4 @@ API の詳細については、「[File コネクタの API の定義]」を参�
 [File コネクタの API の定義]: https://msdn.microsoft.com/library/dn936296.aspx
 [ハイブリッド接続マネージャーの使用]: app-service-logic-hybrid-connection-manager.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

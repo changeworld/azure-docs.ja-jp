@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="10/02/2015" 
+	ms.date="10/08/2015" 
 	ms.author="stefsch"/>
 
 # App Service 環境を使用した geo 分散スケール
@@ -43,6 +43,7 @@ App Service 環境は、水平方向のスケールアウトに最適なプラ�
 - **アプリ フットプリントのスケーリングに関する戦略:** アプリケーションのフットプリントは単一リージョン内の複数の App Service 環境に分散されるのか、 複数のリージョンなのか、 両方のアプローチの最適な組み合わせなのか。 この決定は、顧客のトラフィックが発生する場所に加えて、アプリをサポートするバックエンド インフラストラクチャの他の要素のスケーラビリティに関する期待事項に基づく必要があります。たとえば、完全にステートレスなアプリケーションでは、各 Azure リージョンで複数の App Service 環境を組み合わせ、さらに複数の Azure リージョンにデプロイされた App Service 環境を掛け合わせることで、大規模なスケーリングを実施できます。選択できるパブリック Azure リージョンは 15 以上あるため、顧客はスケーラビリティのきわめて高いアプリケーション フットプリントを世界規模で構築できます。この記事のサンプル アプリでは、単一の Azure リージョン (米国中南部) に 3 つの App Service 環境が作成されています。
 - **App Service 環境の命名規則:** 各 App Service 環境に一意の名前が必要です。1 つや 2 つではなく数の多い App Service 環境では、各 App Service 環境を識別しやすい命名規則があると便利です。サンプル アプリでは、シンプルな命名規則が使用されています。3 つの App Service 環境の名前は *fe1ase*、*fe2ase*、*fe3ase* です。
 - **アプリの命名規則:** アプリのインスタンスが複数デプロイされるため、デプロイされたアプリの各インスタンスに名前が必要です。App Service 環境のあまり知られていない便利な特長の 1 つですが、同じアプリ名を複数の App Service 環境で使用できます。App Service 環境ごとに一意のドメイン サフィックスがあるため、開発者は各環境でまったく同じアプリ名を再利用できます。たとえば、開発者は、*myapp.foo1.p.azurewebsites.net*、*myapp.foo2.p.azurewebsites.net*、*myapp.foo3.p.azurewebsites.net* のようなアプリ名を設定できます。ただし、サンプル アプリでは、各アプリ インスタンスにも一意の名前を設定しています。使用されているアプリ インスタンス名は *webfrontend1*、*webfrontend2*、*webfrontend3* です。
+
 
 ## Traffic Manager プロファイルを設定する ##
 アプリの複数のインスタンスを複数の App Service 環境にデプロイしたら、個々のアプリ インスタンスを Traffic Manager に登録できます。サンプル アプリでは、顧客を次のデプロイ済みアプリ インスタンスのいずれかにルーティングするための *scalable-ase-demo.trafficmanager.net* 用 Traffic Manager プロファイルが必要です。
@@ -115,7 +116,7 @@ Powershell を使用した [Azure リソース マネージャー (ARM) によ�
 <!-- LINKS -->
 [AzureTrafficManagerProfile]: https://azure.microsoft.com/documentation/articles/traffic-manager-manage-profiles/
 [ARMTrafficManager]: https://azure.microsoft.com/documentation/articles/traffic-manager-powershell-arm/
-[RegisterCustomDomain]: https://azure.microsoft.com/ja-JP/documentation/articles/web-sites-custom-domain-name/
+[RegisterCustomDomain]: https://azure.microsoft.com/ja-jp/documentation/articles/web-sites-custom-domain-name/
 
 
 <!-- IMAGES -->
@@ -124,4 +125,4 @@ Powershell を使用した [Azure リソース マネージャー (ARM) によ�
 [DNSLookup]: ./media/app-service-app-service-environment-geo-distributed-scale/DNSLookup-1.png
 [CustomDomain]: ./media/app-service-app-service-environment-geo-distributed-scale/CustomDomain-1.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -31,7 +31,7 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
-	![diagram of cloud-only configuration](media/hdinsight-extend-hadoop-virtual-network/cloud-only.png)
+	![クラウドのみの構成の図](media/hdinsight-extend-hadoop-virtual-network/cloud-only.png)
 
 	Virtual Network を使用して Azure サービスと Azure HDInsight を連携させることで、以下のシナリオが実現できるようになります。
 
@@ -45,11 +45,11 @@ Azure Virtual Network では、Hadoop ソリューションを拡張して、SQL
 
 	サイト間構成では、ハードウェア VPN を使用するか、ルーティングとリモート アクセス サービスを使用して、データセンターから複数のリソースを Azure 仮想ネットワークに接続できます。
 
-	![diagram of site-to-site configuration](media/hdinsight-extend-hadoop-virtual-network/site-to-site.png)
+	![サイト間構成の図](media/hdinsight-extend-hadoop-virtual-network/site-to-site.png)
 
 	ポイント対サイト構成では、ソフトウェア VPN を使用して、特定のリソースを Azure の仮想ネットワークに接続できます。
 
-	![diagram of point-to-site configuration](media/hdinsight-extend-hadoop-virtual-network/point-to-site.png)
+	![ポイント対サイト構成の図](media/hdinsight-extend-hadoop-virtual-network/point-to-site.png)
 
 	Virtual Network を使用してクラウドとデータ センターをリンクすることで、クラウドのみの構成と同様のシナリオを実現できます。ただし、クラウド内のリソースの操作に制限されるのではなく、データ センターのリソースも使用できます。
 
@@ -177,4 +177,4 @@ HDInsight からサービスへのアクセスで問題が発生した場合は�
 
 Azure の仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

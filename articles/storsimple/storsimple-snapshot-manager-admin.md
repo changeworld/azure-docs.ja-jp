@@ -1,19 +1,19 @@
 <properties 
    pageTitle="StorSimple Snapshot Manager 管理 | Microsoft Azure"
-	description="StorSimple Snapshot Manager ソリューションの管理タスクとワークフローの概要とこれらに関する詳細情報へのリンクを示します。"
-	services="storsimple"
-	documentationCenter="NA"
-	authors="SharS"
-	manager="carolz"
-	editor=""/>
+   description="StorSimple Snapshot Manager ソリューションの管理タスクとワークフローの概要とこれらに関する詳細情報へのリンクを示します。"
+   services="storsimple"
+   documentationCenter="NA"
+   authors="SharS"
+   manager="carolz"
+   editor="" />
 <tags 
    ms.service="storsimple"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="TBD"
-	ms.date="08/28/2015"
-	ms.author="v-sharos"/>
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="08/28/2015"
+   ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理
 
@@ -60,4 +60,4 @@ StorSimple Snapshot Manager を使用すると、現在のバックアップ ジ
 
 [StorSimple Snapshot Manager のダウンロード](https://www.microsoft.com/download/details.aspx?id=44220)。
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

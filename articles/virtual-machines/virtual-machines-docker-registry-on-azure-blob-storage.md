@@ -19,7 +19,8 @@
 
 # Azure への独自のプライベート Docker Registry のデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事は、リソース マネージャーのデプロイメント モデルまたはクラシック デプロイメント モデルを使用して作成した VM に適用されます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 
 このドキュメントでは、Docker プライベート レジストリの概要、および Azure BLOB ストレージを使用して Microsoft Azure の Docker プライベート レジストリに Docker Registry 2.0 コンテナー イメージをデプロイする方法について説明します。
@@ -95,4 +96,4 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 [registry-config]: http://docs.docker.com/registry/configuration/
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

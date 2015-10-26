@@ -1,5 +1,5 @@
 <properties
-	pageTitle="仮想マシンで Oracle Data Guard を構成する |Microsoft Azure"
+	pageTitle="VM で Oracle Data Guard を構成する |Microsoft Azure"
 	description="高可用性と障害復旧のために Oracle Data Guard を Azure 仮想マシンにセットアップして実装するチュートリアルの手順。"
 	services="virtual-machines"
 	authors="bbenz"
@@ -16,19 +16,20 @@
 
 #Azure 用の Oracle データ保護の構成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用して作成されたリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 このチュートリアルでは、高可用性と障害復旧のための Azure 仮想マシン環境に Oracle Data Guard をセットアップ、実装する方法について説明します。このチュートリアルでは、RAC 以外の Oracle データベースの 1 ウェイレプリケーションの方法について説明します。
 
-Oracle Data Guard は Oracle データベースのデータの保護および障害復旧をサポートします。シンプルで高パフォーマンスな、障害回復、データの保護、および Oracle データベース全体の高可用性のすぐに使えるソリューションです。
+Oracle Data Guard は Oracle データベースのデータの保護および障害復旧をサポートします。シンプルで高パフォーマンスな、障害復旧、データの保護、および Oracle データベース全体の高可用性のすぐに使えるソリューションです。
 
 このチュートリアルでは、Oracle データベースの高可用性と障害復旧の概念に関する理論的かつ実用的な知識があることを前提としています。詳細については[Oracle の web サイト](http://www.oracle.com/technetwork/database/features/availability/index.html) と [Oracle のデータ保護の概念と管理に関するガイド](http://docs.oracle.com/cd/E11882_01/server.112/e17022/create_ps.htm)を参照してください。
 
-また、このチュートリアルでは、次の前提条件が既に実行されていることを前提としています。
+また、このチュートリアルでは、次の前提条件が既に実装されていることを前提としています。
 
-- 「[Oracle 仮想マシン イメージ - 他の考慮事項](virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images.md)」に関するトピックの「高可用性と障害復旧」セクションを既に確認していること。Azure では、スタンドアロンの Oracle Database インスタンスをサポートしていますが、Oracle Real Application Cluster (Oracle RAC) をサポートしていないことに注意してください。
+- 「[Oracle 仮想マシン イメージ - 他の考慮事項](virtual-machines-miscellaneous-considerations-oracle-virtual-machine-images.md)」に関するトピックの「高可用性と障害復旧」セクションを既に確認していること。Azure では、スタンドアロンの Oracle Database インスタンスをサポートしていますが、Oracle Real Application Cluster (Oracle RAC) をサポートしていないことにご注意ください。
 
-- 同じプラットフォームで提供される Windows Server 上の Oracle Enterprise Edition のイメージを使用して、Azure に 2 つの仮想マシン (VM) を作成している。詳細については、「[Creating an Oracle Database 12c Virtual Machine in Azure (Azure での Oracle Database 12c 仮想マシンの作成)](virtual-machines-creating-oracle-webLogic-server-12c-virtual-machine.md)」と「[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)」をご覧ください仮想マシンが永続的なプライベート IP アドレスを介して相互にアクセスできるように、[同じクラウド サービス](virtual-machines-load-balance.md)にあり、同じ [Virtual Network](azure.microsoft.com/documentation/services/virtual-network/) にあることを確認します。さらに、VM を同じ[可用性セット](virtual-machines-manage-availability.md)に配置することにより、Azure は個別のフォールト ドメインとアップグレード ドメインに配置できるようになります。Oracle Data Guard は Oracle Database Enterprise Edition でのみ使用可能となっていますのでご注意ください。それぞれのマシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。プラットフォームが提供する VM サイズの最新情報については、[「Azure の仮想マシンおよびクラウド サービスのサイズ」](http://msdn.microsoft.com/library/dn197896.aspx)を参照してください。VM に追加のディスク ボリュームが必要な場合は、追加のディスクをアタッチすることができます。詳細については、「[How to Attach a Data Disk to a Virtual Machine(データディスクを仮想マシンに追加する方法)](storage-windows-attach-disk.md)」を参照してください。
+- 同じプラットフォームで提供される Windows Server 上の Oracle Enterprise Edition のイメージを使用して、Azure に 2 つの仮想マシン (VM) を作成している。詳細については、「[Creating an Oracle Database 12c Virtual Machine in Azure (Azure での Oracle Database 12c 仮想マシンの作成)](virtual-machines-creating-oracle-webLogic-server-12c-virtual-machine.md)」と「[Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)」をご覧ください。仮想マシンが永続的なプライベート IP アドレスを介して相互にアクセスできるように、[同じクラウド サービス](virtual-machines-load-balance.md)にあり、同じ [Virtual Network](azure.microsoft.com/documentation/services/virtual-network/) にあることを確認します。さらに、VM を同じ[可用性セット](virtual-machines-manage-availability.md)に配置することにより、Azure は個別のフォールト ドメインとアップグレード ドメインに配置できるようになります。Oracle Data Guard は Oracle Database Enterprise Edition でのみ使用可能となっていますのでご注意ください。それぞれのマシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。プラットフォームが提供する VM サイズの最新情報については、[「Azure の VM およびクラウド サービスのサイズ」](http://msdn.microsoft.com/library/dn197896.aspx)を参照してください。VM に追加のディスク ボリュームが必要な場合は、追加のディスクをアタッチすることができます。詳細については、「[How to Attach a Data Disk to a Virtual Machine(データディスクを仮想マシンに追加する方法)](storage-windows-attach-disk.md)」を参照してください。
 
 - Azure ポータルでは、仮想マシンの名前は、プライマリ VM が「Machine1」として、スタンバイ VM が「Machine2」として設定されています。
 
@@ -135,7 +136,7 @@ Oracle データベースおよび Oracle Data Guard の今後のリリースで
 
 >[AZURE.IMPORTANT]Oracle Database 12 c を使用する場合は、Oracle Data Guard の管理に使用できる新しいユーザー**SYSDG**があります。詳細については、[Oracle Database 12c Release の変更](http://docs.oracle.com/cd/E16655_01/server.121/e10638/release_changes.htm)を参照してください。
 
-さらに、ORACLE\_HOME 環境が既に Machine1 で定義されていることを確認します。そうでない場合は「環境変数」ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル[**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。**システム変数**で**新規**ボタンをクリックして環境変数を設定します。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開きます。
+さらに、ORACLE\_HOME 環境が既に Machine1 で定義されていることを確認します。そうでない場合は「環境変数」ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。**システム変数**で**新規**ボタンをクリックして環境変数を設定します。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開きます。
 
 C:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\database など Oracle\_Home ディレクトリに切り替えるには、次のステートメントを実行します。
 
@@ -314,7 +315,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 
 まず、Azure ポータルを使用して Machine2 にリモート デスクトップをポイントする必要があります。
 
-次に、スタンバイ サーバー (Machine2) 上には C:\\<YourLocalFolder>\\TEST などのスタンバイ データベースのために必要なすべてのフォルダーを作成します。このチュートリアルに従いながら、controlfile、datafiles, redologfiles、udump、bdump cdump ファイルなどのすべての必要なファイルを保持するために、ファイル構造が Machine1 上のフォルダー構造と一致していることを確認します。さらに、Machine2 で ORACLE\_HOME および ORACLE\_BASE 環境変数を定義します。そうでない場合は環境変数ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル[**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。**システム変数**で**新規**ボタンをクリックして環境変数を設定します。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開いて変更を確認します。
+次に、スタンバイ サーバー (Machine2) 上には C:\\<YourLocalFolder>\\TEST などのスタンバイ データベースのために必要なすべてのフォルダーを作成します。このチュートリアルに従いながら、controlfile、datafiles, redologfiles、udump、bdump cdump ファイルなどのすべての必要なファイルを保持するために、ファイル構造が Machine1 上のフォルダー構造と一致していることを確認します。さらに、Machine2 で ORACLE\_HOME および ORACLE\_BASE 環境変数を定義します。そうでない場合は環境変数ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。**システム変数**で**新規**ボタンをクリックして環境変数を設定します。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開いて変更を確認します。
 
 次に、次の手順に従います。
 
@@ -524,7 +525,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 ##RMAN を使用して、データベースのクローンとスタンバイ データベースを作成
 Recovery Manager ユーティリティ (RMAN) を使用して、物理スタンバイ データベースを作成するために、プライマリ データベースの任意のバックアップ コピーを取ることができます。
 
-リモートデスクトップからスタンバイ仮想マシン (MACHINE2) へ、および TARGET (プライマリデータベース、 Machine1) および AUXILLARY (スタンバイデータベース, Machine2) インスタンスの両方に完全な接続文字列を指定することで RMAN ユーティリティを実行します。
+リモートデスクトップからスタンバイ仮想マシン (MACHINE2) へ、および TARGET (プライマリ データベース、 Machine1) および AUXILLARY (スタンバイ データベース, Machine2) インスタンスの両方に完全な接続文字列を指定することで RMAN ユーティリティを実行します。
 
 >[AZURE.IMPORTANT]スタンバイ サーバーマシンにはデータベースがまだないため、オペレーティング システムの認証は使用しないでください。
 
@@ -624,4 +625,4 @@ SQL * Plus コマンド プロンプト ウィンドウを開き、プライマ�
 ##その他のリソース
 [Azure の Oracle 仮想マシン イメージ](virtual-machines-oracle-list-oracle-virtual-machine-images.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

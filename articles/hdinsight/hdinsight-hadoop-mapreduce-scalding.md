@@ -290,4 +290,4 @@ Scalding は、Hadoop MapReduce ジョブの作成を容易にする Scala ラ�
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

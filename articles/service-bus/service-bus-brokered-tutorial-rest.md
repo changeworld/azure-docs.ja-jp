@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Service Bus 仲介型メッセージングの REST チュートリアル | Microsoft Azure"
-   description="仲介型メッセージングの REST チュートリアル。"
+   pageTitle="Service Bus ブローカー メッセージングの REST チュートリアル | Microsoft Azure"
+   description="ブローカー メッセージングの REST チュートリアル。"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
@@ -15,13 +15,13 @@
    ms.date="09/15/2015"
    ms.author="sethm" />
 
-# Service Bus 仲介型メッセージングの REST チュートリアル
+# Service Bus ブローカー メッセージングの REST チュートリアル
 
 このチュートリアルでは、基本的な REST ベースの Azure Service Bus のキューおよびトピック/サブスクリプション サービスを作成する方法を示します。
 
 ## 手順 1: 名前空間を作成する
 
-最初の手順では、サービス名前空間を作成し、[Shared Access Signature](service-bus-sas-overview.md) (SAS) キーを取得します。サービス名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、SAS キーが生成されます。サービス名前空間と共有秘密キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
+最初の手順では、サービス名前空間を作成し、[Shared Access Signature](service-bus-sas-overview.md) (SAS) キーを取得します。サービス名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、SAS キーが生成されます。サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
 ### 名前空間を作成し、共有シークレット キーを取得する
 
@@ -180,7 +180,7 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 
 次の手順では、REST スタイルの HTTP PUT コマンドを使用してキューを作成するメソッドを作成します。
 
-1 つ前の手順で追加した `GetToken()` のコードの直後に、次のコードを貼り付けます。
+1 つ前の手順で追加した `GetSASToken()` のコードの直後に、次のコードを貼り付けます。
 
 ```
 // Uses HTTP PUT to create the queueprivatestaticstring CreateQueue(string queueName, string token)
@@ -221,14 +221,14 @@ private static string GetSASToken(string SASKeyName, string SASKeyValue)
 	}
 	```
 
-1. 仲介型メッセージの標準プロパティが `BrokerProperties` HTTP ヘッダーに配置されます。ブローカーのプロパティは、JSON 形式でシリアル化する必要があります。**TimeToLive** の値として 30 秒を指定し、メッセージ ラベル "M1" をメッセージに追加するには、前の例で示した `webClient.UploadData()` の呼び出しの直前に次のコードを追加します。
+1. ブローカー メッセージの標準プロパティが `BrokerProperties` HTTP ヘッダーに配置されます。ブローカーのプロパティは、JSON 形式でシリアル化する必要があります。**TimeToLive** の値として 30 秒を指定し、メッセージ ラベル "M1" をメッセージに追加するには、前の例で示した `webClient.UploadData()` の呼び出しの直前に次のコードを追加します。
 
 	```
 	// Add brokered message properties "TimeToLive" and "Label"
 	webClient.Headers.Add("BrokerProperties", "{ "TimeToLive":30, "Label":"M1"}");
 	```
 
-	仲介型メッセージのプロパティが追加されていること、および今後追加されることに注意してください。したがって、送信要求では、要求の一部であるすべての仲介型メッセージのプロパティをサポートする API バージョンを指定する必要があります。指定されている API のバージョンが仲介型メッセージのプロパティをサポートしていない場合は、そのプロパティは無視されます。
+	ブローカー メッセージのプロパティが追加されていること、および今後追加されることに注意してください。したがって、送信要求では、要求の一部であるすべてのブローカー メッセージのプロパティをサポートする API バージョンを指定する必要があります。指定されている API のバージョンがブローカー メッセージのプロパティをサポートしていない場合は、そのプロパティは無視されます。
 
 1. カスタム メッセージのプロパティは、キーと値のペアのセットとして定義されます。各カスタム プロパティは、独自の TPPT ヘッダーに格納されます。カスタム プロパティ "Priority" と "Customer" を追加するには、前の例で示した `webClient.UploadData()` の呼び出しの直前に次のコードを追加します。
 
@@ -629,4 +629,4 @@ namespace Microsoft.ServiceBus.Samples
 - [Service Bus の基礎](fundamentals-service-bus-hybrid-solutions.md)
 - [Service Bus リレー型メッセージングの REST チュートリアル](service-bus-relay-rest-tutorial.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

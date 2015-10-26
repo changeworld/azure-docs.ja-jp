@@ -14,21 +14,21 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="09/29/2015" 
+	ms.date="10/13/2015"
 	ms.author="jeffstok"/>
 
 # Stream Analytics 入力について
 
 Azure Stream Analytics 入力はデータ ソースへの接続として定義されます。Stream Analytics では、ジョブが実行されている Azure サブスクリプションの内外からの Azure ソース Event Hub、IoT Hub および BLOB ストレージとの最上位の統合が行われます。データがそのデータ ソースにプッシュされると、Stream Analytics ジョブによって使用され、リアルタイムで処理されます。入力は 2 つの個別のタイプであるデータ ストリーム入力と参照データ入力に分けられます。
 
-- **データ ストリーム入力**: データ ストリームは、時間をかけて受け取る、制約のない一連のイベントです。Stream Analytics のジョブには、ジョブで使用および変換される少なくとも 1 つのデータ ストリームの入力を含める必要があります。BLOB ストレージ、Event Hub および IoT Hub は、データ ストリーム入力ソースとしてサポートされます。Event Hub は複数のデバイスとソースから、ソーシャル メディア アクティビティ フィード、株式取引情報、センサーからのデータなどのイベント ストリームを回収するために使用されます。IoT Hub はモノのインターネット化 (IoT) シナリオ内で、接続されているデバイスからデータを収集するように最適化されています。ストリームとしてバルク データを取り込むための入力ソースとして、BLOB ストレージを使用できます。  
+- **データ ストリーム入力**: データ ストリームは、時間をかけて受け取る、制約のない一連のイベントです。Stream Analytics のジョブには、ジョブで使用および変換される少なくとも 1 つのデータ ストリームの入力を含める必要があります。BLOB ストレージ、Event Hubs および IoT Hub は、データ ストリーム入力ソースとしてサポートされます。Event Hubs は複数のデバイスとソースから、ソーシャル メディア アクティビティ フィード、株式取引情報、センサーからのデータなどのイベント ストリームを回収するために使用されます。IoT Hub はモノのインターネット化 (IoT) シナリオ内で、接続されているデバイスからデータを収集するように最適化されています。ストリームとしてバルク データを取り込むための入力ソースとして、BLOB ストレージを使用できます。  
 - **参照データ**: Stream Analytics は、参照データと呼ばれる 2 番目のタイプの入力をサポートします。これは静的データまたは変更頻度の低い補足データであり、通常は相関関係の関連付けと参照を実行するために使用されます。現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。参照データ ソースの BLOB のサイズは、最大で 50 MB に制限されています。参照データ入力を作成する方法については、[参照データの使用](stream-analytics-use-reference-data.md)に関するページを参照してください。  
 
-## Event Hub データ入力ストリームの作成
+## イベント ハブ データ入力ストリームの作成
 
-[Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) はスケーラブルな発行/サブスクライブ イベント インジェスターです。1 秒間に数百万件のイベントを取り込むことができるため、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。Stream Analytics で最もよく使用される入力の 1 つがこれです。Event Hubs と Stream Analytics を一緒に使用することで、リアルタイム分析用のエンド ツー エンドのソリューションをお客様に提供できます。お客様は、Event Hubs を使用して Azure にイベントをリアルタイムでフィードし、Stream Analytics ジョブでこれらのイベントをリアルタイムで処理することができます。たとえば、お客様は、Web クリック、センサーの読み取り、オンライン ログ イベントを Event Hubs に送信し、リアルタイムのフィルター処理、集計、相関関係に入力データ ストリームとして Event Hubs を使用する Stream Analytics ジョブを作成できます。
+[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) はスケーラブルな発行/サブスクライブ イベント インジェスターです。1 秒間に数百万件のイベントを取り込むことができるため、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。Stream Analytics で最もよく使用される入力の 1 つがこれです。Event Hubs と Stream Analytics を一緒に使用することで、リアルタイム分析用のエンド ツー エンドのソリューションをお客様に提供できます。お客様は、Event Hubs を使用して Azure にイベントをリアルタイムでフィードし、Stream Analytics ジョブでこれらのイベントをリアルタイムで処理することができます。たとえば、お客様は、Web クリック、センサーの読み取り、オンライン ログ イベントを Event Hubs に送信し、リアルタイムのフィルター処理、集計、相関関係に入力データ ストリームとして Event Hubs を使用する Stream Analytics ジョブを作成できます。
 
-Stream Analytics で Event Hub から返されるイベントの既定のタイムスタンプは、このイベントがイベント ハブに到達したときのタイムスタンプであることに注意することが重要です。このタイムスタンプが EventEnqueuedUtcTime です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
+Stream Analytics で Event Hubs から返されるイベントの既定のタイムスタンプは、このイベントがイベント ハブに到達したときのタイムスタンプであることに注意することが重要です。このタイムスタンプが EventEnqueuedUtcTime です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
 
 ## コンシューマー グループ
 
@@ -94,15 +94,15 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 
 | プロパティ | 説明 |
 |------|------|
-| System.Input.EventProcessedUtcTime | イベントが処理された日時。 |
-| System.Input.EventEnqueuedUtcTime | IoT Hub でイベントを受信した日時。 |
-| System.Input.PartitionId | 入力アダプターの 0 から始まるパーティション ID。 |
-| System.Input.MessageId | IoT Hub での双方向通信の関連付けに使用します。 |
-| System.Input.CorrelationId | IoT Hub でのメッセージ応答とフィードバックに使用します。 |
-| System.Input.ConnectionDeviceId | メッセージの送信に使用される認証済み ID であり、IoT Hub により servicebound メッセージにスタンプされます。 |
-| System.Input.ConnectionDeviceGenerationId | メッセージの送信に使用される認証済みデバイスの generationId であり、IoT Hub により servicebound メッセージにスタンプされます。 |
-| System.Input.EnqueuedTime | IoT Hub でメッセージを受信した時刻。 |
-| System.Input.StreamId | 送信元デバイスにより追加されたカスタム イベント プロパティ。 |
+| EventProcessedUtcTime | イベントが処理された日時。 |
+| EventEnqueuedUtcTime | IoT Hub でイベントを受信した日時。 |
+| PartitionId | 入力アダプターの 0 から始まるパーティション ID。 |
+| IoTHub.MessageId | IoT Hub での双方向通信の関連付けに使用します。 |
+| IoTHub.CorrelationId | IoT Hub でのメッセージ応答とフィードバックに使用します。 |
+| IoTHub.ConnectionDeviceId | メッセージの送信に使用される認証済み ID であり、IoT Hub により servicebound メッセージにスタンプされます。 |
+| IoTHub.ConnectionDeviceGenerationId | メッセージの送信に使用される認証済みデバイスの generationId であり、IoT Hub により servicebound メッセージにスタンプされます。 |
+| IoTHub.EnqueuedTime | IoT Hub でメッセージを受信した時刻。 |
+| IoTHub.StreamId | 送信元デバイスにより追加されたカスタム イベント プロパティ。 |
 
 ## BLOB ストレージ データ ストリーム入力の作成 ##
 
@@ -183,7 +183,7 @@ FROM Input
 
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/JA-JP/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。このサービスの詳細については、以下の情報をご覧ください。
@@ -201,4 +201,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

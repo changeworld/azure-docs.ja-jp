@@ -203,4 +203,4 @@ SQL Data Warehouse の管理に関するヒントについては、「[SQL Data 
 
 <!--MSDN references-->
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

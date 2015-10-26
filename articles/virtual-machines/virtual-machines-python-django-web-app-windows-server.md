@@ -27,7 +27,8 @@
 
 <br>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
 このチュートリアルでは、Windows Server 仮想マシンを使用して Microsoft Azure で Django ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウド内で動作する Django ベースのアプリケーションが完成します。
 
@@ -183,4 +184,4 @@
 [python.org]: https://www.python.org/downloads/
 [wfastcgi に関するページ]: https://pypi.python.org/pypi/wfastcgi
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

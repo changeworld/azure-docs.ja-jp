@@ -19,7 +19,6 @@
 
 # Azure 用の SLES または openSUSE 仮想マシンの準備
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 - [Azure 用の SLES 11 SP3 仮想マシンの準備](#sles11)
 - [Azure 用の openSUSE 13.1 以上の仮想マシンの準備](#osuse)
@@ -179,4 +178,4 @@
 
 13. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

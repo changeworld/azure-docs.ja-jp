@@ -30,7 +30,7 @@
 4. この Java アプリケーションの作成に Eclipse を使用している場合は、Eclipse のデプロイ アセンブリ機能を使用して、アプリケーション デプロイ ファイル (WAR) に Twilio JAR をインクルードできます。この Java アプリケーションの作成に Eclipse を使用していない場合、Twilio JAR が Java アプリケーションと同じ Azure ロールにインクルードされており、アプリケーションのクラス パスに追加されていることを確認してください。
 5. cacerts キーストアに Equifax Secure Certificate Authority 証明書と MD5 フィンガープリント 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 が格納されていることを確認します (シリアル番号は 35:DE:F4:CF、SHA1 フィンガープリントは D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A)。これは、[https://api.twilio.com][twilio_api_service] サービスの証明機関 (CA) 証明書であり、Twilio API の使用時に呼び出されます。この CA 証明書を JDK の cacerts ストアに追加する方法の詳細については、「[証明書を Java CA 証明書ストアに追加する方法][add_ca_cert]」を参照してください。
 
-さらに、[Hello World アプリケーションを Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) で作成する方法に関する情報][azure_java_eclipse_hello_world] に精通すること、または、Eclipse を使用していない場合は、Azure 上の Java アプリケーションをホストする別の方法に精通することを強くお勧めします。
+さらに、[Azure Toolkit for Eclipse を使用して Hello World アプリケーションを作成する方法に関するトピック][azure_java_eclipse_hello_world]にある情報に精通すること、または、Eclipse を使用していない場合は、Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
 
 ## 通話用の Web フォームの作成
 
@@ -163,7 +163,7 @@
 ![Twilio および Java を使用した Azure 通話応答][twilio_java_response]
 
 ## アプリケーションの実行
-以下は、アプリケーションを実行する手順の概要です。詳細な手順については、「[Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) を使用した Hello World アプリケーションの作成][azure_java_eclipse_hello_world]」で確認できます。
+以下は、アプリケーションを実行する手順の概要です。詳細な手順については、「[Azure Toolkit for Eclipse を使用した Hello World アプリケーションの作成][azure_java_eclipse_hello_world]」で確認できます。
 
 1. TwilioCloud WAR を Azure の **approot** フォルダーにエクスポートします。 
 2. TwilioCloud WAR を解凍するように **startup.cmd** を変更します。
@@ -209,4 +209,4 @@ Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を
 [twilio_java]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaCallForm.jpg
 [twilio_java_response]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaMakeCall.jpg
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -268,4 +268,4 @@ BLOB を削除するには、BLOB の参照を取得し、**deleteIfExists** を
 [Azure Storage REST API]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

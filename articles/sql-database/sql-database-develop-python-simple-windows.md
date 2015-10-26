@@ -118,4 +118,4 @@ SQL Database では、[IDENTITY](https://msdn.microsoft.com/library/ms186775.asp
 
 詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

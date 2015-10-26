@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="SQL Server Business Intelligence | Microsoft Azure"
-	description="このトピックでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、Azure Virtual Machines (VM) 上で実行されている SQL Server で使用できる Business Intelligence (BI) 機能について説明します。"
+	description="このトピックでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、Azure 仮想マシン (VM) 上で実行されている SQL Server で使用できる Business Intelligence (BI) 機能について説明します。"
 	services="virtual-machines"
 	documentationCenter="na"
 	authors="rothja"
@@ -18,9 +18,10 @@
 
 # Azure Virtual Machines での SQL Server Business Intelligence
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの使用について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
  
-Microsoft Azure 仮想マシン ギャラリーには、SQL Server インストールを含むイメージが用意されています。ギャラリー イメージでサポートされている SQL Server のエディションは、オンプレミスのコンピューターにも仮想マシンにもインストールできるインストール ファイルです。このトピックでは、イメージにインストールされている SQL Server Business Intelligence (BI) 機能の概要と、仮想マシンのプロビジョニング後に必要な構成手順について説明します。また、BI 機能用にサポートされているデプロイメント トポロジとベスト プラクティスについても説明します。
+ 
+Microsoft Azure 仮想マシン ギャラリーには、SQL Server インストールを含むイメージが用意されています。ギャラリー イメージでサポートされている SQL Server のエディションは、オンプレミスのコンピューターにも仮想マシンにもインストールできるインストール ファイルです。このトピックでは、イメージにインストールされている SQL Server Business Intelligence (BI) 機能の概要と、仮想マシンのプロビジョニング後に必要な構成手順について説明します。また、BI 機能用にサポートされているデプロイ トポロジとベスト プラクティスについても説明します。
 
 ## ライセンスに関する考慮事項
 
@@ -83,7 +84,7 @@ SQL Server でサポートされているエディションと機能の詳細に
 |**Analysis Services 表形式**|いいえ|SQL Server 2012 および 2014 のイメージでサポートされていますが、既定ではインストールされていません。Analysis Services の別のインスタンスをインストールします。このトピックの「SQL Server のその他のサービスと機能のインストール」をご覧ください。|
 |**Analysis Services Power Pivot for SharePoint**|いいえ|Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。<sup>1</sup>|
 
-<sup>1</sup> SharePoint と Azure Virtual Machines の追加情報については、「[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)」および「[Microsoft Azure Virtual Machines の SharePoint デプロイ](https://www.microsoft.com/download/details.aspx?id=34598)」をご覧ください。
+<sup>1</sup> SharePoint と Azure 仮想マシンの追加情報については、「[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)」および「[Microsoft Azure Virtual Machines の SharePoint デプロイ](https://www.microsoft.com/download/details.aspx?id=34598)」をご覧ください。
 
 ![PowerShell](./media/virtual-machines-sql-server-business-intelligence/IC660119.gif) 次の PowerShell コマンドを実行して、サービス名に "SQL" が含まれたインストール済みサービスのリストを取得します。
 
@@ -91,7 +92,7 @@ SQL Server でサポートされているエディションと機能の詳細に
 
 ## 一般的な推奨事項とベスト プラクティス
 
-- SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは **A3** です。Analysis Services と Reporting Services の SQL Server BI デプロイメントでは、推奨される仮想マシン サイズは **A4** です。
+- SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは **A3** です。Analysis Services と Reporting Services の SQL Server BI デプロイでは、推奨される仮想マシン サイズは **A4** です。
 
 	最新の VM サイズについては、「[仮想マシンのサイズ](virtual-machines-size-specs.md)」をご覧ください。
 
@@ -113,9 +114,9 @@ SQL Server でサポートされているエディションと機能の詳細に
 
 - **Windows Update** で新しい "重要な更新プログラム" があるかどうかを確認します。Microsoft Azure 仮想マシン イメージは頻繁に更新されます。ただし、VM イメージの最終更新後は、重要な更新プログラムを **Windows Update** から入手できるようになります。
 
-## デプロイメント トポロジの例
+## デプロイ トポロジの例
 
-Microsoft Azure Virtual Machines を使用するデプロイメントの例を以下に示します。これらの図のトポロジは、SQL Server BI 機能と Microsoft Azure Virtual Machines で使用できるトポロジの一部にすぎません。
+Microsoft Azure Virtual Machines を使用するデプロイの例を以下に示します。これらの図のトポロジは、SQL Server BI 機能と Microsoft Azure Virtual Machines で使用できるトポロジの一部にすぎません。
 
 ### 1 つの仮想マシン
 
@@ -125,7 +126,7 @@ Microsoft Azure Virtual Machines を使用するデプロイメントの例を�
 
 ### 2 つの仮想マシン
 
-- 1 つの仮想マシン上の Analysis Services、Reporting Services、SQL Server データベース エンジン。このデプロイメントには、レポート サーバー データベースが含まれます。
+- 1 つの仮想マシン上の Analysis Services、Reporting Services、SQL Server データベース エンジン。このデプロイには、レポート サーバー データベースが含まれます。
 
 - 2 つ目の VM 上のデータ ソース。2 つ目の VM には、データ ソースとして SQL Server データベース エンジンが含まれます。
 
@@ -133,7 +134,7 @@ Microsoft Azure Virtual Machines を使用するデプロイメントの例を�
 
 ### Azure が混在 - Azure SQL Database 上のデータ
 
-- 1 つの仮想マシン上の Analysis Services、Reporting Services、SQL Server データベース エンジン。このデプロイメントには、レポート サーバー データベースが含まれます。
+- 1 つの仮想マシン上の Analysis Services、Reporting Services、SQL Server データベース エンジン。このデプロイには、レポート サーバー データベースが含まれます。
 
 - データ ソースは Azure SQL Database です。
 
@@ -141,7 +142,7 @@ Microsoft Azure Virtual Machines を使用するデプロイメントの例を�
 
 ### ハイブリッド - オンプレミスのデータ
 
-- このデプロイメント例では、1 つの仮想マシン上で Analysis Services、Reporting Services、SQL Server データベース エンジンが実行されます。仮想マシンは、レポート サーバー データベースをホストします。仮想マシンは、Azure Virtual Networking またはその他の VPN トンネリング ソリューションを使用して、オンプレミス ドメインに参加しています。
+- このデプロイ例では、1 つの仮想マシン上で Analysis Services、Reporting Services、SQL Server データベース エンジンが実行されます。仮想マシンは、レポート サーバー データベースをホストします。仮想マシンは、Azure Virtual Networking またはその他の VPN トンネリング ソリューションを使用して、オンプレミス ドメインに参加しています。
 
 - データ ソースはオンプレミスです。
 
@@ -159,7 +160,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 - で接続するには、仮想マシンの名前をクリックし、**[接続]** をクリックします。リモート デスクトップ接続が開き、コンピューター名が自動的に設定されます。
 
-	![Azure 仮想マシンに接続](./media/virtual-machines-sql-server-business-intelligence/IC650112.gif)
+	![connect to azure virtual machine](./media/virtual-machines-sql-server-business-intelligence/IC650112.gif)
 
 - Windows リモート デスクトップ接続を使用して、仮想マシンに接続します。リモート デスクトップのユーザー インターフェイスで、次の手順を実行します。
 
@@ -430,4 +431,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

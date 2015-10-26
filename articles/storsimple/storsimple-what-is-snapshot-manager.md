@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="09/15/2015"
+   ms.date="10/12/2015"
    ms.author="v-sharos" />
 
 # StorSimple Snapshot Manager について
@@ -23,7 +23,7 @@ StorSimple Snapshot Manager は、Microsoft Azure StorSimple 環境でのデー�
 
 ここでは、StorSimple Snapshot Manager の概要、機能、Microsoft Azure StorSimple における役割について説明します。
 
-StorSimple デバイス、StorSimple Manager サービス、StorSimple Snapshot Manager、SharePoint 用 StorSimple アダプターを含む Microsoft Azure StorSimple システム全体の概要については、「[StorSimple について](storsimple-overview.md)」および「[StorSimple のコンポーネントについて](storsimple-components.md)」をご覧ください。
+StorSimple デバイス、StorSimple Manager サービス、StorSimple Snapshot Manager、SharePoint 用 StorSimple アダプターを含む Microsoft Azure StorSimple システム全体の概要については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」を参照してください。
  
 ## StorSimple Snapshot Manager の目的とアーキテクチャ
 
@@ -71,7 +71,9 @@ StorSimple Snapshot Manager を使用して、ボリュームを作成し、そ�
 
 StorSimple Snapshot Manager では、ボリューム グループを使用して、アプリケーション整合性のあるバックアップ コピーを作成します。"アプリケーション整合性" とは、関連するすべてのファイルとデータベースが同期されており、特定の時点におけるアプリケーションの正確な状態が反映されていることをいいます。ボリューム グループ ("コンシステンシー グループ" とも呼ばれます) は、バックアップ/復元ジョブの基礎となります。
 
->[AZURE.NOTE]ボリューム グループはボリューム コンテナーとは異なります。ボリューム コンテナーには、クラウド ストレージ アカウントと他の属性 (暗号化や帯域幅消費量など) を共有する 1 つ以上のボリュームが含まれます。1 つのボリューム コンテナーに、仮想プロビジョニングされた最大 256 個の StorSimple ボリュームを含めることができます。ボリューム コンテナーの詳細については、「[StorSimple ボリューム コンテナーの管理](storsimple-manage-volume-containers.md)」をご覧ください。ボリューム グループは、バックアップ操作を容易にするために構成するボリュームの集まりです。異なるボリューム コンテナーに属する 2 つのボリュームを選択し、それらを同じボリューム グループに配置して、そのボリューム グループのバックアップ ポリシーを作成すると、適切なストレージ アカウントを使用して、適切なボリューム コンテナーで各ボリュームがバックアップされます。
+ボリューム グループはボリューム コンテナーとは異なります。ボリューム コンテナーには、クラウド ストレージ アカウントと他の属性 (暗号化や帯域幅消費量など) を共有する 1 つ以上のボリュームが含まれます。1 つのボリューム コンテナーに、仮想プロビジョニングされた最大 256 個の StorSimple ボリュームを含めることができます。ボリューム コンテナーの詳細については、「[StorSimple ボリューム コンテナーの管理](storsimple-manage-volume-containers.md)」をご覧ください。ボリューム グループは、バックアップ操作を容易にするために構成するボリュームの集まりです。異なるボリューム コンテナーに属する 2 つのボリュームを選択し、それらを同じボリューム グループに配置して、そのボリューム グループのバックアップ ポリシーを作成すると、適切なストレージ アカウントを使用して、適切なボリューム コンテナーで各ボリュームがバックアップされます。
+
+>[AZURE.NOTE]ボリューム グループ内のすべてのボリュームは、1 つのクラウド サービス プロバイダーから取得する必要があります。
 
 ## Windows ボリューム シャドウ コピー サービスとの統合
 
@@ -139,13 +141,13 @@ StorSimple Snapshot Manager を使用して、必要に応じてバックアッ�
 
 StorSimple Snapshot Manager を使用して、今後予定されているバックアップ ジョブや完了したバックアップ ジョブの監視と管理を行うことができます。さらに、StorSimple Snapshot Manager では、最大 64 個の完了したバックアップのカタログが提供されます。このカタログを使用して、ボリュームまたは個々のファイルを検索し、復元できます。
 
-バックアップ ジョブの監視については、[StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理](storsimple-snapshot-manager-manage-backup-jobs.md)」をご覧ください。
+バックアップ ジョブの監視については、「[StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理](storsimple-snapshot-manager-manage-backup-jobs.md)」をご覧ください。
 
 
 ## 次のステップ
 
-- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)の詳細を確認する。
 
-- [StorSimple Snapshot Manager のダウンロード](https://www.microsoft.com/download/details.aspx?id=44220)
+- [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) をダウンロードする。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

@@ -153,4 +153,4 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
 
 Visural Studio からの Azure へのアプリ発行の詳細については、「[Azure Tools を使用したクラウド サービスの発行](vs-azure-tools-publishing-a-cloud-service.md)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

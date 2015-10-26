@@ -21,9 +21,9 @@
 
 [Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/) を使って新しいアプリケーションを監視する際や、新しいバージョンのアプリケーションを監視する際、Microsoft Azure で新しいリソースをセットアップします。このリソースは、アプリのテレメトリ データを分析、表示する場所です。
 
-PowerShell を使用して、新しいリソースの作成を自動化できます。
+You can automate the creation of a new resource by using PowerShell.
 
-たとえば、モバイル デバイス アプリを開発している場合、どんなときにも、公開されたいくつかのバージョンのアプリが顧客によって使用される可能性があります。異なるバージョンが混ざったものからはテレメトリの結果を取得したくありません。それで、ビルド プロセスを取得して、各ビルドで新しいリソースを作成します。
+For example, if you are developing a mobile device app, it's likely that, at any time, there will be several published versions of your app in use by your customers.You don't want to get the telemetry results from different versions mixed up.それで、ビルド プロセスを取得して、各ビルドで新しいリソースを作成します。
 
 ## Application Insights リソースを作成するスクリプト
 
@@ -78,7 +78,7 @@ Write-Host "IKey = " $resource.Properties["InstrumentationKey"]
 
 ## iKey を使用して行うこと
 
-各リソースは、インストルメンテーション キー (iKey) によって識別されます。IKey は、リソース作成スクリプトの出力です。ビルド スクリプトは、アプリに埋め込まれた Application Insights SDK に iKey を提供します。
+各リソースは、インストルメンテーション キー (iKey) によって識別されます。The iKey is an output of the resource creation script.Your build script should provide the iKey to the Application Insights SDK embedded in your app.
 
 iKey を SDK で使用できるようにする方法は 2 つあります。
   
@@ -94,4 +94,4 @@ iKey を SDK で使用できるようにする方法は 2 つあります。
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

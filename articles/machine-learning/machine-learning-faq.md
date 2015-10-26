@@ -309,4 +309,4 @@ Azure Machine Learning については、MSDN にコミュニティ フォーラ
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!-----HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

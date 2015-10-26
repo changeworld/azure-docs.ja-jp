@@ -163,4 +163,4 @@
 [002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

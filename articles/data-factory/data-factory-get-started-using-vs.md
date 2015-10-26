@@ -27,7 +27,7 @@
 ##このチュートリアルの内容
 このチュートリアルでは、Visual Studio 2013 で次の作業を行います。
 
-1. リンクされた次の 2 つのサービス、**AzureStorageLinkedService1** と **AzureSqlinkedService1** を作成します。AzureStorageLinkedService1 は、Azure Storage にリンクし、AzureSqlLinkedService1 は、Azure SQL database を **ADFTutorialDataFactoryVS** データ ファクトリにリンクします。パイプラインの入力データは、Azure BLOB ストレージの BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。そのため、これら 2 つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。
+1. リンクされた次の 2 つのサービス、**AzureStorageLinkedService1** と **AzureSqlinkedService1** を作成します。AzureStorageLinkedService1 は、Azure ストレージにリンクし、AzureSqlLinkedService1 は、Azure SQL database を **ADFTutorialDataFactoryVS** データ ファクトリにリンクします。パイプラインの入力データは、Azure BLOB ストレージの BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。そのため、これら 2 つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。
 2. **EmpTableFromBlob** と **EmpSQLTable** の 2 つのデータ ファクトリ テーブルを定義します。これらはデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。また、データの構造や可用性など、他のプロパティも指定します。
 3. ADFTutorialDataFactoryVS に **ADFTutorialPipeline** という名前のパイプラインを作成します。このパイプラインには、Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**があります。
 4. Data Factory を作成し、リンクされたサービス、テーブル、パイプラインをデプロイする。    
@@ -213,8 +213,8 @@
 	5. Data Factory の **[リージョン]** を選択します。 
 	6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。 
 23. **[項目の公開]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。     
-24. 概要を確認し、**[次へ]** をクリックし、デプロイメント プロセスを開始し、**[デプロイメント ステータス]** を表示します。
-25. **[デプロイメント ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。 
+24. 概要を確認し、**[次へ]** をクリックし、デプロイ プロセスを開始し、**[デプロイ ステータス]** を表示します。
+25. **[デプロイ ステータス]** ページに、デプロイ プロセスのステータスが表示されます。デプロイが完了したら、[完了] をクリックします。 
 
 
 ## サーバー エクスプローラーを使用して Data Factory のエンティティを確認する
@@ -230,10 +230,10 @@ Visual Studio の Azure Data Factory ツールを更新するには、次のよ�
 2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
 4. **[Visual Studio の Azure Data Factory ツール]** を選択して、**[更新]** をクリックします。このエントリが表示されない場合は、ツールは既に最新バージョンです。 
 
-Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-get-started-using-editor.md/#MonitorDataSetsAndPipeline)に関する記事を参照してください。
+Azure プレビュー ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-get-started-using-editor.md#MonitorDataSetsAndPipeline)に関する記事を参照してください。
 
 
 ## フィードバックの送信
-この記事に関するフィードバックをお待ちしています。少しのお時間をとって、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-get-started-using-vs.md)でフィードバックをお寄せください。
+この記事に関するフィードバックをお待ちしています。少しお時間を割いていただき、[電子メール](mailto:adfdocfeedback@microsoft.com?subject=data-factory-get-started-using-vs.md)でフィードバックをお寄せください。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

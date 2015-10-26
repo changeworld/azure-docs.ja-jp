@@ -64,7 +64,7 @@ DocumentDB データ移行ツールはオープン ソース ソリューショ�
 
 JSON ファイル ソース インポーター オプションを使用して、1 つ以上の単一ドキュメント JSON ファイル、またはそれぞれに JSON ドキュメントの配列が含まれた JSON ファイルをインポートできます。インポートする JSON ファイルが含まれたフォルダーを追加する際は、サブフォルダー内のファイルを再帰的に検索できます。
 
-![Screenshot of JSON file source options](./media/documentdb-import-data/jsonsource.png)
+![JSON ファイル ソース オプションのスクリーンショット](./media/documentdb-import-data/jsonsource.png)
 
 JSON ファイルをインポートするためのコマンド ライン サンプルを以下にいくつか示します。
 
@@ -87,7 +87,7 @@ JSON ファイルをインポートするためのコマンド ライン サン�
 
 MongoDB ソース インポーター オプションを使用して、個々の MongoDB コレクションからインポートできます。必要に応じて、クエリを使用してドキュメントをフィルター処理したり、プロジェクションを使用してドキュメント構造を変更したりすることもできます。
 
-![Screenshot of MongoDB source options](./media/documentdb-import-data/mongodbsource.png)
+![MongoDB ソース オプションのスクリーンショット](./media/documentdb-import-data/mongodbsource.png)
 
 接続文字列は、標準的な MongoDB 形式です。
 
@@ -109,7 +109,7 @@ MongoDB からインポートするためのコマンド ライン サンプル�
 
 MongoDB エクスポート JSON ファイル ソース インポーター オプションを使用して、mongoexport ユーティリティによって生成された 1 つ以上の JSON ファイルをインポートできます。
 
-![Screenshot of MongoDB export source options](./media/documentdb-import-data/mongodbexportsource.png)
+![MongoDB エクスポート ソース オプションのスクリーンショット](./media/documentdb-import-data/mongodbexportsource.png)
 
 インポートする MongoDB エクスポート JSON ファイルが含まれたフォルダーを追加する際は、サブフォルダー内のファイルを再帰的に検索できます。
 
@@ -121,7 +121,7 @@ MongoDB エクスポート JSON ファイルからインポートするための
 
 SQL ソース インポーター オプションを使用して、個々の SQL Server データベースからインポートできます。また、必要に応じて、クエリを使用してインポートするレコードをフィルター処理できます。さらに、入れ子の区切り記号を指定して、ドキュメント構造を変更することもできます (詳細は後ほど説明します)。
 
-![Screenshot of SQL source options](./media/documentdb-import-data/sqlexportsource.png)
+![SQL ソース オプションのスクリーンショット](./media/documentdb-import-data/sqlexportsource.png)
 
 接続文字列の形式は、標準的な SQL 接続文字列の形式です。
 
@@ -133,11 +133,11 @@ SQL ソース インポーター オプションを使用して、個々の SQL 
 
 返される結果 (一部) は次のとおりです。
 
-![Screenshot of SQL query results](./media/documentdb-import-data/sqlqueryresults.png)
+![SQL クエリ結果のスクリーンショット](./media/documentdb-import-data/sqlqueryresults.png)
 
 Address.AddressType や Address.Location.StateProvinceName などのエイリアスに注目してください。入れ子の区切り記号 "." を指定することで、インポート時に Address や Address.Location のサブドキュメントが作成されています。DocumentDB で結果として生成されるドキュメントの例を以下に示します。
 
-*{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "\#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
+*{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
  
 SQL Server からインポートするためのコマンド ライン サンプルを以下にいくつか示します。
 
@@ -151,11 +151,11 @@ SQL Server からインポートするためのコマンド ライン サンプ�
 
 CSV ファイル ソース インポーター オプションを使用して、1 つ以上の CSV ファイルをインポートできます。インポートする CSV ファイルが含まれたフォルダーを追加する際は、サブフォルダー内のファイルを再帰的に検索できます。
 
-![Screenshot of CSV source options](media/documentdb-import-data/csvsource.png)
+![CSV ソース オプションのスクリーンショット](media/documentdb-import-data/csvsource.png)
 
 SQL ソースの場合と同様、[入れ子の区切り記号] プロパティは、インポート時に階層関係 (サブドキュメント) を使用するために使用されます。次のような CSV のヘッダー行とデータ行について考えてみましょう。
 
-![Screenshot of CSV sample records](./media/documentdb-import-data/csvsample.png)
+![CSV サンプル レコードのスクリーンショット](./media/documentdb-import-data/csvsample.png)
 
 DomainInfo.Domain\_Name や RedirectInfo.Redirecting などのエイリアスに注目してください。入れ子の区切り記号 "." を指定することで、インポート時に DomainInfo や RedirectInfo のサブドキュメントが作成されます。DocumentDB で結果として生成されるドキュメントの例を以下に示します。
 
@@ -178,7 +178,7 @@ CSV インポート用のコマンド ライン サンプルを以下に示し�
 
 Azure テーブル ストレージ ソース インポーター オプションを使用して、個々の Azure テーブル ストレージ テーブルからインポートできます。また、必要に応じて、インポートするテーブル エンティティをフィルター処理できます。
 
-![Screenshot of Azure Table storage source options](./media/documentdb-import-data/azuretablesource.png)
+![Azure テーブル ストレージ ソース オプションのスクリーンショット](./media/documentdb-import-data/azuretablesource.png)
 
 Azure テーブル ストレージの接続文字列の形式は次のとおりです。
 
@@ -205,9 +205,9 @@ Azure テーブル ストレージからインポートするためのコマン�
 
 Amazon DynamoDB のソース インポーター オプションを使用すると、個々の Amazon DynamoDB テーブルからインポートし、必要に応じてインポートするエンティティをフィルターすることができます。インポートの設定が可能な限り簡単になるように、いくつかのテンプレートが用意されています。
 
-![Screenshot of Amazon DynamoDB source options](./media/documentdb-import-data/dynamodbsource1.png)
+![Amazon DynamoDB ソース オプションのスクリーンショット](./media/documentdb-import-data/dynamodbsource1.png)
 
-![Screenshot of Amazon DynamoDB source options](./media/documentdb-import-data/dynamodbsource2.png)
+![Amazon DynamoDB ソース オプションのスクリーンショット](./media/documentdb-import-data/dynamodbsource2.png)
 
 Amazon DynamoDB の接続文字列の形式は次のとおりです。
 
@@ -223,7 +223,7 @@ Amazon DynamoDB からインポートするためのコマンド ライン サ�
 
 JSON ファイル、MongoDB のエクスポート ファイル、および CSV ファイル ソースのインポーター オプションを使用すると、Azure BLOB ストレージから 1 つ以上のファイルをインポートできます。BLOB コンテナーの URL とアカウント キーを指定した後に、正規表現を使用してインポートするファイルを選択してください。
 
-![Screenshot of Blob file source options](./media/documentdb-import-data/blobsource.png)
+![BLOB ファイル ソース オプションのスクリーンショット](./media/documentdb-import-data/blobsource.png)
 
 Azure BLOB ストレージから JSON ファイルをインポートするためのコマンド ライン サンプルを以下に示します。
 
@@ -233,7 +233,7 @@ Azure BLOB ストレージから JSON ファイルをインポートするため
 
 DocumentDB ソース インポーターのオプションを使用して、1 つ以上の DocumentDB コレクションからデータをインポートできます。また、必要に応じて、クエリを使用してドキュメントをフィルター処理できます。
 
-![Screenshot of DocumentDB source options](./media/documentdb-import-data/documentdbsource.png)
+![DocumentDB ソース オプションのスクリーンショット](./media/documentdb-import-data/documentdbsource.png)
 
 DocumentDB の接続文字列の形式は次のとおりです。
 
@@ -252,7 +252,7 @@ DocumentDB ソース インポーター オプションには、次の詳細オ�
 3. 再試行の間隔: 一時的なエラー (ネットワーク接続の中断など) が発生した場合に DocumentDB への接続を次に再試行するまでの待機時間を指定します。
 4. 接続モード: DocumentDB で使用する接続モードを指定します。使用できる選択肢は、DirectTcp、DirectHttps、およびゲートウェイです。Direct という語が付いている接続モードの方が高速です。これに対して、ゲートウェイ モードはポート 443 のみを使用するため、ファイアウォールとの適合性が高いという特徴があります。
 
-![Screenshot of DocumentDB source advanced options](./media/documentdb-import-data/documentdbsourceoptions.png)
+![DocumentDB ソース詳細オプションのスクリーンショット](./media/documentdb-import-data/documentdbsourceoptions.png)
 
 > [AZURE.TIP]インポート ツールの接続モードは既定で [DirectTcp] に設定されています。ファイアウォールの問題が発生した場合は、ポート 443 のみを使用する必要があるため、接続モードを [ゲートウェイ] に切り替えてください。
 
@@ -272,9 +272,9 @@ DocumentDB からインポートするためのコマンド ライン サンプ�
 
 HBase のソース インポーター オプションを使用すると、HBase テーブルのデータをインポートし、必要に応じてデータをフィルターすることができます。インポートの設定が可能な限り簡単になるように、いくつかのテンプレートが用意されています。
 
-![Screenshot of HBase source options](./media/documentdb-import-data/hbasesource1.png)
+![HBase のソース オプションのスクリーンショット](./media/documentdb-import-data/hbasesource1.png)
 
-![Screenshot of HBase source options](./media/documentdb-import-data/hbasesource2.png)
+![HBase のソース オプションのスクリーンショット](./media/documentdb-import-data/hbasesource2.png)
 
 HBase Stargate の接続文字列の形式は次のとおりです。
 
@@ -290,7 +290,7 @@ HBase からインポートするためのコマンド ライン サンプルを
 
 DocumentDB 一括インポーターを使用して、効率向上のために DocumentDB ストアド プロシージャを使用し、使用可能な任意のソース オプションからインポートできます。ツールは、1 つの DocumentDB コレクションへのインポートと、シャード化されたインポート (データが複数の DocumentDB コレクションにパーティション分割されます) のどちらもサポートします。DocumentDB でのデータのパーティション分割の詳細については、[ここ](documentdb-partition-data.md)を参照してください。このツールでは、ストアド プロシージャの作成と実行、およびターゲット コレクションからの削除が実行されます。
 
-![Screenshot of DocumentDB bulk options](./media/documentdb-import-data/documentdbbulk.png)
+![DocumentDB 一括オプションのスクリーンショット](./media/documentdb-import-data/documentdbbulk.png)
 
 DocumentDB の接続文字列の形式は次のとおりです。
 
@@ -314,11 +314,11 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 インポート時に利用できる詳細オプションは多数あります。まず、ツールには既定の一括インポート用ストアド プロシージャ (BulkInsert.js) が用意されていますが、独自のインポート用ストアド プロシージャを指定することもできます。
 
- ![Screenshot of DocumentDB bulk insert sproc option](./media/documentdb-import-data/bulkinsertsp.png)
+ ![DocumentDB 一括挿入オプションのスクリーンショット](./media/documentdb-import-data/bulkinsertsp.png)
 
 また、日付型をインポートする際に (例: SQL Server や MongoDB から)、次の 3 つのインポート オプションから選択できます。
 
- ![Screenshot of DocumentDB date time import options](./media/documentdb-import-data/datetimeoptions.png)
+ ![DocumentDB 日付型インポート オプションのスクリーンショット](./media/documentdb-import-data/datetimeoptions.png)
 
 -	文字列: 文字列値として保持します。
 -	エポック: エポック番号値として保持します。
@@ -334,7 +334,7 @@ DocumentDB 一括インポーターには、次の詳細オプションがあり
 5. 再試行の間隔: 一時的なエラー (ネットワーク接続の中断など) が発生した場合に DocumentDB への接続を次に再試行するまでの待機時間を指定します。
 6. 接続モード: DocumentDB で使用する接続モードを指定します。使用できる選択肢は、DirectTcp、DirectHttps、およびゲートウェイです。Direct という語が付いている接続モードの方が高速です。これに対して、ゲートウェイ モードはポート 443 のみを使用するため、ファイアウォールとの適合性が高いという特徴があります。
 
-![Screenshot of DocumentDB bulk import advanced options](./media/documentdb-import-data/docdbbulkoptions.png)
+![DocumentDB 一括インポート詳細オプションのスクリーンショット](./media/documentdb-import-data/docdbbulkoptions.png)
 
 > [AZURE.TIP]インポート ツールの接続モードは既定で [DirectTcp] に設定されています。ファイアウォールの問題が発生した場合は、ポート 443 のみを使用する必要があるため、接続モードを [ゲートウェイ] に切り替えてください。
 
@@ -342,7 +342,7 @@ DocumentDB 一括インポーターには、次の詳細オプションがあり
 
 DocumentDB シーケンシャル レコード インポーターを使用して、レコードで使用可能な任意のソース オプションからレコード単位でインポートできます。ストアド プロシージャのクォータに達した既存のコレクションにインポートしている場合に、このオプションを選択できます。ツールは、1 つの DocumentDB コレクションへのインポートと、シャード化されたインポート (データが複数の DocumentDB コレクションにパーティション分割されます) のどちらもサポートします。DocumentDB でのデータのパーティション分割の詳細については、[ここ](documentdb-partition-data.md)を参照してください。
 
-![Screenshot of DocumentDB sequential record import options](./media/documentdb-import-data/documentdbsequential.png)
+![DocumentDB シーケンシャル レコード インポート オプションのスクリーンショット](./media/documentdb-import-data/documentdbsequential.png)
 
 DocumentDB の接続文字列の形式は次のとおりです。
 
@@ -366,7 +366,7 @@ DocumentDB の接続文字列の形式は次のとおりです。
 
 インポート時に利用できる詳細オプションは多数あります。まず、日付型をインポートする際に (例: SQL Server や MongoDB から)、次の 3 つのインポート オプションから選択できます。
 
- ![Screenshot of DocumentDB date time import options](./media/documentdb-import-data/datetimeoptions.png)
+ ![DocumentDB 日付型インポート オプションのスクリーンショット](./media/documentdb-import-data/datetimeoptions.png)
 
 -	文字列: 文字列値として保持します。
 -	エポック: エポック番号値として保持します。
@@ -380,7 +380,7 @@ DocumentDB シーケンシャル レコード インポーターには、次の�
 4. 再試行の間隔: 一時的なエラー (ネットワーク接続の中断など) が発生した場合に DocumentDB への接続を次に再試行するまでの待機時間を指定します。
 5. 接続モード: DocumentDB で使用する接続モードを指定します。使用できる選択肢は、DirectTcp、DirectHttps、およびゲートウェイです。Direct という語が付いている接続モードの方が高速です。これに対して、ゲートウェイ モードはポート 443 のみを使用するため、ファイアウォールとの適合性が高いという特徴があります。
 
-![Screenshot of DocumentDB sequential record import advanced options](./media/documentdb-import-data/documentdbsequentialoptions.png)
+![DocumentDB シーケンシャル レコード インポート詳細オプションのスクリーンショット](./media/documentdb-import-data/documentdbsequentialoptions.png)
 
 > [AZURE.TIP]インポート ツールの接続モードは既定で [DirectTcp] に設定されています。ファイアウォールの問題が発生した場合は、ポート 443 のみを使用する必要があるため、接続モードを [ゲートウェイ] に切り替えてください。
 
@@ -388,7 +388,7 @@ DocumentDB シーケンシャル レコード インポーターには、次の�
 
 移行ツールを使用してインポート中にコレクションを作成するときに、コレクションのインデックス作成ポリシーを指定できます。DocumentDB の一括インポートと DocumentDB のシーケンシャル レコード オプションの詳細オプション セクションで、[インデックス作成オプション] セクションに移動します。
 
-![Screenshot of DocumentDB Indexing Policy advanced options](./media/documentdb-import-data/indexingpolicy1.png)
+![DocumentDB インデックス作成ポリシー詳細オプションのスクリーンショット](./media/documentdb-import-data/indexingpolicy1.png)
 
 [インデックス作成ポリシー] の詳細オプションを使用すると、インデックス作成ポリシー ファイルを選択するか、インデックス作成ポリシーを手動で入力するか、既定のテンプレート セットから選択することができます (インデックス作成ポリシー テキスト ボックスを右クリックします)。
 
@@ -399,7 +399,7 @@ DocumentDB シーケンシャル レコード インポーターには、次の�
 - [範囲]。このポリシーは、数値と文字列の両方に対してORDER BY、範囲、等値クエリを使用する場合に最適です。[既定] または [ハッシュ] よりもインデックスのストレージ オーバーヘッドが高いポリシーです。
 
 
-![Screenshot of DocumentDB Indexing Policy advanced options](./media/documentdb-import-data/indexingpolicy2.png)
+![DocumentDB インデックス作成ポリシー詳細オプションのスクリーンショット](./media/documentdb-import-data/indexingpolicy2.png)
 
 > [AZURE.NOTE]インデックス作成ポリシーを指定しないと、既定のポリシーが適用されます。DocumentDB のインデックス作成ポリシーの詳細については、[こちら](documentdb-indexing-policies.md)を参照してください。
 
@@ -408,9 +408,9 @@ DocumentDB シーケンシャル レコード インポーターには、次の�
 
 DocumentDB JSON エクスポーターを使用して、使用可能な任意のソース オプションを、JSON ドキュメントの配列が含まれた JSON ファイルにエクスポートできます。エクスポートはツールによって処理されますが、その結果生成される移行コマンドを表示し、自分でコマンドを実行することもできます。結果の JSON ファイルは、ローカルまたは Azure BLOB ストレージに保存できます。
 
-![Screenshot of DocumentDB JSON local file export option](./media/documentdb-import-data/jsontarget.png)
+![DocumentDB JSON ローカル ファイル エクスポート オプションのスクリーンショット](./media/documentdb-import-data/jsontarget.png)
 
-![Screenshot of DocumentDB JSON Azure Blob storage export option](./media/documentdb-import-data/jsontarget2.png)
+![DocumentDB JSON Azure BLOB ストレージ エクスポート オプションのスクリーンショット](./media/documentdb-import-data/jsontarget2.png)
 
 必要に応じて、出力される JSON に prettify を実行できます。これにより、生成されるドキュメントのサイズは大きくなりますが、内容は人間が判読しやすいものになります。
 
@@ -452,23 +452,23 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 2.	ディレクトリを指定せずにファイル名を指定した場合は、現在の環境のディレクトリにファイルが作成 (上書き) されます。
 3.	既存のファイルを選択した場合は、ファイルが上書きされます。既存ファイルに追加するオプションはありません。
 
-	![Screenshot of Advanced configuration screen](./media/documentdb-import-data/AdvancedConfiguration.png)
+	![詳細構成画面のスクリーンショット](./media/documentdb-import-data/AdvancedConfiguration.png)
 
 ## インポート設定の確認とコマンド ラインの表示
 
 1. ソース情報、ターゲット情報、詳細構成を指定した後、移行の概要を確認し、必要に応じて、生成された移行コマンドの表示やコピーを実行します (コマンドのコピーは、インポート操作を自動化するのに役立ちます)。
 
-	![Screenshot of summary screen](./media/documentdb-import-data/summary.png)
+	![概要画面のスクリーンショット](./media/documentdb-import-data/summary.png)
 
-	![Screenshot of summary screen](./media/documentdb-import-data/summarycommand.png)
+	![概要画面のスクリーンショット](./media/documentdb-import-data/summarycommand.png)
 
 2. ソースとターゲットのオプションに問題がなければ、**[インポート]** をクリックします。インポート処理の進行中に、経過時間、転送済みファイル数、およびエラーに関する情報 (詳細な構成でファイル名を指定しなかった場合) が更新されます。処理が完了したら、結果をエクスポートできます (インポート エラーに対処する場合など)。
 
-	![Screenshot of DocumentDB JSON export option](./media/documentdb-import-data/viewresults.png)
+	![DocumentDB JSON エクスポート オプションのスクリーンショット](./media/documentdb-import-data/viewresults.png)
 
 3. 新たにインポートを開始する場合は、既存の設定 (接続文字列の情報やソースとターゲットの選択など) をそのまま使用することも、すべての値をリセットすることもできます。
 
-	![Screenshot of DocumentDB JSON export option](./media/documentdb-import-data/newimport.png)
+	![DocumentDB JSON エクスポート オプションのスクリーンショット](./media/documentdb-import-data/newimport.png)
 
 ## 次のステップ
 
@@ -477,4 +477,4 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

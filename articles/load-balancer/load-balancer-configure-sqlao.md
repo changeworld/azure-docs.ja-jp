@@ -67,4 +67,4 @@ SQL AlwaysOn の作成について詳しくは、「[チュートリアル: Azur
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

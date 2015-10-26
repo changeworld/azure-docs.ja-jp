@@ -1,21 +1,21 @@
 <properties
    pageTitle="HDInsight での Hadoop Pig の使用 | Microsoft Azure"
-	description="HDInsight で Pig と Hadoop を使用する方法を説明します。"
-	services="hdinsight"
-	documentationCenter=""
-	authors="Blackmist"
-	manager="paulettm"
-	editor="cgronlun"
+   description="HDInsight で Pig と Hadoop を使用する方法を説明します。"
+   services="hdinsight"
+   documentationCenter=""
+   authors="Blackmist"
+   manager="paulettm"
+   editor="cgronlun"
 	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="big-data"
-	ms.date="08/21/2015"
-	ms.author="larryfr"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="big-data"
+   ms.date="10/09/2015"
+   ms.author="larryfr"/>
 
 # HDInsight での Pig と Hadoop の使用
 
@@ -120,9 +120,9 @@ Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
 [apachepig-home]: http://pig.apache.org/
 [putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 [curl]: http://curl.haxx.se/
-[pigtask]: http://msdn.microsoft.com/ja-JP/library/mt146781(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/ja-JP/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/ja-JP/library/mt146770(v=sql.120).aspx
+[pigtask]: http://msdn.microsoft.com/ja-jp/library/mt146781(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/ja-jp/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/ja-jp/library/mt146770(v=sql.120).aspx
 
 [hdinsight-storage]: ../hdinsight-use-blob-storage.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -144,4 +144,4 @@ Azure Feature Pack for SSIS の詳細は[ここ][ssispack]にあります。
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
 [image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

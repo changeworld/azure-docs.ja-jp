@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="HDInsight の Hadoop を使用したフライトの遅延データの分析 | Microsoft Azure" 
-	description="1 つの Windows PowerShell スクリプトを使用して HDInsight クラスターのプロビジョニング、Hive ジョブの実行、Sqool ジョブの実行、クラスターの削除を行う方法について説明します。" 
+	pageTitle="Linux ベースの HDInsight での Hive を使用したフライトの遅延データの分析 | Microsoft Azure" 
+	description="Linux ベースの HDInsight で Hive を使用してフライト データを分析し、Sqoop を使用して SQL データベースにデータをエクスポートする方法について説明します。" 
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="Blackmist" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/12/2015" 
+	ms.date="10/09/2015" 
 	ms.author="larryfr"/>
 
 #HDInsight での Hive を使用したフライト遅延データの分析
@@ -305,4 +305,4 @@ Azure SQL Database を作成するには、次の手順に従います。これ�
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

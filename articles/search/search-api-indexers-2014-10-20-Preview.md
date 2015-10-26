@@ -1,4 +1,4 @@
-<properties pageTitle="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" description="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" services="search" documentationCenter="" authors="HeidiSteen" manager="mblythe" />
+<properties title="" pageTitle="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" description="インデクサー操作 (Azure Search サービス REST API: 2014-10-20-Preview)" metaKeywords="" services="search" solutions="" documentationCenter="" authors="HeidiSteen" manager="mblythe" videoId="" scriptId="" />
 
 <tags ms.service="search" ms.devlang="rest-api" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="na" ms.date="07/08/2015" ms.author="heidist" />
 
@@ -636,7 +636,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 <td></td>
 </tr>
 <tr>
-<td>string</td>
+<td>文字列</td>
 <td>Edm.String</td>
 <td></td>
 </tr>
@@ -657,4 +657,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

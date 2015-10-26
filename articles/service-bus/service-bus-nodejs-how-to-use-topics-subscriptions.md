@@ -325,4 +325,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [Azure テーブル サービスを使用する Node.js Web アプリケーション]: ../cloud-services/storage-nodejs-use-table-storage-cloud-service-app.md
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

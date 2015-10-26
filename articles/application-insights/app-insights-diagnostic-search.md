@@ -64,7 +64,7 @@
 
 ## プロパティの値に基づくフィルター選択
 
-プロパティの値に基づいてイベントをフィルター選択できます。使用できるプロパティは、選択したイベントの種類に依存します。
+プロパティの値に基づいてイベントをフィルター選択できます。The available properties depend on the event types you selected.
 
 たとえば、特定の応答コードを持つ要求を選択できます。
 
@@ -194,10 +194,10 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 [javalogs]: app-insights-java-trace-logs.md
 [netlogs]: app-insights-asp-net-trace-logs.md
 [qna]: app-insights-troubleshoot-faq.md
-[start]: app-insights-get-started.md
+[start]: app-insights-overview.md
 [trace]: app-insights-search-diagnostic-logs.md
-[track]: app-insights-custom-events-metrics-api.md
+[track]: app-insights-spi-custom-events-metrics.md
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

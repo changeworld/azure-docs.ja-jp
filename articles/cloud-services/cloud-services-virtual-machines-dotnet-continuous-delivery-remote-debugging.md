@@ -28,7 +28,7 @@
 ## <a name="cloudservice"></a>クラウド サービス用にリモート デバッグを有効にする
 
 1. 「[Azure のコマンド ライン ビルド](http://msdn.microsoft.com/library/hh535755.aspx)」の説明に従って、ビルド エージェントで Azure の初期環境を設定します。
-2. リモート デバッグ ランタイム (msvsmon.exe) がパッケージに必要であるため、[Remote Tools for Visual Studio 2015 RC](http://www.microsoft.com/download/details.aspx?id=46874) (Visual Studio 2013 を使用している場合は [Remote Tools for Visual Studio 2013 Update 5 RC](https://www.microsoft.com/JA-JP/download/details.aspx?id=46870)) をインストールします。代替方法として、Visual Studio がインストールされているシステムからリモート デバッグ バイナリをコピーすることもできます。
+2. リモート デバッグ ランタイム (msvsmon.exe) がパッケージに必要であるため、[Remote Tools for Visual Studio 2015 RC](http://www.microsoft.com/download/details.aspx?id=46874) (Visual Studio 2013 を使用している場合は [Remote Tools for Visual Studio 2013 Update 5 RC](https://www.microsoft.com/ja-jp/download/details.aspx?id=46870)) をインストールします。代替方法として、Visual Studio がインストールされているシステムからリモート デバッグ バイナリをコピーすることもできます。
 3. 「[Azure のサービス証明書を作成する](cloud-services-certs-create.md)」の説明に従って、証明書を作成します。.pfx および RDP 証明書のサムプリントを保持し、その証明書をターゲット クラウド サービスにアップロードします。
 4. MSBuild コマンド ラインで次のオプションを使用し、リモート デバッグを有効にしてビルドおよびパッケージ化します(山かっこの項目については、システムおよびプロジェクト ファイルの実際のパスに置き換えてください。)
 
@@ -93,6 +93,5 @@
 	</pre>
 
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
- 
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

@@ -57,4 +57,4 @@ Azure サブスクリプションに使用できるイメージの管理には�
 
 [Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

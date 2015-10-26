@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="クラウド サービスと Azure CDN との統合"
-	description="統合 Azure CDN エンドポイントからコンテンツを提供するクラウド サービスをデプロイする方法について説明するチュートリアル"
-	services="cdn, cloud-services"
-	documentationCenter=".net"
-	authors="cephalin"
-	manager="wpickett"
+	pageTitle="クラウド サービスと Azure CDN との統合" 
+	description="統合 Azure CDN エンドポイントからコンテンツを提供するクラウド サービスをデプロイする方法について説明するチュートリアル" 
+	services="cdn, cloud-services" 
+	documentationCenter=".net" 
+	authors="cephalin" 
+	manager="wpickett" 
 	editor="tysonn"/>
 
 <tags 
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="cdn" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="cephalin"/>
 
 
@@ -622,4 +622,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 - [ASP.NET のバンドルおよび縮小](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 - [Azure 用 CDN の使用](cdn-how-to-use.md)
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

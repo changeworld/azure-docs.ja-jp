@@ -19,7 +19,8 @@
 
 # Compute、Network、および Storage .NET ライブラリを使用した Azure リソースのデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイメント モデルを使用したリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
 
 このチュートリアルでは、Compute、Network、および Storage .NET ライブラリで提供される一部のクライアントを使用して、Microsoft Azure のリソースを作成および削除する方法について示します。また、Azure Active Directory を使用して Azure リソース マネージャーへの要求を認証する方法についても示します。
 
@@ -29,7 +30,7 @@
 
 - [Visual Studio](http://msdn.microsoft.com/library/dd831853.aspx)
 - [Azure ストレージ アカウント](../storage-create-storage-account.md)
-- [Windows Management Framework 3.0](http://www.microsoft.com/ja-JP/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/ja-JP/download/details.aspx?id=40855)
+- [Windows Management Framework 3.0](http://www.microsoft.com/JA-JP/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/JA-JP/download/details.aspx?id=40855)
 - [Azure PowerShell](../install-configure-powershell.md)
 
 これらの手順を実行するには約 30 分かかります。
@@ -38,31 +39,23 @@
 
 Azure AD を使用して Azure リソース マネージャーへの要求を認証するには、アプリケーションを既定のディレクトリに追加する必要があります。アプリケーションを追加するには、次の手順に従います。
 
-1. Azure PowerShell プロンプトを開き、次のコマンドを実行します。
+1. Azure PowerShell プロンプトを開き、このコマンドを実行し、メッセージが表示されたら、サブスクリプションの資格情報を入力します。
 
-        Switch-AzureMode –Name AzureResourceManager
+	    Login-AzureRmAccount
 
-2. このチュートリアルに使用する Azure アカウントを設定します。このコマンドを実行し、メッセージが表示されたら、サブスクリプションの資格情報を入力します。
+2. 次のコマンド内の {password} を使用するパスワードに置き換え、このコマンドを実行してアプリケーションを作成します。
 
-	    Add-AzureAccount
+	    New-AzureRmADApplication -DisplayName "My AD Application 1" -HomePage "https://myapp1.com" -IdentifierUris "https://myapp1.com"  -Password "{password}"
 
-3. 次のコマンド内の {password} を使用するパスワードに置き換え、このコマンドを実行してアプリケーションを作成します。
+	>[AZURE.NOTE]アプリケーションが作成された後で、返されたアプリケーション ID をメモしてください。これは次の手順で必要になります。アプリケーション ID は、ポータルの Active Directory セクションにあるアプリケーションのクライアント ID フィールドでも確認できます。
 
-	    New-AzureADApplication -DisplayName "My AD Application 1" -HomePage "https://myapp1.com" -IdentifierUris "https://myapp1.com"  -Password "{password}"
+3. {application-id} を記録しておいた ID に置き換えてから、次のようにアプリケーションのサービス プリンシパルを作成します。
 
-4. 前の手順からの応答にある ApplicationId の値を記録しておきます。この情報は後で必要になります。
+        New-AzureRmADServicePrincipal -ApplicationId {application-id}
 
-	![AD アプリケーションの作成](./media/virtual-machines-arm-deployment/azureapplicationid.png)
+4. アプリケーションを使用するためのアクセス許可を設定します。
 
-	>[AZURE.NOTE]アプリケーション ID は、管理ポータルのアプリケーションのクライアント ID フィールドでも確認できます。
-
-5. {application-id} を記録しておいた ID に置き換えてから、次のようにアプリケーションのサービス プリンシパルを作成します。
-
-        New-AzureADServicePrincipal -ApplicationId {application-id}
-
-6. アプリケーションを使用するためのアクセス許可を設定します。
-
-	    New-AzureRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName "https://myapp1.com"
+	    New-AzureRmRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName "https://myapp1.com"
 
 ## 手順 2. Visual Studio プロジェクトを作成し、ライブラリをインストールする
 
@@ -390,4 +383,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 	![AD アプリケーションの作成](./media/virtual-machines-arm-deployment/crpportal.png)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -21,7 +21,8 @@
 
 この記事では、Docker と [Compose](http://github.com/docker/compose) を使用して、Azure の Linux 仮想マシンで複雑なアプリケーションを定義し、実行する方法について説明します。Compose (*Fig* の後継) では、単純なテキスト ファイルを使用して、複数の Docker コンテナーで構成されるアプリケーションを定義します。次に、VM 上でアプリケーションを実行するためのあらゆる操作を実行する単一のコマンドで、アプリケーションを起動します。たとえば、この記事では、バックエンド MariaDB SQL Database で WordPress ブログをすばやくセットアップする方法を示していますが、Compose を使用してさらに複雑なアプリケーションをセットアップすることもできます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事は、リソース マネージャーとクラシック デプロイメント モデルの両方を使用して仮想マシンを作成する場合に適用されます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 Docker とコンテナーの知識がない場合は、「[Docker high level whiteboard (Docker の概要ホワイトボード)](http://azure.microsoft.com/documentation/videos/docker-high-level-whiteboard/)」をご覧ください。
 
@@ -50,7 +51,8 @@ $ docker-compose --version
 
 ```
 docker-compose 1.3.2
-``` のような出力が表示されます。
+```
+のような出力が表示されます。
 
 
 ## 手順3: docker-compose.yml 構成ファイルの作成
@@ -127,4 +129,4 @@ WordPress スタート画面が表示されます。この画面の手順に従�
 
 [wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

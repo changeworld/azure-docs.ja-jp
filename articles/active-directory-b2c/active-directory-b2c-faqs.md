@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/22/2015"
+	ms.date="10/08/2015"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C プレビュー: FAQ
@@ -22,9 +22,9 @@
 
 [AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
-### 既存の従業員ベースの Azure AD ディレクトリで Azure AD B2C を使用できますか。
+### 既存の従業員ベースの Azure AD テナントで Azure AD B2C を使用できますか。
 
-現在のことろ、既存の Azure AD ディレクトリで Azure AD B2C 機能を有効にすることはできません。Azure AD B2C 機能を使用するための別個のディレクトリを作成し、お客様を管理することをお勧めします。
+現在のところ、既存の Azure AD テナントで Azure AD B2C 機能を有効にすることはできません。Azure AD B2C 機能を使用するための別個のテナントを作成し、お客様を管理することをお勧めします。
 
 ### Azure AD B2C を使用してソーシャル ログイン (Facebook および Google+) を Office 365 に提供することはできますか。
 
@@ -32,9 +32,9 @@ Azure AD B2C は Office 365 と共に使用することはできません。一�
 
 ### Azure AD B2C の "ローカル アカウント" とは何ですか。 それらは、Azure AD の "職場または学校のアカウント" とはどのような点が異なるのですか。
 
-Azure AD ディレクトリでは、ディレクトリ内のすべてのユーザー (既存の Microsoft アカウントを持つユーザーを除く) は、`<xyz>@<directory domain>` という形式の電子メール アドレスを使用してサインインします。`<directory domain>` はディレクトリ内のいずれかの有効なドメイン、または初期 `<...>.onmicrosoft.com` ドメインです。このタイプのアカウントは "職場または学校のアカウント" であり、"組織アカウント" とも呼ばれます。
+Azure AD テナントでは、テナント内のすべてのユーザー (既存の Microsoft アカウントを持つユーザーを除く) は、`<xyz>@<tenant domain>` という形式の電子メール アドレスを使用してサインインします。`<tenant domain>` はテナント内のいずれかの有効なドメイン、または初期 `<...>.onmicrosoft.com` ドメインです。このタイプのアカウントは "職場または学校のアカウント" であり、"組織アカウント" とも呼ばれます。
 
-Azure AD B2C ディレクトリでは、ユーザーは大部分のアプリに任意の電子メール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com) など) を使用してサインインします。このタイプのアカウントは "ローカル アカウント" です。現在、ローカル アカウントとして任意のユーザー名 (単なるプレーン文字列) もサポートしています (joe、bob、sarah、jim など)。Azure AD B2C サービスでは、これらの 2 つの "タイプ" のローカル アカウントからいずれかを選択できます。
+Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意の電子メール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com) など) を使用してサインインします。このタイプのアカウントは "ローカル アカウント" です。現在、ローカル アカウントとして任意のユーザー名 (単なるプレーン文字列) もサポートしています (joe、bob、sarah、jim など)。Azure AD B2C サービスでは、これらの 2 つの "タイプ" のローカル アカウントからいずれかを選択できます。
 
 ### 現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
 
@@ -55,7 +55,7 @@ Azure AD B2C ディレクトリでは、ユーザーは大部分のアプリに�
 
 ### 複数の Azure AD B2C ディレクトリがあります。Azure プレビュー ポータルでそれらを管理するにはどのようにすればいいですか。
 
-Azure プレビュー ポータルには、各 Azure AD B2C ディレクトリ独自の B2C 機能ブレードがあります。Azure プレビュー ポータルで特定のディレクトリの B2C 機能ブレードに移動する方法については、[ここ](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)をご覧ください。Azure プレビュー ポータルで Azure AD B2C ディレクトリを切り替えると、大部分のブラウザでは B2C 機能ブレードが開いたままになりません。
+Azure プレビュー ポータルには、各 Azure AD B2C テナント独自の B2C 機能ブレードがあります。Azure プレビュー ポータルで特定のテナントの B2C 機能ブレードに移動する方法については、[ここ](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)をご覧ください。Azure プレビュー ポータルで Azure AD B2C ディレクトリを切り替えると、大部分のブラウザでは B2C 機能ブレードが開いたままになりません。
 
 ### Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツ、および送信者フィールド ("From:" フィールド))。
 
@@ -75,7 +75,7 @@ Azure AD Graph API ([ここ](active-directory-b2c-devquickstarts-graph-dotnet.md
 
 ### Azure AD B2C は SharePoint On-Premises 2016 以前と連携しますか。
 
-現時点では変更できません。Azure AD B2C では、ポータル/E コマース アプリケーションが SharePoint On-Premises のニーズに基づいて構築した SAML 1.1 トークンはサポートされません。Azure AD B2C は、シナリオを共有する SharePoint の外部パートナー向けではありません。「[Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx)」を参照してください。
+現時点では連携しません。Azure AD B2C では、ポータル/E コマース アプリケーションが SharePoint On-Premises のニーズに基づいて構築した SAML 1.1 トークンはサポートされません。Azure AD B2C は、シナリオを共有する SharePoint の外部パートナー向けではありません。「[Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx)」を参照してください。
 
 ### Azure AD B2C ではどのようなレポート機能と監査機能が提供されますか。 それは Azure AD Premium の機能と同じですか。
 
@@ -87,7 +87,7 @@ Azure AD Graph API ([ここ](active-directory-b2c-devquickstarts-graph-dotnet.md
 
 ### Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を login.microsoftonline.com から login.contoso.com に変更できますか。
 
-現時点では変更できません。ただし、この機能は検討中です。
+現時点では変更できません。この機能は検討中です。また、Azure ポータルで、テナントの **[ドメイン]** タブのドメインを "確認" しても変更はされません。
 
 ### Enterprise Mobility Suite (EMS) の一部として Azure AD B2C を取得できますか。
 
@@ -103,6 +103,6 @@ Azure AD B2C に関する[このサポート トピック](active-directory-b2c-
 
 ## 詳細情報
 
-現在の[プレビューの制限事項および制約事項](active-directory-b2c-limitations.md)を確認することもできます。
+現在の[プレビューの制限事項および制約事項](active-directory-b2c-limitations.md)も参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

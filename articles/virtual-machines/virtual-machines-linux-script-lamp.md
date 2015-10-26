@@ -19,7 +19,8 @@
 
 #Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする#
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイモデルで作成された仮想マシンでのアプリケーション アクセスのトラブルシューティング方法を説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 Linux 向け Microsoft Azure カスタム スクリプト拡張機能では、Python や Bash など、仮想マシン (VM) でサポートされているスクリプト言語で記述された任意のコードを実行する VM をカスタマイズすることができます。これによって、非常に柔軟に複数のマシンにアプリケーションを自動的にデプロイすることが可能になります。
 
@@ -67,11 +68,11 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
 ### スクリプトのアップロード
 
-スクリプトを *lamp\_install.sh* などとしてテキスト ファイルに保存し、Azure ストレージ アカウントにアップロードします。Azure CLI を使えば簡単にできます。次の例では、ファイルを「scripts」という名前のストレージ コンテナーにアップロードします。コンテナーが存在しない場合は、まずコンテナーを作成する必要があります。
+スクリプトを *lamp\_install.sh* などとしてテキスト ファイルに保存し、Azure Storage にアップロードします。Azure CLI を使えば簡単にできます。次の例では、ファイルを「scripts」という名前のストレージ コンテナーにアップロードします。コンテナーが存在しない場合は、まずコンテナーを作成する必要があります。
 
     azure storage blob upload -a <yourStorageAccountName> -k <yourStorageKey> --container scripts ./install_lamp.sh
 
-また、Azure ストレージからスクリプトをダウンロードする方法を記述した JSON ファイルも作成します。*public\_config.json* という名前でこのファイルを保存します (「mystorage」をご利用のストレージ アカウントの名前に置き換えてください)。
+また、Azure Storage からスクリプトをダウンロードする方法を記述した JSON ファイルも作成します。*public\_config.json* という名前でこのファイルを保存します (「mystorage」をご利用のストレージ アカウントの名前に置き換えてください)。
 
     {"fileUris":["https://mystorage.blob.core.windows.net/scripts/install_lamp.sh"], "commandToExecute":"sh install_lamp.sh" }
 
@@ -99,7 +100,7 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 ## その他のリソース
 
-同じ基本的な手順で、より複雑なアプリをデプロイすることも可能です。この例では、インストール スクリプトは Azure ストレージのパブリック BLOB として保存されています。インストール スクリプトを [Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx) (SAS) を使ったセキュアな BLOB として保存すると、より安全です。
+同じ基本的な手順で、より複雑なアプリをデプロイすることも可能です。この例では、インストール スクリプトは Azure Storage のパブリック BLOB として保存されています。インストール スクリプトを [Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx) (SAS) を使ったセキュアな BLOB として保存すると、より安全です。
 
 次に、Azure CLI、Linux、およびカスタム スクリプト拡張機能のその他のリソースをリストします。
 
@@ -109,4 +110,4 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

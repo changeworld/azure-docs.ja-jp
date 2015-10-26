@@ -94,4 +94,4 @@ Transact-SQL リファレンスには SQL Server 2008、SQL Server 2008 R2、SQL
 
 トピックの全体的主題がある製品で使用されるが、一部の引数がサポートされないことがあります。たとえば、含有データベース ユーザーは SQL Server 2012 で導入されました。**CREATE USER** ステートメントは SQL Server 製品で利用できますが、**WITH PASSWORD** は以前のバージョンでは利用できません。この場合、追加の「**適用先**」セクションがトピックの本文の引数説明に挿入されます。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

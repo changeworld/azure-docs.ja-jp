@@ -19,11 +19,12 @@
 
 # Azure 上の CoreOS で fleet を使ってみる
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 この記事では、[fleet](https://github.com/coreos/fleet) と [Docker](https://www.docker.com/) を使用して、[CoreOS] 仮想マシンのクラスターでアプリケーションを実行する簡単な例を 2 つ紹介します。
 
-これらの例を使用するには、「[Azure 上で CoreOS を使用する方法]」の説明に従がって、3 ノード構成の CoreOS クラスターを設定します。 設定が終わったら、CoreOS デプロイメントの極めて基本的な要素について理解し、動作中のクラスターとクライアント コンピューターが準備できたことになります。これらの例では、同じクラスター名を使用します。また、これらの例では **fleetctl** コマンドの実行にローカルの Linux ホストを使用することが前提になっています。
+これらの例を使用するには、「[Azure 上で CoreOS を使用する方法]」の説明に従がって、3 ノード構成の CoreOS クラスターを設定します。 設定が終わったら、CoreOS デプロイの極めて基本的な要素について理解し、動作中のクラスターとクライアント コンピューターが準備できたことになります。これらの例では、同じクラスター名を使用します。また、これらの例では **fleetctl** コマンドの実行にローカルの Linux ホストを使用することが前提になっています。
 
 
 
@@ -175,4 +176,4 @@ fleetctl --tunnel coreos-cluster.cloudapp.net:22 unload apache@{1,2,3}.service
 [CoreOS Apache Docker Hub イメージ]: https://registry.hub.docker.com/u/coreos/apache/
 [Azure 上での Linux およびオープン ソース コンピューティング]: virtual-machines-linux-opensource.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

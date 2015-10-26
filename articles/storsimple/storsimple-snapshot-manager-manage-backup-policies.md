@@ -119,4 +119,4 @@
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 - [StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理方法](storsimple-snapshot-manager-manage-backup-jobs.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

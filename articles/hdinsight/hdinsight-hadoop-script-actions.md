@@ -351,4 +351,4 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

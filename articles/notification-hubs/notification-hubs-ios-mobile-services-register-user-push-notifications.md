@@ -122,4 +122,4 @@
 [Get Started with Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

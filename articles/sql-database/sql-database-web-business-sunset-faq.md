@@ -66,4 +66,4 @@ Basic、Standard、Premium の Azure SQL Database は時間単位で課金され
 
 [SQL Database の Web/Business データベースを新しいサービス階層にアップグレードする](sql-database-upgrade-new-service-tiers.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

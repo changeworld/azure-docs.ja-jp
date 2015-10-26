@@ -34,4 +34,4 @@ iOS クライアントからカスタム API を呼び出すには、`MSClient i
 	     completion:completion ];
 		
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

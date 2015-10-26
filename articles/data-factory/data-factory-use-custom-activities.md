@@ -306,7 +306,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 ### カスタム アクティビティを使用するパイプラインの作成と実行
    
-1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**... (省略記号)** をクリックすると表示されます。 
+1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...] (省略記号)** をクリックすると表示されます。 
 2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。**HDInsightLinkedService** リンク サービスの作成手順を実行した場合、独自のクラスターを使用するには、次の JSON で **HDInsightOnDemandLinkedService** を **HDInsightLinkedService** に置き換えます。 
 		
 		{
@@ -367,7 +367,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 4. コマンド バーの **[デプロイ]** をクリックして、パイプラインをデプロイします。
 8. **adftutorial** コンテナー内の BLOB ストレージに出力ファイルが生成されていることを確認します。
 
-	![output from custom activity][image-data-factory-ouput-from-custom-activity]
+	![カスタム アクティビティの出力][image-data-factory-ouput-from-custom-activity]
 
 9. 出力ファイルを開くと、以下のような出力結果が表示されるはずです。
 	
@@ -377,7 +377,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 10.	[Azure ポータル][azure-preview-portal]または Azure PowerShell コマンドレットを使用して、データ ファクトリ、パイプライン、データセットを監視します。カスタム アクティビティのコード内の **ActivityLogger** からのメッセージは、ポータルからダウンロードできるログ (user-0.log など) で確認することも、コマンドレットを使用して確認することもできます。
 
-	![download logs from custom activity][image-data-factory-download-logs-from-custom-activity]
+	![カスタム アクティビティのダウンロード ログ][image-data-factory-download-logs-from-custom-activity]
 	
    
 データセットやパイプラインを監視するための詳細な手順については、「[パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)」を参照してください。
@@ -432,7 +432,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 3.  Azure Batch サービスを使用してシナリオをテストできるように、パイプラインの開始時刻と終了時刻を変更できます。 
 4.  次の図に示すように、Azure Batch Explorer でスライスの処理に関連する Azure Batch のタスクを確認できます。
 
-	![Azure Batch tasks][image-data-factory-azure-batch-tasks]
+	![Azure Batch のタスク][image-data-factory-azure-batch-tasks]
 
 > [AZURE.NOTE]Data Factory サービスでは、HDInsight の場合と同様、Azure Batch のオンデマンド オプションはサポートされません。Azure データ ファクトリでは、独自の Azure Batch プールのみ使用できます。
 
@@ -476,4 +476,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [image-data-factory-azure-batch-tasks]: ./media/data-factory-use-custom-activities/AzureBatchTasks.png
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

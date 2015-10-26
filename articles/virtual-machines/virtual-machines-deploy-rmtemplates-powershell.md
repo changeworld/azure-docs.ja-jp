@@ -14,18 +14,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/10/2015"
+	ms.date="10/08/2015"
 	ms.author="davidmu"/>
 
 # Azure リソース マネージャーと PowerShell を使用した仮想マシンの管理
 
 > [AZURE.SELECTOR]
-- [Portal](virtual-machines-windows-tutorial.md)
-- [PowerShell](virtual-machines-deploy-rmtemplates-powershell.md)
+- [Preview Portal](virtual-machines-windows-tutorial.md)
+- [PowerShell - Windows](virtual-machines-deploy-rmtemplates-powershell.md)
+- [Azure CLI](virtual-machines-deploy-rmtemplates-azure-cli.md)
 
 Azure PowerShell とリソース マネージャー テンプレートを使用すると、Microsoft Azure でリソースを管理する際に高い処理能力と柔軟性が得られます。この記事にあるタスクを使用すると、仮想マシンのリソースを作成して管理できます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイメント モデルを使用したリソースの管理について説明します。また、[従来のデプロイメント モデル](virtual-machines-windows-tutorial-classic-portal.md)を使用してリソースを管理することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-windows-tutorial-classic-portal.md)。
 
 次のタスクでは、リソース マネージャー テンプレートと PowerShell を使用します。
 
@@ -58,33 +59,33 @@ JSON ベースのリソース テンプレートを定義すると、PowerShell 
 
 Azure リソース マネージャー テンプレートを使用して作成するリソースは、新規または既存の *Azure リソース グループ*にデプロイされます。リソース グループでは、デプロイした複数のリソースを論理グループとしてまとめて管理できます。つまり、グループやアプリケーションのライフサイクル全体を管理できます。
 
-テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
 
 ### リソース グループの作成
 
 リソースを作成するタスクでは、既存のリソース グループがない場合は必要となります。
 
-次のコマンドで、*resource group name* を新しいリソース グループの名前に置き換え、*Azure location* を、リソースを配置する Azure データセンターの場所に置き換えた後、このコマンドを実行します。
+次のコマンドで、*resource group name* を新しいリソース グループの名前で置き換え、*Azure location* を、リソースを配置する Azure データセンターの場所で置き換えた後、このコマンドを実行します。
 
-	New-AzureResourceGroup -Name "resource group name" -Location "Azure location"
+	New-AzureRmResourceGroup -Name "resource group name" -Location "Azure location"
 
 ## <a id="windowsvm"></a>タスク: 仮想マシンの作成
 
-このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[米国西部での簡単な Windows VM のデプロイ](https://azure.microsoft.com/documentation/templates/101-simple-windows-vm/)に関するページを参照してください。
+このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[米国西部での簡単な Windows VM のデプロイ](https://azure.microsoft.com/documentation/templates/101-simple-windows-vm/)に関するページをご覧ください。
 
 ![](./media/virtual-machines-deploy-rmtemplates-powershell/windowsvm.png)
 
-次のコマンドで、*deployment name* をそのデプロイに使用する名前に置き換え、*resource group name* を既存のリソース グループの名前に置き換えた後、このコマンドを実行します。
+次のコマンドで、*deployment name* をそのデプロイメントに使用する名前で置き換え、*resource group name* を既存のリソース グループの名前で置き換えた後、このコマンドを実行します。
 
-	New-AzureResourceGroupDeployment -Name "deployment name" -ResourceGroupName "resource group name" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
+	New-AzureRmResourceGroupDeployment -Name "deployment name" -ResourceGroupName "resource group name" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
 
 次に例を示します。
 
-	New-AzureResourceGroupDeployment -Name "TestDeployment" -ResourceGroupName "TestRG" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
+	New-AzureRmResourceGroupDeployment -Name "TestDeployment" -ResourceGroupName "TestRG" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
 
-JSON ファイルの **parameters** セクションのパラメーター値を指定するよう求められます。
+JSON ファイルの **parameters** セクションのパラメーター値を指定するように求められます。
 
-	cmdlet New-AzureResourceGroupDeployment at command pipeline position 1
+	cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
 	Supply values for the following parameters:
 	(Type !? for Help.)
 	newStorageAccountName: saacct
@@ -129,19 +130,19 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 ## <a id="customvm"></a>タスク: 専用ディスクを使用した仮想マシンの作成
 
-このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[専用 VHD ディスクからの VM の作成](https://azure.microsoft.com/documentation/templates/201-vm-from-specialized-vhd/)に関するページを参照してください。
+このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[専用 VHD ディスクからの VM の作成](https://azure.microsoft.com/documentation/templates/201-vm-from-specialized-vhd/)に関するページをご覧ください。
 
-次のコマンドで、*deployment name* をそのデプロイに使用する名前に置き換え、*resource group name* を既存のリソース グループの名前に置き換えた後、このコマンドを実行します。
+次のコマンドで、*deployment name* をそのデプロイメントに使用する名前で置き換え、*resource group name* を既存のリソース グループの名前で置き換えた後、このコマンドを実行します。
 
-	New-AzureResourceGroupDeployment -Name "deployment name" -ResourceGroupName "resource group name" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json"
+	New-AzureRmResourceGroupDeployment -Name "deployment name" -ResourceGroupName "resource group name" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json"
 
 次に例を示します。
 
-	New-AzureResourceGroupDeployment -Name "TestDeployment" -ResourceGroupName "TestRG" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json"
+	New-AzureRmResourceGroupDeployment -Name "TestDeployment" -ResourceGroupName "TestRG" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-from-specialized-vhd/azuredeploy.json"
 
-JSON ファイルの **parameters** セクションのパラメーター値を指定するよう求められます。
+JSON ファイルの **parameters** セクションのパラメーター値を指定するように求められます。
 
-	cmdlet New-AzureResourceGroup at command pipeline position 1
+	cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
 	Supply values for the following parameters:
 	(Type !? for Help.)
 	osDiskVhdUri: http://saacct.blob.core.windows.net/vhds/osdiskforwindows.vhd
@@ -158,17 +159,17 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 ## <a id="multivm"></a>タスク: 外部ロード バランサーを使用した仮想ネットワーク内での複数の仮想マシンの作成
 
-このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[専用 VHD ディスクからの VM の作成](https://azure.microsoft.com/documentation/templates/201-2-vms-loadbalancer-lbrules/)に関するページを参照してください。
+このタスクでは、テンプレート ギャラリーのテンプレートを使用します。テンプレートの詳細については、[専用 VHD ディスクからの VM の作成](https://azure.microsoft.com/documentation/templates/201-2-vms-loadbalancer-lbrules/)に関するページをご覧ください。
 
 ![](./media/virtual-machines-deploy-rmtemplates-powershell/multivmextlb.png)
 
-次のコマンドで、*deployment name* をそのデプロイに使用する名前に置き換え、*resource group name* を既存のリソース グループの名前に置き換えた後、このコマンドを実行します。
+次のコマンドで、*deployment name* をそのデプロイメントに使用する名前で置き換え、*resource group name* を既存のリソース グループの名前で置き換えた後、このコマンドを実行します。
 
-	New-AzureResourceGroupDeployment -Name "deployment name" -ResourceGroupName "resource group name" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json"
+	New-AzureRmResourceGroupDeployment -Name "deployment name" -ResourceGroupName "resource group name" -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json"
 
-JSON ファイルの **parameters** セクションのパラメーター値を指定するよう求められます。
+JSON ファイルの **parameters** セクションのパラメーター値を指定するように求められます。
 
-	cmdlet New-AzureResourceGroup at command pipeline position 1
+	cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
 	Supply values for the following parameters:
 	(Type !? for Help.)
 	newStorageAccountName: saTest
@@ -185,9 +186,9 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 ## <a id="removerg"></a>タスク: リソース グループの削除
 
-次のコマンドの *resource group name* を、削除するリソース グループの名前に置き換えた後、このコマンドを実行します。
+次のコマンドの *resource group name* を、削除するリソース グループの名前で置き換えた後、このコマンドを実行します。
 
-	Remove-AzureResourceGroup  -Name "resource group name"
+	Remove-AzureRmResourceGroup  -Name "resource group name"
 
 > [AZURE.NOTE]**-Force** パラメーターを使用して確認プロンプトをスキップできます。
 
@@ -203,9 +204,9 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 ## <a id="displayvm"></a>タスク: 仮想マシンに関する情報の表示
 
-次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前に置き換え、*VM name* を仮想マシンの名前に置き換えた後、このコマンドを実行します。
+次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前で置き換え、*VM name* を仮想マシンの名前で置き換えた後、このコマンドを実行します。
 
-	Get-AzureVM -ResourceGroupName "resource group name" -Name "VM name"
+	Get-AzureRmVM -ResourceGroupName "resource group name" -Name "VM name"
 
 次のような結果が返されます。
 
@@ -274,9 +275,9 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 ## <a id="start"></a>タスク: 仮想マシンの起動
 
-次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前に置き換え、*VM name* を仮想マシンの名前に置き換えた後、このコマンドを実行します。
+次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前で置き換え、*VM name* を仮想マシンの名前で置き換えた後、このコマンドを実行します。
 
-	Start-AzureVM -ResourceGroupName "resource group name" -Name "VM name"
+	Start-AzureRmVM -ResourceGroupName "resource group name" -Name "VM name"
 
 次のような結果が返されます。
 
@@ -295,9 +296,9 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 ## <a id="stop"></a>タスク: 仮想マシンの停止
 
-次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前に置き換え、*VM name* を仮想マシンの名前に置き換えた後、このコマンドを実行します。
+次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前で置き換え、*VM name* を仮想マシンの名前で置き換えた後、このコマンドを実行します。
 
-	Stop-AzureVM -ResourceGroupName "resource group name" -Name "VM name"
+	Stop-AzureRmVM -ResourceGroupName "resource group name" -Name "VM name"
 
 次のように確認が求められます。
 
@@ -322,9 +323,9 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 ## <a id="restart"></a>タスク: 仮想マシンの再起動
 
-次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前に置き換え、*VM name* を仮想マシンの名前に置き換えた後、このコマンドを実行します。
+次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前で置き換え、*VM name* を仮想マシンの名前で置き換えた後、このコマンドを実行します。
 
-	Restart-AzureVM -ResourceGroupName "resource group name" -Name "VM name"
+	Restart-AzureRmVM -ResourceGroupName "resource group name" -Name "VM name"
 
 次のような結果が返されます。
 
@@ -343,9 +344,9 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 ## <a id="delete"></a>タスク: 仮想マシンの削除
 
-次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前に置き換え、*VM name* を仮想マシンの名前に置き換えた後、このコマンドを実行します。
+次のコマンドで、*resource group name* を、仮想マシンが含まれているリソース グループの名前で置き換え、*VM name* を仮想マシンの名前で置き換えた後、このコマンドを実行します。
 
-	Remove-AzureVM -ResourceGroupName "resource group name" –Name "VM name"
+	Remove-AzureRmVM -ResourceGroupName "resource group name" –Name "VM name"
 
 > [AZURE.NOTE]**-Force** パラメーターを使用して確認プロンプトをスキップできます。
 
@@ -379,4 +380,4 @@ JSON ファイルの **parameters** セクションのパラメーター値を�
 
 [Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

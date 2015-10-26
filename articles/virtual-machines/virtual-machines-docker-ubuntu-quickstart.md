@@ -18,7 +18,8 @@
 
 # Azure Marketplace で Docker をすばやく開始する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
 [Docker] を最もすばやく使用する方法は、Azure Marketplace に移動し、[Canonical] と [MSOpenTech] により作成された **Ubuntu Server の Docker** イメージ テンプレートを使用して VM を作成するものです。これにより Ubuntu Server VM が作成され、[Docker VM 拡張機能](virtual-machines-docker-vm-extension.md)のインストールが、**最新の** Docker Engine のインストールと、Azure での実行が完了した状態で自動的に行われます。
 
@@ -77,4 +78,4 @@ Docker コマンドの発行を開始しますが、この Azure VM では既定
 [MSOpenTech]: http://msopentech.com/
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

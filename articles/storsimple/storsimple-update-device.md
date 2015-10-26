@@ -119,4 +119,4 @@ Microsoft Azure StorSimple の更新プログラムとは異なり、修正プ�
 - [StorSimple 用 Windows PowerShell を使用した StorSimple デバイスの管理の詳細](storsimple-windows-powershell-administration.md)
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

@@ -8,4 +8,4 @@
 - [Remote Desktop](../articles/hdinsight/hdinsight-hadoop-use-hive-remote-desktop.md)
 - [Curl](../articles/hdinsight/hdinsight-hadoop-use-hive-curl.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -13,7 +13,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/06/2015"
+   ms.date="10/13/2015"
    ms.author="cherylmc"/>
 
 # ExpressRoute 回線の作成と変更
@@ -322,6 +322,6 @@ ExpressRoute 回線サービス プロバイダーのプロビジョニング状
 ## 次のステップ
 
 - [ルーティングの構成](expressroute-howto-routing-classic.md)
-- [ExpressRoute 回線への VNet のリンク](expresssroute-howto-linkvnet-classic.md) 
+- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md) 
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

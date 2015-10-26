@@ -19,7 +19,8 @@
 
 # 仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
 Azure で仮想マシンを使用することで、多くのコンピューティング処理を要するタスクを処理できます。たとえば、仮想マシンでタスクを処理し、結果をクライアント マシンやモバイル アプリケーションに配信できます。このガイドを記事を読むことで、多くのコンピューティング処理を要する Java アプリケーションを実行し、それを別の Java アプリケーションから監視できる仮想マシンの作成方法を理解できます。
 
@@ -70,7 +71,7 @@ Azure で仮想マシンを使用することで、多くのコンピューテ�
 
 ## 仮想マシンにリモート ログインするには
 
-1. [管理ポータル](https://manage.windowsazure.com) にログオンします。
+1. [管理ポータル](https://manage.windowsazure.com)にログオンします。
 2. **[仮想マシン]** をクリックします。
 3. ログインする仮想マシンの名前をクリックします。
 4. **[接続]** をクリックします。
@@ -411,7 +412,7 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 	}
 
 ## Java アプリケーションの実行方法
-多くのコンピューティング処理を要するアプリケーションを、最初はキューを作成するために実行し、次は巡回セールスマン問題を解くために実行します。これにより、Service Bus キューに現在の最適な経路が追加されます。多くのコンピューティング処理を要するアプリケーションの実行中に (または実行後に)、クライアントを実行して Service Bus キューから結果を表示します。
+多くのコンピューティング処理を要するアプリケーションを、最初はキューを作成するために実行し、次に巡回セールスマン問題を解くために実行します。これにより、Service Bus キューに現在の最適な経路が追加されます。多くのコンピューティング処理を要するアプリケーションの実行中に (または実行後に)、クライアントを実行して Service Bus キューから結果を表示します。
 
 ### 多くのコンピューティング処理を要するアプリケーションの実行するには
 
@@ -519,4 +520,4 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 [default_key]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: ../java-add-certificate-ca-store.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

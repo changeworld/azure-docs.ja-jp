@@ -150,4 +150,4 @@ UI の Reach (リーチ) セクションは、プッシュ キャンペーン管
 [Link 29]: mobile-engagement-user-interface-reach-content.md
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

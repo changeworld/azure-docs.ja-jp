@@ -30,4 +30,4 @@ REST API | Data Factory REST API を使用して、Azure Data Factory を作成�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

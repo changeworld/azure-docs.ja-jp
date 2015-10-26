@@ -1,63 +1,50 @@
 <properties 
-	pageTitle="Azure Virtual Machine 上の SQL Server にデータを移動する| Azure"
-	description="フラット ファイルまたはオンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動します。"
-	services="machine-learning"
-	documentationCenter=""
-	authors="msolhab"
-	manager="paulettm"
-	editor="cgronlun"/>
+	pageTitle="Azure 仮想マシン上の SQL Server にデータを移動する| Azure" 
+	description="フラット ファイルまたはオンプレミスの SQL Server から Azure VM 上の SQL Server にデータを移動します。" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="bradsev" 
+	manager="paulettm" 
+	editor="cgronlun" />
 
 <tags 
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="fashah;mohabib;bradsev"/>
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="10/12/2015" 
+	ms.author="fashah;mohabib;bradsev" />
 
-# Azure Virtual Machine 上の SQL Server にデータを移動する
+# Azure 仮想マシン上の SQL Server にデータを移動する
 
-このドキュメントでは、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure Virtual Machine 上の SQL Server にデータを移動するためのオプションについて説明します。クラウドにデータを移動するこれらのタスクは、Azure Machine Learning が提供する Advanced Analytics Process and Technology (ADAPT) の一部です。
+この**メニュー**は、Cortana Analytics Process (CAP) でデータを保存および処理できるターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+
+[AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
+
+
+## はじめに
+**このドキュメント**では、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションについて説明します。クラウドにデータを移動するためのこれらのタスクは、Azure で提供される Cortana Analytics Process の一部です。
 
 Machine Learning 用に Azure SQL データベースにデータを移動するためのオプションに関する説明は、「[Azure Machine Learning 用に Azure SQL データベースにデータを移動する](machine-learning-data-science-move-sql-azure.md)」を参照してください。
 
-次の表は、Azure Virtual Machine 上の SQL Server にデータを移動するためのオプションをまとめたものです。<table>
+次の表は、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションをまとめたものです。
 
-<tr>
-<td><b>ソース</b></td>
-<td colspan="2" align="center"><b>移動先: Azure VM 上の SQL Server</b></td>
-</tr>
-
-<tr>
-  <td><b>フラット ファイル</b></td>  
-  <td>
-    1.<a href="#insert-tables-bcp">コマンド ライン一括コピー ユーティリティ (BCP)</a><br>
-    2.<a href="#insert-tables-bulkquery">一括挿入 SQL クエリ</a><br>
-    3.<a href="#sql-builtin-utilities">SQL Server のグラフィカル組み込みユーティリティ</a>
-  </td>
-</tr>
-<tr>
-  <td><b>オンプレミスの SQL Server</b></td>
-  <td>
-    1.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード</a><br>
-    2.<a href="#export-flat-file">フラット ファイルへのエクスポート</a><br>
-    3.<a href="#sql-migration">SQL Database 移行ウィザード</a> <br>    
-    4.<a href="#sql-backup">データベースのバックアップと復元</a> <br>
-  </td>
-</tr>
-</table>
+<b>ソース</b> |<b>移動先: Azure VM 上の SQL Server</b> |
+------------------ |-------------------- |
+<b>フラット ファイル</b> |1\.<a href="#insert-tables-bcp">コマンド ライン一括コピー ユーティリティ (BCP)</a><br> 2.<a href="#insert-tables-bulkquery">一括挿入 SQL クエリ</a><br> 3.<a href="#sql-builtin-utilities">SQL Server のグラフィカル組み込みユーティリティ</a>
+<b>オンプレミスの SQL Server</b> | 1\.<a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード</a><br> 2.<a href="#export-flat-file">フラット ファイルへのエクスポート</a><br> 3.<a href="#sql-migration">SQL Database 移行ウィザード</a><br> 4.<a href="#sql-backup">データベースのバックアップと復元</a><br>
 
 このドキュメントでは、SQL Server Management Studio または Visual Studio のデータベース エクスプローラーから SQL コマンドが実行されることを想定していることに注意してください。
 
-> [AZURE.TIP]別の方法として、[Azure Data Factory](https://azure.microsoft.com/ja-JP/services/data-factory/) を使用して、データを Azure の SQL Server VM に移動するパイプラインの作成とスケジュール設定を実行できます。詳細については、「[Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)](../data-factory/data-factory-copy-activity.md)」を参照してください。
+> [AZURE.TIP]別の方法として、[Azure Data Factory](https://azure.microsoft.com/JA-JP/services/data-factory/) を使用して、データを Azure の SQL Server VM に移動するパイプラインの作成とスケジュール設定を実行できます。詳細については、「[Azure Data Factory を使用してデータをコピーする (コピー アクティビティ)](../data-factory/data-factory-copy-activity.md)」を参照してください。
 
 
 ## <a name="prereqs"></a>前提条件
 このチュートリアルでは、以下があることを前提としています。
 
-* **Azure サブスクリプション**。サブスクリプションがない場合でも、[無料評価版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* **Azure ストレージ アカウント**。このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+* **Azure サブスクリプション**。サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* **Azure ストレージ アカウント**。このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
 * **Azure VM 上に SQL Server** がプロビジョニングされていること。手順については、「[高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する](machine-learning-data-science-setup-sql-server-virtual-machine.md)」を参照してください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。手順については、「[Azure PowerShell のインストールおよび構成方法](powershell-install-configure.md)」を参照してください。
 
@@ -236,4 +223,4 @@ SQL Server は以下のものをサポートします。
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
-<!----HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

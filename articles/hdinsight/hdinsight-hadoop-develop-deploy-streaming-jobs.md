@@ -555,4 +555,4 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-hadoop-develop-deploy-streaming-jobs/HDI.WordCountDiagram.gif "MapReduce ワード カウント アプリケーションのフロー"
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

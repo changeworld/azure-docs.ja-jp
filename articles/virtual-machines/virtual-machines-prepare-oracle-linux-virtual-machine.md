@@ -18,7 +18,8 @@ ms.author="bbenz" />
 
 #Azure 用の Oracle Linux 仮想マシンの準備
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事は、リソース マネージャー デプロイ モデルまたはクラシック デプロイ モデルを使用して作成した VM に適用されます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+
 
 -   [Azure 用の Oracle Linux 6.4 以上の仮想マシンの準備](virtual-machines-linux-create-upload-vhd-oracle.md)
 
@@ -221,4 +222,4 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 15.  Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

@@ -2,4 +2,4 @@ Traffic Manager によって負荷分散される Azure App Services の Web ア
 
 サイトのモードの変更方法など、App Service のプラン モードの詳細については、[Web アプリのスケールの設定方法](../article/app-service-web/web-sites-scale.md)に関するページを参照してください。
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

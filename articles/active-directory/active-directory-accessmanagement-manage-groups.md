@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="swadhwa"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -68,4 +68,4 @@
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

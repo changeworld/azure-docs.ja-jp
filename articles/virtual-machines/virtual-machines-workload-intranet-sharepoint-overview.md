@@ -19,7 +19,8 @@
 
 # Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 このトピックには、従来のデプロイ モデルを使用して、イントラネットのみの SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループをデプロイするための詳細な手順へのリンクが含まれます。ファームには次のコンピューターが含まれます。
 
@@ -43,7 +44,7 @@
 - [フェーズ 4: SharePoint サーバーを構成する](virtual-machines-workload-intranet-sharepoint-phase4.md)。4 つの SharePoint 仮想マシンを作成して構成します。
 - [フェーズ 5: 可用性グループを作成して SharePoint データベースを追加する](virtual-machines-workload-intranet-sharepoint-phase5.md)。データベースを準備し、SQL Server AlwaysOn 可用性グループを作成します。
 
-この SharePoint と SQL Server AlwaysOn のデプロイメントは、[SharePoint と SQL Server AlwaysOn のインフォグラフィック](http://go.microsoft.com/fwlink/?LinkId=394788)が付属し、最新の推奨事項が組み込まれるように設計されています。
+この SharePoint と SQL Server AlwaysOn のデプロイは、[SharePoint と SQL Server AlwaysOn のインフォグラフィック](http://go.microsoft.com/fwlink/?LinkId=394788)が付属し、最新の推奨事項が組み込まれるように設計されています。
 
 この構成は、Azure インフラストラクチャ サービスに機能する高可用性のイントラネット SharePoint ファームを作成するための、事前に定義されたアーキテクチャの規範的なフェーズ単位のガイドです。Azure への SharePoint 2013 の実装に関する他のアーキテクチャ ガイダンスについては、「[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)」を参照してください。
 
@@ -76,4 +77,4 @@ SharePoint と SQL Server AlwaysOn 可用性グループの追加情報につい
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

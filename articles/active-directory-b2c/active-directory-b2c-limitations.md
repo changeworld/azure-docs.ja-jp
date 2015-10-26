@@ -88,4 +88,4 @@ B2C 機能には、Azure プレビュー ポータルからアクセスできま
 
 Azure ポータルで Azure AD B2C テナントを削除することはできません。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

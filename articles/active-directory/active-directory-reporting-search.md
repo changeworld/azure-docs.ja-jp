@@ -56,4 +56,4 @@ RMS デバイスの利用状況 | いいえ
  - [Azure Active Directory レポート](active-directory-view-access-usage-reports.md)
  - [Azure Active Directory レポートの監査イベント](active-directory-reporting-audit-events.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

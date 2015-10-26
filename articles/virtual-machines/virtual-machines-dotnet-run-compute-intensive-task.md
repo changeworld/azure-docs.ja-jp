@@ -21,7 +21,8 @@
 
 Azure で仮想マシンを使用することで、多くのコンピューティング処理を要するタスクを処理できます。たとえば、仮想マシンでタスクを処理し、結果をクライアント マシンやモバイル アプリケーションに配信できます。このチュートリアルを完了すると、多くのコンピューティング処理を要する .NET アプリケーションを実行し、それを別の .NET アプリケーションから監視できる仮想マシンの作成方法を理解できます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 このチュートリアルは、.NET コンソール アプリケーションの作成方法を知っていることを前提としています。Azure の知識は不要です。
 
@@ -549,4 +550,4 @@ TSPSolver を使用してキューを作成したり削除したりする代わ�
 [namespace_list]: ./media/virtual-machines-dotnet-run-compute-intensive-task/NamespaceList.png
 [access_key_button]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AccessKey.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

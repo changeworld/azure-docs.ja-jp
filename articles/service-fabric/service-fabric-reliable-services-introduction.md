@@ -1,20 +1,20 @@
 <properties
    pageTitle="Service Fabric の Reliable Service プログラミング モデルの概要"
-	description="Service Fabric の Reliable Service プログラミング モデルについて学び、独自のサービスを作成しましょう。"
-	services="Service-Fabric"
-	documentationCenter=".net"
-	authors="masnider"
-	manager="timlt"
-	editor="jessebenson; mani-ramaswamy"/>
+   description="Service Fabric の Reliable Service プログラミング モデルについて学び、独自のサービスを作成しましょう。"
+   services="Service-Fabric"
+   documentationCenter=".net"
+   authors="masnider"
+   manager="timlt"
+   editor="jessebenson; mani-ramaswamy"/>
 
 <tags
    ms.service="Service-Fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/26/2015"
-	ms.author="masnider;jesseb"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/26/2015"
+   ms.author="masnider;jesseb"/>
 
 # Reliable Service の概要
 Service Fabric を使用すると、信頼性の高いステートレス サービスとステートフル サービスを簡単に作成および管理できます。このドキュメントでは、以下について説明します。
@@ -130,4 +130,4 @@ Service Fabric でのステートレス サービスの使用方法を示す一�
 + [Reliable Actor プログラミング モデルについて](service-fabric-reliable-actors-introduction.md)
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

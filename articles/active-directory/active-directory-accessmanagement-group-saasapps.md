@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="swadhwa"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na" 
 	ms.topic="article"
-	ms.date="08/10/2015"
+	ms.date="10/09/2015"
 	ms.author="femila"/>
 
 
@@ -30,7 +30,7 @@ Azure AD Premium では、Azure AD と連携する SaaS アプリケーション
 1. 任意のブラウザーを開いて Azure 管理ポータルに移動します。Azure 管理ポータルの左側にあるナビゲーション バーで Active Directory 拡張機能を探します。**[ディレクトリ]** タブで、Saas アプリケーションに対するグループのアクセス権を割り当てるディレクトリをクリックします。
 
 
-2. 目的のディレクトリの [アプリケーション] タブをクリックします。アプリケーション ギャラリーから追加したアプリケーションをクリックし、[ユーザーとグループ] タブをクリックします。
+2. 目的のディレクトリの [アプリケーション] タブをクリックします。アプリケーション ギャラリーから追加したアプリケーションをクリックし、**[ユーザーとグループ]** タブをクリックします。
 
 3. [ユーザーとグループ] タブで、アクセス権を割り当てるグループの名前を [指定値で始まる] フィールドに入力し、右上のチェック マークをオンにします。入力するのは、グループ名の先頭部分だけでかまいません。その後グループをクリックして強調表示し、**[アクセス権の割り当て]** ボタンをクリックして、確認のメッセージが表示されたら **[はい]** をクリックします。
 
@@ -48,4 +48,4 @@ Azure AD Premium では、Azure AD と連携する SaaS アプリケーション
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

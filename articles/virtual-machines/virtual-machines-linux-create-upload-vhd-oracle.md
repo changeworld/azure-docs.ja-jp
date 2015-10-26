@@ -19,7 +19,6 @@
 
 # Azure 用の Oracle Linux 仮想マシンの準備
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 - [Azure 用の Oracle Linux 6.4 以上の仮想マシンの準備](#oracle6)
 - [Azure 用の Oracle Linux 7.0 以上の仮想マシンの準備](#oracle7)
@@ -230,4 +229,4 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

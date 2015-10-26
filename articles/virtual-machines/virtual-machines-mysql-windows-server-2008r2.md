@@ -20,7 +20,8 @@
 
 # Windows Server 2012 R2 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 [MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。[Azure ポータル](http://manage.windowsazure.com)では、Windows Server 2012 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。次に、MySQL Server としてこれをインストールと構成できます。
 
@@ -129,4 +130,4 @@ Azure 仮想マシンで実行する MySQL Server サービスへのリモート
 
 MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

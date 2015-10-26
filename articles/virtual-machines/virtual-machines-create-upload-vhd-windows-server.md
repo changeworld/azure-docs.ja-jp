@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Powershell を使用した Windows Server VHD の作成とアップロード | Microsoft Azure"
-	description="従来のデプロイメント モデルと Azure Powershell を使用して Windows Server ベースの仮想ハード ディスク (VHD) を作成、アップロードする方法を説明します。"
+	description="従来のデプロイ モデルと Azure Powershell を使用して Windows Server ベースの仮想ハード ディスク (VHD) を作成、アップロードする方法を説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -19,7 +19,8 @@
 
 # Windows Server VHD の作成と Azure へのアップロード
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 この記事では、イメージを使用してそのイメージを基にした仮想マシンを作成するための、オペレーティング システムの仮想ハード ディスク (VHD) をアップロードする方法について説明します。Microsoft Azure でのディスクと VHD の詳細については、「[Virtual Machines 用のディスクと VHD について](virtual-machines-disks-vhds.md)」を参照してください。
 
@@ -33,7 +34,7 @@
 
 2. **Microsoft Azure PowerShell** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。このモジュールをダウンロードするには、[Microsoft Azure のダウンロード ページ](http://azure.microsoft.com/downloads/)にアクセスしてください。モジュールのインストールと構成のチュートリアルは[こちら](../powershell-install-configure.md)で入手できます。[Add-AzureVHD](http://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを使用して VHD をアップロードします。
 
-3. **.vhd ファイルに格納され、仮想マシンに接続されている Windows オペレーティング システム** - .vhd ファイルを作成するツールはいくつかあります。たとえば、Hyper-V を使用して仮想マシンを作成し、オペレーティング システムにインストールすることができます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。オペレーティング システムの詳細については、「[Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](http://go.microsoft.com/fwlink/p/?LinkId=393550)」を参照してください。
+3. **.vhd ファイルに格納され、仮想マシンに接続されている Windows オペレーティング システム** - .vhd ファイルを作成するツールはいくつかあります。たとえば、Hyper-V を使用して仮想マシンを作成し、オペレーティング システムにインストールすることができます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。オペレーティング システムの詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](http://go.microsoft.com/fwlink/p/?LinkId=393550)」を参照してください。
 
 > [AZURE.IMPORTANT]VHDX 形式は、Microsoft Azure ではサポートされていません。Hyper-V マネージャーまたは [Convert-VHD コマンドレット](http://technet.microsoft.com/library/hh848454.aspx)を使用して、ディスクを VHD 形式に変換できます。詳細については、この[ブログの投稿](http://blogs.msdn.com/b/virtual_pc_guy/archive/2012/10/03/using-powershell-to-convert-a-vhd-to-a-vhdx.aspx)を参照してください。
 
@@ -69,7 +70,7 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 2. コマンド バーで、**[新規]** をクリックします。
 
-3. **[Data Services]**、**[Storage]**、**[簡易作成]** の順にクリックします。
+3. **[Data Services]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
 
 	![ストレージ アカウントの簡易作成](./media/virtual-machines-create-upload-vhd-windows-server/Storage-quick-create.png)
 
@@ -181,7 +182,7 @@ Add-AzureVhd コマンドレットの詳細については、[Add-AzureVhd に�
 
 5.	**[VHD からイメージを作成する]** ウィンドウの **[オペレーティング システム ファミリ]** でご使用のオペレーティング システムを選択します。**[この VHD に関連付けられた仮想マシンで Sysprep を実行しました]** をクリックして、オペレーティング システムを一般化したことを確認し、**[OK]** をクリックします。
 
-    ![イメージの追加](./media/virtual-machines-create-upload-vhd-windows-server/Create_Image_From_VHD.png)
+    ![Add Image](./media/virtual-machines-create-upload-vhd-windows-server/Create_Image_From_VHD.png)
 
 6. ここまでの手順を完了すると、**[イメージ]** タブを選択したときに、新しいイメージが一覧に表示されます。
 
@@ -202,4 +203,4 @@ Add-AzureVhd コマンドレットの詳細については、[Add-AzureVhd に�
 [Step 3: Prepare the connection to Azure]: #prepAzure
 [Step 4: Upload the .vhd file]: #upload
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

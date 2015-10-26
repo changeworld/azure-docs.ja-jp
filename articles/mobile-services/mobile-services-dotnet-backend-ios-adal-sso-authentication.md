@@ -120,4 +120,4 @@
 [Microsoft Azure の管理ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

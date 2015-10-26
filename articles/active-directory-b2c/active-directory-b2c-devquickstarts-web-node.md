@@ -34,30 +34,28 @@
 
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
-```
-git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git
-```
+```git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS.git```
 
 完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
-> [AZURE.WARNING] 	B2C プレビューでは、Web-API タスク サーバーとそのサーバーに接続するクライアントの両方に同じクライアント ID またはアプリケーション ID およびポリシーを使用する必要があります。これは、iOS と Android のチュートリアルに当てはまります。これらのクイック スタートのいずれかでアプリケーションを作成したことがある場合は、以下で新しい値を作成するのではなく、それらの値を使用してください。
+> [AZURE.WARNING]B2C プレビューでは、Web-API タスク サーバーとそのサーバーに接続するクライアントの両方に同じクライアント ID またはアプリケーション ID およびポリシーを使用する必要があります。これは、iOS と Android のチュートリアルに当てはまります。これらのクイック スタートのいずれかでアプリケーションを作成したことがある場合は、以下で新しい値を作成するのではなく、それらの値を使用してください。
 
-## 1.Azure AD B2C ディレクトリの取得
+## 1\.Azure AD B2C ディレクトリの取得
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページを参照してください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。ディレクトリをまだ用意していない場合は、先に進む前に、[B2C ディレクトリの作成](active-directory-b2c-get-started.md)に関するページをご覧ください。
 
-## 2.アプリケーションの作成
+## 2\.アプリケーションの作成
 
-次に、B2C ディレクトリ内にアプリを作成する必要があります。これによって、 アプリと安全に通信するために必要ないくつかの情報が Azure AD に提供されます。ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つのロジック アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従います。このとき、
+次に、B2C ディレクトリ内にアプリを作成する必要があります。これによって、 アプリと安全に通信するために必要ないくつかの情報が Azure AD に提供されます。ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従ってください。このとき、
 
 - アプリケーションに **Web アプリまたは Web API** を含めます。
-- `http://localhost/TodoListService` を**応答 URL** として入力します。これはこのサンプル コードで使用する既定の URL です。
-- アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
+- `http://localhost/TodoListService` を**応答 URL** として入力します。これは、このコード サンプルで使用する既定の URL です。
+- アプリケーションの**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
 - アプリに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## 3.ポリシーの作成
+## 3\.ポリシーの作成
 
 Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポリシー**](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、3 つの ID エクスペリエンス (サインアップ、サインイン、および Facebook でのサインイン) が含まれます。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
@@ -69,11 +67,11 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポ
 
 3 つのポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
 
-この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C でどのように機能するかを学習する場合は、[.NET Web アプリの入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)から始めてください。
+この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C でどのように機能するかを学習する場合は、「[Azure AD B2C プレビュー: .NET Web アプリを構築する](active-directory-b2c-devquickstarts-web-dotnet.md)」から始めてください。
 
 
 
-## 4.ディレクトリに前提条件を追加する
+## 4\.ディレクトリに前提条件を追加する
 
 コマンド ラインから、ディレクトリをルート フォルダーに移動し (まだルート フォルダーでない場合)、次のコマンドを実行します。
 
@@ -97,13 +95,13 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが[**ポ
 
 これにより、passport-azure-ad が依存するライブラリがインストールされます。
 
-## 5.passport-node-js 戦略を使用するようにアプリを設定する
+## 5\.passport-node-js 戦略を使用するようにアプリを設定する
 ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
 -	最初に、プロジェクトのルートにある `config.js` ファイルを開いて、アプリの構成値を `exports.creds` セクションに入力します。
-    -	`clientID:` は、登録ポータル内のアプリに割り当てられた**アプリケーション ID** です。
+    -	`clientID:` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
     -	`returnURL` は、ポータルで入力した**リダイレクト URI** です。
-    - `tenantName:` は、アプリの**テナント名** (たとえば、contoso.onmicrosoft.com) です。
+    - `tenantName:` は、アプリの**テナント名** です (例: contoso.onmicrosoft.com)。
 
 [AZURE.INCLUDE [active-directory-b2c-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
@@ -304,9 +302,9 @@ app.get('/logout', function(req, res){
 
 -	これらについて詳しく説明しましょう。
     -	`/` ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
-    - `/account` ルートは、***ユーザーが認証されていることを確認した後*** (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
-    - `/login` ルートは、`passport-azuread` から azuread-openidconnect 認証子を呼び出します。これが失敗した場合は、ユーザーはもう一度 /login にリダイレクトされます。
-    - `/logout` は、クッキーをクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
+    - `/account` ルートは、***ユーザーが認証されていることを確認***した後 (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
+    - `/login` ルートは、`passport-azuread` から azuread-openidconnect 認証子を呼び出します。これが失敗した場合、ユーザーはもう一度 /login にリダイレクトされます。
+    - `/logout` は、Cookie をクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
 
 
 - `app.js` の最後の部分に、上記の `/account` で使用される EnsureAuthenticated メソッドを追加します。
@@ -326,7 +324,7 @@ function ensureAuthenticated(req, res, next) {
 
 ```
 
-- 最後に、`app.js` でサーバーそのものを実際に作成します。
+- 最後に、`app.js` でサーバー自体を実際に作成します。
 
 ```JavaScript
 
@@ -367,7 +365,7 @@ exports.list = function(req, res){
 
 これらは、要求 (存在する場合はユーザーも) をビューに渡すだけの単純なルートです。
 
-- ルート ディレクトリの下に `/views/index.ejs` ビューを作成します。これはサインインおよびサインアウト用のポリシーを呼び出して、アカウント情報を取得できるようにする単純なページです。条件付きの `if (!user)` を使用できることに注目してください。要求でユーザーが渡されることは、ログインしているユーザーが存在していることの証拠です。
+- ルート ディレクトリの下に `/views/index.ejs` ビューを作成します。これは、サインインおよびサインアウト用のポリシーを呼び出して、アカウント情報を取得できるようにする単純なページです。条件付きの `if (!user)` を使用できることに注目してください。要求でユーザーが渡されることは、ログインしているユーザーが存在することを示します。
 
 ```JavaScript
 <% if (!user) { %>
@@ -382,7 +380,7 @@ exports.list = function(req, res){
 <% } %>
 ```
 
-- ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azuread` がユーザー要求の中に配置された追加情報を表示できるようにします。
+- ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azuread` によってユーザー要求内に配置された追加情報を表示できるようにします。
 
 ```Javascript
 <% if (!user) { %>
@@ -412,11 +410,9 @@ exports.list = function(req, res){
 
 ##次のステップ
 
-参照用に、完成済みサンプル (構成値を除く) を [.zip 形式でこちらからダウンロードできます](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip)。または、GitHub から複製することもできます。
+参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip)。または、GitHub から複製することもできます。
 
-```
-git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-nodejs.git
-```
+```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-nodejs.git```
 
 これ以降は、さらに高度なトピックに進むことができます。次のチュートリアルを試してみてください。
 
@@ -433,4 +429,4 @@ You can now move onto more advanced B2C topics.  You may want to try:
 
 -->
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

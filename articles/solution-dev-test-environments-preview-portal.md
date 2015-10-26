@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/17/2015"
+   ms.date="10/08/2015"
    ms.author="jdial"/>
 
 # Microsoft Azure の開発環境とテスト環境
@@ -178,9 +178,9 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
 
   **方法 2:** PowerShell
 
-  PowerShell が Windows コンピューター上にインストールされていて、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」の記事で説明されているとおりにサブスクリプションに接続されていることを確認します。PowerShell のコマンド プロンプトから次のコマンドを入力し、開発環境用のリソース グループを作成します。
+  PowerShell が Windows コンピューター上にインストールされていて、「[Azure PowerShell のインストールと構成の方法](powershell-install-configure.md)」の記事で説明されているとおりにサブスクリプションに接続されていることを確認します。PowerShell のコマンド プロンプトから次のコマンドを入力し、開発環境用のリソース グループを作成します。Azure PowerShell 1.0 プレビューを使用する場合、下記のようにコマンドは **New-AzureRmResourceGroup** です。Azure PowerShell の 1.0 プレビューよりも前のバージョンを使用している場合、コマンドは **New-AzureResourceGroup** です。
 
-	New-AzureResourceGroup -Name TestApp1-Development -Location "Central US"
+	New-AzureRmResourceGroup -Name TestApp1-Development -Location "Central US"
 
   コマンドが成功すると、次の内容が返されます。
 
@@ -200,11 +200,11 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
 
   テスト環境用のリソース グループを作成するには、次のコマンドを入力します。
 
-	New-AzureResourceGroup -Name TestApp1-Test -Location "Central US"
+	New-AzureRmResourceGroup -Name TestApp1-Test -Location "Central US"
 
   運用前環境用のリソース グループを作成するには、次のコマンドを入力します。
 
-	New-AzureResourceGroup -Name TestApp1-Pre-Production -Location "Central US"
+	New-AzureRmResourceGroup -Name TestApp1-Pre-Production -Location "Central US"
 
  **手順 6:** 次の方法のいずれかを実行し、アプリケーションのテンプレート ファイルと各環境のパラメーターを使用して Azure リソースをリソース グループにデプロイします。どちらの方法でも、まったく同じ結果を達成できます。
 
@@ -256,9 +256,9 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
   
   **方法 2:** PowerShell
 
-  PowerShell のコマンド プロンプトから次のコマンドを入力し、開発環境用に作成したリソース グループにリソースをデプロイします。コマンド内の [path] は、前の手順で保存したファイルへのパスに置き換えてください。
+  PowerShell のコマンド プロンプトから次のコマンドを入力し、開発環境用に作成したリソース グループにリソースをデプロイします。コマンド内の [path] は、前の手順で保存したファイルへのパスに置き換えてください。Azure PowerShell 1.0 プレビューを使用する場合、下記のようにコマンドは **New-AzureRmResourceGroupDeployment** です。Azure PowerShell 1.0 プレビューよりも前のバージョンを使用している場合、コマンドは **New-AzureResourceGroupDeployment** です。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName TestApp1-Development -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Development.json -Name Deployment1 
+	New-AzureRmResourceGroupDeployment -ResourceGroupName TestApp1-Development -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Development.json -Name Deployment1 
 
   コマンドが成功すると、次の内容が返されます。
 
@@ -292,11 +292,11 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
 
   PowerShell のコマンド プロンプトから次のコマンドを入力し、テスト環境用に作成したリソース グループにリソースをデプロイします。コマンド内の [path] は、前の手順で保存したファイルへのパスに置き換えてください。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName TestApp1-Test -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Test.json -Name Deployment1
+	New-AzureRmResourceGroupDeployment -ResourceGroupName TestApp1-Test -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Test.json -Name Deployment1
 
   PowerShell のコマンド プロンプトから次のコマンドを入力し、運用前環境用に作成したリソース グループにリソースをデプロイします。コマンド内の [path] は、前の手順で保存したファイルへのパスに置き換えてください。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName TestApp1-Pre-Production -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Pre-Production.json -Name Deployment1
+	New-AzureRmResourceGroupDeployment -ResourceGroupName TestApp1-Pre-Production -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Pre-Production.json -Name Deployment1
 
 テンプレートおよびパラメーター ファイルは、ソース管理システムでバージョン管理され、アプリケーション コードと共に保持されます。また、上記のコマンドをスクリプト ファイルに保存し、コードと共に保存することもできます。
 
@@ -313,9 +313,9 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
 
   リソースを削除してよいかどうかを確認するメッセージがポータルに表示されたら、[はい] をクリックします。リソース グループの内容は、本来あるべき内容と異なるものになりました。複数のリソース グループから複数のリソースを削除したり、リソースの一部の構成設定を変更したりなど、いろいろ試してみてください。
 
-> [AZURE.NOTE]リソース グループからリソースを削除する際、Azure プレビュー ポータルを使用する代わりに、PowerShell の [Remove-azureresource](https://msdn.microsoft.com/library/azure/dn757676.aspx) コマンドか CLI の "azure resource delete" コマンドを使用して、同じタスクを実行できます。
+> [AZURE.NOTE]リソース グループからリソースを削除するときに、Azure プレビュー ポータルを使用する代わりに、PowerShell の [Remove-AzureResource](https://msdn.microsoft.com/library/azure/dn757676.aspx) コマンドか CLI の "azure resource delete" コマンドを使用して、同じタスクを実行できます。
 
-  **手順 8:** 手順 6 で使用したのと同じコマンドを使用して、リソース グループに環境を再デプロイします。ただし、今回は "Deployment2" を "Deployment1" に置き換えてください。 次の図の [概要] セクションに示されているように、テンプレート内のすべてのリソースが再び TestApp1-Development リソース グループに存在しています。Azure リソース マネージャーのテンプレートを使用して環境をデプロイする利点の 1 つは、いつでも簡単に環境を既知の状態に再デプロイできる点です。
+  **手順 8:** 手順 6 で使用したのと同じコマンドを使用して、リソース グループに環境を再デプロイします。ただし、今回は "Deployment1" を "Deployment2" で置き換えてください。 次の図の [概要] セクションに示されているように、テンプレート内のすべてのリソースが再び TestApp1-Development リソース グループに存在しています。Azure リソース マネージャーのテンプレートを使用して環境をデプロイする利点の 1 つは、いつでも簡単に環境を既知の状態に再デプロイできる点です。
 
   ![ポータル](./media/solution-dev-test-environments-preview-portal/portal3.png)
 
@@ -346,9 +346,9 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
   
   **方法 2:** PowerShell
 
-  PowerShell プロンプトで、次のように入力します。
+  Azure PowerShell 1.0 プレビューを使用する場合、下記のようにリソース グループを削除するコマンドは **Remove-AzureRmResourceGroup** です。Azure PowerShell 1.0 プレビューよりも前のバージョンを使用している場合、コマンドは **Remove-AzureResourceGroup** です。PowerShell プロンプトで、次のように入力します。
 
-	Remove-AzureResourceGroup -Name TestApp1-Development
+	Remove-AzureRmResourceGroup -Name TestApp1-Development
 
   メッセージが表示されたときに "y" を入力すると、次の内容が返されます。
 
@@ -358,8 +358,8 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
 
   PowerShell プロンプトで、次のように入力して、残りの環境を削除します。
 
-	Remove-AzureResourceGroup -Name TestApp1-Test
-	Remove-AzureResourceGroup -Name TestApp1-Pre-Production
+	Remove-AzureRmResourceGroup -Name TestApp1-Test
+	Remove-AzureRmResourceGroup -Name TestApp1-Pre-Production
 
 使用する方法にかかわらず、コマンドの実行が完了すると、リソース グループとそこに含まれるすべてのリソースが存在しなくなり、リソースの料金請求は発生しなくなります。
 
@@ -374,14 +374,14 @@ Azure リソースはすべて、[Azure リソース グループ](azure-portal/
 
 - Azure リソースに対して操作のサブセットを実行できる特別なロールを Microsoft Azure AD のグループまたはユーザーに割り当てることで、各環境のさまざまなリソースに[管理制御を委任](role-based-access-control-configure.md)する。
 - 各環境のリソース グループや個々のリソースに[タグを割り当てる](resource-group-using-tags.md)。"環境" タグをリソース グループに追加し、その値を環境名に対応するように設定できます。タグは、課金または管理の目的でリソースを整理する必要がある場合に特に役立ちます。
-- [Azure プレビュー ポータル](https://portal.azure.com)でリソース グループのリソースのアラートと請求情報を監視する。
+- [Azure プレビュー ポータル](https://portal.azure.com)でリソース グループのリソースのアラートと課金情報を監視する。
 
 ## その他のリソース
 
 - Azure SDK 2.6 がインストールされている [Visual Studio での Azure リソース マネージャー テンプレートの作成とデプロイ](http://msdn.microsoft.com/library/azure/Dn872471.aspx)
-- [Visual Studio Enterprise](https://www.visualstudio.com/products/visual-studio-enterprise-vs)、[Visual Studio Code](http://www.visualstudio.com/products/code-vs)、または [Web Matrix](http://www.microsoft.com/web/webmatrix/) を使用したアプリケーション作成
+- [Visual Studio Enterprise](https://www.visualstudio.com/products/visual-studio-enterprise-vs)、[Visual Studio のコード](http://www.visualstudio.com/products/code-vs)、または [Web Matrix](http://www.microsoft.com/web/webmatrix/) を使用したアプリケーション作成
 - 作成した環境への [Web アプリのデプロイ](app-service-web/web-sites-deploy.md)
 - [Visual Studio Release Management](http://msdn.microsoft.com/Library/vs/alm/Release/overview) を使用した、迅速かつ容易で頻度の高いリリースを可能にする、継続的なデプロイメントのマネージ パイプラインの作成
 - [Azure Dev/Test Lab](http://azure.microsoft.com/campaigns/devtest-lab/) のプレビューへの招待のリクエスト。このプレビューでは、テンプレートを使用して開発/テスト ラボ環境を管理し、組織内での使用に対するクォータとポリシーを構成できます。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

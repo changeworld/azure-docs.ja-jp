@@ -1,3 +1,7 @@
+<properties title="Load Balancing for Azure Infrastructure Services" pageTitle="Azure インフラストラクチャ サービスの負荷分散" description="Traffic Manager とロード バランサーを利用して負荷分散を行う機能について説明します。" metaKeywords="" services="virtual-machines" solutions="" documentationCenter="" authors="cherylmc" videoId="" scriptId="" manager="adinah" />
+
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="cherylmc" />
+
 #Azure インフラストラクチャ サービスの負荷分散#
 
 Azure インフラストラクチャ サービスで利用できる負荷分散には 2 つのレベルがあります。
@@ -58,4 +62,4 @@ Azure の負荷分散と同様、内部負荷分散セットを構成すると�
 
 <!-- LINKS -->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

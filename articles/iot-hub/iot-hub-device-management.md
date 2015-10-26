@@ -1,8 +1,8 @@
 <properties
- pageTitle="IoT デバイス管理 | Microsoft Azure"
- description="Azure IoT Hub デバイス管理の概要"
+ pageTitle="IoT デバイスの管理 |Microsoft Azure"
+ description="IoT デバイスを管理するための IoT Hub と IoT Suite の使用の概要"
  services="iot-hub"
- documentationCenter=".net"
+ documentationCenter=""
  authors="juanjperez"
  manager="timlt"
  editor=""/>
@@ -12,7 +12,7 @@
  ms.devlang="na"
  ms.topic="article"
  ms.tgt_pltfrm="na"
- ms.workload="tbd"
+ ms.workload="na"
  ms.date="09/29/2015"
  ms.author="juanpere"/>
 
@@ -118,4 +118,4 @@ Azure IoT Suite の事前構成済みソリューションには、デバイス�
 
 ファームウェア更新の完了後、デバイスは正常な状態を検証によって把握できることが必要となります。デバイスが正常な状態に移行しなかった場合、既知の正常な状態にロールバックする処理をデバイス上のソフトウェアが開始することになります。既知の正常な状態とは、たとえば、最後に確認されている正常な状態や、ストレージ パーティションに "ひな形" として保存されているデバイスのファームウェア イメージが該当します。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

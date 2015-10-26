@@ -1,5 +1,5 @@
 <properties
-	pageTitle="既定の構成を変更するためのベスト プラクティス | Microsoft Azure"
+	pageTitle="既定の構成の変更するためのベスト プラクティス | Microsoft Azure"
 	description="Azure AD Connect Sync の既定の構成を変更するためのベスト プラクティスを紹介します。"
 	services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.date="10/13/2015"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -55,11 +55,11 @@ Azure AD Connect Sync の構成への変更の適用はサポートされます�
 
 
 
-## その他のリソース
+## 次のステップ
+[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
-* [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
-* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
 <!--Image references-->
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

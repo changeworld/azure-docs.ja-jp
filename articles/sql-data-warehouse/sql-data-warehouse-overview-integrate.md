@@ -71,4 +71,4 @@ Azure Stream Analytics は、Azure Event Hub で生成されたイベント デ�
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

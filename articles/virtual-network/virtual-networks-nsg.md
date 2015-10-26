@@ -164,4 +164,4 @@ NSG の設計時には、次の制限事項を考慮する必要があります�
 - [クラシック デプロイメント モデルで NSG をデプロイします](virtual-networks-create-nsg-classic-ps.md)。
 - [リソース マネージャーで NSG をデプロイします](virtual-networks-create-nsg-arm-pportal.md)。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

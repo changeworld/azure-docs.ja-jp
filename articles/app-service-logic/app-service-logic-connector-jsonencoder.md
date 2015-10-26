@@ -68,4 +68,4 @@ Remove Outer Envelope|文字列|XML コンテンツからルート ノードを�
 <!--Links -->
 [ロジック アプリの作成]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

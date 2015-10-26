@@ -136,4 +136,4 @@ Cortana Analytics ギャラリーは、1 回のクリックで予測分析の実
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaanalytics.com)**
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

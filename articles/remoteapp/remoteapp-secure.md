@@ -47,4 +47,4 @@ Azure RemoteApp には、一元管理された Windows アプリにユーザー�
 - [Office 2013 のポリシー](https://technet.microsoft.com/library/cc178969.aspx) ([Office ツールバーのカスタマイズ方法](https://technet.microsoft.com/library/cc179143.aspx)を含む)。
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

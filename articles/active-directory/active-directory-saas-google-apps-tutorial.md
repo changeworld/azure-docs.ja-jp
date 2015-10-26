@@ -182,7 +182,7 @@
 
 9. Google Apps の [クイック スタート] ページで、**[ユーザー プロビジョニングの構成]** をクリックします。
 
-	![Configure user provisioning][24]
+	![ユーザー プロビジョニングの構成][24]
 
 10. 表示されるダイアログ ボックスで、**[ユーザー プロビジョニングを有効にする]** をクリックして、プロビジョニングの管理に使用する Google Apps の管理者アカウントを認証します。
 
@@ -246,4 +246,4 @@
 [29]: ./media/active-directory-saas-google-apps-tutorial/assign-users.png
 [30]: ./media/active-directory-saas-google-apps-tutorial/assign-confirm.png
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/14/2015" 
+	ms.date="10/08/2015" 
 	ms.author="tdykstra"/>
 
 # Azure App Service での API アプリのデプロイ 
@@ -22,9 +22,9 @@
 
 このチュートリアルでは、[前のチュートリアル](app-service-dotnet-create-api-app.md)で作成した Web API プロジェクトを新しい [API アプリ](app-service-api-apps-why-best-platform.md)にデプロイします。Visual Studio を使用して [Azure App Service](../app-service/app-service-value-prop-what-is.md) で API アプリ リソースを作成し、その Azure API アプリに Web API コードをデプロイします。
 
-### その他のデプロイメント オプション
+### その他のデプロイ オプション
 
-API アプリをデプロイする方法は他にも多数あります。API アプリは、Web サービスをホストするための追加機能を備えた [Web アプリ](../app-service-web/app-service-web-overview.md)であり、[Web アプリで使用できるデプロイメント方法](../app-service-web/web-sites-deploy.md)はすべて API アプリでも使用できます。API アプリをホストする Web アプリは、Azure プレビュー ポータルでは API アプリ ホストと呼ばれ、[API アプリ ホスト] ポータル ブレードを使用してデプロイメントを構成できます。[API アプリ ホスト] ブレードの詳細については、[API アプリの管理](app-service-api-manage-in-portal.md)に関するページを参照してください。
+API アプリをデプロイする方法は他にも多数あります。API アプリは、Web サービスをホストするための追加機能を備えた [Web アプリ](../app-service-web/app-service-web-overview.md)であり、[Web アプリで使用できるデプロイ方法](../app-service-web/web-sites-deploy.md)はすべて API アプリでも使用できます。API アプリをホストする Web アプリは、Azure プレビュー ポータルでは API アプリ ホストと呼ばれ、[API アプリ ホスト] ポータル ブレードを使用してデプロイを構成できます。[API アプリ ホスト] ブレードの詳細については、[API アプリの管理](app-service-api-manage-in-portal.md)に関するページを参照してください。
 
 API アプリが Web アプリをベースにしているという事実は、ASP.NET 以外のプラットフォーム用に記述されたコードを API アプリにデプロイできることを意味しています。Git を使用して Node.js コードを API アプリにデプロイする例については、[Azure App Service での Node.js API アプリの作成](app-service-api-nodejs-api-app.md)に関するページを参照してください。
  
@@ -121,7 +121,10 @@ API アプリが Web アプリをベースにしているという事実は、AS
 
 ## 次のステップ
 
-ここまでは、Visual Studio の直接デプロイする機能を使用して、反復処理、迅速なデプロイメント、および API が正常に機能しているかどうかのテストを簡単に実行する方法について説明しました。[次のチュートリアル](../app-service-dotnet-remotely-debug-api-app.md)では、Azure で実行中の API アプリをデバッグする方法について説明します。
- 
+ここまでは、Visual Studio の直接デプロイする機能を使用して、API が正常に機能しているかどうかのテストを簡単に実行する方法について説明しました。[次のチュートリアル](../app-service-dotnet-remotely-debug-api-app.md)では、Azure で実行中の API アプリをデバッグする方法について説明します。
 
-<!---HONumber=Oct15_HO2-->
+API アプリは、API をホストするための特別な機能を持つ Web アプリです。つまり、Web アプリで動作する任意のデプロイ方法を使用することができます。Web アプリのデプロイのオプションの詳細については、「[Azure App Service での Web アプリのデプロイ](../app-service-web/web-sites-deploy.md)」を参照してください。
+
+API アプリの機能については、「[API Apps とは](app-service-api-apps-why-best-platform.md)」を参照してください。
+
+<!---HONumber=Oct15_HO3-->

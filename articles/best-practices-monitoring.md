@@ -1,21 +1,21 @@
 <properties
    pageTitle="監視と診断のガイダンス | Microsoft Azure"
-	description="クラウド内の分散アプリケーションを監視するためのベスト プラクティスです。"
-	services=""
-	documentationCenter="na"
-	authors="dragon119"
-	manager="masimms"
-	editor=""
-	tags=""/>
+   description="クラウド内の分散アプリケーションを監視するためのベスト プラクティスです。"
+   services=""
+   documentationCenter="na"
+   authors="dragon119"
+   manager="masimms"
+   editor=""
+   tags=""/>
 
 <tags
    ms.service="best-practice"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="04/28/2015"
-	ms.author="masashin"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="na"
+   ms.date="04/28/2015"
+   ms.author="masashin"/>
 
 # 監視と診断のガイダンス
 
@@ -612,4 +612,4 @@ _図 6: 分析要件とストレージ要件に基づくデータのパーティ
 - Microsoft Web サイトのページ「[Azure の監視アラートと通知について](https://msdn.microsoft.com/library/azure/dn306639.aspx)」。
 - Microsoft web サイトの [Application Insights](app-insights-get-started/) に関するページ。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

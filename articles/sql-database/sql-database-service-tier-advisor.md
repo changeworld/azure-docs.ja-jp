@@ -100,4 +100,4 @@ SQL Database サービスでは、SQL Database の過去のリソースの使用
 
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

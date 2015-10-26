@@ -208,17 +208,17 @@ Hive 構成をカスタマイズする Azure PowerShell スクリプトの例を
 
 * プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
 
-	![diagram of cloud-only configuration](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-cloud-only.png)
+	![クラウドのみの構成の図](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-cloud-only.png)
 
 * 仮想プライベート ネットワーク (VPN) を使用したローカル データセンター ネットワークへのクラウド リソースの接続 (サイト間またはポイント対サイト)
 
 	サイト間構成では、ハードウェア VPN を使用するか、ルーティングとリモート アクセス サービスを使用して、データセンターから複数のリソースを Azure 仮想ネットワークに接続できます。
 
-	![diagram of site-to-site configuration](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-site-to-site.png)
+	![サイト間構成の図](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-site-to-site.png)
 
 	ポイント対サイト構成では、ソフトウェア VPN を使用して、特定のリソースを Azure 仮想ネットワークに接続できます。
 
-	![diagram of point-to-site configuration](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-point-to-site.png)
+	![ポイント対サイト構成の図](./media/hdinsight-provision-clusters-v1/hdinsight-vnet-point-to-site.png)
 
 Virtual Network の機能、利点の詳細については、「[Azure 仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
@@ -810,4 +810,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

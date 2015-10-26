@@ -206,4 +206,4 @@ Storage Analytics のデータで課金対象の要求を調べるときには�
 - [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)
 - [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)  
 
-<!----HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

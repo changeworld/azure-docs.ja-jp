@@ -45,4 +45,4 @@ Azure でホストされているクラウド サービスを更新するとき�
 
 Visual Studio から Azure への発行の詳細については、[Azure アプリケーションの公開ウィザード](vs-azure-tools-publish-azure-application-wizard.md)に関するページをご覧ください。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

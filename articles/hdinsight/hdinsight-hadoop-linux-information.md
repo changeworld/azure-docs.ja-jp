@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/12/2015"
+   ms.date="10/09/2015"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法
@@ -55,7 +55,7 @@ Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実
 
 ## ファイルの場所
 
-Hadoop 関連ファイルは、クラスター ノードの `/usr/hdp` にあります。このディレクトリには、次のサブディレクトリが含まれます。
+Hadoop 関連ファイルは、`/usr/hdp` のクラスター ノードにあります。このディレクトリには、次のサブディレクトリが含まれます。
 
 * __2.2.4.9-1__: このディレクトリは HDInsight が使用する Hortonworks Data Platform のバージョンから名前が付けられるため、クラスター上の番号がここに記載されたものと異なる場合があります。
 * __current__: このディレクトリには、__2.2.4.9-1__ ディレクトリ下のディレクトリへのリンクが含まれており、(変わる可能性がある) バージョン番号を、ファイルにアクセスするたびに入力する手間を省くために存在します。
@@ -185,7 +185,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 		2. ページの左側のサービスの一覧で、__[Storm]__ を選択します。__[クイック リンク]__ で __[Storm UI]__ を選択します。
 
 
-			![Storm UI entry in quick links](./media/hdinsight-hadoop-linux-information/ambari-storm.png)
+			![クイック リンクの Storm UI エントリ](./media/hdinsight-hadoop-linux-information/ambari-storm.png)
 
 			これにより、Storm UI が表示されます。
 
@@ -232,7 +232,7 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 
 > [AZURE.WARNING]HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[MSDN の HDInsight フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[MSDN の HDInsight フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-jp/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
 
 ## 次のステップ
 
@@ -240,4 +240,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!-----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

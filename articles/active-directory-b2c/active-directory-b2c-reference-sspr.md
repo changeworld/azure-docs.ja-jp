@@ -36,4 +36,4 @@
 
 > [AZURE.NOTE]セルフサービス パスワード リセット ページは、[会社のブランド機能](active-directory-add-company-branding.md)を使用してカスタマイズできます。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

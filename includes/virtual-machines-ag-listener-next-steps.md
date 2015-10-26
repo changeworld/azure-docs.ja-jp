@@ -2,4 +2,4 @@
 
 Azure での SQL Server の使用に関するその他の情報は、「[Azure Virtual Machines における SQL Server](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)」を参照してください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

@@ -19,11 +19,12 @@
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 3: SQL Server インフラストラクチャの構成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業のこのフェーズでは、サービス管理で 2 台の SQL Server コンピューターとクラスター マジョリティ ノード コンピューターを作成および構成し、Windows Server クラスターに統合します。
 
-[フェーズ 4](virtual-machines-workload-intranet-sharepoint-phase4.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Deploying SharePoint with SQL Server AlwaysOn Availability Groups in Azure (Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ)](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
+[フェーズ 4](virtual-machines-workload-intranet-sharepoint-phase4.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
 
 > [AZURE.NOTE]次の手順では、Azure イメージ ギャラリーの SQL Server イメージを使用するため、SQL Server のライセンスを使用するための継続的な費用が発生します。Azure で仮想マシンを作成し、独自の SQL Server のライセンスをインストールすることもできますが、Azure 仮想マシンを含む、仮想マシンで SQL Server のライセンスを使用するには、ソフトウェア アシュアランスおよびライセンス モビリティが必要になります。仮想マシンでの SQL Server のインストールの詳細については、「[SQL Server 2014 のインストール](https://msdn.microsoft.com/library/bb500469.aspx)」を参照してください。
 
@@ -145,9 +146,9 @@ SQL Server には、クライアントがデータベース サーバーへの�
 
 	New-NetFirewallRule -DisplayName "SQL Server ports 1433, 4234, and 5022" -Direction Inbound –Protocol TCP –LocalPort 1433,1434,5022 -Action Allow
 
-SQL サーバー仮想マシンごとに、ローカル管理者としてサインアウトします。
+SQL Server 仮想マシンごとに、ローカル管理者としてサインアウトします。
 
-Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」をご覧ください。SharePoint ファームのストレージ アカウントの地理冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
+Azure における SQL Server のパフォーマンスの最適化については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-sql-server-performance-best-practices.md)」をご覧ください。SharePoint ファームのストレージ アカウントの geo 冗長ストレージ (GRS) を無効にし、記憶域を使用して IOP を最適化することもできます。
 
 ## クラスター マジョリティ ノード サーバーの構成
 
@@ -169,7 +170,7 @@ SQL Server AlwaysOn 可用性グループでは、Windows Server の Windows Ser
 
 	Install-WindowsFeature Failover-Clustering -IncludeManagementTools
 
-現在、Azure の DHCP によって RFC に準拠していない動作が発生するため、Windows Server フェールオーバー クラスタリング (WSFC) クラスターの作成に失敗する可能性があります。詳細については、「Azure Virtual Machines 内の SQL Server の高可用性と災害復旧」で、「Azure ネットワークでの WSFC クラスターの動作」を検索してください。ただし、回避策があります。次の手順に従って、クラスターを作成します。
+現在、Azure の DHCP によって RFC に準拠していない動作が発生するため、Windows Server フェールオーバー クラスタリング (WSFC) クラスターの作成に失敗する可能性があります。詳細については、「Azure Virtual Machines 内の SQL Server の高可用性と障害復旧」で、「Azure ネットワークでの WSFC クラスターの動作」を検索してください。ただし、回避策があります。次の手順に従って、クラスターを作成します。
 
 1.	**sp\_install** アカウントを使用して、プライマリ SQL Server 仮想マシンにログオンします。
 2.	スタート画面で「**フェールオーバー**」と入力し、**[フェールオーバー クラスター マネージャー]** をクリックします。
@@ -232,4 +233,4 @@ SQL Server の AlwaysOn 可用性グループを有効にするには、次の�
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

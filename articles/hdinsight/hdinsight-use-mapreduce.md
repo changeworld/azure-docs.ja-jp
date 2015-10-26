@@ -193,4 +193,4 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

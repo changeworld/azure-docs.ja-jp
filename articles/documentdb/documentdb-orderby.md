@@ -177,4 +177,4 @@ Order By では参照に DocumentDB インデックスを利用するため、Or
 * [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-net/tree/master/samples/orderby)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

@@ -28,7 +28,7 @@ ADAL は、さまざまなプラットフォームで使用できます。
 |OS X、iOS|Active Directory Authentication Library (ADAL) for Objective-C|クライアント|[ADAL for Objective-C (CocoaPods)](https://cocoapods.org/?q=adal%20io)|[ADAL for Objective-C (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-objc)|[NativeClient-iOS (Github)](https://github.com/AzureADSamples/NativeClient-iOS)|
 |Android|Active Directory Authentication Library (ADAL) for Android|クライアント|[ADAL for Android (中央リポジトリ)](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/)|[ADAL for Android (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-android)|[NativeClient-Android (Github)](https://github.com/AzureADSamples/NativeClient-Android)|
 |Node.js|Active Directory Authentication Library (ADAL) for Node.js|クライアント|[ADAL for Node.js (npm)](https://www.npmjs.com/package/adal-node)|[ADAL for Node.js (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs)|[WebAPI-Nodejs (Github)](https://github.com/AzureADSamples/WebAPI-Nodejs)|
-|Node.js|Windows Azure Active Directory Passport authentication middleware for Node|クライアント|[Azure Active Directory Passport for Node.js (npm)](https://www.npmjs.com/package/passport-azure-ad)|[Azure Active Directory for Node.js (Github)](https://github.com/AzureAD/passport-azure-ad)||
+|Node.js|Node 用 Microsoft Azure Active Directory Passport 認証ミドルウェア|クライアント|[Azure Active Directory Passport for Node.js (npm)](https://www.npmjs.com/package/passport-azure-ad)|[Azure Active Directory for Node.js (Github)](https://github.com/AzureAD/passport-azure-ad)||
 |Java|Active Directory Authentication Library (ADAL) for Java|クライアント|[ADAL for Java (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-java)|[ADAL for Java (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-java)||
 |.NET|Identity Protocol Extensions for the Microsoft .NET Framework 4.5|サーバー|[Microsoft.IdentityModel.Protocol.Extensions (NuGet)](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions)|[Azure AD Identity Model Extensions for .NET (Github)](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)||
 |.NET|JSON Web Token Handler For the Microsoft .Net Framework 4.5|サーバー|[System.IdentityModel.Tokens.Jwt (NuGet)](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt)|[Azure AD Identity Model Extensions for .NET (Github)](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)||
@@ -63,4 +63,4 @@ Azure AD に対する認証を使用してこのシナリオを実証するコ�
 
 [Azure Active Directory のコード例](active-directory-code-samples.md)
 
-<!----HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

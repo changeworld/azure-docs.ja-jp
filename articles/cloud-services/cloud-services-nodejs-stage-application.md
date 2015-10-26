@@ -76,4 +76,4 @@
 [vip-swap-dialog]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
 [Azure の VIP スワップによりサービス アップグレードを運用環境にデプロイする方法]: cloud-services-how-to-manage.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

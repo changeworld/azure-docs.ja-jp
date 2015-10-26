@@ -1,20 +1,20 @@
 <properties
    pageTitle="Service Fabric サービスの可用性"
-	description="障害の検出、フェールオーバー、サービスの回復について説明します。"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="appi101"
-	manager="timlt"
-	editor=""/>
+   description="障害の検出、フェールオーバー、サービスの回復について説明します。"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="appi101"
+   manager="timlt"
+   editor=""/>
 
 <tags
    ms.service="service-fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/26/2015"
-	ms.author="aprameyr"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/26/2015"
+   ms.author="aprameyr"/>
 
 # Service Fabric サービスの可用性
 Service Fabric サービスには、ステートレスなものとステートフルなものがあります。この記事では、障害発生時に Service Fabric がサービスの可用性を維持する方法の概要を示します。
@@ -51,4 +51,4 @@ Service Fabric の概念についての詳細は、次を参照してくださ�
 - [状態の定義と管理](service-fabric-concepts-state.md)
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

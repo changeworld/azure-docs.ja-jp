@@ -255,4 +255,4 @@ Service Bus 認証の詳細については、「[Service Bus の認証と承認]
 
 [こちらのブログ記事](http://developers.de/blogs/damir_dobric/archive/2013/10/17/how-to-create-shared-access-signature-for-service-bus.aspx)では、C# および JavaScript での SAS に関するさまざまな例を紹介しています。
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

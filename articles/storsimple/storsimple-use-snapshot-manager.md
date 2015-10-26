@@ -541,4 +541,4 @@ StorSimple Snapshot Manager のユーザー インターフェイス内の移動
 - [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
 - [StorSimple Snapshot Manager を使用して、デバイスを接続および管理する方法](storsimple-snapshot-manager-manage-devices.md)について説明します。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

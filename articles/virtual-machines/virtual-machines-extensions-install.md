@@ -1,6 +1,6 @@
 <properties
  pageTitle="仮想マシン拡張機能の管理 | Microsoft Azure"
- description="クラシック デプロイメント モデルで、Azure Virtual Machines の拡張機能を追加、検索、更新、および削除する方法について説明します。"
+ description="クラシック デプロイ モデルで、Azure 仮想マシンの拡張機能を追加、検索、更新、および削除する方法について説明します。"
  services="virtual-machines"
  documentationCenter=""
  authors="squillace"
@@ -16,9 +16,10 @@
  ms.date="08/25/2015"
  ms.author="rasquill"/>
 #仮想マシン拡張機能の管理
-Azure の Windows Virtual Machines または Linux Virtual Machines のいずれかで VM 拡張機能を検索、追加、変更、削除する方法について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用して拡張機能を管理する方法について説明します。
+Azure の Windows 仮想マシンまたは Linux 仮想マシンのいずれかで VM 拡張機能を検索、追加、変更、削除する方法について説明します。
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モード
 
 
 ##VM 拡張機能の使用
@@ -54,7 +55,7 @@ Azure VM 拡張機能には次のものがあります (サポートする機能
 次のコマンドレットを使用すると、使用可能な拡張機能に関する情報を取得できます。
 
 -   Web ロール または worker ロールのインスタンスの場合、[Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/library/azure/dn722498.aspx) コマンドレットを使用できます。
--   Virtual Machines のインスタンスの場合、[Get-AzureVMAvailableExtension](https://msdn.microsoft.com/library/azure/dn722480.aspx) コマンドレットを使用できます。
+-   仮想マシンのインスタンスの場合、[Get-AzureVMAvailableExtension](https://msdn.microsoft.com/library/azure/dn722480.aspx) コマンドレットを使用できます。
 
      例として、次のコード例に PowerShell を使用して **IaaSDiagnostics** 拡張機能の情報を一覧表示する方法を示します。
 
@@ -112,7 +113,7 @@ Azure VM 拡張機能には次のものがあります (サポートする機能
 
 -   Web ロール または worker ロールのインスタンスの場合、[List Available Extensions](https://msdn.microsoft.com/library/dn169559.aspx) 操作を使用できます。[List Extension Versions](https://msdn.microsoft.com/library/dn495437.aspx) を使用すると、利用可能な拡張機能のバージョンを一覧表示することができます。
 
--   Virtual Machines のインスタンスの場合、[List Resource Extensions](https://msdn.microsoft.com/library/dn495441.aspx) 操作を使用できます。[List Resource Extension Versions](https://msdn.microsoft.com/library/dn495440.aspx) を使用すると、利用可能な拡張機能のバージョンを一覧表示することができます。
+-   仮想マシンのインスタンスの場合、[List Resource Extensions](https://msdn.microsoft.com/library/dn495441.aspx) 操作を使用できます。[List Resource Extension Versions](https://msdn.microsoft.com/library/dn495440.aspx) を使用すると、利用可能な拡張機能のバージョンを一覧表示することができます。
 
 ##拡張機能の追加、更新、無効化
 
@@ -127,7 +128,7 @@ Azure PowerShell コマンドレットを使用するのが、最も簡単に拡
 
 -   Web ロール または worker ロールのインスタンスの場合、**Get-AzureServiceAvailableExtension** コマンドレットを使用できます。
 
--   Virtual Machines のインスタンスの場合、**Get-AzureVMAvailableExtension** コマンドレットを使用できます。
+-   仮想マシンのインスタンスの場合、**Get-AzureVMAvailableExtension** コマンドレットを使用できます。
 
 ###サービス管理 REST API
 
@@ -137,8 +138,8 @@ Azure PowerShell コマンドレットを使用するのが、最も簡単に拡
 
 -   Web ロール または worker ロール のインスタンスの場合、**PublicConfigurationSchema** 要素と **PrivateConfigurationSchema** 要素には、[List Available Extensions](https://msdn.microsoft.com/library/dn169559.aspx) 操作からの応答の情報が含まれます。
 
--   Virtual Machines のインスタンスの場合、**PublicConfigurationSchema** 要素と **PrivateConfigurationSchema** 要素には、[List Resource Extensions](https://msdn.microsoft.com/library/dn495441.aspx) 操作からの応答の情報が含まれます。
+-   仮想マシンのインスタンスの場合、**PublicConfigurationSchema** 要素と **PrivateConfigurationSchema** 要素には、[List Resource Extensions](https://msdn.microsoft.com/library/dn495441.aspx) 操作からの応答の情報が含まれます。
 
 >[AZURE.NOTE]拡張機能では、JSON で定義された構成も使用できます。これらの種類の拡張機能を使用する場合、**SampleConfig** 要素だけが使用されます。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

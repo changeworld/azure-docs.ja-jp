@@ -118,4 +118,4 @@ Service Fabric アプリケーションとサービスの開発、テスト、�
 - [REST-Based Application Lifecycle Sample (REST ベースのアプリケーション ライフ サイクルのサンプル)](service-fabric-rest-based-application-lifecycle-sample.md)
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

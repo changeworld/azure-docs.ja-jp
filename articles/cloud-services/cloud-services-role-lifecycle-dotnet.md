@@ -80,4 +80,4 @@ Web ロールの初期化とシャットダウン シーケンスを管理する
 ## 次のステップ
 [クラウド サービス パッケージを作成する方法](cloud-services-model-and-package.md)について説明します。
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

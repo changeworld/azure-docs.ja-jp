@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure BLOB ストレージ内のデータのサンプリング | Microsoft Azure"
-	description="Azure BLOB ストレージのサンプル データ"
-	services="machine-learning,storage"
-	documentationCenter=""
-	authors="msolhab"
-	manager="paulettm"
-	editor="cgronlun"/>
+	pageTitle="Azure BLOB ストレージ内のデータのサンプリング | Microsoft Azure" 
+	description="Azure BLOB ストレージのサンプル データ" 
+	services="machine-learning,storage" 
+	documentationCenter="" 
+	authors="msolhab" 
+	manager="paulettm" 
+	editor="cgronlun" />
 
 <tags 
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
-	ms.author="sunliangms;fashah;msolhab;garye;bradsev"/>
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
+	ms.author="sunliangms;fashah;msolhab;garye;bradsev" />
 
 #<a name="heading"></a>Azure BLOB ストレージ内のデータのサンプリング
 
@@ -97,4 +97,4 @@
 [reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

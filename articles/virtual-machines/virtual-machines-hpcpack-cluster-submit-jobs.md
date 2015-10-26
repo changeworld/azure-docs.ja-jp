@@ -18,7 +18,7 @@ ms.service="virtual-machines"
 
 # オンプレミス コンピューターから Azure の HPC Pack クラスターに HPC ジョブを送信する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、リソース マネージャー デプロイメント モデルまたはクラシック デプロイメント モデルを使用して作成されたリソースの管理について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 この記事では、HTTPS で Azure の HPC Pack クラスターと通信する HPC Pack ジョブ送信ツールを実行するように、Windows を実行するオンプレミス クライアント コンピューターを構成する方法について説明します。さまざまなクラスター ユーザーがクラウドベースの HPC Pack クラスターにジョブを簡単かつ柔軟な方法で送信できます。ジョブ送信ツールを実行するために、ヘッド ノード VM に直接接続する必要がありません。
 
@@ -26,7 +26,7 @@ ms.service="virtual-machines"
 
 ## 前提条件
 
-* **Azure VM にデプロイされた HPC Pack ヘッド ノード** - [Azure クイックスタート テンプレート](https://azure.microsoft.com/ja-JP/documentation/templates/)や [Azure PowerShell スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)のような自動ツールを使用し、ヘッド ノードとクラスターをデプロイできます。あるいは、オンプレミス クラスターの場合と同様に、Azure でクラスターを手動でデプロイできます。この記事の手順を完了するには、ヘッド ノードの DNS 名とクラスター管理者の資格情報が必要です。
+* **Azure VM にデプロイされた HPC Pack ヘッド ノード** - [Azure クイックスタート テンプレート](https://azure.microsoft.com/ja-jp/documentation/templates/)や [Azure PowerShell スクリプト](virtual-machines-hpcpack-cluster-powershell-script.md)のような自動ツールを使用し、ヘッド ノードとクラスターをデプロイできます。あるいは、オンプレミス クラスターの場合と同様に、Azure でクラスターを手動でデプロイできます。この記事の手順を完了するには、ヘッド ノードの DNS 名とクラスター管理者の資格情報が必要です。
 
     ヘッド ノードを手動でデプロイした場合、HTTPS エンドポイントが VM で構成されていることを確認します。構成されていない場合、HTTPS エンドポイントを設定します。「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-set-up-endpoints.md)」を参照してください。
 
@@ -183,4 +183,4 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 <!--Image references-->
 [jobsubmit]: ./media/virtual-machines-hpcpack-cluster-submit-jobs/jobsubmit.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

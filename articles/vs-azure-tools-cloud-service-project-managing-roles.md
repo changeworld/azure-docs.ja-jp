@@ -58,4 +58,4 @@ Azure クラウド サービス プロジェクトを作成した後、そのプ
 
 「[Visual Studio を使用した Azure クラウド サービスのロールの構成](vs-azure-tools-configure-roles-for-cloud-service.md)」を読み、Visual Studio でのロールの構成方法を理解する。
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

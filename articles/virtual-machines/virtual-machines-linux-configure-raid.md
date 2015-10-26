@@ -23,7 +23,8 @@
 # Linux でのソフトウェア RAID の構成
 一般的なシナリオは、Azure 内の Linux 仮想マシンでソフトウェア RAID を使用して、複数のデータ ディスクを 1 つの RAID デバイスとしてアタッチすることです。このシナリオを使用すると通常、1 つのみのディスクを使用するシナリオよりもパフォーマンスとスループットが向上します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
+ 
 
 ## データ ディスクをアタッチする
 2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。この記事では、データ ディスクを Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Microsoft Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](storage-windows-attach-disk.md#attachempty)」をご覧ください。
@@ -181,4 +182,4 @@
 
  
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

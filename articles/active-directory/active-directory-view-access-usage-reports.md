@@ -222,7 +222,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 | ディレクトリに追加されているカスタム ビジネス アプリケーションへのサインイン | なし (近日対応予定) |
 | ディレクトリに追加されている Azure AD アプリケーション プロキシ アプリへのサインイン | なし (近日対応予定) |
 
-> 注: このレポートでは、ノイズの量を減らすために、[Microsoft Online Services サインイン アシスタント](http://community.office365.com/ja-JP/w/sso/534.aspx)によるサインインは表示されません。
+> 注: このレポートでは、ノイズの量を減らすために、[Microsoft Online Services サインイン アシスタント](http://community.office365.com/ja-jp/w/sso/534.aspx)によるサインインは表示されません。
 
 
 
@@ -271,4 +271,4 @@ Azure AD のレポート通知の詳細については、「[Azure Active Direct
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

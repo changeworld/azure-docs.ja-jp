@@ -1,19 +1,20 @@
 <properties 
-	pageTitle="サポートされているブラウザーとデバイス"
-	description=""
-	services=""
-	documentationCenter=""
-	authors="flanakin"
-	manager="lwelicki"
+	pageTitle="サポートされているブラウザーとデバイス" 
+	description="" 
+	services="" 
+	documentationCenter="" 
+	authors="flanakin" 
+	writer="flanakin" 
+	manager="lwelicki" 
 	editor=""/>
 
 <tags 
-	ms.service="multiple"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/23/2015"
+	ms.service="multiple" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/23/2015" 
 	ms.author="micflan"/>
 
 #サポートされているブラウザーとデバイス
@@ -33,4 +34,4 @@ Microsoft Azure ポータルは、最新の主要なデスクトップ デバイ
 
 *Safari 6 以前はサポートされていません。OS X を使用している場合は、Chrome と Firefox のどちらかを使用すること、または OS X Mavericks にアップグレードして Safari 7 を入手することができます。*
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -26,7 +26,8 @@
 
 このトピックでは、**内部ロード バランサー (ILB)** を使用して AlwaysOn 可用性グループのリスナーを構成する方法について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+ 
 
 可用性グループには、オンプレミスのみ、Azure のみ、またはオンプレミスと Azure の両方にまたがるハイブリッド構成のレプリカを含めることができます。Azure レプリカは、同じリージョン内に配置することも、複数の仮想ネットワーク (VNet) を使用して複数のリージョンに配置することもできます。後述の手順では、既に[可用性グループは構成している](virtual-machines-sql-server-alwayson-availability-groups-gui.md)ものの、リスナーは構成していないと仮定しています。
 
@@ -80,7 +81,7 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 			Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM 
 		}
 
-1. 変数の設定後、スクリプトを、テキスト エディターからそれを実行する Azure の PowerShell セッションにコピーします。プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
+1. 変数の設定後、スクリプトを、テキスト エディターからそれを実行する Azure PowerShell セッションにコピーします。プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
 
 >[AZURE.NOTE]現時点において、Microsoft Azure 管理ポータルでは内部ロード バランサーをサポートしていないため、ポータルには ILB とエンドポイントのどちらも表示されません。ただし、エンドポイントでロード バランサーが実行されている場合は、**Get-AzureEndpoint** によって内部 IP アドレスが返されます。それ以外の場合、Null が返されます。
 
@@ -118,7 +119,7 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 1. 変数の設定後、管理者特権で Windows PowerShell ウィンドウを開いて、スクリプトをテキスト エディターからコピーし、それを実行する Azure PowerShell セッションに貼り付けます。プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
 
-2. 各仮想マシンで、これを繰り返します。このスクリプトでは、クラウド サービスの IP アドレスを使用して IP アドレス リソースを構成し、プローブ ポートなどの他のパラメーターを設定します。IP アドレス リソースがオンラインになると、プローブ ポートにおいて、このチュートリアルで先ほど作成した負荷分散エンドポイントからのポーリングに応答できます。
+2. 各 VM で、これを繰り返します。このスクリプトでは、クラウド サービスの IP アドレスを使用して IP アドレス リソースを構成し、プローブ ポートなどの他のパラメーターを設定します。IP アドレス リソースがオンラインになると、プローブ ポートにおいて、このチュートリアルで先ほど作成した負荷分散エンドポイントからのポーリングに応答できます。
 
 ## リスナーをオンラインにする
 
@@ -136,4 +137,4 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

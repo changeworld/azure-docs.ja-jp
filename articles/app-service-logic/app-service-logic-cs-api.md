@@ -105,4 +105,4 @@ return YammerAttachments;
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

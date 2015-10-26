@@ -19,7 +19,6 @@
 
 # Azure 用の CentOS ベースの仮想マシンの準備
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 - [Azure 用の CentOS 6.x 仮想マシンの準備](#centos6)
 - [Azure 用の CentOS 7.0 以上の仮想マシンの準備](#centos7)
@@ -364,4 +363,4 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
 
 16. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

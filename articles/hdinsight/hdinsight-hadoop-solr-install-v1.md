@@ -196,4 +196,4 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Solr を
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

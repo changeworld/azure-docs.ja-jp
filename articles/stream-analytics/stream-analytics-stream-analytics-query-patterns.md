@@ -444,7 +444,7 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 これらを組み合わせて、間に他の正常イベントがない正常 -> 異常 -> 正常を取得します。開始正常イベントと終了正常イベントの間の期間を計算して、バグの期間が得られます。
 
 ## 問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/JA-JP/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-jp/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## 次のステップ
 
@@ -455,4 +455,4 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

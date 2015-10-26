@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="CDN - ファイル圧縮によるパフォーマンスの向上"
-	description="ファイルを圧縮して、ファイル転送速度とページ読み込みパフォーマンスを向上させることができます。"
-	services="cdn"
-	documentationCenter=".NET"
-	authors="juliako"
-	manager="dwrede"
+	pageTitle="CDN - ファイル圧縮によるパフォーマンスの向上" 
+	description="ファイルを圧縮して、ファイル転送速度とページ読み込みパフォーマンスを向上させることができます。" 
+	services="cdn" 
+	documentationCenter=".NET" 
+	authors="juliako" 
+	manager="dwrede" 
 	editor=""/>
 
 <tags 
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2015"
+	ms.service="cdn" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2015" 
 	ms.author="juliako"/>
 
 #ファイル圧縮によるパフォーマンスの向上
@@ -54,4 +54,4 @@ CDN は次の 2 つの方法で圧縮をサポートしています。
 1. Media Services CDN 対応ストリーミング エンドポイントについて、圧縮は既定で次のコンテンツの種類に対応しています: application/vnd.ms-sstr+xml、application/dash+xml、application/vnd.apple.mpegurl、application/f4m+xml。これらの種類の圧縮は、Azure ポータルを使用して有効/無効にすることはできません。  
 2. エッジ サーバーでキャッシュされるのは、1 つのファイル バージョン (圧縮または非圧縮) のみです。他のバーションを要求すると、エッジ サーバーによってコンテンツがトランスコードされます。  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

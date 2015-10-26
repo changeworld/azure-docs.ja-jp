@@ -260,4 +260,4 @@ Azure CLI には、Web アプリ デプロイ スロットの管理のサポー�
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

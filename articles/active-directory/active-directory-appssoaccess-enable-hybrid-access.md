@@ -46,4 +46,4 @@ Azure AD のアクセス パネルでは、Azure AD にオンプレミス アプ
 1. Azure AD でアプリケーション プロキシを有効にし、コネクタをインストールして登録します。詳細な手順については、「[Azure AD アプリケーション プロキシの有効化](active-directory-application-proxy-enable/#step-1-enable-application-proxy-in-azure-ad.md)」を参照してください。
 2. Azure AD アプリケーション プロキシを使用してアプリケーションを発行します。詳細な手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)」を参照してください。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

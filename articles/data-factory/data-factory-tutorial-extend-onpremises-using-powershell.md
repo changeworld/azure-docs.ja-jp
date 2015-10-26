@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="出力データをオンプレミスの SQL Server データベースにコピーする (Azure PowerShell)"
+	pageTitle="出力データをオンプレミスの SQL Server データベースにコピーする (Azure PowerShell)" 
 	description="ここでは、Azure PowerShell を使用してチュートリアルを拡張して、パイプラインで出力データを SQL Server データベースにコピーするようにします。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
 	editor="monicar"/>
 
 <tags 
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2015"
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/25/2015" 
 	ms.author="spelluru"/>
 
 
@@ -28,7 +28,7 @@
 
 この記事のチュートリアルを実行する前に、[Data Factory を使用したログ ファイルの移動と処理のチュートリアル][datafactorytutorial]を実行する**必要があります**。
 
-**(推奨)** パイプラインを作成して内部設置型の SQL Server から Azure BLOB ストアにデータを移動するチュートリアルに関する、[パイプラインが内部設置型のデータを扱えるようにする][useonpremisesdatasources]記事内のチュートリアルの確認と練習をしてください。
+**(推奨)** パイプラインを作成してオンプレミスの SQL Server から Azure BLOB ストアにデータを移動するチュートリアルに関する、[パイプラインがオンプレミスのデータを扱えるようにする][useonpremisesdatasources]記事内のチュートリアルの確認と練習をしてください。
 
 
 このチュートリアルでは、次の手順に従います。
@@ -55,7 +55,7 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 2.	コマンド バーの **[+ データ ゲートウェイ]** をクリックします。  
 3.	**[新しいデータ ゲートウェイ]** ブレードで、**[作成]** をクリックします。
 4.	**[作成]** ブレードで、データ ゲートウェイの **[名前]** に「**MyGateway**」と入力します。
-5.	**[地域を選択]** をクリックし、必要があれば変更します。 
+5.	**[リージョンを選択]** をクリックし、必要があれば変更します。 
 6.	**[作成]** ブレードで **[OK]** をクリックします。 
 7.	**[構成]** ブレードが表示されます。 
 8.	**[構成]** ブレードで、**[このコンピューターに直接インストール]** をクリックします。これによりゲートウェイのダウンロード、インストール、およびコンピューター上での構成が行われ、サービスに登録されます。すでにコンピューターにインストール済みのゲートウェイがあり、それをポータル上に作成したこの論理ゲートウェイにリンクさせたい場合、このブレード上のキーを使用して Data Management Gateway Manager (プレビュー) ツールでゲートウェイの再登録をします。
@@ -113,13 +113,13 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
 ## <a name="OnPremStep3"></a>手順 3: テーブルとパイプラインを作成する
 
-### 内部設置型の論理テーブルを作成する
+### オンプレミスの論理テーブルを作成する
 
 1.	**Azure PowerShell** で、**C:\\ADFWalkthrough\\OnPremises** フォルダーに移動します。 
-2.	**New-AzureDataFactoryTable** コマンドレットを使用して、次のように **MarketingCampaignEffectivenessOnPremSQLTable.json** のテーブルを作成します。
+2.	**New-AzureDataFactoryDataset** コマンドレットを使用して、次のように **MarketingCampaignEffectivenessOnPremSQLTable.json** のデータセットを作成します。
 
 			
-		New-AzureDataFactoryTable -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessOnPremSQLTable.json
+		New-AzureDataFactoryDataset -ResourceGroupName ADF -DataFactoryName $df –File .\MarketingCampaignEffectivenessOnPremSQLTable.json
 	 
 #### パイプラインを作成して Azure BLOB から SQL Server へデータをコピーする
 
@@ -170,4 +170,4 @@ Data Management Gateway は、所属する組織内のオンプレミスのデ�
 
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

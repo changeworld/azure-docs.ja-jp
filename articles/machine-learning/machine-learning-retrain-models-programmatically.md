@@ -156,4 +156,4 @@ ML のトレーニング プロセスの一環として、モデルのトレー�
 <!-- Module References -->
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

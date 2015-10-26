@@ -1,6 +1,6 @@
 <properties
 	pageTitle="CoreOS を使用する方法 |Microsoft Azure"
-	description="CoreOS について説明するほか、Azure 上でクラシック デプロイメント モデルで CoreOS 仮想マシン クラスターを作成する方法とその基本的な使用方法について説明します。"
+	description="CoreOS について説明するほか、Azure 上でクラシック デプロイ モデルで CoreOS 仮想マシン クラスターを作成する方法とその基本的な使用方法について説明します。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
@@ -19,9 +19,9 @@
 
 # Azure 上で CoreOS を使用する方法
 
-このトピックでは、このオペレーティング システムを理解するためのクイック スタートとして [CoreOS] について説明し、Azure 上に 3 台の CoreOS 仮想マシンで構成されるクラスターを作成する方法を示します。ここでは、CoreOS デプロイメントのごく基本的な要素と、[CoreOS と Azure に関するページ]、[Tim Park による CoreOS のチュートリアル]、および [Patrick Chanezon によるチュートリアル]の例を使用して、CoreOS デプロイメントの基本構造を理解し、3 台の仮想マシンから構成されるクラスターを正常に実行するための極限まで抑えた最小要件について説明します。
+このトピックでは、このオペレーティング システムを理解するためのクイック スタートとして [CoreOS] について説明し、Azure 上に 3 台の CoreOS 仮想マシンで構成されるクラスターを作成する方法を示します。ここでは、CoreOS デプロイのごく基本的な要素と、[CoreOS と Azure に関するページ]、[Tim Park による CoreOS のチュートリアル]、および [Patrick Chanezon によるチュートリアル]の例を使用して、CoreOS デプロイの基本構造を理解し、3 台の仮想マシンから構成されるクラスターを正常に実行するための極限まで抑えた最小要件について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、Azure CLI を使用して、クラシック デプロイメント モデルで CoreOS VM を作成する方法について説明します。[リソース マネージャーのデプロイメント モデル](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)のテンプレートを使用して CoreOS VM を作成することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)。
 
 
 ## <a id='intro'>CoreOS、クラスター、Linux コンテナー</a>
@@ -29,12 +29,12 @@
 CoreOS は、Linux の軽量バージョンです。唯一のパッケージ化のメカニズムとして [Docker] コンテナーなどの Linux コンテナーを使用する、きわめて大規模になる可能性がある VM のクラスターの迅速な作成をサポートします。CoreOS は、以下をサポートすることを目的としています。
 
 + きわめて高度な自動化
-+ より容易で一貫性のあるアプリケーションのデプロイメント
++ より容易で一貫性のあるアプリケーションのデプロイ
 + アプリケーション レベルおよびシステム レベルでの拡張性
 
 大まかに言えば、以下の CoreOS の機能がこれらの目的を支援します。
 
-1. 1 つのパッケージ システム: CoreOS では、スピード、均一性、およびデプロイメントのしやすさを実現するため、Linux コンテナーで実行される Linux コンテナー イメージのみを実行します。
+1. 1 つのパッケージ システム: CoreOS では、スピード、均一性、およびデプロイのしやすさを実現するため、Linux コンテナーで実行される Linux コンテナー イメージのみを実行します。
 2. アトミックに実行されるオペレーティング システムの更新。そのため、オペレーティング システムは単一のエンティティとして更新され、容易に既知の状態にロールバックできます。
 3. 動的 VM およびクラスター通信と管理用の組み込みの [etcd](https://github.com/coreos/etcd) および [fleet](https://github.com/coreos/fleet) デーモン (サービス)
 
@@ -45,12 +45,12 @@ CoreOS は、Linux の軽量バージョンです。唯一のパッケージ化�
 
 ## <a id='usingcoreos'>方法: Azure での CoreOS の使用</a>
 
-このセクションでは、[Azure コマンドライン インターフェイス (Azure CLI)] を使用して、3 台の CoreOS 仮想マシンを含む Azure Cloud Service を作成する方法について説明します。基本的な手順は次のとおりです。
+このセクションでは、[Azure コマンドライン インターフェイス (Azure CLI)] を使用して、3 台の CoreOS 仮想マシンを含む Azure クラウド サービスを作成する方法について説明します。基本的な手順は次のとおりです。
 
 1. SSH 証明書とキーを作成し、CoreOS 仮想マシンとのコミュニケーションを保護する
 2. 相互に通信するために、使用するクラスターの etcd ID を取得する
 3. cloud-config ファイルを [YAML] 形式で作成する
-4. Azure CLI を使用して、新しい Azure Cloud Service と 3 台の CoreOS VM を作成する
+4. Azure CLI を使用して、新しい Azure クラウド サービスと 3 台の CoreOS VM を作成する
 5. Azure VM で CoreOS クラスターをテストする
 6. localhost で CoreOS クラスターをテストする
 
@@ -146,7 +146,7 @@ azure vm create --custom-data=cloud-config.yaml --ssh=22 --ssh-cert=./myCert.pem
 
 ### localhost で CoreOS クラスターをテストする
 
-最後に、ローカル Linux クライアントで CoreOS クラスターをテストします。**npm** を使用して **fleetctl** をインストールするか、ローカル クライアントに **fleet** をインストールして **fleetctl** を自身でビルドすることもできます。**fleet** には **golang** が必要なため、次を入力してまずそれをインストールする必要があります。
+最後に、ローカル Linux クライアントで CoreOS クラスターをテストします。**npm** を使用して **fleetctl** をインストールするか、ローカル クライアントに **fleet** をインストールして **fleetctl** を自身でビルドすることもできます。 **fleet** には **golang** が必要なため、次を入力してまずそれをインストールする必要があります。
 
 `sudo apt-get install golang`
 
@@ -209,4 +209,4 @@ azure vm create --custom-data=cloud-config.yaml --ssh=22 --ssh-cert=./myCert.pem
 [YAML]: http://yaml.org/
 [Azure 上の CoreOS で fleet を使ってみる]: virtual-machines-linux-coreos-fleet-get-started.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

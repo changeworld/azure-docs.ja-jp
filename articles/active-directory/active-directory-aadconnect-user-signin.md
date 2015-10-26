@@ -1,5 +1,5 @@
-<properties 
-	pageTitle="Azure AD Connect - ユーザー サインイン"
+<properties
+	pageTitle="Azure AD Connect - ユーザー サインイン | Microsoft Azure"
 	description="Azure AD Connect ユーザー サインインのカスタム設定"
 	services="active-directory"
 	documentationCenter=""
@@ -7,13 +7,13 @@
 	manager="stevenpo"
 	editor="curtand"/>
 
-<tags 
+<tags
 	ms.service="active-directory"
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/24/2015"
+	ms.date="10/13/2015"
 	ms.author="billmath"/>
 
 
@@ -62,6 +62,5 @@ Azure AD Connect では、ユーザーは同じパスワードを使用して、
 	- サード パーティ プロバイダーまたはスマート カードを使用するオンプレミスのMulti-Factor Authentication (Windows Server 2012 R2 の AD FS 用のサード パーティの MFA プロバイダーについての説明を参照)
 	- ソフト アカウント ロックアウトや AD パスワードと作業時間のポリシーなどの Active Directory の統合機能
 	- デバイス登録、Azure AD 参加、または Intune MDM ポリシーを使用するオンプレミスとクラウド両方のリソースへの条件付きアクセス
- 
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

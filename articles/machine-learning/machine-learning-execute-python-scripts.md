@@ -174,4 +174,4 @@ Azure Machine Learning にインストールされている Anaconda 環境に�
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

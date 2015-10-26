@@ -18,7 +18,8 @@ ms.service="virtual-machines"
 
 # HPC Pack と A8 および A9 インスタンスを使用して Windows RDMA クラスターを設定して MPI アプリケーションを実行する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイ モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 この記事では、Azure で [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) と [A8 および A9 サイズのコンピューティング集中型インスタンス](virtual-machines-a8-a9-a10-a11-specs.md)を使用して Windows RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。A8 および A9 サイズの Windows Server ベースのインスタンスを構成して、サポートされている MPI 実装を実行すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
 
@@ -45,7 +46,7 @@ Microsoft HPC Pack は、Azure で Windows Server ベースの HPC クラスタ�
 * **Azure サブスクリプション** - アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 
-* **コア クォータ** - A8 または A9 VM のクラスターをデプロイするために、コア クォータを増やすことが必要になる場合があります。たとえば、HPC Pack と共に 8 個の A9 インスタンスをデプロイする場合は、少なくとも 128 コアが必要です。クォータを増やすには、[オンライン カスタマー サポートに申請](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
+* **コア クォータ** - A8 または A9 VM のクラスターをデプロイするために、コア クォータを増やすことが必要な場合があります。たとえば、HPC Pack と共に 8 個の A9 インスタンスをデプロイする場合は、少なくとも 128 コアが必要です。クォータを増やすには、[オンライン カスタマー サポートに申請](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 
 ## シナリオ 1. コンピューティング集中型 worker ロール インスタンスをデプロイする (PaaS)
 
@@ -245,4 +246,4 @@ Azure インスタンスで MPI アプリケーションを実行する場合の
 [pingpong1]: ./media/virtual-machines-windows-hpcpack-cluster-rdma/pingpong1.png
 [pingpong2]: ./media/virtual-machines-windows-hpcpack-cluster-rdma/pingpong2.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

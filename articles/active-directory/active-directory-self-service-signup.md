@@ -232,4 +232,4 @@ Azure AD のテナントで作業するには、DNS ドメインの所有権を�
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

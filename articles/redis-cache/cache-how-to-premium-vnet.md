@@ -26,7 +26,7 @@ Azure Redis Cache の Premium レベルには、クラスタリング、永続�
 >[AZURE.NOTE]Azure Redis Cache Premium レベルは、現在プレビュー中です。
 
 ## VNET を選ぶ理由
-[Azure Virtual Network (VNET)](https://azure.microsoft.com/ja-JP/services/virtual-network/) のデプロイメントでは、Azure Redis Cache のための強化されたセキュリティと分離、サブネット、アクセス制御ポリシーなど、Azure Redis Cache へのアクセスをさらに制限するための機能が提供されます。
+[Azure Virtual Network (VNET)](https://azure.microsoft.com/ja-jp/services/virtual-network/) のデプロイメントでは、Azure Redis Cache のための強化されたセキュリティと分離、サブネット、アクセス制御ポリシーなど、Azure Redis Cache へのアクセスをさらに制限するための機能が提供されます。
 
 ## Virtual Network のサポート
 Virtual Network (VNET) のサポートは、キャッシュの作成中に **[Redis Cache の新規作成]** ブレードで構成します。キャッシュを作成するには、[Azure プレビュー ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** をクリックします。
@@ -103,4 +103,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-vnet-subnet]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-subnet.png
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

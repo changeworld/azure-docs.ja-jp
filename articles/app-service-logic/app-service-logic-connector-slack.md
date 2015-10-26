@@ -99,4 +99,4 @@ Slack コネクタでは REST API が使用できるため、ロジック アプ
 [8]: ./media/app-service-logic-connector-slack/img8.PNG
 [9]: ./media/app-service-logic-connector-slack/img9.PNG
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

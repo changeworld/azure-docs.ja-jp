@@ -144,4 +144,4 @@
 [Python Azure パッケージ]: https://pypi.python.org/pypi/azure
 [Python Azure Storage パッケージ]: https://pypi.python.org/pypi/azure-storage
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="07/17/2015"
+	ms.date="10/13/2015"
 	ms.author="vittorib"/>
 
 # Azure AD と Apache Cordova アプリとの統合
@@ -256,4 +256,4 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

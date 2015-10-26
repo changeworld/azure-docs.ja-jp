@@ -4,4 +4,4 @@
 - [Xamarin.iOS](../articles/app-service-mobile-dotnet-backend-xamarin-ios-get-started-users-preview.md)
 - [Xamarin.Android](../articles/app-service-mobile-dotnet-backend-xamarin-android-get-started-users-preview.md)
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

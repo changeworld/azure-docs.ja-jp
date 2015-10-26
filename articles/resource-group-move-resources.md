@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/08/2015" 
+	ms.date="10/14/2015" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -50,11 +50,12 @@
 
 新しいリソース グループへの移動をサポートし、新しいサブスクリプションへの移動はサポートしないサービスは、次のとおりです。
 
-- Compute (クラシック)
+- Virtual Machines (クラシック)
 - Storage (クラシック)
 
 現在リソースの移動をサポートしていないサービスは、次のとおりです。
 
+- Virtual Machines
 - Virtual Networks
 
 Web アプリを使用している場合、App Service プランのみを移動することはできません。Web アプリを移動するには、次のオプションがあります。
@@ -64,17 +65,19 @@ Web アプリを使用している場合、App Service プランのみを移動�
 
 ## PowerShell を使用したリソースの移動
 
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、**Move-AzureResource** コマンドを使用します。
+[AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
+
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、**Move-AzureRmResource** コマンドを使用します。
 
 最初の例では、1 つのリソースを新しいリソース グループに移動する方法を示します。
 
-    PS C:\> Move-AzureResource -DestinationResourceGroupName TestRG -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OtherExample/providers/Microsoft.ClassicStorage/storageAccounts/examplestorage
+    PS C:\> Move-AzureRmResource -DestinationResourceGroupName TestRG -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/OtherExample/providers/Microsoft.ClassicStorage/storageAccounts/examplestorage
 
 2 番目の例では、複数のリソースを新しいリソース グループに移動する方法を示します。
 
-    PS C:\> $webapp = Get-AzureResource -ResourceGroupName OldRG -ResourceName ExampleSite -ResourceType Microsoft.Web/sites
-    PS C:\> $plan = Get-AzureResource -ResourceGroupName OldRG -ResourceName ExamplePlan -ResourceType Microsoft.Web/serverFarms
-    PS C:\> Move-AzureResource -DestinationResourceGroupName NewRG -ResourceId ($webapp.ResourceId, $plan.ResourceId)
+    PS C:\> $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite -ResourceType Microsoft.Web/sites
+    PS C:\> $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan -ResourceType Microsoft.Web/serverFarms
+    PS C:\> Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId ($webapp.ResourceId, $plan.ResourceId)
 
 新しいサブスクリプションに移動する場合は、**DestinationSubscriptionId** パラメーターの値を含めます。
 
@@ -103,4 +106,4 @@ Web アプリを使用している場合、App Service プランのみを移動�
 - [Using the Azure Preview Portal to manage your Azure resources (Azure プレビュー ポータルを使用した Azure リソースの管理)](azure-portal/resource-group-portal.md)
 - [タグを使用した Azure リソースの整理](./resource-group-using-tags.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

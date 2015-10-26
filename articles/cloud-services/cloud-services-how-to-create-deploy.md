@@ -153,4 +153,4 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 * [クラウド サービスを管理する](cloud-services-how-to-manage.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->

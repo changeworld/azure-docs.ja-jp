@@ -1,20 +1,20 @@
 <properties
    pageTitle="Microsoft Azure Service Fabric サービスと通信する方法"
-	description="この記事では、Service Fabric アプリケーションのサービスに接続して通信する方法について説明します。"
-	services="service-fabric"
-	documentationCenter=".net"
-	authors="kunaldsingh"
-	manager="timlt"
-	editor=""/>
+   description="この記事では、Service Fabric アプリケーションのサービスに接続して通信する方法について説明します。"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="kunaldsingh"
+   manager="timlt"
+   editor=""/>
 
 <tags
    ms.service="service-fabric"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="NA"
-	ms.date="08/21/2015"
-	ms.author="kunalds"/>
+   ms.devlang="dotnet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/21/2015"
+   ms.author="kunalds"/>
 
 
 # サービスとの通信
@@ -57,4 +57,4 @@ ServiceFabric のすべての通信 API は、現在 C# でのみ使用可能で
 * [OWIN 自己ホストによる Microsoft Azure Service Fabric Web API サービスの概要](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services の WCF ベースの通信スタック](service-fabric-reliable-services-communication-wcf.md)
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

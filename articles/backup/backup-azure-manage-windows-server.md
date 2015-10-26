@@ -54,4 +54,4 @@
 - Azure Backup の詳細については、「[Azure Backup の概要](backup-introduction-to-azure-backup.md)」を参照してください。
 - [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

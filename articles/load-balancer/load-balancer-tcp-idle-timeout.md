@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/01/2015"
+   ms.date="08/12/2015"
    ms.author="joaoma" />
 
 # ロード バランサーの TCP アイドル タイムアウト設定を変更する方法
@@ -166,4 +166,4 @@ Azure SDK for .NET 2.4 を使用してクラウド サービスを更新でき�
 
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

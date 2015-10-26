@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="Azure DNS の概要 | Microsoft Azure"
-	description="Microsoft Azure の Azure DNS ホスティング サービスの概要と Microsoft Azure でのドメインのホストの開始"
-	services="dns"
-	documentationCenter="na"
-	authors="joaoma"
-	manager="adinah"
-	editor=""/>
+   pageTitle="Azure DNS の概要 | Microsoft Azure" 
+   description="Microsoft Azure の Azure DNS ホスティング サービスの概要と Microsoft Azure でのドメインのホストの開始" 
+   services="dns" 
+   documentationCenter="na" 
+   authors="joaoma" 
+   manager="adinah" 
+   editor=""/>
 
 <tags
    ms.service="dns"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="08/12/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services" 
+   ms.date="08/12/2015"
+   ms.author="joaoma"/>
 
 # Azure DNS の概要
 
@@ -40,4 +40,4 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーの Azure の�
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

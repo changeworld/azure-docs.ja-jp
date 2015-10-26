@@ -105,4 +105,4 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 
-<!----HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

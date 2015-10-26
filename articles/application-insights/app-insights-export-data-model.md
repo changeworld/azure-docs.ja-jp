@@ -451,7 +451,7 @@
 * 
     クライアント側のアプリのロケールです。テレメトリ項目で明示的に指定しない場合、ユーザー エージェントのフィールドの処理により指定されます。 
 
-    *例*<br/> ru<br/>ja-JP<br/>de-DE<br/>unknown
+    *例*<br/> ru<br/>ja-jp<br/>de-DE<br/>unknown
 
 **machineName**
 
@@ -1081,4 +1081,4 @@
 * [連続エクスポート](app-insights-export-telemetry.md)
 * [コード サンプル](app-insights-export-telemetry.md#code-samples)
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

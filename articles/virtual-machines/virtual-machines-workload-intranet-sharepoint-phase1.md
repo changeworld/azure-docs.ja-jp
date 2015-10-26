@@ -19,14 +19,15 @@
 
 # SharePoint イントラネット ファーム ワークロードのフェーズ 1: Azure の構成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
 
-イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業の第 1 フェーズでは、Azure サービス管理で Azure のネットワーキングおよびストレージ インフラストラクチャを構築します。[フェーズ 2](virtual-machines-workload-intranet-sharepoint-phase2.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
+
+イントラネット専用 SharePoint 2013 ファームと SQL Server AlwaysOn 可用性グループを Azure インフラストラクチャ サービスにデプロイする作業の第 1 フェーズでは、Azure サービス管理で Azure のネットワークおよびストレージ インフラストラクチャを構築します。[フェーズ 2](virtual-machines-workload-intranet-sharepoint-phase2.md) に進むには、このフェーズを完了する必要があります。全フェーズについては、「[Azure での SharePoint と SQL Server AlwaysOn 可用性グループのデプロイ](virtual-machines-workload-intranet-sharepoint-overview.md)」をご覧ください。
 
 Azure を次の基本的なネットワーク コンポーネントでプロビジョニングする必要があります。
 
 - サブネットを 1 つ含むクロスプレミス仮想ネットワーク
-- 3 つの Azure Cloud Services
+- 3 つの Azure クラウド サービス
 - VHD ディスク イメージと追加のデータ ディスクを格納するための 1 つの Azure ストレージ アカウント
 
 ## 開始する前に
@@ -84,7 +85,7 @@ Azure コンポーネントの構成を開始する前に、次の表を作成�
 
 Azure Virtual Network の作成が済むと、Microsoft Azure 管理ポータルで次のことが決定されます。
 
-- 仮想ネットワークの Azure VPN ゲートウェイのパブリック IPv4 アドレス
+- 仮想ネットワークの Azure VPN Gateway のパブリック IPv4 アドレス
 - サイト間 VPN 接続用のインターネット プロトコル セキュリティ (IPsec) 事前共有キー
 
 仮想ネットワーク作成後に Microsoft Azure 管理ポータルでこれらを確認するには、[**ネットワーク**] をクリックし、仮想ネットワークの名前をクリックして、[**ダッシュボード**] メニュー オプションをクリックします。
@@ -95,7 +96,7 @@ Azure Virtual Network の作成が済むと、Microsoft Azure 管理ポータル
 
 次に、仮想ネットワークのアドレス空間がオンプレミス ネットワークから到達できることを確認します。これは、通常、仮想ネットワークのアドレス空間に対応するルートを VPN デバイスに追加した後、組織ネットワークのルーティング インフラストラクチャの他の部分にそのルートをアドバタイズすることによって行います。IT 部門と相談してこの方法を決定します。
 
-次に、「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールしますAzure PowerShell コマンド プロンプトを開きます。
+次に、「[Azure PowerShell のインストールおよび構成方法](../install-configure-powershell.md)」の手順に従って、ローカル コンピューターに Azure PowerShell をインストールします。Azure PowerShell コマンド プロンプトを開きます。
 
 まず以下のコマンドで、適切な Azure サブスクリプションを選択します。引用符内のすべての文字 (< and > を含む) を、正しい名前に置き換えます。
 
@@ -128,7 +129,7 @@ Azure Virtual Network の作成が済むと、Microsoft Azure 管理ポータル
 
 実際に作成した各クラウド サービスの名前を表 C に記録してください。
 
-次に、SharePoint ファーム用のストレージ アカウントを作成します。*小文字と数字のみから成る一意の名前を選ぶ必要があります。* ストレージ アカウント名が一意かどうかは、次の Azure PowerShell コマンドで確認できます。
+次に、SharePoint ファーム用のストレージ アカウントを作成します。*小文字と数字のみから成る一意の名前を選んでください。* ストレージ アカウント名が一意かどうかは、次の Azure PowerShell コマンドで確認できます。
 
 	Test-AzureName -Storage <Proposed storage account name>
 
@@ -173,4 +174,4 @@ Azure Virtual Network の作成が済むと、Microsoft Azure 管理ポータル
 
 [Azure インフラストラクチャ サービスのワークロード: 高可用な基幹業務アプリケーション](virtual-machines-workload-high-availability-lob-application.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

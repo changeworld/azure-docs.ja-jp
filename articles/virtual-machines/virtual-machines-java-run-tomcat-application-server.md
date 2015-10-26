@@ -1,6 +1,6 @@
 <properties
 	pageTitle="仮想マシンで Tomcat を実行する | Microsoft Azure"
-	description="このチュートリアルでは、クラシック デプロイメント モデルで作成されたリソースを使用して、Windows 仮想マシンを作成して Apache Tomcat アプリケーション サーバーを実行するように構成する方法を説明します。"
+	description="このチュートリアルでは、クラシック デプロイ モデルで作成されたリソースを使用して、Windows 仮想マシンを作成して Apache Tomcat アプリケーション サーバーを実行するように構成する方法を説明します。"
 	services="virtual-machines"
 	documentationCenter="java"
 	authors="rmcmurray"
@@ -17,9 +17,10 @@
 	ms.date="09/22/2015"
 	ms.author="robmcm"/>
 
-# クラシック デプロイメントモデルで作成された仮想マシンに Java アプリケーション サーバーをインストールする方法
+# クラシック デプロイ モデルで作成された仮想マシンに Java アプリケーション サーバーをインストールする方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]この記事では、クラシック デプロイメント モデルを使用したリソースの作成について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]リソース マネージャー モデル。
+
 
 Azure では、仮想マシンを使用してサーバー機能を実現することができます。たとえば、Apache Tomcat などの Java アプリケーション サーバーをホストできるように、Azure で実行する仮想マシンを構成することができます。このガイドを完了すると、Azure で実行する仮想マシンを作成して、Java アプリケーション サーバーを実行するように構成する方法を理解できます。
 
@@ -145,4 +146,4 @@ Java アプリケーションに含めることができる他のサービス (A
 [NewRuleName]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -1,7 +1,9 @@
 <properties 
 	pageTitle="Machine Learning での線形回帰の使用 | Microsoft Azure" 
 	description="Excel と Azure Machine Learning Studio での線形回帰モデルの比較" 
+	metaKeywords="" 
 	services="machine-learning" 
+	solutions="" 
 	documentationCenter="" 
 	authors="garyericson" 
 	manager="paulettm" 
@@ -139,4 +141,4 @@ Excel の回帰と Azure Machine Learning の実験を並行して実行する�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!---HONumber=August15_HO6-->
+<!---HONumber=Oct15_HO3-->

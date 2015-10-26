@@ -81,4 +81,4 @@
 - [共有アクセス署名: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)
 - [Shared Access Signature を使用したアクセスの委任](https://msdn.microsoft.com/library/azure/ee395415.aspx) 
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

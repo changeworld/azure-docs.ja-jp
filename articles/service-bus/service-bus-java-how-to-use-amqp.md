@@ -1,8 +1,10 @@
 <properties 
-	pageTitle="Java Service Bus API で AMQP 1.0 を使用する方法 | Microsoft Azure"  
+	pageTitle="Java Service Bus API で AMQP 1.0 を使用する方法 | Microsoft Azure" 
+	metakeywords="Java Messsage AMQP, Service Bus AMQP, download AMQP JMS library" 
 	description="Java Message Service (JMS) API を Azure Service Bus と Advanced Message Queuing Protodol (AMQP) 1.0 と共に使用する方法について説明します。" 
 	authors="sethmanheim" 
-	documentationCenter="java"  
+	documentationCenter="java" 
+	writer="sethm" 
 	manager="timlt" 
 	editor="" 
 	services="service-bus"/>
@@ -27,13 +29,13 @@ AMQP 1.0 の追加により、サービス バスの仲介型メッセージン�
 
 ## Service Bus の概要
 
-このガイドは、"queue1" という名前のキューが含まれているサービス バス名前空間が既にあることを前提としています。 まだない場合は、[Azure 管理ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)」を参照してください。
+このガイドは、"queue1" という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Microsoft Azure 管理ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)」を参照してください。
 
 ### AMQP 1.0 JMS クライアント ライブラリのダウンロード
 
-Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョンをダウンロードする場所については、「[http://people.apache.org/\~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html)」を参照してください。
+Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョンをダウンロードする場所については、「[http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html)」を参照してください。
 
-サービス バスを使用する JMS アプリケーションをビルドおよび実行するときは、次の 4 つの JAR ファイルを Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブから Java CLASSPATH に追加する必要があります。
+Service Bus を使用する JMS アプリケーションをビルドおよび実行するときは、次の 4 つの JAR ファイルを Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブから Java CLASSPATH に追加する必要があります。
 
 *    geronimo-jms\_1.1\_spec-1.0.jar
 *    qpid-amqp-1-0-client-[version].jar
@@ -108,7 +110,7 @@ topic.[jndi_name] = [physical_name]
 
 ### JMS アプリケーションの記述
 
-JMS とサービス バスの使用時に必要になる特殊な API やオプションはありません。ただし、この後で取り上げているようないくつかの制限があります。いずれの JMS アプリケーションでも、まず、**ConnectionFactory** と送信先の名前解決が可能になるように JNDI 環境を構成する必要があります。
+JMS と Service Bus の使用時に必要になる特殊な API やオプションはありません。ただし、この後で取り上げているようないくつかの制限があります。いずれの JMS アプリケーションでも、まず、**ConnectionFactory** と送信先の名前解決が可能になるように JNDI 環境を構成する必要があります。
 
 #### JNDI InitialContext の構成
 
@@ -123,7 +125,7 @@ InitialContext context = new InitialContext(env);
 
 ### Service Bus キューを使用するシンプルな JMS アプリケーション
 
-次のサンプル プログラムでは、JNDI 論理名が QUEUE のサービス バス キューに JMS TextMessages を送信し、折り返しそれらのメッセージを受信します。
+次のサンプル プログラムでは、JNDI 論理名が QUEUE の Service Bus キューに JMS TextMessages を送信し、折り返しそれらのメッセージを受信します。
 
 	// SimpleSenderReceiver.java
 	
@@ -241,7 +243,7 @@ exit
 
 ## JMS と .NET の間のクロスプラットフォーム メッセージング
 
-このガイドでは、JMS を使用してサービス バスとの間でメッセージを送信および受信する方法について説明しました。しかし、AMQP 1.0 の主な利点の 1 つは、さまざまな言語で書かれたコンポーネントからアプリケーションを作成して、高い信頼性と完全な忠実度でメッセージ交換を行えることにあります。
+このガイドでは、JMS を使用して Service Bus との間でメッセージを送信および受信する方法について説明しました。しかし、AMQP 1.0 の主な利点の 1 つは、さまざまな言語で書かれたコンポーネントからアプリケーションを作成して、高い信頼性と完全な忠実度でメッセージ交換を行えることにあります。
 
 ここで示したサンプル JMS アプリケーションと、「[.NET サービス バス API で AMQP 1.0 を使用する方法](service-bus-dotnet-advanced-message-queuing.md)」に示されている類似の .NET アプリケーションを使用すると、.NET と Java の間でメッセージ交換を行うことができます。
 
@@ -311,7 +313,7 @@ exit
 
 ## サポートされていない機能および制限
 
-JMS を AMQP 1.0 とサービス バスで使用する場合は、次の制限があります。
+JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があります。
 
 * **Session** ごとに作成できる **MessageProducer** または **MessageConsumer** は 1 つのみです。アプリケーションで複数の **MessageProducers** または **MessageConsumers** を作成する必要がある場合は、それぞれに専用の**セッション**を作成してください。
 * 揮発性トピック サブスクリプションは現在サポートされていません。
@@ -321,9 +323,9 @@ JMS を AMQP 1.0 とサービス バスで使用する場合は、次の制限�
 
 ## まとめ
 
-このガイドでは、一般的な JMS API と AMQP 1.0 を使って Java からサービス バスの仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明しました。
+このガイドでは、一般的な JMS API と AMQP 1.0 を使って Java から Service Bus の仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明しました。
 
-サービス バス AMQP 1.0 のサポートは、.NET、C、Python、PHP など、その他の言語からも使用できます。サービス バスで AMQP 1.0 のサポートを使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。詳細については、「[Service Bus AMQP 1.0 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」を参照してください。
+Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、その他の言語からも使用できます。Service Bus で AMQP 1.0 のサポートを使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。詳細については、「[Service Bus AMQP 1.0 開発者ガイド](http://msdn.microsoft.com/library/jj841071.aspx)」を参照してください。
 
 ## 次のステップ
 
@@ -333,4 +335,4 @@ JMS を AMQP 1.0 とサービス バスで使用する場合は、次の制限�
 * [Service Bus キューの使用方法](service-bus-dotnet-how-to-use-queues.md)
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

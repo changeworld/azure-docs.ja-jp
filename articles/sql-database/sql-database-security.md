@@ -1,10 +1,10 @@
-<properties 
-   pageTitle="SQL Database のセキュリティの概要" 
-   description="認証、承認、接続のセキュリティ、暗号化、コンプライアンスなどに関するクラウドと SQL Server オンプレミスの違いなど、Azure SQL Database と SQL Server のセキュリティの詳細について説明します。" 
-   services="sql-database" 
-   documentationCenter="" 
-   authors="tmullaney" 
-   manager="jeffreyg" 
+<properties
+   pageTitle="SQL Database のセキュリティの概要"
+   description="認証、承認、接続のセキュリティ、暗号化、コンプライアンスなどに関するクラウドと SQL Server オンプレミスの違いなど、Azure SQL Database と SQL Server のセキュリティの詳細について説明します。"
+   services="sql-database"
+   documentationCenter=""
+   authors="tmullaney"
+   manager="jeffreyg"
    editor=""/>
 
 <tags
@@ -12,8 +12,8 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="data-services" 
-   ms.date="09/22/2015"
+   ms.workload="data-services"
+   ms.date="10/13/2015"
    ms.author="thmullan;jackr"/>
 
 
@@ -21,15 +21,15 @@
 
 ## 概要
 
-この記事は、Azure SQL Database を使用してアプリケーションのデータ層をセキュリティで保護するための基本事項について説明します。特にこの記事は、[SQL Database の使用に関するチュートリアル](sql-database-get-started.md)で作成したデータベースでリソースを使用して、アクセスの制限、データの保護、アクティビティの監視を実行するのに役立ちます。SQL のすべてのエディションで使用できるセキュリティ機能の概要については、[SQL Server Database Engine と Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)を参照してください。
+この記事は、Azure SQL Database を使用してアプリケーションのデータ層をセキュリティで保護するための基本事項について説明します。具体的には、この記事では、[SQL Database の使用に関するチュートリアル](sql-database-get-started.md)で作成したデータベースでアクセスの制限、データの保護、アクティビティの監視を行うためのリソースについて説明します。SQL のすべてのエディションで使用できるセキュリティ機能の概要については、[SQL Server Database Engine と Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)を参照してください。[セキュリティと Azure SQL Database のテクニカル ホワイト ペーパー](https://download.microsoft.com/download/A/C/3/AC305059-2B3F-4B08-9952-34CDCA8115A9/Security_and_Azure_SQL_Database_White_paper.pdf) (PDF) でも追加情報を参照できます。
 
 ## 接続のセキュリティ
 
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。新しいデータベースへの接続を試行するために、アプリケーションまたはクライアント コンピューターのパブリック IP アドレスを許可するには、まず Azure の管理ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。詳細については、「[Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/ee621782)」を参照してください。
+ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。新しいデータベースへの接続を試行するために、アプリケーションまたはクライアント コンピューターのパブリック IP アドレスを許可するには、まず Azure 管理ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。詳細については、「[Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/ee621782)」をご覧ください。
 
-データがデータベースとの間で "送受信中" である間は、常に Azure SQL Database への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。アプリケーションの接続文字列で、接続を暗号化するパラメーターを指定する必要があります。また、サーバーの証明書を信頼*しないでください* (Azure の管理ポータルから接続文字列をコピーすると、この操作は自動的に実行されます)。この操作を実行しないと、サーバーの ID が確認されず、"man-in-the-middle" 攻撃を受けやすくなります。たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、**Encrypt=True** と **TrustServerCertificate=False** です。詳細については、[Azure SQL Database の接続の暗号化と証明書の検証](https://msdn.microsoft.com/library/azure/ff394108#encryption)に関するトピックを参照してください。
+データがデータベースとの間で "送受信中" である間は、常に Azure SQL Database への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。アプリケーションの接続文字列で、接続を暗号化するパラメーターを指定する必要があります。また、サーバーの証明書を信頼*しないでください* (Azure 管理ポータルから接続文字列をコピーすると、この操作は自動的に実行されます)。この操作を実行しないと、サーバーの ID が確認されず、"man-in-the-middle" 攻撃を受けやすくなります。たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、**Encrypt=True** と **TrustServerCertificate=False** です。詳細については、[Azure SQL Database の接続の暗号化と証明書の検証](https://msdn.microsoft.com/library/azure/ff394108#encryption)に関するトピックを参照してください。
 
 
 ## 認証
@@ -37,11 +37,11 @@
 認証とは、データベースへの接続時に ID を証明する方法のことです。SQL Database は、2 種類の認証をサポートしています。
 
  - **SQL 認証**。ユーザー名とパスワードを使用します。
- - **Azure Active Directory 認証**。Azure Active Directory が管理する ID を使用します。管理および統合されたドメインの場合にサポートされます。
+ - **Azure Active Directory 認証**。Azure Active Directory で管理されている ID を使用します。管理および統合されたドメインの場合にサポートされます。
 
-データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを認証できます。 Azure Active Directory 認証を使用する場合は、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。Azure AD 管理者を作成して Azure Active Directory 認証を使用する方法のチュートリアルについては、「[Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」を参照してください。
+データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを認証できます。 Azure Active Directory 認証を使用する場合は、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。Azure AD 管理者を作成して Azure Active Directory 認証を有効にする方法のチュートリアルについては、「[Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)」を参照してください。
 
-ベスト プラクティスとしては、アプリケーションで別のアカウントを使用して認証することをお勧めします。この方法により、アプリケーションに付与されるアクセス許可を制限し、アプリケーション コードが SQL インジェクション攻撃に対して脆弱な場合に、悪意のあるアクティビティのリスクを軽減できます。[包含データベース ユーザー](https://msdn.microsoft.com/library/ff929188)を作成する方法をお勧めします。この方法により、アプリケーションから単一のデータベースに直接認証できます。サーバー管理者権限のログインでユーザー データベースに接続しているときに、次の T-SQL コマンドを実行することで、SQL 認証を使用する包含データベース ユーザーを作成できます。
+ベスト プラクティスとしては、アプリケーションで別のアカウントを使用して認証することをお勧めします。この方法により、アプリケーションに付与されるアクセス許可を制限し、アプリケーション コードが SQL インジェクション攻撃に対して脆弱な場合に、悪意のあるアクティビティのリスクを軽減できます。[包含データベース ユーザー](https://msdn.microsoft.com/library/ff929188)を作成する方法をお勧めします。この方法により、アプリケーションが単一のデータベースから直接認証を受けることができます。サーバー管理者権限のログインでユーザー データベースに接続しているときに、次の T-SQL コマンドを実行することで、SQL 認証を使用する包含データベース ユーザーを作成できます。
 
 ```
 CREATE USER ApplicationUser WITH PASSWORD = 'strong_password'; -- SQL Authentication
@@ -73,11 +73,11 @@ ALTER ROLE db_datawriter ADD MEMBER ApplicationUser; -- allows ApplicationUser t
 * db\_datareader と db\_datawriter 以外の[データベース ロール](https://msdn.microsoft.com/library/ms189121)を使用して、より権限の大きなアプリケーション ユーザー アカウント、またはより権限の小さな管理アカウントを作成できます。
 * 詳細な[アクセス許可](https://msdn.microsoft.com/library/ms191291)により、個々の列、テーブル、ビュー、プロシージャ、その他のデータベース内のオブジェクトで実行できる操作を制御できます。
 * [権限借用](https://msdn.microsoft.com/library/vstudio/bb669087)と[モジュール署名](https://msdn.microsoft.com/library/bb669102)を使用すると、安全にアクセス許可を一時的に昇格できます。
-* [行レベル セキュリティ](https://msdn.microsoft.com/library/dn765131)により、ユーザーが確認できる行をフィルター処理できます。
+* [Row-Level Security](https://msdn.microsoft.com/library/dn765131) を使用すると、ユーザーがアクセスできる行を制限できます。
 * [データのマスキング](sql-database-dynamic-data-masking-get-started.md)を使用すると、機密データの公開を制限できます。
 * [ストアド プロシージャ](https://msdn.microsoft.com/library/ms190782)を使用すると、データベースで実行できるアクションを制限できます。
 
-Azure の管理ポータルまたは Azure リソース マネージャー API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。このトピックの詳細については、「[Azure プレビュー ポータルでの役割ベースのアクセス制御](../role-based-access-control-configure.md)」を参照してください。
+Azure 管理ポータルまたは Azure リソース マネージャー API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。このトピックの詳細については、「[Azure プレビュー ポータルでの役割ベースのアクセス制御](../role-based-access-control-configure.md)」を参照してください。
 
 
 ## 暗号化
@@ -85,10 +85,10 @@ Azure の管理ポータルまたは Azure リソース マネージャー API �
 Azure SQL Database では、[透過的なデータ暗号化](http://go.microsoft.com/fwlink/?LinkId=526242)を使用して、データが "静止" 状態のとき、またはデータベース ファイルやバックアップに格納されているときに、そのデータを暗号化することによりデータを保護できます。データベースを暗号化するには、データベースの所有者として接続し、次のコマンドを実行します。
 
 ```
-CREATE DATABASE ENCRYPTION KEY 
-   WITH ALGORITHM = AES_256 
+CREATE DATABASE ENCRYPTION KEY
+   WITH ALGORITHM = AES_256
    ENCRYPTION BY SERVER CERTIFICATE ##MS_TdeCertificate##;
-   
+
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
@@ -105,6 +105,5 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ## コンプライアンス
 
 アプリケーションがさまざまなセキュリティ コンプライアンスの要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。詳細については、「[Microsoft Azure のトラスト センター](http://azure.microsoft.com/support/trust-center/)」を参照してください。ここから最新の[SQL Database コンプライアンス証明書](http://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
- 
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

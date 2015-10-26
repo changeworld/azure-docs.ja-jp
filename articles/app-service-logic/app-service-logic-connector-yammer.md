@@ -92,4 +92,4 @@ Yammer コネクタは、ロジック アプリ内でアクションとして使
 [10]: ./media/app-service-logic-connector-yammer/img10.PNG
 [11]: ./media/app-service-logic-connector-yammer/img11.PNG
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

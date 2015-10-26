@@ -44,7 +44,7 @@
 #### データが表示されていたのに停止しました。
 
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
-* データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いて確認します。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+* データ ポイントの月間クォータに達していませんか? Open Settings/Quota and Pricing to find out.上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。「[料金プラン](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 
 
@@ -133,9 +133,9 @@ XML メソッドを使用するうえで、値を変更した場合はアプリ�
 [java]: app-insights-java-get-started.md
 [javalogs]: app-insights-java-trace-logs.md
 [platforms]: app-insights-platforms.md
-[track]: app-insights-custom-events-metrics-api.md
+[track]: app-insights-api-custom-events-metrics.md
 [usage]: app-insights-web-track-usage.md
 
  
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

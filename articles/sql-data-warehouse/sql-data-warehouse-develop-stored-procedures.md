@@ -90,8 +90,8 @@ SQL Data Warehouse で実装されていない Transact-SQL ストアド プロ�
 [開発の概要]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[nest level]: https://msdn.microsoft.com/ja-JP/library/ms187371.aspx
+[nest level]: https://msdn.microsoft.com/ja-jp/library/ms187371.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

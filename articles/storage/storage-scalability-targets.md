@@ -76,4 +76,4 @@ Azure Storage に格納されているデータを含むすべてのオブジェ
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

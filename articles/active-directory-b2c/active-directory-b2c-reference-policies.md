@@ -115,4 +115,4 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
     > [AZURE.NOTE]ポリシーの作成と更新が有効になるまで、最大で 1 分間かかります。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

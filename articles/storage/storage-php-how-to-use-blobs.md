@@ -307,4 +307,4 @@ BLOB を削除するには、コンテナー名と BLOB 名を **BlobRestProxy->
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -55,4 +55,4 @@ Azure ポータルで使用できるのは [PowerShell ワークフロー Runboo
 - [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
 - [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

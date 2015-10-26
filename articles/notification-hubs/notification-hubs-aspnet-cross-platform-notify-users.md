@@ -111,4 +111,4 @@
 [Templates]: http://go.microsoft.com/fwlink/p/?LinkId=317339
 [方法: Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/library/windowsazure/jj927172.aspx
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

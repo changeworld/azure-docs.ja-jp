@@ -19,7 +19,7 @@
 
 証明書を Azure Automation に安全に保存し、**Get-AutomationCertificate** アクティビティを使用して Runbook でアクセスできます。これにより、認証に証明書を使用する Runbook を作成したり、Runbook が作成または構成できる Azure またはサードパーティのリソースに証明書を追加したりできます。
 
->[AZURE.NOTE]Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。これらの資産は、各 Automation アカウントに対して生成される一意のキーを使用して暗号化され、Azure Automation に格納されます。このキーは、マスター証明書によって暗号化されて Azure Automation に格納されます。セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>[AZURE.NOTE]Secure assets in Azure Automation include credentials, certificates, connections, and encrypted variables.These assets are encrypted and stored in the Azure Automation using a unique key that is generated for each automation account.This key is encrypted by a master certificate and stored in Azure Automation.セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## Windows PowerShell コマンドレット
 
@@ -36,15 +36,15 @@ Windows PowerShell でオートメーション証明書資産を作成および�
 
 次の表のアクティビティは、Runbook で証明書にアクセスするために使用されます。
 
-|アクティビティ|説明|
+|Activities|Description|
 |:---|:---|
-|Get-AutomationCertificate|Runbook で使用する証明書を取得します。|
+|Get-AutomationCertificate|Gets a certificate to use in a runbook.|
 
 >[AZURE.NOTE]Get-AutomationCertificate の –Name パラメーターを使用すると、設計時に Runbook と証明書資産の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
 
 ## 新しい証明書の作成
 
-新しい証明書を作成するときは、cer または pfx ファイルを Azure Automation にアップロードします。エクスポート可能とマークされた証明書は、Azure Automation の証明書ストアから転送できます。エクスポート可能ではない場合は、Runbook 内での署名にのみ使用できます。
+新しい証明書を作成するときは、cer または pfx ファイルを Azure Automation にアップロードします。If you mark the certificate as exportable, then you can transfer it out of the Azure Automation certificate store.エクスポート可能ではない場合は、Runbook 内での署名にのみ使用できます。
 
 ### Azure ポータルで新しい証明書を作成するには
 
@@ -53,7 +53,7 @@ Windows PowerShell でオートメーション証明書資産を作成および�
 1. **[資格情報の追加]** をクリックします。
 2. **[資格情報の種類]** ドロップダウンで、**[証明書]** を選択します。
 3. **[名前]** ボックスに証明書の名前を入力し、右矢印をクリックします。
-4. .cer または .pfx ファイルを参照します。.pfx ファイルを選択する場合は、パスワードおよびエクスポートを許可するかどうかを指定します。
+4. .cer または .pfx ファイルを参照します。If you select a .pfx file, specify a password and whether it should be allowed to be exported.
 1. チェック マークをクリックして証明書ファイルをアップロードし、新しい証明書資産を保存します。
 
 
@@ -107,4 +107,4 @@ Runbook で証明書を使用するには、**Get-AutomationCertificate** アク
 
 - [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow) 
 
-<!---HONumber=August15_HO8-->
+<!---HONumber=Oct15_HO3-->

@@ -180,10 +180,6 @@ if ($message->properties != null)
 さらに詳しい情報については、 次のリンク先を参照してください。
 
 - [Service Bus AMQP の概要]
-- [AMQP で .NET から Service Bus を使用する]
-- [AMQP で Java から Service Bus を使用する]
-- [AMQP で Python から Service Bus を使用する]
-- [Azure Linux VM に Apache Qpid Proton-C をインストールする]
 - [Windows Server 用 Service Bus の AMQP]
 
 
@@ -192,9 +188,5 @@ if ($message->properties != null)
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
-[AMQP で .NET から Service Bus を使用する]: service-bus-amqp-dotnet.md
-[AMQP で Java から Service Bus を使用する]: service-bus-amqp-java.md
-[AMQP で Python から Service Bus を使用する]: service-bus-amqp-python.md
-[Azure Linux VM に Apache Qpid Proton-C をインストールする]: service-bus-amqp-apache.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

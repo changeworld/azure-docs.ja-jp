@@ -105,10 +105,6 @@ Python および PHP アプリの場合、この例では Apache の Proton ク�
 さらに詳しい情報については、 次のリンク先を参照してください。
 
 - [Service Bus AMQP の概要]
-- [AMQP で .NET から Service Bus を使用する]
-- [AMQP で Java から Service Bus を使用する]
-- [AMQP で Python から Service Bus を使用する]
-- [AMQP で PHP から Service Bus を使用する]
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [0]: ./media/service-bus-amqp-apache/amqp-apache-1.png
@@ -117,9 +113,5 @@ Python および PHP アプリの場合、この例では Apache の Proton ク�
 [3]: ./media/service-bus-amqp-apache/amqp-apache-4.png
 
 [Azure ポータル]: http://manage.windowsazure.com
-[AMQP で .NET から Service Bus を使用する]: service-bus-amqp-dotnet.md
-[AMQP で Java から Service Bus を使用する]: service-bus-amqp-java.md
-[AMQP で Python から Service Bus を使用する]: service-bus-amqp-python.md
-[AMQP で PHP から Service Bus を使用する]: service-bus-amqp-php.md
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -147,4 +147,4 @@ Basic 階層には Service Bus 名前空間あたり 100 個の仲介型接続�
 
 [Service Bus の料金に関する FAQ](service-bus-pricing-faq.md)
 
-<!---HONumber=Sept15_HO3-->
+<!---HONumber=Oct15_HO3-->

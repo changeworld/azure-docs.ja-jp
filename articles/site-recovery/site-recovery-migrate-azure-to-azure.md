@@ -69,4 +69,4 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 ご意見やご質問がありましたら、[Site Recovery フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

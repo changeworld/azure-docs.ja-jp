@@ -281,4 +281,4 @@ Azure CLI では、エラー情報を STDERR にログ出力しますが、エ�
 [signuporg]: http://www.windowsazure.com/documentation/articles/sign-up-organization/
 [Using the Azure CLI]: virtual-machines-command-line-tools.md
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

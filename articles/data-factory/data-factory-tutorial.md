@@ -171,16 +171,16 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 		![[リソース グループ] ブレード][image-data-factory-tutorial-resourcegroup-blade]
 	2. **[リソース グループを作成]** ブレードで、リソース グループの名前として「**ADF**」と入力し、**[OK]** をクリックします。
 	
-		![Create Resource Group][image-data-factory-tutorial-create-resourcegroup]
+		![リソース グループの作成][image-data-factory-tutorial-create-resourcegroup]
 7. **[リソース グループ名]** の **[ADF]** を選択します。  
 8.	**[新しいデータ ファクトリ]** ブレードで、**[スタート画面に追加]** が既定で選択されていることに注意してください。これにより、スタート画面 (Azure プレビュー ポータルへのログイン時に表示される画面) のデータ ファクトリにリンクが追加されます。
 
-	![Create Data Factory Blade][image-data-factory-tutorial-create-datafactory]
+	![データ ファクトリ作成ブレード][image-data-factory-tutorial-create-datafactory]
 
 9.	**[新しいデータ ファクトリ]** ブレードで、**[作成]** をクリックしてデータ ファクトリを作成します。
 10.	データ ファクトリが作成されると、**LogProcessingFactory** というタイトルの **[Data Factory]** ブレードが表示されます。
 
-	![Data Factory Homepage][image-data-factory-tutorial-datafactory-homepage]
+	![データ ファクトリのホーム ページ][image-data-factory-tutorial-datafactory-homepage]
 
 	
 	表示されない場合は、次のいずれかを行います。
@@ -205,13 +205,13 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 
 1.	**[Data Factory]** ブレードで、**[作成とデプロイ]** タイルをクリックして、Data Factory の**エディター**を起動します。
 
-	![Author and Deploy Tile][image-author-deploy-tile]
+	![[作成とデプロイ] タイル][image-author-deploy-tile]
 
 	Data Factory エディターの詳細については、トピック「[Data Factory エディター][data-factory-editor]」を参照してください。
 
 2.  **エディター**のツール バーで **[新しいデータ ストア]** ボタンをクリックし、ドロップダウン メニューから **[Azure Storage]** を選択します。Azure Storage のリンクされたサービスを作成するための JSON テンプレートが右側のウィンドウに表示されます。
 	
-	![Editor New data store button][image-editor-newdatastore-button]
+	![エディターの [新しいデータ ストア] ボタン][image-editor-newdatastore-button]
 
 3. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーの値に置き換えます。
 
@@ -221,7 +221,7 @@ Contoso は、ゲーム機、携帯デバイス、パーソナル コンピュ�
 
 4. ツール バーの **[デプロイ]** をクリックして、StorageLinkedService をデプロイします。タイトル バーに **"リンクされたサービスが正常に作成されました"** というメッセージが表示されていることを確認します。
 
-	![Editor Blob Storage Deploy][image-editor-blob-storage-deploy]
+	![エディターの BLOB ストレージのデプロイ][image-editor-blob-storage-deploy]
 
 5. 手順を繰り返して、HDInsight クラスターに関連付けられているストレージに対して **HDInsightStorageLinkedService** という名前で Azure Storage のリンクされたサービスを作成します。リンクされたサービスの JSON スクリプトで、**name** プロパティの値を **HDInsightStorageLinkedService** に変更します。
 
@@ -286,7 +286,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 - MarketingCampaignEffectivenessSQLTable
 - MarketingCampaignEffectivenessBlobTable
 
-	![Tutorial End-to-End Flow][image-data-factory-tutorial-end-to-end-flow]
+	![チュートリアルの全体のフロー][image-data-factory-tutorial-end-to-end-flow]
  
 上の図は、中央の列がパイプラインを、上と下の列がテーブルを表しています。
 
@@ -314,7 +314,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 ### パイプラインを作成するには
 
-1. **Data Factory エディター**で、ツール バーの **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **... (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1. **Data Factory エディター**で、ツール バーの **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 2. 右側のウィンドウにある JSON を、**C:\\ADFWalkthrough\\Pipelines** フォルダーにある **PartitionGameLogsPipeline.json** の JSON スクリプトに置き換えます。
 3. JSON の**閉じ角かっこ (']')** の最後に**コンマ (',')** を追加してから、その閉じ角かっこの後に次の 3 行を追加します。 
 
@@ -334,15 +334,15 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 1. **[LogProcessingFactory]** の **[Data Factory]** ブレードで、**[ダイアグラム]** をクリックします。 
 
-	![Diagram Link][image-data-factory-tutorial-diagram-link]
+	![[ダイアグラム] リンク][image-data-factory-tutorial-diagram-link]
 
 2. 表示されているダイアグラムは並べ替えることが可能で、以下のダイアグラムは上部が直接の入力を示し、下部が出力を示しています。**PartitionGameLogsPipeline** の出力が EnrichGameLogsPipeline に入力として渡され、**EnrichGameLogsPipeline** の出力が **AnalyzeMarketingCampaignPipeline** に渡されていることがわかります。タイトルをダブルクリックして、ブレードが示すアーティファクトについての詳細を表示します。
 
-	![Diagram View][image-data-factory-tutorial-diagram-view]
+	![[ダイアグラム] ビュー][image-data-factory-tutorial-diagram-view]
 
 3. **[AnalyzeMarketingCampaignPipeline]** を右クリックし、**[パイプラインを開く]** をクリックします。アクティビティの入力呼び出し力のデータセットと、パイプライン内のすべてのアクティビティが表示されます。
  
-	![Open pipeline](./media/data-factory-tutorial/AnalyzeMarketingCampaignPipeline-OpenPipeline.png)
+	![パイプラインを開く](./media/data-factory-tutorial/AnalyzeMarketingCampaignPipeline-OpenPipeline.png)
 
 	左上にある階層リンクで **[Data Factory]** をクリックすると、すべてのパイプラインでダイアグラム ビューに戻ります。
 
@@ -355,7 +355,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 1.	**[LogProcessingFactory]** の **[Data Factory]** ブレードを開いていない場合、以下のいずれかを実行できます。
 	1.	**スタート画面**で **[LogProcessingFactory]** をクリックします。データ ファクトリの作成中に、**[スタート画面に追加]** オプションが自動でオンになっています。
 
-		![Monitoring Startboard][image-data-factory-monitoring-startboard]
+		![監視スタート画面][image-data-factory-monitoring-startboard]
 
 	2. **[参照]** ハブをクリックし、**[すべて]** をクリックします。
 	 	
@@ -380,11 +380,11 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 	-  **Set-AzureDataFactorySliceStatus** を使用したり、スライスの **[スライス]** ブレードで **[実行]** をクリックしたりすることで、スライスの状態を手動で更新した場合。
 	-  スライスの実行 (実行の開始、実行の終了と失敗、実行の終了と成功など) により、スライスの状態が変わります。
  
-	一覧のタイトルをクリックするか、**... (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
-	![Data Slices by Slice Time][DataSlicesBySliceTime]
+	![データ スライス (スライスの時刻別)][DataSlicesBySliceTime]
  
 7. **[PartiionGameLogsPipeline]** の **[パイプライン]** ブレードで、**[生成済み]** をクリックします。
 8. このパイプラインが生成するデータ セットの一覧が表示されるはずです。 
@@ -402,7 +402,7 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 12.	**[データ スライス]** ブレードで、**[アクティビティの実行]** の一覧から [実行] をクリックします。そのスライスの [アクティビティの実行] ブレードが表示されるはずです。以下の **[アクティビティの実行の詳細]** ブレードが表示されます。
 
-	![Activity Run Details blade][image-data-factory-monitoring-activity-run-details]
+	![[アクティビティの実行状況の詳細] ブレード][image-data-factory-monitoring-activity-run-details]
 
 13.	**[ダウンロード]** をクリックしてファイルをダウンロードします。この画面は、HDInsight の処理で発生するエラーのトラブルシューティングを行うときに、特に役立ちます。
 	 
@@ -528,4 +528,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-new-datafactory-create-button]: ./media/data-factory-tutorial/DataFactoryCreateButton.png
 
-<!---HONumber=Sept15_HO2-->
+<!---HONumber=Oct15_HO3-->

@@ -1,19 +1,19 @@
 <properties 
    pageTitle="Azure ロード バランサーの概要 | Microsoft Azure"
-	description="Azure ロード バランサーの機能の概要、アーキテクチャ、実装。ロード バランサーの機能とクラウドの利用方法の理解に役に立つ"
-	services="load-balancer"
-	documentationCenter="na"
-	authors="joaoma"
-	manager="adinah"
-	editor="tysonn"/>
+   description="Azure ロード バランサーの機能の概要、アーキテクチャ、実装。ロード バランサーの機能とクラウドの利用方法の理解に役に立つ"
+   services="load-balancer"
+   documentationCenter="na"
+   authors="joaoma"
+   manager="adinah"
+   editor="tysonn" />
 <tags 
    ms.service="load-balancer"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="infrastructure-services"
-	ms.date="07/10/2015"
-	ms.author="joaoma"/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="07/10/2015"
+   ms.author="joaoma" />
 
 
 # ロード バランサーの概要 
@@ -99,4 +99,4 @@ Azure ロード バランサーの構成は、UDP のFull cone NAT をサポー�
 [インターネットに接続するロード バランサーの開始](load-balancer-internet-getstarted.md)
  
 
-<!---HONumber=September15_HO1-->
+<!---HONumber=Oct15_HO3-->

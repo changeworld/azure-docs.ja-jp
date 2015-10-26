@@ -3,4 +3,4 @@
 - [(Windows Phone Silverlight 8.x | Javascript)](../articles/mobile-services-windows-phone-get-started-data.md)
 - [(Android | Javascript)](../articles/mobile-services-android-get-started-data.md)
 
-<!---HONumber=Oct15_HO2-->
+<!---HONumber=Oct15_HO3-->

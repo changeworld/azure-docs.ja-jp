@@ -90,7 +90,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 
 1. Azure AD ポータルの **[Halogen Software]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![シングル サインオンの構成][8]
 
-2. **[ユーザーの Halogen Software へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD のシングル サインオン][9]
+2. **[ユーザーの Halogen Software へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br> ![Azure AD Single Sign-On][9]
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行します。<br><br>![アプリケーションの設定の構成][10]
  
@@ -223,4 +223,4 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 [300]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_300.png
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
 
-<!----HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

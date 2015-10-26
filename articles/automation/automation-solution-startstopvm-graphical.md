@@ -153,4 +153,4 @@ Runbook の最後の手順は、各仮想マシンの起動または停止要求
 - [Azure Automation での子 Runbook](automation-child-runbooks.md) 
 - [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

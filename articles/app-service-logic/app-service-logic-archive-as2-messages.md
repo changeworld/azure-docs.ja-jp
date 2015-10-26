@@ -1,20 +1,20 @@
 <properties 
-   pageTitle="AS2 コネクタ メッセージのアーカイブ | Microsoft Azure App Service"
-	description="Azure App Service に AS2 コネクタ メッセージをアーカイブまたは保存する方法"
-	services="app-service\logic"
-	documentationCenter=".net,nodejs,java"
-	authors="rajram"
-	manager="dwrede"
-	editor=""/>
+   pageTitle="AS2 コネクタ メッセージのアーカイブ | Microsoft Azure App Service" 
+   description="Azure App Service に AS2 コネクタ メッセージをアーカイブまたは保存する方法" 
+   services="app-service\logic" 
+   documentationCenter=".net,nodejs,java" 
+   authors="rajram" 
+   manager="dwrede" 
+   editor=""/>
 
 <tags
    ms.service="app-service-logic"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="integration"
-	ms.date="08/23/2015"
-	ms.author="rajram"/>
+   ms.devlang="multiple"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="integration" 
+   ms.date="08/23/2015"
+   ms.author="rajram"/>
 
 
 # AS2 コネクタ メッセージのアーカイブの概要
@@ -39,4 +39,4 @@ AS2 コネクタの API アプリ インスタンスを参照して [追跡] を
 [1]: ./media/app-service-logic-archive-as2-messages/Tracking.jpg
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

@@ -376,4 +376,4 @@ HTTPS エンドポイントを追加する場合、SSL 証明書を使用する�
 ## 次のステップ
 Visual Studio における Azure プロジェクトの詳細については、「[Azure プロジェクトの構成](vs-azure-tools-configuring-an-azure-project.md)」を参照してください。クラウド サービスのスキーマの詳細については、「[スキーマ リファレンス](https://msdn.microsoft.com/library/azure/dd179398)」を参照してください。
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

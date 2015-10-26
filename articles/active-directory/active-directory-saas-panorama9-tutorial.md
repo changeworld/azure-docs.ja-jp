@@ -15,7 +15,7 @@
 1.  Panorama9 のアプリケーション統合の有効化
 2.  シングル サインオンの構成
 3.  ユーザー プロビジョニングの構成
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-panorama9-tutorial/IC790016.png "シナリオ")
 ##Panorama9 のアプリケーション統合の有効化
@@ -65,7 +65,7 @@
 
 3.  **[アプリ URL の構成]** ページの **[Panorama9 のサインオン URL]** ボックスに、ユーザーが Panorama9 にサインインする際に使用する URL (例: *https://dashboard.panorama9.com/saml/access/3262*") を入力し、**[次へ]** をクリックします。
 
-    ![アプリ URL の構成](./media/active-directory-saas-panorama9-tutorial/IC790021.png "アプリ URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-panorama9-tutorial/IC790021.png "アプリケーション URL の構成")
 
 4.  **[Panorama9 でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで保存します。
 
@@ -130,10 +130,10 @@ Azure AD ユーザーが Panorama9 にログインできるようにするには
 
     ![ユーザーの割り当て](./media/active-directory-saas-panorama9-tutorial/IC790029.png "ユーザーの割り当て")
 
-3.  テスト ユーザーを選び、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確認します。
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![あり](./media/active-directory-saas-panorama9-tutorial/IC767830.png "あり")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=August15_HO7-->
+<!---HONumber=Oct15_HO3-->

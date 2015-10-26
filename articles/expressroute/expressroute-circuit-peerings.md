@@ -90,4 +90,4 @@ ExpressRoute 回線の一部として 1 つ以上のルーティング ドメイ
 	- [ルーティング (回線ピアリング) の構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

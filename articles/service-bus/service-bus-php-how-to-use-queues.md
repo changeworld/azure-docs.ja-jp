@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.workload="tbd" 
+	ms.workload="na" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="07/06/2015" 
+	ms.date="10/14/2015" 
 	ms.author="sethm"/>
 
 # Service Bus キューの使用方法
@@ -198,21 +198,13 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 
 ## 次のステップ
 
-これで、Service Bus キューの基本を学習できました。詳細については、[キュー、トピック、およびサブスクリプションに関するページ][]を参照してください。
+これで、Service Bus キューの基本を学習できました。詳細については、「[キュー、トピック、およびサブスクリプション][]」を参照してください。
 
 詳細については、[PHP デベロッパー センター](/develop/php/)も参照してください。
 
-[Service Bus Queue Diagram]: ../../../DevCenter/Java/Media/SvcBusQueues_01_FlowDiagram.jpg
-[Azure Management Portal]: http://manage.windowsazure.com/
-[Service Bus Node screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_02_SvcBusNode.jpg
-[Create a New Namespace screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_03_CreateNewSvcNamespace.jpg
-[Available Namespaces screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_04_SvcBusNode_AvailNamespaces.jpg
-[Namespace List screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_05_NamespaceList.jpg
-[Properties Pane screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_06_PropertiesPane.jpg
-[Default Key screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_07_DefaultKey.jpg
-[キュー、トピック、およびサブスクリプションに関するページ]: service-bus-queues-topics-subscriptions.md
+[キュー、トピック、およびサブスクリプション]: service-bus-queues-topics-subscriptions.md
 [require_once]: http://php.net/require_once
 
  
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

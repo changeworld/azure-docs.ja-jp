@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="Hybrid Connection Manager の使用 | Microsoft Azure App Service"
-	description="Hybrid Connection Manager をインストールして構成し、Azure App Service 内のオンプレミス コネクターに接続する"
-	services="app-service\logic"
+	pageTitle="Hybrid Connection Manager の使用 | Microsoft Azure App Service" 
+	description="Hybrid Connection Manager をインストールして構成し、Azure App Service 内のオンプレミス コネクターに接続する" 
+	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
-	authors="MandiOhlinger"
-	manager="dwrede"
+	authors="MandiOhlinger" 
+	manager="dwrede" 
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/23/2015"
+	ms.service="app-service-logic" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/23/2015" 
 	ms.author="mandia"/>
 
 # Hybrid Connection Manager を使用して Azure App Service 内のオンプレミス コネクターに接続する
@@ -133,4 +133,4 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
  
 
-<!---HONumber=August15_HO9-->
+<!---HONumber=Oct15_HO3-->

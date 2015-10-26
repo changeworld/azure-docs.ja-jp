@@ -109,4 +109,4 @@ PowerShell Runbook に関する現在の既知の問題は次のとおりです�
 - [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 - [Runbook の作成またはインポート](http://msdn.microsoft.com/library/azure/dn643637.aspx)
 
-<!---HONumber=Oct15_HO1-->
+<!---HONumber=Oct15_HO3-->

@@ -109,4 +109,4 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
   [Azure SQL Database の継続性]: https://msdn.microsoft.com/library/azure/hh852669.aspx
   [Azure のビジネス継続性テクニカル ガイダンス]: https://msdn.microsoft.com/library/azure/hh873027.aspx
 
-<!---HONumber=Sept15_HO4-->
+<!---HONumber=Oct15_HO3-->
