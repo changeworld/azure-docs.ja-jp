@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/09/2015"
+	ms.date="10/15/2015"
 	ms.author="awills"/>
 
 # Java Web プロジェクトで Application Insights を使う
@@ -25,7 +25,7 @@
 
 ![サンプル データ](./media/app-insights-java-get-started/5-results.png)
 
-[Application Insights Web テスト][availability]では、アプリケーションの可用性を監視します。
+Application Insights は、Linux、Unix、Windows で動作する Java アプリをサポートします。
 
 必要なものは次のとおりです。
 
@@ -124,7 +124,7 @@ SDK を手動で追加する:
 
 ## 3\.Application Insights の xml ファイルを追加する
 
-ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。次の XML をファイルにコピーします。
+ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイ クラス パスに追加されていることを確認します。次の XML をファイルにコピーします。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
 
@@ -396,4 +396,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

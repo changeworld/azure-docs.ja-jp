@@ -24,11 +24,15 @@
 - [PowerShell: Resource Manager deployment](virtual-machines-deploy-rmtemplates-powershell.md)
 - [PowerShell: Classic deployment](virtual-machines-ps-create-preconfigure-windows-vms.md)
 
+<br>[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+
+
+
 このチュートリアルでは、プレビュー ポータルで Azure の仮想マシンを数分で簡単に作成する方法を示します。仮想マシンを作成するための例として、Windows Server 2012 R2 Datacenter イメージを使用しますが、これは Azure によって提供される多くのイメージの 1 つにすぎません。イメージの選択肢は、サブスクリプションによって異なります。たとえば、デスクトップ イメージは MSDN サブスクリプション会員のみが使用できますです。
 
 リソース マネージャーのテンプレートまたは自動化ツールと共に、独自のイメージを使用して仮想マシンを作成することもできます。さまざまな方法の詳細については、「[Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-choices-create-vm.md)」を参照してください。
 
-このチュートリアルでは、リソース マネージャーのデプロイ モデルを使用して仮想マシンを作成します。サービス管理 API に基づく従来のデプロイ モデルよりもこちらをお勧めします。リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。仮想マシンでリソース マネージャーを使用する利点の詳細については、「[Azure リソース マネージャーにおける Azure Compute、ネットワーク、ストレージ プロバイダー](virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
+このチュートリアルでは、リソース マネージャーのデプロイ モデルを使用して仮想マシンを作成します。サービス管理 API に基づく従来のデプロイ モデルよりもこちらをお勧めします。リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。仮想マシンでリソース マネージャーを使用する利点の詳細については、「[Azure リソース マネージャーにおける Compute、Network、Storage プロバイダー](virtual-machines-azurerm-versus-azuresm.md)」を参照してください。
 
 [AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
@@ -66,7 +70,7 @@
 
 	![VM のサイズの構成](./media/virtual-machines-windows-tutorial/create_vm_size.PNG)
 
-	>[AZURE.NOTE]プレミアム ストレージは、特定のリージョンの DS シリーズの仮想マシンで使用できます。プレミアム ストレージは、データベースなどの高負荷のワークロードに最適なストレージ オプションです。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)に関するページを参照してください。
+	>[AZURE.NOTE]Premium Storage は、特定のリージョンの DS シリーズの仮想マシンで使用できます。Premium Storage は、データベースなどの高負荷のワークロードに最適なストレージ オプションです。詳細については、[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage-preview-portal.md)に関するページを参照してください。
 
 3. **[設定]** をクリックして、新しい仮想マシンのストレージとネットワークの設定を表示します。最初の仮想マシンについては、通常、既定の設定をそのまま使用します。Premium Storage がサポートされる仮想マシンのサイズを選択した場合は、**[ディスクの種類]** の **[Premium (SSD)]** を選択することで、Premium Storage をお試しいただくことができます。
 
@@ -76,7 +80,7 @@
 
 	![VM 設定の構成](./media/virtual-machines-windows-tutorial/create_vm_summary.PNG)
 
-8. Azure が仮想マシンを作成している間の進捗状況は、ハブ メニューの **[通知]** で確認できます。Azure で仮想マシンが作成されるとスタート画面に表示されます。ただし、**[バーチャル マシンの作成]** ブレードで **[スタート画面にピン留めする]** をオフにした場合は表示されません。
+8. Azure が仮想マシンを作成している間の進捗状況は、ハブ メニューの **[通知]** で確認できます。Azure で仮想マシンが作成されるとスタート画面に表示されます。ただし、**[仮想マシンの作成]** ブレードで **[スタート画面にピン留めする]** をオフにした場合は表示されません。
 
 ## 仮想マシンへのログオン
 
@@ -84,11 +88,11 @@
 
 >[AZURE.NOTE]要件やトラブルシューティングのヒントについては、「[RDP または SSH で Azure 仮想マシンに接続する](https://msdn.microsoft.com/library/azure/dn535788.aspx)」を参照してください。
 
-1. まだサインインしていない場合は、[プレビュー ポータル](https://portal.azure.com)にサインインします。
+1. まだログインしていない場合は、[プレビュー ポータル](https://portal.azure.com)にサインインします。
 
 2. スタート画面の仮想マシンをクリックします。仮想マシンを探す場合は、**[すべて参照]**、**[最近使用した項目]** の順にクリックするか、**[すべて参照]**、**[仮想マシン]** の順にクリックします。その後、一覧から仮想マシンを選択します。
 
-3. [仮想マシン] ブレードで、**[接続]** をクリックします。
+3. 仮想マシンのブレードで、**[接続]** をクリックします。
 
 	![仮想マシンへのログオン](./media/virtual-machines-windows-tutorial/connect_vm_portal.png)
 
@@ -107,4 +111,4 @@
 * Azure PowerShell と Azure CLI を使用して、[仮想マシンのイメージの検索と選択](resource-groups-vm-searching.md)を行います。
 * [Azure リソース マネージャー](virtual-machines-how-to-automate-azure-resource-manager.md)と [Azure リソース マネージャー テンプレート](http://azure.microsoft.com/documentation/templates/)を使用して、仮想マシンとワークロードのデプロイと管理を自動化します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

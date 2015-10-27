@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Service Fabric 開発環境の設定 | Microsoft Azure"
-   description="Service Fabric ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。"
+   pageTitle="開発環境のセットアップ | Microsoft Azure"
+   description="ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。このセットアップを終えれば、アプリケーションを構築する準備は完了です。"
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
-   manager="samgeo"
+   manager="coreysa"
    editor=""/>
 
 <tags
@@ -13,13 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/07/2015"
+   ms.date="10/15/2015"
    ms.author="seanmck"/>
 
-# Service Fabric 開発環境の設定
- この記事では、ランタイム、SDK、ツールのインストール、およびローカル クラスターの設定など、[Service Fabric][1] アプリのビルド開始に必要な事柄すべてを説明します。
+# 開発環境を準備する
+ 開発コンピューターで [Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールし、ローカル クラスターをセットアップする必要があります。
 
- >[AZURE.NOTE]次の手順は、新しい PC を設定するためのものです。PC に以前のバージョンの Service Fabric がインストールされている場合は、[開発環境の更新手順](service-fabric-update-your-development-environment.md)に従ってください。
+ >[AZURE.NOTE]次の手順は、新しいコンピューターを設定するためのものです。以前のバージョンの Service Fabric がインストールされている場合は、[開発環境の更新手順](service-fabric-update-your-development-environment.md)に従ってください。
 
 ## 前提条件
 ### サポートされるオペレーティング システムのバージョン
@@ -33,7 +33,7 @@
 
 Service Fabric のツールは Visual Studio 2015 に依存しています。Visual Studio 2015 は、[ここ][2]から入手できます。
 
-> [AZURE.NOTE]サポートされる OS のバージョンを実行していないか、PC に Visual Studio 2015 をインストールしたくない場合は、VM ギャラリーからのイメージを使用して Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている Azure 仮想マシンを設定できます。
+> [AZURE.NOTE]サポートされる OS のバージョンを実行していないか、PC に Visual Studio 2015 をインストールしたくない場合は、Azure 仮想マシン ギャラリーからのイメージを使用して Windows Server 2012 R2 と Visual Studio 2015 がプレインストールされている Azure 仮想マシンを設定できます。
 
 ## ランタイム、SDK、およびツールのインストール
 
@@ -96,9 +96,9 @@ SDK に付属している Service Fabric エクスプローラー ツールを�
 ## 次のステップ
 開発環境の設定が完了しました。これで、アプリのビルドと実行を開始できます。
 
-- [プログラミング モデルについての詳細: 高信頼アクターおよび高信頼サービス](service-fabric-choose-framework.md)
-- [高信頼サービス API の使用](service-fabric-reliable-services-quick-start.md)
-- [高信頼アクター API の使用](service-fabric-reliable-actors-get-started.md)
+- [プログラミング モデルについての詳細: Reliable Actors および Reliable Services](service-fabric-choose-framework.md)
+- [Reliable Services API の使用](service-fabric-reliable-services-quick-start.md)
+- [Reliable Actors API の使用](service-fabric-reliable-actors-get-started.md)
 - [GitHub での Service Fabric サンプルの確認](https://github.com/azure/servicefabric-samples)
 - [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
@@ -106,4 +106,4 @@ SDK に付属している Service Fabric エクスプローラー ツールを�
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
 [3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI のリンク"
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

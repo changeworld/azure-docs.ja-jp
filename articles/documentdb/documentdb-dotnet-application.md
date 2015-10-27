@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="DocumentDB を使用した ASP.NET MVC Web アプリケーションの開発 | Microsoft Azure" 
 	description="DocumentDB を .NET と共に使用して To Do リスト Web アプリケーションを作成する方法について説明します。データは Azure Websites にホストされた ASP.NET MVC Web アプリケーションに格納してアクセスします。" 
-	keywords="Github, visual studio, web application development, application development, database tutorial, mvc applications, json data, documentdb, azure, Microsoft azure"
+	keywords="Github, visual studio, web アプリケーション開発, アプリケーション開発, データベース チュートリアル, mvc アプリケーション, json データ, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter=".net" 
 	authors="ryancrawcour" 
@@ -540,19 +540,6 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 2. **ItemController** クラスに次のコードを追加します。
 
-    	[HttpPost]
-   		[ValidateAntiForgeryToken]
-    	public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Completed")] Item item)
-    	{
-     	   if (ModelState.IsValid)
-    	    {
-    	        await DocumentDBRepository<Item>.UpdateItemAsync(item.Id, item);
-    	        return RedirectToAction("Index");
-    	    }
-
-  	      return View(item);
- 	   	}
-		
 		public ActionResult Edit(string id)
 		{
 		    if (string.IsNullOrEmpty(id))
@@ -569,6 +556,19 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 		 	
 		    return View(item);
 		}
+		
+    	[HttpPost]
+   		[ValidateAntiForgeryToken]
+    	public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description,Completed")] Item item)
+    	{
+     	   if (ModelState.IsValid)
+    	    {
+    	        await DocumentDBRepository<Item>.UpdateItemAsync(item.Id, item);
+    	        return RedirectToAction("Index");
+    	    }
+
+  	      return View(item);
+ 	   	}
 		
 	
 	1 つ目のメソッドは、ユーザーが **[Index]** ビューから **[Edit]** リンクをクリックしたときに発生する Http GET を処理します。このメソッドによって、DocumentDB から [**Document**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) が取得されて、**[Edit]** ビューに渡されます。
@@ -633,4 +633,4 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

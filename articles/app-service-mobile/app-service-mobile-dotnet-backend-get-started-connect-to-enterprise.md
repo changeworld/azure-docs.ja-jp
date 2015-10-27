@@ -5,10 +5,10 @@
 	authors="mattchenderson"
 	manager="dwrede"
 	editor="na"
-	services="app-service"/>
+	services="app-service\mobile"/>
 
 <tags
-	ms.service="app-service"
+	ms.service="app-service-mobile"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
@@ -18,7 +18,7 @@
 
 # SaaS API へのモバイル アプリの接続
 
-このチュートリアルでは、エンタープライズのサービスとしてのソフトウェア (SaaS) ソリューションにモバイル アプリを接続します。「[Azure Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]」からアプリを更新し、新しい TodoItem が追加されたときに必ず SharePoint Online で Word 文書が作成されるようにします。
+このチュートリアルでは、エンタープライズのサービスとしてのソフトウェア (SaaS) ソリューションにモバイル アプリを接続します。「Azure Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証」からアプリを更新し、新しい TodoItem が追加されたときに必ず SharePoint Online で Word 文書が作成されるようにします。
 
 このチュートリアルには、次のものが必要です。
 
@@ -183,9 +183,9 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 <!-- URLs. -->
 
 [Preview Azure Management Portal]: https://portal.azure.com/
-[Active Directory]: https://manage.windowsazure.com/
-[SharePoint Online]: http://office.microsoft.com/ja-jp/sharepoint/
+[[Active Directory]]: https://manage.windowsazure.com/
+[SharePoint Online]: http://office.microsoft.com/ja-JP/sharepoint/
 [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: app-service-mobile-dotnet-backend-ios-aad-sso-preview.md
 [Mobile Apps .NET Backend App Service Extension]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.AppService/
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

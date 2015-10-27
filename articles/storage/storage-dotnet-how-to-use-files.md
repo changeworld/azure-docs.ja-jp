@@ -44,7 +44,7 @@ File ストレージのスケーラビリティ ターゲットの詳細につ�
 - .NET 用 Azure Storage クライアント ライブラリを使用して、オンプレミスのアプリケーションからファイル共有にアクセスします。コンソール アプリケーションを作成し、ファイル共有で次の操作を実行します。
 	- 共有内のファイルの内容をコンソール ウィンドウに書き込む
 	- ファイル共有のクォータ (最大サイズ) を設定する
-	- 共有で定義されている共有アクセス ポリシーを使用するファイルの共有アクセス署名を作成する
+	- 共有で定義されている共有アクセス ポリシーを使用するファイルの Shared Access Signature を作成する
 	- ファイルを、同じストレージ アカウント内の別のファイルにコピーする
 	- ファイルを、同じストレージ アカウント内の BLOB にコピーする
 
@@ -185,7 +185,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 - SMB 3.0 をサポートする Windows バージョンをインストールします。Windows では、オンプレミスのクライアントと、クラウドの Azure のファイル共有間でデータを安全に転送するために SMB 3.0 の暗号化を利用しています。 
 - インターネット アクセス用に SMB プロトコルで必要とされるポート 445 (TCP 送信) をローカル ネットワークで開きます。 
 
-[AZURE.NOTE]一部のインターネット サービス プロバイダーは、ポート 445 をブロックしている場合があるため、サービス プロバイダーに確認する必要がある場合があります。
+> [AZURE.NOTE]一部のインターネット サービス プロバイダーは、ポート 445 をブロックしている場合があるため、サービス プロバイダーに確認する必要がある場合があります。
 
 ## File ストレージを使用した開発
 
@@ -195,7 +195,7 @@ File ストレージをプログラミングする場合、.NET と Java のス�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows]、[コンソール アプリケーション] (Visual C# テンプレートの一覧から)**をクリックします。
+1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から [コンソール アプリケーション]**をクリックします。
 2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
@@ -305,9 +305,9 @@ Azure Storage クライアント ライブラリのバージョン 5.x 以降で
         Console.WriteLine("Current share quota: {0} GB", share.Properties.Quota);
     }
 
-### ファイルまたはファイル共有の共有アクセス署名の生成
+### ファイルまたはファイル共有の Shared Access Signature の生成
 
-Azure ストレージ クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの共有アクセス署名 (SAS) を生成できます。また、ファイル共有に共有アクセス ポリシーを作成して、共有アクセス署名を管理することもできます。共有アクセス ポリシーを作成することをお勧めします。これにより、侵害されそうな場合に SAS を取り消すことができます。
+Azure ストレージ クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成できます。また、ファイル共有に共有アクセス ポリシーを作成して、共有アクセス署名を管理することもできます。共有アクセス ポリシーを作成することをお勧めします。これにより、侵害されそうな場合に SAS を取り消すことができます。
 
 次の例では、共有上に共有アクセス ポリシーを作成し、そのポリシーを使用して共有上のファイルの SAS に制約を指定します。
 
@@ -353,15 +353,15 @@ Azure ストレージ クライアント ライブラリのバージョン 5.x �
         Console.WriteLine(fileSas.DownloadText());
     }
 
-共有アクセス署名の作成および使用に関する詳細は、「[共有アクセス署名: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」と「[BLOB サービスによる SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)」をご覧ください。
+Shared Access Signature の作成および使用の詳細については、「[Shared Access Signature: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」と「[BLOB サービスによる SAS の作成および使用](storage-dotnet-shared-access-signature-part-2.md)」を参照してください。
 
 ### ファイルのコピー
 
 Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。次のセクションでは、プログラムを使用してこれらのコピー操作を実行する方法を示します。
 
-また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。AzCopy を使用したファイルのコピーの詳細については、「[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md#copy-files-in-azure-file-storage-with-azcopy-preview-version-only)」をご覧ください。
+また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。AzCopy を使用したファイルのコピーの詳細については、[Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md#copy-files-in-azure-file-storage-with-azcopy-preview-version-only)に関するページを参照してください。
 
-> [AZURE.NOTE]BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合は、同じストレージ アカウント内でコピーする場合でも、共有アクセス署名 (SAS) を使用してソース オブジェクトを認証する必要があります。
+> [AZURE.NOTE]BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合は、同じストレージ アカウント内でコピーする場合でも、Shared Access Signature (SAS) を使用してソース オブジェクトを認証する必要があります。
 
 **別のファイルへのファイルのコピー**
 
@@ -508,9 +508,9 @@ Azure ポータルから File ストレージのメトリックを有効にす�
 
 11. **共有内のフォルダーに読み取り専用または書き込み専用の権限を指定できますか。**
 
-	SMB を使用してファイル共有をマウントした場合、このレベルでアクセス許可を制御することはできません。ただし、REST API またはクライアント ライブラリを使用して共有アクセス署名 (SAS) を作成することでこれを実現することができます。
+	SMB を使用してファイル共有をマウントした場合、このレベルでアクセス許可を制御することはできません。ただし、REST API またはクライアント ライブラリを使用して Shared Access Signature (SAS) を作成することでこれを実現することができます。
 
-12. **File ストレージにファイルを解凍する際、パフォーマンスが低かったです。どうすればよいですか。**
+12. **File ストレージにファイルを解凍する際にパフォーマンスが低かった場合は、どうすればよいですか。**
 
 	File ストレージに大量のファイルを転送する場合、ネットワーク転送に最適化されている AzCopy、Azure Powershell (Windows)、または Azure CLI (Linux または Unix) を使用することをお勧めします。
 
@@ -540,4 +540,4 @@ Azure File ストレージの詳細については、次のリンクを参照し
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する | Microsoft Azure"
-   description="クラシック デプロイメント モデルを使用して、サイト間 VPN 接続を使用したクロスプレミス構成およびハイブリッド構成の仮想ネットワークを作成します。"
+   description="クラシック デプロイ モデルを使用して、サイト間 VPN 接続を使用したクロスプレミス構成およびハイブリッド構成の仮想ネットワークを作成します。"
    services="vpn-gateway"
    documentationCenter=""
    authors="cherylmc"
@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/10/2015"
+   ms.date="10/21/2015"
    ms.author="cherylmc"/>
 
 # Azure ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する
@@ -23,28 +23,29 @@
 - [Azure portal](vpn-gateway-site-to-site-create.md)
 - [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
-この記事では、仮想ネットワークと、オンプレミスのネットワークに対するサイト間 VPN 接続を作成する手順について説明します。この記事は、クラシック デプロイメント モデルに適用されます。
+この記事では、仮想ネットワークと、オンプレミスのネットワークに対するサイト間 VPN 接続を作成する手順について説明します。この記事は、クラシック デプロイ モデルに適用されます。
 
->[AZURE.IMPORTANT]Azure は現在、2 つのデプロイメント モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことは重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイメント モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
+>[AZURE.NOTE]Azure は現在、2 つのデプロイ モデル (リソース マネージャーおよびクラシック) で使用できることを理解しておくことは重要です。構成を開始する前に、デプロイ モデルとツールについて理解しておくようにしてください。デプロイ モデルについては、「[Azure デプロイ モデル](../azure-classic-rm.md)」を参照してください。
 
-上にあるタブを使用して、デプロイメント モデルとデプロイメント ツールに関する記事を選択できます。たとえば、クラシック モデルではなく、Azure リソース マネージャーのモデルを使用してサイト間 VPN Gateway 接続を作成する場合は、上にある **[PowerShell - Resource Manager]** タブをクリックして「[Azure リソース マネージャーと PowerShell を使用してサイト間 VPN 接続を作成する](vpn-gateway-create-site-to-site-rm-powershell.md)」に移動します。
+上にあるタブを使用して、デプロイ モデルとデプロイ ツールに関する記事を選択できます。たとえば、クラシック モデルではなく、Azure リソース マネージャーのモデルを使用してサイト間 VPN ゲートウェイ接続を作成する場合は、上にある **[PowerShell - Resource Manager]** タブをクリックして「[Azure リソース マネージャーと PowerShell を使用してサイト間 VPN 接続を作成する](vpn-gateway-create-site-to-site-rm-powershell.md)」に移動します。
 
  
 ## 作業を開始する前に
 
 構成を開始する前に、以下がそろっていることを確認します。
 
-- 互換性のある VPN デバイスおよびデバイスを構成できる人員。「[VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」をご覧ください。
-- VPN デバイスの外部接続用パブリック IP アドレス。この IP アドレスを NAT の内側に割り当てることはできません。
+- 互換性のある VPN デバイスおよびデバイスを構成できる人員。「[VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。VPN デバイスの構成に習熟していないか、またはオンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
+
+-  VPN デバイスの外部接続用パブリック IP アドレス。この IP アドレスを NAT の内側に割り当てることはできません。
+
 - Azure サブスクリプション。Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
->[AZURE.IMPORTANT]VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を提供できる担当者と協力して作業を行ってください。
 
 ## Virtual Network の作成
 
 1. **Azure ポータル**にログインします。
 
-2. 画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで **[Network Service]** をクリックし、**[Virtual Network]** をクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
+2. 画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで **[Network Services]** をクリックし、**[Virtual Network]** をクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
 
 3. 次のページで情報を入力して VNet を作成します。
 
@@ -85,18 +86,20 @@
 
 ページ下部のチェックマークをクリックすると、仮想ネットワークの作成が開始されます。完了すると、Azure ポータルの **[ネットワーク]** ページにある **[状態]** に **[作成済み]** と表示されます。VNet の作成が完了したら、仮想ネットワーク ゲートウェイを構成できます。
 
+[AZURE.INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
+
 ## 仮想ネットワーク ゲートウェイの構成
 
-次に、セキュリティで保護されたサイト間接続を作成するために、仮想ネットワーク ゲートウェイを構成します。「[Azure ポータルで VPN ゲートウェイを構成する](vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。
+次に、セキュリティで保護されたサイト間接続を作成するために、仮想ネットワーク ゲートウェイを構成します。[Azure ポータルでの仮想ネットワーク ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)に関するページを参照してください。
 
 ## 次のステップ
 
-Virtual Network のクロスプレミス接続の詳細については、「[Virtual Network のセキュリティで保護されたクロスプレミス接続について](vpn-gateway-cross-premises-options.md)」を参照してください。
+仮想ネットワークのクロスプレミス接続の詳細については、「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](vpn-gateway-cross-premises-options.md)」を参照してください。
 
-ポイント対サイト VPN 接続を構成する場合は、「[ポイント対サイト VPN 接続の構成](vpn-gateway-point-to-site-create.md)」を参照してください。
+ポイント対サイト VPN 接続を構成する場合は、[ポイント対サイト VPN 接続の構成](vpn-gateway-point-to-site-create.md)に関するページを参照してください。
 
-仮想ネットワークに仮想マシンを追加できます。「[カスタム仮想マシンの作成方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
+仮想ネットワークに仮想マシンを追加できます。「[カスタム仮想マシンを作成する方法](../virtual-machines/virtual-machines-create-custom.md)」を参照してください。
 
-従来の仮想ネットワークと Azure リソース マネージャー モードを使用して作成された仮想ネットワーク間の接続を構成する場合は、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s-howto.md)」を参照してください。
+従来の仮想ネットワークと Azure リソース マネージャー モードを使用して作成された仮想ネットワーク間の接続を構成する場合は、[従来の VNet と Azure リソース マネージャーの VNet の接続](../virtual-network/virtual-networks-arm-asm-s2s-howto.md)に関するページを参照してください。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

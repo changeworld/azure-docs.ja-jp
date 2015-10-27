@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="DocumentDB を使用した Java アプリケーション開発のチュートリアル | Microsoft Azure"
 	description="この Java Web アプリケーション チュートリアルでは、Azure DocumentDB サービスを使用して、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。"
-	keywords="Application development, database tutorial, java application, java web application tutorial, documentdb, azure, Microsoft azure"
+	keywords="アプリケーション開発, データベース チュートリアル, java アプリケーション, java web アプリケーション チュートリアル, documentdb, azure, Microsoft azure"
 	services="documentdb" 
 	documentationCenter="java" 
 	authors="aliuy" 
@@ -14,7 +14,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="NA" 
 	ms.workload="data-services" 
-	ms.date="07/21/2015" 
+	ms.date="10/20/2015" 
 	ms.author="andrl"/>
 
 # DocumentDB を使用した Java Web アプリケーションの作成
@@ -34,7 +34,7 @@
 
 ![My ToDo List Java アプリケーション](./media/documentdb-java-application/image1.png)
 
-> [AZURE.TIP]このアプリケーション開発チュートリアルは、Java を使用した経験がある読者を対象としています。Java や[前提条件となるツール](#Prerequisites)を初めて扱う方は、完全な [todo](https://github.com/Azure/azure-documentdb-java/tree/master/tutorial/todo) プロジェクトを [GitHub](https://github.com/Azure/azure-documentdb-java) からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
+> [AZURE.TIP]このアプリケーション開発チュートリアルは、Java を使用した経験がある読者を対象としています。Java や[前提条件となるツール](#Prerequisites)を初めて扱う方は、完全な [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトを GitHub からダウンロードし、[この記事の最後にある手順](#GetProject)に従ってプロジェクトをビルドすることをお勧めします。プロジェクトをビルドした後でこの記事を見直すと、プロジェクトのコンテキストのコードについての洞察を得ることができます。
 
 ##<a id="Prerequisites"></a>この Java Web アプリケーション チュートリアルの前提条件
 このアプリケーション開発チュートリアルを読み始める前に、次の項目を用意する必要があります。
@@ -95,7 +95,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 4. **[Select Dependency]** ウィンドウで、次の操作を行います。
  - **[GroupId]** ボックスに、「com.microsoft.azure」と入力します。
  - **[Artifact Id]** ボックスに、「azure-documentdb」と入力します。
- - **[Version]** ボックスに、「1.1.0」と入力します。
+ - **[Version]** ボックスに、「1.4.0」と入力します。
 
 	![DocumentDB Java アプリケーション SDK をインストールする](./media/documentdb-java-application/image13.png)
 
@@ -104,7 +104,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 	    <dependency>
 		    <groupId>com.microsoft.azure</groupId>
 		    <artifactId>azure-documentdb</artifactId>
-		    <version>1.1.0</version>
+		    <version>1.4.0</version>
 	    </dependency>
 
 5. **[Ok]** をクリックします。Maven によって DocumentDB Java SDK がインストールされます。
@@ -237,7 +237,7 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		    }
 		}
 
-4. 次の手順では、いくつかのコードを記述して、コレクションに TodoItems を持続的にアクセスさせます。この例では、[Gson](https://code.google.com/p/google-gson/) を使用して、TodoItem Plain Old Java Objects (POJO) を JSON ドキュメントにシリアル化および逆シリアル化します。[Jackson](http://jackson.codehaus.org/) または独自のカスタム シリアライザーも POJO をシリアル化するための優れた代替手段です。
+4. 次の手順では、いくつかのコードを記述して、コレクションに TodoItems を持続的にアクセスさせます。この例では、[Gson](https://code.google.com/p/google-gson/) を使用して、TodoItem Plain Old Java Objects (POJO) を JSON ドキュメントにシリアル化およびシリアル化解除します。[Jackson](http://jackson.codehaus.org/) または独自のカスタム シリアライザーも POJO をシリアル化するための優れた代替手段です。
 
 	    // We'll use Gson for POJO <=> JSON serialization for this example.
 	    private static Gson gson = new Gson();
@@ -758,19 +758,19 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 
 ##<a id="GetProject"></a>GitHub からのプロジェクトの入手
 
-このチュートリアルで紹介したすべてのサンプルは、GitHub にある [todo](https://github.com/Azure/azure-documentdb-java/tree/master/tutorial/todo) プロジェクトに含まれています。このプロジェクトは、[azure-documentdb-java](https://github.com/Azure/azure-documentdb-java) リポジトリの一部です。todo プロジェクトを Eclipse にインポートするには、「[前提条件](#Prerequisites)」セクションに記載されているソフトウェアおよびリソースがあることを確認したうえで、以下の手順に従います。
+このチュートリアルのサンプルはすべて、GitHub の [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトに含まれています。todo プロジェクトを Eclipse にインポートするには、「[前提条件](#Prerequisites)」セクションに記載されているソフトウェアおよびリソースがあることを確認したうえで、以下の手順に従います。
 
 1. [Project Lombok](http://projectlombok.org/) をインストールします。Lombok は、プロジェクトのコンストラクター、getter、setter の生成に使用します。lombok.jar ファイルをダウンロードしたら、ファイルをダブルクリックしてコマンド ラインからインストールします。 
 2. Eclipse が開いている場合は、いったん終了してから再起動して Lombok を読み込みます。
 3. Eclipse で、**[File]** メニューの **[Import]** をクリックします。
 4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。 
 5. **[Select Repository Source]** 画面で、**[Clone URI]** をクリックします。
-6. **[Source Git Repository]** 画面の **[URI]** ボックスに「https://github.com/Azure/azure-documentdb-java.git」と入力し、**[Next]** をクリックします。
+6. **[Source Git Repository]** 画面の **[URI]** ボックスに「https://github.com/Azure-Samples/documentdb-java-todo-app.git」と入力し、**[Next]** をクリックします。
 7. **[Branch Selection]** 画面で、**[master]** が選択されていることを確認し、**[Next]** をクリックします。
 8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
 9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。
 10. **[Import Projects]** 画面で、**DocumentDB** プロジェクトを選択解除し、**[Finish]** をクリックします。DocumentDB プロジェクトには、依存関係として追加される DocumentDB Java SDK が含まれています。
-11. **Project Explorer** で、azure-documentdb-java-sample\\src\\com.microsoft.azure.documentdb.sample.dao\\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER\_KEY] 値を DocumentDB の URI とプライマリ キーで置き換え、ファイルを保存します。詳細については、「[手順 1: DocumentDB データベース アカウントを作成する](#CreateDB)」を参照してください。
+11. **Project Explorer** で、azure-documentdb-java-sample\\src\\com.microsoft.azure.documentdb.sample.dao\\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER\_KEY] 値を DocumentDB アカウントの URI とプライマリ キーで置き換え、ファイルを保存します。詳細については、「[手順 1: DocumentDB データベース アカウントを作成する](#CreateDB)」を参照してください。
 12. **Project Explorer** で、**azure-documentdb-java-sample** を右クリックし、**[Build Path]**、**[Configure Build Path]** の順にクリックします。
 13. **[Java Build Path]** 画面の右ウィンドウで **[Libraries]** タブを選択し、**[Add External JARs]** をクリックします。lombok.jar ファイルの場所を参照し、**[Open]**、**[OK]** の順にクリックします。
 14. 手順 12. の手順を使用してもう一度 **[Properties]** ウィンドウを開き、左ウィンドウの **[Targeted Runtimes]** をクリックします。
@@ -786,4 +786,4 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 [1]: media/documentdb-java-application/keys.png
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

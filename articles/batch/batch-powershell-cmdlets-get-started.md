@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Batch PowerShell コマンドレットの使用 | Microsoft Azure"
-   description="Azure Batch サービスの管理に使用される Azure PowerShell コマンドレットを紹介します。"
+   pageTitle="Azure Batch PowerShell の使用 | Microsoft Azure"
+   description="Azure Batch サービスの管理に使用できる Azure PowerShell のコマンドレットについて簡単に説明します。"
    services="batch"
    documentationCenter=""
    authors="dlepow"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="powershell"
    ms.workload="big-compute"
-   ms.date="08/07/2015"
+   ms.date="10/13/2015"
    ms.author="danlep"/>
 
 # Azure Batch PowerShell コマンドレットの使用
@@ -21,75 +21,64 @@
 
 コマンドレット構文の詳細については、「`get-help <Cmdlet_name>`」と入力するか、[Azure Batch コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)のページを参照してください。
 
+[AZURE.INCLUDE [powershell-preview-include](../../includes/powershell-preview-include.md)]
+
 ## 前提条件
 
-* **Azure PowerShell** - 前提条件、ダウンロード手順、インストール手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。Batch コマンドレットは、0.8.10 以降のバージョンで導入されました。Batch コマンドレットは、バージョン 0.9.6 で一般公開されている API を使用するように更新されました。
+* **Azure PowerShell** - Batch コマンドレットは Azure リソース マネージャー モジュールに付属しています。前提条件、インストール手順、基本的な使用法については、[Azure リソース マネージャーのコマンドレット](https://msdn.microsoft.com/library/azure/mt125356.aspx)に関するページを参照してください。
 
-## Batch コマンドレットを使用する
 
-標準的な手順を使用して Azure PowerShell を起動し、[Azure サブスクリプションに接続します](../powershell-install-configure.md#Connect)。さらに次の操作を実行します。
 
-* **Azure サブスクリプションの選択** - 複数のサブスクリプションがある場合は、サブスクリプションを選択します。
+* **Batch プロバイダーの名前空間に登録する (1 回限りの操作)** - Batch アカウントを利用するには、Batch プロバイダーの名前空間に登録する必要があります。この操作は、サブスクリプションごとに 1 回のみ実行する必要があります。
 
     ```
-    Select-AzureSubscription -SubscriptionName <SubscriptionName>
-    ```
-
-* **AzureResourceManage モードに切り替える** - Batch コマンドレットは Azure リソース マネージャー モジュールに付属しています。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。このモジュールを使用するには、[Switch-azuremode](https://msdn.microsoft.com/library/dn722470.aspx) コマンドレットを実行します。
-
-    ```
-    Switch-AzureMode -Name AzureResourceManager
-    ```
-
-* **Batch プロバイダーの名前空間に登録する (1 回限りの操作)** - Batch アカウントを管理するには、Batch プロバイダーの名前空間に登録する必要があります。この操作は、サブスクリプションごとに 1 回のみ実行する必要があります。
-
-    ```
-    Register-AzureProvider -ProviderNamespace Microsoft.Batch
+    Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Batch
     ```
 
 ## Batch アカウントとキーを管理する
 
-Azure PowerShell コマンドレットを使用すると、Batch アカウントとキーを作成して管理できます。
 
 ### Batch アカウントを作成する
 
-**New-AzureBatchAccount** は、指定したリソース グループに新しい Batch アカウントを作成します。リソース グループがない場合は、[New-azureresourcegroup](https://msdn.microsoft.com/library/dn654594.aspx) コマンドレットを実行して作成し、**Location** パラメーターでいずれかの Azure リージョンを指定します ([Get-azurelocation](https://msdn.microsoft.com/library/dn654582.aspx) を実行して、別の Azure リソースの利用可能なリージョンを検索できます)。 次に例を示します。
+**New-AzureRmBatchAccount** は、指定したリソース グループに新しい Batch アカウントを作成します。リソース グループがない場合は、[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt603739.aspx) コマンドレットを実行して作成し、**Location** パラメーターでいずれかの Azure リージョン ("米国中央部" など) を指定します 次に例を示します。
 
 ```
-New-AzureResourceGroup –Name MyBatchResourceGroup –location "Central US"
+New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 ```
 
 次に、リソース グループに新しい Batch アカウントを作成し、<*account\_name*> にアカウント名と、Batch サービスが使用可能な場所を指定します。アカウントの作成は完了までに数分かかる場合があります。次に例を示します。
 
 ```
-New-AzureBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
+New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
 ```
 
 > [AZURE.NOTE]Batch アカウント名は Azure に一意である必要があります。3 ～ 24 文字で小文字と数字のみを使用します。
 
 ### アカウントのアクセス キーを取得する
-**Get AzureBatchAccountKeys** は、Azure Batch アカウントに関連付けられているアクセス キーを示します。たとえば、作成したアカウントのプライマリ キーとセカンダリ キーを取得するには、次のように実行します。
+**Get-AzureRmBatchAccountKeys** は、Azure Batch アカウントに関連付けられているアクセス キーを示します。たとえば、作成したアカウントのプライマリ キーとセカンダリ キーを取得するには、次のように実行します。
 
 ```
 $Account = Get-AzureBatchAccountKeys –AccountName <accountname>
+
 $Account.PrimaryAccountKey
+
 $Account.SecondaryAccountKey
 ```
 
 ### 新しいアクセス キーを生成する
-**New-AzureBatchAccountKey** は、Azure Batch アカウントの新しいプライマリ アカウント キーまたはセカンダリ アカウント キーを生成します。たとえば、Batch アカウントの新しいプライマリ キーを生成するには、次のように入力します。
+**New-AzureRmBatchAccountKey** は、Azure Batch アカウントの新しいプライマリ アカウント キーまたはセカンダリ アカウント キーを生成します。たとえば、Batch アカウントの新しいプライマリ キーを生成するには、次のように入力します。
 
 ```
-New-AzureBatchAccountKey -AccountName <account_name> -KeyType Primary
+New-AzureRmBatchAccountKey -AccountName <account_name> -KeyType Primary
 ```
 
 > [AZURE.NOTE]新しいセカンダリ キーを生成するには、**KeyType** パラメーターの "Secondary" を指定します。プライマリ キーとセカンダリ キーは個別に再生成する必要があります。
 
 ### Batch アカウントを削除する
-**Remove-AzureBatchAccount** は、Batch アカウントを削除します。次に例を示します。
+**Remove-AzureRmBatchAccount** は、Batch アカウントを削除します。次に例を示します。
 
 ```
-Remove-AzureBatchAccount -AccountName <account_name>
+Remove-AzureRmBatchAccount -AccountName <account_name>
 ```
 
 メッセージが表示されたら、削除するアカウントを確認します。アカウントの削除は完了するまでに時間がかかる場合があります。
@@ -101,7 +90,7 @@ Remove-AzureBatchAccount -AccountName <account_name>
 これらのコマンドレットを使用するには、まず AzureBatchContext オブジェクトを作成してアカウント名とキーを格納する必要があります。
 
 ```
-$context = Get-AzureBatchAccountKeys "<account_name>"
+$context = Get-AzureRmBatchAccountKeys -AccountName <account_name>
 ```
 
 **BatchContext** パラメーターを使用して、このコンテキストを Batch サービスと対話するコマンドレットに渡します。
@@ -122,6 +111,7 @@ Get-AzureBatchPool -BatchContext $context
 
 ```
 $filter = "startswith(id,'myPool')"
+
 Get-AzureBatchPool -Filter $filter -BatchContext $context
 ```
 
@@ -139,7 +129,7 @@ Get-AzureBatchPool -Id "myPool" -BatchContext $context
 
 ### パイプラインを作成する
 
-Batch コマンドレットは、コマンドレット間でデータを送信するために PowerShell パイプラインを活用できます。これは、パラメーターを指定するのと同じ効果がありますが、複数のエンティティを簡単に一覧表示できます。たとえば、自分のアカウントのすべてのタスクを表示できます。
+Batch コマンドレットは、コマンドレット間でデータを送信するために PowerShell パイプラインを活用できます。これは、パラメーターを指定するのと同じ効果がありますが、複数のエンティティを簡単に一覧表示できます。たとえば、次のコマンドでは、自分のアカウントのすべてのタスクを検索しています。
 
 ```
 Get-AzureBatchJob -BatchContext $context | Get-AzureBatchTask -BatchContext $context
@@ -147,7 +137,7 @@ Get-AzureBatchJob -BatchContext $context | Get-AzureBatchTask -BatchContext $con
 
 ### MaxCount パラメーターを使用する
 
-既定では、各コマンドレットは最大で 1000 のオブジェクトを返します。この制限に達した場合は、オブジェクトが少なくなるようにフィルターで絞り込むか、**MaxCount** パラメーターを使用して明示的に最大値を設定できます。次に例を示します。
+既定では、各コマンドレットは最大で 1000 のオブジェクトを返します。この制限に達した場合は、オブジェクトが少なくなるようにフィルターで絞り込むか、**MaxCount** パラメーターを使用して明示的に最大値を設定してください。次に例を示します。
 
 ```
 Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
@@ -157,9 +147,9 @@ Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 上限を削除するには、**MaxCount** を 0 以下に設定します。
 
 ## 関連トピック
-* [Batch の技術概要](batch-technical-overview.md)
-* [Azure PowerShell のダウンロード](http://go.microsoft.com/p/?linkid=9811175)
+* [Azure PowerShell のダウンロード](http://go.microsoft.com/?linkid=9811175)
+* [Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)
 * [Azure Batch コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)
-* [効率的なリスト クエリ](batch-efficient-list-queries.md)
+* [効率的な Batch サービスのクエリ](batch-efficient-list-queries.md)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

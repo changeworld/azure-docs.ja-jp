@@ -4,7 +4,7 @@
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
-	manager="adinah"
+	manager="carmonm"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article" 
-	ms.date="08/04/2015"
+	ms.date="10/16/2015"
 	ms.author="tamram"/>
 
 
@@ -353,4 +353,4 @@ BLOB を削除するには、まず、BLOB の参照を取得し、次にその 
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->

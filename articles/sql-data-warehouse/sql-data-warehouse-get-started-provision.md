@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/08/2015"
+   ms.date="10/21/2015"
    ms.author="lodipalm;barbkess"/>
 
 # Azure プレビュー ポータルでの SQL Data Warehouse の作成#
@@ -121,6 +121,6 @@ SQL Database および SQL Data Warehouse では、各データベースがサ�
 
 ## 次のステップ
 
-これで SQL Data Warehouse のサンプル データベースの作成が完了しました。[接続とクエリ](./sql-data-warehouse-get-started-connect-query.md)に関するページで、SQL Data Warehouse の使用方法について説明します。
+SQL Data Warehouse のサンプル データベースの作成は以上で完了です。いつでもデータベースに[接続](./sql-data-warehouse-get-started-connect.md)することができます。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=Oct15_HO4-->
